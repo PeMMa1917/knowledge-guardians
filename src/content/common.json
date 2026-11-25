@@ -1,0 +1,1336 @@
+{
+ "items": [
+  {
+   "id": "item.journal",
+   "name": "Guardian Journal",
+   "description": "Your record of what each source actually supports. Open it with J. It is private to you.",
+   "historicalLabel": "fictional-world",
+   "art": "icon.journal"
+  },
+  {
+   "id": "tool.date-lens",
+   "name": "Date-Kind Lens",
+   "description": "A concept tool. It shows WHAT a date describes: a grant, a build, a catalogue range or a claim. It cannot tell you if the date is correct.",
+   "historicalLabel": "fictional-world",
+   "art": "icon.lens"
+  },
+  {
+   "id": "tool.annotation-pen",
+   "name": "Field Annotation Pen",
+   "description": "Adds lasting notes to your records. It never changes the dates in a source document.",
+   "historicalLabel": "fictional-world",
+   "art": "icon.pen"
+  },
+  {
+   "id": "tool.provenance-thread",
+   "name": "Provenance Thread",
+   "description": "A concept tool. It follows an object from hand to hand and marks where the record stops. It cannot show what nobody wrote down.",
+   "historicalLabel": "fictional-world",
+   "art": "icon.thread"
+  },
+  {
+   "id": "item.gold-seal",
+   "name": "Small gold seal",
+   "description": "Pressed into the back of Corvan's old sign. A ring with a mark that nobody here recognises.",
+   "historicalLabel": "fictional-world",
+   "art": "icon.seal"
+  },
+  {
+   "id": "item.town-map",
+   "name": "Emberford town map",
+   "description": "A free hand-drawn map of the market, the forge and the guild hall.",
+   "historicalLabel": "fictional-world",
+   "art": "icon.letter"
+  },
+  {
+   "id": "item.tea",
+   "name": "Ember tea",
+   "description": "A warm drink from the market. It does nothing except make the walk pleasant.",
+   "historicalLabel": "fictional-world",
+   "art": "icon.tea"
+  }
+ ],
+ "characters": [
+  {
+   "id": "warden-ise",
+   "name": "Warden Ise Marrow",
+   "role": "Recruitment warden of the Nexus",
+   "sprite": "warden-ise",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "chapter.done",
+      "eq": true
+     },
+     "node": "ise.after"
+    },
+    {
+     "if": {
+      "flag": "seal.found",
+      "eq": true
+     },
+     "node": "ise.seal"
+    },
+    {
+     "if": {
+      "objective": "m01.o7.portal"
+     },
+     "node": "ise.after"
+    },
+    {
+     "if": {
+      "flag": "label.pen.everHeld",
+      "eq": true
+     },
+     "node": "ise.portal"
+    },
+    {
+     "if": {
+      "flag": "talked.ise",
+      "eq": true
+     },
+     "node": "ise.again"
+    },
+    {
+     "if": {
+      "not": {
+       "flag": "read.oldlabel",
+       "eq": true
+      }
+     },
+     "node": "ise.look"
+    },
+    {
+     "node": "ise.start"
+    }
+   ]
+  },
+  {
+   "id": "curator-dace",
+   "name": "Curator Mireille Dace",
+   "role": "Keeper of the Nexus display hall",
+   "sprite": "curator-dace",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "label.pen.everHeld",
+      "eq": true
+     },
+     "node": "dace.after"
+    },
+    {
+     "if": {
+      "flagSet": "sd.practice.outcome"
+     },
+     "node": "dace.label"
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "heard.dace",
+        "eq": true
+       },
+       {
+        "flag": "heard.venn",
+        "eq": true
+       },
+       {
+        "num": "count.inspected",
+        "gte": 3
+       }
+      ]
+     },
+     "node": "dace.ready"
+    },
+    {
+     "if": {
+      "flag": "heard.dace",
+      "eq": true
+     },
+     "node": "dace.again"
+    },
+    {
+     "node": "dace.start"
+    }
+   ]
+  },
+  {
+   "id": "clerk-venn",
+   "name": "Clerk Tobiah Venn",
+   "role": "Records clerk of the Nexus",
+   "sprite": "clerk-venn",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flagSet": "sd.practice.outcome"
+     },
+     "node": "venn.after"
+    },
+    {
+     "if": {
+      "flag": "heard.venn",
+      "eq": true
+     },
+     "node": "venn.again"
+    },
+    {
+     "node": "venn.start"
+    }
+   ]
+  },
+  {
+   "id": "kip-arden",
+   "name": "Kip Arden",
+   "role": "New Guardian, the Questioner",
+   "sprite": "kip-arden",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "chapter.done",
+      "eq": true
+     },
+     "node": "kip.end"
+    },
+    {
+     "if": {
+      "flag": "seal.found",
+      "eq": true
+     },
+     "node": "kip.sealafter"
+    },
+    {
+     "if": {
+      "flagSet": "sd.corvan.outcome"
+     },
+     "node": "kip.seal"
+    },
+    {
+     "if": {
+      "flag": "reached.emberford",
+      "eq": true
+     },
+     "node": "kip.field"
+    },
+    {
+     "if": {
+      "flag": "label.pen.everHeld",
+      "eq": true
+     },
+     "node": "kip.afterlabel"
+    },
+    {
+     "if": {
+      "flag": "kip.idea",
+      "eq": true
+     },
+     "node": "kip.again"
+    },
+    {
+     "node": "kip.start"
+    }
+   ]
+  },
+  {
+   "id": "merchant-corvan",
+   "name": "Corvan Hale",
+   "role": "Trader in the Emberford market",
+   "sprite": "merchant-corvan",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "sign.state",
+      "eq": "honest"
+     },
+     "node": "corvan.after.honest"
+    },
+    {
+     "if": {
+      "flag": "sign.state",
+      "eq": "down"
+     },
+     "node": "corvan.after.down"
+    },
+    {
+     "if": {
+      "flag": "sign.state",
+      "eq": "note"
+     },
+     "node": "corvan.after.note"
+    },
+    {
+     "if": {
+      "flag": "sign.state",
+      "eq": "old"
+     },
+     "node": "corvan.after.old"
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "objective": "m02.o3.thread"
+       },
+       {
+        "objective": "m02.o4.forge"
+       }
+      ]
+     },
+     "node": "corvan.ready"
+    },
+    {
+     "if": {
+      "flag": "heard.corvan",
+      "eq": true
+     },
+     "node": "corvan.again"
+    },
+    {
+     "node": "corvan.start"
+    }
+   ]
+  },
+  {
+   "id": "smith-hesper",
+   "name": "Hesper Lyle",
+   "role": "Smith of Emberford, the Maker",
+   "sprite": "smith-hesper",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "hesper.coming",
+      "eq": true
+     },
+     "node": "hesper.after"
+    },
+    {
+     "if": {
+      "flagSet": "sd.corvan.outcome"
+     },
+     "node": "hesper.offer"
+    },
+    {
+     "if": {
+      "flag": "heard.hesper",
+      "eq": true
+     },
+     "node": "hesper.again"
+    },
+    {
+     "node": "hesper.start"
+    }
+   ]
+  },
+  {
+   "id": "guildmaster-orrin",
+   "name": "Guildmaster Orrin Pell",
+   "role": "Head of the Emberford trade guild",
+   "sprite": "guildmaster-orrin",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flagSet": "sd.corvan.outcome"
+     },
+     "node": "orrin.after"
+    },
+    {
+     "if": {
+      "flag": "thread.blade.ledger",
+      "eq": true
+     },
+     "node": "orrin.again"
+    },
+    {
+     "node": "orrin.start"
+    }
+   ]
+  },
+  {
+   "id": "scholar-sefa",
+   "name": "Sefa Okon",
+   "role": "Scholar and song-keeper of Aethelgard, the Storyteller",
+   "sprite": "scholar-sefa",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "heard.sefa",
+      "eq": true
+     },
+     "node": "sefa.again"
+    },
+    {
+     "node": "sefa.start"
+    }
+   ]
+  },
+  {
+   "id": "villager-1",
+   "name": "Tea seller",
+   "role": "Emberford market",
+   "sprite": "villager-1",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "tea.start"
+    }
+   ]
+  },
+  {
+   "id": "villager-2",
+   "name": "Archive visitor",
+   "role": "Visitor to the Nexus",
+   "sprite": "villager-2",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "label.pen.everHeld",
+      "eq": true
+     },
+     "node": "visitor.after"
+    },
+    {
+     "node": "visitor.start"
+    }
+   ]
+  },
+  {
+   "id": "archivist-tull",
+   "name": "Archivist Noor Tull",
+   "role": "Nexus archivist",
+   "sprite": "villager-1",
+   "mode": "fictional",
+   "talk": []
+  },
+  {
+   "id": "translator-ama",
+   "name": "Translator Ama Ofori",
+   "role": "Translates the Nexus labels",
+   "sprite": "villager-2",
+   "mode": "fictional",
+   "talk": []
+  },
+  {
+   "id": "translator-lio",
+   "name": "Translator Lio Ferreira",
+   "role": "Translates the Nexus labels",
+   "sprite": "villager-1",
+   "mode": "fictional",
+   "talk": []
+  },
+  {
+   "id": "fruit-seller",
+   "name": "Fruit seller Mara",
+   "role": "Emberford market",
+   "sprite": "villager-2",
+   "mode": "fictional",
+   "talk": []
+  },
+  {
+   "id": "well-keeper",
+   "name": "Well keeper Odu",
+   "role": "Emberford",
+   "sprite": "villager-1",
+   "mode": "fictional",
+   "talk": []
+  }
+ ],
+ "criteria": [
+  {
+   "id": "crit.evidence.date-kinds",
+   "concept": "evidence",
+   "maximum": 20
+  },
+  {
+   "id": "crit.justification.fair-test",
+   "concept": "justification",
+   "maximum": 10
+  },
+  {
+   "id": "crit.perspective.practice",
+   "concept": "perspective",
+   "maximum": 20
+  },
+  {
+   "id": "crit.justification.label",
+   "concept": "justification",
+   "maximum": 10
+  },
+  {
+   "id": "crit.evidence.thread",
+   "concept": "evidence",
+   "maximum": 10
+  },
+  {
+   "id": "crit.explanation.forge",
+   "concept": "explanation",
+   "maximum": 20
+  },
+  {
+   "id": "crit.responsibility.sign",
+   "concept": "responsibility",
+   "maximum": 15
+  },
+  {
+   "id": "crit.culture.firsts",
+   "concept": "culture",
+   "maximum": 15
+  }
+ ],
+ "awards": [
+  {
+   "id": "award.dates-have-kinds",
+   "kind": "concept-award",
+   "name": "Dates Have Kinds",
+   "earnedBy": "You inspected all three 'first' exhibits and used the Date-Kind Lens to separate a patent date, a build date and an object date.",
+   "criteria": [
+    "crit.evidence.date-kinds"
+   ],
+   "when": {
+    "all": [
+     {
+      "num": "count.inspected",
+      "gte": 3
+     },
+     {
+      "num": "count.lens",
+      "gte": 2
+     }
+    ]
+   }
+  },
+  {
+   "id": "skill.fair-test-1",
+   "kind": "skill-milestone",
+   "name": "Fair Test I",
+   "earnedBy": "In the marking test, you changed one thing at a time so that the results could be compared.",
+   "criteria": [
+    "crit.justification.fair-test"
+   ],
+   "when": {
+    "num": "sim.fair",
+    "gte": 1
+   }
+  },
+  {
+   "id": "award.two-sides",
+   "kind": "concept-award",
+   "name": "Two Reasonable Views",
+   "earnedBy": "You heard the curator and the clerk, then argued in front of a crowd without shouting anyone down.",
+   "criteria": [
+    "crit.perspective.practice"
+   ],
+   "when": {
+    "all": [
+     {
+      "flag": "heard.dace",
+      "eq": true
+     },
+     {
+      "flag": "heard.venn",
+      "eq": true
+     },
+     {
+      "flagSet": "sd.practice.outcome"
+     }
+    ]
+   }
+  },
+  {
+   "id": "skill.force-support-1",
+   "kind": "skill-milestone",
+   "name": "Force Matches Support I",
+   "earnedBy": "You built a label that claims no more than your evidence supports, and the visitors repeated it correctly.",
+   "criteria": [
+    "crit.justification.label"
+   ],
+   "when": {
+    "flag": "label.pen.everHeld",
+    "eq": true
+   }
+  },
+  {
+   "id": "skill.thread-1",
+   "kind": "skill-milestone",
+   "name": "Thread Follower I",
+   "earnedBy": "You followed an object from hand to hand and found where the record stops.",
+   "criteria": [
+    "crit.evidence.thread"
+   ],
+   "when": {
+    "flag": "thread.blade.gap",
+    "eq": true
+   }
+  },
+  {
+   "id": "award.forged-not-sorted",
+   "kind": "concept-award",
+   "name": "Forged, Not Sorted",
+   "earnedBy": "You made a test billet yourself and compared its section with the blade.",
+   "criteria": [
+    "crit.explanation.forge"
+   ],
+   "when": {
+    "flag": "forge.compared",
+    "eq": true
+   }
+  },
+  {
+   "id": "badge.honest-sign",
+   "kind": "badge",
+   "name": "The Sign in the Square",
+   "earnedBy": "You took a seller's sign to a public Showdown and argued from evidence. Every outcome earns this badge.",
+   "criteria": [
+    "crit.responsibility.sign"
+   ],
+   "when": {
+    "flagSet": "sd.corvan.outcome"
+   }
+  },
+  {
+   "id": "badge.hall-of-firsts",
+   "kind": "badge",
+   "name": "Hall of Firsts",
+   "earnedBy": "You repaired three plaques about people from different continents and times.",
+   "criteria": [
+    "crit.culture.firsts"
+   ],
+   "when": {
+    "num": "count.firsts",
+    "gte": 3
+   }
+  }
+ ],
+ "offers": [
+  {
+   "id": "offer.tea",
+   "item": "item.tea",
+   "price": 1
+  }
+ ],
+ "moments": [
+  {
+   "id": "PM-01",
+   "attribute": "inquirer",
+   "when": {
+    "num": "count.lens",
+    "gte": 2
+   },
+   "did": "You checked what each date really describes before you trusted it.",
+   "prompt": "What made you look twice at a date?"
+  },
+  {
+   "id": "PM-02",
+   "attribute": "open-minded",
+   "when": {
+    "all": [
+     {
+      "flag": "heard.dace",
+      "eq": true
+     },
+     {
+      "flag": "heard.venn",
+      "eq": true
+     }
+    ]
+   },
+   "did": "You heard two people who disagree, and asked each for reasons.",
+   "prompt": "Which of their reasons was hardest for you to accept?"
+  },
+  {
+   "id": "PM-03",
+   "attribute": "thinker",
+   "when": {
+    "num": "sim.fair",
+    "gte": 1
+   },
+   "did": "You changed one thing at a time so the test could be fair.",
+   "prompt": "Where else could a fair test help you?"
+  },
+  {
+   "id": "PM-04",
+   "attribute": "principled",
+   "when": {
+    "flag": "sd.practice.conceded",
+    "eq": true
+   },
+   "did": "You accepted a fair point from the other side in public.",
+   "prompt": "How did it feel to give ground?"
+  },
+  {
+   "id": "PM-05",
+   "attribute": "communicator",
+   "when": {
+    "flag": "label.pen.everHeld",
+    "eq": true
+   },
+   "did": "You wrote a label that visitors repeated correctly.",
+   "prompt": "What did you leave out of your label, and why?"
+  },
+  {
+   "id": "PM-06",
+   "attribute": "risk-taker",
+   "when": {
+    "all": [
+     {
+      "flag": "label.pen.failedOnce",
+      "eq": true
+     },
+     {
+      "flag": "label.pen.everHeld",
+      "eq": true
+     }
+    ]
+   },
+   "did": "Your first label did not hold. You tried again.",
+   "prompt": "What did the first try teach you?"
+  },
+  {
+   "id": "PM-07",
+   "attribute": "knowledgeable",
+   "when": {
+    "num": "count.firsts",
+    "gte": 3
+   },
+   "did": "You repaired three plaques about people from different places and times.",
+   "prompt": "Whose story was new to you?"
+  },
+  {
+   "id": "PM-08",
+   "attribute": "reflective",
+   "when": {
+    "num": "count.notes",
+    "gte": 1
+   },
+   "did": "You wrote a note in your own words in your journal.",
+   "prompt": "Is there a note you would change now?"
+  },
+  {
+   "id": "PM-09",
+   "attribute": "balanced",
+   "when": {
+    "num": "count.rests",
+    "gte": 1
+   },
+   "did": "You stopped at a Waystone to rest.",
+   "prompt": ""
+  },
+  {
+   "id": "PM-10",
+   "attribute": "inquirer",
+   "when": {
+    "flag": "thread.blade.gap",
+    "eq": true
+   },
+   "did": "You followed the blade's thread and found where the record stops.",
+   "prompt": "What would you need to fill the gap?"
+  },
+  {
+   "id": "PM-11",
+   "attribute": "thinker",
+   "when": {
+    "flag": "forge.compared",
+    "eq": true
+   },
+   "did": "You made your own test billet and compared it with the blade.",
+   "prompt": "What could your billet NOT tell you?"
+  },
+  {
+   "id": "PM-12",
+   "attribute": "open-minded",
+   "when": {
+    "all": [
+     {
+      "flag": "forge.cut.pattern",
+      "eq": true
+     },
+     {
+      "flag": "forge.cut.crucible",
+      "eq": true
+     }
+    ]
+   },
+   "did": "You tried both forging routes, not only the one you expected.",
+   "prompt": ""
+  },
+  {
+   "id": "PM-13",
+   "attribute": "caring",
+   "when": {
+    "any": [
+     {
+      "flag": "sd.corvan.outcome",
+      "eq": "won-over"
+     },
+     {
+      "flag": "sd.corvan.outcome",
+      "eq": "narrowed"
+     }
+    ]
+   },
+   "did": "You changed the sign and Corvan kept his stall and his dignity.",
+   "prompt": "Who else was affected by the sign?"
+  },
+  {
+   "id": "PM-14",
+   "attribute": "principled",
+   "when": {
+    "flag": "sd.corvan.conceded",
+    "eq": true
+   },
+   "did": "You admitted that Corvan paid fairly, even while you argued against his sign.",
+   "prompt": ""
+  }
+ ],
+ "misconceptions": [
+  {
+   "id": "MIS-01",
+   "title": "Science gives final certainty",
+   "signal": "Labels a measured claim as exact or proven, with no range.",
+   "worldResponse": "Visitors ask: 'Exact for how long?' A later record gives a different number.",
+   "reflection": "Which part of the claim is measured, and how big could the error be? What would make you change the number?",
+   "teacherMove": "Ask for a range with every measured claim. Compare an early estimate with a later one.",
+   "concepts": [
+    "certainty",
+    "evidence"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-02",
+   "title": "All views have equal support",
+   "signal": "Treats a claim with evidence and a claim without evidence as equally strong.",
+   "worldResponse": "The crowd follows the weaker claim, and it gives way.",
+   "reflection": "Two people can both have a view. Do both views have the same support? What would you check?",
+   "teacherMove": "Separate 'everyone has a perspective' from 'every claim has the same evidence'.",
+   "concepts": [
+    "justification",
+    "evidence"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-03",
+   "title": "Having a position means being biased",
+   "signal": "Throws out a source only because the person has a position.",
+   "worldResponse": "With every 'biased' source gone, nobody is left who knows how the thing was made.",
+   "reflection": "Everyone who knows something knows it from somewhere. What does this person's position let them see?",
+   "teacherMove": "Separate 'this person has a position' from 'this claim is badly supported'. Ask what the position adds.",
+   "concepts": [
+    "perspective",
+    "objectivity"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-04",
+   "title": "Objective means having no point of view",
+   "signal": "Asks for a source with no point of view at all.",
+   "worldResponse": "The archive has no such source. Every record was made by someone, for some reason.",
+   "reflection": "If no source is from nowhere, what makes a source more or less trustworthy?",
+   "teacherMove": "Present objectivity as a method: checking, comparing and being open to correction.",
+   "concepts": [
+    "objectivity",
+    "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-05",
+   "title": "More sources always mean a stronger claim",
+   "signal": "Counts how many people repeat a claim, without asking if they share one origin.",
+   "worldResponse": "The Provenance Thread shows that several reports go back to one origin.",
+   "reflection": "Three people told you. How many of them saw it themselves?",
+   "teacherMove": "Independence of sources: count origins, not copies.",
+   "concepts": [
+    "evidence",
+    "justification"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-06",
+   "title": "If it is displayed, it is true",
+   "signal": "Accepts a printed or displayed label without checking it.",
+   "worldResponse": "A museum label or crate label turns out to be a copying mistake.",
+   "reflection": "Who wrote this label, and what did they check?",
+   "teacherMove": "Provenance and authority of displays.",
+   "concepts": [
+    "truth",
+    "power"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-07",
+   "title": "Things that happen together must be cause and effect",
+   "signal": "Names a cause because two things happen together.",
+   "worldResponse": "A third thing turns up that explains both.",
+   "reflection": "What else changed at the same time? How could you test one cause on its own?",
+   "teacherMove": "Use a simple example with a hidden third factor. Ask the class how to control for it.",
+   "concepts": [
+    "explanation",
+    "evidence"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-08",
+   "title": "One case proves a rule",
+   "signal": "Makes a general claim from one vivid case.",
+   "worldResponse": "The next case is different.",
+   "reflection": "How many cases have you seen? What would a different case look like?",
+   "teacherMove": "Sampling and how far one case can reach.",
+   "concepts": [
+    "evidence",
+    "certainty"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-09",
+   "title": "Old knowledge is wrong knowledge",
+   "signal": "Dismisses a record because it is old.",
+   "worldResponse": "An old record turns out to be accurate for what it records.",
+   "reflection": "Is the record wrong, or is it about a different question?",
+   "teacherMove": "Date a claim; ask what was known and recorded at the time.",
+   "concepts": [
+    "evidence",
+    "interpretation"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-12",
+   "title": "Art cannot tell us anything",
+   "signal": "Dismisses a song or artwork as 'just art' when it carries information.",
+   "worldResponse": "The song holds a detail that the written records missed.",
+   "reflection": "What can a song, picture or pattern hold that a list of facts cannot?",
+   "teacherMove": "Pair an artwork with a document about the same thing. Ask what each one shows.",
+   "concepts": [
+    "interpretation",
+    "values"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-15",
+   "title": "A record shows exactly what happened",
+   "signal": "Treats a ledger or chronicle as a direct copy of the past.",
+   "worldResponse": "A second record of the same event says something different.",
+   "reflection": "Who wrote this record, for what purpose, and what did they leave out?",
+   "teacherMove": "Compare two records of one event. Ask why they differ.",
+   "concepts": [
+    "interpretation",
+    "power"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-16",
+   "title": "The official account is the only account",
+   "signal": "Uses only the official or ruling source and ignores others.",
+   "worldResponse": "An older or quieter voice adds a part of the story that the official record leaves out.",
+   "reflection": "Whose account is this? Whose account is missing, and where could you find it?",
+   "teacherMove": "Look for the voices that official records leave out. Ask how we can recover them.",
+   "concepts": [
+    "power",
+    "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-18",
+   "title": "Experts are right about everything",
+   "signal": "Accepts an expert's view on a question outside their field.",
+   "worldResponse": "The expert points out the limit of their own field.",
+   "reflection": "What is this person expert in? Is this question inside it?",
+   "teacherMove": "Scope of expertise.",
+   "concepts": [
+    "power",
+    "justification"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-19",
+   "title": "Experts cannot be trusted at all",
+   "signal": "Rejects all experts because one expert made a mistake.",
+   "worldResponse": "Without any expert advice, a simple problem becomes hard to solve.",
+   "reflection": "When is it sensible to trust an expert? What would make you trust one more, or less?",
+   "teacherMove": "Discuss calibrated trust: trust in a field, for what can be checked, and how errors are corrected.",
+   "concepts": [
+    "certainty",
+    "responsibility"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-20",
+   "title": "My own experience is the best evidence",
+   "signal": "Accepts only what they saw for themselves.",
+   "worldResponse": "A second observer noticed something the player could not see.",
+   "reflection": "What could another observer notice that you missed? How can you check your own seeing?",
+   "teacherMove": "Compare two eye-witness accounts. Discuss the limits of perception and memory.",
+   "concepts": [
+    "evidence",
+    "objectivity"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-21",
+   "title": "A translation says exactly what the original says",
+   "signal": "Treats a translated word as the same as the original.",
+   "worldResponse": "Two translations of the same word make two different claims.",
+   "reflection": "What does the word claim in each language? What could be lost or added?",
+   "teacherMove": "Take one key word in two translations. Ask what each choice claims.",
+   "concepts": [
+    "interpretation",
+    "culture"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-22",
+   "title": "Names are only labels and change nothing",
+   "signal": "Says a name does not matter when it carries a claim or a history.",
+   "worldResponse": "A name turns out to hold a story about who had the right to name the place.",
+   "reflection": "What does this name claim? Who gave it, and what other names are there?",
+   "teacherMove": "Compare a local name with an official name for the same place. Ask what each one tells.",
+   "concepts": [
+    "interpretation",
+    "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-27",
+   "title": "Only writing counts as knowledge",
+   "signal": "Ignores an oral source because it is not written.",
+   "worldResponse": "The spoken tradition agrees with the physical evidence where the written record is silent.",
+   "reflection": "How is a spoken tradition kept accurate? How could you check it against other evidence?",
+   "teacherMove": "Show a case where an oral tradition and other evidence agree. Discuss how oral knowledge is kept.",
+   "concepts": [
+    "evidence",
+    "culture"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-28",
+   "title": "A famous person did it alone",
+   "signal": "Credits one person for work that a team did.",
+   "worldResponse": "Visitors retell the story and the other people drop out of it.",
+   "reflection": "Who else is named in your cards? Why might they be forgotten?",
+   "teacherMove": "Collective knowledge and hidden hands.",
+   "concepts": [
+    "responsibility",
+    "power"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-29",
+   "title": "'First' means the first person with the idea",
+   "signal": "Uses 'first' with no criterion: first at what?",
+   "worldResponse": "Patent, practical pen and object dates disagree, and the label glows.",
+   "reflection": "First at what? A patent, a working thing, a sale, a record?",
+   "teacherMove": "Defining 'first' with a criterion and a limit.",
+   "concepts": [
+    "evidence",
+    "justification"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-31",
+   "title": "A model is a copy of reality",
+   "signal": "Treats a model or reconstruction as the real thing.",
+   "worldResponse": "Visitors take a modern model for a historical object.",
+   "reflection": "What does the model show, and what was added when it was made?",
+   "teacherMove": "Purpose and limits of models.",
+   "concepts": [
+    "explanation",
+    "interpretation"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-33",
+   "title": "Numbers speak for themselves",
+   "signal": "Presents a number with no choice about what it measures or shows.",
+   "worldResponse": "The same number, framed two ways, makes visitors believe two different things.",
+   "reflection": "Which question does this number answer? What did someone choose when they showed it?",
+   "teacherMove": "Show one data set in two framings. Ask the class which choices changed the message.",
+   "concepts": [
+    "interpretation",
+    "objectivity"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-34",
+   "title": "Being sure means being right",
+   "signal": "Makes a very strong claim on weak support.",
+   "worldResponse": "The over-confident claim cracks in the Showdown, and the Fray grows on it.",
+   "reflection": "How strong is your support? Would a smaller claim hold better?",
+   "teacherMove": "Confidence calibration: match force to support.",
+   "concepts": [
+    "certainty",
+    "evidence"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-36",
+   "title": "Admitting a fair point makes you weaker",
+   "signal": "Answers a fair point with a shout or a cheap shot instead of dealing with it.",
+   "worldResponse": "The crowd notices the dodge and trusts the player less.",
+   "reflection": "What would happen to your argument if you accepted the fair point and then answered it?",
+   "teacherMove": "Show how a counterclaim, answered well, makes an argument stronger.",
+   "concepts": [
+    "justification",
+    "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-40",
+   "title": "If we are not sure, we know nothing",
+   "signal": "Gives up when the evidence is partial.",
+   "worldResponse": "A partial clue is still enough to act on, with care.",
+   "reflection": "What do you know, even if you are not sure of everything? What could you do with that?",
+   "teacherMove": "Use a range or a 'probably' to show how partial knowledge still guides action.",
+   "concepts": [
+    "certainty",
+    "responsibility"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  }
+ ],
+ "portfolio": [
+  {
+   "id": "pf.hall-of-firsts",
+   "kind": "exhibition",
+   "title": "Hall of Firsts: three repaired plaques",
+   "text": "I repaired plaques in the Hall of Firsts. Each 'first' needed a criterion (first at what?) and sometimes a limit (what we do not know).",
+   "weave": {
+    "concepts": [
+     "evidence",
+     "culture",
+     "perspective"
+    ],
+    "atl": [
+     "research"
+    ],
+    "subjects": [
+     "history",
+     "geography"
+    ],
+    "aoks": [
+     "HIS"
+    ]
+   }
+  },
+  {
+   "id": "pf.seal",
+   "kind": "reflection",
+   "title": "The gold seal: what I know and what I do not know",
+   "text": "Known: a small gold seal was pressed into the back of Corvan's old sign. Not known: who made it, who put it there, or why. My next question:",
+   "weave": {
+    "concepts": [
+     "evidence",
+     "power",
+     "certainty"
+    ],
+    "atl": [
+     "thinking"
+    ]
+   }
+  }
+ ]
+}

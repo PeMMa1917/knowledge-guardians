@@ -1,0 +1,40 @@
+/* Teacher view. Light, printable. Font: Lexend (SIL OFL). */
+:root { --ink: #1f1a33; --dim: #5b5470; --line: #d9d3e6; --gold: #9c7b36; --accent: #3b5bb5; --warn: #a15c00; font-size: 16px; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Lexend', system-ui, sans-serif; font-weight: 300; color: var(--ink); background: #faf8f3; line-height: 1.5; }
+#teacher { max-width: 72rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+h1 { font-weight: 600; font-size: 1.6rem; margin: 0.2em 0; }
+h2 { font-weight: 600; font-size: 1.1rem; margin: 0 0 0.4em; color: var(--accent); }
+h3 { font-weight: 600; font-size: 1rem; margin: 0.4em 0; }
+strong, th { font-weight: 600; }
+.note { color: var(--dim); font-size: 0.88rem; }
+.row { display: flex; gap: 0.6em; flex-wrap: wrap; align-items: center; margin: 0.6em 0; }
+button, .button { font: inherit; font-weight: 400; border: 1px solid var(--accent); background: #fff; color: var(--accent); padding: 0.4em 0.9em; border-radius: 8px; cursor: pointer; }
+button:focus-visible, .button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.mini { padding: 0.15em 0.6em; font-size: 0.85rem; }
+input[type=file] { position: absolute; width: 1px; height: 1px; opacity: 0; }
+input[type=file]:focus-visible + * , input[type=file]:focus-visible { outline: 3px solid var(--gold); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1rem; margin-top: 1rem; }
+.panel { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 1rem; break-inside: avoid; }
+.summary { margin-top: 1rem; border-color: var(--gold); }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { text-align: left; padding: 0.25em 0.4em; border-bottom: 1px solid var(--line); vertical-align: middle; }
+tr.gap th, tr.gap td { color: #9a93ab; }
+td { white-space: nowrap; }
+.bar { display: inline-block; width: 4.5rem; height: 0.6rem; background: #eee9f5; border-radius: 4px; overflow: hidden; vertical-align: middle; }
+.bar i { display: block; height: 100%; background: var(--accent); }
+.chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4em; }
+.chips li { border: 1px solid var(--line); border-radius: 999px; padding: 0.1em 0.7em; font-size: 0.88rem; color: #9a93ab; }
+.chips li.met, .panel > .chips li { color: var(--ink); }
+.chips li.met { border-color: var(--accent); }
+.alerts li { margin: 0.5em 0; }
+.alerts li.alert strong { color: var(--warn); }
+.problems { color: var(--warn); }
+.entry { border-top: 1px solid var(--line); padding-top: 0.5em; }
+footer { margin-top: 2rem; font-size: 0.8rem; color: var(--dim); border-top: 1px solid var(--line); padding-top: 0.6em; }
+@media print {
+  @page { size: A4; margin: 1.5cm; }
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .panel { border-color: #bbb; }
+}

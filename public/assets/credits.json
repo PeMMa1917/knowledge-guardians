@@ -1,0 +1,107 @@
+{
+  "_readme": "Every file under public/assets/ MUST have one entry here. Run `npm run assets:check` to verify. Human-readable version: CREDITS.md. Allowed licences: CC0, CC-BY, OGA-BY, OFL, MIT (record attribution if the licence needs it). Do not add assets with NC (non-commercial) or ND (no-derivatives) terms.",
+  "packs": {
+    "armm1998-zelda-like": {
+      "title": "Zelda-like tilesets and sprites",
+      "author": "ArMM1998",
+      "licence": "CC0 1.0",
+      "page": "https://opengameart.org/content/zelda-like-tilesets-and-sprites",
+      "download": "https://opengameart.org/sites/default/files/gfx_3.zip",
+      "original_copy": "assets-src/armm1998/gfx_3.zip"
+    },
+    "generated-characters": {
+      "title": "Character colour variants (made for this project)",
+      "author": "Knowledge Guardians project, derived from ArMM1998 character.png",
+      "licence": "CC0 1.0 (derived from CC0 source)",
+      "page": "https://opengameart.org/content/zelda-like-tilesets-and-sprites",
+      "made_by": "tools/make_character_variants.py (run: npm run assets:variants)"
+    },
+    "cynicmusic-town": {
+      "title": "Town Theme RPG",
+      "author": "cynicmusic",
+      "licence": "CC0 1.0",
+      "page": "https://opengameart.org/content/town-theme-rpg",
+      "download": "https://opengameart.org/sites/default/files/TownTheme.mp3"
+    },
+    "cynicmusic-song21": {
+      "title": "Mysterious Ambience (song21)",
+      "author": "cynicmusic",
+      "licence": "CC0 1.0 (page also offers CC-BY 3.0, CC-BY-SA 3.0, GPL 3.0; we use CC0)",
+      "page": "https://opengameart.org/content/mysterious-ambience-song21",
+      "download": "https://opengameart.org/sites/default/files/song21_0.mp3"
+    },
+    "cynicmusic-song17": {
+      "title": "Happy Lullaby (song17)",
+      "author": "cynicmusic",
+      "licence": "CC0 1.0",
+      "page": "https://opengameart.org/content/happy-lullaby-song17",
+      "download": "https://opengameart.org/sites/default/files/song17.mp3"
+    },
+    "kenney-ui-sfx": {
+      "title": "51 UI sound effects (buttons, switches and clicks)",
+      "author": "Kenney (kenney.nl)",
+      "licence": "CC0 1.0",
+      "page": "https://opengameart.org/content/51-ui-sound-effects-buttons-switches-and-clicks",
+      "download": "https://opengameart.org/sites/default/files/UI_SFX_Set.zip"
+    },
+    "rubberduck-rpg-sfx": {
+      "title": "80 CC0 RPG SFX",
+      "author": "rubberduck",
+      "licence": "CC0 1.0",
+      "page": "https://opengameart.org/content/80-cc0-rpg-sfx",
+      "download": "https://opengameart.org/sites/default/files/80-CC0-RPG-SFX_0.zip"
+    },
+    "wobbleboxx-levelup": {
+      "title": "Level up, power up, Coin get (13 Sounds)",
+      "author": "wobbleboxx",
+      "licence": "CC0 1.0",
+      "page": "https://opengameart.org/content/level-up-power-up-coin-get-13-sounds",
+      "download": "https://opengameart.org/sites/default/files/SoundPack01.zip"
+    },
+    "haeldb-completion": {
+      "title": "Completion sound.",
+      "author": "HaelDB",
+      "licence": "CC0 1.0 (page also offers OGA-BY 3.0; we use CC0)",
+      "page": "https://opengameart.org/content/completion-sound",
+      "download": "https://opengameart.org/sites/default/files/completetask_0.mp3"
+    }
+  },
+  "files": {
+    "art/armm1998/Overworld.png": { "pack": "armm1998-zelda-like", "original": "Overworld.png", "changes": "none" },
+    "art/armm1998/Inner.png": { "pack": "armm1998-zelda-like", "original": "Inner.png", "changes": "none" },
+    "art/armm1998/cave.png": { "pack": "armm1998-zelda-like", "original": "cave.png", "changes": "none (not used yet)" },
+    "art/armm1998/character.png": { "pack": "armm1998-zelda-like", "original": "character.png", "changes": "none; source for the generated character sheets" },
+    "art/armm1998/objects.png": { "pack": "armm1998-zelda-like", "original": "objects.png", "changes": "none (not used yet)" },
+    "art/generated/characters/player-a.png": { "pack": "generated-characters", "changes": "palette swap of character.png walk rows" },
+    "art/generated/characters/player-b.png": { "pack": "generated-characters", "changes": "palette swap" },
+    "art/generated/characters/player-c.png": { "pack": "generated-characters", "changes": "palette swap" },
+    "art/generated/characters/player-d.png": { "pack": "generated-characters", "changes": "palette swap" },
+    "art/generated/characters/warden-ise.png": { "pack": "generated-characters", "changes": "palette swap" },
+    "art/generated/characters/curator-dace.png": { "pack": "generated-characters", "changes": "palette swap" },
+    "art/generated/characters/clerk-venn.png": { "pack": "generated-characters", "changes": "palette swap" },
+    "art/generated/characters/kip-arden.png": { "pack": "generated-characters", "changes": "palette swap" },
+    "art/generated/characters/merchant-corvan.png": { "pack": "generated-characters", "changes": "palette swap" },
+    "art/generated/characters/smith-hesper.png": { "pack": "generated-characters", "changes": "palette swap" },
+    "art/generated/characters/guildmaster-orrin.png": { "pack": "generated-characters", "changes": "palette swap" },
+    "art/generated/characters/scholar-sefa.png": { "pack": "generated-characters", "changes": "palette swap" },
+    "art/generated/characters/villager-1.png": { "pack": "generated-characters", "changes": "palette swap" },
+    "art/generated/characters/villager-2.png": { "pack": "generated-characters", "changes": "palette swap" },
+    "audio/music/town-theme-cynicmusic.mp3": { "pack": "cynicmusic-town", "original": "TownTheme.mp3", "changes": "renamed" },
+    "audio/music/mysterious-ambience-cynicmusic.mp3": { "pack": "cynicmusic-song21", "original": "song21_0.mp3", "changes": "renamed" },
+    "audio/music/happy-lullaby-cynicmusic.mp3": { "pack": "cynicmusic-song17", "original": "song17.mp3", "changes": "renamed" },
+    "audio/sfx/ui-click-kenney.mp3": { "pack": "kenney-ui-sfx", "original": "click1", "changes": "converted to mono 96 kbit/s MP3" },
+    "audio/sfx/ui-hover-kenney.mp3": { "pack": "kenney-ui-sfx", "original": "rollover2", "changes": "converted to mono 96 kbit/s MP3" },
+    "audio/sfx/ui-open-kenney.mp3": { "pack": "kenney-ui-sfx", "original": "switch2", "changes": "converted to mono 96 kbit/s MP3" },
+    "audio/sfx/book-open-rubberduck.mp3": { "pack": "rubberduck-rpg-sfx", "original": "book_01", "changes": "converted to mono 96 kbit/s MP3" },
+    "audio/sfx/page-turn-rubberduck.mp3": { "pack": "rubberduck-rpg-sfx", "original": "book_03", "changes": "converted to mono 96 kbit/s MP3" },
+    "audio/sfx/coins-rubberduck.mp3": { "pack": "rubberduck-rpg-sfx", "original": "item_coins_02", "changes": "converted to mono 96 kbit/s MP3" },
+    "audio/sfx/pickup-rubberduck.mp3": { "pack": "rubberduck-rpg-sfx", "original": "item_misc_02", "changes": "converted to mono 96 kbit/s MP3" },
+    "audio/sfx/metal-rubberduck.mp3": { "pack": "rubberduck-rpg-sfx", "original": "metal_02", "changes": "converted to mono 96 kbit/s MP3" },
+    "audio/sfx/sparkle-rubberduck.mp3": { "pack": "rubberduck-rpg-sfx", "original": "spell_01", "changes": "converted to mono 96 kbit/s MP3" },
+    "audio/sfx/lock-rubberduck.mp3": { "pack": "rubberduck-rpg-sfx", "original": "lock_01", "changes": "converted to mono 96 kbit/s MP3" },
+    "audio/sfx/step-rubberduck.mp3": { "pack": "rubberduck-rpg-sfx", "original": "stones_01", "changes": "converted to mono 96 kbit/s MP3" },
+    "audio/sfx/award-wobbleboxx.mp3": { "pack": "wobbleboxx-levelup", "original": "Rise03.aif", "changes": "converted to mono 96 kbit/s MP3" },
+    "audio/sfx/coin-wobbleboxx.mp3": { "pack": "wobbleboxx-levelup", "original": "Coin01.aif", "changes": "converted to mono 96 kbit/s MP3" },
+    "audio/sfx/complete-haeldb.mp3": { "pack": "haeldb-completion", "original": "completetask_0.mp3", "changes": "converted to mono 96 kbit/s MP3" }
+  }
+}
