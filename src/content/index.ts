@@ -20,12 +20,13 @@ import lorelings from './lorelings.json';
 import fray from './fray.json';
 import rumour from './rumour.json';
 import skills from './skills.json';
+import clueboard from './clueboard.json';
 
 export const CONTENT_VERSION = 4;
 
-const parts: any[] = [sources, common, m01, m02, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, fray, rumour];
+const parts: any[] = [sources, common, m01, m02, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, fray, rumour, clueboard];
 const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'missions', 'hints', 'criteria', 'awards', 'items', 'offers', 'journal',
-  'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks', 'glossary', 'questions', 'origins', 'alcoves', 'puzzles', 'skillDomains', 'skills', 'lorelings', 'lorelingAtlas', 'fray'] as const;
+  'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks', 'glossary', 'questions', 'origins', 'alcoves', 'puzzles', 'skillDomains', 'skills', 'lorelings', 'lorelingAtlas', 'fray', 'clueBoards'] as const;
 
 export function buildPack(): ContentPack {
   const pack: any = { id: 'chapter-1', contentVersion: CONTENT_VERSION };

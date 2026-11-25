@@ -3,7 +3,7 @@
  * characters, interactable objects, zones and lights. Units are tiles.
  * The WorldScene turns this data into a playable place.
  */
-export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling';
+export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board';
 
 export interface Interactable {
   id: string;
@@ -14,6 +14,7 @@ export interface Interactable {
   kit?: string;               // for kind 'label': the label kit it repairs
   lock?: string;              // for kind 'lock': the Title Lock (EE practice)
   puzzle?: string;            // for kind 'puzzle': a word puzzle (Sign-Smith lock, Citation Thread)
+  board?: string;             // for kind 'board': a practice clue board (spec 47)
   loreling?: string;          // for kind 'loreling': a Loreling sighting (spec 36.1)
   sighting?: string;
   alcove?: string;            // for kind 'alcove': an Exhibition Hall alcove (SYM-001)

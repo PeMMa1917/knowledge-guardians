@@ -651,7 +651,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       const px = this.player.sprite.x, py = this.player.sprite.y, range = (form >= 2 ? 11 : 7) * TILE;
       let best: Interactable | null = null, bd = range;
       for (const it of this.map.interactables) {
-        if (!['exhibit', 'sign', 'puzzle', 'alcove', 'lock', 'label', 'assay', 'bench'].includes(it.kind)) continue;
+        if (!['exhibit', 'sign', 'puzzle', 'board', 'alcove', 'lock', 'label', 'assay', 'bench'].includes(it.kind)) continue;
         if (it.visibleIf && !ctx.controller.check(it.visibleIf)) continue;
         if (ctx.controller.state.flags[`used.${this.map.id}.${it.id}`] === true) continue;
         const d = Phaser.Math.Distance.Between(px, py, (it.x + it.w / 2) * TILE, it.y * TILE);
@@ -739,6 +739,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'lock': ctx.ui.openLock(it.lock!); break;
       case 'alcove': ctx.ui.openAlcove(it.alcove!); break;
       case 'puzzle': ctx.ui.openPuzzle(it.puzzle!); break;
+      case 'board': ctx.ui.openClueBoard(it.board!); break;
       case 'forge': ctx.ui.openForge(); break;
       case 'assay': ctx.ui.openAssay(it.exhibit!); break;
       case 'thread': ctx.ui.followThread(it.thread!, it.node!); break;

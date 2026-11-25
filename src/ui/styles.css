@@ -407,3 +407,31 @@ body.photo-mode #captions { display: none !important; }
 button.weight { border-color: #c9a24a; }
 button.weight.untrusted { border-style: dashed; border-color: #8b8f99; }
 @media (prefers-reduced-motion: reduce) { .balance-wrap .beam, .balance-wrap .pan { transition: none; } }
+
+/* Practice clue board (spec 47): cork, pinned notes, yarn */
+.cork { position: relative; background: #a8703d; background-image: radial-gradient(#8f5d31 1px, transparent 1.5px), radial-gradient(#c08850 1px, transparent 1.5px);
+  background-size: 9px 9px, 13px 13px; border: 8px solid #5b3b22; border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 72px; }
+.cork-claims, .cork-cards { display: flex; flex-wrap: wrap; gap: 10px; position: relative; z-index: 2; }
+.cork-note, .cork-card { position: relative; text-align: left; color: #2a2238; border-radius: 2px; box-shadow: 2px 3px 0 rgba(0,0,0,.35); font: inherit; cursor: pointer; }
+.cork-note { flex: 1 1 200px; background: #f6efd9; border: 1px solid #d8c9a0; padding: 14px 10px 8px; display: flex; flex-direction: column; gap: 4px; transform: rotate(-0.6deg); }
+.cork-note:nth-child(even) { transform: rotate(0.7deg); }
+.cork-note.theirs { background: #f8e1dc; }
+.cork-note .fine { color: #5a4a6a; }
+.cork-note.glow { box-shadow: 0 0 0 2px #f2d27a, 0 0 18px 4px rgba(242,210,122,.75); animation: fray-glow 2.4s ease-in-out infinite; }
+@keyframes fray-glow { 50% { box-shadow: 0 0 0 2px #f2d27a, 0 0 6px 1px rgba(242,210,122,.4); } }
+.cork-links { margin: 4px 0 0 16px; padding: 0; font-size: .9em; }
+.cork-links li.cracked { text-decoration: line-through; color: #8a3a32; }
+.cork-card { background: #fffbe6; border: 1px solid #c9b98a; padding: 12px 10px 6px; max-width: 210px; transform: rotate(0.5deg); }
+.cork-card:nth-child(3n) { transform: rotate(-0.8deg); }
+.cork-card.picked { outline: 3px solid #7d5bc4; transform: translateY(-3px); }
+.cork .pin { position: absolute; top: 3px; left: 50%; width: 9px; height: 9px; margin-left: -4px; border-radius: 50%; background: #b8483e; box-shadow: 1px 1px 0 rgba(0,0,0,.4); }
+.yarn-layer { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.yarn { fill: none; stroke-width: 3; stroke-linecap: round; }
+.yarn.red { stroke: #c0392b; } .yarn.gold { stroke: #e0b84a; } .yarn.sag { stroke-dasharray: 7 4; }
+.yarn-list { padding-left: 18px; } .yarn-list li { margin: 2px 0; }
+button.link { background: none; border: none; color: var(--accent, #9fe8ff); text-decoration: underline; padding: 0 4px; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { .cork-note.glow { animation: none; } }
+.cork button.cork-note:hover, .cork button.cork-note:focus-visible { background: #fffaf0; color: #2a2238; outline: 3px solid #7d5bc4; }
+.cork button.cork-note.theirs:hover, .cork button.cork-note.theirs:focus-visible { background: #fcebe6; }
+.cork button.cork-card:hover, .cork button.cork-card:focus-visible { background: #fffdf3; color: #2a2238; outline: 2px solid #7d5bc4; }
+.cork button.cork-note:focus:not(:focus-visible) { outline: none; }

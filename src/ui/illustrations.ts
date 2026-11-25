@@ -276,6 +276,15 @@ DRAW['timeline-door.open'] = [16, 24, (g) => {
   R(g, '#f2d27a', 4, 23, 8, 1);                                         // light on the floor
 }];
 
+// The practice clue board (original art): cork on two legs, pinned notes and yarn.
+DRAW['cork-board'] = [16, 24, (g) => {
+  R(g, '#5b3b22', 2, 14, 1, 10); R(g, '#5b3b22', 13, 14, 1, 10);
+  R(g, '#5b3b22', 0, 3, 16, 13); R(g, '#b07a44', 1, 4, 14, 11); R(g, '#c58c52', 2, 5, 3, 1); R(g, '#9c6a3a', 9, 12, 4, 1);
+  R(g, '#f3eee0', 2, 5, 4, 3); R(g, '#f3eee0', 10, 5, 4, 3); R(g, '#f2d27a', 6, 10, 4, 3);
+  R(g, '#b8483e', 4, 5, 1, 1); R(g, '#b8483e', 12, 5, 1, 1); R(g, '#b8483e', 8, 10, 1, 1);
+  R(g, '#d9534a', 5, 8, 1, 1); R(g, '#d9534a', 6, 9, 1, 1); R(g, '#e9cf7a', 11, 8, 1, 1); R(g, '#e9cf7a', 10, 9, 1, 1);
+}];
+
 // The Weigh-House balance (original art): a brass beam on a post, two pans.
 DRAW['balance-scale'] = [16, 24, (g) => {
   R(g, '#5b3b22', 4, 21, 8, 3); R(g, '#8a6a2a', 7, 6, 2, 15); R(g, '#e9cf7a', 7, 4, 2, 2);

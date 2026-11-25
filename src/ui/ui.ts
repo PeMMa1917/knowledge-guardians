@@ -14,6 +14,7 @@ import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
 import { tiltOf } from '../domain/puzzles';
+import { OPPONENT, judgeYarn, viewBoard } from '../domain/clueboard';
 import { EMOTES } from '../domain/emotes';
 import { STAGE_LABEL, nextStep, skillStage, type SkillStage } from '../domain/skills';
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
@@ -880,6 +881,79 @@ export class UI implements UIApi {
             h('button', { onclick: () => { placed = []; gapAt = null; feedback = null; render(); } }, 'Start again')));
         if (done && feedback?.ok) box.append(h('p', { class: 'fair' }, rec.words ? 'The door is open.' : 'The bridge holds.'));
       }
+    };
+    render();
+  }
+
+
+  /**
+   * The practice clue board (spec 47): tie evidence cards to claims with yarn.
+   * Red yarn challenges Corvan's claim; gold yarn supports one of yours.
+   */
+  openClueBoard(boardId: string): void {
+    const c = ctx.controller;
+    const rec = (c.pack.clueBoards ?? []).find((x) => x.id === boardId);
+    const sd = rec && c.pack.showdowns.find((x) => x.id === rec.showdown);
+    if (!rec || !sd) return;
+    const box = this.openModal('clue-panel wide', rec.title);
+    let picked: string | null = null;
+    let feedback: { tone: string; text: string } | null = null;
+    const cardTitle = (id: string) => c.pack.cards.find((x) => x.id === id)?.title ?? id;
+    const pinsNow = () => Object.keys(c.state.flags).filter((k) => k.startsWith(`yarn.${rec.id}.`) && c.state.flags[k] === true)
+      .map((k) => { const [claim, ...card] = k.slice(`yarn.${rec.id}.`.length).split('.'); return { claim, card: card.join('.') }; });
+    const render = () => {
+      clear(box);
+      const pins = pinsNow();
+      const view = viewBoard(sd, pins);
+      const claims = [{ id: OPPONENT, text: sd.opponentClaim.text, who: 'Corvan claims' }, ...sd.playerClaims.map((x) => ({ id: x.id, text: x.text, who: 'You could claim' }))];
+      const cork = h('div', { class: 'cork' });
+      const notes = h('div', { class: 'cork-claims' }, ...claims.map((cl) => {
+        const v = view.claims[cl.id];
+        const mine = pins.filter((p) => p.claim === cl.id);
+        const extra = cl.id === OPPONENT ? h('ul', { class: 'cork-links' }, ...sd.opponentClaim.links.map((l) => h('li', { class: view.cracked.includes(l.id) ? 'cracked' : '' }, view.cracked.includes(l.id) ? `Cracked: ${l.text}` : l.text))) : null;
+        return h('button', { type: 'button', class: `cork-note ${cl.id === OPPONENT ? 'theirs' : 'yours'} ${v.glow ? 'glow' : ''}`, 'data-claim': cl.id,
+          'aria-label': `${cl.who}: ${cl.text}. ${v.taut} taut, ${v.sag} sagging.${v.glow ? ' Unsupported.' : ''}${picked ? ' Tie the picked card here.' : ''}`,
+          onclick: () => {
+            if (!picked) { feedback = { tone: 'sag', text: 'Pick a card first, then the claim to tie it to.' }; render(); return; }
+            const ev = c.dispatch({ type: 'PinYarn', board: rec.id, claim: cl.id, card: picked });
+            const y = ev.find((e) => e.kind === 'yarn') as Extract<GameEvent, { kind: 'yarn' }> | undefined;
+            if (y) { feedback = { tone: y.tone, text: `${cardTitle(picked)}: ${y.text}` }; this.sfx(y.tone === 'taut' ? 'sfx.sparkle' : y.tone === 'sag' ? 'sfx.page' : 'sfx.click'); if (y.done) this.sfx('sfx.complete'); }
+            picked = null; render();
+          } },
+          h('span', { class: 'pin' }), h('span', { class: 'fine' }, cl.who), h('strong', {}, cl.text), extra,
+          mine.length ? h('span', { class: 'fine' }, `${v.taut} taut${v.sag ? `, ${v.sag} sagging` : ''}`) : h('span', { class: 'fine' }, v.glow ? 'Nothing holds it up yet.' : ''));
+      }));
+      const held = c.state.cards.filter((id) => c.pack.cards.some((x) => x.id === id));
+      const cards = h('div', { class: 'cork-cards' }, ...held.map((id) => h('button', { type: 'button', class: `cork-card ${picked === id ? 'picked' : ''}`, 'data-card': id, 'aria-pressed': picked === id ? 'true' : 'false',
+        onclick: () => { picked = picked === id ? null : id; this.sfx('sfx.pickup'); render(); } }, h('span', { class: 'pin' }), cardTitle(id))));
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class', 'yarn-layer'); svg.setAttribute('aria-hidden', 'true');
+      cork.append(notes, svg, cards);
+      box.append(this.closeBtn(), h('h2', {}, rec.title), h('p', {}, rec.intro));
+      if (feedback) box.append(h('div', { class: `alcove-feedback ${feedback.tone === 'taut' ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text));
+      box.append(h('p', { class: 'fine' }, picked ? `Picked: ${cardTitle(picked)}. Now click a claim.` : 'Click a card, then click a claim to tie yarn.'), cork);
+      if (pins.length) box.append(h('h3', {}, 'Yarn on the board'), h('ul', { class: 'yarn-list' }, ...pins.map((p) => {
+        const v = judgeYarn(sd, p.claim, p.card);
+        return h('li', {}, `${v.tone === 'taut' ? 'Taut' : 'Sagging'} ${p.claim === OPPONENT ? 'red' : 'gold'} yarn: ${cardTitle(p.card)} to "${claims.find((x) => x.id === p.claim)?.text}" `,
+          h('button', { type: 'button', class: 'link', onclick: () => { c.dispatch({ type: 'UnpinYarn', board: rec.id, claim: p.claim, card: p.card }); feedback = null; render(); } }, 'Untie'));
+      })));
+      if (view.done) box.append(h('p', { class: 'fair' }, 'Every link of Corvan\'s claim is cracked, and a fair claim of yours holds. You are ready for the Showdown, if you choose it.'));
+      // Draw the yarn once the layout is known.
+      requestAnimationFrame(() => {
+        const base = cork.getBoundingClientRect();
+        svg.setAttribute('viewBox', `0 0 ${base.width} ${base.height}`); svg.setAttribute('width', String(base.width)); svg.setAttribute('height', String(base.height));
+        for (const p of pins) {
+          const a = cork.querySelector(`[data-card="${CSS.escape(p.card)}"]`)?.getBoundingClientRect();
+          const b = cork.querySelector(`[data-claim="${CSS.escape(p.claim)}"]`)?.getBoundingClientRect();
+          if (!a || !b) continue;
+          const x1 = a.left + a.width / 2 - base.left, y1 = a.top + 6 - base.top, x2 = b.left + b.width / 2 - base.left, y2 = b.bottom - 6 - base.top;
+          const sag = judgeYarn(sd, p.claim, p.card).tone === 'sag' ? 70 : 6;
+          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          path.setAttribute('d', `M${x1} ${y1} Q${(x1 + x2) / 2} ${(y1 + y2) / 2 + sag} ${x2} ${y2}`);
+          path.setAttribute('class', `yarn ${p.claim === OPPONENT ? 'red' : 'gold'} ${sag > 10 ? 'sag' : ''}`);
+          svg.append(path);
+        }
+      });
     };
     render();
   }

@@ -481,6 +481,16 @@ export type PuzzleRecord = {
   | { type: 'balance'; rounds: BalanceRound[] }
 );
 
+/** A practice clue board for a Showdown (spec 47, C1). */
+export interface ClueBoardRecord {
+  id: string;
+  showdown: string;
+  title: string;
+  intro: string;
+  onComplete?: Effect[];
+  weave: Weave;
+}
+
 export interface BalanceRound {
   prompt: string;
   load: { label: string; mass: number };
@@ -563,6 +573,7 @@ export interface ContentPack {
   alcoves: AlcoveRecord[];
   puzzles: PuzzleRecord[];
   lorelings: LorelingRecord[];
+  clueBoards?: ClueBoardRecord[];
   /** The Fray Bestiary (spec 36.2): errors in reasoning shown as creatures. Recorded on first meeting. */
   fray: { id: string; name: string; error: string; pattern: string; weakness: string; chapter: number | null }[];
   /** The whole Loreling Atlas (spec 36.1): every Loreling, with the concept it lives near. */

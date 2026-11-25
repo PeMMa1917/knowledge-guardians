@@ -185,6 +185,10 @@ export function validateContent(pack: ContentPack): string[] {
       if (z.tiles.length <= z.answer.length) p.push(`puzzle ${z.id}: needs at least one tile to leave out`);
     }
   });
+  (pack.clueBoards ?? []).forEach((b) => {
+    dup('clue board', b.id); text(`clue board ${b.id}`, b.intro); weave(b.weave, `clue board ${b.id}`, true); eff(b.onComplete, `clue board ${b.id}`);
+    if (!pack.showdowns.some((x) => x.id === b.showdown)) p.push(`clue board ${b.id}: unknown showdown ${b.showdown}`);
+  });
   (pack.fray ?? []).forEach((f) => { dup('fray', f.id); text(`fray ${f.id}`, f.pattern); text(`fray ${f.id}`, f.weakness); });
   pack.showdowns.forEach((sd) => (sd.testimony?.contradictedBy ?? []).forEach((cid) => pack.cards.some((x) => x.id === cid) || p.push(`showdown ${sd.id}: testimony names unknown card ${cid}`)));
   // Lorelings (spec 36.1): every wrong note option must name a sighting that shows it is wrong.

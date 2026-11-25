@@ -12,6 +12,7 @@ import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
 import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
 import { answerRound, checkOrder, weighRound } from './puzzles';
+import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
 import { useSignature } from './skills';
 import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
@@ -30,6 +31,8 @@ export type Command =
   | { type: 'PuzzleRound'; puzzle: string; round: number; index: number }
   | { type: 'PuzzleOrder'; puzzle: string; order: string[] }
   | { type: 'PuzzleWeigh'; puzzle: string; round: number; weights: string[] }
+  | { type: 'PinYarn'; board: string; claim: string; card: string }
+  | { type: 'UnpinYarn'; board: string; claim: string; card: string }
   | { type: 'LorelingWatch'; loreling: string; sighting: string }
   | { type: 'LorelingNote'; loreling: string; question: string; option: string }
   | { type: 'LorelingOffer'; loreling: string; place: string }
@@ -76,6 +79,7 @@ export type GameEvent =
   | { kind: 'lock'; lock: string; result: LockResult }
   | { kind: 'puzzle'; puzzle: string; ok: boolean; text: string; gapAt?: number | null }
   | { kind: 'fray'; id: string; name: string; error: string }
+  | { kind: 'yarn'; board: string; claim: string; card: string; tone: Tone; text: string; done: boolean }
   | { kind: 'loreling'; loreling: string; stage: 'watch' | 'note' | 'offer' | 'name' | 'field'; ok: boolean; text: string; recheck?: string | null }
   | { kind: 'alcove'; alcove: string; stage: 'place' | 'link' | 'imply'; result: string; text: string }
   | { kind: 'showdown'; state: ShowdownState }
@@ -462,6 +466,23 @@ export class Engine {
             s = apply([{ setFlag: 'lor.out', value: cmd.out ? rec.id : '' }], s, out);
             events.push({ kind: 'loreling', loreling: rec.id, stage: 'field', ok: true, text: cmd.out ? 'out' : 'camp' });
           }
+          break;
+        }
+        case 'PinYarn': case 'UnpinYarn': {
+          const rec = (this.pack.clueBoards ?? []).find((x) => x.id === cmd.board);
+          const sd = rec && this.pack.showdowns.find((x) => x.id === rec.showdown);
+          if (!rec || !sd) throw new Error('Unknown clue board');
+          const key = `yarn.${rec.id}.${cmd.claim}.${cmd.card}`;
+          if (cmd.type === 'UnpinYarn') { s = apply([{ setFlag: key, value: false }], s, out); break; }
+          if (!s.cards.includes(cmd.card)) throw new Error('You do not have that card yet');
+          const v = judgeYarn(sd, cmd.claim, cmd.card);
+          if (v.tone !== 'falls') s = apply([{ setFlag: key, value: true }], s, out);
+          const pins = Object.keys(s.flags).filter((k) => k.startsWith(`yarn.${rec.id}.`) && s.flags[k] === true)
+            .map((k) => { const [claim, ...card] = k.slice(`yarn.${rec.id}.`.length).split('.'); return { claim, card: card.join('.') }; });
+          const done = viewBoard(sd, pins).done;
+          const DF = `board.${rec.id}.done`;
+          if (done && s.flags[DF] !== true) { s = apply([{ setFlag: DF, value: true }, ...(rec.onComplete ?? [])], s, out); weaves.push(rec.weave); }
+          events.push({ kind: 'yarn', board: rec.id, claim: cmd.claim, card: cmd.card, tone: v.tone, text: v.text, done });
           break;
         }
         case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': {
