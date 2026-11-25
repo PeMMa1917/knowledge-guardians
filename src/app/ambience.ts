@@ -69,3 +69,28 @@ export function rain(on: boolean, volume: number): void {
   src.connect(bp); bp.connect(gain); gain.connect(a.destination); src.start(t);
   rainNode = { src, gain };
 }
+
+/** Play a list of notes (the music box). `voice`: 'box' (bell-like), 'marimba' or 'flute'. Returns a stop function. */
+export function playNotes(notes: { f: number; at: number; beats: number }[], beat: number, voice: 'box' | 'marimba' | 'flute', volume: number): () => void {
+  const a = audio(); if (!a || volume <= 0.01) return () => {};
+  const out = a.createGain(); out.gain.value = 1; out.connect(a.destination);
+  const t0 = a.currentTime + 0.05, v = Math.min(1, volume) * 0.05;
+  for (const n of notes) {
+    const at = t0 + n.at * beat, len = n.beats * beat;
+    const o = a.createOscillator(), g = a.createGain();
+    o.connect(g); g.connect(out);
+    if (voice === 'flute') {
+      o.type = 'sine'; o.frequency.setValueAtTime(n.f, at);
+      const lfo = a.createOscillator(), lg = a.createGain(); lfo.frequency.value = 5; lg.gain.value = n.f * 0.006; lfo.connect(lg); lg.connect(o.frequency); lfo.start(at); lfo.stop(at + len + 0.1);
+      g.gain.setValueAtTime(0, at); g.gain.linearRampToValueAtTime(v * 0.9, at + 0.06); g.gain.setValueAtTime(v * 0.8, at + len * 0.8); g.gain.linearRampToValueAtTime(0, at + len);
+      o.start(at); o.stop(at + len + 0.05);
+    } else {
+      o.type = voice === 'marimba' ? 'triangle' : 'sine'; o.frequency.setValueAtTime(n.f, at);
+      const ring = voice === 'marimba' ? 0.35 : Math.max(0.8, len * 1.6);
+      g.gain.setValueAtTime(0, at); g.gain.linearRampToValueAtTime(v, at + 0.005); g.gain.exponentialRampToValueAtTime(0.0005, at + ring);
+      o.start(at); o.stop(at + ring + 0.05);
+      if (voice === 'box') tone(a, n.f * 4.02, at, 0.25, v * 0.15);
+    }
+  }
+  return () => { try { out.gain.setValueAtTime(0, a.currentTime); out.disconnect(); } catch { /* already stopped */ } };
+}

@@ -14,7 +14,8 @@ import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
 import { tiltOf } from '../domain/puzzles';
-import { chime } from '../app/ambience';
+import { chime, playNotes } from '../app/ambience';
+import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { ALBUM_MAX, loadAlbum, saveAlbum } from '../app/albumStore';
 import { captionLines, checkLine } from '../domain/album';
 import { caption } from '../app/captions';
@@ -1465,6 +1466,8 @@ export class UI implements UIApi {
             if (lastId) c.dispatch({ type: 'SetFlag', flag: `log.${lastId}`, value: true });
           }
           this.closeModal();
+          const mine = String(c.state.flags['musicbox.song'] ?? '').split(',').filter(Boolean);
+          if (mine.length) { playNotes(songNotes(mine), Number(c.state.flags['musicbox.tempo'] ?? 0.32), (c.state.flags['musicbox.voice'] as any) ?? 'box', ctx.settings.sfxVolume * 0.6); caption('music.box'); }
         } }, 'Rest and go on'),
         h('button', { onclick: () => this.openBreathing() }, 'Sit a while'),
         h('button', { onclick: () => { c.suspend('Save and leave'); this.closeModal(false); (window as any).kgToTitle?.(); } }, 'Save and leave')));
@@ -1664,6 +1667,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openGuardian() }, 'My Guardian (look and pronouns)'),
         h('button', { onclick: () => { this.closeModal(false); this.openPhotoMode(); } }, 'Photo mode'),
         h('button', { onclick: () => this.openAlbum() }, 'Photo album'),
+        h('button', { onclick: () => this.openMusicBox() }, 'Music box'),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
         h('button', { onclick: () => this.openControls() }, 'Controls'),
@@ -1710,6 +1714,64 @@ export class UI implements UIApi {
     document.body.classList.add('photo-mode');
     this.root.append(bar);
     apply(); render();
+  }
+
+  /** The music box (spec 47.4): arrange the motifs of the concepts you have used into a song. */
+  private stopSong: (() => void) | null = null;
+  openMusicBox(): void {
+    const c = ctx.controller;
+    const visited = ['nexus.archive', ...(c.state.objectivesDone.includes('m02.o1.arrive') || c.state.mapId === 'aethelgard.emberford' ? ['aethelgard.emberford'] : [])];
+    const open = openMotifs(conceptXP(c.permanent, c.pack), visited);
+    let song = readSong(c.state.flags['musicbox.song'], open);
+    let voice = (['box', 'marimba', 'flute'].includes(String(c.state.flags['musicbox.voice'])) ? c.state.flags['musicbox.voice'] : 'box') as 'box' | 'marimba' | 'flute';
+    let tempo = Number(c.state.flags['musicbox.tempo'] ?? 0.32);
+    const timers: number[] = [];
+    const stop = () => { this.stopSong?.(); this.stopSong = null; timers.forEach(clearTimeout); timers.length = 0; box.querySelectorAll('.slot.on').forEach((x) => x.classList.remove('on')); };
+    const save = () => { c.dispatch({ type: 'SetFlag', flag: 'musicbox.song', value: song.join(',') }); c.dispatch({ type: 'SetFlag', flag: 'musicbox.voice', value: voice }); c.dispatch({ type: 'SetFlag', flag: 'musicbox.tempo', value: tempo }); };
+    const play = (ids: string[]) => {
+      stop();
+      const notes = songNotes(ids);
+      this.stopSong = playNotes(notes, tempo, voice, ctx.settings.sfxVolume);
+      caption('music.box');
+      // Light each slot while it plays.
+      const slots = [...box.querySelectorAll<HTMLElement>('.song .slot')];
+      if (ids === song) for (const n of notes) {
+        timers.push(window.setTimeout(() => { slots.forEach((x, i) => x.classList.toggle('on', i === n.slot)); }, n.at * tempo * 1000));
+      }
+      const end = notes.length ? (notes[notes.length - 1].at + notes[notes.length - 1].beats) * tempo * 1000 + 300 : 0;
+      timers.push(window.setTimeout(() => slots.forEach((x) => x.classList.remove('on')), end));
+    };
+    const box = this.openModal('musicbox-panel wide', 'Music box');
+    const render = () => {
+      clear(box);
+      box.append(this.closeBtn(), h('h2', {}, 'Music box'),
+        h('p', {}, 'Each TOK concept has its own short tune. A tune opens the first time you earn XP for that concept. Arrange up to eight into your own song.'),
+        h('div', { class: 'song', role: 'list', 'aria-label': 'Your song' }, ...Array.from({ length: SONG_MAX }, (_, i) => {
+          const m = MOTIFS.find((x) => x.id === song[i]);
+          return m ? h('button', { type: 'button', role: 'listitem', class: `slot ${m.concept ?? 'place'}`, title: `${m.name}. Click to take it out.`, onclick: () => { song.splice(i, 1); save(); stop(); render(); } }, h('span', { class: 'pins', 'aria-hidden': 'true' }, ...m.steps.map((st) => h('i', { style: { bottom: `${8 + ((st + 5) % 10) * 3}px` } }))), h('small', {}, m.name.split(':')[0]))
+            : h('span', { class: 'slot empty', role: 'listitem' }, String(i + 1));
+        })),
+        h('div', { class: 'row' },
+          h('button', { class: 'primary', disabled: !song.length, onclick: () => play(song) }, '▶ Play my song'),
+          h('button', { onclick: stop }, '■ Stop'),
+          h('label', {}, 'Sound ', h('select', { onchange: (e: Event) => { voice = (e.target as HTMLSelectElement).value as any; save(); } },
+            ...[['box', 'Music box'], ['marimba', 'Marimba'], ['flute', 'Flute']].map(([v, t]) => h('option', { value: v, selected: v === voice }, t)))),
+          h('label', {}, 'Speed ', h('select', { onchange: (e: Event) => { tempo = Number((e.target as HTMLSelectElement).value); save(); } },
+            ...[[0.42, 'Slow'], [0.32, 'Walking'], [0.24, 'Quick']].map(([v, t]) => h('option', { value: String(v), selected: v === tempo }, String(t)))))),
+        h('h3', {}, `Tunes you have (${open.length} of ${MOTIFS.length})`),
+        h('div', { class: 'motifs' }, ...MOTIFS.map((m) => {
+          const has = open.includes(m);
+          return h('div', { class: `motif ${has ? '' : 'locked'}` },
+            h('span', {}, has ? m.name : m.concept ? `${CONCEPT_NAMES[m.concept]}: earn XP for this concept to open it` : 'A place tune: visit the place to open it'),
+            has ? h('span', { class: 'row' },
+              h('button', { type: 'button', class: 'mini', 'aria-label': `Listen to ${m.name}`, onclick: () => play([m.id]) }, '♪ Listen'),
+              h('button', { type: 'button', class: 'mini', disabled: song.length >= SONG_MAX, 'aria-label': `Add ${m.name} to your song`, onclick: () => { song.push(m.id); save(); render(); } }, '+ Add')) : '');
+        })),
+        h('p', { class: 'fine' }, 'Your song plays softly when you rest at a Waystone. Sound follows the sound-effects volume.'));
+    };
+    render();
+    const obs = new MutationObserver(() => { if (!box.isConnected) { stop(); obs.disconnect(); } });
+    obs.observe(this.root, { childList: true, subtree: true });
   }
 
   /** The photo album and its caption check (spec 47.4). Kept only on this device. */

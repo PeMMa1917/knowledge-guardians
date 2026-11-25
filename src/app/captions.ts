@@ -25,6 +25,7 @@ export const CAPTIONS: Record<string, string> = {
   'amb.bell': 'Town bell rings: evening',
   'music.archive': 'Music: quiet, mysterious',
   'music.town': 'Music: warm town tune',
+  'music.box': 'Your music box plays',
   'music.title': 'Music: gentle lullaby',
   'voice.player': 'You make a short sound',
 };
