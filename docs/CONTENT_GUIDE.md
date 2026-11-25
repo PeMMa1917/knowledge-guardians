@@ -207,3 +207,7 @@ A dialogue node or option can have `"open"`: `showdown:<id>`, `label:<kit>`, `fo
 - Name the action that earns an award ("You compared two sources…").
 - Do not say "correct" or "wrong" about a judgement. Say what the evidence supports, qualifies or challenges.
 - People from every continent and time period. Name people and places with care (spec section 88). Give local names where they exist.
+
+## Add a keepsake
+
+Keepsakes are in `src/content/quarters.json`. Each has an `id` (short lowercase words with hyphens), a `name`, a one-line `text`, a condition `if` (the deed that earns it) and `where` (the hint shown while it is locked). Draw its 12 x 12 icon in `ICONS` in `src/ui/quarters.ts`; without one, a plain box is shown. Keepsakes are cosmetic: never give XP for them.

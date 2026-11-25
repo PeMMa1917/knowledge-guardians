@@ -17,6 +17,8 @@ import { tiltOf } from '../domain/puzzles';
 import { chime, playNotes } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
+import { DEFAULT_ROOM, FLOORS, LAMPS, PLANTS, RUGS, SLOTS, VIEWS, WALLS, decodeRoom, encodeRoom, placeKeepsake, starsFor, type Room } from '../domain/quarters';
+import { ROOM_H, ROOM_W, drawRoom, iconCanvas } from './quarters';
 import { ALBUM_MAX, loadAlbum, saveAlbum } from '../app/albumStore';
 import { captionLines, checkLine } from '../domain/album';
 import { caption } from '../app/captions';
@@ -1803,6 +1805,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => { this.closeModal(false); this.openPhotoMode(); } }, 'Photo mode'),
         h('button', { onclick: () => this.openAlbum() }, 'Photo album'),
         h('button', { onclick: () => this.openMusicBox() }, 'Music box'),
+        h('button', { onclick: () => this.openQuarters() }, 'My quarters'),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
         h('button', { onclick: () => this.openControls() }, 'Controls'),
@@ -1853,6 +1856,71 @@ export class UI implements UIApi {
 
   /** The music box (spec 47.4): arrange the motifs of the concepts you have used into a song. */
   private stopSong: (() => void) | null = null;
+  /**
+   * The Guardian's quarters (spec 12.16 and 32.6): decorate a room from preset parts and
+   * put earned keepsakes on the shelves. The ceiling is the Star Chart. Cosmetic only.
+   */
+  openQuarters(): void {
+    const c = ctx.controller;
+    let room: Room = decodeRoom(c.state.flags['room']) ?? structuredClone(DEFAULT_ROOM);
+    let selected: number | null = null;
+    let info: string | null = null;
+    const box = this.openModal('quarters-panel wide', 'My quarters');
+    const owned = (c.pack.keepsakes ?? []).filter((k) => c.check(k.if));
+    room = { ...room, shelf: room.shelf.map((x) => (x && owned.some((k) => k.id === x) ? x : null)) };
+    const rings = conceptRings(c.permanent, c.pack).sort((a, b) => Object.keys(CONCEPT_NAMES).indexOf(a.concept) - Object.keys(CONCEPT_NAMES).indexOf(b.concept));
+    const ringData = rings.map((r) => ({ got: r.got, max: r.max, colour: RING_COLOURS[r.concept] ?? '#e9cf7a' }));
+    const stars = rings.reduce((a, r) => a + starsFor(r.got, r.max), 0);
+    const glowHex = '#' + LUMEN_COLOURS[ctx.settings.lumenColour].toString(16).padStart(6, '0');
+    const canvas = h('canvas', { class: 'room-canvas', width: ROOM_W, height: ROOM_H, role: 'img' }) as HTMLCanvasElement;
+    const g = canvas.getContext('2d')!;
+    const crest = decodeCrest(c.state.flags['crest']);
+    const paint = (t: number) => drawRoom(g, room, { rings: ringData, crest, lumen: glowHex, selected, t });
+    const describe = () => {
+      const items = room.shelf.filter(Boolean).map((id) => owned.find((k) => k.id === id)?.name.toLowerCase()).join(', ');
+      canvas.setAttribute('aria-label', `Your quarters: ${WALLS[room.wall].name} walls, ${FLOORS[room.floor].name.toLowerCase()}, a ${LAMPS[room.lamp].name.toLowerCase()}, a window onto ${VIEWS[room.view].name.toLowerCase()}. Star Chart: ${stars} stars. Shelves: ${items || 'empty'}.`);
+    };
+    const save = () => { c.dispatch({ type: 'SetFlag', flag: 'room', value: encodeRoom(room) }); describe(); };
+    const loop = (t: number) => { if (!canvas.isConnected) return; paint(t); if (!ctx.settings.reducedEffects) requestAnimationFrame(loop); };
+    const pick = (label: string, k: 'wall' | 'floor' | 'rug' | 'lamp' | 'view' | 'plant', opts: Record<string, { name: string } | null>) => h('label', { class: 'room-pick' }, h('span', {}, label),
+      h('select', { onchange: (e: Event) => { room = { ...room, [k]: (e.target as HTMLSelectElement).value }; this.sfx('sfx.click'); save(); paint(performance.now()); } },
+        ...Object.entries(opts).map(([v, o]) => h('option', { value: v, selected: room[k] === v }, o?.name ?? 'None'))));
+    const shelfRow = h('div', { class: 'row wrap shelf-slots', role: 'group', 'aria-label': 'Shelf slots' });
+    const ksList = h('div', { class: 'keepsakes' });
+    const infoBox = h('p', { class: 'fine keepsake-info', 'aria-live': 'polite' });
+    const renderLists = () => {
+      clear(shelfRow); clear(ksList);
+      for (let i = 0; i < SLOTS; i++) {
+        const id = room.shelf[i];
+        const k = owned.find((x) => x.id === id);
+        shelfRow.append(h('button', { type: 'button', class: `slot-btn ${selected === i ? 'picked' : ''}`, 'aria-pressed': String(selected === i),
+          onclick: () => { selected = selected === i ? null : i; info = k ? `${k.name}. ${k.text}` : 'An empty place. Choose a keepsake below to put here.'; renderLists(); paint(performance.now()); } },
+          k ? iconCanvas(k.id, 2) : h('span', { class: 'fine' }, '·'), h('span', {}, `${i < 3 ? 'Top' : 'Low'} ${(i % 3) + 1}`)));
+      }
+      ksList.append(...(c.pack.keepsakes ?? []).map((k) => {
+        const have = owned.includes(k);
+        if (!have) return h('div', { class: 'keepsake locked' }, h('span', { class: 'q', 'aria-hidden': 'true' }, '?'), h('span', {}, h('strong', {}, 'Not found yet'), h('br'), h('span', { class: 'fine' }, k.where)));
+        const at = room.shelf.indexOf(k.id);
+        return h('button', { type: 'button', class: `keepsake ${at >= 0 ? 'placed' : ''}`, title: k.text,
+          onclick: () => {
+            if (selected === null) { info = `${k.name}. ${k.text} ${at >= 0 ? 'It is on your shelf.' : 'Choose a shelf place first, then this keepsake.'}`; renderLists(); return; }
+            room = placeKeepsake(room, selected, room.shelf[selected] === k.id ? null : k.id);
+            info = room.shelf[selected] ? `${k.name} is on the shelf. ${k.text}` : `${k.name} is back in your satchel.`;
+            this.sfx('sfx.sparkle'); save(); renderLists(); paint(performance.now());
+          } }, iconCanvas(k.id, 3), h('span', {}, h('strong', {}, k.name), at >= 0 ? h('span', { class: 'fine' }, ` (shelf ${at < 3 ? 'top' : 'low'} ${(at % 3) + 1})`) : ''));
+      }));
+      infoBox.textContent = info ?? `${owned.length} of ${(c.pack.keepsakes ?? []).length} keepsakes found. Choose a shelf place, then a keepsake.`;
+    };
+    box.append(this.closeBtn(), h('h2', {}, 'My quarters'),
+      h('p', {}, 'Your own room in the Nexus. The ceiling is your Star Chart: each concept ring you fill adds a star, and a full ring joins its stars into a constellation. The shelves hold keepsakes from the places you have helped.'),
+      h('div', { class: 'room-wrap' }, canvas),
+      h('p', { class: 'fine' }, `Star Chart: ${stars} of ${rings.length * 5} stars lit.`),
+      h('div', { class: 'room-picks' }, pick('Walls', 'wall', WALLS), pick('Floor', 'floor', FLOORS), pick('Rug', 'rug', RUGS), pick('Lamp', 'lamp', LAMPS), pick('Window view', 'view', VIEWS), pick('Plant', 'plant', PLANTS)),
+      h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
+    describe(); renderLists(); paint(0);
+    if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
   openMusicBox(): void {
     const c = ctx.controller;
     const visited = ['nexus.archive', ...(c.state.objectivesDone.includes('m02.o1.arrive') || c.state.mapId === 'aethelgard.emberford' ? ['aethelgard.emberford'] : [])];

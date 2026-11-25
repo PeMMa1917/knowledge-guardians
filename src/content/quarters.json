@@ -1,0 +1,139 @@
+{
+ "keepsakes": [
+  {
+   "id": "pen-tip",
+   "name": "A spare ballpoint tip",
+   "text": "From the workshop model in the Nexus. Three objects, three different kinds of 'first'.",
+   "if": {
+    "objective": "m01.o6.label"
+   },
+   "where": "The Nexus: label the pen display."
+  },
+  {
+   "id": "date-lens",
+   "name": "A spare lens ring",
+   "text": "From the Date Lens. It reminds you to ask: a date of what?",
+   "if": {
+    "item": "tool.date-lens"
+   },
+   "where": "The Nexus: get the Date Lens."
+  },
+  {
+   "id": "door-key",
+   "name": "A brass key-plate",
+   "text": "From the Timeline Door. It says: dates of telling only.",
+   "if": {
+    "flag": "puzzle.timeline-door.done",
+    "eq": true
+   },
+   "where": "The Nexus: open the Timeline Door."
+  },
+  {
+   "id": "moth-lamp",
+   "name": "A moth lamp",
+   "text": "A little lamp. The Glimmermoth visits it sometimes, but only when you sit still and watch.",
+   "if": {
+    "flag": "lor.glimmermoth.friend",
+    "eq": true
+   },
+   "where": "The Nexus: befriend a Loreling."
+  },
+  {
+   "id": "so-what",
+   "name": "A 'So what?' stone",
+   "text": "From the Alcove of Firsts. A display is not finished until it says why it matters.",
+   "if": {
+    "flag": "alcove.firsts.ever",
+    "eq": true
+   },
+   "where": "The Nexus: finish the Alcove of Firsts."
+  },
+  {
+   "id": "notice",
+   "name": "A copy of a notice",
+   "text": "From the Sign-Smith's board. One comma changed what the whole market did.",
+   "if": {
+    "flag": "puzzle.guild-notice.done",
+    "eq": true
+   },
+   "where": "Emberford: the Sign-Smith's notice board."
+  },
+  {
+   "id": "thread-knot",
+   "name": "A knot of citation thread",
+   "text": "From the Citation Thread bridge. Author, title, container, publisher, date, page.",
+   "if": {
+    "flag": "puzzle.song-bridge.done",
+    "eq": true
+   },
+   "where": "Emberford: the Citation Thread bridge."
+  },
+  {
+   "id": "check-weight",
+   "name": "A guild check weight",
+   "text": "From the Weigh-House. 'The same measure for every hand.'",
+   "if": {
+    "flag": "puzzle.weigh-house.done",
+    "eq": true
+   },
+   "where": "Emberford: the Weigh-House balance."
+  },
+  {
+   "id": "yarn",
+   "name": "A twist of red and gold yarn",
+   "text": "From the practice clue board. Red to challenge, gold to support.",
+   "if": {
+    "flag": "board.corvan-board.done",
+    "eq": true
+   },
+   "where": "Emberford: the practice clue board."
+  },
+  {
+   "id": "soot-jar",
+   "name": "A tiny jar of soot",
+   "text": "From the Founders' Plaque. Even dirt can be evidence of where a thing has been.",
+   "if": {
+    "flagSet": "puzzle.founders-plaque.method"
+   },
+   "where": "Emberford: restore the Founders' Plaque."
+  },
+  {
+   "id": "sign-splinter",
+   "name": "A splinter of an old sign",
+   "text": "From Corvan's old sign board. Whatever it said, it said too much.",
+   "if": {
+    "flagSet": "sd.corvan.outcome"
+   },
+   "where": "Emberford: the Showdown."
+  },
+  {
+   "id": "rumour-shard",
+   "name": "A quiet rumour shard",
+   "text": "From the Shattering Rumour. A story is easier to check when you know where it began.",
+   "if": {
+    "flag": "rumour.done",
+    "eq": true
+   },
+   "where": "Emberford: trace the rumour."
+  },
+  {
+   "id": "well-rope",
+   "name": "A knotted rope end",
+   "text": "From the East Well. The knots measure; the people decide.",
+   "if": {
+    "flagSet": "well.reflected"
+   },
+   "where": "Emberford: the East Well side quest."
+  },
+  {
+   "id": "seal",
+   "name": "A wax copy of the seal",
+   "text": "The Guardians' seal, found at the end of the chapter.",
+   "if": {
+    "flag": "seal.found",
+    "eq": true
+   },
+   "where": "Emberford: finish the chapter."
+  }
+ ]
+}

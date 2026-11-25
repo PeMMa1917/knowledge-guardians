@@ -69,6 +69,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 - **Rain and footsteps**: a short rain shower falls on Emberford for 90 seconds in every 20 minutes of town time (fixed, not random): slanted drops, a grey-blue wash, and soft rain made in code (filtered noise that fades in and out), with captions. With reduced effects the drops and wash are off; the sound follows the sound volume. Footsteps now sound soft and low on grass and crisp on stone. Code: `raining()` in `daylight.ts`, `rain()` in `ambience.ts`.
 - **Music box** (spec 47.4 and 39.4; Menu, Music box): each of the 12 TOK concepts has a short original tune that opens the first time the player earns XP for that concept; two place tunes open by visiting the Nexus and Emberford. The player arranges up to eight tunes into a song on a brass cylinder (each slot lights while it plays), picks a sound (music box, marimba, flute) and a speed. The song plays softly when the player rests at a Waystone. All sound is made in code (`playNotes()` in `ambience.ts`); rules and tunes in `src/domain/musicbox.ts`; the song is stored in flags.
 - **Crest designer** (spec 47.4; Menu, Crest): the player makes a crest from lists only: a shield shape, a division, two field colours, one of ten symbols, a symbol colour and one of twelve preset mottos. "Surprise me" picks a random crest. The crest is stitched on the cloak back patch, shown with its motto in the journal title and stamped on photos. Rules in `src/domain/crest.ts`.
+- **My quarters** (spec 12.16 and 32.6; a door in the north wall of the Nexus, or Menu, My quarters): the player's own room, drawn in code. The player chooses walls, floor, rug, lamp, window view and plant from lists, and puts keepsakes on six shelf places. There are 14 keepsakes; each appears after a deed (a puzzle, a Loreling, a side quest, the Showdown), and a locked one says where to look. The crest hangs on the wall. The ceiling is the Star Chart: one star for each fifth of a concept ring, and a full ring joins its stars into a constellation. Cosmetic only, no XP. Rules in `src/domain/quarters.ts`, drawing in `src/ui/quarters.ts`, keepsakes in `src/content/quarters.json`; stored in the flag `room`.
 - **Balance reminder:** every 45 minutes of active play, Lumen suggests a real break. It never blocks play.
 - **MIS-10 and MIS-11 (Indigenous knowledge) are left out on purpose.** They need Indigenous content made with community advisors (spec section 88). Do not add them with a quick signal.
 
@@ -77,7 +78,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 
 ### Tests
 
-`npm test`: 197 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
+`npm test`: 201 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
 
 ## Next steps (in order)
 

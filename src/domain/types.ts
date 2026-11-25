@@ -508,6 +508,9 @@ export interface RestoreMethod {
   labels: { text: string; honest: boolean; why: string }[];
 }
 
+/** A keepsake for the Guardian's quarters (spec 12.16): shown on a shelf once `if` holds. Cosmetic only. */
+export interface Keepsake { id: string; name: string; text: string; if: Condition; where: string }
+
 /** World memory (spec 47, C1): a short line a person says when the player passes, once the condition holds. */
 export interface MemoryLine { id: string; character: string; if: Condition; line: string }
 
@@ -604,6 +607,7 @@ export interface ContentPack {
   puzzles: PuzzleRecord[];
   lorelings: LorelingRecord[];
   clueBoards?: ClueBoardRecord[];
+  keepsakes?: Keepsake[];
   memories?: MemoryLine[];
   /** The Fray Bestiary (spec 36.2): errors in reasoning shown as creatures. Recorded on first meeting. */
   fray: { id: string; name: string; error: string; pattern: string; weakness: string; chapter: number | null }[];

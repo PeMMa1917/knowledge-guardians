@@ -95,6 +95,7 @@ export const NEXUS: MapDef = {
     // One knowledge-gated door (spec 12.23): it opens with the Date-Kind Lens and an understanding of date kinds.
     { id: 'timeline-door', kind: 'puzzle', puzzle: 'timeline-door', x: 5, y: 2, w: 1, h: 1, label: 'the Timeline Door', art: 'timeline-door',
       artOpen: { key: 'timeline-door.open', if: { flag: 'puzzle.timeline-door.done', eq: true } } },
+    { id: 'quarters-door', kind: 'quarters', x: 18, y: 2, w: 1, h: 1, label: 'the door to your quarters', art: 'quarters-door' },
     { id: 'sign-portal', kind: 'sign', x: 10, y: 4, w: 1, h: 1, label: 'the portal sign', art: 'signpost',
       text: 'PORTAL TO AETHELGARD. Opens for Guardians on assignment.' },
   ],

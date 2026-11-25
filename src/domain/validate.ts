@@ -196,6 +196,10 @@ export function validateContent(pack: ContentPack): string[] {
       if (z.tiles.length <= z.answer.length) p.push(`puzzle ${z.id}: needs at least one tile to leave out`);
     }
   });
+  (pack.keepsakes ?? []).forEach((k) => {
+    dup('keepsake', k.id); cond(k.if, `keepsake ${k.id}`); text(`keepsake ${k.id}`, k.text);
+    if (!/^[a-z0-9-]{1,24}$/.test(k.id)) p.push(`keepsake ${k.id}: id must be short lowercase words with hyphens`);
+  });
   (pack.memories ?? []).forEach((m) => {
     dup('memory', m.id); cond(m.if, `memory ${m.id}`); text(`memory ${m.id}`, m.line);
     if (!pack.characters.some((x) => x.id === m.character)) p.push(`memory ${m.id}: unknown character ${m.character}`);

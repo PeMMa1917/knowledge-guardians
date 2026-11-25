@@ -314,6 +314,16 @@ DRAW['plaque.clean'] = [16, 24, (g) => plaquePost(g, '#2c1d12', '#e9c45a')];
 DRAW['plaque.window'] = [16, 24, (g) => plaquePost(g, '#2c1d12', '#e9c45a', '#b07a44')];
 DRAW['plaque.repaint'] = [16, 24, (g) => plaquePost(g, '#7a1f24', '#ffd75e')];
 
+// The door to the Guardian's quarters (original art): a round-topped oak door with a star.
+DRAW['quarters-door'] = [16, 24, (g) => {
+  R(g, '#3b2a1a', 1, 3, 14, 21); R(g, '#3b2a1a', 3, 1, 10, 2);
+  R(g, '#7a5230', 2, 4, 12, 20); R(g, '#7a5230', 4, 2, 8, 2);
+  R(g, '#5b3b22', 5, 4, 1, 20); R(g, '#5b3b22', 10, 4, 1, 20);
+  R(g, '#c9a24a', 2, 9, 12, 1); R(g, '#c9a24a', 2, 18, 12, 1);
+  R(g, '#e9cf7a', 7, 5, 2, 1); R(g, '#e9cf7a', 6, 6, 4, 1); R(g, '#e9cf7a', 7, 7, 2, 1);
+  R(g, '#e9cf7a', 11, 13, 2, 2); R(g, '#fff3c4', 11, 13, 1, 1);
+}];
+
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {
