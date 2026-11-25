@@ -105,11 +105,20 @@ export class UI implements UIApi {
     return h('button', { class: 'close', 'aria-label': 'Close', onclick: () => this.closeModal() }, '✕');
   }
 
+  /** At most three toasts at once; the rest wait their turn, so a busy moment stays readable. */
+  private toastQueue: { text: string; kind: string }[] = [];
   toast(text: string, kind = 'info'): void {
-    const t = h('div', { class: `toast toast-${kind}` }, text);
-    this.toastBox.append(t);
-    setTimeout(() => t.classList.add('out'), 3600);
-    setTimeout(() => t.remove(), 4200);
+    this.toastQueue.push({ text, kind });
+    this.pumpToasts();
+  }
+  private pumpToasts(): void {
+    while (this.toastQueue.length && this.toastBox.querySelectorAll('.toast:not(.out)').length < 3) {
+      const { text, kind } = this.toastQueue.shift()!;
+      const t = h('div', { class: `toast toast-${kind}` }, text);
+      this.toastBox.append(t);
+      setTimeout(() => { t.classList.add('out'); this.pumpToasts(); }, 3600);
+      setTimeout(() => t.remove(), 4200);
+    }
   }
 
   setPrompt(text: string | null): void {
@@ -294,6 +303,9 @@ export class UI implements UIApi {
   // ------------------------------------------------------------ events
 
   private handleEvents(events: GameEvent[]): void {
+    // One XP toast per action, not one per criterion.
+    const xp = events.filter((e) => e.kind === 'xp').reduce((n, e) => n + (e as Extract<GameEvent, { kind: 'xp' }>).amount, 0);
+    if (xp) events = [...events.filter((e) => e.kind !== 'xp'), { kind: 'xp', amount: xp }];
     const c = ctx.controller;
     for (const e of events) {
       switch (e.kind) {

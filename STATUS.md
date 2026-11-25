@@ -55,7 +55,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 
 ## Known limits and problems
 
-- **Toasts pile up** when one action gives many events at once (for example a label that holds: XP, award, moment, portfolio, stone). Consider merging them into one panel.
+- **Toasts:** at most three show at once and the rest wait their turn; XP from one action shows as one toast. A busy moment can still take about ten seconds to read through.
 - **Network:** this build environment could not open museum or encyclopedia websites, so no new historical sources were added after HIS-S31. New real people (for example the CAS figures) need a source that someone has opened and checked.
 
 - The Showdown panel is long on small phone screens. The log scrolls, but the layout needs a phone pass.
