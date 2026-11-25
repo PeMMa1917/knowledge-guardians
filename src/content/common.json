@@ -115,6 +115,26 @@
    "talk": [
     {
      "if": {
+      "all": [
+       {
+        "origin": "archive"
+       },
+       {
+        "flag": "os.archive.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "os.archive.asked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "os.archive.other"
+    },
+    {
+     "if": {
       "flag": "label.pen.everHeld",
       "eq": true
      },
@@ -164,6 +184,26 @@
    "sprite": "clerk-venn",
    "mode": "fictional",
    "talk": [
+    {
+     "if": {
+      "all": [
+       {
+        "origin": "traveller"
+       },
+       {
+        "flag": "os.traveller.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "os.traveller.asked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "os.traveller.other"
+    },
     {
      "if": {
       "flagSet": "sd.practice.outcome"
@@ -321,6 +361,26 @@
     },
     {
      "if": {
+      "all": [
+       {
+        "origin": "workshop"
+       },
+       {
+        "flag": "os.workshop.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "os.workshop.asked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "os.workshop.other"
+    },
+    {
+     "if": {
       "flag": "hesper.coming",
       "eq": true
      },
@@ -392,6 +452,26 @@
    "sprite": "scholar-sefa",
    "mode": "fictional",
    "talk": [
+    {
+     "if": {
+      "all": [
+       {
+        "origin": "singer"
+       },
+       {
+        "flag": "os.singer.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "os.singer.asked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "os.singer.other"
+    },
     {
      "if": {
       "flag": "heard.sefa",
@@ -516,7 +596,31 @@
    "role": "Translates the Nexus labels",
    "sprite": "villager-1",
    "mode": "fictional",
-   "talk": []
+   "talk": [
+    {
+     "if": {
+      "flagSet": "os.traveller.choice"
+     },
+     "node": "os.traveller.idle"
+    },
+    {
+     "if": {
+      "flag": "os.traveller.asked",
+      "eq": true
+     },
+     "node": "os.traveller.reflect"
+    },
+    {
+     "if": {
+      "flag": "os.traveller.started",
+      "eq": true
+     },
+     "node": "os.traveller.wait"
+    },
+    {
+     "node": "os.traveller.start"
+    }
+   ]
   },
   {
    "id": "fruit-seller",
@@ -543,13 +647,33 @@
      "node": "well.fruit"
     },
     {
+     "if": {
+      "all": [
+       {
+        "origin": "harbour"
+       },
+       {
+        "flag": "os.harbour.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "os.harbour.asked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "os.harbour.other"
+    },
+    {
      "node": "fruit.idle"
     }
    ]
   },
   {
    "id": "well-keeper",
-   "name": "Well keeper Odu",
+   "name": "Well keeper Efua Asante",
    "role": "Emberford",
    "sprite": "villager-1",
    "mode": "fictional",
@@ -703,6 +827,134 @@
     },
     {
      "node": "sol.start"
+    }
+   ]
+  },
+  {
+   "id": "cataloguer-bela",
+   "name": "Cataloguer Bela Varga",
+   "role": "Keeps the Nexus card catalogue",
+   "sprite": "villager-1",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flagSet": "os.archive.choice"
+     },
+     "node": "os.archive.idle"
+    },
+    {
+     "if": {
+      "flag": "os.archive.asked",
+      "eq": true
+     },
+     "node": "os.archive.reflect"
+    },
+    {
+     "if": {
+      "flag": "os.archive.started",
+      "eq": true
+     },
+     "node": "os.archive.wait"
+    },
+    {
+     "node": "os.archive.start"
+    }
+   ]
+  },
+  {
+   "id": "runner-tamar",
+   "name": "Runner Tamar Okoro",
+   "role": "Carries messages from the river farms",
+   "sprite": "villager-2",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flagSet": "os.harbour.choice"
+     },
+     "node": "os.harbour.idle"
+    },
+    {
+     "if": {
+      "flag": "os.harbour.asked",
+      "eq": true
+     },
+     "node": "os.harbour.reflect"
+    },
+    {
+     "if": {
+      "flag": "os.harbour.started",
+      "eq": true
+     },
+     "node": "os.harbour.wait"
+    },
+    {
+     "node": "os.harbour.start"
+    }
+   ]
+  },
+  {
+   "id": "apprentice-ren",
+   "name": "Apprentice Ren Takahashi",
+   "role": "Learns from Hesper",
+   "sprite": "villager-1",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flagSet": "os.workshop.choice"
+     },
+     "node": "os.workshop.idle"
+    },
+    {
+     "if": {
+      "flag": "os.workshop.asked",
+      "eq": true
+     },
+     "node": "os.workshop.reflect"
+    },
+    {
+     "if": {
+      "flag": "os.workshop.started",
+      "eq": true
+     },
+     "node": "os.workshop.wait"
+    },
+    {
+     "node": "os.workshop.start"
+    }
+   ]
+  },
+  {
+   "id": "singer-teodora",
+   "name": "Singer Teodora Lupu",
+   "role": "Sings the old work songs",
+   "sprite": "villager-2",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flagSet": "os.singer.choice"
+     },
+     "node": "os.singer.idle"
+    },
+    {
+     "if": {
+      "flag": "os.singer.asked",
+      "eq": true
+     },
+     "node": "os.singer.reflect"
+    },
+    {
+     "if": {
+      "flag": "os.singer.started",
+      "eq": true
+     },
+     "node": "os.singer.wait"
+    },
+    {
+     "node": "os.singer.start"
     }
    ]
   }

@@ -92,6 +92,10 @@ export const EMBERFORD: MapDef = {
     { id: 'keeper-oduya', x: 16, y: 8, facing: 'down' },
     { id: 'well-keeper', x: 32, y: 17, facing: 'left' },
     { id: 'fruit-seller', x: 15, y: 19, facing: 'down' },
+    // Origin side quests (spec 35.1): each giver appears only for that origin.
+    { id: 'runner-tamar', x: 18, y: 21, facing: 'right', visibleIf: { origin: 'harbour' } },
+    { id: 'apprentice-ren', x: 10, y: 17, facing: 'left', visibleIf: { origin: 'workshop' } },
+    { id: 'singer-teodora', x: 16, y: 15, facing: 'down', visibleIf: { origin: 'singer' } },
   ],
   interactables: [
     { id: 'ex-blade', kind: 'exhibit', exhibit: 'OBJ-003-AE', x: 24, y: 11, w: 3, h: 1, label: 'the patterned blade', art: 'blade-on-counter' },

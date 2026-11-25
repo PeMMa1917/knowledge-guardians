@@ -1193,7 +1193,133 @@
   {
    "id": "ise.after",
    "speaker": "warden-ise",
-   "text": "Back already? The portal still leads to Emberford in Aethelgard."
+   "text": "Back already? The portal still leads to Emberford in Aethelgard.",
+   "options": [
+    {
+     "text": "I grew up in these stacks. Who decides which shelf a thing goes on?",
+     "if": {
+      "all": [
+       {
+        "origin": "archive"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.archive",
+     "tag": "Your background"
+    },
+    {
+     "text": "On the coast, a message changed at every harbour. Does a label change like that?",
+     "if": {
+      "all": [
+       {
+        "origin": "harbour"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.harbour",
+     "tag": "Your background"
+    },
+    {
+     "text": "Where I trained, we tested ideas by making them. Can I test a label the same way?",
+     "if": {
+      "all": [
+       {
+        "origin": "workshop"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.workshop",
+     "tag": "Your background"
+    },
+    {
+     "text": "In my valley, the songs remember who made things. Does the Nexus keep songs?",
+     "if": {
+      "all": [
+       {
+        "origin": "singer"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.singer",
+     "tag": "Your background"
+    },
+    {
+     "text": "In each place I lived, 'first' meant something different. Is that the problem here?",
+     "if": {
+      "all": [
+       {
+        "origin": "traveller"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.traveller",
+     "tag": "Your background"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    }
+   ]
   },
   {
    "id": "ise.seal",

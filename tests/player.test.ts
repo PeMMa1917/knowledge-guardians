@@ -55,3 +55,32 @@ describe('player pronouns and origin (spec 35.1)', () => {
     expect(personalise('{They} did it.', d.s.player)).toBe('He did it.');
   });
 });
+
+describe('origin side quests (spec 35.1)', () => {
+  const Q: Record<string, [string, string]> = {
+    archive: ['cataloguer-bela', 'curator-dace'], traveller: ['translator-lio', 'clerk-venn'],
+    harbour: ['runner-tamar', 'fruit-seller'], workshop: ['apprentice-ren', 'smith-hesper'], singer: ['singer-teodora', 'scholar-sefa'],
+  };
+  for (const [o, [giver, other]] of Object.entries(Q)) {
+    it(`${o}: hear, ask, choose; journal and portfolio, no XP`, () => {
+      const d = new Driver();
+      d.s = newCampaign(pack, 'Ana', 'player-a', 7, { origin: o });
+      d.p = newPermanent();
+      d.talk(giver);
+      expect(d.s.flags[`os.${o}.started`]).toBe(true);
+      d.talk(other);
+      expect(d.s.flags[`os.${o}.asked`]).toBe(true);
+      d.talk(giver);
+      expect(d.s.objectivesDone).toContain(`os.${o}.o3`);
+      expect(d.s.journal).toContain(`j.os.${o}`);
+      expect(d.p.portfolio.length).toBe(1);
+      expect(Object.values(d.p.credit).reduce((a, b) => a + b, 0)).toBe(0);
+      expect(d.e.talkEntry(giver, d.s)).toBe(`os.${o}.idle`);
+    });
+  }
+  it('other origins never see a giver quest', () => {
+    const s = newCampaign(pack, 'Ana', 'player-a', 7, { origin: 'archive' });
+    const d = new Driver(); d.s = s;
+    expect(d.e.visibleObjectives(s).some((x) => x.id.startsWith('os.singer'))).toBe(false);
+  });
+});

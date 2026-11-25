@@ -71,6 +71,9 @@ export const NEXUS: MapDef = {
     { id: 'villager-2', x: 17, y: 13, facing: 'up' },
     { id: 'archivist-tull', x: 35, y: 13, facing: 'down' },
     { id: 'visitor-sol', x: 29, y: 8, facing: 'up' },
+    // Origin side quests (spec 35.1): each giver appears only for that origin.
+    { id: 'cataloguer-bela', x: 6, y: 12, facing: 'down', visibleIf: { origin: 'archive' } },
+    { id: 'translator-lio', x: 24, y: 13, facing: 'right', visibleIf: { origin: 'traveller' } },
   ],
   interactables: [
     { id: 'ex-a', kind: 'exhibit', exhibit: 'OBJ-001-A', x: 8, y: 7, w: 1, h: 1, label: 'the patent drawing', art: 'pedestal.patent' },

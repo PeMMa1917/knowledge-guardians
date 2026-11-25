@@ -7,7 +7,7 @@
    "objectives": [
     {
      "id": "well.o1.listen",
-     "title": "Optional: listen to Ama Ofori, the fruit seller and Hesper about the low well.",
+     "title": "Optional: listen to Efua Asante, the fruit seller and Hesper about the low well.",
      "essential": false,
      "visible": {
       "flag": "well.started",
@@ -56,7 +56,7 @@
     },
     {
      "id": "well.o2.plan",
-     "title": "Optional: make a plan with Ama.",
+     "title": "Optional: make a plan with Efua.",
      "essential": false,
      "visible": {
       "objective": "well.o1.listen"
@@ -131,7 +131,7 @@
     },
     {
      "id": "well.o4.reflect",
-     "title": "Optional: tell Ama what you take from this.",
+     "title": "Optional: tell Efua what you take from this.",
      "essential": false,
      "visible": {
       "objective": "well.o3.act"
@@ -210,7 +210,7 @@
   {
    "id": "well.start",
    "speaker": "well-keeper",
-   "text": "I'm Ama Ofori. I keep the east well. It's low, and the street is arguing: the forge, the season, bad luck. Everyone has an answer. Nobody has asked us what we need.",
+   "text": "I'm Efua Asante. I keep the east well. It's low, and the street is arguing: the forge, the season, bad luck. Everyone has an answer. Nobody has asked us what we need.",
    "claimKind": "interpretation",
    "historicalLabel": "fictional-world",
    "options": [
@@ -457,19 +457,19 @@
    "id": "h.well.o1.listen.3",
    "objective": "well.o1.listen",
    "depth": 3,
-   "text": "Talk to Ama by the east well, the fruit seller by the fruit boxes, and Hesper at the forge."
+   "text": "Talk to Efua by the east well, the fruit seller by the fruit boxes, and Hesper at the forge."
   },
   {
    "id": "h.well.o1.listen.4",
    "objective": "well.o1.listen",
    "depth": 4,
-   "text": "Ama is by the well east of the square. The fruit seller stands near the fruit boxes south of the square. Hesper is at the forge in the west."
+   "text": "Efua is by the well east of the square. The fruit seller stands near the fruit boxes south of the square. Hesper is at the forge in the west."
   },
   {
    "id": "h.well.o2.plan.1",
    "objective": "well.o2.plan",
    "depth": 1,
-   "text": "Make the plan with Ama, not for her."
+   "text": "Make the plan with Efua, not for her."
   },
   {
    "id": "h.well.o2.plan.2",
@@ -481,13 +481,13 @@
    "id": "h.well.o2.plan.3",
    "objective": "well.o2.plan",
    "depth": 3,
-   "text": "Talk to Ama and choose one of the two test plans."
+   "text": "Talk to Efua and choose one of the two test plans."
   },
   {
    "id": "h.well.o2.plan.4",
    "objective": "well.o2.plan",
    "depth": 4,
-   "text": "Talk to Ama and choose 'Measure both wells…'."
+   "text": "Talk to Efua and choose 'Measure both wells…'."
   },
   {
    "id": "h.well.o3.act.1",
@@ -499,7 +499,7 @@
    "id": "h.well.o3.act.2",
    "objective": "well.o3.act",
    "depth": 2,
-   "text": "One rope is by Ama. The other is west, beyond the smithy."
+   "text": "One rope is by Efua. The other is west, beyond the smithy."
   },
   {
    "id": "h.well.o3.act.3",
@@ -511,7 +511,7 @@
    "id": "h.well.o3.act.4",
    "objective": "well.o3.act",
    "depth": 4,
-   "text": "Use the east well rope next to Ama, and the west well rope south-west of the forge."
+   "text": "Use the east well rope next to Efua, and the west well rope south-west of the forge."
   },
   {
    "id": "h.well.o4.reflect.1",
@@ -529,13 +529,13 @@
    "id": "h.well.o4.reflect.3",
    "objective": "well.o4.reflect",
    "depth": 3,
-   "text": "Talk to Ama and say what you take from it."
+   "text": "Talk to Efua and say what you take from it."
   },
   {
    "id": "h.well.o4.reflect.4",
    "objective": "well.o4.reflect",
    "depth": 4,
-   "text": "Talk to Ama and choose any answer."
+   "text": "Talk to Efua and choose any answer."
   },
   {
    "id": "h.well.o5.show.1",
