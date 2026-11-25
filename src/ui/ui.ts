@@ -246,6 +246,7 @@ export class UI implements UIApi {
       objs.length && objs.every((o) => o.complete) ? h('div', {}, h('h2', {}, 'Chapter complete'), h('p', {}, 'Explore freely, or open the menu.')) : null);
     const bar = h('nav', { class: 'hud-buttons', 'aria-label': 'Game menu' },
       h('span', { class: 'marks', title: 'Marks (campaign money)' }, h('img', { src: artURL('icon.card'), alt: '' }), ` ${s.marks} marks`),
+      s.flags['title.worn'] ? h('span', { class: 'marks worn-title', title: 'Your title (choose in Journal, Awards)' }, `${s.player.name}, ${s.flags['title.worn']}`) : '',
       h('button', { onclick: () => this.askLumen(), title: 'Ask Lumen for a hint (H)' }, h('img', { src: artURL('lumen'), alt: '' }), ' Hint ', h('kbd', {}, 'H')),
       h('button', { onclick: () => this.openJournal(), title: 'Journal (J)' }, 'Journal ', h('kbd', {}, 'J')),
       h('button', { onclick: () => this.openJournal('portfolio'), title: 'Portfolio (P)' }, 'Portfolio ', h('kbd', {}, 'P')),
@@ -950,7 +951,10 @@ export class UI implements UIApi {
       body.append(h('p', {}, h('strong', {}, `Total concept XP: ${totalXP(c.permanent)}`), ' (permanent; it stays if you load an earlier checkpoint)'),
         h('ul', { class: 'xp' }, ...Object.entries(xp).map(([k, v]) => h('li', {}, `${k[0].toUpperCase()}${k.slice(1)}: ${v}`))),
         h('h3', {}, 'Earned'),
-        h('ul', { class: 'awards' }, ...c.pack.awards.filter((a) => c.permanent.awards[a.id]).map((a) => h('li', {}, h('strong', {}, `${a.name} `), h('small', {}, `(${a.kind.replace('-', ' ')})`), h('br', {}), a.earnedBy))),
+        h('ul', { class: 'awards' }, ...c.pack.awards.filter((a) => c.permanent.awards[a.id]).map((a) => h('li', {}, h('strong', {}, `${a.name} `), h('small', {}, `(${a.kind.replace('-', ' ')})`), h('br', {}), a.earnedBy,
+          a.title ? h('div', { class: 'row' }, s.flags['title.worn'] === a.title
+            ? h('button', { class: 'mini', onclick: () => { c.dispatch({ type: 'SetFlag', flag: 'title.worn', value: '' }); this.refreshHud(); this.openJournal('awards'); } }, `Stop wearing "${a.title}"`)
+            : h('button', { class: 'mini', onclick: () => { c.dispatch({ type: 'SetFlag', flag: 'title.worn', value: a.title! }); this.refreshHud(); this.openJournal('awards'); } }, `Wear the title "${a.title}"`)) : ''))),
         h('h3', {}, 'Not yet earned'),
         h('ul', { class: 'awards locked' }, ...c.pack.awards.filter((a) => !c.permanent.awards[a.id]).map((a) => h('li', {}, `${a.name} (${a.kind.replace('-', ' ')})`))));
     } else if (tab === 'sources') {

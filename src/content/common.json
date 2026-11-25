@@ -784,7 +784,8 @@
       "gte": 2
      }
     ]
-   }
+   },
+   "title": "Reader of Dates"
   },
   {
    "id": "skill.fair-test-1",
@@ -797,7 +798,8 @@
    "when": {
     "num": "sim.fair",
     "gte": 1
-   }
+   },
+   "title": "Fair Tester"
   },
   {
    "id": "award.two-sides",
@@ -821,7 +823,8 @@
       "flagSet": "sd.practice.outcome"
      }
     ]
-   }
+   },
+   "title": "Hearer of Both Sides"
   },
   {
    "id": "skill.force-support-1",
@@ -834,7 +837,8 @@
    "when": {
     "flag": "label.pen.everHeld",
     "eq": true
-   }
+   },
+   "title": "Label-Mender"
   },
   {
    "id": "skill.thread-1",
@@ -847,7 +851,8 @@
    "when": {
     "flag": "thread.blade.gap",
     "eq": true
-   }
+   },
+   "title": "Thread-Follower"
   },
   {
    "id": "award.forged-not-sorted",
@@ -860,7 +865,8 @@
    "when": {
     "flag": "forge.compared",
     "eq": true
-   }
+   },
+   "title": "Billet-Maker"
   },
   {
    "id": "badge.honest-sign",
@@ -872,7 +878,8 @@
    ],
    "when": {
     "flagSet": "sd.corvan.outcome"
-   }
+   },
+   "title": "Keeper of the Square"
   },
   {
    "id": "badge.hall-of-firsts",
@@ -885,11 +892,12 @@
    "when": {
     "num": "count.firsts",
     "gte": 3
-   }
+   },
+   "title": "Mender of Firsts"
   },
   {
    "id": "skill.ee-practice-1",
-   "kind": "skill",
+   "kind": "skill-milestone",
    "name": "Research Practice I",
    "earnedBy": "You narrowed a question, planned a search, argued with a counterclaim, cited your sources and reflected. Practice only, not your real Extended Essay.",
    "criteria": [
@@ -897,11 +905,12 @@
    ],
    "when": {
     "objective": "ee1.o7.reflect"
-   }
+   },
+   "title": "Lock-Turner"
   },
   {
    "id": "skill.ee-practice-2",
-   "kind": "skill",
+   "kind": "skill-milestone",
    "name": "Research Practice II",
    "earnedBy": "You asked who wrote a record and why, planned a search back to the writer, argued with a counterclaim, cited and reflected. Practice only, not your real Extended Essay.",
    "criteria": [
@@ -909,7 +918,8 @@
    ],
    "when": {
     "objective": "ee2.o7.reflect"
-   }
+   },
+   "title": "Asker of Writers"
   },
   {
    "id": "badge.east-well",
@@ -921,7 +931,8 @@
    ],
    "when": {
     "objective": "well.o5.show"
-   }
+   },
+   "title": "One Who Asks First"
   }
  ],
  "offers": [

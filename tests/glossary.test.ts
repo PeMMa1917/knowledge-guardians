@@ -26,3 +26,11 @@ describe('smart glossary (spec 47.10)', () => {
     for (const g of pack.glossary) expect(g.match.some((m) => all.includes(m)), g.id).toBe(true);
   });
 });
+
+describe('titles (spec 47.1, C1)', () => {
+  it('every award has its own title that names a deed', () => {
+    const titles = pack.awards.map((a) => a.title);
+    expect(titles.every(Boolean)).toBe(true);
+    expect(new Set(titles).size).toBe(titles.length);
+  });
+});

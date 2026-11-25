@@ -127,6 +127,7 @@ export function validateContent(pack: ContentPack): string[] {
   });
   pack.hints.forEach((h) => { dup('hint', h.id); if (!objectives.has(h.objective)) p.push(`hint ${h.id}: unknown objective`); cond(h.if, `hint ${h.id}`); });
   pack.awards.forEach((a) => {
+    if (!['concept-award', 'skill-milestone', 'badge'].includes(a.kind)) p.push(`award ${a.id}: unknown kind ${a.kind}`);
     dup('award', a.id); cond(a.when, `award ${a.id}`);
     a.criteria.forEach((c) => criteria.has(c) || p.push(`award ${a.id}: unknown criterion ${c}`));
   });

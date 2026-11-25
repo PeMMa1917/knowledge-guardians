@@ -211,6 +211,8 @@ export interface AwardRecord {
   name: string;
   /** Names the action that earned it (spec 6.2). */
   earnedBy: string;
+  /** A title the player may wear once earned (spec 47.1, C1). It names the deed. */
+  title?: string;
   criteria: string[];         // CreditCriterion ids that are credited with it
   when: Condition;
 }
