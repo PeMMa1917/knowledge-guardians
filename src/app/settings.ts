@@ -11,13 +11,15 @@ export interface Settings {
   guidePrompts: boolean;      // unsolicited Lumen prompts
   highContrast: boolean;
   dyslexiaSpacing: boolean;
+  /** Calm mode (spec 93.3): events warn first and can be delayed. Nothing is ever timed. */
+  calmMode: boolean;
 }
 
 const KEY = 'kg.settings';
 
 export const DEFAULTS: Settings = {
   textScale: 1, reducedMotion: false, reducedEffects: false, musicVolume: 0.5, sfxVolume: 0.7,
-  guidePrompts: true, highContrast: false, dyslexiaSpacing: false,
+  guidePrompts: true, highContrast: false, dyslexiaSpacing: false, calmMode: false,
 };
 
 export function loadSettings(): Settings {

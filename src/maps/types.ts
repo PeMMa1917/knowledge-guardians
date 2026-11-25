@@ -3,14 +3,18 @@
  * characters, interactable objects, zones and lights. Units are tiles.
  * The WorldScene turns this data into a playable place.
  */
-export type InteractKind = 'exhibit' | 'bench' | 'board' | 'sort' | 'portal' | 'sign';
+export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign';
 
 export interface Interactable {
   id: string;
   kind: InteractKind;
   x: number; y: number; w: number; h: number;
   label: string;              // shown in the prompt: "E: Inspect <label>"
-  exhibit?: string;           // for kind 'exhibit'
+  exhibit?: string;           // for kind 'exhibit' and 'assay'
+  kit?: string;               // for kind 'label': the label kit it repairs
+  thread?: string;            // for kind 'thread'
+  node?: string;              // for kind 'thread': the node at this spot
+  place?: string;             // for kind 'waystone': the place name
   text?: string;              // for kind 'sign'
   /** Procedural art key drawn at this spot (see BootScene.makeTextures). */
   art?: string;

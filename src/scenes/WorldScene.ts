@@ -11,6 +11,7 @@ import { ctx, type WorldApi } from '../app/context';
 import { MAPS } from '../maps';
 import type { Interactable, MapDef } from '../maps/types';
 import { STAMPS, TILE } from './art';
+import { frayLevel } from '../domain/label';
 
 type Dir = 'down' | 'up' | 'left' | 'right';
 
@@ -44,6 +45,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private portalRing: Phaser.GameObjects.Image | null = null;
   private stepTimer = 0;
   private transitioning = false;
+  private objArt = new Map<string, Phaser.GameObjects.Image>();
+  private frayGlows = new Map<string, Phaser.GameObjects.Image>();
+  private threadGfx: Phaser.GameObjects.Graphics | null = null;
+  private gapMark: Phaser.GameObjects.Image | null = null;
+  private exploreAcc = 0;
 
   constructor() { super('world'); }
 
@@ -53,6 +59,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.npcs = []; this.follower = null; this.trail = []; this.path = []; this.pendingInteract = null;
     this.zonesInside = new Set(); this.target = null; this.fx = []; this.lightPools = []; this.portalRing = null;
     this.transitioning = false; this.paused = false;
+    this.objArt = new Map(); this.frayGlows = new Map(); this.threadGfx = null; this.gapMark = null; this.exploreAcc = 0;
     const s = ctx.controller.state;
     this.map = MAPS[s.mapId] ?? MAPS['nexus.archive'];
     this.buildMap();
@@ -120,9 +127,17 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         const cx = (it.x + it.w / 2) * TILE, by = (it.y + it.h) * TILE;
         const img = this.add.image(cx, by, it.art).setOrigin(0.5, 1).setDepth(by + 16); // sits on top of tables and counters
         if (tex.height <= 16 && it.kind === 'sign') img.setOrigin(0.5, 1);
+        this.objArt.set(it.id, img);
+        // The Fray (spec 2.11): a sickly gold glow on a label that says more than its support.
+        if (it.kit) {
+          const glow = this.add.image(cx, by - tex.height / 2, 'glow').setTint(0xe8c040).setBlendMode(Phaser.BlendModes.ADD).setDepth(200001).setScale(0.32);
+          if (!ctx.settings.reducedMotion) this.tweens.add({ targets: glow, scale: 0.26, duration: 900, yoyo: true, repeat: -1, ease: 'Sine.InOut' });
+          this.frayGlows.set(it.kit, glow);
+        }
       }
-      if (it.kind !== 'board' || it.y >= 3) block(it.x, it.y, it.w, it.h);
+      block(it.x, it.y, it.w, it.h);
     }
+    this.threadGfx = this.add.graphics().setDepth(5);
 
     // Portal visuals.
     if (m.id === 'nexus.archive') {
@@ -143,8 +158,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       this.npcs.push(a);
       block(n.x, n.y, 1, 1);
     }
-    // Kip waits at the portal stone once the blade decision is made.
-    if (m.id === 'aethelgard.emberford' && s.companion === 'kip-arden' && s.flags['blade.choice'] !== undefined) {
+    // Kip waits at the portal stone once the market Showdown has ended.
+    if (m.id === 'aethelgard.emberford' && s.companion === 'kip-arden' && s.flags['sd.corvan.outcome'] !== undefined) {
       const a = this.makeActor('kip-arden', 21, 23, 'left');
       this.npcs.push(a);
       block(21, 23, 1, 1);
@@ -168,6 +183,39 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.fitCamera();
     this.cameras.main.startFollow(this.player.sprite, true, 0.12, 0.12);
     this.cameras.main.setBounds(-64, -96, m.width * TILE + 128, m.height * TILE + 160);
+    this.refreshWorld();
+  }
+
+  /** State-driven visuals. Called after every command by the interface. */
+  refreshWorld(): void {
+    const s = ctx.controller.state;
+    if (!s || !this.threadGfx) return;
+    for (const it of this.map.interactables) {
+      const img = this.objArt.get(it.id);
+      if (img) img.setVisible(!it.visibleIf || ctx.controller.check(it.visibleIf));
+    }
+    for (const [kit, glow] of this.frayGlows) {
+      const lvl = frayLevel(kit, s);
+      glow.setVisible(lvl > 0 && !ctx.settings.reducedEffects).setAlpha(0.25 + lvl * 0.2);
+    }
+    // The Provenance Thread: a gold line through the places already followed, then a dark gap.
+    const g = this.threadGfx; g.clear();
+    this.gapMark?.destroy(); this.gapMark = null;
+    for (const t of ctx.controller.pack.threads) {
+      const pts = t.nodes.filter((n) => n.map === this.map.id && s.flags[`thread.${t.id}.${n.id}`]);
+      if (!pts.length) continue;
+      g.lineStyle(2, 0xf2d27a, 0.85);
+      g.beginPath();
+      pts.forEach((n, i) => { const x = n.x * TILE + 8, y = n.y * TILE + 8; if (i === 0) g.moveTo(x, y); else g.lineTo(x, y); });
+      g.strokePath();
+      for (const n of pts) g.fillStyle(0xfff2b0, 1).fillCircle(n.x * TILE + 8, n.y * TILE + 8, 2.5);
+      if (s.flags[`thread.${t.id}.gap`]) {
+        const last = pts[pts.length - 1];
+        g.lineStyle(2, 0x1a1426, 0.9).lineBetween(last.x * TILE + 8, last.y * TILE + 8, t.gap.x * TILE + 8, t.gap.y * TILE + 8);
+        this.gapMark = this.add.image(t.gap.x * TILE + 8, t.gap.y * TILE + 8, 'glow').setTint(0x1a1426).setScale(0.22).setDepth(6);
+      }
+    }
+    if (this.portalRing) this.portalRing.setAlpha(ctx.controller.check({ objective: 'm01.o6.label' }) ? 1 : 0.35);
   }
 
   private makeActor(id: string, tx: number, ty: number, facing: Dir, isPlayer = false): Actor {
@@ -307,6 +355,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     if (!modal) {
       this.updateTarget();
       this.checkZones(false);
+      // The event clock runs only while the player explores (spec 93.1).
+      this.exploreAcc += dt;
+      if (this.exploreAcc >= 10) { this.exploreAcc = 0; ctx.controller.dispatch({ type: 'Explore', seconds: 10 }); }
     }
   }
 
@@ -320,11 +371,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     return false;
   }
 
-  /** After the blade decision, Kip stops following and waits at the portal stone. */
+  /** After the market Showdown, Kip stops following and waits at the portal stone. */
   private updateCompanionWait(): void {
     const f = this.follower;
     const s = ctx.controller.state;
-    if (!f || this.map.id !== 'aethelgard.emberford' || f.id !== 'kip-arden' || s.flags['blade.choice'] === undefined) return;
+    if (!f || this.map.id !== 'aethelgard.emberford' || f.id !== 'kip-arden' || s.flags['sd.corvan.outcome'] === undefined) return;
     if (ctx.ui.isModalOpen()) return; // wait until the conversation closes
     this.follower = null;
     this.npcs.push(f);
@@ -403,7 +454,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       const id = best.actor.id;
       const c = ctx.controller.pack.characters.find((x) => x.id === id);
       ctx.ui.setPrompt(`Talk to ${c?.name ?? 'them'}`);
-    } else ctx.ui.setPrompt(`${best.obj.kind === 'sign' ? 'Read' : best.obj.kind === 'exhibit' ? 'Inspect' : 'Use'} ${best.obj.label}`);
+    } else ctx.ui.setPrompt(`${best.obj.kind === 'sign' ? 'Read' : best.obj.kind === 'exhibit' ? 'Inspect' : best.obj.kind === 'thread' ? 'Follow the thread to' : 'Use'} ${best.obj.label}`);
   }
 
   tryInteract(): void {
@@ -421,8 +472,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     switch (it.kind) {
       case 'exhibit': ctx.ui.openExhibit(it.exhibit!); break;
       case 'bench': ctx.ui.openBench(); break;
-      case 'board': ctx.ui.openBoard(); break;
-      case 'sort': ctx.ui.openSort(); break;
+      case 'label': ctx.ui.openLabel(it.kit!); break;
+      case 'forge': ctx.ui.openForge(); break;
+      case 'assay': ctx.ui.openAssay(it.exhibit!); break;
+      case 'thread': ctx.ui.followThread(it.thread!, it.node!); break;
+      case 'waystone': ctx.ui.openWaystone(it.place ?? this.map.name); break;
       case 'sign': ctx.ui.showSign(it.label, it.text ?? ''); break;
       case 'portal': break;
     }
@@ -435,7 +489,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     // Clicked a character or an object? Walk next to it, then interact.
     const actors = [...this.npcs, ...(this.follower ? [this.follower] : [])];
     const hitA = actors.find((a) => a.sprite.getBounds().contains(wx, wy));
-    const hitO = this.map.interactables.find((it) => wx >= it.x * TILE && wx < (it.x + it.w) * TILE && wy >= (it.y - 1) * TILE && wy < (it.y + it.h) * TILE);
+    const hitO = this.map.interactables.find((it) => (!it.visibleIf || ctx.controller.check(it.visibleIf)) && wx >= it.x * TILE && wx < (it.x + it.w) * TILE && wy >= (it.y - 1) * TILE && wy < (it.y + it.h) * TILE);
     if (hitA || hitO) {
       const cells = hitA ? [{ x: Math.floor(hitA.sprite.x / TILE), y: Math.floor(hitA.sprite.y / TILE), w: 1, h: 1 }] : [hitO!];
       const goal = this.nearestFreeAround(cells[0]);
@@ -506,13 +560,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       if (this.zonesInside.has(z.id) && !arrival) continue;
       this.zonesInside.add(z.id);
       if (z.if && !ctx.controller.check(z.if)) {
-        if (z.to && !arrival) ctx.ui.toast('The portal is not open yet. Finish the label first.', 'info');
+        if (z.to && !arrival) ctx.ui.toast(z.id === 'portal' ? 'The portal is not open yet. Repair the label first.' : 'Not yet. Finish your work here first.', 'info');
         continue;
       }
       if (!ctx.controller.state.flags[`reached.${z.id}`]) ctx.controller.dispatch({ type: 'Reach', zone: z.id });
       if (z.to && !arrival) this.changeMap(z.to.map, z.to.x, z.to.y);
     }
-    if (this.portalRing) this.portalRing.setAlpha(ctx.controller.check({ objective: 'm01.o7.label' }) ? 1 : 0.35);
   }
 
   private saveSpot(): void {

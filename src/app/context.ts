@@ -10,8 +10,12 @@ export interface UIApi {
   openDialogue(characterId: string): void;
   openExhibit(exhibitId: string): void;
   openBench(): void;
-  openBoard(): void;
-  openSort(): void;
+  openLabel(kit: string): void;
+  openForge(): void;
+  openAssay(exhibitId: string): void;
+  followThread(thread: string, node: string): void;
+  openWaystone(place: string): void;
+  playScene(node: string): void;
   showSign(title: string, text: string): void;
   setPrompt(text: string | null): void;
   toast(text: string, kind?: string): void;
@@ -26,6 +30,8 @@ export interface WorldApi {
   applySettings(): void;
   playSfx(key: string): void;
   snapshotPosition(): void;
+  /** Redraw state-driven visuals: Fray glows, the Provenance Thread, visible objects. */
+  refreshWorld(): void;
 }
 
 export const ctx = {

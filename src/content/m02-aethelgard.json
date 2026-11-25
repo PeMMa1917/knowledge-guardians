@@ -416,7 +416,7 @@
      "id": "stall",
      "label": "Corvan's stall",
      "map": "aethelgard.emberford",
-     "x": 26,
+     "x": 25,
      "y": 11,
      "text": "The thread starts at the blade. It glows faintly: Corvan Hale holds it now, and his sign makes the claim.",
      "card": "card.corvan-claim"
@@ -434,15 +434,15 @@
      "id": "workshop",
      "label": "Lyle workshop",
      "map": "aethelgard.emberford",
-     "x": 5,
-     "y": 12,
+     "x": 3,
+     "y": 13,
      "text": "The thread ends on Hesper's workshop sheet: two steels, stacked, welded, twisted and folded, this season.",
      "card": "card.workshop-diagram"
     }
    ],
    "gap": {
     "after": "workshop",
-    "x": 3,
+    "x": 1,
     "y": 13,
     "text": "Past the workshop the thread goes dark. Nobody recorded where Hesper's two steels came from. That part of the story is missing, and you should say so."
    },

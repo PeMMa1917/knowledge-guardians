@@ -180,3 +180,41 @@ legend { color: var(--gold); padding: 0 0.4em; }
 .hint-text { font-size: 1.1rem; }
 .free input { flex: 1; min-width: 12rem; }
 textarea { width: 100%; }
+
+/* ---- Chapter 1 rework (spec v2.10) ---- */
+.toast-moment { border-color: #c8a0ff; }
+.fray-label { font-weight: 700; letter-spacing: 0.08em; color: #f2d27a; text-shadow: 0 0 10px rgba(232, 192, 64, 0.8); font-size: 1.3rem; }
+.fray-label.small { font-size: 1rem; }
+.reduced-motion .fray-label { text-shadow: none; }
+.label-panel fieldset, .forge-panel fieldset { border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; margin: 0.5em 0; }
+.label-preview { font-size: 1.15rem; background: #f4ecd2; color: #2a2440; padding: 0.6em 0.9em; border-radius: 6px; border: 2px solid var(--gold-dim); }
+.meter, .crowd { display: grid; grid-template-columns: auto 1fr auto; gap: 0.3em 0.6em; align-items: center; margin: 0.6em 0; }
+.crowd { grid-template-columns: auto 1fr 2.5em; }
+.bar { display: block; height: 10px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--gold); }
+.bar.sup i { background: var(--ok); }
+.bar.opp i { background: var(--rose); }
+.meter > span:nth-child(odd) { grid-column: 1; }
+.claim-text { font-size: 1.05rem; color: var(--gold); }
+.seal { color: #f2d27a; }
+.links { padding-left: 1.2em; }
+.links li.cracked { color: var(--ink-dim); text-decoration: line-through; }
+.sd-log { max-height: 10rem; overflow: auto; background: rgba(0,0,0,0.2); border-radius: 8px; padding: 0.5em 0.5em 0.5em 2em; }
+.sd-log li { margin: 0.25em 0; }
+.sd-log small { display: block; color: var(--ink-dim); }
+.sd-log .who-opponent { color: #ffd0e0; } .sd-log .who-witness { color: #d0ffd8; } .sd-log .who-crowd { color: var(--cyan); }
+.moves { display: flex; flex-wrap: wrap; gap: 0.5em; align-items: center; }
+.moves .cheap { opacity: 0.75; border-style: dashed; }
+.thread-steps { display: flex; gap: 0.4em; list-style: none; padding: 0; flex-wrap: wrap; }
+.thread-steps li { padding: 0.2em 0.7em; border-radius: 999px; border: 1px solid var(--gold-dim); color: var(--ink-dim); }
+.thread-steps li.done { color: #2a2440; background: var(--gold); }
+.thread-steps li.gap { border-style: dashed; }
+.thread-steps li.gap.done { background: #1a1426; color: var(--ink); border-color: var(--ink-dim); }
+.gap-text { background: #1a1426; border-left: 4px solid var(--ink-dim); padding: 0.5em 0.8em; border-radius: 6px; }
+.billet { width: 100%; max-width: 320px; image-rendering: pixelated; border-radius: 8px; border: 1px solid var(--gold-dim); }
+.forge-buttons button { margin: 0.2em; }
+.atlas { display: flex; flex-wrap: wrap; gap: 0.4em; list-style: none; padding: 0; }
+.atlas li { padding: 0.2em 0.7em; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2); color: var(--ink-dim); }
+.atlas li.met { color: var(--ink); border-color: var(--cyan); }
+.moments li { margin: 0.5em 0; }
+pre.json { max-height: 16rem; overflow: auto; font-size: 0.75rem; background: rgba(0,0,0,0.3); padding: 0.6em; border-radius: 6px; }
