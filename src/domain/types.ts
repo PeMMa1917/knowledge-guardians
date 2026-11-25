@@ -429,6 +429,27 @@ export interface EventRecord {
   weave: Weave;
 }
 
+/** An Exhibition Hall alcove (SYM-001). */
+export interface AlcoveRecord {
+  id: string;
+  title: string;
+  /** The alcove's prompt: a question about knowledge (our own paraphrase). */
+  prompt: string;
+  /** Symbol icons the player can try. They never light the lamps. */
+  symbols: { id: string; name: string; mirage: string }[];
+  /** Reply when the player places a card that is not an object (a person, an essay). */
+  notObject: string;
+  /** Real objects (evidence cards) that can light the alcove. */
+  objects: {
+    card: string;
+    lit: string;
+    links: { text: string; kind: 'specific' | 'checklist' | 'generic'; response: string }[];
+    implications: { text: string; ok: boolean; response: string }[];
+  }[];
+  onComplete?: Effect[];
+  weave: Weave;
+}
+
 /** Pronouns the player chose (spec 35.1). Characters use them in text through {they}, {them} and {their}. */
 export interface Pronouns { subject: string; object: string; possessive: string }
 
@@ -477,6 +498,7 @@ export interface ContentPack {
   portfolio: PortfolioTemplate[];
   events: EventRecord[];
   origins: OriginRecord[];
+  alcoves: AlcoveRecord[];
 }
 
 // ---------------------------------------------------------------------------

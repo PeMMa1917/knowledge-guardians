@@ -746,6 +746,54 @@ export class UI implements UIApi {
 
   // ------------------------------------------------- Title Lock (EE practice, 92.2)
 
+  /** Exhibition Hall alcove (SYM-001): object, what it shows, and "so what?". */
+  openAlcove(alcoveId: string): void {
+    const c = ctx.controller;
+    const rec = c.pack.alcoves.find((x) => x.id === alcoveId);
+    if (!rec) return;
+    const F = `alcove.${rec.id}`;
+    const box = this.openModal('alcove-panel wide', rec.title);
+    let feedback: { cls: string; text: string; who?: string } | null = null;
+    const run = (cmd: any) => {
+      const ev = c.dispatch(cmd);
+      const r = ev.find((e) => e.kind === 'alcove') as Extract<GameEvent, { kind: 'alcove' }> | undefined;
+      if (!r) return;
+      const who = { mirage: 'Symbol Mirage', golem: 'Checklist Golem', sphinx: 'So-What Sphinx' }[r.result as string];
+      feedback = { cls: r.result, text: r.text, who };
+      this.sfx(['lit', 'ok'].includes(r.result) ? 'sfx.sparkle' : 'sfx.page');
+      render();
+    };
+    const render = () => {
+      const st = c.state;
+      const item = st.flags[`${F}.item`] as string | undefined;
+      const obj = rec.objects.find((o) => o.card === item);
+      const linked = typeof st.flags[`${F}.link`] === 'number';
+      const done = st.flags[`${F}.done`] === true;
+      const lit = !!obj;
+      clear(box);
+      box.append(this.closeBtn(), h('h2', {}, rec.title),
+        h('p', { class: 'alcove-prompt' }, h('em', {}, 'Alcove card: '), rec.prompt),
+        h('div', { class: `alcove-stage ${lit ? 'lit' : 'dark'} ${feedback?.cls ?? ''}`, role: 'img', 'aria-label': lit ? 'The alcove lamps are lit.' : 'The alcove lamps are dark.' },
+          h('span', { class: 'lamp' }), h('span', { class: 'plinth' }, lit ? (c.pack.cards.find((x) => x.id === item)?.title ?? '') : feedback?.cls === 'mirage' ? '〰' : '—'), h('span', { class: 'lamp' })));
+      if (feedback) box.append(h('div', { class: `alcove-feedback ${feedback.cls}`, role: 'status', 'aria-live': 'polite' }, feedback.who ? h('strong', {}, `${feedback.who}: `) : '', feedback.text));
+      const cardBtns = st.cards.map((id) => c.pack.cards.find((x) => x.id === id)).filter(Boolean).map((card) =>
+        h('button', { type: 'button', class: item === card!.id ? 'chosen' : '', onclick: () => run({ type: 'AlcovePlace', alcove: rec.id, item: card!.id }) }, card!.title));
+      box.append(h('h3', {}, lit ? 'Change the object' : 'Stand something on the plinth'),
+        h('div', { class: 'alcove-items' }, h('p', { class: 'fine' }, 'Your evidence cards'), h('div', { class: 'row wrap' }, ...cardBtns),
+          h('p', { class: 'fine' }, 'Symbols'), h('div', { class: 'row wrap' }, ...rec.symbols.map((sy) => h('button', { type: 'button', class: 'symbol', onclick: () => run({ type: 'AlcovePlace', alcove: rec.id, item: sy.id }) }, sy.name)))));
+      if (obj) {
+        box.append(h('h3', {}, 'What knowledge does it show in the world?'), h('div', { class: 'options' },
+          ...obj.links.map((l, i) => h('button', { type: 'button', class: st.flags[`${F}.link`] === i ? 'chosen' : '', onclick: () => run({ type: 'AlcoveLink', alcove: rec.id, index: i }) }, l.text))));
+      }
+      if (obj && linked) {
+        box.append(h('h3', {}, 'The So-What Sphinx asks: so what?'), h('div', { class: 'options' },
+          ...obj.implications.map((im, i) => h('button', { type: 'button', class: st.flags[`${F}.implication`] === i && done ? 'chosen' : '', onclick: () => run({ type: 'AlcoveImply', alcove: rec.id, index: i }) }, im.text))));
+      }
+      if (done) box.append(h('p', { class: 'fair' }, 'The alcove is complete. Your alcove card is in your portfolio. You can change the object and try another one.'));
+    };
+    render();
+  }
+
   openLock(lockId: string): void {
     const c = ctx.controller;
     const rec = c.pack.locks.find((x) => x.id === lockId);

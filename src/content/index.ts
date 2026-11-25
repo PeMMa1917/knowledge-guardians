@@ -14,12 +14,13 @@ import side from './side-quests.json';
 import glossary from './glossary.json';
 import questions from './questions.json';
 import origins from './origins.json';
+import exhibition from './exhibition.json';
 
 export const CONTENT_VERSION = 4;
 
-const parts: any[] = [sources, common, m01, m02, firsts, ee, side, glossary, questions, origins];
+const parts: any[] = [sources, common, m01, m02, firsts, ee, side, glossary, questions, origins, exhibition];
 const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'missions', 'hints', 'criteria', 'awards', 'items', 'offers', 'journal',
-  'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks', 'glossary', 'questions', 'origins'] as const;
+  'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks', 'glossary', 'questions', 'origins', 'alcoves'] as const;
 
 export function buildPack(): ContentPack {
   const pack: any = { id: 'chapter-1', contentVersion: CONTENT_VERSION };

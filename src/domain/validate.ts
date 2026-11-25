@@ -152,6 +152,18 @@ export function validateContent(pack: ContentPack): string[] {
     if (!g.match.length || g.match.some((m) => m !== m.toLowerCase())) p.push(`glossary ${g.id}: match forms must be lower case`);
     g.examples.forEach((e, i) => cond(e.if, `glossary ${g.id} example ${i}`));
   });
+  // Exhibition alcoves (SYM-001): symbols never light; every object can complete; no hidden right answer.
+  (pack.alcoves ?? []).forEach((a) => {
+    dup('alcove', a.id); text(`alcove ${a.id}`, a.prompt); weave(a.weave, `alcove ${a.id}`, true); eff(a.onComplete, `alcove ${a.id}`);
+    if (a.symbols.length < 2) p.push(`alcove ${a.id}: needs at least two symbols (the Symbol Mirage lesson)`);
+    a.objects.forEach((o) => {
+      if (!cards.has(o.card)) p.push(`alcove ${a.id}: unknown card ${o.card}`);
+      if (!o.links.some((l) => l.kind === 'specific')) p.push(`alcove ${a.id} ${o.card}: needs a specific link`);
+      if (!o.links.some((l) => l.kind === 'checklist')) p.push(`alcove ${a.id} ${o.card}: needs a checklist link (Checklist Golem)`);
+      if (o.implications.filter((i) => i.ok).length < 2) p.push(`alcove ${a.id} ${o.card}: needs two good implications (OPEN-001)`);
+      if (!o.implications.some((i) => !i.ok)) p.push(`alcove ${a.id} ${o.card}: needs a 'so what?' trap (So-What Sphinx)`);
+    });
+  });
   pack.locks.forEach((l) => {
     dup('lock', l.id); weave(l.weave, `lock ${l.id}`, true); eff(l.onOpen, `lock ${l.id}`);
     if (!SUBJECTS[l.subject]) p.push(`lock ${l.id}: unknown subject ${l.subject}`);

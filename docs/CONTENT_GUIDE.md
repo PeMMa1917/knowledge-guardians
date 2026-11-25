@@ -153,6 +153,10 @@ A misconception (`misconceptions`) has a paraphrased `title`, the play `signal`,
 
 A template (`portfolio`) is an entry that the game adds with the effect `{ "portfolio": "pf.<id>" }`. Labels, Showdowns and forge tests also add entries. Entries are private. The student shares them by choice.
 
+## Add an Exhibition alcove (SYM-001)
+
+Alcoves are in `src/content/exhibition.json` (`alcoves`). Each has a prompt, at least two `symbols` (they bring the Symbol Mirage), and `objects` (evidence cards). Each object needs one `specific` link, one `checklist` link (the Checklist Golem) and usually one `generic` link, plus at least two good `implications` and one "so what?" trap (the So-What Sphinx). The validator checks this. Mix the order of the options. Place the alcove on a map with `kind: 'alcove'`.
+
 ## Tag a step with a knowledge question (Question Stones)
 
 Give an objective `"kq": { "id": "KQ-NEW-001", "action": "label" }`. The question is in `src/content/questions.json`, in our own words (never IB wording), with Lumen's one-sentence `lastWord`. Each new world and action pair makes the stone brighter. Never ask the player to "answer" a knowledge question for points (KQ-001).

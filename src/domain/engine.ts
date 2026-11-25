@@ -10,6 +10,7 @@ import type {
 import { CAMPAIGN_SCHEMA, type Pronouns } from './types';
 import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
+import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
 import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
 import { checkAwards, grantCredit } from './permanent';
 import { evaluateLabel, type LabelResult } from './label';
@@ -22,6 +23,9 @@ export type Command =
   | { type: 'Reach'; zone: string }
   | { type: 'SetPronouns'; pronouns: Pronouns }
   | { type: 'SetLook'; look: string }
+  | { type: 'AlcovePlace'; alcove: string; item: string }
+  | { type: 'AlcoveLink'; alcove: string; index: number }
+  | { type: 'AlcoveImply'; alcove: string; index: number }
   | { type: 'EnterNode'; node: string }
   | { type: 'ChooseDialogueOption'; node: string; index: number }
   | { type: 'InspectExhibit'; exhibit: string }
@@ -59,6 +63,7 @@ export type GameEvent =
   | { kind: 'simulation'; result: SimulationResult }
   | { kind: 'label'; result: LabelResult }
   | { kind: 'lock'; lock: string; result: LockResult }
+  | { kind: 'alcove'; alcove: string; stage: 'place' | 'link' | 'imply'; result: string; text: string }
   | { kind: 'showdown'; state: ShowdownState }
   | { kind: 'forge'; line: string }
   | { kind: 'compare'; match: boolean; line: string }
@@ -371,6 +376,44 @@ export class Engine {
           if (!check(o.if, s)) throw new Error('That offer is not available');
           if (s.marks < o.price) throw new Error('You do not have enough marks');
           s = apply([{ addMarks: -o.price }, { giveItem: o.item }, ...(o.effects ?? [])], s, out);
+          break;
+        }
+        case 'AlcovePlace': case 'AlcoveLink': case 'AlcoveImply': {
+          const rec = this.pack.alcoves.find((x) => x.id === cmd.alcove);
+          if (!rec) throw new Error('Unknown alcove');
+          const F = `alcove.${rec.id}`;
+          if (cmd.type === 'AlcovePlace') {
+            const r = placeInAlcove(rec, cmd.item);
+            if (r.result !== 'mirage' && r.result !== 'lit' && !this.pack.cards.some((c) => c.id === cmd.item)) throw new Error('Unknown item');
+            if (r.result !== 'mirage' && !s.cards.includes(cmd.item)) throw new Error('You do not have that card');
+            s = structuredClone(s);
+            if (r.result === 'mirage') s = apply([{ addNum: `${F}.mirages`, by: 1 }], s, out);
+            if (r.result === 'lit') { delete s.flags[`${F}.link`]; delete s.flags[`${F}.done`]; s = apply([{ setFlag: `${F}.item`, value: cmd.item }], s, out); }
+            events.push({ kind: 'alcove', alcove: rec.id, stage: 'place', result: r.result, text: r.text });
+          } else {
+            const item = s.flags[`${F}.item`];
+            if (typeof item !== 'string') throw new Error('Place an object first');
+            if (cmd.type === 'AlcoveLink') {
+              const r = linkAlcove(rec, item, cmd.index);
+              if (r.result === 'ok') s = apply([{ setFlag: `${F}.link`, value: cmd.index }], s, out);
+              else s = apply([{ addNum: `${F}.${r.result}`, by: 1 }], s, out);
+              events.push({ kind: 'alcove', alcove: rec.id, stage: 'link', result: r.result, text: r.text });
+            } else {
+              if (typeof s.flags[`${F}.link`] !== 'number') throw new Error('Say what the object shows first');
+              const r = implyAlcove(rec, item, cmd.index);
+              const first = !s.flags[`${F}.done`];
+              if (r.result === 'ok') {
+                s = apply([{ setFlag: `${F}.done`, value: true }, { setFlag: `${F}.implication`, value: cmd.index }, ...(first && !s.flags[`${F}.ever`] ? rec.onComplete ?? [] : []), { setFlag: `${F}.ever`, value: true }], s, out);
+                if (first) {
+                  const obj = rec.objects.find((o) => o.card === item)!;
+                  const title = this.pack.cards.find((c) => c.id === item)?.title ?? item;
+                  portfolio.push({ kind: 'exhibition', title: `Alcove: ${title}`, text: `${rec.prompt}\nObject: ${title}.\n${obj.links[s.flags[`${F}.link`] as number].text}\n${obj.implications[cmd.index].text}`, weave: rec.weave });
+                  weaves.push(rec.weave);
+                }
+              } else s = apply([{ addNum: `${F}.sphinx`, by: 1 }], s, out);
+              events.push({ kind: 'alcove', alcove: rec.id, stage: 'imply', result: r.result, text: r.text });
+            }
+          }
           break;
         }
         case 'SetLook': {
