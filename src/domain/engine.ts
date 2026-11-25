@@ -12,6 +12,7 @@ import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
 import { checkAwards, grantCredit } from './permanent';
 import { evaluateLabel, type LabelResult } from './label';
 import { playMove, startShowdown, type ShowdownMove } from './showdown';
+import { tryLock, type LockResult } from './lock';
 import { compareWithBlade, forgeStep, newForge, type ForgeAction } from './forge';
 import { addPortfolio, addSignal, checkMoments, recordWeave, tickEvents } from './learning';
 
@@ -23,6 +24,7 @@ export type Command =
   | { type: 'UseLens'; exhibit: string }
   | { type: 'RunSimulation'; pen: string; surface: string }
   | { type: 'BuildLabel'; kit: string; subject: string; criterion: string; limit: string }
+  | { type: 'TurnLock'; lock: string; choice: Record<string, string> }
   | { type: 'ShowdownStart'; showdown: string }
   | { type: 'ShowdownMove'; move: ShowdownMove }
   | { type: 'FollowThread'; thread: string; node: string }
@@ -51,6 +53,7 @@ export type GameEvent =
   | { kind: 'hint'; hint: Hint }
   | { kind: 'simulation'; result: SimulationResult }
   | { kind: 'label'; result: LabelResult }
+  | { kind: 'lock'; lock: string; result: LockResult }
   | { kind: 'showdown'; state: ShowdownState }
   | { kind: 'forge'; line: string }
   | { kind: 'compare'; match: boolean; line: string }
@@ -240,6 +243,20 @@ export class Engine {
           events.push({ kind: 'label', result: r });
           portfolio.push({ kind: 'label', title: `Label: ${kit.title}`, text: `${r.text} (${r.holds ? 'the label held' : 'visitors repeated a distorted version'}; force ${r.force - r.lower}, support ${r.support})`, weave: kit.weave });
           weaves.push(kit.weave);
+          break;
+        }
+        case 'TurnLock': {
+          const rec = this.pack.locks.find((x) => x.id === cmd.lock);
+          if (!rec) throw new Error('Unknown lock');
+          const r = tryLock(rec, cmd.choice);
+          const wasOpen = s.flags[`lock.${rec.id}.open`] === true;
+          s = apply([
+            { addNum: `lock.${rec.id}.turns`, by: 1 },
+            ...(r.opened ? [{ setFlag: `lock.${rec.id}.open`, value: true } as Effect, { setFlag: `lock.${rec.id}.question`, value: r.question } as Effect] : []),
+            ...(r.opened && !wasOpen ? rec.onOpen ?? [] : []),
+          ], s, out);
+          events.push({ kind: 'lock', lock: rec.id, result: r });
+          if (r.opened && !wasOpen) { portfolio.push({ kind: 'reflection', title: `EE practice: ${rec.title}`, text: `My practice question: ${r.question}`, weave: rec.weave }); weaves.push(rec.weave); }
           break;
         }
         case 'ShowdownStart': {

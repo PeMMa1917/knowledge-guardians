@@ -44,6 +44,7 @@ Every player action is a typed command (see `Command` in `src/domain/engine.ts`)
 | `ChooseDialogueOption`, `EnterNode` | Dialogue. |
 | `RunSimulation` | The fair test at the bench (a stated model, `claimKind: simulation`). |
 | `BuildLabel` | Label builder: subject, criterion, limit, support cards. Gives a `LabelResult` with the Fray gap (`label.ts`). |
+| `TurnLock` | Title Lock for EE practice: turn the rings to make a research question (`lock.ts`). |
 | `ShowdownStart`, `ShowdownMove` | Public argument with crowd trust and patience (`showdown.ts`). |
 | `FollowThread` | Provenance Thread: visit nodes; a gap shows where the record stops. |
 | `Forge`, `CompareAssay` | Forge billets and compare them with the blade at the assay table (`forge.ts`). |
@@ -68,7 +69,7 @@ Content is JSON. It never holds code. Conditions and effects use a small vocabul
 
 - **Conditions:** `flag`/`eq`, `flag`/`in`, `flagSet`, `num`/`gte`/`lte`, `item`, `marks`, `card`, `objective`, `all`, `any`, `not`.
 - **Effects:** `setFlag`, `addNum`, `giveItem`, `takeItem`, `addMarks`, `addCard`, `journal`, `relation`, `companion`, `credit`, `checkpoint`, `signal` (a misconception signal), `portfolio` (add an entry from a template).
-- **Dialogue `open`:** a node or option can open a tool when the dialogue closes: `showdown:<id>`, `label:<kit>`, `forge`, `assay`, `thread:<id>`. `validate.ts` checks these.
+- **Dialogue `open`:** a node or option can open a tool when the dialogue closes: `showdown:<id>`, `label:<kit>`, `lock:<id>`, `forge`, `assay`, `thread:<id>`. `validate.ts` checks these.
 
 `src/domain/validate.ts` checks all references (cards, sources, nodes, items, objectives) when the game starts and in `npm test`.
 

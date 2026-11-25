@@ -38,7 +38,7 @@ The design spec is `Knowledge_Guardians_spec_v2.10.md`. The project owner keeps 
 13. **Teacher view** (TEACH-001 to TEACH-005). Formative only, never a mark. Least data. No public ranking of named students. The student shares a progress file by choice.
 14. **Portfolio** is private and owned by the student. An entry goes to the teacher only when the student shares it.
 15. **No student-made content** (NOMAKE-001) and **no news or current events** (NONEWS-001). `validate.ts` checks for news words in sources.
-16. **Weave** (WEAVE-016 to WEAVE-018). Content records list the TOK concepts, ATL skills, areas of knowledge and DP subjects they touch. EE and CAS appear as practice only. Play is never CAS.
+16. **Weave** (WEAVE-016 to WEAVE-018). Content records list the TOK concepts, ATL skills, areas of knowledge and DP subjects they touch. EE and CAS appear as practice only. Play is never CAS. The game never asks for, stores or suggests a student's own EE question (EE-002).
 17. **Cultural care** (section 88). Name people and places with care. Give local names (for example Chomolungma and Sagarmatha). Do not use a culture as a costume. Fictional cultures must not copy a real one.
 18. **Content is data.** JSON with the restricted vocabulary in `src/domain/types.ts`. No code in content.
 19. **Accessibility** (section 21): every action works with the keyboard. Keep text scaling, reduced motion, reduced effects, high contrast and dyslexia spacing working. Give `altText` for pictures.

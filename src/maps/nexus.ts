@@ -69,6 +69,7 @@ export const NEXUS: MapDef = {
     { id: 'clerk-venn', x: 20, y: 8, facing: 'left' },
     { id: 'kip-arden', x: 6, y: 15, facing: 'right' },
     { id: 'villager-2', x: 17, y: 13, facing: 'up' },
+    { id: 'archivist-tull', x: 35, y: 13, facing: 'down' },
   ],
   interactables: [
     { id: 'ex-a', kind: 'exhibit', exhibit: 'OBJ-001-A', x: 8, y: 7, w: 1, h: 1, label: 'the patent drawing', art: 'pedestal.patent' },
@@ -81,6 +82,8 @@ export const NEXUS: MapDef = {
       .map(([ex, key], i) => ({ id: `plaque-${key}`, kind: 'exhibit' as const, exhibit: ex, kit: `first.${key}`, x: 27 + i * 2, y: 5, w: 1, h: 1, label: 'a plaque in the Hall of Firsts', art: 'plaque' })),
     { id: 'sign-hall', kind: 'sign', x: 26, y: 12, w: 1, h: 1, label: 'the Hall of Firsts sign', art: 'signpost',
       text: 'THE HALL OF FIRSTS. Every plaque here says "the first". First at what? Repair a plaque by choosing what kind of first it was, and what we do not know.' },
+    { id: 'title-lock', kind: 'lock', lock: 'inventor', x: 37, y: 13, w: 1, h: 1, label: 'the Title Lock (EE practice)', art: 'title-lock', visibleIf: { objective: 'm01.o6.label' } },
+    { id: 'claim-board', kind: 'label', kit: 'ee.inventor', x: 33, y: 16, w: 1, h: 1, label: "Tull's claim board", art: 'label-stand', visibleIf: { objective: 'ee1.o3.weigh' } },
     { id: 'sign-portal', kind: 'sign', x: 10, y: 4, w: 1, h: 1, label: 'the portal sign', art: 'signpost',
       text: 'PORTAL TO AETHELGARD. Opens for Guardians on assignment.' },
   ],
@@ -99,6 +102,7 @@ export const NEXUS: MapDef = {
     { x: 2.5, y: 9.5, r: 34, color: 0x8fd3ff, flicker: true },
     { x: 33, y: 5.5, r: 90, color: 0xffd28a },
     { x: 32, y: 12, r: 70, color: 0xfff0c8 },
+    { x: 36, y: 13.5, r: 40, color: 0xffd28a, flicker: true },
   ],
   spawn: { x: 12, y: 17 },
 };

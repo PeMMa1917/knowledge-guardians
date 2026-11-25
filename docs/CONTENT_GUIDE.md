@@ -99,6 +99,15 @@ A label kit (`labelKits`) is a museum label that the player builds from parts: a
 - A criterion or support can have `signal` (a misconception ID). Use this for a pattern of reasoning, never for a value.
 - Put the kit on a map as an interactable with `kit`. To open it from dialogue, use `"open": "label:<kit id>"`.
 
+## Add an EE practice trail (spec 92.2)
+
+A trail is an optional mission (see `src/content/ee-trails.json`) with seven steps: narrow the question at a **Title Lock**, plan the search, weigh sources, build an argument with a counterclaim, cite, find integrity problems in a practice draft, and reflect.
+
+- A **Title Lock** (`locks`) has rings (`parts`). Each option has `ok` and, when it is not ok, a `why` line. The question is the option texts joined in order. At least two questions must open the lock (OPEN-001). Put it on a map as an interactable of kind `lock`, or open it from dialogue with `"open": "lock:<id>"`.
+- The argument step reuses a label kit. Set `"sentence": true` and `legends` so the panel says "claim" and "counterclaim" instead of "label" and "limit".
+- EE-001: put the trail near a DP subject (`subject`). EE-002: the topic is authored. **Never** ask for, store or suggest the student's own research question or essay text.
+- EE-003: credit and the teacher report show the trail as practice only.
+
 ## Add a Showdown
 
 A Showdown (`showdowns`) is a public argument. See `ShowdownRecord` in `types.ts`.

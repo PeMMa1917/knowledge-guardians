@@ -8,6 +8,7 @@
 import type { Condition, ContentPack, Effect, Weave } from './types';
 import { ATLS, CONCEPTS, PROFILE } from './types';
 import { SUBJECTS } from './curriculum';
+import { openCombinations } from './lock';
 
 const MAX_TEXT = 2000;
 const CLAIM_KINDS = ['observation', 'interpretation', 'value', 'simulation'];
@@ -130,6 +131,13 @@ export function validateContent(pack: ContentPack): string[] {
     a.criteria.forEach((c) => criteria.has(c) || p.push(`award ${a.id}: unknown criterion ${c}`));
   });
   pack.offers.forEach((o) => { dup('offer', o.id); items.has(o.item) || p.push(`offer ${o.id}: unknown item`); cond(o.if, `offer ${o.id}`); eff(o.effects, `offer ${o.id}`); });
+  pack.locks.forEach((l) => {
+    dup('lock', l.id); weave(l.weave, `lock ${l.id}`, true); eff(l.onOpen, `lock ${l.id}`);
+    if (!SUBJECTS[l.subject]) p.push(`lock ${l.id}: unknown subject ${l.subject}`);
+    // OPEN-001: more than one question must open the lock.
+    if (openCombinations(l) < 2) p.push(`lock ${l.id}: at least two questions must open it`);
+    l.parts.forEach((pt) => pt.options.forEach((o) => { text(`lock ${l.id} ${pt.id}.${o.id}`, o.text); if (!o.ok && !o.why) p.push(`lock ${l.id} ${pt.id}.${o.id}: a closed option needs a reason`); }));
+  });
   pack.labelKits.forEach((k) => {
     dup('labelKit', k.id); weave(k.weave, `label kit ${k.id}`, true); eff(k.onHold, `label kit ${k.id}`);
     const subj = new Set(k.subjects.map((x) => x.id)), crit = new Set(k.criteria.map((x) => x.id));
@@ -186,6 +194,7 @@ export function validateContent(pack: ContentPack): string[] {
     const ok = kind === 'forge' || kind === 'assay'
       || (kind === 'showdown' && pack.showdowns.some((x) => x.id === id))
       || (kind === 'label' && kits.has(id))
+      || (kind === 'lock' && pack.locks.some((x) => x.id === id))
       || (kind === 'thread' && pack.threads.some((x) => x.id === id));
     if (!ok) p.push(`${where}: cannot open "${o}"`);
   }

@@ -9,12 +9,13 @@ import common from './common.json';
 import m01 from './m01-nexus.json';
 import m02 from './m02-aethelgard.json';
 import firsts from './firsts.json';
+import ee from './ee-trails.json';
 
-export const CONTENT_VERSION = 2;
+export const CONTENT_VERSION = 3;
 
-const parts: any[] = [sources, common, m01, m02, firsts];
+const parts: any[] = [sources, common, m01, m02, firsts, ee];
 const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'missions', 'hints', 'criteria', 'awards', 'items', 'offers', 'journal',
-  'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events'] as const;
+  'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks'] as const;
 
 export function buildPack(): ContentPack {
   const pack: any = { id: 'chapter-1', contentVersion: CONTENT_VERSION };

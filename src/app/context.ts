@@ -11,6 +11,7 @@ export interface UIApi {
   openExhibit(exhibitId: string): void;
   openBench(): void;
   openLabel(kit: string): void;
+  openLock(lock: string): void;
   openForge(): void;
   openAssay(exhibitId: string): void;
   followThread(thread: string, node: string): void;

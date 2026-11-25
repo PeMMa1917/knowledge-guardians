@@ -15,7 +15,7 @@ import { labelText, type LabelResult } from '../domain/label';
 import { studentAlerts } from '../domain/learning';
 import { MOVE_HELP, type ShowdownMove } from '../domain/showdown';
 import { ATL_NAMES, CONCEPT_NAMES, PROFILE_NAMES, SUBJECTS } from '../domain/curriculum';
-import type { ClaimKind, DialogueNode, EvidenceCard, HistoricalLabel, ShowdownState } from '../domain/types';
+import type { ClaimKind, DialogueNode, EvidenceCard, HistoricalLabel, ShowdownState, TitleLockRecord } from '../domain/types';
 import { PLAYER_LOOKS } from '../scenes/art';
 import { artURL, BIG_ART } from './illustrations';
 import { clear, h, trapFocus } from './dom';
@@ -356,6 +356,7 @@ export class UI implements UIApi {
     else if (kind === 'label') this.openLabel(id);
     else if (kind === 'forge') this.openForge();
     else if (kind === 'assay') this.openAssay('AE-ASSAY');
+    else if (kind === 'lock') this.openLock(id);
   }
 
   // ---------------------------------------------------------- dialogue
@@ -563,13 +564,13 @@ export class UI implements UIApi {
     this.openModal('label-panel wide', kit.title, this.closeBtn(),
       h('h2', {}, kit.title),
       h('p', {}, h('span', { class: 'fine' }, 'Old label: '), h('span', { class: c.state.flags[`label.${kit.id}.holds`] ? '' : 'fray-label small' }, kit.oldLabel)),
-      h('p', { class: 'fine' }, 'Build a label that visitors can repeat correctly. A bigger claim needs more support. A limit makes a claim smaller. Many labels can hold.'),
-      kit.subjects.length > 1 ? group('Who or what', 'subject', kit.subjects, () => '') : '',
-      group('What kind of "first"', 'criterion', kit.criteria, (id) => `(force ${kit.criteria.find((x) => x.id === id)!.force})`),
-      group('A limit (optional)', 'limit', kit.limits, (id) => { const l = kit.limits.find((x) => x.id === id)!; return l.lower ? `(force −${l.lower})` : ''; }),
-      h('h3', {}, 'Your label'), preview,
+      h('p', { class: 'fine' }, kit.legends?.intro ?? 'Build a label that visitors can repeat correctly. A bigger claim needs more support. A limit makes a claim smaller. Many labels can hold.'),
+      kit.subjects.length > 1 ? group(kit.legends?.subject ?? 'Who or what', 'subject', kit.subjects, () => '') : '',
+      group(kit.legends?.criterion ?? 'What kind of "first"', 'criterion', kit.criteria, (id) => `(force ${kit.criteria.find((x) => x.id === id)!.force})`),
+      group(kit.legends?.limit ?? 'A limit (optional)', 'limit', kit.limits, (id) => { const l = kit.limits.find((x) => x.id === id)!; return l.lower ? `(force −${l.lower})` : ''; }),
+      h('h3', {}, kit.sentence ? 'Your claim' : 'Your label'), preview,
       h('p', { class: 'fine' }, held.length ? `Cards you hold that may support a label here: ${held.map((id) => c.pack.cards.find((x) => x.id === id)?.title).join('; ')}.` : 'You hold no cards for this label yet. Inspect the exhibits and talk to people first.'),
-      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: put }, 'Put up the label')),
+      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: put }, kit.legends?.button ?? 'Put up the label')),
       result);
   }
 
@@ -582,6 +583,41 @@ export class UI implements UIApi {
         h('span', {}, `Force ${force}`), h('span', { class: 'bar' }, h('i', { style: { width: `${Math.min(100, force * 20)}%` } })),
         h('span', {}, `Support ${r.support}`), h('span', { class: 'bar sup' }, h('i', { style: { width: `${Math.min(100, r.support * 20)}%` } }))),
       h('p', { class: 'fine' }, r.used.length ? `Support came from: ${r.used.map((id) => ctx.controller.pack.cards.find((x) => x.id === id)?.title).join('; ')}.` : 'None of your cards supports this exact label.'));
+  }
+
+  // ------------------------------------------------- Title Lock (EE practice, 92.2)
+
+  openLock(lockId: string): void {
+    const c = ctx.controller;
+    const rec = c.pack.locks.find((x) => x.id === lockId);
+    if (!rec) return;
+    const choice: Record<string, string> = {};
+    for (const p of rec.parts) choice[p.id] = p.options[0].id;
+    const preview = h('p', { class: 'label-preview', 'aria-live': 'polite' });
+    const result = h('div', { class: 'label-result', role: 'status', 'aria-live': 'polite' });
+    const update = () => { clear(preview); preview.append(rec.parts.map((p) => p.options.find((o) => o.id === choice[p.id])!.text).join(' ').replace(/\s+([?,.])/g, '$1')); };
+    const ring = (p: TitleLockRecord['parts'][number]) => h('fieldset', {}, h('legend', {}, p.label),
+      ...p.options.map((o) => h('label', { class: 'radio' },
+        h('input', { type: 'radio', name: `${rec.id}-${p.id}`, value: o.id, checked: choice[p.id] === o.id, onchange: () => { choice[p.id] = o.id; update(); } }), ` ${o.text}`)));
+    const turn = () => {
+      const ev = c.dispatch({ type: 'TurnLock', lock: rec.id, choice: { ...choice } });
+      const r = (ev.find((e) => e.kind === 'lock') as Extract<GameEvent, { kind: 'lock' }> | undefined)?.result;
+      if (!r) return;
+      this.sfx(r.opened ? 'sfx.sparkle' : 'sfx.page');
+      clear(result);
+      result.append(h('p', { class: r.opened ? 'fair' : 'unfair' }, r.opened ? 'The lock opens.' : 'The rings slip back. The lock stays closed.'),
+        ...r.lines.map((l) => h('p', {}, l)),
+        r.opened ? h('p', { class: 'fine' }, 'Your practice question is in your portfolio. Talk to Archivist Tull for the next step.') : '');
+      result.scrollIntoView({ block: 'nearest', behavior: ctx.settings.reducedMotion ? 'auto' : 'smooth' });
+    };
+    update();
+    this.openModal('label-panel wide', rec.title, this.closeBtn(),
+      h('h2', {}, `Title Lock: ${rec.title}`),
+      h('p', {}, rec.intro),
+      ...rec.parts.map(ring),
+      h('h3', {}, 'Your question'), preview,
+      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: turn }, 'Turn the lock')),
+      result);
   }
 
   // ------------------------------------------------- Provenance Thread (12.23)

@@ -219,7 +219,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   }
 
   private makeActor(id: string, tx: number, ty: number, facing: Dir, isPlayer = false): Actor {
-    const sprite = this.add.sprite(tx * TILE + 8, ty * TILE + 12, `char.${id}`, this.idleFrame(facing)).setOrigin(0.5, 0.8);
+    // A character can use another character's sheet (for example the archivist uses a villager sheet).
+    const sheet = this.textures.exists(`char.${id}`) ? id : ctx.controller.pack.characters.find((c) => c.id === id)?.sprite ?? id;
+    const sprite = this.add.sprite(tx * TILE + 8, ty * TILE + 12, `char.${sheet}`, this.idleFrame(facing)).setOrigin(0.5, 0.8);
     const shadow = this.add.image(sprite.x, sprite.y + 6, 'shadow').setDepth(sprite.y - 1);
     if (!isPlayer) sprite.setInteractive({ useHandCursor: true });
     const a: Actor = { id, sprite, shadow, facing };
@@ -473,6 +475,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'exhibit': ctx.ui.openExhibit(it.exhibit!); break;
       case 'bench': ctx.ui.openBench(); break;
       case 'label': ctx.ui.openLabel(it.kit!); break;
+      case 'lock': ctx.ui.openLock(it.lock!); break;
       case 'forge': ctx.ui.openForge(); break;
       case 'assay': ctx.ui.openAssay(it.exhibit!); break;
       case 'thread': ctx.ui.followThread(it.thread!, it.node!); break;

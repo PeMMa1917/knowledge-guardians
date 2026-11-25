@@ -408,7 +408,66 @@
    "role": "Nexus archivist",
    "sprite": "villager-1",
    "mode": "fictional",
-   "talk": []
+   "talk": [
+    {
+     "if": {
+      "objective": "ee1.o7.reflect"
+     },
+     "node": "tull.after"
+    },
+    {
+     "if": {
+      "objective": "ee1.o6.integrity"
+     },
+     "node": "tull.reflect"
+    },
+    {
+     "if": {
+      "objective": "ee1.o5.cite"
+     },
+     "node": "tull.draft"
+    },
+    {
+     "if": {
+      "objective": "ee1.o4.argue"
+     },
+     "node": "tull.cite"
+    },
+    {
+     "if": {
+      "objective": "ee1.o3.weigh"
+     },
+     "node": "tull.argue"
+    },
+    {
+     "if": {
+      "objective": "ee1.o2.plan"
+     },
+     "node": "tull.weigh"
+    },
+    {
+     "if": {
+      "objective": "ee1.o1.lock"
+     },
+     "node": "tull.plan"
+    },
+    {
+     "if": {
+      "flag": "ee1.started",
+      "eq": true
+     },
+     "node": "tull.lockagain"
+    },
+    {
+     "if": {
+      "objective": "m01.o6.label"
+     },
+     "node": "tull.start"
+    },
+    {
+     "node": "tull.busy"
+    }
+   ]
   },
   {
    "id": "translator-ama",
@@ -482,6 +541,11 @@
   {
    "id": "crit.culture.firsts",
    "concept": "culture",
+   "maximum": 15
+  },
+  {
+   "id": "crit.justification.ee-practice",
+   "concept": "justification",
    "maximum": 15
   }
  ],
@@ -606,6 +670,18 @@
    "when": {
     "num": "count.firsts",
     "gte": 3
+   }
+  },
+  {
+   "id": "skill.ee-practice-1",
+   "kind": "skill",
+   "name": "Research Practice I",
+   "earnedBy": "You narrowed a question, planned a search, argued with a counterclaim, cited your sources and reflected. Practice only, not your real Extended Essay.",
+   "criteria": [
+    "crit.justification.ee-practice"
+   ],
+   "when": {
+    "objective": "ee1.o7.reflect"
    }
   }
  ],
@@ -788,6 +864,25 @@
    },
    "did": "You admitted that Corvan paid fairly, even while you argued against his sign.",
    "prompt": ""
+  },
+  {
+   "id": "PM-15",
+   "attribute": "principled",
+   "when": {
+    "flag": "ee1.integrity",
+    "eq": true
+   },
+   "did": "You found copied words, an invented source and a missing citation, and you named each one.",
+   "prompt": "Why does it matter whose words are whose?"
+  },
+  {
+   "id": "PM-16",
+   "attribute": "reflective",
+   "when": {
+    "flagSet": "ee1.reflected"
+   },
+   "did": "You looked back at a research trail and said what changed in your thinking.",
+   "prompt": "What would you do differently next time?"
   }
  ],
  "misconceptions": [
@@ -1329,6 +1424,30 @@
     ],
     "atl": [
      "thinking"
+    ]
+   }
+  },
+  {
+   "id": "pf.ee1",
+   "kind": "essay",
+   "title": "EE practice: The Inventor's Share",
+   "text": "Practice trail (not my real Extended Essay). I narrowed a question about who was credited for the ballpoint pen, planned a search, named a gap (no licence records), built a claim with a counterclaim, cited two records, and found three integrity problems in a draft. What changed in my thinking:",
+   "weave": {
+    "concepts": [
+     "justification",
+     "evidence"
+    ],
+    "atl": [
+     "research",
+     "thinking"
+    ],
+    "subjects": [
+     "business",
+     "history"
+    ],
+    "aoks": [
+     "HIS",
+     "HUM"
     ]
    }
   }

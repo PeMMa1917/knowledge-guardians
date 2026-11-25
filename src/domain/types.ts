@@ -255,6 +255,10 @@ export interface LabelKit {
   /** What visitors say when the label does not hold. */
   weak: { noSupport: string; tooStrong: string };
   onHold?: Effect[];
+  /** Join as one sentence ("Patents were one factor…") instead of a museum label ("First patent: Loud."). */
+  sentence?: boolean;
+  /** Words for the builder panel when the kit is not a museum label (for example an EE claim board). */
+  legends?: { intro?: string; subject?: string; criterion?: string; limit?: string; button?: string };
   weave: Weave;
 }
 
@@ -305,6 +309,24 @@ export interface ShowdownRecord {
   canBeWonOver: boolean;
   /** Misconception signal when the player answers an open fair point with a cheap shot or a shout (MIS-36). */
   dodgeSignal?: string;
+  weave: Weave;
+}
+
+// ---------------------------------------------------------------------------
+// Title Lock (spec 92.2): EE practice, narrowing a question
+// ---------------------------------------------------------------------------
+
+export interface TitleLockRecord {
+  id: string;
+  title: string;
+  /** DP subject id the practice trail sits near (EE-001). */
+  subject: string;
+  intro: string;
+  /** Rings, in the order their texts join into the question. */
+  parts: { id: string; label: string; options: { id: string; text: string; ok: boolean; why: string }[] }[];
+  openLine: string;
+  /** Applied the first time the lock opens. */
+  onOpen?: Effect[];
   weave: Weave;
 }
 
@@ -393,6 +415,7 @@ export interface ContentPack {
   journal: { id: string; text: string; claimKind?: ClaimKind }[];
   labelKits: LabelKit[];
   showdowns: ShowdownRecord[];
+  locks: TitleLockRecord[];
   threads: ThreadRecord[];
   moments: MomentRule[];
   misconceptions: MisconceptionRecord[];
