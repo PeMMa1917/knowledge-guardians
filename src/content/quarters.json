@@ -109,6 +109,16 @@
    "where": "Emberford: the guild clerk's map."
   },
   {
+   "id": "folded-map",
+   "name": "Kip's map of good places",
+   "text": "A warm step, an echo and a climbing tree. No official map shows them; this one does.",
+   "if": {
+    "flag": "puzzle.map-table.done",
+    "eq": true
+   },
+   "where": "Emberford: the mapmaker's table."
+  },
+  {
    "id": "soot-jar",
    "name": "A tiny jar of soot",
    "text": "From the Founders' Plaque. Even dirt can be evidence of where a thing has been.",

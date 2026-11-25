@@ -183,6 +183,15 @@ export function validateContent(pack: ContentPack): string[] {
         m.labels.forEach((l, i) => { if (!l.why.trim()) p.push(`puzzle ${z.id} method ${m.id} label ${i + 1}: needs a reason`); });
       });
     }
+    else if (z.type === 'mapmaker') {
+      const ids = new Set(z.layers.map((l) => l.id));
+      z.audiences.forEach((a) => {
+        if (a.need.length > z.maxLayers) p.push(`puzzle ${z.id} ${a.id}: needs more layers than the sheet holds`);
+        a.need.forEach((n) => ids.has(n) || p.push(`puzzle ${z.id} ${a.id}: unknown layer ${n}`));
+      });
+      if (z.layers.length <= z.maxLayers) p.push(`puzzle ${z.id}: the sheet must be too small for every layer`);
+      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
+    }
     else if (z.type === 'conjecture') {
       if (new Set(z.angles.map((a) => ((a % 360) + 360) % 360)).size !== z.angles.length) p.push(`puzzle ${z.id}: points must be at different angles`);
       for (let n = 1; n <= z.angles.length; n++) {

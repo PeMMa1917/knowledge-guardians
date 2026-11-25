@@ -356,6 +356,14 @@ function roundWindow(g: Ctx, glass: boolean) {
 DRAW['round-window'] = [16, 24, (g) => roundWindow(g, false)];
 DRAW['round-window.done'] = [16, 24, (g) => roundWindow(g, true)];
 
+// The mapmaker's table (original art): a small table with an unrolled map, an inkpot and a quill.
+DRAW['map-table'] = [16, 24, (g) => {
+  R(g, '#5b3b22', 2, 16, 1, 8); R(g, '#5b3b22', 13, 16, 1, 8); R(g, '#8a5a30', 0, 13, 16, 3); R(g, '#a87445', 0, 13, 16, 1);
+  R(g, '#efe1bd', 2, 9, 11, 5); R(g, '#c9b48a', 2, 9, 1, 5); R(g, '#c9b48a', 12, 9, 1, 5);
+  R(g, '#b98d55', 3, 11, 9, 1); R(g, '#5fa8d3', 5, 10, 1, 1); R(g, '#e0607e', 9, 12, 1, 1); R(g, '#7fb3d1', 11, 9, 1, 5);
+  R(g, '#2a2440', 13, 11, 2, 2); R(g, '#f3eee0', 14, 6, 1, 5); R(g, '#e9e5f5', 15, 5, 1, 2);
+}];
+
 // The door to the Guardian's quarters (original art): a round-topped oak door with a star.
 DRAW['quarters-door'] = [16, 24, (g) => {
   R(g, '#3b2a1a', 1, 3, 14, 21); R(g, '#3b2a1a', 3, 1, 10, 2);

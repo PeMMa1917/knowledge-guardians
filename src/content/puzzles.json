@@ -927,6 +927,135 @@
     "Every pair of points makes one chord. Every four points make exactly one crossing (the two diagonals of their four-sided shape).",
     "With 6 points: 15 chords and 15 crossings, so 1 + 15 + 15 = 31. This works for every number of points, if no three chords meet at one point. That is a proof, not a pattern."
    ]
+  },
+  {
+   "id": "map-table",
+   "type": "mapmaker",
+   "title": "The Mapmaker's Table",
+   "intro": "Cartographer Oskar is ill, and four people are waiting for maps of Emberford. His note says: 'The guild paper is small. A sheet can hold three layers before it turns to mud. Ask each person what they need the map for.'",
+   "skills": [
+    "SK-KNO-14",
+    "SK-THK-14"
+   ],
+   "weave": {
+    "concepts": [
+     "values",
+     "power"
+    ],
+    "atl": [
+     "thinking",
+     "communication"
+    ],
+    "subjects": [
+     "geography"
+    ],
+    "aoks": [
+     "HUM"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.values.maps"
+    },
+    {
+     "journal": "j.maps"
+    }
+   ],
+   "maxLayers": 3,
+   "layers": [
+    {
+     "id": "roads",
+     "label": "Roads and paths"
+    },
+    {
+     "id": "names",
+     "label": "Names of buildings"
+    },
+    {
+     "id": "wells",
+     "label": "Wells"
+    },
+    {
+     "id": "slope",
+     "label": "Slopes"
+    },
+    {
+     "id": "stalls",
+     "label": "Market stalls and owners"
+    },
+    {
+     "id": "loved",
+     "label": "Places people love"
+    }
+   ],
+   "audiences": [
+    {
+     "id": "traveller",
+     "name": "A traveller",
+     "wants": "I have one hour. I want to find the forge, the guild hall and the inn, and not get lost.",
+     "need": [
+      "roads",
+      "names"
+     ],
+     "success": "The traveller walks straight to the forge, then to the inn. 'A good map. I did not need to know who owns the apple stall.'",
+     "lost": "The traveller walks in circles and asks a child for the way."
+    },
+    {
+     "id": "efua",
+     "name": "Efua, the well keeper",
+     "wants": "The town wants a third well. Water runs downhill under the ground too. I need to see the wells we have and where the land goes down.",
+     "need": [
+      "wells",
+      "slope"
+     ],
+     "success": "Efua puts her finger on a low place between the two wells. 'There. We dig there first.'",
+     "lost": "Efua frowns. 'I cannot choose a place for a well from this.'"
+    },
+    {
+     "id": "clerk",
+     "name": "The guild clerk",
+     "wants": "Every stall pays a small fee each season. I need each stall, who keeps it, and the name of the street it is on.",
+     "need": [
+      "stalls",
+      "names"
+     ],
+     "success": "The clerk counts the stalls in a minute. 'Fair and quick. Nobody is missed, and nobody pays twice.'",
+     "lost": "The clerk sighs. 'I still have to walk the whole market with my book.'"
+    },
+    {
+     "id": "kip",
+     "name": "Kip",
+     "wants": "New children are coming to town. I want to show them the best places: the warm step by the bakery, the echo under the bridge, the tree you can climb. And how to get there.",
+     "need": [
+      "loved",
+      "roads"
+     ],
+     "success": "Kip grins. 'The echo is on a map now. It was always real, but nobody drew it before.'",
+     "lost": "Kip looks at the map. 'This is a map for grown-ups. Where are the good places?'"
+    }
+   ],
+   "reflect": [
+    {
+     "text": "The clerk's map is the true one, because it is the official guild map.",
+     "honest": false,
+     "why": "Official tells you who made it and who uses it, not that it is complete. It leaves out Kip's echo and Efua's slopes. Who decides what goes on the official map has power over what counts."
+    },
+    {
+     "text": "A map with all six layers would be the true one.",
+     "honest": false,
+     "why": "It would turn to mud on this paper, and it would still leave out smells, sounds, stories and the weather. Every map leaves things out. That is how it can be useful."
+    },
+    {
+     "text": "Each map is true for its purpose. None of them is the whole town, and what we leave out shows what we value.",
+     "honest": true,
+     "why": "Yes. A map is a model: it keeps what matters for one job and drops the rest. Asking 'what does this map leave out, and who decided?' is how to read any map, chart or model."
+    },
+    {
+     "text": "No map is true, because they all leave things out.",
+     "honest": false,
+     "why": "Each map got its user where they needed to go. Leaving things out is not the same as being false. A map is false when it shows a road that is not there."
+    }
+   ]
   }
  ],
  "missions": [
@@ -1212,6 +1341,46 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-K01",
+   "world": "WORLD-02",
+   "title": "The Mapmaker's Table",
+   "knowledgeQuestion": "If every map leaves something out, how can a map give us knowledge?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "maps.o1.make",
+     "title": "Optional: make maps for four people at the mapmaker's table (west of the forge, by the trees).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.map-table.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "power"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "subjects": [
+       "geography"
+      ],
+      "aoks": [
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-KNO-14",
+      "SK-THK-14"
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -1382,6 +1551,30 @@
    "objective": "win.o1.count",
    "depth": 4,
    "text": "Choose: five cases made a pattern, not a proof."
+  },
+  {
+   "id": "h.maps.1",
+   "objective": "maps.o1.make",
+   "depth": 1,
+   "text": "Read what each person needs the map for."
+  },
+  {
+   "id": "h.maps.2",
+   "objective": "maps.o1.make",
+   "depth": 2,
+   "text": "The sheet holds three layers. Choose the ones that help this person's trip."
+  },
+  {
+   "id": "h.maps.3",
+   "objective": "maps.o1.make",
+   "depth": 3,
+   "text": "Then ask: which map is the true one? What does each map leave out?"
+  },
+  {
+   "id": "h.maps.4",
+   "objective": "maps.o1.make",
+   "depth": 4,
+   "text": "Traveller: roads and names. Efua: wells and slopes. Clerk: stalls and names. Kip: loved places and roads. Then choose: each map is true for its purpose."
   }
  ],
  "journal": [
@@ -1419,6 +1612,11 @@
    "id": "j.window",
    "text": "The round window: 1, 2, 4, 8, 16 panes, and then 31. A pattern is evidence for a guess; only a proof holds for every case. One counterexample is enough to break a rule.",
    "claimKind": "interpretation"
+  },
+  {
+   "id": "j.maps",
+   "text": "The Mapmaker's Table: every map leaves things out, and that is what makes it useful. A map is true for a purpose. What it leaves out, and who decided, shows what someone valued.",
+   "claimKind": "interpretation"
   }
  ],
  "criteria": [
@@ -1455,6 +1653,11 @@
   {
    "id": "crit.certainty.window",
    "concept": "certainty",
+   "maximum": 5
+  },
+  {
+   "id": "crit.values.maps",
+   "concept": "values",
    "maximum": 5
   }
  ]

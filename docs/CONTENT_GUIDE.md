@@ -169,6 +169,8 @@ A `restore` puzzle has `layers` (top first: `id`, `name`, `colour`, `text`), a `
 
 A `sightlines` puzzle has a `grid` (`w`, `h`), `blocks` (cells that block the view: `x`, `y`, `w`, `h`, `label`, `kind`), `spots` (where things happened) and `witnesses`, each with a place and `claims` (`spot`, `text`). The map decides what each witness could see. A claim that cannot be seen must have `heard` (who told the witness); the validator checks this against the map. Give the puzzle exactly one fair report in `reports`. After you change the map, run `npm test`.
 
+A `mapmaker` puzzle has `maxLayers`, `layers` (more than the sheet holds), `audiences` (each with `wants`, the layers it `need`s, a `success` and a `lost` text) and `reflect` (exactly one `honest`). Any map that has what a person needs works; extra layers are fine. The map drawing for Emberford is `townMapSvg()` in `ui.ts`.
+
 A `conjecture` puzzle has `angles` (the points on the circle, in degrees, in the order they are added), a `claim`, `predictAt` (the point before which the player predicts), `predictions` (never graded: each has a friendly `reply`), `reflect` (exactly one `honest`) and `proof` (short steps). The validator checks that every first n points are in general position (no three chords meet at one point); a regular shape fails this.
 
 ## Add a practice clue board

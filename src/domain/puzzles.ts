@@ -169,3 +169,17 @@ export function chordFigure(angles: number[]): { chords: number; crossings: numb
     if (Math.hypot(hits[a][0] - hits[b][0], hits[a][1] - hits[b][1]) < 1e-3) { general = false; break; }
   return { chords: chords.length, crossings: hits.length, general };
 }
+
+/** Give a map with these layers to one person. It works when it has every layer they need. */
+export function tryMap(p: PuzzleRecord, audience: string, layers: string[]): { ok: boolean; text: string; missing: string[] } {
+  if (p.type !== 'mapmaker') throw new Error('Not a mapmaker puzzle');
+  const a = p.audiences.find((x) => x.id === audience);
+  if (!a) throw new Error('No such person');
+  if (new Set(layers).size !== layers.length || layers.some((l) => !p.layers.some((x) => x.id === l))) throw new Error('No such layer');
+  if (layers.length > p.maxLayers) throw new Error(`The sheet holds only ${p.maxLayers} layers`);
+  if (!layers.length) return { ok: false, text: 'The sheet is empty. Choose layers first.', missing: a.need };
+  const missing = a.need.filter((n) => !layers.includes(n));
+  if (missing.length) return { ok: false, missing, text: `${a.lost} (Missing: ${missing.map((m) => p.layers.find((x) => x.id === m)!.label.toLowerCase()).join(', ')}.)` };
+  const left = p.layers.filter((l) => !layers.includes(l.id)).map((l) => l.label.toLowerCase());
+  return { ok: true, missing: [], text: `${a.success} Your map left out: ${left.join(', ')}.` };
+}

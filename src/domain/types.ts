@@ -498,6 +498,12 @@ export type PuzzleRecord = {
    * player says what the break shows.
    */
   | { type: 'conjecture'; angles: number[]; claim: string; predictAt: number; predictions: { text: string; reply: string }[]; reflect: { text: string; honest: boolean; why: string }[]; proof: string[] }
+  /**
+   * A mapmaker's table (a model is not the thing): the sheet holds only a few layers. The
+   * player makes a map for each person, who uses it on a short trip. Any map that gives
+   * the person what they need works. Then the player says which map is "true".
+   */
+  | { type: 'mapmaker'; maxLayers: number; layers: { id: string; label: string }[]; audiences: { id: string; name: string; wants: string; need: string[]; success: string; lost: string }[]; reflect: { text: string; honest: boolean; why: string }[] }
   | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string }[] }
 );
 

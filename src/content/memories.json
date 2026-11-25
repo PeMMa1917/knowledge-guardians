@@ -299,6 +299,24 @@
     "eq": true
    },
    "line": "I told everyone about the boy as if I had seen him. I had not. I heard it from Mara. I will say so next time."
+  },
+  {
+   "id": "maps.efua",
+   "character": "well-keeper",
+   "if": {
+    "flag": "puzzle.map-table.done",
+    "eq": true
+   },
+   "line": "We dug at the low place on your map. Water at nine knots down. The town will have its third well by winter."
+  },
+  {
+   "id": "maps.kip",
+   "character": "kip-arden",
+   "if": {
+    "flag": "puzzle.map-table.done",
+    "eq": true
+   },
+   "line": "The new children found the echo on the first day! I want to add a seventh layer: places where you can hear the bells."
   }
  ]
 }

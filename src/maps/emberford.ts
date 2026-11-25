@@ -110,6 +110,7 @@ export const EMBERFORD: MapDef = {
     { id: 'weigh-house', kind: 'puzzle', puzzle: 'weigh-house', x: 27, y: 18, w: 1, h: 1, label: 'the Weigh-House balance', art: 'balance-scale' },
     { id: 'plaque', kind: 'puzzle', puzzle: 'founders-plaque', x: 20, y: 6, w: 1, h: 1, label: "the Founders' Plaque", art: 'plaque.trestle',
       artBy: { flag: 'puzzle.founders-plaque.method', keys: { strip: 'plaque.strip', clean: 'plaque.clean', window: 'plaque.window', repaint: 'plaque.repaint' } } },
+    { id: 'map-table', kind: 'puzzle', puzzle: 'map-table', x: 2, y: 20, w: 1, h: 1, label: "the mapmaker's table", art: 'map-table' },
     { id: 'cart-map', kind: 'puzzle', puzzle: 'tipped-cart', x: 13, y: 21, w: 1, h: 1, label: "the guild clerk's map of the tipped cart", art: 'clerk-map' },
     { id: 'cite-bridge', kind: 'puzzle', puzzle: 'song-bridge', x: 25, y: 22, w: 1, h: 1, label: 'the Citation Thread bridge post', art: 'bridge-post' },
     { id: 'lock-authors', kind: 'lock', lock: 'authors', x: 17, y: 7, w: 1, h: 1, label: 'the wooden Title Lock (EE practice)', art: 'title-lock', visibleIf: { flag: 'ee2.started', eq: true } },

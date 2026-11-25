@@ -11,7 +11,7 @@ import { CAMPAIGN_SCHEMA, type Pronouns } from './types';
 import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
 import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
-import { answerRound, checkOrder, judgeSight, panes, peelLayer, restoreWith, weighRound } from './puzzles';
+import { answerRound, checkOrder, judgeSight, panes, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
 import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
 import { useSignature } from './skills';
@@ -37,6 +37,7 @@ export type Command =
   | { type: 'PuzzleReport'; puzzle: string; index: number }
   | { type: 'PuzzleAddPoint'; puzzle: string }
   | { type: 'PuzzlePredict'; puzzle: string; index: number }
+  | { type: 'PuzzleMap'; puzzle: string; audience: string; layers: string[] }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
   | { type: 'PhotoCaptioned'; right: number; total: number }
   | { type: 'UnpinYarn'; board: string; claim: string; card: string }
@@ -499,14 +500,18 @@ export class Engine {
           events.push({ kind: 'yarn', board: rec.id, claim: cmd.claim, card: cmd.card, tone: v.tone, text: v.text, done });
           break;
         }
-        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': case 'PuzzleAddPoint': case 'PuzzlePredict': {
+        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': case 'PuzzleAddPoint': case 'PuzzlePredict': case 'PuzzleMap': {
           const rec = this.pack.puzzles.find((x) => x.id === cmd.puzzle);
           if (!rec) throw new Error('Unknown puzzle');
           if (rec.needs && !s.inventory[rec.needs.item]) throw new Error(rec.needs.sealed);
           const F = `puzzle.${rec.id}`;
           const wasDone = s.flags[`${F}.done`] === true;
           let ok: boolean, text: string, solved: boolean, gapAt: number | null = null;
-          if (cmd.type === 'PuzzleSight') {
+          if (cmd.type === 'PuzzleMap') {
+            const r = tryMap(rec, cmd.audience, cmd.layers);
+            ok = r.ok; text = r.text; solved = false;
+            s = apply(r.ok ? [{ setFlag: `${F}.a.${cmd.audience}`, value: cmd.layers.join(',') }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);
+          } else if (cmd.type === 'PuzzleSight') {
             const r = judgeSight(rec, cmd.witness, cmd.claim, cmd.saw);
             ok = r.ok; text = r.text; solved = false;
             s = apply(r.ok ? [{ setFlag: `${F}.c.${cmd.witness}.${cmd.claim}`, value: true }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);
@@ -529,7 +534,8 @@ export class Engine {
           } else if (cmd.type === 'PuzzleReport') {
             if (rec.type === 'sightlines' && !rec.witnesses.every((w) => w.claims.every((_, i) => s.flags[`${F}.c.${w.id}.${i}`] === true))) throw new Error('Sort every claim first');
             if (rec.type === 'conjecture' && Number(s.flags[`${F}.n`] ?? 0) < rec.predictAt) throw new Error('Add the next point first');
-            if (rec.type !== 'sightlines' && rec.type !== 'conjecture') throw new Error('This puzzle has no report');
+            if (rec.type === 'mapmaker' && !rec.audiences.every((a) => typeof s.flags[`${F}.a.${a.id}`] === 'string')) throw new Error('Make a map for everyone first');
+            if (rec.type !== 'sightlines' && rec.type !== 'conjecture' && rec.type !== 'mapmaker') throw new Error('This puzzle has no report');
             const r = rec.type === 'sightlines' ? rec.reports[cmd.index] : rec.reflect[cmd.index];
             if (!r) throw new Error('No such report');
             ok = r.honest; text = r.why; solved = r.honest;

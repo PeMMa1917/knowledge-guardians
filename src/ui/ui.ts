@@ -155,6 +155,32 @@ function glassWindow(angles: number[], lit: boolean): HTMLCanvasElement {
   return c;
 }
 
+/** Oskar's map of Emberford: a parchment sheet with only the chosen layers drawn (original art). */
+function townMapSvg(layers: string[]): HTMLElement {
+  const on = (id: string) => layers.includes(id);
+  const wrap = h('div', { class: 'townmap-wrap', role: 'img', 'aria-label': `A map of Emberford showing: ${layers.length ? layers.join(', ') : 'nothing yet'}.` });
+  const heart = (x: number, y: number) => `<path d="M${x} ${y + 4} l-5 -5 a3 3 0 0 1 5 -4 a3 3 0 0 1 5 4 z" fill="#e0607e" stroke="#7a1f3a" stroke-width="1"/>`;
+  wrap.innerHTML = `<svg viewBox="0 0 320 220" width="320" height="220" aria-hidden="true">
+  <defs><filter id="rough"><feTurbulence baseFrequency="0.04" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="2"/></filter></defs>
+  <rect x="4" y="4" width="312" height="212" rx="6" fill="#efe1bd" stroke="#8a6a3a" stroke-width="3"/>
+  <path d="M292 4 C282 60 300 110 286 160 C278 190 290 205 288 216" stroke="#7fb3d1" stroke-width="12" fill="none" opacity="0.8"/>
+  ${on('slope') ? `<g stroke="#9a6a3c" stroke-width="1.2" fill="none" stroke-dasharray="5 3" opacity="0.85"><ellipse cx="165" cy="142" rx="40" ry="18"/><ellipse cx="165" cy="140" rx="80" ry="40"/><ellipse cx="165" cy="136" rx="130" ry="70"/></g>
+    <g fill="#9a6a3c">${[[60, 70], [270, 60], [80, 195], [240, 200]].map(([x, y]) => { const a = Math.atan2(142 - y, 165 - x); return `<path transform="translate(${x} ${y}) rotate(${(a * 180) / Math.PI})" d="M0 0 L10 0 M10 0 L6 -3 M10 0 L6 3" stroke="#9a6a3c" stroke-width="1.5"/>`; }).join('')}</g><text x="165" y="145" text-anchor="middle" font-size="8" fill="#7a4a22">low ground</text>` : ''}
+  ${on('roads') ? `<g stroke="#b98d55" stroke-linecap="round" fill="none"><path d="M10 112 H286" stroke-width="10"/><path d="M160 112 V24" stroke-width="8"/><path d="M40 112 V180 H120" stroke-width="6"/><path d="M210 112 Q240 80 262 70" stroke-width="6"/><path d="M220 112 Q250 130 286 122" stroke-width="5"/></g><path d="M276 116 h20 v12 h-20z" fill="#8a6a3a"/>` : ''}
+  ${on('wells') ? [[92, 70], [232, 172]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="8" fill="#5fa8d3" stroke="#2b5d7a" stroke-width="2"/><circle cx="${x}" cy="${y}" r="3" fill="#2b5d7a"/>`).join('') : ''}
+  ${on('stalls') ? [[136, 122, 'M'], [152, 122, 'H'], [168, 122, 'C'], [184, 122, 'T'], [144, 136, 'O'], [176, 136, 'R']].map(([x, y, t]) => `<rect x="${x}" y="${y}" width="12" height="10" fill="#d9534a" stroke="#7a2a22"/><rect x="${x}" y="${y}" width="12" height="3" fill="#f3eee0"/><text x="${Number(x) + 6}" y="${Number(y) + 10}" text-anchor="middle" font-size="7" font-weight="700" fill="#2a1d14">${t}</text>`).join('') : ''}
+  ${on('loved') ? `${heart(116, 152)}${heart(280, 112)}${heart(58, 186)}<text x="116" y="166" text-anchor="middle" font-size="7" fill="#7a1f3a">warm step</text><text x="270" y="98" text-anchor="middle" font-size="7" fill="#7a1f3a">echo</text><text x="58" y="202" text-anchor="middle" font-size="7" fill="#7a1f3a">climbing tree</text>` : ''}
+  ${on('names') ? `<g font-size="9" font-weight="700" fill="#3b2a1a"><rect x="140" y="12" width="40" height="14" fill="#c9b48a" stroke="#6b4f19"/><text x="160" y="36" text-anchor="middle">Guild hall</text>
+    <rect x="22" y="92" width="22" height="14" fill="#c9b48a" stroke="#6b4f19"/><text x="33" y="88" text-anchor="middle">Forge</text>
+    <rect x="252" y="58" width="22" height="14" fill="#c9b48a" stroke="#6b4f19"/><text x="263" y="54" text-anchor="middle">Inn</text>
+    <rect x="102" y="170" width="22" height="12" fill="#c9b48a" stroke="#6b4f19"/><text x="113" y="194" text-anchor="middle">Bakery</text>
+    <text x="70" y="106" font-style="italic" font-weight="400">Anvil Street</text><text x="160" y="152" text-anchor="middle" font-weight="400" font-style="italic">Market</text></g>` : ''}
+  <g transform="translate(26 30)"><circle r="12" fill="#f6ecd0" stroke="#8a6a3a"/><path d="M0 -10 L3 0 L0 10 L-3 0 Z" fill="#8a6a3a"/><text y="-14" text-anchor="middle" font-size="8" fill="#6b4f19">N</text></g>
+  ${layers.length ? '' : '<text x="160" y="114" text-anchor="middle" font-size="12" fill="#8a6a3a">An empty sheet</text>'}
+</svg>`;
+  return wrap;
+}
+
 /** The guild clerk's map for a sightlines puzzle. Blue lines are clear views; orange stops with ✕. */
 function sightMapSvg(p: Extract<PuzzleRecord, { type: 'sightlines' }>, active: string | null, onPick: (id: string) => void): HTMLElement {
   const C = 20, W = p.grid.w * C, H = p.grid.h * C;
@@ -1075,6 +1101,8 @@ export class UI implements UIApi {
     let panRound = -1;
     let pickMethod: string | null = null;
     let activeW: string | null = null;
+    let mapFor: string | null = null;
+    let sheet: string[] = [];
     const sightNotes = new Map<string, string>();
     // A fixed shuffle (not random), so the tiles never sit in the answer order.
     const pool = rec.type === 'order' ? [...rec.tiles].sort((a, b) => (a.id.length * 7 + a.text.length) % 5 - (b.id.length * 7 + b.text.length) % 5 || a.text.localeCompare(b.text)) : [];
@@ -1120,6 +1148,26 @@ export class UI implements UIApi {
               h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleWeigh', puzzle: rec.id, round: n, weights: [...pan] })) }, 'Record this weighing'),
               h('button', { onclick: () => { pan = []; feedback = null; render(); } }, 'Clear the pan')));
         } else if (done) box.append(h('p', { class: 'fair' }, 'Every weighing is in the record book.'));
+      } else if (rec.type === 'mapmaker') {
+        const served = (id: string) => typeof c.state.flags[`${F}.a.${id}`] === 'string';
+        if (!mapFor) mapFor = rec.audiences.find((a) => !served(a.id))?.id ?? rec.audiences[0].id;
+        const a = rec.audiences.find((x) => x.id === mapFor)!;
+        box.append(h('div', { class: 'row wrap map-people', role: 'tablist' }, ...rec.audiences.map((x) => h('button', { type: 'button', role: 'tab', 'aria-selected': String(x.id === mapFor), class: `map-person ${x.id === mapFor ? 'picked' : ''} ${served(x.id) ? 'served' : ''}`,
+          onclick: () => { mapFor = x.id; const f = c.state.flags[`${F}.a.${x.id}`]; sheet = typeof f === 'string' ? f.split(',') : []; feedback = null; render(); } }, served(x.id) ? `✓ ${x.name}` : x.name))));
+        box.append(h('blockquote', { class: 'map-wants' }, h('strong', {}, `${a.name}: `), `“${a.wants}”`),
+          h('div', { class: 'map-body' }, townMapSvg(sheet), h('div', { class: 'map-layers' },
+            h('p', { class: 'fine' }, `Layers on the sheet: ${sheet.length} of ${rec.maxLayers}`),
+            ...rec.layers.map((l) => { const onIt = sheet.includes(l.id); const full = !onIt && sheet.length >= rec.maxLayers;
+              return h('button', { type: 'button', class: `layer-chip ${onIt ? 'on' : ''}`, 'aria-pressed': String(onIt), disabled: full, title: full ? 'The sheet is full. Take a layer off first.' : '',
+                onclick: () => { sheet = onIt ? sheet.filter((x) => x !== l.id) : [...sheet, l.id]; feedback = null; this.sfx('sfx.page'); render(); } }, onIt ? `✓ ${l.label}` : l.label); }),
+            h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleMap', puzzle: rec.id, audience: a.id, layers: [...sheet] })) }, `Give this map to ${a.name.split(',')[0]}`))));
+        if (feedback) box.append(h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text));
+        if (rec.audiences.every((x) => served(x.id))) {
+          box.append(h('h3', {}, done ? 'Your answer' : 'Four maps of one town. Which one is the true map of Emberford?'),
+            done ? h('p', { class: 'fair' }, rec.reflect.find((r) => r.honest)!.text)
+              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text)))));
+          if (feedback && !feedback.ok) { const fb = box.querySelector('.alcove-feedback'); if (fb) box.append(fb); }
+        }
       } else if (rec.type === 'conjecture') {
         const n = Number(c.state.flags[`${F}.n`] ?? 0);
         const predicted = typeof c.state.flags[`${F}.predict`] === 'number';
