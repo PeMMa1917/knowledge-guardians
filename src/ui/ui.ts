@@ -13,7 +13,7 @@ import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads,
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
-import { chordFigure, circlePoints, panes, sightBlock, tiltOf } from '../domain/puzzles';
+import { chordFigure, circlePoints, panes, runSorter, sightBlock, tiltOf, type SorterRun } from '../domain/puzzles';
 import { chime, playNotes } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
@@ -26,7 +26,7 @@ import { OPPONENT, judgeYarn, viewBoard } from '../domain/clueboard';
 import { EMOTES } from '../domain/emotes';
 import { STAGE_LABEL, nextStep, skillStage, type SkillStage } from '../domain/skills';
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
-import type { PlaqueFace, Pronouns, RestoreLayer, PuzzleRecord } from '../domain/types';
+import type { PlaqueFace, Pronouns, RestoreLayer, PuzzleRecord, SorterFruit } from '../domain/types';
 import { ACTIONS, PRESETS, actionFor, assignKey, mappableKey, type Action } from '../app/keymap';
 import type { GameEvent, SimulationResult } from '../domain/engine';
 import { conceptRings, conceptXP, totalXP } from '../domain/permanent';
@@ -153,6 +153,29 @@ function glassWindow(angles: number[], lit: boolean): HTMLCanvasElement {
   c.setAttribute('role', 'img');
   c.setAttribute('aria-label', `A round window with ${angles.length} points on its edge, every pair joined with lead: ${panes(angles.length)} panes of coloured glass.`);
   return c;
+}
+
+const FRUIT_COL: Record<SorterFruit['colour'], [string, string]> = { red: ['#c0392b', '#7a1f18'], green: ['#7cb342', '#3f6a1e'], yellow: ['#f1c40f', '#9a7a08'] };
+/** One fruit, drawn in SVG: colour, size and bruise marks. */
+function fruitSvg(f: SorterFruit): string {
+  const r = f.size === 'large' ? 11 : 8, [c, e] = FRUIT_COL[f.colour];
+  return `<svg viewBox="-14 -16 28 30" width="34" height="36" aria-hidden="true"><circle r="${r}" fill="${c}" stroke="${e}" stroke-width="1.5"/><ellipse cx="${-r / 3}" cy="${-r / 3}" rx="${r / 4}" ry="${r / 6}" fill="#fff" opacity="0.5"/>
+    <path d="M0 ${-r} q1 -4 3 -5" stroke="#5b3b22" stroke-width="1.5" fill="none"/><path d="M1 ${-r - 2} q5 -3 7 0 q-4 2 -7 0" fill="#4f8a4a"/>
+    ${f.bruised ? `<circle cx="${r / 3}" cy="${r / 4}" r="${r / 3.2}" fill="#6b4a22" opacity="0.85"/><circle cx="${-r / 4}" cy="${r / 2}" r="${r / 5}" fill="#6b4a22" opacity="0.8"/>` : ''}</svg>`;
+}
+function fruitLabel(f: SorterFruit): string { return `${f.size} ${f.colour} fruit${f.bruised ? ', bruised' : ''}`; }
+/** The brass sorter and its two chutes, with the basket sorted into them. */
+function sorterView(p: Extract<PuzzleRecord, { type: 'sorter' }>, run: SorterRun | null): HTMLElement {
+  const byId = new Map(p.fruits.map((f) => [f.id, f]));
+  const bin = (title: string, calls: SorterRun['calls']) => h('div', { class: 'sorter-bin' }, h('strong', {}, title),
+    h('div', { class: 'bin-fruits' }, ...calls.map((c, i) => { const f = byId.get(c.id)!; const el = h('span', { class: `bin-fruit ${c.right ? 'right' : 'wrong'}`, title: `${fruitLabel(f)}: ${c.call === 'unknown' ? 'never seen this colour' : c.call}`, style: { animationDelay: `${i * 0.12}s` } }); el.innerHTML = fruitSvg(f) + `<b aria-hidden="true">${c.right ? '✓' : '✕'}</b>`; return el; })),
+    h('span', { class: 'sr-only' }, calls.map((c) => `${fruitLabel(byId.get(c.id)!)}: ${c.right ? 'right' : 'wrong'}`).join('; ')));
+  const machine = h('div', { class: 'sorter-machine', 'aria-hidden': 'true' });
+  machine.innerHTML = `<svg viewBox="0 0 160 110" width="160" height="110"><path d="M40 6 H120 L100 40 H60 Z" fill="#c9a24a" stroke="#6b4f19" stroke-width="2"/><rect x="58" y="40" width="44" height="34" rx="4" fill="#d9b45a" stroke="#6b4f19" stroke-width="2"/>
+    <circle class="cog" cx="80" cy="57" r="10" fill="#e9cf7a" stroke="#6b4f19" stroke-width="2" stroke-dasharray="4 2"/><circle cx="80" cy="57" r="3" fill="#6b4f19"/>
+    <path d="M62 74 L30 104" stroke="#8a6a2a" stroke-width="8" stroke-linecap="round"/><path d="M98 74 L130 104" stroke="#8a6a2a" stroke-width="8" stroke-linecap="round"/></svg>`;
+  return h('div', { class: 'sorter-view' }, machine,
+    run ? h('div', { class: 'sorter-bins' }, bin('To market', run.calls.filter((c) => c.call === 'market')), bin('Set aside', run.calls.filter((c) => c.call !== 'market'))) : h('p', { class: 'fine' }, 'The basket is waiting.'));
 }
 
 /** Oskar's map of Emberford: a parchment sheet with only the chosen layers drawn (original art). */
@@ -1102,6 +1125,8 @@ export class UI implements UIApi {
     let pickMethod: string | null = null;
     let activeW: string | null = null;
     let mapFor: string | null = null;
+    let sorterRun: SorterRun | null = null;
+    let examples: string[] = [];
     let sheet: string[] = [];
     const sightNotes = new Map<string, string>();
     // A fixed shuffle (not random), so the tiles never sit in the answer order.
@@ -1148,6 +1173,39 @@ export class UI implements UIApi {
               h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleWeigh', puzzle: rec.id, round: n, weights: [...pan] })) }, 'Record this weighing'),
               h('button', { onclick: () => { pan = []; feedback = null; render(); } }, 'Clear the pan')));
         } else if (done) box.append(h('p', { class: 'fair' }, 'Every weighing is in the record book.'));
+      } else if (rec.type === 'sorter') {
+        const byId = new Map(rec.fruits.map((f) => [f.id, f]));
+        const diagnosed = c.state.flags[`${F}.diagnosed`] === true;
+        const trained = typeof c.state.flags[`${F}.trained`] === 'string';
+        const fruitBtn = (id: string, picked: boolean, onclick?: () => void) => { const f = byId.get(id)!; const b = h('button', { type: 'button', class: `fruit-btn ${picked ? 'picked' : ''}`, 'aria-pressed': onclick ? String(picked) : null, 'aria-label': fruitLabel(f), disabled: !onclick, onclick }); b.innerHTML = fruitSvg(f); return b; };
+        const runIt = (ids: string[]) => { sorterRun = runSorter(rec, ids); sorterRun.calls.forEach((_, i) => setTimeout(() => this.sfx('sfx.metal'), i * 120)); };
+        if (!diagnosed) {
+          box.append(h('h3', {}, "Mara's examples"), h('div', { class: 'row wrap' }, ...rec.start.map((id) => fruitBtn(id, true))),
+            sorterView(rec, sorterRun),
+            h('div', { class: 'row' }, h('button', { class: sorterRun ? '' : 'primary', onclick: () => { runIt(rec.start); render(); } }, sorterRun ? 'Run it again' : "Run the sorter on today's basket")));
+          if (sorterRun) {
+            const r = sorterRun;
+            box.append(h('p', {}, `${r.right} of ${r.total} sorted right. Good fruit set aside from: ${r.farmsHurt.map((x) => rec.farms[x]).join(', ') || 'nobody'}.`),
+              h('h3', {}, "Hana says: 'Why does it throw away my good apples?' What is the reason?"),
+              h('div', { class: 'options notice-options' }, ...rec.diagnose.map((d, i) => h('button', { type: 'button', onclick: () => { take(c.dispatch({ type: 'PuzzleDiagnose', puzzle: rec.id, index: i })); if (c.state.flags[`${F}.diagnosed`] === true) sorterRun = null; } }, h('span', { class: 'notice-text' }, d.text)))));
+          }
+        } else {
+          if (trained && !examples.length) examples = String(c.state.flags[`${F}.trained`]).split(',');
+          box.append(h('h3', {}, `Choose up to ${rec.slots} examples from the crate (${examples.length} chosen)`),
+            h('div', { class: 'row wrap crate' }, ...rec.crate.map((id) => { const on = examples.includes(id); return fruitBtn(id, on, () => { if (on) examples = examples.filter((x) => x !== id); else if (examples.length < rec.slots) examples = [...examples, id]; feedback = null; this.sfx('sfx.click'); render(); }); })),
+            sorterView(rec, sorterRun),
+            h('div', { class: 'row' }, h('button', { class: 'primary', disabled: !examples.length, onclick: () => { const ev = c.dispatch({ type: 'PuzzleTrain', puzzle: rec.id, examples: [...examples] }); runIt(examples); take(ev); } }, 'Teach the sorter and run the basket'),
+              h('button', { onclick: () => { examples = []; sorterRun = null; feedback = null; render(); } }, 'Empty the example tray')));
+          if (trained) {
+            box.append(h('h3', {}, done ? 'What you learned' : 'The sorter is fair to all three farms now. What did you learn?'),
+              done ? h('p', { class: 'fair' }, rec.reflect.find((r) => r.honest)!.text)
+                : h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text)))));
+          }
+        }
+        if (feedback) {
+          const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
+          box.append(fb); requestAnimationFrame(() => fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+        }
       } else if (rec.type === 'mapmaker') {
         const served = (id: string) => typeof c.state.flags[`${F}.a.${id}`] === 'string';
         if (!mapFor) mapFor = rec.audiences.find((a) => !served(a.id))?.id ?? rec.audiences[0].id;

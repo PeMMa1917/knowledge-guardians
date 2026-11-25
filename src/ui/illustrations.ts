@@ -364,6 +364,15 @@ DRAW['map-table'] = [16, 24, (g) => {
   R(g, '#2a2440', 13, 11, 2, 2); R(g, '#f3eee0', 14, 6, 1, 5); R(g, '#e9e5f5', 15, 5, 1, 2);
 }];
 
+// The brass sorter (original art): a hopper, a cog box and two chutes.
+DRAW['brass-sorter'] = [16, 24, (g) => {
+  R(g, '#6b4f19', 3, 4, 10, 1); R(g, '#c9a24a', 3, 5, 10, 2); R(g, '#c9a24a', 5, 7, 6, 2);
+  R(g, '#c0392b', 5, 3, 2, 2); R(g, '#7cb342', 8, 3, 2, 2); R(g, '#f1c40f', 10, 3, 1, 1);
+  R(g, '#d9b45a', 4, 9, 8, 6); R(g, '#6b4f19', 4, 15, 8, 1); R(g, '#e9cf7a', 7, 11, 2, 2); R(g, '#6b4f19', 7, 11, 1, 1);
+  R(g, '#8a6a2a', 3, 16, 2, 2); R(g, '#8a6a2a', 1, 18, 2, 2); R(g, '#8a6a2a', 11, 16, 2, 2); R(g, '#8a6a2a', 13, 18, 2, 2);
+  R(g, '#5b3b22', 0, 20, 5, 4); R(g, '#5b3b22', 11, 20, 5, 4); R(g, '#c0392b', 1, 20, 2, 1); R(g, '#7cb342', 13, 20, 2, 1);
+}];
+
 // The door to the Guardian's quarters (original art): a round-topped oak door with a star.
 DRAW['quarters-door'] = [16, 24, (g) => {
   R(g, '#3b2a1a', 1, 3, 14, 21); R(g, '#3b2a1a', 3, 1, 10, 2);

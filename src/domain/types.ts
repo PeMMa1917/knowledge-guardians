@@ -504,9 +504,16 @@ export type PuzzleRecord = {
    * the person what they need works. Then the player says which map is "true".
    */
   | { type: 'mapmaker'; maxLayers: number; layers: { id: string; label: string }[]; audiences: { id: string; name: string; wants: string; need: string[]; success: string; lost: string }[]; reflect: { text: string; honest: boolean; why: string }[] }
+  /**
+   * A learning sorter (technology AOK): a brass machine sorts fruit by copying the examples
+   * it was given. First the player sees it sort with a narrow set of examples and says why
+   * it failed; then the player chooses examples; then the player reflects.
+   */
+  | { type: 'sorter'; slots: number; fruits: SorterFruit[]; crate: string[]; basket: string[]; start: string[]; diagnose: { text: string; honest: boolean; why: string }[]; reflect: { text: string; honest: boolean; why: string }[]; farms: Record<string, string> }
   | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string }[] }
 );
 
+export interface SorterFruit { id: string; colour: 'red' | 'green' | 'yellow'; size: 'small' | 'large'; bruised: boolean; farm: string }
 export interface SightBlock { x: number; y: number; w: number; h: number; label: string; kind: 'stall' | 'fountain' | 'crates' | 'cart' }
 export interface SightSpot { id: string; x: number; y: number; label: string }
 export interface Witness { id: string; name: string; x: number; y: number; colour: string; claims: { spot: string; text: string; heard?: string }[] }

@@ -8,7 +8,7 @@
 import type { Condition, ContentPack, Effect, Weave } from './types';
 import { ATLS, CONCEPTS, PROFILE } from './types';
 import { SUBJECTS } from './curriculum';
-import { chordFigure, panes, sightBlock } from './puzzles';
+import { chordFigure, panes, runSorter, sightBlock } from './puzzles';
 import { openCombinations } from './lock';
 
 const MAX_TEXT = 2000;
@@ -182,6 +182,23 @@ export function validateContent(pack: ContentPack): string[] {
         if (!m.labels.some((l) => l.honest) || !m.labels.some((l) => !l.honest)) p.push(`puzzle ${z.id} method ${m.id}: needs an honest label and a label that is not`);
         m.labels.forEach((l, i) => { if (!l.why.trim()) p.push(`puzzle ${z.id} method ${m.id} label ${i + 1}: needs a reason`); });
       });
+    }
+    else if (z.type === 'sorter') {
+      const ids = new Set(z.fruits.map((f) => f.id));
+      [...z.crate, ...z.basket, ...z.start].forEach((x) => ids.has(x) || p.push(`puzzle ${z.id}: unknown fruit ${x}`));
+      z.fruits.forEach((f) => f.farm in z.farms || p.push(`puzzle ${z.id}: unknown farm ${f.farm}`));
+      if (runSorter(z, z.start).right === z.basket.length) p.push(`puzzle ${z.id}: the starting examples must fail`);
+      // Some choice of examples from the crate must sort the whole basket right.
+      const crate = z.crate; let found = false;
+      const pick = (from: number, chosen: string[]) => {
+        if (found) return;
+        if (chosen.length && runSorter(z, chosen).right === z.basket.length) { found = true; return; }
+        if (chosen.length === z.slots) return;
+        for (let i = from; i < crate.length; i++) pick(i + 1, [...chosen, crate[i]]);
+      };
+      pick(0, []);
+      if (!found) p.push(`puzzle ${z.id}: no set of examples from the crate sorts the basket right`);
+      if (z.diagnose.filter((r) => r.honest).length !== 1 || z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair diagnosis and one fair reflection`);
     }
     else if (z.type === 'mapmaker') {
       const ids = new Set(z.layers.map((l) => l.id));

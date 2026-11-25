@@ -11,7 +11,7 @@ import { CAMPAIGN_SCHEMA, type Pronouns } from './types';
 import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
 import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
-import { answerRound, checkOrder, judgeSight, panes, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
+import { answerRound, checkOrder, judgeSight, panes, runSorter, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
 import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
 import { useSignature } from './skills';
@@ -38,6 +38,8 @@ export type Command =
   | { type: 'PuzzleAddPoint'; puzzle: string }
   | { type: 'PuzzlePredict'; puzzle: string; index: number }
   | { type: 'PuzzleMap'; puzzle: string; audience: string; layers: string[] }
+  | { type: 'PuzzleDiagnose'; puzzle: string; index: number }
+  | { type: 'PuzzleTrain'; puzzle: string; examples: string[] }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
   | { type: 'PhotoCaptioned'; right: number; total: number }
   | { type: 'UnpinYarn'; board: string; claim: string; card: string }
@@ -500,14 +502,31 @@ export class Engine {
           events.push({ kind: 'yarn', board: rec.id, claim: cmd.claim, card: cmd.card, tone: v.tone, text: v.text, done });
           break;
         }
-        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': case 'PuzzleAddPoint': case 'PuzzlePredict': case 'PuzzleMap': {
+        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': case 'PuzzleAddPoint': case 'PuzzlePredict': case 'PuzzleMap': case 'PuzzleDiagnose': case 'PuzzleTrain': {
           const rec = this.pack.puzzles.find((x) => x.id === cmd.puzzle);
           if (!rec) throw new Error('Unknown puzzle');
           if (rec.needs && !s.inventory[rec.needs.item]) throw new Error(rec.needs.sealed);
           const F = `puzzle.${rec.id}`;
           const wasDone = s.flags[`${F}.done`] === true;
           let ok: boolean, text: string, solved: boolean, gapAt: number | null = null;
-          if (cmd.type === 'PuzzleMap') {
+          if (cmd.type === 'PuzzleDiagnose' || cmd.type === 'PuzzleTrain') {
+            if (rec.type !== 'sorter') throw new Error('Not a sorter puzzle');
+            if (cmd.type === 'PuzzleDiagnose') {
+              const r = rec.diagnose[cmd.index];
+              if (!r) throw new Error('No such answer');
+              ok = r.honest; text = r.why;
+              s = apply(r.honest ? [{ setFlag: `${F}.diagnosed`, value: true }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);
+            } else {
+              if (s.flags[`${F}.diagnosed`] !== true) throw new Error('Say why the sorter failed first');
+              if (cmd.examples.length > rec.slots) throw new Error(`The sorter holds only ${rec.slots} examples`);
+              if (new Set(cmd.examples).size !== cmd.examples.length || cmd.examples.some((x) => !rec.crate.includes(x))) throw new Error('Choose examples from the crate');
+              const r = runSorter(rec, cmd.examples);
+              ok = r.right === r.total;
+              text = ok ? `Every fruit in the basket is sorted right (${r.right} of ${r.total}).` : `${r.right} of ${r.total} sorted right.${r.farmsHurt.length ? ` Good fruit set aside from: ${r.farmsHurt.map((x) => rec.farms[x]).join(', ')}.` : ''}`;
+              s = apply(ok ? [{ setFlag: `${F}.trained`, value: cmd.examples.join(',') }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);
+            }
+            solved = false;
+          } else if (cmd.type === 'PuzzleMap') {
             const r = tryMap(rec, cmd.audience, cmd.layers);
             ok = r.ok; text = r.text; solved = false;
             s = apply(r.ok ? [{ setFlag: `${F}.a.${cmd.audience}`, value: cmd.layers.join(',') }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);
@@ -535,7 +554,8 @@ export class Engine {
             if (rec.type === 'sightlines' && !rec.witnesses.every((w) => w.claims.every((_, i) => s.flags[`${F}.c.${w.id}.${i}`] === true))) throw new Error('Sort every claim first');
             if (rec.type === 'conjecture' && Number(s.flags[`${F}.n`] ?? 0) < rec.predictAt) throw new Error('Add the next point first');
             if (rec.type === 'mapmaker' && !rec.audiences.every((a) => typeof s.flags[`${F}.a.${a.id}`] === 'string')) throw new Error('Make a map for everyone first');
-            if (rec.type !== 'sightlines' && rec.type !== 'conjecture' && rec.type !== 'mapmaker') throw new Error('This puzzle has no report');
+            if (rec.type === 'sorter' && typeof s.flags[`${F}.trained`] !== 'string') throw new Error('Teach the sorter first');
+            if (rec.type !== 'sightlines' && rec.type !== 'conjecture' && rec.type !== 'mapmaker' && rec.type !== 'sorter') throw new Error('This puzzle has no report');
             const r = rec.type === 'sightlines' ? rec.reports[cmd.index] : rec.reflect[cmd.index];
             if (!r) throw new Error('No such report');
             ok = r.honest; text = r.why; solved = r.honest;

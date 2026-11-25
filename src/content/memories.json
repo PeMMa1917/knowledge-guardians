@@ -317,6 +317,24 @@
     "eq": true
    },
    "line": "The new children found the echo on the first day! I want to add a seventh layer: places where you can hear the bells."
+  },
+  {
+   "id": "sorter.hana",
+   "character": "stallkeeper-hana",
+   "if": {
+    "flag": "puzzle.brass-sorter.done",
+    "eq": true
+   },
+   "line": "My green apples go to market again. Mara said sorry, and the sorter did not have to. Funny, that."
+  },
+  {
+   "id": "sorter.mara",
+   "character": "fruit-seller",
+   "if": {
+    "flag": "puzzle.brass-sorter.done",
+    "eq": true
+   },
+   "line": "Every new season I put one of each new fruit in the example tray. Pears next week. I will test it first."
   }
  ]
 }

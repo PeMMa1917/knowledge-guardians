@@ -24,6 +24,7 @@ const ICONS: Record<string, { pal: Record<string, string>; rows: string[] }> = {
   'check-weight': { pal: { a: '#d9b45a', b: '#6b4f19', c: '#fff3c4' }, rows: ['', '', '    bb', '   b  b', '   bbbb', '  aaaaaa', '  acaaaa', ' aaaaaaaa', ' aaaaaaaa', ' bbbbbbbb', '', ''] },
   'copper-pot': { pal: { a: '#c87533', b: '#8a4a22', c: '#f2b880' }, rows: ['', '', '  bbbbbbb', '   accaa', '  aacaaaa', ' baacaaaab', ' baaaaaaab', '  aaaaaaa', '  aaaaaaa', '   bbbbb', '', ''] },
   'folded-map': { pal: { a: '#efe1bd', b: '#c9b48a', c: '#e0607e', d: '#b98d55' }, rows: ['', '', ' aaabbbaaa', ' aaabbbaaa', ' adddbddda', ' aaabcbaaa', ' aaabbbaca', ' acabbbaaa', ' aaabbbaaa', ' aaabbbaaa', '', ''] },
+  'brass-cog': { pal: { a: '#d9b45a', b: '#6b4f19', c: '#fff3c4' }, rows: ['', '    a a', '  aaaaaaa', '  aabbbaa', ' aaab bcaa', '  aab baa', ' aaab baaa', '  aabbbaa', '  aaaaaaa', '    a a', '', ''] },
   yarn: { pal: { a: '#d9534a', b: '#e9cf7a' }, rows: ['', '', '   aab', '  aabba', ' aabbaab', ' abbaabb', ' bbaabba', '  aabba', '   bba  a', '         a', '          b', ''] },
   'soot-jar': { pal: { a: '#cfe3ef', b: '#3b2f25', c: '#8a5a30' }, rows: ['', '', '   cccc', '   a  a', '  a    a', '  a    a', '  abbbba', '  abbbba', '  abbbba', '   aaaa', '', ''] },
   'sign-splinter': { pal: { a: '#b07a44', b: '#5b3b22', c: '#e9c45a' }, rows: ['', '', '         a', '       aab', '     aacb', '   aaab', ' aaabb', 'abbb', '', '', '', ''] },

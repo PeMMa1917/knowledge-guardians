@@ -14,7 +14,7 @@
  * Grammar and citation have conventions, so these puzzles do have right answers.
  * They are never about contested knowledge. Pure rules, no DOM.
  */
-import type { PuzzleRecord, SightBlock } from './types';
+import type { PuzzleRecord, SightBlock, SorterFruit } from './types';
 
 export type RoundResult = { ok: boolean; text: string; solved: boolean };
 export type OrderResult = { ok: boolean; text: string; gapAt: number | null };
@@ -182,4 +182,34 @@ export function tryMap(p: PuzzleRecord, audience: string, layers: string[]): { o
   if (missing.length) return { ok: false, missing, text: `${a.lost} (Missing: ${missing.map((m) => p.layers.find((x) => x.id === m)!.label.toLowerCase()).join(', ')}.)` };
   const left = p.layers.filter((l) => !layers.includes(l.id)).map((l) => l.label.toLowerCase());
   return { ok: true, missing: [], text: `${a.success} Your map left out: ${left.join(', ')}.` };
+}
+
+export type SortCall = 'market' | 'bruised' | 'unknown';
+
+/**
+ * The brass sorter copies its examples: it compares a fruit only with examples of the same
+ * colour, and takes the label of the closest one (bruise marks count more than size).
+ * A colour it has never seen is set aside as "unknown".
+ */
+export function sortFruit(examples: SorterFruit[], f: SorterFruit): SortCall {
+  const same = examples.filter((e) => e.colour === f.colour);
+  if (!same.length) return 'unknown';
+  const dist = (e: SorterFruit) => (e.bruised !== f.bruised ? 2 : 0) + (e.size !== f.size ? 1 : 0);
+  const best = same.reduce((a, b) => (dist(b) < dist(a) ? b : a));
+  return best.bruised ? 'bruised' : 'market';
+}
+
+export interface SorterRun { calls: { id: string; call: SortCall; right: boolean }[]; right: number; total: number; farmsHurt: string[] }
+
+export function runSorter(p: PuzzleRecord, exampleIds: string[]): SorterRun {
+  if (p.type !== 'sorter') throw new Error('Not a sorter puzzle');
+  const byId = new Map(p.fruits.map((f) => [f.id, f]));
+  const ex = exampleIds.map((id) => { const f = byId.get(id); if (!f) throw new Error('No such fruit'); return f; });
+  const calls = p.basket.map((id) => {
+    const f = byId.get(id)!;
+    const call = sortFruit(ex, f);
+    return { id, call, right: (call === 'market') === !f.bruised };
+  });
+  const farmsHurt = [...new Set(calls.filter((c) => !c.right && !byId.get(c.id)!.bruised).map((c) => byId.get(c.id)!.farm))];
+  return { calls, right: calls.filter((c) => c.right).length, total: calls.length, farmsHurt };
 }

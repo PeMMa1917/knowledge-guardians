@@ -119,6 +119,16 @@
    "where": "Emberford: the mapmaker's table."
   },
   {
+   "id": "brass-cog",
+   "name": "A spare brass cog",
+   "text": "From Mara's sorter. A machine that learns from examples knows only what its examples show.",
+   "if": {
+    "flag": "puzzle.brass-sorter.done",
+    "eq": true
+   },
+   "where": "Emberford: Mara's brass sorter."
+  },
+  {
    "id": "soot-jar",
    "name": "A tiny jar of soot",
    "text": "From the Founders' Plaque. Even dirt can be evidence of where a thing has been.",

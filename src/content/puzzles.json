@@ -1056,6 +1056,254 @@
      "why": "Each map got its user where they needed to go. Leaving things out is not the same as being false. A map is false when it shows a road that is not there."
     }
    ]
+  },
+  {
+   "id": "brass-sorter",
+   "type": "sorter",
+   "title": "The Brass Sorter",
+   "intro": "Mara bought a brass sorter from a travelling tinker. You show it some example fruit, good or bruised, and it copies them: each new fruit goes to the market chute or the bruised chute. Mara taught it with two apples from her own stall. This morning Hana came to complain.",
+   "skills": [
+    "SK-ETR-01",
+    "SK-RSC-21",
+    "SK-THK-05"
+   ],
+   "weave": {
+    "concepts": [
+     "power",
+     "objectivity"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "computer-science",
+     "design-tech"
+    ],
+    "aoks": [
+     "TEC"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.power.sorter"
+    },
+    {
+     "journal": "j.sorter"
+    }
+   ],
+   "slots": 6,
+   "fruits": [
+    {
+     "id": "c-r1",
+     "colour": "red",
+     "size": "large",
+     "bruised": false,
+     "farm": "orrin"
+    },
+    {
+     "id": "c-r2",
+     "colour": "red",
+     "size": "small",
+     "bruised": false,
+     "farm": "orrin"
+    },
+    {
+     "id": "c-r3",
+     "colour": "red",
+     "size": "large",
+     "bruised": true,
+     "farm": "orrin"
+    },
+    {
+     "id": "c-r4",
+     "colour": "red",
+     "size": "small",
+     "bruised": true,
+     "farm": "orrin"
+    },
+    {
+     "id": "c-r5",
+     "colour": "red",
+     "size": "large",
+     "bruised": false,
+     "farm": "orrin"
+    },
+    {
+     "id": "c-g1",
+     "colour": "green",
+     "size": "large",
+     "bruised": false,
+     "farm": "hana"
+    },
+    {
+     "id": "c-g2",
+     "colour": "green",
+     "size": "small",
+     "bruised": true,
+     "farm": "hana"
+    },
+    {
+     "id": "c-g3",
+     "colour": "green",
+     "size": "small",
+     "bruised": false,
+     "farm": "hana"
+    },
+    {
+     "id": "c-y1",
+     "colour": "yellow",
+     "size": "small",
+     "bruised": false,
+     "farm": "hill"
+    },
+    {
+     "id": "c-y2",
+     "colour": "yellow",
+     "size": "large",
+     "bruised": true,
+     "farm": "hill"
+    },
+    {
+     "id": "b1",
+     "colour": "red",
+     "size": "small",
+     "bruised": false,
+     "farm": "orrin"
+    },
+    {
+     "id": "b2",
+     "colour": "red",
+     "size": "large",
+     "bruised": true,
+     "farm": "orrin"
+    },
+    {
+     "id": "b3",
+     "colour": "red",
+     "size": "large",
+     "bruised": false,
+     "farm": "orrin"
+    },
+    {
+     "id": "b4",
+     "colour": "green",
+     "size": "large",
+     "bruised": false,
+     "farm": "hana"
+    },
+    {
+     "id": "b5",
+     "colour": "green",
+     "size": "small",
+     "bruised": false,
+     "farm": "hana"
+    },
+    {
+     "id": "b6",
+     "colour": "green",
+     "size": "large",
+     "bruised": true,
+     "farm": "hana"
+    },
+    {
+     "id": "b7",
+     "colour": "yellow",
+     "size": "large",
+     "bruised": false,
+     "farm": "hill"
+    },
+    {
+     "id": "b8",
+     "colour": "yellow",
+     "size": "small",
+     "bruised": true,
+     "farm": "hill"
+    },
+    {
+     "id": "b9",
+     "colour": "yellow",
+     "size": "small",
+     "bruised": false,
+     "farm": "hill"
+    }
+   ],
+   "crate": [
+    "c-r1",
+    "c-r2",
+    "c-r3",
+    "c-r4",
+    "c-r5",
+    "c-g1",
+    "c-g2",
+    "c-g3",
+    "c-y1",
+    "c-y2"
+   ],
+   "basket": [
+    "b1",
+    "b2",
+    "b3",
+    "b4",
+    "b5",
+    "b6",
+    "b7",
+    "b8",
+    "b9"
+   ],
+   "start": [
+    "c-r1",
+    "c-r3"
+   ],
+   "farms": {
+    "orrin": "Orrin's orchard (red)",
+    "hana": "Hana's trees (green)",
+    "hill": "the hill farm (yellow)"
+   },
+   "diagnose": [
+    {
+     "text": "Green and yellow fruit is worse than red fruit.",
+     "honest": false,
+     "why": "Look at the basket: many of the green and yellow fruit have no bruise marks. The fruit was fine. The sorter had never seen it."
+    },
+    {
+     "text": "The machine is broken.",
+     "honest": false,
+     "why": "It did exactly what it was built to do: copy its examples. A machine can work perfectly and still be unfair."
+    },
+    {
+     "text": "Somebody told the sorter to dislike green apples.",
+     "honest": false,
+     "why": "Nobody did, and nobody needed to. The examples were chosen without thinking about green fruit, and that was enough."
+    },
+    {
+     "text": "Mara's examples were all red. The sorter has never seen green or yellow fruit, so it sets them all aside.",
+     "honest": true,
+     "why": "Yes. The machine does not know what a good apple is. It copies its examples, and every example was red. Now choose better examples from the crate."
+    }
+   ],
+   "reflect": [
+    {
+     "text": "Machines are objective, so their sorting is always fair.",
+     "honest": false,
+     "why": "It was the same machine both times. Its first sorting was unfair because of its examples, not because of its brass."
+    },
+    {
+     "text": "Now that it is right on this basket, it will be right on every basket.",
+     "honest": false,
+     "why": "This basket had three colours. A pear, or a new kind of apple, would be 'unknown' again. Test it again when the fruit changes."
+    },
+    {
+     "text": "A machine that learns from examples knows only what its examples show. Whoever chooses the examples shapes what it can know, and who it treats fairly.",
+     "honest": true,
+     "why": "Yes. Choosing examples is a choice with power in it. Ask: who is missing from the examples, and who pays for it?"
+    },
+    {
+     "text": "We should never use sorting machines.",
+     "honest": false,
+     "why": "The sorter saves Mara hours every day. The lesson is to choose examples with care and keep checking, not to throw the machine away."
+    }
+   ]
   }
  ],
  "missions": [
@@ -1381,6 +1629,48 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-T01",
+   "world": "WORLD-02",
+   "title": "The Brass Sorter",
+   "knowledgeQuestion": "Can a machine that learns from examples know more than its examples show?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "sorter.o1.teach",
+     "title": "Optional: help Mara and Hana with the brass sorter (by the fruit stall).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.brass-sorter.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "power",
+       "objectivity"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "computer-science",
+       "design-tech"
+      ],
+      "aoks": [
+       "TEC"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-RSC-21",
+      "SK-THK-05"
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -1575,6 +1865,30 @@
    "objective": "maps.o1.make",
    "depth": 4,
    "text": "Traveller: roads and names. Efua: wells and slopes. Clerk: stalls and names. Kip: loved places and roads. Then choose: each map is true for its purpose."
+  },
+  {
+   "id": "h.sorter.1",
+   "objective": "sorter.o1.teach",
+   "depth": 1,
+   "text": "Watch where the sorter puts each fruit. Which fruit does it set aside?"
+  },
+  {
+   "id": "h.sorter.2",
+   "objective": "sorter.o1.teach",
+   "depth": 2,
+   "text": "Look at Mara's two examples. What colour are they?"
+  },
+  {
+   "id": "h.sorter.3",
+   "objective": "sorter.o1.teach",
+   "depth": 3,
+   "text": "The sorter compares a fruit only with examples of the same colour. Give it a good and a bruised example of each colour."
+  },
+  {
+   "id": "h.sorter.4",
+   "objective": "sorter.o1.teach",
+   "depth": 4,
+   "text": "Choose one good and one bruised red, green and yellow fruit (six examples). Then: the examples shape what it can know."
   }
  ],
  "journal": [
@@ -1617,6 +1931,11 @@
    "id": "j.maps",
    "text": "The Mapmaker's Table: every map leaves things out, and that is what makes it useful. A map is true for a purpose. What it leaves out, and who decided, shows what someone valued.",
    "claimKind": "interpretation"
+  },
+  {
+   "id": "j.sorter",
+   "text": "The Brass Sorter: a machine that learns from examples knows only what its examples show. Choosing the examples is a choice with power in it: ask who is missing, and who pays for it.",
+   "claimKind": "interpretation"
   }
  ],
  "criteria": [
@@ -1658,6 +1977,11 @@
   {
    "id": "crit.values.maps",
    "concept": "values",
+   "maximum": 5
+  },
+  {
+   "id": "crit.power.sorter",
+   "concept": "power",
    "maximum": 5
   }
  ]
