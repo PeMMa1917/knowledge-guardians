@@ -47,6 +47,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 - **Ambient sound:** the forge hammer rings in Emberford (louder near Hesper's anvil) and soft chimes sound in the Nexus hall. Made in code (`src/app/ambience.ts`), following the sound-effects volume.
 - **Speech marks:** a small gold "!" bubble floats over a person who has a line the player has not seen yet. Seen lines are kept as `node.<id>` flags. It helps players find the next step without a quest arrow.
 - **Showdown on phones:** "Explain the moves" shows what each move does under its button (on by default on touch screens, where hover titles do not show). Narrow screens get a compact layout, and toasts move to the bottom.
+- **Skill Atlas** (spec 76.1, journal tab "Skills"): about 50 skills in 17 regions grow from Seen (1 use) to Practised (3), Confident (8 uses, 3 worlds, 2 kinds of action) and Transferred (15 uses, 2 areas of knowledge, 4 kinds of action). Chapter steps carry `skills` tags; each completed step records a use. Stages are words, never grades, and each skill shows its next step. Rules in `src/domain/skills.ts`, content in `src/content/skills.json`. `PERMANENT_SCHEMA` is now 4, with a migration. Not done yet: a Skill Atlas in the teacher view.
 - **Balance reminder:** every 45 minutes of active play, Lumen suggests a real break. It never blocks play.
 - **MIS-10 and MIS-11 (Indigenous knowledge) are left out on purpose.** They need Indigenous content made with community advisors (spec section 88). Do not add them with a quick signal.
 
@@ -55,7 +56,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 
 ### Tests
 
-`npm test`: 143 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
+`npm test`: 145 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
 
 ## Next steps (in order)
 

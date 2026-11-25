@@ -27,7 +27,10 @@
       "aoks": [
        "HIS"
       ]
-     }
+     },
+     "skills": [
+      "SK-THK-01"
+     ]
     },
     {
      "id": "m01.o2.inspect",
@@ -58,7 +61,11 @@
       "aoks": [
        "HIS"
       ]
-     }
+     },
+     "skills": [
+      "SK-CUR-01",
+      "SK-RSC-07"
+     ]
     },
     {
      "id": "m01.o3.lens",
@@ -86,7 +93,11 @@
       "aoks": [
        "HIS"
       ]
-     }
+     },
+     "skills": [
+      "SK-MED-02",
+      "SK-RSC-07"
+     ]
     },
     {
      "id": "m01.o4.test",
@@ -128,7 +139,11 @@
      "kq": {
       "id": "KQ-NEW-003",
       "action": "test"
-     }
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-NUM-14"
+     ]
     },
     {
      "id": "m01.o5.practice",
@@ -165,7 +180,12 @@
      "kq": {
       "id": "KQ-NEW-004",
       "action": "showdown"
-     }
+     },
+     "skills": [
+      "SK-THK-16",
+      "SK-THK-15",
+      "SK-SPK-02"
+     ]
     },
     {
      "id": "m01.o6.label",
@@ -205,7 +225,11 @@
      "kq": {
       "id": "KQ-NEW-001",
       "action": "label"
-     }
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-WRT-13"
+     ]
     },
     {
      "id": "m01.o7.portal",
@@ -291,7 +315,11 @@
      "kq": {
       "id": "KQ-NEW-001",
       "action": "exhibition"
-     }
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-ICU-02"
+     ]
     }
    ]
   }

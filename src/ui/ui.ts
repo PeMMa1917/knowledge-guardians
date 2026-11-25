@@ -11,6 +11,7 @@ import { LUMEN_COLOURS, THEMES, saveSettings, type Settings } from '../app/setti
 import { PRONOUN_SETS, cleanPronouns, personalise } from '../domain/player';
 import { ACCENT, ACCESSORIES, HAIR, LABELS, OUTFIT, PRESET_LOOKS, SKIN, TROUSERS, decodeLook, encodeLook, type LookChoice } from '../domain/appearance';
 import { previewLook } from '../scenes/looks';
+import { STAGE_LABEL, nextStep, skillStage, type SkillStage } from '../domain/skills';
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
 import type { Pronouns } from '../domain/types';
 import { ACTIONS, PRESETS, actionFor, assignKey, mappableKey, type Action } from '../app/keymap';
@@ -1148,7 +1149,7 @@ export class UI implements UIApi {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', stones: 'Question Stones', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', stones: 'Question Stones', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
     if (tab === 'entries') {
@@ -1183,6 +1184,19 @@ export class UI implements UIApi {
         body.append(h('article', { class: 'card' }, h('h3', {}, e.title), h('p', { class: 'fine' }, `${new Date(e.at).toLocaleString()} · ${e.world}`), h('p', {}, e.text), ta,
           h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: e.shared, onchange: (ev: Event) => c.dispatch({ type: 'PortfolioShare', entry: e.id, shared: (ev.target as HTMLInputElement).checked }) }), ' Share with my teacher')));
       }
+    } else if (tab === 'skills') {
+      // Skill Atlas (spec 76.1): practice in the game, never a grade or a rank.
+      const p = c.permanent;
+      const icon: Record<SkillStage, string> = { unseen: '○', seen: '◔', practised: '◑', confident: '◕', transferred: '●' };
+      body.append(h('p', { class: 'fine' }, 'Each skill grows when you use it somewhere new: Seen, Practised, Confident, Transferred. This shows practice in the game. It is not a grade.'),
+        h('div', { class: 'skill-map' }, ...c.pack.skillDomains.map((d) => {
+          const list = c.pack.skills.filter((k) => k.domain === d.id);
+          return h('section', { class: `skill-region ${list.length ? '' : 'later'}` }, h('h4', {}, d.name),
+            list.length ? h('ul', {}, ...list.map((k) => {
+              const st = skillStage(p.skills?.[k.id]);
+              return h('li', { class: `stage-${st}`, title: nextStep(p.skills?.[k.id]) }, h('span', { class: 'stage-icon', 'aria-hidden': 'true' }, icon[st]), ` ${k.name} `, h('small', {}, STAGE_LABEL[st]));
+            })) : h('p', { class: 'fine' }, 'In later chapters.'));
+        })));
     } else if (tab === 'stones') {
       // Question Stones (KQ-003): a stone gets brighter with each new way of meeting the question. Never a quiz.
       const ACTION: Record<string, string> = { label: 'a label', exhibition: 'a museum plaque', test: 'a fair test', showdown: 'a Showdown', thread: 'a Provenance Thread', forge: 'the forge', reflection: 'a mystery', research: 'EE practice', community: 'listening to a community', fieldwork: 'fieldwork' };

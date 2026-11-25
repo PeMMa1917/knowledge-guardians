@@ -1,0 +1,309 @@
+{
+ "skillDomains": [
+  {
+   "id": "THK",
+   "name": "Critical thinking"
+  },
+  {
+   "id": "KNO",
+   "name": "Types of knowledge"
+  },
+  {
+   "id": "RSC",
+   "name": "Research"
+  },
+  {
+   "id": "MED",
+   "name": "Judging sources"
+  },
+  {
+   "id": "CIT",
+   "name": "Citation and integrity"
+  },
+  {
+   "id": "RDG",
+   "name": "Reading"
+  },
+  {
+   "id": "WRT",
+   "name": "Writing"
+  },
+  {
+   "id": "GRM",
+   "name": "Grammar"
+  },
+  {
+   "id": "SPK",
+   "name": "Speaking and listening"
+  },
+  {
+   "id": "VIS",
+   "name": "Visual communication"
+  },
+  {
+   "id": "NUM",
+   "name": "Numbers and data"
+  },
+  {
+   "id": "CUR",
+   "name": "Choosing objects"
+  },
+  {
+   "id": "ICU",
+   "name": "Cultures"
+  },
+  {
+   "id": "COL",
+   "name": "Working with others"
+  },
+  {
+   "id": "SLF",
+   "name": "Self-management"
+  },
+  {
+   "id": "DIG",
+   "name": "Digital literacy"
+  },
+  {
+   "id": "ETR",
+   "name": "Ethical reasoning"
+  }
+ ],
+ "skills": [
+  {
+   "id": "SK-CIT-01",
+   "domain": "CIT",
+   "name": "Why we cite"
+  },
+  {
+   "id": "SK-CIT-04",
+   "domain": "CIT",
+   "name": "Build a citation from its elements"
+  },
+  {
+   "id": "SK-CIT-15",
+   "domain": "CIT",
+   "name": "Spot copying and invented sources"
+  },
+  {
+   "id": "SK-COL-04",
+   "domain": "COL",
+   "name": "Resolve a disagreement"
+  },
+  {
+   "id": "SK-COL-05",
+   "domain": "COL",
+   "name": "Build agreement"
+  },
+  {
+   "id": "SK-CUR-01",
+   "domain": "CUR",
+   "name": "A specific object, not a type"
+  },
+  {
+   "id": "SK-CUR-03",
+   "domain": "CUR",
+   "name": "A manifestation, not a symbol"
+  },
+  {
+   "id": "SK-CUR-04",
+   "domain": "CUR",
+   "name": "Link an object to a question"
+  },
+  {
+   "id": "SK-CUR-06",
+   "domain": "CUR",
+   "name": "Find an object's provenance"
+  },
+  {
+   "id": "SK-ETR-01",
+   "domain": "ETR",
+   "name": "Who is affected by a choice"
+  },
+  {
+   "id": "SK-GRM-05",
+   "domain": "GRM",
+   "name": "Pronouns that point clearly"
+  },
+  {
+   "id": "SK-GRM-07",
+   "domain": "GRM",
+   "name": "Commas around extra information"
+  },
+  {
+   "id": "SK-GRM-13",
+   "domain": "GRM",
+   "name": "Modifiers next to their word"
+  },
+  {
+   "id": "SK-ICU-02",
+   "domain": "ICU",
+   "name": "Do not generalise about a culture"
+  },
+  {
+   "id": "SK-ICU-10",
+   "domain": "ICU",
+   "name": "How translation changes meaning"
+  },
+  {
+   "id": "SK-ICU-14",
+   "domain": "ICU",
+   "name": "Credit cultural sources"
+  },
+  {
+   "id": "SK-ICU-18",
+   "domain": "ICU",
+   "name": "Listen to an insider"
+  },
+  {
+   "id": "SK-KNO-05",
+   "domain": "KNO",
+   "name": "First-hand and second-hand knowledge"
+  },
+  {
+   "id": "SK-KNO-10",
+   "domain": "KNO",
+   "name": "Knowledge in crafts and hands"
+  },
+  {
+   "id": "SK-KNO-11",
+   "domain": "KNO",
+   "name": "Knowledge held by a community"
+  },
+  {
+   "id": "SK-KNO-14",
+   "domain": "KNO",
+   "name": "A model is not the thing"
+  },
+  {
+   "id": "SK-MED-01",
+   "domain": "MED",
+   "name": "Who made a source, and why"
+  },
+  {
+   "id": "SK-MED-02",
+   "domain": "MED",
+   "name": "When a source was made"
+  },
+  {
+   "id": "SK-MED-04",
+   "domain": "MED",
+   "name": "Check against other sources"
+  },
+  {
+   "id": "SK-NUM-14",
+   "domain": "NUM",
+   "name": "Record measurements"
+  },
+  {
+   "id": "SK-RSC-01",
+   "domain": "RSC",
+   "name": "Focus a research question"
+  },
+  {
+   "id": "SK-RSC-02",
+   "domain": "RSC",
+   "name": "Plan a search"
+  },
+  {
+   "id": "SK-RSC-07",
+   "domain": "RSC",
+   "name": "Primary and secondary sources"
+  },
+  {
+   "id": "SK-RSC-08",
+   "domain": "RSC",
+   "name": "Find where a claim began"
+  },
+  {
+   "id": "SK-RSC-15",
+   "domain": "RSC",
+   "name": "Track what is still unknown"
+  },
+  {
+   "id": "SK-RSC-21",
+   "domain": "RSC",
+   "name": "Run a fair test"
+  },
+  {
+   "id": "SK-RSC-22",
+   "domain": "RSC",
+   "name": "Use archives and records"
+  },
+  {
+   "id": "SK-SLF-09",
+   "domain": "SLF",
+   "name": "Reflect on what worked"
+  },
+  {
+   "id": "SK-SPK-01",
+   "domain": "SPK",
+   "name": "Listen and restate"
+  },
+  {
+   "id": "SK-SPK-02",
+   "domain": "SPK",
+   "name": "Speak to a point with a reason"
+  },
+  {
+   "id": "SK-THK-01",
+   "domain": "THK",
+   "name": "Find the claim"
+  },
+  {
+   "id": "SK-THK-02",
+   "domain": "THK",
+   "name": "Find the reasons for a claim"
+  },
+  {
+   "id": "SK-THK-05",
+   "domain": "THK",
+   "name": "Judge if reasons support a conclusion"
+  },
+  {
+   "id": "SK-THK-07",
+   "domain": "THK",
+   "name": "Use a counterexample"
+  },
+  {
+   "id": "SK-THK-12",
+   "domain": "THK",
+   "name": "Separate a person from their claim"
+  },
+  {
+   "id": "SK-THK-13",
+   "domain": "THK",
+   "name": "Weigh two arguments"
+  },
+  {
+   "id": "SK-THK-14",
+   "domain": "THK",
+   "name": "Qualify a claim to fit its evidence"
+  },
+  {
+   "id": "SK-THK-15",
+   "domain": "THK",
+   "name": "Reframe: two claims, two questions"
+  },
+  {
+   "id": "SK-THK-16",
+   "domain": "THK",
+   "name": "Concede a fair point"
+  },
+  {
+   "id": "SK-WRT-04",
+   "domain": "WRT",
+   "name": "Link evidence to a claim"
+  },
+  {
+   "id": "SK-WRT-07",
+   "domain": "WRT",
+   "name": "Write implications (so what?)"
+  },
+  {
+   "id": "SK-WRT-13",
+   "domain": "WRT",
+   "name": "Be concise"
+  }
+ ]
+}

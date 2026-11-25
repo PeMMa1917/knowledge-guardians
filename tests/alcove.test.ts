@@ -48,3 +48,24 @@ describe('Exhibition alcove (SYM-001)', () => {
     }
   });
 });
+
+describe('Skill Atlas (spec 76.1)', () => {
+  it('stages follow distinct contexts, worlds and actions, never grades', async () => {
+    const { skillStage, useSignature } = await import('../src/domain/skills');
+    expect(skillStage([])).toBe('unseen');
+    expect(skillStage([useSignature('W1', 'step', 'a')])).toBe('seen');
+    expect(skillStage([useSignature('W1', 'step', 'a'), useSignature('W1', 'step', 'a')])).toBe('seen');
+    const three = ['a', 'b', 'c'].map((x) => useSignature('W1', 'step', x));
+    expect(skillStage(three)).toBe('practised');
+    const eight = Array.from({ length: 8 }, (_, i) => useSignature(`W${i % 3}`, i % 2 ? 'build' : 'step', `c${i}`));
+    expect(skillStage(eight)).toBe('confident');
+  });
+  it('completing a step records its skills once per context', () => {
+    const d = new Driver();
+    d.s = { ...d.s, cards: ['card.loud-patent'], objectivesDone: ['m01.o6.label'] };
+    d.run({ type: 'AlcovePlace', alcove: 'firsts', item: 'card.loud-patent' });
+    expect(d.p.skills['SK-CUR-03']?.length).toBe(1);
+    d.run({ type: 'AlcovePlace', alcove: 'firsts', item: 'card.loud-patent' });
+    expect(d.p.skills['SK-CUR-03']?.length).toBe(1);
+  });
+});

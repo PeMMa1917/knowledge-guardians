@@ -64,7 +64,11 @@
       "aoks": [
        "HIS"
       ]
-     }
+     },
+     "skills": [
+      "SK-THK-01",
+      "SK-THK-02"
+     ]
     },
     {
      "id": "m02.o3.thread",
@@ -102,7 +106,12 @@
      "kq": {
       "id": "KQ-NEW-002",
       "action": "thread"
-     }
+     },
+     "skills": [
+      "SK-RSC-08",
+      "SK-CUR-06",
+      "SK-RSC-15"
+     ]
     },
     {
      "id": "m02.o4.forge",
@@ -143,7 +152,12 @@
      "kq": {
       "id": "KQ-NEW-003",
       "action": "forge"
-     }
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-KNO-10",
+      "SK-KNO-14"
+     ]
     },
     {
      "id": "m02.o5.showdown",
@@ -190,7 +204,13 @@
      "kq": {
       "id": "KQ-NEW-004",
       "action": "showdown"
-     }
+     },
+     "skills": [
+      "SK-THK-07",
+      "SK-THK-12",
+      "SK-THK-16",
+      "SK-SPK-02"
+     ]
     },
     {
      "id": "m02.o6.hesper",
@@ -216,7 +236,11 @@
       "aoks": [
        "TEC"
       ]
-     }
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-SPK-01"
+     ]
     },
     {
      "id": "m02.o7.kip",

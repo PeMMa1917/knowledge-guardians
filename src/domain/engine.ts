@@ -12,6 +12,7 @@ import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
 import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
 import { answerRound, checkOrder } from './puzzles';
+import { useSignature } from './skills';
 import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
 import { checkAwards, grantCredit } from './permanent';
 import { evaluateLabel, type LabelResult } from './label';
@@ -180,6 +181,7 @@ export class Engine {
     const events: GameEvent[] = [];
     const weaves: Weave[] = [];
     const stones: { id: string; way: string }[] = [];
+    const skillUses: { id: string; sig: string }[] = [];
     const portfolio: { kind: Parameters<typeof addPortfolio>[1]['kind']; title: string; text: string; weave: Weave }[] = [];
     let s = s0;
     let p = p0;
@@ -502,6 +504,7 @@ export class Engine {
           s = apply(o.onComplete, s, out);
           if (o.weave) weaves.push(o.weave);
           if (o.kq) stones.push({ id: o.kq.id, way: `${m.world}|${o.kq.action}` });
+          for (const sk of o.skills ?? []) skillUses.push({ id: sk, sig: useSignature(m.world, o.kq?.action ?? 'step', o.id, o.weave?.aoks ?? []) });
           changed = true;
         }
       }
@@ -533,6 +536,11 @@ export class Engine {
       const newWay = !ways.includes(st.way);
       if (newWay) p = { ...p, stones: { ...(p.stones ?? {}), [st.id]: [...ways, st.way] } };
       events.push({ kind: 'stone', question: st.id, ways: newWay ? ways.length + 1 : ways.length, newWay });
+    }
+    // Skill Atlas (spec 76.1): one use per distinct context.
+    for (const u of skillUses) {
+      const have = p.skills?.[u.id] ?? [];
+      if (!have.includes(u.sig)) p = { ...p, skills: { ...(p.skills ?? {}), [u.id]: [...have, u.sig] } };
     }
     for (const tid of out.portfolio) {
       const t = this.pack.portfolio.find((x) => x.id === tid);

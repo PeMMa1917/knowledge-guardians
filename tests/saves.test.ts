@@ -163,9 +163,10 @@ describe('storage, checksum and migration', () => {
   });
   it('migrates a version 2 permanent record and adds Question Stones', () => {
     const p = migratePermanent({ ...newPermanent(), schema: 2, stones: undefined, credit: { 'crit.evidence.date-kinds': 20 } } as any);
-    expect(p.schema).toBe(3);
+    expect(p.schema).toBe(4);
     expect(p.credit['crit.evidence.date-kinds']).toBe(20);
     expect(p.stones).toEqual({});
+    expect(p.skills).toEqual({});
   });
   it('detects a write from another tab (revision check)', () => {
     const store = memoryStore();

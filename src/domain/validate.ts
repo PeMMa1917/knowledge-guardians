@@ -164,6 +164,10 @@ export function validateContent(pack: ContentPack): string[] {
       if (!o.implications.some((i) => !i.ok)) p.push(`alcove ${a.id} ${o.card}: needs a 'so what?' trap (So-What Sphinx)`);
     });
   });
+  const skillIds = new Set((pack.skills ?? []).map((k) => k.id));
+  const domainIds = new Set((pack.skillDomains ?? []).map((d) => d.id));
+  (pack.skills ?? []).forEach((k) => { dup('skill', k.id); if (!domainIds.has(k.domain)) p.push(`skill ${k.id}: unknown domain ${k.domain}`); });
+  pack.missions.forEach((m) => m.objectives.forEach((o) => (o.skills ?? []).forEach((k) => skillIds.has(k) || p.push(`objective ${o.id}: unknown skill ${k}`))));
   (pack.puzzles ?? []).forEach((z) => {
     dup('puzzle', z.id); text(`puzzle ${z.id}`, z.intro); weave(z.weave, `puzzle ${z.id}`, true); eff(z.onComplete, `puzzle ${z.id}`);
     if (z.type === 'rounds') z.rounds.forEach((r, i) => { if (r.options.filter((o) => o.ok).length !== 1) p.push(`puzzle ${z.id} round ${i + 1}: needs exactly one correct option`); });

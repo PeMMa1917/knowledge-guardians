@@ -34,7 +34,10 @@
        "HIS",
        "HUM"
       ]
-     }
+     },
+     "skills": [
+      "SK-RSC-01"
+     ]
     },
     {
      "id": "ee1.o2.plan",
@@ -64,7 +67,10 @@
        "HIS",
        "HUM"
       ]
-     }
+     },
+     "skills": [
+      "SK-RSC-02"
+     ]
     },
     {
      "id": "ee1.o3.weigh",
@@ -106,7 +112,11 @@
        "HIS",
        "HUM"
       ]
-     }
+     },
+     "skills": [
+      "SK-MED-01",
+      "SK-MED-02"
+     ]
     },
     {
      "id": "ee1.o4.argue",
@@ -140,7 +150,11 @@
      "kq": {
       "id": "KQ-NEW-001",
       "action": "research"
-     }
+     },
+     "skills": [
+      "SK-THK-13",
+      "SK-WRT-04"
+     ]
     },
     {
      "id": "ee1.o5.cite",
@@ -170,7 +184,10 @@
        "HIS",
        "HUM"
       ]
-     }
+     },
+     "skills": [
+      "SK-CIT-01"
+     ]
     },
     {
      "id": "ee1.o6.integrity",
@@ -200,7 +217,10 @@
        "HIS",
        "HUM"
       ]
-     }
+     },
+     "skills": [
+      "SK-CIT-15"
+     ]
     },
     {
      "id": "ee1.o7.reflect",
@@ -240,6 +260,9 @@
       {
        "journal": "j.ee1.done"
       }
+     ],
+     "skills": [
+      "SK-SLF-09"
      ]
     }
    ]
@@ -277,7 +300,10 @@
       "aoks": [
        "HIS"
       ]
-     }
+     },
+     "skills": [
+      "SK-RSC-01"
+     ]
     },
     {
      "id": "ee2.o2.plan",
@@ -306,7 +332,11 @@
       "aoks": [
        "HIS"
       ]
-     }
+     },
+     "skills": [
+      "SK-RSC-02",
+      "SK-RSC-22"
+     ]
     },
     {
      "id": "ee2.o3.weigh",
@@ -343,7 +373,12 @@
       "aoks": [
        "HIS"
       ]
-     }
+     },
+     "skills": [
+      "SK-MED-01",
+      "SK-MED-04",
+      "SK-KNO-11"
+     ]
     },
     {
      "id": "ee2.o4.argue",
@@ -376,7 +411,11 @@
      "kq": {
       "id": "KQ-NEW-002",
       "action": "research"
-     }
+     },
+     "skills": [
+      "SK-THK-13",
+      "SK-WRT-04"
+     ]
     },
     {
      "id": "ee2.o5.cite",
@@ -405,7 +444,11 @@
       "aoks": [
        "HIS"
       ]
-     }
+     },
+     "skills": [
+      "SK-CIT-01",
+      "SK-ICU-14"
+     ]
     },
     {
      "id": "ee2.o6.integrity",
@@ -434,7 +477,10 @@
       "aoks": [
        "HIS"
       ]
-     }
+     },
+     "skills": [
+      "SK-CIT-15"
+     ]
     },
     {
      "id": "ee2.o7.reflect",
@@ -473,6 +519,9 @@
       {
        "journal": "j.ee2.done"
       }
+     ],
+     "skills": [
+      "SK-SLF-09"
      ]
     }
    ]

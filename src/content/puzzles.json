@@ -226,7 +226,12 @@
       "aoks": [
        "LAN"
       ]
-     }
+     },
+     "skills": [
+      "SK-GRM-07",
+      "SK-GRM-05",
+      "SK-GRM-13"
+     ]
     },
     {
      "id": "words.o2.cite",
@@ -253,7 +258,11 @@
        "HIS",
        "ART"
       ]
-     }
+     },
+     "skills": [
+      "SK-CIT-04",
+      "SK-CIT-01"
+     ]
     }
    ]
   }

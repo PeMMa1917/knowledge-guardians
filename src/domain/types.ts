@@ -189,6 +189,8 @@ export interface Objective {
   essential: boolean;
   onComplete?: Effect[];
   weave?: Weave;
+  /** Skill ids practised in this step (Skill Atlas, spec 76). */
+  skills?: string[];
   /** The knowledge question under this step, and how the player meets it (KQ-002, KQ-003). */
   kq?: { id: string; action: string };
 }
@@ -514,6 +516,8 @@ export interface ContentPack {
   origins: OriginRecord[];
   alcoves: AlcoveRecord[];
   puzzles: PuzzleRecord[];
+  skillDomains: { id: string; name: string }[];
+  skills: { id: string; domain: string; name: string }[];
 }
 
 // ---------------------------------------------------------------------------
@@ -521,7 +525,7 @@ export interface ContentPack {
 // ---------------------------------------------------------------------------
 
 export const CAMPAIGN_SCHEMA = 4;
-export const PERMANENT_SCHEMA = 3;
+export const PERMANENT_SCHEMA = 4;
 
 export interface ShowdownLogLine { who: 'player' | 'opponent' | 'crowd' | 'witness'; text: string; why?: string }
 
@@ -616,4 +620,6 @@ export interface PermanentRecord {
   portfolio: PortfolioEntry[];
   /** Question Stones (KQ-003): knowledge question id -> ways met ("world|action"). */
   stones: Record<string, string[]>;
+  /** Skill Atlas: skill id -> distinct use signatures (see skills.ts). Schema 4. */
+  skills: Record<string, string[]>;
 }

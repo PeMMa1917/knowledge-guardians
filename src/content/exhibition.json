@@ -243,7 +243,11 @@
        "HIS",
        "TEC"
       ]
-     }
+     },
+     "skills": [
+      "SK-CUR-01",
+      "SK-CUR-03"
+     ]
     },
     {
      "id": "alc.o2.link",
@@ -272,7 +276,11 @@
        "HIS",
        "TEC"
       ]
-     }
+     },
+     "skills": [
+      "SK-CUR-04",
+      "SK-WRT-04"
+     ]
     },
     {
      "id": "alc.o3.sowhat",
@@ -302,7 +310,10 @@
        "HIS",
        "TEC"
       ]
-     }
+     },
+     "skills": [
+      "SK-WRT-07"
+     ]
     }
    ]
   }
