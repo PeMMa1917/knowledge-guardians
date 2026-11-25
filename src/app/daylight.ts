@@ -33,3 +33,10 @@ export function skyAt(phase: number): { tint: number; light: number; night: numb
   const light = lerp(a.light, b.light, t);
   return { tint: mix(a.tint, b.tint, t), light, night: Math.max(0, Math.min(1, (light - 0.55) / 0.45)), name: t < 0.5 ? a.name : b.name };
 }
+
+/** A short rain shower now and then (90 s in every 20 min of town time). Fixed, not random, so it is fair and testable. */
+export const RAIN_EVERY = 1200, RAIN_FOR = 90, RAIN_AT = 520;
+export function raining(clock: number): boolean {
+  const t = ((clock % RAIN_EVERY) + RAIN_EVERY) % RAIN_EVERY;
+  return t >= RAIN_AT && t < RAIN_AT + RAIN_FOR;
+}

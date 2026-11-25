@@ -65,6 +65,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 - **Competency rings** (C1): the Awards tab of the journal shows one ring per TOK concept. It fills with credited XP out of the most this chapter can give for that concept (sum of criterion maxima), with the numbers beside it. When a ring closes, a toast and fanfare say so. A hidden list keeps the numbers for screen readers. Code: `conceptRings()` in `permanent.ts`.
 - **World memory** (C1): 18 short lines in `src/content/memories.json`. When the player walks near someone, that person says one line, once, in a speech box over their head (with talk sounds). Lines come from explicit state: Corvan reacts to each of the Showdown outcomes, Orrin and Ise remember a puzzle that took a few tries (kindly), and Hana, Idris, the tea seller, Hesper, Sefa, Efua, Kip, Dace, Mara and Venn remember quests, cards, the Glimmermoth and the Waystone pause. Flags `mem.<id>`.
 - **Diegetic UI** (C1): a brass **compass** in the bottom-right corner. Its needle turns to the nearest person with something new to say, or else to the nearest place not used yet (it drifts when nothing is left nearby); its label says what it points to. Click it or press M (a new remappable key) for the **folding map**: a picture of the whole place on parchment with fold lines and pins (you, people with something new, places not used yet, the Waystone, ways out) and a legend. The bag is now a leather **satchel** with a flap and stitched pockets, and the journal has a leather spine and a ribbon. Code: `WorldScene.mapSnap()`, `UI.openMap()`, `UI.setCompass()`.
+- **Rain and footsteps**: a short rain shower falls on Emberford for 90 seconds in every 20 minutes of town time (fixed, not random): slanted drops, a grey-blue wash, and soft rain made in code (filtered noise that fades in and out), with captions. With reduced effects the drops and wash are off; the sound follows the sound volume. Footsteps now sound soft and low on grass and crisp on stone. Code: `raining()` in `daylight.ts`, `rain()` in `ambience.ts`.
 - **Balance reminder:** every 45 minutes of active play, Lumen suggests a real break. It never blocks play.
 - **MIS-10 and MIS-11 (Indigenous knowledge) are left out on purpose.** They need Indigenous content made with community advisors (spec section 88). Do not add them with a quick signal.
 
@@ -73,7 +74,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 
 ### Tests
 
-`npm test`: 185 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
+`npm test`: 186 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
 
 ## Next steps (in order)
 

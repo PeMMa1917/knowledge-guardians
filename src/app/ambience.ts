@@ -44,3 +44,28 @@ export function bell(volume: number): void {
   const t = a.currentTime + 0.01, v = Math.min(1, volume) * 0.035;
   for (const k of [0, 1.6]) { tone(a, 392, t + k, 3.2, v); tone(a, 784 * 1.01, t + k, 1.6, v * 0.35); tone(a, 196, t + k, 2.4, v * 0.5, 'triangle'); }
 }
+
+/** A soft rain shower: filtered noise that fades in and out. Call with `on` false to stop it. */
+let rainNode: { src: AudioBufferSourceNode; gain: GainNode } | null = null;
+export function rain(on: boolean, volume: number): void {
+  const a = audio();
+  if (!a) return;
+  const t = a.currentTime;
+  if (!on || volume <= 0.01) {
+    if (rainNode) { const r = rainNode; rainNode = null; r.gain.gain.cancelScheduledValues(t); r.gain.gain.setValueAtTime(r.gain.gain.value, t); r.gain.gain.linearRampToValueAtTime(0, t + 3); r.src.stop(t + 3.1); }
+    return;
+  }
+  const target = Math.min(1, volume) * 0.05;
+  if (rainNode) { rainNode.gain.gain.setTargetAtTime(target, t, 0.5); return; }
+  const len = a.sampleRate * 2;
+  const buf = a.createBuffer(1, len, a.sampleRate);
+  const d = buf.getChannelData(0);
+  // Pink-ish noise with a few brighter drops.
+  let b = 0;
+  for (let i = 0; i < len; i++) { b = 0.97 * b + 0.03 * (Math.random() * 2 - 1); d[i] = b * 3 + (Math.random() < 0.0009 ? (Math.random() - 0.5) * 0.8 : 0); }
+  const src = a.createBufferSource(); src.buffer = buf; src.loop = true;
+  const bp = a.createBiquadFilter(); bp.type = 'lowpass'; bp.frequency.value = 2400;
+  const gain = a.createGain(); gain.gain.setValueAtTime(0, t); gain.gain.linearRampToValueAtTime(target, t + 4);
+  src.connect(bp); bp.connect(gain); gain.connect(a.destination); src.start(t);
+  rainNode = { src, gain };
+}

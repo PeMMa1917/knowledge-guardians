@@ -19,6 +19,8 @@ export const CAPTIONS: Record<string, string> = {
   'sfx.complete': 'Success chime',
   'amb.forge': 'Forge hammer rings',
   'amb.chime': 'Soft chimes',
+  'amb.rain': 'Rain begins to patter',
+  'amb.rain.end': 'The rain stops',
   'amb.moth': 'Glimmermoth hums and glows',
   'amb.bell': 'Town bell rings: evening',
   'music.archive': 'Music: quiet, mysterious',

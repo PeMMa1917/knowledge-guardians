@@ -37,3 +37,14 @@ describe('day and evening (town maps)', () => {
     expect(skyAt(-0.2).tint).toBe(skyAt(0.8).tint);
   });
 });
+
+describe('rain showers', () => {
+  it('a short, fixed shower in every cycle, never most of the time', async () => {
+    const { raining, RAIN_EVERY, RAIN_FOR } = await import('../src/app/daylight');
+    let wet = 0;
+    for (let t = 0; t < RAIN_EVERY; t++) if (raining(t)) wet++;
+    expect(wet).toBe(RAIN_FOR);
+    expect(raining(0)).toBe(false);
+    expect(raining(RAIN_EVERY * 3 + 530)).toBe(true);
+  });
+});

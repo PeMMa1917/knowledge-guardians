@@ -10,8 +10,8 @@ import { ensureLook } from './looks';
 import { cloakThreads } from '../domain/appearance';
 import { EMOTES, EMOTE_ICONS } from '../domain/emotes';
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
-import { bell, chime, clink, shimmer } from '../app/ambience';
-import { CYCLE, skyAt } from '../app/daylight';
+import { bell, chime, clink, rain, shimmer } from '../app/ambience';
+import { CYCLE, raining, skyAt } from '../app/daylight';
 import { lorelingForm } from '../domain/lorelings';
 import { caption } from '../app/captions';
 import { LUMEN_COLOURS } from '../app/settings';
@@ -57,6 +57,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   /** Town day cycle: the grade rectangle, the fireflies, and the shared clock (seconds, kept across maps). */
   private grade: Phaser.GameObjects.Rectangle | null = null;
   private fireflies: Phaser.GameObjects.Particles.ParticleEmitter | null = null;
+  private rainFx: Phaser.GameObjects.Particles.ParticleEmitter | null = null;
+  private wasRaining = false;
+  rainDim = 0;
   private static dayClock = CYCLE * 0.1;
   private lastSky = '';
   private portalRing: Phaser.GameObjects.Image | null = null;
@@ -343,6 +346,14 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }).setDepth(200003);
       this.fireflies.stop();
       this.fx.push(this.fireflies);
+      // Rain (the day cycle starts and stops it): thin, fast, slanted drops over the whole town.
+      this.rainFx = this.add.particles(0, 0, 'spark', {
+        emitZone: { type: 'random', source: new Phaser.Geom.Rectangle(-4 * TILE, -6 * TILE, this.map.width * TILE + 8 * TILE, 4 * TILE) } as any,
+        lifespan: 1500, speedY: { min: 300, max: 380 }, speedX: { min: -60, max: -40 }, scaleX: 0.4, scaleY: 2.6, rotate: 8,
+        tint: 0xdcebff, alpha: { start: 0.8, end: 0.35 }, frequency: 5, quantity: 6,
+      }).setDepth(200004);
+      this.rainFx.stop();
+      this.fx.push(this.rainFx);
       this.fx.push(this.add.particles(19.5 * TILE + 8, 23 * TILE, 'spark', {
         lifespan: 1300, speed: { min: 4, max: 14 }, scale: { start: 0.7, end: 0 }, tint: 0x9fe8ff, blendMode: 'ADD', frequency: 160,
       }).setDepth(200002));
@@ -470,10 +481,22 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   /** Town maps: the light changes from morning to night over CYCLE seconds of play. */
   private updateDaylight(dt: number): void {
-    if (this.map.ambience !== 'town' || !this.grade || ctx.settings.reducedEffects) return;
+    if (this.map.ambience !== 'town' || !this.grade) { if (this.wasRaining) { this.wasRaining = false; rain(false, 0); } return; }
+    // Rain: sound follows the sound volume; drops are a visual effect (off with reduced effects).
+    const wet = raining(WorldScene.dayClock);
+    if (wet !== this.wasRaining) {
+      this.wasRaining = wet;
+      rain(wet, ctx.settings.sfxVolume * 0.8);
+      caption(wet ? 'amb.rain' : 'amb.rain.end');
+      if (this.rainFx) { if (wet && !ctx.settings.reducedEffects) this.rainFx.start(); else this.rainFx.stop(); }
+      if (this.grade && !ctx.settings.reducedEffects) this.tweens.add({ targets: this, rainDim: wet ? 1 : 0, duration: 3000 });
+    }
+    if (ctx.settings.reducedEffects) { WorldScene.dayClock += dt; return; }
     WorldScene.dayClock += dt;
     const sky = skyAt(WorldScene.dayClock / CYCLE);
-    this.grade.setFillStyle(sky.tint);
+    // A grey-blue wash while it rains.
+    const tint = this.rainDim > 0 ? Phaser.Display.Color.Interpolate.ColorWithColor(Phaser.Display.Color.ValueToColor(sky.tint), Phaser.Display.Color.ValueToColor(0x5a6a88), 100, Math.round(this.rainDim * 55)) : null;
+    this.grade.setFillStyle(tint ? Phaser.Display.Color.GetColor(tint.r, tint.g, tint.b) : sky.tint);
     for (const l of this.lightPools) if (!this.tweens.isTweening(l)) l.setAlpha(sky.light);
     if (this.fireflies) { if (sky.night > 0.5 && !this.fireflies.emitting) this.fireflies.start(); else if (sky.night <= 0.5 && this.fireflies.emitting) this.fireflies.stop(); }
     if (sky.name !== this.lastSky) {
@@ -541,7 +564,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       this.stepTimer += dt;
       if (this.stepTimer > 0.32) {
         this.stepTimer = 0;
-        if (ctx.settings.sfxVolume > 0 && this.cache.audio.exists('sfx.step')) this.sound.play('sfx.step', { volume: ctx.settings.sfxVolume * 0.18 });
+        if (ctx.settings.sfxVolume > 0 && this.cache.audio.exists('sfx.step')) {
+          // Footsteps sound different on grass (soft, low) and on stone (crisp); wetter in the rain.
+          const fl = this.map.floor(Math.floor(p.sprite.x / TILE), Math.floor(p.sprite.y / TILE)) ?? '';
+          const soft = fl.startsWith('grass');
+          this.sound.play('sfx.step', { volume: ctx.settings.sfxVolume * (soft ? 0.1 : 0.18), rate: (soft ? 0.78 : 1.08) * (this.wasRaining ? 0.92 : 1) + Math.random() * 0.06 });
+        }
         // Footstep dust: a small puff that fades (off with reduced effects).
         if (!ctx.settings.reducedEffects) {
           const puff = this.add.image(p.sprite.x + Phaser.Math.Between(-2, 2), p.sprite.y + 5, 'glow')
