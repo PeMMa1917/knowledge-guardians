@@ -16,6 +16,7 @@ import { lorelingForm } from '../domain/lorelings';
 import { tiltOf } from '../domain/puzzles';
 import { chime, playNotes } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
+import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
 import { ALBUM_MAX, loadAlbum, saveAlbum } from '../app/albumStore';
 import { captionLines, checkLine } from '../domain/album';
 import { caption } from '../app/captions';
@@ -65,6 +66,16 @@ function ringSvg(name: string, got: number, max: number, colour: string): HTMLEl
     <text x="32" y="36" text-anchor="middle" font-size="12" fill="currentColor">${got}</text></svg>`;
   el.append(h('figcaption', {}, name, h('small', {}, ` ${got}/${max}`)));
   return el;
+}
+
+/** A crest as a small pixel canvas, scaled up crisply. */
+function crestCanvas(c: Crest, px: number, scale: number): HTMLCanvasElement {
+  const t = document.createElement('canvas'); t.width = px; t.height = px;
+  const id = t.getContext('2d')!.createImageData(px, px); id.data.set(crestPixels(c, px)); t.getContext('2d')!.putImageData(id, 0, 0);
+  const out = document.createElement('canvas'); out.width = px * scale; out.height = px * scale;
+  const g = out.getContext('2d')!; g.imageSmoothingEnabled = false; g.drawImage(t, 0, 0, px * scale, px * scale);
+  out.className = 'crest'; out.setAttribute('aria-hidden', 'true');
+  return out;
 }
 
 function chip(text: string, title: string, cls: string): HTMLElement {
@@ -422,6 +433,42 @@ export class UI implements UIApi {
         : h('p', { class: 'fine' }, 'No threads yet. Your outfit gets an embroidered thread for each world story you resolve.'));
   }
 
+  private crestSummary(): HTMLElement {
+    const cr = decodeCrest(ctx.controller.state.flags['crest']);
+    return h('div', { class: 'row' }, cr ? crestCanvas(cr, 30, 2) : h('span', { class: 'fine' }, 'No crest yet.'),
+      cr ? h('em', {}, `“${MOTTOS[cr.motto]}”`) : '', h('button', { onclick: () => this.openCrest() }, cr ? 'Change my crest' : 'Design a crest'));
+  }
+
+  /** The crest designer (spec 47.4 heraldry). Every choice is from a list. The crest shows on the back of the cloak. */
+  openCrest(): void {
+    const c = ctx.controller;
+    let cr: Crest = decodeCrest(c.state.flags['crest']) ?? { ...DEFAULT_CREST };
+    const box = this.openModal('crest-panel wide', 'Crest');
+    const pick = <K extends keyof Crest>(label: string, k: K, opts: [string, string][]) => h('label', { class: 'crest-pick' }, h('span', {}, label),
+      h('select', { onchange: (e: Event) => { const v = (e.target as HTMLSelectElement).value; (cr as any)[k] = k === 'motto' ? Number(v) : v; render(); } },
+        ...opts.map(([v, t]) => h('option', { value: v, selected: String(cr[k]) === v }, t))));
+    const colours = Object.keys(FIELDS).map((k) => [k, k[0].toUpperCase() + k.slice(1)] as [string, string]);
+    const render = () => {
+      clear(box);
+      const preview = h('div', { class: 'crest-preview', role: 'img', 'aria-label': `Crest: a ${cr.shape} shield, ${cr.division === 'plain' ? cr.a : `${cr.a} and ${cr.b}, divided ${cr.division}`}, with a ${cr.ink} ${CHARGES[cr.charge].name}. Motto: ${MOTTOS[cr.motto]}` },
+        crestCanvas(cr, 30, 6), h('p', { class: 'motto' }, MOTTOS[cr.motto]));
+      box.append(this.closeBtn(), h('h2', {}, 'Your crest'),
+        h('p', {}, 'Design a crest for your Guardian. It is stitched on the back of your cloak and stamped on your photos. Every choice comes from a list, so it is always kind.'),
+        h('div', { class: 'crest-body' }, preview, h('div', { class: 'crest-picks' },
+          pick('Shape', 'shape', SHAPES.map((x) => [x, { heater: 'Heater shield', round: 'Round shield', banner: 'Banner', kite: 'Kite shield' }[x]] as [string, string])),
+          pick('Division', 'division', DIVISIONS.map((x) => [x, { plain: 'Plain', pale: 'Split down the middle', fess: 'Split across', quarterly: 'Quarters', chevron: 'Chevron', bend: 'Diagonal band' }[x]] as [string, string])),
+          pick('First colour', 'a', colours), pick('Second colour', 'b', colours),
+          pick('Symbol', 'charge', Object.entries(CHARGES).map(([k, v]) => [k, v.name[0].toUpperCase() + v.name.slice(1)] as [string, string])),
+          pick('Symbol colour', 'ink', colours),
+          pick('Motto', 'motto', MOTTOS.map((m, i) => [String(i), m] as [string, string])))),
+        h('div', { class: 'row' },
+          h('button', { class: 'primary', onclick: () => { c.dispatch({ type: 'SetFlag', flag: 'crest', value: encodeCrest(cr) }); this.sfx('sfx.sparkle'); this.toast('Crest saved. It is on your cloak now.', 'save'); this.closeModal(); ctx.world?.refreshWorld(); } }, 'Save crest'),
+          h('button', { onclick: () => { cr = { ...DEFAULT_CREST, a: Object.keys(FIELDS)[Math.floor(Math.random() * 10)], charge: Object.keys(CHARGES)[Math.floor(Math.random() * 10)], motto: Math.floor(Math.random() * MOTTOS.length) }; render(); } }, 'Surprise me'),
+          h('button', { onclick: () => this.closeModal() }, 'Cancel')));
+    };
+    render();
+  }
+
   /** My Guardian: change pronouns at any time; see the origin. */
   private openGuardian(): void {
     const c = ctx.controller;
@@ -432,6 +479,7 @@ export class UI implements UIApi {
     this.openModal('guardian wide', 'My Guardian', this.closeBtn(), h('h2', {}, pl.name),
       h('p', { class: 'label' }, 'Appearance'), lookPick.el,
       h('p', { class: 'label' }, 'Cloak threads'), this.threadView(pl.look),
+      h('p', { class: 'label' }, 'Crest'), this.crestSummary(),
       h('p', { class: 'label' }, 'Voice'), this.voicePicker(),
       h('p', { class: 'label' }, 'Pronouns'), pron.el,
       h('p', { class: 'label' }, 'Origin'),
@@ -1641,7 +1689,8 @@ export class UI implements UIApi {
       body.append(h('p', { class: 'fine' }, 'Historical claims in this chapter come from these sources. Dialogue by characters is original fiction, not quotation.'),
         h('ul', { class: 'sources-list' }, ...c.pack.sources.map((src) => h('li', {}, h('a', { href: src.url, target: '_blank', rel: 'noopener' }, `${src.id}: ${src.title}`), h('br', {}), h('small', {}, `Supports: ${src.supports}`)))));
     }
-    this.openModal('journal wide', 'Journal', this.closeBtn(), h('h2', {}, `${s.player.name}'s journal`), nav, body);
+    const jc = decodeCrest(s.flags['crest']);
+    this.openModal('journal wide', 'Journal', this.closeBtn(), h('h2', { class: 'journal-title' }, jc ? crestCanvas(jc, 30, 1) : '', `${s.player.name}'s journal`, jc ? h('small', { class: 'motto' }, ` · ${MOTTOS[jc.motto]}`) : ''), nav, body);
   }
 
   private openBag(): void {
@@ -1665,6 +1714,7 @@ export class UI implements UIApi {
         h('button', { 'data-autofocus': true, onclick: () => this.closeModal() }, 'Resume'),
         h('button', { onclick: () => { c.suspend('Save and leave'); this.closeModal(false); this.toast('Saved. You can close the tab.', 'save'); (window as any).kgToTitle?.(); } }, 'Save and leave'),
         h('button', { onclick: () => this.openGuardian() }, 'My Guardian (look and pronouns)'),
+        h('button', { onclick: () => this.openCrest() }, 'Crest'),
         h('button', { onclick: () => { this.closeModal(false); this.openPhotoMode(); } }, 'Photo mode'),
         h('button', { onclick: () => this.openAlbum() }, 'Photo album'),
         h('button', { onclick: () => this.openMusicBox() }, 'Music box'),
@@ -1846,7 +1896,10 @@ export class UI implements UIApi {
       if (o.caption) {
         const place = MAPS[c.state.mapId]?.name ?? '';
         g.fillStyle = o.frame === 'gold' ? '#2a1a0a' : '#fff8e6'; g.font = '600 18px Lexend, sans-serif'; g.textBaseline = 'middle';
-        g.fillText(`${c.state.player.name} · ${place} · ${new Date().toLocaleDateString()}`, pad + 6, img.height + pad * 2 + capH / 2 - (pad ? 6 : 0));
+        const cr = decodeCrest(c.state.flags['crest']);
+        let tx = pad + 6;
+        if (cr) { const cc = crestCanvas(cr, 30, 1); g.drawImage(cc, tx, img.height + pad * 2 + capH / 2 - (pad ? 6 : 0) - 15); tx += 36; }
+        g.fillText(`${c.state.player.name} · ${place} · ${new Date().toLocaleDateString()}`, tx, img.height + pad * 2 + capH / 2 - (pad ? 6 : 0));
       }
       const a = h('a', { href: cv.toDataURL('image/png'), download: `knowledge-guardians-${Date.now()}.png` }) as HTMLAnchorElement;
       document.body.append(a); a.click(); a.remove();

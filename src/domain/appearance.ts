@@ -133,8 +133,11 @@ export function recolour(data: Uint8ClampedArray, w: number, h: number, c: LookC
     const n = map.get(k);
     if (n) { data[o] = n[0]; data[o + 1] = n[1]; data[o + 2] = n[2]; }
   }
-  if (threads.length) embroider(data, w, h, role, threads);
+  const stitches = threads.filter((t) => /^[0-9a-f]{6}$/i.test(t));
+  if (stitches.length) embroider(data, w, h, role, stitches);
   features(data, w, h, role, c);
+  const crest = threads.find((t) => /^crest[0-9a-f]{12}$/i.test(t));
+  if (crest) crestPatch(data, w, h, role, crest.slice(5, 11), crest.slice(11, 17));
   if (c.accessory === 'none') return;
   const acc = rgb(ACCENT[c.accent]);
   const accShade = acc.map((v) => Math.round(v * 0.72)) as [number, number, number];
@@ -307,5 +310,22 @@ function features(data: Uint8ClampedArray, w: number, h: number, role: (string |
         }
       }
     }
+  }
+}
+
+/** The crest patch: a 4 x 3 shield on the back of the cloak (up-facing frames only). */
+function crestPatch(data: Uint8ClampedArray, w: number, h: number, role: (string | undefined)[], field: string, ink: string): void {
+  if (h < 96) return;
+  const fy = 64; // the third row of frames faces up (the back)
+  for (let f = 0; f < 4 && (f + 1) * 16 <= w; f++) {
+    const fx = f * 16;
+    let y0 = -1;
+    for (let y = 0; y < 12 && y0 < 0; y++) for (let x = 0; x < 16; x++) if (role[(fy + y) * w + fx + x] === 'hair') { y0 = y; break; }
+    if (y0 < 0) continue;
+    const put = (x: number, y: number, hex: string) => { const o = ((fy + y) * w + fx + x) * 4, col = rgb(hex); data[o] = col[0]; data[o + 1] = col[1]; data[o + 2] = col[2]; data[o + 3] = 255; };
+    for (let x = 6; x <= 9; x++) put(x, y0 + 12, '2a2238');
+    for (let x = 6; x <= 9; x++) put(x, y0 + 13, x === 6 || x === 9 ? '2a2238' : field);
+    put(7, y0 + 14, field); put(8, y0 + 14, field);
+    put(7, y0 + 13, ink);
   }
 }

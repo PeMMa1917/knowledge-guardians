@@ -10,6 +10,7 @@ import { ensureLook } from './looks';
 import { cloakThreads } from '../domain/appearance';
 import { EMOTES, EMOTE_ICONS } from '../domain/emotes';
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
+import { FIELDS, decodeCrest } from '../domain/crest';
 import { bell, chime, clink, rain, shimmer } from '../app/ambience';
 import { CYCLE, raining, skyAt } from '../app/daylight';
 import { lorelingForm } from '../domain/lorelings';
@@ -659,7 +660,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   }
 
   private threadColours(): string[] {
-    return cloakThreads(ctx.controller.state.objectivesDone).map((t) => t.colour);
+    const s = ctx.controller.state;
+    const out = cloakThreads(s.objectivesDone).map((t) => t.colour);
+    // The crest (spec 47.4) is stitched as a small patch on the back of the cloak.
+    const cr = decodeCrest(s.flags['crest']);
+    if (cr) out.push(`crest${FIELDS[cr.a]}${FIELDS[cr.ink]}`);
+    return out;
   }
 
   /**

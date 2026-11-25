@@ -67,6 +67,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 - **Diegetic UI** (C1): a brass **compass** in the bottom-right corner. Its needle turns to the nearest person with something new to say, or else to the nearest place not used yet (it drifts when nothing is left nearby); its label says what it points to. Click it or press M (a new remappable key) for the **folding map**: a picture of the whole place on parchment with fold lines and pins (you, people with something new, places not used yet, the Waystone, ways out) and a legend. The bag is now a leather **satchel** with a flap and stitched pockets, and the journal has a leather spine and a ribbon. Code: `WorldScene.mapSnap()`, `UI.openMap()`, `UI.setCompass()`.
 - **Rain and footsteps**: a short rain shower falls on Emberford for 90 seconds in every 20 minutes of town time (fixed, not random): slanted drops, a grey-blue wash, and soft rain made in code (filtered noise that fades in and out), with captions. With reduced effects the drops and wash are off; the sound follows the sound volume. Footsteps now sound soft and low on grass and crisp on stone. Code: `raining()` in `daylight.ts`, `rain()` in `ambience.ts`.
 - **Music box** (spec 47.4 and 39.4; Menu, Music box): each of the 12 TOK concepts has a short original tune that opens the first time the player earns XP for that concept; two place tunes open by visiting the Nexus and Emberford. The player arranges up to eight tunes into a song on a brass cylinder (each slot lights while it plays), picks a sound (music box, marimba, flute) and a speed. The song plays softly when the player rests at a Waystone. All sound is made in code (`playNotes()` in `ambience.ts`); rules and tunes in `src/domain/musicbox.ts`; the song is stored in flags.
+- **Crest designer** (spec 47.4; Menu, Crest): the player makes a crest from lists only: a shield shape, a division, two field colours, one of ten symbols, a symbol colour and one of twelve preset mottos. "Surprise me" picks a random crest. The crest is stitched on the cloak back patch, shown with its motto in the journal title and stamped on photos. Rules in `src/domain/crest.ts`.
 - **Balance reminder:** every 45 minutes of active play, Lumen suggests a real break. It never blocks play.
 - **MIS-10 and MIS-11 (Indigenous knowledge) are left out on purpose.** They need Indigenous content made with community advisors (spec section 88). Do not add them with a quick signal.
 
@@ -75,7 +76,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 
 ### Tests
 
-`npm test`: 189 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
+`npm test`: 192 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
 
 ## Next steps (in order)
 

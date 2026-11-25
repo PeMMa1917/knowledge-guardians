@@ -514,3 +514,13 @@ body.photo-mode .compass { display: none; }
 .motif { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 6px; background: rgba(255,255,255,.05); }
 .motif.locked { opacity: .55; font-size: .9em; }
 @media (max-width: 600px) { .song { grid-template-columns: repeat(4, 1fr); } }
+
+/* Crest */
+canvas.crest { image-rendering: pixelated; vertical-align: middle; }
+.crest-body { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start; }
+.crest-preview { text-align: center; padding: 14px; border-radius: 10px; background: radial-gradient(circle, rgba(255,240,200,.12), transparent 70%); }
+.crest-preview .motto, .journal-title .motto { font-style: italic; color: var(--gold, #e9cf7a); }
+.crest-preview .motto { margin: 8px 0 0; padding: 4px 10px; border-top: 2px solid #c9a24a; border-bottom: 2px solid #c9a24a; }
+.crest-picks { flex: 1 1 260px; display: grid; gap: 8px; }
+.crest-pick { display: grid; grid-template-columns: 8em 1fr; gap: 8px; align-items: center; }
+.journal-title canvas.crest { margin-right: 8px; width: 30px; height: 30px; }
