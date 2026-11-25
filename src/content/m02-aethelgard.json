@@ -814,7 +814,17 @@
      "NAT"
     ]
    },
-   "dodgeSignal": "MIS-36"
+   "dodgeSignal": "MIS-36",
+   "testimony": {
+    "afterTurn": 2,
+    "line": "Corvan, to the crowd: 'My supplier swore on his name: this blade came out of an old tomb near Damascus. Centuries old!'",
+    "contradictedBy": [
+     "card.guild-ledger",
+     "card.workshop-diagram"
+    ],
+    "caught": "The guild ledger and Hesper's sheet record this blade as made this season, here in Emberford. A sworn story does not outweigh a dated record. The crowd murmurs.",
+    "wrong": "That card does not touch what Corvan just said. Which card puts a date on this blade?"
+   }
   }
  ],
  "journal": [

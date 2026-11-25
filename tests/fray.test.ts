@@ -58,3 +58,29 @@ describe('The Shattering Rumour (rumour trace, Echo Moths)', () => {
     expect(d.e.talkEntry('stallkeeper-hana', d.s)).toBe('rumour.hana.idle');
   });
 });
+
+describe('cross-examination (one use, Corvan Showdown)', () => {
+  const start = () => {
+    const d = new Driver();
+    d.s = { ...d.s, cards: ['card.guild-ledger', 'card.damascus-terms'] };
+    d.run({ type: 'ShowdownStart', showdown: 'corvan' });
+    d.moves({ move: 'claim', claim: pack.showdowns.find((x) => x.id === 'corvan')!.playerClaims[0].id }, { move: 'qualify' }, { move: 'source' });
+    return d;
+  };
+  it('a new statement opens after two opponent turns; a dated record catches it', () => {
+    const d = start();
+    expect(d.s.showdown!.testimony).toBe('open');
+    expect(() => new Driver().run({ type: 'ShowdownMove', move: { move: 'present', card: 'card.guild-ledger' } })).toThrow();
+    const before = d.s.showdown!.trust.opponent;
+    d.moves({ move: 'present', card: 'card.guild-ledger' });
+    expect(d.s.showdown!.testimony).toBe('caught');
+    expect(d.s.showdown!.trust.opponent).toBeLessThan(before);
+  });
+  it('the wrong card says why; the moment passes after one move', () => {
+    const d = start();
+    d.moves({ move: 'present', card: 'card.damascus-terms' });
+    expect(d.s.showdown!.log.some((l) => /does not touch what Corvan just said/.test(l.why ?? ''))).toBe(true);
+    expect(d.s.showdown!.testimony).toBe('missed');
+    expect(() => d.run({ type: 'ShowdownMove', move: { move: 'present', card: 'card.guild-ledger' } })).toThrow(/no new statement/);
+  });
+});

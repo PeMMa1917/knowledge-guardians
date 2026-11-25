@@ -56,6 +56,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 - **Side quest "The Shattering Rumour"** (Emberford, rumour trace, C1): ask the tea seller for news and hear that "every blade from Hesper's forge shatters in the cold, and the guild is hiding it". Ask "who told you?" along the chain: Porter Idris Bello (south road), Stall-keeper Hana Novak (west of the fountain), then read the guild's public record book (one test blade cracked in a too-cold quench; it was recorded and fixed). Tell the tea seller what the source says: "all lies" and "Corvan did it" send the player back to say it again, more carefully. Lumen: each retelling filled a gap with a guess; repetition made it louder, not truer. 5 truth XP, Echo Moths in the Bestiary, and the tea seller remembers (world memory). Content in `src/content/rumour.json`. Content can now introduce a Fray creature with the flag `meet.fray.<id>`.
 - **Cloak embroidery** (spec 32.6, C1): the player's outfit gets a stitched thread on its hem for each world story resolved (gold for The Three Firsts, ember for The Label on the Blade), with a small burst when it appears. My Guardian shows the threads and what each one is for. Rules in `ARC_THREADS` and `cloakThreads` (`src/domain/appearance.ts`); the sheet is made by the same recolour step as the look.
 - **Emotes** (spec 47.4, C1 "a few"): press G (remappable) for six emotes: wave, cheer, think, idea, question and thanks. A pixel bubble shows over the player with a small hop and the player's voice, and up to three people nearby turn and answer with their own bubble. No game effect, nothing scored. Captioned. Rules and icons in `src/domain/emotes.ts`. Stored key maps from before keep their keys; emotes take a free letter.
+- **Cross-examination** (C1, one use, Corvan's Showdown): after two opponent turns Corvan makes a new statement ("my supplier swore it came from an old tomb near Damascus"). For one move only, a highlighted box lets the player present a card. The guild ledger or Hesper's workshop sheet catches it (a dated record outweighs a sworn story: a large trust swing); a wrong card says why; letting it pass costs nothing. Data: `testimony` on a Showdown record; rules in `showdown.ts` (move `present`). Existing routes and outcomes are unchanged.
 - **Balance reminder:** every 45 minutes of active play, Lumen suggests a real break. It never blocks play.
 - **MIS-10 and MIS-11 (Indigenous knowledge) are left out on purpose.** They need Indigenous content made with community advisors (spec section 88). Do not add them with a quick signal.
 
@@ -64,7 +65,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 
 ### Tests
 
-`npm test`: 167 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
+`npm test`: 169 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
 
 ## Next steps (in order)
 

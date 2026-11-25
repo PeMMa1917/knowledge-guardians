@@ -22,6 +22,7 @@ export type ShowdownMove =
   | { move: 'source' }
   | { move: 'attack' }
   | { move: 'shout' }
+  | { move: 'present'; card: string }
   | { move: 'rest' };
 
 export const MOVE_HELP: Record<ShowdownMove['move'], string> = {
@@ -36,6 +37,7 @@ export const MOVE_HELP: Record<ShowdownMove['move'], string> = {
   source: 'Ask the opponent to show the support under their claim.',
   attack: "Point at the opponent's motive. (The claim itself takes no damage.)",
   shout: 'Repeat your claim, louder. (Volume is not support.)',
+  present: 'Present a card at the moment the opponent says something it contradicts.',
   rest: 'Rest your case. The crowd decides.',
 };
 
@@ -76,6 +78,8 @@ export function playMove(rec: ShowdownRecord, sd0: ShowdownState, mv: ShowdownMo
     return { state: sd, signals };
   }
   if (!claim && mv.move !== 'rest') throw new Error('Put your claim on the board first');
+  const testimonyWasOpen = sd.testimony === 'open';
+  if (mv.move === 'present' && !testimonyWasOpen) throw new Error('There is no new statement to answer now');
 
   switch (mv.move) {
     case 'support': {
@@ -177,6 +181,18 @@ export function playMove(rec: ShowdownRecord, sd0: ShowdownState, mv: ShowdownMo
       say('You repeat your claim, louder.', 'Louder is not stronger. The crowd gets bored.');
       break;
     }
+    case 'present': {
+      if (!s.cards.includes(mv.card)) throw new Error('You do not have that card');
+      const t = rec.testimony!;
+      if (t.contradictedBy.includes(mv.card)) {
+        sd.testimony = 'caught'; sd.trust.opponent -= 12; sd.trust.player += 6;
+        say('You present a card: "That is not what the record says."', t.caught);
+      } else {
+        sd.trust.player -= 1;
+        say('You present a card.', t.wrong);
+      }
+      break;
+    }
     case 'rest': {
       sd.outcome = decideOutcome(rec, sd);
       sd.log.push({ who: 'crowd', text: rec.outcomes[sd.outcome].text });
@@ -185,8 +201,13 @@ export function playMove(rec: ShowdownRecord, sd0: ShowdownState, mv: ShowdownMo
     }
   }
 
+  if (testimonyWasOpen && sd.testimony === 'open') sd.testimony = 'missed';
   opponentTurn(rec, sd);
   sd.turn += 1;
+  if (rec.testimony && !sd.testimony && sd.turn === rec.testimony.afterTurn) {
+    sd.testimony = 'open';
+    sd.log.push({ who: 'opponent', text: rec.testimony.line, why: 'A new statement. Does any card you hold contradict it? You can present it now, on your next move only.' });
+  }
   sd.trust = { player: clamp(sd.trust.player), opponent: clamp(sd.trust.opponent) };
   if (sd.turn >= rec.crowd.patience || everyLinkCracked(rec, sd) && (sd.narrowed || sd.sealShown || !rec.opponentClaim.seal)) {
     sd.outcome = decideOutcome(rec, sd);

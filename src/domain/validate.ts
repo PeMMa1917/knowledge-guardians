@@ -178,6 +178,7 @@ export function validateContent(pack: ContentPack): string[] {
     }
   });
   (pack.fray ?? []).forEach((f) => { dup('fray', f.id); text(`fray ${f.id}`, f.pattern); text(`fray ${f.id}`, f.weakness); });
+  pack.showdowns.forEach((sd) => (sd.testimony?.contradictedBy ?? []).forEach((cid) => pack.cards.some((x) => x.id === cid) || p.push(`showdown ${sd.id}: testimony names unknown card ${cid}`)));
   // Lorelings (spec 36.1): every wrong note option must name a sighting that shows it is wrong.
   (pack.lorelings ?? []).forEach((l) => {
     dup('loreling', l.id); text(`loreling ${l.id}`, l.intro); weave(l.weave, `loreling ${l.id}`, true); eff(l.onComplete, `loreling ${l.id}`);

@@ -1162,6 +1162,11 @@ export class UI implements UIApi {
       const mv = (k: keyof typeof MOVE_HELP, label: string, m: ShowdownMove, cls = '') =>
         h('button', { class: cls, title: MOVE_HELP[k], onclick: () => move(m) }, label, h('small', { class: 'move-desc' }, MOVE_HELP[k]));
       box.classList.toggle('explain', explain);
+      if (sd.testimony === 'open') {
+        box.append(h('div', { class: 'objection', role: 'alert' }, h('strong', {}, 'A new statement! '),
+          `${opp?.name ?? 'The opponent'} just said something new. If a card you hold contradicts it, present it now. You can also let it pass.`,
+          h('div', { class: 'row' }, pick('Present a card', cards, (v) => move({ move: 'present', card: v })))));
+      }
       box.append(h('div', { class: 'row move-head' }, h('h3', {}, 'Your move'),
         h('button', { class: 'link-btn', 'aria-pressed': String(explain), onclick: () => { explain = !explain; render(); } }, explain ? 'Hide what moves do' : 'Explain the moves')),
         h('div', { class: 'moves' },

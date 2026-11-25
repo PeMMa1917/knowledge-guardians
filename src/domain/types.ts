@@ -314,6 +314,11 @@ export interface ShowdownRecord {
   script: ({ move: 'press'; line: string } | { move: 'seal'; line: string } | { move: 'shout'; line: string } | { move: 'point'; point: string })[];
   outcomes: Record<ShowdownOutcome, { text: string; effects: Effect[] }>;
   canBeWonOver: boolean;
+  /**
+   * Cross-examination (spec 47, C1 one use): after this many opponent turns, the opponent
+   * makes a new statement. For one move only, the player can present a card that contradicts it.
+   */
+  testimony?: { afterTurn: number; line: string; contradictedBy: string[]; caught: string; wrong: string };
   /** Misconception signal when the player answers an open fair point with a cheap shot or a shout (MIS-36). */
   dodgeSignal?: string;
   weave: Weave;
@@ -576,6 +581,8 @@ export interface ShowdownState {
   openPoint: string | null;   // a fair point the player can concede now
   conceded: string[];
   cheapShots: number;
+  /** Cross-examination: the statement is open for one move, then caught or missed. */
+  testimony?: 'open' | 'caught' | 'missed';
   log: ShowdownLogLine[];
   outcome: ShowdownOutcome | null;
 }
