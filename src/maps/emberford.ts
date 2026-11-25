@@ -131,6 +131,10 @@ export const EMBERFORD: MapDef = {
     { id: 'cellar-door', kind: 'door', x: 12, y: 6, w: 1, h: 1, label: 'the cellar door', art: 'cellar-door', flag: 'study.entered',
       artOpen: { key: 'cellar-door.open', if: { num: 'lamps.lit', gte: 6 } }, openIf: { num: 'lamps.lit', gte: 6 }, to: { map: 'aethelgard.study', x: 9, y: 11 },
       text: 'An old oak door in the ground, beside the guild hall. It has no lock and no handle. Under the moss, words are cut into the wood: WHEN SIX LAMPS BURN AGAIN.' },
+    // Secrets (Easter eggs): no art, found by searching. Lore in story.json, Journal > Lore.
+    { id: 'secret-ember-myth', kind: 'secret', secret: 'ember-myth', x: 7, y: 9, w: 1, h: 1, label: 'a loose brick in the smithy wall' },
+    { id: 'secret-three-coins', kind: 'secret', secret: 'three-coins', x: 19, y: 15, w: 1, h: 1, label: 'the bottom of the fountain' },
+    { id: 'secret-flood-tally', kind: 'secret', secret: 'flood-tally', x: 28, y: 22, w: 1, h: 1, label: 'the stones under the footbridge' },
     // A pathway that a keepsake opens: Kip's map beside Elsbet's old map shows the forgotten ferry road.
     { id: 'ferry-road', kind: 'door', x: 39, y: 18, w: 1, h: 1, label: 'the old ferry road', art: 'road-post', visibleIf: { flag: 'clue.oldmap.folded-map', eq: true }, to: { map: 'aethelgard.ferry', x: 1, y: 5 } },
     { id: 'waystone', kind: 'waystone', place: 'Emberford market', x: 15, y: 14, w: 1, h: 1, label: 'the Waystone (save and rest)', art: 'waystone' },

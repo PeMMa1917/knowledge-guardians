@@ -39,6 +39,7 @@ export const FERRY: MapDef = {
   npcs: [{ id: 'ferry-tova', x: 12, y: 8, facing: 'up' }],
   interactables: [
     { id: 'ferry-road-back', kind: 'door', x: 0, y: 4, w: 1, h: 2, label: 'the road back to Emberford', art: 'road-post', to: { map: 'aethelgard.emberford', x: 38, y: 18 } },
+    { id: 'secret-star-names', kind: 'secret', secret: 'star-names', x: 22, y: 8, w: 1, h: 1, label: 'something glinting in the reeds' },
     { id: 'ferry-camp-sign', kind: 'sign', x: 15, y: 5, w: 1, h: 1, label: 'the ferry folk\'s board', art: 'ferry-slate', flag: 'ferry.board',
       text: 'A slate board, written in the river cant and in town words. TODAY: slow water. The ford is good for walkers, not for carts. The next boat goes when the water says, not when the bell says. Ask Tova.' },
   ],

@@ -3,7 +3,7 @@
  * characters, interactable objects, zones and lights. Units are tiles.
  * The WorldScene turns this data into a playable place.
  */
-export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door';
+export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door' | 'secret';
 
 export interface Interactable {
   id: string;
@@ -32,6 +32,8 @@ export interface Interactable {
   visibleIf?: import('../domain/types').Condition;
   /** For kind 'clue': the clue record (a keepsake can show a new view). */
   clue?: string;
+  /** For kind 'secret': the secret record (no art; found by searching). */
+  secret?: string;
   /** For kind 'door': where it leads, when it opens (else `text` is shown). */
   to?: { map: string; x: number; y: number };
   openIf?: import('../domain/types').Condition;

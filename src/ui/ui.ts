@@ -41,6 +41,7 @@ import type { ClaimKind, DialogueNode, EvidenceCard, HistoricalLabel, ShowdownSt
 import { PLAYER_LOOKS } from '../scenes/art';
 import { artURL, BIG_ART } from './illustrations';
 import { clear, h, trapFocus } from './dom';
+import { calendarGrid, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
 
 const HIST_LABEL_TEXT: Record<HistoricalLabel, [string, string]> = {
   'documented': ['Documented', 'Supported by a named, checkable source. Open the source link to see it.'],
@@ -846,6 +847,7 @@ export class UI implements UIApi {
         case 'fray': this.toast(`New in your Fray Bestiary: ${e.name} (${e.error.toLowerCase()}). See Journal, Fray Bestiary.`, 'info'); break;
         case 'reflection': { const m = e.misconception; this.whenFree(() => this.offerReflection(m.title, m.reflection)); break; }
         case 'event-due': { const id = e.event; this.whenFree(() => this.showEvent(id)); break; }
+        case 'secret': this.toast(`Secret found: ${e.name} (${e.found} of ${e.total}). See Journal, Lore.`, 'award'); this.sfx('sfx.sparkle'); ctx.world?.lumenBurst(); break;
         case 'keepsake': this.toast(`New keepsake: ${e.name}. ${e.use}`, 'item'); this.sfx('sfx.sparkle'); break;
         case 'lamp': this.toast(`A lamp is lit on the Lamp Wall: ${e.name} (${e.count} of ${e.total}). ${e.lit}`, 'award'); this.sfx('sfx.award'); ctx.world?.lumenBurst(); break;
         default: break;
@@ -2237,10 +2239,16 @@ export class UI implements UIApi {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { story: 'Story so far', entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { story: 'Story so far', entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
-    if (tab === 'story') {
+    if (tab === 'lore') {
+      // Lore codex: secrets found by exploring. Each is a small myth or record that asks a knowledge question.
+      const all = c.pack.secrets ?? [];
+      const found = all.filter((x) => s.flags[`secret.${x.id}`] === true);
+      body.append(h('p', { class: 'fine' }, `${found.length} of ${all.length} secrets found. Search odd corners: loose bricks, reeds, the bottom of things.`),
+        ...found.map((x) => h('div', { class: 'lore-entry' }, h('h3', {}, x.name), h('p', { class: 'fine' }, MAPS[x.map]?.name ?? ''), h('p', {}, x.text))));
+    } else if (tab === 'story') {
       // The story so far: the beats the player has reached, written as a short chronicle.
       const lit = String(Number(s.flags['lamps.lit'] ?? 0));
       const beats = (c.pack.chronicle ?? []).filter((b) => c.check(b.if));
@@ -2395,6 +2403,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openMusicBox() }, 'Music box'),
         h('button', { onclick: () => this.openQuarters() }, 'My quarters'),
         h('button', { onclick: () => this.openDive() }, 'The Deep Dive (daily)'),
+        h('button', { onclick: () => this.openLedger() }, "The Guardian's Ledger (progress)"),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
         h('button', { onclick: () => this.openControls() }, 'Controls'),
@@ -2466,6 +2475,79 @@ export class UI implements UIApi {
    * put earned keepsakes on the shelves. The ceiling is the Star Chart. Cosmetic only.
    */
   /** The Deep Dive (spec 59): seven prompts a day, answered with things found in play. */
+  /**
+   * The Guardian's Ledger (Mika 2026-11-25): time played, XP by day, week and month, a kind streak,
+   * an activity calendar, a concept web and completion bars. Kept on this device. Never a grade.
+   */
+  openLedger(): void {
+    const c = ctx.controller, s = c.state, pk = c.pack;
+    const now = new Date();
+    const L = ledgerSums(c.permanent.activity, now);
+    const box = this.openModal('ledger-panel wide', "The Guardian's Ledger");
+    this.sfx('sfx.book');
+    const tile = (label: string, d: { secs: number; xp: number }) => h('div', { class: 'ledger-tile' }, h('span', { class: 'fine' }, label), h('strong', {}, fmtTime(d.secs)), h('span', {}, `${d.xp} XP`));
+    // Activity calendar: 12 weeks, Monday at the top.
+    const grid = calendarGrid(c.permanent.activity, now, 12);
+    const cal = h('div', { class: 'ledger-cal', role: 'img', 'aria-label': `Activity calendar for 12 weeks. ${L.activeDays} active days.` },
+      ...grid.map((wk) => h('div', { class: 'cal-col' }, ...wk.map((d) => h('span', { class: `cal-cell s${d.future ? 'f' : shade(d.secs)}`, title: `${d.day}: ${fmtTime(d.secs)}, ${d.xp} XP` })))));
+    // Concept web: one spoke per concept, length = share of that ring.
+    const rings = conceptRings(c.permanent, pk);
+    const R = 90, cx = 120, cy = 112, n = rings.length;
+    const pt = (i: number, f: number) => { const a = -Math.PI / 2 + (i / n) * Math.PI * 2; return [cx + Math.cos(a) * R * f, cy + Math.sin(a) * R * f]; };
+    const poly = rings.map((r, i) => pt(i, r.max ? Math.max(0.04, r.got / r.max) : 0.04).join(',')).join(' ');
+    const web = `<svg viewBox="-24 0 288 228" role="img" aria-label="Concept web: how full each concept ring is">
+      ${[0.25, 0.5, 0.75, 1].map((f) => `<polygon points="${rings.map((_, i) => pt(i, f).join(',')).join(' ')}" fill="none" stroke="currentColor" stroke-opacity="0.18"/>`).join('')}
+      ${rings.map((_, i) => { const [x, y] = pt(i, 1); return `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="currentColor" stroke-opacity="0.15"/>`; }).join('')}
+      <polygon points="${poly}" fill="var(--gold)" fill-opacity="0.35" stroke="var(--gold)" stroke-width="2"/>
+      ${rings.map((r, i) => { const [x, y] = pt(i, 1.17); return `<text x="${x}" y="${y + 3}" font-size="8.5" text-anchor="middle" fill="currentColor">${CONCEPT_NAMES[r.concept]}</text>`; }).join('')}
+    </svg>`;
+    const webEl = h('div', { class: 'ledger-web' }); webEl.innerHTML = web;
+    // Completion bars.
+    const flagsOn = (pre: string, list: string[]) => list.filter((id) => s.flags[`${pre}${id}`] === true).length;
+    const puzzles = pk.puzzles.map((x) => x.id);
+    const side = pk.missions.filter((m) => !['KG-CH1-M01', 'KG-CH1-M02'].includes(m.id));
+    const sideDone = side.filter((m) => m.objectives.every((o) => s.objectivesDone.includes(o.id))).length;
+    const places = Object.keys(MAPS).filter((id) => id === s.mapId || Object.keys(s.flags).some((k) => k.startsWith(`used.${id}.`))).length;
+    const bars: [string, number, number][] = [
+      ['Main story steps', pk.missions.filter((m) => ['KG-CH1-M01', 'KG-CH1-M02'].includes(m.id)).flatMap((m) => m.objectives).filter((o) => s.objectivesDone.includes(o.id)).length,
+        pk.missions.filter((m) => ['KG-CH1-M01', 'KG-CH1-M02'].includes(m.id)).flatMap((m) => m.objectives).length],
+      ['Side quests finished', sideDone, side.length],
+      ['Puzzles solved', flagsOn('puzzle.', puzzles.map((id) => `${id}.done`)), puzzles.length],
+      ['Lamps lit on the Lamp Wall', Number(s.flags['lamps.lit'] ?? 0), (pk.knots ?? []).length],
+      ['Keepsakes found', flagsOn('keepsake.', (pk.keepsakes ?? []).map((k) => k.id)), (pk.keepsakes ?? []).length],
+      ['Evidence cards', s.cards.length, pk.cards.length],
+      ['Secrets found', flagsOn('secret.', (pk.secrets ?? []).map((k) => k.id)), (pk.secrets ?? []).length],
+      ['Places visited', places, Object.keys(MAPS).length],
+      ['Skills used (Skill Atlas)', Object.keys(c.permanent.skills ?? {}).length, (pk.skills ?? []).length],
+      ['Areas of knowledge met', Object.keys(c.permanent.met.aoks).length, Object.keys(AOK_NAMES).length],
+    ];
+    const bar = ([label, got, max]: [string, number, number]) => max ? h('div', { class: 'ledger-bar' },
+      h('span', {}, label), h('span', { class: 'track', role: 'progressbar', 'aria-valuenow': String(got), 'aria-valuemax': String(max), 'aria-label': label }, h('span', { class: 'fill', style: `width:${Math.round((100 * Math.min(got, max)) / max)}%` })),
+      h('span', { class: 'fine' }, `${Math.min(got, max)} / ${max}`)) : null;
+    // Mini-game scores.
+    const fc = pk.puzzles.find((x) => x.id === 'forecast-board') as (PuzzleRecord & { days?: { rain: boolean }[] }) | undefined;
+    const fs = readForecasts(s.flags['puzzle.forecast-board.f']);
+    const scores: string[] = [
+      `Deep Dive, deepest day: ${Number(s.flags['dive.best'] ?? 0)} m`,
+      fc?.days && fs.length ? `Forecast Board: Brier score ${brier(fs.map((p) => p / 100), fc.days.slice(0, fs.length).map((d) => d.rain)).toFixed(2)} (lower is closer; 0.25 is 'always 50%')` : 'Forecast Board: not played yet',
+      `Total play time in this campaign: ${fmtTime(s.playSeconds ?? 0)}`,
+    ];
+    box.append(this.closeBtn(), h('h2', {}, "The Guardian's Ledger"),
+      h('p', { class: 'fine' }, 'Your own record, kept on this device. It is not a grade, and nobody ranks it. Time counts only while you are really playing.'),
+      h('div', { class: 'ledger-tiles' }, tile('Today', L.today), tile('Last 7 days', L.week), tile('This month', L.month), tile('All time', L.total)),
+      h('div', { class: 'ledger-streak' },
+        h('span', { class: 'flame-big', 'aria-hidden': 'true' }),
+        h('span', {}, h('strong', {}, `${L.streak}-day streak`), ` · best ${L.bestStreak} · `,
+          h('span', { title: 'Every 7 active days in a row earn a shield. A missed day uses a shield, so a rest day keeps your streak.' }, `${'🛡'.repeat(L.shields)}${'·'.repeat(MAX_SHIELDS - L.shields)} freeze shields`)),
+        h('span', { class: 'fine' }, ' A day counts after 5 active minutes or any XP. Rest days are good for learning too.')),
+      h('h3', {}, 'Activity, last 12 weeks'), cal,
+      h('div', { class: 'ledger-split' },
+        h('div', {}, h('h3', {}, 'Concept web'), webEl),
+        h('div', {}, h('h3', {}, 'Completion'), ...bars.map(bar).filter(Boolean) as HTMLElement[])),
+      h('h3', {}, 'Scores'), h('ul', {}, ...scores.map((t) => h('li', {}, t))),
+      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+  }
+
   /** The Lamp Wall (storyline): one lamp for each knot the town unties. Six lamps open the old Guardian's cellar. */
   openLamps(): void {
     const c = ctx.controller;

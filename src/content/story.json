@@ -1,4 +1,42 @@
 {
+ "secrets": [
+  {
+   "id": "ember-myth",
+   "name": "The founding brick",
+   "map": "aethelgard.emberford",
+   "text": "Behind the smithy, one brick is loose. Behind it is a child's drawing: a woman carries fire down from the mountain in a clay pot. Everyone in Emberford knows this story: it is how the town got its name. Keeper Oduya's oldest record says only 'a forge was built by the ford'. The story and the record do different jobs. One tells who the town wants to be. The other tells what someone wrote down."
+  },
+  {
+   "id": "three-coins",
+   "name": "Three coins in the fountain",
+   "map": "aethelgard.emberford",
+   "text": "At the bottom of the fountain are three old coins. Each one shows a different founder of Emberford: a smith, a ferry keeper, a trader. Each coin was made by a different group, in a different year. Which founder is 'true'? Perhaps each coin tells you more about who made it."
+  },
+  {
+   "id": "flood-tally",
+   "name": "Marks under the bridge",
+   "map": "aethelgard.emberford",
+   "text": "Under the footbridge, someone cut short lines into the stone, with words in the river cant beside them. They are flood heights, one for each spring, for many years. The guild's books start much later. This record was here all along. Nobody in town could read it."
+  },
+  {
+   "id": "practice-notes",
+   "name": "Under the rug",
+   "map": "aethelgard.study",
+   "text": "Under Elsbet's rug is a folded sheet: 'Three ways I was wrong this year. 1. I trusted the guild's flood dates over Tova's mother. 2. I thought the new scales were fair because they were new. 3. I said a song was only a story.' At the bottom: 'Write a new list every year.'"
+  },
+  {
+   "id": "star-names",
+   "name": "A bottle in the reeds",
+   "map": "aethelgard.ferry",
+   "text": "A bottle in the reeds holds a child's star map. The stars are the ones you know, but the pictures and names are different: the ferry folk see a boat and a heron where the town sees a crown. The stars do not change. The patterns are what people bring to them."
+  },
+  {
+   "id": "misfiled",
+   "name": "The drawer that should not be there",
+   "map": "nexus.archive",
+   "text": "Behind a bookshelf, one drawer of the old catalogue is not on any list. It holds cards for exhibits that were never shown. One reads: 'A pen. Maker unknown. Not displayed: no famous name.' Who decides what a museum shows, and what does that teach visitors about who makes things?"
+  }
+ ],
  "characters": [
   {
    "id": "ferry-tova",

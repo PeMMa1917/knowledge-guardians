@@ -714,7 +714,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       let best: { x: number; y: number; label: string } | null = null, bd = Infinity;
       for (const a of this.npcs) if (a.mark) { const d = Phaser.Math.Distance.Between(a.sprite.x, a.sprite.y, p.x, p.y); if (d < bd) { bd = d; best = { x: a.sprite.x, y: a.sprite.y, label: `someone with something new to say` }; } }
       if (!best) for (const it of this.map.interactables) {
-        if (it.kind === 'portal' || it.kind === 'loreling' || (it.visibleIf && !ctx.controller.check(it.visibleIf)) || s.flags[`used.${this.map.id}.${it.id}`] === true) continue;
+        if (it.kind === 'portal' || it.kind === 'loreling' || it.kind === 'secret' || (it.visibleIf && !ctx.controller.check(it.visibleIf)) || s.flags[`used.${this.map.id}.${it.id}`] === true) continue;
         const x = (it.x + it.w / 2) * TILE, y = (it.y + it.h / 2) * TILE, d = Phaser.Math.Distance.Between(x, y, p.x, p.y);
         if (d < bd) { bd = d; best = { x, y, label: it.label }; }
       }
@@ -873,7 +873,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       const id = best.actor.id;
       const c = ctx.controller.pack.characters.find((x) => x.id === id);
       ctx.ui.setPrompt(`Talk to ${c?.name ?? 'them'}`);
-    } else ctx.ui.setPrompt(`${best.obj.kind === 'sign' ? 'Read' : best.obj.kind === 'exhibit' ? 'Inspect' : best.obj.kind === 'thread' ? 'Follow the thread to' : best.obj.kind === 'loreling' ? 'Watch' : 'Use'} ${best.obj.label}`);
+    } else ctx.ui.setPrompt(`${best.obj.kind === 'sign' ? 'Read' : best.obj.kind === 'exhibit' ? 'Inspect' : best.obj.kind === 'thread' ? 'Follow the thread to' : best.obj.kind === 'loreling' ? 'Watch' : best.obj.kind === 'secret' ? 'Search' : 'Use'} ${best.obj.label}`);
   }
 
   tryInteract(): void {
@@ -903,6 +903,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'quarters': ctx.ui.openQuarters(); break;
       case 'dive': ctx.ui.openDive(); break;
       case 'lamps': ctx.ui.openLamps(); break;
+      case 'secret': {
+        const x = (ctx.controller.pack.secrets ?? []).find((y) => y.id === it.secret);
+        if (!x) break;
+        ctx.controller.dispatch({ type: 'FindSecret', secret: x.id });
+        ctx.ui.showSign(x.name, x.text); break;
+      }
       case 'clue': ctx.ui.openClue(it.clue!); break;
       case 'door':
         if (it.openIf && !ctx.controller.check(it.openIf)) { ctx.ui.showSign(it.label, it.text ?? 'It does not open.'); break; }

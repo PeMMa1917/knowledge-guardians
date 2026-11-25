@@ -594,6 +594,8 @@ export interface ClueRecord { id: string; name: string; text: string; views: Clu
 /** A dialogue option that appears with a character once the player holds a keepsake. */
 /** The story so far (Journal): one beat shown once its condition holds. `{lamps}` is the number of lamps lit. */
 export interface ChronicleBeat { id: string; title: string; text: string; if?: Condition }
+/** A secret (Easter egg): a hidden spot with a small piece of lore. Found with the FindSecret command. */
+export interface Secret { id: string; name: string; map: string; text: string }
 export interface KeepsakeTalk { id: string; character: string; keepsake: string; text: string; node: string; if?: Condition }
 
 /** World memory (spec 47, C1): a short line a person says when the player passes, once the condition holds. */
@@ -697,6 +699,7 @@ export interface ContentPack {
   clues?: ClueRecord[];
   keepsakeTalks?: KeepsakeTalk[];
   chronicle?: ChronicleBeat[];
+  secrets?: Secret[];
   /** The Deep Dive (spec 59): prompts and the things a player can answer with. */
   divePrompts?: import('./dive').DivePrompt[];
   diveItems?: import('./dive').DiveItem[];
@@ -815,4 +818,6 @@ export interface PermanentRecord {
   stones: Record<string, string[]>;
   /** Skill Atlas: skill id -> distinct use signatures (see skills.ts). Schema 4. */
   skills: Record<string, string[]>;
+  /** The Guardian's Ledger: active seconds and XP per day, on this device (optional; no schema change). */
+  activity?: import('./ledger').Activity;
 }

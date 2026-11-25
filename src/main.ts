@@ -66,5 +66,12 @@ document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'hidden' && ctx.world && ctx.controller.state) ctx.controller.suspend('Auto-save when leaving');
 });
 
+// The Guardian's Ledger: count active play time (input in the last 2 minutes, tab visible, in the world).
+for (const ev of ['keydown', 'pointerdown', 'wheel'] as const) window.addEventListener(ev, () => ctx.controller.noteInput(), { passive: true });
+setInterval(() => { if (ctx.world) ctx.controller.tickActive(document.visibilityState === 'visible'); }, 15_000);
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden' && ctx.controller.state) ctx.controller.saves.savePermanent(ctx.controller.permanent);
+});
+
 // Debug/test hook: lets automated tests read state. Not used by the game.
 (window as any).kg = ctx;

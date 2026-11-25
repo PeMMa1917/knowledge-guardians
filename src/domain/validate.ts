@@ -329,6 +329,7 @@ export function validateContent(pack: ContentPack): string[] {
     dup('clue', c.id); text(`clue ${c.id}`, c.text); eff(c.onRead, `clue ${c.id}`);
     c.views.forEach((v) => { if (!ks.has(v.keepsake)) p.push(`clue ${c.id}: unknown keepsake ${v.keepsake}`); text(`clue ${c.id}`, v.text); eff(v.effects, `clue ${c.id}`); });
   });
+  (pack.secrets ?? []).forEach((x) => { dup('secret', x.id); text(`secret ${x.id}`, x.text); });
   (pack.chronicle ?? []).forEach((b) => { dup('story beat', b.id); cond(b.if, `story beat ${b.id}`); text(`story beat ${b.id}`, b.text); });
   (pack.keepsakeTalks ?? []).forEach((t) => {
     dup('keepsake talk', t.id); cond(t.if, `keepsake talk ${t.id}`);

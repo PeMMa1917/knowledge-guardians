@@ -65,6 +65,7 @@ export const STUDY: MapDef = {
     clue('jar', 13, 10, 'a jar of paper slips'),
     clue('stove', 16, 8, 'the little stove'),
     clue('corner', 18, 11, 'the dark corner'),
+    { id: 'secret-practice-notes', kind: 'secret', secret: 'practice-notes', x: 9, y: 9, w: 1, h: 1, label: 'a lumpy corner of the rug' },
     { id: 'study-stairs', kind: 'door', x: 9, y: 12, w: 2, h: 1, label: 'the stairs up to Emberford', art: 'study-stairs', to: { map: 'aethelgard.emberford', x: 12, y: 7 } },
   ],
   zones: [{ id: 'study', x: 0, y: 0, w: W, h: H }],

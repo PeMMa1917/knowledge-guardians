@@ -48,6 +48,7 @@ export type Command =
   | { type: 'PuzzleForecast'; puzzle: string; chance: number }
   | { type: 'UseKeepsake'; clue: string; keepsake: string }
   | { type: 'ReadClue'; clue: string }
+  | { type: 'FindSecret'; secret: string }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
@@ -114,6 +115,7 @@ export type GameEvent =
   | { kind: 'keepsake'; id: string; name: string; use: string }
   | { kind: 'lamp'; id: string; name: string; lit: string; count: number; total: number }
   | { kind: 'clue'; clue: string; keepsake: string; text: string }
+  | { kind: 'secret'; id: string; name: string; found: number; total: number }
   | { kind: 'error'; message: string };
 
 export interface SimulationResult {
@@ -293,6 +295,16 @@ export class Engine {
           const key = `clue.${cl.id}.${cmd.keepsake}`;
           if (s.flags[key] !== true) s = apply([{ setFlag: key, value: true }, ...(cl.study ? [{ addNum: 'study.views', by: 1 } as Effect] : []), ...(v.effects ?? [])], s, out);
           events.push({ kind: 'clue', clue: cl.id, keepsake: cmd.keepsake, text: v.text });
+          break;
+        }
+        case 'FindSecret': {
+          const all = this.pack.secrets ?? [];
+          const x = all.find((y) => y.id === cmd.secret);
+          if (!x) throw new Error('Unknown secret');
+          if (s.flags[`secret.${x.id}`] !== true) {
+            s = apply([{ setFlag: `secret.${x.id}`, value: true }, { addNum: 'secrets.found', by: 1 }], s, out);
+            events.push({ kind: 'secret', id: x.id, name: x.name, found: Number(s.flags['secrets.found']), total: all.length });
+          }
           break;
         }
         case 'DiveAnswer': {

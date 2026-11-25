@@ -76,6 +76,7 @@ export const NEXUS: MapDef = {
     { id: 'translator-lio', x: 24, y: 13, facing: 'right', visibleIf: { origin: 'traveller' } },
   ],
   interactables: [
+    { id: 'secret-misfiled', kind: 'secret', secret: 'misfiled', x: 22, y: 3, w: 1, h: 1, label: 'a gap behind the bookshelf' },
     { id: 'ex-a', kind: 'exhibit', exhibit: 'OBJ-001-A', x: 8, y: 7, w: 1, h: 1, label: 'the patent drawing', art: 'pedestal.patent' },
     { id: 'ex-b', kind: 'exhibit', exhibit: 'OBJ-001-B', x: 12, y: 7, w: 2, h: 1, label: 'the workshop model', art: 'pedestal.model' },
     { id: 'ex-c', kind: 'exhibit', exhibit: 'OBJ-001-C', x: 17, y: 7, w: 1, h: 1, label: 'the Biro pen record', art: 'pedestal.biro' },
