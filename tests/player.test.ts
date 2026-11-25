@@ -89,8 +89,15 @@ describe('appearance (spec 35.1)', () => {
   it('encodes and decodes a made look, and rejects unknown parts', async () => {
     const { encodeLook, decodeLook, isValidLook } = await import('../src/domain/appearance');
     const c = { skin: 'olive', hair: 'pink', outfit: 'cream', trousers: 'wine', accessory: 'both' as const, accent: 'cyan' };
-    expect(decodeLook(encodeLook(c))).toEqual(c);
+    expect(decodeLook(encodeLook(c))).toMatchObject(c);
     expect(isValidLook(encodeLook(c))).toBe(true);
+    // Older six-part looks stay valid and short; new parts are added only when used.
+    expect(encodeLook(decodeLook('custom:olive.pink.cream.wine.both.cyan'))).toBe('custom:olive.pink.cream.wine.both.cyan');
+    const more = { ...c, style: 'covered' as const, glasses: 'darkframes' as const, aid: 'wheelchair' as const };
+    expect(encodeLook(more)).toBe('custom:olive.pink.cream.wine.both.cyan.covered.darkframes.wheelchair');
+    expect(decodeLook(encodeLook(more))).toEqual(more);
+    expect(isValidLook('custom:olive.pink.cream.wine.both.cyan.long.none.cane')).toBe(true);
+    expect(isValidLook('custom:olive.pink.cream.wine.both.cyan.long.none.rocket')).toBe(false);
     expect(isValidLook('player-b')).toBe(true);
     expect(isValidLook('custom:olive.nope.cream.wine.both.cyan')).toBe(false);
     expect(isValidLook('../../etc')).toBe(false);

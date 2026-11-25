@@ -33,7 +33,7 @@
       "id": "stallkeeper-hana",
       "name": "Stall-keeper Hana Novak",
       "role": "Sells cloth in the market",
-      "sprite": "custom:pale.blonde.plum.sand.scarf.white",
+      "sprite": "custom:pale.blonde.plum.sand.scarf.white.short.darkframes.none",
       "mode": "fictional",
       "talk": [
         {

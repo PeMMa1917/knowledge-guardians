@@ -30,8 +30,19 @@ export const ACCENT: Record<string, string> = {
 };
 export const ACCESSORIES = ['none', 'headband', 'scarf', 'both'] as const;
 export type Accessory = typeof ACCESSORIES[number];
+/** Hair styles. 'covered' is a head scarf in the accessory colour. */
+export const STYLES = ['short', 'long', 'bun', 'curls', 'covered'] as const;
+export const GLASSES = ['none', 'darkframes', 'lightframes'] as const;
+/** Mobility aids: shown as a normal part of the character, with no effect on play. */
+export const AIDS = ['none', 'cane', 'wheelchair'] as const;
+export type Style = typeof STYLES[number];
+export type Glasses = typeof GLASSES[number];
+export type Aid = typeof AIDS[number];
 
-export interface LookChoice { skin: string; hair: string; outfit: string; trousers: string; accessory: Accessory; accent: string }
+export interface LookChoice {
+  skin: string; hair: string; outfit: string; trousers: string; accessory: Accessory; accent: string;
+  style?: Style; glasses?: Glasses; aid?: Aid;
+}
 
 /** Plain-language names for the colour options (for screen readers and labels). */
 export const LABELS: Record<string, string> = {
@@ -40,6 +51,8 @@ export const LABELS: Record<string, string> = {
   teal: 'teal', violet: 'violet', gold: 'gold', slate: 'slate', orange: 'orange', red: 'red', plum: 'plum', cream: 'cream',
   indigo: 'indigo', charcoal: 'charcoal', sand: 'sand', wine: 'wine', cyan: 'sky blue', rose: 'rose',
   none: 'none', headband: 'headband', scarf: 'scarf', both: 'headband and scarf',
+  short: 'short', long: 'long', bun: 'bun', curls: 'full curls', covered: 'head scarf',
+  darkframes: 'glasses, dark frames', lightframes: 'glasses, light frames', cane: 'walking cane', wheelchair: 'wheelchair',
 };
 
 /** The four ready-made looks, as choices (same colours as the sheets on disk). */
@@ -64,20 +77,25 @@ export function cloakThreads(objectivesDone: string[]): typeof ARC_THREADS {
 }
 
 export function encodeLook(c: LookChoice): string {
-  return `custom:${c.skin}.${c.hair}.${c.outfit}.${c.trousers}.${c.accessory}.${c.accent}`;
+  const base = `custom:${c.skin}.${c.hair}.${c.outfit}.${c.trousers}.${c.accessory}.${c.accent}`;
+  const style = c.style ?? 'short', glasses = c.glasses ?? 'none', aid = c.aid ?? 'none';
+  // Older looks have six parts; keep them short when the new parts are the defaults.
+  return style === 'short' && glasses === 'none' && aid === 'none' ? base : `${base}.${style}.${glasses}.${aid}`;
 }
 
 /** Read a look string. Unknown parts fall back to the first ready-made look. */
 export function decodeLook(look: string): LookChoice {
-  if (PRESET_LOOKS[look]) return { ...PRESET_LOOKS[look] };
+  if (PRESET_LOOKS[look]) return { style: 'short', glasses: 'none', aid: 'none', ...PRESET_LOOKS[look] };
   const d = PRESET_LOOKS['player-a'];
-  if (!look.startsWith('custom:')) return { ...d };
-  const [skin, hair, outfit, trousers, accessory, accent] = look.slice(7).split('.');
+  if (!look.startsWith('custom:')) return { style: 'short', glasses: 'none', aid: 'none', ...d };
+  const [skin, hair, outfit, trousers, accessory, accent, style, glasses, aid] = look.slice(7).split('.');
+  const one = <T extends string>(list: readonly T[], v: string | undefined): T => (list as readonly string[]).includes(v ?? '') ? v as T : list[0];
   return {
     skin: SKIN[skin] ? skin : d.skin, hair: HAIR[hair] ? hair : d.hair, outfit: OUTFIT[outfit] ? outfit : d.outfit,
     trousers: TROUSERS[trousers] ? trousers : d.trousers,
-    accessory: (ACCESSORIES as readonly string[]).includes(accessory) ? accessory as Accessory : 'none',
+    accessory: one(ACCESSORIES, accessory),
     accent: ACCENT[accent] ? accent : d.accent,
+    style: one(STYLES, style), glasses: one(GLASSES, glasses), aid: one(AIDS, aid),
   };
 }
 
@@ -116,6 +134,7 @@ export function recolour(data: Uint8ClampedArray, w: number, h: number, c: LookC
     if (n) { data[o] = n[0]; data[o + 1] = n[1]; data[o + 2] = n[2]; }
   }
   if (threads.length) embroider(data, w, h, role, threads);
+  features(data, w, h, role, c);
   if (c.accessory === 'none') return;
   const acc = rgb(ACCENT[c.accent]);
   const accShade = acc.map((v) => Math.round(v * 0.72)) as [number, number, number];
@@ -162,6 +181,131 @@ function embroider(data: Uint8ClampedArray, w: number, h: number, role: (string 
           data[k * 4] = col[0]; data[k * 4 + 1] = col[1]; data[k * 4 + 2] = col[2];
         }
       });
+    }
+  }
+}
+
+/**
+ * Hair styles, glasses and mobility aids (spec 35.1 inclusive avatars). Painted on the
+ * four walk frames of each direction row (down, right, up, left). Positions are relative
+ * to the top of the hair in each frame, so they follow the walk bob.
+ */
+function features(data: Uint8ClampedArray, w: number, h: number, role: (string | undefined)[], c: LookChoice): void {
+  const style = c.style ?? 'short', glasses = c.glasses ?? 'none', aid = c.aid ?? 'none';
+  if (style === 'short' && glasses === 'none' && aid === 'none') return;
+  const [hairD, hairL] = HAIR[c.hair];
+  const cloth = ACCENT[c.accent];
+  const clothD = rgb(cloth).map((v) => Math.round(v * 0.72).toString(16).padStart(2, '0')).join('');
+  const lens = glasses === 'lightframes' ? 'f2e6b8' : '1a1426';
+  for (let row = 0; row < 4 && (row + 1) * 32 <= h; row++) {
+    const dir = (['down', 'right', 'up', 'left'] as const)[row];
+    let base = -1;
+    for (let f = 0; f < 4 && (f + 1) * 16 <= w; f++) {
+      const fx = f * 16, fy = row * 32;
+      const idx = (x: number, y: number) => (fy + y) * w + fx + x;
+      const at = (x: number, y: number) => (x < 0 || x > 15 || y < 0 || y > 31 ? undefined : role[idx(x, y)]);
+      const empty = (x: number, y: number) => x >= 0 && x <= 15 && y >= 0 && y <= 31 && !data[idx(x, y) * 4 + 3];
+      const put = (x: number, y: number, hex: string, a = 255) => {
+        if (x < 0 || x > 15 || y < 0 || y > 31) return;
+        const o = idx(x, y) * 4, col = rgb(hex);
+        data[o] = col[0]; data[o + 1] = col[1]; data[o + 2] = col[2]; data[o + 3] = a;
+      };
+      const wipe = (x: number, y: number) => { if (x >= 0 && x <= 15 && y >= 0 && y <= 31) data[idx(x, y) * 4 + 3] = 0; };
+      const isDark = (x: number, y: number) => { const o = idx(x, y) * 4; return key(data[o], data[o + 1], data[o + 2]) === key(...rgb(hairD)); };
+      let y0 = -1;
+      for (let y = 0; y < 12 && y0 < 0; y++) for (let x = 0; x < 16; x++) if (at(x, y) === 'hair') { y0 = y; break; }
+      if (y0 < 0) continue;
+      if (base < 0) base = y0;
+      const B = base;
+      const mx = (x: number) => (dir === 'left' ? 15 - x : x); // mirror side views
+      const headHair = (x: number, y: number) => at(x, y) === 'hair' && y < y0 + (dir === 'up' ? 12 : 11);
+
+      // Mobility aid first: a wheelchair replaces the legs.
+      if (aid === 'wheelchair') {
+        for (let y = B + 17; y < 32; y++) for (let x = 0; x < 16; x++) wipe(x, y);
+        const frame = '3a3352', rim = 'b4b4bc', tyre = '1a1426', seat = '5d6b7a';
+        const [trL, trD] = TROUSERS[c.trousers];
+        for (let x = 2; x <= 13; x++) put(x, B + 22, '000000', 70);
+        if (dir === 'down' || dir === 'up') {
+          for (let y = B + 12; y <= B + 21; y++) for (const x of [1, 2, 13, 14]) put(x, y, (x === 2 || x === 13) && (y + f) % 3 === 0 ? rim : tyre);
+          if (dir === 'down') {
+            for (let x = 4; x <= 11; x++) put(x, B + 17, trL);
+            for (const x of [5, 6, 9, 10]) { put(x, B + 18, trD); put(x, B + 19, trD); put(x, B + 20, '3d2a20'); }
+            for (let x = 4; x <= 11; x++) put(x, B + 21, frame);
+            for (const x of [3, 12]) { put(x, B + 16, frame); put(x, B + 17, frame); }
+          } else {
+            for (let y = B + 12; y <= B + 17; y++) for (let x = 4; x <= 11; x++) put(x, y, y === B + 12 ? frame : seat);
+            for (const x of [3, 12]) { put(x, B + 10, frame); put(x, B + 11, frame); put(x, B + 12, frame); }
+            for (let x = 4; x <= 11; x++) put(x, B + 18, frame);
+          }
+        } else {
+          const cx = 6, cy = B + 18, a = (f * Math.PI) / 4;
+          for (let y = cy - 5; y <= cy + 5; y++) for (let x = cx - 5; x <= cx + 5; x++) {
+            const d = Math.hypot(x - cx, y - cy);
+            if (d >= 3.5 && d <= 4.6) put(mx(x), y, tyre);
+            else if (d < 3.5 && d > 0.6) {
+              const ang = Math.atan2(y - cy, x - cx);
+              const spoke = [a, a + Math.PI / 2, a + Math.PI, a + (3 * Math.PI) / 2].some((s) => Math.abs(Math.atan2(Math.sin(ang - s), Math.cos(ang - s))) < 0.32);
+              if (spoke) put(mx(x), y, rim);
+            }
+          }
+          put(mx(cx), cy, rim);
+          for (let y = B + 9; y <= B + 16; y++) if (empty(mx(3), y)) put(mx(3), y, frame);
+          put(mx(2), B + 9, frame);
+          for (let x = 7; x <= 11; x++) put(mx(x), B + 17, trL);
+          for (let y = B + 18; y <= B + 20; y++) put(mx(11), y, trD);
+          put(mx(12), B + 21, '3d2a20'); put(mx(11), B + 21, '3d2a20');
+          for (let x = 10; x <= 13; x++) put(mx(x), B + 22, frame);
+        }
+      } else if (aid === 'cane') {
+        const wood = '6a4834', tip = 'c9a24a';
+        const cx = dir === 'down' ? 14 : dir === 'up' ? 1 : mx(12);
+        for (let y = y0 + 14; y <= y0 + 20; y++) put(cx, y, wood);
+        put(cx, y0 + 21, tip);
+        put(dir === 'left' ? cx + 1 : dir === 'up' ? cx + 1 : cx - 1, y0 + 14, wood);
+      }
+
+      // Hair style.
+      if (style === 'long') {
+        if (dir === 'down') for (let y = y0 + 6; y <= y0 + 13; y++) { put(1, y, hairD); put(2, y, hairL); put(13, y, hairL); put(14, y, hairD); }
+        else if (dir === 'up') for (let y = y0 + 11; y <= y0 + 14; y++) for (let x = 3; x <= 12; x++) put(x, y, x === 3 || x === 12 || y === y0 + 14 ? hairD : hairL);
+        else for (let y = y0 + 9; y <= y0 + 14; y++) for (let x = 2; x <= 5; x++) put(mx(x), y, x === 2 || y === y0 + 14 ? hairD : hairL);
+      } else if (style === 'bun') {
+        const xs = dir === 'down' || dir === 'up' ? [6, 7, 8, 9] : [3, 4, 5, 6].map(mx);
+        const yb = dir === 'down' || dir === 'up' ? y0 - 1 : y0;
+        xs.forEach((x, i) => { put(x, yb, i === 0 || i === 3 ? hairD : hairL); if (i === 1 || i === 2) put(x, yb - 1, hairD); });
+      } else if (style === 'curls') {
+        const lim = dir === 'down' ? y0 + 7 : y0 + 10;
+        const add: [number, number][] = [];
+        for (let y = 0; y < lim; y++) for (let x = 0; x < 16; x++) if (headHair(x, y)) {
+          for (const [dx, dy] of [[0, -1], [-1, 0], [1, 0]]) if (empty(x + dx, y + dy)) add.push([x + dx, y + dy]);
+        }
+        add.forEach(([x, y]) => put(x, y, hairD));
+        for (let y = 0; y < lim; y++) for (let x = 0; x < 16; x++) if (headHair(x, y) && (x + y * 2) % 4 === 0) put(x, y, hairL);
+      } else if (style === 'covered') {
+        for (let y = 0; y < 32; y++) for (let x = 0; x < 16; x++) if (headHair(x, y)) put(x, y, isDark(x, y) ? clothD : cloth);
+        if (dir === 'down') {
+          for (let y = y0 + 5; y <= y0 + 12; y++) { put(1, y, clothD); put(2, y, cloth); put(13, y, cloth); put(14, y, clothD); }
+          for (let x = 3; x <= 12; x++) if (at(x, y0 + 12) === 'skin' || at(x, y0 + 11) === 'skin' && (x <= 4 || x >= 11)) { put(x, y0 + 12, cloth); if (x <= 4 || x >= 11) put(x, y0 + 11, cloth); }
+        } else if (dir === 'up') {
+          for (let y = y0 + 10; y <= y0 + 13; y++) for (let x = 3; x <= 12; x++) put(x, y, x === 3 || x === 12 ? clothD : cloth);
+        } else {
+          for (let y = y0 + 8; y <= y0 + 13; y++) for (let x = 2; x <= 6; x++) put(mx(x), y, x === 2 ? clothD : cloth);
+          for (let y = y0 + 11; y <= y0 + 12; y++) for (let x = 3; x <= 9; x++) if (at(mx(x), y) === 'skin') put(mx(x), y, cloth);
+        }
+      }
+
+      // Glasses last, on top of the face.
+      if (glasses !== 'none' && dir !== 'up') {
+        const e = y0 + 8;
+        if (dir === 'down') {
+          for (let x = 4; x <= 11; x++) put(x, e - 1, lens);
+          for (const x of [4, 6, 9, 11]) put(x, e, lens);
+        } else {
+          for (const x of [7, 8, 9, 10, 11]) put(mx(x), e - 1, lens);
+          for (const x of [9, 11]) put(mx(x), e, lens);
+        }
+      }
     }
   }
 }

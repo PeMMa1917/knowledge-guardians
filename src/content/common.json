@@ -519,7 +519,7 @@
    "id": "archivist-tull",
    "name": "Archivist Noor Tull",
    "role": "Nexus archivist",
-   "sprite": "custom:brown.grey.slate.charcoal.scarf.gold",
+   "sprite": "custom:brown.grey.slate.charcoal.scarf.gold.bun.lightframes.none",
    "mode": "fictional",
    "talk": [
     {
@@ -586,7 +586,7 @@
    "id": "translator-ama",
    "name": "Translator Ama Ofori",
    "role": "Translates the Nexus labels",
-   "sprite": "custom:dark.black.gold.wine.headband.red",
+   "sprite": "custom:dark.black.gold.wine.none.red.covered.none.none",
    "mode": "fictional",
    "talk": []
   },
@@ -594,7 +594,7 @@
    "id": "translator-lio",
    "name": "Translator Lio Ferreira",
    "role": "Translates the Nexus labels",
-   "sprite": "custom:olive.black.blue.sand.scarf.white",
+   "sprite": "custom:olive.black.blue.sand.scarf.white.long.none.none",
    "mode": "fictional",
    "talk": [
     {
@@ -747,7 +747,7 @@
    "id": "keeper-oduya",
    "name": "Keeper Ruth Oduya",
    "role": "Emberford record-keeper",
-   "sprite": "custom:dark.white.plum.charcoal.scarf.gold",
+   "sprite": "custom:dark.white.plum.charcoal.scarf.gold.short.lightframes.wheelchair",
    "mode": "fictional",
    "talk": [
     {
@@ -815,7 +815,7 @@
    "id": "visitor-sol",
    "name": "Sol, a visitor",
    "role": "visitor in the Hall of Firsts",
-   "sprite": "custom:tan.black.cream.indigo.none.gold",
+   "sprite": "custom:tan.black.cream.indigo.none.gold.curls.none.none",
    "mode": "fictional",
    "talk": [
     {
@@ -834,7 +834,7 @@
    "id": "cataloguer-bela",
    "name": "Cataloguer Bela Varga",
    "role": "Keeps the Nexus card catalogue",
-   "sprite": "custom:pale.grey.violet.charcoal.scarf.cyan",
+   "sprite": "custom:pale.grey.violet.charcoal.scarf.cyan.bun.darkframes.cane",
    "mode": "fictional",
    "talk": [
     {
@@ -930,7 +930,7 @@
    "id": "singer-teodora",
    "name": "Singer Teodora Lupu",
    "role": "Sings the old work songs",
-   "sprite": "custom:olive.auburn.plum.wine.scarf.gold",
+   "sprite": "custom:olive.auburn.plum.wine.scarf.gold.long.none.none",
    "mode": "fictional",
    "talk": [
     {

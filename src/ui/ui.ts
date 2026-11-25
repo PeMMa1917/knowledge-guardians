@@ -9,7 +9,7 @@
 import { ctx, type UIApi } from '../app/context';
 import { LUMEN_COLOURS, THEMES, saveSettings, type Settings } from '../app/settings';
 import { PRONOUN_SETS, cleanPronouns, personalise } from '../domain/player';
-import { ACCENT, ACCESSORIES, HAIR, LABELS, cloakThreads, OUTFIT, PRESET_LOOKS, SKIN, TROUSERS, decodeLook, encodeLook, type LookChoice } from '../domain/appearance';
+import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads, OUTFIT, PRESET_LOOKS, SKIN, TROUSERS, decodeLook, encodeLook, type LookChoice } from '../domain/appearance';
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
@@ -300,7 +300,10 @@ export class UI implements UIApi {
     let choice: LookChoice = decodeLook(current);
     let presetId: string | null = PRESET_LOOKS[current] ? current : null;
     const preview = h('div', { class: 'look-preview', role: 'img' });
-    const describe = () => `${LABELS[choice.skin]} skin, ${LABELS[choice.hair]} hair, ${LABELS[choice.outfit]} outfit, ${LABELS[choice.trousers]} trousers${choice.accessory === 'none' ? '' : `, ${LABELS[choice.accent]} ${LABELS[choice.accessory]}`}`;
+    const describe = () => `${LABELS[choice.skin]} skin, ${LABELS[choice.style ?? 'short']} ${LABELS[choice.hair]} hair${choice.style === 'covered' ? ` under a ${LABELS[choice.accent]} head scarf` : ''}, ${LABELS[choice.outfit]} outfit, ${LABELS[choice.trousers]} trousers${choice.accessory === 'none' ? '' : `, ${LABELS[choice.accent]} ${LABELS[choice.accessory]}`}${choice.glasses && choice.glasses !== 'none' ? `, ${LABELS[choice.glasses]}` : ''}${choice.aid && choice.aid !== 'none' ? `, ${LABELS[choice.aid]}` : ''}`;
+    const sel = (label: string, k: 'style' | 'glasses' | 'aid' | 'accessory', list: readonly string[]) => h('div', { class: 'swatch-row' }, h('span', {}, label),
+      h('select', { 'aria-label': label, onchange: (e: Event) => { (choice as any)[k] = (e.target as HTMLSelectElement).value; presetId = null; draw(); } },
+        ...list.map((a) => h('option', { value: a, selected: (choice[k] ?? list[0]) === a }, LABELS[a] ?? a))));
     const draw = () => { clear(preview); preview.append(previewLook(presetId ?? encodeLook(choice), 4)); preview.setAttribute('aria-label', `Preview: ${describe()}`); };
     const swatches = (label: string, k: keyof LookChoice, table: Record<string, any>) => {
       const row = h('div', { class: 'swatches', role: 'radiogroup', 'aria-label': label });
@@ -317,7 +320,8 @@ export class UI implements UIApi {
       ...ACCESSORIES.map((a) => h('option', { value: a, selected: choice.accessory === a }, LABELS[a]))) as HTMLSelectElement;
     const custom = h('div', { class: 'look-custom' },
       swatches('Skin', 'skin', SKIN), swatches('Hair', 'hair', HAIR), swatches('Outfit', 'outfit', OUTFIT), swatches('Trousers', 'trousers', TROUSERS),
-      h('div', { class: 'swatch-row' }, h('span', {}, 'Accessory'), accSel), swatches('Accessory colour', 'accent', ACCENT));
+      sel('Hair style', 'style', STYLES), sel('Glasses', 'glasses', GLASSES), sel('Mobility aid', 'aid', AIDS),
+      h('div', { class: 'swatch-row' }, h('span', {}, 'Accessory'), accSel), swatches('Accessory and scarf colour', 'accent', ACCENT));
     const presets = h('div', { class: 'looks', role: 'radiogroup', 'aria-label': 'Ready-made looks' },
       ...PLAYER_LOOKS.map((id, i) => h('button', { type: 'button', class: 'look', role: 'radio', 'aria-checked': String(id === presetId), 'aria-label': `Ready-made look ${i + 1}`, onclick: (e: Event) => {
         presetId = id; choice = decodeLook(id);
