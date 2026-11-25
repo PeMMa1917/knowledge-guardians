@@ -177,6 +177,7 @@ export function validateContent(pack: ContentPack): string[] {
       if (z.tiles.length <= z.answer.length) p.push(`puzzle ${z.id}: needs at least one tile to leave out`);
     }
   });
+  (pack.fray ?? []).forEach((f) => { dup('fray', f.id); text(`fray ${f.id}`, f.pattern); text(`fray ${f.id}`, f.weakness); });
   // Lorelings (spec 36.1): every wrong note option must name a sighting that shows it is wrong.
   (pack.lorelings ?? []).forEach((l) => {
     dup('loreling', l.id); text(`loreling ${l.id}`, l.intro); weave(l.weave, `loreling ${l.id}`, true); eff(l.onComplete, `loreling ${l.id}`);

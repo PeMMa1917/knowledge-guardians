@@ -429,6 +429,7 @@ export class UI implements UIApi {
         case 'error': this.toast(e.message, 'error'); break;
         case 'moment': this.toast(`Learner profile moment: ${PROFILE_NAMES[e.moment.attribute]}. ${e.moment.did}`, 'moment'); break;
         case 'portfolio': this.toast(`Added to your portfolio: ${e.title}`, 'info'); break;
+        case 'fray': this.toast(`New in your Fray Bestiary: ${e.name} (${e.error.toLowerCase()}). See Journal, Fray Bestiary.`, 'info'); break;
         case 'reflection': { const m = e.misconception; this.whenFree(() => this.offerReflection(m.title, m.reflection)); break; }
         case 'event-due': { const id = e.event; this.whenFree(() => this.showEvent(id)); break; }
         default: break;
@@ -1233,7 +1234,7 @@ export class UI implements UIApi {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', stones: 'Question Stones', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
     if (tab === 'entries') {
@@ -1294,6 +1295,18 @@ export class UI implements UIApi {
             h('div', {}, h('strong', {}, friend ? `${String(s.flags[`lor.${rec!.id}.name`] ?? a.name)} (${a.name})` : met ? a.name : '???'), h('br', {}),
               h('small', {}, `${CONCEPT_NAMES[a.concept]}${friend || met ? `: ${a.power}` : ''}`),
               friend ? h('button', { class: 'mini', onclick: () => this.openLoreling(rec!.id) }, 'Visit') : ''));
+        })));
+    } else if (tab === 'bestiary') {
+      // Fray Bestiary (spec 36.2): a living vocabulary book of reasoning errors, filled in by play.
+      const PLACE: Record<string, string> = { 'nexus.archive': 'the Nexus archive hall', 'aethelgard.emberford': 'Emberford' };
+      const met = c.pack.fray.filter((f) => s.flags[`fray.${f.id}`] !== undefined);
+      body.append(h('p', { class: 'fine' }, `Fray creatures are errors in reasoning, shown as monsters. A page fills in the first time you meet one. You have met ${met.length} of ${c.pack.fray.length}.`),
+        h('ul', { class: 'bestiary' }, ...c.pack.fray.map((f) => {
+          const at = s.flags[`fray.${f.id}`];
+          if (at === undefined) return h('li', { class: 'unknown' }, h('strong', {}, '???'), h('br', {}), h('small', {}, f.chapter ? 'You can meet this one in this chapter.' : 'In later chapters.'));
+          const n = Number(s.flags[`fray.${f.id}.n`] ?? 1);
+          return h('li', {}, h('strong', {}, f.name), ' ', h('span', { class: 'chip' }, f.error), h('p', {}, f.pattern), h('p', {}, h('strong', {}, 'Weakness: '), f.weakness),
+            h('small', { class: 'fine' }, `First met in ${PLACE[String(at)] ?? at}. Met ${n} time${n === 1 ? '' : 's'}.`));
         })));
     } else if (tab === 'stones') {
       // Question Stones (KQ-003): a stone gets brighter with each new way of meeting the question. Never a quiz.

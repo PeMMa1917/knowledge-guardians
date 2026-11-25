@@ -541,6 +541,8 @@ export interface ContentPack {
   alcoves: AlcoveRecord[];
   puzzles: PuzzleRecord[];
   lorelings: LorelingRecord[];
+  /** The Fray Bestiary (spec 36.2): errors in reasoning shown as creatures. Recorded on first meeting. */
+  fray: { id: string; name: string; error: string; pattern: string; weakness: string; chapter: number | null }[];
   /** The whole Loreling Atlas (spec 36.1): every Loreling, with the concept it lives near. */
   lorelingAtlas: { name: string; concept: Concept; power: string }[];
   skillDomains: { id: string; name: string }[];

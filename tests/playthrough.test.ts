@@ -143,6 +143,8 @@ describe('full chapter routes', () => {
       for (const a of ['award.dates-have-kinds', 'skill.fair-test-1', 'award.two-sides', 'skill.force-support-1', 'skill.thread-1', 'award.forged-not-sorted', 'badge.honest-sign']) {
         expect(d.p.awards[a], a).toBeTruthy();
       }
+      // Fray Bestiary (spec 36.2): the Showdowns show the Glimmer Knight's seal to every player.
+      expect(d.s.flags['fray.glimmer-knight']).toBeDefined();
       // Skill Atlas (spec 76.1): a full chapter records skills from several steps.
       expect(Object.keys(d.p.skills).length).toBeGreaterThanOrEqual(5);
     });

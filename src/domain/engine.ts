@@ -74,6 +74,7 @@ export type GameEvent =
   | { kind: 'label'; result: LabelResult }
   | { kind: 'lock'; lock: string; result: LockResult }
   | { kind: 'puzzle'; puzzle: string; ok: boolean; text: string; gapAt?: number | null }
+  | { kind: 'fray'; id: string; name: string; error: string }
   | { kind: 'loreling'; loreling: string; stage: 'watch' | 'note' | 'offer' | 'name' | 'field'; ok: boolean; text: string; recheck?: string | null }
   | { kind: 'alcove'; alcove: string; stage: 'place' | 'link' | 'imply'; result: string; text: string }
   | { kind: 'showdown'; state: ShowdownState }
@@ -181,6 +182,34 @@ export class Engine {
   /** The first open, visible objective. Used by the guide and the recap. */
   currentObjective(s: CampaignState): (Objective & { mission: Mission }) | null {
     return this.visibleObjectives(s).find((o) => !o.complete) ?? null;
+  }
+
+  /** Which Fray creatures this command met (fixed rules on results, never on values). */
+  private frayMet(cmd: Command, s0: CampaignState, s: CampaignState, events: GameEvent[]): string[] {
+    const met = new Set<string>();
+    for (const e of events) {
+      if (e.kind === 'alcove') {
+        const m = { mirage: 'symbol-mirage', golem: 'checklist-golem', sphinx: 'so-what-sphinx' }[e.result as string];
+        if (m) met.add(m);
+      }
+      if (e.kind === 'label' && !e.result.holds) met.add('swell-wisp');
+      if (e.kind === 'loreling' && e.stage === 'offer' && !e.ok && e.recheck) met.add('shadow-twins');
+    }
+    if (cmd.type === 'ShowdownMove' && s0.showdown && s.showdown) {
+      const a = s0.showdown, b = s.showdown;
+      const rec = this.pack.showdowns.find((x) => x.id === a.id);
+      if (cmd.move.move === 'attack') met.add('hornet-of-blame');
+      if (cmd.move.move === 'shout') met.add('echo-moths');
+      if (!a.sealShown && b.sealShown) met.add('glimmer-knight');
+      if (!a.narrowed && b.narrowed) met.add('hasty-hydra');
+      const step = rec?.script.length ? rec.script[a.turn % rec.script.length] : null;
+      if (step && b.turn > a.turn) {
+        if (step.move === 'seal' && !a.sealShown) met.add('glimmer-knight');
+        if (step.move === 'shout') met.add('echo-moths');
+        if (step.move === 'press' && b.force > b.support) met.add('swell-wisp');
+      }
+    }
+    return [...met];
   }
 
   dispatch(cmd: Command, s0: CampaignState, p0: PermanentRecord, now = new Date().toISOString()): Outcome {
@@ -535,6 +564,15 @@ export class Engine {
       }
     } catch (err) {
       return { state: s0, permanent: p0, events: [{ kind: 'error', message: (err as Error).message }] };
+    }
+
+    // The Fray Bestiary (spec 36.2): record a reasoning error the first time the player meets it.
+    for (const id of this.frayMet(cmd, s0, s, events)) {
+      const f = this.pack.fray.find((x) => x.id === id);
+      if (!f) continue;
+      const first = s.flags[`fray.${id}`] === undefined;
+      s = apply([...(first ? [{ setFlag: `fray.${id}`, value: s.mapId } as Effect] : []), { addNum: `fray.${id}.n`, by: 1 }], s, out);
+      if (first) events.push({ kind: 'fray', id, name: f.name, error: f.error });
     }
 
     // Objectives, then awards. Repeat so that completion effects can chain.
