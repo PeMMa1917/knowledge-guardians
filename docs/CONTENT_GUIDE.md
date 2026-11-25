@@ -185,6 +185,8 @@ A `frame` puzzle has a `scene` and a `frame` size (in scene units; 1 unit is 10 
 
 A `shepard` puzzle has `steps` (per octave climb), `base` (the lowest note in hertz), `octaves`, `guesses` (what the player heard: never graded, each with a friendly `reply`) and `reflect` (one `honest`). The validator checks that the notes are audible and that the last step matches the first.
 
+A `forecast` puzzle has `choices` (chances in %), `notes` (what the clues mean), `days` (each with `baro`, `clouds`, `birds`, whether it `rain`ed and the `almanac` chance) and `reflect` (one `honest`). The days are fixed, so every class sees the same weather. The validator checks that the almanac beats 'always 50%' and that there are wet and dry days. Include at least one confident forecast that misses: that is the lesson.
+
 ## Add a practice clue board
 
 Add a record to `clueBoards` (in `src/content/clueboard.json`) with the `showdown` id, a `title`, an `intro`, `onComplete` and a `weave`. The board takes its claims, links and support from the Showdown record, so no other data is needed. Place it on a map with `kind: 'board'` and `board: <id>`.

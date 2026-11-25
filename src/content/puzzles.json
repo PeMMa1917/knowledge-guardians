@@ -2099,6 +2099,164 @@
      "why": "Maren reported what she hears, honestly. An honest report can still be mistaken. A lie needs the intention to make someone believe what you think is false."
     }
    ]
+  },
+  {
+   "id": "forecast-board",
+   "type": "forecast",
+   "title": "The Forecast Board",
+   "intro": "The fishers decide each morning whether to go out on the river. Fisher Noa asks you to keep the forecast board for twelve days. Each morning, read the clues and say how likely rain is. You will not be right every day. Nobody is. The question is whether your chances match what happens.",
+   "skills": [
+    "SK-THK-14",
+    "SK-NUM-14",
+    "SK-SLF-09"
+   ],
+   "weave": {
+    "concepts": [
+     "certainty",
+     "evidence"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "geography",
+     "math-ai",
+     "physics"
+    ],
+    "aoks": [
+     "NAT",
+     "MAT"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.certainty.forecast"
+    },
+    {
+     "journal": "j.forecast"
+    }
+   ],
+   "choices": [
+    10,
+    30,
+    50,
+    70,
+    90
+   ],
+   "notes": [
+    "When the weather glass falls, wet weather often follows. When it rises, fair weather often follows. This is the strongest sign.",
+    "Low grey clouds often bring rain. High, thin clouds can come before rain, or not. No clouds is a fair sign.",
+    "The fishers say that swallows fly low before rain, because the insects they chase fly low in damp air. It is a weak sign."
+   ],
+   "days": [
+    {
+     "baro": "falling",
+     "clouds": "low",
+     "birds": "low",
+     "rain": true,
+     "almanac": 0.95
+    },
+    {
+     "baro": "rising",
+     "clouds": "none",
+     "birds": "high",
+     "rain": false,
+     "almanac": 0.05
+    },
+    {
+     "baro": "steady",
+     "clouds": "low",
+     "birds": "low",
+     "rain": true,
+     "almanac": 0.75
+    },
+    {
+     "baro": "falling",
+     "clouds": "high",
+     "birds": "high",
+     "rain": false,
+     "almanac": 0.7
+    },
+    {
+     "baro": "rising",
+     "clouds": "none",
+     "birds": "low",
+     "rain": false,
+     "almanac": 0.15
+    },
+    {
+     "baro": "falling",
+     "clouds": "low",
+     "birds": "high",
+     "rain": true,
+     "almanac": 0.85
+    },
+    {
+     "baro": "steady",
+     "clouds": "none",
+     "birds": "high",
+     "rain": false,
+     "almanac": 0.25
+    },
+    {
+     "baro": "steady",
+     "clouds": "high",
+     "birds": "low",
+     "rain": true,
+     "almanac": 0.6
+    },
+    {
+     "baro": "rising",
+     "clouds": "low",
+     "birds": "high",
+     "rain": false,
+     "almanac": 0.25
+    },
+    {
+     "baro": "falling",
+     "clouds": "high",
+     "birds": "low",
+     "rain": true,
+     "almanac": 0.9
+    },
+    {
+     "baro": "rising",
+     "clouds": "none",
+     "birds": "high",
+     "rain": false,
+     "almanac": 0.05
+    },
+    {
+     "baro": "falling",
+     "clouds": "none",
+     "birds": "low",
+     "rain": true,
+     "almanac": 0.75
+    }
+   ],
+   "reflect": [
+    {
+     "text": "On day 4 the almanac said 70% and it stayed dry, so the almanac was wrong.",
+     "honest": false,
+     "why": "A 70% forecast says it stays dry on about 3 days in 10. One dry day cannot show that 70% was wrong. You judge a forecaster over many days, by asking if their chances match what happens."
+    },
+    {
+     "text": "Be bold: always say 10% or 90%. Then you are right more often.",
+     "honest": false,
+     "why": "Bold forecasts feel good on the days they are right, but the score punishes a confident miss heavily. Saying 90% when the clues say 'as likely as not' is claiming more certainty than your evidence gives."
+    },
+    {
+     "text": "A good forecaster is not right every day. When they say 70%, it rains on about 7 days in 10. The almanac, which uses the clues, beat 'always 50%'. Twelve days is too few to be sure how good my forecasts are.",
+     "honest": true,
+     "why": "Yes. A forecast is a claim about how sure we should be, not a promise. Matching your certainty to your evidence is called calibration. A small sample is itself a reason to be modest."
+    },
+    {
+     "text": "Weather cannot be known, so every forecast is just a guess.",
+     "honest": false,
+     "why": "The clues helped: the almanac did better than 'always 50%'. Knowledge can be uncertain and still be useful. The skill is to say how uncertain."
+    }
+   ]
   }
  ],
  "missions": [
@@ -2681,6 +2839,50 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-N01",
+   "world": "WORLD-02",
+   "title": "The Forecast Board",
+   "knowledgeQuestion": "Can a forecast be good even when it turns out wrong?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "forecast.o1.days",
+     "title": "Optional: keep Fisher Noa's forecast board for twelve days (the board by the east well).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.forecast-board.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "certainty",
+       "evidence"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "geography",
+       "math-ai",
+       "physics"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-NUM-14",
+      "SK-SLF-09"
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -3019,6 +3221,30 @@
    "objective": "bells.o1.check",
    "depth": 4,
    "text": "Choose the answer that keeps both: what you heard, and what the glass showed."
+  },
+  {
+   "id": "h.forecast.1",
+   "objective": "forecast.o1.days",
+   "depth": 1,
+   "text": "Open the almanac. Which clue is the strongest?"
+  },
+  {
+   "id": "h.forecast.2",
+   "objective": "forecast.o1.days",
+   "depth": 2,
+   "text": "When the clues point different ways, a middle chance is honest."
+  },
+  {
+   "id": "h.forecast.3",
+   "objective": "forecast.o1.days",
+   "depth": 3,
+   "text": "Falling glass, low clouds and low swallows together: very likely. Rising glass and clear sky: very unlikely."
+  },
+  {
+   "id": "h.forecast.4",
+   "objective": "forecast.o1.days",
+   "depth": 4,
+   "text": "Look at the result chart. Choose the answer about matching your chances to what happens."
   }
  ],
  "journal": [
@@ -3091,6 +3317,11 @@
    "id": "j.bells",
    "text": "The Endless Bell Stair: every step sounded higher, but after twelve steps the notes were the same. A measurement checked my hearing, and the illusion showed me how hearing works.",
    "claimKind": "interpretation"
+  },
+  {
+   "id": "j.forecast",
+   "text": "The Forecast Board: a good forecast is not always right. Its chances match what happens over many days, and it claims only as much certainty as the evidence gives.",
+   "claimKind": "interpretation"
   }
  ],
  "criteria": [
@@ -3162,6 +3393,11 @@
   {
    "id": "crit.evidence.bells",
    "concept": "evidence",
+   "maximum": 5
+  },
+  {
+   "id": "crit.certainty.forecast",
+   "concept": "certainty",
    "maximum": 5
   }
  ]

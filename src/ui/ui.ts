@@ -13,7 +13,7 @@ import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads,
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
-import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, runSorter, framed, shepardParts, runSurvey, sightBlock, tiltOf, timeStats, translateLine, type SorterRun } from '../domain/puzzles';
+import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, runSorter, framed, shepardParts, brier, calibration, readForecasts, runSurvey, sightBlock, tiltOf, timeStats, translateLine, type SorterRun } from '../domain/puzzles';
 import { audioNow, chime, clapEcho, playNotes, playShepard } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
@@ -179,6 +179,21 @@ function sorterView(p: Extract<PuzzleRecord, { type: 'sorter' }>, run: SorterRun
 }
 
 /** Oskar's map of Emberford: a parchment sheet with only the chosen layers drawn (original art). */
+/** Weather clue pictures for the forecast board (original, drawn in code). */
+function clueSvg(kind: 'baro' | 'clouds' | 'birds', v: string): string {
+  if (kind === 'baro') {
+    const ang = v === 'falling' ? 210 : v === 'rising' ? 330 : 270, r = (ang * Math.PI) / 180;
+    return `<svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="26" fill="#f3eee0" stroke="#a87445" stroke-width="4"/><path d="M12 38 A20 20 0 0 1 48 38" stroke="#4a90d9" stroke-width="3" fill="none"/><text x="10" y="50" font-size="7" fill="#3b2a1a">rain</text><text x="38" y="50" font-size="7" fill="#3b2a1a">fair</text><line x1="30" y1="32" x2="${30 + Math.cos(r) * 18}" y2="${32 + Math.sin(r) * 18}" stroke="#b03a2e" stroke-width="3" stroke-linecap="round"/><circle cx="30" cy="32" r="3" fill="#3b2a1a"/>${v === 'steady' ? '' : `<path d="M${v === 'falling' ? '44 10 l6 0 l-3 6 z' : '44 16 l6 0 l-3 -6 z'}" fill="#b03a2e"/>`}</svg>`;
+  }
+  if (kind === 'clouds') {
+    if (v === 'none') return `<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" rx="8" fill="#9fd3ff"/><circle cx="30" cy="30" r="10" fill="#ffd25a"/></svg>`;
+    const low = v === 'low';
+    return `<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" rx="8" fill="${low ? '#8794a6' : '#b9dcf5'}"/>${low ? '<g fill="#5d6675"><circle cx="18" cy="30" r="11"/><circle cx="32" cy="26" r="13"/><circle cx="45" cy="31" r="10"/><rect x="8" y="30" width="46" height="12" rx="6"/></g>' : '<g stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.9"><path d="M8 14 q12 -6 24 0"/><path d="M26 22 q14 -6 28 0"/><path d="M10 30 q10 -4 20 0"/></g>'}</svg>`;
+  }
+  const y = v === 'low' ? 44 : 14;
+  return `<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" rx="8" fill="#cfe8d0"/><rect y="50" width="60" height="10" fill="#7aa06a"/>${[[14, y], [30, y + 4], [44, y - 2]].map(([x, yy]) => `<path d="M${x - 6} ${yy - 3} q6 4 6 3 q0 1 6 -3" stroke="#2a2a3a" stroke-width="2.2" fill="none" stroke-linecap="round"/>`).join('')}</svg>`;
+}
+
 /** The painter's market scene (original art, drawn in code). 1 scene unit = 10 px. */
 function frameScene(items: FrameItem[], w: number, h: number): string {
   const U = 10;
@@ -1215,6 +1230,52 @@ export class UI implements UIApi {
               h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleWeigh', puzzle: rec.id, round: n, weights: [...pan] })) }, 'Record this weighing'),
               h('button', { onclick: () => { pan = []; feedback = null; render(); } }, 'Clear the pan')));
         } else if (done) box.append(h('p', { class: 'fair' }, 'Every weighing is in the record book.'));
+      } else if (rec.type === 'forecast') {
+        const list = readForecasts(c.state.flags[`${F}.f`]);
+        const n = list.length, all = n >= rec.days.length;
+        const CLUE: Record<string, Record<string, string>> = {
+          baro: { falling: 'The weather glass is falling', steady: 'The weather glass is steady', rising: 'The weather glass is rising' },
+          clouds: { low: 'Low grey clouds', high: 'High, thin clouds', none: 'No clouds' },
+          birds: { low: 'Swallows fly low', high: 'Swallows fly high' },
+        };
+        const WORD: Record<number, string> = { 10: 'very unlikely', 30: 'unlikely', 50: 'as likely as not', 70: 'likely', 90: 'very likely' };
+        box.append(h('details', { class: 'forecast-notes' }, h('summary', {}, "The fishers' almanac (what the clues mean)"), h('ul', {}, ...rec.notes.map((t) => h('li', {}, t)))));
+        box.append(h('ol', { class: 'forecast-days', 'aria-label': 'Days' }, ...rec.days.map((d, i) => h('li', { class: `fday ${i === n ? 'now' : ''} ${i < n ? (d.rain ? 'wet' : 'dry') : ''}` },
+          h('span', { class: 'fd-n' }, `Day ${i + 1}`), i < n ? h('span', { class: 'fd-w', 'aria-label': d.rain ? 'rain' : 'dry' }, d.rain ? '☔' : '☀') : h('span', { class: 'fd-w' }, '·'), i < n ? h('span', { class: 'fd-p' }, `${list[i]}%`) : ''))));
+        if (!all) {
+          const d = rec.days[n];
+          const tile = (k: 'baro' | 'clouds' | 'birds') => { const el = h('figure', { class: 'clue' }); el.innerHTML = clueSvg(k, d[k]); el.append(h('figcaption', {}, CLUE[k][d[k]])); return el; };
+          box.append(h('h3', {}, `Day ${n + 1} of ${rec.days.length}: will it rain today?`),
+            h('div', { class: 'row wrap clues' }, tile('baro'), tile('clouds'), tile('birds')),
+            h('div', { class: 'row wrap chances' }, ...rec.choices.map((ch) => h('button', { type: 'button', class: 'chance', onclick: () => {
+              take(c.dispatch({ type: 'PuzzleForecast', puzzle: rec.id, chance: ch }));
+              if (d.rain) playNotes([{ f: 1318, at: 0, beats: 0.5 }, { f: 1046, at: 0.4, beats: 0.5 }, { f: 880, at: 0.8, beats: 0.5 }, { f: 1174, at: 1.1, beats: 0.5 }], 0.18, 'marimba', ctx.settings.sfxVolume);
+              else chime(ctx.settings.sfxVolume);
+            } }, h('strong', {}, `${ch}%`), h('small', {}, WORD[ch] ?? '')))));
+        }
+        if (n > 0) {
+          const last = rec.days[n - 1];
+          box.append(h('div', { class: `sky ${last.rain ? 'wet' : 'dry'}`, 'aria-hidden': 'true' }, ...(last.rain ? Array.from({ length: 24 }, (_, i) => h('span', { class: 'drop', style: { left: `${(i * 37) % 100}%`, animationDelay: `${(i % 6) * 0.12}s` } })) : [h('span', { class: 'sun' })])));
+        }
+        if (all) {
+          const rained = rec.days.map((d) => d.rain);
+          const you = brier(list.map((x) => x / 100), rained), half = brier(rec.days.map(() => 0.5), rained), alm = brier(rec.days.map((d) => d.almanac), rained);
+          const bar = (label: string, v: number, cls: string) => h('div', { class: `score-row ${cls}` }, h('span', {}, label), h('span', { class: 'score-bar' }, h('span', { style: { width: `${Math.min(100, (v / 0.5) * 100)}%` } })), h('strong', {}, v.toFixed(3)));
+          const cal = calibration(list, rained);
+          const chart = h('div', { class: 'calib', role: 'img', 'aria-label': cal.map((g) => `When you said ${g.p}%, it rained on ${g.rain} of ${g.days} days`).join('. ') });
+          chart.innerHTML = `<svg viewBox="0 0 220 140" aria-hidden="true"><rect width="220" height="140" rx="8" fill="#14202b"/><line x1="20" y1="120" x2="210" y2="120" stroke="#4a6a85"/><line x1="20" y1="120" x2="210" y2="20" stroke="#f6c453" stroke-dasharray="4 3"/>${cal.map((g) => { const x = 20 + (g.p / 100) * 190, hgt = (g.rain / g.days) * 100; return `<rect x="${x - 8}" y="${120 - hgt}" width="16" height="${hgt}" fill="#7cc4ff" opacity="0.9"/><text x="${x}" y="133" font-size="8" fill="#9fb3c8" text-anchor="middle">${g.p}%</text><text x="${x}" y="${116 - hgt}" font-size="8" fill="#e8efe8" text-anchor="middle">${g.rain}/${g.days}</text>`; }).join('')}</svg>`;
+          box.append(h('h3', {}, 'How did the forecasts do?'),
+            h('p', { class: 'fine' }, 'The score is the average of (forecast − what happened)², so lower is better. 0 would mean certain and always right. It is not a mark: no score is a pass or a fail.'),
+            h('div', { class: 'scores' }, bar('Your forecasts', you, 'you'), bar("Always '50%'", half, 'half'), bar('The almanac', alm, 'alm')),
+            h('p', { class: 'fine' }, 'The bars show how often it rained when you said each chance. On a well-matched forecast, the bars reach the dashed line.'), chart,
+            h('h3', {}, done ? 'What you learned' : 'What does this tell you about being sure?'),
+            done ? h('p', { class: 'fair' }, rec.reflect.find((x) => x.honest)!.text)
+              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((x, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, x.text)))));
+        }
+        if (feedback) {
+          const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
+          box.append(fb); requestAnimationFrame(() => fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+        }
       } else if (rec.type === 'shepard') {
         const played = Number(c.state.flags[`${F}.played`] ?? 0), guess = c.state.flags[`${F}.guess`], compared = c.state.flags[`${F}.compared`] === true;
         const parts = (st: number) => shepardParts(st, rec.steps, rec.base, rec.octaves);

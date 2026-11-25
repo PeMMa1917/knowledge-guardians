@@ -413,6 +413,14 @@ DRAW['bell-rope'] = [16, 24, (g) => {
   R(g, '#d8c08a', 7, 9, 1, 11); R(g, '#b04a3a', 6, 19, 3, 3);
 }];
 
+// Noa's forecast board (original art): a board on a post with sun and rain marks and a little dial.
+DRAW['forecast-board'] = [16, 24, (g) => {
+  R(g, '#5b3b22', 7, 14, 2, 10); R(g, '#3b2a1a', 5, 22, 6, 2);
+  R(g, '#7a5230', 0, 2, 16, 13); R(g, '#e8dcc0', 1, 3, 14, 11);
+  R(g, '#ffd25a', 2, 4, 3, 3); R(g, '#8794a6', 9, 4, 5, 2); R(g, '#4a90d9', 10, 6, 1, 2); R(g, '#4a90d9', 12, 6, 1, 2);
+  R(g, '#3b2a1a', 2, 9, 12, 1); R(g, '#b03a2e', 3, 11, 2, 2); R(g, '#4a90d9', 7, 11, 2, 2); R(g, '#b03a2e', 11, 11, 2, 2);
+}];
+
 // The door to the Guardian's quarters (original art): a round-topped oak door with a star.
 DRAW['quarters-door'] = [16, 24, (g) => {
   R(g, '#3b2a1a', 1, 3, 14, 21); R(g, '#3b2a1a', 3, 1, 10, 2);

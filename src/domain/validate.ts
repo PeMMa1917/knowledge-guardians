@@ -8,7 +8,7 @@
 import type { Condition, ContentPack, Effect, Weave } from './types';
 import { ATLS, CONCEPTS, PROFILE } from './types';
 import { SUBJECTS } from './curriculum';
-import { chordFigure, panes, runSorter, runSurvey, sightBlock, translateLine, judgeFrame, shepardParts } from './puzzles';
+import { chordFigure, panes, runSorter, runSurvey, sightBlock, translateLine, judgeFrame, shepardParts, brier } from './puzzles';
 import { openCombinations } from './lock';
 
 const MAX_TEXT = 2000;
@@ -192,6 +192,14 @@ export function validateContent(pack: ContentPack): string[] {
         const all = z.people.filter((x) => x.yes).length / z.people.length, fair = runSurvey(z, z.fair.wording, z.fair.sample);
         if (Math.abs(fair.yes / fair.total - all) > 0.15) p.push(`puzzle ${z.id}: the fair sample does not look like the whole town`);
       }
+      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
+    }
+    else if (z.type === 'forecast') {
+      if (z.days.length < 8) p.push(`puzzle ${z.id}: needs eight or more days`);
+      if (!z.days.some((d) => d.rain) || !z.days.some((d) => !d.rain)) p.push(`puzzle ${z.id}: needs both wet and dry days`);
+      if (!z.choices.length || z.choices.some((c) => !(c > 0 && c < 100))) p.push(`puzzle ${z.id}: chances must be between 0 and 100`);
+      if (z.days.some((d) => !(d.almanac > 0 && d.almanac < 1))) p.push(`puzzle ${z.id}: almanac chances must be between 0 and 1`);
+      else if (brier(z.days.map((d) => d.almanac), z.days.map((d) => d.rain)) >= 0.25) p.push(`puzzle ${z.id}: the clues must help (the almanac must beat 'always 50%')`);
       if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'shepard') {

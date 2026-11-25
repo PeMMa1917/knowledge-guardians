@@ -216,6 +216,16 @@
    "where": "Emberford: Maren's bell rope by the gatehouse."
   },
   {
+   "id": "weather-glass",
+   "name": "A pocket weather glass",
+   "text": "From Fisher Noa. 'It does not tell you what will happen. It tells you how sure to be.'",
+   "if": {
+    "flag": "puzzle.forecast-board.done",
+    "eq": true
+   },
+   "where": "Emberford: Noa's forecast board by the east well."
+  },
+  {
    "id": "seal",
    "name": "A wax copy of the seal",
    "text": "The Guardians' seal, found at the end of the chapter.",

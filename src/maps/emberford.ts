@@ -114,6 +114,7 @@ export const EMBERFORD: MapDef = {
     { id: 'ferry-slate', kind: 'puzzle', puzzle: 'ferry-message', x: 35, y: 22, w: 1, h: 1, label: 'the ferry message slate', art: 'ferry-slate' },
     { id: 'easel', kind: 'puzzle', puzzle: 'painters-frame', x: 27, y: 18, w: 1, h: 1, label: "Lio's easel", art: 'easel' },
     { id: 'bell-rope', kind: 'puzzle', puzzle: 'bell-stair', x: 23, y: 5, w: 1, h: 1, label: "Maren's bell rope", art: 'bell-rope' },
+    { id: 'forecast-board', kind: 'puzzle', puzzle: 'forecast-board', x: 34, y: 16, w: 1, h: 1, label: "Noa's forecast board", art: 'forecast-board' },
     { id: 'echo-bridge', kind: 'puzzle', puzzle: 'echo-bridge', x: 29, y: 21, w: 1, h: 1, label: 'the echo stone by the bridge', art: 'echo-stone' },
     { id: 'brass-sorter', kind: 'puzzle', puzzle: 'brass-sorter', x: 11, y: 19, w: 1, h: 1, label: "Mara's brass sorter", art: 'brass-sorter' },
     { id: 'map-table', kind: 'puzzle', puzzle: 'map-table', x: 2, y: 20, w: 1, h: 1, label: "the mapmaker's table", art: 'map-table' },

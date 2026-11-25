@@ -296,3 +296,16 @@ export function shepardParts(step: number, steps: number, base: number, octaves:
     return { f: Math.round(base * 2 ** pos * 100) / 100, amp: Math.round(Math.exp(-((pos - mid) ** 2) / (2 * (octaves / 6) ** 2)) * 1000) / 1000 };
   });
 }
+
+/** Brier score: the mean squared gap between a forecast (0 to 1) and what happened (0 or 1). Lower is better. */
+export function brier(ps: number[], rained: boolean[]): number {
+  if (!ps.length) return 0;
+  return ps.reduce((t, p, i) => t + (p - (rained[i] ? 1 : 0)) ** 2, 0) / ps.length;
+}
+/** Group forecasts by the chance given, and count how often it rained in each group. */
+export function calibration(ps: number[], rained: boolean[]): { p: number; days: number; rain: number }[] {
+  const m = new Map<number, { days: number; rain: number }>();
+  ps.forEach((p, i) => { const g = m.get(p) ?? { days: 0, rain: 0 }; g.days++; if (rained[i]) g.rain++; m.set(p, g); });
+  return [...m.entries()].sort((a, b) => a[0] - b[0]).map(([p, g]) => ({ p, ...g }));
+}
+export function readForecasts(v: unknown): number[] { return String(v ?? '').split(',').filter(Boolean).map(Number).filter((n) => Number.isFinite(n)); }

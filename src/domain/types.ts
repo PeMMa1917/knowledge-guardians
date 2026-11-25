@@ -541,9 +541,17 @@ export type PuzzleRecord = {
    * player listens, says what they heard (never graded), then compares with a measurement.
    */
   | { type: 'shepard'; steps: number; base: number; octaves: number; guesses: { text: string; reply: string }[]; reflect: { text: string; honest: boolean; why: string }[] }
+  /**
+   * The forecast board (certainty; natural sciences and mathematics): for each day the player
+   * reads the clues and says how likely rain is. The days are fixed, never random. At the end
+   * the board compares the player's forecasts with 'always 50%' and the almanac. The score is
+   * shown, never graded: only the reflection has a fair answer.
+   */
+  | { type: 'forecast'; choices: number[]; notes: string[]; days: ForecastDay[]; reflect: { text: string; honest: boolean; why: string }[] }
   | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string }[] }
 );
 
+export interface ForecastDay { baro: 'falling' | 'steady' | 'rising'; clouds: 'low' | 'high' | 'none'; birds: 'low' | 'high'; rain: boolean; almanac: number }
 export interface FrameItem { id: string; label: string; art: string; x: number; y: number; w: number; h: number }
 export interface FrameBrief { id: string; who: string; wants: string; need: string[]; avoid: string[]; success: string }
 export interface TranslateWord { id: string; word: string; note: string; choices: { text: string; keeps: string[]; back: string }[] }
