@@ -218,3 +218,12 @@ textarea { width: 100%; }
 .atlas li.met { color: var(--ink); border-color: var(--cyan); }
 .moments li { margin: 0.5em 0; }
 pre.json { max-height: 16rem; overflow: auto; font-size: 0.75rem; background: rgba(0,0,0,0.3); padding: 0.6em; border-radius: 6px; }
+
+/* Smart glossary (spec 47.10) */
+button.gloss { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: help; text-decoration: underline dotted 2px; text-decoration-color: #e9cf7a; text-underline-offset: 3px; }
+button.gloss:focus-visible { outline: 2px solid #e9cf7a; outline-offset: 2px; border-radius: 3px; }
+.gloss-pop { display: flex; gap: 0.6em; align-items: flex-start; margin: 0.4em 0 0.6em; padding: 0.6em 0.8em; border: 1px solid rgba(233, 207, 122, 0.5); border-radius: 10px; background: rgba(233, 207, 122, 0.08); font-size: 0.95em; }
+.gloss-pop p { margin: 0.3em 0 0; }
+.gloss-lumen { width: 28px; height: 28px; image-rendering: pixelated; flex: none; }
+dl.glossary dt { font-weight: 600; margin-top: 0.7em; color: #e9cf7a; }
+dl.glossary dd { margin: 0.2em 0 0 0; }

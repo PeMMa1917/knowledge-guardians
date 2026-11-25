@@ -12,6 +12,7 @@ import type { GameEvent, SimulationResult } from '../domain/engine';
 import { conceptXP, totalXP } from '../domain/permanent';
 import { describeSection, layers, type ForgeAction } from '../domain/forge';
 import { labelText, type LabelResult } from '../domain/label';
+import { exampleFor, segmentText } from '../domain/glossary';
 import { studentAlerts } from '../domain/learning';
 import { MOVE_HELP, type ShowdownMove } from '../domain/showdown';
 import { ATL_NAMES, CONCEPT_NAMES, PROFILE_NAMES, SUBJECTS } from '../domain/curriculum';
@@ -396,9 +397,31 @@ export class UI implements UIApi {
     const extra = id === 'sefa.free' ? this.freeQuestion() : null;
     this.openModal('dialogue', speaker?.name ? `Conversation with ${speaker.name}` : 'Scene',
       speaker?.name ? h('div', { class: 'speaker' }, portrait, h('div', {}, h('strong', {}, speaker.name), h('small', {}, speaker.role ?? ''))) : '',
-      h('p', { class: 'line' }, n.text),
+      this.glossLine(n.text),
       h('div', { class: 'chips' }, n.claimKind ? claimChip(n.claimKind) : null, n.historicalLabel ? histChip(n.historicalLabel) : null),
       extra ?? '', optionList);
+  }
+
+  /** Dialogue text with tappable glossary words (spec 47.10). */
+  private glossLine(text: string): HTMLElement {
+    const c = ctx.controller;
+    if (!ctx.settings.glossary) return h('p', { class: 'line' }, text);
+    const pop = h('div', { class: 'gloss-pop', role: 'note', 'aria-live': 'polite', style: { display: 'none' } });
+    const line = h('p', { class: 'line' }, ...segmentText(text, c.pack.glossary).map((sg) => sg.term
+      ? h('button', { type: 'button', class: 'gloss', 'aria-label': `${sg.text}: explain this word`, onclick: () => this.fillGloss(sg.term!, pop) }, sg.text)
+      : sg.text));
+    return h('div', {}, line, pop);
+  }
+
+  private fillGloss(id: string, pop: HTMLElement): void {
+    const c = ctx.controller;
+    const g = c.pack.glossary.find((x) => x.id === id);
+    if (!g) return;
+    clear(pop);
+    const ex = exampleFor(g, c.state, (cond) => c.check(cond));
+    pop.append(h('img', { src: artURL('lumen'), alt: '', class: 'gloss-lumen' }),
+      h('div', {}, h('strong', {}, g.term), ' ', g.text, ex ? h('p', { class: 'fine' }, h('em', {}, 'From your play: '), ex) : ''));
+    pop.style.display = '';
   }
 
   /**
@@ -872,7 +895,7 @@ export class UI implements UIApi {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
     if (tab === 'entries') {
@@ -907,6 +930,12 @@ export class UI implements UIApi {
         body.append(h('article', { class: 'card' }, h('h3', {}, e.title), h('p', { class: 'fine' }, `${new Date(e.at).toLocaleString()} · ${e.world}`), h('p', {}, e.text), ta,
           h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: e.shared, onchange: (ev: Event) => c.dispatch({ type: 'PortfolioShare', entry: e.id, shared: (ev.target as HTMLInputElement).checked }) }), ' Share with my teacher')));
       }
+    } else if (tab === 'glossary') {
+      body.append(h('p', { class: 'fine' }, 'Key words, in plain English. Where you have already done something that shows the word, Lumen adds an example from your play.'),
+        h('dl', { class: 'glossary' }, ...c.pack.glossary.flatMap((g) => {
+          const ex = exampleFor(g, s, (cond) => c.check(cond));
+          return [h('dt', {}, g.term), h('dd', {}, g.text, ex ? h('br', {}) : '', ex ? h('small', { class: 'fine' }, `From your play: ${ex}`) : '')];
+        })));
     } else if (tab === 'atlas') {
       // Concepts, ATL ribbons and subjects met (spec 91, 92). Counts of meetings, not grades.
       const m = c.permanent.met;
@@ -982,6 +1011,7 @@ export class UI implements UIApi {
       check('dyslexiaSpacing', 'Wider letter and line spacing'),
       check('guidePrompts', 'Lumen may show short prompts without being asked'),
       check('calmMode', 'Calm mode: surprise events warn first, and you can choose "Later"'),
+      check('glossary', 'Smart glossary: underline key words in conversations, so you can tap them for an explanation'),
       range('musicVolume', 'Music volume'), range('sfxVolume', 'Sound effects volume'),
       h('p', { class: 'fine' }, 'Sound is never needed to play. Every sound has a text message.'));
   }

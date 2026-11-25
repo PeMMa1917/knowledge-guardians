@@ -13,13 +13,15 @@ export interface Settings {
   dyslexiaSpacing: boolean;
   /** Calm mode (spec 93.3): events warn first and can be delayed. Nothing is ever timed. */
   calmMode: boolean;
+  /** Smart glossary (spec 47.10): key words in dialogue can be tapped for a plain explanation. */
+  glossary: boolean;
 }
 
 const KEY = 'kg.settings';
 
 export const DEFAULTS: Settings = {
   textScale: 1, reducedMotion: false, reducedEffects: false, musicVolume: 0.5, sfxVolume: 0.7,
-  guidePrompts: true, highContrast: false, dyslexiaSpacing: false, calmMode: false,
+  guidePrompts: true, highContrast: false, dyslexiaSpacing: false, calmMode: false, glossary: true,
 };
 
 export function loadSettings(): Settings {

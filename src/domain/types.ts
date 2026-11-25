@@ -313,6 +313,21 @@ export interface ShowdownRecord {
 }
 
 // ---------------------------------------------------------------------------
+// Smart glossary (spec 47.10)
+// ---------------------------------------------------------------------------
+
+export interface GlossaryEntry {
+  id: string;
+  term: string;
+  /** Word forms to mark in text, lower case (for example "claim", "claims"). */
+  match: string[];
+  /** Plain explanation in our own words (no copied course wording). */
+  text: string;
+  /** Examples from play: the first whose condition holds is shown. {flag:name} shows a flag's value. */
+  examples: { if?: Condition; text: string }[];
+}
+
+// ---------------------------------------------------------------------------
 // Title Lock (spec 92.2): EE practice, narrowing a question
 // ---------------------------------------------------------------------------
 
@@ -416,6 +431,7 @@ export interface ContentPack {
   labelKits: LabelKit[];
   showdowns: ShowdownRecord[];
   locks: TitleLockRecord[];
+  glossary: GlossaryEntry[];
   threads: ThreadRecord[];
   moments: MomentRule[];
   misconceptions: MisconceptionRecord[];

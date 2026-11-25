@@ -1590,14 +1590,14 @@
    "id": "hesper.bias",
    "speaker": "smith-hesper",
    "claimKind": "interpretation",
-   "text": "I have a position, yes. I made it. That is also why I know how it was made. Don't trust me blindly: check me. Make a billet at the anvil and compare it with the blade.",
+   "text": "I have a perspective, yes, and that is not the same as bias. I made it. That is also why I know how it was made. Don't trust me blindly: check me. Make a billet at the anvil and compare it with the blade.",
    "next": "hesper.forge"
   },
   {
    "id": "sefa.nowhere",
    "speaker": "scholar-sefa",
    "claimKind": "interpretation",
-   "text": "Then my shelves are empty. Every record was made by someone, for a reason. A museum catalogue too. What I can give you is records that you can check against each other.",
+   "text": "Then my shelves are empty. Every record was made by someone, for a reason. A museum catalogue too. What I can give you is records that you can check against each other. That is what objectivity looks like in an archive.",
    "next": "sefa.again"
   },
   {

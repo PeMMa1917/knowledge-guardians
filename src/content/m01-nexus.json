@@ -954,7 +954,7 @@
   {
    "id": "ise.start3",
    "speaker": "warden-ise",
-   "text": "Look at each exhibit. Talk to Curator Dace and Clerk Venn. They disagree, and both have reasons. Take this journal, this lens and some marks for the road.",
+   "text": "Look at each exhibit. Two are documented by real records; one is a reconstruction. Talk to Curator Dace and Clerk Venn. They disagree, and both have reasons. Take this journal, this lens and some marks for the road.",
    "effects": [
     {
      "setFlag": "talked.ise",
@@ -1042,7 +1042,7 @@
   {
    "id": "ise.portal",
    "speaker": "warden-ise",
-   "text": "The label holds. Whatever you wrote, you can say why. Take this: the Provenance Thread. It follows an object from hand to hand, and it shows where the record stops. Kip will go with you to Aethelgard.",
+   "text": "The label holds. Whatever you wrote, you can justify it: you can say why. Take this: the Provenance Thread. It follows an object from hand to hand, and it shows where the record stops. Kip will go with you to Aethelgard.",
    "effects": [
     {
      "companion": "kip-arden"
@@ -1124,7 +1124,7 @@
   {
    "id": "dace.why",
    "speaker": "curator-dace",
-   "text": "Because the pen people actually write with is the story they care about. A patent that nobody used is a footnote. That is my view, not a fact. Venn disagrees.",
+   "text": "Because the pen people actually write with is the story they care about. A patent that nobody used is a footnote. That is my interpretation, not a fact. Venn disagrees.",
    "claimKind": "value"
   },
   {
@@ -1297,7 +1297,7 @@
   {
    "id": "venn.again",
    "speaker": "clerk-venn",
-   "text": "A record has a date, an author and a purpose. Ask all three before you ask what it means."
+   "text": "A record has a date, an author and a purpose. Ask all three before you ask what it means. Then choose your criterion for 'first'."
   },
   {
    "id": "venn.after",
@@ -1714,7 +1714,7 @@
    "id": "ise.kq",
    "speaker": "warden-ise",
    "claimKind": "interpretation",
-   "text": "That is a question for a historian of pens, and a good one. Ours sits under it: how do we decide what counts as 'first'? Answer that, and you can judge any 'first' in the hall.",
+   "text": "That is a question for a historian of pens, and a good one. Our knowledge question sits under it: how do we decide what counts as 'first'? Answer that, and you can judge any 'first' in the hall.",
    "next": "ise.again"
   },
   {

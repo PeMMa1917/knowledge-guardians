@@ -131,6 +131,11 @@ export function validateContent(pack: ContentPack): string[] {
     a.criteria.forEach((c) => criteria.has(c) || p.push(`award ${a.id}: unknown criterion ${c}`));
   });
   pack.offers.forEach((o) => { dup('offer', o.id); items.has(o.item) || p.push(`offer ${o.id}: unknown item`); cond(o.if, `offer ${o.id}`); eff(o.effects, `offer ${o.id}`); });
+  pack.glossary.forEach((g) => {
+    dup('glossary', g.id); text(`glossary ${g.id}`, g.text);
+    if (!g.match.length || g.match.some((m) => m !== m.toLowerCase())) p.push(`glossary ${g.id}: match forms must be lower case`);
+    g.examples.forEach((e, i) => cond(e.if, `glossary ${g.id} example ${i}`));
+  });
   pack.locks.forEach((l) => {
     dup('lock', l.id); weave(l.weave, `lock ${l.id}`, true); eff(l.onOpen, `lock ${l.id}`);
     if (!SUBJECTS[l.subject]) p.push(`lock ${l.id}: unknown subject ${l.subject}`);
