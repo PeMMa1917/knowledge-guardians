@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { skyAt } from '../src/app/daylight';
 import { CAPTIONS, CaptionLog, captionFor } from '../src/app/captions';
 // @ts-ignore
 import { readFileSync } from 'node:fs';
@@ -22,5 +23,17 @@ describe('sound captions', () => {
     expect(log.visible(1300)).toEqual(['B', 'C']);
     expect(log.visible(5000)).toEqual([]);
     expect(log.add('A', 5000)).toBe(true);
+  });
+});
+
+
+describe('day and evening (town maps)', () => {
+  it('goes from a warm morning to a dark night and back', () => {
+    expect(skyAt(0).tint).toBe(0xffe8c4);
+    expect(skyAt(0.8).name).toBe('night');
+    expect(skyAt(0.8).night).toBeCloseTo(1);
+    expect(skyAt(0.2).night).toBe(0);
+    expect(skyAt(1).tint).toBe(skyAt(0).tint);
+    expect(skyAt(-0.2).tint).toBe(skyAt(0.8).tint);
   });
 });

@@ -37,3 +37,10 @@ export function shimmer(volume: number): void {
   const t = a.currentTime + 0.01, v = Math.min(1, volume) * 0.02;
   [1567.98, 1975.53, 2349.32].forEach((f, i) => tone(a, f, t + i * 0.07, 0.5, v));
 }
+
+/** A distant town bell at dusk: two low, slow strikes with a long ring. */
+export function bell(volume: number): void {
+  const a = audio(); if (!a || volume <= 0.01) return;
+  const t = a.currentTime + 0.01, v = Math.min(1, volume) * 0.035;
+  for (const k of [0, 1.6]) { tone(a, 392, t + k, 3.2, v); tone(a, 784 * 1.01, t + k, 1.6, v * 0.35); tone(a, 196, t + k, 2.4, v * 0.5, 'triangle'); }
+}

@@ -7,7 +7,8 @@
  * click or tap to walk to a spot or a person (alternative control route).
  */
 import { ensureLook } from './looks';
-import { chime, clink, shimmer } from '../app/ambience';
+import { bell, chime, clink, shimmer } from '../app/ambience';
+import { CYCLE, skyAt } from '../app/daylight';
 import { lorelingForm } from '../domain/lorelings';
 import { caption } from '../app/captions';
 import { LUMEN_COLOURS } from '../app/settings';
@@ -50,6 +51,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private target: { kind: 'npc'; actor: Actor } | { kind: 'obj'; obj: Interactable } | null = null;
   private fx: Phaser.GameObjects.GameObject[] = [];
   private lightPools: Phaser.GameObjects.Image[] = [];
+  /** Town day cycle: the grade rectangle, the fireflies, and the shared clock (seconds, kept across maps). */
+  private grade: Phaser.GameObjects.Rectangle | null = null;
+  private fireflies: Phaser.GameObjects.Particles.ParticleEmitter | null = null;
+  private static dayClock = CYCLE * 0.1;
+  private lastSky = '';
   private portalRing: Phaser.GameObjects.Image | null = null;
   private stepTimer = 0;
   private transitioning = false;
@@ -287,7 +293,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const w = m.width * TILE, h = m.height * TILE;
     // Ambient colour grade (multiply) and light pools (additive).
     const ambient = m.ambience === 'archive' ? 0xa29ce0 : 0xffe8c4;
-    this.add.rectangle(-200, -200, w + 400, h + 400, ambient).setOrigin(0).setDepth(200000).setBlendMode(Phaser.BlendModes.MULTIPLY).setAlpha(effects ? 1 : 0);
+    this.grade = this.add.rectangle(-200, -200, w + 400, h + 400, ambient).setOrigin(0).setDepth(200000).setBlendMode(Phaser.BlendModes.MULTIPLY).setAlpha(effects ? 1 : 0);
     for (const l of m.lights) {
       const img = this.add.image(l.x * TILE, l.y * TILE, 'glow').setDepth(200001).setBlendMode(Phaser.BlendModes.ADD)
         .setTint(l.color).setScale((l.r * 2) / 128).setAlpha(effects ? 0.6 : 0);
@@ -314,6 +320,13 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         emitZone: { type: 'random', source: area } as any, lifespan: 7000, speedY: { min: 4, max: 10 }, speedX: { min: 6, max: 14 },
         scale: { min: 0.4, max: 0.9 }, tint: [0xfff6d0, 0xffd7e8], frequency: 260, alpha: 0.7,
       }).setDepth(200002));
+      // Fireflies after dusk (the day cycle starts and stops them).
+      this.fireflies = this.add.particles(0, 0, 'spark', {
+        emitZone: { type: 'random', source: area } as any, lifespan: 4000, speed: { min: 2, max: 8 }, scale: { start: 0.9, end: 0.2 },
+        tint: [0xe8ff9a, 0xfff2a0], blendMode: 'ADD', frequency: 180, alpha: { start: 0.9, end: 0 },
+      }).setDepth(200003);
+      this.fireflies.stop();
+      this.fx.push(this.fireflies);
       this.fx.push(this.add.particles(19.5 * TILE + 8, 23 * TILE, 'spark', {
         lifespan: 1300, speed: { min: 4, max: 14 }, scale: { start: 0.7, end: 0 }, tint: 0x9fe8ff, blendMode: 'ADD', frequency: 160,
       }).setDepth(200002));
@@ -339,6 +352,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const cam = this.cameras.main;
     const fx = (cam as any).postFX as Phaser.GameObjects.Components.FX | undefined;
     fx?.clear();
+    if (fx && !ctx.settings.reducedEffects) { fx.addVignette(0.5, 0.5, 0.95, 0.22); fx.addBloom(0xffffff, 1, 1, 0.8, 0.45, 4); }
     this.lumen?.setVisible(!o || o.lumen); this.lumenGlow?.setVisible(!o || o.lumen);
     if (this.pet) { this.pet.sprite.setVisible(!o || o.pet); this.pet.glow.setVisible(!o || o.pet); }
     for (const a of this.npcs) a.mark?.setVisible(!o); // no speech marks in pictures
@@ -352,9 +366,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'warm': m.kodachrome(); break;
       case 'print': m.polaroid(); break;
       case 'pinhole': m.vintagePinhole(); break;
-      default: fx.clear();
+      default: break;
     }
-    if (o.filter !== 'none') fx.addVignette(0.5, 0.5, 0.9, 0.35);
     return true;
   }
 
@@ -390,6 +403,20 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   setPaused(p: boolean): void { this.paused = p; }
 
+  /** Town maps: the light changes from morning to night over CYCLE seconds of play. */
+  private updateDaylight(dt: number): void {
+    if (this.map.ambience !== 'town' || !this.grade || ctx.settings.reducedEffects) return;
+    WorldScene.dayClock += dt;
+    const sky = skyAt(WorldScene.dayClock / CYCLE);
+    this.grade.setFillStyle(sky.tint);
+    for (const l of this.lightPools) if (!this.tweens.isTweening(l)) l.setAlpha(sky.light);
+    if (this.fireflies) { if (sky.night > 0.5 && !this.fireflies.emitting) this.fireflies.start(); else if (sky.night <= 0.5 && this.fireflies.emitting) this.fireflies.stop(); }
+    if (sky.name !== this.lastSky) {
+      if (this.lastSky && sky.name === 'dusk') { bell(ctx.settings.sfxVolume); caption('amb.bell'); }
+      this.lastSky = sky.name;
+    }
+  }
+
   private ambT = 0;
   /** Ambient sound: the forge hammer in Emberford (louder near the anvil), chimes in the Nexus. */
   private ambience(dt: number): void {
@@ -414,6 +441,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   update(_t: number, dtMs: number): void {
     const dt = Math.min(dtMs, 100) / 1000;
     this.ambience(dt);
+    this.updateDaylight(dt);
     const modal = this.paused || ctx.ui.isModalOpen() || this.transitioning;
     let vx = 0, vy = 0;
     if (!modal) {

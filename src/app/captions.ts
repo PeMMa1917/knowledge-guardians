@@ -20,6 +20,7 @@ export const CAPTIONS: Record<string, string> = {
   'amb.forge': 'Forge hammer rings',
   'amb.chime': 'Soft chimes',
   'amb.moth': 'Glimmermoth hums and glows',
+  'amb.bell': 'Town bell rings: evening',
   'music.archive': 'Music: quiet, mysterious',
   'music.town': 'Music: warm town tune',
   'music.title': 'Music: gentle lullaby',
