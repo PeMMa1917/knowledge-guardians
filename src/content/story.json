@@ -1,4 +1,32 @@
 {
+ "characters": [
+  {
+   "id": "ferry-tova",
+   "name": "Ferry keeper Tova",
+   "role": "Keeps the upriver ferry; speaks the river cant",
+   "sprite": "custom:olive.grey.teal.charcoal.scarf.cyan.long.none.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "ferry.met",
+      "eq": true
+     },
+     "node": "tova.again"
+    },
+    {
+     "if": {
+      "flag": "puzzle.ferry-message.done",
+      "eq": true
+     },
+     "node": "tova.thanks"
+    },
+    {
+     "node": "tova.first"
+    }
+   ]
+  }
+ ],
  "chronicle": [
   {
    "id": "call",
@@ -89,6 +117,15 @@
     "eq": true
    },
    "text": "You wrote the first new entry in her journal in ten years. Emberford has a Guardian again."
+  },
+  {
+   "id": "ferry",
+   "title": "The ferry road",
+   "if": {
+    "flag": "ferry.met",
+    "eq": true
+   },
+   "text": "Kip's map and Elsbet's map, side by side, showed a road the guild forgot. At its end, Tova and the ferry folk keep knowledge in their own words: of the river, and of who told what to whom."
   },
   {
    "id": "door",
@@ -200,7 +237,7 @@
   {
    "id": "ferry",
    "name": "The Ferry Message",
-   "who": "Ama and the ferry folk",
+   "who": "Tova and the ferry folk",
    "if": {
     "flag": "puzzle.ferry-message.done",
     "eq": true
@@ -360,7 +397,7 @@
    "views": [
     {
      "keepsake": "paper-frame",
-     "text": "You hold Nell's card frame over the part that the guild's own picture of Emberford shows: the hall, the market, the bridge. Then you lower it. Outside that frame, Elsbet painted the ferry folk's camp by the river, with Ama's boats. The guild's picture leaves them out. Hers does not."
+     "text": "You hold Nell's card frame over the part that the guild's own picture of Emberford shows: the hall, the market, the bridge. Then you lower it. Outside that frame, Elsbet painted the ferry folk's camp by the river, with Tova's boats. The guild's picture leaves them out. Hers does not."
     }
    ],
    "study": true
@@ -402,7 +439,7 @@
    "views": [
     {
      "keepsake": "folded-map",
-     "text": "Beside Kip's map, hers shows a road you have never seen: the old ferry road along the river, now grass. Both maps are true, ten years apart. A map is true for a time."
+     "text": "Beside Kip's map, hers shows a road you have never seen: the old ferry road along the river, now grass. Both maps are true, ten years apart. A map is true for a time. Her road runs east, past the ferry slate, to the river. Now that you know it is there, you can find it."
     }
    ],
    "study": true
@@ -498,7 +535,7 @@
    "views": [
     {
      "keepsake": "thread-knot",
-     "text": "Your citation knot matches her ties. Each card cites a source. One names 'Ama's mother, ferry keeper' as the source for the flood dates. Elsbet cited people, not only books."
+     "text": "Your citation knot matches her ties. Each card cites a source. One names 'Tova's mother, ferry keeper' as the source for the flood dates. Elsbet cited people, not only books."
     }
    ],
    "study": true
@@ -510,7 +547,7 @@
    "views": [
     {
      "keepsake": "moth-lamp",
-     "text": "The moth lamp glows. On the wall is a long list of names: everyone who helped light a lamp in Elsbet's time. The tea seller's mother. Hesper's father. Ama. No lamp was ever lit by the Guardian alone."
+     "text": "The moth lamp glows. On the wall is a long list of names: everyone who helped light a lamp in Elsbet's time. The tea seller's mother. Hesper's father. Tova. No lamp was ever lit by the Guardian alone."
     }
    ],
    "study": true
@@ -592,7 +629,7 @@
    "id": "sefa-chalk",
    "character": "scholar-sefa",
    "keepsake": "ferry-chalk",
-   "text": "Tavi. I read Ama's message.",
+   "text": "Tavi. I read Tova's message.",
    "node": "kt.sefa.chalk"
   },
   {
@@ -656,7 +693,7 @@
    "id": "oduya-cards",
    "character": "keeper-oduya",
    "keepsake": "thread-knot",
-   "text": "Elsbet cited 'Ama's mother'. Did she ask you for sources too?",
+   "text": "Elsbet cited 'Tova's mother'. Did she ask you for sources too?",
    "node": "kt.oduya.cards",
    "if": {
     "flag": "clue.cards.thread-knot",
@@ -750,6 +787,156 @@
    "id": "kt.oduya.cards",
    "speaker": "keeper-oduya",
    "text": "Elsbet's index cards? She was the first person who ever asked me for a source. I was twelve. I told her my grandmother, and she wrote it down as if it mattered. It did."
+  },
+  {
+   "id": "tova.first",
+   "speaker": "ferry-tova",
+   "text": "A Guardian, on the old road? Nobody from town walks here. I left a slate at the post by the bridge. Nobody in town reads it right. They read our words as if they were their words.",
+   "options": [
+    {
+     "text": "Did you know Guardian Elsbet?",
+     "next": "tova.elsbet"
+    },
+    {
+     "text": "Why is this road not on the guild's maps?",
+     "next": "tova.road"
+    },
+    {
+     "text": "What does the town get wrong about the ferry folk?",
+     "next": "tova.view"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    }
+   ],
+   "effects": [
+    {
+     "setFlag": "ferry.met",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "tova.thanks",
+   "speaker": "ferry-tova",
+   "text": "You read my slate! Tavi: you and we, together. The council sent nobody's carts onto the ford this time. You did not make our words into town words. You kept what they meant.",
+   "options": [
+    {
+     "text": "Did you know Guardian Elsbet?",
+     "next": "tova.elsbet"
+    },
+    {
+     "text": "Why is this road not on the guild's maps?",
+     "next": "tova.road"
+    },
+    {
+     "text": "What does the town get wrong about the ferry folk?",
+     "next": "tova.view"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    }
+   ],
+   "effects": [
+    {
+     "setFlag": "ferry.met",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "tova.again",
+   "speaker": "ferry-tova",
+   "text": "The water is slow today. Ask what you like, Guardian.",
+   "options": [
+    {
+     "text": "Did you know Guardian Elsbet?",
+     "next": "tova.elsbet"
+    },
+    {
+     "text": "Why is this road not on the guild's maps?",
+     "next": "tova.road"
+    },
+    {
+     "text": "What does the town get wrong about the ferry folk?",
+     "next": "tova.view"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "tova.elsbet",
+   "speaker": "ferry-tova",
+   "text": "My mother knew her. Elsbet came here when the guild would not. She wrote down our flood dates, and she wrote my mother's name next to them. The guild books say 'river folk said'. Her cards said who. That is a different kind of respect.",
+   "options": [
+    {
+     "text": "Did you know Guardian Elsbet?",
+     "next": "tova.elsbet"
+    },
+    {
+     "text": "Why is this road not on the guild's maps?",
+     "next": "tova.road"
+    },
+    {
+     "text": "What does the town get wrong about the ferry folk?",
+     "next": "tova.view"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "tova.road",
+   "speaker": "ferry-tova",
+   "text": "The road floods each spring, so the guild stopped drawing it. Then people stopped walking it. Then they forgot we were here. A map does not only show the world. It decides what people look for.",
+   "options": [
+    {
+     "text": "Did you know Guardian Elsbet?",
+     "next": "tova.elsbet"
+    },
+    {
+     "text": "Why is this road not on the guild's maps?",
+     "next": "tova.road"
+    },
+    {
+     "text": "What does the town get wrong about the ferry folk?",
+     "next": "tova.view"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "tova.view",
+   "speaker": "ferry-tova",
+   "text": "They say we are always late, because we do not sail by the town bell. We sail by the water. We have one word for slow water and another for sudden water. In town that is 'just water'. Our words carry knowledge that the town does not have, and the town has knowledge that we do not have. Both are true.",
+   "options": [
+    {
+     "text": "Did you know Guardian Elsbet?",
+     "next": "tova.elsbet"
+    },
+    {
+     "text": "Why is this road not on the guild's maps?",
+     "next": "tova.road"
+    },
+    {
+     "text": "What does the town get wrong about the ferry folk?",
+     "next": "tova.view"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    }
+   ]
   }
  ],
  "missions": [

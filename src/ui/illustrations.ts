@@ -463,6 +463,12 @@ DRAW['study-stairs'] = [32, 24, (g) => {
   R(g, '#4a4d55', 0, 10, 32, 14); R(g, '#8b8f99', 2, 10, 28, 3); R(g, '#6f737d', 4, 14, 24, 3); R(g, '#5b5f69', 6, 18, 20, 3);
   R(g, '#ffe0a0', 10, 10, 12, 1);
 }];
+// The old ferry road post: a leaning signpost with a boat and an arrow, half in the grass.
+DRAW['road-post'] = [16, 24, (g) => {
+  R(g, '#5b3b22', 7, 6, 2, 18); R(g, '#7a5230', 1, 4, 14, 6); R(g, '#a87445', 1, 4, 14, 1);
+  R(g, '#4aa3ff', 3, 6, 6, 2); R(g, '#efe1bd', 4, 5, 1, 1); R(g, '#efe1bd', 11, 6, 3, 1); R(g, '#efe1bd', 13, 5, 1, 3);
+  R(g, '#4a7a3a', 4, 20, 8, 4); R(g, '#6aa84f', 5, 21, 1, 2); R(g, '#6aa84f', 10, 20, 1, 3);
+}];
 const paper = (g: Ctx, x: number, y: number, w: number, h: number) => { R(g, '#efe1bd', x, y, w, h); R(g, '#c9b48a', x, y + h - 1, w, 1); };
 const smallTable = (g: Ctx, w = 16) => { R(g, '#5b3b22', 2, 17, 1, 7); R(g, '#5b3b22', w - 3, 17, 1, 7); R(g, '#8a5a30', 0, 14, w, 3); R(g, '#a87445', 0, 14, w, 1); };
 DRAW['clue.desk'] = [32, 24, (g) => {

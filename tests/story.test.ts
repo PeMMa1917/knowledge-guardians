@@ -88,3 +88,18 @@ describe('the story so far (Journal)', () => {
     expect(pack.chronicle!.length).toBeGreaterThanOrEqual(10);
   });
 });
+
+describe('a keepsake opens a new pathway: the old ferry road', () => {
+  it('the road appears only after Kip\'s map is held up to Elsbet\'s map, and leads to Tova', () => {
+    const road = MAPS['aethelgard.emberford'].interactables.find((i) => i.id === 'ferry-road')!;
+    const d = new Driver();
+    expect(check(road.visibleIf, d.s)).toBe(false);
+    d.run({ type: 'SetFlag', flag: 'keepsake.folded-map', value: true });
+    d.run({ type: 'UseKeepsake', clue: 'oldmap', keepsake: 'folded-map' });
+    expect(check(road.visibleIf, d.s)).toBe(true);
+    const ferry = MAPS[road.to!.map];
+    expect(ferry.npcs.map((n) => n.id)).toContain('ferry-tova');
+    d.talk('ferry-tova', 'What does the town get wrong', 'Goodbye');
+    expect(d.s.flags['ferry.met']).toBe(true);
+  });
+});

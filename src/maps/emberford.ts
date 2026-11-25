@@ -131,6 +131,8 @@ export const EMBERFORD: MapDef = {
     { id: 'cellar-door', kind: 'door', x: 12, y: 6, w: 1, h: 1, label: 'the cellar door', art: 'cellar-door', flag: 'study.entered',
       artOpen: { key: 'cellar-door.open', if: { num: 'lamps.lit', gte: 6 } }, openIf: { num: 'lamps.lit', gte: 6 }, to: { map: 'aethelgard.study', x: 9, y: 11 },
       text: 'An old oak door in the ground, beside the guild hall. It has no lock and no handle. Under the moss, words are cut into the wood: WHEN SIX LAMPS BURN AGAIN.' },
+    // A pathway that a keepsake opens: Kip's map beside Elsbet's old map shows the forgotten ferry road.
+    { id: 'ferry-road', kind: 'door', x: 39, y: 18, w: 1, h: 1, label: 'the old ferry road', art: 'road-post', visibleIf: { flag: 'clue.oldmap.folded-map', eq: true }, to: { map: 'aethelgard.ferry', x: 1, y: 5 } },
     { id: 'waystone', kind: 'waystone', place: 'Emberford market', x: 15, y: 14, w: 1, h: 1, label: 'the Waystone (save and rest)', art: 'waystone' },
     { id: 'old-sign', kind: 'sign', x: 22, y: 23, w: 1, h: 1, label: "Corvan's old sign board", art: 'old-sign', visibleIf: { flagSet: 'sd.corvan.outcome' },
       text: "Corvan's old sign board leans against the portal stone. Most of the words are scratched out. Kip says there is something on the back." },

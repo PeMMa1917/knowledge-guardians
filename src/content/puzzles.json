@@ -1641,7 +1641,7 @@
    "id": "ferry-message",
    "type": "translate",
    "title": "The Ferry Message",
-   "intro": "A message slate came down the river from Ama, the upriver ferry keeper. The ferry folk write in their river cant, a trade language with words that English does not have. Sefa grew up on the ferries and explains each marked word. Choose how to say each one in English, so the town crier can read it to the council. The crier's slate holds only so many words.",
+   "intro": "A message slate came down the river from Tova, the upriver ferry keeper. The ferry folk write in their river cant, a trade language with words that English does not have. Sefa grew up on the ferries and explains each marked word. Choose how to say each one in English, so the town crier can read it to the council. The crier's slate holds only so many words.",
    "skills": [
     "SK-ICU-10",
     "SK-ICU-18",
@@ -1674,7 +1674,7 @@
      "journal": "j.ferry"
     }
    ],
-   "speaker": "Ama, the upriver ferry keeper,",
+   "speaker": "Tova, the upriver ferry keeper,",
    "source": "Loma at the bend. Tavi bring long ropes to the landing. Ford is kethe. Come belun.",
    "frame": "From the upriver ferry: {loma} at the bend. {tavi} bring long ropes to the landing. The ford is {kethe}. Come {belun}.",
    "budget": 30,
@@ -1823,7 +1823,7 @@
      "why": "Yes. Translation is interpretation: the translator chooses what to keep, and more than one translation can work. Many languages have an inclusive and an exclusive 'we'. English does not. That is a difference, not a weakness."
     },
     {
-     "text": "Translation always loses something, so we cannot know what Ama meant.",
+     "text": "Translation always loses something, so we cannot know what Tova meant.",
      "honest": false,
      "why": "Something can be lost, but Sefa's notes and the back-check helped you keep what mattered. Uncertainty can be made smaller, and you can say openly where it remains."
     }
