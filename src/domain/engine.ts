@@ -11,6 +11,7 @@ import { CAMPAIGN_SCHEMA, type Pronouns } from './types';
 import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
 import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
+import { dailyPrompts, diveDepth, diveItems, judgeDive } from './dive';
 import { TIME_MAX, TIME_MIN, answerRound, runSurvey, translateLine, judgeFrame, readForecasts, checkOrder, judgeSight, panes, readTimes, runSorter, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
 import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
@@ -45,6 +46,7 @@ export type Command =
   | { type: 'PuzzleTranslate'; puzzle: string; picks: number[] }
   | { type: 'PuzzleFrame'; puzzle: string; brief: string; x: number; y: number }
   | { type: 'PuzzleForecast'; puzzle: string; chance: number }
+  | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
   | { type: 'PhotoCaptioned'; right: number; total: number }
@@ -255,6 +257,24 @@ export class Engine {
         case 'SetFlag':
           s = apply([{ setFlag: cmd.flag, value: cmd.value }], s, out);
           break;
+        case 'DiveAnswer': {
+          // The Deep Dive (spec 59): only valid answers are kept; a wrong facet costs nothing.
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(cmd.day)) throw new Error('Bad day');
+          const prompts = this.pack.divePrompts ?? [], items = this.pack.diveItems ?? [];
+          const pr = dailyPrompts(prompts, cmd.day).find((x) => x.id === cmd.prompt);
+          if (!pr) throw new Error("That is not one of this day's prompts");
+          const key = `dive.${cmd.day}.${pr.id}`;
+          if (typeof s.flags[key] === 'string') throw new Error('You already answered this prompt today');
+          const it = diveItems(items, s).find((x) => x.id === cmd.item);
+          if (!it) throw new Error('You have not found that yet');
+          const r = judgeDive(pr, it, cmd.facet);
+          if (r.ok) {
+            s = apply([{ setFlag: key, value: `${it.id}:${cmd.facet}` }], s, out);
+            const d = diveDepth(prompts, items, s.flags, cmd.day).metres;
+            if (d > Number(s.flags['dive.best'] ?? 0)) s = apply([{ setFlag: 'dive.best', value: d }], s, out);
+          }
+          break;
+        }
         case 'EnterNode': {
           const n = this.node(cmd.node);
           // Remember seen lines, so the world can mark people with something new to say.

@@ -1,0 +1,810 @@
+{
+ "divePrompts": [
+  {
+   "id": "dp.copy",
+   "text": "Something that shows a copy or a retelling can change what a thing means.",
+   "tag": "copy-changes",
+   "concept": "interpretation",
+   "aok": "HIS"
+  },
+  {
+   "id": "dp.method",
+   "text": "A method that cannot answer every question.",
+   "tag": "method-limits",
+   "concept": "explanation",
+   "aok": "NAT"
+  },
+  {
+   "id": "dp.credit",
+   "text": "Someone whose part in a discovery is easy to overlook.",
+   "tag": "credit",
+   "concept": "responsibility",
+   "aok": "HIS"
+  },
+  {
+   "id": "dp.date",
+   "text": "Something whose date or age is not certain.",
+   "tag": "uncertain-date",
+   "concept": "certainty",
+   "aok": "HIS"
+  },
+  {
+   "id": "dp.label",
+   "text": "A case where a name or a label shapes what people believe.",
+   "tag": "label-shapes",
+   "concept": "power",
+   "aok": "LAN"
+  },
+  {
+   "id": "dp.first",
+   "text": "A 'first' that depends on what you count.",
+   "tag": "first-depends",
+   "concept": "perspective",
+   "aok": "HIS"
+  },
+  {
+   "id": "dp.senses",
+   "text": "A time when the senses needed a check.",
+   "tag": "senses-checked",
+   "concept": "evidence",
+   "aok": "NAT"
+  },
+  {
+   "id": "dp.measure",
+   "text": "A measurement or forecast that carries uncertainty.",
+   "tag": "measure-uncertain",
+   "concept": "certainty",
+   "aok": "MAT"
+  },
+  {
+   "id": "dp.sample",
+   "text": "A result shaped by who or what was chosen to look at.",
+   "tag": "sample-shapes",
+   "concept": "objectivity",
+   "aok": "HUM"
+  },
+  {
+   "id": "dp.leaves",
+   "text": "A map, model or picture that leaves something out on purpose.",
+   "tag": "model-leaves-out",
+   "concept": "values",
+   "aok": "ART"
+  },
+  {
+   "id": "dp.pattern",
+   "text": "A case where a pattern was not enough, and a proof or a test was needed.",
+   "tag": "pattern-not-proof",
+   "concept": "justification",
+   "aok": "MAT"
+  },
+  {
+   "id": "dp.purpose",
+   "text": "A source made for a purpose that shapes what it says.",
+   "tag": "purpose-shapes",
+   "concept": "objectivity",
+   "aok": "HUM"
+  },
+  {
+   "id": "dp.honest",
+   "text": "An honest report that was still mistaken.",
+   "tag": "honest-mistake",
+   "concept": "truth",
+   "aok": "HUM"
+  },
+  {
+   "id": "dp.many",
+   "text": "Knowledge made by many people, not by one.",
+   "tag": "many-hands",
+   "concept": "culture",
+   "aok": "TEC"
+  },
+  {
+   "id": "dp.words",
+   "text": "Something that changes when it moves between languages or words.",
+   "tag": "words-shift",
+   "concept": "culture",
+   "aok": "LAN"
+  },
+  {
+   "id": "dp.record",
+   "text": "A record that tells you one thing, but not another.",
+   "tag": "record-limits",
+   "concept": "evidence",
+   "aok": "HIS"
+  }
+ ],
+ "diveItems": [
+  {
+   "id": "di.loud-patent",
+   "name": "Loud's patent, 1888",
+   "kind": "card",
+   "if": {
+    "card": "card.loud-patent"
+   },
+   "facets": [
+    {
+     "tag": "first-depends",
+     "text": "Loud's 1888 patent came decades before the Biro pen, so who 'invented the ballpoint' depends on what you count.",
+     "rarity": 1
+    },
+    {
+     "tag": "record-limits",
+     "text": "A patent records a design and a claim. It does not show whether the pen worked or sold.",
+     "rarity": 2
+    },
+    {
+     "tag": "purpose-shapes",
+     "text": "A patent is written to claim a design, so it says what the inventor wanted to protect.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.dpma-history",
+   "name": "The patent office history",
+   "kind": "card",
+   "if": {
+    "card": "card.dpma-history"
+   },
+   "facets": [
+    {
+     "tag": "credit",
+     "text": "Bíró's practical pen was made with his chemist brother György and others.",
+     "rarity": 1
+    },
+    {
+     "tag": "first-depends",
+     "text": "It separates Loud's patent from Bíró's later practical pen and ink.",
+     "rarity": 2
+    }
+   ]
+  },
+  {
+   "id": "di.biro-object",
+   "name": "The Biro pen, 1945–1948",
+   "kind": "card",
+   "if": {
+    "card": "card.biro-object"
+   },
+   "facets": [
+    {
+     "tag": "uncertain-date",
+     "text": "The museum dates the pen 1945–1948: a range, not one year.",
+     "rarity": 2
+    },
+    {
+     "tag": "credit",
+     "text": "Its record names László Bíró and his brother, not one inventor alone.",
+     "rarity": 2
+    },
+    {
+     "tag": "record-limits",
+     "text": "One surviving pen does not show how many were made or how well they sold.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.loud-model",
+   "name": "The workshop model",
+   "kind": "card",
+   "if": {
+    "card": "card.loud-model"
+   },
+   "facets": [
+    {
+     "tag": "copy-changes",
+     "text": "A modern model built from the drawing shows one way it could work. It is not Loud's pen.",
+     "rarity": 2
+    },
+    {
+     "tag": "model-leaves-out",
+     "text": "Its materials are modern, so it leaves out what an 1888 pen was made of.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.marking-test",
+   "name": "The marking test",
+   "kind": "card",
+   "if": {
+    "card": "card.marking-test"
+   },
+   "facets": [
+    {
+     "tag": "method-limits",
+     "text": "A controlled test of modern models cannot tell us how the historical pens behaved.",
+     "rarity": 2
+    },
+    {
+     "tag": "sample-shapes",
+     "text": "The 'best' pen depended on which surfaces were tested.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.corvan-claim",
+   "name": "Corvan's sign",
+   "kind": "card",
+   "if": {
+    "card": "card.corvan-claim"
+   },
+   "facets": [
+    {
+     "tag": "label-shapes",
+     "text": "'True wootz of ancient Damascus' sold the blade before anyone checked it.",
+     "rarity": 1
+    },
+    {
+     "tag": "purpose-shapes",
+     "text": "A seller's sign is written to sell.",
+     "rarity": 1
+    }
+   ]
+  },
+  {
+   "id": "di.forge-pattern",
+   "name": "Your pattern-welded billet",
+   "kind": "card",
+   "if": {
+    "card": "card.forge-pattern"
+   },
+   "facets": [
+    {
+     "tag": "pattern-not-proof",
+     "text": "One test billet is one case, not a rule.",
+     "rarity": 2
+    },
+    {
+     "tag": "model-leaves-out",
+     "text": "Hesper's forge in the game is a simple model, not a working recipe.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.forge-crucible",
+   "name": "Your crucible billet",
+   "kind": "card",
+   "if": {
+    "card": "card.forge-crucible"
+   },
+   "facets": [
+    {
+     "tag": "pattern-not-proof",
+     "text": "It did not match the blade, but one billet cannot show every crucible steel.",
+     "rarity": 3
+    },
+    {
+     "tag": "method-limits",
+     "text": "A simple forge model cannot show the skill real crucible steel needs.",
+     "rarity": 2
+    }
+   ]
+  },
+  {
+   "id": "di.guild-ledger",
+   "name": "The guild ledger",
+   "kind": "card",
+   "if": {
+    "card": "card.guild-ledger"
+   },
+   "facets": [
+    {
+     "tag": "record-limits",
+     "text": "It records a sale, but says nothing about the steel.",
+     "rarity": 1
+    },
+    {
+     "tag": "purpose-shapes",
+     "text": "A ledger is kept to track money and goods, so that is what it records.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.microstructure",
+   "name": "The assay cross-section",
+   "kind": "card",
+   "if": {
+    "card": "card.microstructure"
+   },
+   "facets": [
+    {
+     "tag": "senses-checked",
+     "text": "The pattern looked like wootz to the eye. The etched section showed welded layers.",
+     "rarity": 2
+    },
+    {
+     "tag": "method-limits",
+     "text": "A schematic section still needs a trained assayer to confirm it.",
+     "rarity": 2
+    }
+   ]
+  },
+  {
+   "id": "di.met-ingots",
+   "name": "The Met's wootz ingots",
+   "kind": "card",
+   "if": {
+    "card": "card.met-ingots"
+   },
+   "facets": [
+    {
+     "tag": "uncertain-date",
+     "text": "'Probably eighteenth century': the museum says how sure it is.",
+     "rarity": 1
+    },
+    {
+     "tag": "record-limits",
+     "text": "These are ingots, the raw material, not finished blades.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.damascus-terms",
+   "name": "Two kinds of 'Damascus'",
+   "kind": "card",
+   "if": {
+    "card": "card.damascus-terms"
+   },
+   "facets": [
+    {
+     "tag": "label-shapes",
+     "text": "'Damascus' alone does not name one recipe.",
+     "rarity": 2
+    },
+    {
+     "tag": "words-shift",
+     "text": "One word covers two different ways of making steel.",
+     "rarity": 2
+    }
+   ]
+  },
+  {
+   "id": "di.met-techniques",
+   "name": "The Met's techniques essay",
+   "kind": "card",
+   "if": {
+    "card": "card.met-techniques"
+   },
+   "facets": [
+    {
+     "tag": "label-shapes",
+     "text": "Pattern welding and crucible ('watered') steel are different crafts, even when people use one name.",
+     "rarity": 3
+    },
+    {
+     "tag": "method-limits",
+     "text": "An essay about techniques cannot identify any particular blade.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.person.eratosthenes",
+   "name": "Eratosthenes",
+   "kind": "card",
+   "if": {
+    "card": "card.person.eratosthenes"
+   },
+   "facets": [
+    {
+     "tag": "measure-uncertain",
+     "text": "Nobody knows the exact length of the stadion he used, so his accuracy is uncertain.",
+     "rarity": 1
+    },
+    {
+     "tag": "copy-changes",
+     "text": "His method reached us only through later writers.",
+     "rarity": 3
+    },
+    {
+     "tag": "uncertain-date",
+     "text": "'About 240 BCE': even the date of his measurement is an estimate.",
+     "rarity": 2
+    }
+   ]
+  },
+  {
+   "id": "di.person.haytham",
+   "name": "Ibn al-Haytham",
+   "kind": "card",
+   "if": {
+    "card": "card.person.haytham"
+   },
+   "facets": [
+    {
+     "tag": "first-depends",
+     "text": "'The first scientist' is a modern title. People in many places tested ideas before him.",
+     "rarity": 1
+    },
+    {
+     "tag": "senses-checked",
+     "text": "He used experiments to test claims about light and seeing.",
+     "rarity": 2
+    },
+    {
+     "tag": "pattern-not-proof",
+     "text": "He did not trust what seemed obvious about seeing. He tested claims with experiments.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.person.bisheng",
+   "name": "Bi Sheng",
+   "kind": "card",
+   "if": {
+    "card": "card.person.bisheng"
+   },
+   "facets": [
+    {
+     "tag": "record-limits",
+     "text": "One written description survives. None of his clay type does.",
+     "rarity": 2
+    },
+    {
+     "tag": "first-depends",
+     "text": "Clay type in China, metal type in Korea, Gutenberg later: 'first' depends on what you count.",
+     "rarity": 2
+    },
+    {
+     "tag": "many-hands",
+     "text": "Printing from carved blocks was already in use. His work built on others'.",
+     "rarity": 3
+    },
+    {
+     "tag": "uncertain-date",
+     "text": "We know only that he was active in the 1040s, from one later book.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.person.sikdar",
+   "name": "Radhanath Sikdar",
+   "kind": "card",
+   "if": {
+    "card": "card.person.sikdar"
+   },
+   "facets": [
+    {
+     "tag": "credit",
+     "text": "Accounts credit his calculations, but exactly who did which part is debated.",
+     "rarity": 2
+    },
+    {
+     "tag": "many-hands",
+     "text": "The Great Trigonometrical Survey was team work.",
+     "rarity": 1
+    },
+    {
+     "tag": "label-shapes",
+     "text": "People who lived near the mountain already had names for it.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.person.santos",
+   "name": "Alberto Santos-Dumont",
+   "kind": "card",
+   "if": {
+    "card": "card.person.santos"
+   },
+   "facets": [
+    {
+     "tag": "first-depends",
+     "text": "Many people in Brazil call him the inventor of the airplane. Others name the Wright brothers.",
+     "rarity": 1
+    },
+    {
+     "tag": "record-limits",
+     "text": "His 1906 flight had a crowd and officials. The Wrights' 1903 flights had few witnesses.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.person.sheppard",
+   "name": "Kate Sheppard",
+   "kind": "card",
+   "if": {
+    "card": "card.person.sheppard"
+   },
+   "facets": [
+    {
+     "tag": "first-depends",
+     "text": "Some places let some women vote earlier, in local or limited elections.",
+     "rarity": 2
+    },
+    {
+     "tag": "many-hands",
+     "text": "Large petitions: many people made the change.",
+     "rarity": 2
+    },
+    {
+     "tag": "credit",
+     "text": "Māori women also voted in 1893. A story about one leader can hide many others.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.person.wollstonecraft",
+   "name": "Mary Wollstonecraft",
+   "kind": "card",
+   "if": {
+    "card": "card.person.wollstonecraft"
+   },
+   "facets": [
+    {
+     "tag": "first-depends",
+     "text": "Earlier writers also defended women, for example Christine de Pizan in 1405.",
+     "rarity": 2
+    },
+    {
+     "tag": "credit",
+     "text": "Christine de Pizan wrote in 1405 and is named less often.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.founders-plaque",
+   "name": "The Founders' Plaque",
+   "kind": "deed",
+   "if": {
+    "flag": "puzzle.founders-plaque.done",
+    "eq": true
+   },
+   "facets": [
+    {
+     "tag": "copy-changes",
+     "text": "Every restoration kept some layers and lost others.",
+     "rarity": 1
+    },
+    {
+     "tag": "label-shapes",
+     "text": "The gate label had to say honestly what was kept and lost.",
+     "rarity": 2
+    }
+   ]
+  },
+  {
+   "id": "di.tipped-cart",
+   "name": "The Tipped Cart",
+   "kind": "deed",
+   "if": {
+    "flag": "puzzle.tipped-cart.done",
+    "eq": true
+   },
+   "facets": [
+    {
+     "tag": "honest-mistake",
+     "text": "Witnesses honestly reported things they had only heard.",
+     "rarity": 2
+    },
+    {
+     "tag": "senses-checked",
+     "text": "Where each witness stood decided what they could see.",
+     "rarity": 2
+    }
+   ]
+  },
+  {
+   "id": "di.round-window",
+   "name": "The Unfinished Round Window",
+   "kind": "deed",
+   "if": {
+    "flag": "puzzle.round-window.done",
+    "eq": true
+   },
+   "facets": [
+    {
+     "tag": "pattern-not-proof",
+     "text": "1, 2, 4, 8, 16 panes, and then 31.",
+     "rarity": 1
+    }
+   ]
+  },
+  {
+   "id": "di.map-table",
+   "name": "The Mapmaker's Table",
+   "kind": "deed",
+   "if": {
+    "flag": "puzzle.map-table.done",
+    "eq": true
+   },
+   "facets": [
+    {
+     "tag": "model-leaves-out",
+     "text": "Every map left out some layers.",
+     "rarity": 1
+    },
+    {
+     "tag": "purpose-shapes",
+     "text": "Each map was made for one person's need.",
+     "rarity": 2
+    }
+   ]
+  },
+  {
+   "id": "di.brass-sorter",
+   "name": "The Brass Sorter",
+   "kind": "deed",
+   "if": {
+    "flag": "puzzle.brass-sorter.done",
+    "eq": true
+   },
+   "facets": [
+    {
+     "tag": "sample-shapes",
+     "text": "The sorter learned only from the examples it was given.",
+     "rarity": 1
+    },
+    {
+     "tag": "method-limits",
+     "text": "A machine that copies examples cannot sort a fruit it has never seen.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.echo-bridge",
+   "name": "The Echo Bridge",
+   "kind": "deed",
+   "if": {
+    "flag": "puzzle.echo-bridge.done",
+    "eq": true
+   },
+   "facets": [
+    {
+     "tag": "measure-uncertain",
+     "text": "My reaction time pushed every echo time the same way.",
+     "rarity": 1
+    },
+    {
+     "tag": "senses-checked",
+     "text": "My ears and hands were part of the measuring instrument.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.toll-survey",
+   "name": "The Bridge Toll Survey",
+   "kind": "deed",
+   "if": {
+    "flag": "puzzle.toll-survey.done",
+    "eq": true
+   },
+   "facets": [
+    {
+     "tag": "sample-shapes",
+     "text": "The guild meeting and the market gave very different answers.",
+     "rarity": 1
+    },
+    {
+     "tag": "words-shift",
+     "text": "A leading question changed the answer.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.ferry-message",
+   "name": "The Ferry Message",
+   "kind": "deed",
+   "if": {
+    "flag": "puzzle.ferry-message.done",
+    "eq": true
+   },
+   "facets": [
+    {
+     "tag": "words-shift",
+     "text": "Tavi, loma, kethe, belun: words English needs a phrase for.",
+     "rarity": 1
+    },
+    {
+     "tag": "copy-changes",
+     "text": "The back-translation came back changed.",
+     "rarity": 2
+    }
+   ]
+  },
+  {
+   "id": "di.painters-frame",
+   "name": "The Painter's Frame",
+   "kind": "deed",
+   "if": {
+    "flag": "puzzle.painters-frame.done",
+    "eq": true
+   },
+   "facets": [
+    {
+     "tag": "purpose-shapes",
+     "text": "Each poster was framed for someone's purpose.",
+     "rarity": 1
+    },
+    {
+     "tag": "model-leaves-out",
+     "text": "Each poster left out most of the painting.",
+     "rarity": 2
+    },
+    {
+     "tag": "label-shapes",
+     "text": "The same true scene told three stories.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.bell-stair",
+   "name": "The Endless Bell Stair",
+   "kind": "deed",
+   "if": {
+    "flag": "puzzle.bell-stair.done",
+    "eq": true
+   },
+   "facets": [
+    {
+     "tag": "senses-checked",
+     "text": "My ears heard a climb that never ends. The tuning glass showed a loop.",
+     "rarity": 1
+    },
+    {
+     "tag": "honest-mistake",
+     "text": "Maren honestly believed her bells climb forever.",
+     "rarity": 2
+    }
+   ]
+  },
+  {
+   "id": "di.forecast-board",
+   "name": "The Forecast Board",
+   "kind": "deed",
+   "if": {
+    "flag": "puzzle.forecast-board.done",
+    "eq": true
+   },
+   "facets": [
+    {
+     "tag": "measure-uncertain",
+     "text": "A 70% forecast that stays dry is not wrong.",
+     "rarity": 2
+    },
+    {
+     "tag": "method-limits",
+     "text": "Twelve days are too few to judge a forecaster.",
+     "rarity": 3
+    }
+   ]
+  },
+  {
+   "id": "di.rumour",
+   "name": "The Shattering Rumour",
+   "kind": "deed",
+   "if": {
+    "flag": "rumour.done",
+    "eq": true
+   },
+   "facets": [
+    {
+     "tag": "copy-changes",
+     "text": "Each retelling of the rumour filled a gap with a guess.",
+     "rarity": 1
+    },
+    {
+     "tag": "honest-mistake",
+     "text": "The tea seller passed it on in good faith.",
+     "rarity": 2
+    }
+   ]
+  }
+ ]
+}

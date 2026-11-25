@@ -738,3 +738,23 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .score-bar span { display: block; height: 100%; background: #7cc4ff; }
 .score-row.you .score-bar span { background: #f6c453; }
 .calib svg { width: 100%; max-width: 360px; display: block; }
+
+/* The Deep Dive (spec 59) */
+.dive-body { display: grid; grid-template-columns: minmax(160px, 220px) 1fr; gap: 14px; align-items: start; }
+@media (max-width: 700px) { .dive-body { grid-template-columns: 1fr; } .dive-sea svg { max-height: 300px; } }
+.dive-sea svg { width: 100%; height: auto; display: block; border-radius: 10px; border: 3px solid #6b4f19; }
+.dv-diver { transition: transform 0.9s ease-in-out; }
+@media (prefers-reduced-motion: reduce) { .dv-diver { transition: none; } }
+.dv-bub { animation: dv-bub 1.6s linear infinite; }
+.dv-bub.b2 { animation-delay: 0.8s; }
+@keyframes dv-bub { from { transform: translateY(0); opacity: 1; } to { transform: translateY(-26px); opacity: 0; } }
+.dive-depth { margin: 6px 0 0; }
+.dive-prompts { display: grid; gap: 6px; }
+.dive-prompt { display: grid; text-align: left; gap: 2px; width: 100%; }
+.dive-prompt.done { opacity: 0.9; border-color: #4fa070; }
+.dive-prompt.open { outline: 3px solid #f6c453; }
+.dp-tags { font-size: 0.75rem; opacity: 0.75; }
+.dp-ans { font-size: 0.85rem; color: #9fe0a8; }
+.dive-pick { padding: 8px 4px 4px 12px; border-left: 3px solid #2b7fb3; margin: 4px 0 8px; }
+.dive-items { gap: 6px; }
+.dive-item.deed { border-color: #c9a24a; }

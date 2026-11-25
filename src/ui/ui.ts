@@ -17,6 +17,7 @@ import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, r
 import { audioNow, chime, clapEcho, playNotes, playShepard } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
+import { DIVE_ZONES, dailyPrompts, dayKey, diveDepth, diveItems, judgeDive, zoneAt } from '../domain/dive';
 import { DEFAULT_ROOM, FLOORS, LAMPS, PETS, PLANTS, RUGS, SLOTS, VIEWS, WALLS, decodeRoom, encodeRoom, placeKeepsake, starsFor, type Room } from '../domain/quarters';
 import { ROOM_H, ROOM_W, drawRoom, iconCanvas } from './quarters';
 import { ALBUM_MAX, loadAlbum, saveAlbum } from '../app/albumStore';
@@ -35,7 +36,7 @@ import { labelText, type LabelResult } from '../domain/label';
 import { exampleFor, segmentText } from '../domain/glossary';
 import { studentAlerts } from '../domain/learning';
 import { MOVE_HELP, type ShowdownMove } from '../domain/showdown';
-import { ATL_NAMES, CONCEPT_NAMES, PROFILE_NAMES, SUBJECTS } from '../domain/curriculum';
+import { AOK_NAMES, ATL_NAMES, CONCEPT_NAMES, PROFILE_NAMES, SUBJECTS } from '../domain/curriculum';
 import type { ClaimKind, DialogueNode, EvidenceCard, HistoricalLabel, ShowdownState, TitleLockRecord } from '../domain/types';
 import { PLAYER_LOOKS } from '../scenes/art';
 import { artURL, BIG_ART } from './illustrations';
@@ -179,6 +180,8 @@ function sorterView(p: Extract<PuzzleRecord, { type: 'sorter' }>, run: SorterRun
 }
 
 /** Oskar's map of Emberford: a parchment sheet with only the chosen layers drawn (original art). */
+const DIVE_DEPTH_TEXT: Record<number, string> = { 1: 'down 10 m', 2: 'down 25 m', 3: 'down 45 m, rare' };
+
 /** Weather clue pictures for the forecast board (original, drawn in code). */
 function clueSvg(kind: 'baro' | 'clouds' | 'birds', v: string): string {
   if (kind === 'baro') {
@@ -2375,6 +2378,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openAlbum() }, 'Photo album'),
         h('button', { onclick: () => this.openMusicBox() }, 'Music box'),
         h('button', { onclick: () => this.openQuarters() }, 'My quarters'),
+        h('button', { onclick: () => this.openDive() }, 'The Deep Dive (daily)'),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
         h('button', { onclick: () => this.openControls() }, 'Controls'),
@@ -2445,6 +2449,75 @@ export class UI implements UIApi {
    * The Guardian's quarters (spec 12.16 and 32.6): decorate a room from preset parts and
    * put earned keepsakes on the shelves. The ceiling is the Star Chart. Cosmetic only.
    */
+  /** The Deep Dive (spec 59): seven prompts a day, answered with things found in play. */
+  openDive(): void {
+    const c = ctx.controller;
+    const day = dayKey(new Date());
+    const prompts = c.pack.divePrompts ?? [], all = c.pack.diveItems ?? [];
+    const today = dailyPrompts(prompts, day);
+    let open: string | null = null, item: string | null = null, note: { ok: boolean; text: string } | null = null;
+    let shown = diveDepth(prompts, all, c.state.flags, day).metres;
+    const box = this.openModal('dive-panel wide', 'The Deep Dive');
+    const MAXM = 330, y = (m: number) => 14 + (Math.min(m, MAXM) / MAXM) * 380;
+    const creature = (m: number, svg: string, reached: number) => `<g opacity="${reached >= m - 5 ? 1 : 0.18}">${svg}</g>`;
+    const ocean = (m: number) => `<svg viewBox="0 0 160 420" aria-hidden="true">
+      <defs><linearGradient id="dv-sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fc3e8"/><stop offset="0.2" stop-color="#2b7fb3"/><stop offset="0.45" stop-color="#174a7a"/><stop offset="0.75" stop-color="#0b2142"/><stop offset="1" stop-color="#04081a"/></linearGradient></defs>
+      <rect width="160" height="420" fill="url(#dv-sea)"/>
+      <path d="M0 8 q20 -6 40 0 t40 0 t40 0 t40 0 V0 H0 z" fill="#bfe8f7" opacity="0.7"/>
+      ${DIVE_ZONES.map((z) => `<line x1="0" y1="${y(z.from)}" x2="160" y2="${y(z.from)}" stroke="#ffffff" stroke-opacity="0.15" stroke-dasharray="3 4"/><text x="156" y="${y(z.from) + 10}" font-size="7" fill="#e8f6ff" fill-opacity="0.7" text-anchor="end">${z.name} · ${z.from} m</text>`).join('')}
+      ${creature(20, [[30, 40], [42, 46], [36, 52], [50, 40]].map(([fx, fy]) => `<path d="M${fx} ${fy} q5 -4 10 0 q-5 4 -10 0 z M${fx + 10} ${fy} l4 -3 v6 z" fill="#ffd25a"/>`).join(''), m)}
+      ${creature(45, '<g fill="#7ad0a0"><path d="M120 60 q4 -20 0 -40" stroke="#4fa070" stroke-width="3" fill="none"/><path d="M130 62 q-4 -18 2 -34" stroke="#4fa070" stroke-width="3" fill="none"/></g>', m)}
+      ${creature(90, '<g><path d="M50 110 a12 9 0 0 1 24 0 z" fill="#f2a7d8" opacity="0.85"/><path d="M53 110 q2 12 -2 20 M60 110 q1 14 0 22 M67 110 q-1 12 2 20" stroke="#f2a7d8" stroke-width="1.5" fill="none"/></g>', m)}
+      ${creature(130, '<g fill="#9fb3c8"><path d="M98 160 q16 -10 32 0 q-16 10 -32 0 z"/><path d="M130 160 l8 -6 v12 z"/><circle cx="104" cy="158" r="1.5" fill="#04081a"/></g>', m)}
+      ${creature(190, '<g><path d="M28 230 q12 -9 24 0 q-12 9 -24 0 z" fill="#2c3e60"/><path d="M40 222 q6 -10 14 -10" stroke="#5a7090" fill="none"/><circle cx="55" cy="212" r="3" fill="#9fe8ff"/><circle cx="55" cy="212" r="7" fill="#9fe8ff" opacity="0.3"/></g>', m)}
+      ${creature(240, '<g fill="none" stroke="#c39bff" stroke-width="1.5"><circle cx="118" cy="270" r="6"/><path d="M112 276 q-6 10 0 18 M118 276 v20 M124 276 q6 10 0 18"/></g>', m)}
+      ${creature(300, '<g><path d="M40 360 q40 -26 80 0 q-40 12 -80 0 z" fill="#3a2a6a"/><path d="M60 356 q20 -10 40 0" stroke="#ffd25a" stroke-width="1" fill="none"/><circle cx="72" cy="352" r="2" fill="#ffd25a"/><circle cx="88" cy="352" r="2" fill="#ffd25a"/><text x="80" y="384" font-size="7" fill="#e8f6ff" text-anchor="middle">a trench ray</text></g>', m)}
+      <rect x="0" y="404" width="160" height="16" fill="#1b1330"/>
+      <g class="dv-diver" style="transform: translateY(${y(m) - 14}px)"><line x1="80" y1="${-y(m) + 6}" x2="80" y2="0" stroke="#e8f6ff" stroke-opacity="0.5"/><path d="M70 12 q10 -16 20 0 z" fill="#c9a24a" stroke="#6b4f19"/><rect x="70" y="11" width="20" height="4" fill="#8a6a2a"/><circle cx="80" cy="6" r="3" fill="#9fe8ff"/>${ctx.settings.reducedMotion ? '' : '<circle class="dv-bub" cx="86" cy="0" r="1.6" fill="#e8f6ff"/><circle class="dv-bub b2" cx="76" cy="-2" r="1.2" fill="#e8f6ff"/>'}</g>
+    </svg>`;
+    const render = () => {
+      clear(box);
+      const st = diveDepth(prompts, all, c.state.flags, day);
+      const mine = diveItems(all, c.state);
+      const best = Number(c.state.flags['dive.best'] ?? 0);
+      const sea = h('div', { class: 'dive-sea', role: 'img', 'aria-label': `Your diver is ${st.metres} metres down, in the ${zoneAt(st.metres).toLowerCase()}.` });
+      sea.innerHTML = ocean(shown);
+      if (shown !== st.metres) requestAnimationFrame(() => { shown = st.metres; const d = sea.querySelector('.dv-diver') as SVGGElement | null; if (d) d.style.transform = `translateY(${y(st.metres) - 14}px)`; setTimeout(() => { if (box.isConnected) render(); }, ctx.settings.reducedMotion ? 0 : 900); });
+      const list = h('div', { class: 'dive-prompts' }, ...today.map((pr) => {
+        const v = c.state.flags[`dive.${day}.${pr.id}`];
+        const ans = typeof v === 'string' ? (() => { const [id, fi] = v.split(':'); const it = all.find((x) => x.id === id); return it ? { it, f: it.facets[Number(fi)] } : null; })() : null;
+        const head = h('button', { type: 'button', class: `dive-prompt ${ans ? 'done' : ''} ${open === pr.id ? 'open' : ''}`, 'aria-expanded': String(open === pr.id), disabled: !!ans,
+          onclick: () => { open = open === pr.id ? null : pr.id; item = null; note = null; this.sfx('sfx.click'); render(); } },
+          h('span', { class: 'dp-text' }, pr.text), h('span', { class: 'dp-tags' }, `${CONCEPT_NAMES[pr.concept]} · ${AOK_NAMES[pr.aok]}`),
+          ans ? h('span', { class: 'dp-ans' }, `✓ ${ans.it.name}: ${ans.f.text} (${DIVE_DEPTH_TEXT[ans.f.rarity]})`) : '');
+        if (open !== pr.id || ans) return h('div', {}, head);
+        const body = h('div', { class: 'dive-pick' });
+        if (!mine.length) body.append(h('p', { class: 'fine' }, 'You have not found anything to dive with yet. Cards and finished activities appear here.'));
+        else if (!item) body.append(h('p', { class: 'fine' }, 'Answer with something you found. Then choose which side of it fits.'),
+          h('div', { class: 'row wrap dive-items' }, ...mine.map((it) => h('button', { type: 'button', class: `dive-item ${it.kind}`, onclick: () => { item = it.id; note = null; this.sfx('sfx.page'); render(); } }, it.kind === 'card' ? '🂠 ' : '★ ', it.name))));
+        else {
+          const it = mine.find((x) => x.id === item)!;
+          body.append(h('p', {}, h('strong', {}, it.name), ' — which side of it answers the prompt?'),
+            h('div', { class: 'options notice-options' }, ...it.facets.map((f, fi) => h('button', { type: 'button', onclick: () => {
+              const r = judgeDive(pr, it, fi);
+              note = r;
+              if (r.ok) { c.dispatch({ type: 'DiveAnswer', day, prompt: pr.id, item: it.id, facet: fi }); open = null; item = null; playNotes([{ f: 523, at: 0, beats: 0.4 }, { f: 659, at: 0.25, beats: 0.4 }, { f: 784, at: 0.5, beats: 0.4 }, { f: 1046, at: 0.75, beats: 0.8 }].map((n) => ({ ...n, f: n.f / (1 + st.metres / 400) })), 0.22, 'flute', ctx.settings.sfxVolume); }
+              else this.sfx('sfx.page');
+              render();
+            } }, h('span', { class: 'notice-text' }, f.text)))),
+            h('button', { type: 'button', onclick: () => { item = null; note = null; render(); } }, '← Choose something else'));
+        }
+        return h('div', {}, head, body);
+      }));
+      box.append(this.closeBtn(), h('h2', {}, 'The Deep Dive'),
+        h('p', {}, `Seven prompts for ${day}, the same for every diver today. Answer each with something you found in play. Any answer that fits takes you down; a less obvious one takes you deeper. There is no single right answer.`),
+        h('div', { class: 'dive-body' }, h('div', {}, sea, h('p', { class: 'dive-depth' }, h('strong', {}, `${st.metres} m`), ` · ${zoneAt(st.metres)} · ${st.answered} of ${today.length} answered`), h('p', { class: 'fine' }, `Your deepest dive: ${Math.max(best, st.metres)} m.`)), list),
+        note ? h('div', { class: `alcove-feedback ${note.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, note.text) : '',
+        h('p', { class: 'fine' }, 'New prompts come each day. The dive gives no XP: it is for finding examples you would not think of first.'));
+    };
+    render();
+  }
+
   openQuarters(): void {
     const c = ctx.controller;
     let room: Room = decodeRoom(c.state.flags['room']) ?? structuredClone(DEFAULT_ROOM);

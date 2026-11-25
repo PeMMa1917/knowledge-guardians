@@ -17,6 +17,7 @@ export interface UIApi {
   openPuzzle(puzzle: string): void;
   openClueBoard(board: string): void;
   openQuarters(): void;
+  openDive(): void;
   openLoreling(loreling: string, sighting?: string): void;
   openForge(): void;
   openAssay(exhibitId: string): void;

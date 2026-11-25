@@ -421,6 +421,13 @@ DRAW['forecast-board'] = [16, 24, (g) => {
   R(g, '#3b2a1a', 2, 9, 12, 1); R(g, '#b03a2e', 3, 11, 2, 2); R(g, '#4a90d9', 7, 11, 2, 2); R(g, '#b03a2e', 11, 11, 2, 2);
 }];
 
+// The Diving Bell (original art): a brass bell with a round window, on a little stand.
+DRAW['diving-bell'] = [16, 24, (g) => {
+  R(g, '#5b3b22', 2, 21, 12, 3); R(g, '#3b2a1a', 7, 0, 2, 4);
+  R(g, '#8a6a2a', 4, 4, 8, 2); R(g, '#c9a24a', 3, 6, 10, 4); R(g, '#c9a24a', 2, 10, 12, 9); R(g, '#e9cf7a', 4, 7, 2, 10);
+  R(g, '#6b4f19', 1, 18, 14, 3); R(g, '#3b2a1a', 6, 11, 4, 4); R(g, '#9fe8ff', 7, 12, 2, 2); R(g, '#e8f6ff', 7, 12, 1, 1);
+}];
+
 // The door to the Guardian's quarters (original art): a round-topped oak door with a star.
 DRAW['quarters-door'] = [16, 24, (g) => {
   R(g, '#3b2a1a', 1, 3, 14, 21); R(g, '#3b2a1a', 3, 1, 10, 2);

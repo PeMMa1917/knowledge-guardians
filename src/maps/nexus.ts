@@ -97,6 +97,7 @@ export const NEXUS: MapDef = {
       artOpen: { key: 'timeline-door.open', if: { flag: 'puzzle.timeline-door.done', eq: true } } },
     { id: 'round-window', kind: 'puzzle', puzzle: 'round-window', x: 24, y: 2, w: 1, h: 1, label: 'the unfinished round window', art: 'round-window',
       artOpen: { key: 'round-window.done', if: { flag: 'puzzle.round-window.done', eq: true } } },
+    { id: 'diving-bell', kind: 'dive', x: 4, y: 16, w: 1, h: 1, label: 'the Diving Bell (the Deep Dive, daily)', art: 'diving-bell' },
     { id: 'quarters-door', kind: 'quarters', x: 18, y: 2, w: 1, h: 1, label: 'the door to your quarters', art: 'quarters-door' },
     { id: 'sign-portal', kind: 'sign', x: 10, y: 4, w: 1, h: 1, label: 'the portal sign', art: 'signpost',
       text: 'PORTAL TO AETHELGARD. Opens for Guardians on assignment.' },

@@ -8,6 +8,7 @@
 import type { Condition, ContentPack, Effect, Weave } from './types';
 import { ATLS, CONCEPTS, PROFILE } from './types';
 import { SUBJECTS } from './curriculum';
+import { dailyPrompts } from './dive';
 import { chordFigure, panes, runSorter, runSurvey, sightBlock, translateLine, judgeFrame, shepardParts, brier } from './puzzles';
 import { openCombinations } from './lock';
 
@@ -421,6 +422,17 @@ export function validateContent(pack: ContentPack): string[] {
   for (const o of objectives) {
     const depths = new Set(pack.hints.filter((h) => h.objective === o).map((h) => h.depth));
     for (const d of [1, 2, 3, 4] as const) if (!depths.has(d)) p.push(`objective ${o}: missing hint depth ${d}`);
+  }
+  // The Deep Dive (spec 59): every prompt can be answered two or more ways; daily sets are balanced.
+  const dps = pack.divePrompts ?? [], dis = pack.diveItems ?? [];
+  const tags = new Set(dps.map((x) => x.tag));
+  dis.forEach((it) => it.facets.forEach((f) => { if (!tags.has(f.tag)) p.push(`dive item ${it.id}: unknown tag ${f.tag}`); if (![1, 2, 3].includes(f.rarity)) p.push(`dive item ${it.id}: rarity must be 1, 2 or 3`); }));
+  dps.forEach((d) => { if (dis.filter((it) => it.facets.some((f) => f.tag === d.tag)).length < 2) p.push(`dive prompt ${d.id}: needs two or more possible answers`); });
+  dis.forEach((it) => { if ('card' in it.if && !pack.cards.some((c) => c.id === (it.if as { card: string }).card)) p.push(`dive item ${it.id}: unknown card`); });
+  if (dps.length >= 7) for (let k = 0; k < 40; k++) {
+    const day = `2026-12-${String((k % 28) + 1).padStart(2, '0')}`;
+    const set = dailyPrompts(dps, day);
+    if (new Set(set.map((x) => x.concept)).size < 4 || new Set(set.map((x) => x.aok)).size < 3) { p.push(`dive: the set for ${day} is not balanced`); break; }
   }
   return p;
 }

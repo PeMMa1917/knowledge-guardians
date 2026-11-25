@@ -682,6 +682,9 @@ export interface ContentPack {
   lorelings: LorelingRecord[];
   clueBoards?: ClueBoardRecord[];
   keepsakes?: Keepsake[];
+  /** The Deep Dive (spec 59): prompts and the things a player can answer with. */
+  divePrompts?: import('./dive').DivePrompt[];
+  diveItems?: import('./dive').DiveItem[];
   memories?: MemoryLine[];
   /** The Fray Bestiary (spec 36.2): errors in reasoning shown as creatures. Recorded on first meeting. */
   fray: { id: string; name: string; error: string; pattern: string; weakness: string; chapter: number | null }[];

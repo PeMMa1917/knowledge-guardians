@@ -895,6 +895,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'puzzle': ctx.ui.openPuzzle(it.puzzle!); break;
       case 'board': ctx.ui.openClueBoard(it.board!); break;
       case 'quarters': ctx.ui.openQuarters(); break;
+      case 'dive': ctx.ui.openDive(); break;
       case 'forge': ctx.ui.openForge(); break;
       case 'assay': ctx.ui.openAssay(it.exhibit!); break;
       case 'thread': ctx.ui.followThread(it.thread!, it.node!); break;
