@@ -12,6 +12,7 @@ import { DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, townPrice } from '../src/doma
 import { DYE_KEYS, OUTFIT } from '../src/domain/appearance';
 import { approvalOf, approvalRank, isInquiry } from '../src/domain/approval';
 import { ROLES, fitsRole, roleOf } from '../src/domain/roles';
+import { BOSS, SEALS, allSealsOpen, bossPhase } from '../src/domain/undercroft';
 
 const pack = buildPack();
 const done = (d: Driver, id: string) => d.run({ type: 'SetFlag', flag: `puzzle.${id}.done`, value: true });
@@ -36,7 +37,7 @@ describe('the storyline: the Lamp Wall and the old Guardian (Mika 2026-11-26)', 
     done(d, 'toll-survey');
     expect(check(door.openIf as Condition, d.s)).toBe(true);
     expect(MAPS[door.to!.map]).toBeDefined();
-    const stairs = MAPS['aethelgard.study'].interactables.find((i) => i.kind === 'door')!;
+    const stairs = MAPS['aethelgard.study'].interactables.find((i) => i.id === 'study-stairs')!;
     expect(stairs.to!.map).toBe('aethelgard.emberford');
     // Every clue object in the study has a clue record, and every study clue is placed.
     const placed = MAPS['aethelgard.study'].interactables.filter((i) => i.kind === 'clue').map((i) => i.clue);
@@ -288,5 +289,36 @@ describe('knower roles', () => {
     expect(roleOf(d.s.flags)?.name).toBe('Maker');
     expect(d.events.slice(n).some((e) => e.kind === 'xp')).toBe(false);
     expect(() => d.run({ type: 'ChooseRole', role: 'king' })).toThrow();
+  });
+});
+
+describe('the Undercroft (dungeon)', () => {
+  it('three fallacy seals, then a boss in three phases; wrong moves are explained and never end the fight', () => {
+    const d = new Driver();
+    expect(() => d.run({ type: 'BossMove', choice: 0 })).toThrow(/seals/);
+    for (const x of SEALS) {
+      expect(x.options.filter((o) => o.ok)).toHaveLength(1);
+      expect(pack.fray.some((f: { id: string }) => f.id === x.fray)).toBe(true);
+      const bad = x.options.findIndex((o) => !o.ok);
+      d.run({ type: 'DisarmSeal', seal: x.id, choice: bad });
+      expect(d.s.flags[`trap.${x.id}.open`]).toBeUndefined();
+      d.run({ type: 'DisarmSeal', seal: x.id, choice: x.options.findIndex((o) => o.ok) });
+    }
+    expect(allSealsOpen(d.s.flags)).toBe(true);
+    const marks = d.s.marks;
+    BOSS.phases.forEach((p, i) => {
+      expect(p.options.filter((o) => o.ok)).toHaveLength(1);
+      expect(pack.fray.some((f: { id: string }) => f.id === p.fray)).toBe(true);
+      d.run({ type: 'BossMove', choice: p.options.findIndex((o) => !o.ok) });
+      expect(bossPhase(d.s.flags)).toBe(i);
+      d.run({ type: 'BossMove', choice: p.options.findIndex((o) => o.ok) });
+    });
+    expect(d.s.flags['undercroft.done']).toBe(true);
+    expect(d.s.marks).toBe(marks + 10);
+    expect(d.s.flags['boss.hollow-archivist.hollow']).toBe(3);
+    // The hatch in the study needs Elsbet's letter, and the Undercroft leads back to the study.
+    const hatch = MAPS['aethelgard.study'].interactables.find((i) => i.id === 'undercroft-hatch')!;
+    expect(hatch.to!.map).toBe('aethelgard.undercroft');
+    expect(MAPS['aethelgard.undercroft'].interactables.find((i) => i.id === 'undercroft-stairs')!.to!.map).toBe('aethelgard.study');
   });
 });

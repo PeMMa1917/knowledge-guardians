@@ -834,3 +834,11 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .talent.branch { border-style: dashed; }
 .talent.have { border: 2px solid var(--gold); box-shadow: 0 0 10px rgba(230, 187, 92, 0.35); }
 .talent p { margin: 0.15rem 0; }
+/* The Undercroft boss panel */
+.boss-stage { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; align-items: center; }
+.boss-art { width: 6rem; image-rendering: pixelated; justify-self: center; transition: transform 0.4s ease; }
+.boss-phases { display: flex; gap: 0.3rem; margin: 0.2rem 0 0.6rem; }
+.boss-phases span { width: 2.4rem; height: 0.45rem; border-radius: 4px; background: var(--panel-2); border: 1px solid var(--gold-dim); }
+.boss-phases span.on { background: var(--gold); }
+@media (max-width: 640px) { .boss-stage { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .boss-art { transition: none; } }

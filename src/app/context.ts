@@ -26,6 +26,8 @@ export interface UIApi {
   openReading(reading: string): void;
   openRumours(): void;
   openTrader(): void;
+  openSeal(seal: string): void;
+  openBoss(): void;
   openTalents(atWaystone?: boolean): void;
   openLedger(): void;
   openClue(id: string): void;

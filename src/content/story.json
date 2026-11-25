@@ -103,6 +103,14 @@
      },
      "pts": 1,
      "why": "You copied the flood post and kept your guess apart from it."
+    },
+    {
+     "if": {
+      "flag": "undercroft.done",
+      "eq": true
+     },
+     "pts": 2,
+     "why": "You opened Elsbet's records vault for anyone to check."
     }
    ]
   },
@@ -499,6 +507,15 @@
     "eq": true
    },
    "text": "Kip's map and Elsbet's map, side by side, showed a road the guild forgot. At its end, Tova and the ferry folk keep knowledge in their own words: of the river, and of who told what to whom."
+  },
+  {
+   "id": "undercroft",
+   "title": "The Undercroft",
+   "if": {
+    "flag": "undercroft.done",
+    "eq": true
+   },
+   "text": "Under the study, Elsbet's records vault had gone quiet for ten years, and a Fray grew in the quiet: the Hollow Archivist, a keeper that nobody checked. Three seals of bad argument, then the Archivist itself. Now the vault is only a vault, and the last name on Elsbet's list of checkers is yours."
   },
   {
    "id": "door",
@@ -1831,6 +1848,15 @@
     "flagSet": "role"
    },
    "line": "A knower role! I would be a Questioner, obviously. But Hesper says that is exactly why I should try being a Maker for a week."
+  },
+  {
+   "id": "kip.undercroft",
+   "character": "kip-arden",
+   "if": {
+    "flag": "undercroft.done",
+    "eq": true
+   },
+   "line": "A Fray made of records nobody read. That is the saddest monster. I am going to check one old map every week now, just in case."
   },
   {
    "id": "kip.letter",

@@ -245,6 +245,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     for (const it of this.map.interactables) {
       const img = this.objArt.get(it.id);
       if (img) img.setVisible(!it.visibleIf || ctx.controller.check(it.visibleIf));
+      // A fallacy seal (Undercroft) stops blocking the corridor once it is opened.
+      if (it.kind === 'seal' && s.flags[`trap.${it.seal}.open`] === true) {
+        if (img) img.setVisible(false);
+        for (let y = it.y; y < it.y + it.h; y++) for (let x = it.x; x < it.x + it.w; x++) if (this.blocked[y]) this.blocked[y][x] = false;
+      }
       if (img && it.artOpen && img instanceof Phaser.GameObjects.Image) {
         const key = ctx.controller.check(it.artOpen.if) ? it.artOpen.key : it.art!;
         if (img.texture.key !== key && this.textures.exists(key)) img.setTexture(key);
@@ -910,7 +915,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       const id = best.actor.id;
       const c = ctx.controller.pack.characters.find((x) => x.id === id);
       ctx.ui.setPrompt(`Talk to ${c?.name ?? 'them'}`);
-    } else ctx.ui.setPrompt(`${best.obj.kind === 'sign' ? 'Read' : best.obj.kind === 'exhibit' ? 'Inspect' : best.obj.kind === 'thread' ? 'Follow the thread to' : best.obj.kind === 'loreling' ? 'Watch' : best.obj.kind === 'secret' ? 'Search' : 'Use'} ${best.obj.label}`);
+    } else ctx.ui.setPrompt(`${best.obj.kind === 'sign' ? 'Read' : best.obj.kind === 'exhibit' ? 'Inspect' : best.obj.kind === 'thread' ? 'Follow the thread to' : best.obj.kind === 'loreling' ? 'Watch' : best.obj.kind === 'secret' ? 'Search' : best.obj.kind === 'seal' ? 'Read' : best.obj.kind === 'boss' ? 'Face' : 'Use'} ${best.obj.label}`);
   }
 
   tryInteract(): void {
@@ -952,6 +957,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'reading': ctx.ui.openReading(it.reading!); break;
       case 'rumours': ctx.ui.openRumours(); break;
       case 'trader': ctx.ui.openTrader(); break;
+      case 'seal': if (ctx.controller.state.flags[`trap.${it.seal}.open`] !== true) ctx.ui.openSeal(it.seal!); break;
+      case 'boss': ctx.ui.openBoss(); break;
       case 'secret': {
         const x = (ctx.controller.pack.secrets ?? []).find((y) => y.id === it.secret);
         if (!x) break;
