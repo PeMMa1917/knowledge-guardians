@@ -246,6 +246,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         const key = (typeof v === 'string' && it.artBy.keys[v]) || it.art!;
         if (img.texture.key !== key && this.textures.exists(key)) img.setTexture(key);
       }
+      // The Lamp Wall shows exactly how many lamps are lit.
+      if (img && it.kind === 'lamps' && img instanceof Phaser.GameObjects.Image) {
+        const n = Math.max(0, Math.min(16, Number(ctx.controller.state.flags['lamps.lit'] ?? 0)));
+        const key = `lamp-wall.${n}`;
+        if (img.texture.key !== key && this.textures.exists(key)) img.setTexture(key);
+      }
     }
     this.syncPet();
     // Cloak embroidery (spec 32.6): a new thread appears on the outfit when a world arc is resolved.
@@ -317,7 +323,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const effects = !ctx.settings.reducedEffects;
     const w = m.width * TILE, h = m.height * TILE;
     // Ambient colour grade (multiply) and light pools (additive).
-    const ambient = m.ambience === 'archive' ? 0xa29ce0 : 0xffe8c4;
+    const ambient = m.ambience === 'archive' ? 0xa29ce0 : m.ambience === 'study' ? 0xc9a77e : 0xffe8c4;
     this.grade = this.add.rectangle(-200, -200, w + 400, h + 400, ambient).setOrigin(0).setDepth(200000).setBlendMode(Phaser.BlendModes.MULTIPLY).setAlpha(effects ? 1 : 0);
     for (const l of m.lights) {
       const img = this.add.image(l.x * TILE, l.y * TILE, 'glow').setDepth(200001).setBlendMode(Phaser.BlendModes.ADD)
@@ -328,13 +334,13 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     if (!effects) return;
     // Particles: dust motes in the archive, sparks and drifting petals in town.
     const area = new Phaser.Geom.Rectangle(0, 0, w, h);
-    if (m.ambience === 'archive') {
+    if (m.ambience === 'archive' || m.ambience === 'study') {
       this.fx.push(this.add.particles(0, 0, 'spark', {
         emitZone: { type: 'random', source: area } as any, lifespan: 6000, speedY: { min: -6, max: -2 }, speedX: { min: -3, max: 3 },
         scale: { min: 0.3, max: 0.8 }, alpha: { start: 0, end: 0, ease: 'Sine.InOut', steps: 0 } as any, frequency: 140, tint: 0xfff2c8, blendMode: 'ADD',
         emitCallback: (p: Phaser.GameObjects.Particles.Particle) => { p.alpha = 0.6; },
       }).setDepth(200002));
-      this.fx.push(this.add.particles(13 * TILE, 4 * TILE, 'spark', {
+      if (m.ambience === 'archive') this.fx.push(this.add.particles(13 * TILE, 4 * TILE, 'spark', {
         lifespan: 1400, speed: { min: 6, max: 18 }, scale: { start: 0.8, end: 0 }, tint: [0x9fe8ff, 0xe0d0ff], blendMode: 'ADD', frequency: 90,
       }).setDepth(200002));
     } else {
@@ -896,6 +902,13 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'board': ctx.ui.openClueBoard(it.board!); break;
       case 'quarters': ctx.ui.openQuarters(); break;
       case 'dive': ctx.ui.openDive(); break;
+      case 'lamps': ctx.ui.openLamps(); break;
+      case 'clue': ctx.ui.openClue(it.clue!); break;
+      case 'door':
+        if (it.openIf && !ctx.controller.check(it.openIf)) { ctx.ui.showSign(it.label, it.text ?? 'It does not open.'); break; }
+        if (it.flag && ctx.controller.state.flags[it.flag] !== true) ctx.controller.dispatch({ type: 'SetFlag', flag: it.flag, value: true });
+        if (it.to) this.changeMap(it.to.map, it.to.x, it.to.y);
+        break;
       case 'forge': ctx.ui.openForge(); break;
       case 'assay': ctx.ui.openAssay(it.exhibit!); break;
       case 'thread': ctx.ui.followThread(it.thread!, it.node!); break;

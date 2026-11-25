@@ -230,4 +230,13 @@ A dialogue node or option can have `"open"`: `showdown:<id>`, `label:<kit>`, `fo
 
 ## Add a keepsake
 
-Keepsakes are in `src/content/quarters.json`. Each has an `id` (short lowercase words with hyphens), a `name`, a one-line `text`, a condition `if` (the deed that earns it) and `where` (the hint shown while it is locked). Draw its 12 x 12 icon in `ICONS` in `src/ui/quarters.ts`; without one, a plain box is shown. Keepsakes are cosmetic: never give XP for them.
+Keepsakes are in `src/content/quarters.json`. Each has an `id` (short lowercase words with hyphens), a `name`, a one-line `text`, a condition `if` (the deed that earns it) and `where` (the hint shown while it is locked), and a `use` hint (what it might do in the world). A keepsake must matter: give it a view of a clue in the old Guardian's study, or a keepsake talk with a person, in `src/content/story.json` (the content check fails otherwise). Draw its 12 x 12 icon in `ICONS` in `src/ui/quarters.ts`; without one, a plain box is shown. Keepsakes are cosmetic: never give XP for them.
+
+## Add a lamp, a study clue or a keepsake talk (the storyline)
+
+All three are in `src/content/story.json` (made by a generator script; edit the JSON by hand if you have no script).
+
+- **Knot (lamp):** `id`, `name`, `who` (the person to help, shown while dark), `if` (the deed), `lit` (one line on how the town changed). Keep 16 lamps; six open the cellar.
+- **Clue:** `id`, `name`, `text` (plain view), `views` (each `keepsake`, `text`, optional `effects`), `study: true` for study objects. A view gives another perspective or opens a pathway (set a `study.*` flag). Place it on the study map as an interactable of kind `clue` with art `clue.<id>` (draw it in `src/ui/illustrations.ts`).
+- **Keepsake talk:** `id`, `character`, `keepsake`, `text` (the option), `node` (a dialogue node in the same file), optional `if`. It shows once, on the character's first node.
+- Keep the old Guardian's story fictional. Do not add real historical facts here without a source.

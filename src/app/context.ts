@@ -18,6 +18,8 @@ export interface UIApi {
   openClueBoard(board: string): void;
   openQuarters(): void;
   openDive(): void;
+  openLamps(): void;
+  openClue(id: string): void;
   openLoreling(loreling: string, sighting?: string): void;
   openForge(): void;
   openAssay(exhibitId: string): void;

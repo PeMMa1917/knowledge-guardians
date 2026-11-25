@@ -584,7 +584,15 @@ export interface RestoreMethod {
 }
 
 /** A keepsake for the Guardian's quarters (spec 12.16): shown on a shelf once `if` holds. Cosmetic only. */
-export interface Keepsake { id: string; name: string; text: string; if: Condition; where: string }
+/** `use` says where the keepsake matters in the world (shown when it is earned and in the quarters). */
+export interface Keepsake { id: string; name: string; text: string; if: Condition; where: string; use?: string }
+/** The Lamp Wall (storyline): one lamp for each of Emberford's knots that the player helps untie. */
+export interface Knot { id: string; name: string; who: string; lit: string; if: Condition }
+/** A clue object: a base description, and new views that a keepsake reveals (a perspective or a pathway). */
+export interface ClueView { keepsake: string; text: string; effects?: Effect[] }
+export interface ClueRecord { id: string; name: string; text: string; views: ClueView[]; onRead?: Effect[]; study?: boolean }
+/** A dialogue option that appears with a character once the player holds a keepsake. */
+export interface KeepsakeTalk { id: string; character: string; keepsake: string; text: string; node: string; if?: Condition }
 
 /** World memory (spec 47, C1): a short line a person says when the player passes, once the condition holds. */
 export interface MemoryLine { id: string; character: string; if: Condition; line: string }
@@ -683,6 +691,9 @@ export interface ContentPack {
   lorelings: LorelingRecord[];
   clueBoards?: ClueBoardRecord[];
   keepsakes?: Keepsake[];
+  knots?: Knot[];
+  clues?: ClueRecord[];
+  keepsakeTalks?: KeepsakeTalk[];
   /** The Deep Dive (spec 59): prompts and the things a player can answer with. */
   divePrompts?: import('./dive').DivePrompt[];
   diveItems?: import('./dive').DiveItem[];

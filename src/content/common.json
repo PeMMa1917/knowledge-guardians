@@ -429,6 +429,43 @@
     },
     {
      "if": {
+      "all": [
+       {
+        "flagSet": "sd.corvan.outcome"
+       },
+       {
+        "not": {
+         "flag": "lamps.heard",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "lamps.orrin"
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "objective": "m02.o1.arrive"
+       },
+       {
+        "not": {
+         "flag": "lamps.heard",
+         "eq": true
+        }
+       },
+       {
+        "not": {
+         "flagSet": "sd.corvan.outcome"
+        }
+       }
+      ]
+     },
+     "node": "lamps.orrin"
+    },
+    {
+     "if": {
       "flagSet": "sd.corvan.outcome"
      },
      "node": "orrin.after"

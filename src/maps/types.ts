@@ -3,7 +3,7 @@
  * characters, interactable objects, zones and lights. Units are tiles.
  * The WorldScene turns this data into a playable place.
  */
-export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive';
+export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door';
 
 export interface Interactable {
   id: string;
@@ -22,7 +22,7 @@ export interface Interactable {
   node?: string;              // for kind 'thread': the node at this spot
   place?: string;             // for kind 'waystone': the place name
   text?: string;              // for kind 'sign'
-  flag?: string;              // for kind 'sign': set to true when read
+  flag?: string;              // for kind 'sign': set to true when read; for kind 'door': set when used
   /** Procedural art key drawn at this spot (see BootScene.makeTextures). */
   art?: string;
   /** Different art once a condition holds (for example an opened door). */
@@ -30,6 +30,11 @@ export interface Interactable {
   /** Picture chosen by a string flag's value (e.g. the restoration method); `art` when unset. */
   artBy?: { flag: string; keys: Record<string, string> };
   visibleIf?: import('../domain/types').Condition;
+  /** For kind 'clue': the clue record (a keepsake can show a new view). */
+  clue?: string;
+  /** For kind 'door': where it leads, when it opens (else `text` is shown). */
+  to?: { map: string; x: number; y: number };
+  openIf?: import('../domain/types').Condition;
 }
 
 export interface MapDef {
@@ -38,7 +43,7 @@ export interface MapDef {
   world: string;
   width: number; height: number;
   music: string;
-  ambience: 'archive' | 'town';
+  ambience: 'archive' | 'town' | 'study';
   background: number;
   floor: (x: number, y: number) => string | null;
   stamps: { stamp: string; x: number; y: number; anim?: string[] }[];

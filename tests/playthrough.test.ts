@@ -108,7 +108,7 @@ function playM02(d: Driver, outcome: Outcome, route: 'pattern' | 'crucible' = 'p
   d.talk('smith-hesper', 'Can I try it');
   d.talk('scholar-sefa', 'What is wootz');
   d.run({ type: 'InspectExhibit', exhibit: 'OBJ-002' });
-  d.talk('guildmaster-orrin', 'Is the blade ancient', 'What does the ledger');
+  d.talk('guildmaster-orrin', 'guild ledger first', 'Is the blade ancient', 'What does the ledger');
   const steps = route === 'pattern' ? ['stack', 'stack', 'weld', 'fold', 'twist', 'cut'] : ['crucible', 'melt', 'cool', 'cut'];
   for (const a of steps) d.run({ type: 'Forge', action: a as any });
   d.run({ type: 'InspectExhibit', exhibit: 'AE-ASSAY' });
@@ -459,7 +459,7 @@ describe('dialogue graph', () => {
   it('every node is reachable from a character, an event or a scene entry', () => {
     const reach = new Set<string>();
     const entries = ['cold.open', 'waystone.nexus', 'waystone.emberford', 'oldsign.read'];
-    const stack = [...pack.characters.flatMap((c) => c.talk.map((t) => t.node)), ...pack.events.map((e) => e.node), ...entries];
+    const stack = [...pack.characters.flatMap((c) => c.talk.map((t) => t.node)), ...pack.events.map((e) => e.node), ...(pack.keepsakeTalks ?? []).map((t) => t.node), ...entries];
     while (stack.length) {
       const id = stack.pop()!;
       if (reach.has(id)) continue;

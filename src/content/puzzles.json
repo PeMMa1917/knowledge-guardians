@@ -1833,7 +1833,7 @@
    "id": "painters-frame",
    "type": "frame",
    "title": "The Painter's Frame",
-   "intro": "Lio the painter made one wide, careful painting of the market this morning. Everything in it really happened. Now three people each want a poster cut from it. Move the frame to make each poster. Then look at all three together.",
+   "intro": "Nell the painter made one wide, careful painting of the market this morning. Everything in it really happened. Now three people each want a poster cut from it. Move the frame to make each poster. Then look at all three together.",
    "skills": [
     "SK-MED-01",
     "SK-MED-04",
@@ -2764,7 +2764,7 @@
    "objectives": [
     {
      "id": "frame.o1.posters",
-     "title": "Optional: cut three posters from Lio's market painting (the easel in the market square).",
+     "title": "Optional: cut three posters from Nell's market painting (the easel in the market square).",
      "essential": false,
      "done": {
       "flag": "puzzle.painters-frame.done",

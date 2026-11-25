@@ -808,6 +808,13 @@ export class UI implements UIApi {
     const xp = events.filter((e) => e.kind === 'xp').reduce((n, e) => n + (e as Extract<GameEvent, { kind: 'xp' }>).amount, 0);
     if (xp) events = [...events.filter((e) => e.kind !== 'xp'), { kind: 'xp', amount: xp }];
     const c = ctx.controller;
+    // An old save can earn many keepsakes or lamps at once: one summary toast, not a flood.
+    for (const kind of ['keepsake', 'lamp'] as const) {
+      const many = events.filter((e) => e.kind === kind);
+      if (many.length <= 2) continue;
+      events = events.filter((e) => e.kind !== kind);
+      this.toast(kind === 'keepsake' ? `${many.length} new keepsakes. See My quarters.` : `${many.length} lamps are lit on the Lamp Wall.`, 'award');
+    }
     for (const e of events) {
       switch (e.kind) {
         case 'card': { const card = c.pack.cards.find((x) => x.id === e.id); this.toast(`New evidence card: ${card?.title}`, 'card'); this.sfx('sfx.page'); break; }
@@ -839,6 +846,8 @@ export class UI implements UIApi {
         case 'fray': this.toast(`New in your Fray Bestiary: ${e.name} (${e.error.toLowerCase()}). See Journal, Fray Bestiary.`, 'info'); break;
         case 'reflection': { const m = e.misconception; this.whenFree(() => this.offerReflection(m.title, m.reflection)); break; }
         case 'event-due': { const id = e.event; this.whenFree(() => this.showEvent(id)); break; }
+        case 'keepsake': this.toast(`New keepsake: ${e.name}. ${e.use}`, 'item'); this.sfx('sfx.sparkle'); break;
+        case 'lamp': this.toast(`A lamp is lit on the Lamp Wall: ${e.name} (${e.count} of ${e.total}). ${e.lit}`, 'award'); this.sfx('sfx.award'); ctx.world?.lumenBurst(); break;
         default: break;
       }
     }
@@ -2450,6 +2459,62 @@ export class UI implements UIApi {
    * put earned keepsakes on the shelves. The ceiling is the Star Chart. Cosmetic only.
    */
   /** The Deep Dive (spec 59): seven prompts a day, answered with things found in play. */
+  /** The Lamp Wall (storyline): one lamp for each knot the town unties. Six lamps open the old Guardian's cellar. */
+  openLamps(): void {
+    const c = ctx.controller;
+    const knots = c.pack.knots ?? [];
+    const n = knots.filter((k) => c.state.flags[`lamp.${k.id}`] === true).length;
+    const heard = c.state.flags['lamps.heard'] === true;
+    const box = this.openModal('lamps-panel wide', 'The Lamp Wall');
+    this.sfx('sfx.page');
+    box.append(this.closeBtn(), h('h2', {}, 'The Lamp Wall'),
+      h('p', {}, heard
+        ? 'Each lamp is a hard question that Emberford worked out together, with evidence. Guardian Elsbet Varro lit them for years. Now you light them, with the people of the town.'
+        : 'Sixteen small lamps on an old board by the guild hall door. A brass plate says: ONE LAMP FOR EACH KNOT THE TOWN UNTIES. Most lamps are dark. Guildmaster Orrin may know why.'),
+      h('p', { class: 'lamp-count', role: 'status' }, `${n} of ${knots.length} lamps lit. `,
+        n >= 6 ? 'The cellar door beside the guild hall is open.' : `${6 - n} more, and the cellar door beside the guild hall opens.`),
+      h('ol', { class: 'lamp-grid' }, ...knots.map((k) => {
+        const on = c.state.flags[`lamp.${k.id}`] === true;
+        return h('li', { class: `lamp ${on ? 'on' : ''}` },
+          h('span', { class: 'flame', 'aria-hidden': 'true' }),
+          h('span', {}, h('strong', {}, k.name), h('br'), h('span', { class: 'fine' }, on ? k.lit : `Dark. Help ${k.who}.`)));
+      })),
+      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+  }
+
+  /**
+   * A clue object in the old Guardian's study. The first look gives the plain view. Each keepsake the
+   * player holds can show a new view: another perspective, or a new pathway (a hidden thing opens).
+   */
+  openClue(id: string): void {
+    const c = ctx.controller;
+    const cl = (c.pack.clues ?? []).find((x) => x.id === id);
+    if (!cl) return;
+    if (c.state.flags[`clue.${id}.read`] !== true) c.dispatch({ type: 'ReadClue', clue: id });
+    const keep = new Map((c.pack.keepsakes ?? []).map((k) => [k.id, k]));
+    const low = (n: string) => n.replace(/^(A|An|The) /, (m) => m.toLowerCase());
+    const box = this.openModal('clue-panel', cl.name);
+    this.sfx('sfx.page');
+    const render = (fresh?: string) => {
+      box.replaceChildren(this.closeBtn(), h('h2', {}, cl.name), h('p', {}, cl.text));
+      for (const v of cl.views) {
+        const k = keep.get(v.keepsake);
+        const has = c.state.flags[`keepsake.${v.keepsake}`] === true || (k ? c.check(k.if) : false);
+        const seen = c.state.flags[`clue.${id}.${v.keepsake}`] === true;
+        if (seen) box.append(h('div', { class: `clue-view ${fresh === v.keepsake ? 'fresh' : ''}` }, h('p', { class: 'fine' }, `With ${low(k?.name ?? v.keepsake)}:`), h('p', {}, v.text)));
+        else if (has) box.append(h('button', { type: 'button', class: 'clue-use', onclick: () => {
+          const ev = c.dispatch({ type: 'UseKeepsake', clue: id, keepsake: v.keepsake });
+          if (ev.some((e) => e.kind === 'error')) return;
+          this.sfx('sfx.sparkle'); render(v.keepsake);
+          ctx.world?.refreshWorld();
+        } }, `Use ${low(k?.name ?? v.keepsake)}`));
+        else box.append(h('p', { class: 'fine clue-missing' }, `Something here would mean more with a keepsake you have not found yet${k ? ` (${k.where.replace(/\.$/, '')})` : ''}.`));
+      }
+      box.append(h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': !fresh, onclick: () => this.closeModal() }, 'Close')));
+    };
+    render();
+  }
+
   openDive(): void {
     const c = ctx.controller;
     const day = dayKey(new Date());
@@ -2552,7 +2617,7 @@ export class UI implements UIApi {
         const id = room.shelf[i];
         const k = owned.find((x) => x.id === id);
         shelfRow.append(h('button', { type: 'button', class: `slot-btn ${selected === i ? 'picked' : ''}`, 'aria-pressed': String(selected === i),
-          onclick: () => { selected = selected === i ? null : i; info = k ? `${k.name}. ${k.text}` : 'An empty place. Choose a keepsake below to put here.'; renderLists(); paint(performance.now()); } },
+          onclick: () => { selected = selected === i ? null : i; info = k ? `${k.name}. ${k.text}${k.use ? ` Use: ${k.use}` : ''}` : 'An empty place. Choose a keepsake below to put here.'; renderLists(); paint(performance.now()); } },
           k ? iconCanvas(k.id, 2) : h('span', { class: 'fine' }, '·'), h('span', {}, `${i < 3 ? 'Top' : 'Low'} ${(i % 3) + 1}`)));
       }
       ksList.append(...(c.pack.keepsakes ?? []).map((k) => {
@@ -2561,7 +2626,7 @@ export class UI implements UIApi {
         const at = room.shelf.indexOf(k.id);
         return h('button', { type: 'button', class: `keepsake ${at >= 0 ? 'placed' : ''}`, title: k.text,
           onclick: () => {
-            if (selected === null) { info = `${k.name}. ${k.text} ${at >= 0 ? 'It is on your shelf.' : 'Choose a shelf place first, then this keepsake.'}`; renderLists(); return; }
+            if (selected === null) { info = `${k.name}. ${k.text}${k.use ? ` Use: ${k.use}` : ''} ${at >= 0 ? 'It is on your shelf.' : 'Choose a shelf place first, then this keepsake.'}`; renderLists(); return; }
             room = placeKeepsake(room, selected, room.shelf[selected] === k.id ? null : k.id);
             info = room.shelf[selected] ? `${k.name} is on the shelf. ${k.text}` : `${k.name} is back in your satchel.`;
             this.sfx('sfx.sparkle'); save(); renderLists(); paint(performance.now());

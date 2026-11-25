@@ -1,0 +1,79 @@
+import { describe, expect, it } from 'vitest';
+import { buildPack } from '../src/content';
+import { check } from '../src/domain/rules';
+import { MAPS } from '../src/maps';
+import { LETTER_IF } from '../src/maps/study';
+import type { Condition } from '../src/domain/types';
+import { Driver } from './driver';
+
+const pack = buildPack();
+const done = (d: Driver, id: string) => d.run({ type: 'SetFlag', flag: `puzzle.${id}.done`, value: true });
+
+describe('the storyline: the Lamp Wall and the old Guardian (Mika 2026-11-26)', () => {
+  it('each knot the town unties lights one lamp, once', () => {
+    const d = new Driver();
+    expect(d.s.flags['lamps.lit'] ?? 0).toBe(0);
+    done(d, 'weigh-house');
+    expect(d.s.flags['lamps.lit']).toBe(1);
+    expect(d.events.some((e) => e.kind === 'lamp')).toBe(true);
+    done(d, 'weigh-house');
+    expect(d.s.flags['lamps.lit']).toBe(1);
+    expect(pack.knots).toHaveLength(16);
+  });
+
+  it('the cellar door opens at six lamps and leads to the study, and the study leads back', () => {
+    const door = MAPS['aethelgard.emberford'].interactables.find((i) => i.id === 'cellar-door')!;
+    const d = new Driver();
+    for (const id of ['weigh-house', 'tipped-cart', 'map-table', 'brass-sorter', 'echo-bridge']) done(d, id);
+    expect(check(door.openIf as Condition, d.s)).toBe(false);
+    done(d, 'toll-survey');
+    expect(check(door.openIf as Condition, d.s)).toBe(true);
+    expect(MAPS[door.to!.map]).toBeDefined();
+    const stairs = MAPS['aethelgard.study'].interactables.find((i) => i.kind === 'door')!;
+    expect(stairs.to!.map).toBe('aethelgard.emberford');
+    // Every clue object in the study has a clue record, and every study clue is placed.
+    const placed = MAPS['aethelgard.study'].interactables.filter((i) => i.kind === 'clue').map((i) => i.clue);
+    for (const id of placed) expect(pack.clues!.some((c) => c.id === id)).toBe(true);
+    for (const c of pack.clues!.filter((x) => x.study)) expect(placed).toContain(c.id);
+  });
+
+  it('every keepsake matters: it shows a new view of a clue or opens a new dialogue option', () => {
+    for (const k of pack.keepsakes!) {
+      const used = pack.clues!.some((c) => c.views.some((v) => v.keepsake === k.id)) || pack.keepsakeTalks!.some((t) => t.keepsake === k.id);
+      expect(used, k.id).toBe(true);
+      expect(k.use, k.id).toBeTruthy();
+    }
+  });
+
+  it('a keepsake view needs the keepsake, and a pathway view opens the hidden letter', () => {
+    const d = new Driver();
+    expect(() => d.run({ type: 'UseKeepsake', clue: 'desk', keepsake: 'door-key' })).toThrow();
+    d.run({ type: 'SetFlag', flag: 'keepsake.door-key', value: true });
+    expect(check(LETTER_IF as unknown as Condition, d.s)).toBe(false);
+    d.run({ type: 'UseKeepsake', clue: 'desk', keepsake: 'door-key' });
+    expect(d.s.flags['study.desk']).toBe(true);
+    expect(d.s.flags['study.views']).toBe(1);
+    expect(check(LETTER_IF as unknown as Condition, d.s)).toBe(true);
+    // The wrong keepsake does nothing.
+    expect(() => d.run({ type: 'UseKeepsake', clue: 'desk', keepsake: 'pen-tip' })).toThrow();
+  });
+
+  it('a player with few keepsakes can still find the letter by looking closely', () => {
+    const d = new Driver();
+    for (const c of pack.clues!.filter((x) => x.study && x.id !== 'letter').slice(0, 10)) d.run({ type: 'ReadClue', clue: c.id });
+    expect(check(LETTER_IF as unknown as Condition, d.s)).toBe(true);
+    d.run({ type: 'ReadClue', clue: 'letter' });
+    expect(d.s.flags['study.letter']).toBe(true);
+  });
+
+  it('a keepsake adds a dialogue option once, and the old options stay', () => {
+    const d = new Driver();
+    const entry = d.e.talkEntry('smith-hesper', d.s)!;
+    const before = d.e.visibleOptions(entry, d.s).length;
+    d.run({ type: 'SetFlag', flag: 'keepsake.check-weight', value: true });
+    const opts = d.e.visibleOptions(entry, d.s);
+    const extra = opts.find((o) => o.index >= 1000);
+    expect(extra?.option.text).toContain('check weights');
+    expect(opts.filter((o) => o.index < 999)).toHaveLength(before);
+  });
+});

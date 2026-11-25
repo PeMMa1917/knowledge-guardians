@@ -322,6 +322,24 @@ export function validateContent(pack: ContentPack): string[] {
     dup('clue board', b.id); text(`clue board ${b.id}`, b.intro); weave(b.weave, `clue board ${b.id}`, true); eff(b.onComplete, `clue board ${b.id}`);
     if (!pack.showdowns.some((x) => x.id === b.showdown)) p.push(`clue board ${b.id}: unknown showdown ${b.showdown}`);
   });
+  // The story (Lamp Wall, study clues, keepsake talk): keepsakes must matter, so each one must be used.
+  const ks = new Set((pack.keepsakes ?? []).map((k) => k.id));
+  (pack.knots ?? []).forEach((k) => { dup('knot', k.id); cond(k.if, `knot ${k.id}`); text(`knot ${k.id}`, k.lit); });
+  (pack.clues ?? []).forEach((c) => {
+    dup('clue', c.id); text(`clue ${c.id}`, c.text); eff(c.onRead, `clue ${c.id}`);
+    c.views.forEach((v) => { if (!ks.has(v.keepsake)) p.push(`clue ${c.id}: unknown keepsake ${v.keepsake}`); text(`clue ${c.id}`, v.text); eff(v.effects, `clue ${c.id}`); });
+  });
+  (pack.keepsakeTalks ?? []).forEach((t) => {
+    dup('keepsake talk', t.id); cond(t.if, `keepsake talk ${t.id}`);
+    if (!ks.has(t.keepsake)) p.push(`keepsake talk ${t.id}: unknown keepsake ${t.keepsake}`);
+    if (!pack.characters.some((x) => x.id === t.character)) p.push(`keepsake talk ${t.id}: unknown character ${t.character}`);
+    if (!pack.dialogue.some((x) => x.id === t.node)) p.push(`keepsake talk ${t.id}: unknown node ${t.node}`);
+  });
+  (pack.keepsakes ?? []).forEach((k) => {
+    if (!k.use) p.push(`keepsake ${k.id}: needs a use text`);
+    const used = (pack.clues ?? []).some((c) => c.views.some((v) => v.keepsake === k.id)) || (pack.keepsakeTalks ?? []).some((t) => t.keepsake === k.id);
+    if (pack.clues?.length && !used) p.push(`keepsake ${k.id}: does nothing in the world (use it in a clue or a talk)`);
+  });
   (pack.fray ?? []).forEach((f) => { dup('fray', f.id); text(`fray ${f.id}`, f.pattern); text(`fray ${f.id}`, f.weakness); });
   pack.showdowns.forEach((sd) => (sd.testimony?.contradictedBy ?? []).forEach((cid) => pack.cards.some((x) => x.id === cid) || p.push(`showdown ${sd.id}: testimony names unknown card ${cid}`)));
   // Lorelings (spec 36.1): every wrong note option must name a sighting that shows it is wrong.

@@ -7,7 +7,8 @@
    "if": {
     "objective": "m01.o6.label"
    },
-   "where": "The Nexus: label the pen display."
+   "where": "The Nexus: label the pen display.",
+   "use": "A pen tip can write. Somewhere there is a journal waiting for a new entry."
   },
   {
    "id": "date-lens",
@@ -16,7 +17,8 @@
    "if": {
     "item": "tool.date-lens"
    },
-   "where": "The Nexus: get the Date Lens."
+   "where": "The Nexus: get the Date Lens.",
+   "use": "Your lens shows when ink was laid down. Try it on old writing."
   },
   {
    "id": "door-key",
@@ -26,7 +28,8 @@
     "flag": "puzzle.timeline-door.done",
     "eq": true
    },
-   "where": "The Nexus: open the Timeline Door."
+   "where": "The Nexus: open the Timeline Door.",
+   "use": "Nexus locks are made by one maker. This plate may fit another Nexus lock."
   },
   {
    "id": "moth-lamp",
@@ -36,7 +39,8 @@
     "flag": "lor.glimmermoth.friend",
     "eq": true
    },
-   "where": "The Nexus: befriend a Loreling."
+   "where": "The Nexus: befriend a Loreling.",
+   "use": "It glows in the dark. Somewhere, a dark corner hides something."
   },
   {
    "id": "so-what",
@@ -46,7 +50,8 @@
     "flag": "alcove.firsts.ever",
     "eq": true
    },
-   "where": "The Nexus: finish the Alcove of Firsts."
+   "where": "The Nexus: finish the Alcove of Firsts.",
+   "use": "Hold it when someone leaves you a message. Ask: so what?"
   },
   {
    "id": "glass-piece",
@@ -56,7 +61,8 @@
     "flag": "puzzle.round-window.done",
     "eq": true
    },
-   "where": "The Nexus: the round window."
+   "where": "The Nexus: the round window.",
+   "use": "One piece of glass is still missing from a small round window somewhere."
   },
   {
    "id": "notice",
@@ -66,7 +72,8 @@
     "flag": "puzzle.guild-notice.done",
     "eq": true
    },
-   "where": "Emberford: the Sign-Smith's notice board."
+   "where": "Emberford: the Sign-Smith's notice board.",
+   "use": "Compare it with older notices. Did Emberford always write like this?"
   },
   {
    "id": "thread-knot",
@@ -76,7 +83,8 @@
     "flag": "puzzle.song-bridge.done",
     "eq": true
    },
-   "where": "Emberford: the Citation Thread bridge."
+   "where": "Emberford: the Citation Thread bridge.",
+   "use": "Look for cards tied the same way, and ask whoever is cited."
   },
   {
    "id": "check-weight",
@@ -86,7 +94,8 @@
     "flag": "puzzle.weigh-house.done",
     "eq": true
    },
-   "where": "Emberford: the Weigh-House balance."
+   "where": "Emberford: the Weigh-House balance.",
+   "use": "One true weight checks the others. Hesper may know who made it."
   },
   {
    "id": "yarn",
@@ -96,7 +105,8 @@
     "flag": "board.corvan-board.done",
     "eq": true
    },
-   "where": "Emberford: the practice clue board."
+   "where": "Emberford: the practice clue board.",
+   "use": "Red and gold yarn helps you read another person's clue board."
   },
   {
    "id": "copper-pot",
@@ -106,7 +116,8 @@
     "flag": "puzzle.tipped-cart.done",
     "eq": true
    },
-   "where": "Emberford: the guild clerk's map."
+   "where": "Emberford: the guild clerk's map.",
+   "use": "Someone in the market may recognise this pot. A cold stove may want it too."
   },
   {
    "id": "folded-map",
@@ -116,7 +127,8 @@
     "flag": "puzzle.map-table.done",
     "eq": true
    },
-   "where": "Emberford: the mapmaker's table."
+   "where": "Emberford: the mapmaker's table.",
+   "use": "It shows Emberford today. Compare it with an older map, and show Kip."
   },
   {
    "id": "brass-cog",
@@ -126,7 +138,8 @@
     "flag": "puzzle.brass-sorter.done",
     "eq": true
    },
-   "where": "Emberford: Mara's brass sorter."
+   "where": "Emberford: Mara's brass sorter.",
+   "use": "A stopped clock somewhere may need it."
   },
   {
    "id": "knot-rope",
@@ -136,7 +149,8 @@
     "flag": "puzzle.echo-bridge.done",
     "eq": true
    },
-   "where": "Emberford: the echo stone."
+   "where": "Emberford: the echo stone.",
+   "use": "Use it on a line on a wall."
   },
   {
    "id": "soot-jar",
@@ -145,7 +159,8 @@
    "if": {
     "flagSet": "puzzle.founders-plaque.method"
    },
-   "where": "Emberford: restore the Founders' Plaque."
+   "where": "Emberford: restore the Founders' Plaque.",
+   "use": "Soot shows dents in paper. Try it on a blank sheet that is not quite blank."
   },
   {
    "id": "sign-splinter",
@@ -154,7 +169,8 @@
    "if": {
     "flagSet": "sd.corvan.outcome"
    },
-   "where": "Emberford: the Showdown."
+   "where": "Emberford: the Showdown.",
+   "use": "Corvan may want to talk about his old sign."
   },
   {
    "id": "rumour-shard",
@@ -164,7 +180,8 @@
     "flag": "rumour.done",
     "eq": true
    },
-   "where": "Emberford: trace the rumour."
+   "where": "Emberford: trace the rumour.",
+   "use": "Show it to the tea seller. Rumours are also collected somewhere else."
   },
   {
    "id": "well-rope",
@@ -173,7 +190,8 @@
    "if": {
     "flagSet": "well.reflected"
    },
-   "where": "Emberford: the East Well side quest."
+   "where": "Emberford: the East Well side quest.",
+   "use": "Ask Efua who first cut the knots. Old buckets keep old ropes."
   },
   {
    "id": "survey-slip",
@@ -183,7 +201,8 @@
     "flag": "puzzle.toll-survey.done",
     "eq": true
    },
-   "where": "Emberford: the Bridge Toll Survey."
+   "where": "Emberford: the Bridge Toll Survey.",
+   "use": "Show Orrin how the council could ask. Old slips may show an old mistake."
   },
   {
    "id": "ferry-chalk",
@@ -193,17 +212,19 @@
     "flag": "puzzle.ferry-message.done",
     "eq": true
    },
-   "where": "Emberford: the Ferry Message slate."
+   "where": "Emberford: the Ferry Message slate.",
+   "use": "Say 'tavi' to Sefa. Chalk helps you trace notes written in the cant."
   },
   {
    "id": "paper-frame",
    "name": "A small card frame",
-   "text": "Lio cut it for you. Hold it up to anything, and ask what is outside it.",
+   "text": "Nell cut it for you. Hold it up to anything, and ask what is outside it.",
    "if": {
     "flag": "puzzle.painters-frame.done",
     "eq": true
    },
-   "where": "Emberford: Lio's easel in the market."
+   "where": "Emberford: Nell's easel in the market.",
+   "use": "Hold it up to a painting and then lower it. What was outside the frame?"
   },
   {
    "id": "tiny-bell",
@@ -213,7 +234,8 @@
     "flag": "puzzle.bell-stair.done",
     "eq": true
    },
-   "where": "Emberford: Maren's bell rope by the gatehouse."
+   "where": "Emberford: Maren's bell rope by the gatehouse.",
+   "use": "It rings one note. Another bell may answer it."
   },
   {
    "id": "weather-glass",
@@ -223,7 +245,8 @@
     "flag": "puzzle.forecast-board.done",
     "eq": true
    },
-   "where": "Emberford: Noa's forecast board by the east well."
+   "where": "Emberford: Noa's forecast board by the east well.",
+   "use": "Compare it with another weather glass. Instruments drift."
   },
   {
    "id": "seal",
@@ -233,7 +256,8 @@
     "flag": "seal.found",
     "eq": true
    },
-   "where": "Emberford: finish the chapter."
+   "where": "Emberford: finish the chapter.",
+   "use": "Compare it with another Guardian's mark, and ask Ise."
   }
  ]
 }

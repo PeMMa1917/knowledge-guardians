@@ -46,6 +46,8 @@ export type Command =
   | { type: 'PuzzleTranslate'; puzzle: string; picks: number[] }
   | { type: 'PuzzleFrame'; puzzle: string; brief: string; x: number; y: number }
   | { type: 'PuzzleForecast'; puzzle: string; chance: number }
+  | { type: 'UseKeepsake'; clue: string; keepsake: string }
+  | { type: 'ReadClue'; clue: string }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
@@ -109,6 +111,9 @@ export type GameEvent =
   | { kind: 'reflection'; misconception: MisconceptionRecord }
   | { kind: 'portfolio'; title: string }
   | { kind: 'rest'; place: string }
+  | { kind: 'keepsake'; id: string; name: string; use: string }
+  | { kind: 'lamp'; id: string; name: string; lit: string; count: number; total: number }
+  | { kind: 'clue'; clue: string; keepsake: string; text: string }
   | { kind: 'error'; message: string };
 
 export interface SimulationResult {
@@ -182,7 +187,25 @@ export class Engine {
 
   /** Options the player can choose now. If none pass, the node's fallback "next" applies. */
   visibleOptions(nodeId: string, s: CampaignState): { option: DialogueOption; index: number }[] {
-    return (this.node(nodeId).options ?? []).map((option, index) => ({ option, index })).filter((o) => check(o.option.if, s));
+    const base = (this.node(nodeId).options ?? []).map((option, index) => ({ option, index })).filter((o) => check(o.option.if, s));
+    const extra = this.keepsakeOptions(nodeId, s);
+    if (!extra.length) return base;
+    const n = this.node(nodeId);
+    return [...base, ...extra, ...(base.length ? [] : [{ option: { text: n.next ? 'Go on.' : 'Goodbye.', next: n.next ?? null }, index: 999 }])];
+  }
+
+  /**
+   * Keepsake talk (Mika 2026-11-26: keepsakes matter): on a character's entry node, a keepsake the
+   * player holds adds an option, once. Indexes from 1000. Not added to a node that leads straight on
+   * to another line, so story chains are never cut.
+   */
+  keepsakeOptions(nodeId: string, s: CampaignState): { option: DialogueOption; index: number }[] {
+    const n = this.node(nodeId);
+    const c = this.pack.characters.find((x) => x.id === n.speaker);
+    if (!c || !c.talk.some((t) => t.node === nodeId) || (n.next && !n.options?.length)) return [];
+    return (this.pack.keepsakeTalks ?? []).map((t, i) => ({ t, i }))
+      .filter(({ t }) => t.character === c.id && s.flags[`keepsake.${t.keepsake}`] === true && s.flags[`ktalk.${t.id}`] !== true && check(t.if, s))
+      .map(({ t, i }) => ({ option: { text: t.text, tag: `Show ${(this.pack.keepsakes ?? []).find((k) => k.id === t.keepsake)?.name.replace(/^an? /i, '') ?? 'a keepsake'}`, next: t.node, effects: [{ setFlag: `ktalk.${t.id}`, value: true }] }, index: 1000 + i }));
   }
 
   talkEntry(characterId: string, s: CampaignState): string | null {
@@ -257,6 +280,21 @@ export class Engine {
         case 'SetFlag':
           s = apply([{ setFlag: cmd.flag, value: cmd.value }], s, out);
           break;
+        case 'UseKeepsake': case 'ReadClue': {
+          const cl = (this.pack.clues ?? []).find((x) => x.id === cmd.clue);
+          if (!cl) throw new Error('Unknown clue');
+          if (cmd.type === 'ReadClue') {
+            if (s.flags[`clue.${cl.id}.read`] !== true) s = apply([{ setFlag: `clue.${cl.id}.read`, value: true }, ...(cl.study ? [{ addNum: 'study.read', by: 1 } as Effect] : []), ...(cl.onRead ?? [])], s, out);
+            break;
+          }
+          const v = cl.views.find((x) => x.keepsake === cmd.keepsake);
+          if (!v) throw new Error('Nothing happens.');
+          if (s.flags[`keepsake.${cmd.keepsake}`] !== true) throw new Error('You do not have that keepsake yet');
+          const key = `clue.${cl.id}.${cmd.keepsake}`;
+          if (s.flags[key] !== true) s = apply([{ setFlag: key, value: true }, ...(cl.study ? [{ addNum: 'study.views', by: 1 } as Effect] : []), ...(v.effects ?? [])], s, out);
+          events.push({ kind: 'clue', clue: cl.id, keepsake: cmd.keepsake, text: v.text });
+          break;
+        }
         case 'DiveAnswer': {
           // The Deep Dive (spec 59): only valid answers are kept; a wrong facet costs nothing.
           if (!/^\d{4}-\d{2}-\d{2}$/.test(cmd.day)) throw new Error('Bad day');
@@ -284,7 +322,7 @@ export class Engine {
         }
         case 'ChooseDialogueOption': {
           const n = this.node(cmd.node);
-          const opt = n.options?.[cmd.index];
+          const opt = cmd.index >= 999 ? this.visibleOptions(cmd.node, s).find((o) => o.index === cmd.index)?.option : n.options?.[cmd.index];
           if (!opt) throw new Error('That option does not exist');
           if (!check(opt.if, s)) throw new Error('That option is not available now');
           s = apply(opt.effects, s, out);
@@ -771,6 +809,20 @@ export class Engine {
     // Objectives, then awards. Repeat so that completion effects can chain.
     for (let guard = 0; guard < 10; guard++) {
       let changed = false;
+      // Keepsakes and the Lamp Wall (the storyline): mark each new one with a flag and a moment.
+      for (const k of this.pack.keepsakes ?? []) {
+        if (s.flags[`keepsake.${k.id}`] === true || !check(k.if, s)) continue;
+        s = apply([{ setFlag: `keepsake.${k.id}`, value: true }], s, out);
+        events.push({ kind: 'keepsake', id: k.id, name: k.name, use: k.use ?? '' });
+        changed = true;
+      }
+      const knots = this.pack.knots ?? [];
+      for (const kn of knots) {
+        if (s.flags[`lamp.${kn.id}`] === true || !check(kn.if, s)) continue;
+        s = apply([{ setFlag: `lamp.${kn.id}`, value: true }, { addNum: 'lamps.lit', by: 1 }], s, out);
+        events.push({ kind: 'lamp', id: kn.id, name: kn.name, lit: kn.lit, count: Number(s.flags['lamps.lit']), total: knots.length });
+        changed = true;
+      }
       for (const m of this.activeMissions(s)) {
         for (const o of m.objectives) {
           if (s.objectivesDone.includes(o.id)) continue;

@@ -438,6 +438,71 @@ DRAW['quarters-door'] = [16, 24, (g) => {
   R(g, '#e9cf7a', 11, 13, 2, 2); R(g, '#fff3c4', 11, 13, 1, 1);
 }];
 
+// ---- The story: the Lamp Wall, the cellar door and the old Guardian's study (all original art).
+
+// The Lamp Wall: a board of sixteen small lamps; `lamp-wall.<n>` shows n lamps lit.
+for (let n = 0; n <= 16; n++) DRAW[`lamp-wall.${n}`] = [16, 24, (g) => {
+  R(g, '#5b3b22', 2, 17, 2, 7); R(g, '#5b3b22', 12, 17, 2, 7);
+  R(g, '#3b2a1a', 0, 1, 16, 17); R(g, '#6b4a2a', 1, 2, 14, 15); R(g, '#c9a24a', 0, 0, 16, 1);
+  for (let i = 0; i < 16; i++) {
+    const x = 2 + (i % 4) * 3, y = 3 + (3 - Math.floor(i / 4)) * 3.5; // lamps light from the bottom row up
+    if (i < n) { R(g, '#ffd25a', x, y, 2, 2); R(g, '#fff3c4', x, y, 1, 1); } else R(g, '#2a2440', x, y, 2, 2);
+  }
+}];
+// The cellar door: an oak hatch in the ground, shut; open, with warm light on stone steps.
+DRAW['cellar-door'] = [16, 24, (g) => {
+  R(g, '#3b2a1a', 0, 12, 16, 12); R(g, '#7a5230', 1, 13, 14, 10); R(g, '#5b3b22', 5, 13, 1, 10); R(g, '#5b3b22', 10, 13, 1, 10);
+  R(g, '#4a6b3a', 0, 12, 4, 2); R(g, '#4a6b3a', 12, 21, 4, 2); R(g, '#8b8f99', 2, 17, 12, 1); R(g, '#c9a24a', 7, 16, 2, 3);
+}];
+DRAW['cellar-door.open'] = [16, 24, (g) => {
+  R(g, '#3b2a1a', 0, 12, 16, 12); R(g, '#1d140e', 1, 13, 14, 10);
+  R(g, '#8b8f99', 2, 14, 12, 2); R(g, '#6f737d', 3, 17, 10, 2); R(g, '#4a4d55', 4, 20, 8, 2);
+  R(g, '#ffd98a', 6, 20, 4, 2); R(g, '#7a5230', 0, 2, 16, 10); R(g, '#5b3b22', 5, 2, 1, 10); R(g, '#5b3b22', 10, 2, 1, 10); R(g, '#c9a24a', 7, 6, 2, 3);
+}];
+DRAW['study-stairs'] = [32, 24, (g) => {
+  R(g, '#4a4d55', 0, 10, 32, 14); R(g, '#8b8f99', 2, 10, 28, 3); R(g, '#6f737d', 4, 14, 24, 3); R(g, '#5b5f69', 6, 18, 20, 3);
+  R(g, '#ffe0a0', 10, 10, 12, 1);
+}];
+const paper = (g: Ctx, x: number, y: number, w: number, h: number) => { R(g, '#efe1bd', x, y, w, h); R(g, '#c9b48a', x, y + h - 1, w, 1); };
+const smallTable = (g: Ctx, w = 16) => { R(g, '#5b3b22', 2, 17, 1, 7); R(g, '#5b3b22', w - 3, 17, 1, 7); R(g, '#8a5a30', 0, 14, w, 3); R(g, '#a87445', 0, 14, w, 1); };
+DRAW['clue.desk'] = [32, 24, (g) => {
+  R(g, '#5b3b22', 1, 12, 30, 12); R(g, '#8a5a30', 0, 10, 32, 3); R(g, '#a87445', 0, 10, 32, 1);
+  R(g, '#6b4a2a', 3, 14, 10, 4); R(g, '#c9a24a', 7, 15, 2, 1); R(g, '#6b4a2a', 19, 14, 10, 4); R(g, '#c9a24a', 23, 15, 2, 1);
+  paper(g, 5, 6, 8, 4); R(g, '#2a2440', 22, 6, 3, 4); R(g, '#f3eee0', 24, 2, 1, 6); R(g, '#ffd25a', 27, 5, 3, 5); R(g, '#fff3c4', 28, 4, 1, 1);
+}];
+DRAW['clue.journal'] = [16, 24, (g) => { smallTable(g); R(g, '#6b2e2e', 3, 8, 10, 6); R(g, '#8e3b3b', 3, 8, 10, 1); R(g, '#efe1bd', 12, 9, 1, 5); R(g, '#c9a24a', 7, 10, 2, 2); }];
+DRAW['clue.cards'] = [16, 24, (g) => { smallTable(g); R(g, '#7a5230', 2, 8, 12, 6); R(g, '#efe1bd', 3, 6, 10, 3); R(g, '#d8c9a3', 4, 5, 8, 1); R(g, '#c0392b', 7, 7, 2, 1); }];
+DRAW['clue.clock'] = [16, 24, (g) => {
+  R(g, '#5b3b22', 3, 4, 10, 20); R(g, '#7a5230', 4, 5, 8, 18); R(g, '#efe1bd', 5, 6, 6, 6); R(g, '#2a2440', 7, 7, 1, 3); R(g, '#2a2440', 8, 9, 2, 1);
+  R(g, '#c9a24a', 7, 14, 2, 6); R(g, '#e9cf7a', 6, 19, 4, 2);
+}];
+DRAW['clue.hearth'] = [32, 24, (g) => {
+  R(g, '#6f737d', 0, 2, 32, 22); R(g, '#8b8f99', 0, 2, 32, 3); R(g, '#1d1a1a', 6, 9, 20, 15);
+  R(g, '#4a4d55', 8, 20, 16, 2); R(g, '#5b5f69', 12, 18, 8, 2); R(g, '#8b8f99', 13, 5, 6, 3); R(g, '#b7bcc6', 14, 6, 4, 1);
+}];
+DRAW['clue.painting'] = [16, 24, (g) => { R(g, '#c9a24a', 1, 2, 14, 12); R(g, '#9fd3ff', 2, 3, 12, 5); R(g, '#4a7a3a', 2, 8, 12, 5); R(g, '#7a5230', 5, 6, 4, 4); R(g, '#ffd25a', 11, 4, 2, 2); }];
+DRAW['clue.margin'] = [16, 24, (g) => { smallTable(g); paper(g, 2, 7, 12, 7); R(g, '#8a7f66', 4, 9, 6, 1); R(g, '#8a7f66', 4, 11, 5, 1); R(g, '#4aa3ff', 11, 8, 2, 5); }];
+DRAW['clue.cabinet'] = [16, 24, (g) => {
+  R(g, '#5b3b22', 1, 4, 14, 20); R(g, '#7a5230', 2, 5, 12, 18); R(g, '#5b3b22', 2, 13, 12, 1); R(g, '#c9a24a', 7, 9, 2, 1); R(g, '#c9a24a', 7, 17, 2, 1);
+  R(g, '#c9a24a', 4, 1, 3, 3); R(g, '#8a6a2a', 4, 4, 3, 1); R(g, '#c9a24a', 9, 2, 2, 2);
+}];
+DRAW['clue.oldmap'] = [32, 24, (g) => {
+  R(g, '#5b3b22', 2, 16, 1, 8); R(g, '#5b3b22', 29, 16, 1, 8); R(g, '#8a5a30', 0, 13, 32, 3); R(g, '#a87445', 0, 13, 32, 1);
+  paper(g, 2, 6, 28, 8); R(g, '#7fb3d1', 18, 6, 2, 8); R(g, '#b98d55', 4, 10, 14, 1); R(g, '#b98d55', 20, 9, 8, 1); R(g, '#c0392b', 9, 8, 2, 2); R(g, '#8a7f66', 22, 7, 1, 1);
+}];
+DRAW['clue.glass'] = [16, 24, (g) => { R(g, '#7a5230', 5, 2, 6, 20); R(g, '#cfe3ef', 7, 4, 2, 14); R(g, '#4a90d9', 7, 11, 2, 7); R(g, '#c9a24a', 6, 19, 4, 3); R(g, '#2a2440', 9, 6, 1, 1); R(g, '#2a2440', 9, 10, 1, 1); R(g, '#2a2440', 9, 14, 1, 1); }];
+DRAW['clue.floodmark'] = [16, 24, (g) => { R(g, '#5b5f69', 0, 0, 16, 24); R(g, '#6f737d', 1, 1, 14, 22); R(g, '#3a5a7a', 0, 12, 16, 1); R(g, '#efe1bd', 6, 9, 4, 2); R(g, '#8a7f66', 7, 10, 2, 1); R(g, '#7a8a6a', 0, 13, 16, 11); }];
+DRAW['clue.slips'] = [16, 24, (g) => { R(g, '#5b3b22', 1, 8, 14, 16); R(g, '#7a5230', 2, 9, 12, 6); R(g, '#efe1bd', 3, 6, 3, 4); R(g, '#efe1bd', 7, 5, 3, 5); R(g, '#efe1bd', 11, 6, 2, 4); R(g, '#c9a24a', 7, 18, 2, 1); }];
+DRAW['clue.scales'] = [16, 24, (g) => { smallTable(g); R(g, '#c9a24a', 7, 4, 2, 10); R(g, '#c9a24a', 2, 4, 12, 1); R(g, '#e9cf7a', 1, 8, 4, 1); R(g, '#e9cf7a', 11, 8, 4, 1); R(g, '#8a6a2a', 2, 5, 1, 3); R(g, '#8a6a2a', 13, 5, 1, 3); }];
+DRAW['clue.caseboard'] = [16, 24, (g) => { R(g, '#7a5230', 0, 2, 16, 14); R(g, '#c9a27a', 1, 3, 14, 12); paper(g, 2, 4, 4, 3); paper(g, 10, 5, 4, 3); paper(g, 5, 10, 4, 3); R(g, '#c0392b', 5, 7, 1, 3); R(g, '#f1c40f', 9, 8, 2, 1); }];
+DRAW['clue.roundwin'] = [16, 24, (g) => roundWindow(g, false)];
+DRAW['clue.drafts'] = [16, 24, (g) => { smallTable(g); paper(g, 1, 9, 6, 5); paper(g, 5, 8, 6, 6); paper(g, 9, 9, 6, 5); R(g, '#2a2440', 6, 10, 4, 1); R(g, '#c0392b', 6, 12, 3, 1); }];
+DRAW['clue.jar'] = [16, 24, (g) => { smallTable(g); R(g, '#9fc7cf', 4, 4, 8, 10); R(g, '#cfe8ee', 5, 5, 1, 8); R(g, '#7a5230', 4, 3, 8, 2); R(g, '#efe1bd', 6, 8, 2, 1); R(g, '#efe1bd', 8, 10, 2, 1); R(g, '#efe1bd', 6, 12, 3, 1); }];
+DRAW['clue.stove'] = [16, 24, (g) => { R(g, '#3b3b42', 2, 8, 12, 14); R(g, '#4a4d55', 2, 8, 12, 2); R(g, '#1d1a1a', 5, 13, 6, 5); R(g, '#3b3b42', 6, 0, 3, 8); R(g, '#2a2a33', 3, 22, 2, 2); R(g, '#2a2a33', 11, 22, 2, 2); }];
+DRAW['clue.bucket'] = [16, 24, (g) => { R(g, '#6b4a2a', 3, 12, 10, 11); R(g, '#8a6a2a', 3, 14, 10, 1); R(g, '#8a6a2a', 3, 19, 10, 1); R(g, '#5b5f69', 4, 8, 1, 4); R(g, '#5b5f69', 11, 8, 1, 4); R(g, '#5b5f69', 5, 7, 6, 1); R(g, '#d8c08a', 13, 13, 2, 9); R(g, '#b98d55', 13, 16, 2, 1); }];
+DRAW['clue.corner'] = [16, 24, (g) => { R(g, '#0f0c0a', 0, 6, 16, 18); R(g, '#1d1612', 2, 10, 12, 12); R(g, '#2a2440', 9, 16, 3, 2); }];
+DRAW['clue.letter'] = [16, 24, (g) => { R(g, '#8b8f99', 2, 16, 12, 6); paper(g, 4, 10, 8, 7); R(g, '#c0392b', 7, 13, 2, 2); R(g, '#8a7f66', 5, 11, 5, 1); R(g, '#ffd25a', 3, 9, 1, 1); R(g, '#ffd25a', 12, 9, 1, 1); }];
+
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {
