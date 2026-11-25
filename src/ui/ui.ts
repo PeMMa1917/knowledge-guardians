@@ -43,6 +43,7 @@ import { artURL, BIG_ART } from './illustrations';
 import { clear, h, trapFocus } from './dom';
 import { dealTiles, isPair, speedRank, tileRank, type Tile } from '../domain/tiles';
 import { TRUST_RANKS, rankOf, trustOf } from '../domain/communities';
+import { WARES, honestLabels, lockedOption, owns, priceFor } from '../domain/shop';
 import { calendarGrid, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
 
 const HIST_LABEL_TEXT: Record<HistoricalLabel, [string, string]> = {
@@ -2591,6 +2592,45 @@ export class UI implements UIApi {
       h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
   }
 
+  /**
+   * Corvan's stall: cosmetic things for the quarters, bought with marks from deeds. Before the market
+   * Showdown his labels shout; after it, they say what he knows. Trust gives a fair-friend discount.
+   */
+  openShop(): void {
+    const c = ctx.controller;
+    const box = this.openModal('shop-panel wide', "Corvan's stall");
+    this.sfx('sfx.coins');
+    const render = (note?: string) => {
+      const s = c.state, honest = honestLabels(s);
+      box.replaceChildren(this.closeBtn(), h('h2', {}, "Corvan's stall"),
+        h('p', {}, honest
+          ? "Corvan: 'New labels. I say what I know, and what I don't. It is strange. Some customers like it better.'"
+          : "Corvan: 'Everything here is the finest in Aethelgard! Ask anyone!' Read the labels carefully. What could he really know?"),
+        h('p', { class: 'fine', role: 'status' }, `You have ${s.marks} marks. You earn marks when a lamp is lit (5) and when you find a secret (3). Things here are for your quarters only.`),
+        ...(note ? [h('p', { class: 'fine', role: 'alert' }, note)] : []),
+        h('div', { class: 'shop-grid' }, ...WARES.map((w) => {
+          const have = owns(s, w), price = priceFor(w, s, c.pack), cm = (c.pack.communities ?? []).find((x) => x.id === w.community);
+          return h('div', { class: `ware ${have ? 'owned' : ''}` },
+            h('strong', {}, (({ wall: 'Walls', floor: 'Floor', rug: 'Rug', lamp: 'Lamp', view: 'Window', plant: 'Plant' }) as Record<string, string>)[w.part], ': ', this.wareName(w)),
+            h('p', { class: honest ? 'label-honest' : 'label-hype' }, honest ? w.honest : w.hype),
+            h('p', { class: 'fine' }, price < w.price ? `${price} marks (${w.price - price} off, for trust from ${cm?.name ?? ''})` : `${price} marks`),
+            have ? h('span', { class: 'fine' }, 'Yours. Choose it in My quarters.')
+              : h('button', { type: 'button', disabled: s.marks < price, onclick: () => {
+                const ev = c.dispatch({ type: 'BuyWare', ware: w.id });
+                if (ev.some((e) => e.kind === 'error')) return;
+                this.sfx('sfx.pickup'); render(`Bought. Open My quarters to use it.`);
+              } }, s.marks < price ? 'Not enough marks' : 'Buy'));
+        })),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    render();
+  }
+
+  private wareName(w: (typeof WARES)[number]): string {
+    const lists: Record<string, Record<string, { name: string } | null>> = { wall: WALLS, floor: FLOORS, rug: RUGS, lamp: LAMPS, view: VIEWS, plant: PLANTS };
+    return lists[w.part][w.key]?.name ?? w.key;
+  }
+
   /** Sefa's Word Tiles: match each TOK word with its meaning. Scores for moves and time; no XP. */
   openTiles(): void {
     const c = ctx.controller;
@@ -2797,7 +2837,7 @@ export class UI implements UIApi {
     const loop = (t: number) => { if (!canvas.isConnected) return; paint(t); if (!ctx.settings.reducedEffects) requestAnimationFrame(loop); };
     const pick = (label: string, k: 'wall' | 'floor' | 'rug' | 'lamp' | 'view' | 'plant' | 'pet', opts: Record<string, { name: string } | null>) => h('label', { class: 'room-pick' }, h('span', {}, label),
       h('select', { onchange: (e: Event) => { room = { ...room, [k]: (e.target as HTMLSelectElement).value }; this.sfx('sfx.click'); save(); paint(performance.now()); } },
-        ...Object.entries(opts).map(([v, o]) => h('option', { value: v, selected: (room[k] ?? 'none') === v }, o?.name ?? 'None'))));
+        ...Object.entries(opts).map(([v, o]) => { const lk = lockedOption(c.state, k, v); return h('option', { value: v, selected: (room[k] ?? 'none') === v, disabled: !!lk }, `${o?.name ?? 'None'}${lk ? " (at Corvan's stall)" : ''}`); })));
     const shelfRow = h('div', { class: 'row wrap shelf-slots', role: 'group', 'aria-label': 'Shelf slots' });
     const ksList = h('div', { class: 'keepsakes' });
     const infoBox = h('p', { class: 'fine keepsake-info', 'aria-live': 'polite' });

@@ -821,3 +821,9 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .trust-pips span.on { background: var(--gold); }
 .chart .fog { position: absolute; inset: 10px; pointer-events: none; overflow: hidden; }
 .chart .fog span { position: absolute; background: #d4c9ae; opacity: 0.97; box-shadow: 0 0 8px 5px #d4c9ae; }
+.shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0.6rem; }
+.ware { padding: 0.6rem 0.8rem; border-radius: 10px; background: var(--panel-2); border: 1px solid var(--gold-dim); display: flex; flex-direction: column; gap: 0.2rem; }
+.ware.owned { border-color: #5fbf7a; }
+.ware p { margin: 0.2rem 0; }
+.label-hype { font-style: italic; font-weight: 600; color: #ffad5c; }
+.label-honest { color: var(--ink); }

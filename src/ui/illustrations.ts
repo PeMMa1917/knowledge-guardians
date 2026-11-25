@@ -469,6 +469,12 @@ DRAW['road-post'] = [16, 24, (g) => {
   R(g, '#4aa3ff', 3, 6, 6, 2); R(g, '#efe1bd', 4, 5, 1, 1); R(g, '#efe1bd', 11, 6, 3, 1); R(g, '#efe1bd', 13, 5, 1, 3);
   R(g, '#4a7a3a', 4, 20, 8, 4); R(g, '#6aa84f', 5, 21, 1, 2); R(g, '#6aa84f', 10, 20, 1, 3);
 }];
+// Corvan's wares: an open crate with a rolled rug, tiles and a little lamp, and a price tag.
+DRAW['crate-wares'] = [16, 24, (g) => {
+  R(g, '#7a5230', 1, 13, 14, 10); R(g, '#a87445', 1, 13, 14, 2); R(g, '#5b3b22', 1, 18, 14, 1);
+  R(g, '#1f5a6b', 2, 8, 5, 5); R(g, '#f3c969', 3, 9, 1, 3); R(g, '#7a2e1e', 8, 9, 3, 4); R(g, '#ffad5c', 9, 10, 1, 1);
+  R(g, '#c9a24a', 12, 7, 2, 6); R(g, '#ffe7a0', 12, 8, 2, 2); R(g, '#efe1bd', 5, 15, 6, 3); R(g, '#2a2440', 6, 16, 4, 1);
+}];
 // Sefa's word tiles: a small table with face-down tiles, two turned up.
 DRAW['tile-table'] = [16, 24, (g) => {
   R(g, '#5b3b22', 2, 17, 1, 7); R(g, '#5b3b22', 13, 17, 1, 7); R(g, '#8a5a30', 0, 13, 16, 4); R(g, '#a87445', 0, 13, 16, 1);

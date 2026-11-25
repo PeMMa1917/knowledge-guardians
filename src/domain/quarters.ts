@@ -11,12 +11,16 @@ export const WALLS: Record<string, { name: string; base: string; line: string; k
   panel: { name: 'Oak panels', base: '#7a5230', line: '#5b3b22', kind: 'panel' },
   night: { name: 'Night-blue dots', base: '#2c3566', line: '#e9cf7a', kind: 'dots' },
   rose: { name: 'Rose limewash', base: '#c98d8d', line: '#b67b7b', kind: 'plain' },
+  // From Corvan's stall (src/domain/shop.ts):
+  cant: { name: 'River-cant script paper', base: '#2f4a5a', line: '#9fd3ff', kind: 'stripe' },
+  ember: { name: 'Ember-glaze tiles', base: '#7a2e1e', line: '#ffad5c', kind: 'brick' },
 };
 export const FLOORS: Record<string, { name: string; a: string; b: string; kind: 'boards' | 'tiles' | 'stone' }> = {
   boards: { name: 'Pine boards', a: '#a87445', b: '#8a5a30', kind: 'boards' },
   dark: { name: 'Dark boards', a: '#5b3b22', b: '#4a2f1b', kind: 'boards' },
   tiles: { name: 'Red and cream tiles', a: '#b8483e', b: '#efe6cf', kind: 'tiles' },
   stone: { name: 'Grey flagstones', a: '#8b8f99', b: '#6f737d', kind: 'stone' },
+  guild: { name: 'Guild-hall chequers', a: '#2a2440', b: '#c9a24a', kind: 'tiles' },
 };
 export const RUGS: Record<string, { name: string; a: string; b: string } | null> = {
   none: null,
@@ -24,18 +28,21 @@ export const RUGS: Record<string, { name: string; a: string; b: string } | null>
   sea: { name: 'Sea and sand', a: '#2b6d8f', b: '#e8d7a8' },
   moss: { name: 'Moss and cream', a: '#476b3a', b: '#efe6cf' },
   dusk: { name: 'Dusk violet', a: '#4b3a7a', b: '#c39bff' },
+  river: { name: 'Ferry-folk weave', a: '#1f5a6b', b: '#f3c969' },
 };
 export const LAMPS: Record<string, { name: string; glow: string }> = {
   lantern: { name: 'Brass lantern', glow: '#ffd28a' },
   candle: { name: 'Tall candle', glow: '#ffe2a8' },
   lumen: { name: 'Lumen jar', glow: '#9fe8ff' },
   forge: { name: 'Ember bowl', glow: '#ff9a5a' },
+  wall: { name: 'A lamp like the Lamp Wall', glow: '#ffe7a0' },
 };
 export const VIEWS: Record<string, { name: string; sky: string; ground: string; kind: 'stars' | 'roofs' | 'sea' | 'hills' }> = {
   stars: { name: 'Nexus stars', sky: '#141a3a', ground: '#232a52', kind: 'stars' },
   roofs: { name: 'Emberford roofs', sky: '#f2b880', ground: '#7a3d2a', kind: 'roofs' },
   sea: { name: 'Grey sea', sky: '#9fb7c8', ground: '#3f6f86', kind: 'sea' },
   hills: { name: 'Green hills', sky: '#bfe3f0', ground: '#4f8a4a', kind: 'hills' },
+  river: { name: 'The ferry river at dusk', sky: '#e7a06a', ground: '#2b6f9a', kind: 'sea' },
 };
 export const PLANTS: Record<string, { name: string; leaf: string; flower?: string } | null> = {
   none: null,
@@ -43,6 +50,7 @@ export const PLANTS: Record<string, { name: string; leaf: string; flower?: strin
   geranium: { name: 'Red geranium', leaf: '#4f8a4a', flower: '#d9534a' },
   lavender: { name: 'Lavender', leaf: '#6a8a5a', flower: '#a98be0' },
   cactus: { name: 'Small cactus', leaf: '#5f9a5a', flower: '#ffd75e' },
+  reeds: { name: 'River reeds', leaf: '#7a8a3a', flower: '#b98d55' },
 };
 /** A room companion (cosmetic): it sleeps, blinks or wanders a little. */
 export const PETS: Record<string, { name: string } | null> = {

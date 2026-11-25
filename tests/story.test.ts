@@ -116,3 +116,25 @@ describe('communities of Emberford (reputation)', () => {
     for (const cm of pack.communities!) expect(cm.gains.reduce((n, g) => n + g.pts, 0), cm.id).toBeGreaterThanOrEqual(6);
   });
 });
+
+describe("Corvan's stall (economy)", () => {
+  it('marks come from deeds; a ware is bought once; trust gives a discount; labels turn honest after the Showdown', async () => {
+    const { WARES, priceFor, honestLabels, lockedOption } = await import('../src/domain/shop');
+    const d = new Driver();
+    const m0 = d.s.marks;
+    d.run({ type: 'SetFlag', flag: 'puzzle.ferry-message.done', value: true }); // a lamp: +5
+    d.run({ type: 'FindSecret', secret: 'star-names' }); // a secret: +3
+    expect(d.s.marks - m0).toBe(8);
+    const rug = WARES.find((w) => w.id === 'rug-river')!;
+    expect(lockedOption(d.s, 'rug', 'river')).toBeTruthy();
+    expect(priceFor(rug, d.s, pack)).toBe(15);
+    d.run({ type: 'SetFlag', flag: 'puzzle.forecast-board.done', value: true }); // river trust 2+1+2 = 5 -> Trusted
+    expect(priceFor(rug, d.s, pack)).toBe(13);
+    d.s.marks = 20;
+    d.run({ type: 'BuyWare', ware: 'rug-river' });
+    expect(d.s.marks).toBe(7);
+    expect(lockedOption(d.s, 'rug', 'river')).toBeNull();
+    expect(() => d.run({ type: 'BuyWare', ware: 'rug-river' })).toThrow();
+    expect(honestLabels(d.s)).toBe(false);
+  });
+});

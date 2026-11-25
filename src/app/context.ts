@@ -21,6 +21,7 @@ export interface UIApi {
   openLamps(): void;
   openTiles(): void;
   openTown(): void;
+  openShop(): void;
   openLedger(): void;
   openClue(id: string): void;
   openLoreling(loreling: string, sighting?: string): void;

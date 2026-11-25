@@ -4,6 +4,7 @@
  * (spec 22.2). A button never writes XP or state directly.
  */
 import { trustOf, rankOf } from './communities';
+import { WARES, priceFor } from './shop';
 import type {
   AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
@@ -50,6 +51,7 @@ export type Command =
   | { type: 'UseKeepsake'; clue: string; keepsake: string }
   | { type: 'ReadClue'; clue: string }
   | { type: 'FindSecret'; secret: string }
+  | { type: 'BuyWare'; ware: string }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
@@ -299,12 +301,21 @@ export class Engine {
           events.push({ kind: 'clue', clue: cl.id, keepsake: cmd.keepsake, text: v.text });
           break;
         }
+        case 'BuyWare': {
+          const w = WARES.find((x) => x.id === cmd.ware);
+          if (!w) throw new Error('Corvan does not sell that');
+          if (s.flags[`owned.${w.id}`] === true) throw new Error('You already have that');
+          const price = priceFor(w, s, this.pack);
+          if (s.marks < price) throw new Error('You do not have enough marks');
+          s = apply([{ addMarks: -price }, { setFlag: `owned.${w.id}`, value: true }], s, out);
+          break;
+        }
         case 'FindSecret': {
           const all = this.pack.secrets ?? [];
           const x = all.find((y) => y.id === cmd.secret);
           if (!x) throw new Error('Unknown secret');
           if (s.flags[`secret.${x.id}`] !== true) {
-            s = apply([{ setFlag: `secret.${x.id}`, value: true }, { addNum: 'secrets.found', by: 1 }], s, out);
+            s = apply([{ setFlag: `secret.${x.id}`, value: true }, { addNum: 'secrets.found', by: 1 }, { addMarks: 3 }], s, out);
             events.push({ kind: 'secret', id: x.id, name: x.name, found: Number(s.flags['secrets.found']), total: all.length });
           }
           break;
@@ -833,7 +844,7 @@ export class Engine {
       const knots = this.pack.knots ?? [];
       for (const kn of knots) {
         if (s.flags[`lamp.${kn.id}`] === true || !check(kn.if, s)) continue;
-        s = apply([{ setFlag: `lamp.${kn.id}`, value: true }, { addNum: 'lamps.lit', by: 1 }], s, out);
+        s = apply([{ setFlag: `lamp.${kn.id}`, value: true }, { addNum: 'lamps.lit', by: 1 }, { addMarks: 5 }], s, out);
         events.push({ kind: 'lamp', id: kn.id, name: kn.name, lit: kn.lit, count: Number(s.flags['lamps.lit']), total: knots.length });
         changed = true;
       }
