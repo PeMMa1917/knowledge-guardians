@@ -19,7 +19,10 @@ const problems: string[] = [];
 let dismissed: string[] = [];
 try { dismissed = JSON.parse(localStorage.getItem('kg.teacher.dismissed') ?? '[]'); } catch { /* storage blocked */ }
 
-const STEP_TOTAL = pack.missions.flatMap((m) => m.objectives.filter((o) => o.essential)).length;
+const ESSENTIAL = new Set(pack.missions.flatMap((m) => m.objectives.filter((o) => o.essential).map((o) => o.id)));
+const STEP_TOTAL = ESSENTIAL.size;
+/** EE practice trails (spec 92.2): shown as practice only (EE-003). */
+const EE_STEPS = pack.missions.filter((m) => m.id.includes('-EE')).flatMap((m) => m.objectives);
 const pct = (x: number) => `${Math.round(x * 100)}%`;
 
 function bars(title: string, names: Record<string, string>, data: Record<string, { total: number; students: number }>, n: number, note: string): HTMLElement {
@@ -56,10 +59,11 @@ function dashboard(): void {
         files.length ? h('button', { onclick: () => download('subject-links.csv', subjectCsv(files), 'text/csv') }, 'Subject links (CSV)') : ''),
       h('p', { class: 'note no-print' }, 'Students save a progress file in the game (Menu, "Share with my teacher") and give it to you. The files stay in this browser tab. Nothing is uploaded or stored. Close the tab to remove them.'),
       problems.length ? h('ul', { class: 'problems', role: 'alert' }, ...problems.map((p) => h('li', {}, p))) : ''),
+    guide(),
   );
   if (!students.length) { root.append(h('p', {}, 'No progress files yet.')); return; }
 
-  root.append(h('section', { class: 'panel summary' }, h('h2', {}, `Weekly class summary (${s.students} students)`),
+  root.append(h('section', { class: 'panel summary' }, h('h2', {}, `Weekly class summary (${s.students} students)`), h('p', { class: 'note' }, `Made on ${new Date().toLocaleDateString()} from the latest file of each student. Formative only.`),
     h('ul', {},
       h('li', {}, `Concepts met by the fewest students: ${s.gaps.map((g) => CONCEPT_NAMES[g as keyof typeof CONCEPT_NAMES]).join(', ')}. A possible focus for the next lesson.`),
       s.alerts.filter((a) => a.classLevel).length
@@ -81,11 +85,25 @@ function dashboard(): void {
         h('strong', {}, `${a.id} ${a.title}`), ` · ${a.students} student(s), ${pct(a.share)} of the class${a.classLevel ? ' · ALERT' : ' · watch'}`,
         h('br', {}), h('small', {}, `Suggested move: ${a.teacherMove}`),
         h('button', { class: 'mini no-print', onclick: () => { dismissed.push(a.id); try { localStorage.setItem('kg.teacher.dismissed', JSON.stringify(dismissed)); } catch { /* ignore */ } dashboard(); } }, 'Not a misconception')))) : h('p', {}, 'No patterns seen.')),
-    h('section', { class: 'panel' }, h('h2', {}, 'Progress and pacing'),
-      h('p', { class: 'note' }, 'For you only. Do not show this list to the class (no public ranking). Names are in alphabetical order.'),
-      h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Student'), h('th', {}, 'Chapter 1 steps'), h('th', {}, 'File saved'), h('th', {}, ''))),
-        h('tbody', {}, ...students.map((f) => h('tr', {}, h('th', { scope: 'row' }, f.player), h('td', {}, `${f.objectivesDone.filter((o) => !o.includes('side')).length} of ${STEP_TOTAL}`),
+    h('section', { class: 'panel no-print wide' }, h('h2', {}, 'Progress and pacing'),
+      h('p', { class: 'note' }, 'For you only. Do not show this list to the class (no public ranking). Names are in alphabetical order. This panel is left out when you print.'),
+      h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Student'), h('th', {}, 'Chapter 1 steps'), h('th', {}, 'EE practice steps'), h('th', {}, 'File saved'), h('th', {}, ''))),
+        h('tbody', {}, ...students.map((f) => h('tr', {}, h('th', { scope: 'row' }, f.player), h('td', {}, `${f.objectivesDone.filter((o) => ESSENTIAL.has(o)).length} of ${STEP_TOTAL}`),
+          h('td', {}, `${f.objectivesDone.filter((o) => EE_STEPS.some((x) => x.id === o)).length} of ${EE_STEPS.length}`),
           h('td', {}, new Date(f.exportedAt).toLocaleDateString()), h('td', {}, h('button', { class: 'mini', onclick: () => studentReport(f) }, 'Open report')))))))));
+}
+
+function guide(): HTMLElement {
+  return h('details', { class: 'panel guide no-print' }, h('summary', {}, h('strong', {}, 'How to use this view (teacher guide)')),
+    h('ol', {},
+      h('li', {}, 'Ask students to open Menu in the game and choose "Share with my teacher". They choose which portfolio entries to include. Notes and the journal are never included.'),
+      h('li', {}, 'Collect the files (for example through your school\'s usual hand-in). Add them here. A later file from the same student replaces an earlier one.'),
+      h('li', {}, 'Read the weekly summary first. The concepts met by the fewest students are a possible focus for the next lesson.'),
+      h('li', {}, 'Misconception alerts are fixed rules on choices in play. They can be wrong. Talk with the student before you decide anything. Use "Not a misconception" to hide an alert in this browser.'),
+      h('li', {}, 'Learner-profile moments are class totals only. There are no student scores for the learner profile.'),
+      h('li', {}, 'EE practice steps are practice on a set topic. They are not the student\'s Extended Essay, and the game never asks for the student\'s own question.'),
+      h('li', {}, 'Nothing in this view is a mark or a predicted grade. Do not show the progress list to the class.')),
+    h('p', { class: 'note' }, 'Privacy: the files stay in this browser tab. Nothing is uploaded or stored, except the list of alerts that you marked "Not a misconception".'));
 }
 
 function studentReport(f: ProgressFile): void {
@@ -105,6 +123,9 @@ function studentReport(f: ProgressFile): void {
         const a = pack.awards.find((x) => x.id === id);
         return h('li', {}, h('strong', {}, a?.name ?? id), a ? ` · ${a.earnedBy}` : '');
       })) : h('p', {}, 'None yet.')),
+      h('section', { class: 'panel' }, h('h2', {}, 'EE practice (not the Extended Essay)'),
+        h('p', { class: 'note' }, 'Practice on a set topic in the game. The student\'s real Extended Essay is their own work with their supervisor.'),
+        h('ul', { class: 'chips' }, ...EE_STEPS.map((o) => h('li', { class: f.objectivesDone.includes(o.id) ? 'met' : '' }, o.title.replace(/^EE practice: /, '').replace(/ \(.*\)\.$/, '.').replace(/\.$/, ''))))),
       h('section', { class: 'panel' }, h('h2', {}, 'Open alerts'),
         h('p', { class: 'note' }, 'An alert may be wrong. Talk with the student before you decide anything.'),
         f.misconceptions.length ? h('ul', {}, ...f.misconceptions.map((m) => h('li', {}, `${m.id} ${m.title}: seen ${m.count} time(s) recently (${m.level}). Suggested move: ${pack.misconceptions.find((x) => x.id === m.id)?.teacherMove ?? ''}`))) : h('p', {}, 'None.'))),

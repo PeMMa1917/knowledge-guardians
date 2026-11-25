@@ -17,6 +17,8 @@ input[type=file]:focus-visible + * , input[type=file]:focus-visible { outline: 3
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1rem; margin-top: 1rem; }
 .panel { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 1rem; break-inside: avoid; }
 .summary { margin-top: 1rem; border-color: var(--gold); }
+.panel.wide { grid-column: 1 / -1; }
+.guide { margin-top: 1rem; }
 table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
 th, td { text-align: left; padding: 0.25em 0.4em; border-bottom: 1px solid var(--line); vertical-align: middle; }
 tr.gap th, tr.gap td { color: #9a93ab; }
@@ -30,6 +32,9 @@ td { white-space: nowrap; }
 .alerts li { margin: 0.5em 0; }
 .alerts li.alert strong { color: var(--warn); }
 .problems { color: var(--warn); }
+.guide summary { cursor: pointer; }
+.guide ol { margin: 0.6em 0 0.4em 1.2em; padding: 0; }
+.guide li { margin: 0.3em 0; }
 .entry { border-top: 1px solid var(--line); padding-top: 0.5em; }
 footer { margin-top: 2rem; font-size: 0.8rem; color: var(--dim); border-top: 1px solid var(--line); padding-top: 0.6em; }
 @media print {
