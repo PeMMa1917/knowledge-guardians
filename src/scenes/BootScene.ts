@@ -1,3 +1,4 @@
+import { BASE_SHEET_KEY, BASE_SHEET_URL } from './looks';
 import Phaser from 'phaser';
 import { STAMPS, CHAR_FRAME } from './art';
 import { artKeys, drawArt, glowCanvas } from '../ui/illustrations';
@@ -36,6 +37,7 @@ export class BootScene extends Phaser.Scene {
     this.load.on('progress', (p: number) => { bar.width = Math.max(4, p * 300); });
     this.load.image('ow', 'assets/art/armm1998/Overworld.png');
     this.load.image('in', 'assets/art/armm1998/Inner.png');
+    this.load.image(BASE_SHEET_KEY, BASE_SHEET_URL); // base for custom player looks
     for (const id of CHARACTER_SHEETS) {
       this.load.spritesheet(`char.${id}`, `assets/art/generated/characters/${id}.png`, { frameWidth: CHAR_FRAME.w, frameHeight: CHAR_FRAME.h });
     }

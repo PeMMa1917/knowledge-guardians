@@ -22,6 +22,7 @@ export function validateCampaign(s: any): string[] {
   ];
   for (const [k, t] of need) if (typeof s[k] !== t) p.push(`${k} must be a ${t}`);
   if (!s.player || typeof s.player.name !== 'string' || s.player.name.length > 40) p.push('player.name invalid');
+  if (s.player && (typeof s.player.look !== 'string' || s.player.look.length > 80)) p.push('player.look invalid');
   const pr = s.player?.pronouns;
   if (!pr || !['subject', 'object', 'possessive'].every((k) => typeof pr[k] === 'string' && pr[k].length >= 1 && pr[k].length <= 16)) p.push('player.pronouns invalid');
   if (s.player && s.player.origin !== null && typeof s.player.origin !== 'string') p.push('player.origin invalid');

@@ -519,7 +519,7 @@
    "id": "archivist-tull",
    "name": "Archivist Noor Tull",
    "role": "Nexus archivist",
-   "sprite": "villager-1",
+   "sprite": "custom:brown.grey.slate.charcoal.scarf.gold",
    "mode": "fictional",
    "talk": [
     {
@@ -586,7 +586,7 @@
    "id": "translator-ama",
    "name": "Translator Ama Ofori",
    "role": "Translates the Nexus labels",
-   "sprite": "villager-2",
+   "sprite": "custom:dark.black.gold.wine.headband.red",
    "mode": "fictional",
    "talk": []
   },
@@ -594,7 +594,7 @@
    "id": "translator-lio",
    "name": "Translator Lio Ferreira",
    "role": "Translates the Nexus labels",
-   "sprite": "villager-1",
+   "sprite": "custom:olive.black.blue.sand.scarf.white",
    "mode": "fictional",
    "talk": [
     {
@@ -626,7 +626,7 @@
    "id": "fruit-seller",
    "name": "Fruit seller Mara",
    "role": "Emberford market",
-   "sprite": "villager-2",
+   "sprite": "custom:warm.auburn.green.sand.headband.rose",
    "mode": "fictional",
    "talk": [
     {
@@ -675,7 +675,7 @@
    "id": "well-keeper",
    "name": "Well keeper Efua Asante",
    "role": "Emberford",
-   "sprite": "villager-1",
+   "sprite": "custom:deep.black.orange.brown.headband.gold",
    "mode": "fictional",
    "talk": [
     {
@@ -747,7 +747,7 @@
    "id": "keeper-oduya",
    "name": "Keeper Ruth Oduya",
    "role": "Emberford record-keeper",
-   "sprite": "villager-2",
+   "sprite": "custom:dark.white.plum.charcoal.scarf.gold",
    "mode": "fictional",
    "talk": [
     {
@@ -815,7 +815,7 @@
    "id": "visitor-sol",
    "name": "Sol, a visitor",
    "role": "visitor in the Hall of Firsts",
-   "sprite": "villager-1",
+   "sprite": "custom:tan.black.cream.indigo.none.gold",
    "mode": "fictional",
    "talk": [
     {
@@ -834,7 +834,7 @@
    "id": "cataloguer-bela",
    "name": "Cataloguer Bela Varga",
    "role": "Keeps the Nexus card catalogue",
-   "sprite": "villager-1",
+   "sprite": "custom:pale.grey.violet.charcoal.scarf.cyan",
    "mode": "fictional",
    "talk": [
     {
@@ -866,7 +866,7 @@
    "id": "runner-tamar",
    "name": "Runner Tamar Okoro",
    "role": "Carries messages from the river farms",
-   "sprite": "villager-2",
+   "sprite": "custom:brown.black.teal.sand.headband.white",
    "mode": "fictional",
    "talk": [
     {
@@ -898,7 +898,7 @@
    "id": "apprentice-ren",
    "name": "Apprentice Ren Takahashi",
    "role": "Learns from Hesper",
-   "sprite": "villager-1",
+   "sprite": "custom:light.black.slate.brown.headband.red",
    "mode": "fictional",
    "talk": [
     {
@@ -930,7 +930,7 @@
    "id": "singer-teodora",
    "name": "Singer Teodora Lupu",
    "role": "Sings the old work songs",
-   "sprite": "villager-2",
+   "sprite": "custom:olive.auburn.plum.wine.scarf.gold",
    "mode": "fictional",
    "talk": [
     {

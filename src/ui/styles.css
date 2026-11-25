@@ -288,3 +288,17 @@ button.speak { display: block; margin: 0 0 0.4em auto; }
 .title-screen.create > :last-child { margin-bottom: auto; }
 .pronouns label.check { display: inline-flex; align-items: center; gap: 0.3em; white-space: nowrap; width: auto; margin: 0; }
 .pronouns .row { justify-content: center; }
+
+/* Appearance picker (spec 35.1). */
+.look-picker { display: flex; flex-direction: column; align-items: center; gap: 0.6em; }
+.look-body { display: flex; gap: 1em; align-items: flex-start; flex-wrap: wrap; justify-content: center; }
+.look-preview { background: radial-gradient(circle at 50% 60%, rgba(159,232,255,0.18), transparent 70%); border: 1px solid var(--gold-dim); border-radius: 12px; padding: 0.4em 0.8em; }
+.look-preview canvas { display: block; image-rendering: pixelated; }
+.look-custom { display: grid; gap: 0.35em; text-align: left; }
+.swatch-row { display: grid; grid-template-columns: 8.5em 1fr; align-items: center; gap: 0.5em; }
+.swatch-row > span { font-size: 0.85rem; color: var(--ink-dim); }
+.swatches { display: flex; flex-wrap: wrap; gap: 0.3em; }
+.swatch { width: 1.7em; height: 1.7em; min-width: 0; padding: 0; border-radius: 50%; border: 2px solid rgba(255,255,255,0.25); }
+.swatch[aria-checked="true"] { outline: 3px solid var(--gold); outline-offset: 2px; border-color: #fff; }
+@media (max-width: 640px) { .swatch-row { grid-template-columns: 1fr; } }
+.portrait.custom { overflow: hidden; } .portrait.custom canvas { display: block; margin-top: 4px; image-rendering: pixelated; }

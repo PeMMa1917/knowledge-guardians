@@ -9,6 +9,7 @@ import type {
 } from './types';
 import { CAMPAIGN_SCHEMA, type Pronouns } from './types';
 import { cleanPronouns } from './player';
+import { isValidLook } from './appearance';
 import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
 import { checkAwards, grantCredit } from './permanent';
 import { evaluateLabel, type LabelResult } from './label';
@@ -20,6 +21,7 @@ import { addPortfolio, addSignal, checkMoments, recordWeave, tickEvents } from '
 export type Command =
   | { type: 'Reach'; zone: string }
   | { type: 'SetPronouns'; pronouns: Pronouns }
+  | { type: 'SetLook'; look: string }
   | { type: 'EnterNode'; node: string }
   | { type: 'ChooseDialogueOption'; node: string; index: number }
   | { type: 'InspectExhibit'; exhibit: string }
@@ -367,6 +369,12 @@ export class Engine {
           if (!check(o.if, s)) throw new Error('That offer is not available');
           if (s.marks < o.price) throw new Error('You do not have enough marks');
           s = apply([{ addMarks: -o.price }, { giveItem: o.item }, ...(o.effects ?? [])], s, out);
+          break;
+        }
+        case 'SetLook': {
+          if (!isValidLook(cmd.look)) throw new Error('Unknown look');
+          s = structuredClone(s);
+          s.player.look = cmd.look;
           break;
         }
         case 'SetPronouns': {

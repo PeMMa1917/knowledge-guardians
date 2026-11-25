@@ -6,6 +6,7 @@
  * Controls: arrows / WASD to walk, E / Space / Enter to interact,
  * click or tap to walk to a spot or a person (alternative control route).
  */
+import { ensureLook } from './looks';
 import Phaser from 'phaser';
 import { ctx, type WorldApi } from '../app/context';
 import { MAPS } from '../maps';
@@ -35,6 +36,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private lumen!: Phaser.GameObjects.Image;
   private lumenGlow!: Phaser.GameObjects.Image;
   private keys!: Record<string, Phaser.Input.Keyboard.Key>;
+  private playerSheet = 'player-a';
   private path: { x: number; y: number }[] = [];
   private pendingInteract: (() => void) | null = null;
   private zonesInside = new Set<string>();
@@ -167,7 +169,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       block(21, 23, 1, 1);
     }
 
-    const look = ctx.controller.state.player.look;
+    const look = ensureLook(this, ctx.controller.state.player.look);
+    this.playerSheet = look;
     let px = s.pos.x, py = s.pos.y;
     if (px < 0 || py < 0 || this.blocked[py]?.[px] !== false) { px = m.spawn.x; py = m.spawn.y; }
     this.player = this.makeActor(look, px, py, s.facing, true);
@@ -225,7 +228,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   private makeActor(id: string, tx: number, ty: number, facing: Dir, isPlayer = false): Actor {
     // A character can use another character's sheet (for example the archivist uses a villager sheet).
-    const sheet = this.textures.exists(`char.${id}`) ? id : ctx.controller.pack.characters.find((c) => c.id === id)?.sprite ?? id;
+    let sheet = this.textures.exists(`char.${id}`) ? id : ctx.controller.pack.characters.find((c) => c.id === id)?.sprite ?? id;
+    if (sheet.startsWith('custom:')) sheet = ensureLook(this, sheet); // characters can use a made look too
     const sprite = this.add.sprite(tx * TILE + 8, ty * TILE + 12, `char.${sheet}`, this.idleFrame(facing)).setOrigin(0.5, 0.8);
     const shadow = this.add.image(sprite.x, sprite.y + 6, 'shadow').setDepth(sprite.y - 1);
     if (!isPlayer) sprite.setInteractive({ useHandCursor: true });
@@ -346,7 +350,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       if (!this.collides(p.sprite.x, p.sprite.y + my)) p.sprite.y += my;
       const f: Dir = Math.abs(vx) > Math.abs(vy) ? (vx > 0 ? 'right' : 'left') : (vy > 0 ? 'down' : 'up');
       p.facing = f;
-      p.sprite.anims.play(`${ctx.controller.state.player.look}.walk.${f}`, true);
+      p.sprite.anims.play(`${this.playerSheet}.walk.${f}`, true);
       this.trail.push({ x: p.sprite.x, y: p.sprite.y, f });
       if (this.trail.length > 40) this.trail.shift();
       this.stepTimer += dt;

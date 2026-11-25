@@ -86,6 +86,7 @@ Rules for `historicalLabel`:
 - Players choose options with number keys. Keep option text short.
 - No runtime AI. All text is written in advance.
 - **The player in text (spec 35.1).** Use `{name}`, `{they}`, `{them}`, `{their}` (and `{They}`, `{Them}`, `{Their}` at the start of a sentence). The game puts in the player's name and chosen pronouns. Write the line so that the verb does not change with the pronoun: "{they} checked every date", not "{they} is careful".
+- **Character looks.** A character's `sprite` is a sheet in `public/assets/art/generated/characters/`, or a made look such as `"custom:olive.black.blue.sand.scarf.white"` (skin, hair, outfit, trousers, accessory, accent; the names are in `src/domain/appearance.ts`). Give each new character its own look.
 - **Origin options.** An option with `"if": { "origin": "singer" }` shows only for that origin. Each origin needs one option in each world (the validator checks this). Origin options must not give credit, marks or cards: an origin gives no advantage. 
 
 ## Weave tags (WEAVE-016 to WEAVE-018)

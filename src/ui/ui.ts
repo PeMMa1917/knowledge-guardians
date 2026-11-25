@@ -9,6 +9,8 @@
 import { ctx, type UIApi } from '../app/context';
 import { saveSettings, type Settings } from '../app/settings';
 import { PRONOUN_SETS, cleanPronouns, personalise } from '../domain/player';
+import { ACCENT, ACCESSORIES, HAIR, LABELS, OUTFIT, PRESET_LOOKS, SKIN, TROUSERS, decodeLook, encodeLook, type LookChoice } from '../domain/appearance';
+import { previewLook } from '../scenes/looks';
 import type { Pronouns } from '../domain/types';
 import { ACTIONS, PRESETS, actionFor, assignKey, mappableKey, type Action } from '../app/keymap';
 import type { GameEvent, SimulationResult } from '../domain/engine';
@@ -192,15 +194,8 @@ export class UI implements UIApi {
 
   private characterCreation(): void {
     clear(this.root); this.root.append(this.toastBox);
-    let look: string = PLAYER_LOOKS[0];
+    const lookPick = this.lookPicker(PLAYER_LOOKS[0]);
     const name = h('input', { id: 'pname', maxlength: '24', value: '', placeholder: 'Your Guardian name', autocomplete: 'off', 'data-autofocus': true }) as HTMLInputElement;
-    const looks = h('div', { class: 'looks', role: 'radiogroup', 'aria-label': 'Appearance' },
-      ...PLAYER_LOOKS.map((id, i) => {
-        const b = h('button', { class: 'look', role: 'radio', 'aria-checked': String(i === 0), 'aria-label': `Appearance ${i + 1}`, onclick: () => {
-          look = id; looks.querySelectorAll('.look').forEach((x) => x.setAttribute('aria-checked', 'false')); b.setAttribute('aria-checked', 'true');
-        } }, h('span', { class: 'sprite', style: { backgroundImage: `url(assets/art/generated/characters/${id}.png)` } }));
-        return b;
-      }));
     const pron = this.pronounPicker(PRONOUN_SETS[0].p);
     let origin: string | null = null;
     const originBox = h('div', { class: 'origins', role: 'radiogroup', 'aria-label': 'Origin' },
@@ -212,7 +207,7 @@ export class UI implements UIApi {
       }));
     const start = () => {
       const n = name.value.trim() || 'Recruit';
-      ctx.controller.newGame(n.slice(0, 24), look, { pronouns: pron.value(), origin });
+      ctx.controller.newGame(n.slice(0, 24), lookPick.value(), { pronouns: pron.value(), origin });
       this.startPlaying(false);
     };
     name.addEventListener('keydown', (e) => { if (e.key === 'Enter') start(); });
@@ -220,12 +215,47 @@ export class UI implements UIApi {
       h('h1', {}, 'A new Guardian'),
       h('p', {}, 'Every student is a Knowledge Guardian from the first day. Choose a name and how you look. You can play in any way you like.'),
       h('label', { for: 'pname' }, 'Name'), name,
-      h('p', { class: 'label' }, 'Appearance'), looks,
+      h('p', { class: 'label' }, 'Appearance (every option is open from the start; you can change it later in the menu)'), lookPick.el,
       h('p', { class: 'label' }, 'Pronouns (characters use these; you can change them later in the menu)'), pron.el,
       h('p', { class: 'label' }, 'Origin (optional). It gives one Lens hint and one extra conversation option in each world. It gives no advantage.'), originBox,
       h('div', { class: 'row' }, h('button', { class: 'primary', onclick: start }, 'Begin'), h('button', { onclick: () => this.showTitle() }, 'Back')));
     this.root.append(box);
     setTimeout(() => name.focus(), 0);
+  }
+
+  /** Appearance choice (spec 35.1): four ready-made looks, or choose each colour and an accessory, with a live preview. */
+  private lookPicker(current: string): { el: HTMLElement; value: () => string } {
+    let choice: LookChoice = decodeLook(current);
+    let presetId: string | null = PRESET_LOOKS[current] ? current : null;
+    const preview = h('div', { class: 'look-preview', role: 'img' });
+    const describe = () => `${LABELS[choice.skin]} skin, ${LABELS[choice.hair]} hair, ${LABELS[choice.outfit]} outfit, ${LABELS[choice.trousers]} trousers${choice.accessory === 'none' ? '' : `, ${LABELS[choice.accent]} ${LABELS[choice.accessory]}`}`;
+    const draw = () => { clear(preview); preview.append(previewLook(presetId ?? encodeLook(choice), 4)); preview.setAttribute('aria-label', `Preview: ${describe()}`); };
+    const swatches = (label: string, k: keyof LookChoice, table: Record<string, any>) => {
+      const row = h('div', { class: 'swatches', role: 'radiogroup', 'aria-label': label });
+      const paint = () => row.querySelectorAll('button').forEach((b) => b.setAttribute('aria-checked', String(b.dataset.v === choice[k])));
+      for (const id of Object.keys(table)) {
+        const col = Array.isArray(table[id]) ? table[id][0] : table[id];
+        row.append(h('button', { type: 'button', class: 'swatch', role: 'radio', 'data-v': id, title: LABELS[id] ?? id, 'aria-label': `${label}: ${LABELS[id] ?? id}`,
+          style: { background: `#${col}` }, onclick: () => { (choice as any)[k] = id; presetId = null; paint(); draw(); } }));
+      }
+      paint();
+      return h('div', { class: 'swatch-row' }, h('span', {}, label), row);
+    };
+    const accSel = h('select', { 'aria-label': 'Accessory', onchange: (e: Event) => { choice.accessory = (e.target as HTMLSelectElement).value as any; presetId = null; draw(); } },
+      ...ACCESSORIES.map((a) => h('option', { value: a, selected: choice.accessory === a }, LABELS[a]))) as HTMLSelectElement;
+    const custom = h('div', { class: 'look-custom' },
+      swatches('Skin', 'skin', SKIN), swatches('Hair', 'hair', HAIR), swatches('Outfit', 'outfit', OUTFIT), swatches('Trousers', 'trousers', TROUSERS),
+      h('div', { class: 'swatch-row' }, h('span', {}, 'Accessory'), accSel), swatches('Accessory colour', 'accent', ACCENT));
+    const presets = h('div', { class: 'looks', role: 'radiogroup', 'aria-label': 'Ready-made looks' },
+      ...PLAYER_LOOKS.map((id, i) => h('button', { type: 'button', class: 'look', role: 'radio', 'aria-checked': String(id === presetId), 'aria-label': `Ready-made look ${i + 1}`, onclick: (e: Event) => {
+        presetId = id; choice = decodeLook(id);
+        presets.querySelectorAll('.look').forEach((x) => x.setAttribute('aria-checked', String(x === e.currentTarget)));
+        const fresh = this.lookPicker(id); el.replaceWith(fresh.el); api.value = () => fresh.value();
+      } }, h('span', { class: 'sprite', style: { backgroundImage: `url(assets/art/generated/characters/${id}.png)` } }))));
+    const el = h('div', { class: 'look-picker' }, presets, h('div', { class: 'look-body' }, preview, custom));
+    draw();
+    const api = { el, value: () => presetId ?? encodeLook(choice) };
+    return api;
   }
 
   /** Pronoun choice (spec 35.1): three common sets, or the player's own words. */
@@ -249,13 +279,22 @@ export class UI implements UIApi {
     const c = ctx.controller;
     const pl = c.state.player;
     const pron = this.pronounPicker(pl.pronouns);
+    const lookPick = this.lookPicker(pl.look);
     const o = c.pack.origins.find((x) => x.id === pl.origin);
-    this.openModal('guardian', 'My Guardian', this.closeBtn(), h('h2', {}, pl.name),
+    this.openModal('guardian wide', 'My Guardian', this.closeBtn(), h('h2', {}, pl.name),
+      h('p', { class: 'label' }, 'Appearance'), lookPick.el,
       h('p', { class: 'label' }, 'Pronouns'), pron.el,
       h('p', { class: 'label' }, 'Origin'),
       o ? h('p', {}, h('strong', {}, o.name), `. ${o.background} ${o.link}`) : h('p', { class: 'fine' }, 'No origin. (This game started before origins existed, or you chose none.)'),
       h('div', { class: 'row' },
-        h('button', { class: 'primary', onclick: () => { c.dispatch({ type: 'SetPronouns', pronouns: pron.value() }); this.toast('Pronouns saved.', 'save'); this.closeModal(); } }, 'Save'),
+        h('button', { class: 'primary', onclick: () => {
+          c.dispatch({ type: 'SetPronouns', pronouns: pron.value() });
+          const look = lookPick.value();
+          const changed = look !== c.state.player.look;
+          if (changed) c.dispatch({ type: 'SetLook', look });
+          this.toast('Saved.', 'save'); this.closeModal();
+          if (changed) ctx.world?.applySettings();
+        } }, 'Save'),
         h('button', { onclick: () => this.closeModal() }, 'Cancel')));
   }
 
@@ -446,7 +485,9 @@ export class UI implements UIApi {
     const portrait = n.speaker === 'lumen'
       ? h('img', { class: 'portrait lumen-portrait', src: artURL('lumen'), alt: '' })
       : n.speaker === 'narrator' ? null
-      : h('span', { class: 'portrait', style: { backgroundImage: `url(assets/art/generated/characters/${(speaker as any)?.sprite}.png)` }, 'aria-hidden': 'true' });
+      : String((speaker as any)?.sprite ?? '').startsWith('custom:')
+        ? h('span', { class: 'portrait custom', 'aria-hidden': 'true' }, previewLook((speaker as any).sprite, 3))
+        : h('span', { class: 'portrait', style: { backgroundImage: `url(assets/art/generated/characters/${(speaker as any)?.sprite}.png)` }, 'aria-hidden': 'true' });
     const opts = c.engine.visibleOptions(id, c.state);
     const optionList = h('div', { class: 'options' });
     if (opts.length) {
@@ -1096,7 +1137,7 @@ export class UI implements UIApi {
       h('div', { class: 'menu' },
         h('button', { 'data-autofocus': true, onclick: () => this.closeModal() }, 'Resume'),
         h('button', { onclick: () => { c.suspend('Save and leave'); this.closeModal(false); this.toast('Saved. You can close the tab.', 'save'); (window as any).kgToTitle?.(); } }, 'Save and leave'),
-        h('button', { onclick: () => this.openGuardian() }, 'My Guardian (pronouns)'),
+        h('button', { onclick: () => this.openGuardian() }, 'My Guardian (look and pronouns)'),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
         h('button', { onclick: () => this.openControls() }, 'Controls'),
