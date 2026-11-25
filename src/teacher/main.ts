@@ -78,7 +78,7 @@ function dashboard(): void {
       problems.length ? h('ul', { class: 'problems', role: 'alert' }, ...problems.map((p) => h('li', {}, p))) : ''),
     guide(),
   );
-  if (!students.length) { root.append(h('p', {}, 'No progress files yet.')); return; }
+  if (!students.length) { root.append(h('p', {}, 'No progress files yet.'), activities([])); return; }
 
   root.append(h('section', { class: 'panel summary' }, h('h2', {}, `Weekly class summary (${s.students} students)`), h('p', { class: 'note' }, `Made on ${new Date().toLocaleDateString()} from the latest file of each student. Formative only.`),
     h('ul', {},
@@ -108,7 +108,25 @@ function dashboard(): void {
       h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Student'), h('th', {}, 'Chapter 1 steps'), h('th', {}, 'EE practice steps'), h('th', {}, 'File saved'), h('th', {}, ''))),
         h('tbody', {}, ...students.map((f) => h('tr', {}, h('th', { scope: 'row' }, f.player), h('td', {}, `${f.objectivesDone.filter((o) => ESSENTIAL.has(o)).length} of ${STEP_TOTAL}`),
           h('td', {}, `${f.objectivesDone.filter((o) => EE_STEPS.some((x) => x.id === o)).length} of ${EE_STEPS.length}`),
-          h('td', {}, new Date(f.exportedAt).toLocaleDateString()), h('td', {}, h('button', { class: 'mini', onclick: () => studentReport(f) }, 'Open report')))))))));
+          h('td', {}, new Date(f.exportedAt).toLocaleDateString()), h('td', {}, h('button', { class: 'mini', onclick: () => studentReport(f) }, 'Open report')))))))),
+    activities(students));
+}
+
+/** Optional activities in the chapter, as lesson links: what each one is about, and how many students finished it. */
+const OPTIONAL = pack.missions.filter((m) => !m.id.includes('-EE') && m.objectives.length && m.objectives.every((o) => !o.essential));
+function activities(students: ProgressFile[]): HTMLElement {
+  return h('section', { class: 'panel wide activities' }, h('h2', {}, 'Optional activities (lesson links)'),
+    h('p', { class: 'note' }, 'Short activities that students can do at any time. Each one has a knowledge question you can use to start or end a lesson. You can ask the class to try one before a discussion.'),
+    h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Activity'), h('th', {}, 'Knowledge question'), h('th', {}, 'Concepts'), h('th', {}, 'Areas of knowledge'), students.length ? h('th', {}, 'Finished') : '')),
+      h('tbody', {}, ...OPTIONAL.map((m) => {
+        const w = m.objectives[0].weave;
+        const done = students.filter((f) => m.objectives.every((o) => f.objectivesDone.includes(o.id))).length;
+        return h('tr', {}, h('th', { scope: 'row' }, m.title, h('br', {}), h('small', {}, m.objectives[0].title.replace(/^Optional: /, ''))),
+          h('td', {}, m.knowledgeQuestion ?? ''),
+          h('td', {}, (w?.concepts ?? []).map((k) => CONCEPT_NAMES[k as keyof typeof CONCEPT_NAMES] ?? k).join(', ')),
+          h('td', {}, (w?.aoks ?? []).map((k) => AOK_NAMES[k as keyof typeof AOK_NAMES] ?? k).join(', ')),
+          students.length ? h('td', {}, `${done} of ${students.length}`) : '');
+      }))));
 }
 
 function guide(): HTMLElement {

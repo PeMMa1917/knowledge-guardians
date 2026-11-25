@@ -43,3 +43,10 @@ footer { margin-top: 2rem; font-size: 0.8rem; color: var(--dim); border-top: 1px
   .no-print { display: none !important; }
   .panel { border-color: #bbb; }
 }
+
+/* Optional activities */
+.activities table { width: 100%; table-layout: fixed; border-collapse: collapse; }
+.activities th, .activities td { vertical-align: top; padding: 6px; white-space: normal; overflow-wrap: anywhere; }
+.activities thead th:nth-child(1) { width: 28%; }
+.activities thead th:nth-child(2) { width: 32%; }
+.activities tbody th small { font-weight: 400; }

@@ -4,6 +4,7 @@
    "id": "KG-CH1-S02",
    "title": "Side quest: The East Well",
    "world": "WORLD-02",
+   "knowledgeQuestion": "Whose knowledge should shape a plan that affects a whole community?",
    "objectives": [
     {
      "id": "well.o1.listen",
