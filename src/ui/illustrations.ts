@@ -395,6 +395,15 @@ DRAW['ferry-slate'] = [16, 24, (g) => {
   R(g, '#c9a24a', 5, 0, 6, 2); R(g, '#7a5230', 6, 1, 4, 1); R(g, '#4aa3ff', 4, 2, 8, 1);
 }];
 
+// Lio's easel (original art): three legs, a small market painting with a gold frame mark.
+DRAW['easel'] = [16, 24, (g) => {
+  R(g, '#6b4a2a', 3, 8, 2, 16); R(g, '#6b4a2a', 11, 8, 2, 16); R(g, '#5b3b22', 7, 4, 2, 20);
+  R(g, '#3b2a1a', 1, 3, 14, 11); R(g, '#9fd3ff', 2, 4, 12, 4); R(g, '#cdb894', 2, 8, 12, 5);
+  R(g, '#ffd25a', 3, 5, 2, 2); R(g, '#7d8796', 10, 4, 3, 2); R(g, '#d9534a', 3, 9, 3, 2); R(g, '#4a90d9', 7, 10, 1, 2); R(g, '#16a085', 11, 10, 1, 2);
+  R(g, '#f6c453', 5, 6, 6, 1); R(g, '#f6c453', 5, 12, 6, 1); R(g, '#f6c453', 5, 6, 1, 7); R(g, '#f6c453', 10, 6, 1, 7);
+  R(g, '#a87445', 2, 14, 12, 1);
+}];
+
 // The door to the Guardian's quarters (original art): a round-topped oak door with a star.
 DRAW['quarters-door'] = [16, 24, (g) => {
   R(g, '#3b2a1a', 1, 3, 14, 21); R(g, '#3b2a1a', 3, 1, 10, 2);

@@ -181,6 +181,8 @@ A `survey` puzzle has `groups`, `people` (each with a `group`, a view `yes` (tru
 
 A `translate` puzzle has a `source` line (in an invented language only; never use a real community's language without review, spec section 88), a `frame` (the English line with `{wordId}` places), a word `budget`, `words` (each with the `word` as it appears in the source, a `note` and `choices`: `text`, the `parts` it `keeps`, and `back`, the word a back-translation gives) and `parts` (the differences the reader needs, each with a `lost` text). Do not use the name `needs`: it is the general field for a locked puzzle. The validator checks that the first choice of every word loses something, and that two or more translations keep every part within the budget.
 
+A `frame` puzzle has a `scene` and a `frame` size (in scene units; 1 unit is 10 px), `items` (each with a place, a `label` and an `art` key that `frameScene()` in `ui.ts` can draw) and `briefs` (each with `who`, `wants`, the items it must `need` and `avoid`, and a `success` text). An item is in the frame when its centre is inside. The validator checks that each brief has at least one frame position that works. Keep every item true to the scene: the lesson is that true parts can still mislead.
+
 ## Add a practice clue board
 
 Add a record to `clueBoards` (in `src/content/clueboard.json`) with the `showdown` id, a `title`, an `intro`, `onComplete` and a `weave`. The board takes its claims, links and support from the Showdown record, so no other data is needed. Place it on a map with `kind: 'board'` and `board: <id>`.

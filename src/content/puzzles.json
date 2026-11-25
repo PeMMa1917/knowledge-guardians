@@ -1828,6 +1828,200 @@
      "why": "Something can be lost, but Sefa's notes and the back-check helped you keep what mattered. Uncertainty can be made smaller, and you can say openly where it remains."
     }
    ]
+  },
+  {
+   "id": "painters-frame",
+   "type": "frame",
+   "title": "The Painter's Frame",
+   "intro": "Lio the painter made one wide, careful painting of the market this morning. Everything in it really happened. Now three people each want a poster cut from it. Move the frame to make each poster. Then look at all three together.",
+   "skills": [
+    "SK-MED-01",
+    "SK-MED-04",
+    "SK-ETR-01"
+   ],
+   "weave": {
+    "concepts": [
+     "perspective",
+     "power"
+    ],
+    "atl": [
+     "thinking",
+     "communication"
+    ],
+    "subjects": [
+     "visual-arts",
+     "film",
+     "digital-society"
+    ],
+    "aoks": [
+     "ART"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.perspective.frame"
+    },
+    {
+     "journal": "j.frame"
+    }
+   ],
+   "scene": {
+    "w": 32,
+    "h": 16
+   },
+   "frame": {
+    "w": 12,
+    "h": 9
+   },
+   "items": [
+    {
+     "id": "sun",
+     "label": "the sun",
+     "art": "sun",
+     "x": 3,
+     "y": 1,
+     "w": 2,
+     "h": 2
+    },
+    {
+     "id": "cloud",
+     "label": "the rain cloud",
+     "art": "cloud",
+     "x": 25,
+     "y": 0,
+     "w": 5,
+     "h": 4
+    },
+    {
+     "id": "stall",
+     "label": "the fruit stall",
+     "art": "stall",
+     "x": 1,
+     "y": 6,
+     "w": 7,
+     "h": 4
+    },
+    {
+     "id": "crowd",
+     "label": "the happy buyers",
+     "art": "crowd",
+     "x": 2,
+     "y": 10,
+     "w": 6,
+     "h": 4
+    },
+    {
+     "id": "child",
+     "label": "the child with a kite",
+     "art": "child",
+     "x": 10,
+     "y": 10,
+     "w": 2,
+     "h": 4
+    },
+    {
+     "id": "kite",
+     "label": "the kite",
+     "art": "kite",
+     "x": 11,
+     "y": 3,
+     "w": 2,
+     "h": 2
+    },
+    {
+     "id": "seller",
+     "label": "the old seller at an empty stall",
+     "art": "seller",
+     "x": 15,
+     "y": 7,
+     "w": 5,
+     "h": 6
+    },
+    {
+     "id": "argue",
+     "label": "the two traders in a quarrel",
+     "art": "argue",
+     "x": 22,
+     "y": 9,
+     "w": 4,
+     "h": 4
+    },
+    {
+     "id": "guard",
+     "label": "the guard",
+     "art": "guard",
+     "x": 28,
+     "y": 9,
+     "w": 2,
+     "h": 4
+    }
+   ],
+   "briefs": [
+    {
+     "id": "guild",
+     "who": "Master Orrin, for the guild",
+     "wants": "A poster for the market fair. Make our market look joyful.",
+     "need": [
+      "crowd",
+      "child"
+     ],
+     "avoid": [
+      "seller",
+      "argue"
+     ],
+     "success": "Orrin beams. 'Look at them all! Who would not come?' The poster is true: those people really were happy."
+    },
+    {
+     "id": "fund",
+     "who": "Efua, for the elders' fund",
+     "wants": "We collect coins for old sellers who have a hard winter. Show why they need help, on a grey day.",
+     "need": [
+      "seller",
+      "cloud"
+     ],
+     "avoid": [
+      "crowd",
+      "child"
+     ],
+     "success": "Efua nods slowly. 'That is how it feels for him.' The poster is true: that stall really was empty."
+    },
+    {
+     "id": "council",
+     "who": "Councillor Bram",
+     "wants": "I want the council to pay for more guards. Show that the market can get rough.",
+     "need": [
+      "argue",
+      "guard"
+     ],
+     "avoid": [
+      "crowd",
+      "child"
+     ],
+     "success": "Bram taps the poster. 'There. Trouble, and a guard on the spot.' The poster is true: the quarrel really happened."
+    }
+   ],
+   "reflect": [
+    {
+     "text": "A picture shows what was really there, so all three posters are fair.",
+     "honest": false,
+     "why": "Everything in each poster was there. But each poster leaves out most of the market, and the choice of what to leave out makes an argument. True parts can add up to a picture that misleads."
+    },
+    {
+     "text": "The joyful poster is the true one, because most people in the market were happy.",
+     "honest": false,
+     "why": "Most people were happy, so the guild poster is closest to the whole scene. But the old seller and the quarrel happened too. 'Most' is not 'all'; a fair poster might say what it leaves out."
+    },
+    {
+     "text": "Each poster is true and each leaves things out. Where the frame goes is a choice made by someone for a purpose. To judge a picture, ask who framed it, why, and what was outside the frame.",
+     "honest": true,
+     "why": "Yes. Artists, photographers and film makers always choose a frame; that is part of their craft, not a lie. Knowing the purpose helps you read the picture. Sometimes the wide view is worth asking for."
+    },
+    {
+     "text": "Because every frame leaves something out, pictures give us no knowledge.",
+     "honest": false,
+     "why": "Each poster gives real knowledge: there was a happy crowd, a struggling seller, a quarrel. The knowledge is partial, not empty. Putting the frames side by side gave you more than any one of them."
+    }
+   ]
   }
  ],
  "missions": [
@@ -2323,6 +2517,49 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-A01",
+   "world": "WORLD-02",
+   "title": "The Painter's Frame",
+   "knowledgeQuestion": "Can a picture in which everything is true still mislead?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "frame.o1.posters",
+     "title": "Optional: cut three posters from Lio's market painting (the easel in the market square).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.painters-frame.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "power"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "subjects": [
+       "visual-arts",
+       "film",
+       "digital-society"
+      ],
+      "aoks": [
+       "ART"
+      ]
+     },
+     "skills": [
+      "SK-MED-01",
+      "SK-MED-04",
+      "SK-ETR-01"
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -2613,6 +2850,30 @@
    "objective": "ferry.o1.send",
    "depth": 4,
    "text": "Keep: slow water, both of us, walkers but not carts, and the time. Many short versions fit on the slate."
+  },
+  {
+   "id": "h.frame.1",
+   "objective": "frame.o1.posters",
+   "depth": 1,
+   "text": "Read what each person wants in the poster, and what they do not want."
+  },
+  {
+   "id": "h.frame.2",
+   "objective": "frame.o1.posters",
+   "depth": 2,
+   "text": "Drag the frame over the picture. Watch the poster on the right change."
+  },
+  {
+   "id": "h.frame.3",
+   "objective": "frame.o1.posters",
+   "depth": 3,
+   "text": "Orrin: left side, low. Efua: the empty stall and the cloud, high up. Bram: the right side, low."
+  },
+  {
+   "id": "h.frame.4",
+   "objective": "frame.o1.posters",
+   "depth": 4,
+   "text": "When all three are done, look at the three frames together. Which answer says who framed each one, and why?"
   }
  ],
  "journal": [
@@ -2675,6 +2936,11 @@
    "id": "j.ferry",
    "text": "The Ferry Message: some words carry differences that another language needs a phrase for. A translator chooses what to keep, and can show those choices.",
    "claimKind": "interpretation"
+  },
+  {
+   "id": "j.frame",
+   "text": "The Painter's Frame: three true posters from one painting told three different stories. Ask who framed a picture, why, and what was outside the frame.",
+   "claimKind": "interpretation"
   }
  ],
  "criteria": [
@@ -2736,6 +3002,11 @@
   {
    "id": "crit.interpretation.ferry",
    "concept": "interpretation",
+   "maximum": 5
+  },
+  {
+   "id": "crit.perspective.frame",
+   "concept": "perspective",
    "maximum": 5
   }
  ]

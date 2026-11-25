@@ -13,7 +13,7 @@ import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads,
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
-import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, runSorter, runSurvey, sightBlock, tiltOf, timeStats, translateLine, type SorterRun } from '../domain/puzzles';
+import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, runSorter, framed, runSurvey, sightBlock, tiltOf, timeStats, translateLine, type SorterRun } from '../domain/puzzles';
 import { audioNow, chime, clapEcho, playNotes } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
@@ -26,7 +26,7 @@ import { OPPONENT, judgeYarn, viewBoard } from '../domain/clueboard';
 import { EMOTES } from '../domain/emotes';
 import { STAGE_LABEL, nextStep, skillStage, type SkillStage } from '../domain/skills';
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
-import type { PlaqueFace, Pronouns, RestoreLayer, PuzzleRecord, SorterFruit } from '../domain/types';
+import type { FrameItem, PlaqueFace, Pronouns, RestoreLayer, PuzzleRecord, SorterFruit } from '../domain/types';
 import { ACTIONS, PRESETS, actionFor, assignKey, mappableKey, type Action } from '../app/keymap';
 import type { GameEvent, SimulationResult } from '../domain/engine';
 import { conceptRings, conceptXP, totalXP } from '../domain/permanent';
@@ -179,6 +179,39 @@ function sorterView(p: Extract<PuzzleRecord, { type: 'sorter' }>, run: SorterRun
 }
 
 /** Oskar's map of Emberford: a parchment sheet with only the chosen layers drawn (original art). */
+/** The painter's market scene (original art, drawn in code). 1 scene unit = 10 px. */
+function frameScene(items: FrameItem[], w: number, h: number): string {
+  const U = 10;
+  const person = (cx: number, base: number, k: number, skin: string, shirt: string, hair: string, mood: 'smile' | 'sad' | 'cross' = 'smile') => {
+    const hd = 3.2 * k, bodyH = 9 * k;
+    const mouth = mood === 'smile' ? `<path d="M${cx - 1.2 * k} ${base - bodyH - hd + 1 * k} q${1.2 * k} ${1 * k} ${2.4 * k} 0" stroke="#3b2a1a" stroke-width="0.7" fill="none"/>`
+      : mood === 'sad' ? `<path d="M${cx - 1.2 * k} ${base - bodyH - hd + 1.6 * k} q${1.2 * k} ${-1 * k} ${2.4 * k} 0" stroke="#3b2a1a" stroke-width="0.7" fill="none"/>`
+        : `<path d="M${cx - 1.2 * k} ${base - bodyH - hd + 1.3 * k} h${2.4 * k}" stroke="#3b2a1a" stroke-width="0.8"/>`;
+    return `<rect x="${cx - 2.6 * k}" y="${base - bodyH}" width="${5.2 * k}" height="${bodyH}" rx="${1.5 * k}" fill="${shirt}"/>
+      <circle cx="${cx}" cy="${base - bodyH - hd + 0.4 * k}" r="${hd}" fill="${skin}"/>
+      <path d="M${cx - hd} ${base - bodyH - hd} a${hd} ${hd} 0 0 1 ${2 * hd} 0 z" fill="${hair}"/>
+      <circle cx="${cx - 1.1 * k}" cy="${base - bodyH - hd + 0.2 * k}" r="${0.45 * k}" fill="#2a1d14"/><circle cx="${cx + 1.1 * k}" cy="${base - bodyH - hd + 0.2 * k}" r="${0.45 * k}" fill="#2a1d14"/>${mouth}`;
+  };
+  const art: Record<string, (i: FrameItem) => string> = {
+    sun: (i) => { const cx = (i.x + i.w / 2) * U, cy = (i.y + i.h / 2) * U; return `<g stroke="#ffd25a" stroke-width="2">${[0, 45, 90, 135, 180, 225, 270, 315].map((a) => `<line x1="${cx + Math.cos((a * Math.PI) / 180) * 11}" y1="${cy + Math.sin((a * Math.PI) / 180) * 11}" x2="${cx + Math.cos((a * Math.PI) / 180) * 15}" y2="${cy + Math.sin((a * Math.PI) / 180) * 15}"/>`).join('')}</g><circle cx="${cx}" cy="${cy}" r="8" fill="#ffd25a"/>`; },
+    cloud: (i) => { const x = i.x * U, y = i.y * U; return `<g fill="#7d8796"><circle cx="${x + 12}" cy="${y + 12}" r="9"/><circle cx="${x + 25}" cy="${y + 8}" r="11"/><circle cx="${x + 38}" cy="${y + 13}" r="8"/><rect x="${x + 6}" y="${y + 12}" width="38" height="9" rx="4"/></g><g stroke="#9fc4e8" stroke-width="1.4">${[0, 1, 2, 3, 4, 5].map((n) => `<line x1="${x + 10 + n * 6}" y1="${y + 24 + (n % 2) * 4}" x2="${x + 7 + n * 6}" y2="${y + 32 + (n % 2) * 4}"/>`).join('')}</g>`; },
+    stall: (i) => { const x = i.x * U, y = i.y * U, W = i.w * U, H = i.h * U; return `<rect x="${x + 4}" y="${y + 8}" width="3" height="${H - 8}" fill="#6b4a2a"/><rect x="${x + W - 7}" y="${y + 8}" width="3" height="${H - 8}" fill="#6b4a2a"/>${Array.from({ length: 7 }, (_, n) => `<rect x="${x + (n * W) / 7}" y="${y}" width="${W / 7}" height="9" fill="${n % 2 ? '#fff4e0' : '#d9534a'}"/>`).join('')}<rect x="${x + 2}" y="${y + H - 14}" width="${W - 4}" height="7" fill="#a87445"/>${[0, 1, 2, 3, 4, 5, 6, 7].map((n) => `<circle cx="${x + 9 + n * 7}" cy="${y + H - 16}" r="3" fill="${['#f28c28', '#e04848', '#9bd35a', '#ffd25a'][n % 4]}"/>`).join('')}`; },
+    crowd: (i) => { const x = i.x * U, b = (i.y + i.h) * U; return [[6, '#8d5524', '#4a90d9', '#2a1d14'], [18, '#f1c27d', '#c0392b', '#6b4423'], [31, '#c68642', '#27ae60', '#1b1b1b'], [44, '#e0ac69', '#8e44ad', '#b5651d'], [54, '#5a3825', '#e67e22', '#111']].map(([dx, sk, sh, hr], n) => person(x + (dx as number), b - (n % 2) * 2, 1.25, sk as string, sh as string, hr as string)).join(''); },
+    child: (i) => { const cx = (i.x + i.w / 2) * U, b = (i.y + i.h) * U; return `<line x1="${cx + 4}" y1="${b - 16}" x2="${cx + 12}" y2="${b - 64}" stroke="#eee" stroke-width="0.8"/>${person(cx, b, 0.95, '#a0662f', '#f1c40f', '#1b1b1b')}<line x1="${cx + 2}" y1="${b - 9}" x2="${cx + 5}" y2="${b - 16}" stroke="#a0662f" stroke-width="1.6"/>`; },
+    kite: (i) => { const cx = (i.x + i.w / 2) * U, cy = (i.y + i.h / 2) * U; return `<path d="M${cx} ${cy - 9} L${cx + 7} ${cy} L${cx} ${cy + 9} L${cx - 7} ${cy} z" fill="#e74c3c" stroke="#7a1f1a"/><path d="M${cx} ${cy - 9} V${cy + 9} M${cx - 7} ${cy} H${cx + 7}" stroke="#ffd25a" stroke-width="1"/><path d="M${cx} ${cy + 9} q4 6 0 10 q-4 5 2 9" stroke="#3498db" fill="none" stroke-width="1.2"/>`; },
+    seller: (i) => { const x = i.x * U, y = i.y * U, W = i.w * U, H = i.h * U; return `<rect x="${x + 3}" y="${y + 6}" width="3" height="${H - 6}" fill="#5b4632"/><rect x="${x + W - 6}" y="${y + 6}" width="3" height="${H - 6}" fill="#5b4632"/><rect x="${x}" y="${y}" width="${W}" height="7" fill="#8a7f66"/><rect x="${x + 2}" y="${y + H - 16}" width="${W - 4}" height="6" fill="#7a5a3a"/><rect x="${x + 6}" y="${y + H - 4}" width="9" height="4" fill="#6b4a2a"/>${person(x + 11, y + H - 4, 1.1, '#d4a373', '#6c7a89', '#ddd', 'sad')}`; },
+    argue: (i) => { const x = i.x * U, b = (i.y + i.h) * U; return `${person(x + 9, b, 1.25, '#f1c27d', '#2c3e50', '#6b4423', 'cross')}${person(x + 31, b, 1.25, '#8d5524', '#16a085', '#111', 'cross')}<path d="M${x + 15} ${b - 22} l4 -3 l1 4 l4 -3 l1 4" stroke="#e74c3c" stroke-width="1.6" fill="none"/><text x="${x + 20}" y="${b - 30}" font-size="10" font-weight="700" fill="#e74c3c" text-anchor="middle">!!</text>`; },
+    guard: (i) => { const cx = (i.x + i.w / 2) * U, b = (i.y + i.h) * U; return `<line x1="${cx + 6}" y1="${b}" x2="${cx + 6}" y2="${b - 36}" stroke="#6b4a2a" stroke-width="1.6"/><path d="M${cx + 6} ${b - 40} l-2 5 h4 z" fill="#bbb"/>${person(cx, b, 1.25, '#c68642', '#7f8c8d', '#555', 'cross')}<path d="M${cx - 4.5} ${b - 15.5} a4.5 4.5 0 0 1 9 0 z" fill="#95a5a6"/>`; },
+  };
+  const H = h * U, W = w * U, ground = 6 * U;
+  return `<defs><linearGradient id="fr-sky" x1="0" x2="1"><stop offset="0" stop-color="#9fd3ff"/><stop offset="0.6" stop-color="#b8cde0"/><stop offset="1" stop-color="#8794a6"/></linearGradient></defs>
+  <rect width="${W}" height="${ground + 4}" fill="url(#fr-sky)"/>
+  <path d="M0 ${ground} q40 -14 90 -4 q60 -16 120 -2 q60 -12 ${W - 210} 0 V${ground + 6} H0 z" fill="#7aa06a"/>
+  <rect y="${ground + 4}" width="${W}" height="${H - ground - 4}" fill="#cdb894"/>
+  <g stroke="#b59f78" stroke-width="0.6">${Array.from({ length: 9 }, (_, r) => `<line x1="0" y1="${ground + 12 + r * 10}" x2="${W}" y2="${ground + 12 + r * 10}"/>`).join('')}</g>
+  ${items.map((i) => (art[i.art] ?? (() => ''))(i)).join('')}`;
+}
+
 function townMapSvg(layers: string[]): HTMLElement {
   const on = (id: string) => layers.includes(id);
   const wrap = h('div', { class: 'townmap-wrap', role: 'img', 'aria-label': `A map of Emberford showing: ${layers.length ? layers.join(', ') : 'nothing yet'}.` });
@@ -1129,6 +1162,9 @@ export class UI implements UIApi {
     let echo: { mode: 'idle' | 'listen' | 'wait' | 'go'; t0: number; audio: boolean; timer: number } = { mode: 'idle', t0: 0, audio: false, timer: 0 };
     let flashEcho = ctx.settings.sfxVolume <= 0.01;
     let surveyW: string | null = null, surveyS: string | null = null;
+    let frameB = 0;
+    const framePos = new Map<string, { x: number; y: number }>();
+    if (rec.type === 'frame') rec.briefs.forEach((b) => { const v = String(c.state.flags[`puzzle.${rec.id}.b.${b.id}`] ?? ''); const [x, y] = v.split(',').map(Number); framePos.set(b.id, v ? { x, y } : { x: Math.floor((rec.scene.w - rec.frame.w) / 2), y: Math.floor((rec.scene.h - rec.frame.h) / 2) }); });
     const lastPicks = String(c.state.flags[`puzzle.${rec.id}.sent`] ?? c.state.flags[`puzzle.${rec.id}.last`] ?? '').split(',').filter(Boolean).map(Number);
     const tPicks: number[] = rec.type === 'translate' ? rec.words.map((_, i) => lastPicks[i] ?? 0) : [];
     let examples: string[] = [];
@@ -1178,6 +1214,54 @@ export class UI implements UIApi {
               h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleWeigh', puzzle: rec.id, round: n, weights: [...pan] })) }, 'Record this weighing'),
               h('button', { onclick: () => { pan = []; feedback = null; render(); } }, 'Clear the pan')));
         } else if (done) box.append(h('p', { class: 'fair' }, 'Every weighing is in the record book.'));
+      } else if (rec.type === 'frame') {
+        const U = 10, SW = rec.scene.w * U, SH = rec.scene.h * U, FW = rec.frame.w * U, FH = rec.frame.h * U;
+        const doneB = (id: string) => typeof c.state.flags[`${F}.b.${id}`] === 'string';
+        const b = rec.briefs[frameB];
+        const pos = framePos.get(b.id)!;
+        const inner = frameScene(rec.items, rec.scene.w, rec.scene.h);
+        const clamp = (x: number, y: number) => ({ x: Math.max(0, Math.min(rec.scene.w - rec.frame.w, Math.round(x))), y: Math.max(0, Math.min(rec.scene.h - rec.frame.h, Math.round(y))) });
+        box.append(h('div', { class: 'frame-briefs', role: 'tablist' }, ...rec.briefs.map((q, i) => h('button', { type: 'button', role: 'tab', class: `frame-brief ${i === frameB ? 'picked' : ''} ${doneB(q.id) ? 'done' : ''}`, 'aria-selected': String(i === frameB),
+          onclick: () => { frameB = i; feedback = null; this.sfx('sfx.click'); render(); } }, doneB(q.id) ? '✓ ' : '', q.who))));
+        box.append(h('p', { class: 'frame-wants' }, h('strong', {}, `${b.who}: `), `“${b.wants}”`));
+        const canvas = h('div', { class: 'frame-canvas', role: 'img', 'aria-label': `The whole market scene. Your frame shows: ${framed(rec, pos.x, pos.y).map((id) => rec.items.find((i) => i.id === id)!.label).join(', ') || 'nothing'}.` });
+        canvas.innerHTML = `<svg viewBox="0 0 ${SW} ${SH}" aria-hidden="true"><defs><mask id="fr-hole"><rect width="${SW}" height="${SH}" fill="#fff"/><rect class="fr-hole" x="${pos.x * U}" y="${pos.y * U}" width="${FW}" height="${FH}" fill="#000"/></mask></defs>${inner}<rect width="${SW}" height="${SH}" fill="#0b0a1a" opacity="0.55" mask="url(#fr-hole)"/><rect class="fr-rect" x="${pos.x * U}" y="${pos.y * U}" width="${FW}" height="${FH}" fill="none" stroke="#f6c453" stroke-width="2.5" stroke-dasharray="6 3"/></svg>`;
+        const svg = canvas.querySelector('svg')!;
+        const poster = h('div', { class: 'frame-poster' });
+        poster.innerHTML = `<svg viewBox="${pos.x * U} ${pos.y * U} ${FW} ${FH}" aria-hidden="true">${inner}</svg>`;
+        let dragging = false;
+        // While dragging, move the frame in place; draw the panel again when the drag ends.
+        const moveTo = (ev: PointerEvent) => {
+          const r = svg.getBoundingClientRect(); const ux = ((ev.clientX - r.left) / r.width) * rec.scene.w, uy = ((ev.clientY - r.top) / r.height) * rec.scene.h;
+          const np = clamp(ux - rec.frame.w / 2, uy - rec.frame.h / 2);
+          if (np.x === pos.x && np.y === pos.y) return;
+          pos.x = np.x; pos.y = np.y; framePos.set(b.id, { ...np });
+          svg.querySelectorAll('.fr-hole, .fr-rect').forEach((el) => { el.setAttribute('x', String(np.x * U)); el.setAttribute('y', String(np.y * U)); });
+          poster.querySelector('svg')?.setAttribute('viewBox', `${np.x * U} ${np.y * U} ${FW} ${FH}`);
+        };
+        svg.addEventListener('pointerdown', (ev) => { dragging = true; svg.setPointerCapture(ev.pointerId); moveTo(ev); });
+        svg.addEventListener('pointermove', (ev) => { if (dragging) moveTo(ev); });
+        const endDrag = () => { if (!dragging) return; dragging = false; feedback = null; this.sfx('sfx.click'); render(); };
+        svg.addEventListener('pointerup', endDrag); svg.addEventListener('pointercancel', endDrag);
+        const nudge = (dx: number, dy: number) => { framePos.set(b.id, clamp(pos.x + dx, pos.y + dy)); feedback = null; render(); };
+        box.append(h('div', { class: 'frame-body' }, h('div', {}, canvas,
+          h('div', { class: 'row frame-nudge', 'aria-label': 'Move the frame' }, h('button', { type: 'button', 'aria-label': 'Move the frame left', onclick: () => nudge(-1, 0) }, '←'), h('button', { type: 'button', 'aria-label': 'Move the frame up', onclick: () => nudge(0, -1) }, '↑'), h('button', { type: 'button', 'aria-label': 'Move the frame down', onclick: () => nudge(0, 1) }, '↓'), h('button', { type: 'button', 'aria-label': 'Move the frame right', onclick: () => nudge(1, 0) }, '→'), h('span', { class: 'fine' }, 'Drag on the picture, or use the arrows.'))),
+          h('div', { class: 'frame-side' }, h('p', { class: 'label' }, 'The poster'), poster,
+            h('button', { class: 'primary', onclick: () => { const ev = c.dispatch({ type: 'PuzzleFrame', puzzle: rec.id, brief: b.id, x: pos.x, y: pos.y }); take(ev); if (doneB(b.id)) { this.sfx('sfx.sparkle'); const nx = rec.briefs.findIndex((q) => !doneB(q.id)); if (nx >= 0) frameB = nx; render(); } } }, `Give it to ${b.who.split(',')[0]}`))));
+        if (rec.briefs.every((q) => doneB(q.id))) {
+          const all = h('div', { class: 'frame-canvas all' });
+          const COL = ['#f6c453', '#7cc4ff', '#ff8a7a', '#9fe0a8'];
+          all.innerHTML = `<svg viewBox="0 0 ${SW} ${SH}" aria-hidden="true">${inner}${rec.briefs.map((q, i) => { const [x, y] = String(c.state.flags[`${F}.b.${q.id}`]).split(',').map(Number); return `<rect x="${x * U + i * 2}" y="${y * U + i * 2}" width="${FW - i * 4}" height="${FH - i * 4}" fill="none" stroke="${COL[i % 4]}" stroke-width="2.5"/>`; }).join('')}</svg>`;
+          box.append(h('h3', {}, 'All three posters, on the whole painting'), all,
+            h('ul', { class: 'row wrap frame-key' }, ...rec.briefs.map((q, i) => h('li', {}, h('span', { class: 'dot', style: { background: COL[i % 4] } }), ` ${q.who}`))),
+            h('h3', {}, done ? 'What you learned' : 'Each poster is true. What do they teach you?'),
+            done ? h('p', { class: 'fair' }, rec.reflect.find((x) => x.honest)!.text)
+              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((x, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, x.text)))));
+        }
+        if (feedback) {
+          const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
+          box.append(fb); requestAnimationFrame(() => fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+        }
       } else if (rec.type === 'translate') {
         const sent = typeof c.state.flags[`${F}.sent`] === 'string';
         const last = c.state.flags[`${F}.last`];

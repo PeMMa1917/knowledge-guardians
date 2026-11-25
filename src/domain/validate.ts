@@ -8,7 +8,7 @@
 import type { Condition, ContentPack, Effect, Weave } from './types';
 import { ATLS, CONCEPTS, PROFILE } from './types';
 import { SUBJECTS } from './curriculum';
-import { chordFigure, panes, runSorter, runSurvey, sightBlock, translateLine } from './puzzles';
+import { chordFigure, panes, runSorter, runSurvey, sightBlock, translateLine, judgeFrame } from './puzzles';
 import { openCombinations } from './lock';
 
 const MAX_TEXT = 2000;
@@ -192,6 +192,18 @@ export function validateContent(pack: ContentPack): string[] {
         const all = z.people.filter((x) => x.yes).length / z.people.length, fair = runSurvey(z, z.fair.wording, z.fair.sample);
         if (Math.abs(fair.yes / fair.total - all) > 0.15) p.push(`puzzle ${z.id}: the fair sample does not look like the whole town`);
       }
+      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
+    }
+    else if (z.type === 'frame') {
+      const ids = z.items.map((i) => i.id);
+      if (z.frame.w > z.scene.w || z.frame.h > z.scene.h) p.push(`puzzle ${z.id}: the frame is larger than the scene`);
+      z.items.forEach((i) => { if (i.x < 0 || i.y < 0 || i.x + i.w > z.scene.w || i.y + i.h > z.scene.h) p.push(`puzzle ${z.id} item ${i.id}: outside the scene`); });
+      z.briefs.forEach((b) => {
+        [...b.need, ...b.avoid].forEach((x) => ids.includes(x) || p.push(`puzzle ${z.id} brief ${b.id}: unknown item ${x}`));
+        let can = false;
+        for (let x = 0; x + z.frame.w <= z.scene.w && !can; x++) for (let y = 0; y + z.frame.h <= z.scene.h && !can; y++) if (judgeFrame(z, b.id, x, y).ok) can = true;
+        if (!can) p.push(`puzzle ${z.id} brief ${b.id}: no frame position works`);
+      });
       if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'translate') {

@@ -196,6 +196,16 @@
    "where": "Emberford: the Ferry Message slate."
   },
   {
+   "id": "paper-frame",
+   "name": "A small card frame",
+   "text": "Lio cut it for you. Hold it up to anything, and ask what is outside it.",
+   "if": {
+    "flag": "puzzle.painters-frame.done",
+    "eq": true
+   },
+   "where": "Emberford: Lio's easel in the market."
+  },
+  {
    "id": "seal",
    "name": "A wax copy of the seal",
    "text": "The Guardians' seal, found at the end of the chapter.",

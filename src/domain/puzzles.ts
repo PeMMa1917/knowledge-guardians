@@ -264,3 +264,22 @@ export function translateLine(p: PuzzleRecord, picks: number[]): TranslateResult
   const words = wordCount(text);
   return { text, words, over: words > p.budget, kept, lost: p.parts.filter((n) => !kept.includes(n.id)), back };
 }
+
+/** The items whose centre is inside a frame at (x, y). */
+export function framed(p: PuzzleRecord, x: number, y: number): string[] {
+  if (p.type !== 'frame') throw new Error('Not a frame puzzle');
+  return p.items.filter((i) => { const cx = i.x + i.w / 2, cy = i.y + i.h / 2; return cx >= x && cx < x + p.frame.w && cy >= y && cy < y + p.frame.h; }).map((i) => i.id);
+}
+/** Does a frame at (x, y) make the poster that this person asked for? */
+export function judgeFrame(p: PuzzleRecord, brief: string, x: number, y: number): { ok: boolean; text: string; missing: string[]; extra: string[] } {
+  if (p.type !== 'frame') throw new Error('Not a frame puzzle');
+  const b = p.briefs.find((q) => q.id === brief);
+  if (!b) throw new Error('No such request');
+  if (!(Number.isInteger(x) && Number.isInteger(y) && x >= 0 && y >= 0 && x + p.frame.w <= p.scene.w && y + p.frame.h <= p.scene.h)) throw new Error('The frame must stay on the canvas');
+  const inside = framed(p, x, y);
+  const name = (id: string) => p.items.find((i) => i.id === id)!.label;
+  const missing = b.need.filter((n) => !inside.includes(n)), extra = b.avoid.filter((n) => inside.includes(n));
+  if (!missing.length && !extra.length) return { ok: true, text: b.success, missing, extra };
+  const parts = [missing.length ? `${b.who} wants ${missing.map(name).join(' and ')} in the picture.` : '', extra.length ? `${b.who} does not want ${extra.map(name).join(' or ')} in it.` : ''];
+  return { ok: false, text: parts.filter(Boolean).join(' '), missing, extra };
+}

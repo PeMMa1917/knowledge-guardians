@@ -529,9 +529,17 @@ export type PuzzleRecord = {
    * translations work: a translation works when it keeps every difference the reader needs.
    */
   | { type: 'translate'; speaker: string; source: string; frame: string; budget: number; words: TranslateWord[]; parts: { id: string; name: string; lost: string }[]; reflect: { text: string; honest: boolean; why: string }[] }
+  /**
+   * The painter's frame (the arts): one wide, true scene; people ask for posters. Where the
+   * player puts the frame decides what the poster says. Every poster is true, and none of
+   * them shows the whole scene. An item is in the frame when its centre is inside it.
+   */
+  | { type: 'frame'; scene: { w: number; h: number }; frame: { w: number; h: number }; items: FrameItem[]; briefs: FrameBrief[]; reflect: { text: string; honest: boolean; why: string }[] }
   | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string }[] }
 );
 
+export interface FrameItem { id: string; label: string; art: string; x: number; y: number; w: number; h: number }
+export interface FrameBrief { id: string; who: string; wants: string; need: string[]; avoid: string[]; success: string }
 export interface TranslateWord { id: string; word: string; note: string; choices: { text: string; keeps: string[]; back: string }[] }
 export interface SurveyPerson { id: string; group: string; yes: boolean; firm: boolean }
 export interface SorterFruit { id: string; colour: 'red' | 'green' | 'yellow'; size: 'small' | 'large'; bruised: boolean; farm: string }
