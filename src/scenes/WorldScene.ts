@@ -941,6 +941,13 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'dive': ctx.ui.openDive(); break;
       case 'lamps': ctx.ui.openLamps(); break;
       case 'tiles': ctx.ui.openTiles(); break;
+      case 'workbench': ctx.ui.openWorkbench(); break;
+      case 'gather': {
+        const d = new Date(), day = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+        const ev = ctx.controller.dispatch({ type: 'Gather', node: `${this.map.id}.${it.id}`, resource: it.resource!, day });
+        if (!ev.some((e) => e.kind === 'error')) { this.playSfx('sfx.pickup'); ctx.ui.toast(`You gathered 2 ${({ ore: 'iron ore', clay: 'river clay', reed: 'reeds' })[it.resource!]}. Make tools at the Maker's bench by the forge.`, 'item'); }
+        break;
+      }
       case 'shop': ctx.ui.openShop(); break;
       case 'secret': {
         const x = (ctx.controller.pack.secrets ?? []).find((y) => y.id === it.secret);

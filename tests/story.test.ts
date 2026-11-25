@@ -155,3 +155,21 @@ describe('the Insight tree (skill tree)', () => {
     expect(spent(d.s)).toBe(0);
   });
 });
+
+describe('gathering and crafting', () => {
+  it('a place gives 2 once a day; a tool needs its materials; calibration is a method question', () => {
+    const d = new Driver();
+    d.run({ type: 'Gather', node: 'f.clay', resource: 'clay', day: '2026-11-25' });
+    expect(() => d.run({ type: 'Gather', node: 'f.clay', resource: 'clay', day: '2026-11-25' })).toThrow();
+    expect(() => d.run({ type: 'Craft', recipe: 'rain-gauge', choice: 2 })).toThrow(/reeds/);
+    d.run({ type: 'Gather', node: 'f.reed', resource: 'reed', day: '2026-11-25' });
+    d.run({ type: 'Craft', recipe: 'rain-gauge', choice: 0 }); // made, not calibrated
+    expect(d.s.inventory['item.rain-gauge']).toBe(1);
+    expect(d.s.flags['craft.rain-gauge.calibrated']).toBe(false);
+    expect(d.s.flags['res.clay']).toBe(0);
+    d.run({ type: 'Calibrate', recipe: 'rain-gauge', choice: 2 });
+    expect(d.s.flags['craft.rain-gauge.calibrated']).toBe(true);
+    d.run({ type: 'Calibrate', recipe: 'rain-gauge', choice: 0 }); // a calibrated tool stays calibrated
+    expect(d.s.flags['craft.rain-gauge.calibrated']).toBe(true);
+  });
+});

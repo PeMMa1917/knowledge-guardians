@@ -22,6 +22,7 @@ export interface UIApi {
   openTiles(): void;
   openTown(): void;
   openShop(): void;
+  openWorkbench(): void;
   openTalents(atWaystone?: boolean): void;
   openLedger(): void;
   openClue(id: string): void;

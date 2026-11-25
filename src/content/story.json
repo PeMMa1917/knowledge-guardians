@@ -1,4 +1,27 @@
 {
+ "items": [
+  {
+   "id": "item.rain-gauge",
+   "name": "Rain gauge",
+   "description": "A clay cup with a scale, made at the Maker's bench. A tool is only as good as its last check.",
+   "historicalLabel": "fictional-world",
+   "art": "icon.tea"
+  },
+  {
+   "id": "item.plumb-line",
+   "name": "Plumb line",
+   "description": "A weight on a reed string, made at the Maker's bench. It shows what is upright, if it hangs free.",
+   "historicalLabel": "fictional-world",
+   "art": "icon.letter"
+  },
+  {
+   "id": "item.reed-pen",
+   "name": "Reed pen",
+   "description": "A pen cut from a river reed, made at the Maker's bench. Test a record on its reader.",
+   "historicalLabel": "fictional-world",
+   "art": "icon.letter"
+  }
+ ],
  "communities": [
   {
    "id": "guild",

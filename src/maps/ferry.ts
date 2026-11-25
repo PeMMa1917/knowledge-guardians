@@ -40,6 +40,8 @@ export const FERRY: MapDef = {
   interactables: [
     { id: 'ferry-road-back', kind: 'door', x: 0, y: 4, w: 1, h: 2, label: 'the road back to Emberford', art: 'road-post', to: { map: 'aethelgard.emberford', x: 38, y: 18 } },
     { id: 'secret-star-names', kind: 'secret', secret: 'star-names', x: 22, y: 8, w: 1, h: 1, label: 'something glinting in the reeds' },
+    { id: 'clay-bank', kind: 'gather', resource: 'clay', x: 9, y: 8, w: 1, h: 1, label: 'the clay bank (gather)', art: 'clay-bank' },
+    { id: 'reeds-ferry', kind: 'gather', resource: 'reed', x: 19, y: 8, w: 1, h: 1, label: 'the tall reeds (gather)', art: 'reeds' },
     { id: 'ferry-waystone', kind: 'waystone', place: 'the old ferry landing', x: 6, y: 3, w: 1, h: 1, label: 'the Waystone by the old road (save and rest)', art: 'waystone' },
     { id: 'ferry-camp-sign', kind: 'sign', x: 15, y: 5, w: 1, h: 1, label: 'the ferry folk\'s board', art: 'ferry-slate', flag: 'ferry.board',
       text: 'A slate board, written in the river cant and in town words. TODAY: slow water. The ford is good for walkers, not for carts. The next boat goes when the water says, not when the bell says. Ask Tova.' },

@@ -6,6 +6,7 @@
 import { trustOf, rankOf } from './communities';
 import { WARES, priceFor } from './shop';
 import { TALENTS, cannotLearn, hasTalent } from './talents';
+import { GATHER_YIELD, RECIPES, RESOURCES, cannotCraft } from './craft';
 import type {
   AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
@@ -55,6 +56,9 @@ export type Command =
   | { type: 'BuyWare'; ware: string }
   | { type: 'LearnTalent'; talent: string }
   | { type: 'ForgetTalents' }
+  | { type: 'Gather'; node: string; resource: string; day: string }
+  | { type: 'Craft'; recipe: string; choice: number }
+  | { type: 'Calibrate'; recipe: string; choice: number }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
@@ -121,6 +125,7 @@ export type GameEvent =
   | { kind: 'keepsake'; id: string; name: string; use: string }
   | { kind: 'lamp'; id: string; name: string; lit: string; count: number; total: number }
   | { kind: 'clue'; clue: string; keepsake: string; text: string }
+  | { kind: 'craft'; recipe: string; ok: boolean; why: string }
   | { kind: 'trust'; id: string; name: string; rank: string }
   | { kind: 'secret'; id: string; name: string; found: number; total: number }
   | { kind: 'error'; message: string };
@@ -302,6 +307,29 @@ export class Engine {
           const key = `clue.${cl.id}.${cmd.keepsake}`;
           if (s.flags[key] !== true) s = apply([{ setFlag: key, value: true }, ...(cl.study ? [{ addNum: 'study.views', by: 1 } as Effect] : []), ...(v.effects ?? [])], s, out);
           events.push({ kind: 'clue', clue: cl.id, keepsake: cmd.keepsake, text: v.text });
+          break;
+        }
+        case 'Gather': {
+          if (!(cmd.resource in RESOURCES)) throw new Error('Nothing to gather here');
+          if (s.flags[`gather.${cmd.node}`] === cmd.day) throw new Error('You took what you need here today. It will be ready again tomorrow.');
+          s = apply([{ setFlag: `gather.${cmd.node}`, value: cmd.day }, { addNum: `res.${cmd.resource}`, by: GATHER_YIELD }], s, out);
+          break;
+        }
+        case 'Craft': case 'Calibrate': {
+          const r = RECIPES.find((x) => x.id === cmd.recipe);
+          if (!r) throw new Error('Unknown recipe');
+          const o = r.check.options[cmd.choice];
+          if (!o) throw new Error('Choose an answer');
+          const fx: Effect[] = [{ setFlag: `craft.${r.id}.calibrated`, value: o.ok || s.flags[`craft.${r.id}.calibrated`] === true }];
+          if (cmd.type === 'Craft') {
+            if (s.inventory[r.item]) throw new Error('You have one already. You can calibrate it again.');
+            const why = cannotCraft(s.flags, r.id);
+            if (why) throw new Error(why);
+            for (const [k, n] of Object.entries(r.cost)) fx.push({ addNum: `res.${k}`, by: -(n as number) });
+            fx.push({ giveItem: r.item }, { addNum: 'count.crafted', by: 1 });
+          } else if (!s.inventory[r.item]) throw new Error('Make the tool first');
+          s = apply(fx, s, out);
+          events.push({ kind: 'craft', recipe: r.id, ok: o.ok, why: o.why });
           break;
         }
         case 'LearnTalent': {

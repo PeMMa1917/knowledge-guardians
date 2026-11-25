@@ -43,6 +43,7 @@ import { artURL, BIG_ART } from './illustrations';
 import { clear, h, trapFocus } from './dom';
 import { dealTiles, isPair, speedRank, tileRank, type Tile } from '../domain/tiles';
 import { TRUST_RANKS, rankOf, trustOf } from '../domain/communities';
+import { RECIPES, RESOURCES, cannotCraft, resCount, type Resource } from '../domain/craft';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
 import { WARES, honestLabels, lockedOption, owns, priceFor } from '../domain/shop';
 import { calendarGrid, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
@@ -2658,6 +2659,46 @@ export class UI implements UIApi {
         h('div', { class: 'row' },
           atWaystone && spent(c.state) ? h('button', { onclick: () => { c.dispatch({ type: 'ForgetTalents' }); this.sfx('sfx.page'); render('All Insight is free again. Try another set.'); } }, 'Unlearn all (free at a Waystone)') : h('span', { class: 'fine' }, atWaystone ? '' : 'You can unlearn talents for free at any Waystone.'),
           h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    render();
+  }
+
+  /**
+   * The Maker's bench: make measuring tools from gathered ore, clay and reeds. Each tool asks one
+   * calibration question. Any answer makes the tool; a checked tool is marked 'calibrated'.
+   */
+  openWorkbench(): void {
+    const c = ctx.controller;
+    const box = this.openModal('bench-panel wide', "The Maker's bench");
+    this.sfx('sfx.page');
+    const ask = (r: (typeof RECIPES)[number], mode: 'Craft' | 'Calibrate') => {
+      box.replaceChildren(this.closeBtn(), h('h2', {}, `${mode === 'Craft' ? 'Make' : 'Calibrate'}: ${r.name}`),
+        h('p', {}, 'Before a tool is used, it is checked. ', h('strong', {}, r.check.q)),
+        h('div', { class: 'notice-options' }, ...r.check.options.map((o, i) => h('button', { type: 'button', onclick: () => {
+          const ev = c.dispatch({ type: mode, recipe: r.id, choice: i });
+          const res = ev.find((e) => e.kind === 'craft') as Extract<GameEvent, { kind: 'craft' }> | undefined;
+          if (!res) return;
+          this.sfx(res.ok ? 'sfx.sparkle' : 'sfx.page');
+          render(`${res.ok ? 'Calibrated. ' : `${mode === 'Craft' ? 'The tool is made, but not calibrated. ' : 'Not calibrated yet. '}`}${res.why}`);
+        } }, o.text))),
+        h('div', { class: 'row' }, h('button', { onclick: () => render() }, 'Back')));
+    };
+    const render = (note?: string) => {
+      const s = c.state;
+      box.replaceChildren(this.closeBtn(), h('h2', {}, "The Maker's bench"),
+        h('p', {}, "Hesper lets anyone use this bench. Gather iron ore, river clay and reeds around Emberford and at the ferry landing (each place gives 2 a day). A tool is only as good as its last check."),
+        h('p', { class: 'fine', role: 'status' }, (Object.keys(RESOURCES) as Resource[]).map((k) => `${RESOURCES[k]}: ${resCount(s.flags, k)}`).join(' · ')),
+        ...(note ? [h('p', { class: 'clue-view fresh' }, note)] : []),
+        h('div', { class: 'shop-grid' }, ...RECIPES.map((r) => {
+          const have = !!s.inventory[r.item], cal = s.flags[`craft.${r.id}.calibrated`] === true, why = cannotCraft(s.flags, r.id);
+          return h('div', { class: `ware ${have && cal ? 'owned' : ''}` },
+            h('strong', {}, r.name), h('p', {}, r.use),
+            h('p', { class: 'fine' }, `Needs: ${(Object.entries(r.cost) as [Resource, number][]).map(([k, n]) => `${n} ${k === 'reed' && n === 1 ? 'reed' : RESOURCES[k].toLowerCase()}`).join(', ')}`),
+            have ? h('p', { class: 'fine' }, cal ? 'Made and calibrated.' : 'Made, not calibrated.') : null,
+            have ? (cal ? h('span', {}) : h('button', { type: 'button', onclick: () => ask(r, 'Calibrate') }, 'Calibrate'))
+              : h('button', { type: 'button', disabled: !!why, onclick: () => ask(r, 'Craft') }, why ?? 'Make it'));
+        })),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
     };
     render();
   }
