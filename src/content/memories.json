@@ -168,6 +168,50 @@
    "line": "You sat by the Waystone for a while. Good. The market will still be here."
   },
   {
+   "id": "visitor.pen.revised",
+   "character": "villager-2",
+   "if": {
+    "all": [
+     {
+      "flag": "label.pen.holds",
+      "eq": true
+     },
+     {
+      "flag": "label.pen.failedOnce",
+      "eq": true
+     }
+    ]
+   },
+   "line": "Your new pen label is clearer than the first one. Now I can tell what each 'first' was about."
+  },
+  {
+   "id": "visitor.pen",
+   "character": "villager-2",
+   "if": {
+    "flag": "label.pen.holds",
+    "eq": true
+   },
+   "line": "I read your pen label twice. 'First' meant a different thing for each pen. I did not know that."
+  },
+  {
+   "id": "sol.firsts",
+   "character": "visitor-sol",
+   "if": {
+    "num": "count.labels.holding",
+    "gte": 3
+   },
+   "line": "I walked the Hall of Firsts. Each plaque says what kind of first it was: first to do it, first to publish it, first we know of."
+  },
+  {
+   "id": "tull.inventor",
+   "character": "archivist-tull",
+   "if": {
+    "flag": "label.ee.inventor.holds",
+    "eq": true
+   },
+   "line": "Your claim board has a counterclaim on it. Good. A board with only one side is a poster, not research."
+  },
+  {
    "id": "venn.glimmer",
    "character": "clerk-venn",
    "if": {
