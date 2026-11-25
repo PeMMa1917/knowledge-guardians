@@ -52,3 +52,23 @@ describe('secrets and lore', () => {
     expect(d.s.flags['secrets.found']).toBe(1);
   });
 });
+
+describe("Sefa's Word Tiles", async () => {
+  const { dealTiles, isPair, tileRank } = await import('../src/domain/tiles');
+  it('deals the same tiles for the same run, six pairs, each word with its meaning', () => {
+    const words = pack.glossary.map((g) => ({ id: g.id, term: g.term, text: g.text }));
+    const a = dealTiles(words, 3), b = dealTiles(words, 3), c = dealTiles(words, 4);
+    expect(a).toEqual(b);
+    expect(a).not.toEqual(c);
+    expect(a).toHaveLength(12);
+    for (const t of a) expect(a.filter((u) => isPair(t, u))).toHaveLength(1);
+    expect(tileRank(6, 6)).toBe('S');
+    expect(tileRank(20, 6)).toBe('C');
+  });
+});
+
+it('a meaning tile never shows its own word', async () => {
+  const { hideTerm } = await import('../src/domain/tiles');
+  expect(hideTerm('Something that someone says is true. A claim can be bigger.', 'Claim')).toBe('Something that someone says is true. A ___ can be bigger.');
+  expect(hideTerm('Claims and more claims.', 'Claim')).toBe('___ and more ___.');
+});

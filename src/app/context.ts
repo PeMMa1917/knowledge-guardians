@@ -19,6 +19,8 @@ export interface UIApi {
   openQuarters(): void;
   openDive(): void;
   openLamps(): void;
+  openTiles(): void;
+  openLedger(): void;
   openClue(id: string): void;
   openLoreling(loreling: string, sighting?: string): void;
   openForge(): void;

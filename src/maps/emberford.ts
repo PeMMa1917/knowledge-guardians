@@ -131,6 +131,7 @@ export const EMBERFORD: MapDef = {
     { id: 'cellar-door', kind: 'door', x: 12, y: 6, w: 1, h: 1, label: 'the cellar door', art: 'cellar-door', flag: 'study.entered',
       artOpen: { key: 'cellar-door.open', if: { num: 'lamps.lit', gte: 6 } }, openIf: { num: 'lamps.lit', gte: 6 }, to: { map: 'aethelgard.study', x: 9, y: 11 },
       text: 'An old oak door in the ground, beside the guild hall. It has no lock and no handle. Under the moss, words are cut into the wood: WHEN SIX LAMPS BURN AGAIN.' },
+    { id: 'word-tiles', kind: 'tiles', x: 12, y: 15, w: 1, h: 1, label: "Sefa's word tiles (a memory game)", art: 'tile-table' },
     // Secrets (Easter eggs): no art, found by searching. Lore in story.json, Journal > Lore.
     { id: 'secret-ember-myth', kind: 'secret', secret: 'ember-myth', x: 7, y: 9, w: 1, h: 1, label: 'a loose brick in the smithy wall' },
     { id: 'secret-three-coins', kind: 'secret', secret: 'three-coins', x: 19, y: 15, w: 1, h: 1, label: 'the bottom of the fountain' },

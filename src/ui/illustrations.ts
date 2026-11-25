@@ -469,6 +469,12 @@ DRAW['road-post'] = [16, 24, (g) => {
   R(g, '#4aa3ff', 3, 6, 6, 2); R(g, '#efe1bd', 4, 5, 1, 1); R(g, '#efe1bd', 11, 6, 3, 1); R(g, '#efe1bd', 13, 5, 1, 3);
   R(g, '#4a7a3a', 4, 20, 8, 4); R(g, '#6aa84f', 5, 21, 1, 2); R(g, '#6aa84f', 10, 20, 1, 3);
 }];
+// Sefa's word tiles: a small table with face-down tiles, two turned up.
+DRAW['tile-table'] = [16, 24, (g) => {
+  R(g, '#5b3b22', 2, 17, 1, 7); R(g, '#5b3b22', 13, 17, 1, 7); R(g, '#8a5a30', 0, 13, 16, 4); R(g, '#a87445', 0, 13, 16, 1);
+  for (let i = 0; i < 6; i++) R(g, i === 1 || i === 4 ? '#efe1bd' : '#3b3355', 1 + (i % 3) * 5, 7 + Math.floor(i / 3) * 3, 4, 2);
+  R(g, '#c9a24a', 3, 7, 1, 1); R(g, '#c9a24a', 13, 10, 1, 1); R(g, '#8a7f66', 7, 8, 2, 1); R(g, '#8a7f66', 7, 11, 2, 1);
+}];
 const paper = (g: Ctx, x: number, y: number, w: number, h: number) => { R(g, '#efe1bd', x, y, w, h); R(g, '#c9b48a', x, y + h - 1, w, 1); };
 const smallTable = (g: Ctx, w = 16) => { R(g, '#5b3b22', 2, 17, 1, 7); R(g, '#5b3b22', w - 3, 17, 1, 7); R(g, '#8a5a30', 0, 14, w, 3); R(g, '#a87445', 0, 14, w, 1); };
 DRAW['clue.desk'] = [32, 24, (g) => {

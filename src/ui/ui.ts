@@ -41,6 +41,7 @@ import type { ClaimKind, DialogueNode, EvidenceCard, HistoricalLabel, ShowdownSt
 import { PLAYER_LOOKS } from '../scenes/art';
 import { artURL, BIG_ART } from './illustrations';
 import { clear, h, trapFocus } from './dom';
+import { dealTiles, isPair, speedRank, tileRank, type Tile } from '../domain/tiles';
 import { calendarGrid, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
 
 const HIST_LABEL_TEXT: Record<HistoricalLabel, [string, string]> = {
@@ -2530,6 +2531,7 @@ export class UI implements UIApi {
     const scores: string[] = [
       `Deep Dive, deepest day: ${Number(s.flags['dive.best'] ?? 0)} m`,
       fc?.days && fs.length ? `Forecast Board: Brier score ${brier(fs.map((p) => p / 100), fc.days.slice(0, fs.length).map((d) => d.rain)).toFixed(2)} (lower is closer; 0.25 is 'always 50%')` : 'Forecast Board: not played yet',
+      s.flags['tiles.best.moves'] ? `Sefa's Word Tiles: best ${s.flags['tiles.best.moves']} moves, fastest ${s.flags['tiles.best.secs']} s` : "Sefa's Word Tiles: not played yet",
       `Total play time in this campaign: ${fmtTime(s.playSeconds ?? 0)}`,
     ];
     box.append(this.closeBtn(), h('h2', {}, "The Guardian's Ledger"),
@@ -2546,6 +2548,64 @@ export class UI implements UIApi {
         h('div', {}, h('h3', {}, 'Completion'), ...bars.map(bar).filter(Boolean) as HTMLElement[])),
       h('h3', {}, 'Scores'), h('ul', {}, ...scores.map((t) => h('li', {}, t))),
       h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+  }
+
+  /** Sefa's Word Tiles: match each TOK word with its meaning. Scores for moves and time; no XP. */
+  openTiles(): void {
+    const c = ctx.controller;
+    const PAIRS = 6;
+    const run = Number(c.state.flags['tiles.runs'] ?? 0);
+    const tiles: Tile[] = dealTiles(c.pack.glossary.map((g) => ({ id: g.id, term: g.term, text: g.text })), run, PAIRS);
+    const matched = new Set<number>();
+    let up: number[] = [], moves = 0, started = 0, done = false, lock = false;
+    const bestMoves = Number(c.state.flags['tiles.best.moves'] ?? 0), bestSecs = Number(c.state.flags['tiles.best.secs'] ?? 0);
+    const box = this.openModal('tiles-panel wide', "Sefa's Word Tiles");
+    const status = h('p', { class: 'fine', role: 'status', 'aria-live': 'polite' });
+    const grid = h('div', { class: 'tiles-grid' });
+    const result = h('div', {});
+    const render = () => {
+      grid.replaceChildren(...tiles.map((t, i) => {
+        const open = up.includes(i) || matched.has(i);
+        return h('button', { type: 'button', class: `word-tile ${t.kind} ${open ? 'open' : ''} ${matched.has(i) ? 'matched' : ''}`, disabled: matched.has(i) || done,
+          'aria-label': open ? `${t.kind === 'term' ? 'Word' : 'Meaning'}: ${t.text}` : `Tile ${i + 1}, face down`, onclick: () => flip(i) },
+          open ? h('span', {}, t.text) : h('span', { class: 'tile-back', 'aria-hidden': 'true' }, '✦'));
+      }));
+      status.textContent = `${matched.size / 2} of ${PAIRS} pairs · ${moves} move${moves === 1 ? '' : 's'}${bestMoves ? ` · your best: ${bestMoves} moves, ${bestSecs} s` : ''}`;
+    };
+    const flip = (i: number) => {
+      if (lock || up.includes(i) || matched.has(i)) return;
+      if (!started) started = performance.now();
+      up.push(i); this.sfx('sfx.page');
+      if (up.length === 2) {
+        moves++;
+        const [a, b] = up;
+        if (isPair(tiles[a], tiles[b])) {
+          matched.add(a); matched.add(b); up = [];
+          playNotes([{ f: 660, at: 0, beats: 0.3 }, { f: 880, at: 0.15, beats: 0.4 }], 0.2, 'flute', ctx.settings.sfxVolume);
+          if (matched.size === tiles.length) finish();
+        } else { lock = true; setTimeout(() => { up = []; lock = false; render(); }, 1100); }
+      }
+      render();
+    };
+    const finish = () => {
+      done = true;
+      const secs = Math.max(1, Math.round((performance.now() - started) / 1000));
+      const newMoves = !bestMoves || moves < bestMoves, newSecs = !bestSecs || secs < bestSecs;
+      c.dispatch({ type: 'SetFlag', flag: 'tiles.runs', value: run + 1 });
+      if (newMoves) c.dispatch({ type: 'SetFlag', flag: 'tiles.best.moves', value: moves });
+      if (newSecs) c.dispatch({ type: 'SetFlag', flag: 'tiles.best.secs', value: secs });
+      this.sfx('sfx.award');
+      const pace = bestSecs ? (secs < bestSecs ? `${bestSecs - secs} s faster than your best.` : `${secs - bestSecs} s behind your best.`) : 'Your first run sets your best.';
+      result.replaceChildren(h('div', { class: 'tile-ranks' },
+        h('div', {}, h('span', { class: 'fine' }, 'Precision'), h('strong', { class: 'rank' }, tileRank(moves, PAIRS)), h('span', {}, `${moves} moves${newMoves ? ' · new best' : ''}`)),
+        h('div', {}, h('span', { class: 'fine' }, 'Speed'), h('strong', { class: 'rank' }, speedRank(secs, PAIRS)), h('span', {}, `${secs} s${newSecs ? ' · new best' : ''}`))),
+        h('p', {}, pace, ' Sefa: "Knowing the words is a start. Using them well, on a real claim, is the real game."'),
+        h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.openTiles() }, 'Play again (new words)'), h('button', { onclick: () => this.closeModal() }, 'Close')));
+    };
+    box.append(this.closeBtn(), h('h2', {}, "Sefa's Word Tiles"),
+      h('p', {}, 'Turn two tiles. A word and its meaning make a pair. Each new game deals six new words from the Guardian glossary.'),
+      status, grid, result);
+    render();
   }
 
   /** The Lamp Wall (storyline): one lamp for each knot the town unties. Six lamps open the old Guardian's cellar. */

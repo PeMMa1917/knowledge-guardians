@@ -799,3 +799,14 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .ledger-bar .fill { display: block; height: 100%; background: linear-gradient(90deg, var(--gold-dim), var(--gold)); }
 .lore-entry { border-left: 3px solid var(--gold-dim); padding: 0 0.8rem; margin: 0.6rem 0; }
 .lore-entry h3 { margin: 0; color: var(--gold); }
+.tiles-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; margin: 0.6rem 0; }
+@media (max-width: 640px) { .tiles-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.word-tile { min-height: 5.5rem; padding: 0.4rem; border-radius: 10px; font-size: 0.82rem; line-height: 1.25; background: var(--panel-2); border: 2px solid var(--gold-dim); color: var(--ink); transition: transform 0.2s; }
+.word-tile .tile-back { font-size: 1.6rem; color: var(--gold); }
+.word-tile.open { background: #efe1bd; color: #2a2440; transform: rotateY(0deg); }
+.word-tile.open.term { font-weight: 700; font-size: 1rem; }
+.word-tile.matched { border-color: #5fbf7a; background: #dff2e3; opacity: 0.85; }
+@media (prefers-reduced-motion: reduce) { .word-tile { transition: none; } }
+.tile-ranks { display: flex; gap: 1rem; margin: 0.6rem 0; }
+.tile-ranks > div { display: flex; flex-direction: column; align-items: center; padding: 0.5rem 1rem; border-radius: 8px; background: var(--panel-2); border: 1px solid var(--gold-dim); }
+.tile-ranks .rank { font-size: 2rem; color: var(--gold); }
