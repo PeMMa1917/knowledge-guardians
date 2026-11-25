@@ -109,6 +109,25 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 5. **Chapter 2** (next world in spec section 27). Use the same tools (label kit, Showdown, thread) with new real objects. Keep people from many peoples, places and periods, each named with their own place, never by continent.
 6. **Phase L3 and later:** all 40 misconceptions, quests for all subjects, CAS stories (play is never CAS), more reports.
 
+### Game elements from Mika's list (2026-11-25): what is done and what is next
+
+Mika asked for many RPG elements, each tied to TOK concepts, words and skills. Keep the standing rules: no student-made content (no level editors, no student guidebooks), no news or current events (in-world gazettes about game lore are fine), no hidden correct answer, calm mode, school-appropriate stealth and conflict (no crime, no violence against people; 'combat' is argument, testing and the Fray).
+
+- **Done (chapter 1):** storyline (Lamp Wall, Elsbet's study, Story so far), characters with voices and roles, maps to discover (study, ferry landing, secrets, fog of war), lore (Lore codex, Fray Bestiary, environmental clues), collections (keepsakes, cards, Lorelings, secrets), XP and concept rings, titles, customisation (look, pronouns, origin, crest, Lumen, quarters, companions), dialogue trees with keepsake options, choices and consequences (Showdown outcomes, plaque methods), reputation (Communities of Emberford), Showdowns as 'battles' with patience and crowd, forging, save points (Waystones) with a quiet backup, fast travel (portal stones), day and evening, rain, quest log and hints, minigames (Word Tiles, Deep Dive, Forecast Board, bell stair, music box), puzzles (15), scores and ranks (Ledger, Word Tiles ranks, Brier score), housing (quarters), photo album, emotes, Zen mode, glossary, campfire logs, adaptive hints.
+- **Next, in this order (each must teach a TOK idea, not only decorate):**
+  1. **Merchant and economy:** a stall that sells cosmetic items (quarters decor, cloak dyes) for marks earned from deeds; prices on Corvan's stall change after the Showdown (honest labels). Tie: value, evidence of worth.
+  2. **Gathering and crafting:** collect 'samples' (ore, water, cloth) to test at the assay table; craft repair kits for the instruments in the puzzles. Tie: method, measurement error.
+  3. **Rumour mill:** overheard lines in the market that open side quests; the player traces each one to a source.
+  4. **Party banter and companion approval:** Kip comments on choices (approval for asking good questions, never for agreeing).
+  5. **Skill tree:** spend skill points earned from the Skill Atlas on Lens upgrades (for example a second Lens mode). Respec at a Waystone, free.
+  6. **Classes as 'knower roles':** Questioner, Maker, Storyteller, Recorder (the companions' roles); a role changes hints and one dialogue option per scene, never XP.
+  7. **Daily seeded challenge and personal-best ghosts** for more puzzles (the Ledger already stores scores).
+  8. **Dungeon:** the archive under the Nexus (Chapter 2 hook, the door with no name), with traps that are fallacies and a multi-phase 'boss' (a Fray that changes its argument each phase).
+  9. **Boss rush and New Game Plus** after chapter 2: replay Showdowns with harder opponents and no hints, for titles only.
+  10. **Multiple endings** across chapters, from the communities' trust and the Showdown outcomes (an epilogue slide per community).
+  11. **Class-wide co-op goals** (needs a server; spec says single-player for now): skip until the teacher view has a safe class store.
+- **Not planned, by rule:** survival meters (hunger, thirst), crime and prison, pickpocketing, gambling-like loot boxes or random paid drops, real-money anything, level editors, student guidebooks, news.
+
 ## Known limits and problems
 
 - **Toasts:** at most three show at once and the rest wait their turn; XP from one action shows as one toast. A busy moment can still take about ten seconds to read through.
