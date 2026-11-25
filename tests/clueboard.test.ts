@@ -45,3 +45,30 @@ describe('practice clue board (spec 47)', () => {
     expect(d.s.journal).toContain('j.board');
   });
 });
+
+describe('Zen mode (spec 47.4)', () => {
+  it('a relaxed Showdown never ends on the turn limit, only when the player rests', () => {
+    const d = new Driver();
+    d.run({ type: 'ShowdownStart', showdown: 'corvan', relaxed: true });
+    d.run({ type: 'ShowdownMove', move: { move: 'claim', claim: 'honest' } });
+    for (let i = 0; i < sd.crowd.patience + 3; i++) d.run({ type: 'ShowdownMove', move: { move: 'source' } });
+    expect(d.s.showdown!.outcome).toBeNull();
+    d.run({ type: 'ShowdownMove', move: { move: 'rest' } });
+    expect(d.s.showdown!.outcome).not.toBeNull();
+  });
+  it('a normal Showdown still ends at the turn limit', () => {
+    const d = new Driver();
+    d.run({ type: 'ShowdownStart', showdown: 'corvan' });
+    d.run({ type: 'ShowdownMove', move: { move: 'claim', claim: 'honest' } });
+    for (let i = 0; i < sd.crowd.patience + 3 && !d.s.showdown!.outcome; i++) d.run({ type: 'ShowdownMove', move: { move: 'source' } });
+    expect(d.s.showdown!.outcome).not.toBeNull();
+  });
+});
+
+describe('Sit a while', () => {
+  it('a breathing pause gives the Balanced moment once', () => {
+    const d = new Driver();
+    d.run({ type: 'SetFlag', flag: 'zen.sat', value: true });
+    expect(d.p.moments['PM-19']).toBeTruthy();
+  });
+});

@@ -47,7 +47,7 @@ export type Command =
   | { type: 'RunSimulation'; pen: string; surface: string }
   | { type: 'BuildLabel'; kit: string; subject: string; criterion: string; limit: string }
   | { type: 'TurnLock'; lock: string; choice: Record<string, string> }
-  | { type: 'ShowdownStart'; showdown: string }
+  | { type: 'ShowdownStart'; showdown: string; relaxed?: boolean }
   | { type: 'ShowdownMove'; move: ShowdownMove }
   | { type: 'FollowThread'; thread: string; node: string }
   | { type: 'Forge'; action: ForgeAction }
@@ -329,7 +329,7 @@ export class Engine {
           if (!rec) throw new Error('Unknown Showdown');
           if (s.showdown && s.showdown.id === rec.id && !s.showdown.outcome) break; // resume
           s = structuredClone(s);
-          s.showdown = startShowdown(rec);
+          s.showdown = startShowdown(rec, cmd.relaxed === true);
           events.push({ kind: 'showdown', state: s.showdown });
           break;
         }

@@ -43,9 +43,9 @@ export const MOVE_HELP: Record<ShowdownMove['move'], string> = {
 
 const clamp = (n: number) => Math.max(0, Math.min(100, Math.round(n)));
 
-export function startShowdown(rec: ShowdownRecord): ShowdownState {
+export function startShowdown(rec: ShowdownRecord, relaxed = false): ShowdownState {
   return {
-    id: rec.id, turn: 0,
+    id: rec.id, turn: 0, ...(relaxed ? { relaxed: true } : {}),
     trust: { player: rec.crowd.player, opponent: rec.crowd.opponent },
     claim: null, force: 0, support: 0, used: [], cracked: [],
     opponentForce: rec.opponentClaim.force,
@@ -209,7 +209,7 @@ export function playMove(rec: ShowdownRecord, sd0: ShowdownState, mv: ShowdownMo
     sd.log.push({ who: 'opponent', text: rec.testimony.line, why: 'A new statement. Does any card you hold contradict it? You can present it now, on your next move only.' });
   }
   sd.trust = { player: clamp(sd.trust.player), opponent: clamp(sd.trust.opponent) };
-  if (sd.turn >= rec.crowd.patience || everyLinkCracked(rec, sd) && (sd.narrowed || sd.sealShown || !rec.opponentClaim.seal)) {
+  if (!sd.relaxed && sd.turn >= rec.crowd.patience || everyLinkCracked(rec, sd) && (sd.narrowed || sd.sealShown || !rec.opponentClaim.seal)) {
     sd.outcome = decideOutcome(rec, sd);
     sd.log.push({ who: 'crowd', text: rec.outcomes[sd.outcome].text });
   }

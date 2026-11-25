@@ -14,6 +14,8 @@ import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
 import { tiltOf } from '../domain/puzzles';
+import { chime } from '../app/ambience';
+import { caption } from '../app/captions';
 import { OPPONENT, judgeYarn, viewBoard } from '../domain/clueboard';
 import { EMOTES } from '../domain/emotes';
 import { STAGE_LABEL, nextStep, skillStage, type SkillStage } from '../domain/skills';
@@ -505,7 +507,7 @@ export class UI implements UIApi {
     const ev = c.pack.events.find((x) => x.id === id);
     if (!ev || c.state.events.pending !== id) return;
     const play = () => { this.closeModal(false); this.activeEvent = id; this.showNode(ev.node); };
-    if (!ctx.settings.calmMode) { play(); return; }
+    if (!ctx.settings.calmMode && !ctx.settings.zenMode) { play(); return; }
     this.openModal('event', ev.title,
       h('h2', {}, ev.title), h('p', {}, ev.calm),
       h('p', { class: 'fine' }, 'Nothing here is timed, and waiting costs you nothing.'),
@@ -1248,7 +1250,7 @@ export class UI implements UIApi {
     const c = ctx.controller;
     const rec = c.pack.showdowns.find((x) => x.id === id);
     if (!rec) return;
-    c.dispatch({ type: 'ShowdownStart', showdown: id });
+    c.dispatch({ type: 'ShowdownStart', showdown: id, relaxed: ctx.settings.zenMode });
     const box = this.openModal('showdown wide', rec.title);
     // Touch screens cannot show hover titles, so move explanations start visible there (phone pass).
     let explain = (() => { try { return window.matchMedia('(pointer: coarse)').matches; } catch { return false; } })();
@@ -1264,7 +1266,7 @@ export class UI implements UIApi {
       clear(box);
       const myClaim = rec.playerClaims.find((x) => x.id === sd.claim);
       const cards = c.state.cards.map((cid) => ({ v: cid, t: c.pack.cards.find((x) => x.id === cid)?.title ?? cid }));
-      box.append(this.closeBtn(), h('h2', {}, rec.title), h('p', { class: 'fine' }, `${rec.place}. No timer. Each move says why it worked or not.`),
+      box.append(this.closeBtn(), h('h2', {}, rec.title), h('p', { class: 'fine' }, `${rec.place}. No timer. ${sd.relaxed ? 'Zen mode: the crowd waits as long as you like. ' : ''}Each move says why it worked or not.`),
         h('div', { class: 'crowd', role: 'img', 'aria-label': `Crowd trust: you ${sd.trust.player}, ${opp?.name} ${sd.trust.opponent}` },
           h('span', {}, 'You'), h('span', { class: 'bar' }, h('i', { style: { width: `${sd.trust.player}%` } })), h('span', {}, String(sd.trust.player)),
           h('span', {}, opp?.name ?? ''), h('span', { class: 'bar opp' }, h('i', { style: { width: `${sd.trust.opponent}%` } })), h('span', {}, String(sd.trust.opponent))),
@@ -1323,6 +1325,37 @@ export class UI implements UIApi {
 
   // ------------------------------------------------------------- Waystone (38.7)
 
+  /** A short, optional breathing pause at a Waystone (Balanced, spec 90; Zen and explorer mode, 47.4). */
+  openBreathing(): void {
+    const c = ctx.controller;
+    const still = ctx.settings.reducedMotion;
+    const orb = h('div', { class: `breath-orb ${still ? 'still' : ''}`, 'aria-hidden': 'true' });
+    const say = h('p', { class: 'breath-say', 'aria-live': 'polite' }, 'Sit. Let your shoulders drop.');
+    const box = this.openModal('breath-panel', 'Sit a while', this.closeBtn(), h('h2', {}, 'Sit a while'),
+      h('p', { class: 'fine' }, 'Three slow breaths by the Waystone. Close this at any time.'), orb, say);
+    let n = 0;
+    const timers: number[] = [];
+    const step = () => {
+      if (!box.isConnected) { timers.forEach(clearTimeout); return; }
+      if (n >= 6) {
+        say.textContent = 'Done. The square is still there when you are ready.';
+        orb.classList.remove('in', 'out');
+        c.dispatch({ type: 'SetFlag', flag: 'zen.sat', value: true });
+        c.dispatch({ type: 'SetFlag', flag: 'count.sit', value: Number(c.state.flags['count.sit'] ?? 0) + 1 });
+        box.append(h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Go on')));
+        (box.querySelector('[data-autofocus]') as HTMLElement | null)?.focus();
+        return;
+      }
+      const inhale = n % 2 === 0;
+      say.textContent = inhale ? `Breathe in… (${n / 2 + 1} of 3)` : 'Breathe out…';
+      orb.classList.toggle('in', inhale); orb.classList.toggle('out', !inhale);
+      if (inhale) { chime(ctx.settings.sfxVolume * 0.5); caption('amb.chime'); }
+      n++;
+      timers.push(window.setTimeout(step, 4000));
+    };
+    timers.push(window.setTimeout(step, 800));
+  }
+
   openWaystone(place: string): void {
     const c = ctx.controller;
     c.dispatch({ type: 'Rest', place });
@@ -1348,6 +1381,7 @@ export class UI implements UIApi {
           }
           this.closeModal();
         } }, 'Rest and go on'),
+        h('button', { onclick: () => this.openBreathing() }, 'Sit a while'),
         h('button', { onclick: () => { c.suspend('Save and leave'); this.closeModal(false); (window as any).kgToTitle?.(); } }, 'Save and leave')));
   }
 
@@ -1678,6 +1712,7 @@ export class UI implements UIApi {
       check('dyslexiaSpacing', 'Wider letter and line spacing'),
       check('guidePrompts', 'Lumen may show short prompts without being asked'),
       check('calmMode', 'Calm mode: surprise events warn first, and you can choose "Later"'),
+      check('zenMode', 'Zen mode: no turn limit in Showdowns (the crowd waits), surprise events always ask first, and nothing can be failed'),
       check('glossary', 'Smart glossary: underline key words in conversations, so you can tap them for an explanation'),
       check('talkSounds', 'Talk sounds: short voice sounds while characters speak'),
       check('captions', 'Sound captions: a short text line for each sound (for example [Forge hammer rings])'),

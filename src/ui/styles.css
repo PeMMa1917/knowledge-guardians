@@ -435,3 +435,11 @@ button.link { background: none; border: none; color: var(--accent, #9fe8ff); tex
 .cork button.cork-note.theirs:hover, .cork button.cork-note.theirs:focus-visible { background: #fcebe6; }
 .cork button.cork-card:hover, .cork button.cork-card:focus-visible { background: #fffdf3; color: #2a2238; outline: 2px solid #7d5bc4; }
 .cork button.cork-note:focus:not(:focus-visible) { outline: none; }
+
+/* Sit a while: a breathing pause */
+.breath-panel { text-align: center; }
+.breath-orb { width: 120px; height: 120px; margin: 18px auto; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #fff3c4, #f2d27a 45%, #7d5bc4 100%);
+  box-shadow: 0 0 30px 6px rgba(242,210,122,.45); transform: scale(.6); transition: transform 4s ease-in-out; }
+.breath-orb.in { transform: scale(1.1); } .breath-orb.out { transform: scale(.6); }
+.breath-orb.still { transition: none; transform: scale(.9); }
+.breath-say { font-size: 1.15em; min-height: 1.6em; }

@@ -611,6 +611,8 @@ export interface ShowdownState {
   cheapShots: number;
   /** Cross-examination: the statement is open for one move, then caught or missed. */
   testimony?: 'open' | 'caught' | 'missed';
+  /** Zen mode: the crowd waits; the Showdown ends only when the player rests or every link is cracked. */
+  relaxed?: boolean;
   log: ShowdownLogLine[];
   outcome: ShowdownOutcome | null;
 }

@@ -15,6 +15,8 @@ export interface Settings {
   dyslexiaSpacing: boolean;
   /** Calm mode (spec 93.3): events warn first and can be delayed. Nothing is ever timed. */
   calmMode: boolean;
+  /** Zen mode (spec 47.4, C1): no turn limit in Showdowns, events always ask first, no fail states. */
+  zenMode: boolean;
   /** Smart glossary (spec 47.10): key words in dialogue can be tapped for a plain explanation. */
   glossary: boolean;
   /** Read conversations aloud with the browser's own voice (spec 21, text-to-speech). Nothing is sent online by the game. */
@@ -45,7 +47,7 @@ export const LUMEN_COLOURS: Record<Settings['lumenColour'], number> = { gold: 0x
 
 export const DEFAULTS: Settings = {
   textScale: 1, reducedMotion: false, reducedEffects: false, musicVolume: 0.5, sfxVolume: 0.7,
-  guidePrompts: true, highContrast: false, dyslexiaSpacing: false, calmMode: false, glossary: true, readAloud: false,
+  guidePrompts: true, highContrast: false, dyslexiaSpacing: false, calmMode: false, zenMode: false, glossary: true, readAloud: false,
   colourSafe: false, keys: DEFAULT_KEYS, talkSounds: true, captions: false, playerVoice: 'mid', theme: 'archive', lumenColour: 'gold',
 };
 

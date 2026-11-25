@@ -1405,6 +1405,16 @@
    },
    "did": "You showed the whole street the same evidence, so they could agree.",
    "prompt": "How do you share a finding so that people on both sides trust it?"
+  },
+  {
+   "id": "PM-19",
+   "attribute": "balanced",
+   "when": {
+    "flag": "zen.sat",
+    "eq": true
+   },
+   "did": "You stopped for a few slow breaths before going on.",
+   "prompt": "What helps you rest when work gets hard?"
   }
  ],
  "misconceptions": [
