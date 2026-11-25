@@ -7,6 +7,7 @@
  * click or tap to walk to a spot or a person (alternative control route).
  */
 import { ensureLook } from './looks';
+import { cloakThreads } from '../domain/appearance';
 import { bell, chime, clink, shimmer } from '../app/ambience';
 import { CYCLE, skyAt } from '../app/daylight';
 import { lorelingForm } from '../domain/lorelings';
@@ -201,7 +202,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       block(21, 23, 1, 1);
     }
 
-    const look = ensureLook(this, ctx.controller.state.player.look);
+    const look = ensureLook(this, ctx.controller.state.player.look, this.threadColours());
     this.playerSheet = look;
     let px = s.pos.x, py = s.pos.y;
     if (px < 0 || py < 0 || this.blocked[py]?.[px] !== false) { px = m.spawn.x; py = m.spawn.y; }
@@ -232,6 +233,15 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       if (img) img.setVisible(!it.visibleIf || ctx.controller.check(it.visibleIf));
     }
     this.syncPet();
+    // Cloak embroidery (spec 32.6): a new thread appears on the outfit when a world arc is resolved.
+    if (this.player) {
+      const sheet = ensureLook(this, s.player.look, this.threadColours());
+      if (sheet !== this.playerSheet) {
+        this.playerSheet = sheet;
+        this.player.sprite.setTexture(`char.${sheet}`, this.idleFrame(this.player.facing));
+        if (!ctx.settings.reducedEffects) this.lumenBurst();
+      }
+    }
     // A small speech mark over people who have something new to say (a line not yet seen).
     for (const a of this.npcs) {
       const node = ctx.controller.engine.talkEntry(a.id, s);
@@ -562,6 +572,10 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.lumen.x += (tx - this.lumen.x) * 0.08; this.lumen.y += (ty - this.lumen.y) * 0.08;
     this.lumen.setDepth(this.player.sprite.y + 50);
     this.lumenGlow.setPosition(this.lumen.x, this.lumen.y).setDepth(this.lumen.depth - 1);
+  }
+
+  private threadColours(): string[] {
+    return cloakThreads(ctx.controller.state.objectivesDone).map((t) => t.colour);
   }
 
   /** Show or hide the Loreling that is out in the field. */

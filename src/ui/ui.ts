@@ -9,7 +9,7 @@
 import { ctx, type UIApi } from '../app/context';
 import { LUMEN_COLOURS, THEMES, saveSettings, type Settings } from '../app/settings';
 import { PRONOUN_SETS, cleanPronouns, personalise } from '../domain/player';
-import { ACCENT, ACCESSORIES, HAIR, LABELS, OUTFIT, PRESET_LOOKS, SKIN, TROUSERS, decodeLook, encodeLook, type LookChoice } from '../domain/appearance';
+import { ACCENT, ACCESSORIES, HAIR, LABELS, cloakThreads, OUTFIT, PRESET_LOOKS, SKIN, TROUSERS, decodeLook, encodeLook, type LookChoice } from '../domain/appearance';
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
@@ -291,6 +291,14 @@ export class UI implements UIApi {
     return { el, value };
   }
 
+  /** Cloak embroidery (spec 32.6): one stitched thread for each world arc resolved. */
+  private threadView(look: string): HTMLElement {
+    const got = cloakThreads(ctx.controller.state.objectivesDone);
+    return h('div', { class: 'threads row' }, h('span', { class: 'thread-preview' }, previewLook(look, 3, got.map((t) => t.colour))),
+      got.length ? h('ul', {}, ...got.map((t) => h('li', {}, h('span', { class: 'swatch', style: { background: `#${t.colour}` }, 'aria-hidden': 'true' }), ` ${t.name}`)))
+        : h('p', { class: 'fine' }, 'No threads yet. Your outfit gets an embroidered thread for each world story you resolve.'));
+  }
+
   /** My Guardian: change pronouns at any time; see the origin. */
   private openGuardian(): void {
     const c = ctx.controller;
@@ -300,6 +308,7 @@ export class UI implements UIApi {
     const o = c.pack.origins.find((x) => x.id === pl.origin);
     this.openModal('guardian wide', 'My Guardian', this.closeBtn(), h('h2', {}, pl.name),
       h('p', { class: 'label' }, 'Appearance'), lookPick.el,
+      h('p', { class: 'label' }, 'Cloak threads'), this.threadView(pl.look),
       h('p', { class: 'label' }, 'Voice'), this.voicePicker(),
       h('p', { class: 'label' }, 'Pronouns'), pron.el,
       h('p', { class: 'label' }, 'Origin'),

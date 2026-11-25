@@ -50,6 +50,19 @@ export const PRESET_LOOKS: Record<string, LookChoice> = {
   'player-d': { skin: 'tan', hair: 'blonde', outfit: 'blue', trousers: 'olive', accessory: 'none', accent: 'gold' },
 };
 
+/**
+ * Cloak embroidery (spec 32.6): one stitched thread on the outfit hem for each world arc
+ * the player has resolved. It shows progress in the world, not in a menu.
+ */
+export const ARC_THREADS: { objective: string; colour: string; name: string }[] = [
+  { objective: 'm01.o7.portal', colour: 'f2d27a', name: 'Gold thread: The Three Firsts, in the Nexus' },
+  { objective: 'm02.o8.ise', colour: 'ff8a3a', name: 'Ember thread: The Label on the Blade, in Emberford' },
+];
+
+export function cloakThreads(objectivesDone: string[]): typeof ARC_THREADS {
+  return ARC_THREADS.filter((t) => objectivesDone.includes(t.objective));
+}
+
 export function encodeLook(c: LookChoice): string {
   return `custom:${c.skin}.${c.hair}.${c.outfit}.${c.trousers}.${c.accessory}.${c.accent}`;
 }
@@ -84,7 +97,7 @@ const key = (r: number, g: number, b: number) => (r << 16) | (g << 8) | b;
  * Accessories are painted per frame: a headband on the hair row just above the face,
  * and a scarf on the top row of the outfit.
  */
-export function recolour(data: Uint8ClampedArray, w: number, h: number, c: LookChoice): void {
+export function recolour(data: Uint8ClampedArray, w: number, h: number, c: LookChoice, threads: string[] = []): void {
   const roles = new Map<number, string>();
   const map = new Map<number, [number, number, number]>();
   const add = (src: string[], dst: string[], role: string) => src.forEach((s, i) => { const k = key(...rgb(s)); map.set(k, rgb(dst[i])); roles.set(k, role); });
@@ -102,6 +115,7 @@ export function recolour(data: Uint8ClampedArray, w: number, h: number, c: LookC
     const n = map.get(k);
     if (n) { data[o] = n[0]; data[o + 1] = n[1]; data[o + 2] = n[2]; }
   }
+  if (threads.length) embroider(data, w, h, role, threads);
   if (c.accessory === 'none') return;
   const acc = rgb(ACCENT[c.accent]);
   const accShade = acc.map((v) => Math.round(v * 0.72)) as [number, number, number];
@@ -128,6 +142,26 @@ export function recolour(data: Uint8ClampedArray, w: number, h: number, c: LookC
           for (let x = 0; x < 16; x++) { const r = at(fx + x, fy + y + 1); if (r === 'outfit' && x % 3 === 0) paint(fx + x, fy + y + 1, true); }
         }
       }
+    }
+  }
+}
+
+/** Stitch threads on the outfit hem of every 16 x 32 frame: the lowest outfit row, then every second row above it. */
+function embroider(data: Uint8ClampedArray, w: number, h: number, role: (string | undefined)[], threads: string[]): void {
+  for (let fy = 0; fy + 32 <= h; fy += 32) {
+    for (let fx = 0; fx + 16 <= w; fx += 16) {
+      let hem = -1;
+      for (let y = 30; y >= 12 && hem < 0; y--) for (let x = 0; x < 16; x++) if (role[(fy + y) * w + fx + x] === 'outfit') { hem = y; break; }
+      if (hem < 0) continue;
+      threads.forEach((hex, i) => {
+        const y = hem - i * 2;
+        const col = rgb(hex);
+        for (let x = 0; x < 16; x++) {
+          const k = (fy + y) * w + fx + x;
+          if (role[k] !== 'outfit' || (x + i) % 2) continue;
+          data[k * 4] = col[0]; data[k * 4 + 1] = col[1]; data[k * 4 + 2] = col[2];
+        }
+      });
     }
   }
 }

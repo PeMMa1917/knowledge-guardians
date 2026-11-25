@@ -123,3 +123,27 @@ describe('appearance (spec 35.1)', () => {
     }
   });
 });
+
+import { ARC_THREADS, cloakThreads, recolour as recolourT, PRESET_LOOKS as PL } from '../src/domain/appearance';
+import { buildPack as bp } from '../src/content';
+describe('cloak embroidery (spec 32.6)', () => {
+  it('one thread for each resolved world arc, tied to real chapter steps', () => {
+    const ids = new Set(bp().missions.flatMap((m) => m.objectives.map((o) => o.id)));
+    for (const t of ARC_THREADS) expect(ids.has(t.objective)).toBe(true);
+    expect(cloakThreads([])).toEqual([]);
+    expect(cloakThreads(['m01.o7.portal']).map((t) => t.colour)).toEqual(['f2d27a']);
+  });
+  it('stitches thread pixels only on the outfit', () => {
+    // A 16 x 32 frame: outfit rows 16 to 21, skin elsewhere.
+    const w = 16, h = 32, d = new Uint8ClampedArray(w * h * 4);
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      const o = (y * w + x) * 4; const col = y >= 16 && y <= 21 ? [0xc4, 0x3c, 0x3c] : [0xe8, 0xd4, 0xb2];
+      d[o] = col[0]; d[o + 1] = col[1]; d[o + 2] = col[2]; d[o + 3] = 255;
+    }
+    recolourT(d, w, h, PL['player-a'], ['f2d27a']);
+    const at = (x: number, y: number) => [d[(y * w + x) * 4], d[(y * w + x) * 4 + 1], d[(y * w + x) * 4 + 2]];
+    expect(at(0, 21)).toEqual([0xf2, 0xd2, 0x7a]);
+    expect(at(1, 21)).not.toEqual([0xf2, 0xd2, 0x7a]);
+    expect(at(0, 22)).not.toEqual([0xf2, 0xd2, 0x7a]);
+  });
+});
