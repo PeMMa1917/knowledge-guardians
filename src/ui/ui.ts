@@ -2233,14 +2233,21 @@ export class UI implements UIApi {
 
   // --------------------------------------------------- journal & bag
 
-  openJournal(tab = 'entries'): void {
+  openJournal(tab = 'story'): void {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { story: 'Story so far', entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
-    if (tab === 'entries') {
+    if (tab === 'story') {
+      // The story so far: the beats the player has reached, written as a short chronicle.
+      const lit = String(Number(s.flags['lamps.lit'] ?? 0));
+      const beats = (c.pack.chronicle ?? []).filter((b) => c.check(b.if));
+      body.append(h('ol', { class: 'chronicle' }, ...beats.map((b) => h('li', {}, h('h3', {}, b.title), h('p', {}, b.text.replace('{lamps}', lit))))));
+      const next = (c.pack.chronicle ?? []).find((b) => !c.check(b.if));
+      if (next) body.append(h('p', { class: 'fine' }, 'The story goes on. Your current steps are in the quest panel.'));
+    } else if (tab === 'entries') {
       body.append(h('ol', { class: 'journal' }, ...s.journal.map((id) => {
         const j = c.pack.journal.find((x) => x.id === id)!;
         return h('li', {}, j.claimKind ? claimChip(j.claimKind) : null, ' ', j.text);

@@ -1,4 +1,114 @@
 {
+ "chronicle": [
+  {
+   "id": "call",
+   "title": "The call",
+   "text": "The Nexus called you. It is a hall of memory between worlds, and it is in trouble: its labels start to say more than their evidence, and a gold glow, the Fray, grows on them. Warden Ise needs a new Guardian of Knowledge."
+  },
+  {
+   "id": "firsts",
+   "title": "Three firsts",
+   "if": {
+    "objective": "m01.o1.look"
+   },
+   "text": "Three exhibits each said 'the first ballpoint pen'. Ise asked you to find out what each claim is really about."
+  },
+  {
+   "id": "label",
+   "title": "Your first true label",
+   "if": {
+    "objective": "m01.o6.label"
+   },
+   "text": "You built a label whose force matched its support, and the Fray faded. Ise opened the portal to Aethelgard."
+  },
+  {
+   "id": "emberford",
+   "title": "Emberford",
+   "if": {
+    "objective": "m02.o1.arrive"
+   },
+   "text": "In the guild town of Emberford, sixteen lamps hang dark on the guild hall. Corvan's sign says that his blade is ancient, and the market believes whoever shouts loudest."
+  },
+  {
+   "id": "elsbet",
+   "title": "The old Guardian",
+   "if": {
+    "flag": "lamps.heard",
+    "eq": true
+   },
+   "text": "Orrin told you about Guardian Elsbet Varro. She lit a lamp each time the town worked out a hard question together. Ten years ago she left without a word, and the lamps went dark one by one."
+  },
+  {
+   "id": "lamps",
+   "title": "The lamps",
+   "if": {
+    "num": "lamps.lit",
+    "gte": 1
+   },
+   "text": "{lamps} of 16 lamps burn again. Each one is a knot that you and the town untied together."
+  },
+  {
+   "id": "showdown",
+   "title": "The market Showdown",
+   "if": {
+    "flagSet": "sd.corvan.outcome"
+   },
+   "text": "You faced Corvan in front of the market. Whatever the crowd decided, the town argued with evidence again, not with shouting."
+  },
+  {
+   "id": "ise",
+   "title": "The seal",
+   "if": {
+    "objective": "m02.o8.ise"
+   },
+   "text": "You took the Guardians' seal back to Warden Ise. Your first world is safer, but Ise is worried: the Fray came from somewhere."
+  },
+  {
+   "id": "study",
+   "title": "The study under the hall",
+   "if": {
+    "flag": "study.entered",
+    "eq": true
+   },
+   "text": "Six lamps burned, and the cellar door beside the hall opened. Under the hall, Elsbet's study waited, as she left it. Your keepsakes helped you see it with her eyes."
+  },
+  {
+   "id": "letter",
+   "title": "Elsbet's letter",
+   "if": {
+    "flag": "study.letter",
+    "eq": true
+   },
+   "text": "Her letter said the Fray is not only in Emberford. Something beyond the Nexus teaches people to stop asking 'how do we know?'. She went to find where it begins."
+  },
+  {
+   "id": "entry",
+   "title": "A new entry",
+   "if": {
+    "flag": "study.entry",
+    "eq": true
+   },
+   "text": "You wrote the first new entry in her journal in ten years. Emberford has a Guardian again."
+  },
+  {
+   "id": "door",
+   "title": "The door with no name",
+   "if": {
+    "flag": "ktalk.ise-door",
+    "eq": true
+   },
+   "text": "Ise knew Elsbet. She trained in the Nexus. 'When your work in Emberford is done, and you can say how you know, we will open the door with no name together.' To be continued in chapter 2."
+  },
+  {
+   "id": "all",
+   "title": "Every lamp",
+   "if": {
+    "num": "lamps.lit",
+    "gte": 16
+   },
+   "text": "All sixteen lamps burn. Orrin says that Elsbet would say: now keep them lit."
+  }
+ ],
  "knots": [
   {
    "id": "blade",

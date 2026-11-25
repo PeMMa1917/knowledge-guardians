@@ -77,3 +77,14 @@ describe('the storyline: the Lamp Wall and the old Guardian (Mika 2026-11-26)', 
     expect(opts.filter((o) => o.index < 999)).toHaveLength(before);
   });
 });
+
+describe('the story so far (Journal)', () => {
+  it('beats appear in order as the player reaches them', () => {
+    const d = new Driver();
+    const shown = () => pack.chronicle!.filter((b) => check(b.if, d.s)).map((b) => b.id);
+    expect(shown()).toEqual(['call']);
+    d.run({ type: 'SetFlag', flag: 'study.entered', value: true });
+    expect(shown()).toContain('study');
+    expect(pack.chronicle!.length).toBeGreaterThanOrEqual(10);
+  });
+});

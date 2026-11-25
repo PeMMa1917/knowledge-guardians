@@ -592,6 +592,8 @@ export interface Knot { id: string; name: string; who: string; lit: string; if: 
 export interface ClueView { keepsake: string; text: string; effects?: Effect[] }
 export interface ClueRecord { id: string; name: string; text: string; views: ClueView[]; onRead?: Effect[]; study?: boolean }
 /** A dialogue option that appears with a character once the player holds a keepsake. */
+/** The story so far (Journal): one beat shown once its condition holds. `{lamps}` is the number of lamps lit. */
+export interface ChronicleBeat { id: string; title: string; text: string; if?: Condition }
 export interface KeepsakeTalk { id: string; character: string; keepsake: string; text: string; node: string; if?: Condition }
 
 /** World memory (spec 47, C1): a short line a person says when the player passes, once the condition holds. */
@@ -694,6 +696,7 @@ export interface ContentPack {
   knots?: Knot[];
   clues?: ClueRecord[];
   keepsakeTalks?: KeepsakeTalk[];
+  chronicle?: ChronicleBeat[];
   /** The Deep Dive (spec 59): prompts and the things a player can answer with. */
   divePrompts?: import('./dive').DivePrompt[];
   diveItems?: import('./dive').DiveItem[];
