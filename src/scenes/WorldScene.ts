@@ -15,7 +15,7 @@ import { bell, chime, clink, rain, shimmer } from '../app/ambience';
 import { CYCLE, raining, skyAt } from '../app/daylight';
 import { lorelingForm } from '../domain/lorelings';
 import { caption } from '../app/captions';
-import { LUMEN_COLOURS } from '../app/settings';
+import { LUMEN_COLOURS, lumenArt } from '../app/settings';
 import Phaser from 'phaser';
 import { ctx, type WorldApi } from '../app/context';
 import { MAPS } from '../maps';
@@ -221,7 +221,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
     // Lumen, the fairy guide.
     this.lumenGlow = this.add.image(0, 0, 'glow').setScale(0.25).setTint(LUMEN_COLOURS[ctx.settings.lumenColour] ?? 0xfff2b0).setAlpha(0.55).setBlendMode(Phaser.BlendModes.ADD);
-    this.lumen = this.add.image(0, 0, 'lumen');
+    this.lumen = this.add.image(0, 0, lumenArt(ctx.settings));
 
     this.buildAtmosphere();
     this.fitCamera();
@@ -370,6 +370,14 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       cam.postFX.addVignette(0.5, 0.5, 0.95, 0.22);
       cam.postFX.addBloom(0xffffff, 1, 1, 0.8, 0.45, 4);
     }
+  }
+
+  refreshLumen(): void {
+    if (!this.lumen) return;
+    const key = lumenArt(ctx.settings);
+    if (this.textures.exists(key)) this.lumen.setTexture(key);
+    this.lumenGlow?.setTint(LUMEN_COLOURS[ctx.settings.lumenColour] ?? 0xfff2b0);
+    if (!ctx.settings.reducedEffects) this.lumenBurst();
   }
 
   applySettings(): void {

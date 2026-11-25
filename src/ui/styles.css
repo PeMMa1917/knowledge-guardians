@@ -588,3 +588,9 @@ canvas.crest { image-rendering: pixelated; vertical-align: middle; }
 .pane-table tr.broke td:nth-child(2)::after { content: ' ✕'; }
 .proof-box { margin: 8px 0; padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,0.05); }
 .proof-box li { margin: 4px 0; }
+
+/* Lumen's form picker */
+.lumen-forms { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.lumen-form { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 72px; padding: 6px; }
+.lumen-form img { width: 36px; height: 36px; image-rendering: pixelated; filter: drop-shadow(0 0 6px var(--glow, #fff2b0)); }
+.lumen-form.picked { outline: 3px solid var(--accent, #e9c45a); }

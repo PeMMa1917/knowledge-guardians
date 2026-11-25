@@ -35,6 +35,8 @@ export interface WorldApi {
   lumenBurst(): void;
   setPaused(p: boolean): void;
   applySettings(): void;
+  /** Lumen's form or glow changed: swap the picture and tint. */
+  refreshLumen(): void;
   playSfx(key: string): void;
   snapshotPosition(): void;
   /** Photo mode: camera zoom, a colour filter, and who is in the picture. */

@@ -7,7 +7,7 @@
  * Every action goes through ctx.controller.dispatch (domain commands).
  */
 import { ctx, type UIApi } from '../app/context';
-import { LUMEN_COLOURS, THEMES, saveSettings, type Settings } from '../app/settings';
+import { LUMEN_COLOURS, LUMEN_FORMS, THEMES, lumenArt, saveSettings, type Settings } from '../app/settings';
 import { PRONOUN_SETS, cleanPronouns, personalise } from '../domain/player';
 import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads, OUTFIT, PRESET_LOOKS, SKIN, TROUSERS, decodeLook, encodeLook, type LookChoice } from '../domain/appearance';
 import { previewLook } from '../scenes/looks';
@@ -407,7 +407,7 @@ export class UI implements UIApi {
     const cont = c.pair.continue, rec = c.pair.recovery;
     const fmt = (e: typeof cont) => e ? `${e.label} · ${e.location} · ${e.kind === 'suspend' ? 'Suspended' : 'Checkpoint'} · ${new Date(e.savedAt).toLocaleString()}` : '';
     const box = h('div', { class: 'title-screen' },
-      h('div', { class: 'title-art', 'aria-hidden': 'true' }, h('img', { src: artURL('lumen'), alt: '' })),
+      h('div', { class: 'title-art', 'aria-hidden': 'true' }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '' })),
       h('h1', {}, 'Knowledge Guardians'),
       h('p', { class: 'subtitle' }, 'Chapter 1: Three Firsts and The Label on the Blade'),
       c.loadProblem ? h('p', { class: 'warn', role: 'alert' }, `Your save could not be opened: ${c.loadProblem} Your saved data has not been changed. You can still start a new game, but starting a new game will replace it.`) : null,
@@ -592,6 +592,7 @@ export class UI implements UIApi {
       h('p', { class: 'label' }, 'Appearance'), lookPick.el,
       h('p', { class: 'label' }, 'Cloak threads'), this.threadView(pl.look),
       h('p', { class: 'label' }, 'Crest'), this.crestSummary(),
+      h('p', { class: 'label' }, 'Lumen'), this.lumenPicker(),
       h('p', { class: 'label' }, 'Voice'), this.voicePicker(),
       h('p', { class: 'label' }, 'Pronouns'), pron.el,
       h('p', { class: 'label' }, 'Origin'),
@@ -654,7 +655,7 @@ export class UI implements UIApi {
     const bar = h('nav', { class: 'hud-buttons', 'aria-label': 'Game menu' },
       h('span', { class: 'marks', title: 'Marks (campaign money)' }, h('img', { src: artURL('icon.card'), alt: '' }), ` ${s.marks} marks`),
       s.flags['title.worn'] ? h('span', { class: 'marks worn-title', title: 'Your title (choose in Journal, Awards)' }, `${s.player.name}, ${s.flags['title.worn']}`) : '',
-      h('button', { onclick: () => this.askLumen(), title: `Ask Lumen for a hint (${km.hint})` }, h('img', { src: artURL('lumen'), alt: '' }), ' Hint ', h('kbd', {}, km.hint)),
+      h('button', { onclick: () => this.askLumen(), title: `Ask Lumen for a hint (${km.hint})` }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '' }), ' Hint ', h('kbd', {}, km.hint)),
       h('button', { onclick: () => this.openJournal(), title: `Journal (${km.journal})` }, 'Journal ', h('kbd', {}, km.journal)),
       h('button', { onclick: () => this.openJournal('portfolio'), title: `Portfolio (${km.portfolio})` }, 'Portfolio ', h('kbd', {}, km.portfolio)),
       h('button', { onclick: () => this.openBag(), title: `Bag (${km.bag})` }, 'Bag ', h('kbd', {}, km.bag)),
@@ -673,7 +674,7 @@ export class UI implements UIApi {
 
   private lumenSay(text: string): void {
     clear(this.lumenBubble);
-    this.lumenBubble.append(h('img', { src: artURL('lumen'), alt: '' }), h('span', {}, h('strong', {}, 'Lumen: '), text),
+    this.lumenBubble.append(h('img', { src: artURL(lumenArt(ctx.settings)), alt: '' }), h('span', {}, h('strong', {}, 'Lumen: '), text),
       h('button', { class: 'mini', 'aria-label': 'Hide message', onclick: () => { this.lumenBubble.hidden = true; } }, '✕'));
     this.lumenBubble.hidden = false;
     clearTimeout((this.lumenBubble as any)._t);
@@ -690,7 +691,7 @@ export class UI implements UIApi {
     this.sfx('sfx.sparkle');
     if (!hint) return;
     const box = this.openModal('hint', 'Lumen hint', this.closeBtn(),
-      h('div', { class: 'lumen-head' }, h('img', { src: artURL('lumen'), alt: '', class: 'lumen-big' }), h('h2', {}, 'Lumen')),
+      h('div', { class: 'lumen-head' }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '', class: 'lumen-big' }), h('h2', {}, 'Lumen')),
       h('p', { class: 'hint-depth' }, `Hint ${hint.hint.depth} of 4 · ${cur.title}`),
       h('p', { class: 'hint-text' }, hint.hint.text),
       h('p', { class: 'fine' }, 'Asking for help never lowers your XP or blocks an award.'),
@@ -766,7 +767,7 @@ export class UI implements UIApi {
   private offerReflection(title: string, question: string): void {
     const ta = h('textarea', { rows: '3', maxlength: '500', 'aria-label': 'Your reflection (optional)', placeholder: 'Write a few words, or leave it empty.' }) as HTMLTextAreaElement;
     this.openModal('reflection', 'A question to think about', this.closeBtn(),
-      h('div', { class: 'lumen-head' }, h('img', { src: artURL('lumen'), alt: '', class: 'lumen-big' }), h('h2', {}, 'A question to think about')),
+      h('div', { class: 'lumen-head' }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '', class: 'lumen-big' }), h('h2', {}, 'A question to think about')),
       h('p', { class: 'fine' }, `Lumen noticed a pattern in your play: ${title.toLowerCase()}. This is not a mark. It may even be wrong.`),
       h('p', { class: 'hint-text' }, question), ta,
       h('div', { class: 'row' },
@@ -806,7 +807,7 @@ export class UI implements UIApi {
     const speaker = n.speaker === 'lumen' ? { name: 'Lumen', role: 'Fairy guide', sprite: '' }
       : n.speaker === 'narrator' ? { name: '', role: '', sprite: '' } : c.pack.characters.find((x) => x.id === n.speaker);
     const portrait = n.speaker === 'lumen'
-      ? h('img', { class: 'portrait lumen-portrait', src: artURL('lumen'), alt: '' })
+      ? h('img', { class: 'portrait lumen-portrait', src: artURL(lumenArt(ctx.settings)), alt: '' })
       : n.speaker === 'narrator' ? null
       : String((speaker as any)?.sprite ?? '').startsWith('custom:')
         ? h('span', { class: 'portrait custom', 'aria-hidden': 'true' }, previewLook((speaker as any).sprite, 3))
@@ -864,7 +865,7 @@ export class UI implements UIApi {
     if (!g) return;
     clear(pop);
     const ex = exampleFor(g, c.state, (cond) => c.check(cond));
-    pop.append(h('img', { src: artURL('lumen'), alt: '', class: 'gloss-lumen' }),
+    pop.append(h('img', { src: artURL(lumenArt(ctx.settings)), alt: '', class: 'gloss-lumen' }),
       h('div', {}, h('strong', {}, g.term), ' ', g.text, ex ? h('p', { class: 'fine' }, h('em', {}, 'From your play: '), ex) : ''));
     pop.style.display = '';
   }
@@ -1992,6 +1993,22 @@ export class UI implements UIApi {
 
   /** The music box (spec 47.4): arrange the motifs of the concepts you have used into a song. */
   private stopSong: (() => void) | null = null;
+  /** Lumen's form and glow (customisation). Saved at once, like other settings. */
+  private lumenPicker(): HTMLElement {
+    const wrap = h('div', { class: 'lumen-forms', role: 'group', 'aria-label': "Lumen's form" });
+    const render = () => {
+      clear(wrap);
+      const glow = '#' + LUMEN_COLOURS[ctx.settings.lumenColour].toString(16).padStart(6, '0');
+      wrap.append(...LUMEN_FORMS.map((f) => h('button', { type: 'button', class: `lumen-form ${ctx.settings.lumenForm === f.id ? 'picked' : ''}`, 'aria-pressed': String(ctx.settings.lumenForm === f.id),
+        style: { '--glow': glow }, onclick: () => { ctx.settings.lumenForm = f.id; saveSettings(ctx.settings); this.sfx('sfx.sparkle'); render(); this.refreshHud(); ctx.world?.refreshLumen(); } },
+        h('img', { src: artURL(lumenArt({ lumenForm: f.id })), alt: '' }), h('span', {}, f.label))),
+        h('label', { class: 'range' }, 'Glow ', h('select', { onchange: (e: Event) => { ctx.settings.lumenColour = (e.target as HTMLSelectElement).value as Settings['lumenColour']; saveSettings(ctx.settings); render(); ctx.world?.refreshLumen(); } },
+          ...Object.keys(LUMEN_COLOURS).map((k) => h('option', { value: k, selected: ctx.settings.lumenColour === k }, k)))));
+    };
+    render();
+    return wrap;
+  }
+
   /**
    * The Guardian's quarters (spec 12.16 and 32.6): decorate a room from preset parts and
    * put earned keepsakes on the shelves. The ceiling is the Star Chart. Cosmetic only.

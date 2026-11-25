@@ -33,6 +33,8 @@ export interface Settings {
   theme: 'archive' | 'ember' | 'forest' | 'ocean' | 'dusk';
   /** Colour of Lumen's glow. */
   lumenColour: 'gold' | 'cyan' | 'rose' | 'green' | 'violet';
+  /** Lumen's form (customisation): the same guide, a different shape. */
+  lumenForm: 'fairy' | 'moth' | 'star' | 'wisp' | 'firefly';
   /** The player's own letter keys (see keymap.ts). */
   keys: KeyMap;
 }
@@ -43,12 +45,17 @@ export const THEMES: { id: Settings['theme']; label: string }[] = [
   { id: 'archive', label: 'Archive night (violet and gold)' }, { id: 'ember', label: 'Ember (red and orange)' },
   { id: 'forest', label: 'Forest (green)' }, { id: 'ocean', label: 'Ocean (blue)' }, { id: 'dusk', label: 'Dusk (plum and pink)' },
 ];
+export const LUMEN_FORMS: { id: Settings['lumenForm']; label: string }[] = [
+  { id: 'fairy', label: 'Fairy' }, { id: 'moth', label: 'Moth' }, { id: 'star', label: 'Little star' }, { id: 'wisp', label: 'Wisp' }, { id: 'firefly', label: 'Firefly' },
+];
+/** The picture key for Lumen in the chosen form. */
+export function lumenArt(s: Pick<Settings, 'lumenForm'>): string { return s.lumenForm && s.lumenForm !== 'fairy' ? `lumen.${s.lumenForm}` : 'lumen'; }
 export const LUMEN_COLOURS: Record<Settings['lumenColour'], number> = { gold: 0xfff2b0, cyan: 0xb0f0ff, rose: 0xffc0d8, green: 0xc8ffc0, violet: 0xd8c0ff };
 
 export const DEFAULTS: Settings = {
   textScale: 1, reducedMotion: false, reducedEffects: false, musicVolume: 0.5, sfxVolume: 0.7,
   guidePrompts: true, highContrast: false, dyslexiaSpacing: false, calmMode: false, zenMode: false, glossary: true, readAloud: false,
-  colourSafe: false, keys: DEFAULT_KEYS, talkSounds: true, captions: false, playerVoice: 'mid', theme: 'archive', lumenColour: 'gold',
+  colourSafe: false, keys: DEFAULT_KEYS, talkSounds: true, captions: false, playerVoice: 'mid', theme: 'archive', lumenColour: 'gold', lumenForm: 'fairy',
 };
 
 export function loadSettings(): Settings {
@@ -58,6 +65,8 @@ export function loadSettings(): Settings {
     if (raw) s = { ...s, ...JSON.parse(raw) };
   } catch { /* storage blocked: use defaults */ }
   s.keys = normaliseKeys(s.keys);
+  if (!LUMEN_FORMS.some((f) => f.id === s.lumenForm)) s.lumenForm = 'fairy';
+  if (!(s.lumenColour in LUMEN_COLOURS)) s.lumenColour = 'gold';
   try {
     if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches && !window.localStorage.getItem(KEY)) s.reducedMotion = true;
   } catch { /* ignore */ }
