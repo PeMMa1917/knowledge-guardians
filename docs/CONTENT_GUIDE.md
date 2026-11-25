@@ -13,6 +13,7 @@ This guide tells you how to add or change game content: missions, objectives, di
 | `src/content/firsts.json` | The Hall of Firsts: seven plaques (exhibits, cards and small label kits) about people from every continent. |
 | `src/content/m01-nexus.json` | Mission KG-CH1-M01 "Three Firsts" (The Nexus): label kit `pen`, Showdown `practice`, events EV-N01 to EV-N07. |
 | `src/content/m02-aethelgard.json` | Mission KG-CH1-M02 "The Label on the Blade" (Emberford): thread `blade`, Showdown `corvan`, events EV-E01 to EV-E08. |
+| `src/content/origins.json` | The five player origins (spec 35.1), their starting Lens hints, and the answers to each origin's own option in each world. |
 | `src/content/index.ts` | Joins the JSON files into one content pack. **Add a new file to `parts` here.** Raise `CONTENT_VERSION` when content changes in a way that saves notice. |
 | `src/maps/*.ts` | Map layouts. Register a new map in `src/maps/index.ts`. |
 
@@ -83,7 +84,9 @@ Rules for `historicalLabel`:
 
 - Connect the character to the node with a `talk` entry in `common.json`. The first entry whose `if` holds is used.
 - Players choose options with number keys. Keep option text short.
-- No runtime AI. All text is written in advance. 
+- No runtime AI. All text is written in advance.
+- **The player in text (spec 35.1).** Use `{name}`, `{they}`, `{them}`, `{their}` (and `{They}`, `{Them}`, `{Their}` at the start of a sentence). The game puts in the player's name and chosen pronouns. Write the line so that the verb does not change with the pronoun: "{they} checked every date", not "{they} is careful".
+- **Origin options.** An option with `"if": { "origin": "singer" }` shows only for that origin. Each origin needs one option in each world (the validator checks this). Origin options must not give credit, marks or cards: an origin gives no advantage. 
 
 ## Weave tags (WEAVE-016 to WEAVE-018)
 

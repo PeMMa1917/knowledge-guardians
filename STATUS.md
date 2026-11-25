@@ -37,6 +37,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 - **Read aloud** (spec 21): a "Read aloud" button on every conversation line, and a setting that reads each line and its options automatically. It uses the browser's own voice (Web Speech API).
 - **Key remapping** (spec 21.6): Controls, "Change keys". Players choose their own letter keys for walking, talking, hints, journal, portfolio and bag, or pick a ready-made layout (QWERTY, AZERTY, E S D F). A clash swaps the two keys. Arrows, Space, Enter, Esc and number keys always keep their jobs. Rules in `src/app/keymap.ts`. The top bar shows the player's keys.
 - **Colour-safe marks** (Settings): a blue and orange palette, and a symbol (✓, ✗, ~, !) on every good or bad result, so colour never carries meaning alone.
+- **Pronouns and origins** (spec 35.1): on the new-game screen the player chooses pronouns (they, she, he, or their own words) and, optionally, one of five origins (Archive child, Harbour runner, Workshop apprentice, Village singer, Traveller). An origin gives one Lens hint in the journal and one extra conversation option in each world (Ise in the Nexus, Sefa in Emberford). It gives no XP, marks or cards. Characters use the chosen pronouns through text tokens (`{name}`, `{they}`, `{them}`, `{their}`). Pronouns can be changed at any time (Menu, My Guardian). `CAMPAIGN_SCHEMA` is now 4: old saves get they/them and no origin. Not done yet: the small personal side quest for each origin, and voice barks.
 - **Showdown on phones:** "Explain the moves" shows what each move does under its button (on by default on touch screens, where hover titles do not show). Narrow screens get a compact layout, and toasts move to the bottom.
 - **Balance reminder:** every 45 minutes of active play, Lumen suggests a real break. It never blocks play.
 - **MIS-10 and MIS-11 (Indigenous knowledge) are left out on purpose.** They need Indigenous content made with community advisors (spec section 88). Do not add them with a quick signal.
@@ -46,7 +47,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 
 ### Tests
 
-`npm test`: 117 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
+`npm test`: 126 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
 
 ## Next steps (in order)
 

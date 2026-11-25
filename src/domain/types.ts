@@ -77,6 +77,7 @@ export type Condition =
   | { marks: number }
   | { card: string }
   | { objective: string }
+  | { origin: string }              // the player's chosen origin (spec 35.1)
   | { all: Condition[] }
   | { any: Condition[] }
   | { not: Condition };
@@ -428,6 +429,28 @@ export interface EventRecord {
   weave: Weave;
 }
 
+/** Pronouns the player chose (spec 35.1). Characters use them in text through {they}, {them} and {their}. */
+export interface Pronouns { subject: string; object: string; possessive: string }
+
+/** A player origin (spec 35.1): a background, one starting Lens hint and one unique option in each world. No stat advantage. */
+export interface OriginRecord {
+  id: string;
+  name: string;
+  background: string;
+  /** What this background helps the player notice (course link, paraphrased). */
+  link: string;
+  /** Journal entry id given at the start: the extra Lens hint. */
+  journal: string;
+}
+
+export interface PlayerRecord {
+  name: string;
+  look: string;
+  pronouns: Pronouns;
+  /** Origin id, or null for saves made before origins existed. */
+  origin: string | null;
+}
+
 export interface ContentPack {
   id: string;
   contentVersion: number;
@@ -453,13 +476,14 @@ export interface ContentPack {
   misconceptions: MisconceptionRecord[];
   portfolio: PortfolioTemplate[];
   events: EventRecord[];
+  origins: OriginRecord[];
 }
 
 // ---------------------------------------------------------------------------
 // State
 // ---------------------------------------------------------------------------
 
-export const CAMPAIGN_SCHEMA = 3;
+export const CAMPAIGN_SCHEMA = 4;
 export const PERMANENT_SCHEMA = 3;
 
 export interface ShowdownLogLine { who: 'player' | 'opponent' | 'crowd' | 'witness'; text: string; why?: string }
@@ -502,7 +526,7 @@ export interface ForgeState {
 export interface CampaignState {
   schema: number;
   contentVersion: number;
-  player: { name: string; look: string };
+  player: PlayerRecord;
   mapId: string;
   pos: { x: number; y: number };
   facing: 'down' | 'up' | 'left' | 'right';

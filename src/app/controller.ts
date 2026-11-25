@@ -60,9 +60,9 @@ export class GameController {
 
   // ------------------------------------------------------------------ saves
 
-  newGame(name: string, look: string): void {
+  newGame(name: string, look: string, opts: Parameters<typeof newCampaign>[4] = {}): void {
     const seed = (Date.now() ^ Math.floor(Math.random() * 1e9)) >>> 0;
-    this.state = newCampaign(this.pack, name, look, seed);
+    this.state = newCampaign(this.pack, name, look, seed, opts);
     const m = MAPS['nexus.archive'];
     this.state.pos = { x: m.spawn.x, y: m.spawn.y };
     this.playStart = Date.now();

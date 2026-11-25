@@ -22,6 +22,9 @@ export function validateCampaign(s: any): string[] {
   ];
   for (const [k, t] of need) if (typeof s[k] !== t) p.push(`${k} must be a ${t}`);
   if (!s.player || typeof s.player.name !== 'string' || s.player.name.length > 40) p.push('player.name invalid');
+  const pr = s.player?.pronouns;
+  if (!pr || !['subject', 'object', 'possessive'].every((k) => typeof pr[k] === 'string' && pr[k].length >= 1 && pr[k].length <= 16)) p.push('player.pronouns invalid');
+  if (s.player && s.player.origin !== null && typeof s.player.origin !== 'string') p.push('player.origin invalid');
   if (!s.pos || typeof s.pos.x !== 'number' || typeof s.pos.y !== 'number') p.push('pos invalid');
   for (const k of ['flags', 'inventory', 'relations', 'forge', 'events']) if (!s[k] || typeof s[k] !== 'object' || Array.isArray(s[k])) p.push(`${k} must be an object`);
   for (const k of ['journal', 'notes', 'cards', 'objectivesDone']) if (!Array.isArray(s[k])) p.push(`${k} must be a list`);
@@ -57,6 +60,7 @@ export function validateContent(pack: ContentPack): string[] {
   const kits = new Set(pack.labelKits.map((k) => k.id));
   const mis = new Set(pack.misconceptions.map((m) => m.id));
   const pf = new Set(pack.portfolio.map((x) => x.id));
+  const origins = new Set((pack.origins ?? []).map((o) => o.id));
 
   pack.sources.forEach((s) => { dup('source', s.id); if (!/^https:\/\//.test(s.url)) p.push(`source ${s.id}: url must be https`); });
   pack.cards.forEach((c) => {
@@ -79,6 +83,14 @@ export function validateContent(pack: ContentPack): string[] {
     c.talk.forEach((t) => { nodes.has(t.node) || p.push(`character ${c.id}: unknown node ${t.node}`); cond(t.if, `character ${c.id}`); });
   });
   pack.journal.forEach((j) => { dup('journal', j.id); text(`journal ${j.id}`, j.text); });
+  // Origins (spec 35.1): each gives a starting Lens hint and a unique option in each world, never an advantage.
+  (pack.origins ?? []).forEach((o) => {
+    dup('origin', o.id); text(`origin ${o.id}`, o.background);
+    if (!journal.has(o.journal)) p.push(`origin ${o.id}: unknown journal ${o.journal}`);
+    const uses = pack.dialogue.flatMap((n) => n.options ?? []).filter((op) => JSON.stringify(op.if ?? {}).includes(`"origin":"${o.id}"`));
+    if (uses.length < 2) p.push(`origin ${o.id}: needs a unique dialogue option in each world (found ${uses.length})`);
+    if (uses.some((op) => (op.effects ?? []).some((e) => 'credit' in e || 'addMarks' in e || 'addCard' in e))) p.push(`origin ${o.id}: origin options must not give an advantage`);
+  });
   pack.criteria.forEach((c) => { dup('criterion', c.id); if (!(c.maximum > 0 && c.maximum <= 100)) p.push(`criterion ${c.id}: maximum out of range`); });
 
   function cond(c: Condition | undefined, where: string): void {
@@ -89,7 +101,8 @@ export function validateContent(pack: ContentPack): string[] {
     if ('item' in c && !items.has(c.item)) p.push(`${where}: unknown item ${c.item}`);
     if ('card' in c && !cards.has(c.card)) p.push(`${where}: unknown card ${c.card}`);
     if ('objective' in c && !objectives.has(c.objective)) p.push(`${where}: unknown objective ${c.objective}`);
-    const known = ['flag', 'flagSet', 'num', 'item', 'marks', 'card', 'objective'];
+    if ('origin' in c && !origins.has(c.origin)) p.push(`${where}: unknown origin ${c.origin}`);
+    const known = ['flag', 'flagSet', 'num', 'item', 'marks', 'card', 'objective', 'origin'];
     if (!Object.keys(c).some((k) => known.includes(k))) p.push(`${where}: unknown condition ${JSON.stringify(c)}`);
   }
   function eff(list: Effect[] | undefined, where: string): void {

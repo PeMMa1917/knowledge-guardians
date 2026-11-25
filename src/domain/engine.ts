@@ -7,7 +7,8 @@ import type {
   AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
 } from './types';
-import { CAMPAIGN_SCHEMA } from './types';
+import { CAMPAIGN_SCHEMA, type Pronouns } from './types';
+import { cleanPronouns } from './player';
 import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
 import { checkAwards, grantCredit } from './permanent';
 import { evaluateLabel, type LabelResult } from './label';
@@ -18,6 +19,7 @@ import { addPortfolio, addSignal, checkMoments, recordWeave, tickEvents } from '
 
 export type Command =
   | { type: 'Reach'; zone: string }
+  | { type: 'SetPronouns'; pronouns: Pronouns }
   | { type: 'EnterNode'; node: string }
   | { type: 'ChooseDialogueOption'; node: string; index: number }
   | { type: 'InspectExhibit'; exhibit: string }
@@ -77,11 +79,12 @@ export interface Outcome {
   nextNode?: string | null;
 }
 
-export function newCampaign(pack: ContentPack, name: string, look: string, seed: number): CampaignState {
+export function newCampaign(pack: ContentPack, name: string, look: string, seed: number, opts: { pronouns?: Pronouns; origin?: string | null } = {}): CampaignState {
+  const origin = pack.origins.find((o) => o.id === opts.origin) ?? null;
   return {
     schema: CAMPAIGN_SCHEMA,
     contentVersion: pack.contentVersion,
-    player: { name, look },
+    player: { name, look, pronouns: cleanPronouns(opts.pronouns ?? {}), origin: origin?.id ?? null },
     mapId: 'nexus.archive',
     pos: { x: -1, y: -1 },
     facing: 'up',
@@ -89,7 +92,7 @@ export function newCampaign(pack: ContentPack, name: string, look: string, seed:
     inventory: {},
     marks: 0,
     relations: {},
-    journal: [],
+    journal: origin ? [origin.journal] : [],
     notes: [],
     cards: [],
     objectivesDone: [],
@@ -364,6 +367,11 @@ export class Engine {
           if (!check(o.if, s)) throw new Error('That offer is not available');
           if (s.marks < o.price) throw new Error('You do not have enough marks');
           s = apply([{ addMarks: -o.price }, { giveItem: o.item }, ...(o.effects ?? [])], s, out);
+          break;
+        }
+        case 'SetPronouns': {
+          s = structuredClone(s);
+          s.player.pronouns = cleanPronouns(cmd.pronouns);
           break;
         }
         case 'AddNote': {

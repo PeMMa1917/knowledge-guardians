@@ -899,7 +899,7 @@
   {
    "id": "corvan.after.honest",
    "speaker": "merchant-corvan",
-   "text": "New sign, Hesper's name on it. Funny thing: people trust it more. Two buyers asked about her other work."
+   "text": "New sign, Hesper's name on it. Funny thing: people trust it more. Two buyers asked about her other work. One asked about you. I told them {name} asked the maker first, and that {their} questions were fair."
   },
   {
    "id": "corvan.after.down",
@@ -1183,6 +1183,126 @@
      ]
     },
     {
+     "text": "Who catalogued the museum blades you carry?",
+     "if": {
+      "all": [
+       {
+        "origin": "archive"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.emb",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.emb",
+       "value": true
+      }
+     ],
+     "next": "origin.emb.archive",
+     "tag": "Your background"
+    },
+    {
+     "text": "On the coast I heard a story about this blade before I arrived.",
+     "if": {
+      "all": [
+       {
+        "origin": "harbour"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.emb",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.emb",
+       "value": true
+      }
+     ],
+     "next": "origin.emb.harbour",
+     "tag": "Your background"
+    },
+    {
+     "text": "I want to see how a pattern is made, not only read about it.",
+     "if": {
+      "all": [
+       {
+        "origin": "workshop"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.emb",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.emb",
+       "value": true
+      }
+     ],
+     "next": "origin.emb.workshop",
+     "tag": "Your background"
+    },
+    {
+     "text": "I know work songs from my valley too. Do your songs and mine agree?",
+     "if": {
+      "all": [
+       {
+        "origin": "singer"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.emb",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.emb",
+       "value": true
+      }
+     ],
+     "next": "origin.emb.singer",
+     "tag": "Your background"
+    },
+    {
+     "text": "Where I come from, steel with water patterns has another name.",
+     "if": {
+      "all": [
+       {
+        "origin": "traveller"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.emb",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.emb",
+       "value": true
+      }
+     ],
+     "next": "origin.emb.traveller",
+     "tag": "Your background"
+    },
+    {
      "text": "Ask my own question.",
      "next": "sefa.free"
     }
@@ -1255,6 +1375,126 @@
     {
      "text": "Ask my own question.",
      "next": "sefa.free"
+    },
+    {
+     "text": "Who catalogued the museum blades you carry?",
+     "if": {
+      "all": [
+       {
+        "origin": "archive"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.emb",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.emb",
+       "value": true
+      }
+     ],
+     "next": "origin.emb.archive",
+     "tag": "Your background"
+    },
+    {
+     "text": "On the coast I heard a story about this blade before I arrived.",
+     "if": {
+      "all": [
+       {
+        "origin": "harbour"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.emb",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.emb",
+       "value": true
+      }
+     ],
+     "next": "origin.emb.harbour",
+     "tag": "Your background"
+    },
+    {
+     "text": "I want to see how a pattern is made, not only read about it.",
+     "if": {
+      "all": [
+       {
+        "origin": "workshop"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.emb",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.emb",
+       "value": true
+      }
+     ],
+     "next": "origin.emb.workshop",
+     "tag": "Your background"
+    },
+    {
+     "text": "I know work songs from my valley too. Do your songs and mine agree?",
+     "if": {
+      "all": [
+       {
+        "origin": "singer"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.emb",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.emb",
+       "value": true
+      }
+     ],
+     "next": "origin.emb.singer",
+     "tag": "Your background"
+    },
+    {
+     "text": "Where I come from, steel with water patterns has another name.",
+     "if": {
+      "all": [
+       {
+        "origin": "traveller"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.emb",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.emb",
+       "value": true
+      }
+     ],
+     "next": "origin.emb.traveller",
+     "tag": "Your background"
     },
     {
      "text": "Goodbye.",

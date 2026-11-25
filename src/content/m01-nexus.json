@@ -1040,6 +1040,126 @@
      ]
     },
     {
+     "text": "I grew up in these stacks. Who decides which shelf a thing goes on?",
+     "if": {
+      "all": [
+       {
+        "origin": "archive"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.archive",
+     "tag": "Your background"
+    },
+    {
+     "text": "On the coast, a message changed at every harbour. Does a label change like that?",
+     "if": {
+      "all": [
+       {
+        "origin": "harbour"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.harbour",
+     "tag": "Your background"
+    },
+    {
+     "text": "Where I trained, we tested ideas by making them. Can I test a label the same way?",
+     "if": {
+      "all": [
+       {
+        "origin": "workshop"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.workshop",
+     "tag": "Your background"
+    },
+    {
+     "text": "In my valley, the songs remember who made things. Does the Nexus keep songs?",
+     "if": {
+      "all": [
+       {
+        "origin": "singer"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.singer",
+     "tag": "Your background"
+    },
+    {
+     "text": "In each place I lived, 'first' meant something different. Is that the problem here?",
+     "if": {
+      "all": [
+       {
+        "origin": "traveller"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.traveller",
+     "tag": "Your background"
+    },
+    {
      "text": "I'll keep looking.",
      "next": null
     }
@@ -1220,7 +1340,7 @@
   {
    "id": "dace.after",
    "speaker": "curator-dace",
-   "text": "The new label is up. People are already arguing about the right question, which is not the worst thing.",
+   "text": "The new label is up. A visitor asked who wrote it. I said {name} did, and that {they} checked every date. People are already arguing about the right question, which is not the worst thing.",
    "options": [
     {
      "text": "I want to change the label.",
@@ -1386,7 +1506,7 @@
   {
    "id": "visitor.after",
    "speaker": "villager-2",
-   "text": "I read your new label. I told my sister, and I got it right first time. That never happens."
+   "text": "I read your new label. I told my sister, and I got it right first time. That never happens. She asked who wrote it. I said a Guardian called {name}, and that I would thank {them}. So: thank you."
   },
   {
    "id": "waystone.nexus",

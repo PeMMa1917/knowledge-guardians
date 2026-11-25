@@ -8,6 +8,8 @@
  */
 import { ctx, type UIApi } from '../app/context';
 import { saveSettings, type Settings } from '../app/settings';
+import { PRONOUN_SETS, cleanPronouns, personalise } from '../domain/player';
+import type { Pronouns } from '../domain/types';
 import { ACTIONS, PRESETS, actionFor, assignKey, mappableKey, type Action } from '../app/keymap';
 import type { GameEvent, SimulationResult } from '../domain/engine';
 import { conceptXP, totalXP } from '../domain/permanent';
@@ -199,9 +201,18 @@ export class UI implements UIApi {
         } }, h('span', { class: 'sprite', style: { backgroundImage: `url(assets/art/generated/characters/${id}.png)` } }));
         return b;
       }));
+    const pron = this.pronounPicker(PRONOUN_SETS[0].p);
+    let origin: string | null = null;
+    const originBox = h('div', { class: 'origins', role: 'radiogroup', 'aria-label': 'Origin' },
+      ...ctx.controller.pack.origins.map((o) => {
+        const b = h('button', { class: 'origin', role: 'radio', 'aria-checked': 'false', onclick: () => {
+          origin = o.id; originBox.querySelectorAll('.origin').forEach((x) => x.setAttribute('aria-checked', 'false')); b.setAttribute('aria-checked', 'true');
+        } }, h('strong', {}, o.name), h('small', {}, o.background), h('small', { class: 'link' }, o.link));
+        return b;
+      }));
     const start = () => {
       const n = name.value.trim() || 'Recruit';
-      ctx.controller.newGame(n.slice(0, 24), look);
+      ctx.controller.newGame(n.slice(0, 24), look, { pronouns: pron.value(), origin });
       this.startPlaying(false);
     };
     name.addEventListener('keydown', (e) => { if (e.key === 'Enter') start(); });
@@ -210,9 +221,42 @@ export class UI implements UIApi {
       h('p', {}, 'Every student is a Knowledge Guardian from the first day. Choose a name and how you look. You can play in any way you like.'),
       h('label', { for: 'pname' }, 'Name'), name,
       h('p', { class: 'label' }, 'Appearance'), looks,
+      h('p', { class: 'label' }, 'Pronouns (characters use these; you can change them later in the menu)'), pron.el,
+      h('p', { class: 'label' }, 'Origin (optional). It gives one Lens hint and one extra conversation option in each world. It gives no advantage.'), originBox,
       h('div', { class: 'row' }, h('button', { class: 'primary', onclick: start }, 'Begin'), h('button', { onclick: () => this.showTitle() }, 'Back')));
     this.root.append(box);
     setTimeout(() => name.focus(), 0);
+  }
+
+  /** Pronoun choice (spec 35.1): three common sets, or the player's own words. */
+  private pronounPicker(current: Pronouns): { el: HTMLElement; value: () => Pronouns } {
+    const preset = PRONOUN_SETS.find((x) => x.p.subject === current.subject && x.p.object === current.object && x.p.possessive === current.possessive);
+    let mode = preset?.id ?? 'own';
+    const inp = (k: keyof Pronouns, label: string) => h('input', { maxlength: '16', 'aria-label': label, placeholder: label, value: preset ? '' : current[k] }) as HTMLInputElement;
+    const own = { subject: inp('subject', 'they'), object: inp('object', 'them'), possessive: inp('possessive', 'their') };
+    const ownRow = h('div', { class: 'row own-pronouns', style: { display: mode === 'own' ? '' : 'none' } }, own.subject, own.object, own.possessive);
+    const radios = [...PRONOUN_SETS.map((x) => ({ id: x.id, label: x.label })), { id: 'own', label: 'my own words' }].map((x) =>
+      h('label', { class: 'check' }, h('input', { type: 'radio', name: 'pronouns', value: x.id, checked: mode === x.id, onchange: () => { mode = x.id; ownRow.style.display = mode === 'own' ? '' : 'none'; } }), ` ${x.label}`));
+    const el = h('div', { class: 'pronouns', role: 'radiogroup', 'aria-label': 'Pronouns' }, h('div', { class: 'row' }, ...radios), ownRow);
+    const value = () => mode === 'own'
+      ? cleanPronouns({ subject: own.subject.value, object: own.object.value, possessive: own.possessive.value })
+      : PRONOUN_SETS.find((x) => x.id === mode)!.p;
+    return { el, value };
+  }
+
+  /** My Guardian: change pronouns at any time; see the origin. */
+  private openGuardian(): void {
+    const c = ctx.controller;
+    const pl = c.state.player;
+    const pron = this.pronounPicker(pl.pronouns);
+    const o = c.pack.origins.find((x) => x.id === pl.origin);
+    this.openModal('guardian', 'My Guardian', this.closeBtn(), h('h2', {}, pl.name),
+      h('p', { class: 'label' }, 'Pronouns'), pron.el,
+      h('p', { class: 'label' }, 'Origin'),
+      o ? h('p', {}, h('strong', {}, o.name), `. ${o.background} ${o.link}`) : h('p', { class: 'fine' }, 'No origin. (This game started before origins existed, or you chose none.)'),
+      h('div', { class: 'row' },
+        h('button', { class: 'primary', onclick: () => { c.dispatch({ type: 'SetPronouns', pronouns: pron.value() }); this.toast('Pronouns saved.', 'save'); this.closeModal(); } }, 'Save'),
+        h('button', { onclick: () => this.closeModal() }, 'Cancel')));
   }
 
   private startPlaying(returning: boolean): void {
@@ -395,7 +439,8 @@ export class UI implements UIApi {
     const c = ctx.controller;
     const ev = c.dispatch({ type: 'EnterNode', node: id });
     if (ev.some((e) => e.kind === 'error')) { this.closeModal(); return; }
-    const n: DialogueNode = c.engine.node(id);
+    const raw: DialogueNode = c.engine.node(id);
+    const n: DialogueNode = { ...raw, text: personalise(raw.text, c.state.player) };
     const speaker = n.speaker === 'lumen' ? { name: 'Lumen', role: 'Fairy guide', sprite: '' }
       : n.speaker === 'narrator' ? { name: '', role: '', sprite: '' } : c.pack.characters.find((x) => x.id === n.speaker);
     const portrait = n.speaker === 'lumen'
@@ -411,7 +456,7 @@ export class UI implements UIApi {
         if (r.some((e: GameEvent) => e.kind === 'error')) return;
         const next = r.nextNode as string | null;
         if (next) this.showNode(next); else this.endDialogue(o.option.open);
-      } }, h('span', { class: 'num', 'aria-hidden': 'true' }, `${i + 1}`), o.option.tag ? h('em', {}, `${o.option.tag}: `) : null, o.option.text)));
+      } }, h('span', { class: 'num', 'aria-hidden': 'true' }, `${i + 1}`), o.option.tag ? h('em', {}, `${o.option.tag}: `) : null, personalise(o.option.text, c.state.player))));
     } else {
       optionList.append(h('button', { 'data-autofocus': true, onclick: () => { this.sfx('sfx.click'); if (n.next) this.showNode(n.next); else this.endDialogue(n.open); } }, n.next ? 'Continue ▸' : 'Close'));
     }
@@ -1051,6 +1096,7 @@ export class UI implements UIApi {
       h('div', { class: 'menu' },
         h('button', { 'data-autofocus': true, onclick: () => this.closeModal() }, 'Resume'),
         h('button', { onclick: () => { c.suspend('Save and leave'); this.closeModal(false); this.toast('Saved. You can close the tab.', 'save'); (window as any).kgToTitle?.(); } }, 'Save and leave'),
+        h('button', { onclick: () => this.openGuardian() }, 'My Guardian (pronouns)'),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
         h('button', { onclick: () => this.openControls() }, 'Controls'),

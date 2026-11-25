@@ -1,0 +1,198 @@
+{
+ "origins": [
+  {
+   "id": "archive",
+   "name": "Archive child",
+   "background": "You grew up in the Nexus stacks, among catalogues and loan slips.",
+   "link": "You know how catalogues work: who files a thing, and under what name, shapes what people can find.",
+   "journal": "j.origin.archive"
+  },
+  {
+   "id": "harbour",
+   "name": "Harbour runner",
+   "background": "You carried messages between the harbours of the coast.",
+   "link": "You know that a story changes as it travels from person to person.",
+   "journal": "j.origin.harbour"
+  },
+  {
+   "id": "workshop",
+   "name": "Workshop apprentice",
+   "background": "You trained with makers, and you test ideas with your hands.",
+   "link": "You test an idea by building it and watching what happens.",
+   "journal": "j.origin.workshop"
+  },
+  {
+   "id": "singer",
+   "name": "Village singer",
+   "background": "You learned the songs of a valley, and the people who keep them.",
+   "link": "You know that songs and stories can hold knowledge for a long time.",
+   "journal": "j.origin.singer"
+  },
+  {
+   "id": "traveller",
+   "name": "Traveller",
+   "background": "You moved between many places and many languages.",
+   "link": "You see a thing from more than one side, because you have stood on more than one side.",
+   "journal": "j.origin.traveller"
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.origin.archive",
+   "text": "Lens hint (Archive child): a catalogue entry has its own date. Check if a date tells when a thing was made, or only when someone wrote it down.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.origin.harbour",
+   "text": "Lens hint (Harbour runner): when a claim reaches you through many people, ask who told the first of them.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.origin.workshop",
+   "text": "Lens hint (Workshop apprentice): an object that works today shows what it can do. It does not show who made the first one.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.origin.singer",
+   "text": "Lens hint (Village singer): a song can keep knowledge for generations. Ask who sings it, and what it was made to remember.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.origin.traveller",
+   "text": "Lens hint (Traveller): the same word can claim different things in different places. Ask what each place means by it.",
+   "claimKind": "interpretation"
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "origin.nexus.archive",
+   "speaker": "warden-ise",
+   "text": "The cataloguers do, and their choices last for centuries. A pen filed under 'inventions of 1888' is easy to find as a first. A pen filed under 'unfinished patents' is not. Shelves make claims too.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": "ise.again"
+    }
+   ]
+  },
+  {
+   "id": "origin.nexus.harbour",
+   "speaker": "warden-ise",
+   "text": "Yes. A visitor reads it, tells a friend, and the friend tells a class. Each copy drops a word. That is why a short, exact label matters more than a clever one.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": "ise.again"
+    }
+   ]
+  },
+  {
+   "id": "origin.nexus.workshop",
+   "speaker": "warden-ise",
+   "text": "You can. Read it to someone who has not seen the exhibits, then ask what they believe. If they repeat more than the label supports, the label is too strong.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": "ise.again"
+    }
+   ]
+  },
+  {
+   "id": "origin.nexus.singer",
+   "speaker": "warden-ise",
+   "text": "Some. Not enough. We keep paper well and songs badly, so our shelves say more about writers than about singers. Remember that when a record is silent.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": "ise.again"
+    }
+   ]
+  },
+  {
+   "id": "origin.nexus.traveller",
+   "speaker": "warden-ise",
+   "text": "That is most of it. A lawyer's first, a shopkeeper's first and an engineer's first are three different claims. You will be good at this work.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": "ise.again"
+    }
+   ]
+  },
+  {
+   "id": "origin.emb.archive",
+   "speaker": "scholar-sefa",
+   "text": "Collectors, mostly, a long time ago. Their words, 'Damascus' and 'ancient', are still on the cards. A catalogue is a record, and it is also a point of view.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": "sefa.again"
+    }
+   ]
+  },
+  {
+   "id": "origin.emb.harbour",
+   "speaker": "scholar-sefa",
+   "text": "Then the story got here before the blade's maker did. Ask who started it, and who gains if people believe it.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": "sefa.again"
+    }
+   ]
+  },
+  {
+   "id": "origin.emb.workshop",
+   "speaker": "scholar-sefa",
+   "text": "Then Hesper is your teacher, not me. Her anvil will show you more than my catalogue. Come back and tell me what the steel showed you.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": "sefa.again"
+    }
+   ]
+  },
+  {
+   "id": "origin.emb.singer",
+   "speaker": "scholar-sefa",
+   "text": "Some lines are almost the same: watch the hands, not the shine. Songs travel like steel does. When two places keep the same line, it is worth asking why.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": "sefa.again"
+    }
+   ]
+  },
+  {
+   "id": "origin.emb.traveller",
+   "speaker": "scholar-sefa",
+   "text": "Many places have their own name for it. A name tells you who was talking, and to whom. It does not tell you where the steel was made.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": "sefa.again"
+    }
+   ]
+  }
+ ]
+}

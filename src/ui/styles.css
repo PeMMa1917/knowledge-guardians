@@ -274,3 +274,17 @@ button.speak { display: block; margin: 0 0 0.4em auto; }
   .panel { padding: 1em; max-height: 94vh; }
 }
 .moves .primary .move-desc { color: inherit; opacity: 0.85; }
+
+/* Pronouns and origins (spec 35.1). */
+.pronouns .row { flex-wrap: wrap; gap: 0.3em 1em; }
+.own-pronouns input { width: 7em; }
+.origins { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.5em; margin: 0.3em 0 0.8em; }
+.origin { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 0.2em; padding: 0.6em 0.8em; }
+.origin small { color: var(--ink-dim); font-size: 0.8rem; }
+.origin small.link { color: var(--cyan); }
+.origin[aria-checked="true"] { outline: 3px solid var(--gold); background: rgba(232, 192, 64, 0.12); }
+.title-screen.create { justify-content: flex-start; }
+.title-screen.create > :first-child { margin-top: auto; }
+.title-screen.create > :last-child { margin-bottom: auto; }
+.pronouns label.check { display: inline-flex; align-items: center; gap: 0.3em; white-space: nowrap; width: auto; margin: 0; }
+.pronouns .row { justify-content: center; }
