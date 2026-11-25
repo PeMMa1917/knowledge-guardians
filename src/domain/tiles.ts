@@ -39,3 +39,14 @@ export function speedRank(secs: number, pairs: number): 'S' | 'A' | 'B' | 'C' {
   const per = secs / pairs;
   return per <= 6 ? 'S' : per <= 10 ? 'A' : per <= 16 ? 'B' : 'C';
 }
+
+/** Today's challenge: one deal for the whole class on one day (fair: everyone gets the same words). */
+export function dailySeed(d: Date): number {
+  return 100000 + d.getFullYear() * 1000 + (d.getMonth() + 1) * 32 + d.getDate();
+}
+
+/** A personal-best ghost: the second at which each pair was made in the player's fastest run. */
+export const encodeGhost = (times: number[]): string => times.map((t) => Math.round(t)).join(',');
+export const decodeGhost = (v: unknown): number[] => typeof v === 'string' && v ? v.split(',').map(Number).filter((n) => Number.isFinite(n)) : [];
+/** How many pairs the ghost had made by this second. */
+export const ghostPairs = (ghost: number[], secs: number): number => ghost.filter((t) => t <= secs).length;

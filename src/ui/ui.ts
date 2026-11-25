@@ -41,7 +41,7 @@ import type { ClaimKind, DialogueNode, EvidenceCard, HistoricalLabel, ShowdownSt
 import { PLAYER_LOOKS } from '../scenes/art';
 import { artURL, BIG_ART } from './illustrations';
 import { clear, h, trapFocus } from './dom';
-import { dealTiles, isPair, speedRank, tileRank, type Tile } from '../domain/tiles';
+import { dailySeed, dealTiles, decodeGhost, encodeGhost, ghostPairs, isPair, speedRank, tileRank, type Tile } from '../domain/tiles';
 import { TRUST_RANKS, rankOf, trustOf } from '../domain/communities';
 import { RECIPES, RESOURCES, cannotCraft, resCount, type Resource } from '../domain/craft';
 import { READINGS, cannotRead, readingOf, toolOf } from '../domain/readings';
@@ -51,7 +51,7 @@ import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } 
 import { MIN_SOURCES, RUMOURS, VERDICTS, currentRumour, sourcesChecked } from '../domain/rumours';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
 import { WARES, honestLabels, lockedOption, owns, priceFor } from '../domain/shop';
-import { calendarGrid, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
+import { calendarGrid, dayOf, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
 
 const HIST_LABEL_TEXT: Record<HistoricalLabel, [string, string]> = {
   'documented': ['Documented', 'Supported by a named, checkable source. Open the source link to see it.'],
@@ -2873,13 +2873,26 @@ export class UI implements UIApi {
   }
 
   /** Sefa's Word Tiles: match each TOK word with its meaning. Scores for moves and time; no XP. */
-  openTiles(): void {
+  openTiles(daily = false): void {
     const c = ctx.controller;
     const PAIRS = 6;
     const run = Number(c.state.flags['tiles.runs'] ?? 0);
-    const tiles: Tile[] = dealTiles(c.pack.glossary.map((g) => ({ id: g.id, term: g.term, text: g.text })), run, PAIRS);
+    const today = dayOf(new Date());
+    const tiles: Tile[] = dealTiles(c.pack.glossary.map((g) => ({ id: g.id, term: g.term, text: g.text })), daily ? dailySeed(new Date()) : run, PAIRS);
     const matched = new Set<number>();
     let up: number[] = [], moves = 0, started = 0, done = false, lock = false;
+    // Personal-best ghost: when each pair was made in your fastest run. Daily best: today's challenge only.
+    const ghost = ctx.settings.calmMode ? [] : decodeGhost(c.state.flags['tiles.ghost']); // calm mode: no race
+    const pairTimes: number[] = [];
+    const dailyBest = c.state.flags['tiles.daily.day'] === today ? { moves: Number(c.state.flags['tiles.daily.moves']), secs: Number(c.state.flags['tiles.daily.secs']) } : null;
+    const ghostLine = h('p', { class: 'fine ghost-line', 'aria-live': 'off' });
+    const tick = setInterval(() => {
+      if (!ghostLine.isConnected && started) { clearInterval(tick); return; }
+      if (!ghost.length || done) { ghostLine.textContent = ghost.length || ctx.settings.calmMode ? '' : 'Your fastest run will become a ghost to race.'; return; }
+      const t = started ? (performance.now() - started) / 1000 : 0;
+      const g = ghostPairs(ghost, t), me = matched.size / 2;
+      ghostLine.textContent = `Ghost of your fastest run: ${g} of ${PAIRS} pairs${started ? (me > g ? ' · you are ahead' : me < g ? ' · the ghost is ahead' : ' · level') : ''}.`;
+    }, 300);
     // Recall (Insight tree): every tile shows for 3 seconds at the start.
     const preview = hasTalent(c.state, 'recall');
     if (preview) { lock = true; up = tiles.map((_, i) => i); setTimeout(() => { up = []; lock = false; render(); }, 3000); }
@@ -2906,6 +2919,7 @@ export class UI implements UIApi {
         const [a, b] = up;
         if (isPair(tiles[a], tiles[b])) {
           matched.add(a); matched.add(b); up = [];
+          pairTimes.push((performance.now() - started) / 1000);
           playNotes([{ f: 660, at: 0, beats: 0.3 }, { f: 880, at: 0.15, beats: 0.4 }], 0.2, 'flute', ctx.settings.sfxVolume);
           if (matched.size === tiles.length) finish();
         } else { lock = true; setTimeout(() => { up = []; lock = false; render(); }, 1100); }
@@ -2916,20 +2930,30 @@ export class UI implements UIApi {
       done = true;
       const secs = Math.max(1, Math.round((performance.now() - started) / 1000));
       const newMoves = !bestMoves || moves < bestMoves, newSecs = !bestSecs || secs < bestSecs;
-      c.dispatch({ type: 'SetFlag', flag: 'tiles.runs', value: run + 1 });
+      if (!daily) c.dispatch({ type: 'SetFlag', flag: 'tiles.runs', value: run + 1 });
       if (newMoves) c.dispatch({ type: 'SetFlag', flag: 'tiles.best.moves', value: moves });
-      if (newSecs) c.dispatch({ type: 'SetFlag', flag: 'tiles.best.secs', value: secs });
+      if (newSecs) { c.dispatch({ type: 'SetFlag', flag: 'tiles.best.secs', value: secs }); c.dispatch({ type: 'SetFlag', flag: 'tiles.ghost', value: encodeGhost(pairTimes) }); }
+      if (daily) {
+        if (!dailyBest || moves < dailyBest.moves || (moves === dailyBest.moves && secs < dailyBest.secs)) {
+          c.dispatch({ type: 'SetFlag', flag: 'tiles.daily.day', value: today });
+          c.dispatch({ type: 'SetFlag', flag: 'tiles.daily.moves', value: moves });
+          c.dispatch({ type: 'SetFlag', flag: 'tiles.daily.secs', value: secs });
+        }
+      }
       this.sfx('sfx.award');
       const pace = bestSecs ? (secs < bestSecs ? `${bestSecs - secs} s faster than your best.` : `${secs - bestSecs} s behind your best.`) : 'Your first run sets your best.';
       result.replaceChildren(h('div', { class: 'tile-ranks' },
         h('div', {}, h('span', { class: 'fine' }, 'Precision'), h('strong', { class: 'rank' }, tileRank(moves, PAIRS)), h('span', {}, `${moves} moves${newMoves ? ' · new best' : ''}`)),
         h('div', {}, h('span', { class: 'fine' }, 'Speed'), h('strong', { class: 'rank' }, speedRank(secs, PAIRS)), h('span', {}, `${secs} s${newSecs ? ' · new best' : ''}`))),
         h('p', {}, pace, ' Sefa: "Knowing the words is a start. Using them well, on a real claim, is the real game."'),
-        h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.openTiles() }, 'Play again (new words)'), h('button', { onclick: () => this.closeModal() }, 'Close')));
+        ...(daily ? [h('p', { class: 'fine' }, "Today's challenge: everyone in your class gets the same six words today. Compare your moves with a friend, and how you got them.")] : []),
+        h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.openTiles() }, 'Play again (new words)'),
+          daily ? null : h('button', { onclick: () => this.openTiles(true) }, "Today's challenge"), h('button', { onclick: () => this.closeModal() }, 'Close')));
     };
-    box.append(this.closeBtn(), h('h2', {}, "Sefa's Word Tiles"),
-      h('p', {}, 'Turn two tiles. A word and its meaning make a pair. Each new game deals six new words from the Guardian glossary.'),
-      status, grid, result);
+    box.append(this.closeBtn(), h('h2', {}, daily ? "Sefa's Word Tiles: today's challenge" : "Sefa's Word Tiles"),
+      h('p', {}, daily ? `Turn two tiles. A word and its meaning make a pair. Today (${today}) everyone gets the same six words.${dailyBest ? ` Your best today: ${dailyBest.moves} moves, ${dailyBest.secs} s.` : ''}` : 'Turn two tiles. A word and its meaning make a pair. Each new game deals six new words from the Guardian glossary.'),
+      ...(daily ? [] : [h('div', { class: 'row' }, h('button', { type: 'button', onclick: () => this.openTiles(true) }, "Play today's challenge instead"))]),
+      status, ghostLine, grid, result);
     render();
   }
 

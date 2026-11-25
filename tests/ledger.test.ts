@@ -84,3 +84,17 @@ it('fog of war clears around the player, chunk by chunk', async () => {
   expect(revealAround(f, 40, 28, 20, 20)).toBe(f);
   expect(explored(f, 40, 28)).toBeCloseTo(9 / 70);
 });
+
+it("today's challenge is one deal per day; the ghost replays your fastest run", async () => {
+  const { dailySeed, dealTiles, decodeGhost, encodeGhost, ghostPairs } = await import('../src/domain/tiles');
+  const words = pack.glossary.map((g) => ({ id: g.id, term: g.term, text: g.text }));
+  const d1 = new Date(2026, 10, 25, 9), d1b = new Date(2026, 10, 25, 15), d2 = new Date(2026, 10, 26, 9);
+  expect(dailySeed(d1)).toBe(dailySeed(d1b));
+  expect(dealTiles(words, dailySeed(d1))).toEqual(dealTiles(words, dailySeed(d1b)));
+  expect(dealTiles(words, dailySeed(d1))).not.toEqual(dealTiles(words, dailySeed(d2)));
+  expect(dailySeed(new Date(2026, 0, 31))).not.toBe(dailySeed(new Date(2026, 1, 1)));
+  const g = decodeGhost(encodeGhost([3.2, 7.9, 12, 20, 21, 30]));
+  expect(g).toEqual([3, 8, 12, 20, 21, 30]);
+  expect(ghostPairs(g, 10)).toBe(2);
+  expect(decodeGhost(undefined)).toEqual([]);
+});
