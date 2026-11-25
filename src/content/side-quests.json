@@ -1,0 +1,564 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH1-S02",
+   "title": "Side quest: The East Well",
+   "world": "WORLD-02",
+   "objectives": [
+    {
+     "id": "well.o1.listen",
+     "title": "Optional: listen to Ama Ofori, the fruit seller and Hesper about the low well.",
+     "essential": false,
+     "visible": {
+      "flag": "well.started",
+      "eq": true
+     },
+     "done": {
+      "all": [
+       {
+        "flag": "well.heard.keeper",
+        "eq": true
+       },
+       {
+        "flag": "well.heard.fruit",
+        "eq": true
+       },
+       {
+        "flag": "well.heard.hesper",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "evidence",
+       "explanation"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "research"
+      ],
+      "subjects": [
+       "ess",
+       "geography"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ]
+     }
+    },
+    {
+     "id": "well.o2.plan",
+     "title": "Optional: make a plan with Ama.",
+     "essential": false,
+     "visible": {
+      "objective": "well.o1.listen"
+     },
+     "done": {
+      "flagSet": "well.plan"
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "evidence",
+       "explanation"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "research"
+      ],
+      "subjects": [
+       "ess",
+       "geography"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ]
+     }
+    },
+    {
+     "id": "well.o3.act",
+     "title": "Optional: read the knotted ropes at the east well and the west well.",
+     "essential": false,
+     "visible": {
+      "objective": "well.o2.plan"
+     },
+     "done": {
+      "all": [
+       {
+        "flag": "well.east.read",
+        "eq": true
+       },
+       {
+        "flag": "well.west.read",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "evidence",
+       "explanation"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "research"
+      ],
+      "subjects": [
+       "ess",
+       "geography"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ]
+     }
+    },
+    {
+     "id": "well.o4.reflect",
+     "title": "Optional: tell Ama what you take from this.",
+     "essential": false,
+     "visible": {
+      "objective": "well.o3.act"
+     },
+     "done": {
+      "flagSet": "well.reflected"
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "evidence",
+       "explanation"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "research"
+      ],
+      "subjects": [
+       "ess",
+       "geography"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ]
+     }
+    },
+    {
+     "id": "well.o5.show",
+     "title": "Optional: show the guildmaster what you found.",
+     "essential": false,
+     "visible": {
+      "objective": "well.o4.reflect"
+     },
+     "done": {
+      "flag": "well.shared",
+      "eq": true
+     },
+     "onComplete": [
+      {
+       "credit": "crit.responsibility.well"
+      },
+      {
+       "journal": "j.well.done"
+      },
+      {
+       "portfolio": "pf.well"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "evidence",
+       "explanation"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "research"
+      ],
+      "subjects": [
+       "ess",
+       "geography"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "well.start",
+   "speaker": "well-keeper",
+   "text": "I'm Ama Ofori. I keep the east well. It's low, and the street is arguing: the forge, the season, bad luck. Everyone has an answer. Nobody has asked us what we need.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Then I'll ask. What do you need?",
+     "effects": [
+      {
+       "setFlag": "well.started",
+       "value": true
+      },
+      {
+       "setFlag": "well.heard.keeper",
+       "value": true
+      }
+     ],
+     "next": "well.needs",
+     "tag": "Listen first"
+    },
+    {
+     "text": "I know what to do. Close the forge.",
+     "next": "well.fix"
+    },
+    {
+     "text": "Not now.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "well.fix",
+   "speaker": "well-keeper",
+   "text": "Do you? You have not seen the well, met my neighbour, or asked the smith. Close the forge and Hesper loses her work, and maybe the well stays low. Ask first.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "You're right. What do you need?",
+     "effects": [
+      {
+       "setFlag": "well.started",
+       "value": true
+      },
+      {
+       "setFlag": "well.heard.keeper",
+       "value": true
+      }
+     ],
+     "next": "well.needs"
+    },
+    {
+     "text": "Later.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "well.needs",
+   "speaker": "well-keeper",
+   "text": "Water for cooking by the evening, and an answer we all trust. Talk to the fruit seller, who blames the forge, and to Hesper, who uses the water. Then come back and we'll plan together.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "well.wait",
+   "speaker": "well-keeper",
+   "text": "Have you heard the fruit seller and Hesper? Their reasons matter as much as mine.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "well.plan",
+   "speaker": "well-keeper",
+   "text": "You've heard all three of us. So: what do we do? I want a plan we make together, not one handed to us.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Measure both wells, east and west, and compare. The west well is far from the forge.",
+     "effects": [
+      {
+       "setFlag": "well.plan",
+       "value": "measure"
+      }
+     ],
+     "next": "well.plan.ok",
+     "tag": "Plan a fair test"
+    },
+    {
+     "text": "Ask Hesper to use less water for three days, and watch the east well.",
+     "effects": [
+      {
+       "setFlag": "well.plan",
+       "value": "trial"
+      }
+     ],
+     "next": "well.plan.ok",
+     "tag": "Plan a fair test"
+    },
+    {
+     "text": "You decide. I'll just carry the buckets.",
+     "next": "well.plan.carry"
+    }
+   ]
+  },
+  {
+   "id": "well.plan.carry",
+   "speaker": "well-keeper",
+   "text": "Carrying buckets is kind. But you've heard everyone, and that's useful. Help us choose.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "next": "well.plan"
+  },
+  {
+   "id": "well.plan.ok",
+   "speaker": "well-keeper",
+   "text": "Agreed. Both are fair: they change one thing and watch. Start with the marks on the wells. There's a rope with knots at each well. Read the knots at the east well by me, and at the west well beyond the smithy.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "well.reflect",
+   "speaker": "well-keeper",
+   "text": "Both wells are low, by the same number of knots. So it's most likely the season, not the forge. What will you take from this?",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Listening first changed the plan.",
+     "effects": [
+      {
+       "setFlag": "well.reflected",
+       "value": "listen"
+      }
+     ],
+     "next": "well.show"
+    },
+    {
+     "text": "A fair comparison settled an argument that shouting did not.",
+     "effects": [
+      {
+       "setFlag": "well.reflected",
+       "value": "compare"
+      }
+     ],
+     "next": "well.show"
+    },
+    {
+     "text": "The people here knew more than I did.",
+     "effects": [
+      {
+       "setFlag": "well.reflected",
+       "value": "people"
+      }
+     ],
+     "next": "well.show"
+    },
+    {
+     "text": "I'm not sure yet.",
+     "effects": [
+      {
+       "setFlag": "well.reflected",
+       "value": "unsure"
+      }
+     ],
+     "next": "well.show"
+    }
+   ]
+  },
+  {
+   "id": "well.show",
+   "speaker": "well-keeper",
+   "text": "Now tell the guildmaster, so the whole street hears the same thing, with the knots to show. And Guardian: this was a good way to help, but a game is not real service. Real projects happen with real people.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "well.done",
+   "speaker": "well-keeper",
+   "text": "The street is calmer. We're sharing water from the west well until the rains. Thank you for asking first.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "well.fruit",
+   "speaker": "fruit-seller",
+   "text": "The well? It's the forge, it must be! All that steam. ...Well, I suppose I've never looked at the west well. My family drinks from the east one, that's why I worry.",
+   "claimKind": "value",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "well.heard.fruit",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "well.hesper",
+   "speaker": "smith-hesper",
+   "text": "I use water to quench, yes. Two buckets a day, from my own barrel that I fill from the west well. If you can show that my forge drains the east well, I'll change how I work.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "well.heard.hesper",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "well.orrin",
+   "speaker": "guildmaster-orrin",
+   "text": "The wells? Tell me, and show me. ...Same knots on both ropes. Then it's the season. I'll post a notice: share the west well, and no more blaming the forge. Thank you for bringing the street together, not apart.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "well.shared",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "fruit.idle",
+   "speaker": "fruit-seller",
+   "text": "Fresh fruit from the river farms! Yellow, red, green. Prices on the boxes, no arguing today.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.well.o1.listen.1",
+   "objective": "well.o1.listen",
+   "depth": 1,
+   "text": "Everyone has an answer. Who has been asked?"
+  },
+  {
+   "id": "h.well.o1.listen.2",
+   "objective": "well.o1.listen",
+   "depth": 2,
+   "text": "Three people care about the well."
+  },
+  {
+   "id": "h.well.o1.listen.3",
+   "objective": "well.o1.listen",
+   "depth": 3,
+   "text": "Talk to Ama by the east well, the fruit seller by the fruit boxes, and Hesper at the forge."
+  },
+  {
+   "id": "h.well.o1.listen.4",
+   "objective": "well.o1.listen",
+   "depth": 4,
+   "text": "Ama is by the well east of the square. The fruit seller stands near the fruit boxes south of the square. Hesper is at the forge in the west."
+  },
+  {
+   "id": "h.well.o2.plan.1",
+   "objective": "well.o2.plan",
+   "depth": 1,
+   "text": "Make the plan with Ama, not for her."
+  },
+  {
+   "id": "h.well.o2.plan.2",
+   "objective": "well.o2.plan",
+   "depth": 2,
+   "text": "A fair plan changes one thing and watches."
+  },
+  {
+   "id": "h.well.o2.plan.3",
+   "objective": "well.o2.plan",
+   "depth": 3,
+   "text": "Talk to Ama and choose one of the two test plans."
+  },
+  {
+   "id": "h.well.o2.plan.4",
+   "objective": "well.o2.plan",
+   "depth": 4,
+   "text": "Talk to Ama and choose 'Measure both wells…'."
+  },
+  {
+   "id": "h.well.o3.act.1",
+   "objective": "well.o3.act",
+   "depth": 1,
+   "text": "Each well has a knotted rope."
+  },
+  {
+   "id": "h.well.o3.act.2",
+   "objective": "well.o3.act",
+   "depth": 2,
+   "text": "One rope is by Ama. The other is west, beyond the smithy."
+  },
+  {
+   "id": "h.well.o3.act.3",
+   "objective": "well.o3.act",
+   "depth": 3,
+   "text": "Read the rope at the east well, then walk west past the forge to the west well."
+  },
+  {
+   "id": "h.well.o3.act.4",
+   "objective": "well.o3.act",
+   "depth": 4,
+   "text": "Use the east well rope next to Ama, and the west well rope south-west of the forge."
+  },
+  {
+   "id": "h.well.o4.reflect.1",
+   "objective": "well.o4.reflect",
+   "depth": 1,
+   "text": "What did the ropes show?"
+  },
+  {
+   "id": "h.well.o4.reflect.2",
+   "objective": "well.o4.reflect",
+   "depth": 2,
+   "text": "Any honest answer counts."
+  },
+  {
+   "id": "h.well.o4.reflect.3",
+   "objective": "well.o4.reflect",
+   "depth": 3,
+   "text": "Talk to Ama and say what you take from it."
+  },
+  {
+   "id": "h.well.o4.reflect.4",
+   "objective": "well.o4.reflect",
+   "depth": 4,
+   "text": "Talk to Ama and choose any answer."
+  },
+  {
+   "id": "h.well.o5.show.1",
+   "objective": "well.o5.show",
+   "depth": 1,
+   "text": "The whole street should hear the same thing."
+  },
+  {
+   "id": "h.well.o5.show.2",
+   "objective": "well.o5.show",
+   "depth": 2,
+   "text": "Who speaks for the town?"
+  },
+  {
+   "id": "h.well.o5.show.3",
+   "objective": "well.o5.show",
+   "depth": 3,
+   "text": "Show the guildmaster what you found."
+  },
+  {
+   "id": "h.well.o5.show.4",
+   "objective": "well.o5.show",
+   "depth": 4,
+   "text": "Talk to Guildmaster Orrin by the guild hall."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.well.done",
+   "text": "The East Well: we listened first, planned with the people, compared two wells, reflected and showed the guild. A good habit for real projects. Play is not CAS.",
+   "claimKind": "observation"
+  }
+ ]
+}

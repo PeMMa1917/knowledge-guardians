@@ -304,6 +304,23 @@
    "talk": [
     {
      "if": {
+      "all": [
+       {
+        "flag": "well.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "well.heard.hesper",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "well.hesper"
+    },
+    {
+     "if": {
       "flag": "hesper.coming",
       "eq": true
      },
@@ -334,6 +351,22 @@
    "sprite": "guildmaster-orrin",
    "mode": "fictional",
    "talk": [
+    {
+     "if": {
+      "all": [
+       {
+        "flagSet": "well.reflected"
+       },
+       {
+        "not": {
+         "flag": "well.shared",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "well.orrin"
+    },
     {
      "if": {
       "flagSet": "sd.corvan.outcome"
@@ -491,7 +524,28 @@
    "role": "Emberford market",
    "sprite": "villager-2",
    "mode": "fictional",
-   "talk": []
+   "talk": [
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "well.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "well.heard.fruit",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "well.fruit"
+    },
+    {
+     "node": "fruit.idle"
+    }
+   ]
   },
   {
    "id": "well-keeper",
@@ -499,7 +553,71 @@
    "role": "Emberford",
    "sprite": "villager-1",
    "mode": "fictional",
-   "talk": []
+   "talk": [
+    {
+     "if": {
+      "flag": "well.shared",
+      "eq": true
+     },
+     "node": "well.done"
+    },
+    {
+     "if": {
+      "flagSet": "well.reflected"
+     },
+     "node": "well.show"
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "well.east.read",
+        "eq": true
+       },
+       {
+        "flag": "well.west.read",
+        "eq": true
+       }
+      ]
+     },
+     "node": "well.reflect"
+    },
+    {
+     "if": {
+      "flagSet": "well.plan"
+     },
+     "node": "well.plan.ok"
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "well.heard.keeper",
+        "eq": true
+       },
+       {
+        "flag": "well.heard.fruit",
+        "eq": true
+       },
+       {
+        "flag": "well.heard.hesper",
+        "eq": true
+       }
+      ]
+     },
+     "node": "well.plan"
+    },
+    {
+     "if": {
+      "flag": "well.started",
+      "eq": true
+     },
+     "node": "well.wait"
+    },
+    {
+     "node": "well.start"
+    }
+   ]
   },
   {
    "id": "keeper-oduya",
@@ -639,6 +757,11 @@
    "id": "crit.interpretation.ee-practice",
    "concept": "interpretation",
    "maximum": 15
+  },
+  {
+   "id": "crit.responsibility.well",
+   "concept": "responsibility",
+   "maximum": 10
   }
  ],
  "awards": [
@@ -786,6 +909,18 @@
    ],
    "when": {
     "objective": "ee2.o7.reflect"
+   }
+  },
+  {
+   "id": "badge.east-well",
+   "kind": "badge",
+   "name": "Ask First",
+   "earnedBy": "You listened to everyone, planned with them, compared two wells and showed the town. (A game quest, not CAS.)",
+   "criteria": [
+    "crit.responsibility.well"
+   ],
+   "when": {
+    "objective": "well.o5.show"
    }
   }
  ],
@@ -987,6 +1122,26 @@
    },
    "did": "You looked back at a research trail and said what changed in your thinking.",
    "prompt": "What would you do differently next time?"
+  },
+  {
+   "id": "PM-17",
+   "attribute": "caring",
+   "when": {
+    "flag": "well.heard.keeper",
+    "eq": true
+   },
+   "did": "You asked the people at the well what they needed before you suggested anything.",
+   "prompt": "When did someone ask what you needed before they helped?"
+  },
+  {
+   "id": "PM-18",
+   "attribute": "communicator",
+   "when": {
+    "flag": "well.shared",
+    "eq": true
+   },
+   "did": "You showed the whole street the same evidence, so they could agree.",
+   "prompt": "How do you share a finding so that people on both sides trust it?"
   }
  ],
  "misconceptions": [
@@ -1835,6 +1990,32 @@
     ],
     "aoks": [
      "HIS"
+    ]
+   }
+  },
+  {
+   "id": "pf.well",
+   "kind": "reflection",
+   "title": "The East Well: listen, plan, act, reflect, show",
+   "text": "In Emberford I listened to three people, planned a fair comparison with them, read the ropes at two wells, reflected and showed the guild. These are habits of a good community project. Play is not CAS. What I would do the same way in a real project:",
+   "weave": {
+    "concepts": [
+     "responsibility",
+     "evidence",
+     "explanation"
+    ],
+    "atl": [
+     "social",
+     "communication",
+     "research"
+    ],
+    "subjects": [
+     "ess",
+     "geography"
+    ],
+    "aoks": [
+     "NAT",
+     "HUM"
     ]
    }
   }

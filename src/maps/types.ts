@@ -17,6 +17,7 @@ export interface Interactable {
   node?: string;              // for kind 'thread': the node at this spot
   place?: string;             // for kind 'waystone': the place name
   text?: string;              // for kind 'sign'
+  flag?: string;              // for kind 'sign': set to true when read
   /** Procedural art key drawn at this spot (see BootScene.makeTextures). */
   art?: string;
   visibleIf?: import('../domain/types').Condition;

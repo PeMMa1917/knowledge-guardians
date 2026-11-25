@@ -10,10 +10,11 @@ import m01 from './m01-nexus.json';
 import m02 from './m02-aethelgard.json';
 import firsts from './firsts.json';
 import ee from './ee-trails.json';
+import side from './side-quests.json';
 
 export const CONTENT_VERSION = 3;
 
-const parts: any[] = [sources, common, m01, m02, firsts, ee];
+const parts: any[] = [sources, common, m01, m02, firsts, ee, side];
 const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'missions', 'hints', 'criteria', 'awards', 'items', 'offers', 'journal',
   'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks'] as const;
 

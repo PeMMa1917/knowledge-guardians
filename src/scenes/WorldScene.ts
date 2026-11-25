@@ -218,6 +218,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     if (this.portalRing) this.portalRing.setAlpha(ctx.controller.check({ objective: 'm01.o6.label' }) ? 1 : 0.35);
   }
 
+  /** Active play time in this browser session, for the balance reminder. */
+  static activeSeconds = 0;
+
   private makeActor(id: string, tx: number, ty: number, facing: Dir, isPlayer = false): Actor {
     // A character can use another character's sheet (for example the archivist uses a villager sheet).
     const sheet = this.textures.exists(`char.${id}`) ? id : ctx.controller.pack.characters.find((c) => c.id === id)?.sprite ?? id;
@@ -359,7 +362,15 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       this.checkZones(false);
       // The event clock runs only while the player explores (spec 93.1).
       this.exploreAcc += dt;
-      if (this.exploreAcc >= 10) { this.exploreAcc = 0; ctx.controller.dispatch({ type: 'Explore', seconds: 10 }); }
+      if (this.exploreAcc >= 10) {
+        this.exploreAcc = 0;
+        ctx.controller.dispatch({ type: 'Explore', seconds: 10 });
+        // Balance (spec 92.3, 90.2): a gentle break reminder every 45 minutes of active play. It never blocks play.
+        WorldScene.activeSeconds += 10;
+        if (WorldScene.activeSeconds % 2700 === 0) {
+          ctx.ui.toast('Lumen: You have played for a while. A real break, a walk or a glass of water helps more than one more quest. Your place is saved at any Waystone.', 'info');
+        }
+      }
     }
   }
 
@@ -480,7 +491,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'assay': ctx.ui.openAssay(it.exhibit!); break;
       case 'thread': ctx.ui.followThread(it.thread!, it.node!); break;
       case 'waystone': ctx.ui.openWaystone(it.place ?? this.map.name); break;
-      case 'sign': ctx.ui.showSign(it.label, it.text ?? ''); break;
+      case 'sign':
+        if (it.flag && ctx.controller.state.flags[it.flag] !== true) ctx.controller.dispatch({ type: 'SetFlag', flag: it.flag, value: true });
+        ctx.ui.showSign(it.label, it.text ?? ''); break;
       case 'portal': break;
     }
   }

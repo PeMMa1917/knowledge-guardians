@@ -29,6 +29,8 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 ### Phase L3 (started)
 
 - **38 of 40 misconceptions** have a place in play. New: MIS-13, 14, 17, 23, 24, 25, 26, 30, 32, 35, 37, 38, 39. Sol, a visitor in the Hall of Firsts, argues about maths and culture, faith and science, and calculations. Ise answers "what is the real question?" (a knowledge question) and "should examples come from the news?".
+- **Side quest "The East Well"** (Emberford, CAS habits, spec 92.3): Ama Ofori's well is low. The player listens to three people first, plans a fair comparison with them, reads knotted ropes at two wells, reflects, and shows the guildmaster. The game says plainly that play is not CAS (CAS-001). 10 XP, the same on every route.
+- **Balance reminder:** every 45 minutes of active play, Lumen suggests a real break. It never blocks play.
 - **MIS-10 and MIS-11 (Indigenous knowledge) are left out on purpose.** They need Indigenous content made with community advisors (spec section 88). Do not add them with a quick signal.
 
 - **Teacher view:** EE practice steps column and report panel (practice only, EE-003), a teacher guide, and a printed summary that leaves out the private progress list.
@@ -36,18 +38,20 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 
 ### Tests
 
-`npm test`: 102 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
+`npm test`: 105 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
 
 ## Next steps (in order)
 
 1. **Playtest with students** (the "fun gate", CORE-012). Note where players get stuck. Tune hints, Showdown patience and crowd numbers.
-2. **Phase L2 is done.** Phase L3 has started (38 of 40 misconceptions). Next in L3: quests for more subjects and CAS stories and the C1 list in spec section 51 (rings, titles, Zen mode, clue board and others). Pick the ones that fit chapter 1 without making it too large.
+2. **Phase L2 is done.** Phase L3 has started (38 of 40 misconceptions). Next in L3: quests for more subjects, and CAS stories about real people (Hokusai, Abebe Bikila, Wangari Maathai and others in spec 92.3; each needs a checked source first) and the C1 list in spec section 51 (rings, titles, Zen mode, clue board and others). Pick the ones that fit chapter 1 without making it too large.
 3. **Teacher view:** export of the weekly summary as a printable page; a guide page for teachers. Keep TEACH-001 to TEACH-005.
 4. **Art:** replace the code-drawn placeholders for the forge, plaques and label stand with richer pixel art (free licence, credited). Add music per area if a CC0 track fits.
 5. **Chapter 2** (next world in spec section 27). Use the same tools (label kit, Showdown, thread) with new real objects. Keep people from every continent and period.
 6. **Phase L3 and later:** all 40 misconceptions, quests for all subjects, CAS stories (play is never CAS), more reports.
 
 ## Known limits and problems
+
+- **Network:** this build environment could not open museum or encyclopedia websites, so no new historical sources were added after HIS-S31. New real people (for example the CAS figures) need a source that someone has opened and checked.
 
 - The Showdown panel is long on small phone screens. The log scrolls, but the layout needs a phone pass.
 - Event pacing uses play time, so a player who idles in one place can still get an event. This is within the rules, but check it in playtests.
