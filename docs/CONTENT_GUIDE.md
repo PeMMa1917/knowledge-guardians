@@ -149,6 +149,10 @@ A misconception (`misconceptions`) has a paraphrased `title`, the play `signal`,
 
 A template (`portfolio`) is an entry that the game adds with the effect `{ "portfolio": "pf.<id>" }`. Labels, Showdowns and forge tests also add entries. Entries are private. The student shares them by choice.
 
+## Tag a step with a knowledge question (Question Stones)
+
+Give an objective `"kq": { "id": "KQ-NEW-001", "action": "label" }`. The question is in `src/content/questions.json`, in our own words (never IB wording), with Lumen's one-sentence `lastWord`. Each new world and action pair makes the stone brighter. Never ask the player to "answer" a knowledge question for points (KQ-001).
+
 ## Add a glossary word (smart glossary)
 
 `src/content/glossary.json` holds key words. Each entry has a `term`, lower-case `match` forms, a plain explanation in our own words, and `examples` with optional conditions (`{flag:name}` shows a flag's value, for example the player's own label). The first use of a word in a conversation is underlined; the player can tap it. A test checks that every word appears in the chapter text. Never copy course wording into explanations.

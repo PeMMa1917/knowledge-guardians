@@ -39,3 +39,19 @@ describe('side quest: The East Well (habits of a community project, spec 92.3)',
     expect(text).toMatch(/not (real service|CAS)/);
   });
 });
+
+describe('Question Stones (KQ-003)', () => {
+  it('a step with a question records a way, and Lumen names the question', () => {
+    const d = new Driver();
+    playWell(d, 'Measure both', 'Listening first');
+    expect(d.p.stones['KQ-NEW-006']).toEqual(['WORLD-02|community']);
+    expect(d.p.stones['KQ-NEW-003']).toEqual(['WORLD-02|fieldwork']);
+    expect(d.events.some((e) => e.kind === 'stone' && e.question === 'KQ-NEW-006' && e.newWay)).toBe(true);
+  });
+  it('the same way twice does not make a stone brighter', () => {
+    const d = new Driver();
+    d.p = { ...d.p, stones: { 'KQ-NEW-006': ['WORLD-02|community'] } };
+    d.talk('well-keeper', 'What do you need'); d.talk('fruit-seller'); d.talk('smith-hesper');
+    expect(d.p.stones['KQ-NEW-006']).toEqual(['WORLD-02|community']);
+  });
+});

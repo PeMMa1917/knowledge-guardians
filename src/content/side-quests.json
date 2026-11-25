@@ -48,6 +48,10 @@
        "NAT",
        "HUM"
       ]
+     },
+     "kq": {
+      "id": "KQ-NEW-006",
+      "action": "community"
      }
     },
     {
@@ -119,6 +123,10 @@
        "NAT",
        "HUM"
       ]
+     },
+     "kq": {
+      "id": "KQ-NEW-003",
+      "action": "fieldwork"
      }
     },
     {

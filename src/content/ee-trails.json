@@ -136,6 +136,10 @@
        "HIS",
        "HUM"
       ]
+     },
+     "kq": {
+      "id": "KQ-NEW-001",
+      "action": "research"
      }
     },
     {
@@ -368,6 +372,10 @@
       "aoks": [
        "HIS"
       ]
+     },
+     "kq": {
+      "id": "KQ-NEW-002",
+      "action": "research"
      }
     },
     {

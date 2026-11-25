@@ -227,3 +227,10 @@ button.gloss:focus-visible { outline: 2px solid #e9cf7a; outline-offset: 2px; bo
 .gloss-lumen { width: 28px; height: 28px; image-rendering: pixelated; flex: none; }
 dl.glossary dt { font-weight: 600; margin-top: 0.7em; color: #e9cf7a; }
 dl.glossary dd { margin: 0.2em 0 0 0; }
+
+/* Question Stones (KQ-003) */
+ul.stones { list-style: none; padding: 0; }
+ul.stones li { display: flex; gap: 0.8em; align-items: flex-start; margin: 0.8em 0; }
+.stone { display: inline-grid; grid-template-columns: repeat(5, 8px); gap: 3px; padding: 6px; border-radius: 10px; background: rgba(159, 232, 255, calc(0.08 + var(--glow, 0) * 0.3)); flex: none; }
+.stone i { display: block; width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); }
+.stone i.lit { background: #9fe8ff; box-shadow: 0 0 6px #9fe8ff; }

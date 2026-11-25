@@ -47,6 +47,7 @@ export type GameEvent =
   | { kind: 'item'; id: string; qty: number }
   | { kind: 'marks'; delta: number }
   | { kind: 'objective'; id: string; title: string }
+  | { kind: 'stone'; question: string; ways: number; newWay: boolean }
   | { kind: 'award'; award: AwardRecord; xp: number }
   | { kind: 'xp'; amount: number }
   | { kind: 'checkpoint'; label: string }
@@ -164,6 +165,7 @@ export class Engine {
     const out = emptyOutputs();
     const events: GameEvent[] = [];
     const weaves: Weave[] = [];
+    const stones: { id: string; way: string }[] = [];
     const portfolio: { kind: Parameters<typeof addPortfolio>[1]['kind']; title: string; text: string; weave: Weave }[] = [];
     let s = s0;
     let p = p0;
@@ -414,6 +416,7 @@ export class Engine {
           events.push({ kind: 'objective', id: o.id, title: o.title });
           s = apply(o.onComplete, s, out);
           if (o.weave) weaves.push(o.weave);
+          if (o.kq) stones.push({ id: o.kq.id, way: `${m.world}|${o.kq.action}` });
           changed = true;
         }
       }
@@ -438,6 +441,13 @@ export class Engine {
       const r = addSignal(p, this.pack, id, now);
       p = r.record;
       if (r.offer) events.push({ kind: 'reflection', misconception: r.offer });
+    }
+    // Question Stones (KQ-003): Lumen names the question; a new way makes the stone brighter.
+    for (const st of stones) {
+      const ways = p.stones?.[st.id] ?? [];
+      const newWay = !ways.includes(st.way);
+      if (newWay) p = { ...p, stones: { ...(p.stones ?? {}), [st.id]: [...ways, st.way] } };
+      events.push({ kind: 'stone', question: st.id, ways: newWay ? ways.length + 1 : ways.length, newWay });
     }
     for (const tid of out.portfolio) {
       const t = this.pack.portfolio.find((x) => x.id === tid);

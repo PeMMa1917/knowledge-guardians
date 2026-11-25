@@ -299,6 +299,11 @@ export class UI implements UIApi {
       switch (e.kind) {
         case 'card': { const card = c.pack.cards.find((x) => x.id === e.id); this.toast(`New evidence card: ${card?.title}`, 'card'); this.sfx('sfx.page'); break; }
         case 'item': { const it = c.pack.items.find((x) => x.id === e.id); this.toast(`${e.qty > 0 ? 'Received' : 'Gave'}: ${it?.name ?? e.id}`, 'item'); this.sfx('sfx.pickup'); break; }
+        case 'stone': {
+          const q = c.pack.questions.find((x) => x.id === e.question);
+          if (q) this.toast(`Lumen's last word: ${q.lastWord}${e.newWay ? ` (Question Stone: ${Math.min(e.ways, 5)} of 5 ways)` : ''}`, 'info');
+          break;
+        }
         case 'marks': this.toast(`${e.delta > 0 ? '+' : ''}${e.delta} marks`, 'item'); this.sfx('sfx.coins'); break;
         case 'objective':
           this.toast(`Step complete: ${e.title}`, 'objective'); this.sfx('sfx.complete');
@@ -837,15 +842,28 @@ export class UI implements UIApi {
   openWaystone(place: string): void {
     const c = ctx.controller;
     c.dispatch({ type: 'Rest', place });
-    const ta = h('textarea', { rows: '3', maxlength: '500', 'aria-label': 'A note (optional)', placeholder: 'Optional: what are you thinking about right now?' }) as HTMLTextAreaElement;
+    // Campfire log (spec 47.10, C1): one short, optional prompt about the latest step. Never graded.
+    const lastId = [...c.state.objectivesDone].reverse()[0];
+    const last = c.pack.missions.flatMap((m) => m.objectives).find((o) => o.id === lastId);
+    const prompts = last
+      ? [`What helped you with this step: "${last.title}"?`, 'What would you do differently next time?', 'What are you still not sure about?']
+      : ['What are you thinking about right now?'];
+    const prompt = prompts[Number(c.state.flags['count.rests'] ?? 0) % prompts.length];
+    const ta = h('textarea', { rows: '3', maxlength: '500', 'aria-label': `Campfire log (optional): ${prompt}`, placeholder: 'Optional. Write in your own words. Nobody grades this.' }) as HTMLTextAreaElement;
     const r = c.recap();
     this.openModal('waystone-panel', 'Waystone', this.closeBtn(),
       h('h2', {}, 'Waystone'),
       h('p', {}, 'The Waystone hums softly. Your progress is saved here. Resting is never required, and nothing is lost if you keep going.'),
       h('ul', {}, ...r.lines.slice(1).map((l) => h('li', {}, l))),
-      ta,
+      h('p', { class: 'hint-text' }, h('strong', {}, 'Campfire log: '), prompt), ta,
       h('div', { class: 'row' },
-        h('button', { class: 'primary', 'data-autofocus': true, onclick: () => { if (ta.value.trim()) c.dispatch({ type: 'AddNote', text: ta.value }); this.closeModal(); } }, 'Rest and go on'),
+        h('button', { class: 'primary', 'data-autofocus': true, onclick: () => {
+          if (ta.value.trim()) {
+            c.dispatch({ type: 'AddNote', text: `Campfire log: ${prompt} ${ta.value.trim()}` });
+            if (lastId) c.dispatch({ type: 'SetFlag', flag: `log.${lastId}`, value: true });
+          }
+          this.closeModal();
+        } }, 'Rest and go on'),
         h('button', { onclick: () => { c.suspend('Save and leave'); this.closeModal(false); (window as any).kgToTitle?.(); } }, 'Save and leave')));
   }
 
@@ -896,7 +914,7 @@ export class UI implements UIApi {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', stones: 'Question Stones', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
     if (tab === 'entries') {
@@ -931,6 +949,20 @@ export class UI implements UIApi {
         body.append(h('article', { class: 'card' }, h('h3', {}, e.title), h('p', { class: 'fine' }, `${new Date(e.at).toLocaleString()} · ${e.world}`), h('p', {}, e.text), ta,
           h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: e.shared, onchange: (ev: Event) => c.dispatch({ type: 'PortfolioShare', entry: e.id, shared: (ev.target as HTMLInputElement).checked }) }), ' Share with my teacher')));
       }
+    } else if (tab === 'stones') {
+      // Question Stones (KQ-003): a stone gets brighter with each new way of meeting the question. Never a quiz.
+      const ACTION: Record<string, string> = { label: 'a label', exhibition: 'a museum plaque', test: 'a fair test', showdown: 'a Showdown', thread: 'a Provenance Thread', forge: 'the forge', reflection: 'a mystery', research: 'EE practice', community: 'listening to a community', fieldwork: 'fieldwork' };
+      const WORLD: Record<string, string> = { 'WORLD-01': 'the Nexus', 'WORLD-02': 'Emberford' };
+      body.append(h('p', { class: 'fine' }, 'Each stone holds a question about knowledge that sat under something you did. A stone gets brighter when you meet the same question in a new way: a new place or a new kind of action. Five ways light it fully. Nothing here is a test.'));
+      const got = c.pack.questions.filter((q) => (c.permanent.stones?.[q.id] ?? []).length);
+      if (!got.length) body.append(h('p', {}, 'No stones yet. They appear when you finish a step that has a question under it.'));
+      body.append(h('ul', { class: 'stones' }, ...got.map((q) => {
+        const ways = c.permanent.stones[q.id];
+        return h('li', { style: { '--glow': String(Math.min(ways.length, 5) / 5) } },
+          h('span', { class: 'stone', 'aria-hidden': 'true' }, ...[0, 1, 2, 3, 4].map((i) => h('i', { class: i < ways.length ? 'lit' : '' }))),
+          h('div', {}, h('strong', {}, q.text), h('br', {}),
+            h('small', { class: 'fine' }, `${Math.min(ways.length, 5)} of 5 ways: ${ways.map((w) => { const [wd, a] = w.split('|'); return `${ACTION[a] ?? a} in ${WORLD[wd] ?? wd}`; }).join('; ')}.`)));
+      })));
     } else if (tab === 'glossary') {
       body.append(h('p', { class: 'fine' }, 'Key words, in plain English. Where you have already done something that shows the word, Lumen adds an example from your play.'),
         h('dl', { class: 'glossary' }, ...c.pack.glossary.flatMap((g) => {

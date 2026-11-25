@@ -124,6 +124,10 @@
        "NAT",
        "TEC"
       ]
+     },
+     "kq": {
+      "id": "KQ-NEW-003",
+      "action": "test"
      }
     },
     {
@@ -157,6 +161,10 @@
       "aoks": [
        "HIS"
       ]
+     },
+     "kq": {
+      "id": "KQ-NEW-004",
+      "action": "showdown"
      }
     },
     {
@@ -193,6 +201,10 @@
        "HIS",
        "LAN"
       ]
+     },
+     "kq": {
+      "id": "KQ-NEW-001",
+      "action": "label"
      }
     },
     {
@@ -275,6 +287,10 @@
        "MAT",
        "POL"
       ]
+     },
+     "kq": {
+      "id": "KQ-NEW-001",
+      "action": "exhibition"
      }
     }
    ]

@@ -144,6 +144,13 @@ describe('storage, checksum and migration', () => {
     expect(p.awards['award.dates-have-kinds']).toBeTruthy();
     expect(p.portfolio).toEqual([]);
     expect(p.met.atl).toEqual({});
+    expect(p.stones).toEqual({});
+  });
+  it('migrates a version 2 permanent record and adds Question Stones', () => {
+    const p = migratePermanent({ ...newPermanent(), schema: 2, stones: undefined, credit: { 'crit.evidence.date-kinds': 20 } } as any);
+    expect(p.schema).toBe(3);
+    expect(p.credit['crit.evidence.date-kinds']).toBe(20);
+    expect(p.stones).toEqual({});
   });
   it('detects a write from another tab (revision check)', () => {
     const store = memoryStore();

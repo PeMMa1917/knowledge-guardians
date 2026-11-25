@@ -58,7 +58,7 @@ Every player action is a typed command (see `Command` in `src/domain/engine.ts`)
 2. Apply the effects.
 3. Complete each objective whose `done` condition now holds, and apply its `onComplete` effects.
 4. Grant permanent credit and check awards.
-5. Record learner-profile moments and misconception signals (`learning.ts`).
+5. Record learner-profile moments, misconception signals and Question Stones (`learning.ts`, `engine.ts`).
 6. Return the new state, the new permanent record and a list of events (card, objective, award, label, showdown, thread, forge, event-due, moment, reflection, portfolio, checkpoint, and so on).
 
 The controller then saves and the UI shows toasts for the events.
@@ -78,7 +78,7 @@ Content is JSON. It never holds code. Conditions and effects use a small vocabul
 | Data | Where | Notes |
 |---|---|---|
 | Campaign state | `CampaignState` in `types.ts` | Position, flags (also counters such as `count.inspected`), inventory, cards, objectives done, journal, notes, marks (money), companion, RNG state, play time, Showdown state, forge billets, event deck. Schema version `CAMPAIGN_SCHEMA` (now 3). |
-| Permanent record | `PermanentRecord` | XP per criterion, awards, learner-profile moments, misconception signals, met weave tags and the portfolio. **Never reset** by loading a save. Each criterion has a fixed maximum. `PERMANENT_SCHEMA` is now 2. |
+| Permanent record | `PermanentRecord` | XP per criterion, awards, learner-profile moments, misconception signals, met weave tags and the portfolio. **Never reset** by loading a save. Each criterion has a fixed maximum. `PERMANENT_SCHEMA` is now 3 (Question Stones). |
 | Settings | `src/app/settings.ts` | Accessibility, volume and calm mode. |
 
 ## Saves (spec section 24)

@@ -57,7 +57,7 @@ The design spec is `Knowledge_Guardians_spec_v2.10.md`. The project owner keeps 
 
 - Game rules go in `src/domain/` only. That folder must not import Phaser or use the DOM. The same applies to `src/teacher/report.ts`.
 - The UI and scenes send commands to `GameController`. They do not change state directly.
-- If you change `CampaignState`, raise `CAMPAIGN_SCHEMA` (now 3) and add a migration in `src/domain/saves.ts`, with a test. The same for `PERMANENT_SCHEMA` (now 2).
+- If you change `CampaignState`, raise `CAMPAIGN_SCHEMA` (now 3) and add a migration in `src/domain/saves.ts`, with a test. The same for `PERMANENT_SCHEMA` (now 3).
 - Do not rename content IDs after release. Saves refer to them.
 - Use exact dependency versions in `package.json` (no `^` or `~`).
 - TypeScript is strict. `npm run build` must pass.

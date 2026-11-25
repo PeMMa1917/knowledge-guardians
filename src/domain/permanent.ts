@@ -12,7 +12,7 @@ import { check } from './rules';
 export function newPermanent(): PermanentRecord {
   return {
     schema: PERMANENT_SCHEMA, credit: {}, awards: {}, moments: {}, signals: {}, dismissed: [], offered: [],
-    met: { concepts: {}, atl: {}, subjects: {}, aoks: {} }, portfolio: [],
+    met: { concepts: {}, atl: {}, subjects: {}, aoks: {} }, portfolio: [], stones: {},
   };
 }
 
@@ -22,6 +22,7 @@ export function migratePermanent(raw: any): PermanentRecord {
   if (raw.schema > PERMANENT_SCHEMA) throw new Error('Permanent record was made by a newer version.');
   let p = raw;
   if (p.schema === 1) p = { ...newPermanent(), credit: p.credit ?? {}, awards: p.awards ?? {} };
+  if (p.schema === 2) p = { ...p, schema: 3, stones: {} };
   return p as PermanentRecord;
 }
 

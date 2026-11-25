@@ -98,6 +98,10 @@
       "aoks": [
        "HIS"
       ]
+     },
+     "kq": {
+      "id": "KQ-NEW-002",
+      "action": "thread"
      }
     },
     {
@@ -135,6 +139,10 @@
        "TEC",
        "HIS"
       ]
+     },
+     "kq": {
+      "id": "KQ-NEW-003",
+      "action": "forge"
      }
     },
     {
@@ -178,6 +186,10 @@
       "aoks": [
        "HIS"
       ]
+     },
+     "kq": {
+      "id": "KQ-NEW-004",
+      "action": "showdown"
      }
     },
     {
@@ -236,6 +248,10 @@
       "atl": [
        "thinking"
       ]
+     },
+     "kq": {
+      "id": "KQ-NEW-005",
+      "action": "reflection"
      }
     },
     {

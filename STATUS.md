@@ -32,6 +32,8 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 - **Side quest "The East Well"** (Emberford, CAS habits, spec 92.3): Ama Ofori's well is low. The player listens to three people first, plans a fair comparison with them, reads knotted ropes at two wells, reflects, and shows the guildmaster. The game says plainly that play is not CAS (CAS-001). 10 XP, the same on every route.
 - **Smart glossary** (spec 47.10, C1): 18 key words (claim, evidence, justification, perspective, bias, knowledge question and others) are underlined in conversations. Tapping one shows Lumen's plain explanation and, where possible, an example from the player's own play (for example their own label). A Glossary tab is in the journal. It can be turned off in Settings.
 - **Titles** (spec 47.1, C1): each award gives a title that names the deed (for example "Thread-Follower", "One Who Asks First"). The player can wear one (Journal, Awards). It shows in the top bar.
+- **Question Stones and Lumen's last word** (spec 62, KQ-003, C1): 12 chapter steps carry one of six knowledge questions (our own paraphrases, in `src/content/questions.json`). When a step is done, Lumen names the question in one sentence, and its stone gets brighter for each new way (a new place or a new kind of action, up to five). Journal tab "Question Stones". Never a quiz (KQ-001). `PERMANENT_SCHEMA` is now 3, with a migration.
+- **Campfire logs** at Waystones (C1): one optional prompt about the latest step ("What helped you…?"), saved as a private note. Never graded.
 - **Balance reminder:** every 45 minutes of active play, Lumen suggests a real break. It never blocks play.
 - **MIS-10 and MIS-11 (Indigenous knowledge) are left out on purpose.** They need Indigenous content made with community advisors (spec section 88). Do not add them with a quick signal.
 
@@ -40,7 +42,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 
 ### Tests
 
-`npm test`: 109 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
+`npm test`: 112 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
 
 ## Next steps (in order)
 
@@ -53,6 +55,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 
 ## Known limits and problems
 
+- **Toasts pile up** when one action gives many events at once (for example a label that holds: XP, award, moment, portfolio, stone). Consider merging them into one panel.
 - **Network:** this build environment could not open museum or encyclopedia websites, so no new historical sources were added after HIS-S31. New real people (for example the CAS figures) need a source that someone has opened and checked.
 
 - The Showdown panel is long on small phone screens. The log scrolls, but the layout needs a phone pass.

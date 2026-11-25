@@ -188,6 +188,8 @@ export interface Objective {
   essential: boolean;
   onComplete?: Effect[];
   weave?: Weave;
+  /** The knowledge question under this step, and how the player meets it (KQ-002, KQ-003). */
+  kq?: { id: string; action: string };
 }
 
 export interface Mission {
@@ -315,6 +317,17 @@ export interface ShowdownRecord {
 }
 
 // ---------------------------------------------------------------------------
+// Knowledge questions (spec 62): our own paraphrases, never IB wording
+// ---------------------------------------------------------------------------
+
+export interface KnowledgeQuestion {
+  id: string;                 // KQ-NEW-...
+  text: string;
+  /** Lumen's last word after a step that carries this question (one sentence). */
+  lastWord: string;
+}
+
+// ---------------------------------------------------------------------------
 // Smart glossary (spec 47.10)
 // ---------------------------------------------------------------------------
 
@@ -434,6 +447,7 @@ export interface ContentPack {
   showdowns: ShowdownRecord[];
   locks: TitleLockRecord[];
   glossary: GlossaryEntry[];
+  questions: KnowledgeQuestion[];
   threads: ThreadRecord[];
   moments: MomentRule[];
   misconceptions: MisconceptionRecord[];
@@ -446,7 +460,7 @@ export interface ContentPack {
 // ---------------------------------------------------------------------------
 
 export const CAMPAIGN_SCHEMA = 3;
-export const PERMANENT_SCHEMA = 2;
+export const PERMANENT_SCHEMA = 3;
 
 export interface ShowdownLogLine { who: 'player' | 'opponent' | 'crowd' | 'witness'; text: string; why?: string }
 
@@ -539,4 +553,6 @@ export interface PermanentRecord {
   /** Weave tags met in play (counts), for the dashboard (spec 94.2). */
   met: { concepts: Record<string, number>; atl: Record<string, number>; subjects: Record<string, number>; aoks: Record<string, number> };
   portfolio: PortfolioEntry[];
+  /** Question Stones (KQ-003): knowledge question id -> ways met ("world|action"). */
+  stones: Record<string, string[]>;
 }
