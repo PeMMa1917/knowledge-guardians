@@ -11,6 +11,7 @@ import { MIN_SOURCES, RUMOURS, currentRumour, rumourOrder } from '../src/domain/
 import { DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, townPrice } from '../src/domain/trade';
 import { DYE_KEYS, OUTFIT } from '../src/domain/appearance';
 import { approvalOf, approvalRank, isInquiry } from '../src/domain/approval';
+import { ROLES, fitsRole, roleOf } from '../src/domain/roles';
 
 const pack = buildPack();
 const done = (d: Driver, id: string) => d.run({ type: 'SetFlag', flag: `puzzle.${id}.done`, value: true });
@@ -270,5 +271,22 @@ describe('companion approval', () => {
     d.run({ type: 'ChooseDialogueOption', node: node.id, index: idx });
     expect(approvalOf(d.s.flags, 'kip-arden')).toBe(1);
     expect(approvalRank(3)).toBe('Likes how you ask');
+  });
+});
+
+describe('knower roles', () => {
+  it('each role has a strength and a blind spot, fits some real dialogue tags, and gives no XP', () => {
+    const tags = new Set(pack.dialogue.flatMap((n) => (n.options ?? []).map((o) => o.tag).filter(Boolean)) as string[]);
+    for (const r of ROLES) {
+      expect(r.strength.length).toBeGreaterThan(20);
+      expect(r.blind.length).toBeGreaterThan(20);
+      expect([...tags].some((t) => fitsRole(r, t))).toBe(true);
+    }
+    const d = new Driver();
+    const n = d.events.length;
+    d.run({ type: 'ChooseRole', role: 'maker' });
+    expect(roleOf(d.s.flags)?.name).toBe('Maker');
+    expect(d.events.slice(n).some((e) => e.kind === 'xp')).toBe(false);
+    expect(() => d.run({ type: 'ChooseRole', role: 'king' })).toThrow();
   });
 });

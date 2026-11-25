@@ -46,6 +46,7 @@ import { TRUST_RANKS, rankOf, trustOf } from '../domain/communities';
 import { RECIPES, RESOURCES, cannotCraft, resCount, type Resource } from '../domain/craft';
 import { READINGS, cannotRead, readingOf, toolOf } from '../domain/readings';
 import { approvalOf, approvalRank } from '../domain/approval';
+import { ROLES, fitsRole, roleOf } from '../domain/roles';
 import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
 import { MIN_SOURCES, RUMOURS, VERDICTS, currentRumour, sourcesChecked } from '../domain/rumours';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
@@ -815,6 +816,7 @@ export class UI implements UIApi {
       h('div', { class: 'lumen-head' }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '', class: 'lumen-big' }), h('h2', {}, 'Lumen')),
       h('p', { class: 'hint-depth' }, `Hint ${hint.hint.depth} of 4 · ${cur.title}`),
       h('p', { class: 'hint-text' }, hint.hint.text),
+      ...(roleOf(c.state.flags) ? [h('p', { class: 'fine' }, h('strong', {}, `As a ${roleOf(c.state.flags)!.name}, ask: `), roleOf(c.state.flags)!.ask, ' ', h('em', {}, `Watch your blind spot: ${roleOf(c.state.flags)!.blind}`))] : []),
       h('p', { class: 'fine' }, 'Asking for help never lowers your XP or blocks an award.'),
       h('div', { class: 'row' },
         hint.hint.depth < 4 ? h('button', { onclick: () => this.askLumen() }, 'More help') : null,
@@ -959,7 +961,8 @@ export class UI implements UIApi {
         if (r.some((e: GameEvent) => e.kind === 'error')) return;
         const next = r.nextNode as string | null;
         if (next) this.showNode(next); else this.endDialogue(o.option.open);
-      } }, h('span', { class: 'num', 'aria-hidden': 'true' }, `${i + 1}`), o.option.tag ? h('em', {}, `${o.option.tag}: `) : null, personalise(o.option.text, c.state.player))));
+      } }, h('span', { class: 'num', 'aria-hidden': 'true' }, `${i + 1}`), o.option.tag ? h('em', {}, `${o.option.tag}: `) : null, personalise(o.option.text, c.state.player),
+        fitsRole(roleOf(c.state.flags), o.option.tag) ? h('span', { class: 'role-mark', title: 'This fits your knower role' }, ` ◆ ${roleOf(c.state.flags)!.name}`) : null)));
     } else {
       optionList.append(h('button', { 'data-autofocus': true, onclick: () => { this.sfx('sfx.click'); if (n.next) this.showNode(n.next); else this.endDialogue(n.open); } }, n.next ? 'Continue ▸' : 'Close'));
     }
@@ -2216,6 +2219,7 @@ export class UI implements UIApi {
         } }, 'Rest and go on'),
         h('button', { onclick: () => this.openBreathing() }, 'Sit a while'),
         h('button', { onclick: () => this.openTalents(true) }, 'Insight tree'),
+        h('button', { onclick: () => this.openRoles(true) }, 'Knower role'),
         h('button', { onclick: () => { c.suspend('Save and leave'); this.closeModal(false); (window as any).kgToTitle?.(); } }, 'Save and leave')));
   }
 
@@ -2433,6 +2437,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openDive() }, 'The Deep Dive (daily)'),
         h('button', { onclick: () => this.openTown() }, 'Communities of Emberford'),
         h('button', { onclick: () => this.openTalents() }, 'Insight tree'),
+        h('button', { onclick: () => this.openRoles() }, 'Knower role'),
         h('button', { onclick: () => this.openLedger() }, "The Guardian's Ledger (progress)"),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
@@ -2702,6 +2707,27 @@ export class UI implements UIApi {
   }
 
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
+  /** Knower roles: one way of knowing, with a strength and a blind spot. First choice anywhere; change at a Waystone. */
+  openRoles(atWaystone = false): void {
+    const c = ctx.controller;
+    const box = this.openModal('talents-panel wide', 'Knower role');
+    this.sfx('sfx.page');
+    const render = (note?: string) => {
+      const cur = roleOf(c.state.flags);
+      const canPick = !cur || atWaystone;
+      box.replaceChildren(this.closeBtn(), h('h2', {}, 'Knower role'),
+        h('p', {}, 'Every knower has a way of knowing that comes easily, and a blind spot. Choose a role: it marks the dialogue options that fit it (◆), and Lumen\'s hints add its question and its blind spot. It never gives XP and never hides an option. You can try every role: change it at any Waystone.'),
+        ...(note ? [h('p', { class: 'clue-view fresh', role: 'status' }, note)] : []),
+        h('div', { class: 'shop-grid' }, ...ROLES.map((r) => h('div', { class: `ware ${cur?.id === r.id ? 'owned' : ''}` },
+          h('strong', {}, r.name), h('p', { class: 'fine' }, `Like ${r.like}`),
+          h('p', {}, h('strong', {}, 'Strength: '), r.strength), h('p', {}, h('strong', {}, 'Blind spot: '), r.blind),
+          cur?.id === r.id ? h('span', { class: 'fine' }, 'Your role now.')
+            : h('button', { type: 'button', disabled: !canPick, onclick: () => { c.dispatch({ type: 'ChooseRole', role: r.id }); this.sfx('sfx.sparkle'); render(`You are a ${r.name} now. Look for ◆ in conversations.`); } }, canPick ? 'Take this role' : 'Change at a Waystone')))),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    render();
+  }
+
   openTalents(atWaystone = false): void {
     const c = ctx.controller;
     const box = this.openModal('talents-panel wide', 'Insight tree');

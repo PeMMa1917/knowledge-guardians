@@ -11,6 +11,7 @@ import { cannotRead, readingOf } from './readings';
 import { MIN_SOURCES, RUMOURS, rumourDone, sourcesChecked } from './rumours';
 import { BARTER, DYES, FAIR_PRICE, ferryPrice } from './trade';
 import { approvalOf, approvalRank, isInquiry } from './approval';
+import { ROLES } from './roles';
 import type {
   AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
@@ -68,6 +69,7 @@ export type Command =
   | { type: 'BuyDye'; dye: string }
   | { type: 'Barter'; resource: string; dir: 'buy' | 'sell' }
   | { type: 'FairPrice'; choice: number }
+  | { type: 'ChooseRole'; role: string }
   | { type: 'JudgeRumour'; rumour: string; verdict: number }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
@@ -417,6 +419,11 @@ export class Engine {
           if (!o) throw new Error('Choose an answer');
           s = apply([{ setFlag: 'trade.fair.asked', value: true }, ...(o.ok ? [{ setFlag: 'trade.fair.ok', value: true } as Effect] : [])], s, out);
           events.push({ kind: 'fairprice', ok: o.ok, why: o.why });
+          break;
+        }
+        case 'ChooseRole': {
+          if (!ROLES.some((r) => r.id === cmd.role)) throw new Error('Unknown role');
+          s = apply([{ setFlag: 'role', value: cmd.role }], s, out);
           break;
         }
         case 'LearnTalent': {

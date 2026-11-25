@@ -1825,6 +1825,14 @@
    "line": "I used to think a good mapmaker knows every road. Now I think a good mapmaker asks, 'Who walked this road, and when?' I got that from you."
   },
   {
+   "id": "kip.role",
+   "character": "kip-arden",
+   "if": {
+    "flagSet": "role"
+   },
+   "line": "A knower role! I would be a Questioner, obviously. But Hesper says that is exactly why I should try being a Maker for a week."
+  },
+  {
    "id": "kip.letter",
    "character": "kip-arden",
    "if": {

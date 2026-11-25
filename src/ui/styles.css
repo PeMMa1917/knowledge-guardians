@@ -826,6 +826,7 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .ware.owned { border-color: #5fbf7a; }
 .ware p { margin: 0.2rem 0; }
 .dye-dot { display: inline-block; width: 0.9rem; height: 0.9rem; border-radius: 50%; vertical-align: -0.1rem; border: 1px solid var(--gold-dim); }
+.role-mark { color: var(--gold); font-size: 0.85em; white-space: nowrap; }
 .label-hype { font-style: italic; font-weight: 600; color: #ffad5c; }
 .label-honest { color: var(--ink); }
 .talent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.6rem; }
