@@ -240,3 +240,8 @@ All three are in `src/content/story.json` (made by a generator script; edit the 
 - **Clue:** `id`, `name`, `text` (plain view), `views` (each `keepsake`, `text`, optional `effects`), `study: true` for study objects. A view gives another perspective or opens a pathway (set a `study.*` flag). Place it on the study map as an interactable of kind `clue` with art `clue.<id>` (draw it in `src/ui/illustrations.ts`).
 - **Keepsake talk:** `id`, `character`, `keepsake`, `text` (the option), `node` (a dialogue node in the same file), optional `if`. It shows once, on the character's first node.
 - Keep the old Guardian's story fictional. Do not add real historical facts here without a source.
+
+## Add a tool recipe or a field reading (crafting)
+
+- **Recipe:** in `src/domain/craft.ts` (`RECIPES`): `id`, `name`, `item` (add the item to `story.json`), `cost` (ore, clay, reed), `use`, and one calibration question with three options. Each option has `ok` and `why`; exactly one is a good method, and every `why` explains itself.
+- **Field reading:** in `src/domain/readings.ts` (`READINGS`): `tool` (a recipe id), `place`, `claim` (what someone says), `result` (what the calibrated tool shows), `q` and three options, as above. Place it on a map as an interactable of kind `reading` with `reading: '<id>'`. Every recipe must have at least one placed reading (a test checks this). A reading tests a claim; it never makes the person who made the claim a liar or a fool.

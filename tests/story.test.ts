@@ -5,6 +5,8 @@ import { MAPS } from '../src/maps';
 import { LETTER_IF } from '../src/maps/study';
 import type { Condition } from '../src/domain/types';
 import { Driver } from './driver';
+import { READINGS } from '../src/domain/readings';
+import { RECIPES } from '../src/domain/craft';
 
 const pack = buildPack();
 const done = (d: Driver, id: string) => d.run({ type: 'SetFlag', flag: `puzzle.${id}.done`, value: true });
@@ -171,5 +173,30 @@ describe('gathering and crafting', () => {
     expect(d.s.flags['craft.rain-gauge.calibrated']).toBe(true);
     d.run({ type: 'Calibrate', recipe: 'rain-gauge', choice: 0 }); // a calibrated tool stays calibrated
     expect(d.s.flags['craft.rain-gauge.calibrated']).toBe(true);
+  });
+
+  it('a made tool tests a claim in town, but only once it is calibrated', () => {
+    const d = new Driver();
+    expect(() => d.run({ type: 'TakeReading', reading: 'rain', choice: 1 })).toThrow(/Maker's bench/);
+    d.run({ type: 'Gather', node: 'f.clay', resource: 'clay', day: '2026-11-25' });
+    d.run({ type: 'Gather', node: 'f.reed', resource: 'reed', day: '2026-11-25' });
+    d.run({ type: 'Craft', recipe: 'rain-gauge', choice: 0 });
+    expect(() => d.run({ type: 'TakeReading', reading: 'rain', choice: 1 })).toThrow(/not calibrated/);
+    d.run({ type: 'Calibrate', recipe: 'rain-gauge', choice: 2 });
+    const marks = d.s.marks;
+    d.run({ type: 'TakeReading', reading: 'rain', choice: 0 });
+    expect(d.events.find((e) => e.kind === 'reading')).toMatchObject({ ok: false, first: true });
+    expect(d.s.marks).toBe(marks + 4);
+    d.run({ type: 'TakeReading', reading: 'rain', choice: 1 }); // think again: no second reward
+    expect(d.s.marks).toBe(marks + 4);
+    expect(d.s.flags['count.readings']).toBe(1);
+    // Every reading has one well-reasoned answer, explained; every tool has a placed reading.
+    for (const r of READINGS) {
+      expect(r.options.filter((o) => o.ok)).toHaveLength(1);
+      for (const o of r.options) expect(o.why.length).toBeGreaterThan(20);
+      const spot = Object.values(MAPS).flatMap((m) => m.interactables).find((i) => i.kind === 'reading' && i.reading === r.id);
+      expect(spot).toBeDefined();
+    }
+    for (const t of RECIPES) expect(READINGS.some((r) => r.tool === t.id)).toBe(true);
   });
 });

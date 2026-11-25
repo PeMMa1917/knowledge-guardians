@@ -95,6 +95,14 @@
      },
      "pts": 1,
      "why": "You asked Oduya about Elsbet's sources."
+    },
+    {
+     "if": {
+      "flag": "reading.flood-post",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You copied the flood post and kept your guess apart from it."
     }
    ]
   },
@@ -172,6 +180,14 @@
      },
      "pts": 1,
      "why": "You gave the carter's pot back."
+    },
+    {
+     "if": {
+      "flag": "reading.rain",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You measured the rain before you repeated a worry."
     }
    ]
   },
@@ -222,6 +238,14 @@
      },
      "pts": 1,
      "why": "You measured the echo and found your own error."
+    },
+    {
+     "if": {
+      "flag": "reading.tower",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You checked the bell tower with your own plumb line."
     }
    ]
   },
@@ -1722,6 +1746,15 @@
     ]
    },
    "line": "People here trust you more now. Not because you agree with them. Because you listen first, then check."
+  },
+  {
+   "id": "kip.reading",
+   "character": "kip-arden",
+   "if": {
+    "num": "count.readings",
+    "gte": 1
+   },
+   "line": "You measured it yourself! Now when someone says 'everyone knows', we can say 'we checked'. Politely."
   },
   {
    "id": "kip.letter",

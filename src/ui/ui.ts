@@ -44,6 +44,7 @@ import { clear, h, trapFocus } from './dom';
 import { dealTiles, isPair, speedRank, tileRank, type Tile } from '../domain/tiles';
 import { TRUST_RANKS, rankOf, trustOf } from '../domain/communities';
 import { RECIPES, RESOURCES, cannotCraft, resCount, type Resource } from '../domain/craft';
+import { READINGS, cannotRead, readingOf, toolOf } from '../domain/readings';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
 import { WARES, honestLabels, lockedOption, owns, priceFor } from '../domain/shop';
 import { calendarGrid, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
@@ -2701,6 +2702,42 @@ export class UI implements UIApi {
         h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
     };
     render();
+  }
+
+  /** A field reading: a made, calibrated tool tests a claim someone in town makes. */
+  openReading(id: string): void {
+    const c = ctx.controller;
+    const r = readingOf(id);
+    if (!r) return;
+    const t = toolOf(r);
+    const box = this.openModal('bench-panel wide', r.place);
+    this.sfx('sfx.page');
+    const head = [this.closeBtn(), h('h2', {}, r.place), h('p', { class: 'clue-view' }, r.claim)];
+    const blocked = cannotRead(c.state, id);
+    if (blocked) {
+      box.replaceChildren(...head, h('p', {}, blocked),
+        h('p', { class: 'fine' }, `${t.name}: ${t.use}`),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+      return;
+    }
+    const done = Number(c.state.flags['count.readings'] ?? 0);
+    box.replaceChildren(...head,
+      h('p', {}, h('strong', {}, `Your ${t.name.toLowerCase()}: `), r.result),
+      h('p', {}, h('strong', {}, r.q)),
+      h('div', { class: 'notice-options' }, ...r.options.map((o, i) => h('button', { type: 'button', onclick: () => {
+        const ev = c.dispatch({ type: 'TakeReading', reading: id, choice: i });
+        const res = ev.find((e) => e.kind === 'reading') as Extract<GameEvent, { kind: 'reading' }> | undefined;
+        if (!res) return;
+        this.sfx(res.ok ? 'sfx.sparkle' : 'sfx.page');
+        const n = Number(c.state.flags['count.readings'] ?? 0);
+        box.replaceChildren(...head,
+          h('p', { class: 'clue-view fresh' }, res.why),
+          ...(res.first ? [h('p', { class: 'fine', role: 'status' }, `Reading recorded (+4 marks). Field readings: ${n} of ${READINGS.length}.`)] : []),
+          h('div', { class: 'row' },
+            res.ok ? null : h('button', { type: 'button', onclick: () => this.openReading(id) }, 'Think again'),
+            h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+      } }, o.text))),
+      h('p', { class: 'fine' }, `Field readings taken: ${done} of ${READINGS.length}. A reading is evidence; what it shows is your call, and you explain it.`));
   }
 
   /** Sefa's Word Tiles: match each TOK word with its meaning. Scores for moves and time; no XP. */

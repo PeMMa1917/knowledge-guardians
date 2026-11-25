@@ -3,7 +3,7 @@
  * characters, interactable objects, zones and lights. Units are tiles.
  * The WorldScene turns this data into a playable place.
  */
-export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door' | 'secret' | 'tiles' | 'shop' | 'gather' | 'workbench';
+export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door' | 'secret' | 'tiles' | 'shop' | 'gather' | 'workbench' | 'reading';
 
 export interface Interactable {
   id: string;
@@ -36,6 +36,8 @@ export interface Interactable {
   secret?: string;
   /** For kind 'gather': what the player can gather here (ore, clay, reed). */
   resource?: 'ore' | 'clay' | 'reed';
+  /** For kind 'reading': the field reading taken here with a made tool (src/domain/readings.ts). */
+  reading?: string;
   /** For kind 'door': where it leads, when it opens (else `text` is shown). */
   to?: { map: string; x: number; y: number };
   openIf?: import('../domain/types').Condition;

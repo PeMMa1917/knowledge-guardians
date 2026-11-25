@@ -135,6 +135,10 @@ export const EMBERFORD: MapDef = {
     { id: 'ore-vein', kind: 'gather', resource: 'ore', x: 0, y: 11, w: 1, h: 1, label: 'the rusty ore vein (gather)', art: 'ore-vein' },
     { id: 'reeds-bridge', kind: 'gather', resource: 'reed', x: 30, y: 23, w: 1, h: 1, label: 'the reeds by the bridge (gather)', art: 'reeds' },
     { id: 'makers-bench', kind: 'workbench', x: 9, y: 19, w: 1, h: 1, label: "the Maker's bench (make tools)", art: 'workbench' },
+    // Field readings: a made, calibrated tool tests a claim (src/domain/readings.ts).
+    { id: 'reading-rain', kind: 'reading', reading: 'rain', x: 35, y: 17, w: 1, h: 1, label: "the rain stake by Noa's board (take a reading)", art: 'rain-stake' },
+    { id: 'reading-tower', kind: 'reading', reading: 'tower', x: 22, y: 6, w: 1, h: 1, label: 'the bell tower door frame (take a reading)', art: 'plumb-mark' },
+    { id: 'reading-flood', kind: 'reading', reading: 'flood-post', x: 32, y: 21, w: 1, h: 1, label: 'the old flood post (copy it)', art: 'flood-post' },
     { id: 'word-tiles', kind: 'tiles', x: 12, y: 15, w: 1, h: 1, label: "Sefa's word tiles (a memory game)", art: 'tile-table' },
     // Secrets (Easter eggs): no art, found by searching. Lore in story.json, Journal > Lore.
     { id: 'secret-ember-myth', kind: 'secret', secret: 'ember-myth', x: 7, y: 9, w: 1, h: 1, label: 'a loose brick in the smithy wall' },

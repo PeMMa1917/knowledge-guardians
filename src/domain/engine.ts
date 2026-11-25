@@ -7,6 +7,7 @@ import { trustOf, rankOf } from './communities';
 import { WARES, priceFor } from './shop';
 import { TALENTS, cannotLearn, hasTalent } from './talents';
 import { GATHER_YIELD, RECIPES, RESOURCES, cannotCraft } from './craft';
+import { cannotRead, readingOf } from './readings';
 import type {
   AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
@@ -59,6 +60,7 @@ export type Command =
   | { type: 'Gather'; node: string; resource: string; day: string }
   | { type: 'Craft'; recipe: string; choice: number }
   | { type: 'Calibrate'; recipe: string; choice: number }
+  | { type: 'TakeReading'; reading: string; choice: number }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
@@ -126,6 +128,7 @@ export type GameEvent =
   | { kind: 'lamp'; id: string; name: string; lit: string; count: number; total: number }
   | { kind: 'clue'; clue: string; keepsake: string; text: string }
   | { kind: 'craft'; recipe: string; ok: boolean; why: string }
+  | { kind: 'reading'; reading: string; ok: boolean; why: string; first: boolean }
   | { kind: 'trust'; id: string; name: string; rank: string }
   | { kind: 'secret'; id: string; name: string; found: number; total: number }
   | { kind: 'error'; message: string };
@@ -330,6 +333,17 @@ export class Engine {
           } else if (!s.inventory[r.item]) throw new Error('Make the tool first');
           s = apply(fx, s, out);
           events.push({ kind: 'craft', recipe: r.id, ok: o.ok, why: o.why });
+          break;
+        }
+        case 'TakeReading': {
+          const why = cannotRead(s, cmd.reading);
+          if (why) throw new Error(why);
+          const r = readingOf(cmd.reading)!;
+          const o = r.options[cmd.choice];
+          if (!o) throw new Error('Choose an answer');
+          const first = s.flags[`reading.${r.id}`] !== true;
+          if (first) s = apply([{ setFlag: `reading.${r.id}`, value: true }, { addNum: 'count.readings', by: 1 }, { addMarks: 4 }], s, out);
+          events.push({ kind: 'reading', reading: r.id, ok: o.ok, why: o.why, first });
           break;
         }
         case 'LearnTalent': {
