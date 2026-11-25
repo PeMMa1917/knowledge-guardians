@@ -1,0 +1,52 @@
+{
+  "sources": [
+    {
+      "id": "HIS-S11",
+      "title": "US Patent 392,046 (US392046A), John J. Loud, granted 30 October 1888",
+      "url": "https://patents.google.com/patent/US392046A/en",
+      "locator": "Patent specification and drawing",
+      "supports": "Loud's documented design (a reservoir pen with a rotating marking point for rough surfaces) and the grant date.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "HIS-S12",
+      "title": "German Patent and Trademark Office (DPMA): Ballpoint pen",
+      "url": "https://www.dpma.de/en/explore/milestones/inventions-that-made-history/ballpoint-pen",
+      "locator": "Ink-development history",
+      "supports": "Loud's patent is distinct from László Bíró's later development of a practical writing instrument and suitable ink, with his chemist brother György and others.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "HIS-S13",
+      "title": "Science Museum Group: Biro ballpoint pen, object 1949-174/2",
+      "url": "https://collection.sciencemuseumgroup.org.uk/objects/co8057178/biro-ballpoint-pen",
+      "locator": "Object record, date and makers; Rights section",
+      "supports": "A particular surviving Biro pen dated 1945–1948; the record names László József Bíró and his brother Georg. Image rights are asset-specific.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "HIS-S14",
+      "title": "The Metropolitan Museum of Art: Techniques of Decoration on Arms and Armor (2003)",
+      "url": "https://www.metmuseum.org/essays/techniques-of-decoration-on-arms-and-armor",
+      "locator": "Pattern-welding section",
+      "supports": "Pattern welding (joining and working different iron or steel components) is distinct from crucible or watered-steel production.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "HIS-S15",
+      "title": "Verhoeven, Pendray and Dauksch, 'The key role of impurities in ancient Damascus steel blades', JOM 50(9), 1998, pp. 58–64",
+      "url": "https://www.tf.uni-kiel.de/matwis/amat/def_en/articles/key_role_impurities/key_role.html",
+      "locator": "Introduction and terminology",
+      "supports": "The study uses both 'pattern-welded Damascus' and 'wootz Damascus', so 'Damascus' alone is not one material recipe.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "HIS-S16",
+      "title": "The Metropolitan Museum of Art: Ten Wootz Steel Ingots with Bag, accession 2023.133a–k",
+      "url": "https://www.metmuseum.org/art/collection/search/894714",
+      "locator": "Object record metadata",
+      "supports": "Specific object metadata: Indian, probably eighteenth century. The qualifier 'probably' stays visible.",
+      "accessed": "2026-11-20"
+    }
+  ]
+}

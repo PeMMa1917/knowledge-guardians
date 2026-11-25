@@ -1,0 +1,235 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH1-M01",
+      "world": "WORLD-01",
+      "title": "Three Firsts",
+      "knowledgeQuestion": "When people disagree about who was 'first', how can we find out what each claim is really about?",
+      "objectives": [
+        { "id": "m01.o1.report", "title": "Walk to Warden Ise and talk (E, Space or click).", "essential": true,
+          "done": { "flag": "talked.ise", "eq": true } },
+        { "id": "m01.o2.inspect", "title": "Inspect the three exhibits that are each labelled 'The first ballpoint pen'.", "essential": true,
+          "visible": { "objective": "m01.o1.report" },
+          "done": { "num": "count.inspected", "gte": 3 },
+          "onComplete": [ { "journal": "j.m01.three" } ] },
+        { "id": "m01.o3.views", "title": "Hear two views: Curator Dace and Clerk Venn.", "essential": true,
+          "visible": { "objective": "m01.o1.report" },
+          "done": { "all": [ { "flag": "heard.dace", "eq": true }, { "flag": "heard.venn", "eq": true } ] } },
+        { "id": "m01.o4.lens", "title": "Use the Date-Kind Lens on at least two exhibits (open an exhibit, then press 'Use lens').", "essential": true,
+          "visible": { "objective": "m01.o1.report" },
+          "done": { "num": "count.lens", "gte": 2 } },
+        { "id": "m01.o5.test", "title": "Run a fair marking test at the workshop bench: change one thing at a time.", "essential": true,
+          "visible": { "objective": "m01.o1.report" },
+          "done": { "num": "sim.fair", "gte": 1 },
+          "onComplete": [ { "addCard": "card.marking-test" }, { "journal": "j.m01.test" } ] },
+        { "id": "m01.o6.board", "title": "Attach evidence to claims on the evidence board (press B, or use the board on the wall).", "essential": true,
+          "visible": { "objective": "m01.o2.inspect" },
+          "done": { "boardLinks": 2 } },
+        { "id": "m01.o7.label", "title": "Talk to Curator Dace and decide the new display label.", "essential": true,
+          "visible": { "all": [ { "objective": "m01.o2.inspect" }, { "objective": "m01.o3.views" } ] },
+          "done": { "flagSet": "label.choice" } },
+        { "id": "m01.o8.portal", "title": "Step onto the portal at the north of the hall. Your field mission waits in Aethelgard.", "essential": true,
+          "visible": { "objective": "m01.o7.label" },
+          "done": { "flag": "reached.portal", "eq": true },
+          "onComplete": [ { "giveItem": "tool.annotation-pen" }, { "companion": "kip-arden" }, { "journal": "j.m01.done" }, { "checkpoint": "Recruitment complete" } ] }
+      ]
+    }
+  ],
+  "cards": [
+    { "id": "card.loud-patent", "title": "Loud's patent, 1888", "claimKind": "observation", "historicalLabel": "documented", "sources": ["HIS-S11"],
+      "text": "US Patent 392,046 was granted to John J. Loud on 30 October 1888. It describes a reservoir pen with a rotating marking point, intended particularly for rough surfaces.",
+      "limits": "A patent records a design and a claim. It does not show how well the pen worked, whether it sold, or that nobody else had a similar idea.",
+      "bears": { "claim.loud-first": "supports", "claim.model-proves": "qualifies" } },
+    { "id": "card.dpma-history", "title": "Patent office history", "claimKind": "interpretation", "historicalLabel": "scholarly-interpretation", "sources": ["HIS-S12"],
+      "text": "The German Patent and Trademark Office separates Loud's patent from László Bíró's later work on a practical writing instrument and a suitable ink. Bíró did this work with his chemist brother György and others.",
+      "limits": "This is a short institutional history. It does not give every date or name every person who contributed.",
+      "bears": { "claim.biro-practical": "supports", "claim.loud-first": "qualifies", "claim.one-inventor": "challenges" } },
+    { "id": "card.biro-object", "title": "Biro pen, 1945–1948", "claimKind": "observation", "historicalLabel": "documented", "sources": ["HIS-S13"],
+      "text": "Science Museum Group object 1949-174/2 is a Biro ballpoint pen dated 1945–1948. Its record names László József Bíró and his brother Georg.",
+      "limits": "This is one surviving pen, made decades after Loud's patent. 'József' is part of László's own name, not his brother's name in this record.",
+      "bears": { "claim.biro-practical": "supports", "claim.one-inventor": "challenges" } },
+    { "id": "card.loud-model", "title": "Workshop model", "claimKind": "interpretation", "historicalLabel": "reconstruction", "sources": [],
+      "text": "The Nexus workshop built this model this year from the 1888 patent drawing. Its materials are modern.",
+      "limits": "A reconstruction shows one way the drawing could work. It is not Loud's pen, and how it behaves is not historical evidence.",
+      "bears": { "claim.model-proves": "qualifies" } },
+    { "id": "card.marking-test", "title": "Marking test results", "claimKind": "simulation", "historicalLabel": "reconstruction", "sources": [],
+      "text": "In the controlled test, the model of Loud's design marked rough leather and wood better than paper. The Bíró-type model marked paper best.",
+      "limits": "These results follow the game's model assumptions. They are not measurements of historical pens.",
+      "bears": { "claim.model-proves": "qualifies", "claim.biro-practical": "qualifies" } }
+  ],
+  "claims": [
+    { "id": "claim.loud-first", "mission": "KG-CH1-M01", "claimKind": "interpretation", "text": "Loud's 1888 patent is the earliest ballpoint design in this display." },
+    { "id": "claim.biro-practical", "mission": "KG-CH1-M01", "claimKind": "interpretation", "text": "The Bíró work produced a practical pen for everyday writing on paper." },
+    { "id": "claim.model-proves", "mission": "KG-CH1-M01", "claimKind": "interpretation", "text": "The workshop model proves that Loud's pen wrote well in 1888." },
+    { "id": "claim.one-inventor", "mission": "KG-CH1-M01", "claimKind": "interpretation", "text": "One person alone invented the ballpoint pen." }
+  ],
+  "exhibits": [
+    { "id": "OBJ-001-A", "name": "Patent drawing: US 392,046 (J. J. Loud)", "art": "exhibit.patent", "historicalLabel": "documented",
+      "dateText": "Granted 30 October 1888", "dateKind": "A PATENT GRANT DATE: the day the patent was granted. It is not the day a pen was made, tested or sold.",
+      "summary": "A copy of the drawing from John J. Loud's US patent 392,046. The patent describes a reservoir pen with a rotating marking point, intended particularly for rough surfaces.",
+      "sources": ["HIS-S11"], "grantsCard": "card.loud-patent",
+      "altText": "A pale paper sheet with a fine line drawing of a pen with a ball at its tip, and handwritten patent text." },
+    { "id": "OBJ-001-B", "name": "Workshop model of Loud's design", "art": "exhibit.model", "historicalLabel": "reconstruction",
+      "dateText": "Built this year in the Nexus workshop", "dateKind": "A BUILD DATE of a modern model. It tells you nothing about 1888.",
+      "summary": "A working model made by Nexus technicians from the patent drawing. It is a reconstruction with modern materials, not a historical object.",
+      "sources": [], "grantsCard": "card.loud-model",
+      "altText": "A thick brass and wood pen on a stand, with a large metal ball at its tip." },
+    { "id": "OBJ-001-C", "name": "Biro pen (record of Science Museum Group object 1949-174/2)", "art": "exhibit.biro", "historicalLabel": "documented",
+      "dateText": "Dated 1945–1948 (museum record)", "dateKind": "AN OBJECT DATE RANGE from a museum record: when this particular pen was made, given as a range of years. It is not the date of an idea or a patent.",
+      "summary": "The real pen is in the Science Museum Group collection. The Nexus shows a projection of its record. The record names László József Bíró and his brother Georg.",
+      "sources": ["HIS-S13"], "grantsCard": "card.biro-object",
+      "altText": "A slim pen with a dark body and a metal tip, shown as a soft glowing projection." }
+  ],
+  "journal": [
+    { "id": "j.m01.start", "text": "Recruited to the Knowledge Guardians. First task: three exhibits in the archive hall all say 'The first ballpoint pen'. They cannot all be first in the same way.", "claimKind": "observation" },
+    { "id": "j.m01.three", "text": "The three exhibits are a patent drawing (1888), a modern workshop model, and the record of a Biro pen dated 1945–1948.", "claimKind": "observation" },
+    { "id": "j.m01.dace", "text": "Curator Dace wants a short label that visitors understand. She thinks the pen people actually use matters most.", "claimKind": "value" },
+    { "id": "j.m01.venn", "text": "Clerk Venn thinks 'first' should mean the first documented claim. For him, the 1888 patent comes first.", "claimKind": "value" },
+    { "id": "j.m01.kip", "text": "Kip's idea: before asking WHO was first, ask: first AT WHAT? A patent, a working pen, or a pen people could buy?", "claimKind": "interpretation" },
+    { "id": "j.m01.test", "text": "Marking test (simulation): the Loud-type model suited rough surfaces; the Bíró-type model suited paper. These are model assumptions, not historical measurements.", "claimKind": "simulation" },
+    { "id": "j.m01.label.patent", "text": "I wrote the label around the first documented patent: Loud, 1888.", "claimKind": "value" },
+    { "id": "j.m01.label.practical", "text": "I wrote the label around the first practical writing pen: the Bíró brothers and their collaborators.", "claimKind": "value" },
+    { "id": "j.m01.label.timeline", "text": "I replaced 'first' with a short timeline: patent 1888, a modern model, and a pen dated 1945–1948.", "claimKind": "value" },
+    { "id": "j.m01.label.question", "text": "I replaced the label with a question for visitors: 'First at what?'", "claimKind": "value" },
+    { "id": "j.m01.done", "text": "Recruitment complete. Warden Ise gave me the Field Annotation Pen. Next: a field mission in Aethelgard.", "claimKind": "observation" }
+  ],
+  "dialogue": [
+    { "id": "ise.start", "speaker": "warden-ise", "text": "There you are, recruit. Welcome to the Nexus. You are a Knowledge Guardian from today. No test to pass first.",
+      "next": "ise.start2" },
+    { "id": "ise.start2", "speaker": "warden-ise", "text": "We have a small mess for you. A delivery came in last night with three exhibits. All three labels say 'The first ballpoint pen'. The delivery record is incomplete.",
+      "options": [
+        { "text": "How can all three be first?", "next": "ise.start3" },
+        { "text": "What do you want me to do?", "next": "ise.start3" }
+      ] },
+    { "id": "ise.start3", "speaker": "warden-ise", "text": "That is the question. Look at each exhibit. Talk to Curator Dace and Clerk Venn. They disagree, and both have reasons. Take this journal, this lens and some marks for the road.",
+      "effects": [ { "setFlag": "talked.ise", "value": true }, { "giveItem": "item.journal" }, { "giveItem": "tool.date-lens" }, { "addMarks": 30 }, { "journal": "j.m01.start" } ],
+      "next": "ise.start4" },
+    { "id": "ise.start4", "speaker": "lumen", "text": "Hello! I'm Lumen. I help when you ask. Press H, or the lantern button, for a hint. I will not give you the 'right' opinion. I don't have one.",
+      "next": null },
+    { "id": "ise.again", "speaker": "warden-ise", "text": "Three exhibits, two colleagues, one label to write. Take your time. Nothing here is a trick question.",
+      "options": [
+        { "text": "What does the Date-Kind Lens do?", "next": "ise.lens" },
+        { "text": "I'll keep looking.", "next": null }
+      ] },
+    { "id": "ise.lens", "speaker": "warden-ise", "text": "Every date answers a question. 'When was it granted?' is a different question from 'When was it made?' The lens shows you which question a date answers.",
+      "next": null },
+    { "id": "ise.portal", "speaker": "warden-ise", "text": "Good work on the label. Whatever you chose, you can explain why. The portal at the north of the hall is open. Kip will go with you to Aethelgard.",
+      "effects": [ { "companion": "kip-arden" } ],
+      "next": null },
+    { "id": "ise.after", "speaker": "warden-ise", "text": "Back already? The portal still leads to Emberford in Aethelgard.", "next": null },
+
+    { "id": "dace.start", "speaker": "curator-dace", "text": "Visitors read a label for about five seconds. If it says three things, they remember none of them.",
+      "effects": [ { "setFlag": "heard.dace", "value": true }, { "journal": "j.m01.dace" }, { "relation": "curator-dace", "by": 0 } ],
+      "options": [
+        { "text": "Why do you favour the Bíró pen?", "tag": "Ask for reasons", "next": "dace.why" },
+        { "text": "Which source supports that?", "tag": "Ask for a source", "next": "dace.source" },
+        { "text": "I understand the problem with long labels.", "tag": "Acknowledge a concern", "effects": [ { "relation": "curator-dace", "by": 1 } ], "next": "dace.ack" }
+      ] },
+    { "id": "dace.why", "speaker": "curator-dace", "text": "Because the pen people actually write with is the story they care about. A patent that nobody used is a footnote. That is my view, not a fact. Venn disagrees.",
+      "claimKind": "value", "next": null },
+    { "id": "dace.source", "speaker": "curator-dace", "text": "Look at the museum record for the Biro pen. It names the makers and the dates. The record supports what the object is. Whether it is the 'first' is my judgement.",
+      "claimKind": "interpretation", "next": null },
+    { "id": "dace.ack", "speaker": "curator-dace", "text": "Thank you. When you have looked at all three and heard Venn, come back. You will write the new label.", "next": null },
+    { "id": "dace.again", "speaker": "curator-dace", "text": "Have you looked at all three exhibits and heard Clerk Venn? Then we can write the label.", "next": null },
+
+    { "id": "dace.label", "speaker": "curator-dace", "text": "Right. The old label must go. What should the new one say? Choose the one you can defend.",
+      "options": [
+        { "text": "Label A: 'First documented ballpoint patent: John J. Loud, US 392,046, granted 1888.'", "tag": "Criterion: first patent",
+          "effects": [ { "setFlag": "label.choice", "value": "patent" }, { "relation": "clerk-venn", "by": 2 }, { "relation": "curator-dace", "by": -1 }, { "giveItem": "item.registry-letter" }, { "journal": "j.m01.label.patent" } ],
+          "next": "dace.label.patent" },
+        { "text": "Label B: 'A practical writing pen and ink: developed by László Bíró with his brother György and others. This pen: 1945–1948.'", "tag": "Criterion: practical pen",
+          "effects": [ { "setFlag": "label.choice", "value": "practical" }, { "relation": "curator-dace", "by": 2 }, { "relation": "clerk-venn", "by": -1 }, { "giveItem": "item.catalogue-extract" }, { "journal": "j.m01.label.practical" } ],
+          "next": "dace.label.practical" },
+        { "text": "Label C: 'Three firsts: a patent (1888), a modern model of it (this year), and a pen made 1945–1948.'", "tag": "Replace 'first' with a timeline",
+          "effects": [ { "setFlag": "label.choice", "value": "timeline" }, { "relation": "curator-dace", "by": 1 }, { "relation": "clerk-venn", "by": 1 }, { "giveItem": "item.timeline-card" }, { "journal": "j.m01.label.timeline" } ],
+          "next": "dace.label.timeline" },
+        { "text": "Label D: 'First at what? Compare a patent, a model and a working pen. You decide.'", "tag": "Ask visitors a question",
+          "if": { "flag": "kip.idea", "eq": true },
+          "effects": [ { "setFlag": "label.choice", "value": "question" }, { "relation": "kip-arden", "by": 2 }, { "giveItem": "item.question-card" }, { "journal": "j.m01.label.question" } ],
+          "next": "dace.label.question" }
+      ] },
+    { "id": "dace.label.patent", "speaker": "curator-dace", "text": "Accurate, and well sourced. It protects the documented record. It also leaves visitors who know the word 'biro' a little puzzled. Venn will be pleased. He asked me to give you this letter.",
+      "next": null },
+    { "id": "dace.label.practical", "speaker": "curator-dace", "text": "Clear for visitors, and it names the collaborators. It puts the 1888 patent in the background, and Venn will say so. Here, take my catalogue extract on steel. You may need it in the field.",
+      "next": null },
+    { "id": "dace.label.timeline", "speaker": "curator-dace", "text": "Longer than I like, but every part says what kind of 'first' it is. Visitors will need a few more seconds. Take a copy of the card. Makers like labels that say who did what, and when.",
+      "next": null },
+    { "id": "dace.label.question", "speaker": "curator-dace", "text": "A question instead of an answer. Some visitors will love it. Some will want to be told. We will see. Kip helped with this one, I think.",
+      "next": null },
+    { "id": "dace.after", "speaker": "curator-dace", "text": "The new label is up. People are already arguing about it, which is not the worst thing.", "next": null },
+
+    { "id": "venn.start", "speaker": "clerk-venn", "text": "'First' should mean something you can check. Loud's patent was granted on 30 October 1888. That is a public, dated record.",
+      "effects": [ { "setFlag": "heard.venn", "value": true }, { "journal": "j.m01.venn" }, { "addCard": "card.dpma-history" } ],
+      "options": [
+        { "text": "Does a patent prove that the pen worked?", "tag": "Ask about limits", "next": "venn.limits" },
+        { "text": "What about Bíró?", "next": "venn.biro" },
+        { "text": "A dated record is hard to argue with.", "tag": "Acknowledge a concern", "effects": [ { "relation": "clerk-venn", "by": 1 } ], "next": "venn.ack" }
+      ] },
+    { "id": "venn.limits", "speaker": "clerk-venn", "text": "No. A patent proves a claim was made and granted. It does not prove the pen sold or wrote well. But it is the earliest checkable claim in this room.",
+      "claimKind": "interpretation", "next": null },
+    { "id": "venn.biro", "speaker": "clerk-venn", "text": "The patent office history I gave you separates the two. Bíró, his chemist brother György and others developed a practical pen and a suitable ink, later. Different achievement, different date.",
+      "claimKind": "interpretation", "next": null },
+    { "id": "venn.ack", "speaker": "clerk-venn", "text": "Thank you. I have added the patent office history to your evidence. Read its limits too.", "next": null },
+    { "id": "venn.again", "speaker": "clerk-venn", "text": "A record has a date, an author and a purpose. Ask all three before you ask what it means.", "next": null },
+    { "id": "venn.after", "speaker": "clerk-venn", "text": "I have seen the new label. We may not agree, but you can say why you chose it. That is what I ask of a Guardian.", "next": null },
+
+    { "id": "kip.start", "speaker": "kip-arden", "text": "Hi, I'm Kip. I started yesterday. Can I tell you what I noticed? Everyone asks WHO was first. Nobody asks first AT WHAT.",
+      "options": [
+        { "text": "Go on.", "next": "kip.idea" },
+        { "text": "Not now, thanks.", "next": null }
+      ] },
+    { "id": "kip.idea", "speaker": "kip-arden", "text": "First to patent? First to make one that works on paper? First to sell lots? Each 'first' could be a different person. Maybe the label could ask visitors that.",
+      "effects": [ { "setFlag": "kip.idea", "value": true }, { "journal": "j.m01.kip" }, { "relation": "kip-arden", "by": 1 } ],
+      "next": null },
+    { "id": "kip.again", "speaker": "kip-arden", "text": "The workshop bench has a marking test. Try changing only one thing at a time. Otherwise you cannot tell what caused the difference.", "next": null },
+    { "id": "kip.afterlabel", "speaker": "kip-arden", "text": "Warden Ise says I am coming with you to Aethelgard. Talk to her when you are ready, then step on the portal.", "next": null },
+
+    { "id": "visitor.start", "speaker": "villager-2", "text": "I always thought the biro was invented by a man called Biro. Is that wrong? Or just not the whole story?",
+      "options": [
+        { "text": "Not the whole story. It depends on what 'invented' means.", "next": "visitor.end" },
+        { "text": "I'm still finding out.", "next": "visitor.end" }
+      ] },
+    { "id": "visitor.end", "speaker": "villager-2", "text": "Hm. I will read the new label when it is up, then.", "next": null }
+  ],
+  "hints": [
+    { "id": "h.m01.o1.1", "objective": "m01.o1.report", "depth": 1, "text": "Warden Ise is waiting near the centre of the hall. Walk to her." },
+    { "id": "h.m01.o1.2", "objective": "m01.o1.report", "depth": 2, "text": "Use the arrow keys or WASD to walk. You can also click a spot on the floor." },
+    { "id": "h.m01.o1.3", "objective": "m01.o1.report", "depth": 3, "text": "Stand next to Ise and face her. Then press E or Space, or click on her." },
+    { "id": "h.m01.o1.4", "objective": "m01.o1.report", "depth": 4, "text": "Ise is the person in grey with white hair. Walk up until a speech marker shows above her, then press E." },
+
+    { "id": "h.m01.o2.1", "objective": "m01.o2.inspect", "depth": 1, "text": "There are three display stands with glowing labels. Each one says 'The first ballpoint pen'." },
+    { "id": "h.m01.o2.2", "objective": "m01.o2.inspect", "depth": 2, "text": "Look at what kind of thing each exhibit is: a document, a model or a record of a real object." },
+    { "id": "h.m01.o2.3", "objective": "m01.o2.inspect", "depth": 3, "text": "Open each stand. The panel shows a label such as 'Documented' or 'Reconstruction'. That label tells you how far the exhibit can be trusted as historical evidence." },
+    { "id": "h.m01.o2.4", "objective": "m01.o2.inspect", "depth": 4, "text": "The stands are in a row in the middle of the hall. Walk to each one and press E. Opening all three completes this step." },
+
+    { "id": "h.m01.o3.1", "objective": "m01.o3.views", "depth": 1, "text": "Curator Dace and Clerk Venn disagree about the label." },
+    { "id": "h.m01.o3.2", "objective": "m01.o3.views", "depth": 2, "text": "Ask each of them for reasons. A view is easier to judge when you know what it is based on." },
+    { "id": "h.m01.o3.3", "objective": "m01.o3.views", "depth": 3, "text": "Dace thinks about visitors. Venn thinks about records. Both can be reasonable at the same time." },
+    { "id": "h.m01.o3.4", "objective": "m01.o3.views", "depth": 4, "text": "Dace stands on the west side of the hall (purple). Venn stands on the east side (blue). Talk to both." },
+
+    { "id": "h.m01.o4.1", "objective": "m01.o4.lens", "depth": 1, "text": "The three exhibits have different dates. Do the dates describe the same thing?" },
+    { "id": "h.m01.o4.2", "objective": "m01.o4.lens", "depth": 2, "text": "Check what each date describes: a grant, a build, or an object." },
+    { "id": "h.m01.o4.3", "objective": "m01.o4.lens", "depth": 3, "text": "Try separating the date of a patent from the date an object was made. That may explain part of the disagreement." },
+    { "id": "h.m01.o4.4", "objective": "m01.o4.lens", "depth": 4, "text": "Open an exhibit and press 'Use Date-Kind Lens'. Do this for two exhibits. The lens tells you what kind of date you are reading." },
+
+    { "id": "h.m01.o5.1", "objective": "m01.o5.test", "depth": 1, "text": "The workshop bench in the south-east corner has a marking test." },
+    { "id": "h.m01.o5.2", "objective": "m01.o5.test", "depth": 2, "text": "A test compares results. Which things do you change between two tries?" },
+    { "id": "h.m01.o5.3", "objective": "m01.o5.test", "depth": 3, "text": "Change only ONE thing between two tests: the pen OR the surface. Then you know what caused the difference." },
+    { "id": "h.m01.o5.4", "objective": "m01.o5.test", "depth": 4, "text": "At the bench: test the Loud model on paper, then test the Loud model on leather. Only the surface changed, so the comparison is fair." },
+
+    { "id": "h.m01.o6.1", "objective": "m01.o6.board", "depth": 1, "text": "The evidence board lets you put your cards next to claims." },
+    { "id": "h.m01.o6.2", "objective": "m01.o6.board", "depth": 2, "text": "Look at what each card says it does NOT show. That matters as much as what it shows." },
+    { "id": "h.m01.o6.3", "objective": "m01.o6.board", "depth": 3, "text": "Attach a card to a claim when it bears on that claim. The board then describes whether the claim is supported, qualified or challenged." },
+    { "id": "h.m01.o6.4", "objective": "m01.o6.board", "depth": 4, "text": "Press B. Choose a claim, then choose a card to attach. For example, attach 'Loud's patent, 1888' to the claim about the earliest design." },
+
+    { "id": "h.m01.o7.1", "objective": "m01.o7.label", "depth": 1, "text": "Curator Dace is ready to write the new label with you." },
+    { "id": "h.m01.o7.2", "objective": "m01.o7.label", "depth": 2, "text": "Each label option uses a different meaning of 'first'. Which meaning can you defend with your evidence?" },
+    { "id": "h.m01.o7.3", "objective": "m01.o7.label", "depth": 3, "text": "There is no hidden correct label. Each choice protects something and costs something. Think about who reads the label." },
+    { "id": "h.m01.o7.4", "objective": "m01.o7.label", "depth": 4, "text": "Talk to Dace and pick a label. If you talked to Kip about 'first at what?', you will also see a question label." },
+
+    { "id": "h.m01.o8.1", "objective": "m01.o8.portal", "depth": 1, "text": "The portal at the north of the hall is now open." },
+    { "id": "h.m01.o8.2", "objective": "m01.o8.portal", "depth": 2, "text": "Walk north, past the stands, to the glowing circle." },
+    { "id": "h.m01.o8.3", "objective": "m01.o8.portal", "depth": 3, "text": "The game saves a checkpoint when you step on the portal." },
+    { "id": "h.m01.o8.4", "objective": "m01.o8.portal", "depth": 4, "text": "Walk to the top middle of the hall and stand on the glowing portal circle." }
+  ]
+}

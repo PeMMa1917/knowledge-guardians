@@ -1,0 +1,497 @@
+{
+  "items": [
+    {
+      "id": "item.journal",
+      "name": "Guardian Journal",
+      "description": "Your record of what each source actually supports. Open it with J.",
+      "historicalLabel": "fictional-world",
+      "art": "icon.journal"
+    },
+    {
+      "id": "tool.date-lens",
+      "name": "Date-Kind Lens",
+      "description": "A concept tool. It shows WHAT a date describes: a grant, a build, a catalogue range or a claim.",
+      "historicalLabel": "fictional-world",
+      "art": "icon.lens"
+    },
+    {
+      "id": "tool.annotation-pen",
+      "name": "Field Annotation Pen",
+      "description": "Adds lasting notes to your records. It never changes the dates in a source document.",
+      "historicalLabel": "fictional-world",
+      "art": "icon.pen"
+    },
+    {
+      "id": "item.registry-letter",
+      "name": "Registry letter",
+      "description": "Clerk Venn's letter of introduction to record keepers in other worlds.",
+      "historicalLabel": "fictional-world",
+      "art": "icon.letter"
+    },
+    {
+      "id": "item.catalogue-extract",
+      "name": "Catalogue extract",
+      "description": "Curator Dace's copy of museum catalogue records about steel.",
+      "historicalLabel": "fictional-world",
+      "art": "icon.book"
+    },
+    {
+      "id": "item.timeline-card",
+      "name": "Timeline card",
+      "description": "A copy of your three-part display label. Makers like labels that say who did what, and when.",
+      "historicalLabel": "fictional-world",
+      "art": "icon.card"
+    },
+    {
+      "id": "item.question-card",
+      "name": "Question card",
+      "description": "Your display card that asks: 'First at what?'",
+      "historicalLabel": "fictional-world",
+      "art": "icon.card"
+    },
+    {
+      "id": "item.ledger-copy",
+      "name": "Ledger copy",
+      "description": "A copy of the Emberford guild ledger entry for the patterned blade.",
+      "historicalLabel": "fictional-world",
+      "art": "icon.letter"
+    },
+    {
+      "id": "item.blade",
+      "name": "Patterned blade (labelled honestly)",
+      "description": "Pattern-welded in Hesper Lyle's workshop this season. Your annotation records how it was made.",
+      "historicalLabel": "fictional-world",
+      "art": "icon.blade"
+    },
+    {
+      "id": "item.blade-as-sold",
+      "name": "Patterned blade (seller's label)",
+      "description": "Sold as 'true wootz of ancient Damascus'. Your private annotation says: pattern-welded, made this season.",
+      "historicalLabel": "fictional-world",
+      "art": "icon.blade"
+    },
+    {
+      "id": "item.tea",
+      "name": "Ember tea",
+      "description": "A warm drink from the market. It does nothing except make the walk pleasant.",
+      "historicalLabel": "fictional-world",
+      "art": "icon.tea"
+    }
+  ],
+  "characters": [
+    {
+      "id": "warden-ise",
+      "name": "Warden Ise Marrow",
+      "role": "Recruitment warden of the Nexus",
+      "sprite": "warden-ise",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "objective": "m01.o8.portal"
+          },
+          "node": "ise.after"
+        },
+        {
+          "if": {
+            "objective": "m01.o7.label"
+          },
+          "node": "ise.portal"
+        },
+        {
+          "if": {
+            "flag": "talked.ise",
+            "eq": true
+          },
+          "node": "ise.again"
+        },
+        {
+          "node": "ise.start"
+        }
+      ]
+    },
+    {
+      "id": "curator-dace",
+      "name": "Curator Mireille Dace",
+      "role": "Keeper of the Nexus display hall",
+      "sprite": "curator-dace",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "flagSet": "label.choice"
+          },
+          "node": "dace.after"
+        },
+        {
+          "if": {
+            "all": [
+              {
+                "flag": "heard.dace",
+                "eq": true
+              },
+              {
+                "flag": "heard.venn",
+                "eq": true
+              },
+              {
+                "num": "count.inspected",
+                "gte": 3
+              }
+            ]
+          },
+          "node": "dace.label"
+        },
+        {
+          "if": {
+            "flag": "heard.dace",
+            "eq": true
+          },
+          "node": "dace.again"
+        },
+        {
+          "node": "dace.start"
+        }
+      ]
+    },
+    {
+      "id": "clerk-venn",
+      "name": "Clerk Tobiah Venn",
+      "role": "Registry clerk for patents and records",
+      "sprite": "clerk-venn",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "flagSet": "label.choice"
+          },
+          "node": "venn.after"
+        },
+        {
+          "if": {
+            "flag": "heard.venn",
+            "eq": true
+          },
+          "node": "venn.again"
+        },
+        {
+          "node": "venn.start"
+        }
+      ]
+    },
+    {
+      "id": "kip-arden",
+      "name": "Kip Arden",
+      "role": "Fellow recruit and companion",
+      "sprite": "kip-arden",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "flag": "chapter.done",
+            "eq": true
+          },
+          "node": "kip.end"
+        },
+        {
+          "if": {
+            "flagSet": "blade.choice"
+          },
+          "node": "kip.report"
+        },
+        {
+          "if": {
+            "flag": "reached.emberford",
+            "eq": true
+          },
+          "node": "kip.field"
+        },
+        {
+          "if": {
+            "flagSet": "label.choice"
+          },
+          "node": "kip.afterlabel"
+        },
+        {
+          "if": {
+            "flag": "kip.idea",
+            "eq": true
+          },
+          "node": "kip.again"
+        },
+        {
+          "node": "kip.start"
+        }
+      ]
+    },
+    {
+      "id": "merchant-corvan",
+      "name": "Corvan Hale",
+      "role": "Market trader in Emberford",
+      "sprite": "merchant-corvan",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "flagSet": "blade.choice"
+          },
+          "node": "corvan.after"
+        },
+        {
+          "if": {
+            "all": [
+              {
+                "flag": "heard.corvan",
+                "eq": true
+              },
+              {
+                "num": "m02.evidence",
+                "gte": 3
+              }
+            ]
+          },
+          "node": "corvan.decide"
+        },
+        {
+          "if": {
+            "flag": "heard.corvan",
+            "eq": true
+          },
+          "node": "corvan.again"
+        },
+        {
+          "node": "corvan.start"
+        }
+      ]
+    },
+    {
+      "id": "smith-hesper",
+      "name": "Hesper Lyle",
+      "role": "Smith of Emberford",
+      "sprite": "smith-hesper",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "flagSet": "blade.choice"
+          },
+          "node": "hesper.after"
+        },
+        {
+          "if": {
+            "card": "card.workshop-diagram"
+          },
+          "node": "hesper.again"
+        },
+        {
+          "if": {
+            "item": "item.timeline-card"
+          },
+          "node": "hesper.timeline"
+        },
+        {
+          "node": "hesper.start"
+        }
+      ]
+    },
+    {
+      "id": "guildmaster-orrin",
+      "name": "Guildmaster Orrin Pell",
+      "role": "Keeper of the Emberford trade ledger",
+      "sprite": "guildmaster-orrin",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "flagSet": "blade.choice"
+          },
+          "node": "orrin.after"
+        },
+        {
+          "if": {
+            "card": "card.guild-ledger"
+          },
+          "node": "orrin.again"
+        },
+        {
+          "node": "orrin.start"
+        }
+      ]
+    },
+    {
+      "id": "scholar-sefa",
+      "name": "Sefa Adjei",
+      "role": "Travelling scholar with museum catalogues",
+      "sprite": "scholar-sefa",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "flag": "heard.sefa",
+            "eq": true
+          },
+          "node": "sefa.again"
+        },
+        {
+          "node": "sefa.start"
+        }
+      ]
+    },
+    {
+      "id": "villager-1",
+      "name": "Tea seller",
+      "role": "Emberford market",
+      "sprite": "villager-1",
+      "mode": "fictional",
+      "talk": [
+        {
+          "node": "tea.start"
+        }
+      ]
+    },
+    {
+      "id": "villager-2",
+      "name": "Archive visitor",
+      "role": "Nexus visitor",
+      "sprite": "villager-2",
+      "mode": "fictional",
+      "talk": [
+        {
+          "node": "visitor.start"
+        }
+      ]
+    }
+  ],
+  "criteria": [
+    {
+      "id": "crit.evidence.date-kinds",
+      "concept": "evidence",
+      "maximum": 20
+    },
+    {
+      "id": "crit.justification.fair-test",
+      "concept": "justification",
+      "maximum": 10
+    },
+    {
+      "id": "crit.perspective.label",
+      "concept": "perspective",
+      "maximum": 20
+    },
+    {
+      "id": "crit.evidence.process",
+      "concept": "evidence",
+      "maximum": 20
+    },
+    {
+      "id": "crit.responsibility.blade",
+      "concept": "responsibility",
+      "maximum": 15
+    },
+    {
+      "id": "crit.interpretation.board",
+      "concept": "interpretation",
+      "maximum": 10
+    }
+  ],
+  "awards": [
+    {
+      "id": "award.dates-have-kinds",
+      "kind": "concept-award",
+      "name": "Dates Have Kinds",
+      "earnedBy": "You inspected all three 'first' exhibits and used the Date-Kind Lens to separate a patent date, a build date and an object date.",
+      "criteria": [
+        "crit.evidence.date-kinds"
+      ],
+      "when": {
+        "all": [
+          {
+            "num": "count.inspected",
+            "gte": 3
+          },
+          {
+            "num": "count.lens",
+            "gte": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "skill.fair-test-1",
+      "kind": "skill-milestone",
+      "name": "Fair Test I",
+      "earnedBy": "In the marking test, you changed one thing at a time so that the results could be compared.",
+      "criteria": [
+        "crit.justification.fair-test"
+      ],
+      "when": {
+        "num": "sim.fair",
+        "gte": 1
+      }
+    },
+    {
+      "id": "award.board-builder",
+      "kind": "concept-award",
+      "name": "What Supports What",
+      "earnedBy": "You attached evidence to claims on the board and could see which claims stayed unsupported.",
+      "criteria": [
+        "crit.interpretation.board"
+      ],
+      "when": {
+        "boardLinks": 3
+      }
+    },
+    {
+      "id": "award.two-sides-label",
+      "kind": "concept-award",
+      "name": "Two Reasonable Views",
+      "earnedBy": "You heard the curator and the clerk explain their reasons before you wrote the display label.",
+      "criteria": [
+        "crit.perspective.label"
+      ],
+      "when": {
+        "all": [
+          {
+            "flag": "heard.dace",
+            "eq": true
+          },
+          {
+            "flag": "heard.venn",
+            "eq": true
+          },
+          {
+            "flagSet": "label.choice"
+          }
+        ]
+      }
+    },
+    {
+      "id": "badge.honest-label",
+      "kind": "badge",
+      "name": "Honest Label",
+      "earnedBy": "You sorted how the blade could be made, then made a decision about its label that your evidence could support.",
+      "criteria": [
+        "crit.evidence.process",
+        "crit.responsibility.blade"
+      ],
+      "when": {
+        "all": [
+          {
+            "flag": "sort.done",
+            "eq": true
+          },
+          {
+            "flagSet": "blade.choice"
+          }
+        ]
+      }
+    }
+  ],
+  "offers": [
+    {
+      "id": "offer.tea",
+      "item": "item.tea",
+      "price": 1
+    }
+  ]
+}

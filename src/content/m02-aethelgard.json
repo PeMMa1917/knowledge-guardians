@@ -1,0 +1,1030 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH1-M02",
+      "world": "WORLD-02",
+      "title": "The Label on the Blade",
+      "knowledgeQuestion": "What do we need to know about how something was made before we can say what it is?",
+      "available": {
+        "objective": "m01.o8.portal"
+      },
+      "objectives": [
+        {
+          "id": "m02.o1.arrive",
+          "title": "Arrive in Emberford, a guild town in Aethelgard.",
+          "essential": true,
+          "done": {
+            "flag": "reached.emberford",
+            "eq": true
+          },
+          "onComplete": [
+            {
+              "journal": "j.m02.start"
+            },
+            {
+              "checkpoint": "Arrived in Emberford"
+            }
+          ]
+        },
+        {
+          "id": "m02.o2.claim",
+          "title": "Find out what the trader Corvan claims about his patterned blade.",
+          "essential": true,
+          "visible": {
+            "objective": "m02.o1.arrive"
+          },
+          "done": {
+            "flag": "heard.corvan",
+            "eq": true
+          }
+        },
+        {
+          "id": "m02.o3.evidence",
+          "title": "Gather at least three pieces of evidence about how the blade was made (smith, guild, scholar, assay table).",
+          "essential": true,
+          "visible": {
+            "objective": "m02.o2.claim"
+          },
+          "done": {
+            "num": "m02.evidence",
+            "gte": 3
+          }
+        },
+        {
+          "id": "m02.o4.sort",
+          "title": "At Hesper's forge, sort the process steps: pattern welding, crucible steel, or both.",
+          "essential": true,
+          "visible": {
+            "objective": "m02.o2.claim"
+          },
+          "done": {
+            "flag": "sort.done",
+            "eq": true
+          },
+          "onComplete": [
+            {
+              "journal": "j.m02.sort"
+            }
+          ]
+        },
+        {
+          "id": "m02.o5.decide",
+          "title": "Go back to Corvan and decide what to do about the blade and its label.",
+          "essential": true,
+          "visible": {
+            "all": [
+              {
+                "objective": "m02.o3.evidence"
+              },
+              {
+                "objective": "m02.o4.sort"
+              }
+            ]
+          },
+          "done": {
+            "flagSet": "blade.choice"
+          }
+        },
+        {
+          "id": "m02.o6.report",
+          "title": "Report to Kip by the portal stone.",
+          "essential": true,
+          "visible": {
+            "objective": "m02.o5.decide"
+          },
+          "done": {
+            "flag": "chapter.done",
+            "eq": true
+          },
+          "onComplete": [
+            {
+              "journal": "j.m02.done"
+            },
+            {
+              "checkpoint": "Field mission complete"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.corvan-claim",
+      "title": "Corvan's sign",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world",
+      "sources": [],
+      "text": "Corvan's sign says: 'True wootz of ancient Damascus. 24 marks.'",
+      "limits": "A seller's description is a claim. It is not a record of how the blade was made or where it came from.",
+      "bears": {
+        "claim.blade-wootz": "supports"
+      }
+    },
+    {
+      "id": "card.workshop-diagram",
+      "title": "Hesper's workshop sheet",
+      "claimKind": "observation",
+      "historicalLabel": "fictional-world",
+      "sources": [],
+      "text": "Hesper's sheet for this blade: layers of two different steels stacked, forge-welded, twisted and folded, then shaped and etched. Dated this season.",
+      "limits": "This is the maker's own record. It does not say where her steel stock came from.",
+      "bears": {
+        "claim.blade-pattern": "supports",
+        "claim.blade-wootz": "challenges"
+      }
+    },
+    {
+      "id": "card.microstructure",
+      "title": "Assay cross-section (schematic)",
+      "claimKind": "observation",
+      "historicalLabel": "fictional-world",
+      "sources": [],
+      "text": "The assay table's etched cross-section shows separate welded layers that follow the folds of the blade.",
+      "limits": "In this game it is a schematic illustration, not a real micrograph. A trained assayer would need to confirm it.",
+      "bears": {
+        "claim.blade-pattern": "supports",
+        "claim.blade-wootz": "challenges"
+      }
+    },
+    {
+      "id": "card.guild-ledger",
+      "title": "Guild ledger entry",
+      "claimKind": "observation",
+      "historicalLabel": "fictional-world",
+      "sources": [],
+      "text": "Emberford guild ledger: one patterned blade sold by the Lyle workshop to Corvan Hale, this season.",
+      "limits": "The ledger records a sale. It does not describe the steel.",
+      "bears": {
+        "claim.blade-pattern": "supports",
+        "claim.blade-wootz": "challenges"
+      }
+    },
+    {
+      "id": "card.met-ingots",
+      "title": "Ten wootz steel ingots (Met record)",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-S16"
+      ],
+      "text": "The Metropolitan Museum of Art catalogues 'Ten Wootz Steel Ingots with Bag', accession 2023.133a–k, as Indian, probably eighteenth century.",
+      "limits": "The word 'probably' is part of the record. These are ingots, the raw material, not finished blades.",
+      "bears": {
+        "claim.pattern-not-proof": "qualifies",
+        "claim.blade-wootz": "qualifies"
+      }
+    },
+    {
+      "id": "card.met-techniques",
+      "title": "Met essay on techniques",
+      "claimKind": "interpretation",
+      "historicalLabel": "scholarly-interpretation",
+      "sources": [
+        "HIS-S14"
+      ],
+      "text": "The Met's essay on decorating arms and armour separates pattern welding, which joins and works different iron or steel pieces, from crucible or 'watered' steel.",
+      "limits": "An essay about techniques does not identify any particular blade.",
+      "bears": {
+        "claim.pattern-not-proof": "supports",
+        "claim.blade-pattern": "qualifies"
+      }
+    },
+    {
+      "id": "card.damascus-terms",
+      "title": "Two kinds of 'Damascus'",
+      "claimKind": "interpretation",
+      "historicalLabel": "scholarly-interpretation",
+      "sources": [
+        "HIS-S15"
+      ],
+      "text": "A 1998 experimental study by Verhoeven, Pendray and Dauksch uses both 'pattern-welded Damascus' and 'wootz Damascus'. So 'Damascus' alone does not name one recipe.",
+      "limits": "The study examines particular wootz blades. It says nothing about blades sold in Emberford.",
+      "bears": {
+        "claim.pattern-not-proof": "supports",
+        "claim.blade-wootz": "challenges"
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim.blade-wootz",
+      "mission": "KG-CH1-M02",
+      "claimKind": "interpretation",
+      "text": "The blade is true wootz from ancient Damascus."
+    },
+    {
+      "id": "claim.blade-pattern",
+      "mission": "KG-CH1-M02",
+      "claimKind": "interpretation",
+      "text": "The blade was pattern-welded in Hesper's workshop this season."
+    },
+    {
+      "id": "claim.pattern-not-proof",
+      "mission": "KG-CH1-M02",
+      "claimKind": "interpretation",
+      "text": "A patterned surface alone does not show that steel is wootz."
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-003-AE",
+      "name": "Patterned blade on Corvan's stall",
+      "art": "exhibit.blade",
+      "historicalLabel": "fictional-world",
+      "dateText": "Seller says: 'ancient'",
+      "dateKind": "A SELLER'S CLAIM, not a date from any record. Nothing on the stall says when or where it was made.",
+      "summary": "A blade with a wavy, layered surface pattern. In this game world it was made in Emberford. It is NOT a historical object and has no ancient provenance.",
+      "sources": [],
+      "grantsCard": "card.corvan-claim",
+      "altText": "A short steel blade with a flowing grey pattern of light and dark bands on its surface."
+    },
+    {
+      "id": "OBJ-002",
+      "name": "Ten Wootz Steel Ingots with Bag (catalogue record, Met 2023.133a–k)",
+      "art": "exhibit.ingots",
+      "historicalLabel": "documented",
+      "dateText": "Probably 18th century (museum record)",
+      "dateKind": "A CATALOGUE DATE with a qualifier. 'Probably' means the museum is not certain. Keep the qualifier.",
+      "summary": "Sefa's catalogue shows the record of a real group of ten wootz steel ingots with a bag, catalogued by The Metropolitan Museum of Art as Indian, probably eighteenth century.",
+      "sources": [
+        "HIS-S16"
+      ],
+      "grantsCard": "card.met-ingots",
+      "altText": "A catalogue page showing ten small rounded dark metal cakes next to a cloth bag."
+    },
+    {
+      "id": "AE-ASSAY",
+      "name": "Assay table: etched cross-section",
+      "art": "exhibit.assay",
+      "historicalLabel": "fictional-world",
+      "dateText": "Prepared this week",
+      "dateKind": "A PREPARATION DATE: when this test sample was cut and etched.",
+      "summary": "An offcut from the same billet as Corvan's blade, cut and etched by the guild assayer. The drawing is schematic.",
+      "sources": [],
+      "grantsCard": "card.microstructure",
+      "altText": "A small polished steel slice with bands of light and dark layers that bend along folds."
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.m02.start",
+      "text": "Emberford, Aethelgard. A trader sells a 'true wootz' blade. My job: find out what is known about how it was made.",
+      "claimKind": "observation"
+    },
+    {
+      "id": "j.m02.corvan",
+      "text": "Corvan says the blade is 'true wootz of ancient Damascus'. He bought it in good faith, he says, and the pattern 'proves it'.",
+      "claimKind": "interpretation"
+    },
+    {
+      "id": "j.m02.hesper",
+      "text": "Hesper says she made the blade this season by pattern welding. She is proud of the work and wants it named for what it is.",
+      "claimKind": "observation"
+    },
+    {
+      "id": "j.m02.sefa",
+      "text": "Sefa: 'Damascus' can mean pattern-welded or wootz steel. Wootz is a crucible-steel tradition. A pattern alone does not show which.",
+      "claimKind": "interpretation"
+    },
+    {
+      "id": "j.m02.sort",
+      "text": "I sorted the process steps. Shaping and etching belong to both routes, so a patterned surface cannot tell them apart on its own.",
+      "claimKind": "interpretation"
+    },
+    {
+      "id": "j.m02.ledger",
+      "text": "The guild ledger records the sale from the Lyle workshop to Corvan this season.",
+      "claimKind": "observation"
+    },
+    {
+      "id": "j.blade.relabel",
+      "text": "I bought the blade at a fair price with an honest label: 'Pattern-welded, Lyle workshop, this season.'",
+      "claimKind": "value"
+    },
+    {
+      "id": "j.blade.annotate",
+      "text": "I paid the full price and kept the seller's label, but annotated my own record: pattern-welded, made this season.",
+      "claimKind": "value"
+    },
+    {
+      "id": "j.blade.public",
+      "text": "I posted a correction on the guild board. Buyers are protected; Corvan lost face.",
+      "claimKind": "value"
+    },
+    {
+      "id": "j.blade.decline",
+      "text": "I did not buy the blade and left the label to Corvan. The question stays open in the market.",
+      "claimKind": "value"
+    },
+    {
+      "id": "j.m02.done",
+      "text": "Field mission complete. A label is a claim. Before naming what something is, I need to know how it was made and who says so.",
+      "claimKind": "interpretation"
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "corvan.start",
+      "speaker": "merchant-corvan",
+      "text": "Guardians! Look at this. True wootz of ancient Damascus. See the water in the steel? Only twenty-four marks.",
+      "effects": [
+        {
+          "setFlag": "heard.corvan",
+          "value": true
+        },
+        {
+          "journal": "j.m02.corvan"
+        },
+        {
+          "addCard": "card.corvan-claim"
+        }
+      ],
+      "options": [
+        {
+          "text": "How do you know it is wootz?",
+          "tag": "Ask for reasons",
+          "next": "corvan.how"
+        },
+        {
+          "text": "Where did you get it?",
+          "tag": "Ask for a source",
+          "next": "corvan.where"
+        },
+        {
+          "text": "Nice pattern.",
+          "next": "corvan.nice"
+        }
+      ]
+    },
+    {
+      "id": "corvan.how",
+      "speaker": "merchant-corvan",
+      "text": "The pattern! Everyone knows Damascus steel has that pattern. I'm not a smith, but I know what I see.",
+      "claimKind": "interpretation",
+      "next": null
+    },
+    {
+      "id": "corvan.where",
+      "speaker": "merchant-corvan",
+      "text": "A local workshop sold it to me. They didn't say much. I assumed old stock. I paid fair, and I have a family to feed.",
+      "claimKind": "observation",
+      "next": null
+    },
+    {
+      "id": "corvan.nice",
+      "speaker": "merchant-corvan",
+      "text": "Isn't it? Look closer if you like. The blade is on the stall.",
+      "next": null
+    },
+    {
+      "id": "corvan.again",
+      "speaker": "merchant-corvan",
+      "text": "Still thinking? The blade won't stay here forever.",
+      "next": null
+    },
+    {
+      "id": "corvan.decide",
+      "speaker": "merchant-corvan",
+      "text": "Back again. You've been asking around about my blade. So what will it be?",
+      "options": [
+        {
+          "text": "Pay 12 marks, and relabel it honestly: 'Pattern-welded, Lyle workshop, this season.'",
+          "tag": "Fair price, honest label",
+          "if": {
+            "marks": 12
+          },
+          "next": "corvan.relabel"
+        },
+        {
+          "text": "Pay the full 24 marks. Keep his label, but annotate my own record.",
+          "tag": "Buy as sold, note privately",
+          "if": {
+            "all": [
+              {
+                "marks": 24
+              },
+              {
+                "item": "tool.annotation-pen"
+              }
+            ]
+          },
+          "next": "corvan.full"
+        },
+        {
+          "text": "Post a correction on the guild board for all buyers.",
+          "tag": "Correct it in public",
+          "effects": [
+            {
+              "setFlag": "blade.choice",
+              "value": "public-correction"
+            },
+            {
+              "relation": "guildmaster-orrin",
+              "by": 2
+            },
+            {
+              "relation": "merchant-corvan",
+              "by": -2
+            },
+            {
+              "relation": "smith-hesper",
+              "by": 1
+            },
+            {
+              "journal": "j.blade.public"
+            },
+            {
+              "credit": "crit.responsibility.blade"
+            }
+          ],
+          "next": "corvan.public"
+        },
+        {
+          "text": "Don't buy it. Leave the label to Corvan.",
+          "tag": "Decline",
+          "effects": [
+            {
+              "setFlag": "blade.choice",
+              "value": "decline"
+            },
+            {
+              "journal": "j.blade.decline"
+            },
+            {
+              "credit": "crit.responsibility.blade"
+            }
+          ],
+          "next": "corvan.decline"
+        },
+        {
+          "text": "What did Hesper say about it, again?",
+          "next": "corvan.hesper"
+        }
+      ]
+    },
+    {
+      "id": "corvan.hesper",
+      "speaker": "merchant-corvan",
+      "text": "You talked to Hesper? ...Fine. She made it. This season. I thought 'Damascus' was just what you call steel that looks like that. Maybe it isn't.",
+      "next": "corvan.decide"
+    },
+    {
+      "id": "corvan.relabel",
+      "speaker": "merchant-corvan",
+      "text": "Twelve, with Hesper's name on the label. Less than I hoped. But it is honest, and her name might sell the next one.",
+      "effects": [
+        {
+          "addMarks": -12
+        },
+        {
+          "giveItem": "item.blade"
+        },
+        {
+          "setFlag": "blade.choice",
+          "value": "relabel-buy"
+        },
+        {
+          "relation": "merchant-corvan",
+          "by": 1
+        },
+        {
+          "relation": "smith-hesper",
+          "by": 2
+        },
+        {
+          "journal": "j.blade.relabel"
+        },
+        {
+          "credit": "crit.responsibility.blade"
+        }
+      ],
+      "next": null
+    },
+    {
+      "id": "corvan.full",
+      "speaker": "merchant-corvan",
+      "text": "Twenty-four it is! A pleasure. What you write in your own book is your business.",
+      "effects": [
+        {
+          "addMarks": -24
+        },
+        {
+          "giveItem": "item.blade-as-sold"
+        },
+        {
+          "setFlag": "blade.choice",
+          "value": "buy-annotate"
+        },
+        {
+          "relation": "merchant-corvan",
+          "by": 2
+        },
+        {
+          "journal": "j.blade.annotate"
+        },
+        {
+          "credit": "crit.responsibility.blade"
+        }
+      ],
+      "next": null
+    },
+    {
+      "id": "corvan.public",
+      "speaker": "merchant-corvan",
+      "text": "On the board? For everyone to read? ...You may be right about the steel. You did not have to make it so public.",
+      "next": null
+    },
+    {
+      "id": "corvan.decline",
+      "speaker": "merchant-corvan",
+      "text": "Your choice. The next buyer may not ask so many questions.",
+      "next": null
+    },
+    {
+      "id": "corvan.after",
+      "speaker": "merchant-corvan",
+      "text": "Business goes on. Mind how you go, Guardian.",
+      "next": null
+    },
+    {
+      "id": "hesper.start",
+      "speaker": "smith-hesper",
+      "text": "That blade on Corvan's stall? I made it. This season, in this forge. Pattern-welded: two steels, stacked, welded, twisted and folded.",
+      "effects": [
+        {
+          "addCard": "card.workshop-diagram"
+        },
+        {
+          "addNum": "m02.evidence",
+          "by": 1
+        },
+        {
+          "journal": "j.m02.hesper"
+        }
+      ],
+      "options": [
+        {
+          "text": "Does that make it worse than wootz?",
+          "tag": "Ask about values",
+          "next": "hesper.worse"
+        },
+        {
+          "text": "Can I try sorting the steps?",
+          "next": "hesper.sort"
+        },
+        {
+          "text": "Why didn't you label it?",
+          "next": "hesper.label"
+        }
+      ]
+    },
+    {
+      "id": "hesper.timeline",
+      "speaker": "smith-hesper",
+      "text": "Is that a museum label in your bag? 'Who did what, and when.' Good. Then you'll want my workshop sheet. I made that blade, this season, by pattern welding.",
+      "effects": [
+        {
+          "addCard": "card.workshop-diagram"
+        },
+        {
+          "addNum": "m02.evidence",
+          "by": 1
+        },
+        {
+          "journal": "j.m02.hesper"
+        },
+        {
+          "relation": "smith-hesper",
+          "by": 1
+        }
+      ],
+      "options": [
+        {
+          "text": "Can I try sorting the steps?",
+          "next": "hesper.sort"
+        },
+        {
+          "text": "Why didn't you label it?",
+          "next": "hesper.label"
+        }
+      ]
+    },
+    {
+      "id": "hesper.worse",
+      "speaker": "smith-hesper",
+      "text": "Worse? No. Different. It's good steel and good work. But it is not wootz and it is not ancient. I want it called what it is.",
+      "claimKind": "value",
+      "next": null
+    },
+    {
+      "id": "hesper.label",
+      "speaker": "smith-hesper",
+      "text": "I sold it to Corvan with my sheet. He didn't keep the sheet. Traders and makers want different things from a label.",
+      "next": null
+    },
+    {
+      "id": "hesper.sort",
+      "speaker": "smith-hesper",
+      "text": "The process cards are on the anvil bench. Schematic only. No real recipe. Sort them into pattern welding, crucible steel, or both.",
+      "effects": [
+        {
+          "setFlag": "open.sort",
+          "value": true
+        }
+      ],
+      "next": null
+    },
+    {
+      "id": "hesper.again",
+      "speaker": "smith-hesper",
+      "text": "The process cards are on the anvil bench whenever you want them. Some steps happen in both kinds of steelmaking. Watch for those.",
+      "next": null
+    },
+    {
+      "id": "hesper.after",
+      "speaker": "smith-hesper",
+      "text": "Whatever you decided, you asked the maker first. Most people don't.",
+      "next": null
+    },
+    {
+      "id": "orrin.start",
+      "speaker": "guildmaster-orrin",
+      "text": "The trade ledger? Every sale in Emberford goes in it. A copy costs 3 marks, unless you carry a registry letter.",
+      "options": [
+        {
+          "text": "Show Clerk Venn's registry letter.",
+          "if": {
+            "item": "item.registry-letter"
+          },
+          "effects": [
+            {
+              "addCard": "card.guild-ledger"
+            },
+            {
+              "addNum": "m02.evidence",
+              "by": 1
+            },
+            {
+              "journal": "j.m02.ledger"
+            },
+            {
+              "giveItem": "item.ledger-copy"
+            },
+            {
+              "relation": "guildmaster-orrin",
+              "by": 1
+            }
+          ],
+          "next": "orrin.letter"
+        },
+        {
+          "text": "Pay 3 marks for a copy.",
+          "if": {
+            "marks": 3
+          },
+          "effects": [
+            {
+              "addMarks": -3
+            },
+            {
+              "addCard": "card.guild-ledger"
+            },
+            {
+              "addNum": "m02.evidence",
+              "by": 1
+            },
+            {
+              "journal": "j.m02.ledger"
+            },
+            {
+              "giveItem": "item.ledger-copy"
+            }
+          ],
+          "next": "orrin.paid"
+        },
+        {
+          "text": "Not now.",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "orrin.letter",
+      "speaker": "guildmaster-orrin",
+      "text": "A Nexus registry letter. Venn's hand, I'd know it anywhere. No charge. Here: Lyle workshop to Corvan Hale, one patterned blade, this season.",
+      "next": null
+    },
+    {
+      "id": "orrin.paid",
+      "speaker": "guildmaster-orrin",
+      "text": "Thank you. Here: Lyle workshop to Corvan Hale, one patterned blade, this season.",
+      "next": null
+    },
+    {
+      "id": "orrin.again",
+      "speaker": "guildmaster-orrin",
+      "text": "The guild keeps trade peaceful. A quiet correction is usually better than a loud one. But that is a guild view.",
+      "claimKind": "value",
+      "next": null
+    },
+    {
+      "id": "orrin.after",
+      "speaker": "guildmaster-orrin",
+      "text": "The market will remember how this was handled, one way or another.",
+      "next": null
+    },
+    {
+      "id": "sefa.start",
+      "speaker": "scholar-sefa",
+      "text": "A Guardian! I carry museum catalogues from your world. You're looking into the word 'Damascus'? It's a slippery word.",
+      "effects": [
+        {
+          "setFlag": "heard.sefa",
+          "value": true
+        },
+        {
+          "addCard": "card.met-techniques"
+        },
+        {
+          "addCard": "card.damascus-terms"
+        },
+        {
+          "addNum": "m02.evidence",
+          "by": 1
+        },
+        {
+          "journal": "j.m02.sefa"
+        }
+      ],
+      "options": [
+        {
+          "text": "What is wootz?",
+          "next": "sefa.wootz"
+        },
+        {
+          "text": "Show me a real example.",
+          "next": "sefa.example"
+        },
+        {
+          "text": "Ask my own question.",
+          "tag": "Free question",
+          "next": "sefa.free"
+        }
+      ]
+    },
+    {
+      "id": "sefa.wootz",
+      "speaker": "scholar-sefa",
+      "text": "Wootz is a historical crucible-steel tradition. Not every crucible steel is wootz. And a pattern on the surface does not prove that a blade is wootz.",
+      "claimKind": "interpretation",
+      "next": null
+    },
+    {
+      "id": "sefa.example",
+      "speaker": "scholar-sefa",
+      "text": "Here: the Met's record for ten wootz steel ingots with a bag. Catalogued as Indian, 'probably' eighteenth century. Keep the 'probably'. Open my catalogue on the table to read it.",
+      "claimKind": "observation",
+      "next": null
+    },
+    {
+      "id": "sefa.free",
+      "speaker": "scholar-sefa",
+      "text": "Ask, and I'll check my prepared topics.",
+      "next": null
+    },
+    {
+      "id": "sefa.again",
+      "speaker": "scholar-sefa",
+      "text": "My catalogue is on the table. And you can still ask me a question of your own.",
+      "options": [
+        {
+          "text": "Ask my own question.",
+          "tag": "Free question",
+          "next": "sefa.free"
+        },
+        {
+          "text": "Goodbye.",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "kip.field",
+      "speaker": "kip-arden",
+      "text": "Emberford! Smell that forge. Talk to Corvan at the striped stall first. Then the smith, the guild hall, and the scholar by the fountain.",
+      "next": null
+    },
+    {
+      "id": "kip.report",
+      "speaker": "kip-arden",
+      "text": "So? What did you decide about the blade? Come to the portal stone and tell me properly.",
+      "options": [
+        {
+          "text": "Here is what I found and what I decided.",
+          "effects": [
+            {
+              "setFlag": "chapter.done",
+              "value": true
+            }
+          ],
+          "next": "kip.recap"
+        },
+        {
+          "text": "Give me a minute.",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "kip.recap",
+      "speaker": "kip-arden",
+      "text": "A label is a claim. You checked who made it, how, and when, before deciding. Let's report back to Warden Ise.",
+      "next": null
+    },
+    {
+      "id": "kip.end",
+      "speaker": "kip-arden",
+      "text": "That was a good first week. I wonder what the Nexus will send us next.",
+      "next": null
+    },
+    {
+      "id": "tea.start",
+      "speaker": "villager-1",
+      "text": "Ember tea? One mark. It doesn't make you smarter, but it makes the walk nicer.",
+      "options": [
+        {
+          "text": "Buy a cup (1 mark).",
+          "if": {
+            "marks": 1
+          },
+          "next": "tea.thanks"
+        },
+        {
+          "text": "No thanks.",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "tea.thanks",
+      "speaker": "villager-1",
+      "text": "Enjoy. Mind the forge sparks.",
+      "next": null,
+      "effects": [
+        {
+          "addMarks": -1
+        },
+        {
+          "giveItem": "item.tea"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.m02.o1.1",
+      "objective": "m02.o1.arrive",
+      "depth": 1,
+      "text": "You are arriving in Emberford."
+    },
+    {
+      "id": "h.m02.o1.2",
+      "objective": "m02.o1.arrive",
+      "depth": 2,
+      "text": "Wait for the portal to finish."
+    },
+    {
+      "id": "h.m02.o1.3",
+      "objective": "m02.o1.arrive",
+      "depth": 3,
+      "text": "Arrival completes this step."
+    },
+    {
+      "id": "h.m02.o1.4",
+      "objective": "m02.o1.arrive",
+      "depth": 4,
+      "text": "If nothing happens, walk a step. Arrival is recorded when you move."
+    },
+    {
+      "id": "h.m02.o2.1",
+      "objective": "m02.o2.claim",
+      "depth": 1,
+      "text": "The trader Corvan has a striped stall in the market."
+    },
+    {
+      "id": "h.m02.o2.2",
+      "objective": "m02.o2.claim",
+      "depth": 2,
+      "text": "Ask Corvan what he says the blade is, and how he knows."
+    },
+    {
+      "id": "h.m02.o2.3",
+      "objective": "m02.o2.claim",
+      "depth": 3,
+      "text": "A seller's claim is a starting point. Note it, then look for other evidence."
+    },
+    {
+      "id": "h.m02.o2.4",
+      "objective": "m02.o2.claim",
+      "depth": 4,
+      "text": "Walk to the blue-and-white striped stall and talk to Corvan (red shirt)."
+    },
+    {
+      "id": "h.m02.o3.1",
+      "objective": "m02.o3.evidence",
+      "depth": 1,
+      "text": "Several people in Emberford know something about the blade."
+    },
+    {
+      "id": "h.m02.o3.2",
+      "objective": "m02.o3.evidence",
+      "depth": 2,
+      "text": "Who made it? Who recorded the sale? What do scholars say the words mean? What does the steel itself show?"
+    },
+    {
+      "id": "h.m02.o3.3",
+      "objective": "m02.o3.evidence",
+      "depth": 3,
+      "text": "Different kinds of evidence check each other: a maker's record, a sales record, a test sample and a scholarly account."
+    },
+    {
+      "id": "h.m02.o3.4",
+      "objective": "m02.o3.evidence",
+      "depth": 4,
+      "text": "Talk to Hesper at the forge (west), Guildmaster Orrin at the guild hall (north), Sefa by the fountain, or open the assay table. Any three count."
+    },
+    {
+      "id": "h.m02.o4.1",
+      "objective": "m02.o4.sort",
+      "depth": 1,
+      "text": "Hesper's anvil bench has process cards to sort."
+    },
+    {
+      "id": "h.m02.o4.2",
+      "objective": "m02.o4.sort",
+      "depth": 2,
+      "text": "Some steps belong to only one route. Some belong to both."
+    },
+    {
+      "id": "h.m02.o4.3",
+      "objective": "m02.o4.sort",
+      "depth": 3,
+      "text": "Pattern welding joins different pieces. Crucible steel is melted in a sealed pot. Shaping and etching happen in both."
+    },
+    {
+      "id": "h.m02.o4.4",
+      "objective": "m02.o4.sort",
+      "depth": 4,
+      "text": "Put 'stack', 'forge-weld' and 'twist' under pattern welding; 'seal', 'melt' and 'cool to ingot' under crucible; 'shape' and 'etch' under both."
+    },
+    {
+      "id": "h.m02.o5.1",
+      "objective": "m02.o5.decide",
+      "depth": 1,
+      "text": "Corvan is waiting for your decision."
+    },
+    {
+      "id": "h.m02.o5.2",
+      "objective": "m02.o5.decide",
+      "depth": 2,
+      "text": "Each choice affects Corvan, Hesper, the guild and future buyers differently."
+    },
+    {
+      "id": "h.m02.o5.3",
+      "objective": "m02.o5.decide",
+      "depth": 3,
+      "text": "There is no hidden correct choice. Choose one you can support with your evidence, and notice what it costs."
+    },
+    {
+      "id": "h.m02.o5.4",
+      "objective": "m02.o5.decide",
+      "depth": 4,
+      "text": "Talk to Corvan at the striped stall and pick one of the options."
+    },
+    {
+      "id": "h.m02.o6.1",
+      "objective": "m02.o6.report",
+      "depth": 1,
+      "text": "Kip is waiting by the portal stone."
+    },
+    {
+      "id": "h.m02.o6.2",
+      "objective": "m02.o6.report",
+      "depth": 2,
+      "text": "Tell Kip what you found."
+    },
+    {
+      "id": "h.m02.o6.3",
+      "objective": "m02.o6.report",
+      "depth": 3,
+      "text": "The game saves a checkpoint when you report."
+    },
+    {
+      "id": "h.m02.o6.4",
+      "objective": "m02.o6.report",
+      "depth": 4,
+      "text": "Walk to the glowing stone in the south of town and talk to Kip."
+    }
+  ]
+}
