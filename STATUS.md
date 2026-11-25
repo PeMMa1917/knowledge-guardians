@@ -37,6 +37,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 - **Read aloud** (spec 21): a "Read aloud" button on every conversation line, and a setting that reads each line and its options automatically. It uses the browser's own voice (Web Speech API).
 - **Key remapping** (spec 21.6): Controls, "Change keys". Players choose their own letter keys for walking, talking, hints, journal, portfolio and bag, or pick a ready-made layout (QWERTY, AZERTY, E S D F). A clash swaps the two keys. Arrows, Space, Enter, Esc and number keys always keep their jobs. Rules in `src/app/keymap.ts`. The top bar shows the player's keys.
 - **Colour-safe marks** (Settings): a blue and orange palette, and a symbol (✓, ✗, ~, !) on every good or bad result, so colour never carries meaning alone.
+- **Showdown on phones:** "Explain the moves" shows what each move does under its button (on by default on touch screens, where hover titles do not show). Narrow screens get a compact layout, and toasts move to the bottom.
 - **Balance reminder:** every 45 minutes of active play, Lumen suggests a real break. It never blocks play.
 - **MIS-10 and MIS-11 (Indigenous knowledge) are left out on purpose.** They need Indigenous content made with community advisors (spec section 88). Do not add them with a quick signal.
 
@@ -61,7 +62,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 - **Toasts:** at most three show at once and the rest wait their turn; XP from one action shows as one toast. A busy moment can still take about ten seconds to read through.
 - **Network:** this build environment could not open museum or encyclopedia websites, so no new historical sources were added after HIS-S31. New real people (for example the CAS figures) need a source that someone has opened and checked.
 
-- The Showdown panel is long on small phone screens. The log scrolls, but the layout needs a phone pass.
+- **Phone layout:** the Showdown panel now has a one-column layout, a two-column move grid and smaller text on narrow screens. Other panels (label builder, forge, Title Lock) have not had a phone pass yet.
 - Event pacing uses play time, so a player who idles in one place can still get an event. This is within the rules, but check it in playtests.
 - The teacher view trusts the player name in each file. Two students with the same name merge. Ask students to use full names.
 - Code licence is not chosen yet (project owner decision).

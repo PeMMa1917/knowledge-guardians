@@ -249,3 +249,28 @@ button.speak { display: block; margin: 0 0 0.4em auto; }
 .colour-safe .unfair::before, .colour-safe .bear-challenges::before { content: "✗ "; font-weight: 700; }
 .colour-safe .bear-qualifies::before { content: "~ "; font-weight: 700; }
 .colour-safe .sort-list li.mismatch::before { content: "! "; font-weight: 700; }
+
+/* Showdown: move explanations and phone layout. */
+.move-head { justify-content: space-between; align-items: baseline; }
+.link-btn { background: none; border: none; color: var(--cyan); text-decoration: underline; padding: 0.2em 0; font-size: 0.9rem; }
+.moves .move-desc { display: none; font-size: 0.78rem; color: var(--ink-dim); font-weight: 400; margin-top: 0.2em; }
+.showdown.explain .moves .move-desc { display: block; }
+.showdown.explain .moves button { text-align: left; }
+.moves select, .move-pair { max-width: 100%; }
+@media (max-width: 640px) {
+  .showdown h2 { font-size: 1.2rem; }
+  .showdown .two-col { grid-template-columns: 1fr; gap: 0.2em; }
+  .showdown .two-col h3 { margin: 0.4em 0 0.1em; font-size: 1rem; }
+  .showdown .claim-text { font-size: 0.95rem; margin: 0.2em 0; }
+  .showdown .links { font-size: 0.85rem; margin: 0.2em 0; }
+  .showdown .sd-log { max-height: 7rem; font-size: 0.85rem; }
+  .showdown .moves { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4em; }
+  .showdown .moves > select, .showdown .moves > .move-pair { grid-column: 1 / -1; width: 100%; }
+  .showdown .move-pair select { width: 100%; }
+  .showdown .moves button { width: 100%; padding: 0.5em 0.6em; font-size: 0.9rem; }
+  .toasts { top: auto; bottom: 12px; }
+  .toast { font-size: 0.8rem; padding: 0.35em 0.7em; }
+  .modal-wrap { padding: 0.5rem; }
+  .panel { padding: 1em; max-height: 94vh; }
+}
+.moves .primary .move-desc { color: inherit; opacity: 0.85; }

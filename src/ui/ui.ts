@@ -807,6 +807,8 @@ export class UI implements UIApi {
     if (!rec) return;
     c.dispatch({ type: 'ShowdownStart', showdown: id });
     const box = this.openModal('showdown wide', rec.title);
+    // Touch screens cannot show hover titles, so move explanations start visible there (phone pass).
+    let explain = (() => { try { return window.matchMedia('(pointer: coarse)').matches; } catch { return false; } })();
     const opp = c.pack.characters.find((x) => x.id === rec.opponent);
     const move = (m: ShowdownMove) => { c.dispatch({ type: 'ShowdownMove', move: m }); this.sfx('sfx.click'); render(); };
     const pick = (label: string, opts: { v: string; t: string }[], go: (v: string) => void) => {
@@ -843,7 +845,12 @@ export class UI implements UIApi {
         return;
       }
       const wit = rec.witnesses.filter((w) => !sd.used.includes(`witness:${w.id}`) && c.check(w.if));
-      box.append(h('h3', {}, 'Your move'), h('div', { class: 'moves' },
+      const mv = (k: keyof typeof MOVE_HELP, label: string, m: ShowdownMove, cls = '') =>
+        h('button', { class: cls, title: MOVE_HELP[k], onclick: () => move(m) }, label, h('small', { class: 'move-desc' }, MOVE_HELP[k]));
+      box.classList.toggle('explain', explain);
+      box.append(h('div', { class: 'row move-head' }, h('h3', {}, 'Your move'),
+        h('button', { class: 'link-btn', 'aria-pressed': String(explain), onclick: () => { explain = !explain; render(); } }, explain ? 'Hide what moves do' : 'Explain the moves')),
+        h('div', { class: 'moves' },
         pick('Support with a card', cards.filter((x) => !sd.used.includes(x.v)), (v) => move({ move: 'support', card: v })),
         h('span', { class: 'move-pair' },
           pick('Challenge a link', rec.opponentClaim.links.filter((l) => !sd.cracked.includes(l.id)).map((l) => ({ v: l.id, t: l.text })), (v) => {
@@ -852,14 +859,14 @@ export class UI implements UIApi {
           })),
         pick('Counterexample', cards, (v) => move({ move: 'counter', card: v })),
         wit.length ? pick('Call a witness', wit.map((w) => ({ v: w.id, t: w.name })), (v) => move({ move: 'witness', witness: v })) : '',
-        h('button', { title: MOVE_HELP.qualify, onclick: () => move({ move: 'qualify' }) }, 'Qualify my claim'),
-        h('button', { title: MOVE_HELP.reframe, onclick: () => move({ move: 'reframe' }) }, 'Reframe the question'),
-        sd.openPoint ? h('button', { class: 'primary', title: MOVE_HELP.concede, onclick: () => move({ move: 'concede' }) }, 'Concede the fair point') : '',
-        h('button', { title: MOVE_HELP.source, onclick: () => move({ move: 'source' }) }, 'Ask for the source'),
-        h('button', { class: 'cheap', title: MOVE_HELP.attack, onclick: () => move({ move: 'attack' }) }, 'Attack the person'),
-        h('button', { class: 'cheap', title: MOVE_HELP.shout, onclick: () => move({ move: 'shout' }) }, 'Shout louder'),
-        h('button', { class: 'primary', title: MOVE_HELP.rest, onclick: () => move({ move: 'rest' }) }, 'Rest my case')),
-        h('p', { class: 'fine' }, 'Hover or focus a move to see what it does. Cheap shots never damage a claim.'));
+        mv('qualify', 'Qualify my claim', { move: 'qualify' }),
+        mv('reframe', 'Reframe the question', { move: 'reframe' }),
+        sd.openPoint ? mv('concede', 'Concede the fair point', { move: 'concede' }, 'primary') : '',
+        mv('source', 'Ask for the source', { move: 'source' }),
+        mv('attack', 'Attack the person', { move: 'attack' }, 'cheap'),
+        mv('shout', 'Shout louder', { move: 'shout' }, 'cheap'),
+        mv('rest', 'Rest my case', { move: 'rest' }, 'primary')),
+        h('p', { class: 'fine' }, 'Hover a move, or use "Explain the moves", to see what each one does. Cheap shots never damage a claim.'));
       const logEl = box.querySelector('.sd-log'); if (logEl) logEl.scrollTop = logEl.scrollHeight;
       if (sd.claim) box.scrollTop = box.scrollHeight;
     };
