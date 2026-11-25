@@ -314,6 +314,15 @@ DRAW['plaque.clean'] = [16, 24, (g) => plaquePost(g, '#2c1d12', '#e9c45a')];
 DRAW['plaque.window'] = [16, 24, (g) => plaquePost(g, '#2c1d12', '#e9c45a', '#b07a44')];
 DRAW['plaque.repaint'] = [16, 24, (g) => plaquePost(g, '#7a1f24', '#ffd75e')];
 
+// The guild clerk's map (original art): a paper map pinned on an easel, with three coloured dots.
+DRAW['clerk-map'] = [16, 24, (g) => {
+  R(g, '#5b3b22', 3, 12, 1, 12); R(g, '#5b3b22', 12, 12, 1, 12); R(g, '#5b3b22', 7, 14, 2, 10);
+  R(g, '#3b2a1a', 1, 3, 14, 11); R(g, '#efe6cf', 2, 4, 12, 9); R(g, '#bdb4a2', 3, 5, 10, 7);
+  R(g, '#9fb7c8', 7, 7, 3, 3); R(g, '#d9534a', 4, 6, 2, 2); R(g, '#a87445', 11, 5, 1, 2);
+  R(g, '#e07a5f', 3, 11, 1, 1); R(g, '#5fa8d3', 12, 11, 1, 1); R(g, '#7fd3a8', 9, 5, 1, 1);
+  R(g, '#4aa3ff', 4, 10, 1, 1); R(g, '#4aa3ff', 5, 9, 1, 1);
+}];
+
 // The door to the Guardian's quarters (original art): a round-topped oak door with a star.
 DRAW['quarters-door'] = [16, 24, (g) => {
   R(g, '#3b2a1a', 1, 3, 14, 21); R(g, '#3b2a1a', 3, 1, 10, 2);

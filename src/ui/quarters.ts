@@ -21,6 +21,7 @@ const ICONS: Record<string, { pal: Record<string, string>; rows: string[] }> = {
   notice: { pal: { a: '#f3eee0', b: '#8a7f66', c: '#b8483e' }, rows: ['', ' aaaaaaaa', ' a  c   a', ' abbbbb a', ' a      a', ' abbbb  a', ' a      a', ' abbbbbba', ' a      a', ' aaaaaaaa', '', ''] },
   'thread-knot': { pal: { a: '#e9cf7a', b: '#c9a24a' }, rows: ['', 'a', ' a', '  a  bb', '   abbab', '    bab', '   babba', '    bb  a', '         a', '          a', '', ''] },
   'check-weight': { pal: { a: '#d9b45a', b: '#6b4f19', c: '#fff3c4' }, rows: ['', '', '    bb', '   b  b', '   bbbb', '  aaaaaa', '  acaaaa', ' aaaaaaaa', ' aaaaaaaa', ' bbbbbbbb', '', ''] },
+  'copper-pot': { pal: { a: '#c87533', b: '#8a4a22', c: '#f2b880' }, rows: ['', '', '  bbbbbbb', '   accaa', '  aacaaaa', ' baacaaaab', ' baaaaaaab', '  aaaaaaa', '  aaaaaaa', '   bbbbb', '', ''] },
   yarn: { pal: { a: '#d9534a', b: '#e9cf7a' }, rows: ['', '', '   aab', '  aabba', ' aabbaab', ' abbaabb', ' bbaabba', '  aabba', '   bba  a', '         a', '          b', ''] },
   'soot-jar': { pal: { a: '#cfe3ef', b: '#3b2f25', c: '#8a5a30' }, rows: ['', '', '   cccc', '   a  a', '  a    a', '  a    a', '  abbbba', '  abbbba', '  abbbba', '   aaaa', '', ''] },
   'sign-splinter': { pal: { a: '#b07a44', b: '#5b3b22', c: '#e9c45a' }, rows: ['', '', '         a', '       aab', '     aacb', '   aaab', ' aaabb', 'abbb', '', '', '', ''] },

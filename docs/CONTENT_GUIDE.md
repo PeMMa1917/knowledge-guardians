@@ -167,6 +167,8 @@ Puzzles are in `src/content/puzzles.json`. An `order` puzzle can be a knowledge-
 
 A `restore` puzzle has `layers` (top first: `id`, `name`, `colour`, `text`), a `face` (how the object looks now: `bg`, `ink`, `lines`, optional `window`) and `methods`. Each method has `keeps` and `loses` (together they name every layer once), `reversible`, a `result`, its own `face`, and `labels` (at least one `honest` and one not, each with a `why`). Every method must be a fair choice: the puzzle checks only that the label says honestly what was kept and lost. Give each method the same reward. To show the chosen method on the map, give the object `artBy: { flag, keys }`.
 
+A `sightlines` puzzle has a `grid` (`w`, `h`), `blocks` (cells that block the view: `x`, `y`, `w`, `h`, `label`, `kind`), `spots` (where things happened) and `witnesses`, each with a place and `claims` (`spot`, `text`). The map decides what each witness could see. A claim that cannot be seen must have `heard` (who told the witness); the validator checks this against the map. Give the puzzle exactly one fair report in `reports`. After you change the map, run `npm test`.
+
 ## Add a practice clue board
 
 Add a record to `clueBoards` (in `src/content/clueboard.json`) with the `showdown` id, a `title`, an `intro`, `onComplete` and a `weave`. The board takes its claims, links and support from the Showdown record, so no other data is needed. Place it on a map with `kind: 'board'` and `board: <id>`.

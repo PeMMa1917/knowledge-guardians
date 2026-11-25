@@ -11,7 +11,7 @@ import { CAMPAIGN_SCHEMA, type Pronouns } from './types';
 import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
 import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
-import { answerRound, checkOrder, peelLayer, restoreWith, weighRound } from './puzzles';
+import { answerRound, checkOrder, judgeSight, peelLayer, restoreWith, weighRound } from './puzzles';
 import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
 import { useSignature } from './skills';
@@ -33,6 +33,8 @@ export type Command =
   | { type: 'PuzzleWeigh'; puzzle: string; round: number; weights: string[] }
   | { type: 'PuzzlePeel'; puzzle: string }
   | { type: 'PuzzleRestore'; puzzle: string; method: string; label: number }
+  | { type: 'PuzzleSight'; puzzle: string; witness: string; claim: number; saw: boolean }
+  | { type: 'PuzzleReport'; puzzle: string; index: number }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
   | { type: 'PhotoCaptioned'; right: number; total: number }
   | { type: 'UnpinYarn'; board: string; claim: string; card: string }
@@ -495,14 +497,25 @@ export class Engine {
           events.push({ kind: 'yarn', board: rec.id, claim: cmd.claim, card: cmd.card, tone: v.tone, text: v.text, done });
           break;
         }
-        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': {
+        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': {
           const rec = this.pack.puzzles.find((x) => x.id === cmd.puzzle);
           if (!rec) throw new Error('Unknown puzzle');
           if (rec.needs && !s.inventory[rec.needs.item]) throw new Error(rec.needs.sealed);
           const F = `puzzle.${rec.id}`;
           const wasDone = s.flags[`${F}.done`] === true;
           let ok: boolean, text: string, solved: boolean, gapAt: number | null = null;
-          if (cmd.type === 'PuzzlePeel') {
+          if (cmd.type === 'PuzzleSight') {
+            const r = judgeSight(rec, cmd.witness, cmd.claim, cmd.saw);
+            ok = r.ok; text = r.text; solved = false;
+            s = apply(r.ok ? [{ setFlag: `${F}.c.${cmd.witness}.${cmd.claim}`, value: true }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);
+          } else if (cmd.type === 'PuzzleReport') {
+            if (rec.type !== 'sightlines') throw new Error('Not a sightlines puzzle');
+            if (!rec.witnesses.every((w) => w.claims.every((_, i) => s.flags[`${F}.c.${w.id}.${i}`] === true))) throw new Error('Sort every claim first');
+            const r = rec.reports[cmd.index];
+            if (!r) throw new Error('No such report');
+            ok = r.honest; text = r.why; solved = r.honest;
+            if (!r.honest) s = apply([{ addNum: `${F}.misses`, by: 1 }], s, out);
+          } else if (cmd.type === 'PuzzlePeel') {
             const r = peelLayer(rec, Number(s.flags[`${F}.peeled`] ?? 0));
             ok = r.ok; text = r.text; solved = false;
             s = apply([{ addNum: `${F}.peeled`, by: 1 }], s, out);

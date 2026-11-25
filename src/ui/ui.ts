@@ -13,7 +13,7 @@ import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads,
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
-import { tiltOf } from '../domain/puzzles';
+import { sightBlock, tiltOf } from '../domain/puzzles';
 import { chime, playNotes } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
@@ -26,7 +26,7 @@ import { OPPONENT, judgeYarn, viewBoard } from '../domain/clueboard';
 import { EMOTES } from '../domain/emotes';
 import { STAGE_LABEL, nextStep, skillStage, type SkillStage } from '../domain/skills';
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
-import type { PlaqueFace, Pronouns, RestoreLayer } from '../domain/types';
+import type { PlaqueFace, Pronouns, RestoreLayer, PuzzleRecord } from '../domain/types';
 import { ACTIONS, PRESETS, actionFor, assignKey, mappableKey, type Action } from '../app/keymap';
 import type { GameEvent, SimulationResult } from '../domain/engine';
 import { conceptRings, conceptXP, totalXP } from '../domain/permanent';
@@ -112,6 +112,36 @@ function balanceSvg(load: string, weights: { label: string; mass: number; untrus
 }
 
 const escSvg = (t: string) => t.replace(/[&<>"]/g, (ch) => `&#${ch.charCodeAt(0)};`);
+
+/** The guild clerk's map for a sightlines puzzle. Blue lines are clear views; orange stops with ✕. */
+function sightMapSvg(p: Extract<PuzzleRecord, { type: 'sightlines' }>, active: string | null, onPick: (id: string) => void): HTMLElement {
+  const C = 20, W = p.grid.w * C, H = p.grid.h * C;
+  const wrap = h('div', { class: 'sight-wrap' });
+  const blocks = p.blocks.map((b) => {
+    const x = b.x * C, y = b.y * C, w = b.w * C, hh = b.h * C;
+    if (b.kind === 'fountain') return `<circle cx="${x + w / 2}" cy="${y + hh / 2}" r="${Math.min(w, hh) / 2 - 1}" fill="#9fb7c8" stroke="#5b6b7a" stroke-width="3"/><circle cx="${x + w / 2}" cy="${y + hh / 2}" r="${Math.min(w, hh) / 5}" fill="#cfe3ef"/>`;
+    if (b.kind === 'crates') return `<rect x="${x + 1}" y="${y + 1}" width="${w - 2}" height="${hh - 2}" fill="#a87445" stroke="#5b3b22" stroke-width="2"/><path d="M${x + 1} ${y + hh / 2}H${x + w - 1}M${x + 1} ${y + 1}L${x + w - 1} ${y + hh / 2}" stroke="#5b3b22"/>`;
+    return `<rect x="${x + 1}" y="${y + 1}" width="${w - 2}" height="${hh - 2}" rx="3" fill="#d9534a" stroke="#7a2a22" stroke-width="2"/>${[0, 1, 2, 3, 4].map((i) => `<rect x="${x + 2 + i * (w - 4) / 5}" y="${y + 2}" width="${(w - 4) / 10}" height="${hh - 4}" fill="#f3eee0" opacity="0.8"/>`).join('')}`;
+  }).join('');
+  const letters = 'ABCDEFGH';
+  const spots = p.spots.map((s, i) => `<g><circle cx="${s.x * C + C / 2}" cy="${s.y * C + C / 2}" r="8" fill="#e9cf7a" stroke="#6b4f19" stroke-width="2"/><text x="${s.x * C + C / 2}" y="${s.y * C + C / 2 + 4}" text-anchor="middle" font-size="11" font-weight="700" fill="#2a1d14">${letters[i]}</text></g>`).join('');
+  let rays = '';
+  const w = p.witnesses.find((x) => x.id === active);
+  if (w) for (const s of p.spots) {
+    const ax = w.x * C + C / 2, ay = w.y * C + C / 2, bx = s.x * C + C / 2, by = s.y * C + C / 2;
+    const b = sightBlock(p.blocks, w.x, w.y, s.x, s.y);
+    if (!b) rays += `<line class="ray" x1="${ax}" y1="${ay}" x2="${bx}" y2="${by}" stroke="#4aa3ff" stroke-width="3"/>`;
+    else {
+      const mx = b.x * C, my = b.y * C;
+      rays += `<line class="ray" x1="${ax}" y1="${ay}" x2="${mx}" y2="${my}" stroke="#4aa3ff" stroke-width="3"/><line x1="${mx}" y1="${my}" x2="${bx}" y2="${by}" stroke="#ff8a3a" stroke-width="2" stroke-dasharray="4 4" opacity="0.8"/><text x="${mx}" y="${my + 5}" text-anchor="middle" font-size="16" font-weight="700" fill="#ff8a3a" stroke="#2a1d14" stroke-width="0.8">✕</text>`;
+    }
+  }
+  const people = p.witnesses.map((x) => `<g class="witness" data-w="${x.id}" tabindex="-1"><circle cx="${x.x * C + C / 2}" cy="${x.y * C + C / 2}" r="${active === x.id ? 10 : 8}" fill="${x.colour}" stroke="${active === x.id ? '#fff3c4' : '#2a1d14'}" stroke-width="${active === x.id ? 3 : 2}"/><text x="${x.x * C + C / 2}" y="${x.y * C + C / 2 + 4}" text-anchor="middle" font-size="11" font-weight="700" fill="#14101c">${x.name[0]}</text></g>`).join('');
+  wrap.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" aria-hidden="true"><defs><pattern id="cobble" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#bdb4a2"/><path d="M0 10H20M10 0V10M0 20V10M20 20V10" stroke="#a39a88" stroke-width="1"/></pattern></defs>
+  <rect width="${W}" height="${H}" rx="6" fill="url(#cobble)"/>${blocks}${rays}${spots}${people}</svg>`;
+  wrap.querySelectorAll<SVGGElement>('.witness').forEach((g) => g.addEventListener('click', () => onPick(g.dataset.w!)));
+  return wrap;
+}
 
 /** The face of a restored object (data-driven: background, ink, lines, optional window). */
 function plaqueSvg(f: PlaqueFace, label: string): HTMLElement {
@@ -1001,6 +1031,8 @@ export class UI implements UIApi {
     let pan: string[] = [];
     let panRound = -1;
     let pickMethod: string | null = null;
+    let activeW: string | null = null;
+    const sightNotes = new Map<string, string>();
     // A fixed shuffle (not random), so the tiles never sit in the answer order.
     const pool = rec.type === 'order' ? [...rec.tiles].sort((a, b) => (a.id.length * 7 + a.text.length) % 5 - (b.id.length * 7 + b.text.length) % 5 || a.text.localeCompare(b.text)) : [];
     const take = (ev: GameEvent[]) => {
@@ -1045,6 +1077,40 @@ export class UI implements UIApi {
               h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleWeigh', puzzle: rec.id, round: n, weights: [...pan] })) }, 'Record this weighing'),
               h('button', { onclick: () => { pan = []; feedback = null; render(); } }, 'Clear the pan')));
         } else if (done) box.append(h('p', { class: 'fair' }, 'Every weighing is in the record book.'));
+      } else if (rec.type === 'sightlines') {
+        const judged = (w: string, i: number) => c.state.flags[`${F}.c.${w}.${i}`] === true;
+        const all = rec.witnesses.every((w) => w.claims.every((_, i) => judged(w.id, i)));
+        const letters = 'ABCDEFGH';
+        box.append(h('div', { class: 'sight-top' },
+          sightMapSvg(rec, activeW, (id) => { activeW = id; this.sfx('sfx.click'); render(); }),
+          h('div', { class: 'sight-legend' },
+            h('p', { class: 'fine' }, 'Click a person on the map, or a name below.'),
+            h('ul', {}, ...rec.spots.map((sp, i) => h('li', {}, h('strong', {}, `${letters[i]}: `), sp.label))),
+            h('p', { class: 'fine' }, '━ Blue: a clear view. ✕ Orange: something is in the way.'))));
+        box.append(h('div', { class: 'witness-grid' }, ...rec.witnesses.map((w) => h('div', { class: `witness-card ${activeW === w.id ? 'active' : ''}` },
+          h('button', { type: 'button', class: 'who', style: { borderColor: w.colour }, 'aria-pressed': String(activeW === w.id), onclick: () => { activeW = w.id; render(); } },
+            h('span', { class: 'dot', style: { background: w.colour } }), `${w.name}: draw sightlines`),
+          ...w.claims.map((cl, i) => {
+            const key = `${w.id}.${i}`;
+            return h('div', { class: `claim ${judged(w.id, i) ? 'sorted' : ''}` }, h('p', {}, `“${cl.text}”`),
+              judged(w.id, i) ? h('p', { class: 'fine' }, sightNotes.get(key) ?? 'Sorted.')
+                : h('div', { class: 'row' },
+                  ...([[true, 'Saw it'], [false, 'Could not see it']] as const).map(([saw, t]) => h('button', { type: 'button', onclick: () => {
+                    const ev = c.dispatch({ type: 'PuzzleSight', puzzle: rec.id, witness: w.id, claim: i, saw });
+                    const r = ev.find((e) => e.kind === 'puzzle') as Extract<GameEvent, { kind: 'puzzle' }> | undefined;
+                    if (r?.ok) sightNotes.set(key, r.text);
+                    activeW = w.id; take(ev);
+                  } }, t))));
+          })))));
+        if (all) {
+          box.append(h('h3', {}, done ? 'Your report' : 'Write the report for the driver'),
+            done ? h('p', { class: 'fair' }, rec.reports.find((r) => r.honest)!.text)
+              : h('div', { class: 'options notice-options' }, ...rec.reports.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text)))));
+        }
+        if (feedback) {
+          const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
+          box.append(fb); requestAnimationFrame(() => fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+        }
       } else if (rec.type === 'restore') {
         const seen = Number(c.state.flags[`${F}.peeled`] ?? 0);
         const cur = c.state.flags[`${F}.method`];

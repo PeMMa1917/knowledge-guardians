@@ -8,6 +8,7 @@
 import type { Condition, ContentPack, Effect, Weave } from './types';
 import { ATLS, CONCEPTS, PROFILE } from './types';
 import { SUBJECTS } from './curriculum';
+import { sightBlock } from './puzzles';
 import { openCombinations } from './lock';
 
 const MAX_TEXT = 2000;
@@ -181,6 +182,20 @@ export function validateContent(pack: ContentPack): string[] {
         if (!m.labels.some((l) => l.honest) || !m.labels.some((l) => !l.honest)) p.push(`puzzle ${z.id} method ${m.id}: needs an honest label and a label that is not`);
         m.labels.forEach((l, i) => { if (!l.why.trim()) p.push(`puzzle ${z.id} method ${m.id} label ${i + 1}: needs a reason`); });
       });
+    }
+    else if (z.type === 'sightlines') {
+      const spots = new Map(z.spots.map((x) => [x.id, x]));
+      let seen = 0, unseen = 0;
+      z.witnesses.forEach((w) => w.claims.forEach((c, i) => {
+        const sp = spots.get(c.spot);
+        if (!sp) { p.push(`puzzle ${z.id} ${w.id} claim ${i + 1}: unknown spot ${c.spot}`); return; }
+        const could = !sightBlock(z.blocks, w.x, w.y, sp.x, sp.y);
+        if (could) seen++; else unseen++;
+        if (!could && !c.heard) p.push(`puzzle ${z.id} ${w.id} claim ${i + 1}: cannot be seen, so say where the witness heard it`);
+        if (could && c.heard) p.push(`puzzle ${z.id} ${w.id} claim ${i + 1}: can be seen, so remove 'heard'`);
+      }));
+      if (!seen || !unseen) p.push(`puzzle ${z.id}: needs claims that were seen and claims that were not`);
+      if (z.reports.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair report`);
     }
     else if (z.type === 'balance') z.rounds.forEach((r, i) => {
       // Every round must balance with the trusted weights alone.

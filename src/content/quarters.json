@@ -89,6 +89,16 @@
    "where": "Emberford: the practice clue board."
   },
   {
+   "id": "copper-pot",
+   "name": "A little copper pot",
+   "text": "A gift from the cart driver. Each witness saw one part; together the parts made a fair account.",
+   "if": {
+    "flag": "puzzle.tipped-cart.done",
+    "eq": true
+   },
+   "where": "Emberford: the guild clerk's map."
+  },
+  {
    "id": "soot-jar",
    "name": "A tiny jar of soot",
    "text": "From the Founders' Plaque. Even dirt can be evidence of where a thing has been.",

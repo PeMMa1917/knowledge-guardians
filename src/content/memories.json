@@ -272,6 +272,33 @@
     "flagSet": "puzzle.founders-plaque.method"
    },
    "line": "I read your label on the gate. 'Which words belong to which time': I will use that in my own catalogue."
+  },
+  {
+   "id": "cart.mara",
+   "character": "fruit-seller",
+   "if": {
+    "flag": "puzzle.tipped-cart.done",
+    "eq": true
+   },
+   "line": "I only said a boy picked up a pot. By lunch it was 'a gang of thieves'. Thank you for writing what I actually saw."
+  },
+  {
+   "id": "cart.idris",
+   "character": "porter-idris",
+   "if": {
+    "flag": "puzzle.tipped-cart.done",
+    "eq": true
+   },
+   "line": "The guild fixed the loose stone this morning. Your report did that, not my shouting."
+  },
+  {
+   "id": "cart.hana",
+   "character": "stallkeeper-hana",
+   "if": {
+    "flag": "puzzle.tipped-cart.done",
+    "eq": true
+   },
+   "line": "I told everyone about the boy as if I had seen him. I had not. I heard it from Mara. I will say so next time."
   }
  ]
 }

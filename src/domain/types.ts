@@ -485,7 +485,18 @@ export type PuzzleRecord = {
    * was kept and what was lost. Every method is valid; only the label is checked.
    */
   | { type: 'restore'; object: string; layers: RestoreLayer[]; methods: RestoreMethod[]; face: PlaqueFace }
+  /**
+   * Sightlines (perspective; first-hand and second-hand knowledge): witnesses stand in a
+   * small map with things that block the view. The player draws each witness's sightlines
+   * and sorts each claim into "saw it" or "could not see it". Then the player chooses a
+   * fair report. The map decides what each person could see, so the answer is checkable.
+   */
+  | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string }[] }
 );
+
+export interface SightBlock { x: number; y: number; w: number; h: number; label: string; kind: 'stall' | 'fountain' | 'crates' | 'cart' }
+export interface SightSpot { id: string; x: number; y: number; label: string }
+export interface Witness { id: string; name: string; x: number; y: number; colour: string; claims: { spot: string; text: string; heard?: string }[] }
 
 /** How the object's face looks: background, ink and short lines; an optional small window. */
 export interface PlaqueFace { bg: string; ink: string; lines: string[]; window?: { bg: string; ink: string; lines: string[] } }

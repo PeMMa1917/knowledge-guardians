@@ -670,6 +670,171 @@
      ]
     }
    ]
+  },
+  {
+   "id": "tipped-cart",
+   "type": "sightlines",
+   "title": "The Tipped Cart",
+   "intro": "Yesterday a cart of copper pots tipped over in the square. The driver left a note at the guild: she will pay for the damage that she caused, but first she asks what really happened. Three people tell you what they saw. The guild clerk has drawn a map of that corner. Click a person to draw their sightlines, then sort each claim.",
+   "skills": [
+    "SK-KNO-05",
+    "SK-MED-04",
+    "SK-RSC-08"
+   ],
+   "weave": {
+    "concepts": [
+     "perspective",
+     "evidence"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "history",
+     "psychology"
+    ],
+    "aoks": [
+     "HUM",
+     "HIS"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.perspective.sight"
+    },
+    {
+     "journal": "j.sight"
+    }
+   ],
+   "grid": {
+    "w": 16,
+    "h": 10
+   },
+   "blocks": [
+    {
+     "x": 3,
+     "y": 4,
+     "w": 3,
+     "h": 3,
+     "label": "Mara's fruit stall",
+     "kind": "stall"
+    },
+    {
+     "x": 8,
+     "y": 5,
+     "w": 3,
+     "h": 3,
+     "label": "The fountain",
+     "kind": "fountain"
+    },
+    {
+     "x": 13,
+     "y": 1,
+     "w": 2,
+     "h": 3,
+     "label": "A stack of crates",
+     "kind": "crates"
+    }
+   ],
+   "spots": [
+    {
+     "id": "stone",
+     "x": 6,
+     "y": 2,
+     "label": "the loose stone"
+    },
+    {
+     "id": "tip",
+     "x": 12,
+     "y": 6,
+     "label": "the place where the cart tipped"
+    },
+    {
+     "id": "boy",
+     "x": 3,
+     "y": 8,
+     "label": "the corner where a pot was taken"
+    }
+   ],
+   "witnesses": [
+    {
+     "id": "mara",
+     "name": "Mara",
+     "x": 1,
+     "y": 8,
+     "colour": "#e07a5f",
+     "claims": [
+      {
+       "spot": "boy",
+       "text": "A boy picked up a pot and ran off with it."
+      },
+      {
+       "spot": "tip",
+       "text": "The cart tipped over by the fountain.",
+       "heard": "Mara heard it from Idris, who ran over to help."
+      }
+     ]
+    },
+    {
+     "id": "idris",
+     "name": "Idris",
+     "x": 15,
+     "y": 8,
+     "colour": "#5fa8d3",
+     "claims": [
+      {
+       "spot": "tip",
+       "text": "The cart tipped over when the wheel came off."
+      },
+      {
+       "spot": "stone",
+       "text": "The wheel hit a loose stone first.",
+       "heard": "Idris heard it from Hana, at the well that evening."
+      }
+     ]
+    },
+    {
+     "id": "hana",
+     "name": "Hana",
+     "x": 9,
+     "y": 1,
+     "colour": "#7fd3a8",
+     "claims": [
+      {
+       "spot": "stone",
+       "text": "The wheel hit a loose stone and cracked."
+      },
+      {
+       "spot": "boy",
+       "text": "A boy stole a pot. Everyone saw it.",
+       "heard": "Hana heard it from Mara. So this is not a second witness: two voices, one source."
+      }
+     ]
+    }
+   ],
+   "reports": [
+    {
+     "text": "Three witnesses saw the whole accident, so the driver must pay for everything.",
+     "honest": false,
+     "why": "No one saw the whole accident. Each person saw one part from where they stood. And who should pay is a different question, about fairness, not about what was seen."
+    },
+    {
+     "text": "Hana saw the wheel hit a loose stone. Idris saw the cart tip by the fountain. Mara saw a boy pick up a pot; nobody saw where he went. Each part has one first-hand witness.",
+     "honest": true,
+     "why": "The report gives each part to the person who could see it, and it says where the record stops. The driver thanks you: the loose stone is the guild's to fix."
+    },
+    {
+     "text": "The witnesses tell different stories, so we cannot know what happened.",
+     "honest": false,
+     "why": "Their stories do not contradict each other. They saw different parts from different places. Put the first-hand parts together and you have a fair account."
+    },
+    {
+     "text": "Two witnesses saw a boy steal a pot.",
+     "honest": false,
+     "why": "Hana heard it from Mara: two voices, one source. And Mara saw a boy pick up a pot. 'Steal' adds a claim that she did not see."
+    }
+   ]
   }
  ],
  "missions": [
@@ -871,6 +1036,49 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-V01",
+   "world": "WORLD-02",
+   "title": "The Tipped Cart",
+   "knowledgeQuestion": "How does where we stand shape what we can claim to know?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "cart.o1.sight",
+     "title": "Optional: sort the witness claims on the guild clerk's map (south-west corner, below the fruit stall).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.tipped-cart.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "evidence"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "history",
+       "psychology"
+      ],
+      "aoks": [
+       "HUM",
+       "HIS"
+      ]
+     },
+     "skills": [
+      "SK-KNO-05",
+      "SK-MED-04",
+      "SK-RSC-08"
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -993,6 +1201,30 @@
    "objective": "res.o1.plaque",
    "depth": 4,
    "text": "For any method, choose the label that names the dates of the layers and what was removed or covered."
+  },
+  {
+   "id": "h.cart.1",
+   "objective": "cart.o1.sight",
+   "depth": 1,
+   "text": "Click a person on the map. Their sightlines show what they could see."
+  },
+  {
+   "id": "h.cart.2",
+   "objective": "cart.o1.sight",
+   "depth": 2,
+   "text": "A red line stops at the thing in the way. Then the person did not see that spot."
+  },
+  {
+   "id": "h.cart.3",
+   "objective": "cart.o1.sight",
+   "depth": 3,
+   "text": "When a person could not see a spot, ask who told them. Two people who heard it from one person are one source."
+  },
+  {
+   "id": "h.cart.4",
+   "objective": "cart.o1.sight",
+   "depth": 4,
+   "text": "Mara saw the boy; Idris saw the cart tip; Hana saw the stone. Choose the report that gives each part to one first-hand witness."
   }
  ],
  "journal": [
@@ -1020,6 +1252,11 @@
    "id": "j.restore",
    "text": "The Founders' Plaque: every restoration keeps some evidence and loses some. The honest part is the label: it says which words belong to which time, and what is gone.",
    "claimKind": "interpretation"
+  },
+  {
+   "id": "j.sight",
+   "text": "The Tipped Cart: where a person stands decides what they can know first-hand. Two people who heard a story from one person are one source, not two.",
+   "claimKind": "interpretation"
   }
  ],
  "criteria": [
@@ -1046,6 +1283,11 @@
   {
    "id": "crit.responsibility.restore",
    "concept": "responsibility",
+   "maximum": 5
+  },
+  {
+   "id": "crit.perspective.sight",
+   "concept": "perspective",
    "maximum": 5
   }
  ]

@@ -14,7 +14,7 @@
  * Grammar and citation have conventions, so these puzzles do have right answers.
  * They are never about contested knowledge. Pure rules, no DOM.
  */
-import type { PuzzleRecord } from './types';
+import type { PuzzleRecord, SightBlock } from './types';
 
 export type RoundResult = { ok: boolean; text: string; solved: boolean };
 export type OrderResult = { ok: boolean; text: string; gapAt: number | null };
@@ -102,4 +102,35 @@ export function restoreWith(p: PuzzleRecord, peeled: number, current: string | n
   if (!l) throw new Error('No such label');
   if (!l.honest) return { ok: false, solved: false, text: l.why };
   return { ok: true, solved: true, text: `${m.result} ${l.why}`.trim() };
+}
+
+/**
+ * Line of sight on the puzzle grid, from cell centre to cell centre. The view is blocked
+ * when the straight line passes through a block cell (the end cells do not count).
+ * Returns the blocking point (in cell units) or null when the view is clear.
+ */
+export function sightBlock(blocks: SightBlock[], ax: number, ay: number, bx: number, by: number): { x: number; y: number; label: string } | null {
+  const x0 = ax + 0.5, y0 = ay + 0.5, x1 = bx + 0.5, y1 = by + 0.5;
+  const n = Math.ceil(Math.hypot(x1 - x0, y1 - y0) * 20);
+  for (let i = 1; i < n; i++) {
+    const x = x0 + ((x1 - x0) * i) / n, y = y0 + ((y1 - y0) * i) / n;
+    const cx = Math.floor(x), cy = Math.floor(y);
+    if ((cx === ax && cy === ay) || (cx === bx && cy === by)) continue;
+    const b = blocks.find((k) => cx >= k.x && cx < k.x + k.w && cy >= k.y && cy < k.y + k.h);
+    if (b) return { x, y, label: b.label };
+  }
+  return null;
+}
+
+/** Sort one claim: did the witness see it? The map decides. */
+export function judgeSight(p: PuzzleRecord, witness: string, claim: number, saw: boolean): { ok: boolean; text: string } {
+  if (p.type !== 'sightlines') throw new Error('Not a sightlines puzzle');
+  const w = p.witnesses.find((x) => x.id === witness);
+  const c = w?.claims[claim];
+  if (!w || !c) throw new Error('No such claim');
+  const spot = p.spots.find((s) => s.id === c.spot)!;
+  const block = sightBlock(p.blocks, w.x, w.y, spot.x, spot.y);
+  const could = !block;
+  if (saw !== could) return { ok: false, text: `Look again. Draw ${w.name}'s sightline to ${spot.label}${could ? ': is anything in the way?' : ', and follow it all the way.'}` };
+  return { ok: true, text: could ? `Yes. From where ${w.name} stood, nothing blocks the view of ${spot.label}. This is first-hand.` : `Right. ${block!.label} blocks ${w.name}'s view of ${spot.label}. ${c.heard ?? ''}`.trim() };
 }
