@@ -978,6 +978,15 @@
      "open": "forge"
     },
     {
+     "text": "The anvil is just a tool. It does not change the result.",
+     "next": "hesper.tool",
+     "effects": [
+      {
+       "signal": "MIS-23"
+      }
+     ]
+    },
+    {
      "text": "Later.",
      "next": null
     }
@@ -1268,6 +1277,21 @@
      "setFlag": "seal.found",
      "value": true
     }
+   ],
+   "options": [
+    {
+     "text": "Let's take it to Ise.",
+     "next": null
+    },
+    {
+     "text": "It's just a tiny seal. Not worth showing Ise.",
+     "next": "kip.small",
+     "effects": [
+      {
+       "signal": "MIS-37"
+      }
+     ]
+    }
    ]
   },
   {
@@ -1402,6 +1426,15 @@
      "text": "You are measuring different things.",
      "next": "ev.price.end",
      "tag": "Name the difference"
+    },
+    {
+     "text": "It is just what each of you feels. There is nothing to discuss.",
+     "next": "ev.price.end",
+     "effects": [
+      {
+       "signal": "MIS-26"
+      }
+     ]
     }
    ]
   },
@@ -1430,6 +1463,15 @@
      "effects": [
       {
        "signal": "MIS-22"
+      }
+     ]
+    },
+    {
+     "text": "The song about Old Vell is a myth, so the old name is false.",
+     "next": "ev.coin.end",
+     "effects": [
+      {
+       "signal": "MIS-32"
       }
      ]
     }
@@ -1495,6 +1537,15 @@
      "effects": [
       {
        "signal": "MIS-07"
+      }
+     ]
+    },
+    {
+     "text": "Asking the neighbours is just gossip. It is not evidence.",
+     "next": "ev.well.end",
+     "effects": [
+      {
+       "signal": "MIS-17"
       }
      ]
     }
@@ -1590,6 +1641,19 @@
    "claimKind": "observation",
    "text": "Our clerks write sales between guild members. Gifts, repairs and sales by outsiders often go unwritten. The book is honest about what it holds. It is silent about the rest.",
    "next": null
+  },
+  {
+   "id": "hesper.tool",
+   "speaker": "smith-hesper",
+   "claimKind": "interpretation",
+   "text": "No? My anvil and my fire decide what I can make. A crucible needs a hotter, closed fire than I have here. The tool decides which blades exist, so it decides what you can test.",
+   "next": "hesper.forge"
+  },
+  {
+   "id": "kip.small",
+   "speaker": "kip-arden",
+   "claimKind": "interpretation",
+   "text": "Tiny? The blade was big and shiny, and it told us less than this. Small things keep secrets better. Come on."
   }
  ],
  "events": [

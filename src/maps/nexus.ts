@@ -70,6 +70,7 @@ export const NEXUS: MapDef = {
     { id: 'kip-arden', x: 6, y: 15, facing: 'right' },
     { id: 'villager-2', x: 17, y: 13, facing: 'up' },
     { id: 'archivist-tull', x: 35, y: 13, facing: 'down' },
+    { id: 'visitor-sol', x: 29, y: 8, facing: 'up' },
   ],
   interactables: [
     { id: 'ex-a', kind: 'exhibit', exhibit: 'OBJ-001-A', x: 8, y: 7, w: 1, h: 1, label: 'the patent drawing', art: 'pedestal.patent' },

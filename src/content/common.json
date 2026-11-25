@@ -568,6 +568,25 @@
      "node": "oduya.busy"
     }
    ]
+  },
+  {
+   "id": "visitor-sol",
+   "name": "Sol, a visitor",
+   "role": "visitor in the Hall of Firsts",
+   "sprite": "villager-1",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "hall.sol.talked",
+      "eq": true
+     },
+     "node": "sol.again"
+    },
+    {
+     "node": "sol.start"
+    }
+   ]
   }
  ],
  "criteria": [
@@ -1172,6 +1191,46 @@
    }
   },
   {
+   "id": "MIS-13",
+   "title": "Mathematics is only facts, with no assumptions",
+   "signal": "Treats a calculated result as certain without asking what went into it.",
+   "worldResponse": "A result changes when a measurement or an assumption behind it changes.",
+   "reflection": "What measurements and assumptions went into this number? Which one, if changed, would change the result?",
+   "teacherMove": "Show one calculation with two different starting assumptions.",
+   "concepts": [
+    "certainty",
+    "justification"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-14",
+   "title": "Mathematics has nothing to do with culture",
+   "signal": "Says that where a method came from does not matter.",
+   "worldResponse": "The units, tools and purposes behind a method turn out to shape the result.",
+   "reflection": "Who used this method, with what units and tools, and for what purpose?",
+   "teacherMove": "Trace one method across places and centuries. Ask what changed on the way.",
+   "concepts": [
+    "culture",
+    "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
    "id": "MIS-15",
    "title": "A record shows exactly what happened",
    "signal": "Treats a ledger or chronicle as a direct copy of the past.",
@@ -1201,6 +1260,26 @@
    "concepts": [
     "power",
     "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-17",
+   "title": "Asking people is not real evidence",
+   "signal": "Dismisses what people report as mere gossip, with no thought of method.",
+   "worldResponse": "A careful set of reports, checked against each other, answers the question.",
+   "reflection": "How could you ask many people in a way that you can check?",
+   "teacherMove": "Compare gossip with a careful survey. Ask what makes the second one evidence.",
+   "concepts": [
+    "explanation",
+    "objectivity"
    ],
    "student": {
     "count": 3,
@@ -1312,6 +1391,86 @@
    }
   },
   {
+   "id": "MIS-23",
+   "title": "Tools are neutral",
+   "signal": "Says that a tool has no effect on what we can make or know.",
+   "worldResponse": "The tool turns out to decide what can be made, and what can be seen.",
+   "reflection": "What does this tool make easy? What does it make hard, or impossible?",
+   "teacherMove": "Ask what one instrument or tool lets people notice, and what it hides.",
+   "concepts": [
+    "responsibility",
+    "power"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-24",
+   "title": "Machines cannot be wrong",
+   "signal": "Trusts a machine's output over a check.",
+   "worldResponse": "The machine's source turns out not to exist.",
+   "reflection": "How would you check what a machine gives you? What would count as a check?",
+   "teacherMove": "Show a machine output with an invented source. Practise checking it.",
+   "concepts": [
+    "truth",
+    "evidence"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-25",
+   "title": "Religion and science must always conflict",
+   "signal": "Dismisses a scholar's work on nature because the scholar was religious.",
+   "worldResponse": "Many scholars worked on faith and on nature, and asked different questions of each.",
+   "reflection": "What question does each part of this person's work try to answer?",
+   "teacherMove": "Discuss scope: different questions, different methods. Use figures who worked in both.",
+   "concepts": [
+    "perspective",
+    "culture"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-26",
+   "title": "Ethics is only feeling, with no reasons",
+   "signal": "Refuses to give or hear reasons in a disagreement about values.",
+   "worldResponse": "Without reasons, the people cannot reach any agreement.",
+   "reflection": "You may still disagree. What reasons could each side give?",
+   "teacherMove": "Ask for reasons on both sides of one value disagreement. Do not ask for a winner.",
+   "concepts": [
+    "values",
+    "justification"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
    "id": "MIS-27",
    "title": "Only writing counts as knowledge",
    "signal": "Ignores an oral source because it is not written.",
@@ -1372,6 +1531,26 @@
    }
   },
   {
+   "id": "MIS-30",
+   "title": "A theory is just a guess",
+   "signal": "Calls a tested explanation 'only a theory' as if that meant a guess.",
+   "worldResponse": "The explanation predicts what happens next, and it does.",
+   "reflection": "What has this explanation predicted? What would show it is wrong?",
+   "teacherMove": "Separate everyday 'theory' (a hunch) from a tested explanation.",
+   "concepts": [
+    "explanation",
+    "certainty"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
    "id": "MIS-31",
    "title": "A model is a copy of reality",
    "signal": "Treats a model or reconstruction as the real thing.",
@@ -1381,6 +1560,26 @@
    "concepts": [
     "explanation",
     "interpretation"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-32",
+   "title": "A myth or song is just a false story",
+   "signal": "Calls a traditional story false and stops there.",
+   "worldResponse": "The story turns out to carry real knowledge: a name, a place, a value.",
+   "reflection": "What does this story explain or keep? What would you check it against?",
+   "teacherMove": "Ask what a myth or song does for the people who keep it, not only whether it is literally true.",
+   "concepts": [
+    "culture",
+    "values"
    ],
    "student": {
     "count": 3,
@@ -1432,6 +1631,26 @@
    }
   },
   {
+   "id": "MIS-35",
+   "title": "An essay only needs to describe",
+   "signal": "Wants to describe sources instead of making an argument.",
+   "worldResponse": "The reader asks 'so what?' and walks away.",
+   "reflection": "What is your claim? What would someone who disagrees say?",
+   "teacherMove": "Turn a description into a claim, then add a counterclaim.",
+   "concepts": [
+    "justification",
+    "explanation"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
    "id": "MIS-36",
    "title": "Admitting a fair point makes you weaker",
    "signal": "Answers a fair point with a shout or a cheap shot instead of dealing with it.",
@@ -1440,6 +1659,66 @@
    "teacherMove": "Show how a counterclaim, answered well, makes an argument stronger.",
    "concepts": [
     "justification",
+    "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-37",
+   "title": "Only impressive objects are worth showing",
+   "signal": "Ignores a small or plain object because it is not grand.",
+   "worldResponse": "The small object turns out to hold the important clue.",
+   "reflection": "What can a small, plain object show that a grand one cannot?",
+   "teacherMove": "Choose a plain personal object and ask what it shows about knowledge.",
+   "concepts": [
+    "interpretation",
+    "evidence"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-38",
+   "title": "A knowledge question is the same as a subject question",
+   "signal": "Answers with subject content when the question is about how we know.",
+   "worldResponse": "The answer gives a fact, but the disagreement goes on.",
+   "reflection": "Is your question about the pen, or about how we decide what counts as 'first'?",
+   "teacherMove": "Take one subject question and turn it into a question about knowledge.",
+   "concepts": [
+    "justification",
+    "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-39",
+   "title": "Real examples must come from the news",
+   "signal": "Wants only today's events as real examples.",
+   "worldResponse": "A dated historical object or a personal experience works just as well.",
+   "reflection": "Which real examples can you check carefully? Do they have to be recent?",
+   "teacherMove": "Collect examples from history, from the student's own life and from subjects.",
+   "concepts": [
+    "evidence",
     "perspective"
    ],
    "student": {

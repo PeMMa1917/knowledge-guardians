@@ -1001,6 +1001,29 @@
      "next": "ise.fray"
     },
     {
+     "text": "So the real question is just: who invented the ballpoint pen?",
+     "next": "ise.kq",
+     "effects": [
+      {
+       "signal": "MIS-38"
+      }
+     ]
+    },
+    {
+     "text": "What is the question behind all this?",
+     "next": "ise.kq2",
+     "tag": "Ask a knowledge question"
+    },
+    {
+     "text": "Wouldn't examples from today's news be more real?",
+     "next": "ise.news",
+     "effects": [
+      {
+       "signal": "MIS-39"
+      }
+     ]
+    },
+    {
      "text": "I'll keep looking.",
      "next": null
     }
@@ -1476,6 +1499,15 @@
        "signal": "MIS-07"
       }
      ]
+    },
+    {
+     "text": "The draught is only a theory, so it is no better than the ghost.",
+     "next": "ev.bell.end",
+     "effects": [
+      {
+       "signal": "MIS-30"
+      }
+     ]
     }
    ]
   },
@@ -1556,6 +1588,148 @@
    "claimKind": "interpretation",
    "text": "Which numbers? 1888 is a grant date. 1945 to 1948 is a range from a museum record. Put 1888 alone under 'The first pen' and visitors believe one thing. Put 1945 alone and they believe another. The number is the same; the choice is yours.",
    "next": "dace.ack"
+  },
+  {
+   "id": "sol.start",
+   "speaker": "visitor-sol",
+   "claimKind": "value",
+   "effects": [
+    {
+     "setFlag": "hall.sol.talked",
+     "value": true
+    }
+   ],
+   "text": "I come here every week. Seven plaques, seven 'firsts'. I like arguing with them. Do you?",
+   "options": [
+    {
+     "text": "Mathematics is the same everywhere. Where a method came from does not matter.",
+     "next": "sol.maths",
+     "effects": [
+      {
+       "signal": "MIS-14"
+      }
+     ]
+    },
+    {
+     "text": "Ibn al-Haytham was religious, so his science does not count.",
+     "next": "sol.faith",
+     "effects": [
+      {
+       "signal": "MIS-25"
+      }
+     ]
+    },
+    {
+     "text": "If the maths is right, the answer cannot be wrong.",
+     "next": "sol.calc",
+     "effects": [
+      {
+       "signal": "MIS-13"
+      }
+     ]
+    },
+    {
+     "text": "Which plaque do you argue with most?",
+     "next": "sol.fav",
+     "tag": "Ask a question"
+    },
+    {
+     "text": "Not today.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "sol.again",
+   "speaker": "visitor-sol",
+   "claimKind": "value",
+   "text": "Back again? Pick a plaque and tell me what kind of 'first' it really is.",
+   "options": [
+    {
+     "text": "Mathematics is the same everywhere. Where a method came from does not matter.",
+     "next": "sol.maths",
+     "effects": [
+      {
+       "signal": "MIS-14"
+      }
+     ]
+    },
+    {
+     "text": "Ibn al-Haytham was religious, so his science does not count.",
+     "next": "sol.faith",
+     "effects": [
+      {
+       "signal": "MIS-25"
+      }
+     ]
+    },
+    {
+     "text": "If the maths is right, the answer cannot be wrong.",
+     "next": "sol.calc",
+     "effects": [
+      {
+       "signal": "MIS-13"
+      }
+     ]
+    },
+    {
+     "text": "Which plaque do you argue with most?",
+     "next": "sol.fav"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "sol.maths",
+   "speaker": "visitor-sol",
+   "claimKind": "interpretation",
+   "text": "Look at Eratosthenes. His answer was in stadia, and nobody is sure how long his stadion was. The unit came from a place and a people. Change the unit, and his 'answer' changes.",
+   "next": "sol.again"
+  },
+  {
+   "id": "sol.faith",
+   "speaker": "visitor-sol",
+   "claimKind": "interpretation",
+   "text": "His plaque says he tested claims about light with experiments. Many scholars in many places worked on faith and on nature. Ask what question each part of the work answers, then judge each part by its own method.",
+   "next": "sol.again"
+  },
+  {
+   "id": "sol.calc",
+   "speaker": "visitor-sol",
+   "claimKind": "interpretation",
+   "text": "Sikdar's plaque: his calculations started from measurements made by survey teams. Good maths on uncertain measurements gives a careful estimate, not a certainty. The maths is only as good as what goes in.",
+   "next": "sol.again"
+  },
+  {
+   "id": "sol.fav",
+   "speaker": "visitor-sol",
+   "claimKind": "value",
+   "text": "Kate Sheppard's. 'First country where women could vote' is true, and still they could not stand for Parliament until 1919. A first can be real and still be only part of the story.",
+   "next": "sol.again"
+  },
+  {
+   "id": "ise.kq",
+   "speaker": "warden-ise",
+   "claimKind": "interpretation",
+   "text": "That is a question for a historian of pens, and a good one. Ours sits under it: how do we decide what counts as 'first'? Answer that, and you can judge any 'first' in the hall.",
+   "next": "ise.again"
+  },
+  {
+   "id": "ise.kq2",
+   "speaker": "warden-ise",
+   "claimKind": "interpretation",
+   "text": "How do we decide what counts as 'first'? Is it the idea, the record, or the thing that worked? Keep that question. It travels to every world.",
+   "next": "ise.again"
+  },
+  {
+   "id": "ise.news",
+   "speaker": "warden-ise",
+   "claimKind": "interpretation",
+   "text": "A patent from 1888 and a pen from 1945 are real. So is anything you have lived. Real means you can check it, not that it happened this week.",
+   "next": "ise.again"
   }
  ],
  "events": [

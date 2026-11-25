@@ -1315,6 +1315,15 @@
      "next": null
     },
     {
+     "text": "Can't I just describe the three pens, one after another?",
+     "next": "tull.describe",
+     "effects": [
+      {
+       "signal": "MIS-35"
+      }
+     ]
+    },
+    {
      "text": "Later.",
      "next": null
     }
@@ -1471,6 +1480,21 @@
       }
      ],
      "next": "tull.draft.cite"
+    },
+    {
+     "text": "A machine made the source list, so the sources must be real.",
+     "if": {
+      "not": {
+       "flag": "ee1.int.fake",
+       "eq": true
+      }
+     },
+     "next": "tull.draft.machine",
+     "effects": [
+      {
+       "signal": "MIS-24"
+      }
+     ]
     },
     {
      "text": "It looks fine to me.",
@@ -2149,6 +2173,20 @@
      "next": null
     }
    ]
+  },
+  {
+   "id": "tull.describe",
+   "speaker": "archivist-tull",
+   "claimKind": "interpretation",
+   "text": "You can. Then your reader says 'so what?' and leaves. A description tells me what the pens are. An argument tells me what they show, and answers someone who disagrees.",
+   "next": "tull.argue"
+  },
+  {
+   "id": "tull.draft.machine",
+   "speaker": "archivist-tull",
+   "claimKind": "interpretation",
+   "text": "I searched every catalogue for 'Memoirs of the First Pen'. Nothing. A text generator writes what sounds likely, not what exists. Check each source yourself.",
+   "next": "tull.draft"
   }
  ],
  "hints": [

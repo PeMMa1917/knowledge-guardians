@@ -397,8 +397,9 @@ describe('permanent credit and hints', () => {
 });
 
 describe('misconception signals (phase L2, spec 95)', () => {
-  it('the game has 25 misconceptions, each with a place in play', () => {
-    expect(pack.misconceptions.length).toBe(25);
+  it('the game has 38 misconceptions; MIS-10 and MIS-11 wait for content made with advisors', () => {
+    expect(pack.misconceptions.length).toBe(38);
+    expect(pack.misconceptions.map((m) => m.id)).not.toContain('MIS-10');
   });
   const once = (d: Driver, node: string, pick: string) => {
     d.run({ type: 'EnterNode', node });
@@ -412,6 +413,10 @@ describe('misconception signals (phase L2, spec 95)', () => {
     ['orrin.ledger', 'only record', 'MIS-16'], ['ev.coin', 'just a label', 'MIS-22'], ['ev.fog', 'cannot know', 'MIS-40'],
     ['ev.memory', 'did not see', 'MIS-20'], ['ev.well', 'must be the cause', 'MIS-07'], ['ev.bell', 'portal magic', 'MIS-07'],
     ['ev.mind', 'ignore all', 'MIS-19'], ['ev.translate', 'earliest', 'MIS-21'],
+    ['sol.start', 'same everywhere', 'MIS-14'], ['sol.start', 'was religious', 'MIS-25'], ['sol.start', 'cannot be wrong', 'MIS-13'],
+    ['ise.again', 'who invented the ballpoint', 'MIS-38'], ['ise.again', 'news', 'MIS-39'], ['ev.bell', 'only a theory', 'MIS-30'],
+    ['tull.argue', 'just describe', 'MIS-35'], ['tull.draft', 'A machine made', 'MIS-24'], ['ev.price', 'what each of you feels', 'MIS-26'],
+    ['ev.well', 'gossip', 'MIS-17'], ['ev.coin', 'myth', 'MIS-32'], ['hesper.forge', 'just a tool', 'MIS-23'], ['kip.seal3', 'tiny seal', 'MIS-37'],
   ];
   for (const [node, pick, id] of sites) {
     it(`${node}: "${pick}" signals ${id}`, () => {
@@ -423,6 +428,7 @@ describe('misconception signals (phase L2, spec 95)', () => {
   it('the other options at the same places raise no signal (values and good questions never do)', () => {
     const d = new Driver();
     once(d, 'orrin.ledger', 'Who writes'); once(d, 'sefa.song', 'What does the song know'); once(d, 'ev.price', 'Who is right');
+    once(d, 'sol.start', 'Which plaque'); once(d, 'ise.again', 'question behind'); once(d, 'kip.seal3', 'take it to Ise');
     expect(Object.keys(d.p.signals)).toEqual([]);
   });
   it('"Proved the exact size of the Earth" does not hold and signals MIS-01', () => {
