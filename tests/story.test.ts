@@ -103,3 +103,16 @@ describe('a keepsake opens a new pathway: the old ferry road', () => {
     expect(d.s.flags['ferry.met']).toBe(true);
   });
 });
+
+describe('communities of Emberford (reputation)', () => {
+  it('trust grows from helping a community, is stored, and never falls', () => {
+    const d = new Driver();
+    expect(d.s.flags['trust.river'] ?? 0).toBe(0);
+    d.run({ type: 'SetFlag', flag: 'puzzle.ferry-message.done', value: true });
+    expect(d.s.flags['trust.river']).toBe(2);
+    expect(d.events.some((e) => e.kind === 'trust')).toBe(true); // Stranger -> Known
+    d.run({ type: 'SetFlag', flag: 'puzzle.ferry-message.done', value: false });
+    expect(d.s.flags['trust.river']).toBe(2);
+    for (const cm of pack.communities!) expect(cm.gains.reduce((n, g) => n + g.pts, 0), cm.id).toBeGreaterThanOrEqual(6);
+  });
+});

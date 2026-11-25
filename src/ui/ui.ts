@@ -42,6 +42,7 @@ import { PLAYER_LOOKS } from '../scenes/art';
 import { artURL, BIG_ART } from './illustrations';
 import { clear, h, trapFocus } from './dom';
 import { dealTiles, isPair, speedRank, tileRank, type Tile } from '../domain/tiles';
+import { TRUST_RANKS, rankOf, trustOf } from '../domain/communities';
 import { calendarGrid, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
 
 const HIST_LABEL_TEXT: Record<HistoricalLabel, [string, string]> = {
@@ -848,6 +849,7 @@ export class UI implements UIApi {
         case 'fray': this.toast(`New in your Fray Bestiary: ${e.name} (${e.error.toLowerCase()}). See Journal, Fray Bestiary.`, 'info'); break;
         case 'reflection': { const m = e.misconception; this.whenFree(() => this.offerReflection(m.title, m.reflection)); break; }
         case 'event-due': { const id = e.event; this.whenFree(() => this.showEvent(id)); break; }
+        case 'trust': this.toast(`Trust grows. ${e.name}: you are now ${e.rank}. See Menu, Communities of Emberford.`, 'award'); this.sfx('sfx.award'); break;
         case 'secret': this.toast(`Secret found: ${e.name} (${e.found} of ${e.total}). See Journal, Lore.`, 'award'); this.sfx('sfx.sparkle'); ctx.world?.lumenBurst(); break;
         case 'keepsake': this.toast(`New keepsake: ${e.name}. ${e.use}`, 'item'); this.sfx('sfx.sparkle'); break;
         case 'lamp': this.toast(`A lamp is lit on the Lamp Wall: ${e.name} (${e.count} of ${e.total}). ${e.lit}`, 'award'); this.sfx('sfx.award'); ctx.world?.lumenBurst(); break;
@@ -2404,6 +2406,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openMusicBox() }, 'Music box'),
         h('button', { onclick: () => this.openQuarters() }, 'My quarters'),
         h('button', { onclick: () => this.openDive() }, 'The Deep Dive (daily)'),
+        h('button', { onclick: () => this.openTown() }, 'Communities of Emberford'),
         h('button', { onclick: () => this.openLedger() }, "The Guardian's Ledger (progress)"),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
@@ -2547,6 +2550,34 @@ export class UI implements UIApi {
         h('div', {}, h('h3', {}, 'Concept web'), webEl),
         h('div', {}, h('h3', {}, 'Completion'), ...bars.map(bar).filter(Boolean) as HTMLElement[])),
       h('h3', {}, 'Scores'), h('ul', {}, ...scores.map((t) => h('li', {}, t))),
+      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+  }
+
+  /**
+   * Communities of Emberford (reputation): how much each community trusts the player, what it knows,
+   * and how it checks knowledge. Trust never falls. No community's way of knowing is 'the right one'.
+   */
+  openTown(): void {
+    const c = ctx.controller, s = c.state;
+    const box = this.openModal('town-panel wide', 'Communities of Emberford');
+    this.sfx('sfx.page');
+    const cards = (c.pack.communities ?? []).map((cm) => {
+      const t = trustOf(cm, s);
+      const rank = rankOf(t.pts);
+      const next = TRUST_RANKS.find((r) => r.from > t.pts);
+      const names = cm.who.map((w) => c.pack.characters.find((x) => x.id === w)?.name ?? w).join(', ');
+      return h('section', { class: 'community' },
+        h('h3', {}, cm.name, ' ', h('span', { class: `trust-rank r-${rank.toLowerCase()}` }, rank)),
+        h('div', { class: 'trust-pips', role: 'img', 'aria-label': `Trust ${t.pts} of ${t.max}` }, ...Array.from({ length: t.max }, (_, i) => h('span', { class: i < t.pts ? 'on' : '' }))),
+        h('p', { class: 'fine' }, names),
+        h('p', {}, h('strong', {}, 'They know: '), cm.knows),
+        h('p', {}, h('strong', {}, 'They check knowledge by: '), cm.checks),
+        t.got.length ? h('ul', { class: 'fine' }, ...t.got.map((g) => h('li', {}, g.why))) : h('p', { class: 'fine' }, 'You have not helped them yet.'),
+        next ? h('p', { class: 'fine' }, `${next.from - t.pts} more to be ${next.name}.`) : h('p', { class: 'fine' }, 'You are a friend of this community.'));
+    });
+    box.append(this.closeBtn(), h('h2', {}, 'Communities of Emberford'),
+      h('p', {}, "Each community in Emberford knows different things, and checks knowledge in its own way. None of these ways is the only right one: a good Guardian learns how each one works. Trust grows when you help a community and listen to how it knows. It never falls."),
+      h('div', { class: 'community-grid' }, ...cards),
       h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
   }
 

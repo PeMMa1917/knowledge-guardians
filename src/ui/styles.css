@@ -810,3 +810,12 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .tile-ranks { display: flex; gap: 1rem; margin: 0.6rem 0; }
 .tile-ranks > div { display: flex; flex-direction: column; align-items: center; padding: 0.5rem 1rem; border-radius: 8px; background: var(--panel-2); border: 1px solid var(--gold-dim); }
 .tile-ranks .rank { font-size: 2rem; color: var(--gold); }
+.community-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 0.7rem; }
+.community { padding: 0.6rem 0.8rem; border-radius: 10px; background: var(--panel-2); border: 1px solid var(--gold-dim); }
+.community h3 { margin: 0 0 0.3rem; display: flex; justify-content: space-between; align-items: center; color: var(--gold); }
+.community p { margin: 0.25rem 0; }
+.trust-rank { font-size: 0.75rem; padding: 0.1rem 0.5rem; border-radius: 999px; background: rgba(255, 255, 255, 0.1); color: var(--ink); }
+.trust-rank.r-trusted { background: rgba(230, 187, 92, 0.35); } .trust-rank.r-friend { background: var(--gold); color: #2a2440; }
+.trust-pips { display: flex; gap: 3px; flex-wrap: wrap; }
+.trust-pips span { width: 12px; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.12); }
+.trust-pips span.on { background: var(--gold); }

@@ -1,4 +1,276 @@
 {
+ "communities": [
+  {
+   "id": "guild",
+   "name": "The Guild",
+   "who": [
+    "guildmaster-orrin",
+    "keeper-oduya"
+   ],
+   "knows": "Rules, measures, trade law and the town's history.",
+   "checks": "Written records that anyone can read, and rules that are the same for everyone.",
+   "gains": [
+    {
+     "if": {
+      "flag": "lamps.heard",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You asked Orrin about the dark lamps."
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "puzzle.guild-notice.done",
+        "eq": true
+       },
+       {
+        "flag": "puzzle.song-bridge.done",
+        "eq": true
+       }
+      ]
+     },
+     "pts": 2,
+     "why": "You helped the guild say how sure its notices are."
+    },
+    {
+     "if": {
+      "flag": "puzzle.toll-survey.done",
+      "eq": true
+     },
+     "pts": 2,
+     "why": "You helped the council ask the whole town."
+    },
+    {
+     "if": {
+      "flagSet": "puzzle.founders-plaque.method"
+     },
+     "pts": 1,
+     "why": "You restored the Founders' Plaque with care."
+    },
+    {
+     "if": {
+      "flag": "study.letter",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You found Elsbet's letter."
+    },
+    {
+     "if": {
+      "flag": "ktalk.orrin-survey",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You showed Orrin a fairer way to ask."
+    },
+    {
+     "if": {
+      "flag": "ktalk.oduya-cards",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You asked Oduya about Elsbet's sources."
+    }
+   ]
+  },
+  {
+   "id": "market",
+   "name": "The Market",
+   "who": [
+    "merchant-corvan",
+    "fruit-seller",
+    "stallkeeper-hana",
+    "villager-1"
+   ],
+   "knows": "Prices, people, and what sells.",
+   "checks": "Reputation and long experience: who has been right before, and who has not.",
+   "gains": [
+    {
+     "if": {
+      "flagSet": "sd.corvan.outcome"
+     },
+     "pts": 2,
+     "why": "You argued with Corvan in front of the market, with evidence."
+    },
+    {
+     "if": {
+      "flag": "rumour.done",
+      "eq": true
+     },
+     "pts": 2,
+     "why": "You traced the rumour back, person by person."
+    },
+    {
+     "if": {
+      "flag": "board.corvan-board.done",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You pinned claims to evidence on Hana's board."
+    },
+    {
+     "if": {
+      "flag": "puzzle.brass-sorter.done",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You made Mara's sorter fair to every farm."
+    },
+    {
+     "if": {
+      "flag": "puzzle.tipped-cart.done",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You sorted out the witnesses at the tipped cart."
+    },
+    {
+     "if": {
+      "flag": "ktalk.corvan-splinter",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You talked with Corvan about his old sign."
+    },
+    {
+     "if": {
+      "flag": "ktalk.tea-shard",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You asked the tea seller what changed."
+    },
+    {
+     "if": {
+      "flag": "ktalk.mara-pot",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You gave the carter's pot back."
+    }
+   ]
+  },
+  {
+   "id": "forge",
+   "name": "The Forge",
+   "who": [
+    "smith-hesper",
+    "apprentice-ren"
+   ],
+   "knows": "Metal, heat, and how things are made.",
+   "checks": "Tests you can repeat with your own hands, and change one thing at a time.",
+   "gains": [
+    {
+     "if": {
+      "objective": "m02.o4.forge"
+     },
+     "pts": 2,
+     "why": "You forged a test billet and compared it."
+    },
+    {
+     "if": {
+      "flag": "puzzle.weigh-house.done",
+      "eq": true
+     },
+     "pts": 2,
+     "why": "You checked the weigh-house scales with a true weight."
+    },
+    {
+     "if": {
+      "objective": "m02.o6.hesper"
+     },
+     "pts": 1,
+     "why": "You talked with Hesper after the market."
+    },
+    {
+     "if": {
+      "flag": "ktalk.hesper-weight",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You asked Hesper who made the check weights."
+    },
+    {
+     "if": {
+      "flag": "puzzle.echo-bridge.done",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You measured the echo and found your own error."
+    }
+   ]
+  },
+  {
+   "id": "river",
+   "name": "The River folk",
+   "who": [
+    "ferry-tova",
+    "scholar-sefa",
+    "well-keeper"
+   ],
+   "knows": "Water, weather, the river cant, and the river's long history.",
+   "checks": "Watching the river for many years, and telling it carefully to the next person.",
+   "gains": [
+    {
+     "if": {
+      "flag": "puzzle.ferry-message.done",
+      "eq": true
+     },
+     "pts": 2,
+     "why": "You translated Tova's message and kept what it meant."
+    },
+    {
+     "if": {
+      "flag": "ferry.met",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You walked the old ferry road to meet Tova."
+    },
+    {
+     "if": {
+      "flag": "puzzle.forecast-board.done",
+      "eq": true
+     },
+     "pts": 2,
+     "why": "You kept Noa's forecast board."
+    },
+    {
+     "if": {
+      "flagSet": "well.reflected"
+     },
+     "pts": 1,
+     "why": "You compared the two wells with Efua."
+    },
+    {
+     "if": {
+      "flag": "ktalk.sefa-chalk",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You said 'tavi' to Sefa."
+    },
+    {
+     "if": {
+      "flag": "secret.flood-tally",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You found the flood marks under the bridge."
+    },
+    {
+     "if": {
+      "flag": "secret.star-names",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You found the ferry folk's star map."
+    }
+   ]
+  }
+ ],
  "secrets": [
   {
    "id": "ember-myth",
@@ -1313,6 +1585,42 @@
     "gte": 8
    },
    "line": "Half the lamps are lit. People argue differently now. More 'how do you know?', fewer fists."
+  },
+  {
+   "id": "trust.guild",
+   "character": "guildmaster-orrin",
+   "if": {
+    "num": "trust.guild",
+    "gte": 6
+   },
+   "line": "The guild talks about you at meetings. Mostly about how you ask for the record before you believe the story."
+  },
+  {
+   "id": "trust.market",
+   "character": "fruit-seller",
+   "if": {
+    "num": "trust.market",
+    "gte": 6
+   },
+   "line": "Traders trust you now. Not because you agree with us. Because you check, and you say so."
+  },
+  {
+   "id": "trust.forge",
+   "character": "smith-hesper",
+   "if": {
+    "num": "trust.forge",
+    "gte": 6
+   },
+   "line": "You're welcome at my anvil any time. Bring a question, not a conclusion."
+  },
+  {
+   "id": "trust.river",
+   "character": "scholar-sefa",
+   "if": {
+    "num": "trust.river",
+    "gte": 6
+   },
+   "line": "The ferry folk call you 'tavi-friend' now. That is not a small word."
   }
  ]
 }

@@ -596,6 +596,8 @@ export interface ClueRecord { id: string; name: string; text: string; views: Clu
 export interface ChronicleBeat { id: string; title: string; text: string; if?: Condition }
 /** A secret (Easter egg): a hidden spot with a small piece of lore. Found with the FindSecret command. */
 export interface Secret { id: string; name: string; map: string; text: string }
+/** A community of Emberford (reputation): what it knows, how it checks, and what earns its trust. */
+export interface Community { id: string; name: string; who: string[]; knows: string; checks: string; gains: { if: Condition; pts: number; why: string }[] }
 export interface KeepsakeTalk { id: string; character: string; keepsake: string; text: string; node: string; if?: Condition }
 
 /** World memory (spec 47, C1): a short line a person says when the player passes, once the condition holds. */
@@ -700,6 +702,7 @@ export interface ContentPack {
   keepsakeTalks?: KeepsakeTalk[];
   chronicle?: ChronicleBeat[];
   secrets?: Secret[];
+  communities?: Community[];
   /** The Deep Dive (spec 59): prompts and the things a player can answer with. */
   divePrompts?: import('./dive').DivePrompt[];
   diveItems?: import('./dive').DiveItem[];

@@ -3,6 +3,7 @@
  * computes ONE valid state transition and returns events for the view to show
  * (spec 22.2). A button never writes XP or state directly.
  */
+import { trustOf, rankOf } from './communities';
 import type {
   AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
@@ -115,6 +116,7 @@ export type GameEvent =
   | { kind: 'keepsake'; id: string; name: string; use: string }
   | { kind: 'lamp'; id: string; name: string; lit: string; count: number; total: number }
   | { kind: 'clue'; clue: string; keepsake: string; text: string }
+  | { kind: 'trust'; id: string; name: string; rank: string }
   | { kind: 'secret'; id: string; name: string; found: number; total: number }
   | { kind: 'error'; message: string };
 
@@ -833,6 +835,14 @@ export class Engine {
         if (s.flags[`lamp.${kn.id}`] === true || !check(kn.if, s)) continue;
         s = apply([{ setFlag: `lamp.${kn.id}`, value: true }, { addNum: 'lamps.lit', by: 1 }], s, out);
         events.push({ kind: 'lamp', id: kn.id, name: kn.name, lit: kn.lit, count: Number(s.flags['lamps.lit']), total: knots.length });
+        changed = true;
+      }
+      // Communities (reputation): store each trust score as a number, and say when a rank rises.
+      for (const cm of this.pack.communities ?? []) {
+        const pts = trustOf(cm, s).pts, was = Number(s.flags[`trust.${cm.id}`] ?? 0);
+        if (pts <= was) continue;
+        s = apply([{ setFlag: `trust.${cm.id}`, value: pts }], s, out);
+        if (rankOf(pts) !== rankOf(was)) events.push({ kind: 'trust', id: cm.id, name: cm.name, rank: rankOf(pts) });
         changed = true;
       }
       for (const m of this.activeMissions(s)) {

@@ -20,6 +20,7 @@ export interface UIApi {
   openDive(): void;
   openLamps(): void;
   openTiles(): void;
+  openTown(): void;
   openLedger(): void;
   openClue(id: string): void;
   openLoreling(loreling: string, sighting?: string): void;
