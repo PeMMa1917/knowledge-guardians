@@ -3,7 +3,7 @@
  * keys. The arrow keys, Space, Enter, Esc and number keys always keep their jobs,
  * so a player can never lock themselves out. Pure rules, no DOM.
  */
-export type Action = 'up' | 'left' | 'down' | 'right' | 'interact' | 'hint' | 'journal' | 'portfolio' | 'bag' | 'emote';
+export type Action = 'up' | 'left' | 'down' | 'right' | 'interact' | 'hint' | 'journal' | 'portfolio' | 'bag' | 'emote' | 'map';
 
 export type KeyMap = Record<Action, string>;
 
@@ -18,9 +18,10 @@ export const ACTIONS: { id: Action; label: string }[] = [
   { id: 'portfolio', label: 'Portfolio' },
   { id: 'bag', label: 'Bag' },
   { id: 'emote', label: 'Emotes (wave, cheer, think)' },
+  { id: 'map', label: 'Folding map' },
 ];
 
-export const DEFAULT_KEYS: KeyMap = { up: 'W', left: 'A', down: 'S', right: 'D', interact: 'E', hint: 'H', journal: 'J', portfolio: 'P', bag: 'I', emote: 'G' };
+export const DEFAULT_KEYS: KeyMap = { up: 'W', left: 'A', down: 'S', right: 'D', interact: 'E', hint: 'H', journal: 'J', portfolio: 'P', bag: 'I', emote: 'G', map: 'M' };
 
 /** Ready-made layouts: AZERTY keyboards, and a left-hand layout one key to the right. */
 export const PRESETS: { id: string; label: string; keys: KeyMap }[] = [
@@ -30,7 +31,7 @@ export const PRESETS: { id: string; label: string; keys: KeyMap }[] = [
 ];
 
 /** Actions added after the first version (a stored map may not have them yet). */
-const LATER: Action[] = ['emote'];
+const LATER: Action[] = ['emote', 'map'];
 
 /** Only single letters can be mapped. Other keys have fixed jobs. */
 export function mappableKey(key: string): string | null {

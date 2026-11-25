@@ -389,6 +389,39 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   photoZoom(): number { return this.cameras.main.zoom; }
 
+  /** The folding map (diegetic UI): zoom out to the whole map for one frame and take a picture. */
+  mapSnap(cb: Parameters<import('../app/context').WorldApi['mapSnap']>[0]): void {
+    const cam = this.cameras.main, m = this.map;
+    const W = m.width * TILE, H = m.height * TILE;
+    const z0 = cam.zoom, follow = !this.photo;
+    const z = Math.min(this.scale.width / W, this.scale.height / H) * 0.98;
+    cam.stopFollow(); cam.setZoom(z); cam.setBounds(-W, -H, W * 3, H * 3); cam.centerOn(W / 2, H / 2);
+    for (const a of this.npcs) a.mark?.setVisible(false);
+    const s = ctx.controller.state;
+    const marks: { kind: 'you' | 'new' | 'place' | 'waystone' | 'portal'; x: number; y: number; label: string }[] = [];
+    if (this.player) marks.push({ kind: 'you', x: this.player.sprite.x, y: this.player.sprite.y, label: 'You are here' });
+    for (const a of this.npcs) {
+      const node = ctx.controller.engine.talkEntry(a.id, s);
+      if (node && !s.flags[`node.${node}`]) marks.push({ kind: 'new', x: a.sprite.x, y: a.sprite.y, label: `${ctx.controller.pack.characters.find((c) => c.id === a.id)?.name ?? ''} has something new to say` });
+    }
+    for (const it of m.interactables) {
+      if (it.visibleIf && !ctx.controller.check(it.visibleIf)) continue;
+      const x = (it.x + it.w / 2) * TILE, y = (it.y + it.h / 2) * TILE;
+      if (it.kind === 'waystone') marks.push({ kind: 'waystone', x, y, label: it.label });
+      else if (it.kind !== 'portal' && it.kind !== 'loreling' && s.flags[`used.${m.id}.${it.id}`] !== true) marks.push({ kind: 'place', x, y, label: `Not visited yet: ${it.label}` });
+    }
+    for (const zn of m.zones ?? []) if (zn.to && (!zn.if || ctx.controller.check(zn.if))) marks.push({ kind: 'portal', x: (zn.x + zn.w / 2) * TILE, y: (zn.y + zn.h / 2) * TILE, label: 'Way out' });
+    const view = { x: W / 2 - this.scale.width / z / 2, y: H / 2 - this.scale.height / z / 2 };
+    const done = (img: HTMLImageElement | null) => {
+      cam.setZoom(z0); this.cameras.main.setBounds(-64, -96, W + 128, H + 160);
+      if (follow && this.player) cam.startFollow(this.player.sprite, true, 0.12, 0.12);
+      for (const a of this.npcs) a.mark?.setVisible(true);
+      if (!img) { cb(null); return; }
+      cb({ img, marks, at: (wx, wy) => [(wx - view.x) * z, (wy - view.y) * z] });
+    };
+    try { this.game.renderer.snapshot((img) => done(img as HTMLImageElement)); } catch { done(null); }
+  }
+
   /** What is inside the camera frame now (for the album caption check). */
   photoSubjects(): { kind: 'person' | 'object' | 'loreling'; id: string; name: string }[] {
     const v = this.cameras.main.worldView;
@@ -606,6 +639,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
    * that person says one short line, once. Lines come from explicit flags (pack.memories).
    */
   private memAcc = 0;
+  private compassAcc = 0;
   private sayEl: { el: HTMLElement; target: Phaser.GameObjects.Sprite; until: number } | null = null;
   private updateMemory(dt: number, modal: boolean): void {
     if (this.sayEl) {
@@ -617,6 +651,22 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         const sy = r.top + (target.y - 24 - cam.worldView.y) * cam.zoom * (r.height / this.scale.height);
         el.style.left = `${sx}px`; el.style.top = `${sy}px`;
       }
+    }
+    // The brass compass (diegetic UI): it points to the nearest person with something new to say,
+    // or else to the nearest place not visited yet.
+    this.compassAcc += dt;
+    if (this.compassAcc > 0.3 && this.player) {
+      this.compassAcc = 0;
+      const s = ctx.controller.state, p = this.player.sprite;
+      let best: { x: number; y: number; label: string } | null = null, bd = Infinity;
+      for (const a of this.npcs) if (a.mark) { const d = Phaser.Math.Distance.Between(a.sprite.x, a.sprite.y, p.x, p.y); if (d < bd) { bd = d; best = { x: a.sprite.x, y: a.sprite.y, label: `someone with something new to say` }; } }
+      if (!best) for (const it of this.map.interactables) {
+        if (it.kind === 'portal' || it.kind === 'loreling' || (it.visibleIf && !ctx.controller.check(it.visibleIf)) || s.flags[`used.${this.map.id}.${it.id}`] === true) continue;
+        const x = (it.x + it.w / 2) * TILE, y = (it.y + it.h / 2) * TILE, d = Phaser.Math.Distance.Between(x, y, p.x, p.y);
+        if (d < bd) { bd = d; best = { x, y, label: it.label }; }
+      }
+      if (best && bd > TILE * 1.5) ctx.ui.setCompass(Phaser.Math.RadToDeg(Math.atan2(best.y - p.y, best.x - p.x)), best.label);
+      else ctx.ui.setCompass(null, best ? `${best.label}, right here` : 'nothing new nearby');
     }
     this.memAcc += dt;
     if (modal || this.sayEl || this.memAcc < 0.5 || !this.player || this.photo) return;

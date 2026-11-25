@@ -7,6 +7,7 @@ import type { Settings } from './settings';
 
 export interface UIApi {
   isModalOpen(): boolean;
+  setCompass(deg: number | null, label: string): void;
   openDialogue(characterId: string): void;
   openExhibit(exhibitId: string): void;
   openBench(): void;
@@ -39,6 +40,8 @@ export interface WorldApi {
   photoSet(o: { zoom: number; filter: string; lumen: boolean; pet: boolean } | null): boolean;
   photoSnap(cb: (img: HTMLImageElement | null) => void): void;
   photoZoom(): number;
+  /** A picture of the whole map, and a function from world pixels to picture pixels. */
+  mapSnap(cb: (r: { img: HTMLImageElement; at: (wx: number, wy: number) => [number, number]; marks: { kind: 'you' | 'new' | 'place' | 'waystone' | 'portal'; x: number; y: number; label: string }[] } | null) => void): void;
   photoSubjects(): import('../domain/album').PhotoSubject[];
   emote(id: string): void;
   /** Redraw state-driven visuals: Fray glows, the Provenance Thread, visible objects. */

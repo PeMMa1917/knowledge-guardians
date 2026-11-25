@@ -196,6 +196,7 @@ export class UI implements UIApi {
       if (/^[1-9]$/.test(e.key)) { this.emoteBar.querySelectorAll<HTMLButtonElement>('button')[Number(e.key) - 1]?.click(); return; }
     }
     if (e.key === 'Escape') { if (this.modal) this.closeModal(); else this.openMenu(); return; }
+    if (this.modal?.querySelector('.map-panel') && actionFor(ctx.settings.keys, e.key) === 'map') { this.closeModal(); return; }
     if (this.modal) {
       // Number keys choose dialogue options.
       if (/^[1-9]$/.test(e.key)) this.modal.querySelectorAll<HTMLButtonElement>('.options button')[Number(e.key) - 1]?.click();
@@ -207,6 +208,57 @@ export class UI implements UIApi {
     else if (a === 'bag') this.openBag();
     else if (a === 'hint') this.askLumen();
     else if (a === 'emote') this.openEmotes();
+    else if (a === 'map') this.openMap();
+  }
+
+  // ------------------------------------------------- diegetic UI: compass and folding map
+
+  private compassEl: HTMLElement | null = null;
+  private compassDeg: number | null = null;
+  setCompass(deg: number | null, label: string): void {
+    const el = this.compassEl;
+    if (!el || !el.isConnected) return;
+    const needle = el.querySelector<HTMLElement>('.needle');
+    if (needle) {
+      // Turn the short way round, so the needle never spins a full circle.
+      if (deg !== null && this.compassDeg !== null) { let d = deg - (this.compassDeg % 360); d = ((d + 540) % 360) - 180; deg = this.compassDeg + d; }
+      this.compassDeg = deg;
+      needle.style.transform = `rotate(${(deg ?? -90) + 90}deg)`;
+      needle.classList.toggle('idle', deg === null);
+    }
+    const t = `Compass: ${deg === null ? label : `points to ${label}`}. Click or press ${ctx.settings.keys.map} for the map.`;
+    if (el.getAttribute('aria-label') !== t) { el.setAttribute('aria-label', t); el.title = t; }
+  }
+
+  /** The folding map: a picture of the whole place, with pins. */
+  openMap(): void {
+    const c = ctx.controller;
+    if (!ctx.world) return;
+    const box = this.openModal('map-panel wide', 'Map', this.closeBtn(), h('h2', {}, MAPS[c.state.mapId]?.name ?? 'Map'), h('p', { class: 'fine' }, 'Unfolding the map…'));
+    this.sfx('sfx.page');
+    ctx.world.mapSnap((r) => {
+      if (!box.isConnected) return;
+      clear(box);
+      box.append(this.closeBtn(), h('h2', {}, MAPS[c.state.mapId]?.name ?? 'Map'));
+      if (!r) { box.append(h('p', {}, 'This browser could not draw the map.')); return; }
+      const paper = h('div', { class: 'chart' });
+      const img = h('img', { src: r.img.src, alt: `Map of ${MAPS[c.state.mapId]?.name ?? 'this place'}` }) as HTMLImageElement;
+      paper.append(img, h('div', { class: 'folds', 'aria-hidden': 'true' }));
+      const pins = h('div', { class: 'pins' });
+      const ICON: Record<string, string> = { you: '★', new: '!', place: '•', waystone: '◆', portal: '⇲' };
+      img.addEventListener('load', () => {
+        const sx = img.clientWidth / r.img.naturalWidth || img.clientWidth / img.naturalWidth, sy = img.clientHeight / img.naturalHeight;
+        for (const m of r.marks) {
+          const [px, py] = r.at(m.x, m.y);
+          pins.append(h('span', { class: `pin-${m.kind}`, title: m.label, 'aria-label': m.label, role: 'img', style: { left: `${px * sx}px`, top: `${py * sy}px` } }, ICON[m.kind]));
+        }
+      }, { once: true });
+      paper.append(pins);
+      box.append(paper,
+        h('ul', { class: 'legend' }, h('li', {}, h('span', { class: 'pin-you' }, '★'), ' You'), h('li', {}, h('span', { class: 'pin-new' }, '!'), ' Someone has something new to say'),
+          h('li', {}, h('span', { class: 'pin-place' }, '•'), ' A place you have not used yet'), h('li', {}, h('span', { class: 'pin-waystone' }, '◆'), ' Waystone (save and rest)'), h('li', {}, h('span', { class: 'pin-portal' }, '⇲'), ' Way out')),
+        h('p', { class: 'fine' }, `Press ${ctx.settings.keys.map} or Esc to fold the map.`));
+    });
   }
 
   private emoteBar: HTMLElement | null = null;
@@ -446,7 +498,9 @@ export class UI implements UIApi {
       h('button', { onclick: () => this.openJournal('portfolio'), title: `Portfolio (${km.portfolio})` }, 'Portfolio ', h('kbd', {}, km.portfolio)),
       h('button', { onclick: () => this.openBag(), title: `Bag (${km.bag})` }, 'Bag ', h('kbd', {}, km.bag)),
       h('button', { onclick: () => this.openMenu(), title: 'Menu (Esc)' }, 'Menu ', h('kbd', {}, 'Esc')));
-    this.hud.append(tracker, bar);
+    this.compassEl ??= h('button', { class: 'compass', type: 'button', onclick: () => this.openMap(), 'aria-label': 'Compass. Click for the map.' },
+      h('span', { class: 'rose', 'aria-hidden': 'true' }, 'N'), h('span', { class: 'needle idle', 'aria-hidden': 'true' }));
+    this.hud.append(tracker, bar, this.compassEl);
     // New objectives: Lumen mentions them once if the player allows prompts (GUIDE-001).
     for (const o of objs) {
       if (!this.seenObjectives.has(o.id)) {
@@ -1589,7 +1643,8 @@ export class UI implements UIApi {
 
   private openBag(): void {
     const c = ctx.controller, s = c.state;
-    this.openModal('bag', 'Bag', this.closeBtn(), h('h2', {}, 'Bag'),
+    this.sfx('sfx.pickup');
+    this.openModal('bag satchel', 'Bag', this.closeBtn(), h('div', { class: 'flap', 'aria-hidden': 'true' }), h('h2', {}, 'Satchel'),
       h('p', {}, `${s.marks} marks`),
       h('ul', { class: 'bag' }, ...Object.entries(s.inventory).map(([id, q]) => {
         const it = c.pack.items.find((x) => x.id === id);
