@@ -10,6 +10,7 @@
  * (PROFILE-001); every alert says it may be wrong (MISC-001).
  */
 import type { ContentPack } from '../domain/types';
+import type { SkillStage } from '../domain/skills';
 
 export interface ProgressFile {
   format: 'knowledge-guardians-progress';
@@ -25,6 +26,8 @@ export interface ProgressFile {
   met: { concepts: Record<string, number>; atl: Record<string, number>; subjects: Record<string, number>; aoks: Record<string, number> };
   misconceptions: { id: string; title: string; count: number; level: 'watch' | 'alert' }[];
   portfolio: { id: string; at: string; world: string; kind: string; title: string; text: string; reflection: string }[];
+  /** Skill Atlas stages (spec 76.1), only for skills met. Optional: older files have none. */
+  skills?: Record<string, SkillStage>;
 }
 
 /** Check one parsed file. Returns a plain reason when it cannot be used. */
@@ -32,7 +35,7 @@ export function readProgress(raw: unknown): { ok: true; file: ProgressFile } | {
   const f = raw as Partial<ProgressFile>;
   if (!f || typeof f !== 'object' || f.format !== 'knowledge-guardians-progress') return { ok: false, reason: 'This is not a Knowledge Guardians progress file.' };
   if (f.version !== 1) return { ok: false, reason: 'This progress file was made by another version of the game.' };
-  if (typeof f.player !== 'string' || !Array.isArray(f.objectivesDone) || !f.met || !Array.isArray(f.portfolio)) return { ok: false, reason: 'This progress file is damaged.' };
+  if (typeof f.player !== 'string' || !Array.isArray(f.objectivesDone) || !f.met || !Array.isArray(f.portfolio) || (f.skills !== undefined && (typeof f.skills !== 'object' || f.skills === null))) return { ok: false, reason: 'This progress file is damaged.' };
   return { ok: true, file: f as ProgressFile };
 }
 
@@ -47,6 +50,8 @@ export interface ClassSummary {
   /** Learner-profile moments: class totals only (PROFILE-001). */
   profile: Record<string, number>;
   alerts: ClassAlert[];
+  /** Skill Atlas: for each skill met by anyone, how many students are at each stage. */
+  skills: Record<string, Partial<Record<SkillStage, number>>>;
   /** Concepts with the fewest students who met them: a suggested focus. */
   gaps: string[];
 }
@@ -82,8 +87,13 @@ export function summarise(files0: ProgressFile[], pack: ContentPack, dismissed: 
   }).filter((a) => a.students > 0).sort((a, b) => b.share - a.share);
   const allConcepts = ['evidence', 'certainty', 'truth', 'interpretation', 'power', 'justification', 'explanation', 'objectivity', 'perspective', 'culture', 'values', 'responsibility'];
   const gaps = [...allConcepts].sort((a, b) => (concepts[a]?.students ?? 0) - (concepts[b]?.students ?? 0)).slice(0, 3);
+  const skills: ClassSummary['skills'] = {};
+  for (const f of files) for (const [id, st] of Object.entries(f.skills ?? {})) {
+    if (st === 'unseen') continue;
+    skills[id] ??= {}; skills[id][st] = (skills[id][st] ?? 0) + 1;
+  }
   return {
-    students: n, concepts, atl: tally(files, (f) => f.met.atl), aoks: tally(files, (f) => f.met.aoks), subjects: tally(files, (f) => f.met.subjects),
+    students: n, concepts, skills, atl: tally(files, (f) => f.met.atl), aoks: tally(files, (f) => f.met.aoks), subjects: tally(files, (f) => f.met.subjects),
     profile, alerts, gaps,
   };
 }

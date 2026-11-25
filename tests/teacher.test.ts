@@ -35,6 +35,11 @@ describe('teacher view (spec 94, 95)', () => {
     expect(s.alerts[0]).toMatchObject({ id: 'MIS-29', students: 1, classLevel: true });
     expect(summarise(files, pack, ['MIS-29']).alerts).toEqual([]);
   });
+  it('counts students per Skill Atlas stage, and older files without skills still work', () => {
+    const s = summarise([file('A', { skills: { 'sk.x': 'seen' } }), file('B', { skills: { 'sk.x': 'practised', 'sk.y': 'seen' } }), file('C')], pack);
+    expect(s.skills).toEqual({ 'sk.x': { seen: 1, practised: 1 }, 'sk.y': { seen: 1 } });
+    expect(readProgress({ ...file('D'), skills: 'bad' }).ok).toBe(false);
+  });
   it('writes subject links as CSV', () => {
     expect(subjectCsv([file('Ana', { met: { concepts: {}, atl: {}, subjects: { history: 3 }, aoks: {} } })])).toBe('"student","subject","times met"\n"Ana","history","3"');
   });

@@ -10,6 +10,7 @@ import './teacher.css';
 import { buildPack } from '../content';
 import { AOK_NAMES, ATL_NAMES, CONCEPT_NAMES, PROFILE_NAMES, SUBJECTS } from '../domain/curriculum';
 import { clear, h } from '../ui/dom';
+import { STAGE_LABEL, type SkillStage } from '../domain/skills';
 import { latestPerStudent, readProgress, subjectCsv, summarise, type ProgressFile } from './report';
 
 const pack = buildPack();
@@ -34,6 +35,22 @@ function bars(title: string, names: Record<string, string>, data: Record<string,
           h('td', {}, h('span', { class: 'bar', role: 'img', 'aria-label': `${d.students} of ${n}` }, h('i', { style: { width: n ? pct(d.students / n) : '0%' } })), ` ${d.students} of ${n}`),
           h('td', {}, String(d.total)));
       }))));
+}
+
+const STAGES: SkillStage[] = ['seen', 'practised', 'confident', 'transferred'];
+const skillName = (id: string) => pack.skills.find((x) => x.id === id)?.name ?? id;
+const domainName = (id: string) => pack.skillDomains.find((d) => d.id === pack.skills.find((x) => x.id === id)?.domain)?.name ?? '';
+
+/** Skill Atlas for the class (spec 76.1): students per stage. Stages are practice in the game, not grades. */
+function skillPanel(data: Record<string, Partial<Record<SkillStage, number>>>, n: number): HTMLElement {
+  const ids = pack.skills.map((x) => x.id).filter((id) => data[id]);
+  return h('section', { class: 'panel wide' }, h('h2', {}, 'Skill Atlas (class)'),
+    h('p', { class: 'note' }, 'How many students reached each stage of each skill in play. Seen: used once. Practised: 3 uses. Confident: 8 uses in 3 worlds. Transferred: 15 uses across 2 areas of knowledge. These describe practice in the game. They are not grades and do not mean mastery.'),
+    ids.length ? h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Skill'), ...STAGES.map((st) => h('th', {}, STAGE_LABEL[st])), h('th', {}, 'Not met yet'))),
+      h('tbody', {}, ...ids.map((id) => {
+        const d = data[id]; const met = STAGES.reduce((a, st) => a + (d[st] ?? 0), 0);
+        return h('tr', {}, h('th', { scope: 'row' }, skillName(id), h('br', {}), h('small', {}, domainName(id))), ...STAGES.map((st) => h('td', {}, String(d[st] ?? 0))), h('td', {}, String(Math.max(0, n - met))));
+      }))) : h('p', {}, 'No skills met yet, or the files come from an older version of the game.'));
 }
 
 function dashboard(): void {
@@ -76,6 +93,7 @@ function dashboard(): void {
     bars('Skills (ATL)', ATL_NAMES, s.atl, s.students, 'ATL categories met in play, for the class.'),
     bars('Areas of knowledge and themes', AOK_NAMES, s.aoks, s.students, 'Balance of the course so far.'),
     bars('Subjects', Object.fromEntries(Object.entries(SUBJECTS).filter(([k]) => s.subjects[k]).map(([k, v]) => [k, v.name])), s.subjects, s.students, 'DP subjects that play linked to. Compare with your school\'s subject offer.'),
+    skillPanel(s.skills, s.students),
     h('section', { class: 'panel' }, h('h2', {}, 'Learner profile moments (class totals)'),
       h('p', { class: 'note' }, 'Counts for the whole class only. There are no student scores for the learner profile.'),
       h('ul', { class: 'chips' }, ...Object.entries(PROFILE_NAMES).map(([k, n]) => h('li', {}, `${n}: ${s.profile[k] ?? 0}`)))),
@@ -119,6 +137,8 @@ function studentReport(f: ProgressFile): void {
       list('Skills (ATL)', ATL_NAMES, f.met.atl),
       list('Areas of knowledge', AOK_NAMES, f.met.aoks),
       list('Subjects', Object.fromEntries(Object.entries(SUBJECTS).filter(([k]) => f.met.subjects[k]).map(([k, v]) => [k, v.name])), f.met.subjects),
+      h('section', { class: 'panel' }, h('h2', {}, 'Skill Atlas'), h('p', { class: 'note' }, 'Stages of practice in the game, not grades.'),
+        Object.keys(f.skills ?? {}).length ? h('ul', { class: 'chips' }, ...pack.skills.filter((x) => f.skills?.[x.id]).map((x) => h('li', { class: 'met' }, `${x.name}: ${STAGE_LABEL[f.skills![x.id]]}`))) : h('p', {}, 'None in this file yet.')),
       h('section', { class: 'panel' }, h('h2', {}, 'Awards'), f.awards.length ? h('ul', {}, ...f.awards.map((id) => {
         const a = pack.awards.find((x) => x.id === id);
         return h('li', {}, h('strong', {}, a?.name ?? id), a ? ` · ${a.earnedBy}` : '');

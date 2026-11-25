@@ -1121,6 +1121,7 @@ export class UI implements UIApi {
       met: p.met,
       misconceptions: studentAlerts(p, c.pack, now).map((a) => ({ id: a.misconception.id, title: a.misconception.title, count: a.count, level: a.level })),
       portfolio: p.portfolio.filter((e) => e.shared).map(({ id, at, world, kind, title, text, reflection }) => ({ id, at, world, kind, title, text, reflection })),
+      skills: Object.fromEntries(Object.entries(p.skills ?? {}).map(([id, u]) => [id, skillStage(u)]).filter(([, st]) => st !== 'unseen')),
     };
   }
 
