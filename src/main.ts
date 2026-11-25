@@ -10,12 +10,14 @@ import Phaser from 'phaser';
 import { ctx } from './app/context';
 import { GameController } from './app/controller';
 import { applySettingsToDocument, loadSettings } from './app/settings';
+import { setupCaptions } from './app/captions';
 import { BootScene } from './scenes/BootScene';
 import { WorldScene } from './scenes/WorldScene';
 import { UI } from './ui/ui';
 
 ctx.settings = loadSettings();
 applySettingsToDocument(ctx.settings);
+setupCaptions(() => ctx.settings.captions);
 ctx.controller = new GameController();
 
 let game: Phaser.Game | null = null;

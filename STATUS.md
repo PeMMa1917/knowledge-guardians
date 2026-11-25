@@ -48,6 +48,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 - **Speech marks:** a small gold "!" bubble floats over a person who has a line the player has not seen yet. Seen lines are kept as `node.<id>` flags. It helps players find the next step without a quest arrow.
 - **Showdown on phones:** "Explain the moves" shows what each move does under its button (on by default on touch screens, where hover titles do not show). Narrow screens get a compact layout, and toasts move to the bottom.
 - **Skill Atlas** (spec 76.1, journal tab "Skills"): about 50 skills in 17 regions grow from Seen (1 use) to Practised (3), Confident (8 uses, 3 worlds, 2 kinds of action) and Transferred (15 uses, 2 areas of knowledge, 4 kinds of action). Chapter steps carry `skills` tags; each completed step records a use. Stages are words, never grades, and each skill shows its next step. Rules in `src/domain/skills.ts`, content in `src/content/skills.json`. `PERMANENT_SCHEMA` is now 4, with a migration. Not done yet: a Skill Atlas in the teacher view.
+- **Sound captions** (Settings, spec 21): a short text line at the bottom centre for each sound, for example [Forge hammer rings (to the left)], [Soft chimes], [Page turns] or the kind of music. Captions show even when the volume is off. The same caption does not repeat within 4 seconds. Rules in `src/app/captions.ts`; a test checks that every loaded sound has a caption.
 - **Balance reminder:** every 45 minutes of active play, Lumen suggests a real break. It never blocks play.
 - **MIS-10 and MIS-11 (Indigenous knowledge) are left out on purpose.** They need Indigenous content made with community advisors (spec section 88). Do not add them with a quick signal.
 
@@ -56,7 +57,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 
 ### Tests
 
-`npm test`: 145 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
+`npm test`: 148 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
 
 ## Next steps (in order)
 

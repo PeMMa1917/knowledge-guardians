@@ -8,6 +8,7 @@
  */
 import { ensureLook } from './looks';
 import { chime, clink } from '../app/ambience';
+import { caption } from '../app/captions';
 import { LUMEN_COLOURS } from '../app/settings';
 import Phaser from 'phaser';
 import { ctx, type WorldApi } from '../app/context';
@@ -329,11 +330,13 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const current = this.sound.getAll('').find((s: any) => s.key?.startsWith('music.') && s.isPlaying) as Phaser.Sound.BaseSound | undefined;
     if (current && (current as any).key === key) return;
     this.sound.getAll('').forEach((s: any) => { if (s.key?.startsWith('music.')) s.stop(); });
+    caption(key);
     if (!this.cache.audio.exists(key) || vol <= 0) return;
     this.sound.play(key, { loop: true, volume: vol });
   }
 
   playSfx(key: string): void {
+    caption(key);
     if (ctx.settings.sfxVolume <= 0 || !this.cache.audio.exists(key)) return;
     this.sound.play(key, { volume: ctx.settings.sfxVolume });
   }
@@ -344,16 +347,17 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   /** Ambient sound: the forge hammer in Emberford (louder near the anvil), chimes in the Nexus. */
   private ambience(dt: number): void {
     const vol = ctx.settings.sfxVolume;
-    if (vol <= 0 || !this.player) return;
+    if (!this.player) return;
     this.ambT -= dt;
     if (this.ambT > 0) return;
     const forge = this.map.interactables.find((i) => i.kind === 'forge');
     if (forge) {
+      const dx = (forge.x + 1) * TILE - this.player.sprite.x;
       const d = Phaser.Math.Distance.Between(this.player.sprite.x, this.player.sprite.y, (forge.x + 1) * TILE, forge.y * TILE) / TILE;
-      if (d < 14) clink(vol * (1 - d / 14));
+      if (d < 14) { clink(vol * (1 - d / 14)); caption('amb.forge', d < 3 ? 'close' : dx < 0 ? 'to the left' : 'to the right'); }
       this.ambT = 2.4 + Math.random() * 1.2;
     } else if (this.map.ambience === 'archive') {
-      chime(vol * 0.6);
+      chime(vol * 0.6); caption('amb.chime');
       this.ambT = 7 + Math.random() * 6;
     } else this.ambT = 5;
   }

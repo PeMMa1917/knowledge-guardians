@@ -23,6 +23,8 @@ export interface Settings {
   colourSafe: boolean;
   /** Talk sounds: short voice blips while characters speak (voice.ts). */
   talkSounds: boolean;
+  /** Sound captions: a short text line for each sound (captions.ts). */
+  captions: boolean;
   /** The player's own voice bark (voice.ts PLAYER_VOICES). */
   playerVoice: string;
   /** Interface colour theme. */
@@ -44,7 +46,7 @@ export const LUMEN_COLOURS: Record<Settings['lumenColour'], number> = { gold: 0x
 export const DEFAULTS: Settings = {
   textScale: 1, reducedMotion: false, reducedEffects: false, musicVolume: 0.5, sfxVolume: 0.7,
   guidePrompts: true, highContrast: false, dyslexiaSpacing: false, calmMode: false, glossary: true, readAloud: false,
-  colourSafe: false, keys: DEFAULT_KEYS, talkSounds: true, playerVoice: 'mid', theme: 'archive', lumenColour: 'gold',
+  colourSafe: false, keys: DEFAULT_KEYS, talkSounds: true, captions: false, playerVoice: 'mid', theme: 'archive', lumenColour: 'gold',
 };
 
 export function loadSettings(): Settings {

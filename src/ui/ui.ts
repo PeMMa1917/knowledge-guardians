@@ -1331,6 +1331,7 @@ export class UI implements UIApi {
       check('calmMode', 'Calm mode: surprise events warn first, and you can choose "Later"'),
       check('glossary', 'Smart glossary: underline key words in conversations, so you can tap them for an explanation'),
       check('talkSounds', 'Talk sounds: short voice sounds while characters speak'),
+      check('captions', 'Sound captions: a short text line for each sound (for example [Forge hammer rings])'),
       check('colourSafe', 'Colour-safe marks: blue and orange, with a symbol on every result'),
       'speechSynthesis' in window ? check('readAloud', 'Read conversations aloud (uses your browser\'s voice)') : '',
       range('musicVolume', 'Music volume'), range('sfxVolume', 'Sound effects volume'),
