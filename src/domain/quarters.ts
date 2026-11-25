@@ -44,25 +44,37 @@ export const PLANTS: Record<string, { name: string; leaf: string; flower?: strin
   lavender: { name: 'Lavender', leaf: '#6a8a5a', flower: '#a98be0' },
   cactus: { name: 'Small cactus', leaf: '#5f9a5a', flower: '#ffd75e' },
 };
+/** A room companion (cosmetic): it sleeps, blinks or wanders a little. */
+export const PETS: Record<string, { name: string } | null> = {
+  none: null,
+  cat: { name: 'Ginger cat' },
+  owl: { name: 'Little owl' },
+  tortoise: { name: 'Tortoise' },
+  hedgehog: { name: 'Hedgehog' },
+  fox: { name: 'Sleepy fox cub' },
+  axolotl: { name: 'Axolotl in a bowl' },
+};
 export const SLOTS = 6;
 
-export interface Room { wall: string; floor: string; rug: string; lamp: string; view: string; plant: string; shelf: (string | null)[] }
-export const DEFAULT_ROOM: Room = { wall: 'plaster', floor: 'boards', rug: 'wine', lamp: 'lantern', view: 'stars', plant: 'fern', shelf: Array(SLOTS).fill(null) };
+export interface Room { wall: string; floor: string; rug: string; lamp: string; view: string; plant: string; pet?: string; shelf: (string | null)[] }
+export const DEFAULT_ROOM: Room = { wall: 'plaster', floor: 'boards', rug: 'wine', lamp: 'lantern', view: 'stars', plant: 'fern', pet: 'none', shelf: Array(SLOTS).fill(null) };
 
 const ID = /^[a-z0-9-]{1,24}$/;
 
-/** "wall.floor.rug.lamp.view.plant|k1,k2,,k4,,". Strict: unknown parts give null. */
+/** "wall.floor.rug.lamp.view.plant[.pet]|k1,k2,,k4,,". Strict: unknown parts give null. No pet: no 7th part (old saves stay the same). */
 export function encodeRoom(r: Room): string {
-  return `${[r.wall, r.floor, r.rug, r.lamp, r.view, r.plant].join('.')}|${r.shelf.map((x) => x ?? '').join(',')}`;
+  const parts = [r.wall, r.floor, r.rug, r.lamp, r.view, r.plant];
+  if (r.pet && r.pet !== 'none') parts.push(r.pet);
+  return `${parts.join('.')}|${r.shelf.map((x) => x ?? '').join(',')}`;
 }
 export function decodeRoom(s: unknown): Room | null {
   if (typeof s !== 'string') return null;
   const [look, shelf = ''] = s.split('|');
-  const [wall, floor, rug, lamp, view, plant, ...rest] = look.split('.');
-  if (rest.length || !(wall in WALLS) || !(floor in FLOORS) || !(rug in RUGS) || !(lamp in LAMPS) || !(view in VIEWS) || !(plant in PLANTS)) return null;
+  const [wall, floor, rug, lamp, view, plant, pet = 'none', ...rest] = look.split('.');
+  if (rest.length || !(pet in PETS) || !(wall in WALLS) || !(floor in FLOORS) || !(rug in RUGS) || !(lamp in LAMPS) || !(view in VIEWS) || !(plant in PLANTS)) return null;
   const items = shelf.split(',');
   if (items.length !== SLOTS || items.some((x) => x !== '' && !ID.test(x))) return null;
-  return { wall, floor, rug, lamp, view, plant, shelf: items.map((x) => x || null) };
+  return { wall, floor, rug, lamp, view, plant, pet, shelf: items.map((x) => x || null) };
 }
 
 /** Put a keepsake in a slot. A keepsake sits in one slot only; null clears the slot. */

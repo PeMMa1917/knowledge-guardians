@@ -17,7 +17,7 @@ import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, r
 import { audioNow, chime, clapEcho, playNotes, playShepard } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
-import { DEFAULT_ROOM, FLOORS, LAMPS, PLANTS, RUGS, SLOTS, VIEWS, WALLS, decodeRoom, encodeRoom, placeKeepsake, starsFor, type Room } from '../domain/quarters';
+import { DEFAULT_ROOM, FLOORS, LAMPS, PETS, PLANTS, RUGS, SLOTS, VIEWS, WALLS, decodeRoom, encodeRoom, placeKeepsake, starsFor, type Room } from '../domain/quarters';
 import { ROOM_H, ROOM_W, drawRoom, iconCanvas } from './quarters';
 import { ALBUM_MAX, loadAlbum, saveAlbum } from '../app/albumStore';
 import { captionLines, checkLine } from '../domain/album';
@@ -2463,13 +2463,13 @@ export class UI implements UIApi {
     const paint = (t: number) => drawRoom(g, room, { rings: ringData, crest, lumen: glowHex, selected, t });
     const describe = () => {
       const items = room.shelf.filter(Boolean).map((id) => owned.find((k) => k.id === id)?.name.toLowerCase()).join(', ');
-      canvas.setAttribute('aria-label', `Your quarters: ${WALLS[room.wall].name} walls, ${FLOORS[room.floor].name.toLowerCase()}, a ${LAMPS[room.lamp].name.toLowerCase()}, a window onto ${VIEWS[room.view].name.toLowerCase()}. Star Chart: ${stars} stars. Shelves: ${items || 'empty'}.`);
+      canvas.setAttribute('aria-label', `Your quarters: ${WALLS[room.wall].name} walls, ${FLOORS[room.floor].name.toLowerCase()}, a ${LAMPS[room.lamp].name.toLowerCase()}, a window onto ${VIEWS[room.view].name.toLowerCase()}${room.pet && PETS[room.pet] ? `, and ${/^[aeiou]/i.test(PETS[room.pet]!.name) ? 'an' : 'a'} ${PETS[room.pet]!.name.toLowerCase()} on the rug` : ''}. Star Chart: ${stars} stars. Shelves: ${items || 'empty'}.`);
     };
     const save = () => { c.dispatch({ type: 'SetFlag', flag: 'room', value: encodeRoom(room) }); describe(); };
     const loop = (t: number) => { if (!canvas.isConnected) return; paint(t); if (!ctx.settings.reducedEffects) requestAnimationFrame(loop); };
-    const pick = (label: string, k: 'wall' | 'floor' | 'rug' | 'lamp' | 'view' | 'plant', opts: Record<string, { name: string } | null>) => h('label', { class: 'room-pick' }, h('span', {}, label),
+    const pick = (label: string, k: 'wall' | 'floor' | 'rug' | 'lamp' | 'view' | 'plant' | 'pet', opts: Record<string, { name: string } | null>) => h('label', { class: 'room-pick' }, h('span', {}, label),
       h('select', { onchange: (e: Event) => { room = { ...room, [k]: (e.target as HTMLSelectElement).value }; this.sfx('sfx.click'); save(); paint(performance.now()); } },
-        ...Object.entries(opts).map(([v, o]) => h('option', { value: v, selected: room[k] === v }, o?.name ?? 'None'))));
+        ...Object.entries(opts).map(([v, o]) => h('option', { value: v, selected: (room[k] ?? 'none') === v }, o?.name ?? 'None'))));
     const shelfRow = h('div', { class: 'row wrap shelf-slots', role: 'group', 'aria-label': 'Shelf slots' });
     const ksList = h('div', { class: 'keepsakes' });
     const infoBox = h('p', { class: 'fine keepsake-info', 'aria-live': 'polite' });
@@ -2500,7 +2500,7 @@ export class UI implements UIApi {
       h('p', {}, 'Your own room in the Nexus. The ceiling is your Star Chart: each concept ring you fill adds a star, and a full ring joins its stars into a constellation. The shelves hold keepsakes from the places you have helped.'),
       h('div', { class: 'room-wrap' }, canvas),
       h('p', { class: 'fine' }, `Star Chart: ${stars} of ${rings.length * 5} stars lit.`),
-      h('div', { class: 'room-picks' }, pick('Walls', 'wall', WALLS), pick('Floor', 'floor', FLOORS), pick('Rug', 'rug', RUGS), pick('Lamp', 'lamp', LAMPS), pick('Window view', 'view', VIEWS), pick('Plant', 'plant', PLANTS)),
+      h('div', { class: 'room-picks' }, pick('Walls', 'wall', WALLS), pick('Floor', 'floor', FLOORS), pick('Rug', 'rug', RUGS), pick('Lamp', 'lamp', LAMPS), pick('Window view', 'view', VIEWS), pick('Plant', 'plant', PLANTS), pick('Companion', 'pet', PETS)),
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);

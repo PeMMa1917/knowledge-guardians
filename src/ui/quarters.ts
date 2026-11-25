@@ -2,7 +2,7 @@
  * Drawing for the Guardian's quarters (original pixel art, drawn in code).
  * The room is 192 x 128 logical pixels and is scaled up with CSS.
  */
-import { FLOORS, LAMPS, PLANTS, RUGS, VIEWS, WALLS, starPoints, type Room } from '../domain/quarters';
+import { FLOORS, LAMPS, PETS, PLANTS, RUGS, VIEWS, WALLS, starPoints, type Room } from '../domain/quarters';
 import { crestPixels, type Crest } from '../domain/crest';
 
 type G = CanvasRenderingContext2D;
@@ -53,6 +53,48 @@ export function iconCanvas(id: string, scale = 3): HTMLCanvasElement {
 }
 
 export interface RoomExtras { rings: { got: number; max: number; colour: string }[]; crest: Crest | null; lumen: string; selected: number | null; t: number }
+
+/** The room companion, on the rug. `t` (ms) moves tails, blinks eyes and lifts the 'z'. */
+function drawPet(g: G, pet: string, t: number): void {
+  if (!PETS[pet]) return;
+  const px = 92, py = 112; // feet line
+  const sh = (x: number, w: number) => { g.globalAlpha = 0.25; R(g, '#000', x, py, w, 2); g.globalAlpha = 1; };
+  const blink = Math.floor(t / 180) % 24 === 0;
+  const zzz = (x: number, y: number) => { const k = (t / 900) % 1; g.globalAlpha = 1 - k; R(g, '#e8efe8', x + Math.round(k * 4), y - Math.round(k * 10), 3, 1); R(g, '#e8efe8', x + 2 + Math.round(k * 4), y + 1 - Math.round(k * 10), 1, 1); R(g, '#e8efe8', x + Math.round(k * 4), y + 2 - Math.round(k * 10), 3, 1); g.globalAlpha = 1; };
+  if (pet === 'cat') {
+    sh(px - 2, 20); R(g, '#d9822b', px, py - 8, 14, 8); R(g, '#d9822b', px + 10, py - 13, 8, 7); R(g, '#d9822b', px + 10, py - 15, 2, 2); R(g, '#d9822b', px + 16, py - 15, 2, 2);
+    R(g, '#f3c27a', px + 2, py - 4, 10, 4); R(g, '#b0621a', px + 3, py - 8, 2, 4); R(g, '#b0621a', px + 7, py - 8, 2, 4);
+    if (!blink) { R(g, '#2a1d14', px + 12, py - 11, 1, 1); R(g, '#2a1d14', px + 15, py - 11, 1, 1); } else { R(g, '#2a1d14', px + 12, py - 10, 1, 1); R(g, '#2a1d14', px + 15, py - 10, 1, 1); }
+    R(g, '#e07a8a', px + 13, py - 9, 2, 1);
+    const sw = Math.round(Math.sin(t / 400) * 3); for (let k = 0; k < 7; k++) R(g, '#d9822b', px - 1 - k, py - 3 - Math.round((k * k) / 8) + (k > 3 ? sw : 0), 2, 2);
+  } else if (pet === 'owl') {
+    sh(px + 2, 12); R(g, '#7a5a3a', px + 2, py - 14, 12, 14); R(g, '#a07a50', px + 4, py - 8, 8, 8); R(g, '#7a5a3a', px + 2, py - 16, 2, 2); R(g, '#7a5a3a', px + 12, py - 16, 2, 2);
+    if (!blink) { R(g, '#ffd25a', px + 4, py - 13, 3, 3); R(g, '#ffd25a', px + 9, py - 13, 3, 3); R(g, '#1b1b1b', px + 5, py - 12, 1, 1); R(g, '#1b1b1b', px + 10, py - 12, 1, 1); }
+    else { R(g, '#3b2a1a', px + 4, py - 12, 3, 1); R(g, '#3b2a1a', px + 9, py - 12, 3, 1); }
+    R(g, '#c9a24a', px + 7, py - 10, 2, 2); R(g, '#c9a24a', px + 5, py, 2, 1); R(g, '#c9a24a', px + 9, py, 2, 1);
+  } else if (pet === 'tortoise') {
+    const hx = Math.round((Math.sin(t / 1400) + 1) * 1.5);
+    sh(px - 2, 22); R(g, '#8a9a5a', px + 15 + hx, py - 6, 5, 4); R(g, '#1b1b1b', px + 18 + hx, py - 5, 1, 1);
+    R(g, '#8a9a5a', px, py - 2, 3, 2); R(g, '#8a9a5a', px + 12, py - 2, 3, 2);
+    R(g, '#6b4a2a', px, py - 9, 16, 7); R(g, '#6b4a2a', px + 2, py - 11, 12, 2); R(g, '#a07a40', px + 3, py - 8, 4, 3); R(g, '#a07a40', px + 9, py - 8, 4, 3); R(g, '#a07a40', px + 6, py - 11, 4, 2);
+  } else if (pet === 'hedgehog') {
+    const br = Math.round(Math.sin(t / 600)); sh(px, 18);
+    R(g, '#5b4632', px, py - 8 - br, 14, 8 + br); for (let k = 0; k < 7; k++) R(g, '#3b2a1a', px + k * 2, py - 10 - br - (k % 2), 1, 3);
+    R(g, '#d8b890', px + 12, py - 5, 6, 5); R(g, '#1b1b1b', px + 17, py - 4, 1, 1); if (!blink) R(g, '#1b1b1b', px + 14, py - 4, 1, 1);
+  } else if (pet === 'fox') {
+    const br = Math.sin(t / 700) > 0 ? 1 : 0; sh(px - 2, 22);
+    R(g, '#d9622b', px, py - 7 - br, 18, 7 + br); R(g, '#d9622b', px + 12, py - 10 - br, 7, 5); R(g, '#d9622b', px + 13, py - 12 - br, 2, 2); R(g, '#d9622b', px + 17, py - 12 - br, 2, 2);
+    R(g, '#f3eee0', px + 16, py - 7 - br, 4, 2); R(g, '#2a1d14', px + 14, py - 8 - br, 2, 1);
+    R(g, '#d9622b', px - 4, py - 4, 8, 4); R(g, '#f3eee0', px - 6, py - 4, 3, 3);
+    zzz(px + 20, py - 16);
+  } else if (pet === 'axolotl') {
+    const bob = Math.round(Math.sin(t / 500) * 1.5);
+    sh(px - 2, 22); g.globalAlpha = 0.55; R(g, '#cfe8ef', px - 2, py - 16, 22, 16); g.globalAlpha = 1; R(g, '#9fc4e8', px - 2, py - 10, 22, 10);
+    R(g, '#e9eef0', px - 2, py - 17, 22, 1); R(g, '#7aa06a', px + 1, py - 4, 2, 4); R(g, '#7aa06a', px + 16, py - 5, 2, 5);
+    R(g, '#f2a7b8', px + 4, py - 8 + bob, 10, 3); R(g, '#f2a7b8', px + 12, py - 10 + bob, 4, 4); R(g, '#e0607e', px + 12, py - 12 + bob, 1, 2); R(g, '#e0607e', px + 15, py - 12 + bob, 1, 2); R(g, '#1b1b1b', px + 14, py - 9 + bob, 1, 1);
+    R(g, '#f2a7b8', px + 2, py - 7 + bob, 3, 1);
+  }
+}
 
 export function drawRoom(g: G, r: Room, x: RoomExtras): void {
   g.imageSmoothingEnabled = false;
@@ -139,4 +181,5 @@ export function drawRoom(g: G, r: Room, x: RoomExtras): void {
     else for (let k = 0; k < 7; k++) { const a = -1.4 + k * 0.47; for (let s = 0; s < 12; s++) R(g, pl.leaf, 12 + Math.round(Math.sin(a) * s * 0.8), 112 - Math.round(Math.cos(a) * s)); }
     if (pl.flower) for (let k = 0; k < 4; k++) R(g, pl.flower, 6 + k * 4, 98 + (k % 2) * 3, 2, 2);
   }
+  if (r.pet) drawPet(g, r.pet, x.t);
 }

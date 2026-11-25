@@ -15,6 +15,11 @@ describe("Guardian's quarters (spec 12.16, 32.6)", () => {
     expect(decodeRoom('brick.boards.wine.lantern.stars.fern|,,')).toBeNull();
     expect(decodeRoom('brick.boards.wine.lantern.stars.fern|<b>,,,,,')).toBeNull();
     expect(decodeRoom(42)).toBeNull();
+    // A companion is an optional 7th part; no companion keeps the old format.
+    expect(encodeRoom(DEFAULT_ROOM)).toBe('plaster.boards.wine.lantern.stars.fern|,,,,,');
+    expect(decodeRoom('brick.boards.wine.lantern.stars.fern.owl|,,,,,')?.pet).toBe('owl');
+    expect(decodeRoom('brick.boards.wine.lantern.stars.fern|,,,,,')?.pet).toBe('none');
+    expect(decodeRoom('brick.boards.wine.lantern.stars.fern.dragon|,,,,,')).toBeNull();
   });
   it('a keepsake sits in one slot only', () => {
     let r = placeKeepsake(DEFAULT_ROOM, 0, 'yarn');
