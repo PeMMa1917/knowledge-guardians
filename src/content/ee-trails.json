@@ -239,6 +239,235 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-EE2",
+   "title": "EE practice trail: Who Holds the Pen?",
+   "world": "WORLD-02",
+   "objectives": [
+    {
+     "id": "ee2.o1.lock",
+     "title": "EE practice: open the wooden Title Lock with a focused, arguable question (Keeper Oduya, by the guild hall).",
+     "essential": false,
+     "visible": {
+      "flag": "ee2.started",
+      "eq": true
+     },
+     "done": {
+      "flag": "lock.authors.open",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "power",
+       "evidence"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "history"
+      ],
+      "aoks": [
+       "HIS"
+      ]
+     }
+    },
+    {
+     "id": "ee2.o2.plan",
+     "title": "EE practice: plan the search with Keeper Oduya (at least three kinds of source).",
+     "essential": false,
+     "visible": {
+      "objective": "ee2.o1.lock"
+     },
+     "done": {
+      "flag": "ee2.planned",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "power",
+       "evidence"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "history"
+      ],
+      "aoks": [
+       "HIS"
+      ]
+     }
+    },
+    {
+     "id": "ee2.o3.weigh",
+     "title": "EE practice: weigh two records with different authors: the guild ledger and Sefa's song.",
+     "essential": false,
+     "visible": {
+      "objective": "ee2.o2.plan"
+     },
+     "done": {
+      "all": [
+       {
+        "flag": "thread.blade.ledger",
+        "eq": true
+       },
+       {
+        "flag": "heard.sefa.song",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "power",
+       "evidence"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "history"
+      ],
+      "aoks": [
+       "HIS"
+      ]
+     }
+    },
+    {
+     "id": "ee2.o4.argue",
+     "title": "EE practice: build a claim with a counterclaim on Keeper Oduya's table.",
+     "essential": false,
+     "visible": {
+      "objective": "ee2.o3.weigh"
+     },
+     "done": {
+      "flag": "ee2.argued",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "power",
+       "evidence"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "history"
+      ],
+      "aoks": [
+       "HIS"
+      ]
+     }
+    },
+    {
+     "id": "ee2.o5.cite",
+     "title": "EE practice: cite the source for each claim.",
+     "essential": false,
+     "visible": {
+      "objective": "ee2.o4.argue"
+     },
+     "done": {
+      "flag": "ee2.cited",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "power",
+       "evidence"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "history"
+      ],
+      "aoks": [
+       "HIS"
+      ]
+     }
+    },
+    {
+     "id": "ee2.o6.integrity",
+     "title": "EE practice: find the three problems in the second practice draft.",
+     "essential": false,
+     "visible": {
+      "objective": "ee2.o5.cite"
+     },
+     "done": {
+      "flag": "ee2.integrity",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "power",
+       "evidence"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "history"
+      ],
+      "aoks": [
+       "HIS"
+      ]
+     }
+    },
+    {
+     "id": "ee2.o7.reflect",
+     "title": "EE practice: tell Keeper Oduya what changed in your thinking.",
+     "essential": false,
+     "visible": {
+      "objective": "ee2.o6.integrity"
+     },
+     "done": {
+      "flagSet": "ee2.reflected"
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "power",
+       "evidence"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "history"
+      ],
+      "aoks": [
+       "HIS"
+      ]
+     },
+     "onComplete": [
+      {
+       "portfolio": "pf.ee2"
+      },
+      {
+       "credit": "crit.interpretation.ee-practice"
+      },
+      {
+       "journal": "j.ee2.done"
+      }
+     ]
+    }
+   ]
   }
  ],
  "locks": [
@@ -351,6 +580,118 @@
     ],
     "aoks": [
      "HUM"
+    ]
+   }
+  },
+  {
+   "id": "authors",
+   "title": "Who Holds the Pen?",
+   "subject": "history",
+   "intro": "A second Title Lock, cut from dark wood. It opens for a focused, arguable question about who wrote a record. This is practice on a set topic. It is not your own Extended Essay question.",
+   "parts": [
+    {
+     "id": "frame",
+     "label": "Question word",
+     "options": [
+      {
+       "id": "extent",
+       "text": "To what extent does",
+       "ok": true,
+       "why": ""
+      },
+      {
+       "id": "howfar",
+       "text": "How far does",
+       "ok": true,
+       "why": ""
+      },
+      {
+       "id": "why",
+       "text": "Why does",
+       "ok": false,
+       "why": "'Why does' assumes that the answer is yes. Leave room for 'not much'."
+      },
+      {
+       "id": "does",
+       "text": "Does",
+       "ok": false,
+       "why": "A yes-or-no question gives you one word to argue about. Ask how far, or to what extent."
+      }
+     ]
+    },
+    {
+     "id": "driver",
+     "label": "What shapes the record",
+     "options": [
+      {
+       "id": "purpose",
+       "text": "the purpose of the person who wrote it shape",
+       "ok": true,
+       "why": ""
+      },
+      {
+       "id": "distance",
+       "text": "the time between the event and the writing shape",
+       "ok": true,
+       "why": ""
+      },
+      {
+       "id": "everything",
+       "text": "everything change",
+       "ok": false,
+       "why": "'Everything' cannot be researched. Choose one thing about the writer or the writing."
+      }
+     ]
+    },
+    {
+     "id": "case",
+     "label": "The case",
+     "options": [
+      {
+       "id": "bisheng",
+       "text": "what we know about Bi Sheng's clay movable type, which we know from Shen Kuo's writings?",
+       "ok": true,
+       "why": ""
+      },
+      {
+       "id": "eratosthenes",
+       "text": "what we know about how Eratosthenes estimated the size of the Earth?",
+       "ok": true,
+       "why": ""
+      },
+      {
+       "id": "history",
+       "text": "all of history?",
+       "ok": false,
+       "why": "All of history is too much for one essay. Choose one case."
+      },
+      {
+       "id": "china",
+       "text": "the history of China?",
+       "ok": false,
+       "why": "A whole country's history is a library, not a question. Choose one case with one record."
+      }
+     ]
+    }
+   ],
+   "openLine": "The wood rings turn and lock. Focused, with one case and one record, and open to more than one answer.",
+   "onOpen": [
+    {
+     "journal": "j.ee2.lock"
+    }
+   ],
+   "weave": {
+    "concepts": [
+     "interpretation"
+    ],
+    "atl": [
+     "research"
+    ],
+    "subjects": [
+     "history"
+    ],
+    "aoks": [
+     "HIS"
     ]
    }
   }
@@ -527,6 +868,186 @@
     "criterion": "Your claim",
     "limit": "A counterclaim you answer (optional)",
     "button": "Put the claim on the board"
+   }
+  },
+  {
+   "id": "ee.authors",
+   "title": "EE practice: who holds the pen",
+   "oldLabel": "The record says it, so it happened.",
+   "place": "The record-keeper's table",
+   "sentence": true,
+   "legends": {
+    "intro": "Build the main claim of a practice argument about records and their writers. A bigger claim needs more support. A counterclaim that you answer makes a claim more careful. More than one claim can hold.",
+    "subject": "What shapes the record",
+    "criterion": "Your claim",
+    "limit": "A counterclaim you answer (optional)",
+    "button": "Put the claim on the table"
+   },
+   "subjects": [
+    {
+     "id": "purpose",
+     "text": "A writer's purpose"
+    },
+    {
+     "id": "distance",
+     "text": "The time between an event and its record"
+    }
+   ],
+   "criteria": [
+    {
+     "id": "decides",
+     "text": "decides everything that we can know about the past",
+     "force": 6,
+     "signal": "MIS-15"
+    },
+    {
+     "id": "shapes",
+     "text": "shapes what a record includes and what it leaves out",
+     "force": 3
+    },
+    {
+     "id": "checked",
+     "text": "matters less when we can check the record against other evidence",
+     "force": 3
+    }
+   ],
+   "limits": [
+    {
+     "id": "none",
+     "text": "",
+     "lower": 0
+    },
+    {
+     "id": "counter",
+     "text": "Counterclaim: a record written for one purpose can still be accurate about many things.",
+     "lower": 1
+    },
+    {
+     "id": "only",
+     "text": "Counterclaim: sometimes one record is all that we have.",
+     "lower": 1
+    }
+   ],
+   "supports": [
+    {
+     "subject": "purpose",
+     "criterion": "shapes",
+     "cards": [
+      {
+       "card": "card.guild-ledger",
+       "weight": 2
+      },
+      {
+       "card": "card.corvan-claim",
+       "weight": 1
+      }
+     ],
+     "heard": "Keeper Oduya nods. 'The ledger was written for trade, so it leaves out the making. You can show that with the ledger itself.'"
+    },
+    {
+     "subject": "purpose",
+     "criterion": "checked",
+     "cards": [
+      {
+       "card": "card.workshop-diagram",
+       "weight": 2
+      },
+      {
+       "card": "card.guild-ledger",
+       "weight": 1
+      }
+     ],
+     "heard": "Keeper Oduya smiles. 'The ledger and Hesper's sheet were written for different reasons, and you checked one against the other. That is the method.'"
+    },
+    {
+     "subject": "distance",
+     "criterion": "shapes",
+     "cards": [
+      {
+       "card": "card.person.bisheng",
+       "weight": 2
+      },
+      {
+       "card": "card.person.eratosthenes",
+       "weight": 2
+      },
+      {
+       "card": "card.met-ingots",
+       "weight": 2
+      }
+     ],
+     "heard": "Keeper Oduya taps the table. 'We know Bi Sheng from a later writer. Your cards show the gap, and you name it.'"
+    },
+    {
+     "subject": "distance",
+     "criterion": "checked",
+     "cards": [
+      {
+       "card": "card.met-ingots",
+       "weight": 1
+      },
+      {
+       "card": "card.microstructure",
+       "weight": 1
+      },
+      {
+       "card": "card.person.eratosthenes",
+       "weight": 1
+      }
+     ],
+     "heard": "Keeper Oduya reads it twice. 'Objects and tests can check a late record. A careful claim.'"
+    },
+    {
+     "subject": "purpose",
+     "criterion": "decides",
+     "cards": [
+      {
+       "card": "card.guild-ledger",
+       "weight": 1
+      }
+     ],
+     "heard": "Keeper Oduya reads it. It holds, for now.",
+     "weak": "Keeper Oduya frowns. 'Everything? Then nobody could ever check a record. But you just did, at the forge.'"
+    },
+    {
+     "subject": "distance",
+     "criterion": "decides",
+     "cards": [
+      {
+       "card": "card.person.bisheng",
+       "weight": 1
+      }
+     ],
+     "heard": "Keeper Oduya reads it. It holds, for now.",
+     "weak": "Keeper Oduya frowns. 'If a late record decided everything, no test or object could ever change our view.'"
+    }
+   ],
+   "weak": {
+    "noSupport": "Keeper Oduya reads it aloud. 'Which of your cards says this? A claim with no support is a rumour with good manners.'",
+    "tooStrong": "Keeper Oduya reads it in a flat voice. 'It sounds grand. Your own evidence says something smaller.'"
+   },
+   "onHold": [
+    {
+     "setFlag": "ee2.argued",
+     "value": true
+    }
+   ],
+   "weave": {
+    "concepts": [
+     "interpretation",
+     "power",
+     "evidence"
+    ],
+    "atl": [
+     "research",
+     "thinking"
+    ],
+    "subjects": [
+     "history"
+    ],
+    "aoks": [
+     "HIS"
+    ]
    }
   }
  ],
@@ -1079,6 +1600,555 @@
      "next": null
     }
    ]
+  },
+  {
+   "id": "oduya.busy",
+   "speaker": "keeper-oduya",
+   "text": "I keep the town's records: the ledger, the old lists, the songs that Sefa writes down. Come back when you have followed something through the records. Then we can talk about who writes them.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "oduya.start",
+   "speaker": "keeper-oduya",
+   "text": "You followed the blade to the guild ledger. Did you notice who wrote it, and why? Every record has a hand behind it. Want to practise asking about that? There is a lock here that opens only for a good question.",
+   "claimKind": "interpretation",
+   "options": [
+    {
+     "text": "Show me the lock.",
+     "open": "lock:authors",
+     "effects": [
+      {
+       "setFlag": "ee2.started",
+       "value": true
+      }
+     ],
+     "next": null
+    },
+    {
+     "text": "Is this my real Extended Essay?",
+     "next": "oduya.notee"
+    },
+    {
+     "text": "Later.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "oduya.notee",
+   "speaker": "keeper-oduya",
+   "text": "No. Your real essay is your own, with a supervisor at school. This is practice on topics I chose. I will never ask for your own question, and nothing here goes into your real essay.",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Then show me the lock.",
+     "open": "lock:authors",
+     "effects": [
+      {
+       "setFlag": "ee2.started",
+       "value": true
+      }
+     ],
+     "next": null
+    },
+    {
+     "text": "Later.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "oduya.lockagain",
+   "speaker": "keeper-oduya",
+   "text": "The lock is waiting. A question word, what shapes the record, and one case.",
+   "claimKind": "interpretation",
+   "options": [
+    {
+     "text": "Try the lock.",
+     "open": "lock:authors",
+     "next": null
+    },
+    {
+     "text": "Later.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "oduya.plan",
+   "speaker": "keeper-oduya",
+   "text": "Open. Now, where would you look? Choose as many as you like. I'll tell you what we hold, and what nobody holds.",
+   "claimKind": "interpretation",
+   "options": [
+    {
+     "text": "The original text, in a later printed edition.",
+     "if": {
+      "not": {
+       "flag": "ee2.plan.text",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "ee2.plan.text",
+       "value": true
+      },
+      {
+       "addNum": "count.ee2.plan",
+       "by": 1
+      }
+     ],
+     "next": "oduya.plan.text"
+    },
+    {
+     "text": "A reference work that summarises it.",
+     "if": {
+      "not": {
+       "flag": "ee2.plan.ref",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "ee2.plan.ref",
+       "value": true
+      },
+      {
+       "addNum": "count.ee2.plan",
+       "by": 1
+      }
+     ],
+     "next": "oduya.plan.ref"
+    },
+    {
+     "text": "Other records from the same time.",
+     "if": {
+      "not": {
+       "flag": "ee2.plan.same",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "ee2.plan.same",
+       "value": true
+      },
+      {
+       "addNum": "count.ee2.plan",
+       "by": 1
+      }
+     ],
+     "next": "oduya.plan.same"
+    },
+    {
+     "text": "Objects that survive.",
+     "if": {
+      "not": {
+       "flag": "ee2.plan.objects",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "ee2.plan.objects",
+       "value": true
+      },
+      {
+       "addNum": "count.ee2.plan",
+       "by": 1
+      }
+     ],
+     "next": "oduya.plan.objects"
+    },
+    {
+     "text": "The encyclopedia says it, so I can stop there.",
+     "if": {
+      "not": {
+       "flag": "ee2.plan.stop",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "ee2.plan.stop",
+       "value": true
+      },
+      {
+       "signal": "MIS-06"
+      }
+     ],
+     "next": "oduya.plan.stop"
+    },
+    {
+     "text": "That is my plan.",
+     "if": {
+      "num": "count.ee2.plan",
+      "gte": 3
+     },
+     "effects": [
+      {
+       "setFlag": "ee2.planned",
+       "value": true
+      }
+     ],
+     "next": "oduya.plan.done"
+    },
+    {
+     "text": "I'll think about it.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "oduya.plan.text",
+   "speaker": "keeper-oduya",
+   "text": "Good. For Bi Sheng, that is Shen Kuo's Dream Pool Essays. Later printed editions survive, and a library has one online. Read the writer, not only people who quote him.",
+   "claimKind": "observation",
+   "next": "oduya.plan"
+  },
+  {
+   "id": "oduya.plan.ref",
+   "speaker": "keeper-oduya",
+   "text": "A reference work is a good map. It tells you where the claim comes from. For Bi Sheng, it points straight back to Shen Kuo.",
+   "claimKind": "observation",
+   "next": "oduya.plan"
+  },
+  {
+   "id": "oduya.plan.same",
+   "speaker": "keeper-oduya",
+   "text": "Look for them. If you find none, that is a finding too: write down that one writer carries the whole story, and say what that means for your argument.",
+   "claimKind": "observation",
+   "effects": [
+    {
+     "setFlag": "ee2.gap.noted",
+     "value": true
+    }
+   ],
+   "next": "oduya.plan"
+  },
+  {
+   "id": "oduya.plan.objects",
+   "speaker": "keeper-oduya",
+   "text": "Objects can check words. We hold no clay type here. For Emberford, though, the blade and Hesper's billets are objects that checked the ledger.",
+   "claimKind": "observation",
+   "next": "oduya.plan"
+  },
+  {
+   "id": "oduya.plan.stop",
+   "speaker": "keeper-oduya",
+   "text": "An encyclopedia tells you what other people concluded. Follow its trail back to the record it used. Then you can judge the conclusion.",
+   "claimKind": "interpretation",
+   "next": "oduya.plan"
+  },
+  {
+   "id": "oduya.plan.done",
+   "speaker": "keeper-oduya",
+   "text": "A plan that goes back to the writer, and a gap you can name. Now weigh two records from this town with different authors: the guild ledger and Sefa's song.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "oduya.weigh",
+   "speaker": "keeper-oduya",
+   "text": "Two records, two kinds of author. Follow your thread to the guild ledger, and ask Sefa what the song knows that the ledger does not.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "oduya.argue",
+   "speaker": "keeper-oduya",
+   "text": "You have weighed two records with different authors. Now build the argument on my table: a claim, a counterclaim you answer, and support from your cards.",
+   "claimKind": "interpretation",
+   "options": [
+    {
+     "text": "Show me the table.",
+     "open": "label:ee.authors",
+     "next": null
+    },
+    {
+     "text": "Later.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "oduya.cite",
+   "speaker": "keeper-oduya",
+   "text": "Cite. Your argument says that Bi Sheng made movable type of baked clay in the 1040s. Which source do you cite?",
+   "claimKind": "interpretation",
+   "options": [
+    {
+     "text": "Encyclopaedia Britannica: Pi Sheng (Bi Sheng).",
+     "effects": [
+      {
+       "setFlag": "ee2.cite.bisheng",
+       "value": true
+      }
+     ],
+     "next": "oduya.cite2"
+    },
+    {
+     "text": "Emberford's guild ledger.",
+     "next": "oduya.cite.miss"
+    },
+    {
+     "text": "I remember it from class.",
+     "next": "oduya.cite.memory"
+    }
+   ]
+  },
+  {
+   "id": "oduya.cite.miss",
+   "speaker": "keeper-oduya",
+   "text": "The ledger is about Emberford's trade. It says nothing about Bi Sheng. Cite the record that supports this exact claim.",
+   "claimKind": "interpretation",
+   "next": "oduya.cite"
+  },
+  {
+   "id": "oduya.cite.memory",
+   "speaker": "keeper-oduya",
+   "text": "Your memory is a start, not a citation. Your reader needs a record they can check.",
+   "claimKind": "interpretation",
+   "next": "oduya.cite"
+  },
+  {
+   "id": "oduya.cite2",
+   "speaker": "keeper-oduya",
+   "text": "Second claim: Shen Kuo's Dream Pool Essays survive in later printed editions. Which source?",
+   "claimKind": "interpretation",
+   "options": [
+    {
+     "text": "Library of Congress, World Digital Library: Mengxi bitan, a later printed edition.",
+     "effects": [
+      {
+       "setFlag": "ee2.cited",
+       "value": true
+      }
+     ],
+     "next": "oduya.cite.done"
+    },
+    {
+     "text": "Encyclopaedia Britannica: Mount Everest.",
+     "next": "oduya.cite2.miss"
+    },
+    {
+     "text": "No citation. It is obvious.",
+     "next": "oduya.cite2.obvious"
+    }
+   ]
+  },
+  {
+   "id": "oduya.cite2.miss",
+   "speaker": "keeper-oduya",
+   "text": "That article is about a mountain. It cannot support a claim about a book.",
+   "claimKind": "interpretation",
+   "next": "oduya.cite2"
+  },
+  {
+   "id": "oduya.cite2.obvious",
+   "speaker": "keeper-oduya",
+   "text": "Obvious to you. Your reader needs to see the edition for themselves.",
+   "claimKind": "interpretation",
+   "next": "oduya.cite2"
+  },
+  {
+   "id": "oduya.cite.done",
+   "speaker": "keeper-oduya",
+   "text": "Each claim points to a record that someone else can open. Use your school's citation style for real work.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "oduya.draft",
+   "speaker": "keeper-oduya",
+   "text": "Someone left a practice draft on my table. Three problems again, but different ones. Can you find them?",
+   "claimKind": "interpretation",
+   "options": [
+    {
+     "text": "This paragraph follows the encyclopedia sentence by sentence and only swaps some words.",
+     "if": {
+      "not": {
+       "flag": "ee2.int.patch",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "ee2.int.patch",
+       "value": true
+      },
+      {
+       "addNum": "count.ee2.integrity",
+       "by": 1
+      }
+     ],
+     "next": "oduya.draft.patch"
+    },
+    {
+     "text": "The quotation from Shen Kuo has no edition or page.",
+     "if": {
+      "not": {
+       "flag": "ee2.int.locator",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "ee2.int.locator",
+       "value": true
+      },
+      {
+       "addNum": "count.ee2.integrity",
+       "by": 1
+      }
+     ],
+     "next": "oduya.draft.locator"
+    },
+    {
+     "text": "The picture of clay type has no credit or source.",
+     "if": {
+      "not": {
+       "flag": "ee2.int.image",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "ee2.int.image",
+       "value": true
+      },
+      {
+       "addNum": "count.ee2.integrity",
+       "by": 1
+      }
+     ],
+     "next": "oduya.draft.image"
+    },
+    {
+     "text": "It looks fine to me.",
+     "if": {
+      "num": "count.ee2.integrity",
+      "lte": 2
+     },
+     "next": "oduya.draft.fine"
+    },
+    {
+     "text": "That is all three.",
+     "if": {
+      "num": "count.ee2.integrity",
+      "gte": 3
+     },
+     "next": "oduya.draft.done"
+    }
+   ]
+  },
+  {
+   "id": "oduya.draft.patch",
+   "speaker": "keeper-oduya",
+   "text": "Yes. Swapping words while you keep someone else's sentences is still their work. Close the book, write what you understood, then cite it.",
+   "claimKind": "interpretation",
+   "next": "oduya.draft"
+  },
+  {
+   "id": "oduya.draft.locator",
+   "speaker": "keeper-oduya",
+   "text": "Yes. A reader must be able to find the words: which edition, which part.",
+   "claimKind": "interpretation",
+   "next": "oduya.draft"
+  },
+  {
+   "id": "oduya.draft.image",
+   "speaker": "keeper-oduya",
+   "text": "Yes. Pictures are someone's work too. Say where each one comes from, and check that you may use it.",
+   "claimKind": "interpretation",
+   "next": "oduya.draft"
+  },
+  {
+   "id": "oduya.draft.fine",
+   "speaker": "keeper-oduya",
+   "text": "Read it again. For each sentence and each picture: whose work is it, and does the reader know?",
+   "claimKind": "interpretation",
+   "next": "oduya.draft"
+  },
+  {
+   "id": "oduya.draft.done",
+   "speaker": "keeper-oduya",
+   "text": "All three. Honest work is easier to check, and easier to trust.",
+   "claimKind": "observation",
+   "effects": [
+    {
+     "setFlag": "ee2.integrity",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "oduya.reflect",
+   "speaker": "keeper-oduya",
+   "text": "Last step. What changed in your thinking about records on this trail? Any honest answer counts.",
+   "claimKind": "interpretation",
+   "options": [
+    {
+     "text": "I now ask who wrote a record, and why.",
+     "effects": [
+      {
+       "setFlag": "ee2.reflected",
+       "value": "who"
+      }
+     ],
+     "next": "oduya.reflect.end"
+    },
+    {
+     "text": "One record can carry a whole story, and that is a risk.",
+     "effects": [
+      {
+       "setFlag": "ee2.reflected",
+       "value": "one"
+      }
+     ],
+     "next": "oduya.reflect.end"
+    },
+    {
+     "text": "Objects and tests can check words.",
+     "effects": [
+      {
+       "setFlag": "ee2.reflected",
+       "value": "objects"
+      }
+     ],
+     "next": "oduya.reflect.end"
+    },
+    {
+     "text": "I am not sure yet.",
+     "effects": [
+      {
+       "setFlag": "ee2.reflected",
+       "value": "unsure"
+      }
+     ],
+     "next": "oduya.reflect.end"
+    }
+   ]
+  },
+  {
+   "id": "oduya.reflect.end",
+   "speaker": "keeper-oduya",
+   "text": "Noted, in your portfolio. Add your own words there if you like. Only you decide whether your teacher sees it.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "oduya.after",
+   "speaker": "keeper-oduya",
+   "text": "The town keeps its records, and now you know to ask who held the pen. Your real essay will be your own.",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Can I try the lock again?",
+     "open": "lock:authors",
+     "next": null
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    }
+   ]
   }
  ],
  "hints": [
@@ -1249,6 +2319,174 @@
    "objective": "ee1.o7.reflect",
    "depth": 4,
    "text": "Talk to Tull and choose any of the four answers."
+  },
+  {
+   "id": "h.ee2.o1.lock.1",
+   "objective": "ee2.o1.lock",
+   "depth": 1,
+   "text": "The lock wants a question about one record and its writer."
+  },
+  {
+   "id": "h.ee2.o1.lock.2",
+   "objective": "ee2.o1.lock",
+   "depth": 2,
+   "text": "Avoid questions that assume the answer, or that ask yes or no."
+  },
+  {
+   "id": "h.ee2.o1.lock.3",
+   "objective": "ee2.o1.lock",
+   "depth": 3,
+   "text": "Pick what shapes the record, and one case."
+  },
+  {
+   "id": "h.ee2.o1.lock.4",
+   "objective": "ee2.o1.lock",
+   "depth": 4,
+   "text": "Try: 'To what extent does' + 'the purpose of the person who wrote it shape' + the Bi Sheng case."
+  },
+  {
+   "id": "h.ee2.o2.plan.1",
+   "objective": "ee2.o2.plan",
+   "depth": 1,
+   "text": "Think about kinds of source."
+  },
+  {
+   "id": "h.ee2.o2.plan.2",
+   "objective": "ee2.o2.plan",
+   "depth": 2,
+   "text": "Which records go back to the writer? Which can check the writer?"
+  },
+  {
+   "id": "h.ee2.o2.plan.3",
+   "objective": "ee2.o2.plan",
+   "depth": 3,
+   "text": "Choose at least three kinds of source, then 'That is my plan'."
+  },
+  {
+   "id": "h.ee2.o2.plan.4",
+   "objective": "ee2.o2.plan",
+   "depth": 4,
+   "text": "Talk to Keeper Oduya. Choose 'The original text…', 'A reference work…' and 'Other records…', then 'That is my plan'."
+  },
+  {
+   "id": "h.ee2.o3.weigh.1",
+   "objective": "ee2.o3.weigh",
+   "depth": 1,
+   "text": "Two records of one town, written by different people."
+  },
+  {
+   "id": "h.ee2.o3.weigh.2",
+   "objective": "ee2.o3.weigh",
+   "depth": 2,
+   "text": "One is the guild's book. The other is a song."
+  },
+  {
+   "id": "h.ee2.o3.weigh.3",
+   "objective": "ee2.o3.weigh",
+   "depth": 3,
+   "text": "Follow the thread to the guild ledger. Ask Sefa about the songs."
+  },
+  {
+   "id": "h.ee2.o3.weigh.4",
+   "objective": "ee2.o3.weigh",
+   "depth": 4,
+   "text": "Use the Provenance Thread at the ledger desk north of the fountain, then talk to Sefa and choose 'What do the songs say?'."
+  },
+  {
+   "id": "h.ee2.o4.argue.1",
+   "objective": "ee2.o4.argue",
+   "depth": 1,
+   "text": "A careful claim is easier to defend."
+  },
+  {
+   "id": "h.ee2.o4.argue.2",
+   "objective": "ee2.o4.argue",
+   "depth": 2,
+   "text": "A counterclaim that you answer makes a claim stronger."
+  },
+  {
+   "id": "h.ee2.o4.argue.3",
+   "objective": "ee2.o4.argue",
+   "depth": 3,
+   "text": "Choose 'shapes what a record includes…' or 'matters less when we can check…', and add a counterclaim."
+  },
+  {
+   "id": "h.ee2.o4.argue.4",
+   "objective": "ee2.o4.argue",
+   "depth": 4,
+   "text": "Talk to Keeper Oduya, open the table: 'A writer's purpose' + 'shapes what a record includes…' + the first counterclaim."
+  },
+  {
+   "id": "h.ee2.o5.cite.1",
+   "objective": "ee2.o5.cite",
+   "depth": 1,
+   "text": "Every claim needs the source that supports it."
+  },
+  {
+   "id": "h.ee2.o5.cite.2",
+   "objective": "ee2.o5.cite",
+   "depth": 2,
+   "text": "Which source is about Bi Sheng? Which is about the book?"
+  },
+  {
+   "id": "h.ee2.o5.cite.3",
+   "objective": "ee2.o5.cite",
+   "depth": 3,
+   "text": "Bi Sheng: the reference work. The book: the library's printed edition."
+  },
+  {
+   "id": "h.ee2.o5.cite.4",
+   "objective": "ee2.o5.cite",
+   "depth": 4,
+   "text": "Talk to Keeper Oduya. Choose 'Encyclopaedia Britannica: Pi Sheng…', then 'Library of Congress…'."
+  },
+  {
+   "id": "h.ee2.o6.integrity.1",
+   "objective": "ee2.o6.integrity",
+   "depth": 1,
+   "text": "Read like an examiner again."
+  },
+  {
+   "id": "h.ee2.o6.integrity.2",
+   "objective": "ee2.o6.integrity",
+   "depth": 2,
+   "text": "Look for borrowed sentences, a quotation that cannot be found, and a picture without a source."
+  },
+  {
+   "id": "h.ee2.o6.integrity.3",
+   "objective": "ee2.o6.integrity",
+   "depth": 3,
+   "text": "The three problems: patchwriting, a quotation with no edition or page, an uncredited picture."
+  },
+  {
+   "id": "h.ee2.o6.integrity.4",
+   "objective": "ee2.o6.integrity",
+   "depth": 4,
+   "text": "Talk to Keeper Oduya and choose each of the three problems, then 'That is all three'."
+  },
+  {
+   "id": "h.ee2.o7.reflect.1",
+   "objective": "ee2.o7.reflect",
+   "depth": 1,
+   "text": "Look back at the trail."
+  },
+  {
+   "id": "h.ee2.o7.reflect.2",
+   "objective": "ee2.o7.reflect",
+   "depth": 2,
+   "text": "Any honest answer counts."
+  },
+  {
+   "id": "h.ee2.o7.reflect.3",
+   "objective": "ee2.o7.reflect",
+   "depth": 3,
+   "text": "Talk to Keeper Oduya and say what changed."
+  },
+  {
+   "id": "h.ee2.o7.reflect.4",
+   "objective": "ee2.o7.reflect",
+   "depth": 4,
+   "text": "Talk to Keeper Oduya and choose any of the four answers."
   }
  ],
  "journal": [
@@ -1260,6 +2498,16 @@
   {
    "id": "j.ee1.done",
    "text": "EE practice trail finished: question, search plan, weighing, argument with counterclaim, citations, integrity check, reflection. Practice only. My real essay is my own work.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "j.ee2.lock",
+   "text": "EE practice: the wooden Title Lock opened. A question about a record needs one case, one record and a writer to ask about.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "j.ee2.done",
+   "text": "Second EE practice trail finished: who held the pen. Practice only. My real essay is my own work.",
    "claimKind": "observation"
   }
  ]

@@ -97,3 +97,61 @@ describe('EE practice trail (spec 92.2)', () => {
     expect(text).not.toMatch(/your own (research )?question|type your question/i);
   });
 });
+
+describe('EE practice trail 2: Who Holds the Pen? (Emberford, History)', () => {
+  const lock2 = pack.locks.find((l) => l.id === 'authors')!;
+  function ready2(): Driver {
+    const d = new Driver();
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-103' });
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-101' });
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-002' });
+    d.s = { ...d.s, inventory: { ...d.s.inventory, 'tool.provenance-thread': 1 } };
+    return d;
+  }
+  function play2(d: Driver, q: Record<string, string>, claim: { subject: string; criterion: string; limit: string }, reflect: string) {
+    d.run({ type: 'FollowThread', thread: 'blade', node: 'stall' });
+    d.run({ type: 'FollowThread', thread: 'blade', node: 'ledger' });
+    expect(d.e.talkEntry('keeper-oduya', d.s)).toBe('oduya.start');
+    d.talk('keeper-oduya', 'Show me the lock');
+    d.run({ type: 'TurnLock', lock: 'authors', choice: q });
+    for (const pick of ['original text', 'reference work', 'same time', 'That is my plan']) d.talk('keeper-oduya', pick);
+    expect(d.done('ee2.o2.plan')).toBe(true);
+    d.run({ type: 'EnterNode', node: 'sefa.song' });
+    expect(d.done('ee2.o3.weigh')).toBe(true);
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-003-AE' });
+    d.run({ type: 'BuildLabel', kit: 'ee.authors', ...claim });
+    expect(d.done('ee2.o4.argue'), JSON.stringify(claim)).toBe(true);
+    d.talk('keeper-oduya', 'Pi Sheng', 'Library of Congress');
+    d.talk('keeper-oduya', 'swaps some words', 'no edition', 'no credit', 'That is all three');
+    d.talk('keeper-oduya', reflect);
+    expect(d.done('ee2.o7.reflect')).toBe(true);
+  }
+  it('Oduya waits until the player has followed the thread to the ledger', () => {
+    expect(new Driver().e.talkEntry('keeper-oduya', new Driver().s)).toBe('oduya.busy');
+  });
+  it('several questions open the lock, and closed rings say why', () => {
+    let open = 0;
+    for (const frame of ['extent', 'howfar']) for (const driver of ['purpose', 'distance']) for (const c of ['bisheng', 'eratosthenes']) if (tryLock(lock2, { frame, driver, case: c }).opened) open++;
+    expect(open).toBe(8);
+    expect(tryLock(lock2, { frame: 'does', driver: 'everything', case: 'china' }).lines.length).toBe(3);
+  });
+  it('every route gives the same 15 XP and a private portfolio entry', () => {
+    const routes: [Record<string, string>, { subject: string; criterion: string; limit: string }, string][] = [
+      [{ frame: 'extent', driver: 'purpose', case: 'bisheng' }, { subject: 'distance', criterion: 'shapes', limit: 'only' }, 'who wrote'],
+      [{ frame: 'howfar', driver: 'distance', case: 'eratosthenes' }, { subject: 'distance', criterion: 'checked', limit: 'counter' }, 'not sure'],
+    ];
+    for (const [q, c, r] of routes) {
+      const d = ready2();
+      play2(d, q, c, r);
+      expect(d.p.credit['crit.interpretation.ee-practice']).toBe(15);
+      expect(d.p.awards['skill.ee-practice-2']).toBeTruthy();
+      expect(d.p.portfolio.find((e) => e.title === 'EE practice: Who Holds the Pen?')?.shared).toBe(false);
+    }
+  });
+  it('"A writer\'s purpose decides everything" does not hold and signals MIS-15', () => {
+    const d = ready2();
+    const o = d.run({ type: 'BuildLabel', kit: 'ee.authors', subject: 'purpose', criterion: 'decides', limit: 'counter' });
+    expect((o.events.find((e) => e.kind === 'label') as any).result.holds).toBe(false);
+    expect(d.p.signals['MIS-15']?.length).toBe(1);
+  });
+});

@@ -500,6 +500,74 @@
    "sprite": "villager-1",
    "mode": "fictional",
    "talk": []
+  },
+  {
+   "id": "keeper-oduya",
+   "name": "Keeper Ruth Oduya",
+   "role": "Emberford record-keeper",
+   "sprite": "villager-2",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "objective": "ee2.o7.reflect"
+     },
+     "node": "oduya.after"
+    },
+    {
+     "if": {
+      "objective": "ee2.o6.integrity"
+     },
+     "node": "oduya.reflect"
+    },
+    {
+     "if": {
+      "objective": "ee2.o5.cite"
+     },
+     "node": "oduya.draft"
+    },
+    {
+     "if": {
+      "objective": "ee2.o4.argue"
+     },
+     "node": "oduya.cite"
+    },
+    {
+     "if": {
+      "objective": "ee2.o3.weigh"
+     },
+     "node": "oduya.argue"
+    },
+    {
+     "if": {
+      "objective": "ee2.o2.plan"
+     },
+     "node": "oduya.weigh"
+    },
+    {
+     "if": {
+      "objective": "ee2.o1.lock"
+     },
+     "node": "oduya.plan"
+    },
+    {
+     "if": {
+      "flag": "ee2.started",
+      "eq": true
+     },
+     "node": "oduya.lockagain"
+    },
+    {
+     "if": {
+      "flag": "thread.blade.ledger",
+      "eq": true
+     },
+     "node": "oduya.start"
+    },
+    {
+     "node": "oduya.busy"
+    }
+   ]
   }
  ],
  "criteria": [
@@ -546,6 +614,11 @@
   {
    "id": "crit.justification.ee-practice",
    "concept": "justification",
+   "maximum": 15
+  },
+  {
+   "id": "crit.interpretation.ee-practice",
+   "concept": "interpretation",
    "maximum": 15
   }
  ],
@@ -682,6 +755,18 @@
    ],
    "when": {
     "objective": "ee1.o7.reflect"
+   }
+  },
+  {
+   "id": "skill.ee-practice-2",
+   "kind": "skill",
+   "name": "Research Practice II",
+   "earnedBy": "You asked who wrote a record and why, planned a search back to the writer, argued with a counterclaim, cited and reflected. Practice only, not your real Extended Essay.",
+   "criteria": [
+    "crit.interpretation.ee-practice"
+   ],
+   "when": {
+    "objective": "ee2.o7.reflect"
    }
   }
  ],
@@ -1448,6 +1533,29 @@
     "aoks": [
      "HIS",
      "HUM"
+    ]
+   }
+  },
+  {
+   "id": "pf.ee2",
+   "kind": "essay",
+   "title": "EE practice: Who Holds the Pen?",
+   "text": "Practice trail (not my real Extended Essay). I asked how the writer of a record shapes what it says, planned a search back to the writer, weighed a ledger and a song, built a claim with a counterclaim, cited two sources and found three integrity problems. What changed in my thinking:",
+   "weave": {
+    "concepts": [
+     "interpretation",
+     "power",
+     "evidence"
+    ],
+    "atl": [
+     "research",
+     "thinking"
+    ],
+    "subjects": [
+     "history"
+    ],
+    "aoks": [
+     "HIS"
     ]
    }
   }

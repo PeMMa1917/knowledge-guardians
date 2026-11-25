@@ -1209,6 +1209,12 @@
      "next": "sefa.know",
      "tag": "Ask what a source can know"
     }
+   ],
+   "effects": [
+    {
+     "setFlag": "heard.sefa.song",
+     "value": true
+    }
    ]
   },
   {
