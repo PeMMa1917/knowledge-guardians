@@ -516,9 +516,16 @@ export type PuzzleRecord = {
    * see how a delay that is always there pushes every result the same way.
    */
   | { type: 'echo'; distance: number; speed: number; minTimes: number; reflect: { text: string; honest: boolean; why: string }[] }
+  /**
+   * A survey (human sciences): the wording of a question and who is asked both change the
+   * answer. Every person has a fixed view; a leading question flips people whose view is
+   * not firm. The player runs surveys, compares them, then chooses a fair report.
+   */
+  | { type: 'survey'; groups: Record<string, string>; people: SurveyPerson[]; wordings: { id: string; text: string; lean: 'none' | 'yes' | 'no' }[]; samples: { id: string; label: string; people: string[] }[]; fair: { wording: string; sample: string }; reflect: { text: string; honest: boolean; why: string }[] }
   | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string }[] }
 );
 
+export interface SurveyPerson { id: string; group: string; yes: boolean; firm: boolean }
 export interface SorterFruit { id: string; colour: 'red' | 'green' | 'yellow'; size: 'small' | 'large'; bruised: boolean; farm: string }
 export interface SightBlock { x: number; y: number; w: number; h: number; label: string; kind: 'stall' | 'fountain' | 'crates' | 'cart' }
 export interface SightSpot { id: string; x: number; y: number; label: string }

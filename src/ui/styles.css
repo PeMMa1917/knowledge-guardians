@@ -644,3 +644,20 @@ button.big { font-size: 1.2em; padding: 12px 22px; }
 .echo-bar .fill.fixed { background: #4aa3ff; }
 .echo-bar .fill.rope { background: #e9cf7a; }
 @media (max-width: 560px) { .echo-bar { grid-template-columns: 1fr 60px; } .echo-bar .fill { grid-column: 1 / -1; } }
+
+/* The Bridge Toll Survey */
+.survey-legend { gap: 12px; font-size: 0.9em; }
+.survey-legend .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: middle; }
+.survey-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 6px; }
+.survey-opt { text-align: left; }
+.survey-opt.picked { outline: 3px solid var(--accent, #e9c45a); background: rgba(233, 196, 90, 0.12); }
+.survey-runs { display: flex; flex-direction: column; gap: 10px; }
+.survey-run { border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 8px; }
+.survey-run p { margin: 0 0 4px; }
+.survey-bar { position: relative; height: 22px; border-radius: 6px; background: #ff8a3a; overflow: hidden; }
+.survey-bar .yes { position: absolute; left: 0; top: 0; bottom: 0; background: #4aa3ff; transition: width 0.6s; }
+.survey-bar strong { position: relative; padding-left: 8px; line-height: 22px; color: #10142e; }
+.survey-people { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 6px; }
+.voter { width: 20px; height: 20px; border-radius: 50%; display: inline-grid; place-items: center; font-size: 11px; font-weight: 700; color: #10142e; animation: fruit-drop 0.35s ease-out both; }
+.voter.no { outline: 2px solid #ff8a3a; }
+.voter.yes { outline: 2px solid #4aa3ff; }

@@ -14,7 +14,7 @@
  * Grammar and citation have conventions, so these puzzles do have right answers.
  * They are never about contested knowledge. Pure rules, no DOM.
  */
-import type { PuzzleRecord, SightBlock, SorterFruit } from './types';
+import type { PuzzleRecord, SightBlock, SorterFruit, SurveyPerson } from './types';
 
 export type RoundResult = { ok: boolean; text: string; solved: boolean };
 export type OrderResult = { ok: boolean; text: string; gapAt: number | null };
@@ -227,4 +227,25 @@ export const TIME_MIN = 60, TIME_MAX = 4000;
 /** Times are kept as a comma list of whole milliseconds in a flag. */
 export function readTimes(v: unknown): number[] {
   return typeof v === 'string' && v ? v.split(',').map(Number).filter((x) => Number.isFinite(x) && x >= TIME_MIN && x <= TIME_MAX) : [];
+}
+
+/** One person's answer: a leading question flips a person whose view is not firm. */
+export function answerSurvey(person: SurveyPerson, lean: 'none' | 'yes' | 'no'): boolean {
+  if (lean === 'none' || person.firm) return person.yes;
+  return lean === 'yes';
+}
+export interface SurveyResult { wording: string; sample: string; yes: number; total: number; byGroup: Record<string, { yes: number; total: number }>; answers: { id: string; yes: boolean }[] }
+export function runSurvey(p: PuzzleRecord, wording: string, sample: string): SurveyResult {
+  if (p.type !== 'survey') throw new Error('Not a survey puzzle');
+  const w = p.wordings.find((x) => x.id === wording), sm = p.samples.find((x) => x.id === sample);
+  if (!w || !sm) throw new Error('No such question or group');
+  const byGroup: SurveyResult['byGroup'] = {};
+  const answers = sm.people.map((id) => {
+    const person = p.people.find((x) => x.id === id)!;
+    const yes = answerSurvey(person, w.lean);
+    const g = (byGroup[person.group] ??= { yes: 0, total: 0 });
+    g.total++; if (yes) g.yes++;
+    return { id, yes };
+  });
+  return { wording, sample, yes: answers.filter((a) => a.yes).length, total: answers.length, byGroup, answers };
 }

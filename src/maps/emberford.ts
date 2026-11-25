@@ -110,6 +110,7 @@ export const EMBERFORD: MapDef = {
     { id: 'weigh-house', kind: 'puzzle', puzzle: 'weigh-house', x: 27, y: 18, w: 1, h: 1, label: 'the Weigh-House balance', art: 'balance-scale' },
     { id: 'plaque', kind: 'puzzle', puzzle: 'founders-plaque', x: 20, y: 6, w: 1, h: 1, label: "the Founders' Plaque", art: 'plaque.trestle',
       artBy: { flag: 'puzzle.founders-plaque.method', keys: { strip: 'plaque.strip', clean: 'plaque.clean', window: 'plaque.window', repaint: 'plaque.repaint' } } },
+    { id: 'survey-box', kind: 'puzzle', puzzle: 'toll-survey', x: 26, y: 9, w: 1, h: 1, label: "Clerk Venn's survey box", art: 'survey-box' },
     { id: 'echo-bridge', kind: 'puzzle', puzzle: 'echo-bridge', x: 29, y: 21, w: 1, h: 1, label: 'the echo stone by the bridge', art: 'echo-stone' },
     { id: 'brass-sorter', kind: 'puzzle', puzzle: 'brass-sorter', x: 11, y: 19, w: 1, h: 1, label: "Mara's brass sorter", art: 'brass-sorter' },
     { id: 'map-table', kind: 'puzzle', puzzle: 'map-table', x: 2, y: 20, w: 1, h: 1, label: "the mapmaker's table", art: 'map-table' },

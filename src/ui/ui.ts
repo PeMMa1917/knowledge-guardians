@@ -13,7 +13,7 @@ import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads,
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
-import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, runSorter, sightBlock, tiltOf, timeStats, type SorterRun } from '../domain/puzzles';
+import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, runSorter, runSurvey, sightBlock, tiltOf, timeStats, type SorterRun } from '../domain/puzzles';
 import { audioNow, chime, clapEcho, playNotes } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
@@ -1128,6 +1128,7 @@ export class UI implements UIApi {
     let sorterRun: SorterRun | null = null;
     let echo: { mode: 'idle' | 'listen' | 'wait' | 'go'; t0: number; audio: boolean; timer: number } = { mode: 'idle', t0: 0, audio: false, timer: 0 };
     let flashEcho = ctx.settings.sfxVolume <= 0.01;
+    let surveyW: string | null = null, surveyS: string | null = null;
     let examples: string[] = [];
     let sheet: string[] = [];
     const sightNotes = new Map<string, string>();
@@ -1175,6 +1176,36 @@ export class UI implements UIApi {
               h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleWeigh', puzzle: rec.id, round: n, weights: [...pan] })) }, 'Record this weighing'),
               h('button', { onclick: () => { pan = []; feedback = null; render(); } }, 'Clear the pan')));
         } else if (done) box.append(h('p', { class: 'fair' }, 'Every weighing is in the record book.'));
+      } else if (rec.type === 'survey') {
+        const runs = String(c.state.flags[`${F}.runs`] ?? '').split(',').filter(Boolean);
+        const fairDone = runs.includes(`${rec.fair.wording}:${rec.fair.sample}`);
+        const GCOL: Record<string, string> = {};
+        Object.keys(rec.groups).forEach((g, i) => { GCOL[g] = ['#c39bff', '#7fd3a8', '#ffb066', '#7cc4ff', '#ff8a7a'][i % 5]; });
+        box.append(h('div', { class: 'row wrap survey-legend' }, ...Object.entries(rec.groups).map(([g, n]) => h('span', {}, h('span', { class: 'dot', style: { background: GCOL[g] } }), ` ${n}`))));
+        box.append(h('h3', {}, '1. How will you ask?'), h('div', { class: 'survey-opts' }, ...rec.wordings.map((w) => h('button', { type: 'button', class: `survey-opt ${surveyW === w.id ? 'picked' : ''}`, 'aria-pressed': String(surveyW === w.id), onclick: () => { surveyW = w.id; this.sfx('sfx.click'); render(); } }, `“${w.text}”`))),
+          h('h3', {}, '2. Whom will you ask?'), h('div', { class: 'survey-opts' }, ...rec.samples.map((sm) => h('button', { type: 'button', class: `survey-opt ${surveyS === sm.id ? 'picked' : ''}`, 'aria-pressed': String(surveyS === sm.id), onclick: () => { surveyS = sm.id; this.sfx('sfx.click'); render(); } }, `${sm.label} (${sm.people.length} people)`))),
+          h('div', { class: 'row' }, h('button', { class: 'primary', disabled: !surveyW || !surveyS, onclick: () => { take(c.dispatch({ type: 'PuzzleSurvey', puzzle: rec.id, wording: surveyW!, sample: surveyS! })); this.sfx('sfx.page'); } }, 'Ask')));
+        if (runs.length) {
+          box.append(h('h3', {}, 'Your surveys'), h('div', { class: 'survey-runs' }, ...runs.map((pair) => {
+            const [w, sm] = pair.split(':');
+            const r = runSurvey(rec, w, sm);
+            const people = h('div', { class: 'survey-people', 'aria-hidden': 'true' }, ...r.answers.map((a) => { const g = rec.people.find((x) => x.id === a.id)!.group; return h('span', { class: `voter ${a.yes ? 'yes' : 'no'}`, style: { background: GCOL[g] } }, a.yes ? '✓' : '✕'); }));
+            return h('div', { class: 'survey-run' },
+              h('p', { class: 'fine' }, `Asked: “${rec.wordings.find((x) => x.id === w)!.text}” To: ${rec.samples.find((x) => x.id === sm)!.label.toLowerCase()}.`),
+              h('div', { class: 'survey-bar', role: 'img', 'aria-label': `${r.yes} of ${r.total} said yes` }, h('span', { class: 'yes', style: { width: `${(r.yes / r.total) * 100}%` } }), h('strong', {}, `${r.yes} of ${r.total} said yes (${Math.round((r.yes / r.total) * 100)}%)`)),
+              people);
+          })));
+        }
+        if (runs.length >= 2 || fairDone) {
+          box.append(h('h3', {}, done ? 'Your report to the council' : 'Write the report to the council'),
+            !fairDone && !done ? h('p', { class: 'fine' }, 'Before you report, try a plain question with a group from every part of town.') : '',
+            done ? h('p', { class: 'fair' }, rec.reflect.find((r) => r.honest)!.text)
+              : fairDone ? h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text)))) : '');
+        }
+        if (feedback) {
+          const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
+          box.append(fb); requestAnimationFrame(() => fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+        }
       } else if (rec.type === 'echo') {
         const echoes = readTimes(c.state.flags[`${F}.echo`]), reacts = readTimes(c.state.flags[`${F}.react`]);
         const es = timeStats(echoes), rs = timeStats(reacts);

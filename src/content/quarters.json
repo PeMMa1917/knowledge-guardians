@@ -176,6 +176,16 @@
    "where": "Emberford: the East Well side quest."
   },
   {
+   "id": "survey-slip",
+   "name": "A blank survey slip",
+   "text": "From the toll box. Who you ask, and how you ask, are part of the answer.",
+   "if": {
+    "flag": "puzzle.toll-survey.done",
+    "eq": true
+   },
+   "where": "Emberford: the Bridge Toll Survey."
+  },
+  {
    "id": "seal",
    "name": "A wax copy of the seal",
    "text": "The Guardians' seal, found at the end of the chapter.",

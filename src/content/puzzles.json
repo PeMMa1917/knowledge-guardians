@@ -1364,6 +1364,278 @@
      ]
     }
    ]
+  },
+  {
+   "id": "toll-survey",
+   "type": "survey",
+   "title": "The Bridge Toll Survey",
+   "intro": "The new footbridge needs repairs every year. The guild council asks: does the town want a small toll to pay for them? Clerk Venn's survey box has three ways to ask the question and three groups of people to ask. Run a few surveys, compare the results, then write the council a fair report.",
+   "skills": [
+    "SK-RSC-02",
+    "SK-THK-14",
+    "SK-RSC-21"
+   ],
+   "weave": {
+    "concepts": [
+     "objectivity",
+     "evidence"
+    ],
+    "atl": [
+     "research",
+     "thinking"
+    ],
+    "subjects": [
+     "psychology",
+     "economics",
+     "global-politics"
+    ],
+    "aoks": [
+     "HUM"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.objectivity.survey"
+    },
+    {
+     "journal": "j.survey"
+    }
+   ],
+   "groups": {
+    "guild": "Guild members",
+    "west": "Families on the west side",
+    "traders": "Market traders",
+    "farmers": "Farmers from the east bank"
+   },
+   "people": [
+    {
+     "id": "g1",
+     "group": "guild",
+     "yes": true,
+     "firm": true
+    },
+    {
+     "id": "g2",
+     "group": "guild",
+     "yes": true,
+     "firm": true
+    },
+    {
+     "id": "g3",
+     "group": "guild",
+     "yes": true,
+     "firm": true
+    },
+    {
+     "id": "g4",
+     "group": "guild",
+     "yes": true,
+     "firm": false
+    },
+    {
+     "id": "w1",
+     "group": "west",
+     "yes": true,
+     "firm": true
+    },
+    {
+     "id": "w2",
+     "group": "west",
+     "yes": true,
+     "firm": true
+    },
+    {
+     "id": "w3",
+     "group": "west",
+     "yes": true,
+     "firm": true
+    },
+    {
+     "id": "w4",
+     "group": "west",
+     "yes": true,
+     "firm": true
+    },
+    {
+     "id": "w5",
+     "group": "west",
+     "yes": true,
+     "firm": false
+    },
+    {
+     "id": "w6",
+     "group": "west",
+     "yes": true,
+     "firm": false
+    },
+    {
+     "id": "w7",
+     "group": "west",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "w8",
+     "group": "west",
+     "yes": false,
+     "firm": false
+    },
+    {
+     "id": "t1",
+     "group": "traders",
+     "yes": true,
+     "firm": false
+    },
+    {
+     "id": "t2",
+     "group": "traders",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "t3",
+     "group": "traders",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "t4",
+     "group": "traders",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "t5",
+     "group": "traders",
+     "yes": false,
+     "firm": false
+    },
+    {
+     "id": "t6",
+     "group": "traders",
+     "yes": false,
+     "firm": false
+    },
+    {
+     "id": "f1",
+     "group": "farmers",
+     "yes": true,
+     "firm": false
+    },
+    {
+     "id": "f2",
+     "group": "farmers",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "f3",
+     "group": "farmers",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "f4",
+     "group": "farmers",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "f5",
+     "group": "farmers",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "f6",
+     "group": "farmers",
+     "yes": false,
+     "firm": false
+    }
+   ],
+   "wordings": [
+    {
+     "id": "plain",
+     "text": "Should the footbridge have a small toll to pay for its repairs?",
+     "lean": "none"
+    },
+    {
+     "id": "pushyes",
+     "text": "Most sensible people agree that a small toll is fair. Do you agree?",
+     "lean": "yes"
+    },
+    {
+     "id": "pushno",
+     "text": "Should the guild take money from every family that crosses the river?",
+     "lean": "no"
+    }
+   ],
+   "samples": [
+    {
+     "id": "meeting",
+     "label": "Everyone at tonight's guild meeting",
+     "people": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "w1",
+      "w2"
+     ]
+    },
+    {
+     "id": "market",
+     "label": "Every stall at the market",
+     "people": [
+      "t1",
+      "t2",
+      "t3",
+      "t4",
+      "t5",
+      "t6"
+     ]
+    },
+    {
+     "id": "houses",
+     "label": "Every third house in town, on both banks",
+     "people": [
+      "w3",
+      "w7",
+      "t2",
+      "f2",
+      "g2",
+      "w4",
+      "t5",
+      "f1"
+     ]
+    }
+   ],
+   "fair": {
+    "wording": "plain",
+    "sample": "houses"
+   },
+   "reflect": [
+    {
+     "text": "Six of six people said yes at the guild meeting. The town wants a toll.",
+     "honest": false,
+     "why": "Who comes to a guild meeting? Mostly guild members and their west-bank neighbours, who seldom cross the bridge. The group you ask can decide the answer before anyone speaks."
+    },
+    {
+     "text": "With the right question, 5 of 8 houses said yes. Most of the town wants a toll.",
+     "honest": false,
+     "why": "'Most sensible people agree' pushes people who are not sure. The question made some of the yeses. A fair question does not tell people what sensible people think."
+    },
+    {
+     "text": "About half of a fair sample said yes (4 of 8 houses, asked a plain question). The traders and east farmers, who cross most, mostly said no. Eight houses is a small sample, so a larger survey would make us surer.",
+     "honest": true,
+     "why": "Yes. The report says how you asked, whom you asked, what you found and how sure you can be. The council can now talk about who should pay, which is a question of fairness, not of numbers."
+    },
+    {
+     "text": "Surveys only show what the asker wants, so we can know nothing about what the town thinks.",
+     "honest": false,
+     "why": "A careless survey can do that. A plain question to a fair sample gave a result that matches the town quite well. Methods can be made fairer; that is the point of checking them."
+    }
+   ]
   }
  ],
  "missions": [
@@ -1772,6 +2044,49 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-Q01",
+   "world": "WORLD-02",
+   "title": "The Bridge Toll Survey",
+   "knowledgeQuestion": "How can the way we ask a question shape the knowledge we get?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "survey.o1.report",
+     "title": "Optional: run Clerk Venn's bridge toll survey (the survey box, east of the guild hall).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.toll-survey.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "evidence"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "psychology",
+       "economics",
+       "global-politics"
+      ],
+      "aoks": [
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-RSC-02",
+      "SK-THK-14",
+      "SK-RSC-21"
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -2014,6 +2329,30 @@
    "objective": "res.o1.plaque",
    "depth": 4,
    "text": "For any method, choose the label that names the dates of the layers and what was removed or covered."
+  },
+  {
+   "id": "h.survey.1",
+   "objective": "survey.o1.report",
+   "depth": 1,
+   "text": "Run the same question with different groups. Then run different questions with the same group."
+  },
+  {
+   "id": "h.survey.2",
+   "objective": "survey.o1.report",
+   "depth": 2,
+   "text": "Which question tells people what to think? Which group includes people from every part of town?"
+  },
+  {
+   "id": "h.survey.3",
+   "objective": "survey.o1.report",
+   "depth": 3,
+   "text": "Ask a plain question to every third house. Compare it with the other results."
+  },
+  {
+   "id": "h.survey.4",
+   "objective": "survey.o1.report",
+   "depth": 4,
+   "text": "Choose the report that says how you asked, whom you asked, what you found and how sure you can be."
   }
  ],
  "journal": [
@@ -2066,6 +2405,11 @@
    "id": "j.restore",
    "text": "The Founders' Plaque: every restoration keeps some evidence and loses some. The honest part is the label: it says which words belong to which time, and what is gone.",
    "claimKind": "interpretation"
+  },
+  {
+   "id": "j.survey",
+   "text": "The Bridge Toll Survey: who you ask and how you ask can decide the answer. A fair report says how, whom, what, and how sure.",
+   "claimKind": "interpretation"
   }
  ],
  "criteria": [
@@ -2117,6 +2461,11 @@
   {
    "id": "crit.responsibility.restore",
    "concept": "responsibility",
+   "maximum": 5
+  },
+  {
+   "id": "crit.objectivity.survey",
+   "concept": "objectivity",
    "maximum": 5
   }
  ]

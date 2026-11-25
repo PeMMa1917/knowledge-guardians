@@ -8,7 +8,7 @@
 import type { Condition, ContentPack, Effect, Weave } from './types';
 import { ATLS, CONCEPTS, PROFILE } from './types';
 import { SUBJECTS } from './curriculum';
-import { chordFigure, panes, runSorter, sightBlock } from './puzzles';
+import { chordFigure, panes, runSorter, runSurvey, sightBlock } from './puzzles';
 import { openCombinations } from './lock';
 
 const MAX_TEXT = 2000;
@@ -182,6 +182,17 @@ export function validateContent(pack: ContentPack): string[] {
         if (!m.labels.some((l) => l.honest) || !m.labels.some((l) => !l.honest)) p.push(`puzzle ${z.id} method ${m.id}: needs an honest label and a label that is not`);
         m.labels.forEach((l, i) => { if (!l.why.trim()) p.push(`puzzle ${z.id} method ${m.id} label ${i + 1}: needs a reason`); });
       });
+    }
+    else if (z.type === 'survey') {
+      const ids = new Set(z.people.map((x) => x.id));
+      z.people.forEach((x) => x.group in z.groups || p.push(`puzzle ${z.id}: unknown group ${x.group}`));
+      z.samples.forEach((sm) => sm.people.forEach((x) => ids.has(x) || p.push(`puzzle ${z.id} ${sm.id}: unknown person ${x}`)));
+      if (!z.wordings.some((w) => w.id === z.fair.wording && w.lean === 'none') || !z.samples.some((sm) => sm.id === z.fair.sample)) p.push(`puzzle ${z.id}: the fair survey must use a plain question and a listed group`);
+      else {
+        const all = z.people.filter((x) => x.yes).length / z.people.length, fair = runSurvey(z, z.fair.wording, z.fair.sample);
+        if (Math.abs(fair.yes / fair.total - all) > 0.15) p.push(`puzzle ${z.id}: the fair sample does not look like the whole town`);
+      }
+      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'echo') {
       if (!(z.distance > 5 && z.speed > 100 && z.minTimes >= 2)) p.push(`puzzle ${z.id}: distance, speed and minTimes must be sensible`);

@@ -344,6 +344,15 @@
     "eq": true
    },
    "line": "We cut the footbridge rope to your measure, with a little extra. A good measurer always adds a little extra, and says so."
+  },
+  {
+   "id": "survey.idris",
+   "character": "porter-idris",
+   "if": {
+    "flag": "puzzle.toll-survey.done",
+    "eq": true
+   },
+   "line": "The council read your survey. They asked the night porters too, this time. I was very surprised to be asked."
   }
  ]
 }
