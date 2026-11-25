@@ -35,6 +35,8 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 - **Question Stones and Lumen's last word** (spec 62, KQ-003, C1): 12 chapter steps carry one of six knowledge questions (our own paraphrases, in `src/content/questions.json`). When a step is done, Lumen names the question in one sentence, and its stone gets brighter for each new way (a new place or a new kind of action, up to five). Journal tab "Question Stones". Never a quiz (KQ-001). `PERMANENT_SCHEMA` is now 3, with a migration.
 - **Campfire logs** at Waystones (C1): one optional prompt about the latest step ("What helped you…?"), saved as a private note. Never graded.
 - **Read aloud** (spec 21): a "Read aloud" button on every conversation line, and a setting that reads each line and its options automatically. It uses the browser's own voice (Web Speech API).
+- **Key remapping** (spec 21.6): Controls, "Change keys". Players choose their own letter keys for walking, talking, hints, journal, portfolio and bag, or pick a ready-made layout (QWERTY, AZERTY, E S D F). A clash swaps the two keys. Arrows, Space, Enter, Esc and number keys always keep their jobs. Rules in `src/app/keymap.ts`. The top bar shows the player's keys.
+- **Colour-safe marks** (Settings): a blue and orange palette, and a symbol (✓, ✗, ~, !) on every good or bad result, so colour never carries meaning alone.
 - **Balance reminder:** every 45 minutes of active play, Lumen suggests a real break. It never blocks play.
 - **MIS-10 and MIS-11 (Indigenous knowledge) are left out on purpose.** They need Indigenous content made with community advisors (spec section 88). Do not add them with a quick signal.
 
@@ -43,7 +45,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 
 ### Tests
 
-`npm test`: 112 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
+`npm test`: 117 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
 
 ## Next steps (in order)
 

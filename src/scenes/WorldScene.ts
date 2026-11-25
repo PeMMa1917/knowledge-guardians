@@ -64,7 +64,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.map = MAPS[s.mapId] ?? MAPS['nexus.archive'];
     this.buildMap();
     const kb = this.input.keyboard!;
-    this.keys = kb.addKeys('W,A,S,D,UP,DOWN,LEFT,RIGHT,E,SPACE,ENTER') as Record<string, Phaser.Input.Keyboard.Key>;
+    // Letter keys come from the player's key map (settings); arrows, Space and Enter always work.
+    const km = ctx.settings.keys;
+    this.keys = kb.addKeys({ W: km.up, A: km.left, S: km.down, D: km.right, E: km.interact, UP: 'UP', DOWN: 'DOWN', LEFT: 'LEFT', RIGHT: 'RIGHT', SPACE: 'SPACE', ENTER: 'ENTER' }) as Record<string, Phaser.Input.Keyboard.Key>;
     kb.addCapture('UP,DOWN,LEFT,RIGHT,SPACE');
     const interactKey = () => { if (!this.paused && !ctx.ui.isModalOpen()) this.tryInteract(); };
     this.keys.E.on('down', interactKey); this.keys.SPACE.on('down', interactKey); this.keys.ENTER.on('down', interactKey);

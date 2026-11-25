@@ -235,3 +235,17 @@ ul.stones li { display: flex; gap: 0.8em; align-items: flex-start; margin: 0.8em
 .stone i { display: block; width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); }
 .stone i.lit { background: #9fe8ff; box-shadow: 0 0 6px #9fe8ff; }
 button.speak { display: block; margin: 0 0 0.4em auto; }
+
+/* Key remapping (spec 21.6). */
+.key-grid { display: grid; grid-template-columns: 1fr auto; gap: 0.35em 1em; align-items: center; margin: 0.6em 0; }
+.key-row { display: contents; }
+.key-grid kbd { font: inherit; font-weight: 700; display: inline-block; min-width: 1.6em; text-align: center; }
+.key-grid button.waiting { outline: 3px solid var(--gold); }
+.key-presets { display: flex; flex-wrap: wrap; gap: 0.5em; }
+
+/* Colour-safe marks: blue/orange palette (Okabe-Ito) and a symbol, so colour never carries meaning alone. */
+.colour-safe { --ok: #56b4e9; --warn: #e69f00; --rose: #f0a0c8; }
+.colour-safe .fair::before, .colour-safe .bear-supports::before { content: "✓ "; font-weight: 700; }
+.colour-safe .unfair::before, .colour-safe .bear-challenges::before { content: "✗ "; font-weight: 700; }
+.colour-safe .bear-qualifies::before { content: "~ "; font-weight: 700; }
+.colour-safe .sort-list li.mismatch::before { content: "! "; font-weight: 700; }

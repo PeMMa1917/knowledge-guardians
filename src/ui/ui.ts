@@ -8,6 +8,7 @@
  */
 import { ctx, type UIApi } from '../app/context';
 import { saveSettings, type Settings } from '../app/settings';
+import { ACTIONS, PRESETS, actionFor, assignKey, mappableKey, type Action } from '../app/keymap';
 import type { GameEvent, SimulationResult } from '../domain/engine';
 import { conceptXP, totalXP } from '../domain/permanent';
 import { describeSection, layers, type ForgeAction } from '../domain/forge';
@@ -127,7 +128,7 @@ export class UI implements UIApi {
     if (!text || this.modal) { this.promptEl.hidden = true; return; }
     this.promptEl.hidden = false;
     clear(this.promptEl);
-    this.promptEl.append(h('kbd', {}, 'E'), ` ${text}`);
+    this.promptEl.append(h('kbd', {}, ctx.settings.keys.interact), ` ${text}`);
   }
 
   private onKey(e: KeyboardEvent): void {
@@ -140,11 +141,11 @@ export class UI implements UIApi {
       if (/^[1-9]$/.test(e.key)) this.modal.querySelectorAll<HTMLButtonElement>('.options button')[Number(e.key) - 1]?.click();
       return;
     }
-    const k = e.key.toLowerCase();
-    if (k === 'j') this.openJournal();
-    else if (k === 'p') this.openJournal('portfolio');
-    else if (k === 'i') this.openBag();
-    else if (k === 'h') this.askLumen();
+    const a = actionFor(ctx.settings.keys, e.key);
+    if (a === 'journal') this.openJournal();
+    else if (a === 'portfolio') this.openJournal('portfolio');
+    else if (a === 'bag') this.openBag();
+    else if (a === 'hint') this.askLumen();
   }
 
   // ------------------------------------------------------------- title
@@ -254,13 +255,14 @@ export class UI implements UIApi {
         h('p', { class: 'kq' }, m.knowledgeQuestion),
         h('ul', {}, ...objs.filter((o) => o.mission === m).map((o) => h('li', { class: o.complete ? 'done' : '' }, h('span', { 'aria-hidden': 'true' }, o.complete ? '✓ ' : '◇ '), h('span', { class: 'sr' }, o.complete ? 'Done: ' : 'To do: '), o.title))))),
       objs.length && objs.every((o) => o.complete) ? h('div', {}, h('h2', {}, 'Chapter complete'), h('p', {}, 'Explore freely, or open the menu.')) : null);
+    const km = ctx.settings.keys;
     const bar = h('nav', { class: 'hud-buttons', 'aria-label': 'Game menu' },
       h('span', { class: 'marks', title: 'Marks (campaign money)' }, h('img', { src: artURL('icon.card'), alt: '' }), ` ${s.marks} marks`),
       s.flags['title.worn'] ? h('span', { class: 'marks worn-title', title: 'Your title (choose in Journal, Awards)' }, `${s.player.name}, ${s.flags['title.worn']}`) : '',
-      h('button', { onclick: () => this.askLumen(), title: 'Ask Lumen for a hint (H)' }, h('img', { src: artURL('lumen'), alt: '' }), ' Hint ', h('kbd', {}, 'H')),
-      h('button', { onclick: () => this.openJournal(), title: 'Journal (J)' }, 'Journal ', h('kbd', {}, 'J')),
-      h('button', { onclick: () => this.openJournal('portfolio'), title: 'Portfolio (P)' }, 'Portfolio ', h('kbd', {}, 'P')),
-      h('button', { onclick: () => this.openBag(), title: 'Bag (I)' }, 'Bag ', h('kbd', {}, 'I')),
+      h('button', { onclick: () => this.askLumen(), title: `Ask Lumen for a hint (${km.hint})` }, h('img', { src: artURL('lumen'), alt: '' }), ' Hint ', h('kbd', {}, km.hint)),
+      h('button', { onclick: () => this.openJournal(), title: `Journal (${km.journal})` }, 'Journal ', h('kbd', {}, km.journal)),
+      h('button', { onclick: () => this.openJournal('portfolio'), title: `Portfolio (${km.portfolio})` }, 'Portfolio ', h('kbd', {}, km.portfolio)),
+      h('button', { onclick: () => this.openBag(), title: `Bag (${km.bag})` }, 'Bag ', h('kbd', {}, km.bag)),
       h('button', { onclick: () => this.openMenu(), title: 'Menu (Esc)' }, 'Menu ', h('kbd', {}, 'Esc')));
     this.hud.append(tracker, bar);
     // New objectives: Lumen mentions them once if the player allows prompts (GUIDE-001).
@@ -1050,13 +1052,42 @@ export class UI implements UIApi {
   }
 
   private openControls(): void {
-    this.openModal('controls', 'Controls', this.closeBtn(), h('h2', {}, 'Controls'),
+    const km = ctx.settings.keys;
+    const box = this.openModal('controls', 'Controls', this.closeBtn(), h('h2', {}, 'Controls'),
       h('ul', {},
-        h('li', {}, 'Walk: arrow keys or W A S D. Or click/tap a spot.'),
-        h('li', {}, 'Talk / inspect / use: E, Space or Enter. Or click/tap a person or object.'),
+        h('li', {}, `Walk: arrow keys or ${km.up} ${km.left} ${km.down} ${km.right}. Or click/tap a spot.`),
+        h('li', {}, `Talk / inspect / use: ${km.interact}, Space or Enter. Or click/tap a person or object.`),
         h('li', {}, 'Choose a dialogue option: click it, or press its number.'),
-        h('li', {}, 'Hint from Lumen: H. Journal: J. Portfolio: P. Bag: I. Menu: Esc.'),
+        h('li', {}, `Hint from Lumen: ${km.hint}. Journal: ${km.journal}. Portfolio: ${km.portfolio}. Bag: ${km.bag}. Menu: Esc.`),
         h('li', {}, 'All menus work with Tab, Shift+Tab and Enter. No task needs fast reactions.')));
+    box.append(h('button', { class: 'primary', onclick: () => this.openKeys() }, 'Change keys'));
+  }
+
+  /** Key remapping (spec 21.6). Letters only; arrows, Space, Enter, Esc and numbers keep their jobs. */
+  private openKeys(): void {
+    const st = ctx.settings;
+    const save = () => { saveSettings(st); ctx.world?.applySettings(); this.openKeys(); };
+    let waiting: Action | null = null;
+    const status = h('p', { class: 'fine', role: 'status', 'aria-live': 'polite' }, 'Choose an action, then press a letter key. If another action has that letter, the two swap.');
+    const rows = ACTIONS.map((a) => {
+      const btn = h('button', { 'aria-label': `${a.label}: ${st.keys[a.id]}. Change` , onclick: () => {
+        waiting = a.id; status.textContent = `Press a letter key for "${a.label}". Press Esc to stop.`;
+        rows.forEach((r) => r.classList.remove('waiting')); btn.classList.add('waiting');
+      } }, h('kbd', {}, st.keys[a.id]));
+      return h('div', { class: 'key-row' }, h('span', {}, a.label), btn);
+    });
+    const box = this.openModal('controls keys', 'Change keys', this.closeBtn(), h('h2', {}, 'Change keys'), status,
+      h('div', { class: 'key-grid' }, ...rows),
+      h('p', {}, 'Ready-made layouts:'),
+      h('div', { class: 'key-presets' }, ...PRESETS.map((p) => h('button', { onclick: () => { st.keys = { ...p.keys }; save(); } }, p.label))),
+      h('p', { class: 'fine' }, 'The arrow keys, Space, Enter, Esc and the number keys always keep their jobs.'));
+    box.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (!waiting) return;
+      if (e.key === 'Escape') { waiting = null; e.stopPropagation(); e.preventDefault(); this.openKeys(); return; }
+      if (!mappableKey(e.key)) { status.textContent = 'Only letter keys can be changed. Try a letter.'; return; }
+      e.preventDefault(); e.stopPropagation();
+      st.keys = assignKey(st.keys, waiting, e.key); save();
+    }, true);
   }
 
   openSettings(): void {
@@ -1075,6 +1106,7 @@ export class UI implements UIApi {
       check('guidePrompts', 'Lumen may show short prompts without being asked'),
       check('calmMode', 'Calm mode: surprise events warn first, and you can choose "Later"'),
       check('glossary', 'Smart glossary: underline key words in conversations, so you can tap them for an explanation'),
+      check('colourSafe', 'Colour-safe marks: blue and orange, with a symbol on every result'),
       'speechSynthesis' in window ? check('readAloud', 'Read conversations aloud (uses your browser\'s voice)') : '',
       range('musicVolume', 'Music volume'), range('sfxVolume', 'Sound effects volume'),
       h('p', { class: 'fine' }, 'Sound is never needed to play. Every sound has a text message.'));
