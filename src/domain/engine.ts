@@ -195,6 +195,8 @@ export class Engine {
       if (e.kind === 'label' && !e.result.holds) met.add('swell-wisp');
       if (e.kind === 'loreling' && e.stage === 'offer' && !e.ok && e.recheck) met.add('shadow-twins');
     }
+    // Content can introduce a creature with the flag "meet.fray.<id>" (for example at the end of a quest).
+    for (const k of Object.keys(s.flags)) if (k.startsWith('meet.fray.') && s0.flags[k] === undefined) met.add(k.slice(10));
     if (cmd.type === 'ShowdownMove' && s0.showdown && s.showdown) {
       const a = s0.showdown, b = s.showdown;
       const rec = this.pack.showdowns.find((x) => x.id === a.id);

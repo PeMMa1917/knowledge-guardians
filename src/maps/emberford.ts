@@ -92,6 +92,9 @@ export const EMBERFORD: MapDef = {
     { id: 'keeper-oduya', x: 16, y: 8, facing: 'down' },
     { id: 'well-keeper', x: 32, y: 17, facing: 'left' },
     { id: 'fruit-seller', x: 15, y: 19, facing: 'down' },
+    // The Shattering Rumour (side quest): each person heard the blade story from the next.
+    { id: 'porter-idris', x: 21, y: 23, facing: 'left' },
+    { id: 'stallkeeper-hana', x: 12, y: 12, facing: 'right' },
     // Origin side quests (spec 35.1): each giver appears only for that origin.
     { id: 'runner-tamar', x: 18, y: 21, facing: 'right', visibleIf: { origin: 'harbour' } },
     { id: 'apprentice-ren', x: 10, y: 17, facing: 'left', visibleIf: { origin: 'workshop' } },
@@ -108,6 +111,8 @@ export const EMBERFORD: MapDef = {
     { id: 'table-authors', kind: 'label', kit: 'ee.authors', x: 15, y: 7, w: 1, h: 1, label: "Keeper Oduya's table", art: 'label-stand', visibleIf: { objective: 'ee2.o3.weigh' } },
     { id: 'thread-ledger', kind: 'thread', thread: 'blade', node: 'ledger', x: 21, y: 7, w: 1, h: 1, label: 'the guild ledger desk', art: 'ledger' },
     { id: 'thread-workshop', kind: 'thread', thread: 'blade', node: 'workshop', x: 3, y: 13, w: 1, h: 1, label: "Hesper's workshop sheet", art: 'board-stand' },
+    { id: 'record-book', kind: 'sign', x: 13, y: 8, w: 1, h: 1, label: "the guild's public record book", art: 'ledger', flag: 'rumour.record',
+      text: 'GUILD RECORD, WINTER. Test blade from Hesper\'s forge: cracked in the quench. Cause: the quench water was too cold. Action: Hesper warms the water. Three new test blades passed. This book is open to everyone.' },
     { id: 'waystone', kind: 'waystone', place: 'Emberford market', x: 15, y: 14, w: 1, h: 1, label: 'the Waystone (save and rest)', art: 'waystone' },
     { id: 'old-sign', kind: 'sign', x: 22, y: 23, w: 1, h: 1, label: "Corvan's old sign board", art: 'old-sign', visibleIf: { flagSet: 'sd.corvan.outcome' },
       text: "Corvan's old sign board leans against the portal stone. Most of the words are scratched out. Kip says there is something on the back." },

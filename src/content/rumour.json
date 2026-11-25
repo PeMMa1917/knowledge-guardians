@@ -1,0 +1,480 @@
+{
+  "characters": [
+    {
+      "id": "porter-idris",
+      "name": "Porter Idris Bello",
+      "role": "Carries goods along the south road",
+      "sprite": "custom:brown.black.orange.charcoal.none.gold",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "all": [
+              {
+                "flag": "rumour.v1",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flag": "rumour.v2",
+                  "eq": true
+                }
+              }
+            ]
+          },
+          "node": "rumour.idris"
+        },
+        {
+          "node": "rumour.idris.idle"
+        }
+      ]
+    },
+    {
+      "id": "stallkeeper-hana",
+      "name": "Stall-keeper Hana Novak",
+      "role": "Sells cloth in the market",
+      "sprite": "custom:pale.blonde.plum.sand.scarf.white",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "all": [
+              {
+                "flag": "rumour.v2",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flag": "rumour.v3",
+                  "eq": true
+                }
+              }
+            ]
+          },
+          "node": "rumour.hana"
+        },
+        {
+          "node": "rumour.hana.idle"
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "rumour.tea1",
+      "speaker": "villager-1",
+      "text": "News? Oh, have you heard? Every blade from Hesper's forge shatters in the cold, and the guild is hiding it! Idris the porter told me. Everyone is saying it.",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Where did Idris hear it?",
+          "next": "rumour.tea2"
+        },
+        {
+          "text": "Thanks. I'll keep my ears open.",
+          "next": null,
+          "effects": [
+            {
+              "setFlag": "rumour.v1",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rumour.tea2",
+      "speaker": "villager-1",
+      "text": "Where? I didn't ask. He carries goods all day, he hears everything. Ask him yourself, by the south road.",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world",
+      "effects": [
+        {
+          "setFlag": "rumour.v1",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "rumour.idris",
+      "speaker": "porter-idris",
+      "text": "The blades? Yes. I heard that several of Hesper's blades cracked last winter, and the guild kept quiet about it. I may have said it a bit louder at the tea stall. Hana at the cloth stall told me first.",
+      "claimKind": "observation",
+      "historicalLabel": "fictional-world",
+      "effects": [
+        {
+          "setFlag": "rumour.v2",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "rumour.idris.idle",
+      "speaker": "porter-idris",
+      "text": "Heavy load today. If you find out where that blade story began, I'd like to know too.",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "rumour.hana",
+      "speaker": "stallkeeper-hana",
+      "text": "I said ONE of Hesper's test blades cracked last winter. And I said I never heard anything about it after that. I didn't say anyone hid it! I read it myself in the guild's record book on its stand by the guild hall. Anyone can read it.",
+      "claimKind": "observation",
+      "historicalLabel": "fictional-world",
+      "effects": [
+        {
+          "setFlag": "rumour.v3",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "rumour.hana.idle",
+      "speaker": "stallkeeper-hana",
+      "text": "Fine cloth from the river farms. And no more blade stories from me, I promise.",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "rumour.tell",
+      "speaker": "villager-1",
+      "text": "You found where the blade story began? So, is it true? Do Hesper's blades shatter?",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "One test blade cracked last winter, because the quench water was too cold. The guild wrote it in the public record, and Hesper fixed the method.",
+          "next": "rumour.tell.ok",
+          "effects": [
+            {
+              "setFlag": "rumour.done",
+              "value": true
+            },
+            {
+              "setFlag": "meet.fray.echo-moths",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "It was all lies. Hesper's blades never cracked.",
+          "next": "rumour.tell.over"
+        },
+        {
+          "text": "Corvan started it to sell his own blades.",
+          "next": "rumour.tell.blame"
+        }
+      ]
+    },
+    {
+      "id": "rumour.tell.over",
+      "speaker": "villager-1",
+      "text": "All lies? But Hana says she read about a cracked blade. Was nothing true at all?",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Let me say it again, more carefully.",
+          "next": "rumour.tell"
+        }
+      ]
+    },
+    {
+      "id": "rumour.tell.blame",
+      "speaker": "villager-1",
+      "text": "Corvan? Did anyone say he told them? Or is that a new story about a person, not about the blades?",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "You are right. Let me say what the record shows.",
+          "next": "rumour.tell"
+        }
+      ]
+    },
+    {
+      "id": "rumour.tell.ok",
+      "speaker": "villager-1",
+      "text": "One test blade, in a cold quench, written in a book anyone can read? That's a much smaller story. One became several, then every. 'Nothing more was heard' became 'kept quiet', then 'hiding it'. I passed it on myself. Next time, I'll ask 'who told you?' first.",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world",
+      "next": "rumour.lumen"
+    },
+    {
+      "id": "rumour.lumen",
+      "speaker": "lumen",
+      "text": "Nobody lied on purpose. Each person filled a gap with a guess, and the guess sounded like news. Repeating a claim made it louder, not truer. The first source, and a record anyone can check, settled it.",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world",
+      "effects": [
+        {
+          "credit": "crit.truth.rumour"
+        },
+        {
+          "journal": "j.rumour"
+        }
+      ]
+    },
+    {
+      "id": "rumour.tea.after",
+      "speaker": "villager-1",
+      "text": "Ember tea, and no rumours. Since you traced that blade story, I ask 'who told you?' before I pass anything on. It makes for quieter, better news.",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-R01",
+      "world": "WORLD-02",
+      "title": "Side quest: The Shattering Rumour",
+      "knowledgeQuestion": "What happens to a claim each time it is retold?",
+      "available": {
+        "flag": "rumour.v1",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "rum.o1.idris",
+          "title": "Optional: ask Idris the porter where he heard the blade story.",
+          "essential": false,
+          "done": {
+            "flag": "rumour.v2",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "truth",
+              "evidence"
+            ],
+            "atl": [
+              "research",
+              "communication"
+            ],
+            "subjects": [
+              "psychology",
+              "lang-langlit"
+            ],
+            "aoks": [
+              "HUM"
+            ]
+          },
+          "skills": [
+            "SK-RSC-08"
+          ]
+        },
+        {
+          "id": "rum.o2.hana",
+          "title": "Optional: ask Hana at the cloth stall where she heard it.",
+          "essential": false,
+          "visible": {
+            "objective": "rum.o1.idris"
+          },
+          "done": {
+            "flag": "rumour.v3",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "truth",
+              "evidence"
+            ],
+            "atl": [
+              "research",
+              "communication"
+            ],
+            "subjects": [
+              "psychology",
+              "lang-langlit"
+            ],
+            "aoks": [
+              "HUM"
+            ]
+          },
+          "skills": [
+            "SK-RSC-08",
+            "SK-SPK-01"
+          ]
+        },
+        {
+          "id": "rum.o3.record",
+          "title": "Optional: read the guild's public record book on its stand by the guild hall.",
+          "essential": false,
+          "visible": {
+            "objective": "rum.o2.hana"
+          },
+          "done": {
+            "flag": "rumour.record",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "truth",
+              "evidence"
+            ],
+            "atl": [
+              "research",
+              "communication"
+            ],
+            "subjects": [
+              "psychology",
+              "lang-langlit"
+            ],
+            "aoks": [
+              "HUM"
+            ]
+          },
+          "skills": [
+            "SK-RSC-22",
+            "SK-MED-04"
+          ]
+        },
+        {
+          "id": "rum.o4.tell",
+          "title": "Optional: tell the tea seller what the first source says.",
+          "essential": false,
+          "visible": {
+            "objective": "rum.o3.record"
+          },
+          "done": {
+            "flag": "rumour.done",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "truth",
+              "evidence"
+            ],
+            "atl": [
+              "research",
+              "communication"
+            ],
+            "subjects": [
+              "psychology",
+              "lang-langlit"
+            ],
+            "aoks": [
+              "HUM"
+            ]
+          },
+          "skills": [
+            "SK-THK-14"
+          ]
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.rum.o1.idris.1",
+      "objective": "rum.o1.idris",
+      "depth": 1,
+      "text": "The tea seller named who told her."
+    },
+    {
+      "id": "h.rum.o1.idris.2",
+      "objective": "rum.o1.idris",
+      "depth": 2,
+      "text": "Idris carries goods along the south road."
+    },
+    {
+      "id": "h.rum.o1.idris.3",
+      "objective": "rum.o1.idris",
+      "depth": 3,
+      "text": "Find the porter south of the market and talk to him."
+    },
+    {
+      "id": "h.rum.o1.idris.4",
+      "objective": "rum.o1.idris",
+      "depth": 4,
+      "text": "Idris stands on the south road, below the market square."
+    },
+    {
+      "id": "h.rum.o2.hana.1",
+      "objective": "rum.o2.hana",
+      "depth": 1,
+      "text": "Idris named who told him first."
+    },
+    {
+      "id": "h.rum.o2.hana.2",
+      "objective": "rum.o2.hana",
+      "depth": 2,
+      "text": "Hana sells cloth in the market."
+    },
+    {
+      "id": "h.rum.o2.hana.3",
+      "objective": "rum.o2.hana",
+      "depth": 3,
+      "text": "Find the cloth stall and ask Hana."
+    },
+    {
+      "id": "h.rum.o2.hana.4",
+      "objective": "rum.o2.hana",
+      "depth": 4,
+      "text": "Hana stands at the west side of the market square, near the fountain."
+    },
+    {
+      "id": "h.rum.o3.record.1",
+      "objective": "rum.o3.record",
+      "depth": 1,
+      "text": "Hana says she read it somewhere anyone can read."
+    },
+    {
+      "id": "h.rum.o3.record.2",
+      "objective": "rum.o3.record",
+      "depth": 2,
+      "text": "The guild keeps a public record book."
+    },
+    {
+      "id": "h.rum.o3.record.3",
+      "objective": "rum.o3.record",
+      "depth": 3,
+      "text": "The record book stands at the north edge of the market, west of the guild hall."
+    },
+    {
+      "id": "h.rum.o3.record.4",
+      "objective": "rum.o3.record",
+      "depth": 4,
+      "text": "Read the guild's record book on its stand near the bench, north-west of the fountain."
+    },
+    {
+      "id": "h.rum.o4.tell.1",
+      "objective": "rum.o4.tell",
+      "depth": 1,
+      "text": "Compare each version with the record. What was added each time?"
+    },
+    {
+      "id": "h.rum.o4.tell.2",
+      "objective": "rum.o4.tell",
+      "depth": 2,
+      "text": "Say only what the record shows: no more, and no less."
+    },
+    {
+      "id": "h.rum.o4.tell.3",
+      "objective": "rum.o4.tell",
+      "depth": 3,
+      "text": "'All lies' says less than the record. 'Corvan did it' adds a new claim with no source."
+    },
+    {
+      "id": "h.rum.o4.tell.4",
+      "objective": "rum.o4.tell",
+      "depth": 4,
+      "text": "Tell her: one test blade cracked in a too-cold quench, it was recorded, and Hesper fixed the method."
+    }
+  ],
+  "criteria": [
+    {
+      "id": "crit.truth.rumour",
+      "concept": "truth",
+      "maximum": 5
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.rumour",
+      "text": "The Shattering Rumour: 'one test blade cracked' became 'every blade shatters', and 'nothing more was heard' became 'the guild is hiding it'. Each retelling filled a gap with a guess. Repetition made the claim louder, not truer. The first source settled it.",
+      "claimKind": "interpretation"
+    }
+  ]
+}

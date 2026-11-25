@@ -36,3 +36,25 @@ describe('Fray Bestiary (spec 36.2)', () => {
     for (const f of pack.fray) expect(f.weakness.length).toBeGreaterThan(10);
   });
 });
+
+describe('The Shattering Rumour (rumour trace, Echo Moths)', () => {
+  it('trace the story back to the record; blame and "all lies" send the player back to try again', () => {
+    const d = new Driver();
+    d.talk('villager-1', 'Any news');
+    expect(d.s.flags['rumour.v1']).toBe(true);
+    d.talk('porter-idris'); d.talk('stallkeeper-hana');
+    expect(d.done('rum.o2.hana')).toBe(true);
+    d.run({ type: 'SetFlag', flag: 'rumour.record', value: true });
+    expect(d.done('rum.o3.record')).toBe(true);
+    d.talk('villager-1', 'I found where', 'Corvan started', 'You are right', 'It was all lies', 'Let me say it again', 'One test blade');
+    expect(d.done('rum.o4.tell')).toBe(true);
+    expect(d.p.credit['crit.truth.rumour']).toBe(5);
+    expect(d.s.flags['fray.echo-moths']).toBeDefined();
+    expect(d.e.talkEntry('villager-1', d.s)).toBe('tea.start');
+    expect(d.e.visibleOptions('tea.start', d.s).some((o) => o.option.text === 'Any news today?')).toBe(true);
+  });
+  it('people further along the chain wait their turn', () => {
+    const d = new Driver();
+    expect(d.e.talkEntry('stallkeeper-hana', d.s)).toBe('rumour.hana.idle');
+  });
+});

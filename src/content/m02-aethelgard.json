@@ -1605,6 +1605,42 @@
      ]
     },
     {
+     "text": "Any news in the market?",
+     "next": "rumour.tea1",
+     "if": {
+      "not": {
+       "flag": "rumour.v1",
+       "eq": true
+      }
+     }
+    },
+    {
+     "text": "I found where the blade story began.",
+     "next": "rumour.tell",
+     "if": {
+      "all": [
+       {
+        "flag": "rumour.record",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "rumour.done",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Any news today?",
+     "next": "rumour.tea.after",
+     "if": {
+      "flag": "rumour.done",
+      "eq": true
+     }
+    },
+    {
      "text": "No thanks.",
      "next": null
     }
