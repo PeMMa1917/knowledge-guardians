@@ -9,7 +9,7 @@
 import { ensureLook } from './looks';
 import { cloakThreads } from '../domain/appearance';
 import { EMOTES, EMOTE_ICONS } from '../domain/emotes';
-import { PLAYER_VOICES, bark } from '../app/voice';
+import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
 import { bell, chime, clink, shimmer } from '../app/ambience';
 import { CYCLE, skyAt } from '../app/daylight';
 import { lorelingForm } from '../domain/lorelings';
@@ -475,6 +475,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.ambience(dt);
     this.updateDaylight(dt);
     const modal = this.paused || ctx.ui.isModalOpen() || this.transitioning;
+    this.updateMemory(dt, modal);
     let vx = 0, vy = 0;
     if (!modal) {
       const k = this.keys;
@@ -598,6 +599,46 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   private threadColours(): string[] {
     return cloakThreads(ctx.controller.state.objectivesDone).map((t) => t.colour);
+  }
+
+  /**
+   * World memory (spec 47, C1): when the player passes someone who remembers what they did,
+   * that person says one short line, once. Lines come from explicit flags (pack.memories).
+   */
+  private memAcc = 0;
+  private sayEl: { el: HTMLElement; target: Phaser.GameObjects.Sprite; until: number } | null = null;
+  private updateMemory(dt: number, modal: boolean): void {
+    if (this.sayEl) {
+      const { el, target, until } = this.sayEl;
+      if (modal || this.time.now > until || !el.isConnected) { el.remove(); this.sayEl = null; }
+      else {
+        const cam = this.cameras.main, r = this.game.canvas.getBoundingClientRect();
+        const sx = r.left + (target.x - cam.worldView.x) * cam.zoom * (r.width / this.scale.width);
+        const sy = r.top + (target.y - 24 - cam.worldView.y) * cam.zoom * (r.height / this.scale.height);
+        el.style.left = `${sx}px`; el.style.top = `${sy}px`;
+      }
+    }
+    this.memAcc += dt;
+    if (modal || this.sayEl || this.memAcc < 0.5 || !this.player || this.photo) return;
+    this.memAcc = 0;
+    const c = ctx.controller, mems = c.pack.memories ?? [];
+    const p = this.player.sprite;
+    for (const a of this.npcs) {
+      if (Phaser.Math.Distance.Between(a.sprite.x, a.sprite.y, p.x, p.y) > 2.5 * TILE) continue;
+      const m = mems.find((x) => x.character === a.id && c.state.flags[`mem.${x.id}`] !== true && c.check(x.if));
+      if (!m) continue;
+      // One line per person: mark all of that person's lines that hold now as heard.
+      for (const x of mems) if (x.character === a.id && c.check(x.if) && c.state.flags[`mem.${x.id}`] !== true) c.dispatch({ type: 'SetFlag', flag: `mem.${x.id}`, value: true });
+      const name = c.pack.characters.find((x) => x.id === a.id)?.name ?? '';
+      const el = document.createElement('div');
+      el.className = 'world-say'; el.setAttribute('role', 'status');
+      const b = document.createElement('strong'); b.textContent = name.split(' ').slice(-2).join(' ');
+      el.append(b, document.createTextNode(m.line));
+      document.body.append(el);
+      this.sayEl = { el, target: a.sprite, until: this.time.now + 3500 + m.line.length * 45 };
+      if (ctx.settings.talkSounds) babble(m.line, voiceFor(a.id), ctx.settings.sfxVolume);
+      break;
+    }
   }
 
   /** Emotes (spec 47.4): a bubble over the player, a small hop, and replies from people nearby. */

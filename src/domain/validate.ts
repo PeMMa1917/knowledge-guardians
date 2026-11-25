@@ -185,6 +185,10 @@ export function validateContent(pack: ContentPack): string[] {
       if (z.tiles.length <= z.answer.length) p.push(`puzzle ${z.id}: needs at least one tile to leave out`);
     }
   });
+  (pack.memories ?? []).forEach((m) => {
+    dup('memory', m.id); cond(m.if, `memory ${m.id}`); text(`memory ${m.id}`, m.line);
+    if (!pack.characters.some((x) => x.id === m.character)) p.push(`memory ${m.id}: unknown character ${m.character}`);
+  });
   (pack.clueBoards ?? []).forEach((b) => {
     dup('clue board', b.id); text(`clue board ${b.id}`, b.intro); weave(b.weave, `clue board ${b.id}`, true); eff(b.onComplete, `clue board ${b.id}`);
     if (!pack.showdowns.some((x) => x.id === b.showdown)) p.push(`clue board ${b.id}: unknown showdown ${b.showdown}`);

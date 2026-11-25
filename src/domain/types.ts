@@ -481,6 +481,9 @@ export type PuzzleRecord = {
   | { type: 'balance'; rounds: BalanceRound[] }
 );
 
+/** World memory (spec 47, C1): a short line a person says when the player passes, once the condition holds. */
+export interface MemoryLine { id: string; character: string; if: Condition; line: string }
+
 /** A practice clue board for a Showdown (spec 47, C1). */
 export interface ClueBoardRecord {
   id: string;
@@ -574,6 +577,7 @@ export interface ContentPack {
   puzzles: PuzzleRecord[];
   lorelings: LorelingRecord[];
   clueBoards?: ClueBoardRecord[];
+  memories?: MemoryLine[];
   /** The Fray Bestiary (spec 36.2): errors in reasoning shown as creatures. Recorded on first meeting. */
   fray: { id: string; name: string; error: string; pattern: string; weakness: string; chapter: number | null }[];
   /** The whole Loreling Atlas (spec 36.1): every Loreling, with the concept it lives near. */

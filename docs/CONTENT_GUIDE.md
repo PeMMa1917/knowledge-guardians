@@ -161,6 +161,18 @@ Alcoves are in `src/content/exhibition.json` (`alcoves`). Each has a prompt, at 
 
 Add a record to `src/content/lorelings.json` (`lorelings`). A Loreling is befriended by observation only. Give it at least two sightings (`sightings`, each with a `place` and what the player sees), pattern questions (`questions`) and an `offer` (where to wait). Every wrong option in a question must name the sighting that shows it is wrong (`contradicts`), so careful watching always finds the pattern; the validator checks this. Design the sightings so that one feature is present often but is not the cause (a confound), and one sighting breaks it (a counterexample). Put the sightings on a map as interactables of kind `loreling` with `loreling` and `sighting`, and hide them with `visibleIf` when the Loreling is a friend. Forms grow from completed steps whose `weave.concepts` include the Loreling's concept (`src/domain/lorelings.ts`). Lorelings never fight, never get hurt and are fictional; real animals stay real.
 
+## Add a puzzle: timeline door or balance bench
+
+Puzzles are in `src/content/puzzles.json`. An `order` puzzle can be a knowledge-gated door: give it `needs` (`item` and a `sealed` text shown without the tool) and `words` (the feedback words: `stops`, `sags`, `done`, `notPart`). Put only one kind of date on one timeline, and give every distractor a `why`. A `balance` puzzle has `rounds`, each with a `load` (`label`, `mass`) and `weights`. Mark a weight `untrusted` (with the reason) when it belongs to the thing under test; it never counts, even when the pans balance. The validator checks that the trusted weights can balance every load. To swap a map object's art when it opens, give it `artOpen: { key, if }`.
+
+## Add a practice clue board
+
+Add a record to `clueBoards` (in `src/content/clueboard.json`) with the `showdown` id, a `title`, an `intro`, `onComplete` and a `weave`. The board takes its claims, links and support from the Showdown record, so no other data is needed. Place it on a map with `kind: 'board'` and `board: <id>`.
+
+## Add a world-memory line
+
+`src/content/memories.json` (`memories`) holds short lines that a person says once when the player passes. Each has a `character`, a condition `if` on explicit state (a flag, a card, an objective) and a `line` of one or two sentences. Put the more specific line first (for example "after a few tries" before "after you solved it"): a person says only the first line that holds, and the others that hold are marked as heard. Remember choices and patient mistakes, never grades, and never shame the player.
+
 ## Tag a step with a knowledge question (Question Stones)
 
 Give an objective `"kq": { "id": "KQ-NEW-001", "action": "label" }`. The question is in `src/content/questions.json`, in our own words (never IB wording), with Lumen's one-sentence `lastWord`. Each new world and action pair makes the stone brighter. Never ask the player to "answer" a knowledge question for points (KQ-001).

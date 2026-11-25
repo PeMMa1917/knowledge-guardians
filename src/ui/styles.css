@@ -462,3 +462,10 @@ button.link { background: none; border: none; color: var(--accent, #9fe8ff); tex
 .ring figcaption { font-size: .85em; } .ring small { opacity: .75; }
 .ring.full svg { filter: drop-shadow(0 0 6px rgba(242,210,122,.8)); }
 .sr-list { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* World memory: a short line over a person's head */
+.world-say { position: fixed; z-index: 30; transform: translate(-50%, -100%); max-width: 260px; padding: 6px 10px; border-radius: 10px;
+  background: #fff8e6; color: #2a2238; font-size: .9em; line-height: 1.35; box-shadow: 0 2px 0 rgba(0,0,0,.35); pointer-events: none; }
+.world-say strong { display: block; font-size: .8em; color: #6b4f19; }
+.world-say::after { content: ''; position: absolute; left: 50%; bottom: -6px; margin-left: -6px; border: 6px solid transparent; border-bottom: 0; border-top-color: #fff8e6; }
+body.photo-mode .world-say { display: none; }
