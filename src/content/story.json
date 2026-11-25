@@ -1807,6 +1807,24 @@
    "line": "New cloak colour? It suits you. And you know exactly what it cost, part by part. Very Guardian of you."
   },
   {
+   "id": "kip.approval3",
+   "character": "kip-arden",
+   "if": {
+    "num": "approval.kip-arden",
+    "gte": 3
+   },
+   "line": "You know what I like about walking with you? You ask the second question. Most people stop at the first one."
+  },
+  {
+   "id": "kip.approval6",
+   "character": "kip-arden",
+   "if": {
+    "num": "approval.kip-arden",
+    "gte": 6
+   },
+   "line": "I used to think a good mapmaker knows every road. Now I think a good mapmaker asks, 'Who walked this road, and when?' I got that from you."
+  },
+  {
    "id": "kip.letter",
    "character": "kip-arden",
    "if": {

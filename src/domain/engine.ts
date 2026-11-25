@@ -10,6 +10,7 @@ import { GATHER_YIELD, RECIPES, RESOURCES, cannotCraft } from './craft';
 import { cannotRead, readingOf } from './readings';
 import { MIN_SOURCES, RUMOURS, rumourDone, sourcesChecked } from './rumours';
 import { BARTER, DYES, FAIR_PRICE, ferryPrice } from './trade';
+import { approvalOf, approvalRank, isInquiry } from './approval';
 import type {
   AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
@@ -138,6 +139,7 @@ export type GameEvent =
   | { kind: 'reading'; reading: string; ok: boolean; why: string; first: boolean }
   | { kind: 'rumour'; rumour: string; ok: boolean; why: string }
   | { kind: 'fairprice'; ok: boolean; why: string }
+  | { kind: 'approval'; who: string; n: number; rank: string; up: boolean }
   | { kind: 'trust'; id: string; name: string; rank: string }
   | { kind: 'secret'; id: string; name: string; found: number; total: number }
   | { kind: 'error'; message: string };
@@ -204,6 +206,17 @@ export const SIM_MODEL: Record<string, Record<string, { q: number; note: string 
 
 export class Engine {
   constructor(public pack: ContentPack) {}
+
+  /** Companion approval for a good question (src/domain/approval.ts). Each source of approval counts once. */
+  private approve(s: CampaignState, out: EffectOutputs, events: GameEvent[], key: string): CampaignState {
+    const who = s.companion!;
+    if (s.flags[`approved.${who}.${key}`] === true) return s;
+    const before = approvalRank(approvalOf(s.flags, who));
+    s = apply([{ setFlag: `approved.${who}.${key}`, value: true }, { addNum: `approval.${who}`, by: 1 }], s, out);
+    const n = approvalOf(s.flags, who), rank = approvalRank(n);
+    events.push({ kind: 'approval', who, n, rank, up: rank !== before });
+    return s;
+  }
 
   node(id: string): DialogueNode {
     const n = this.pack.dialogue.find((x) => x.id === id);
@@ -373,6 +386,7 @@ export class Engine {
             if (r.fray) fx.push({ setFlag: `meet.fray.${r.fray}`, value: true });
           }
           s = apply(fx, s, out);
+          if (ok && s.companion) s = this.approve(s, out, events, `mill.${r.id}`);
           events.push({ kind: 'rumour', rumour: r.id, ok, why });
           break;
         }
@@ -465,6 +479,7 @@ export class Engine {
           if (!opt) throw new Error('That option does not exist');
           if (!check(opt.if, s)) throw new Error('That option is not available now');
           s = apply(opt.effects, s, out);
+          if (s.companion && isInquiry(opt.tag)) s = this.approve(s, out, events, `${cmd.node}.${cmd.index}`);
           nextNode = opt.next ?? null;
           break;
         }

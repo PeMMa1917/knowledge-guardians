@@ -10,6 +10,7 @@ import { RECIPES } from '../src/domain/craft';
 import { MIN_SOURCES, RUMOURS, currentRumour, rumourOrder } from '../src/domain/rumours';
 import { DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, townPrice } from '../src/domain/trade';
 import { DYE_KEYS, OUTFIT } from '../src/domain/appearance';
+import { approvalOf, approvalRank, isInquiry } from '../src/domain/approval';
 
 const pack = buildPack();
 const done = (d: Driver, id: string) => d.run({ type: 'SetFlag', flag: `puzzle.${id}.done`, value: true });
@@ -249,5 +250,25 @@ describe("Wenna's barter boat", () => {
     // The base outfit colours stay free: a dye is extra, never a lock on identity.
     expect(Object.keys(OUTFIT).filter((k) => !DYE_KEYS.includes(k)).length).toBeGreaterThanOrEqual(10);
     expect(MAPS['aethelgard.ferry'].interactables.some((i) => i.kind === 'trader')).toBe(true);
+  });
+});
+
+describe('companion approval', () => {
+  it('rises once for each good question, never for agreeing, and only with a companion', () => {
+    expect(isInquiry('Ask for the source')).toBe(true);
+    expect(isInquiry('Trace the source')).toBe(true);
+    expect(isInquiry('Accept the expert view')).toBe(false);
+    expect(isInquiry('Dismiss the old record')).toBe(false);
+    expect(isInquiry(undefined)).toBe(false);
+    const node = pack.dialogue.find((n) => (n.options ?? []).some((o) => isInquiry(o.tag)) && !(n.options ?? []).some((o) => o.if))!;
+    const idx = node.options!.findIndex((o) => isInquiry(o.tag));
+    const d = new Driver();
+    d.run({ type: 'ChooseDialogueOption', node: node.id, index: idx });
+    expect(approvalOf(d.s.flags, 'kip-arden')).toBe(0); // no companion yet
+    d.s = { ...d.s, companion: 'kip-arden' };
+    d.run({ type: 'ChooseDialogueOption', node: node.id, index: idx });
+    d.run({ type: 'ChooseDialogueOption', node: node.id, index: idx });
+    expect(approvalOf(d.s.flags, 'kip-arden')).toBe(1);
+    expect(approvalRank(3)).toBe('Likes how you ask');
   });
 });

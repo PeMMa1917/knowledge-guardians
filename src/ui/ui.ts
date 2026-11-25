@@ -45,6 +45,7 @@ import { dealTiles, isPair, speedRank, tileRank, type Tile } from '../domain/til
 import { TRUST_RANKS, rankOf, trustOf } from '../domain/communities';
 import { RECIPES, RESOURCES, cannotCraft, resCount, type Resource } from '../domain/craft';
 import { READINGS, cannotRead, readingOf, toolOf } from '../domain/readings';
+import { approvalOf, approvalRank } from '../domain/approval';
 import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
 import { MIN_SOURCES, RUMOURS, VERDICTS, currentRumour, sourcesChecked } from '../domain/rumours';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
@@ -867,6 +868,12 @@ export class UI implements UIApi {
         case 'reflection': { const m = e.misconception; this.whenFree(() => this.offerReflection(m.title, m.reflection)); break; }
         case 'event-due': { const id = e.event; this.whenFree(() => this.showEvent(id)); break; }
         case 'trust': this.toast(`Trust grows. ${e.name}: you are now ${e.rank}. See Menu, Communities of Emberford.`, 'award'); this.sfx('sfx.award'); break;
+        case 'approval': {
+          const nm = (ctx.controller.pack.characters.find((x) => x.id === e.who)?.name ?? 'Your companion').split(' ')[0];
+          this.toast(e.up ? `${nm}: ${e.rank}. Good questions count, never agreement.` : `${nm} liked that question.`, e.up ? 'award' : 'info');
+          if (e.up) this.sfx('sfx.award');
+          break;
+        }
         case 'secret': this.toast(`Secret found: ${e.name} (${e.found} of ${e.total}). See Journal, Lore.`, 'award'); this.sfx('sfx.sparkle'); ctx.world?.lumenBurst(); break;
         case 'keepsake': this.toast(`New keepsake: ${e.name}. ${e.use}`, 'item'); this.sfx('sfx.sparkle'); break;
         case 'lamp': this.toast(`A lamp is lit on the Lamp Wall: ${e.name} (${e.count} of ${e.total}). ${e.lit}`, 'award'); this.sfx('sfx.award'); ctx.world?.lumenBurst(); break;
@@ -2599,6 +2606,7 @@ export class UI implements UIApi {
     box.append(this.closeBtn(), h('h2', {}, 'Communities of Emberford'),
       h('p', {}, "Each community in Emberford knows different things, and checks knowledge in its own way. None of these ways is the only right one: a good Guardian learns how each one works. Trust grows when you help a community and listen to how it knows. It never falls."),
       h('div', { class: 'community-grid' }, ...cards),
+      ...(s.companion ? [h('p', { class: 'fine' }, `Your companion, ${c.pack.characters.find((x) => x.id === s.companion)?.name ?? ''}: ${approvalRank(approvalOf(s.flags, s.companion))} (${approvalOf(s.flags, s.companion)}). Companions notice good questions, never agreement.`)] : []),
       h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
   }
 
