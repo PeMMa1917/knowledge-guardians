@@ -13,6 +13,7 @@ import { ACCENT, ACCESSORIES, HAIR, LABELS, cloakThreads, OUTFIT, PRESET_LOOKS, 
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
+import { tiltOf } from '../domain/puzzles';
 import { EMOTES } from '../domain/emotes';
 import { STAGE_LABEL, nextStep, skillStage, type SkillStage } from '../domain/skills';
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
@@ -51,6 +52,31 @@ function chip(text: string, title: string, cls: string): HTMLElement {
 }
 export function histChip(l: HistoricalLabel): HTMLElement { return chip(HIST_LABEL_TEXT[l][0], HIST_LABEL_TEXT[l][1], `hist-${l}`); }
 export function claimChip(k: ClaimKind): HTMLElement { return chip(CLAIM_TEXT[k][0], CLAIM_TEXT[k][1], `claim-${k}`); }
+
+/** A brass balance, drawn in SVG. `deg` > 0 means the right (weights) pan is lower. */
+function balanceSvg(load: string, weights: { label: string; mass: number; untrusted: boolean }[], deg: number): HTMLElement {
+  const wrap = h('div', { class: 'balance-wrap', 'aria-hidden': 'true' });
+  const dy = Math.sin((deg * Math.PI) / 180) * 100;
+  const esc = (t: string) => t.replace(/[&<>"]/g, (ch) => `&#${ch.charCodeAt(0)};`);
+  let x = 228;
+  const blocks = weights.map((w) => {
+    const bw = 8 + Math.min(16, w.mass * 2.4), bh = 6 + Math.min(14, w.mass * 1.6);
+    const r = `<rect x="${x}" y="${-bh}" width="${bw}" height="${bh}" rx="1.5" fill="${w.untrusted ? '#8b8f99' : '#d9b45a'}" stroke="${w.untrusted ? '#4a4d55' : '#6b4f19'}"/>`;
+    x += bw + 2; return r;
+  }).join('');
+  wrap.innerHTML = `<svg viewBox="0 0 320 180" width="320" height="180" role="presentation">
+  <rect x="120" y="164" width="80" height="10" rx="3" fill="#5b3b22"/><rect x="154" y="40" width="12" height="126" fill="#8a6a2a"/>
+  <circle cx="160" cy="34" r="7" fill="#e9cf7a" stroke="#6b4f19"/>
+  <g class="beam" style="transform: rotate(${deg}deg)"><rect x="58" y="36" width="204" height="8" rx="3" fill="#c9a24a" stroke="#6b4f19"/>
+    <path d="M156 44 L160 58 L164 44 Z" fill="#6b4f19"/></g>
+  <g class="pan" style="transform: translate(0px, ${-dy}px)"><line x1="60" y1="40" x2="34" y2="112" stroke="#6b4f19"/><line x1="60" y1="40" x2="86" y2="112" stroke="#6b4f19"/>
+    <path d="M24 112 Q60 132 96 112 Z" fill="#c9a24a" stroke="#6b4f19"/>
+    <rect x="40" y="94" width="40" height="18" rx="4" fill="#7d5bc4" stroke="#3a2b5e"/><text x="60" y="88" text-anchor="middle" font-size="10" fill="currentColor">${esc(load.length > 22 ? load.slice(0, 21) + '…' : load)}</text></g>
+  <g class="pan" style="transform: translate(0px, ${dy}px)"><line x1="260" y1="40" x2="234" y2="112" stroke="#6b4f19"/><line x1="260" y1="40" x2="286" y2="112" stroke="#6b4f19"/>
+    <path d="M224 112 Q260 132 296 112 Z" fill="#c9a24a" stroke="#6b4f19"/><g transform="translate(0,112)">${blocks}</g></g>
+</svg>`;
+  return wrap;
+}
 
 export class UI implements UIApi {
   private root: HTMLElement;
@@ -795,6 +821,8 @@ export class UI implements UIApi {
     let feedback: { ok: boolean; text: string } | null = null;
     let placed: string[] = [];
     let gapAt: number | null = null;
+    let pan: string[] = [];
+    let panRound = -1;
     // A fixed shuffle (not random), so the tiles never sit in the answer order.
     const pool = rec.type === 'order' ? [...rec.tiles].sort((a, b) => (a.id.length * 7 + a.text.length) % 5 - (b.id.length * 7 + b.text.length) % 5 || a.text.localeCompare(b.text)) : [];
     const take = (ev: GameEvent[]) => {
@@ -817,6 +845,28 @@ export class UI implements UIApi {
           box.append(h('h3', {}, r.prompt), h('div', { class: 'options notice-options' },
             ...r.options.map((o, i) => h('button', { type: 'button', onclick: () => take(c.dispatch({ type: 'PuzzleRound', puzzle: rec.id, round: n, index: i })) }, h('span', { class: 'notice-text' }, o.text)))));
         } else if (done) box.append(h('p', { class: 'fair' }, 'All three notices are up. The gate is open.'));
+      } else if (rec.type === 'balance') {
+        const n = Number(c.state.flags[`${F}.rounds`] ?? 0);
+        if (n !== panRound) { pan = []; panRound = n; }
+        box.append(h('p', { class: 'fine' }, `Weighing ${Math.min(n + 1, rec.rounds.length)} of ${rec.rounds.length}`));
+        if (feedback) box.append(h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text));
+        if (n < rec.rounds.length) {
+          const r = rec.rounds[n];
+          const on = pan.map((id) => r.weights.find((w) => w.id === id)!);
+          const sum = on.reduce((a, w) => a + w.mass, 0);
+          const t = tiltOf(r.load.mass, sum);
+          const deg = t === 0 ? 0 : t * Math.min(12, 4 + Math.abs(sum - r.load.mass) * 2);
+          box.append(h('h3', {}, r.prompt), balanceSvg(r.load.label, on.map((w) => ({ label: w.label, mass: w.mass, untrusted: !!w.untrusted })), deg),
+            h('p', { class: 'fine', 'aria-live': 'polite' }, t === 0 ? 'The beam is level.' : t > 0 ? 'The weights pan is lower.' : 'The load pan is lower.'),
+            h('h3', {}, 'Weights on the pan'),
+            h('div', { class: 'row wrap tiles on-pan' }, ...(on.length ? on.map((w) => h('button', { type: 'button', class: `weight ${w.untrusted ? 'untrusted' : ''}`, title: 'Take it off', onclick: () => { pan = pan.filter((x) => x !== w.id); this.sfx('sfx.click'); render(); } }, w.label))
+              : [h('span', { class: 'fine' }, 'None yet.')])),
+            h('h3', {}, 'Weights in the tray'),
+            h('div', { class: 'row wrap tiles tray' }, ...r.weights.filter((w) => !pan.includes(w.id)).map((w) => h('button', { type: 'button', class: `weight ${w.untrusted ? 'untrusted' : ''}`, onclick: () => { pan.push(w.id); feedback = null; this.sfx('sfx.metal'); render(); } }, w.label))),
+            h('div', { class: 'row' },
+              h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleWeigh', puzzle: rec.id, round: n, weights: [...pan] })) }, 'Record this weighing'),
+              h('button', { onclick: () => { pan = []; feedback = null; render(); } }, 'Clear the pan')));
+        } else if (done) box.append(h('p', { class: 'fair' }, 'Every weighing is in the record book.'));
       } else {
         const tile = (id: string) => rec.tiles.find((t) => t.id === id)!;
         box.append(h('div', { class: 'bridge', role: 'list', 'aria-label': 'Your citation, in order' },

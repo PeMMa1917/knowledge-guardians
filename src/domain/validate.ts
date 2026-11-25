@@ -171,6 +171,14 @@ export function validateContent(pack: ContentPack): string[] {
   (pack.puzzles ?? []).forEach((z) => {
     dup('puzzle', z.id); text(`puzzle ${z.id}`, z.intro); weave(z.weave, `puzzle ${z.id}`, true); eff(z.onComplete, `puzzle ${z.id}`);
     if (z.type === 'rounds') z.rounds.forEach((r, i) => { if (r.options.filter((o) => o.ok).length !== 1) p.push(`puzzle ${z.id} round ${i + 1}: needs exactly one correct option`); });
+    else if (z.type === 'balance') z.rounds.forEach((r, i) => {
+      // Every round must balance with the trusted weights alone.
+      const ws = r.weights.filter((w) => !w.untrusted).map((w) => w.mass);
+      let sums = new Set([0]);
+      ws.forEach((m) => { sums = new Set([...sums, ...[...sums].map((x) => Math.round((x + m) * 1000) / 1000)]); });
+      if (!sums.has(Math.round(r.load.mass * 1000) / 1000)) p.push(`puzzle ${z.id} round ${i + 1}: the trusted weights cannot balance the load`);
+      text(`puzzle ${z.id} round ${i + 1}`, r.success);
+    });
     else {
       const ids = new Set(z.tiles.map((t) => t.id));
       z.answer.forEach((a) => ids.has(a) || p.push(`puzzle ${z.id}: unknown tile ${a}`));

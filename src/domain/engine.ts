@@ -11,7 +11,7 @@ import { CAMPAIGN_SCHEMA, type Pronouns } from './types';
 import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
 import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
-import { answerRound, checkOrder } from './puzzles';
+import { answerRound, checkOrder, weighRound } from './puzzles';
 import { checkOffer, cleanPetName } from './lorelings';
 import { useSignature } from './skills';
 import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
@@ -29,6 +29,7 @@ export type Command =
   | { type: 'AlcovePlace'; alcove: string; item: string }
   | { type: 'PuzzleRound'; puzzle: string; round: number; index: number }
   | { type: 'PuzzleOrder'; puzzle: string; order: string[] }
+  | { type: 'PuzzleWeigh'; puzzle: string; round: number; weights: string[] }
   | { type: 'LorelingWatch'; loreling: string; sighting: string }
   | { type: 'LorelingNote'; loreling: string; question: string; option: string }
   | { type: 'LorelingOffer'; loreling: string; place: string }
@@ -463,14 +464,18 @@ export class Engine {
           }
           break;
         }
-        case 'PuzzleRound': case 'PuzzleOrder': {
+        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': {
           const rec = this.pack.puzzles.find((x) => x.id === cmd.puzzle);
           if (!rec) throw new Error('Unknown puzzle');
           if (rec.needs && !s.inventory[rec.needs.item]) throw new Error(rec.needs.sealed);
           const F = `puzzle.${rec.id}`;
           const wasDone = s.flags[`${F}.done`] === true;
           let ok: boolean, text: string, solved: boolean, gapAt: number | null = null;
-          if (cmd.type === 'PuzzleRound') {
+          if (cmd.type === 'PuzzleWeigh') {
+            const r = weighRound(rec, Number(s.flags[`${F}.rounds`] ?? 0), cmd.round, cmd.weights);
+            ok = r.ok; text = r.text; solved = r.solved;
+            s = apply(r.ok ? [{ addNum: `${F}.rounds`, by: 1 }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);
+          } else if (cmd.type === 'PuzzleRound') {
             const r = answerRound(rec, Number(s.flags[`${F}.rounds`] ?? 0), cmd.round, cmd.index);
             ok = r.ok; text = r.text; solved = r.solved;
             s = apply(r.ok ? [{ addNum: `${F}.rounds`, by: 1 }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);

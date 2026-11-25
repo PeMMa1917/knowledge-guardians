@@ -399,3 +399,11 @@ body.photo-mode #captions { display: none !important; }
 .objection { border: 2px solid var(--gold, #e9cf7a); background: rgba(255, 210, 120, 0.12); border-radius: 10px; padding: 10px 12px; margin: 8px 0; animation: objection-pulse 1.2s ease-in-out 2; }
 @keyframes objection-pulse { 50% { box-shadow: 0 0 18px rgba(255, 210, 120, 0.6); } }
 .reduced-motion .objection { animation: none; }
+
+/* Balance bench (spec 47 balance scales) */
+.balance-wrap { display: flex; justify-content: center; margin: 4px 0 8px; color: var(--ink, #f3eee0); }
+.balance-wrap .beam { transform-origin: 160px 40px; transition: transform 0.6s cubic-bezier(.3,1.6,.5,1); }
+.balance-wrap .pan { transition: transform 0.6s cubic-bezier(.3,1.6,.5,1); }
+button.weight { border-color: #c9a24a; }
+button.weight.untrusted { border-style: dashed; border-color: #8b8f99; }
+@media (prefers-reduced-motion: reduce) { .balance-wrap .beam, .balance-wrap .pan { transition: none; } }

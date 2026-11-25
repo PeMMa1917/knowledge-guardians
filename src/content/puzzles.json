@@ -287,6 +287,141 @@
      "journal": "j.timeline"
     }
    ]
+  },
+  {
+   "id": "weigh-house",
+   "type": "balance",
+   "title": "The Weigh-House Balance",
+   "intro": "A brass balance stands on the east side of the square. Any buyer or seller may use it. The guild keeps one set of checked weights in a locked box; the stalls have their own. Under the beam a plate says: THE SAME MEASURE FOR EVERY HAND.",
+   "skills": [
+    "SK-NUM-14",
+    "SK-RSC-21"
+   ],
+   "weave": {
+    "concepts": [
+     "objectivity",
+     "justification"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "economics",
+     "physics"
+    ],
+    "aoks": [
+     "NAT",
+     "HUM"
+    ]
+   },
+   "rounds": [
+    {
+     "prompt": "First, learn the balance. Find the weight of the guild's sample ingot.",
+     "load": {
+      "label": "Sample ingot",
+      "mass": 7
+     },
+     "weights": [
+      {
+       "id": "g1",
+       "label": "Guild 1",
+       "mass": 1
+      },
+      {
+       "id": "g2",
+       "label": "Guild 2",
+       "mass": 2
+      },
+      {
+       "id": "g3",
+       "label": "Guild 2",
+       "mass": 2
+      },
+      {
+       "id": "g5",
+       "label": "Guild 5",
+       "mass": 5
+      }
+     ],
+     "success": "The beam is level: the ingot weighs 7 measures. The balance does not say what the ingot is worth. It says only that two pans are equal, and anyone who repeats it gets the same answer."
+    },
+    {
+     "prompt": "A weight marked '5' was found under a stall. Is it true? Weigh it with the guild weights.",
+     "load": {
+      "label": "Found weight, marked 5",
+      "mass": 4
+     },
+     "weights": [
+      {
+       "id": "g1",
+       "label": "Guild 1",
+       "mass": 1
+      },
+      {
+       "id": "g2",
+       "label": "Guild 2",
+       "mass": 2
+      },
+      {
+       "id": "g3",
+       "label": "Guild 2",
+       "mass": 2
+      },
+      {
+       "id": "g5",
+       "label": "Guild 5",
+       "mass": 5
+      }
+     ],
+     "success": "It balances at 4, not 5. Anyone who bought '5 measures' by this weight took home 4. The mark looked right. Only a check against a shared standard showed it was wrong. Lumen: 'Nobody had to guess who was honest. The pans told everyone the same thing.'"
+    },
+    {
+     "prompt": "A seller says this sack of salt is 6 measures. Check the claim.",
+     "load": {
+      "label": "Sack of salt, sold as 6",
+      "mass": 6
+     },
+     "weights": [
+      {
+       "id": "g1",
+       "label": "Guild 1",
+       "mass": 1
+      },
+      {
+       "id": "g2",
+       "label": "Guild 2",
+       "mass": 2
+      },
+      {
+       "id": "g5",
+       "label": "Guild 5",
+       "mass": 5
+      },
+      {
+       "id": "s5",
+       "label": "Seller's own 5",
+       "mass": 5,
+       "untrusted": "A check of the seller cannot use the seller's own weight. If that weight were wrong, the test would hide it. Use the guild's checked weights."
+      },
+      {
+       "id": "s1",
+       "label": "Seller's own 1",
+       "mass": 1,
+       "untrusted": "That weight belongs to the seller under test. A fair check uses a measure that does not depend on the claim."
+      }
+     ],
+     "success": "Six measures, by the guild's weights. The claim stands, and now anyone can see why. Lumen: 'Being objective here is not having a perfect eye. It is using a checked measure that does not belong to either side, so that someone else can repeat the test.'"
+    }
+   ],
+   "onComplete": [
+    {
+     "credit": "crit.objectivity.balance"
+    },
+    {
+     "journal": "j.balance"
+    }
+   ]
   }
  ],
  "missions": [
@@ -401,6 +536,48 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-B01",
+   "world": "WORLD-02",
+   "title": "The Weigh-House Balance",
+   "knowledgeQuestion": "What makes a measurement fair to both sides?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "bal.o1.weigh",
+     "title": "Optional: make three fair weighings at the Weigh-House balance (east side of the square).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.weigh-house.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "economics",
+       "physics"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-NUM-14",
+      "SK-RSC-21"
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -475,6 +652,30 @@
    "objective": "gate.o1.timeline",
    "depth": 4,
    "text": "In order: about 1088 (report), 1792 (publication), 1856 (announcement), 1906 (public flights)."
+  },
+  {
+   "id": "h.bal.1",
+   "objective": "bal.o1.weigh",
+   "depth": 1,
+   "text": "Watch the beam. The lower pan is the heavier one."
+  },
+  {
+   "id": "h.bal.2",
+   "objective": "bal.o1.weigh",
+   "depth": 2,
+   "text": "Add or take off one weight at a time until the beam is level, then record it."
+  },
+  {
+   "id": "h.bal.3",
+   "objective": "bal.o1.weigh",
+   "depth": 3,
+   "text": "When you test a seller's claim, do not use anything that belongs to the seller."
+  },
+  {
+   "id": "h.bal.4",
+   "objective": "bal.o1.weigh",
+   "depth": 4,
+   "text": "Ingot: guild 5 and guild 2. Found weight: guild 2 and guild 2. Salt: guild 5 and guild 1."
   }
  ],
  "journal": [
@@ -492,6 +693,11 @@
    "id": "j.timeline",
    "text": "The Timeline Door: one event can have a date of doing and a date of telling. Put only dates of the same kind on one timeline.",
    "claimKind": "interpretation"
+  },
+  {
+   "id": "j.balance",
+   "text": "The Weigh-House: a fair test uses a shared, checked measure that belongs to neither side, so that anyone can repeat it and get the same result.",
+   "claimKind": "interpretation"
   }
  ],
  "criteria": [
@@ -508,6 +714,11 @@
   {
    "id": "crit.evidence.timeline",
    "concept": "evidence",
+   "maximum": 5
+  },
+  {
+   "id": "crit.objectivity.balance",
+   "concept": "objectivity",
    "maximum": 5
   }
  ]

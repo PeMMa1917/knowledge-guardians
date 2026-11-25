@@ -106,6 +106,7 @@ export const EMBERFORD: MapDef = {
     { id: 'ex-assay', kind: 'assay', exhibit: 'AE-ASSAY', x: 30, y: 15, w: 2, h: 2, label: 'the assay table', art: 'assay' },
     { id: 'forge', kind: 'forge', x: 5, y: 17, w: 3, h: 2, label: "Hesper's anvil (forge a test billet)", art: 'anvil' },
     { id: 'sign-smith', kind: 'puzzle', puzzle: 'guild-notice', x: 23, y: 8, w: 1, h: 1, label: "the Sign-Smith's notice board", art: 'notice-board' },
+    { id: 'weigh-house', kind: 'puzzle', puzzle: 'weigh-house', x: 27, y: 18, w: 1, h: 1, label: 'the Weigh-House balance', art: 'balance-scale' },
     { id: 'cite-bridge', kind: 'puzzle', puzzle: 'song-bridge', x: 25, y: 22, w: 1, h: 1, label: 'the Citation Thread bridge post', art: 'bridge-post' },
     { id: 'lock-authors', kind: 'lock', lock: 'authors', x: 17, y: 7, w: 1, h: 1, label: 'the wooden Title Lock (EE practice)', art: 'title-lock', visibleIf: { flag: 'ee2.started', eq: true } },
     { id: 'table-authors', kind: 'label', kit: 'ee.authors', x: 15, y: 7, w: 1, h: 1, label: "Keeper Oduya's table", art: 'label-stand', visibleIf: { objective: 'ee2.o3.weigh' } },

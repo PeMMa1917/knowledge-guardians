@@ -276,6 +276,15 @@ DRAW['timeline-door.open'] = [16, 24, (g) => {
   R(g, '#f2d27a', 4, 23, 8, 1);                                         // light on the floor
 }];
 
+// The Weigh-House balance (original art): a brass beam on a post, two pans.
+DRAW['balance-scale'] = [16, 24, (g) => {
+  R(g, '#5b3b22', 4, 21, 8, 3); R(g, '#8a6a2a', 7, 6, 2, 15); R(g, '#e9cf7a', 7, 4, 2, 2);
+  R(g, '#c9a24a', 1, 7, 14, 1); R(g, '#6b4f19', 1, 8, 14, 1);
+  R(g, '#6b4f19', 2, 8, 1, 6); R(g, '#6b4f19', 13, 8, 1, 6);
+  R(g, '#c9a24a', 0, 14, 5, 1); R(g, '#8a6a2a', 1, 15, 3, 1); R(g, '#c9a24a', 11, 14, 5, 1); R(g, '#8a6a2a', 12, 15, 3, 1);
+  R(g, '#7d5bc4', 1, 12, 3, 2); R(g, '#d9b45a', 12, 12, 2, 2); R(g, '#fff3c4', 8, 4, 1, 1);
+}];
+
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

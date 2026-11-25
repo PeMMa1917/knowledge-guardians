@@ -5,6 +5,9 @@
  *    a wrong one shows its funny or costly result, and the player tries again.
  *  - "order": a Citation Thread bridge. The player puts citation elements in order
  *    and leaves out what does not belong. A missing or misplaced element leaves a gap.
+ *  - "balance": a balance bench. Weights go on the right pan until it balances the load.
+ *    A weight that belongs to the thing under test is not a fair check (objectivity
+ *    as a shared, independent standard).
  * Grammar and citation have conventions, so these puzzles do have right answers.
  * They are never about contested knowledge. Pure rules, no DOM.
  */
@@ -41,4 +44,32 @@ export function checkOrder(p: PuzzleRecord, order: string[]): OrderResult {
     return { ok: false, gapAt: p.answer.length, text: `${w.done} before "${g?.text ?? ''}". ${g?.why ?? 'Leave it out.'}` };
   }
   return { ok: true, gapAt: null, text: p.success };
+}
+
+export type WeighResult = RoundResult & { tilt: -1 | 0 | 1 };
+
+/** Tilt of the beam: 1 = the weights' pan sinks, -1 = the load sinks. */
+export function tiltOf(load: number, weights: number): -1 | 0 | 1 {
+  const d = weights - load;
+  return Math.abs(d) < 1e-9 ? 0 : d > 0 ? 1 : -1;
+}
+
+export function weighRound(p: PuzzleRecord, solvedRounds: number, round: number, ids: string[]): WeighResult {
+  if (p.type !== 'balance') throw new Error('Not a balance puzzle');
+  if (round !== solvedRounds) throw new Error('Solve the rounds in order');
+  const r = p.rounds[round];
+  if (!r) throw new Error('No such round');
+  if (new Set(ids).size !== ids.length) throw new Error('Each weight can go on the pan once');
+  const ws = ids.map((id) => {
+    const w = r.weights.find((x) => x.id === id);
+    if (!w) throw new Error('No such weight');
+    return w;
+  });
+  const tilt = tiltOf(r.load.mass, ws.reduce((a, w) => a + w.mass, 0));
+  if (!ws.length) return { ok: false, solved: false, tilt, text: 'The right pan is empty. Put weights on it.' };
+  const bad = ws.find((w) => w.untrusted);
+  if (bad) return { ok: false, solved: false, tilt, text: `${tilt === 0 ? 'The pans balance, but' : 'Before you read the beam:'} you used ${bad.label}. ${bad.untrusted}` };
+  if (tilt < 0) return { ok: false, solved: false, tilt, text: `${r.load.label} is heavier. Add weight.` };
+  if (tilt > 0) return { ok: false, solved: false, tilt, text: 'The weights are heavier. Take some off.' };
+  return { ok: true, solved: round === p.rounds.length - 1, tilt, text: r.success };
 }

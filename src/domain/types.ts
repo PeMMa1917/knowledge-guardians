@@ -473,7 +473,20 @@ export type PuzzleRecord = {
   | { type: 'order'; tiles: { id: string; text: string; role: string; why?: string }[]; answer: string[]; success: string;
       /** Words for the feedback (default: a bridge thread). */
       words?: { stops: string; sags: string; done: string; notPart: string } }
+  /**
+   * A balance bench (spec 47 "balance scales", C1 test bench): put weights on the right pan
+   * until it balances the load. Weights marked `untrusted` (the thing under test's own
+   * measure) never count as a fair weighing, even when the pans balance.
+   */
+  | { type: 'balance'; rounds: BalanceRound[] }
 );
+
+export interface BalanceRound {
+  prompt: string;
+  load: { label: string; mass: number };
+  weights: { id: string; label: string; mass: number; untrusted?: string }[];
+  success: string;
+}
 
 /**
  * A Loreling (spec 36.1): a small fictional creature linked to one concept. The player
