@@ -422,6 +422,254 @@
      "journal": "j.balance"
     }
    ]
+  },
+  {
+   "id": "founders-plaque",
+   "type": "restore",
+   "title": "The Founders' Plaque",
+   "intro": "The guild took the old plaque down from the gate and put it on the restorer's trestle. It is dark with soot. Keeper Oduya says: 'We want it back on the gate before the fair. You decide how to restore it. First, look at what is there. The test swab cleans a patch the size of a thumbnail, and we can fill the patch again.'",
+   "object": "The Founders' Plaque",
+   "skills": [
+    "SK-CUR-06",
+    "SK-MED-02",
+    "SK-THK-14",
+    "SK-ETR-01"
+   ],
+   "weave": {
+    "concepts": [
+     "responsibility",
+     "interpretation",
+     "evidence"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "visual-arts",
+     "history",
+     "chemistry"
+    ],
+    "aoks": [
+     "ART",
+     "HIS"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.responsibility.restore"
+    },
+    {
+     "journal": "j.restore"
+    }
+   ],
+   "face": {
+    "bg": "#241a12",
+    "ink": "#5e4a2a",
+    "lines": [
+     "EMB...D ST..L",
+     "F...ST IN AE....GARD",
+     "S...E THE F...T F..GE"
+    ]
+   },
+   "layers": [
+    {
+     "id": "soot",
+     "name": "Soot and old varnish",
+     "colour": "#3b2f25",
+     "text": "A thin, dark layer. It comes from many years of smoke from the forges. It tells you that the plaque hung near the forges for a long time."
+    },
+    {
+     "id": "gold",
+     "name": "Gold repaint",
+     "colour": "#d9b45a",
+     "text": "Gold letters: EMBERFORD STEEL, FINEST IN AETHELGARD, SINCE THE FIRST FORGE. The guild ledger says that the guild paid for this paint for the Long Fair, about 80 years ago. The words 'finest' and 'since the first forge' were added then."
+    },
+    {
+     "id": "carving",
+     "name": "Carved letters",
+     "colour": "#9a6a3c",
+     "text": "Under the paint, the wood is carved: EMBERFORD SMITHS, and a small hammer. There is no 'finest' and no date. The first makers said less than the repaint says."
+    },
+    {
+     "id": "mark",
+     "name": "Maker's note",
+     "colour": "#efe6cf",
+     "text": "On the edge, in pencil: 'Cut by Ysolde for the smiths, in the wet spring.' This is the only place that names a maker."
+    }
+   ],
+   "methods": [
+    {
+     "id": "strip",
+     "label": "Strip to the wood",
+     "does": "Remove the soot, the varnish and the gold paint with solvent and a scraper. The carving and Ysolde's note show clearly.",
+     "keeps": [
+      "carving",
+      "mark"
+     ],
+     "loses": [
+      "soot",
+      "gold"
+     ],
+     "reversible": false,
+     "result": "The plaque goes back on the gate as bare carved wood. People can read EMBERFORD SMITHS again. The 'finest' claim is gone, and so is the only paint from the Long Fair.",
+     "face": {
+      "bg": "#b07a44",
+      "ink": "#5b3b22",
+      "lines": [
+       "EMBERFORD SMITHS",
+       "⚒"
+      ]
+     },
+     "labels": [
+      {
+       "text": "Restored to exactly how the founders made it.",
+       "honest": false,
+       "why": "Not exactly. The swab showed what is there now. It cannot show that the plaque never had paint before the gold. 'Exactly' claims more than your evidence."
+      },
+      {
+       "text": "Stripped to the first carving this year. The gold repaint from the Long Fair, with its words 'finest' and 'since the first forge', was removed and cannot come back.",
+       "honest": true,
+       "why": "The label says what you kept and what you lost. A visitor can trust it."
+      },
+      {
+       "text": "Original plaque. Nothing has been changed.",
+       "honest": false,
+       "why": "Two layers were removed. A label that hides a change is the same mistake as Corvan's label on the blade."
+      }
+     ]
+    },
+    {
+     "id": "clean",
+     "label": "Clean the soot only",
+     "does": "Wash off the soot and the varnish. Leave the gold paint. Put on a wax that a later restorer can remove.",
+     "keeps": [
+      "gold",
+      "carving",
+      "mark"
+     ],
+     "loses": [
+      "soot"
+     ],
+     "reversible": true,
+     "result": "The gold shines again. The carving is safe under the paint, for a later restorer. Visitors read FINEST IN AETHELGARD, as their grandparents did.",
+     "face": {
+      "bg": "#2c1d12",
+      "ink": "#e9c45a",
+      "lines": [
+       "EMBERFORD STEEL",
+       "FINEST IN AETHELGARD",
+       "SINCE THE FIRST FORGE"
+      ]
+     },
+     "labels": [
+      {
+       "text": "Emberford steel has been the finest since the first forge.",
+       "honest": false,
+       "why": "This label repeats the repaint's claim as a fact. The swab showed that the first makers did not say it."
+      },
+      {
+       "text": "Original gold lettering by the founders.",
+       "honest": false,
+       "why": "The ledger dates the gold to the Long Fair. The founders carved the letters. They did not paint these words."
+      },
+      {
+       "text": "Gold repaint from the Long Fair, about 80 years ago, cleaned this year. Its words were added then. The first carving under the paint says only EMBERFORD SMITHS.",
+       "honest": true,
+       "why": "The label gives the date of the words and says what is under them."
+      }
+     ]
+    },
+    {
+     "id": "window",
+     "label": "Clean, and open a small window",
+     "does": "Wash off the soot and keep a sample of it in the ledger. Keep the gold paint. Open a small window in one corner, so that people can see the first carving and Ysolde's note. The window can be filled again later.",
+     "keeps": [
+      "soot",
+      "gold",
+      "carving",
+      "mark"
+     ],
+     "loses": [],
+     "reversible": true,
+     "result": "The gold shines, and in the lower corner a small window shows the old carving and Ysolde's name. Children stop to compare the two.",
+     "face": {
+      "bg": "#2c1d12",
+      "ink": "#e9c45a",
+      "lines": [
+       "EMBERFORD STEEL",
+       "FINEST IN AETHELGARD",
+       "SINCE THE FIRST FORGE"
+      ],
+      "window": {
+       "bg": "#b07a44",
+       "ink": "#3b2a1a",
+       "lines": [
+        "...SMITHS ⚒",
+        "Ysolde"
+       ]
+      }
+     },
+     "labels": [
+      {
+       "text": "The founders carved 'finest in Aethelgard'.",
+       "honest": false,
+       "why": "Your own window shows the opposite. The carving says only EMBERFORD SMITHS."
+      },
+      {
+       "text": "Two plaques in one. Carved by Ysolde for the smiths (see the window, lower left). Gold words added for the Long Fair. Cleaned this year; a soot sample is in the ledger.",
+       "honest": true,
+       "why": "The label tells the visitor which words belong to which time."
+      },
+      {
+       "text": "A plaque. Very old.",
+       "honest": false,
+       "why": "This is true, but it says too little. Visitors will think that there is only one plaque and one set of words. A label can mislead by what it leaves out."
+      }
+     ]
+    },
+    {
+     "id": "repaint",
+     "label": "Paint it new",
+     "does": "Paint over everything in fresh gold, with the same words as now. The old layers stay under the new paint, but nobody can see them, and the new paint cannot come off without damage.",
+     "keeps": [
+      "gold",
+      "carving",
+      "mark"
+     ],
+     "loses": [
+      "soot"
+     ],
+     "reversible": false,
+     "result": "The plaque looks new and bright. Most visitors now think that it was made this year.",
+     "face": {
+      "bg": "#7a1f24",
+      "ink": "#ffd75e",
+      "lines": [
+       "EMBERFORD STEEL",
+       "FINEST IN AETHELGARD",
+       "SINCE THE FIRST FORGE"
+      ]
+     },
+     "labels": [
+      {
+       "text": "Repainted this year over the gold from the Long Fair. Older layers, with a carving and a maker's note, are under the new paint.",
+       "honest": true,
+       "why": "The label tells a later restorer where to look, even if nobody can see it now."
+      },
+      {
+       "text": "As it was on the first day.",
+       "honest": false,
+       "why": "On the first day there was no gold at all. The swab showed a carving under the paint."
+      },
+      {
+       "text": "New plaque, made this year.",
+       "honest": false,
+       "why": "Only the paint is new. The wood, the carving and Ysolde's note are much older."
+      }
+     ]
+    }
+   ]
   }
  ],
  "missions": [
@@ -578,6 +826,51 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-P01",
+   "world": "WORLD-02",
+   "title": "The Founders' Plaque",
+   "knowledgeQuestion": "When we restore an object, what do we owe the next person who looks at it?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "res.o1.plaque",
+     "title": "Optional: restore the Founders' Plaque on the restorer's trestle (north-east of the square).",
+     "essential": false,
+     "done": {
+      "flagSet": "puzzle.founders-plaque.method"
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "interpretation",
+       "evidence"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "visual-arts",
+       "history",
+       "chemistry"
+      ],
+      "aoks": [
+       "ART",
+       "HIS"
+      ]
+     },
+     "skills": [
+      "SK-CUR-06",
+      "SK-MED-02",
+      "SK-THK-14",
+      "SK-ETR-01"
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -676,6 +969,30 @@
    "objective": "bal.o1.weigh",
    "depth": 4,
    "text": "Ingot: guild 5 and guild 2. Found weight: guild 2 and guild 2. Salt: guild 5 and guild 1."
+  },
+  {
+   "id": "h.res.1",
+   "objective": "res.o1.plaque",
+   "depth": 1,
+   "text": "Look before you choose. Use the swab until you have seen every layer."
+  },
+  {
+   "id": "h.res.2",
+   "objective": "res.o1.plaque",
+   "depth": 2,
+   "text": "Every method is allowed. Each one keeps some layers and loses others."
+  },
+  {
+   "id": "h.res.3",
+   "objective": "res.o1.plaque",
+   "depth": 3,
+   "text": "The label must say what you kept and what you changed. A label can mislead by saying too much or too little."
+  },
+  {
+   "id": "h.res.4",
+   "objective": "res.o1.plaque",
+   "depth": 4,
+   "text": "For any method, choose the label that names the dates of the layers and what was removed or covered."
   }
  ],
  "journal": [
@@ -698,6 +1015,11 @@
    "id": "j.balance",
    "text": "The Weigh-House: a fair test uses a shared, checked measure that belongs to neither side, so that anyone can repeat it and get the same result.",
    "claimKind": "interpretation"
+  },
+  {
+   "id": "j.restore",
+   "text": "The Founders' Plaque: every restoration keeps some evidence and loses some. The honest part is the label: it says which words belong to which time, and what is gone.",
+   "claimKind": "interpretation"
   }
  ],
  "criteria": [
@@ -719,6 +1041,11 @@
   {
    "id": "crit.objectivity.balance",
    "concept": "objectivity",
+   "maximum": 5
+  },
+  {
+   "id": "crit.responsibility.restore",
+   "concept": "responsibility",
    "maximum": 5
   }
  ]

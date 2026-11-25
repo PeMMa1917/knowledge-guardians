@@ -479,7 +479,34 @@ export type PuzzleRecord = {
    * measure) never count as a fair weighing, even when the pans balance.
    */
   | { type: 'balance'; rounds: BalanceRound[] }
+  /**
+   * A restorer's trestle (spec 12 IT14 and EV02, C1): look under each layer with a small
+   * test swab, choose a restoration method, then write a label that says honestly what
+   * was kept and what was lost. Every method is valid; only the label is checked.
+   */
+  | { type: 'restore'; object: string; layers: RestoreLayer[]; methods: RestoreMethod[]; face: PlaqueFace }
 );
+
+/** How the object's face looks: background, ink and short lines; an optional small window. */
+export interface PlaqueFace { bg: string; ink: string; lines: string[]; window?: { bg: string; ink: string; lines: string[] } }
+
+/** One layer of an object, top layer first. */
+export interface RestoreLayer { id: string; name: string; colour: string; text: string }
+
+export interface RestoreMethod {
+  id: string;
+  label: string;
+  does: string;
+  /** Layer ids that stay (visible or hidden). */
+  keeps: string[];
+  /** Layer ids that are gone after this method. Together with keeps: every layer once. */
+  loses: string[];
+  /** A reversible method can be changed later; an irreversible one cannot. */
+  reversible: boolean;
+  result: string;
+  face: PlaqueFace;
+  labels: { text: string; honest: boolean; why: string }[];
+}
 
 /** World memory (spec 47, C1): a short line a person says when the player passes, once the condition holds. */
 export interface MemoryLine { id: string; character: string; if: Condition; line: string }

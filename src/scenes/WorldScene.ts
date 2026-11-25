@@ -241,6 +241,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         const key = ctx.controller.check(it.artOpen.if) ? it.artOpen.key : it.art!;
         if (img.texture.key !== key && this.textures.exists(key)) img.setTexture(key);
       }
+      if (img && it.artBy && img instanceof Phaser.GameObjects.Image) {
+        const v = ctx.controller.state.flags[it.artBy.flag];
+        const key = (typeof v === 'string' && it.artBy.keys[v]) || it.art!;
+        if (img.texture.key !== key && this.textures.exists(key)) img.setTexture(key);
+      }
     }
     this.syncPet();
     // Cloak embroidery (spec 32.6): a new thread appears on the outfit when a world arc is resolved.

@@ -294,6 +294,26 @@ DRAW['balance-scale'] = [16, 24, (g) => {
   R(g, '#7d5bc4', 1, 12, 3, 2); R(g, '#d9b45a', 12, 12, 2, 2); R(g, '#fff3c4', 8, 4, 1, 1);
 }];
 
+// The Founders' Plaque (original art): dark on the restorer's trestle; restored, it hangs on a post.
+DRAW['plaque.trestle'] = [16, 24, (g) => {
+  R(g, '#5b3b22', 1, 17, 1, 7); R(g, '#5b3b22', 14, 17, 1, 7); R(g, '#5b3b22', 3, 18, 1, 6); R(g, '#5b3b22', 12, 18, 1, 6);
+  R(g, '#8a5a30', 0, 16, 16, 2);
+  R(g, '#2a1d14', 1, 9, 14, 7); R(g, '#3b2f25', 2, 10, 12, 5); R(g, '#5e4a2a', 3, 11, 4, 1); R(g, '#5e4a2a', 8, 11, 5, 1); R(g, '#5e4a2a', 4, 13, 8, 1);
+  R(g, '#e9c45a', 3, 11, 1, 1); // the swab patch
+  R(g, '#efe6cf', 12, 15, 2, 1); R(g, '#9aa3b5', 13, 14, 1, 1);
+}];
+function plaquePost(g: Ctx, bg: string, ink: string, win?: string) {
+  R(g, '#5b3b22', 7, 10, 2, 14); R(g, '#3b2a1a', 6, 22, 4, 2);
+  R(g, '#3b2a1a', 0, 2, 16, 9); R(g, bg, 1, 3, 14, 7);
+  R(g, ink, 2, 4, 5, 1); R(g, ink, 8, 4, 6, 1); R(g, ink, 3, 6, 10, 1); R(g, ink, 4, 8, 8, 1);
+  if (win) { R(g, '#f3eee0', 1, 7, 5, 3); R(g, win, 2, 8, 3, 1); }
+  R(g, '#fff3c4', 14, 3, 1, 1);
+}
+DRAW['plaque.strip'] = [16, 24, (g) => { plaquePost(g, '#b07a44', '#5b3b22'); R(g, '#5b3b22', 7, 7, 2, 2); }];
+DRAW['plaque.clean'] = [16, 24, (g) => plaquePost(g, '#2c1d12', '#e9c45a')];
+DRAW['plaque.window'] = [16, 24, (g) => plaquePost(g, '#2c1d12', '#e9c45a', '#b07a44')];
+DRAW['plaque.repaint'] = [16, 24, (g) => plaquePost(g, '#7a1f24', '#ffd75e')];
+
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

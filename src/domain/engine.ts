@@ -11,7 +11,7 @@ import { CAMPAIGN_SCHEMA, type Pronouns } from './types';
 import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
 import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
-import { answerRound, checkOrder, weighRound } from './puzzles';
+import { answerRound, checkOrder, peelLayer, restoreWith, weighRound } from './puzzles';
 import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
 import { useSignature } from './skills';
@@ -31,6 +31,8 @@ export type Command =
   | { type: 'PuzzleRound'; puzzle: string; round: number; index: number }
   | { type: 'PuzzleOrder'; puzzle: string; order: string[] }
   | { type: 'PuzzleWeigh'; puzzle: string; round: number; weights: string[] }
+  | { type: 'PuzzlePeel'; puzzle: string }
+  | { type: 'PuzzleRestore'; puzzle: string; method: string; label: number }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
   | { type: 'PhotoCaptioned'; right: number; total: number }
   | { type: 'UnpinYarn'; board: string; claim: string; card: string }
@@ -493,14 +495,23 @@ export class Engine {
           events.push({ kind: 'yarn', board: rec.id, claim: cmd.claim, card: cmd.card, tone: v.tone, text: v.text, done });
           break;
         }
-        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': {
+        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': {
           const rec = this.pack.puzzles.find((x) => x.id === cmd.puzzle);
           if (!rec) throw new Error('Unknown puzzle');
           if (rec.needs && !s.inventory[rec.needs.item]) throw new Error(rec.needs.sealed);
           const F = `puzzle.${rec.id}`;
           const wasDone = s.flags[`${F}.done`] === true;
           let ok: boolean, text: string, solved: boolean, gapAt: number | null = null;
-          if (cmd.type === 'PuzzleWeigh') {
+          if (cmd.type === 'PuzzlePeel') {
+            const r = peelLayer(rec, Number(s.flags[`${F}.peeled`] ?? 0));
+            ok = r.ok; text = r.text; solved = false;
+            s = apply([{ addNum: `${F}.peeled`, by: 1 }], s, out);
+          } else if (cmd.type === 'PuzzleRestore') {
+            const cur = s.flags[`${F}.method`];
+            const r = restoreWith(rec, Number(s.flags[`${F}.peeled`] ?? 0), typeof cur === 'string' ? cur : null, cmd.method, cmd.label);
+            ok = r.ok; text = r.text; solved = r.solved;
+            s = apply(r.ok ? [{ setFlag: `${F}.method`, value: cmd.method }, { setFlag: `${F}.label`, value: cmd.label }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);
+          } else if (cmd.type === 'PuzzleWeigh') {
             const r = weighRound(rec, Number(s.flags[`${F}.rounds`] ?? 0), cmd.round, cmd.weights);
             ok = r.ok; text = r.text; solved = r.solved;
             s = apply(r.ok ? [{ addNum: `${F}.rounds`, by: 1 }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);

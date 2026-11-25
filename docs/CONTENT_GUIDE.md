@@ -161,9 +161,11 @@ Alcoves are in `src/content/exhibition.json` (`alcoves`). Each has a prompt, at 
 
 Add a record to `src/content/lorelings.json` (`lorelings`). A Loreling is befriended by observation only. Give it at least two sightings (`sightings`, each with a `place` and what the player sees), pattern questions (`questions`) and an `offer` (where to wait). Every wrong option in a question must name the sighting that shows it is wrong (`contradicts`), so careful watching always finds the pattern; the validator checks this. Design the sightings so that one feature is present often but is not the cause (a confound), and one sighting breaks it (a counterexample). Put the sightings on a map as interactables of kind `loreling` with `loreling` and `sighting`, and hide them with `visibleIf` when the Loreling is a friend. Forms grow from completed steps whose `weave.concepts` include the Loreling's concept (`src/domain/lorelings.ts`). Lorelings never fight, never get hurt and are fictional; real animals stay real.
 
-## Add a puzzle: timeline door or balance bench
+## Add a puzzle: timeline door, balance bench or restorer's trestle
 
 Puzzles are in `src/content/puzzles.json`. An `order` puzzle can be a knowledge-gated door: give it `needs` (`item` and a `sealed` text shown without the tool) and `words` (the feedback words: `stops`, `sags`, `done`, `notPart`). Put only one kind of date on one timeline, and give every distractor a `why`. A `balance` puzzle has `rounds`, each with a `load` (`label`, `mass`) and `weights`. Mark a weight `untrusted` (with the reason) when it belongs to the thing under test; it never counts, even when the pans balance. The validator checks that the trusted weights can balance every load. To swap a map object's art when it opens, give it `artOpen: { key, if }`.
+
+A `restore` puzzle has `layers` (top first: `id`, `name`, `colour`, `text`), a `face` (how the object looks now: `bg`, `ink`, `lines`, optional `window`) and `methods`. Each method has `keeps` and `loses` (together they name every layer once), `reversible`, a `result`, its own `face`, and `labels` (at least one `honest` and one not, each with a `why`). Every method must be a fair choice: the puzzle checks only that the label says honestly what was kept and lost. Give each method the same reward. To show the chosen method on the map, give the object `artBy: { flag, keys }`.
 
 ## Add a practice clue board
 

@@ -24,7 +24,7 @@ import { OPPONENT, judgeYarn, viewBoard } from '../domain/clueboard';
 import { EMOTES } from '../domain/emotes';
 import { STAGE_LABEL, nextStep, skillStage, type SkillStage } from '../domain/skills';
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
-import type { Pronouns } from '../domain/types';
+import type { PlaqueFace, Pronouns, RestoreLayer } from '../domain/types';
 import { ACTIONS, PRESETS, actionFor, assignKey, mappableKey, type Action } from '../app/keymap';
 import type { GameEvent, SimulationResult } from '../domain/engine';
 import { conceptRings, conceptXP, totalXP } from '../domain/permanent';
@@ -107,6 +107,44 @@ function balanceSvg(load: string, weights: { label: string; mass: number; untrus
     <path d="M224 112 Q260 132 296 112 Z" fill="#c9a24a" stroke="#6b4f19"/><g transform="translate(0,112)">${blocks}</g></g>
 </svg>`;
   return wrap;
+}
+
+const escSvg = (t: string) => t.replace(/[&<>"]/g, (ch) => `&#${ch.charCodeAt(0)};`);
+
+/** The face of a restored object (data-driven: background, ink, lines, optional window). */
+function plaqueSvg(f: PlaqueFace, label: string): HTMLElement {
+  const wrap = h('div', { class: 'plaque-wrap', role: 'img', 'aria-label': `${label}: ${f.lines.join(' ')}${f.window ? `. A small window shows: ${f.window.lines.join(' ')}` : ''}` });
+  const lines = (ls: string[], x: number, y0: number, size: number, ink: string) => ls.map((t, i) =>
+    `<text x="${x}" y="${y0 + i * (size + 6)}" text-anchor="middle" font-size="${size}" font-weight="700" fill="${ink}" letter-spacing="1">${escSvg(t)}</text>`).join('');
+  const w = f.window;
+  wrap.innerHTML = `<svg viewBox="0 0 320 150" width="320" height="150" aria-hidden="true">
+  <rect x="6" y="6" width="308" height="138" rx="10" fill="#3b2a1a"/><rect x="12" y="12" width="296" height="126" rx="7" fill="${f.bg}"/>
+  <circle cx="22" cy="22" r="3" fill="#8a7a5a"/><circle cx="298" cy="22" r="3" fill="#8a7a5a"/><circle cx="22" cy="128" r="3" fill="#8a7a5a"/><circle cx="298" cy="128" r="3" fill="#8a7a5a"/>
+  ${lines(f.lines, 160, f.lines.length > 2 ? 46 : 64, f.lines.length > 2 ? 15 : 20, f.ink)}
+  ${w ? `<rect x="24" y="96" width="96" height="36" rx="3" fill="${w.bg}" stroke="#f3eee0" stroke-dasharray="3 2"/>${lines(w.lines, 72, 110, 9, w.ink)}` : ''}
+</svg>`;
+  return wrap;
+}
+
+/** A cross-section of the layers, top first. Unseen layers are hatched; lost layers fade. */
+function layerStackSvg(layers: RestoreLayer[], seen: number, lost: string[]): HTMLElement {
+  const wrap = h('div', { class: 'stack-wrap', 'aria-hidden': 'true' });
+  const bh = 22;
+  const rows = layers.map((l, i) => {
+    const y = 8 + i * (bh + 4);
+    if (i >= seen) return `<rect x="8" y="${y}" width="304" height="${bh}" rx="4" fill="url(#hatch)" stroke="#6a5a48"/><text x="20" y="${y + 15}" font-size="11" fill="#cfc4b0">? Not seen yet</text>`;
+    const gone = lost.includes(l.id);
+    return `<rect x="8" y="${y}" width="304" height="${bh}" rx="4" fill="${l.colour}" opacity="${gone ? 0.25 : 1}" stroke="${gone ? '#d9534a' : '#2a2018'}" ${gone ? 'stroke-dasharray="5 3"' : ''}/>
+      <text x="20" y="${y + 15}" font-size="11" font-weight="700" fill="${gone ? '#d9534a' : lightInk(l.colour)}">${i + 1}. ${escSvg(l.name)}${gone ? ' (lost)' : ''}</text>`;
+  }).join('');
+  const hgt = 16 + layers.length * (bh + 4);
+  wrap.innerHTML = `<svg viewBox="0 0 320 ${hgt}" width="320" height="${hgt}"><defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#3a3028"/><line x1="0" y1="0" x2="0" y2="8" stroke="#5a4a3a" stroke-width="3"/></pattern></defs>${rows}</svg>`;
+  return wrap;
+}
+function lightInk(hex: string): string {
+  const n = parseInt(hex.slice(1), 16);
+  const lum = 0.2126 * ((n >> 16) & 255) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255);
+  return lum > 140 ? '#1d1610' : '#f6efe2';
 }
 
 export class UI implements UIApi {
@@ -960,6 +998,7 @@ export class UI implements UIApi {
     let gapAt: number | null = null;
     let pan: string[] = [];
     let panRound = -1;
+    let pickMethod: string | null = null;
     // A fixed shuffle (not random), so the tiles never sit in the answer order.
     const pool = rec.type === 'order' ? [...rec.tiles].sort((a, b) => (a.id.length * 7 + a.text.length) % 5 - (b.id.length * 7 + b.text.length) % 5 || a.text.localeCompare(b.text)) : [];
     const take = (ev: GameEvent[]) => {
@@ -1004,6 +1043,52 @@ export class UI implements UIApi {
               h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleWeigh', puzzle: rec.id, round: n, weights: [...pan] })) }, 'Record this weighing'),
               h('button', { onclick: () => { pan = []; feedback = null; render(); } }, 'Clear the pan')));
         } else if (done) box.append(h('p', { class: 'fair' }, 'Every weighing is in the record book.'));
+      } else if (rec.type === 'restore') {
+        const seen = Number(c.state.flags[`${F}.peeled`] ?? 0);
+        const cur = c.state.flags[`${F}.method`];
+        const curM = typeof cur === 'string' ? rec.methods.find((m) => m.id === cur) : undefined;
+        if (!pickMethod && curM) pickMethod = curM.id;
+        const pm = rec.methods.find((m) => m.id === pickMethod);
+        const showFace = done && curM ? curM.face : pm && seen >= rec.layers.length ? pm.face : rec.face;
+        box.append(h('div', { class: 'restore-top' },
+          h('div', {}, h('p', { class: 'fine' }, done && curM ? `Now: ${curM.label}` : pm ? `Preview: ${pm.label}` : rec.object), plaqueSvg(showFace, rec.object)),
+          h('div', {}, h('p', { class: 'fine' }, `Layers seen: ${Math.min(seen, rec.layers.length)} of ${rec.layers.length}`), layerStackSvg(rec.layers, seen, (done && curM ? curM : pm)?.loses ?? []))));
+        if (seen < rec.layers.length) {
+          box.append(h('h3', {}, 'Step 1. Look under each layer'),
+            h('ul', { class: 'layer-notes' }, ...rec.layers.slice(0, seen).map((l) => h('li', {}, h('strong', {}, l.name), ` ${l.text}`))),
+            h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => take(c.dispatch({ type: 'PuzzlePeel', puzzle: rec.id })) },
+              seen === 0 ? 'Swab a small test patch' : 'Swab one layer deeper')));
+        } else {
+          box.append(h('details', { class: 'layer-notes-box' }, h('summary', {}, 'Your notes on each layer'),
+            h('ul', { class: 'layer-notes' }, ...rec.layers.map((l) => h('li', {}, h('strong', {}, l.name), ` ${l.text}`)))));
+          const name = (id: string) => rec.layers.find((l) => l.id === id)?.name ?? id;
+          box.append(h('h3', {}, done ? 'Change the method?' : 'Step 2. Choose how to restore it'),
+            h('p', { class: 'fine' }, 'Each method is allowed. Each keeps some layers and loses others. Think about the next person who looks at this plaque.'),
+            h('div', { class: 'method-grid' }, ...rec.methods.map((m) => {
+              const locked = !!curM && !curM.reversible && curM.id !== m.id;
+              return h('button', { type: 'button', class: `method-card ${pickMethod === m.id ? 'picked' : ''}`, disabled: locked, 'aria-pressed': String(pickMethod === m.id),
+                onclick: () => { pickMethod = m.id; feedback = null; this.sfx('sfx.click'); render(); } },
+                h('strong', {}, m.label), h('span', {}, m.does),
+                h('span', { class: 'keeps' }, `Keeps: ${m.keeps.map(name).join(', ') || 'nothing'}`),
+                h('span', { class: 'loses' }, `Loses: ${m.loses.map(name).join(', ') || 'nothing'}`),
+                h('span', { class: `rev ${m.reversible ? 'yes' : 'no'}` }, m.reversible ? '↺ Can be undone later' : '✕ Cannot be undone'),
+                locked ? h('span', { class: 'fine' }, `Locked: ${curM!.label.toLowerCase()} cannot be undone.`) : '');
+            })));
+          if (pm && !(curM && curM.id === pm.id && done)) {
+            box.append(h('h3', {}, 'Step 3. Choose the label for the gate'),
+              h('p', { class: 'fine' }, 'Visitors will read this label. It must say what you kept and what you changed.'),
+              h('div', { class: 'options notice-options' }, ...pm.labels.map((l, i) => h('button', { type: 'button',
+                onclick: () => { const ev = c.dispatch({ type: 'PuzzleRestore', puzzle: rec.id, method: pm.id, label: i }); take(ev); if (c.state.flags[`${F}.method`] === pm.id) this.sfx('sfx.complete'); } },
+                h('span', { class: 'notice-text' }, l.text)))));
+          } else if (done && curM) {
+            const lab = curM.labels[Number(c.state.flags[`${F}.label`] ?? 0)];
+            box.append(h('p', { class: 'fair' }, `The plaque is back on the gate. Its label says: "${lab?.text ?? ''}"`));
+          }
+        }
+        if (feedback) {
+          const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
+          box.append(fb); requestAnimationFrame(() => fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+        }
       } else {
         const tile = (id: string) => rec.tiles.find((t) => t.id === id)!;
         box.append(h('div', { class: 'bridge', role: 'list', 'aria-label': 'Your citation, in order' },

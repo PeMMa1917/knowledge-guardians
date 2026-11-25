@@ -219,6 +219,59 @@
     "eq": true
    },
    "line": "Your Glimmermoth landed on my ledger. It went straight to the page I touch most."
+  },
+  {
+   "id": "plaque.strip",
+   "character": "keeper-oduya",
+   "if": {
+    "flag": "puzzle.founders-plaque.method",
+    "eq": "strip"
+   },
+   "line": "The bare carving is beautiful. I do miss the gold, a little. Nobody now living painted it, and nobody can paint it back."
+  },
+  {
+   "id": "plaque.clean",
+   "character": "keeper-oduya",
+   "if": {
+    "flag": "puzzle.founders-plaque.method",
+    "eq": "clean"
+   },
+   "line": "The gold is bright again, and the carving waits under it. A restorer in fifty years can still choose differently."
+  },
+  {
+   "id": "plaque.window",
+   "character": "keeper-oduya",
+   "if": {
+    "flag": "puzzle.founders-plaque.method",
+    "eq": "window"
+   },
+   "line": "Every child who reads the gate now asks: why do the two plaques say different things? That is the best question in Emberford."
+  },
+  {
+   "id": "plaque.repaint",
+   "character": "keeper-oduya",
+   "if": {
+    "flag": "puzzle.founders-plaque.method",
+    "eq": "repaint"
+   },
+   "line": "The plaque looks new. Your label is the only thing that remembers what is under the paint. I keep a copy in the ledger."
+  },
+  {
+   "id": "plaque.fruit",
+   "character": "fruit-seller",
+   "if": {
+    "flag": "puzzle.founders-plaque.method",
+    "eq": "window"
+   },
+   "line": "Ysolde! My grandmother had an aunt called Ysolde. No, I cannot prove it is the same one. But I like the name on the gate."
+  },
+  {
+   "id": "plaque.scholar",
+   "character": "scholar-sefa",
+   "if": {
+    "flagSet": "puzzle.founders-plaque.method"
+   },
+   "line": "I read your label on the gate. 'Which words belong to which time': I will use that in my own catalogue."
   }
  ]
 }

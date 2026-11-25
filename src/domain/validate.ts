@@ -171,6 +171,17 @@ export function validateContent(pack: ContentPack): string[] {
   (pack.puzzles ?? []).forEach((z) => {
     dup('puzzle', z.id); text(`puzzle ${z.id}`, z.intro); weave(z.weave, `puzzle ${z.id}`, true); eff(z.onComplete, `puzzle ${z.id}`);
     if (z.type === 'rounds') z.rounds.forEach((r, i) => { if (r.options.filter((o) => o.ok).length !== 1) p.push(`puzzle ${z.id} round ${i + 1}: needs exactly one correct option`); });
+    else if (z.type === 'restore') {
+      const ids = z.layers.map((l) => l.id);
+      if (ids.length < 2 || new Set(ids).size !== ids.length) p.push(`puzzle ${z.id}: needs two or more layers with unique ids`);
+      if (z.methods.length < 2) p.push(`puzzle ${z.id}: needs two or more methods`);
+      z.methods.forEach((m) => {
+        const all = [...m.keeps, ...m.loses];
+        if (all.length !== ids.length || new Set(all).size !== all.length || !all.every((x) => ids.includes(x))) p.push(`puzzle ${z.id} method ${m.id}: keeps and loses must name every layer once`);
+        if (!m.labels.some((l) => l.honest) || !m.labels.some((l) => !l.honest)) p.push(`puzzle ${z.id} method ${m.id}: needs an honest label and a label that is not`);
+        m.labels.forEach((l, i) => { if (!l.why.trim()) p.push(`puzzle ${z.id} method ${m.id} label ${i + 1}: needs a reason`); });
+      });
+    }
     else if (z.type === 'balance') z.rounds.forEach((r, i) => {
       // Every round must balance with the trusted weights alone.
       const ws = r.weights.filter((w) => !w.untrusted).map((w) => w.mass);

@@ -27,6 +27,8 @@ export interface Interactable {
   art?: string;
   /** Different art once a condition holds (for example an opened door). */
   artOpen?: { key: string; if: import('../domain/types').Condition };
+  /** Picture chosen by a string flag's value (e.g. the restoration method); `art` when unset. */
+  artBy?: { flag: string; keys: Record<string, string> };
   visibleIf?: import('../domain/types').Condition;
 }
 

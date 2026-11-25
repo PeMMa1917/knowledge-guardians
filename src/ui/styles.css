@@ -406,6 +406,21 @@ body.photo-mode #captions { display: none !important; }
 .balance-wrap .pan { transition: transform 0.6s cubic-bezier(.3,1.6,.5,1); }
 button.weight { border-color: #c9a24a; }
 button.weight.untrusted { border-style: dashed; border-color: #8b8f99; }
+/* The restorer's trestle */
+.restore-top { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: flex-start; }
+.restore-top > div { flex: 1 1 300px; max-width: 340px; }
+.plaque-wrap svg, .stack-wrap svg { max-width: 100%; height: auto; display: block; }
+.stack-wrap svg rect { transition: opacity 0.5s, fill 0.5s; }
+.layer-notes { margin: 6px 0; padding-left: 18px; }
+.layer-notes li { margin: 4px 0; }
+.method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 8px; margin: 6px 0 10px; }
+.method-card { display: flex; flex-direction: column; gap: 4px; text-align: left; padding: 10px; }
+.method-card.picked { outline: 3px solid var(--accent, #e9c45a); outline-offset: 1px; }
+.method-card .keeps { color: #7cc4ff; }
+.method-card .keeps::before { content: '✓ '; }
+.method-card .loses { color: #ffb066; }
+.method-card .loses::before { content: '− '; }
+.method-card .rev { font-size: 0.85em; opacity: 0.9; }
 @media (prefers-reduced-motion: reduce) { .balance-wrap .beam, .balance-wrap .pan { transition: none; } }
 
 /* Practice clue board (spec 47): cork, pinned notes, yarn */

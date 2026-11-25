@@ -8,6 +8,9 @@
  *  - "balance": a balance bench. Weights go on the right pan until it balances the load.
  *    A weight that belongs to the thing under test is not a fair check (objectivity
  *    as a shared, independent standard).
+ *  - "restore": a restorer's trestle. Look under each layer, choose a method (every
+ *    method is allowed, each keeps and loses different layers), then write a label.
+ *    Only the label is checked: it must say honestly what was kept and what was lost.
  * Grammar and citation have conventions, so these puzzles do have right answers.
  * They are never about contested knowledge. Pure rules, no DOM.
  */
@@ -72,4 +75,31 @@ export function weighRound(p: PuzzleRecord, solvedRounds: number, round: number,
   if (tilt < 0) return { ok: false, solved: false, tilt, text: `${r.load.label} is heavier. Add weight.` };
   if (tilt > 0) return { ok: false, solved: false, tilt, text: 'The weights are heavier. Take some off.' };
   return { ok: true, solved: round === p.rounds.length - 1, tilt, text: r.success };
+}
+
+export type PeelResult = RoundResult & { layer: number };
+
+/** Look under the next layer with the test swab. `peeled` is how many layers are already seen. */
+export function peelLayer(p: PuzzleRecord, peeled: number): PeelResult {
+  if (p.type !== 'restore') throw new Error('Not a restoration puzzle');
+  if (peeled >= p.layers.length) throw new Error('You have seen every layer');
+  const l = p.layers[peeled];
+  return { ok: true, solved: false, layer: peeled, text: `${l.name}. ${l.text}` };
+}
+
+/**
+ * Choose a method and a label. `current` is the method already done (or null).
+ * An irreversible method cannot be changed later; a reversible one can.
+ */
+export function restoreWith(p: PuzzleRecord, peeled: number, current: string | null, method: string, label: number): RoundResult {
+  if (p.type !== 'restore') throw new Error('Not a restoration puzzle');
+  if (peeled < p.layers.length) throw new Error('Look under every layer first');
+  const m = p.methods.find((x) => x.id === method);
+  if (!m) throw new Error('No such method');
+  const cur = current ? p.methods.find((x) => x.id === current) : null;
+  if (cur && !cur.reversible && cur.id !== m.id) throw new Error(`${cur.label} cannot be undone`);
+  const l = m.labels[label];
+  if (!l) throw new Error('No such label');
+  if (!l.honest) return { ok: false, solved: false, text: l.why };
+  return { ok: true, solved: true, text: `${m.result} ${l.why}`.trim() };
 }
