@@ -58,6 +58,11 @@
    "sprite": "warden-ise",
    "mode": "fictional",
    "talk": [
+    {"if": {"flag": "nile.returned", "eq": true}, "node": "nile.nexus-resolved"},
+    {"if": {"flag": "nile.dispatch", "eq": "print"}, "node": "nile.nexus-print"},
+    {"if": {"flag": "nile.dispatch", "eq": "read"}, "node": "nile.nexus-read"},
+    {"if": {"flag": "nile.dispatch", "eq": "pair"}, "node": "nile.nexus-pair"},
+    {"if": {"all": [{"flag": "study.letter", "eq": true}, {"objective": "m02.o8.ise"}, {"not": {"flag": "nile.arrived", "eq": true}}]}, "node": "nile.nexus-start"},
     {
      "if": {
       "flag": "chapter.done",

@@ -1,0 +1,71 @@
+/** WORLD-03: present-day fictional archive rooms. Only their objects are historical. */
+import type { Interactable, MapDef } from './types';
+
+const W = 25, H = 13;
+const room = (id: string, name: string, npcs: MapDef['npcs'], interactables: Interactable[], palette: number, stamps: MapDef['stamps']): MapDef => ({
+  id, name, world: 'WORLD-03', width: W, height: H, music: 'music.archive', ambience: 'study',
+  background: palette,
+  floor: (x, y) => x < 1 || x > W - 2 || y < 0 || y >= H ? null
+    : y < 3 ? ['wall-top', 'wall-mid', 'wall-base'][y] : 'stone-c',
+  stamps,
+  blocks: [[0, 0, 1, H], [W - 1, 0, 1, H], [1, 0, W - 2, 3], [1, H, W - 2, 1]],
+  npcs, interactables,
+  zones: [],
+  lights: [{ x: 6, y: 5, r: 62, color: 0xffd69b }, { x: 18, y: 7, r: 58, color: 0x96d6df }, { x: 12, y: 10, r: 65, color: 0xffc37a }],
+  spawn: { x: 12, y: 10 },
+});
+const door = (id: string, x: number, y: number, label: string, map: string, tx: number, ty: number): Interactable => ({
+  id, kind: 'door', x, y, w: 1, h: 1, label, art: 'nile.door', to: { map, x: tx, y: ty },
+});
+const exhibit = (id: string, x: number, y: number, label: string, art: string): Interactable => ({
+  id: 'nile-case-' + id.toLowerCase(), kind: 'exhibit', exhibit: 'OBJ-NILE-' + id, x, y, w: 1, h: 1, label, art: 'nile.' + art,
+});
+
+export const NILE_HALL = room('nile.hall', 'Nile Archive: The Door Without a Name',
+  [{ id: 'nile-iman', x: 12, y: 6, facing: 'down' }],
+  [
+    door('nile-royal', 12, 3, 'the Royal Records Room (north)', 'nile.royal', 12, 10),
+    door('nile-workers', 2, 6, 'the Workmen’s Room (west)', 'nile.workyard', 12, 10),
+    door('nile-maps', 22, 6, 'the Map Room (east)', 'nile.route', 12, 10),
+    door('nile-nexus', 12, 12, 'the door back to the Nexus', 'nexus.archive', 37, 4),
+    { id: 'nile-tag', kind: 'clue', clue: 'nile-blank-tag', x: 8, y: 5, w: 1, h: 1, label: 'Elsbet’s unnamed tag', art: 'nile.slip' },
+    { id: 'nile-carrier-copy', kind: 'clue', clue: 'nile-packet-copy', x: 15, y: 5, w: 1, h: 1, label: 'the spare carrier tag', art: 'nile.slip', visibleIf: { flag: 'nile.returned', eq: true } },
+    { id: 'nile-rest', kind: 'waystone', x: 7, y: 10, w: 1, h: 1, label: 'the archive Waystone', art: 'waystone', place: 'the Nile Archive' },
+    { id: 'nile-entry-notice', kind: 'sign', x: 15, y: 9, w: 1, h: 1, label: 'Elsbet’s sign beside the threshold', art: 'nile.scroll',
+      text: 'NILE ARCHIVE. These are Guardian rooms, not ancient places. Examine the real records in their cases. The people you meet here are our keepers.' },
+  ], 0x132535,
+  [{ stamp: 'bookshelf', x: 4, y: 2 }, { stamp: 'bookshelf', x: 18, y: 2 }, { stamp: 'rug-green', x: 11, y: 8 }, { stamp: 'plant-tall', x: 3, y: 10 }, { stamp: 'plant-tall', x: 21, y: 10 }]);
+
+export const NILE_ROYAL = room('nile.royal', 'Nile Archive: Royal Records Room',
+  [{ id: 'nile-nasir', x: 12, y: 7, facing: 'down' }],
+  [
+    door('royal-back', 12, 12, 'the passage back to Imani', 'nile.hall', 12, 4),
+    exhibit('SALLIER', 6, 5, 'Papyrus Sallier III', 'scroll'),
+    exhibit('TREATY', 18, 5, 'the peace treaty and its replica', 'tablet'),
+    { id: 'nile-label', kind: 'label', kit: 'nile-qadesh', x: 12, y: 5, w: 1, h: 1, label: 'the Qadesh label stand', art: 'label-stand' },
+  ], 0x312432,
+  [{ stamp: 'banners', x: 5, y: 2 }, { stamp: 'banners', x: 17, y: 2 }, { stamp: 'rug-green', x: 11, y: 8 }, { stamp: 'bench', x: 2, y: 9 }, { stamp: 'bench', x: 19, y: 9 }]);
+
+export const NILE_WORKYARD = room('nile.workyard', 'Nile Archive: Workmen’s Room',
+  [{ id: 'nile-leila', x: 20, y: 9, facing: 'left' }],
+  [
+    door('workyard-back', 12, 12, 'the passage back to Imani', 'nile.hall', 3, 6),
+    exhibit('STRIKE', 5, 4, 'the Turin Strike Papyrus', 'scroll'),
+    ...([[3, 'delay', 'the first stoppage'], [12, 'payment', 'a payment of grain'], [19, 'return', 'the second stoppage']] as const)
+      .map(([x, node, label]) => ({ id: 'nile-thread-' + node, kind: 'thread' as const, thread: 'nile-strike', node, x, y: 7, w: 1, h: 1, label, art: 'nile.slip' })),
+    { id: 'nile-workymemory', kind: 'sign', x: 20, y: 5, w: 1, h: 1, label: 'Leila’s archive slip', art: 'nile.slip',
+      text: 'Amunnakht’s account names demands and replies. I can give the page a heading. I can’t give it all the voices it never recorded. —Leila' },
+  ], 0x323124,
+  [{ stamp: 'crates', x: 2, y: 4 }, { stamp: 'barrel', x: 7, y: 5 }, { stamp: 'long-table', x: 10, y: 3 }, { stamp: 'bookshelf', x: 18, y: 2 }]);
+
+export const NILE_ROUTE = room('nile.route', 'Nile Archive: Map Room',
+  [{ id: 'nile-marek', x: 16, y: 7, facing: 'left' }],
+  [
+    door('route-back', 12, 12, 'the passage back to Imani', 'nile.hall', 21, 6),
+    exhibit('MINE', 6, 5, 'the Turin Mine Map', 'map'),
+    { id: 'nile-route-model', kind: 'model', x: 12, y: 6, w: 1, h: 1, label: 'the shelf-top route model', art: 'nile.map' },
+    { id: 'nile-route-margins', kind: 'clue', clue: 'nile-route-margins', x: 5, y: 7, w: 1, h: 1, label: 'the empty margin of the map case', art: 'nile.slip' },
+    { id: 'nile-route-legend', kind: 'sign', x: 5, y: 9, w: 1, h: 1, label: 'a note pinned to the map case', art: 'nile.slip',
+      text: 'A road line can show that the maker marked a route. It cannot say how our cart will fare. Leave a space between the two claims.' },
+  ], 0x2b3039,
+  [{ stamp: 'bookshelf', x: 4, y: 2 }, { stamp: 'crates', x: 19, y: 6 }, { stamp: 'bench', x: 12, y: 4 }, { stamp: 'plant-tall', x: 19, y: 9 }]);

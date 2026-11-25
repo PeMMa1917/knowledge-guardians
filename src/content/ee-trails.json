@@ -1686,7 +1686,10 @@
    "id": "oduya.busy",
    "speaker": "keeper-oduya",
    "text": "I keep the town's records: the ledger, the old lists, the songs that Sefa writes down. Come back when you have followed something through the records. Then we can talk about who writes them.",
-   "claimKind": "observation"
+   "claimKind": "observation",
+   "options": [
+    {"text": "I brought a way to carry corrections from Elsbet’s archive.", "if": {"all": [{"flag": "nile.returned", "eq": true}, {"not": {"flagSet": "nile.emberCorrection"}}]}, "next": "nile.ember", "tag": "Ask for a source"}
+   ]
   },
   {
    "id": "oduya.start",
@@ -1712,7 +1715,8 @@
     {
      "text": "Later.",
      "next": null
-    }
+    },
+    {"text": "I brought a way to carry corrections from Elsbet’s archive.", "if": {"all": [{"flag": "nile.returned", "eq": true}, {"not": {"flagSet": "nile.emberCorrection"}}]}, "next": "nile.ember", "tag": "Ask for a source"}
    ]
   },
   {
@@ -1752,7 +1756,8 @@
     {
      "text": "Later.",
      "next": null
-    }
+    },
+    {"text": "I brought a way to carry corrections from Elsbet’s archive.", "if": {"all": [{"flag": "nile.returned", "eq": true}, {"not": {"flagSet": "nile.emberCorrection"}}]}, "next": "nile.ember", "tag": "Ask for a source"}
    ]
   },
   {
@@ -1877,7 +1882,8 @@
     {
      "text": "I'll think about it.",
      "next": null
-    }
+    },
+    {"text": "I brought a way to carry corrections from Elsbet’s archive.", "if": {"all": [{"flag": "nile.returned", "eq": true}, {"not": {"flagSet": "nile.emberCorrection"}}]}, "next": "nile.ember", "tag": "Ask for a source"}
    ]
   },
   {
@@ -1931,7 +1937,10 @@
    "id": "oduya.weigh",
    "speaker": "keeper-oduya",
    "text": "Two records, two kinds of author. Follow your thread to the guild ledger, and ask Sefa what the song knows that the ledger does not.",
-   "claimKind": "observation"
+   "claimKind": "observation",
+   "options": [
+    {"text": "I brought a way to carry corrections from Elsbet’s archive.", "if": {"all": [{"flag": "nile.returned", "eq": true}, {"not": {"flagSet": "nile.emberCorrection"}}]}, "next": "nile.ember", "tag": "Ask for a source"}
+   ]
   },
   {
    "id": "oduya.argue",
@@ -1947,7 +1956,8 @@
     {
      "text": "Later.",
      "next": null
-    }
+    },
+    {"text": "I brought a way to carry corrections from Elsbet’s archive.", "if": {"all": [{"flag": "nile.returned", "eq": true}, {"not": {"flagSet": "nile.emberCorrection"}}]}, "next": "nile.ember", "tag": "Ask for a source"}
    ]
   },
   {
@@ -1973,7 +1983,8 @@
     {
      "text": "I remember it from class.",
      "next": "oduya.cite.memory"
-    }
+    },
+    {"text": "I brought a way to carry corrections from Elsbet’s archive.", "if": {"all": [{"flag": "nile.returned", "eq": true}, {"not": {"flagSet": "nile.emberCorrection"}}]}, "next": "nile.ember", "tag": "Ask for a source"}
    ]
   },
   {
@@ -2117,7 +2128,8 @@
       "gte": 3
      },
      "next": "oduya.draft.done"
-    }
+    },
+    {"text": "I brought a way to carry corrections from Elsbet’s archive.", "if": {"all": [{"flag": "nile.returned", "eq": true}, {"not": {"flagSet": "nile.emberCorrection"}}]}, "next": "nile.ember", "tag": "Ask for a source"}
    ]
   },
   {
@@ -2205,7 +2217,8 @@
       }
      ],
      "next": "oduya.reflect.end"
-    }
+    },
+    {"text": "I brought a way to carry corrections from Elsbet’s archive.", "if": {"all": [{"flag": "nile.returned", "eq": true}, {"not": {"flagSet": "nile.emberCorrection"}}]}, "next": "nile.ember", "tag": "Ask for a source"}
    ]
   },
   {
@@ -2228,7 +2241,8 @@
     {
      "text": "Goodbye.",
      "next": null
-    }
+    },
+    {"text": "I brought a way to carry corrections from Elsbet’s archive.", "if": {"all": [{"flag": "nile.returned", "eq": true}, {"not": {"flagSet": "nile.emberCorrection"}}]}, "next": "nile.ember", "tag": "Ask for a source"}
    ]
   },
   {

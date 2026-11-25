@@ -80,3 +80,16 @@ The game does not show museum photographs. Exhibits are original pixel art drawn
 ## Checking sources
 
 Links can change. When you work on a mission, open each of its source links. If a link is dead, find the current record and update `url` and `accessed`. Do not change the claim to fit a new source without checking it.
+
+## Chapter 2: Nile Archive and Nexus return table
+
+| Record | Source | Use and limit |
+|---|---|---|
+| Papyrus Sallier III, EA10181,1 | [British Museum: Looking for the Trojan War, item 6](https://www.britishmuseum.org/sites/default/files/2019-12/Large%20print%20guide_Troy.pdf); [Hieroglyphs exhibition guide](https://www.britishmuseum.org/sites/default/files/2022-10/Hieroglyphs_unlocking_ancient_Egypt_large_print_guide_The_British_Museum_2.pdf) | An Egyptian account centred on Ramesses II. The battle, the telling and the later treaty are separate evidence. |
+| Qadesh treaty display | [United Nations Gifts: UNNY067G](https://www.un.org/ungifts/node/615) | The UN holds a modern replica of the cuneiform record. The terms name Hattusili III and Ramesses II; they do not decide who won the earlier battle. |
+| Turin Strike Papyrus, Cat. 1880 | [Museo Egizio catalogue](https://collezionepapiri.museoegizio.it/en-GB/document/131/) and [dated entries](https://collezionepapiri.museoegizio.it/en-GB/section/Papyrus-Collection/History-and-content/Highlights-Turin-Strike-Papyrus/) | Amunnakht records work stoppages and grain payments under Ramesses III, a different ruler from Ramesses II. The text is one record, not independent testimony from everyone in Deir el-Medina. |
+| Turin Mine Map | [Museo Egizio catalogue](https://collezionepapiri.museoegizio.it/en-gb/document/9/) | Roads and types of rock in Wadi Hammamat are marked; the in-game cart timings are invented and labelled as a model. |
+| Singapore Stone | [Yap, Jiao and Perono Cacciafoco: fragment history](https://www.mdpi.com/2409-9252/3/3/19); [Lee and Perono Cacciafoco: possible Kawi connection](https://www.mdpi.com/2409-9252/3/3/18) | The surviving fragment and its documented movements do not provide an agreed reading or precise date for the original carving. |
+| Badang account and later identification | [William L. Gibson, National Library Board Singapore](https://biblioasia.nlb.gov.sg/all-sections/vol-21-issue-1-apr-jun-2025-origins-badang-strongman-singapore-stone/) | The story places a thrown rock at the river mouth. The episode has no inscription; Begbie's later identification is a distinct claim. |
+
+The artwork is original, schematic and labelled as such. No photographs, manuscript images, or translations are reproduced.

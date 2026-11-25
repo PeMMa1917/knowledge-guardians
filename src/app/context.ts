@@ -28,6 +28,7 @@ export interface UIApi {
   openTrader(): void;
   openSeal(seal: string): void;
   openBoss(): void;
+  openNileModel(): void;
   openTalents(atWaystone?: boolean): void;
   openLedger(): void;
   openClue(id: string): void;

@@ -1,3 +1,4 @@
+import { runNileTrial, nileDelivery, type NileRoad, type NileDelivery } from './nileModel';
 /**
  * Domain engine. Scenes send typed commands; the engine checks preconditions,
  * computes ONE valid state transition and returns events for the view to show
@@ -91,6 +92,8 @@ export type Command =
   | { type: 'InspectExhibit'; exhibit: string }
   | { type: 'UseLens'; exhibit: string }
   | { type: 'RunSimulation'; pen: string; surface: string }
+  | { type: 'NileRouteTrial'; road: NileRoad }
+  | { type: 'NileDelivery'; choice: NileDelivery }
   | { type: 'BuildLabel'; kit: string; subject: string; criterion: string; limit: string }
   | { type: 'TurnLock'; lock: string; choice: Record<string, string> }
   | { type: 'ShowdownStart'; showdown: string; relaxed?: boolean }
@@ -546,6 +549,25 @@ export class Engine {
           if (prevPen !== undefined && changed === 2) fx.push({ addNum: 'sim.unfair', by: 1 });
           s = apply(fx, s, out);
           events.push({ kind: 'simulation', result: { pen: cmd.pen, surface: cmd.surface, markQuality: m.q, note: m.note, fairTest: fair, testCount: count } });
+          break;
+        }
+        case 'NileRouteTrial': {
+          if (s.mapId !== 'nile.route' || !s.cards.includes('card.nile.mine')) throw new Error('Read the Mine Map before using the table.');
+          const r = runNileTrial(cmd.road);
+          const key = `nile.trial.${r.route}`;
+          if (!s.flags[key]) {
+            const both = s.flags[r.route === 'wash' ? 'nile.trial.ridge' : 'nile.trial.wash'];
+            s = apply([{ setFlag: key, value: true }, ...(both ? [{ addCard: 'card.nile.model' } as Effect] : [])], s, out);
+          }
+          break;
+        }
+        case 'NileDelivery': {
+          if (s.mapId !== 'nile.route' || !s.cards.includes('card.nile.model')) throw new Error('Try both roads with the same load first.');
+          if (s.flags['nile.routeLead']) throw new Error('Your delivery tag is already on the hook.');
+          const r = nileDelivery(cmd.choice);
+          s = apply([{ setFlag: 'nile.routeLead', value: cmd.choice }], s, out);
+          portfolio.push({ kind: 'reflection', title: 'A Map Is Not a Road', text: r.line,
+            weave: { concepts: ['objectivity', 'certainty'], atl: ['thinking', 'research'], aoks: ['HIS', 'NAT'], subjects: ['geography', 'history'] } });
           break;
         }
         case 'BuildLabel': {

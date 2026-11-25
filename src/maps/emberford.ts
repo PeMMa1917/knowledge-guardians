@@ -101,6 +101,11 @@ export const EMBERFORD: MapDef = {
     { id: 'singer-teodora', x: 16, y: 15, facing: 'down', visibleIf: { origin: 'singer' } },
   ],
   interactables: [
+    { id: 'nile-correction-square', kind: 'sign', x: 16, y: 6, w: 1, h: 1, walkThrough: true, label: 'Oduya’s dated correction', art: 'nile.slip',
+      text: 'The old claim stays beside the correction. A visitor can read both and see what changed.', visibleIf: { flag: 'nile.emberCorrection', eq: 'square' } },
+    { id: 'nile-correction-talk', kind: 'sign', x: 16, y: 6, w: 1, h: 1, walkThrough: true, label: 'a copy for the market', art: 'nile.slip',
+      text: 'The market will read the correction aloud. This copy keeps the words available for anyone who misses the reading.', visibleIf: { flag: 'nile.emberCorrection', eq: 'talk' } },
+
     { id: 'ex-blade', kind: 'exhibit', exhibit: 'OBJ-003-AE', x: 24, y: 11, w: 3, h: 1, label: 'the patterned blade', art: 'blade-on-counter' },
     { id: 'ex-ingots', kind: 'exhibit', exhibit: 'OBJ-002', x: 23, y: 15, w: 3, h: 2, label: "Sefa's catalogue (Met record)", art: 'catalogue' },
     { id: 'ex-assay', kind: 'assay', exhibit: 'AE-ASSAY', x: 30, y: 15, w: 2, h: 2, label: 'the assay table', art: 'assay' },

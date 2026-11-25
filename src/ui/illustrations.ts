@@ -549,6 +549,14 @@ DRAW['clue.bucket'] = [16, 24, (g) => { R(g, '#6b4a2a', 3, 12, 10, 11); R(g, '#8
 DRAW['clue.corner'] = [16, 24, (g) => { R(g, '#0f0c0a', 0, 6, 16, 18); R(g, '#1d1612', 2, 10, 12, 12); R(g, '#2a2440', 9, 16, 3, 2); }];
 DRAW['clue.letter'] = [16, 24, (g) => { R(g, '#8b8f99', 2, 16, 12, 6); paper(g, 4, 10, 8, 7); R(g, '#c0392b', 7, 13, 2, 2); R(g, '#8a7f66', 5, 11, 5, 1); R(g, '#ffd25a', 3, 9, 1, 1); R(g, '#ffd25a', 12, 9, 1, 1); }];
 
+// Archive icons. These are stylised props; the evidence panels identify them as illustrations.
+DRAW['nile.door'] = [16, 24, (g) => { R(g, '#302849', 0, 3, 16, 21); R(g, '#ad8353', 1, 2, 14, 2); R(g, '#d6be7c', 1, 5, 2, 18); R(g, '#d6be7c', 13, 5, 2, 18); R(g, '#486479', 4, 6, 8, 15); R(g, '#a8e2cc', 7, 12, 2, 8); }];
+DRAW['nile.scroll'] = [16, 24, (g) => { smallTable(g); paper(g, 2, 3, 12, 10); R(g, '#70472e', 1, 2, 2, 12); R(g, '#70472e', 13, 2, 2, 12); for (let y = 5; y <= 10; y += 2) R(g, '#76543b', 5, y, 6, 1); }];
+DRAW['nile.tablet'] = [16, 24, (g) => { smallTable(g); R(g, '#8c5543', 2, 2, 10, 12); R(g, '#c48359', 3, 3, 8, 10); for (let y = 5; y <= 10; y += 2) R(g, '#6a4435', 4, y, 5, 1); R(g, '#d4ab74', 11, 8, 4, 6); }];
+DRAW['nile.map'] = [16, 24, (g) => { smallTable(g); paper(g, 1, 3, 14, 12); R(g, '#b16867', 3, 5, 4, 4); R(g, '#835b4a', 10, 6, 3, 6); R(g, '#415558', 5, 9, 5, 1); R(g, '#415558', 7, 10, 1, 3); }];
+DRAW['nile.slip'] = [16, 24, (g) => { R(g, '#664932', 4, 6, 8, 14); paper(g, 2, 3, 12, 8); R(g, '#8a5343', 5, 6, 6, 1); R(g, '#8a5343', 5, 8, 4, 1); }];
+
+DRAW['nile.stone'] = [16, 24, (g) => { smallTable(g); R(g, '#644d4d', 2, 7, 12, 9); R(g, '#9c7970', 3, 5, 9, 8); R(g, '#c5a79a', 4, 5, 6, 2); R(g, '#745654', 5, 8, 4, 1); R(g, '#745654', 6, 10, 5, 1); }];
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {
@@ -580,6 +588,7 @@ export function glowCanvas(size = 128): HTMLCanvasElement {
 
 /** Map exhibit art keys (small) to large inspection pictures. */
 export const BIG_ART: Record<string, string> = {
+  'nile.scroll': 'nile.scroll', 'nile.tablet': 'nile.tablet', 'nile.map': 'nile.map', 'nile.stone': 'nile.stone',
   'exhibit.patent': 'big.patent', 'exhibit.model': 'big.model', 'exhibit.biro': 'big.biro',
   'exhibit.blade': 'big.blade', 'exhibit.ingots': 'big.ingots', 'exhibit.assay': 'big.assay',
   'plaque.earth': 'big.earth', 'plaque.optics': 'big.optics', 'plaque.type': 'big.type', 'plaque.peak': 'big.peak',
