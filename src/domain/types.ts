@@ -450,6 +450,20 @@ export interface AlcoveRecord {
   weave: Weave;
 }
 
+/** A word puzzle (Sign-Smith lock or Citation Thread bridge; see puzzles.ts). */
+export type PuzzleRecord = {
+  id: string;
+  title: string;
+  intro: string;
+  /** Skill ids from the private skills inventory (paraphrased, e.g. "SK-GRM-05"). */
+  skills: string[];
+  onComplete?: Effect[];
+  weave: Weave;
+} & (
+  | { type: 'rounds'; rounds: { prompt: string; options: { text: string; ok: boolean; result: string }[] }[] }
+  | { type: 'order'; tiles: { id: string; text: string; role: string; why?: string }[]; answer: string[]; success: string }
+);
+
 /** Pronouns the player chose (spec 35.1). Characters use them in text through {they}, {them} and {their}. */
 export interface Pronouns { subject: string; object: string; possessive: string }
 
@@ -499,6 +513,7 @@ export interface ContentPack {
   events: EventRecord[];
   origins: OriginRecord[];
   alcoves: AlcoveRecord[];
+  puzzles: PuzzleRecord[];
 }
 
 // ---------------------------------------------------------------------------

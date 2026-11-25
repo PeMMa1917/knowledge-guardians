@@ -1,0 +1,335 @@
+{
+ "puzzles": [
+  {
+   "id": "guild-notice",
+   "type": "rounds",
+   "title": "The Sign-Smith's Notice Board",
+   "intro": "Guildmaster Orrin has three new notices for the market gate. The Sign-Smith's board only lets a notice through if it says exactly what Orrin means. One small mark can change what the whole market does.",
+   "skills": [
+    "SK-GRM-07",
+    "SK-GRM-05",
+    "SK-GRM-13"
+   ],
+   "weave": {
+    "concepts": [
+     "interpretation",
+     "responsibility"
+    ],
+    "atl": [
+     "communication",
+     "thinking"
+    ],
+    "subjects": [
+     "lang-langlit",
+     "lang-b"
+    ],
+    "aoks": [
+     "LAN"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.interpretation.signs"
+    },
+    {
+     "journal": "j.signs.done"
+    }
+   ],
+   "rounds": [
+    {
+     "prompt": "Orrin means: only the traders who sell old steel must label it. Which notice says that?",
+     "options": [
+      {
+       "text": "Traders, who sell old steel, must label it.",
+       "ok": false,
+       "result": "The commas make 'who sell old steel' extra information about ALL traders. By noon, Mara has put a label on every apple: 'Not old steel.' The queue is very long."
+      },
+      {
+       "text": "Traders who sell old steel must label it.",
+       "ok": true,
+       "result": "The board glows. With no commas, 'who sell old steel' picks out which traders. Only they must label their steel."
+      },
+      {
+       "text": "Traders who sell, old steel must label it.",
+       "ok": false,
+       "result": "Now the steel must label itself. Corvan stares at his blade and waits. Nothing happens."
+      }
+     ]
+    },
+    {
+     "prompt": "Orrin means: the SMITH said the blade was new. Which notice is clear?",
+     "options": [
+      {
+       "text": "When Corvan met the smith, he said the blade was new.",
+       "ok": false,
+       "result": "Who is 'he'? Half the market thinks Corvan admitted it. Corvan's customers ask for their money back, and Corvan is very confused."
+      },
+      {
+       "text": "When Corvan met the smith, the smith said the blade was new.",
+       "ok": true,
+       "result": "The board glows. Naming the speaker again removes the doubt. A pronoun must point to one person only."
+      },
+      {
+       "text": "When he met the smith, Corvan said they said the blade was new.",
+       "ok": false,
+       "result": "Now nobody can follow it. Two pronouns, three people, and a crowd of puzzled faces."
+      }
+     ]
+    },
+    {
+     "prompt": "Orrin means: Corvan sold a steel blade to a buyer. Which notice puts the words in the right place?",
+     "options": [
+      {
+       "text": "Corvan sold a blade to a buyer made of steel.",
+       "ok": false,
+       "result": "The town crier reads it out loud. Everyone looks for the steel buyer. A child asks if the buyer clanks when walking."
+      },
+      {
+       "text": "Made of steel, Corvan sold a blade to a buyer.",
+       "ok": false,
+       "result": "Now Corvan is made of steel. He is flattered, but it is not true."
+      },
+      {
+       "text": "Corvan sold a steel blade to a buyer.",
+       "ok": true,
+       "result": "The board glows and the gate opens. A describing word must sit next to the thing it describes."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "song-bridge",
+   "type": "order",
+   "title": "The Citation Thread Bridge",
+   "intro": "Sefa wants to quote a work song in her guide for visitors. A visitor at the south gate must be able to find the song from the citation alone. Put the pieces in order (MLA core elements). Leave out anything that does not help a reader find the source.",
+   "skills": [
+    "SK-CIT-04",
+    "SK-CIT-05",
+    "SK-CIT-06",
+    "SK-CIT-07",
+    "SK-CIT-11",
+    "SK-CIT-12"
+   ],
+   "weave": {
+    "concepts": [
+     "evidence",
+     "responsibility"
+    ],
+    "atl": [
+     "research",
+     "communication"
+    ],
+    "subjects": [
+     "lang-lit",
+     "history"
+    ],
+    "aoks": [
+     "HIS",
+     "ART"
+    ]
+   },
+   "tiles": [
+    {
+     "id": "author",
+     "text": "Okon, Sefa.",
+     "role": "author"
+    },
+    {
+     "id": "title",
+     "text": "“Look at the Hand, Not the Shine.”",
+     "role": "title of the source (in quotation marks)"
+    },
+    {
+     "id": "container",
+     "text": "Songs of Aethelgard,",
+     "role": "title of the container (the book it is in, in italics)"
+    },
+    {
+     "id": "publisher",
+     "text": "Emberford Guild Press,",
+     "role": "publisher"
+    },
+    {
+     "id": "date",
+     "text": "1203,",
+     "role": "publication date"
+    },
+    {
+     "id": "location",
+     "text": "p. 14.",
+     "role": "location (the page)"
+    },
+    {
+     "id": "x.where",
+     "text": "I found it on a shelf.",
+     "role": "note",
+     "why": "Where you found a book does not help a reader find it."
+    },
+    {
+     "id": "x.good",
+     "text": "A very good song.",
+     "role": "opinion",
+     "why": "Your opinion belongs in your writing, not in the citation."
+    }
+   ],
+   "answer": [
+    "author",
+    "title",
+    "container",
+    "publisher",
+    "date",
+    "location"
+   ],
+   "success": "The thread pulls tight. A visitor reads the citation, walks to the guild library, and finds page 14. Credit, trace, trust: that is why we cite.",
+   "onComplete": [
+    {
+     "credit": "crit.evidence.citation"
+    },
+    {
+     "journal": "j.cite.done"
+    }
+   ]
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH1-S04",
+   "world": "WORLD-02",
+   "title": "Side quest: Words That Hold",
+   "knowledgeQuestion": "How can the exact form of words change what people know and do?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "words.o1.signs",
+     "title": "Optional: get Orrin's three notices through the Sign-Smith's board (north of the square).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.guild-notice.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "responsibility"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "lang-b"
+      ],
+      "aoks": [
+       "LAN"
+      ]
+     }
+    },
+    {
+     "id": "words.o2.cite",
+     "title": "Optional: build the Citation Thread bridge for Sefa's song (by the south gate).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.song-bridge.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "responsibility"
+      ],
+      "atl": [
+       "research",
+       "communication"
+      ],
+      "subjects": [
+       "lang-lit",
+       "history"
+      ],
+      "aoks": [
+       "HIS",
+       "ART"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.words.o1.signs.1",
+   "objective": "words.o1.signs",
+   "depth": 1,
+   "text": "One mark can change what a whole market does."
+  },
+  {
+   "id": "h.words.o1.signs.2",
+   "objective": "words.o1.signs",
+   "depth": 2,
+   "text": "Commas around 'who…' make it extra information about everyone."
+  },
+  {
+   "id": "h.words.o1.signs.3",
+   "objective": "words.o1.signs",
+   "depth": 3,
+   "text": "Read each notice and ask: who exactly does it mean? Is any word pointing to two people?"
+  },
+  {
+   "id": "h.words.o1.signs.4",
+   "objective": "words.o1.signs",
+   "depth": 4,
+   "text": "Choose: no commas; name 'the smith' again; 'a steel blade'."
+  },
+  {
+   "id": "h.words.o2.cite.1",
+   "objective": "words.o2.cite",
+   "depth": 1,
+   "text": "A citation lets a reader find the source on their own."
+  },
+  {
+   "id": "h.words.o2.cite.2",
+   "objective": "words.o2.cite",
+   "depth": 2,
+   "text": "Who wrote it? What is it called? Where is it?"
+  },
+  {
+   "id": "h.words.o2.cite.3",
+   "objective": "words.o2.cite",
+   "depth": 3,
+   "text": "Order: author, title, container, publisher, date, page. Leave out notes and opinions."
+  },
+  {
+   "id": "h.words.o2.cite.4",
+   "objective": "words.o2.cite",
+   "depth": 4,
+   "text": "Okon, Sefa. / “Look at the Hand, Not the Shine.” / Songs of Aethelgard, / Emberford Guild Press, / 1203, / p. 14."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.signs.done",
+   "text": "The Sign-Smith's board: commas can decide who a rule is for, a pronoun must point to one person, and a describing word must sit next to its thing. Exact words carry exact knowledge.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.cite.done",
+   "text": "The Citation Thread: author, title, container, publisher, date, page. A citation gives credit, lets a reader trace the source, and builds trust.",
+   "claimKind": "interpretation"
+  }
+ ],
+ "criteria": [
+  {
+   "id": "crit.interpretation.signs",
+   "concept": "interpretation",
+   "maximum": 5
+  },
+  {
+   "id": "crit.evidence.citation",
+   "concept": "evidence",
+   "maximum": 5
+  }
+ ]
+}

@@ -324,3 +324,11 @@ button.speak { display: block; margin: 0 0 0.4em auto; }
 .alcove-items .row.wrap { flex-wrap: wrap; gap: 0.4em; }
 .alcove-items button.symbol { border-style: dashed; }
 button.chosen { outline: 2px solid var(--gold); }
+
+/* Word puzzles. */
+.notice-options .notice-text { font-weight: 500; font-size: 1.05rem; }
+.bridge { display: flex; flex-wrap: wrap; gap: 4px; padding: 0.6em; margin: 0.5em 0; min-height: 3em; background: linear-gradient(180deg, #1d3a5a, #12263d); border-radius: 8px; border-bottom: 4px solid #0a1a2a; }
+.bridge .plank { background: #8a6448; color: #fff8e6; border: 1px solid #5b3b22; border-radius: 3px; padding: 0.35em 0.6em; font-weight: 500; }
+.bridge .plank.gap { outline: 3px dashed var(--warn); }
+.bridge .plank.empty { background: transparent; border: 1px dashed rgba(255,255,255,0.3); color: var(--ink-dim); font-family: inherit; }
+.tiles button { font-weight: 500; }

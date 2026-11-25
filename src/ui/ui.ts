@@ -746,6 +746,55 @@ export class UI implements UIApi {
 
   // ------------------------------------------------- Title Lock (EE practice, 92.2)
 
+  /** Word puzzles: Sign-Smith lock (rounds) and Citation Thread bridge (order). */
+  openPuzzle(puzzleId: string): void {
+    const c = ctx.controller;
+    const rec = c.pack.puzzles.find((x) => x.id === puzzleId);
+    if (!rec) return;
+    const F = `puzzle.${rec.id}`;
+    const box = this.openModal('puzzle-panel wide', rec.title);
+    let feedback: { ok: boolean; text: string } | null = null;
+    let placed: string[] = [];
+    let gapAt: number | null = null;
+    // A fixed shuffle (not random), so the tiles never sit in the answer order.
+    const pool = rec.type === 'order' ? [...rec.tiles].sort((a, b) => (a.id.length * 7 + a.text.length) % 5 - (b.id.length * 7 + b.text.length) % 5 || a.text.localeCompare(b.text)) : [];
+    const take = (ev: GameEvent[]) => {
+      const r = ev.find((e) => e.kind === 'puzzle') as Extract<GameEvent, { kind: 'puzzle' }> | undefined;
+      if (!r) return;
+      feedback = { ok: r.ok, text: r.text }; gapAt = r.gapAt ?? null;
+      this.sfx(r.ok ? 'sfx.sparkle' : 'sfx.page');
+      render();
+    };
+    const render = () => {
+      const done = c.state.flags[`${F}.done`] === true;
+      clear(box);
+      box.append(this.closeBtn(), h('h2', {}, rec.title), h('p', {}, rec.intro));
+      if (rec.type === 'rounds') {
+        const n = Number(c.state.flags[`${F}.rounds`] ?? 0);
+        box.append(h('p', { class: 'fine' }, `Notice ${Math.min(n + 1, rec.rounds.length)} of ${rec.rounds.length}`));
+        if (feedback) box.append(h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text));
+        if (n < rec.rounds.length) {
+          const r = rec.rounds[n];
+          box.append(h('h3', {}, r.prompt), h('div', { class: 'options notice-options' },
+            ...r.options.map((o, i) => h('button', { type: 'button', onclick: () => take(c.dispatch({ type: 'PuzzleRound', puzzle: rec.id, round: n, index: i })) }, h('span', { class: 'notice-text' }, o.text)))));
+        } else if (done) box.append(h('p', { class: 'fair' }, 'All three notices are up. The gate is open.'));
+      } else {
+        const tile = (id: string) => rec.tiles.find((t) => t.id === id)!;
+        box.append(h('div', { class: 'bridge', role: 'list', 'aria-label': 'Your citation, in order' },
+          ...(placed.length ? placed : ['']).map((id, i) => id ? h('button', { type: 'button', role: 'listitem', class: `plank ${gapAt === i ? 'gap' : ''}`, title: 'Take this piece off', onclick: () => { placed.splice(i, 1); gapAt = null; feedback = null; render(); } }, tile(id).text)
+            : h('span', { class: 'plank empty' }, 'Click the pieces below, in order.'))));
+        if (feedback) box.append(h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text));
+        box.append(h('h3', {}, 'Pieces'), h('div', { class: 'row wrap tiles' },
+          ...pool.filter((t) => !placed.includes(t.id)).map((t) => h('button', { type: 'button', onclick: () => { placed.push(t.id); gapAt = null; render(); } }, t.text))),
+          h('div', { class: 'row' },
+            h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleOrder', puzzle: rec.id, order: [...placed] })) }, 'Test the bridge'),
+            h('button', { onclick: () => { placed = []; gapAt = null; feedback = null; render(); } }, 'Start again')));
+        if (done && feedback?.ok) box.append(h('p', { class: 'fair' }, 'The bridge holds.'));
+      }
+    };
+    render();
+  }
+
   /** Exhibition Hall alcove (SYM-001): object, what it shows, and "so what?". */
   openAlcove(alcoveId: string): void {
     const c = ctx.controller;

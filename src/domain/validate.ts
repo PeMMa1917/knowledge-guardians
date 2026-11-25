@@ -164,6 +164,15 @@ export function validateContent(pack: ContentPack): string[] {
       if (!o.implications.some((i) => !i.ok)) p.push(`alcove ${a.id} ${o.card}: needs a 'so what?' trap (So-What Sphinx)`);
     });
   });
+  (pack.puzzles ?? []).forEach((z) => {
+    dup('puzzle', z.id); text(`puzzle ${z.id}`, z.intro); weave(z.weave, `puzzle ${z.id}`, true); eff(z.onComplete, `puzzle ${z.id}`);
+    if (z.type === 'rounds') z.rounds.forEach((r, i) => { if (r.options.filter((o) => o.ok).length !== 1) p.push(`puzzle ${z.id} round ${i + 1}: needs exactly one correct option`); });
+    else {
+      const ids = new Set(z.tiles.map((t) => t.id));
+      z.answer.forEach((a) => ids.has(a) || p.push(`puzzle ${z.id}: unknown tile ${a}`));
+      if (z.tiles.length <= z.answer.length) p.push(`puzzle ${z.id}: needs at least one tile to leave out`);
+    }
+  });
   pack.locks.forEach((l) => {
     dup('lock', l.id); weave(l.weave, `lock ${l.id}`, true); eff(l.onOpen, `lock ${l.id}`);
     if (!SUBJECTS[l.subject]) p.push(`lock ${l.id}: unknown subject ${l.subject}`);

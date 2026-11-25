@@ -11,6 +11,7 @@ import { CAMPAIGN_SCHEMA, type Pronouns } from './types';
 import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
 import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
+import { answerRound, checkOrder } from './puzzles';
 import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
 import { checkAwards, grantCredit } from './permanent';
 import { evaluateLabel, type LabelResult } from './label';
@@ -24,6 +25,8 @@ export type Command =
   | { type: 'SetPronouns'; pronouns: Pronouns }
   | { type: 'SetLook'; look: string }
   | { type: 'AlcovePlace'; alcove: string; item: string }
+  | { type: 'PuzzleRound'; puzzle: string; round: number; index: number }
+  | { type: 'PuzzleOrder'; puzzle: string; order: string[] }
   | { type: 'AlcoveLink'; alcove: string; index: number }
   | { type: 'AlcoveImply'; alcove: string; index: number }
   | { type: 'EnterNode'; node: string }
@@ -63,6 +66,7 @@ export type GameEvent =
   | { kind: 'simulation'; result: SimulationResult }
   | { kind: 'label'; result: LabelResult }
   | { kind: 'lock'; lock: string; result: LockResult }
+  | { kind: 'puzzle'; puzzle: string; ok: boolean; text: string; gapAt?: number | null }
   | { kind: 'alcove'; alcove: string; stage: 'place' | 'link' | 'imply'; result: string; text: string }
   | { kind: 'showdown'; state: ShowdownState }
   | { kind: 'forge'; line: string }
@@ -376,6 +380,26 @@ export class Engine {
           if (!check(o.if, s)) throw new Error('That offer is not available');
           if (s.marks < o.price) throw new Error('You do not have enough marks');
           s = apply([{ addMarks: -o.price }, { giveItem: o.item }, ...(o.effects ?? [])], s, out);
+          break;
+        }
+        case 'PuzzleRound': case 'PuzzleOrder': {
+          const rec = this.pack.puzzles.find((x) => x.id === cmd.puzzle);
+          if (!rec) throw new Error('Unknown puzzle');
+          const F = `puzzle.${rec.id}`;
+          const wasDone = s.flags[`${F}.done`] === true;
+          let ok: boolean, text: string, solved: boolean, gapAt: number | null = null;
+          if (cmd.type === 'PuzzleRound') {
+            const r = answerRound(rec, Number(s.flags[`${F}.rounds`] ?? 0), cmd.round, cmd.index);
+            ok = r.ok; text = r.text; solved = r.solved;
+            s = apply(r.ok ? [{ addNum: `${F}.rounds`, by: 1 }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);
+          } else {
+            const r = checkOrder(rec, cmd.order);
+            ok = r.ok; text = r.text; solved = r.ok; gapAt = r.gapAt;
+            if (!r.ok) s = apply([{ addNum: `${F}.misses`, by: 1 }], s, out);
+          }
+          if (solved) s = apply([{ setFlag: `${F}.done`, value: true }, ...(!wasDone ? rec.onComplete ?? [] : [])], s, out);
+          if (solved && !wasDone) weaves.push(rec.weave);
+          events.push({ kind: 'puzzle', puzzle: rec.id, ok, text, gapAt });
           break;
         }
         case 'AlcovePlace': case 'AlcoveLink': case 'AlcoveImply': {
