@@ -47,6 +47,102 @@
       "locator": "Object record metadata",
       "supports": "Specific object metadata: Indian, probably eighteenth century. The qualifier 'probably' stays visible.",
       "accessed": "2026-11-20"
+    },
+    {
+      "id": "HIS-S20",
+      "title": "NZHistory (Manatū Taonga, Ministry for Culture and Heritage): Women and the vote",
+      "url": "https://nzhistory.govt.nz/politics/womens-suffrage",
+      "locator": "Overview and 1893 petition pages",
+      "supports": "In 1893 New Zealand became the first self-governing country in which all adult women could vote in parliamentary elections; Kate Sheppard led the campaign; women could not stand for Parliament until 1919.",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "HIS-S21",
+      "title": "Encyclopaedia Britannica: Pi Sheng (Bi Sheng)",
+      "url": "https://www.britannica.com/biography/Pi-Sheng",
+      "locator": "Biography entry",
+      "supports": "Bi Sheng made movable type of baked clay in the 1040s; the account comes from Shen Kuo's writings.",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "HIS-S22",
+      "title": "Library of Congress, World Digital Library: Mengxi bitan (Dream Pool Essays) by Shen Kuo, later printed edition",
+      "url": "https://www.loc.gov/resource/gdcwdl.wdl_13550/",
+      "locator": "Catalogue record and images",
+      "supports": "Shen Kuo's Dream Pool Essays survive in later printed editions; this is the text that records Bi Sheng's movable type.",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "HIS-S23",
+      "title": "Encyclopaedia Britannica: Mount Everest, the height of Everest",
+      "url": "https://www.britannica.com/place/Mount-Everest/The-height-of-Everest",
+      "locator": "Section on the Great Trigonometrical Survey",
+      "supports": "The Great Trigonometrical Survey of India identified Peak XV as the highest peak measured and announced its height in 1856; it was later named after George Everest.",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "HIS-S24",
+      "title": "Encyclopaedia Britannica: How was the altitude of Mount Everest measured for the first time?",
+      "url": "https://beyond.britannica.com/how-was-altitude-of-mt-everest-measured-for-the-first-time",
+      "locator": "Article",
+      "supports": "Accounts credit Radhanath Sikdar, a mathematician and computer for the survey, with the calculations (about 1852) that showed Peak XV was the highest.",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "HIS-S25",
+      "title": "Encyclopaedia Britannica: What are other names for Mount Everest?",
+      "url": "https://www.britannica.com/question/What-are-other-names-for-Mount-Everest",
+      "locator": "Answer",
+      "supports": "Local names for the mountain include Chomolungma (Tibetan) and Sagarmatha (Nepali).",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "HIS-S26",
+      "title": "Smithsonian National Air and Space Museum: Santos-Dumont making the first public flight in Europe",
+      "url": "https://airandspace.si.edu/multimedia-gallery/image/4492hjpg",
+      "locator": "Image record and caption",
+      "supports": "Santos-Dumont's 1906 flight in Paris is described as the first public airplane flight in Europe.",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "HIS-S27",
+      "title": "Encyclopaedia Britannica: Santos-Dumont No. 14-bis",
+      "url": "https://www.britannica.com/topic/Santos-Dumont-No-14-bis",
+      "locator": "Entry",
+      "supports": "The 14-bis flew in Paris in 1906, witnessed by officials; the Wright brothers' first powered flights were in December 1903.",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "HIS-S28",
+      "title": "American Physical Society, This Month in Physics History: June, ca. 240 B.C.: Eratosthenes measures the Earth",
+      "url": "https://www.aps.org/apsnews/2006/06/eratosthenes-measures-earth",
+      "locator": "This Month in Physics History",
+      "supports": "Eratosthenes compared noon shadows at Alexandria and Syene to estimate the Earth's circumference; the length of the stadion he used is uncertain.",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "HIS-S29",
+      "title": "MacTutor History of Mathematics (University of St Andrews): Abu Ali al-Hasan ibn al-Haytham",
+      "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Haytham/",
+      "locator": "Biography, section on optics",
+      "supports": "Ibn al-Haytham (c. 965 to c. 1040), born in Basra and active in Cairo, wrote the Book of Optics and used experiments to test claims about light and vision.",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "HIS-S30",
+      "title": "Library of Parliament (Canada), rare books: A Vindication of the Rights of Woman, by Mary Wollstonecraft, 1792",
+      "url": "https://lop.parl.ca/en/about/spotlight/rarebooks/vindicationrightswomanmarywollstonecraft1792",
+      "locator": "Rare book spotlight",
+      "supports": "Mary Wollstonecraft published A Vindication of the Rights of Woman in 1792; it argued for women's education and rights.",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "HIS-S31",
+      "title": "Encyclopaedia Britannica: The Book of the City of Ladies",
+      "url": "https://www.britannica.com/topic/The-Book-of-the-City-of-Ladies",
+      "locator": "Entry",
+      "supports": "Christine de Pizan wrote The Book of the City of Ladies (1405), a defence of women, centuries before 1792.",
+      "accessed": "2026-11-25"
     }
   ]
 }

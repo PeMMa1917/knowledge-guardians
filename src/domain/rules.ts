@@ -22,10 +22,6 @@ export function check(c: Condition | undefined, s: CampaignState): boolean {
   if ('marks' in c) return s.marks >= c.marks;
   if ('card' in c) return s.cards.includes(c.card);
   if ('objective' in c) return s.objectivesDone.includes(c.objective);
-  if ('boardLinks' in c) {
-    const n = Object.values(s.board).reduce((a, l) => a + l.length, 0);
-    return n >= c.boardLinks;
-  }
   return false;
 }
 
@@ -37,10 +33,12 @@ export interface EffectOutputs {
   cards: string[];
   items: { id: string; qty: number }[];
   marks: number;
+  signals: string[];
+  portfolio: string[];
 }
 
 export function emptyOutputs(): EffectOutputs {
-  return { credits: [], checkpoints: [], journal: [], cards: [], items: [], marks: 0 };
+  return { credits: [], checkpoints: [], journal: [], cards: [], items: [], marks: 0, signals: [], portfolio: [] };
 }
 
 /**
@@ -77,6 +75,8 @@ export function apply(effects: Effect[] | undefined, s: CampaignState, out: Effe
     else if ('companion' in e) n.companion = e.companion;
     else if ('credit' in e) out.credits.push(e.credit);
     else if ('checkpoint' in e) out.checkpoints.push(e.checkpoint);
+    else if ('signal' in e) out.signals.push(e.signal);
+    else if ('portfolio' in e) out.portfolio.push(e.portfolio);
   }
   return n;
 }

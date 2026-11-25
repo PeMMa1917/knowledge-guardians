@@ -12,8 +12,9 @@
  * Permanent credit is stored under a different key (see permanent.ts).
  */
 import type { CampaignState, PermanentRecord } from './types';
-import { CAMPAIGN_SCHEMA, PERMANENT_SCHEMA } from './types';
+import { CAMPAIGN_SCHEMA } from './types';
 import { validateCampaign } from './validate';
+import { migratePermanent, newPermanent } from './permanent';
 
 export type SaveKind = 'checkpoint' | 'suspend';
 
@@ -111,6 +112,17 @@ export const MIGRATIONS: Record<number, (s: any) => any> = {
     void items;
     return { ...rest, schema: 2, marks: Number(gold ?? 0), inventory, notes: [] };
   },
+  // Schema 2 (first chapter, first build) had an evidence board. Schema 3 adds
+  // the Showdown, the forge billet and the event deck clock (spec v2.10).
+  2: (s) => {
+    const { board, ...rest } = s;
+    void board;
+    return {
+      ...rest, schema: 3, showdown: null,
+      forge: { route: 'none', steels: 0, welded: false, twists: 0, folds: 0, melted: false, cooled: false, cut: false },
+      events: { clock: 0, next: 600, seen: [], pending: null },
+    };
+  },
 };
 
 export function migrateCampaign(raw: any): { state: CampaignState; migrated: boolean } {
@@ -175,13 +187,11 @@ export class SaveService {
 
   loadPermanent(): PermanentRecord {
     const t = this.store.get(KEY_PERMANENT);
-    if (!t) return { schema: PERMANENT_SCHEMA, credit: {}, awards: {} };
+    if (!t) return newPermanent();
     try {
-      const p = JSON.parse(t);
-      if (p.schema !== PERMANENT_SCHEMA) throw new Error('schema');
-      return p;
+      return migratePermanent(JSON.parse(t));
     } catch {
-      return { schema: PERMANENT_SCHEMA, credit: {}, awards: {} };
+      return newPermanent();
     }
   }
 

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { buildPack } from '../src/content';
 import { Engine, newCampaign } from '../src/domain/engine';
-import { newPermanent } from '../src/domain/permanent';
+import { migratePermanent, newPermanent } from '../src/domain/permanent';
 import {
   KEY_SLOTS, SaveService, emptyPair, memoryStore, parsePair, restoreRecovery, serialisePair, writeCheckpoint, writeSuspend,
   type SaveEntry,
@@ -123,6 +123,27 @@ describe('storage, checksum and migration', () => {
       expect(r.pair.continue!.state.marks).toBe(7);
       expect(r.pair.continue!.state.inventory['item.journal']).toBe(2);
     }
+  });
+  it('migrates a schema 2 save (evidence board) to schema 3 (Showdown, forge, events)', () => {
+    const v2: any = { ...base(), schema: 2, board: { 'claim.x': ['card.loud-patent'] } };
+    delete v2.showdown; delete v2.forge; delete v2.events;
+    const r = parsePair(serialisePair({ revision: 4, continue: entry('v2', v2), recovery: null }));
+    expect(r.ok).toBe(true);
+    if (r.ok) {
+      const st: any = r.pair.continue!.state;
+      expect(st.schema).toBe(3);
+      expect(st.board).toBeUndefined();
+      expect(st.showdown).toBeNull();
+      expect(st.forge.route).toBe('none');
+      expect(st.events.next).toBe(600);
+    }
+  });
+  it('migrates a version 1 permanent record and keeps its credit and awards', () => {
+    const p = migratePermanent({ schema: 1, credit: { 'crit.evidence.date-kinds': 20 }, awards: { 'award.dates-have-kinds': '2026-01-01' } });
+    expect(p.credit['crit.evidence.date-kinds']).toBe(20);
+    expect(p.awards['award.dates-have-kinds']).toBeTruthy();
+    expect(p.portfolio).toEqual([]);
+    expect(p.met.atl).toEqual({});
   });
   it('detects a write from another tab (revision check)', () => {
     const store = memoryStore();

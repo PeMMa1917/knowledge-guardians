@@ -1,0 +1,1036 @@
+{
+  "cards": [
+    {
+      "id": "card.person.eratosthenes",
+      "title": "Eratosthenes (c. 276 to c. 194 BCE)",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-S28"
+      ],
+      "text": "Eratosthenes worked in Alexandria, Egypt. About 240 BCE he compared the angle of the noon shadow in Alexandria with Syene (now Aswan), where the Sun was overhead at the same time of year. He used the distance between the two cities to estimate the Earth's circumference.",
+      "limits": "We know his method from later writers. The exact length of the 'stadion' he used is not known, so how accurate he was is still debated.",
+      "person": {
+        "name": "Eratosthenes",
+        "life": "c. 276 to c. 194 BCE",
+        "region": "Africa (Alexandria, Egypt)",
+        "era": "Ancient"
+      }
+    },
+    {
+      "id": "card.person.haytham",
+      "title": "Ibn al-Haytham (c. 965 to c. 1040)",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-S29"
+      ],
+      "text": "Ibn al-Haytham was born in Basra and worked in Cairo. In his Book of Optics (Kitab al-Manazir), he argued that we see because light comes from objects into the eye, and he used experiments to test claims about light.",
+      "limits": "'The first scientist' is a modern title. People in many places tested ideas before him. The card does not show how his book was read in other places.",
+      "person": {
+        "name": "Ibn al-Haytham",
+        "life": "c. 965 to c. 1040",
+        "region": "West Asia and North Africa (Basra and Cairo)",
+        "era": "Medieval"
+      }
+    },
+    {
+      "id": "card.person.bisheng",
+      "title": "Bi Sheng (active 1040s)",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-S21",
+        "HIS-S22"
+      ],
+      "text": "Shen Kuo's Dream Pool Essays (about 1088) describes how Bi Sheng, a commoner, made movable type from baked clay in the 1040s. Printing from carved wooden blocks was already in use in China before this.",
+      "limits": "This is one written description. No type made by Bi Sheng survives. Metal movable type was used later in Korea, and Gutenberg printed in Europe in the 1450s.",
+      "person": {
+        "name": "Bi Sheng",
+        "life": "active 1040s",
+        "region": "East Asia (Song China)",
+        "era": "Medieval"
+      }
+    },
+    {
+      "id": "card.person.sikdar",
+      "title": "Radhanath Sikdar (1813 to 1870)",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-S23",
+        "HIS-S24",
+        "HIS-S25"
+      ],
+      "text": "Radhanath Sikdar was a mathematician and 'computer' for the Great Trigonometrical Survey of India. Accounts credit him with calculations, about 1852, showing that Peak XV was higher than any peak measured before. The survey announced its height in 1856. The peak was later named after George Everest, a former head of the survey.",
+      "limits": "Exactly who did which calculation is debated, and the survey was team work. People who lived near the mountain already had names for it, such as Chomolungma in Tibetan.",
+      "person": {
+        "name": "Radhanath Sikdar",
+        "life": "1813 to 1870",
+        "region": "South Asia (Bengal, India)",
+        "era": "19th century"
+      }
+    },
+    {
+      "id": "card.person.santos",
+      "title": "Alberto Santos-Dumont (1873 to 1932)",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-S26",
+        "HIS-S27"
+      ],
+      "text": "Alberto Santos-Dumont was born in Brazil and worked in Paris. In 1906 he flew his airplane, the 14-bis, in Paris in front of a crowd and officials of the Aéro-Club de France. Many people in Brazil call him the inventor of the airplane.",
+      "limits": "In December 1903, Wilbur and Orville Wright flew a powered airplane at Kitty Hawk in the USA. Their flights had few witnesses and used a launching rail. Which flight counts as 'first' depends on the criterion.",
+      "person": {
+        "name": "Alberto Santos-Dumont",
+        "life": "1873 to 1932",
+        "region": "South America (Brazil; flew in Paris)",
+        "era": "20th century"
+      }
+    },
+    {
+      "id": "card.person.sheppard",
+      "title": "Kate Sheppard (1847 to 1934)",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-S20"
+      ],
+      "text": "In 1893 New Zealand became the first self-governing country in which all adult women had the right to vote in parliamentary elections. Kate Sheppard was a leader of the campaign, which sent large petitions to Parliament. Māori women also voted in 1893.",
+      "limits": "Some places had let some women vote earlier in local or limited elections. Women in New Zealand could not stand for Parliament until 1919. The campaign had many leaders, not one.",
+      "person": {
+        "name": "Kate Sheppard",
+        "life": "1847 to 1934",
+        "region": "Oceania (New Zealand)",
+        "era": "19th century"
+      }
+    },
+    {
+      "id": "card.person.wollstonecraft",
+      "title": "Mary Wollstonecraft (1759 to 1797)",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-S30",
+        "HIS-S31"
+      ],
+      "text": "Mary Wollstonecraft published A Vindication of the Rights of Woman in London in 1792. The book argued that women are rational beings and should have the education and rights to use their reason.",
+      "limits": "Earlier writers also defended women, for example Christine de Pizan in The Book of the City of Ladies (1405). The word 'feminist' came into use much later.",
+      "person": {
+        "name": "Mary Wollstonecraft",
+        "life": "1759 to 1797",
+        "region": "Europe (London, England)",
+        "era": "18th century"
+      }
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-101",
+      "name": "Plaque: Eratosthenes and the size of the Earth",
+      "art": "plaque.earth",
+      "historicalLabel": "documented",
+      "dateText": "About 240 BCE (date of the method, as later writers report it)",
+      "dateKind": "AN APPROXIMATE DATE OF A METHOD, known from later writers. His own book is lost.",
+      "summary": "A plaque in the Hall of Firsts. Its old label says 'The first person to measure the earth' and glows a sickly gold. The record behind it is on the card.",
+      "sources": [
+        "HIS-S28"
+      ],
+      "grantsCard": "card.person.eratosthenes",
+      "altText": "A bronze plaque with a small engraved picture and the words 'The first person to measure the earth'.",
+      "labelKit": "first.eratosthenes"
+    },
+    {
+      "id": "OBJ-102",
+      "name": "Plaque: Ibn al-Haytham and the Book of Optics",
+      "art": "plaque.optics",
+      "historicalLabel": "documented",
+      "dateText": "Written about 1011 to 1021 (date of writing)",
+      "dateKind": "A RANGE OF YEARS FOR WRITING A BOOK. It is not the date of any single experiment.",
+      "summary": "A plaque in the Hall of Firsts. Its old label says 'The first scientist' and glows a sickly gold. The record behind it is on the card.",
+      "sources": [
+        "HIS-S29"
+      ],
+      "grantsCard": "card.person.haytham",
+      "altText": "A bronze plaque with a small engraved picture and the words 'The first scientist'.",
+      "labelKit": "first.haytham"
+    },
+    {
+      "id": "OBJ-103",
+      "name": "Plaque: Bi Sheng and movable type",
+      "art": "plaque.type",
+      "historicalLabel": "documented",
+      "dateText": "The 1040s (date reported by Shen Kuo, about 1088)",
+      "dateKind": "A DATE REPORTED IN A LATER BOOK. Shen Kuo wrote about 40 years after the event.",
+      "summary": "A plaque in the Hall of Firsts. Its old label says 'The inventor of printing' and glows a sickly gold. The record behind it is on the card.",
+      "sources": [
+        "HIS-S21",
+        "HIS-S22"
+      ],
+      "grantsCard": "card.person.bisheng",
+      "altText": "A bronze plaque with a small engraved picture and the words 'The inventor of printing'.",
+      "labelKit": "first.bisheng"
+    },
+    {
+      "id": "OBJ-104",
+      "name": "Plaque: Radhanath Sikdar and Peak XV",
+      "art": "plaque.peak",
+      "historicalLabel": "documented",
+      "dateText": "About 1852 (calculation); 1856 (announcement)",
+      "dateKind": "TWO DATES: when the calculation was made, and when the survey announced the height.",
+      "summary": "A plaque in the Hall of Firsts. Its old label says 'The man who discovered mount everest' and glows a sickly gold. The record behind it is on the card.",
+      "sources": [
+        "HIS-S23",
+        "HIS-S24",
+        "HIS-S25"
+      ],
+      "grantsCard": "card.person.sikdar",
+      "altText": "A bronze plaque with a small engraved picture and the words 'The man who discovered mount everest'.",
+      "labelKit": "first.sikdar"
+    },
+    {
+      "id": "OBJ-105",
+      "name": "Plaque: Alberto Santos-Dumont and the 14-bis",
+      "art": "plaque.flight",
+      "historicalLabel": "documented",
+      "dateText": "1906 (public flights in Paris)",
+      "dateKind": "THE DATE OF PUBLIC, WITNESSED FLIGHTS. It is not the date of the first powered flight anywhere.",
+      "summary": "A plaque in the Hall of Firsts. Its old label says 'The first person to fly an airplane' and glows a sickly gold. The record behind it is on the card.",
+      "sources": [
+        "HIS-S26",
+        "HIS-S27"
+      ],
+      "grantsCard": "card.person.santos",
+      "altText": "A bronze plaque with a small engraved picture and the words 'The first person to fly an airplane'.",
+      "labelKit": "first.santos"
+    },
+    {
+      "id": "OBJ-106",
+      "name": "Plaque: Kate Sheppard and the vote in New Zealand",
+      "art": "plaque.vote",
+      "historicalLabel": "documented",
+      "dateText": "1893 (law passed; first national election with women voting)",
+      "dateKind": "THE DATE OF A LAW AND AN ELECTION. It is not the date when women first asked for the vote.",
+      "summary": "A plaque in the Hall of Firsts. Its old label says 'The first country where women could vote' and glows a sickly gold. The record behind it is on the card.",
+      "sources": [
+        "HIS-S20"
+      ],
+      "grantsCard": "card.person.sheppard",
+      "altText": "A bronze plaque with a small engraved picture and the words 'The first country where women could vote'.",
+      "labelKit": "first.sheppard"
+    },
+    {
+      "id": "OBJ-107",
+      "name": "Plaque: Mary Wollstonecraft and A Vindication of the Rights of Woman",
+      "art": "plaque.book",
+      "historicalLabel": "documented",
+      "dateText": "1792 (publication)",
+      "dateKind": "A PUBLICATION DATE. It tells you when the book appeared, not when the ideas began.",
+      "summary": "A plaque in the Hall of Firsts. Its old label says 'The first feminist' and glows a sickly gold. The record behind it is on the card.",
+      "sources": [
+        "HIS-S30",
+        "HIS-S31"
+      ],
+      "grantsCard": "card.person.wollstonecraft",
+      "altText": "A bronze plaque with a small engraved picture and the words 'The first feminist'.",
+      "labelKit": "first.wollstonecraft"
+    }
+  ],
+  "labelKits": [
+    {
+      "id": "first.eratosthenes",
+      "title": "Eratosthenes and the size of the Earth",
+      "oldLabel": "THE FIRST PERSON TO MEASURE THE EARTH",
+      "place": "Hall of Firsts",
+      "subjects": [
+        {
+          "id": "person",
+          "text": "Eratosthenes"
+        }
+      ],
+      "criteria": [
+        {
+          "id": "bold",
+          "text": "The first person to measure the Earth",
+          "force": 5,
+          "signal": "MIS-29"
+        },
+        {
+          "id": "specific",
+          "text": "Estimated the Earth's size from the angle of noon shadows, about 240 BCE",
+          "force": 3
+        },
+        {
+          "id": "early",
+          "text": "An early estimate of the Earth's size",
+          "force": 2
+        }
+      ],
+      "limits": [
+        {
+          "id": "none",
+          "text": "",
+          "lower": 0
+        },
+        {
+          "id": "limit",
+          "text": "We know his method from later writers, and the length of his unit is uncertain.",
+          "lower": 1
+        }
+      ],
+      "supports": [
+        {
+          "subject": "person",
+          "criterion": "specific",
+          "cards": [
+            {
+              "card": "card.person.eratosthenes",
+              "weight": 3
+            }
+          ],
+          "heard": "A visitor traces the two shadows in the air: 'So he worked it out from shadows. Clever. And we are not sure how close he got.'"
+        },
+        {
+          "subject": "person",
+          "criterion": "early",
+          "cards": [
+            {
+              "card": "card.person.eratosthenes",
+              "weight": 2
+            }
+          ],
+          "heard": "A visitor traces the two shadows in the air: 'So he worked it out from shadows. Clever. And we are not sure how close he got.'"
+        },
+        {
+          "subject": "person",
+          "criterion": "bold",
+          "cards": [
+            {
+              "card": "card.person.eratosthenes",
+              "weight": 2
+            }
+          ],
+          "heard": ""
+        }
+      ],
+      "weak": {
+        "noSupport": "Visitors read the plaque and walk on. Nothing in the record backs it up, but they repeat it anyway.",
+        "tooStrong": "Visitors repeat it in a flat, copied voice: 'The first person to measure the Earth.' The gold glow stays. The record behind the plaque says something smaller and more exact."
+      },
+      "onHold": [
+        {
+          "addNum": "count.firsts",
+          "by": 1
+        },
+        {
+          "setFlag": "first.eratosthenes.fixed",
+          "value": true
+        }
+      ],
+      "weave": {
+        "concepts": [
+          "evidence",
+          "truth",
+          "certainty",
+          "perspective"
+        ],
+        "atl": [
+          "thinking",
+          "communication",
+          "research"
+        ],
+        "subjects": [
+          "physics",
+          "geography",
+          "math-aa"
+        ],
+        "aoks": [
+          "NAT",
+          "MAT",
+          "HIS"
+        ]
+      }
+    },
+    {
+      "id": "first.haytham",
+      "title": "Ibn al-Haytham and the Book of Optics",
+      "oldLabel": "THE FIRST SCIENTIST",
+      "place": "Hall of Firsts",
+      "subjects": [
+        {
+          "id": "person",
+          "text": "Ibn al-Haytham"
+        }
+      ],
+      "criteria": [
+        {
+          "id": "bold",
+          "text": "The first scientist",
+          "force": 5,
+          "signal": "MIS-29"
+        },
+        {
+          "id": "specific",
+          "text": "Tested claims about light and vision with experiments, in the Book of Optics (about 1011 to 1021)",
+          "force": 3
+        },
+        {
+          "id": "early",
+          "text": "An early champion of testing ideas by experiment",
+          "force": 2
+        }
+      ],
+      "limits": [
+        {
+          "id": "none",
+          "text": "",
+          "lower": 0
+        },
+        {
+          "id": "limit",
+          "text": "'First scientist' is a modern title; others also tested ideas.",
+          "lower": 1
+        }
+      ],
+      "supports": [
+        {
+          "subject": "person",
+          "criterion": "specific",
+          "cards": [
+            {
+              "card": "card.person.haytham",
+              "weight": 3
+            }
+          ],
+          "heard": "A student by the plaque says to her friend: 'He tested his ideas about light. That is a better reason to remember him than a title.'"
+        },
+        {
+          "subject": "person",
+          "criterion": "early",
+          "cards": [
+            {
+              "card": "card.person.haytham",
+              "weight": 2
+            }
+          ],
+          "heard": "A student by the plaque says to her friend: 'He tested his ideas about light. That is a better reason to remember him than a title.'"
+        },
+        {
+          "subject": "person",
+          "criterion": "bold",
+          "cards": [
+            {
+              "card": "card.person.haytham",
+              "weight": 2
+            }
+          ],
+          "heard": ""
+        }
+      ],
+      "weak": {
+        "noSupport": "Visitors read the plaque and walk on. Nothing in the record backs it up, but they repeat it anyway.",
+        "tooStrong": "Visitors repeat it in a flat, copied voice: 'The first scientist.' The gold glow stays. The record behind the plaque says something smaller and more exact."
+      },
+      "onHold": [
+        {
+          "addNum": "count.firsts",
+          "by": 1
+        },
+        {
+          "setFlag": "first.haytham.fixed",
+          "value": true
+        }
+      ],
+      "weave": {
+        "concepts": [
+          "evidence",
+          "truth",
+          "certainty",
+          "perspective"
+        ],
+        "atl": [
+          "thinking",
+          "communication",
+          "research"
+        ],
+        "subjects": [
+          "physics",
+          "philosophy",
+          "history"
+        ],
+        "aoks": [
+          "NAT",
+          "HIS"
+        ]
+      }
+    },
+    {
+      "id": "first.bisheng",
+      "title": "Bi Sheng and movable type",
+      "oldLabel": "THE INVENTOR OF PRINTING",
+      "place": "Hall of Firsts",
+      "subjects": [
+        {
+          "id": "person",
+          "text": "Bi Sheng"
+        }
+      ],
+      "criteria": [
+        {
+          "id": "bold",
+          "text": "The inventor of printing",
+          "force": 5,
+          "signal": "MIS-29"
+        },
+        {
+          "id": "specific",
+          "text": "Made movable type from baked clay in the 1040s, as Shen Kuo described",
+          "force": 3
+        },
+        {
+          "id": "early",
+          "text": "The earliest known record of movable type",
+          "force": 2
+        }
+      ],
+      "limits": [
+        {
+          "id": "none",
+          "text": "",
+          "lower": 0
+        },
+        {
+          "id": "limit",
+          "text": "We know of it from Shen Kuo's book; none of the type survives.",
+          "lower": 1
+        }
+      ],
+      "supports": [
+        {
+          "subject": "person",
+          "criterion": "specific",
+          "cards": [
+            {
+              "card": "card.person.bisheng",
+              "weight": 3
+            }
+          ],
+          "heard": "An old printer nods at the plaque: 'Clay type, the 1040s, and we know it from one good book. Now I can tell my apprentices exactly what we know.'"
+        },
+        {
+          "subject": "person",
+          "criterion": "early",
+          "cards": [
+            {
+              "card": "card.person.bisheng",
+              "weight": 2
+            }
+          ],
+          "heard": "An old printer nods at the plaque: 'Clay type, the 1040s, and we know it from one good book. Now I can tell my apprentices exactly what we know.'"
+        },
+        {
+          "subject": "person",
+          "criterion": "bold",
+          "cards": [
+            {
+              "card": "card.person.bisheng",
+              "weight": 2
+            }
+          ],
+          "heard": ""
+        }
+      ],
+      "weak": {
+        "noSupport": "Visitors read the plaque and walk on. Nothing in the record backs it up, but they repeat it anyway.",
+        "tooStrong": "Visitors repeat it in a flat, copied voice: 'The inventor of printing.' The gold glow stays. The record behind the plaque says something smaller and more exact."
+      },
+      "onHold": [
+        {
+          "addNum": "count.firsts",
+          "by": 1
+        },
+        {
+          "setFlag": "first.bisheng.fixed",
+          "value": true
+        }
+      ],
+      "weave": {
+        "concepts": [
+          "evidence",
+          "truth",
+          "certainty",
+          "perspective"
+        ],
+        "atl": [
+          "thinking",
+          "communication",
+          "research"
+        ],
+        "subjects": [
+          "design-tech",
+          "history",
+          "lang-langlit"
+        ],
+        "aoks": [
+          "TEC",
+          "HIS"
+        ]
+      }
+    },
+    {
+      "id": "first.sikdar",
+      "title": "Radhanath Sikdar and Peak XV",
+      "oldLabel": "THE MAN WHO DISCOVERED MOUNT EVEREST",
+      "place": "Hall of Firsts",
+      "subjects": [
+        {
+          "id": "person",
+          "text": "Radhanath Sikdar"
+        }
+      ],
+      "criteria": [
+        {
+          "id": "bold",
+          "text": "The man who discovered Mount Everest",
+          "force": 5,
+          "signal": "MIS-29"
+        },
+        {
+          "id": "specific",
+          "text": "Credited with calculations (about 1852) showing that Peak XV was the highest peak measured",
+          "force": 3
+        },
+        {
+          "id": "early",
+          "text": "One of the survey team who worked out the height of Peak XV",
+          "force": 2
+        }
+      ],
+      "limits": [
+        {
+          "id": "none",
+          "text": "",
+          "lower": 0
+        },
+        {
+          "id": "limit",
+          "text": "The mountain was not 'discovered': local people already knew it as Chomolungma.",
+          "lower": 1
+        }
+      ],
+      "supports": [
+        {
+          "subject": "person",
+          "criterion": "specific",
+          "cards": [
+            {
+              "card": "card.person.sikdar",
+              "weight": 3
+            }
+          ],
+          "heard": "A traveller from the mountains smiles: 'Measured, yes. Discovered, no. My grandmother knew that mountain all her life.'"
+        },
+        {
+          "subject": "person",
+          "criterion": "early",
+          "cards": [
+            {
+              "card": "card.person.sikdar",
+              "weight": 2
+            }
+          ],
+          "heard": "A traveller from the mountains smiles: 'Measured, yes. Discovered, no. My grandmother knew that mountain all her life.'"
+        },
+        {
+          "subject": "person",
+          "criterion": "bold",
+          "cards": [
+            {
+              "card": "card.person.sikdar",
+              "weight": 2
+            }
+          ],
+          "heard": ""
+        }
+      ],
+      "weak": {
+        "noSupport": "Visitors read the plaque and walk on. Nothing in the record backs it up, but they repeat it anyway.",
+        "tooStrong": "Visitors repeat it in a flat, copied voice: 'The man who discovered Mount Everest.' The gold glow stays. The record behind the plaque says something smaller and more exact."
+      },
+      "onHold": [
+        {
+          "addNum": "count.firsts",
+          "by": 1
+        },
+        {
+          "setFlag": "first.sikdar.fixed",
+          "value": true
+        }
+      ],
+      "weave": {
+        "concepts": [
+          "evidence",
+          "truth",
+          "certainty",
+          "perspective"
+        ],
+        "atl": [
+          "thinking",
+          "communication",
+          "research"
+        ],
+        "subjects": [
+          "geography",
+          "math-ai",
+          "history"
+        ],
+        "aoks": [
+          "NAT",
+          "MAT",
+          "HIS",
+          "POL"
+        ]
+      }
+    },
+    {
+      "id": "first.santos",
+      "title": "Alberto Santos-Dumont and the 14-bis",
+      "oldLabel": "THE FIRST PERSON TO FLY AN AIRPLANE",
+      "place": "Hall of Firsts",
+      "subjects": [
+        {
+          "id": "person",
+          "text": "Alberto Santos-Dumont"
+        }
+      ],
+      "criteria": [
+        {
+          "id": "bold",
+          "text": "The first person to fly an airplane",
+          "force": 5,
+          "signal": "MIS-29"
+        },
+        {
+          "id": "specific",
+          "text": "Made the first public airplane flight in Europe, Paris, 1906",
+          "force": 3
+        },
+        {
+          "id": "early",
+          "text": "Flew a powered airplane in front of officials, 1906",
+          "force": 2
+        }
+      ],
+      "limits": [
+        {
+          "id": "none",
+          "text": "",
+          "lower": 0
+        },
+        {
+          "id": "limit",
+          "text": "The Wright brothers flew a powered airplane in the USA in 1903, with few witnesses.",
+          "lower": 1
+        }
+      ],
+      "supports": [
+        {
+          "subject": "person",
+          "criterion": "specific",
+          "cards": [
+            {
+              "card": "card.person.santos",
+              "weight": 3
+            }
+          ],
+          "heard": "Two visitors, one from Rio and one from Ohio, read it together. 'First in public in Europe.' 'And the Wrights first in 1903.' They shake hands."
+        },
+        {
+          "subject": "person",
+          "criterion": "early",
+          "cards": [
+            {
+              "card": "card.person.santos",
+              "weight": 2
+            }
+          ],
+          "heard": "Two visitors, one from Rio and one from Ohio, read it together. 'First in public in Europe.' 'And the Wrights first in 1903.' They shake hands."
+        },
+        {
+          "subject": "person",
+          "criterion": "bold",
+          "cards": [
+            {
+              "card": "card.person.santos",
+              "weight": 2
+            }
+          ],
+          "heard": ""
+        }
+      ],
+      "weak": {
+        "noSupport": "Visitors read the plaque and walk on. Nothing in the record backs it up, but they repeat it anyway.",
+        "tooStrong": "Visitors repeat it in a flat, copied voice: 'The first person to fly an airplane.' The gold glow stays. The record behind the plaque says something smaller and more exact."
+      },
+      "onHold": [
+        {
+          "addNum": "count.firsts",
+          "by": 1
+        },
+        {
+          "setFlag": "first.santos.fixed",
+          "value": true
+        }
+      ],
+      "weave": {
+        "concepts": [
+          "evidence",
+          "truth",
+          "certainty",
+          "perspective"
+        ],
+        "atl": [
+          "thinking",
+          "communication",
+          "research"
+        ],
+        "subjects": [
+          "physics",
+          "design-tech",
+          "history"
+        ],
+        "aoks": [
+          "TEC",
+          "HIS",
+          "NAT"
+        ]
+      }
+    },
+    {
+      "id": "first.sheppard",
+      "title": "Kate Sheppard and the vote in New Zealand",
+      "oldLabel": "THE FIRST COUNTRY WHERE WOMEN COULD VOTE",
+      "place": "Hall of Firsts",
+      "subjects": [
+        {
+          "id": "person",
+          "text": "Kate Sheppard"
+        }
+      ],
+      "criteria": [
+        {
+          "id": "bold",
+          "text": "The first country where women could vote",
+          "force": 5,
+          "signal": "MIS-29"
+        },
+        {
+          "id": "specific",
+          "text": "The first self-governing country where all adult women won the vote in national elections, 1893",
+          "force": 3
+        },
+        {
+          "id": "early",
+          "text": "Women in New Zealand voted in a national election in 1893, after mass petitions",
+          "force": 2
+        }
+      ],
+      "limits": [
+        {
+          "id": "none",
+          "text": "",
+          "lower": 0
+        },
+        {
+          "id": "limit",
+          "text": "Women could not stand for Parliament there until 1919.",
+          "lower": 1
+        }
+      ],
+      "supports": [
+        {
+          "subject": "person",
+          "criterion": "specific",
+          "cards": [
+            {
+              "card": "card.person.sheppard",
+              "weight": 3
+            }
+          ],
+          "heard": "A visitor reads it twice: 'All adult women, national elections, 1893. And still not allowed to stand until 1919. That is the whole story, not just the headline.'"
+        },
+        {
+          "subject": "person",
+          "criterion": "early",
+          "cards": [
+            {
+              "card": "card.person.sheppard",
+              "weight": 2
+            }
+          ],
+          "heard": "A visitor reads it twice: 'All adult women, national elections, 1893. And still not allowed to stand until 1919. That is the whole story, not just the headline.'"
+        },
+        {
+          "subject": "person",
+          "criterion": "bold",
+          "cards": [
+            {
+              "card": "card.person.sheppard",
+              "weight": 2
+            }
+          ],
+          "heard": ""
+        }
+      ],
+      "weak": {
+        "noSupport": "Visitors read the plaque and walk on. Nothing in the record backs it up, but they repeat it anyway.",
+        "tooStrong": "Visitors repeat it in a flat, copied voice: 'The first country where women could vote.' The gold glow stays. The record behind the plaque says something smaller and more exact."
+      },
+      "onHold": [
+        {
+          "addNum": "count.firsts",
+          "by": 1
+        },
+        {
+          "setFlag": "first.sheppard.fixed",
+          "value": true
+        }
+      ],
+      "weave": {
+        "concepts": [
+          "evidence",
+          "truth",
+          "certainty",
+          "perspective"
+        ],
+        "atl": [
+          "thinking",
+          "communication",
+          "research"
+        ],
+        "subjects": [
+          "global-politics",
+          "history"
+        ],
+        "aoks": [
+          "POL",
+          "HIS"
+        ]
+      }
+    },
+    {
+      "id": "first.wollstonecraft",
+      "title": "Mary Wollstonecraft and A Vindication of the Rights of Woman",
+      "oldLabel": "THE FIRST FEMINIST",
+      "place": "Hall of Firsts",
+      "subjects": [
+        {
+          "id": "person",
+          "text": "Mary Wollstonecraft"
+        }
+      ],
+      "criteria": [
+        {
+          "id": "bold",
+          "text": "The first feminist",
+          "force": 5,
+          "signal": "MIS-29"
+        },
+        {
+          "id": "specific",
+          "text": "Argued in a book of 1792 that women should have the education and rights to use their reason",
+          "force": 3
+        },
+        {
+          "id": "early",
+          "text": "An early, influential argument for women's rights",
+          "force": 2
+        }
+      ],
+      "limits": [
+        {
+          "id": "none",
+          "text": "",
+          "lower": 0
+        },
+        {
+          "id": "limit",
+          "text": "Earlier writers, such as Christine de Pizan in 1405, also defended women.",
+          "lower": 1
+        }
+      ],
+      "supports": [
+        {
+          "subject": "person",
+          "criterion": "specific",
+          "cards": [
+            {
+              "card": "card.person.wollstonecraft",
+              "weight": 3
+            }
+          ],
+          "heard": "A reader says: 'So it is a famous argument from 1792, not the beginning of the idea. I want to read the 1405 one now.'"
+        },
+        {
+          "subject": "person",
+          "criterion": "early",
+          "cards": [
+            {
+              "card": "card.person.wollstonecraft",
+              "weight": 2
+            }
+          ],
+          "heard": "A reader says: 'So it is a famous argument from 1792, not the beginning of the idea. I want to read the 1405 one now.'"
+        },
+        {
+          "subject": "person",
+          "criterion": "bold",
+          "cards": [
+            {
+              "card": "card.person.wollstonecraft",
+              "weight": 2
+            }
+          ],
+          "heard": ""
+        }
+      ],
+      "weak": {
+        "noSupport": "Visitors read the plaque and walk on. Nothing in the record backs it up, but they repeat it anyway.",
+        "tooStrong": "Visitors repeat it in a flat, copied voice: 'The first feminist.' The gold glow stays. The record behind the plaque says something smaller and more exact."
+      },
+      "onHold": [
+        {
+          "addNum": "count.firsts",
+          "by": 1
+        },
+        {
+          "setFlag": "first.wollstonecraft.fixed",
+          "value": true
+        }
+      ],
+      "weave": {
+        "concepts": [
+          "evidence",
+          "truth",
+          "certainty",
+          "perspective"
+        ],
+        "atl": [
+          "thinking",
+          "communication",
+          "research"
+        ],
+        "subjects": [
+          "philosophy",
+          "global-politics",
+          "lang-lit"
+        ],
+        "aoks": [
+          "HIS",
+          "POL"
+        ]
+      }
+    }
+  ]
+}

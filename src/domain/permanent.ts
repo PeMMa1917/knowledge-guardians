@@ -10,7 +10,19 @@ import { PERMANENT_SCHEMA } from './types';
 import { check } from './rules';
 
 export function newPermanent(): PermanentRecord {
-  return { schema: PERMANENT_SCHEMA, credit: {}, awards: {} };
+  return {
+    schema: PERMANENT_SCHEMA, credit: {}, awards: {}, moments: {}, signals: {}, dismissed: [], offered: [],
+    met: { concepts: {}, atl: {}, subjects: {}, aoks: {} }, portfolio: [],
+  };
+}
+
+/** Permanent record migrations. v1 had only credit and awards. */
+export function migratePermanent(raw: any): PermanentRecord {
+  if (!raw || typeof raw !== 'object' || typeof raw.schema !== 'number') return newPermanent();
+  if (raw.schema > PERMANENT_SCHEMA) throw new Error('Permanent record was made by a newer version.');
+  let p = raw;
+  if (p.schema === 1) p = { ...newPermanent(), credit: p.credit ?? {}, awards: p.awards ?? {} };
+  return p as PermanentRecord;
 }
 
 /** Grant a criterion. Idempotent: the total never passes the criterion maximum. */
