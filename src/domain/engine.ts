@@ -5,6 +5,7 @@
  */
 import { trustOf, rankOf } from './communities';
 import { WARES, priceFor } from './shop';
+import { TALENTS, cannotLearn, hasTalent } from './talents';
 import type {
   AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
@@ -52,6 +53,8 @@ export type Command =
   | { type: 'ReadClue'; clue: string }
   | { type: 'FindSecret'; secret: string }
   | { type: 'BuyWare'; ware: string }
+  | { type: 'LearnTalent'; talent: string }
+  | { type: 'ForgetTalents' }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
@@ -299,6 +302,16 @@ export class Engine {
           const key = `clue.${cl.id}.${cmd.keepsake}`;
           if (s.flags[key] !== true) s = apply([{ setFlag: key, value: true }, ...(cl.study ? [{ addNum: 'study.views', by: 1 } as Effect] : []), ...(v.effects ?? [])], s, out);
           events.push({ kind: 'clue', clue: cl.id, keepsake: cmd.keepsake, text: v.text });
+          break;
+        }
+        case 'LearnTalent': {
+          const why = cannotLearn(s, cmd.talent);
+          if (why) throw new Error(why);
+          s = apply([{ setFlag: `talent.${cmd.talent}`, value: true }], s, out);
+          break;
+        }
+        case 'ForgetTalents': {
+          s = apply(TALENTS.filter((t) => hasTalent(s, t.id)).map((t) => ({ setFlag: `talent.${t.id}`, value: false })), s, out);
           break;
         }
         case 'BuyWare': {

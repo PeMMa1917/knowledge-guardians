@@ -43,6 +43,7 @@ import { artURL, BIG_ART } from './illustrations';
 import { clear, h, trapFocus } from './dom';
 import { dealTiles, isPair, speedRank, tileRank, type Tile } from '../domain/tiles';
 import { TRUST_RANKS, rankOf, trustOf } from '../domain/communities';
+import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
 import { WARES, honestLabels, lockedOption, owns, priceFor } from '../domain/shop';
 import { calendarGrid, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
 
@@ -2202,6 +2203,7 @@ export class UI implements UIApi {
           if (mine.length) { playNotes(songNotes(mine), Number(c.state.flags['musicbox.tempo'] ?? 0.32), (c.state.flags['musicbox.voice'] as any) ?? 'box', ctx.settings.sfxVolume * 0.6); caption('music.box'); }
         } }, 'Rest and go on'),
         h('button', { onclick: () => this.openBreathing() }, 'Sit a while'),
+        h('button', { onclick: () => this.openTalents(true) }, 'Insight tree'),
         h('button', { onclick: () => { c.suspend('Save and leave'); this.closeModal(false); (window as any).kgToTitle?.(); } }, 'Save and leave')));
   }
 
@@ -2418,6 +2420,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openQuarters() }, 'My quarters'),
         h('button', { onclick: () => this.openDive() }, 'The Deep Dive (daily)'),
         h('button', { onclick: () => this.openTown() }, 'Communities of Emberford'),
+        h('button', { onclick: () => this.openTalents() }, 'Insight tree'),
         h('button', { onclick: () => this.openLedger() }, "The Guardian's Ledger (progress)"),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
@@ -2631,6 +2634,34 @@ export class UI implements UIApi {
     return lists[w.part][w.key]?.name ?? w.key;
   }
 
+  /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
+  openTalents(atWaystone = false): void {
+    const c = ctx.controller;
+    const box = this.openModal('talents-panel wide', 'Insight tree');
+    const render = (note?: string) => {
+      const s = c.state, free = insight(s) - spent(s);
+      box.replaceChildren(this.closeBtn(), h('h2', {}, 'Insight tree'),
+        h('p', {}, 'Each lamp you light gives one Insight point. Spend them on small habits that help you play. They never give XP, and they never change how answers are judged.'),
+        h('p', { class: 'fine', role: 'status' }, `Insight: ${free} free of ${insight(s)}.`),
+        ...(note ? [h('p', { class: 'fine', role: 'alert' }, note)] : []),
+        h('div', { class: 'talent-grid' }, ...TALENTS.map((t) => {
+          const have = hasTalent(s, t.id), why = cannotLearn(s, t.id);
+          return h('div', { class: `talent ${have ? 'have' : ''} ${t.needs ? 'branch' : 'root'}` },
+            h('span', { class: 'fine' }, `${t.skill} · ${t.cost} Insight${t.needs ? ` · after ${TALENTS.find((x) => x.id === t.needs)?.name}` : ''}`),
+            h('strong', {}, t.name), h('p', {}, t.text), h('p', { class: 'fine' }, t.why),
+            have ? h('span', { class: 'fine' }, 'Learned') : h('button', { type: 'button', disabled: !!why, title: why ?? '', onclick: () => {
+              const ev = c.dispatch({ type: 'LearnTalent', talent: t.id });
+              if (ev.some((e) => e.kind === 'error')) return;
+              this.sfx('sfx.sparkle'); render(`You learned ${t.name}.`);
+            } }, why ?? 'Learn'));
+        })),
+        h('div', { class: 'row' },
+          atWaystone && spent(c.state) ? h('button', { onclick: () => { c.dispatch({ type: 'ForgetTalents' }); this.sfx('sfx.page'); render('All Insight is free again. Try another set.'); } }, 'Unlearn all (free at a Waystone)') : h('span', { class: 'fine' }, atWaystone ? '' : 'You can unlearn talents for free at any Waystone.'),
+          h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    render();
+  }
+
   /** Sefa's Word Tiles: match each TOK word with its meaning. Scores for moves and time; no XP. */
   openTiles(): void {
     const c = ctx.controller;
@@ -2639,6 +2670,9 @@ export class UI implements UIApi {
     const tiles: Tile[] = dealTiles(c.pack.glossary.map((g) => ({ id: g.id, term: g.term, text: g.text })), run, PAIRS);
     const matched = new Set<number>();
     let up: number[] = [], moves = 0, started = 0, done = false, lock = false;
+    // Recall (Insight tree): every tile shows for 3 seconds at the start.
+    const preview = hasTalent(c.state, 'recall');
+    if (preview) { lock = true; up = tiles.map((_, i) => i); setTimeout(() => { up = []; lock = false; render(); }, 3000); }
     const bestMoves = Number(c.state.flags['tiles.best.moves'] ?? 0), bestSecs = Number(c.state.flags['tiles.best.secs'] ?? 0);
     const box = this.openModal('tiles-panel wide', "Sefa's Word Tiles");
     const status = h('p', { class: 'fine', role: 'status', 'aria-live': 'polite' });

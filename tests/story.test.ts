@@ -138,3 +138,20 @@ describe("Corvan's stall (economy)", () => {
     expect(honestLabels(d.s)).toBe(false);
   });
 });
+
+describe('the Insight tree (skill tree)', () => {
+  it('Insight comes from lamps; talents need their parent; unlearning frees all points', async () => {
+    const { insight, spent, cannotLearn } = await import('../src/domain/talents');
+    const d = new Driver();
+    expect(cannotLearn(d.s, 'noticing')).toMatch(/Insight/);
+    for (const id of ['ferry-message', 'forecast-board', 'weigh-house']) d.run({ type: 'SetFlag', flag: `puzzle.${id}.done`, value: true });
+    expect(insight(d.s)).toBe(3);
+    expect(cannotLearn(d.s, 'mapmaker')).toMatch(/Noticing first/);
+    d.run({ type: 'LearnTalent', talent: 'noticing' });
+    d.run({ type: 'LearnTalent', talent: 'mapmaker' });
+    expect(spent(d.s)).toBe(3);
+    expect(() => d.run({ type: 'LearnTalent', talent: 'pace' })).toThrow();
+    d.run({ type: 'ForgetTalents' });
+    expect(spent(d.s)).toBe(0);
+  });
+});

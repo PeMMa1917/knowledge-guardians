@@ -22,6 +22,7 @@ import { MAPS } from '../maps';
 import type { Interactable, MapDef } from '../maps/types';
 import { STAMPS, TILE } from './art';
 import { CHUNK, explored, isRevealed, revealAround } from '../domain/fog';
+import { hasTalent } from '../domain/talents';
 import { frayLevel } from '../domain/label';
 
 type Dir = 'down' | 'up' | 'left' | 'right';
@@ -182,6 +183,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       block(it.x, it.y, it.w, it.h);
     }
     this.threadGfx = this.add.graphics().setDepth(5);
+    // Noticing (Insight tree): a faint shimmer over secrets close by. Hidden until the talent is learned.
+    this.secretGlows = this.map.interactables.filter((it) => it.kind === 'secret').map((it) => {
+      const img = this.add.image((it.x + 0.5) * TILE, (it.y + 0.5) * TILE, 'glow').setTint(0xfff6c8).setBlendMode(Phaser.BlendModes.ADD).setScale(0.14).setAlpha(0).setDepth(200003);
+      if (!ctx.settings.reducedMotion) this.tweens.add({ targets: img, scale: 0.2, duration: 1100, yoyo: true, repeat: -1, ease: 'Sine.InOut' });
+      return { id: it.secret!, img };
+    });
 
     // Portal visuals.
     if (m.id === 'nexus.archive') {
@@ -555,6 +562,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   // ----------------------------------------------------------------- update
 
   private fogChunk = '';
+  private secretGlows: { id: string; img: Phaser.GameObjects.Image }[] = [];
   update(_t: number, dtMs: number): void {
     const dt = Math.min(dtMs, 100) / 1000;
     // Fog of war: clear the map around the player when they enter a new chunk.
@@ -564,7 +572,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       if (ck !== this.fogChunk) {
         this.fogChunk = ck;
         const key = `fog.${this.map.id}`, was = ctx.controller.state.flags[key];
-        const nv = revealAround(was, this.map.width, this.map.height, tx, ty);
+        let nv = revealAround(was, this.map.width, this.map.height, tx, ty);
+        if (hasTalent(ctx.controller.state, 'mapmaker')) for (const [dx, dy] of [[-CHUNK * 2, 0], [CHUNK * 2, 0], [0, -CHUNK * 2], [0, CHUNK * 2]]) nv = revealAround(nv, this.map.width, this.map.height, tx + dx, ty + dy);
         if (nv !== was) ctx.controller.dispatch({ type: 'SetFlag', flag: key, value: nv });
       }
     }
@@ -593,7 +602,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const p = this.player;
     if (vx || vy) {
       const len = Math.hypot(vx, vy);
-      const mx = (vx / len) * SPEED * dt, my = (vy / len) * SPEED * dt;
+      const sp = SPEED * (hasTalent(ctx.controller.state, 'pace') ? 1.2 : 1);
+      const mx = (vx / len) * sp * dt, my = (vy / len) * sp * dt;
       if (!this.collides(p.sprite.x + mx, p.sprite.y)) p.sprite.x += mx;
       if (!this.collides(p.sprite.x, p.sprite.y + my)) p.sprite.y += my;
       const f: Dir = Math.abs(vx) > Math.abs(vy) ? (vx > 0 ? 'right' : 'left') : (vy > 0 ? 'down' : 'up');
@@ -738,6 +748,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         const x = (it.x + it.w / 2) * TILE, y = (it.y + it.h / 2) * TILE, d = Phaser.Math.Distance.Between(x, y, p.x, p.y);
         if (d < bd) { bd = d; best = { x, y, label: it.label }; }
       }
+      const notice = hasTalent(s, 'noticing'), listen = hasTalent(s, 'listener');
+      for (const g of this.secretGlows) {
+        const near = notice && s.flags[`secret.${g.id}`] !== true && Phaser.Math.Distance.Between(g.img.x, g.img.y, p.x, p.y) < 3.5 * TILE;
+        g.img.setAlpha(near ? 0.55 : 0);
+      }
+      for (const a of this.npcs) a.mark?.setTint(listen ? 0xfff07a : 0xffffff);
       if (best && bd > TILE * 1.5) ctx.ui.setCompass(Phaser.Math.RadToDeg(Math.atan2(best.y - p.y, best.x - p.x)), best.label);
       else ctx.ui.setCompass(null, best ? `${best.label}, right here` : 'nothing new nearby');
     }

@@ -6,6 +6,7 @@
  */
 import type { CampaignState, ContentPack } from './types';
 import { trustOf } from './communities';
+import { hasTalent } from './talents';
 
 export interface Ware { id: string; part: 'wall' | 'floor' | 'rug' | 'lamp' | 'view' | 'plant'; key: string; price: number; community: string; hype: string; honest: string }
 
@@ -26,7 +27,7 @@ export const honestLabels = (s: CampaignState): boolean => s.flags['sd.corvan.ou
 export function priceFor(w: Ware, s: CampaignState, pack: ContentPack): number {
   const cm = (pack.communities ?? []).find((c) => c.id === w.community);
   const pts = cm ? trustOf(cm, s).pts : 0;
-  return Math.max(1, w.price - (pts >= 6 ? 4 : pts >= 4 ? 2 : 0));
+  return Math.max(1, w.price - (pts >= 6 ? 4 : pts >= 4 ? 2 : 0) - (hasTalent(s, 'fairtrade') ? 1 : 0));
 }
 
 export const owns = (s: CampaignState, w: Ware): boolean => s.flags[`owned.${w.id}`] === true;
