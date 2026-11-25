@@ -574,3 +574,17 @@ canvas.crest { image-rendering: pixelated; vertical-align: middle; }
 .witness-card .claim { margin-top: 6px; }
 .witness-card .claim p { margin: 4px 0; }
 .witness-card .claim.sorted { opacity: 0.9; border-left: 3px solid #4aa3ff; padding-left: 6px; }
+
+/* The round window (conjecture) */
+.conj-top { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: center; }
+.glass-wrap { width: min(100%, 260px); }
+.glass-window { width: 100%; height: auto; display: block; animation: glass-in 0.5s ease-out; filter: drop-shadow(0 0 10px rgba(255, 230, 160, 0.25)); }
+@keyframes glass-in { from { opacity: 0.4; transform: scale(0.98); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .glass-window { animation: none; } }
+.glass-empty { width: 100%; aspect-ratio: 1; border-radius: 50%; border: 8px solid #6b6b78; display: grid; place-items: center; color: #9a96a8; }
+.pane-table { border-collapse: collapse; min-width: 240px; }
+.pane-table th, .pane-table td { padding: 4px 10px; border-bottom: 1px solid rgba(255,255,255,0.12); text-align: center; }
+.pane-table tr.broke td { color: #ffb066; font-weight: 700; }
+.pane-table tr.broke td:nth-child(2)::after { content: ' ✕'; }
+.proof-box { margin: 8px 0; padding: 8px 12px; border-radius: 8px; background: rgba(255,255,255,0.05); }
+.proof-box li { margin: 4px 0; }

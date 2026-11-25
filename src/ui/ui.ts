@@ -13,7 +13,7 @@ import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads,
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
-import { sightBlock, tiltOf } from '../domain/puzzles';
+import { chordFigure, circlePoints, panes, sightBlock, tiltOf } from '../domain/puzzles';
 import { chime, playNotes } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
@@ -112,6 +112,48 @@ function balanceSvg(load: string, weights: { label: string; mass: number; untrus
 }
 
 const escSvg = (t: string) => t.replace(/[&<>"]/g, (ch) => `&#${ch.charCodeAt(0)};`);
+
+const GLASS = ['#c0392b', '#2e86c1', '#f1c40f', '#27ae60', '#8e44ad', '#e67e22', '#16a085', '#d35400', '#2c3e9f', '#c2185b', '#7cb342', '#00838f'];
+/** A round window: chords between the points, panes filled like stained glass (flood fill). */
+function glassWindow(angles: number[], lit: boolean): HTMLCanvasElement {
+  const S = 260, cx = S / 2, cy = S / 2, r = 118;
+  const c = document.createElement('canvas'); c.width = S; c.height = S; c.className = 'glass-window';
+  const g = c.getContext('2d')!;
+  const pts = circlePoints(angles).map(([x, y]) => [cx + x * r, cy - y * r] as [number, number]);
+  const lead = (w: number, col: string) => {
+    g.strokeStyle = col; g.lineWidth = w; g.beginPath(); g.arc(cx, cy, r, 0, Math.PI * 2); g.stroke();
+    for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) { g.beginPath(); g.moveTo(...pts[i]); g.lineTo(...pts[j]); g.stroke(); }
+  };
+  lead(2.5, '#000');
+  const img = g.getImageData(0, 0, S, S), d = img.data;
+  const seen = new Uint8Array(S * S);
+  let k = 0;
+  for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
+    const i = y * S + x;
+    if (seen[i] || d[i * 4 + 3] > 40 || Math.hypot(x - cx, y - cy) > r - 2) continue;
+    const col = GLASS[k++ % GLASS.length];
+    const rgb = [parseInt(col.slice(1, 3), 16), parseInt(col.slice(3, 5), 16), parseInt(col.slice(5, 7), 16)];
+    const stack = [i]; seen[i] = 1;
+    while (stack.length) {
+      const q = stack.pop()!, qx = q % S, qy = (q / S) | 0;
+      const shade = lit ? 1 : 0.45, sh = 0.85 + 0.15 * Math.sin((qx + qy) / 9);
+      d[q * 4] = rgb[0] * shade * sh; d[q * 4 + 1] = rgb[1] * shade * sh; d[q * 4 + 2] = rgb[2] * shade * sh; d[q * 4 + 3] = 255;
+      for (const n of [q - 1, q + 1, q - S, q + S]) {
+        if (n < 0 || n >= S * S || seen[n]) continue;
+        const nx = n % S, ny = (n / S) | 0;
+        if (Math.abs(nx - qx) > 1 || d[n * 4 + 3] > 40 || Math.hypot(nx - cx, ny - cy) > r - 2) continue;
+        seen[n] = 1; stack.push(n);
+      }
+    }
+  }
+  g.putImageData(img, 0, 0);
+  lead(4, '#2a2a33');
+  g.strokeStyle = '#6b6b78'; g.lineWidth = 8; g.beginPath(); g.arc(cx, cy, r + 4, 0, Math.PI * 2); g.stroke();
+  pts.forEach(([x, y]) => { g.fillStyle = '#e9cf7a'; g.beginPath(); g.arc(x, y, 5, 0, Math.PI * 2); g.fill(); g.strokeStyle = '#6b4f19'; g.lineWidth = 1.5; g.stroke(); });
+  c.setAttribute('role', 'img');
+  c.setAttribute('aria-label', `A round window with ${angles.length} points on its edge, every pair joined with lead: ${panes(angles.length)} panes of coloured glass.`);
+  return c;
+}
 
 /** The guild clerk's map for a sightlines puzzle. Blue lines are clear views; orange stops with ✕. */
 function sightMapSvg(p: Extract<PuzzleRecord, { type: 'sightlines' }>, active: string | null, onPick: (id: string) => void): HTMLElement {
@@ -1077,6 +1119,34 @@ export class UI implements UIApi {
               h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleWeigh', puzzle: rec.id, round: n, weights: [...pan] })) }, 'Record this weighing'),
               h('button', { onclick: () => { pan = []; feedback = null; render(); } }, 'Clear the pan')));
         } else if (done) box.append(h('p', { class: 'fair' }, 'Every weighing is in the record book.'));
+      } else if (rec.type === 'conjecture') {
+        const n = Number(c.state.flags[`${F}.n`] ?? 0);
+        const predicted = typeof c.state.flags[`${F}.predict`] === 'number';
+        const table = h('table', { class: 'pane-table' }, h('thead', {}, h('tr', {}, h('th', {}, 'Points'), h('th', {}, 'Panes counted'), h('th', {}, 'Doubling rule says'))),
+          h('tbody', {}, ...Array.from({ length: rec.angles.length }, (_, i) => i + 1).map((k) => h('tr', { class: k <= n && panes(k) !== 2 ** (k - 1) ? 'broke' : '' },
+            h('td', {}, String(k)), h('td', {}, k <= n ? String(panes(k)) : '?'), h('td', {}, k <= n || k === rec.predictAt ? String(2 ** (k - 1)) : '')))));
+        box.append(h('p', { class: 'fine' }, `Imre's rule: ${rec.claim}`),
+          h('div', { class: 'conj-top' }, h('div', { class: 'glass-wrap' }, n ? glassWindow(rec.angles.slice(0, n), done) : h('div', { class: 'glass-empty' }, 'An empty frame')), table));
+        if (n < rec.angles.length && !(n + 1 === rec.predictAt && !predicted)) {
+          box.append(h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => { take(c.dispatch({ type: 'PuzzleAddPoint', puzzle: rec.id })); chime(ctx.settings.sfxVolume * 0.6); caption('amb.chime'); } }, n ? 'Add a point and join it with lead' : 'Put the first point on the circle')));
+        } else if (n + 1 === rec.predictAt && !predicted) {
+          box.append(h('h3', {}, `Before you add point ${rec.predictAt}: what do you expect?`), h('p', { class: 'fine' }, 'Any answer is fine. This is your guess, not a test.'),
+            h('div', { class: 'options notice-options' }, ...rec.predictions.map((pr, i) => h('button', { type: 'button', onclick: () => take(c.dispatch({ type: 'PuzzlePredict', puzzle: rec.id, index: i })) }, h('span', { class: 'notice-text' }, pr.text)))));
+        }
+        if (n >= rec.predictAt && !done) {
+          box.append(h('h3', {}, `${panes(rec.predictAt)} panes, not ${2 ** (rec.predictAt - 1)}. What does this show?`),
+            h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text)))));
+        }
+        if (done) {
+          const f = chordFigure(rec.angles.slice(0, n));
+          box.append(h('details', { class: 'proof-box', open: true }, h('summary', {}, 'Show me why (a proof)'),
+            h('ol', {}, ...rec.proof.map((t) => h('li', {}, t))),
+            h('p', { class: 'fair' }, `Your window now: 1 + ${f.chords} chords + ${f.crossings} crossings = ${1 + f.chords + f.crossings} panes.`)));
+        }
+        if (feedback) {
+          const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
+          box.append(fb); requestAnimationFrame(() => fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+        }
       } else if (rec.type === 'sightlines') {
         const judged = (w: string, i: number) => c.state.flags[`${F}.c.${w}.${i}`] === true;
         const all = rec.witnesses.every((w) => w.claims.every((_, i) => judged(w.id, i)));

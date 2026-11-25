@@ -11,7 +11,7 @@ import { CAMPAIGN_SCHEMA, type Pronouns } from './types';
 import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
 import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
-import { answerRound, checkOrder, judgeSight, peelLayer, restoreWith, weighRound } from './puzzles';
+import { answerRound, checkOrder, judgeSight, panes, peelLayer, restoreWith, weighRound } from './puzzles';
 import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
 import { useSignature } from './skills';
@@ -35,6 +35,8 @@ export type Command =
   | { type: 'PuzzleRestore'; puzzle: string; method: string; label: number }
   | { type: 'PuzzleSight'; puzzle: string; witness: string; claim: number; saw: boolean }
   | { type: 'PuzzleReport'; puzzle: string; index: number }
+  | { type: 'PuzzleAddPoint'; puzzle: string }
+  | { type: 'PuzzlePredict'; puzzle: string; index: number }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
   | { type: 'PhotoCaptioned'; right: number; total: number }
   | { type: 'UnpinYarn'; board: string; claim: string; card: string }
@@ -497,7 +499,7 @@ export class Engine {
           events.push({ kind: 'yarn', board: rec.id, claim: cmd.claim, card: cmd.card, tone: v.tone, text: v.text, done });
           break;
         }
-        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': {
+        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': case 'PuzzleAddPoint': case 'PuzzlePredict': {
           const rec = this.pack.puzzles.find((x) => x.id === cmd.puzzle);
           if (!rec) throw new Error('Unknown puzzle');
           if (rec.needs && !s.inventory[rec.needs.item]) throw new Error(rec.needs.sealed);
@@ -508,10 +510,27 @@ export class Engine {
             const r = judgeSight(rec, cmd.witness, cmd.claim, cmd.saw);
             ok = r.ok; text = r.text; solved = false;
             s = apply(r.ok ? [{ setFlag: `${F}.c.${cmd.witness}.${cmd.claim}`, value: true }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);
+          } else if (cmd.type === 'PuzzleAddPoint' || cmd.type === 'PuzzlePredict') {
+            if (rec.type !== 'conjecture') throw new Error('Not a conjecture puzzle');
+            const n = Number(s.flags[`${F}.n`] ?? 0);
+            if (cmd.type === 'PuzzleAddPoint') {
+              if (n >= rec.angles.length) throw new Error('The window has no more places for points');
+              if (n + 1 === rec.predictAt && typeof s.flags[`${F}.predict`] !== 'number') throw new Error('Make a prediction first');
+              s = apply([{ setFlag: `${F}.n`, value: n + 1 }], s, out);
+              ok = true; text = `${n + 1} point${n ? 's' : ''}: ${panes(n + 1)} pane${n ? 's' : ''}.`;
+            } else {
+              const pr = rec.predictions[cmd.index];
+              if (!pr) throw new Error('No such prediction');
+              if (n + 1 !== rec.predictAt) throw new Error('Predict just before that point');
+              s = apply([{ setFlag: `${F}.predict`, value: cmd.index }], s, out);
+              ok = true; text = pr.reply;
+            }
+            solved = false;
           } else if (cmd.type === 'PuzzleReport') {
-            if (rec.type !== 'sightlines') throw new Error('Not a sightlines puzzle');
-            if (!rec.witnesses.every((w) => w.claims.every((_, i) => s.flags[`${F}.c.${w.id}.${i}`] === true))) throw new Error('Sort every claim first');
-            const r = rec.reports[cmd.index];
+            if (rec.type === 'sightlines' && !rec.witnesses.every((w) => w.claims.every((_, i) => s.flags[`${F}.c.${w.id}.${i}`] === true))) throw new Error('Sort every claim first');
+            if (rec.type === 'conjecture' && Number(s.flags[`${F}.n`] ?? 0) < rec.predictAt) throw new Error('Add the next point first');
+            if (rec.type !== 'sightlines' && rec.type !== 'conjecture') throw new Error('This puzzle has no report');
+            const r = rec.type === 'sightlines' ? rec.reports[cmd.index] : rec.reflect[cmd.index];
             if (!r) throw new Error('No such report');
             ok = r.honest; text = r.why; solved = r.honest;
             if (!r.honest) s = apply([{ addNum: `${F}.misses`, by: 1 }], s, out);

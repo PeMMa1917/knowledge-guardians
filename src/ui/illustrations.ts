@@ -323,6 +323,22 @@ DRAW['clerk-map'] = [16, 24, (g) => {
   R(g, '#4aa3ff', 4, 10, 1, 1); R(g, '#4aa3ff', 5, 9, 1, 1);
 }];
 
+// The round window (original art): an empty stone ring; when finished, coloured glass.
+function roundWindow(g: Ctx, glass: boolean) {
+  const cx = 7.5, cy = 9.5;
+  for (let y = 0; y < 24; y++) for (let x = 0; x < 16; x++) {
+    const d = Math.hypot(x - cx, y - cy);
+    if (d > 7.6) continue;
+    if (d > 6.2) R(g, '#8b8f99', x, y);
+    else if (!glass) R(g, (x + y) % 2 ? '#1d2040' : '#232850', x, y);
+    else R(g, ['#c0392b', '#2e86c1', '#f1c40f', '#27ae60', '#8e44ad', '#e67e22'][(Math.floor(Math.atan2(y - cy, x - cx) * 3 / Math.PI + 3) + (d > 3 ? 1 : 0)) % 6], x, y);
+  }
+  if (glass) { R(g, '#2a2a33', 7, 3, 1, 13); R(g, '#2a2a33', 2, 9, 12, 1); }
+  R(g, '#6f737d', 3, 18, 10, 2); R(g, '#efe6cf', 5, 20, 6, 3); R(g, '#8a7f66', 6, 21, 4, 1);
+}
+DRAW['round-window'] = [16, 24, (g) => roundWindow(g, false)];
+DRAW['round-window.done'] = [16, 24, (g) => roundWindow(g, true)];
+
 // The door to the Guardian's quarters (original art): a round-topped oak door with a star.
 DRAW['quarters-door'] = [16, 24, (g) => {
   R(g, '#3b2a1a', 1, 3, 14, 21); R(g, '#3b2a1a', 3, 1, 10, 2);

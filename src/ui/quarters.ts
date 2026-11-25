@@ -18,6 +18,7 @@ const ICONS: Record<string, { pal: Record<string, string>; rows: string[] }> = {
   'door-key': { pal: { a: '#e9c45a', b: '#6b4f19' }, rows: ['', '  aaa', ' a   a', ' a   a', '  aaa', '   a', '   a', '   aa', '   a', '   aa', '', ''] },
   'moth-lamp': { pal: { a: '#ffe9a8', b: '#9fe8ff', c: '#5b3b22', d: '#c39bff' }, rows: ['  d   d', ' ddd ddd', '  d b d', '    b', '   aaa', '  aaaaa', '  aaaaa', '  aaaaa', '   aaa', '   ccc', '  ccccc', ''] },
   'so-what': { pal: { a: '#8b8f99', b: '#b7bcc6', c: '#2a2440' }, rows: ['', '', '   bbbb', '  bbbbbb', ' baacaaab', ' baccaaab', ' baacaaab', ' baacaaab', '  aaaaaa', '   aaaa', '', ''] },
+  'glass-piece': { pal: { a: '#2e86c1', b: '#9fe8ff', c: '#2a2a33' }, rows: ['', '    c', '   cac', '  caabc', '  caaabc', ' caaaaabc', ' caaaaaac', '  caaaac', '   caac', '    cc', '', ''] },
   notice: { pal: { a: '#f3eee0', b: '#8a7f66', c: '#b8483e' }, rows: ['', ' aaaaaaaa', ' a  c   a', ' abbbbb a', ' a      a', ' abbbb  a', ' a      a', ' abbbbbba', ' a      a', ' aaaaaaaa', '', ''] },
   'thread-knot': { pal: { a: '#e9cf7a', b: '#c9a24a' }, rows: ['', 'a', ' a', '  a  bb', '   abbab', '    bab', '   babba', '    bb  a', '         a', '          a', '', ''] },
   'check-weight': { pal: { a: '#d9b45a', b: '#6b4f19', c: '#fff3c4' }, rows: ['', '', '    bb', '   b  b', '   bbbb', '  aaaaaa', '  acaaaa', ' aaaaaaaa', ' aaaaaaaa', ' bbbbbbbb', '', ''] },

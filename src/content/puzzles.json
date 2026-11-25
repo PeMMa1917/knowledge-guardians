@@ -835,6 +835,98 @@
      "why": "Hana heard it from Mara: two voices, one source. And Mara saw a boy pick up a pot. 'Steal' adds a claim that she did not see."
     }
    ]
+  },
+  {
+   "id": "round-window",
+   "type": "conjecture",
+   "title": "The Unfinished Round Window",
+   "intro": "High in the north wall of the archive hall is an empty round window. A note from Glazier Imre is pinned below it: 'Put points on the circle and join every pair with lead. Count the panes. I have done it up to five points, and the panes double every time. So six points make 32 panes. I have cut 32 pieces of glass.'",
+   "claim": "The panes double with every new point.",
+   "skills": [
+    "SK-THK-07",
+    "SK-THK-14",
+    "SK-THK-05"
+   ],
+   "weave": {
+    "concepts": [
+     "certainty",
+     "justification"
+    ],
+    "atl": [
+     "thinking"
+    ],
+    "subjects": [
+     "math-aa",
+     "math-ai"
+    ],
+    "aoks": [
+     "MAT"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.certainty.window"
+    },
+    {
+     "journal": "j.window"
+    }
+   ],
+   "angles": [
+    196,
+    321,
+    125,
+    9,
+    73,
+    250
+   ],
+   "predictAt": 6,
+   "predictions": [
+    {
+     "text": "32 panes. The pattern doubles every time.",
+     "reply": "Imre thinks the same. Five cases in a row is a strong pattern. Add the point and count."
+    },
+    {
+     "text": "I cannot be sure until we count.",
+     "reply": "A careful answer. A pattern is a reason to expect something, not a promise. Add the point and count."
+    },
+    {
+     "text": "More than 32 panes.",
+     "reply": "An interesting guess. What would make the count grow faster? Add the point and count."
+    },
+    {
+     "text": "Fewer than 32 panes.",
+     "reply": "An interesting guess. What could make the count grow more slowly? Add the point and count."
+    }
+   ],
+   "reflect": [
+    {
+     "text": "Mathematics cannot be trusted.",
+     "honest": false,
+     "why": "The counting was exact every time. What failed was the jump from five cases to a rule for all cases. Mathematics found the mistake."
+    },
+    {
+     "text": "We must have counted wrong.",
+     "honest": false,
+     "why": "Look at the window: every pane is lit and counted once. Count again if you like; it is still 31."
+    },
+    {
+     "text": "Five cases made a pattern, not a proof. One case was enough to break the rule.",
+     "honest": true,
+     "why": "Yes. A pattern is evidence for a guess. A proof must hold for every number of points. One counterexample is enough to break a rule. Imre needs a 31st piece of glass, not a 32nd."
+    },
+    {
+     "text": "Patterns are useless in mathematics.",
+     "honest": false,
+     "why": "Patterns are where many good guesses start. The mistake is to stop at the pattern. The next step is a proof, or a counterexample."
+    }
+   ],
+   "proof": [
+    "Why 31? Watch one chord at a time. A new chord cuts each pane that it passes through into two.",
+    "A chord that crosses k other chords passes through k + 1 panes, so it adds k + 1 panes.",
+    "So: panes = 1 + (number of chords) + (number of crossings).",
+    "Every pair of points makes one chord. Every four points make exactly one crossing (the two diagonals of their four-sided shape).",
+    "With 6 points: 15 chords and 15 crossings, so 1 + 15 + 15 = 31. This works for every number of points, if no three chords meet at one point. That is a proof, not a pattern."
+   ]
   }
  ],
  "missions": [
@@ -1079,6 +1171,47 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-W01",
+   "world": "WORLD-01",
+   "title": "The Unfinished Round Window",
+   "knowledgeQuestion": "When is a pattern enough to be certain in mathematics?",
+   "available": {
+    "objective": "m01.o1.look"
+   },
+   "objectives": [
+    {
+     "id": "win.o1.count",
+     "title": "Optional: test Glazier Imre's rule at the round window (north wall of the archive hall).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.round-window.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "certainty",
+       "justification"
+      ],
+      "atl": [
+       "thinking"
+      ],
+      "subjects": [
+       "math-aa",
+       "math-ai"
+      ],
+      "aoks": [
+       "MAT"
+      ]
+     },
+     "skills": [
+      "SK-THK-07",
+      "SK-THK-14",
+      "SK-THK-05"
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -1225,6 +1358,30 @@
    "objective": "cart.o1.sight",
    "depth": 4,
    "text": "Mara saw the boy; Idris saw the cart tip; Hana saw the stone. Choose the report that gives each part to one first-hand witness."
+  },
+  {
+   "id": "h.win.1",
+   "objective": "win.o1.count",
+   "depth": 1,
+   "text": "Add points one at a time and watch the count of panes."
+  },
+  {
+   "id": "h.win.2",
+   "objective": "win.o1.count",
+   "depth": 2,
+   "text": "Before the sixth point, say what you expect. Any answer is fine."
+  },
+  {
+   "id": "h.win.3",
+   "objective": "win.o1.count",
+   "depth": 3,
+   "text": "Compare the sixth count with the rule. What does one case that breaks a rule show?"
+  },
+  {
+   "id": "h.win.4",
+   "objective": "win.o1.count",
+   "depth": 4,
+   "text": "Choose: five cases made a pattern, not a proof."
   }
  ],
  "journal": [
@@ -1257,6 +1414,11 @@
    "id": "j.sight",
    "text": "The Tipped Cart: where a person stands decides what they can know first-hand. Two people who heard a story from one person are one source, not two.",
    "claimKind": "interpretation"
+  },
+  {
+   "id": "j.window",
+   "text": "The round window: 1, 2, 4, 8, 16 panes, and then 31. A pattern is evidence for a guess; only a proof holds for every case. One counterexample is enough to break a rule.",
+   "claimKind": "interpretation"
   }
  ],
  "criteria": [
@@ -1288,6 +1450,11 @@
   {
    "id": "crit.perspective.sight",
    "concept": "perspective",
+   "maximum": 5
+  },
+  {
+   "id": "crit.certainty.window",
+   "concept": "certainty",
    "maximum": 5
   }
  ]

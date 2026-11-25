@@ -491,6 +491,13 @@ export type PuzzleRecord = {
    * and sorts each claim into "saw it" or "could not see it". Then the player chooses a
    * fair report. The map decides what each person could see, so the answer is checkable.
    */
+  /**
+   * A conjecture window (mathematics; a pattern is evidence, not a proof): the player adds
+   * points on a circle one at a time and the window counts its panes. Before the point
+   * where the pattern breaks, the player makes a prediction (never graded). Then the
+   * player says what the break shows.
+   */
+  | { type: 'conjecture'; angles: number[]; claim: string; predictAt: number; predictions: { text: string; reply: string }[]; reflect: { text: string; honest: boolean; why: string }[]; proof: string[] }
   | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string }[] }
 );
 

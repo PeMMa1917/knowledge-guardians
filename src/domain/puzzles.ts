@@ -134,3 +134,38 @@ export function judgeSight(p: PuzzleRecord, witness: string, claim: number, saw:
   if (saw !== could) return { ok: false, text: `Look again. Draw ${w.name}'s sightline to ${spot.label}${could ? ': is anything in the way?' : ', and follow it all the way.'}` };
   return { ok: true, text: could ? `Yes. From where ${w.name} stood, nothing blocks the view of ${spot.label}. This is first-hand.` : `Right. ${block!.label} blocks ${w.name}'s view of ${spot.label}. ${c.heard ?? ''}`.trim() };
 }
+
+const choose = (n: number, k: number) => { if (k < 0 || k > n) return 0; let r = 1; for (let i = 1; i <= k; i++) r = (r * (n - k + i)) / i; return Math.round(r); };
+
+/** Panes of a circle cut by every chord between n points in general position: 1 + C(n,2) + C(n,4). */
+export function panes(n: number): number { return 1 + choose(n, 2) + choose(n, 4); }
+
+/** Points on a unit circle for the given angles (degrees). */
+export function circlePoints(angles: number[]): [number, number][] {
+  return angles.map((a) => [Math.cos((a * Math.PI) / 180), Math.sin((a * Math.PI) / 180)]);
+}
+
+/**
+ * Chords and crossings of the actual figure, and whether it is in general position
+ * (no three chords meet at one point inside). With general position, panes = 1 + chords + crossings.
+ */
+export function chordFigure(angles: number[]): { chords: number; crossings: number; general: boolean } {
+  const pts = circlePoints(angles);
+  const chords: [number, number][] = [];
+  for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) chords.push([i, j]);
+  const hits: [number, number][] = [];
+  for (let a = 0; a < chords.length; a++) for (let b = a + 1; b < chords.length; b++) {
+    const [i, j] = chords[a], [k, l] = chords[b];
+    if (new Set([i, j, k, l]).size < 4) continue;
+    const [x1, y1] = pts[i], [x2, y2] = pts[j], [x3, y3] = pts[k], [x4, y4] = pts[l];
+    const d = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+    if (Math.abs(d) < 1e-12) continue;
+    const t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / d;
+    const u = -((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3)) / d;
+    if (t > 1e-9 && t < 1 - 1e-9 && u > 1e-9 && u < 1 - 1e-9) hits.push([x1 + t * (x2 - x1), y1 + t * (y2 - y1)]);
+  }
+  let general = true;
+  for (let a = 0; a < hits.length && general; a++) for (let b = a + 1; b < hits.length; b++)
+    if (Math.hypot(hits[a][0] - hits[b][0], hits[a][1] - hits[b][1]) < 1e-3) { general = false; break; }
+  return { chords: chords.length, crossings: hits.length, general };
+}

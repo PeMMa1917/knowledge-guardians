@@ -49,6 +49,16 @@
    "where": "The Nexus: finish the Alcove of Firsts."
   },
   {
+   "id": "glass-piece",
+   "name": "The 32nd piece of glass",
+   "text": "Glazier Imre cut it for a pane that never came. A pattern is a guess until a proof holds for every case.",
+   "if": {
+    "flag": "puzzle.round-window.done",
+    "eq": true
+   },
+   "where": "The Nexus: the round window."
+  },
+  {
    "id": "notice",
    "name": "A copy of a notice",
    "text": "From the Sign-Smith's board. One comma changed what the whole market did.",

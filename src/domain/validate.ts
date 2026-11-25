@@ -8,7 +8,7 @@
 import type { Condition, ContentPack, Effect, Weave } from './types';
 import { ATLS, CONCEPTS, PROFILE } from './types';
 import { SUBJECTS } from './curriculum';
-import { sightBlock } from './puzzles';
+import { chordFigure, panes, sightBlock } from './puzzles';
 import { openCombinations } from './lock';
 
 const MAX_TEXT = 2000;
@@ -182,6 +182,15 @@ export function validateContent(pack: ContentPack): string[] {
         if (!m.labels.some((l) => l.honest) || !m.labels.some((l) => !l.honest)) p.push(`puzzle ${z.id} method ${m.id}: needs an honest label and a label that is not`);
         m.labels.forEach((l, i) => { if (!l.why.trim()) p.push(`puzzle ${z.id} method ${m.id} label ${i + 1}: needs a reason`); });
       });
+    }
+    else if (z.type === 'conjecture') {
+      if (new Set(z.angles.map((a) => ((a % 360) + 360) % 360)).size !== z.angles.length) p.push(`puzzle ${z.id}: points must be at different angles`);
+      for (let n = 1; n <= z.angles.length; n++) {
+        const f = chordFigure(z.angles.slice(0, n));
+        if (!f.general || 1 + f.chords + f.crossings !== panes(n)) p.push(`puzzle ${z.id}: the first ${n} points are not in general position`);
+      }
+      if (z.predictAt < 2 || z.predictAt > z.angles.length) p.push(`puzzle ${z.id}: predictAt must be a point the player can add`);
+      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'sightlines') {
       const spots = new Map(z.spots.map((x) => [x.id, x]));
