@@ -825,6 +825,7 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .ware { padding: 0.6rem 0.8rem; border-radius: 10px; background: var(--panel-2); border: 1px solid var(--gold-dim); display: flex; flex-direction: column; gap: 0.2rem; }
 .ware.owned { border-color: #5fbf7a; }
 .ware p { margin: 0.2rem 0; }
+.dye-dot { display: inline-block; width: 0.9rem; height: 0.9rem; border-radius: 50%; vertical-align: -0.1rem; border: 1px solid var(--gold-dim); }
 .label-hype { font-style: italic; font-weight: 600; color: #ffad5c; }
 .label-honest { color: var(--ink); }
 .talent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.6rem; }

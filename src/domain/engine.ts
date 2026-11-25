@@ -9,6 +9,7 @@ import { TALENTS, cannotLearn, hasTalent } from './talents';
 import { GATHER_YIELD, RECIPES, RESOURCES, cannotCraft } from './craft';
 import { cannotRead, readingOf } from './readings';
 import { MIN_SOURCES, RUMOURS, rumourDone, sourcesChecked } from './rumours';
+import { BARTER, DYES, FAIR_PRICE, ferryPrice } from './trade';
 import type {
   AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
@@ -63,6 +64,9 @@ export type Command =
   | { type: 'Calibrate'; recipe: string; choice: number }
   | { type: 'TakeReading'; reading: string; choice: number }
   | { type: 'CheckRumourSource'; rumour: string; source: number }
+  | { type: 'BuyDye'; dye: string }
+  | { type: 'Barter'; resource: string; dir: 'buy' | 'sell' }
+  | { type: 'FairPrice'; choice: number }
   | { type: 'JudgeRumour'; rumour: string; verdict: number }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
@@ -133,6 +137,7 @@ export type GameEvent =
   | { kind: 'craft'; recipe: string; ok: boolean; why: string }
   | { kind: 'reading'; reading: string; ok: boolean; why: string; first: boolean }
   | { kind: 'rumour'; rumour: string; ok: boolean; why: string }
+  | { kind: 'fairprice'; ok: boolean; why: string }
   | { kind: 'trust'; id: string; name: string; rank: string }
   | { kind: 'secret'; id: string; name: string; found: number; total: number }
   | { kind: 'error'; message: string };
@@ -369,6 +374,35 @@ export class Engine {
           }
           s = apply(fx, s, out);
           events.push({ kind: 'rumour', rumour: r.id, ok, why });
+          break;
+        }
+        case 'BuyDye': {
+          const d = DYES.find((x) => x.id === cmd.dye);
+          if (!d) throw new Error('Wenna does not sell that');
+          if (s.flags[`owned.dye.${d.id}`] === true) throw new Error('You already have that dye');
+          if (s.marks < ferryPrice(d)) throw new Error('You do not have enough marks');
+          s = apply([{ addMarks: -ferryPrice(d) }, { setFlag: `owned.dye.${d.id}`, value: true }], s, out);
+          break;
+        }
+        case 'Barter': {
+          const b = BARTER[cmd.resource as keyof typeof BARTER];
+          if (!b) throw new Error('Wenna does not trade that');
+          if (cmd.dir === 'buy') {
+            if (!b.buy) throw new Error('Wenna has none of that to sell');
+            if (s.marks < b.buy) throw new Error('You do not have enough marks');
+            s = apply([{ addMarks: -b.buy }, { addNum: `res.${cmd.resource}`, by: 1 }], s, out);
+          } else {
+            if (!b.sell) throw new Error('Wenna has plenty of that already');
+            if (Number(s.flags[`res.${cmd.resource}`] ?? 0) < 1) throw new Error('You have none to sell');
+            s = apply([{ addMarks: b.sell }, { addNum: `res.${cmd.resource}`, by: -1 }], s, out);
+          }
+          break;
+        }
+        case 'FairPrice': {
+          const o = FAIR_PRICE.options[cmd.choice];
+          if (!o) throw new Error('Choose an answer');
+          s = apply([{ setFlag: 'trade.fair.asked', value: true }, ...(o.ok ? [{ setFlag: 'trade.fair.ok', value: true } as Effect] : [])], s, out);
+          events.push({ kind: 'fairprice', ok: o.ok, why: o.why });
           break;
         }
         case 'LearnTalent': {

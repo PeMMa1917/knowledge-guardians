@@ -322,6 +322,14 @@
      },
      "pts": 1,
      "why": "You found the ferry folk's star map."
+    },
+    {
+     "if": {
+      "flag": "trade.fair.ok",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You judged Wenna's prices by their parts."
     }
    ]
   }
@@ -1772,6 +1780,31 @@
     "gte": 1
    },
    "line": "'Who told you?' is my new favourite question. The tea table hates it. Then they start asking it too."
+  },
+  {
+   "id": "kip.dye",
+   "character": "kip-arden",
+   "if": {
+    "any": [
+     {
+      "flag": "owned.dye.madder",
+      "eq": true
+     },
+     {
+      "flag": "owned.dye.woad",
+      "eq": true
+     },
+     {
+      "flag": "owned.dye.weld",
+      "eq": true
+     },
+     {
+      "flag": "owned.dye.walnut",
+      "eq": true
+     }
+    ]
+   },
+   "line": "New cloak colour? It suits you. And you know exactly what it cost, part by part. Very Guardian of you."
   },
   {
    "id": "kip.letter",

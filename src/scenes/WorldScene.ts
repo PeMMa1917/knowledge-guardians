@@ -951,6 +951,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'shop': ctx.ui.openShop(); break;
       case 'reading': ctx.ui.openReading(it.reading!); break;
       case 'rumours': ctx.ui.openRumours(); break;
+      case 'trader': ctx.ui.openTrader(); break;
       case 'secret': {
         const x = (ctx.controller.pack.secrets ?? []).find((y) => y.id === it.secret);
         if (!x) break;

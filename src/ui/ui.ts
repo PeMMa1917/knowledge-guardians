@@ -9,7 +9,7 @@
 import { ctx, type UIApi } from '../app/context';
 import { LUMEN_COLOURS, LUMEN_FORMS, THEMES, lumenArt, saveSettings, type Settings } from '../app/settings';
 import { PRONOUN_SETS, cleanPronouns, personalise } from '../domain/player';
-import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads, OUTFIT, PRESET_LOOKS, SKIN, TROUSERS, decodeLook, encodeLook, type LookChoice } from '../domain/appearance';
+import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads, DYE_KEYS, OUTFIT, PRESET_LOOKS, SKIN, TROUSERS, decodeLook, encodeLook, type LookChoice } from '../domain/appearance';
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
@@ -45,6 +45,7 @@ import { dealTiles, isPair, speedRank, tileRank, type Tile } from '../domain/til
 import { TRUST_RANKS, rankOf, trustOf } from '../domain/communities';
 import { RECIPES, RESOURCES, cannotCraft, resCount, type Resource } from '../domain/craft';
 import { READINGS, cannotRead, readingOf, toolOf } from '../domain/readings';
+import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
 import { MIN_SOURCES, RUMOURS, VERDICTS, currentRumour, sourcesChecked } from '../domain/rumours';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
 import { WARES, honestLabels, lockedOption, owns, priceFor } from '../domain/shop';
@@ -590,7 +591,7 @@ export class UI implements UIApi {
   }
 
   /** Appearance choice (spec 35.1): four ready-made looks, or choose each colour and an accessory, with a live preview. */
-  private lookPicker(current: string): { el: HTMLElement; value: () => string } {
+  private lookPicker(current: string, dyes: string[] = []): { el: HTMLElement; value: () => string } {
     let choice: LookChoice = decodeLook(current);
     let presetId: string | null = PRESET_LOOKS[current] ? current : null;
     const preview = h('div', { class: 'look-preview', role: 'img' });
@@ -603,6 +604,7 @@ export class UI implements UIApi {
       const row = h('div', { class: 'swatches', role: 'radiogroup', 'aria-label': label });
       const paint = () => row.querySelectorAll('button').forEach((b) => b.setAttribute('aria-checked', String(b.dataset.v === choice[k])));
       for (const id of Object.keys(table)) {
+        if (table === OUTFIT && DYE_KEYS.includes(id) && !dyes.includes(id) && choice.outfit !== id) continue; // a dye shows once bought
         const col = Array.isArray(table[id]) ? table[id][0] : table[id];
         row.append(h('button', { type: 'button', class: 'swatch', role: 'radio', 'data-v': id, title: LABELS[id] ?? id, 'aria-label': `${label}: ${LABELS[id] ?? id}`,
           style: { background: `#${col}` }, onclick: () => { (choice as any)[k] = id; presetId = null; paint(); draw(); } }));
@@ -620,7 +622,7 @@ export class UI implements UIApi {
       ...PLAYER_LOOKS.map((id, i) => h('button', { type: 'button', class: 'look', role: 'radio', 'aria-checked': String(id === presetId), 'aria-label': `Ready-made look ${i + 1}`, onclick: (e: Event) => {
         presetId = id; choice = decodeLook(id);
         presets.querySelectorAll('.look').forEach((x) => x.setAttribute('aria-checked', String(x === e.currentTarget)));
-        const fresh = this.lookPicker(id); el.replaceWith(fresh.el); api.value = () => fresh.value();
+        const fresh = this.lookPicker(id, dyes); el.replaceWith(fresh.el); api.value = () => fresh.value();
       } }, h('span', { class: 'sprite', style: { backgroundImage: `url(assets/art/generated/characters/${id}.png)` } }))));
     const el = h('div', { class: 'look-picker' }, presets, h('div', { class: 'look-body' }, preview, custom));
     draw();
@@ -704,7 +706,7 @@ export class UI implements UIApi {
     const c = ctx.controller;
     const pl = c.state.player;
     const pron = this.pronounPicker(pl.pronouns);
-    const lookPick = this.lookPicker(pl.look);
+    const lookPick = this.lookPicker(pl.look, DYE_KEYS.filter((k) => ownsDye(c.state.flags, k)));
     const o = c.pack.origins.find((x) => x.id === pl.origin);
     this.openModal('guardian wide', 'My Guardian', this.closeBtn(), h('h2', {}, pl.name),
       h('p', { class: 'label' }, 'Appearance'), lookPick.el,
@@ -2632,6 +2634,58 @@ export class UI implements UIApi {
         h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
     };
     render();
+  }
+
+  /** Wenna's barter boat (ferry landing): cloak dyes with their price parts, and materials for the bench. */
+  openTrader(): void {
+    const c = ctx.controller;
+    const box = this.openModal('shop-panel wide', "Wenna's barter boat");
+    this.sfx('sfx.coins');
+    const ask = () => {
+      box.replaceChildren(this.closeBtn(), h('h2', {}, "Wenna's barter boat"),
+        h('p', {}, "Wenna trades up and down the river. 'Before you buy, a question. I ask everyone.'"),
+        h('p', {}, h('strong', {}, FAIR_PRICE.q())),
+        h('div', { class: 'notice-options' }, ...FAIR_PRICE.options.map((o, i) => h('button', { type: 'button', onclick: () => {
+          const ev = c.dispatch({ type: 'FairPrice', choice: i });
+          const res = ev.find((e) => e.kind === 'fairprice') as Extract<GameEvent, { kind: 'fairprice' }> | undefined;
+          if (!res) return;
+          this.sfx(res.ok ? 'sfx.sparkle' : 'sfx.page');
+          render(res.why);
+        } }, o.text))));
+    };
+    const render = (note?: string) => {
+      const s = c.state;
+      const res = (k: Resource) => resCount(s.flags, k);
+      box.replaceChildren(this.closeBtn(), h('h2', {}, "Wenna's barter boat"),
+        ...(note ? [h('p', { class: 'clue-view fresh', role: 'status' }, note)] : []),
+        h('p', { class: 'fine', role: 'status' }, `You have ${s.marks} marks. Dyes add a cloak colour (change it in Menu, My Guardian). They give no XP and no power.`),
+        h('h3', {}, 'Cloak dyes, and the parts of each price'),
+        h('div', { class: 'shop-grid' }, ...DYES.map((d) => {
+          const have = ownsDye(s.flags, d.id), price = ferryPrice(d);
+          return h('div', { class: `ware ${have ? 'owned' : ''}` },
+            h('strong', {}, h('span', { class: 'dye-dot', style: { background: `#${OUTFIT[d.id][0]}` }, 'aria-hidden': 'true' }), ' ', d.name),
+            h('p', {}, d.note),
+            h('p', { class: 'fine' }, `Here: material ${d.parts.material} + work ${d.parts.work} = ${price} marks.`),
+            h('p', { class: 'fine' }, `In Emberford: ${price} + carrying ${TOWN_COSTS.carrying} + toll ${TOWN_COSTS.toll} + stall ${TOWN_COSTS.stall} = ${townPrice(d)} marks.`),
+            have ? h('span', { class: 'fine' }, 'Yours. Choose it in My Guardian.')
+              : h('button', { type: 'button', disabled: s.marks < price, onclick: () => {
+                const ev = c.dispatch({ type: 'BuyDye', dye: d.id });
+                if (ev.some((e) => e.kind === 'error')) return;
+                this.sfx('sfx.pickup'); render(`${d.name} is yours. Open Menu, then My Guardian, to dye your cloak.`);
+              } }, s.marks < price ? 'Not enough marks' : `Buy for ${price}`));
+        })),
+        h('h3', {}, 'Materials for the Maker\'s bench'),
+        h('p', { class: 'fine' }, "Reeds and clay are plenty here, so they are cheap. Ore comes from Emberford's hills, so Wenna pays well for it. A price says something about the place."),
+        h('div', { class: 'row' },
+          ...(Object.keys(BARTER) as Resource[]).map((k) => {
+            const b = BARTER[k];
+            return b.buy
+              ? h('button', { type: 'button', disabled: s.marks < b.buy, onclick: () => { if (!c.dispatch({ type: 'Barter', resource: k, dir: 'buy' }).some((e) => e.kind === 'error')) { this.sfx('sfx.coins'); render(); } } }, `Buy 1 ${k === 'reed' ? 'reed' : RESOURCES[k].toLowerCase()} (${b.buy}) · you have ${res(k)}`)
+              : h('button', { type: 'button', disabled: res(k) < 1, onclick: () => { if (!c.dispatch({ type: 'Barter', resource: k, dir: 'sell' }).some((e) => e.kind === 'error')) { this.sfx('sfx.coins'); render(); } } }, `Sell 1 ${RESOURCES[k].toLowerCase()} (+${b.sell}) · you have ${res(k)}`);
+          })),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    if (c.state.flags['trade.fair.asked'] === true) render(); else ask();
   }
 
   private wareName(w: (typeof WARES)[number]): string {

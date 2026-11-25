@@ -20,7 +20,11 @@ export const OUTFIT: Record<string, [string, string, string]> = {
   green: ['4f9a3f', '35692b', '244a1d'], blue: ['3f6fc4', '2c4e8a', '1e365e'], plum: ['9a3f73', '6b2b50', '4a1d37'],
   slate: ['5d6b7a', '414b56', '2d343c'], orange: ['d46a2a', '9c4c1d', '6b3313'], red: ['c43c3c', '882e2e', '681c1c'],
   cream: ['e6dcc0', 'b8ad90', '8a8068'],
+  // Plant dyes from Wenna's barter boat (src/domain/trade.ts). Shown in the picker once bought; the base colours are always free.
+  madder: ['b5452f', '86311f', '5e2215'], woad: ['4a6a9a', '34507a', '233857'], weld: ['c9b843', '978a2f', '6a601f'], walnut: ['8a6240', '67482e', '47321f'],
 };
+/** Outfit colours that are sold as dyes (cosmetic only). */
+export const DYE_KEYS = ['madder', 'woad', 'weld', 'walnut'];
 export const TROUSERS: Record<string, [string, string]> = {
   indigo: ['65659b', '5586b9'], brown: ['6a4834', '8a6448'], charcoal: ['3d3d46', '5a5a66'], olive: ['5b6332', '7a8448'],
   sand: ['a08a5e', 'c4ad7c'], wine: ['6b2b3a', '8f3f52'],
@@ -49,6 +53,7 @@ export const LABELS: Record<string, string> = {
   pale: 'pale', light: 'light', warm: 'warm', olive: 'olive', tan: 'tan', brown: 'brown', deep: 'deep brown', dark: 'very dark',
   black: 'black', auburn: 'auburn', blonde: 'blonde', grey: 'grey', white: 'white', blue: 'blue', pink: 'pink', green: 'green',
   teal: 'teal', violet: 'violet', gold: 'gold', slate: 'slate', orange: 'orange', red: 'red', plum: 'plum', cream: 'cream',
+  madder: 'madder red', woad: 'woad blue', weld: 'weld yellow', walnut: 'walnut brown',
   indigo: 'indigo', charcoal: 'charcoal', sand: 'sand', wine: 'wine', cyan: 'sky blue', rose: 'rose',
   none: 'none', headband: 'headband', scarf: 'scarf', both: 'headband and scarf',
   short: 'short', long: 'long', bun: 'bun', curls: 'full curls', covered: 'head scarf',

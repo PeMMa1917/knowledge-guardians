@@ -483,6 +483,8 @@ DRAW['workbench'] = [16, 24, (g) => {
   R(g, '#5b3b22', 1, 16, 2, 8); R(g, '#5b3b22', 13, 16, 2, 8); R(g, '#8a5a30', 0, 13, 16, 3); R(g, '#a87445', 0, 13, 16, 1);
   R(g, '#c98d60', 2, 9, 3, 4); R(g, '#8b8f99', 7, 6, 1, 7); R(g, '#4a4d55', 6, 12, 3, 1); R(g, '#b98d55', 11, 8, 1, 5); R(g, '#2a2440', 11, 12, 1, 1);
 }];
+// Wenna's barter boat: a moored boat with dye pots and bundles.
+DRAW['barter-boat'] = [16, 24, (g) => { R(g, '#2b6f9a', 0, 18, 16, 6); R(g, '#6b4a2a', 1, 14, 14, 5); R(g, '#8a5a30', 2, 14, 12, 1); R(g, '#5b3b22', 7, 2, 1, 12); R(g, '#e8e2d0', 8, 3, 5, 7); R(g, '#b5452f', 2, 11, 2, 3); R(g, '#4a6a9a', 5, 11, 2, 3); R(g, '#c9b843', 9, 11, 2, 3); R(g, '#8a6240', 12, 11, 2, 3); R(g, '#9fd0ff', 1, 19, 4, 1); }];
 // The rumour mill: a small tea table with a pot and two cups.
 DRAW['tea-table'] = [16, 24, (g) => { R(g, '#5b3b22', 2, 17, 2, 7); R(g, '#5b3b22', 12, 17, 2, 7); R(g, '#8a5a30', 0, 14, 16, 3); R(g, '#a87445', 0, 14, 16, 1); R(g, '#b5523b', 5, 8, 6, 6); R(g, '#d06a50', 6, 8, 2, 2); R(g, '#3b2a1a', 7, 6, 2, 2); R(g, '#b5523b', 11, 10, 2, 1); R(g, '#e8e2d0', 1, 11, 3, 3); R(g, '#e8e2d0', 12, 11, 3, 3); R(g, '#9fd0ff', 2, 6, 1, 3); }];
 // Field readings: where a made tool can test a claim (rain stake, plumb mark, flood post).

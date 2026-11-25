@@ -8,6 +8,8 @@ import { Driver } from './driver';
 import { READINGS } from '../src/domain/readings';
 import { RECIPES } from '../src/domain/craft';
 import { MIN_SOURCES, RUMOURS, currentRumour, rumourOrder } from '../src/domain/rumours';
+import { DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, townPrice } from '../src/domain/trade';
+import { DYE_KEYS, OUTFIT } from '../src/domain/appearance';
 
 const pack = buildPack();
 const done = (d: Driver, id: string) => d.run({ type: 'SetFlag', flag: `puzzle.${id}.done`, value: true });
@@ -222,5 +224,30 @@ describe('the rumour mill', () => {
     for (const x of RUMOURS) { expect(x.sources.length).toBeGreaterThanOrEqual(MIN_SOURCES); for (const w of x.whys) expect(w.length).toBeGreaterThan(20); }
     expect(MAPS['aethelgard.emberford'].interactables.some((i) => i.kind === 'rumours')).toBe(true);
     for (const x of RUMOURS) if (x.fray) expect(pack.fray.some((f: { id: string }) => f.id === x.fray)).toBe(true);
+  });
+});
+
+describe("Wenna's barter boat", () => {
+  it('prices show their parts; dyes are cosmetic; materials trade between places', () => {
+    const d = new Driver();
+    for (const x of DYES) expect(townPrice(x) - ferryPrice(x)).toBe(TOWN_COSTS.carrying + TOWN_COSTS.toll + TOWN_COSTS.stall);
+    for (const x of DYES) expect(OUTFIT[x.id]).toBeDefined();
+    expect(FAIR_PRICE.options.filter((o) => o.ok)).toHaveLength(1);
+    d.run({ type: 'FairPrice', choice: 1 });
+    expect(d.s.flags['trade.fair.ok']).toBe(true);
+    expect(() => d.run({ type: 'BuyDye', dye: 'woad' })).toThrow(/marks/);
+    d.s = { ...d.s, marks: 20 };
+    const before = d.events.length;
+    d.run({ type: 'BuyDye', dye: 'woad' });
+    expect(d.s.marks).toBe(20 - ferryPrice(DYES[1]));
+    expect(d.events.slice(before).some((e) => e.kind === 'xp')).toBe(false);
+    expect(() => d.run({ type: 'BuyDye', dye: 'woad' })).toThrow(/already/);
+    d.run({ type: 'Barter', resource: 'reed', dir: 'buy' });
+    expect(d.s.flags['res.reed']).toBe(1);
+    expect(() => d.run({ type: 'Barter', resource: 'ore', dir: 'sell' })).toThrow(/none/);
+    expect(() => d.run({ type: 'Barter', resource: 'reed', dir: 'sell' })).toThrow(/plenty/);
+    // The base outfit colours stay free: a dye is extra, never a lock on identity.
+    expect(Object.keys(OUTFIT).filter((k) => !DYE_KEYS.includes(k)).length).toBeGreaterThanOrEqual(10);
+    expect(MAPS['aethelgard.ferry'].interactables.some((i) => i.kind === 'trader')).toBe(true);
   });
 });
