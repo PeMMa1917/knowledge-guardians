@@ -375,3 +375,11 @@ button.chosen { outline: 2px solid var(--gold); }
 .bestiary li.unknown { opacity: 0.5; border-left-color: transparent; }
 .bestiary li p { margin: 4px 0; }
 .bestiary .chip { font-size: 0.8em; padding: 1px 6px; border-radius: 10px; background: rgba(176, 106, 212, 0.25); }
+
+/* Photo mode */
+body.photo-mode #ui > :not(.photo-bar) { display: none !important; }
+body.photo-mode #captions { display: none !important; }
+.photo-bar { position: fixed; left: 50%; bottom: 12px; transform: translateX(-50%); z-index: 70; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; justify-content: center;
+  background: rgba(18, 15, 36, 0.92); border: 1px solid var(--gold, #e9cf7a); border-radius: 12px; padding: 8px 12px; max-width: min(960px, calc(100vw - 24px)); }
+.photo-bar .row { display: inline-flex; align-items: center; gap: 4px; }
+.photo-bar select { font: inherit; }

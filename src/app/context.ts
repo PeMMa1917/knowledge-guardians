@@ -34,6 +34,10 @@ export interface WorldApi {
   applySettings(): void;
   playSfx(key: string): void;
   snapshotPosition(): void;
+  /** Photo mode: camera zoom, a colour filter, and who is in the picture. */
+  photoSet(o: { zoom: number; filter: string; lumen: boolean; pet: boolean } | null): boolean;
+  photoSnap(cb: (img: HTMLImageElement | null) => void): void;
+  photoZoom(): number;
   /** Redraw state-driven visuals: Fray glows, the Provenance Thread, visible objects. */
   refreshWorld(): void;
 }

@@ -11,6 +11,7 @@ import { LUMEN_COLOURS, THEMES, saveSettings, type Settings } from '../app/setti
 import { PRONOUN_SETS, cleanPronouns, personalise } from '../domain/player';
 import { ACCENT, ACCESSORIES, HAIR, LABELS, OUTFIT, PRESET_LOOKS, SKIN, TROUSERS, decodeLook, encodeLook, type LookChoice } from '../domain/appearance';
 import { previewLook } from '../scenes/looks';
+import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
 import { STAGE_LABEL, nextStep, skillStage, type SkillStage } from '../domain/skills';
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
@@ -142,6 +143,7 @@ export class UI implements UIApi {
     const tag = (e.target as HTMLElement)?.tagName;
     if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') { if (e.key === 'Escape') this.closeModal(); return; }
     if (!this.hud?.isConnected) return;
+    if (this.photoBar) { if (e.key === 'Escape') this.closePhotoMode(); return; }
     if (e.key === 'Escape') { if (this.modal) this.closeModal(); else this.openMenu(); return; }
     if (this.modal) {
       // Number keys choose dialogue options.
@@ -1375,11 +1377,82 @@ export class UI implements UIApi {
         h('button', { 'data-autofocus': true, onclick: () => this.closeModal() }, 'Resume'),
         h('button', { onclick: () => { c.suspend('Save and leave'); this.closeModal(false); this.toast('Saved. You can close the tab.', 'save'); (window as any).kgToTitle?.(); } }, 'Save and leave'),
         h('button', { onclick: () => this.openGuardian() }, 'My Guardian (look and pronouns)'),
+        h('button', { onclick: () => { this.closeModal(false); this.openPhotoMode(); } }, 'Photo mode'),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
         h('button', { onclick: () => this.openControls() }, 'Controls'),
         c.canRecover() ? h('button', { onclick: () => this.confirmRecovery() }, 'Checkpoint recovery…') : null,
         h('button', { onclick: () => this.openCredits() }, 'Credits and sources')));
+  }
+
+  // ---------------------------------------------------------- photo mode
+
+  private photoBar: HTMLElement | null = null;
+
+  /**
+   * Photo mode: hide the interface, frame the scene, add a filter, and save a picture
+   * to this device. Nothing is uploaded. The player can still walk to set up the shot.
+   */
+  openPhotoMode(): void {
+    if (!ctx.world || this.photoBar) return;
+    const c = ctx.controller;
+    const FILTERS: [string, string][] = [['none', 'No filter'], ['sepia', 'Archive print'], ['mono', 'Black and white'], ['print', 'Old photo'], ['warm', 'Warm film'], ['night', 'Night'], ['pinhole', 'Pinhole camera']];
+    const FRAMES: [string, string][] = [['none', 'No frame'], ['gold', 'Gold'], ['archive', 'Archive violet'], ['wood', 'Wood']];
+    const o = { zoom: Math.round(ctx.world.photoZoom()), filter: 'none', lumen: true, pet: true, frame: 'gold', caption: true };
+    let filters = true;
+    const apply = () => { filters = ctx.world!.photoSet({ zoom: o.zoom, filter: o.filter, lumen: o.lumen, pet: o.pet }); };
+    const bar = h('div', { class: 'photo-bar', role: 'region', 'aria-label': 'Photo mode' });
+    const render = () => {
+      clear(bar);
+      const pick = (list: [string, string][], key: 'filter' | 'frame', label: string) => h('label', {}, `${label} `,
+        h('select', { onchange: (e: Event) => { (o as any)[key] = (e.target as HTMLSelectElement).value; apply(); render(); } },
+          ...list.map(([id, name]) => h('option', { value: id, selected: o[key] === id }, name))));
+      const tick = (key: 'lumen' | 'pet' | 'caption', label: string) => h('label', { class: 'check' },
+        h('input', { type: 'checkbox', checked: o[key], onchange: (e: Event) => { o[key] = (e.target as HTMLInputElement).checked; apply(); } }), ` ${label}`);
+      const hasPet = !!c.state.flags['lor.out'];
+      bar.append(h('strong', {}, '📷 Photo mode'),
+        h('span', { class: 'row' }, h('button', { 'aria-label': 'Zoom out', onclick: () => { o.zoom = Math.max(1, o.zoom - 1); apply(); } }, '−'), ' Zoom ', h('button', { 'aria-label': 'Zoom in', onclick: () => { o.zoom = Math.min(6, o.zoom + 1); apply(); } }, '+')),
+        filters ? pick(FILTERS, 'filter', 'Filter') : h('span', { class: 'fine' }, 'Filters need WebGL.'),
+        pick(FRAMES, 'frame', 'Frame'), tick('lumen', 'Lumen'), hasPet ? tick('pet', 'Loreling') : '', tick('caption', 'Caption'),
+        h('button', { class: 'primary', onclick: () => this.savePhoto(o) }, 'Save picture'),
+        h('button', { onclick: () => this.closePhotoMode() }, 'Done (Esc)'),
+        h('small', { class: 'fine' }, 'Walk to set up the shot. The picture is saved only on this device.'));
+    };
+    this.photoBar = bar;
+    document.body.classList.add('photo-mode');
+    this.root.append(bar);
+    apply(); render();
+  }
+
+  private closePhotoMode(): void {
+    this.photoBar?.remove(); this.photoBar = null;
+    document.body.classList.remove('photo-mode');
+    ctx.world?.photoSet(null);
+  }
+
+  private savePhoto(o: { frame: string; caption: boolean }): void {
+    const c = ctx.controller;
+    ctx.world?.photoSnap((img) => {
+      if (!img) { this.toast('This browser could not take the picture.', 'error'); return; }
+      const pad = o.frame === 'none' ? 0 : 18, capH = o.caption ? 44 : 0;
+      const cv = document.createElement('canvas');
+      cv.width = img.width + pad * 2; cv.height = img.height + pad * 2 + capH;
+      const g = cv.getContext('2d')!;
+      const FRAME: Record<string, [string, string]> = { gold: ['#c9a24a', '#f2d27a'], archive: ['#3a2b5e', '#7d5bc4'], wood: ['#5b3b22', '#8a6448'], none: ['#120f24', '#120f24'] };
+      const [dark, light] = FRAME[o.frame] ?? FRAME.none;
+      g.fillStyle = dark; g.fillRect(0, 0, cv.width, cv.height);
+      if (pad) { g.fillStyle = light; g.fillRect(4, 4, cv.width - 8, 3); g.fillRect(4, 4, 3, cv.height - 8); }
+      g.drawImage(img, pad, pad);
+      if (o.caption) {
+        const place = MAPS[c.state.mapId]?.name ?? '';
+        g.fillStyle = o.frame === 'gold' ? '#2a1a0a' : '#fff8e6'; g.font = '600 18px Lexend, sans-serif'; g.textBaseline = 'middle';
+        g.fillText(`${c.state.player.name} · ${place} · ${new Date().toLocaleDateString()}`, pad + 6, img.height + pad * 2 + capH / 2 - (pad ? 6 : 0));
+      }
+      const a = h('a', { href: cv.toDataURL('image/png'), download: `knowledge-guardians-${Date.now()}.png` }) as HTMLAnchorElement;
+      document.body.append(a); a.click(); a.remove();
+      this.sfx('sfx.sparkle');
+      this.toast('Picture saved to this device.', 'save');
+    });
   }
 
   private openControls(): void {

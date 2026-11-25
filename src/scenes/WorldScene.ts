@@ -77,7 +77,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.npcs = []; this.follower = null; this.trail = []; this.path = []; this.pendingInteract = null;
     this.zonesInside = new Set(); this.target = null; this.fx = []; this.lightPools = []; this.portalRing = null;
     this.transitioning = false; this.paused = false;
-    this.objArt = new Map(); this.pet = null; this.frayGlows = new Map(); this.threadGfx = null; this.gapMark = null; this.exploreAcc = 0;
+    this.objArt = new Map(); this.pet = null; this.photo = null; this.frayGlows = new Map(); this.threadGfx = null; this.gapMark = null; this.exploreAcc = 0;
     const s = ctx.controller.state;
     this.map = MAPS[s.mapId] ?? MAPS['nexus.archive'];
     this.buildMap();
@@ -332,8 +332,41 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.scene.restart();
   }
 
+  /** Photo mode (customisation): null leaves it. Returns false when filters are not available (no WebGL). */
+  private photo: { zoom: number; filter: string; lumen: boolean; pet: boolean } | null = null;
+  photoSet(o: { zoom: number; filter: string; lumen: boolean; pet: boolean } | null): boolean {
+    this.photo = o;
+    const cam = this.cameras.main;
+    const fx = (cam as any).postFX as Phaser.GameObjects.Components.FX | undefined;
+    fx?.clear();
+    this.lumen?.setVisible(!o || o.lumen); this.lumenGlow?.setVisible(!o || o.lumen);
+    if (this.pet) { this.pet.sprite.setVisible(!o || o.pet); this.pet.glow.setVisible(!o || o.pet); }
+    for (const a of this.npcs) a.mark?.setVisible(!o); // no speech marks in pictures
+    this.fitCamera();
+    if (!o || !fx) return !!fx;
+    const m = fx.addColorMatrix();
+    switch (o.filter) {
+      case 'sepia': m.sepia(); break;
+      case 'mono': m.grayscale(1); break;
+      case 'night': m.night(0.6); break;
+      case 'warm': m.kodachrome(); break;
+      case 'print': m.polaroid(); break;
+      case 'pinhole': m.vintagePinhole(); break;
+      default: fx.clear();
+    }
+    if (o.filter !== 'none') fx.addVignette(0.5, 0.5, 0.9, 0.35);
+    return true;
+  }
+
+  photoZoom(): number { return this.cameras.main.zoom; }
+
+  photoSnap(cb: (img: HTMLImageElement | null) => void): void {
+    try { this.game.renderer.snapshot((img) => cb(img as HTMLImageElement)); } catch { cb(null); }
+  }
+
   private fitCamera(): void {
     const cam = this.cameras.main;
+    if (this.photo) { cam.setZoom(this.photo.zoom); cam.setRoundPixels(true); return; }
     const z = Math.max(2, Math.floor(Math.min(this.scale.width / (20 * TILE), this.scale.height / (12 * TILE))));
     cam.setZoom(z);
     cam.setRoundPixels(true);
