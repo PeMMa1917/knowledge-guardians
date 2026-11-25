@@ -8,6 +8,7 @@ import { WARES, priceFor } from './shop';
 import { TALENTS, cannotLearn, hasTalent } from './talents';
 import { GATHER_YIELD, RECIPES, RESOURCES, cannotCraft } from './craft';
 import { cannotRead, readingOf } from './readings';
+import { MIN_SOURCES, RUMOURS, rumourDone, sourcesChecked } from './rumours';
 import type {
   AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
@@ -61,6 +62,8 @@ export type Command =
   | { type: 'Craft'; recipe: string; choice: number }
   | { type: 'Calibrate'; recipe: string; choice: number }
   | { type: 'TakeReading'; reading: string; choice: number }
+  | { type: 'CheckRumourSource'; rumour: string; source: number }
+  | { type: 'JudgeRumour'; rumour: string; verdict: number }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
@@ -129,6 +132,7 @@ export type GameEvent =
   | { kind: 'clue'; clue: string; keepsake: string; text: string }
   | { kind: 'craft'; recipe: string; ok: boolean; why: string }
   | { kind: 'reading'; reading: string; ok: boolean; why: string; first: boolean }
+  | { kind: 'rumour'; rumour: string; ok: boolean; why: string }
   | { kind: 'trust'; id: string; name: string; rank: string }
   | { kind: 'secret'; id: string; name: string; found: number; total: number }
   | { kind: 'error'; message: string };
@@ -344,6 +348,27 @@ export class Engine {
           const first = s.flags[`reading.${r.id}`] !== true;
           if (first) s = apply([{ setFlag: `reading.${r.id}`, value: true }, { addNum: 'count.readings', by: 1 }, { addMarks: 4 }], s, out);
           events.push({ kind: 'reading', reading: r.id, ok: o.ok, why: o.why, first });
+          break;
+        }
+        case 'CheckRumourSource': case 'JudgeRumour': {
+          const r = RUMOURS.find((x) => x.id === cmd.rumour);
+          if (!r) throw new Error('Unknown rumour');
+          if (cmd.type === 'CheckRumourSource') {
+            if (!r.sources[cmd.source]) throw new Error('Unknown source');
+            s = apply([{ setFlag: `mill.${r.id}.s${cmd.source}`, value: true }], s, out);
+            break;
+          }
+          if (sourcesChecked(s.flags, r).length < MIN_SOURCES) throw new Error(`Check at least ${MIN_SOURCES} sources first. One source alone cannot be checked against anything.`);
+          const why = r.whys[cmd.verdict];
+          if (why === undefined) throw new Error('Choose a verdict');
+          const ok = cmd.verdict === r.best;
+          const fx: Effect[] = [{ addNum: `mill.${r.id}.tries`, by: 1 }];
+          if (ok && !rumourDone(s.flags, r.id)) {
+            fx.push({ setFlag: `mill.${r.id}.done`, value: true }, { addNum: 'count.rumours', by: 1 }, { addMarks: 5 });
+            if (r.fray) fx.push({ setFlag: `meet.fray.${r.fray}`, value: true });
+          }
+          s = apply(fx, s, out);
+          events.push({ kind: 'rumour', rumour: r.id, ok, why });
           break;
         }
         case 'LearnTalent': {

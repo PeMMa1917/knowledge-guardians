@@ -188,6 +188,14 @@
      },
      "pts": 1,
      "why": "You measured the rain before you repeated a worry."
+    },
+    {
+     "if": {
+      "num": "count.rumours",
+      "gte": 2
+     },
+     "pts": 1,
+     "why": "You traced rumours at the tea table before you passed them on."
     }
    ]
   },
@@ -1755,6 +1763,15 @@
     "gte": 1
    },
    "line": "You measured it yourself! Now when someone says 'everyone knows', we can say 'we checked'. Politely."
+  },
+  {
+   "id": "kip.rumours",
+   "character": "kip-arden",
+   "if": {
+    "num": "count.rumours",
+    "gte": 1
+   },
+   "line": "'Who told you?' is my new favourite question. The tea table hates it. Then they start asking it too."
   },
   {
    "id": "kip.letter",

@@ -7,6 +7,7 @@ import type { Condition } from '../src/domain/types';
 import { Driver } from './driver';
 import { READINGS } from '../src/domain/readings';
 import { RECIPES } from '../src/domain/craft';
+import { MIN_SOURCES, RUMOURS, currentRumour, rumourOrder } from '../src/domain/rumours';
 
 const pack = buildPack();
 const done = (d: Driver, id: string) => d.run({ type: 'SetFlag', flag: `puzzle.${id}.done`, value: true });
@@ -198,5 +199,28 @@ describe('gathering and crafting', () => {
       expect(spot).toBeDefined();
     }
     for (const t of RECIPES) expect(READINGS.some((r) => r.tool === t.id)).toBe(true);
+  });
+});
+
+describe('the rumour mill', () => {
+  it('needs two sources before a verdict, explains every verdict, and moves on only when the evidence fits', () => {
+    const d = new Driver();
+    const r = currentRumour(d.s.flags, 20000)!;
+    expect(() => d.run({ type: 'JudgeRumour', rumour: r.id, verdict: r.best })).toThrow(/at least 2/);
+    d.run({ type: 'CheckRumourSource', rumour: r.id, source: 0 });
+    d.run({ type: 'CheckRumourSource', rumour: r.id, source: 1 });
+    const wrong = (r.best + 1) % 4;
+    d.run({ type: 'JudgeRumour', rumour: r.id, verdict: wrong });
+    expect(d.events.find((e) => e.kind === 'rumour')).toMatchObject({ ok: false });
+    expect(currentRumour(d.s.flags, 20000)!.id).toBe(r.id);
+    const marks = d.s.marks;
+    d.run({ type: 'JudgeRumour', rumour: r.id, verdict: r.best });
+    expect(d.s.marks).toBe(marks + 5);
+    expect(currentRumour(d.s.flags, 20000)!.id).not.toBe(r.id);
+    // The same seed gives the same order (fair randomness); every rumour is placed in the town.
+    expect(rumourOrder(5).map((x) => x.id)).toEqual(rumourOrder(5).map((x) => x.id));
+    for (const x of RUMOURS) { expect(x.sources.length).toBeGreaterThanOrEqual(MIN_SOURCES); for (const w of x.whys) expect(w.length).toBeGreaterThan(20); }
+    expect(MAPS['aethelgard.emberford'].interactables.some((i) => i.kind === 'rumours')).toBe(true);
+    for (const x of RUMOURS) if (x.fray) expect(pack.fray.some((f: { id: string }) => f.id === x.fray)).toBe(true);
   });
 });

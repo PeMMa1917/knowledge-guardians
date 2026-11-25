@@ -45,6 +45,7 @@ import { dealTiles, isPair, speedRank, tileRank, type Tile } from '../domain/til
 import { TRUST_RANKS, rankOf, trustOf } from '../domain/communities';
 import { RECIPES, RESOURCES, cannotCraft, resCount, type Resource } from '../domain/craft';
 import { READINGS, cannotRead, readingOf, toolOf } from '../domain/readings';
+import { MIN_SOURCES, RUMOURS, VERDICTS, currentRumour, sourcesChecked } from '../domain/rumours';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
 import { WARES, honestLabels, lockedOption, owns, priceFor } from '../domain/shop';
 import { calendarGrid, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
@@ -2537,6 +2538,8 @@ export class UI implements UIApi {
       ['Keepsakes found', flagsOn('keepsake.', (pk.keepsakes ?? []).map((k) => k.id)), (pk.keepsakes ?? []).length],
       ['Evidence cards', s.cards.length, pk.cards.length],
       ['Secrets found', flagsOn('secret.', (pk.secrets ?? []).map((k) => k.id)), (pk.secrets ?? []).length],
+      ['Field readings taken', Number(s.flags['count.readings'] ?? 0), READINGS.length],
+      ['Rumours traced to a source', Number(s.flags['count.rumours'] ?? 0), RUMOURS.length],
       ['Places visited', places, Object.keys(MAPS).length],
       ['Skills used (Skill Atlas)', Object.keys(c.permanent.skills ?? {}).length, (pk.skills ?? []).length],
       ['Areas of knowledge met', Object.keys(c.permanent.met.aoks).length, Object.keys(AOK_NAMES).length],
@@ -2700,6 +2703,47 @@ export class UI implements UIApi {
               : h('button', { type: 'button', disabled: !!why, onclick: () => ask(r, 'Craft') }, why ?? 'Make it'));
         })),
         h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    render();
+  }
+
+  /** The rumour mill at the tea table: hear one rumour, check sources, then give a verdict. */
+  openRumours(): void {
+    const c = ctx.controller;
+    const d = new Date();
+    const seed = Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000); // the same order for the whole class today
+    const box = this.openModal('bench-panel wide', 'The rumour mill');
+    this.sfx('sfx.page');
+    const render = (note?: { ok: boolean; why: string; id: string }) => {
+      const f = c.state.flags;
+      const solved = Number(f['count.rumours'] ?? 0);
+      const r = note?.ok ? RUMOURS.find((x) => x.id === note.id) ?? null : currentRumour(f, seed);
+      const intro = h('p', { class: 'fine' }, `Rumours traced: ${solved} of ${RUMOURS.length}. Check at least ${MIN_SOURCES} sources, then say what the evidence supports.`);
+      if (!r) {
+        box.replaceChildren(this.closeBtn(), h('h2', {}, 'The rumour mill'), h('p', {}, 'The tea table is quiet. You have traced every rumour in Emberford for now. People here now ask "who told you?" before they pass a story on.'), intro,
+          h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+        return;
+      }
+      const seen = sourcesChecked(f, r);
+      const enough = seen.length >= MIN_SOURCES;
+      box.replaceChildren(this.closeBtn(), h('h2', {}, 'The rumour mill'),
+        h('p', { class: 'fine' }, `${r.heard}:`), h('p', { class: 'clue-view' }, r.line),
+        h('h3', {}, 'Sources'),
+        ...r.sources.map((src, i) => seen.includes(i)
+          ? h('p', { class: 'clue-view fresh' }, h('strong', {}, `${src.label}: `), src.text)
+          : note?.ok ? null : h('button', { type: 'button', class: 'source-btn', onclick: () => { c.dispatch({ type: 'CheckRumourSource', rumour: r.id, source: i }); this.sfx('sfx.page'); render(); } }, src.label)).filter((x) => x !== null) as HTMLElement[],
+        ...(note ? [h('p', { class: `clue-view ${note.ok ? 'fresh' : ''}`, role: 'status' }, note.why), ...(note.ok ? [h('p', {}, h('strong', {}, 'The idea: '), r.idea)] : [])] : []),
+        note?.ok ? h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => render() }, 'Listen for the next rumour'), h('button', { onclick: () => this.closeModal() }, 'Close'))
+          : h('div', {}, h('h3', {}, 'Your verdict'),
+            h('div', { class: 'notice-options' }, ...VERDICTS.map((v, i) => h('button', { type: 'button', disabled: !enough, onclick: () => {
+              const ev = c.dispatch({ type: 'JudgeRumour', rumour: r.id, verdict: i });
+              const res = ev.find((e) => e.kind === 'rumour') as Extract<GameEvent, { kind: 'rumour' }> | undefined;
+              if (!res) return;
+              this.sfx(res.ok ? 'sfx.sparkle' : 'sfx.page');
+              render({ ok: res.ok, why: res.ok ? res.why : `${v}? ${res.why} Think again.`, id: r.id });
+            } }, v))),
+            enough ? null : h('p', { class: 'fine' }, `Check ${MIN_SOURCES - seen.length} more source${MIN_SOURCES - seen.length === 1 ? '' : 's'} before you judge.`)),
+        intro);
     };
     render();
   }
