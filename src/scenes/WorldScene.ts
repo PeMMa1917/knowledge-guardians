@@ -7,6 +7,7 @@
  * click or tap to walk to a spot or a person (alternative control route).
  */
 import { ensureLook } from './looks';
+import { chime, clink } from '../app/ambience';
 import Phaser from 'phaser';
 import { ctx, type WorldApi } from '../app/context';
 import { MAPS } from '../maps';
@@ -338,10 +339,29 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   setPaused(p: boolean): void { this.paused = p; }
 
+  private ambT = 0;
+  /** Ambient sound: the forge hammer in Emberford (louder near the anvil), chimes in the Nexus. */
+  private ambience(dt: number): void {
+    const vol = ctx.settings.sfxVolume;
+    if (vol <= 0 || !this.player) return;
+    this.ambT -= dt;
+    if (this.ambT > 0) return;
+    const forge = this.map.interactables.find((i) => i.kind === 'forge');
+    if (forge) {
+      const d = Phaser.Math.Distance.Between(this.player.sprite.x, this.player.sprite.y, (forge.x + 1) * TILE, forge.y * TILE) / TILE;
+      if (d < 14) clink(vol * (1 - d / 14));
+      this.ambT = 2.4 + Math.random() * 1.2;
+    } else if (this.map.ambience === 'archive') {
+      chime(vol * 0.6);
+      this.ambT = 7 + Math.random() * 6;
+    } else this.ambT = 5;
+  }
+
   // ----------------------------------------------------------------- update
 
   update(_t: number, dtMs: number): void {
     const dt = Math.min(dtMs, 100) / 1000;
+    this.ambience(dt);
     const modal = this.paused || ctx.ui.isModalOpen() || this.transitioning;
     let vx = 0, vy = 0;
     if (!modal) {
