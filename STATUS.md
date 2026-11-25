@@ -34,6 +34,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 - **Titles** (spec 47.1, C1): each award gives a title that names the deed (for example "Thread-Follower", "One Who Asks First"). The player can wear one (Journal, Awards). It shows in the top bar.
 - **Question Stones and Lumen's last word** (spec 62, KQ-003, C1): 12 chapter steps carry one of six knowledge questions (our own paraphrases, in `src/content/questions.json`). When a step is done, Lumen names the question in one sentence, and its stone gets brighter for each new way (a new place or a new kind of action, up to five). Journal tab "Question Stones". Never a quiz (KQ-001). `PERMANENT_SCHEMA` is now 3, with a migration.
 - **Campfire logs** at Waystones (C1): one optional prompt about the latest step ("What helped you…?"), saved as a private note. Never graded.
+- **Read aloud** (spec 21): a "Read aloud" button on every conversation line, and a setting that reads each line and its options automatically. It uses the browser's own voice (Web Speech API).
 - **Balance reminder:** every 45 minutes of active play, Lumen suggests a real break. It never blocks play.
 - **MIS-10 and MIS-11 (Indigenous knowledge) are left out on purpose.** They need Indigenous content made with community advisors (spec section 88). Do not add them with a quick signal.
 

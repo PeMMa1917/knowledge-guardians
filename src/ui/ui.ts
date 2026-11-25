@@ -84,6 +84,7 @@ export class UI implements UIApi {
   }
 
   closeModal(sound = true): void {
+    try { if (ctx.settings.readAloud) window.speechSynthesis?.cancel(); } catch { /* no speech */ }
     if (!this.modal) return;
     this.releaseTrap?.();
     this.modal.remove();
@@ -416,8 +417,22 @@ export class UI implements UIApi {
     this.openModal('dialogue', speaker?.name ? `Conversation with ${speaker.name}` : 'Scene',
       speaker?.name ? h('div', { class: 'speaker' }, portrait, h('div', {}, h('strong', {}, speaker.name), h('small', {}, speaker.role ?? ''))) : '',
       this.glossLine(n.text),
+      'speechSynthesis' in window ? h('button', { class: 'mini speak', type: 'button', 'aria-label': 'Read this line aloud', onclick: () => this.speak(`${speaker?.name ? `${speaker.name}: ` : ''}${n.text}`) }, '🔊 Read aloud') : '',
       h('div', { class: 'chips' }, n.claimKind ? claimChip(n.claimKind) : null, n.historicalLabel ? histChip(n.historicalLabel) : null),
       extra ?? '', optionList);
+    if (ctx.settings.readAloud) this.speak(`${speaker?.name ? `${speaker.name}: ` : ''}${n.text}. ${opts.map((o, i) => `Option ${i + 1}: ${o.option.text}`).join('. ')}`);
+  }
+
+  /** Text-to-speech with the browser's own voice (spec 21). */
+  speak(text: string): void {
+    try {
+      const synth = window.speechSynthesis;
+      synth.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-GB';
+      u.rate = 0.95;
+      synth.speak(u);
+    } catch { /* no speech support */ }
   }
 
   /** Dialogue text with tappable glossary words (spec 47.10). */
@@ -1060,6 +1075,7 @@ export class UI implements UIApi {
       check('guidePrompts', 'Lumen may show short prompts without being asked'),
       check('calmMode', 'Calm mode: surprise events warn first, and you can choose "Later"'),
       check('glossary', 'Smart glossary: underline key words in conversations, so you can tap them for an explanation'),
+      'speechSynthesis' in window ? check('readAloud', 'Read conversations aloud (uses your browser\'s voice)') : '',
       range('musicVolume', 'Music volume'), range('sfxVolume', 'Sound effects volume'),
       h('p', { class: 'fine' }, 'Sound is never needed to play. Every sound has a text message.'));
   }

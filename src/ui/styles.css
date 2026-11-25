@@ -234,3 +234,4 @@ ul.stones li { display: flex; gap: 0.8em; align-items: flex-start; margin: 0.8em
 .stone { display: inline-grid; grid-template-columns: repeat(5, 8px); gap: 3px; padding: 6px; border-radius: 10px; background: rgba(159, 232, 255, calc(0.08 + var(--glow, 0) * 0.3)); flex: none; }
 .stone i { display: block; width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); }
 .stone i.lit { background: #9fe8ff; box-shadow: 0 0 6px #9fe8ff; }
+button.speak { display: block; margin: 0 0 0.4em auto; }
