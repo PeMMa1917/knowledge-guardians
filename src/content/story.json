@@ -1621,6 +1621,93 @@
     "gte": 6
    },
    "line": "The ferry folk call you 'tavi-friend' now. That is not a small word."
+  },
+  {
+   "id": "kip.lamps3",
+   "character": "kip-arden",
+   "if": {
+    "num": "lamps.lit",
+    "gte": 3
+   },
+   "line": "Three lamps! Do you think Elsbet counted them too? I would. I count everything."
+  },
+  {
+   "id": "kip.study",
+   "character": "kip-arden",
+   "if": {
+    "flag": "study.entered",
+    "eq": true
+   },
+   "line": "Her study is so tidy. Tidy people still get things wrong, though. That is what the 'three ways I was wrong' list is for, I bet."
+  },
+  {
+   "id": "kip.ferry",
+   "character": "kip-arden",
+   "if": {
+    "flag": "ferry.met",
+    "eq": true
+   },
+   "line": "Tova's 'slow water' and 'sudden water'... we have one word, and they have two. So who knows more about water? Maybe that is the wrong question."
+  },
+  {
+   "id": "kip.secret",
+   "character": "kip-arden",
+   "if": {
+    "num": "secrets.found",
+    "gte": 1
+   },
+   "line": "A secret! Where there is one, there are more. Search odd corners: that is my method."
+  },
+  {
+   "id": "kip.shop",
+   "character": "kip-arden",
+   "if": {
+    "flagSet": "sd.corvan.outcome"
+   },
+   "line": "Did you read Corvan's new labels? 'I cannot show that it brings luck.' Ha! That is the most honest rug in Aethelgard."
+  },
+  {
+   "id": "kip.tiles",
+   "character": "kip-arden",
+   "if": {
+    "num": "tiles.runs",
+    "gte": 1
+   },
+   "line": "Knowing a word is not the same as using it well. Sefa told me that. I said, 'How do you know?' She laughed."
+  },
+  {
+   "id": "kip.trust",
+   "character": "kip-arden",
+   "if": {
+    "any": [
+     {
+      "num": "trust.guild",
+      "gte": 4
+     },
+     {
+      "num": "trust.market",
+      "gte": 4
+     },
+     {
+      "num": "trust.forge",
+      "gte": 4
+     },
+     {
+      "num": "trust.river",
+      "gte": 4
+     }
+    ]
+   },
+   "line": "People here trust you more now. Not because you agree with them. Because you listen first, then check."
+  },
+  {
+   "id": "kip.letter",
+   "character": "kip-arden",
+   "if": {
+    "flag": "study.letter",
+    "eq": true
+   },
+   "line": "'Something beyond the Nexus teaches people to stop asking.' That is the scariest sentence I have ever read. Let's keep asking."
   }
  ]
 }

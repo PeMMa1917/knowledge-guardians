@@ -746,7 +746,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.memAcc = 0;
     const c = ctx.controller, mems = c.pack.memories ?? [];
     const p = this.player.sprite;
-    for (const a of this.npcs) {
+    // People nearby, and the companion who walks with the player (companion banter).
+    for (const a of [...this.npcs, ...(this.follower ? [this.follower] : [])]) {
       if (Phaser.Math.Distance.Between(a.sprite.x, a.sprite.y, p.x, p.y) > 2.5 * TILE) continue;
       const m = mems.find((x) => x.character === a.id && c.state.flags[`mem.${x.id}`] !== true && c.check(x.if));
       if (!m) continue;
