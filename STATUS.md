@@ -9,7 +9,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 ### Chapter 1 (spec 29.1, the chapter rework, items 1 to 8)
 
 - **Cold open** on a new game, then the Nexus mission "Three Firsts" (KG-CH1-M01): inspect three ballpoint-pen exhibits, use the Date Lens, run a fair test, a practice Showdown with the clerk Venn, and the label builder with the Fray.
-- **Hall of Firsts** (optional): seven plaques, people from Africa, West Asia and North Africa, East Asia, South Asia, South America, Oceania and Europe, ancient to 20th century. Each plaque has its own small label kit.
+- **Hall of Firsts** (optional): seven plaques, each about one person shown with their own place and people (Eratosthenes in Alexandria, Ibn al-Haytham of Basra and Cairo, Bi Sheng of Song China, Radhanath Sikdar of Bengal, Alberto Santos-Dumont of Brazil, Kate Sheppard of New Zealand (Aotearoa), Mary Wollstonecraft of London), ancient to 20th century. Players never see continent groups; `person.continent` is only an internal coverage check. Each plaque has its own small label kit.
 - **Emberford** mission "The Label on the Blade" (KG-CH1-M02): Corvan's claim, the Provenance Thread (gap after the workshop), the schematic forge and assay comparison, a public Showdown with five outcomes (the town sign changes), Hesper, Kip finds the gold seal, back to Ise.
 - **Equal credit** on all routes: 105 XP for the main chapter, plus 15 XP for the side quest. Tests check this.
 - Waystones (rest and travel), checkpoints, the two save slots, the permanent record.
@@ -99,7 +99,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 2. **Phase L2 is done.** Phase L3 has started (38 of 40 misconceptions). Next in L3: quests for more subjects, and CAS stories about real people (Hokusai, Abebe Bikila, Wangari Maathai and others in spec 92.3; each needs a checked source first) and the C1 list in spec section 51 (rings, titles, Zen mode, clue board and others). Pick the ones that fit chapter 1 without making it too large.
 3. **Teacher view:** export of the weekly summary as a printable page; a guide page for teachers. Keep TEACH-001 to TEACH-005.
 4. **Art:** replace the code-drawn placeholders for the forge, plaques and label stand with richer pixel art (free licence, credited). Add music per area if a CC0 track fits.
-5. **Chapter 2** (next world in spec section 27). Use the same tools (label kit, Showdown, thread) with new real objects. Keep people from every continent and period.
+5. **Chapter 2** (next world in spec section 27). Use the same tools (label kit, Showdown, thread) with new real objects. Keep people from many peoples, places and periods, each named with their own place, never by continent.
 6. **Phase L3 and later:** all 40 misconceptions, quests for all subjects, CAS stories (play is never CAS), more reports.
 
 ## Known limits and problems
@@ -115,7 +115,7 @@ Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec vers
 ## Decisions from the project owner (Mika)
 
 - Classroom use only, not commercial.
-- People from every continent and time period throughout.
+- People from many peoples, places and periods throughout. Each people, nation and culture is treated as separate; no continent or region groups in anything players see.
 - No student-made content and no news or current-events features.
 - Learner profile as moments only, never as grades.
 - Portfolios are private and owned by the student; shared only by choice.

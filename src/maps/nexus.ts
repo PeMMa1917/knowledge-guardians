@@ -3,7 +3,7 @@
  * A stone hall floating in a starry void. 40 x 20 tiles.
  * West part (x 1-24): the archive hall with the three 'first' exhibits.
  * East wing (x 26-38): the Hall of Firsts, an optional side quest with
- * plaques about people from every inhabited continent and many periods.
+ * plaques, each about one person shown with their own place and people, from many periods.
  */
 import type { MapDef } from './types';
 

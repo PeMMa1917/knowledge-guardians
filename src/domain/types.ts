@@ -119,7 +119,8 @@ export interface EvidenceCard {
   sources: string[];          // SourceRecord ids; empty for fictional-world cards
   limits: string;             // what this card does NOT show
   /** Real person this card is about (Guardian Card mode C, spec 44.1). */
-  person?: { name: string; life: string; region: string; era: string };
+  /** `place` is shown to players: the person's own place or people, never a continent group. `continent` is an internal coverage check only. */
+  person?: { name: string; life: string; place: string; era: string; continent: string };
 }
 
 export interface ExhibitRecord {

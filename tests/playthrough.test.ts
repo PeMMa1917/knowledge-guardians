@@ -206,11 +206,11 @@ describe('label builder and the Fray (29.1 item 2)', () => {
     expect(d.s.flags['count.firsts']).toBe(1);
     expect(d.s.flags['count.labels.holding']).toBe(1);
   });
-  it('the Hall of Firsts covers every inhabited continent', () => {
-    const regions = new Set(pack.cards.filter((c) => c.person).map((c) => c.person!.region));
-    for (const r of ['Africa', 'Asia', 'Europe', 'North America', 'South America', 'Oceania']) {
-      expect([...regions].some((x) => x.includes(r.split(' ')[0]) || (r === 'Asia' && /Asia/.test(x))), r).toBe(true);
-    }
+  it('the Hall of Firsts covers many parts of the world, and players see each person\'s own place, never a continent group', () => {
+    const people = pack.cards.filter((c) => c.person).map((c) => c.person!);
+    const continents = new Set(people.map((x) => x.continent));
+    for (const r of ['Africa', 'Asia', 'Europe', 'South America', 'Oceania']) expect(continents.has(r), r).toBe(true);
+    for (const x of people) expect(x.place).not.toMatch(/Africa|Asia|Europe|America|Oceania|continent/i);
   });
   it('three repaired plaques earn the Hall of Firsts badge and a portfolio entry', () => {
     const d = new Driver();

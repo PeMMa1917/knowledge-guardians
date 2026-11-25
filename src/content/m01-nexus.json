@@ -918,7 +918,7 @@
   },
   {
    "id": "j.m01.firsts",
-   "text": "In the Hall of Firsts I repaired plaques about people from different continents and times. Each 'first' needed a criterion and a limit.",
+   "text": "In the Hall of Firsts I repaired plaques about seven people, each from their own place and time. Each 'first' needed a criterion and a limit.",
    "claimKind": "interpretation"
   },
   {
@@ -2391,7 +2391,7 @@
    "id": "h.m01.side.firsts.1",
    "objective": "m01.side.firsts",
    "depth": 1,
-   "text": "The east wing has seven plaques about people from many continents and times. Each plaque glows gold."
+   "text": "The east wing has seven plaques. Each one is about one person, from their own people, place and time. Each plaque glows gold."
   },
   {
    "id": "h.m01.side.firsts.2",

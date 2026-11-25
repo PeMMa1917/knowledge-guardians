@@ -1137,7 +1137,7 @@
    "id": "badge.hall-of-firsts",
    "kind": "badge",
    "name": "Hall of Firsts",
-   "earnedBy": "You repaired three plaques about people from different continents and times.",
+   "earnedBy": "You repaired three plaques about people, each from their own place and time.",
    "criteria": [
     "crit.culture.firsts"
    ],

@@ -46,7 +46,7 @@ The design spec is `Knowledge_Guardians_spec_v2.10.md`. The project owner keeps 
 ## 3. Rules from the project owner
 
 - **Classroom use only, not commercial.**
-- **People from every continent and time period.** Keep the balance when you add people or objects. See the table in [docs/SOURCES.md](docs/SOURCES.md).
+- **People from many peoples, places and time periods.** Keep the balance when you add people or objects. Treat each people, nation and culture as separate: never group people by continent or region in anything players see. See the table in [docs/SOURCES.md](docs/SOURCES.md).
 - **Real historical objects.** Objects must be real, specific, dated and clear. Fictional things (Aethelgard and its people) are `fictional-world`.
 - **Free assets only.** CC0 first. CC-BY or OGA-BY only with attribution. No NC or ND licences. Every file in `public/assets/` must be in `public/assets/credits.json` and `CREDITS.md`. `npm run assets:check` checks this.
 - **Art direction:** rich, colourful pixel art with lighting. **Never copy** art, characters, music or levels from an existing game.

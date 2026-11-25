@@ -10,7 +10,7 @@ This guide tells you how to add or change game content: missions, objectives, di
 |---|---|
 | `src/content/sources.json` | Historical source records (`HIS-S…`). |
 | `src/content/common.json` | Items, characters, credit criteria, awards, shop offers, learner-profile moments, misconceptions, portfolio templates. |
-| `src/content/firsts.json` | The Hall of Firsts: seven plaques (exhibits, cards and small label kits) about people from every continent. |
+| `src/content/firsts.json` | The Hall of Firsts: seven plaques (exhibits, cards and small label kits) each about one person, named with their own place and people. |
 | `src/content/m01-nexus.json` | Mission KG-CH1-M01 "Three Firsts" (The Nexus): label kit `pen`, Showdown `practice`, events EV-N01 to EV-N07. |
 | `src/content/m02-aethelgard.json` | Mission KG-CH1-M02 "The Label on the Blade" (Emberford): thread `blade`, Showdown `corvan`, events EV-E01 to EV-E08. |
 | `src/content/origins.json` | The five player origins (spec 35.1), their starting Lens hints, and the answers to each origin's own option in each world. |
@@ -226,7 +226,7 @@ A dialogue node or option can have `"open"`: `showdown:<id>`, `label:<kit>`, `fo
 - Write in plain, short sentences. The players are students aged about 16 to 19, and many read English as a second language.
 - Name the action that earns an award ("You compared two sources…").
 - Do not say "correct" or "wrong" about a judgement. Say what the evidence supports, qualifies or challenges.
-- People from every continent and time period. Name people and places with care (spec section 88). Give local names where they exist.
+- People from many peoples, places and times. Treat each people, nation and culture as separate: never group people by continent or region in player-facing text ("people from Africa", "East Asia"). Show each person's own place or people in `person.place`. `person.continent` is only for an internal coverage test. Name people and places with care (spec section 88). Give local names where they exist.
 
 ## Add a keepsake
 

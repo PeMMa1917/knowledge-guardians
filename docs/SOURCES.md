@@ -47,17 +47,17 @@ The fair test at the bench is a **simulation** (`claimKind: simulation`). Its nu
 
 ### The Nexus: the Hall of Firsts (optional side quest)
 
-Seven plaques in a side wing of the Nexus. Each plaque has an old, too-strong label ("THE FIRST…"). The player can rewrite it with a small label kit (`src/content/firsts.json`). Together with the ballpoint-pen exhibits (North America and Europe), the hall covers every inhabited continent and periods from ancient to the 20th century.
+Seven plaques in a side wing of the Nexus. Each plaque has an old, too-strong label ("THE FIRST…"). The player can rewrite it with a small label kit (`src/content/firsts.json`). Each plaque names the person's own place and people, never a continent group (Mika, 2026-11-26). An internal test checks that, with the ballpoint-pen exhibits, the people come from many parts of the world and periods from ancient to the 20th century.
 
-| Plaque | Person | Region | Period | Achievement in the game | Sources |
+| Plaque | Person | Place shown to players | Period | Achievement in the game | Sources |
 |---|---|---|---|---|---|
-| OBJ-101 | Eratosthenes | Africa (Alexandria) | Ancient | Estimated the Earth's size from noon shadows, about 240 BCE | HIS-S28 |
-| OBJ-102 | Ibn al-Haytham | West Asia and North Africa (Basra, Cairo) | Medieval | Book of Optics; tested claims about light with experiments | HIS-S29 |
-| OBJ-103 | Bi Sheng | East Asia | Medieval | Movable type of baked clay, 1040s (known from Shen Kuo) | HIS-S21, HIS-S22 |
-| OBJ-104 | Radhanath Sikdar | South Asia | 19th century | Calculations (about 1852) that showed Peak XV (Chomolungma, Sagarmatha) was the highest peak measured | HIS-S23, HIS-S24, HIS-S25 |
-| OBJ-105 | Alberto Santos-Dumont | South America (Brazil), flight in Paris | 20th century | First public airplane flight in Europe, 1906 | HIS-S26, HIS-S27 |
-| OBJ-106 | Kate Sheppard | Oceania (New Zealand) | 19th century | Led the campaign; in 1893 all adult women could vote | HIS-S20 |
-| OBJ-107 | Mary Wollstonecraft | Europe | 18th century | A Vindication of the Rights of Woman, 1792 (Christine de Pizan wrote in defence of women in 1405) | HIS-S30, HIS-S31 |
+| OBJ-101 | Eratosthenes | Alexandria, Egypt | Ancient | Estimated the Earth's size from noon shadows, about 240 BCE | HIS-S28 |
+| OBJ-102 | Ibn al-Haytham | Born in Basra; worked in Cairo | Medieval | Book of Optics; tested claims about light with experiments | HIS-S29 |
+| OBJ-103 | Bi Sheng | Song dynasty China | Medieval | Movable type of baked clay, 1040s (known from Shen Kuo) | HIS-S21, HIS-S22 |
+| OBJ-104 | Radhanath Sikdar | Bengal, India | 19th century | Calculations (about 1852) that showed Peak XV (Chomolungma, Sagarmatha) was the highest peak measured | HIS-S23, HIS-S24, HIS-S25 |
+| OBJ-105 | Alberto Santos-Dumont | Brazilian; flew in Paris | 20th century | First public airplane flight in Europe, 1906 | HIS-S26, HIS-S27 |
+| OBJ-106 | Kate Sheppard | New Zealand (Aotearoa) | 19th century | Led the campaign; in 1893 all adult women could vote | HIS-S20 |
+| OBJ-107 | Mary Wollstonecraft | London, England | 18th century | A Vindication of the Rights of Woman, 1792 (Christine de Pizan wrote in defence of women in 1405) | HIS-S30, HIS-S31 |
 
 Each source is used for its narrow claim only. The plaques show how "first" depends on the criterion: first to do what, first to be recorded, first in which place. Antarctica has no plaque (no permanent population).
 

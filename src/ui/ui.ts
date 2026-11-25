@@ -1031,7 +1031,7 @@ export class UI implements UIApi {
     return h('article', { class: 'card' },
       h('h3', {}, card.title),
       h('div', { class: 'chips' }, claimChip(card.claimKind), histChip(card.historicalLabel)),
-      card.person ? h('p', { class: 'fine' }, `${card.person.name} (${card.person.life}) · ${card.person.region} · ${card.person.era}`) : null,
+      card.person ? h('p', { class: 'fine' }, `${card.person.name} (${card.person.life}) · ${card.person.place} · ${card.person.era}`) : null,
       h('p', {}, card.text),
       h('p', { class: 'limits' }, h('strong', {}, 'Does not show: '), card.limits),
       card.sources.length ? h('p', { class: 'fine' }, ...card.sources.map((sid) => {
