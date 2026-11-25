@@ -7,7 +7,7 @@
  * Every action goes through ctx.controller.dispatch (domain commands).
  */
 import { ctx, type UIApi } from '../app/context';
-import { saveSettings, type Settings } from '../app/settings';
+import { LUMEN_COLOURS, THEMES, saveSettings, type Settings } from '../app/settings';
 import { PRONOUN_SETS, cleanPronouns, personalise } from '../domain/player';
 import { ACCENT, ACCESSORIES, HAIR, LABELS, OUTFIT, PRESET_LOOKS, SKIN, TROUSERS, decodeLook, encodeLook, type LookChoice } from '../domain/appearance';
 import { previewLook } from '../scenes/looks';
@@ -1208,6 +1208,10 @@ export class UI implements UIApi {
     this.openModal('settings', 'Settings', this.closeBtn(), h('h2', {}, 'Settings'),
       h('label', { class: 'range' }, 'Text size ', h('select', { onchange: (e: Event) => set('textScale', Number((e.target as HTMLSelectElement).value)) },
         ...[1, 1.25, 1.5, 1.75].map((v) => h('option', { value: String(v), selected: st.textScale === v }, `${Math.round(v * 100)}%`)))),
+      h('label', { class: 'range' }, 'Interface colours ', h('select', { onchange: (e: Event) => set('theme', (e.target as HTMLSelectElement).value as any) },
+        ...THEMES.map((t) => h('option', { value: t.id, selected: st.theme === t.id }, t.label)))),
+      h('label', { class: 'range' }, "Lumen's glow ", h('select', { onchange: (e: Event) => set('lumenColour', (e.target as HTMLSelectElement).value as any) },
+        ...Object.keys(LUMEN_COLOURS).map((k) => h('option', { value: k, selected: st.lumenColour === k }, k)))),
       check('reducedMotion', 'Reduce motion (no camera fades, sway or flicker)'),
       check('reducedEffects', 'Reduce visual effects (lighting, glow, particles)'),
       check('highContrast', 'High-contrast interface'),

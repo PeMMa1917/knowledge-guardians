@@ -25,16 +25,26 @@ export interface Settings {
   talkSounds: boolean;
   /** The player's own voice bark (voice.ts PLAYER_VOICES). */
   playerVoice: string;
+  /** Interface colour theme. */
+  theme: 'archive' | 'ember' | 'forest' | 'ocean' | 'dusk';
+  /** Colour of Lumen's glow. */
+  lumenColour: 'gold' | 'cyan' | 'rose' | 'green' | 'violet';
   /** The player's own letter keys (see keymap.ts). */
   keys: KeyMap;
 }
 
 const KEY = 'kg.settings';
 
+export const THEMES: { id: Settings['theme']; label: string }[] = [
+  { id: 'archive', label: 'Archive night (violet and gold)' }, { id: 'ember', label: 'Ember (red and orange)' },
+  { id: 'forest', label: 'Forest (green)' }, { id: 'ocean', label: 'Ocean (blue)' }, { id: 'dusk', label: 'Dusk (plum and pink)' },
+];
+export const LUMEN_COLOURS: Record<Settings['lumenColour'], number> = { gold: 0xfff2b0, cyan: 0xb0f0ff, rose: 0xffc0d8, green: 0xc8ffc0, violet: 0xd8c0ff };
+
 export const DEFAULTS: Settings = {
   textScale: 1, reducedMotion: false, reducedEffects: false, musicVolume: 0.5, sfxVolume: 0.7,
   guidePrompts: true, highContrast: false, dyslexiaSpacing: false, calmMode: false, glossary: true, readAloud: false,
-  colourSafe: false, keys: DEFAULT_KEYS, talkSounds: true, playerVoice: 'mid',
+  colourSafe: false, keys: DEFAULT_KEYS, talkSounds: true, playerVoice: 'mid', theme: 'archive', lumenColour: 'gold',
 };
 
 export function loadSettings(): Settings {
@@ -62,4 +72,5 @@ export function applySettingsToDocument(s: Settings): void {
   r.classList.toggle('high-contrast', s.highContrast);
   r.classList.toggle('dyslexia-spacing', s.dyslexiaSpacing);
   r.classList.toggle('colour-safe', s.colourSafe);
+  for (const t of THEMES) r.classList.toggle(`theme-${t.id}`, s.theme === t.id && t.id !== 'archive');
 }

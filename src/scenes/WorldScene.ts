@@ -8,6 +8,7 @@
  */
 import { ensureLook } from './looks';
 import { chime, clink } from '../app/ambience';
+import { LUMEN_COLOURS } from '../app/settings';
 import Phaser from 'phaser';
 import { ctx, type WorldApi } from '../app/context';
 import { MAPS } from '../maps';
@@ -192,7 +193,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     }
 
     // Lumen, the fairy guide.
-    this.lumenGlow = this.add.image(0, 0, 'glow').setScale(0.25).setTint(0xfff2b0).setAlpha(0.55).setBlendMode(Phaser.BlendModes.ADD);
+    this.lumenGlow = this.add.image(0, 0, 'glow').setScale(0.25).setTint(LUMEN_COLOURS[ctx.settings.lumenColour] ?? 0xfff2b0).setAlpha(0.55).setBlendMode(Phaser.BlendModes.ADD);
     this.lumen = this.add.image(0, 0, 'lumen');
 
     this.buildAtmosphere();
@@ -393,7 +394,16 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       this.trail.push({ x: p.sprite.x, y: p.sprite.y, f });
       if (this.trail.length > 40) this.trail.shift();
       this.stepTimer += dt;
-      if (this.stepTimer > 0.32) { this.stepTimer = 0; if (ctx.settings.sfxVolume > 0 && this.cache.audio.exists('sfx.step')) this.sound.play('sfx.step', { volume: ctx.settings.sfxVolume * 0.18 }); }
+      if (this.stepTimer > 0.32) {
+        this.stepTimer = 0;
+        if (ctx.settings.sfxVolume > 0 && this.cache.audio.exists('sfx.step')) this.sound.play('sfx.step', { volume: ctx.settings.sfxVolume * 0.18 });
+        // Footstep dust: a small puff that fades (off with reduced effects).
+        if (!ctx.settings.reducedEffects) {
+          const puff = this.add.image(p.sprite.x + Phaser.Math.Between(-2, 2), p.sprite.y + 5, 'glow')
+            .setTint(this.map.ambience === 'archive' ? 0xc8c0e8 : 0xd8c49a).setAlpha(0.35).setScale(0.05).setDepth(p.sprite.y - 1);
+          this.tweens.add({ targets: puff, alpha: 0, scale: 0.11, y: puff.y - 3, duration: 450, onComplete: () => puff.destroy() });
+        }
+      }
     } else {
       p.sprite.anims.stop();
       p.sprite.setFrame(this.idleFrame(p.facing));

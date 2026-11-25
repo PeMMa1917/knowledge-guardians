@@ -16,6 +16,11 @@
   --radius: 12px;
   font-size: calc(16px * var(--text-scale));
 }
+/* Interface themes (Settings). Ink stays light on every theme; high contrast wins over all. */
+:root.theme-ember { --panel: rgba(46, 20, 16, 0.94); --panel-2: rgba(78, 34, 24, 0.96); --gold: #ffad5c; --gold-dim: #a8582a; --cyan: #ffd59f; }
+:root.theme-forest { --panel: rgba(14, 34, 24, 0.94); --panel-2: rgba(24, 58, 40, 0.96); --gold: #c9e07a; --gold-dim: #6f8a3a; --cyan: #a8f0c8; }
+:root.theme-ocean { --panel: rgba(10, 26, 46, 0.94); --panel-2: rgba(16, 44, 76, 0.96); --gold: #7fd8e8; --gold-dim: #3a7f9c; --cyan: #c4f2ff; }
+:root.theme-dusk { --panel: rgba(44, 18, 44, 0.94); --panel-2: rgba(72, 30, 70, 0.96); --gold: #ff9dcf; --gold-dim: #9c4a7a; --cyan: #ffd0f0; }
 :root.high-contrast {
   --ink: #ffffff; --ink-dim: #f0f0f0; --panel: #000000; --panel-2: #111111; --gold: #ffd600; --cyan: #7fe9ff;
 }
