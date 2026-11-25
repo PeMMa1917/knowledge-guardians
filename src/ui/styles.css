@@ -389,3 +389,8 @@ body.photo-mode #captions { display: none !important; }
 .threads ul { list-style: none; padding: 0; margin: 0; }
 .threads .swatch { display: inline-block; width: 14px; height: 6px; border-radius: 2px; vertical-align: middle; }
 .thread-preview canvas { image-rendering: pixelated; }
+
+/* Emotes */
+.emote-bar { position: fixed; left: 50%; bottom: 120px; transform: translateX(-50%); z-index: 65; display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+  background: rgba(18, 15, 36, 0.92); border: 1px solid var(--gold, #e9cf7a); border-radius: 12px; padding: 8px; max-width: calc(100vw - 24px); }
+.emote-bar kbd { font-size: 0.8em; opacity: 0.8; }

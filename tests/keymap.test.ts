@@ -18,6 +18,13 @@ describe('key remapping (spec 21.6)', () => {
     expect(normaliseKeys({ up: 'A' })).toEqual(DEFAULT_KEYS); // clash with left
     expect(normaliseKeys({ up: '%' as any })).toEqual(DEFAULT_KEYS);
   });
+  it('a stored map from before emotes keeps its keys, and emotes get a free letter', () => {
+    const { emote: _e, ...old } = { ...DEFAULT_KEYS, journal: 'G', portfolio: 'P' };
+    const m = normaliseKeys(old as any);
+    expect(m.journal).toBe('G');
+    expect(m.emote).not.toBe('G');
+    expect(new Set(Object.values(m)).size).toBe(Object.values(m).length);
+  });
   it('finds the action for a key, any case', () => {
     expect(actionFor(DEFAULT_KEYS, 'j')).toBe('journal');
     expect(actionFor(DEFAULT_KEYS, 'X')).toBeNull();

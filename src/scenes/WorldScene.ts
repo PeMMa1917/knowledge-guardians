@@ -8,6 +8,8 @@
  */
 import { ensureLook } from './looks';
 import { cloakThreads } from '../domain/appearance';
+import { EMOTES, EMOTE_ICONS } from '../domain/emotes';
+import { PLAYER_VOICES, bark } from '../app/voice';
 import { bell, chime, clink, shimmer } from '../app/ambience';
 import { CYCLE, skyAt } from '../app/daylight';
 import { lorelingForm } from '../domain/lorelings';
@@ -576,6 +578,45 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   private threadColours(): string[] {
     return cloakThreads(ctx.controller.state.objectivesDone).map((t) => t.colour);
+  }
+
+  /** Emotes (spec 47.4): a bubble over the player, a small hop, and replies from people nearby. */
+  emote(id: string): void {
+    const e = EMOTES.find((x) => x.id === id);
+    if (!e || !this.player) return;
+    const p = this.player.sprite;
+    this.bubble(p, e.id, 1800);
+    if (!ctx.settings.reducedMotion) this.tweens.add({ targets: p, y: p.y - 4, duration: 120, yoyo: true, repeat: e.id === 'cheer' ? 1 : 0 });
+    if (ctx.settings.talkSounds) bark(PLAYER_VOICES.find((x) => x.id === ctx.settings.playerVoice)?.v ?? null, ctx.settings.sfxVolume);
+    caption('emote', e.caption);
+    if (e.id === 'cheer' || e.id === 'idea') this.lumenBurst();
+    // People within four tiles turn and answer.
+    const near = this.npcs.filter((a) => Phaser.Math.Distance.Between(a.sprite.x, a.sprite.y, p.x, p.y) < 4 * TILE).slice(0, 3);
+    near.forEach((a, i) => this.time.delayedCall(450 + i * 250, () => {
+      const dx = p.x - a.sprite.x, dy = p.y - a.sprite.y;
+      a.facing = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
+      a.sprite.setFrame(this.idleFrame(a.facing));
+      this.bubble(a.sprite, e.reply, 1400);
+    }));
+  }
+
+  private bubble(target: Phaser.GameObjects.Sprite, icon: string, ms: number): void {
+    const key = `emote.${icon}`;
+    if (!this.textures.exists(key)) {
+      const ic = EMOTE_ICONS[icon]; if (!ic) return;
+      const c = document.createElement('canvas'); c.width = 15; c.height = 17;
+      const g = c.getContext('2d')!;
+      g.fillStyle = '#1a1426'; g.fillRect(1, 0, 13, 15); g.fillRect(0, 1, 15, 13); g.fillRect(6, 15, 3, 1); g.fillRect(7, 16, 1, 1);
+      g.fillStyle = '#fff8e6'; g.fillRect(2, 1, 11, 13); g.fillRect(1, 2, 13, 11); g.fillRect(7, 14, 1, 1);
+      ic.rows.forEach((row, y) => [...row].forEach((ch, x) => {
+        if (ch === '.') return;
+        g.fillStyle = ch === '#' ? '#5a4325' : ch === '+' ? '#ffffff' : ic.colour; g.fillRect(3 + x, 3 + y, 1, 1);
+      }));
+      this.textures.addCanvas(key, c);
+    }
+    const b = this.add.image(target.x, target.y - 26, key).setOrigin(0.5, 1).setDepth(200010).setScale(0.2);
+    this.tweens.add({ targets: b, scale: 1, duration: ctx.settings.reducedMotion ? 0 : 160, ease: 'Back.Out' });
+    this.time.delayedCall(ms, () => this.tweens.add({ targets: b, alpha: 0, duration: 200, onComplete: () => b.destroy() }));
   }
 
   /** Show or hide the Loreling that is out in the field. */

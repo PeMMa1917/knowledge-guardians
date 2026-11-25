@@ -3,7 +3,7 @@
  * keys. The arrow keys, Space, Enter, Esc and number keys always keep their jobs,
  * so a player can never lock themselves out. Pure rules, no DOM.
  */
-export type Action = 'up' | 'left' | 'down' | 'right' | 'interact' | 'hint' | 'journal' | 'portfolio' | 'bag';
+export type Action = 'up' | 'left' | 'down' | 'right' | 'interact' | 'hint' | 'journal' | 'portfolio' | 'bag' | 'emote';
 
 export type KeyMap = Record<Action, string>;
 
@@ -17,9 +17,10 @@ export const ACTIONS: { id: Action; label: string }[] = [
   { id: 'journal', label: 'Journal' },
   { id: 'portfolio', label: 'Portfolio' },
   { id: 'bag', label: 'Bag' },
+  { id: 'emote', label: 'Emotes (wave, cheer, think)' },
 ];
 
-export const DEFAULT_KEYS: KeyMap = { up: 'W', left: 'A', down: 'S', right: 'D', interact: 'E', hint: 'H', journal: 'J', portfolio: 'P', bag: 'I' };
+export const DEFAULT_KEYS: KeyMap = { up: 'W', left: 'A', down: 'S', right: 'D', interact: 'E', hint: 'H', journal: 'J', portfolio: 'P', bag: 'I', emote: 'G' };
 
 /** Ready-made layouts: AZERTY keyboards, and a left-hand layout one key to the right. */
 export const PRESETS: { id: string; label: string; keys: KeyMap }[] = [
@@ -27,6 +28,9 @@ export const PRESETS: { id: string; label: string; keys: KeyMap }[] = [
   { id: 'azerty', label: 'Z Q S D (AZERTY)', keys: { ...DEFAULT_KEYS, up: 'Z', left: 'Q', down: 'S', right: 'D' } },
   { id: 'esdf', label: 'E S D F', keys: { ...DEFAULT_KEYS, up: 'E', left: 'S', down: 'D', right: 'F', interact: 'R' } },
 ];
+
+/** Actions added after the first version (a stored map may not have them yet). */
+const LATER: Action[] = ['emote'];
 
 /** Only single letters can be mapped. Other keys have fixed jobs. */
 export function mappableKey(key: string): string | null {
@@ -51,6 +55,14 @@ export function normaliseKeys(raw: Partial<KeyMap> | undefined): KeyMap {
   for (const a of ACTIONS) {
     const k = mappableKey(String(raw[a.id] ?? ''));
     if (k) out[a.id] = k;
+  }
+  // An action added in a later version keeps the player's own keys: it takes a free letter.
+  for (const a of ACTIONS.filter((x) => LATER.includes(x.id))) {
+    if (mappableKey(String(raw[a.id] ?? ''))) continue;
+    if (ACTIONS.some((b) => b.id !== a.id && out[b.id] === out[a.id])) {
+      const used = new Set(ACTIONS.filter((b) => b.id !== a.id).map((b) => out[b.id]));
+      out[a.id] = 'GTKLMNOUVXYBCFQRZ'.split('').find((l) => !used.has(l)) ?? out[a.id];
+    }
   }
   const seen = new Set<string>();
   for (const a of ACTIONS) { if (seen.has(out[a.id])) return { ...DEFAULT_KEYS }; seen.add(out[a.id]); }

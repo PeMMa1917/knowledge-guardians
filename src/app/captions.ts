@@ -30,6 +30,7 @@ export const CAPTIONS: Record<string, string> = {
 /** Caption text for a sound key; `who` names the speaker for talk sounds. Null if the sound has no caption. */
 export function captionFor(key: string, who?: string): string | null {
   if (key === 'voice' && who) return `${who} talks`;
+  if (key === 'emote' && who) return who;
   if (key === 'amb.forge' && who) return `${CAPTIONS[key]} (${who})`;
   return CAPTIONS[key] ?? null;
 }

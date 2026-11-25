@@ -13,6 +13,7 @@ import { ACCENT, ACCESSORIES, HAIR, LABELS, cloakThreads, OUTFIT, PRESET_LOOKS, 
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
+import { EMOTES } from '../domain/emotes';
 import { STAGE_LABEL, nextStep, skillStage, type SkillStage } from '../domain/skills';
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
 import type { Pronouns } from '../domain/types';
@@ -144,6 +145,10 @@ export class UI implements UIApi {
     if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') { if (e.key === 'Escape') this.closeModal(); return; }
     if (!this.hud?.isConnected) return;
     if (this.photoBar) { if (e.key === 'Escape') this.closePhotoMode(); return; }
+    if (this.emoteBar) {
+      if (e.key === 'Escape' || actionFor(ctx.settings.keys, e.key) === 'emote') { this.closeEmotes(); return; }
+      if (/^[1-9]$/.test(e.key)) { this.emoteBar.querySelectorAll<HTMLButtonElement>('button')[Number(e.key) - 1]?.click(); return; }
+    }
     if (e.key === 'Escape') { if (this.modal) this.closeModal(); else this.openMenu(); return; }
     if (this.modal) {
       // Number keys choose dialogue options.
@@ -155,7 +160,22 @@ export class UI implements UIApi {
     else if (a === 'portfolio') this.openJournal('portfolio');
     else if (a === 'bag') this.openBag();
     else if (a === 'hint') this.askLumen();
+    else if (a === 'emote') this.openEmotes();
   }
+
+  private emoteBar: HTMLElement | null = null;
+
+  /** Emotes (spec 47.4): a small row of buttons; 1 to 6 or a click chooses. No game effect. */
+  openEmotes(): void {
+    if (!ctx.world || this.emoteBar) return;
+    const bar = h('div', { class: 'emote-bar', role: 'toolbar', 'aria-label': 'Emotes' },
+      ...EMOTES.map((e, i) => h('button', { type: 'button', onclick: () => { ctx.world?.emote(e.id); this.closeEmotes(); } }, h('kbd', {}, String(i + 1)), ` ${e.label}`)));
+    this.emoteBar = bar;
+    this.root.append(bar);
+    (bar.querySelector('button') as HTMLButtonElement)?.focus();
+  }
+
+  private closeEmotes(): void { this.emoteBar?.remove(); this.emoteBar = null; }
 
   // ------------------------------------------------------------- title
 
