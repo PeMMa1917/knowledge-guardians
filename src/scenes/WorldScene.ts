@@ -389,6 +389,22 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   photoZoom(): number { return this.cameras.main.zoom; }
 
+  /** What is inside the camera frame now (for the album caption check). */
+  photoSubjects(): { kind: 'person' | 'object' | 'loreling'; id: string; name: string }[] {
+    const v = this.cameras.main.worldView;
+    const inView = (x: number, y: number) => v.contains(x, y);
+    const out: { kind: 'person' | 'object' | 'loreling'; id: string; name: string }[] = [];
+    const pack = ctx.controller.pack;
+    for (const a of this.npcs) if (a.sprite.visible && inView(a.sprite.x, a.sprite.y)) out.push({ kind: 'person', id: a.id, name: pack.characters.find((c) => c.id === a.id)?.name ?? a.id });
+    for (const it of this.map.interactables) {
+      if (!it.art || it.kind === 'loreling' || it.kind === 'portal') continue;
+      if (it.visibleIf && !ctx.controller.check(it.visibleIf)) continue;
+      if (inView((it.x + it.w / 2) * TILE, (it.y + it.h / 2) * TILE)) out.push({ kind: 'object', id: it.id, name: it.label.replace(/\s*\(.*\)\s*$/, '') });
+    }
+    if (this.pet && this.pet.sprite.visible && inView(this.pet.sprite.x, this.pet.sprite.y)) out.push({ kind: 'loreling', id: this.pet.id, name: pack.lorelings.find((l) => l.id === this.pet!.id)?.name ?? 'Loreling' });
+    return out;
+  }
+
   photoSnap(cb: (img: HTMLImageElement | null) => void): void {
     try { this.game.renderer.snapshot((img) => cb(img as HTMLImageElement)); } catch { cb(null); }
   }

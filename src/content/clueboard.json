@@ -117,12 +117,22 @@
    "id": "crit.justification.board",
    "concept": "justification",
    "maximum": 5
+  },
+  {
+   "id": "crit.evidence.caption",
+   "concept": "evidence",
+   "maximum": 3
   }
  ],
  "journal": [
   {
    "id": "j.board",
    "text": "The practice board: one card can crack one link of a claim. A claim of my own needs cards that carry all of it; if it says more than the cards show, the yarn sags.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.caption",
+   "text": "My photo album: a caption can say what the picture shows, or what I think about it. Only the first kind can be checked by looking.",
    "claimKind": "interpretation"
   }
  ]

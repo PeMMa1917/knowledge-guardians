@@ -32,6 +32,7 @@ export type Command =
   | { type: 'PuzzleOrder'; puzzle: string; order: string[] }
   | { type: 'PuzzleWeigh'; puzzle: string; round: number; weights: string[] }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
+  | { type: 'PhotoCaptioned'; right: number; total: number }
   | { type: 'UnpinYarn'; board: string; claim: string; card: string }
   | { type: 'LorelingWatch'; loreling: string; sighting: string }
   | { type: 'LorelingNote'; loreling: string; question: string; option: string }
@@ -466,6 +467,13 @@ export class Engine {
             s = apply([{ setFlag: 'lor.out', value: cmd.out ? rec.id : '' }], s, out);
             events.push({ kind: 'loreling', loreling: rec.id, stage: 'field', ok: true, text: cmd.out ? 'out' : 'camp' });
           }
+          break;
+        }
+        case 'PhotoCaptioned': {
+          // The album caption check (spec 47.4). Paid once, for a caption sorted fully right.
+          s = apply([{ addNum: 'count.captions', by: 1 }], s, out);
+          if (cmd.total >= 2 && cmd.right === cmd.total && s.flags['album.checked'] !== true)
+            s = apply([{ setFlag: 'album.checked', value: true }, { credit: 'crit.evidence.caption' }, { journal: 'j.caption' }], s, out);
           break;
         }
         case 'PinYarn': case 'UnpinYarn': {

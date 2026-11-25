@@ -15,6 +15,8 @@ import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
 import { tiltOf } from '../domain/puzzles';
 import { chime } from '../app/ambience';
+import { ALBUM_MAX, loadAlbum, saveAlbum } from '../app/albumStore';
+import { captionLines, checkLine } from '../domain/album';
 import { caption } from '../app/captions';
 import { OPPONENT, judgeYarn, viewBoard } from '../domain/clueboard';
 import { EMOTES } from '../domain/emotes';
@@ -1575,6 +1577,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => { c.suspend('Save and leave'); this.closeModal(false); this.toast('Saved. You can close the tab.', 'save'); (window as any).kgToTitle?.(); } }, 'Save and leave'),
         h('button', { onclick: () => this.openGuardian() }, 'My Guardian (look and pronouns)'),
         h('button', { onclick: () => { this.closeModal(false); this.openPhotoMode(); } }, 'Photo mode'),
+        h('button', { onclick: () => this.openAlbum() }, 'Photo album'),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
         h('button', { onclick: () => this.openControls() }, 'Controls'),
@@ -1613,6 +1616,7 @@ export class UI implements UIApi {
         filters ? pick(FILTERS, 'filter', 'Filter') : h('span', { class: 'fine' }, 'Filters need WebGL.'),
         pick(FRAMES, 'frame', 'Frame'), tick('lumen', 'Lumen'), hasPet ? tick('pet', 'Loreling') : '', tick('caption', 'Caption'),
         h('button', { class: 'primary', onclick: () => this.savePhoto(o) }, 'Save picture'),
+        h('button', { onclick: () => { this.closePhotoMode(); this.openAlbum(); } }, 'Album'),
         h('button', { onclick: () => this.closePhotoMode() }, 'Done (Esc)'),
         h('small', { class: 'fine' }, 'Walk to set up the shot. The picture is saved only on this device.'));
     };
@@ -1620,6 +1624,54 @@ export class UI implements UIApi {
     document.body.classList.add('photo-mode');
     this.root.append(bar);
     apply(); render();
+  }
+
+  /** The photo album and its caption check (spec 47.4). Kept only on this device. */
+  openAlbum(openId?: string): void {
+    const c = ctx.controller;
+    const album = loadAlbum();
+    const box = this.openModal('album-panel wide', 'Photo album');
+    const render = (sel?: string) => {
+      clear(box);
+      box.append(this.closeBtn(), h('h2', {}, 'Photo album'));
+      const ph = album.find((p) => p.id === sel);
+      if (!ph) {
+        box.append(h('p', {}, 'Your pictures, kept only on this device. Open one to write its caption: sort each line into what the photo shows and what you think.'));
+        if (!album.length) { box.append(h('p', { class: 'fine' }, 'No pictures yet. Use Photo mode (in the menu) to take one.')); return; }
+        box.append(h('div', { class: 'album-grid' }, ...[...album].reverse().map((p) => h('button', { type: 'button', class: 'album-thumb', onclick: () => render(p.id), 'aria-label': `Picture from ${p.place}, ${new Date(p.at).toLocaleDateString()}${p.checked ? ', caption done' : ''}` },
+          h('img', { src: p.thumb, alt: '' }), h('span', { class: 'fine' }, `${p.place.split(':').pop()?.trim()} ${p.checked ? '✓' : ''}`)))));
+        return;
+      }
+      const all = ph.lines.length > 0 && ph.lines.every((l) => ph.answers[l.id]);
+      box.append(h('div', { class: 'album-photo' }, h('img', { src: ph.thumb, alt: `Your picture from ${ph.place}` })),
+        h('p', { class: 'fine' }, `${ph.place}, ${new Date(ph.at).toLocaleString()}`),
+        h('h3', {}, 'Is this what the photo shows, or what you think?'),
+        h('ul', { class: 'caption-lines' }, ...ph.lines.map((l) => {
+          const a = ph.answers[l.id];
+          const r = a ? checkLine(l, a) : null;
+          const choose = (ans: 'shows' | 'thinks') => {
+            if (a) return;
+            ph.answers[l.id] = ans; saveAlbum(album);
+            this.sfx(checkLine(l, ans).ok ? 'sfx.sparkle' : 'sfx.page');
+            if (ph.lines.every((x) => ph.answers[x.id]) && !ph.checked) {
+              ph.checked = true; saveAlbum(album);
+              c.dispatch({ type: 'PhotoCaptioned', right: ph.lines.filter((x) => checkLine(x, ph.answers[x.id]).ok).length, total: ph.lines.length });
+            }
+            render(ph.id);
+          };
+          return h('li', { class: r ? (r.ok ? 'ok' : 'miss') : '' }, h('span', {}, l.text),
+            a ? h('small', {}, `${r!.ok ? '✓' : '✗'} ${r!.text}`)
+              : h('span', { class: 'row' }, h('button', { type: 'button', onclick: () => choose('shows') }, 'The photo shows this'), h('button', { type: 'button', onclick: () => choose('thinks') }, 'I think this')));
+        })));
+      if (all) {
+        const shows = ph.lines.filter((l) => l.kind === 'shows').map((l) => l.text);
+        const thinks = ph.lines.filter((l) => l.kind === 'thinks').map((l) => l.text);
+        box.append(h('div', { class: 'album-caption' }, h('strong', {}, 'Caption: '), shows.join(' '), h('br'), h('em', {}, `I wonder: ${thinks.join(' ')}`)));
+      }
+      box.append(h('div', { class: 'row' }, h('button', { onclick: () => render() }, 'All pictures'),
+        h('button', { onclick: () => { const i = album.findIndex((p) => p.id === ph.id); album.splice(i, 1); saveAlbum(album); render(); } }, 'Delete this picture')));
+    };
+    render(openId);
   }
 
   private closePhotoMode(): void {
@@ -1630,6 +1682,7 @@ export class UI implements UIApi {
 
   private savePhoto(o: { frame: string; caption: boolean }): void {
     const c = ctx.controller;
+    const subjects = ctx.world?.photoSubjects() ?? [];
     ctx.world?.photoSnap((img) => {
       if (!img) { this.toast('This browser could not take the picture.', 'error'); return; }
       const pad = o.frame === 'none' ? 0 : 18, capH = o.caption ? 44 : 0;
@@ -1650,7 +1703,16 @@ export class UI implements UIApi {
       const a = h('a', { href: cv.toDataURL('image/png'), download: `knowledge-guardians-${Date.now()}.png` }) as HTMLAnchorElement;
       document.body.append(a); a.click(); a.remove();
       this.sfx('sfx.sparkle');
-      this.toast('Picture saved to this device.', 'save');
+      // A small copy goes into the album, for the caption check.
+      const tw = 360, th = Math.round((cv.height / cv.width) * tw);
+      const t = document.createElement('canvas'); t.width = tw; t.height = th;
+      t.getContext('2d')!.drawImage(cv, 0, 0, tw, th);
+      const album = loadAlbum();
+      const seed = Date.now();
+      album.push({ id: `p${seed}`, at: new Date().toISOString(), place: MAPS[c.state.mapId]?.name ?? '', thumb: t.toDataURL('image/jpeg', 0.8),
+        lines: captionLines(subjects, seed % 97), answers: {}, checked: false });
+      const kept = saveAlbum(album);
+      this.toast(kept ? `Picture saved to this device and to your album (${Math.min(album.length, ALBUM_MAX)} of ${ALBUM_MAX}).` : 'Picture saved to this device. The album is full or blocked.', 'save');
     });
   }
 

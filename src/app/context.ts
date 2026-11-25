@@ -39,6 +39,7 @@ export interface WorldApi {
   photoSet(o: { zoom: number; filter: string; lumen: boolean; pet: boolean } | null): boolean;
   photoSnap(cb: (img: HTMLImageElement | null) => void): void;
   photoZoom(): number;
+  photoSubjects(): import('../domain/album').PhotoSubject[];
   emote(id: string): void;
   /** Redraw state-driven visuals: Fray glows, the Provenance Thread, visible objects. */
   refreshWorld(): void;
