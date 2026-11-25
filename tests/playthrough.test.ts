@@ -281,6 +281,8 @@ describe('Showdown rules (12.24)', () => {
   });
   it('a lost Showdown can be played again', () => {
     const d = new Driver();
+    d.talk('clerk-venn', 'What about');
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-001-C' });
     d.run({ type: 'ShowdownStart', showdown: 'practice' });
     d.moves({ move: 'claim', claim: 'bold' }, { move: 'rest' });
     expect(d.s.showdown!.outcome).toBeTruthy();
@@ -425,6 +427,55 @@ describe('permanent credit and hints', () => {
     d.run({ type: 'RunSimulation', pen: 'biro-type', surface: 'leather' }); // changed two things
     expect(d.s.flags['sim.fair']).toBeUndefined();
     expect(d.s.flags['sim.unfair']).toBe(1);
+  });
+});
+
+describe('misconception signals (phase L2, spec 95)', () => {
+  it('the game has 25 misconceptions, each with a place in play', () => {
+    expect(pack.misconceptions.length).toBe(25);
+  });
+  const once = (d: Driver, node: string, pick: string) => {
+    d.run({ type: 'EnterNode', node });
+    const o = d.e.visibleOptions(node, d.s).find((x) => x.option.text.includes(pick));
+    if (!o) throw new Error(`no option "${pick}" at ${node}`);
+    d.run({ type: 'ChooseDialogueOption', node, index: o.index });
+  };
+  const sites: [string, string, string][] = [
+    ['dace.start', 'Numbers speak', 'MIS-33'], ['hesper.start', 'biased', 'MIS-03'], ['sefa.start', 'no point of view', 'MIS-04'],
+    ['sefa.song', 'only art', 'MIS-12'], ['sefa.song', 'Only writing', 'MIS-27'], ['orrin.ledger', 'exactly what', 'MIS-15'],
+    ['orrin.ledger', 'only record', 'MIS-16'], ['ev.coin', 'just a label', 'MIS-22'], ['ev.fog', 'cannot know', 'MIS-40'],
+    ['ev.memory', 'did not see', 'MIS-20'], ['ev.well', 'must be the cause', 'MIS-07'], ['ev.bell', 'portal magic', 'MIS-07'],
+    ['ev.mind', 'ignore all', 'MIS-19'], ['ev.translate', 'earliest', 'MIS-21'],
+  ];
+  for (const [node, pick, id] of sites) {
+    it(`${node}: "${pick}" signals ${id}`, () => {
+      const d = new Driver();
+      once(d, node, pick);
+      expect(d.p.signals[id]?.length).toBe(1);
+    });
+  }
+  it('the other options at the same places raise no signal (values and good questions never do)', () => {
+    const d = new Driver();
+    once(d, 'orrin.ledger', 'Who writes'); once(d, 'sefa.song', 'What does the song know'); once(d, 'ev.price', 'Who is right');
+    expect(Object.keys(d.p.signals)).toEqual([]);
+  });
+  it('"Proved the exact size of the Earth" does not hold and signals MIS-01', () => {
+    const d = new Driver();
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-101' });
+    const o = d.run({ type: 'BuildLabel', kit: 'first.eratosthenes', subject: 'person', criterion: 'exact', limit: 'limit' });
+    expect((o.events.find((e) => e.kind === 'label') as any).result.holds).toBe(false);
+    expect(d.p.signals['MIS-01']?.length).toBe(1);
+  });
+  it('a shout at an open fair point signals MIS-36; a concession does not', () => {
+    const d = new Driver();
+    d.talk('clerk-venn', 'What about');
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-001-C' });
+    d.run({ type: 'ShowdownStart', showdown: 'practice' });
+    d.moves({ move: 'claim', claim: 'practical' }, { move: 'support', card: 'card.dpma-history' }, { move: 'support', card: 'card.biro-object' });
+    expect(d.s.showdown!.openPoint).toBeTruthy();
+    expect(d.p.signals['MIS-36']).toBeUndefined();
+    d.run({ type: 'ShowdownMove', move: { move: 'shout' } });
+    expect(d.p.signals['MIS-36']?.length).toBe(1);
   });
 });
 

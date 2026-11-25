@@ -154,6 +154,7 @@ export function validateContent(pack: ContentPack): string[] {
     const allCards = [...sd.opponentClaim.links.flatMap((l) => l.weakTo), ...sd.opponentClaim.counterexamples.map((c) => c.card), ...sd.playerClaims.flatMap((c) => c.supports.map((x) => x.card))];
     allCards.forEach((c) => cards.has(c) || p.push(`showdown ${sd.id}: unknown card ${c}`));
     sd.playerClaims.forEach((c) => { if (c.signal && !mis.has(c.signal)) p.push(`showdown ${sd.id}: unknown signal ${c.signal}`); });
+    if (sd.dodgeSignal && !mis.has(sd.dodgeSignal)) p.push(`showdown ${sd.id}: unknown dodge signal ${sd.dodgeSignal}`);
     sd.witnesses.forEach((w) => cond(w.if, `showdown ${sd.id} witness ${w.id}`));
     sd.script.forEach((m) => { if (m.move === 'point' && !sd.fairPoints.some((f) => f.id === m.point)) p.push(`showdown ${sd.id}: unknown fair point ${m.point}`); });
     for (const [k, o] of Object.entries(sd.outcomes)) { text(`showdown ${sd.id} outcome ${k}`, o.text); eff(o.effects, `showdown ${sd.id} outcome ${k}`); }
@@ -195,6 +196,10 @@ export function validateContent(pack: ContentPack): string[] {
     if (needAtl && !w.atl.length) p.push(`${where}: needs at least one ATL category (WEAVE-016)`);
     (w.subjects ?? []).forEach((x) => x in SUBJECTS || p.push(`${where}: unknown subject ${x}`));
   }
+  // RECUR-035 (start): every misconception has at least one place in play that can signal it.
+  const { misconceptions: _m, ...rest } = pack;
+  const used = new Set([...JSON.stringify(rest).matchAll(/"(?:signal|dodgeSignal)":"(MIS-\d+)"/g)].map((x) => x[1]));
+  pack.misconceptions.forEach((m) => { if (!used.has(m.id)) p.push(`misconception ${m.id}: nothing in play can signal it`); });
   // NONEWS-001: no news source types.
   pack.sources.forEach((src) => { if (/\bnews\b|newspaper|gazette/i.test(src.title)) p.push(`source ${src.id}: news sources are not allowed (NONEWS-001)`); });
   // Every objective needs four hint depths (spec 16.3).

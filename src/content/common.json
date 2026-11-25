@@ -792,6 +792,26 @@
  ],
  "misconceptions": [
   {
+   "id": "MIS-01",
+   "title": "Science gives final certainty",
+   "signal": "Labels a measured claim as exact or proven, with no range.",
+   "worldResponse": "Visitors ask: 'Exact for how long?' A later record gives a different number.",
+   "reflection": "Which part of the claim is measured, and how big could the error be? What would make you change the number?",
+   "teacherMove": "Ask for a range with every measured claim. Compare an early estimate with a later one.",
+   "concepts": [
+    "certainty",
+    "evidence"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
    "id": "MIS-02",
    "title": "All views have equal support",
    "signal": "Treats a claim with evidence and a claim without evidence as equally strong.",
@@ -801,6 +821,46 @@
    "concepts": [
     "justification",
     "evidence"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-03",
+   "title": "Having a position means being biased",
+   "signal": "Throws out a source only because the person has a position.",
+   "worldResponse": "With every 'biased' source gone, nobody is left who knows how the thing was made.",
+   "reflection": "Everyone who knows something knows it from somewhere. What does this person's position let them see?",
+   "teacherMove": "Separate 'this person has a position' from 'this claim is badly supported'. Ask what the position adds.",
+   "concepts": [
+    "perspective",
+    "objectivity"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-04",
+   "title": "Objective means having no point of view",
+   "signal": "Asks for a source with no point of view at all.",
+   "worldResponse": "The archive has no such source. Every record was made by someone, for some reason.",
+   "reflection": "If no source is from nowhere, what makes a source more or less trustworthy?",
+   "teacherMove": "Present objectivity as a method: checking, comparing and being open to correction.",
+   "concepts": [
+    "objectivity",
+    "perspective"
    ],
    "student": {
     "count": 3,
@@ -852,6 +912,26 @@
    }
   },
   {
+   "id": "MIS-07",
+   "title": "Things that happen together must be cause and effect",
+   "signal": "Names a cause because two things happen together.",
+   "worldResponse": "A third thing turns up that explains both.",
+   "reflection": "What else changed at the same time? How could you test one cause on its own?",
+   "teacherMove": "Use a simple example with a hidden third factor. Ask the class how to control for it.",
+   "concepts": [
+    "explanation",
+    "evidence"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
    "id": "MIS-08",
    "title": "One case proves a rule",
    "signal": "Makes a general claim from one vivid case.",
@@ -892,6 +972,66 @@
    }
   },
   {
+   "id": "MIS-12",
+   "title": "Art cannot tell us anything",
+   "signal": "Dismisses a song or artwork as 'just art' when it carries information.",
+   "worldResponse": "The song holds a detail that the written records missed.",
+   "reflection": "What can a song, picture or pattern hold that a list of facts cannot?",
+   "teacherMove": "Pair an artwork with a document about the same thing. Ask what each one shows.",
+   "concepts": [
+    "interpretation",
+    "values"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-15",
+   "title": "A record shows exactly what happened",
+   "signal": "Treats a ledger or chronicle as a direct copy of the past.",
+   "worldResponse": "A second record of the same event says something different.",
+   "reflection": "Who wrote this record, for what purpose, and what did they leave out?",
+   "teacherMove": "Compare two records of one event. Ask why they differ.",
+   "concepts": [
+    "interpretation",
+    "power"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-16",
+   "title": "The official account is the only account",
+   "signal": "Uses only the official or ruling source and ignores others.",
+   "worldResponse": "An older or quieter voice adds a part of the story that the official record leaves out.",
+   "reflection": "Whose account is this? Whose account is missing, and where could you find it?",
+   "teacherMove": "Look for the voices that official records leave out. Ask how we can recover them.",
+   "concepts": [
+    "power",
+    "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
    "id": "MIS-18",
    "title": "Experts are right about everything",
    "signal": "Accepts an expert's view on a question outside their field.",
@@ -901,6 +1041,106 @@
    "concepts": [
     "power",
     "justification"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-19",
+   "title": "Experts cannot be trusted at all",
+   "signal": "Rejects all experts because one expert made a mistake.",
+   "worldResponse": "Without any expert advice, a simple problem becomes hard to solve.",
+   "reflection": "When is it sensible to trust an expert? What would make you trust one more, or less?",
+   "teacherMove": "Discuss calibrated trust: trust in a field, for what can be checked, and how errors are corrected.",
+   "concepts": [
+    "certainty",
+    "responsibility"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-20",
+   "title": "My own experience is the best evidence",
+   "signal": "Accepts only what they saw for themselves.",
+   "worldResponse": "A second observer noticed something the player could not see.",
+   "reflection": "What could another observer notice that you missed? How can you check your own seeing?",
+   "teacherMove": "Compare two eye-witness accounts. Discuss the limits of perception and memory.",
+   "concepts": [
+    "evidence",
+    "objectivity"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-21",
+   "title": "A translation says exactly what the original says",
+   "signal": "Treats a translated word as the same as the original.",
+   "worldResponse": "Two translations of the same word make two different claims.",
+   "reflection": "What does the word claim in each language? What could be lost or added?",
+   "teacherMove": "Take one key word in two translations. Ask what each choice claims.",
+   "concepts": [
+    "interpretation",
+    "culture"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-22",
+   "title": "Names are only labels and change nothing",
+   "signal": "Says a name does not matter when it carries a claim or a history.",
+   "worldResponse": "A name turns out to hold a story about who had the right to name the place.",
+   "reflection": "What does this name claim? Who gave it, and what other names are there?",
+   "teacherMove": "Compare a local name with an official name for the same place. Ask what each one tells.",
+   "concepts": [
+    "interpretation",
+    "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-27",
+   "title": "Only writing counts as knowledge",
+   "signal": "Ignores an oral source because it is not written.",
+   "worldResponse": "The spoken tradition agrees with the physical evidence where the written record is silent.",
+   "reflection": "How is a spoken tradition kept accurate? How could you check it against other evidence?",
+   "teacherMove": "Show a case where an oral tradition and other evidence agree. Discuss how oral knowledge is kept.",
+   "concepts": [
+    "evidence",
+    "culture"
    ],
    "student": {
     "count": 3,
@@ -972,6 +1212,26 @@
    }
   },
   {
+   "id": "MIS-33",
+   "title": "Numbers speak for themselves",
+   "signal": "Presents a number with no choice about what it measures or shows.",
+   "worldResponse": "The same number, framed two ways, makes visitors believe two different things.",
+   "reflection": "Which question does this number answer? What did someone choose when they showed it?",
+   "teacherMove": "Show one data set in two framings. Ask the class which choices changed the message.",
+   "concepts": [
+    "interpretation",
+    "objectivity"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
    "id": "MIS-34",
    "title": "Being sure means being right",
    "signal": "Makes a very strong claim on weak support.",
@@ -981,6 +1241,46 @@
    "concepts": [
     "certainty",
     "evidence"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-36",
+   "title": "Admitting a fair point makes you weaker",
+   "signal": "Answers a fair point with a shout or a cheap shot instead of dealing with it.",
+   "worldResponse": "The crowd notices the dodge and trusts the player less.",
+   "reflection": "What would happen to your argument if you accepted the fair point and then answered it?",
+   "teacherMove": "Show how a counterclaim, answered well, makes an argument stronger.",
+   "concepts": [
+    "justification",
+    "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-40",
+   "title": "If we are not sure, we know nothing",
+   "signal": "Gives up when the evidence is partial.",
+   "worldResponse": "A partial clue is still enough to act on, with care.",
+   "reflection": "What do you know, even if you are not sure of everything? What could you do with that?",
+   "teacherMove": "Use a range or a 'probably' to show how partial knowledge still guides action.",
+   "concepts": [
+    "certainty",
+    "responsibility"
    ],
    "student": {
     "count": 3,

@@ -265,6 +265,12 @@
           "id": "early",
           "text": "An early estimate of the Earth's size",
           "force": 2
+        },
+        {
+          "id": "exact",
+          "text": "Proved the exact size of the Earth",
+          "force": 6,
+          "signal": "MIS-01"
         }
       ],
       "limits": [

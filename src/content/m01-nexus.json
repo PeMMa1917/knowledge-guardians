@@ -827,7 +827,8 @@
     "aoks": [
      "HIS"
     ]
-   }
+   },
+   "dodgeSignal": "MIS-36"
   }
  ],
  "journal": [
@@ -1073,6 +1074,16 @@
      "text": "Which source supports that?",
      "next": "dace.source",
      "tag": "Ask for a source"
+    },
+    {
+     "text": "Put the dates on the label. Numbers speak for themselves.",
+     "next": "dace.numbers",
+     "tag": "Let the numbers speak",
+     "effects": [
+      {
+       "signal": "MIS-33"
+      }
+     ]
     },
     {
      "text": "I understand the problem with long labels.",
@@ -1414,6 +1425,15 @@
     {
      "text": "If an expert can be wrong, why trust experts at all?",
      "next": "ev.mind.why"
+    },
+    {
+     "text": "Experts get things wrong. I will ignore all of them.",
+     "next": "ev.mind.why",
+     "effects": [
+      {
+       "signal": "MIS-19"
+      }
+     ]
     }
    ]
   },
@@ -1447,6 +1467,15 @@
     {
      "text": "Shrug and walk on.",
      "next": "ev.bell.end"
+    },
+    {
+     "text": "The bell rang just as the portal glowed. So the portal magic rang it.",
+     "next": "ev.bell.end",
+     "effects": [
+      {
+       "signal": "MIS-07"
+      }
+     ]
     }
    ]
   },
@@ -1498,6 +1527,15 @@
      "text": "What does each word claim?",
      "next": "ev.translate2",
      "tag": "Ask what the word claims"
+    },
+    {
+     "text": "The translation says 'earliest', so that is what the label means.",
+     "next": "ev.translate2",
+     "effects": [
+      {
+       "signal": "MIS-21"
+      }
+     ]
     }
    ]
   },
@@ -1511,6 +1549,13 @@
      "value": true
     }
    ]
+  },
+  {
+   "id": "dace.numbers",
+   "speaker": "curator-dace",
+   "claimKind": "interpretation",
+   "text": "Which numbers? 1888 is a grant date. 1945 to 1948 is a range from a museum record. Put 1888 alone under 'The first pen' and visitors believe one thing. Put 1945 alone and they believe another. The number is the same; the choice is yours.",
+   "next": "dace.ack"
   }
  ],
  "events": [

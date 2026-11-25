@@ -303,6 +303,8 @@ export interface ShowdownRecord {
   script: ({ move: 'press'; line: string } | { move: 'seal'; line: string } | { move: 'shout'; line: string } | { move: 'point'; point: string })[];
   outcomes: Record<ShowdownOutcome, { text: string; effects: Effect[] }>;
   canBeWonOver: boolean;
+  /** Misconception signal when the player answers an open fair point with a cheap shot or a shout (MIS-36). */
+  dodgeSignal?: string;
   weave: Weave;
 }
 

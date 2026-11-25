@@ -773,7 +773,8 @@
      "HIS",
      "NAT"
     ]
-   }
+   },
+   "dodgeSignal": "MIS-36"
   }
  ],
  "journal": [
@@ -943,6 +944,15 @@
     {
      "text": "Why didn't you label it?",
      "next": "hesper.label"
+    },
+    {
+     "text": "You made it, so your view is biased. I will ignore it.",
+     "next": "hesper.bias",
+     "effects": [
+      {
+       "signal": "MIS-03"
+      }
+     ]
     }
    ]
   },
@@ -1075,7 +1085,32 @@
   {
    "id": "orrin.ledger",
    "speaker": "guildmaster-orrin",
-   "text": "The ledger says what it says. Read it yourself at the desk. I don't argue with my own book."
+   "text": "The ledger says what it says. Read it yourself at the desk. I don't argue with my own book.",
+   "options": [
+    {
+     "text": "So the ledger shows exactly what happened.",
+     "next": "orrin.record",
+     "effects": [
+      {
+       "signal": "MIS-15"
+      }
+     ]
+    },
+    {
+     "text": "The guild's book is the only record we need.",
+     "next": "orrin.only",
+     "effects": [
+      {
+       "signal": "MIS-16"
+      }
+     ]
+    },
+    {
+     "text": "Who writes in the ledger, and what goes unwritten?",
+     "next": "orrin.who",
+     "tag": "Ask who made the record"
+    }
+   ]
   },
   {
    "id": "orrin.again",
@@ -1114,6 +1149,15 @@
      "next": "sefa.song"
     },
     {
+     "text": "I only want a source with no point of view at all.",
+     "next": "sefa.nowhere",
+     "effects": [
+      {
+       "signal": "MIS-04"
+      }
+     ]
+    },
+    {
      "text": "Ask my own question.",
      "next": "sefa.free"
     }
@@ -1140,7 +1184,32 @@
    "id": "sefa.song",
    "speaker": "scholar-sefa",
    "text": "There is an Aethelgard work song: 'Look at the hand, not the shine.' It is our own song, made up for this world. It means: ask who made a thing before you praise its surface.",
-   "historicalLabel": "fictional-world"
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "A song is only art. It cannot tell us anything.",
+     "next": "sefa.art",
+     "effects": [
+      {
+       "signal": "MIS-12"
+      }
+     ]
+    },
+    {
+     "text": "Songs are not records. Only writing counts.",
+     "next": "sefa.oral",
+     "effects": [
+      {
+       "signal": "MIS-27"
+      }
+     ]
+    },
+    {
+     "text": "What does the song know that the ledger does not?",
+     "next": "sefa.know",
+     "tag": "Ask what a source can know"
+    }
+   ]
   },
   {
    "id": "sefa.free",
@@ -1348,6 +1417,15 @@
      "text": "Ask Sefa, the song-keeper.",
      "next": "ev.coin.end",
      "tag": "Ask someone who knows"
+    },
+    {
+     "text": "A name is just a label. It changes nothing.",
+     "next": "ev.coin.end",
+     "effects": [
+      {
+       "signal": "MIS-22"
+      }
+     ]
     }
    ]
   },
@@ -1368,6 +1446,15 @@
     {
      "text": "Wait for the fog to lift.",
      "next": "ev.fog.end"
+    },
+    {
+     "text": "I cannot see anything, so I cannot know where I am.",
+     "next": "ev.fog.end",
+     "effects": [
+      {
+       "signal": "MIS-40"
+      }
+     ]
     }
    ]
   },
@@ -1398,7 +1485,12 @@
     },
     {
      "text": "The forge must be the cause.",
-     "next": "ev.well.end"
+     "next": "ev.well.end",
+     "effects": [
+      {
+       "signal": "MIS-07"
+      }
+     ]
     }
    ]
   },
@@ -1420,6 +1512,15 @@
     {
      "text": "You only remembered now, so it can't be true.",
      "next": "ev.memory.end"
+    },
+    {
+     "text": "I did not see the stranger myself, so I will not believe it.",
+     "next": "ev.memory.end",
+     "effects": [
+      {
+       "signal": "MIS-20"
+      }
+     ]
     }
    ]
   },
@@ -1427,6 +1528,62 @@
    "id": "ev.memory.end",
    "speaker": "fruit-seller",
    "text": "I'm not sure of the ring's colour, if I'm honest. Gold, I think. Put down 'I think'."
+  },
+  {
+   "id": "hesper.bias",
+   "speaker": "smith-hesper",
+   "claimKind": "interpretation",
+   "text": "I have a position, yes. I made it. That is also why I know how it was made. Don't trust me blindly: check me. Make a billet at the anvil and compare it with the blade.",
+   "next": "hesper.forge"
+  },
+  {
+   "id": "sefa.nowhere",
+   "speaker": "scholar-sefa",
+   "claimKind": "interpretation",
+   "text": "Then my shelves are empty. Every record was made by someone, for a reason. A museum catalogue too. What I can give you is records that you can check against each other.",
+   "next": "sefa.again"
+  },
+  {
+   "id": "sefa.art",
+   "speaker": "scholar-sefa",
+   "claimKind": "interpretation",
+   "text": "Art carries what people noticed and cared about. 'Look at the hand, not the shine' tells you what buyers here were told to check for generations. The ledger never says that.",
+   "next": "sefa.again"
+  },
+  {
+   "id": "sefa.oral",
+   "speaker": "scholar-sefa",
+   "claimKind": "interpretation",
+   "text": "The song-keepers check each other. A changed line is noticed at the next festival. And the song names the old smiths' marks. Hesper's mark is one of them. Check it on the blade yourself.",
+   "next": "sefa.again"
+  },
+  {
+   "id": "sefa.know",
+   "speaker": "scholar-sefa",
+   "claimKind": "interpretation",
+   "text": "The ledger knows who sold what, and when. The song knows what people here thought made a blade good. Two kinds of knowledge. Neither one is the whole story.",
+   "next": "sefa.again"
+  },
+  {
+   "id": "orrin.record",
+   "speaker": "guildmaster-orrin",
+   "claimKind": "interpretation",
+   "text": "It shows what a clerk wrote down. Sales, yes. Not the sheet that Hesper gave Corvan, and not what Corvan said at his stall. Ask the smith about the making.",
+   "next": null
+  },
+  {
+   "id": "orrin.only",
+   "speaker": "guildmaster-orrin",
+   "claimKind": "interpretation",
+   "text": "I like you saying that, but no. The song-keepers knew this town as Old Vell before the guild had a book. Sefa can tell you what the ledger never held.",
+   "next": null
+  },
+  {
+   "id": "orrin.who",
+   "speaker": "guildmaster-orrin",
+   "claimKind": "observation",
+   "text": "Our clerks write sales between guild members. Gifts, repairs and sales by outsiders often go unwritten. The book is honest about what it holds. It is silent about the rest.",
+   "next": null
   }
  ],
  "events": [

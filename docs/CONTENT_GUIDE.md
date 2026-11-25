@@ -107,6 +107,7 @@ A Showdown (`showdowns`) is a public argument. See `ShowdownRecord` in `types.ts
 - `playerClaims` are the claims the player can make. A claim with too much force for its supports loses crowd trust.
 - `witnesses` can speak if their condition holds. `fairPoints` are fair things the opponent says. Conceding a fair point **gains** trust (SHOW-002).
 - `script` is the opponent's moves, in order. `outcomes` has text and effects for each of the five outcomes. All five give the same credit. Show the difference in the world (for example the Emberford sign).
+- Set `dodgeSignal` (usually `MIS-36`) to signal when the player answers an open fair point with a shout or a cheap shot.
 - Set `valueShowdown: true` when the disagreement is about values. Then a split is a stable outcome.
 - Open it from dialogue with `"open": "showdown:<id>"`. Add the routes to `tests/playthrough.test.ts`.
 
@@ -132,6 +133,7 @@ A moment (`moments`) has an `attribute`, a condition `when`, a line `did` ("Youâ
 A misconception (`misconceptions`) has a paraphrased `title`, the play `signal`, a `worldResponse`, a private `reflection` for the student, a `teacherMove`, and the thresholds (student 3 in 14 days, teacher 5 in 21 days). Raise a signal with the effect `{ "signal": "MIS-xx" }` or with `signal` on a label criterion, a support or a Showdown claim.
 
 - Signal reasoning patterns only. **Never** signal a value choice.
+- Every misconception needs at least one place in play that can signal it. The validator checks this. Give the player a good option next to each signalling option, and let the world answer gently (no "wrong").
 - Write the title in your own words. Do not copy IB or spec wording.
 
 ## Add a portfolio template

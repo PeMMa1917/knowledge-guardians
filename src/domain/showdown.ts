@@ -166,11 +166,13 @@ export function playMove(rec: ShowdownRecord, sd0: ShowdownState, mv: ShowdownMo
       break;
     }
     case 'attack': {
+      if (sd.openPoint && rec.dodgeSignal) signals.push(rec.dodgeSignal);
       sd.cheapShots += 1; sd.trust.player -= 3;
       say("You point at the opponent's motive.", 'The claim takes no damage. The crowd sees a cheap shot.');
       break;
     }
     case 'shout': {
+      if (sd.openPoint && rec.dodgeSignal) signals.push(rec.dodgeSignal);
       sd.trust.player -= 1;
       say('You repeat your claim, louder.', 'Louder is not stronger. The crowd gets bored.');
       break;
