@@ -54,7 +54,8 @@ export const PETS: Record<string, { name: string } | null> = {
   fox: { name: 'Sleepy fox cub' },
   axolotl: { name: 'Axolotl in a bowl' },
 };
-export const SLOTS = 6;
+/** Shelf places. Rooms saved with the older six places are padded to eight. */
+export const SLOTS = 8;
 
 export interface Room { wall: string; floor: string; rug: string; lamp: string; view: string; plant: string; pet?: string; shelf: (string | null)[] }
 export const DEFAULT_ROOM: Room = { wall: 'plaster', floor: 'boards', rug: 'wine', lamp: 'lantern', view: 'stars', plant: 'fern', pet: 'none', shelf: Array(SLOTS).fill(null) };
@@ -73,6 +74,7 @@ export function decodeRoom(s: unknown): Room | null {
   const [wall, floor, rug, lamp, view, plant, pet = 'none', ...rest] = look.split('.');
   if (rest.length || !(pet in PETS) || !(wall in WALLS) || !(floor in FLOORS) || !(rug in RUGS) || !(lamp in LAMPS) || !(view in VIEWS) || !(plant in PLANTS)) return null;
   const items = shelf.split(',');
+  if (items.length === 6) items.push(...Array(SLOTS - 6).fill(''));
   if (items.length !== SLOTS || items.some((x) => x !== '' && !ID.test(x))) return null;
   return { wall, floor, rug, lamp, view, plant, pet, shelf: items.map((x) => x || null) };
 }

@@ -9,7 +9,7 @@ type G = CanvasRenderingContext2D;
 const R = (g: G, c: string, x: number, y: number, w = 1, h = 1) => { g.fillStyle = c; g.fillRect(x, y, w, h); };
 export const ROOM_W = 192, ROOM_H = 128;
 /** Shelf slot positions (left x, shelf top y) for the six slots. */
-export const SLOT_POS: [number, number][] = [[74, 52], [96, 52], [118, 52], [74, 76], [96, 76], [118, 76]];
+export const SLOT_POS: [number, number][] = [[68, 52], [89, 52], [110, 52], [131, 52], [68, 76], [89, 76], [110, 76], [131, 76]];
 
 /** Keepsake icons, 12 x 12. Each line is a row; letters index the palette. */
 const ICONS: Record<string, { pal: Record<string, string>; rows: string[] }> = {
@@ -140,7 +140,7 @@ export function drawRoom(g: G, r: Room, x: RoomExtras): void {
     }
   } else { R(g, '#3b2a1a', 152, 28, 26, 1); R(g, '#e9e0c8', 156, 30, 18, 24); R(g, '#c7b58f', 158, 34, 14, 1); R(g, '#c7b58f', 158, 38, 10, 1); }
   // Shelves and keepsakes.
-  for (const sy of [52, 76]) { R(g, '#5b3b22', 68, sy, 70, 3); R(g, '#8a5a30', 68, sy, 70, 1); R(g, '#3b2a1a', 72, sy + 3, 2, 4); R(g, '#3b2a1a', 132, sy + 3, 2, 4); }
+  for (const sy of [52, 76]) { R(g, '#5b3b22', 63, sy, 88, 3); R(g, '#8a5a30', 63, sy, 88, 1); R(g, '#3b2a1a', 67, sy + 3, 2, 4); R(g, '#3b2a1a', 145, sy + 3, 2, 4); }
   SLOT_POS.forEach(([sx, sy], i) => {
     const id = r.shelf[i];
     if (x.selected === i) { g.globalAlpha = 0.35 + 0.2 * Math.sin(x.t / 200); R(g, '#fff3c4', sx - 1, sy - 13, 16, 13); g.globalAlpha = 1; }

@@ -16,7 +16,9 @@ describe("Guardian's quarters (spec 12.16, 32.6)", () => {
     expect(decodeRoom('brick.boards.wine.lantern.stars.fern|<b>,,,,,')).toBeNull();
     expect(decodeRoom(42)).toBeNull();
     // A companion is an optional 7th part; no companion keeps the old format.
-    expect(encodeRoom(DEFAULT_ROOM)).toBe('plaster.boards.wine.lantern.stars.fern|,,,,,');
+    expect(encodeRoom(DEFAULT_ROOM)).toBe('plaster.boards.wine.lantern.stars.fern|,,,,,,,');
+    // Old rooms with six shelf places still open, with two empty places added.
+    expect(decodeRoom('brick.boards.wine.lantern.stars.fern|pen-tip,,,,,')?.shelf).toEqual(['pen-tip', null, null, null, null, null, null, null]);
     expect(decodeRoom('brick.boards.wine.lantern.stars.fern.owl|,,,,,')?.pet).toBe('owl');
     expect(decodeRoom('brick.boards.wine.lantern.stars.fern|,,,,,')?.pet).toBe('none');
     expect(decodeRoom('brick.boards.wine.lantern.stars.fern.dragon|,,,,,')).toBeNull();
@@ -26,7 +28,7 @@ describe("Guardian's quarters (spec 12.16, 32.6)", () => {
     r = placeKeepsake(r, 4, 'yarn');
     expect(r.shelf.filter((x) => x === 'yarn')).toHaveLength(1);
     expect(r.shelf[4]).toBe('yarn');
-    expect(() => placeKeepsake(r, 6, 'yarn')).toThrow();
+    expect(() => placeKeepsake(r, 8, 'yarn')).toThrow();
   });
   it('the Star Chart lights one star for each fifth of a ring, at fixed places', () => {
     expect(starsFor(0, 20)).toBe(0);
