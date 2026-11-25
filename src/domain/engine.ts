@@ -11,7 +11,7 @@ import { CAMPAIGN_SCHEMA, type Pronouns } from './types';
 import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
 import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
-import { TIME_MAX, TIME_MIN, answerRound, runSurvey, checkOrder, judgeSight, panes, readTimes, runSorter, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
+import { TIME_MAX, TIME_MIN, answerRound, runSurvey, translateLine, checkOrder, judgeSight, panes, readTimes, runSorter, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
 import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
 import { useSignature } from './skills';
@@ -42,6 +42,7 @@ export type Command =
   | { type: 'PuzzleTrain'; puzzle: string; examples: string[] }
   | { type: 'PuzzleTime'; puzzle: string; kind: 'echo' | 'react'; ms: number }
   | { type: 'PuzzleSurvey'; puzzle: string; wording: string; sample: string }
+  | { type: 'PuzzleTranslate'; puzzle: string; picks: number[] }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
   | { type: 'PhotoCaptioned'; right: number; total: number }
   | { type: 'UnpinYarn'; board: string; claim: string; card: string }
@@ -504,14 +505,23 @@ export class Engine {
           events.push({ kind: 'yarn', board: rec.id, claim: cmd.claim, card: cmd.card, tone: v.tone, text: v.text, done });
           break;
         }
-        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': case 'PuzzleAddPoint': case 'PuzzlePredict': case 'PuzzleMap': case 'PuzzleDiagnose': case 'PuzzleTrain': case 'PuzzleTime': case 'PuzzleSurvey': {
+        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': case 'PuzzleAddPoint': case 'PuzzlePredict': case 'PuzzleMap': case 'PuzzleDiagnose': case 'PuzzleTrain': case 'PuzzleTime': case 'PuzzleSurvey': case 'PuzzleTranslate': {
           const rec = this.pack.puzzles.find((x) => x.id === cmd.puzzle);
           if (!rec) throw new Error('Unknown puzzle');
           if (rec.needs && !s.inventory[rec.needs.item]) throw new Error(rec.needs.sealed);
           const F = `puzzle.${rec.id}`;
           const wasDone = s.flags[`${F}.done`] === true;
           let ok: boolean, text: string, solved: boolean, gapAt: number | null = null;
-          if (cmd.type === 'PuzzleSurvey') {
+          if (cmd.type === 'PuzzleTranslate') {
+            const r = translateLine(rec, cmd.picks);
+            solved = false;
+            if (r.over) { ok = false; text = `The crier's slate holds ${rec.type === 'translate' ? rec.budget : 0} words. This line has ${r.words}.`; }
+            else {
+              ok = r.lost.length === 0;
+              text = ok ? 'The council reads it and acts on every part of the message.' : r.lost.map((x) => x.lost).join(' ');
+              s = apply([{ setFlag: `${F}.last`, value: cmd.picks.join(',') }, ...(ok ? [{ setFlag: `${F}.sent`, value: cmd.picks.join(',') }] : [{ addNum: `${F}.tries`, by: 1 }])], s, out);
+            }
+          } else if (cmd.type === 'PuzzleSurvey') {
             const r = runSurvey(rec, cmd.wording, cmd.sample);
             const key = `${F}.runs`, pair = `${cmd.wording}:${cmd.sample}`;
             const runs = String(s.flags[key] ?? '').split(',').filter(Boolean);
@@ -576,7 +586,8 @@ export class Engine {
             if (rec.type === 'sorter' && typeof s.flags[`${F}.trained`] !== 'string') throw new Error('Teach the sorter first');
             if (rec.type === 'echo' && (readTimes(s.flags[`${F}.echo`]).length < rec.minTimes || readTimes(s.flags[`${F}.react`]).length < rec.minTimes)) throw new Error('Time the echo and your reaction first');
             if (rec.type === 'survey' && !String(s.flags[`${F}.runs`] ?? '').split(',').includes(`${rec.fair.wording}:${rec.fair.sample}`)) throw new Error('Run a survey with a plain question and a fair group first');
-            if (rec.type !== 'sightlines' && rec.type !== 'conjecture' && rec.type !== 'mapmaker' && rec.type !== 'sorter' && rec.type !== 'echo' && rec.type !== 'survey') throw new Error('This puzzle has no report');
+            if (rec.type === 'translate' && typeof s.flags[`${F}.sent`] !== 'string') throw new Error('Send a translation that keeps every part first');
+            if (rec.type !== 'sightlines' && rec.type !== 'conjecture' && rec.type !== 'mapmaker' && rec.type !== 'sorter' && rec.type !== 'echo' && rec.type !== 'survey' && rec.type !== 'translate') throw new Error('This puzzle has no report');
             const r = rec.type === 'sightlines' ? rec.reports[cmd.index] : rec.reflect[cmd.index];
             if (!r) throw new Error('No such report');
             ok = r.honest; text = r.why; solved = r.honest;

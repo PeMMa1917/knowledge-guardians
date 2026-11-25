@@ -353,6 +353,15 @@
     "eq": true
    },
    "line": "The council read your survey. They asked the night porters too, this time. I was very surprised to be asked."
+  },
+  {
+   "id": "ferry.sefa",
+   "character": "scholar-sefa",
+   "if": {
+    "flag": "puzzle.ferry-message.done",
+    "eq": true
+   },
+   "line": "Ama sent a slate back: 'Tavi did well.' You, and we. My grandmother would like your translation."
   }
  ]
 }

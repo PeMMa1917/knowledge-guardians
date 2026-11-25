@@ -522,9 +522,17 @@ export type PuzzleRecord = {
    * not firm. The player runs surveys, compares them, then chooses a fair report.
    */
   | { type: 'survey'; groups: Record<string, string>; people: SurveyPerson[]; wordings: { id: string; text: string; lean: 'none' | 'yes' | 'no' }[]; samples: { id: string; label: string; people: string[] }[]; fair: { wording: string; sample: string }; reflect: { text: string; honest: boolean; why: string }[] }
+  /**
+   * A translation relay (language AOK): a message in the ferryfolk's cant must reach the
+   * council in English. Some cant words mark a difference that English does not mark in one
+   * word. The player picks a rendering for each word within the crier's word limit. Many
+   * translations work: a translation works when it keeps every difference the reader needs.
+   */
+  | { type: 'translate'; speaker: string; source: string; frame: string; budget: number; words: TranslateWord[]; parts: { id: string; name: string; lost: string }[]; reflect: { text: string; honest: boolean; why: string }[] }
   | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string }[] }
 );
 
+export interface TranslateWord { id: string; word: string; note: string; choices: { text: string; keeps: string[]; back: string }[] }
 export interface SurveyPerson { id: string; group: string; yes: boolean; firm: boolean }
 export interface SorterFruit { id: string; colour: 'red' | 'green' | 'yellow'; size: 'small' | 'large'; bruised: boolean; farm: string }
 export interface SightBlock { x: number; y: number; w: number; h: number; label: string; kind: 'stall' | 'fountain' | 'crates' | 'cart' }

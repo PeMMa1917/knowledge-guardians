@@ -8,7 +8,7 @@
 import type { Condition, ContentPack, Effect, Weave } from './types';
 import { ATLS, CONCEPTS, PROFILE } from './types';
 import { SUBJECTS } from './curriculum';
-import { chordFigure, panes, runSorter, runSurvey, sightBlock } from './puzzles';
+import { chordFigure, panes, runSorter, runSurvey, sightBlock, translateLine } from './puzzles';
 import { openCombinations } from './lock';
 
 const MAX_TEXT = 2000;
@@ -191,6 +191,28 @@ export function validateContent(pack: ContentPack): string[] {
       else {
         const all = z.people.filter((x) => x.yes).length / z.people.length, fair = runSurvey(z, z.fair.wording, z.fair.sample);
         if (Math.abs(fair.yes / fair.total - all) > 0.15) p.push(`puzzle ${z.id}: the fair sample does not look like the whole town`);
+      }
+      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
+    }
+    else if (z.type === 'translate') {
+      const needIds = z.parts.map((n) => n.id);
+      z.words.forEach((w) => {
+        if (w.choices.length < 2) p.push(`puzzle ${z.id} word ${w.id}: needs two or more renderings`);
+        if (!z.source.includes(w.word)) p.push(`puzzle ${z.id} word ${w.id}: ${w.word} is not in the source`);
+        if (!z.frame.includes(`{${w.id}}`)) p.push(`puzzle ${z.id} word ${w.id}: not in the frame`);
+        w.choices.forEach((c) => c.keeps.forEach((k) => needIds.includes(k) || p.push(`puzzle ${z.id} word ${w.id}: unknown difference ${k}`)));
+      });
+      // Search every translation: more than one must keep everything within the word limit.
+      let good = 0;
+      const walk = (i: number, picks: number[]): void => {
+        if (i === z.words.length) { const r = translateLine(z, picks); if (!r.over && !r.lost.length) good++; return; }
+        z.words[i].choices.forEach((_, c) => walk(i + 1, [...picks, c]));
+      };
+      if (z.words.length && z.words.every((w) => w.choices.length)) {
+        walk(0, []);
+        if (good < 2) p.push(`puzzle ${z.id}: needs two or more translations that keep everything within ${z.budget} words`);
+        const plain = translateLine(z, z.words.map(() => 0));
+        if (!plain.lost.length) p.push(`puzzle ${z.id}: the first rendering of every word must lose something`);
       }
       if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }

@@ -13,7 +13,7 @@ import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads,
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
-import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, runSorter, runSurvey, sightBlock, tiltOf, timeStats, type SorterRun } from '../domain/puzzles';
+import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, runSorter, runSurvey, sightBlock, tiltOf, timeStats, translateLine, type SorterRun } from '../domain/puzzles';
 import { audioNow, chime, clapEcho, playNotes } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
@@ -1129,6 +1129,8 @@ export class UI implements UIApi {
     let echo: { mode: 'idle' | 'listen' | 'wait' | 'go'; t0: number; audio: boolean; timer: number } = { mode: 'idle', t0: 0, audio: false, timer: 0 };
     let flashEcho = ctx.settings.sfxVolume <= 0.01;
     let surveyW: string | null = null, surveyS: string | null = null;
+    const lastPicks = String(c.state.flags[`puzzle.${rec.id}.sent`] ?? c.state.flags[`puzzle.${rec.id}.last`] ?? '').split(',').filter(Boolean).map(Number);
+    const tPicks: number[] = rec.type === 'translate' ? rec.words.map((_, i) => lastPicks[i] ?? 0) : [];
     let examples: string[] = [];
     let sheet: string[] = [];
     const sightNotes = new Map<string, string>();
@@ -1176,6 +1178,46 @@ export class UI implements UIApi {
               h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleWeigh', puzzle: rec.id, round: n, weights: [...pan] })) }, 'Record this weighing'),
               h('button', { onclick: () => { pan = []; feedback = null; render(); } }, 'Clear the pan')));
         } else if (done) box.append(h('p', { class: 'fair' }, 'Every weighing is in the record book.'));
+      } else if (rec.type === 'translate') {
+        const sent = typeof c.state.flags[`${F}.sent`] === 'string';
+        const last = c.state.flags[`${F}.last`];
+        const r = translateLine(rec, tPicks);
+        // The ferry slate: the message in the cant, each special word marked.
+        const marked = (line: string) => { const parts: (string | HTMLElement)[] = []; let rest = line;
+          while (rest) { const hit = rec.words.map((w) => ({ w, i: rest.indexOf(w.word) })).filter((x) => x.i >= 0).sort((a, b) => a.i - b.i)[0];
+            if (!hit) { parts.push(rest); break; }
+            parts.push(rest.slice(0, hit.i), h('mark', { class: 'cant' }, hit.w.word)); rest = rest.slice(hit.i + hit.w.word.length); }
+          return parts; };
+        box.append(h('div', { class: 'ferry-slate' }, h('span', { class: 'fine' }, `${rec.speaker} sends:`), h('p', { class: 'cant-line', lang: 'x-cant' }, ...marked(rec.source))));
+        box.append(h('h3', {}, '1. Choose an English rendering for each marked word'),
+          h('div', { class: 'tr-words' }, ...rec.words.map((w, wi) => h('div', { class: 'tr-word' },
+            h('strong', { class: 'cant' }, w.word), h('p', { class: 'fine tr-note' }, `Sefa: ${w.note}`),
+            h('div', { class: 'tr-choices' }, ...w.choices.map((ch, ci) => h('button', { type: 'button', class: `tr-choice ${tPicks[wi] === ci ? 'picked' : ''}`, 'aria-pressed': String(tPicks[wi] === ci),
+              onclick: () => { tPicks[wi] = ci; feedback = null; this.sfx('sfx.click'); render(); } }, ch.text)))))));
+        const pct = Math.min(100, (r.words / rec.budget) * 100);
+        box.append(h('h3', {}, "2. Read it on the crier's slate"),
+          h('div', { class: `crier-slate ${r.over ? 'over' : ''}` }, h('p', {}, r.text),
+            h('div', { class: 'word-meter', role: 'img', 'aria-label': `${r.words} of ${rec.budget} words` }, h('span', { style: { width: `${pct}%` } }), h('strong', {}, `${r.words} / ${rec.budget} words`))),
+          h('div', { class: 'row' }, h('button', { class: 'primary', disabled: r.over, onclick: () => {
+            const ev = c.dispatch({ type: 'PuzzleTranslate', puzzle: rec.id, picks: [...tPicks] }); take(ev);
+            this.sfx(c.state.flags[`${F}.sent`] === tPicks.join(',') ? 'sfx.sparkle' : 'sfx.page'); } }, 'Send it to the council'),
+            r.over ? h('span', { class: 'fine' }, 'Too long for the slate. Make something shorter.') : ''));
+        if (typeof last === 'string') {
+          const lr = translateLine(rec, last.split(',').map(Number));
+          box.append(h('h3', {}, 'Check: Sefa reads your last message back into the cant'),
+            h('p', { class: 'fine' }, 'A back-translation is a check, not a proof. Where it differs from the first line, meaning may have moved.'),
+            h('div', { class: 'tr-back' }, h('p', { class: 'cant-line' }, ...marked(rec.source)), h('p', { class: 'cant-line back' }, ...marked(lr.back)),
+              h('ul', { class: 'tr-needs' }, ...rec.parts.map((n) => h('li', { class: lr.kept.includes(n.id) ? 'kept' : 'lost' }, `${lr.kept.includes(n.id) ? '✓' : '✕'} ${n.name}`)))));
+        }
+        if (sent) {
+          box.append(h('h3', {}, done ? 'What you learned' : '3. What did the translation teach you?'),
+            done ? h('p', { class: 'fair' }, rec.reflect.find((x) => x.honest)!.text)
+              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((x, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, x.text)))));
+        }
+        if (feedback) {
+          const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
+          box.append(fb); requestAnimationFrame(() => fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+        }
       } else if (rec.type === 'survey') {
         const runs = String(c.state.flags[`${F}.runs`] ?? '').split(',').filter(Boolean);
         const fairDone = runs.includes(`${rec.fair.wording}:${rec.fair.sample}`);

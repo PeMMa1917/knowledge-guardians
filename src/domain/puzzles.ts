@@ -249,3 +249,18 @@ export function runSurvey(p: PuzzleRecord, wording: string, sample: string): Sur
   });
   return { wording, sample, yes: answers.filter((a) => a.yes).length, total: answers.length, byGroup, answers };
 }
+
+/** Count the words in a line (a note in brackets counts too). */
+export function wordCount(t: string): number { return t.split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length; }
+export interface TranslateResult { text: string; words: number; over: boolean; kept: string[]; lost: { id: string; name: string; lost: string }[]; back: string }
+/** Build the English line from one choice per word, and say which differences survive. */
+export function translateLine(p: PuzzleRecord, picks: number[]): TranslateResult {
+  if (p.type !== 'translate') throw new Error('Not a translation puzzle');
+  if (picks.length !== p.words.length) throw new Error('Choose a rendering for every word');
+  const chosen = p.words.map((w, i) => { const c = w.choices[picks[i]]; if (!c) throw new Error('No such rendering'); return c; });
+  let text = p.frame, back = p.source;
+  p.words.forEach((w, i) => { text = text.split(`{${w.id}}`).join(chosen[i].text); back = back.split(w.word).join(chosen[i].back); });
+  const kept = [...new Set(chosen.flatMap((c) => c.keeps))];
+  const words = wordCount(text);
+  return { text, words, over: words > p.budget, kept, lost: p.parts.filter((n) => !kept.includes(n.id)), back };
+}

@@ -179,6 +179,8 @@ A `conjecture` puzzle has `angles` (the points on the circle, in degrees, in the
 
 A `survey` puzzle has `groups`, `people` (each with a `group`, a view `yes` (true or false) and `firm`), `wordings` (each with a `lean`: `none`, `yes` or `no`; a leading wording moves people who are not firm to its side), `samples` (lists of people ids), a `fair` pair (`wording`, `sample`) and `reflect` (one `honest`). The validator checks that the fair pair gives the same share of yes as the whole town (within 0.15). The results are fixed, never random, so a class can compare them.
 
+A `translate` puzzle has a `source` line (in an invented language only; never use a real community's language without review, spec section 88), a `frame` (the English line with `{wordId}` places), a word `budget`, `words` (each with the `word` as it appears in the source, a `note` and `choices`: `text`, the `parts` it `keeps`, and `back`, the word a back-translation gives) and `parts` (the differences the reader needs, each with a `lost` text). Do not use the name `needs`: it is the general field for a locked puzzle. The validator checks that the first choice of every word loses something, and that two or more translations keep every part within the budget.
+
 ## Add a practice clue board
 
 Add a record to `clueBoards` (in `src/content/clueboard.json`) with the `showdown` id, a `title`, an `intro`, `onComplete` and a `weave`. The board takes its claims, links and support from the Showdown record, so no other data is needed. Place it on a map with `kind: 'board'` and `board: <id>`.

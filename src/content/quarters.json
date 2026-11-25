@@ -186,6 +186,16 @@
    "where": "Emberford: the Bridge Toll Survey."
   },
   {
+   "id": "ferry-chalk",
+   "name": "A stub of slate chalk",
+   "text": "From the ferry slate. Loma, tavi, kethe, belun: four words that English needed a phrase for.",
+   "if": {
+    "flag": "puzzle.ferry-message.done",
+    "eq": true
+   },
+   "where": "Emberford: the Ferry Message slate."
+  },
+  {
    "id": "seal",
    "name": "A wax copy of the seal",
    "text": "The Guardians' seal, found at the end of the chapter.",

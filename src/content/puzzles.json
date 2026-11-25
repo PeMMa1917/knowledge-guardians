@@ -1636,6 +1636,198 @@
      "why": "A careless survey can do that. A plain question to a fair sample gave a result that matches the town quite well. Methods can be made fairer; that is the point of checking them."
     }
    ]
+  },
+  {
+   "id": "ferry-message",
+   "type": "translate",
+   "title": "The Ferry Message",
+   "intro": "A message slate came down the river from Ama, the upriver ferry keeper. The ferry folk write in their river cant, a trade language with words that English does not have. Sefa grew up on the ferries and explains each marked word. Choose how to say each one in English, so the town crier can read it to the council. The crier's slate holds only so many words.",
+   "skills": [
+    "SK-ICU-10",
+    "SK-ICU-18",
+    "SK-GRM-05",
+    "SK-WRT-13"
+   ],
+   "weave": {
+    "concepts": [
+     "interpretation",
+     "culture"
+    ],
+    "atl": [
+     "communication",
+     "thinking"
+    ],
+    "subjects": [
+     "lang-b",
+     "lang-langlit",
+     "anthropology"
+    ],
+    "aoks": [
+     "LAN"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.interpretation.ferry"
+    },
+    {
+     "journal": "j.ferry"
+    }
+   ],
+   "speaker": "Ama, the upriver ferry keeper,",
+   "source": "Loma at the bend. Tavi bring long ropes to the landing. Ford is kethe. Come belun.",
+   "frame": "From the upriver ferry: {loma} at the bend. {tavi} bring long ropes to the landing. The ford is {kethe}. Come {belun}.",
+   "budget": 30,
+   "words": [
+    {
+     "id": "loma",
+     "word": "Loma",
+     "note": "Loma is the river rising slowly, over a day or more. A sudden flood that comes in an hour is brakk.",
+     "choices": [
+      {
+       "text": "a flood",
+       "keeps": [],
+       "back": "Brakk"
+      },
+      {
+       "text": "slow high water",
+       "keeps": [
+        "slow"
+       ],
+       "back": "Loma"
+      },
+      {
+       "text": "loma (the river rising slowly, over a day)",
+       "keeps": [
+        "slow"
+       ],
+       "back": "Loma"
+      }
+     ]
+    },
+    {
+     "id": "tavi",
+     "word": "Tavi",
+     "note": "Tavi means 'we, and you too'. Tavu means 'we, but not you'. The cant always says which.",
+     "choices": [
+      {
+       "text": "We",
+       "keeps": [],
+       "back": "Tavu"
+      },
+      {
+       "text": "Both of us",
+       "keeps": [
+        "together"
+       ],
+       "back": "Tavi"
+      },
+      {
+       "text": "You and we together",
+       "keeps": [
+        "together"
+       ],
+       "back": "Tavi"
+      }
+     ]
+    },
+    {
+     "id": "kethe",
+     "word": "kethe",
+     "note": "Kethe is a ford that people can walk across, but carts cannot. A ford that is safe for everything is sena.",
+     "choices": [
+      {
+       "text": "shallow",
+       "keeps": [],
+       "back": "sena"
+      },
+      {
+       "text": "walkable, no carts",
+       "keeps": [
+        "carts"
+       ],
+       "back": "kethe"
+      },
+      {
+       "text": "open to walkers, not carts",
+       "keeps": [
+        "carts"
+       ],
+       "back": "kethe"
+      }
+     ]
+    },
+    {
+     "id": "belun",
+     "word": "belun",
+     "note": "Belun means 'before the evening bell'. 'Soon, some time' is nai.",
+     "choices": [
+      {
+       "text": "soon",
+       "keeps": [],
+       "back": "nai"
+      },
+      {
+       "text": "by dusk",
+       "keeps": [
+        "time"
+       ],
+       "back": "belun"
+      },
+      {
+       "text": "before the evening bell",
+       "keeps": [
+        "time"
+       ],
+       "back": "belun"
+      }
+     ]
+    }
+   ],
+   "parts": [
+    {
+     "id": "slow",
+     "name": "The water rises slowly, so there is time",
+     "lost": "The council hears 'flood' and rings the alarm bell. Families carry their goods uphill in the dark, for water that rises slowly over a day."
+    },
+    {
+     "id": "together",
+     "name": "Town and ferry folk both bring ropes",
+     "lost": "The council reads 'we' as 'the ferry folk'. Nobody in town brings ropes, and the ferry folk have too few."
+    },
+    {
+     "id": "carts",
+     "name": "Walkers can cross the ford, carts cannot",
+     "lost": "'Shallow' sounds safe for everyone. A grain cart tries the ford and sticks in the mud."
+    },
+    {
+     "id": "time",
+     "name": "Come before the evening bell",
+     "lost": "'Soon' can mean this hour or tomorrow. Half of the helpers come after dark."
+    }
+   ],
+   "reflect": [
+    {
+     "text": "The cant is less exact than English, because one cant word needs a whole English phrase.",
+     "honest": false,
+     "why": "Look again at tavi. English 'we' does not say if it includes you; the cant always does. Every language marks some differences and leaves out others. No language is more exact about everything."
+    },
+    {
+     "text": "A word-for-word translation is always the most faithful one.",
+     "honest": false,
+     "why": "Word for word gave 'flood', 'we', 'shallow' and 'soon', and the council did the wrong things. To keep the meaning, a translator sometimes needs more words or different words."
+    },
+    {
+     "text": "Some cant words mark a difference that English needs several words for. A good translation keeps what its readers need, within its limits. A note or a back-translation shows the choices that the translator made.",
+     "honest": true,
+     "why": "Yes. Translation is interpretation: the translator chooses what to keep, and more than one translation can work. Many languages have an inclusive and an exclusive 'we'. English does not. That is a difference, not a weakness."
+    },
+    {
+     "text": "Translation always loses something, so we cannot know what Ama meant.",
+     "honest": false,
+     "why": "Something can be lost, but Sefa's notes and the back-check helped you keep what mattered. Uncertainty can be made smaller, and you can say openly where it remains."
+    }
+   ]
   }
  ],
  "missions": [
@@ -2087,6 +2279,50 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-F01",
+   "world": "WORLD-02",
+   "title": "The Ferry Message",
+   "knowledgeQuestion": "What can be gained and lost when knowledge moves from one language to another?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "ferry.o1.send",
+     "title": "Optional: translate the ferry message for the council (the slate post by the river, east of the bridge).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.ferry-message.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "culture"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "subjects": [
+       "lang-b",
+       "lang-langlit",
+       "anthropology"
+      ],
+      "aoks": [
+       "LAN"
+      ]
+     },
+     "skills": [
+      "SK-ICU-10",
+      "SK-ICU-18",
+      "SK-GRM-05",
+      "SK-WRT-13"
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -2353,6 +2589,30 @@
    "objective": "survey.o1.report",
    "depth": 4,
    "text": "Choose the report that says how you asked, whom you asked, what you found and how sure you can be."
+  },
+  {
+   "id": "h.ferry.1",
+   "objective": "ferry.o1.send",
+   "depth": 1,
+   "text": "Read what Sefa says about each marked word. What does the council need to do, and when?"
+  },
+  {
+   "id": "h.ferry.2",
+   "objective": "ferry.o1.send",
+   "depth": 2,
+   "text": "Send a first try and read the back-check. Which cant words came back different?"
+  },
+  {
+   "id": "h.ferry.3",
+   "objective": "ferry.o1.send",
+   "depth": 3,
+   "text": "Short and exact beats long. 'By dusk' keeps the time in two words."
+  },
+  {
+   "id": "h.ferry.4",
+   "objective": "ferry.o1.send",
+   "depth": 4,
+   "text": "Keep: slow water, both of us, walkers but not carts, and the time. Many short versions fit on the slate."
   }
  ],
  "journal": [
@@ -2410,6 +2670,11 @@
    "id": "j.survey",
    "text": "The Bridge Toll Survey: who you ask and how you ask can decide the answer. A fair report says how, whom, what, and how sure.",
    "claimKind": "interpretation"
+  },
+  {
+   "id": "j.ferry",
+   "text": "The Ferry Message: some words carry differences that another language needs a phrase for. A translator chooses what to keep, and can show those choices.",
+   "claimKind": "interpretation"
   }
  ],
  "criteria": [
@@ -2466,6 +2731,11 @@
   {
    "id": "crit.objectivity.survey",
    "concept": "objectivity",
+   "maximum": 5
+  },
+  {
+   "id": "crit.interpretation.ferry",
+   "concept": "interpretation",
    "maximum": 5
   }
  ]

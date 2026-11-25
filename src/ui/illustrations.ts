@@ -387,6 +387,14 @@ DRAW['survey-box'] = [16, 24, (g) => {
   R(g, '#f3eee0', 6, 4, 3, 4); R(g, '#8a7f66', 6, 5, 2, 1); R(g, '#4aa3ff', 4, 11, 2, 2); R(g, '#ff8a3a', 10, 11, 2, 2);
 }];
 
+// The ferry message post (original art): a slate on a post, chalk lines and a little boat sign.
+DRAW['ferry-slate'] = [16, 24, (g) => {
+  R(g, '#5b3b22', 7, 13, 2, 11); R(g, '#3b2a1a', 5, 22, 6, 2);
+  R(g, '#7a5230', 1, 3, 14, 11); R(g, '#2f3b3a', 2, 4, 12, 9);
+  R(g, '#e8efe8', 3, 6, 5, 1); R(g, '#e8efe8', 3, 8, 8, 1); R(g, '#e8efe8', 3, 10, 4, 1); R(g, '#9fd3ff', 9, 6, 3, 1);
+  R(g, '#c9a24a', 5, 0, 6, 2); R(g, '#7a5230', 6, 1, 4, 1); R(g, '#4aa3ff', 4, 2, 8, 1);
+}];
+
 // The door to the Guardian's quarters (original art): a round-topped oak door with a star.
 DRAW['quarters-door'] = [16, 24, (g) => {
   R(g, '#3b2a1a', 1, 3, 14, 21); R(g, '#3b2a1a', 3, 1, 10, 2);

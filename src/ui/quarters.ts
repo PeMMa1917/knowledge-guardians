@@ -32,6 +32,7 @@ const ICONS: Record<string, { pal: Record<string, string>; rows: string[] }> = {
   'rumour-shard': { pal: { a: '#c39bff', b: '#7d5bc4', c: '#f3eee0' }, rows: ['', '     c', '    aa', '    aab', '   aaab', '   aaabb', '  aaaabb', '  aabbbb', '   bbbb', '    bb', '', ''] },
   'well-rope': { pal: { a: '#c9a27a', b: '#8a6a4a' }, rows: ['  a', '  a', '  ab', '  a', '  ab', ' aaa', '  ab', '  a', '  ab', ' aaa', '  a', '  b'] },
   'survey-slip': { pal: { a: '#efe6cf', b: '#8a7a5a', c: '#3f7f5c' }, rows: ['', '  aaaaaaaa', '  abbbbbba', '  aaaaaaaa', '  ac abbba', '  aaaaaaaa', '  ac abbba', '  aaaaaaaa', '  a  abbba', '  aaaaaaaa', '', ''] },
+  'ferry-chalk': { pal: { a: '#e8efe8', b: '#b9c9c3', c: '#2f3b3a' }, rows: ['', '', '', '    cccccc', '   caaaaac', '  caaaaabc', '  cbbbbbbc', '   cccccc', '', '', '', ''] },
   seal: { pal: { a: '#b8483e', b: '#8a2f28', c: '#e9cf7a' }, rows: ['', '   aaaa', '  aaaaaa', ' aabccbaa', ' aacbbcaa', ' aacbbcaa', ' aabccbaa', '  aaaaaa', '   aaaa', '', '', ''] },
 };
 
