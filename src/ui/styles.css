@@ -302,3 +302,4 @@ button.speak { display: block; margin: 0 0 0.4em auto; }
 .swatch[aria-checked="true"] { outline: 3px solid var(--gold); outline-offset: 2px; border-color: #fff; }
 @media (max-width: 640px) { .swatch-row { grid-template-columns: 1fr; } }
 .portrait.custom { overflow: hidden; } .portrait.custom canvas { display: block; margin-top: 4px; image-rendering: pixelated; }
+.voice-pick { justify-content: center; }

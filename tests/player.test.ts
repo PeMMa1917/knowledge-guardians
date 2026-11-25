@@ -115,6 +115,7 @@ describe('appearance (spec 35.1)', () => {
   });
   it('every character sprite is a sheet on disk or a valid made look', async () => {
     const { isValidLook } = await import('../src/domain/appearance');
+    // @ts-ignore Node types are not installed; vitest runs in Node.
     const fs = await import('node:fs');
     for (const ch of pack.characters) {
       const ok = ch.sprite.startsWith('custom:') ? isValidLook(ch.sprite) : fs.existsSync(`public/assets/art/generated/characters/${ch.sprite}.png`);

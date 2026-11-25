@@ -11,6 +11,7 @@ import { saveSettings, type Settings } from '../app/settings';
 import { PRONOUN_SETS, cleanPronouns, personalise } from '../domain/player';
 import { ACCENT, ACCESSORIES, HAIR, LABELS, OUTFIT, PRESET_LOOKS, SKIN, TROUSERS, decodeLook, encodeLook, type LookChoice } from '../domain/appearance';
 import { previewLook } from '../scenes/looks';
+import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
 import type { Pronouns } from '../domain/types';
 import { ACTIONS, PRESETS, actionFor, assignKey, mappableKey, type Action } from '../app/keymap';
 import type { GameEvent, SimulationResult } from '../domain/engine';
@@ -216,6 +217,7 @@ export class UI implements UIApi {
       h('p', {}, 'Every student is a Knowledge Guardian from the first day. Choose a name and how you look. You can play in any way you like.'),
       h('label', { for: 'pname' }, 'Name'), name,
       h('p', { class: 'label' }, 'Appearance (every option is open from the start; you can change it later in the menu)'), lookPick.el,
+      h('p', { class: 'label' }, 'Voice (a short sound when you speak)'), this.voicePicker(),
       h('p', { class: 'label' }, 'Pronouns (characters use these; you can change them later in the menu)'), pron.el,
       h('p', { class: 'label' }, 'Origin (optional). It gives one Lens hint and one extra conversation option in each world. It gives no advantage.'), originBox,
       h('div', { class: 'row' }, h('button', { class: 'primary', onclick: start }, 'Begin'), h('button', { onclick: () => this.showTitle() }, 'Back')));
@@ -258,6 +260,17 @@ export class UI implements UIApi {
     return api;
   }
 
+  /** Voice choice (spec 35.1 voice barks): stored in Settings on this device. */
+  private voicePicker(): HTMLElement {
+    const st = ctx.settings;
+    const sel = h('select', { 'aria-label': 'Your voice', onchange: (e: Event) => {
+      st.playerVoice = (e.target as HTMLSelectElement).value; saveSettings(st);
+      bark(PLAYER_VOICES.find((x) => x.id === st.playerVoice)?.v ?? null, Math.max(0.4, st.sfxVolume));
+    } }, ...PLAYER_VOICES.map((v) => h('option', { value: v.id, selected: st.playerVoice === v.id }, v.label))) as HTMLSelectElement;
+    return h('div', { class: 'row voice-pick' }, sel,
+      h('button', { type: 'button', onclick: () => bark(PLAYER_VOICES.find((x) => x.id === sel.value)?.v ?? null, Math.max(0.4, st.sfxVolume)) }, '🔊 Listen'));
+  }
+
   /** Pronoun choice (spec 35.1): three common sets, or the player's own words. */
   private pronounPicker(current: Pronouns): { el: HTMLElement; value: () => Pronouns } {
     const preset = PRONOUN_SETS.find((x) => x.p.subject === current.subject && x.p.object === current.object && x.p.possessive === current.possessive);
@@ -283,6 +296,7 @@ export class UI implements UIApi {
     const o = c.pack.origins.find((x) => x.id === pl.origin);
     this.openModal('guardian wide', 'My Guardian', this.closeBtn(), h('h2', {}, pl.name),
       h('p', { class: 'label' }, 'Appearance'), lookPick.el,
+      h('p', { class: 'label' }, 'Voice'), this.voicePicker(),
       h('p', { class: 'label' }, 'Pronouns'), pron.el,
       h('p', { class: 'label' }, 'Origin'),
       o ? h('p', {}, h('strong', {}, o.name), `. ${o.background} ${o.link}`) : h('p', { class: 'fine' }, 'No origin. (This game started before origins existed, or you chose none.)'),
@@ -492,7 +506,7 @@ export class UI implements UIApi {
     const optionList = h('div', { class: 'options' });
     if (opts.length) {
       opts.forEach((o, i) => optionList.append(h('button', { 'data-autofocus': i === 0, onclick: () => {
-        this.sfx('sfx.click');
+        if (ctx.settings.talkSounds) bark(PLAYER_VOICES.find((x) => x.id === ctx.settings.playerVoice)?.v ?? null, ctx.settings.sfxVolume); else this.sfx('sfx.click');
         const r = c.dispatch({ type: 'ChooseDialogueOption', node: id, index: o.index }) as any;
         if (r.some((e: GameEvent) => e.kind === 'error')) return;
         const next = r.nextNode as string | null;
@@ -508,6 +522,7 @@ export class UI implements UIApi {
       'speechSynthesis' in window ? h('button', { class: 'mini speak', type: 'button', 'aria-label': 'Read this line aloud', onclick: () => this.speak(`${speaker?.name ? `${speaker.name}: ` : ''}${n.text}`) }, '🔊 Read aloud') : '',
       h('div', { class: 'chips' }, n.claimKind ? claimChip(n.claimKind) : null, n.historicalLabel ? histChip(n.historicalLabel) : null),
       extra ?? '', optionList);
+    if (!ctx.settings.readAloud && ctx.settings.talkSounds && n.speaker !== 'narrator') babble(n.text, voiceFor(n.speaker), ctx.settings.sfxVolume);
     if (ctx.settings.readAloud) this.speak(`${speaker?.name ? `${speaker.name}: ` : ''}${n.text}. ${opts.map((o, i) => `Option ${i + 1}: ${o.option.text}`).join('. ')}`);
   }
 
@@ -1200,6 +1215,7 @@ export class UI implements UIApi {
       check('guidePrompts', 'Lumen may show short prompts without being asked'),
       check('calmMode', 'Calm mode: surprise events warn first, and you can choose "Later"'),
       check('glossary', 'Smart glossary: underline key words in conversations, so you can tap them for an explanation'),
+      check('talkSounds', 'Talk sounds: short voice sounds while characters speak'),
       check('colourSafe', 'Colour-safe marks: blue and orange, with a symbol on every result'),
       'speechSynthesis' in window ? check('readAloud', 'Read conversations aloud (uses your browser\'s voice)') : '',
       range('musicVolume', 'Music volume'), range('sfxVolume', 'Sound effects volume'),

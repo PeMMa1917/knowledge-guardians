@@ -21,6 +21,10 @@ export interface Settings {
   readAloud: boolean;
   /** Colour-safe marks: a blue/orange palette and a symbol on every good/bad result, so colour never carries meaning alone. */
   colourSafe: boolean;
+  /** Talk sounds: short voice blips while characters speak (voice.ts). */
+  talkSounds: boolean;
+  /** The player's own voice bark (voice.ts PLAYER_VOICES). */
+  playerVoice: string;
   /** The player's own letter keys (see keymap.ts). */
   keys: KeyMap;
 }
@@ -30,7 +34,7 @@ const KEY = 'kg.settings';
 export const DEFAULTS: Settings = {
   textScale: 1, reducedMotion: false, reducedEffects: false, musicVolume: 0.5, sfxVolume: 0.7,
   guidePrompts: true, highContrast: false, dyslexiaSpacing: false, calmMode: false, glossary: true, readAloud: false,
-  colourSafe: false, keys: DEFAULT_KEYS,
+  colourSafe: false, keys: DEFAULT_KEYS, talkSounds: true, playerVoice: 'mid',
 };
 
 export function loadSettings(): Settings {

@@ -26,3 +26,15 @@ describe('key remapping (spec 21.6)', () => {
     for (const p of PRESETS) expect(normaliseKeys(p.keys)).toEqual(p.keys);
   });
 });
+
+describe('talk sounds (voice.ts)', () => {
+  it('gives each character a stable voice, and plans a short babble', async () => {
+    const { voiceFor, blipPlan } = await import('../src/app/voice');
+    expect(voiceFor('warden-ise')).toEqual(voiceFor('warden-ise'));
+    expect(voiceFor('warden-ise')).not.toEqual(voiceFor('clerk-venn'));
+    const plan = blipPlan('Three exhibits, two colleagues, one label to repair. Take your time.', 60);
+    expect(plan.length).toBeGreaterThan(5);
+    expect(plan.length).toBeLessThanOrEqual(18);
+    expect(blipPlan('', 60)).toEqual([]);
+  });
+});
