@@ -169,6 +169,8 @@ A `restore` puzzle has `layers` (top first: `id`, `name`, `colour`, `text`), a `
 
 A `sightlines` puzzle has a `grid` (`w`, `h`), `blocks` (cells that block the view: `x`, `y`, `w`, `h`, `label`, `kind`), `spots` (where things happened) and `witnesses`, each with a place and `claims` (`spot`, `text`). The map decides what each witness could see. A claim that cannot be seen must have `heard` (who told the witness); the validator checks this against the map. Give the puzzle exactly one fair report in `reports`. After you change the map, run `npm test`.
 
+An `echo` puzzle has the true `distance` (metres), the `speed` of sound, `minTimes` (tries of each kind before the reflection) and `reflect` (one `honest`). The player's times are real measurements, so never check them against a right answer.
+
 A `sorter` puzzle has `fruits` (`colour`, `size`, `bruised`, `farm`), the `crate` the player chooses from, the `basket` it is tested on, the `start` examples (which must fail), `slots`, `farms` (display names), `diagnose` and `reflect` (one `honest` each). The validator searches the crate for a set that sorts the whole basket right.
 
 A `mapmaker` puzzle has `maxLayers`, `layers` (more than the sheet holds), `audiences` (each with `wants`, the layers it `need`s, a `success` and a `lost` text) and `reflect` (exactly one `honest`). Any map that has what a person needs works; extra layers are fine. The map drawing for Emberford is `townMapSvg()` in `ui.ts`.

@@ -183,6 +183,10 @@ export function validateContent(pack: ContentPack): string[] {
         m.labels.forEach((l, i) => { if (!l.why.trim()) p.push(`puzzle ${z.id} method ${m.id} label ${i + 1}: needs a reason`); });
       });
     }
+    else if (z.type === 'echo') {
+      if (!(z.distance > 5 && z.speed > 100 && z.minTimes >= 2)) p.push(`puzzle ${z.id}: distance, speed and minTimes must be sensible`);
+      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
+    }
     else if (z.type === 'sorter') {
       const ids = new Set(z.fruits.map((f) => f.id));
       [...z.crate, ...z.basket, ...z.start].forEach((x) => ids.has(x) || p.push(`puzzle ${z.id}: unknown fruit ${x}`));

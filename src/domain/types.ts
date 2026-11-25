@@ -510,6 +510,12 @@ export type PuzzleRecord = {
    * it failed; then the player chooses examples; then the player reflects.
    */
   | { type: 'sorter'; slots: number; fruits: SorterFruit[]; crate: string[]; basket: string[]; start: string[]; diagnose: { text: string; honest: boolean; why: string }[]; reflect: { text: string; honest: boolean; why: string }[]; farms: Record<string, string> }
+  /**
+   * An echo measurement (natural sciences; error and uncertainty): clap, press when the
+   * echo returns, and work out the distance. Then measure your own reaction time, and
+   * see how a delay that is always there pushes every result the same way.
+   */
+  | { type: 'echo'; distance: number; speed: number; minTimes: number; reflect: { text: string; honest: boolean; why: string }[] }
   | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string }[] }
 );
 

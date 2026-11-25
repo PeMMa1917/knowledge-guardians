@@ -13,8 +13,8 @@ import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads,
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
-import { chordFigure, circlePoints, panes, runSorter, sightBlock, tiltOf, type SorterRun } from '../domain/puzzles';
-import { chime, playNotes } from '../app/ambience';
+import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, runSorter, sightBlock, tiltOf, timeStats, type SorterRun } from '../domain/puzzles';
+import { audioNow, chime, clapEcho, playNotes } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
 import { DEFAULT_ROOM, FLOORS, LAMPS, PLANTS, RUGS, SLOTS, VIEWS, WALLS, decodeRoom, encodeRoom, placeKeepsake, starsFor, type Room } from '../domain/quarters';
@@ -1126,6 +1126,8 @@ export class UI implements UIApi {
     let activeW: string | null = null;
     let mapFor: string | null = null;
     let sorterRun: SorterRun | null = null;
+    let echo: { mode: 'idle' | 'listen' | 'wait' | 'go'; t0: number; audio: boolean; timer: number } = { mode: 'idle', t0: 0, audio: false, timer: 0 };
+    let flashEcho = ctx.settings.sfxVolume <= 0.01;
     let examples: string[] = [];
     let sheet: string[] = [];
     const sightNotes = new Map<string, string>();
@@ -1173,6 +1175,62 @@ export class UI implements UIApi {
               h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleWeigh', puzzle: rec.id, round: n, weights: [...pan] })) }, 'Record this weighing'),
               h('button', { onclick: () => { pan = []; feedback = null; render(); } }, 'Clear the pan')));
         } else if (done) box.append(h('p', { class: 'fair' }, 'Every weighing is in the record book.'));
+      } else if (rec.type === 'echo') {
+        const echoes = readTimes(c.state.flags[`${F}.echo`]), reacts = readTimes(c.state.flags[`${F}.react`]);
+        const es = timeStats(echoes), rs = timeStats(reacts);
+        const now = () => (echo.audio ? (audioNow() ?? 0) * 1000 : performance.now());
+        const record = (kind: 'echo' | 'react') => { const ms = now() - echo.t0; clearTimeout(echo.timer); echo.mode = 'idle'; take(c.dispatch({ type: 'PuzzleTime', puzzle: rec.id, kind, ms })); };
+        const lantern = h('div', { class: `echo-lantern ${echo.mode === 'go' ? 'lit' : ''} ${echo.mode === 'listen' ? 'listening' : ''}`, 'aria-hidden': 'true' });
+        const fmt = (ms: number) => `${(ms / 1000).toFixed(2)} s`;
+        box.append(h('div', { class: 'echo-scene', 'aria-hidden': 'true' }, h('span', { class: 'wall' }), h('span', { class: `wave ${echo.mode === 'listen' ? 'go' : ''}` }), h('span', { class: 'you' }, '👏'), lantern));
+        // Step 1: the echo.
+        box.append(h('h3', {}, `Step 1. Time the echo (${echoes.length} of ${rec.minTimes} or more)`),
+          h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: flashEcho, onchange: (e: Event) => { flashEcho = (e.target as HTMLInputElement).checked; render(); } }), ' Also show the echo as a flash (for no sound)'),
+          h('div', { class: 'row' },
+            echo.mode === 'listen'
+              ? h('button', { class: 'primary big', 'data-autofocus': true, onclick: () => record('echo') }, 'Now! I hear the echo')
+              : h('button', { class: echoes.length < rec.minTimes ? 'primary' : '', disabled: echo.mode !== 'idle', onclick: () => {
+                const d = echoDelay(rec);
+                const t = clapEcho(ctx.settings.sfxVolume, d);
+                echo = { mode: 'listen', audio: t !== null, t0: t !== null ? t * 1000 : performance.now(), timer: 0 };
+                if (t === null) flashEcho = true;
+                caption('sfx.clap');
+                echo.timer = window.setTimeout(() => { caption('sfx.echo'); if (flashEcho) box.querySelector('.echo-lantern')?.classList.add('flash'); }, d * 1000 + (t !== null ? Math.max(0, t * 1000 - now()) : 0));
+                render();
+              } }, 'Clap')),
+          echoes.length ? h('p', {}, `Your times: ${echoes.map(fmt).join(', ')}. Mean ${fmt(es.mean)}, spread ${fmt(es.spread)}. Estimate: ${Math.round(echoDistance(es.mean, rec.speed))} m to the wall.`) : '');
+        // Step 2: reaction time.
+        if (echoes.length >= rec.minTimes) {
+          box.append(h('h3', {}, `Step 2. How quickly do you react? (${reacts.length} of ${rec.minTimes} or more)`),
+            h('p', { class: 'fine' }, 'Press Start, then press again as soon as the lantern lights. Wait for it!'),
+            h('div', { class: 'row' }, echo.mode === 'wait' || echo.mode === 'go'
+              ? h('button', { class: 'primary big', 'data-autofocus': true, onclick: () => {
+                if (echo.mode === 'wait') { clearTimeout(echo.timer); echo.mode = 'idle'; feedback = { ok: false, text: 'Too early: the lantern was not lit yet. Try again.' }; render(); return; }
+                record('react');
+              } }, echo.mode === 'go' ? 'Now!' : 'Wait for the light…')
+              : h('button', { onclick: () => {
+                echo = { mode: 'wait', audio: false, t0: 0, timer: 0 };
+                echo.timer = window.setTimeout(() => { echo.mode = 'go'; echo.t0 = performance.now(); this.sfx('sfx.click'); render(); }, 1000 + Math.random() * 2000);
+                render();
+              } }, 'Start')),
+            reacts.length ? h('p', {}, `Your reaction times: ${reacts.map(fmt).join(', ')}. Mean ${fmt(rs.mean)}.`) : '');
+        }
+        // Step 3: compare.
+        if (echoes.length >= rec.minTimes && reacts.length >= rec.minTimes) {
+          const first = echoDistance(es.mean, rec.speed), fixed = echoDistance(Math.max(0, es.mean - rs.mean), rec.speed);
+          const max = Math.max(first, fixed, rec.distance) * 1.1;
+          const bar = (label: string, v: number, cls: string) => h('div', { class: 'echo-bar' }, h('span', {}, label), h('span', { class: `fill ${cls}`, style: { width: `${(v / max) * 100}%` } }), h('strong', {}, `${Math.round(v)} m`));
+          box.append(h('h3', {}, 'Step 3. Check'),
+            h('p', {}, `Idris and two friends walked a knotted rope to the wall: ${rec.distance} m.`),
+            h('div', { class: 'echo-bars' }, bar('Your first estimate', first, 'first'), bar('Echo time minus your reaction time', fixed, 'fixed'), bar('The rope', rec.distance, 'rope')),
+            Math.abs(fixed - rec.distance) > 15 ? h('p', { class: 'fine' }, `Your corrected estimate is still ${Math.round(Math.abs(fixed - rec.distance))} m from the rope. That is real data too: listening for a sound is not quite the same as watching for a light, and a careful scientist says so. Try a few more of each if you like.`) : '',
+            done ? h('p', { class: 'fair' }, rec.reflect.find((r) => r.honest)!.text)
+              : h('div', {}, h('h3', {}, 'What does this show?'), h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text))))));
+        }
+        if (feedback) {
+          const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
+          box.append(fb);
+        }
       } else if (rec.type === 'sorter') {
         const byId = new Map(rec.fruits.map((f) => [f.id, f]));
         const diagnosed = c.state.flags[`${F}.diagnosed`] === true;

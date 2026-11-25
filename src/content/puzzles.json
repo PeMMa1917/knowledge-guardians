@@ -1304,6 +1304,66 @@
      "why": "The sorter saves Mara hours every day. The lesson is to choose examples with care and keep checking, not to throw the machine away."
     }
    ]
+  },
+  {
+   "id": "echo-bridge",
+   "type": "echo",
+   "title": "The Echo Bridge",
+   "intro": "Under the east bridge the river has cut a high stone wall. Kip says that if you clap, the wall claps back. Porter Idris wants to know how far away the wall is, to plan a footbridge. Lumen says: 'Sound travels about 343 metres each second in air like this. It goes to the wall and comes back.'",
+   "skills": [
+    "SK-RSC-21",
+    "SK-THK-14",
+    "SK-NUM-14"
+   ],
+   "weave": {
+    "concepts": [
+     "certainty",
+     "evidence"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "physics"
+    ],
+    "aoks": [
+     "NAT"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.certainty.echo"
+    },
+    {
+     "journal": "j.echo"
+    }
+   ],
+   "distance": 85,
+   "speed": 343,
+   "minTimes": 3,
+   "reflect": [
+    {
+     "text": "Sound changes speed every time I clap.",
+     "honest": false,
+     "why": "In the same air, sound keeps nearly the same speed. The changes came from your hand and your ears, not from the sound."
+    },
+    {
+     "text": "The rope must be wrong.",
+     "honest": false,
+     "why": "The rope was checked against the guild's measure, and your corrected estimate came close to it. Two different methods that agree are strong evidence."
+    },
+    {
+     "text": "My reaction time adds a delay to every echo time, so every estimate was too far. Averaging cannot remove a delay that is always there, but measuring it and taking it away can.",
+     "honest": true,
+     "why": "Yes. Scientists call this a systematic error: it pushes every result the same way. Random scatter gets smaller with more tries; a systematic error needs a separate check."
+    },
+    {
+     "text": "If I clap one hundred times, the average will be exactly right.",
+     "honest": false,
+     "why": "More claps make the random scatter smaller. They do not remove a delay that is in every single time."
+    }
+   ]
   }
  ],
  "missions": [
@@ -1671,6 +1731,47 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-E01",
+   "world": "WORLD-02",
+   "title": "The Echo Bridge",
+   "knowledgeQuestion": "How can a measurement be precise and still be wrong?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "echo.o1.measure",
+     "title": "Optional: measure the distance to the echo wall (east of the bridge post, south-east of the square).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.echo-bridge.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "certainty",
+       "evidence"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "physics"
+      ],
+      "aoks": [
+       "NAT"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-14",
+      "SK-NUM-14"
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -1889,6 +1990,30 @@
    "objective": "sorter.o1.teach",
    "depth": 4,
    "text": "Choose one good and one bruised red, green and yellow fruit (six examples). Then: the examples shape what it can know."
+  },
+  {
+   "id": "h.echo.1",
+   "objective": "echo.o1.measure",
+   "depth": 1,
+   "text": "Clap, then press the button as soon as you hear the echo. Do it a few times."
+  },
+  {
+   "id": "h.echo.2",
+   "objective": "echo.o1.measure",
+   "depth": 2,
+   "text": "Now test how quickly you react: press when the lantern lights."
+  },
+  {
+   "id": "h.echo.3",
+   "objective": "echo.o1.measure",
+   "depth": 3,
+   "text": "Compare your first estimate, your corrected estimate and the rope. Which way was the first estimate wrong?"
+  },
+  {
+   "id": "h.echo.4",
+   "objective": "echo.o1.measure",
+   "depth": 4,
+   "text": "Choose: my reaction time adds a delay to every echo time."
   }
  ],
  "journal": [
@@ -1936,6 +2061,11 @@
    "id": "j.sorter",
    "text": "The Brass Sorter: a machine that learns from examples knows only what its examples show. Choosing the examples is a choice with power in it: ask who is missing, and who pays for it.",
    "claimKind": "interpretation"
+  },
+  {
+   "id": "j.echo",
+   "text": "The Echo Bridge: my reaction time added a delay to every echo time, so every estimate was too far. More tries shrink random scatter; a systematic error needs its own check.",
+   "claimKind": "interpretation"
   }
  ],
  "criteria": [
@@ -1982,6 +2112,11 @@
   {
    "id": "crit.power.sorter",
    "concept": "power",
+   "maximum": 5
+  },
+  {
+   "id": "crit.certainty.echo",
+   "concept": "certainty",
    "maximum": 5
   }
  ]

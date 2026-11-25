@@ -373,6 +373,13 @@ DRAW['brass-sorter'] = [16, 24, (g) => {
   R(g, '#5b3b22', 0, 20, 5, 4); R(g, '#5b3b22', 11, 20, 5, 4); R(g, '#c0392b', 1, 20, 2, 1); R(g, '#7cb342', 13, 20, 2, 1);
 }];
 
+// The echo stone (original art): a flat stone with a carved ear and sound rings.
+DRAW['echo-stone'] = [16, 24, (g) => {
+  R(g, '#6f737d', 2, 16, 12, 6); R(g, '#8b8f99', 3, 15, 10, 2); R(g, '#b7bcc6', 4, 15, 4, 1); R(g, '#4a4d55', 2, 21, 12, 1);
+  R(g, '#3b3355', 6, 17, 3, 3); R(g, '#8b8f99', 7, 18, 1, 1);
+  R(g, '#cfe3ef', 10, 10, 1, 3); R(g, '#cfe3ef', 12, 8, 1, 7); R(g, '#cfe3ef', 14, 6, 1, 11);
+}];
+
 // The door to the Guardian's quarters (original art): a round-topped oak door with a star.
 DRAW['quarters-door'] = [16, 24, (g) => {
   R(g, '#3b2a1a', 1, 3, 14, 21); R(g, '#3b2a1a', 3, 1, 10, 2);

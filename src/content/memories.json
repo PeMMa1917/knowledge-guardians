@@ -335,6 +335,15 @@
     "eq": true
    },
    "line": "Every new season I put one of each new fruit in the example tray. Pears next week. I will test it first."
+  },
+  {
+   "id": "echo.idris",
+   "character": "porter-idris",
+   "if": {
+    "flag": "puzzle.echo-bridge.done",
+    "eq": true
+   },
+   "line": "We cut the footbridge rope to your measure, with a little extra. A good measurer always adds a little extra, and says so."
   }
  ]
 }

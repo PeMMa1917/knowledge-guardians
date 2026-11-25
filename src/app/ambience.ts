@@ -94,3 +94,26 @@ export function playNotes(notes: { f: number; at: number; beats: number }[], bea
   }
   return () => { try { out.gain.setValueAtTime(0, a.currentTime); out.disconnect(); } catch { /* already stopped */ } };
 }
+
+/**
+ * A hand clap and, after `echoDelay` seconds, its echo (quieter and duller), for the echo bridge.
+ * Returns the audio clock time of the clap, or null when sound is off.
+ */
+export function clapEcho(volume: number, echoDelay: number | null): number | null {
+  const a = audio(); if (!a || volume <= 0.01) return null;
+  const t = a.currentTime + 0.03, v = Math.min(1, volume) * 0.5;
+  const burst = (at: number, gain: number, cutoff: number) => {
+    const len = Math.floor(a.sampleRate * 0.08);
+    const buf = a.createBuffer(1, len, a.sampleRate); const d = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 4);
+    const src = a.createBufferSource(); src.buffer = buf;
+    const f = a.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = cutoff; f.Q.value = 0.8;
+    const g = a.createGain(); g.gain.value = gain;
+    src.connect(f); f.connect(g); g.connect(a.destination); src.start(at);
+  };
+  burst(t, v, 1800);
+  if (echoDelay !== null) burst(t + echoDelay, v * 0.35, 1100);
+  return t;
+}
+/** The audio clock now (seconds), or null. */
+export function audioNow(): number | null { return audio()?.currentTime ?? null; }

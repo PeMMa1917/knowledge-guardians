@@ -624,3 +624,23 @@ canvas.crest { image-rendering: pixelated; vertical-align: middle; }
 .fruit-btn.picked { outline: 3px solid var(--accent, #e9c45a); background: rgba(233, 196, 90, 0.15); }
 .fruit-btn[disabled] { opacity: 1; cursor: default; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* The Echo Bridge */
+.echo-scene { position: relative; height: 70px; margin: 6px 0; border-radius: 8px; background: linear-gradient(#1d3b52, #2b5d7a); overflow: hidden; }
+.echo-scene .wall { position: absolute; right: 0; top: 0; bottom: 0; width: 34px; background: repeating-linear-gradient(0deg, #8b8f99 0 10px, #6f737d 10px 12px); }
+.echo-scene .you { position: absolute; left: 14px; top: 18px; font-size: 26px; }
+.echo-scene .wave { position: absolute; left: 50px; top: 30px; width: 10px; height: 10px; border: 2px solid #cfe3ef; border-radius: 50%; opacity: 0; }
+.echo-scene .wave.go { animation: echo-wave 1s ease-out forwards; }
+@keyframes echo-wave { 0% { opacity: 1; transform: translateX(0) scale(1); } 50% { opacity: 0.8; transform: translateX(calc(100cqw - 110px)) scale(2.5); } 100% { opacity: 0; transform: translateX(0) scale(4); } }
+.echo-scene { container-type: inline-size; }
+.echo-lantern { position: absolute; left: 50%; top: 18px; width: 22px; height: 30px; border-radius: 6px 6px 3px 3px; background: #3b3355; border: 2px solid #c9a24a; transform: translateX(-50%); }
+.echo-lantern.lit, .echo-lantern.flash { background: #ffe9a0; box-shadow: 0 0 24px 8px rgba(255, 233, 160, 0.8); }
+@media (prefers-reduced-motion: reduce) { .echo-scene .wave.go { animation: none; opacity: 0.6; } }
+button.big { font-size: 1.2em; padding: 12px 22px; }
+.echo-bars { display: flex; flex-direction: column; gap: 6px; margin: 8px 0; }
+.echo-bar { display: grid; grid-template-columns: 230px 1fr 60px; gap: 8px; align-items: center; }
+.echo-bar .fill { height: 14px; border-radius: 4px; display: block; }
+.echo-bar .fill.first { background: #ff8a3a; }
+.echo-bar .fill.fixed { background: #4aa3ff; }
+.echo-bar .fill.rope { background: #e9cf7a; }
+@media (max-width: 560px) { .echo-bar { grid-template-columns: 1fr 60px; } .echo-bar .fill { grid-column: 1 / -1; } }

@@ -213,3 +213,18 @@ export function runSorter(p: PuzzleRecord, exampleIds: string[]): SorterRun {
   const farmsHurt = [...new Set(calls.filter((c) => !c.right && !byId.get(c.id)!.bruised).map((c) => byId.get(c.id)!.farm))];
   return { calls, right: calls.filter((c) => c.right).length, total: calls.length, farmsHurt };
 }
+
+/** Mean and spread (max - min) of times in milliseconds. */
+export function timeStats(ms: number[]): { mean: number; spread: number } {
+  if (!ms.length) return { mean: 0, spread: 0 };
+  return { mean: ms.reduce((a, b) => a + b, 0) / ms.length, spread: Math.max(...ms) - Math.min(...ms) };
+}
+/** Distance to the wall from an echo time: sound goes there and back. */
+export function echoDistance(ms: number, speed: number): number { return (speed * ms) / 1000 / 2; }
+/** The true echo delay in seconds for a puzzle. */
+export function echoDelay(p: PuzzleRecord): number { if (p.type !== 'echo') throw new Error('Not an echo puzzle'); return (2 * p.distance) / p.speed; }
+export const TIME_MIN = 60, TIME_MAX = 4000;
+/** Times are kept as a comma list of whole milliseconds in a flag. */
+export function readTimes(v: unknown): number[] {
+  return typeof v === 'string' && v ? v.split(',').map(Number).filter((x) => Number.isFinite(x) && x >= TIME_MIN && x <= TIME_MAX) : [];
+}

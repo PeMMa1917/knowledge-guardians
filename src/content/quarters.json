@@ -129,6 +129,16 @@
    "where": "Emberford: Mara's brass sorter."
   },
   {
+   "id": "knot-rope",
+   "name": "A measuring knot",
+   "text": "From Idris's rope to the echo wall. Two methods that agree are strong evidence; a delay in every try needs its own check.",
+   "if": {
+    "flag": "puzzle.echo-bridge.done",
+    "eq": true
+   },
+   "where": "Emberford: the echo stone."
+  },
+  {
    "id": "soot-jar",
    "name": "A tiny jar of soot",
    "text": "From the Founders' Plaque. Even dirt can be evidence of where a thing has been.",
