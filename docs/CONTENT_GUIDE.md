@@ -157,6 +157,10 @@ A template (`portfolio`) is an entry that the game adds with the effect `{ "port
 
 Alcoves are in `src/content/exhibition.json` (`alcoves`). Each has a prompt, at least two `symbols` (they bring the Symbol Mirage), and `objects` (evidence cards). Each object needs one `specific` link, one `checklist` link (the Checklist Golem) and usually one `generic` link, plus at least two good `implications` and one "so what?" trap (the So-What Sphinx). The validator checks this. Mix the order of the options. Place the alcove on a map with `kind: 'alcove'`.
 
+## Add a Loreling (spec 36.1)
+
+Add a record to `src/content/lorelings.json` (`lorelings`). A Loreling is befriended by observation only. Give it at least two sightings (`sightings`, each with a `place` and what the player sees), pattern questions (`questions`) and an `offer` (where to wait). Every wrong option in a question must name the sighting that shows it is wrong (`contradicts`), so careful watching always finds the pattern; the validator checks this. Design the sightings so that one feature is present often but is not the cause (a confound), and one sighting breaks it (a counterexample). Put the sightings on a map as interactables of kind `loreling` with `loreling` and `sighting`, and hide them with `visibleIf` when the Loreling is a friend. Forms grow from completed steps whose `weave.concepts` include the Loreling's concept (`src/domain/lorelings.ts`). Lorelings never fight, never get hurt and are fictional; real animals stay real.
+
 ## Tag a step with a knowledge question (Question Stones)
 
 Give an objective `"kq": { "id": "KQ-NEW-001", "action": "label" }`. The question is in `src/content/questions.json`, in our own words (never IB wording), with Lumen's one-sentence `lastWord`. Each new world and action pair makes the stone brighter. Never ask the player to "answer" a knowledge question for points (KQ-001).

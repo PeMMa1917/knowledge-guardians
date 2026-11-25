@@ -245,6 +245,19 @@ const DRAW: Record<string, [number, number, (g: Ctx) => void]> = {
   }],
 };
 
+// The Glimmermoth (a Loreling, spec 36.1): original pixel art, two wing frames.
+const MOTH_COL: Record<string, string> = { a: '#c9a24a', b: '#5a4325', W: '#f6eab8', w: '#e2c36a', s: '#fffbe6' };
+const MOTH = [
+  ['..a......a..', '...a....a...', 'wWWw.bb.wWWw', 'WWWWwbbwWWWW', 'WsWWwbbwWWsW', '.WWWwbbwWWW.', '..wWwbbwWw..', '...ww..ww...'],
+  ['..a......a..', '...a....a...', '....wbbw....', '...WWbbWW...', '...WsbbsW...', '...WWbbWW...', '....wbbw....', '............'],
+];
+function moth(g: Ctx, f: number, ox = 0, oy = 0, k = 1) {
+  MOTH[f].forEach((row, y) => [...row].forEach((ch, x) => { if (MOTH_COL[ch]) R(g, MOTH_COL[ch], ox + x * k, oy + y * k, k, k); }));
+}
+DRAW['moth.0'] = [12, 8, (g) => moth(g, 0)];
+DRAW['moth.1'] = [12, 8, (g) => moth(g, 1)];
+DRAW['moth.big'] = [48, 32, (g) => moth(g, 0, 0, 0, 4)];
+
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

@@ -11,6 +11,7 @@ import { LUMEN_COLOURS, THEMES, saveSettings, type Settings } from '../app/setti
 import { PRONOUN_SETS, cleanPronouns, personalise } from '../domain/player';
 import { ACCENT, ACCESSORIES, HAIR, LABELS, OUTFIT, PRESET_LOOKS, SKIN, TROUSERS, decodeLook, encodeLook, type LookChoice } from '../domain/appearance';
 import { previewLook } from '../scenes/looks';
+import { lorelingForm } from '../domain/lorelings';
 import { STAGE_LABEL, nextStep, skillStage, type SkillStage } from '../domain/skills';
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
 import type { Pronouns } from '../domain/types';
@@ -796,6 +797,88 @@ export class UI implements UIApi {
     render();
   }
 
+  /**
+   * A Loreling (spec 36.1): watch it, write a pattern note, wait where the note says.
+   * After it is a friend: name it, take it into the field or leave it at camp.
+   */
+  openLoreling(lorelingId: string, sightingId?: string): void {
+    const c = ctx.controller;
+    const rec = c.pack.lorelings.find((x) => x.id === lorelingId);
+    if (!rec) return;
+    const F = `lor.${rec.id}`;
+    let watched: string | null = null;
+    if (sightingId && c.state.flags[`${F}.friend`] !== true) {
+      const ev = c.dispatch({ type: 'LorelingWatch', loreling: rec.id, sighting: sightingId });
+      const r = ev.find((e) => e.kind === 'loreling') as Extract<GameEvent, { kind: 'loreling' }> | undefined;
+      if (r) { watched = sightingId; this.sfx('sfx.page'); }
+    }
+    const box = this.openModal('loreling-panel wide', rec.name);
+    let feedback: { ok: boolean; text: string; recheck?: string | null } | null = null;
+    const render = () => {
+      const st = c.state;
+      const friend = st.flags[`${F}.friend`] === true;
+      const seen = rec.sightings.filter((x) => st.flags[`${F}.seen.${x.id}`] === true);
+      clear(box);
+      box.append(this.closeBtn(), h('div', { class: 'loreling-head' }, h('img', { class: 'moth-big', src: artURL('moth.big'), alt: `${rec.name}: a tiny moth with pale gold wings` }),
+        h('div', {}, h('h2', {}, friend ? String(st.flags[`${F}.name`] ?? rec.name) : rec.name), h('p', { class: 'fine' }, `A Loreling of ${CONCEPT_NAMES[rec.concept]}. Lorelings are made up for this game.`))));
+      if (!friend) {
+        if (!seen.length || (watched && seen.length === 1)) box.append(h('p', {}, rec.intro));
+        if (watched) {
+          const sg = rec.sightings.find((x) => x.id === watched)!;
+          box.append(h('div', { class: 'sighting now' }, h('strong', {}, `You watch at ${sg.place}. `), sg.text));
+        }
+        box.append(h('h3', {}, `Field notes (${seen.length} of ${rec.sightings.length} places)`),
+          h('ul', { class: 'field-notes' }, ...rec.sightings.map((x) => {
+            const got = seen.some((y) => y.id === x.id);
+            return h('li', { class: `${got ? '' : 'unseen'} ${feedback?.recheck === x.id ? 'recheck' : ''}` }, got ? [h('strong', {}, `${x.place}: `), x.text] : `Not watched yet: ${x.place}.`);
+          })));
+        if (seen.length < rec.minSightings) {
+          box.append(h('p', { class: 'fair' }, `Watch it in ${rec.minSightings - seen.length} more place${rec.minSightings - seen.length === 1 ? '' : 's'} before you write your pattern note. One sighting can mislead.`));
+          return;
+        }
+        box.append(h('h3', {}, 'Your pattern note'), h('p', { class: 'fine' }, 'Choose the answer that fits every place you watched, not just one.'));
+        for (const q of rec.questions) {
+          const pick = st.flags[`${F}.note.${q.id}`];
+          box.append(h('fieldset', { class: 'note-q' }, h('legend', {}, q.prompt), ...q.options.map((o) => h('button', {
+            type: 'button', class: pick === o.id ? 'chosen' : '', 'aria-pressed': String(pick === o.id),
+            onclick: () => { c.dispatch({ type: 'LorelingNote', loreling: rec.id, question: q.id, option: o.id }); this.sfx('sfx.click'); feedback = null; render(); },
+          }, o.text))));
+        }
+        const ready = rec.questions.every((q) => st.flags[`${F}.note.${q.id}`]);
+        if (feedback) box.append(h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text));
+        if (ready) {
+          box.append(h('h3', {}, rec.offer.prompt), h('div', { class: 'options' }, ...rec.offer.options.map((o) => h('button', {
+            type: 'button', onclick: () => {
+              const ev = c.dispatch({ type: 'LorelingOffer', loreling: rec.id, place: o.id });
+              const r = ev.find((e) => e.kind === 'loreling') as Extract<GameEvent, { kind: 'loreling' }> | undefined;
+              if (r) { feedback = { ok: r.ok, text: r.text, recheck: r.recheck }; this.sfx(r.ok ? 'sfx.sparkle' : 'sfx.page'); if (r.ok) ctx.world?.lumenBurst(); }
+              render();
+            },
+          }, o.text))));
+        }
+        return;
+      }
+      // A friend: name, form and field.
+      if (feedback?.ok) box.append(h('div', { class: 'alcove-feedback ok', role: 'status' }, feedback.text));
+      const g = lorelingForm(rec, c.pack, st.objectivesDone);
+      const form = rec.forms[g.form - 1], next = rec.forms[g.form];
+      box.append(h('p', {}, h('strong', {}, `Form ${g.form}: ${form.name}. `), form.power),
+        next ? h('p', { class: 'fine' }, `Next form, ${next.name}: ${next.needs ?? ''} So far: ${g.worlds} world${g.worlds === 1 ? '' : 's'}, ${g.actions} kind${g.actions === 1 ? '' : 's'} of action.`) : '');
+      const input = h('input', { type: 'text', maxlength: '16', value: String(st.flags[`${F}.name`] ?? rec.name), 'aria-label': 'Name' }) as HTMLInputElement;
+      const setName = (n: string) => {
+        const ev = c.dispatch({ type: 'LorelingName', loreling: rec.id, name: n });
+        if (ev.some((e) => e.kind === 'loreling')) { this.sfx('sfx.sparkle'); feedback = null; render(); }
+        else this.toast('A name has 1 to 16 letters, numbers or spaces.', 'info');
+      };
+      box.append(h('h3', {}, 'Give it a name'), h('div', { class: 'row wrap' }, ...rec.names.map((n) => h('button', { type: 'button', onclick: () => setName(n) }, n))),
+        h('div', { class: 'row' }, input, h('button', { onclick: () => setName(input.value) }, 'Use this name')));
+      const out = st.flags['lor.out'] === rec.id;
+      box.append(h('h3', {}, 'In the field'), h('p', { class: 'fine' }, out ? 'It flies with you and looks for places you have not examined yet.' : 'It rests at camp. Lorelings never fight and never get hurt.'),
+        h('button', { class: 'primary', onclick: () => { c.dispatch({ type: 'LorelingField', loreling: rec.id, out: !out }); render(); } }, out ? 'Let it rest at camp' : 'Take it into the field'));
+    };
+    render();
+  }
+
   /** Exhibition Hall alcove (SYM-001): object, what it shows, and "so what?". */
   openAlcove(alcoveId: string): void {
     const c = ctx.controller;
@@ -1150,7 +1233,7 @@ export class UI implements UIApi {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', stones: 'Question Stones', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', stones: 'Question Stones', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
     if (tab === 'entries') {
@@ -1197,6 +1280,20 @@ export class UI implements UIApi {
               const st = skillStage(p.skills?.[k.id]);
               return h('li', { class: `stage-${st}`, title: nextStep(p.skills?.[k.id]) }, h('span', { class: 'stage-icon', 'aria-hidden': 'true' }, icon[st]), ` ${k.name} `, h('small', {}, STAGE_LABEL[st]));
             })) : h('p', { class: 'fine' }, 'In later chapters.'));
+        })));
+    } else if (tab === 'lorelings') {
+      // Loreling Atlas (spec 36.1): friends, and the others that live in later worlds.
+      const friends = c.pack.lorelings.filter((l) => s.flags[`lor.${l.id}.friend`] === true);
+      body.append(h('p', { class: 'fine' }, 'Lorelings are small made-up creatures that live where knowledge is strong. You befriend one by watching it carefully, never by catching it.'),
+        h('ul', { class: 'loreling-atlas' }, ...c.pack.lorelingAtlas.map((a) => {
+          const rec = c.pack.lorelings.find((l) => l.name === a.name);
+          const friend = rec && friends.includes(rec);
+          const met = rec && Number(s.flags[`lor.${rec.id}.seenCount`] ?? 0) > 0;
+          return h('li', { class: friend ? 'friend' : met ? 'met' : 'unknown' },
+            friend || met ? h('img', { src: artURL('moth.big'), alt: '' }) : h('span', { class: 'silhouette', 'aria-hidden': 'true' }, '?'),
+            h('div', {}, h('strong', {}, friend ? `${String(s.flags[`lor.${rec!.id}.name`] ?? a.name)} (${a.name})` : met ? a.name : '???'), h('br', {}),
+              h('small', {}, `${CONCEPT_NAMES[a.concept]}${friend || met ? `: ${a.power}` : ''}`),
+              friend ? h('button', { class: 'mini', onclick: () => this.openLoreling(rec!.id) }, 'Visit') : ''));
         })));
     } else if (tab === 'stones') {
       // Question Stones (KQ-003): a stone gets brighter with each new way of meeting the question. Never a quiz.

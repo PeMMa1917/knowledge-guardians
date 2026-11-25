@@ -345,7 +345,26 @@ button.chosen { outline: 2px solid var(--gold); }
 .stage-unseen { opacity: 0.7; }
 
 /* Sound captions (captions.ts) */
-#captions { position: fixed; left: 50%; transform: translateX(-50%); bottom: 12px; align-items: center; z-index: 60; display: flex; flex-direction: column; gap: 4px; pointer-events: none; max-width: min(320px, 70vw); }
+#captions { position: fixed; left: 50%; transform: translateX(-50%); bottom: 72px; align-items: center; z-index: 60; display: flex; flex-direction: column; gap: 4px; pointer-events: none; max-width: min(320px, 70vw); }
 #captions .caption { background: rgba(10, 8, 20, 0.85); color: #fff; border-radius: 6px; padding: 4px 10px; font-size: calc(14px * var(--text-scale, 1)); }
 .high-contrast #captions .caption { background: #000; border: 1px solid #fff; }
 @media (max-width: 640px) { #captions { bottom: auto; top: 56px; } }
+
+/* Lorelings (spec 36.1) */
+.loreling-head { display: flex; gap: 14px; align-items: center; }
+.moth-big { width: 96px; height: 64px; image-rendering: pixelated; filter: drop-shadow(0 0 10px rgba(255, 236, 150, 0.8)); }
+.sighting.now { background: rgba(255, 236, 150, 0.1); border-left: 3px solid var(--gold, #e9cf7a); padding: 8px 12px; border-radius: 6px; margin: 8px 0; }
+.field-notes { list-style: none; padding: 0; display: grid; gap: 6px; }
+.field-notes li { padding: 6px 10px; border-radius: 6px; background: rgba(255, 255, 255, 0.05); }
+.field-notes li.unseen { opacity: 0.6; font-style: italic; }
+.field-notes li.recheck { outline: 2px solid var(--gold, #e9cf7a); }
+.note-q { border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; margin: 8px 0; padding: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.note-q legend { padding: 0 6px; font-weight: 600; }
+.note-q button.chosen { outline: 2px solid var(--gold, #e9cf7a); background: rgba(255, 236, 150, 0.18); }
+.note-q button.chosen::before { content: '✓ '; }
+.loreling-atlas { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 8px; }
+.loreling-atlas li { display: flex; gap: 8px; align-items: center; padding: 6px 8px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); }
+.loreling-atlas li.unknown { opacity: 0.55; }
+.loreling-atlas li.friend { outline: 1px solid var(--gold, #e9cf7a); }
+.loreling-atlas img { width: 36px; height: 24px; image-rendering: pixelated; }
+.loreling-atlas .silhouette { width: 36px; text-align: center; font-size: 20px; opacity: 0.6; }

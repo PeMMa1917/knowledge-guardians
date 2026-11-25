@@ -1,0 +1,425 @@
+{
+  "lorelings": [
+    {
+      "id": "glimmermoth",
+      "name": "Glimmermoth",
+      "concept": "evidence",
+      "intro": "A tiny moth with pale gold wings drifts through the archive. Lumen whispers: \"A Loreling! You cannot catch one, and you must never chase it. Watch where it goes and what makes it glow. Then wait where your notes say it will come.\"",
+      "minSightings": 2,
+      "sightings": [
+        {
+          "id": "lamp",
+          "place": "the lamp by the patent drawing",
+          "text": "The moth circles the lamp above the patent drawing. Then it drops to the brass rail below, where visitors rest their hands while they read. On the rail, its wings glow much brighter."
+        },
+        {
+          "id": "desk",
+          "place": "the dark reading table",
+          "text": "There is no lamp at this old reading table, and no one else is here. The moth comes anyway. It settles on the edge of the table, worn smooth by many elbows and fingers, and glows softly in the dark."
+        },
+        {
+          "id": "case",
+          "place": "the new glass cabinet",
+          "text": "Lamplight falls bright on a new glass cabinet. Nobody has touched it yet: the glass is spotless. The moth flies straight through the bright light and does not stop."
+        }
+      ],
+      "questions": [
+        {
+          "id": "draws",
+          "prompt": "What draws the moth?",
+          "answer": "touch",
+          "options": [
+            {
+              "id": "light",
+              "text": "Bright light",
+              "contradicts": "case",
+              "why": "It flew through bright light at the glass cabinet without stopping, and it came to the dark table."
+            },
+            {
+              "id": "touch",
+              "text": "Surfaces that many hands have touched"
+            },
+            {
+              "id": "metal",
+              "text": "Shiny metal",
+              "contradicts": "desk",
+              "why": "The reading table is wood, and it settled there too."
+            }
+          ]
+        },
+        {
+          "id": "glow",
+          "prompt": "When do its wings glow brightest?",
+          "answer": "worn",
+          "options": [
+            {
+              "id": "lamp",
+              "text": "When it is near a lamp",
+              "contradicts": "desk",
+              "why": "It glowed at the reading table, where there is no lamp."
+            },
+            {
+              "id": "worn",
+              "text": "When it rests on a worn, much-touched surface"
+            },
+            {
+              "id": "people",
+              "text": "When people watch it",
+              "contradicts": "desk",
+              "why": "No one else was at the reading table, and it still glowed."
+            }
+          ]
+        }
+      ],
+      "offer": {
+        "prompt": "Where will you wait for it, with your journal open?",
+        "answer": "handle",
+        "options": [
+          {
+            "id": "brightest",
+            "text": "Under the brightest lamp in the hall",
+            "result": "You wait under the brightest lamp. Dust swirls in the light, but the Glimmermoth does not come. Does a bright place fit your own note?"
+          },
+          {
+            "id": "handle",
+            "text": "At the old brass door handle that every visitor pulls"
+          },
+          {
+            "id": "cabinet",
+            "text": "Beside the new glass cabinet",
+            "result": "You wait by the spotless cabinet. Nothing. Nobody has touched it yet. Does that fit your note?"
+          }
+        ]
+      },
+      "befriended": "You wait at the old door handle. After a while, a soft glow comes down the hall. The Glimmermoth lands on the brass, where a thousand hands have pulled, and then it lands on your sleeve. Lumen: \"Light was there twice, but it was not the cause. The dark table and the bright, clean cabinet showed you that. That is how a pattern becomes evidence.\"",
+      "names": [
+        "Glim",
+        "Mote",
+        "Wick",
+        "Ember",
+        "Lux",
+        "Tally"
+      ],
+      "forms": [
+        {
+          "name": "Glimmermoth",
+          "power": "Finds marks left by hands. In the field, it flies to the nearest place you have not looked at yet and glows there."
+        },
+        {
+          "name": "Lanternmoth",
+          "needs": "Grows when you use evidence in steps in two different worlds.",
+          "power": "A brighter glow that finds unexamined places further away."
+        },
+        {
+          "name": "Elder Glimmermoth",
+          "needs": "Grows when you use evidence in three worlds and four kinds of action.",
+          "power": "Shows how old a trace is."
+        }
+      ],
+      "skills": [
+        "SK-THK-07",
+        "SK-KNO-05",
+        "SK-THK-14"
+      ],
+      "weave": {
+        "concepts": [
+          "evidence",
+          "justification"
+        ],
+        "atl": [
+          "thinking",
+          "research"
+        ],
+        "subjects": [
+          "biology"
+        ],
+        "aoks": [
+          "NAT"
+        ]
+      },
+      "onComplete": [
+        {
+          "credit": "crit.evidence.loreling"
+        },
+        {
+          "journal": "j.loreling.glimmermoth"
+        }
+      ]
+    }
+  ],
+  "lorelingAtlas": [
+    {
+      "name": "Glimmermoth",
+      "concept": "evidence",
+      "power": "Finds marks left by hands"
+    },
+    {
+      "name": "Tracehound",
+      "concept": "evidence",
+      "power": "Follows a trail by scent"
+    },
+    {
+      "name": "Wobblewing",
+      "concept": "certainty",
+      "power": "Hovers steady only over safe ground"
+    },
+    {
+      "name": "Dialfin",
+      "concept": "certainty",
+      "power": "Its fins show a range, not a point"
+    },
+    {
+      "name": "Mirrorfox",
+      "concept": "truth",
+      "power": "Shows where two claims contradict"
+    },
+    {
+      "name": "Lucent Newt",
+      "concept": "truth",
+      "power": "Glows near a match between claim and world"
+    },
+    {
+      "name": "Inkling",
+      "concept": "interpretation",
+      "power": "Redraws a scene in another style"
+    },
+    {
+      "name": "Riddlecat",
+      "concept": "interpretation",
+      "power": "Finds a second meaning in a sign"
+    },
+    {
+      "name": "Crownbeetle",
+      "concept": "power",
+      "power": "Shows who holds the keys to a place"
+    },
+    {
+      "name": "Veilowl",
+      "concept": "power",
+      "power": "Sees hidden gatekeepers"
+    },
+    {
+      "name": "Pillarpup",
+      "concept": "justification",
+      "power": "Builds support stones under a claim"
+    },
+    {
+      "name": "Linkspider",
+      "concept": "justification",
+      "power": "Spins threads between reasons"
+    },
+    {
+      "name": "Cogling",
+      "concept": "explanation",
+      "power": "Shows the moving parts of a mechanism"
+    },
+    {
+      "name": "Rootmole",
+      "concept": "explanation",
+      "power": "Digs to the cause under a symptom"
+    },
+    {
+      "name": "Levelhare",
+      "concept": "objectivity",
+      "power": "Measures with a level that ignores labels"
+    },
+    {
+      "name": "Blindbat",
+      "concept": "objectivity",
+      "power": "Detects without seeing who made a thing"
+    },
+    {
+      "name": "Prismjay",
+      "concept": "perspective",
+      "power": "Splits a view into one colour for each witness"
+    },
+    {
+      "name": "Stiltfrog",
+      "concept": "perspective",
+      "power": "Sees from a different height"
+    },
+    {
+      "name": "Songlark",
+      "concept": "culture",
+      "power": "Learns local songs"
+    },
+    {
+      "name": "Hearthfox",
+      "concept": "culture",
+      "power": "Is welcome in homes"
+    },
+    {
+      "name": "Scalebee",
+      "concept": "values",
+      "power": "Weighs two priorities"
+    },
+    {
+      "name": "Tendril",
+      "concept": "values",
+      "power": "Grows toward what people care for"
+    },
+    {
+      "name": "Wardturtle",
+      "concept": "responsibility",
+      "power": "Shields a fragile source"
+    },
+    {
+      "name": "Keeperhound",
+      "concept": "responsibility",
+      "power": "Guards a promise"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-L01",
+      "world": "WORLD-01",
+      "title": "The Glimmermoth",
+      "knowledgeQuestion": "When does a pattern we notice become evidence?",
+      "available": {
+        "num": "lor.glimmermoth.seenCount",
+        "gte": 1
+      },
+      "objectives": [
+        {
+          "id": "lor.o1.watch",
+          "title": "Optional: watch the Glimmermoth in at least two places in the archive hall.",
+          "essential": false,
+          "done": {
+            "num": "lor.glimmermoth.seenCount",
+            "gte": 2
+          },
+          "weave": {
+            "concepts": [
+              "evidence",
+              "justification"
+            ],
+            "atl": [
+              "thinking",
+              "research"
+            ],
+            "subjects": [
+              "biology"
+            ],
+            "aoks": [
+              "NAT"
+            ]
+          },
+          "skills": [
+            "SK-KNO-05"
+          ]
+        },
+        {
+          "id": "lor.o2.friend",
+          "title": "Optional: write a pattern note and wait where it predicts the Glimmermoth will come.",
+          "essential": false,
+          "visible": {
+            "objective": "lor.o1.watch"
+          },
+          "done": {
+            "flag": "lor.glimmermoth.friend",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "evidence",
+              "justification"
+            ],
+            "atl": [
+              "thinking",
+              "research"
+            ],
+            "subjects": [
+              "biology"
+            ],
+            "aoks": [
+              "NAT"
+            ]
+          },
+          "skills": [
+            "SK-THK-07",
+            "SK-THK-14"
+          ]
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.lor.o1.watch.1",
+      "objective": "lor.o1.watch",
+      "depth": 1,
+      "text": "Small glowing moths sometimes rest in the archive hall."
+    },
+    {
+      "id": "h.lor.o1.watch.2",
+      "objective": "lor.o1.watch",
+      "depth": 2,
+      "text": "Look for a gold glimmer near a lamp, a table or a cabinet."
+    },
+    {
+      "id": "h.lor.o1.watch.3",
+      "objective": "lor.o1.watch",
+      "depth": 3,
+      "text": "Walk up to a glimmer and watch. Each place shows you something different."
+    },
+    {
+      "id": "h.lor.o1.watch.4",
+      "objective": "lor.o1.watch",
+      "depth": 4,
+      "text": "Glimmers are by the patent drawing, at the reading table on the left, and by the glass cabinet on the right."
+    },
+    {
+      "id": "h.lor.o2.friend.1",
+      "objective": "lor.o2.friend",
+      "depth": 1,
+      "text": "One sighting can mislead. What is the same in every place where it stopped?"
+    },
+    {
+      "id": "h.lor.o2.friend.2",
+      "objective": "lor.o2.friend",
+      "depth": 2,
+      "text": "Light was there sometimes. Was light there every time it glowed?"
+    },
+    {
+      "id": "h.lor.o2.friend.3",
+      "objective": "lor.o2.friend",
+      "depth": 3,
+      "text": "Check each answer in your note against every sighting. One that does not fit is a counterexample."
+    },
+    {
+      "id": "h.lor.o2.friend.4",
+      "objective": "lor.o2.friend",
+      "depth": 4,
+      "text": "It came to worn, much-touched places, in the dark too, and ignored a bright, clean cabinet."
+    }
+  ],
+  "criteria": [
+    {
+      "id": "crit.evidence.loreling",
+      "concept": "evidence",
+      "maximum": 10
+    }
+  ],
+  "awards": [
+    {
+      "id": "badge.patient-watcher",
+      "kind": "badge",
+      "name": "Patient Watcher",
+      "earnedBy": "You befriended a Loreling by watching it, noting its pattern and checking your note against every sighting.",
+      "criteria": [
+        "crit.evidence.loreling"
+      ],
+      "when": {
+        "objective": "lor.o2.friend"
+      },
+      "title": "Patient Watcher"
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.loreling.glimmermoth",
+      "text": "The Glimmermoth: a thing that is present every time is not always the cause. A place where the pattern breaks (a counterexample) tells you more than many places where it holds.",
+      "claimKind": "observation"
+    }
+  ]
+}

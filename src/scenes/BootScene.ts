@@ -59,6 +59,7 @@ export class BootScene extends Phaser.Scene {
       if (c && !this.textures.exists(key)) this.textures.addCanvas(key, c);
     }
     if (!this.textures.exists('glow')) this.textures.addCanvas('glow', glowCanvas(128));
+    if (!this.anims.exists('moth.flap')) this.anims.create({ key: 'moth.flap', frames: [{ key: 'moth.0' }, { key: 'moth.1' }], frameRate: 9, repeat: -1 });
     // Walk animations.
     const dirs = ['down', 'right', 'up', 'left'];
     for (const id of CHARACTER_SHEETS) {

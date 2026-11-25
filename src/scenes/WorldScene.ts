@@ -7,7 +7,8 @@
  * click or tap to walk to a spot or a person (alternative control route).
  */
 import { ensureLook } from './looks';
-import { chime, clink } from '../app/ambience';
+import { chime, clink, shimmer } from '../app/ambience';
+import { lorelingForm } from '../domain/lorelings';
 import { caption } from '../app/captions';
 import { LUMEN_COLOURS } from '../app/settings';
 import Phaser from 'phaser';
@@ -52,7 +53,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private portalRing: Phaser.GameObjects.Image | null = null;
   private stepTimer = 0;
   private transitioning = false;
-  private objArt = new Map<string, Phaser.GameObjects.Image>();
+  private objArt = new Map<string, { setVisible(v: boolean): unknown }>();
+  /** A befriended Loreling in the field (spec 36.1), and where it is flying. */
+  private pet: { id: string; sprite: Phaser.GameObjects.Sprite; glow: Phaser.GameObjects.Image; target: { x: number; y: number } | null; until: number; next: number } | null = null;
   private frayGlows = new Map<string, Phaser.GameObjects.Image>();
   private threadGfx: Phaser.GameObjects.Graphics | null = null;
   private gapMark: Phaser.GameObjects.Image | null = null;
@@ -74,7 +77,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.npcs = []; this.follower = null; this.trail = []; this.path = []; this.pendingInteract = null;
     this.zonesInside = new Set(); this.target = null; this.fx = []; this.lightPools = []; this.portalRing = null;
     this.transitioning = false; this.paused = false;
-    this.objArt = new Map(); this.frayGlows = new Map(); this.threadGfx = null; this.gapMark = null; this.exploreAcc = 0;
+    this.objArt = new Map(); this.pet = null; this.frayGlows = new Map(); this.threadGfx = null; this.gapMark = null; this.exploreAcc = 0;
     const s = ctx.controller.state;
     this.map = MAPS[s.mapId] ?? MAPS['nexus.archive'];
     this.buildMap();
@@ -139,6 +142,16 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
     // Interactable art.
     for (const it of m.interactables) {
+      if (it.kind === 'loreling') {
+        // A Loreling sighting: a small moth that flutters in place, with a soft glow (no collision).
+        const cx = (it.x + 0.5) * TILE, cy = it.y * TILE + 4;
+        const glow = this.add.image(cx, cy, 'glow').setTint(0xfff0a0).setBlendMode(Phaser.BlendModes.ADD).setAlpha(0.6).setScale(0.16);
+        const moth = this.add.sprite(cx, cy, 'moth.0').play('moth.flap');
+        const box = this.add.container(0, 0, [glow, moth]).setDepth(cy + 40);
+        if (!ctx.settings.reducedMotion) this.tweens.add({ targets: [moth, glow], y: cy - 4, x: cx + 2, duration: 1300, yoyo: true, repeat: -1, ease: 'Sine.InOut' });
+        this.objArt.set(it.id, box);
+        continue;
+      }
       if (it.art && this.textures.exists(it.art)) {
         const tex = this.textures.get(it.art).getSourceImage() as HTMLCanvasElement;
         const cx = (it.x + it.w / 2) * TILE, by = (it.y + it.h) * TILE;
@@ -212,6 +225,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       const img = this.objArt.get(it.id);
       if (img) img.setVisible(!it.visibleIf || ctx.controller.check(it.visibleIf));
     }
+    this.syncPet();
     // A small speech mark over people who have something new to say (a line not yet seen).
     for (const a of this.npcs) {
       const node = ctx.controller.engine.talkEntry(a.id, s);
@@ -416,6 +430,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.updateFollower(!!(vx || vy));
     this.updateCompanionWait();
     this.updateLumen();
+    this.updatePet();
     if (!modal) {
       this.updateTarget();
       this.checkZones(false);
@@ -488,6 +503,58 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.lumenGlow.setPosition(this.lumen.x, this.lumen.y).setDepth(this.lumen.depth - 1);
   }
 
+  /** Show or hide the Loreling that is out in the field. */
+  private syncPet(): void {
+    const s = ctx.controller.state;
+    const id = String(s.flags['lor.out'] ?? '');
+    const want = id && s.flags[`lor.${id}.friend`] === true ? id : '';
+    if (this.pet && this.pet.id !== want) { this.pet.sprite.destroy(); this.pet.glow.destroy(); this.pet = null; }
+    if (!want || this.pet || !this.player) return;
+    const x = this.player.sprite.x + 12, y = this.player.sprite.y - 14;
+    const glow = this.add.image(x, y, 'glow').setTint(0xfff0a0).setBlendMode(Phaser.BlendModes.ADD).setAlpha(0.85).setScale(0.18);
+    const sprite = this.add.sprite(x, y, 'moth.0').play('moth.flap');
+    this.pet = { id: want, sprite, glow, target: null, until: 0, next: this.time.now + 4000 };
+  }
+
+  /**
+   * The Glimmermoth's field power: it finds marks left by hands. Now and then it flies
+   * to the nearest place the player has not used yet, glows there, and comes back.
+   */
+  private updatePet(): void {
+    const pet = this.pet;
+    if (!pet) return;
+    const now = this.time.now;
+    const rec = ctx.controller.pack.lorelings.find((l) => l.id === pet.id);
+    const form = rec ? lorelingForm(rec, ctx.controller.pack, ctx.controller.state.objectivesDone).form : 1;
+    if (!pet.target && now > pet.next && !ctx.ui.isModalOpen()) {
+      pet.next = now + 7000;
+      const px = this.player.sprite.x, py = this.player.sprite.y, range = (form >= 2 ? 11 : 7) * TILE;
+      let best: Interactable | null = null, bd = range;
+      for (const it of this.map.interactables) {
+        if (!['exhibit', 'sign', 'puzzle', 'alcove', 'lock', 'label', 'assay', 'bench'].includes(it.kind)) continue;
+        if (it.visibleIf && !ctx.controller.check(it.visibleIf)) continue;
+        if (ctx.controller.state.flags[`used.${this.map.id}.${it.id}`] === true) continue;
+        const d = Phaser.Math.Distance.Between(px, py, (it.x + it.w / 2) * TILE, it.y * TILE);
+        if (d < bd && d > 2 * TILE) { bd = d; best = it; }
+      }
+      if (best) {
+        pet.target = { x: (best.x + best.w / 2) * TILE, y: best.y * TILE - 6 }; pet.until = now + 3200;
+        shimmer(ctx.settings.sfxVolume); caption('amb.moth');
+      }
+    }
+    if (pet.target && now > pet.until) pet.target = null;
+    const t = now / 1000, bob = ctx.settings.reducedMotion ? 0 : Math.sin(t * 3.1) * 2.5;
+    const side = this.player.facing === 'left' ? -1 : 1;
+    const tx = pet.target ? pet.target.x + Math.sin(t * 4) * 5 : this.player.sprite.x + side * 13;
+    const ty = pet.target ? pet.target.y + bob : this.player.sprite.y - 16 + bob;
+    const k = pet.target ? 0.05 : 0.07;
+    pet.sprite.x += (tx - pet.sprite.x) * k; pet.sprite.y += (ty - pet.sprite.y) * k;
+    pet.sprite.setFlipX(tx < pet.sprite.x).setDepth(this.player.sprite.y + 49);
+    const bright = pet.target ? (form >= 2 ? 0.45 : 0.36) : (form >= 2 ? 0.24 : 0.18);
+    pet.glow.setPosition(pet.sprite.x, pet.sprite.y).setDepth(pet.sprite.depth - 1);
+    pet.glow.scale += (bright - pet.glow.scale) * 0.08;
+  }
+
   lumenBurst(): void {
     if (ctx.settings.reducedEffects) return;
     const e = this.add.particles(this.lumen.x, this.lumen.y, 'spark', {
@@ -526,7 +593,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       const id = best.actor.id;
       const c = ctx.controller.pack.characters.find((x) => x.id === id);
       ctx.ui.setPrompt(`Talk to ${c?.name ?? 'them'}`);
-    } else ctx.ui.setPrompt(`${best.obj.kind === 'sign' ? 'Read' : best.obj.kind === 'exhibit' ? 'Inspect' : best.obj.kind === 'thread' ? 'Follow the thread to' : 'Use'} ${best.obj.label}`);
+    } else ctx.ui.setPrompt(`${best.obj.kind === 'sign' ? 'Read' : best.obj.kind === 'exhibit' ? 'Inspect' : best.obj.kind === 'thread' ? 'Follow the thread to' : best.obj.kind === 'loreling' ? 'Watch' : 'Use'} ${best.obj.label}`);
   }
 
   tryInteract(): void {
@@ -541,7 +608,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       return;
     }
     const it = t.obj;
+    // Remember places the player has used (the Glimmermoth looks for the others).
+    const used = `used.${this.map.id}.${it.id}`;
+    if (it.kind !== 'loreling' && ctx.controller.state.flags[used] !== true) ctx.controller.dispatch({ type: 'SetFlag', flag: used, value: true });
     switch (it.kind) {
+      case 'loreling': ctx.ui.openLoreling(it.loreling!, it.sighting!); break;
       case 'exhibit': ctx.ui.openExhibit(it.exhibit!); break;
       case 'bench': ctx.ui.openBench(); break;
       case 'label': ctx.ui.openLabel(it.kit!); break;

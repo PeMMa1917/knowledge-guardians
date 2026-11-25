@@ -12,6 +12,7 @@ import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
 import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
 import { answerRound, checkOrder } from './puzzles';
+import { checkOffer, cleanPetName } from './lorelings';
 import { useSignature } from './skills';
 import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
 import { checkAwards, grantCredit } from './permanent';
@@ -28,6 +29,11 @@ export type Command =
   | { type: 'AlcovePlace'; alcove: string; item: string }
   | { type: 'PuzzleRound'; puzzle: string; round: number; index: number }
   | { type: 'PuzzleOrder'; puzzle: string; order: string[] }
+  | { type: 'LorelingWatch'; loreling: string; sighting: string }
+  | { type: 'LorelingNote'; loreling: string; question: string; option: string }
+  | { type: 'LorelingOffer'; loreling: string; place: string }
+  | { type: 'LorelingName'; loreling: string; name: string }
+  | { type: 'LorelingField'; loreling: string; out: boolean }
   | { type: 'AlcoveLink'; alcove: string; index: number }
   | { type: 'AlcoveImply'; alcove: string; index: number }
   | { type: 'EnterNode'; node: string }
@@ -68,6 +74,7 @@ export type GameEvent =
   | { kind: 'label'; result: LabelResult }
   | { kind: 'lock'; lock: string; result: LockResult }
   | { kind: 'puzzle'; puzzle: string; ok: boolean; text: string; gapAt?: number | null }
+  | { kind: 'loreling'; loreling: string; stage: 'watch' | 'note' | 'offer' | 'name' | 'field'; ok: boolean; text: string; recheck?: string | null }
   | { kind: 'alcove'; alcove: string; stage: 'place' | 'link' | 'imply'; result: string; text: string }
   | { kind: 'showdown'; state: ShowdownState }
   | { kind: 'forge'; line: string }
@@ -382,6 +389,45 @@ export class Engine {
           if (!check(o.if, s)) throw new Error('That offer is not available');
           if (s.marks < o.price) throw new Error('You do not have enough marks');
           s = apply([{ addMarks: -o.price }, { giveItem: o.item }, ...(o.effects ?? [])], s, out);
+          break;
+        }
+        case 'LorelingWatch': case 'LorelingNote': case 'LorelingOffer': case 'LorelingName': case 'LorelingField': {
+          const rec = this.pack.lorelings.find((x) => x.id === cmd.loreling);
+          if (!rec) throw new Error('Unknown Loreling');
+          const F = `lor.${rec.id}`;
+          const friend = s.flags[`${F}.friend`] === true;
+          const seen = rec.sightings.filter((x) => s.flags[`${F}.seen.${x.id}`] === true).map((x) => x.id);
+          if (cmd.type === 'LorelingWatch') {
+            const sg = rec.sightings.find((x) => x.id === cmd.sighting);
+            if (!sg) throw new Error('Unknown sighting');
+            if (!seen.includes(sg.id)) s = apply([{ setFlag: `${F}.seen.${sg.id}`, value: true }, { addNum: `${F}.seenCount`, by: 1 }], s, out);
+            events.push({ kind: 'loreling', loreling: rec.id, stage: 'watch', ok: true, text: sg.text });
+          } else if (cmd.type === 'LorelingNote') {
+            if (friend) throw new Error('Already a friend');
+            if (seen.length < rec.minSightings) throw new Error('Watch it in more places first');
+            const q = rec.questions.find((x) => x.id === cmd.question);
+            if (!q || !q.options.some((o) => o.id === cmd.option)) throw new Error('No such option');
+            s = apply([{ setFlag: `${F}.note.${q.id}`, value: cmd.option }], s, out);
+            events.push({ kind: 'loreling', loreling: rec.id, stage: 'note', ok: true, text: '' });
+          } else if (cmd.type === 'LorelingOffer') {
+            if (friend) throw new Error('Already a friend');
+            const note = Object.fromEntries(rec.questions.map((q) => [q.id, s.flags[`${F}.note.${q.id}`] as string | undefined]));
+            const r = checkOffer(rec, note, cmd.place, seen);
+            s = apply(r.ok ? [{ setFlag: `${F}.friend`, value: true }, { setFlag: `${F}.name`, value: rec.name }, { setFlag: 'lor.out', value: rec.id }, ...(rec.onComplete ?? [])]
+              : [{ addNum: `${F}.misses`, by: 1 }], s, out);
+            if (r.ok) weaves.push(rec.weave);
+            events.push({ kind: 'loreling', loreling: rec.id, stage: 'offer', ok: r.ok, text: r.text, recheck: r.recheck });
+          } else if (cmd.type === 'LorelingName') {
+            if (!friend) throw new Error('Not a friend yet');
+            const n = cleanPetName(cmd.name);
+            if (!n) throw new Error('Use 1 to 16 letters, numbers or spaces');
+            s = apply([{ setFlag: `${F}.name`, value: n }], s, out);
+            events.push({ kind: 'loreling', loreling: rec.id, stage: 'name', ok: true, text: n });
+          } else {
+            if (!friend) throw new Error('Not a friend yet');
+            s = apply([{ setFlag: 'lor.out', value: cmd.out ? rec.id : '' }], s, out);
+            events.push({ kind: 'loreling', loreling: rec.id, stage: 'field', ok: true, text: cmd.out ? 'out' : 'camp' });
+          }
           break;
         }
         case 'PuzzleRound': case 'PuzzleOrder': {

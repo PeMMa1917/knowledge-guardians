@@ -89,6 +89,9 @@ export const NEXUS: MapDef = {
     { id: 'alcove-firsts', kind: 'alcove', alcove: 'firsts', x: 27, y: 14, w: 1, h: 1, label: 'the Alcove of Firsts (exhibition)', art: 'alcove', visibleIf: { objective: 'm01.o6.label' } },
     { id: 'title-lock', kind: 'lock', lock: 'inventor', x: 37, y: 13, w: 1, h: 1, label: 'the Title Lock (EE practice)', art: 'title-lock', visibleIf: { objective: 'm01.o6.label' } },
     { id: 'claim-board', kind: 'label', kit: 'ee.inventor', x: 33, y: 16, w: 1, h: 1, label: "Tull's claim board", art: 'label-stand', visibleIf: { objective: 'ee1.o3.weigh' } },
+    // Lorelings (spec 36.1): three places to watch the Glimmermoth. They go when it is a friend.
+    ...([['lamp', 7, 8, 'the glimmer by the patent drawing'], ['desk', 4, 13, 'the glimmer at the reading table'], ['case', 22, 14, 'the glimmer by the glass cabinet']] as const)
+      .map(([sg, x, y, label]) => ({ id: `lor-${sg}`, kind: 'loreling' as const, loreling: 'glimmermoth', sighting: sg, x, y, w: 1, h: 1, label, visibleIf: { not: { flag: 'lor.glimmermoth.friend', eq: true } } })),
     { id: 'sign-portal', kind: 'sign', x: 10, y: 4, w: 1, h: 1, label: 'the portal sign', art: 'signpost',
       text: 'PORTAL TO AETHELGARD. Opens for Guardians on assignment.' },
   ],

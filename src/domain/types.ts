@@ -466,6 +466,30 @@ export type PuzzleRecord = {
   | { type: 'order'; tiles: { id: string; text: string; role: string; why?: string }[]; answer: string[]; success: string }
 );
 
+/**
+ * A Loreling (spec 36.1): a small fictional creature linked to one concept. The player
+ * befriends it by patient observation: watch it, note its pattern, then wait in the
+ * right place. A wrong note means it does not come; the player watches again and revises.
+ */
+export interface LorelingRecord {
+  id: string;
+  name: string;
+  concept: Concept;
+  intro: string;
+  sightings: { id: string; place: string; text: string }[];
+  /** Pattern questions. Every wrong option names the sighting that contradicts it. */
+  questions: { id: string; prompt: string; answer: string; options: { id: string; text: string; contradicts?: string; why?: string }[] }[];
+  offer: { prompt: string; answer: string; options: { id: string; text: string; result?: string }[] };
+  /** Watching in this many places before the note can be written. */
+  minSightings: number;
+  befriended: string;
+  names: string[];
+  forms: { name: string; power: string; needs?: string }[];
+  skills: string[];
+  weave: Weave;
+  onComplete?: Effect[];
+}
+
 /** Pronouns the player chose (spec 35.1). Characters use them in text through {they}, {them} and {their}. */
 export interface Pronouns { subject: string; object: string; possessive: string }
 
@@ -516,6 +540,9 @@ export interface ContentPack {
   origins: OriginRecord[];
   alcoves: AlcoveRecord[];
   puzzles: PuzzleRecord[];
+  lorelings: LorelingRecord[];
+  /** The whole Loreling Atlas (spec 36.1): every Loreling, with the concept it lives near. */
+  lorelingAtlas: { name: string; concept: Concept; power: string }[];
   skillDomains: { id: string; name: string }[];
   skills: { id: string; domain: string; name: string }[];
 }

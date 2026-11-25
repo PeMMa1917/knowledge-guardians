@@ -30,3 +30,10 @@ export function chime(volume: number): void {
   const t = a.currentTime + 0.01, v = Math.min(1, volume) * 0.025;
   tone(a, f, t, 2.2, v); tone(a, f * 2, t, 1.2, v * 0.3);
 }
+
+/** The Glimmermoth's soft shimmer (a Loreling): three quick high notes going up. */
+export function shimmer(volume: number): void {
+  const a = audio(); if (!a || volume <= 0.01) return;
+  const t = a.currentTime + 0.01, v = Math.min(1, volume) * 0.02;
+  [1567.98, 1975.53, 2349.32].forEach((f, i) => tone(a, f, t + i * 0.07, 0.5, v));
+}

@@ -177,6 +177,20 @@ export function validateContent(pack: ContentPack): string[] {
       if (z.tiles.length <= z.answer.length) p.push(`puzzle ${z.id}: needs at least one tile to leave out`);
     }
   });
+  // Lorelings (spec 36.1): every wrong note option must name a sighting that shows it is wrong.
+  (pack.lorelings ?? []).forEach((l) => {
+    dup('loreling', l.id); text(`loreling ${l.id}`, l.intro); weave(l.weave, `loreling ${l.id}`, true); eff(l.onComplete, `loreling ${l.id}`);
+    const sids = new Set(l.sightings.map((x) => x.id));
+    if (l.sightings.length < l.minSightings || l.minSightings < 2) p.push(`loreling ${l.id}: needs at least 2 sightings to compare`);
+    l.questions.forEach((q) => {
+      if (!q.options.some((o) => o.id === q.answer)) p.push(`loreling ${l.id} ${q.id}: unknown answer`);
+      q.options.filter((o) => o.id !== q.answer).forEach((o) => { if (!o.contradicts || !sids.has(o.contradicts)) p.push(`loreling ${l.id} ${q.id}.${o.id}: a wrong option must name the sighting that contradicts it`); });
+    });
+    if (!l.offer.options.some((o) => o.id === l.offer.answer)) p.push(`loreling ${l.id}: unknown offer answer`);
+    l.skills.forEach((k) => skillIds.has(k) || p.push(`loreling ${l.id}: unknown skill ${k}`));
+    if (!l.forms.length || l.forms.length > 3) p.push(`loreling ${l.id}: needs 1 to 3 forms`);
+    if (!l.names.length) p.push(`loreling ${l.id}: needs suggested names`);
+  });
   pack.locks.forEach((l) => {
     dup('lock', l.id); weave(l.weave, `lock ${l.id}`, true); eff(l.onOpen, `lock ${l.id}`);
     if (!SUBJECTS[l.subject]) p.push(`lock ${l.id}: unknown subject ${l.subject}`);
