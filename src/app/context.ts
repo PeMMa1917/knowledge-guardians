@@ -50,7 +50,7 @@ export interface WorldApi {
   photoSnap(cb: (img: HTMLImageElement | null) => void): void;
   photoZoom(): number;
   /** A picture of the whole map, and a function from world pixels to picture pixels. */
-  mapSnap(cb: (r: { img: HTMLImageElement; at: (wx: number, wy: number) => [number, number]; marks: { kind: 'you' | 'new' | 'place' | 'waystone' | 'portal'; x: number; y: number; label: string }[] } | null) => void): void;
+  mapSnap(cb: (r: { img: HTMLImageElement; at: (wx: number, wy: number) => [number, number]; marks: { kind: 'you' | 'new' | 'place' | 'waystone' | 'portal'; x: number; y: number; label: string }[]; fog: { x: number; y: number; w: number; h: number }[]; explored: number } | null) => void): void;
   photoSubjects(): import('../domain/album').PhotoSubject[];
   emote(id: string): void;
   /** Redraw state-driven visuals: Fray glows, the Provenance Thread, visible objects. */

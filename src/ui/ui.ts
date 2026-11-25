@@ -481,10 +481,20 @@ export class UI implements UIApi {
         }
       }, { once: true });
       paper.append(pins);
+      // Fog of war: clouds over chunks not yet explored.
+      const fogL = h('div', { class: 'fog', 'aria-hidden': 'true' });
+      img.addEventListener('load', () => {
+        const sx = img.clientWidth / img.naturalWidth, sy = img.clientHeight / img.naturalHeight;
+        for (const f of r.fog) {
+          const [x0, y0] = r.at(f.x, f.y), [x1, y1] = r.at(f.x + f.w, f.y + f.h);
+          fogL.append(h('span', { style: { left: `${x0 * sx - 1}px`, top: `${y0 * sy - 1}px`, width: `${(x1 - x0) * sx + 2}px`, height: `${(y1 - y0) * sy + 2}px` } }));
+        }
+      }, { once: true });
+      paper.insertBefore(fogL, pins);
       box.append(paper,
         h('ul', { class: 'legend' }, h('li', {}, h('span', { class: 'pin-you' }, '★'), ' You'), h('li', {}, h('span', { class: 'pin-new' }, '!'), ' Someone has something new to say'),
           h('li', {}, h('span', { class: 'pin-place' }, '•'), ' A place you have not used yet'), h('li', {}, h('span', { class: 'pin-waystone' }, '◆'), ' Waystone (save and rest)'), h('li', {}, h('span', { class: 'pin-portal' }, '⇲'), ' Way out')),
-        h('p', { class: 'fine' }, `Press ${ctx.settings.keys.map} or Esc to fold the map.`));
+        h('p', { class: 'fine' }, `Explored: ${Math.round(r.explored * 100)}%. Walk around to clear the clouds. Press ${ctx.settings.keys.map} or Esc to fold the map.`));
     });
   }
 

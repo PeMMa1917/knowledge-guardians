@@ -819,3 +819,5 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .trust-pips { display: flex; gap: 3px; flex-wrap: wrap; }
 .trust-pips span { width: 12px; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.12); }
 .trust-pips span.on { background: var(--gold); }
+.chart .fog { position: absolute; inset: 10px; pointer-events: none; overflow: hidden; }
+.chart .fog span { position: absolute; background: #d4c9ae; opacity: 0.97; box-shadow: 0 0 8px 5px #d4c9ae; }

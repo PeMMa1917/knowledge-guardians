@@ -72,3 +72,15 @@ it('a meaning tile never shows its own word', async () => {
   expect(hideTerm('Something that someone says is true. A claim can be bigger.', 'Claim')).toBe('Something that someone says is true. A ___ can be bigger.');
   expect(hideTerm('Claims and more claims.', 'Claim')).toBe('___ and more ___.');
 });
+
+it('fog of war clears around the player, chunk by chunk', async () => {
+  const { revealAround, isRevealed, explored } = await import('../src/domain/fog');
+  let f = '';
+  expect(isRevealed(f, 40, 28, 20, 20)).toBe(false);
+  f = revealAround(f, 40, 28, 20, 20);
+  expect(isRevealed(f, 40, 28, 20, 20)).toBe(true);
+  expect(isRevealed(f, 40, 28, 24, 24)).toBe(true); // a neighbouring chunk
+  expect(isRevealed(f, 40, 28, 0, 0)).toBe(false);
+  expect(revealAround(f, 40, 28, 20, 20)).toBe(f);
+  expect(explored(f, 40, 28)).toBeCloseTo(9 / 70);
+});

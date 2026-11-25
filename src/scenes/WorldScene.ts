@@ -21,6 +21,7 @@ import { ctx, type WorldApi } from '../app/context';
 import { MAPS } from '../maps';
 import type { Interactable, MapDef } from '../maps/types';
 import { STAMPS, TILE } from './art';
+import { CHUNK, explored, isRevealed, revealAround } from '../domain/fog';
 import { frayLevel } from '../domain/label';
 
 type Dir = 'down' | 'up' | 'left' | 'right';
@@ -448,7 +449,14 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       if (follow && this.player) cam.startFollow(this.player.sprite, true, 0.12, 0.12);
       for (const a of this.npcs) a.mark?.setVisible(true);
       if (!img) { cb(null); return; }
-      cb({ img, marks, at: (wx, wy) => [(wx - view.x) * z, (wy - view.y) * z] });
+      // Fog of war: hide what the player has not explored yet (the player's own pin always shows).
+      const hex = s.flags[`fog.${m.id}`];
+      const seen = (wx: number, wy: number) => isRevealed(hex, m.width, m.height, Math.floor(wx / TILE), Math.floor(wy / TILE));
+      const fog: { x: number; y: number; w: number; h: number }[] = [];
+      for (let cy = 0; cy * CHUNK < m.height; cy++) for (let cx = 0; cx * CHUNK < m.width; cx++) {
+        if (!isRevealed(hex, m.width, m.height, cx * CHUNK, cy * CHUNK)) fog.push({ x: cx * CHUNK * TILE, y: cy * CHUNK * TILE, w: CHUNK * TILE, h: CHUNK * TILE });
+      }
+      cb({ img, marks: marks.filter((mk) => mk.kind === 'you' || seen(mk.x, mk.y)), fog, explored: explored(hex, m.width, m.height), at: (wx, wy) => [(wx - view.x) * z, (wy - view.y) * z] });
     };
     try { this.game.renderer.snapshot((img) => done(img as HTMLImageElement)); } catch { done(null); }
   }
@@ -546,8 +554,20 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   // ----------------------------------------------------------------- update
 
+  private fogChunk = '';
   update(_t: number, dtMs: number): void {
     const dt = Math.min(dtMs, 100) / 1000;
+    // Fog of war: clear the map around the player when they enter a new chunk.
+    if (this.player && !this.transitioning) {
+      const tx = Math.floor(this.player.sprite.x / TILE), ty = Math.floor(this.player.sprite.y / TILE);
+      const ck = `${Math.floor(tx / CHUNK)},${Math.floor(ty / CHUNK)}`;
+      if (ck !== this.fogChunk) {
+        this.fogChunk = ck;
+        const key = `fog.${this.map.id}`, was = ctx.controller.state.flags[key];
+        const nv = revealAround(was, this.map.width, this.map.height, tx, ty);
+        if (nv !== was) ctx.controller.dispatch({ type: 'SetFlag', flag: key, value: nv });
+      }
+    }
     this.ambience(dt);
     this.updateDaylight(dt);
     const modal = this.paused || ctx.ui.isModalOpen() || this.transitioning;
