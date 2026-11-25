@@ -185,6 +185,8 @@ export class Engine {
           break;
         case 'EnterNode': {
           const n = this.node(cmd.node);
+          // Remember seen lines, so the world can mark people with something new to say.
+          if (!s.flags[`node.${n.id}`]) s = apply([{ setFlag: `node.${n.id}`, value: true }], s, out);
           s = apply(n.effects, s, out);
           break;
         }

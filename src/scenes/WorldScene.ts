@@ -18,6 +18,8 @@ type Dir = 'down' | 'up' | 'left' | 'right';
 
 interface Actor {
   id: string;
+  /** "Something new to say" marker above the head. */
+  mark?: Phaser.GameObjects.Image;
   sprite: Phaser.GameObjects.Sprite;
   shadow: Phaser.GameObjects.Image;
   facing: Dir;
@@ -58,6 +60,14 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   create(): void {
     ctx.world = this;
     // Reset per-map fields (the scene object is reused when the map changes).
+    if (!this.textures.exists('mark.new')) {
+      // Pixel speech mark, drawn in code (original art).
+      const g = this.make.graphics({ x: 0, y: 0 }, false);
+      g.fillStyle(0x1a1426, 1).fillRoundedRect(0, 0, 9, 10, 2).fillTriangle(3, 9, 6, 9, 4, 12);
+      g.fillStyle(0xf2d27a, 1).fillRoundedRect(1, 1, 7, 8, 2).fillTriangle(4, 9, 5, 9, 4, 11);
+      g.fillStyle(0x1a1426, 1).fillRect(4, 2, 1, 4).fillRect(4, 7, 1, 1);
+      g.generateTexture('mark.new', 9, 13); g.destroy();
+    }
     this.npcs = []; this.follower = null; this.trail = []; this.path = []; this.pendingInteract = null;
     this.zonesInside = new Set(); this.target = null; this.fx = []; this.lightPools = []; this.portalRing = null;
     this.transitioning = false; this.paused = false;
@@ -198,6 +208,15 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     for (const it of this.map.interactables) {
       const img = this.objArt.get(it.id);
       if (img) img.setVisible(!it.visibleIf || ctx.controller.check(it.visibleIf));
+    }
+    // A small speech mark over people who have something new to say (a line not yet seen).
+    for (const a of this.npcs) {
+      const node = ctx.controller.engine.talkEntry(a.id, s);
+      const fresh = !!node && !s.flags[`node.${node}`];
+      if (fresh && !a.mark) {
+        a.mark = this.add.image(a.sprite.x, a.sprite.y - 25, 'mark.new').setDepth(200000).setOrigin(0.5, 1);
+        if (!ctx.settings.reducedMotion) this.tweens.add({ targets: a.mark, y: a.sprite.y - 27, duration: 700, yoyo: true, repeat: -1, ease: 'Sine.InOut' });
+      } else if (!fresh && a.mark) { this.tweens.killTweensOf(a.mark); a.mark.destroy(); a.mark = undefined; }
     }
     for (const [kit, glow] of this.frayGlows) {
       const lvl = frayLevel(kit, s);
