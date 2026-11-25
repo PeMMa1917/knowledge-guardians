@@ -13,8 +13,8 @@ import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads,
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
-import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, runSorter, framed, runSurvey, sightBlock, tiltOf, timeStats, translateLine, type SorterRun } from '../domain/puzzles';
-import { audioNow, chime, clapEcho, playNotes } from '../app/ambience';
+import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, runSorter, framed, shepardParts, runSurvey, sightBlock, tiltOf, timeStats, translateLine, type SorterRun } from '../domain/puzzles';
+import { audioNow, chime, clapEcho, playNotes, playShepard } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
 import { DEFAULT_ROOM, FLOORS, LAMPS, PLANTS, RUGS, SLOTS, VIEWS, WALLS, decodeRoom, encodeRoom, placeKeepsake, starsFor, type Room } from '../domain/quarters';
@@ -1163,6 +1163,7 @@ export class UI implements UIApi {
     let flashEcho = ctx.settings.sfxVolume <= 0.01;
     let surveyW: string | null = null, surveyS: string | null = null;
     let frameB = 0;
+    let bell: { stop: () => void; timer: number; step: number } | null = null, glassStep = 0;
     const framePos = new Map<string, { x: number; y: number }>();
     if (rec.type === 'frame') rec.briefs.forEach((b) => { const v = String(c.state.flags[`puzzle.${rec.id}.b.${b.id}`] ?? ''); const [x, y] = v.split(',').map(Number); framePos.set(b.id, v ? { x, y } : { x: Math.floor((rec.scene.w - rec.frame.w) / 2), y: Math.floor((rec.scene.h - rec.frame.h) / 2) }); });
     const lastPicks = String(c.state.flags[`puzzle.${rec.id}.sent`] ?? c.state.flags[`puzzle.${rec.id}.last`] ?? '').split(',').filter(Boolean).map(Number);
@@ -1214,6 +1215,55 @@ export class UI implements UIApi {
               h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleWeigh', puzzle: rec.id, round: n, weights: [...pan] })) }, 'Record this weighing'),
               h('button', { onclick: () => { pan = []; feedback = null; render(); } }, 'Clear the pan')));
         } else if (done) box.append(h('p', { class: 'fair' }, 'Every weighing is in the record book.'));
+      } else if (rec.type === 'shepard') {
+        const played = Number(c.state.flags[`${F}.played`] ?? 0), guess = c.state.flags[`${F}.guess`], compared = c.state.flags[`${F}.compared`] === true;
+        const parts = (st: number) => shepardParts(st, rec.steps, rec.base, rec.octaves);
+        const LOOPS = 2, STEP = ctx.settings.reducedMotion ? 0.6 : 0.5;
+        // The bell stair: one bell per step, lit in turn while the scale plays.
+        const stair = h('div', { class: 'bell-stair', 'aria-hidden': 'true' }, ...Array.from({ length: rec.steps }, (_, i) => h('span', { class: 'bell-step', style: { bottom: `${(i / rec.steps) * 72}%`, left: `${(i / rec.steps) * 88}%` } }, '🔔')));
+        const nowStep = h('p', { class: 'fine bell-now', 'aria-live': 'polite' }, bell ? `Step ${bell.step % rec.steps}` : '');
+        const stopBell = () => { if (!bell) return; bell.stop(); clearInterval(bell.timer); bell = null; };
+        box.append(h('div', { class: 'bell-scene' }, stair, h('div', { class: 'bell-rope' })), nowStep,
+          h('h3', {}, '1. Listen to the bell stair'),
+          h('div', { class: 'row' }, h('button', { class: played ? '' : 'primary', disabled: !!bell, onclick: () => {
+            const all = Array.from({ length: rec.steps * LOOPS + 1 }, (_, i) => parts(i));
+            const stop = playShepard(all, STEP, ctx.settings.sfxVolume);
+            caption('sfx.bellstair');
+            bell = { stop, step: 0, timer: 0 };
+            take(c.dispatch({ type: 'PuzzleListen', puzzle: rec.id, action: 'play' }));
+            const light = () => { if (!bell) return; box.querySelectorAll('.bell-step').forEach((el, i) => el.classList.toggle('lit', i === bell!.step % rec.steps)); const np = box.querySelector('.bell-now'); if (np) np.textContent = `Step ${bell.step} of ${rec.steps * LOOPS}`; };
+            light();
+            bell.timer = window.setInterval(() => { if (!bell) return; if (!box.isConnected) { stopBell(); return; } bell.step++; if (bell.step > rec.steps * LOOPS) { stopBell(); render(); return; } light(); }, STEP * 1000);
+          } }, played ? 'Ring the stair again' : 'Ring the bell stair'), bell ? h('button', { onclick: () => { stopBell(); render(); } }, 'Stop') : '',
+          ctx.settings.sfxVolume <= 0.01 ? h('span', { class: 'fine' }, 'Your sound is off. The tuning glass below shows the notes as bars.') : ''));
+        if (played) {
+          box.append(h('h3', {}, '2. What did you hear?'), h('p', { class: 'fine' }, 'There is no wrong answer here. Say what your ears told you.'),
+            h('div', { class: 'options notice-options' }, ...rec.guesses.map((g, i) => h('button', { type: 'button', class: guess === i ? 'picked' : '', onclick: () => take(c.dispatch({ type: 'PuzzleListen', puzzle: rec.id, action: 'guess', index: i })) }, h('span', { class: 'notice-text' }, g.text)))));
+        }
+        const glass = (st: number, label: string) => {
+          const ps = parts(st), W = 280, H = 90;
+          const lx = (f: number) => 10 + ((Math.log2(f / rec.base)) / rec.octaves) * (W - 20);
+          const el = h('div', { class: 'tuning-glass', role: 'img', 'aria-label': `${label}: ${ps.filter((p) => p.amp > 0.05).map((p) => `${Math.round(p.f)} hertz${p.amp > 0.6 ? ' (loud)' : p.amp < 0.2 ? ' (quiet)' : ''}`).join(', ')}` });
+          el.innerHTML = `<svg viewBox="0 0 ${W} ${H + 18}" aria-hidden="true"><rect width="${W}" height="${H + 18}" rx="8" fill="#14202b"/>${ps.map((p) => `<rect x="${lx(p.f) - 3}" y="${H - p.amp * (H - 10)}" width="6" height="${p.amp * (H - 10)}" rx="2" fill="#7cc4ff"/>`).join('')}<line x1="10" y1="${H}" x2="${W - 10}" y2="${H}" stroke="#4a6a85"/>${Array.from({ length: rec.octaves + 1 }, (_, k) => `<text x="${lx(rec.base * 2 ** k)}" y="${H + 13}" font-size="8" fill="#9fb3c8" text-anchor="middle">${Math.round(rec.base * 2 ** k)}</text>`).join('')}</svg>`;
+          return h('figure', { class: 'glass-fig' }, el, h('figcaption', { class: 'fine' }, label));
+        };
+        if (typeof guess === 'number') {
+          box.append(h('h3', {}, '3. Look through the tuning glass'),
+            h('p', { class: 'fine' }, 'Each bar is one note in the bell sound. Taller is louder. The numbers are hertz (vibrations each second).'),
+            h('label', { class: 'glass-slider' }, `Step ${glassStep}: `, h('input', { type: 'range', min: 0, max: rec.steps, value: glassStep, 'aria-label': 'Step to look at', oninput: (e: Event) => { glassStep = Number((e.target as HTMLInputElement).value); render(); } })),
+            glass(glassStep, `Step ${glassStep}`),
+            compared ? h('div', { class: 'row wrap glass-pair' }, glass(0, 'Step 0 (the first bell)'), glass(rec.steps, `Step ${rec.steps} (after one full climb)`))
+              : h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleListen', puzzle: rec.id, action: 'compare' })) }, `Compare step 0 with step ${rec.steps}`)));
+        }
+        if (compared) {
+          box.append(h('h3', {}, done ? 'What you learned' : '4. What do your ears and the glass tell you together?'),
+            done ? h('p', { class: 'fair' }, rec.reflect.find((x) => x.honest)!.text)
+              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((x, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, x.text)))));
+        }
+        if (feedback) {
+          const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
+          box.append(fb); requestAnimationFrame(() => fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+        }
       } else if (rec.type === 'frame') {
         const U = 10, SW = rec.scene.w * U, SH = rec.scene.h * U, FW = rec.frame.w * U, FH = rec.frame.h * U;
         const doneB = (id: string) => typeof c.state.flags[`${F}.b.${id}`] === 'string';

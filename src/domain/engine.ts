@@ -44,6 +44,7 @@ export type Command =
   | { type: 'PuzzleSurvey'; puzzle: string; wording: string; sample: string }
   | { type: 'PuzzleTranslate'; puzzle: string; picks: number[] }
   | { type: 'PuzzleFrame'; puzzle: string; brief: string; x: number; y: number }
+  | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
   | { type: 'PinYarn'; board: string; claim: string; card: string }
   | { type: 'PhotoCaptioned'; right: number; total: number }
   | { type: 'UnpinYarn'; board: string; claim: string; card: string }
@@ -506,14 +507,28 @@ export class Engine {
           events.push({ kind: 'yarn', board: rec.id, claim: cmd.claim, card: cmd.card, tone: v.tone, text: v.text, done });
           break;
         }
-        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': case 'PuzzleAddPoint': case 'PuzzlePredict': case 'PuzzleMap': case 'PuzzleDiagnose': case 'PuzzleTrain': case 'PuzzleTime': case 'PuzzleSurvey': case 'PuzzleTranslate': case 'PuzzleFrame': {
+        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': case 'PuzzleAddPoint': case 'PuzzlePredict': case 'PuzzleMap': case 'PuzzleDiagnose': case 'PuzzleTrain': case 'PuzzleTime': case 'PuzzleSurvey': case 'PuzzleTranslate': case 'PuzzleFrame': case 'PuzzleListen': {
           const rec = this.pack.puzzles.find((x) => x.id === cmd.puzzle);
           if (!rec) throw new Error('Unknown puzzle');
           if (rec.needs && !s.inventory[rec.needs.item]) throw new Error(rec.needs.sealed);
           const F = `puzzle.${rec.id}`;
           const wasDone = s.flags[`${F}.done`] === true;
           let ok: boolean, text: string, solved: boolean, gapAt: number | null = null;
-          if (cmd.type === 'PuzzleFrame') {
+          if (cmd.type === 'PuzzleListen') {
+            if (rec.type !== 'shepard') throw new Error('Not a listening puzzle');
+            solved = false; ok = true;
+            if (cmd.action === 'play') { s = apply([{ addNum: `${F}.played`, by: 1 }], s, out); text = 'The bells ring, step by step.'; }
+            else if (cmd.action === 'guess') {
+              if (!Number(s.flags[`${F}.played`] ?? 0)) throw new Error('Listen to the bells first');
+              const g = rec.guesses[cmd.index ?? -1];
+              if (!g) throw new Error('No such answer');
+              s = apply([{ setFlag: `${F}.guess`, value: cmd.index! }], s, out); text = g.reply;
+            } else {
+              if (typeof s.flags[`${F}.guess`] !== 'number') throw new Error('Say what you heard first');
+              s = apply([{ setFlag: `${F}.compared`, value: true }], s, out);
+              text = `The tuning glass shows step 0 and step ${rec.steps}: the same notes, at the same loudness.`;
+            }
+          } else if (cmd.type === 'PuzzleFrame') {
             const r = judgeFrame(rec, cmd.brief, cmd.x, cmd.y);
             ok = r.ok; text = r.text; solved = false;
             s = apply(r.ok ? [{ setFlag: `${F}.b.${cmd.brief}`, value: `${cmd.x},${cmd.y}` }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);
@@ -592,8 +607,9 @@ export class Engine {
             if (rec.type === 'echo' && (readTimes(s.flags[`${F}.echo`]).length < rec.minTimes || readTimes(s.flags[`${F}.react`]).length < rec.minTimes)) throw new Error('Time the echo and your reaction first');
             if (rec.type === 'survey' && !String(s.flags[`${F}.runs`] ?? '').split(',').includes(`${rec.fair.wording}:${rec.fair.sample}`)) throw new Error('Run a survey with a plain question and a fair group first');
             if (rec.type === 'translate' && typeof s.flags[`${F}.sent`] !== 'string') throw new Error('Send a translation that keeps every part first');
+            if (rec.type === 'shepard' && s.flags[`${F}.compared`] !== true) throw new Error('Compare with the tuning glass first');
             if (rec.type === 'frame' && !rec.briefs.every((b) => typeof s.flags[`${F}.b.${b.id}`] === 'string')) throw new Error('Paint a poster for everyone first');
-            if (rec.type !== 'frame' && rec.type !== 'sightlines' && rec.type !== 'conjecture' && rec.type !== 'mapmaker' && rec.type !== 'sorter' && rec.type !== 'echo' && rec.type !== 'survey' && rec.type !== 'translate') throw new Error('This puzzle has no report');
+            if (rec.type !== 'shepard' && rec.type !== 'frame' && rec.type !== 'sightlines' && rec.type !== 'conjecture' && rec.type !== 'mapmaker' && rec.type !== 'sorter' && rec.type !== 'echo' && rec.type !== 'survey' && rec.type !== 'translate') throw new Error('This puzzle has no report');
             const r = rec.type === 'sightlines' ? rec.reports[cmd.index] : rec.reflect[cmd.index];
             if (!r) throw new Error('No such report');
             ok = r.honest; text = r.why; solved = r.honest;

@@ -535,6 +535,12 @@ export type PuzzleRecord = {
    * them shows the whole scene. An item is in the frame when its centre is inside it.
    */
   | { type: 'frame'; scene: { w: number; h: number }; frame: { w: number; h: number }; items: FrameItem[]; briefs: FrameBrief[]; reflect: { text: string; honest: boolean; why: string }[] }
+  /**
+   * The endless bell stair (perception; natural and human sciences): a Shepard scale. Each
+   * step sounds higher, but after `steps` steps the notes are the same as at the start. The
+   * player listens, says what they heard (never graded), then compares with a measurement.
+   */
+  | { type: 'shepard'; steps: number; base: number; octaves: number; guesses: { text: string; reply: string }[]; reflect: { text: string; honest: boolean; why: string }[] }
   | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string }[] }
 );
 

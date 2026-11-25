@@ -404,6 +404,15 @@ DRAW['easel'] = [16, 24, (g) => {
   R(g, '#a87445', 2, 14, 12, 1);
 }];
 
+// Maren's bell frame (original art): a small wooden frame with three bells of different sizes and a rope.
+DRAW['bell-rope'] = [16, 24, (g) => {
+  R(g, '#5b3b22', 1, 2, 2, 22); R(g, '#5b3b22', 13, 2, 2, 22); R(g, '#7a5230', 0, 1, 16, 2);
+  R(g, '#c9a24a', 3, 4, 4, 4); R(g, '#e9cf7a', 4, 4, 2, 1); R(g, '#8a6a2a', 3, 8, 4, 1);
+  R(g, '#c9a24a', 8, 4, 3, 3); R(g, '#e9cf7a', 9, 4, 1, 1); R(g, '#8a6a2a', 8, 7, 3, 1);
+  R(g, '#c9a24a', 11, 4, 2, 2); R(g, '#8a6a2a', 11, 6, 2, 1);
+  R(g, '#d8c08a', 7, 9, 1, 11); R(g, '#b04a3a', 6, 19, 3, 3);
+}];
+
 // The door to the Guardian's quarters (original art): a round-topped oak door with a star.
 DRAW['quarters-door'] = [16, 24, (g) => {
   R(g, '#3b2a1a', 1, 3, 14, 21); R(g, '#3b2a1a', 3, 1, 10, 2);

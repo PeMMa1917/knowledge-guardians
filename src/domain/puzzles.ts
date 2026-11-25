@@ -283,3 +283,16 @@ export function judgeFrame(p: PuzzleRecord, brief: string, x: number, y: number)
   const parts = [missing.length ? `${b.who} wants ${missing.map(name).join(' and ')} in the picture.` : '', extra.length ? `${b.who} does not want ${extra.map(name).join(' or ')} in it.` : ''];
   return { ok: false, text: parts.filter(Boolean).join(' '), missing, extra };
 }
+
+/**
+ * The notes in one step of a Shepard scale: the same pitch in every octave, loudest in the
+ * middle and fading out at both ends. Step `steps` has exactly the notes of step 0.
+ */
+export function shepardParts(step: number, steps: number, base: number, octaves: number): { f: number; amp: number }[] {
+  const off = (((step % steps) + steps) % steps) / steps;
+  const mid = octaves / 2;
+  return Array.from({ length: octaves }, (_, k) => {
+    const pos = k + off;
+    return { f: Math.round(base * 2 ** pos * 100) / 100, amp: Math.round(Math.exp(-((pos - mid) ** 2) / (2 * (octaves / 6) ** 2)) * 1000) / 1000 };
+  });
+}

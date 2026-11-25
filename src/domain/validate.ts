@@ -8,7 +8,7 @@
 import type { Condition, ContentPack, Effect, Weave } from './types';
 import { ATLS, CONCEPTS, PROFILE } from './types';
 import { SUBJECTS } from './curriculum';
-import { chordFigure, panes, runSorter, runSurvey, sightBlock, translateLine, judgeFrame } from './puzzles';
+import { chordFigure, panes, runSorter, runSurvey, sightBlock, translateLine, judgeFrame, shepardParts } from './puzzles';
 import { openCombinations } from './lock';
 
 const MAX_TEXT = 2000;
@@ -192,6 +192,12 @@ export function validateContent(pack: ContentPack): string[] {
         const all = z.people.filter((x) => x.yes).length / z.people.length, fair = runSurvey(z, z.fair.wording, z.fair.sample);
         if (Math.abs(fair.yes / fair.total - all) > 0.15) p.push(`puzzle ${z.id}: the fair sample does not look like the whole town`);
       }
+      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
+    }
+    else if (z.type === 'shepard') {
+      if (!(z.steps >= 6 && z.octaves >= 4 && z.base >= 20 && z.base * 2 ** z.octaves <= 20000)) p.push(`puzzle ${z.id}: steps, base and octaves must be sensible and audible`);
+      else if (JSON.stringify(shepardParts(0, z.steps, z.base, z.octaves)) !== JSON.stringify(shepardParts(z.steps, z.steps, z.base, z.octaves))) p.push(`puzzle ${z.id}: the last step must match the first`);
+      if (z.guesses.length < 2) p.push(`puzzle ${z.id}: needs two or more answers to 'what did you hear?'`);
       if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'frame') {

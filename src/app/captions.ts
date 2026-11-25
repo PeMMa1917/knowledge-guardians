@@ -22,6 +22,7 @@ export const CAPTIONS: Record<string, string> = {
   'amb.rain': 'Rain begins to patter',
   'sfx.clap': 'A sharp clap',
   'sfx.echo': 'The echo comes back',
+  'sfx.bellstair': 'Bells ring, each one a step higher',
   'amb.rain.end': 'The rain stops',
   'amb.moth': 'Glimmermoth hums and glows',
   'amb.bell': 'Town bell rings: evening',

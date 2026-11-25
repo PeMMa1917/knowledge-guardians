@@ -206,6 +206,16 @@
    "where": "Emberford: Lio's easel in the market."
   },
   {
+   "id": "tiny-bell",
+   "name": "A tiny brass bell",
+   "text": "Maren's thanks. It rings one note. It does not climb, however long you listen.",
+   "if": {
+    "flag": "puzzle.bell-stair.done",
+    "eq": true
+   },
+   "where": "Emberford: Maren's bell rope by the gatehouse."
+  },
+  {
    "id": "seal",
    "name": "A wax copy of the seal",
    "text": "The Guardians' seal, found at the end of the chapter.",

@@ -117,3 +117,24 @@ export function clapEcho(volume: number, echoDelay: number | null): number | nul
 }
 /** The audio clock now (seconds), or null. */
 export function audioNow(): number | null { return audio()?.currentTime ?? null; }
+
+/**
+ * A Shepard scale for the bell stair: each step is a soft bell made of the same note in
+ * several octaves (loud in the middle, quiet at the ends). Returns a stop function.
+ */
+export function playShepard(stepsParts: { f: number; amp: number }[][], stepDur: number, volume: number): () => void {
+  const a = audio(); if (!a || volume <= 0.01) return () => {};
+  const out = a.createGain(); out.gain.value = 1; out.connect(a.destination);
+  const t0 = a.currentTime + 0.05, v = Math.min(1, volume) * 0.06;
+  stepsParts.forEach((parts, i) => {
+    const at = t0 + i * stepDur;
+    for (const p of parts) {
+      if (p.amp < 0.02) continue;
+      const o = a.createOscillator(), g = a.createGain();
+      o.type = 'sine'; o.frequency.setValueAtTime(p.f, at);
+      g.gain.setValueAtTime(0, at); g.gain.linearRampToValueAtTime(v * p.amp, at + 0.02); g.gain.exponentialRampToValueAtTime(0.0005, at + stepDur * 1.6);
+      o.connect(g); g.connect(out); o.start(at); o.stop(at + stepDur * 1.7);
+    }
+  });
+  return () => { try { out.gain.setValueAtTime(0, a.currentTime); out.disconnect(); } catch { /* already stopped */ } };
+}

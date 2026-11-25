@@ -2022,6 +2022,83 @@
      "why": "Each poster gives real knowledge: there was a happy crowd, a struggling seller, a quarrel. The knowledge is partial, not empty. Putting the frames side by side gave you more than any one of them."
     }
    ]
+  },
+  {
+   "id": "bell-stair",
+   "type": "shepard",
+   "title": "The Endless Bell Stair",
+   "intro": "Bell-ringer Maren is proud of the gatehouse chimes. 'Each bell is higher than the one before,' she says, 'and the stair never stops climbing. Listen!' Ring the stair, say what you heard, then check it with the guild's tuning glass.",
+   "skills": [
+    "SK-KNO-05",
+    "SK-MED-04",
+    "SK-THK-14"
+   ],
+   "weave": {
+    "concepts": [
+     "evidence",
+     "certainty"
+    ],
+    "atl": [
+     "thinking",
+     "self-management"
+    ],
+    "subjects": [
+     "psychology",
+     "physics",
+     "music"
+    ],
+    "aoks": [
+     "NAT",
+     "HUM"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.evidence.bells"
+    },
+    {
+     "journal": "j.bells"
+    }
+   ],
+   "steps": 12,
+   "base": 55,
+   "octaves": 7,
+   "guesses": [
+    {
+     "text": "It went up the whole time.",
+     "reply": "That is what most people hear. Hold on to it: your ears reported honestly. Now let us look at the notes."
+    },
+    {
+     "text": "It went up, then dropped back down somewhere.",
+     "reply": "Some people do hear a drop. Others never do. The tuning glass can show you what happens at that point."
+    },
+    {
+     "text": "I could not tell, or I could not hear it.",
+     "reply": "That is a fair report too. The tuning glass shows the same bells as bars, so you can check without sound."
+    }
+   ],
+   "reflect": [
+    {
+     "text": "My ears are useless. Only instruments give real knowledge.",
+     "honest": false,
+     "why": "Your ears were right that each step sounds higher than the one before. And the tuning glass is a tool that people designed and that you read with your eyes. Senses and instruments check each other."
+    },
+    {
+     "text": "The tuning glass must be wrong, because I clearly heard the bells rise.",
+     "honest": false,
+     "why": "Each single step does rise. But the glass shows the same notes at step 0 and step 12, every time you look. When what we perceive and what we measure disagree, ask how both could be true."
+    },
+    {
+     "text": "Each step really does sound higher, and after twelve steps the notes are the same as at the start. High notes fade out as low notes fade in, so the climb never seems to end. The illusion teaches me how hearing works, and the measurement helped me check what I heard.",
+     "honest": true,
+     "why": "Yes. Sound scientists call this kind of illusion a Shepard scale. Perception is not 'wrong' here; it follows rules, and the illusion lets us see them. Maren was honest. She was mistaken only about 'forever'."
+    },
+    {
+     "text": "Maren lied to us about her bells.",
+     "honest": false,
+     "why": "Maren reported what she hears, honestly. An honest report can still be mistaken. A lie needs the intention to make someone believe what you think is false."
+    }
+   ]
   }
  ],
  "missions": [
@@ -2560,6 +2637,50 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-H01",
+   "world": "WORLD-02",
+   "title": "The Endless Bell Stair",
+   "knowledgeQuestion": "When our senses and our instruments disagree, which should we trust?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "bells.o1.check",
+     "title": "Optional: listen to Maren's endless bell stair, then check it (the bell rope by the gatehouse).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.bell-stair.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty"
+      ],
+      "atl": [
+       "thinking",
+       "self-management"
+      ],
+      "subjects": [
+       "psychology",
+       "physics",
+       "music"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-KNO-05",
+      "SK-MED-04",
+      "SK-THK-14"
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -2874,6 +2995,30 @@
    "objective": "frame.o1.posters",
    "depth": 4,
    "text": "When all three are done, look at the three frames together. Which answer says who framed each one, and why?"
+  },
+  {
+   "id": "h.bells.1",
+   "objective": "bells.o1.check",
+   "depth": 1,
+   "text": "Ring the stair and listen. Then say honestly what you heard."
+  },
+  {
+   "id": "h.bells.2",
+   "objective": "bells.o1.check",
+   "depth": 2,
+   "text": "Move the tuning glass slider from step 0 to step 12. Watch the bars at both ends."
+  },
+  {
+   "id": "h.bells.3",
+   "objective": "bells.o1.check",
+   "depth": 3,
+   "text": "At the top, the high bars fade away. At the bottom, new low bars fade in."
+  },
+  {
+   "id": "h.bells.4",
+   "objective": "bells.o1.check",
+   "depth": 4,
+   "text": "Choose the answer that keeps both: what you heard, and what the glass showed."
   }
  ],
  "journal": [
@@ -2941,6 +3086,11 @@
    "id": "j.frame",
    "text": "The Painter's Frame: three true posters from one painting told three different stories. Ask who framed a picture, why, and what was outside the frame.",
    "claimKind": "interpretation"
+  },
+  {
+   "id": "j.bells",
+   "text": "The Endless Bell Stair: every step sounded higher, but after twelve steps the notes were the same. A measurement checked my hearing, and the illusion showed me how hearing works.",
+   "claimKind": "interpretation"
   }
  ],
  "criteria": [
@@ -3007,6 +3157,11 @@
   {
    "id": "crit.perspective.frame",
    "concept": "perspective",
+   "maximum": 5
+  },
+  {
+   "id": "crit.evidence.bells",
+   "concept": "evidence",
    "maximum": 5
   }
  ]
