@@ -31,3 +31,15 @@ describe('photo album caption check (spec 47.4)', () => {
     expect(d.s.journal).toContain('j.caption');
   });
 });
+
+describe('competency rings', () => {
+  it('each concept ring counts credited XP out of the chapter maximum', async () => {
+    const { conceptRings } = await import('../src/domain/permanent');
+    const d = new Driver();
+    const before = conceptRings(d.p, d.e.pack).find((r) => r.concept === 'evidence')!;
+    expect(before.got).toBe(0);
+    expect(before.max).toBeGreaterThan(0);
+    d.run({ type: 'PhotoCaptioned', right: 2, total: 2 });
+    expect(conceptRings(d.p, d.e.pack).find((r) => r.concept === 'evidence')!.got).toBe(3);
+  });
+});

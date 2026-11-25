@@ -455,3 +455,10 @@ button.link { background: none; border: none; color: var(--accent, #9fe8ff); tex
 .caption-lines li { display: flex; flex-direction: column; gap: 4px; padding: 8px 10px; border-radius: 6px; background: rgba(255,255,255,.05); }
 .caption-lines li.ok { border-left: 4px solid #4caf87; } .caption-lines li.miss { border-left: 4px solid #e0a040; }
 .album-caption { margin-top: 10px; padding: 10px; background: #fff8e6; color: #2a2238; border-radius: 4px; font-family: inherit; }
+
+/* Competency rings */
+.rings { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; margin: 8px 0; }
+.ring { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; }
+.ring figcaption { font-size: .85em; } .ring small { opacity: .75; }
+.ring.full svg { filter: drop-shadow(0 0 6px rgba(242,210,122,.8)); }
+.sr-list { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }

@@ -25,7 +25,7 @@ import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
 import type { Pronouns } from '../domain/types';
 import { ACTIONS, PRESETS, actionFor, assignKey, mappableKey, type Action } from '../app/keymap';
 import type { GameEvent, SimulationResult } from '../domain/engine';
-import { conceptXP, totalXP } from '../domain/permanent';
+import { conceptRings, conceptXP, totalXP } from '../domain/permanent';
 import { describeSection, layers, type ForgeAction } from '../domain/forge';
 import { labelText, type LabelResult } from '../domain/label';
 import { exampleFor, segmentText } from '../domain/glossary';
@@ -52,6 +52,20 @@ const CLAIM_TEXT: Record<ClaimKind, [string, string]> = {
 };
 const PEN_NAMES: Record<string, string> = { 'loud-model': 'Model of Loud design (coarse ball, thick ink)', 'biro-type': 'Bíró-type model (fine ball, thin ink)' };
 const SURFACES: Record<string, string> = { paper: 'Paper', leather: 'Rough leather', wood: 'Rough wood' };
+const RING_COLOURS: Record<string, string> = { evidence: '#e9cf7a', certainty: '#9fe8ff', truth: '#f6efd9', interpretation: '#c39bff', power: '#ff8a7a', justification: '#7fd3a8',
+  explanation: '#ffb35c', objectivity: '#8fb6ff', perspective: '#ff9fd0', culture: '#d9a066', values: '#b4e07a', responsibility: '#5fd0d0' };
+
+/** One competency ring: a circle that fills as the concept's XP grows. */
+function ringSvg(name: string, got: number, max: number, colour: string): HTMLElement {
+  const r = 26, len = 2 * Math.PI * r, f = max ? got / max : 0;
+  const el = h('figure', { class: `ring ${f >= 1 ? 'full' : ''}`, 'aria-label': `${name}: ${got} of ${max} XP in this chapter` });
+  el.innerHTML = `<svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true"><circle cx="32" cy="32" r="${r}" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="7"/>
+    ${f > 0 ? `<circle cx="32" cy="32" r="${r}" fill="none" stroke="${colour}" stroke-width="7" stroke-linecap="round" stroke-dasharray="${(len * f).toFixed(1)} ${len.toFixed(1)}" transform="rotate(-90 32 32)"/>` : ''}
+    <text x="32" y="36" text-anchor="middle" font-size="12" fill="currentColor">${got}</text></svg>`;
+  el.append(h('figcaption', {}, name, h('small', {}, ` ${got}/${max}`)));
+  return el;
+}
+
 function chip(text: string, title: string, cls: string): HTMLElement {
   return h('span', { class: `chip ${cls}`, title, 'aria-label': `${text}: ${title}` }, text);
 }
@@ -94,6 +108,7 @@ export class UI implements UIApi {
   private onStart: () => void;
   private pendingChapterEnd = false;
   private seenObjectives = new Set<string>();
+  private fullRings = new Set<string>();
   /** Things that wait until the open panel closes: events and reflection offers. */
   private queue: (() => void)[] = [];
   private activeEvent: string | null = null;
@@ -377,6 +392,8 @@ export class UI implements UIApi {
   }
 
   private startPlaying(returning: boolean): void {
+    const pc = ctx.controller;
+    this.fullRings = new Set(conceptRings(pc.permanent, pc.pack).filter((r) => r.got >= r.max).map((r) => r.concept));
     clear(this.root); this.root.append(this.toastBox);
     this.buildHud();
     this.seenObjectives = new Set(ctx.controller.engine.visibleObjectives(ctx.controller.state).map((o) => o.id));
@@ -486,7 +503,15 @@ export class UI implements UIApi {
           if (e.id === 'm02.o8.ise') this.pendingChapterEnd = true;
           break;
         case 'award': this.toast(`${e.award.kind === 'badge' ? 'Badge' : e.award.kind === 'skill-milestone' ? 'Skill milestone' : 'Concept award'}: ${e.award.name}. ${e.award.earnedBy}`, 'award'); this.sfx('sfx.award'); ctx.world?.lumenBurst(); break;
-        case 'xp': this.toast(`+${e.amount} concept XP (permanent)`, 'xp'); break;
+        case 'xp': {
+          this.toast(`+${e.amount} concept XP (permanent)`, 'xp');
+          // A ring closes: a small celebration, once per concept per session.
+          for (const r of conceptRings(c.permanent, c.pack)) if (r.got >= r.max && !this.fullRings.has(r.concept)) {
+            this.fullRings.add(r.concept);
+            this.toast(`The ${CONCEPT_NAMES[r.concept]} ring is complete!`, 'award'); this.sfx('sfx.award');
+          }
+          break;
+        }
         case 'checkpoint': this.toast(`Checkpoint saved: ${e.label}`, 'save'); break;
         case 'error': this.toast(e.message, 'error'); break;
         case 'moment': this.toast(`Learner profile moment: ${PROFILE_NAMES[e.moment.attribute]}. ${e.moment.did}`, 'moment'); break;
@@ -1541,7 +1566,9 @@ export class UI implements UIApi {
     } else if (tab === 'awards') {
       const xp = conceptXP(c.permanent, c.pack);
       body.append(h('p', {}, h('strong', {}, `Total concept XP: ${totalXP(c.permanent)}`), ' (permanent; it stays if you load an earlier checkpoint)'),
-        h('ul', { class: 'xp' }, ...Object.entries(xp).map(([k, v]) => h('li', {}, `${k[0].toUpperCase()}${k.slice(1)}: ${v}`))),
+        h('p', { class: 'fine' }, 'Each ring fills as you earn XP for that concept in this chapter. A full ring means you met every chance this chapter gives for it.'),
+        h('div', { class: 'rings' }, ...conceptRings(c.permanent, c.pack).sort((a, b) => Object.keys(CONCEPT_NAMES).indexOf(a.concept) - Object.keys(CONCEPT_NAMES).indexOf(b.concept)).map((r) => ringSvg(CONCEPT_NAMES[r.concept], r.got, r.max, RING_COLOURS[r.concept] ?? '#e9cf7a'))),
+        h('ul', { class: 'xp sr-list' }, ...Object.entries(xp).map(([k, v]) => h('li', {}, `${k[0].toUpperCase()}${k.slice(1)}: ${v}`))),
         h('h3', {}, 'Earned'),
         h('ul', { class: 'awards' }, ...c.pack.awards.filter((a) => c.permanent.awards[a.id]).map((a) => h('li', {}, h('strong', {}, `${a.name} `), h('small', {}, `(${a.kind.replace('-', ' ')})`), h('br', {}), a.earnedBy,
           a.title ? h('div', { class: 'row' }, s.flags['title.worn'] === a.title
