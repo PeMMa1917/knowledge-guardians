@@ -786,6 +786,11 @@ export class UI implements UIApi {
     const rec = c.pack.puzzles.find((x) => x.id === puzzleId);
     if (!rec) return;
     const F = `puzzle.${rec.id}`;
+    if (rec.needs && !c.state.inventory[rec.needs.item]) {
+      this.openModal('puzzle-panel', rec.title, this.closeBtn(), h('h2', {}, rec.title), h('p', {}, rec.needs.sealed),
+        h('div', { class: 'row' }, h('button', { 'data-autofocus': true, onclick: () => this.closeModal() }, 'Leave it for now')));
+      return;
+    }
     const box = this.openModal('puzzle-panel wide', rec.title);
     let feedback: { ok: boolean; text: string } | null = null;
     let placed: string[] = [];
@@ -821,9 +826,9 @@ export class UI implements UIApi {
         box.append(h('h3', {}, 'Pieces'), h('div', { class: 'row wrap tiles' },
           ...pool.filter((t) => !placed.includes(t.id)).map((t) => h('button', { type: 'button', onclick: () => { placed.push(t.id); gapAt = null; render(); } }, t.text))),
           h('div', { class: 'row' },
-            h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleOrder', puzzle: rec.id, order: [...placed] })) }, 'Test the bridge'),
+            h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleOrder', puzzle: rec.id, order: [...placed] })) }, rec.words ? 'Light the timeline' : 'Test the bridge'),
             h('button', { onclick: () => { placed = []; gapAt = null; feedback = null; render(); } }, 'Start again')));
-        if (done && feedback?.ok) box.append(h('p', { class: 'fair' }, 'The bridge holds.'));
+        if (done && feedback?.ok) box.append(h('p', { class: 'fair' }, rec.words ? 'The door is open.' : 'The bridge holds.'));
       }
     };
     render();
@@ -1431,7 +1436,8 @@ export class UI implements UIApi {
     if (!ctx.world || this.photoBar) return;
     const c = ctx.controller;
     const FILTERS: [string, string][] = [['none', 'No filter'], ['sepia', 'Archive print'], ['mono', 'Black and white'], ['print', 'Old photo'], ['warm', 'Warm film'], ['night', 'Night'], ['pinhole', 'Pinhole camera']];
-    const FRAMES: [string, string][] = [['none', 'No frame'], ['gold', 'Gold'], ['archive', 'Archive violet'], ['wood', 'Wood']];
+    const FRAMES: [string, string][] = [['none', 'No frame'], ['gold', 'Gold'], ['archive', 'Archive violet'], ['wood', 'Wood'],
+      ...(c.state.flags['puzzle.timeline-door.done'] === true ? [['timeline', 'Timeline brass (from the Timeline Door)'] as [string, string]] : [])];
     const o = { zoom: Math.round(ctx.world.photoZoom()), filter: 'none', lumen: true, pet: true, frame: 'gold', caption: true };
     let filters = true;
     const apply = () => { filters = ctx.world!.photoSet({ zoom: o.zoom, filter: o.filter, lumen: o.lumen, pet: o.pet }); };
@@ -1472,10 +1478,11 @@ export class UI implements UIApi {
       const cv = document.createElement('canvas');
       cv.width = img.width + pad * 2; cv.height = img.height + pad * 2 + capH;
       const g = cv.getContext('2d')!;
-      const FRAME: Record<string, [string, string]> = { gold: ['#c9a24a', '#f2d27a'], archive: ['#3a2b5e', '#7d5bc4'], wood: ['#5b3b22', '#8a6448'], none: ['#120f24', '#120f24'] };
+      const FRAME: Record<string, [string, string]> = { timeline: ['#6b4f19', '#e9cf7a'], gold: ['#c9a24a', '#f2d27a'], archive: ['#3a2b5e', '#7d5bc4'], wood: ['#5b3b22', '#8a6448'], none: ['#120f24', '#120f24'] };
       const [dark, light] = FRAME[o.frame] ?? FRAME.none;
       g.fillStyle = dark; g.fillRect(0, 0, cv.width, cv.height);
       if (pad) { g.fillStyle = light; g.fillRect(4, 4, cv.width - 8, 3); g.fillRect(4, 4, 3, cv.height - 8); }
+      if (o.frame === 'timeline') { g.fillStyle = light; for (let x = 24; x < cv.width - 12; x += 24) g.fillRect(x, 9, 2, x % 96 === 0 ? 7 : 4); }
       g.drawImage(img, pad, pad);
       if (o.caption) {
         const place = MAPS[c.state.mapId]?.name ?? '';

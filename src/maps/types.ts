@@ -24,6 +24,8 @@ export interface Interactable {
   flag?: string;              // for kind 'sign': set to true when read
   /** Procedural art key drawn at this spot (see BootScene.makeTextures). */
   art?: string;
+  /** Different art once a condition holds (for example an opened door). */
+  artOpen?: { key: string; if: import('../domain/types').Condition };
   visibleIf?: import('../domain/types').Condition;
 }
 

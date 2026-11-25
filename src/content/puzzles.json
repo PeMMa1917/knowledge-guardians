@@ -190,6 +190,103 @@
      "journal": "j.cite.done"
     }
    ]
+  },
+  {
+   "id": "timeline-door",
+   "type": "order",
+   "title": "The Timeline Door",
+   "intro": "A door of brass plates in the north wall. Its rule is cut above the handle: ONE TIMELINE, ONE KIND OF DATE. Light the timeline of dates when people were TOLD about something (a report, a publication, an announcement, a public showing), from earliest to latest. Leave out dates of other kinds.",
+   "needs": {
+    "item": "tool.date-lens",
+    "sealed": "The plates show dates, but no tags. You cannot tell what kind of date each one is. A Lens that shows date kinds would help. Come back when you have one."
+   },
+   "skills": [
+    "SK-MED-02",
+    "SK-RSC-07"
+   ],
+   "weave": {
+    "concepts": [
+     "evidence",
+     "certainty"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "history"
+    ],
+    "aoks": [
+     "HIS"
+    ]
+   },
+   "tiles": [
+    {
+     "id": "t.bisheng",
+     "text": "About 1088: Bi Sheng's movable type, in Shen Kuo's book [reported later]",
+     "role": "earliest telling (about 1088)"
+    },
+    {
+     "id": "t.wollstonecraft",
+     "text": "1792: A Vindication of the Rights of Woman [publication]",
+     "role": "1792 publication"
+    },
+    {
+     "id": "t.sikdar",
+     "text": "1856: the survey gives the height of Peak XV [announcement]",
+     "role": "1856 announcement"
+    },
+    {
+     "id": "t.santos",
+     "text": "1906: the 14-bis flies in Paris [public, witnessed flights]",
+     "role": "1906 public showing"
+    },
+    {
+     "id": "x.bisheng",
+     "text": "The 1040s: Bi Sheng makes movable type [the work itself]",
+     "role": "date of the work",
+     "why": "This is when the work was done. People were told about it later, in Shen Kuo's book."
+    },
+    {
+     "id": "x.sikdar",
+     "text": "About 1852: the Peak XV calculation [calculation]",
+     "role": "date of a calculation",
+     "why": "A calculation in an office is not yet a telling. The survey announced the height in 1856."
+    },
+    {
+     "id": "x.haytham",
+     "text": "1011 to 1021: the Book of Optics is written [writing]",
+     "role": "date of writing",
+     "why": "Writing makes the book. We have no separate date for when readers first had it."
+    },
+    {
+     "id": "x.biro",
+     "text": "1945 to 1948: one Biro pen [object made]",
+     "role": "date an object was made",
+     "why": "This dates the making of one pen, not a telling."
+    }
+   ],
+   "answer": [
+    "t.bisheng",
+    "t.wollstonecraft",
+    "t.sikdar",
+    "t.santos"
+   ],
+   "words": {
+    "stops": "The timeline lights {n} plates, then goes dark.",
+    "sags": "The timeline flickers",
+    "done": "The timeline is complete",
+    "notPart": "is not a date of telling."
+   },
+   "success": "Four plates glow in a line, oldest to newest. The brass door swings open onto a small reading niche. On its wall hangs a brass picture frame with tiny date marks: you can use it in Photo mode now. Lumen: 'One event can have a date of doing and a date of telling. Bi Sheng worked in the 1040s, and we know because someone told it in about 1088.'",
+   "onComplete": [
+    {
+     "credit": "crit.evidence.timeline"
+    },
+    {
+     "journal": "j.timeline"
+    }
+   ]
   }
  ],
  "missions": [
@@ -265,6 +362,45 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-G01",
+   "world": "WORLD-01",
+   "title": "The Timeline Door",
+   "knowledgeQuestion": "Does the date of an event tell us when people knew about it?",
+   "available": {
+    "item": "tool.date-lens"
+   },
+   "objectives": [
+    {
+     "id": "gate.o1.timeline",
+     "title": "Optional: open the Timeline Door in the north wall of the archive hall with your Date-Kind Lens.",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.timeline-door.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "history"
+      ],
+      "aoks": [
+       "HIS"
+      ]
+     },
+     "skills": [
+      "SK-MED-02"
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -315,6 +451,30 @@
    "objective": "words.o2.cite",
    "depth": 4,
    "text": "Okon, Sefa. / “Look at the Hand, Not the Shine.” / Songs of Aethelgard, / Emberford Guild Press, / 1203, / p. 14."
+  },
+  {
+   "id": "h.gate.1",
+   "objective": "gate.o1.timeline",
+   "depth": 1,
+   "text": "The door wants one kind of date only: dates when people were told."
+  },
+  {
+   "id": "h.gate.2",
+   "objective": "gate.o1.timeline",
+   "depth": 2,
+   "text": "Look at the tag on each plate. 'Writing', 'calculation' and 'object made' are dates of doing, not telling."
+  },
+  {
+   "id": "h.gate.3",
+   "objective": "gate.o1.timeline",
+   "depth": 3,
+   "text": "Bi Sheng has two plates. Which one is a telling?"
+  },
+  {
+   "id": "h.gate.4",
+   "objective": "gate.o1.timeline",
+   "depth": 4,
+   "text": "In order: about 1088 (report), 1792 (publication), 1856 (announcement), 1906 (public flights)."
   }
  ],
  "journal": [
@@ -327,6 +487,11 @@
    "id": "j.cite.done",
    "text": "The Citation Thread: author, title, container, publisher, date, page. A citation gives credit, lets a reader trace the source, and builds trust.",
    "claimKind": "interpretation"
+  },
+  {
+   "id": "j.timeline",
+   "text": "The Timeline Door: one event can have a date of doing and a date of telling. Put only dates of the same kind on one timeline.",
+   "claimKind": "interpretation"
   }
  ],
  "criteria": [
@@ -337,6 +502,11 @@
   },
   {
    "id": "crit.evidence.citation",
+   "concept": "evidence",
+   "maximum": 5
+  },
+  {
+   "id": "crit.evidence.timeline",
    "concept": "evidence",
    "maximum": 5
   }

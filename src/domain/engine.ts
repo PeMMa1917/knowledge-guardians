@@ -181,7 +181,9 @@ export class Engine {
 
   /** The first open, visible objective. Used by the guide and the recap. */
   currentObjective(s: CampaignState): (Objective & { mission: Mission }) | null {
-    return this.visibleObjectives(s).find((o) => !o.complete) ?? null;
+    // Main-story steps come first, so an optional side step never takes the tracker.
+    const open = this.visibleObjectives(s).filter((o) => !o.complete);
+    return open.find((o) => /-M\d+$/.test(o.mission.id)) ?? open[0] ?? null;
   }
 
   /** Which Fray creatures this command met (fixed rules on results, never on values). */
@@ -464,6 +466,7 @@ export class Engine {
         case 'PuzzleRound': case 'PuzzleOrder': {
           const rec = this.pack.puzzles.find((x) => x.id === cmd.puzzle);
           if (!rec) throw new Error('Unknown puzzle');
+          if (rec.needs && !s.inventory[rec.needs.item]) throw new Error(rec.needs.sealed);
           const F = `puzzle.${rec.id}`;
           const wasDone = s.flags[`${F}.done`] === true;
           let ok: boolean, text: string, solved: boolean, gapAt: number | null = null;

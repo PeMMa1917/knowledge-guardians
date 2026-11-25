@@ -258,6 +258,24 @@ DRAW['moth.0'] = [12, 8, (g) => moth(g, 0)];
 DRAW['moth.1'] = [12, 8, (g) => moth(g, 1)];
 DRAW['moth.big'] = [48, 32, (g) => moth(g, 0, 0, 0, 4)];
 
+// The Timeline Door (original art): brass plates in a stone frame; open, a warm reading niche.
+DRAW['timeline-door'] = [16, 24, (g) => {
+  R(g, '#2a2440', 0, 2, 16, 22); R(g, '#6e6a86', 1, 3, 14, 21); R(g, '#8a6a2a', 3, 5, 10, 19); R(g, '#c9a24a', 4, 6, 8, 17);
+  for (let i = 0; i < 4; i++) { R(g, '#e9cf7a', 5, 7 + i * 4, 6, 2); R(g, '#7a5a1a', 5, 9 + i * 4, 6, 1); }
+  R(g, '#3b2a1a', 11, 15, 1, 2); R(g, '#8c88a6', 2, 2, 12, 1);
+}];
+DRAW['timeline-door.open'] = [16, 24, (g) => {
+  // Frame, then a warm niche behind; the brass door has swung in against the left jamb.
+  R(g, '#2a2440', 0, 2, 16, 22); R(g, '#6e6a86', 1, 3, 14, 21); R(g, '#8c88a6', 2, 2, 12, 1);
+  R(g, '#5a3418', 3, 5, 10, 19); R(g, '#8a5226', 4, 6, 8, 17); R(g, '#c27a36', 6, 7, 5, 15);
+  R(g, '#ffd98a', 7, 8, 3, 3); R(g, '#fff3c4', 8, 9, 1, 1);           // lamp glow
+  R(g, '#3b2414', 4, 14, 8, 1);                                         // shelf
+  for (let i = 0; i < 4; i++) R(g, ['#7d5bc4', '#2f7d6d', '#b8483e', '#c9a24a'][i], 5 + i * 2, 12, 1, 2);
+  R(g, '#3b2414', 4, 19, 8, 1); R(g, '#e9cf7a', 6, 17, 3, 2);           // second shelf, the brass frame
+  R(g, '#8a6a2a', 3, 5, 2, 19); R(g, '#e9cf7a', 3, 7, 1, 2); R(g, '#e9cf7a', 3, 11, 1, 2); R(g, '#e9cf7a', 3, 15, 1, 2); R(g, '#e9cf7a', 3, 19, 1, 2);
+  R(g, '#f2d27a', 4, 23, 8, 1);                                         // light on the floor
+}];
+
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

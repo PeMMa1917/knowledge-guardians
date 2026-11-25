@@ -25,19 +25,20 @@ export function answerRound(p: PuzzleRecord, solvedRounds: number, round: number
 export function checkOrder(p: PuzzleRecord, order: string[]): OrderResult {
   if (p.type !== 'order') throw new Error('Not an order puzzle');
   const tiles = new Map(p.tiles.map((t) => [t.id, t]));
+  const w = p.words ?? { stops: 'The thread stops after {n} pieces. Visitors cannot cross.', sags: 'The thread sags', done: 'The citation is complete', notPart: 'is not part of the citation.' };
   for (let i = 0; i < p.answer.length; i++) {
     const got = order[i];
     const want = tiles.get(p.answer[i])!;
-    if (got === undefined) return { ok: false, gapAt: i, text: `The thread stops after ${i} pieces. Visitors cannot cross. Missing: the ${want.role}.` };
+    if (got === undefined) return { ok: false, gapAt: i, text: `${w.stops.replace('{n}', String(i))} Missing: the ${want.role}.` };
     if (got !== want.id) {
       const g = tiles.get(got);
-      if (g && !p.answer.includes(g.id)) return { ok: false, gapAt: i, text: `"${g.text}" is not part of the citation. ${g.why ?? ''} The thread sags here.`.trim() };
-      return { ok: false, gapAt: i, text: `The thread sags at piece ${i + 1}. Here the reader needs the ${want.role}, not the ${g?.role ?? 'piece you put'}.` };
+      if (g && !p.answer.includes(g.id)) return { ok: false, gapAt: i, text: `"${g.text}" ${w.notPart} ${g.why ?? ''} ${w.sags} here.`.trim() };
+      return { ok: false, gapAt: i, text: `${w.sags} at piece ${i + 1}. Here it needs the ${want.role}, not the ${g?.role ?? 'piece you put'}.` };
     }
   }
   if (order.length > p.answer.length) {
     const g = tiles.get(order[p.answer.length]);
-    return { ok: false, gapAt: p.answer.length, text: `The citation is complete before "${g?.text ?? ''}". ${g?.why ?? 'Leave it out.'}` };
+    return { ok: false, gapAt: p.answer.length, text: `${w.done} before "${g?.text ?? ''}". ${g?.why ?? 'Leave it out.'}` };
   }
   return { ok: true, gapAt: null, text: p.success };
 }

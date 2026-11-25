@@ -462,13 +462,17 @@ export type PuzzleRecord = {
   id: string;
   title: string;
   intro: string;
+  /** A knowledge-gated puzzle (spec 12.23): it opens only with this tool; until then it shows `sealed`. */
+  needs?: { item: string; sealed: string };
   /** Skill ids from the private skills inventory (paraphrased, e.g. "SK-GRM-05"). */
   skills: string[];
   onComplete?: Effect[];
   weave: Weave;
 } & (
   | { type: 'rounds'; rounds: { prompt: string; options: { text: string; ok: boolean; result: string }[] }[] }
-  | { type: 'order'; tiles: { id: string; text: string; role: string; why?: string }[]; answer: string[]; success: string }
+  | { type: 'order'; tiles: { id: string; text: string; role: string; why?: string }[]; answer: string[]; success: string;
+      /** Words for the feedback (default: a bridge thread). */
+      words?: { stops: string; sags: string; done: string; notPart: string } }
 );
 
 /**
