@@ -912,6 +912,75 @@ DRAW['nexus.print-layers'] = [38, 24, (g) => {
   R(g, '#866653', 33, 17);
 }];
 
+// Source slips either cross the gate inside the wallets or stay under the crate lid.
+function packSketches(g: Ctx, x: number, y: number, colour: string) {
+  for (const offset of [0, 2, 4]) R(g, colour, x, y + offset, 5, 1);
+}
+function packWallet(g: Ctx, x: number, colour: string, slipInside: boolean) {
+  R(g, colour, x, 8, 10, 11);
+  R(g, '#c98851', x + 1, 9, 8, 9);
+  packSketches(g, x + 2, 10, '#f3e1bc');
+  if (slipInside) R(g, '#f3785d', x + 2, 16, 5, 1);
+}
+function packCrate(g: Ctx, slipInside: boolean) {
+  R(g, '#563b34', 1, 3, 34, 18);
+  R(g, '#966951', 2, 4, 32, 15);
+  R(g, '#b58761', 2, 4, 32, 2);
+  R(g, '#6f493c', 2, 7, 32, 2);
+  packWallet(g, 5, '#684839', slipInside);
+  packWallet(g, 17, '#684839', slipInside);
+  if (!slipInside) {
+    R(g, '#a74537', 9, 5, 6, 2);
+    R(g, '#a74537', 18, 5, 6, 2);
+  }
+}
+function packTested(g: Ctx, slipInside: boolean) {
+  R(g, '#563b34', 1, 3, 18, 18);
+  R(g, '#966951', 2, 4, 16, 15);
+  R(g, '#b58761', 2, 4, 16, 2);
+  packWallet(g, 5, '#684839', slipInside);
+  packWallet(g, 23, '#684839', slipInside);
+  if (!slipInside) {
+    R(g, '#a74537', 4, 5, 5, 2);
+    R(g, '#a74537', 11, 5, 5, 2);
+  }
+}
+function packRouteTag(g: Ctx, slipInside: boolean) {
+  R(g, '#715447', 2, 4, 32, 15);
+  R(g, '#f0ddb1', 3, 5, 30, 13);
+  for (const x of [5, 16]) {
+    R(g, '#927153', x, 7, 9, 10);
+    R(g, '#f0ddb1', x + 1, 8, 7, 8);
+    packSketches(g, x + 2, 9, '#526467');
+    if (slipInside) R(g, '#ab4b3b', x + 2, 15, 5, 1);
+  }
+  if (!slipInside) {
+    R(g, '#ab4b3b', 27, 10, 4, 2);
+    R(g, '#ab4b3b', 27, 14, 4, 2);
+  }
+}
+DRAW['nexus.pack-prep'] = [36, 24, (g) => {
+  R(g, '#6a493b', 1, 4, 34, 17);
+  R(g, '#b98e62', 2, 5, 32, 13);
+  packSketches(g, 6, 8, '#f8e6c0');
+  packSketches(g, 16, 8, '#f8e6c0');
+  R(g, '#a74537', 25, 8, 6, 2);
+  R(g, '#a74537', 25, 12, 6, 2);
+}];
+DRAW['nexus.pack-kits'] = [36, 24, (g) => packCrate(g, true)];
+DRAW['nexus.pack-outer'] = [36, 24, (g) => packCrate(g, false)];
+DRAW['nexus.pack-tested-kits'] = [36, 24, (g) => packTested(g, true)];
+DRAW['nexus.pack-tested-outer'] = [36, 24, (g) => packTested(g, false)];
+DRAW['nexus.pack-kits-route'] = [36, 24, (g) => packRouteTag(g, true)];
+DRAW['nexus.pack-outer-route'] = [36, 24, (g) => packRouteTag(g, false)];
+DRAW['nexus.pack-tally'] = [36, 24, (g) => {
+  R(g, '#715447', 2, 4, 32, 15);
+  R(g, '#f0ddb1', 3, 5, 30, 13);
+  for (const x of [8, 11, 14, 17, 20, 23]) R(g, '#526467', x, 8, 1, 3);
+  R(g, '#ab4b3b', 8, 13, 2, 2);
+  R(g, '#ab4b3b', 12, 13, 2, 2);
+}];
+
 // Living Forest equipment and a schematic field note.
 DRAW['forest.waypost'] = [16, 24, (g) => {
   R(g, '#574235', 7, 7, 3, 16);
@@ -1556,3 +1625,27 @@ export const BIG_ART: Record<string, string> = {
   'plaque.earth': 'big.earth', 'plaque.optics': 'big.optics', 'plaque.type': 'big.type', 'plaque.peak': 'big.peak',
   'plaque.flight': 'big.flight', 'plaque.vote': 'big.vote', 'plaque.book': 'big.book',
 };
+
+/** Schematic icons for the original-copy viewer in the Nexus. */
+for (const view of ['sheet', 'detail'] as const) {
+  for (const fixed of [false, true]) {
+    DRAW[`nexus.viewer-${fixed ? 'fixed-' : ''}${view}`] = [23, 23, (g) => {
+      g.fillStyle = '#40344a'; g.fillRect(2, 6, 19, 15);
+      g.fillStyle = '#d6b67c'; g.fillRect(4, 5, 15, 14);
+      g.fillStyle = '#f3dba3'; g.fillRect(5, 6, 13, 12);
+      g.fillStyle = '#625069';
+      if (view === 'sheet') {
+        g.fillRect(7, 8, 7, 1); g.fillRect(7, 15, 8, 1);
+        g.fillRect(10, 10, 2, 3);
+        g.fillStyle = '#79554e'; g.fillRect(10, 13, 2, 2);
+        if (fixed) { g.strokeStyle = '#557c83'; g.lineWidth = 1; g.strokeRect(8.5, 9.5, 5, 6); }
+      } else {
+        g.fillRect(7, 7, 2, 7); g.fillRect(15, 7, 2, 7);
+        g.fillStyle = '#79554e';
+        g.beginPath(); g.arc(12, 14, 3.5, 0, Math.PI * 2); g.fill();
+        if (fixed) { g.fillStyle = '#6d9ca2'; g.fillRect(16, 15, 6, 4); }
+      }
+      g.fillStyle = '#728889'; g.fillRect(2, 10, 2, 4);
+    }];
+  }
+}

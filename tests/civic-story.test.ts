@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { CIVIC_ARRIVAL_TRAYS, civicReceivingArrangements, civicReceivingLoad } from '../src/domain/civicArrivals';
 import { check } from '../src/domain/rules';
 import { MAPS } from '../src/maps';
 import { Driver } from './driver';
@@ -32,6 +33,12 @@ function read(d: Driver, id: string): void {
 function visible(d: Driver, id: string): boolean {
   const prop = MAPS[d.s.mapId].interactables.find((item) => item.id === id);
   return !!prop && check(prop.visibleIf, d.s);
+}
+
+function scene(d: Driver, id: string, ...choices: string[]): void {
+  const item = MAPS[d.s.mapId].interactables.find((p) => p.kind === 'scene' && p.id === id);
+  if (!item?.node || !check(item.visibleIf, d.s)) throw new Error(`Cannot use ${id} here`);
+  d.walk(item.node, choices);
 }
 
 describe('A Place on the Route', () => {
@@ -114,5 +121,56 @@ describe('A Place on the Route', () => {
     d.talk('civic-clerk', 'I kept a separate waiting tally', revisions.walk);
     expect(d.s.flags['civic.revised']).toBe(true);
     expect(d.s.flags['civic.response']).toBe('even');
+  });
+});
+
+describe('Three Loads, Four Marks', () => {
+  it('counts each ordered arrival and distinguishes open marks from waiting loads', () => {
+    expect(civicReceivingLoad(CIVIC_ARRIVAL_TRAYS.red)).toEqual({ waiting: 1, free: 2 });
+    expect(civicReceivingLoad(CIVIC_ARRIVAL_TRAYS.blue)).toEqual({ waiting: 0, free: 1 });
+    const marks = [1, 2, 3, 4] as const;
+    const trays = marks.flatMap((a) => marks.flatMap((b) => marks.map((c) => [a, b, c] as const)));
+    const separate = trays.filter((tray) => civicReceivingLoad(tray).waiting === 0).length;
+    expect(civicReceivingArrangements()).toEqual({ all: trays.length, separate, shared: trays.length - separate });
+    expect(civicReceivingArrangements()).toEqual({ all: 64, separate: 24, shared: 40 });
+  });
+
+  it.each([
+    { layout: 'buffer', choice: 'Ask a helper', first: 'red', second: 'blue', path: 'civic-canal-path' },
+    { layout: 'stagger', choice: 'Give the three couriers', first: 'blue', second: 'red', path: 'civic-steps-path' },
+  ])('keeps a $layout practice run separate from the published route', ({ layout, choice, first, second, path }) => {
+    const d = new Driver();
+    d.s.objectivesDone.push('water.finish');
+    visit(d, 'civic-door');
+    expect(visible(d, 'civic-overlap-rack')).toBe(false);
+    expect(visible(d, 'civic-overlap-plan')).toBe(false);
+    scene(d, `civic-overlap-${first}`, 'Leave the clips');
+    expect(visible(d, `civic-overlap-${first}`)).toBe(true);
+    scene(d, `civic-overlap-${first}`, 'Unclip the three slips');
+    expect(visible(d, `civic-overlap-${first}-loaded`)).toBe(true);
+    expect(visible(d, `civic-overlap-${first}`)).toBe(false);
+    expect(visible(d, 'civic-overlap-rack')).toBe(false);
+    scene(d, `civic-overlap-${second}`, 'Unclip the three slips');
+    expect(d.done('civic.overlap.trays')).toBe(true);
+    scene(d, 'civic-overlap-rack', 'Start filling the rack', 'Leave the rows');
+    expect(visible(d, 'civic-overlap-count')).toBe(false);
+    scene(d, 'civic-overlap-rack', 'Start filling the rack', 'Group the remaining rows');
+    expect(visible(d, 'civic-overlap-count')).toBe(true);
+    expect(visible(d, 'civic-overlap-plan')).toBe(false);
+    visit(d, 'civic-canal-path');
+    read(d, 'civic-overlap-local');
+    expect(d.done('civic.overlap.evidence')).toBe(true);
+    visit(d, 'civic-canal-return');
+    scene(d, 'civic-overlap-plan', choice);
+    expect(visible(d, 'civic-overlap-plan')).toBe(false);
+    expect(d.done('civic.overlap.finish')).toBe(false);
+    visit(d, path);
+    expect(visible(d, `civic-overlap-${layout}`)).toBe(true);
+    read(d, `civic-overlap-${layout}`);
+    expect(d.done('civic.overlap.finish')).toBe(true);
+    expect(d.s.flags['civic.overlap.layout']).toBe(layout);
+    expect(d.done('civic.publish')).toBe(false);
+    expect(d.done('civic.finish')).toBe(false);
+    expect(d.p.credit['credit.civic.finish']).toBeUndefined();
   });
 });

@@ -10,6 +10,7 @@ import { CIVIC_RULES, CIVIC_SAMPLES, civicAllocation, type CivicRule, type Civic
 import { VOICE_SOURCES, VOICE_VIEWS, voiceReading, type VoiceView } from '../domain/voiceReadings';
 import { ISLAND_CRATES, ISLAND_LANDINGS, ISLAND_ROUTES, islandPlan, type IslandLanding, type IslandRoute } from '../domain/islandPlan';
 import { COUNCIL_TRIALS, councilClock, type CouncilTrial } from '../domain/councilClock';
+import { buildScoutBoard } from './scoutRoutes';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -3236,6 +3237,11 @@ export class UI implements UIApi {
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
+  openScoutTable(): void {
+    this.openModal('scout-table wide', 'Scout’s turn board', this.closeBtn(),
+      h('h2', {}, 'Scout’s turn board'), buildScoutBoard(ctx.controller));
   }
 
   openCouncilClock(): void {

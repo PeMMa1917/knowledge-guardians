@@ -389,6 +389,151 @@
    "speaker": "civic-clerk",
    "text": "Both districts get two. The notice puts the equal split alongside the two different counts so a reader can see the rule did the sharing. Lin leaves a clip under the notice for the next reader.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "civic-overlap-red",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "Three sealed load slips are clipped to the red tray. Each slip gives one courier’s practice arrival. This desk can take one load at each numbered mark.",
+   "options": [
+    {
+     "text": "Unclip the three slips and place their loads.",
+     "next": "civic.overlap.red.opened",
+     "effects": [
+      {
+       "setFlag": "civic.overlap.red",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the clips in place."
+    }
+   ]
+  },
+  {
+   "id": "civic-overlap-blue",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "Three sealed load slips are clipped to the blue tray. Each slip gives one courier’s practice arrival. This desk can take one load at each numbered mark.",
+   "options": [
+    {
+     "text": "Unclip the three slips and place their loads.",
+     "next": "civic.overlap.blue.opened",
+     "effects": [
+      {
+       "setFlag": "civic.overlap.blue",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the clips in place."
+    }
+   ]
+  },
+  {
+   "id": "civic.overlap.red.opened",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "Two loads land on the first mark. Leave one beside the desk to wait. The fourth mark takes the last load. Two marks remain empty. The cart has three loads and four places in the shift, but one place is needed twice.",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "civic.overlap.blue.opened",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "The first, second and fourth marks each take one load. The third stays empty. All three couriers clear the desk as they arrive.",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "civic-overlap-rack",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "The two trays show different outcomes. This rack holds every ordered arrival for three named couriers. Each courier gets the same four slips to draw from, and you put the slip back before the next draw.",
+   "options": [
+    {
+     "text": "Start filling the rack with rows that keep all three loads apart.",
+     "next": "civic.overlap.rack.fill"
+    },
+    {
+     "text": "Leave the rack empty."
+    }
+   ]
+  },
+  {
+   "id": "civic.overlap.rack.fill",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "The first courier gets four choices. Slide their used mark out of the row. Three choices remain for the second courier and two for the third. With the marks all back in play, each of the three can choose any of the four.",
+   "claimKind": "simulation",
+   "options": [
+    {
+     "text": "Group the remaining rows where two or more loads share a mark.",
+     "next": "civic.overlap.rack.filled",
+     "effects": [
+      {
+       "setFlag": "civic.overlap.counted",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the rows ready."
+    }
+   ]
+  },
+  {
+   "id": "civic.overlap.rack.filled",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "The shared-mark rows fill more than half the rack. If every ordered row has the same chance, exactly five out of eight have a match. This counts matching arrivals in the model. The crew’s bell slip can tell us whether their shifts let the arrivals spread evenly.",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "civic-overlap-plan",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "The two trays tested what this desk does to known arrivals. The rack counts matches when the marks are equally likely and each draw is independent. The bell slip ties real couriers to the same release. Try a receiving arrangement for one practice shift.",
+   "options": [
+    {
+     "text": "Ask a helper to take a second load beside the busy mark.",
+     "next": "civic.overlap.buffer",
+     "effects": [
+      {
+       "setFlag": "civic.overlap.layout",
+       "value": "buffer"
+      }
+     ]
+    },
+    {
+     "text": "Give the three couriers separate marks and keep one spare.",
+     "next": "civic.overlap.stagger",
+     "effects": [
+      {
+       "setFlag": "civic.overlap.layout",
+       "value": "stagger"
+      }
+     ]
+    },
+    {
+     "text": "Leave the arrangement open for now."
+    }
+   ]
+  },
+  {
+   "id": "civic.overlap.buffer",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "A helper takes a spare crate bracket to Canal Walk. If three loads reach that mark together, someone still has to wait. The first practice tray stays in the hall to compare.",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "civic.overlap.stagger",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "The North Steps clerk pins three separate marks to the practice stand. The counts guarantee room if the assigned marks hold. A spare mark gives someone with a changed shift a place to try.",
+   "claimKind": "simulation"
   }
  ],
  "missions": [
@@ -815,6 +960,135 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH12-R02",
+   "world": "WORLD-13",
+   "title": "Three Loads, Four Marks",
+   "knowledgeQuestion": "When can a chance model guide a receiving plan, and where do arrivals need to be observed?",
+   "available": {
+    "objective": "civic.arrival"
+   },
+   "objectives": [
+    {
+     "id": "civic.overlap.trays",
+     "title": "Load both sealed practice trays at dispatch.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "civic.overlap.red",
+        "eq": true
+       },
+       {
+        "flag": "civic.overlap.blue",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "explanation",
+       "certainty"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "MAT",
+       "TEC"
+      ],
+      "subjects": [
+       "math-ai",
+       "design-tech"
+      ]
+     }
+    },
+    {
+     "id": "civic.overlap.evidence",
+     "title": "Group the possible arrivals and check the crew’s release time.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "civic.overlap.counted",
+        "eq": true
+       },
+       {
+        "flag": "civic.overlap.local",
+        "eq": true
+       }
+      ]
+     },
+     "visible": {
+      "objective": "civic.overlap.trays"
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "perspective",
+       "justification",
+       "interpretation"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "MAT",
+       "HUM"
+      ],
+      "subjects": [
+       "math-aa",
+       "math-ai",
+       "geography"
+      ]
+     },
+     "skills": [
+      "SK-THK-05",
+      "SK-RSC-21"
+     ]
+    },
+    {
+     "id": "civic.overlap.finish",
+     "title": "Try a receiving arrangement and visit the installed practice setup.",
+     "essential": false,
+     "done": {
+      "flag": "civic.overlap.seen",
+      "eq": true
+     },
+     "visible": {
+      "objective": "civic.overlap.evidence"
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "justification",
+       "certainty"
+      ],
+      "atl": [
+       "social",
+       "thinking"
+      ],
+      "aoks": [
+       "MAT",
+       "HUM"
+      ],
+      "subjects": [
+       "math-ai",
+       "design-tech"
+      ]
+     },
+     "onComplete": [
+      {
+       "journal": "j.civic.overlap"
+      }
+     ]
+    }
+   ]
   }
  ],
  "criteria": [
@@ -834,6 +1108,11 @@
    "id": "j.civic.reply",
    "claimKind": "interpretation",
    "text": "Changing the recorded requests changed the route under the same rule. We kept the first window counts beside the rule and asked where and when readers can reach the stops."
+  },
+  {
+   "id": "j.civic.overlap",
+   "claimKind": "interpretation",
+   "text": "In the equal, independent draw model, 40 of 64 ordered arrivals shared a mark. The fixed trays showed whether three known loads fit. The crew’s shared release time changed what it was reasonable to assume about actual arrival times."
   }
  ],
  "moments": [
@@ -1075,6 +1354,78 @@
    "objective": "civic.access",
    "depth": 4,
    "text": "Look for the larger notice by the bench after you commission it."
+  },
+  {
+   "id": "h.civic.overlap.trays.1",
+   "objective": "civic.overlap.trays",
+   "depth": 1,
+   "text": "Two sealed trays wait at Library Dispatch."
+  },
+  {
+   "id": "h.civic.overlap.trays.2",
+   "objective": "civic.overlap.trays",
+   "depth": 2,
+   "text": "One tray is near the west passage. The other is near the cart beside the east passage."
+  },
+  {
+   "id": "h.civic.overlap.trays.3",
+   "objective": "civic.overlap.trays",
+   "depth": 3,
+   "text": "Unclip the slips and place the three loads on each tray."
+  },
+  {
+   "id": "h.civic.overlap.trays.4",
+   "objective": "civic.overlap.trays",
+   "depth": 4,
+   "text": "Use the red tray, then the blue tray. Compare loads waiting with empty marks."
+  },
+  {
+   "id": "h.civic.overlap.evidence.1",
+   "objective": "civic.overlap.evidence",
+   "depth": 1,
+   "text": "Check the counting rack and find out when the couriers can leave work."
+  },
+  {
+   "id": "h.civic.overlap.evidence.2",
+   "objective": "civic.overlap.evidence",
+   "depth": 2,
+   "text": "The four-mark rack is in Dispatch. The crew’s slip is at the Canal Walk bench."
+  },
+  {
+   "id": "h.civic.overlap.evidence.3",
+   "objective": "civic.overlap.evidence",
+   "depth": 3,
+   "text": "Make the separate rows in the rack, then group the rows that share an arrival mark."
+  },
+  {
+   "id": "h.civic.overlap.evidence.4",
+   "objective": "civic.overlap.evidence",
+   "depth": 4,
+   "text": "Fill both sets of rows at the rack. Read the end-of-shift slip at Canal Walk."
+  },
+  {
+   "id": "h.civic.overlap.finish.1",
+   "objective": "civic.overlap.finish",
+   "depth": 1,
+   "text": "The practice dispatch board has room for one receiving arrangement."
+  },
+  {
+   "id": "h.civic.overlap.finish.2",
+   "objective": "civic.overlap.finish",
+   "depth": 2,
+   "text": "Use the board near the east side of Library Dispatch."
+  },
+  {
+   "id": "h.civic.overlap.finish.3",
+   "objective": "civic.overlap.finish",
+   "depth": 3,
+   "text": "A helper can take a second load at one mark. Separate reservations need times people can actually use."
+  },
+  {
+   "id": "h.civic.overlap.finish.4",
+   "objective": "civic.overlap.finish",
+   "depth": 4,
+   "text": "Choose a setup. The helper goes to Canal Walk, or the staggered board goes to North Steps. Read the selected setup when you arrive."
   }
  ]
 }

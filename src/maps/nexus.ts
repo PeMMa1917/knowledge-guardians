@@ -24,6 +24,14 @@ const ribbonSingle: Condition = { flag: 'nexus.ribbon.layout', eq: 'single' };
 const ribbonSplit: Condition = { flag: 'nexus.ribbon.layout', eq: 'split' };
 const ribbonRead: Condition = { flag: 'nexus.ribbon.read', eq: true };
 const printUnsent: Condition = { not: { flagSet: 'nexus.print.edition' } };
+const packWaiting: Condition = { not: { flagSet: 'nexus.pack.tag' } };
+const packTried: Condition = { flag: 'nexus.pack.tried', eq: true };
+const packSent: Condition = { flagSet: 'nexus.pack.sent' };
+const packLayouts = ['kits', 'outer'] as const;
+const packReaders = ['route', 'tally'] as const;
+const viewerPatent: Condition = { flag: 'inspected.OBJ-001-A', eq: true };
+const viewerUnposted: Condition = { not: { flagSet: 'nexus.viewer.response' } };
+const viewerFinished: Condition = { flag: 'nexus.viewer.done', eq: true };
 
 const printStages: [stage: string, label: string, visible: Condition][] = [
   ['setup', 'the two ferry-print proofs', { not: { flagSet: 'nexus.print.fit' } }],
@@ -115,6 +123,28 @@ export const NEXUS: MapDef = {
     { id: 'translator-lio', x: 24, y: 13, facing: 'right', visibleIf: { origin: 'traveller' } },
   ],
   interactables: [
+    { id: 'nexus-viewer-wait', kind: 'scene', x: 9, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the hinged drawing reader beside the patent', art: 'nexus.viewer-sheet', node: 'nexus.viewer.wait',
+      visibleIf: { not: viewerPatent } },
+    { id: 'nexus-viewer-start', kind: 'scene', x: 9, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the hinged drawing reader beside the patent', art: 'nexus.viewer-sheet', node: 'nexus.viewer.start',
+      visibleIf: { all: [viewerPatent, viewerUnposted, { not: { flagSet: 'nexus.viewer.view' } }] } },
+    ...(['detail', 'sheet'] as const).map((view) => ({
+      id: `nexus-viewer-preview-${view}`, kind: 'scene' as const, x: 9, y: 8, w: 1, h: 1, walkThrough: true,
+      label: `the ${view === 'detail' ? 'close view' : 'full sheet'} on the drawing reader`, art: `nexus.viewer-${view}`,
+      node: `nexus.viewer.${view}-view`, visibleIf: { all: [viewerUnposted, { flag: 'nexus.viewer.view', eq: view }] },
+    })),
+    ...(['detail', 'sheet'] as const).flatMap((view) => {
+      const position = { x: view === 'detail' ? 7 : 10, y: 9, w: 1, h: 1, walkThrough: true, kind: 'scene' as const };
+      const response: Condition = { flag: 'nexus.viewer.response', eq: view };
+      const label = view === 'detail' ? 'the cutaway by the repair queue' : 'the copy at the records counter';
+      return [
+        { ...position, id: `nexus-viewer-${view}`, label, art: `nexus.viewer-${view}`, node: `nexus.viewer.read-${view}`,
+          visibleIf: { all: [response, { not: viewerFinished }] } },
+        { ...position, id: `nexus-viewer-fixed-${view}`, label, art: `nexus.viewer-fixed-${view}`, node: `nexus.viewer.seen-${view}`,
+          visibleIf: { all: [response, viewerFinished] } },
+      ];
+    }),
     { id: 'nexus-arrival-view', kind: 'scene', x: 14, y: 18, w: 1, h: 1, walkThrough: true,
       label: 'the open notebook on the reading bench', art: 'ledger', node: 'cold.arrival-view',
       visibleIf: { flag: 'nexus.arrival.note', eq: 'view' } },
@@ -268,6 +298,36 @@ export const NEXUS: MapDef = {
       visibleIf: { all: [{ flag: 'nile.dispatch', eq: route }, { flag: 'nile.returned', eq: true }] } })),
 
     { id: 'secret-misfiled', kind: 'secret', secret: 'misfiled', x: 22, y: 3, w: 1, h: 1, label: 'a gap behind the bookshelf' },
+    { id: 'nexus-pack-prep', kind: 'scene', x: 4, y: 6, w: 1, h: 1, walkThrough: true,
+      label: 'the packing table with six sketches and two source slips', art: 'nexus.pack-prep', node: 'nexus.pack.prep',
+      visibleIf: { all: [packWaiting, { any: [{ not: { flagSet: 'nexus.pack.layout' } }, { flag: 'nexus.pack.layout', eq: 'open' }] }] } },
+    ...packLayouts.flatMap((layout) => {
+      const arranged: Condition = { flag: 'nexus.pack.layout', eq: layout };
+      const label = layout === 'kits' ? 'the crate with a source slip inside each wallet'
+        : 'the crate with both source slips under the outer lid';
+      const rack = { kind: 'scene' as const, x: 6, y: 6, w: 1, h: 1, walkThrough: true, art: `nexus.pack-${layout}` };
+      return [
+        { ...rack, id: `nexus-pack-${layout}`, label, node: 'nexus.pack.trial',
+          visibleIf: { all: [packWaiting, arranged, { not: packTried }] } },
+        { ...rack, id: `nexus-pack-ready-${layout}`, label: 'the opened trial wallet beside the dispatch crate',
+          art: `nexus.pack-tested-${layout}`, node: 'nexus.pack.ready',
+          visibleIf: { all: [packWaiting, arranged, packTried] } },
+      ];
+    }),
+    ...packReaders.map((reader) => ({
+      id: `nexus-pack-dock-${reader}`, kind: 'scene' as const, x: 8, y: 5, w: 1, h: 1, walkThrough: true,
+      label: reader === 'route' ? 'the runner’s tag with the wallet groups' : 'the clerk’s tag with two tally lines',
+      art: reader === 'route' ? 'nexus.pack-kits-route' : 'nexus.pack-tally',
+      artBy: reader === 'route' ? { flag: 'nexus.pack.layout', keys: { outer: 'nexus.pack-outer-route' } } : undefined,
+      node: `nexus.pack.dock-${reader}`,
+      visibleIf: { all: [{ flag: 'nexus.pack.tag', eq: reader }, { not: packSent }] },
+    })),
+    ...packLayouts.flatMap((layout) => packReaders.map((reader) => ({
+      id: `nexus-pack-${layout}-${reader}`, kind: 'scene' as const, x: 8, y: 5, w: 1, h: 1, walkThrough: true,
+      label: reader === 'route' ? 'the runner’s checked group tag' : 'the clerk’s checked tally',
+      art: reader === 'route' ? `nexus.pack-${layout}-route` : 'nexus.pack-tally',
+      node: `nexus.pack.${layout}-${reader}`, visibleIf: { flag: 'nexus.pack.sent', eq: `${layout}-${reader}` },
+    }))),
     ...printStages.map(([stage, label, visibleIf]) => ({
       id: `nexus-print-${stage}`, kind: 'scene' as const, x: 5, y: 11, w: 1, h: 1, walkThrough: true,
       label, art: `nexus.print-${stage}`, node: `nexus.print.${stage}`, visibleIf,

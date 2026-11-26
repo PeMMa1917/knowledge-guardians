@@ -32,6 +32,21 @@ const gapReady: Condition = { objective: 'forest.finish' };
 const gapFormat = (format: string): Condition => ({ flag: 'forest.gap.format', eq: format });
 const gapEdit = (format: string, edition: string): Condition =>
   ({ all: [gapFormat(format), { flag: `forest.gap.${format}`, eq: edition }] });
+const mossFrame: Condition = { flag: 'forest.moss.frame', eq: true };
+const mossMark: Condition = { flag: 'forest.moss.result', eq: 'mark' };
+const mossRibbon: Condition = { flag: 'forest.moss.result', eq: 'ribbon' };
+const mossReadings = 'Green touched five squares at the shaded creek bank and one at the shaded bridge edge. '
+  + 'In the open, green touched two at the ridge edge and four below the path. '
+  + 'The day before, the crew saw five boot contacts at the shaded edge and six at the open edge in one round. '
+  + 'They saw none at the off-path pegs. Keep the pegs in place for another reading.';
+
+function mossPeg(site: string, x: number, y: number, label: string): Interactable {
+  const key = `forest.moss.${site}`;
+  return {
+    ...guideScene(`forest-moss-${site}`, x, y, label, 'forest.waypost', key, mossFrame),
+    artOpen: { key: 'preserved.slip', if: { flagSet: key } },
+  };
+}
 
 export const FOREST_STATION: MapDef = {
   id: 'forest.station', name: 'Living Forest: Fern Station', world: 'WORLD-06',
@@ -61,6 +76,10 @@ export const FOREST_STATION: MapDef = {
       { flag: 'forest.gombe.credited', eq: true }),
     note('forest-trail-directory', 10, 11, 'the station directory', 'forest.notice',
       'Fern Station. West for the listening trail. East for the bridge clearing. The two cases carry field records from Gombe. The local trail is a Guardian field exercise.'),
+    guideScene('forest-moss-frame', 9, 8, 'Elian’s six-square frame', 'forest.field-diagram', 'forest.moss.loan',
+      { flag: 'forest.arrived', eq: true }),
+    note('forest-moss-station-sheet', 17, 12, 'the frame sheet and the bridge crew’s tally', 'preserved.display-paired',
+      mossReadings, mossRibbon),
     { ...guideScene('forest-gap-clear', 8, 12, 'the ridge return register', 'preserved.folder', 'forest.gap.register.clear', gapReady),
       artOpen: { key: 'preserved.catalogue', if: { flag: 'forest.gap.clear', eq: true } } },
     { ...guideScene('forest-gap-blocked', 20, 12, 'the creek return register', 'preserved.folder', 'forest.gap.register.blocked', gapReady),
@@ -138,6 +157,18 @@ export const FOREST_TRAIL: MapDef = {
       'The marker asks walkers to leave a gap at the screen. A second opening still leads to the bridge from the north.', quiet),
     note('forest-bridge-copy', 19, 7, 'the bridge’s observation cards', 'preserved.folder',
       'Two cards mark where the watchers sat and when their watches ended. The cards leave a space for the next observer’s record.', brief),
+    mossPeg('creek-away', 8, 8, 'the shaded creek-bank peg'),
+    mossPeg('bridge-edge', 18, 5, 'the shaded bridge-edge peg'),
+    mossPeg('ridge-edge', 25, 7, 'the open ridge-edge peg'),
+    mossPeg('ridge-away', 25, 11, 'the open patch below the ridge'),
+    note('forest-moss-mark-bridge', 19, 5, 'the tie by the shaded bridge-edge frame', 'preserved.slip',
+      'A tie points to the corner where the notch sits. The lower right square held green in the first survey. Leave room to set the same frame here again.', mossMark),
+    note('forest-moss-mark-ridge', 26, 7, 'the tie by the open ridge-edge frame', 'preserved.slip',
+      'A tie marks this frame corner. The top right and lower middle held green in the first survey. The full sheet is low at the clearing.', mossMark),
+    note('forest-moss-ribbon-west', 5, 13, 'the ribbon at the west trail entrance', 'forest.notice',
+      'Use the laid stones where you can so the next crew can see the same ground. Both crossings are open. The full sheet is at Fern Station.', mossRibbon),
+    note('forest-moss-ribbon-east', 28, 11, 'the ribbon at the east trail entrance', 'forest.notice',
+      'Please leave the four pegged patches undisturbed on your way across. Use the laid stones where you can. The next crew’s full sheet is at Fern Station.', mossRibbon),
   ],
   lights: [
     { x: 11, y: 9, r: 64, color: 0xb5dfb7 }, { x: 24, y: 6, r: 73, color: 0xffdb9b },
@@ -163,6 +194,13 @@ export const FOREST_COMMUNITY: MapDef = {
     door('forest-bridge-to-trail', 22, 11, 'the path back to the ridge', { map: 'forest.trail', x: 28, y: 12 }),
     { ...note('forest-pathbook', 6, 9, 'the bridge keeper’s route book', 'preserved.folder',
       'On early rounds the lamp crew hears wings behind the creek reeds. Bridge keepers on later shifts hear them along the ridge. These entries record the sounds people heard.'), flag: 'forest.pathbook' },
+    guideScene('forest-moss-boot-log', 5, 10, 'the bridge crew’s boot tally', 'preserved.catalogue', 'forest.moss.log', mossFrame),
+    { ...guideScene('forest-moss-table', 14, 9, 'the stand with the old shade notice', 'preserved.folder', 'forest.moss.table',
+      { all: [mossFrame, { not: { flagSet: 'forest.moss.result' } }] }),
+      artBy: { flag: 'forest.moss.top', keys: { shade: 'preserved.display-paired', open: 'preserved.display-records' } } },
+    note('forest-moss-low-sheet', 14, 9, 'the full frame sheet at the low stand', 'preserved.display-paired', mossReadings, mossMark),
+    note('forest-moss-revised-notice', 14, 9, 'the clearing’s trail note', 'forest.notice',
+      'The old shade notice is in the folder. On this trail, we found more squares with green away from the path in both pairs. The next crew will check the pegs again. Find the full sheet at Fern Station.', mossRibbon),
     note('forest-response-quiet', 8, 10, 'the quiet-route notice', 'forest.notice',
       'The quiet-screen note points larger groups to the open ridge path. It keeps the creek counts beside a sketch of the stretch of water visible from the screen.', quiet),
     note('forest-response-brief', 16, 8, 'the public observation board', 'preserved.display-paired',

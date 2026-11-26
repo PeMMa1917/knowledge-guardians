@@ -59,6 +59,17 @@ The additional teaching plans, slides and discussion guides inform how character
 
 For political and technological questions, give players an identifiable decision-maker, a route by which a claim or rule travels, and somebody who cannot use the result as written. For history and the arts, give records and performances distinct purposes. A recorded date, a remembered experience and a staged cue can all matter to an investigation for different reasons. Avoid giving them one common test of reliability.
 
+## Version 3 examples
+
+| Game action | What changes when players use it |
+|---|---|
+| The Packing Table | Two packing orders leave the total unchanged. Once the wallets separate, a runner has different access to the source slips. The depot clerk needs a different view of the same contents. |
+| The Hinged Reader | The close view makes the patent’s marking point visible. The whole page keeps the patent’s grant reference in view. The next reader can ask for a way to check both. |
+| The Scout’s Second Road | The same blocked-road report leads to different conditional counts under different scout instructions. The published advice can name the protocol or direct travellers to get confirmation. |
+| The Nile Map Room | From opposite ends of one table, a left turn changes its referent. A carrier’s actual destination gives the player a reason to decide which landmarks and conventions the guide needs. |
+| The Green Squares | The same frame permits comparison of the samples. A shaded worn patch and a separate crew record limit the first shade explanation and give the player a reason to change the displayed advice. |
+| Civic receiving marks | The counting rack uses independent equally likely placements. A crew arriving at one shared bell provides evidence about a real schedule inside the story. The next arrangement responds to the schedule it will serve. |
+
 ## Next checks
 
 Review each new chapter for a claim that can fail, a reason another perspective matters, and a decision worth revising. Check whether a second case genuinely calls for a different method. Continue reviewing underrepresented subjects and perspectives, routes that skip optional investigations, and later half-hour windows. Time those routes with students before drawing conclusions about pacing or transfer.

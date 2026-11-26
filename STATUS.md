@@ -2,11 +2,11 @@
 
 This file is for the next developer, human or AI. Read [AGENTS.md](AGENTS.md) first. **Update this file when you stop work.**
 
-Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private design is version 2.10. See [the design summary](docs/DESIGN_SUMMARY.md).
+Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master specification is version 3, expanded from version 2.10. See [the design summary](docs/DESIGN_SUMMARY.md).
 
 ## Playtest build
 
-Fifteen chapters are playable. The clean install, 599 automated tests, production build and 42-file asset check passed. Chromium checks included fresh Nexus navigation, the Nile door and two-lead dispatch with the Chapter 1 prerequisites staged, and selected routes through the new worlds. The thirty-minute audit below uses modeled routes and author estimates.
+Fifteen chapters are playable. The clean install, 627 automated tests, production build and 42-file asset check passed. Chromium checks included fresh Nexus navigation, the Nile door and two-lead dispatch with the Chapter 1 prerequisites staged, and selected routes through the later worlds. The thirty-minute audit below uses modeled routes and author estimates.
 
 ## What works now
 
@@ -285,10 +285,19 @@ The revised delivery sheet opens the Council of Inquiry. Uncover the independent
 - **The Seat before the Bell** offers the gallery queue a timed reserved seat or an open entrance. Read the request and check the movable post before setting the public notice.
 - **The Same Door in Two Lights** changes the lantern on a fixed relief. Compare what each viewer can see with what the separate rehearsal slip can date.
 
+## Version 3 encounters
+
+- **The Packing Table.** Pack the same six copies and two reference slips inside the carrying wallets or under the outer lid. Check the result and choose a tag for a runner or a depot clerk.
+- **The Hinged Reader.** Compare an enlarged detail and the whole page of the Loud patent. A later reader prompts a way to keep the detail and its source connected.
+- **The Scout’s Second Road.** Try carrying a cart’s route forward or changing it after two scouts give the same report. The reveal protocols change which runs belong in the comparison. Post a lasting instruction for the next carrier.
+- **Both Ends of the Drawing.** Turn the same modern room sketch at the Nile Archive table. Use the historical mine-map display and a carrier’s actual task to check the purpose of the map, then post a shared or two-sided guide.
+- **The Green Squares.** Count fixed-size patches in four places, compare shaded and open pairs and read a separate trail-crew tally. Leave sample markers by a dated display or guide readers with trail ribbons and a station copy.
+- **Three Loads, Four Marks.** Check two arrival trays and count all equally likely ordered possibilities in the model. Compare the result with the crew’s shared-bell schedule before preparing staggered arrivals or a second receiving spot.
+
 ## Learning design review
 
 The [learning design review](docs/TOK_ALIGNMENT.md) uses the supplied course guide, examiner observations, exhibition commentary and teaching guidance. It links recurring concerns to existing playable actions and gives authors questions about the evidence, the audience and what happens when a conclusion moves to a new context.
 
 ## Thirty-minute design audit
 
-Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Twenty-eight of thirty-seven routes reach all 12 concepts and four framework areas within their first estimated half hour. Three traces reach every dimension in all modeled windows. The report also lists the gameplay formats used in each route and where a dimension depends on one distinct action. Time these routes with students to check the estimates.
+Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Thirty-three of forty-three routes reach all 12 concepts and four framework areas within their first estimated half hour. Three traces reach every dimension in all modeled windows. The report also lists the gameplay formats used in each route and where a dimension depends on one distinct action. Time these routes with students to check the estimates.

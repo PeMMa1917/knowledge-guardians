@@ -434,6 +434,120 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH5-R05",
+   "world": "WORLD-06",
+   "title": "The Green Squares",
+   "knowledgeQuestion": "How much can a few matched observations tell us about what caused a pattern?",
+   "available": {
+    "flag": "forest.moss.frame",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "forest.moss.survey",
+     "title": "Check the four frame pegs and borrow the bridge crew’s tally.",
+     "done": {
+      "all": [
+       {
+        "all": [
+         {
+          "flagSet": "forest.moss.creek-away"
+         },
+         {
+          "flagSet": "forest.moss.ridge-edge"
+         },
+         {
+          "flagSet": "forest.moss.bridge-edge"
+         },
+         {
+          "flagSet": "forest.moss.ridge-away"
+         }
+        ]
+       },
+       {
+        "flag": "forest.moss.boots",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "certainty"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "NAT"
+      ],
+      "subjects": [
+       "biology",
+       "ess"
+      ]
+     }
+    },
+    {
+     "id": "forest.moss.place",
+     "title": "Line up the two pairs at the bridge and choose what to put up.",
+     "done": {
+      "all": [
+       {
+        "objective": "forest.moss.survey"
+       },
+       {
+        "all": [
+         {
+          "flag": "forest.moss.shade",
+          "eq": true
+         },
+         {
+          "flag": "forest.moss.open",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "flagSet": "forest.moss.result"
+       }
+      ]
+     },
+     "visible": {
+      "objective": "forest.moss.survey"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "explanation",
+       "justification",
+       "interpretation",
+       "responsibility"
+      ],
+      "atl": [
+       "thinking",
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "NAT"
+      ],
+      "subjects": [
+       "biology",
+       "ess"
+      ]
+     },
+     "onComplete": [
+      {
+       "journal": "j.forest.moss"
+      }
+     ]
+    }
+   ]
   }
  ],
  "characters": [
@@ -1132,6 +1246,540 @@
      "value": true
     }
    ]
+  },
+  {
+   "id": "forest.moss.loan",
+   "speaker": "forest-naturalist",
+   "text": "Someone set a notice by the bridge saying shade explains the green patches. They checked only the bank and the ridge path. Take this six-square frame to the four pegs. Line the notch up with each peg. Count a square when you see any green inside it.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Slip the frame into its carrying sleeve.",
+     "next": "forest.moss.directions",
+     "if": {
+      "not": {
+       "flag": "forest.moss.frame",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "forest.moss.frame",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Read the names on the sleeve.",
+     "next": "forest.moss.directions",
+     "if": {
+      "flag": "forest.moss.frame",
+      "eq": true
+     }
+    },
+    {
+     "text": "Leave the frame here."
+    }
+   ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.directions",
+   "speaker": "forest-naturalist",
+   "text": "The sleeve names the creek bank, the shaded edge by the upper bridge, the open ridge edge and the open patch just below the ridge. Keep the ground as you found it. The bridge crew have a tally from their own watch.",
+   "historicalLabel": "fictional-world",
+   "options": [],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.creek-away",
+   "speaker": "forest-naturalist",
+   "text": "Most of this patch sits in shade, away from the creek path. The peg marks the frame position.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Place the notched frame and look down.",
+     "next": "forest.moss.creek-away-read",
+     "if": {
+      "not": {
+       "flagSet": "forest.moss.creek-away"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "forest.moss.creek-away",
+       "value": 5
+      }
+     ]
+    },
+    {
+     "text": "Read the marks on this patch card.",
+     "next": "forest.moss.creek-away-read",
+     "if": {
+      "flagSet": "forest.moss.creek-away"
+     }
+    },
+    {
+     "text": "Leave the patch undisturbed."
+    }
+   ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.creek-away-read",
+   "speaker": "forest-naturalist",
+   "text": "All three squares along the top show green. The lower left and middle do too. Five squares show green. A small spot is enough to mark a square. The frame gives us places to look again.",
+   "historicalLabel": "fictional-world",
+   "options": [],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.ridge-edge",
+   "speaker": "forest-naturalist",
+   "text": "This open patch touches the ridge path. The peg marks the frame position.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Place the notched frame and look down.",
+     "next": "forest.moss.ridge-edge-read",
+     "if": {
+      "not": {
+       "flagSet": "forest.moss.ridge-edge"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "forest.moss.ridge-edge",
+       "value": 2
+      }
+     ]
+    },
+    {
+     "text": "Read the marks on this patch card.",
+     "next": "forest.moss.ridge-edge-read",
+     "if": {
+      "flagSet": "forest.moss.ridge-edge"
+     }
+    },
+    {
+     "text": "Leave the patch undisturbed."
+    }
+   ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.ridge-edge-read",
+   "speaker": "forest-naturalist",
+   "text": "Green shows in the top right and lower middle. Two squares show green. A small spot is enough to mark a square. The frame gives us places to look again.",
+   "historicalLabel": "fictional-world",
+   "options": [],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.bridge-edge",
+   "speaker": "forest-naturalist",
+   "text": "The trees shade this patch beside the upper bridge path. The peg marks the frame position.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Place the notched frame and look down.",
+     "next": "forest.moss.bridge-edge-read",
+     "if": {
+      "not": {
+       "flagSet": "forest.moss.bridge-edge"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "forest.moss.bridge-edge",
+       "value": 1
+      }
+     ]
+    },
+    {
+     "text": "Read the marks on this patch card.",
+     "next": "forest.moss.bridge-edge-read",
+     "if": {
+      "flagSet": "forest.moss.bridge-edge"
+     }
+    },
+    {
+     "text": "Leave the patch undisturbed."
+    }
+   ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.bridge-edge-read",
+   "speaker": "forest-naturalist",
+   "text": "A small green mat touches the lower right square. One square shows green. A small spot is enough to mark a square. The frame gives us places to look again.",
+   "historicalLabel": "fictional-world",
+   "options": [],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.ridge-away",
+   "speaker": "forest-naturalist",
+   "text": "This patch sits in the open, one step past the ridge path. The peg marks the frame position.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Place the notched frame and look down.",
+     "next": "forest.moss.ridge-away-read",
+     "if": {
+      "not": {
+       "flagSet": "forest.moss.ridge-away"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "forest.moss.ridge-away",
+       "value": 4
+      }
+     ]
+    },
+    {
+     "text": "Read the marks on this patch card.",
+     "next": "forest.moss.ridge-away-read",
+     "if": {
+      "flagSet": "forest.moss.ridge-away"
+     }
+    },
+    {
+     "text": "Leave the patch undisturbed."
+    }
+   ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.ridge-away-read",
+   "speaker": "forest-naturalist",
+   "text": "The top left and middle show green. So do the lower middle and right. Four squares show green. A small spot is enough to mark a square. The frame gives us places to look again.",
+   "historicalLabel": "fictional-world",
+   "options": [],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.log",
+   "speaker": "forest-steward",
+   "text": "Our bridge crew watched the four pegged spots yesterday, before you brought the frame. We tallied shoe contacts we could see during the opening round. Five at the shaded bridge edge and six at the open ridge edge. None seen on either patch away from the path.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Copy the crew’s tally with its watch time.",
+     "next": "forest.moss.logged",
+     "if": {
+      "not": {
+       "flag": "forest.moss.boots",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "forest.moss.boots",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Check the watch time on our tally.",
+     "next": "forest.moss.logged",
+     "if": {
+      "flag": "forest.moss.boots",
+      "eq": true
+     }
+    },
+    {
+     "text": "Leave the tally on the hook."
+    }
+   ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.logged",
+   "speaker": "forest-steward",
+   "text": "The sheet tells you where boots touched during one watched round. We left the later rounds blank. Your frame cards show where you saw green today.",
+   "historicalLabel": "fictional-world",
+   "options": [],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.table",
+   "speaker": "forest-steward",
+   "text": "The old notice says “Shade is why we saw more green.” Four clips on this stand let us put cards with the same light together. The crew’s tally has its own clip.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Line up the two shaded patches.",
+     "next": "forest.moss.shade",
+     "if": {
+      "all": [
+       {
+        "flagSet": "forest.moss.creek-away"
+       },
+       {
+        "flagSet": "forest.moss.ridge-edge"
+       },
+       {
+        "flagSet": "forest.moss.bridge-edge"
+       },
+       {
+        "flagSet": "forest.moss.ridge-away"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.moss.shade",
+       "value": true
+      },
+      {
+       "setFlag": "forest.moss.top",
+       "value": "shade"
+      }
+     ]
+    },
+    {
+     "text": "Line up the two open patches.",
+     "next": "forest.moss.open",
+     "if": {
+      "all": [
+       {
+        "flagSet": "forest.moss.creek-away"
+       },
+       {
+        "flagSet": "forest.moss.ridge-edge"
+       },
+       {
+        "flagSet": "forest.moss.bridge-edge"
+       },
+       {
+        "flagSet": "forest.moss.ridge-away"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.moss.open",
+       "value": true
+      },
+      {
+       "setFlag": "forest.moss.top",
+       "value": "open"
+      }
+     ]
+    },
+    {
+     "text": "Slide the boot tally beside the two rows.",
+     "next": "forest.moss.compare",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "forest.moss.shade",
+          "eq": true
+         },
+         {
+          "flag": "forest.moss.open",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "flag": "forest.moss.boots",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "forest.moss.result"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Read which pegs and records are missing.",
+     "next": "forest.moss.missing",
+     "if": {
+      "not": {
+       "all": [
+        {
+         "all": [
+          {
+           "flagSet": "forest.moss.creek-away"
+          },
+          {
+           "flagSet": "forest.moss.ridge-edge"
+          },
+          {
+           "flagSet": "forest.moss.bridge-edge"
+          },
+          {
+           "flagSet": "forest.moss.ridge-away"
+          }
+         ]
+        },
+        {
+         "flag": "forest.moss.boots",
+         "eq": true
+        }
+       ]
+      }
+     }
+    },
+    {
+     "text": "Leave the cards in their clips."
+    }
+   ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.missing",
+   "speaker": "forest-steward",
+   "text": "Bring cards for the shaded creek bank and the shaded bridge edge, then the open ridge edge and the open patch below the ridge. The separate watch tally hangs beside my route book.",
+   "historicalLabel": "fictional-world",
+   "options": [],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.shade",
+   "speaker": "forest-steward",
+   "text": "Both cards come from shade. The creek bank away from the path has five green squares. The bridge edge has one. Shade alone leaves that difference unexplained.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the shaded cards in view.",
+     "next": "forest.moss.table"
+    },
+    {
+     "text": "Step away from the board."
+    }
+   ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.open",
+   "speaker": "forest-steward",
+   "text": "Both cards come from open ground. Beside the ridge path, two squares show green. Away from the path, four show green. The path edge has the smaller count in both pairs.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the open cards in view.",
+     "next": "forest.moss.table"
+    },
+    {
+     "text": "Step away from the board."
+    }
+   ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.compare",
+   "speaker": "forest-steward",
+   "text": "The crew saw boots touch both edge patches. Maybe the boots wear the green away. Maybe the edges dry out sooner, or people step where the surface was already bare. We checked four places along one trail and left the ground alone. Let’s take down the shade notice and make the next look easier.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mark the two frame corners and pin the full sheet low here.",
+     "next": "forest.moss.mark",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.moss.survey"
+       },
+       {
+        "flag": "forest.moss.shade",
+        "eq": true
+       },
+       {
+        "flag": "forest.moss.open",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "forest.moss.result"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.moss.result",
+       "value": "mark"
+      }
+     ]
+    },
+    {
+     "text": "Tie a keep-to-the-stones ribbon at each end and leave the sheet at Fern Station.",
+     "next": "forest.moss.ribbon",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.moss.survey"
+       },
+       {
+        "flag": "forest.moss.shade",
+        "eq": true
+       },
+       {
+        "flag": "forest.moss.open",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "forest.moss.result"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.moss.result",
+       "value": "ribbon"
+      }
+     ]
+    },
+    {
+     "text": "Keep the cards here while I look again."
+    }
+   ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.mark",
+   "speaker": "forest-steward",
+   "text": "Two small ties show a corner of each edge patch. I put the full sheet low here so the next group can find every reading without leaning over the ground.",
+   "historicalLabel": "fictional-world",
+   "options": [],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "forest.moss.ribbon",
+   "speaker": "forest-steward",
+   "text": "There is a ribbon at either end of the trail now. It asks walkers to use the laid stones where they can. Tomorrow’s crew can find the full sheet and the old tally at Fern Station.",
+   "historicalLabel": "fictional-world",
+   "options": [],
+   "effects": [],
+   "next": null
   }
  ],
  "hints": [
@@ -1326,6 +1974,54 @@
    "objective": "forest.gombe-credit",
    "depth": 4,
    "text": "Discuss both credits with Elian. Keep the 1960 observation apart from the later history of the field team."
+  },
+  {
+   "id": "h.forest.moss.survey.1",
+   "objective": "forest.moss.survey",
+   "depth": 1,
+   "text": "The sleeve names four pegs. Take the same frame to each one."
+  },
+  {
+   "id": "h.forest.moss.survey.2",
+   "objective": "forest.moss.survey",
+   "depth": 2,
+   "text": "Use any visible green to mark a square. A tiny spot counts too."
+  },
+  {
+   "id": "h.forest.moss.survey.3",
+   "objective": "forest.moss.survey",
+   "depth": 3,
+   "text": "Look away from and beside the path on each side of the bridge. Try the open patch just below the ridge path."
+  },
+  {
+   "id": "h.forest.moss.survey.4",
+   "objective": "forest.moss.survey",
+   "depth": 4,
+   "text": "Use each peg on the trail. Then copy the crew’s boot tally beside Ayla’s route book in the clearing."
+  },
+  {
+   "id": "h.forest.moss.place.1",
+   "objective": "forest.moss.place",
+   "depth": 1,
+   "text": "The old shade notice is at the stand in the clearing."
+  },
+  {
+   "id": "h.forest.moss.place.2",
+   "objective": "forest.moss.place",
+   "depth": 2,
+   "text": "Line up the two shaded cards. Then line up the two open cards."
+  },
+  {
+   "id": "h.forest.moss.place.3",
+   "objective": "forest.moss.place",
+   "depth": 3,
+   "text": "Slide the separate boot tally beside both pairs. It covers one watched round."
+  },
+  {
+   "id": "h.forest.moss.place.4",
+   "objective": "forest.moss.place",
+   "depth": 4,
+   "text": "Mark the two edge patches for the next observer or put a ribbon at both ends for walkers. Either choice keeps all four readings."
   }
  ],
  "criteria": [
@@ -1355,6 +2051,11 @@
    "id": "j.forest.gombe",
    "title": "Names in the notebook",
    "text": "The 1960 timeline and the later history of the Gombe team tell us about different contributions. We kept Jane Goodall's observation alongside a later account that credits field assistant Baraka Daniel."
+  },
+  {
+   "id": "j.forest.moss",
+   "title": "The green squares",
+   "text": "I found green in more squares off the path in both shaded and open pairs. The bridge crew watched boots contact the edge patches during one round. That helps us choose where to look again. Our four cards leave room for other causes."
   }
  ],
  "moments": [

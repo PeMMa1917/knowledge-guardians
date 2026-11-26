@@ -24,6 +24,13 @@ const exhibit = (id: string, x: number, y: number, label: string, art: string): 
 
 type Dispatch = 'print' | 'read' | 'pair';
 
+const mineMapSeen = { card: 'card.nile.mine' } as const;
+const markCopy = (format: 'fixed' | 'paired', id: string, x: number, y: number, label: string, text: string): Interactable => ({
+  id: `nile-way-${id}`, kind: 'sign', x, y, w: 1, h: 1, label, text, walkThrough: true,
+  art: format === 'fixed' ? 'nile.map' : 'nile.scroll', flag: `nile.way.${id}`,
+  visibleIf: { flag: 'nile.way.layout', eq: format },
+});
+
 const readerClue = (dispatch: Dispatch, part: 'reply' | 'proof', x: number, y: number, label: string): Interactable => {
   const id = `nile-${part}-${dispatch}`;
   return {
@@ -208,5 +215,24 @@ export const NILE_ROUTE = room('nile.route', 'Nile Archive: Map Room',
     { id: 'nile-route-margins', kind: 'clue', clue: 'nile-route-margins', x: 5, y: 7, w: 1, h: 1, label: 'the empty margin of the map case', art: 'nile.slip' },
     { id: 'nile-route-legend', kind: 'sign', x: 5, y: 9, w: 1, h: 1, label: 'a note pinned to the map case', art: 'nile.slip',
       text: 'A road line can show that the maker marked a route. It cannot say how our cart will fare. Leave a space between the two claims.' },
+    { id: 'nile-way-aisle-view', kind: 'sign', x: 11, y: 9, w: 1, h: 1, walkThrough: true,
+      label: 'the aisle end of the sketch table', art: 'nile.slip', flag: 'nile.way.aisle', visibleIf: mineMapSeen,
+      text: 'Stand by the aisle mark and face the table. The map case is on your left. The crate rack is on your right. A visitor in the aisle can use the sketch’s left arrow to reach the case.' },
+    { id: 'nile-way-shelf-view', kind: 'sign', x: 11, y: 3, w: 1, h: 1, walkThrough: true,
+      label: 'the shelf end of the sketch table', art: 'nile.slip', flag: 'nile.way.shelf', visibleIf: mineMapSeen,
+      text: 'Stand by the shelf mark and face the table. The map case is now on your right. The crate rack is on your left. Both landmarks stayed where they were.' },
+    { id: 'nile-way-carrier-note', kind: 'sign', x: 20, y: 7, w: 1, h: 1, walkThrough: true,
+      label: 'the carrier’s check-in slip', art: 'nile.scroll', flag: 'nile.way.carrier', visibleIf: mineMapSeen,
+      text: 'At handover our crew marks the crate rack with a square. It tells the next carrier where to set down and check a box. The visitor guide uses that same square for the display case. I carried my box to the case the first time.' },
+    { id: 'nile-way-board', kind: 'scene', x: 10, y: 7, w: 1, h: 1, walkThrough: true,
+      label: 'the sketch hinged on a peg', art: 'board-stand', node: 'nile.way.turn',
+      artBy: { flag: 'nile.way.turned', keys: { reversed: 'nile.map' } },
+      visibleIf: { all: [mineMapSeen, { not: { flagSet: 'nile.way.layout' } }] } },
+    markCopy('fixed', 'fixed-read', 10, 7, 'the two-landmark drawing',
+      'Walk toward the glass case to inspect the source. Walk toward the stacked crates to set down a delivery. The two paths begin at the aisle and shelf marks. A carrier follows the crate line while a reader follows the glass case line.'),
+    markCopy('paired', 'aisle-read', 10, 9, 'the aisle’s view of the room',
+      'Stand at the aisle mark. Glass case to your left. Crate rack to your right. A visitor holds this copy toward the table and follows the case line. The shelf end has its own clipping.'),
+    markCopy('paired', 'shelf-read', 10, 3, 'the shelf’s view of the room',
+      'Stand at the shelf mark. Crate rack to your left. Glass case to your right. A carrier sets down her box at the rack. This view uses the same two landmarks as the aisle copy.'),
   ], 0x2b3039,
   [{ stamp: 'bookshelf', x: 4, y: 2 }, { stamp: 'crates', x: 19, y: 6 }, { stamp: 'bench', x: 12, y: 4 }, { stamp: 'plant-tall', x: 19, y: 9 }]);

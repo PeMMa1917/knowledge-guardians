@@ -1,5 +1,6 @@
 /** A fictional mobile-library route with a dispatch hall and two street stops. */
 import type { Condition } from '../domain/types';
+import { CIVIC_ARRIVAL_TRAYS, civicReceivingArrangements, civicReceivingLoad } from '../domain/civicArrivals';
 import type { Interactable, MapDef } from './types';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'civic.waypost'): Interactable {
@@ -19,6 +20,28 @@ const compared: Condition = { objective: 'civic.compare' };
 const published: Condition = { objective: 'civic.publish' };
 const revised: Condition = { flag: 'civic.revised', eq: true };
 const cobbles = ['civic-cobbles-a', 'civic-cobbles-b'];
+const overlapAvailable: Condition = { objective: 'civic.arrival' };
+const rackReady: Condition = { objective: 'civic.overlap.trays' };
+const counted: Condition = { flag: 'civic.overlap.counted', eq: true };
+const arrangements = civicReceivingArrangements();
+
+function overlapScene(id: string, x: number, y: number, label: string, art: string, visibleIf: Condition): Interactable {
+  return { id, kind: 'scene', x, y, w: 1, h: 1, label, art, node: id, walkThrough: true, visibleIf };
+}
+
+function trayProps(tray: keyof typeof CIVIC_ARRIVAL_TRAYS, x: number, y: number): Interactable[] {
+  const id = `civic-overlap-${tray}`;
+  const label = `the ${tray} receiving tray`;
+  const opened: Condition = { flag: `civic.overlap.${tray}`, eq: true };
+  const marks = CIVIC_ARRIVAL_TRAYS[tray];
+  const { waiting, free } = civicReceivingLoad(marks);
+  return [
+    overlapScene(id, x, y, label, 'civic.ledger', { all: [overlapAvailable, { not: opened }] }),
+    sign(`${id}-loaded`, x, y, label, 'civic.notice',
+      `Three loads arrived at marks ${marks.join(', ')}. Loads waiting ${waiting}. Empty marks ${free}.`,
+      { visibleIf: { all: [overlapAvailable, opened] } }),
+  ];
+}
 
 export const CIVIC_DISPATCH: MapDef = {
   id: 'civic.dispatch', name: 'Civic Machine: Library Dispatch', world: 'WORLD-13',
@@ -46,6 +69,15 @@ export const CIVIC_DISPATCH: MapDef = {
       label: 'the Library Dispatch Waystone', place: 'Library Dispatch', art: 'waystone' },
     sign('civic-dispatch-directory', 12, 10, 'the dispatch directory', 'civic.waypost',
       'North Steps has the public desk to the west. Canal Walk keeps the walking crew’s slip to the east. Ade has the loaded route console in the middle.'),
+    ...trayProps('red', 7, 10),
+    ...trayProps('blue', 20, 11),
+    overlapScene('civic-overlap-rack', 17, 12, 'the four-mark counting rack', 'civic.rank',
+      { all: [rackReady, { not: counted }] }),
+    sign('civic-overlap-count', 17, 12, 'the filled counting rack', 'civic.even',
+      `Every courier in the trial chose among four marks equally and made their own draw. The rack has ${arrangements.all} ordered arrivals. The separate-mark rows use four first choices, three second choices and two last choices. That's ${arrangements.separate} separate and ${arrangements.shared} with a shared mark.`,
+      { visibleIf: counted }),
+    overlapScene('civic-overlap-plan', 19, 6, 'the practice dispatch board', 'civic.wide',
+      { all: [{ objective: 'civic.overlap.evidence' }, { not: { flagSet: 'civic.overlap.layout' } }] }),
   ],
   lights: [
     { x: 13, y: 7, r: 85, color: 0xe5bd87 }, { x: 15, y: 9, r: 68, color: 0xc3dfda },
@@ -101,6 +133,9 @@ export const CIVIC_STEPS: MapDef = {
     sign('civic-wide-notice', 4, 12, 'the large timetable copy at the bench', 'civic.wide',
       'An enlarged copy puts the two districts on separate lines. The provisional window counts are easy to find, and the dated slips are still beside them.',
       { visibleIf: { flag: 'civic.wide-notice', eq: true } }),
+    sign('civic-overlap-stagger', 7, 9, 'the staggered practice board', 'civic.even',
+      'The practice dispatch assigns three couriers to separate marks. All three loads fit if everyone can use their assigned mark. A spare mark stays open for a courier whose shift pattern changes.',
+      { flag: 'civic.overlap.seen', visibleIf: { flag: 'civic.overlap.layout', eq: 'stagger' } }),
   ],
   lights: [
     { x: 11, y: 8, r: 72, color: 0xf9d4a2 }, { x: 16, y: 8, r: 67, color: 0xe6b7ab },
@@ -141,6 +176,12 @@ export const CIVIC_CANAL: MapDef = {
     sign('civic-route-log', 20, 10, 'the wider walking-round slip', 'civic.ledger',
       'The crew will walk both routes again, asking where the cart can stop within reach and at which times. These entries will have their own dated collection line.',
       { visibleIf: { flag: 'civic.revision', eq: 'walk' } }),
+    sign('civic-overlap-local', 12, 9, 'the dock crew’s end-of-shift slip', 'civic.ledger',
+      'The workshop releases its crew at one bell. Three couriers can reach the stop close together. This slip names the release time. It gives no count for the four arrival marks.',
+      { flag: 'civic.overlap.local', visibleIf: overlapAvailable }),
+    sign('civic-overlap-buffer', 21, 7, 'the second receiving spot for the practice run', 'civic.reserve',
+      'A helper makes one mark wide enough for two loads. The red tray can clear if its two couriers reach that mark. Three loads together would still make somebody wait.',
+      { flag: 'civic.overlap.seen', visibleIf: { flag: 'civic.overlap.layout', eq: 'buffer' } }),
   ],
   lights: [
     { x: 9, y: 9, r: 67, color: 0xf1c591 }, { x: 16, y: 8, r: 70, color: 0xd5dbb2 },

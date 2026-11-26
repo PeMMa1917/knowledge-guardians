@@ -870,6 +870,73 @@
    "speaker": "porter-idris",
    "text": "I’ll put the two together. The next carrier can see what I expected and what I found after looking again. Come by later. You can help me with the next bundle too.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "scout.review",
+   "speaker": "porter-idris",
+   "text": "Two scouts brought me the same words this morning: turn blocked. One had the notes from the yard. The other carried a gate slip. The next carriers need to know what they can do with each report. Shall we change what the scouts carry, or arrange for someone to check the whole turn?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the turning notes in each scout’s hand first. Ask them to mark the opened gate and their instructions.",
+     "next": "scout.sent.briefed",
+     "if": {
+      "all": [
+       {
+        "objective": "scout.o.compare"
+       },
+       {
+        "not": {
+         "flagSet": "scout.notice"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "scout.notice",
+       "value": "briefed"
+      }
+     ]
+    },
+    {
+     "text": "Keep the gate slips. Send a cart on a clear report and ask the lane keeper for a second look after a blocked one.",
+     "next": "scout.sent.open",
+     "if": {
+      "all": [
+       {
+        "objective": "scout.o.compare"
+       },
+       {
+        "not": {
+         "flagSet": "scout.notice"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "scout.notice",
+       "value": "open"
+      }
+     ]
+    },
+    {
+     "text": "Leave both reports on the board for now."
+    }
+   ]
+  },
+  {
+   "id": "scout.sent.briefed",
+   "speaker": "porter-idris",
+   "text": "I’ll copy the notes for the next shift. A marked report gives my carriers a place to try when two gates are still shut. They still have to look for room to turn on the lane itself.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "scout.sent.open",
+   "speaker": "porter-idris",
+   "text": "The gate volunteers can still go ahead. I’ll leave a bell by the yard for blocked slips so the lane keeper can walk the turn. Tell a carrier to wait with a heavy cart until the keeper comes back.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "missions": [
@@ -1371,6 +1438,105 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-S10",
+   "title": "The Scout’s Second Road",
+   "world": "WORLD-02",
+   "knowledgeQuestion": "What does a report let us infer when we know how it was made?",
+   "available": {
+    "any": [
+     {
+      "flag": "scout.played.informed",
+      "eq": true
+     },
+     {
+      "flag": "scout.played.independent",
+      "eq": true
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "scout.o.compare",
+     "title": "Set up the cart with each scout’s instructions and compare the two ledgers.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "scout.checked.informed",
+        "eq": true
+       },
+       {
+        "flag": "scout.checked.independent",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "justification",
+       "explanation"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "MAT"
+      ],
+      "subjects": [
+       "math-ai"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-RSC-15"
+     ]
+    },
+    {
+     "id": "scout.o.notice",
+     "title": "Leave an instruction for the scouts and carriers with Idris.",
+     "essential": false,
+     "visible": {
+      "objective": "scout.o.compare"
+     },
+     "done": {
+      "flagSet": "scout.notice"
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "responsibility",
+       "evidence",
+       "perspective"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "MAT",
+       "HUM"
+      ],
+      "subjects": [
+       "math-ai",
+       "geography"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-THK-16"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.scout.notice"
+      }
+     ]
+    }
+   ]
   }
  ],
  "moments": [
@@ -1431,6 +1597,11 @@
    "id": "j.hands",
    "claimKind": "interpretation",
    "text": "The short tag could help a carrier find a door. The museum entry for this pen named two people. Idris changed the strap when he saw what his earlier choice of papers had left out."
+  },
+  {
+   "id": "j.scout.notice",
+   "claimKind": "simulation",
+   "text": "A blocked report came from both kinds of scout. When the scout had the notes, switching would fit in four of the six setups. When the scout used only a slip, two setups showed the clear turn. Switching and holding fit just as often in the four blocked cases. Idris now has a way to tell his carriers what they need to check on the lane itself."
   }
  ],
  "hints": [
@@ -1697,6 +1868,54 @@
    "objective": "hands.o.revise",
    "depth": 4,
    "text": "Clip the museum entry behind the tag or put the two side by side. Read what the next carrier will see."
+  },
+  {
+   "id": "h.scout.compare.1",
+   "objective": "scout.o.compare",
+   "depth": 1,
+   "text": "The same chalk mark can lead to two different reports on the practice board."
+  },
+  {
+   "id": "h.scout.compare.2",
+   "objective": "scout.o.compare",
+   "depth": 2,
+   "text": "Try the scout with turning notes. Then send a scout with just a slip."
+  },
+  {
+   "id": "h.scout.compare.3",
+   "objective": "scout.o.compare",
+   "depth": 3,
+   "text": "Look for the practice cart board on the south edge of the market, east of the stone path."
+  },
+  {
+   "id": "h.scout.compare.4",
+   "objective": "scout.o.compare",
+   "depth": 4,
+   "text": "Finish a cart run under each scout’s instructions. Open all six setups for both scouts and compare the blocked reports."
+  },
+  {
+   "id": "h.scout.notice.1",
+   "objective": "scout.o.notice",
+   "depth": 1,
+   "text": "A carrier can hear the same report from a person following a different rule."
+  },
+  {
+   "id": "h.scout.notice.2",
+   "objective": "scout.o.notice",
+   "depth": 2,
+   "text": "Decide who should know the turning notes and who should check a blocked turn before a loaded cart takes it."
+  },
+  {
+   "id": "h.scout.notice.3",
+   "objective": "scout.o.notice",
+   "depth": 3,
+   "text": "Read the small board beside the practice cart after comparing both sets of setups."
+  },
+  {
+   "id": "h.scout.notice.4",
+   "objective": "scout.o.notice",
+   "depth": 4,
+   "text": "Arrange for scouts to carry the turning notes or leave the slips in use with a second look after blocked reports."
   }
  ]
 }

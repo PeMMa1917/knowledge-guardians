@@ -2884,6 +2884,166 @@
    "speaker": "nile-leila",
    "historicalLabel": "fictional-world",
    "text": "Someone at the lending bench opens both views together. They can tell which lamp position produced each count. The note names this practice slip so the receiving team’s box counts stay in their own record."
+  },
+  {
+   "id": "nile.way.turn",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Marek pinned a sketch of this room to a turning board. It says “Everyone turns left for the square,” and its key calls the square a display case. The Turin papyrus on the wall marks roads and rock in Wadi Hammamat. This sketch is ours. Try it where a reader enters and where a carrier sets down a box.",
+   "options": [
+    {
+     "text": "Hold the room marks steady and turn the sketch half a turn.",
+     "next": "nile.way.turned",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "card": "card.nile.mine"
+         },
+         {
+          "flag": "nile.way.aisle",
+          "eq": true
+         },
+         {
+          "flag": "nile.way.shelf",
+          "eq": true
+         },
+         {
+          "flag": "nile.way.carrier",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "nile.way.turned",
+         "eq": "reversed"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.way.turned",
+       "value": "reversed"
+      }
+     ]
+    },
+    {
+     "text": "Set out the revised room guide.",
+     "next": "nile.way.place",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.way.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.way.layout"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the sketch on the peg."
+    }
+   ]
+  },
+  {
+   "id": "nile.way.turned",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The arrow swung toward the crate rack. The case and rack stayed in place. Someone at the shelf mark can reach the case by turning right. The carrier’s square already meant the rack at handover. Marek’s square sent them to the place where readers look at the papyrus.",
+   "options": [
+    {
+     "text": "Set out the revised room guide.",
+     "next": "nile.way.place",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.way.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.way.layout"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the sketch turned on the peg."
+    }
+   ]
+  },
+  {
+   "id": "nile.way.place",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The large board can name landmarks that stay in the room. Small copies can give a left and a right from the exact point where someone starts. Give the case and rack their own marks and jobs. We can keep our room guide beside the old papyrus with its own name.",
+   "options": [
+    {
+     "text": "Put one guide on the board with both fixed landmarks.",
+     "next": "nile.way.fixed",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.way.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.way.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.way.layout",
+       "value": "fixed"
+      }
+     ]
+    },
+    {
+     "text": "Put a guide at each approach with its own directions.",
+     "next": "nile.way.paired",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.way.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.way.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.way.layout",
+       "value": "paired"
+      }
+     ]
+    },
+    {
+     "text": "Leave the two sketches together on the table."
+    }
+   ]
+  },
+  {
+   "id": "nile.way.fixed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You clip a case symbol and a crate symbol to the board. Marek points out the two starting marks. A reader can follow the glass case. A carrier can check her box at the rack. The room guide stays separate from the papyrus on the wall."
+  },
+  {
+   "id": "nile.way.paired",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You clip the small guides at the aisle and shelf marks. Each starts with the place where it hangs. The two copies keep the same names for the case and rack. Marek puts a matching date on both so another keeper can replace them together."
   }
  ],
  "chronicle": [
@@ -3554,6 +3714,54 @@
    "objective": "nile.closing.post",
    "depth": 4,
    "text": "Leave a dated sequence for the next apprentice or keep a voice open for the next pair at the bench."
+  },
+  {
+   "id": "h.nile.way.compare.1",
+   "objective": "nile.way.compare",
+   "depth": 1,
+   "text": "The room sketch has a left arrow. The case cannot turn with it."
+  },
+  {
+   "id": "h.nile.way.compare.2",
+   "objective": "nile.way.compare",
+   "depth": 2,
+   "text": "Try the aisle and shelf marks on opposite sides of Marek’s table."
+  },
+  {
+   "id": "h.nile.way.compare.3",
+   "objective": "nile.way.compare",
+   "depth": 3,
+   "text": "Find the carrier’s check-in slip near the crates."
+  },
+  {
+   "id": "h.nile.way.compare.4",
+   "objective": "nile.way.compare",
+   "depth": 4,
+   "text": "At the peg, turn the room sketch and see what the arrow points to."
+  },
+  {
+   "id": "h.nile.way.publish.1",
+   "objective": "nile.way.publish",
+   "depth": 1,
+   "text": "The reader and the carrier need different stops."
+  },
+  {
+   "id": "h.nile.way.publish.2",
+   "objective": "nile.way.publish",
+   "depth": 2,
+   "text": "Return to the turned sketch on the peg."
+  },
+  {
+   "id": "h.nile.way.publish.3",
+   "objective": "nile.way.publish",
+   "depth": 3,
+   "text": "Choose a fixed landmark guide or a small copy for each starting point."
+  },
+  {
+   "id": "h.nile.way.publish.4",
+   "objective": "nile.way.publish",
+   "depth": 4,
+   "text": "Read the guide on the peg or check both small copies where people approach the table."
   }
  ],
  "criteria": [
@@ -3633,6 +3841,11 @@
    "id": "j.nile.closing",
    "title": "Two ways to close a slip",
    "text": "I turned two slips that used the same word for different things. One marked a delivery entered in a book. The other tried to end a dispute. The later stoppage in Amunnakht’s record stays on the page either way."
+  },
+  {
+   "id": "j.nile.way",
+   "claimKind": "interpretation",
+   "text": "The same landmarks fall on different sides when a reader turns around. A square at handover meant the crate rack. The room sketch used it for the glass case. We gave both destinations a name and left the roads and rock in Wadi Hammamat on the old map."
   }
  ],
  "portfolio": [
@@ -4921,6 +5134,159 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH2-R13",
+   "world": "WORLD-03",
+   "title": "Both Ends of the Drawing",
+   "knowledgeQuestion": "Whose destination changes what a map needs to show?",
+   "available": {
+    "card": "card.nile.mine"
+   },
+   "objectives": [
+    {
+     "id": "nile.way.compare",
+     "title": "Test the same room sketch from the aisle and shelf ends.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "all": [
+         {
+          "card": "card.nile.mine"
+         },
+         {
+          "flag": "nile.way.aisle",
+          "eq": true
+         },
+         {
+          "flag": "nile.way.shelf",
+          "eq": true
+         },
+         {
+          "flag": "nile.way.carrier",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "flag": "nile.way.turned",
+        "eq": "reversed"
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "truth",
+       "objectivity",
+       "perspective",
+       "interpretation",
+       "explanation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN",
+       "HIS"
+      ],
+      "subjects": [
+       "geography",
+       "history",
+       "design-tech",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-THK-05"
+     ],
+     "kq": {
+      "id": "KQ-NEW-003",
+      "action": "turn a room sketch while keeping the landmarks in place"
+     }
+    },
+    {
+     "id": "nile.way.publish",
+     "title": "Pin landmarks or approach copies and see who can use them.",
+     "essential": false,
+     "visible": {
+      "objective": "nile.way.compare"
+     },
+     "done": {
+      "any": [
+       {
+        "all": [
+         {
+          "flag": "nile.way.layout",
+          "eq": "fixed"
+         },
+         {
+          "flag": "nile.way.fixed-read",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "all": [
+         {
+          "flag": "nile.way.layout",
+          "eq": "paired"
+         },
+         {
+          "flag": "nile.way.aisle-read",
+          "eq": true
+         },
+         {
+          "flag": "nile.way.shelf-read",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "power",
+       "values",
+       "perspective",
+       "responsibility",
+       "justification",
+       "culture"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN",
+       "HIS"
+      ],
+      "subjects": [
+       "geography",
+       "design-tech",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-ETR-01"
+     ],
+     "kq": {
+      "id": "KQ-NEW-004",
+      "action": "put a carrier’s task and a visitor’s task on a checked room guide"
+     },
+     "onComplete": [
+      {
+       "journal": "j.nile.way"
+      }
+     ]
+    }
+   ]
   }
  ],
  "clues": [
@@ -5173,6 +5539,15 @@
    },
    "did": "You kept two trial conditions alike except for tilt and carried their limits with the note.",
    "prompt": "What could you hold steady when comparing two moving carts?"
+  },
+  {
+   "id": "mom.nile-two-ends",
+   "attribute": "open-minded",
+   "when": {
+    "objective": "nile.way.publish"
+   },
+   "did": "You tried the same guide from two places and made room for a carrier’s destination.",
+   "prompt": "Whose task would you ask about when making the next guide?"
   }
  ]
 }

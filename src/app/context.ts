@@ -40,6 +40,7 @@ export interface UIApi {
   openVoicesDesk(): void;
   openIslandPlan(): void;
   openCouncilClock(): void;
+  openScoutTable(): void;
   openTalents(atWaystone?: boolean): void;
   openLedger(): void;
   openClue(id: string): void;

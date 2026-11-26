@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { civicAllocation, type CivicRule, type CivicSample } from '../src/domain/civicConsole';
+import { CIVIC_ARRIVAL_TRAYS, civicReceivingArrangements, civicReceivingLoad } from '../src/domain/civicArrivals';
 import { compareCopy } from '../src/domain/copyComparison';
 import { councilClock, type CouncilTrial } from '../src/domain/councilClock';
 import { forestWatch, type ForestWindow } from '../src/domain/forestWatch';
@@ -7,6 +8,7 @@ import { islandPlan, type IslandLanding, type IslandRoute } from '../src/domain/
 import { marketComparison, type MarketBasis } from '../src/domain/marketScale';
 import { readMetalSample } from '../src/domain/metalSample';
 import { check } from '../src/domain/rules';
+import { scoutNextTrial, scoutReport, scoutTrials } from '../src/domain/scoutRoutes';
 import { seaChart } from '../src/domain/seaCharts';
 import { stageRehearsal, type StageCue } from '../src/domain/stageRehearsal';
 import { voiceReading, type VoiceSource, type VoiceView } from '../src/domain/voiceReadings';
@@ -33,6 +35,8 @@ const commandFormats: Partial<Record<Command['type'], Format>> = {
   RunCivicTrial: 'tool trials',
   RunIslandPlan: 'tool trials',
   RunCouncilClock: 'tool trials',
+  RunScoutRoute: 'tool trials',
+  ReviewScoutProtocol: 'tool trials',
   RunVoiceReading: 'archive tools',
   ReadClue: 'record reading',
   CompareCopy: 'archive tools',
@@ -126,12 +130,14 @@ function watchForest(d: Driver, site: string, window: ForestWindow) {
 
 // Times below are author estimates of when these actions could finish. This
 // fixture exercises entry conditions and domain commands, not walking or reading speed.
-function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'rests' | 'ribbon' | 'print'): Route {
+function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'rests' | 'ribbon' | 'print' | 'packing' | 'scout' | 'viewer'): Route {
   const route = new Route();
   const explore = style !== 'main';
   const records = style === 'records';
   const guide = style === 'guide';
   const print = style === 'print';
+  const packing = style === 'packing';
+  const scouting = style === 'scout';
   const arrivalExtra = explore ? 1 : 0;
   const arrival = records ? 'Leave a stand number with the copied claim, then find that stand on the plan'
     : explore ? 'Clip a blank page beside the archive’s words and open it for a second view'
@@ -205,14 +211,40 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
       expect(d.e.node('nexus.print.layers').text).toContain('The shelter will get a proof after the next printing');
     });
   }
-  const openingMinutes = arrivalExtra + (guide ? 4 : 0) + (style === 'rests' || print ? 5 : 0);
+  if (packing) {
+    route.at(7, 'Test the wallet with the source slips under the crate lid and see which papers stay behind', [
+      'evidence', 'certainty', 'methods-and-tools', 'scope',
+    ], (d) => {
+      walkScene(d, 'nexus-pack-prep', 'nexus.pack.outer-placed');
+      walkScene(d, 'nexus-pack-outer', 'nexus.pack.outer-tested');
+      expect(d.e.node('nexus.pack.outer-tested').text).toContain('Both red slips are still at the rack');
+    });
+    route.at(9, 'Repack the same eight sheets with a source slip in each wallet and repeat the gate trial', [
+      'evidence', 'objectivity', 'explanation', 'truth', 'interpretation', 'methods-and-tools',
+    ], (d) => {
+      walkScene(d, 'nexus-pack-ready-outer', 'nexus.pack.reopened');
+      walkScene(d, 'nexus-pack-prep', 'nexus.pack.kits-placed');
+      walkScene(d, 'nexus-pack-kits', 'nexus.pack.kits-tested');
+      expect(d.e.node('nexus.pack.kits-tested').text).toContain('Three sketches and a slip come out together');
+    });
+    route.at(11, 'Give the runner a grouped tag so each keeper can check the sketches that arrive', [
+      'power', 'values', 'responsibility', 'justification', 'ethics', 'perspective', 'perspectives',
+    ], (d) => {
+      walkScene(d, 'nexus-pack-ready-kits', 'nexus.pack.route-tagged');
+      walkScene(d, 'nexus-pack-dock-route', 'nexus.pack.kits-route');
+      expect(d.s.flags['nexus.pack.sent']).toBe('kits-route');
+      expect(d.done('nexus.pack.checked')).toBe(true);
+      walkScene(d, 'nexus-pack-kits-route');
+    });
+  }
+  const openingMinutes = arrivalExtra + (guide ? 4 : 0) + (style === 'rests' || print ? 5 : 0) + (packing ? 6 : 0);
   if (explore) route.at(5 + openingMinutes, 'Direct visitors toward the practical pen', ['scope', 'perspective'], useProp('nexus.entrance-guide', 'use'));
   route.at(9 + openingMinutes, 'Compare the patent, model and pen dates', ['scope', 'evidence', 'certainty', 'interpretation', 'methods-and-tools'], (d) => {
     for (const exhibit of ['OBJ-001-A', 'OBJ-001-B', 'OBJ-001-C']) d.run({ type: 'InspectExhibit', exhibit });
     for (const exhibit of ['OBJ-001-A', 'OBJ-001-C']) d.run({ type: 'UseLens', exhibit });
     expect(d.done('m01.o3.lens')).toBe(true);
   });
-  const ribbonMinutes = style === 'ribbon' ? 3 : 0;
+  const caseMinutes = style === 'ribbon' ? 3 : style === 'viewer' ? 5 : 0;
   if (style === 'ribbon') route.at(13, 'Put the grant date and the museum’s date range on separate rails and link them for comparison', [
     'certainty', 'evidence', 'truth', 'scope', 'interpretation', 'perspectives', 'methods-and-tools',
   ], (d) => {
@@ -226,7 +258,29 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
     walkScene(d, 'nexus-ribbon-bridged');
     expect(d.e.node('nexus.ribbon.bridged').text).toContain('leaves the start of use blank');
   });
-  if (explore) route.at(12 + openingMinutes + ribbonMinutes, 'Send competing translations back together', ['culture', 'interpretation', 'perspectives'], useProp('nexus.translation-slip', 'gloss'));
+  if (style === 'viewer') {
+    route.at(12, 'Magnify the point and fold the reader back to check how the window changes the evidence in view', [
+      'evidence', 'objectivity', 'explanation', 'interpretation', 'certainty', 'scope', 'methods-and-tools',
+    ], (d) => {
+      expect(d.s.flags['inspected.OBJ-001-A']).toBe(true);
+      walkScene(d, 'nexus-viewer-start', 'nexus.viewer.detail-check');
+      expect(d.e.node('nexus.viewer.detail-check').text).toContain('covers the file number and grant line');
+      walkScene(d, 'nexus-viewer-preview-detail', 'nexus.viewer.sheet-check');
+      expect(d.e.node('nexus.viewer.sheet-check').text).toContain('the grant line and number back');
+      expect(d.done('nexus.viewer.compared')).toBe(true);
+    });
+    route.at(15, 'Help the repair reader find the file and keep the working-model check separate from the drawing', [
+      'truth', 'power', 'values', 'justification', 'responsibility', 'perspective', 'perspectives', 'ethics', 'scope',
+    ], (d) => {
+      walkScene(d, 'nexus-viewer-preview-sheet', 'nexus.viewer.hang-detail');
+      walkScene(d, 'nexus-viewer-detail', 'nexus.viewer.fixed-detail');
+      expect(d.done('nexus.viewer.finished')).toBe(true);
+      walkScene(d, 'nexus-viewer-fixed-detail');
+      expect(d.e.node('nexus.viewer.seen-detail').text).toContain('U.S. Patent 392,046');
+      expect(d.e.node('nexus.viewer.seen-detail').text).toContain('a separate question about a model’s behaviour');
+    });
+  }
+  if (explore) route.at(12 + openingMinutes + caseMinutes, 'Send competing translations back together', ['culture', 'interpretation', 'perspectives'], useProp('nexus.translation-slip', 'gloss'));
   if (records) {
     route.at(15 + openingMinutes, 'Check the model date and turn over the curator’s seal to see what it actually certifies', ['evidence', 'power', 'certainty', 'scope', 'methods-and-tools'], (d) => {
       d.run({ type: 'UseLens', exhibit: 'OBJ-001-B' });
@@ -239,7 +293,7 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
       expect(d.done('nexus.seal.checked')).toBe(true);
     });
   }
-  const extra = openingMinutes + ribbonMinutes + (records ? 7 : 0);
+  const extra = openingMinutes + caseMinutes + (records ? 7 : 0);
   route.at(16 + extra, 'Compare two mark strips using the same pen', ['objectivity', 'explanation', 'methods-and-tools'], (d) => {
     d.run({ type: 'RunSimulation', pen: 'loud-model', surface: 'paper' });
     d.run({ type: 'RunSimulation', pen: 'loud-model', surface: 'leather' });
@@ -307,7 +361,45 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
       expect(readSign(d, 'hands-concede')).toContain('Idris left room for another tag');
     });
   }
-  const emberfordExtra = extra + (guide ? 11 : 0) + (print ? 7 : 0);
+  if (scouting) {
+    route.at(34, 'Send the same cart after identical blocked reports, then see a scout without notes open the clear way', [
+      'evidence', 'truth', 'objectivity', 'interpretation', 'certainty', 'scope', 'methods-and-tools',
+    ], (d) => {
+      const board = MAPS[d.s.mapId].interactables.find((prop) => prop.id === 'scout-turn-board');
+      expect(board?.kind).toBe('scout-table');
+      expect(check(board?.visibleIf, d.s)).toBe(true);
+      const first = 'orchard';
+      for (const protocol of ['informed', 'independent'] as const) {
+        const trial = scoutNextTrial(0);
+        expect(scoutTrials(first, protocol)[trial]).toEqual({ first, clear: 'arch', slip: 'steps', opened: 'steps', other: 'arch' });
+        d.run({ type: 'RunScoutRoute', protocol, first, trial, decision: 'change' });
+        expect(d.s.flags[`scout.result.${protocol}`]).toBe('change.fits');
+      }
+      const trial = scoutNextTrial(1);
+      expect(scoutTrials(first, 'independent')[trial].other).toBeNull();
+      d.run({ type: 'RunScoutRoute', protocol: 'independent', first, trial, decision: 'revealed' });
+      expect(d.s.flags['scout.result.independent']).toBe('revealed.fits');
+    });
+    route.at(37, 'Compare the full sets of deals and limit the rule to rounds where a scout reported a blocked route', [
+      'evidence', 'explanation', 'certainty', 'justification', 'scope', 'methods-and-tools',
+    ], (d) => {
+      expect(scoutReport(scoutTrials('orchard', 'informed'))).toEqual({ rounds: 6, revealed: 0, blocked: 6, hold: 2, change: 4 });
+      expect(scoutReport(scoutTrials('orchard', 'independent'))).toEqual({ rounds: 6, revealed: 2, blocked: 4, hold: 2, change: 2 });
+      for (const protocol of ['informed', 'independent'] as const) {
+        d.run({ type: 'ReviewScoutProtocol', protocol });
+        expect(d.s.flags[`scout.checked.${protocol}`]).toBe(true);
+      }
+      expect(d.done('scout.o.compare')).toBe(true);
+    });
+    route.at(40, 'Post the route instruction with the scout’s access to the route notes made explicit', [
+      'power', 'values', 'perspective', 'responsibility', 'justification', 'ethics',
+    ], (d) => {
+      walkScene(d, 'scout-brief', 'scout.sent.briefed');
+      expect(d.s.flags['scout.notice']).toBe('briefed');
+      expect(readSign(d, 'scout-notice-briefed')).toContain('a blocked report with these notes');
+    });
+  }
+  const emberfordExtra = extra + (guide ? 11 : 0) + (print ? 7 : 0) + (scouting ? 10 : 0);
   route.at(33 + emberfordExtra, 'Question a seller about his blade and inspect the object', ['power', 'evidence'], (d) => {
     d.talk('merchant-corvan', 'How do you know');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-003-AE' });
@@ -440,7 +532,7 @@ function nileRoyalLead(route: Route): void {
   });
 }
 
-function nileDispatch(lead: NileFirstLead = 'workers', tiltTray = false): Route {
+function nileDispatch(lead: NileFirstLead = 'workers', mapStop?: 'tilt-tray' | 'wayfinding'): Route {
   const route = new Route();
   const d = route.driver;
   // Independent return-session fixture. These flags represent earlier progress.
@@ -453,21 +545,41 @@ function nileDispatch(lead: NileFirstLead = 'workers', tiltTray = false): Route 
   const royal = lead === 'royal-seal';
   if (royal) nileRoyalLead(route);
   else nileWorkersLead(route, lead);
-  const extra = { workers: 0, 'reading-window': 3, 'borrowed-mark': 5, 'lamp-slip': 4, 'closing-peg': 3, 'royal-seal': 4 }[lead] + (tiltTray ? 3 : 0);
+  const extra = { workers: 0, 'reading-window': 3, 'borrowed-mark': 5, 'lamp-slip': 4, 'closing-peg': 3, 'royal-seal': 4 }[lead]
+    + (mapStop === 'wayfinding' ? 6 : mapStop === 'tilt-tray' ? 3 : 0);
   const enterMapRoom = (d: AuditDriver) => {
     if (lead !== 'borrowed-mark') useDoor(d, royal ? 'royal-back' : 'workyard-back');
     useDoor(d, 'nile-maps');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-MINE' });
   };
-  if (tiltTray) route.at(29, 'Compare the same block on a level and raised tray and pin the limited explanation beside the cart',
+  if (mapStop === 'tilt-tray') route.at(29, 'Compare the same block on a level and raised tray and pin the limited explanation beside the cart',
     ['objectivity', 'explanation', 'evidence', 'methods-and-tools'], (d) => {
       enterMapRoom(d);
       d.talk('nile-marek', 'Try the tilt tray', 'Set the tray level', 'Reset the tray', 'Raise the same tray', 'Pin a note', 'Carry the two settings');
       expect(d.done('nile.tray.compare')).toBe(true);
       readSign(d, 'nile-tilt-note-cart');
     });
+  if (mapStop === 'wayfinding') {
+    route.at(24, 'Read the same room from both ends and check what the square means in a carrier handover', [
+      'truth', 'evidence', 'certainty', 'culture', 'interpretation', 'perspective', 'perspectives', 'scope',
+    ], (d) => {
+      enterMapRoom(d);
+      expect(readSign(d, 'nile-way-aisle-view')).toContain('map case is on your left');
+      expect(readSign(d, 'nile-way-shelf-view')).toContain('map case is now on your right');
+      expect(readSign(d, 'nile-way-carrier-note')).toContain('marks the crate rack with a square');
+    });
+    route.at(29, 'Rotate the sketch without moving the landmarks, then leave one guide with the case and crate paths', [
+      'objectivity', 'explanation', 'methods-and-tools', 'justification', 'scope', 'responsibility',
+    ], (d) => {
+      walkScene(d, 'nile-way-board', undefined, 'Hold the room marks steady', 'Set out the revised room guide', 'Put one guide on the board');
+      expect(d.done('nile.way.compare')).toBe(true);
+      expect(d.s.flags['nile.way.layout']).toBe('fixed');
+      expect(readSign(d, 'nile-way-fixed-read')).toContain('carrier follows the crate line');
+      expect(d.done('nile.way.publish')).toBe(true);
+    });
+  }
   route.at(27 + extra, 'Compare two model roads and choose what travels', ['objectivity', 'explanation', 'values', 'justification', 'scope', 'methods-and-tools'], (d) => {
-    if (!tiltTray) enterMapRoom(d);
+    if (!mapStop) enterMapRoom(d);
     d.run({ type: 'NileRouteTrial', road: 'ridge' });
     d.run({ type: 'NileRouteTrial', road: 'wash' });
     d.run({ type: 'NileDelivery', choice: royal ? 'cast' : 'copy' });
@@ -615,8 +727,9 @@ function observatoryCoast(stop?: 'bell-slip' | 'clear-terms'): Route {
   return route;
 }
 
-function livingForest(pathbookFirst: boolean): Route {
+function livingForest(pathbookFirst: boolean, greenSquares = false): Route {
   const route = new Route();
+  const surveyMinutes = greenSquares ? 12 : 0;
   // Independent Chapter 5 session. The coast's revised notice is already up.
   route.driver.s.objectivesDone.push('coast.revise');
   const readPathbook = (d: AuditDriver) => {
@@ -630,8 +743,37 @@ function livingForest(pathbookFirst: boolean): Route {
     d.talk('forest-naturalist', 'What do we call a crossing');
     expect(d.done('forest.arrival')).toBe(true);
   });
-  if (pathbookFirst) route.at(9, 'Separate what the bridge and lamp crews heard on their rounds from what observers saw', ['culture', 'perspective', 'interpretation', 'perspectives'], readPathbook);
-  const extraTrailMinutes = pathbookFirst ? 3 : 0;
+  if (greenSquares) route.at(7, 'Borrow a fixed six-cell frame and keep the same counting rule at every placement', [
+    'scope', 'methods-and-tools',
+  ], (d) => {
+    walkScene(d, 'forest-moss-frame', 'forest.moss.directions');
+    expect(d.s.flags['forest.moss.frame']).toBe(true);
+  });
+  if (pathbookFirst) route.at(greenSquares ? 12 : 9, 'Separate what the bridge and lamp crews heard on their rounds from what observers saw', ['culture', 'perspective', 'interpretation', 'perspectives'], readPathbook);
+  if (greenSquares) {
+    route.at(19, 'Count occupied moss cells at shaded and open sites, beside and away from the walkway', [
+      'evidence', 'objectivity', 'certainty', 'scope', 'methods-and-tools',
+    ], (d) => {
+      useDoor(d, 'forest-bridge-to-trail');
+      for (const [site, count] of [['creek-away', 5], ['bridge-edge', 1], ['ridge-edge', 2], ['ridge-away', 4]] as const) {
+        walkScene(d, `forest-moss-${site}`, `forest.moss.${site}-read`);
+        expect(d.s.flags[`forest.moss.${site}`]).toBe(count);
+      }
+    });
+    route.at(25, 'Pair the plots by light, keep the boot tally separate and put the stones route where walkers need it', [
+      'explanation', 'interpretation', 'truth', 'evidence', 'power', 'values', 'responsibility', 'justification', 'ethics',
+    ], (d) => {
+      useDoor(d, 'forest-clearing-path');
+      walkScene(d, 'forest-moss-boot-log', 'forest.moss.logged');
+      expect(d.done('forest.moss.survey')).toBe(true);
+      walkScene(d, 'forest-moss-table', undefined, 'Line up the two shaded', 'Leave the shaded cards', 'Line up the two open',
+        'Leave the open cards', 'Slide the boot tally', 'Tie a keep-to-the-stones');
+      expect(d.done('forest.moss.place')).toBe(true);
+      expect(d.s.flags['forest.moss.result']).toBe('ribbon');
+      readSign(d, 'forest-moss-revised-notice');
+    });
+  }
+  const extraTrailMinutes = (pathbookFirst ? 3 : 0) + surveyMinutes;
   route.at(11 + extraTrailMinutes, 'Compare early crossings at the creek and ridge, one against three', ['evidence', 'methods-and-tools'], (d) => {
     useDoor(d, pathbookFirst ? 'forest-bridge-to-trail' : 'forest-trail-path');
     expect(watchForest(d, 'creek', 'early')).toEqual([0, 1, 0]);
@@ -653,7 +795,7 @@ function livingForest(pathbookFirst: boolean): Route {
   const publication = pathbookFirst
     ? 'Brief people at the bridge with both records where they can hear them before choosing a path'
     : 'Choose a quiet watch route and point large groups toward the wider lookout';
-  route.at(29, publication, ['power', 'values', 'responsibility', 'ethics'], (d) => {
+  route.at(29 + surveyMinutes, publication, ['power', 'values', 'responsibility', 'ethics'], (d) => {
     if (pathbookFirst) useDoor(d, 'forest-community-path');
     d.talk('forest-steward', pathbookFirst ? 'Read both lookout notes' : 'Keep the creek stop');
     expect(d.done('forest.publish')).toBe(true);
@@ -661,7 +803,7 @@ function livingForest(pathbookFirst: boolean): Route {
     expect(d.s.flags['forest.response']).toBe(response);
     readSign(d, `forest-response-${response}`);
   });
-  route.at(37, 'Record two crossings at each return watch and keep the blocked creek beat unknown', ['truth', 'certainty', 'objectivity', 'evidence', 'methods-and-tools'], (d) => {
+  route.at(37 + surveyMinutes, 'Record two crossings at each return watch and keep the blocked creek beat unknown', ['truth', 'certainty', 'objectivity', 'evidence', 'methods-and-tools'], (d) => {
     useDoor(d, 'forest-bridge-to-trail');
     expect(watchForest(d, 'creek', 'return')).toEqual([1, null, 1]);
     expect(watchForest(d, 'ridge', 'return')).toEqual([0, 1, 1]);
@@ -670,22 +812,23 @@ function livingForest(pathbookFirst: boolean): Route {
   const correction = pathbookFirst
     ? 'Return to the bridge readers to show why two equal counts do not imply two identical views'
     : 'Show how an unseen crossing could make the recorded counts match';
-  route.at(42, correction, ['interpretation', 'justification', 'explanation', 'responsibility', 'scope', 'ethics'], (d) => {
+  route.at(42 + surveyMinutes, correction, ['interpretation', 'justification', 'explanation', 'responsibility', 'scope', 'ethics'], (d) => {
     useDoor(d, 'forest-clearing-path');
     d.talk('forest-steward', pathbookFirst ? 'Brief the bridge readers' : 'mark the hidden stretch');
     expect(d.done('forest.finish')).toBe(true);
     readSign(d, 'forest-followup-note');
   });
-  route.at(47, 'Bring both notes and the view limits down to the low bench', ['power', 'responsibility', 'perspective', 'perspectives', 'ethics'], (d) => {
+  route.at(47 + surveyMinutes, 'Bring both notes and the view limits down to the low bench', ['power', 'responsibility', 'perspective', 'perspectives', 'ethics'], (d) => {
     d.talk('forest-steward', 'Bring both notes');
     expect(d.done('forest.access')).toBe(true);
     readSign(d, 'forest-low-route');
   });
-  route.at(52, 'Give the Gombe field caption the date and the people behind the record', ['evidence', 'culture', 'responsibility', 'power'], (d) => {
+  route.at(52 + surveyMinutes, 'Give the Gombe field caption the date and the people behind the record', ['evidence', 'culture', 'responsibility', 'power'], (d) => {
     useDoor(d, 'forest-community-back');
     for (const exhibit of ['OBJ-FOREST-GOMBE', 'OBJ-FOREST-GOMBE-CONTEXT']) d.run({ type: 'InspectExhibit', exhibit });
     d.talk('forest-naturalist', 'put the Gombe team back');
     expect(d.done('forest.gombe-credit')).toBe(true);
+    if (greenSquares) readSign(d, 'forest-moss-station-sheet');
   });
   return route;
 }
@@ -1166,8 +1309,9 @@ function checkCivicTrial(d: Driver, sample: CivicSample, rule: CivicRule, steps:
   expect(d.s.flags[`civic.trial.${sample}.${rule}`]).toBe(true);
 }
 
-function civicMachine(): Route {
+function civicMachine(checkCouriers = false): Route {
   const route = new Route();
+  const extra = checkCouriers ? 10 : 0;
   // Prepared Chapter 11 save. Both allocations at the weir have been entered.
   route.driver.s.objectivesDone.push('water.finish');
   route.at(4, 'Hear how the library allocates four windows and what is counted as a request', ['scope', 'perspective'], (d) => {
@@ -1175,11 +1319,44 @@ function civicMachine(): Route {
     d.talk('civic-operator');
     expect(d.done('civic.arrival')).toBe(true);
   });
-  route.at(9, 'Allocate all four windows by rank using only the desk requests', ['evidence', 'scope', 'methods-and-tools'], (d) => {
+  if (checkCouriers) {
+    route.at(8, 'Run the same receiving desk with two groups of arrivals and check whether an empty mark rules out a wait', [
+      'evidence', 'truth', 'certainty', 'objectivity', 'explanation', 'scope', 'methods-and-tools',
+    ], (d) => {
+      expect(civicReceivingLoad(CIVIC_ARRIVAL_TRAYS.red)).toEqual({ waiting: 1, free: 2 });
+      expect(civicReceivingLoad(CIVIC_ARRIVAL_TRAYS.blue)).toEqual({ waiting: 0, free: 1 });
+      walkScene(d, 'civic-overlap-red', 'civic.overlap.red.opened');
+      expect(readSign(d, 'civic-overlap-red-loaded')).toContain('Loads waiting 1. Empty marks 2');
+      walkScene(d, 'civic-overlap-blue', 'civic.overlap.blue.opened');
+      expect(readSign(d, 'civic-overlap-blue-loaded')).toContain('Loads waiting 0. Empty marks 1');
+      expect(d.done('civic.overlap.trays')).toBe(true);
+    });
+    route.at(12, 'Count possible matches under independent draws and check the local crew’s shared release time', [
+      'evidence', 'interpretation', 'explanation', 'scope', 'perspective', 'perspectives', 'methods-and-tools',
+    ], (d) => {
+      walkScene(d, 'civic-overlap-rack', undefined, 'Start filling the rack', 'Group the remaining rows');
+      expect(civicReceivingArrangements()).toEqual({ all: 64, separate: 24, shared: 40 });
+      expect(readSign(d, 'civic-overlap-count')).toContain("24 separate and 40 with a shared mark");
+      useDoor(d, 'civic-canal-path');
+      expect(readSign(d, 'civic-overlap-local')).toContain('releases its crew at one bell');
+      expect(d.done('civic.overlap.evidence')).toBe(true);
+    });
+    route.at(17, 'Give a busy mark a second receiving spot and check which arrivals would still make someone wait', [
+      'values', 'power', 'responsibility', 'justification', 'ethics', 'scope',
+    ], (d) => {
+      useDoor(d, 'civic-canal-return');
+      walkScene(d, 'civic-overlap-plan', 'civic.overlap.buffer');
+      useDoor(d, 'civic-canal-path');
+      expect(readSign(d, 'civic-overlap-buffer')).toContain('Three loads together would still make somebody wait');
+      expect(d.done('civic.overlap.finish')).toBe(true);
+      useDoor(d, 'civic-canal-return');
+    });
+  }
+  route.at(9 + extra, 'Allocate all four windows by rank using only the desk requests', ['evidence', 'scope', 'methods-and-tools'], (d) => {
     checkCivicTrial(d, 'desk', 'rank', 4, 0);
     expect(d.done('civic.compare')).toBe(false);
   });
-  route.at(18, 'Read the draft’s claim and check how the desk and walking crews record requests', ['evidence', 'perspective', 'perspectives', 'scope'], (d) => {
+  route.at(18 + extra, 'Read the draft’s claim and check how the desk and walking crews record requests', ['evidence', 'perspective', 'perspectives', 'scope'], (d) => {
     useDoor(d, 'civic-steps-path');
     readSign(d, 'civic-ledger-draft');
     readSign(d, 'civic-desk-slip');
@@ -1187,7 +1364,7 @@ function civicMachine(): Route {
     readSign(d, 'civic-walk-slip');
     expect(d.done('civic.sources')).toBe(true);
   });
-  route.at(24, 'Keep the rule fixed, change the register and see why the larger count reverses', [
+  route.at(24 + extra, 'Keep the rule fixed, change the register and see why the larger count reverses', [
     'certainty', 'evidence', 'objectivity', 'explanation', 'interpretation', 'methods-and-tools',
   ], (d) => {
     useDoor(d, 'civic-canal-return');
@@ -1195,18 +1372,18 @@ function civicMachine(): Route {
     checkCivicTrial(d, 'combined', 'rank', 0, 4);
     expect(d.done('civic.compare')).toBe(true);
   });
-  route.at(28, 'Keep the combined register fixed and try protecting one window in each district', [
+  route.at(28 + extra, 'Keep the combined register fixed and try protecting one window in each district', [
     'objectivity', 'explanation', 'values', 'justification', 'methods-and-tools',
   ], (d) => {
     d.talk('civic-operator');
     checkCivicTrial(d, 'combined', 'reserve', 1, 3);
     expect(d.done('civic.rules')).toBe(true);
   });
-  route.at(30, 'Return to the ledger and check the draft against the two counts it left out', ['truth', 'interpretation', 'scope'], (d) => {
+  route.at(30 + extra, 'Return to the ledger and check the draft against the two counts it left out', ['truth', 'interpretation', 'scope'], (d) => {
     useDoor(d, 'civic-steps-path');
     readSign(d, 'civic-ledger-checked');
   });
-  route.at(36, 'Post a starting window for each district and send the two remaining windows by demand', [
+  route.at(36 + extra, 'Post a starting window for each district and send the two remaining windows by demand', [
     'power', 'values', 'responsibility', 'justification', 'ethics',
   ], (d) => {
     d.talk('civic-clerk', 'Leave one starting window');
@@ -1214,14 +1391,14 @@ function civicMachine(): Route {
     expect(d.s.flags['civic.response']).toBe('reserve');
     readSign(d, 'civic-result-reserve');
   });
-  route.at(43, 'Read how the published window still misses a reader who cannot use the desk in time', [
+  route.at(43 + extra, 'Read how the published window still misses a reader who cannot use the desk in time', [
     'interpretation', 'perspective', 'perspectives', 'scope',
   ], (d) => {
     useDoor(d, 'civic-steps-to-canal');
     readSign(d, 'civic-reader-note');
     expect(d.done('civic.reader')).toBe(true);
   });
-  route.at(50, 'Keep the original rule and add an evening request stop for the next count', [
+  route.at(50 + extra, 'Keep the original rule and add an evening request stop for the next count', [
     'evidence', 'responsibility', 'power', 'values', 'justification', 'ethics',
   ], (d) => {
     useDoor(d, 'civic-canal-to-steps');
@@ -1231,13 +1408,13 @@ function civicMachine(): Route {
     expect(d.s.flags['civic.revision']).toBe('evening');
     readSign(d, 'civic-revised');
   });
-  route.at(55, 'Check that the evening crew’s notice gives readers a place to leave the times they could use', [
+  route.at(55 + extra, 'Check that the evening crew’s notice gives readers a place to leave the times they could use', [
     'perspective', 'perspectives', 'responsibility', 'methods-and-tools',
   ], (d) => {
     useDoor(d, 'civic-steps-to-canal');
     readSign(d, 'civic-evening-call');
   });
-  route.at(60, 'Leave a wider notice with the rule, both district counts and the details still needed', ['scope', 'responsibility', 'perspectives', 'ethics'], (d) => {
+  route.at(60 + extra, 'Leave a wider notice with the rule, both district counts and the details still needed', ['scope', 'responsibility', 'perspectives', 'ethics'], (d) => {
     useDoor(d, 'civic-canal-to-steps');
     d.talk('civic-clerk', 'Leave a wider route notice');
     expect(d.done('civic.access')).toBe(true);
@@ -1631,19 +1808,24 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Nexus with the Uncounted Reader and two reading rests', end: 91, play: () => nexusToEmberford('rests') },
     { name: 'Nexus with the separate grant and museum date rails', end: 89, play: () => nexusToEmberford('ribbon') },
     { name: 'Nexus with the slipped print and Emberford’s one-name tag', end: 98, play: () => nexusToEmberford('print') },
+    { name: 'Nexus with both layouts at the Packing Table', end: 92, play: () => nexusToEmberford('packing') },
+    { name: 'Nexus and Emberford with both scout protocols', end: 96, play: () => nexusToEmberford('scout') },
+    { name: 'Nexus with the Hinged Reader and the working-model check', end: 91, play: () => nexusToEmberford('viewer') },
     { name: 'Nile first visit from a prepared Chapter 1 save', end: 50, play: () => nileDispatch() },
     { name: 'Nile first visit with the Reading Window', end: 53, play: () => nileDispatch('reading-window') },
     { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch('borrowed-mark') },
     { name: 'Nile first visit with the lamp and the pinned slip', end: 54, play: () => nileDispatch('lamp-slip') },
     { name: 'Nile first visit with the two closing slips', end: 53, play: () => nileDispatch('closing-peg') },
     { name: 'Nile route through Royal Records and the route model', end: 54, play: () => nileDispatch('royal-seal') },
-    { name: 'Nile Royal Records route with the Tilt Tray stop', end: 57, play: () => nileDispatch('royal-seal', true) },
+    { name: 'Nile Royal Records route with the Tilt Tray stop', end: 57, play: () => nileDispatch('royal-seal', 'tilt-tray') },
+    { name: 'Nile first visit with the Map Room sketch', end: 56, play: () => nileDispatch('workers', 'wayfinding') },
     { name: 'Preserved Lives from a prepared Chapter 2 save', end: 50, play: preservedLives },
     { name: 'Observatory Coast from a prepared Chapter 3 save', end: 50, play: observatoryCoast },
     { name: 'Observatory Coast with the quay bell slip', end: 52, play: () => observatoryCoast('bell-slip') },
     { name: 'Observatory Coast with the menders’ frame and lookout’s check', end: 54, play: () => observatoryCoast('clear-terms') },
     { name: 'Living Forest from a prepared Chapter 4 save', end: 55, play: () => livingForest(false) },
     { name: 'Living Forest starting with the bridge route book', end: 55, play: () => livingForest(true) },
+    { name: 'Living Forest with the Green Squares survey', end: 67, play: () => livingForest(true, true) },
     { name: 'Metalworks from a prepared Chapter 5 save', end: 50, play: () => metalworks(false) },
     { name: 'Metalworks with the Turned Tag investigation', end: 57, play: () => metalworks(true) },
     { name: 'City of Copies from a prepared Chapter 6 save', end: 51, play: cityOfCopies },
@@ -1654,7 +1836,8 @@ describe('rolling TOK coverage audit', () => {
     { name: 'House of Performance with an early aisle-seat request', end: 58, play: () => houseOfPerformance('move', true) },
     { name: 'Market of Measures from a prepared Chapter 9 save', end: 52, play: marketOfMeasures },
     { name: 'Water Commons from a prepared Chapter 10 save', end: 57, play: waterCommons },
-    { name: 'Civic Machine from a prepared Chapter 11 save', end: 63, play: civicMachine },
+    { name: 'Civic Machine from a prepared Chapter 11 save', end: 63, play: () => civicMachine() },
+    { name: 'Civic Machine with the shared receiving mark', end: 73, play: () => civicMachine(true) },
     { name: 'Archive of Voices from a prepared Chapter 12 save', end: 60, play: () => archiveOfVoices() },
     { name: 'Archive of Voices with the approved queue excerpt', end: 63, play: () => archiveOfVoices(true) },
     { name: 'Island of Models from a prepared Chapter 13 save', end: 67, play: () => islandOfModels() },

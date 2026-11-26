@@ -10,6 +10,7 @@ import { civicAllocation, type CivicRule, type CivicSample } from './civicConsol
 import { voiceReading, type VoiceSource, type VoiceView } from './voiceReadings';
 import { islandPlan, type IslandLanding, type IslandRoute } from './islandPlan';
 import { councilClock, type CouncilTrial } from './councilClock';
+import { scoutDecision, scoutNextTrial, scoutTrials, type ScoutDecision, type ScoutProtocol, type ScoutRoute } from './scoutRoutes';
 /**
  * Domain engine. Scenes send typed commands; the engine checks preconditions,
  * computes ONE valid state transition and returns events for the view to show
@@ -116,6 +117,8 @@ export type Command =
   | { type: 'RunVoiceReading'; source: VoiceSource; view: VoiceView }
   | { type: 'RunIslandPlan'; route: IslandRoute; landing: IslandLanding }
   | { type: 'RunCouncilClock'; trial: CouncilTrial }
+  | { type: 'RunScoutRoute'; protocol: ScoutProtocol; first: ScoutRoute; trial: number; decision: ScoutDecision }
+  | { type: 'ReviewScoutProtocol'; protocol: ScoutProtocol }
   | { type: 'BuildLabel'; kit: string; subject: string; criterion: string; limit: string }
   | { type: 'TurnLock'; lock: string; choice: Record<string, string> }
   | { type: 'ShowdownStart'; showdown: string; relaxed?: boolean }
@@ -577,6 +580,28 @@ export class Engine {
           if (s.mapId !== 'council.hall' || s.flags['council.arrived'] !== true) throw new Error('Use the watch bench in the Council of Inquiry.');
           councilClock(cmd.trial);
           const key = `council.trial.${cmd.trial}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
+          break;
+        }
+        case 'RunScoutRoute': {
+          if (s.mapId !== 'aethelgard.emberford') throw new Error('Use the cart at Emberford’s scout board.');
+          const trials = scoutTrials(cmd.first, cmd.protocol);
+          const rounds = `scout.rounds.${cmd.protocol}`;
+          const played = Number(s.flags[rounds] ?? 0);
+          if (cmd.trial !== scoutNextTrial(played)) throw new Error('Set the cart up for the current round.');
+          const { fits } = scoutDecision(trials[cmd.trial], cmd.decision);
+          s = apply([
+            { setFlag: rounds, value: played + 1 },
+            { setFlag: `scout.played.${cmd.protocol}`, value: true },
+            { setFlag: `scout.result.${cmd.protocol}`, value: `${cmd.decision}.${fits ? 'fits' : 'blocked'}` },
+          ], s, out);
+          break;
+        }
+        case 'ReviewScoutProtocol': {
+          if (s.mapId !== 'aethelgard.emberford') throw new Error('Use the cart at Emberford’s scout board.');
+          scoutTrials('orchard', cmd.protocol);
+          if (s.flags[`scout.played.${cmd.protocol}`] !== true) throw new Error('Send the practice cart around first.');
+          const key = `scout.checked.${cmd.protocol}`;
           if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
