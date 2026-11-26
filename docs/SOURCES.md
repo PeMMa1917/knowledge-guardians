@@ -711,6 +711,18 @@ The Sea chartroom draws on the account in which Ariadne asks Daedalus for a way 
 
 In the Nexus, symmetry guides a new cutting pattern. The trace of a repair and its dated order support a different claim about the old cloth. The hanging and its repair record are fictional. The glossary's word histories link to individual dictionary entries. [American Heritage Dictionary, symmetry](https://www.ahdictionary.com/word/search.html?q=symmetry) · [American Heritage Dictionary, trace](https://www.ahdictionary.com/word/search.html?q=trace) · [Word histories](../src/content/glossary.json)
 
+### Reasoning words in Lumen’s glossary
+
+Lumen uses present-day reasoning terms for fictional actions. The historical notes describe where the words came from. A second example opens after a different check or handover in the same adventure. Earlier saves use their recorded actions. [Glossary and exact entry sources](../src/content/glossary.json)
+
+| Terms | Word histories |
+| --- | --- |
+| Deduction, induction | [Online Etymology Dictionary, deduction](https://www.etymonline.com/word/deduction) · [induction](https://www.etymonline.com/word/induction) |
+| Abduction | [Online Etymology Dictionary, abduction](https://www.etymonline.com/word/abduction) · [Igor Douven, Abduction, Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/abduction/) |
+| Analogy, pragmatic reasoning | [American Heritage Dictionary, analogy](https://www.ahdictionary.com/word/search.html?q=analogy) · [pragmatic](https://www.ahdictionary.com/word/search.html?q=pragmatic) |
+| Causal reasoning, concession | [Merriam-Webster, causal](https://www.merriam-webster.com/dictionary/causal) · [concession](https://www.merriam-webster.com/dictionary/concession) |
+| Reframe | [Online Etymology Dictionary, reframe](https://www.etymonline.com/word/reframe) |
+
 ### Island carrying routes
 
 - Smithsonian accession USNM PAL 160174 is a Paleosquilla holotype from the Simití Formation in Antioquia, Colombia. The collection date is 26 April 1942. The institution credits the image to Mark Florence and describes its two views as part and counterpart. Ivo’s scarce cart slots, the paper views and their load are fictional. [Smithsonian record through GBIF](https://api.gbif.org/v1/occurrence/1316818921)

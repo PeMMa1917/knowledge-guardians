@@ -7,6 +7,7 @@ import { migrateCampaign } from '../src/domain/saves';
 import { Driver } from './driver';
 
 const pack = buildPack();
+const memories = (d: Driver, id: string) => examplesFor(pack.glossary.find((entry) => entry.id === id)!, d.s, (c) => check(c, d.s));
 
 describe('smart glossary (spec 47.10)', () => {
   it('marks each term once, keeps the text the same, and prefers the longest form', () => {
@@ -80,6 +81,76 @@ describe('smart glossary (spec 47.10)', () => {
   it('every term appears somewhere in the chapter text', () => {
     const all = JSON.stringify(pack.dialogue.map((n) => n.text)).toLowerCase();
     for (const g of pack.glossary) expect(g.match.some((m) => all.includes(m)), g.id).toBe(true);
+  });
+});
+
+describe('reasoning words in Lumen’s glossary', () => {
+  it.each([
+    ['deduction', 'corner.choose'], ['induction', 'forest.moss.compare'], ['abduction', 'nile.lamp.repeat'],
+    ['analogy', 'metal.witness.archive'], ['causal', 'water.scribe.revise'], ['pragmatic', 'nexus.rest.pair-read'],
+    ['concession', 'dace.how'], ['reframe', 'dace.how'],
+  ])('registers the specific source, a starting image and distinct earned %s examples', (id, node) => {
+    const entry = pack.glossary.find((item) => item.id === id)!;
+    expect(entry.history?.url).toBe(pack.sources.find((source) => source.id === `LEX-REASON-${id.toUpperCase()}`)?.url);
+    expect(entry.examples.filter((example) => example.if).length).toBeGreaterThanOrEqual(2);
+    const d = new Driver();
+    expect(memories(d, id)).toEqual(entry.examples.filter((example) => !example.if).map((example) => example.text));
+    expect(memories(d, id)).toHaveLength(1);
+    expect(segmentText(d.e.node(node).text, pack.glossary).map((segment) => segment.term)).toContain(id);
+  });
+
+  it('starts with a fitting, then adds the later deduction only after grouping the rack', () => {
+    const d = new Driver();
+    d.walk('corner.frame', ['Lift the loose corner']);
+    expect(memories(d, 'deduction')).toEqual([expect.stringContaining('empty hooks')]);
+    d.walk('corner.try', ['Turn the square insert']);
+    expect(memories(d, 'deduction')).toEqual([expect.stringContaining('Fourth Corner')]);
+    d.s.mapId = 'civic.dispatch';
+    d.walk('civic-overlap-red', ['Unclip the three slips']);
+    d.walk('civic-overlap-blue', ['Unclip the three slips']);
+    d.walk('civic-overlap-rack', ['Start filling the rack', 'Leave the rows']);
+    expect(memories(d, 'deduction')).toHaveLength(1);
+    d.walk('civic-overlap-rack', ['Start filling the rack', 'Group the remaining rows']);
+    d.s = migrateCampaign(JSON.parse(JSON.stringify(d.s))).state;
+    expect(memories(d, 'deduction')).toEqual([expect.stringContaining('Fourth Corner'), expect.stringContaining('24 of the 64')]);
+  });
+
+  it('only calls a strip a transfer when Leila’s was actually used and both tallies checked', () => {
+    const d = new Driver();
+    d.s.objectivesDone.push('metal.witness.compare');
+    d.run({ type: 'SetFlag', flag: 'metal.witness.use', value: 'loan' });
+    expect(memories(d, 'analogy')).toEqual([expect.stringContaining('crate')]);
+    d.run({ type: 'SetFlag', flag: 'metal.witness.use', value: 'archive' });
+    expect(memories(d, 'analogy')).toEqual([expect.stringContaining('Leila’s earlier guide strip')]);
+    d.s.objectivesDone.push('asia.loft.compare');
+    expect(memories(d, 'analogy')).toEqual([expect.stringContaining('Leila’s earlier guide strip'), expect.stringContaining('Island Label Loft')]);
+  });
+
+  it('keeps the missing groove open until the lamp revisits its first position', () => {
+    const d = new Driver();
+    d.s.mapId = 'nile.workyard';
+    d.run({ type: 'SetFlag', flag: 'nile.arrived', value: true });
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-STRIKE' });
+    d.walk('nile.lamp.start', ['Look down with the lamp above', 'Leave the lamp above']);
+    d.walk('nile.lamp.start', ['Move the lamp to the side', 'Leave the lamp to the side']);
+    expect(memories(d, 'abduction')).toEqual([expect.stringContaining('wet wick')]);
+    d.walk('nile.lamp.start', ['Return the lamp above', 'Leave the readings ready']);
+    expect(memories(d, 'abduction')).toEqual([expect.stringContaining('changing view explains')]);
+    expect(pack.sources.find(({ id }) => id === 'REF-REASON-ABDUCTION')?.url).toBe('https://plato.stanford.edu/entries/abduction/');
+  });
+
+  it('adds both debate memories only after the distinct moves are made and the Showdown closes', () => {
+    const d = new Driver();
+    for (const exhibit of ['OBJ-001-A', 'OBJ-001-B', 'OBJ-001-C']) d.run({ type: 'InspectExhibit', exhibit });
+    d.walk('venn.start', ['Does a patent prove']);
+    d.run({ type: 'ShowdownStart', showdown: 'practice', relaxed: true });
+    d.moves({ move: 'claim', claim: 'practical' }, { move: 'support', card: 'card.dpma-history' },
+      { move: 'support', card: 'card.biro-object' });
+    expect(memories(d, 'concession')).toEqual([expect.stringContaining('the fold carries a date')]);
+    d.moves({ move: 'concede' }, { move: 'reframe' }, { move: 'rest' });
+    expect(memories(d, 'concession')).toEqual([expect.stringContaining('limited point of Venn’s')]);
+    expect(memories(d, 'reframe')).toEqual([expect.stringContaining('Venn’s crowd')]);
+    expect(memories(new Driver(), 'reframe')).toEqual([expect.stringContaining('whose map is better')]);
   });
 });
 

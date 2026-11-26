@@ -1,4 +1,78 @@
 {
+ "sources": [
+  {
+   "id": "LEX-REASON-DEDUCTION",
+   "title": "Online Etymology Dictionary: deduction",
+   "url": "https://www.etymonline.com/word/deduction",
+   "locator": "Origin and history, and the logic sense",
+   "supports": "The word reached English through French and from Latin deductio.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "LEX-REASON-INDUCTION",
+   "title": "Online Etymology Dictionary: induction",
+   "url": "https://www.etymonline.com/word/induction",
+   "locator": "Origin and history, including Cicero’s use for a reasoning term",
+   "supports": "Latin inductio could mean a leading in or an introduction.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "LEX-REASON-ABDUCTION",
+   "title": "Online Etymology Dictionary: abduction",
+   "url": "https://www.etymonline.com/word/abduction",
+   "locator": "Origin and history of the noun and its uses",
+   "supports": "The Latin verb abducere meant to lead or take away.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "LEX-REASON-ANALOGY",
+   "title": "American Heritage Dictionary: analogy",
+   "url": "https://www.ahdictionary.com/word/search.html?q=analogy",
+   "locator": "Etymology and reasoning sense",
+   "supports": "Analogy reached Middle English through French and Latin.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "LEX-REASON-CAUSAL",
+   "title": "Merriam-Webster: causal",
+   "url": "https://www.merriam-webster.com/dictionary/causal",
+   "locator": "Word History, Etymology",
+   "supports": "The English adjective came from Late Latin causalis.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "LEX-REASON-PRAGMATIC",
+   "title": "American Heritage Dictionary: pragmatic",
+   "url": "https://www.ahdictionary.com/word/search.html?q=pragmatic",
+   "locator": "Etymology and practical sense",
+   "supports": "Greek pragma meant a deed.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "LEX-REASON-CONCESSION",
+   "title": "Merriam-Webster: concession",
+   "url": "https://www.merriam-webster.com/dictionary/concession",
+   "locator": "Word History, Etymology",
+   "supports": "Middle English took the noun through Anglo-French.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "LEX-REASON-REFRAME",
+   "title": "Online Etymology Dictionary: reframe",
+   "url": "https://www.etymonline.com/word/reframe",
+   "locator": "Origin and history of the verb",
+   "supports": "English made reframe from re-, meaning again, and the verb frame.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "REF-REASON-ABDUCTION",
+   "title": "Igor Douven: Abduction, Stanford Encyclopedia of Philosophy",
+   "url": "https://plato.stanford.edu/entries/abduction/",
+   "locator": "Introduction and section 1, Abduction: The General Idea",
+   "supports": "The reasoning sense concerns explanatory inference. A modern use favours the best available explanation. This is a distinct use from the dictionary entry’s historical gloss.",
+   "accessed": "2026-11-26"
+  }
+ ],
  "glossary": [
   {
    "id": "truth",
@@ -611,6 +685,274 @@
     },
     {
      "text": "The Title Lock opens only for a focused, arguable question."
+    }
+   ]
+  },
+  {
+   "id": "deduction",
+   "term": "Deduction",
+   "match": [
+    "deduction",
+    "deductions",
+    "deductive"
+   ],
+   "text": "A conclusion that has to follow if the starting statements are true and the steps are sound.",
+   "history": {
+    "note": "The word reached English through French and from Latin deductio. The Latin word could describe leading something away or making an amount smaller. The English reasoning sense concerns what follows from a starting point.",
+    "url": "https://www.etymonline.com/word/deduction"
+   },
+   "examples": [
+    {
+     "if": {
+      "flag": "corner.repeatFit",
+      "eq": true
+     },
+     "text": "At the Fourth Corner you turned the square insert. If the diamond spacing repeats at each corner, the last diamond needs that same spacing. The fitting gives you a pattern to use for a new hanging."
+    },
+    {
+     "if": {
+      "flag": "civic.overlap.counted",
+      "eq": true
+     },
+     "text": "At Civic dispatch, the rule leaves four choices for the first load, three unused marks for the second and two for the third. That gives 24 of the 64 ordered rows with all three on separate marks."
+    },
+    {
+     "text": "The store has four empty hooks. If each of three parcels needs its own hook, one hook will stay empty."
+    }
+   ]
+  },
+  {
+   "id": "induction",
+   "term": "Induction",
+   "match": [
+    "induction",
+    "inductive"
+   ],
+   "text": "Use several observations to suggest a pattern or make an expectation about the next case. Another case could change your mind.",
+   "history": {
+    "note": "Latin inductio could mean a leading in or an introduction. Cicero used it to translate a Greek term for reasoning from cases.",
+    "url": "https://www.etymonline.com/word/induction"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "coast.breeze.first"
+     },
+     "text": "At the headland you checked still air and two gusts. The step reading dipped in both gusts. That gives you a reason to look for a dip in the next gust at this stand."
+    },
+    {
+     "if": {
+      "objective": "forest.moss.survey"
+     },
+     "text": "Your Forest frames found fewer green squares at the path edge in both light pairs. That supports checking for the same pattern at another trail edge. The four patches leave its cause open."
+    },
+    {
+     "if": {
+      "objective": "water.retest"
+     },
+     "text": "At the Weir you repeated the same setting after repair and checked another setting. More water reached the outlets across the repaired runs in that model. A keeper could use the pattern to plan another check at the same intake."
+    },
+    {
+     "text": "A ferry keeper sees the step get wet at three successive high waters. She watches that step sooner on the next high tide."
+    }
+   ]
+  },
+  {
+   "id": "abduction",
+   "term": "Abduction",
+   "match": [
+    "abduction",
+    "abductive"
+   ],
+   "text": "In reasoning, use the clues to favour the best available explanation. You can keep other explanations open and look for a clue that separates them.",
+   "history": {
+    "note": "The Latin verb abducere meant to lead or take away. English has several uses of abduction. Its reasoning sense names a later technical use.",
+    "url": "https://www.etymonline.com/word/abduction"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "nile.lamp.compare"
+     },
+     "text": "The Nile slip showed two grooves from above. The missing groove appeared from the side and disappeared when you returned the lamp. The changing view explains the difference while the slip stays fixed."
+    },
+    {
+     "if": {
+      "objective": "metal.tag.explained"
+     },
+     "text": "You turned the old triangle and fitted a fresh one. Each could explain the tag’s new direction. The trip note records the direction and says nothing about the hole that could separate the explanations."
+    },
+    {
+     "text": "A lamp went dark. The wick is wet and the oil still reaches it. The wet wick is the better lead for the keeper to check first."
+    }
+   ]
+  },
+  {
+   "id": "analogy",
+   "term": "Analogy",
+   "match": [
+    "analogy",
+    "analogies",
+    "analogical"
+   ],
+   "text": "Use a relationship from one case to guide a check or choice in another. Check whether it still holds there.",
+   "history": {
+    "note": "Analogy reached Middle English through French and Latin. Its Greek roots expressed proportion or correspondence between things.",
+    "url": "https://www.ahdictionary.com/word/search.html?q=analogy"
+   },
+   "examples": [
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "metal.witness.use",
+        "eq": "archive"
+       },
+       {
+        "objective": "metal.witness.compare"
+       }
+      ]
+     },
+     "text": "You used Leila’s earlier guide strip at the Metalworks. Its fold held a starting corner in the archive. At the new shop it held the order of the six sleeve positions so you could compare two tallies."
+    },
+    {
+     "if": {
+      "objective": "asia.loft.compare"
+     },
+     "text": "At the Island Label Loft you used a lesson from case labels on the two berths. A case figure belongs with its tested setting, and a place name belongs with the row it describes. The dock copy needed the same fit between a claim and its own record."
+    },
+    {
+     "text": "Find a ferry crate by matching its tag to its shelf. Then try matching each bench tool’s tag to its own drawer."
+    }
+   ]
+  },
+  {
+   "id": "causal",
+   "term": "Causal reasoning",
+   "match": [
+    "causal reasoning",
+    "causal explanation",
+    "causal explanations"
+   ],
+   "text": "Look for what made a difference. A useful test changes one thing and checks which result changes with it.",
+   "history": {
+    "note": "The English adjective came from Late Latin causalis. The Latin form was built from causa, a word for a cause or reason.",
+    "url": "https://www.merriam-webster.com/dictionary/causal"
+   },
+   "examples": [
+    {
+     "if": {
+      "flag": "sim.fair",
+      "eq": true
+     },
+     "text": "At the Nexus marking bench you compared runs that changed one thing at a time. Keeping the rest of the setup still gave you a way to test what changed the mark in the model."
+    },
+    {
+     "if": {
+      "objective": "catchment.compare"
+     },
+     "text": "At the Water Commons you released the same six floats with the pocket open and covered. When open, the pocket held two and four arrived below. Covering it let all six reach the lower peg."
+    },
+    {
+     "text": "Keep the crate and the cart the same. Change the wheel and see whether the rattle changes."
+    }
+   ]
+  },
+  {
+   "id": "pragmatic",
+   "term": "Pragmatic reasoning",
+   "match": [
+    "pragmatic reasoning",
+    "pragmatic"
+   ],
+   "text": "Choose a workable action by thinking about what it will do, who it can help and what it will leave for later.",
+   "history": {
+    "note": "Greek pragma meant a deed. The word came through Latin, where its form could describe being skilled in practical business.",
+    "url": "https://www.ahdictionary.com/word/search.html?q=pragmatic"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "nexus.rest.checked"
+     },
+     "text": "You placed the scarce reading rests where people could use them. At the check you kept the loan count and a different group’s request where the next keeper could see both."
+    },
+    {
+     "if": {
+      "objective": "boundary.water.deliver"
+     },
+     "text": "You used a signed boundary order to send four service slips first. The delivery let that group act and left the five other households’ requests visible for the next round."
+    },
+    {
+     "text": "One lamp can help the stitch keeper now or light the queue after dark. Pick who needs it first and arrange the next handover."
+    }
+   ]
+  },
+  {
+   "id": "concession",
+   "term": "Concession",
+   "match": [
+    "concession",
+    "concessions",
+    "concede",
+    "conceded"
+   ],
+   "text": "In an argument, accept a fair point from the other person. Keep checking what that point actually supports.",
+   "history": {
+    "note": "Middle English took the noun through Anglo-French. The Latin source belonged to a family of words for giving way or granting a point.",
+    "url": "https://www.merriam-webster.com/dictionary/concession"
+   },
+   "examples": [
+    {
+     "if": {
+      "flag": "sd.practice.conceded",
+      "eq": true
+     },
+     "text": "In the practice Showdown you accepted a limited point of Venn’s before continuing. The rest of your case still needed its own support."
+    },
+    {
+     "if": {
+      "flag": "sd.stage-vesper.conceded",
+      "eq": true
+     },
+     "text": "At the House of Performance you gave Vesper the short call a late arrival can use. Hari still had a place for the fuller scene note."
+    },
+    {
+     "text": "Grant the keeper that the fold carries a date. Then ask who can link that date to the box."
+    }
+   ]
+  },
+  {
+   "id": "reframe",
+   "term": "Reframe",
+   "match": [
+    "reframe",
+    "reframes",
+    "reframed",
+    "reframing"
+   ],
+   "text": "Change the question or the way a disagreement is set up. Say what each answer would need to show.",
+   "history": {
+    "note": "English made reframe from re-, meaning again, and the verb frame. An early use described putting something together anew.",
+    "url": "https://www.etymonline.com/word/reframe"
+   },
+   "examples": [
+    {
+     "if": {
+      "flag": "sd.practice.reframed",
+      "eq": true
+     },
+     "text": "You helped Venn’s crowd hear several questions in the word first. A patent date answers one of them. Evidence of a pen that worked for its users has a different job."
+    },
+    {
+     "if": {
+      "flag": "sd.stage-vesper.reframed",
+      "eq": true
+     },
+     "text": "You helped Vesper’s audience ask separate questions. A seat view can show what moved and what stayed hidden. What a character meant or what a late visitor needs to hear calls for another check."
+    },
+    {
+     "text": "Before arguing over whose map is better, ask whether the reader is carrying a tray or looking for an exhibit."
     }
    ]
   }
