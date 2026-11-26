@@ -88,6 +88,46 @@ describe('Adventure encounter capture', () => {
       text: expect.stringContaining('a Guardian called Route test, and that I would thank them') }));
   });
 
+  it('records a deliberate effect-free deferral, coalesces an immediate repeat and preserves a later different choice', () => {
+    const d = setup();
+    d.action({ type: 'EnterNode', node: 'kip.start' });
+    const decline: Command = { type: 'ChooseDialogueOption', node: 'kip.start', index: 1 };
+    expect(d.action(decline).nextNode).toBeNull();
+    d.action(decline, second);
+    expect(d.view().entries.filter(({ event }) => event?.kind === 'choice')).toEqual([expect.objectContaining({
+      id: 'choice:kip.start:1', at: first, text: expect.stringContaining('Not now, thanks.'),
+    })]);
+    d.action({ type: 'InspectExhibit', exhibit: 'OBJ-001-A' }, second);
+    d.action({ type: 'EnterNode', node: 'kip.start' }, second);
+    d.action(decline, second);
+    expect(d.action({ type: 'ChooseDialogueOption', node: 'kip.start', index: 0 }, second).nextNode).toBe('kip.idea');
+    expect(d.view().entries.filter(({ event }) => event?.kind === 'choice').map(({ id }) => id)).toEqual([
+      'choice:kip.start:1', 'choice:kip.start:1@2', 'choice:kip.start:0',
+    ]);
+  });
+
+  it('leaves the generated panel dismissal out while keeping the actual keepsake choice', () => {
+    const keepsake = pack.keepsakes![0].id;
+    const localPack = { ...pack, dialogue: pack.dialogue.map((node) =>
+      node.id === 'kip.start' ? { ...node, options: [] } : node),
+    keepsakeTalks: [{ id: 'capture-test', character: 'kip-arden', node: 'kip.idea', keepsake, text: 'Show Kip this keepsake.' }] };
+    const localEngine = new Engine(localPack);
+    const s = newCampaign(localPack, 'Route test', 'diary-player', 7);
+    s.flags[`keepsake.${keepsake}`] = true;
+    const p = newPermanent();
+    const options = localEngine.visibleOptions('kip.start', s);
+    expect(options.map(({ option }) => option.text)).toEqual(['Show Kip this keepsake.', 'Goodbye.']);
+    const dismiss = localEngine.dispatch({ type: 'ChooseDialogueOption', node: 'kip.start', index: options[1].index }, s, p, first);
+    const choose = localEngine.dispatch({ type: 'ChooseDialogueOption', node: 'kip.start', index: options[0].index }, s, p, first);
+    expect(dismiss.nextNode).toBeNull();
+    expect(dismiss.state.adventureDiary.entries.some(({ event }) => event?.kind === 'choice')).toBe(false);
+    expect(choose.nextNode).toBe('kip.idea');
+    expect(choose.state.adventureDiary.entries).toContainEqual(expect.objectContaining({
+      event: expect.objectContaining({ kind: 'choice', ref: 'kip.start' }),
+      text: expect.stringContaining('Show Kip this keepsake.'),
+    }));
+  });
+
   it('allows exact specimen collection citations only after the actual claim', () => {
     const d = setup();
     const specimen = pack.exhibits.find(hasSpecimen)!;

@@ -66,6 +66,8 @@ import { isDiaryNoteKind } from './diaryReflection';
 import { setDiaryPortfolioWriting } from './adventureWriting';
 import { biographyReadFlag, isHistoricalBiography } from './historicalEncounters';
 
+const DIALOGUE_FALLBACK = 999;
+
 export type Command =
   | IncentiveAction
   | BendAction
@@ -309,7 +311,7 @@ export class Engine {
     const extra = this.keepsakeOptions(nodeId, s);
     if (!extra.length) return base;
     const n = this.node(nodeId);
-    return [...base, ...extra, ...(base.length ? [] : [{ option: { text: n.next ? 'Go on.' : 'Goodbye.', next: n.next ?? null }, index: 999 }])];
+    return [...base, ...extra, ...(base.length ? [] : [{ option: { text: n.next ? 'Go on.' : 'Goodbye.', next: n.next ?? null }, index: DIALOGUE_FALLBACK }])];
   }
 
   /**
@@ -390,7 +392,7 @@ export class Engine {
     let s = s0;
     let p = p0;
     let nextNode: string | null | undefined;
-    let diaryChoice: ReturnType<typeof diaryDialogueChoice>;
+    let diaryChoice: ReturnType<typeof diaryDialogueChoice> | undefined;
     try {
       switch (cmd.type) {
         case 'VisitPlace':
@@ -630,10 +632,11 @@ export class Engine {
         }
         case 'ChooseDialogueOption': {
           const n = this.node(cmd.node);
-          const opt = cmd.index >= 999 ? this.visibleOptions(cmd.node, s).find((o) => o.index === cmd.index)?.option : n.options?.[cmd.index];
+          const opt = cmd.index >= DIALOGUE_FALLBACK ? this.visibleOptions(cmd.node, s).find((o) => o.index === cmd.index)?.option : n.options?.[cmd.index];
           if (!opt) throw new Error('That option does not exist');
           if (!check(opt.if, s)) throw new Error('That option is not available now');
-          diaryChoice = diaryDialogueChoice(this.pack, n, opt, cmd.index, this.visibleOptions(cmd.node, s).length, s.player);
+          // The generated fallback mirrors the ordinary next/close control.
+          if (cmd.index !== DIALOGUE_FALLBACK) diaryChoice = diaryDialogueChoice(this.pack, n, opt, cmd.index, s.player);
           s = apply(opt.effects, s, out);
           if (s.companion && isInquiry(opt.tag)) s = this.approve(s, out, events, `${cmd.node}.${cmd.index}`);
           nextNode = opt.next ?? null;

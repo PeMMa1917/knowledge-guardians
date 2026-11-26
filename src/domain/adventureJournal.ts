@@ -90,15 +90,8 @@ function journalDraft(pack: ContentPack, id: string): EntryDraft | undefined {
   if (note) return diaryEvent(`record:${id}`, 'finding', id, 'From my field notes', firstPerson(note.text));
 }
 
-function choiceCanChange(effects: Effect[] | undefined): boolean {
-  return effects?.some((effect) => 'setFlag' in effect || 'relation' in effect || 'addCard' in effect
-    || 'giveItem' in effect || 'takeItem' in effect || 'companion' in effect || 'addMarks' in effect) ?? false;
-}
-
-/** Record substantive alternatives and actions rather than dismissal buttons. */
-export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, option: DialogueOption, index: number, alternatives: number, player: CampaignState['player']): DiaryEntryDraft | undefined {
-  const next = option.next ? pack.dialogue.find((line) => line.id === option.next) : undefined;
-  if (!option.tag && !option.open && !choiceCanChange(option.effects) && !choiceCanChange(next?.effects) && !(next && alternatives > 1)) return;
+/** Record deliberate dialogue selections, including leaving something as it is. */
+export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, option: DialogueOption, index: number, player: CampaignState['player']): DiaryEntryDraft {
   const person = pack.characters.find((character) => character.id === node.speaker)?.name;
   return diaryEvent(`choice:${node.id}:${index}`, 'choice', node.id, person ? `With ${person}` : 'A choice on the road',
     `I chose “${personalise(option.text, player)}”${person ? ` when I spoke with ${person}` : ''}.`, {}, 'after-break');
