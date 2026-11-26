@@ -5005,6 +5005,9 @@ export class UI implements UIApi {
   openCopyComparison(edition: string): void {
     if (edition !== 'press' && edition !== 'landing' && edition !== 'proof') return;
     const { before, after, lost, restored } = compareCopy(edition);
+    const use = edition === 'press'
+      ? 'The words match, but without Tuesday the line could sound like a report about any day.'
+      : 'The words match, but without the clerk’s name the stall notice gives no way to tell who observed the trial.';
     const columns = h('div', { class: 'two-col' });
     const status = h('p', { role: 'status', 'aria-live': 'polite' });
     const aligned = new Set<'time' | 'credit'>();
@@ -5028,7 +5031,7 @@ export class UI implements UIApi {
           const events = ctx.controller.dispatch({ type: 'CompareCopy', edition });
           if (!events.some((e) => e.kind === 'error')) {
             status.textContent = restored.length ? `Repair checked. Both lines are back: “${restored.join('”, “')}”.`
-              : `Copy checked. This step lost “${lost.join('”, “')}”.`;
+              : `Copy checked. This step lost “${lost.join('”, “')}”. ${use}`;
           }
         } else {
           status.textContent = field === 'time' ? 'The time marks are lined up.' : 'The source lines are lined up.';

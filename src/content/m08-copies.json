@@ -35,8 +35,83 @@
      "skills": []
     },
     {
+     "id": "copies.check.press",
+     "title": "Compare the date on the press proof with the original trial log.",
+     "done": {
+      "flag": "copies.checked.press",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "certainty",
+       "interpretation"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ],
+      "minutes": 2
+     },
+     "skills": [],
+     "visible": {
+      "objective": "copies.arrival"
+     }
+    },
+    {
+     "id": "copies.check.landing",
+     "title": "Compare who signed the press proof and who signed the landing copy.",
+     "done": {
+      "flag": "copies.checked.landing",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "power",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ],
+      "minutes": 2
+     },
+     "skills": [],
+     "visible": {
+      "objective": "copies.arrival"
+     }
+    },
+    {
      "id": "copies.compare",
-     "title": "Line up the press and landing copies with the archive source, then talk to Printer Lark.",
+     "title": "Set out the checked copies with Printer Lark.",
      "done": {
       "flagSet": "copies.alignment"
      },
@@ -47,7 +122,12 @@
        "truth",
        "objectivity",
        "interpretation",
-       "certainty"
+       "certainty",
+       "explanation"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
       ],
       "atl": [
        "research",
@@ -62,7 +142,8 @@
        "history",
        "lang-langlit",
        "digital-society"
-      ]
+      ],
+      "minutes": 1
      },
      "skills": [
       "SK-MED-01",
@@ -84,6 +165,10 @@
        "perspective",
        "explanation",
        "culture"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
       ],
       "atl": [
        "research",
@@ -120,6 +205,10 @@
        "power",
        "responsibility",
        "justification"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics"
       ],
       "atl": [
        "communication",
@@ -174,6 +263,9 @@
        "interpretation",
        "truth"
       ],
+      "framework": [
+       "perspectives"
+      ],
       "atl": [
        "research",
        "social"
@@ -208,6 +300,10 @@
        "truth",
        "responsibility",
        "justification"
+      ],
+      "framework": [
+       "scope",
+       "ethics"
       ],
       "atl": [
        "communication",
@@ -266,6 +362,10 @@
        "responsibility",
        "values"
       ],
+      "framework": [
+       "perspectives",
+       "ethics"
+      ],
       "atl": [
        "communication",
        "social"
@@ -315,6 +415,10 @@
        "evidence",
        "certainty",
        "objectivity"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
       ],
       "atl": [
        "thinking",
@@ -487,7 +591,7 @@
   {
    "id": "copies.press.compare",
    "speaker": "copies-presskeeper",
-   "text": "We lost Tuesday at the press. By the landing, the clerk’s log was gone too. That left a neat line anyone could say was our rule. I need a record that shows where each change happened.",
+   "text": "We lost Tuesday at the press and the clerk’s name at the landing. The archive keeper wants to know which sheet changed first. Mina needs to know whether the wording describes a trial or sounds like a rule. The same three sheets can serve either job.",
    "historicalLabel": "fictional-world",
    "claimKind": "observation",
    "options": [
@@ -561,13 +665,13 @@
   {
    "id": "copies.alignment.editions",
    "speaker": "copies-presskeeper",
-   "text": "The dated original starts the row. I’ll leave its two later sheets beside it so a reader can watch the limits fall away as the line travels.",
+   "text": "Set the dated log first, then the press proof and the stall copy. A keeper can trace each change to a sheet and see where it entered the chain. Mina can still point to Tuesday on the first sheet when someone hears the last one as an everyday rule.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "copies.alignment.lines",
    "speaker": "copies-presskeeper",
-   "text": "Now the date and signature each have their own row. I’ll keep the gaps marked so a reader can see which copy we corrected.",
+   "text": "Pin the day under the line it limits and the clerk’s name under the line they observed. Mina can point to the words that turn an ordinary claim into a record of one trial. I’ll leave each strip with its edition so the keeper can still see when it dropped out.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -666,7 +770,7 @@
   {
    "id": "copies.lending.decide",
    "speaker": "copies-lendingkeeper",
-   "text": "I can hang a new sheet at the hall or send strips out to the copies people already use. A full sheet is easy to check at a glance. Strips can go out on both runners’ routes while the stalls are still open. We’ll keep an older copy to show what changed.",
+   "text": "Lark’s proof shows how the words reached us. A keeper uses it to check who made the observation. A reader deciding whether to enter needs to know what the words cover. A full sheet is easy to check at the hall door. Strips reach both runner routes while the stalls are open. Keep the dated old copy so anyone can trace our correction.",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -727,13 +831,13 @@
   {
    "id": "copies.response.reprint",
    "speaker": "copies-lendingkeeper",
-   "text": "The new sheet is at the door. People at the stalls still have their older copies. I’ve put an old sheet behind the new one in the record pouch.",
+   "text": "The full correction is up at the door. A reader who asks who recorded the shorter line can find the clerk’s log from here. The stall copies still carry the old words. The dated old sheet sits behind the reprint in the record pouch.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "copies.response.strip",
    "speaker": "copies-lendingkeeper",
-   "text": "The runners will fix the stall copies first. They’ll ask the keepers to put each strip directly beside the old line. The original sheet stays in the archive for anyone who wants to check.",
+   "text": "The runners will put the day and the clerk’s name beside the old words on each stall copy. A stallholder can see why the observation applies to one trial. A keeper tracing the change can still find the original in the archive.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -745,7 +849,7 @@
   {
    "id": "copies.lending.revise.reprint",
    "speaker": "copies-lendingkeeper",
-   "text": "The new sheet tells people it was Tuesday’s trial. A reader still asked whether they need a slip to enter. The slip identified an item being returned. The hall door stays open to readers without slips too.",
+   "text": "The reprint carries the day and the clerk’s name, but the reader still asked for permission. The log tells us what happened to one queue. The hall register answers who can enter. Keep the trial where a reader can check it, and give the entry rule its own line.",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -787,7 +891,7 @@
   {
    "id": "copies.lending.revise.strip",
    "speaker": "copies-lendingkeeper",
-   "text": "The stall correction arrived. A reader took our restored time as proof that the rule applied last Tuesday. The slip was for people returning something. We can say who can enter without burying the shorter queue note.",
+   "text": "The stall correction restores the day and the clerk’s name. One reader took that as proof of an entry rule. The log tells us what happened to one queue. The hall register answers who can enter. Give the runners a separate line that can travel with each correction.",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -903,6 +1007,54 @@
    "objective": "copies.arrival",
    "depth": 4,
    "text": "Take the passage to the City of Copies. It leads to the source archive."
+  },
+  {
+   "id": "h.copies.check.press.1",
+   "objective": "copies.check.press",
+   "depth": 1,
+   "text": "Lark’s first proof is on the table in the Print Workshop."
+  },
+  {
+   "id": "h.copies.check.press.2",
+   "objective": "copies.check.press",
+   "depth": 2,
+   "text": "Compare what still appears in the same words on both sheets."
+  },
+  {
+   "id": "h.copies.check.press.3",
+   "objective": "copies.check.press",
+   "depth": 3,
+   "text": "Line up both margins and check which one lost the day of the trial."
+  },
+  {
+   "id": "h.copies.check.press.4",
+   "objective": "copies.check.press",
+   "depth": 4,
+   "text": "At the first press proof, choose Line up the time marks and Line up the source lines. Check where Tuesday disappeared."
+  },
+  {
+   "id": "h.copies.check.landing.1",
+   "objective": "copies.check.landing",
+   "depth": 1,
+   "text": "Find the runners’ copy on the Lending Hall Landing."
+  },
+  {
+   "id": "h.copies.check.landing.2",
+   "objective": "copies.check.landing",
+   "depth": 2,
+   "text": "Follow the clerk’s name from the press proof to the posted notice."
+  },
+  {
+   "id": "h.copies.check.landing.3",
+   "objective": "copies.check.landing",
+   "depth": 3,
+   "text": "Use the comparison table to check the source as well as the time."
+  },
+  {
+   "id": "h.copies.check.landing.4",
+   "objective": "copies.check.landing",
+   "depth": 4,
+   "text": "At the runner’s landing copy, choose Line up the time marks and Line up the source lines. Check which sheet still has a named source."
   },
   {
    "id": "h.copies.compare.1",

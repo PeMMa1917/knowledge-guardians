@@ -1087,19 +1087,23 @@ function cityOfCopies(checkRamp = false): Route {
     readSign(d, 'copies-source');
     expect(d.done('copies.arrival')).toBe(true);
   });
-  route.at(10, 'Line up the original and press proof and find the trial day missing', ['evidence', 'objectivity', 'scope', 'methods-and-tools'], (d) => {
+  route.at(10, 'Line up the original and press proof and check how losing Tuesday broadens the reading', ['evidence', 'objectivity', 'certainty', 'interpretation', 'scope', 'methods-and-tools'], (d) => {
     useDoor(d, 'copies-press-path');
     d.talk('copies-presskeeper');
     checkCopyEdition(d, 'press', 'During Tuesday’s trial');
+    expect(d.done('copies.check.press')).toBe(true);
+    expect(d.done('copies.check.landing')).toBe(false);
   });
-  route.at(16, 'Check the landing copy against the press sheet and follow the loss of the clerk’s credit', ['evidence', 'objectivity', 'certainty', 'methods-and-tools'], (d) => {
+  route.at(16, 'Check the landing copy against the press sheet and see why it no longer names who observed the trial', ['evidence', 'objectivity', 'certainty', 'power', 'justification', 'methods-and-tools'], (d) => {
     useDoor(d, 'copies-press-to-landing');
     checkCopyEdition(d, 'landing', 'Lending Clerk, trial log');
+    expect(d.done('copies.check.landing')).toBe(true);
   });
   route.at(21, 'Pin the missing lines where each edition dropped them to show how the observation came to sound like a rule', ['truth', 'interpretation', 'explanation', 'scope'], (d) => {
     useDoor(d, 'copies-landing-to-press');
     d.talk('copies-presskeeper', 'Pin the missing time');
     expect(d.done('copies.compare')).toBe(true);
+    expect(readSign(d, 'copies-alignment-lines')).toContain('words it limits');
   });
   route.at(26, 'Mark the routes of full sheets and stall strips for readers who check different marks and names', ['perspective', 'culture', 'explanation', 'perspectives'], (d) => {
     useDoor(d, 'copies-press-return');
