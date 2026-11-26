@@ -100,7 +100,7 @@ export const WINDOW_SHOP: MapDef = {
     note('trial-track', 23, 11, 'the independent witness rail for the two turns', 'track',
       'The west lookout saw the first turn before the third bell. The outer post saw the second after the third bell. The paired sightings locate the sketch between them.',
       all(f('view', 'track'), until(compared)), 'trial.track'),
-    scene('publish', 20, 14, 'the checked picture and trace for mounting', 'draft', all(compared, until(post))),
+    scene('publish', 21, 14, 'the checked picture and trace for mounting', 'draft', all(compared, until(post))),
     note('desk-detail', 16, 13, 'Cado’s full-size sketch at the side desk', 'picture',
       'Both marks sit between the window edges at the third bell. The track is at the pilot’s rail outside.', f('post', 'deck')),
     note('desk-track', 23, 13, 'Cado’s dated route trace at the side desk', 'track',
