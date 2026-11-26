@@ -1,0 +1,319 @@
+{
+ "characters": [
+  {
+   "id": "rook-tamsin",
+   "name": "Rook Tamsin",
+   "role": "Former tester for the Gilded Seal; the Sceptic",
+   "sprite": "custom:pale.grey.slate.charcoal.scarf.white",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "rook.again",
+     "if": {
+      "flag": "rook.met",
+      "eq": true
+     }
+    },
+    {
+     "node": "rook.meet"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "rook.meet",
+   "speaker": "rook-tamsin",
+   "text": "A person in a grey coat sits on the bench and scrapes the gold off a small stamp with a knife. 'Do not look so worried. I am unmaking it.' They do not look up. 'Rook Tamsin. I tested claims for the Gilded Seal. Tested them, then stamped them anyway, when the money was right. I am done.'",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "rook.met",
+     "value": true
+    }
+   ],
+   "options": [
+    {
+     "text": "Why should I believe you quit?",
+     "tag": "Ask for a source",
+     "next": "rook.why"
+    },
+    {
+     "text": "That sounds heavy. What happened?",
+     "tag": "Listen first",
+     "next": "rook.hard"
+    },
+    {
+     "text": "Then help me. Which scales did the Seal certify?",
+     "next": "rook.help"
+    },
+    {
+     "text": "(Joke) Is scraping gold off a stamp a hobby, or a career change?",
+     "next": "rook.joke"
+    }
+   ]
+  },
+  {
+   "id": "rook.why",
+   "speaker": "rook-tamsin",
+   "text": "'Good. Do not believe me. Here is my source: this stamp, the agents' price list, and the weights they certified last month. Check them.' Rook hands you a creased price list. Small print, gold ink. 'One more thing, since you like sources. The Seal's first customer, years ago, wore a badge like yours.'",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "A Guardian? Who?",
+     "tag": "Ask for a source",
+     "next": "rook.who"
+    },
+    {
+     "text": "Will you walk with me?",
+     "next": "rook.offer"
+    }
+   ]
+  },
+  {
+   "id": "rook.hard",
+   "speaker": "rook-tamsin",
+   "text": "Rook stops scraping. 'I stamped a label on a well. \"Clean.\" It was not. A child got sick.' A long pause. 'She is fine now. I am not.' Rook clears their throat and is brisk again. 'Anyway. The Seal's first customer, years ago, wore a badge like yours.'",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "A Guardian? Who?",
+     "tag": "Ask for a source",
+     "next": "rook.who"
+    },
+    {
+     "text": "Walk with me. We can fix things in the open.",
+     "next": "rook.offer"
+    }
+   ]
+  },
+  {
+   "id": "rook.help",
+   "speaker": "rook-tamsin",
+   "text": "'Practical. Good.' Rook points with the knife: three scales, a gold stamp on each. 'The Seal certified those with the basket weighed in. Nobody lies, exactly. They just never say what the number counts.' Rook pockets the knife. 'Also. The Seal's first customer wore a badge like yours.'",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "A Guardian? Who?",
+     "tag": "Ask for a source",
+     "next": "rook.who"
+    },
+    {
+     "text": "Will you walk with me?",
+     "next": "rook.offer"
+    }
+   ]
+  },
+  {
+   "id": "rook.joke",
+   "speaker": "rook-tamsin",
+   "text": "Rook almost smiles, then decides not to. 'Career change. The pay is worse. The sleep is better.' The knife goes on scraping. 'You are funny. Vesper likes funny Guardians. Be careful with that.'",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "You know Vesper?",
+     "tag": "Ask",
+     "next": "rook.who"
+    },
+    {
+     "text": "Will you walk with me?",
+     "next": "rook.offer"
+    }
+   ]
+  },
+  {
+   "id": "rook.who",
+   "speaker": "rook-tamsin",
+   "text": "'I do not know the name. Vesper does. Vesper never says it.' Rook shrugs. 'I can tell you what I tested, not what I was told. That is the difference between me and the Seal now.'",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Will you walk with me?",
+     "next": "rook.offer"
+    }
+   ]
+  },
+  {
+   "id": "rook.offer",
+   "speaker": "rook-tamsin",
+   "text": "'I will walk with you, if you will have me. I am hard to fool. I am also hard to like. Ask anyone.'",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Walk with Rook. (Your current companion goes back to the Nexus for now.)",
+     "tag": "Ask",
+     "next": "rook.joined",
+     "effects": [
+      {
+       "companion": "rook-tamsin"
+      },
+      {
+       "setFlag": "rook.joined",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Not now. Wait for me here.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "rook.again",
+   "speaker": "rook-tamsin",
+   "text": "Rook is still on the bench. The stamp is plain brass now. 'Still here. Still sceptical. The offer stands.'",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Walk with Rook. (Your current companion goes back to the Nexus for now.)",
+     "tag": "Ask",
+     "next": "rook.joined",
+     "effects": [
+      {
+       "companion": "rook-tamsin"
+      },
+      {
+       "setFlag": "rook.joined",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Not now. Wait for me here.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "rook.joined",
+   "speaker": "rook-tamsin",
+   "text": "Rook stands and tucks the plain brass stamp into a pocket. 'Rule one: I ask for the source every time. Rule two: when I am unfair to someone, tell me. I will not notice by myself.'",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "memories": [
+  {
+   "id": "rook.bench",
+   "character": "rook-tamsin",
+   "if": {
+    "not": {
+     "flag": "rook.met",
+     "eq": true
+    }
+   },
+   "line": "Source? No? Then it is a guess."
+  },
+  {
+   "id": "rook.market",
+   "character": "rook-tamsin",
+   "if": {
+    "all": [
+     {
+      "flag": "rook.joined",
+      "eq": true
+     },
+     {
+      "not": {
+       "objective": "market.finish"
+      }
+     }
+    ]
+   },
+   "line": "Basket weighed in. Classic. I stamped twelve of those."
+  },
+  {
+   "id": "rook.water",
+   "character": "rook-tamsin",
+   "if": {
+    "all": [
+     {
+      "objective": "water.arrival"
+     },
+     {
+      "not": {
+       "objective": "water.finish"
+      }
+     }
+    ]
+   },
+   "line": "Everyone here remembers the last drought differently. Testimony. Lovely. Now show me the gauge."
+  },
+  {
+   "id": "rook.water.after",
+   "character": "rook-tamsin",
+   "if": {
+    "objective": "water.finish"
+   },
+   "line": "That old order had a Nexus mark on it. I am not saying anything. I am looking at you very hard."
+  },
+  {
+   "id": "rook.civic",
+   "character": "rook-tamsin",
+   "if": {
+    "all": [
+     {
+      "objective": "civic.arrival"
+     },
+     {
+      "not": {
+       "objective": "civic.finish"
+      }
+     }
+    ]
+   },
+   "line": "A machine that is sure of itself. I used to be one of those."
+  },
+  {
+   "id": "rook.voices",
+   "character": "rook-tamsin",
+   "if": {
+    "all": [
+     {
+      "objective": "voices.arrival"
+     },
+     {
+      "not": {
+       "objective": "voices.finish"
+      }
+     }
+    ]
+   },
+   "line": "I do not trust memories. Mine least of all. ...That was a joke. Mostly."
+  },
+  {
+   "id": "rook.island",
+   "character": "rook-tamsin",
+   "if": {
+    "all": [
+     {
+      "objective": "island.arrival"
+     },
+     {
+      "not": {
+       "objective": "island.finish"
+      }
+     }
+    ]
+   },
+   "line": "Every model is wrong. I like this island. It says so on the door."
+  },
+  {
+   "id": "rook.council",
+   "character": "rook-tamsin",
+   "if": {
+    "all": [
+     {
+      "objective": "council.arrival"
+     },
+     {
+      "not": {
+       "objective": "council.finish"
+      }
+     }
+    ]
+   },
+   "line": "If Vesper comes to the Council, I stand at the back. Near the door. Habit."
+  }
+ ]
+}

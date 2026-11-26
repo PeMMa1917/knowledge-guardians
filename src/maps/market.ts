@@ -27,6 +27,8 @@ export const MARKET_SQUARE: MapDef = {
   npcs: [
     { id: 'market-assayer', x: 15, y: 6, facing: 'down' },
     { id: 'market-clerk', x: 20, y: 8, facing: 'down' },
+    // Rook Tamsin, the Sceptic (spec 15.9), joins here (docs/STORY_BIBLE.md, chapter 10).
+    { id: 'rook-tamsin', x: 11, y: 17, facing: 'right', visibleIf: { all: [{ objective: 'market.compare' }, { not: { flag: 'rook.joined', eq: true } }] } },
   ],
   stamps: [
     { stamp: 'market-office', x: 13, y: 1 }, { stamp: 'market-workshop', x: 25, y: 2 },
