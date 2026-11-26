@@ -24,6 +24,7 @@ The game does not grade the player. It gives the same credit for every reasoned 
 - Chapter 11 opens the Water Commons. The trial gate keeps the intake steady to show what a leak repair changes. The council considers the trade-offs for the fields and lower channel, and checks the old promise separately.
 - Chapter 12 opens the Civic Machine. Players change the console’s input and rule separately, then see what a timetable leaves open for readers who could not use the original request desks.
 - Chapter 13 opens the Archive of Voices. Excerpts and guide copies keep the dates, purposes and permissions of their sources. What a traveller can see from each approach helps the player revise the first direction.
+- Chapter 14 opens the Island of Models. Two route layers show journey counts and exposure to marked quiet areas. A lower landing changes ferry capacity, and the player checks what both models say about the same order.
 
 ## Core tools (play, not quizzes)
 

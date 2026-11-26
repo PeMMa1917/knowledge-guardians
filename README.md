@@ -2,7 +2,7 @@
 
 Knowledge Guardians is a 2D top-down pixel-art RPG for IB Diploma Theory of Knowledge (TOK) students. The player is a new Knowledge Guardian. The player examines real historical objects, compares claims and evidence, and makes honest labels.
 
-The playable opening begins in the Nexus and continues across thirteen chapters:
+The playable opening begins in the Nexus and continues across fourteen chapters:
 
 1. **Chapter 1, the Nexus and Emberford.** Compare Loud's 1888 patent, a Bíró pen made between 1945 and 1948, and a modern workshop model. Run a fair test and argue your case in a practice Showdown. A claim that outruns the evidence makes the room glow and distorts what visitors repeat. In Emberford, trace the origin of Corvan's patterned blade, compare schematic billets and face the public Showdown. Send a packet to the ferry or carry a correction to the square when you want to see how your work travels.
 2. **Chapter 2, The Door Without a Name.** Enter the Nile Archive from the Nexus. Choose two of three leads, send a packet and see where it arrives. An optional craft investigation and a reply from the first readers give you reasons to return.
@@ -17,6 +17,7 @@ The playable opening begins in the Nexus and continues across thirteen chapters:
 11. **Chapter 11, The Agreement at the Weir.** Route a fixed supply through fields and a lower channel. Leave a drought schedule, repeat the trial after the repair, and check whether the previous order met both crews’ requests.
 12. **Chapter 12, A Place on the Route.** Run the library dispatch console with different registers and rules. Post a timetable, then find out why a reader still has no window they can reach.
 13. **Chapter 13, The Second Lamp.** Compare a carrier’s recollection with an opening register. Keep each source in its own context, then test a translated direction from the quay and the stairs.
+14. **Chapter 14, The Eight Crates.** Route an order through a ridge, a ferry or a marsh. Balance a delivery deadline against repeated trips through quiet strips, then revise your plan when the landing changes.
 
 Along the way: random events from a fair, seeded deck (calm mode can delay them), learner-profile moments in the journal, a private portfolio, and misconception reflections. A separate **teacher view** (`teacher.html`) builds a class dashboard and student reports from progress files that students choose to share.
 

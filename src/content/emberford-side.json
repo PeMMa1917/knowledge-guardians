@@ -695,6 +695,181 @@
    "speaker": "narrator",
    "text": "Two carriers take the dry side step. The washer moves her pail to a different tray for now. The two jobs stay on separate slips, one for access and one for restored flow.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "hands.claim",
+   "speaker": "porter-idris",
+   "text": "A set of paper examples came in from the Nexus. I saved the tags with just one name. I’ve never needed more than one to take a crate to the right workshop. If there’s one name, one pair of hands did the work. Why would they leave anybody out? See the slip that says “Biro pen”?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep his example and look at one of the slips he passed over.",
+     "next": "hands.look",
+     "if": {
+      "not": {
+       "flag": "hands.started",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "hands.started",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the papers on Idris’s strap."
+    }
+   ]
+  },
+  {
+   "id": "hands.look",
+   "speaker": "porter-idris",
+   "text": "A short name helps me find a workshop on my rounds. I passed over the longer museum entry when I chose the examples for this strap. It’s in the sample tray on the way to the square.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "hands.receipt",
+   "speaker": "porter-idris",
+   "text": "Here is the museum entry I didn’t fit on the tag. Science Museum Group records this pen as object 1949-174/2. The entry names László József Bíró and his brother Georg. The patent office account on the back describes Bíró’s work on the practical pen with his brother and others. Carry the entry back to the strap.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Take that entry rather than another one-name tag.",
+     "next": "hands.receipt.held",
+     "if": {
+      "all": [
+       {
+        "flag": "hands.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "hands.checked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "hands.checked",
+       "value": true
+      },
+      {
+       "addCard": "card.biro-object"
+      },
+      {
+       "addCard": "card.dpma-history"
+      }
+     ]
+    },
+    {
+     "text": "Keep the entry in the sample tray."
+    }
+   ]
+  },
+  {
+   "id": "hands.receipt.held",
+   "speaker": "porter-idris",
+   "text": "The entry and the example tag refer to the same pen. You can take both to Idris. He has kept his other tag rather than dropping it when he heard you were coming.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "hands.review",
+   "speaker": "porter-idris",
+   "text": "I have the tag I carried. You have an entry with two names. I’d still use a short mark to find the maker’s door. How should I keep the rest of this on my route strap?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Grant that a short mark can guide a delivery, then clip the named museum entry behind it.",
+     "next": "hands.end.concede",
+     "if": {
+      "all": [
+       {
+        "objective": "hands.o.compare"
+       },
+       {
+        "all": [
+         {
+          "card": "card.biro-object"
+         },
+         {
+          "card": "card.dpma-history"
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "hands.response"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "hands.response",
+       "value": "concede"
+      },
+      {
+       "relation": "porter-idris",
+       "by": 1
+      }
+     ]
+    },
+    {
+     "text": "Put the short tag and the museum entry side by side so the next carrier can check both.",
+     "next": "hands.end.pair",
+     "if": {
+      "all": [
+       {
+        "objective": "hands.o.compare"
+       },
+       {
+        "all": [
+         {
+          "card": "card.biro-object"
+         },
+         {
+          "card": "card.dpma-history"
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "hands.response"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "hands.response",
+       "value": "pair"
+      },
+      {
+       "relation": "porter-idris",
+       "by": 1
+      }
+     ]
+    },
+    {
+     "text": "Leave the papers at the strap for now."
+    }
+   ]
+  },
+  {
+   "id": "hands.end.concede",
+   "speaker": "porter-idris",
+   "text": "We’ll keep the useful part, then. The short tag goes on the front. I’ll put a clip on the back for the names it left out. Bring me another troublesome tag if you see one.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "hands.end.pair",
+   "speaker": "porter-idris",
+   "text": "I’ll put the two together. The next carrier can see what I expected and what I found after looking again. Come by later. You can help me with the next bundle too.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "missions": [
@@ -1094,6 +1269,108 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-S09",
+   "world": "WORLD-02",
+   "title": "The Mark and the Hands",
+   "knowledgeQuestion": "What is still useful in a reason after one of its claims has failed?",
+   "available": {
+    "flag": "hands.started",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "hands.o.compare",
+     "title": "Bring the museum entry Idris left in the sample tray.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "hands.checked",
+        "eq": true
+       },
+       {
+        "all": [
+         {
+          "card": "card.biro-object"
+         },
+         {
+          "card": "card.dpma-history"
+         }
+        ]
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "truth",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "business"
+      ]
+     },
+     "skills": [
+      "SK-THK-07",
+      "SK-THK-12"
+     ]
+    },
+    {
+     "id": "hands.o.revise",
+     "title": "Return the entry and decide how the next carrier will see both pieces.",
+     "essential": false,
+     "visible": {
+      "objective": "hands.o.compare"
+     },
+     "done": {
+      "flagSet": "hands.response"
+     },
+     "weave": {
+      "concepts": [
+       "justification",
+       "certainty",
+       "perspective",
+       "responsibility",
+       "power"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "business"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-THK-16"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.hands"
+      }
+     ]
+    }
+   ]
   }
  ],
  "moments": [
@@ -1123,6 +1400,15 @@
    },
    "did": "You checked what changed for the washers and the carriers before making a claim about the repair.",
    "prompt": "Where would you stand if you needed to check a different part of the job?"
+  },
+  {
+   "id": "moment.hands",
+   "attribute": "open-minded",
+   "when": {
+    "objective": "hands.o.revise"
+   },
+   "did": "You looked for the paper Idris had passed over and helped him keep the part of his first reason that worked.",
+   "prompt": "Which other paper would have changed the first story?"
   }
  ],
  "journal": [
@@ -1140,6 +1426,11 @@
    "id": "j.washhouse.recheck",
    "claimKind": "interpretation",
    "text": "The head reading showed water entering. The tail reading and the side run showed where it went. A workable walk and a working tray need separate checks."
+  },
+  {
+   "id": "j.hands",
+   "claimKind": "interpretation",
+   "text": "The short tag could help a carrier find a door. The museum entry for this pen named two people. Idris changed the strap when he saw what his earlier choice of papers had left out."
   }
  ],
  "hints": [
@@ -1358,6 +1649,54 @@
    "objective": "washhouse.o.recheck",
    "depth": 4,
    "text": "Leave the recheck note at your chosen site. Keep any job that still needs doing on the board."
+  },
+  {
+   "id": "h.hands.compare.1",
+   "objective": "hands.o.compare",
+   "depth": 1,
+   "text": "Think about what a short name can help a carrier do."
+  },
+  {
+   "id": "h.hands.compare.2",
+   "objective": "hands.o.compare",
+   "depth": 2,
+   "text": "Idris kept the short tag. Look for the museum entry behind it."
+  },
+  {
+   "id": "h.hands.compare.3",
+   "objective": "hands.o.compare",
+   "depth": 3,
+   "text": "The sample tray is up the path from his strap, before the lantern stalls."
+  },
+  {
+   "id": "h.hands.compare.4",
+   "objective": "hands.o.compare",
+   "depth": 4,
+   "text": "Take the museum entry with the object number. It refers to the same pen as the short tag."
+  },
+  {
+   "id": "h.hands.revise.1",
+   "objective": "hands.o.revise",
+   "depth": 1,
+   "text": "Idris can keep the useful part of what he knew."
+  },
+  {
+   "id": "h.hands.revise.2",
+   "objective": "hands.o.revise",
+   "depth": 2,
+   "text": "One clip could carry the longer entry behind the tag. You could also make it easy to compare both."
+  },
+  {
+   "id": "h.hands.revise.3",
+   "objective": "hands.o.revise",
+   "depth": 3,
+   "text": "Return to Idris’s strap at the south path."
+  },
+  {
+   "id": "h.hands.revise.4",
+   "objective": "hands.o.revise",
+   "depth": 4,
+   "text": "Clip the museum entry behind the tag or put the two side by side. Read what the next carrier will see."
   }
  ]
 }

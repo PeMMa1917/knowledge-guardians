@@ -44,6 +44,13 @@
       "page": "tools/make_voices_tiles.py",
       "made_by": "python3 tools/make_voices_tiles.py (requires Pillow)"
     },
+    "island-tiles": {
+      "title": "Original Island of Models tiles",
+      "author": "Knowledge Guardians project",
+      "licence": "CC0 1.0",
+      "page": "tools/make_island_tiles.py",
+      "made_by": "python3 tools/make_island_tiles.py (requires Pillow)"
+    },
     "cynicmusic-town": {
       "title": "Town Theme RPG",
       "author": "cynicmusic",
@@ -104,6 +111,7 @@
     "art/generated/water_tiles.png": { "pack": "water-tiles", "changes": "original pixel art drawn by the generator" },
     "art/generated/civic_tiles.png": { "pack": "civic-tiles", "changes": "original pixel art drawn by the generator" },
     "art/generated/voices_tiles.png": { "pack": "voices-tiles", "changes": "original pixel art drawn by the generator" },
+    "art/generated/island_tiles.png": { "pack": "island-tiles", "changes": "original pixel art drawn by the generator" },
     "art/generated/characters/player-a.png": { "pack": "generated-characters", "changes": "palette swap of character.png walk rows" },
     "art/generated/characters/player-b.png": { "pack": "generated-characters", "changes": "palette swap" },
     "art/generated/characters/player-c.png": { "pack": "generated-characters", "changes": "palette swap" },

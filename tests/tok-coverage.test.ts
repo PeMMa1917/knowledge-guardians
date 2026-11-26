@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { civicAllocation, type CivicRule, type CivicSample } from '../src/domain/civicConsole';
 import { compareCopy } from '../src/domain/copyComparison';
 import { forestWatch, type ForestWindow } from '../src/domain/forestWatch';
+import { islandPlan, type IslandLanding, type IslandRoute } from '../src/domain/islandPlan';
 import { marketComparison, type MarketBasis } from '../src/domain/marketScale';
 import { readMetalSample } from '../src/domain/metalSample';
 import { check } from '../src/domain/rules';
@@ -29,6 +30,7 @@ const commandFormats: Partial<Record<Command['type'], Format>> = {
   WeighMarketLots: 'tool trials',
   RunWaterTrial: 'tool trials',
   RunCivicTrial: 'tool trials',
+  RunIslandPlan: 'tool trials',
   RunVoiceReading: 'archive tools',
   ReadClue: 'record reading',
   CompareCopy: 'archive tools',
@@ -102,12 +104,13 @@ function useDoor(d: AuditDriver, id: string): void {
   d.formats.add('map visits');
 }
 
-function readSign(d: AuditDriver, id: string): void {
+function readSign(d: AuditDriver, id: string): string {
   const sign = MAPS[d.s.mapId].interactables.find((p) => p.id === id && p.kind === 'sign');
   if (!sign?.text) throw new Error(`Missing sign text for ${id}`);
   expect(check(sign.visibleIf, d.s), `${id} visible`).toBe(true);
   if (sign.flag) d.run({ type: 'SetFlag', flag: sign.flag, value: true });
   d.formats.add('record reading');
+  return sign.text;
 }
 
 function watchForest(d: Driver, site: string, window: ForestWindow) {
@@ -121,7 +124,7 @@ function watchForest(d: Driver, site: string, window: ForestWindow) {
 
 // Times below are author estimates of when these actions could finish. This
 // fixture exercises entry conditions and domain commands, not walking or reading speed.
-function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'rests'): Route {
+function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'rests' | 'ribbon'): Route {
   const route = new Route();
   const explore = style !== 'main';
   const records = style === 'records';
@@ -186,7 +189,21 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
     for (const exhibit of ['OBJ-001-A', 'OBJ-001-C']) d.run({ type: 'UseLens', exhibit });
     expect(d.done('m01.o3.lens')).toBe(true);
   });
-  if (explore) route.at(12 + openingMinutes, 'Send competing translations back together', ['culture', 'interpretation', 'perspectives'], useProp('nexus.translation-slip', 'gloss'));
+  const ribbonMinutes = style === 'ribbon' ? 3 : 0;
+  if (style === 'ribbon') route.at(13, 'Put the grant date and the museum’s date range on separate rails and link them for comparison', [
+    'certainty', 'evidence', 'truth', 'scope', 'interpretation', 'perspectives', 'methods-and-tools',
+  ], (d) => {
+    expect(d.s.flags['inspected.OBJ-001-A']).toBe(true);
+    expect(d.s.flags['inspected.OBJ-001-C']).toBe(true);
+    walkScene(d, 'nexus-ribbon-setup', 'nexus.ribbon.split-placed');
+    expect(d.e.node('nexus.ribbon.split-placed').text).toContain('30 October 1888');
+    expect(d.e.node('nexus.ribbon.split-placed').text).toContain('1945 to 1948');
+    walkScene(d, 'nexus-ribbon-split', 'nexus.ribbon.bridged');
+    expect(d.done('nexus.ribbon.checked')).toBe(true);
+    walkScene(d, 'nexus-ribbon-bridged');
+    expect(d.e.node('nexus.ribbon.bridged').text).toContain('leaves the start of use blank');
+  });
+  if (explore) route.at(12 + openingMinutes + ribbonMinutes, 'Send competing translations back together', ['culture', 'interpretation', 'perspectives'], useProp('nexus.translation-slip', 'gloss'));
   if (records) {
     route.at(15 + openingMinutes, 'Check the model date and turn over the curator’s seal to see what it actually certifies', ['evidence', 'power', 'certainty', 'scope', 'methods-and-tools'], (d) => {
       d.run({ type: 'UseLens', exhibit: 'OBJ-001-B' });
@@ -199,7 +216,7 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
       expect(d.done('nexus.seal.checked')).toBe(true);
     });
   }
-  const extra = openingMinutes + (records ? 7 : 0);
+  const extra = openingMinutes + ribbonMinutes + (records ? 7 : 0);
   route.at(16 + extra, 'Compare two mark strips using the same pen', ['objectivity', 'explanation', 'methods-and-tools'], (d) => {
     d.run({ type: 'RunSimulation', pen: 'loud-model', surface: 'paper' });
     d.run({ type: 'RunSimulation', pen: 'loud-model', surface: 'leather' });
@@ -314,7 +331,7 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
   return route;
 }
 
-type NileFirstLead = 'workers' | 'reading-window' | 'borrowed-mark' | 'lamp-slip' | 'royal-seal';
+type NileFirstLead = 'workers' | 'reading-window' | 'borrowed-mark' | 'lamp-slip' | 'closing-peg' | 'royal-seal';
 
 function nileWorkersLead(route: Route, lead: Exclude<NileFirstLead, 'royal-seal'>): void {
   route.at(15, 'Follow the scribe’s record and decide what to put in front', ['evidence', 'power', 'perspective', 'interpretation', 'perspectives'], (d) => {
@@ -340,6 +357,16 @@ function nileWorkersLead(route: Route, lead: Exclude<NileFirstLead, 'royal-seal'
     expect(d.done('nile.lamp.compare')).toBe(true);
     expect(d.done('nile.lamp.file')).toBe(true);
     readSign(d, 'nile-lamp-note-desk');
+  });
+  if (lead === 'closing-peg') route.at(22, 'Open both closed slips and use the later stoppage to separate a recorded delivery from a settled dispute', [
+    'truth', 'certainty', 'culture', 'evidence', 'scope', 'interpretation', 'justification',
+  ], (d) => {
+    walkScene(d, 'nile-closing-peg', 'nile.closing.stock', 'Put the slip back with its box showing',
+      'Turn over the lending bench slip', 'Put the slip back with both voices showing', 'Lay both slips beside',
+      'Leave a second voice open');
+    expect(d.done('nile.closing.post')).toBe(true);
+    expect(d.s.flags['nile.closing.post']).toBe('bench');
+    expect(readSign(d, 'nile-closing-bench')).toContain('the workers stopped again');
   });
   if (lead === 'borrowed-mark') route.at(23, 'Use the keepers’ swatch to justify a label about shared practice with the maker left unnamed', ['truth', 'certainty', 'culture', 'justification', 'scope', 'methods-and-tools'], (d) => {
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-ARCHIVE-PRACTICE-SWATCH' });
@@ -386,7 +413,7 @@ function nileDispatch(lead: NileFirstLead = 'workers', tiltTray = false): Route 
   const royal = lead === 'royal-seal';
   if (royal) nileRoyalLead(route);
   else nileWorkersLead(route, lead);
-  const extra = { workers: 0, 'reading-window': 3, 'borrowed-mark': 5, 'lamp-slip': 4, 'royal-seal': 4 }[lead] + (tiltTray ? 3 : 0);
+  const extra = { workers: 0, 'reading-window': 3, 'borrowed-mark': 5, 'lamp-slip': 4, 'closing-peg': 3, 'royal-seal': 4 }[lead] + (tiltTray ? 3 : 0);
   const enterMapRoom = (d: AuditDriver) => {
     if (lead !== 'borrowed-mark') useDoor(d, royal ? 'royal-back' : 'workyard-back');
     useDoor(d, 'nile-maps');
@@ -783,7 +810,7 @@ function checkSeaChart(d: Driver, chartId: 'harbour' | 'shoal', names: readonly 
   expect(d.s.flags[`sea.read.${chartId}`]).toBe(true);
 }
 
-function cartographersSea(): Route {
+function cartographersSea(checkSymbols = false): Route {
   const route = new Route();
   // Independent Chapter 8 session. The City has already revised the entry notice.
   route.driver.s.objectivesDone.push('copies.revise');
@@ -826,7 +853,31 @@ function cartographersSea(): Route {
     expect(d.done('sea.finish')).toBe(true);
     readSign(d, 'sea-followup-notice');
   });
-  route.at(47, 'Leave an accessible key with both local names and written survey limits', ['culture', 'responsibility', 'perspective', 'perspectives', 'ethics'], (d) => {
+  if (checkSymbols) {
+    route.at(45, 'Use one sketch and the same readers to compare a shore roof mark with two lights read from the deck', [
+      'culture', 'interpretation', 'objectivity', 'explanation', 'perspectives', 'methods-and-tools',
+    ], (d) => {
+      useDoor(d, 'sea-chartroom-path');
+      walkScene(d, 'sea-symbol-desk', 'sea.symbol.roof', 'Leave the copy');
+      walkScene(d, 'sea-symbol-desk', 'sea.symbol.lights', 'Leave the copy');
+      expect(d.done('sea.symbol.compared')).toBe(false);
+    });
+    route.at(48, 'Follow both marks at the shore sight frame to verify that they identify the same landing', [
+      'truth', 'certainty', 'evidence', 'scope', 'methods-and-tools',
+    ], (d) => {
+      useDoor(d, 'sea-chartroom-return');
+      expect(readSign(d, 'sea-symbol-sight-frame')).toContain('same upstairs landing at Lantern House');
+      expect(d.done('sea.symbol.compared')).toBe(true);
+    });
+    route.at(51, 'Hang a key with both marks at Market Rail so a shore reader can use a deck copy', [
+      'culture', 'perspective', 'perspectives', 'justification', 'responsibility', 'ethics',
+    ], (d) => {
+      walkScene(d, 'sea-symbol-key-holder', 'sea.symbol.place.rail');
+      expect(d.done('sea.symbol.placed')).toBe(true);
+      readSign(d, 'sea-symbol-key-rail');
+    });
+  }
+  route.at(checkSymbols ? 54 : 47, 'Leave an accessible key with both local names and written survey limits', ['culture', 'responsibility', 'perspective', 'perspectives', 'ethics'], (d) => {
     d.talk('sea-harbourkeeper', 'Leave a wider key');
     expect(d.done('sea.access')).toBe(true);
     readSign(d, 'sea-wide-key');
@@ -1272,6 +1323,124 @@ function archiveOfVoices(quoteInQueue = false): Route {
   return route;
 }
 
+function checkIslandPlan(d: Driver, landing: IslandLanding, route: IslandRoute, expected: ReturnType<typeof islandPlan>): void {
+  const table = MAPS[d.s.mapId].interactables.find((prop) => prop.id === 'island-plan');
+  expect(table?.kind).toBe('island-plan');
+  expect(check(table?.visibleIf, d.s)).toBe(true);
+  expect(islandPlan(landing, route)).toEqual(expected);
+  d.run({ type: 'RunIslandPlan', landing, route });
+  expect(d.s.flags[`island.plan.${landing}.${route}`]).toBe(true);
+}
+
+function islandOfModels(checkDockSignal = false): Route {
+  const route = new Route();
+  const extra = checkDockSignal ? 4 : 0;
+  // Prepared Chapter 13 save. Both directions through the Archive of Voices have been checked.
+  route.driver.s.objectivesDone.push('voices.finish');
+  route.driver.s.flags['voices.revision'] = 'routes';
+  route.at(4, 'Take the eight-crate order and read the claim about ferry capacity', ['scope', 'perspective'], (d) => {
+    useDoor(d, 'island-door');
+    expect(d.done('island.arrival')).toBe(true);
+    d.talk('island-planner');
+    expect(readSign(d, 'island-draft-plan')).toContain('ALWAYS HAS ROOM FOR FOUR');
+  });
+  route.at(10, 'Check how dock loading cycles account for the next load of crates', ['evidence', 'interpretation', 'scope'], (d) => {
+    useDoor(d, 'island-dock-path');
+    readSign(d, 'island-route-card');
+    readSign(d, 'island-upper-pier');
+    d.talk('island-dockhand');
+  });
+  if (checkDockSignal) {
+    route.at(12, 'Check the open swing rail beneath the square and learn the local palm-up entry signal', [
+      'truth', 'culture', 'interpretation', 'evidence', 'certainty', 'perspective', 'perspectives',
+    ], (d) => {
+      expect(readSign(d, 'island-square-claim')).toContain('CLOSES THIS RAMP');
+      expect(readSign(d, 'island-signal-rail')).toContain('stands open');
+      expect(readSign(d, 'island-signal-hand')).toContain('taught their apprentices to wait');
+      expect(d.done('island.signal.checked')).toBe(true);
+    });
+    route.at(14, 'Post the waiting instruction by the square where newcomers can see who can wave them through', [
+      'power', 'values', 'responsibility', 'justification', 'ethics',
+    ], (d) => {
+      d.talk('island-dockhand', 'Check the square board with me', 'Put the waiting line beside the square');
+      expect(d.done('island.signal')).toBe(true);
+      expect(readSign(d, 'island-signal-pair')).toContain('Wait for a palm-up call');
+    });
+  }
+  route.at(16 + extra, 'Walk to the quiet strip and distinguish a crossing count from what happens farther out among the reeds', [
+    'scope', 'perspective', 'perspectives', 'methods-and-tools', 'evidence',
+  ], (d) => {
+    useDoor(d, 'island-dock-to-margin');
+    expect(readSign(d, 'island-quiet-strip')).toContain('a separate line for sound observed');
+    expect(readSign(d, 'island-margin-window')).toContain('cannot show what happens farther out');
+    expect(d.done('island.sources')).toBe(true);
+  });
+  const highFerry = { capacity: 4, circuits: 2, minutes: 24, crossings: 4 } as const;
+  const lowFerry = { capacity: 2, circuits: 4, minutes: 48, crossings: 8 } as const;
+  const ridge = { capacity: 4, circuits: 2, minutes: 36, crossings: 2 } as const;
+  route.at(23 + extra, 'Use the same high landing and eight crates to compare two cycles on each route', [
+    'objectivity', 'explanation', 'certainty', 'evidence', 'methods-and-tools',
+  ], (d) => {
+    useDoor(d, 'island-margin-return');
+    checkIslandPlan(d, 'high', 'ferry', highFerry);
+    checkIslandPlan(d, 'high', 'ridge', ridge);
+    expect(d.done('island.compare')).toBe(true);
+  });
+  route.at(30 + extra, 'Post the faster high-landing ferry plan with its strip count so crews can see what it prioritises', [
+    'values', 'power', 'responsibility', 'justification', 'ethics', 'scope',
+  ], (d) => {
+    useDoor(d, 'island-dock-path');
+    d.talk('island-dockhand', 'Load the ferry from the upper landing');
+    expect(d.done('island.publish')).toBe(true);
+    expect(d.s.flags['island.response']).toBe('ferry');
+    readSign(d, 'island-result-ferry');
+  });
+  route.at(36 + extra, 'Read the tide update and check the narrower lower berth before reusing the order', [
+    'evidence', 'perspective', 'scope', 'methods-and-tools',
+  ], (d) => {
+    expect(readSign(d, 'island-low-landing')).toContain('two crates per ferry circuit');
+    expect(d.done('island.lower')).toBe(true);
+  });
+  route.at(43 + extra, 'Hold the ferry and cargo fixed and test both routes again with the lower landing', [
+    'objectivity', 'explanation', 'truth', 'certainty', 'evidence', 'interpretation', 'scope', 'methods-and-tools',
+  ], (d) => {
+    useDoor(d, 'island-dock-return');
+    d.talk('island-planner');
+    checkIslandPlan(d, 'low', 'ferry', lowFerry);
+    checkIslandPlan(d, 'low', 'ridge', ridge);
+    expect(d.done('island.retest')).toBe(true);
+    expect(readSign(d, 'island-checked-plan')).toContain('The lower landing carries two');
+  });
+  route.at(50 + extra, 'Apply the two-approach check from Glass Walk, choose the ridge and keep the original ferry assumptions visible', [
+    'responsibility', 'power', 'values', 'justification', 'ethics',
+  ], (d) => {
+    useDoor(d, 'island-dock-path');
+    d.talk('island-dockhand', 'On Glass Walk we checked the route from two approaches', 'Put the ridge cart on the revised sheet');
+    expect(d.done('island.finish')).toBe(true);
+    expect(d.s.flags['island.response']).toBe('ferry');
+    expect(d.s.flags['island.revision']).toBe('ridge');
+    readSign(d, 'island-result-ferry');
+    readSign(d, 'island-revised-ridge');
+  });
+  route.at(57 + extra, 'Read what a listener at one bend heard and see why it cannot measure the sound across the route', [
+    'evidence', 'perspective', 'perspectives', 'scope', 'explanation',
+  ], (d) => {
+    useDoor(d, 'island-dock-to-margin');
+    expect(readSign(d, 'island-listener-note')).toContain('could not tell how far it carried');
+    expect(d.done('island.listener')).toBe(true);
+  });
+  route.at(64 + extra, 'Place a log where the next listener can record the observation’s place and time', [
+    'justification', 'responsibility', 'ethics', 'methods-and-tools',
+  ], (d) => {
+    useDoor(d, 'island-margin-to-dock');
+    d.talk('island-dockhand', 'Put a place-and-time log by the quiet strip');
+    expect(d.done('island.log')).toBe(true);
+    useDoor(d, 'island-dock-to-margin');
+    expect(readSign(d, 'island-quiet-log')).toContain('The strip tally keeps its own page');
+  });
+  return route;
+}
+
 describe('rolling TOK coverage audit', () => {
   it('checks gaps between sampled actions and expires an encounter at the window boundary', () => {
     const encounters: TimedEncounter[] = [
@@ -1310,10 +1479,12 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Nexus seal and Emberford’s Two-Bell Order', end: 105, play: () => nexusToEmberford('records') },
     { name: 'Nexus with the Arrow at the Turn and the Emberford washhouse', end: 101, play: () => nexusToEmberford('guide') },
     { name: 'Nexus with the Uncounted Reader and two reading rests', end: 91, play: () => nexusToEmberford('rests') },
+    { name: 'Nexus with the separate grant and museum date rails', end: 89, play: () => nexusToEmberford('ribbon') },
     { name: 'Nile first visit from a prepared Chapter 1 save', end: 50, play: () => nileDispatch() },
     { name: 'Nile first visit with the Reading Window', end: 53, play: () => nileDispatch('reading-window') },
     { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch('borrowed-mark') },
     { name: 'Nile first visit with the lamp and the pinned slip', end: 54, play: () => nileDispatch('lamp-slip') },
+    { name: 'Nile first visit with the two closing slips', end: 53, play: () => nileDispatch('closing-peg') },
     { name: 'Nile route through Royal Records and the route model', end: 54, play: () => nileDispatch('royal-seal') },
     { name: 'Nile Royal Records route with the Tilt Tray stop', end: 57, play: () => nileDispatch('royal-seal', true) },
     { name: 'Preserved Lives from a prepared Chapter 2 save', end: 50, play: preservedLives },
@@ -1325,7 +1496,8 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Metalworks from a prepared Chapter 5 save', end: 50, play: () => metalworks(false) },
     { name: 'Metalworks with the Turned Tag investigation', end: 57, play: () => metalworks(true) },
     { name: 'City of Copies from a prepared Chapter 6 save', end: 51, play: cityOfCopies },
-    { name: 'Cartographers’ Sea from a prepared Chapter 7 save', end: 51, play: cartographersSea },
+    { name: 'Cartographers’ Sea from a prepared Chapter 7 save', end: 51, play: () => cartographersSea() },
+    { name: 'Cartographers’ Sea with the roof and lantern key', end: 58, play: () => cartographersSea(true) },
     { name: 'House of Performance with the silence first', end: 51, play: () => houseOfPerformance('pause') },
     { name: 'House of Performance starting from a gallery seat', end: 54, play: () => houseOfPerformance('move') },
     { name: 'House of Performance with an early aisle-seat request', end: 58, play: () => houseOfPerformance('move', true) },
@@ -1334,6 +1506,8 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Civic Machine from a prepared Chapter 11 save', end: 63, play: civicMachine },
     { name: 'Archive of Voices from a prepared Chapter 12 save', end: 60, play: () => archiveOfVoices() },
     { name: 'Archive of Voices with the approved queue excerpt', end: 63, play: () => archiveOfVoices(true) },
+    { name: 'Island of Models from a prepared Chapter 13 save', end: 67, play: () => islandOfModels() },
+    { name: 'Island of Models with the dock’s square-board check', end: 71, play: () => islandOfModels(true) },
   ])('can execute the modeled route for $name and report its gaps', ({ name, end, play }) => {
     const route = play();
     const gaps = coverageGaps(end, route.encounters);

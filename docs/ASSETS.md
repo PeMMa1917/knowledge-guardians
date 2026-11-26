@@ -10,6 +10,7 @@
 | `public/assets/art/generated/water_tiles.png` | Original Water Commons channels, bridges, field rows, weir and council hall. | `water` sheet in `BootScene.ts` |
 | `public/assets/art/generated/civic_tiles.png` | Original Civic Machine offices, book carts, route mural and canal walk. | `civic` sheet in `BootScene.ts` |
 | `public/assets/art/generated/voices_tiles.png` | Original Archive of Voices listening screens, Glass Walk and Lamp Quay. | `voices` sheet in `BootScene.ts` |
+| `public/assets/art/generated/island_tiles.png` | Original Island of Models bay, dock landings, boardwalks and habitat margin. | `island` sheet in `BootScene.ts` |
 | `public/assets/audio/music/` | Music loops. | `AUDIO` in `BootScene.ts` |
 | `public/assets/audio/sfx/` | Sound effects. | `AUDIO` in `BootScene.ts` |
 | `public/assets/credits.json` | Source, author and licence of **every** file above. | `tools/check-assets.mjs` |
@@ -67,3 +68,5 @@ The Water Commons uses a 14 × 5 sheet. Run `python3 tools/make_water_tiles.py` 
 Library Dispatch, North Steps and Canal Walk use a 15 × 6 sheet. Run `python3 tools/make_civic_tiles.py` with Pillow to regenerate it.
 
 The Listening Room, Glass Walk and Lamp Quay use a 14 × 6 sheet. Run `python3 tools/make_voices_tiles.py` with Pillow to regenerate it.
+
+The Plan Workshop, Two-Tide Dock and Quiet Margin use a 15 × 6 sheet. Run `python3 tools/make_island_tiles.py` with Pillow to regenerate it.

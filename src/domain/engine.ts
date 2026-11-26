@@ -8,6 +8,7 @@ import { marketComparison, type MarketBasis } from './marketScale';
 import { waterTrial, type WaterSetting } from './waterGate';
 import { civicAllocation, type CivicRule, type CivicSample } from './civicConsole';
 import { voiceReading, type VoiceSource, type VoiceView } from './voiceReadings';
+import { islandPlan, type IslandLanding, type IslandRoute } from './islandPlan';
 /**
  * Domain engine. Scenes send typed commands; the engine checks preconditions,
  * computes ONE valid state transition and returns events for the view to show
@@ -112,6 +113,7 @@ export type Command =
   | { type: 'RunWaterTrial'; setting: WaterSetting }
   | { type: 'RunCivicTrial'; sample: CivicSample; rule: CivicRule }
   | { type: 'RunVoiceReading'; source: VoiceSource; view: VoiceView }
+  | { type: 'RunIslandPlan'; route: IslandRoute; landing: IslandLanding }
   | { type: 'BuildLabel'; kit: string; subject: string; criterion: string; limit: string }
   | { type: 'TurnLock'; lock: string; choice: Record<string, string> }
   | { type: 'ShowdownStart'; showdown: string; relaxed?: boolean }
@@ -567,6 +569,14 @@ export class Engine {
           if (prevPen !== undefined && changed === 2) fx.push({ addNum: 'sim.unfair', by: 1 });
           s = apply(fx, s, out);
           events.push({ kind: 'simulation', result: { pen: cmd.pen, surface: cmd.surface, markQuality: m.q, note: m.note, fairTest: fair, testCount: count } });
+          break;
+        }
+        case 'RunIslandPlan': {
+          if (s.mapId !== 'island.workshop' || s.flags['island.arrived'] !== true) throw new Error('Use the planning table on the Island of Models.');
+          islandPlan(cmd.landing, cmd.route);
+          if (cmd.landing === 'low' && s.flags['island.lower.read'] !== true) throw new Error('Bring the lower landing update from the dock.');
+          const key = `island.plan.${cmd.landing}.${cmd.route}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
         case 'RunVoiceReading': {

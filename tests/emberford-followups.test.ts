@@ -162,3 +162,39 @@ describe('A Dry Step for the Washhouse', () => {
     expect(d.s.flags['well.shared']).toBeUndefined();
   });
 });
+
+describe('The Mark and the Hands', () => {
+  it('opens at arrival and needs the actual counterexample from the specimen tray', () => {
+    const d = new Driver();
+    d.s.mapId = EMBERFORD.id;
+    expect(visible(d, 'hands-strap')).toBe(true);
+    expect(visible(d, 'hands-tray')).toBe(false);
+    use(d, 'hands-strap', 'Keep his example');
+    expect(visible(d, 'hands-return')).toBe(false);
+    use(d, 'hands-tray', 'Take that entry');
+    expect(d.s.cards).toEqual(expect.arrayContaining(['card.biro-object', 'card.dpma-history']));
+    expect(d.done('hands.o.compare')).toBe(true);
+    expect(visible(d, 'hands-return')).toBe(true);
+    expect(d.s.flags['heard.corvan']).toBeUndefined();
+  });
+
+  it.each([
+    ['concede', 'Grant that a short mark', 'pair'],
+    ['pair', 'Put the short tag', 'concede'],
+  ])('gives the %s conversation one relationship change and a lasting route prop', (response, choice, other) => {
+    const d = new Driver();
+    d.s.mapId = EMBERFORD.id;
+    const credit = { ...d.p.credit };
+    use(d, 'hands-strap', 'Keep his example');
+    use(d, 'hands-tray', 'Take that entry');
+    use(d, 'hands-return', choice);
+    expect(d.s.flags['hands.response']).toBe(response);
+    expect(d.s.relations['porter-idris']).toBe(1);
+    expect(visible(d, `hands-${response}`)).toBe(true);
+    expect(visible(d, `hands-${other}`)).toBe(false);
+    expect(d.e.visibleOptions('hands.review', d.s).map(({ option }) => option.text))
+      .toEqual(['Leave the papers at the strap for now.']);
+    expect(d.s.journal).toContain('j.hands');
+    expect(d.p.credit).toEqual(credit);
+  });
+});

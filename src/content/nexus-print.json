@@ -1,0 +1,165 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH1-R15",
+   "world": "WORLD-01",
+   "title": "The Slipped Print",
+   "knowledgeQuestion": "How much of what we see in a copy comes from the way it was made?",
+   "available": { "flagSet": "nexus.print.edition" },
+   "objectives": [
+    {
+     "id": "nexus.print.checked",
+     "title": "Seat the ferry print on its pins and prepare a proof for its next reader.",
+     "essential": false,
+     "done": { "flagSet": "nexus.print.edition" },
+     "onComplete": [{ "journal": "j.nexus.print" }],
+     "weave": {
+      "concepts": ["evidence", "interpretation", "explanation", "values", "responsibility"],
+      "atl": ["thinking", "research", "communication"],
+      "aoks": ["ART", "MAT"],
+      "subjects": ["visual-arts", "design-tech", "math-ai"]
+     },
+     "skills": ["SK-THK-05", "SK-THK-14"]
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "nexus.print.setup",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A carrier is waiting for a ferry print. One sheet shows the river and jetties in dark ink. A thin sheet carries two red landing marks. Set the two together and someone can see the finished image. Two brass pins sit in the board.",
+   "options": [
+    {
+     "text": "Square the sheets at the lower corner and check the trial image.",
+     "next": "nexus.print.edge-placed",
+     "if": { "not": { "flagSet": "nexus.print.fit" } },
+     "effects": [
+      { "setFlag": "nexus.print.fit", "value": "edge" },
+      { "setFlag": "nexus.print.tried-edge", "value": true }
+     ]
+    },
+    {
+     "text": "Lay both sheets over the brass pins and check the image.",
+     "next": "nexus.print.pins-placed",
+     "if": { "not": { "flagSet": "nexus.print.fit" } },
+     "effects": [{ "setFlag": "nexus.print.fit", "value": "pins" }]
+    },
+    { "text": "Leave the sheets in place." }
+   ]
+  },
+  {
+   "id": "nexus.print.edge-placed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You square the bottom corners and smooth the sheets. The carrier moves back so you can see where the red marks fell."
+  },
+  {
+   "id": "nexus.print.edge",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The corners meet. A red landing mark now sits out in the river. 'It looks like a floating landing,' says a visitor. The printmaker runs a finger along the narrow upper sheet. It was trimmed after printing. The pinholes still show.",
+   "options": [
+    {
+     "text": "Lift the overlay and seat both holes on the pins.",
+     "next": "nexus.print.pins-placed",
+     "if": { "flag": "nexus.print.fit", "eq": "edge" },
+     "effects": [{ "setFlag": "nexus.print.fit", "value": "pins" }]
+    },
+    { "text": "Leave the trial on the board for now." }
+   ]
+  },
+  {
+   "id": "nexus.print.pins-placed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The trimmed corner sits inside the lower sheet. Both sheets stay still when you let go. The carrier waits for you to choose how the proof should travel."
+  },
+  {
+   "id": "nexus.print.pinned",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The first pin holds the corner. The second stops the thin sheet turning. Both red marks now meet the ends of the drawn jetties. The carrier can take a joined proof for the shelter or the loose pair for the printer who will make the next copy.",
+   "options": [
+    {
+     "text": "Clip a joined proof to the carrier’s board for the shelter.",
+     "next": "nexus.print.joined",
+     "if": { "all": [
+      { "flag": "nexus.print.fit", "eq": "pins" },
+      { "not": { "flagSet": "nexus.print.edition" } }
+     ] },
+     "effects": [{ "setFlag": "nexus.print.edition", "value": "joined" }]
+    },
+    {
+     "text": "Slide the sheets into separate pockets for the next printer.",
+     "next": "nexus.print.layers",
+     "if": { "all": [
+      { "flag": "nexus.print.fit", "eq": "pins" },
+      { "not": { "flagSet": "nexus.print.edition" } }
+     ] },
+     "effects": [{ "setFlag": "nexus.print.edition", "value": "layers" }]
+    },
+    { "text": "Leave the sheets on their pins for now." }
+   ]
+  },
+  {
+   "id": "nexus.print.joined",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The carrier lifts the joined image. At a glance, she can follow the two colours from the shore to the red marks. A small tab names both printed layers. The printmaker leaves a spare sheet ready for anyone who needs to see how they fit."
+  },
+  {
+   "id": "nexus.print.layers",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The carrier marks the folder for the next printer. Inside, each sheet can be lifted on its own. The next worker can see which block left which mark and fit both back onto the pins. The shelter will get a proof after the next printing."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.nexus.print.1",
+   "objective": "nexus.print.checked",
+   "depth": 1,
+   "text": "The ferry image needs both sheets. Their cuts and their two holes give different places to start."
+  },
+  {
+   "id": "h.nexus.print.2",
+   "objective": "nexus.print.checked",
+   "depth": 2,
+   "text": "Find the print table on the west side of the hall. See where the red marks land when you bring the sheets together."
+  },
+  {
+   "id": "h.nexus.print.3",
+   "objective": "nexus.print.checked",
+   "depth": 3,
+   "text": "If the corners match and the marks drift, lift the thin sheet. Try its two holes on the two pins."
+  },
+  {
+   "id": "h.nexus.print.4",
+   "objective": "nexus.print.checked",
+   "depth": 4,
+   "text": "Once the marks reach the jetties, choose a joined copy for the shelter or two separate proofs for the worker."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.nexus.print",
+   "claimKind": "observation",
+   "text": "Two pinholes let the printed jetties and the red marks line up even after the paper had been trimmed. The joined proof was easier to see at a glance. The loose sheets let a printer check how the picture was made."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.nexus.print",
+   "attribute": "reflective",
+   "when": { "all": [
+    { "flag": "nexus.print.tried-edge", "eq": true },
+    { "flag": "nexus.print.fit", "eq": "pins" },
+    { "flagSet": "nexus.print.edition" }
+   ] },
+   "did": "You changed the way you lined up the print after seeing where its red marks landed.",
+   "prompt": ""
+  }
+ ]
+}

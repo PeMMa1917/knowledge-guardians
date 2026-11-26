@@ -254,16 +254,23 @@ The repaired gate order opens the Civic Machine. Collect request slips from Nort
 
 The revised timetable opens the Archive of Voices. At the listening desk, compare a carrier’s approved phrase with a separate signed register. Keep the remembered Lantern 4 test walk and the recorded Lantern 6 public opening on their own lines. Players can put the approved excerpt by the waiting bench or at the reading slot. Publish the short local phrase beside a guide or lead with the guide and keep the two sources at the desk. After a reader’s question, walk both approaches and post shared landmarks or directions for each start.
 
+## Chapter 14: The Eight Crates
+
+The revised directions open the Island of Models. Compare a route’s delivery time, carrying capacity and crossings of the marked quiet strips. Post a plan for eight crates. When the smaller landing changes how much the ferry can carry, repeat the first route and compare an alternative. Keep both plans visible and add a specific observation of time and place for the quiet strip log. At the dock, learners can also compare the rail with a copied sign and decide how to explain the crew’s waiting signal.
+
 ## Opening and return investigations
 
 - **A Page Left Open** gives the visitor’s notebook a branch as soon as play starts. Leave a place for a second observation or a record number another visitor can follow.
 - **The Arrow at the Turn** is reachable before recruitment. Work with two spotters approaching the same arrow from opposite directions. Hang a shared landmark sketch or separate directions, then see how the readers use the change.
 - **The Uncounted Reader** begins by the Nexus workbench. The loan tray and two requests for a book support count different things. Try an arrangement, see which request remains, and carry what happened into the Civic Machine.
 - **Between the Marks** lets players place a grant-day peg and an object-date sleeve using the actual Nexus exhibits. A reader’s question changes what the timeline needs to show about its starting points.
+- **The Slipped Print** lets beginners align the layers of a fictional ferry print. They can discover and correct the offset or start with the registration holes, then send a joined proof or separate layers to a different reader.
 - **Seal at the Door** uses the actual workshop model and the reverse of its seal. Players check what the seal certifies and set a supported display card for the reader they want to reach.
 - **A Dry Step for the Washhouse** follows water through three locations in early Emberford. The player can clear the catch screen or provide a covered route for this shift. A recheck at the same head mark shows which problem the chosen fix addressed. The Water Commons keeper can recall that work during the repair.
 - **The Two-Bell Order** asks for Emberford’s specific departure stub and matching ferry record. The same words do different jobs in those two records. Players choose how to leave a checkable account of the handover.
+- **The Mark and the Hands** lets players bring Idris evidence of multiple makers, grant what a maker’s mark can do, and revise the account the two people leave for the next reader.
 - **The Third Groove** lets the player move and restore a reading lamp over the same keeper’s slip in the Nile Archive. Keep both readings by the desk or send them with the travelling copies before the first dispatch.
+- The Workmen’s Room exit peg now lets players trace two uses of “closed” against the recorded payment and renewed stoppage. They can leave a reading slip at the desk or the bench while the dispatch stays available.
 - **A Name in Two Places** takes players back to the Nile Archive to use the Lens on a named papyrus and the mine map. Players choose how to cross-reference records with different purposes and different strength of attribution.
 - **Where the File Begins** follows two dates and purposes in the Cold Store. Move the start marker between the temple and burial records before installing a reader’s route.
 - **Clear for Whom?** gives the dock menders a frame test and the lookout a separate visibility observation. The player can hang task-specific tags or carry both checks together.
@@ -276,4 +283,4 @@ The [learning design review](docs/TOK_ALIGNMENT.md) uses the supplied course gui
 
 ## Thirty-minute design audit
 
-Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Twenty-two of twenty-nine routes reach all 12 concepts and four framework areas within their first estimated half hour. The report includes separate traces for the Archive’s direct route and the decision to put the excerpt by the queue. Two traces reach every dimension in all modeled windows. The report also lists the gameplay formats used in each route and where a dimension depends on one distinct action. Time these routes with students to check the estimates.
+Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Twenty-six of thirty-four routes reach all 12 concepts and four framework areas within their first estimated half hour. Three traces reach every dimension in all modeled windows, including the new route that returns to the Cartographers’ Sea keys. The report also lists the gameplay formats used in each route and where a dimension depends on one distinct action. Time these routes with students to check the estimates.

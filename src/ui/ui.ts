@@ -8,6 +8,7 @@ import { MARKET_BASES, marketComparison, marketOffersWithin, type MarketBasis } 
 import { WATER_SETTINGS, waterTrial, type WaterCondition, type WaterSetting } from '../domain/waterGate';
 import { CIVIC_RULES, CIVIC_SAMPLES, civicAllocation, type CivicRule, type CivicSample } from '../domain/civicConsole';
 import { VOICE_SOURCES, VOICE_VIEWS, voiceReading, type VoiceView } from '../domain/voiceReadings';
+import { ISLAND_CRATES, ISLAND_LANDINGS, ISLAND_ROUTES, islandPlan, type IslandLanding, type IslandRoute } from '../domain/islandPlan';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -3234,6 +3235,75 @@ export class UI implements UIApi {
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
+  openIslandPlan(): void {
+    const controller = ctx.controller;
+    let landing: IslandLanding = 'high';
+    let selected: IslandRoute | null = null;
+    const labels: Record<IslandRoute, string> = { ridge: 'Ridge cart', ferry: 'Ferry', marsh: 'Marsh handcart' };
+    const conditions = h('div', { class: 'row wrap', role: 'group', 'aria-label': 'Landing conditions' });
+    const choices = h('div', { class: 'row wrap', role: 'group', 'aria-label': 'Routes for the order' });
+    const output = h('div', { 'aria-live': 'polite' });
+    const diagram = h('canvas', { class: 'mark', width: 188, height: 94, 'aria-hidden': 'true' });
+    const traces = {
+      ridge: [[15, 47], [27, 17], [134, 17], [171, 48]],
+      ferry: [[15, 47], [57, 43], [106, 43], [171, 48]],
+      marsh: [[15, 47], [37, 74], [127, 71], [171, 48]],
+    } as const;
+    const paint = () => {
+      const g = diagram.getContext('2d');
+      if (!g) return;
+      g.fillStyle = '#447784'; g.fillRect(0, 0, 188, 94);
+      g.fillStyle = '#74876c'; g.fillRect(0, 0, 42, 94); g.fillRect(142, 0, 46, 94);
+      g.fillRect(32, 5, 120, 23); g.fillRect(27, 62, 122, 32);
+      g.fillStyle = '#8e8366'; g.fillRect(57, 10, 50, 5); g.fillRect(72, 7, 40, 3);
+      g.fillStyle = '#9bae8c';
+      for (let x = 59; x <= 119; x += 21) g.fillRect(x, 65, 10, 21);
+      for (const route of ISLAND_ROUTES) {
+        g.strokeStyle = route === selected ? '#fff0ab' : '#283d42';
+        g.lineWidth = route === selected ? 3 : 1;
+        g.beginPath();
+        for (const [i, [x, y]] of traces[route].entries()) {
+          if (i === 0) g.moveTo(x, y);
+          else g.lineTo(x, y);
+        }
+        g.stroke();
+      }
+      g.fillStyle = '#eed9a3'; g.fillRect(10, 43, 10, 9); g.fillRect(167, 43, 10, 9);
+    };
+    for (const condition of ISLAND_LANDINGS) {
+      const waiting = condition === 'low' && controller.state.flags['island.lower.read'] !== true;
+      conditions.append(h('button', {
+        type: 'button', 'data-landing': condition, 'aria-pressed': String(condition === landing), disabled: waiting,
+        onclick: () => {
+          landing = condition;
+          selected = null;
+          for (const button of conditions.querySelectorAll('button')) button.setAttribute('aria-pressed', String(button.dataset.landing === landing));
+          for (const button of choices.querySelectorAll('button')) button.setAttribute('aria-pressed', 'false');
+          clear(output);
+          paint();
+        },
+      }, condition === 'high' ? 'High landing' : waiting ? 'Lower landing report at the dock' : 'Lower landing'));
+    }
+    for (const route of ISLAND_ROUTES) {
+      choices.append(h('button', { type: 'button', 'data-route': route, 'aria-pressed': 'false', onclick: () => {
+        const events = controller.dispatch({ type: 'RunIslandPlan', route, landing });
+        if (events.some((event) => event.kind === 'error')) return;
+        selected = route;
+        for (const button of choices.querySelectorAll('button')) button.setAttribute('aria-pressed', String(button.dataset.route === route));
+        const result = islandPlan(landing, route);
+        output.replaceChildren(
+          h('p', {}, h('strong', {}, 'Transport chart'), ` · ${result.capacity} crates per run · ${result.circuits} runs`,
+            ` · first load at ${result.minutes / result.circuits} min · all crates at ${result.minutes} min`),
+          h('p', {}, h('strong', {}, 'Quiet margin map'), ` · ${result.crossings} marked strip crossings across those runs`));
+        paint();
+      } }, labels[route]));
+    }
+    paint();
+    this.openModal('island-plan wide', 'Planning table', this.closeBtn(), h('h2', {}, 'Planning table'),
+      h('p', {}, `Move ${ISLAND_CRATES} crates in a 50-minute shift. The transport chart uses a complete circuit for each run. The quiet map counts visits to marked strips.`),
+      diagram, conditions, choices, output);
   }
 
   openVoicesDesk(): void {

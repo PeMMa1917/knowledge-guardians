@@ -587,7 +587,8 @@ canvas.crest { image-rendering: pixelated; vertical-align: middle; }
 .pane-table tr.broke td { color: #ffb066; font-weight: 700; }
 .pane-table tr.broke td:nth-child(2)::after { content: ' ✕'; }
 .market-scale button[aria-pressed='true'], .water-gate button[aria-pressed='true'],
-.civic-console button[aria-pressed='true'], .voices-desk button[aria-pressed='true'] { border-color: var(--gold); }
+.civic-console button[aria-pressed='true'], .voices-desk button[aria-pressed='true'],
+.island-plan button[aria-pressed='true'] { border-color: var(--gold); }
 .voices-records { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr)); gap: 0.75em; }
 .voices-record { border: 1px solid var(--gold-dim); border-radius: 0.35em; padding: 0.75em; }
 .voices-record h3 { margin: 0; }

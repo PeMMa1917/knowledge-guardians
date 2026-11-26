@@ -666,7 +666,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   }
 
   private collides(x: number, y: number): boolean {
-    const l = x - FEET.w / 2, r = x + FEET.w / 2, t = y - FEET.h / 2 + 2, b = y + FEET.h / 2 + 2;
+    const l = x - FEET.w / 2, r = x + FEET.w / 2, t = y - FEET.h / 2, b = y + FEET.h / 2;
     for (const [px, py] of [[l, t], [r, t], [l, b], [r, b]]) {
       const tx = Math.floor(px / TILE), ty = Math.floor(py / TILE);
       if (ty < 0 || tx < 0 || ty >= this.map.height || tx >= this.map.width) return true;
@@ -925,8 +925,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     } else ctx.ui.setPrompt(`${best.obj.kind === 'sign' ? 'Read' : best.obj.kind === 'exhibit' ? 'Inspect' : best.obj.kind === 'thread' ? 'Follow the thread to' : best.obj.kind === 'loreling' ? 'Watch' : best.obj.kind === 'secret' ? 'Search' : best.obj.kind === 'seal' ? 'Read' : best.obj.kind === 'boss' ? 'Face' : 'Use'} ${best.obj.label}`);
   }
 
-  tryInteract(): void {
-    const t = this.target;
+  tryInteract(t = this.target): void {
     if (!t) return;
     if (t.kind === 'npc') {
       const a = t.actor;
@@ -937,6 +936,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       return;
     }
     const it = t.obj;
+    if (it.visibleIf && !ctx.controller.check(it.visibleIf)) return;
     // Remember places the player has used (the Glimmermoth looks for the others).
     const used = `used.${this.map.id}.${it.id}`;
     if (it.kind !== 'loreling' && ctx.controller.state.flags[used] !== true) ctx.controller.dispatch({ type: 'SetFlag', flag: used, value: true });
@@ -976,6 +976,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'water-gate': ctx.ui.openWaterGate(); break;
       case 'civic-console': ctx.ui.openCivicConsole(); break;
       case 'voices-desk': ctx.ui.openVoicesDesk(); break;
+      case 'island-plan': ctx.ui.openIslandPlan(); break;
       case 'scene': ctx.ui.playScene(it.node!); break;
       case 'secret': {
         const x = (ctx.controller.pack.secrets ?? []).find((y) => y.id === it.secret);
@@ -1012,16 +1013,15 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const hitA = actors.find((a) => a.sprite.getBounds().contains(wx, wy));
     const hitO = this.map.interactables.find((it) => (!it.visibleIf || ctx.controller.check(it.visibleIf)) && wx >= it.x * TILE && wx < (it.x + it.w) * TILE && wy >= (it.y - 1) * TILE && wy < (it.y + it.h) * TILE);
     if (hitA || hitO) {
-      const cells = hitA ? [{ x: Math.floor(hitA.sprite.x / TILE), y: Math.floor(hitA.sprite.y / TILE), w: 1, h: 1 }] : [hitO!];
-      const goal = this.nearestFreeAround(cells[0]);
+      const footprint = hitA ? { x: Math.floor(hitA.sprite.x / TILE), y: Math.floor(hitA.sprite.y / TILE), w: 1, h: 1 } : hitO!;
+      const goal = this.nearestFreeAround(footprint);
       if (!goal) return;
       this.walkTo(goal.x, goal.y, () => {
         const cx = hitA ? hitA.sprite.x : (hitO!.x + hitO!.w / 2) * TILE;
         const cy = hitA ? hitA.sprite.y : (hitO!.y + hitO!.h / 2) * TILE;
         const dx = cx - this.player.sprite.x, dy = cy - this.player.sprite.y;
         this.player.facing = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
-        this.updateTarget();
-        this.tryInteract();
+        this.tryInteract(hitA ? { kind: 'npc', actor: hitA } : { kind: 'obj', obj: hitO! });
       });
       return;
     }
@@ -1031,7 +1031,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private nearestFreeAround(r: { x: number; y: number; w: number; h: number }): { x: number; y: number } | null {
     const pt = { x: Math.floor(this.player.sprite.x / TILE), y: Math.floor(this.player.sprite.y / TILE) };
     const cands: { x: number; y: number }[] = [];
-    for (let x = r.x - 1; x <= r.x + r.w; x++) { cands.push({ x, y: r.y + r.h }); cands.push({ x, y: r.y - 1 }); }
+    for (let x = r.x; x < r.x + r.w; x++) { cands.push({ x, y: r.y + r.h }); cands.push({ x, y: r.y - 1 }); }
     for (let y = r.y; y < r.y + r.h; y++) { cands.push({ x: r.x - 1, y }); cands.push({ x: r.x + r.w, y }); }
     const ok = cands.filter((c) => this.blocked[c.y]?.[c.x] === false);
     ok.sort((a, b) => Math.hypot(a.x - pt.x, a.y - pt.y) - Math.hypot(b.x - pt.x, b.y - pt.y));

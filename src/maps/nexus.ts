@@ -23,6 +23,15 @@ const restPairPlaced: Condition = { flag: 'nexus.rest.pair', eq: true };
 const ribbonSingle: Condition = { flag: 'nexus.ribbon.layout', eq: 'single' };
 const ribbonSplit: Condition = { flag: 'nexus.ribbon.layout', eq: 'split' };
 const ribbonRead: Condition = { flag: 'nexus.ribbon.read', eq: true };
+const printUnsent: Condition = { not: { flagSet: 'nexus.print.edition' } };
+
+const printStages: [stage: string, label: string, visible: Condition][] = [
+  ['setup', 'the two ferry-print proofs', { not: { flagSet: 'nexus.print.fit' } }],
+  ['edge', 'the print with a red mark out in the water', { flag: 'nexus.print.fit', eq: 'edge' }],
+  ['pinned', 'the print lined up on its two pins', { all: [{ flag: 'nexus.print.fit', eq: 'pins' }, printUnsent] }],
+  ['joined', 'the joined ferry proof on the carrier’s board', { flag: 'nexus.print.edition', eq: 'joined' }],
+  ['layers', 'the separate layers of the ferry print', { flag: 'nexus.print.edition', eq: 'layers' }],
+];
 
 const ribbonStages: [stage: string, label: string, visible: Condition][] = [
   ['setup', 'the keeper’s folded date ribbon between the cases', { not: { flagSet: 'nexus.ribbon.layout' } }],
@@ -239,6 +248,9 @@ export const NEXUS: MapDef = {
     { id: 'voices-door', kind: 'door', x: 31, y: 11, w: 1, h: 1, label: 'the passage to the Archive of Voices', art: 'voices.waypost',
       walkThrough: true, visibleIf: { objective: 'civic.finish' }, flag: 'voices.arrived',
       to: { map: 'voices.listening', x: 12, y: 12 } },
+    { id: 'island-door', kind: 'door', x: 34, y: 11, w: 1, h: 1, label: 'the passage to the Island of Models', art: 'island.waypost',
+      walkThrough: true, visibleIf: { objective: 'voices.finish' }, flag: 'island.arrived',
+      to: { map: 'island.workshop', x: 12, y: 12 } },
     { id: 'preserved-return-desk', kind: 'sign', x: 37, y: 16, w: 1, h: 1, label: 'the Cold Store reference copy', art: 'ledger', walkThrough: true,
       text: 'The docket points to the separate royal and coastal records. One line is left open for the transfer we cannot trace.',
       visibleIf: { flag: 'preserved.reply', eq: 'desk' } },
@@ -253,6 +265,10 @@ export const NEXUS: MapDef = {
       visibleIf: { all: [{ flag: 'nile.dispatch', eq: route }, { flag: 'nile.returned', eq: true }] } })),
 
     { id: 'secret-misfiled', kind: 'secret', secret: 'misfiled', x: 22, y: 3, w: 1, h: 1, label: 'a gap behind the bookshelf' },
+    ...printStages.map(([stage, label, visibleIf]) => ({
+      id: `nexus-print-${stage}`, kind: 'scene' as const, x: 5, y: 11, w: 1, h: 1, walkThrough: true,
+      label, art: `nexus.print-${stage}`, node: `nexus.print.${stage}`, visibleIf,
+    })),
     { id: 'ex-a', kind: 'exhibit', exhibit: 'OBJ-001-A', x: 8, y: 7, w: 1, h: 1, label: 'the patent drawing', art: 'pedestal.patent' },
     { id: 'ex-b', kind: 'exhibit', exhibit: 'OBJ-001-B', x: 12, y: 7, w: 2, h: 1, label: 'the workshop model', art: 'pedestal.model' },
     { id: 'ex-c', kind: 'exhibit', exhibit: 'OBJ-001-C', x: 17, y: 7, w: 1, h: 1, label: 'the Biro pen record', art: 'pedestal.biro' },

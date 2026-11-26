@@ -855,6 +855,63 @@ DRAW['nexus.ribbon-bridged'] = [40, 24, (g) => {
   R(g, '#ffd477', 14, 17, 4, 1);
 }];
 
+// The thin sheet carries the red marks separately from the indigo print.
+function ferryPrint(g: Ctx, x: number, y: number) {
+  R(g, '#78513d', x - 1, y - 1, 31, 17);
+  R(g, '#f1dfb4', x, y, 29, 15);
+  R(g, '#6198a5', x + 2, y + 6, 25, 5);
+  R(g, '#4e8191', x + 2, y + 6, 25, 1);
+  R(g, '#84b9b7', x + 8, y + 9, 16, 1);
+  R(g, '#304d59', x + 7, y + 3, 1, 5);
+  R(g, '#304d59', x + 6, y + 7, 3, 1);
+  R(g, '#304d59', x + 20, y + 9, 3, 1);
+  R(g, '#304d59', x + 21, y + 10, 1, 4);
+}
+function ferryPrintMarks(g: Ctx, x: number, y: number) {
+  R(g, '#ac513d', x + 6, y + 6, 3, 2);
+  R(g, '#ac513d', x + 20, y + 8, 3, 2);
+  R(g, '#dd7650', x + 7, y + 6);
+  R(g, '#dd7650', x + 21, y + 8);
+}
+function ferryPrintPins(g: Ctx) {
+  R(g, '#77523b', 5, 5, 3, 3);
+  R(g, '#fbd280', 5, 5, 2, 2);
+  R(g, '#77523b', 29, 15, 3, 3);
+  R(g, '#fbd280', 29, 15, 2, 2);
+}
+DRAW['nexus.print-setup'] = [38, 24, (g) => {
+  ferryPrint(g, 4, 4);
+  R(g, '#e5bd88', 25, 2, 10, 16);
+  R(g, '#ac513d', 28, 8, 3, 2);
+  R(g, '#ac513d', 31, 12, 3, 2);
+  ferryPrintPins(g);
+}];
+DRAW['nexus.print-edge'] = [38, 24, (g) => {
+  ferryPrint(g, 4, 4);
+  ferryPrintMarks(g, 8, 5);
+  ferryPrintPins(g);
+}];
+DRAW['nexus.print-pinned'] = [38, 24, (g) => {
+  ferryPrint(g, 4, 4);
+  ferryPrintMarks(g, 4, 4);
+  ferryPrintPins(g);
+}];
+DRAW['nexus.print-joined'] = [38, 24, (g) => {
+  R(g, '#6b4b42', 1, 2, 36, 20);
+  ferryPrint(g, 4, 4);
+  ferryPrintMarks(g, 4, 4);
+  R(g, '#f3ce80', 14, 18, 11, 3);
+}];
+DRAW['nexus.print-layers'] = [38, 24, (g) => {
+  ferryPrint(g, 3, 5);
+  R(g, '#b8875d', 23, 2, 13, 20);
+  R(g, '#f0d4a0', 25, 4, 10, 15);
+  R(g, '#ac513d', 27, 8, 2, 2);
+  R(g, '#ac513d', 31, 12, 2, 2);
+  R(g, '#866653', 26, 5);
+  R(g, '#866653', 33, 17);
+}];
+
 // Living Forest equipment and a schematic field note.
 DRAW['forest.waypost'] = [16, 24, (g) => {
   R(g, '#574235', 7, 7, 3, 16);
@@ -1342,6 +1399,69 @@ DRAW['voices.lamp'] = [16, 32, (g) => {
   R(g, '#ffdf9f', 7, 7, 3, 5);
   R(g, '#9f7c65', 5, 26, 6, 2);
 }];
+
+// Map parts made for the Island of Models' three hypothetical routes.
+DRAW['island.waypost'] = [20, 24, (g) => {
+  R(g, '#695b53', 8, 7, 4, 16);
+  R(g, '#707b6a', 1, 4, 18, 12);
+  R(g, '#a7b096', 2, 5, 16, 2);
+  R(g, '#d4b68c', 4, 9, 6, 2);
+  R(g, '#a893a1', 8, 7, 2, 7);
+  R(g, '#8eb2a7', 10, 10, 6, 2);
+}];
+DRAW['island.plan'] = [26, 24, (g) => {
+  pedestal(g, 1, 15, 24);
+  R(g, '#678c90', 2, 4, 22, 12);
+  R(g, '#b4aa82', 5, 7, 16, 6);
+  R(g, '#9aa07c', 8, 5, 10, 3);
+  R(g, '#a1926c', 11, 5, 3, 7);
+  R(g, '#baa183', 5, 10, 5, 2);
+  R(g, '#8f6c6d', 17, 8, 3, 4);
+  R(g, '#bb986e', 7, 11, 3, 2);
+  R(g, '#9d8398', 11, 9, 3, 2);
+}];
+DRAW['island.card'] = [16, 24, (g) => {
+  smallTable(g);
+  paper(g, 2, 4, 12, 11);
+  R(g, '#a19271', 3, 5, 10, 2);
+  for (const y of [9, 11, 13]) R(g, '#817b6a', 4, y, 7, 1);
+}];
+DRAW['island.landing'] = [20, 24, (g) => {
+  R(g, '#806d5d', 7, 6, 5, 17);
+  paper(g, 1, 4, 18, 12);
+  R(g, '#789b95', 2, 8, 16, 2);
+  R(g, '#a78e70', 4, 7, 4, 5);
+  R(g, '#74806e', 10, 11, 7, 2);
+}];
+DRAW['island.signal'] = [20, 24, (g) => {
+  R(g, '#705a51', 3, 4, 3, 19);
+  R(g, '#7a6256', 14, 12, 3, 11);
+  R(g, '#b09978', 13, 12, 5, 2);
+  R(g, '#8d685c', 2, 4, 8, 8);
+  R(g, '#c7a076', 3, 5, 6, 6);
+  R(g, '#ad8d70', 14, 16, 5, 2);
+}];
+DRAW['island.margin'] = [20, 24, (g) => {
+  R(g, '#685f50', 8, 8, 4, 15);
+  R(g, '#95886b', 1, 4, 18, 13);
+  paper(g, 2, 5, 16, 10);
+  for (const x of [4, 8, 12]) {
+    R(g, '#829671', x, 7, 2, 6);
+    R(g, '#9f9d77', x + 2, 8, 1, 4);
+  }
+}];
+
+function islandRouteNotice(g: Ctx, route: 'ridge' | 'ferry' | 'marsh') {
+  const colours = { ridge: '#8a7296', ferry: '#59918e', marsh: '#84956c' };
+  R(g, '#785f54', 7, 8, 6, 15);
+  paper(g, 1, 4, 18, 12);
+  R(g, colours[route], 3, 6, 14, 3);
+  R(g, '#8f7966', 4, 11, 10, 1);
+  R(g, '#8f7966', 4, 13, 7, 1);
+}
+DRAW['island.ridge'] = [20, 24, (g) => islandRouteNotice(g, 'ridge')];
+DRAW['island.ferry'] = [20, 24, (g) => islandRouteNotice(g, 'ferry')];
+DRAW['island.marsh'] = [20, 24, (g) => islandRouteNotice(g, 'marsh')];
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

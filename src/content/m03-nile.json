@@ -1070,7 +1070,7 @@
   {
    "id": "nile.workers-led-voices",
    "speaker": "nile-leila",
-   "text": "That puts the workers at the entrance to their own story. I’ll move the official reply alongside, where it can answer them. Leila sets a narrow paper window over your first slip. A visitor reads the stoppage and asks how the people in charge replied.",
+   "text": "That puts the workers at the entrance to their own story. I’ll move the official reply alongside, where it can answer them. Leila sets a narrow paper window over your first slip. A visitor reads the stoppage and asks how the people in charge replied. Two readers left notes marked “Closed” on the exit peg. Turn the slips over to see what each reader means.",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -1087,7 +1087,7 @@
   {
    "id": "nile.workers-led-payment",
    "speaker": "nile-leila",
-   "text": "The official reply can go first, if the next line keeps the dispute open. I’ll pin both slips under the same clip. Leila sets a narrow paper window over your first slip. A visitor reads that grain arrives and asks if that settled the matter.",
+   "text": "The official reply can go first, if the next line keeps the dispute open. I’ll pin both slips under the same clip. Leila sets a narrow paper window over your first slip. A visitor reads that grain arrives and asks if that settled the matter. Two readers left notes marked “Closed” on the exit peg. Turn the slips over to see what each reader means.",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -1098,6 +1098,173 @@
      "next": "nile.window-turn-payment"
     }
    ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "nile.closing.start",
+   "speaker": "nile-leila",
+   "text": "Two folded reading slips hang from the peg. Both have CLOSED on the front. Each points to the grain delivery in Amunnakht’s account.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Turn over the stock keeper’s slip.",
+     "next": "nile.closing.stock",
+     "if": {
+      "not": {
+       "flag": "nile.closing.stock",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nile.closing.stock",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Turn over the lending bench slip.",
+     "next": "nile.closing.reader",
+     "if": {
+      "not": {
+       "flag": "nile.closing.reader",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nile.closing.reader",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Lay both slips beside the later stoppage.",
+     "next": "nile.closing.compare",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.closing.stock",
+        "eq": true
+       },
+       {
+        "flag": "nile.closing.reader",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nile.closing.post"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Read the stock keeper’s posted note.",
+     "next": "nile.closing.desk",
+     "if": {
+      "flag": "nile.closing.post",
+      "eq": "desk"
+     }
+    },
+    {
+     "text": "Read the lending bench’s posted note.",
+     "next": "nile.closing.bench",
+     "if": {
+      "flag": "nile.closing.post",
+      "eq": "bench"
+     }
+    },
+    {
+     "text": "Leave the slips on the peg."
+    }
+   ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "nile.closing.stock",
+   "speaker": "nile-leila",
+   "text": "There is a single box next to the delivery line. At our stock desk an apprentice learns to close the entry when the delivery goes in the book. Another box can open the next day. The slip only says that this delivery was entered.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the slip back with its box showing.",
+     "next": "nile.closing.start"
+    },
+    {
+     "text": "Leave the slips on the peg."
+    }
+   ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "nile.closing.reader",
+   "speaker": "nile-leila",
+   "text": "There are two blank spaces for voices. At our lending bench the older readers teach each pair a closing call. The first voice says what the people asked for. The second says how the dispute ended. On this slip the second reader has used the grain delivery as the ending.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the slip back with both voices showing.",
+     "next": "nile.closing.start"
+    },
+    {
+     "text": "Leave the slips on the peg."
+    }
+   ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "nile.closing.compare",
+   "speaker": "nile-leila",
+   "text": "The grain delivery appears in the source. The later stoppage appears there too. Perhaps the delivery answered the first request and a further demand brought the workers back. Perhaps people still wanted something the delivery left open. These three entries show work stopped again. They leave how each worker understood the payment open.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pin a “Delivery entered” note by the exit.",
+     "next": "nile.closing.desk",
+     "effects": [
+      {
+       "setFlag": "nile.closing.post",
+       "value": "desk"
+      }
+     ]
+    },
+    {
+     "text": "Leave a second voice open at the lending bench.",
+     "next": "nile.closing.bench",
+     "effects": [
+      {
+       "setFlag": "nile.closing.post",
+       "value": "bench"
+      }
+     ]
+    },
+    {
+     "text": "Keep the slips together for now."
+    }
+   ],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "nile.closing.desk",
+   "speaker": "nile-leila",
+   "text": "A keeper copies “Grain delivery entered. Later stoppage recorded.” onto the corridor note. The next apprentice starts a fresh entry at the line about the renewed protest.",
+   "historicalLabel": "fictional-world",
+   "options": [],
+   "effects": [],
+   "next": null
+  },
+  {
+   "id": "nile.closing.bench",
+   "speaker": "nile-leila",
+   "text": "Two readers take turns. One reads the grain delivery. The other goes to close the story, then sees the later stoppage. She passes the slip back to the first reader and asks what the record can tell them about the new stoppage.",
+   "historicalLabel": "fictional-world",
+   "options": [],
    "effects": [],
    "next": null
   },
@@ -3363,6 +3530,30 @@
    "objective": "nile.lamp.file",
    "depth": 4,
    "text": "Leave a guide at the lamp for someone who can repeat it or a paired note at the lending bench for readers farther away."
+  },
+  {
+   "id": "h.nile.closing.post.1",
+   "objective": "nile.closing.post",
+   "depth": 1,
+   "text": "Look for the two folded slips at the exit of the Workmen’s Room."
+  },
+  {
+   "id": "h.nile.closing.post.2",
+   "objective": "nile.closing.post",
+   "depth": 2,
+   "text": "Look at the stock keeper’s box and the lending bench’s two voices. They both point to the delivery."
+  },
+  {
+   "id": "h.nile.closing.post.3",
+   "objective": "nile.closing.post",
+   "depth": 3,
+   "text": "Lay both slips beside the later stoppage to see what each one leaves out."
+  },
+  {
+   "id": "h.nile.closing.post.4",
+   "objective": "nile.closing.post",
+   "depth": 4,
+   "text": "Leave a dated sequence for the next apprentice or keep a voice open for the next pair at the bench."
   }
  ],
  "criteria": [
@@ -3437,6 +3628,11 @@
    "id": "j.nile.lamp",
    "title": "The third groove",
    "text": "The same practice slip showed two grooves from above and three when I moved the lamp to the side. Moving it back restored the first view. Leila’s marks tell a reader when to pause. The receiving desk uses its own cuts to count boxes."
+  },
+  {
+   "id": "j.nile.closing",
+   "title": "Two ways to close a slip",
+   "text": "I turned two slips that used the same word for different things. One marked a delivery entered in a book. The other tried to end a dispute. The later stoppage in Amunnakht’s record stays on the page either way."
   }
  ],
  "portfolio": [
@@ -3803,6 +3999,56 @@
      "onComplete": [
       {
        "credit": "credit.nile.workers"
+      }
+     ]
+    },
+    {
+     "id": "nile.closing.post",
+     "title": "Check the two slips at the exit peg and leave a note for the next reader.",
+     "done": {
+      "all": [
+       {
+        "flag": "nile.closing.stock",
+        "eq": true
+       },
+       {
+        "flag": "nile.closing.reader",
+        "eq": true
+       },
+       {
+        "flagSet": "nile.closing.post"
+       }
+      ]
+     },
+     "essential": false,
+     "visible": {
+      "objective": "nile.workers"
+     },
+     "weave": {
+      "concepts": [
+       "truth",
+       "certainty",
+       "culture",
+       "evidence",
+       "explanation",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ]
+     },
+     "onComplete": [
+      {
+       "journal": "j.nile.closing"
       }
      ]
     }

@@ -115,6 +115,50 @@ describe('the borrowed mark', () => {
   });
 });
 
+describe('the closed slips by the workmen’s exit', () => {
+  const stock = ['Turn over the stock', 'Put the slip back with its box'] as const;
+  const reader = ['Turn over the lending', 'Put the slip back with both voices'] as const;
+
+  it.each([
+    ['workers stopping', stock, reader, 'Pin a “Delivery entered”', 'desk'],
+    ['Lead with the payment', reader, stock, 'Leave a second voice', 'bench'],
+  ] as const)('tests both meanings after %s and posts only the selected note', (lead, first, second, publish, placement) => {
+    const d = new Driver();
+    d.s.inventory['tool.provenance-thread'] = 1;
+    d.s.mapId = 'nile.workyard';
+    d.run({ type: 'SetFlag', flag: 'nile.arrived', value: true });
+    const props = MAPS[d.s.mapId].interactables;
+    const peg = props.find((prop) => prop.id === 'nile-closing-peg')!;
+    const notes = () => props.filter((prop) => prop.kind === 'sign' && prop.id.startsWith('nile-closing-') && check(prop.visibleIf, d.s));
+    expect(check(peg.visibleIf, d.s)).toBe(false);
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-STRIKE' });
+    for (const node of ['delay', 'payment', 'return']) d.run({ type: 'FollowThread', thread: 'nile-strike', node });
+    d.talk('nile-leila', lead, 'Leave the opening slip');
+    expect(d.done('nile.workers')).toBe(true);
+    expect(d.done('nile.two')).toBe(false);
+    expect(check(peg.visibleIf, d.s)).toBe(true);
+    const xp = totalXP(d.p);
+    const options = () => d.e.visibleOptions(peg.node!, d.s).map(({ option }) => option.text);
+
+    d.walk(peg.node!, [...first, 'Leave the slips']);
+    expect(options().some((text) => text.startsWith(first[0]))).toBe(false);
+    expect(options()).not.toContain('Lay both slips beside the later stoppage.');
+    expect(notes()).toEqual([]);
+
+    d.walk(peg.node!, [...second, 'Lay both slips', 'Keep the slips together']);
+    expect(d.done('nile.closing.post')).toBe(false);
+    expect(d.e.node('nile.closing.compare').text).toContain('These three entries show work stopped again.');
+    d.walk(peg.node!, ['Lay both slips', publish]);
+    expect(d.done('nile.closing.post')).toBe(true);
+    expect(notes().map(({ id }) => id)).toEqual([`nile-closing-${placement}`]);
+    expect(notes()[0].text).toContain('Amunnakht');
+    expect(options()).not.toContain('Lay both slips beside the later stoppage.');
+    expect(d.done('nile.two')).toBe(false);
+    expect(d.s.flags['nile.dispatch']).toBeUndefined();
+    expect(totalXP(d.p)).toBe(xp);
+  });
+});
+
 describe('the reading window', () => {
   it.each([
     ['workers stopping', 'voices', 'Hang both ways', 'pair'],
