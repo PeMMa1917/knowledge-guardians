@@ -172,6 +172,24 @@
     "HIS-NILE-08"
    ],
    "limits": "The story gives the rock meaning. The episode does not describe an inscription, so it does not identify the surviving object on its own."
+  },
+  {
+   "id": "card.archive.receiving-tag",
+   "title": "Receiving tag signed by Mara",
+   "text": "The archive worker Mara signed the line marked “received at the hall”. A second line for the maker is blank.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "sources": [],
+   "limits": "The signature records a handover. It cannot tell us who made the tag or whether Mara used the stamp first."
+  },
+  {
+   "id": "card.archive.practice-swatch",
+   "title": "Cloth from the keepers’ practice table",
+   "text": "The keepers practiced the crossed mark on scrap cloth before stamping their own tags. Leila now shows new keepers where to leave room for a second name.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "sources": [],
+   "limits": "Leila can show how keepers use the mark here. She cannot identify who made the loose hall tag."
   }
  ],
  "exhibits": [
@@ -261,6 +279,30 @@
    ],
    "grantsCard": "card.nile.badang",
    "altText": "Illustrated open pages with the river mouth marked. The picture is not a facsimile."
+  },
+  {
+   "id": "OBJ-ARCHIVE-RECEIVING-TAG",
+   "name": "Mara’s receiving tag",
+   "art": "nile.tablet",
+   "summary": "In this fictional archive, the worker who took an object in signed its handover line. On this tag, Mara’s name stands above a blank maker’s line. Someone pinned it under a bigger sign calling her the inventor.",
+   "dateText": "After the new hall store opened.",
+   "dateKind": "The day the tag was filed.",
+   "historicalLabel": "fictional-world",
+   "sources": [],
+   "grantsCard": "card.archive.receiving-tag",
+   "altText": "A tag with a signature on its receiving line and a blank line for the maker."
+  },
+  {
+   "id": "OBJ-ARCHIVE-PRACTICE-SWATCH",
+   "name": "The keepers’ practice swatch",
+   "art": "nile.scroll",
+   "summary": "In the fictional archive, Leila sets a practice cloth between two learners: one presses the mark, the other leaves space to name the maker. The keepers pass on the habit as they work. The cloth holds several crossed marks of different sizes.",
+   "dateText": "Set out for this group of learners.",
+   "dateKind": "The day Leila set out this practice cloth.",
+   "historicalLabel": "fictional-world",
+   "sources": [],
+   "grantsCard": "card.archive.practice-swatch",
+   "altText": "A practice cloth with crossed marks in several sizes and a row of gaps for names."
   }
  ],
  "threads": [
@@ -520,6 +562,107 @@
     "limit": "Where the account stops",
     "button": "Put up the label"
    }
+  },
+  {
+   "id": "nile-borrowed-mark",
+   "title": "The borrowed mark",
+   "oldLabel": "Mara invented the archive mark.",
+   "place": "The Nile Archive hall",
+   "subjects": [
+    {
+     "id": "tag",
+     "text": "Mara’s receiving tag"
+    },
+    {
+     "id": "cloth",
+     "text": "The keepers’ practice swatch"
+    }
+   ],
+   "criteria": [
+    {
+     "id": "received",
+     "text": "A recorded handover",
+     "force": 3
+    },
+    {
+     "id": "shared",
+     "text": "A practice that keepers teach one another",
+     "force": 3
+    },
+    {
+     "id": "first",
+     "text": "Proof of the first maker",
+     "force": 5
+    }
+   ],
+   "limits": [
+    {
+     "id": "open",
+     "text": "The first maker is still unnamed.",
+     "lower": 1
+    },
+    {
+     "id": "none",
+     "text": "",
+     "lower": 0
+    }
+   ],
+   "supports": [
+    {
+     "subject": "tag",
+     "criterion": "received",
+     "cards": [
+      {
+       "card": "card.archive.receiving-tag",
+       "weight": 2
+      }
+     ],
+     "heard": "An apprentice starts to copy Mara’s name onto both lines. She reads your label, then leaves the maker’s line open."
+    },
+    {
+     "subject": "cloth",
+     "criterion": "shared",
+     "cards": [
+      {
+       "card": "card.archive.practice-swatch",
+       "weight": 2
+      }
+     ],
+     "heard": "A visitor asks to watch Leila pass the swatch to the next keeper. He leaves the question of who started the practice open."
+    }
+   ],
+   "weak": {
+    "noSupport": "A visitor calls the person on the tag its maker. The gold edge shows that a receiving line cannot carry that claim.",
+    "tooStrong": "The word “first” sticks in a reader’s ear. The room starts to glow."
+   },
+   "legends": {
+    "intro": "The hall label gives Mara sole credit. Follow the signature to the handover line, then check how today’s keepers pass on the mark. Decide which record to put on the stand.",
+    "subject": "Record on the stand",
+    "criterion": "What a reader can carry away",
+    "limit": "Space for what is unknown",
+    "button": "Mount the label"
+   },
+   "weave": {
+    "concepts": [
+     "truth",
+     "certainty",
+     "culture"
+    ],
+    "atl": [
+     "thinking",
+     "communication"
+    ],
+    "aoks": [
+     "HIS",
+     "ART",
+     "LAN"
+    ],
+    "subjects": [
+     "history",
+     "visual-arts",
+     "design-tech"
+    ]
+   }
   }
  ],
  "characters": [
@@ -665,6 +808,10 @@
     {
      "text": "I’ll speak to the people tending the records.",
      "next": "nile.brief-people"
+    },
+    {
+     "text": "Who made the crossed mark on the hall tag?",
+     "next": "nile.borrowed-mark-lead"
     }
    ],
    "effects": [],
@@ -976,7 +1123,138 @@
    "speaker": "nile-iman",
    "text": "Your first packet has gone. Use the Door Without a Name to follow it, or stay to trace the lead you left. Neither choice shuts the archive.",
    "historicalLabel": "fictional-world",
-   "options": [],
+   "options": [
+    {
+     "text": "Where did a reader send a reply?",
+     "next": "nile.reply-print-lead",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.returned",
+        "eq": true
+       },
+       {
+        "flag": "nile.dispatch",
+        "eq": "print"
+       },
+       {
+        "not": {
+         "objective": "nile.reply.compare"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Put our paired copy to work.",
+     "next": "nile.reply-print-offer",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.dispatch",
+        "eq": "print"
+       },
+       {
+        "objective": "nile.reply.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.reply.destination"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Where did a reader send a reply?",
+     "next": "nile.reply-read-lead",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.returned",
+        "eq": true
+       },
+       {
+        "flag": "nile.dispatch",
+        "eq": "read"
+       },
+       {
+        "not": {
+         "objective": "nile.reply.compare"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Put our paired copy to work.",
+     "next": "nile.reply-read-offer",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.dispatch",
+        "eq": "read"
+       },
+       {
+        "objective": "nile.reply.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.reply.destination"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Where did a reader send a reply?",
+     "next": "nile.reply-pair-lead",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.returned",
+        "eq": true
+       },
+       {
+        "flag": "nile.dispatch",
+        "eq": "pair"
+       },
+       {
+        "not": {
+         "objective": "nile.reply.compare"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Put our paired copy to work.",
+     "next": "nile.reply-pair-offer",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.dispatch",
+        "eq": "pair"
+       },
+       {
+        "objective": "nile.reply.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.reply.destination"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the archive open.",
+     "if": {
+      "flag": "nile.returned",
+      "eq": true
+     }
+    }
+   ],
    "effects": [],
    "next": null
   },
@@ -1234,6 +1512,255 @@
      "text": "I’ll leave it on your desk for now."
     }
    ]
+  },
+  {
+   "id": "nile.reply-print-lead",
+   "speaker": "nile-iman",
+   "text": "The visitor who copied the royal case sent a folded slip to Nasir. Find it by the cases. Follow his blue cord to the next test copy.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.reply-print-hinge",
+   "speaker": "nile-iman",
+   "text": "Nasir sets the old heading under a hinge. At the case the visitor can lift it to check the dated correction. Someone with only the pocket copy still has to come back.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.reply-print-fold",
+   "speaker": "nile-iman",
+   "text": "Imani fills a tray in the hall. Visitors can take both dates home on each strip. A copy with the original heading stays in the Royal Records Room for anyone who wants to see what changed.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.reply-print-offer",
+   "speaker": "nile-iman",
+   "text": "The fold hid what the second date belonged to. We have two ways to send the paired headings back. What should Nasir set up first?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang a hinged copy on the royal case.",
+     "next": "nile.reply-print-hinge",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.dispatch",
+        "eq": "print"
+       },
+       {
+        "objective": "nile.reply.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.reply.destination"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.reply.destination",
+       "value": "print-hinge"
+      }
+     ]
+    },
+    {
+     "text": "Send folded copies out with the two dates attached.",
+     "next": "nile.reply-print-fold",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.dispatch",
+        "eq": "print"
+       },
+       {
+        "objective": "nile.reply.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.reply.destination"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.reply.destination",
+       "value": "print-fold"
+      }
+     ]
+    },
+    {
+     "text": "Leave both copies here for now."
+    }
+   ]
+  },
+  {
+   "id": "nile.reply-read-lead",
+   "speaker": "nile-iman",
+   "text": "One of Leila’s readers carried the two slips into a family reading. Find her reply beside Leila. It marks the moment the second slip fell out of the telling.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.reply-read-table",
+   "speaker": "nile-iman",
+   "text": "A family takes two seats in the Workmen’s Room and goes back to the second slip. The record stays open at its own pace. Visitors who never enter the room will have to hear of it from another reader.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.reply-read-voices",
+   "speaker": "nile-iman",
+   "text": "Two visitors take turns at the bench. One reads the payment, the other the next stoppage. The dated slips stay under their hands. Imani leaves a spare copy for visitors who want to read quietly.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.reply-read-offer",
+   "speaker": "nile-iman",
+   "text": "Leila has kept the scribe’s name with both lines. Do we put the passages where people can take their time or pass them between readers in the hall?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep the paired slips open at Leila’s table.",
+     "next": "nile.reply-read-table",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.dispatch",
+        "eq": "read"
+       },
+       {
+        "objective": "nile.reply.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.reply.destination"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.reply.destination",
+       "value": "read-table"
+      }
+     ]
+    },
+    {
+     "text": "Put a two-reader copy at the hall bench.",
+     "next": "nile.reply-read-voices",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.dispatch",
+        "eq": "read"
+       },
+       {
+        "objective": "nile.reply.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.reply.destination"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.reply.destination",
+       "value": "read-voices"
+      }
+     ]
+    },
+    {
+     "text": "Leave both copies here for now."
+    }
+   ]
+  },
+  {
+   "id": "nile.reply-pair-lead",
+   "speaker": "nile-iman",
+   "text": "An apprentice has sent Marek a copy of the workshop notes. See what came unstuck beside the model. Nasir has the next test copy in the Royal Records Room.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.reply-pair-bench",
+   "speaker": "nile-iman",
+   "text": "Marek’s next apprentice reads the load settings before setting the cart on the shelf. The tag stays by the bench. A reader far from the model will need a copy.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.reply-pair-ledger",
+   "speaker": "nile-iman",
+   "text": "Nasir puts a copy in the Royal Records Room. Readers can trace the map separately from the model, even when the bench is busy. The ledger alone cannot give them the feel of a loaded cart.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.reply-pair-offer",
+   "speaker": "nile-iman",
+   "text": "We can help visitors rebuild the trial or help later readers trace what was actually tested. Where should this copy do its first work?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Tie the run card and its settings to the model bench.",
+     "next": "nile.reply-pair-bench",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.dispatch",
+        "eq": "pair"
+       },
+       {
+        "objective": "nile.reply.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.reply.destination"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.reply.destination",
+       "value": "pair-bench"
+      }
+     ]
+    },
+    {
+     "text": "File the source and the run on facing pages.",
+     "next": "nile.reply-pair-ledger",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.dispatch",
+        "eq": "pair"
+       },
+       {
+        "objective": "nile.reply.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.reply.destination"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.reply.destination",
+       "value": "pair-ledger"
+      }
+     ]
+    },
+    {
+     "text": "Leave both copies here for now."
+    }
+   ]
+  },
+  {
+   "id": "nile.borrowed-mark-lead",
+   "speaker": "nile-iman",
+   "historicalLabel": "fictional-world",
+   "text": "People keep bringing me tags with Mara’s name on both lines. The receiving tag is beside the old stand. Leila shows the apprentices how they make their marks in the Workmen’s Room."
   }
  ],
  "chronicle": [
@@ -1321,6 +1848,22 @@
    "if": {
     "flagSet": "nile.emberCorrection"
    }
+  },
+  {
+   "id": "nile-reply-placed",
+   "title": "A slip comes back",
+   "text": "A reader sent evidence that part of our first packet had come loose. We chose where to leave a paired copy.",
+   "if": {
+    "objective": "nile.reply.place"
+   }
+  },
+  {
+   "id": "nile-borrowed-mark",
+   "title": "The borrowed mark",
+   "text": "The hall now leaves room for an unnamed maker alongside the record we can check.",
+   "if": {
+    "objective": "nile.mark.publish"
+   }
   }
  ],
  "questions": [
@@ -1353,6 +1896,11 @@
    "id": "KQ-NILE-06",
    "text": "How can an account matter to a community when an object cannot verify every part of it?",
    "lastWord": "A tradition and a fragment can each tell us something, without having to tell us the same thing."
+  },
+  {
+   "id": "KQ-NILE-07",
+   "text": "What must travel with a claim so it can be checked after it leaves its first reader?",
+   "lastWord": "Make the claim and its footing travel together."
   }
  ],
  "hints": [
@@ -1595,6 +2143,78 @@
    "objective": "nile.ember.return",
    "depth": 4,
    "text": "Use the option about Elsbet’s packet. Choose whether readers reach the correction in the square or hear it from someone first."
+  },
+  {
+   "id": "h.nile.reply.compare.1",
+   "objective": "nile.reply.compare",
+   "depth": 1,
+   "text": "Someone carried the first packet away and sent a reply. Imani knows which keeper received it."
+  },
+  {
+   "id": "h.nile.reply.compare.2",
+   "objective": "nile.reply.compare",
+   "depth": 2,
+   "text": "Ask Imani where the reader sent the reply. The keeper has left the reply with the record it refers to."
+  },
+  {
+   "id": "h.nile.reply.compare.3",
+   "objective": "nile.reply.compare",
+   "depth": 3,
+   "text": "Read the slip from the public case in Nasir’s room, the reader’s ribbon in Leila’s room, or the apprentice’s loose tag beside Marek’s model, depending on your packet."
+  },
+  {
+   "id": "h.nile.reply.compare.4",
+   "objective": "nile.reply.compare",
+   "depth": 4,
+   "text": "After reading that reply, follow its room clue. Inspect the two headings at Leila’s table, the reading clip beside Marek’s model, or the double clip near Nasir’s cases."
+  },
+  {
+   "id": "h.nile.reply.place.1",
+   "objective": "nile.reply.place",
+   "depth": 1,
+   "text": "You have seen what can fall out of a copy. Imani can help you put the parts back in reach."
+  },
+  {
+   "id": "h.nile.reply.place.2",
+   "objective": "nile.reply.place",
+   "depth": 2,
+   "text": "Return to Imani in the hall of the Nile Archive."
+  },
+  {
+   "id": "h.nile.reply.place.3",
+   "objective": "nile.reply.place",
+   "depth": 3,
+   "text": "Tell Imani you want to put the paired copy to work."
+  },
+  {
+   "id": "h.nile.reply.place.4",
+   "objective": "nile.reply.place",
+   "depth": 4,
+   "text": "Choose one of Imani’s two placements. The new prop appears where your choice sends it."
+  },
+  {
+   "id": "h.nile.mark.publish.1",
+   "objective": "nile.mark.publish",
+   "depth": 1,
+   "text": "A name written on a tag may describe how the tag got here."
+  },
+  {
+   "id": "h.nile.mark.publish.2",
+   "objective": "nile.mark.publish",
+   "depth": 2,
+   "text": "Look at Mara’s receiving tag in the hall and the practice swatch in Leila’s Workmen’s Room."
+  },
+  {
+   "id": "h.nile.mark.publish.3",
+   "objective": "nile.mark.publish",
+   "depth": 3,
+   "text": "See which line Mara signed and watch what the swatch is for. The label stand is on the west side of the hall."
+  },
+  {
+   "id": "h.nile.mark.publish.4",
+   "objective": "nile.mark.publish",
+   "depth": 4,
+   "text": "Mount a label about the handover or the practice and leave the first maker unnamed. Both displays can hold."
   }
  ],
  "criteria": [
@@ -1649,6 +2269,16 @@
    "id": "j.nile.ember",
    "claimKind": "interpretation",
    "text": "We carried an archive method back to Emberford. A dated correction belongs where the people who heard the first account can find it."
+  },
+  {
+   "id": "j.nile.reply",
+   "claimKind": "interpretation",
+   "text": "A reader showed us what our first packet lost on the way. We sent another copy with its headings, limits or settings still attached."
+  },
+  {
+   "id": "j.nile.borrowed-mark",
+   "claimKind": "interpretation",
+   "text": "The name at the handover tells us who received the tag. The cloth shows how the keepers share a practice. Neither lets us sign the empty line."
   }
  ],
  "portfolio": [
@@ -2246,6 +2876,217 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH2-R06",
+   "world": "WORLD-03",
+   "title": "A Slip Comes Back",
+   "knowledgeQuestion": "What must travel with a claim so it can be checked after it leaves its first reader?",
+   "available": {
+    "all": [
+     {
+      "flag": "nile.returned",
+      "eq": true
+     },
+     {
+      "flag": "nile.dispatch",
+      "in": [
+       "print",
+       "read",
+       "pair"
+      ]
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "nile.reply.compare",
+     "title": "Trace the reply from your first packet and inspect the paired copy.",
+     "done": {
+      "any": [
+       {
+        "all": [
+         {
+          "flag": "nile.dispatch",
+          "eq": "print"
+         },
+         {
+          "flag": "clue.nile-reply-print.read",
+          "eq": true
+         },
+         {
+          "flag": "clue.nile-proof-print.read",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "all": [
+         {
+          "flag": "nile.dispatch",
+          "eq": "read"
+         },
+         {
+          "flag": "clue.nile-reply-read.read",
+          "eq": true
+         },
+         {
+          "flag": "clue.nile-proof-read.read",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "all": [
+         {
+          "flag": "nile.dispatch",
+          "eq": "pair"
+         },
+         {
+          "flag": "clue.nile-reply-pair.read",
+          "eq": true
+         },
+         {
+          "flag": "clue.nile-proof-pair.read",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "explanation",
+       "justification"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-THK-14"
+     ],
+     "kq": {
+      "id": "KQ-NILE-07",
+      "action": "compare two copies of a record"
+     }
+    },
+    {
+     "id": "nile.reply.place",
+     "title": "Decide with Imani where the paired copy will help first.",
+     "done": {
+      "flagSet": "nile.reply.destination"
+     },
+     "visible": {
+      "objective": "nile.reply.compare"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "power",
+       "values"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01"
+     ],
+     "kq": {
+      "id": "KQ-NILE-07",
+      "action": "choose a way to carry a correction"
+     },
+     "onComplete": [
+      {
+       "journal": "j.nile.reply"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH2-R07",
+   "world": "WORLD-03",
+   "title": "The Borrowed Mark",
+   "knowledgeQuestion": "When can a name on a record tell us who did the work?",
+   "available": {
+    "flag": "nile.arrived",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "nile.mark.publish",
+     "title": "Trace the archive mark from the hall and help Imani repair its label.",
+     "done": {
+      "all": [
+       {
+        "card": "card.archive.receiving-tag"
+       },
+       {
+        "card": "card.archive.practice-swatch"
+       },
+       {
+        "flag": "label.nile-borrowed-mark.holds",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "truth",
+       "certainty",
+       "culture"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HIS",
+       "ART",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "visual-arts",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-THK-14"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.nile.borrowed-mark"
+      }
+     ]
+    }
+   ]
   }
  ],
  "clues": [
@@ -2319,6 +3160,42 @@
      ]
     }
    ]
+  },
+  {
+   "id": "nile-reply-print",
+   "name": "Folded copy from the public case",
+   "text": "A visitor writes: “My fold covered the date on the agreement. At home I read it as part of the battle.” Nasir tied the fold shut with blue cord. A matching cord marks his dry run on Leila’s table in the Workmen’s Room.",
+   "views": []
+  },
+  {
+   "id": "nile-proof-print",
+   "name": "Two headings on one strip",
+   "text": "At Leila’s table, Nasir clips the date and the purpose together for each record. Fold either end back. Each visible heading still says which record it describes. Leila leaves enough room to pull the second heading out again.",
+   "views": []
+  },
+  {
+   "id": "nile-reply-read",
+   "name": "A reader’s ribbon",
+   "text": "A reader pinned a ribbon after the first grain payment. She writes: “I paused here. My brother thought the work was settled.” Leila sends you to Marek’s Map Room. He has built a holder that leaves space for a second line.",
+   "views": []
+  },
+  {
+   "id": "nile-proof-read",
+   "name": "Two places in a reading clip",
+   "text": "Beside the model, Marek slides the payment into one clip and the new stoppage into the next. Each clip carries its own speaker and date note. A listener can stop after the first line and still see that the second has a place.",
+   "views": []
+  },
+  {
+   "id": "nile-reply-pair",
+   "name": "An apprentice’s loose tag",
+   "text": "The apprentice has copied “the wide wash kept the load upright”. The tag with the crate height fell out of the bundle. Marek ties it to his sample. Look for a double clip beside Nasir’s cases in the Royal Records Room.",
+   "views": []
+  },
+  {
+   "id": "nile-proof-pair",
+   "name": "The double clip",
+   "text": "Nasir uses one clip for the map description and another for the trial result. Under the trial he leaves the load and road settings. A copyist can take the model note away and still see exactly which run produced it.",
+   "views": []
   }
  ],
  "keepsakes": [
@@ -2375,6 +3252,60 @@
     "eq": true
    },
    "line": "A second reader. Elsbet always cut room for one more."
+  },
+  {
+   "id": "nile-imani-handover",
+   "character": "nile-iman",
+   "if": {
+    "all": [
+     {
+      "flag": "label.nile-borrowed-mark.holds",
+      "eq": true
+     },
+     {
+      "flag": "label.nile-borrowed-mark.subject",
+      "eq": "tag"
+     }
+    ]
+   },
+   "line": "Two visitors came to my desk with the tag. This time they asked what Mara received."
+  },
+  {
+   "id": "nile-leila-practice",
+   "character": "nile-leila",
+   "if": {
+    "all": [
+     {
+      "flag": "label.nile-borrowed-mark.holds",
+      "eq": true
+     },
+     {
+      "flag": "label.nile-borrowed-mark.subject",
+      "eq": "cloth"
+     }
+    ]
+   },
+   "line": "I left the spare cloth out. The new keepers are teaching the mark to each other."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.nile-reply",
+   "attribute": "reflective",
+   "when": {
+    "objective": "nile.reply.place"
+   },
+   "did": "You followed a reader’s reply across the archive and changed how the record travels.",
+   "prompt": "Which parts of a record would you keep together next time?"
+  },
+  {
+   "id": "mom.nile-borrowed-mark",
+   "attribute": "principled",
+   "when": {
+    "objective": "nile.mark.publish"
+   },
+   "did": "You gave the workers credit for what their records showed and left the maker’s name open.",
+   "prompt": "What would you need to find before signing the empty line?"
   }
  ]
 }

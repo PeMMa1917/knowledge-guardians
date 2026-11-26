@@ -315,6 +315,150 @@
      }
     }
    ]
+  },
+  {
+   "id": "KG-CH1-S05",
+   "world": "WORLD-02",
+   "title": "The Copy in the Square",
+   "knowledgeQuestion": "Who has heard a claim, and who still needs to hear its correction?",
+   "available": {
+    "flag": "copy.started",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "copy.o.trace",
+     "title": "Trace the old order. Read the guild entry, the workshop slip and Sefa’s packet.",
+     "visible": {
+      "flag": "copy.started",
+      "eq": true
+     },
+     "done": {
+      "all": [
+       {
+        "flag": "copy.order",
+        "eq": true
+       },
+       {
+        "flag": "copy.consent",
+        "eq": true
+       },
+       {
+        "flag": "copy.anchor",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "certainty",
+       "objectivity"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "business"
+      ]
+     },
+     "skills": [
+      "SK-RSC-08",
+      "SK-RSC-22",
+      "SK-MED-04"
+     ]
+    },
+    {
+     "id": "copy.o.plan",
+     "title": "Choose how to get a correction to the people who took the old slips.",
+     "visible": {
+      "objective": "copy.o.trace"
+     },
+     "done": {
+      "flagSet": "copy.route"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "power",
+       "perspective",
+       "culture",
+       "values",
+       "responsibility"
+      ],
+      "atl": [
+       "social",
+       "self-management",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "business",
+       "lang-langlit",
+       "anthropology"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-WRT-13"
+     ]
+    },
+    {
+     "id": "copy.o.relay",
+     "title": "Carry the dated copy to the south gate, or meet Hana at the west stall for the spoken handover.",
+     "visible": {
+      "objective": "copy.o.plan"
+     },
+     "done": {
+      "flag": "copy.delivered",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "truth",
+       "explanation",
+       "justification",
+       "responsibility"
+      ],
+      "atl": [
+       "communication",
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "business",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-WRT-04"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.copy.arrived"
+      }
+     ]
+    }
+   ]
   }
  ],
  "cards": [
@@ -862,6 +1006,11 @@
    "id": "j.m02.done",
    "text": "Back in the Nexus. Warden Ise went quiet when she saw the seal. Hesper Lyle says she will visit 'to see how you people test things'.",
    "claimKind": "observation"
+  },
+  {
+   "id": "j.copy.arrived",
+   "text": "We sent the correction with the order number. People could match it to the copy they already had. The workshop’s public name travelled with it and the private names stayed inside.",
+   "claimKind": "observation"
   }
  ],
  "dialogue": [
@@ -933,12 +1082,60 @@
   {
    "id": "corvan.after.honest",
    "speaker": "merchant-corvan",
-   "text": "New sign, Hesper's name on it. Funny thing: people trust it more. Two buyers asked about her other work. One asked about you. I told them {name} asked the maker first, and that {their} questions were fair."
+   "text": "New sign, Hesper's name on it. Funny thing: people trust it more. Two buyers asked about her other work. One asked about you. I told them {name} asked the maker first, and that {their} questions were fair.",
+   "options": [
+    {
+     "text": "Ask whether anyone left with the old sign’s words.",
+     "if": {
+      "not": {
+       "flag": "copy.started",
+       "eq": true
+      }
+     },
+     "next": "copy.start"
+    },
+    {
+     "text": "Ask what happened to the two slips.",
+     "if": {
+      "flag": "copy.delivered",
+      "eq": true
+     },
+     "next": "copy.thanks"
+    },
+    {
+     "text": "Leave the stall.",
+     "next": null
+    }
+   ]
   },
   {
    "id": "corvan.after.down",
    "speaker": "merchant-corvan",
-   "text": "No sign today. I need time to think about what I write next. You were right about the steel. You did not have to be so loud about it."
+   "text": "No sign today. I need time to think about what I write next. You were right about the steel. You did not have to be so loud about it.",
+   "options": [
+    {
+     "text": "Ask whether anyone left with the old sign’s words.",
+     "if": {
+      "not": {
+       "flag": "copy.started",
+       "eq": true
+      }
+     },
+     "next": "copy.start"
+    },
+    {
+     "text": "Ask what happened to the two slips.",
+     "if": {
+      "flag": "copy.delivered",
+      "eq": true
+     },
+     "next": "copy.thanks"
+    },
+    {
+     "text": "Leave the stall.",
+     "next": null
+    }
+   ]
   },
   {
    "id": "corvan.after.note",
@@ -953,6 +1150,24 @@
     {
      "text": "Fair enough.",
      "next": null
+    },
+    {
+     "text": "Ask whether anyone left with the old sign’s words.",
+     "if": {
+      "not": {
+       "flag": "copy.started",
+       "eq": true
+      }
+     },
+     "next": "copy.start"
+    },
+    {
+     "text": "Ask what happened to the two slips.",
+     "if": {
+      "flag": "copy.delivered",
+      "eq": true
+     },
+     "next": "copy.thanks"
     }
    ]
   },
@@ -969,6 +1184,24 @@
     {
      "text": "Later.",
      "next": null
+    },
+    {
+     "text": "Ask whether anyone left with the old sign’s words.",
+     "if": {
+      "not": {
+       "flag": "copy.started",
+       "eq": true
+      }
+     },
+     "next": "copy.start"
+    },
+    {
+     "text": "Ask what happened to the two slips.",
+     "if": {
+      "flag": "copy.delivered",
+      "eq": true
+     },
+     "next": "copy.thanks"
     }
    ]
   },
@@ -1980,6 +2213,247 @@
    "speaker": "kip-arden",
    "claimKind": "interpretation",
    "text": "Tiny? The blade was big and shiny, and it told us less than this. Small things keep secrets better. Come on."
+  },
+  {
+   "id": "copy.start",
+   "speaker": "merchant-corvan",
+   "text": "The sign is one thing. In the morning I made slips for the runners. Someone kept one for a buyer who was already on the road. This is the spare. Order 27. It still says “ancient” in my hand.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Take the spare to trace where that claim went.",
+     "if": {
+      "all": [
+       {
+        "flagSet": "sd.corvan.outcome"
+       },
+       {
+        "not": {
+         "flag": "copy.started",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copy.started",
+       "value": true
+      }
+     ],
+     "next": "copy.started"
+    },
+    {
+     "text": "Leave the spare here for now.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "copy.started",
+   "speaker": "merchant-corvan",
+   "text": "Orrin kept the order strip. The workshop chalked its terms on a slip of its own. Sefa put something by her catalogue that might help. I want every buyer to know which words were mine.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copy.order",
+   "speaker": "narrator",
+   "text": "Order 27, trade desk. Corvan Hale bought one patterned piece from Hesper Lyle’s workshop in spring. The runner punched a hole beside 27 before taking a copy. This line dates a sale. It has no entry for the age of the stock.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "effects": [
+    {
+     "setFlag": "copy.order",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "copy.consent",
+   "speaker": "smith-hesper",
+   "text": "That piece was made here. Use my name or the workshop name so a buyer can find us. The hands at the bench agreed to tell you about their work, not to have their names read in the square. Keep that line of the slip folded.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "effects": [
+    {
+     "setFlag": "copy.consent",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "copy.anchor",
+   "speaker": "scholar-sefa",
+   "text": "The Nexus sent me this account from the German patent office. It puts Loud’s patent apart from the practical pen and ink developed by the Bíró brothers and others. I would leave each account with the name of its own source. We can do the same with the maker’s words and that order.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "interpretation",
+   "effects": [
+    {
+     "setFlag": "copy.anchor",
+     "value": true
+    },
+    {
+     "addCard": "card.dpma-history"
+    }
+   ]
+  },
+  {
+   "id": "copy.plan",
+   "speaker": "guildmaster-orrin",
+   "text": "At the guild we file by order number. The runners start with a maker’s name, so people know whose words they carry. Some buyers can bring their copy here. Others only hear a runner before their cart leaves. Where do you want the first reply to go?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pin a dated copy to Order 27 and carry a matching slip to the south gate.",
+     "if": {
+      "all": [
+       {
+        "objective": "copy.o.trace"
+       },
+       {
+        "not": {
+         "flagSet": "copy.route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copy.route",
+       "value": "ledger"
+      }
+     ],
+     "next": "copy.plan.ledger"
+    },
+    {
+     "text": "Ask Hana and the runners to read the correction out, with Order 27 so buyers can check it.",
+     "if": {
+      "all": [
+       {
+        "objective": "copy.o.trace"
+       },
+       {
+        "not": {
+         "flagSet": "copy.route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copy.route",
+       "value": "market"
+      }
+     ],
+     "next": "copy.plan.market"
+    },
+    {
+     "text": "Leave the slips on the board while I think.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "copy.plan.ledger",
+   "speaker": "guildmaster-orrin",
+   "text": "Here are two narrow slips with the same hole punch. One stays here so anyone can compare the two versions. Put the other on the small order table by the south gate. It needs to reach the people who took the original.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copy.plan.market",
+   "speaker": "guildmaster-orrin",
+   "text": "Give the first copy to Hana at the west stall. Near a busy cart, “Hesper’s workshop made it here” will travel further than a long list of dates. Leave a slip with the order number there for the people who ask.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copy.deliver.ledger",
+   "speaker": "narrator",
+   "text": "A buyer at the south gate taps the old slip. “Ancient, it says. I never heard what happened in the square.” On her slip the order number is still legible. The ink after it has run in the rain.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Match the numbers and clip the dated correction beside her old slip.",
+     "if": {
+      "all": [
+       {
+        "flag": "copy.route",
+        "eq": "ledger"
+       },
+       {
+        "not": {
+         "flag": "copy.delivered",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copy.delivered",
+       "value": true
+      }
+     ],
+     "next": "copy.end.ledger"
+    },
+    {
+     "text": "Keep the copy with me for now.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "copy.deliver.market",
+   "speaker": "stallkeeper-hana",
+   "text": "The runner will leave with the ferry crew. He says he can carry the new words and still reach the far road by dark. The woman packing his load holds up an old slip. She has one question. “Who can I ask when you’ve gone?”",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Let Hana read back the workshop’s words, then leave a copy with the order number.",
+     "if": {
+      "all": [
+       {
+        "flag": "copy.route",
+        "eq": "market"
+       },
+       {
+        "not": {
+         "flag": "copy.delivered",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copy.delivered",
+       "value": true
+      }
+     ],
+     "next": "copy.end.market"
+    },
+    {
+     "text": "Keep the slip and come back later.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "copy.end.ledger",
+   "speaker": "narrator",
+   "text": "The buyer turns both slips over and finds the matching punch. She crosses out “ancient” in her own copy. “I can still ask the workshop what we know about the stock,” she says, and takes both versions with her.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copy.end.market",
+   "speaker": "stallkeeper-hana",
+   "text": "“Made here by Hesper’s workshop,” the runner repeats. “Order 27 at the guild.” The woman packing the cart takes a spare copy home. She stops the runner at the gate to make sure he remembers which part he can say out loud.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copy.thanks",
+   "speaker": "merchant-corvan",
+   "text": "A buyer came back with my old slip folded behind the reply. She wanted to see what had changed. I’m keeping both now. If a new buyer hears the old words, there’s a way back to us.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "events": [
@@ -2399,6 +2873,90 @@
    "objective": "m02.o8.ise",
    "depth": 4,
    "text": "Stand on the portal stone, then walk to Ise in the Nexus and press E."
+  },
+  {
+   "id": "h.copy.trace.1",
+   "objective": "copy.o.trace",
+   "depth": 1,
+   "text": "A stack of labels can outlast the loudest voice in the square."
+  },
+  {
+   "id": "h.copy.trace.2",
+   "objective": "copy.o.trace",
+   "depth": 2,
+   "text": "The guild kept the order. The workshop kept its own terms. Sefa has seen a similar problem with records from the Nexus."
+  },
+  {
+   "id": "h.copy.trace.3",
+   "objective": "copy.o.trace",
+   "depth": 3,
+   "text": "Look for the order strip near the guild desk, the chalk slip south of Hesper, and the archive packet beside Sefa."
+  },
+  {
+   "id": "h.copy.trace.4",
+   "objective": "copy.o.trace",
+   "depth": 4,
+   "text": "Read all three slips. Compare the sale entry with the workshop’s permission, then see what Sefa leaves off her public caption."
+  },
+  {
+   "id": "h.copy.plan.1",
+   "objective": "copy.o.plan",
+   "depth": 1,
+   "text": "Some of the people who need the correction will never stand at Corvan’s table."
+  },
+  {
+   "id": "h.copy.plan.2",
+   "objective": "copy.o.plan",
+   "depth": 2,
+   "text": "A durable record and a message carried by people reach buyers in different ways."
+  },
+  {
+   "id": "h.copy.plan.3",
+   "objective": "copy.o.plan",
+   "depth": 3,
+   "text": "Use the copy board near the guild after you check the three records. Hesper has approved the workshop’s name for either version."
+  },
+  {
+   "id": "h.copy.plan.4",
+   "objective": "copy.o.plan",
+   "depth": 4,
+   "text": "Choose a dated copy buyers can match to their own slips, or have Hana and the runners read a shorter correction with the order number. Either keeps the workshop’s terms."
+  },
+  {
+   "id": "h.copy.relay.1",
+   "objective": "copy.o.relay",
+   "depth": 1,
+   "text": "Find the people who left the square before the dispute ended."
+  },
+  {
+   "id": "h.copy.relay.2",
+   "objective": "copy.o.relay",
+   "depth": 2,
+   "text": "The dated copy goes to the order table at the south gate. The spoken handover starts at Hana’s stall on the west side."
+  },
+  {
+   "id": "h.copy.relay.3",
+   "objective": "copy.o.relay",
+   "depth": 3,
+   "text": "Your chosen route has a prop waiting for you. Look for the order table near the portal road or the relay slips one step southwest of Hana."
+  },
+  {
+   "id": "h.copy.relay.4",
+   "objective": "copy.o.relay",
+   "depth": 4,
+   "text": "Use the south-gate order table and clip the correction beside the old slip, or use the west-stall relay slips and let Hana read back the correction."
+  }
+ ],
+ "moments": [
+  {
+   "id": "moment.copy-repair",
+   "attribute": "principled",
+   "when": {
+    "flag": "copy.delivered",
+    "eq": true
+   },
+   "did": "You brought a correction to someone who had already left with the old claim, while keeping the workshop’s permission.",
+   "prompt": "Who could still have the old version?"
   }
  ]
 }

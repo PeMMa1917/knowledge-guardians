@@ -4,17 +4,23 @@ import { check } from '../src/domain/rules';
 import { Driver } from './driver';
 
 const scenes = Object.values(MAPS).flatMap((map) => map.interactables
-  .filter((prop) => prop.kind === 'scene' && !map.interactables.some((other) => prop.id.startsWith(other.id + '.')))
+  .filter((prop) => prop.kind === 'scene' && map.interactables.some((other) => other.id.startsWith(prop.id + '.')))
   .map((prop) => ({ map, prop })));
 
-describe('scenes attached to map props', () => {
+describe('scene props with two visual outcomes', () => {
   it.each(scenes)('$prop.id shows either outcome at the same spot', ({ map, prop }) => {
     const setup = () => {
       const d = new Driver();
       d.s.mapId = map.id;
-      d.s.objectivesDone.push(
-        ...({ 'nile.royal': ['nile.diplomacy'], 'nile.workyard': ['nile.workers'], 'nile.route': ['nile.routes'] }[map.id] ?? []),
-      );
+      const prerequisites: Record<string, string> = {
+        'nile.royal': 'nile.diplomacy',
+        'nile.workyard': 'nile.workers',
+        'nile.route': 'nile.routes',
+        'preserved.inquiry': 'preserved.proof.checked',
+      };
+      const required = prerequisites[map.id];
+      if (required) d.s.objectivesDone.push(required);
+      if (map.id === 'observatory.harbour') d.s.flags['coast.gauge.harbour'] = true;
       return d;
     };
     const variants = map.interactables.filter((o) => o.id === prop.id || o.id.startsWith(prop.id + '.'));

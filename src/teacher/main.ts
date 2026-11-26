@@ -20,9 +20,12 @@ const problems: string[] = [];
 let dismissed: string[] = [];
 try { dismissed = JSON.parse(localStorage.getItem('kg.teacher.dismissed') ?? '[]'); } catch { /* storage blocked */ }
 
-const ESSENTIAL = new Set(pack.missions.filter((m) => !m.id.startsWith('KG-CH2-')).flatMap((m) => m.objectives.filter((o) => o.essential).map((o) => o.id)));
-const STEP_TOTAL = ESSENTIAL.size;
-const NILE_ESSENTIAL = new Set(pack.missions.filter((m) => m.id.startsWith('KG-CH2-')).flatMap((m) => m.objectives.filter((o) => o.essential).map((o) => o.id)));
+const chapterSteps = [1, 2, 3, 4].map((number) => {
+  const belongs = (id: string) => number === 1 ? !/^KG-CH[234]-/.test(id) : id.startsWith(`KG-CH${number}-`);
+  const ids = new Set(pack.missions.filter((m) => belongs(m.id))
+    .flatMap((m) => m.objectives.filter((o) => o.essential).map((o) => o.id)));
+  return { label: `Chapter ${number} steps`, ids };
+});
 
 /** EE practice trails (spec 92.2): shown as practice only (EE-003). */
 const EE_STEPS = pack.missions.filter((m) => m.id.includes('-EE')).flatMap((m) => m.objectives);
@@ -107,9 +110,9 @@ function dashboard(): void {
         h('button', { class: 'mini no-print', onclick: () => { dismissed.push(a.id); try { localStorage.setItem('kg.teacher.dismissed', JSON.stringify(dismissed)); } catch { /* ignore */ } dashboard(); } }, 'Not a misconception')))) : h('p', {}, 'No patterns seen.')),
     h('section', { class: 'panel no-print wide' }, h('h2', {}, 'Progress and pacing'),
       h('p', { class: 'note' }, 'For you only. Do not show this list to the class (no public ranking). Names are in alphabetical order. This panel is left out when you print.'),
-      h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Student'), h('th', {}, 'Chapter 1 steps'), h('th', {}, 'Chapter 2 steps'), h('th', {}, 'EE practice steps'), h('th', {}, 'File saved'), h('th', {}, ''))),
-        h('tbody', {}, ...students.map((f) => h('tr', {}, h('th', { scope: 'row' }, f.player), h('td', {}, `${f.objectivesDone.filter((o) => ESSENTIAL.has(o)).length} of ${STEP_TOTAL}`),
-          h('td', {}, `${f.objectivesDone.filter((o) => NILE_ESSENTIAL.has(o)).length} of ${NILE_ESSENTIAL.size}`),
+      h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Student'), ...chapterSteps.map(({ label }) => h('th', {}, label)), h('th', {}, 'EE practice steps'), h('th', {}, 'File saved'), h('th', {}, ''))),
+        h('tbody', {}, ...students.map((f) => h('tr', {}, h('th', { scope: 'row' }, f.player),
+          ...chapterSteps.map(({ ids }) => h('td', {}, `${f.objectivesDone.filter((o) => ids.has(o)).length} of ${ids.size}`)),
           h('td', {}, `${f.objectivesDone.filter((o) => EE_STEPS.some((x) => x.id === o)).length} of ${EE_STEPS.length}`),
           h('td', {}, new Date(f.exportedAt).toLocaleDateString()), h('td', {}, h('button', { class: 'mini', onclick: () => studentReport(f) }, 'Open report')))))))),
     activities(students));

@@ -11,6 +11,8 @@ import type { ShowdownMove } from '../src/domain/showdown';
 import { MAPS } from '../src/maps';
 
 const pack = buildPack();
+const recruitment = pack.missions.find((m) => m.id === 'KG-CH1-M01')!;
+const emberford = pack.missions.find((m) => m.id === 'KG-CH1-M02')!;
 
 import { Driver } from './driver';
 
@@ -53,7 +55,7 @@ function playM01(d: Driver, label: LabelRoute, showdown: (d: Driver) => void = p
   expect(d.s.flags['label.pen.holds']).toBe(true);
   d.talk('warden-ise');
   d.run({ type: 'Reach', zone: 'portal' });
-  for (const o of pack.missions[0].objectives.filter((x) => x.essential)) expect(d.done(o.id), o.id).toBe(true);
+  for (const o of recruitment.objectives.filter((x) => x.essential)) expect(d.done(o.id), o.id).toBe(true);
   expect(d.s.inventory['tool.provenance-thread']).toBe(1);
   expect(d.events.some((e) => e.kind === 'checkpoint' && e.label === 'Recruitment complete')).toBe(true);
 }
@@ -129,7 +131,7 @@ function playM02(d: Driver, outcome: Outcome, route: 'pattern' | 'crucible' = 'p
   d.talk('kip-arden');
   expect(d.s.inventory['item.gold-seal']).toBe(1);
   d.talk('warden-ise');
-  for (const o of pack.missions[1].objectives) expect(d.done(o.id), o.id).toBe(true);
+  for (const o of emberford.objectives) expect(d.done(o.id), o.id).toBe(true);
 }
 
 describe('full chapter routes', () => {
@@ -366,7 +368,7 @@ describe('permanent credit and hints', () => {
   });
   it('asking for hints never reduces XP or blocks awards (GUIDE-002)', () => {
     const a = new Driver(); const b = new Driver();
-    for (let i = 0; i < 4; i++) for (const o of pack.missions[0].objectives) b.run({ type: 'RequestHint', objective: o.id });
+    for (let i = 0; i < 4; i++) for (const o of recruitment.objectives) b.run({ type: 'RequestHint', objective: o.id });
     playM01(a, 'patent'); playM01(b, 'patent');
     expect(totalXP(b.p)).toBe(totalXP(a.p));
   });

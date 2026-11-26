@@ -978,7 +978,10 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'thread': ctx.ui.followThread(it.thread!, it.node!); break;
       case 'waystone': ctx.ui.openWaystone(it.place ?? this.map.name); break;
       case 'sign':
-        if (it.flag && ctx.controller.state.flags[it.flag] !== true) ctx.controller.dispatch({ type: 'SetFlag', flag: it.flag, value: true });
+        if (it.flag && ctx.controller.state.flags[it.flag] !== true) {
+          const events = ctx.controller.dispatch({ type: 'SetFlag', flag: it.flag, value: true });
+          if (!events.length) this.refreshWorld();
+        }
         ctx.ui.showSign(it.label, it.text ?? ''); break;
       case 'portal': break;
     }

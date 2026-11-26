@@ -557,6 +557,181 @@ DRAW['nile.map'] = [16, 24, (g) => { smallTable(g); paper(g, 1, 3, 14, 12); R(g,
 DRAW['nile.slip'] = [16, 24, (g) => { R(g, '#664932', 4, 6, 8, 14); paper(g, 2, 3, 12, 8); R(g, '#8a5343', 5, 6, 6, 1); R(g, '#8a5343', 5, 8, 4, 1); }];
 
 DRAW['nile.stone'] = [16, 24, (g) => { smallTable(g); R(g, '#644d4d', 2, 7, 12, 9); R(g, '#9c7970', 3, 5, 9, 8); R(g, '#c5a79a', 4, 5, 6, 2); R(g, '#745654', 5, 8, 4, 1); R(g, '#745654', 6, 10, 5, 1); }];
+
+// Cold Store props and documentary diagrams. No figures of people or remains.
+DRAW['preserved.door'] = [16, 24, (g) => {
+  R(g, '#182a36', 0, 4, 16, 20);
+  R(g, '#748c92', 1, 5, 14, 18);
+  R(g, '#9ab9b7', 2, 3, 12, 2);
+  R(g, '#365765', 3, 6, 10, 17);
+  R(g, '#4b7380', 4, 7, 8, 5);
+  R(g, '#b5d9d4', 5, 8, 6, 2);
+  R(g, '#dfc17d', 10, 15, 2, 2);
+  R(g, '#8398aa', 2, 22, 12, 1);
+}];
+DRAW['preserved.folder'] = [16, 24, (g) => {
+  R(g, '#3d4b58', 4, 13, 8, 8);
+  R(g, '#6f8b95', 1, 5, 14, 10);
+  R(g, '#adc3c4', 2, 3, 6, 4);
+  R(g, '#dce5d5', 2, 6, 12, 6);
+  R(g, '#576b70', 4, 8, 8, 1);
+}];
+DRAW['preserved.slip'] = [16, 24, (g) => {
+  R(g, '#2d4353', 5, 13, 6, 9);
+  R(g, '#a29d8a', 2, 5, 12, 10);
+  paper(g, 3, 4, 10, 9);
+  R(g, '#9abdca', 6, 3, 4, 2);
+  R(g, '#716951', 5, 7, 6, 1);
+  R(g, '#716951', 5, 10, 4, 1);
+}];
+
+const preservedProps = {
+  temple: (g: Ctx) => {
+    R(g, '#ead0a2', 2, 6, 12, 8);
+    R(g, '#976f49', 4, 8, 8, 4);
+    R(g, '#ead0a2', 7, 9, 2, 3);
+    R(g, '#976f49', 3, 12, 10, 1);
+  },
+  catalogue: (g: Ctx) => {
+    R(g, '#537587', 1, 6, 14, 8);
+    paper(g, 2, 4, 11, 9);
+    R(g, '#ad493c', 8, 7, 3, 2);
+    R(g, '#716951', 4, 10, 5, 1);
+  },
+  coast: (g: Ctx) => {
+    R(g, '#7bb4c5', 2, 5, 12, 9);
+    R(g, '#e0b279', 8, 5, 6, 9);
+    R(g, '#e0b279', 6, 10, 3, 4);
+    R(g, '#69516b', 9, 7, 2, 2);
+    R(g, '#69516b', 11, 10, 2, 2);
+  },
+  context: (g: Ctx) => {
+    R(g, '#adc3c4', 1, 5, 14, 9);
+    R(g, '#e0b279', 2, 7, 5, 5);
+    R(g, '#976f49', 2, 10, 5, 2);
+    R(g, '#dab98c', 9, 7, 5, 5);
+    R(g, '#9e6c62', 9, 9, 5, 2);
+  },
+};
+for (const [key, draw] of Object.entries(preservedProps)) {
+  DRAW[`preserved.${key}`] = [16, 24, (g) => { pedestal(g, 1, 14, 14); draw(g); }];
+}
+
+DRAW['preserved.display-records'] = [24, 24, (g) => {
+  pedestal(g, 2, 15, 20);
+  paper(g, 3, 5, 8, 9);
+  paper(g, 13, 5, 8, 9);
+  R(g, '#688c9a', 4, 7, 6, 1);
+  R(g, '#a37e56', 14, 7, 6, 1);
+}];
+DRAW['preserved.display-paired'] = [24, 24, (g) => {
+  pedestal(g, 1, 15, 22);
+  R(g, '#87aeb2', 1, 4, 22, 9);
+  paper(g, 2, 5, 8, 7);
+  paper(g, 14, 5, 8, 7);
+  R(g, '#697782', 8, 8, 8, 2);
+}];
+DRAW['preserved.display-delayed'] = [24, 24, (g) => {
+  pedestal(g, 1, 15, 22);
+  R(g, '#455765', 3, 3, 18, 11);
+  paper(g, 8, 5, 8, 8);
+  R(g, '#cf9d64', 10, 4, 4, 2);
+  R(g, '#7c6e5c', 10, 8, 4, 1);
+}];
+
+DRAW['big.preserved.temple'] = [96, 64, (g) => {
+  R(g, '#a9ccd6', 0, 0, 96, 64);
+  R(g, '#c6d9d4', 0, 22, 96, 12);
+  R(g, '#dcbb90', 0, 34, 96, 30);
+  R(g, '#f0d1a5', 7, 44, 83, 4);
+  R(g, '#aa7b57', 15, 26, 18, 19);
+  R(g, '#aa7b57', 57, 26, 17, 19);
+  R(g, '#e5bb85', 17, 26, 13, 4);
+  R(g, '#e5bb85', 59, 26, 13, 4);
+  R(g, '#ba8d60', 29, 32, 32, 13);
+  R(g, '#e2b97f', 31, 32, 27, 3);
+  for (const x of [33, 39, 51, 57]) R(g, '#e0b780', x, 35, 2, 10);
+  R(g, '#89644f', 44, 36, 6, 9);
+  R(g, '#b99a77', 46, 46, 2, 9);
+  R(g, '#b99a77', 46, 54, 31, 2);
+  R(g, '#886151', 75, 53, 4, 4);
+}];
+DRAW['big.preserved.catalogue'] = [96, 64, (g) => {
+  R(g, '#263747', 0, 0, 96, 64);
+  R(g, '#3c5969', 8, 9, 79, 47);
+  paper(g, 13, 7, 36, 44);
+  paper(g, 53, 13, 30, 38);
+  R(g, '#648491', 18, 12, 22, 3);
+  R(g, '#947157', 57, 18, 14, 3);
+  for (let y = 20; y <= 43; y += 6) R(g, '#a09880', 18, y, 24 - (y % 5), 1);
+  for (let y = 25; y <= 42; y += 5) R(g, '#a09880', 57, y, 20 - (y % 4), 1);
+  R(g, '#b36c56', 42, 7, 4, 9);
+  R(g, '#a6c1c8', 77, 13, 3, 8);
+}];
+DRAW['big.preserved.coast'] = [96, 64, (g) => {
+  R(g, '#354d57', 0, 0, 96, 64);
+  R(g, '#e8cf9d', 6, 5, 84, 54);
+  const shore = [37, 44, 43, 36, 29, 31, 36, 39, 35];
+  for (const [i, stop] of shore.entries()) {
+    R(g, '#7cbdca', 6, 5 + i * 6, stop, 6);
+    R(g, '#b6d8d7', stop + 3, 5 + i * 6, 3, 6);
+  }
+  R(g, '#bb9d73', 66, 8, 2, 48);
+  R(g, '#c7a877', 72, 8, 4, 48);
+  for (const [x, y] of [[53, 14], [46, 35], [70, 43]]) {
+    R(g, '#f2e1bc', x - 1, y - 1, 7, 7);
+    R(g, '#694b68', x, y, 5, 5);
+  }
+}];
+DRAW['big.preserved.context'] = [96, 64, (g) => {
+  R(g, '#32404c', 0, 0, 96, 64);
+  paper(g, 6, 6, 84, 52);
+  for (const [i, x] of [11, 50].entries()) {
+    R(g, '#78939f', x, 13, 35, 5);
+    R(g, '#e6ba84', x, 18, 35, 9);
+    R(g, '#be885d', x, 27, 35, 5);
+    R(g, '#9b6f60', x, 32, 35, 10);
+    R(g, '#d4a57b', x + 4, 23 + i * 5, 26, 2);
+    R(g, '#768c95', x + 3, 47, 21, 2);
+    R(g, '#a39980', x + 3, 52, 16, 1);
+  }
+}];
+
+// Local equipment on the Observatory Coast.
+DRAW['coast.waypost'] = [16, 24, (g) => {
+  R(g, '#314858', 7, 7, 3, 16);
+  R(g, '#e0c795', 2, 5, 11, 7);
+  R(g, '#e0c795', 13, 6, 2, 5);
+  R(g, '#707e76', 3, 10, 10, 1);
+  R(g, '#425d62', 4, 8, 3, 1);
+  R(g, '#425d62', 7, 7, 3, 1);
+  R(g, '#425d62', 10, 6, 2, 1);
+}];
+DRAW['coast.gauge'] = [16, 24, (g) => {
+  pedestal(g, 1, 15, 14);
+  R(g, '#648e9e', 4, 2, 8, 13);
+  R(g, '#d2e4da', 5, 3, 6, 11);
+  R(g, '#77b2c6', 5, 10, 6, 4);
+  for (const y of [5, 7, 9, 11, 13]) R(g, '#425c6f', 8, y, 3, 1);
+}];
+DRAW['coast.signal'] = [16, 24, (g) => {
+  R(g, '#3e565f', 2, 4, 2, 20);
+  R(g, '#3e565f', 12, 4, 2, 20);
+  R(g, '#a38d6c', 0, 7, 16, 11);
+  R(g, '#e5c896', 1, 7, 14, 2);
+  paper(g, 3, 10, 9, 6);
+  R(g, '#e09b38', 4, 4, 8, 3);
+  R(g, '#bb6f39', 9, 6, 3, 2);
+  R(g, '#6b8d92', 5, 12, 5, 1);
+}];
+DRAW['coast.runner'] = [16, 24, (g) => {
+  smallTable(g);
+  R(g, '#385367', 1, 6, 13, 8);
+  paper(g, 3, 4, 11, 8);
+  R(g, '#d49762', 3, 5, 2, 5);
+  R(g, '#7b7766', 6, 7, 6, 1);
+  R(g, '#7b7766', 6, 9, 4, 1);
+}];
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {
@@ -589,6 +764,8 @@ export function glowCanvas(size = 128): HTMLCanvasElement {
 /** Map exhibit art keys (small) to large inspection pictures. */
 export const BIG_ART: Record<string, string> = {
   'nile.scroll': 'nile.scroll', 'nile.tablet': 'nile.tablet', 'nile.map': 'nile.map', 'nile.stone': 'nile.stone',
+  'preserved.temple': 'big.preserved.temple', 'preserved.catalogue': 'big.preserved.catalogue',
+  'preserved.coast': 'big.preserved.coast', 'preserved.context': 'big.preserved.context',
   'exhibit.patent': 'big.patent', 'exhibit.model': 'big.model', 'exhibit.biro': 'big.biro',
   'exhibit.blade': 'big.blade', 'exhibit.ingots': 'big.ingots', 'exhibit.assay': 'big.assay',
   'plaque.earth': 'big.earth', 'plaque.optics': 'big.optics', 'plaque.type': 'big.type', 'plaque.peak': 'big.peak',

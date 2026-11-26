@@ -2,7 +2,7 @@
 
 This file is for the next developer, human or AI. Read [AGENTS.md](AGENTS.md) first. **Update this file when you stop work.**
 
-Last update: 2026-11-25. Branch `feat/first-chapter`, pull request #1. Spec version: 2.10 (private; see [docs/DESIGN_SUMMARY.md](docs/DESIGN_SUMMARY.md)).
+Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private design is version 2.10. See [the design summary](docs/DESIGN_SUMMARY.md).
 
 ## What works now
 
@@ -178,3 +178,21 @@ The sources and object limits are in `docs/SOURCES.md`; the rooms and their fict
 - The opening Nexus story puts the archive's authority, different meanings of “first,” and the effects of a public label in front of the player. At the bench, the latest two test strips can be read side by side, with text descriptions of the marks.
 - Twelve optional props across the Nexus, Emberford and Nile Archive offer two ways to act. The stand changes after the decision and can be revisited. The three archive-room follow-ups appear after their corresponding investigations.
 - The [content guide](docs/CONTENT_GUIDE.md#introduce-ideas-through-decisions-and-consequences) maps the opening and later encounters to the concepts and framework. Time the first route with new players to see which choices they meet in 30 minutes, then use that evidence when placing the next encounters.
+
+## Expanded stories across the opening
+
+- **A Copy for the Ferry:** prepare the packet from dated records, workshop strips or translation proofs. Choose a public reader or copies, then meet the packet again at Tova's landing.
+- **The Copy in the Square:** trace how a claim travelled in Emberford and decide who should carry the correction. The new notice and the buyer's response depend on the handover.
+- **The Borrowed Mark and A Slip Comes Back:** compare a craft record with a shared method, then choose a label that leaves the first maker open. After dispatch, find the reader's reply and decide where to leave the response.
+
+## Chapter 3: The Missing Transfer
+
+The Nile Archive return opens the Cold Store independent of its optional trails. Follow the royal custody trail through a gap in the file, put up a supported heading, and visit the Chinchorro records to compare preservation in context. Choose separate stands, paired records or review before display. Each opens the inquiry room with a different reader request. The response travels back to the Nexus. An optional excavation proof places the documented workers' names or a dated record trail first. The [source register](docs/SOURCES.md#chapter-3-preserved-lives) describes what each record supports.
+
+## Chapter 4: The Next Bell
+
+The quay and headland reports give two readings for the same bell. Compare them with a conditional weather model, then send a notice by signal or runner. A later reading puts the first notice under pressure. Update it in the same channel or make a copy for readers it missed. The board and route reflect the choice. An optional quay slip lets the player keep local work language and the station's timed interval clear for two reading audiences.
+
+## Thirty-minute design audit
+
+Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Both opening traces, the Cold Store trace and the Observatory route with the quay slip reach all 12 concepts and four framework areas within their first estimated half hour. The route past the quay slip can miss culture. Later windows still have gaps. In the Nile Archive, the direct trace misses certainty, truth and culture in its first window. The detour through The Borrowed Mark supplies those while moving the evidence comparison for objectivity and explanation past that first window. The estimates need checking in unassisted timed playtests.

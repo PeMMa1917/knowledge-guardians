@@ -2,10 +2,12 @@
 
 Knowledge Guardians is a 2D top-down pixel-art RPG for IB Diploma Theory of Knowledge (TOK) students. The player is a new Knowledge Guardian. The player examines real historical objects, compares claims and evidence, and makes honest labels.
 
-This repository holds the **first playable chapter** (spec v2.10, sections 27.1 and 29.1):
+The playable opening begins in the Nexus and continues across four chapters:
 
-1. **The Nexus** (WORLD-01). Recruitment mission "Three Firsts". The player inspects three real objects about the ballpoint pen (Loud's 1888 patent, a Biro pen of 1945 to 1948, and a workshop model), uses the Date Lens, runs a fair test, and argues in a practice Showdown. Then the player builds a museum label in the label builder. A label that claims more than its evidence makes "the Fray": the room glows and visitors repeat a distorted line. An optional Hall of Firsts has seven plaques about people from every continent.
-2. **Emberford, Aethelgard** (WORLD-02). Field mission "The Label on the Blade". The trader Corvan sells a patterned blade as "ancient Damascus wootz". The player follows the Provenance Thread, forges and compares billets at the forge, and argues with Corvan in a public Showdown. The town sign changes with the outcome.
+1. **Chapter 1, the Nexus and Emberford.** Compare Loud's 1888 patent, a Bíró pen made between 1945 and 1948, and a modern workshop model. Run a fair test and argue your case in a practice Showdown. A claim that outruns the evidence makes the room glow and distorts what visitors repeat. In Emberford, trace the origin of Corvan's patterned blade, compare schematic billets and face the public Showdown. Send a packet to the ferry or carry a correction to the square when you want to see how your work travels.
+2. **Chapter 2, The Door Without a Name.** Enter the Nile Archive from the Nexus. Choose two of three leads, send a packet and see where it arrives. An optional craft investigation and a reply from the first readers give you reasons to return.
+3. **Chapter 3, The Missing Transfer.** Follow the royal custody record and compare the context of the Chinchorro sites. Decide how to open the Cold Store, then handle a reader's request and optionally prepare a proof based on excavation records.
+4. **Chapter 4, The Next Bell.** Compare the rain at the quay and on the headland. Check what the forecast can say, send a notice by board or runner, then decide how to reach the same people when the reading changes.
 
 Along the way: random events from a fair, seeded deck (calm mode can delay them), learner-profile moments in the journal, a private portfolio, and misconception reflections. A separate **teacher view** (`teacher.html`) builds a class dashboard and student reports from progress files that students choose to share.
 
@@ -30,6 +32,7 @@ Other commands:
 | `npm run preview` | Serve the `dist/` build at http://localhost:4173. |
 | `npm run validate:content` | Check only the game content (JSON) for broken links and missing sources. |
 | `npm run assets:check` | Check that every asset file has a source, an author and a licence. |
+| `npm test -- tests/tok-coverage.test.ts --mode tok-report` | Audit rolling 30-minute TOK coverage on authored route estimates. |
 | `npm run assets:variants` | Make the character sprite sheets again from the source sheet (needs Python 3 and Pillow). |
 
 The build in `dist/` is static. You can put it on any static web host (for example GitHub Pages). It uses relative paths.
@@ -81,7 +84,7 @@ Settings include calm mode (delay random events), text size, reduced motion, red
 
 - This is a classroom demo, not for commercial use. Saves are in the browser (`localStorage`). There are no accounts and no server.
 - The teacher view reads progress files in the browser tab only. Nothing is uploaded.
-- Only the first chapter exists. The full spec describes 24 worlds. See [STATUS.md](STATUS.md).
+- The downloadable build contains the playable opening and the early arcs described above. See [STATUS.md](STATUS.md) for current coverage and what still needs playtesting.
 - The design spec (`Knowledge_Guardians_spec_v2.10.md`) is not in this public repository. Ask the project owner for a copy. [docs/DESIGN_SUMMARY.md](docs/DESIGN_SUMMARY.md) is a paraphrase, and AGENTS.md lists the rules.
 
 ## Licences
@@ -91,6 +94,6 @@ Settings include calm mode (delay random events), text size, reduced motion, red
 - Font: Lexend, SIL Open Font License 1.1, through `@fontsource/lexend`.
 - Engine: Phaser 3, MIT licence.
 
-## Chapter 2 development branch
+## Finding later chapters
 
-The Nile Archive follows Elsbet's letter. Finish the main Emberford story, read the letter in her study and return to Ise in the Nexus. The blue-and-brass door is at the north end of the east wing. Complete two leads in any order, send a first packet with Imani and follow it back to Ise. Optional leads and the return-table case remain available afterward. See [STATUS.md](STATUS.md#chapter-2-the-door-without-a-name).
+The Nile Archive follows Elsbet's letter. Finish the main Emberford story, read the letter in her study and return to Ise in the Nexus. The blue-and-brass door is at the north end of the east wing. Complete two leads in any order, send a first packet with Imani and follow it back to Ise. That return opens the Cold Store in the southeast corner of the Nexus. Once the Cold Store opens its display or inquiry desk, a waypost in the south part of the east wing leads to the Observatory Coast. See [STATUS.md](STATUS.md#chapter-2-the-door-without-a-name).

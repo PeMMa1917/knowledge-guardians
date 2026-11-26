@@ -5,10 +5,18 @@
  * East wing (x 26-38): the Hall of Firsts, an optional side quest with
  * plaques, each about one person shown with their own place and people, from many periods.
  */
+import type { Condition } from '../domain/types';
 import type { MapDef } from './types';
 import { sceneProp } from './sceneProps';
 
 const W = 40, H = 20;
+
+const ferryShelf: [state: string, art: string, visible: Condition][] = [
+  ['shelf', 'board-stand', { not: { flagSet: 'nexus.ferry.packet' } }],
+  ['dispatch', 'nile.slip', { all: [{ flagSet: 'nexus.ferry.packet' }, { not: { flagSet: 'nexus.ferry.edition' } }] }],
+  ['copies', 'nile.scroll', { flag: 'nexus.ferry.edition', eq: 'copies' }],
+  ['reading', 'ledger', { flag: 'nexus.ferry.edition', eq: 'reading' }],
+];
 
 function floor(x: number, y: number): string | null {
   if (x < 1 || x > W - 2 || y < 3 || y > H - 1) return null;
@@ -85,6 +93,12 @@ export const NEXUS: MapDef = {
       { date: 'ledger', gloss: 'nile.scroll' }),
     ...sceneProp('nexus.route-board', 18, 14, 'the visitors’ route board', 'cork-board',
       { objects: 'nile.map', sources: 'ledger' }),
+    // One shelf carries the request, the prepared envelope and the edition kept for visitors.
+    ...ferryShelf.map(([state, art, condition]) => ({
+      id: `nexus.ferry.${state}`, kind: 'scene' as const, node: `nexus.ferry.${state}`,
+      x: 16, y: 14, w: 1, h: 1, label: 'the reading shelf', walkThrough: true, art,
+      visibleIf: { all: [{ flag: 'nexus.ferry.started', eq: true }, condition] },
+    })),
     { id: 'nile-stone-case', kind: 'exhibit', exhibit: 'OBJ-NILE-STONE', x: 31, y: 17, w: 1, h: 1, walkThrough: true, label: 'the Singapore Stone fragment', art: 'nile.stone', visibleIf: { flag: 'nile.returned', eq: true } },
     { id: 'nile-badang-case', kind: 'exhibit', exhibit: 'OBJ-NILE-BADANG', x: 34, y: 17, w: 1, h: 1, walkThrough: true, label: 'the Badang account', art: 'nile.scroll', visibleIf: { flag: 'nile.returned', eq: true } },
     { id: 'nile-stone-label', kind: 'label', kit: 'nile-stone', x: 36, y: 17, w: 1, h: 1, walkThrough: true, label: 'the river records label stand', art: 'label-stand', visibleIf: { flag: 'nile.returned', eq: true } },
@@ -101,6 +115,18 @@ export const NEXUS: MapDef = {
 
     { id: 'door-without-a-name', kind: 'door', x: 37, y: 2, w: 1, h: 1, label: 'the Door Without a Name', art: 'nile.door',
       visibleIf: { all: [{ flag: 'study.letter', eq: true }, { objective: 'm02.o8.ise' }] }, flag: 'nile.arrived', to: { map: 'nile.hall', x: 12, y: 10 } },
+    { id: 'preserved-door', kind: 'door', x: 38, y: 15, w: 1, h: 1, label: 'the door to the Cold Store', art: 'preserved.door',
+      walkThrough: true, visibleIf: { flag: 'nile.returned', eq: true }, flag: 'preserved.arrived',
+      to: { map: 'preserved.archive', x: 14, y: 14 } },
+    { id: 'observatory-door', kind: 'door', x: 28, y: 17, w: 1, h: 1, label: 'the waypost to the Observatory Coast', art: 'coast.waypost',
+      walkThrough: true, visibleIf: { objective: 'preserved.publish' }, flag: 'coast.arrived',
+      to: { map: 'observatory.harbour', x: 13, y: 16 } },
+    { id: 'preserved-return-desk', kind: 'sign', x: 37, y: 16, w: 1, h: 1, label: 'the Cold Store reference copy', art: 'ledger', walkThrough: true,
+      text: 'The docket points to the separate royal and coastal records. One line is left open for the transfer we cannot trace.',
+      visibleIf: { flag: 'preserved.reply', eq: 'desk' } },
+    { id: 'preserved-return-margin', kind: 'sign', x: 37, y: 16, w: 1, h: 1, label: 'the Cold Store reference slips', art: 'nile.slip', walkThrough: true,
+      text: 'Two slips cite two records. The gap in the royal chain stays on the royal slip. The limits of the coastal comparison travel with the other.',
+      visibleIf: { flag: 'preserved.reply', eq: 'margin' } },
     ...([
       ['print', 34, 'the corrected public case', 'The old heading is crossed out. Both dates stay in the case.', 'nile.tablet'],
       ['read', 31, 'the workers’ reading table', 'Two slips sit side by side. Amunnakht’s name is on both. Beside them is an empty chair.', 'nile.scroll'],

@@ -38,6 +38,12 @@ export const FERRY: MapDef = {
   blocks: [[-1, 0, 1, H], [W, 0, 1, H], [0, -1, W, 1], [0, H, W, 1]],
   npcs: [{ id: 'ferry-tova', x: 12, y: 8, facing: 'up' }],
   interactables: [
+    { id: 'ferry-copy-ledger', kind: 'scene', node: 'tova.nexus-copy.ledger', x: 11, y: 7, w: 1, h: 1,
+      label: 'the landing book with the Nexus packet', art: 'ledger', walkThrough: true,
+      visibleIf: { flag: 'ferry.copy.place', eq: 'ledger' } },
+    { id: 'ferry-copy-slate', kind: 'scene', node: 'tova.nexus-copy.slate', x: 14, y: 5, w: 1, h: 1,
+      label: 'Tova’s note by the water slate', art: 'nile.slip', walkThrough: true,
+      visibleIf: { flag: 'ferry.copy.place', eq: 'slate' } },
     { id: 'ferry-road-back', kind: 'door', x: 0, y: 4, w: 1, h: 2, label: 'the road back to Emberford', art: 'road-post', to: { map: 'aethelgard.emberford', x: 38, y: 18 } },
     { id: 'secret-star-names', kind: 'secret', secret: 'star-names', x: 22, y: 8, w: 1, h: 1, label: 'something glinting in the reeds' },
     { id: 'clay-bank', kind: 'gather', resource: 'clay', x: 9, y: 8, w: 1, h: 1, label: 'the clay bank (gather)', art: 'clay-bank' },

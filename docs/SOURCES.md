@@ -93,3 +93,15 @@ Links can change. When you work on a mission, open each of its source links. If 
 | Badang account and later identification | [William L. Gibson, National Library Board Singapore](https://biblioasia.nlb.gov.sg/all-sections/vol-21-issue-1-apr-jun-2025-origins-badang-strongman-singapore-stone/) | The story places a thrown rock at the river mouth. The episode has no inscription; Begbie's later identification is a distinct claim. |
 
 The artwork is original, schematic and labelled as such. No photographs, manuscript images, or translations are reproduced.
+
+## Chapter 3: Preserved Lives
+
+The Cold Store is a fictional Guardian archive. Its displays use maps and schematic files. Published locations and dates stay attached to the source that supports them.
+
+| Source record | Use and limit |
+|---|---|
+| HIS-PRES-01, [Egyptian Ministry of Tourism and Antiquities, the Ramesseum](https://egymonuments.gov.eg/monuments/the-ramesseum-the-temple-of-ramses-ii/) | The temple and its attribution support a claim about the reign. The record does not follow later custody. |
+| HIS-PRES-02, [National Museum of Egyptian Civilization, Ramses II](https://nmec.gov.eg/mummies-hall/ramses-ii/) | The biography identifies KV 7 and the later Deir el-Bahari cache. The game leaves undocumented transfers open. The external museum page shows human remains. |
+| HIS-PRES-03 and -04, [UNESCO map and component table](https://whc.unesco.org/en/list/1634/maps/) and [Chinchorro property description](https://whc.unesco.org/en/list/1634/) | The case names the separate sites and compares preservation conditions and deliberate practice. The account cannot establish an individual's identity or wishes. External pages may show human remains. |
+| HIS-PRES-05 and -06, [Griffith Institute, Carter's first-season journal](https://www.griffith.ox.ac.uk/discoveringTut/journals-and-diaries/season-1/journal.html) and [Lucas's notes on robberies](https://tutankhamun.griffith.ox.ac.uk/miscellaneous/notes-robberies-taa-i1memo1-15verso/taa-i1memo3) | A November 1922 journal entry records observations at the excavation. The later note has its own date. A date on a record does not date all the events it describes. |
+| HIS-PRES-07, [Griffith Institute, The Egyptian workforce](https://tutankhamun.griffith.ox.ac.uk/stories/egyptian-workforce) | Carter acknowledges four named Egyptian foremen. The acknowledgement supports credit for the named men and leaves other identifications open. |
