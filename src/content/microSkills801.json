@@ -811,6 +811,22 @@
         ],
         "game": 179,
         "story": 54
+      },
+      {
+        "objective": "bridge.message.checked",
+        "action": "Trace the driver’s redrawn wheels to a fold, or carry a warning back past a squeaking wheel to the driver who filled its gap with yesterday’s call.",
+        "styles": [
+          "explorer",
+          "companion"
+        ],
+        "modes": [
+          "visual",
+          "auditory",
+          "linguistic",
+          "social"
+        ],
+        "game": 173,
+        "story": 95
       }
     ]
   },

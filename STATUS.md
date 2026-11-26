@@ -1,5 +1,7 @@
 # Status and next steps
 
+At Emberford’s east bridge, a driver returns with an empty cart after a warning changes hands. A folded sketch and a relayed call each let the Guardian find a different source of the misunderstanding. Four arrangements give the next crew different help and costs. A player can revisit the board, change the medium, and try another crossing. [Bridge routes](tests/bridge-message.test.ts)
+
 This file is for the next developer, human or AI. Read [AGENTS.md](AGENTS.md) first. **Update this file when you stop work.**
 
 Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master specification is version 3, expanded from version 2.10. See [the design summary](docs/DESIGN_SUMMARY.md).

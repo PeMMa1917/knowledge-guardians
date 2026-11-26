@@ -386,5 +386,26 @@
   },
   "quest:glass.2020-66.earned": {
     "mount-reading": "Where would you put a close-up so another player could find its place on the jacket?"
+  },
+  "quest:bridge.message.posted": {
+    "bridge-posted": "If the same notice hung at the cart, what would a driver see or hear from there?"
+  },
+  "quest:bridge.message.checked": {
+    "bridge-checked": "What did you have to unfold or hear twice before you knew why the sacks were left behind?"
+  },
+  "quest:bridge.message.returned": {
+    "bridge-returned": "Who could set off sooner after your change, and who still had to wait?"
+  },
+  "record:j.bridge.message.hinge": {
+    "crew-hinge": "What part of a message should reach someone who can only use one hand?"
+  },
+  "record:j.bridge.message.runner": {
+    "crew-runner": "Whose mark would have been missing if the runner had gone straight back?"
+  },
+  "record:j.bridge.message.reply": {
+    "crew-reply": "What would you need to see before trusting the call farther down the bank?"
+  },
+  "record:j.bridge.message.pair": {
+    "crew-pair": "Who took on a job you hadn’t expected when the two callers stayed at their posts?"
   }
 }

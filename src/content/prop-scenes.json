@@ -507,13 +507,113 @@
    "id": "emberford.repair-notice.sketch",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "A runner traces the drawn route with a finger, then carries the news to the next cart. The carpenter has hung the sketch low enough for people on foot."
+   "text": "A runner traces the drawn route with a finger, then carries the news to the next cart. The carpenter has hung the sketch low enough for people on foot. A cart comes back empty. Its driver left four sacks at the approach. She gives you the runner’s folded copy.",
+   "options": [
+    {
+     "text": "Leave the crew at the board for now."
+    },
+    {
+     "text": "Unfold the runner’s copy against the posted sketch.",
+     "effects": [
+      {
+       "setFlag": "bridge.message.trial",
+       "value": "sketch"
+      }
+     ],
+     "next": "bridge.message.check.sketch"
+    },
+    {
+     "text": "See what the next crew actually does.",
+     "if": {
+      "flag": "bridge.message.arrangement",
+      "in": [
+       "hinge",
+       "runner",
+       "reply",
+       "pair"
+      ]
+     },
+     "next": "bridge.message.read.sketch"
+    },
+    {
+     "text": "Try passing the direction aloud instead.",
+     "if": {
+      "flag": "bridge.message.trial",
+      "eq": "sketch"
+     },
+     "effects": [
+      {
+       "setFlag": "emberford.repair-notice",
+       "value": "direction"
+      },
+      {
+       "setFlag": "bridge.message.trial",
+       "value": false
+      },
+      {
+       "setFlag": "bridge.message.arrangement",
+       "value": false
+      }
+     ],
+     "next": "emberford.repair-notice.direction"
+    }
+   ]
   },
   {
    "id": "emberford.repair-notice.direction",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "The first driver reads the turn aloud to the crew behind. The carpenter leaves the large-letter notice by the rope for anyone arriving later."
+   "text": "The first driver reads the turn aloud to the crew behind. The carpenter leaves the large-letter notice by the rope for anyone arriving later. A cart comes back empty. Its driver left four sacks at the approach. She asks for the words again.",
+   "options": [
+    {
+     "text": "Leave the crew at the board for now."
+    },
+    {
+     "text": "Walk the direction back through both crews.",
+     "effects": [
+      {
+       "setFlag": "bridge.message.trial",
+       "value": "direction"
+      }
+     ],
+     "next": "bridge.message.check.direction"
+    },
+    {
+     "text": "See what the next crew actually does.",
+     "if": {
+      "flag": "bridge.message.arrangement",
+      "in": [
+       "hinge",
+       "runner",
+       "reply",
+       "pair"
+      ]
+     },
+     "next": "bridge.message.read.direction"
+    },
+    {
+     "text": "Try sending a folded sketch instead.",
+     "if": {
+      "flag": "bridge.message.trial",
+      "eq": "direction"
+     },
+     "effects": [
+      {
+       "setFlag": "emberford.repair-notice",
+       "value": "sketch"
+      },
+      {
+       "setFlag": "bridge.message.trial",
+       "value": false
+      },
+      {
+       "setFlag": "bridge.message.arrangement",
+       "value": false
+      }
+     ],
+     "next": "emberford.repair-notice.sketch"
+    }
+   ]
   },
   {
    "id": "emberford.pattern-order",
@@ -779,6 +879,214 @@
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
    "text": "Readers can see which load each result belongs to. The keeper sets the spare card by the cart and keeps the two runs apart."
+  },
+  {
+   "id": "bridge.message.check.sketch",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Minta lays the posted sketch, the folded copy and the driver’s scrap side by side. The rope vanished in the crease. On the scrap someone has drawn two wheels in the gap. “It looked like our old cart sign,” the driver says. Minta runs her nail down the crease. “That was my fold.”",
+   "options": [
+    {
+     "text": "Leave the arrangement as it stands."
+    },
+    {
+     "text": "Reverse the fold. Keep the rope on the outside.",
+     "effects": [
+      {
+       "setFlag": "bridge.message.arrangement",
+       "value": "hinge"
+      }
+     ],
+     "next": "bridge.message.set.hinge"
+    },
+    {
+     "text": "Give the wide drawing to the runner to walk with the next crew.",
+     "effects": [
+      {
+       "setFlag": "bridge.message.arrangement",
+       "value": "runner"
+      }
+     ],
+     "next": "bridge.message.set.runner"
+    }
+   ]
+  },
+  {
+   "id": "bridge.message.read.sketch",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The next crew is coming up the bank. There is just time to stand where the message changes hands.",
+   "options": [
+    {
+     "text": "Stay for the crossing.",
+     "if": {
+      "flag": "bridge.message.arrangement",
+      "eq": "hinge"
+     },
+     "effects": [
+      {
+       "setFlag": "bridge.message.received",
+       "value": "hinge"
+      }
+     ],
+     "next": "bridge.message.seen.hinge"
+    },
+    {
+     "text": "Stay for the crossing.",
+     "if": {
+      "flag": "bridge.message.arrangement",
+      "eq": "runner"
+     },
+     "effects": [
+      {
+       "setFlag": "bridge.message.received",
+       "value": "runner"
+      }
+     ],
+     "next": "bridge.message.seen.runner"
+    },
+    {
+     "text": "Let them pass."
+    }
+   ]
+  },
+  {
+   "id": "bridge.message.check.direction",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "At the bridge the first driver repeats Minta’s four words. “East side, on foot.” At the cart his sister says, “East side, carts through.” A wheel squeaked over the last two words. “I filled them in from yesterday. Everybody knew that call.” Minta sits beside her. “I’ve done that too.”",
+   "options": [
+    {
+     "text": "Leave the arrangement as it stands."
+    },
+    {
+     "text": "Call from the cart. Wait for the bridge crew to repeat the load limit.",
+     "effects": [
+      {
+       "setFlag": "bridge.message.arrangement",
+       "value": "reply"
+      }
+     ],
+     "next": "bridge.message.set.reply"
+    },
+    {
+     "text": "Walk a driver and a porter through together. Let each crew keep a caller.",
+     "effects": [
+      {
+       "setFlag": "bridge.message.arrangement",
+       "value": "pair"
+      }
+     ],
+     "next": "bridge.message.set.pair"
+    }
+   ]
+  },
+  {
+   "id": "bridge.message.read.direction",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The next crew is coming up the bank. There is just time to stand where the message changes hands.",
+   "options": [
+    {
+     "text": "Stay for the crossing.",
+     "if": {
+      "flag": "bridge.message.arrangement",
+      "eq": "reply"
+     },
+     "effects": [
+      {
+       "setFlag": "bridge.message.received",
+       "value": "reply"
+      }
+     ],
+     "next": "bridge.message.seen.reply"
+    },
+    {
+     "text": "Stay for the crossing.",
+     "if": {
+      "flag": "bridge.message.arrangement",
+      "eq": "pair"
+     },
+     "effects": [
+      {
+       "setFlag": "bridge.message.received",
+       "value": "pair"
+      }
+     ],
+     "next": "bridge.message.seen.pair"
+    },
+    {
+     "text": "Let them pass."
+    }
+   ]
+  },
+  {
+   "id": "bridge.message.set.hinge",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "In a closed hand the rope is visible. Open the fold and the way round appears. Minta works the crease with a thumbnail. “Cut my drawing shorter next time. I want the part a fist can hold.”"
+  },
+  {
+   "id": "bridge.message.seen.hinge",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A courier arrives gripping a folded square. The rope shows under her thumb. She sets down her sack before she opens the sheet for the turn. Behind her, a driver without a copy waits at the board.",
+   "effects": [
+    {
+     "journal": "j.bridge.message.hinge"
+    }
+   ]
+  },
+  {
+   "id": "bridge.message.set.runner",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The runner opens the sheet at the actual rope. A driver matches the bend to the bank and unloads. The next pair waits while the runner walks back. “I can mark the unload spot myself,” the driver offers. Minta hands her a pencil."
+  },
+  {
+   "id": "bridge.message.seen.runner",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "At the rope the driver has added a black dot where she unloaded. The runner uses it for the next pair. Two waiting carts have moved aside to leave a space for him to come back.",
+   "effects": [
+    {
+     "journal": "j.bridge.message.runner"
+    }
+   ]
+  },
+  {
+   "id": "bridge.message.set.reply",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "“East side.” The bridge crew waits. You call again into the quiet after the wheel. “On foot.” All four words come back. Minta chalks the pause into the call. Crews beyond earshot still need the board."
+  },
+  {
+   "id": "bridge.message.seen.reply",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The next wheel squeaks. A driver keeps his hand raised until the echo comes back with “on foot.” One sack goes ahead with a porter. The cart stays by the post.",
+   "effects": [
+    {
+     "journal": "j.bridge.message.reply"
+    }
+   ]
+  },
+  {
+   "id": "bridge.message.set.pair",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The driver calls the approach. The porter waits for a gap and calls the foot limit. Their hands are off the sacks until both crews answer. Minta takes a sack herself. “That part I can do.”"
+  },
+  {
+   "id": "bridge.message.seen.pair",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Two calls come from opposite banks. Both crews set their sacks on the east approach before the cart rolls away. Minta has the porter’s coat round her shoulders. The porter has her chalk.",
+   "effects": [
+    {
+     "journal": "j.bridge.message.pair"
+    }
+   ]
   }
  ],
  "characters": [
@@ -916,6 +1224,180 @@
      }
     }
    ]
+  },
+  {
+   "id": "KG-CH1-S19",
+   "world": "WORLD-02",
+   "title": "The Cart That Came Back",
+   "knowledgeQuestion": "What happens to a warning between the person who gives it and the person who must act on it?",
+   "stake": "Four sacks are sitting at the crossing. The next cart is already on its way.",
+   "available": {
+    "flag": "emberford.repair-notice",
+    "in": [
+     "sketch",
+     "direction"
+    ]
+   },
+   "objectives": [
+    {
+     "id": "bridge.message.posted",
+     "title": "Post a notice and meet the crew coming back.",
+     "essential": false,
+     "done": {
+      "flag": "emberford.repair-notice",
+      "in": [
+       "sketch",
+       "direction"
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "perspective",
+       "responsibility"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "design-tech"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "human",
+       "solo": "multistructural"
+      },
+      "minutes": 2
+     },
+     "kq": {
+      "id": "KQ-REPAIR-NOTICE",
+      "action": "post one version for the crossing"
+     },
+     "onComplete": [
+      {
+       "journal": "j.bridge.message.posted"
+      }
+     ]
+    },
+    {
+     "id": "bridge.message.checked",
+     "title": "Find where the message changed hands.",
+     "essential": false,
+     "done": {
+      "flag": "bridge.message.trial",
+      "in": [
+       "sketch",
+       "direction"
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "explanation",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "LAN",
+       "ART"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "visual-arts"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "minutes": 2
+     },
+     "kq": {
+      "id": "KQ-REPAIR-NOTICE",
+      "action": "compare what left the bridge with what reached the cart"
+     },
+     "onComplete": [
+      {
+       "journal": "j.bridge.message.checked"
+      }
+     ]
+    },
+    {
+     "id": "bridge.message.returned",
+     "title": "Watch a new crew try the changed arrangement.",
+     "essential": false,
+     "done": {
+      "flag": "bridge.message.received",
+      "in": [
+       "hinge",
+       "runner",
+       "reply",
+       "pair"
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "power",
+       "values",
+       "interpretation"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "design-tech",
+       "psychology"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "minutes": 2
+     },
+     "kq": {
+      "id": "KQ-REPAIR-NOTICE",
+      "action": "watch a second crew use the repair"
+     },
+     "onComplete": [
+      {
+       "journal": "j.bridge.message.returned"
+      }
+     ]
+    }
+   ]
   }
  ],
  "questions": [
@@ -923,6 +1405,11 @@
    "id": "KQ-EMBERFORD-TALLY",
    "text": "How can the same numbers give two readers a different order?",
    "lastWord": "Both readers had the same measures. Which line they used first changed what they could do next."
+  },
+  {
+   "id": "KQ-REPAIR-NOTICE",
+   "text": "Where does a warning change on its way to the person who needs it?",
+   "lastWord": "The first crew carried the warning in good faith. You could find what changed by standing where the next crew received it."
   }
  ],
  "hints": [
@@ -949,6 +1436,115 @@
    "objective": "emberford.tally.o.readback",
    "depth": 4,
    "text": "Help the reader finish their plan or tie their bundle, then read their new slip. You can turn the tally again later."
+  },
+  {
+   "id": "h.bridge.message.posted.1",
+   "objective": "bridge.message.posted",
+   "depth": 1,
+   "text": "A cart came back without its load. Follow the message it took to the bank."
+  },
+  {
+   "id": "h.bridge.message.posted.2",
+   "objective": "bridge.message.posted",
+   "depth": 2,
+   "text": "Go to the repair board on the east side of the market, south of the well."
+  },
+  {
+   "id": "h.bridge.message.posted.3",
+   "objective": "bridge.message.posted",
+   "depth": 3,
+   "text": "The same foot limit can travel in a sketch or a spoken direction."
+  },
+  {
+   "id": "h.bridge.message.posted.4",
+   "objective": "bridge.message.posted",
+   "depth": 4,
+   "text": "Hang either notice. Look for the driver who unloaded four sacks."
+  },
+  {
+   "id": "h.bridge.message.checked.1",
+   "objective": "bridge.message.checked",
+   "depth": 1,
+   "text": "The first driver left you something to check."
+  },
+  {
+   "id": "h.bridge.message.checked.2",
+   "objective": "bridge.message.checked",
+   "depth": 2,
+   "text": "At the repair board, examine how a second crew received the notice."
+  },
+  {
+   "id": "h.bridge.message.checked.3",
+   "objective": "bridge.message.checked",
+   "depth": 3,
+   "text": "With a sketch, compare the folded copy with the board. With a spoken call, listen at both stops."
+  },
+  {
+   "id": "h.bridge.message.checked.4",
+   "objective": "bridge.message.checked",
+   "depth": 4,
+   "text": "Use the unfold or walk-back option. You can leave and return before moving anything."
+  },
+  {
+   "id": "h.bridge.message.returned.1",
+   "objective": "bridge.message.returned",
+   "depth": 1,
+   "text": "A change at the board still needs a crew to try it."
+  },
+  {
+   "id": "h.bridge.message.returned.2",
+   "objective": "bridge.message.returned",
+   "depth": 2,
+   "text": "Give the next crew a way to find the missing part. Each arrangement takes time or a helper."
+  },
+  {
+   "id": "h.bridge.message.returned.3",
+   "objective": "bridge.message.returned",
+   "depth": 3,
+   "text": "At the board you can change the fold, send the runner, wait for a reply, or split the call between crews."
+  },
+  {
+   "id": "h.bridge.message.returned.4",
+   "objective": "bridge.message.returned",
+   "depth": 4,
+   "text": "After making an arrangement, reopen the board, watch the new crew arrive and stay for its crossing."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.bridge.message.hinge",
+   "claimKind": "observation",
+   "text": "I saw a courier’s thumb hold the folded warning shut. Even shut, it showed the rope. The next driver had no paper and had to wait by the board."
+  },
+  {
+   "id": "j.bridge.message.runner",
+   "claimKind": "observation",
+   "text": "I walked behind the runner and the new pencil dot. Someone had marked the place she actually unloaded. The drivers who came later had to wait for our return."
+  },
+  {
+   "id": "j.bridge.message.reply",
+   "claimKind": "observation",
+   "text": "I waited out a squeaking wheel. From the bridge I heard “on foot” come back. Across the bank a driver kept her sack in the cart until she heard it too."
+  },
+  {
+   "id": "j.bridge.message.pair",
+   "claimKind": "observation",
+   "text": "I watched a driver and a porter take over opposite ends of a call. Their sacks sat on the ground until Minta came to help. I hadn’t counted her work when I chose the relay."
+  },
+  {
+   "id": "j.bridge.message.posted",
+   "claimKind": "observation",
+   "text": "I posted a way across. Then a cart came back without the sacks it had set out with."
+  },
+  {
+   "id": "j.bridge.message.checked",
+   "claimKind": "observation",
+   "text": "I followed the warning back to the bridge. The crew could show me what they received and which part they had filled in for themselves."
+  },
+  {
+   "id": "j.bridge.message.returned",
+   "claimKind": "observation",
+   "text": "I went back for the next crossing. From the cart I could see who waited, who went ahead and whose hands were busy helping."
   }
  ]
 }
