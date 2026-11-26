@@ -20,6 +20,9 @@ interface GlassStory {
   revisit: string;
   boardDone: string;
   deskDone: string;
+  hintAtCase: string;
+  hintAtReturn: string;
+  journal: string;
 }
 const stories: Record<string, GlassStory> = voices;
 
@@ -190,12 +193,12 @@ export const glassRackContent = {
     objectives, caseVisits: GLASS_RACK_CASES.map((c) => [c.earned, c.returned]),
   }],
   journal: GLASS_RACK_CASES.map((c) => ({
-    id: `j.${c.earned}`, claimKind: 'observation', text: `Both views of ${c.accession} made it to the reading station that could use their mount.`,
+    id: `j.${c.earned}`, claimKind: 'observation', text: c.story.journal,
   })),
   hints: GLASS_RACK_CASES.flatMap((c) => [
-    [c.earned, ['The second photo does something different from the first.', 'Inspect the numbered case and use the glass beside it.',
+    [c.earned, [c.story.hintAtCase, 'Inspect the numbered case and use the glass beside it.',
       'Set the first view, change the glass and return to the first view once.', 'Choose the broad rail or the pocket and go to its reader.']],
-    [c.returned, ['Show the same pair earlier in the Archive.', 'Take the earned object and equip it in your Bag.',
+    [c.returned, [c.story.hintAtReturn, 'Take the earned object and equip it in your Bag.',
       'Find its matching rack in the Nile Map Room. Open the first frame and fit the second.', 'Leave both views on the board or leave a pointer to the reading desk.']],
   ].flatMap(([objective, texts]) => (texts as string[]).map((text, index) => ({
     id: `h.${objective}.${index + 1}`, objective: objective as string, text, depth: (index + 1) as Hint['depth'],

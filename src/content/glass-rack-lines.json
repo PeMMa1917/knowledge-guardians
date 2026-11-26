@@ -8,7 +8,10 @@
     "pocketDone": "I followed the blue round the opening. When I shut the flap, the tall panels were still there lower down.",
     "revisit": "A carrier drew our rim mark as a flat ladder, too. Give the two photographs room for their own directions.",
     "boardDone": "A reader at the board can follow the round band and then pick out the panels below it.",
-    "deskDone": "From the aisle you see the panels. Follow the tab to the desk to trace the rim and keep both drawings in view."
+    "deskDone": "From the aisle you see the panels. Follow the tab to the desk to trace the rim and keep both drawings in view.",
+    "hintAtCase": "Follow the blue band until the jar hides it. The other photograph picks it up again.",
+    "hintAtReturn": "At Marek’s table, a reader facing the panels needs a way to find the circle above them.",
+    "journal": "I followed the blue band round the storage jar. It looked like a ladder until the second view let me see where the line went."
   },
   "1989-357": {
     "work": "I put a dot over each duck on the old sleeve. From that end the dots nearly touched. The other end gives those heads some room.",
@@ -19,7 +22,10 @@
     "pocketDone": "I can take the two heads apart with my eyes now. The cover still shows why they looked so close together.",
     "revisit": "Someone has put one duck on the trail card. The nearer sleeve shows the cramped view that may have led them there.",
     "boardDone": "At the board, both approaches give the pair enough space to count. The rim has its own line.",
-    "deskDone": "The aisle sleeve preserves the crowded view. The desk gives the two heads room, with the same case number beside them."
+    "deskDone": "The aisle sleeve preserves the crowded view. The desk gives the two heads room, with the same case number beside them.",
+    "hintAtCase": "Keep one duck head in view while you turn the glass. What comes clear behind its neighbour?",
+    "hintAtReturn": "Approach the sleeves from the other end. See whether the second head still shares an outline with the rim.",
+    "journal": "My drawing of the duck jar nearly joined the two heads. I found the space between them when I looked down past the rim."
   },
   "1989-360": {
     "work": "A visitor asked why the dragon was missing when she looked into the cup. I’d used the outside as the cover for both photographs.",
@@ -30,7 +36,10 @@
     "pocketDone": "The flap brought the centre into reach. The narrow stem is waiting on the outside when the cover comes down.",
     "revisit": "A reader may take the centre picture for the entire decoration. Keep the inner and outer positions plain on this board.",
     "boardDone": "The board shows which marks belong inside and which run around the wall. Two people can point at different views at once.",
-    "deskDone": "The standing profile gives an aisle reader enough to identify the cup. The desk is where its centre comes into view."
+    "deskDone": "The standing profile gives an aisle reader enough to identify the cup. The desk is where its centre comes into view.",
+    "hintAtCase": "Peer into the cup. The decoration on the wall of the cup gives way to a little group in the middle.",
+    "hintAtReturn": "Someone approaching the cup from above will meet the middle first. Give the outside decoration a place too.",
+    "journal": "I could fit the stem cup on one slip. Its tiny scene in the centre needed a view of its own."
   },
   "1973-13": {
     "work": "Our drawer sketch ended at a flat line. I was the one who drew it. The jar’s foot has an inside that my line left blank.",
@@ -41,7 +50,10 @@
     "pocketDone": "The inset round area is clear. The jar’s flare still has a place on the folded cover after I check it.",
     "revisit": "We write depths beside pits here. The recess under this foot needs the same care when we show where the profile ends.",
     "boardDone": "The side stays upright next to the view from below. A reader can find the step in the foot without picturing the jar upside down.",
-    "deskDone": "The aisle keeps the taper and the foot outline. At the desk the hollow has its own larger space."
+    "deskDone": "The aisle keeps the taper and the foot outline. At the desk the hollow has its own larger space.",
+    "hintAtCase": "Where does the jar meet the shelf? Look under that spot in the other view.",
+    "hintAtReturn": "The wide mouth tells a carrier very little about the foot. Try giving the underside its own approach.",
+    "journal": "I had the outline of the jar’s foot. Turning to the underside gave me the hollow my outline had missed."
   },
   "1989-366": {
     "work": "The old sleeve calls this vase ‘even at either end’. My hand wrote that. The mouth and the base should have their own say.",
@@ -52,7 +64,10 @@
     "pocketDone": "I found the flat area without losing the long neck. I can turn the pocket back to the rough rim when someone asks where we began.",
     "revisit": "A storekeeper wants a foot silhouette for our tray. Keep that far from the irregular outline at the mouth.",
     "boardDone": "From the board, the foot silhouette is available to the tray maker and the flared mouth is still easy to point to.",
-    "deskDone": "I left the full vase in the aisle. The foot silhouette is at the desk, ready for someone who needs the lower view."
+    "deskDone": "I left the full vase in the aisle. The foot silhouette is at the desk, ready for someone who needs the lower view.",
+    "hintAtCase": "The narrow neck pulls the eye upward. The glass can take you all the way round to the broad place the vase rests on.",
+    "hintAtReturn": "One traveller sees the uneven lip. From across the table another can check the base that supports it.",
+    "journal": "I put the Khmer vase’s uneven mouth beside its flat underside. They make surprisingly different silhouettes for one piece."
   },
   "1983-156": {
     "work": "A child drew this fruit with a stem. When I said ‘loop’, she asked whether the whole top came apart. I had to send for the other print.",
@@ -63,7 +78,10 @@
     "pocketDone": "I’ve left a small line between lid and mouth on the inner leaf. The cover keeps them together as one jar.",
     "revisit": "We keep the assembled sketch near the arrival turn. Let the parted shape appear under the same label with a clear break between pieces.",
     "boardDone": "The two drawings give readers the fruit shape and the uncovered mouth. Both stay under the jar’s record.",
-    "deskDone": "The assembled fruit marks the way to the desk. There the loop and the circular opening can be checked on separate leaves."
+    "deskDone": "The assembled fruit marks the way to the desk. There the loop and the circular opening can be checked on separate leaves.",
+    "hintAtCase": "Keep track of the loop as the fruit opens. Which piece takes the loop with it?",
+    "hintAtReturn": "Marek has two pockets. Leave enough space for someone to put the loop back with the lid.",
+    "journal": "My first sketch made the loop on the fruit-shaped jar’s lid look like its mouth. The open view gave each part its own place."
   },
   "1917-26": {
     "work": "I trimmed a picture to fit a card and all anybody remembered was blue. The pale half of this cloth deserves a place on the next card.",
@@ -74,7 +92,10 @@
     "pocketDone": "I found the blossoms and put the pale field back in sight. The hinge lets me keep both without folding the full picture to fit.",
     "revisit": "A guide will walk along our board as if it were a long cloth. Put a mark at the colour change to tell them where this inset belongs.",
     "boardDone": "The board puts flowers inside the dark field and leaves the join to the pale field in reach.",
-    "deskDone": "The spread cloth stays on the board. The desk has the blossom close-up, with a tab back to the blue side."
+    "deskDone": "The spread cloth stays on the board. The desk has the blossom close-up, with a tab back to the blue side.",
+    "hintAtCase": "Find the line where the cloth turns dark blue. Start looking for the stems on that side.",
+    "hintAtReturn": "A blossom fills the shutter. Pull back until a reader can find its blue panel again.",
+    "journal": "I found the little blossoms in the sarong after tracing the pale field to the blue. A close crop alone would have left me hunting for them."
   },
   "1925-477": {
     "work": "I let the mount hide the edge of this narrow strip. The first question at the rail was about the lines my clamp had covered.",
@@ -85,7 +106,10 @@
     "pocketDone": "I held the view of the repeated lines under the lamp and then found that edge again on the spread cloth.",
     "revisit": "Keep the edge inset where a reader can move from the long strip to the short straight lines in one step.",
     "boardDone": "The board’s line takes you from the figure to the border repeats. A reader can point from a distance.",
-    "deskDone": "The board leaves the long outline clear. At the desk the close lines are large enough for a reader to trace beside the matching edge."
+    "deskDone": "The board leaves the long outline clear. At the desk the close lines are large enough for a reader to trace beside the matching edge.",
+    "hintAtCase": "Start at the edge of the long strip. Tiny straight marks there become visible when you bring the cloth nearer in the glass.",
+    "hintAtReturn": "If a reader can see the small lines but has lost the strip, bring its long edge back into the frame.",
+    "journal": "I could follow the brocade for its whole length. Its finest straight lines came into focus only when I stopped at the edge."
   },
   "1917-770": {
     "work": "Two children took the missing pattern for a worn patch. I’d hung only the decorated side of the Bagobo backpack. Bring that first sleeve back after you turn it.",
@@ -96,7 +120,10 @@
     "pocketDone": "I can see the upright lines on the plainer side. I kept the flap’s number with the cords so nobody files a second bag.",
     "revisit": "People at this junction ask ‘which side?’ before they ask ‘whose bag?’ Keep the Bagobo attribution next to the turn between sleeves.",
     "boardDone": "From either end of the board we can find the same bag. The face with the pattern and the face with the upright lines have each kept their place.",
-    "deskDone": "The patterned view in the aisle names the bag. The desk keeps the other face and its vertical lines in the same numbered pair."
+    "deskDone": "The patterned view in the aisle names the bag. The desk keeps the other face and its vertical lines in the same numbered pair.",
+    "hintAtCase": "The cords give you a landmark while the Bagobo backpack turns. Follow what changes below them.",
+    "hintAtReturn": "A visitor has seen the patterned panel. Give the plain, lined face its own sleeve before describing the whole bag.",
+    "journal": "I kept the long cords in sight while I checked the plainer face of the Bagobo backpack. Both sides travelled under one case number."
   },
   "1934-330": {
     "work": "I wrote ‘shawl’ on the lid of this case. A visitor looked for the rest of it in my drawer. We have a border fragment with two faces.",
@@ -107,7 +134,10 @@
     "pocketDone": "I counted the three curves in the shade and found them in colour again. The cover calls this a border fragment.",
     "revisit": "We have empty spans on our route board too. Keep some blank beside this border so no one thinks our photographs supply the shawl.",
     "boardDone": "A reader can follow the outlines across two faces of the remnant. There is open space where the unpictured cloth would need its own records.",
-    "deskDone": "The aisle names the remnant. The desk holds the darker face for anyone trying to follow those three curves."
+    "deskDone": "The aisle names the remnant. The desk holds the darker face for anyone trying to follow those three curves.",
+    "hintAtCase": "Pick one of the three curves in the shawl border. Try finding its outline on the darker face.",
+    "hintAtReturn": "Carry the curve across the two sleeves. Its outline may help a reader match the faces when their colours differ.",
+    "journal": "I traced three curves through the shawl fragment, then found them on its darker face. The missing length stayed missing."
   },
   "1952-190": {
     "work": "When I work past supper I start calling one end the other. This shawl’s long blue centre is the part that gets me home.",
@@ -118,7 +148,10 @@
     "pocketDone": "I counted rows on the end photograph and put them back at the right part of the spread view. The blue stretch kept my place.",
     "revisit": "Use the long centre as a landmark on the copy. An inset needs an address as much as our paths do.",
     "boardDone": "The little rows are findable at the end of a long blue field. I can show the walk from the centre to the edge.",
-    "deskDone": "The aisle keeps the two ends and the centre in sight. The desk enlarges one end and marks the place it came from."
+    "deskDone": "The aisle keeps the two ends and the centre in sight. The desk enlarges one end and marks the place it came from.",
+    "hintAtCase": "The long blue centre points to a patterned end. That is where the small rows can be found.",
+    "hintAtReturn": "Use the blue centre to lead someone back from a single tight row to its place on the shawl.",
+    "journal": "I used the shawl’s broad blue centre to find the patterned end again. It was a better guide than trying to count every row twice."
   },
   "2006-200": {
     "work": "I kept looking for animals among the big shapes. It took a shorter frame and a seat by the cold window for me to see the small ones.",
@@ -129,7 +162,10 @@
     "pocketDone": "The little figures show among the red and green lines. The long border on the cover is where I can start looking for that part again.",
     "revisit": "The watchers at the map table pass each other illustrations. Put the figures’ close view back along its own coloured bands before one copy travels.",
     "boardDone": "Two readers at the board can find the little figures in the inset and orient themselves with the long shawl.",
-    "deskDone": "The long shapes give the aisle its starting point. At the desk the smaller figures have room without crowding the shared board."
+    "deskDone": "The long shapes give the aisle its starting point. At the desk the smaller figures have room without crowding the shared board.",
+    "hintAtCase": "A large dark shape is easy to find. Open the closer view and look between the red and green lines.",
+    "hintAtReturn": "The small animals can fill the inset. Leave room around it for the larger shapes a distant viewer would see.",
+    "journal": "I could pick out an animal between the shawl’s coloured lines. From farther off I saw how small a part of the whole it occupied."
   },
   "1916-1206": {
     "work": "My first chalk note said ‘loops all along’. The sari’s edge does curl. The small marks inside the red field have corners.",
@@ -140,7 +176,10 @@
     "pocketDone": "I checked the curled lines at the hinge. The flat red field with its own marks came back into view when I lowered the leaf.",
     "revisit": "A map sleeve makes the same mistake when one edge sign stands in for a whole field. Put the sari’s close-up over the side that carries it.",
     "boardDone": "On the board, the curls stay at the edge. The angular marks have a place in the interior and the complete span remains visible.",
-    "deskDone": "The desk gives the curls and angles more room. Follow the small tab from the wide red picture in the aisle."
+    "deskDone": "The desk gives the curls and angles more room. Follow the small tab from the wide red picture in the aisle.",
+    "hintAtCase": "Follow the edge of the red field into the border. The angular marks and the curls occupy different places.",
+    "hintAtReturn": "Through the shutter, a curl may look like part of the red field. Let the edge show where it belongs.",
+    "journal": "I followed one curl to the sari’s border. The angular marks farther in would have made a very different sample for the next reader."
   },
   "1953-474": {
     "work": "A rider and a walker can fill a small frame so well it looks like the end of the story. My first label forgot this piece is part of a hanging.",
@@ -151,7 +190,10 @@
     "pocketDone": "I found the walker below the bands. The cover still gives the edge of the piece I can describe.",
     "revisit": "We can leave margins open the way we do for a missing sheet. Give the surviving band its own position beneath the hanging’s empty edges.",
     "boardDone": "The board marks the pictured section. People can compare the figures with the higher bands and see where the photographs stop.",
-    "deskDone": "The desk brings the walker and rider into focus. The aisle slip gives the boundaries of the surviving section and points to those views."
+    "deskDone": "The desk brings the walker and rider into focus. The aisle slip gives the boundaries of the surviving section and points to those views.",
+    "hintAtCase": "Keep the walking figure in mind as the glass pulls back. Look above it for the next patterned band.",
+    "hintAtReturn": "A horse and a walker fit in the close frame. Show how the bands run beyond them on the hanging.",
+    "journal": "I found a rider and a walker below the bands on the surviving tent hanging. Neither picture told me how the lost piece ended."
   },
   "2020-205": {
     "work": "The narrow waist is easy to copy. I used it for the whole profile and nearly filed the inside decoration under another basin.",
@@ -162,7 +204,10 @@
     "pocketDone": "I tipped the flap towards the window and saw the inlay spread over the slope. The folded image carries the outline I started with.",
     "revisit": "Keep the bowl’s rim in a looking-down slot. A person reading our loading sketch needs the base in a different direction.",
     "boardDone": "The two views let a reader take the inlay across the bowl and then find the waist below it from the other approach.",
-    "deskDone": "The standing picture in the aisle shows where the base rounds. At the desk, the inside and the outer shape can be compared in order."
+    "deskDone": "The standing picture in the aisle shows where the base rounds. At the desk, the inside and the outer shape can be compared in order.",
+    "hintAtCase": "The bowl widens above a narrow waist. Look down its slope to find the decoration inside.",
+    "hintAtReturn": "A visitor beside the waist can see the basin’s shape. The sleeve across from them can reveal the inside.",
+    "journal": "I followed the basin from its rounded base to the inlay on the slope inside. One drawing gave my reader its shape, the other a way into the pattern."
   },
   "2020-206": {
     "work": "I kept tracing chevrons up onto the lid. Its other design gave me a way to stop. Put the closed container there while I unstick this corner.",
@@ -173,7 +218,10 @@
     "pocketDone": "I checked the mark on the separated lid, then closed the flap to put its position above the chevrons back in view.",
     "revisit": "The map desk needs a lid tab with its own drawing. The photograph can show the dark opening with the lid set aside.",
     "boardDone": "Two readers can see the closed shape and the separated lid at the same time. Its star-like pattern stays with the lid.",
-    "deskDone": "The closed container is a clear signpost in the aisle. The desk has room for the lid’s picture and the open body."
+    "deskDone": "The closed container is a clear signpost in the aisle. The desk has room for the lid’s picture and the open body.",
+    "hintAtCase": "Look for the chevrons on the closed pandan. Open the second view to see which piece carries the star.",
+    "hintAtReturn": "The star can stay with the lid even when the dark container gets a pocket of its own.",
+    "journal": "I set the pandan’s chevrons beside the star on the loose lid. Now a reader can point to either mark and tell me which part carries it."
   },
   "1986-86": {
     "work": "On my first card for the Han River bottle I could find every hill and no mouth. That was a lovely card for the wrong question.",
@@ -184,7 +232,10 @@
     "pocketDone": "I can count the sides of the opening under the flap. Closing it brings the hills and buildings back to the table.",
     "revisit": "Someone will pin this beside a river sketch at our turn. Make room for the top view so they can tell a painted scene from the shape of its vessel.",
     "boardDone": "On the board, the two views let a reader find the scene on the side and the square above it.",
-    "deskDone": "Walk past the painted river to the desk tab. The square opening has enough room to check there."
+    "deskDone": "Walk past the painted river to the desk tab. The square opening has enough room to check there.",
+    "hintAtCase": "Follow the hills until you reach an edge of the square bottle. Then look down through its opening.",
+    "hintAtReturn": "Try setting the landscape towards one approach and the square mouth towards the other.",
+    "journal": "I turned from the Han River scenery to the square opening of the bottle. I had spent so long in the landscape that the four corners surprised me."
   },
   "1918-456": {
     "work": "I could see the plate jut out over the foot. I promised the next shift that was all there was to see below. The underside print came in after my promise.",
@@ -195,7 +246,10 @@
     "pocketDone": "I followed the rings. When I folded them away, I could still find the foot below the wider plate.",
     "revisit": "Let’s set the overhang against our board and give the rings a separate view beneath it. Readers should be able to find the foot from either side.",
     "boardDone": "The foot crosscheck stays under the centre of the stand. A reader can see the rings and the overhang at once.",
-    "deskDone": "The aisle keeps the profile. The desk has room to follow the rings before returning to the side of the stand."
+    "deskDone": "The aisle keeps the profile. The desk has room to follow the rings before returning to the side of the stand.",
+    "hintAtCase": "Follow the edge that sticks out beyond the cup stand. Turning the view reveals what lies beneath the plate.",
+    "hintAtReturn": "The side view leaves part of the foot in shadow. A reader at the other sleeve can inspect the rings underneath.",
+    "journal": "I could see the cup stand’s foot just below the plate. A look underneath gave the ring a path I could follow all the way round."
   },
   "1928-179": {
     "work": "I put the opening beside the handle when I traced this ewer. Then someone asked where the spout went. Give me the view from the top before that card travels.",
@@ -206,7 +260,10 @@
     "pocketDone": "I can trace from handle through the opening to the spout. When the flap closes, I can still see both ends on the standing ewer.",
     "revisit": "The three landmarks on this vessel would make a good test for our room sketch. Give the opening one place on the overhead view and another way to find it from the side.",
     "boardDone": "Two people can point from opposite ends of the board and agree where the handle, opening and spout sit.",
-    "deskDone": "The standing view tells the aisle where to begin. At the desk the upper view lets a reader follow all three parts in order."
+    "deskDone": "The standing view tells the aisle where to begin. At the desk the upper view lets a reader follow all three parts in order.",
+    "hintAtCase": "Find the handle and spout first. Looking down makes it easier to place the opening between them.",
+    "hintAtReturn": "A carrier sees the spout sticking out. Give them another angle for judging how far it lies from the handle.",
+    "journal": "My line ran from the wine ewer’s handle past its mouth to its spout. Turning the page showed how high the same parts stood."
   },
   "1992-113": {
     "work": "The long neck made this bottle easy to spot. When my sketch came back upside down, all I had drawn was its best landmark.",
@@ -217,7 +274,10 @@
     "pocketDone": "I checked the underside as a separate circle. The neck on the cover brought me back to the upright picture.",
     "revisit": "Somebody will walk up from the low turn and see only the short sketch. Set that sketch beside the bottle’s tall outline so the next reader can identify both.",
     "boardDone": "A reader at either end of the board can connect the low circle with the tall shape of the gourd bottle.",
-    "deskDone": "The aisle gets the tall outline. The desk has the base photograph in the place named on its tab."
+    "deskDone": "The aisle gets the tall outline. The desk has the base photograph in the place named on its tab.",
+    "hintAtCase": "The bottle’s long neck gives you a starting point. Find the angle where the neck disappears and the base comes into view.",
+    "hintAtReturn": "If the base fills a sleeve, a reader may lose the bottle’s proportions. Keep the long neck visible at the other approach.",
+    "journal": "I set a plain circle beside the tall gourd-shaped bottle. Looking underneath had taken its long neck right out of the frame."
   },
   "2025-179": {
     "work": "I hesitated over the little marks under this bowl. The gift entry has two names. Both photographs need the same catalogue slip while I keep those records straight.",
@@ -228,7 +288,10 @@
     "pocketDone": "The hinge lets me see the marks under the ring. I can still name both people from the written gift line when the cover is closed.",
     "revisit": "Someone on the aisle said the marks settled who made the bowl. Move the underside and the gift line where readers can check each for what it gives.",
     "boardDone": "The board preserves the marks and the named gift on separate lines. The next reader can check the attribution without filling in a maker.",
-    "deskDone": "The aisle carries the bowl profile and the gift tab. The desk brings the marks into view where a reader can inspect them."
+    "deskDone": "The aisle carries the bowl profile and the gift tab. The desk brings the marks into view where a reader can inspect them.",
+    "hintAtCase": "The outside looks quite plain. Turn the bowl over and look inside its foot ring for small marks.",
+    "hintAtReturn": "Bring both views to the sleeves. A reader hunting for the marks has to look inside the ring.",
+    "journal": "I could see the marks beneath the celadon bowl. For the names Sang-goo Kong and Chang-ho Kong I had to turn to the gift entry."
   },
   "1921-634": {
     "work": "I put the mouth right up against the decorated edge on a tracing. The view from above shows the shoulder has more to say.",
@@ -239,7 +302,10 @@
     "pocketDone": "I found the opening in its own photograph. The decoration still has somewhere to run when I lower the leaf.",
     "revisit": "The map table has a ring around a narrow doorway. The vase can sit beside that drawing if readers can see its opening and shoulder distinctly.",
     "boardDone": "There is room on the board for the small opening, wide shoulder and decorated bands. Two readers can keep their own viewpoint.",
-    "deskDone": "People in the aisle see the vase upright. The desk has the view down into the shoulder around the little opening."
+    "deskDone": "People in the aisle see the vase upright. The desk has the view down into the shoulder around the little opening.",
+    "hintAtCase": "Find the smallest opening at the top. Change the angle to see how much wider the decorated shoulder is.",
+    "hintAtReturn": "A carrier can follow the bands down the vase. A visitor across the table has the better view of the shoulder around its opening.",
+    "journal": "I found the small mouth inside the prunus vase’s wide shoulder. Its flying cranes took me back down the standing view."
   },
   "2022-145": {
     "work": "The first sleeve I stamped had room for one cup. The second was standing right there. Leave me two spaces on both slips this time.",
@@ -250,7 +316,10 @@
     "pocketDone": "The feet fit on the inner leaf. When I shut the flap, both cups are still at hand, as one entry.",
     "revisit": "Our next reader might arrive from the box side. Keep both cups named on the shared slip and the two foot rings in reach.",
     "boardDone": "The board can be read from the foot rings or from the decorated sides. Both ways point to the same pair.",
-    "deskDone": "The aisle keeps the upright pair visible in one sleeve. There is room at the desk for the two circular feet beside it."
+    "deskDone": "The aisle keeps the upright pair visible in one sleeve. There is room at the desk for the two circular feet beside it.",
+    "hintAtCase": "Keep both cups in mind as they turn. Find the two foot rings when the box comes into view.",
+    "hintAtReturn": "A reader who sees only two rings may miss that there are two decorated cups. Let the other sleeve carry the upright pair.",
+    "journal": "I counted two cups upright and two foot rings when they were turned over. The case number kept the pair together."
   },
   "2024-36": {
     "work": "The pheasants almost vanished in the pale surface when I first tried to trace them. I reached for the underside and found a plain ring.",
@@ -261,7 +330,10 @@
     "pocketDone": "The ring helped me identify the vase. I lowered the flap with the side back in the good light.",
     "revisit": "A reader sent from the room’s shaded path may see the ring first. Give them a path to the side with the faint pheasants.",
     "boardDone": "At the shared board, the base ring orients the reader. The pheasants still have a view with room for a slow look.",
-    "deskDone": "There is a standing outline on the aisle card. The desk lets a reader turn the ring away and settle on the faint side design."
+    "deskDone": "There is a standing outline on the aisle card. The desk lets a reader turn the ring away and settle on the faint side design.",
+    "hintAtCase": "The pheasant is faint on the side of the vase. Try finding any trace of that design in the view of the foot.",
+    "hintAtReturn": "Someone at the foot ring needs another angle before they can say anything about the pheasant.",
+    "journal": "My eyes went straight to the vase’s base ring. It took a second, quieter look to find the faint decoration along its side."
   },
   "1963-513": {
     "work": "I cut around the gold flowers to save paper. A child asked which piece I’d cut them from. The next copy will have the lid and its box.",
@@ -272,7 +344,10 @@
     "pocketDone": "The detached lid has its own place. Folded shut, the gold forms are back above the body on the outer photograph.",
     "revisit": "The old plan puts the whole box in one square. We can give the lid a second space and show the two places inside the one record.",
     "boardDone": "At the board the detached flowers stay with the lid. The closed view next to it lets people orient themselves from the aisle.",
-    "deskDone": "The closed box points from the aisle to the desk. There is room beside the lid to check the top of the box."
+    "deskDone": "The closed box points from the aisle to the desk. There is room beside the lid to check the top of the box.",
+    "hintAtCase": "Follow one gold-coloured flower as the cosmetics box opens. Does the photograph keep the lid with the body?",
+    "hintAtReturn": "The flowers may catch a visitor’s eye before the box does. Give the closed outline and the loose lid room together.",
+    "journal": "I followed a chrysanthemum from the closed cosmetics box to the lid in its own photograph. It gave me a place to start when the pieces were apart."
   },
   "1972-9": {
     "work": "I nearly pencilled the stoneware date onto the loose lid. My hand had already made the first dash. The catalogue has two histories here.",
@@ -283,7 +358,10 @@
     "pocketDone": "I can see how the lid fits beside the mouth. The note for the modern replacement is still on its own leaf.",
     "revisit": "We use one box number for a bundle here. Give the container and the replacement two dated positions inside that number.",
     "boardDone": "A reader can connect the lid to the mouth and read the two making histories in separate places on the public board.",
-    "deskDone": "The aisle names the stoneware container. At the desk the lid tab gives its modern date claim on a separate leaf."
+    "deskDone": "The aisle names the stoneware container. At the desk the lid tab gives its modern date claim on a separate leaf.",
+    "hintAtCase": "The mouth of the water container makes a dark circle. In the second picture, find what was lifted away from it.",
+    "hintAtReturn": "At the two pockets, let a reader inspect the underside of the loose lid and still locate the mouth it covers.",
+    "journal": "I would have given the water container and its lid the same date. The catalogue slip made me leave a separate place for the replacement."
   },
   "2014-391": {
     "work": "I used the red lines as a quick test for the bottle. The plain circle under the foot left my test with nothing to go on.",
@@ -294,7 +372,10 @@
     "pocketDone": "Both landmarks held their own place. The foot turns away when I close it and the red lines are easy to find again.",
     "revisit": "We need a top and a low reading at the same junction. Keep the foot and the whisk shape stationed where a reader can move between them.",
     "boardDone": "People approaching by the tall view can find the red curves. From the low side they can match the round foot.",
-    "deskDone": "The aisle keeps the red outline visible. The desk has the pale circle where the underside tab says to look."
+    "deskDone": "The aisle keeps the red outline visible. The desk has the pale circle where the underside tab says to look.",
+    "hintAtCase": "Follow the fine red lines towards the bottom. Turn the bottle to find the pale circle inside the foot.",
+    "hintAtReturn": "A reader tracing the red lines might expect them underneath. The other sleeve lets them check that expectation.",
+    "journal": "I followed the sake bottle’s thin red curves down to its foot. From underneath I could pick out a pale circle the front view had barely shown."
   },
   "1969-59": {
     "work": "I wrote ‘the people and the tree’ on the sleeve while looking at the outside. Once the inside print arrived, I had to split that line.",
@@ -305,7 +386,10 @@
     "pocketDone": "I found the tree where the inside piece has room for it. The figures are still waiting on the outer face.",
     "revisit": "The receiver copying our board might have to draw just one surface. Name the inside with its tree and give the closed top its own mark.",
     "boardDone": "At the board a reader can show the figures on the closed view while someone alongside follows the tree inside.",
-    "deskDone": "The aisle shows the closed figures. The desk gives the interior tree a clear view beneath its own tab."
+    "deskDone": "The aisle shows the closed figures. The desk gives the interior tree a clear view beneath its own tab.",
+    "hintAtCase": "Remember the figures on top. Open the box in the glass and look for a different image inside.",
+    "hintAtReturn": "Keep the tree with the interior piece. Someone reading the outside of the writing box should still see the figures.",
+    "journal": "I saw figures on the shut writing box. The tree only came into view in the picture of its interior piece."
   },
   "1966-24": {
     "work": "The painted grass looked tall from above. My trace of the dish made the wall tall as well. The low photograph made me rub that line out.",
@@ -316,7 +400,10 @@
     "pocketDone": "The side is shallower than I first pictured. I could return to the grassy top without using it to guess the height.",
     "revisit": "People bring all kinds of route slopes to this board. Set the dish flat in one view and keep the low profile just beside it.",
     "boardDone": "Readers can use the broad scene to find the dish and look across to the low view to see how shallow it is.",
-    "deskDone": "The grasses give the aisle its first view. The side that suits a shelf sketch is at the desk."
+    "deskDone": "The grasses give the aisle its first view. The side that suits a shelf sketch is at the desk.",
+    "hintAtCase": "The grasses cover a wide surface. Lower the glass until the rim tells you how shallow the dish is.",
+    "hintAtReturn": "The broad view shows the grasses. Use the side sleeve to let a reader judge depth without guessing from the painting.",
+    "journal": "I had room for the grasses and rocks in the high view of the dish. The low picture showed just how shallow a space held them."
   },
   "1962-154": {
     "work": "The lions stay with you after one look. I could still see them in my head when I traced the bottom. The photograph of the foot had its own plain centre.",
@@ -327,7 +414,10 @@
     "pocketDone": "I can trace the plain centre down at my desk. When I turn the leaf back, there’s a lion on each shoulder again.",
     "revisit": "The queue may come up behind the jar rack. Give the underside and the shoulder view different places to read.",
     "boardDone": "Two readers can meet at the same case number by following the plain foot or the raised handles.",
-    "deskDone": "Look for the lions in the aisle. The desk puts the blue around the foot in reach of a closer reader."
+    "deskDone": "Look for the lions in the aisle. The desk puts the blue around the foot in reach of a closer reader.",
+    "hintAtCase": "Find the heads on the shoulders of the jar. Turn it until the plain foot and its blue surround take their place.",
+    "hintAtReturn": "A reader underneath can describe the foot. Keep the shoulders accessible to anyone asking about the lion heads.",
+    "journal": "I matched the two lion heads at the shoulders of the jar to a view of the foot below them. Someone arriving from either side could start with a different mark."
   },
   "1999-220": {
     "work": "I chose a deep spacer for this mirror. Last week I nearly used the same spacer on its flat side. My hands remembered the wrong face.",
@@ -338,7 +428,10 @@
     "pocketDone": "The mottled face showed flat in my pocket. I closed it to find the two rising steps again.",
     "revisit": "Our board carries a deep model frame and a flat room sketch. Label the mirror’s two heights by face so its pair can sit beside them.",
     "boardDone": "The raised centre and the flatter face keep separate positions. A reader now knows which photograph supports which height.",
-    "deskDone": "The aisle keeps the raised pattern easy to find. The desk lets a reader turn to the flatter green view."
+    "deskDone": "The aisle keeps the raised pattern easy to find. The desk lets a reader turn to the flatter green view.",
+    "hintAtCase": "Look for the raised centre of the mirror. Now try finding that bump on the flatter green face.",
+    "hintAtReturn": "A visitor may feel sure both faces have two levels. Let each sleeve answer for the face it shows.",
+    "journal": "I counted two tiers on the raised face of the mirror. The mottled green on the other side lay flat."
   },
   "1973-74": {
     "work": "I could remember the birds even under a cloth. That failed me when someone turned their slip around. I still owed them a picture of the other face.",
@@ -349,7 +442,10 @@
     "pocketDone": "I could make out the light shapes on one face and the mottling on the other. The folded sleeve keeps them as a pair.",
     "revisit": "People in this aisle remember the sharp picture first. Give the mottled face its own place so the next reader knows what they were facing.",
     "boardDone": "A reader can pick out the bird and still see that the other photograph gives a less defined surface.",
-    "deskDone": "The birds identify the mirror in the aisle. The second surface has its own light at the desk."
+    "deskDone": "The birds identify the mirror in the aisle. The second surface has its own light at the desk.",
+    "hintAtCase": "Pick out one pale bird against the dark face. Turn the mirror and see what happens to the outline.",
+    "hintAtReturn": "Someone approaching the mottled face can return to the other sleeve to find the birds and plants.",
+    "journal": "I could follow a light bird on the patterned face of the mirror. I left the mottled reverse as I saw it, even where I wanted the outline to continue."
   },
   "1971-168": {
     "work": "Both photographs show a hollow. My first slip used ‘basin’ twice. Then the next shift asked where the ink was meant to sit.",
@@ -360,7 +456,10 @@
     "pocketDone": "When I lifted the leaf, the other hollow was under the object. Closing it brought the shaped surface and its basin back.",
     "revisit": "We have the same problem with hollows in our route models. Give the basin a place above the underside when you set the pair out.",
     "boardDone": "The board lets someone approaching below the model identify its cavity and still find the separate basin higher up.",
-    "deskDone": "The aisle shows the decorated top and its basin. The desk is where a reader can check the cavity underneath."
+    "deskDone": "The aisle shows the decorated top and its basin. The desk is where a reader can check the cavity underneath.",
+    "hintAtCase": "Find the hollow for ink first. Turn the inkstone and compare it with the space underneath.",
+    "hintAtReturn": "Keep track of which opening faces upward. The hollow below and the ink basin above do different work in these views.",
+    "journal": "I drew the hollow on top of the koto-shaped inkstone and then found a second cavity underneath. My reader needed to know which way up each drawing went."
   },
   "1969-124": {
     "work": "I filed this print with the plant pictures. Rennel asked where the writing things went. I had used the prettiest part for the only part.",
@@ -371,7 +470,10 @@
     "pocketDone": "The narrow slot has its own outline under the hinge. I closed it and found the same lid again.",
     "revisit": "People at the map desk have been filing fitted tools under decorative titles. Keep one card for this box with a separate place for the compartment.",
     "boardDone": "The board leaves the plant lid and the working layout readable together. A reader can point to either outline.",
-    "deskDone": "The lid identifies the box in the aisle. The desk opens a view of the narrow compartment and the two differently shaped implements."
+    "deskDone": "The lid identifies the box in the aisle. The desk opens a view of the narrow compartment and the two differently shaped implements.",
+    "hintAtCase": "Watch the plant-covered lid move aside. The narrow compartment and two implements come into view behind it.",
+    "hintAtReturn": "Give the loose lid a pocket where a reader can still compare it with the tools inside the open writing box.",
+    "journal": "I set the writing box’s plants above the long compartment and the two implements beside it. The open photograph showed how much the lid had hidden."
   },
   "2024-37": {
     "work": "Someone copied the side flowers onto our top sketch. I was looking over their shoulder and missed the small hole. Spread the two views for me.",
@@ -382,7 +484,10 @@
     "pocketDone": "I found the little round hole on its leaf. Folding the cover back kept the octagonal outline where I could see it.",
     "revisit": "We draw small openings in large floor plans. Give this hole its own clear projection next to the sided outline.",
     "boardDone": "The board lets the next reader find the hole and orient themselves by the side panels in the other image.",
-    "deskDone": "The aisle is wide enough for the blue sides. At the desk the small circle stays visible under the lamp."
+    "deskDone": "The aisle is wide enough for the blue sides. At the desk the small circle stays visible under the lamp.",
+    "hintAtCase": "The flat panels help you turn the dropper. Its little round hole shows most clearly when the top faces you.",
+    "hintAtReturn": "If the flower fills the first view, ask what a visitor would need to see to locate the opening.",
+    "journal": "I followed the water dropper’s flat blue panels round to the top. There, the small opening was round despite all those straight sides."
   },
   "1942-212": {
     "work": "I labelled the building the ‘front’. Then the other slip arrived with a line of characters, and the people who needed the writing started from that side.",
@@ -393,7 +498,10 @@
     "pocketDone": "The writing has its own face under my hinge. I can return to the building and still show where the museum’s date came from.",
     "revisit": "Our room numbers can be read from either entrance. Use this pair to give people a way to recognise the inscription face and the building face separately.",
     "boardDone": "The shared board leaves room to compare the building and inscription without asking either view to read as the whole object.",
-    "deskDone": "The aisle carries the steps and the numbered pointer. A reader at the desk can examine the character line beside the catalogue date."
+    "deskDone": "The aisle carries the steps and the numbered pointer. A reader at the desk can examine the character line beside the catalogue date.",
+    "hintAtCase": "Start with the steps on the building. Turn the ink cake until the vertical line of characters comes into view.",
+    "hintAtReturn": "Visitors can find the steps from one approach. Offer the other broad face to the reader looking for the characters.",
+    "journal": "I found the building and the characters on opposite faces of the ink cake. I carried the catalogue’s date alongside them so the next reader could trace it."
   },
   "1964-281": {
     "work": "The gold on this case made me draw a single square. Then I saw the inkstone has a well of its own. I’d given the next reader nowhere to look.",
@@ -404,7 +512,10 @@
     "pocketDone": "The fitting is clear under the flap. I closed it and the gold-coloured design was back in view.",
     "revisit": "Set the open photo where I can compare the fitted well to our empty storage outlines. The lid belongs beside the check.",
     "boardDone": "Both the closed face and the fitting are visible at the board, so the next reader can follow either part of the case.",
-    "deskDone": "The outer design marks the way to the desk. The open photograph gives the lower fitting room beside its lid."
+    "deskDone": "The outer design marks the way to the desk. The open photograph gives the lower fitting room beside its lid.",
+    "hintAtCase": "First follow the gold-coloured design on the case. In the open view, find the separate well around the inkstone.",
+    "hintAtReturn": "The decoration can travel with its lid. Leave the open well visible so a visitor can tell where the stone sits.",
+    "journal": "I saw the fitted space for the inkstone when the case was open. The decorated lid could sit beside it on the sheet without hiding the fit."
   },
   "1988-75": {
     "work": "Someone saw one name and wrote it across my drawing of the whole holder. I let it stand too long. Bring the carved view and the poem’s tab apart.",
@@ -415,7 +526,10 @@
     "pocketDone": "The poem’s name stays with its panel. I closed the flap and could still study the carving on its own face.",
     "revisit": "Our board needs room for a reader to trace where the poem’s attribution came from. Keep that tab with the character view.",
     "boardDone": "A visitor can find the carved scene and check the source of the poem’s name without borrowing it for the whole holder.",
-    "deskDone": "The carved view guides people from the aisle. The desk shows the text panel beside the catalogue’s attribution."
+    "deskDone": "The carved view guides people from the aisle. The desk shows the text panel beside the catalogue’s attribution.",
+    "hintAtCase": "Start with the column of characters. Turn the brush holder until the carved landscape takes up that space.",
+    "hintAtReturn": "Each side invites a different reading. Give the text panel as clear an approach as the carved scene.",
+    "journal": "I matched the carved scene to one face of the brush holder. The catalogue named Wang Meilin of Jiading in connection with the poem on the other."
   },
   "1991-120": {
     "work": "I liked the red case so much I kept making room only for it. The paper slips finally arrived on a scrap I’d nearly swept away.",
@@ -426,7 +540,10 @@
     "pocketDone": "The narrow pieces have room under the hinge. I shut the flap and found the cord across the closed view again.",
     "revisit": "Some of our route slips are easy to drop. Put this little container on the board with a second place for what the opened photograph shows.",
     "boardDone": "A reader can trace the box and find the papers beside it. Neither view needs to fold over the other.",
-    "deskDone": "The cord and red case mark the aisle. The desk keeps the narrow paper pieces legible beside that outline."
+    "deskDone": "The cord and red case mark the aisle. The desk keeps the narrow paper pieces legible beside that outline.",
+    "hintAtCase": "Keep an eye on the cord around the red case. The open view shows how narrow the paper pieces inside are.",
+    "hintAtReturn": "Make space for the papers beside the red case. A reader at the second pocket can see what the cord once kept together.",
+    "journal": "I followed the cord around the closed poem card box. Its narrow slips each found a place when I looked inside."
   },
   "2020-66": {
     "work": "I was so pleased with my picture of one yellow arm that I almost sent it on its own. A reader asked where the rest of the animal went.",
@@ -437,6 +554,9 @@
     "pocketDone": "The hinge let me follow one yellow edge. I lowered the leaf and the whole octopus came back around it.",
     "revisit": "Make a small locator for the arms on the spread jacket. A reader can carry the close view to this board from either of our approaches.",
     "boardDone": "The colour shifts can be seen up close and mapped to the whole animal at the same time on the board.",
-    "deskDone": "The aisle keeps the jacket and octopus together. At the desk, the arm detail has an address on that spread view."
+    "deskDone": "The aisle keeps the jacket and octopus together. At the desk, the arm detail has an address on that spread view.",
+    "hintAtCase": "Pick one yellow arm of the octopus. Move closer in the glass and look for changes of colour inside its outline.",
+    "hintAtReturn": "Show the little colour shift through the shutter, then leave a route from that arm back to the whole jacket.",
+    "journal": "I followed the edge of an octopus arm on the jacket. When I stepped back to the spread view, I could still pick it out against the dark cloth."
   }
 }

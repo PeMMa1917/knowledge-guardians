@@ -266,5 +266,125 @@
   },
   "parcel:reply:token": {
     "token": "Who can return now without telling the waiting line why they came back?"
+  },
+  "quest:glass.1972-40.earned": {
+    "mount-reading": "Where would you stand a reader who still sees a ladder on the jar?"
+  },
+  "quest:glass.1989-357.earned": {
+    "mount-reading": "How could someone check the gap if they had only your first drawing?"
+  },
+  "quest:glass.1989-360.earned": {
+    "mount-reading": "Which part of the cup would someone miss if they saw it only from across the room?"
+  },
+  "quest:glass.1973-13.earned": {
+    "mount-reading": "What could you tell the next potter about the foot from the side alone?"
+  },
+  "quest:glass.1989-366.earned": {
+    "mount-reading": "Which edge would help the next reader tell the mouth from the base?"
+  },
+  "quest:glass.1983-156.earned": {
+    "mount-reading": "If the jar and lid arrived on separate slips, what would help you put them back together?"
+  },
+  "quest:glass.1917-26.earned": {
+    "mount-reading": "What landmark would let another reader find those blossoms on the whole cloth?"
+  },
+  "quest:glass.1925-477.earned": {
+    "mount-reading": "What would a weaver want to see beyond the patch of straight lines?"
+  },
+  "quest:glass.1917-770.earned": {
+    "mount-reading": "Which detail would convince a receiver that these are two views of one bag?"
+  },
+  "quest:glass.1934-330.earned": {
+    "mount-reading": "Where does your description of the shawl have to stop?"
+  },
+  "quest:glass.1952-190.earned": {
+    "mount-reading": "What could you give a waiting reader who has lost their place among the rows?"
+  },
+  "quest:glass.2006-200.earned": {
+    "mount-reading": "Which view would help a reader find the animal again after the first look?"
+  },
+  "quest:glass.1916-1206.earned": {
+    "mount-reading": "How might a drawing made only at the border change what someone expects of the whole sari?"
+  },
+  "quest:glass.1953-474.earned": {
+    "mount-reading": "How would you show the walker’s place without filling in the missing cloth?"
+  },
+  "quest:glass.2020-205.earned": {
+    "mount-reading": "Which side of the basin would you show someone deciding how to draw its depth?"
+  },
+  "quest:glass.2020-206.earned": {
+    "mount-reading": "If the lid slid off its label, which photograph would help put it back?"
+  },
+  "quest:glass.1986-86.earned": {
+    "mount-reading": "What might a reader decide about the opening from the landscape alone?"
+  },
+  "quest:glass.1918-456.earned": {
+    "mount-reading": "Which part of that ring could you actually trace in the side view?"
+  },
+  "quest:glass.1928-179.earned": {
+    "mount-reading": "Which view would help you point out a part’s position, and which its height?"
+  },
+  "quest:glass.1992-113.earned": {
+    "mount-reading": "What would you send with the circle so a reader could recognise the bottle?"
+  },
+  "quest:glass.2025-179.earned": {
+    "mount-reading": "Which claim about the bowl would lose its source if the gift entry went missing?"
+  },
+  "quest:glass.1921-634.earned": {
+    "mount-reading": "Where could someone start if they wanted to check the width of the mouth against the shoulder?"
+  },
+  "quest:glass.2022-145.earned": {
+    "mount-reading": "What could make four pictured shapes look like four separate objects?"
+  },
+  "quest:glass.2024-36.earned": {
+    "mount-reading": "Which feature of the vase would be easiest to lose on a hurried copy?"
+  },
+  "quest:glass.1963-513.earned": {
+    "mount-reading": "How would you help a reader decide which piece carries the flower?"
+  },
+  "quest:glass.1972-9.earned": {
+    "mount-reading": "What could you learn about the lid from the photograph, and what took a catalogue record?"
+  },
+  "quest:glass.2014-391.earned": {
+    "mount-reading": "What could a reader compare if the foot were all they could see?"
+  },
+  "quest:glass.1969-59.earned": {
+    "mount-reading": "What might go wrong if you put the tree on a drawing of the closed lid?"
+  },
+  "quest:glass.1966-24.earned": {
+    "mount-reading": "Which detail on the dish would change your estimate of its depth?"
+  },
+  "quest:glass.1962-154.earned": {
+    "mount-reading": "Which mark would be of most use to a reader approaching from below?"
+  },
+  "quest:glass.1999-220.earned": {
+    "mount-reading": "How much of the mirror’s shape could you recover from the flat face?"
+  },
+  "quest:glass.1973-74.earned": {
+    "mount-reading": "What would make you hesitate before copying a bird onto the reverse?"
+  },
+  "quest:glass.1971-168.earned": {
+    "mount-reading": "What would help someone tell the two hollows apart on a loose sheet?"
+  },
+  "quest:glass.1969-124.earned": {
+    "mount-reading": "Which detail about the implements could a drawing of the closed box never settle?"
+  },
+  "quest:glass.2024-37.earned": {
+    "mount-reading": "How might a guess from the side panels mislead someone looking for the opening?"
+  },
+  "quest:glass.1942-212.earned": {
+    "mount-reading": "What could a visitor verify by looking at the broad faces, and where could they check the date?"
+  },
+  "quest:glass.1964-281.earned": {
+    "mount-reading": "What would a reader need to see before making a claim about the fit?"
+  },
+  "quest:glass.1988-75.earned": {
+    "mount-reading": "What could you credit to Wang Meilin from the record in front of you?"
+  },
+  "quest:glass.1991-120.earned": {
+    "mount-reading": "How would the story of the box change for a reader who saw only the cord?"
+  },
+  "quest:glass.2020-66.earned": {
+    "mount-reading": "Where would you put a close-up so another player could find its place on the jacket?"
   }
 }
