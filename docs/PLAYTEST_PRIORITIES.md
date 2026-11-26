@@ -2,7 +2,7 @@
 
 Knowledge Guardians has fifteen playable chapters and a post-Council return. The next round should measure what students encounter, what they can carry into a new setting, and which story choices they want to pursue. [Browser checks](BROWSER_CHECKS.md) · [Learning design](LEARNING_DESIGN.md)
 
-Across 57 executable chapter routes, 38 reach six concepts, two framework parts, an area of knowledge and an optional theme in the first estimated 30 minutes. Twenty-two sustain that floor in every 30-minute window. In the 20-minute test, the counts are 28 and six. The micro-skill audit links 349 of the 803 supplied definitions to 643 playable uses. Students can reach Practised for 51 skills. Time real sessions on the routes with gaps and ask students to use the same method on an unfamiliar object. [Learning audit](LEARNING_DESIGN.md#the-20--and-30-minute-opportunity-floor) · [Micro-skills audit](TOK_MICRO_SKILLS.md)
+Across 60 executable chapter routes, 41 reach six concepts, two framework parts, an area of knowledge and an optional theme in the first estimated 30 minutes. Twenty-four sustain that floor in every 30-minute window. In the 20-minute test, the counts are 29 and six. The micro-skill audit links 349 of the 803 supplied definitions to 645 playable uses. Students can reach Practised for 52 skills. Time real sessions on the routes with gaps and ask students to use the same method on an unfamiliar object. [Learning audit](LEARNING_DESIGN.md#the-20--and-30-minute-opportunity-floor) · [Micro-skills audit](TOK_MICRO_SKILLS.md)
 
 | Priority | Work to do | How to check the improvement |
 | --- | --- | --- |
