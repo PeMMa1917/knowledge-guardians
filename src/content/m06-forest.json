@@ -977,6 +977,10 @@
       {
        "setFlag": "forest.report",
        "value": true
+      },
+      {
+       "setFlag": "forest.account.layout",
+       "value": "words"
       }
      ],
      "if": {
@@ -1001,6 +1005,10 @@
       {
        "setFlag": "forest.report",
        "value": true
+      },
+      {
+       "setFlag": "forest.account.layout",
+       "value": "lines"
       }
      ],
      "if": {

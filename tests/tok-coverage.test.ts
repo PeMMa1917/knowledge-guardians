@@ -929,11 +929,12 @@ function observatoryCoast(stop?: 'bell-slip' | 'clear-terms'): Route {
   return route;
 }
 
-function livingForest(pathbookFirst: boolean, greenSquares = false, sheet = false): Route {
+function livingForest(pathbookFirst: boolean, greenSquares = false, sheet = false, accountCopy = false): Route {
   const route = new Route();
   const sheetMinutes = sheet ? 6 : 0;
   const nextCrewMinutes = sheet ? 2 : 0;
   const surveyMinutes = greenSquares ? 12 : 0;
+  const copyMinutes = accountCopy ? 3 : 0;
   // Independent Chapter 5 session. The coast's revised notice is already up.
   route.driver.s.objectivesDone.push('coast.revise');
   const readPathbook = (d: AuditDriver) => {
@@ -942,6 +943,19 @@ function livingForest(pathbookFirst: boolean, greenSquares = false, sheet = fals
     d.talk('forest-steward', pathbookFirst ? 'Give heard and seen' : 'Keep the crews’ own words');
     expect(d.done('forest.account')).toBe(true);
   };
+  const tryAccountCopy = (minute: number) => route.at(minute, pathbookFirst
+    ? 'Keep the crew phrase below Heard and see a walker place a visible pass below Seen'
+    : 'Keep the dawn crew’s phrase and see the dusk keeper add a stop to the listening round',
+  ['evidence', 'interpretation', 'perspective', 'responsibility', 'scope', 'perspectives', 'methods-and-tools'], (d) => {
+    const mode = pathbookFirst ? 'lines' : 'words';
+    walkScene(d, 'forest-account-copy', undefined, 'Lift the lamp crew’s slip', 'Unfold the lookout’s card',
+      pathbookFirst ? 'Make separate heard and seen lines' : 'Fold the crew’s own words');
+    expect(d.s.flags['forest.account-copy.sent']).toBe(mode);
+    expect(d.done('forest.account-copy.readback')).toBe(false);
+    walkScene(d, `forest-account-receive-${mode}`, undefined, pathbookFirst ? 'Fit the card' : 'Hang the fold');
+    expect(d.done('forest.account-copy.readback')).toBe(true);
+    expect(readSign(d, `forest-account-kept-${mode}`)).toContain(pathbookFirst ? 'walker’s signed lookout slip' : 'count line is blank');
+  });
   route.at(4, 'Hear what a lookout crossing counts before heading out to check the bridge claim', ['perspective', 'scope'], (d) => {
     useDoor(d, 'forest-door');
     d.talk('forest-naturalist', 'What do we call a crossing');
@@ -975,6 +989,7 @@ function livingForest(pathbookFirst: boolean, greenSquares = false, sheet = fals
     expect(d.s.flags['forest.moss.frame']).toBe(true);
   });
   if (pathbookFirst) route.at(greenSquares ? 12 : 9, 'Separate what the bridge and lamp crews heard on their rounds from what observers saw', ['culture', 'perspective', 'interpretation', 'perspectives'], readPathbook);
+  if (pathbookFirst && accountCopy) tryAccountCopy((greenSquares ? 12 : 9) + copyMinutes);
   if (greenSquares) {
     route.at(19, 'Count occupied moss cells at shaded and open sites, beside and away from the walkway', [
       'evidence', 'objectivity', 'certainty', 'scope', 'methods-and-tools',
@@ -998,7 +1013,7 @@ function livingForest(pathbookFirst: boolean, greenSquares = false, sheet = fals
       readSign(d, 'forest-moss-revised-notice');
     });
   }
-  const extraTrailMinutes = (pathbookFirst ? 3 : 0) + surveyMinutes + sheetMinutes;
+  const extraTrailMinutes = (pathbookFirst ? 3 + copyMinutes : 0) + surveyMinutes + sheetMinutes;
   route.at(11 + extraTrailMinutes, 'Compare early crossings at the creek and ridge, one against three', ['evidence', 'methods-and-tools'], (d) => {
     useDoor(d, pathbookFirst ? 'forest-bridge-to-trail' : 'forest-trail-path');
     expect(watchForest(d, 'creek', 'early')).toEqual([0, 1, 0]);
@@ -1017,6 +1032,7 @@ function livingForest(pathbookFirst: boolean, greenSquares = false, sheet = fals
     expect(d.done('forest.compare')).toBe(true);
   });
   if (!pathbookFirst) route.at(26 + sheetMinutes, 'Keep the words of the lamp crew and the bridge keepers with their own rounds in the pathbook', ['culture', 'perspective', 'perspectives'], readPathbook);
+  if (!pathbookFirst && accountCopy) tryAccountCopy(26 + sheetMinutes + copyMinutes);
   if (sheet) route.at(34, 'Keep separate direct marks for the next watch and leave its remaining gap visible',
     ['values', 'responsibility', 'perspective', 'power', 'justification', 'perspectives', 'ethics'], (d) => {
       walkScene(d, 'forest-hands-receiver', 'forest.hands.separate', 'Leave both slips');
@@ -1025,7 +1041,7 @@ function livingForest(pathbookFirst: boolean, greenSquares = false, sheet = fals
   const publication = pathbookFirst
     ? 'Brief people at the bridge with both records where they can hear them before choosing a path'
     : 'Choose a quiet watch route and point large groups toward the wider lookout';
-  route.at(29 + surveyMinutes + sheetMinutes + nextCrewMinutes, publication, ['power', 'values', 'responsibility', 'ethics'], (d) => {
+  route.at(29 + surveyMinutes + sheetMinutes + nextCrewMinutes + copyMinutes, publication, ['power', 'values', 'responsibility', 'ethics'], (d) => {
     if (pathbookFirst) useDoor(d, 'forest-community-path');
     d.talk('forest-steward', pathbookFirst ? 'Read both lookout notes' : 'Keep the creek stop');
     expect(d.done('forest.publish')).toBe(true);
@@ -1033,7 +1049,7 @@ function livingForest(pathbookFirst: boolean, greenSquares = false, sheet = fals
     expect(d.s.flags['forest.response']).toBe(response);
     readSign(d, `forest-response-${response}`);
   });
-  route.at(37 + surveyMinutes + sheetMinutes + nextCrewMinutes, 'Record two crossings at each return watch and keep the blocked creek beat unknown', ['truth', 'certainty', 'objectivity', 'evidence', 'methods-and-tools'], (d) => {
+  route.at(37 + surveyMinutes + sheetMinutes + nextCrewMinutes + copyMinutes, 'Record two crossings at each return watch and keep the blocked creek beat unknown', ['truth', 'certainty', 'objectivity', 'evidence', 'methods-and-tools'], (d) => {
     useDoor(d, 'forest-bridge-to-trail');
     expect(watchForest(d, 'creek', 'return')).toEqual([1, null, 1]);
     expect(watchForest(d, 'ridge', 'return')).toEqual([0, 1, 1]);
@@ -1042,18 +1058,18 @@ function livingForest(pathbookFirst: boolean, greenSquares = false, sheet = fals
   const correction = pathbookFirst
     ? 'Return to the bridge readers to show why two equal counts do not imply two identical views'
     : 'Show how an unseen crossing could make the recorded counts match';
-  route.at(42 + surveyMinutes + sheetMinutes + nextCrewMinutes, correction, ['interpretation', 'justification', 'explanation', 'responsibility', 'scope', 'ethics'], (d) => {
+  route.at(42 + surveyMinutes + sheetMinutes + nextCrewMinutes + copyMinutes, correction, ['interpretation', 'justification', 'explanation', 'responsibility', 'scope', 'ethics'], (d) => {
     useDoor(d, 'forest-clearing-path');
     d.talk('forest-steward', pathbookFirst ? 'Brief the bridge readers' : 'mark the hidden stretch');
     expect(d.done('forest.finish')).toBe(true);
     readSign(d, 'forest-followup-note');
   });
-  route.at(47 + surveyMinutes + sheetMinutes + nextCrewMinutes, 'Bring both notes and the view limits down to the low bench', ['power', 'responsibility', 'perspective', 'perspectives', 'ethics'], (d) => {
+  route.at(47 + surveyMinutes + sheetMinutes + nextCrewMinutes + copyMinutes, 'Bring both notes and the view limits down to the low bench', ['power', 'responsibility', 'perspective', 'perspectives', 'ethics'], (d) => {
     d.talk('forest-steward', 'Bring both notes');
     expect(d.done('forest.access')).toBe(true);
     readSign(d, 'forest-low-route');
   });
-  route.at(52 + surveyMinutes + sheetMinutes + nextCrewMinutes, 'Give the Gombe field caption the date and the people behind the record', ['evidence', 'culture', 'responsibility', 'power'], (d) => {
+  route.at(52 + surveyMinutes + sheetMinutes + nextCrewMinutes + copyMinutes, 'Give the Gombe field caption the date and the people behind the record', ['evidence', 'culture', 'responsibility', 'power'], (d) => {
     useDoor(d, 'forest-community-back');
     for (const exhibit of ['OBJ-FOREST-GOMBE', 'OBJ-FOREST-GOMBE-CONTEXT']) d.run({ type: 'InspectExhibit', exhibit });
     d.talk('forest-naturalist', 'put the Gombe team back');
@@ -2140,6 +2156,8 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Observatory Coast with the menders’ frame and lookout’s check', end: 54, play: () => observatoryCoast('clear-terms') },
     { name: 'Living Forest from a prepared Chapter 4 save', end: 55, play: () => livingForest(false) },
     { name: 'Living Forest starting with the bridge route book', end: 55, play: () => livingForest(true) },
+    { name: 'Living Forest with the dusk keeper’s quoted slip', end: 58, play: () => livingForest(false, false, false, true) },
+    { name: 'Living Forest with the low rail’s heard and seen card', end: 58, play: () => livingForest(true, false, false, true) },
     { name: 'Living Forest with the Green Squares survey', end: 67, play: () => livingForest(true, true) },
     { name: 'Living Forest with the recorder’s two places', end: 63, play: () => livingForest(false, false, true) },
     { name: 'Metalworks from a prepared Chapter 5 save', end: 50, play: () => metalworks(false) },

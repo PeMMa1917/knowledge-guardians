@@ -52,6 +52,19 @@ const notebookPassage = (method: 'conditions' | 'crew'): Condition => ({
 });
 const counterReady: Condition = { objective: 'forest.compare' };
 const counterDisplay = (layout: 'marker' | 'ledger'): Condition => ({ flag: 'forest.counter.layout', eq: layout });
+const forestAccount: Condition = { all: [{ objective: 'forest.account' }, { flag: 'forest.pathbook', eq: true }] };
+const sentAccount: Condition = { flagSet: 'forest.account-copy.sent' };
+
+function accountReceiver(mode: 'words' | 'lines', x: number, y: number, place: string, title: string, receipt: string): Interactable[] {
+  const prefix = 'forest.account-copy';
+  return [
+    guideScene(`forest-account-receive-${mode}`, x, y, place, 'preserved.folder', `${prefix}.receive.${mode}`, {
+      all: [forestAccount, { flag: `${prefix}.sent`, eq: mode }, { item: `item.${prefix}.${mode}` }, { not: { flagSet: `${prefix}.used` } }],
+    }),
+    note(`forest-account-kept-${mode}`, x, y, title, mode === 'words' ? 'preserved.display-records' : 'preserved.display-paired',
+      receipt, { flag: `${prefix}.used`, eq: mode }),
+  ];
+}
 const mossReadings = 'Green touched five squares at the shaded creek bank and one at the shaded bridge edge. '
   + 'In the open, green touched two at the ridge edge and four below the path. '
   + 'The day before, the crew saw five boot contacts at the shaded edge and six at the open edge in one round. '
@@ -320,6 +333,12 @@ export const FOREST_COMMUNITY: MapDef = {
       { all: [{ flag: 'forest.spate.waited', eq: true }, { not: { flagSet: 'forest.spate.route' } }] }),
     { ...note('forest-pathbook', 6, 9, 'the bridge keeper’s route book', 'preserved.folder',
       'On early rounds the lamp crew hears wings behind the creek reeds. Bridge keepers on later shifts hear them along the ridge. These entries record the sounds people heard.'), flag: 'forest.pathbook' },
+    guideScene('forest-account-copy', 8, 8, 'Ayla’s loose copies by the route book', 'preserved.folder',
+      'forest.account-copy.start', { all: [forestAccount, { not: sentAccount }] }),
+    ...accountReceiver('words', 6, 11, 'the west keeper’s empty peg', 'the dusk keeper’s changed round',
+      'Dusk instruction: pause behind the creek reeds to listen. The dawn lamp crew wrote “wings behind the creek reeds”. Their entry supplies a place to check. The lookout count line is blank.'),
+    ...accountReceiver('lines', 16, 10, 'the low reader’s rail', 'the two lines left on the low rail',
+      'HEARD: “Wings behind the creek reeds”, from the dawn lamp crew. Ask the keeper for the route-book entry. SEEN: one pass on the walker’s signed lookout slip. The walker placed its stroke here.'),
     guideScene('forest-moss-boot-log', 5, 10, 'the bridge crew’s boot tally', 'preserved.catalogue', 'forest.moss.log', mossFrame),
     { ...guideScene('forest-moss-table', 14, 9, 'the stand with the old shade notice', 'preserved.folder', 'forest.moss.table',
       { all: [mossFrame, { not: { flagSet: 'forest.moss.result' } }] }),
