@@ -48,8 +48,10 @@ describe('Two Sixes', () => {
   ])('records the result only after reading the $heading recipient’s own slip', ({ heading, lead, active, other, receipt }) => {
     const d = arrive();
     const credit = { ...d.p.credit };
+    expect(EMBERFORD.npcs.some((npc) => npc.id === 'baker-della' && check(npc.visibleIf, d.s))).toBe(true);
     use(d, tally, 'Leave it for now');
     expect(d.s.flags[tally]).toBeUndefined();
+    expect(d.e.talkEntry('baker-della', d.s)).toBe('emberford.tally.bake.idle');
     expect(visible(d, 'tally-ferry-read')).toBe(false);
     use(d, tally, `Lead with ${lead}`);
     expect(d.s.flags[tally]).toBe(heading);

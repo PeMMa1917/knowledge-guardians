@@ -389,6 +389,12 @@
    ]
   },
   {
+   "id": "emberford.tally.bake.idle",
+   "speaker": "baker-della",
+   "historicalLabel": "fictional-world",
+   "text": "Mind the trays. They look alike from the road. I need one loaf for each of six stall doors. Idris was counting something else when he left that chalk line."
+  },
+  {
    "id": "emberford.tally.bake.read",
    "speaker": "baker-della",
    "historicalLabel": "fictional-world",
@@ -808,7 +814,14 @@
      "node": "emberford.tally.bake.marked"
     },
     {
+     "if": {
+      "flag": "emberford.tally",
+      "eq": "weight"
+     },
      "node": "emberford.tally.bake.weight"
+    },
+    {
+     "node": "emberford.tally.bake.idle"
     }
    ]
   }

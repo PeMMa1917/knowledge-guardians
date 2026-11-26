@@ -174,7 +174,7 @@ export const EMBERFORD: MapDef = {
     { id: 'fruit-seller', x: 15, y: 19, facing: 'down' },
     // The Shattering Rumour (side quest): each person heard the blade story from the next.
     { id: 'porter-idris', x: 23, y: 22, facing: 'left' },
-    { id: 'baker-della', x: 11, y: 20, facing: 'right', visibleIf: tallyHeading },
+    { id: 'baker-della', x: 11, y: 20, facing: 'right' },
     { id: 'stallkeeper-hana', x: 12, y: 12, facing: 'right' },
     // Origin side quests (spec 35.1): each giver appears only for that origin.
     { id: 'runner-tamar', x: 18, y: 21, facing: 'right', visibleIf: { origin: 'harbour' } },
