@@ -61,7 +61,9 @@ import { playMove, startShowdown, type ShowdownMove } from './showdown';
 import { tryLock, type LockResult } from './lock';
 import { compareWithBlade, forgeStep, newForge, type ForgeAction } from './forge';
 import { addPortfolio, addSignal, checkMoments, recordWeave, tickEvents } from './learning';
-import { diaryDialogueChoice, diaryNoteKind, newAdventureDiary, recordAdventure } from './adventureJournal';
+import { diaryDialogueChoice, diaryNoteKind, newAdventureDiary, recordAdventure, setDiaryReflection } from './adventureJournal';
+import { isDiaryNoteKind } from './diaryReflection';
+import { setDiaryPortfolioWriting } from './adventureWriting';
 
 export type Command =
   | IncentiveAction
@@ -167,7 +169,10 @@ export type Command =
   | { type: 'Purchase'; offer: string }
   | { type: 'RequestHint'; objective: string }
   | { type: 'SetFlag'; flag: string; value: string | number | boolean }
-  | { type: 'AddNote'; text: string; kind?: DiaryNoteKind }
+  | { type: 'AddNote'; text: string; kind?: DiaryNoteKind; fromDraft?: boolean }
+  | { type: 'SetDiaryNoteDraft'; text: string; kind: DiaryNoteKind }
+  | { type: 'SetDiaryReflection'; entry: string; prompt: string; text: string }
+  | { type: 'SetDiaryPortfolioDraft'; entry: string; text: string; attach?: true }
   | { type: 'SetDiaryQuestion'; index: number; resolved: boolean }
   | { type: 'PortfolioShare'; entry: string; shared: boolean }
   | { type: 'PortfolioReflect'; entry: string; text: string };
@@ -1243,15 +1248,33 @@ export class Engine {
           s.player.pronouns = cleanPronouns(cmd.pronouns);
           break;
         }
+        case 'SetDiaryPortfolioDraft': {
+          const entry = p.portfolio.find(({ id }) => id === cmd.entry);
+          if (!entry || typeof cmd.text !== 'string') throw new Error('Unknown portfolio entry');
+          const adventureDiary = setDiaryPortfolioWriting(s.adventureDiary, entry, cmd.text, now, s.mapId, !cmd.attach);
+          const state = adventureDiary === s.adventureDiary ? s : { ...s, adventureDiary };
+          return { state, permanent: p, events };
+        }
+        case 'SetDiaryReflection': {
+          const state = setDiaryReflection(this.pack, s, cmd.entry, cmd.prompt, cmd.text);
+          return { state, permanent: p, events };
+        }
+        case 'SetDiaryNoteDraft': {
+          if (!isDiaryNoteKind(cmd.kind) || typeof cmd.text !== 'string') throw new Error('Unknown note type');
+          const noteDraft = cmd.text.length || cmd.kind !== 'note' ? { text: cmd.text, kind: cmd.kind } : null;
+          const current = s.adventureDiary.noteDraft;
+          if (current?.text === noteDraft?.text && current?.kind === noteDraft?.kind) return { state: s, permanent: p, events };
+          const state = { ...s, adventureDiary: { ...s.adventureDiary, noteDraft } };
+          return { state, permanent: p, events };
+        }
         case 'AddNote': {
-          const t = cmd.text.trim().slice(0, 500);
-          if (!t) throw new Error('The note is empty');
-          if (s.notes.length >= 200) throw new Error('The journal is full');
-          const kind = cmd.kind ?? diaryNoteKind(t);
-          if (kind !== 'note' && kind !== 'reflection' && kind !== 'question') throw new Error('Unknown note type');
+          if (typeof cmd.text !== 'string' || !cmd.text.length) throw new Error('The note is empty');
+          const kind = cmd.kind ?? diaryNoteKind(cmd.text);
+          if (!isDiaryNoteKind(kind)) throw new Error('Unknown note type');
           s = structuredClone(s);
-          s.notes.push(t);
+          s.notes.push(cmd.text);
           s.adventureDiary.noteDetails.push({ kind, at: now, mapId: s.mapId, resolved: false });
+          if (cmd.fromDraft) s.adventureDiary.noteDraft = null;
           s = apply([{ addNum: 'count.notes', by: 1 }], s, out);
           break;
         }

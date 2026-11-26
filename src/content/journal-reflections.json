@@ -1,0 +1,102 @@
+{
+  "quest:m01.o1.look": {
+    "first-glance": "When Ise showed you the glowing label, which part made you look again?"
+  },
+  "quest:m01.o2.inspect": {
+    "three-firsts": "What did one of the three “first” pens do that the others could not show you?",
+    "next-display": "Which two pens would you set next to each other for someone seeing them for the first time?"
+  },
+  "quest:m01.o4.test": {
+    "mark": "Which mark did you return to before judging the pen?",
+    "unchanged": "If a new apprentice changes the surface and the pen together, what would you ask them to repeat?"
+  },
+  "quest:m01.o6.label": {
+    "first-reader": "Which part of your label would you keep if a visitor only had time to read one line?"
+  },
+  "quest:m02.o3.thread": {
+    "blade-trail": "Where along Corvan’s stall, the ledger and the workshop did the story become harder to follow?",
+    "next-clue": "What could you ask a keeper to show you at that point?"
+  },
+  "quest:m02.o4.forge": {
+    "billet": "Which mark on your test billet gave you a reason to ask a new question about Corvan’s blade?"
+  },
+  "quest:m02.o5.showdown": {
+    "market-crowd": "What did you hear from the crowd that you would want to remember before meeting Corvan again?"
+  },
+  "thread:nile-strike:payment": {
+    "grain": "What did the grain entry make clearer for you about what the crew needed?"
+  },
+  "thread:nile-strike:return": {
+    "stoppage": "Where would you stop a reader who was about to put the file away after the grain delivery?"
+  },
+  "quest:nile.workers": {
+    "lead-slip": "What would you like a visitor to notice first in the slip you chose?",
+    "paired-slip": "What might the second slip make them see differently?"
+  },
+  "quest:nile.diplomacy": {
+    "sources": "Which part of your label would you point to if someone tried to settle the battle from the later treaty?"
+  },
+  "quest:nile.routes": {
+    "load": "What changed between the two cart runs while the crate stayed the same?",
+    "recipient": "If the first reader needed to check the cast’s weight, what would they need after reading the courier’s note?",
+    "separate-map": "Which part of Marek’s cart result would you keep off a caption for the original Mine Map?"
+  },
+  "quest:nile.dispatch": {
+    "receiving-table": "Who can use the first packet as soon as Imani sends it?",
+    "later-packet": "What would you leave on Imani’s desk for a reader who needs another packet?"
+  },
+  "quest:preserved.publish": {
+    "stands": "Who would you ask to walk past the two stands before the display opened?",
+    "reader-path": "What could that person miss if they only saw the first heading?"
+  },
+  "quest:coast.revise": {
+    "second-reading": "What did the next bell give you a reason to change on Ruan’s notice?",
+    "steady-line": "Which line would you leave in place for the people who have already read it?"
+  },
+  "quest:forest.recheck": {
+    "obstruction": "When the view was obstructed, what could you still mark in the lookout notes?",
+    "another-watch": "Where would you stand for one more watch to check what you missed?"
+  },
+  "quest:metal.finish": {
+    "docket": "Where would you clip the cart docket so a buyer can ask about the transfer without assuming both panels have one maker?"
+  },
+  "quest:copies.revise": {
+    "trial-hours": "If a reader brings the corrected copy to the landing, which line tells them about the trial, and which affects whether they can enter?"
+  },
+  "quest:sea.finish": {
+    "map-edge": "Which mark would you add beside the blank water for the next chart reader?",
+    "route-question": "What would you want a survey crew to check before extending the chart?"
+  },
+  "quest:stage.finish": {
+    "sightline": "What did the audience note tell you that the movement plan alone could not show?",
+    "new-seat": "Where would you sit for the next performance to check that reading?"
+  },
+  "quest:market.finish": {
+    "purse": "Suppose someone brings the household purse to the stall. What do they need alongside the comparison per credit?",
+    "remaining-need": "What might another wick maker ask you to keep on the board?"
+  },
+  "quest:water.finish": {
+    "old-order": "Why might the next keeper still need Sena’s drought order after you post the repaired one?",
+    "wait": "Who had to wait under the order you chose, and what would you ask them to look for on the next turn?"
+  },
+  "quest:civic.finish": {
+    "still-waiting": "Where would you stand to find a reader the published library schedule still misses?",
+    "request": "What could their next request tell you about how the crews collected their other slips?"
+  },
+  "quest:voices.finish": {
+    "two-starts": "What would you point to from the quay that you would leave out of a note for someone coming down the stairs?",
+    "voice-record": "Which part of the witness record would you want reachable at the desk even if the route notice stays short?"
+  },
+  "quest:island.finish": {
+    "landing": "Which part of your first dock sheet needed a second look when the lower landing opened?",
+    "quiet-margin": "What would you ask the margin crew to observe before saying what the crossing marks mean for them?"
+  },
+  "quest:council.compare": {
+    "matching-face": "What did a single glance at the watch face leave open?",
+    "minute": "After one minute, which other reading would you keep beside the watch record?"
+  },
+  "quest:council.finish": {
+    "next-crew": "What could the next crew check for themselves using the arrangement you left?",
+    "shutter": "Whose view do you still need to ask about when the shutter goes down?"
+  }
+}

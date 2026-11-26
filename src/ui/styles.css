@@ -244,6 +244,11 @@ legend { color: var(--gold); padding: 0 0.4em; }
 .diary-note-form { display: grid; gap: 0.5rem; max-width: 40rem; }
 .diary-note-form button, .diary-note-form select { justify-self: start; }
 .diary-notes > li p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.diary-reflections { margin-top: 0.7rem; }
+.diary-reflections > summary { cursor: pointer; width: fit-content; max-width: 100%; }
+.diary-reflection { display: grid; gap: 0.3rem; margin-top: 0.65rem; }
+.diary-reflection textarea, .diary-note-form textarea { width: 100%; box-sizing: border-box; }
+.diary-reflections [role='status']:empty, .diary-note-form [role='status']:empty { display: none; }
 .awards.locked { color: var(--ink-dim); }
 .bag { list-style: none; padding: 0; }
 .bag li { display: flex; gap: 0.7em; align-items: flex-start; margin: 0.6em 0; }

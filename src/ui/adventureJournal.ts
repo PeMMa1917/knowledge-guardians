@@ -1,11 +1,12 @@
 import type { GameController } from '../app/controller';
-import { adventureJournalView, type AdventureJournalView, type JournalNote } from '../domain/adventureJournal';
+import { adventureJournalView, type AdventureJournalView, type JournalNote, type JournalReflection } from '../domain/adventureJournal';
 import type { DiaryNoteKind } from '../domain/types';
 import { MAPS } from '../maps';
 import { adventureDocx, ADVENTURE_DOCX_TYPE } from './adventureDocx';
 import { printAdventureJournal } from './adventurePrint';
 import { adventureReferences } from './adventureReferences';
 import { clear, h } from './dom';
+import { bindJournalEditor, flushJournalWriting, queueJournalWriting } from './journalWriting';
 
 type DiaryTab = 'diary' | 'notes' | 'open-quests';
 const entryLabels = { quest: 'Quest', choice: 'Choice', experience: 'Experience' };
@@ -19,13 +20,18 @@ function entryDetails(kind: string, at: string | null, mapId: string | null): HT
     place ? ` · ${place}` : '');
 }
 
-function exportControls(view: AdventureJournalView): HTMLElement {
-  const include = h('input', { type: 'checkbox' });
+function journalView(controller: GameController): AdventureJournalView {
+  return adventureJournalView(controller.pack, controller.state, controller.engine.visibleObjectives(controller.state));
+}
+
+function exportControls(controller: GameController): HTMLElement {
+  const include = h('input', { type: 'checkbox', checked: true });
   const status = h('p', { role: 'status', class: 'fine' });
   const options = () => ({ includeNotes: include.checked, placeName: (id: string) => MAPS[id]?.name });
   const download = h('button', { type: 'button', onclick: () => {
     download.disabled = true;
     try {
+      const view = journalView(controller);
       const bytes = adventureDocx(view, options());
       const url = URL.createObjectURL(new Blob([bytes], { type: ADVENTURE_DOCX_TYPE }));
       const name = view.name.replace(/[^\p{L}\p{N}-]+/gu, '-').replace(/^-+|-+$/g, '');
@@ -43,16 +49,39 @@ function exportControls(view: AdventureJournalView): HTMLElement {
   } }, 'Download journal (.docx)');
   const print = h('button', { type: 'button', onclick: () => {
     status.textContent = '';
-    printAdventureJournal(view, options(), () => {
+    printAdventureJournal(journalView(controller), options(), () => {
       status.textContent = 'Print preview could not open. You can download the Word journal.';
     });
   } }, 'Print or save as PDF');
   return h('div', { class: 'diary-export' },
-    h('label', { class: 'check' }, include, ' Include my private notes, reflections, and questions in this export'),
+    h('label', { class: 'check' }, include, ' Include my private writing in this export'),
     h('div', { class: 'row' }, download, print), status);
 }
 
-function diaryFeed(view: AdventureJournalView, refresh: (tab: DiaryTab) => void): HTMLElement {
+function diaryReflections(
+  entry: string, reflections: JournalReflection[] | undefined, controller: GameController,
+): HTMLElement | null {
+  if (!reflections?.length) return null;
+  const status = h('p', { class: 'fine', role: 'status' });
+  const editors = reflections.map(({ id, prompt, response }) => {
+    const field = h('textarea', { rows: 3 });
+    field.value = response ?? '';
+    let stored = field.value;
+    bindJournalEditor(field, (text) => {
+      if (text === stored) return;
+      const failure = controller.dispatch({ type: 'SetDiaryReflection', entry, prompt: id, text })
+        .find((event) => event.kind === 'error');
+      if (failure) { status.textContent = failure.message; return; }
+      stored = text;
+      queueJournalWriting(controller, status);
+    }, () => flushJournalWriting(controller));
+    return h('label', { class: 'diary-reflection' }, h('span', {}, prompt), field);
+  });
+  return h('details', { class: 'diary-reflections' },
+    h('summary', {}, 'Optional reflections'), ...editors, status);
+}
+
+function diaryFeed(view: AdventureJournalView, controller: GameController, refresh: (tab: DiaryTab) => void): HTMLElement {
   const entries = [...view.entries].reverse();
   const select = h('select', { 'aria-label': 'Show diary entries' },
     h('option', { value: 'all' }, 'All diary entries'),
@@ -67,7 +96,8 @@ function diaryFeed(view: AdventureJournalView, refresh: (tab: DiaryTab) => void)
   function showMore() {
     const part = results.slice(shown, shown + 24);
     list.append(...part.map((entry) => h('li', {}, h('h3', {}, entry.title),
-      entryDetails(entryLabels[entry.kind], entry.at, entry.mapId), h('p', {}, entry.text))));
+      entryDetails(entryLabels[entry.kind], entry.at, entry.mapId), h('p', {}, entry.text),
+      diaryReflections(entry.id, entry.reflections, controller))));
     shown += part.length;
     more.hidden = shown >= results.length;
     empty.hidden = results.length > 0;
@@ -85,14 +115,14 @@ function diaryFeed(view: AdventureJournalView, refresh: (tab: DiaryTab) => void)
       h('div', { class: 'row' },
         h('button', { type: 'button', onclick: () => refresh('notes') }, 'Write a note'),
         h('button', { type: 'button', onclick: () => refresh('open-quests') }, 'Open quests and questions'))),
-    exportControls(view)),
+    exportControls(controller)),
     h('label', { class: 'diary-filter' }, 'Show ', select), empty, list, more,
     h('details', { class: 'diary-source-list' }, h('summary', {}, 'Sources for my collected specimens'),
       view.references.length ? adventureReferences(view.references) : h('p', {}, 'Collected specimens will add their catalogue references here.')));
 }
 
 function questionButton(note: JournalNote, controller: GameController, refresh: () => void): HTMLElement | null {
-  if (note.kind !== 'question') return null;
+  if (note.kind !== 'question' || note.draft) return null;
   return h('button', { type: 'button', class: 'mini', onclick: () => {
     const result = controller.dispatch({ type: 'SetDiaryQuestion', index: note.index, resolved: !note.resolved });
     if (!result.some((event) => event.kind === 'error')) refresh();
@@ -101,23 +131,44 @@ function questionButton(note: JournalNote, controller: GameController, refresh: 
 
 function diaryNotes(view: AdventureJournalView, controller: GameController, refresh: () => void): HTMLElement {
   const kind = h('select', { id: 'diary-note-kind' }, ...Object.entries(noteLabels).map(([value, label]) => h('option', { value }, label)));
-  const text = h('textarea', { id: 'diary-note-text', rows: '4', maxlength: '500', required: true });
+  const text = h('textarea', { id: 'diary-note-text', rows: 4, required: true });
+  const status = h('p', { class: 'fine', role: 'status' });
+  const notes = view.notes.filter((note) => !note.draft);
+  const draft = controller.state.adventureDiary.noteDraft;
+  kind.value = draft?.kind ?? 'note';
+  text.value = draft?.text ?? '';
+  const saveDraft = (value: string) => {
+    const selected = kind.value as DiaryNoteKind;
+    const old = controller.state.adventureDiary.noteDraft;
+    if ((old?.text ?? '') === value && (old?.kind ?? 'note') === selected) return;
+    const failure = controller.dispatch({ type: 'SetDiaryNoteDraft', text: value, kind: selected })
+      .find((event) => event.kind === 'error');
+    if (failure) { status.textContent = failure.message; return; }
+    queueJournalWriting(controller, status);
+  };
+  kind.addEventListener('change', () => saveDraft(text.value));
+  bindJournalEditor(text, saveDraft, () => flushJournalWriting(controller));
   const form = h('form', { class: 'diary-note-form', onsubmit: (event: SubmitEvent) => {
     event.preventDefault();
-    const result = controller.dispatch({ type: 'AddNote', text: text.value, kind: kind.value as DiaryNoteKind });
-    if (!result.some((entry) => entry.kind === 'error')) refresh();
+    const failure = controller.dispatch({ type: 'AddNote', text: text.value, kind: kind.value as DiaryNoteKind, fromDraft: true })
+      .find((entry) => entry.kind === 'error');
+    if (failure) { status.textContent = failure.message; return; }
+    queueJournalWriting(controller, status);
+    flushJournalWriting(controller);
+    refresh();
   } }, h('label', { for: 'diary-note-kind' }, 'Entry type'), kind,
-  h('label', { for: 'diary-note-text' }, 'Your note'), text,
-  h('button', { type: 'submit' }, 'Save note'));
+    h('label', { for: 'diary-note-text' }, 'Your note'), text,
+    h('button', { type: 'submit' }, 'Save note'), status);
   return h('section', { class: 'adventure-journal' }, h('h3', {}, 'My notes, reflections, and questions'),
     h('p', { class: 'fine' }, 'Private entries saved with this adventure.'), form,
-    view.notes.length ? h('ol', { class: 'diary-feed diary-notes' }, ...[...view.notes].reverse().map((note) => h('li', {},
+    notes.length ? h('ol', { class: 'diary-feed diary-notes' }, ...[...notes].reverse().map((note) => h('li', {},
       entryDetails(note.kind === 'question' ? (note.resolved ? 'Resolved question' : 'Open question') : noteLabels[note.kind], note.at, note.mapId),
-      h('p', {}, note.text), questionButton(note, controller, refresh)))) : h('p', {}, 'You have no personal entries yet.'));
+      h('p', {}, note.text), questionButton(note, controller, refresh),
+      diaryReflections(`note:${note.index}`, note.reflections, controller)))) : h('p', {}, 'You have no personal entries yet.'));
 }
 
 function openQuests(view: AdventureJournalView, controller: GameController, refresh: () => void): HTMLElement {
-  const questions = view.notes.filter((note) => note.kind === 'question' && !note.resolved);
+  const questions = view.notes.filter((note) => note.kind === 'question' && !note.resolved && !note.draft);
   return h('section', { class: 'adventure-journal' }, h('h3', {}, 'Open quests and questions'),
     view.quests.length ? h('ol', { class: 'diary-feed' }, ...view.quests.map((quest) => h('li', {}, h('h3', {}, quest.title),
       quest.question ? h('p', {}, quest.question) : null,
@@ -128,8 +179,8 @@ function openQuests(view: AdventureJournalView, controller: GameController, refr
 }
 
 export function adventureJournalTab(tab: DiaryTab, controller: GameController, refresh: (tab: DiaryTab) => void): HTMLElement {
-  const view = adventureJournalView(controller.pack, controller.state, controller.engine.visibleObjectives(controller.state));
+  const view = journalView(controller);
   if (tab === 'notes') return diaryNotes(view, controller, () => refresh(tab));
   if (tab === 'open-quests') return openQuests(view, controller, () => refresh(tab));
-  return diaryFeed(view, refresh);
+  return diaryFeed(view, controller, refresh);
 }

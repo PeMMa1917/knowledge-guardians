@@ -18,6 +18,7 @@ import { ISLAND_CRATES, ISLAND_LANDINGS, ISLAND_ROUTES, islandPlan, type IslandL
 import { COUNCIL_TRIALS, councilClock, type CouncilTrial } from '../domain/councilClock';
 import { buildScoutBoard } from './scoutRoutes';
 import { adventureJournalTab } from './adventureJournal';
+import { bindJournalEditor, flushJournalWriting, queueJournalWriting } from './journalWriting';
 import { ROUTE_ACTIONS } from '../content/questionEncounters';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
@@ -532,6 +533,7 @@ export class UI implements UIApi {
 
   closeModal(sound = true): void {
     if (!this.modal) return;
+    if (this.modal.querySelector('.journal')) flushJournalWriting(ctx.controller);
     try { window.speechSynthesis?.cancel(); } catch { /* no speech */ }
     // A player can leave a Calm invitation or its conversation with Escape or a click.
     // Internal modal changes during dialogue use closeModal(false) and keep its state.
@@ -1157,13 +1159,21 @@ export class UI implements UIApi {
 
   /** A reflection offer at the student threshold (spec 95.1). Never "wrong", always optional. */
   private offerReflection(title: string, question: string): void {
-    const ta = h('textarea', { rows: '3', maxlength: '500', 'aria-label': 'Your reflection (optional)', placeholder: 'Write a few words, or leave it empty.' }) as HTMLTextAreaElement;
+    const ta = h('textarea', { rows: '3', 'aria-label': 'Your reflection (optional)', placeholder: 'Write a few words, or leave it empty.' }) as HTMLTextAreaElement;
     this.openModal('reflection', 'A question to think about', this.closeBtn(),
       h('div', { class: 'lumen-head' }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '', class: 'lumen-big' }), h('h2', {}, 'A question to think about')),
       h('p', { class: 'fine' }, `Lumen noticed a pattern in your play: ${title.toLowerCase()}. This is not a mark. It may even be wrong.`),
       h('p', { class: 'hint-text' }, question), ta,
       h('div', { class: 'row' },
-        h('button', { class: 'primary', onclick: () => { if (ta.value.trim()) ctx.controller.dispatch({ type: 'AddNote', text: `Reflection: ${ta.value}` }); this.closeModal(); } }, 'Keep it in my journal'),
+        h('button', { class: 'primary', onclick: () => {
+          if (ta.value.length) {
+            const c = ctx.controller;
+            if (c.dispatch({ type: 'AddNote', text: ta.value, kind: 'reflection' }).some(({ kind }) => kind === 'error')) return;
+            queueJournalWriting(c);
+            flushJournalWriting(c);
+          }
+          this.closeModal();
+        } }, 'Keep it in my journal'),
         h('button', { onclick: () => this.closeModal() }, 'Not now')));
   }
 
@@ -1327,22 +1337,29 @@ export class UI implements UIApi {
    * Unsupported questions get an honest fallback (spec 22.3, 27.1).
    */
   private freeQuestion(): HTMLElement {
-    const input = h('input', { type: 'text', maxlength: '200', placeholder: 'Type a question…', 'aria-label': 'Your question', 'data-autofocus': true }) as HTMLInputElement;
+    const input = h('input', { type: 'text', placeholder: 'Type a question…', 'aria-label': 'Your question', 'data-autofocus': true }) as HTMLInputElement;
     const out = h('div', { class: 'free-out', role: 'status', 'aria-live': 'polite' });
     const topics: [RegExp, string][] = [
       [/wootz|crucible|ingot/i, 'sefa.wootz'],
       [/example|museum|met\b|record|probabl/i, 'sefa.example'],
     ];
     const ask = () => {
-      const q = input.value.trim();
-      if (!q) return;
+      const q = input.value;
+      if (!q.trim()) return;
       const hit = topics.find(([re]) => re.test(q));
       clear(out);
       if (hit) { this.showNode(hit[1]); return; }
       out.append(h('p', {}, 'Sefa: "I have no prepared answer for that. Choose one of my topics, or keep the question in your journal."'),
-        h('button', { onclick: () => { ctx.controller.dispatch({ type: 'AddNote', text: `Question for Sefa: ${q}` }); this.toast('Saved to your journal notes', 'info'); input.value = ''; } }, 'Keep it in my journal'));
+        h('button', { onclick: () => {
+          const c = ctx.controller;
+          if (c.dispatch({ type: 'AddNote', kind: 'question', text: `Question for Sefa: ${q}` }).some(({ kind }) => kind === 'error')) return;
+          queueJournalWriting(c);
+          if (flushJournalWriting(c)) this.toast('Saved to your journal notes', 'info');
+          input.value = '';
+          clear(out);
+        } }, 'Keep it in my journal'));
     };
-    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') ask(); });
+    input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.isComposing && e.keyCode !== 229) ask(); });
     return h('div', { class: 'free' }, h('p', { class: 'fine' }, 'Sefa can answer prepared topics: wootz, crucible steel, ingots and the museum example. Other questions are kept in your journal. Nothing you type is sent anywhere.'),
       h('div', { class: 'row' }, input, h('button', { onclick: ask }, 'Ask')), out);
   }
@@ -2594,7 +2611,7 @@ export class UI implements UIApi {
       ? [`What helped you with this step: "${last.title}"?`, 'What would you do differently next time?', 'What are you still not sure about?']
       : ['What are you thinking about right now?'];
     const prompt = prompts[Number(c.state.flags['count.rests'] ?? 0) % prompts.length];
-    const ta = h('textarea', { rows: '3', maxlength: '500', 'aria-label': `Campfire log (optional): ${prompt}`, placeholder: 'Optional. Write in your own words. Nobody grades this.' }) as HTMLTextAreaElement;
+    const ta = h('textarea', { rows: '3', 'aria-label': `Campfire log (optional): ${prompt}`, placeholder: 'Optional. Write in your own words. Nobody grades this.' }) as HTMLTextAreaElement;
     const r = c.recap();
     this.openModal('waystone-panel', 'Waystone', this.closeBtn(),
       h('h2', {}, 'Waystone'),
@@ -2603,9 +2620,11 @@ export class UI implements UIApi {
       h('p', { class: 'hint-text' }, h('strong', {}, 'Campfire log: '), prompt), ta,
       h('div', { class: 'row' },
         h('button', { class: 'primary', 'data-autofocus': true, onclick: () => {
-          if (ta.value.trim()) {
-            c.dispatch({ type: 'AddNote', text: `Campfire log: ${prompt} ${ta.value.trim()}` });
+          if (ta.value.length) {
+            if (c.dispatch({ type: 'AddNote', kind: 'reflection', text: `Campfire log: ${prompt}\n${ta.value}` }).some(({ kind }) => kind === 'error')) return;
             if (lastId) c.dispatch({ type: 'SetFlag', flag: `log.${lastId}`, value: true });
+            queueJournalWriting(c);
+            flushJournalWriting(c);
           }
           this.closeModal();
           const mine = String(c.state.flags['musicbox.song'] ?? '').split(',').filter(Boolean);
@@ -2750,10 +2769,34 @@ export class UI implements UIApi {
       body.append(h('p', { class: 'fine' }, 'Your portfolio is private. An entry goes to your teacher only if you tick "Share" and then save a progress file (Menu, Share with my teacher).'));
       if (!list.length) body.append(h('p', {}, 'No entries yet. Labels, Showdowns and tests add entries.'));
       for (const e of list) {
-        const ta = h('textarea', { rows: '2', maxlength: '800', 'aria-label': `Reflection on ${e.title}`, placeholder: 'Add a reflection (optional)' }) as HTMLTextAreaElement;
-        ta.value = e.reflection;
-        ta.addEventListener('change', () => c.dispatch({ type: 'PortfolioReflect', entry: e.id, text: ta.value }));
-        body.append(h('article', { class: 'card' }, h('h3', {}, e.title), h('p', { class: 'fine' }, `${new Date(e.at).toLocaleString()} · ${e.world}`), h('p', {}, e.text), ta,
+        const ta = h('textarea', { rows: '2', 'aria-label': `Reflection on ${e.title}`, placeholder: 'Add a reflection (optional)' });
+        const current = c.state.adventureDiary.portfolioWriting?.[e.id];
+        ta.value = current?.text ?? e.reflection;
+        let edited = ta.value;
+        let submitted = current?.draft !== true;
+        const status = h('p', { class: 'fine', role: 'status' });
+        const draft = (text: string) => {
+          if (text === edited) return;
+          if (c.dispatch({ type: 'SetDiaryPortfolioDraft', entry: e.id, text }).some(({ kind }) => kind === 'error')) return;
+          edited = text;
+          submitted = false;
+          queueJournalWriting(c, status);
+        };
+        bindJournalEditor(ta, draft, () => {
+          if (!submitted && !c.dispatch({ type: 'PortfolioReflect', entry: e.id, text: edited }).some(({ kind }) => kind === 'error')) {
+            submitted = true;
+            queueJournalWriting(c, status);
+          }
+          flushJournalWriting(c);
+        });
+        const attach = !current && e.reflection ? h('button', { type: 'button', onclick: () => {
+          if (c.state.adventureDiary.portfolioWriting?.[e.id]
+            || c.dispatch({ type: 'SetDiaryPortfolioDraft', entry: e.id, text: edited, attach: true }).some(({ kind }) => kind === 'error')) return;
+          attach!.disabled = true;
+          queueJournalWriting(c, status);
+          flushJournalWriting(c);
+        } }, 'Add this reflection to this adventure’s journal') : null;
+        body.append(h('article', { class: 'card' }, h('h3', {}, e.title), h('p', { class: 'fine' }, `${new Date(e.at).toLocaleString()} · ${e.world}`), h('p', {}, e.text), ta, attach, status,
           h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: e.shared, onchange: (ev: Event) => c.dispatch({ type: 'PortfolioShare', entry: e.id, shared: (ev.target as HTMLInputElement).checked }) }), ' Share with my teacher')));
       }
     } else if (tab === 'skills') {

@@ -7,6 +7,8 @@ import { earlierViews } from '../content/earlierViewing';
 import { STAR_PATHS } from '../content/starPaths';
 import { STAR_METHODS, starFlag } from './starPaths';
 import type { Command, GameEvent } from './engine';
+import { diaryNoteQuestions, diaryQuestions, journalReflections, type JournalReflection } from './diaryReflection';
+export type { JournalReflection } from './diaryReflection';
 import type {
   AdventureDiary, CampaignState, ContentPack, DialogueNode, DialogueOption, DiaryEntry, DiaryNoteDetails,
   DiaryNoteKind, Effect, Mission, Objective,
@@ -25,11 +27,15 @@ export interface JournalQuest {
 export interface JournalNote extends DiaryNoteDetails {
   index: number;
   text: string;
+  reflections?: JournalReflection[];
+  draft?: true;
 }
+
+export type JournalEntry = EntryDraft & { at: string | null; mapId: string | null; reflections?: JournalReflection[] };
 
 export interface AdventureJournalView {
   name: string;
-  entries: (EntryDraft & { at: string | null; mapId: string | null })[];
+  entries: JournalEntry[];
   notes: JournalNote[];
   quests: JournalQuest[];
   references: SpecimenReference[];
@@ -242,6 +248,46 @@ export function recordAdventure(
   } : next;
 }
 
+function availableDiaryQuestions(pack: ContentPack, state: CampaignState, entry: string) {
+  const recorded = state.adventureDiary.entries.find(({ id }) => id === entry);
+  if (recorded) return diaryQuestions(recorded);
+  if (entry.startsWith('quest:')) {
+    const id = entry.slice('quest:'.length);
+    if (!state.objectivesDone.includes(id)) return;
+    const prior = objectiveEntries(pack).find(({ objective }) => objective.id === id);
+    if (prior) return diaryQuestions(objectiveDraft(pack, prior.mission, prior.objective));
+  }
+  if (entry.startsWith('record:')) {
+    const id = entry.slice('record:'.length);
+    if (!state.journal.includes(id)) return;
+    // Quest-owned records appear through their quest entry even in earlier saves.
+    if (objectiveEntries(pack).some(({ objective }) => state.objectivesDone.includes(objective.id)
+      && objective.onComplete?.some((effect) => 'journal' in effect && effect.journal === id))) return;
+    const prior = journalDraft(pack, id);
+    if (prior) return diaryQuestions(prior);
+  }
+  if (/^note:(0|[1-9][0-9]*)$/.test(entry)) {
+    const index = Number(entry.slice('note:'.length));
+    const text = state.notes[index];
+    if (text !== undefined) return diaryNoteQuestions(state.adventureDiary.noteDetails[index]?.kind ?? diaryNoteKind(text));
+  }
+}
+
+export function setDiaryReflection(pack: ContentPack, state: CampaignState, entry: string, prompt: string, text: string): CampaignState {
+  const questions = availableDiaryQuestions(pack, state, entry);
+  if (!questions || !Object.hasOwn(questions, prompt)) throw new Error('This journal question is unavailable.');
+  if (typeof text !== 'string') throw new Error('Write your reflection as text.');
+  const all = state.adventureDiary.reflectionResponses ?? {};
+  const current = Object.hasOwn(all, entry) ? all[entry] : {};
+  if ((current[prompt] ?? '') === text) return state;
+  const revised = { ...current };
+  if (text.length) revised[prompt] = text;
+  else delete revised[prompt];
+  const responses = { ...all, [entry]: revised };
+  if (!Object.keys(revised).length) delete responses[entry];
+  return { ...state, adventureDiary: { ...state.adventureDiary, reflectionResponses: responses } };
+}
+
 /** Retroactive choices and timestamps are unavailable. Only recover facts already stored in the campaign. */
 export function adventureJournalView(pack: ContentPack, state: CampaignState, objectives: readonly VisibleObjective[]): AdventureJournalView {
   const known = new Set(state.adventureDiary.entries.map((entry) => entry.id));
@@ -269,10 +315,18 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     quest.steps.push(objective.title);
     quests.set(mission.id, quest);
   }
+  const notes: JournalNote[] = state.notes.map((text, index) => {
+    const details = state.adventureDiary.noteDetails[index]
+      ?? { kind: diaryNoteKind(text), at: null, mapId: null, resolved: false };
+    return { text, index, ...details, reflections: journalReflections(state.adventureDiary, `note:${index}`, diaryNoteQuestions(details.kind)) };
+  });
+  const draft = state.adventureDiary.noteDraft;
+  if (draft?.text.length) notes.push({ ...draft, index: -1, at: null, mapId: null, resolved: false, draft: true });
+  const entries = [...prior.map((entry) => ({ ...entry, at: null, mapId: null })), ...state.adventureDiary.entries];
   return {
     name: state.player.name,
-    entries: [...prior.map((entry) => ({ ...entry, at: null, mapId: null })), ...state.adventureDiary.entries],
-    notes: state.notes.map((text, index) => ({ text, index, ...state.adventureDiary.noteDetails[index] })),
+    entries: entries.map((entry) => ({ ...entry, reflections: journalReflections(state.adventureDiary, entry.id, diaryQuestions(entry)) })),
+    notes,
     quests: [...quests.values()],
     references: specimenReferences(pack, state),
   };

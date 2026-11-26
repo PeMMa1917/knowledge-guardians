@@ -71,7 +71,7 @@ describe('Adventure diary', () => {
     const note = 'I wonder how a filing date differs from an object date.\nI want a second source.';
     d.action({ type: 'AddNote', kind: 'reflection', text: note });
     d.action({ type: 'AddNote', kind: 'question', text: 'How far could the model travel?' }, later);
-    expect(d.view().notes).toEqual([
+    expect(d.view().notes).toMatchObject([
       { kind: 'reflection', index: 0, text: note, mapId: 'nexus.archive', resolved: false, at: startedAt },
       { kind: 'question', index: 1, text: 'How far could the model travel?', mapId: 'nexus.archive', resolved: false, at: later },
     ]);
