@@ -994,6 +994,24 @@ function stageCueBoard(g: Ctx, pauseFirst: boolean) {
 }
 DRAW['stage.pause'] = [16, 24, (g) => stageCueBoard(g, true)];
 DRAW['stage.move'] = [16, 24, (g) => stageCueBoard(g, false)];
+
+DRAW['market.waypost'] = [16, 24, (g) => {
+  R(g, '#514751', 6, 7, 4, 16);
+  R(g, '#6c8e83', 2, 5, 12, 10);
+  R(g, '#96ad98', 2, 5, 12, 2);
+  R(g, '#e5c589', 7, 8, 2, 5);
+  R(g, '#e5c589', 4, 8, 8, 1);
+  R(g, '#d4a678', 4, 11, 2, 2);
+  R(g, '#d4a678', 10, 11, 2, 2);
+}];
+DRAW['market.window'] = [24, 24, (g) => {
+  pedestal(g, 1, 15, 22);
+  R(g, '#5c7779', 2, 3, 20, 12);
+  paper(g, 4, 4, 16, 10);
+  R(g, '#76928d', 5, 7, 14, 1);
+  R(g, '#9a765d', 5, 10, 14, 1);
+  R(g, '#806653', 11, 6, 1, 6);
+}];
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

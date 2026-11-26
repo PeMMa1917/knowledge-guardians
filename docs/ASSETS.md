@@ -6,6 +6,7 @@
 |---|---|---|
 | `public/assets/art/armm1998/` | CC0 tile sheets and the source character sheet by ArMM1998. | `src/scenes/BootScene.ts` (`ow` = Overworld.png, `in` = Inner.png) |
 | `public/assets/art/generated/characters/` | Character sheets made by `tools/make_character_variants.py`. | `CHARACTER_SHEETS` in `BootScene.ts` |
+| `public/assets/art/generated/market_tiles.png` | Original pavements, stalls, buildings and furniture for Lantern Square. | `market` sheet in `BootScene.ts` |
 | `public/assets/audio/music/` | Music loops. | `AUDIO` in `BootScene.ts` |
 | `public/assets/audio/sfx/` | Sound effects. | `AUDIO` in `BootScene.ts` |
 | `public/assets/credits.json` | Source, author and licence of **every** file above. | `tools/check-assets.mjs` |
@@ -55,3 +56,5 @@ Music: stereo MP3 is fine. Keep each file under about 5 MB. Audio is never neede
 ## Tile sheets and stamps
 
 `Overworld.png` is 40 × 36 tiles and `Inner.png` is 40 × 25 tiles, each tile 16 × 16 pixels. A stamp in `src/scenes/art.ts` names a rectangle in tiles: `{ sheet: 'ow', x, y, w, h }`. Options: `collide` (blocks movement), `above` (drawn over the player, for tree tops), `flat` (drawn under characters, for rugs).
+
+Lantern Square uses an 18 × 9 tile sheet with the same tile size. Run `python3 tools/make_market_tiles.py` to regenerate it from the original drawings in the script.

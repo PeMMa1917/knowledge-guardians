@@ -1,10 +1,11 @@
 /**
- * Art registry. Maps readable names to rectangles ("stamps") on the CC0
- * tile sheets by ArMM1998 (see CREDITS.md). Units are 16 px tiles.
+ * Art registry. Maps readable names to rectangles ("stamps") on tile sheets
+ * listed in CREDITS.md. Units are 16 px tiles.
  *
  * Sheets:
  *   ow = public/assets/art/armm1998/Overworld.png (40 x 36 tiles)
  *   in = public/assets/art/armm1998/Inner.png     (40 x 25 tiles)
+ *   market = public/assets/art/generated/market_tiles.png (18 x 9 tiles)
  *
  * `collide` is the blocked area in tiles, relative to the stamp's top-left.
  * Leave it out for decorations the player can walk over or behind.
@@ -15,7 +16,7 @@
 export const TILE = 16;
 
 export interface Stamp {
-  sheet: 'ow' | 'in';
+  sheet: 'ow' | 'in' | 'market';
   x: number; y: number; w: number; h: number;
   collide?: [number, number, number, number];
   /** Draw above characters regardless of y (for roofs/awnings that overlap). */
@@ -78,6 +79,24 @@ export const STAMPS: Record<string, Stamp> = {
   'forge': { sheet: 'in', x: 12, y: 10, w: 2, h: 3, collide: [0, 1, 2, 2] },
   'window': { sheet: 'in', x: 9, y: 4, w: 2, h: 2 },
   'painting': { sheet: 'in', x: 11, y: 4, w: 1, h: 2 },
+
+  // Original Market of Measures pavements, buildings and furniture.
+  'market-paving-a': { sheet: 'market', x: 0, y: 0, w: 1, h: 1 },
+  'market-paving-b': { sheet: 'market', x: 1, y: 0, w: 1, h: 1 },
+  'market-paving-c': { sheet: 'market', x: 2, y: 0, w: 1, h: 1 },
+  'market-paving-d': { sheet: 'market', x: 3, y: 0, w: 1, h: 1 },
+  'market-lane': { sheet: 'market', x: 4, y: 0, w: 1, h: 1 },
+  'market-edge': { sheet: 'market', x: 5, y: 0, w: 1, h: 1 },
+  'market-office': { sheet: 'market', x: 0, y: 1, w: 5, h: 4, collide: [0, 2, 5, 2] },
+  'market-workshop': { sheet: 'market', x: 5, y: 1, w: 5, h: 4, collide: [0, 2, 5, 2] },
+  'market-home': { sheet: 'market', x: 10, y: 1, w: 4, h: 4, collide: [0, 2, 4, 2] },
+  'market-wick-stall': { sheet: 'market', x: 0, y: 5, w: 4, h: 3, collide: [0, 1, 4, 2] },
+  'market-display-stall': { sheet: 'market', x: 4, y: 5, w: 4, h: 3, collide: [0, 1, 4, 2] },
+  'market-repair-stall': { sheet: 'market', x: 8, y: 5, w: 4, h: 3, collide: [0, 1, 4, 2] },
+  'market-scale-stand': { sheet: 'market', x: 12, y: 5, w: 3, h: 2, collide: [0, 1, 3, 1] },
+  'market-bench': { sheet: 'market', x: 15, y: 5, w: 3, h: 2, collide: [0, 1, 3, 1] },
+  'market-lamp': { sheet: 'market', x: 15, y: 7, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'market-planter': { sheet: 'market', x: 16, y: 7, w: 2, h: 2, collide: [0, 1, 2, 1] },
 };
 
 /** Character sheets: 16x32 frames, 4 per row; rows: down, right, up, left. */

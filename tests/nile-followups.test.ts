@@ -219,3 +219,53 @@ describe('the tilt tray', () => {
       expect(d.done('nile.routes')).toBe(true);
     });
 });
+
+describe('a name in two places', () => {
+  it.each([
+    ['index', 'Add a cross-index', false],
+    ['slips', 'Send one slip to each room', true],
+  ] as const)('uses both dated records and the keepers’ limits before filing by %s', (filing, pick, finishedLeads) => {
+    const d = new Driver();
+    d.s.flags['nile.arrived'] = true;
+    d.s.flags['nile.dispatch'] = 'print';
+    d.s.flags['nile.returned'] = true;
+    d.s.inventory['tool.date-lens'] = 1;
+    if (finishedLeads) d.s.objectivesDone.push('nile.workers', 'nile.routes');
+    const choices = (who: string) => d.e.visibleOptions(d.e.talkEntry(who, d.s)!, d.s)
+      .map(({ option }) => option.next);
+    expect(choices('nile-iman')).not.toContain('nile.name.invite');
+
+    d.s.mapId = 'nile.workyard';
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-STRIKE' });
+    d.run({ type: 'UseLens', exhibit: 'OBJ-NILE-STRIKE' });
+    d.s.mapId = 'nile.hall';
+    d.talk('nile-iman', 'Check the visitor’s link');
+    expect(d.done('nile.name.read')).toBe(false);
+    expect(choices('nile-leila')).not.toContain('nile.name.workers');
+    expect(choices('nile-iman')).not.toContain('nile.name.desk');
+
+    d.s.mapId = 'nile.route';
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-MINE' });
+    expect(d.done('nile.name.read')).toBe(false);
+    d.run({ type: 'UseLens', exhibit: 'OBJ-NILE-MINE' });
+    expect(d.done('nile.name.read')).toBe(true);
+    d.talk('nile-marek', 'Check what the museum');
+    expect(d.done('nile.name.voices')).toBe(false);
+    expect(choices('nile-iman')).not.toContain('nile.name.desk');
+
+    d.s.mapId = 'nile.workyard';
+    d.talk('nile-leila', 'Ask how the papyrus');
+    expect(d.done('nile.name.voices')).toBe(true);
+    d.s.mapId = 'nile.hall';
+    const xp = totalXP(d.p);
+    d.talk('nile-iman', 'Bring the two keepers', pick);
+    expect(d.done('nile.name.file')).toBe(true);
+    expect(d.s.flags['nile.name.filing']).toBe(filing);
+    expect(d.s.flags['nile.dispatch']).toBe('print');
+    expect(totalXP(d.p)).toBe(xp);
+    expect(choices('nile-iman')).toContain(`nile.name.${filing}`);
+    expect(choices('nile-iman')).not.toContain('nile.name.desk');
+    expect(choices('nile-leila').includes('nile.name.slip.workers')).toBe(filing === 'slips');
+    expect(choices('nile-marek').includes('nile.name.slip.map')).toBe(filing === 'slips');
+  });
+});

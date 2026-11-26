@@ -1,0 +1,1184 @@
+{
+ "characters": [
+  {
+   "id": "market-assayer",
+   "name": "Assayer Tellen",
+   "role": "Keeper of the market balance",
+   "sprite": "smith-hesper",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "market.assayer.after",
+     "if": {
+      "objective": "market.compare"
+     }
+    },
+    {
+     "node": "market.assayer.compare",
+     "if": {
+      "all": [
+       {
+        "flag": "market.weigh.gross",
+        "eq": true
+       },
+       {
+        "flag": "market.weigh.net",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "market.assayer.welcome"
+    }
+   ]
+  },
+  {
+   "id": "market-clerk",
+   "name": "Clerk Nera",
+   "role": "Keeper of the practice market records",
+   "sprite": "clerk-venn",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "market.clerk.closed-ledger",
+     "if": {
+      "all": [
+       {
+        "objective": "market.finish"
+       },
+       {
+        "flag": "market.access-key",
+        "eq": true
+       },
+       {
+        "flag": "market.wick-note",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "market.clerk.after-key",
+     "if": {
+      "all": [
+       {
+        "objective": "market.finish"
+       },
+       {
+        "flag": "market.access-key",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "market.clerk.after",
+     "if": {
+      "objective": "market.finish"
+     }
+    },
+    {
+     "node": "market.clerk.revise.window",
+     "if": {
+      "all": [
+       {
+        "flag": "market.response",
+        "eq": "window"
+       },
+       {
+        "all": [
+         {
+          "objective": "market.publish"
+         },
+         {
+          "flag": "market.feedback.receipt",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "node": "market.clerk.revise.desk",
+     "if": {
+      "all": [
+       {
+        "flag": "market.response",
+        "eq": "desk"
+       },
+       {
+        "all": [
+         {
+          "objective": "market.publish"
+         },
+         {
+          "flag": "market.feedback.receipt",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "node": "market.clerk.wait",
+     "if": {
+      "flagSet": "market.response"
+     }
+    },
+    {
+     "node": "market.clerk.decide",
+     "if": {
+      "all": [
+       {
+        "objective": "market.compare"
+       },
+       {
+        "objective": "market.terms"
+       },
+       {
+        "flag": "market.purse.read",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "market.clerk.wait-check",
+     "if": {
+      "objective": "market.terms"
+     }
+    },
+    {
+     "node": "market.clerk.terms",
+     "if": {
+      "all": [
+       {
+        "flag": "market.grade.sorting",
+        "eq": true
+       },
+       {
+        "flag": "market.grade.display",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "market.clerk.trace"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "market.assayer.welcome",
+   "speaker": "market-assayer",
+   "text": "Two practice lots of dry wick fibre, with practice prices and a paper purse. The seller’s tag calls A more fibre for each credit. Both baskets reached the scale before anyone tipped them out. Use the same scale on both lots. Try the basket weights and the fibre weights, then bring me the two comparisons.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.assayer.compare",
+   "speaker": "market-assayer",
+   "text": "The whole basket gives A 120 grams per credit and B 90. The empty baskets weigh 360 and 100 grams. Take their tare off and A gives 75 grams of fibre per credit, B 80. The first tag counted the basket as part of the fibre. Show both readings with the part each counts.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set both pairs of readings side by side.",
+     "next": "market.compare.paired",
+     "effects": [
+      {
+       "setFlag": "market.comparison",
+       "value": "paired"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "market.weigh.gross",
+        "eq": true
+       },
+       {
+        "flag": "market.weigh.net",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Put the net figures first and leave the gross figures for deliveries.",
+     "next": "market.compare.net",
+     "effects": [
+      {
+       "setFlag": "market.comparison",
+       "value": "net"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "market.weigh.gross",
+        "eq": true
+       },
+       {
+        "flag": "market.weigh.net",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the two slips here a moment."
+    }
+   ]
+  },
+  {
+   "id": "market.compare.paired",
+   "speaker": "market-assayer",
+   "text": "A delivery worker points to the full basket figure. A buyer uses the fibre line. Keeping the part weighed with each rate lets both readers check what they will carry or use. Ask Nera how the shops set their grades.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.compare.net",
+   "speaker": "market-assayer",
+   "text": "The fibre price board now uses fibre on both lines. The basket figures stay underneath for the people who lift the loads. Ask Nera to bring the two shops’ grade rules into view.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.assayer.after",
+   "speaker": "market-assayer",
+   "text": "The checked weights are back by the scale. The sorting group can also put the wick-length pieces on its own line. That line answers how much of today’s fibre fits their length guide.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.clerk.trace",
+   "speaker": "market-clerk",
+   "text": "The wick bench counts pieces long enough for its guide. The display stall looks at shade under its lamp. Read each shop’s rule where it was set. A household is coming with eight practice credits. Its purse slip lies by the west house.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.clerk.terms",
+   "speaker": "market-clerk",
+   "text": "One stall offers an even-looking batch. The wick bench puts pieces through a length guide before it makes a tally. The word “grade” has two jobs here. Keep the grade names close to the people who use them.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Name what each grade does above its figure.",
+     "next": "market.terms.purpose",
+     "effects": [
+      {
+       "setFlag": "market.grade.key",
+       "value": "purpose"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "market.grade.sorting",
+        "eq": true
+       },
+       {
+        "flag": "market.grade.display",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Put both grade rules underneath their stall names.",
+     "next": "market.terms.stall",
+     "effects": [
+      {
+       "setFlag": "market.grade.key",
+       "value": "stall"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "market.grade.sorting",
+        "eq": true
+       },
+       {
+        "flag": "market.grade.display",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the shop rules here for a moment."
+    }
+   ]
+  },
+  {
+   "id": "market.terms.purpose",
+   "speaker": "market-clerk",
+   "text": "One card says “uniform shade”. Another says “pieces long enough for this wick guide”. The buyer can ask which tally matters for today’s work before using the grade.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.terms.stall",
+   "speaker": "market-clerk",
+   "text": "The display-stall name stays with the shade rule. The wick-bench name stays with the length rule. Each shop can show what a reader will see if they order by that grade.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.clerk.wait-check",
+   "speaker": "market-clerk",
+   "text": "The grade rules have their own lines. To put the offer in public, bring Tellen’s two weight readings and read the west-house purse slip.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.clerk.decide",
+   "speaker": "market-clerk",
+   "text": "We have the basket weight, fibre weight, grade rule and today’s whole-lot quotes. The west house brought eight practice credits. Through the window it can compare while waiting in line. At this desk it can trace a figure back to the scale. Where should I set the first display?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang the prices by the window where households queue.",
+     "next": "market.publish.window",
+     "effects": [
+      {
+       "setFlag": "market.response",
+       "value": "window"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "market.compare"
+       },
+       {
+        "objective": "market.terms"
+       },
+       {
+        "flag": "market.purse.read",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Open the comparison at the trade desk with its source slips.",
+     "next": "market.publish.desk",
+     "effects": [
+      {
+       "setFlag": "market.response",
+       "value": "desk"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "market.compare"
+       },
+       {
+        "objective": "market.terms"
+       },
+       {
+        "flag": "market.purse.read",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Give me time to look again."
+    }
+   ]
+  },
+  {
+   "id": "market.publish.window",
+   "speaker": "market-clerk",
+   "text": "The household reader sees both fibre figures from the queue and goes to get its purse. The stall worker keeps the unit card on the rail. Someone has left a question by the south stalls about buying a whole lot.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.publish.desk",
+   "speaker": "market-clerk",
+   "text": "The first visitor can follow the tally to the scale and both grade rules. Another reader takes a copy to the queue. Check the question they leave by the south stalls.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.clerk.wait",
+   "speaker": "market-clerk",
+   "text": "The first reader took the price comparison away. Find their question by the south stalls and bring it here. They saw a unit figure and came back with their purse.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.clerk.revise.window",
+   "speaker": "market-clerk",
+   "text": "B gives more fibre per credit at today’s rates. The whole basket of B costs ten credits. An eight-credit purse reaches A under our whole-lot rule. Add the total beside the unit figures where the reader first saw them.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Add a whole-lot line beside the queue’s price card.",
+     "next": "market.update.window",
+     "effects": [
+      {
+       "setFlag": "market.revised",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "market.publish"
+       },
+       {
+        "flag": "market.feedback.receipt",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll read the note again."
+    }
+   ]
+  },
+  {
+   "id": "market.clerk.revise.desk",
+   "speaker": "market-clerk",
+   "text": "B costs less per gram of net fibre at the desk. The reader has the small copy and eight credits. Our whole-lot rule puts B beyond that purse. Put a line for the whole lot beside its unit rate so they can take both figures back.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Add a whole-lot line to the desk copy the reader used.",
+     "next": "market.update.desk",
+     "effects": [
+      {
+       "setFlag": "market.revised",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "market.publish"
+       },
+       {
+        "flag": "market.feedback.receipt",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll check the copy again."
+    }
+   ]
+  },
+  {
+   "id": "market.update.window",
+   "speaker": "market-clerk",
+   "text": "The queue can see A at eight and B at ten before it moves. One household can take A today. A buyer with ten who wants more dry fibre per credit has a reason to take B. The window carries both decisions back to the same scale.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.update.desk",
+   "speaker": "market-clerk",
+   "text": "The reader can now carry two figures to the queue: the whole-lot quote and the rate for net fibre. One reader has eight credits and can take A. The one who wanted more dry fibre per credit sets ten aside for B. The dated quotes stay beside their choices.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.clerk.after",
+   "speaker": "market-clerk",
+   "text": "The whole-lot line stays beside the unit prices. A reader at the low table still has to find the start of each narrow line. We can put each part of the comparison on its own line.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave a larger four-line key at the low table.",
+     "next": "market.access.key",
+     "effects": [
+      {
+       "setFlag": "market.access-key",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "market.finish"
+       },
+       {
+        "not": {
+         "flag": "market.access-key",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Clip the wick-length tally beside its own guide.",
+     "next": "market.wick.note",
+     "effects": [
+      {
+       "setFlag": "market.wick-note",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "market.finish"
+       },
+       {
+        "flag": "market.weigh.wick",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "market.wick-note",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll leave the records open."
+    }
+   ]
+  },
+  {
+   "id": "market.access.key",
+   "speaker": "market-clerk",
+   "text": "The new key gives basket weight, fibre weight, grade and whole-lot quote their own lines. It sits low enough to read from a chair. A reader can hold a finger on one line until someone reads the next.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.wick.note",
+   "speaker": "market-clerk",
+   "text": "The separate length tally shows 480 grams for A and 760 for B. We used the same length guide for both lots. I’ll keep “length” on the tally so the buyer can ask about shade, fibre strength or burning separately.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.clerk.after-key",
+   "speaker": "market-clerk",
+   "text": "A visitor pulled the larger copy close and found the weight she wanted. I’ll leave space beside its grade rule for the wick-length tally.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the wick-length tally beside its own guide.",
+     "next": "market.wick.note",
+     "effects": [
+      {
+       "setFlag": "market.wick-note",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "market.finish"
+       },
+       {
+        "flag": "market.weigh.wick",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "market.wick-note",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll leave the records open."
+    }
+   ]
+  },
+  {
+   "id": "market.clerk.closed-ledger",
+   "speaker": "market-clerk",
+   "text": "One reader took the long-fibre figures to the wick bench. Another carried the whole-lot prices back to the queue. I can look each number up from the slip it came from.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH10-M01",
+   "world": "WORLD-11",
+   "title": "The Price of a Basket",
+   "knowledgeQuestion": "What must we hold alike to make a comparison that someone else can use?",
+   "available": {
+    "objective": "stage.finish"
+   },
+   "objectives": [
+    {
+     "id": "market.arrival",
+     "title": "Cross to the Market of Measures and find the practice scale.",
+     "done": {
+      "flag": "market.arrived",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective"
+      ],
+      "atl": [
+       "self-management"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "economics"
+      ]
+     }
+    },
+    {
+     "id": "market.compare",
+     "title": "Use the scale to compare the two lots gross and after tare. Bring the readings to Tellen.",
+     "done": {
+      "flagSet": "market.comparison"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "evidence",
+       "objectivity",
+       "explanation",
+       "certainty"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "MAT",
+       "HUM"
+      ],
+      "subjects": [
+       "economics",
+       "math-ai",
+       "design-tech"
+      ]
+     },
+     "visible": {
+      "objective": "market.arrival"
+     },
+     "skills": [
+      "SK-NUM-14",
+      "SK-RSC-21"
+     ],
+     "kq": {
+      "id": "KQ-NEW-003",
+      "action": "compare quantities using the same unit and basis"
+     }
+    },
+    {
+     "id": "market.terms",
+     "title": "Read the wick and display grades, then ask Nera to keep their purposes in view.",
+     "done": {
+      "flagSet": "market.grade.key"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "culture",
+       "perspective"
+      ],
+      "atl": [
+       "research",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "business",
+       "economics",
+       "lang-langlit"
+      ]
+     },
+     "visible": {
+      "objective": "market.arrival"
+     },
+     "skills": [
+      "SK-MED-01",
+      "SK-THK-15"
+     ]
+    },
+    {
+     "id": "market.publish",
+     "title": "Check the household purse, then choose who sees the first display.",
+     "done": {
+      "flagSet": "market.response"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "MAT"
+      ],
+      "subjects": [
+       "economics",
+       "business",
+       "math-ai"
+      ]
+     },
+     "visible": {
+      "all": [
+       {
+        "objective": "market.compare"
+       },
+       {
+        "objective": "market.terms"
+       }
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "kq": {
+      "id": "KQ-NEW-006",
+      "action": "decide which buyers can use a comparison first"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.market.publish"
+      }
+     ]
+    },
+    {
+     "id": "market.feedback",
+     "title": "Find the first buyer’s question by the south stalls.",
+     "done": {
+      "flag": "market.feedback.receipt",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "perspective"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "economics"
+      ]
+     },
+     "visible": {
+      "objective": "market.publish"
+     },
+     "skills": [
+      "SK-MED-04"
+     ]
+    },
+    {
+     "id": "market.finish",
+     "title": "With Nera, put the whole-lot quotes back beside the unit comparison.",
+     "done": {
+      "flag": "market.revised",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "explanation",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "MAT"
+      ],
+      "subjects": [
+       "economics",
+       "math-ai"
+      ]
+     },
+     "visible": {
+      "objective": "market.feedback"
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-THK-15"
+     ],
+     "kq": {
+      "id": "KQ-NEW-004",
+      "action": "revise a market display after a buyer relies on it"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.market.finish"
+      },
+      {
+       "journal": "j.market.purse"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH10-R01",
+   "world": "WORLD-11",
+   "title": "A Line for Each Thing",
+   "knowledgeQuestion": "How does a reader check a figure if the way we display it gets in their way?",
+   "available": {
+    "objective": "market.finish"
+   },
+   "objectives": [
+    {
+     "id": "market.access",
+     "title": "Leave a more legible key with Nera.",
+     "done": {
+      "flag": "market.access-key",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "perspective"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "TEC"
+      ],
+      "subjects": [
+       "design-tech",
+       "business"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01"
+     ]
+    },
+    {
+     "id": "market.wick",
+     "title": "Try the wick-length reading and keep it beside its own guide.",
+     "done": {
+      "flag": "market.wick-note",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "evidence",
+       "certainty"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "MAT",
+       "NAT",
+       "TEC"
+      ],
+      "subjects": [
+       "math-ai",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-14"
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.market.arrival.1",
+   "objective": "market.arrival",
+   "depth": 1,
+   "text": "A new passage has opened in the Nexus."
+  },
+  {
+   "id": "h.market.arrival.2",
+   "objective": "market.arrival",
+   "depth": 2,
+   "text": "Look for the Market of Measures passage near the archive displays."
+  },
+  {
+   "id": "h.market.arrival.3",
+   "objective": "market.arrival",
+   "depth": 3,
+   "text": "Go through and find the Standards Office near the practice square."
+  },
+  {
+   "id": "h.market.arrival.4",
+   "objective": "market.arrival",
+   "depth": 4,
+   "text": "At the square, look for the scale in the middle and Assayer Tellen above it."
+  },
+  {
+   "id": "h.market.compare.1",
+   "objective": "market.compare",
+   "depth": 1,
+   "text": "A weight can include the container that holds it."
+  },
+  {
+   "id": "h.market.compare.2",
+   "objective": "market.compare",
+   "depth": 2,
+   "text": "Find the practice scale between the stalls and the standards office."
+  },
+  {
+   "id": "h.market.compare.3",
+   "objective": "market.compare",
+   "depth": 3,
+   "text": "Compare the whole baskets and the net fibre. The same prices apply to both readings."
+  },
+  {
+   "id": "h.market.compare.4",
+   "objective": "market.compare",
+   "depth": 4,
+   "text": "Bring the gross and net readings to Tellen. Keep the weight basis with its grams-per-credit figure."
+  },
+  {
+   "id": "h.market.terms.1",
+   "objective": "market.terms",
+   "depth": 1,
+   "text": "The word “grade” can promise different things at two stalls."
+  },
+  {
+   "id": "h.market.terms.2",
+   "objective": "market.terms",
+   "depth": 2,
+   "text": "Look for a rule near the sorting bench and another by the display stall."
+  },
+  {
+   "id": "h.market.terms.3",
+   "objective": "market.terms",
+   "depth": 3,
+   "text": "Check what the wick guide sorts and what the display lamp lets its keeper see."
+  },
+  {
+   "id": "h.market.terms.4",
+   "objective": "market.terms",
+   "depth": 4,
+   "text": "Take both rules to Nera and give each grade a separate line."
+  },
+  {
+   "id": "h.market.publish.1",
+   "objective": "market.publish",
+   "depth": 1,
+   "text": "A reader will need a purse as well as a price."
+  },
+  {
+   "id": "h.market.publish.2",
+   "objective": "market.publish",
+   "depth": 2,
+   "text": "Read the home’s practice purse slip by the west house."
+  },
+  {
+   "id": "h.market.publish.3",
+   "objective": "market.publish",
+   "depth": 3,
+   "text": "Tellen needs both readings and Nera needs both grade rules before either display can open."
+  },
+  {
+   "id": "h.market.publish.4",
+   "objective": "market.publish",
+   "depth": 4,
+   "text": "Talk to Nera about the window or trade desk after reading the whole-lot purse rule."
+  },
+  {
+   "id": "h.market.feedback.1",
+   "objective": "market.feedback",
+   "depth": 1,
+   "text": "A visitor took the first comparison away."
+  },
+  {
+   "id": "h.market.feedback.2",
+   "objective": "market.feedback",
+   "depth": 2,
+   "text": "There is a new buyer note by the south stalls."
+  },
+  {
+   "id": "h.market.feedback.3",
+   "objective": "market.feedback",
+   "depth": 3,
+   "text": "Follow the lower path from the trade desk to the note stand."
+  },
+  {
+   "id": "h.market.feedback.4",
+   "objective": "market.feedback",
+   "depth": 4,
+   "text": "Read the note about bringing eight credits to pay for a lot with a lower unit price."
+  },
+  {
+   "id": "h.market.finish.1",
+   "objective": "market.finish",
+   "depth": 1,
+   "text": "One price belongs to a gram. Another belongs to a lot."
+  },
+  {
+   "id": "h.market.finish.2",
+   "objective": "market.finish",
+   "depth": 2,
+   "text": "Take the buyer’s question back to Nera."
+  },
+  {
+   "id": "h.market.finish.3",
+   "objective": "market.finish",
+   "depth": 3,
+   "text": "Keep the net comparison and put the whole-lot quote next to it."
+  },
+  {
+   "id": "h.market.finish.4",
+   "objective": "market.finish",
+   "depth": 4,
+   "text": "Ask Nera to add a whole-lot line where the first reader found the figures."
+  },
+  {
+   "id": "h.market.access.1",
+   "objective": "market.access",
+   "depth": 1,
+   "text": "A reader needs room to follow each line of the comparison."
+  },
+  {
+   "id": "h.market.access.2",
+   "objective": "market.access",
+   "depth": 2,
+   "text": "Talk to Nera after the whole-lot correction appears."
+  },
+  {
+   "id": "h.market.access.3",
+   "objective": "market.access",
+   "depth": 3,
+   "text": "Try a larger key with a separate line for each kind of figure."
+  },
+  {
+   "id": "h.market.access.4",
+   "objective": "market.access",
+   "depth": 4,
+   "text": "Ask Nera for the four-line key, then check the new copy by the low table."
+  },
+  {
+   "id": "h.market.wick.1",
+   "objective": "market.wick",
+   "depth": 1,
+   "text": "A length tally answers a different buying question from the dry fibre weight."
+  },
+  {
+   "id": "h.market.wick.2",
+   "objective": "market.wick",
+   "depth": 2,
+   "text": "Return to the practice scale after opening the whole-lot display."
+  },
+  {
+   "id": "h.market.wick.3",
+   "objective": "market.wick",
+   "depth": 3,
+   "text": "Try the wick-length basis with the same two lots."
+  },
+  {
+   "id": "h.market.wick.4",
+   "objective": "market.wick",
+   "depth": 4,
+   "text": "Tell Nera to clip that tally beside the length guide so readers can check which grade it describes."
+  }
+ ],
+ "criteria": [
+  {
+   "id": "credit.market.publish",
+   "concept": "responsibility",
+   "maximum": 8
+  },
+  {
+   "id": "credit.market.finish",
+   "concept": "justification",
+   "maximum": 8
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.market.purse",
+   "claimKind": "interpretation",
+   "text": "The practice market gave two different answers. B gives more net fibre for each credit. Only A fits the eight-credit purse with today’s whole-lot rule."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.market-comparison",
+   "attribute": "inquirer",
+   "when": {
+    "objective": "market.compare"
+   },
+   "did": "You checked the same two lots on two bases before deciding what each figure could tell a reader.",
+   "prompt": "What changes when the thing a price pays for changes?"
+  },
+  {
+   "id": "mom.market-response",
+   "attribute": "reflective",
+   "when": {
+    "objective": "market.finish"
+   },
+   "did": "You listened to the first buyer and changed the display to help the next one.",
+   "prompt": "Which figure will somebody need first next time?"
+  },
+  {
+   "id": "mom.market-key",
+   "attribute": "caring",
+   "when": {
+    "objective": "market.access"
+   },
+   "did": "You made room for a reader who needed a larger key.",
+   "prompt": "Who else could use this layout?"
+  }
+ ],
+ "chronicle": [
+  {
+   "id": "market-comparison",
+   "title": "Two measures of one lot",
+   "text": "The Market of Measures now gives basket and fibre weights their own lines.",
+   "if": {
+    "objective": "market.compare"
+   }
+  },
+  {
+   "id": "market-revision",
+   "title": "A line for the whole lot",
+   "text": "The practice market keeps the whole-lot quotes in reach of the readers who use its unit comparisons.",
+   "if": {
+    "objective": "market.finish"
+   }
+  }
+ ]
+}

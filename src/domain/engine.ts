@@ -4,6 +4,7 @@ import { readMetalSample } from './metalSample';
 import { compareCopy } from './copyComparison';
 import { seaChart } from './seaCharts';
 import { stageRehearsal, type StageCue } from './stageRehearsal';
+import { marketComparison, type MarketBasis } from './marketScale';
 /**
  * Domain engine. Scenes send typed commands; the engine checks preconditions,
  * computes ONE valid state transition and returns events for the view to show
@@ -104,6 +105,7 @@ export type Command =
   | { type: 'CompareCopy'; edition: string }
   | { type: 'ReadSeaChart'; chart: string }
   | { type: 'RunStageRehearsal'; cue: StageCue }
+  | { type: 'WeighMarketLots'; basis: MarketBasis }
   | { type: 'BuildLabel'; kit: string; subject: string; criterion: string; limit: string }
   | { type: 'TurnLock'; lock: string; choice: Record<string, string> }
   | { type: 'ShowdownStart'; showdown: string; relaxed?: boolean }
@@ -559,6 +561,13 @@ export class Engine {
           if (prevPen !== undefined && changed === 2) fx.push({ addNum: 'sim.unfair', by: 1 });
           s = apply(fx, s, out);
           events.push({ kind: 'simulation', result: { pen: cmd.pen, surface: cmd.surface, markQuality: m.q, note: m.note, fairTest: fair, testCount: count } });
+          break;
+        }
+        case 'WeighMarketLots': {
+          marketComparison(cmd.basis);
+          if (s.mapId !== 'market.square' || s.flags['market.arrived'] !== true) throw new Error('Use the test scale in the Market of Measures.');
+          const key = `market.weigh.${cmd.basis}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
         case 'RunStageRehearsal': {

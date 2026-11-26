@@ -45,12 +45,13 @@ import copiesSide from './copies-side.json';
 import cartographers from './m09-cartographers.json';
 import cartographersSide from './cartographers-side.json';
 import performance from './m10-performance.json';
+import market from './m11-market.json';
 import observatoryInland from './observatory-inland.json';
 import observatoryArchive from './observatory-archive.json';
 
 export const CONTENT_VERSION = 5;
 
-const parts: any[] = [sources, common, m01, openingPractice, m02, emberfordSide, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, fray, rumour, clueboard, memories, quarters, dive, story, nile, scenes, preservedRecords, preserved, reconstruction, copper, preservedExhibition, observatory, observatoryInland, observatoryArchive, forest, forestSide, forestReader, metalworks, metalworksSide, copies, copiesSide, cartographers, cartographersSide, performance];
+const parts: any[] = [sources, common, m01, openingPractice, m02, emberfordSide, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, fray, rumour, clueboard, memories, quarters, dive, story, nile, scenes, preservedRecords, preserved, reconstruction, copper, preservedExhibition, observatory, observatoryInland, observatoryArchive, forest, forestSide, forestReader, metalworks, metalworksSide, copies, copiesSide, cartographers, cartographersSide, performance, market];
 const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'missions', 'hints', 'criteria', 'awards', 'items', 'offers', 'journal',
   'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks', 'glossary', 'questions', 'origins', 'alcoves', 'puzzles', 'skillDomains', 'skills', 'lorelings', 'lorelingAtlas', 'fray', 'clueBoards', 'memories', 'keepsakes', 'divePrompts', 'diveItems', 'knots', 'clues', 'keepsakeTalks', 'chronicle', 'secrets', 'communities'] as const;
 

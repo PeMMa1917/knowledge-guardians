@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { compareCopy } from '../src/domain/copyComparison';
 import { forestWatch, type ForestWindow } from '../src/domain/forestWatch';
+import { marketComparison, type MarketBasis } from '../src/domain/marketScale';
 import { readMetalSample } from '../src/domain/metalSample';
 import { check } from '../src/domain/rules';
 import { seaChart } from '../src/domain/seaCharts';
@@ -63,36 +64,60 @@ function watchForest(d: Driver, site: string, window: ForestWindow) {
 
 // Times below are author estimates of when these actions could finish. This
 // fixture exercises entry conditions and domain commands, not walking or reading speed.
-function nexusToEmberford(explore: boolean): Route {
+function nexusToEmberford(style: 'main' | 'explore' | 'records'): Route {
   const route = new Route();
-  route.at(3, 'Question the label carrying the archive seal', ['power', 'truth'], (d) => {
-    d.walk('cold.open');
+  const explore = style !== 'main';
+  const records = style === 'records';
+  const arrivalExtra = explore ? 1 : 0;
+  const arrival = records ? 'Leave a stand number with the copied claim, then find that stand on the plan'
+    : explore ? 'Clip a blank page beside the archive’s words and open it for a second view'
+      : 'Question the label carrying the archive seal';
+  route.at(3 + arrivalExtra, arrival, explore ? ['power', 'truth', 'evidence', 'scope'] : ['power', 'truth'], (d) => {
+    d.walk('cold.open', explore ? [records ? 'Copy the stand number' : 'Clip a blank page'] : []);
+    if (explore) {
+      const display = records ? 'reference' : 'view';
+      expect(d.s.flags['nexus.arrival.note']).toBe(display);
+      walkScene(d, `nexus-arrival-${display}`, `cold.arrival-${display}-read`);
+    }
     d.run({ type: 'SetFlag', flag: 'read.oldlabel', value: true });
     d.talk('warden-ise', 'How can all three');
     expect(d.done('m01.o1.look')).toBe(true);
   });
-  if (explore) route.at(5, 'Direct visitors toward the practical pen', ['scope', 'perspective'], useProp('nexus.entrance-guide', 'use'));
-  route.at(9, 'Compare the patent, model and pen dates', ['scope', 'evidence', 'certainty', 'interpretation', 'methods-and-tools'], (d) => {
+  if (explore) route.at(5 + arrivalExtra, 'Direct visitors toward the practical pen', ['scope', 'perspective'], useProp('nexus.entrance-guide', 'use'));
+  route.at(9 + arrivalExtra, 'Compare the patent, model and pen dates', ['scope', 'evidence', 'certainty', 'interpretation', 'methods-and-tools'], (d) => {
     for (const exhibit of ['OBJ-001-A', 'OBJ-001-B', 'OBJ-001-C']) d.run({ type: 'InspectExhibit', exhibit });
     for (const exhibit of ['OBJ-001-A', 'OBJ-001-C']) d.run({ type: 'UseLens', exhibit });
     expect(d.done('m01.o3.lens')).toBe(true);
   });
-  if (explore) route.at(12, 'Send competing translations back together', ['culture', 'interpretation', 'perspectives'], useProp('nexus.translation-slip', 'gloss'));
-  route.at(16, 'Compare two mark strips using the same pen', ['objectivity', 'explanation', 'methods-and-tools'], (d) => {
+  if (explore) route.at(12 + arrivalExtra, 'Send competing translations back together', ['culture', 'interpretation', 'perspectives'], useProp('nexus.translation-slip', 'gloss'));
+  if (records) {
+    route.at(15 + arrivalExtra, 'Check the model date and turn over the curator’s seal to see what it actually certifies', ['evidence', 'power', 'certainty', 'scope', 'methods-and-tools'], (d) => {
+      d.run({ type: 'UseLens', exhibit: 'OBJ-001-B' });
+      d.talk('curator-dace', 'Why do you favour');
+      d.talk('curator-dace', 'Turn over the seal', 'Lift the backing', 'Set a card beside the seal');
+    });
+    route.at(19 + arrivalExtra, 'Put the model’s build date beside the narrower handling seal and trace it at the case', ['truth', 'responsibility', 'scope', 'justification', 'ethics'], (d) => {
+      d.run({ type: 'BuildLabel', kit: 'nexus.handling-seal', subject: 'model', criterion: 'paired', limit: 'build' });
+      walkScene(d, 'nexus-seal-case', 'nexus.seal.paired-read');
+      expect(d.done('nexus.seal.checked')).toBe(true);
+    });
+  }
+  const extra = arrivalExtra + (records ? 7 : 0);
+  route.at(16 + extra, 'Compare two mark strips using the same pen', ['objectivity', 'explanation', 'methods-and-tools'], (d) => {
     d.run({ type: 'RunSimulation', pen: 'loud-model', surface: 'paper' });
     d.run({ type: 'RunSimulation', pen: 'loud-model', surface: 'leather' });
     expect(d.done('m01.o4.test')).toBe(true);
   });
-  route.at(22, 'Hear the curator and clerk, then reframe their disagreement for the crowd', ['perspective', 'values', 'justification', 'perspectives'], (d) => {
-    d.talk('curator-dace', 'Why do you favour');
+  route.at(22 + extra, 'Hear the curator and clerk, then reframe their disagreement for the crowd', ['perspective', 'values', 'justification', 'perspectives'], (d) => {
+    if (!records) d.talk('curator-dace', 'Why do you favour');
     d.talk('clerk-venn', 'Does a patent prove');
     d.run({ type: 'ShowdownStart', showdown: 'practice' });
     d.moves({ move: 'claim', claim: 'practical' }, { move: 'support', card: 'card.dpma-history' },
       { move: 'support', card: 'card.biro-object' }, { move: 'concede' }, { move: 'reframe' }, { move: 'rest' });
     expect(d.done('m01.o5.practice')).toBe(true);
   });
-  if (explore) route.at(25, 'Publish a checkable loan number while withholding a maker’s name', ['responsibility', 'ethics'], useProp('nexus.loan-slip', 'number'));
-  route.at(28, 'Put up a limited label, then hear visitors compare it with what “first” meant back home', ['evidence', 'truth', 'culture', 'justification', 'responsibility', 'scope', 'ethics'], (d) => {
+  if (explore) route.at(25 + extra, 'Publish a checkable loan number while withholding a maker’s name', ['responsibility', 'ethics'], useProp('nexus.loan-slip', 'number'));
+  route.at(28 + extra, 'Put up a limited label, then hear visitors compare it with what “first” meant back home', ['evidence', 'truth', 'culture', 'justification', 'responsibility', 'scope', 'ethics'], (d) => {
     const result = d.run({ type: 'BuildLabel', kit: 'pen', subject: 'loud', criterion: 'patent', limit: 'notproof' });
     const notice = result.events.find((event) => event.kind === 'label');
     expect(notice?.result.heard).toContain('Where I grew up');
@@ -104,21 +129,21 @@ function nexusToEmberford(explore: boolean): Route {
     d.s.mapId = portal.to!.map;
     d.run({ type: 'Reach', zone: 'emberford' });
   });
-  route.at(33, 'Question a seller about his blade and inspect the object', ['power', 'evidence'], (d) => {
+  route.at(33 + extra, 'Question a seller about his blade and inspect the object', ['power', 'evidence'], (d) => {
     d.talk('merchant-corvan', 'How do you know');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-003-AE' });
     expect(d.done('m02.o2.claim')).toBe(true);
   });
-  route.at(39, 'Follow the provenance thread and find where the record ends', ['certainty', 'truth', 'scope', 'methods-and-tools'], (d) => {
+  route.at(39 + extra, 'Follow the provenance thread and find where the record ends', ['certainty', 'truth', 'scope', 'methods-and-tools'], (d) => {
     for (const node of ['stall', 'ledger', 'workshop']) d.run({ type: 'FollowThread', thread: 'blade', node });
     expect(d.done('m02.o3.thread')).toBe(true);
   });
   if (explore) {
-    route.at(44, 'Arrange a repeat water reading from a fixed mark', ['objectivity', 'explanation', 'methods-and-tools'], useProp('emberford.gauge', 'repeat'));
-    route.at(49, 'Keep both weights and loaf counts for different readers', ['perspective', 'values', 'perspectives'], useProp('emberford.tally', 'loaves'));
-    route.at(53, 'Hang the sketch of the safe bridge approach', ['responsibility', 'ethics'], useProp('emberford.repair-notice', 'sketch'));
-    route.at(57, 'Keep the sample separate from the untraced blade', ['interpretation', 'justification', 'scope'], useProp('emberford.pattern-order', 'record'));
-    route.at(64, 'Compare the workshop’s test sample with the seller’s blade', ['evidence', 'explanation', 'objectivity', 'methods-and-tools'], (d) => {
+    route.at(44 + extra, 'Arrange a repeat water reading from a fixed mark', ['objectivity', 'explanation', 'methods-and-tools'], useProp('emberford.gauge', 'repeat'));
+    route.at(49 + extra, 'Keep both weights and loaf counts for different readers', ['perspective', 'values', 'perspectives'], useProp('emberford.tally', 'loaves'));
+    route.at(53 + extra, 'Hang the sketch of the safe bridge approach', ['responsibility', 'ethics'], useProp('emberford.repair-notice', 'sketch'));
+    route.at(57 + extra, 'Keep the sample separate from the untraced blade', ['interpretation', 'justification', 'scope'], useProp('emberford.pattern-order', 'record'));
+    route.at(64 + extra, 'Compare the workshop’s test sample with the seller’s blade', ['evidence', 'explanation', 'objectivity', 'methods-and-tools'], (d) => {
       d.talk('smith-hesper', 'Can I try it');
       d.talk('scholar-sefa', 'What is wootz');
       d.run({ type: 'InspectExhibit', exhibit: 'OBJ-002' });
@@ -127,19 +152,38 @@ function nexusToEmberford(explore: boolean): Route {
       d.run({ type: 'CompareAssay' });
       expect(d.done('m02.o4.forge')).toBe(true);
     });
-    route.at(71, 'Narrow the maker’s claim before the market crowd', ['truth', 'justification', 'perspective', 'perspectives'], (d) => {
+    route.at(71 + extra, 'Narrow the maker’s claim before the market crowd', ['truth', 'justification', 'perspective', 'perspectives'], (d) => {
       d.talk('merchant-corvan', 'In the square');
       d.run({ type: 'ShowdownStart', showdown: 'corvan' });
       d.moves({ move: 'claim', claim: 'honest' }, { move: 'support', card: 'card.workshop-diagram' },
         { move: 'counter', card: 'card.forge-pattern' }, { move: 'support', card: 'card.guild-ledger' }, { move: 'rest' });
       expect(d.done('m02.o5.showdown')).toBe(true);
     });
-    route.at(76, 'Compare the order record, workshop consent and Sefa’s source packet', ['certainty', 'interpretation', 'scope', 'ethics'], (d) => {
+    if (records) {
+      route.at(75 + extra, 'Read the guild’s deadline and the ferry crew’s marks for the same order', ['culture', 'evidence', 'perspective', 'perspectives'], (d) => {
+        walkScene(d, 'bell-order-clerk', 'bell.order.clerk.trace');
+        walkScene(d, 'bell-order-ferry', 'bell.order.ferry.trace');
+        expect(d.done('bell.order.o.collect')).toBe(true);
+      });
+      route.at(79 + extra, 'Match the notches to verify the shared order and distinguish handover from an arrival time', [
+        'objectivity', 'truth', 'interpretation', 'certainty', 'scope', 'methods-and-tools',
+      ], (d) => {
+        walkScene(d, 'bell-order-board', 'bell.order.align.proof');
+        expect(d.done('bell.order.o.align')).toBe(true);
+      });
+      route.at(83 + extra, 'Post the paired order with distinct headings and leave the missing arrival open', ['values', 'power', 'responsibility', 'justification', 'ethics'], (d) => {
+        walkScene(d, 'bell-order-proof', 'bell.order.end.pair');
+        expect(d.done('bell.order.o.post')).toBe(true);
+        readSign(d, 'bell-order-pair');
+      });
+    }
+    const later = extra + (records ? 12 : 0);
+    route.at(76 + later, 'Compare the order record, workshop consent and Sefa’s source packet', ['certainty', 'interpretation', 'scope', 'ethics'], (d) => {
       walkScene(d, 'copy-spare', 'copy.started');
       for (const prop of ['copy-order', 'copy-consent', 'copy-anchor']) walkScene(d, prop);
       expect(d.done('copy.o.trace')).toBe(true);
     });
-    route.at(81, 'Use the market’s spoken handover and leave a source people can check', ['power', 'culture', 'values', 'responsibility', 'perspectives', 'ethics'], (d) => {
+    route.at(81 + later, 'Use the market’s spoken handover and leave a source people can check', ['power', 'culture', 'values', 'responsibility', 'perspectives', 'ethics'], (d) => {
       walkScene(d, 'copy-board', 'copy.plan.market');
       walkScene(d, 'copy-west-handover', 'copy.end.market');
       expect(d.done('copy.o.relay')).toBe(true);
@@ -720,6 +764,76 @@ function houseOfPerformance(firstCue: StageCue): Route {
   return route;
 }
 
+function weighLots(d: Driver, basis: MarketBasis, masses: readonly [number, number]) {
+  const scale = MAPS[d.s.mapId].interactables.find((p) => p.kind === 'market-scale');
+  expect(scale).toBeDefined();
+  expect(check(scale?.visibleIf, d.s), 'test scale visible').toBe(true);
+  const readings = marketComparison(basis);
+  expect(readings).toEqual([
+    { id: 'a', price: 8, mass: masses[0] },
+    { id: 'b', price: 10, mass: masses[1] },
+  ]);
+  d.run({ type: 'WeighMarketLots', basis });
+  expect(d.s.flags[`market.weigh.${basis}`]).toBe(true);
+  return readings;
+}
+
+function marketOfMeasures(): Route {
+  const route = new Route();
+  // Independent Chapter 10 session. The House programme has already been revised.
+  route.driver.s.objectivesDone.push('stage.finish');
+  route.at(4, 'Hear the terms of the offered lots before assuming which is a better purchase', ['perspective', 'scope'], (d) => {
+    useDoor(d, 'market-door');
+    d.talk('market-assayer');
+    expect(d.done('market.arrival')).toBe(true);
+  });
+  route.at(10, 'Weigh both baskets and compare gross grams per credit, 120 against 90', ['evidence', 'methods-and-tools'], (d) => {
+    const gross = weighLots(d, 'gross', [960, 900]);
+    expect(gross.map(({ mass, price }) => mass / price)).toEqual([120, 90]);
+    expect(d.s.flags['market.weigh.net']).toBeUndefined();
+  });
+  route.at(16, 'Take the baskets out of the readings and publish the reversed net rate beside the gross rate', ['truth', 'evidence', 'objectivity', 'explanation', 'certainty', 'scope', 'methods-and-tools'], (d) => {
+    const net = weighLots(d, 'net', [600, 800]);
+    expect(net.map(({ mass, price }) => mass / price)).toEqual([75, 80]);
+    d.talk('market-assayer', 'Set both pairs');
+    expect(d.done('market.compare')).toBe(true);
+    expect(d.s.flags['market.comparison']).toBe('paired');
+  });
+  route.at(22, 'Read the two grading signs and explain how the makers and sellers use them for different jobs', ['culture', 'interpretation', 'perspective', 'explanation', 'perspectives'], (d) => {
+    for (const prop of ['market-grade-sorting', 'market-grade-display']) readSign(d, prop);
+    d.talk('market-clerk', 'Name what each grade does');
+    expect(d.done('market.terms')).toBe(true);
+  });
+  route.at(27, 'Read the buyer’s budget and show the window rates with their measurement bases', ['values', 'power', 'responsibility', 'justification', 'scope', 'ethics'], (d) => {
+    readSign(d, 'market-practice-purse');
+    d.talk('market-clerk', 'Hang the prices by the window');
+    expect(d.done('market.publish')).toBe(true);
+    readSign(d, 'market-result-window');
+  });
+  route.at(35, 'Read why the buyer could not take the higher-rate lot home', ['perspective', 'interpretation', 'perspectives'], (d) => {
+    readSign(d, 'market-buyer-note');
+    expect(d.done('market.feedback')).toBe(true);
+  });
+  route.at(40, 'Show the whole-lot price separately from the rate per credit', ['truth', 'responsibility', 'justification', 'ethics'], (d) => {
+    d.talk('market-clerk', 'Add a whole-lot line');
+    expect(d.done('market.finish')).toBe(true);
+    readSign(d, 'market-revised');
+  });
+  route.at(46, 'Repeat the comparison for the long fibres used in wicks', ['evidence', 'objectivity', 'certainty', 'scope', 'methods-and-tools'], (d) => {
+    const usable = weighLots(d, 'wick', [480, 760]);
+    expect(usable.map(({ mass, price }) => mass / price)).toEqual([60, 76]);
+    d.talk('market-clerk', 'Clip the wick-length tally');
+    expect(d.done('market.wick')).toBe(true);
+    readSign(d, 'market-wick-note');
+  });
+  route.at(49, 'Leave a larger key separating price, quantities and the different uses', ['perspective', 'responsibility', 'interpretation', 'perspectives', 'ethics'], (d) => {
+    d.talk('market-clerk', 'Leave a larger four-line key');
+    expect(d.done('market.access')).toBe(true);
+    readSign(d, 'market-access-key');
+  });
+  return route;
+}
+
 describe('rolling TOK coverage audit', () => {
   it('checks gaps between sampled actions and expires an encounter at the window boundary', () => {
     const encounters: TimedEncounter[] = [
@@ -753,8 +867,9 @@ describe('rolling TOK coverage audit', () => {
   });
 
   it.each([
-    { name: 'Nexus main route into Emberford', end: 42, play: () => nexusToEmberford(false) },
-    { name: 'Nexus and Emberford with optional stops', end: 85, play: () => nexusToEmberford(true) },
+    { name: 'Nexus main route into Emberford', end: 42, play: () => nexusToEmberford('main') },
+    { name: 'Nexus and Emberford with optional stops', end: 86, play: () => nexusToEmberford('explore') },
+    { name: 'Nexus seal and Emberford’s Two-Bell Order', end: 105, play: () => nexusToEmberford('records') },
     { name: 'Nile first visit from a prepared Chapter 1 save', end: 50, play: () => nileDispatch() },
     { name: 'Nile first visit with the Reading Window', end: 53, play: () => nileDispatch('reading-window') },
     { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch('borrowed-mark') },
@@ -771,6 +886,7 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Cartographers’ Sea from a prepared Chapter 7 save', end: 51, play: cartographersSea },
     { name: 'House of Performance with the silence first', end: 51, play: () => houseOfPerformance('pause') },
     { name: 'House of Performance starting from a gallery seat', end: 54, play: () => houseOfPerformance('move') },
+    { name: 'Market of Measures from a prepared Chapter 9 save', end: 52, play: marketOfMeasures },
   ])('can execute the modeled route for $name and report its gaps', ({ name, end, play }) => {
     const route = play();
     const gaps = coverageGaps(end, route.encounters);

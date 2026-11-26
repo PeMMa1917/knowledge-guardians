@@ -964,6 +964,31 @@
     },
     {
      "text": "I’ll follow the thread."
+    },
+    {
+     "text": "Ask how the papyrus names the person who recorded the dispute.",
+     "next": "nile.name.workers",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.name.read"
+       },
+       {
+        "not": {
+         "flag": "nile.name.workers",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Read the workmen’s room slip.",
+     "next": "nile.name.slip.workers",
+     "if": {
+      "flag": "nile.name.filing",
+      "eq": "slips"
+     }
     }
    ],
    "effects": [],
@@ -1012,6 +1037,31 @@
     },
     {
      "text": "Keep the slips open. I want to examine the papyrus first."
+    },
+    {
+     "text": "Ask how the papyrus names the person who recorded the dispute.",
+     "next": "nile.name.workers",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.name.read"
+       },
+       {
+        "not": {
+         "flag": "nile.name.workers",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Read the workmen’s room slip.",
+     "next": "nile.name.slip.workers",
+     "if": {
+      "flag": "nile.name.filing",
+      "eq": "slips"
+     }
     }
    ],
    "effects": [],
@@ -1075,6 +1125,31 @@
       "flag": "nile.workerLead",
       "eq": "payment"
      }
+    },
+    {
+     "text": "Ask how the papyrus names the person who recorded the dispute.",
+     "next": "nile.name.workers",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.name.read"
+       },
+       {
+        "not": {
+         "flag": "nile.name.workers",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Read the workmen’s room slip.",
+     "next": "nile.name.slip.workers",
+     "if": {
+      "flag": "nile.name.filing",
+      "eq": "slips"
+     }
     }
    ],
    "effects": [],
@@ -1104,6 +1179,31 @@
      "if": {
       "card": "card.nile.mine"
      }
+    },
+    {
+     "text": "Check what the museum links to Amunnakht on the map.",
+     "next": "nile.name.map",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.name.read"
+       },
+       {
+        "not": {
+         "flag": "nile.name.map",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Read the Map Room slip.",
+     "next": "nile.name.slip.map",
+     "if": {
+      "flag": "nile.name.filing",
+      "eq": "slips"
+     }
     }
    ],
    "effects": [],
@@ -1123,6 +1223,31 @@
      "next": "nile.tray.start",
      "if": {
       "card": "card.nile.mine"
+     }
+    },
+    {
+     "text": "Check what the museum links to Amunnakht on the map.",
+     "next": "nile.name.map",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.name.read"
+       },
+       {
+        "not": {
+         "flag": "nile.name.map",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Read the Map Room slip.",
+     "next": "nile.name.slip.map",
+     "if": {
+      "flag": "nile.name.filing",
+      "eq": "slips"
      }
     }
    ],
@@ -1350,6 +1475,59 @@
      "if": {
       "flag": "nile.returned",
       "eq": true
+     }
+    },
+    {
+     "text": "Check the visitor’s link between two records named for Amunnakht.",
+     "next": "nile.name.invite",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.returned",
+        "eq": true
+       },
+       {
+        "card": "card.nile.strike"
+       },
+       {
+        "not": {
+         "flag": "nile.name.started",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Bring the two keepers’ notes to the filing desk.",
+     "next": "nile.name.desk",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.name.voices"
+       },
+       {
+        "not": {
+         "flagSet": "nile.name.filing"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "See the cross-index the readers used.",
+     "next": "nile.name.index",
+     "if": {
+      "flag": "nile.name.filing",
+      "eq": "index"
+     }
+    },
+    {
+     "text": "See the two-room reading slips again.",
+     "next": "nile.name.slips",
+     "if": {
+      "flag": "nile.name.filing",
+      "eq": "slips"
      }
     }
    ],
@@ -2209,6 +2387,121 @@
    "speaker": "nile-marek",
    "text": "Marek leaves a space between the map’s route caption and our two tray readings. A reader can follow the drawn route and still ask for a field reading before talking about its slope.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.name.invite",
+   "speaker": "nile-iman",
+   "text": "A visitor clipped the Mine Map to the strike account under one name. They asked which road the workmen took when their grain ran short. The clip made two records look like one story. Read both of their dates, then ask Leila and Marek what their copy can tell us.",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "nile.name.started",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "nile.name.workers",
+   "speaker": "nile-leila",
+   "text": "The museum identifies Amunnakht as the scribe of this account. It records a stoppage, a delivery of grain and another protest. Year 29 belongs to the protest in the reign of Ramesses III. A reader can follow what the scribe recorded in that order. The line for the workers’ journey is still empty.",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "nile.name.workers",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "nile.name.map",
+   "speaker": "nile-marek",
+   "text": "See how the date belongs to the map’s making. The catalogue associates much of its writing with Amunnakht. Keep the words ‘much of the writing’ with that link. We can point to roads and different rock colours in Wadi Hammamat. The workmen’s own route remains outside what this sheet can show.",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "nile.name.map",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "nile.name.desk",
+   "speaker": "nile-iman",
+   "text": "The strong lead is a name, but the two papers put it to different work. The strike account gives an order for events. The map lays out a place. We can let a reader find both records under a name, or send the two purposes back to the rooms as a pair of reading slips.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Add a cross-index under Amunnakht and keep a limit beside each entry.",
+     "next": "nile.name.index",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.name.voices"
+       },
+       {
+        "not": {
+         "flagSet": "nile.name.filing"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.name.filing",
+       "value": "index"
+      }
+     ]
+    },
+    {
+     "text": "Send one slip to each room that explains what its record can show.",
+     "next": "nile.name.slips",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.name.voices"
+       },
+       {
+        "not": {
+         "flagSet": "nile.name.filing"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.name.filing",
+       "value": "slips"
+      }
+     ]
+    },
+    {
+     "text": "Hold both copies here for a moment."
+    }
+   ]
+  },
+  {
+   "id": "nile.name.index",
+   "speaker": "nile-iman",
+   "text": "A reader opens the index and puts a finger beside the map’s museum attribution. They can turn to either record. The separate entries give them a way to check which part of the link is an association.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.name.slips",
+   "speaker": "nile-iman",
+   "text": "Leila’s reader finds the protest dates at the workmen’s case. Marek’s reader finds the rock colours beside the map. I’ve put the other room’s name on the back of each slip so someone can still follow the link.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.name.slip.workers",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "Amunnakht’s account gives the order of the stoppage, payment and renewed protest. The date marks an event in the account. Turn over the slip for the Map Room and its separate source."
+  },
+  {
+   "id": "nile.name.slip.map",
+   "speaker": "nile-marek",
+   "historicalLabel": "fictional-world",
+   "text": "The mine map shows roads and rock. Its date concerns the making of the map. The museum links much of the writing to Amunnakht. The other side of the slip points to the separate workmen’s record."
   }
  ],
  "chronicle": [
@@ -2735,6 +3028,78 @@
    "objective": "nile.tray.compare",
    "depth": 4,
    "text": "Pin the two readings beside the cart to let a keeper repeat the run, or beside the ancient map to keep the scope of the trial clear."
+  },
+  {
+   "id": "h.nile.name.read.1",
+   "objective": "nile.name.read",
+   "depth": 1,
+   "text": "Find the two records that mention the scribe."
+  },
+  {
+   "id": "h.nile.name.read.2",
+   "objective": "nile.name.read",
+   "depth": 2,
+   "text": "One date belongs to an event. Another dates the making of a record."
+  },
+  {
+   "id": "h.nile.name.read.3",
+   "objective": "nile.name.read",
+   "depth": 3,
+   "text": "Visit the Workmen’s Room and Map Room. Inspect the Turin Strike Papyrus and the Turin Mine Map."
+  },
+  {
+   "id": "h.nile.name.read.4",
+   "objective": "nile.name.read",
+   "depth": 4,
+   "text": "Use the Date-Kind Lens at both cases to keep their time claims separate."
+  },
+  {
+   "id": "h.nile.name.voices.1",
+   "objective": "nile.name.voices",
+   "depth": 1,
+   "text": "Each archive keeper knows a different part of the file."
+  },
+  {
+   "id": "h.nile.name.voices.2",
+   "objective": "nile.name.voices",
+   "depth": 2,
+   "text": "Start with the person who keeps the record you have just read."
+  },
+  {
+   "id": "h.nile.name.voices.3",
+   "objective": "nile.name.voices",
+   "depth": 3,
+   "text": "Ask Leila about the workmen’s account. Ask Marek about the map’s attribution."
+  },
+  {
+   "id": "h.nile.name.voices.4",
+   "objective": "nile.name.voices",
+   "depth": 4,
+   "text": "Use the new Amunnakht conversation choices in both rooms. Keep the map’s qualified link."
+  },
+  {
+   "id": "h.nile.name.file.1",
+   "objective": "nile.name.file",
+   "depth": 1,
+   "text": "Choose where the next reader can use the notes."
+  },
+  {
+   "id": "h.nile.name.file.2",
+   "objective": "nile.name.file",
+   "depth": 2,
+   "text": "The index connects two files. The room slips put a record’s purpose right beside it."
+  },
+  {
+   "id": "h.nile.name.file.3",
+   "objective": "nile.name.file",
+   "depth": 3,
+   "text": "Return to Imani after hearing both keepers."
+  },
+  {
+   "id": "h.nile.name.file.4",
+   "objective": "nile.name.file",
+   "depth": 4,
+   "text": "Choose an index or two slips. Keep both records and the different limits on what a reader may conclude."
   }
  ],
  "criteria": [
@@ -2799,6 +3164,11 @@
    "id": "j.nile.borrowed-mark",
    "claimKind": "interpretation",
    "text": "The name at the handover tells us who received the tag. The cloth shows how the keepers share a practice. Neither lets us sign the empty line."
+  },
+  {
+   "id": "j.nile.name",
+   "title": "A name in two places",
+   "text": "The workmen’s papyrus records events. The Mine Map describes part of a place and links much of its writing to Amunnakht. The name helped me find two sources. I kept each claim with the record that could support it."
   }
  ],
  "portfolio": [
@@ -3795,6 +4165,154 @@
       "id": "KQ-NILE-03",
       "action": "hold the block and starting square fixed while tilting a tray"
      }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH2-R11",
+   "world": "WORLD-03",
+   "title": "A Name in Two Places",
+   "knowledgeQuestion": "How can two records mention the same person and support different conclusions?",
+   "available": {
+    "all": [
+     {
+      "flag": "nile.returned",
+      "eq": true
+     },
+     {
+      "flag": "nile.name.started",
+      "eq": true
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "nile.name.read",
+     "title": "Read the workmen’s papyrus and the Mine Map with the Date-Kind Lens.",
+     "done": {
+      "all": [
+       {
+        "card": "card.nile.strike"
+       },
+       {
+        "flag": "lens.OBJ-NILE-STRIKE",
+        "eq": true
+       },
+       {
+        "card": "card.nile.mine"
+       },
+       {
+        "flag": "lens.OBJ-NILE-MINE",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "geography"
+      ]
+     },
+     "skills": [
+      "SK-MED-02",
+      "SK-MED-04"
+     ]
+    },
+    {
+     "id": "nile.name.voices",
+     "title": "Ask Leila and Marek what connects each record to its scribe.",
+     "done": {
+      "all": [
+       {
+        "flag": "nile.name.workers",
+        "eq": true
+       },
+       {
+        "flag": "nile.name.map",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "justification",
+       "responsibility"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-THK-14"
+     ],
+     "visible": {
+      "objective": "nile.name.read"
+     }
+    },
+    {
+     "id": "nile.name.file",
+     "title": "Help Imani file the two records with their purposes still clear.",
+     "done": {
+      "flagSet": "nile.name.filing"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "truth",
+       "power",
+       "responsibility"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-CUR-06",
+      "SK-WRT-13"
+     ],
+     "visible": {
+      "objective": "nile.name.voices"
+     },
+     "onComplete": [
+      {
+       "journal": "j.nile.name"
+      }
+     ]
     }
    ]
   }

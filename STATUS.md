@@ -238,10 +238,21 @@ The City correction opens Seagrass Steps. Inspect the named marks and reach of t
 
 The published survey limits open the House of Performance. Rehearse the same words and crate move with silence before or after the move. Compare what the stage plan and separate seats let people observe, then stage either version. Revise the programme after an audience member asks what they can infer from their seat. Players can leave a cue copy for the understudy or take a related question back to the City. The signed register can settle the lending rule, while the cue and sightline describe the stage action and leave motive open.
 
+## Chapter 10: The Price of a Basket
+
+The revised programme opens the Market of Measures. Weigh two simulated lots with the baskets included and then with the baskets lifted out. Compare the workshop’s wick-length grade with the stall’s shade grade. Post the price comparison for households or leave records at the trade desk. The buyer’s question sends players back to distinguish a unit rate from a whole-lot purchase. An adjustable practice purse shows how buying options depend on the budget. Players can post a large-print key and use the wick bench’s length rule on both lots.
+
+## Opening and return investigations
+
+- **A Page Left Open** gives the visitor’s notebook a branch as soon as play starts. Leave a place for a second observation or a record number another visitor can follow.
+- **Seal at the Door** uses the actual workshop model and the reverse of its seal. Players check what the seal certifies and set a supported display card for the reader they want to reach.
+- **The Two-Bell Order** asks for Emberford’s specific departure stub and matching ferry record. The same words do different jobs in those two records. Players choose how to leave a checkable account of the handover.
+- **A Name in Two Places** takes players back to the Nile Archive to use the Lens on a named papyrus and the mine map. Players choose how to cross-reference records with different purposes and different strength of attribution.
+
 ## Learning design review
 
 The [learning design review](docs/TOK_ALIGNMENT.md) uses the supplied course guide, examiner observations, exhibition commentary and teaching guidance. It links recurring concerns to existing playable actions and gives authors questions about the evidence, the audience and what happens when a conclusion moves to a new context.
 
 ## Thirty-minute design audit
 
-Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Thirteen of the eighteen routes reach all 12 concepts and four framework areas within their first estimated half hour. The House of Performance rehearsal-first route does so after checking the printer’s claim against both cue orders. Its gallery-first route brings five dimensions into play at the estimated 32-minute staging decision. Some routes and later windows still show gaps. The report also flags windows where a dimension depends on one distinct annotated action. The route actions and estimates are visible so unassisted timed playtests can challenge them.
+Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Fifteen of the twenty routes reach all 12 concepts and four framework areas within their first estimated half hour. The five other routes include three Nile variants, a Coast route and the gallery-first House of Performance route. The Market reaches all 16 when the price comparison is published. The report shows later gaps and marks windows where a dimension depends on one distinct annotated action. The route actions and estimates are visible so unassisted timed playtests can challenge them.

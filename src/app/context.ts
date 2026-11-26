@@ -34,6 +34,7 @@ export interface UIApi {
   openCopyComparison(edition: string): void;
   openSeaChart(chart: string): void;
   openStageRehearsal(): void;
+  openMarketScale(): void;
   openTalents(atWaystone?: boolean): void;
   openLedger(): void;
   openClue(id: string): void;

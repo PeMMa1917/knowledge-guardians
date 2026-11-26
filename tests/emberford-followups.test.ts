@@ -76,3 +76,40 @@ describe('The Copy in the Square', () => {
     expect(d.s.flags['sign.state']).toBe('note');
   });
 });
+
+describe('The Two-Bell Order', () => {
+  it('keeps the independent order inquiry optional until the market Showdown', () => {
+    const d = new Driver();
+    expect(visible(d, 'bell-order-clerk')).toBe(false);
+    expect(visible(d, 'bell-order-ferry')).toBe(false);
+    expect(d.e.activeMissions(d.s).some(({ id }) => id === 'KG-CH1-S07')).toBe(false);
+    d.s.objectivesDone.push('m02.o5.showdown');
+    expect(visible(d, 'bell-order-clerk')).toBe(true);
+    expect(visible(d, 'bell-order-ferry')).toBe(true);
+    expect(d.e.activeMissions(d.s).some(({ id }) => id === 'KG-CH1-S07')).toBe(true);
+  });
+
+  it.each([
+    ['clerk', 'Clip the guild stub', 'ferry', 'Clip the ferry strip', 'Set both records', 'pair', 'key'],
+    ['ferry', 'Clip the ferry strip', 'clerk', 'Clip the guild stub', 'Keep the ferry marks', 'key', 'pair'],
+  ])('matches the two records after taking the %s first and leaves the arrival open', (first, pickFirst, second, pickSecond, publish, format, otherFormat) => {
+    const d = afterShowdown();
+    d.s.objectivesDone.push('m02.o5.showdown');
+    const credit = { ...d.p.credit };
+    use(d, `bell-order-${first}`, pickFirst);
+    expect(visible(d, 'bell-order-board')).toBe(false);
+    use(d, `bell-order-${second}`, pickSecond);
+    expect(visible(d, 'bell-order-proof')).toBe(false);
+    use(d, 'bell-order-board', 'Line up the two Order 34 notches');
+    use(d, 'bell-order-proof', publish);
+    expect(d.done('bell.order.o.post')).toBe(true);
+    expect(visible(d, `bell-order-${format}`)).toBe(true);
+    expect(visible(d, `bell-order-${otherFormat}`)).toBe(false);
+    expect(prop(`bell-order-${format}`).text).toMatch(/no recorded arrival time|open arrival line/);
+    expect(d.s.journal).toContain('j.bell.order');
+    expect(d.p.moments['moment.bell.order']).toBeTruthy();
+    expect(d.p.credit).toEqual(credit);
+    expect(d.s.flags['sign.state']).toBe('note');
+    expect(d.s.flags['copy.started']).toBeUndefined();
+  });
+});

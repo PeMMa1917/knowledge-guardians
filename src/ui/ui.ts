@@ -4,6 +4,7 @@ import { METAL_SAMPLES, readMetalSample } from '../domain/metalSample';
 import { compareCopy } from '../domain/copyComparison';
 import { seaChart } from '../domain/seaCharts';
 import { STAGE_CUES, stageRehearsal, type StageCue } from '../domain/stageRehearsal';
+import { MARKET_BASES, marketComparison, marketOffersWithin, type MarketBasis } from '../domain/marketScale';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -3230,6 +3231,89 @@ export class UI implements UIApi {
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
+  openMarketScale(): void {
+    const controller = ctx.controller;
+    const labels: Record<MarketBasis, string> = {
+      gross: 'Weigh the filled baskets',
+      net: 'Lift out the baskets',
+      wick: 'Set aside the short fibres',
+    };
+    const masses: Record<MarketBasis, string> = {
+      gross: 'Fibre and basket',
+      net: 'All fibre',
+      wick: 'Wick-length fibre',
+    };
+    const picture = h('canvas', { width: 184, height: 78, class: 'mark', 'aria-hidden': 'true' }) as HTMLCanvasElement;
+    const controls = h('div', { class: 'row wrap', role: 'group', 'aria-label': 'Choose what goes on the scale' });
+    const live = h('div', { 'aria-live': 'polite' });
+    const available = h('p', { role: 'status' });
+    const purse = h('input', {
+      type: 'range', id: 'market-purse', min: 6, max: 12, step: 1, value: 8,
+      oninput: (event: Event) => updatePurse((event.currentTarget as HTMLInputElement).valueAsNumber),
+      onkeydown: (event: KeyboardEvent) => { if (event.key.startsWith('Arrow')) event.stopPropagation(); },
+    });
+    const updatePurse = (credits: number) => {
+      purse.setAttribute('aria-valuetext', `${credits} credits`);
+      const within = marketOffersWithin(credits);
+      const offers = within.length === 0 ? 'neither lot fits' :
+        within.length === 1 ? `only lot ${within[0].toUpperCase()} fits` : 'either lot fits';
+      available.textContent = `With ${credits} credits: ${offers}.`;
+    };
+    const paint = (basis?: MarketBasis) => {
+      const g = picture.getContext('2d');
+      if (!g) return;
+      g.fillStyle = '#302c49'; g.fillRect(0, 0, 184, 78);
+      g.fillStyle = '#705146'; g.fillRect(0, 59, 184, 19);
+      g.fillStyle = '#a17151'; g.fillRect(0, 59, 184, 3);
+      for (const [index, row] of marketComparison(basis ?? 'gross').entries()) {
+        const x = 47 + index * 90;
+        const depth = basis ? Math.round(row.mass / 170) : 0;
+        g.fillStyle = '#382f3d'; g.fillRect(x - 28, 50, 56, 9);
+        g.fillStyle = '#bf9f6b'; g.fillRect(x - 4, 40 + depth, 8, 12 - depth);
+        g.fillStyle = '#7e9ea0'; g.fillRect(x - 28, 35 + depth, 56, 5);
+        g.fillStyle = '#b2c7be'; g.fillRect(x - 27, 35 + depth, 54, 2);
+        const top = 35 + depth;
+        g.fillStyle = index === 0 ? '#dfb46c' : '#b1c981';
+        const height = basis === 'wick' && index === 0 ? 11 : 17;
+        for (let offset = -16; offset <= 16; offset += 4) {
+          g.fillRect(x + offset, top - height + (Math.abs(offset) % 3), 2, height);
+        }
+        if (!basis || basis === 'gross') {
+          g.fillStyle = '#b9774d'; g.fillRect(x - 20, top - 11, 40, 11);
+          g.fillStyle = '#d79c59'; g.fillRect(x - 22, top - 11, 44, 2);
+          for (let offset = -16; offset <= 16; offset += 8) g.fillRect(x + offset, top - 8, 2, 8);
+        }
+        g.fillStyle = '#e9d7a9'; g.font = 'bold 9px monospace';
+        g.fillText(row.id.toUpperCase(), x - 3, 69);
+      }
+    };
+    const read = (basis: MarketBasis) => {
+      const events = controller.dispatch({ type: 'WeighMarketLots', basis });
+      if (events.some((event) => event.kind === 'error')) return;
+      for (const button of controls.querySelectorAll('button')) {
+        button.setAttribute('aria-pressed', String(button.dataset.basis === basis));
+      }
+      paint(basis);
+      clear(live);
+      live.append(h('table', { class: 'market-readings' },
+        h('caption', {}, masses[basis]),
+        h('thead', {}, h('tr', {}, ...['Lot', 'Mass', 'Whole lot', 'Grams per credit'].map((text) => h('th', { scope: 'col' }, text)))),
+        h('tbody', {}, ...marketComparison(basis).map(({ id, price, mass }) => h('tr', {},
+          h('th', { scope: 'row' }, id.toUpperCase()), h('td', {}, `${mass} g`),
+          h('td', {}, `${price} credits`), h('td', {}, (mass / price).toLocaleString('en', { maximumFractionDigits: 1 })))))));
+    };
+    for (const basis of MARKET_BASES) {
+      controls.append(h('button', { type: 'button', 'data-basis': basis, 'aria-pressed': 'false', onclick: () => read(basis) }, labels[basis]));
+    }
+    paint();
+    updatePurse(8);
+    this.openModal('market-scale', 'Test scale', this.closeBtn(), h('h2', {}, 'Test scale'),
+      h('p', {}, 'Two fibre lots from the simulated market. Their prices stay fixed while you change what goes on the scale.'),
+      picture, controls, live,
+      h('details', {}, h('summary', {}, 'Try a shopper’s purse'),
+        h('label', { for: 'market-purse' }, 'Credits to spend'), purse, available));
   }
 
   openStageRehearsal(): void {

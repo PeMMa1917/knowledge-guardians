@@ -12,6 +12,7 @@ import { METALWORKS_YARD, METALWORKS_RECORDS } from './metalworks';
 import { COPIES_ARCHIVE, COPIES_PRESS, COPIES_LANDING } from './copies';
 import { SEA_HARBOUR, SEA_CHARTROOM, SEA_SHOAL } from './sea';
 import { STAGE_FOYER, STAGE_GALLERY, STAGE_REHEARSAL } from './stage';
+import { MARKET_SQUARE } from './market';
 
 export const MAPS: Record<string, MapDef> = {
   [NEXUS.id]: NEXUS,
@@ -48,4 +49,5 @@ export const MAPS: Record<string, MapDef> = {
   [STAGE_FOYER.id]: STAGE_FOYER,
   [STAGE_REHEARSAL.id]: STAGE_REHEARSAL,
   [STAGE_GALLERY.id]: STAGE_GALLERY,
+  [MARKET_SQUARE.id]: MARKET_SQUARE,
 };
