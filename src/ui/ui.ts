@@ -21,7 +21,6 @@ import { COUNCIL_TRIALS, councilClock, type CouncilTrial } from '../domain/counc
 import { buildScoutBoard } from './scoutRoutes';
 import { adventureJournalTab } from './adventureJournal';
 import { bindJournalEditor, discardPendingJournalWriting, flushJournalWriting, queueJournalWriting } from './journalWriting';
-import { conceptEditor } from './conceptEditor';
 import { ROUTE_ACTIONS } from '../content/questionEncounters';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
