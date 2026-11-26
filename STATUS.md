@@ -156,6 +156,49 @@ Ideas from Mika's TOK lessons, made into games in places, with people. Never a q
 - **The Weigh-House Slate** (Emberford): two careful readers get 16 and 1 from the same line. Find the story the writer meant, then pick a line that can only be read one way. TOK: convention, interpretation, mathematics as invented or discovered.
 - **Next:** the Missing Word (language and power), the Breakfast Sign (signs and culture), the Drawer of Missing Trials (publication bias), then more from the other lesson folders.
 
+### Minigame and side-quest coverage (Mika's list, 2026-11-26)
+
+Mika wants many kinds of minigames and side quests in every part of the game, each mixing TOK ideas and skills in a new way. Adapt each kind with our own names, art and rules; never copy a named game. Two rules: nothing may feel like a quiz (rework trivia into play), and card and dice games never use real gambling, betting or poker (they are probability and evidence games). Update this table when you add or plan one. Chapter numbers: 1 Emberford and the Nexus, 2 Nile Archive, 3 Cold Store, 4 Next Bell, 5 Living Forest, 6 Metalworks, 7 City of Copies, 8 Seagrass Steps, 9 House of Performance, 10 Market of Measures, 11 Water Commons, 12 Civic Machine, 13 Archive of Voices, 14 Island of Models, 15 Council of Inquiry.
+
+| Kind | In the game now | Gap: plan (TOK twist) |
+|---|---|---|
+| Timing and reflex | none | **Steady Hand** (ch 6): stop a swinging balance needle at zero; one lucky stop is not a measurement, so repeat and average. **Net the Shallows** (ch 5): fast fish are hard to net, so the catch is biased. |
+| Card, board and dice (no betting) | Pell's Three Doors (ch 1) | **Lanterns and Bones** dice table at the ferry (ch 1): the Gambler's Imp says a six is 'due'. **Claim Cards** (ch 2, 7): play evidence cards against claims; strength must match scope. |
+| Puzzle and logic | 15 puzzles, Word Tiles, the Weigh-House Slate (ch 1) | Cipher where the key is a convention (ch 7); route a dispatch rule and see who it misses (ch 12). |
+| Rhythm and music | music box, bell stair (ch 1) | **Cue and Pause** (ch 9): the same notes with different timing mean different things. |
+| Crafting, cooking, alchemy | forge, tool recipes, field readings, dyes (ch 1) | Alloy bench with a fair test: change one thing at a time (ch 6). |
+| Sports, racing, arena | Showdowns as argument arenas (ch 1) | Skiff race by two charts (ch 8): the map is not the sea. Model race (ch 14). |
+| Management and tycoon | quarters (ch 1) | Market stall (ch 10): fair measures and prices. Seed rows with controlled trials (ch 11). |
+| Games within games | Word Tiles (ch 1) | **Copy Chain** parlour game (ch 7): a message passed along changes. |
+| Fetch and delivery | dispatches and deliveries (ch 2, 3, 7, 14) | Keep; add a reason to each trip (who needs it, and why). |
+| Bounty and clear | Fray Bestiary, Undercroft seals (ch 1) | Fray contracts on a guild board: find a named Fray in each chapter. |
+| Escort and defence | none | Escort an old storyteller through Echo Moths that bend her story (ch 13). Defend the notice board from waves of Hasty Hydra claims (ch 4). |
+| Investigation and mystery | in every chapter | Keep. Vary the tools (Lens, thread, sources) so chapters do not feel the same. |
+| Exploration and discovery | portal stones, secrets, fog of war, Undercroft (ch 1) | One optional shrine room per chapter with a Question Stone. |
+| Companion and loyalty | Kip's approval (ch 1) | A loyalty arc for each companion: their backstory, their blind spot, a perk. |
+| Faction and guild | Communities of Emberford (ch 1) | Guild of Lamplighters with ranks across all chapters; ranks change the world. |
+| Moral dilemma | drought plan (ch 11), allocations (ch 12) | More from the ethics lessons: no hidden right answer, consequences shown later. |
+| Collection | keepsakes, secrets, Lorelings, cards, Bestiary, Question Stones | Each item must also be used somewhere else (quality goal 5). |
+| Radiant and daily | Word Tiles daily, rumour mill (ch 1) | Daily seeds for the Deep Dive, bell stair and field games. |
+| Photography and compendium | photo album, Bestiary, Lorelings (ch 1) | Sightings in the forest (ch 5): a photo is a view from one place. |
+| Persuasion and social | Showdowns, The Missing Word (ch 1) | Tone choices with listeners who hear different things (ch 9, 13). |
+| Auction, haggling, trading | Wenna's barter boat (ch 1) | Auction where the first price anchors everyone (Anchor Crab, ch 10). |
+| Tower defence and tactics | none | Notice-board defence (ch 4, above). |
+| Creature befriending | Lorelings, Fray met by name (ch 1) | Fray that appear together (combined errors); no breeding or fighting creatures. |
+| Traversal and time trials | none | Ridge course (ch 5) where speed costs observations; calm mode has no timer. |
+| Trivia reworked (no quiz) | Forecast Board (calibration) | **Tall Tales Night** (ch 1 inn): two tellers, one story was changed; find the tell from evidence, not memory. |
+| Art, fashion, decorating | appearance, dyes, quarters, crest (ch 1) | Hang an exhibit; visitors react to what you show (ch 3, 8). |
+| Stealth (no theft, by rule) | none | **Quiet Watch** (ch 5): watch animals without changing what they do (the observer effect). |
+| Trading chain | none | A spare carrier tag traded along a chain; each trade needs a new reason for its value (ch 1 to 3). |
+| World restoration | Lamp Wall (ch 1) | Rebuild the ferry landing across chapters with people you helped. |
+| Treasure maps and riddles | none | A hand-drawn chart with local names (ch 8). |
+| Superboss | Hollow Archivist (ch 1) | Optional Grand Fray after ch 15 that mixes errors; no hints, for a title only. |
+| Heist (no crime, by rule) | none | **The Unseen Audit** (ch 3, 13): plan a step-by-step check of a sealed room with permits. |
+| Comedy | small lines only | **The Goat Who Was Certain** (ch 10): a very sure goat, a very silly chase. |
+| Festival | none | Lantern Fair in Emberford: field games as fair stalls. |
+| Schedule and time loop | none | Follow people's routines to catch the right moment (ch 4 or 12). |
+| Constraint runs | calm mode, no-hint options | Optional goals: one source only, no Lens, no hints (titles only). |
+
 ## Known limits and problems
 
 - **Toasts:** at most three show at once and the rest wait their turn; XP from one action shows as one toast. A busy moment can still take about ten seconds to read through.
