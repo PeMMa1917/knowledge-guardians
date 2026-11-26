@@ -16,9 +16,65 @@ const listId = (kind, id) => `${kind}:${id}`;
 const distinct = (items) => [...new Set(items)];
 const cellKey = (world, dimension, element) => [world, dimension, element].join('|');
 
+// GAME_ELEMENTS 267 includes physical comparisons that investigate a specific discrepancy.
+// Each listed action has a different discrepancy and an independently observable check.
+const nexusEvidenceInvestigations = [
+  {
+    objective: 'corner.compare', map: 'nexus.archive', target: 'fourth-corner-inserts',
+    source: 'tests/fourth-corner.test.ts', anchor: 'no date or sketch for the first weaving',
+    action: 'Try both inserts at the missing corner and check the matching repair order. A repeat can fit the cloth even though the order only dates the repair.',
+  },
+  {
+    objective: 'nexus.ribbon.checked', map: 'nexus.archive', target: 'nexus-ribbon-setup',
+    source: 'tests/opening-date-ribbon.test.ts', anchor: 'leaves the start of use blank',
+    action: 'Compare one dated grant with the museum’s range for the pen. Keep the start of everyday use open when someone tries to read it off the rail.',
+  },
+  {
+    objective: 'nexus.seal.checked', map: 'nexus.archive', target: 'curator-dace',
+    source: 'tests/opening-seal.test.ts', anchor: 'draws a limited claim from the two records',
+    action: 'Use the lens on the model, lift the handling seal to find the separate docket and trace what each source supports at the label.',
+  },
+  {
+    objective: 'nexus.viewer.compared', map: 'nexus.archive', target: 'nexus-viewer-start',
+    source: 'tests/opening-viewer.test.ts', anchor: 'trials both views and repairs the %s copy for the next reader',
+    action: 'Move the hinged reader between the enlarged marking point and the whole patent. Check which view shows the ball and which retains the grant number and date.',
+  },
+  {
+    objective: 'nexus.print.checked', map: 'nexus.archive', target: 'nexus-print-edge',
+    source: 'tests/opening-print.test.ts', anchor: 'shows the offset trial and lets a player recover without losing anything',
+    action: 'On the edge-first route, square the ferry sheets at a corner and find the floating landing mark. Set the same sheets on the pins and see both marks meet their drawn jetties.',
+  },
+  {
+    objective: 'nexus.stroke.compared', map: 'nexus.archive', target: 'bench',
+    source: 'tests/opening-practice.test.ts', anchor: 'keeps both surface results in the %s display',
+    action: 'Test each pen on paper and wood. Compare the opposing results of the two matched pairs, then open the second pair of strips on the display.',
+  },
+  {
+    objective: 'vindolanda.compare', map: 'nexus.archive', target: 'nexus-vind-trace',
+    source: 'tests/vindolanda.test.ts', anchor: "expect(d.done('vindolanda.compare')).toBe(true)",
+    action: 'Place both editorial slips beside the traced Vindolanda mark. Compare the different ways of restoring the letters while keeping the documented invitation separate from the question of who attended.',
+  },
+  {
+    objective: 'fold.access.compare', map: 'nexus.archive', target: 'nexus-fold-porch',
+    source: 'tests/door-fold.test.ts', anchor: "use(d, nexus, 'nexus-fold-receipt')",
+    action: 'Check the two named visitor books, the visible porch landmark and the separate permission slip. The picture locates the porch and the slip gives the conditions for a particular handover.',
+  },
+  {
+    objective: 'nexus.guide.helped', map: 'nexus.archive', target: 'nexus-guide-mount',
+    source: 'tests/opening-wayfinding.test.ts', anchor: 'asks both readers to try the same wording',
+    action: 'Hold the same arrow for two readers facing opposite ways. Each turns left and heads in a different direction, so the evidence identifies what the direction depends on.',
+  },
+  {
+    objective: 'nexus.shutter.verify', map: 'nexus.two-shutters', target: 'shutter-board',
+    source: 'tests/shutter-board.test.ts', anchor: 'requires both physical checks, hears each civilian once',
+    action: 'Trace the light in the old setting to the baffle. Move the mirrors to reach each shutter and check the two lit destinations separately before receiving the fitting.',
+  },
+].map((row) => ({ ...row, dimensions: ['concept:evidence'], elements: ['game:267'] }));
+
 // Each row identifies a complete action and the intersection its trace actually supports.
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
+  ...nexusEvidenceInvestigations,
   {
     objective: 'nexus.facing.compare', map: 'nexus.archive', target: 'facing-cue-nexus',
     source: 'tests/facing-cue.test.ts', anchor: 'runs the %s Nexus readback and the %s House handover',
@@ -135,6 +191,18 @@ const proofRows = [
     elements: ['game:13', 'story:130'],
   },
   {
+    objective: 'coast.breeze.follow', map: 'observatory.station', target: 'coast-breeze-headland',
+    source: 'tests/coast-breeze.test.ts', anchor: 'allows the %s comparison first, surviving a retest and a later %s receipt',
+    action: 'Record the same two practice marks in still air and at the first gust. Use that strip to request a comparison at Olwen’s hood or a second gust at Ruan’s exposed stand, then attach the measured receipt.',
+    titleApplications: [{
+      id: 'essay-title:PT-M25-06', area: 'NAT',
+      basis: 'Making the first dip measurable gives Neri a question about where it can be seen. The receipt adds a specific next test, either a third peg at the same interval or an exposed reading beside a hooded one.',
+      foil: 'The repeat at the exposed stand can settle whether the dip returns within this exercise. The matched gust under the hood can settle whether both stands see it. Each result closes a different uncertainty and leaves a narrower one open.',
+      limit: 'The two stands differ in both position and shelter, so their matched gust leaves each factor’s separate contribution open. This scripted practice and its authored questions give no measure of wonder or evidence about real gusts.',
+    }],
+    dimensions: ['area:NAT'], elements: ['game:267', 'story:77'],
+  },
+  {
     objective: 'stage.compare', map: 'stage.rehearsal', target: 'stage-director',
     source: 'tests/performance-story.test.ts', anchor: "d.done('stage.compare')",
     action: 'Rehearse identical words and movement with the pause on either side of the crate move, then pin the contrast.',
@@ -147,12 +215,12 @@ const proofRows = [
     action: 'Invite a visitor to the same paper relief after hanging the foyer display. Either leave the lamp fixed for their first look or move it in front of them and hear what they ask.',
     observation: { flag: 'stage.light.visitor', values: ['quiet', 'shown'] },
     titleApplications: [{
-      id: 'essay-title:PT-M25-06',
+      id: 'essay-title:PT-M25-06', area: 'ART',
       basis: 'Showing how the paper grip or shadow is made prompts a specific new inquiry. The fixed relief makes the lighting change visible.',
       foil: 'The quiet first look also prompts a specific inquiry without a demonstration. The question is different after the player moves the lamp.',
       limit: 'The responses are written for individual fictional visitors. The encounter cannot establish changes in a real learner’s curiosity or feelings.',
     }],
-    dimensions: [], elements: ['game:253', 'story:106'],
+    dimensions: ['area:ART'], elements: ['game:253', 'story:106'],
   },
   {
     objective: 'water.publish', map: 'water.council', target: 'water-scribe',
@@ -319,13 +387,16 @@ export function collectProofs({ objectives, maps, elements, dimensions, rows, so
       if (!reasoningModes.has(mode) || !basis?.trim()) throw Error(`Unresolved reasoning evidence for ${row.objective}.`);
       return listId('reasoning', mode);
     }));
-    const titleApplications = (row.titleApplications ?? []).map(({ id, basis, foil, limit }) => {
+    const titleApplications = (row.titleApplications ?? []).map(({ id, area, basis, foil, limit }) => {
       const title = dimensionById.get(id);
-      if (title?.kind !== 'essay-title' || !basis?.trim() || !foil?.trim() || !limit?.trim()) {
+      const areaId = listId('area', area);
+      const areaName = dimensionById.get(areaId)?.name;
+      if (title?.kind !== 'essay-title' || !areaName || !row.dimensions.includes(areaId)
+        || !basis?.trim() || !foil?.trim() || !limit?.trim()) {
         throw Error(`Unresolved title adaptation for ${row.objective}.`);
       }
       const { session, ordinal, source, page } = title;
-      return { id, session, ordinal, source, page, basis, foil, limit };
+      return { id, session, ordinal, source, page, area, areaName, basis, foil, limit };
     });
     const titleIds = new Set(titleApplications.map(({ id }) => id));
     const linked = distinct([...row.dimensions, ...reasoningIds, ...titleIds]);
@@ -539,7 +610,7 @@ async function main() {
         console.log(`Observed optional outcome ${row.observation.flag} (${row.observation.values.join(' or ')}). Prerequisite ${row.objective}.`);
       }
       for (const title of row.titleApplications ?? []) {
-        console.log(`${title.session} title ${title.ordinal} · page ${title.page} · ${title.basis}`);
+        console.log(`${title.session} title ${title.ordinal} · ${title.areaName} · page ${title.page} · ${title.basis}`);
         console.log(`Foil · ${title.foil}`);
         console.log(`Limit · ${title.limit}`);
         console.log(title.source);

@@ -1,0 +1,22 @@
+.breeze-track {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
+  list-style: none;
+  padding: 0;
+  gap: .5rem;
+}
+.breeze-track li {
+  padding: .45em;
+  text-align: center;
+  border: 1px solid currentColor;
+  border-radius: .3rem;
+}
+.breeze-track li[aria-current="step"] {
+  outline: .15rem solid #c7a56a;
+  outline-offset: -.15rem;
+  background: rgba(199, 165, 106, .16);
+  font-weight: bold;
+}
+.breeze-table { width: 100%; border-collapse: collapse; }
+.breeze-table caption, .breeze-table th, .breeze-table td { padding: .3em .5em; text-align: start; }
+.breeze-table tbody tr { border-block-start: 1px solid currentColor; }

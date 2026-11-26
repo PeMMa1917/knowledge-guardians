@@ -23,11 +23,34 @@ When a reviewed action happens after an objective, record the independently obse
 
 The vocabulary and etymology inventories use the registered glossary terms. Looking up a definition or seeing a word in dialogue does not establish active vocabulary use or a word-origin investigation. The 35 adapted exhibition families share the exact IDs they already occupy in the knowledge-question registry. Extended Essay and CAS refer to practice opportunities in the game. Thinking levels and player preferences have independent audits. [Learning design](LEARNING_DESIGN.md) · [Micro-skill links](TOK_MICRO_SKILLS.md)
 
+## Nexus evidence investigations
+
+The Nexus has ten verified actions for evidence and game element 267, Investigation and forensic comparisons. Each action checks different records, observations or physical traces to resolve a particular discrepancy or show what the evidence leaves open. The count covers opportunities across the world. It does not assert that each player takes all ten routes or completes them in a fixed time.
+
+| Action | What the player checks |
+| --- | --- |
+| The Fourth Corner | Try both inserts and compare the resulting fit with the dated repair order. [Test](../tests/fourth-corner.test.ts) |
+| Between the Marks | Place the grant date and the museum’s range on the rail while leaving the start of everyday use open. [Test](../tests/opening-date-ribbon.test.ts) |
+| Seal at the Door | Lift the handling seal and compare its docket with the model’s dated record. [Test](../tests/opening-seal.test.ts) |
+| The Hinged Reader | Change the same drawing’s view to distinguish the visible marking point from the grant record. [Test](../tests/opening-viewer.test.ts) |
+| The Slipped Print | On the optional edge-first route, see the misleading mark before reseating the same sheets over their pins. [Test](../tests/opening-print.test.ts) |
+| The Same Stroke | Compare both pens on paper and wood and keep the different results on the matching bench strips. [Test](../tests/opening-practice.test.ts) |
+| The Vindolanda tablet | Compare two attributed editorial readings against the traced marks and dated object record. [Test](../tests/vindolanda.test.ts) |
+| At the Door Before the Bell | Check which source supplies a landmark and which verifies permission for a handover. [Test](../tests/door-fold.test.ts) |
+| The Arrow at the Turn | Watch two readers try the unchanged arrow from opposite approaches to the same cases. [Test](../tests/opening-wayfinding.test.ts) |
+| The Two Shutter Room | Follow the old route to the baffle, then redirect the beam and inspect both lit shutters. [Test](../tests/shutter-board.test.ts) |
+
+```sh
+node tools/audit-cross-weave.mjs --cells --world WORLD-01 --dimension concept:evidence --element game:267
+```
+
 ## Prescribed title sources
 
 Seven publicly accessible source PDFs contain 42 verified session and ordinal references. Page 2 of each contains titles 1–6. The verified sets are May 2022–2025 and November 2022–2024. The audit records the source, page and ordinal in `essay-title` dimensions such as `essay-title:PT-M25-03`. These IDs document access to the listed source. Each gameplay adaptation requires a separate action proof. The rest of the historical inventory is unknown. [Title source metadata](../tools/prescribed-title-sources.json)
 
-**May 2025, ordinal 6.** At the House of Performance, leave the light in place for a visitor’s first look at a relief or move it in front of them to reveal how a shadow or grip is made. Each option prompts a different specific question from a fictional visitor. The quiet first look shows that curiosity can also arise without a demonstration. The audit credits the actual optional readback, which a player can skip even after completing the foyer display. The authored responses do not measure a learner’s curiosity. [Route test](../tests/performance-story.test.ts) · [Source, p. 2](https://drive.google.com/file/d/13bWJb21r-h4G7pnt8Qrbl_a-5Pka4OO6/view)
+**May 2025, ordinal 6 · The arts.** At the House of Performance, leave the light in place for a visitor’s first look at a relief or move it in front of them to reveal how a shadow or grip is made. Each option prompts a different specific question from a fictional visitor. The quiet first look shows that curiosity can also arise without a demonstration. The audit credits the actual optional readback, which a player can skip even after completing the foyer display. [Route test](../tests/performance-story.test.ts) · [Source, p. 2](https://drive.google.com/file/d/13bWJb21r-h4G7pnt8Qrbl_a-5Pka4OO6/view)
+
+**May 2025, ordinal 6 · The natural sciences.** At Observatory Coast, compare the same two practice marks in still air and at the first gust. A dip at the step prompts a location check under a hood or a repeat at the exposed stand. Each check resolves a different uncertainty and leads its receiver to ask for a specific next observation. The arts example changes what a viewer notices about one relief. The Coast example changes what an observer can ask and test about a repeatable pattern. Both cases use authored responses. They do not measure a learner’s curiosity or a change in their sense of wonder. [Route test](../tests/coast-breeze.test.ts) · [Receiving readbacks](../src/ui/coastBreeze.ts)
 
 ## Reviewed reasoning actions
 

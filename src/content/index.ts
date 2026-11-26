@@ -154,6 +154,7 @@ import { jigShopContent } from './jigShop';
 import { earlierViewsContent, installEarlierViews } from './earlierViewing';
 import { curtainContent } from './curtainCall';
 import coastDetector from './coast-detector.json';
+import coastBreeze from './coast-breeze.json';
 import bridgeProof from './bridge-proof.json';
 import memoryCart from './memory-cart.json';
 import { dispatchStatsContent } from './dispatchStats';
@@ -193,7 +194,7 @@ export function buildPack(): ContentPack {
     modelRecordsContent, secondReadingContent, timeRoomContent, fieldStoreContent, materialStoreContent,
     loadingBayContent, glassRackContent, shoreReplyContent, ferryWindowContent, starPathContent, tokBadgeContent,
     ferryPackingContent, workScheduleContent, bearingBayContent, jigShopContent, earlierViewsContent, curtainContent,
-    coastDetector, bridgeProof, memoryCart, dispatchStatsContent, prismViewerContent, priceDrawersContent, warmRoomContent,
+    coastDetector, coastBreeze, bridgeProof, memoryCart, dispatchStatsContent, prismViewerContent, priceDrawersContent, warmRoomContent,
     mapAlignmentContent, scriptRailContent, pigmentWindow, correspondenceRoomContent, porterPace, leafFrame, forestNarrators, spareSeat, lastTurn, twoCalls, twoShutters, openPlace, catchmentContent, facingCueContent, witnessClip, stripBend, sillBridge,
     threadBend];
   for (const k of keys) pack[k] = [...parts, ...collectionRooms].flatMap((p) => p[k] ?? []);

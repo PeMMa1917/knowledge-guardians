@@ -6,6 +6,8 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
+A Second Look at the Step follows the Observatory detector receipt. A new dip on the practice strip leads to a comparison under Olwen’s hood or another gust at Ruan’s exposed stand. Each receiver keeps the measured limits and asks a different next question.
+
 The Fourth Corner opens in the first Nexus visit. A turn of the cloth shows which insert repeats the design. A dated repair order and a cord show what happened to the later hem. The Guardian sends a new pattern to a cutter or keeps the old stitch holes accessible to a repairer. At the Sea, The Thread at the Bend uses an account of Ariadne and two loads to test when a thread can guide a traveller. Each issued route reaches a different harbour worker. At the House of Performance, a visitor can take a quiet first look or watch the light move. [Story bible](docs/STORY_BIBLE.md)
 
 Players can send any of five checked tea-table reports to the public record book or the ferry landing. Each recipient uses different evidence, and a later shift can move the slip. The journal remembers the handovers. All twelve TOK concepts have optional word histories in conversation and in the journal. The curriculum audit now follows six forms of reasoning and 42 verified past-title references across seven sessions, with evidence attached to particular player actions. [Curriculum audit](docs/CROSS_WEAVE_AUDIT.md)

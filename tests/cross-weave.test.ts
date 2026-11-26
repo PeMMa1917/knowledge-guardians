@@ -75,7 +75,8 @@ describe('action-level learning and RPG element census', () => {
     const input = {
       objectives: new Map([['check-record', { mission: { id: 'route', world: 'WORLD-01' }, step: {} }]]),
       maps: { dispatch: { world: 'WORLD-02', interactables: [{ id: 'bench' }] } },
-      elements, dimensions: [{ id, kind: 'essay-title', source, session: 'May 2025', ordinal: 6, page: 2 }],
+      elements, dimensions: [{ id, kind: 'essay-title', source, session: 'May 2025', ordinal: 6, page: 2 },
+        { id: 'area:ART', name: 'The arts', kind: 'area' }],
       sourceText: new Map([['tests/route.test.ts', 'Compares visitor views in outcome.look: quiet or shown.']]),
       dialogue: [{ options: ['quiet', 'shown'].map((value) => ({ effects: [{ setFlag: 'outcome.look', value }] })) }],
     };
@@ -83,15 +84,17 @@ describe('action-level learning and RPG element census', () => {
       anchor: 'Compares visitor views', action: 'Choose when to show the lighting technique.', dimensions: [id] };
     expect(() => collectProofs({ ...input, rows: [proof] })).toThrow(/Unresolved title adaptation/);
     const adaptation = { ...proof, observation: { flag: 'outcome.look', values: ['quiet', 'shown'] }, titleApplications: [{
-      id, basis: 'A revealed technique prompts a new question.', foil: 'A quiet first look prompts a different question.',
+      id, area: 'ART', basis: 'A revealed technique prompts a new question.', foil: 'A quiet first look prompts a different question.',
       limit: 'The visitor responses are fictional.',
     }] };
-    expect(() => collectProofs({ ...input, dialogue: [], rows: [adaptation] })).toThrow(/Unresolved optional outcome/);
-    expect(() => collectProofs({ ...input, rows: [adaptation], sourceText: new Map([['tests/route.test.ts',
+    expect(() => collectProofs({ ...input, rows: [adaptation] })).toThrow(/Unresolved title adaptation/);
+    const tagged = { ...adaptation, dimensions: [...adaptation.dimensions, 'area:ART'] };
+    expect(() => collectProofs({ ...input, dialogue: [], rows: [tagged] })).toThrow(/Unresolved optional outcome/);
+    expect(() => collectProofs({ ...input, rows: [tagged], sourceText: new Map([['tests/route.test.ts',
       'Compares visitor views but no outcome.']]) })).toThrow(/Unresolved optional outcome/);
-    const reviews = collectProofs({ ...input, rows: [adaptation, adaptation] });
+    const reviews = collectProofs({ ...input, rows: [tagged, tagged] });
     expect(reviews[0]).toMatchObject({ actionId: 'outcome:outcome.look', objective: 'check-record',
-      titleApplications: [{ id, source, ordinal: 6, page: 2 }] });
+      titleApplications: [{ id, source, ordinal: 6, page: 2, area: 'ART', areaName: 'The arts' }] });
     expect(indexPairs(reviews).get(`WORLD-02|${id}|story:3`)).toEqual(new Set(['outcome:outcome.look']));
   });
 

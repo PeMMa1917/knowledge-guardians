@@ -129,6 +129,8 @@ import { CARRY, carryLocation } from '../domain/sharedCarry';
 import { opticsTrial } from './opticsTrial';
 import { DETECTOR_GAME } from '../domain/coastDetector';
 import { coastDetectorPanel } from './coastDetector';
+import { BREEZE_CHECK, BREEZE_FOLLOW, BREEZE_TOOL } from '../domain/coastBreeze';
+import { coastBreezePanel } from './coastBreeze';
 import { BRIDGE_PROOF_TOOL } from '../domain/bridgeProof';
 import { bridgeProofPanel } from './bridgeProof';
 import { SILL_CLOCK } from '../domain/sillBridge';
@@ -3275,6 +3277,12 @@ export class UI implements UIApi {
     } else if (id === BRIDGE_PROOF_TOOL) {
       this.openModal('bench-panel wide', 'Idris’s practice bridge', this.closeBtn(),
         bridgeProofPanel(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === `${BREEZE_TOOL}headland` || id === `${BREEZE_TOOL}archive` || id === `${BREEZE_TOOL}harbour`) {
+      const site = id === `${BREEZE_TOOL}headland` ? 'headland' : id === `${BREEZE_TOOL}archive` ? 'archive' : 'harbour';
+      const c = ctx.controller;
+      this.openModal('bench-panel wide', 'A Second Look at the Step', this.closeBtn(),
+        coastBreezePanel(site, c, (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
+        localGuide(c, MAPS[c.state.mapId]?.world ?? '', () => c.check({ objective: BREEZE_CHECK }) ? BREEZE_FOLLOW : BREEZE_CHECK));
     } else if (id === DETECTOR_GAME) {
       this.openModal('bench-panel wide', 'Neri’s light reader', this.closeBtn(),
         coastDetectorPanel(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
