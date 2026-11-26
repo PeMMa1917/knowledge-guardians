@@ -34,8 +34,11 @@ import { decorateConceptText } from '../ui/conceptMarkup';
 
 type Dir = 'down' | 'up' | 'left' | 'right';
 
+type NpcPlacement = MapDef['npcs'][number];
+
 interface Actor {
   id: string;
+  mapOrder?: number;
   /** "Something new to say" marker above the head. */
   mark?: Phaser.GameObjects.Image;
   sprite: Phaser.GameObjects.Sprite;
@@ -51,6 +54,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private blocked: boolean[][] = [];
   private player!: Actor;
   private npcs: Actor[] = [];
+  private conditionalCast: { place: NpcPlacement; order: number; actor?: Actor; floorBlocked: boolean }[] = [];
+  private waitingForSpace: NpcPlacement[] = [];
   private follower: Actor | null = null;
   private trail: { x: number; y: number; f: Dir }[] = [];
   private lumen!: Phaser.GameObjects.Image;
@@ -58,7 +63,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private keys!: Record<string, Phaser.Input.Keyboard.Key>;
   private playerSheet = 'player-a';
   private path: { x: number; y: number }[] = [];
-  private pendingInteract: (() => void) | null = null;
+  private pendingInteract: { run: () => void; actor?: Actor } | null = null;
   private zonesInside = new Set<string>();
   private walkingArrivalFrom: string | null = null;
   private paused = false;
@@ -102,6 +107,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       g.fillStyle(0x1a1426, 1).fillRect(4, 2, 1, 4).fillRect(4, 7, 1, 1);
       g.generateTexture('mark.new', 9, 13); g.destroy();
     }
+    this.conditionalCast = []; this.waitingForSpace = [];
     this.npcs = []; this.follower = null; this.trail = []; this.path = []; this.pendingInteract = null;
     this.zonesInside = new Set(); this.target = null; this.fx = []; this.lightPools = []; this.portalRing = null;
     this.walkingArrivalFrom = data.walkingArrivalFrom ?? null;
@@ -239,10 +245,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
     // Characters.
     const s = ctx.controller.state;
-    for (const n of m.npcs) {
-      if (n.visibleIf && !ctx.controller.check(n.visibleIf)) continue;
+    for (const [order, n] of m.npcs.entries()) {
+      if (n.visibleIf) continue;
       if (n.id === s.companion) continue; // the companion walks with the player
       const a = this.makeActor(n.id, n.x, n.y, n.facing);
+      a.mapOrder = order;
       this.npcs.push(a);
       block(n.x, n.y, 1, 1);
     }
@@ -252,6 +259,10 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       this.npcs.push(a);
       block(21, 23, 1, 1);
     }
+
+    this.conditionalCast = m.npcs.flatMap((place, order) => place.visibleIf
+      ? [{ place, order, floorBlocked: this.blocked[place.y][place.x] }] : []);
+    this.syncConditionalCast(false);
 
     const look = ensureLook(this, ctx.controller.state.player.look, this.threadColours());
     this.playerSheet = look;
@@ -278,6 +289,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   refreshWorld(): void {
     const s = ctx.controller.state;
     if (!s || !this.threadGfx) return;
+    for (const { place, floorBlocked } of this.conditionalCast) this.blocked[place.y][place.x] = floorBlocked;
     this.refreshBlockedTiles();
     const cases = this.map.id === SPECIMEN_BASE ? specimenDisplay(ctx.controller.pack, s).cases : [];
     for (const it of this.map.interactables) {
@@ -315,6 +327,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         if (img.texture.key !== key && this.textures.exists(key)) img.setTexture(key);
       }
     }
+    this.syncConditionalCast(true);
     this.syncPet();
     // Cloak embroidery (spec 32.6): a new thread appears on the outfit when a world arc is resolved.
     if (this.player) {
@@ -356,6 +369,50 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
     }
     if (this.portalRing) this.portalRing.setAlpha(ctx.controller.check({ objective: 'm01.o6.label' }) ? 1 : 0.35);
+  }
+
+  /** Apply entrances and departures to dialogue targets, markers and walkable tiles in the same visit. */
+  private syncConditionalCast(protectPlayer: boolean): void {
+    this.waitingForSpace = [];
+    for (const member of this.conditionalCast) {
+      const { place, actor } = member;
+      const present = place.id !== ctx.controller.state.companion && ctx.controller.check(place.visibleIf);
+      if (present && !actor) {
+        if (protectPlayer && this.playerOverlaps(place)) {
+          this.waitingForSpace.push(place);
+          continue;
+        }
+        member.actor = this.makeActor(place.id, place.x, place.y, place.facing);
+        member.actor.mapOrder = member.order;
+        this.npcs.push(member.actor);
+        this.npcs.sort((a, b) => (a.mapOrder ?? this.map.npcs.length) - (b.mapOrder ?? this.map.npcs.length));
+      } else if (!present && actor) {
+        this.npcs = this.npcs.filter((npc) => npc !== actor);
+        if (this.pendingInteract?.actor === actor) {
+          this.path = [];
+          this.pendingInteract = null;
+        }
+        if (this.target?.kind === 'npc' && this.target.actor === actor) this.target = null;
+        if (actor.mark) {
+          this.tweens.killTweensOf(actor.mark);
+          actor.mark.destroy();
+        }
+        actor.sprite.destroy();
+        actor.shadow.destroy();
+        member.actor = undefined;
+      }
+      if (member.actor) this.blocked[place.y][place.x] = true;
+    }
+    if (this.conditionalCast.length && this.path.some(({ x, y }) => this.blocked[y][x])) {
+      this.path = [];
+      this.pendingInteract = null;
+    }
+  }
+
+  private playerOverlaps({ x, y }: NpcPlacement): boolean {
+    const feet = this.player.sprite;
+    return feet.x + FEET.w / 2 >= x * TILE && feet.x - FEET.w / 2 < (x + 1) * TILE &&
+      feet.y + FEET.h / 2 >= y * TILE && feet.y - FEET.h / 2 < (y + 1) * TILE;
   }
 
   private refreshBlockedTiles(): void {
@@ -654,6 +711,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private secretGlows: { id: string; img: Phaser.GameObjects.Image }[] = [];
   update(_t: number, dtMs: number): void {
     const dt = Math.min(dtMs, 100) / 1000;
+    if (this.waitingForSpace.some((place) => !this.playerOverlaps(place))) this.refreshWorld();
     // Fog of war: clear the map around the player when they enter a new chunk.
     if (this.player && !this.transitioning) {
       const tx = Math.floor(this.player.sprite.x / TILE), ty = Math.floor(this.player.sprite.y / TILE);
@@ -685,7 +743,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         const dx = tx - this.player.sprite.x, dy = ty - this.player.sprite.y;
         if (Math.abs(dx) < 2 && Math.abs(dy) < 2) {
           this.player.sprite.x = tx; this.player.sprite.y = ty; this.path.shift();
-          if (!this.path.length && this.pendingInteract) { const f = this.pendingInteract; this.pendingInteract = null; f(); }
+          if (!this.path.length && this.pendingInteract) { const f = this.pendingInteract; this.pendingInteract = null; f.run(); }
         } else {
           waypointDistance = { x: Math.abs(dx), y: Math.abs(dy) };
           vx = waypointDistance.x > 1 ? Math.sign(dx) : 0;
@@ -1033,6 +1091,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     if (!t) return;
     if (t.kind === 'npc') {
       const a = t.actor;
+      if (!a.sprite.active) return;
       const dx = this.player.sprite.x - a.sprite.x, dy = this.player.sprite.y - a.sprite.y;
       a.facing = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
       a.sprite.setFrame(this.idleFrame(a.facing));
@@ -1138,7 +1197,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         const dx = cx - this.player.sprite.x, dy = cy - this.player.sprite.y;
         this.player.facing = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
         this.tryInteract(hitA ? { kind: 'npc', actor: hitA } : { kind: 'obj', obj: hitO! });
-      });
+      }, hitA);
       return;
     }
     if (this.blocked[ty]?.[tx] === false) this.walkTo(tx, ty, null);
@@ -1154,12 +1213,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     return ok.find(({ x, y }) => this.bfs(pt.x, pt.y, x, y) !== null) ?? null;
   }
 
-  private walkTo(tx: number, ty: number, then: (() => void) | null): void {
+  private walkTo(tx: number, ty: number, then: (() => void) | null, actor?: Actor): void {
     const sx = Math.floor(this.player.sprite.x / TILE), sy = Math.floor(this.player.sprite.y / TILE);
     const path = this.bfs(sx, sy, tx, ty);
     if (!path) return;
     this.path = path;
-    this.pendingInteract = then;
+    this.pendingInteract = then ? { run: then, actor } : null;
     if (!path.length && then) { this.pendingInteract = null; then(); }
   }
 

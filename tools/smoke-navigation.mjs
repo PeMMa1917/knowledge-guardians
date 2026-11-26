@@ -424,3 +424,69 @@ export async function smokeWallRealtime(browser, { until }) {
   } finally { await browser.send('Input.dispatchKeyEvent', { ...right, type: 'keyUp' }); }
   console.log(`PASS ${minutes} actual minutes of one continuous movement key against the archive wall, followed by normal movement away.`);
 }
+
+/** File the approved folio while the reader and both desks are on screen in one room. */
+export async function smokeCallboardReader(browser, { press, until }) {
+  await browser.evaluate(() => {
+    const { controller, world } = window.kg;
+    controller.state.objectivesDone.push('date-register.maize-bundle.civic');
+    controller.state.inventory['item.date-register.maize-bundle.folio'] = 1;
+    world.changeMap('civic.callboard', 19, 34);
+  });
+  await until(() => browser.evaluate(() => window.kg.world.map.id === 'civic.callboard' && !window.kg.world.transitioning), 'enter the reading room');
+  const position = () => browser.evaluate(() => {
+    const { world } = window.kg;
+    return {
+      readers: world.npcs.filter((a) => a.id === 'callboard-reader').map((a) => [Math.floor(a.sprite.x / 16), Math.floor(a.sprite.y / 16)]),
+      first: world.collides(7 * 16 + 8, 33 * 16 + 12), second: world.collides(33 * 16 + 8, 32 * 16 + 12),
+    };
+  });
+  const expectPlace = async (x, y, first, second) => {
+    const seen = await position();
+    const expected = x === null ? [] : [[x, y]];
+    if (JSON.stringify(seen.readers) !== JSON.stringify(expected) || seen.first !== first || seen.second !== second) {
+      throw new Error('Reading room actor and solid footprint disagree: ' + JSON.stringify(seen));
+    }
+  };
+  await expectPlace(7, 33, true, false);
+  await browser.evaluate(() => {
+    const { world } = window.kg;
+    const reader = world.npcs.find((actor) => actor.id === 'callboard-reader');
+    world.onPointer({ worldX: reader.sprite.x, worldY: reader.sprite.y - 6 });
+    if (!world.pendingInteract || !world.path.length) throw new Error('Reader click did not queue a walk across the room');
+    world.tryInteract({ kind: 'obj', obj: world.map.interactables.find((p) => p.id === 'callboard-seal-folio') });
+  });
+  await until(() => browser.evaluate(() => document.activeElement?.textContent.includes('File the signed folio')), 'signed folio choice is focused');
+  await press(browser, 'Enter');
+  await until(() => browser.evaluate(() => window.kg.controller.state.flags['callboard.shortcut'] === true), 'signed passage opens');
+  await expectPlace(33, 32, false, true);
+  const stillWalking = await browser.evaluate(() => Boolean(window.kg.world.pendingInteract || window.kg.world.path.length));
+  if (stillWalking) throw new Error('Queued approach still points to the bench the reader left');
+
+  // A staged boundary case puts the player's feet in the reader's future position.
+  await browser.evaluate(() => {
+    const { world, ui, controller } = window.kg;
+    ui.closeModal();
+    controller.state.flags['callboard.shortcut'] = false;
+    world.refreshWorld();
+    world.player.sprite.setPosition(33 * 16 + 8, 32 * 16 + 12);
+    controller.state.flags['callboard.shortcut'] = true;
+    world.refreshWorld();
+  });
+  await expectPlace(null, null, false, false);
+  await browser.evaluate(() => { window.kg.world.player.sprite.setPosition(32 * 16 + 8, 32 * 16 + 12); });
+  await until(async () => (await position()).second, 'reader takes the cleared space on a later animation frame');
+  await expectPlace(33, 32, false, true);
+  await browser.evaluate(() => {
+    const { world, controller } = window.kg;
+    controller.state.flags['memory-cart.first'] = 'wheel';
+    world.changeMap('aethelgard.emberford', 19, 16);
+  });
+  await until(() => browser.evaluate(() => window.kg.world.map.id === 'aethelgard.emberford' && !window.kg.world.transitioning), 'Emberford with Edrin present');
+  const priority = await browser.evaluate(() => {
+    const ids = window.kg.world.npcs.map((actor) => actor.id);
+    return ids.includes('memory-cart-edrin') && ids.indexOf('memory-cart-edrin') < ids.indexOf('scholar-sefa');
+  });
+  if (!priority) throw new Error('Edrin lost his authored priority where targets meet');
+  console.log('PASS signed-folio move, both footprints, abandoned pointer target, occupied destination and authored target order.');
+}

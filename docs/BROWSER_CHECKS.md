@@ -351,3 +351,8 @@ At Emberford, the player checked the blue-light rumour with the porter and ferry
 Use `fieldgames` to replay the revealed crates and Tova’s twenty-boat graph at 320 and 390 CSS pixels with 175% text. The smoke opens the two field games through the game UI, chooses a crate, and compares an unmarked voyage with a high prediction entered by keyboard. It checks the actual title, Close control, words inside each crate, bar positions and SVG label bounds. The movement and story-gate checks run separately. [Field game smoke](../tools/smoke-fieldgames.mjs)
 
 The earlier integrated build clipped the words on two empty crates after the reveal. Its ferry graph also placed the player’s high prediction at the height of the largest observed boat, with the label beyond the graph’s top edge. The revised crates give their words room to wrap. The graph gives the prediction and every observed boat the same passenger scale. [Field game rules](../src/domain/fieldgames.ts)
+
+
+### A reader changes desks during the same visit
+
+Run `node tools/smoke-worlds.mjs URL CHECKOUT cast` against a production build. The test supplies the signed maize folio and queues an approach to Neris. It files the folio through the Civic Callboard dialogue, checks both collision footprints and the abandoned click, and repeats with the Guardian on the new arrival tile. It also checks the authored order of two nearby Emberford characters. The stress mode includes this case. [Cast and movement checks](../tools/smoke-navigation.mjs)

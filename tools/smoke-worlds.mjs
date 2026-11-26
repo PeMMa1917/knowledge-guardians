@@ -4,7 +4,7 @@
  * Serve that checkout's dist directory, then run with Node 22 or newer and Chromium:
  *   node tools/smoke-worlds.mjs http://127.0.0.1:4173 /path/to/checkout
  * The second argument defaults to the working directory. The optional third argument selects
- * "maps", "access", "collections", "stress", "portal", "focus", "soak", "events", "guidance" or "fieldgames".
+ * "maps", "access", "collections", "stress", "portal", "cast", "focus", "soak", "events", "guidance" or "fieldgames".
  * CHROMIUM can name a different binary. KG_SOAK_MINUTES sets the real-time soak length (default 60).
  *
  * The script starts a new game and uses debug entry at each registered spawn. Its traversal
@@ -18,12 +18,12 @@ import { join, resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { pathToFileURL } from 'node:url';
 import { smokeCollections } from './smoke-collections.mjs';
-import { smokeFerryFocus, smokeNavigation, smokePortalReturn, smokeWallRealtime } from './smoke-navigation.mjs';
+import { smokeCallboardReader, smokeFerryFocus, smokeNavigation, smokePortalReturn, smokeWallRealtime } from './smoke-navigation.mjs';
 import { smokeGuidance } from './smoke-guidance.mjs';
 
 const [url, directory = '.', mode = 'all'] = process.argv.slice(2);
-if (!url || !['all', 'maps', 'access', 'collections', 'stress', 'portal', 'focus', 'soak', 'events', 'guidance', 'fieldgames'].includes(mode)) {
-  throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access|collections|stress|portal|focus|soak|events|guidance|fieldgames]');
+if (!url || !['all', 'maps', 'access', 'collections', 'stress', 'portal', 'cast', 'focus', 'soak', 'events', 'guidance', 'fieldgames'].includes(mode)) {
+  throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access|collections|stress|portal|cast|focus|soak|events|guidance|fieldgames]');
 }
 const root = resolve(directory);
 
@@ -518,6 +518,7 @@ try {
   if (mode === 'collections') await smokeCollections(browser, { button, press, until });
   if (mode === 'stress') await smokeNavigation(browser, { press, until }, maps);
   if (mode === 'portal') await smokePortalReturn(browser, { until });
+  if (mode === 'cast' || mode === 'stress') await smokeCallboardReader(browser, { press, until });
   if (mode === 'focus') await smokeFerryFocus(browser, { until });
   if (mode === 'soak') await smokeWallRealtime(browser, { until });
   if (mode === 'guidance') await smokeGuidance(browser, { button, press, until });
