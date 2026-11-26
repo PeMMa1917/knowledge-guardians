@@ -115,6 +115,18 @@ describe('reasoning words in Lumen’s glossary', () => {
     expect(memories(d, 'deduction')).toEqual([expect.stringContaining('Fourth Corner'), expect.stringContaining('24 of the 64')]);
   });
 
+  it('unlocks the causal and simulation memories from the actual marking bench counter', () => {
+    const d = new Driver();
+    const before = memories(d, 'causal');
+    d.run({ type: 'RunSimulation', pen: 'loud-model', surface: 'paper' });
+    d.run({ type: 'RunSimulation', pen: 'loud-model', surface: 'paper' });
+    expect(memories(d, 'causal')).toEqual(before);
+    d.run({ type: 'RunSimulation', pen: 'loud-model', surface: 'leather' });
+    expect(d.s.flags['sim.fair']).toBe(1);
+    expect(memories(d, 'causal')).toEqual([expect.stringContaining('Nexus marking bench')]);
+    expect(memories(d, 'simulation')).toEqual([expect.stringContaining('Your fair test')]);
+  });
+
   it('only calls a strip a transfer when Leila’s was actually used and both tallies checked', () => {
     const d = new Driver();
     d.s.objectivesDone.push('metal.witness.compare');

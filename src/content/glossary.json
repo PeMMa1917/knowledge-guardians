@@ -610,8 +610,8 @@
    "examples": [
     {
      "if": {
-      "flag": "sim.fair",
-      "eq": true
+      "num": "sim.fair",
+      "gte": 1
      },
      "text": "Your fair test at the bench was a simulation. Its numbers came from a stated model."
     },
@@ -842,8 +842,8 @@
    "examples": [
     {
      "if": {
-      "flag": "sim.fair",
-      "eq": true
+      "num": "sim.fair",
+      "gte": 1
      },
      "text": "At the Nexus marking bench you compared runs that changed one thing at a time. Keeping the rest of the setup still gave you a way to test what changed the mark in the model."
     },
