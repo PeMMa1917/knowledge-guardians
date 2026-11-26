@@ -144,6 +144,37 @@ const proofRows = [
   ...emberfordEvidenceInvestigations,
   ...copiesEvidenceInvestigations,
   {
+    objective: 'tail.metal', map: 'metalworks.yard', target: 'blue-tail-metal',
+    source: 'tests/blue-tail.test.ts', anchor: 'distinguishes causal tests from hypotheses about an earlier event',
+    action: 'Pull the same practice strip through the shallow and deep slots. The shallow slot catches the doubled seam. The older tear remains evidence about a separate event.',
+    reasoning: [{ mode: 'causal', basis: 'The same strip and pull give different results only when the slot depth changes. The trial supports the cause of the new tear under those conditions.' }],
+    dimensions: ['area:NAT', 'concept:explanation', 'framework:methods-and-tools'], elements: ['game:267'],
+  },
+  {
+    objective: 'tail.copies', map: 'copies.press', target: 'blue-tail-copies',
+    source: 'tests/blue-tail.test.ts', anchor: 'stitches on the runner’s later fold',
+    action: 'Use the original strip to align the printed tear, then clip the later runner’s proof beside it with the stitched name sleeve closed.',
+    reasoning: [{ mode: 'abductive', basis: 'A likely printing mechanism explains the torn edge shared by the original and copy. The dated later stitches explain why another line is held. The missing line cannot assign authorship.' }],
+    dimensions: ['area:HIS', 'concept:evidence', 'concept:explanation', 'framework:scope'], elements: ['game:267'],
+  },
+  {
+    objective: 'tail.decision', map: 'council.gallery', target: 'blue-tail-council',
+    source: 'tests/blue-tail.test.ts', anchor: 'before a different final %s, via %s',
+    action: 'Align dispatch B17, hear either the printer’s comparison or Rook’s signed account, preserve the witness’s permission, then place the approved warning on a public rail or a staffed desk.',
+    reasoning: [{ mode: 'pragmatic', basis: 'The public route remains available after a shift. A staffed hand-off lets somebody ask a question and produces a new return check within its staffed time.' }],
+    comparison: {
+      concepts: ['justification', 'responsibility'], framework: ['scope', 'ethics'],
+      areas: [
+        { id: 'HIS', method: 'Match the counterfoil’s forked tear and its number to the surviving strip. Keep the checked dispatch field separate from the empty return field.',
+          limit: 'The matched documents identify an instruction and a dispatch. They do not settle an arrival.' },
+        { id: 'HUM', method: 'Carry the participant’s authorized account and check how the end receiver can use it. Keep the tied sleeve private and compare the service costs of each receiver.',
+          limit: 'One consenting witness and one receiving exchange provide situated accounts. They do not establish who every visitor can reach.' },
+      ],
+      connection: 'Use only the matched record’s warranted fields and the words the witness allows to guide the next receiver. A new arrival belongs to its own shift.',
+    },
+    dimensions: ['area:HIS', 'area:HUM', 'concept:justification', 'concept:responsibility', 'framework:ethics', 'framework:scope'], elements: ['game:267', 'story:114'],
+  },
+  {
     objective: 'forest.hands.context', map: 'forest.station', target: 'forest-hands-board',
     source: 'tests/observation-sheet.test.ts', anchor: "expect(d.done('forest.hands.context')).toBe(true)",
     action: 'Keep the old two-mark observation when the moved bench permits three. At the recording frame, attach the 1960 Gombe observation and the later team account to distinct tabs.',

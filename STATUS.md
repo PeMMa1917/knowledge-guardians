@@ -564,3 +564,7 @@ The adventure diary keeps Wikipedia lookups for actual historical conversations,
 ## The observation sheet
 
 At Fern Station, the Guardian can check the same three marks from two positions and repeat the recorder’s view after moving the seat. Elian keeps the 1960 Gombe observation and the later team account with their dates and credited work. Ayla’s next watch can keep two differently limited notes or prepare an earlier seat. The earned field notebook applies the method at the House of Performance, where the caller and the person who sees the rise can serve different roles. [Modeled route and methods](docs/LEARNING_DESIGN.md) · [Replay checks](tests/observation-sheet.test.ts)
+
+## The Blue Tail
+
+A caught stair warning gives the opening player two plausible leads and a real choice about how to help a waiting porter. Fifteen chapter placements continue the trail through timed watches, records and other checks. The matched counterfoil and a witness’s approved words support a new Council warning, with different reader receipts and a visible Nexus return for each delivery. The historical arrival remains open. The story uses existing campaign flags and inventory, and leaves the main chapter gates and original endings available. [Story and conflict notes](docs/STORY_BIBLE.md#7-the-long-mystery-setup-and-payoff) · [Branch and geometry checks](tests/blue-tail.test.ts)

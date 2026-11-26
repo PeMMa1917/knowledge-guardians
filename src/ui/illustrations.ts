@@ -1,4 +1,5 @@
 import { FOURTH_CORNER_ART } from './fourthCornerArt';
+import { BLUE_TAIL_ART } from './blueTailArt';
 /**
  * Original procedural pixel art, drawn in code (no external files).
  * Used for exhibits, icons, the fairy guide and inspection pictures.
@@ -49,6 +50,7 @@ function pedestal(g: Ctx, x: number, y: number, w: number) {
 
 const DRAW: Record<string, [number, number, (g: Ctx) => void]> = {
   ...FOURTH_CORNER_ART,
+  ...BLUE_TAIL_ART,
   'collection-stand': [16, 24, (g) => {
     pedestal(g, 1, 14, 14);
     R(g, '#66868b', 2, 2, 12, 12);
