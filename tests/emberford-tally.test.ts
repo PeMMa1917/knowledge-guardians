@@ -73,7 +73,9 @@ describe('Two Sixes', () => {
     expect(visible(d, other)).toBe(false);
     expect(d.done(result)).toBe(false);
     reload(d);
+    expect(d.p.skills['SK-MICRO-0503']).toBeUndefined();
     read(d, active);
+    expect(d.p.skills['SK-MICRO-0503']).toEqual([expect.stringContaining('WORLD-02|game-238|' + result + '|')]);
     expect(d.done(result)).toBe(true);
     expect(d.s.adventureDiary?.entries.some(({ text }) => text.includes(receipt))).toBe(true);
     expect(d.e.pack.missions.flatMap(({ objectives }) => objectives).find(({ id }) => id === result)?.weave?.aoks).toContain('LAN');

@@ -115,7 +115,9 @@ describe('What the Wings Left', () => {
 
     use(d, 'forest-account-receive-' + layout.mode, 'my satchel for now');
     expect(d.s.inventory[carried]).toBe(1);
+    expect(d.p.skills['SK-MICRO-0533']).toBeUndefined();
     use(d, 'forest-account-receive-' + layout.mode, layout.handover);
+    expect(d.p.skills['SK-MICRO-0533']).toEqual([expect.stringContaining('WORLD-06|game-179|' + prefix + '.readback' + '|')]);
     expect(d.s.inventory[carried] ?? 0).toBe(0);
     expect(d.s.flags[prefix + '.used']).toBe(layout.mode);
     expect(d.e.node(prefix + '.used.' + layout.mode).text).toContain(layout.response);
