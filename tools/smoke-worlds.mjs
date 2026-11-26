@@ -4,7 +4,7 @@
  * Serve that checkout's dist directory, then run with Node 22 or newer and Chromium:
  *   node tools/smoke-worlds.mjs http://127.0.0.1:4173 /path/to/checkout
  * The second argument defaults to the working directory. The optional third argument selects
- * "maps", "access", "collections", "stress", "portal", "focus", "soak", "events" or "guidance".
+ * "maps", "access", "collections", "stress", "portal", "focus", "soak", "events", "guidance" or "fieldgames".
  * CHROMIUM can name a different binary. KG_SOAK_MINUTES sets the real-time soak length (default 60).
  *
  * The script starts a new game and uses debug entry at each registered spawn. Its traversal
@@ -22,8 +22,8 @@ import { smokeFerryFocus, smokeNavigation, smokePortalReturn, smokeWallRealtime 
 import { smokeGuidance } from './smoke-guidance.mjs';
 
 const [url, directory = '.', mode = 'all'] = process.argv.slice(2);
-if (!url || !['all', 'maps', 'access', 'collections', 'stress', 'portal', 'focus', 'soak', 'events', 'guidance'].includes(mode)) {
-  throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access|collections|stress|portal|focus|soak|events|guidance]');
+if (!url || !['all', 'maps', 'access', 'collections', 'stress', 'portal', 'focus', 'soak', 'events', 'guidance', 'fieldgames'].includes(mode)) {
+  throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access|collections|stress|portal|focus|soak|events|guidance|fieldgames]');
 }
 const root = resolve(directory);
 
@@ -62,9 +62,10 @@ async function until(action, description, timeout = 25_000) {
 async function connect(profile) {
   const portFile = join(profile, 'DevToolsActivePort');
   const port = await until(async () => (await readFile(portFile, 'utf8').catch(() => '')).split('\n')[0], 'Chromium startup');
-  const tabs = await fetch('http://127.0.0.1:' + port + '/json/list').then((response) => response.json());
-  const page = tabs.find((entry) => entry.type === 'page');
-  if (!page) throw new Error('Chromium did not open a page');
+  const page = await until(async () => {
+    const tabs = await fetch('http://127.0.0.1:' + port + '/json/list').then((response) => response.json());
+    return tabs.find((entry) => entry.type === 'page' && entry.webSocketDebuggerUrl);
+  }, 'Chromium page');
   const socket = new WebSocket(page.webSocketDebuggerUrl);
   await new Promise((accept, reject) => {
     socket.addEventListener('open', accept, { once: true });
@@ -509,6 +510,10 @@ try {
       console.log('FAIL', 'accessibility', error.message);
       process.exitCode = 1;
     }
+  }
+  if (mode === 'fieldgames') {
+    const { smokeFieldGames } = await import('./smoke-fieldgames.mjs');
+    await smokeFieldGames(browser, { button, press, until });
   }
   if (mode === 'collections') await smokeCollections(browser, { button, press, until });
   if (mode === 'stress') await smokeNavigation(browser, { press, until }, maps);
