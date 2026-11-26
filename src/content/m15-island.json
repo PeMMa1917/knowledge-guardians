@@ -730,6 +730,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "culture",
@@ -786,6 +787,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "explanation",
        "evidence",
@@ -800,7 +802,8 @@
       "aoks": [
        "MAT",
        "NAT",
-       "HUM"
+       "HUM",
+       "TEC"
       ],
       "subjects": [
        "math-ai",
@@ -828,6 +831,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "ethics"],
       "concepts": [
        "values",
        "power",
@@ -841,7 +845,8 @@
       ],
       "aoks": [
        "HUM",
-       "MAT"
+       "MAT",
+       "TEC"
       ],
       "subjects": [
        "geography",
@@ -871,6 +876,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "perspectives"],
       "concepts": [
        "truth",
        "certainty",
@@ -965,6 +971,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "truth",
        "certainty",
@@ -980,7 +987,8 @@
       "aoks": [
        "MAT",
        "NAT",
-       "HUM"
+       "HUM",
+       "TEC"
       ],
       "subjects": [
        "math-ai",
@@ -1008,6 +1016,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "ethics"],
       "concepts": [
        "responsibility",
        "values",
@@ -1023,7 +1032,8 @@
       "aoks": [
        "MAT",
        "HUM",
-       "NAT"
+       "NAT",
+       "TEC"
       ],
       "subjects": [
        "math-ai",

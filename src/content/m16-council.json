@@ -1125,6 +1125,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "perspective",
@@ -1187,6 +1188,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "truth",
        "evidence",
@@ -1203,7 +1205,8 @@
       "aoks": [
        "NAT",
        "MAT",
-       "HUM"
+       "HUM",
+       "TEC"
       ],
       "subjects": [
        "physics",
@@ -1231,6 +1234,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "ethics"],
       "concepts": [
        "responsibility",
        "values",
@@ -1282,6 +1286,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "methods-and-tools"],
       "concepts": [
        "evidence",
        "perspective",
@@ -1317,6 +1322,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "ethics"],
       "concepts": [
        "power",
        "values",

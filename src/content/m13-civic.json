@@ -744,6 +744,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "perspective",
@@ -756,7 +757,8 @@
       ],
       "aoks": [
        "HUM",
-       "LAN"
+       "LAN",
+       "POL"
       ],
       "subjects": [
        "geography",
@@ -828,6 +830,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "truth",
        "explanation",
@@ -907,6 +910,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["methods-and-tools", "perspectives"],
       "concepts": [
        "explanation",
        "interpretation",
@@ -944,6 +948,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "ethics"],
       "concepts": [
        "values",
        "power",
@@ -998,6 +1003,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "perspectives"],
       "concepts": [
        "evidence",
        "perspective",
@@ -1032,6 +1038,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "ethics"],
       "concepts": [
        "truth",
        "responsibility",

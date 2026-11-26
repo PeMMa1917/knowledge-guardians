@@ -1,4 +1,6 @@
 import { describe, expect, it } from 'vitest';
+import { adventureJournalView } from '../src/domain/adventureJournal';
+import { selectDiary } from '../src/domain/diarySelection';
 import { check } from '../src/domain/rules';
 import { MAPS } from '../src/maps';
 import { Driver } from './driver';
@@ -87,6 +89,16 @@ describe('The Doorway Pause', () => {
     d.talk(host, revise);
     expect(d.done('stage.finish')).toBe(true);
     expect(visible(d, ['stage-followup-notice'])).toEqual(['stage-followup-notice']);
+    expect(d.p.skills['SK-MICRO-0710']).toContainEqual(expect.stringContaining('stage.finish'));
+    const journal = adventureJournalView(d.e.pack, d.s, d.e.visibleObjectives(d.s));
+    const selection = selectDiary(journal, {
+      now: new Date(), time: { kind: 'all' }, topics: { framework: ['methods-and-tools'], areas: ['ART'], themes: ['LAN'] },
+    });
+    const found = selection.view?.entries.map(e => e.id);
+    expect(found).toContain('quest:stage.compare');
+    expect(found).not.toContain('quest:stage.perform');
+    const ethics = selectDiary(journal, { now: new Date(), time: { kind: 'all' }, topics: { framework: ['ethics'], areas: ['ART'] } });
+    expect(ethics.view?.entries.map(e => e.id)).toContain('quest:stage.perform');
     expect(d.p.credit['credit.stage.perform']).toBe(8);
     expect(d.p.credit['credit.stage.finish']).toBe(8);
 

@@ -755,6 +755,42 @@
     ]
   },
   {
+    "number": 710,
+    "name": "Ground a judgment about a performance in the choices its makers made",
+    "uses": [
+      {
+        "objective": "stage.finish",
+        "action": "Put the cue and the spectator’s sightline in the program. Identify which movement or silence supported that reading when two stagings used the same words.",
+        "styles": [
+          "performer",
+          "explorer"
+        ],
+        "modes": [
+          "auditory",
+          "spatial",
+          "linguistic"
+        ],
+        "game": 247,
+        "story": 95
+      },
+      {
+        "objective": "film.stage.received",
+        "action": "Screen both edits before posting one. Find the person who used it and check which image held their attention long enough to read the cue or the movement.",
+        "styles": [
+          "maker",
+          "companion"
+        ],
+        "modes": [
+          "visual",
+          "social",
+          "analytical"
+        ],
+        "game": 238,
+        "story": 95
+      }
+    ]
+  },
+  {
     "number": 711,
     "name": "Move authority back to the check that earned it",
     "uses": [

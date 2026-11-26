@@ -407,5 +407,164 @@
   },
   "record:j.bridge.message.pair": {
     "crew-pair": "Who took on a job you hadn’t expected when the two callers stayed at their posts?"
+  },
+  "quest:preserved.royal": {
+    "field-check": "Which words can you keep on the royal heading when the chain of custody breaks?"
+  },
+  "quest:preserved.answer": {
+    "field-check": "If you followed the reader back to the case, where could you point to support your answer?"
+  },
+  "quest:forest.compare": {
+    "field-check": "Which difference between the lookouts might still be there if you went back at another hour?"
+  },
+  "quest:forest.publish": {
+    "field-check": "Who can now find the record without climbing to the lookout? Who still has to ask for it?"
+  },
+  "quest:forest.finish": {
+    "field-check": "What can Ayla promise the next walker on the strength of what you saw through the gap?"
+  },
+  "quest:metal.compare": {
+    "field-check": "What did weighing both panels settle, and which question about the blue finish remains open?"
+  },
+  "quest:metal.trace": {
+    "field-check": "Which part of the panels’ journey appears on the shift slip alone?"
+  },
+  "quest:metal.publish": {
+    "field-check": "Who needs to see the weight before hearing how the blue panels arrived, and why?"
+  },
+  "quest:sea.compare": {
+    "field-check": "If you carried only the harbour chart to the shoal, where would its survey stop helping?"
+  },
+  "quest:sea.names": {
+    "field-check": "Who would you bring to the chart table before you changed a route name?"
+  },
+  "quest:sea.publish": {
+    "field-check": "Whose destination would be easiest to find on the first chart you chose?"
+  },
+  "quest:stage.compare": {
+    "field-check": "If the words stay the same, which silence or movement would you change first to test the effect again?"
+  },
+  "quest:stage.perform": {
+    "field-check": "Whose work gets noticed first because of where you put that pause?"
+  },
+  "quest:stage.feedback": {
+    "field-check": "What did the audience member actually notice, and what had you expected them to notice?"
+  },
+  "quest:market.compare": {
+    "field-check": "Which purchase would you want to compare again with the container taken off the scale?"
+  },
+  "quest:market.publish": {
+    "field-check": "Which lot could someone actually buy with the purse you checked?"
+  },
+  "quest:market.feedback": {
+    "field-check": "What did the first buyer ask that was missing from the comparison at eye level?"
+  },
+  "quest:water.needs": {
+    "field-check": "Whose next job disappears from view if Sena sees only the total water?"
+  },
+  "quest:water.repair": {
+    "field-check": "After fitting the gate, which old reading would you want beside the new one?"
+  },
+  "quest:water.claim": {
+    "field-check": "How does the heading above the old order change the way a new crew might read it?"
+  },
+  "quest:civic.sources": {
+    "field-check": "Who could send a request to the walking crew that the desk clerk might never hear?"
+  },
+  "quest:civic.compare": {
+    "field-check": "Which district moves when the request slips change but the scheduling rule stays the same?"
+  },
+  "quest:civic.publish": {
+    "field-check": "Whose wait did you choose to shorten when you put the four windows on Lin’s notice?"
+  },
+  "quest:civic.reader": {
+    "field-check": "What was missing from the arithmetic for the reader who came to Canal Walk?"
+  },
+  "quest:voices.sources": {
+    "field-check": "Which part of an account can a guide repeat with the permission actually recorded?"
+  },
+  "quest:voices.compare": {
+    "field-check": "Where would you pause either guide to show which line still belongs to the teller?"
+  },
+  "quest:voices.publish": {
+    "field-check": "Who can use the notice at Glass Walk immediately and who must first turn toward a different landmark?"
+  },
+  "quest:voices.reader": {
+    "field-check": "What changes about the same marker when you arrive from the stairs?"
+  },
+  "quest:island.sources": {
+    "field-check": "What does the mark at Quiet Margin add to the route card for the next crew?"
+  },
+  "quest:island.compare": {
+    "field-check": "If the same load takes another route to the upper landing, what would make it a fair comparison?"
+  },
+  "quest:island.publish": {
+    "field-check": "Which part of the trial would you show a crew that has to commit a boat now?"
+  },
+  "quest:island.retest": {
+    "field-check": "What stayed fixed when you repeated the route at the lower landing? What changed?"
+  },
+  "quest:council.sources": {
+    "field-check": "What can the repair seal tell the workers that the independent rail record cannot?"
+  },
+  "quest:council.publish": {
+    "field-check": "What can the loading crew check for themselves after you leave the docket?"
+  },
+  "quest:earlier-viewing.north-turn": {
+    "return-to-it": "What landmark stayed put when your own left and right changed?"
+  },
+  "quest:earlier-viewing.memory-board": {
+    "return-to-it": "What could you pass on using the catalogues alone? What depended on the person beside you?"
+  },
+  "quest:earlier-viewing.deep-window": {
+    "return-to-it": "Where would you ask the next watcher to stand to check what went past your shutter?"
+  },
+  "quest:earlier-viewing.dhuwa-receipt": {
+    "return-to-it": "What else would you have to check before saying what happened after that presentation?"
+  },
+  "quest:earlier-viewing.yirritja-leaves": {
+    "return-to-it": "What could a reader mistake about the signatures if they saw only the exhibition leaf?"
+  },
+  "quest:earlier-viewing.horizon-copy": {
+    "return-to-it": "What would a reader need besides the copy date to repeat your own observation?"
+  },
+  "quest:earlier-viewing.red-leaf": {
+    "return-to-it": "If both headings looked equally red, where would you send someone to check the process?"
+  },
+  "quest:earlier-viewing.earliest-line": {
+    "return-to-it": "Which part could another visitor repeat with the same light, and which would need a different source?"
+  },
+  "quest:earlier-viewing.two-print-hands": {
+    "return-to-it": "Which person’s work would disappear if the copy had only an author field?"
+  },
+  "quest:earlier-viewing.portable-latitude": {
+    "return-to-it": "Which part of your reading would be impossible to reproduce if the plate went missing?"
+  },
+  "quest:earlier-viewing.horse-sequence": {
+    "return-to-it": "What could you establish from the stopped frame before you knew how far apart the pictures were taken?"
+  },
+  "quest:earlier-viewing.web-source": {
+    "return-to-it": "What would let a reader of the unlinked copy check where its words began?"
+  },
+  "quest:earlier-viewing.telescope-rim": {
+    "return-to-it": "What would you need to know about the first rim before calling the second point new?"
+  },
+  "quest:earlier-viewing.lens-scale": {
+    "return-to-it": "Which view would you give a person who needed to find the join, and which would help them inspect it?"
+  },
+  "quest:earlier-viewing.orbital-window": {
+    "return-to-it": "What would happen to your account of the flight if you used the catalogue date as a mission date?"
+  },
+  "quest:earlier-viewing.sea-learning-notice": {
+    "return-to-it": "Which record would help you ask about a repair, and which could locate this watcher’s observation?"
+  },
+  "quest:earlier-viewing.repair-and-memory": {
+    "return-to-it": "What does the family’s custody record let you say, and where would you leave room for a visitor’s own response?"
+  },
+  "quest:scout.o.compare": {
+    "scout-conditions": "If both scouts opened a blocked turn, which part of their instructions would you check before changing your route?"
+  },
+  "quest:scout.o.notice": {
+    "scout-receiver": "What does the next carrier need to hear alongside “turn blocked” before it is safe to act on the slip?"
   }
 }

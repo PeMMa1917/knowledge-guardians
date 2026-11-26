@@ -42,6 +42,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "objectivity",
@@ -80,6 +81,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "methods-and-tools"],
       "concepts": [
        "perspective",
        "culture",
@@ -115,6 +117,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "ethics"],
       "concepts": [
        "values",
        "power",
@@ -128,7 +131,8 @@
       ],
       "aoks": [
        "ART",
-       "HUM"
+       "HUM",
+       "LAN"
       ],
       "subjects": [
        "theatre",
@@ -168,6 +172,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "perspectives"],
       "concepts": [
        "perspective",
        "interpretation",
@@ -179,7 +184,8 @@
       ],
       "aoks": [
        "ART",
-       "HUM"
+       "HUM",
+       "LAN"
       ],
       "subjects": [
        "theatre",
@@ -203,6 +209,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "perspectives"],
       "concepts": [
        "truth",
        "perspective",

@@ -1317,6 +1317,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "ethics"],
       "concepts": [
        "power"
       ],
@@ -1324,7 +1325,8 @@
        "communication"
       ],
       "aoks": [
-       "HIS"
+       "HIS",
+       "LAN"
       ],
       "subjects": [
        "history"
@@ -1354,6 +1356,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "certainty",
@@ -1366,7 +1369,8 @@
        "thinking"
       ],
       "aoks": [
-       "HIS"
+       "HIS",
+       "LAN"
       ],
       "subjects": [
        "history"
@@ -1403,6 +1407,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "interpretation",
@@ -1506,6 +1511,7 @@
      },
      "essential": false,
      "weave": {
+      "framework": ["scope", "perspectives"],
       "concepts": [
        "responsibility",
        "power",
