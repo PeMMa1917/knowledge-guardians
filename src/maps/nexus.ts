@@ -123,6 +123,7 @@ export const NEXUS: MapDef = {
     { id: 'translator-lio', x: 24, y: 13, facing: 'right', visibleIf: { origin: 'traveller' } },
   ],
   interactables: [
+    { id: 'loyalty-kip', kind: 'fieldgame', game: 'loyalty-kip', x: 3, y: 14, w: 1, h: 1, label: "Kip's family map on a reading table (The Famous Ancestor)", art: 'ledger', visibleIf: { flag: 'study.letter', eq: true } },
     { id: 'nexus-viewer-wait', kind: 'scene', x: 9, y: 8, w: 1, h: 1, walkThrough: true,
       label: 'the hinged drawing reader beside the patent', art: 'nexus.viewer-sheet', node: 'nexus.viewer.wait',
       visibleIf: { not: viewerPatent } },

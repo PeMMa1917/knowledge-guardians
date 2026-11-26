@@ -118,6 +118,8 @@ export const EMBERFORD: MapDef = {
     { id: 'singer-teodora', x: 16, y: 15, facing: 'down', visibleIf: { origin: 'singer' } },
   ],
   interactables: [
+    { id: 'loyalty-hesper', kind: 'fieldgame', game: 'loyalty-hesper', x: 9, y: 18, w: 1, h: 1, label: "a record on Hesper's work bench (The Traveller's Quench)", art: 'ledger', visibleIf: { num: 'lamps.lit', gte: 6 } },
+    { id: 'loyalty-sefa', kind: 'fieldgame', game: 'loyalty-sefa', x: 33, y: 22, w: 1, h: 1, label: "Sefa's song sheet on the memorial stone (The Flood Song)", art: 'old-sign', visibleIf: { num: 'lamps.lit', gte: 6 } },
     ...sceneProp('emberford.gauge', 29, 19, 'the river gauge board', 'notice-board',
       { repeat: 'board-stand', compare: 'cork-board' }),
     ...sceneProp('emberford.tally', 14, 20, 'the bakers’ tally', 'ledger',

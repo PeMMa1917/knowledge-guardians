@@ -1943,6 +1943,114 @@
     ]
    },
    "line": "You solved the watches without anyone's lamp but your own. Good. A lamp is only a lamp."
+  },
+  {
+   "id": "loyal.sefa.old",
+   "character": "scholar-sefa",
+   "if": {
+    "flag": "loyalty.sefa",
+    "eq": "old"
+   },
+   "line": "I sang the old verse. Tova stood at the back and did not sing. I owe her a conversation."
+  },
+  {
+   "id": "loyal.sefa.ledger",
+   "character": "scholar-sefa",
+   "if": {
+    "flag": "loyalty.sefa",
+    "eq": "ledger"
+   },
+   "line": "I sang the sixth step. Two guild families walked out. One came back for the last line."
+  },
+  {
+   "id": "loyal.sefa.both",
+   "character": "scholar-sefa",
+   "if": {
+    "flag": "loyalty.sefa",
+    "eq": "both"
+   },
+   "line": "I sang the new verse. Tova cried. Then she sang the boats part louder than anyone."
+  },
+  {
+   "id": "loyal.kip.proud",
+   "character": "kip-arden",
+   "if": {
+    "flag": "loyalty.kip",
+    "eq": "proud"
+   },
+   "line": "Grandmother framed the map again. I kept the ledger page in my pocket. It is getting soft."
+  },
+  {
+   "id": "loyal.kip.not",
+   "character": "kip-arden",
+   "if": {
+    "flag": "loyalty.kip",
+    "eq": "not"
+   },
+   "line": "I told them Coll drew it. Then I realised I had done the same thing backwards. I am fixing it."
+  },
+  {
+   "id": "loyal.kip.mixed",
+   "character": "kip-arden",
+   "if": {
+    "flag": "loyalty.kip",
+    "eq": "mixed"
+   },
+   "line": "Grandmother was cross for a week. Now she tells the pilots part first. She does the voices."
+  },
+  {
+   "id": "loyal.hesper.sign",
+   "character": "smith-hesper",
+   "if": {
+    "flag": "loyalty.hesper",
+    "eq": "sign"
+   },
+   "line": "New sign. 'Imre and the Lyles.' A buyer asked who Imre was. I told her. Took ten minutes. She bought two."
+  },
+  {
+   "id": "loyal.hesper.private",
+   "character": "smith-hesper",
+   "if": {
+    "flag": "loyalty.hesper",
+    "eq": "private"
+   },
+   "line": "Told the apprentices about Imre. They asked why the sign does not say it. Good question. I hate it."
+  },
+  {
+   "id": "loyal.hesper.find",
+   "character": "smith-hesper",
+   "if": {
+    "flag": "loyalty.hesper",
+    "eq": "find"
+   },
+   "line": "No letter back from the east yet. Waiting is worse than a cracked blade. I am still waiting."
+  },
+  {
+   "id": "loyal.rook.public",
+   "character": "rook-tamsin",
+   "if": {
+    "flag": "loyalty.rook",
+    "eq": "public"
+   },
+   "line": "My name is on the well post now. People read it and nod at me. I do not know what to do with nodding."
+  },
+  {
+   "id": "loyal.rook.quiet",
+   "character": "rook-tamsin",
+   "if": {
+    "flag": "loyalty.rook",
+    "eq": "quiet"
+   },
+   "line": "The seal is gone. Nobody knows it was mine. That should feel better than it does."
+  },
+  {
+   "id": "loyal.rook.family",
+   "character": "rook-tamsin",
+   "if": {
+    "flag": "loyalty.rook",
+    "eq": "family"
+   },
+   "line": "She shook my hand. I keep thinking about it. I do not trust feelings. I trust that one."
   }
  ]
 }

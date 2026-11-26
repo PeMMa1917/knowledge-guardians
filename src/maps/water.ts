@@ -152,6 +152,7 @@ export const WATER_LOWER_CHANNEL: MapDef = {
     { stamp: 'crates', x: 3, y: 8 }, { stamp: 'barrel', x: 19, y: 14 },
   ],
   interactables: [
+    { id: 'loyalty-rook', kind: 'fieldgame', game: 'loyalty-rook', x: 10, y: 10, w: 1, h: 1, label: "an old well with a flaking gold seal (The Clean Well)", art: 'old-sign', visibleIf: { flag: 'rook.joined', eq: true } },
     crossing('water-lower-return', 3, 12, 'the upper gate path', { map: 'water.gatehouse', x: 24, y: 14 }),
     crossing('water-lower-to-council', 25, 6, 'the steps back to the council yard', { map: 'water.council', x: 22, y: 10 }),
     sign('water-farm-card', 7, 7, 'the seed-row work card', 'preserved.folder',

@@ -62,6 +62,7 @@ import { approvalOf, approvalRank } from '../domain/approval';
 import { ROLES, fitsRole, roleOf } from '../domain/roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
 import { FIELD_GAMES } from '../domain/fieldgames';
+import { loyaltyOf } from '../domain/loyalty';
 import { arrivedLetters, composeLetter, dueLetters } from '../domain/letters';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
@@ -2763,6 +2764,7 @@ export class UI implements UIApi {
     else if (id === 'slate') this.openSlate();
     else if (id === 'word') this.openMissingWord();
     else if (id === 'bones') this.openBones();
+    else if (id.startsWith('loyalty-')) this.openLoyalty(id.slice(8));
   }
 
   /** Close a field game: first time gives marks and the idea in the Lore codex. */
@@ -2929,6 +2931,50 @@ export class UI implements UIApi {
         } }, line))));
     };
     readers();
+  }
+
+  /** A companion loyalty mission: three sources, the companion's blind spot, and a dilemma where every choice costs something. */
+  openLoyalty(id: string): void {
+    const c = ctx.controller;
+    const m = loyaltyOf(id);
+    if (!m) return;
+    const box = this.openModal('bench-panel wide', m.title);
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, m.title), h('p', {}, m.intro)];
+    const done = c.state.flags[`loyalty.${id}`];
+    if (typeof done === 'string') {
+      const ch = m.choices.find((x) => x.id === done)!;
+      box.replaceChildren(this.closeBtn(), h('h2', {}, m.title), h('p', {}, `You chose: ${ch.text}`), h('p', { class: 'clue-view' }, `${m.who}: ${ch.reply}`), h('p', { class: 'fine' }, `What it cost: ${ch.cost}`),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+      return;
+    }
+    const checked = new Set<number>();
+    let slip: 'open' | 'fixed' | 'missed' | null = null;
+    const render = () => {
+      const parts: (HTMLElement | string)[] = [...head(),
+        h('div', { class: 'notice-options' }, ...m.sources.map((src, i) => h('button', { type: 'button', class: checked.has(i) ? 'seen' : '', onclick: () => { checked.add(i); if (slip === null) slip = 'open'; this.sfx('sfx.page'); render(); } }, `${checked.has(i) ? '✓ ' : ''}${src.label}`))),
+        ...m.sources.filter((_, i) => checked.has(i)).map((src) => h('p', { class: 'clue-view' }, h('strong', {}, `${src.label}: `), src.text))];
+      if (slip === 'open') {
+        parts.push(h('p', { class: 'clue-view fresh' }, m.slip.says),
+          h('div', { class: 'notice-options' },
+            h('button', { type: 'button', onclick: () => { slip = 'fixed'; c.dispatch({ type: 'SetFlag', flag: `loyalty.${id}.noticed`, value: true }); this.sfx('sfx.sparkle'); render(); } }, m.slip.notice),
+            h('button', { type: 'button', onclick: () => { slip = 'missed'; render(); } }, 'Let it pass and keep reading.')));
+      } else if (slip === 'fixed') parts.push(h('p', { class: 'fine' }, m.slip.fixed));
+      if (slip === 'missed' && checked.size === m.sources.length) parts.push(h('p', { class: 'fine' }, m.slip.miss));
+      if (checked.size === m.sources.length && slip !== 'open') {
+        parts.push(h('h3', {}, m.question), h('p', { class: 'fine' }, 'Every choice here has a cost. There is no hidden right answer.'),
+          h('div', { class: 'notice-options' }, ...m.choices.map((ch) => h('button', { type: 'button', onclick: () => choose(ch) }, h('span', {}, ch.text), h('span', { class: 'fine', style: 'display:block' }, `Cost: ${ch.cost}`)))));
+      } else if (checked.size < m.sources.length) parts.push(h('p', { class: 'fine' }, `Check all three sources before you decide (${checked.size} of 3).`));
+      box.replaceChildren(...parts);
+    };
+    const choose = (ch: (typeof m.choices)[number]) => {
+      c.dispatch({ type: 'SetFlag', flag: `loyalty.${id}`, value: ch.id });
+      this.sfx('sfx.award');
+      box.replaceChildren(this.closeBtn(), h('h2', {}, m.title), h('p', { class: 'clue-view fresh' }, `${m.who}: ${ch.reply}`), h('p', { class: 'fine' }, `What it cost: ${ch.cost}`),
+        h('p', { class: 'clue-view' }, h('strong', {}, 'The idea: '), m.idea),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    render();
   }
 
   /** Lanterns and Bones: Juno's dice table. Is a six 'due'? Which die is loaded? No betting: only evidence. */

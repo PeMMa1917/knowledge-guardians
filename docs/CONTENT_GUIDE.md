@@ -299,3 +299,7 @@ All three are in `src/content/story.json` (made by a generator script; edit the 
 - Give the person their own look: set `sprite` to a made look (`custom:skin.hair.outfit.trousers.accessory.accent[.style.glasses.aid]`), never another named character's sheet. A test checks that the look is valid.
 - Add two lines in `src/content/chapter-voices.json`: a `life.<id>` line (their own voice, a life outside the plot, if the chapter is not finished) and an `ack.<id>` line (they notice what the player did, after the chapter's last objective).
 - Add Echo lines (`echo.<id>.<n>`) when a person should remember a choice from an earlier chapter. The condition is `all` of: the chapter's second objective done, the chapter's last objective not done, and the earlier choice flag. The line must say what the player did ('you', 'your'). `tests/echoes.test.ts` checks the flags.
+
+## Add a companion loyalty mission
+
+In `src/domain/loyalty.ts` (`LOYALTY`): `companion`, `who`, `title`, `available`, `intro`, three `sources`, a `slip` (what the companion's blind spot makes them say; the player's `notice`; the `fixed` and `miss` outcomes), a `question`, three `choices` (each with a real `cost` and the companion's `reply` to the player's reasons) and the `idea`. Place it as kind `fieldgame` with `game: 'loyalty-<id>'` and the same `visibleIf` as `available`. Add one `loyal.<id>.<choice>` line per choice in `src/content/chapter-voices.json`. A test checks all of this.
