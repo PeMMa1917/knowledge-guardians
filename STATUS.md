@@ -568,3 +568,7 @@ At Fern Station, the Guardian can check the same three marks from two positions 
 ## The Blue Tail
 
 A caught stair warning gives the opening player two plausible leads and a real choice about how to help a waiting porter. Fifteen chapter placements continue the trail through timed watches, records and other checks. The matched counterfoil and a witness’s approved words support a new Council warning, with different reader receipts and a visible Nexus return for each delivery. The historical arrival remains open. The story uses existing campaign flags and inventory, and leaves the main chapter gates and original endings available. [Story and conflict notes](docs/STORY_BIBLE.md#7-the-long-mystery-setup-and-payoff) · [Branch and geometry checks](tests/blue-tail.test.ts)
+
+## Rook’s well repair in Afterwards
+
+The Clean Well now carries each choice into its own aftermath. Rook signs the public retest, the seed-row crew maintains an unsigned warning, or the family keeps the account while neighbours receive a warning. New choices leave distinct diary entries. Existing saves retain their choice and any diary entries already written. Ise’s Blue Tail desk keeps a copy beside its new stub while the original stays with the player. [Route and save checks](tests/loyalty.test.ts)

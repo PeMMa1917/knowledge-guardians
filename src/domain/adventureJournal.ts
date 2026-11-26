@@ -149,7 +149,7 @@ function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignS
     const choice = pledge?.choices.find((entry) => entry.id === cmd.value);
     if (pledge && choice) return {
       id: `loyalty:${pledge.id}:${choice.id}`, kind: 'choice', title: pledge.title,
-      text: `I chose “${choice.text}” ${pledge.who} replied, ${choice.reply}`,
+      text: choice.journal ?? `I chose “${choice.text}” ${pledge.who} replied, ${choice.reply}`,
     };
   }
 }

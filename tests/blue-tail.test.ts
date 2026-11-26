@@ -164,6 +164,7 @@ describe('The Blue Tail', () => {
     expect(target(d, `nexus-${end}`)?.label).toMatch(end === 'rail' ? /lowered warning/ : /two bell times/);
     expect(target(d, `nexus-${otherEnd}`)).toBeUndefined();
     expect(d.s.inventory['item.blue-tail']).toBe(1);
+    if (end === 'desk') expect(d.e.node('tail.nexus.desk').text).toContain('a copy of the old blank strip');
     expect(d.s.flags['ending.council']).toBeUndefined();
     expect(d.done('council.finish')).toBe(false);
     expect(d.p.credit).toEqual(before);

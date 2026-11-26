@@ -9,7 +9,13 @@
 import type { Condition } from './types';
 
 export interface LoyaltySource { label: string; text: string }
-export interface LoyaltyChoice { id: string; text: string; cost: string; reply: string }
+export interface LoyaltyChoice {
+  id: string;
+  text: string;
+  cost: string;
+  reply: string;
+  journal?: string;
+}
 export interface Loyalty {
   id: string;
   companion: string;
@@ -94,9 +100,12 @@ export const LOYALTY: Loyalty[] = [
       miss: "Rook moves on. Later, the mother says 'the dry months', and Rook goes very still. 'The crew told me that an hour ago, and I called it a story. I do it every time.'" },
     question: 'How will Rook make it right?',
     choices: [
-      { id: 'public', text: "Test the well again in the dry month, and post the result beside the old seal, with Rook's name.", cost: "The truth is in the open, and people will boil water in the dry months. But Rook's name is on the failure, in public, for good.", reply: "'My name on my mistake. That is fair. It is also the first thing I have signed in years that I believe.'" },
-      { id: 'quiet', text: 'Take the seal down quietly, and boil-water notices go up without any names.', cost: 'The danger is fixed fast. But the people who were harmed never hear what went wrong, or who did it.', reply: "'Clean and quiet. That is how the Seal did things too.' Rook does not look at you." },
-      { id: 'family', text: "Bring the girl's family to see the new test, and let Rook tell them.", cost: "Hardest for Rook, and the family may not forgive. But they hear it from the person who did it, with the evidence in front of them.", reply: "Rook's hands shake on the bucket rope. 'Fine. Yes. Stay near.' Afterwards, quietly: 'She shook my hand. I did not expect that. I do not know what to do with it.'" },
+      { id: 'public', text: "Test the well again in the dry month, and post the result beside the old seal, with Rook's name.", cost: "The truth is in the open, and people will boil water in the dry months. But Rook's name is on the failure, in public, for good.", reply: "'My name on my mistake. That is fair. It is also the first thing I have signed in years that I believe.'",
+        journal: 'I asked Rook to check the well in the dry month and sign the public result. Rook agreed to put their name beside the old seal.' },
+      { id: 'quiet', text: 'Take the seal down quietly, and boil-water notices go up without any names.', cost: 'The danger is fixed fast. But the people who were harmed never hear what went wrong, or who did it.', reply: "'Clean and quiet. That is how the Seal did things too.' Rook does not look at you.",
+        journal: 'I chose to take down the seal and post an unsigned warning. People get the warning right away. The families still have no account of who stamped the well.' },
+      { id: 'family', text: "Bring the girl's family to see the new test, and let Rook tell them.", cost: "Hardest for Rook, and the family may not forgive. But they hear it from the person who did it, with the evidence in front of them.", reply: "Rook's hands shake on the bucket rope. 'Fine. Yes. Stay near.' Afterwards, quietly: 'She shook my hand. I did not expect that. I do not know what to do with it.'",
+        journal: 'I stayed beside Rook while they showed the family the new test and told them what happened. The mother shook Rook’s hand. Their conversation stays with them.' },
     ],
     idea: "A test is only as good as when and where it was made. Testimony can carry the fact a test missed. A sceptic who dismisses every story can be fooled by their own test." },
 ];
