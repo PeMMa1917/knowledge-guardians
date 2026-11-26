@@ -39,6 +39,7 @@ Authors can use these sequences when reviewing linked DP subjects and practice f
 - Offer multiple ways into the same idea. A player might inspect a physical record, run a controlled trial, follow a route, or return to listen to a reader. Keep key information in text as well as diagrams and sound.
 - Keep fictional models labelled, and give documented objects a specific source. For classroom transfer, invite students to choose different examples from their learning or surroundings and explain what those examples actually show.
 - Use the current guide for formal assessment requirements and academic integrity. The game provides practice in reasoning and communication. A play route, its credit and its coverage report describe activity in the game.
+- Use the Adventure Journal to revisit choices, conversations and evidence in their original game context. Optional written notes are separate from the automatic record, and any export is the player’s choice. The journal can recall a reason for a change without asking the player to produce a formal commentary. [adventure-journal.test.ts](../tests/adventure-journal.test.ts)
 
 ## Ideas from the supplied teaching materials
 
@@ -100,18 +101,18 @@ These are available design opportunities. The snapshot counts unique mission obj
 
 | Review measure | 26 November snapshot |
 |---|---:|
-| Mission objectives with a weave record | 333 of 333 |
-| Explicit framework descriptions by objective | 68 of 333 |
-| Explicit thinking profiles on objectives | 57 of 333 |
+| Mission objectives with a weave record | 360 of 360 |
+| Explicit framework descriptions by objective | 95 of 360 |
+| Explicit thinking profiles on objectives | 79 of 360 |
 | Separate action profiles in the author registry | 40 |
 | Concepts with objective tags | 12 of 12 |
 | Areas of knowledge with objective tags | 5 of 5 |
-| Optional themes with objective tags | 4 of 5 |
-| DP subject IDs with objective tags | 27 of 28 |
+| Optional themes with objective tags | 5 of 5 |
+| DP subject IDs with objective tags | 29 of 30 |
 | ATL categories with objective tags | 5 of 5 |
-| Journal moments across all ten learner attributes | 77 |
+| Journal moments across all ten learner attributes | 79 |
 
-The same snapshot has 42 explicit scope, 56 perspectives, 52 methods and tools, and 40 ethics objectives. Twenty-one essential objectives have a self-management tag and one essential objective explicitly tags ethics. World religions has no objective tag. Classical languages has one co-tag. Dance and sports, exercise and health science have two objectives each in one shared optional route. Computer science and music have three each. Knowledgeable and risk-taker have two Journal moments each, compared with 19 for caring. These counts help prioritize authoring and review of the essential routes. [buildPack](../src/content/index.ts), [curriculum.ts](../src/domain/curriculum.ts), [learningLevels.ts](../src/domain/learningLevels.ts)
+The same snapshot has 61 explicit scope, 79 perspectives, 70 methods and tools, and 55 ethics objectives. Twenty-one essential objectives have a self-management tag and one essential objective explicitly tags ethics. Language ab initio has no objective tag and World religions has one. Four Vindolanda steps add specific Classical Languages practice to the earlier co-tag. Dance and sports, exercise and health science have two objectives each in one shared optional route. Computer science and music have three each. Knowledgeable and risk-taker have two Journal moments each. Those counts help prioritize authoring and review of the essential routes. [buildPack](../src/content/index.ts), [curriculum.ts](../src/domain/curriculum.ts), [learningLevels.ts](../src/domain/learningLevels.ts)
 
 ### Concepts and framework
 
@@ -147,20 +148,21 @@ The registry uses one list for five areas and five optional theme codes. The cor
 | Knowledge and technology | Compare the patent’s marking detail and full page. Change which requests an allocation tool counts separately from how it allocates. [opening-viewer.test.ts](../tests/opening-viewer.test.ts), [civic-story.test.ts](../tests/civic-story.test.ts) |
 | Knowledge and language | Compare practical meanings of a local phrase and revise the sign with its context or source. [nile-map-guide.test.ts](../tests/nile-map-guide.test.ts), [voices-story.test.ts](../tests/voices-story.test.ts) |
 | Knowledge and politics | Ask who sets an access rule, whose needs count and what happens when the rule travels. [civic-story.test.ts](../tests/civic-story.test.ts), [archive-handoff.test.ts](../tests/archive-handoff.test.ts) |
-| Knowledge and religion | Fictional promises and rituals offer a starting point. A specifically sourced comparison of accounts, practices or interpretive authority remains open. [voices-last-lamp.test.ts](../tests/voices-last-lamp.test.ts), [crossings.ts](../src/domain/crossings.ts) |
+| Knowledge and religion | The Market compares separate published accounts of langar at a Sikh gurdwara in Fremont and hospitality at Saint Meinrad Archabbey. A local access decision returns to the reasons and limits given in each account. Fictional rituals remain a separate thread. [SOURCES.md](SOURCES.md), [welcome.json](../src/content/welcome.json), [voices-last-lamp.test.ts](../tests/voices-last-lamp.test.ts) |
 | Knowledge and Indigenous societies | The Edge of the Record follows the 1809 Fort Wayne and Wea treaties and distinguishes their purposes from an Absentee Shawnee Tribe account and an Eastern Shawnee Tribe of Oklahoma constitutional record. Players choose which record a reader encounters first. The case leaves the freedom of negotiation and exact words spoken open. It begins one thread across Voices and the Civic Machine. [SOURCES.md](SOURCES.md), [record-edge.test.ts](../tests/record-edge.test.ts) |
 
 ### DP subject opportunities
 
-These links show where a subject’s practice is visible or where a co-tag points to a nearby subject-specific gap. They do not establish subject syllabus coverage. Language B and ab initio share one ID. Environmental systems and societies spans two groups.
+These links show where a subject’s practice is visible or where a co-tag points to a nearby subject-specific gap. They do not establish subject syllabus coverage. Environmental systems and societies spans two groups.
 
 | Subject | Available depth |
 |---|---|
 | Language A: literature | The harbour and singer origins connect the interpretation of songs and testimony to what can survive a transfer. Practice with sustained literary form is limited. [origins.json](../src/content/origins.json) |
 | Language A: language and literature | The City shows what changes when a copy loses a date, an attributed source or a qualification. [copies-story.test.ts](../tests/copies-story.test.ts) |
 | Literature and performance | Play the same lines with different ordering of movement and pause. Use the result in a programme for distinct seats. [performance-story.test.ts](../tests/performance-story.test.ts) |
-| Language B and ab initio | Translation proofs compare what wording keeps and what context travels. Target-language acquisition and language-specific packs remain open. [opening-ferry.test.ts](../tests/opening-ferry.test.ts) |
-| Classical languages | The royal custody encounter is co-tagged. Its records are not a sustained Latin or Classical Greek reading task. A sourced inscription and two consequential translation choices would supply a specific practice. [m04-preserved.json](../src/content/m04-preserved.json) |
+| Language B | Translation proofs compare what wording keeps and what context travels. Target-language acquisition and language-specific packs remain open. [opening-ferry.test.ts](../tests/opening-ferry.test.ts) |
+| Language ab initio | Two guides to the same path show how a newcomer can use a landmark and request a second cue. A separate beginner-language action using a supported word in context remains open. [opening-wayfinding.test.ts](../tests/opening-wayfinding.test.ts), [voices-story.test.ts](../tests/voices-story.test.ts) |
+| Classical languages | Align two proposed readings of Vindolanda tablet 291 with a trace. In the Metalworks use the copied Latin address to separate sender, recipient and scribe before deciding where a repair witness is needed. Greek examples and sustained Latin reading remain open. [vindolanda.test.ts](../tests/vindolanda.test.ts), [SOURCES.md](SOURCES.md) |
 | Business management | The Emberford case lets players negotiate a trade claim, compare workshop terms and decide how a corrected message will reach buyers. [playthrough.test.ts](../tests/playthrough.test.ts), [emberford-side.json](../src/content/emberford-side.json) |
 | Digital society | The Civic reporting tool makes collection channels and rule effects visible. The City press offers an analogue for attribution and source loss. [civic-story.test.ts](../tests/civic-story.test.ts), [copies-story.test.ts](../tests/copies-story.test.ts) |
 | Economics | Compare a lot’s total price, price relative to usable mass and what a buyer with a fixed purse can purchase. [market-story.test.ts](../tests/market-story.test.ts) |
@@ -170,7 +172,7 @@ These links show where a subject’s practice is visible or where a co-tag point
 | Philosophy | The Council puts different reasons for trusting a warranted check on the same problem and introduces Mill’s argument for testing received opinions. Independent philosophical argument traditions are lighter. [council-story.test.ts](../tests/council-story.test.ts), [SOURCES.md](SOURCES.md) |
 | Psychology | The dock and theatre provide partial analogues for attention, visual cues and interpretation. The psychology-tagged arrival and posture cases do not yet support a dedicated comparison of behavioural methods. [origins.json](../src/content/origins.json), [nexus-handle.json](../src/content/nexus-handle.json) |
 | Social and cultural anthropology | Compare the meaning of marks across local occupational practices. Players can check a participant’s account and a dated record without collapsing the two. [emberford-followups.test.ts](../tests/emberford-followups.test.ts), [voices-story.test.ts](../tests/voices-story.test.ts) |
-| World religions | The fictional promise at the last lamp gives players a case about a community practice. There is no World religions objective tag or comparative study of real sources. [voices-last-lamp.test.ts](../tests/voices-last-lamp.test.ts) |
+| World religions | Compare separately attributed accounts of welcome, a shared meal and visitor arrangements in two real communities. Use the distinctions to help arrange an invitation and the clerk’s separate permission in the fictional Market. One route provides this subject’s explicit tag. [welcome.json](../src/content/welcome.json), [SOURCES.md](SOURCES.md) |
 | Environmental systems and societies | Change a water allocation, revisit the repaired channel and see different users’ effects. The Forest contrasts observations through equal samples and at separate times. [water-story.test.ts](../tests/water-story.test.ts), [forest-sampling.test.ts](../tests/forest-sampling.test.ts) |
 | Biology | The Green Squares holds sampling area fixed and distinguishes the number of cells with growth from abundance. It compares the field pattern to a separate observation of boot contacts. [forest-sampling.test.ts](../tests/forest-sampling.test.ts) |
 | Chemistry | The Cold Store compares a measured composition clue and a material-source interpretation while leaving transport open. More hands-on composition comparisons remain open. [preserved-copper.test.ts](../tests/preserved-copper.test.ts), [metal-sample.test.ts](../tests/metal-sample.test.ts) |
@@ -224,10 +226,12 @@ The Nexus and Emberford have two optional, authored Extended Essay practice trai
 
 Creativity, activity and service appear as habits. Design a welcome, rehearse a movement cue, or listen to neighbours, plan with them and revisit how the well or gate works. Play does not count toward CAS and gives no credit for activities outside the game. [lanternfair.test.ts](../tests/lanternfair.test.ts), [island-movement.test.ts](../tests/island-movement.test.ts), [side-quests.test.ts](../tests/side-quests.test.ts), [water-story.test.ts](../tests/water-story.test.ts)
 
+The Third Fold and A Frame at the Dock combine Extended Essay research habits with creative, collaborative service. Players narrow Edda’s claim, keep a controlled fold test separate from a consenting viewer’s reading of the same pictures, and carry the dated proof forward. The Island repeats a local trial before installing an arrangement with the carriers and returning to act on their report. Comparing the still and sequence gives Film and Literature and performance a shared action. Choosing and testing the hinge gives Visual arts and Design technology a material decision. [performance-frames.test.ts](../tests/performance-frames.test.ts)
+
 ## Next checks
 
 1. Review the longest gaps after the opening on a main route and a long detour. Add a short actual decision where a missing concept can change what somebody does. Time the expanded routes with students and compare which readers, records and tools they used. [Learning design](LEARNING_DESIGN.md)
 2. Improve the earliest exhibition loop. Offer a plausible exhibit exchange and a visitor who needs a detail that only one object supplies. Let either placement lead somewhere and keep a quick way to revise. Check the effect from a second visitor’s route. [exhibition.ts](../src/domain/exhibition.ts), [preserved-exhibition.test.ts](../tests/preserved-exhibition.test.ts)
-3. Give World religions and Classical languages carefully sourced, named opportunities. For World religions distinguish practice inside a community from an outside account. For Classical languages make a specific grammatical or inscriptional reading change where a record goes. Extend the Indigenous societies strand beyond historical government records through other publicly shareable community knowledge, keeping any relevant access limits visible. [SOURCES.md](SOURCES.md)
+3. Build a second World religions case that distinguishes a community’s practice from an outside account. For Classical languages, pair another documented inscription with a different reason to keep an editorial uncertainty visible. Extend the Indigenous societies strand through other publicly shareable community knowledge and keep any relevant access limits visible. [SOURCES.md](SOURCES.md), [vindolanda.test.ts](../tests/vindolanda.test.ts)
 4. Give narrow subjects a second action in a different setting. Examples are a short film-framing choice where a counterpart can check what the cut hides, and a record-routing tool where a duplicate or missing field changes a decision. For music, let a later performer regularize the cue and check how another group enters. [performance-transfer.test.ts](../tests/performance-transfer.test.ts), [civic-console.test.ts](../tests/civic-console.test.ts), [musicbox.test.ts](../tests/musicbox.test.ts)
 5. Review self-management and sparse learner moments against actual actions. Returning to check a plan or volunteering a new inquiry can be reflected as a private moment after the action. Progress counts and moments remain separate from a teacher's judgement about learning. [learning.ts](../src/domain/learning.ts), [teacher.test.ts](../tests/teacher.test.ts)

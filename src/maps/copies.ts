@@ -2,6 +2,7 @@
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
 import { COPIES_ARCHIVE_BACKBILL, COPIES_PRESS_BACKBILL } from './backbill';
+import { COPIES_WELCOME } from './welcome';
 
 type CitySite = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'interactables' | 'stamps' | 'lights'>;
@@ -147,6 +148,7 @@ export const COPIES_LANDING: MapDef = {
     { stamp: 'flowers-white', x: 1, y: 9 }, { stamp: 'flowers-small', x: 3, y: 5 },
   ],
   interactables: [
+    ...COPIES_WELCOME,
     door('copies-landing-return', 12, 15, 'the steps back to the Record Room', { map: 'copies.archive', x: 21, y: 5 }),
     door('copies-landing-to-press', 3, 9, 'the passage back to the press', { map: 'copies.press', x: 21, y: 9 }),
     { id: 'copies-compare-landing', kind: 'copy-compare', node: 'landing', x: 20, y: 9, w: 1, h: 1,

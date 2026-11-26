@@ -1,3 +1,5 @@
+import { soundtrackCaption } from '../domain/campaignScore';
+
 /**
  * Sound captions (spec 21 accessibility): a short text line for each sound, so a
  * player who cannot hear (or plays muted) still knows what happened. Captions show
@@ -41,7 +43,7 @@ export function captionFor(key: string, who?: string): string | null {
   if (key === 'voice' && who) return `${who} talks`;
   if (key === 'emote' && who) return who;
   if (key === 'amb.forge' && who) return `${CAPTIONS[key]} (${who})`;
-  return CAPTIONS[key] ?? null;
+  return CAPTIONS[key] ?? soundtrackCaption(key) ?? null;
 }
 
 /** Keeps captions short and calm: the same caption is not shown again within `gap` ms, and at most `max` lines show. */

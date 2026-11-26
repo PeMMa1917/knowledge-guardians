@@ -81,6 +81,13 @@ The game does not show museum photographs. Exhibits are original pixel art drawn
 
 Links can change. When you work on a mission, open each of its source links. If a link is dead, find the current record and update `url` and `accessed`. Do not change the claim to fit a new source without checking it.
 
+## Vindolanda tablet 291 in the Nexus and Metalworks
+
+- HIS-VIND-01 identifies the wooden invitation from Claudia Severa to Sulpicia Lepidina, found at Vindolanda, and the two hands. The museum gives 97–103 CE and identifies the hand in the closing lines as Severa’s. [British Museum, 1986,1001.64](https://www.britishmuseum.org/collection/object/H_1986-1001-64)
+- HIS-VIND-02 gives the broader 97–105 CE range, the back address, and separate ways to read the surviving marks and the edited text. The notes on lines 7–8 explain why the editors moved from *venies* to a possible *aderis* if a trace belongs to a letter. Both dates are production ranges and the broken verb leaves the party’s attendance open. [Roman Inscriptions of Britain, Tabulae Vindolandenses 291](https://romaninscriptionsofbritain.org/inscriptions/TabVindol291)
+
+The display uses a schematic copy and preserves the source labels. The copy goes to the fictional Metalworks. Its outside address supports distinguishing the sender, recipient and hand that recorded the words. The yard’s separate witness instruction is fictional.
+
 ## Chapter 2: Nile Archive and Nexus return table
 
 | Record | Source | Use and limit |
@@ -108,6 +115,16 @@ The Cold Store is a fictional Guardian archive. Its displays use maps and schema
 | HIS-PRES-08 and -09, [Hunan Provincial Cultural Heritage Bureau, reconstruction report](https://wwj.hunan.gov.cn/wwj/c100310/c100311/202405/t20240521_33307461.html) and [ChinaCulture, Mawangdui tombs](https://en.chinaculture.org/gb/en_artqa/2003-09/24/content_39384.htm) | The Mawangdui record places Xin Zhui in Western Han burial context. The reconstruction report describes radiographs, measurements and model choices. An approximation leaves room for features the record cannot settle. The game uses diagram sheets. The external report contains project imagery and discusses human remains. |
 | HIS-PRES-10 to -12, [South Tyrol Museum of Archaeology, Ötzi](https://www.iceman.it/en/oetzi/the-iceman), [equipment record](https://www.iceman.it/en/oetzi/equipment), and [Artioli and colleagues, Long-distance connections in the Copper Age](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0179263) | The museum supplies the 1991 findspot. Its equipment record and the isotope study associate the copper with southern Tuscany. The survey-room routes are schematic possibilities for material exchange. These records do not supply Ötzi’s itinerary. The external museum page includes images of human remains. |
 
+HIS-BINAK-01 records Museums Victoria X 104841, a coiled grass-fibre binak by Wurundjeri maker Mikaela Rose Cottingham. The catalogue describes her learning at Bunjilaka. The heading and First Peoples fields say 2012, while the Date Made association says 2011. The display preserves the two fields. The pixel profile represents a generic paper model in the fictional support trial. [Museums Victoria, X 104841](https://collections.museumsvictoria.com.au/items/1915791)
+
+## The Departure Strip, Ferry Crossing and Bell Archive
+
+Ferry Crossing and the Bell Archive use an invented wick handoff and original diagrams of filing tabs. The play uses separate records about two historical maps. Neither set of historical map marks appears in the game.
+
+- HIS-DEPART-01 and -02 identify the same manuscript by its shelfmark, Add MS 21593 C. The British Library’s current entry attributes the chart to James Cook and gives 1769. Te Ara identifies it as Tupaia’s chart. The game shows this difference as a fact about the descriptions. [British Library catalogue](https://searcharchives.bl.uk/catalog/040-002033977) · [Te Ara caption and credit](https://teara.govt.nz/en/map/46867/tupaias-chart)
+- HIS-DEPART-03 gives Eckstein and Schwarz’s scholarly reconstruction of collaborative drafting in 1769–70, with Tupaia of Ra‘iātea central to the work. Their introduction and discussion of the British Library copy propose departure-dependent readings and date the surviving version to 1770. The diagrams in the game use fictional racks and pegs. [University of Potsdam open repository](https://doi.org/10.25932/publishup-42309)
+- HIS-DEPART-04 gives Ngāi Tahu Cultural Mapping Project’s public account of the 1908 southern-bays map. Kā Huru Manu names Hone Tututaua Pere and Hoani Te Hau Pere as the sources of the place names and associated meanings, and Taare Parata as the recorder. The map credit identifies Ngāi Tahu Archive MS7-002. The case keeps those roles and the named area attached to the account. [Kā Huru Manu map story](https://kahurumanu.co.nz/map-stories/hoani-te-hau-pere-map/)
+
 ## Chapter 5: Living Forest
 
 Fern Station and its nearby woodland are fictional. The scripted field watches record visible crossings through a gap in the trees or reeds. They provide no animal identities or estimates of the number of birds in the forest.
@@ -119,6 +136,17 @@ Fern Station and its nearby woodland are fictional. The scripted field watches r
 
 Elian’s fictional notebook uses the two source cards for different jobs. The timeline places Goodall’s observation in 1960. The later account names a contributor to a separate field sheet. Players apply those ways of keeping a record to authored observations in the Living Forest and Water Commons.
 
+## Chapter 8: Cartographers’ Sea
+
+HIS-CANOE-01 records Rra-Kalwanyimara, Australian National Maritime Museum object 00001826, dated 1988. The museum lists Annie Karrakayn and Ida Ninganga as Yanyuwa makers and Issac Walayunkuma as a Garrawa maker. It attributes the account of place-linked boat names to Annie Karrakayn and relates this name to Kalwanyi. The original pixel outline represents a generic dugout. Glint and Salt Step belong to the fictional harbour map. [Australian National Maritime Museum, Dugout Canoe](https://www.sea.museum/object/dugout-canoe)
+
+## Where the Welcome Goes, City of Copies and Market of Measures
+
+- REL-WELCOME-01 describes the Sodhi family preparing langar at their Sikh gurdwara in Fremont, California. The account connects a meal shared with visitors to the commitment to equality. [Harvard Pluralism Project, Langar: The Communal Meal](https://pluralism.org/langar-the-communal-meal)
+- REL-WELCOME-02 and REL-WELCOME-03 give Saint Meinrad Archabbey’s own account in southern Indiana. The community identifies its welcome with Saint Benedict’s call to receive guests as Christ. Its visitor information gives separate details for self-guided tours and the church prayer schedule. [Visit Us](https://www.saintmeinrad.org/visit-us/) · [Prayer Schedule and Tours](https://www.saintmeinrad.org/visit-us/prayer-schedule-tours/)
+
+Players keep the accounts with their own places, sources and reasons for welcome. The menders’ invitation and the Market’s tally boundary are fictional access decisions. The public accounts are summarized in plain language.
+
 ## The Edge of the Record, Archive of Voices and Civic Machine
 
 The folio and its keepers are fictional. The historical exhibits use original illustrations and prose summaries of public documents.
@@ -127,6 +155,11 @@ The folio and its keepers are fictional. The historical exhibits use original il
 - HIS-EDGE-02 gives the Absentee Shawnee Tribe’s public account of Tecumseh’s coalition work. HIS-EDGE-03 gives the Indiana state marker’s account of the meetings in 1810 and 1811 and of Tecumseh’s objection. The game attributes each account and leaves the exact words spoken open. [Absentee Shawnee Tribe public introduction](https://www.astribe.com/) · [Indiana Historical Bureau marker](https://www.in.gov/history/state-historical-markers/find-a-marker/tecumseh-and-harrison/)
 - HIS-EDGE-05 supplies the separate convention dated 26 October 1809. Its preamble and signatures identify listed Wea representatives and William Henry Harrison. The text records a declaration and leaves the circumstances of negotiation open. [Oklahoma State University treaty transcript, 7 Stat. 116](https://treaties.okstate.edu/treaties/treaty-with-the-wea-1809-0103)
 - HIS-EDGE-04 distinguishes the three federally recognized Shawnee governments. HIS-EDGE-06 supplies the Eastern Shawnee Tribe of Oklahoma’s own constitutional name and branches of government from Articles I and VI. The 1999 amendment certification dates part of the published file. [Eastern Shawnee Tribe of Oklahoma history](https://www.estoo-nsn.gov/history) · [Official constitutional copy](https://www.estoo-nsn.gov/government/page/constitution-eastern-shawnee-tribe-oklahoma)
+
+## Two Objects, One Number, Market of Measures and Council
+
+- HIS-ID-01 records Am.9941 as an Inka cotton khipu made in Peru in 1400–1532. The curator records that the khipu and a shell trumpet shared the earlier Christy number 9941. The record does not identify what these particular knots meant. [British Museum, Am.9941](https://www.britishmuseum.org/collection/object/E_Am-9941)
+- HIS-ID-02 identifies Oc.9941 as a pierced triton-shell trumpet from Mangaia with a fibre cord. The date, maker and occasions of use stay open. Both in-game drawings are original diagrams based on the collection descriptions. The receiving cases, number calls and porters belong to the fictional campaign. [British Museum, Oc.9941](https://www.britishmuseum.org/collection/object/E_Oc-9941)
 
 ## Chapter 15: Council of Inquiry
 

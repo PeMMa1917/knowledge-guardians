@@ -381,6 +381,197 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH5-R08",
+   "world": "WORLD-06",
+   "title": "The Silent Slot",
+   "knowledgeQuestion": "What can a counter know about an event when a runner brings news twice or brings none?",
+   "stake": "Elian wants the next watch to see the difference between a quiet view and news that is still on the way.",
+   "available": {
+    "objective": "forest.compare"
+   },
+   "objectives": [
+    {
+     "id": "forest.counter.sources",
+     "title": "Read the creek’s first-light slip and the ridge keeper’s copies.",
+     "done": {
+      "all": [
+       {
+        "flag": "forest.counter.source.first",
+        "eq": true
+       },
+       {
+        "flag": "forest.counter.source.second",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "culture",
+       "perspective",
+       "evidence",
+       "power"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT",
+       "TEC"
+      ],
+      "subjects": [
+       "digital-society",
+       "ess",
+       "anthropology"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "understand",
+       "fink": "human",
+       "solo": "multistructural"
+      },
+      "minutes": 2
+     }
+    },
+    {
+     "id": "forest.counter.compare",
+     "title": "Fit the source clip and replay both orders at Elian’s counter.",
+     "visible": {
+      "objective": "forest.counter.sources"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "forest.counter.sources"
+       },
+       {
+        "flag": "forest.counter.source-view",
+        "eq": true
+       },
+       {
+        "flag": "forest.counter.trial.outbound",
+        "eq": true
+       },
+       {
+        "flag": "forest.counter.trial.return",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "truth",
+       "explanation",
+       "interpretation",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "MAT",
+       "TEC",
+       "NAT"
+      ],
+      "subjects": [
+       "computer-science",
+       "digital-society",
+       "math-ai"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "perspectives"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      },
+      "minutes": 2
+     }
+    },
+    {
+     "id": "forest.counter.finish",
+     "title": "Choose a trail marker or a named handover and visit it.",
+     "visible": {
+      "objective": "forest.counter.compare"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "forest.counter.compare"
+       },
+       {
+        "any": [
+         {
+          "flag": "forest.counter.seen.marker",
+          "eq": true
+         },
+         {
+          "flag": "forest.counter.seen.ledger",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "justification",
+       "values",
+       "perspective"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "TEC",
+       "NAT"
+      ],
+      "subjects": [
+       "computer-science",
+       "digital-society",
+       "ess"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "minutes": 1
+     },
+     "onComplete": [
+      {
+       "journal": "j.forest.counter"
+      }
+     ]
+    }
+   ]
   }
  ],
  "dialogue": [
@@ -1334,6 +1525,78 @@
    "objective": "forest.observer.finish",
    "depth": 4,
    "text": "Use the lower path to Fern Station from west of the creek, or the crew path into Bridge Clearing from the far ridge."
+  },
+  {
+   "id": "h.forest.counter.sources.1",
+   "objective": "forest.counter.sources",
+   "depth": 1,
+   "text": "Two slips on Listening Trail tell you what arrived at the station."
+  },
+  {
+   "id": "h.forest.counter.sources.2",
+   "objective": "forest.counter.sources",
+   "depth": 2,
+   "text": "The creek slip is on the west side. The ridge slip and copy are east past the lookouts."
+  },
+  {
+   "id": "h.forest.counter.sources.3",
+   "objective": "forest.counter.sources",
+   "depth": 3,
+   "text": "Find the slip that records a clear zero and the papers that carry one source mark twice."
+  },
+  {
+   "id": "h.forest.counter.sources.4",
+   "objective": "forest.counter.sources",
+   "depth": 4,
+   "text": "Read the first-light creek slip and the ridge keeper’s slip and its copy. Then return to Fern Station."
+  },
+  {
+   "id": "h.forest.counter.compare.1",
+   "objective": "forest.counter.compare",
+   "depth": 1,
+   "text": "The counter at Fern Station can replay the runners in either order."
+  },
+  {
+   "id": "h.forest.counter.compare.2",
+   "objective": "forest.counter.compare",
+   "depth": 2,
+   "text": "Try the envelope count first. Fit the source clip to see each originating slip in its slot."
+  },
+  {
+   "id": "h.forest.counter.compare.3",
+   "objective": "forest.counter.compare",
+   "depth": 3,
+   "text": "Set one bundle and advance all three packets. Set the other and advance all three again."
+  },
+  {
+   "id": "h.forest.counter.compare.4",
+   "objective": "forest.counter.compare",
+   "depth": 4,
+   "text": "Use both bundles and the source clip. Check the row with a zero and the slot still awaiting news."
+  },
+  {
+   "id": "h.forest.counter.finish.1",
+   "objective": "forest.counter.finish",
+   "depth": 1,
+   "text": "A pending check can go straight to the trail or stay with the crew’s notes."
+  },
+  {
+   "id": "h.forest.counter.finish.2",
+   "objective": "forest.counter.finish",
+   "depth": 2,
+   "text": "At the counter, choose the site marker or the named handover."
+  },
+  {
+   "id": "h.forest.counter.finish.3",
+   "objective": "forest.counter.finish",
+   "depth": 3,
+   "text": "For the marker look near the west trail. For the ledger go to the bench in Bridge Clearing."
+  },
+  {
+   "id": "h.forest.counter.finish.4",
+   "objective": "forest.counter.finish",
+   "depth": 4,
+   "text": "Use the selected marker or ledger to see what the next crew can read. The counter can move the display later."
   }
  ],
  "journal": [
@@ -1351,6 +1614,11 @@
    "id": "j.forest.observer",
    "claimKind": "interpretation",
    "text": "The new Fern Station notebook takes each field note with its place, view, keeper and time. It led to a return path. The Gombe records keep their own dates and contributors."
+  },
+  {
+   "id": "j.forest.counter",
+   "claimKind": "interpretation",
+   "text": "The runners delivered three envelopes and the source clip kept two records. We left the quiet beat’s zero and the missing after-bell slip in separate slots. The next crew can see where a fresh check belongs."
   }
  ],
  "keepsakes": [

@@ -18,6 +18,8 @@ export const VIGNETTES: Vignette[] = [
   { who: 'The Nexus', if: f('ending.council', 'recruit'), text: 'Vesper teaches a class on Thursdays: "How to sell certainty, and why you should not." It is always full. Vesper still wears one gold ring, and says it is to remember.' },
   { who: 'The Nexus', if: f('ending.council', 'expose'), text: "The Gilded Seal closed its stalls within a season. Some of its agents took honest work; some went quiet. Vesper left a letter on Elsbet's old desk. Nobody has opened it yet." },
   { who: 'The Nexus', if: f('ending.council', 'both'), text: 'The corrected label hangs by the door, and Vesper checks new labels in the room next to it. They argue every day, Ise says, and every label is better for it.' },
+  { who: 'Lia Vann', if: { all: [f('postgame.edition', 'public'), { flagSet: 'postgame.closed' }] }, text: 'Lia leaves the pen on the new bench. People bring the dates their own families remember. She marks the source of each one before it goes near the main label.' },
+  { who: 'Lia Vann', if: { all: [f('postgame.edition', 'loan'), { flagSet: 'postgame.closed' }] }, text: 'Lia and an apprentice share the loan visits now. They point out the place where a visitor can leave a new lead without leaving their name.' },
   // Ise.
   { who: 'Warden Ise', if: f('ise.harrowmere', 'herself'), text: 'Ise went to Harrowmere herself, alone, and stood in the town square, and told them. She came back older and lighter. She says the name Elsbet first now.' },
   { who: 'Warden Ise', if: f('ise.harrowmere', 'open'), text: 'Ise signs her labels with a new line under her name: "Last checked by". She leaves a space after it for the next person.' },
@@ -66,7 +68,9 @@ export const WHY: Record<string, { said: string; found: string }> = {
 
 /** The mirror scene: the first label and the last. */
 export function mirror(s: CampaignState): string {
-  return `On your first day, you wrote your first true label at the low bench in the Nexus, with a borrowed pen. Today, at the same bench, ${s.flags['ending.council'] ? 'you watched the oldest false label come down' : 'you corrected old labels'}. The pen is yours now.`;
+  const firstDay = 'On your first day, you wrote a new label with a borrowed pen at the low bench in the Nexus.';
+  if (s.flags['postgame.closed']) return `${firstDay} You came back and left that pen and a trail for the next keeper. Someone had already followed it when you left.`;
+  return `${firstDay} The pen is back beside the first label stand.`;
 }
 
 /** How you met the crossings: the reputation you earned without trying. */

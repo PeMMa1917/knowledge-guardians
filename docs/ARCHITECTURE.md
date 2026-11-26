@@ -77,7 +77,7 @@ Content is JSON. It never holds code. Conditions and effects use a small vocabul
 
 | Data | Where | Notes |
 |---|---|---|
-| Campaign state | `CampaignState` in `types.ts` | Position, flags (also counters such as `count.inspected`), inventory, cards, objectives done, journal, notes, marks (money), companion, RNG state, play time, Showdown state, forge billets, event deck. Player name, look, pronouns and origin. Schema version `CAMPAIGN_SCHEMA` (now 4). |
+| Campaign state | `CampaignState` in `types.ts` | Position, flags (also counters such as `count.inspected`), inventory, cards, objectives done, adventure diary, journal notes, marks (money), companion, RNG state, play time, Showdown state, forge billets, event deck. Player name, look, pronouns and origin. Schema version `CAMPAIGN_SCHEMA` (now 5). |
 | Permanent record | `PermanentRecord` | XP per criterion, awards, learner-profile moments, misconception signals, met weave tags and the portfolio. **Never reset** by loading a save. Each criterion has a fixed maximum. `PERMANENT_SCHEMA` is now 3 (Question Stones). |
 | Settings | `src/app/settings.ts` | Accessibility, volume and calm mode. |
 
@@ -90,6 +90,8 @@ There are exactly **two campaign slots**: **Continue** and **Checkpoint recovery
 - "Restore recovery" copies Recovery into Continue.
 
 Both slots are written in one `localStorage` key (`kg.slots`) in one write, with an FNV checksum and a revision number. If another tab changed the save, the write stops with "Save changed in another tab". The permanent record is in `kg.permanent`. Settings are in `kg.settings`.
+
+`adventureJournal.ts` records confirmed choices, quest steps, and experiences after a command runs. Earlier saves keep their notes and known quest history with their dates left open. The Diary tab downloads a Word document made on the player's device. The player can choose to include private notes, reflections, and questions in that copy.
 
 **Schema changes:** when you change `CampaignState`, raise `CAMPAIGN_SCHEMA` and add a function to `MIGRATIONS` in `src/domain/saves.ts`. Add a test in `tests/saves.test.ts`. A save from a newer version is refused, not damaged.
 

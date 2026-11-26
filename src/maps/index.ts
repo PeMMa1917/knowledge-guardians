@@ -1,5 +1,7 @@
 import type { MapDef } from './types';
 import { NEXUS } from './nexus';
+import { NEXT_BENCH } from './afterCouncil';
+import { HANDOVER_GALLERY } from './handoverGallery';
 import { EMBERFORD, REPAIR_YARD } from './emberford';
 import { STUDY } from './study';
 import { FERRY } from './ferry';
@@ -21,6 +23,8 @@ import { WATER_COUNCIL, WATER_GATEHOUSE, WATER_LOWER_CHANNEL } from './water';
 
 export const MAPS: Record<string, MapDef> = {
   [NEXUS.id]: NEXUS,
+  [NEXT_BENCH.id]: NEXT_BENCH,
+  [HANDOVER_GALLERY.id]: HANDOVER_GALLERY,
   [EMBERFORD.id]: EMBERFORD,
   [REPAIR_YARD.id]: REPAIR_YARD,
   [STUDY.id]: STUDY,

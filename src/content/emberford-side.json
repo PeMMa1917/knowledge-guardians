@@ -1376,6 +1376,296 @@
    "speaker": "kip-arden",
    "text": "The apprentices wrote down when to ask again. I can stop asking for them and come back when they have had a go.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "ember.pickup.front",
+   "speaker": "fruit-seller",
+   "text": "See the round edge? That is the return tray. I can pass it to you from this lane. Here at my stall, we also say “mek” to ask me for that tray when my eyes are on the scale.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Point to the return tray from the front lane.",
+     "next": "ember.pickup.pointed",
+     "if": {
+      "all": [
+       {
+        "flag": "reached.emberford",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "ember.pickup.point",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "ember.pickup.point",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the return tray on its edge."
+    }
+   ]
+  },
+  {
+   "id": "ember.pickup.pointed",
+   "speaker": "fruit-seller",
+   "text": "The round one. I see your hand from here. I’ll set it within reach for the next pickup. Try from the path behind my stall while I keep looking over the front.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "ember.pickup.back",
+   "speaker": "narrator",
+   "text": "The same round edge is in sight. From the rear path you see Mara’s shoulder. Her eyes are still on the fruit and scale in front.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Point to the same tray while Mara faces the lane.",
+     "next": "ember.pickup.missed",
+     "if": {
+      "all": [
+       {
+        "flag": "ember.pickup.point",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "ember.pickup.missed",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "ember.pickup.missed",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Say “mek” once and wait for a reply.",
+     "next": "ember.pickup.heard",
+     "if": {
+      "all": [
+       {
+        "flag": "ember.pickup.missed",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "ember.pickup.call",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "ember.pickup.call",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Step away from the stall."
+    }
+   ]
+  },
+  {
+   "id": "ember.pickup.missed",
+   "speaker": "narrator",
+   "text": "Your hand is above the tray. Mara keeps setting fruit on her scale. You can still try the call she taught you from this spot.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Say “mek” once and wait for a reply.",
+     "next": "ember.pickup.heard",
+     "if": {
+      "all": [
+       {
+        "flag": "ember.pickup.missed",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "ember.pickup.call",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "ember.pickup.call",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Give the stall some room."
+    }
+   ]
+  },
+  {
+   "id": "ember.pickup.heard",
+   "speaker": "fruit-seller",
+   "text": "I heard you that time. Here’s the tray. I have an extra round tab and a cord by the corner post. We can set which side should take the next pickup.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "ember.pickup.fix",
+   "speaker": "fruit-seller",
+   "text": "The front faces me, so a low round tab lets a guest point at the right tray. The rear path stays free of the fruit queue. I can answer our pickup call from there while I’m on shift. Where should we set this tray?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Loop a round tab low on the front and set the tray below it.",
+     "next": "ember.pickup.fix.tab",
+     "if": {
+      "all": [
+       {
+        "objective": "ember.pickup.compare"
+       },
+       {
+        "not": {
+         "flagSet": "ember.pickup.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "ember.pickup.layout",
+       "value": "tab"
+      }
+     ]
+    },
+    {
+     "text": "Move the tray to the rear peg and ask Mara to answer the call.",
+     "next": "ember.pickup.fix.voice",
+     "if": {
+      "all": [
+       {
+        "objective": "ember.pickup.compare"
+       },
+       {
+        "not": {
+         "flagSet": "ember.pickup.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "ember.pickup.layout",
+       "value": "voice"
+      }
+     ]
+    },
+    {
+     "text": "Leave the tab and cord by the post."
+    }
+   ]
+  },
+  {
+   "id": "ember.pickup.fix.tab",
+   "speaker": "fruit-seller",
+   "text": "The round tab now sits just above the tray. Walk up from the front lane and try it where a guest would stand.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "ember.pickup.fix.voice",
+   "speaker": "fruit-seller",
+   "text": "I’ve set the tray on the rear peg. Go back around the stall and give our call one more try while my hands are on the scale.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "ember.pickup.tab",
+   "speaker": "narrator",
+   "text": "The low round tab is in the lane’s clear view. Mara turns toward your hand as she brings her scale down.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Point to the round tab and take the tray when Mara offers it.",
+     "next": "ember.pickup.tab.proof",
+     "if": {
+      "all": [
+       {
+        "flag": "ember.pickup.layout",
+        "eq": "tab"
+       },
+       {
+        "not": {
+         "flag": "ember.pickup.taken",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "ember.pickup.taken",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let the next guest go first."
+    }
+   ]
+  },
+  {
+   "id": "ember.pickup.tab.proof",
+   "speaker": "fruit-seller",
+   "text": "You showed me which tray with your hand alone. I’ll leave this marker where everyone in the lane can see it. Keep the spare tab. It can mark a different pickup at a different stall.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "ember.pickup.voice",
+   "speaker": "narrator",
+   "text": "The rear path has room for you. Mara is looking down at the fruit again. The tray is on the peg beside you.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Say “mek” here and take the tray when Mara taps it.",
+     "next": "ember.pickup.voice.proof",
+     "if": {
+      "all": [
+       {
+        "flag": "ember.pickup.layout",
+        "eq": "voice"
+       },
+       {
+        "not": {
+         "flag": "ember.pickup.taken",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "ember.pickup.taken",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the tray on the peg for the next pickup."
+    }
+   ]
+  },
+  {
+   "id": "ember.pickup.voice.proof",
+   "speaker": "fruit-seller",
+   "text": "I heard you before I saw you. The word works on this shift while I’m here to answer. Keep the spare round tab. Another stall could show the spot to someone who comes by with a different word.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "missions": [
@@ -2068,6 +2358,139 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-S14",
+   "world": "WORLD-02",
+   "title": "A Tray at Either Side",
+   "knowledgeQuestion": "What changes when the same request reaches someone from a different place?",
+   "available": {
+    "flag": "reached.emberford",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "ember.pickup.compare",
+     "title": "Try the same tray request from both sides of Mara’s stall.",
+     "done": {
+      "all": [
+       {
+        "flag": "reached.emberford",
+        "eq": true
+       },
+       {
+        "flag": "ember.pickup.point",
+        "eq": true
+       },
+       {
+        "flag": "ember.pickup.missed",
+        "eq": true
+       },
+       {
+        "flag": "ember.pickup.call",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "interpretation",
+       "culture",
+       "evidence",
+       "explanation"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "lang-ab-initio"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-COL-04"
+     ]
+    },
+    {
+     "id": "ember.pickup.done",
+     "title": "Set up one side of the stall and collect the tray from there.",
+     "done": {
+      "all": [
+       {
+        "objective": "ember.pickup.compare"
+       },
+       {
+        "flagSet": "ember.pickup.layout"
+       },
+       {
+        "flag": "ember.pickup.taken",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "justification",
+       "perspective"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "lang-ab-initio",
+       "design-tech"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "human",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-MED-04"
+     ],
+     "visible": {
+      "objective": "ember.pickup.compare"
+     },
+     "onComplete": [
+      {
+       "giveItem": "item.round-tray-tab"
+      }
+     ]
+    }
+   ]
   }
  ],
  "moments": [
@@ -2106,6 +2529,15 @@
    },
    "did": "You looked for the paper Idris had passed over and helped him keep the part of his first reason that worked.",
    "prompt": "Which other paper would have changed the first story?"
+  },
+  {
+   "id": "mom.emberford.round-tab",
+   "attribute": "communicator",
+   "when": {
+    "objective": "ember.pickup.done"
+   },
+   "did": "You tried a point and a stall call from two sides of the counter, then helped Mara put the pickup where it could work.",
+   "prompt": "Who could use your setup without knowing the stall call?"
   }
  ],
  "journal": [
@@ -2500,6 +2932,63 @@
    "objective": "repair.queue.o.receipt",
    "depth": 4,
    "text": "Clip the finished tag inside the open yard, carry the covered tray to Hana and return the stub to the shelf, or pin the next pickup windows from the outside board."
+  },
+  {
+   "id": "h.ember.pickup.compare.1",
+   "objective": "ember.pickup.compare",
+   "depth": 1,
+   "text": "Mara has a round return tray at the Emberford fruit stall."
+  },
+  {
+   "id": "h.ember.pickup.compare.2",
+   "objective": "ember.pickup.compare",
+   "depth": 2,
+   "text": "Start in front of Mara, where she can see your hand."
+  },
+  {
+   "id": "h.ember.pickup.compare.3",
+   "objective": "ember.pickup.compare",
+   "depth": 3,
+   "text": "Walk behind the stall and try the same point with Mara facing away."
+  },
+  {
+   "id": "h.ember.pickup.compare.4",
+   "objective": "ember.pickup.compare",
+   "depth": 4,
+   "text": "Stay on that side and try the agreed pickup call after the missed point."
+  },
+  {
+   "id": "h.ember.pickup.done.1",
+   "objective": "ember.pickup.done",
+   "depth": 1,
+   "text": "Mara has a spare tab and a cord at the corner post."
+  },
+  {
+   "id": "h.ember.pickup.done.2",
+   "objective": "ember.pickup.done",
+   "depth": 2,
+   "text": "The front has a clear view. The empty rear path suits a call Mara can hear."
+  },
+  {
+   "id": "h.ember.pickup.done.3",
+   "objective": "ember.pickup.done",
+   "depth": 3,
+   "text": "Set the tray at the low tab in front or at the rear peg for Mara’s shift."
+  },
+  {
+   "id": "h.ember.pickup.done.4",
+   "objective": "ember.pickup.done",
+   "depth": 4,
+   "text": "Try that same place from the guest’s lane and take the tray once Mara answers."
+  }
+ ],
+ "items": [
+  {
+   "id": "item.round-tray-tab",
+   "name": "Mara’s round tray tab",
+   "historicalLabel": "fictional-world",
+   "art": "icon.letter",
+   "description": "The spare marker from Emberford’s tray. A clear position helped a visitor use it. Lantern Square has a marker rail at the repair counter."
   }
  ]
 }

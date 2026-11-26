@@ -15,6 +15,7 @@ import { bell, chime, clink, rain, shimmer } from '../app/ambience';
 import { CYCLE, raining, skyAt } from '../app/daylight';
 import { lorelingForm } from '../domain/lorelings';
 import { caption } from '../app/captions';
+import { CampaignPlayback } from '../app/campaignPlayback';
 import { LUMEN_COLOURS, lumenArt } from '../app/settings';
 import Phaser from 'phaser';
 import { ctx, type WorldApi } from '../app/context';
@@ -75,6 +76,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private threadGfx: Phaser.GameObjects.Graphics | null = null;
   private gapMark: Phaser.GameObjects.Image | null = null;
   private exploreAcc = 0;
+  private soundtrack?: CampaignPlayback;
 
   constructor() { super('world'); }
 
@@ -105,7 +107,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.keys.E.on('down', interactKey); this.keys.SPACE.on('down', interactKey); this.keys.ENTER.on('down', interactKey);
     this.input.on('pointerdown', (p: Phaser.Input.Pointer) => this.onPointer(p));
     this.scale.on('resize', () => this.fitCamera());
-    this.playMusic(this.map.music);
+    this.playMusic();
     this.cameras.main.fadeIn(ctx.settings.reducedMotion ? 0 : 400, 10, 8, 24);
     ctx.controller.dispatch({ type: 'VisitPlace', name: this.map.name });
     // Arrival zone (e.g. "emberford") is recorded the moment the map opens.
@@ -401,6 +403,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   }
 
   applySettings(): void {
+    this.playMusic();
     // Rebuild atmosphere quickly by restarting the scene at the same spot.
     this.saveSpot();
     this.scene.restart();
@@ -502,14 +505,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     cam.setRoundPixels(true);
   }
 
-  private playMusic(key: string): void {
-    const vol = ctx.settings.musicVolume;
-    const current = this.sound.getAll('').find((s: any) => s.key?.startsWith('music.') && s.isPlaying) as Phaser.Sound.BaseSound | undefined;
-    if (current && (current as any).key === key) return;
-    this.sound.getAll('').forEach((s: any) => { if (s.key?.startsWith('music.')) s.stop(); });
-    caption(key);
-    if (!this.cache.audio.exists(key) || vol <= 0) return;
-    this.sound.play(key, { loop: true, volume: vol });
+  private playMusic(): void {
+    if (!this.soundtrack) {
+      this.soundtrack = new CampaignPlayback(this.sound, this.cache.audio);
+      this.events.once(Phaser.Scenes.Events.DESTROY, () => this.soundtrack?.destroy());
+    }
+    this.soundtrack.follow(this.map.world, this.map.id, this.map.music, ctx.settings.musicVolume);
   }
 
   playSfx(key: string): void {

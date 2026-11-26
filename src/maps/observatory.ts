@@ -17,6 +17,9 @@ const archiveTimeline: Condition = { flag: 'coast.archive.edition', eq: 'timelin
 const archiveRegister: Condition = { flag: 'coast.archive.edition', eq: 'register' };
 const opticalCase: Condition = { objective: 'coast.revise' };
 const useLightScreen: Condition = { flag: 'perspective.active', eq: 'folding-light-screen' };
+const hasDepartureStrip: Condition = { flag: 'keepsake.departure-strip', eq: true };
+const useDepartureStrip: Condition = { flag: 'perspective.active', eq: 'departure-strip' };
+const compareDepartureSlips: Condition = { all: [useDepartureStrip, { card: 'card.departure.pere' }] };
 
 const harbourWidth = 29;
 const harbourHeight = 21;
@@ -271,6 +274,24 @@ export const OBSERVATORY_ARCHIVE: MapDef = {
     { id: 'coast-optics-arch-return', kind: 'door', x: 17, y: 13, w: 1, h: 1,
       label: 'the service passage up to the headland', art: 'preserved.door', visibleIf: useLightScreen,
       to: { map: 'observatory.station', x: 18, y: 13 } },
+    { id: 'coast-departure-southern-bays', kind: 'exhibit', exhibit: 'OBJ-DEPART-PERE', x: 5, y: 4, w: 1, h: 1,
+      label: 'Kā Huru Manu’s account of the southern-bays map', art: 'departure.catalogue', walkThrough: true,
+      visibleIf: hasDepartureStrip },
+    { ...archiveScene('coast-departure-route', 5, 10, 'the printer’s East Landing slip', 'preserved.slip',
+      'departure.archive.route-slip', compareDepartureSlips),
+      artOpen: { key: 'departure.strip', if: { flag: 'departure.archive.route', eq: true } } },
+    { ...archiveScene('coast-departure-loan', 21, 8, 'Tova’s folded Reed Landing receipt', 'preserved.folder',
+      'departure.archive.loan-slip', compareDepartureSlips),
+      artOpen: { key: 'departure.strip', if: { flag: 'departure.archive.receipt', eq: true } } },
+    archiveScene('coast-departure-place', 13, 5, 'the W-17 index table', 'departure.strip', 'departure.archive.place',
+      { all: [compareDepartureSlips, { objective: 'departure.archive.compare' },
+        { not: { flagSet: 'departure.archive.route-plan' } }] }),
+    { ...archiveScene('coast-departure-cross', 5, 12, 'the two drawer tabs below the west bench', 'preserved.display-paired',
+      'departure.archive.cross-check', { flag: 'departure.archive.route-plan', eq: 'cross' }),
+      artOpen: { key: 'departure.strip', if: { flag: 'departure.archive.readback', eq: 'cross' } } },
+    { ...archiveScene('coast-departure-desk', 21, 11, 'the staffed lending tray', 'ledger', 'departure.archive.desk-check',
+      { flag: 'departure.archive.route-plan', eq: 'desk' }),
+      artOpen: { key: 'departure.strip', if: { flag: 'departure.archive.readback', eq: 'desk' } } },
   ],
   lights: [
     { x: 4, y: 6, r: 61, color: 0xecd8a3 }, { x: 18, y: 6, r: 60, color: 0xa7d2ce },

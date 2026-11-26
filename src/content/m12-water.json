@@ -1714,6 +1714,204 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH11-R04",
+   "world": "WORLD-12",
+   "title": "Three Messengers",
+   "knowledgeQuestion": "When do two reports supply two independent checks?",
+   "stake": "The lower crew needs a fresh spill-line check after the bell. A repeated message can make the earlier check sound new.",
+   "available": {
+    "all": [
+     {
+      "objective": "water.arrival"
+     },
+     {
+      "objective": "forest.counter.finish"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "water.counter.sources",
+     "title": "Find Omi’s original and copy, then the lower crew’s own check.",
+     "done": {
+      "all": [
+       {
+        "flag": "water.counter.source.first",
+        "eq": true
+       },
+       {
+        "flag": "water.counter.source.second",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "culture",
+       "perspective",
+       "evidence",
+       "power"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT",
+       "TEC"
+      ],
+      "subjects": [
+       "digital-society",
+       "ess",
+       "anthropology"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "understand",
+       "fink": "human",
+       "solo": "multistructural"
+      },
+      "minutes": 2
+     }
+    },
+    {
+     "id": "water.counter.compare",
+     "title": "Fit the source clip and replay both runner orders at the council counter.",
+     "visible": {
+      "objective": "water.counter.sources"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "water.counter.sources"
+       },
+       {
+        "flag": "water.counter.source-view",
+        "eq": true
+       },
+       {
+        "flag": "water.counter.trial.outbound",
+        "eq": true
+       },
+       {
+        "flag": "water.counter.trial.return",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "truth",
+       "explanation",
+       "interpretation",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "MAT",
+       "TEC",
+       "NAT"
+      ],
+      "subjects": [
+       "computer-science",
+       "digital-society",
+       "math-ai"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "perspectives"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      },
+      "minutes": 2
+     }
+    },
+    {
+     "id": "water.counter.finish",
+     "title": "Post a check request or leave the docket, then visit the chosen display.",
+     "visible": {
+      "objective": "water.counter.compare"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "water.counter.compare"
+       },
+       {
+        "any": [
+         {
+          "flag": "water.counter.seen.marker",
+          "eq": true
+         },
+         {
+          "flag": "water.counter.seen.ledger",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "justification",
+       "values",
+       "perspective"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "TEC",
+       "NAT"
+      ],
+      "subjects": [
+       "computer-science",
+       "digital-society",
+       "ess"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "minutes": 1
+     },
+     "onComplete": [
+      {
+       "journal": "j.water.counter"
+      }
+     ]
+    }
+   ]
   }
  ],
  "criteria": [
@@ -2088,6 +2286,78 @@
    "objective": "water.observer.finish",
    "depth": 4,
    "text": "Use the marked track from the Council Yard or from the lower-bank bend. Then view the copy wherever you placed it."
+  },
+  {
+   "id": "h.water.counter.sources.1",
+   "objective": "water.counter.sources",
+   "depth": 1,
+   "text": "The old Forest counter method can travel with the rehearsal slips."
+  },
+  {
+   "id": "h.water.counter.sources.2",
+   "objective": "water.counter.sources",
+   "depth": 2,
+   "text": "Omi’s slip and its council copy sit near the upper rail. The lower crew has its own slip across the boards."
+  },
+  {
+   "id": "h.water.counter.sources.3",
+   "objective": "water.counter.sources",
+   "depth": 3,
+   "text": "Read who checked each view, then see who carried it. Add the lower crew’s separate observation."
+  },
+  {
+   "id": "h.water.counter.sources.4",
+   "objective": "water.counter.sources",
+   "depth": 4,
+   "text": "Near Omi read the rehearsal slip and council copy. At the lower bank read the lower crew’s independently written check."
+  },
+  {
+   "id": "h.water.counter.compare.1",
+   "objective": "water.counter.compare",
+   "depth": 1,
+   "text": "The council counter keeps runners and observers in different places."
+  },
+  {
+   "id": "h.water.counter.compare.2",
+   "objective": "water.counter.compare",
+   "depth": 2,
+   "text": "Fit the source clip. Try the first bundle where Omi’s slip comes first, then the return bundle where his copy arrives first."
+  },
+  {
+   "id": "h.water.counter.compare.3",
+   "objective": "water.counter.compare",
+   "depth": 3,
+   "text": "Run all three packets in each bundle. Each of the two independent checks records zero."
+  },
+  {
+   "id": "h.water.counter.compare.4",
+   "objective": "water.counter.compare",
+   "depth": 4,
+   "text": "Check why the origin count stays at two even when three people deliver a packet. Keep the after-bell slot open."
+  },
+  {
+   "id": "h.water.counter.finish.1",
+   "objective": "water.counter.finish",
+   "depth": 1,
+   "text": "Choose where the next watcher can see the open check."
+  },
+  {
+   "id": "h.water.counter.finish.2",
+   "objective": "water.counter.finish",
+   "depth": 2,
+   "text": "A bank marker is close to the channel. A docket carries both observer names in the Council Yard."
+  },
+  {
+   "id": "h.water.counter.finish.3",
+   "objective": "water.counter.finish",
+   "depth": 3,
+   "text": "Use the selected display on the lower path or by the council bench."
+  },
+  {
+   "id": "h.water.counter.finish.4",
+   "objective": "water.counter.finish",
+   "depth": 4,
+   "text": "Read the bank marker if you put up the request, or read the docket in the council if you kept the handover there. The board can move the display again."
   }
  ],
  "journal": [
@@ -2105,6 +2375,11 @@
    "id": "j.water.observer",
    "claimKind": "interpretation",
    "text": "We kept a gap for the lower peg’s covered view. The follow-up kept the reading beside the time and standing place that made it possible. The path lets the crews carry those conditions with the copy."
+  },
+  {
+   "id": "j.water.counter",
+   "claimKind": "interpretation",
+   "text": "Sena’s packet came from Omi’s own rehearsal slip. The lower crew’s zero came from a different check. Both reading places stay beside the two source names, and the after-bell slot is ready for a fresh check."
   }
  ],
  "moments": [

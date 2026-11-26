@@ -6,8 +6,10 @@
  * plaques, each about one person shown with their own place and people, from many periods.
  */
 import type { Condition } from '../domain/types';
+import { FIRST_BENCH_EPILOGUE } from './afterCouncil';
 import type { MapDef } from './types';
 import { sceneProp } from './sceneProps';
+import { NEXUS_VINDOLANDA } from './vindolanda';
 
 const W = 40, H = 20;
 const strokeRequested: Condition = { flag: 'nexus.stroke.requested', eq: true };
@@ -136,6 +138,7 @@ export const NEXUS: MapDef = {
     { id: 'translator-lio', x: 24, y: 13, facing: 'right', visibleIf: { origin: 'traveller' } },
   ],
   interactables: [
+    ...NEXUS_VINDOLANDA,
     { id: 'hearth-spot', kind: 'fieldgame', game: 'hearth', x: 14, y: 10, w: 1, h: 1, label: 'the hearth where your friends gather', art: 'lantern-stall' },
     { id: 'cross-lintel', kind: 'fieldgame', game: 'cross-lintel', x: 34, y: 4, w: 1, h: 1, label: 'old words cut over an arch (a crossing)', art: 'old-sign' },
     { id: 'loyalty-kip', kind: 'fieldgame', game: 'loyalty-kip', x: 3, y: 14, w: 1, h: 1, label: "Kip's family map on a reading table (The Famous Ancestor)", art: 'ledger', visibleIf: { flag: 'study.letter', eq: true } },
@@ -396,6 +399,7 @@ export const NEXUS: MapDef = {
     })),
     { id: 'bench', kind: 'bench', x: 19, y: 16, w: 3, h: 2, label: 'the workshop bench (marking test)' },
     { id: 'label-pen', kind: 'label', kit: 'pen', x: 10, y: 15, w: 1, h: 1, label: 'the label stand', art: 'label-stand' },
+    ...FIRST_BENCH_EPILOGUE,
     { id: 'waystone', kind: 'waystone', place: 'Nexus archive hall', x: 2, y: 9, w: 1, h: 1, label: 'the Waystone (save and rest)', art: 'waystone' },
     ...([['OBJ-101', 'eratosthenes'], ['OBJ-102', 'haytham'], ['OBJ-103', 'bisheng'], ['OBJ-104', 'sikdar'], ['OBJ-105', 'santos'], ['OBJ-106', 'sheppard'], ['OBJ-107', 'wollstonecraft']] as const)
       .map(([ex, key], i) => ({ id: `plaque-${key}`, kind: 'exhibit' as const, exhibit: ex, kit: `first.${key}`, x: 27 + i * 2, y: 5, w: 1, h: 1, label: 'a plaque in the Hall of Firsts', art: 'plaque' })),

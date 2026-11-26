@@ -2,6 +2,7 @@
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
 import { STAGE_FOYER_BACKBILL, STAGE_GALLERY_BACKBILL } from './backbill';
+import { STAGE_FOYER_FRAMES, STAGE_GALLERY_FRAMES, STAGE_REHEARSAL_FRAMES } from './frames';
 
 type TheatreRoom = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'stamps' | 'interactables' | 'lights'>;
@@ -44,6 +45,7 @@ export const STAGE_FOYER = room({
   ],
   interactables: [
     ...STAGE_FOYER_BACKBILL,
+    ...STAGE_FOYER_FRAMES,
     { id: 'cross-stage-fright', kind: 'fieldgame', game: 'cross-stage-fright', x: 21, y: 12, w: 1, h: 1, label: 'the curtain, two minutes before you go on (a crossing)', art: 'label-stand' },
     { id: 'cross-fortune', kind: 'fieldgame', game: 'cross-fortune', x: 8, y: 9, w: 1, h: 1, label: 'Madame Quandary\'s card table (a crossing)', art: 'cork-board' },
     door('stage-rehearsal-path', 6, 3, 'the west passage to rehearsal', { map: 'stage.rehearsal', x: 12, y: 12 }),
@@ -89,6 +91,7 @@ export const STAGE_REHEARSAL = room({
     { stamp: 'rug-green', x: 12, y: 9 }, { stamp: 'plant-tall', x: 5, y: 13 },
   ],
   interactables: [
+    ...STAGE_REHEARSAL_FRAMES,
     door('stage-rehearsal-return', 12, 16, 'the passage back to the foyer', { map: 'stage.foyer', x: 6, y: 5 }),
     door('stage-rehearsal-to-gallery', 25, 8, 'the wing door to the audience gallery', { map: 'stage.gallery', x: 3, y: 8 }),
     { id: 'stage-rehearsal-table', kind: 'stage-rehearsal', x: 13, y: 8, w: 1, h: 1,
@@ -124,7 +127,10 @@ export const STAGE_REHEARSAL = room({
 export const STAGE_GALLERY = room({
   id: 'stage.gallery', name: 'House of Performance: Audience Gallery', width: 27, height: 17,
   background: 0x332a46, spawn: { x: 11, y: 12 },
-  npcs: [{ id: 'stage-host', x: 14, y: 7, facing: 'down' }],
+  npcs: [
+    { id: 'stage-host', x: 14, y: 7, facing: 'down' },
+    { id: 'thirdfold-nera', x: 7, y: 13, facing: 'left', visibleIf: { flag: 'stage.frames.started', eq: true } },
+  ],
   stamps: [
     { stamp: 'banners', x: 8, y: 1 }, { stamp: 'banners', x: 17, y: 1 },
     { stamp: 'window', x: 12, y: 1 }, { stamp: 'barrel', x: 19, y: 5 },
@@ -135,6 +141,7 @@ export const STAGE_GALLERY = room({
   ],
   interactables: [
     ...STAGE_GALLERY_BACKBILL,
+    ...STAGE_GALLERY_FRAMES,
     door('stage-gallery-return', 11, 16, 'the passage back to the foyer', { map: 'stage.foyer', x: 22, y: 5 }),
     door('stage-gallery-to-rehearsal', 2, 8, 'the wing door to rehearsal', { map: 'stage.rehearsal', x: 24, y: 8 }),
     notice('stage-vantage', 18, 7, 'the audience sightlines note', 'stage.cues',

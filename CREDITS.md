@@ -25,11 +25,13 @@ Other art is **original** and drawn in code: exhibit pedestals, the evidence boa
 
 ## Music
 
+The campaign soundtrack and returning story phrase are original music created for Knowledge Guardians. The arrangements and instrument synthesis are defined in [`campaignScore.ts`](src/domain/campaignScore.ts), [`storyMotifs.ts`](src/domain/storyMotifs.ts) and [`campaignSynth.ts`](src/app/campaignSynth.ts).
+
 | File in `public/assets/audio/music/` | Source | Author | Licence | Use in game |
 |---|---|---|---|---|
-| `mysterious-ambience-cynicmusic.mp3` | [Mysterious Ambience (song21)](https://opengameart.org/content/mysterious-ambience-song21) | cynicmusic | CC0 1.0 (the page also offers CC-BY 3.0, CC-BY-SA 3.0 and GPL 3.0; we use CC0) | The Nexus |
-| `town-theme-cynicmusic.mp3` | [Town Theme RPG](https://opengameart.org/content/town-theme-rpg) | cynicmusic | CC0 1.0 | Emberford |
-| `happy-lullaby-cynicmusic.mp3` | [Happy Lullaby (song17)](https://opengameart.org/content/happy-lullaby-song17) | cynicmusic | CC0 1.0 | Title screen |
+| `mysterious-ambience-cynicmusic.mp3` | [Mysterious Ambience (song21)](https://opengameart.org/content/mysterious-ambience-song21) | cynicmusic | CC0 1.0 (the page also offers CC-BY 3.0, CC-BY-SA 3.0 and GPL 3.0; we use CC0) | Archive music fallback |
+| `town-theme-cynicmusic.mp3` | [Town Theme RPG](https://opengameart.org/content/town-theme-rpg) | cynicmusic | CC0 1.0 | Town music fallback |
+| `happy-lullaby-cynicmusic.mp3` | [Happy Lullaby (song17)](https://opengameart.org/content/happy-lullaby-song17) | cynicmusic | CC0 1.0 | Title cue and secondary fallback |
 
 ## Sound effects
 

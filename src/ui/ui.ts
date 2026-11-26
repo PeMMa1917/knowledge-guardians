@@ -64,6 +64,8 @@ import { ROLES, fitsRole, roleOf } from '../domain/roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
 import { FIELD_GAMES } from '../domain/fieldgames';
 import { routingBoard } from './routingBoards';
+import { counterReplayBoard } from './counterReplayBoard';
+import { handoverGallery } from './handoverGallery';
 import { opticsTrial } from './opticsTrial';
 import { loyaltyOf } from '../domain/loyalty';
 import { CROSSINGS, WAY_LABEL, crossingOf, crossingWay, wayOpen } from '../domain/crossings';
@@ -413,7 +415,11 @@ export class UI implements UIApi {
     this.modal.remove();
     this.modal = null;
     if (sound) this.sfx('sfx.click');
-    (document.querySelector('#game canvas') as HTMLElement | null)?.focus();
+    const canvas = document.querySelector<HTMLCanvasElement>('#game canvas');
+    if (canvas) {
+      canvas.tabIndex = -1;
+      canvas.focus();
+    }
     this.refreshHud();
     if (this.pendingChapterEnd) { this.pendingChapterEnd = false; this.chapterEnd(); return; }
     const next = this.queue.shift();
@@ -2858,7 +2864,14 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
-    if (id === 'coast-shadow-board' || id === 'council-shadow-board') {
+    if (id === 'handover-gallery') {
+      this.openModal('bench-panel wide', 'Handover Room', this.closeBtn(),
+        handoverGallery(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'forest-counter' || id === 'water-counter') {
+      const title = id === 'forest-counter' ? 'The Silent Slot' : 'Three Messengers';
+      this.openModal('bench-panel wide', title, this.closeBtn(),
+        counterReplayBoard(id === 'forest-counter' ? 'forest' : 'water', ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'coast-shadow-board' || id === 'council-shadow-board') {
       this.openModal('bench-panel wide', 'Shadow board', this.closeBtn(), opticsTrial(id, ctx.controller, (key) => this.sfx(key)));
     } else if (id === 'relief-routing' || id === 'civic-lane-routing') {
       const title = id === 'relief-routing' ? 'The weir’s relief bench' : 'The library’s lane board';

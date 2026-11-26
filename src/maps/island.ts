@@ -3,6 +3,7 @@ import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
 import { ISLAND_LANTERN_FAIR } from './lanternfair';
 import { ISLAND_MOVEMENT_DOCK, ISLAND_MOVEMENT_WORKSHOP } from './island-movement';
+import { ISLAND_DOCK_FRAMES, ISLAND_WORKSHOP_FRAMES } from './frames';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'island.waypost'): Interactable {
   return { id, kind: 'door', x, y, w: 1, h: 1, label, to, art };
@@ -40,6 +41,7 @@ export const ISLAND_WORKSHOP: MapDef = {
   ],
   interactables: [
     ...ISLAND_MOVEMENT_WORKSHOP,
+    ...ISLAND_WORKSHOP_FRAMES,
     door('island-dock-path', 4, 10, 'the west path to the dock', { map: 'island.dock', x: 7, y: 10 }),
     door('island-margin-path', 24, 10, 'the east path to the quiet margin', { map: 'island.margin', x: 5, y: 10 }),
     door('island-nexus-return', 13, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 34, y: 12 }, 'preserved.door'),
@@ -105,6 +107,7 @@ export const ISLAND_DOCK: MapDef = {
   ],
   interactables: [
     ...ISLAND_MOVEMENT_DOCK,
+    ...ISLAND_DOCK_FRAMES,
     { id: 'cross-launch', kind: 'fieldgame', game: 'cross-launch', x: 18, y: 6, w: 1, h: 1, label: 'the launch board on the dock (a crossing)', art: 'signpost' },
     ...ISLAND_LANTERN_FAIR,
     door('island-dock-return', 5, 10, 'the dock path back to the workshop', { map: 'island.workshop', x: 5, y: 10 }),

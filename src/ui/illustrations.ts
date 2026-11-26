@@ -664,6 +664,89 @@ DRAW['preserved.display-delayed'] = [24, 24, (g) => {
   R(g, '#7c6e5c', 10, 8, 4, 1);
 }];
 
+// Generic teaching silhouettes derived from the written collection records.
+DRAW['preserved.binak-diagram'] = [24, 24, (g) => {
+  pedestal(g, 2, 15, 20);
+  R(g, '#815734', 3, 7, 18, 3);
+  R(g, '#ba8753', 5, 10, 14, 3);
+  R(g, '#dfb777', 4, 7, 16, 1);
+  R(g, '#697b7b', 7, 13, 10, 2);
+}];
+DRAW['big.preserved.binak-diagram'] = [96, 64, (g) => {
+  R(g, '#273a42', 0, 0, 96, 64);
+  R(g, '#e6cf9f', 7, 7, 82, 49);
+  R(g, '#9d7750', 24, 30, 48, 4);
+  R(g, '#bc9462', 27, 34, 42, 5);
+  R(g, '#d8af73', 33, 39, 30, 4);
+  R(g, '#745037', 25, 28, 46, 2);
+  R(g, '#6a8280', 29, 46, 38, 4);
+  R(g, '#7e9b93', 35, 43, 26, 3);
+  R(g, '#537c7a', 77, 19, 4, 3);
+  R(g, '#537c7a', 77, 25, 4, 3);
+}];
+DRAW['sea.dugout-diagram'] = [24, 24, (g) => {
+  pedestal(g, 2, 15, 20);
+  R(g, '#557b84', 3, 5, 18, 9);
+  R(g, '#9e714c', 4, 8, 16, 3);
+  R(g, '#d9aa70', 7, 9, 10, 1);
+  R(g, '#ead1a1', 15, 12, 5, 2);
+}];
+DRAW['big.sea.dugout-diagram'] = [96, 64, (g) => {
+  R(g, '#263944', 0, 0, 96, 64);
+  R(g, '#e6cf9f', 7, 7, 82, 49);
+  R(g, '#637e81', 12, 15, 72, 24);
+  R(g, '#825832', 15, 25, 66, 5);
+  R(g, '#b88856', 19, 23, 58, 9);
+  R(g, '#573d31', 23, 25, 50, 5);
+  R(g, '#f1dbac', 15, 43, 29, 8);
+  R(g, '#f1dbac', 53, 43, 28, 8);
+  for (const x of [19, 57]) R(g, '#5c777b', x, 46, 17, 1);
+}];
+
+// Original archive cards and a fictional ferry kit. The catalogue card shows no historical map marks.
+DRAW['departure.catalogue'] = [24, 24, (g) => {
+  pedestal(g, 2, 15, 20);
+  paper(g, 3, 5, 8, 8);
+  paper(g, 13, 5, 8, 8);
+  R(g, '#377f88', 4, 6, 6, 2);
+  R(g, '#9c6544', 14, 6, 6, 2);
+  R(g, '#b89652', 9, 10, 6, 3);
+}];
+DRAW['big.departure.catalogue'] = [96, 64, (g) => {
+  R(g, '#233945', 0, 0, 96, 64);
+  paper(g, 9, 10, 33, 35);
+  paper(g, 54, 10, 33, 35);
+  R(g, '#377f88', 12, 13, 27, 4);
+  R(g, '#9c6544', 57, 13, 27, 4);
+  for (const x of [14, 59]) {
+    R(g, '#8b7c62', x, 21, 20);
+    R(g, '#8b7c62', x, 25, 16);
+    R(g, '#8b7c62', x, 29, 19);
+  }
+  R(g, '#536771', 25, 35, 46, 2);
+  R(g, '#a77843', 36, 31, 24, 21);
+  R(g, '#f0cb86', 38, 33, 20, 16);
+  for (const x of [41, 45, 49, 53]) R(g, '#755247', x, 39, 2, 4);
+}];
+DRAW['departure.strip'] = [24, 24, (g) => {
+  pedestal(g, 2, 15, 20);
+  R(g, '#603d2b', 2, 7, 20, 7);
+  R(g, '#c59155', 3, 8, 18, 4);
+  R(g, '#ebcd8b', 3, 8, 18);
+  R(g, '#8cd0c0', 5, 5, 4, 8);
+  R(g, '#d57f61', 15, 6, 4, 8);
+  R(g, '#5c5948', 7, 10, 10);
+}];
+for (const marked of [false, true]) {
+  DRAW[marked ? 'departure.peg-marked' : 'departure.peg'] = [16, 24, (g) => {
+    R(g, '#4d533b', 4, 20, 8, 2);
+    R(g, '#795435', 6, 7, 4, 14);
+    R(g, '#c98c56', 6, 7, 1, 13);
+    R(g, '#8cd0a1', 5, 6, 6, 3);
+    if (marked) paper(g, 8, 10, 6, 7);
+  }];
+}
+
 DRAW['big.preserved.temple'] = [96, 64, (g) => {
   R(g, '#a9ccd6', 0, 0, 96, 64);
   R(g, '#c6d9d4', 0, 22, 96, 12);
@@ -1413,6 +1496,88 @@ function stageDoorRelief(g: Ctx, side: boolean) {
 DRAW['stage.relief-side'] = [36, 24, (g) => stageDoorRelief(g, true)];
 DRAW['stage.relief-front'] = [36, 24, (g) => stageDoorRelief(g, false)];
 
+// Three pictures keep the place of the basket and the movement of the hand visible.
+function basketFrame(g: Ctx, x: number, y: number, pose: number) {
+  R(g, '#60464e', x, y, 8, 11);
+  R(g, '#f0d7a7', x + 1, y + 1, 6, 9);
+  R(g, '#535459', x + 2, y + 3, 1, 4);
+  R(g, '#535459', x + 2, y + 2, 2, 1);
+  R(g, '#bc8a63', x + 4, y + 8, 3, 1);
+  const height = pose === 0 ? 5 : 7;
+  R(g, '#a65e46', x + 4, y + height, 3, 2);
+  R(g, '#535459', x + 3, y + (pose >= 2 ? 4 : height), 1, 1);
+  if (pose === 3) R(g, '#5a8e87', x + 4, y + 3, 2, 1);
+}
+function basketStrip(g: Ctx, x: number, y: number, dock = false) {
+  basketFrame(g, x, y, dock ? 3 : 0);
+  basketFrame(g, x + 9, y, dock ? 0 : 1);
+  basketFrame(g, x + 18, y, 2);
+}
+function frameRail(g: Ctx, checked: boolean, dock = false) {
+  R(g, '#513f42', 2, 21, 33, 2);
+  R(g, '#7d594b', 6, 14, 3, 7);
+  R(g, '#7d594b', 28, 14, 3, 7);
+  R(g, '#97794e', 3, 13, 30, 3);
+  basketStrip(g, 5, 3, dock);
+  R(g, '#679792', 3, 8, 3, 5);
+  R(g, '#679792', 30, 8, 3, 5);
+  if (checked) {
+    R(g, '#deb86e', 14, 20, 10, 2);
+    R(g, '#eed097', 19, 19, 3, 1);
+  }
+}
+function frameFolio(g: Ctx, supported: boolean, hook: boolean, dock = false) {
+  if (supported) {
+    R(g, '#564348', 5, 13, 27, 8);
+    R(g, '#a57b53', 5, 13, 27, 2);
+    R(g, '#7a594d', 8, 16, 21, 2);
+  }
+  basketStrip(g, 5, 4, dock);
+  R(g, '#b67964', 13, 5, 1, 9);
+  R(g, '#b67964', 22, 5, 1, 9);
+  if (hook) {
+    R(g, '#85a9a1', 26, 15, 2, 5);
+    R(g, '#85a9a1', 24, 18, 3, 2);
+    R(g, '#d0a778', 22, 20, 9, 3);
+  }
+}
+DRAW['frames.samples'] = [36, 24, (g) => {
+  basketStrip(g, 5, 1);
+  R(g, '#e3c396', 5, 14, 26, 8);
+  R(g, '#bd7868', 13, 14, 2, 8);
+  R(g, '#bd7868', 22, 14, 2, 8);
+}];
+DRAW['frames.tested-hinges'] = [36, 24, (g) => {
+  basketStrip(g, 5, 1);
+  R(g, '#f1d2a4', 13, 2, 2, 7);
+  R(g, '#dbc193', 5, 14, 26, 8);
+  R(g, '#6a9c91', 13, 14, 2, 8);
+  R(g, '#6a9c91', 22, 14, 2, 8);
+}];
+DRAW['frames.still'] = [36, 24, (g) => {
+  R(g, '#6f514d', 5, 9, 26, 13);
+  R(g, '#947358', 7, 9, 22, 10);
+  basketFrame(g, 14, 5, 1);
+}];
+DRAW['frames.sequence'] = [36, 24, (g) => basketStrip(g, 5, 7)];
+DRAW['frames.rail'] = [36, 24, (g) => frameRail(g, false)];
+DRAW['frames.rail-mark'] = [36, 24, (g) => frameRail(g, true)];
+DRAW['frames.folio'] = [36, 24, (g) => frameFolio(g, false, false)];
+DRAW['frames.folio-rest'] = [36, 24, (g) => frameFolio(g, true, false)];
+DRAW['frames.dock-sequence'] = [36, 24, (g) => basketStrip(g, 5, 7, true)];
+DRAW['frames.dock-rail'] = [36, 24, (g) => frameRail(g, false, true)];
+DRAW['frames.dock-rail-mark'] = [36, 24, (g) => frameRail(g, true, true)];
+DRAW['frames.dock-folio'] = [36, 24, (g) => frameFolio(g, false, false, true)];
+DRAW['frames.dock-rest'] = [36, 24, (g) => frameFolio(g, true, false, true)];
+DRAW['frames.dock-hook'] = [36, 24, (g) => frameFolio(g, true, true, true)];
+DRAW['frames.proof'] = [36, 24, (g) => {
+  R(g, '#76544b', 2, 2, 32, 20);
+  R(g, '#e1bf9a', 3, 3, 30, 17);
+  basketStrip(g, 5, 4);
+  R(g, '#638f85', 6, 17, 10, 2);
+  R(g, '#a56758', 20, 17, 10, 2);
+}];
+
 DRAW['market.waypost'] = [16, 24, (g) => {
   R(g, '#514751', 6, 7, 4, 16);
   R(g, '#6c8e83', 2, 5, 12, 10);
@@ -1429,6 +1594,16 @@ DRAW['market.window'] = [24, 24, (g) => {
   R(g, '#76928d', 5, 7, 14, 1);
   R(g, '#9a765d', 5, 10, 14, 1);
   R(g, '#806653', 11, 6, 1, 6);
+}];
+DRAW['market.rest-mat'] = [24, 16, (g) => {
+  R(g, '#2b484c', 1, 9, 22, 6);
+  R(g, '#44787a', 2, 8, 20, 6);
+  R(g, '#a7cfc3', 3, 9, 18, 1);
+  R(g, '#a7cfc3', 3, 12, 18, 1);
+  R(g, '#655241', 4, 14, 16, 1);
+  R(g, '#ad775c', 15, 3, 6, 6);
+  R(g, '#f3d19a', 16, 3, 4, 2);
+  R(g, '#e1b782', 21, 4, 2, 2);
 }];
 
 // Water Commons posts and the paper records pinned in the council yard.
@@ -1748,11 +1923,39 @@ export function glowCanvas(size = 128): HTMLCanvasElement {
   return c;
 }
 
+// Original schematics from the records’ material and form fields.
+DRAW['big.accession-khipu'] = [40, 29, (g) => {
+  R(g, '#302d40', 0, 0, 40, 29);
+  R(g, '#ead8aa', 3, 5, 34, 2);
+  for (const [x, end] of [[7, 21], [11, 25], [15, 19], [19, 24], [23, 23], [27, 26], [31, 19], [34, 22]]) {
+    R(g, '#d1ad7d', x, 6, 1, end - 6);
+    R(g, '#f3dbad', x - 1, end - 8, 3, 2);
+    R(g, '#b68b5e', x - 1, end - 3, 3, 2);
+  }
+}];
+DRAW['big.accession-shell'] = [40, 29, (g) => {
+  R(g, '#302d40', 0, 0, 40, 29);
+  R(g, '#879693', 27, 16, 2, 8);
+  R(g, '#879693', 28, 23, 7, 2);
+  R(g, '#879693', 34, 18, 2, 6);
+  R(g, '#879693', 31, 17, 4, 2);
+  R(g, '#88685c', 7, 11, 5, 10);
+  R(g, '#be8a71', 11, 8, 8, 15);
+  R(g, '#d8b292', 18, 9, 7, 12);
+  R(g, '#ead0ad', 24, 10, 5, 9);
+  R(g, '#ead0ad', 28, 11, 5, 5);
+  R(g, '#594652', 9, 13, 2, 5);
+  for (const [x, top, tall] of [[15, 9, 12], [21, 10, 10], [26, 11, 7]]) R(g, '#7f665d', x, top, 1, tall);
+}];
+
 /** Map exhibit art keys (small) to large inspection pictures. */
 export const BIG_ART: Record<string, string> = {
+  'accession-khipu': 'big.accession-khipu', 'accession-shell': 'big.accession-shell',
   'nile.scroll': 'nile.scroll', 'nile.tablet': 'nile.tablet', 'nile.map': 'nile.map', 'nile.stone': 'nile.stone',
   'preserved.temple': 'big.preserved.temple', 'preserved.catalogue': 'big.preserved.catalogue',
+  'departure.catalogue': 'big.departure.catalogue',
   'preserved.coast': 'big.preserved.coast', 'preserved.context': 'big.preserved.context',
+  'preserved.binak-diagram': 'big.preserved.binak-diagram', 'sea.dugout-diagram': 'big.sea.dugout-diagram',
   'forest.field-diagram': 'big.forest.field-diagram',
   'exhibit.patent': 'big.patent', 'exhibit.model': 'big.model', 'exhibit.biro': 'big.biro',
   'exhibit.blade': 'big.blade', 'exhibit.ingots': 'big.ingots', 'exhibit.assay': 'big.assay',

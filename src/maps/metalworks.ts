@@ -1,6 +1,7 @@
 /** Fictional workshops for comparing sample panels and following their records. */
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
+import { METALWORKS_VINDOLANDA_HALL, METALWORKS_VINDOLANDA_YARD } from './vindolanda';
 
 type Workshop = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'interactables' | 'stamps' | 'lights'>;
@@ -42,6 +43,7 @@ export const METALWORKS_YARD = workshop({
     { stamp: 'barrel', x: 4, y: 9 }, { stamp: 'bench', x: 17, y: 12 },
   ],
   interactables: [
+    ...METALWORKS_VINDOLANDA_YARD,
     { id: 'cross-furnace', kind: 'fieldgame', game: 'cross-furnace', x: 17, y: 5, w: 1, h: 1, label: 'the furnace dial by Brindle\'s shovel (a crossing)', art: 'signpost' },
     door('metal-records-path', 12, 3, 'the passage to the trade hall', { map: 'metalworks.records', x: 11, y: 12 }),
     { ...door('metal-nexus-return', 12, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 22, y: 16 }),
@@ -114,6 +116,7 @@ export const METALWORKS_RECORDS = workshop({
     { stamp: 'rug-green', x: 10, y: 9 },
   ],
   interactables: [
+    ...METALWORKS_VINDOLANDA_HALL,
     door('metal-yard-return', 11, 14, 'the passage back to the Sample Yard', { map: 'metalworks.yard', x: 12, y: 5 }),
     { id: 'metal-exhibition-case', kind: 'exhibit', exhibit: 'OBJ-MET-ASTROLABE', x: 5, y: 8, w: 1, h: 1, walkThrough: true,
       label: 'the museum entry for Musa’s spherical astrolabe', art: 'preserved.catalogue' },

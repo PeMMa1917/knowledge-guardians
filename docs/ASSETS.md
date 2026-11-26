@@ -50,6 +50,8 @@ ffmpeg -i original.wav -ac 1 -b:a 96k public/assets/audio/sfx/new-sound-author.m
 
 Music: stereo MP3 is fine. Keep each file under about 5 MB. Audio is never needed to play: all important information is also given as text, and the game keeps working if an audio file is missing.
 
+The campaign score is original, generated as stereo audio in the browser. The world arrangements in `src/domain/campaignScore.ts` use the opening phrase from `src/domain/storyMotifs.ts`. `src/app/campaignSynth.ts` gives each instrument its sound. Phaser keeps the two most recently used arrangements and can play the bundled MP3 loops when synthesis is unavailable.
+
 ## Character sheets
 
 `character.png` (ArMM1998) has walk frames of 16 × 32 pixels: 17 frames in each row, rows in the order down, right, up, left. `tools/make_character_variants.py` changes the hair, skin, shirt and trouser colours to make each character. To add a character:

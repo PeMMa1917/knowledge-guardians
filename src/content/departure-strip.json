@@ -1,0 +1,1003 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH1-R23",
+      "world": "WORLD-02",
+      "title": "The Departure Strip",
+      "knowledgeQuestion": "When do two people who follow the same instruction end up in different places?",
+      "stake": "Wenna needs the lamp wick before she packs the Bell Archive’s next crate.",
+      "available": {
+        "all": [
+          {
+            "card": "card.departure.tupaia"
+          },
+          {
+            "card": "card.departure.reading"
+          }
+        ]
+      },
+      "objectives": [
+        {
+          "id": "departure.ferry.compare",
+          "title": "Follow the same ferry slip from two starting points.",
+          "done": {
+            "all": [
+              {
+                "flag": "departure.ferry.road",
+                "eq": true
+              },
+              {
+                "flag": "departure.ferry.stair",
+                "eq": true
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "perspective",
+              "objectivity",
+              "evidence",
+              "explanation",
+              "interpretation"
+            ],
+            "atl": [
+              "thinking",
+              "research"
+            ],
+            "aoks": [
+              "LAN",
+              "HUM"
+            ],
+            "subjects": [
+              "geography",
+              "lang-langlit"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "perspectives",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 4
+          },
+          "skills": [
+            "SK-CIT-01"
+          ]
+        },
+        {
+          "id": "departure.ferry.checked",
+          "title": "Hand over the wick and check which carrier receives the tag.",
+          "visible": {
+            "objective": "departure.ferry.compare"
+          },
+          "done": {
+            "any": [
+              {
+                "flag": "departure.ferry.receipt",
+                "eq": "paired"
+              },
+              {
+                "flag": "departure.ferry.receipt",
+                "eq": "named"
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.departure.ferry"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "certainty",
+              "truth",
+              "justification",
+              "values",
+              "power",
+              "responsibility"
+            ],
+            "atl": [
+              "communication",
+              "social",
+              "thinking"
+            ],
+            "aoks": [
+              "LAN",
+              "HUM"
+            ],
+            "subjects": [
+              "geography",
+              "lang-langlit"
+            ],
+            "framework": [
+              "ethics",
+              "perspectives",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "caring",
+              "solo": "relational"
+            },
+            "minutes": 3
+          },
+          "skills": [
+            "SK-CIT-01"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KG-CH4-R08",
+      "world": "WORLD-05",
+      "title": "The Name on the Back",
+      "knowledgeQuestion": "How can two names point to one place while their records keep different histories?",
+      "stake": "The next archive borrower could take the wrong bundle or miss their pickup, depending on how the file is indexed.",
+      "available": {
+        "all": [
+          {
+            "flag": "keepsake.departure-strip",
+            "eq": true
+          },
+          {
+            "flag": "coast.arrived",
+            "eq": true
+          }
+        ]
+      },
+      "objectives": [
+        {
+          "id": "departure.archive.compare",
+          "title": "Use the strip on two labels for the same loan.",
+          "done": {
+            "all": [
+              {
+                "flag": "departure.archive.route",
+                "eq": true
+              },
+              {
+                "flag": "departure.archive.receipt",
+                "eq": true
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "culture",
+              "perspective",
+              "interpretation",
+              "evidence",
+              "explanation",
+              "objectivity"
+            ],
+            "atl": [
+              "research",
+              "thinking"
+            ],
+            "aoks": [
+              "HIS",
+              "LAN",
+              "HUM"
+            ],
+            "subjects": [
+              "history",
+              "geography",
+              "lang-langlit"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "perspectives",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 4
+          },
+          "skills": [
+            "SK-CIT-01"
+          ]
+        },
+        {
+          "id": "departure.archive.checked",
+          "title": "Check the new way to collect the bundle.",
+          "visible": {
+            "objective": "departure.archive.compare"
+          },
+          "done": {
+            "any": [
+              {
+                "flag": "departure.archive.readback",
+                "eq": "cross"
+              },
+              {
+                "flag": "departure.archive.readback",
+                "eq": "desk"
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.departure.archive"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "truth",
+              "certainty",
+              "justification",
+              "power",
+              "values",
+              "responsibility",
+              "culture"
+            ],
+            "atl": [
+              "communication",
+              "social",
+              "thinking"
+            ],
+            "aoks": [
+              "HIS",
+              "LAN",
+              "HUM"
+            ],
+            "subjects": [
+              "history",
+              "geography",
+              "lang-langlit"
+            ],
+            "framework": [
+              "ethics",
+              "perspectives",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "human",
+              "solo": "relational"
+            },
+            "minutes": 3
+          },
+          "skills": [
+            "SK-CIT-01"
+          ]
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "departure.ferry.table",
+      "speaker": "ferry-tova",
+      "text": "That chart case made me think of our landing. Wenna needs wick for the Bell Archive crate. The town slip says ‘From the landing, leave the wick bundle past the first post.’ I know two places folk count as the start. Take my empty tag and we can try both.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Take Tova’s blank carrier tag.",
+          "next": "departure.ferry.tag",
+          "effects": [
+            {
+              "setFlag": "departure.ferry.tag",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the tag with Tova."
+        }
+      ]
+    },
+    {
+      "id": "departure.ferry.tag",
+      "speaker": "ferry-tova",
+      "text": "Try the old road and the landing stair. Mark where the slip would send you. Wenna drew the green peg on her order so we could check which rack she meant.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "departure.ferry.road",
+      "speaker": "narrator",
+      "text": "From the old road, the first post is beside the Wick Rack. Just past it is a green peg. The old-road carrier would leave the bundle at the rack Wenna uses.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "simulation",
+      "options": [
+        {
+          "text": "Set the tag beside the green peg.",
+          "effects": [
+            {
+              "setFlag": "departure.ferry.road",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the tag in my pocket."
+        }
+      ]
+    },
+    {
+      "id": "departure.ferry.stair",
+      "speaker": "narrator",
+      "text": "From the landing stair, the first post is by the Oar Rack. Just past it is a peg for oar bags. A carrier who chose this start could follow every word and leave Wenna’s wick beside the oars.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "simulation",
+      "options": [
+        {
+          "text": "Set the tag beside the oar bags.",
+          "effects": [
+            {
+              "setFlag": "departure.ferry.stair",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the tag in my pocket."
+        }
+      ]
+    },
+    {
+      "id": "departure.ferry.dispatch",
+      "speaker": "ferry-tova",
+      "text": "Wenna’s own tag says ‘the green peg at the Wick Rack’. We can pin a checked route for each start, or put Wenna’s name and that peg on a tag someone can hand to her. The pinboard stays open after she leaves. Wenna can catch a wrongly addressed tag herself.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "value",
+      "options": [
+        {
+          "text": "Pin one route from the road and one from the stair.",
+          "next": "departure.ferry.pinned",
+          "if": {
+            "all": [
+              {
+                "objective": "departure.ferry.compare"
+              },
+              {
+                "not": {
+                  "flagSet": "departure.ferry.route"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "departure.ferry.route",
+              "value": "paired"
+            }
+          ]
+        },
+        {
+          "text": "Send a tag to Wenna at the green peg.",
+          "next": "departure.ferry.sent",
+          "if": {
+            "all": [
+              {
+                "objective": "departure.ferry.compare"
+              },
+              {
+                "not": {
+                  "flagSet": "departure.ferry.route"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "departure.ferry.route",
+              "value": "named"
+            }
+          ]
+        },
+        {
+          "text": "Keep rehearsing before I commit."
+        }
+      ]
+    },
+    {
+      "id": "departure.ferry.pinned",
+      "speaker": "narrator",
+      "text": "Tova ties a paper slip from each starting marker to the rack on the practice board. Go back to the road and see what the evening carrier can now use.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "departure.ferry.sent",
+      "speaker": "narrator",
+      "text": "Tova ties Wenna’s name and the green peg to the wick. Take the tag to Wenna’s barter boat and see whether she can use it.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "departure.ferry.pair-check",
+      "speaker": "narrator",
+      "text": "The evening carrier follows the slip marked OLD ROAD to Wenna’s green peg and leaves the bundle there. The stair slip stays pinned beside it. Anyone starting farther down by the boats still needs a fresh route.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Read the packer’s initials on the returned tag.",
+          "next": "departure.ferry.pair-finished",
+          "if": {
+            "not": {
+              "flagSet": "departure.ferry.receipt"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "departure.ferry.receipt",
+              "value": "paired"
+            }
+          ]
+        },
+        {
+          "text": "Leave the receipt on the board."
+        }
+      ]
+    },
+    {
+      "id": "departure.ferry.wenna-check",
+      "speaker": "narrator",
+      "text": "Wenna reads her own name on the tag. She carries the wick to the green peg and initials the tag herself. Until she came back to the boat, another carrier would have had to wait to put it in her hands.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Take Wenna’s checked tag.",
+          "next": "departure.ferry.name-finished",
+          "if": {
+            "not": {
+              "flagSet": "departure.ferry.receipt"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "departure.ferry.receipt",
+              "value": "named"
+            }
+          ]
+        },
+        {
+          "text": "Leave the receipt beside the boat."
+        }
+      ]
+    },
+    {
+      "id": "departure.ferry.pair-finished",
+      "speaker": "narrator",
+      "text": "Tova trims the blank ends into a strip with two sliding tabs. Keep the start on one tab and the place you can check on the other. A ferry runner has already taken a copy of the wick receipt to the Bell Archive.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "departure.ferry.name-finished",
+      "speaker": "narrator",
+      "text": "Tova trims the empty half into a strip with two sliding tabs. Keep the speaker’s name on one tab and the place you can check on the other. A ferry runner has already taken a copy of the wick receipt to the Bell Archive.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "departure.archive.route-slip",
+      "speaker": "narrator",
+      "text": "The Bell Archive’s printed route slip reads EAST LANDING, WICK RETURN. Signalkeeper Ruan signed it. A blue stamp gives W-17. The place column ends at the landing.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Slide the departure strip under EAST LANDING and W-17.",
+          "next": "departure.archive.route-detail",
+          "if": {
+            "all": [
+              {
+                "flag": "perspective.active",
+                "eq": "departure-strip"
+              },
+              {
+                "card": "card.departure.pere"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "departure.archive.route",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Put the route slip back."
+        }
+      ]
+    },
+    {
+      "id": "departure.archive.route-detail",
+      "speaker": "narrator",
+      "text": "Ruan used EAST LANDING for the ferry stop. The fine line under W-17 says ‘for the rack beside Wenna’s green peg’. The stamp tells you which handoff Ruan meant.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "departure.archive.loan-slip",
+      "speaker": "narrator",
+      "text": "Tova signed this receipt and calls the stop REED LANDING. A cotton thread holds the matching sketch of the green peg. The return number sits under the fold.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Set the strip against REED LANDING and unfold the number.",
+          "next": "departure.archive.loan-detail",
+          "if": {
+            "all": [
+              {
+                "flag": "perspective.active",
+                "eq": "departure-strip"
+              },
+              {
+                "card": "card.departure.pere"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "departure.archive.receipt",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Close the fold."
+        }
+      ]
+    },
+    {
+      "id": "departure.archive.loan-detail",
+      "speaker": "narrator",
+      "text": "The number under the fold is W-17. Both slips point to this wick handoff, and each has a named author. The number can join these files. It gives no shortcut to checking a label on another handoff.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "departure.archive.place",
+      "speaker": "narrator",
+      "text": "A borrower will ask for the wick receipt under the name on their slip. Two drawer tabs would let people find W-17 while the desk is empty. At the lending desk a keeper could compare either slip and keep the two original voices visible.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "value",
+      "options": [
+        {
+          "text": "Link both drawer tabs to W-17.",
+          "next": "departure.archive.crossed",
+          "if": {
+            "all": [
+              {
+                "flag": "perspective.active",
+                "eq": "departure-strip"
+              },
+              {
+                "objective": "departure.archive.compare"
+              },
+              {
+                "not": {
+                  "flagSet": "departure.archive.route-plan"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "departure.archive.route-plan",
+              "value": "cross"
+            }
+          ]
+        },
+        {
+          "text": "Leave both original slips at the staffed desk.",
+          "next": "departure.archive.desked",
+          "if": {
+            "all": [
+              {
+                "flag": "perspective.active",
+                "eq": "departure-strip"
+              },
+              {
+                "objective": "departure.archive.compare"
+              },
+              {
+                "not": {
+                  "flagSet": "departure.archive.route-plan"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "departure.archive.route-plan",
+              "value": "desk"
+            }
+          ]
+        },
+        {
+          "text": "Leave the papers in their trays."
+        }
+      ]
+    },
+    {
+      "id": "departure.archive.crossed",
+      "speaker": "narrator",
+      "text": "You set a second index tab. The two names stay on their own slips, and under each tab you leave the same black W-17 mark. Check the drawer below the archive’s west bench.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "departure.archive.desked",
+      "speaker": "narrator",
+      "text": "You pin Tova’s slip and the printed slip at the lending desk, joined by W-17. Put a marker by the empty index slot so a borrower can wait there for a keeper. Check the lending tray on the east wall.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "departure.archive.cross-check",
+      "speaker": "narrator",
+      "text": "A borrower who was told REED LANDING opens that tab and finds W-17 before the keeper returns. The two signed slips inside show which name each writer used. If a new slip brings a third name, the drawer will still need checking.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Match the two index tabs to the signed slips inside.",
+          "next": "departure.archive.cross-done",
+          "if": {
+            "not": {
+              "flagSet": "departure.archive.readback"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "departure.archive.readback",
+              "value": "cross"
+            }
+          ]
+        },
+        {
+          "text": "Close the drawer for now."
+        }
+      ]
+    },
+    {
+      "id": "departure.archive.desk-check",
+      "speaker": "narrator",
+      "text": "A borrower comes with EAST LANDING on their slip. They wait for the keeper, who opens W-17 beside the ferry original and reads each speaker’s name aloud. The wait bought time for a question about the green peg.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Match the loan tablet to both receipts.",
+          "next": "departure.archive.desk-done",
+          "if": {
+            "not": {
+              "flagSet": "departure.archive.readback"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "departure.archive.readback",
+              "value": "desk"
+            }
+          ]
+        },
+        {
+          "text": "Leave the loan tablet here."
+        }
+      ]
+    },
+    {
+      "id": "departure.archive.cross-done",
+      "speaker": "narrator",
+      "text": "The borrower copies W-17 from the drawer, along with the two file headings. The key is ready for the next person who comes early.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "departure.archive.desk-done",
+      "speaker": "narrator",
+      "text": "The keeper sends the borrower out with a fresh tab bearing both headings and W-17. The two originals stay at the desk for the next check.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "departure.ferry.file-return",
+      "speaker": "narrator",
+      "text": "The packet tag has come back from the Bell Archive. Wenna’s packing ledger lists W-17 and W-18 on the same shelf. Both are wick deliveries. Only W-17 has the return stamp and green peg sketch.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Line up W-17 on the strip and clip the return to that row.",
+          "next": "departure.ferry.filed-return",
+          "if": {
+            "all": [
+              { "flag": "perspective.active", "eq": "departure-strip" },
+              { "not": { "flagSet": "departure.ferry.clipped" } }
+            ]
+          },
+          "effects": [{ "setFlag": "departure.ferry.clipped", "value": true }]
+        },
+        { "text": "Leave the ledger open." }
+      ]
+    },
+    {
+      "id": "departure.ferry.filed-return",
+      "speaker": "ferry-tova",
+      "text": "W-17 is back. I’ve kept the W-18 hook free for its own tag. Same shelf, different bundle. Wenna will be glad we left room.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.departure.ferry.compare.1",
+      "objective": "departure.ferry.compare",
+      "depth": 1,
+      "text": "A short instruction has more than one place to start."
+    },
+    {
+      "id": "h.departure.ferry.compare.2",
+      "objective": "departure.ferry.compare",
+      "depth": 2,
+      "text": "Take the tag at Tova’s table. Check the old road and the landing stair."
+    },
+    {
+      "id": "h.departure.ferry.compare.3",
+      "objective": "departure.ferry.compare",
+      "depth": 3,
+      "text": "Follow the first post from each place. Look for the tack beside each rack."
+    },
+    {
+      "id": "h.departure.ferry.compare.4",
+      "objective": "departure.ferry.compare",
+      "depth": 4,
+      "text": "At both marker scenes, place the tag where the instruction actually leads."
+    },
+    {
+      "id": "h.departure.ferry.checked.1",
+      "objective": "departure.ferry.checked",
+      "depth": 1,
+      "text": "The bundle has one destination. Carriers can find it in different ways."
+    },
+    {
+      "id": "h.departure.ferry.checked.2",
+      "objective": "departure.ferry.checked",
+      "depth": 2,
+      "text": "Go back to Tova’s table with both trial marks."
+    },
+    {
+      "id": "h.departure.ferry.checked.3",
+      "objective": "departure.ferry.checked",
+      "depth": 3,
+      "text": "Pin one checked approach from each start, or put the receiver and her peg on a carrier tag."
+    },
+    {
+      "id": "h.departure.ferry.checked.4",
+      "objective": "departure.ferry.checked",
+      "depth": 4,
+      "text": "See the evening receipt at the old road or take the checked tag near Wenna’s boat."
+    },
+    {
+      "id": "h.departure.archive.compare.1",
+      "objective": "departure.archive.compare",
+      "depth": 1,
+      "text": "The Bell Archive filed the bundle under a name you may not hear at the ferry."
+    },
+    {
+      "id": "h.departure.archive.compare.2",
+      "objective": "departure.archive.compare",
+      "depth": 2,
+      "text": "Open the public southern-bays case in the archive. Then take out the Departure Strip in the Bag."
+    },
+    {
+      "id": "h.departure.archive.compare.3",
+      "objective": "departure.archive.compare",
+      "depth": 3,
+      "text": "Use the strip on the printer’s route slip and Tova’s folded receipt."
+    },
+    {
+      "id": "h.departure.archive.compare.4",
+      "objective": "departure.archive.compare",
+      "depth": 4,
+      "text": "Check the print tray near the west wall and the return tray near the east wall. Keep each heading with its author."
+    },
+    {
+      "id": "h.departure.archive.checked.1",
+      "objective": "departure.archive.checked",
+      "depth": 1,
+      "text": "One borrower comes before the keeper. Another has a question about a name."
+    },
+    {
+      "id": "h.departure.archive.checked.2",
+      "objective": "departure.archive.checked",
+      "depth": 2,
+      "text": "Take the strip and the two slips to the W-17 index table."
+    },
+    {
+      "id": "h.departure.archive.checked.3",
+      "objective": "departure.archive.checked",
+      "depth": 3,
+      "text": "Set up paired drawer tabs, or leave both original slips with the keeper."
+    },
+    {
+      "id": "h.departure.archive.checked.4",
+      "objective": "departure.archive.checked",
+      "depth": 4,
+      "text": "Follow your chosen handoff to the west drawer or the east lending tray and match W-17."
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.departure.ferry",
+      "claimKind": "observation",
+      "text": "At the ferry, the same instruction sent a carrier to two different racks. Tova’s strip keeps a start or a speaker attached to the place we checked. The Bell Archive has a copy of the wick receipt."
+    },
+    {
+      "id": "j.departure.archive",
+      "claimKind": "observation",
+      "text": "Reed Landing and East Landing both appeared on file W-17. I kept each name with the receipt it came from and watched a borrower find the wick record."
+    }
+  ],
+  "keepsakes": [
+    {
+      "id": "departure-strip",
+      "name": "Departure Strip",
+      "text": "Tova’s folding carrier tag has two sliding tabs. One holds a start or a speaker. The other holds the place and the check that connects them.",
+      "if": {
+        "objective": "departure.ferry.checked"
+      },
+      "where": "Tova’s wick handoff at the old ferry landing",
+      "use": "Align the two Bell Archive slips and choose where borrowers can check them. Back at the ferry, match the returned tag to Wenna’s packing ledger.",
+      "equip": {
+        "method": "Keep a starting point and a shared mark in view",
+        "hint": "Take it to the Bell Archive. Open the southern-bays case first, then look for the printer’s tray and the ferry receipt.",
+        "art": "departure.strip"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "HIS-DEPART-01",
+      "title": "British Library catalogue: Add MS 21593 C",
+      "url": "https://searcharchives.bl.uk/catalog/040-002033977",
+      "locator": "Shelfmark Add MS 21593 C, field ‘Scope & Content’.",
+      "supports": "The current catalogue lists a Society Islands chart under James Cook and gives 1769. This is evidence of catalogue attribution and dating.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-DEPART-02",
+      "title": "Manatū Taonga’s Te Ara: Tupaia’s chart",
+      "url": "https://teara.govt.nz/en/map/46867/tupaias-chart",
+      "locator": "Dictionary of New Zealand Biography, caption and image reference ADD MS 21593c.",
+      "supports": "The New Zealand public reference identifies the item as Tupaia’s chart and gives its British Library reference.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-DEPART-03",
+      "title": "Eckstein and Schwarz: The Making of Tupaia’s Map",
+      "url": "https://doi.org/10.25932/publishup-42309",
+      "locator": "The Journal of Pacific History 54(1), 2019, pp. 1–95. Introduction, Figure 1 and the section on the British Library copy.",
+      "supports": "The authors place Tupaia from Ra‘iātea at the centre of the collaborative drafting in 1769–70. They propose reading the arrangement with changing points of departure and date the British Library version to 1770.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-DEPART-04",
+      "title": "Kā Huru Manu: the 1908 southern bays map",
+      "url": "https://kahurumanu.co.nz/map-stories/hoani-te-hau-pere-map/",
+      "locator": "Introductory account, section on the 25 November 1908 meeting at Kaiapoi and map credit Ngāi Tahu Archive MS7-002.",
+      "supports": "The Ngāi Tahu account names Hone Tututaua Pere and Hoani Te Hau Pere as the source of Māori place names and associated meanings for the southern bays. It names Taare Parata as the 1908 recorder.",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.departure.tupaia",
+      "title": "The chart and two catalogue descriptions",
+      "text": "The British Library describes Add MS 21593 C as a Society Islands chart by James Cook, dated 1769. Te Ara uses the same shelfmark for ‘Tupaia’s chart’. The shelfmark lets a reader see that the two descriptions concern the same copy.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-DEPART-01",
+        "HIS-DEPART-02"
+      ],
+      "limits": "A catalogue description shows how the institution filed this sheet. The descriptions alone cannot settle who contributed to the original drafting, who made the surviving copy, or when."
+    },
+    {
+      "id": "card.departure.reading",
+      "title": "Tupaia’s chart and a proposed reading",
+      "text": "Tupaia of Ra‘iātea developed a chart with members of the Endeavour crew in 1769–70, according to Eckstein and Schwarz. They propose that several points of departure help explain the arrangement. They identify the British Library sheet as a copy of a late draft.",
+      "claimKind": "interpretation",
+      "historicalLabel": "scholarly-interpretation",
+      "sources": [
+        "HIS-DEPART-03"
+      ],
+      "limits": "This is a scholarly reconstruction of a particular chart. It gives no basis for treating every navigator or voyage as the same. The ferry trial uses invented marks and paths.",
+      "person": {
+        "name": "Tupaia",
+        "life": "Worked on the chart in 1769–70",
+        "place": "Ra‘iātea",
+        "era": "Late eighteenth century",
+        "continent": "Oceania"
+      }
+    },
+    {
+      "id": "card.departure.pere",
+      "title": "The people behind the southern-bays map",
+      "text": "Kā Huru Manu, the Ngāi Tahu Cultural Mapping Project, identifies Hone Tututaua Pere and Hoani Te Hau Pere as the people who supplied the place names and their associated meanings between Akaroa Harbour and Wairewa. Taare Parata recorded those accounts at Kaiapoi in November 1908.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-DEPART-04"
+      ],
+      "limits": "The public account establishes the contributors and geographical scope of this map. It does not establish what every family used for a place, or make this record a route guide.",
+      "person": {
+        "name": "Hoani Te Hau Pere",
+        "life": "Place-name account recorded in 1908",
+        "place": "Wairewa, Ngāti Makō and Ngāti Irakehu",
+        "era": "Early twentieth century",
+        "continent": "Oceania"
+      }
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-DEPART-TUPAIA",
+      "name": "Tupaia’s chart copy, Add MS 21593 C",
+      "art": "departure.catalogue",
+      "historicalLabel": "documented",
+      "dateText": "1769 in the library entry",
+      "dateKind": "The catalogue’s date for the sheet. A later scholarly reading dates the surviving version to 1770.",
+      "summary": "Read the filing slip. The British Library’s catalogue names James Cook. Te Ara calls the copy Tupaia’s chart. Both point to the same manuscript reference.",
+      "sources": [
+        "HIS-DEPART-01",
+        "HIS-DEPART-02"
+      ],
+      "grantsCard": "card.departure.tupaia",
+      "altText": "Original diagram of a reference number joining two paper catalogue tabs."
+    },
+    {
+      "id": "OBJ-DEPART-READING",
+      "name": "A proposed reading of Tupaia’s chart",
+      "art": "departure.catalogue",
+      "historicalLabel": "scholarly-interpretation",
+      "dateText": "Article published in 2019",
+      "dateKind": "Issue date of the modern study. The authors date the chart’s drafting from 1769 to 1770.",
+      "summary": "In their study, Eckstein and Schwarz place Tupaia of Ra‘iātea at the centre of the chart’s making. Their proposed reading asks where a journey would start. Tova’s ferry trials use different, invented marks.",
+      "sources": [
+        "HIS-DEPART-03"
+      ],
+      "grantsCard": "card.departure.reading",
+      "altText": "Original diagram of two catalogue tabs sharing one number. It contains no chart features."
+    },
+    {
+      "id": "OBJ-DEPART-PERE",
+      "name": "Hone Tututaua Pere and Hoani Te Hau Pere: southern-bays map",
+      "art": "departure.catalogue",
+      "historicalLabel": "documented",
+      "dateText": "25 November 1908",
+      "dateKind": "Date when Taare Parata recorded the accounts at Kaiapoi, as identified by Kā Huru Manu.",
+      "summary": "The Ngāi Tahu project identifies Hone Tututaua Pere and Hoani Te Hau Pere as the knowledge holders and Taare Parata as the recorder for this map of places between Akaroa Harbour and Wairewa.",
+      "sources": [
+        "HIS-DEPART-04"
+      ],
+      "grantsCard": "card.departure.pere",
+      "altText": "Original diagram of separate paper tabs joined by a catalogue slip. It contains no map features."
+    }
+  ]
+}

@@ -42,7 +42,7 @@ The route audit in `tests/tok-coverage.test.ts` exercises game actions in indivi
 |---|---:|---:|
 | Story | 160 | 504 |
 | Social | 356 | 663 |
-| Explorer | 631 | 1,137 |
+| Explorer | 604 | 1,274 |
 | Puzzler | 260 | 592 |
 | Cozy | 342 | 667 |
 

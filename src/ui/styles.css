@@ -167,6 +167,7 @@ figcaption { font-size: 0.75rem; color: var(--ink-dim); margin-top: 0.3em; }
 fieldset { border: 1px solid var(--gold-dim); border-radius: 10px; }
 legend { color: var(--gold); padding: 0 0.4em; }
 .radio, .check, .range { display: block; margin: 0.35em 0; cursor: pointer; }
+.settings .range :is(select, input[type="range"]) { max-width: 100%; }
 .sim-result { margin-top: 0.8em; }
 .mark { width: 100%; max-width: 320px; image-rendering: pixelated; border-radius: 6px; }
 .optics-board { display: block; width: 100%; max-width: 360px; image-rendering: pixelated; border-radius: 6px; }

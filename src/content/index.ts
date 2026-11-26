@@ -16,10 +16,12 @@ import nexusPacking from './nexus-pack.json';
 import nexusViewer from './nexus-viewer.json';
 import nexusHandle from './nexus-handle.json';
 import nexusLostGauge from './nexus-lost-gauge.json';
+import vindolanda from './vindolanda.json';
 import m02 from './m02-aethelgard.json';
 import emberfordSide from './emberford-side.json';
 import lanternfair from './lanternfair.json';
 import backbill from './backbill.json';
+import welcome from './welcome.json';
 import firsts from './firsts.json';
 import ee from './ee-trails.json';
 import side from './side-quests.json';
@@ -61,7 +63,9 @@ import copiesMargin from './copies-margin.json';
 import cartographers from './m09-cartographers.json';
 import cartographersSide from './cartographers-side.json';
 import performance from './m10-performance.json';
+import performanceFrames from './performance-frames.json';
 import market from './m11-market.json';
+import pairedAccessions from './paired-accessions.json';
 import water from './m12-water.json';
 import civic from './m13-civic.json';
 import voices from './m14-voices.json';
@@ -69,12 +73,15 @@ import elsbetReel from './voices-elsbet.json';
 import island from './m15-island.json';
 import islandMovement from './island-movement.json';
 import council from './m16-council.json';
+import afterCouncil from './after-council.json';
+import handoverGallery from './handover-gallery.json';
 import observatoryInland from './observatory-inland.json';
 import observatoryArchive from './observatory-archive.json';
+import departureStrip from './departure-strip.json';
 
 export const CONTENT_VERSION = 5;
 
-const parts: any[] = [sources, common, m01, openingPractice, nexusWayfinding, nexusReadingRests, nexusDateRibbon, nexusPrint, nexusPacking, nexusViewer, nexusHandle, nexusLostGauge, m02, emberfordSide, lanternfair, backbill, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, fray, rumour, clueboard, memories, chapterVoices, quarters, dive, story, nile, scenes, preservedRecords, preserved, reconstruction, copper, preservedExhibition, observatory, opticsScreen, observatoryInland, observatoryArchive, forest, forestSide, forestReader, metalworks, metalworksSide, copies, copiesSide, copiesMargin, cartographers, cartographersSide, performance, market, rook, water, harrowmere, vesper, civic, voices, elsbetReel, island, islandMovement, council];
+const parts: any[] = [sources, common, m01, openingPractice, nexusWayfinding, nexusReadingRests, nexusDateRibbon, nexusPrint, nexusPacking, nexusViewer, nexusHandle, nexusLostGauge, vindolanda, m02, emberfordSide, lanternfair, backbill, welcome, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, fray, rumour, clueboard, memories, chapterVoices, quarters, dive, story, nile, scenes, preservedRecords, preserved, reconstruction, copper, preservedExhibition, observatory, opticsScreen, observatoryInland, observatoryArchive, departureStrip, forest, forestSide, forestReader, metalworks, metalworksSide, copies, copiesSide, copiesMargin, cartographers, cartographersSide, performance, performanceFrames, market, pairedAccessions, rook, water, harrowmere, vesper, civic, voices, elsbetReel, island, islandMovement, council, afterCouncil, handoverGallery];
 const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'missions', 'hints', 'criteria', 'awards', 'items', 'offers', 'journal',
   'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks', 'glossary', 'questions', 'origins', 'alcoves', 'puzzles', 'skillDomains', 'skills', 'lorelings', 'lorelingAtlas', 'fray', 'clueBoards', 'memories', 'keepsakes', 'divePrompts', 'diveItems', 'knots', 'clues', 'keepsakeTalks', 'chronicle', 'secrets', 'communities'] as const;
 

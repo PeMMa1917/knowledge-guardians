@@ -6,7 +6,14 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
-Fifteen chapters are playable. A clean install, 744 tests, production build and 42-file asset check passed. Chromium checks covered the Lantern Fair rehearsal and Island setup, both gauge resolutions and a mid-loan save, the witness strip’s paired and local routes, both Water and Civic placements, and two Council handovers. Both layouts of Elsbet’s reel made it through to Vesper, the ending and the choice-aware credits. Later checks used staged progress or debug positioning. The thirty-minute audit uses author estimates.
+Fifteen chapters and the post-Council return are playable. A clean install, 827 tests, production build and 42-file asset check passed. Chromium rendered and walked all 52 maps, and covered both first-bench endings, all three rotating Handover Room cases, the two Market/Council catalogue handovers, and the optional routes listed below. The browser checks staged prior chapter progress in several cases and exercised the new interactions through the game. The thirty-minute audit uses author estimates.
+
+### Later departures, returns and room sound
+
+- The Next Keeper brings the original pen back into play. Lia makes the next visitor’s needs visible, and a public bench or staffed loan changes who can check the records. Closing that return opens the repeatable Handover Room. Its three source bundles use local checks and optional carried perspectives, and the last display remains visible while the next decision is underway.
+- Players can follow a Vindolanda tablet’s editorial uncertainty to a repair desk, and test whether a checked invitation changes the welcome at a market entrance. Other optional paths bring a second ferry receipt to the Bell Archive, send a tested paper scene to a dock, or preserve a basket or boat maker’s exact catalogue record in separate exhibits.
+- A porter in Emberford and a lamp carrier in the Market can use different pickup conventions. Three messengers bring overlapping reports from the Forest to the Water Commons, where their arrival order can change the first update. At the Market, two different 9941 objects go to separate crews, then change a later Council call.
+- Original music follows the 16 worlds with three room variations, shared motifs, adjustable volume and captions. Legacy playback remains available on devices that use the HTML5 audio backend.
 
 ## What works now
 

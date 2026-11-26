@@ -45,6 +45,8 @@ const notebookMethod = (method: 'conditions' | 'crew'): Condition => ({
 const notebookPassage = (method: 'conditions' | 'crew'): Condition => ({
   all: [notebookMethod(method), { objective: 'forest.observer.notes' }],
 });
+const counterReady: Condition = { objective: 'forest.compare' };
+const counterDisplay = (layout: 'marker' | 'ledger'): Condition => ({ flag: 'forest.counter.layout', eq: layout });
 const mossReadings = 'Green touched five squares at the shaded creek bank and one at the shaded bridge edge. '
   + 'In the open, green touched two at the ridge edge and four below the path. '
   + 'The day before, the crew saw five boot contacts at the shaded edge and six at the open edge in one round. '
@@ -107,6 +109,8 @@ export const FOREST_STATION: MapDef = {
       { flag: 'forest.gombe.credited', eq: true }),
     guideScene('forest-observer-book', 14, 7, 'Elian’s unbound field notebook', 'preserved.catalogue',
       'forest.observer.bind', { objective: 'forest.arrival' }),
+    { id: 'forest-counter-bench', kind: 'fieldgame', game: 'forest-counter', x: 8, y: 6, w: 1, h: 1,
+      label: 'Elian’s watch counter', art: 'forest.guide-hinges', walkThrough: true, visibleIf: counterReady },
     { ...door('forest-observer-station-to-bank', 5, 7, 'the marked lower watch trail', { map: 'forest.trail', x: 8, y: 6 }),
       walkThrough: true, visibleIf: notebookPassage('conditions'), flag: 'forest.observer.crossed' },
     note('forest-observer-station-proof', 14, 10, 'the dated copy of the two views', 'preserved.display-paired',
@@ -204,6 +208,15 @@ export const FOREST_TRAIL: MapDef = {
       'forest.observer.lamp', 'crew', 'first'),
     notebookSlot('forest-observer-bridge-board', 21, 10, 'the bridge crew’s return slot', 'preserved.folder',
       'forest.observer.bridge', 'crew', 'second'),
+    { ...note('forest-counter-screen-slip', 4, 10, 'the first-light creek slip', 'preserved.slip',
+      'The Fern watcher saw the whole opening for the first beat. Zero crossings. The West Runner brought this slip. The slot for a check after the next bell is still empty.', counterReady),
+      flag: 'forest.counter.source.first' },
+    { ...note('forest-counter-ridge-slip', 27, 10, 'the ridge keeper’s slip and its copy', 'preserved.display-paired',
+      'One visible crossing, first light, ridge opening. The ridge keeper carried the slip. The bridge runner brought the same entry copied on a second paper. Both papers carry the same origin mark.', counterReady),
+      flag: 'forest.counter.source.second' },
+    { ...note('forest-counter-marker', 7, 9, 'the pending-check marker beside the trail', 'forest.notice',
+      'CHECK WANTED. The after-bell slot is still waiting for a source. A walker can see this at the screen. The two finished slips keep their names back at the station.', counterDisplay('marker')),
+      flag: 'forest.counter.seen.marker' },
     { ...door('forest-observer-bank-to-station', 8, 5, 'the marked lower trail to Fern Station', { map: 'forest.station', x: 6, y: 7 }),
       walkThrough: true, visibleIf: notebookPassage('conditions'), flag: 'forest.observer.crossed' },
     { ...door('forest-observer-ridge-to-clearing', 28, 5, 'the marked crew path to Bridge Clearing', { map: 'forest.community', x: 19, y: 12 }),
@@ -264,6 +277,9 @@ export const FOREST_COMMUNITY: MapDef = {
     note('forest-observer-clearing-proof', 18, 10, 'the paired crew handover notes', 'preserved.display-paired',
       'The crew path links both return slots. At the bench the lamp and bridge entries keep their own time, keeper and kind of observation.',
       { all: [{ objective: 'forest.observer.finish' }, { flag: 'forest.observer.method', eq: 'crew' }] }),
+    { ...note('forest-counter-ledger', 18, 12, 'the counter’s named handover ledger', 'preserved.catalogue',
+      'The early crew clears two source slips here, one with a zero and one with a visible pass. A second envelope keeps the ridge slip’s original name. The after-bell slot says CHECK WANTED. Walkers on the trail can ask the handover crew for this page.', counterDisplay('ledger')),
+      flag: 'forest.counter.seen.ledger' },
     guideScene('forest-spate-plan', 11, 9, 'Ayla’s storm-route board', 'forest.notice',
       'forest.spate.plan', forestArrived),
     note('forest-spate-rail-notice', 9, 7, 'the north rail route strip', 'forest.guide-level',

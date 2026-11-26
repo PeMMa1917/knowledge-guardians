@@ -3,7 +3,7 @@ export const STORY_MOTIFS = ['first-light', 'gold-thread', 'in-the-open'] as con
 export type StoryMotif = typeof STORY_MOTIFS[number];
 export const storyMotifKey = (motif: StoryMotif) => `music.story.${motif}`;
 
-const PHRASE = [
+export const STORY_PHRASE = [
   { pitch: 0, at: 0, beats: 1 },
   { pitch: 7, at: 1, beats: 0.75 },
   { pitch: 4, at: 1.75, beats: 0.75 },
@@ -12,7 +12,7 @@ const PHRASE = [
   { pitch: 4, at: 4, beats: 0.5 },
   { pitch: 7, at: 4.5, beats: 0.5 },
   { pitch: 12, at: 5, beats: 2 },
-];
+] as const;
 
 const ACCOMPANIMENT = [
   { pitch: -12, at: 0, beats: 2.5 },
@@ -26,7 +26,7 @@ export function storyMotif(motif: StoryMotif) {
   const rival = motif === 'gold-thread';
   const resolved = motif === 'in-the-open';
   const root = rival ? 261.63 : 523.25;
-  const score = resolved ? [...PHRASE, ...ACCOMPANIMENT] : PHRASE;
+  const score = resolved ? [...STORY_PHRASE, ...ACCOMPANIMENT] : STORY_PHRASE;
   const notes = score.map(({ pitch, at, beats }) => ({
     f: root * Math.pow(2, (rival && pitch === 4 ? 3 : pitch) / 12),
     at,

@@ -26,6 +26,8 @@ const observerNotebook: Condition = { all: [
 const lowerCheck: Condition = { all: [observerNotebook, { flag: 'water.observer.blocked', eq: true }] };
 const observerNote = (layout: 'paired' | 'local'): Condition => ({ flag: 'water.observer.layout', eq: layout });
 const observerPath: Condition = { all: [observerNotebook, { flagSet: 'water.observer.layout' }] };
+const counterReady: Condition = { all: [{ objective: 'water.arrival' }, { objective: 'forest.counter.finish' }] };
+const counterDisplay = (layout: 'marker' | 'ledger'): Condition => ({ flag: 'water.counter.layout', eq: layout });
 
 function observerScene(id: string, x: number, y: number, label: string,
   art: string, node: string, visibleIf: Condition): Interactable {
@@ -82,6 +84,9 @@ export const WATER_GATEHOUSE: MapDef = {
       label: 'Omi’s relief bench', art: 'water.split', walkThrough: true, visibleIf: reliefAvailable },
     observerScene('water-observer-upper', 14, 12, 'the clear space above the upper peg', 'water.notice',
       'water.observer.upper', observerNotebook),
+    sign('water-counter-upper-slip', 11, 7, 'Omi’s rehearsal slip and the council copy', 'preserved.display-paired',
+      'At the first rehearsal Omi saw zero buckets pass the spill line from the upper rail. Sena brought the number on a copy of Omi’s slip. The mark for its origin stayed the same.',
+      { flag: 'water.counter.source.first', visibleIf: counterReady }),
     sign('water-observer-upper-copy', 15, 14, 'the upper peg’s local note', 'preserved.slip',
       'Omi’s noon peg, three notch intervals from its own foot. The checked lower view and its date sit with the crew that took it.',
       { visibleIf: observerNote('local') }),
@@ -130,6 +135,11 @@ export const WATER_COUNCIL: MapDef = {
       visibleIf: observerPath, walkThrough: true, flag: 'water.observer.crossed' },
     observerScene('water-observer-board', 14, 9, 'Sena’s two-peg copy board', 'preserved.display-records',
       'water.observer.board', { all: [observerNotebook, { objective: 'water.observer.readings' }] }),
+    { id: 'water-counter-bench', kind: 'fieldgame', game: 'water-counter', x: 5, y: 6, w: 1, h: 1,
+      label: 'Sena’s three-messenger counter', art: 'water.split', walkThrough: true, visibleIf: counterReady },
+    sign('water-counter-ledger', 7, 11, 'the crew’s source-and-runner docket', 'preserved.display-records',
+      'The two checks from the first rehearsal keep their own observers. Sena’s envelope belongs with Omi’s upper check. The after-bell record is still open. The lower crew can bring its next slip to this docket.',
+      { flag: 'water.counter.seen.ledger', visibleIf: counterDisplay('ledger') }),
     sign('water-observer-paired-sight', 8, 7, 'the paired noon peg copy', 'preserved.display-paired',
       'Both readings belong to the noon bell. The upper peg showed three intervals from its own foot. The high step showed two intervals at the lower peg. Each peg keeps its own base and viewing position.',
       { visibleIf: { all: [observerNote('paired'), { flag: 'water.observer.lower', eq: 'sight' }] } }),
@@ -195,6 +205,12 @@ export const WATER_LOWER_CHANNEL: MapDef = {
       'water.observer.sight', lowerCheck),
     observerScene('water-observer-crew-log', 5, 8, 'the lower keeper’s dated handover', 'preserved.folder',
       'water.observer.handover', lowerCheck),
+    sign('water-counter-lower-slip', 22, 12, 'the lower crew’s independently written check', 'preserved.slip',
+      'The lower crew watched the spill line from its own side during the rehearsal. It wrote zero buckets on its own slip before the runners met. A check after the bell is still due.',
+      { flag: 'water.counter.source.second', visibleIf: counterReady }),
+    sign('water-counter-marker', 27, 10, 'the pending-check marker on the bank', 'water.notice',
+      'CHECK WANTED AFTER THE BELL. Someone on the lower bank can see the open slot from the path. The two earlier rehearsal slips stay in the Council Yard. This marker gives the next watcher a place to look.',
+      { flag: 'water.counter.seen.marker', visibleIf: counterDisplay('marker') }),
     sign('water-observer-lower-sight-copy', 20, 10, 'the lower peg’s local noon note', 'preserved.slip',
       'From the high step the lower peg showed two intervals at noon. The figures travel with the standing place. The lower watch keeps a blank beside the view from behind the reeds.',
       { visibleIf: { all: [observerNote('local'), { flag: 'water.observer.lower', eq: 'sight' }] } }),

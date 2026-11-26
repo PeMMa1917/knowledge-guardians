@@ -5,10 +5,14 @@
  * (an invented language) and their own knowledge of the river. 26 x 14 tiles. Fictional world.
  * Tiles with no floor show the background colour: here, the river.
  */
+import type { Condition } from '../domain/types';
 import type { MapDef } from './types';
 
 const W = 26, H = 14;
 const RIVER = 9; // first row of water
+const departureCases: Condition = { all: [{ card: 'card.departure.tupaia' }, { card: 'card.departure.reading' }] };
+const departureTag: Condition = { flag: 'departure.ferry.tag', eq: true };
+const departureUndecided: Condition = { not: { flagSet: 'departure.ferry.route' } };
 
 function floor(x: number, y: number): string | null {
   if (x < 0 || x >= W || y < 0 || y >= H) return null;
@@ -56,6 +60,42 @@ export const FERRY: MapDef = {
     { id: 'ferry-waystone', kind: 'waystone', place: 'the old ferry landing', x: 6, y: 3, w: 1, h: 1, label: 'the Waystone by the old road (save and rest)', art: 'waystone' },
     { id: 'ferry-camp-sign', kind: 'sign', x: 15, y: 5, w: 1, h: 1, label: 'the ferry folk\'s board', art: 'ferry-slate', flag: 'ferry.board',
       text: 'A slate board, written in the river cant and in town words. TODAY: slow water. The ford is good for walkers, not for carts. The next boat goes when the water says, not when the bell says. Ask Tova.' },
+    { id: 'ferry-departure-catalogue', kind: 'exhibit', exhibit: 'OBJ-DEPART-TUPAIA', x: 8, y: 3, w: 1, h: 1,
+      label: 'two records of Tupaia’s chart copy', art: 'departure.catalogue', walkThrough: true },
+    { id: 'ferry-departure-reading', kind: 'exhibit', exhibit: 'OBJ-DEPART-READING', x: 9, y: 5, w: 1, h: 1,
+      label: 'a proposed reading beside the chart records', art: 'departure.catalogue', walkThrough: true },
+    { id: 'ferry-departure-table', kind: 'scene', node: 'departure.ferry.table', x: 13, y: 6, w: 1, h: 1,
+      label: 'Tova’s carrier tag for the wick bundle', art: 'departure.strip', walkThrough: true,
+      visibleIf: { all: [departureCases, { not: departureTag }] } },
+    { id: 'ferry-departure-road', kind: 'scene', node: 'departure.ferry.road', x: 5, y: 5, w: 1, h: 1,
+      label: 'the old-road starting marker', art: 'departure.peg', walkThrough: true, visibleIf: departureTag,
+      artOpen: { key: 'departure.peg-marked', if: { flag: 'departure.ferry.road', eq: true } } },
+    { id: 'ferry-departure-stair', kind: 'scene', node: 'departure.ferry.stair', x: 12, y: 10, w: 1, h: 1,
+      label: 'the landing-stair starting marker', art: 'departure.peg', walkThrough: true, visibleIf: departureTag,
+      artOpen: { key: 'departure.peg-marked', if: { flag: 'departure.ferry.stair', eq: true } } },
+    { id: 'ferry-departure-dispatch', kind: 'scene', node: 'departure.ferry.dispatch', x: 13, y: 6, w: 1, h: 1,
+      label: 'Tova’s wick handoff table', art: 'departure.strip', walkThrough: true,
+      visibleIf: { all: [{ objective: 'departure.ferry.compare' }, departureUndecided] } },
+    { id: 'ferry-departure-paired', kind: 'scene', node: 'departure.ferry.pair-check', x: 6, y: 6, w: 1, h: 1,
+      label: 'the evening carrier’s receipt at the old road', art: 'preserved.display-paired', walkThrough: true,
+      visibleIf: { flag: 'departure.ferry.route', eq: 'paired' },
+      artOpen: { key: 'departure.strip', if: { flag: 'departure.ferry.receipt', eq: 'paired' } } },
+    { id: 'ferry-departure-wenna', kind: 'scene', node: 'departure.ferry.wenna-check', x: 18, y: 8, w: 1, h: 1,
+      label: 'Wenna’s signed tag at the barter boat', art: 'preserved.slip', walkThrough: true,
+      visibleIf: { flag: 'departure.ferry.route', eq: 'named' },
+      artOpen: { key: 'departure.strip', if: { flag: 'departure.ferry.receipt', eq: 'named' } } },
+    { id: 'ferry-departure-archive-index', kind: 'sign', x: 22, y: 5, w: 1, h: 1, walkThrough: true,
+      label: 'the Bell Archive’s cross-index tab at the ferry', art: 'preserved.display-paired',
+      visibleIf: { flag: 'departure.archive.readback', eq: 'cross' },
+      text: 'Bell Archive, W-17. The two drawer tabs point to the wick receipt. Tova copies both names on the back of the ferry’s tag so the next carrier can go straight to the right drawer.' },
+    { id: 'ferry-departure-archive-desk', kind: 'sign', x: 22, y: 5, w: 1, h: 1, walkThrough: true,
+      label: 'the Bell Archive’s lending request at the ferry', art: 'preserved.slip',
+      visibleIf: { flag: 'departure.archive.readback', eq: 'desk' },
+      text: 'Bell Archive, W-17. Tova leaves the keeper’s reply on a hook for the next rider. Bring either slip when the desk is open. The keeper looks up the original and can check which peg Wenna means.' },
+    { id: 'ferry-departure-file-return', kind: 'scene', node: 'departure.ferry.file-return', x: 21, y: 4, w: 1, h: 1,
+      label: 'Wenna’s packing ledger and the returned tag', art: 'ledger', walkThrough: true,
+      visibleIf: { all: [{ objective: 'departure.archive.checked' }, { flag: 'perspective.active', eq: 'departure-strip' }] },
+      artOpen: { key: 'departure.strip', if: { flag: 'departure.ferry.clipped', eq: true } } },
   ],
   zones: [{ id: 'ferry', x: 0, y: 0, w: W, h: H }],
   lights: [
