@@ -1,0 +1,203 @@
+{
+ "characters": [
+  {
+   "id": "vesper-quill",
+   "name": "Vesper Quill",
+   "role": "Former Guardian; leader of the Gilded Seal",
+   "sprite": "custom:olive.black.gold.wine.both.gold.long.lightframes.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "vesper.after",
+     "if": {
+      "flagSet": "ending.council"
+     }
+    },
+    {
+     "node": "vesper.meet"
+    }
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "item.brass-lamp",
+   "name": "Small brass lamp",
+   "description": "Left in the dust when the Hollow Archivist fell. Plain, old, and warm to hold. Elsbet's, probably. Its light is very gentle, and very close.",
+   "historicalLabel": "fictional-world",
+   "art": "icon.lamp"
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "vesper.meet",
+   "speaker": "vesper-quill",
+   "text": "A tall figure with gold thread at the cuffs bows to you, very correctly. 'Guardian. You came.' Vesper Quill smiles: polite, funny, tired. 'I hoped you would bring the card. Shall we look at it together? In front of the Council. In the open, as Elsbet liked.'",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hold Elsbet's brass lamp over the card.",
+     "if": {
+      "item": "item.brass-lamp"
+     },
+     "next": "vesper.lamp",
+     "effects": [
+      {
+       "setFlag": "council.lamp",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "I do not have Elsbet's lamp. Read the card as it is.",
+     "if": {
+      "not": {
+       "item": "item.brass-lamp"
+      }
+     },
+     "next": "vesper.nolamp"
+    },
+    {
+     "text": "(Sceptical) Why should the Council trust you, of all people?",
+     "tag": "Ask for a source",
+     "next": "vesper.why"
+    }
+   ]
+  },
+  {
+   "id": "vesper.why",
+   "speaker": "vesper-quill",
+   "text": "'They should not. Trust the card. I sold certainty for ten years; I know exactly what it is worth.' Vesper taps the gold thread at one cuff. 'That is the joke, Guardian. I agree with you about almost everything. Except Thursday.'",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hold Elsbet's brass lamp over the card.",
+     "if": {
+      "item": "item.brass-lamp"
+     },
+     "next": "vesper.lamp",
+     "effects": [
+      {
+       "setFlag": "council.lamp",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "I do not have Elsbet's lamp. Read the card as it is.",
+     "if": {
+      "not": {
+       "item": "item.brass-lamp"
+      }
+     },
+     "next": "vesper.nolamp"
+    }
+   ]
+  },
+  {
+   "id": "vesper.lamp",
+   "speaker": "narrator",
+   "text": "In the lamp's warm light, the scraped line comes back, letter by letter: 'Tested only in a dry year. Not tested in flood. Do not say safe.' Under it, in the small hand you know from the study: 'Last checked by Elsbet Varro. Not yet corrected. I am sorry, Ise. I am sorry, Vesper. E.' The hall is very quiet. Somewhere, a music box plays Elsbet's tune.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Go on.",
+     "next": "vesper.choose"
+    }
+   ]
+  },
+  {
+   "id": "vesper.nolamp",
+   "speaker": "vesper-quill",
+   "text": "Without the lamp, the scraped line stays a scrape. Vesper reads the three words out: 'tested only in...'. 'You know the rest,' Vesper says. 'Or you trust me. That is the problem, is it not? Everything comes down to whom you trust when you cannot see.'",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Go on.",
+     "next": "vesper.choose"
+    }
+   ]
+  },
+  {
+   "id": "vesper.choose",
+   "speaker": "vesper-quill",
+   "text": "Vesper turns to the Council, then back to you. 'So, Guardian. What do the Guardians owe Harrowmere? And what do I owe the people who bought my seals? You choose. I will not pretend it is easy.'",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Correct the Nexus label in public, with Harrowmere's names on it. And the Seal stops selling certainty.",
+     "tag": "Name the difference",
+     "next": "vesper.end.correct",
+     "effects": [
+      {
+       "setFlag": "ending.council",
+       "value": "correct"
+      }
+     ]
+    },
+    {
+     "text": "Come back to the Guardians, Vesper. Help us check in the open, instead of selling stamps.",
+     "tag": "Listen first",
+     "next": "vesper.end.recruit",
+     "effects": [
+      {
+       "setFlag": "ending.council",
+       "value": "recruit"
+      }
+     ]
+    },
+    {
+     "text": "Expose the Seal before the Council. Harrowmere's harm does not excuse the harm you sold.",
+     "next": "vesper.end.expose",
+     "effects": [
+      {
+       "setFlag": "ending.council",
+       "value": "expose"
+      }
+     ]
+    },
+    {
+     "text": "Put both in front of the Council, the label and the seals, side by side. Let them decide, and say how sure they are.",
+     "tag": "Ask",
+     "next": "vesper.end.both",
+     "effects": [
+      {
+       "setFlag": "ending.council",
+       "value": "both"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vesper.end.correct",
+   "speaker": "vesper-quill",
+   "text": "The corrected label goes up that evening, with every name from Harrowmere on it, and the line that was cut. Ise reads it aloud herself. Vesper puts the Seal's stamp on the table and does not pick it up again. Cost: many visitors now doubt every label in the hall, the good ones too. You will spend years earning that back. 'Last checked by' has your name under Elsbet's.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "vesper.end.recruit",
+   "speaker": "vesper-quill",
+   "text": "Vesper is quiet for a long moment. 'You would have me back? After the seals?' The Council argues all night. In the morning, Vesper signs the Guardians' book, in small careful letters. Cost: some people the Seal fooled feel that you forgave the person who fooled them. They are not wrong to feel it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "vesper.end.expose",
+   "speaker": "vesper-quill",
+   "text": "You lay out the Seal's price lists and the claims it stamped. The Council closes the Seal. Vesper does not argue. 'Fair,' Vesper says, 'and Harrowmere?' You put the card beside the price lists. Cost: Vesper leaves again, and the Nexus's own mistake is only half in the light. Some of the hall will remember only the villain.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "vesper.end.both",
+   "speaker": "vesper-quill",
+   "text": "Both go on the Council table: the weir label with its cut line, and a year of the Seal's stamped claims. The Council writes its answer with a line about how sure it is. Nobody is fully pleased. Ise and Vesper stand at opposite ends of the table and, after an hour, talk. Cost: it takes a long time, and the town wanted an answer by Thursday.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "vesper.after",
+   "speaker": "vesper-quill",
+   "text": "Vesper nods to you across the hall. 'Whatever we chose, we chose it in the open. That was the only part I was ever sure about.'",
+   "historicalLabel": "fictional-world"
+  }
+ ]
+}

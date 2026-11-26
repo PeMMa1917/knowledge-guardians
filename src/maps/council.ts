@@ -26,7 +26,9 @@ export const COUNCIL_HALL: MapDef = {
     return (x >= 11 && x <= 17) || y === 10 || y === 11 ? 'council-inlay' : 'council-blue';
   }),
   blocks: [[1, 0, 27, 3]], zones: [], spawn: { x: 12, y: 12 },
-  npcs: [{ id: 'council-keeper', x: 12, y: 7, facing: 'down' }],
+  npcs: [{ id: 'council-keeper', x: 12, y: 7, facing: 'down' },
+    // The rival comes to the Council (docs/STORY_BIBLE.md sections 6 and 7).
+    { id: 'vesper-quill', x: 17, y: 13, facing: 'left', visibleIf: { all: [{ objective: 'council.arrival' }, { flag: 'harrowmere.found', eq: true }] } }],
   stamps: [
     { stamp: 'council-timing-wall', x: 11, y: 2 }, { stamp: 'council-clock-shelf', x: 3, y: 4 },
     { stamp: 'council-clock-shelf', x: 23, y: 4 }, { stamp: 'council-lamp', x: 9, y: 5 },

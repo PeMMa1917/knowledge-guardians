@@ -554,7 +554,15 @@
    "id": "ack.council-keeper",
    "character": "council-keeper",
    "if": {
-    "objective": "council.finish"
+    "all": [
+     {
+      "objective": "council.finish"
+     },
+     {
+      "flag": "council.lamp",
+      "eq": true
+     }
+    ]
    },
    "line": "You carried a little brass lamp into the Council. I have mended every lamp in this hall. Never that one."
   },
@@ -1917,6 +1925,24 @@
     ]
    },
    "line": "You paired the voice and the guide in the Archive of Voices. We will pair the rail record and the bell. Fair."
+  },
+  {
+   "id": "ack2.council-keeper",
+   "character": "council-keeper",
+   "if": {
+    "all": [
+     {
+      "objective": "council.finish"
+     },
+     {
+      "not": {
+       "flag": "council.lamp",
+       "eq": true
+      }
+     }
+    ]
+   },
+   "line": "You solved the watches without anyone's lamp but your own. Good. A lamp is only a lamp."
   }
  ]
 }

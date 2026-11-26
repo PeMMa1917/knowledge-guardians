@@ -482,7 +482,7 @@ export class Engine {
           if (!o) throw new Error('Choose an answer');
           const done = o.ok && ph + 1 >= BOSS.phases.length;
           s = apply(o.ok
-            ? [{ setFlag: `boss.${BOSS.id}.phase`, value: ph + 1 }, { setFlag: `meet.fray.${p.fray}`, value: true }, ...(done ? [{ setFlag: 'undercroft.done', value: true }, { addMarks: 10 }] as Effect[] : [])]
+            ? [{ setFlag: `boss.${BOSS.id}.phase`, value: ph + 1 }, { setFlag: `meet.fray.${p.fray}`, value: true }, ...(done ? [{ setFlag: 'undercroft.done', value: true }, { addMarks: 10 }, { giveItem: 'item.brass-lamp' }] as Effect[] : [])]
             : [{ addNum: `boss.${BOSS.id}.hollow`, by: 1 }], s, out);
           events.push({ kind: 'boss', phase: ph, ok: o.ok, why: o.why, done });
           break;

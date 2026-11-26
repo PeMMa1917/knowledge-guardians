@@ -129,7 +129,12 @@ export const LETTERS: Letter[] = [
     hook: 'I will come to the Council of Inquiry. Bring the little brass lamp from the Undercroft. Elsbet left it for a reason. V. Q.' },
   { id: 'l15', chapter: 15, when: obj('council.finish'),
     opening: 'Dear Guardian, it is done, one way or another.',
-    remembers: [{ text: 'Whatever you chose at the Council, you chose it with the scraped line in your hand. Nobody can say you did not know.' }],
+    remembers: [
+      { if: flag('ending.council', 'correct'), text: 'The corrected label is up, with every Harrowmere name on it. I went to read it at night, when nobody was there. I read it twice.' },
+      { if: flag('ending.council', 'recruit'), text: 'I signed your book. My hand shook. Do not tell Rook.' },
+      { if: flag('ending.council', 'expose'), text: 'You closed the Seal. Fair. I would have done the same to me. I hope you keep the card in the light, too.' },
+      { if: flag('ending.council', 'both'), text: 'You put both on the table and made the Council say how sure it was. I hated it. It was right.' },
+      { text: 'Whatever you choose at the Council, choose it with the scraped line in your hand. Nobody should say you did not know.' }],
     fair: 'I still think people need an answer by Thursday. Now I think they also need a lamp, and someone who comes to check it.',
     hook: 'There is one more door at the end of the corridor. I never opened it. Last checked by: you. V. Q.' },
 ];
