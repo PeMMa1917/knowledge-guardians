@@ -29,7 +29,7 @@ import { WARES, priceFor } from './shop';
 import { TALENTS, cannotLearn, hasTalent } from './talents';
 import { GATHER_YIELD, RECIPES, RESOURCES, cannotCraft } from './craft';
 import { cannotRead, readingOf } from './readings';
-import { MIN_SOURCES, RUMOURS, rumourDone, sourcesChecked } from './rumours';
+import { RUMOURS, missingRumourSources, rumourDone } from './rumours';
 import { BARTER, DYES, FAIR_PRICE, ferryPrice } from './trade';
 import { approvalOf, approvalRank, isInquiry } from './approval';
 import { ROLES } from './roles';
@@ -457,7 +457,7 @@ export class Engine {
             s = apply([{ setFlag: `mill.${r.id}.s${cmd.source}`, value: true }], s, out);
             break;
           }
-          if (sourcesChecked(s.flags, r).length < MIN_SOURCES) throw new Error(`Check at least ${MIN_SOURCES} sources first. One source alone cannot be checked against anything.`);
+          if (missingRumourSources(s.flags, r).length) throw new Error("Check the rumour’s listed sources before giving a verdict.");
           const why = r.whys[cmd.verdict];
           if (why === undefined) throw new Error('Choose a verdict');
           const ok = cmd.verdict === r.best;

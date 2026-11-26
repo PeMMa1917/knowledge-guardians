@@ -28,7 +28,7 @@ const objectives: Objective[] = WARM_CASES.map((record) => ({
     concepts: ['evidence', 'explanation', 'objectivity', 'justification', 'perspective', 'responsibility'],
     framework: ['scope', 'methods-and-tools', 'perspectives', 'ethics'],
     atl: ['thinking', 'research', 'communication'], aoks: ['NAT', 'TEC', 'HIS'],
-    subjects: ['physics', 'design-tech', 'chemistry'],
+    subjects: ['physics', 'design-tech'],
     thinking: { dok: 3, bloom: 'analyse', fink: 'application', solo: 'relational' }, minutes: 4,
   },
   onComplete: [{ journal: `j.${record.stem}` }],

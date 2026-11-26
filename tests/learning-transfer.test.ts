@@ -26,6 +26,23 @@ function requestClues(d: Driver, objective: string, finalClue: string) {
   expect(d.done(objective)).toBe(false);
 }
 
+it('keeps Classical Languages on the Latin and Greek reading actions independently of the case template', () => {
+  const { missions } = new Driver().e.pack;
+  const objectives = new Map(missions.flatMap(({ objectives }) => objectives.map((entry) => [entry.id, entry] as const)));
+  const subjects = (id: string) => objectives.get(id)?.weave?.subjects;
+  for (const id of [
+    'vindolanda.compare', 'vindolanda.nexus.done', 'vindolanda.hall.compare', 'vindolanda.hall.done',
+    'correspondence.pontigny-alphabets.delivered', 'correspondence.constantinople-pi.delivered',
+    'stage.script.seneca-lipsius.placed',
+  ]) expect(subjects(id), id).toContain('classics');
+
+  expect(subjects('correspondence.qajar-practice-verse.delivered')).toEqual(['lang-b', 'visual-arts']);
+  expect(subjects('correspondence.xuanzang-treasury.delivered')).toEqual(['lang-langlit', 'lang-b']);
+  expect(subjects('correspondence.michele-steno-charter.delivered')).toEqual(['lang-langlit', 'lang-b']);
+  expect(subjects('stage.script.ise-screens.placed')).toEqual(['lang-langlit', 'lang-lit', 'history']);
+  expect(subjects('preserved.royal')).toEqual(['history']);
+});
+
 it('uses a linked folio in two worlds and awards field practice only after each actual use', () => {
   const d = new Driver();
   const ids = ['SK-MICRO-0761', 'SK-MICRO-0801'];

@@ -41,16 +41,6 @@ function discover(d: Driver) {
   pass(d, 'hatch');
 }
 
-function usePin(d: Driver, route: 'quiet' | 'low') {
-  use(d, 'fit', route === 'low' ? 'Fit the pin to open the low' : 'Fit the pin to open the screened');
-  const cargo = route === 'low' ? 'Keep Tavin’s receipt from the low' : 'Keep Tavin’s receipt from the ordinary';
-  const reader = route === 'low' ? 'Keep Merra’s request' : 'Keep Merra’s receipt';
-  d.talk('shutter-tavin', cargo);
-  d.talk('shutter-merra', reader);
-  expect(d.s.flags[scope + 'reader']).toBe(route);
-  expect(d.s.flags[scope + 'cargo']).toBe(route);
-}
-
 describe('The Two Shutter Room', () => {
   it('finds the actual baffle in the old position, then traces the two independently corrected routes', () => {
     expect(traceShutters(OLD_SHUTTERS)).toEqual({
@@ -110,7 +100,15 @@ describe('The Two Shutter Room', () => {
     expect(prop(d, 'tray-rest')).toBeDefined();
     expect(prop(d, 'quiet-seat')).toBeUndefined();
 
-    usePin(d, 'quiet');
+    use(d, 'fit', 'Fit the pin to open the screened');
+    const fittingOptions = () => d.e.visibleOptions(scope + 'fit', d.s).map(({ option }) => option.text);
+    expect(fittingOptions()).toEqual(['Leave the pin in its present place.']);
+    d.talk('shutter-merra', 'Keep Merra’s receipt');
+    expect(fittingOptions()).toEqual(['Leave the pin in its present place.']);
+    d.talk('shutter-tavin', 'Keep Tavin’s receipt from the ordinary');
+    expect(fittingOptions()).toContain('Fit the pin to open the low tray rest.');
+    expect(d.s.flags[scope + 'reader']).toBe('quiet');
+    expect(d.s.flags[scope + 'cargo']).toBe('quiet');
     expect(prop(d, 'quiet-seat')).toBeDefined();
     expect(prop(d, 'tray-rest')).toBeUndefined();
     expect(d.s.journal.filter((id) => id === 'j.nexus.shutter.serve')).toHaveLength(1);

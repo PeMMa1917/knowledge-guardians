@@ -147,6 +147,14 @@ button.mini { padding: 0.1em 0.5em; font-size: 0.85rem; }
   .lumen-bubble button { flex: none; min-inline-size: 44px; min-block-size: 44px; }
 }
 
+/* Keep long objectives readable without covering nearby play on touch screens. */
+@media (any-pointer: coarse) {
+  .hud .tracker {
+    max-block-size: min(100%, 28dvh);
+    overflow: auto;
+  }
+}
+
 /* Toasts */
 .toasts { position: fixed; top: 64px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; gap: 6px; align-items: center; pointer-events: none !important; z-index: 50; width: min(36rem, 90vw); }
 .toast { background: var(--panel); border: 1px solid var(--gold-dim); border-radius: 10px; padding: 0.45em 0.9em; box-shadow: var(--shadow); transition: opacity 0.5s, transform 0.5s; font-size: 0.9rem; }

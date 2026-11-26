@@ -193,7 +193,15 @@ export function parsePair(text: string | null): LoadResult {
 // Save service
 // --------------------------------------------------------------------------
 
+export class PermanentSaveConflict extends Error {
+  constructor() {
+    super('The learning record changed in another tab. This tab still has your unsaved progress.');
+  }
+}
+
 export class SaveService {
+  private knownPermanent: string | null | undefined;
+
   constructor(private store: KeyValueStore) {}
 
   load(): LoadResult {
@@ -215,6 +223,7 @@ export class SaveService {
 
   loadPermanent(): PermanentRecord {
     const t = this.store.get(KEY_PERMANENT);
+    this.knownPermanent = t;
     if (!t) return newPermanent();
     try {
       return migratePermanent(JSON.parse(t));
@@ -224,7 +233,12 @@ export class SaveService {
   }
 
   savePermanent(p: PermanentRecord): void {
-    this.store.set(KEY_PERMANENT, JSON.stringify(p));
+    if (this.knownPermanent !== undefined && this.store.get(KEY_PERMANENT) !== this.knownPermanent) {
+      throw new PermanentSaveConflict();
+    }
+    const next = JSON.stringify(p);
+    this.store.set(KEY_PERMANENT, next);
+    this.knownPermanent = next;
   }
 }
 

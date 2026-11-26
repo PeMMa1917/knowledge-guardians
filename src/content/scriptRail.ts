@@ -102,7 +102,7 @@ export const SCRIPT_DETAILS = {
     question: 'What belongs to a story, what belongs to its edition, and what belongs to this particular object?',
     stake: 'Followers of an illustrator or translator must still be able to retrieve the exact edition without miscrediting it.',
     weave: { concepts: ['culture', 'justification', 'evidence', 'responsibility', 'explanation'], framework: ['scope', 'methods-and-tools', 'ethics'],
-      atl: ['research', 'communication', 'thinking'], aoks: ['LAN', 'HIS', 'ART'], subjects: ['lang-langlit', 'lang-lit', 'classics', 'history'] },
+      atl: ['research', 'communication', 'thinking'], aoks: ['LAN', 'HIS', 'ART'], subjects: ['lang-langlit', 'lang-lit', 'history'] },
   },
 } satisfies Record<ScriptRoom, ScriptPlace>;
 
@@ -129,7 +129,10 @@ const missions: Mission[] = SCRIPT_ROOMS.map((room) => {
       all: [scriptDelivery(record, layout), { flag: record.objective, eq: layout }],
     })) },
     onComplete: [{ journal: `j.${record.flag}` }],
-    weave: { ...weave, minutes: 6, thinking: { dok: 3, bloom: 'analyse', fink: 'application', solo: 'relational' } },
+    weave: { ...weave,
+      // This edition asks the reader to separate Seneca's line from the Latin editorial explanation.
+      ...(record.slug === 'seneca-lipsius' ? { subjects: [...weave.subjects, 'classics'] } : {}),
+      minutes: 6, thinking: { dok: 3, bloom: 'analyse', fink: 'application', solo: 'relational' } },
   }));
   return { id: mission, world: 'WORLD-10', title, stake, knowledgeQuestion: question,
     objectives, available: { any: entries.map(({ card }) => ({ card })) }, caseVisits: objectives.map(({ id }) => [id]) };

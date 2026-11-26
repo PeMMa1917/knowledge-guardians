@@ -4,7 +4,7 @@ import { buildPack } from '../src/content';
 import { Engine, newCampaign } from '../src/domain/engine';
 import { migratePermanent, newPermanent } from '../src/domain/permanent';
 import {
-  KEY_SLOTS, SaveService, emptyPair, memoryStore, parsePair, restoreRecovery, serialisePair, writeCheckpoint, writeSuspend,
+  KEY_PERMANENT, KEY_SLOTS, SaveService, emptyPair, memoryStore, parsePair, restoreRecovery, serialisePair, writeCheckpoint, writeSuspend,
   type SaveEntry,
 } from '../src/domain/saves';
 import type { CampaignState } from '../src/domain/types';
@@ -15,9 +15,15 @@ const pack = buildPack();
 const base = () => newCampaign(pack, 'Tester', 'player-a', 42);
 const entry = (label: string, s: CampaignState = base()): SaveEntry => ({ kind: 'checkpoint', label, location: 'Archive', savedAt: '2026-01-01T00:00:00Z', state: s });
 
-function browserSave(pair: ReturnType<typeof emptyPair>) {
+function browserSave(pair: ReturnType<typeof emptyPair>, rejected = new Set<string>()) {
   const store = memoryStore({ [KEY_SLOTS]: serialisePair(pair) });
-  vi.stubGlobal('window', { localStorage: { getItem: store.get, setItem: store.set } });
+  vi.stubGlobal('window', { localStorage: {
+    getItem: store.get,
+    setItem: (key: string, value: string) => {
+      if (rejected.has(key)) throw new DOMException('Synthetic storage denial', 'QuotaExceededError');
+      store.set(key, value);
+    },
+  } });
   return store;
 }
 
@@ -86,6 +92,87 @@ describe('campaign restore in the app', () => {
     expect(app.loadRecovery()).toBe(false);
     expect(app.state.marks).toBe(80);
     expect(store.get(KEY_SLOTS)).toBe(serialisePair(updated));
+  });
+  it('leaves a failed suspend available to retry without replacing the checkpoint', () => {
+    const saved = writeCheckpoint(emptyPair(), entry('Previous'));
+    const rejected = new Set([KEY_SLOTS]);
+    const store = browserSave(saved, rejected);
+    const app = new GameController();
+    app.loadContinue();
+    app.dispatch({ type: 'AddNote', text: 'A new thought' });
+
+    expect(app.suspend()).toBe(false);
+    expect(app.state.notes).toEqual(['A new thought']);
+    expect(store.get(KEY_SLOTS)).toBe(serialisePair(saved));
+
+    rejected.clear();
+    expect(app.suspend()).toBe(true);
+    const reopened = new GameController();
+    reopened.loadContinue();
+    expect(reopened.state.notes).toEqual(['A new thought']);
+    expect(reopened.pair.recovery).toEqual(saved.recovery);
+  });
+  it('keeps the completed action and its feedback when the learning record cannot be written', () => {
+    const rejected = new Set([KEY_PERMANENT]);
+    const store = browserSave(writeCheckpoint(emptyPair(), entry('Before the readings')), rejected);
+    const app = new GameController();
+    app.loadContinue();
+    const seen: string[] = [];
+    app.onEvents((events) => seen.push(...events.map(({ kind }) => kind)));
+
+    app.dispatch({ type: 'SetFlag', flag: 'nexus.rest.used', value: true });
+    expect(app.state.objectivesDone).toContain('nexus.rest.checked');
+    expect(seen).toContain('objective');
+    expect(seen).toContain('error');
+    expect(Object.keys(app.permanent.skills).length).toBeGreaterThan(0);
+    expect(store.get(KEY_PERMANENT)).toBeNull();
+    expect(app.suspend()).toBe(false);
+
+    rejected.clear();
+    expect(app.suspend()).toBe(true);
+    const reopened = new GameController();
+    reopened.loadContinue();
+    expect(reopened.state.objectivesDone).toContain('nexus.rest.checked');
+    expect(reopened.permanent.skills).toEqual(app.permanent.skills);
+  });
+  it('reports the completed step but omits a checkpoint confirmation when its write fails', () => {
+    const rejected = new Set([KEY_SLOTS]);
+    const state = { ...base(), objectivesDone: ['m01.o7.portal'] };
+    browserSave(writeCheckpoint(emptyPair(), entry('Before Emberford', state)), rejected);
+    const app = new GameController();
+    app.loadContinue();
+    const seen: string[] = [];
+    app.onEvents((events) => seen.push(...events.map(({ kind }) => kind)));
+
+    const result = app.dispatch({ type: 'SetFlag', flag: 'reached.emberford', value: true });
+    expect(app.state.objectivesDone).toContain('m02.o1.arrive');
+    expect(seen).toContain('objective');
+    expect(seen).toContain('error');
+    expect(seen).not.toContain('checkpoint');
+    expect(result.some(({ kind }) => kind === 'checkpoint')).toBe(false);
+  });
+  it('keeps learning progress from another tab when an older tab records active time', () => {
+    const store = browserSave(writeCheckpoint(emptyPair(), entry('Open in two tabs')));
+    const older = new GameController();
+    older.loadContinue();
+    const newer = new GameController();
+    newer.loadContinue();
+    newer.dispatch({ type: 'SetFlag', flag: 'nexus.rest.used', value: true });
+    const learning = store.get(KEY_PERMANENT);
+    expect(Object.keys(newer.permanent.skills).length).toBeGreaterThan(0);
+    const seen: string[] = [];
+    older.onEvents((events) => {
+      for (const event of events) if (event.kind === 'error') seen.push(event.message);
+    });
+
+    older.noteInput();
+    for (let i = 0; i < 4; i++) older.tickActive(true);
+
+    expect(seen).toEqual([expect.stringContaining('learning record changed in another tab')]);
+    expect(store.get(KEY_PERMANENT)).toBe(learning);
+    expect(older.permanent.activity).toBeDefined();
+    expect(older.suspend()).toBe(false);
+    expect(store.get(KEY_PERMANENT)).toBe(learning);
   });
 });
 

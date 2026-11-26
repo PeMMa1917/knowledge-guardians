@@ -176,7 +176,7 @@ import { curtainCallPanel } from './curtainCall';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
 import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
-import { MIN_SOURCES, RUMOURS, VERDICTS, currentRumour, sourcesChecked } from '../domain/rumours';
+import { RUMOURS, VERDICTS, currentRumour, missingRumourSources, sourcesChecked } from '../domain/rumours';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
 import { WARES, honestLabels, lockedOption, owns, priceFor } from '../domain/shop';
 import { calendarGrid, dayOf, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
@@ -544,8 +544,12 @@ export class UI implements UIApi {
     }
     this.refreshHud();
     if (this.pendingChapterEnd) { this.pendingChapterEnd = false; this.chapterEnd(); return; }
-    const next = this.queue.shift();
-    if (next) setTimeout(next, 0);
+    if (this.queue.length) {
+      setTimeout(() => {
+        // A dialogue can replace its panel before this callback runs.
+        if (!this.modal) this.queue.shift()?.();
+      }, 0);
+    }
   }
 
   /** Run now if nothing is open; otherwise run when the open panel closes. */
@@ -2557,7 +2561,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openBreathing() }, 'Sit a while'),
         h('button', { onclick: () => this.openTalents(true) }, 'Insight tree'),
         h('button', { onclick: () => this.openRoles(true) }, 'Knower role'),
-        h('button', { onclick: () => { c.suspend('Save and leave'); this.closeModal(false); (window as any).kgToTitle?.(); } }, 'Save and leave')));
+        h('button', { onclick: () => this.saveAndLeave() }, 'Save and leave')));
   }
 
   // ------------------------------------------------- share with teacher (94)
@@ -2848,12 +2852,19 @@ export class UI implements UIApi {
 
   // -------------------------------------------------------------- menu
 
+  private saveAndLeave(): void {
+    if (!ctx.controller.suspend()) return;
+    this.closeModal(false);
+    this.toast('Saved. You can close the tab.', 'save');
+    (window as any).kgToTitle?.();
+  }
+
   private openMenu(): void {
     const c = ctx.controller;
     this.openModal('menu-panel', 'Menu', this.closeBtn(), h('h2', {}, 'Menu'),
       h('div', { class: 'menu' },
         h('button', { 'data-autofocus': true, onclick: () => this.closeModal() }, 'Resume'),
-        h('button', { onclick: () => { c.suspend('Save and leave'); this.closeModal(false); this.toast('Saved. You can close the tab.', 'save'); (window as any).kgToTitle?.(); } }, 'Save and leave'),
+        h('button', { onclick: () => this.saveAndLeave() }, 'Save and leave'),
         h('button', { onclick: () => this.openGuardian() }, 'My Guardian (look and pronouns)'),
         h('button', { onclick: () => this.openCrest() }, 'Crest'),
         h('button', { onclick: () => { this.closeModal(false); this.openPhotoMode(); } }, 'Photo mode'),
@@ -4102,14 +4113,15 @@ export class UI implements UIApi {
       const f = c.state.flags;
       const solved = Number(f['count.rumours'] ?? 0);
       const r = note?.ok ? RUMOURS.find((x) => x.id === note.id) ?? null : currentRumour(f, seed);
-      const intro = h('p', { class: 'fine' }, `Rumours traced: ${solved} of ${RUMOURS.length}. Check at least ${MIN_SOURCES} sources, then say what the evidence supports.`);
+      const intro = h('p', { class: 'fine' }, `Rumours traced: ${solved} of ${RUMOURS.length}. Check the listed sources, then say what the evidence supports.`);
       if (!r) {
         box.replaceChildren(this.closeBtn(), h('h2', {}, 'The rumour mill'), h('p', {}, 'The tea table is quiet. You have traced every rumour in Emberford for now. People here now ask "who told you?" before they pass a story on.'), intro,
           h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
         return;
       }
       const seen = sourcesChecked(f, r);
-      const enough = seen.length >= MIN_SOURCES;
+      const missing = missingRumourSources(f, r);
+      const enough = missing.length === 0;
       box.replaceChildren(this.closeBtn(), h('h2', {}, 'The rumour mill'),
         h('p', { class: 'fine' }, `${r.heard}:`), h('p', { class: 'clue-view' }, r.line),
         h('h3', {}, 'Sources'),
@@ -4126,7 +4138,7 @@ export class UI implements UIApi {
               this.sfx(res.ok ? 'sfx.sparkle' : 'sfx.page');
               render({ ok: res.ok, why: res.ok ? res.why : `${v}? ${res.why} Think again.`, id: r.id });
             } }, v))),
-            enough ? null : h('p', { class: 'fine' }, `Check ${MIN_SOURCES - seen.length} more source${MIN_SOURCES - seen.length === 1 ? '' : 's'} before you judge.`)),
+            enough ? null : h('p', { class: 'fine' }, `Still needed: ${missing.map((i) => r.sources[i].label).join(' · ')}.`)),
         intro);
     };
     render();
@@ -5440,7 +5452,7 @@ export class UI implements UIApi {
       h('h3', {}, 'Who was affected'),
       h('ul', {}, ...(rel.length ? rel.map((r) => h('li', {}, r)) : [h('li', {}, 'No relationships changed much.')])),
       h('p', { class: 'fine' }, 'Different choices lead to different consequences. None of them is the hidden "right answer". Your awards, concept XP, moments and portfolio are kept if you start again.'),
-      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep exploring'), h('button', { onclick: () => { this.closeModal(); (window as any).kgToTitle?.(); } }, 'Title screen')));
+      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep exploring'), h('button', { onclick: () => this.saveAndLeave() }, 'Save and leave')));
     this.sfx('sfx.award');
   }
 }

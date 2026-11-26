@@ -61,7 +61,7 @@ const methods: Record<string, { compose: string; issue: string; weave: Pick<Weav
   form: {
     compose: 'Put the guide marks alongside the same opening line. A reader can follow the small clue without mistaking it for a second instruction.',
     issue: 'This looks like another order because it has another set of marks. Show me where both guides return to the same line.',
-    weave: { subjects: ['classics', 'lang-b', 'visual-arts'], concepts: ['evidence', 'interpretation', 'perspective', 'objectivity'] },
+    weave: { subjects: ['lang-b', 'visual-arts'], concepts: ['evidence', 'interpretation', 'perspective', 'objectivity'] },
   },
   meaning: {
     compose: 'Keep the everyday instruction separate from the longer rendering. Leave a tab for the condition that the shorter wording might lose.',
@@ -71,7 +71,7 @@ const methods: Record<string, { compose: string; issue: string; weave: Pick<Weav
   credit: {
     compose: 'Keep the earlier voice beside the person who copied it. Hold the two job tabs in different slots.',
     issue: 'The two attributions will fit on one strip. Show me where the new reader or translator’s work begins.',
-    weave: { subjects: ['classics', 'lang-langlit', 'lang-b'], concepts: ['power', 'values', 'truth', 'responsibility'] },
+    weave: { subjects: ['lang-langlit', 'lang-b'], concepts: ['power', 'values', 'truth', 'responsibility'] },
   },
 };
 
@@ -117,12 +117,18 @@ function receiveScene(plan: CorrespondencePlan): DialogueNode {
   };
 }
 
-const objectives: Objective[] = CORRESPONDENCE_CASES.map((record) => ({
-  id: record.objective, title: `Deliver and check the practice letter for ${record.accession}.`, visible: { card: record.card }, essential: false,
-  done: { any: CORRESPONDENCE_PLANS.map((plan) => letterDone(record, plan)) },
-  weave: { ...methods[record.kind].weave, framework: ['scope', 'perspectives', 'methods-and-tools', 'ethics'], aoks: ['LAN', 'HIS', 'HUM'],
-    atl: ['communication', 'research', 'social'], thinking: { dok: 3, bloom: 'apply', fink: 'integration', solo: 'relational' }, minutes: 6 },
-}));
+const objectives: Objective[] = CORRESPONDENCE_CASES.map((record) => {
+  const { weave } = methods[record.kind];
+  // These cases use paired Greek and Latin letter forms or a particular Greek initial as a locator.
+  const usesClassicalScript = record.slug === 'pontigny-alphabets' || record.slug === 'constantinople-pi';
+  const subjects = usesClassicalScript ? ['classics', ...(weave.subjects ?? [])] : weave.subjects;
+  return {
+    id: record.objective, title: `Deliver and check the practice letter for ${record.accession}.`, visible: { card: record.card }, essential: false,
+    done: { any: CORRESPONDENCE_PLANS.map((plan) => letterDone(record, plan)) },
+    weave: { ...weave, subjects, framework: ['scope', 'perspectives', 'methods-and-tools', 'ethics'], aoks: ['LAN', 'HIS', 'HUM'],
+      atl: ['communication', 'research', 'social'], thinking: { dok: 3, bloom: 'apply', fink: 'integration', solo: 'relational' }, minutes: 6 },
+  };
+});
 
 export const correspondenceRoomContent = {
   characters: [

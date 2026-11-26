@@ -1,8 +1,8 @@
 /**
  * The rumour mill (Mika 2026-11-25: radiant side quests; rumours traced to a source). At the tea
  * table in the market the player overhears one rumour at a time. To trace it, the player checks
- * sources (a person, a record, someone who knows the subject). At least two sources must be checked
- * before a verdict: one source alone cannot be corroborated. Four verdicts: supported, partly
+ * sources (a person, a record, someone who knows the subject). Each case names which sources must
+ * be checked before the game gives feedback that refers to them. Four verdicts: supported, partly
  * supported, not supported, cannot tell yet. Every verdict is explained. The order is seeded (fair
  * randomness, never Math.random). All rumours are about the fictional town, never real news.
  * TOK link: testimony, corroboration, correlation and cause, observation and inference, sampling.
@@ -16,6 +16,8 @@ export interface Rumour {
   heard: string;
   line: string;
   sources: { label: string; text: string }[];
+  /** Indexes of the sources named or relied on in the feedback. */
+  requiredSources: readonly number[];
   /** The index in VERDICTS that the evidence best supports. */
   best: number;
   /** One explanation for each verdict, in the order of VERDICTS. */
@@ -33,12 +35,13 @@ export const RUMOURS: Rumour[] = [
       { label: 'Ask Efua, the well-keeper', text: "Efua laughs. 'The east well is next to the old school. For a hundred years, the pupils drank there before lessons.'" },
       { label: "Look in Noa's record book", text: 'Noa tested the water of both wells last spring. The same minerals are in both, in nearly the same amounts.' },
     ],
+    requiredSources: [1, 2],
     best: 2,
     whys: [
-      'The saying is old, but old is not the same as tested. What links the well and clever people?',
-      'Something true is in it: clever people did drink there. But the rumour says the water makes them clever.',
-      'Yes: the pupils drank there because the school was next to it. The well and learning go together, but the water does not cause the learning. Noa\'s test shows the water is the same as the other well.',
-      'You have a test of the water and a reason why pupils drank there. That is enough to say more than "cannot tell".',
+      'The pupils drank there, but that does not test what the water did. What shows that drinking there caused learning?',
+      'Pupils did drink there. The rumour goes further and says the water caused their learning. What evidence supports that step?',
+      'The school was next to the well. Noa found similar mineral levels in both wells. Neither record shows that the water made the pupils clever.',
+      'What the water might do is still open. These records give no support for the rumour’s claim that it made the pupils clever.',
     ],
     idea: 'Two things that go together (correlation) do not show that one causes the other.', fray: 'shadow-twins' },
   { id: 'greedy-prices', heard: 'A shopper by the fountain', line: "'Corvan puts his prices up every market day. Pure greed.'",
@@ -47,10 +50,11 @@ export const RUMOURS: Rumour[] = [
       { label: 'Read the toll board at the bridge', text: 'On market days, the bridge toll for a loaded cart is twice the usual toll.' },
       { label: 'Ask Hana, the cloth seller', text: "'All of us who bring goods by cart put our prices up on market day. The toll, you see. Corvan is loud about many things, but not about this.'" },
     ],
+    requiredSources: [0, 1, 2],
     best: 1,
     whys: [
-      'The prices do go up. But "greed" is a reason, and the sources show another reason.',
-      'Yes: the fact is right (the prices go up), but the reason added to it ("greed") is not supported. The bridge toll explains it, and every cart seller does the same.',
+      'The prices do go up. The toll offers another possible explanation. The records do not settle Corvan’s motives.',
+      'The price slate shows the increase. The toll and Hana’s account give another possible reason, so the records do not establish Corvan’s motive.',
       'Part of the rumour is true: the slate shows higher prices on market days.',
       'You have the slate, the toll board and another seller. That is enough to judge most of it.',
     ],
@@ -61,6 +65,7 @@ export const RUMOURS: Rumour[] = [
       { label: 'Ask Tova at the ferry landing', text: "'Our people walk the old road at night when the water is slow. We carry blue lanterns, so the fish are not scared.'" },
       { label: 'Ask Sefa about the Fray', text: "'A Fray is an error in thinking that takes a shape. It grows where people stop checking. Blue lights are a question to check, not a monster to fear.'" },
     ],
+    requiredSources: [0, 1],
     best: 1,
     whys: [
       'The light was real, but "it was a Fray" is a guess about what made it.',
@@ -75,6 +80,7 @@ export const RUMOURS: Rumour[] = [
       { label: "Read the Sign-Smith's notice board", text: "A draft notice: 'PROPOSAL: the market may move to the west green during the bridge works. Council vote: next week.'" },
       { label: 'Ask the baker who told her', text: "'The carter heard it from the porter, who heard it from a clerk.' Three people, and each retold it a little bigger." },
     ],
+    requiredSources: [0, 1, 2],
     best: 1,
     whys: [
       'Something is planned, but the plan is a move, not a closing, and it is not decided.',
@@ -89,14 +95,15 @@ export const RUMOURS: Rumour[] = [
       { label: 'Ask Orrin who comes to town at noon', text: "'At noon? Traders and guild people. Farm families come at dawn and go home before ten.'" },
       { label: 'Ask Efua about the farm families', text: "'Some read, some do not. Nobody asked them.'" },
     ],
+    requiredSources: [0, 1, 2],
     best: 3,
     whys: [
-      'The survey asked only some people, at one time of day, and even then 10 of 40 needed help.',
+      'The survey asked only some people, at one time of day, and the record counts only 30 independent readings out of 40 people.',
       'You cannot say "partly" with confidence: the people who were not asked may be very different.',
       'The survey is real evidence about the people it asked. It does not show the claim is false either.',
       'Yes: the survey asked only the people in the plaza at noon. The farm families were not asked. A fair answer needs a fairer sample, so you cannot tell yet.',
     ],
-    idea: 'A sample tells you about the people it asked. A claim about "everyone" needs a sample that includes everyone.', fray: 'hasty-hydra' },
+    idea: 'A sample tells you about the people it asked. A small sample from one place and time cannot establish a claim about everyone.', fray: 'hasty-hydra' },
 ];
 
 function rng(seed: number): () => number {
@@ -114,6 +121,9 @@ export function rumourOrder(seed: number): Rumour[] {
 type Flags = Record<string, unknown>;
 export const rumourDone = (f: Flags, id: string): boolean => f[`mill.${id}.done`] === true;
 export const sourcesChecked = (f: Flags, r: Rumour): number[] => r.sources.map((_, i) => i).filter((i) => f[`mill.${r.id}.s${i}`] === true);
+
+export const missingRumourSources = (f: Flags, r: Rumour): number[] =>
+  r.requiredSources.filter((i) => f[`mill.${r.id}.s${i}`] !== true);
 
 /** The rumour the player hears now: the first one not yet judged, in seeded order; null when all are done. */
 export function currentRumour(f: Flags, seed: number): Rumour | null {

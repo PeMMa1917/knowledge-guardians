@@ -469,7 +469,7 @@
   {
    "id": "nexus.shutter.fit",
    "speaker": "narrator",
-   "text": "The hall has one fitting for the pin. Set it low, and the arrivals rail can give a carrier a place to rest a tray. Set it higher, and the screened seat stays quiet long enough for readers to follow a full slip. The ordinary hall paths stay open. Hear from both groups before moving the pin again.",
+   "text": "The hall has one fitting for the pin. Set it low, and the arrivals rail can give a carrier a place to rest a tray. Set it higher, and the screened seat stays quiet long enough for readers to follow a full slip. The ordinary hall paths stay open. Hear from both groups about the current fitting before moving the pin again.",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -494,7 +494,11 @@
           }
          },
          {
-          "objective": "nexus.shutter.serve"
+          "all": [
+           { "flag": "nexus.shutter.layout", "eq": "quiet" },
+           { "flag": "nexus.shutter.cargo", "eq": "quiet" },
+           { "flag": "nexus.shutter.reader", "eq": "quiet" }
+          ]
          }
         ]
        }
@@ -529,7 +533,11 @@
           }
          },
          {
-          "objective": "nexus.shutter.serve"
+          "all": [
+           { "flag": "nexus.shutter.layout", "eq": "low" },
+           { "flag": "nexus.shutter.cargo", "eq": "low" },
+           { "flag": "nexus.shutter.reader", "eq": "low" }
+          ]
          }
         ]
        }

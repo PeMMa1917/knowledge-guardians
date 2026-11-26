@@ -208,12 +208,11 @@ describe('gathering and crafting', () => {
 });
 
 describe('the rumour mill', () => {
-  it('needs two sources before a verdict, explains every verdict, and moves on only when the evidence fits', () => {
+  it('requires the referenced sources, explains each verdict, and credits one completion', () => {
     const d = new Driver();
     const r = currentRumour(d.s.flags, 20000)!;
-    expect(() => d.run({ type: 'JudgeRumour', rumour: r.id, verdict: r.best })).toThrow(/at least 2/);
-    d.run({ type: 'CheckRumourSource', rumour: r.id, source: 0 });
-    d.run({ type: 'CheckRumourSource', rumour: r.id, source: 1 });
+    expect(() => d.run({ type: 'JudgeRumour', rumour: r.id, verdict: r.best })).toThrow(/listed sources/);
+    for (const source of r.requiredSources) d.run({ type: 'CheckRumourSource', rumour: r.id, source });
     const wrong = (r.best + 1) % 4;
     d.run({ type: 'JudgeRumour', rumour: r.id, verdict: wrong });
     expect(d.events.find((e) => e.kind === 'rumour')).toMatchObject({ ok: false });
@@ -224,9 +223,46 @@ describe('the rumour mill', () => {
     expect(currentRumour(d.s.flags, 20000)!.id).not.toBe(r.id);
     // The same seed gives the same order (fair randomness); every rumour is placed in the town.
     expect(rumourOrder(5).map((x) => x.id)).toEqual(rumourOrder(5).map((x) => x.id));
-    for (const x of RUMOURS) { expect(x.sources.length).toBeGreaterThanOrEqual(MIN_SOURCES); for (const w of x.whys) expect(w.length).toBeGreaterThan(20); }
+    for (const x of RUMOURS) {
+      expect(new Set(x.requiredSources).size).toBeGreaterThanOrEqual(MIN_SOURCES);
+      expect(x.requiredSources.every((source) => x.sources[source])).toBe(true);
+      for (const w of x.whys) expect(w.length).toBeGreaterThan(20);
+    }
     expect(MAPS['aethelgard.emberford'].interactables.some((i) => i.kind === 'rumours')).toBe(true);
     for (const x of RUMOURS) if (x.fray) expect(pack.fray.some((f: { id: string }) => f.id === x.fray)).toBe(true);
+  });
+
+  it('holds the well verdict until Noa’s test is read and keeps its conclusion bounded', () => {
+    const d = new Driver();
+    const rumour = 'clever-well';
+    const marks = d.s.marks;
+    // These flags also represent a partially completed rumour saved under the earlier rule.
+    d.run({ type: 'CheckRumourSource', rumour, source: 0 });
+    d.run({ type: 'CheckRumourSource', rumour, source: 1 });
+    for (const verdict of [2, 3]) {
+      expect(() => d.run({ type: 'JudgeRumour', rumour, verdict })).toThrow(/listed sources/);
+    }
+    expect(d.s.flags['mill.clever-well.done']).toBeUndefined();
+    expect(d.s.marks).toBe(marks);
+    d.run({ type: 'CheckRumourSource', rumour, source: 2 });
+    const checked = d.run({ type: 'JudgeRumour', rumour, verdict: 2 });
+    expect(checked.events.find((event) => event.kind === 'rumour')).toMatchObject({
+      ok: true,
+      why: expect.stringContaining('similar mineral levels'),
+    });
+    expect(d.s.flags['mill.clever-well.done']).toBe(true);
+    d.run({ type: 'JudgeRumour', rumour, verdict: 2 });
+    expect(d.s.marks).toBe(marks + 5);
+  });
+
+  it('allows a river light verdict with the two referenced witnesses', () => {
+    const d = new Driver();
+    const rumour = 'bridge-lights';
+    d.run({ type: 'CheckRumourSource', rumour, source: 0 });
+    d.run({ type: 'CheckRumourSource', rumour, source: 1 });
+    d.run({ type: 'JudgeRumour', rumour, verdict: 1 });
+    expect(d.s.flags['mill.bridge-lights.s2']).toBeUndefined();
+    expect(d.s.flags['mill.bridge-lights.done']).toBe(true);
   });
 });
 

@@ -61,7 +61,7 @@ try {
       maximumAuthoredStage: skillStage(signatures),
     };
   });
-  const subjects = Object.entries(SUBJECTS).filter(([, { group }]) => /^G[1-4]/.test(group))
+  const subjects = Object.entries(SUBJECTS)
     .map(([id, { name, group }]) => {
       // Join on the same objective so a neighbouring tag cannot supply evidence for another action.
       const linked = rows.filter(({ objective }) => objectiveById.get(objective).weave?.subjects?.includes(id));

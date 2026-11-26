@@ -24,7 +24,11 @@ describe('The Warm Side', () => {
       });
       expect(MAPS['aethelgard.ferry'].interactables.some(({ id }) => id === record.revisit.prop)).toBe(true);
     }
-    expect(pack.missions.find(({ id }) => id === 'KG-CH6-R78')?.caseVisits).toHaveLength(38);
+    const mission = pack.missions.find(({ id }) => id === 'KG-CH6-R78');
+    expect(mission?.caseVisits).toHaveLength(38);
+    expect(mission?.objectives.map(({ weave }) => weave?.subjects)).toEqual(
+      WARM_CASES.map(() => ['physics', 'design-tech']),
+    );
   });
 
   it('separates contact from body warmth and changes the comparison under a colder wait', () => {

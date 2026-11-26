@@ -44,6 +44,7 @@ export function joinedClothPanel(controller: GameController, place: string, soun
     const diagram = h('div');
     const trials = h('div', { class: 'joined-trials' });
     const result = h('p', { role: 'status' });
+    const referral = h('p', { class: 'fine', 'aria-live': 'polite', tabindex: -1 });
     const setSupport = JOINT_SUPPORTS.map((next) => h('button', { type: 'button', onclick: () => {
       support = next;
       result.textContent = '';
@@ -60,16 +61,20 @@ export function joinedClothPanel(controller: GameController, place: string, soun
       if (!comparedJointTrials(flags()) || flags()[JOINED_CLOTH_DESTINATION]) return;
       set(JOINED_CLOTH_DESTINATION, next);
       sound('sfx.page');
-      result.textContent = next === 'rack' ? 'Take the marked slip to the covered rack in the Plan Workshop.' : 'Take the marked slip to the east ledge and check the two supports there.';
-      result.tabIndex = -1;
-      result.focus();
       paint();
+      referral.focus();
     } }, next === 'rack' ? 'Send the one-beam setup to the covered rack' : 'Send the separate supports to the east ledge'));
     function paint() {
       diagram.replaceChildren(frame(support, load, flags()[jointTrialFlag(support, load)] === true));
       setSupport.forEach((button, index) => button.setAttribute('aria-pressed', String(JOINT_SUPPORTS[index] === support)));
       movePacket.forEach((button, index) => button.setAttribute('aria-pressed', String(JOINT_LOADS[index] === load)));
-      send.forEach((button) => { button.disabled = !comparedJointTrials(flags()) || !!flags()[JOINED_CLOTH_DESTINATION]; });
+      const destination = flags()[JOINED_CLOTH_DESTINATION];
+      send.forEach((button) => { button.disabled = !comparedJointTrials(flags()) || !!destination; });
+      const site = destination === 'rack' ? 'the covered rack in the Plan Workshop'
+        : destination === 'ledge' ? 'the east ledge of Two-Tide Dock' : undefined;
+      referral.hidden = !site;
+      referral.textContent = site ? (flags()[JOINED_CLOTH_USED] === destination
+        ? `The checked transfer is at ${site}.` : `Take the marked slip to ${site} and check the receiving transfer there.`) : '';
       trials.replaceChildren(...JOINT_SUPPORTS.map((kind) => h('section', { class: 'clue-view' }, h('h3', {}, SUPPORTS[kind]),
         ...JOINT_LOADS.map((at) => h('p', { class: 'fine' }, `${LOADS[at]}. ${flags()[jointTrialFlag(kind, at)] ? printTrial(kind, at) : 'Waiting for a transfer.'}`)))));
     }
@@ -86,7 +91,7 @@ export function joinedClothPanel(controller: GameController, place: string, soun
         paint();
       } }, 'Slide the model packet forward'), result, trials,
       h('p', { class: 'fine' }, 'The covered rack keeps its packet centred and uses one crew member. The east ledge takes the packet beside a post and needs a person at each support.'),
-      h('div', { class: 'row wrap' }, send));
+      h('div', { class: 'row wrap' }, send), referral);
     paint();
     return panel;
   }
