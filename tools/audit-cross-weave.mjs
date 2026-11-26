@@ -71,10 +71,78 @@ const nexusEvidenceInvestigations = [
   },
 ].map((row) => ({ ...row, dimensions: ['concept:evidence'], elements: ['game:267'] }));
 
+const emberfordEvidenceInvestigations = [
+  {
+    objective: 'ember.circle.trace', map: 'aethelgard.emberford', target: 'circlereport-ledger',
+    source: 'tests/circular-report.test.ts', anchor: 'awards row 317 once after physically tracing',
+    action: 'Trace the tea copy, stall report and replacement notice back to their common source. The issue book identifies the loop. A separate witness saw only the upper landing.',
+  },
+  {
+    objective: 'm02.o3.thread', map: 'aethelgard.emberford', target: 'thread-workshop',
+    source: 'tests/playthrough.test.ts', anchor: 'Nobody recorded',
+    action: 'Follow the thread from the stall through the guild ledger to the workshop sheet. The chain identifies the maker and stops before the stock’s earlier origin.',
+  },
+  {
+    objective: 'copy.o.trace', map: 'aethelgard.emberford', target: 'copy-order',
+    source: 'tests/emberford-followups.test.ts', anchor: 'only opens the board when its records have been compared',
+    action: 'Check what the dated order establishes about the sale, take the maker’s conditions for public use, and compare the open stock-age claim with the outside account of attribution.',
+  },
+  {
+    objective: 'bell.order.o.align', map: 'aethelgard.emberford', target: 'bell-order-board',
+    source: 'tests/emberford-followups.test.ts', anchor: 'matches the two records after taking the %s first and leaves the arrival open',
+    action: 'Fit the two pieces of Order 34 together. The guild mark gives a deadline and the ferry marks record a handover. Neither supplies an arrival time.',
+  },
+  {
+    objective: 'washhouse.o.trace', map: 'aethelgard.emberford', target: 'washhouse-screen',
+    source: 'tests/emberford-followups.test.ts', anchor: 'can be started on arrival and uses both downstream readings for a repair order',
+    action: 'Follow the wet side step and dry rinse tray below the same head peg. Find the side run at the screen before issuing a repair order.',
+  },
+  {
+    objective: 'hands.o.compare', map: 'aethelgard.emberford', target: 'hands-tray',
+    source: 'tests/emberford-followups.test.ts', anchor: 'needs the actual counterexample from the specimen tray',
+    action: 'Bring the pen’s museum entry back to the one-name tag. The record names both brothers and the separate patent-office account gives the practical pen’s development a wider set of contributors.',
+  },
+  {
+    objective: 'linen.o.compare', map: 'aethelgard.emberford', target: 'linen-open',
+    source: 'tests/emberford-linen.test.ts', anchor: 'preserve both notes, and hang either priority',
+    action: 'Keep the two clipped cloth cuttings together and move them between the shade and open light. Both change appearance together, while the ferry crew still needs its separate check on the folds.',
+  },
+  {
+    objective: 'pigment-window.controlled', map: 'aethelgard.emberford', target: 'pigment-window.stand',
+    source: 'tests/pigment-window.test.ts', anchor: 'controls the lamp and custody comparisons',
+    action: 'Change lamps over the same strip, then keep the lamp fixed over open and covered strips. The first comparison changes brightness. Only the second follows change during storage.',
+  },
+  {
+    objective: 'last-turn.compare', map: 'aethelgard.emberford', target: 'last-turn.slate',
+    source: 'tests/last-turn.test.ts', anchor: 'turns the same slate and checks both witnesses',
+    action: 'Turn the speaking slate and check the two accounts of the same gesture. At the tally desk a face-down slate closes a turn. At the forge it reserves one.',
+  },
+  {
+    objective: 'cart.o1.sight', map: 'aethelgard.emberford', target: 'cart-map',
+    source: 'tests/sightlines.test.ts', anchor: 'the map decides; a wrong sort asks the player to look again',
+    action: 'Trace the six parts of three accounts around the fruit stall, fountain and crates. Identify who could see each event and where a second voice repeats a single sighting.',
+  },
+].map((row) => ({ ...row, dimensions: ['concept:evidence'], elements: ['game:267'] }));
+
+const copiesEvidenceInvestigations = [
+  {
+    objective: 'copies.check.press', map: 'copies.press', target: 'copies-compare-press',
+    source: 'tests/copies-story.test.ts', anchor: 'expect(d.done(\'copies.check.press\')).toBe(true)',
+    action: 'Align the source slip and press proof. The claim and named clerk survive, but losing the Tuesday trial qualification changes which queues the line appears to describe.',
+  },
+  {
+    objective: 'copies.check.landing', map: 'copies.landing', target: 'copies-compare-landing',
+    source: 'tests/copies-story.test.ts', anchor: 'expect(d.done(\'copies.check.landing\')).toBe(true)',
+    action: 'Align the press and stall versions. The shortened words survive but the named log disappears. Find the point where readers lose a way to trace the claim.',
+  },
+].map((row) => ({ ...row, dimensions: ['concept:evidence'], elements: ['game:267'] }));
+
 // Each row identifies a complete action and the intersection its trace actually supports.
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
   ...nexusEvidenceInvestigations,
+  ...emberfordEvidenceInvestigations,
+  ...copiesEvidenceInvestigations,
   {
     objective: 'clearbay.use', map: 'preserved.archive', target: 'clear-bay-board',
     source: 'tests/clear-bay.test.ts', anchor: 'awards 78 only for the full comparison and observed %s handover',

@@ -176,6 +176,9 @@ The chapters exist in code (see STATUS.md). This table adds what each one needs 
 
 ## 15. Conflict map
 
+In Emberford’s Tipped Cart, the driver needs names to follow up on a missing pot. Passing carters need an immediate warning about a loose stone. Sending the driver the full accounts leaves the stone without a public mark. Marking a public detour leaves the pot’s story at the clerk’s desk. The receipt on the lane rail changes when the Guardian redirects the report.
+
+
 Mika asked for a wide variety of conflicts (2026-11-26): every type, every size, and different ways to end them. Conflicts must connect and build: each one moves the plot, a character's arc, or the theme forward. Misunderstandings, jokes and puns sit next to serious moments.
 
 **Code.** Small and mid conflicts in the world are **crossings** (`src/domain/crossings.ts`, flag `cross.<id>`). Each has a way to face it, a way around it, and a way to leave it, with a resolution method, stakes, a cost, a tone and a `leadsTo` link. `tests/crossings.test.ts` checks that all eight types, all three scales and all tones are present. Big conflicts are the chapter quests, Showdowns, loyalty missions and the Council.

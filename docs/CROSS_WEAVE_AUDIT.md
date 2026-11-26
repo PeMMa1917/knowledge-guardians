@@ -76,3 +76,10 @@ These classifications describe reasoning opportunities in the action. The audit 
 **Cold Store · The First Bell.** Players fit the same cart body first alone and then with its handler. They pin a visitor’s account beside the duty book for that bell and locate a later repair that moved a post. Either opening notice must respect the tested load, acknowledge whose experience the old notice omitted and keep a family name private. The chosen reader then changes which loads can enter at first bell. The micro-skill for comparing the four framework parts is recorded at that handover. [Route tests](../tests/clear-bay.test.ts)
 
 **Emberford · The Copy That Came Back.** The printer’s issue book connects a stall notice, a tea copy and the stall’s later claim of corroboration. Tracing both copies and recovering the independent lookout’s time and sightline earns the circular-reporting micro-skill. The ensuing choice determines whether a runner holds one parcel or the clerk preserves the paper trail. [Route tests](../tests/circular-report.test.ts)
+
+
+## Emberford and the City of Copies
+
+Emberford has ten source-traced opportunities to use evidence in an investigation. The clerk’s cart map tests witness positions. The stock thread and market copy expose different gaps in provenance and consent. A ferry stub and guild order distinguish a deadline from an arrival. The washhouse splits an upstream reading from two downstream effects. The pen tray returns several named contributors to a one-name tag. Moving linen changes its appearance. The pigment stand separates a lamp change from a storage change. The speaking slate gives two readings of one gesture, and the printer’s ledger reveals a circular citation. Each proof in the audit names the physical station and the test that exercises it.
+
+The City of Copies has two further comparisons. At the press, a lost time clause widens a claim. At the landing, an omitted source name breaks its attribution. Both exercise historical source tracing and the language theme. The audit counts each once toward evidence and investigation.

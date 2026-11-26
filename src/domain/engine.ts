@@ -1162,6 +1162,10 @@ export class Engine {
             const r = rec.type === 'sightlines' ? rec.reports[cmd.index] : rec.reflect[cmd.index];
             if (!r) throw new Error('No such report');
             ok = r.honest; text = r.why; solved = r.honest;
+            if (rec.type === 'sightlines' && solved) {
+              const delivery = rec.reports[cmd.index].delivery;
+              if (delivery) s = apply([{ setFlag: `${F}.delivery`, value: delivery }], s, out);
+            }
             if (!r.honest) s = apply([{ addNum: `${F}.misses`, by: 1 }], s, out);
           } else if (cmd.type === 'PuzzlePeel') {
             const r = peelLayer(rec, Number(s.flags[`${F}.peeled`] ?? 0));

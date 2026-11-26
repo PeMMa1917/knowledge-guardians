@@ -2034,9 +2034,17 @@ export class UI implements UIApi {
                   } }, t))));
           })))));
         if (all) {
-          box.append(h('h3', {}, done ? 'Your report' : 'Write the report for the driver'),
-            done ? h('p', { class: 'fair' }, rec.reports.find((r) => r.honest)!.text)
-              : h('div', { class: 'options notice-options' }, ...rec.reports.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text)))));
+          const delivered = rec.reports.find((r) => r.delivery && r.delivery === c.state.flags[`${F}.delivery`])
+            ?? rec.reports.find((r) => r.honest);
+          if (done && delivered) box.append(h('h3', {}, 'On the rail'), h('p', { class: 'fair' }, delivered.text));
+          box.append(h('h3', {}, done ? 'Send the account another way' : 'Where should the accounts go?'),
+            h('div', { class: 'options notice-options' }, ...rec.reports.flatMap((r, index) => {
+              if (done && (!r.honest || r === delivered)) return [];
+              return [h('button', { type: 'button', onclick: () => {
+                take(c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index }));
+                if (r.honest) this.sfx('sfx.complete');
+              } }, h('span', { class: 'notice-text' }, r.text))];
+            })));
         }
         if (feedback) {
           const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);

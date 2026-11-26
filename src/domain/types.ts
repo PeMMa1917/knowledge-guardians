@@ -593,7 +593,7 @@ export type PuzzleRecord = {
    * shown, never graded: only the reflection has a fair answer.
    */
   | { type: 'forecast'; choices: number[]; notes: string[]; days: ForecastDay[]; reflect: { text: string; honest: boolean; why: string }[] }
-  | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string }[] }
+  | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string; delivery?: string }[] }
 );
 
 export interface ForecastDay { baro: 'falling' | 'steady' | 'rising'; clouds: 'low' | 'high' | 'none'; birds: 'low' | 'high'; rain: boolean; almanac: number }
