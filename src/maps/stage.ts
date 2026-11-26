@@ -40,6 +40,8 @@ export const STAGE_FOYER = room({
     { stamp: 'plant-tall', x: 19, y: 13 }, { stamp: 'long-table', x: 12, y: 5 },
   ],
   interactables: [
+    { id: 'cross-stage-fright', kind: 'fieldgame', game: 'cross-stage-fright', x: 21, y: 12, w: 1, h: 1, label: 'the curtain, two minutes before you go on (a crossing)', art: 'label-stand' },
+    { id: 'cross-fortune', kind: 'fieldgame', game: 'cross-fortune', x: 8, y: 9, w: 1, h: 1, label: 'Madame Quandary\'s card table (a crossing)', art: 'cork-board' },
     door('stage-rehearsal-path', 6, 3, 'the west passage to rehearsal', { map: 'stage.rehearsal', x: 12, y: 12 }),
     door('stage-gallery-path', 22, 3, 'the east passage to the audience gallery', { map: 'stage.gallery', x: 11, y: 12 }),
     { ...door('stage-nexus-return', 12, 16, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 19, y: 13 }),

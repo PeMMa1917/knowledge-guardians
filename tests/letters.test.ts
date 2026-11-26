@@ -67,8 +67,9 @@ describe('the finale at the Council of Inquiry', () => {
     const pack = buildPack();
     expect(pack.items.some((i) => i.id === 'item.brass-lamp')).toBe(true);
     const choose = pack.dialogue.find((n) => n.id === 'vesper.choose')!;
-    const ends = choose.options!.map((o) => o.next!);
+    const ends = choose.options!.map((o) => o.next!).filter((n) => n !== 'vesper.wait');
     expect(ends).toHaveLength(4);
+    expect(choose.text).toContain('cannot be changed afterwards');
     for (const id of ends) expect(pack.dialogue.find((n) => n.id === id)!.text).toContain('Cost:');
     const d = new Driver();
     d.run({ type: 'SetFlag', flag: 'ending.council', value: 'recruit' });

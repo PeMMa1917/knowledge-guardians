@@ -62,6 +62,7 @@ export const PRESERVED_ARCHIVE = room({
     { stamp: 'plant-tall', x: 2, y: 13 }, { stamp: 'plant-tall', x: 26, y: 13 },
   ],
   interactables: [
+    { id: 'cross-warm-room', kind: 'fieldgame', game: 'cross-warm-room', x: 20, y: 5, w: 1, h: 1, label: 'the cooling fan in the record store (a crossing)', art: 'ledger' },
     door('preserved-door-royal', 5, 3, 'the Royal Records room', { map: 'preserved.royal', x: 12, y: 12 }),
     door('preserved-door-coast', 21, 3, 'the Chinchorro Records room', { map: 'preserved.coast', x: 12, y: 12 }),
     { ...door('preserved-door-inquiry', 24, 7, 'the review room', { map: 'preserved.inquiry', x: 8, y: 10 }),

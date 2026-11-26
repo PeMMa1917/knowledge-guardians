@@ -14,6 +14,22 @@
      }
     },
     {
+     "node": "vesper.ready",
+     "if": {
+      "all": [
+       {
+        "flag": "node.vesper.choose",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "ending.council"
+        }
+       }
+      ]
+     }
+    },
+    {
      "node": "vesper.meet"
     }
    ]
@@ -121,7 +137,7 @@
   {
    "id": "vesper.choose",
    "speaker": "vesper-quill",
-   "text": "Vesper turns to the Council, then back to you. 'So, Guardian. What do the Guardians owe Harrowmere? And what do I owe the people who bought my seals? You choose. I will not pretend it is easy.'",
+   "text": "Vesper turns to the Council, then back to you. 'So, Guardian. What do the Guardians owe Harrowmere? And what do I owe the people who bought my seals? You choose. I will not pretend it is easy.' (This choice ends the Council. It cannot be changed afterwards. You can still walk the worlds, and your Journal will show what followed.)",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -166,6 +182,10 @@
        "value": "both"
       }
      ]
+    },
+    {
+     "text": "Not yet. I want to think, and talk to my friends first.",
+     "next": "vesper.wait"
     }
    ]
   },
@@ -198,6 +218,28 @@
    "speaker": "vesper-quill",
    "text": "Vesper nods to you across the hall. 'Whatever we chose, we chose it in the open. That was the only part I was ever sure about.'",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "vesper.wait",
+   "speaker": "vesper-quill",
+   "text": "Vesper smiles, a real smile for once. 'Elsbet would have said the same. Take your time. I have waited years. I can wait an afternoon.'",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "vesper.ready",
+   "speaker": "vesper-quill",
+   "text": "'Back again. Have you decided what the Guardians owe Harrowmere?'",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Yes. I am ready.",
+     "next": "vesper.choose"
+    },
+    {
+     "text": "Not yet.",
+     "next": "vesper.wait"
+    }
+   ]
   }
  ]
 }

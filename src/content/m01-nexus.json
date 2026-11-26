@@ -1245,7 +1245,73 @@
   {
    "id": "cold.open3",
    "speaker": "warden-ise",
-   "text": "Recruit. Do not listen to me yet. Look at that label. Then come and tell me what you see.",
+   "text": "Recruit. Before anything else: why are you here? Answer honestly. I will remember it.",
+   "next": null,
+   "options": [
+    {
+     "text": "I want to know how people know things.",
+     "next": "cold.why.curious",
+     "effects": [
+      {
+       "setFlag": "why.came",
+       "value": "curious"
+      }
+     ]
+    },
+    {
+     "text": "Someone I trust told me to come.",
+     "next": "cold.why.friend",
+     "effects": [
+      {
+       "setFlag": "why.came",
+       "value": "friend"
+      }
+     ]
+    },
+    {
+     "text": "Somebody has to keep the records honest.",
+     "next": "cold.why.duty",
+     "effects": [
+      {
+       "setFlag": "why.came",
+       "value": "duty"
+      }
+     ]
+    },
+    {
+     "text": "I once believed something false, and it cost someone.",
+     "next": "cold.why.repair",
+     "effects": [
+      {
+       "setFlag": "why.came",
+       "value": "repair"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cold.why.curious",
+   "speaker": "warden-ise",
+   "text": "Good. Curiosity is cheap to start and expensive to keep. Keep it. Now: do not listen to me yet. Look at that label. Then come and tell me what you see.",
+   "next": null
+  },
+  {
+   "id": "cold.why.friend",
+   "speaker": "warden-ise",
+   "text": "Then you came on trust. We will see if it holds. Trust is checked here, like everything else. Now: do not listen to me yet. Look at that label. Then come and tell me what you see.",
+   "next": null
+  },
+  {
+   "id": "cold.why.duty",
+   "speaker": "warden-ise",
+   "text": "Somebody. Yes. It is usually everybody, slowly, or nobody. We will see which. Now: do not listen to me yet. Look at that label. Then come and tell me what you see.",
+   "next": null
+  },
+  {
+   "id": "cold.why.repair",
+   "speaker": "warden-ise",
+   "text": "(Ise is quiet for a moment.) Then you know more than most recruits. Do not forget it. Now: do not listen to me yet. Look at that label. Then come and tell me what you see.",
    "next": null
   },
   {

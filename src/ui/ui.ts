@@ -63,6 +63,10 @@ import { ROLES, fitsRole, roleOf } from '../domain/roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
 import { FIELD_GAMES } from '../domain/fieldgames';
 import { loyaltyOf } from '../domain/loyalty';
+import { CROSSINGS, WAY_LABEL, crossingOf, crossingWay, wayOpen } from '../domain/crossings';
+import { HEARTH, TONE_LABEL, type HearthTalk } from '../domain/hearth';
+import { VERSES, balladName, versesFor } from '../domain/ballad';
+import { crossingEpithet, lingering, mirror, vignettesFor } from '../domain/epilogue';
 import { arrivedLetters, composeLetter, dueLetters } from '../domain/letters';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
@@ -2311,10 +2315,21 @@ export class UI implements UIApi {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { story: 'Story so far', entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { story: 'Story so far', entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', crossings: 'Crossings', ...(s.flags['ending.council'] ? { afterwards: 'Afterwards' } : {}), glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
-    if (tab === 'letters') {
+    if (tab === 'crossings') {
+      // Conflicts met in the world, and how the player met them.
+      const met = CROSSINGS.filter((x) => crossingWay(s.flags, x.id));
+      const ep = crossingEpithet(s.flags);
+      body.append(h('p', { class: 'fine' }, met.length ? `${met.length} of ${CROSSINGS.length} crossings met. Each had more than one way through.` : 'No crossings yet. Problems wait in every world: floods, machines, crowds, old stories.'),
+        ...(ep ? [h('p', {}, `People have started to call you ${s.player.name} ${ep}.`), h('div', { class: 'row' }, h('button', { class: 'mini', onclick: () => { c.dispatch({ type: 'SetFlag', flag: 'title.worn', value: ep }); this.refreshHud(); this.openJournal('crossings'); } }, `Wear the name "${ep}"`))] : []),
+        ...met.map((x) => { const w = crossingWay(s.flags, x.id)!; return h('div', { class: 'lore-entry' }, h('h3', {}, x.title), h('p', { class: 'fine' }, `Chapter ${x.chapter} · ${WAY_LABEL[w.kind]}`), h('p', {}, w.result), h('p', { class: 'fine' }, `Cost: ${w.cost}`)); }));
+    } else if (tab === 'afterwards') {
+      // The epilogue: where are they now, the mirror scene and the lingering thought.
+      body.append(h('h3', {}, 'Where are they now'), ...vignettesFor(s).map((v) => h('div', { class: 'lore-entry' }, h('h3', {}, v.who), h('p', {}, v.text))),
+        h('h3', {}, 'The same bench'), h('p', {}, mirror(s)), h('h3', {}, 'Last words'), ...lingering(s).map((t) => h('p', {}, t)));
+    } else if (tab === 'letters') {
       // Letters from the rival. Each remembers a choice the player made (spec 15.10).
       const got = arrivedLetters(s);
       body.append(h('p', { class: 'fine' }, got.length ? 'Letters sealed with a small gold stamp. Each one answers something you did.' : 'No letters yet.'),
@@ -2765,6 +2780,97 @@ export class UI implements UIApi {
     else if (id === 'word') this.openMissingWord();
     else if (id === 'bones') this.openBones();
     else if (id.startsWith('loyalty-')) this.openLoyalty(id.slice(8));
+    else if (id.startsWith('cross-')) this.openCrossing(id.slice(6));
+    else if (id === 'hearth') this.openHearth();
+    else if (id === 'ballad') this.openBallad();
+  }
+
+  /** A crossing: one conflict, two or three ways through (face it, go around, leave it). Each way costs something. */
+  openCrossing(id: string): void {
+    const c = ctx.controller;
+    const x = crossingOf(id);
+    if (!x) return;
+    const box = this.openModal('bench-panel wide', x.title);
+    this.sfx('sfx.page');
+    const done = crossingWay(c.state.flags, id);
+    const close = () => h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close'));
+    if (done) {
+      box.replaceChildren(this.closeBtn(), h('h2', {}, x.title), h('p', {}, `You chose: ${done.text}`), h('p', { class: 'clue-view' }, done.result), h('p', { class: 'fine' }, `What it cost: ${done.cost}`), close());
+      return;
+    }
+    box.replaceChildren(this.closeBtn(), h('h2', {}, x.title), h('p', {}, x.scene),
+      h('p', { class: 'fine' }, `At stake: ${x.stakes.lose}. To win: ${x.stakes.gain}.`),
+      h('div', { class: 'notice-options' }, ...x.ways.map((w) => {
+        const open = wayOpen(w, c.state);
+        return h('button', { type: 'button', disabled: !open, onclick: () => choose(w) },
+          h('span', { class: 'fine', style: 'display:block' }, WAY_LABEL[w.kind]), h('span', {}, w.text),
+          w.needs ? h('span', { class: 'fine', style: 'display:block' }, open ? `You have: ${w.needs.why}.` : `Needs: ${w.needs.why}. Come back later, or choose another way.`) : '');
+      })));
+    const choose = (w: (typeof x.ways)[number]) => {
+      c.dispatch({ type: 'SetFlag', flag: `cross.${id}`, value: w.id });
+      this.sfx(w.kind === 'ignore' ? 'sfx.page' : 'sfx.award');
+      box.replaceChildren(this.closeBtn(), h('h2', {}, x.title), h('p', { class: 'clue-view fresh' }, w.result), h('p', { class: 'fine' }, `What it cost: ${w.cost}`),
+        h('p', { class: 'clue-view' }, h('strong', {}, 'The idea: '), x.idea), close());
+    };
+  }
+
+  /** Hearth talks in the Nexus: the companions talk to each other; the player joins with a tone. */
+  openHearth(): void {
+    const c = ctx.controller, s = c.state;
+    const box = this.openModal('bench-panel wide', 'The Hearth');
+    this.sfx('sfx.page');
+    const name = (who: string) => (who === 'lumen' ? 'Lumen' : c.pack.characters.find((x) => x.id === who)?.name.split(' ')[0] ?? who);
+    const ready = HEARTH.filter((t) => c.check(t.after));
+    const fresh = ready.find((t) => typeof s.flags[`hearth.${t.id}`] !== 'string');
+    const show = (t: HearthTalk) => {
+      const heard = s.flags[`hearth.${t.id}`];
+      const lines = t.lines.filter((l) => c.check(l.if)).map((l) => h('p', {}, h('strong', {}, `${name(l.who)}: `), l.text));
+      const reply = (tone: string) => { const j = t.join.find((x) => x.tone === tone)!; return h('p', { class: 'clue-view fresh' }, h('strong', {}, `You: ${j.text} `), j.reply); };
+      box.replaceChildren(this.closeBtn(), h('h2', {}, t.title), ...lines,
+        typeof heard === 'string' ? reply(heard) : h('div', { class: 'notice-options' }, ...t.join.map((j) => h('button', { type: 'button', onclick: () => {
+          c.dispatch({ type: 'SetFlag', flag: `hearth.${t.id}`, value: j.tone }); this.sfx('sfx.sparkle'); show(t);
+        } }, h('span', { class: 'fine', style: 'display:block' }, TONE_LABEL[j.tone]), h('span', {}, j.text)))),
+        ready.length > 1 ? h('details', {}, h('summary', {}, 'Remember another evening'), h('div', { class: 'notice-options' }, ...ready.filter((x) => x !== t).map((x) => h('button', { type: 'button', onclick: () => show(x) }, x.title)))) : '',
+        h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.closeModal() }, 'Leave the hearth')));
+    };
+    if (fresh) show(fresh);
+    else if (ready.length) show(ready[ready.length - 1]);
+    else box.replaceChildren(this.closeBtn(), h('h2', {}, 'The Hearth'), h('p', {}, 'The hearth is laid but not lit. After the next big step, your friends will gather here.'),
+      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+  }
+
+  /** The Ballad of the Guardian: Wynn sings your deeds, taller than they were. Correct a verse or let it stand. */
+  openBallad(): void {
+    const c = ctx.controller;
+    const box = this.openModal('bench-panel wide', 'The Ballad of the Guardian');
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, 'The Ballad of the Guardian'),
+      h('p', {}, "Wynn the ballad-singer tunes a battered fiddle by the well. 'I am making a song about you! Every word is true. Well. True-ish. Songs need a little lift, or nobody sings them twice.'")];
+    const render = () => {
+      const s = c.state, vs = versesFor(s);
+      if (!vs.length) { box.replaceChildren(...head(), h('p', {}, "Wynn: 'Come back when you have done something. Anything! Light a lamp. Rescue a cat. I am not fussy.'"), h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.closeModal() }, 'Close'))); return; }
+      const open = vs.find((v) => s.flags[`ballad.${v.id}`] !== 'true' && s.flags[`ballad.${v.id}`] !== 'tall');
+      const sung = vs.filter((v) => v !== open && (s.flags[`ballad.${v.id}`] === 'true' || s.flags[`ballad.${v.id}`] === 'tall'));
+      const parts: (HTMLElement | string)[] = [...head(), ...sung.map((v) => h('p', { class: 'slate-line small' }, `♪ ${s.flags[`ballad.${v.id}`] === 'true' ? v.true(s) : v.tall}`))];
+      if (open) {
+        parts.push(h('p', { class: 'clue-view fresh' }, `Wynn sings: ♪ ${open.tall}`),
+          h('div', { class: 'notice-options' },
+            h('button', { type: 'button', onclick: () => { c.dispatch({ type: 'SetFlag', flag: `ballad.${open.id}`, value: 'true' }); this.sfx('sfx.page'); verdict(open.id, 'true'); } }, `Correct it: '${open.true(s)}'`),
+            h('button', { type: 'button', onclick: () => { c.dispatch({ type: 'SetFlag', flag: `ballad.${open.id}`, value: 'tall' }); this.sfx('sfx.sparkle'); verdict(open.id, 'tall'); } }, 'Let it stand. It is a song.')));
+      } else {
+        const nm = balladName(s.flags);
+        parts.push(h('p', {}, `Wynn bows. 'That is all the verses you have earned so far. Do more things!'${nm ? ` In the taverns they call you ${s.player.name} ${nm}.` : ''}`),
+          nm ? h('div', { class: 'row' }, h('button', { class: 'mini', onclick: () => { c.dispatch({ type: 'SetFlag', flag: 'title.worn', value: nm }); this.refreshHud(); } }, `Wear the name "${nm}"`)) : '',
+          this.finishField('ballad'), h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+      }
+      box.replaceChildren(...parts);
+    };
+    const verdict = (id: string, how: 'true' | 'tall') => {
+      const v = VERSES.find((x) => x.id === id)!;
+      box.replaceChildren(...head(), h('p', { class: 'clue-view' }, how === 'true' ? `Wynn sighs and sings the plain verse. 'Harder to dance to. But you were there, and I was not.'` : `Wynn beams. 'It will be all over the valley by Friday.'`),
+        h('p', { class: 'fine' }, v.crowd), h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => render() }, 'Next verse')));
+    };
+    render();
   }
 
   /** Close a field game: first time gives marks and the idea in the Lore codex. */

@@ -41,6 +41,7 @@ export const SEA_HARBOUR: MapDef = {
     { stamp: 'flowers-small', x: 8, y: 3 }, { stamp: 'flowers-white', x: 24, y: 3 },
   ],
   interactables: [
+    { id: 'cross-drowned-bell', kind: 'fieldgame', game: 'cross-drowned-bell', x: 8, y: 8, w: 1, h: 1, label: 'the old pier where the bell is said to ring (a crossing)', art: 'sea.margin' },
     crossing('sea-chartroom-path', 7, 4, 'the path to Lantern House', { map: 'sea.chartroom', x: 12, y: 12 }),
     crossing('sea-shoal-path', 24, 12, 'the skiff to Shoal Shelf', { map: 'sea.shoal', x: 6, y: 12 }, 'sea.skiff'),
     crossing('sea-nexus-return', 12, 17, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 20, y: 14 }, 'preserved.door'),

@@ -27,6 +27,8 @@ export const FIELD_GAMES: FieldGame[] = [
     idea: 'Two words can point at the same fact (denotation) and still make people feel and notice different things (connotation). A soft word can hide a hard fact. When a word is missing, a shared problem is hard to talk about, so the person who chooses the words has power.' },
   { id: 'bones', name: 'Lanterns and Bones', host: 'Juno the ferry cook, at the dice table on the landing', concept: 'evidence', fray: 'gamblers-imp',
     idea: 'A fair die does not remember: after a long run without a six, a six is no more likely than before. To tell a loaded die from a fair one you need many rolls, because a few rolls can fool anyone. More evidence lets you be more sure, but never certain.' },
+  { id: 'ballad', name: 'The Ballad of the Guardian', host: 'Wynn the ballad-singer, by the east well in Emberford', concept: 'truth',
+    idea: 'A story grows each time it is retold, because a good story is made to be told again. Fame is not evidence. A true verse is often less exciting than a tall one, and choosing it has a cost.' },
 ];
 
 export const fieldDone = (flags: Record<string, unknown>, id: string): boolean => flags[`field.${id}.done`] === true;

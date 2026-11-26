@@ -98,6 +98,7 @@ export const ISLAND_DOCK: MapDef = {
     { stamp: 'market-planter', x: 14, y: 3 }, { stamp: 'voices-bench', x: 4, y: 7 },
   ],
   interactables: [
+    { id: 'cross-launch', kind: 'fieldgame', game: 'cross-launch', x: 18, y: 6, w: 1, h: 1, label: 'the launch board on the dock (a crossing)', art: 'signpost' },
     door('island-dock-return', 5, 10, 'the dock path back to the workshop', { map: 'island.workshop', x: 5, y: 10 }),
     door('island-dock-to-margin', 26, 10, 'the beach path to the quiet margin', { map: 'island.margin', x: 23, y: 10 }),
     sign('island-route-card', 10, 7, 'the loading-cycle route card', 'island.card',

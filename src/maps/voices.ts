@@ -84,6 +84,7 @@ export const VOICES_WALK: MapDef = {
     { stamp: 'market-planter', x: 3, y: 9 }, { stamp: 'market-planter', x: 24, y: 13 },
   ],
   interactables: [
+    { id: 'cross-two-elders', kind: 'fieldgame', game: 'cross-two-elders', x: 18, y: 10, w: 1, h: 1, label: 'two old friends on separate benches (a crossing)', art: 'ledger' },
     door('voices-walk-return', 11, 15, 'the steps back to the Listening Room', { map: 'voices.listening', x: 4, y: 11 }),
     door('voices-walk-to-quay', 25, 11, 'the rail passage to the quay', { map: 'voices.quay', x: 23, y: 12 }),
     sign('voices-opening-register', 9, 8, 'the signed opening register', 'voices.register',

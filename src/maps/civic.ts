@@ -114,6 +114,7 @@ export const CIVIC_STEPS: MapDef = {
     { stamp: 'market-planter', x: 4, y: 5 },
   ],
   interactables: [
+    { id: 'cross-name-box', kind: 'fieldgame', game: 'cross-name-box', x: 19, y: 5, w: 1, h: 1, label: 'the gate machine (a crossing)', art: 'board-stand' },
     door('civic-steps-return', 12, 16, 'the west passage back to Library Dispatch', { map: 'civic.dispatch', x: 4, y: 11 }),
     door('civic-steps-to-canal', 25, 12, 'the street to Canal Walk', { map: 'civic.canal', x: 23, y: 9 }),
     sign('civic-desk-slip', 10, 7, 'the desk-hours request slip', 'civic.ledger',

@@ -42,6 +42,7 @@ export const METALWORKS_YARD = workshop({
     { stamp: 'barrel', x: 4, y: 9 }, { stamp: 'bench', x: 17, y: 12 },
   ],
   interactables: [
+    { id: 'cross-furnace', kind: 'fieldgame', game: 'cross-furnace', x: 17, y: 5, w: 1, h: 1, label: 'the furnace dial by Brindle\'s shovel (a crossing)', art: 'signpost' },
     door('metal-records-path', 12, 3, 'the passage to the trade hall', { map: 'metalworks.records', x: 11, y: 12 }),
     { ...door('metal-nexus-return', 12, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 22, y: 16 }),
       art: 'preserved.door' },

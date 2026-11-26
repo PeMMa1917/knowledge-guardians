@@ -86,6 +86,7 @@ export const COPIES_PRESS = interior({
     { stamp: 'bench', x: 14, y: 11 },
   ],
   interactables: [
+    { id: 'cross-crowd', kind: 'fieldgame', game: 'cross-crowd', x: 9, y: 6, w: 1, h: 1, label: 'the crowd at the press door (a crossing)', art: 'notice-board' },
     door('copies-press-return', 11, 14, 'the passage back to the Record Room', { map: 'copies.archive', x: 4, y: 5 }),
     door('copies-press-to-landing', 22, 9, 'the passage to the landing', { map: 'copies.landing', x: 5, y: 9 }),
     { id: 'copies-compare-press', kind: 'copy-compare', node: 'press', x: 13, y: 8, w: 1, h: 1,

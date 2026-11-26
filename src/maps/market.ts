@@ -43,6 +43,8 @@ export const MARKET_SQUARE: MapDef = {
     { stamp: 'crates', x: 3, y: 9 }, { stamp: 'barrel', x: 29, y: 12 }, { stamp: 'crates', x: 6, y: 13 },
   ],
   interactables: [
+    { id: 'cross-goat', kind: 'fieldgame', game: 'cross-goat', x: 8, y: 16, w: 1, h: 1, label: 'a goat eating price slips (a crossing)', art: 'board-stand' },
+    { id: 'cross-patron', kind: 'fieldgame', game: 'cross-patron', x: 13, y: 10, w: 1, h: 1, label: 'the shrine of the Lady of Fair Measure (a crossing)', art: 'old-sign' },
     { id: 'market-nexus-return', kind: 'door', x: 17, y: 22, w: 1, h: 1, label: 'the crossing back to the Nexus',
       art: 'preserved.door', to: { map: 'nexus.archive', x: 21, y: 13 } },
     { id: 'market-waystone', kind: 'waystone', x: 19, y: 20, w: 1, h: 1, label: 'the Lantern Square Waystone',
