@@ -159,6 +159,14 @@
       "pattern": "It slides you toward a disaster, step by step.",
       "weakness": "Ask for evidence for each step.",
       "chapter": null
+    },
+    {
+      "id": "hush-moth",
+      "name": "Hush Moth",
+      "error": "Missing or softened words",
+      "pattern": "A grey moth that eats plain words and leaves soft ones behind, so a hard thing becomes hard to say, and a shared problem has no name.",
+      "weakness": "Name the thing plainly. Ask what each word makes people notice, and who chose the word.",
+      "chapter": 1
     }
   ]
 }

@@ -1,0 +1,2056 @@
+{
+ "memories": [
+  {
+   "id": "life.nile-iman",
+   "character": "nile-iman",
+   "if": {
+    "not": {
+     "objective": "nile.two"
+    }
+   },
+   "line": "Every box has a number. I gave my cat a number once. She did not answer to it."
+  },
+  {
+   "id": "ack.nile-iman",
+   "character": "nile-iman",
+   "if": {
+    "objective": "nile.dispatch"
+   },
+   "line": "Your dispatch has a number now. Someone will look it up in fifty years. Write for them."
+  },
+  {
+   "id": "life.nile-nasir",
+   "character": "nile-nasir",
+   "if": {
+    "not": {
+     "objective": "nile.two"
+    }
+   },
+   "line": "I copy all day. My hand knows the words better than my head. That is the danger."
+  },
+  {
+   "id": "ack.nile-nasir",
+   "character": "nile-nasir",
+   "if": {
+    "objective": "nile.dispatch"
+   },
+   "line": "Since your dispatch, people ask me which copy came first. Nobody asked that in years."
+  },
+  {
+   "id": "life.nile-leila",
+   "character": "nile-leila",
+   "if": {
+    "not": {
+     "objective": "nile.two"
+    }
+   },
+   "line": "The scribes wrote about the workers. No worker wrote here. I keep one chair empty for them."
+  },
+  {
+   "id": "ack.nile-leila",
+   "character": "nile-leila",
+   "if": {
+    "objective": "nile.dispatch"
+   },
+   "line": "You left room in the record for the people who did not write it. My empty chair has company now."
+  },
+  {
+   "id": "life.nile-marek",
+   "character": "nile-marek",
+   "if": {
+    "not": {
+     "objective": "nile.two"
+    }
+   },
+   "line": "Roads. Crates. Sand. I build them small, so I can be wrong cheaply."
+  },
+  {
+   "id": "ack.nile-marek",
+   "character": "nile-marek",
+   "if": {
+    "objective": "nile.dispatch"
+   },
+   "line": "Your crate went by the road you chose. My model was wrong about the dust. Good. Now I know."
+  },
+  {
+   "id": "life.preserved-registrar",
+   "character": "preserved-registrar",
+   "if": {
+    "not": {
+     "objective": "preserved.royal"
+    }
+   },
+   "line": "A file with a gap keeps me awake. I count the pages twice before bed."
+  },
+  {
+   "id": "ack.preserved-registrar",
+   "character": "preserved-registrar",
+   "if": {
+    "objective": "preserved.publish"
+   },
+   "line": "You put the gap on the heading. I slept badly. Then, for the first time in years, I slept well."
+  },
+  {
+   "id": "life.preserved-royal-keeper",
+   "character": "preserved-royal-keeper",
+   "if": {
+    "not": {
+     "objective": "preserved.royal"
+    }
+   },
+   "line": "Kings kept fine records of kings. Ask me who kept records of the cooks."
+  },
+  {
+   "id": "ack.preserved-royal-keeper",
+   "character": "preserved-royal-keeper",
+   "if": {
+    "objective": "preserved.publish"
+   },
+   "line": "A woman with a gold stamp asked me to call the file complete. I told her what you would tell her."
+  },
+  {
+   "id": "life.preserved-coast-keeper",
+   "character": "preserved-coast-keeper",
+   "if": {
+    "not": {
+     "objective": "preserved.royal"
+    }
+   },
+   "line": "Fog comes in at noon here. The site files smell of salt. So do I."
+  },
+  {
+   "id": "ack.preserved-coast-keeper",
+   "character": "preserved-coast-keeper",
+   "if": {
+    "objective": "preserved.publish"
+   },
+   "line": "You kept the two records side by side. Families stand between them a long time."
+  },
+  {
+   "id": "life.preserved-inquiry-keeper",
+   "character": "preserved-inquiry-keeper",
+   "if": {
+    "not": {
+     "objective": "preserved.royal"
+    }
+   },
+   "line": "Today's questions: where is the tea, are they real, and why is a cat on my desk. I can answer one."
+  },
+  {
+   "id": "ack.preserved-inquiry-keeper",
+   "character": "preserved-inquiry-keeper",
+   "if": {
+    "objective": "preserved.publish"
+   },
+   "line": "Visitors read your heading out loud. The children read the gap part loudest."
+  },
+  {
+   "id": "life.coast-signalkeeper",
+   "character": "coast-signalkeeper",
+   "if": {
+    "not": {
+     "objective": "coast.readings"
+    }
+   },
+   "line": "Wind's backing west. Three flags if it holds. Two if it lies."
+  },
+  {
+   "id": "ack.coast-signalkeeper",
+   "character": "coast-signalkeeper",
+   "if": {
+    "objective": "coast.dispatch"
+   },
+   "line": "The boats came in. Some fishers grumbled about the warning. Let them grumble on dry land."
+  },
+  {
+   "id": "life.coast-forecaster",
+   "character": "coast-forecaster",
+   "if": {
+    "not": {
+     "objective": "coast.readings"
+    }
+   },
+   "line": "I wrote 'seventy in a hundred'. The harbour heard 'it will rain'. Where did my thirty go?"
+  },
+  {
+   "id": "ack.coast-forecaster",
+   "character": "coast-forecaster",
+   "if": {
+    "objective": "coast.dispatch"
+   },
+   "line": "After your notice, a fisher asked me what 'perhaps' means. Nobody ever asked me that."
+  },
+  {
+   "id": "life.forest-naturalist",
+   "character": "forest-naturalist",
+   "if": {
+    "not": {
+     "objective": "forest.compare"
+    }
+   },
+   "line": "Shh. If you can hear the creek, the birds can hear you."
+  },
+  {
+   "id": "ack.forest-naturalist",
+   "character": "forest-naturalist",
+   "if": {
+    "objective": "forest.finish"
+   },
+   "line": "You corrected your notice in front of everyone. The crews trust it more now, not less. Strange creatures, people."
+  },
+  {
+   "id": "life.forest-steward",
+   "character": "forest-steward",
+   "if": {
+    "not": {
+     "objective": "forest.compare"
+    }
+   },
+   "line": "Two bridges, one crew, and a bird count that changes by the hour. Pick a number and stand by it."
+  },
+  {
+   "id": "ack.forest-steward",
+   "character": "forest-steward",
+   "if": {
+    "objective": "forest.finish"
+   },
+   "line": "Your count kept a blank where the creek was blocked. I would have filled it in. You were right not to."
+  },
+  {
+   "id": "life.metal-inspector",
+   "character": "metal-inspector",
+   "if": {
+    "not": {
+     "objective": "metal.compare"
+    }
+   },
+   "line": "Zero the balance. Zero it again. The day I skip that is the day it lies."
+  },
+  {
+   "id": "ack.metal-inspector",
+   "character": "metal-inspector",
+   "if": {
+    "objective": "metal.finish"
+   },
+   "line": "Someone brought me a Seal-stamped ingot. I weighed the stamp. It weighs nothing."
+  },
+  {
+   "id": "life.metal-steward",
+   "character": "metal-steward",
+   "if": {
+    "not": {
+     "objective": "metal.compare"
+    }
+   },
+   "line": "Hesper's grandmother? Oh, there are stories, dear. And there is a ledger. They do not agree."
+  },
+  {
+   "id": "ack.metal-steward",
+   "character": "metal-steward",
+   "if": {
+    "objective": "metal.finish"
+   },
+   "line": "Your docket is in the ledger now. I underlined your name. Twice. Do not tell the Inspector."
+  },
+  {
+   "id": "life.copies-presskeeper",
+   "character": "copies-presskeeper",
+   "if": {
+    "not": {
+     "objective": "copies.compare"
+    }
+   },
+   "line": "Ink on my hands, ink on my lunch. A copy is only as good as the tired person who sets it."
+  },
+  {
+   "id": "ack.copies-presskeeper",
+   "character": "copies-presskeeper",
+   "if": {
+    "objective": "copies.publish"
+   },
+   "line": "The Nexus once dropped a caveat from a reprint, they say. We laughed about it for years. I am not laughing now."
+  },
+  {
+   "id": "life.copies-lendingkeeper",
+   "character": "copies-lendingkeeper",
+   "if": {
+    "not": {
+     "objective": "copies.compare"
+    }
+   },
+   "line": "A missing Tuesday means old Ama walked here in the rain for nothing. A notice is not just paper."
+  },
+  {
+   "id": "ack.copies-lendingkeeper",
+   "character": "copies-lendingkeeper",
+   "if": {
+    "objective": "copies.publish"
+   },
+   "line": "Ama came on the right day this week. She brought me a pear. Really, it is your pear."
+  },
+  {
+   "id": "life.sea-cartographer",
+   "character": "sea-cartographer",
+   "if": {
+    "not": {
+     "objective": "sea.compare"
+    }
+   },
+   "line": "A blank on a chart is not a failure. It is the most honest ink I own."
+  },
+  {
+   "id": "ack.sea-cartographer",
+   "character": "sea-cartographer",
+   "if": {
+    "objective": "sea.finish"
+   },
+   "line": "The skiff slowed down at your blank. The skipper cursed. Then she thanked me."
+  },
+  {
+   "id": "life.sea-harbourkeeper",
+   "character": "sea-harbourkeeper",
+   "if": {
+    "not": {
+     "objective": "sea.compare"
+    }
+   },
+   "line": "The survey says 'Point C'. My grandmother says 'Where-the-Gulls-Argue'. Only one name tells you to slow down."
+  },
+  {
+   "id": "ack.sea-harbourkeeper",
+   "character": "sea-harbourkeeper",
+   "if": {
+    "objective": "sea.finish"
+   },
+   "line": "Your key kept our names. The children read the chart now, and argue with it. Good."
+  },
+  {
+   "id": "life.stage-director",
+   "character": "stage-director",
+   "if": {
+    "not": {
+     "objective": "stage.compare"
+    }
+   },
+   "line": "Silence is a prop, darling. The most expensive one we have."
+  },
+  {
+   "id": "ack.stage-director",
+   "character": "stage-director",
+   "if": {
+    "objective": "stage.finish"
+   },
+   "line": "That rival of yours sat in row three and bowed at the end. Lovely posture. Some terrible ideas. Not all."
+  },
+  {
+   "id": "life.stage-host",
+   "character": "stage-host",
+   "if": {
+    "not": {
+     "objective": "stage.compare"
+    }
+   },
+   "line": "From the side seats you see the stagehand. From the front, you see magic. Same show."
+  },
+  {
+   "id": "ack.stage-host",
+   "character": "stage-host",
+   "if": {
+    "objective": "stage.finish"
+   },
+   "line": "People asked what they could see from their own seat. Twelve years I have worked here. That never happened before."
+  },
+  {
+   "id": "life.market-assayer",
+   "character": "market-assayer",
+   "if": {
+    "not": {
+     "objective": "market.compare"
+    }
+   },
+   "line": "Basket in, basket out. You would be amazed what a basket weighs when nobody is looking."
+  },
+  {
+   "id": "ack.market-assayer",
+   "character": "market-assayer",
+   "if": {
+    "objective": "market.finish"
+   },
+   "line": "Seal agents came with a gold stamp for my balance. I told them my balance does not need jewellery."
+  },
+  {
+   "id": "life.market-clerk",
+   "character": "market-clerk",
+   "if": {
+    "not": {
+     "objective": "market.compare"
+    }
+   },
+   "line": "Price per measure! My favourite words. I made a chart. I make charts when I am nervous."
+  },
+  {
+   "id": "ack.market-clerk",
+   "character": "market-clerk",
+   "if": {
+    "objective": "market.finish"
+   },
+   "line": "Households ask for the price per measure now. I made another chart. I am very proud of this one."
+  },
+  {
+   "id": "life.water-keeper",
+   "character": "water-keeper",
+   "if": {
+    "not": {
+     "objective": "water.drought"
+    }
+   },
+   "line": "My mother kept a weir in a town that is not on the maps now. Gates remember floods. People forget."
+  },
+  {
+   "id": "ack.water-keeper",
+   "character": "water-keeper",
+   "if": {
+    "objective": "water.finish"
+   },
+   "line": "You found the old order with the Nexus mark. I knew the name of that town. I did not say it. I am sorry."
+  },
+  {
+   "id": "life.water-scribe",
+   "character": "water-scribe",
+   "if": {
+    "not": {
+     "objective": "water.drought"
+    }
+   },
+   "line": "Rule seven: water follows the order. Rule eight: the order follows the water, when they disagree."
+  },
+  {
+   "id": "ack.water-scribe",
+   "character": "water-scribe",
+   "if": {
+    "objective": "water.finish"
+   },
+   "line": "Your plan shows who loses in a drought. The council hated that. Then they used it."
+  },
+  {
+   "id": "life.civic-operator",
+   "character": "civic-operator",
+   "if": {
+    "not": {
+     "objective": "civic.sources"
+    }
+   },
+   "line": "The machine is fair. It treats every request the same. Why are you looking at me like that?"
+  },
+  {
+   "id": "ack.civic-operator",
+   "character": "civic-operator",
+   "if": {
+    "objective": "civic.finish"
+   },
+   "line": "The machine missed Canal Walk for two years. Same rule, every day. Fair, and never looking up."
+  },
+  {
+   "id": "life.civic-clerk",
+   "character": "civic-clerk",
+   "if": {
+    "not": {
+     "objective": "civic.sources"
+    }
+   },
+   "line": "Seventeen complaints, one notice board, no pins. Welcome to public service."
+  },
+  {
+   "id": "ack.civic-clerk",
+   "character": "civic-clerk",
+   "if": {
+    "objective": "civic.finish"
+   },
+   "line": "Canal Walk has a library stop now. Someone left flowers on my board. Nobody leaves flowers on a board."
+  },
+  {
+   "id": "life.voices-steward",
+   "character": "voices-steward",
+   "if": {
+    "not": {
+     "objective": "voices.sources"
+    }
+   },
+   "line": "A voice remembers how. A record remembers when. I need both, and I rarely get both."
+  },
+  {
+   "id": "ack.voices-steward",
+   "character": "voices-steward",
+   "if": {
+    "objective": "voices.finish"
+   },
+   "line": "There is a recording here in Elsbet's voice. I kept it for ten years. I think it was waiting for you."
+  },
+  {
+   "id": "life.voices-clerk",
+   "character": "voices-clerk",
+   "if": {
+    "not": {
+     "objective": "voices.sources"
+    }
+   },
+   "line": "Lantern four or lantern six? Everyone remembers the walk. Nobody remembers the date."
+  },
+  {
+   "id": "ack.voices-clerk",
+   "character": "voices-clerk",
+   "if": {
+    "objective": "voices.finish"
+   },
+   "line": "Your notice keeps the memory and the record on their own lines. The old walkers feel heard, and checked."
+  },
+  {
+   "id": "life.island-planner",
+   "character": "island-planner",
+   "if": {
+    "not": {
+     "objective": "island.sources"
+    }
+   },
+   "line": "Eight crates, three routes, one ferry. Every model is wrong. Some are useful before lunch."
+  },
+  {
+   "id": "ack.island-planner",
+   "character": "island-planner",
+   "if": {
+    "objective": "island.finish"
+   },
+   "line": "Your rival helped with the plan? On my island? I need to sit down."
+  },
+  {
+   "id": "life.island-dockhand",
+   "character": "island-dockhand",
+   "if": {
+    "not": {
+     "objective": "island.sources"
+    }
+   },
+   "line": "Smaller landing, smaller loads. The sea does not read your plan."
+  },
+  {
+   "id": "ack.island-dockhand",
+   "character": "island-dockhand",
+   "if": {
+    "objective": "island.finish"
+   },
+   "line": "The crates came. The fair has its apples. I will say it once: good plan."
+  },
+  {
+   "id": "life.council-keeper",
+   "character": "council-keeper",
+   "if": {
+    "not": {
+     "objective": "council.sources"
+    }
+   },
+   "line": "Three watches say noon. One is right, or none. Time is a promise that people agree to keep."
+  },
+  {
+   "id": "ack.council-keeper",
+   "character": "council-keeper",
+   "if": {
+    "all": [
+     {
+      "objective": "council.finish"
+     },
+     {
+      "flag": "council.lamp",
+      "eq": true
+     }
+    ]
+   },
+   "line": "You carried a little brass lamp into the Council. I have mended every lamp in this hall. Never that one."
+  },
+  {
+   "id": "life.council-reader",
+   "character": "council-reader",
+   "if": {
+    "not": {
+     "objective": "council.sources"
+    }
+   },
+   "line": "The rail was repaired on a date. The record says so. The repairer wrote the record. You see my problem."
+  },
+  {
+   "id": "ack.council-reader",
+   "character": "council-reader",
+   "if": {
+    "objective": "council.finish"
+   },
+   "line": "Whatever the Council decided, it decided in the open. The bell rang on time today. Coincidence, probably."
+  },
+  {
+   "id": "echo.nile-iman.0",
+   "character": "nile-iman",
+   "if": {
+    "all": [
+     {
+      "objective": "nile.two"
+     },
+     {
+      "not": {
+       "objective": "nile.dispatch"
+      }
+     },
+     {
+      "flag": "sd.corvan.outcome",
+      "eq": "exposed"
+     }
+    ]
+   },
+   "line": "A trader from Emberford came through. He says you showed the whole market how Corvan's sign was wrong. He was still a little red."
+  },
+  {
+   "id": "echo.nile-iman.1",
+   "character": "nile-iman",
+   "if": {
+    "all": [
+     {
+      "objective": "nile.two"
+     },
+     {
+      "not": {
+       "objective": "nile.dispatch"
+      }
+     },
+     {
+      "flagSet": "sd.corvan.outcome"
+     }
+    ]
+   },
+   "line": "Emberford traders say the market argues with evidence now, since your Showdown with Corvan. They complain about it. Proudly."
+  },
+  {
+   "id": "echo.nile-nasir.0",
+   "character": "nile-nasir",
+   "if": {
+    "all": [
+     {
+      "objective": "nile.two"
+     },
+     {
+      "not": {
+       "objective": "nile.dispatch"
+      }
+     },
+     {
+      "flag": "washhouse.order",
+      "eq": "clear"
+     }
+    ]
+   },
+   "line": "You cleared the catch screen at the Emberford washhouse, I hear. Clear water, same old steps. My sister washes there."
+  },
+  {
+   "id": "echo.nile-nasir.1",
+   "character": "nile-nasir",
+   "if": {
+    "all": [
+     {
+      "objective": "nile.two"
+     },
+     {
+      "not": {
+       "objective": "nile.dispatch"
+      }
+     },
+     {
+      "flag": "washhouse.order",
+      "eq": "step"
+     }
+    ]
+   },
+   "line": "You gave the Emberford washhouse a covered step, I hear. My sister says her feet are dry for the first time in years."
+  },
+  {
+   "id": "echo.preserved-registrar.0",
+   "character": "preserved-registrar",
+   "if": {
+    "all": [
+     {
+      "objective": "preserved.royal"
+     },
+     {
+      "not": {
+       "objective": "preserved.publish"
+      }
+     },
+     {
+      "flag": "nile.dispatch",
+      "eq": "pair"
+     }
+    ]
+   },
+   "line": "Your Nile dispatch went out as a pair of records. I liked that. Two records that disagree are better than one that hides it."
+  },
+  {
+   "id": "echo.preserved-registrar.1",
+   "character": "preserved-registrar",
+   "if": {
+    "all": [
+     {
+      "objective": "preserved.royal"
+     },
+     {
+      "not": {
+       "objective": "preserved.publish"
+      }
+     },
+     {
+      "flag": "nile.dispatch",
+      "eq": "print"
+     }
+    ]
+   },
+   "line": "Your Nile dispatch went out as a printed copy with its limit on it. I read the limit first. Most people read it last."
+  },
+  {
+   "id": "echo.preserved-registrar.2",
+   "character": "preserved-registrar",
+   "if": {
+    "all": [
+     {
+      "objective": "preserved.royal"
+     },
+     {
+      "not": {
+       "objective": "preserved.publish"
+      }
+     },
+     {
+      "flag": "nile.dispatch",
+      "eq": "read"
+     }
+    ]
+   },
+   "line": "You sent your Nile dispatch to a reading table, not a case. People sat down with it. Nobody sits down with a case."
+  },
+  {
+   "id": "echo.preserved-coast-keeper.0",
+   "character": "preserved-coast-keeper",
+   "if": {
+    "all": [
+     {
+      "objective": "preserved.royal"
+     },
+     {
+      "not": {
+       "objective": "preserved.publish"
+      }
+     },
+     {
+      "flagSet": "sd.corvan.outcome"
+     }
+    ]
+   },
+   "line": "They tell a story here about an Emberford merchant and a blade that was not ancient. You are in it. Fog makes stories grow."
+  },
+  {
+   "id": "echo.coast-signalkeeper.0",
+   "character": "coast-signalkeeper",
+   "if": {
+    "all": [
+     {
+      "objective": "coast.readings"
+     },
+     {
+      "not": {
+       "objective": "coast.dispatch"
+      }
+     },
+     {
+      "flag": "preserved.display",
+      "eq": "paired"
+     }
+    ]
+   },
+   "line": "Heard you paired the records in the Cold Store. Two flags on one mast. Sailors read that fine."
+  },
+  {
+   "id": "echo.coast-signalkeeper.1",
+   "character": "coast-signalkeeper",
+   "if": {
+    "all": [
+     {
+      "objective": "coast.readings"
+     },
+     {
+      "not": {
+       "objective": "coast.dispatch"
+      }
+     },
+     {
+      "flag": "preserved.display",
+      "eq": "records"
+     }
+    ]
+   },
+   "line": "Heard you kept the Cold Store records on their own stands. One flag, one meaning. Good."
+  },
+  {
+   "id": "echo.coast-signalkeeper.2",
+   "character": "coast-signalkeeper",
+   "if": {
+    "all": [
+     {
+      "objective": "coast.readings"
+     },
+     {
+      "not": {
+       "objective": "coast.dispatch"
+      }
+     },
+     {
+      "flag": "preserved.display",
+      "eq": "delayed"
+     }
+    ]
+   },
+   "line": "Heard you held the Cold Store display back for review. Brave. Waiting looks like doing nothing, to most folk."
+  },
+  {
+   "id": "echo.coast-forecaster.0",
+   "character": "coast-forecaster",
+   "if": {
+    "all": [
+     {
+      "objective": "coast.readings"
+     },
+     {
+      "not": {
+       "objective": "coast.dispatch"
+      }
+     },
+     {
+      "flag": "nile.dispatch",
+      "eq": "pair"
+     }
+    ]
+   },
+   "line": "You are the one who sent two Nile records as a pair? Then you know my problem. My two readings never agree either."
+  },
+  {
+   "id": "echo.coast-forecaster.1",
+   "character": "coast-forecaster",
+   "if": {
+    "all": [
+     {
+      "objective": "coast.readings"
+     },
+     {
+      "not": {
+       "objective": "coast.dispatch"
+      }
+     },
+     {
+      "flag": "nile.dispatch",
+      "eq": "print"
+     }
+    ]
+   },
+   "line": "You printed your Nile dispatch with its limit stated. Please teach the harbour to read limits. I beg you."
+  },
+  {
+   "id": "echo.coast-forecaster.2",
+   "character": "coast-forecaster",
+   "if": {
+    "all": [
+     {
+      "objective": "coast.readings"
+     },
+     {
+      "not": {
+       "objective": "coast.dispatch"
+      }
+     },
+     {
+      "flag": "nile.dispatch",
+      "eq": "read"
+     }
+    ]
+   },
+   "line": "You sent a Nile record to a reading table. I wish my forecasts had a table. They get a flag and a shout."
+  },
+  {
+   "id": "echo.forest-naturalist.0",
+   "character": "forest-naturalist",
+   "if": {
+    "all": [
+     {
+      "objective": "forest.compare"
+     },
+     {
+      "not": {
+       "objective": "forest.finish"
+      }
+     },
+     {
+      "flag": "coast.notice",
+      "eq": "signal"
+     }
+    ]
+   },
+   "line": "The harbour pinned your notice on the signal board, they say. Here we have no board. Only birds, and they do not read."
+  },
+  {
+   "id": "echo.forest-naturalist.1",
+   "character": "forest-naturalist",
+   "if": {
+    "all": [
+     {
+      "objective": "forest.compare"
+     },
+     {
+      "not": {
+       "objective": "forest.finish"
+      }
+     },
+     {
+      "flag": "coast.notice",
+      "eq": "runner"
+     }
+    ]
+   },
+   "line": "You sent a runner with your harbour notice, they say. Runners scare birds. People, they help."
+  },
+  {
+   "id": "echo.forest-steward.0",
+   "character": "forest-steward",
+   "if": {
+    "all": [
+     {
+      "objective": "forest.compare"
+     },
+     {
+      "not": {
+       "objective": "forest.finish"
+      }
+     },
+     {
+      "flag": "preserved.display",
+      "eq": "paired"
+     }
+    ]
+   },
+   "line": "You paired two records at the Cold Store. I will pair two bird counts, then. Fine. Fine!"
+  },
+  {
+   "id": "echo.forest-steward.1",
+   "character": "forest-steward",
+   "if": {
+    "all": [
+     {
+      "objective": "forest.compare"
+     },
+     {
+      "not": {
+       "objective": "forest.finish"
+      }
+     },
+     {
+      "flag": "preserved.display",
+      "eq": "records"
+     }
+    ]
+   },
+   "line": "You kept the Cold Store records apart. Good. Do not mix my bridge counts with the creek ones either."
+  },
+  {
+   "id": "echo.forest-steward.2",
+   "character": "forest-steward",
+   "if": {
+    "all": [
+     {
+      "objective": "forest.compare"
+     },
+     {
+      "not": {
+       "objective": "forest.finish"
+      }
+     },
+     {
+      "flag": "preserved.display",
+      "eq": "delayed"
+     }
+    ]
+   },
+   "line": "You made the Cold Store wait for review. Birds do not wait. Remember that here."
+  },
+  {
+   "id": "echo.metal-inspector.0",
+   "character": "metal-inspector",
+   "if": {
+    "all": [
+     {
+      "objective": "metal.compare"
+     },
+     {
+      "not": {
+       "objective": "metal.finish"
+      }
+     },
+     {
+      "flag": "forest.response",
+      "eq": "quiet"
+     }
+    ]
+   },
+   "line": "You gave the forest a quiet-route notice. Quiet work. The balance likes quiet work."
+  },
+  {
+   "id": "echo.metal-inspector.1",
+   "character": "metal-inspector",
+   "if": {
+    "all": [
+     {
+      "objective": "metal.compare"
+     },
+     {
+      "not": {
+       "objective": "metal.finish"
+      }
+     },
+     {
+      "flag": "forest.response",
+      "eq": "brief"
+     }
+    ]
+   },
+   "line": "You briefed the whole forest clearing in public. Public is good. Public is also loud. Zero the balance anyway."
+  },
+  {
+   "id": "echo.metal-steward.0",
+   "character": "metal-steward",
+   "if": {
+    "all": [
+     {
+      "objective": "metal.compare"
+     },
+     {
+      "not": {
+       "objective": "metal.finish"
+      }
+     },
+     {
+      "flag": "coast.notice",
+      "eq": "signal"
+     }
+    ]
+   },
+   "line": "A harbour cousin says your notice went up on the signal board. Everyone saw it. Nobody could ask it questions, dear."
+  },
+  {
+   "id": "echo.metal-steward.1",
+   "character": "metal-steward",
+   "if": {
+    "all": [
+     {
+      "objective": "metal.compare"
+     },
+     {
+      "not": {
+       "objective": "metal.finish"
+      }
+     },
+     {
+      "flag": "coast.notice",
+      "eq": "runner"
+     }
+    ]
+   },
+   "line": "A harbour cousin says you sent a runner. She asked him three questions. He answered two. That is a good runner."
+  },
+  {
+   "id": "echo.copies-presskeeper.0",
+   "character": "copies-presskeeper",
+   "if": {
+    "all": [
+     {
+      "objective": "copies.compare"
+     },
+     {
+      "not": {
+       "objective": "copies.publish"
+      }
+     },
+     {
+      "flag": "metal.response",
+      "eq": "window"
+     }
+    ]
+   },
+   "line": "You put the metal comparison in a window, they say. Windows are good. Windows also get rain on them."
+  },
+  {
+   "id": "echo.copies-presskeeper.1",
+   "character": "copies-presskeeper",
+   "if": {
+    "all": [
+     {
+      "objective": "copies.compare"
+     },
+     {
+      "not": {
+       "objective": "copies.publish"
+      }
+     },
+     {
+      "flag": "metal.response",
+      "eq": "ledger"
+     }
+    ]
+   },
+   "line": "You led with the ledger at the Metalworks. Ledgers last. Nobody reads them. Both true."
+  },
+  {
+   "id": "echo.copies-lendingkeeper.0",
+   "character": "copies-lendingkeeper",
+   "if": {
+    "all": [
+     {
+      "objective": "copies.compare"
+     },
+     {
+      "not": {
+       "objective": "copies.publish"
+      }
+     },
+     {
+      "flag": "forest.response",
+      "eq": "quiet"
+     }
+    ]
+   },
+   "line": "Your forest notice used the quiet route. Some of my readers are like that. Quiet, and they come every Tuesday."
+  },
+  {
+   "id": "echo.copies-lendingkeeper.1",
+   "character": "copies-lendingkeeper",
+   "if": {
+    "all": [
+     {
+      "objective": "copies.compare"
+     },
+     {
+      "not": {
+       "objective": "copies.publish"
+      }
+     },
+     {
+      "flag": "forest.response",
+      "eq": "brief"
+     }
+    ]
+   },
+   "line": "Your forest briefing was read out in our hall. A boy asked if birds have Tuesdays."
+  },
+  {
+   "id": "echo.sea-cartographer.0",
+   "character": "sea-cartographer",
+   "if": {
+    "all": [
+     {
+      "objective": "sea.compare"
+     },
+     {
+      "not": {
+       "objective": "sea.finish"
+      }
+     },
+     {
+      "flag": "copies.response",
+      "eq": "reprint"
+     }
+    ]
+   },
+   "line": "You reprinted the whole lending notice. Clean. Expensive. A chart is the same: sometimes you start a new sheet."
+  },
+  {
+   "id": "echo.sea-cartographer.1",
+   "character": "sea-cartographer",
+   "if": {
+    "all": [
+     {
+      "objective": "sea.compare"
+     },
+     {
+      "not": {
+       "objective": "sea.finish"
+      }
+     },
+     {
+      "flag": "copies.response",
+      "eq": "strip"
+     }
+    ]
+   },
+   "line": "You sent corrections to the old copies instead of a reprint. Patches. I patch charts too. Patches show the history."
+  },
+  {
+   "id": "echo.sea-harbourkeeper.0",
+   "character": "sea-harbourkeeper",
+   "if": {
+    "all": [
+     {
+      "objective": "sea.compare"
+     },
+     {
+      "not": {
+       "objective": "sea.finish"
+      }
+     },
+     {
+      "flag": "metal.response",
+      "eq": "window"
+     }
+    ]
+   },
+   "line": "A smith's boat brought news: your metal comparison is in a window. We put our news on the gulls. Joking."
+  },
+  {
+   "id": "echo.sea-harbourkeeper.1",
+   "character": "sea-harbourkeeper",
+   "if": {
+    "all": [
+     {
+      "objective": "sea.compare"
+     },
+     {
+      "not": {
+       "objective": "sea.finish"
+      }
+     },
+     {
+      "flag": "metal.response",
+      "eq": "ledger"
+     }
+    ]
+   },
+   "line": "A smith's boat brought news: you put the ledger first. The ledger people are pleased. The window people sulk."
+  },
+  {
+   "id": "echo.stage-director.0",
+   "character": "stage-director",
+   "if": {
+    "all": [
+     {
+      "objective": "stage.compare"
+     },
+     {
+      "not": {
+       "objective": "stage.finish"
+      }
+     },
+     {
+      "flag": "sea.response",
+      "eq": "shore"
+     }
+    ]
+   },
+   "line": "You published the shore-first chart, darling. Shore first, sea second. That is blocking. You would make a director."
+  },
+  {
+   "id": "echo.stage-director.1",
+   "character": "stage-director",
+   "if": {
+    "all": [
+     {
+      "objective": "stage.compare"
+     },
+     {
+      "not": {
+       "objective": "stage.finish"
+      }
+     },
+     {
+      "flag": "sea.response",
+      "eq": "water"
+     }
+    ]
+   },
+   "line": "You paired the surveys at the landing. Two views, one stage. I steal that for my next show."
+  },
+  {
+   "id": "echo.stage-host.0",
+   "character": "stage-host",
+   "if": {
+    "all": [
+     {
+      "objective": "stage.compare"
+     },
+     {
+      "not": {
+       "objective": "stage.finish"
+      }
+     },
+     {
+      "flag": "copies.response",
+      "eq": "reprint"
+     }
+    ]
+   },
+   "line": "You reprinted the whole notice in the City of Copies, I heard. New programmes every night, here. The old ones go to the fire."
+  },
+  {
+   "id": "echo.stage-host.1",
+   "character": "stage-host",
+   "if": {
+    "all": [
+     {
+      "objective": "stage.compare"
+     },
+     {
+      "not": {
+       "objective": "stage.finish"
+      }
+     },
+     {
+      "flag": "copies.response",
+      "eq": "strip"
+     }
+    ]
+   },
+   "line": "You corrected old copies instead of printing new ones. I keep old programmes. I might correct mine."
+  },
+  {
+   "id": "echo.market-assayer.0",
+   "character": "market-assayer",
+   "if": {
+    "all": [
+     {
+      "objective": "market.compare"
+     },
+     {
+      "not": {
+       "objective": "market.finish"
+      }
+     },
+     {
+      "flag": "stage.response",
+      "eq": "pause"
+     }
+    ]
+   },
+   "line": "They tell me you staged the pause. Fine. A pause on my balance, I like. Let the needle settle."
+  },
+  {
+   "id": "echo.market-assayer.1",
+   "character": "market-assayer",
+   "if": {
+    "all": [
+     {
+      "objective": "market.compare"
+     },
+     {
+      "not": {
+       "objective": "market.finish"
+      }
+     },
+     {
+      "flag": "stage.response",
+      "eq": "move"
+     }
+    ]
+   },
+   "line": "They tell me you staged the move first. Quick hands. Quick hands at a market need watching."
+  },
+  {
+   "id": "echo.market-clerk.0",
+   "character": "market-clerk",
+   "if": {
+    "all": [
+     {
+      "objective": "market.compare"
+     },
+     {
+      "not": {
+       "objective": "market.finish"
+      }
+     },
+     {
+      "flag": "sea.response",
+      "eq": "shore"
+     }
+    ]
+   },
+   "line": "You chose the shore-first chart! I made a chart about your chart. It is a small chart."
+  },
+  {
+   "id": "echo.market-clerk.1",
+   "character": "market-clerk",
+   "if": {
+    "all": [
+     {
+      "objective": "market.compare"
+     },
+     {
+      "not": {
+       "objective": "market.finish"
+      }
+     },
+     {
+      "flag": "sea.response",
+      "eq": "water"
+     }
+    ]
+   },
+   "line": "You paired the two sea surveys! Paired data! I am sorry. I get excited."
+  },
+  {
+   "id": "echo.water-keeper.0",
+   "character": "water-keeper",
+   "if": {
+    "all": [
+     {
+      "objective": "water.drought"
+     },
+     {
+      "not": {
+       "objective": "water.finish"
+      }
+     },
+     {
+      "flag": "market.response",
+      "eq": "window"
+     }
+    ]
+   },
+   "line": "Your price comparison sits in a market window, the carters say. Water has no window. It has a gate. Same idea."
+  },
+  {
+   "id": "echo.water-keeper.1",
+   "character": "water-keeper",
+   "if": {
+    "all": [
+     {
+      "objective": "water.drought"
+     },
+     {
+      "not": {
+       "objective": "water.finish"
+      }
+     },
+     {
+      "flag": "market.response",
+      "eq": "desk"
+     }
+    ]
+   },
+   "line": "Your price records sit at the trade desk, the carters say. Desks are patient. So are gates."
+  },
+  {
+   "id": "echo.water-scribe.0",
+   "character": "water-scribe",
+   "if": {
+    "all": [
+     {
+      "objective": "water.drought"
+     },
+     {
+      "not": {
+       "objective": "water.finish"
+      }
+     },
+     {
+      "flag": "stage.response",
+      "eq": "pause"
+     }
+    ]
+   },
+   "line": "Rule eleven: a pause before a decision is not a delay. You taught a whole theatre that, I hear."
+  },
+  {
+   "id": "echo.water-scribe.1",
+   "character": "water-scribe",
+   "if": {
+    "all": [
+     {
+      "objective": "water.drought"
+     },
+     {
+      "not": {
+       "objective": "water.finish"
+      }
+     },
+     {
+      "flag": "stage.response",
+      "eq": "move"
+     }
+    ]
+   },
+   "line": "You chose movement before silence at the theatre, I hear. The council does that too. Then it regrets it."
+  },
+  {
+   "id": "echo.civic-operator.0",
+   "character": "civic-operator",
+   "if": {
+    "all": [
+     {
+      "objective": "civic.sources"
+     },
+     {
+      "not": {
+       "objective": "civic.finish"
+      }
+     },
+     {
+      "flag": "water.response",
+      "eq": "channel"
+     }
+    ]
+   },
+   "line": "Your drought plan favoured the channel crew. The machine would have done the same. It likes channels."
+  },
+  {
+   "id": "echo.civic-operator.1",
+   "character": "civic-operator",
+   "if": {
+    "all": [
+     {
+      "objective": "civic.sources"
+     },
+     {
+      "not": {
+       "objective": "civic.finish"
+      }
+     },
+     {
+      "flag": "water.response",
+      "eq": "fields"
+     }
+    ]
+   },
+   "line": "Your drought plan favoured the fields. The machine would not. That makes me uneasy. Good uneasy."
+  },
+  {
+   "id": "echo.civic-operator.2",
+   "character": "civic-operator",
+   "if": {
+    "all": [
+     {
+      "objective": "civic.sources"
+     },
+     {
+      "not": {
+       "objective": "civic.finish"
+      }
+     },
+     {
+      "flag": "water.response",
+      "eq": "split"
+     }
+    ]
+   },
+   "line": "Your drought plan split the water and said so. The machine cannot split anything. It rounds."
+  },
+  {
+   "id": "echo.civic-clerk.0",
+   "character": "civic-clerk",
+   "if": {
+    "all": [
+     {
+      "objective": "civic.sources"
+     },
+     {
+      "not": {
+       "objective": "civic.finish"
+      }
+     },
+     {
+      "flag": "market.response",
+      "eq": "window"
+     }
+    ]
+   },
+   "line": "Your market prices went in a window. Do you know how rare a public notice that people read is? Rare."
+  },
+  {
+   "id": "echo.civic-clerk.1",
+   "character": "civic-clerk",
+   "if": {
+    "all": [
+     {
+      "objective": "civic.sources"
+     },
+     {
+      "not": {
+       "objective": "civic.finish"
+      }
+     },
+     {
+      "flag": "market.response",
+      "eq": "desk"
+     }
+    ]
+   },
+   "line": "Your market records went to the desk. Clerks love you. Nobody loves clerks. Thank you."
+  },
+  {
+   "id": "echo.voices-steward.0",
+   "character": "voices-steward",
+   "if": {
+    "all": [
+     {
+      "objective": "voices.sources"
+     },
+     {
+      "not": {
+       "objective": "voices.finish"
+      }
+     },
+     {
+      "flag": "civic.response",
+      "eq": "even"
+     }
+    ]
+   },
+   "line": "You posted the even rule at the Civic Machine. Even sounds fair. Listen to the streets before you are sure."
+  },
+  {
+   "id": "echo.voices-steward.1",
+   "character": "voices-steward",
+   "if": {
+    "all": [
+     {
+      "objective": "voices.sources"
+     },
+     {
+      "not": {
+       "objective": "voices.finish"
+      }
+     },
+     {
+      "flag": "civic.response",
+      "eq": "rank"
+     }
+    ]
+   },
+   "line": "You ranked the requests at the Civic Machine. Someone is always last in a rank. I record their voices too."
+  },
+  {
+   "id": "echo.voices-steward.2",
+   "character": "voices-steward",
+   "if": {
+    "all": [
+     {
+      "objective": "voices.sources"
+     },
+     {
+      "not": {
+       "objective": "voices.finish"
+      }
+     },
+     {
+      "flag": "civic.response",
+      "eq": "reserve"
+     }
+    ]
+   },
+   "line": "You kept a reserve window at the Civic Machine. A window for the case nobody planned for. I like you."
+  },
+  {
+   "id": "echo.voices-clerk.0",
+   "character": "voices-clerk",
+   "if": {
+    "all": [
+     {
+      "objective": "voices.sources"
+     },
+     {
+      "not": {
+       "objective": "voices.finish"
+      }
+     },
+     {
+      "flag": "water.response",
+      "eq": "channel"
+     }
+    ]
+   },
+   "line": "Old walkers from the Commons say your plan saved the channel. The field crews tell it differently. I wrote both down."
+  },
+  {
+   "id": "echo.voices-clerk.1",
+   "character": "voices-clerk",
+   "if": {
+    "all": [
+     {
+      "objective": "voices.sources"
+     },
+     {
+      "not": {
+       "objective": "voices.finish"
+      }
+     },
+     {
+      "flag": "water.response",
+      "eq": "fields"
+     }
+    ]
+   },
+   "line": "Old walkers from the Commons say you saved the fields. The channel crew remembers a dry month. Both lines, filed."
+  },
+  {
+   "id": "echo.voices-clerk.2",
+   "character": "voices-clerk",
+   "if": {
+    "all": [
+     {
+      "objective": "voices.sources"
+     },
+     {
+      "not": {
+       "objective": "voices.finish"
+      }
+     },
+     {
+      "flag": "water.response",
+      "eq": "split"
+     }
+    ]
+   },
+   "line": "Old walkers from the Commons say you split the water. Everyone remembers losing a little. Nobody remembers losing a lot."
+  },
+  {
+   "id": "echo.island-planner.0",
+   "character": "island-planner",
+   "if": {
+    "all": [
+     {
+      "objective": "island.sources"
+     },
+     {
+      "not": {
+       "objective": "island.finish"
+      }
+     },
+     {
+      "flag": "voices.response",
+      "eq": "guide"
+     }
+    ]
+   },
+   "line": "You led with the guide at the Archive of Voices. A guide first, then the quote. Plans are like that too."
+  },
+  {
+   "id": "echo.island-planner.1",
+   "character": "island-planner",
+   "if": {
+    "all": [
+     {
+      "objective": "island.sources"
+     },
+     {
+      "not": {
+       "objective": "island.finish"
+      }
+     },
+     {
+      "flag": "voices.response",
+      "eq": "paired"
+     }
+    ]
+   },
+   "line": "You paired the voice and the guide. Two models, side by side. Exactly what my table is for."
+  },
+  {
+   "id": "echo.island-dockhand.0",
+   "character": "island-dockhand",
+   "if": {
+    "all": [
+     {
+      "objective": "island.sources"
+     },
+     {
+      "not": {
+       "objective": "island.finish"
+      }
+     },
+     {
+      "flag": "civic.response",
+      "eq": "even"
+     }
+    ]
+   },
+   "line": "Even shares, like your library rule? The sea does not share evenly. Remember that here."
+  },
+  {
+   "id": "echo.island-dockhand.1",
+   "character": "island-dockhand",
+   "if": {
+    "all": [
+     {
+      "objective": "island.sources"
+     },
+     {
+      "not": {
+       "objective": "island.finish"
+      }
+     },
+     {
+      "flag": "civic.response",
+      "eq": "rank"
+     }
+    ]
+   },
+   "line": "Ranked, like your library rule? Then rank the crates. Apples first. The fair needs apples."
+  },
+  {
+   "id": "echo.island-dockhand.2",
+   "character": "island-dockhand",
+   "if": {
+    "all": [
+     {
+      "objective": "island.sources"
+     },
+     {
+      "not": {
+       "objective": "island.finish"
+      }
+     },
+     {
+      "flag": "civic.response",
+      "eq": "reserve"
+     }
+    ]
+   },
+   "line": "A reserve window, like your library rule? Good. Keep a reserve crate. The sea takes one now and then."
+  },
+  {
+   "id": "echo.council-keeper.0",
+   "character": "council-keeper",
+   "if": {
+    "all": [
+     {
+      "objective": "council.sources"
+     },
+     {
+      "not": {
+       "objective": "council.finish"
+      }
+     },
+     {
+      "flag": "island.response",
+      "eq": "ferry"
+     }
+    ]
+   },
+   "line": "Your island plan trusted the ferry. A ferry keeps time with the tide, not the clock. Interesting choice."
+  },
+  {
+   "id": "echo.council-keeper.1",
+   "character": "council-keeper",
+   "if": {
+    "all": [
+     {
+      "objective": "council.sources"
+     },
+     {
+      "not": {
+       "objective": "council.finish"
+      }
+     },
+     {
+      "flag": "island.response",
+      "eq": "marsh"
+     }
+    ]
+   },
+   "line": "Your island plan crossed the marsh. Slow ground. Slow is not wrong. Ask any clock."
+  },
+  {
+   "id": "echo.council-keeper.2",
+   "character": "council-keeper",
+   "if": {
+    "all": [
+     {
+      "objective": "council.sources"
+     },
+     {
+      "not": {
+       "objective": "council.finish"
+      }
+     },
+     {
+      "flag": "island.response",
+      "eq": "ridge"
+     }
+    ]
+   },
+   "line": "Your island plan took the ridge. High and dry, and long. Good watches are like that."
+  },
+  {
+   "id": "echo.council-reader.0",
+   "character": "council-reader",
+   "if": {
+    "all": [
+     {
+      "objective": "council.sources"
+     },
+     {
+      "not": {
+       "objective": "council.finish"
+      }
+     },
+     {
+      "flag": "voices.response",
+      "eq": "guide"
+     }
+    ]
+   },
+   "line": "You set the guide before the quote in the Archive of Voices. Our repair docket could use a guide. It is mostly quotes."
+  },
+  {
+   "id": "echo.council-reader.1",
+   "character": "council-reader",
+   "if": {
+    "all": [
+     {
+      "objective": "council.sources"
+     },
+     {
+      "not": {
+       "objective": "council.finish"
+      }
+     },
+     {
+      "flag": "voices.response",
+      "eq": "paired"
+     }
+    ]
+   },
+   "line": "You paired the voice and the guide in the Archive of Voices. We will pair the rail record and the bell. Fair."
+  },
+  {
+   "id": "ack2.council-keeper",
+   "character": "council-keeper",
+   "if": {
+    "all": [
+     {
+      "objective": "council.finish"
+     },
+     {
+      "not": {
+       "flag": "council.lamp",
+       "eq": true
+      }
+     }
+    ]
+   },
+   "line": "You solved the watches without anyone's lamp but your own. Good. A lamp is only a lamp."
+  },
+  {
+   "id": "loyal.sefa.old",
+   "character": "scholar-sefa",
+   "if": {
+    "flag": "loyalty.sefa",
+    "eq": "old"
+   },
+   "line": "I sang the old verse. Tova stood at the back and did not sing. I owe her a conversation."
+  },
+  {
+   "id": "loyal.sefa.ledger",
+   "character": "scholar-sefa",
+   "if": {
+    "flag": "loyalty.sefa",
+    "eq": "ledger"
+   },
+   "line": "I sang the sixth step. Two guild families walked out. One came back for the last line."
+  },
+  {
+   "id": "loyal.sefa.both",
+   "character": "scholar-sefa",
+   "if": {
+    "flag": "loyalty.sefa",
+    "eq": "both"
+   },
+   "line": "I sang the new verse. Tova cried. Then she sang the boats part louder than anyone."
+  },
+  {
+   "id": "loyal.kip.proud",
+   "character": "kip-arden",
+   "if": {
+    "flag": "loyalty.kip",
+    "eq": "proud"
+   },
+   "line": "Grandmother framed the map again. I kept the ledger page in my pocket. It is getting soft."
+  },
+  {
+   "id": "loyal.kip.not",
+   "character": "kip-arden",
+   "if": {
+    "flag": "loyalty.kip",
+    "eq": "not"
+   },
+   "line": "I told them Coll drew it. Then I realised I had done the same thing backwards. I am fixing it."
+  },
+  {
+   "id": "loyal.kip.mixed",
+   "character": "kip-arden",
+   "if": {
+    "flag": "loyalty.kip",
+    "eq": "mixed"
+   },
+   "line": "Grandmother was cross for a week. Now she tells the pilots part first. She does the voices."
+  },
+  {
+   "id": "loyal.hesper.sign",
+   "character": "smith-hesper",
+   "if": {
+    "flag": "loyalty.hesper",
+    "eq": "sign"
+   },
+   "line": "New sign. 'Imre and the Lyles.' A buyer asked who Imre was. I told her. Took ten minutes. She bought two."
+  },
+  {
+   "id": "loyal.hesper.private",
+   "character": "smith-hesper",
+   "if": {
+    "flag": "loyalty.hesper",
+    "eq": "private"
+   },
+   "line": "Told the apprentices about Imre. They asked why the sign does not say it. Good question. I hate it."
+  },
+  {
+   "id": "loyal.hesper.find",
+   "character": "smith-hesper",
+   "if": {
+    "flag": "loyalty.hesper",
+    "eq": "find"
+   },
+   "line": "No letter back from the east yet. Waiting is worse than a cracked blade. I am still waiting."
+  },
+  {
+   "id": "loyal.rook.public",
+   "character": "rook-tamsin",
+   "if": {
+    "flag": "loyalty.rook",
+    "eq": "public"
+   },
+   "line": "My name is on the well post now. People read it and nod at me. I do not know what to do with nodding."
+  },
+  {
+   "id": "loyal.rook.quiet",
+   "character": "rook-tamsin",
+   "if": {
+    "flag": "loyalty.rook",
+    "eq": "quiet"
+   },
+   "line": "The seal is gone. Nobody knows it was mine. That should feel better than it does."
+  },
+  {
+   "id": "loyal.rook.family",
+   "character": "rook-tamsin",
+   "if": {
+    "flag": "loyalty.rook",
+    "eq": "family"
+   },
+   "line": "She shook my hand. I keep thinking about it. I do not trust feelings. I trust that one."
+  }
+ ]
+}

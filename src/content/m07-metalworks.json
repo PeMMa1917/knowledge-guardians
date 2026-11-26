@@ -1,0 +1,1078 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH6-M01",
+   "world": "WORLD-07",
+   "title": "The Blue Panels",
+   "knowledgeQuestion": "How far can a material test support a story about where two things came from?",
+   "stake": "If a metal is named from its weight alone, a weak part goes into the ferry winch.",
+   "available": {
+    "objective": "forest.finish"
+   },
+   "objectives": [
+    {
+     "id": "metal.arrival",
+     "title": "Take the passage to the Metalworks Sample Yard.",
+     "done": {
+      "flag": "metal.arrived",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective"
+      ],
+      "atl": [
+       "self-management"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "economics"
+      ]
+     },
+     "skills": []
+    },
+    {
+     "id": "metal.compare",
+     "title": "Weigh both blue panels and compare the readings with Inspector Corra.",
+     "done": {
+      "flagSet": "metal.comparison"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "explanation",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT",
+       "TEC"
+      ],
+      "subjects": [
+       "physics",
+       "math-ai",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-NUM-14",
+      "SK-RSC-21"
+     ],
+     "visible": {
+      "objective": "metal.arrival"
+     }
+    },
+    {
+     "id": "metal.trace",
+     "title": "Read the intake receipt and the shift slip, then file them with Steward Bea.",
+     "done": {
+      "flagSet": "metal.chain"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "perspective",
+       "culture",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "business",
+       "anthropology"
+      ]
+     },
+     "skills": [
+      "SK-RSC-08",
+      "SK-CUR-06"
+     ],
+     "visible": {
+      "objective": "metal.arrival"
+     }
+    },
+    {
+     "id": "metal.publish",
+     "title": "Choose where to put the evidence before buyers see the blue panels.",
+     "done": {
+      "flagSet": "metal.response"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "TEC"
+      ],
+      "subjects": [
+       "economics",
+       "lang-langlit",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "visible": {
+      "all": [
+       {
+        "objective": "metal.compare"
+       },
+       {
+        "objective": "metal.trace"
+       }
+      ]
+     },
+     "onComplete": [
+      {
+       "credit": "credit.metal.publish"
+      },
+      {
+       "checkpoint": "Metalworks: panel record shared"
+      }
+     ]
+    },
+    {
+     "id": "metal.docket",
+     "title": "Check the newly found transfer docket in the Trade Hall.",
+     "done": {
+      "flag": "metal.custody.return",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "truth",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "self-management"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "business"
+      ]
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-MED-04"
+     ],
+     "visible": {
+      "objective": "metal.publish"
+     }
+    },
+    {
+     "id": "metal.finish",
+     "title": "Help Bea add the cart journey without giving the panels a shared maker.",
+     "done": {
+      "flag": "metal.followup",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "justification",
+       "responsibility"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "economics",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-WRT-13"
+     ],
+     "visible": {
+      "objective": "metal.docket"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.metal.finish"
+      },
+      {
+       "journal": "j.metal.finish"
+      },
+      {
+       "checkpoint": "Metalworks: cart record added"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH6-R01",
+   "world": "WORLD-07",
+   "title": "Two Lines for Two Boxes",
+   "knowledgeQuestion": "What can a layout change about the claim a reader carries away?",
+   "available": {
+    "objective": "metal.finish"
+   },
+   "objectives": [
+    {
+     "id": "metal.copy",
+     "title": "Make a larger copy that keeps the box letters and numbers apart.",
+     "done": {
+      "flag": "metal.large-copy",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "objectivity",
+       "responsibility"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "visual-arts",
+       "design-tech",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-WRT-13"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.metal.copy"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "characters": [
+  {
+   "id": "metal-inspector",
+   "name": "Inspector Corra",
+   "role": "Keeper of the sample balance",
+   "sprite": "custom:tan.black.blue.indigo.none.gold.long.lightframes.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "metal.inspector.after",
+     "if": {
+      "objective": "metal.finish"
+     }
+    },
+    {
+     "node": "metal.inspector.trace",
+     "if": {
+      "objective": "metal.compare"
+     }
+    },
+    {
+     "node": "metal.inspector.compare",
+     "if": {
+      "all": [
+       {
+        "flag": "metal.test.panel-a",
+        "eq": true
+       },
+       {
+        "flag": "metal.test.panel-b",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "metal.inspector.welcome"
+    }
+   ]
+  },
+  {
+   "id": "metal-steward",
+   "name": "Steward Bea",
+   "role": "Keeper of the Trade Hall records",
+   "sprite": "custom:dark.auburn.cream.brown.headband.red.covered.none.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "metal.steward.after",
+     "if": {
+      "objective": "metal.finish"
+     }
+    },
+    {
+     "node": "metal.steward.update.window",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "metal.docket"
+         },
+         {
+          "not": {
+           "flag": "metal.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "metal.response",
+        "eq": "window"
+       }
+      ]
+     }
+    },
+    {
+     "node": "metal.steward.update.ledger",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "metal.docket"
+         },
+         {
+          "not": {
+           "flag": "metal.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "metal.response",
+        "eq": "ledger"
+       }
+      ]
+     }
+    },
+    {
+     "node": "metal.steward.wait",
+     "if": {
+      "flagSet": "metal.response"
+     }
+    },
+    {
+     "node": "metal.steward.decide",
+     "if": {
+      "all": [
+       {
+        "objective": "metal.compare"
+       },
+       {
+        "objective": "metal.trace"
+       },
+       {
+        "not": {
+         "flagSet": "metal.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "node": "metal.steward.trace.ready",
+     "if": {
+      "objective": "metal.trace"
+     }
+    },
+    {
+     "node": "metal.steward.file",
+     "if": {
+      "all": [
+       {
+        "flag": "metal.custody.intake",
+        "eq": true
+       },
+       {
+        "flag": "metal.custody.repair",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "metal.steward.welcome"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "metal.inspector.welcome",
+   "speaker": "metal-inspector",
+   "text": "Two blue panels came in this morning. Someone tied them together and called them a matched set from an old workshop. That name adds to the price. I can weigh them on the same balance. Try both boxes and tell me what you’ll put beside the colour.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.inspector.compare",
+   "speaker": "metal-inspector",
+   "text": "The seller wrote ‘matched weight’ because the panels fit one frame. The two readings, two and four units, overturn that claim. Where can we clip the measurements so a buyer can check the new heading?",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Pin the two balance readings under a single size note.",
+     "next": "metal.compare.size",
+     "effects": [
+      {
+       "setFlag": "metal.comparison",
+       "value": "size"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "metal.test.panel-a",
+          "eq": true
+         },
+         {
+          "flag": "metal.test.panel-b",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "metal.comparison"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Clip each box letter to its own balance reading.",
+     "next": "metal.compare.boxes",
+     "effects": [
+      {
+       "setFlag": "metal.comparison",
+       "value": "boxes"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "metal.test.panel-a",
+          "eq": true
+         },
+         {
+          "flag": "metal.test.panel-b",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "metal.comparison"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll wait."
+    }
+   ]
+  },
+  {
+   "id": "metal.compare.size",
+   "speaker": "metal-inspector",
+   "text": "One size note puts the weight difference in reach. It still leaves the buyer asking what’s underneath the blue face. The balance has no answer for that.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.compare.boxes",
+   "speaker": "metal-inspector",
+   "text": "Now a reader can trace each number to its box. We can show two readings. For the material named at each shop, Bea needs the original receipts.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.inspector.trace",
+   "speaker": "metal-inspector",
+   "text": "The balance is ready for the next pair. Find the intake receipt here and the shift slip in the hall. What the shops write about a panel goes on a different line from its reading.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.inspector.after",
+   "speaker": "metal-inspector",
+   "text": "The apprentices want to compare two more blue samples. They’ll use the same fixture again and start a fresh sheet. The difference we wrote down belongs to these two panels.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.steward.welcome",
+   "speaker": "metal-steward",
+   "text": "At the paint shops, a matched set means two pieces finished to look alike. An old-work seller uses the same words for pieces from one workshop. Look for the intake receipt and the repair shift slip before we let the same words carry both claims.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.steward.file",
+   "speaker": "metal-steward",
+   "text": "Painters call blue work a match when the finishes agree. A maker's file uses the word differently. The intake slip describes box A as glazed mineral. The repair slip describes coated metal in box B. Leave both starting points where a buyer can find them.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "File the descriptions by box letter, with their starting places.",
+     "next": "metal.trace.box",
+     "effects": [
+      {
+       "setFlag": "metal.chain",
+       "value": "box"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "metal.custody.intake",
+          "eq": true
+         },
+         {
+          "flag": "metal.custody.repair",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "metal.chain"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Pin each slip beside the stage where its description starts.",
+     "next": "metal.trace.time",
+     "effects": [
+      {
+       "setFlag": "metal.chain",
+       "value": "time"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "metal.custody.intake",
+          "eq": true
+         },
+         {
+          "flag": "metal.custody.repair",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "metal.chain"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the records here for a moment."
+    }
+   ]
+  },
+  {
+   "id": "metal.trace.box",
+   "speaker": "metal-steward",
+   "text": "The two boxes stay distinct. I’ll mark which desk supplied each description. An empty maker line tells the next buyer where this record stops.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.trace.time",
+   "speaker": "metal-steward",
+   "text": "I’ll put each box letter beside the stage where its slip starts. A buyer can see when in the journey a piece was described. The slips leave open when and where the panels were made.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.steward.trace.ready",
+   "speaker": "metal-steward",
+   "text": "The file carries both original slips. Bring Corra’s panel comparison when it’s ready. I’ll keep a space for it beside the shop descriptions.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.steward.decide",
+   "speaker": "metal-steward",
+   "text": "The seller can show the panels as blue work without charging for a shared maker. Buyers at the window want to know what changed. A buyer at the ledger wants to follow each box from the yard. We can prepare one of those places first.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the two panel readings in the window and leave the maker clip empty.",
+     "next": "metal.response.window",
+     "effects": [
+      {
+       "setFlag": "metal.response",
+       "value": "window"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "metal.compare"
+       },
+       {
+        "objective": "metal.trace"
+       },
+       {
+        "not": {
+         "flagSet": "metal.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Hold back the maker label and open the movement ledger before the sale.",
+     "next": "metal.response.ledger",
+     "effects": [
+      {
+       "setFlag": "metal.response",
+       "value": "ledger"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "metal.compare"
+       },
+       {
+        "objective": "metal.trace"
+       },
+       {
+        "not": {
+         "flagSet": "metal.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Wait until I’ve looked around."
+    }
+   ]
+  },
+  {
+   "id": "metal.response.window",
+   "speaker": "metal-steward",
+   "text": "The first buyers stop at the balance readings. The seller has set those prices beside the panel descriptions. A clerk promised to bring the transfer docket over. Check that before we write anything in the empty clip.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.response.ledger",
+   "speaker": "metal-steward",
+   "text": "Someone who came for a matched set has pulled up a chair at the ledger desk. They can check the two shop slips there. The seller’s maker label stays in the drawer. Look for the cart docket while they read.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.steward.wait",
+   "speaker": "metal-steward",
+   "text": "The clerk has dropped off another slip. It’s a transfer docket, folded beside the Trade Hall records. Bring it here when you’ve seen which part of the journey it covers.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.steward.update.window",
+   "speaker": "metal-steward",
+   "text": "A buyer saw both letters under one line on the cart docket and came back for the old matched-set label. We can show what they shared on that one trip and still leave the maker clip empty.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Add a dated cart card to the window and keep the empty clip.",
+     "next": "metal.update.window",
+     "effects": [
+      {
+       "setFlag": "metal.followup",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "metal.docket"
+         },
+         {
+          "not": {
+           "flag": "metal.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "metal.response",
+        "eq": "window"
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll come back."
+    }
+   ]
+  },
+  {
+   "id": "metal.steward.update.ledger",
+   "speaker": "metal-steward",
+   "text": "A reader at the ledger has a place for the cart trip after the two shop notes. They want to pencil in one maker above both boxes because the cart carried them together.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "File the cart trip after both entries and leave the maker lines open.",
+     "next": "metal.update.ledger",
+     "effects": [
+      {
+       "setFlag": "metal.followup",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "metal.docket"
+         },
+         {
+          "not": {
+           "flag": "metal.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "metal.response",
+        "eq": "ledger"
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll come back."
+    }
+   ]
+  },
+  {
+   "id": "metal.update.window",
+   "speaker": "metal-steward",
+   "text": "The buyer has crossed out one part of their price note and copied the confirmed cart trip beneath it. Both panels shared the trip to the hall. The name clip can wait. A reader in the City of Copies has asked about a different notice. The Nexus passage is open.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.update.ledger",
+   "speaker": "metal-steward",
+   "text": "Both ledger lines now end at the same stop. They still start at different desks. A reader in the City of Copies wants help with a notice that travelled an uneven trail of its own. The Nexus passage is open.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.steward.after",
+   "speaker": "metal-steward",
+   "text": "A newcomer asked for a copy of everything. The box letters run together on the small card. We can put the words in reach without leaving any of the evidence out.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Make a larger copy with a line for each box and the maker space still clear.",
+     "next": "metal.copy.write",
+     "if": {
+      "all": [
+       {
+        "objective": "metal.finish"
+       },
+       {
+        "not": {
+         "flag": "metal.large-copy",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll walk round the hall."
+    }
+   ]
+  },
+  {
+   "id": "metal.copy.write",
+   "speaker": "metal-steward",
+   "text": "The reader can follow A, then B, without returning to the top of the card. The cart line sits beneath both. I’ll leave the copy by the low table for the next reader.",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "metal.large-copy",
+     "value": true
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.metal.arrival.1",
+   "objective": "metal.arrival",
+   "depth": 1,
+   "text": "A new passage opens from the Nexus."
+  },
+  {
+   "id": "h.metal.arrival.2",
+   "objective": "metal.arrival",
+   "depth": 2,
+   "text": "The Living Forest’s corrected notice carries word of a trade-yard dispute."
+  },
+  {
+   "id": "h.metal.arrival.3",
+   "objective": "metal.arrival",
+   "depth": 3,
+   "text": "Return to the Nexus after updating Ayla’s forest notice."
+  },
+  {
+   "id": "h.metal.arrival.4",
+   "objective": "metal.arrival",
+   "depth": 4,
+   "text": "Enter the Metalworks passage. You’ll arrive in the Sample Yard."
+  },
+  {
+   "id": "h.metal.compare.1",
+   "objective": "metal.compare",
+   "depth": 1,
+   "text": "The bright faces look alike. The fixture can compare something else."
+  },
+  {
+   "id": "h.metal.compare.2",
+   "objective": "metal.compare",
+   "depth": 2,
+   "text": "The panels are the same size. Use the same fixture to compare their weights."
+  },
+  {
+   "id": "h.metal.compare.3",
+   "objective": "metal.compare",
+   "depth": 3,
+   "text": "Try the balance at each sample box in the yard."
+  },
+  {
+   "id": "h.metal.compare.4",
+   "objective": "metal.compare",
+   "depth": 4,
+   "text": "Weigh panels A and B, then choose with Corra how to show the two readings together."
+  },
+  {
+   "id": "h.metal.trace.1",
+   "objective": "metal.trace",
+   "depth": 1,
+   "text": "A measurement and a receipt tell different stories."
+  },
+  {
+   "id": "h.metal.trace.2",
+   "objective": "metal.trace",
+   "depth": 2,
+   "text": "One yard record starts when a box arrived. The other begins during a repair shift."
+  },
+  {
+   "id": "h.metal.trace.3",
+   "objective": "metal.trace",
+   "depth": 3,
+   "text": "Find the intake receipt in the yard and the shift slip in the Trade Hall."
+  },
+  {
+   "id": "h.metal.trace.4",
+   "objective": "metal.trace",
+   "depth": 4,
+   "text": "Ask Bea how to file both pieces of evidence without filling the missing maker line."
+  },
+  {
+   "id": "h.metal.publish.1",
+   "objective": "metal.publish",
+   "depth": 1,
+   "text": "The seller called the two panels a matched set. People want to check that claim."
+  },
+  {
+   "id": "h.metal.publish.2",
+   "objective": "metal.publish",
+   "depth": 2,
+   "text": "The window reaches people browsing now. The ledger lets people trace a box before they buy."
+  },
+  {
+   "id": "h.metal.publish.3",
+   "objective": "metal.publish",
+   "depth": 3,
+   "text": "Once both leads are ready, speak with Bea in the Trade Hall."
+  },
+  {
+   "id": "h.metal.publish.4",
+   "objective": "metal.publish",
+   "depth": 4,
+   "text": "Leave a window comparison for browsing buyers or hold the maker claim back while the ledger stays open. Either way, keep the unknowns visible."
+  },
+  {
+   "id": "h.metal.docket.1",
+   "objective": "metal.docket",
+   "depth": 1,
+   "text": "The yard clerk found one more paper after the display opened."
+  },
+  {
+   "id": "h.metal.docket.2",
+   "objective": "metal.docket",
+   "depth": 2,
+   "text": "The docket lists two boxes and a carrier. Read where that journey begins."
+  },
+  {
+   "id": "h.metal.docket.3",
+   "objective": "metal.docket",
+   "depth": 3,
+   "text": "Find the transfer docket in the Trade Hall."
+  },
+  {
+   "id": "h.metal.docket.4",
+   "objective": "metal.docket",
+   "depth": 4,
+   "text": "Read the docket. It places both boxes on one cart later, without tracing either box back to its maker."
+  },
+  {
+   "id": "h.metal.finish.1",
+   "objective": "metal.finish",
+   "depth": 1,
+   "text": "A shared journey can be true even if a shared maker is still unknown."
+  },
+  {
+   "id": "h.metal.finish.2",
+   "objective": "metal.finish",
+   "depth": 2,
+   "text": "Keep the new handover and the origin claim on different lines."
+  },
+  {
+   "id": "h.metal.finish.3",
+   "objective": "metal.finish",
+   "depth": 3,
+   "text": "Talk to Bea after you’ve read the transfer docket."
+  },
+  {
+   "id": "h.metal.finish.4",
+   "objective": "metal.finish",
+   "depth": 4,
+   "text": "Update the window or the ledger. Keep both box letters and leave the maker line open."
+  },
+  {
+   "id": "h.metal.copy.1",
+   "objective": "metal.copy",
+   "depth": 1,
+   "text": "A newcomer at the hall is trying to copy the card."
+  },
+  {
+   "id": "h.metal.copy.2",
+   "objective": "metal.copy",
+   "depth": 2,
+   "text": "The crowded card sends some readers from one box to the other without a break."
+  },
+  {
+   "id": "h.metal.copy.3",
+   "objective": "metal.copy",
+   "depth": 3,
+   "text": "Talk with Bea after updating the record for the cart journey."
+  },
+  {
+   "id": "h.metal.copy.4",
+   "objective": "metal.copy",
+   "depth": 4,
+   "text": "Ask for a larger copy. Give each box its own line and keep the missing maker visible."
+  }
+ ],
+ "criteria": [
+  {
+   "id": "credit.metal.publish",
+   "concept": "responsibility",
+   "maximum": 8
+  },
+  {
+   "id": "credit.metal.finish",
+   "concept": "justification",
+   "maximum": 8
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.metal.finish",
+   "title": "Two boxes and one cart",
+   "text": "One balance let me compare both panels. The slips named different materials and led to different desks. A docket put both boxes on the last cart trip. We shared that journey without adding the name of a maker."
+  },
+  {
+   "id": "j.metal.copy",
+   "title": "Two lines for two boxes",
+   "text": "A larger copy gave each panel a clear line for its letter, weight and record. A cart line went below both. The maker field stayed open."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.metal.trace",
+   "attribute": "principled",
+   "when": {
+    "objective": "metal.finish"
+   },
+   "did": "You added a shared journey to the record and left its unsupported maker line open."
+  },
+  {
+   "id": "mom.metal.copy",
+   "attribute": "communicator",
+   "when": {
+    "objective": "metal.copy"
+   },
+   "did": "You made the separate box records easier for someone else to follow."
+  }
+ ]
+}

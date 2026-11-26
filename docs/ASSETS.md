@@ -6,6 +6,12 @@
 |---|---|---|
 | `public/assets/art/armm1998/` | CC0 tile sheets and the source character sheet by ArMM1998. | `src/scenes/BootScene.ts` (`ow` = Overworld.png, `in` = Inner.png) |
 | `public/assets/art/generated/characters/` | Character sheets made by `tools/make_character_variants.py`. | `CHARACTER_SHEETS` in `BootScene.ts` |
+| `public/assets/art/generated/market_tiles.png` | Original pavements, stalls, buildings and furniture for Lantern Square. | `market` sheet in `BootScene.ts` |
+| `public/assets/art/generated/water_tiles.png` | Original Water Commons channels, bridges, field rows, weir and council hall. | `water` sheet in `BootScene.ts` |
+| `public/assets/art/generated/civic_tiles.png` | Original Civic Machine offices, book carts, route mural and canal walk. | `civic` sheet in `BootScene.ts` |
+| `public/assets/art/generated/voices_tiles.png` | Original Archive of Voices listening screens, Glass Walk and Lamp Quay. | `voices` sheet in `BootScene.ts` |
+| `public/assets/art/generated/island_tiles.png` | Original Island of Models bay, dock landings, boardwalks and habitat margin. | `island` sheet in `BootScene.ts` |
+| `public/assets/art/generated/council_tiles.png` | Original Council of Inquiry scales, Letter Gallery niches and Bell Rail. | `council` sheet in `BootScene.ts` |
 | `public/assets/audio/music/` | Music loops. | `AUDIO` in `BootScene.ts` |
 | `public/assets/audio/sfx/` | Sound effects. | `AUDIO` in `BootScene.ts` |
 | `public/assets/credits.json` | Source, author and licence of **every** file above. | `tools/check-assets.mjs` |
@@ -55,3 +61,15 @@ Music: stereo MP3 is fine. Keep each file under about 5 MB. Audio is never neede
 ## Tile sheets and stamps
 
 `Overworld.png` is 40 × 36 tiles and `Inner.png` is 40 × 25 tiles, each tile 16 × 16 pixels. A stamp in `src/scenes/art.ts` names a rectangle in tiles: `{ sheet: 'ow', x, y, w, h }`. Options: `collide` (blocks movement), `above` (drawn over the player, for tree tops), `flat` (drawn under characters, for rugs).
+
+Lantern Square uses an 18 × 9 tile sheet with the same tile size. Run `python3 tools/make_market_tiles.py` to regenerate it from the original drawings in the script.
+
+The Water Commons uses a 14 × 5 sheet. Run `python3 tools/make_water_tiles.py` with Pillow to regenerate it.
+
+Library Dispatch, North Steps and Canal Walk use a 15 × 6 sheet. Run `python3 tools/make_civic_tiles.py` with Pillow to regenerate it.
+
+The Listening Room, Glass Walk and Lamp Quay use a 14 × 6 sheet. Run `python3 tools/make_voices_tiles.py` with Pillow to regenerate it.
+
+The Plan Workshop, Two-Tide Dock and Quiet Margin use a 15 × 6 sheet. Run `python3 tools/make_island_tiles.py` with Pillow to regenerate it.
+
+Time Hall and the Letter Gallery use a 15 × 6 sheet. Run `python3 tools/make_council_tiles.py` with Pillow to regenerate it.

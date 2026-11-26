@@ -93,3 +93,33 @@ Links can change. When you work on a mission, open each of its source links. If 
 | Badang account and later identification | [William L. Gibson, National Library Board Singapore](https://biblioasia.nlb.gov.sg/all-sections/vol-21-issue-1-apr-jun-2025-origins-badang-strongman-singapore-stone/) | The story places a thrown rock at the river mouth. The episode has no inscription; Begbie's later identification is a distinct claim. |
 
 The artwork is original, schematic and labelled as such. No photographs, manuscript images, or translations are reproduced.
+
+## Chapter 3: Preserved Lives
+
+The Cold Store is a fictional Guardian archive. Its displays use maps and schematic files. Published locations and dates stay attached to the source that supports them.
+
+| Source record | Use and limit |
+|---|---|
+| HIS-PRES-01, [Egyptian Ministry of Tourism and Antiquities, the Ramesseum](https://egymonuments.gov.eg/monuments/the-ramesseum-the-temple-of-ramses-ii/) | The temple and its attribution support a claim about the reign. The record does not follow later custody. |
+| HIS-PRES-02, [National Museum of Egyptian Civilization, Ramses II](https://nmec.gov.eg/mummies-hall/ramses-ii/) | The biography identifies KV 7 and the later Deir el-Bahari cache. The game leaves undocumented transfers open. The external museum page shows human remains. |
+| HIS-PRES-03 and -04, [UNESCO map and component table](https://whc.unesco.org/en/list/1634/maps/) and [Chinchorro property description](https://whc.unesco.org/en/list/1634/) | The case names the separate sites and compares preservation conditions and deliberate practice. The account cannot establish an individual's identity or wishes. External pages may show human remains. |
+| HIS-PRES-05 and -06, [Griffith Institute, Carter's first-season journal](https://www.griffith.ox.ac.uk/discoveringTut/journals-and-diaries/season-1/journal.html) and [Lucas's notes on robberies](https://tutankhamun.griffith.ox.ac.uk/miscellaneous/notes-robberies-taa-i1memo1-15verso/taa-i1memo3) | A November 1922 journal entry records observations at the excavation. The later note has its own date. A date on a record does not date all the events it describes. |
+| HIS-PRES-07, [Griffith Institute, The Egyptian workforce](https://tutankhamun.griffith.ox.ac.uk/stories/egyptian-workforce) | Carter acknowledges four named Egyptian foremen. The acknowledgement supports credit for the named men and leaves other identifications open. |
+| HIS-PRES-08 and -09, [Hunan Provincial Cultural Heritage Bureau, reconstruction report](https://wwj.hunan.gov.cn/wwj/c100310/c100311/202405/t20240521_33307461.html) and [ChinaCulture, Mawangdui tombs](https://en.chinaculture.org/gb/en_artqa/2003-09/24/content_39384.htm) | The Mawangdui record places Xin Zhui in Western Han burial context. The reconstruction report describes radiographs, measurements and model choices. An approximation leaves room for features the record cannot settle. The game uses diagram sheets. The external report contains project imagery and discusses human remains. |
+| HIS-PRES-10 to -12, [South Tyrol Museum of Archaeology, Ötzi](https://www.iceman.it/en/oetzi/the-iceman), [equipment record](https://www.iceman.it/en/oetzi/equipment), and [Artioli and colleagues, Long-distance connections in the Copper Age](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0179263) | The museum supplies the 1991 findspot. Its equipment record and the isotope study associate the copper with southern Tuscany. The survey-room routes are schematic possibilities for material exchange. These records do not supply Ötzi’s itinerary. The external museum page includes images of human remains. |
+
+## Chapter 5: Living Forest
+
+Fern Station and its nearby woodland are fictional. The scripted field watches record visible crossings through a gap in the trees or reeds. They provide no animal identities or estimates of the number of birds in the forest.
+
+| Source record | Use and limit |
+|---|---|
+| HIS-S17, [Jane Goodall Institute timeline](https://janegoodall.org/jgi-timeline/) | The 1960 entry documents an observation of chimpanzee tool use at Gombe. The game gives a summary rather than a re-created notebook or historical conversation. |
+| HIS-S18, [Jane Goodall Institute, Voices of Gombe](https://janegoodall.org/news/voices-of-gombe-a-network-of-impact/) | The account credits Tanzanian field staff and records a collaboration with Baraka Daniel on a datasheet. This is a separate source about how a record was made and who receives credit. |
+
+## Chapter 15: Council of Inquiry
+
+The Council stages fictional work and keeps two historical reading cards. The cards give methods the player can try on a separate case.
+
+- HIS-S29 supports the account of Ibn al-Haytham’s experimental work on light and vision. [MacTutor biography](https://mathshistory.st-andrews.ac.uk/Biographies/Al-Haytham/)
+- HIS-COUNCIL-01 supports the account of Mill’s reasons for testing received opinions through discussion. The Stanford Encyclopedia confirms the original publication date of 1859. [On Liberty, chapter II](https://standardebooks.org/ebooks/john-stuart-mill/on-liberty/text/chapter-2) · [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/mill-moral-political/)

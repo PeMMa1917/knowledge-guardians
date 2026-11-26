@@ -1,4 +1,16 @@
 import { runNileTrial, nileDelivery, type NileRoad, type NileDelivery } from './nileModel';
+import { forestWatch, type ForestWindow } from './forestWatch';
+import { readMetalSample } from './metalSample';
+import { compareCopy } from './copyComparison';
+import { seaChart } from './seaCharts';
+import { stageRehearsal, type StageCue } from './stageRehearsal';
+import { marketComparison, type MarketBasis } from './marketScale';
+import { waterTrial, type WaterSetting } from './waterGate';
+import { civicAllocation, type CivicRule, type CivicSample } from './civicConsole';
+import { voiceReading, type VoiceSource, type VoiceView } from './voiceReadings';
+import { islandPlan, type IslandLanding, type IslandRoute } from './islandPlan';
+import { councilClock, type CouncilTrial } from './councilClock';
+import { scoutDecision, scoutNextTrial, scoutTrials, type ScoutDecision, type ScoutProtocol, type ScoutRoute } from './scoutRoutes';
 /**
  * Domain engine. Scenes send typed commands; the engine checks preconditions,
  * computes ONE valid state transition and returns events for the view to show
@@ -14,6 +26,7 @@ import { BARTER, DYES, FAIR_PRICE, ferryPrice } from './trade';
 import { approvalOf, approvalRank, isInquiry } from './approval';
 import { ROLES } from './roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from './undercroft';
+import { FIELD_GAMES } from './fieldgames';
 import type {
   AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
@@ -74,6 +87,7 @@ export type Command =
   | { type: 'ChooseRole'; role: string }
   | { type: 'DisarmSeal'; seal: string; choice: number }
   | { type: 'BossMove'; choice: number }
+  | { type: 'FinishFieldGame'; game: string }
   | { type: 'JudgeRumour'; rumour: string; verdict: number }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
@@ -94,6 +108,19 @@ export type Command =
   | { type: 'RunSimulation'; pen: string; surface: string }
   | { type: 'NileRouteTrial'; road: NileRoad }
   | { type: 'NileDelivery'; choice: NileDelivery }
+  | { type: 'ObserveForest'; site: string; window: ForestWindow }
+  | { type: 'CompareMetalSample'; sample: string }
+  | { type: 'CompareCopy'; edition: string }
+  | { type: 'ReadSeaChart'; chart: string }
+  | { type: 'RunStageRehearsal'; cue: StageCue }
+  | { type: 'WeighMarketLots'; basis: MarketBasis }
+  | { type: 'RunWaterTrial'; setting: WaterSetting }
+  | { type: 'RunCivicTrial'; sample: CivicSample; rule: CivicRule }
+  | { type: 'RunVoiceReading'; source: VoiceSource; view: VoiceView }
+  | { type: 'RunIslandPlan'; route: IslandRoute; landing: IslandLanding }
+  | { type: 'RunCouncilClock'; trial: CouncilTrial }
+  | { type: 'RunScoutRoute'; protocol: ScoutProtocol; first: ScoutRoute; trial: number; decision: ScoutDecision }
+  | { type: 'ReviewScoutProtocol'; protocol: ScoutProtocol }
   | { type: 'BuildLabel'; kit: string; subject: string; criterion: string; limit: string }
   | { type: 'TurnLock'; lock: string; choice: Record<string, string> }
   | { type: 'ShowdownStart'; showdown: string; relaxed?: boolean }
@@ -149,6 +176,7 @@ export type GameEvent =
   | { kind: 'fairprice'; ok: boolean; why: string }
   | { kind: 'seal'; seal: string; ok: boolean; why: string }
   | { kind: 'boss'; phase: number; ok: boolean; why: string; done: boolean }
+  | { kind: 'fieldgame'; game: string; name: string; first: boolean }
   | { kind: 'approval'; who: string; n: number; rank: string; up: boolean }
   | { kind: 'trust'; id: string; name: string; rank: string }
   | { kind: 'secret'; id: string; name: string; found: number; total: number }
@@ -438,6 +466,14 @@ export class Engine {
           events.push({ kind: 'seal', seal: x.id, ok: o.ok, why: o.why });
           break;
         }
+        case 'FinishFieldGame': {
+          const g = FIELD_GAMES.find((x) => x.id === cmd.game);
+          if (!g) throw new Error('Unknown game');
+          const first = s.flags[`field.${g.id}.done`] !== true;
+          if (first) s = apply([{ setFlag: `field.${g.id}.done`, value: true }, { addNum: 'count.fieldgames', by: 1 }, { addMarks: 3 }, ...(g.fray ? [{ setFlag: `meet.fray.${g.fray}`, value: true } as Effect] : [])], s, out);
+          events.push({ kind: 'fieldgame', game: g.id, name: g.name, first });
+          break;
+        }
         case 'BossMove': {
           if (!allSealsOpen(s.flags)) throw new Error('The seals still block the way');
           if (bossDone(s.flags)) throw new Error('The vault is quiet now');
@@ -446,7 +482,7 @@ export class Engine {
           if (!o) throw new Error('Choose an answer');
           const done = o.ok && ph + 1 >= BOSS.phases.length;
           s = apply(o.ok
-            ? [{ setFlag: `boss.${BOSS.id}.phase`, value: ph + 1 }, { setFlag: `meet.fray.${p.fray}`, value: true }, ...(done ? [{ setFlag: 'undercroft.done', value: true }, { addMarks: 10 }] as Effect[] : [])]
+            ? [{ setFlag: `boss.${BOSS.id}.phase`, value: ph + 1 }, { setFlag: `meet.fray.${p.fray}`, value: true }, ...(done ? [{ setFlag: 'undercroft.done', value: true }, { addMarks: 10 }, { giveItem: 'item.brass-lamp' }] as Effect[] : [])]
             : [{ addNum: `boss.${BOSS.id}.hollow`, by: 1 }], s, out);
           events.push({ kind: 'boss', phase: ph, ok: o.ok, why: o.why, done });
           break;
@@ -549,6 +585,112 @@ export class Engine {
           if (prevPen !== undefined && changed === 2) fx.push({ addNum: 'sim.unfair', by: 1 });
           s = apply(fx, s, out);
           events.push({ kind: 'simulation', result: { pen: cmd.pen, surface: cmd.surface, markQuality: m.q, note: m.note, fairTest: fair, testCount: count } });
+          break;
+        }
+        case 'RunCouncilClock': {
+          if (s.mapId !== 'council.hall' || s.flags['council.arrived'] !== true) throw new Error('Use the watch bench in the Council of Inquiry.');
+          councilClock(cmd.trial);
+          const key = `council.trial.${cmd.trial}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
+          break;
+        }
+        case 'RunScoutRoute': {
+          if (s.mapId !== 'aethelgard.emberford') throw new Error('Use the cart at Emberford’s scout board.');
+          const trials = scoutTrials(cmd.first, cmd.protocol);
+          const rounds = `scout.rounds.${cmd.protocol}`;
+          const played = Number(s.flags[rounds] ?? 0);
+          if (cmd.trial !== scoutNextTrial(played)) throw new Error('Set the cart up for the current round.');
+          const { fits } = scoutDecision(trials[cmd.trial], cmd.decision);
+          s = apply([
+            { setFlag: rounds, value: played + 1 },
+            { setFlag: `scout.played.${cmd.protocol}`, value: true },
+            { setFlag: `scout.result.${cmd.protocol}`, value: `${cmd.decision}.${fits ? 'fits' : 'blocked'}` },
+          ], s, out);
+          break;
+        }
+        case 'ReviewScoutProtocol': {
+          if (s.mapId !== 'aethelgard.emberford') throw new Error('Use the cart at Emberford’s scout board.');
+          scoutTrials('orchard', cmd.protocol);
+          if (s.flags[`scout.played.${cmd.protocol}`] !== true) throw new Error('Send the practice cart around first.');
+          const key = `scout.checked.${cmd.protocol}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
+          break;
+        }
+        case 'RunIslandPlan': {
+          if (s.mapId !== 'island.workshop' || s.flags['island.arrived'] !== true) throw new Error('Use the planning table on the Island of Models.');
+          islandPlan(cmd.landing, cmd.route);
+          if (cmd.landing === 'low' && s.flags['island.lower.read'] !== true) throw new Error('Bring the lower landing update from the dock.');
+          const key = `island.plan.${cmd.landing}.${cmd.route}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
+          break;
+        }
+        case 'RunVoiceReading': {
+          if (s.mapId !== 'voices.listening' || s.flags['voices.arrived'] !== true) throw new Error('Use the listening desk in the Archive of Voices.');
+          voiceReading(cmd.source, cmd.view);
+          if (cmd.source === 'carrier' && s.flags['voices.permissions.read'] !== true) throw new Error('Check the carrier’s permissions card.');
+          const key = `voices.read.${cmd.source}.${cmd.view}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
+          break;
+        }
+        case 'RunCivicTrial': {
+          if (s.mapId !== 'civic.dispatch' || s.flags['civic.arrived'] !== true) throw new Error('Use the route console in the Civic Machine.');
+          civicAllocation(cmd.sample, cmd.rule);
+          if (cmd.sample === 'combined' && s.flags['civic.walk.read'] !== true) throw new Error('Bring the walking register from Canal Walk.');
+          const key = `civic.trial.${cmd.sample}.${cmd.rule}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
+          break;
+        }
+        case 'RunWaterTrial': {
+          if (s.mapId !== 'water.gatehouse' || s.flags['water.arrived'] !== true) throw new Error('Use the trial gate in the Water Commons.');
+          const condition = s.flags['water.repaired'] === true ? 'repaired' : 'drought';
+          waterTrial(condition, cmd.setting);
+          const key = `water.trial.${condition}.${cmd.setting}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
+          break;
+        }
+        case 'WeighMarketLots': {
+          marketComparison(cmd.basis);
+          if (s.mapId !== 'market.square' || s.flags['market.arrived'] !== true) throw new Error('Use the test scale in the Market of Measures.');
+          const key = `market.weigh.${cmd.basis}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
+          break;
+        }
+        case 'RunStageRehearsal': {
+          stageRehearsal(cmd.cue);
+          if (s.mapId !== 'stage.rehearsal' || s.flags['stage.arrived'] !== true) throw new Error('Use the cue table in the House of Performance.');
+          const key = `stage.rehearsal.${cmd.cue}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
+          break;
+        }
+        case 'ReadSeaChart': {
+          seaChart(cmd.chart);
+          if (s.mapId !== `sea.${cmd.chart}` || s.flags['sea.arrived'] !== true) throw new Error('Use the matching survey stand in the Cartographers’ Sea.');
+          const key = `sea.read.${cmd.chart}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
+          break;
+        }
+        case 'CompareCopy': {
+          compareCopy(cmd.edition);
+          const location = cmd.edition === 'press' ? 'copies.press' : 'copies.landing';
+          if (s.mapId !== location || s.flags['copies.arrived'] !== true) throw new Error('Use the matching comparison table in the City of Copies.');
+          if (cmd.edition === 'proof' && s.flags['copies.followup'] !== true) throw new Error('Read the visitor’s response and revise the notice before checking the repair.');
+          const key = `copies.checked.${cmd.edition}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
+          break;
+        }
+        case 'CompareMetalSample': {
+          if (s.mapId !== 'metalworks.yard' || s.flags['metal.arrived'] !== true) throw new Error('Use the comparison bench in the Metalworks yard.');
+          readMetalSample(cmd.sample);
+          const key = `metal.test.${cmd.sample}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
+          break;
+        }
+        case 'ObserveForest': {
+          if (s.mapId !== 'forest.trail' || s.flags['forest.arrived'] !== true) throw new Error('Use a watch spot on the forest trail.');
+          if (cmd.window === 'return' && !s.flags['forest.response']) throw new Error('Agree on the trail response before making the return watch.');
+          forestWatch(cmd.site, cmd.window);
+          const key = `forest.watch.${cmd.site}.${cmd.window}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
         case 'NileRouteTrial': {

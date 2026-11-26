@@ -52,6 +52,14 @@ The design spec is `Knowledge_Guardians_spec_v2.10.md`. The project owner keeps 
 - **Art direction:** rich, colourful pixel art with lighting. **Never copy** art, characters, music or levels from an existing game.
 - **Writing style:** plain, short sentences (Simplified Technical English where possible). Font: Lexend everywhere.
 - **Documents:** any `.docx` file uses A4 paper with 1.5 cm margins.
+- **Quality goals for every chapter (Mika 2026-11-26).** Check each new feature against all five:
+  1. **A branching story where choices matter.** Give real options. A choice must change something later (a line, a path, a person's trust, an ending). Say in the code or content where the effect shows.
+  2. **One cohesive, colourful art style.** Rich pixel art with light, in the same palette and scale as the existing maps and sprites. No art that looks like a different game.
+  3. **Fitting music and sound.** Each place and task has a sound that fits it (calm for thinking, bright for a win). Never silent, never jarring.
+  4. **Distinct characters.** Each person has their own name, background, perspective, way of speaking, and their own quests or side quests. Do not reuse a voice.
+  5. **Objects that matter elsewhere.** Every object, keepsake, memento or artefact must be used in another place: a new view, a path, a dialogue option, a trade or a puzzle.
+- **Story bible (Mika 2026-11-26).** Read [docs/STORY_BIBLE.md](docs/STORY_BIBLE.md) before you write any scene, person or quest. Use its checklist (section 13). Never reuse a character name. Keep the conflict map (section 15) current when you add a conflict, and check [docs/STORY_ELEMENTS.md](docs/STORY_ELEMENTS.md) (Mika's 150 story elements, adapted) when you plan content. Never make a real religion's God or sacred figures an opponent: use invented in-world patrons, myths and prophecies only. Tag new encounters for concepts, framework parts and levels of thinking, and vary the levels ([docs/LEARNING_DESIGN.md](docs/LEARNING_DESIGN.md)); check [docs/GAME_ELEMENTS.md](docs/GAME_ELEMENTS.md) for game elements to use. Nothing a student plays may feel like an exam.
+- **TOK lessons as play, never as school work (Mika 2026-11-26).** Ideas from the TOK lessons become minigames, quests, side quests and character moments. Nothing may feel like a quiz, flashcards, an essay or homework. Adapt ideas into original, fictional mechanics; never copy handout or IB wording into this public repository.
 
 ## 4. Code rules
 

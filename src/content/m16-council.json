@@ -1,0 +1,1251 @@
+{
+ "characters": [
+  {
+   "id": "council-keeper",
+   "name": "Workshop Keeper Hale",
+   "role": "Keeper of the trial watch",
+   "sprite": "custom:warm.black.madder.indigo.scarf.gold",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "council.keeper.finished",
+     "if": {
+      "objective": "council.finish"
+     }
+    },
+    {
+     "node": "council.keeper.compared",
+     "if": {
+      "objective": "council.compare"
+     }
+    },
+    {
+     "node": "council.keeper.sources",
+     "if": {
+      "objective": "council.sources"
+     }
+    },
+    {
+     "node": "council.keeper.welcome"
+    }
+   ]
+  },
+  {
+   "id": "council-reader",
+   "name": "Rail Steward Essi",
+   "role": "Keeper of the bell rail and repair docket",
+   "sprite": "custom:brown.auburn.violet.brown.both.red.curls.darkframes.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "council.rail.copy-ready",
+     "if": {
+      "objective": "council.copy"
+     }
+    },
+    {
+     "node": "council.rail.after",
+     "if": {
+      "objective": "council.finish"
+     }
+    },
+    {
+     "node": "council.rail.revisit",
+     "if": {
+      "objective": "council.reader"
+     }
+    },
+    {
+     "node": "council.rail.wait",
+     "if": {
+      "objective": "council.publish"
+     }
+    },
+    {
+     "node": "council.rail.choose",
+     "if": {
+      "objective": "council.compare"
+     }
+    },
+    {
+     "node": "council.rail.records"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "council.keeper.welcome",
+   "speaker": "council-keeper",
+   "text": "The loading shutter has a narrow opening before the bell. One watch has to tell people when to be ready. The draft says a match at a glance is enough. Check the two records in the Letter Gallery, and bring the repair seal and rail record to the watch.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.keeper.sources",
+   "speaker": "council-keeper",
+   "text": "The clock starts at twelve in each practice case. Compare its first reading to the separate drum. Then advance the trial one minute. See what can happen in a case that agrees at the start.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.keeper.compared",
+   "speaker": "council-keeper",
+   "text": "In two cases the first readings agreed. Only one watch moved on the next minute. The third watch showed twelve against an eleven reading and stayed there. Someone could agree about the time at that first glance and still have a watch that cannot carry them through the shift.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.keeper.finished",
+   "speaker": "council-keeper",
+   "text": "I can sign a record of a test I made. The stamp has that test’s date. The shift crew keeps a way to compare the watch again when the record grows old.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.rail.records",
+   "speaker": "council-reader",
+   "text": "Look for a source that tells you how someone checked a claim. The old optics note records a way of testing. The Mill note asks what happens when nobody challenges an accepted belief. Neither writer signed our watch slip.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the rail ready.",
+     "if": {
+      "all": [
+       {
+        "objective": "council.bench.sources"
+       },
+       {
+        "not": {
+         "flagSet": "council.bench.layout"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Find a place for the spare practice dial.",
+     "next": "council.rail.bench",
+     "if": {
+      "all": [
+       {
+        "objective": "council.bench.sources"
+       },
+       {
+        "not": {
+         "flagSet": "council.bench.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "council.rail.choose",
+   "speaker": "council-reader",
+   "text": "The rail crew has a separate drum and can check the watch through two marks. That asks someone to be there before loading. A dated seal can let one crew use a test already carried out, as long as they know when it expires. Which direction shall we put on the first docket?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Start each shift with a rail comparison.",
+     "next": "council.publish.rail",
+     "effects": [
+      {
+       "setFlag": "council.response",
+       "value": "rail"
+      }
+     ],
+     "if": {
+      "objective": "council.compare"
+     }
+    },
+    {
+     "text": "Use the dated repair record and its fallback.",
+     "next": "council.publish.record",
+     "effects": [
+      {
+       "setFlag": "council.response",
+       "value": "record"
+      }
+     ],
+     "if": {
+      "objective": "council.compare"
+     }
+    },
+    {
+     "text": "Leave the docket open for now."
+    },
+    {
+     "text": "Find a place for the spare practice dial.",
+     "next": "council.rail.bench",
+     "if": {
+      "all": [
+       {
+        "objective": "council.bench.sources"
+       },
+       {
+        "not": {
+         "flagSet": "council.bench.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "council.publish.rail",
+   "speaker": "council-reader",
+   "text": "Essi sends a checker to the independent drum. The opening docket now asks for the first time and the next advancing minute. A match at one mark stays on the slip until the second mark completes the check.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.publish.record",
+   "speaker": "council-reader",
+   "text": "Essi clips the seal and test date to the docket. A crew can use that shift’s signed result. If the seal breaks or the date is missing or old, the fallback sends someone to the independent rail for both marks.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.rail.wait",
+   "speaker": "council-reader",
+   "text": "A courier came just as the shutter started to fall. There is a reply by the stair rail. Check what the courier can see and hear by the shutter.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the rail ready.",
+     "if": {
+      "all": [
+       {
+        "objective": "council.bench.sources"
+       },
+       {
+        "not": {
+         "flagSet": "council.bench.layout"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Find a place for the spare practice dial.",
+     "next": "council.rail.bench",
+     "if": {
+      "all": [
+       {
+        "objective": "council.bench.sources"
+       },
+       {
+        "not": {
+         "flagSet": "council.bench.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "council.rail.revisit",
+   "speaker": "council-reader",
+   "text": "The two crews are together for just a short part of the shift. Someone behind the shutter can miss one mark even when the check happens. Give that person a way to see or hear both readings before their hands fill with crates.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set a spoken relay across the short overlap.",
+     "next": "council.revise.relay",
+     "effects": [
+      {
+       "setFlag": "council.revision",
+       "value": "relay"
+      }
+     ],
+     "if": {
+      "objective": "council.reader"
+     }
+    },
+    {
+     "text": "Put two large reference marks by the shutter.",
+     "next": "council.revise.mark",
+     "effects": [
+      {
+       "setFlag": "council.revision",
+       "value": "mark"
+      }
+     ],
+     "if": {
+      "objective": "council.reader"
+     }
+    },
+    {
+     "text": "Leave the first instruction ready."
+    },
+    {
+     "text": "I kept both landing sheets on the island.",
+     "next": "council.rail.island",
+     "if": {
+      "flagSet": "island.revision"
+     }
+    },
+    {
+     "text": "I checked what someone could see from the stairs.",
+     "next": "council.rail.voices",
+     "if": {
+      "flagSet": "voices.revision"
+     }
+    }
+   ]
+  },
+  {
+   "id": "council.rail.island",
+   "speaker": "council-reader",
+   "text": "You kept the original result when a loading condition changed. Our first check stays on its own docket too. The shutter changes how long people can share that check. Give the shorter overlap its own line.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set a spoken relay across the short overlap.",
+     "next": "council.revise.relay",
+     "effects": [
+      {
+       "setFlag": "council.revision",
+       "value": "relay"
+      }
+     ],
+     "if": {
+      "objective": "council.reader"
+     }
+    },
+    {
+     "text": "Put two large reference marks by the shutter.",
+     "next": "council.revise.mark",
+     "effects": [
+      {
+       "setFlag": "council.revision",
+       "value": "mark"
+      }
+     ],
+     "if": {
+      "objective": "council.reader"
+     }
+    },
+    {
+     "text": "Leave the first instruction ready."
+    }
+   ]
+  },
+  {
+   "id": "council.rail.voices",
+   "speaker": "council-reader",
+   "text": "The lamps were clear from one approach and gone from another. Here the first call is clear at the rail and muffled beside the shutter. Give the person who starts there their own way to follow the two marks.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set a spoken relay across the short overlap.",
+     "next": "council.revise.relay",
+     "effects": [
+      {
+       "setFlag": "council.revision",
+       "value": "relay"
+      }
+     ],
+     "if": {
+      "objective": "council.reader"
+     }
+    },
+    {
+     "text": "Put two large reference marks by the shutter.",
+     "next": "council.revise.mark",
+     "effects": [
+      {
+       "setFlag": "council.revision",
+       "value": "mark"
+      }
+     ],
+     "if": {
+      "objective": "council.reader"
+     }
+    },
+    {
+     "text": "Leave the first instruction ready."
+    }
+   ]
+  },
+  {
+   "id": "council.revise.relay",
+   "speaker": "council-reader",
+   "text": "Essi moves a second checker to the shutter before it falls. The rail checker calls both readings separately. The checker at the shutter repeats each one back for the waiting courier. The first docket stays signed.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.revise.mark",
+   "speaker": "council-reader",
+   "text": "Essi pins separate opening and next-minute marks where the courier can see them before lifting a crate. The first docket stays signed. Both marks point back to the independent drum.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.rail.after",
+   "speaker": "council-reader",
+   "text": "A new checker can use the marks and the dated docket. They have asked where the test came from if they need to check again after a long repair.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave a wide copy of the check instructions.",
+     "next": "council.rail.copy",
+     "effects": [
+      {
+       "setFlag": "council.receipt.ready",
+       "value": true
+      }
+     ],
+     "if": {
+      "objective": "council.finish"
+     }
+    },
+    {
+     "text": "Keep the docket at the rail."
+    },
+    {
+     "text": "Find a place for the spare practice dial.",
+     "next": "council.rail.bench",
+     "if": {
+      "all": [
+       {
+        "objective": "council.bench.sources"
+       },
+       {
+        "not": {
+         "flagSet": "council.bench.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "council.rail.copy",
+   "speaker": "council-reader",
+   "text": "Essi hangs the wider copy near the entrance. It leaves lines for who checked, which drum they used, and when. The dated first docket and its fallback stay with the repair slip.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.rail.copy-ready",
+   "speaker": "council-reader",
+   "text": "The entrance copy tells a new checker where the original date and comparison belong. There is space for the next dated check beside it.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the rail ready.",
+     "if": {
+      "all": [
+       {
+        "objective": "council.bench.sources"
+       },
+       {
+        "not": {
+         "flagSet": "council.bench.layout"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Find a place for the spare practice dial.",
+     "next": "council.rail.bench",
+     "if": {
+      "all": [
+       {
+        "objective": "council.bench.sources"
+       },
+       {
+        "not": {
+         "flagSet": "council.bench.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "council.rail.bench",
+   "speaker": "council-reader",
+   "historicalLabel": "fictional-world",
+   "text": "One spare dial can go out before the shift starts. At the rail, an apprentice can stand with the crew and ask about the marks. Some people leave before handover. At the low slot, a person can stop with a cart and check with the keeper when they arrive.",
+   "options": [
+    {
+     "text": "Set the practice dial at the shared rail.",
+     "next": "council.bench.rail",
+     "if": {
+      "all": [
+       {
+        "objective": "council.bench.sources"
+       },
+       {
+        "not": {
+         "flagSet": "council.bench.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "council.bench.layout",
+       "value": "rail"
+      }
+     ]
+    },
+    {
+     "text": "Set the practice dial in the low slot.",
+     "next": "council.bench.slot",
+     "if": {
+      "all": [
+       {
+        "objective": "council.bench.sources"
+       },
+       {
+        "not": {
+         "flagSet": "council.bench.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "council.bench.layout",
+       "value": "slot"
+      }
+     ]
+    },
+    {
+     "text": "Leave the spare dial inside for now."
+    }
+   ]
+  },
+  {
+   "id": "council.bench.rail",
+   "speaker": "council-reader",
+   "historicalLabel": "fictional-world",
+   "text": "The people at handover pass the dial along. An apprentice asks which reading came from the reference. The crew lead takes them back through the two marks before they go."
+  },
+  {
+   "id": "council.bench.slot",
+   "speaker": "council-reader",
+   "historicalLabel": "fictional-world",
+   "text": "A helper parks their cart beside the spare dial and turns it through the two marks. They missed handover, so the keeper shows them which mark to compare with the rail record."
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.council.mill",
+   "title": "John Stuart Mill on challenge (1859)",
+   "text": "In chapter 2 of On Liberty, Mill argues that an accepted view can be true and still need a serious challenge. Encountering reasons and objections can help people understand the view they hold.",
+   "claimKind": "interpretation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-COUNCIL-01"
+   ],
+   "limits": "Mill’s argument concerns how people hold and discuss beliefs. It is separate from the Council’s fictional watch trial."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH15-M01",
+   "world": "WORLD-16",
+   "title": "When the Hand Moves",
+   "knowledgeQuestion": "What else needs to hold after a watch gives the right time once?",
+   "stake": "If the hall sets its time by a watch that only agrees with itself, nobody can say when the repair really happened.",
+   "available": {
+    "objective": "island.finish"
+   },
+   "objectives": [
+    {
+     "id": "council.arrival",
+     "title": "Find Hale at the Council’s workshop watch.",
+     "done": {
+      "flag": "council.arrived",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective"
+      ],
+      "atl": [
+       "self-management"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "design-tech"
+      ]
+     }
+    },
+    {
+     "id": "council.sources",
+     "title": "Read the two source notes, the independent rail record and the repair seal.",
+     "done": {
+      "all": [
+       {
+        "flag": "council.optics.read",
+        "eq": true
+       },
+       {
+        "flag": "council.mill.read",
+        "eq": true
+       },
+       {
+        "flag": "council.rail.read",
+        "eq": true
+       },
+       {
+        "flag": "council.repair.read",
+        "eq": true
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "perspective",
+       "culture",
+       "justification",
+       "power"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "philosophy",
+       "physics"
+      ]
+     },
+     "visible": {
+      "objective": "council.arrival"
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-MED-01"
+     ],
+     "onComplete": [
+      {
+       "addCard": "card.person.haytham"
+      },
+      {
+       "addCard": "card.council.mill"
+      }
+     ]
+    },
+    {
+     "id": "council.compare",
+     "title": "Advance all three cases at the watch and compare the changes.",
+     "done": {
+      "all": [
+       {
+        "objective": "council.sources"
+       },
+       {
+        "flag": "council.trial.working",
+        "eq": true
+       },
+       {
+        "flag": "council.trial.matched",
+        "eq": true
+       },
+       {
+        "flag": "council.trial.drift",
+        "eq": true
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "evidence",
+       "certainty",
+       "justification",
+       "explanation",
+       "objectivity",
+       "interpretation"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT",
+       "HUM"
+      ],
+      "subjects": [
+       "physics",
+       "philosophy",
+       "math-aa"
+      ]
+     },
+     "visible": {
+      "objective": "council.sources"
+     },
+     "skills": [
+      "SK-THK-05",
+      "SK-RSC-21"
+     ],
+     "kq": {
+      "id": "KQ-NEW-003",
+      "action": "compare a true reading with evidence that the watch advances"
+     }
+    },
+    {
+     "id": "council.publish",
+     "title": "Give the loading crew a check they can use.",
+     "done": {
+      "flagSet": "council.response"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "power",
+       "evidence",
+       "justification"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT"
+      ],
+      "subjects": [
+       "philosophy",
+       "design-tech",
+       "physics"
+      ]
+     },
+     "visible": {
+      "objective": "council.compare"
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "onComplete": [
+      {
+       "credit": "credit.council.publish"
+      }
+     ]
+    },
+    {
+     "id": "council.reader",
+     "title": "Read the courier’s reply and check the view by the shutter.",
+     "done": {
+      "all": [
+       {
+        "flag": "council.reader.read",
+        "eq": true
+       },
+       {
+        "flag": "council.shutter.read",
+        "eq": true
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "perspective",
+       "interpretation",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "geography",
+       "design-tech"
+      ]
+     },
+     "visible": {
+      "objective": "council.publish"
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-RSC-15"
+     ]
+    },
+    {
+     "id": "council.finish",
+     "title": "Keep the first docket and give both crews the next time check.",
+     "done": {
+      "flagSet": "council.revision"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "power",
+       "values",
+       "responsibility",
+       "explanation",
+       "justification",
+       "perspective"
+      ],
+      "atl": [
+       "communication",
+       "social",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN",
+       "NAT"
+      ],
+      "subjects": [
+       "design-tech",
+       "philosophy",
+       "geography"
+      ]
+     },
+     "visible": {
+      "objective": "council.reader"
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "kq": {
+      "id": "KQ-NEW-004",
+      "action": "make the same check available to people on both sides of the shutter"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.council.finish"
+      },
+      {
+       "journal": "j.council.shift"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH15-R01",
+   "world": "WORLD-16",
+   "title": "A New Checker",
+   "knowledgeQuestion": "How can someone find the basis of a test carried out by another crew?",
+   "available": {
+    "objective": "council.finish"
+   },
+   "objectives": [
+    {
+     "id": "council.copy",
+     "title": "Put a wide copy of the check near the entrance.",
+     "done": {
+      "flag": "council.receipt.ready",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "responsibility",
+       "values"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "design-tech",
+       "philosophy"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH15-R02",
+   "world": "WORLD-16",
+   "title": "A Dial for Handover",
+   "knowledgeQuestion": "Who gets a chance to see or question how a timing mark was made?",
+   "available": {
+    "objective": "council.arrival"
+   },
+   "objectives": [
+    {
+     "id": "council.bench.sources",
+     "title": "Check the crew’s handover and the low practice slot.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "council.bench.crew",
+        "eq": true
+       },
+       {
+        "flag": "council.bench.slot",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "power",
+       "perspective",
+       "evidence"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "anthropology",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-MED-04"
+     ]
+    },
+    {
+     "id": "council.bench",
+     "title": "Place the spare dial and see who can use it.",
+     "essential": false,
+     "visible": {
+      "objective": "council.bench.sources"
+     },
+     "done": {
+      "flag": "council.bench.used",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "responsibility",
+       "justification",
+       "perspective"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "design-tech",
+       "philosophy"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-MED-04"
+     ]
+    }
+   ]
+  }
+ ],
+ "criteria": [
+  {
+   "id": "credit.council.publish",
+   "concept": "justification",
+   "maximum": 8
+  },
+  {
+   "id": "credit.council.finish",
+   "concept": "responsibility",
+   "maximum": 8
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.council.shift",
+   "claimKind": "interpretation",
+   "text": "A stopped watch shared the drum’s first reading. Its next mark showed the limit of the match. Both loading crews now have a way to follow the check."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.council-advanced",
+   "attribute": "thinker",
+   "when": {
+    "objective": "council.compare"
+   },
+   "did": "You compared cases that agreed on the first mark and checked the next one.",
+   "prompt": "What does a second look show that the first match leaves open?"
+  },
+  {
+   "id": "mom.council-revision",
+   "attribute": "caring",
+   "when": {
+    "objective": "council.finish"
+   },
+   "did": "You helped a courier on the other side of the shutter take part in the check.",
+   "prompt": "Where would you stand for both readings to be clear?"
+  }
+ ],
+ "chronicle": [
+  {
+   "id": "council-clock-docket",
+   "title": "The signed clock docket",
+   "text": "The loading crew has a way to check the watch. The docket names the separate drum or the dated repair test.",
+   "if": {
+    "objective": "council.publish"
+   }
+  },
+  {
+   "id": "council-shutter-update",
+   "title": "Two marks at the shutter",
+   "text": "A courier needed both readings. The revised instruction gives the short overlap its own check while keeping the original docket.",
+   "if": {
+    "objective": "council.finish"
+   }
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.council.arrival.1",
+   "objective": "council.arrival",
+   "depth": 1,
+   "text": "The loading crews need a way to agree when to be ready."
+  },
+  {
+   "id": "h.council.arrival.2",
+   "objective": "council.arrival",
+   "depth": 2,
+   "text": "Find the Council of Inquiry crossing in the Nexus."
+  },
+  {
+   "id": "h.council.arrival.3",
+   "objective": "council.arrival",
+   "depth": 3,
+   "text": "Enter the Council Hall and look for the workshop watch."
+  },
+  {
+   "id": "h.council.arrival.4",
+   "objective": "council.arrival",
+   "depth": 4,
+   "text": "Hale stands by the trial clock. The Letter Gallery has the records for its test."
+  },
+  {
+   "id": "h.council.sources.1",
+   "objective": "council.sources",
+   "depth": 1,
+   "text": "The expert’s record and the rail drum tell you different things."
+  },
+  {
+   "id": "h.council.sources.2",
+   "objective": "council.sources",
+   "depth": 2,
+   "text": "Read the optics and Mill notes in the Letter Gallery."
+  },
+  {
+   "id": "h.council.sources.3",
+   "objective": "council.sources",
+   "depth": 3,
+   "text": "Find the independent drum’s record and the dated repair seal too."
+  },
+  {
+   "id": "h.council.sources.4",
+   "objective": "council.sources",
+   "depth": 4,
+   "text": "Bring the four records to the Hall. A signed record keeps its own date and conditions."
+  },
+  {
+   "id": "h.council.compare.1",
+   "objective": "council.compare",
+   "depth": 1,
+   "text": "Three starting faces show the same time."
+  },
+  {
+   "id": "h.council.compare.2",
+   "objective": "council.compare",
+   "depth": 2,
+   "text": "Open the workshop watch in the Hall and look at its separate reference."
+  },
+  {
+   "id": "h.council.compare.3",
+   "objective": "council.compare",
+   "depth": 3,
+   "text": "Run the moving watch and both fixed cases. Advance one minute in each."
+  },
+  {
+   "id": "h.council.compare.4",
+   "objective": "council.compare",
+   "depth": 4,
+   "text": "Look at the checked notice by the watch. One fixed watch matched at the first mark."
+  },
+  {
+   "id": "h.council.publish.1",
+   "objective": "council.publish",
+   "depth": 1,
+   "text": "The shift crew needs a reason to trust its timing."
+  },
+  {
+   "id": "h.council.publish.2",
+   "objective": "council.publish",
+   "depth": 2,
+   "text": "Take the trials to Essi in the Letter Gallery."
+  },
+  {
+   "id": "h.council.publish.3",
+   "objective": "council.publish",
+   "depth": 3,
+   "text": "Choose a check at the rail or a dated repair record with a fallback."
+  },
+  {
+   "id": "h.council.publish.4",
+   "objective": "council.publish",
+   "depth": 4,
+   "text": "Read the posted docket. It says when the crew should check again."
+  },
+  {
+   "id": "h.council.reader.1",
+   "objective": "council.reader",
+   "depth": 1,
+   "text": "Someone starting behind the shutter missed part of the check."
+  },
+  {
+   "id": "h.council.reader.2",
+   "objective": "council.reader",
+   "depth": 2,
+   "text": "Find the reply by the rail after you post the first docket."
+  },
+  {
+   "id": "h.council.reader.3",
+   "objective": "council.reader",
+   "depth": 3,
+   "text": "Check the shutter’s view before going back to Essi."
+  },
+  {
+   "id": "h.council.reader.4",
+   "objective": "council.reader",
+   "depth": 4,
+   "text": "Find what a person close to the shutter can see and which call they can miss."
+  },
+  {
+   "id": "h.council.finish.1",
+   "objective": "council.finish",
+   "depth": 1,
+   "text": "The two crews have a short time together."
+  },
+  {
+   "id": "h.council.finish.2",
+   "objective": "council.finish",
+   "depth": 2,
+   "text": "Bring the courier’s reply and shutter view to Essi."
+  },
+  {
+   "id": "h.council.finish.3",
+   "objective": "council.finish",
+   "depth": 3,
+   "text": "Choose a spoken relay or two large reference marks by the shutter."
+  },
+  {
+   "id": "h.council.finish.4",
+   "objective": "council.finish",
+   "depth": 4,
+   "text": "Find the new direction beside the loading entrance and check that the first docket is still available."
+  },
+  {
+   "id": "h.council.copy.1",
+   "objective": "council.copy",
+   "depth": 1,
+   "text": "A new checker needs to know where the dates came from."
+  },
+  {
+   "id": "h.council.copy.2",
+   "objective": "council.copy",
+   "depth": 2,
+   "text": "Ask Essi about the original test after revising the loading instruction."
+  },
+  {
+   "id": "h.council.copy.3",
+   "objective": "council.copy",
+   "depth": 3,
+   "text": "Leave a wider copy for the new checker."
+  },
+  {
+   "id": "h.council.copy.4",
+   "objective": "council.copy",
+   "depth": 4,
+   "text": "Follow the copy back to the repair date and the independent drum."
+  },
+  {
+   "id": "h.council.bench.sources.1",
+   "objective": "council.bench.sources",
+   "depth": 1,
+   "text": "People at the rail see a check at handover."
+  },
+  {
+   "id": "h.council.bench.sources.2",
+   "objective": "council.bench.sources",
+   "depth": 2,
+   "text": "Read the crew slate in the Gallery."
+  },
+  {
+   "id": "h.council.bench.sources.3",
+   "objective": "council.bench.sources",
+   "depth": 3,
+   "text": "Check the low slot in the Hall for someone who arrives with a cart."
+  },
+  {
+   "id": "h.council.bench.sources.4",
+   "objective": "council.bench.sources",
+   "depth": 4,
+   "text": "Compare who can see the practice dial in those two places."
+  },
+  {
+   "id": "h.council.bench.1",
+   "objective": "council.bench",
+   "depth": 1,
+   "text": "There is one spare practice dial."
+  },
+  {
+   "id": "h.council.bench.2",
+   "objective": "council.bench",
+   "depth": 2,
+   "text": "Tell Essi you found the two places it could go."
+  },
+  {
+   "id": "h.council.bench.3",
+   "objective": "council.bench",
+   "depth": 3,
+   "text": "Choose a place for people checking together or a low slot for a person who arrives alone."
+  },
+  {
+   "id": "h.council.bench.4",
+   "objective": "council.bench",
+   "depth": 4,
+   "text": "Find the placed dial and see what someone can do there."
+  }
+ ]
+}

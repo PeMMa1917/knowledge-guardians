@@ -1,0 +1,310 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH1-R09",
+   "world": "WORLD-01",
+   "title": "The Same Stroke",
+   "knowledgeQuestion": "How does the way people work shape what they call a good mark?",
+   "available": {
+    "flag": "nexus.stroke.readback",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "nexus.stroke.compared",
+     "title": "Put both pairs of marks where people can compare them.",
+     "essential": false,
+     "done": {
+      "flag": "nexus.stroke.readback",
+      "eq": true
+     },
+     "onComplete": [
+      {
+       "journal": "j.nexus.stroke"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "culture",
+       "explanation",
+       "objectivity",
+       "perspective",
+       "evidence"
+      ],
+      "atl": [
+       "thinking",
+       "research",
+       "communication"
+      ],
+      "aoks": [
+       "TEC",
+       "NAT",
+       "LAN"
+      ],
+      "subjects": [
+       "design-tech",
+       "physics",
+       "lang-langlit"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "nexus.stroke.brief",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A catalogue clerk keeps shelf numbers in narrow rows. The carriers tie a broad mark to the end of each bundle and read it at arm’s length. Both asked for a pen that leaves a clear line. The clerk brought paper. The carrier left a rough wood tag.",
+   "options": [
+    {
+     "text": "Set four clips out for a comparison.",
+     "next": "nexus.stroke.setup",
+     "if": {
+      "all": [
+       {
+        "flag": "talked.ise",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.stroke.requested"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.stroke.requested",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the two scraps here."
+    }
+   ]
+  },
+  {
+   "id": "nexus.stroke.setup",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Put each pen on paper. Then put each pen on wood. The clips keep the pen and surface with every mark. Use the workshop bench beside the stand. There’s space to show both readings of 'clear' once the strips are ready."
+  },
+  {
+   "id": "nexus.stroke.layout",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The clips give each pen a place on paper and a place on wood. A reader can compare one surface at a time. Keep both pairs together. The catalogue desk can put the paper first. A stand near the low bundles can put the tags first.",
+   "options": [
+    {
+     "text": "Set the paper pair above the wood pair by the catalogue ledger.",
+     "next": "nexus.stroke.desk-set",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.stroke.requested",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.stroke.display"
+        }
+       },
+       {
+        "flag": "sim.ran.loud-model.paper",
+        "eq": true
+       },
+       {
+        "flag": "sim.ran.loud-model.wood",
+        "eq": true
+       },
+       {
+        "flag": "sim.ran.biro-type.paper",
+        "eq": true
+       },
+       {
+        "flag": "sim.ran.biro-type.wood",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.stroke.display",
+       "value": "ledger"
+      }
+     ]
+    },
+    {
+     "text": "Put the wood pair first by the bundles. Clip the paper beside it.",
+     "next": "nexus.stroke.bundles-set",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.stroke.requested",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.stroke.display"
+        }
+       },
+       {
+        "flag": "sim.ran.loud-model.paper",
+        "eq": true
+       },
+       {
+        "flag": "sim.ran.loud-model.wood",
+        "eq": true
+       },
+       {
+        "flag": "sim.ran.biro-type.paper",
+        "eq": true
+       },
+       {
+        "flag": "sim.ran.biro-type.wood",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.stroke.display",
+       "value": "carrier"
+      }
+     ]
+    },
+    {
+     "text": "Leave the stand for now."
+    }
+   ]
+  },
+  {
+   "id": "nexus.stroke.desk-set",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The samples are up by the ledger. The clerk puts a row of shelf numbers beside the paper pair. A lower hinge still shows both wood tags. Go to the ledger to see what the reader uses."
+  },
+  {
+   "id": "nexus.stroke.bundles-set",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The samples hang where the carriers put bundle tags. The sheet beside them keeps the paper comparison in reach. Go to the bundles to see which mark a carrier copies."
+  },
+  {
+   "id": "nexus.stroke.ledger",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The clerk points to two paper marks. The Bíró-type model leaves an even line. The Loud model skips. A carrier reads the wood pair and asks why the order changes there.",
+   "options": [
+    {
+     "text": "Lift the wood clips to compare the marks from the same pens.",
+     "next": "nexus.stroke.ledger-read",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.stroke.display",
+        "eq": "ledger"
+       },
+       {
+        "not": {
+         "flagSet": "nexus.stroke.readback"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the pairs in view."
+    }
+   ]
+  },
+  {
+   "id": "nexus.stroke.ledger-read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "On wood, the Loud model leaves the broad readable mark. The same fine tool that reads easily across narrow columns catches on the grain. The clerk keeps the paper pen for the ledger and leaves the wood sample for a carrier to check. These are bench runs. They do not show how long either mark lasts.",
+   "effects": [
+    {
+     "setFlag": "nexus.stroke.readback",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "nexus.stroke.carrier",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The carrier takes the broad Loud-model mark for the sample tag. The finer mark catches on the wood grain. A clerk who saw the papers first asks why the choice changed when the pens stayed the same.",
+   "options": [
+    {
+     "text": "Turn the card to show the paper strips from the same pens.",
+     "next": "nexus.stroke.carrier-read",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.stroke.display",
+        "eq": "carrier"
+       },
+       {
+        "not": {
+         "flagSet": "nexus.stroke.readback"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the pairs in view."
+    }
+   ]
+  },
+  {
+   "id": "nexus.stroke.carrier-read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The coarse ball catches in the paper fibres in this model. The finer ball leaves the more even line. The clerk can read a row of numbers. The carrier can read one broad mark on the dry tag. They leave both pairs where another reader can check them. The workshop only tried the model surfaces.",
+   "effects": [
+    {
+     "setFlag": "nexus.stroke.readback",
+     "value": true
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.nexus.stroke.1",
+   "objective": "nexus.stroke.compared",
+   "depth": 1,
+   "text": "A line can be easy to read for one job and hard to read for another."
+  },
+  {
+   "id": "h.nexus.stroke.2",
+   "objective": "nexus.stroke.compared",
+   "depth": 2,
+   "text": "Take both pens to paper and both to wood at the workshop bench."
+  },
+  {
+   "id": "h.nexus.stroke.3",
+   "objective": "nexus.stroke.compared",
+   "depth": 3,
+   "text": "Keep all four strips, even if you show one pair above the other."
+  },
+  {
+   "id": "h.nexus.stroke.4",
+   "objective": "nexus.stroke.compared",
+   "depth": 4,
+   "text": "Read the mounted pairs by the catalogue desk or the bundles and open the other surface."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.nexus.stroke",
+   "claimKind": "observation",
+   "text": "The two pens traded places when we put them on a different surface. The clerk needs regular lines between rows. The carrier looks for a broad mark on a tag. We kept both purposes with the model strips."
+  }
+ ]
+}

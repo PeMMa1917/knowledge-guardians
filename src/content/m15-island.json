@@ -1,0 +1,1566 @@
+{
+ "characters": [
+  {
+   "id": "island-planner",
+   "name": "Plan Keeper Ivo",
+   "role": "Keeper of the island trial table",
+   "sprite": "custom:tan.white.teal.sand.none.rose.covered.none.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "island.planner.done",
+     "if": {
+      "objective": "island.finish"
+     }
+    },
+    {
+     "node": "island.planner.retested",
+     "if": {
+      "objective": "island.retest"
+     }
+    },
+    {
+     "node": "island.planner.lower",
+     "if": {
+      "objective": "island.lower"
+     }
+    },
+    {
+     "node": "island.planner.wait",
+     "if": {
+      "objective": "island.publish"
+     }
+    },
+    {
+     "node": "island.planner.compared",
+     "if": {
+      "objective": "island.compare"
+     }
+    },
+    {
+     "node": "island.planner.welcome"
+    }
+   ]
+  },
+  {
+   "id": "island-dockhand",
+   "name": "Landing Keeper Joss",
+   "role": "Keeper of the delivery docket",
+   "sprite": "custom:dark.brown.plum.wine.headband.cyan.bun.none.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "island.dock.log-ready",
+     "if": {
+      "objective": "island.log"
+     }
+    },
+    {
+     "node": "island.dock.listen",
+     "if": {
+      "objective": "island.listener"
+     }
+    },
+    {
+     "node": "island.dock.follow",
+     "if": {
+      "objective": "island.finish"
+     }
+    },
+    {
+     "node": "island.dock.revise",
+     "if": {
+      "objective": "island.retest"
+     }
+    },
+    {
+     "node": "island.dock.lower",
+     "if": {
+      "objective": "island.publish"
+     }
+    },
+    {
+     "node": "island.dock.choose",
+     "if": {
+      "objective": "island.compare"
+     }
+    },
+    {
+     "node": "island.dock.card"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "island.planner.welcome",
+   "speaker": "island-planner",
+   "text": "The dock crew needs eight crates before the shift horn in fifty minutes. Two early crates let them start bolting the new landing rail. Read Joss’s route card and the marks at Quiet Margin. Then take the ferry and another route around the trial table.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "island.planner.compared",
+   "speaker": "island-planner",
+   "text": "Both runs moved eight crates on the practice table. The time sheet shows when the loads finish. The other sheet counts marked quiet strips along each route. A strip can be crossed without telling us how loud it was.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "island.planner.wait",
+   "speaker": "island-planner",
+   "text": "Keep the first sheet dated. If the landing crew changes where the ferry ties up, ask Joss for the ramp slip. The draft line above this table assumes the ferry can load four crates anywhere.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "island.planner.lower",
+   "speaker": "island-planner",
+   "text": "Move the landing setting to Lower landing. The ferry holds two crates on that ramp. Repeat the ferry and the route on your first sheet. If that was the ferry, take a second route all the way around too.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "island.planner.retested",
+   "speaker": "island-planner",
+   "text": "You kept the crate count and route rules while changing the landing. The ridge and marsh routes still use the same path. The ferry needs four runs at the lower ramp. Joss needs a new sheet for this shift.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "island.planner.done",
+   "speaker": "island-planner",
+   "text": "The checked line belongs to these two ramps. We still have no timing for a stalled boat or an extra wagon. The first and revised sheets at the dock leave room for another day’s checks.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "island.dock.card",
+   "speaker": "island-dockhand",
+   "text": "Here is how much each load carries and how long a circuit takes. The ferry crew stays on the water and avoids the ridge slope. The marsh handcart takes the first pair quickly, then needs to return for more.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the dock ready.",
+     "if": {
+      "all": [
+       {
+        "objective": "island.signal.checked"
+       },
+       {
+        "not": {
+         "flagSet": "island.signal.layout"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Check the square board with me.",
+     "next": "island.dock.signal",
+     "if": {
+      "all": [
+       {
+        "objective": "island.signal.checked"
+       },
+       {
+        "not": {
+         "flagSet": "island.signal.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "island.dock.choose",
+   "speaker": "island-dockhand",
+   "text": "The trial gives us a last arrival and a crossing count. Our rail crew can start as soon as the first pair reaches them. A loaded cart on the ridge needs a steady pull. Put a tested route on the high-landing sheet.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the ridge cart on the upper-landing plan.",
+     "next": "island.publish.ridge",
+     "effects": [
+      {
+       "setFlag": "island.response",
+       "value": "ridge"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "island.compare"
+       },
+       {
+        "flag": "island.plan.high.ridge",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Load the ferry from the upper landing.",
+     "next": "island.publish.ferry",
+     "effects": [
+      {
+       "setFlag": "island.response",
+       "value": "ferry"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "island.compare"
+       },
+       {
+        "flag": "island.plan.high.ferry",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Send the first pair by the marsh path.",
+     "next": "island.publish.marsh",
+     "effects": [
+      {
+       "setFlag": "island.response",
+       "value": "marsh"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "island.compare"
+       },
+       {
+        "flag": "island.plan.high.marsh",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the load sheet open."
+    },
+    {
+     "text": "Check the square board with me.",
+     "next": "island.dock.signal",
+     "if": {
+      "all": [
+       {
+        "objective": "island.signal.checked"
+       },
+       {
+        "not": {
+         "flagSet": "island.signal.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "island.publish.ridge",
+   "speaker": "island-dockhand",
+   "text": "Joss sends for the slope crew and their ridge cart. The practice route takes thirty-six minutes for all eight crates and counts two quiet strips. The loading spot stays open for the ferry if the plan changes.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "island.publish.ferry",
+   "speaker": "island-dockhand",
+   "text": "Joss stacks four crates at each side of the upper ramp. The practice ferry brings all eight in twenty-four minutes and counts four quiet strips. The crew stays off the ridge slope.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "island.publish.marsh",
+   "speaker": "island-dockhand",
+   "text": "Joss moves the first pair onto the marsh handcart so the rail work can start early. The first circuit takes ten minutes and all four take forty. The strip count reaches twelve. The handcart crew keeps the marker map nearby.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "island.dock.lower",
+   "speaker": "island-dockhand",
+   "text": "The ferry has to tie up below the main ramp. There is a new slip at the lower landing. Take it to Ivo and see what changes with the same eight crates.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the dock ready.",
+     "if": {
+      "all": [
+       {
+        "objective": "island.signal.checked"
+       },
+       {
+        "not": {
+         "flagSet": "island.signal.layout"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Check the square board with me.",
+     "next": "island.dock.signal",
+     "if": {
+      "all": [
+       {
+        "objective": "island.signal.checked"
+       },
+       {
+        "not": {
+         "flagSet": "island.signal.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "island.dock.revise",
+   "speaker": "island-dockhand",
+   "text": "The lower ramp changed the ferry load. The ridge keeps more time in hand but needs the slope crew. The handcart brings the first pair early. Choose a route you tried at the lower setting and leave the upper sheet beside it.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the ridge cart on the revised sheet.",
+     "next": "island.revise.ridge",
+     "effects": [
+      {
+       "setFlag": "island.revision",
+       "value": "ridge"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "island.retest"
+       },
+       {
+        "flag": "island.plan.low.ridge",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Keep the ferry and record the smaller loads.",
+     "next": "island.revise.ferry",
+     "effects": [
+      {
+       "setFlag": "island.revision",
+       "value": "ferry"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "island.retest"
+       },
+       {
+        "flag": "island.plan.low.ferry",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Start the revised run by the marsh path.",
+     "next": "island.revise.marsh",
+     "effects": [
+      {
+       "setFlag": "island.revision",
+       "value": "marsh"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "island.retest"
+       },
+       {
+        "flag": "island.plan.low.marsh",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave both sheets on the dock for now."
+    },
+    {
+     "text": "On Glass Walk we checked the route from two approaches.",
+     "next": "island.dock.voices",
+     "if": {
+      "flagSet": "voices.revision"
+     }
+    },
+    {
+     "text": "Check the square board with me.",
+     "next": "island.dock.signal",
+     "if": {
+      "all": [
+       {
+        "objective": "island.signal.checked"
+       },
+       {
+        "not": {
+         "flagSet": "island.signal.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "island.dock.voices",
+   "speaker": "island-dockhand",
+   "text": "Yes. From the stair foot, the rail had a different approach. The ferry still follows the same course, but coming at this ramp changes what the deck can carry. Put that starting point on the sheet.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the ridge cart on the revised sheet.",
+     "next": "island.revise.ridge",
+     "effects": [
+      {
+       "setFlag": "island.revision",
+       "value": "ridge"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "island.retest"
+       },
+       {
+        "flag": "island.plan.low.ridge",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Keep the ferry and record the smaller loads.",
+     "next": "island.revise.ferry",
+     "effects": [
+      {
+       "setFlag": "island.revision",
+       "value": "ferry"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "island.retest"
+       },
+       {
+        "flag": "island.plan.low.ferry",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Start the revised run by the marsh path.",
+     "next": "island.revise.marsh",
+     "effects": [
+      {
+       "setFlag": "island.revision",
+       "value": "marsh"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "island.retest"
+       },
+       {
+        "flag": "island.plan.low.marsh",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave both sheets on the dock for now."
+    }
+   ]
+  },
+  {
+   "id": "island.revise.ridge",
+   "speaker": "island-dockhand",
+   "text": "The slope crew gets both cart loads. The lower-landing sheet shows thirty-six minutes, two quiet-strip crossings, and fourteen minutes in hand. The upper sheet keeps its former plan.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "island.revise.ferry",
+   "speaker": "island-dockhand",
+   "text": "Joss leaves the crates at the lower ramp in pairs and puts a hand signal on the post for the next boat. Four circuits take forty-eight minutes, count eight quiet strips, and leave two minutes in hand.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "island.revise.marsh",
+   "speaker": "island-dockhand",
+   "text": "The rail crew gets the first pair on the ten-minute handcart circuit. The board gives forty minutes for the full delivery and twelve strip crossings. The marsh handcart follows the marked edge.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "island.dock.follow",
+   "speaker": "island-dockhand",
+   "text": "Someone left a reply at the bend in Quiet Margin. They heard a cart there. See what their place tells us that the estimated strip count could not.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the dock ready.",
+     "if": {
+      "all": [
+       {
+        "objective": "island.signal.checked"
+       },
+       {
+        "not": {
+         "flagSet": "island.signal.layout"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Check the square board with me.",
+     "next": "island.dock.signal",
+     "if": {
+      "all": [
+       {
+        "objective": "island.signal.checked"
+       },
+       {
+        "not": {
+         "flagSet": "island.signal.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "island.dock.listen",
+   "speaker": "island-dockhand",
+   "text": "The strip map helped us keep track of where the route runs. A worker heard a rattle at one bend. If you leave a log, the next listener can mark where and when without giving the sound a distance we did not measure.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put a place-and-time log by the quiet strip.",
+     "next": "island.dock.logged",
+     "effects": [
+      {
+       "setFlag": "island.margin.log",
+       "value": true
+      }
+     ],
+     "if": {
+      "objective": "island.listener"
+     }
+    },
+    {
+     "text": "Keep the field note at the bend."
+    }
+   ]
+  },
+  {
+   "id": "island.dock.logged",
+   "speaker": "island-dockhand",
+   "text": "Joss hangs a spare sleeve at the bend with a line for the place and time. The crate counts and strip estimates stay on their own sheets. Someone on the next shift can add what they actually hear.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "island.dock.log-ready",
+   "speaker": "island-dockhand",
+   "text": "The new sleeve is where the route turns. The first listener’s note is still there, beside the two lines they can leave for the next crew.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the dock ready.",
+     "if": {
+      "all": [
+       {
+        "objective": "island.signal.checked"
+       },
+       {
+        "not": {
+         "flagSet": "island.signal.layout"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Check the square board with me.",
+     "next": "island.dock.signal",
+     "if": {
+      "all": [
+       {
+        "objective": "island.signal.checked"
+       },
+       {
+        "not": {
+         "flagSet": "island.signal.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "island.dock.signal",
+   "speaker": "island-dockhand",
+   "historicalLabel": "fictional-world",
+   "text": "You saw the square raised while the swing rail stood open. The south-bank crews taught that wait signal to their apprentices. Crossing still depends on the person at the ramp. We can put a waiting line beside the board for new carriers, or keep its sightline clear and explain it at the shelter.",
+   "options": [
+    {
+     "text": "Put the waiting line beside the square.",
+     "next": "island.signal.pair",
+     "if": {
+      "all": [
+       {
+        "objective": "island.signal.checked"
+       },
+       {
+        "not": {
+         "flagSet": "island.signal.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "island.signal.layout",
+       "value": "pair"
+      }
+     ]
+    },
+    {
+     "text": "Keep the square clear and leave the guide at the shelter.",
+     "next": "island.signal.gloss",
+     "if": {
+      "all": [
+       {
+        "objective": "island.signal.checked"
+       },
+       {
+        "not": {
+         "flagSet": "island.signal.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "island.signal.layout",
+       "value": "gloss"
+      }
+     ]
+    },
+    {
+     "text": "Leave the signal as it is."
+    }
+   ]
+  },
+  {
+   "id": "island.signal.pair",
+   "speaker": "island-dockhand",
+   "historicalLabel": "fictional-world",
+   "text": "A new carrier reads the waiting line at the rail and stands back until a hand turns up. Joss keeps the origin line on the same board for people who want to know where the sign came from."
+  },
+  {
+   "id": "island.signal.gloss",
+   "speaker": "island-dockhand",
+   "historicalLabel": "fictional-world",
+   "text": "The lookout can still pick out the square across the water. A new carrier can follow the note to Joss’s shelter and hear when the ramp hands use it."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH14-M01",
+   "world": "WORLD-15",
+   "title": "The Eight Crates",
+   "knowledgeQuestion": "When does a change at one landing make the original route plan too narrow?",
+   "stake": "If the plan fails, the island's harvest fair has no crates.",
+   "available": {
+    "objective": "voices.finish"
+   },
+   "objectives": [
+    {
+     "id": "island.arrival",
+     "title": "Find Ivo at the island trial table.",
+     "done": {
+      "flag": "island.arrived",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective"
+      ],
+      "atl": [
+       "self-management"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "geography"
+      ]
+     }
+    },
+    {
+     "id": "island.sources",
+     "title": "Find the route card and inspect the marks at Quiet Margin.",
+     "done": {
+      "all": [
+       {
+        "flag": "island.route.read",
+        "eq": true
+       },
+       {
+        "flag": "island.quiet.read",
+        "eq": true
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "culture",
+       "perspective",
+       "objectivity"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "geography",
+       "biology",
+       "design-tech"
+      ]
+     },
+     "visible": {
+      "objective": "island.arrival"
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-MED-01"
+     ]
+    },
+    {
+     "id": "island.compare",
+     "title": "Try the upper-landing ferry and a second route on the trial table.",
+     "done": {
+      "all": [
+       {
+        "objective": "island.sources"
+       },
+       {
+        "flag": "island.plan.high.ferry",
+        "eq": true
+       },
+       {
+        "any": [
+         {
+          "flag": "island.plan.high.ridge",
+          "eq": true
+         },
+         {
+          "flag": "island.plan.high.marsh",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "explanation",
+       "evidence",
+       "interpretation",
+       "objectivity",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "MAT",
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "math-ai",
+       "ess",
+       "geography"
+      ]
+     },
+     "visible": {
+      "objective": "island.sources"
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-05"
+     ],
+     "kq": {
+      "id": "KQ-NEW-003",
+      "action": "compare routes under the same loading condition"
+     }
+    },
+    {
+     "id": "island.publish",
+     "title": "Put one tested upper-landing route on the dock sheet.",
+     "done": {
+      "flagSet": "island.response"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "responsibility",
+       "justification",
+       "perspective"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "MAT"
+      ],
+      "subjects": [
+       "geography",
+       "design-tech",
+       "economics"
+      ]
+     },
+     "visible": {
+      "objective": "island.compare"
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "onComplete": [
+      {
+       "credit": "credit.island.publish"
+      }
+     ]
+    },
+    {
+     "id": "island.lower",
+     "title": "Read the new ramp slip at the lower landing.",
+     "done": {
+      "flag": "island.lower.read",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "certainty",
+       "evidence",
+       "perspective"
+      ],
+      "atl": [
+       "research"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT"
+      ],
+      "subjects": [
+       "physics",
+       "design-tech",
+       "math-ai"
+      ]
+     },
+     "visible": {
+      "objective": "island.publish"
+     },
+     "skills": [
+      "SK-RSC-15"
+     ]
+    },
+    {
+     "id": "island.retest",
+     "title": "Repeat the original route and compare the ferry with another route at the lower setting.",
+     "done": {
+      "all": [
+       {
+        "objective": "island.lower"
+       },
+       {
+        "flag": "island.plan.low.ferry",
+        "eq": true
+       },
+       {
+        "any": [
+         {
+          "flag": "island.plan.low.ridge",
+          "eq": true
+         },
+         {
+          "flag": "island.plan.low.marsh",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "any": [
+         {
+          "all": [
+           {
+            "flag": "island.response",
+            "eq": "ridge"
+           },
+           {
+            "flag": "island.plan.low.ridge",
+            "eq": true
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "island.response",
+            "eq": "ferry"
+           },
+           {
+            "flag": "island.plan.low.ferry",
+            "eq": true
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "island.response",
+            "eq": "marsh"
+           },
+           {
+            "flag": "island.plan.low.marsh",
+            "eq": true
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "certainty",
+       "evidence",
+       "objectivity",
+       "explanation",
+       "interpretation"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "MAT",
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "math-ai",
+       "physics",
+       "geography"
+      ]
+     },
+     "visible": {
+      "objective": "island.lower"
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-05"
+     ],
+     "kq": {
+      "id": "KQ-NEW-003",
+      "action": "change one loading assumption while revisiting the first route"
+     }
+    },
+    {
+     "id": "island.finish",
+     "title": "Give the dock crew a revised sheet for the lower landing.",
+     "done": {
+      "flagSet": "island.revision"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "justification",
+       "evidence",
+       "explanation"
+      ],
+      "atl": [
+       "communication",
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "MAT",
+       "HUM",
+       "NAT"
+      ],
+      "subjects": [
+       "math-ai",
+       "economics",
+       "ess",
+       "geography"
+      ]
+     },
+     "visible": {
+      "objective": "island.retest"
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "kq": {
+      "id": "KQ-NEW-004",
+      "action": "publish the new loading assumption beside a dated previous estimate"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.island.finish"
+      },
+      {
+       "journal": "j.island.sheets"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH14-R01",
+   "world": "WORLD-15",
+   "title": "At the Quiet Bend",
+   "knowledgeQuestion": "What do people still need to observe after they count a route’s crossings?",
+   "available": {
+    "objective": "island.finish"
+   },
+   "objectives": [
+    {
+     "id": "island.listener",
+     "title": "Find the margin worker’s reply about a sound at the bend.",
+     "done": {
+      "flag": "island.listener.read",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "perspective",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "ess",
+       "physics",
+       "geography"
+      ]
+     },
+     "skills": [
+      "SK-RSC-15"
+     ]
+    },
+    {
+     "id": "island.log",
+     "title": "Leave a place-and-time log for the next margin listener.",
+     "done": {
+      "flag": "island.margin.log",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "evidence",
+       "certainty"
+      ],
+      "atl": [
+       "communication",
+       "social",
+       "research"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "ess",
+       "geography",
+       "design-tech"
+      ]
+     },
+     "visible": {
+      "objective": "island.listener"
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-ETR-01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH14-R02",
+   "world": "WORLD-15",
+   "title": "Wait at the Square",
+   "knowledgeQuestion": "How can a sign keep its local meaning when new crews arrive?",
+   "available": {
+    "objective": "island.arrival"
+   },
+   "objectives": [
+    {
+     "id": "island.signal.checked",
+     "title": "Check the square board against the rail and the crew’s practice.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "island.signal.claim",
+        "eq": true
+       },
+       {
+        "flag": "island.signal.rail",
+        "eq": true
+       },
+       {
+        "flag": "island.signal.hand",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "truth",
+       "evidence",
+       "culture",
+       "interpretation",
+       "perspective"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "anthropology",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-MED-04"
+     ]
+    },
+    {
+     "id": "island.signal",
+     "title": "Help Joss explain the waiting signal to new carriers.",
+     "essential": false,
+     "visible": {
+      "objective": "island.signal.checked"
+     },
+     "done": {
+      "flagSet": "island.signal.layout"
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "values",
+       "power",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN",
+       "POL"
+      ],
+      "subjects": [
+       "anthropology",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-ETR-01"
+     ]
+    }
+   ]
+  }
+ ],
+ "criteria": [
+  {
+   "id": "credit.island.publish",
+   "concept": "justification",
+   "maximum": 8
+  },
+  {
+   "id": "credit.island.finish",
+   "concept": "responsibility",
+   "maximum": 8
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.island.sheets",
+   "claimKind": "interpretation",
+   "text": "Eight crates kept their count when the ferry moved ramps. The number per circuit changed. We kept both plans and recorded which parts of the island each route crossed."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.island-circuits",
+   "attribute": "thinker",
+   "when": {
+    "objective": "island.compare"
+   },
+   "did": "You tried more than one way of taking the same load to the dock.",
+   "prompt": "Who needed the first pair before the rest?"
+  },
+  {
+   "id": "mom.island-landing",
+   "attribute": "reflective",
+   "when": {
+    "objective": "island.retest"
+   },
+   "did": "You repeated routes after the ferry changed ramps.",
+   "prompt": "Which part of your trial could you keep steady?"
+  },
+  {
+   "id": "mom.island-listener",
+   "attribute": "caring",
+   "when": {
+    "objective": "island.log"
+   },
+   "did": "You left room for a listener to record their own place and time.",
+   "prompt": "What can someone hear at a bend that a route table cannot show?"
+  }
+ ],
+ "chronicle": [
+  {
+   "id": "island-upper-sheet",
+   "title": "Eight crates on the upper sheet",
+   "text": "The dock has an upper-landing plan for the eight crates. The trial gave a time and a count of marked quiet strips.",
+   "if": {
+    "objective": "island.publish"
+   }
+  },
+  {
+   "id": "island-lower-sheet",
+   "title": "A smaller ferry load",
+   "text": "The lower ramp changed how many crates fit on one ferry circuit. The revised route has its own sheet beside the original.",
+   "if": {
+    "objective": "island.finish"
+   }
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.island.arrival.1",
+   "objective": "island.arrival",
+   "depth": 1,
+   "text": "The island dock needs a load before the shift ends."
+  },
+  {
+   "id": "h.island.arrival.2",
+   "objective": "island.arrival",
+   "depth": 2,
+   "text": "Find the Island of Models crossing in the Nexus."
+  },
+  {
+   "id": "h.island.arrival.3",
+   "objective": "island.arrival",
+   "depth": 3,
+   "text": "Cross into the workshop to find the island trial table."
+  },
+  {
+   "id": "h.island.arrival.4",
+   "objective": "island.arrival",
+   "depth": 4,
+   "text": "Ivo has the eight-crate delivery on the table. Joss keeps the route card at the dock."
+  },
+  {
+   "id": "h.island.sources.1",
+   "objective": "island.sources",
+   "depth": 1,
+   "text": "The cart crew and the margin workers keep different marks."
+  },
+  {
+   "id": "h.island.sources.2",
+   "objective": "island.sources",
+   "depth": 2,
+   "text": "Take the workshop’s paths to the dock and Quiet Margin."
+  },
+  {
+   "id": "h.island.sources.3",
+   "objective": "island.sources",
+   "depth": 3,
+   "text": "Read the route card by Joss and the marked strip at the bend."
+  },
+  {
+   "id": "h.island.sources.4",
+   "objective": "island.sources",
+   "depth": 4,
+   "text": "Keep the travel times and crossing marks as two separate measures."
+  },
+  {
+   "id": "h.island.compare.1",
+   "objective": "island.compare",
+   "depth": 1,
+   "text": "The same load can reach the dock through different numbers of circuits."
+  },
+  {
+   "id": "h.island.compare.2",
+   "objective": "island.compare",
+   "depth": 2,
+   "text": "Go to the island trial table in the workshop."
+  },
+  {
+   "id": "h.island.compare.3",
+   "objective": "island.compare",
+   "depth": 3,
+   "text": "Try the ferry at the upper landing and then the ridge or marsh route at the same setting."
+  },
+  {
+   "id": "h.island.compare.4",
+   "objective": "island.compare",
+   "depth": 4,
+   "text": "Compare when the first and last loads arrive and how many marked quiet strips each route crosses."
+  },
+  {
+   "id": "h.island.publish.1",
+   "objective": "island.publish",
+   "depth": 1,
+   "text": "Joss has room for one route on the upper-landing sheet."
+  },
+  {
+   "id": "h.island.publish.2",
+   "objective": "island.publish",
+   "depth": 2,
+   "text": "Take the trial routes back to the landing keeper at the dock."
+  },
+  {
+   "id": "h.island.publish.3",
+   "objective": "island.publish",
+   "depth": 3,
+   "text": "Choose a tested route for the upper landing."
+  },
+  {
+   "id": "h.island.publish.4",
+   "objective": "island.publish",
+   "depth": 4,
+   "text": "Look for the original sheet at the dock. It shows time and strip estimates for that choice."
+  },
+  {
+   "id": "h.island.lower.1",
+   "objective": "island.lower",
+   "depth": 1,
+   "text": "The ferry crew has moved to a different ramp."
+  },
+  {
+   "id": "h.island.lower.2",
+   "objective": "island.lower",
+   "depth": 2,
+   "text": "Look for the slip at the lower dock after putting up the first sheet."
+  },
+  {
+   "id": "h.island.lower.3",
+   "objective": "island.lower",
+   "depth": 3,
+   "text": "Read how many crates the ferry can load there."
+  },
+  {
+   "id": "h.island.lower.4",
+   "objective": "island.lower",
+   "depth": 4,
+   "text": "Take that detail back to the workshop. Keep the first sheet as it was."
+  },
+  {
+   "id": "h.island.retest.1",
+   "objective": "island.retest",
+   "depth": 1,
+   "text": "A new ramp changes the way the ferry takes its load."
+  },
+  {
+   "id": "h.island.retest.2",
+   "objective": "island.retest",
+   "depth": 2,
+   "text": "At the workshop table, switch the setting to Lower landing."
+  },
+  {
+   "id": "h.island.retest.3",
+   "objective": "island.retest",
+   "depth": 3,
+   "text": "Try the ferry and the route on the first sheet with the same eight crates. If the first sheet uses the ferry, try the ridge or marsh as well."
+  },
+  {
+   "id": "h.island.retest.4",
+   "objective": "island.retest",
+   "depth": 4,
+   "text": "Check the updated draft by the table. Compare the ferry result against the first landing setting."
+  },
+  {
+   "id": "h.island.finish.1",
+   "objective": "island.finish",
+   "depth": 1,
+   "text": "The lower landing changes how much time at least one route has in hand."
+  },
+  {
+   "id": "h.island.finish.2",
+   "objective": "island.finish",
+   "depth": 2,
+   "text": "Take the lower-setting trials back to Joss."
+  },
+  {
+   "id": "h.island.finish.3",
+   "objective": "island.finish",
+   "depth": 3,
+   "text": "Choose a tested route for the changed landing and keep the first sheet dated."
+  },
+  {
+   "id": "h.island.finish.4",
+   "objective": "island.finish",
+   "depth": 4,
+   "text": "Look for the revised sheet at the dock. Its crossing total belongs to the route, and the margin still needs observations."
+  },
+  {
+   "id": "h.island.listener.1",
+   "objective": "island.listener",
+   "depth": 1,
+   "text": "Someone heard something along the route."
+  },
+  {
+   "id": "h.island.listener.2",
+   "objective": "island.listener",
+   "depth": 2,
+   "text": "Visit the Quiet Margin after changing the dock sheet."
+  },
+  {
+   "id": "h.island.listener.3",
+   "objective": "island.listener",
+   "depth": 3,
+   "text": "Read the listener’s note at the bend."
+  },
+  {
+   "id": "h.island.listener.4",
+   "objective": "island.listener",
+   "depth": 4,
+   "text": "Read what that person heard and which details they could still not measure."
+  },
+  {
+   "id": "h.island.log.1",
+   "objective": "island.log",
+   "depth": 1,
+   "text": "A count of marked strips and a note about a sound answer different questions."
+  },
+  {
+   "id": "h.island.log.2",
+   "objective": "island.log",
+   "depth": 2,
+   "text": "Bring the margin listener’s reply back to Joss."
+  },
+  {
+   "id": "h.island.log.3",
+   "objective": "island.log",
+   "depth": 3,
+   "text": "Ask for a place-and-time log along the quiet strip."
+  },
+  {
+   "id": "h.island.log.4",
+   "objective": "island.log",
+   "depth": 4,
+   "text": "Find the log at the bend. Its blank lines wait for someone to leave an observation."
+  },
+  {
+   "id": "h.island.signal.checked.1",
+   "objective": "island.signal.checked",
+   "depth": 1,
+   "text": "Someone marked the ferry ramp as closed on the plan."
+  },
+  {
+   "id": "h.island.signal.checked.2",
+   "objective": "island.signal.checked",
+   "depth": 2,
+   "text": "Compare the claim on the dock with what is happening at the swing rail."
+  },
+  {
+   "id": "h.island.signal.checked.3",
+   "objective": "island.signal.checked",
+   "depth": 3,
+   "text": "Read the crew’s hand signal near the shelter."
+  },
+  {
+   "id": "h.island.signal.checked.4",
+   "objective": "island.signal.checked",
+   "depth": 4,
+   "text": "Check what the square can show while the rail is open."
+  },
+  {
+   "id": "h.island.signal.1",
+   "objective": "island.signal",
+   "depth": 1,
+   "text": "New carriers and the lookout stand in different places."
+  },
+  {
+   "id": "h.island.signal.2",
+   "objective": "island.signal",
+   "depth": 2,
+   "text": "Bring the three dock clues to Joss."
+  },
+  {
+   "id": "h.island.signal.3",
+   "objective": "island.signal",
+   "depth": 3,
+   "text": "Choose a waiting line at the rail or a guide at the shelter."
+  },
+  {
+   "id": "h.island.signal.4",
+   "objective": "island.signal",
+   "depth": 4,
+   "text": "Read the note you put up. The crew still waits for a hand signal."
+  }
+ ]
+}

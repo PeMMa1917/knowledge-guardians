@@ -1,0 +1,169 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH1-R14",
+   "world": "WORLD-01",
+   "title": "Between the Marks",
+   "knowledgeQuestion": "How does the way we mark dates change the history people see?",
+   "available": { "flag": "nexus.ribbon.read", "eq": true },
+   "objectives": [
+    {
+     "id": "nexus.ribbon.checked",
+     "title": "Lay out the two dates and adjust the ribbon after someone uses it.",
+     "essential": false,
+     "done": { "flag": "nexus.ribbon.read", "eq": true },
+     "onComplete": [{ "journal": "j.nexus.ribbon" }],
+     "weave": {
+      "concepts": ["evidence", "justification", "interpretation", "perspective", "certainty"],
+      "atl": ["research", "communication", "thinking"],
+      "aoks": ["HIS", "MAT"],
+      "subjects": ["history", "math-ai", "design-tech"]
+     },
+     "skills": ["SK-RSC-15", "SK-THK-14"]
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "nexus.ribbon.setup",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A folded ribbon runs between the cases. A brass peg can mark one day. A paper sleeve can cover a range of years. The keeper wants both dates on the ribbon before the next visitors arrive.",
+   "options": [
+    {
+     "text": "Set the grant peg and the object sleeve on one rail.",
+     "next": "nexus.ribbon.single-placed",
+     "if": { "all": [
+      { "flag": "inspected.OBJ-001-A", "eq": true },
+      { "flag": "inspected.OBJ-001-C", "eq": true },
+      { "not": { "flagSet": "nexus.ribbon.layout" } }
+     ] },
+     "effects": [{ "setFlag": "nexus.ribbon.layout", "value": "single" }]
+    },
+    {
+     "text": "Open the lower rail and give each record its own line.",
+     "next": "nexus.ribbon.split-placed",
+     "if": { "all": [
+      { "flag": "inspected.OBJ-001-A", "eq": true },
+      { "flag": "inspected.OBJ-001-C", "eq": true },
+      { "not": { "flagSet": "nexus.ribbon.layout" } }
+     ] },
+     "effects": [{ "setFlag": "nexus.ribbon.layout", "value": "split" }]
+    },
+    {
+     "text": "Leave the ribbon open beside the cases.",
+     "next": "nexus.ribbon.leave"
+    }
+   ]
+  },
+  {
+   "id": "nexus.ribbon.leave",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The keeper points down the case row. 'The drawing has the grant date. The far case has the museum’s record. I can hold the rail until you come back.'"
+  },
+  {
+   "id": "nexus.ribbon.single-placed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You press the grant peg into 30 October 1888. The sleeve spans 1945 to 1948 where the museum dates the pen. Visitors can see their order along one rail. The middle of the ribbon is still bare."
+  },
+  {
+   "id": "nexus.ribbon.split-placed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You pin the grant to 30 October 1888 on the registry rail and open the lower rail for the pen. Its sleeve spans 1945 to 1948. A person coming from either case can find its own line."
+  },
+  {
+   "id": "nexus.ribbon.single",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A visitor traces past the grant peg towards the pen. 'Where does the part start where people carry one every day?' The keeper looks at the two case slips and holds out a loose tab for their gap.",
+   "options": [
+    {
+     "text": "Clip the tab in the gap and leave the beginning of everyday use open.",
+     "next": "nexus.ribbon.marked",
+     "if": { "all": [
+      { "flag": "nexus.ribbon.layout", "eq": "single" },
+      { "not": { "flagSet": "nexus.ribbon.read" } }
+     ] },
+     "effects": [{ "setFlag": "nexus.ribbon.read", "value": true }]
+    },
+    { "text": "Leave the tab with the keeper for now." }
+   ]
+  },
+  {
+   "id": "nexus.ribbon.split",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A visitor finds the museum sleeve first and his friend finds the patent peg. They each know which case they read. 'Can I see yours beside mine?' the first visitor asks. The keeper brings a bar that reaches across both rails.",
+   "options": [
+    {
+     "text": "Hook the comparison bar across the rails and keep each record’s label.",
+     "next": "nexus.ribbon.bridged",
+     "if": { "all": [
+      { "flag": "nexus.ribbon.layout", "eq": "split" },
+      { "not": { "flagSet": "nexus.ribbon.read" } }
+     ] },
+     "effects": [{ "setFlag": "nexus.ribbon.read", "value": true }]
+    },
+    { "text": "Leave the bar within reach." }
+   ]
+  },
+  {
+   "id": "nexus.ribbon.marked",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Between the peg and sleeve, the tab reads 'When did everyday use begin? These cases leave that open.' A visitor with a few minutes left follows the rail from one case to the other. She keeps the gap in her sketch."
+  },
+  {
+   "id": "nexus.ribbon.bridged",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The bar brings the two dates into view together. 'The grant was earlier,' says one visitor. His friend copies both labels. The two lines stay separate on his map. He leaves the start of use blank."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.nexus.ribbon.1",
+   "objective": "nexus.ribbon.checked",
+   "depth": 1,
+   "text": "A point on the ribbon can hold a date. A sleeve leaves room for a range."
+  },
+  {
+   "id": "h.nexus.ribbon.2",
+   "objective": "nexus.ribbon.checked",
+   "depth": 2,
+   "text": "Visit the patent drawing and the museum’s object record. The keeper beside the cases has both fittings."
+  },
+  {
+   "id": "h.nexus.ribbon.3",
+   "objective": "nexus.ribbon.checked",
+   "depth": 3,
+   "text": "Place the peg and sleeve on one rail to show their order, or give them two rails to make the record types easier to see."
+  },
+  {
+   "id": "h.nexus.ribbon.4",
+   "objective": "nexus.ribbon.checked",
+   "depth": 4,
+   "text": "Return to the ribbon you set up. Hear what the visitor reaches for and use the fitting the keeper offers."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.nexus.ribbon",
+   "claimKind": "interpretation",
+   "text": "A grant on one day and a surviving pen dated to a range belong to different records. I watched how the layout changed which question visitors asked first. The dates left the beginning of everyday use open."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.nexus.ribbon",
+   "attribute": "reflective",
+   "when": { "flag": "nexus.ribbon.read", "eq": true },
+   "did": "You changed the date ribbon after watching how a visitor used it.",
+   "prompt": ""
+  }
+ ]
+}

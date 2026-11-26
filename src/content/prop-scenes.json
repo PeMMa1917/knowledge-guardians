@@ -1,0 +1,640 @@
+{
+ "dialogue": [
+  {
+   "id": "nexus.entrance-guide",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Two visitors stop at the entrance. One wants to know who got there first. The other has a leaky pen in her pocket and wants to know who made one she could use. The guide stand has room for one arrow. Both paths meet at the cases.",
+   "options": [
+    {
+     "text": "Point to the earliest dated record.",
+     "if": {
+      "not": {
+       "flagSet": "nexus.entrance-guide"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.entrance-guide",
+       "value": "record"
+      }
+     ],
+     "next": "nexus.entrance-guide.record"
+    },
+    {
+     "text": "Point to the pen made for everyday use.",
+     "if": {
+      "not": {
+       "flagSet": "nexus.entrance-guide"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.entrance-guide",
+       "value": "use"
+      }
+     ],
+     "next": "nexus.entrance-guide.use"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "nexus.entrance-guide.record",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The first visitor leads the way. At the patent case he reads the grant date aloud. The other visitor turns over her pen and asks how long it took for this kind to reach a shop."
+  },
+  {
+   "id": "nexus.entrance-guide.use",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The second visitor leads the way. She compares her pen with the one in the case. Her friend heads along the row to find an earlier record."
+  },
+  {
+   "id": "nexus.loan-slip",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The workshop has lent the brass model. The loan slip names a maker who asked for their name to stay off the public label. Visitors still need a way to check where the model came from.",
+   "options": [
+    {
+     "text": "Use the workshop's public name and file the receipt.",
+     "if": {
+      "not": {
+       "flagSet": "nexus.loan-slip"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.loan-slip",
+       "value": "alias"
+      }
+     ],
+     "next": "nexus.loan-slip.alias"
+    },
+    {
+     "text": "Display the loan number and the build date.",
+     "if": {
+      "not": {
+       "flagSet": "nexus.loan-slip"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.loan-slip",
+       "value": "number"
+      }
+     ],
+     "next": "nexus.loan-slip.number"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "nexus.loan-slip.alias",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The stand names the workshop. A visitor can ask the desk for the loan history. The receipt in the desk drawer still carries the maker's name."
+  },
+  {
+   "id": "nexus.loan-slip.number",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The stand carries the date and a loan number. The next visitor takes the number to the desk to find out which workshop built it. The maker's name stays inside the file."
+  },
+  {
+   "id": "nexus.translation-slip",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Two proof slips describe the same object. One translator wrote “earliest”. The other wrote “original”. A runner has one clip left on her bag and asks what to take back to the translators.",
+   "options": [
+    {
+     "text": "Clip on the grant record and circle the date.",
+     "if": {
+      "not": {
+       "flagSet": "nexus.translation-slip"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.translation-slip",
+       "value": "date"
+      }
+     ],
+     "next": "nexus.translation-slip.date"
+    },
+    {
+     "text": "Clip the two slips together so the translators can compare them.",
+     "if": {
+      "not": {
+       "flagSet": "nexus.translation-slip"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.translation-slip",
+       "value": "gloss"
+      }
+     ],
+     "next": "nexus.translation-slip.gloss"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "nexus.translation-slip.date",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The next proof says “earliest patent we have here”. A visitor asks whether another archive might have an earlier one. The runner leaves room for a reply."
+  },
+  {
+   "id": "nexus.translation-slip.gloss",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The next proof keeps both words with a short note about what each claims. Two visitors read different slips and stop to talk before walking on."
+  },
+  {
+   "id": "nexus.route-board",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A family has time for one stop before their ferry. A reader at the desk is looking for sources for a case about invention. The route board can hold a short path and a loose second sheet.",
+   "options": [
+    {
+     "text": "Draw a route between the three cases. Tuck the sources underneath.",
+     "if": {
+      "not": {
+       "flagSet": "nexus.route-board"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.route-board",
+       "value": "objects"
+      }
+     ],
+     "next": "nexus.route-board.objects"
+    },
+    {
+     "text": "Put the dated records first. Mark the model with a sketch.",
+     "if": {
+      "not": {
+       "flagSet": "nexus.route-board"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.route-board",
+       "value": "sources"
+      }
+     ],
+     "next": "nexus.route-board.sources"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "nexus.route-board.objects",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The family reaches the model in time. The reader lifts the map and takes the source list to the desk to check the dates."
+  },
+  {
+   "id": "nexus.route-board.sources",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The reader goes straight to the records. A child follows the little sketch to the brass model. The family can see which case they passed when they come back."
+  },
+  {
+   "id": "emberford.gauge",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A stallholder has written “the river is rising” on the board. Her chalk mark sits above yesterday's. The lower mark was made at the quiet landing. Today's is on a post where boats throw up a wake.",
+   "options": [
+    {
+     "text": "Leave a mark at the quiet landing and arrange a second reading.",
+     "if": {
+      "not": {
+       "flagSet": "emberford.gauge"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "emberford.gauge",
+       "value": "repeat"
+      }
+     ],
+     "next": "emberford.gauge.repeat"
+    },
+    {
+     "text": "Keep both marks and add where and when each was taken.",
+     "if": {
+      "not": {
+       "flagSet": "emberford.gauge"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "emberford.gauge",
+       "value": "compare"
+      }
+     ],
+     "next": "emberford.gauge.compare"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "emberford.gauge.repeat",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The landing now has a fixed notch for the next reading. At the stall the holder has pinned the two current marks under “different posts”. She keeps the river warning provisional."
+  },
+  {
+   "id": "emberford.gauge.compare",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The board puts the landing and the busy post side by side. The ferry hands can compare their own marks with yours without treating the two posts as one gauge."
+  },
+  {
+   "id": "emberford.tally",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The bakers' tally counts every sale by the loaf. The ferry crew buys baskets by weight. The steward wants one line for the morning market notice.",
+   "options": [
+    {
+     "text": "Compare equal weights and keep the loaf counts on the back.",
+     "if": {
+      "not": {
+       "flagSet": "emberford.tally"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "emberford.tally",
+       "value": "weight"
+      }
+     ],
+     "next": "emberford.tally.weight"
+    },
+    {
+     "text": "List the loaf counts and give the loaf weights alongside.",
+     "if": {
+      "not": {
+       "flagSet": "emberford.tally"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "emberford.tally",
+       "value": "loaves"
+      }
+     ],
+     "next": "emberford.tally.loaves"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "emberford.tally.weight",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The ferry crew can compare how much bread it will take aboard. A baker turns the board to check how many loaves to bake tomorrow."
+  },
+  {
+   "id": "emberford.tally.loaves",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The bakers can plan the next batch. The ferry crew adds up the weights before it pays. Nobody has to guess how large a loaf is."
+  },
+  {
+   "id": "emberford.repair-notice",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The footbridge is sound on the east side, but a carpenter has roped off a loose plank on the west. Two delivery crews are due. The notice can carry a sketch or a short direction in large letters.",
+   "options": [
+    {
+     "text": "Hang a sketch showing the safe approach.",
+     "if": {
+      "not": {
+       "flagSet": "emberford.repair-notice"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "emberford.repair-notice",
+       "value": "sketch"
+      }
+     ],
+     "next": "emberford.repair-notice.sketch"
+    },
+    {
+     "text": "Hang the direction and ask the crews to pass it on.",
+     "if": {
+      "not": {
+       "flagSet": "emberford.repair-notice"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "emberford.repair-notice",
+       "value": "direction"
+      }
+     ],
+     "next": "emberford.repair-notice.direction"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "emberford.repair-notice.sketch",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A runner traces the drawn route with a finger, then carries the news to the next cart. The carpenter has hung the sketch low enough for people on foot."
+  },
+  {
+   "id": "emberford.repair-notice.direction",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The first driver reads the turn aloud to the crew behind. The carpenter leaves the large-letter notice by the rope for anyone arriving later."
+  },
+  {
+   "id": "emberford.pattern-order",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A customer likes the waves on a blade and wants the smith to say how it was made. The smith has a test sample and a record of her own work. Neither belongs to the customer's blade.",
+   "options": [
+    {
+     "text": "Lay the test sample beside the blade with separate tags.",
+     "if": {
+      "not": {
+       "flagSet": "emberford.pattern-order"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "emberford.pattern-order",
+       "value": "sample"
+      }
+     ],
+     "next": "emberford.pattern-order.sample"
+    },
+    {
+     "text": "Clip the smith's record to her sample and leave the blade on its own.",
+     "if": {
+      "not": {
+       "flagSet": "emberford.pattern-order"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "emberford.pattern-order",
+       "value": "record"
+      }
+     ],
+     "next": "emberford.pattern-order.record"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "emberford.pattern-order.sample",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The customer compares the two patterns. The tag names which work the smith can account for. She leaves the other blade's process open."
+  },
+  {
+   "id": "emberford.pattern-order.record",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A buyer follows the notes for the known sample. On the other hook the blank place for a maker's record stays visible."
+  },
+  {
+   "id": "nile.reading-bench",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Imani is setting up a reading bench. One visitor needs a large copy. Another wants to see where a line is missing on the original. There is room for one piece on the stand and one at the desk.",
+   "options": [
+    {
+     "text": "Set the large copy out. Mark the gap and point to the original case.",
+     "if": {
+      "not": {
+       "flagSet": "nile.reading-bench"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nile.reading-bench",
+       "value": "copy"
+      }
+     ],
+     "next": "nile.reading-bench.copy"
+    },
+    {
+     "text": "Stand a drawing of the damaged edge beside the case. Leave the large copy at the desk.",
+     "if": {
+      "not": {
+       "flagSet": "nile.reading-bench"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nile.reading-bench",
+       "value": "edge"
+      }
+     ],
+     "next": "nile.reading-bench.edge"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "nile.reading-bench.copy",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A reader follows the large line, then stops at the marked break. Her friend goes to the case to check where the papyrus ends."
+  },
+  {
+   "id": "nile.reading-bench.edge",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Visitors at the case can find the break for themselves. Someone carries the large copy from the desk to the bench to read the lines on either side."
+  },
+  {
+   "id": "nile.caption-clips",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Nasir has cleared space between the battle account and the later agreement. From the doorway the eye goes straight to whichever heading sits highest.",
+   "options": [
+    {
+     "text": "Hang a date strip with one peg for each record.",
+     "if": {
+      "not": {
+       "flagSet": "nile.caption-clips"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nile.caption-clips",
+       "value": "dates"
+      }
+     ],
+     "next": "nile.caption-clips.dates"
+    },
+    {
+     "text": "Hang two headings at the same height: account and agreement.",
+     "if": {
+      "not": {
+       "flagSet": "nile.caption-clips"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nile.caption-clips",
+       "value": "purposes"
+      }
+     ],
+     "next": "nile.caption-clips.purposes"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "nile.caption-clips.dates",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A visitor puts a finger on the battle peg and then on the agreement peg. The empty strip between them stays visible."
+  },
+  {
+   "id": "nile.caption-clips.purposes",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A visitor reads one heading, then turns to the other. Nasir keeps the dates underneath so readers can tell when each record belongs."
+  },
+  {
+   "id": "nile.reader-seat",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "At the workmen's display, Leila has a slip with the scribe's name. She has also set out an empty chair. Visitors keep asking who sat there.",
+   "options": [
+    {
+     "text": "Move the chair beside the record and tag it as an empty place.",
+     "if": {
+      "not": {
+       "flagSet": "nile.reader-seat"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nile.reader-seat",
+       "value": "chair"
+      }
+     ],
+     "next": "nile.reader-seat.chair"
+    },
+    {
+     "text": "Place the scribe's name first and add a blank line for other voices.",
+     "if": {
+      "not": {
+       "flagSet": "nile.reader-seat"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nile.reader-seat",
+       "value": "slip"
+      }
+     ],
+     "next": "nile.reader-seat.slip"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "nile.reader-seat.chair",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A visitor sits down on the next bench. She asks which workers never got a line in the record. The scribe's name remains on the case."
+  },
+  {
+   "id": "nile.reader-seat.slip",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Two readers stop at the blank line. One looks for another account in the room and comes back to compare notes. The chair stays open."
+  },
+  {
+   "id": "nile.model-handover",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Marek's model notes record the crate and its height. The next keeper wants to try a lower load tomorrow. There is space for a tag on the cart and a note at the bench.",
+   "options": [
+    {
+     "text": "Tie the load details to the cart. Leave space for a second run.",
+     "if": {
+      "not": {
+       "flagSet": "nile.model-handover"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nile.model-handover",
+       "value": "repeat"
+      }
+     ],
+     "next": "nile.model-handover.repeat"
+    },
+    {
+     "text": "Put the load beside the result. Keep a spare card for the new trial.",
+     "if": {
+      "not": {
+       "flagSet": "nile.model-handover"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nile.model-handover",
+       "value": "limit"
+      }
+     ],
+     "next": "nile.model-handover.limit"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "nile.model-handover.repeat",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The next keeper can set the same load before trying a lower one. The model notes still carry the conditions of the first run."
+  },
+  {
+   "id": "nile.model-handover.limit",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Readers can see which load each result belongs to. The keeper sets the spare card by the cart and keeps the two runs apart."
+  }
+ ]
+}

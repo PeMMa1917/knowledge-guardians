@@ -1,0 +1,694 @@
+{
+ "sources": [
+  {
+   "id": "HIS-PRES-08",
+   "title": "Hunan Provincial Cultural Heritage Bureau: report on the Xin Zhui reconstruction",
+   "url": "https://wwj.hunan.gov.cn/wwj/c100310/c100311/202405/t20240521_33307461.html",
+   "locator": "21 May 2024. Mawangdui Han Tombs and Collections Research and Exhibition Center, paragraphs on radiographs and the reconstruction process. The external report discusses human remains and shows project imagery.",
+   "supports": "The report identifies Xin Zhui with the Mawangdui excavations of 1972–1974. It describes radiographs, observation and model measurements, limits on direct examination, and the use of similar features to build an approximation.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-PRES-09",
+   "title": "ChinaCulture: Tombs of Han at Mawangdui",
+   "url": "https://en.chinaculture.org/gb/en_artqa/2003-09/24/content_39384.htm",
+   "locator": "Introduction and the paragraph beginning “Among the more than 3,000 relics unearthed”.",
+   "supports": "The introduction locates Mawangdui in Changsha, Hunan, dates the tombs to the Western Han period and identifies Xin Zhui in that burial context.",
+   "accessed": "2026-11-26"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.preserved.xin.context",
+   "title": "Xin Zhui and the Mawangdui tombs",
+   "text": "Mawangdui is in Changsha, Hunan. ChinaCulture’s overview identifies Xin Zhui, also known as Lady Dai, among the people buried in the Western Han tombs there.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-PRES-09"
+   ],
+   "limits": "A burial context places a person in a time and place. It does not give the details of that person’s living appearance or a full account of daily life."
+  },
+  {
+   "id": "card.preserved.xin.methods",
+   "title": "How the Xin Zhui reconstruction was made",
+   "text": "A Hunan report of 21 May 2024 describes how a reconstruction team worked from head radiographs, observation and measurements made with models. Conservation rules ruled out direct probing. The resulting approximation used comparable features for some details.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-PRES-08"
+   ],
+   "limits": "The report describes a method and acknowledges its limits. A comparison with similar features cannot establish an exact likeness."
+  }
+ ],
+ "exhibits": [
+  {
+   "id": "OBJ-PRES-XIN-CONTEXT",
+   "name": "The Mawangdui context file",
+   "art": "preserved.context",
+   "historicalLabel": "documented",
+   "dateText": "Western Han period",
+   "dateKind": "The tombs belong to the Western Han period. This date describes the burial context.",
+   "summary": "The overview places the tombs at Mawangdui in Changsha, Hunan, and identifies Xin Zhui in that burial context.",
+   "altText": "A file with a place tab and a dated section.",
+   "sources": [
+    "HIS-PRES-09"
+   ],
+   "grantsCard": "card.preserved.xin.context"
+  },
+  {
+   "id": "OBJ-PRES-XIN-METHOD",
+   "name": "Hunan reconstruction methods report",
+   "art": "preserved.catalogue",
+   "historicalLabel": "documented",
+   "dateText": "Published 21 May 2024",
+   "dateKind": "This is the date of the modern report. The report describes excavations from 1972 to 1974 and subsequent reconstruction work.",
+   "summary": "The research centre describes measurements based on radiographs, observations and models. Conservation limits shaped the investigation.",
+   "altText": "A catalogue page with section lines and a date tab.",
+   "sources": [
+    "HIS-PRES-08"
+   ],
+   "grantsCard": "card.preserved.xin.methods"
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "xin.layer.observation",
+   "speaker": "narrator",
+   "text": "The first sheet has places for the surviving observations and the date they were made. It includes the radiographs described in the Hunan report. You can put the source on the board without showing a scan.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pin the observations and their date.",
+     "if": {
+      "all": [
+       {
+        "objective": "xin.o.records"
+       },
+       {
+        "not": {
+         "flag": "xin.layer.observation",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "xin.layer.observation",
+       "value": true
+      }
+     ],
+     "next": "xin.layer.observation.pinned"
+    },
+    {
+     "text": "Leave the sheet in its sleeve."
+    }
+   ]
+  },
+  {
+   "id": "xin.layer.observation.pinned",
+   "speaker": "narrator",
+   "text": "The dated observation sheet is clipped down. A reader can follow the method back to the Hunan report. The workroom uses a paper marker where a scan would sit.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Lift the sheet back into its sleeve.",
+     "if": {
+      "flag": "xin.layer.observation",
+      "eq": true
+     },
+     "effects": [
+      {
+       "setFlag": "xin.layer.observation",
+       "value": false
+      }
+     ],
+     "next": "xin.layer.observation.lifted"
+    },
+    {
+     "text": "Leave the sheet on the board."
+    }
+   ]
+  },
+  {
+   "id": "xin.layer.observation.lifted",
+   "speaker": "narrator",
+   "text": "The clip stands empty. You can put this sheet back whenever you want to compare it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "xin.layer.model",
+   "speaker": "narrator",
+   "text": "A model sheet goes over the dated observations. The team used measurements and comparisons in building an approximation. Here the keeper uses a generic shape to show where an estimate enters.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Lay the outline of the model process over the observations.",
+     "if": {
+      "all": [
+       {
+        "objective": "xin.o.records"
+       },
+       {
+        "not": {
+         "flag": "xin.layer.model",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "xin.layer.model",
+       "value": true
+      }
+     ],
+     "next": "xin.layer.model.pinned"
+    },
+    {
+     "text": "Leave the sheet in its sleeve."
+    }
+   ],
+   "claimKind": "simulation"
+  },
+  {
+   "id": "xin.layer.model.pinned",
+   "speaker": "narrator",
+   "text": "The seam shows where the model begins. The measured evidence narrows possible interpretations. Comparable features leave more than one possible appearance.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Lift the sheet back into its sleeve.",
+     "if": {
+      "flag": "xin.layer.model",
+      "eq": true
+     },
+     "effects": [
+      {
+       "setFlag": "xin.layer.model",
+       "value": false
+      }
+     ],
+     "next": "xin.layer.model.lifted"
+    },
+    {
+     "text": "Leave the sheet on the board."
+    }
+   ],
+   "claimKind": "simulation"
+  },
+  {
+   "id": "xin.layer.model.lifted",
+   "speaker": "narrator",
+   "text": "The clip stands empty. You can put this sheet back whenever you want to compare it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "xin.layer.style",
+   "speaker": "narrator",
+   "text": "The printer has left two swatches. One has a smooth edge and one has an open edge. With an illustrated portrait, a finished edge can make an artist’s treatment look like a measurement.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pin the swatches at the side with an artist’s label.",
+     "if": {
+      "all": [
+       {
+        "objective": "xin.o.records"
+       },
+       {
+        "not": {
+         "flag": "xin.layer.style",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "xin.layer.style",
+       "value": true
+      }
+     ],
+     "next": "xin.layer.style.pinned"
+    },
+    {
+     "text": "Leave the sheet in its sleeve."
+    }
+   ],
+   "claimKind": "simulation"
+  },
+  {
+   "id": "xin.layer.style.pinned",
+   "speaker": "narrator",
+   "text": "The swatches can be compared beside the sheets. They differ in finish and say the same thing about the evidence. Neither depicts Xin Zhui.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Lift the sheet back into its sleeve.",
+     "if": {
+      "flag": "xin.layer.style",
+      "eq": true
+     },
+     "effects": [
+      {
+       "setFlag": "xin.layer.style",
+       "value": false
+      }
+     ],
+     "next": "xin.layer.style.lifted"
+    },
+    {
+     "text": "Leave the sheet on the board."
+    }
+   ],
+   "claimKind": "simulation"
+  },
+  {
+   "id": "xin.layer.style.lifted",
+   "speaker": "narrator",
+   "text": "The clip stands empty. You can put this sheet back whenever you want to compare it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "xin.layer.caption",
+   "speaker": "narrator",
+   "text": "A loose caption reads “Here is Xin Zhui”. A reader outside this room would have no way to tell whether it meant a name in a burial record, an estimate based on measurements, or a verified likeness.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the caption “How one reconstruction was made” above the sheets.",
+     "if": {
+      "all": [
+       {
+        "objective": "xin.o.records"
+       },
+       {
+        "not": {
+         "flag": "xin.layer.caption",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "xin.layer.caption",
+       "value": true
+      }
+     ],
+     "next": "xin.layer.caption.pinned"
+    },
+    {
+     "text": "Leave the sheet in its sleeve."
+    }
+   ]
+  },
+  {
+   "id": "xin.layer.caption.pinned",
+   "speaker": "narrator",
+   "text": "The caption points to the source date, the model and the limits of that model. The name stays with the Mawangdui record. The printer can copy the caption without losing the distinction.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Lift the sheet back into its sleeve.",
+     "if": {
+      "flag": "xin.layer.caption",
+      "eq": true
+     },
+     "effects": [
+      {
+       "setFlag": "xin.layer.caption",
+       "value": false
+      }
+     ],
+     "next": "xin.layer.caption.lifted"
+    },
+    {
+     "text": "Leave the sheet on the board."
+    }
+   ]
+  },
+  {
+   "id": "xin.layer.caption.lifted",
+   "speaker": "narrator",
+   "text": "The clip stands empty. You can put this sheet back whenever you want to compare it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "xin.commission",
+   "speaker": "narrator",
+   "text": "A visitor came to the Cold Store asking for a portrait. The printer can send out the process board without a face. You could also keep the board here and leave a request that another keeper can check against the sources. What should go out to the hall?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Print the process board with the four sheets named apart.",
+     "if": {
+      "all": [
+       {
+        "objective": "xin.o.layers"
+       },
+       {
+        "all": [
+         {
+          "flag": "xin.layer.observation",
+          "eq": true
+         },
+         {
+          "flag": "xin.layer.model",
+          "eq": true
+         },
+         {
+          "flag": "xin.layer.style",
+          "eq": true
+         },
+         {
+          "flag": "xin.layer.caption",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "xin.display"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "xin.display",
+       "value": "process"
+      }
+     ],
+     "next": "xin.dispatch.process"
+    },
+    {
+     "text": "Keep the mock-up here and send a request to review the model’s limits.",
+     "if": {
+      "all": [
+       {
+        "objective": "xin.o.layers"
+       },
+       {
+        "all": [
+         {
+          "flag": "xin.layer.observation",
+          "eq": true
+         },
+         {
+          "flag": "xin.layer.model",
+          "eq": true
+         },
+         {
+          "flag": "xin.layer.style",
+          "eq": true
+         },
+         {
+          "flag": "xin.layer.caption",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "xin.display"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "xin.display",
+       "value": "review"
+      }
+     ],
+     "next": "xin.dispatch.review"
+    },
+    {
+     "text": "Leave the printer’s tray empty for now."
+    }
+   ]
+  },
+  {
+   "id": "xin.dispatch.process",
+   "speaker": "narrator",
+   "text": "The printer hangs the four sheets in different sleeves. A visitor stops at the boundary between the source and the model. She turns back to the first sleeve to see why the report ruled out direct probing.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "xin.dispatch.review",
+   "speaker": "narrator",
+   "text": "The printer hangs the dates and author on the archive wall. A spare clip holds a review request. Can a reader trace which features came from measurements and which from comparison? A keeper can start with that question.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH3-R05",
+   "world": "WORLD-04",
+   "title": "The Printer’s Empty Sleeve",
+   "knowledgeQuestion": "What changes when a reasoned reconstruction travels without its source?",
+   "available": {
+    "objective": "preserved.publish"
+   },
+   "objectives": [
+    {
+     "id": "xin.o.records",
+     "title": "Compare the place file and the methods report. Set the date on each with the Lens.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "card": "card.preserved.xin.context"
+       },
+       {
+        "card": "card.preserved.xin.methods"
+       },
+       {
+        "flag": "lens.OBJ-PRES-XIN-CONTEXT",
+        "eq": true
+       },
+       {
+        "flag": "lens.OBJ-PRES-XIN-METHOD",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "objectivity"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT"
+      ],
+      "subjects": [
+       "history",
+       "biology"
+      ]
+     },
+     "skills": [
+      "SK-RSC-07",
+      "SK-RSC-22"
+     ]
+    },
+    {
+     "id": "xin.o.layers",
+     "title": "Check which sheets belong on the workroom board.",
+     "essential": false,
+     "visible": {
+      "objective": "xin.o.records"
+     },
+     "done": {
+      "all": [
+       {
+        "flag": "xin.layer.observation",
+        "eq": true
+       },
+       {
+        "flag": "xin.layer.model",
+        "eq": true
+       },
+       {
+        "flag": "xin.layer.style",
+        "eq": true
+       },
+       {
+        "flag": "xin.layer.caption",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "explanation",
+       "truth",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "self-management"
+      ],
+      "aoks": [
+       "ART",
+       "HIS"
+      ],
+      "subjects": [
+       "visual-arts",
+       "history",
+       "digital-society"
+      ]
+     },
+     "skills": [
+      "SK-THK-05",
+      "SK-RSC-15"
+     ]
+    },
+    {
+     "id": "xin.o.display",
+     "title": "Prepare what the printer sends to the hall.",
+     "essential": false,
+     "visible": {
+      "objective": "xin.o.layers"
+     },
+     "done": {
+      "flagSet": "xin.display"
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "power",
+       "perspective",
+       "values",
+       "culture"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "ART",
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "visual-arts",
+       "history",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-WRT-13"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.xin.display"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "moments": [
+  {
+   "id": "moment.xin.process",
+   "attribute": "reflective",
+   "when": {
+    "objective": "xin.o.display"
+   },
+   "did": "You followed a display back through its caption, illustrations, model and sources before letting anything go to the hall.",
+   "prompt": "What would be lost first if a visitor copied only one sheet?"
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.xin.display",
+   "claimKind": "interpretation",
+   "text": "The Mawangdui context file and the modern report do different work. The dated sheets let a reader tell where an observation ends and a model begins."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.xin.o.records.1",
+   "objective": "xin.o.records",
+   "depth": 1,
+   "text": "Time can slip when a modern record describes somebody who lived long ago."
+  },
+  {
+   "id": "h.xin.o.records.2",
+   "objective": "xin.o.records",
+   "depth": 2,
+   "text": "The west case gives Xin Zhui’s burial context. The east case concerns the people who made a reconstruction."
+  },
+  {
+   "id": "h.xin.o.records.3",
+   "objective": "xin.o.records",
+   "depth": 3,
+   "text": "Inspect both cases, then use the Date-Kind Lens on each. Ask which date belongs to the report and which to the burial."
+  },
+  {
+   "id": "h.xin.o.records.4",
+   "objective": "xin.o.records",
+   "depth": 4,
+   "text": "Take the cards from the Mawangdui context file and the Hunan report. Look through the Lens once at each case to fill their date tabs."
+  },
+  {
+   "id": "h.xin.o.layers.1",
+   "objective": "xin.o.layers",
+   "depth": 1,
+   "text": "The headings are part of the work. A beautiful sheet can hide a missing step."
+  },
+  {
+   "id": "h.xin.o.layers.2",
+   "objective": "xin.o.layers",
+   "depth": 2,
+   "text": "Keep the observations, model, artist’s choices and caption separate as you build the board."
+  },
+  {
+   "id": "h.xin.o.layers.3",
+   "objective": "xin.o.layers",
+   "depth": 3,
+   "text": "Use the four sheets across the bottom of the room. You can pin a sheet, lift it and pin it again."
+  },
+  {
+   "id": "h.xin.o.layers.4",
+   "objective": "xin.o.layers",
+   "depth": 4,
+   "text": "Put all four sheets on the board together. Compare what each adds before visiting the printer’s tray."
+  },
+  {
+   "id": "h.xin.o.display.1",
+   "objective": "xin.o.display",
+   "depth": 1,
+   "text": "What reaches the hall needs to make sense without the keeper beside it."
+  },
+  {
+   "id": "h.xin.o.display.2",
+   "objective": "xin.o.display",
+   "depth": 2,
+   "text": "People can learn how the reconstruction was made even if you do not send out an image."
+  },
+  {
+   "id": "h.xin.o.display.3",
+   "objective": "xin.o.display",
+   "depth": 3,
+   "text": "Use the printer’s tray at the middle of the north wall. Keep all four sheets pinned while you decide."
+  },
+  {
+   "id": "h.xin.o.display.4",
+   "objective": "xin.o.display",
+   "depth": 4,
+   "text": "Choose the named process board or send a request to review the model’s limits. Then see your work in the main hall."
+  }
+ ]
+}

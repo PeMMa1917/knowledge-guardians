@@ -1,4 +1,16 @@
 import { NILE_TRIALS, NILE_DELIVERIES, type NileDelivery } from '../domain/nileModel';
+import { FOREST_WATCH, FOREST_WINDOWS, forestWatch, type ForestWindow } from '../domain/forestWatch';
+import { METAL_SAMPLES, readMetalSample } from '../domain/metalSample';
+import { compareCopy } from '../domain/copyComparison';
+import { seaChart } from '../domain/seaCharts';
+import { STAGE_CUES, stageRehearsal, type StageCue } from '../domain/stageRehearsal';
+import { MARKET_BASES, marketComparison, marketOffersWithin, type MarketBasis } from '../domain/marketScale';
+import { WATER_SETTINGS, waterTrial, type WaterCondition, type WaterSetting } from '../domain/waterGate';
+import { CIVIC_RULES, CIVIC_SAMPLES, civicAllocation, type CivicRule, type CivicSample } from '../domain/civicConsole';
+import { VOICE_SOURCES, VOICE_VIEWS, voiceReading, type VoiceView } from '../domain/voiceReadings';
+import { ISLAND_CRATES, ISLAND_LANDINGS, ISLAND_ROUTES, islandPlan, type IslandLanding, type IslandRoute } from '../domain/islandPlan';
+import { COUNCIL_TRIALS, councilClock, type CouncilTrial } from '../domain/councilClock';
+import { buildScoutBoard } from './scoutRoutes';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -30,7 +42,7 @@ import { STAGE_LABEL, nextStep, skillStage, type SkillStage } from '../domain/sk
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
 import type { FrameItem, PlaqueFace, Pronouns, RestoreLayer, PuzzleRecord, SorterFruit } from '../domain/types';
 import { ACTIONS, PRESETS, actionFor, assignKey, mappableKey, type Action } from '../app/keymap';
-import type { GameEvent, SimulationResult } from '../domain/engine';
+import { SIM_MODEL, type GameEvent } from '../domain/engine';
 import { conceptRings, conceptXP, totalXP } from '../domain/permanent';
 import { describeSection, layers, type ForgeAction } from '../domain/forge';
 import { labelText, type LabelResult } from '../domain/label';
@@ -49,6 +61,16 @@ import { READINGS, cannotRead, readingOf, toolOf } from '../domain/readings';
 import { approvalOf, approvalRank } from '../domain/approval';
 import { ROLES, fitsRole, roleOf } from '../domain/roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
+import { FIELD_GAMES } from '../domain/fieldgames';
+import { loyaltyOf } from '../domain/loyalty';
+import { CROSSINGS, WAY_LABEL, crossingOf, crossingWay, wayOpen } from '../domain/crossings';
+import { HEARTH, TONE_LABEL, type HearthTalk } from '../domain/hearth';
+import { VERSES, balladName, versesFor } from '../domain/ballad';
+import { crossingEpithet, lingering, mirror, vignettesFor } from '../domain/epilogue';
+import { BRUSH_STROKES, CHART_CHOICES, DIG_CHOICES, DIG_LIGHT, DIG_W, MY_PICTURE_NAMES, SKY_PICTURES, STARS, STAR_HEIGHT, TRADE_KIND, TRADE_START, TRADE_STEPS, digNote, digReport, digSite, digStroke, type DigTool, type Trader } from '../domain/compendiumGames';
+import { arrivedLetters, composeLetter, dueLetters } from '../domain/letters';
+import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
+import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
 import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
 import { MIN_SOURCES, RUMOURS, VERDICTS, currentRumour, sourcesChecked } from '../domain/rumours';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
@@ -773,6 +795,7 @@ export class UI implements UIApi {
       ...missions.filter((m) => objs.some((o) => o.mission === m && !o.complete)).slice(-1).map((m) => h('div', {},
         h('h2', {}, m.title),
         h('p', { class: 'kq' }, m.knowledgeQuestion),
+        ...(m.stake ? [h('p', { class: 'stake' }, h('strong', {}, 'At stake: '), m.stake)] : []),
         h('ul', {}, ...objs.filter((o) => o.mission === m).map((o) => h('li', { class: o.complete ? 'done' : '' }, h('span', { 'aria-hidden': 'true' }, o.complete ? '✓ ' : '◇ '), h('span', { class: 'sr' }, o.complete ? 'Done: ' : 'To do: '), o.title))))),
       objs.length && objs.every((o) => o.complete) ? h('div', {}, h('h2', {}, 'Chapter complete'), h('p', {}, 'Explore freely, or open the menu.')) : null);
     const km = ctx.settings.keys;
@@ -884,6 +907,12 @@ export class UI implements UIApi {
         default: break;
       }
     }
+    // Vesper Quill's letters (docs/STORY_BIBLE.md section 6): one after each chapter, at most one per action.
+    const letter = c.state ? dueLetters(c.state)[0] : undefined;
+    if (letter) {
+      c.dispatch({ type: 'SetFlag', flag: `letter.${letter.id}`, value: true });
+      this.toast('A letter with a small gold seal has arrived. See Journal, Letters.', 'award'); this.sfx('sfx.page');
+    }
     this.refreshHud();
     ctx.world?.refreshWorld();
   }
@@ -961,6 +990,8 @@ export class UI implements UIApi {
         if (ctx.settings.talkSounds) bark(PLAYER_VOICES.find((x) => x.id === ctx.settings.playerVoice)?.v ?? null, ctx.settings.sfxVolume); else this.sfx('sfx.click');
         const r = c.dispatch({ type: 'ChooseDialogueOption', node: id, index: o.index }) as any;
         if (r.some((e: GameEvent) => e.kind === 'error')) return;
+        // A choice can change map props without emitting feedback events.
+        if (r.length === 0) ctx.world?.refreshWorld();
         const next = r.nextNode as string | null;
         if (next) this.showNode(next); else this.endDialogue(o.option.open);
       } }, h('span', { class: 'num', 'aria-hidden': 'true' }, `${i + 1}`), o.option.tag ? h('em', {}, `${o.option.tag}: `) : null, personalise(o.option.text, c.state.player),
@@ -1100,27 +1131,39 @@ export class UI implements UIApi {
     const radios = (name: string, opts: Record<string, string>, cur: string, set: (v: string) => void) =>
       h('fieldset', {}, h('legend', {}, name), ...Object.entries(opts).map(([v, label]) => h('label', { class: 'radio' },
         h('input', { type: 'radio', name, value: v, checked: v === cur, onchange: () => set(v) }), ` ${label}`)));
+    const setup = (pen: string, surface: string) => `${PEN_NAMES[pen]} on ${SURFACES[surface].toLowerCase()}`;
+    const strip = (label: string, pen: string, surface: string, mark: number, note: string) =>
+      h('section', {}, h('h3', {}, label), h('p', {}, setup(pen, surface)),
+        this.markCanvas(mark), h('p', { class: 'fine' }, note));
     const run = () => {
-      const ev = c.dispatch({ type: 'RunSimulation', pen, surface });
-      const r = (ev.find((e) => e.kind === 'simulation') as any)?.result as SimulationResult | undefined;
+      const oldPen = String(c.state.flags['sim.lastPen'] ?? '');
+      const oldSurface = String(c.state.flags['sim.lastSurface'] ?? '');
+      const previous = SIM_MODEL[oldPen]?.[oldSurface];
+      const r = c.dispatch({ type: 'RunSimulation', pen, surface }).find((e) => e.kind === 'simulation')?.result;
       if (!r) return;
       this.sfx('sfx.metal');
       clear(result);
-      result.append(this.markCanvas(r.markQuality), h('p', {}, r.note),
-        h('p', { class: r.fairTest ? 'fair' : 'unfair' }, r.testCount === 1 ? 'First test. Run another to compare.' : r.fairTest ? 'Fair comparison: you changed exactly one thing since the last test.' : 'Not a fair comparison: you changed both the pen and the surface (or nothing). You cannot tell which change made the difference.'));
-      history.append(h('li', {}, `${PEN_NAMES[r.pen]} on ${SURFACES[r.surface].toLowerCase()}: mark quality ${r.markQuality}/3${r.fairTest ? ' (fair comparison)' : ''}`));
+      const comparison = !previous ? 'Pin a second strip beside this one to compare.'
+        : r.fairTest ? (r.pen === oldPen ? 'Same pen, different surface.' : 'Same surface, different pen.')
+          : r.pen === oldPen && r.surface === oldSurface ? 'Same setup again. Try changing the pen or the surface.'
+            : 'Both the pen and the surface changed. Try one change to see which made the difference.';
+      result.append(h('div', { class: 'two-col' },
+        previous ? strip('Previous strip', oldPen, oldSurface, previous.q, previous.note) : null,
+        strip('New strip', r.pen, r.surface, r.markQuality, r.note)),
+        h('p', { class: r.fairTest ? 'fair' : 'fine' }, comparison));
+      history.append(h('li', {}, setup(r.pen, r.surface)));
     };
     this.openModal('bench', 'Marking test', this.closeBtn(),
       h('h2', {}, 'Workshop bench: marking test'),
       h('div', { class: 'chips' }, claimChip('simulation'), histChip('reconstruction')),
-      h('p', { class: 'fine' }, 'A controlled simulation. The values are MODEL ASSUMPTIONS for play, not measurements of historical pens. Change one thing at a time.'),
+      h('p', { class: 'fine' }, 'Make two marks and pin the strips together. Each strip comes from the workshop model. It tells you how this setup behaves in the simulation.'),
       h('div', { class: 'two-col' }, radios('Pen', PEN_NAMES, pen, (v) => { pen = v; }), radios('Surface', SURFACES, surface, (v) => { surface = v; })),
       h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: run }, 'Run test')),
       result, h('h3', {}, 'Your tests'), history);
   }
 
   private markCanvas(q: number): HTMLElement {
-    const cv = h('canvas', { width: '160', height: '24', class: 'mark', role: 'img', 'aria-label': `Mark quality ${q} out of 3` }) as HTMLCanvasElement;
+    const cv = h('canvas', { width: '160', height: '24', class: 'mark', 'aria-hidden': 'true' }) as HTMLCanvasElement;
     const g = cv.getContext('2d')!;
     g.fillStyle = '#efe4c4'; g.fillRect(0, 0, 160, 24);
     g.fillStyle = '#1d2b45';
@@ -2273,15 +2316,35 @@ export class UI implements UIApi {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { story: 'Story so far', entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { story: 'Story so far', entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', crossings: 'Crossings', ...(s.flags['ending.council'] ? { afterwards: 'Afterwards' } : {}), glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
-    if (tab === 'lore') {
+    if (tab === 'crossings') {
+      // Conflicts met in the world, and how the player met them.
+      const met = CROSSINGS.filter((x) => crossingWay(s.flags, x.id));
+      const ep = crossingEpithet(s.flags);
+      body.append(h('p', { class: 'fine' }, met.length ? `${met.length} of ${CROSSINGS.length} crossings met. Each had more than one way through.` : 'No crossings yet. Problems wait in every world: floods, machines, crowds, old stories.'),
+        ...(ep ? [h('p', {}, `People have started to call you ${s.player.name} ${ep}.`), h('div', { class: 'row' }, h('button', { class: 'mini', onclick: () => { c.dispatch({ type: 'SetFlag', flag: 'title.worn', value: ep }); this.refreshHud(); this.openJournal('crossings'); } }, `Wear the name "${ep}"`))] : []),
+        ...met.map((x) => { const w = crossingWay(s.flags, x.id)!; return h('div', { class: 'lore-entry' }, h('h3', {}, x.title), h('p', { class: 'fine' }, `Chapter ${x.chapter} · ${WAY_LABEL[w.kind]}`), h('p', {}, w.result), h('p', { class: 'fine' }, `Cost: ${w.cost}`)); }));
+    } else if (tab === 'afterwards') {
+      // The epilogue: where are they now, the mirror scene and the lingering thought.
+      body.append(h('h3', {}, 'Where are they now'), ...vignettesFor(s).map((v) => h('div', { class: 'lore-entry' }, h('h3', {}, v.who), h('p', {}, v.text))),
+        h('h3', {}, 'The same bench'), h('p', {}, mirror(s)), h('h3', {}, 'Last words'), ...lingering(s).map((t) => h('p', {}, t)));
+    } else if (tab === 'letters') {
+      // Letters from the rival. Each remembers a choice the player made (spec 15.10).
+      const got = arrivedLetters(s);
+      body.append(h('p', { class: 'fine' }, got.length ? 'Letters sealed with a small gold stamp. Each one answers something you did.' : 'No letters yet.'),
+        ...[...got].reverse().map((l) => h('div', { class: 'lore-entry letter' }, h('h3', {}, `After chapter ${l.chapter}`), ...composeLetter(l, s).map((t) => h('p', {}, t)))));
+    } else if (tab === 'lore') {
       // Lore codex: secrets found by exploring. Each is a small myth or record that asks a knowledge question.
       const all = c.pack.secrets ?? [];
       const found = all.filter((x) => s.flags[`secret.${x.id}`] === true);
       body.append(h('p', { class: 'fine' }, `${found.length} of ${all.length} secrets found. Search odd corners: loose bricks, reeds, the bottom of things.`),
         ...found.map((x) => h('div', { class: 'lore-entry' }, h('h3', {}, x.name), h('p', { class: 'fine' }, MAPS[x.map]?.name ?? ''), h('p', {}, x.text))));
+      const games = FIELD_GAMES.filter((g) => s.flags[`field.${g.id}.done`] === true);
+      if (games.length) body.append(h('h3', {}, 'Field games'),
+        ...games.map((g) => h('div', { class: 'lore-entry' }, h('h3', {}, g.name), h('p', { class: 'fine' }, g.host), h('p', {}, g.idea),
+          ...(g.id === 'word' && coinageOf(s.flags['word.coined']) ? [h('p', { class: 'fine' }, `Your word: '${coinageOf(s.flags['word.coined'])!.word}', ${coinageOf(s.flags['word.coined'])!.meaning}.`)] : []))));
     } else if (tab === 'story') {
       // The story so far: the beats the player has reached, written as a short chronicle.
       const lit = String(Number(s.flags['lamps.lit'] ?? 0));
@@ -2556,6 +2619,7 @@ export class UI implements UIApi {
       ['Secrets found', flagsOn('secret.', (pk.secrets ?? []).map((k) => k.id)), (pk.secrets ?? []).length],
       ['Field readings taken', Number(s.flags['count.readings'] ?? 0), READINGS.length],
       ['Rumours traced to a source', Number(s.flags['count.rumours'] ?? 0), RUMOURS.length],
+      ['Field games played', Number(s.flags['count.fieldgames'] ?? 0), FIELD_GAMES.length],
       ['Places visited', places, Object.keys(MAPS).length],
       ['Skills used (Skill Atlas)', Object.keys(c.permanent.skills ?? {}).length, (pk.skills ?? []).length],
       ['Areas of knowledge met', Object.keys(c.permanent.met.aoks).length, Object.keys(AOK_NAMES).length],
@@ -2709,6 +2773,591 @@ export class UI implements UIApi {
   }
 
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
+  /** Field games from the TOK lessons: one entry point, one panel per game. */
+  openFieldGame(id: string): void {
+    if (id === 'doors') this.openDoors();
+    else if (id === 'guests') this.openGuestBook();
+    else if (id === 'slate') this.openSlate();
+    else if (id === 'word') this.openMissingWord();
+    else if (id === 'bones') this.openBones();
+    else if (id.startsWith('loyalty-')) this.openLoyalty(id.slice(8));
+    else if (id.startsWith('cross-')) this.openCrossing(id.slice(6));
+    else if (id === 'hearth') this.openHearth();
+    else if (id === 'ballad') this.openBallad();
+    else if (id === 'stars') this.openStars();
+    else if (id === 'dig') this.openDig();
+    else if (id === 'trade') this.openTrade();
+  }
+
+  /** Star Pictures: draw your own picture, see two traditions, measure, then choose what the chart says. */
+  openStars(): void {
+    const c = ctx.controller;
+    const box = this.openModal('bench-panel wide', 'Star Pictures');
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, 'Star Pictures'),
+      h('p', {}, "Night-keeper Anwen hands you a chalk stick and points at seven stars over the sea wall. 'Everyone sees the same seven. Join them up however you like. Then I will show you what my neighbours see.'")];
+    const sky = (lines: [number, number][][], pick: number | null, onStar?: (i: number) => void) => {
+      const cls = ['mine', 'heron', 'ladder'];
+      const svg = `<svg viewBox="0 0 100 70" class="star-sky" role="img" aria-label="Seven stars and the lines drawn between them">` +
+        lines.map((ls, k) => ls.map(([a, b]) => `<line x1="${STARS[a].x}" y1="${STARS[a].y}" x2="${STARS[b].x}" y2="${STARS[b].y}" class="${cls[k]}"/>`).join('')).join('') +
+        STARS.map((st, i) => `<circle cx="${st.x}" cy="${st.y}" r="${st.bright ? 2.6 : 1.8}" class="${i === pick ? 'picked' : ''}"/>`).join('') + '</svg>';
+      const wrap = h('div', { class: 'star-wrap' }); wrap.innerHTML = svg;
+      if (onStar) wrap.append(h('div', { class: 'star-buttons' }, ...STARS.map((st, i) => h('button', { type: 'button', class: 'star-btn', style: `left:${st.x}%;top:${(st.y / 70) * 100}%`, 'aria-label': `Star ${i + 1}${st.bright ? ', the bright one' : ''}`, onclick: () => onStar(i) }))));
+      return wrap;
+    };
+    const mine: [number, number][] = [];
+    let pick: number | null = null;
+    const draw = () => {
+      box.replaceChildren(...head(), sky([mine], pick, (i) => {
+        if (pick === null) { pick = i; this.sfx('sfx.click'); }
+        else if (pick !== i) { mine.push([pick, i]); pick = null; this.sfx('sfx.sparkle'); }
+        else pick = null;
+        draw();
+      }), h('p', { class: 'fine', role: 'status' }, pick === null ? `Click a star, then another, to draw a line. ${mine.length} line${mine.length === 1 ? '' : 's'} so far.` : `Star ${pick + 1} picked. Now click the star to join it to.`),
+        mine.length >= 3 ? h('div', { class: 'notice-options' }, ...MY_PICTURE_NAMES.map((n) => h('button', { type: 'button', onclick: () => traditions(n) }, `Call it ${n}`))) : h('p', { class: 'fine' }, 'Draw at least three lines.'));
+    };
+    const traditions = (myName: string) => {
+      box.replaceChildren(...head(), sky([mine, SKY_PICTURES[0].lines, SKY_PICTURES[1].lines], null),
+        h('p', {}, `Anwen laughs. '${myName.replace('the ', 'A ')}! Good. Now look: the same stars, two more pictures.'`),
+        ...SKY_PICTURES.map((sp) => h('p', { class: 'clue-view' }, h('strong', {}, `${sp.name[0].toUpperCase()}${sp.name.slice(1)}, as ${sp.who} see it: `), sp.knows)),
+        h('p', {}, "'Which picture is right?' Anwen asks, and waits."),
+        h('div', { class: 'notice-options' },
+          h('button', { type: 'button', onclick: () => measure("'None of them is right. They are pictures.'") }, 'None of them. They are pictures.'),
+          h('button', { type: 'button', onclick: () => measure("'All of them, in a way. Each one does a job.'") }, 'All of them, for different jobs.'),
+          h('button', { type: 'button', onclick: () => measure("'Mine, obviously.'") }, 'Mine, obviously.')));
+    };
+    const measure = (said: string) => {
+      box.replaceChildren(...head(), h('p', {}, `You say: ${said} Anwen nods. 'Then here is a question with one answer.' She gives you the brass quadrant, and a shepherd who is visiting takes a second one.`),
+        h('p', { class: 'clue-view fresh' }, `You sight the bright star over the sea wall: ${STAR_HEIGHT} degrees. The shepherd, with the other quadrant: ${STAR_HEIGHT} degrees. The quay keeper, last week, wrote: ${STAR_HEIGHT} degrees.`),
+        h('p', {}, "'The height is the same for anyone with a quadrant,' says Anwen. 'The picture is not. Both are knowledge. They answer different questions.' Now the harbour chart needs a label for these stars."),
+        h('div', { class: 'notice-options' }, ...CHART_CHOICES.map((ch) => h('button', { type: 'button', onclick: () => {
+          c.dispatch({ type: 'SetFlag', flag: 'field.stars.chart', value: ch.id });
+          this.sfx('sfx.award');
+          box.replaceChildren(...head(), h('p', { class: 'clue-view fresh' }, ch.text), h('p', { class: 'fine' }, `What it costs: ${ch.cost}`), this.finishField('stars'),
+            h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+        } }, h('span', {}, ch.text), h('span', { class: 'fine', style: 'display:block' }, `Cost: ${ch.cost}`)))));
+    };
+    draw();
+  }
+
+  /** The Careful Dig: brush or pick, take notes, then decide whether to dig the second trench. */
+  openDig(): void {
+    const c = ctx.controller;
+    const runs = Number(c.state.flags['field.dig.runs'] ?? 0);
+    c.dispatch({ type: 'SetFlag', flag: 'field.dig.runs', value: runs + 1 });
+    let site = digSite(runs + 2);
+    let tool: DigTool = 'brush', strokes = 0;
+    const calm = !!(ctx.settings.calmMode || ctx.settings.zenMode);
+    const box = this.openModal('bench-panel wide', 'The Careful Dig');
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, 'The Careful Dig'),
+      h('p', {}, "Site lead Marisol kneels at an old charcoal-burners' camp in the forest. 'Something is under here. A pot, I think, from the old camp. The pick is fast. The brush is slow. Notes are slower. Your choice.'")];
+    const render = () => {
+      const r = digReport(site), dark = !calm && strokes >= DIG_LIGHT;
+      const grid = h('div', { class: 'dig-grid', role: 'grid', style: `grid-template-columns:repeat(${DIG_W},1fr)` }, ...site.map((cell, i) => {
+        const open = cell.cleared >= BRUSH_STROKES;
+        const label = open ? (cell.find ? (cell.cracked ? 'a cracked piece of pot' : 'a whole piece of pot') : `${cell.layer}, nothing here`) : `soil, ${cell.cleared} of ${BRUSH_STROKES} brushed`;
+        return h('button', { type: 'button', class: `dig-cell ${open ? `open ${cell.layer}` : `d${cell.cleared}`}${cell.find && open ? (cell.cracked ? ' cracked' : ' find') : ''}${cell.noted ? ' noted' : ''}`, disabled: dark || (open && cell.noted), 'aria-label': `${label}${cell.noted ? ', noted' : ''}`,
+          onclick: () => { if (open) { site = digNote(site, i); this.sfx('sfx.page'); } else { site = digStroke(site, i, tool); strokes++; this.sfx(tool === 'pick' ? 'sfx.click' : 'sfx.page'); } render(); } },
+          open ? (cell.find ? (cell.cracked ? '✕' : '◍') : '·') : '');
+      }));
+      box.replaceChildren(...head(),
+        h('div', { class: 'row' }, ...(['brush', 'pick'] as DigTool[]).map((t) => h('button', { type: 'button', class: tool === t ? 'primary' : '', 'aria-pressed': String(tool === t), onclick: () => { tool = t; render(); } }, t === 'brush' ? `Brush (${BRUSH_STROKES} strokes a square, safe)` : 'Pick (one stroke, can crack a find)'))),
+        grid,
+        h('p', { class: 'fine', role: 'status' }, `Click soil to dig. Click an open square to write a note about the layer where it lay. Pieces found: ${r.pieces} (${r.whole} whole, ${r.cracked} cracked). Notes: ${r.notedAll}. ${calm ? 'Calm mode: no daylight limit.' : `Daylight left: ${Math.max(0, DIG_LIGHT - strokes)} strokes.`}`),
+        r.pieces === 4 || dark ? h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => end() }, dark ? 'The light is gone. Show Marisol.' : 'Show Marisol what you found')) : '');
+    };
+    const end = () => {
+      const r = digReport(site);
+      box.replaceChildren(...head(),
+        h('p', { class: 'clue-view fresh' }, `${r.pieces} of 4 pieces found: ${r.whole} whole, ${r.cracked} cracked. You noted where ${r.notedFinds} of them lay.`),
+        h('p', {}, r.notedFinds >= r.pieces && r.pieces > 0
+          ? "Marisol beams. 'Charcoal layer, every piece. So the pot was in the fire pit, not thrown away. Your notes tell us how it was used. Without them it is just a pot.'"
+          : "Marisol turns a piece over. 'A pot. But where exactly did it lie? In the fire pit, or in the rubbish? Without the notes, we cannot tell how it was used. The soil is gone now, so we never will.'"),
+        r.cracked ? h('p', { class: 'fine' }, "'And the pick was quick. That crack is from today, not from the old camp. A future reader may not know the difference, so write it down.'") : '',
+        h('p', {}, "Marisol points to a second patch of dark soil. 'There is a second trench. What do we do?'"),
+        h('div', { class: 'notice-options' }, ...DIG_CHOICES.map((ch) => h('button', { type: 'button', onclick: () => {
+          c.dispatch({ type: 'SetFlag', flag: 'field.dig.trench', value: ch.id });
+          this.sfx('sfx.award');
+          box.replaceChildren(...head(), h('p', { class: 'clue-view fresh' }, ch.text), h('p', { class: 'fine' }, `What it costs: ${ch.cost}`), this.finishField('dig'),
+            h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+        } }, h('span', {}, ch.text), h('span', { class: 'fine', style: 'display:block' }, `Cost: ${ch.cost}`)))));
+    };
+    render();
+  }
+
+  /** The Spare Tag: a trading chain. Each time, two people want what you hold, for different kinds of reasons. */
+  openTrade(): void {
+    const c = ctx.controller;
+    const box = this.openModal('bench-panel wide', 'The Spare Tag');
+    this.sfx('sfx.page');
+    let have = TRADE_START;
+    const kinds: Trader['kind'][] = [];
+    const trail: string[] = [];
+    const head = () => [this.closeBtn(), h('h2', {}, 'The Spare Tag'), h('p', { class: 'fine' }, `You hold: ${have}.`)];
+    const step = (n: number) => {
+      if (n >= TRADE_STEPS.length) return end();
+      const offers = TRADE_STEPS[n](have);
+      box.replaceChildren(...head(),
+        h('p', {}, n === 0 ? "A carrier left a spare tag on the ferry step. Two people have seen it in your hand." : `Two people stop you. Both want ${have}.`),
+        ...offers.map((o) => h('p', { class: 'clue-view' }, h('strong', {}, `${o.who}: `), o.why)),
+        h('div', { class: 'notice-options' }, ...offers.map((o) => h('button', { type: 'button', onclick: () => {
+          kinds.push(o.kind); trail.push(`${o.who} wanted it ${TRADE_KIND[o.kind]}`);
+          have = o.gives; this.sfx('sfx.coins'); step(n + 1);
+        } }, `Give it to ${o.who.split(' ')[0]} (they give you ${o.gives})`))));
+    };
+    const end = () => {
+      c.dispatch({ type: 'SetFlag', flag: 'field.trade.end', value: have });
+      const distinct = new Set(kinds).size;
+      box.replaceChildren(...head(),
+        h('p', {}, `From ${TRADE_START} to ${have}, in three trades.`),
+        h('ul', {}, ...trail.map((t) => h('li', {}, t))),
+        h('p', {}, `Lumen counts on its glow. 'The tag was worth ${distinct === 1 ? 'the same kind of thing' : `${distinct} different kinds of thing`} along the way. Nobody was wrong about its value. They were valuing different things.'`),
+        this.finishField('trade'),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    step(0);
+  }
+
+  /** A crossing: one conflict, two or three ways through (face it, go around, leave it). Each way costs something. */
+  openCrossing(id: string): void {
+    const c = ctx.controller;
+    const x = crossingOf(id);
+    if (!x) return;
+    const box = this.openModal('bench-panel wide', x.title);
+    this.sfx('sfx.page');
+    const done = crossingWay(c.state.flags, id);
+    const close = () => h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close'));
+    if (done) {
+      box.replaceChildren(this.closeBtn(), h('h2', {}, x.title), h('p', {}, `You chose: ${done.text}`), h('p', { class: 'clue-view' }, done.result), h('p', { class: 'fine' }, `What it cost: ${done.cost}`), close());
+      return;
+    }
+    box.replaceChildren(this.closeBtn(), h('h2', {}, x.title), h('p', {}, x.scene),
+      h('p', { class: 'fine' }, `At stake: ${x.stakes.lose}. To win: ${x.stakes.gain}.`),
+      h('div', { class: 'notice-options' }, ...x.ways.map((w) => {
+        const open = wayOpen(w, c.state);
+        return h('button', { type: 'button', disabled: !open, onclick: () => choose(w) },
+          h('span', { class: 'fine', style: 'display:block' }, WAY_LABEL[w.kind]), h('span', {}, w.text),
+          w.needs ? h('span', { class: 'fine', style: 'display:block' }, open ? `You have: ${w.needs.why}.` : `Needs: ${w.needs.why}. Come back later, or choose another way.`) : '');
+      })));
+    const choose = (w: (typeof x.ways)[number]) => {
+      c.dispatch({ type: 'SetFlag', flag: `cross.${id}`, value: w.id });
+      this.sfx(w.kind === 'ignore' ? 'sfx.page' : 'sfx.award');
+      box.replaceChildren(this.closeBtn(), h('h2', {}, x.title), h('p', { class: 'clue-view fresh' }, w.result), h('p', { class: 'fine' }, `What it cost: ${w.cost}`),
+        h('p', { class: 'clue-view' }, h('strong', {}, 'The idea: '), x.idea), close());
+    };
+  }
+
+  /** Hearth talks in the Nexus: the companions talk to each other; the player joins with a tone. */
+  openHearth(): void {
+    const c = ctx.controller, s = c.state;
+    const box = this.openModal('bench-panel wide', 'The Hearth');
+    this.sfx('sfx.page');
+    const name = (who: string) => (who === 'lumen' ? 'Lumen' : c.pack.characters.find((x) => x.id === who)?.name.split(' ')[0] ?? who);
+    const ready = HEARTH.filter((t) => c.check(t.after));
+    const fresh = ready.find((t) => typeof s.flags[`hearth.${t.id}`] !== 'string');
+    const show = (t: HearthTalk) => {
+      const heard = s.flags[`hearth.${t.id}`];
+      const lines = t.lines.filter((l) => c.check(l.if)).map((l) => h('p', {}, h('strong', {}, `${name(l.who)}: `), l.text));
+      const reply = (tone: string) => { const j = t.join.find((x) => x.tone === tone)!; return h('p', { class: 'clue-view fresh' }, h('strong', {}, `You: ${j.text} `), j.reply); };
+      box.replaceChildren(this.closeBtn(), h('h2', {}, t.title), ...lines,
+        typeof heard === 'string' ? reply(heard) : h('div', { class: 'notice-options' }, ...t.join.map((j) => h('button', { type: 'button', onclick: () => {
+          c.dispatch({ type: 'SetFlag', flag: `hearth.${t.id}`, value: j.tone }); this.sfx('sfx.sparkle'); show(t);
+        } }, h('span', { class: 'fine', style: 'display:block' }, TONE_LABEL[j.tone]), h('span', {}, j.text)))),
+        ready.length > 1 ? h('details', {}, h('summary', {}, 'Remember another evening'), h('div', { class: 'notice-options' }, ...ready.filter((x) => x !== t).map((x) => h('button', { type: 'button', onclick: () => show(x) }, x.title)))) : '',
+        h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.closeModal() }, 'Leave the hearth')));
+    };
+    if (fresh) show(fresh);
+    else if (ready.length) show(ready[ready.length - 1]);
+    else box.replaceChildren(this.closeBtn(), h('h2', {}, 'The Hearth'), h('p', {}, 'The hearth is laid but not lit. After the next big step, your friends will gather here.'),
+      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+  }
+
+  /** The Ballad of the Guardian: Wynn sings your deeds, taller than they were. Correct a verse or let it stand. */
+  openBallad(): void {
+    const c = ctx.controller;
+    const box = this.openModal('bench-panel wide', 'The Ballad of the Guardian');
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, 'The Ballad of the Guardian'),
+      h('p', {}, "Wynn the ballad-singer tunes a battered fiddle by the well. 'I am making a song about you! Every word is true. Well. True-ish. Songs need a little lift, or nobody sings them twice.'")];
+    const render = () => {
+      const s = c.state, vs = versesFor(s);
+      if (!vs.length) { box.replaceChildren(...head(), h('p', {}, "Wynn: 'Come back when you have done something. Anything! Light a lamp. Rescue a cat. I am not fussy.'"), h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.closeModal() }, 'Close'))); return; }
+      const open = vs.find((v) => s.flags[`ballad.${v.id}`] !== 'true' && s.flags[`ballad.${v.id}`] !== 'tall');
+      const sung = vs.filter((v) => v !== open && (s.flags[`ballad.${v.id}`] === 'true' || s.flags[`ballad.${v.id}`] === 'tall'));
+      const parts: (HTMLElement | string)[] = [...head(), ...sung.map((v) => h('p', { class: 'slate-line small' }, `♪ ${s.flags[`ballad.${v.id}`] === 'true' ? v.true(s) : v.tall}`))];
+      if (open) {
+        parts.push(h('p', { class: 'clue-view fresh' }, `Wynn sings: ♪ ${open.tall}`),
+          h('div', { class: 'notice-options' },
+            h('button', { type: 'button', onclick: () => { c.dispatch({ type: 'SetFlag', flag: `ballad.${open.id}`, value: 'true' }); this.sfx('sfx.page'); verdict(open.id, 'true'); } }, `Correct it: '${open.true(s)}'`),
+            h('button', { type: 'button', onclick: () => { c.dispatch({ type: 'SetFlag', flag: `ballad.${open.id}`, value: 'tall' }); this.sfx('sfx.sparkle'); verdict(open.id, 'tall'); } }, 'Let it stand. It is a song.')));
+      } else {
+        const nm = balladName(s.flags);
+        parts.push(h('p', {}, `Wynn bows. 'That is all the verses you have earned so far. Do more things!'${nm ? ` In the taverns they call you ${s.player.name} ${nm}.` : ''}`),
+          nm ? h('div', { class: 'row' }, h('button', { class: 'mini', onclick: () => { c.dispatch({ type: 'SetFlag', flag: 'title.worn', value: nm }); this.refreshHud(); } }, `Wear the name "${nm}"`)) : '',
+          this.finishField('ballad'), h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+      }
+      box.replaceChildren(...parts);
+    };
+    const verdict = (id: string, how: 'true' | 'tall') => {
+      const v = VERSES.find((x) => x.id === id)!;
+      box.replaceChildren(...head(), h('p', { class: 'clue-view' }, how === 'true' ? `Wynn sighs and sings the plain verse. 'Harder to dance to. But you were there, and I was not.'` : `Wynn beams. 'It will be all over the valley by Friday.'`),
+        h('p', { class: 'fine' }, v.crowd), h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => render() }, 'Next verse')));
+    };
+    render();
+  }
+
+  /** Close a field game: first time gives marks and the idea in the Lore codex. */
+  private finishField(id: string): HTMLElement {
+    const g = FIELD_GAMES.find((x) => x.id === id)!;
+    const ev = ctx.controller.dispatch({ type: 'FinishFieldGame', game: id });
+    const first = ev.some((e) => e.kind === 'fieldgame' && e.first);
+    if (first) this.sfx('sfx.award');
+    return h('p', { class: 'clue-view fresh', role: 'status' }, h('strong', {}, 'The idea: '), g.idea, first ? ' (+3 marks; it is in your Lore codex.)' : '');
+  }
+
+  private barPair(rows: { label: string; n: number; of: number }[]): HTMLElement {
+    return h('div', { class: 'field-bars' }, ...rows.map((r) => h('div', { class: 'field-bar' },
+      h('span', {}, r.label),
+      h('span', { class: 'track', role: 'img', 'aria-label': `${r.label}: ${r.n} of ${r.of}` }, h('span', { class: 'fill', style: `width:${r.of ? Math.round((100 * r.n) / r.of) : 0}%` })),
+      h('span', { class: 'fine' }, `${r.n} of ${r.of} (${r.of ? Math.round((100 * r.n) / r.of) : 0}%)`))));
+  }
+
+  /** Dov's Three Doors: play by feel, then let the counting frame run 300 rounds, then change one assumption. */
+  openDoors(): void {
+    const c = ctx.controller;
+    const runs = Number(c.state.flags['field.doors.runs'] ?? 0);
+    c.dispatch({ type: 'SetFlag', flag: 'field.doors.runs', value: runs + 1 });
+    const seed = runs + 11;
+    const box = this.openModal('bench-panel wide', "Dov's Three Doors");
+    this.sfx('sfx.page');
+    const tally = { stay: { w: 0, n: 0 }, swap: { w: 0, n: 0 } };
+    let round = 0, guess = '';
+    const doorRow = (onPick: ((d: number) => void) | null, show: (d: number) => string, cls: (d: number) => string) =>
+      h('div', { class: 'doors-row' }, ...[0, 1, 2].map((d) => h('button', { type: 'button', class: `door-crate ${cls(d)}`, disabled: !onPick, 'aria-label': `Crate ${d + 1}: ${show(d) || 'closed'}`, onclick: () => onPick?.(d) },
+        h('span', { class: 'door-num' }, String(d + 1)), h('span', { class: 'door-show' }, show(d)))));
+    const head = () => [this.closeBtn(), h('h2', {}, "Dov's Three Doors"),
+      h('p', {}, "Dov hides a lantern under one of three crates. You pick one. Then Dov, who knows where the lantern is, lifts an empty crate you did not pick. Do you stay, or switch to the last crate?")];
+    const tallyLine = () => h('p', { class: 'fine', role: 'status' }, `Your rounds: stayed ${tally.stay.n} times, won ${tally.stay.w} · switched ${tally.swap.n} times, won ${tally.swap.w}.`);
+    const pick = () => {
+      const prize = doorPrize(seed, round);
+      box.replaceChildren(...head(), h('p', {}, h('strong', {}, `Round ${round + 1}. `), 'Pick a crate.'),
+        doorRow((d) => decide(prize, d), () => '', () => ''), tallyLine(),
+        round >= 6 ? h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => predict() }, "Enough rounds: ask for Dov's counting frame")) : h('p', { class: 'fine' }, `Play at least ${6 - round} more round${6 - round === 1 ? '' : 's'}. Try both plans.`));
+    };
+    const decide = (prize: number, mine: number) => {
+      const opened = pellOpens(prize, mine, true, fairRng(seed * 31 + round));
+      const other = [0, 1, 2].find((d) => d !== mine && d !== opened)!;
+      box.replaceChildren(...head(), h('p', {}, `You picked crate ${mine + 1}. Dov lifts crate ${opened + 1}: empty. Crate ${other + 1} is still closed.`),
+        doorRow(null, (d) => (d === opened ? 'empty' : ''), (d) => (d === mine ? 'mine' : d === opened ? 'open' : '')),
+        h('div', { class: 'row' },
+          h('button', { type: 'button', onclick: () => reveal(prize, mine, opened, mine) }, `Stay with crate ${mine + 1}`),
+          h('button', { type: 'button', onclick: () => reveal(prize, mine, opened, other) }, `Switch to crate ${other + 1}`)), tallyLine());
+    };
+    const reveal = (prize: number, mine: number, opened: number, final: number) => {
+      const plan = final === mine ? 'stay' : 'swap', won = final === prize;
+      tally[plan].n++; if (won) tally[plan].w++;
+      round++;
+      this.sfx(won ? 'sfx.sparkle' : 'sfx.page');
+      box.replaceChildren(...head(), h('p', {}, won ? `The lantern was under crate ${prize + 1}. You win it!` : `The lantern was under crate ${prize + 1}. Not this time.`),
+        doorRow(null, (d) => (d === prize ? '🏮' : 'empty'), (d) => (d === final ? 'mine' : d === opened ? 'open' : '')), tallyLine(),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', 'data-autofocus': true, onclick: () => pick() }, 'Next round')));
+    };
+    const predict = () => {
+      box.replaceChildren(...head(), tallyLine(),
+        h('p', {}, "Dov grins. 'Feelings are free. Before my counting frame runs 300 rounds: how often do you think switching wins?' Your guess is only for you."),
+        h('div', { class: 'notice-options' }, ...['About 1 time in 3', 'About half the time', 'About 2 times in 3'].map((t) => h('button', { type: 'button', onclick: () => { guess = t; frame(); } }, t))));
+    };
+    const frame = () => {
+      const k = runDoors(300, seed, true);
+      box.replaceChildren(...head(), h('p', {}, `The counting frame clacks through 300 rounds, with the same rules. Your guess was: ${guess.toLowerCase()}.`),
+        this.barPair([{ label: 'Stay wins', n: k.stay, of: k.counted }, { label: 'Switch wins', n: k.swap, of: k.counted }]),
+        h('p', {}, "Dov: 'Your first pick is right 1 time in 3. When it is wrong (2 times in 3), I must leave the lantern under the other crate, because I never lift it. So switching wins 2 times in 3.'"),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => forgets() }, "But what if Dov forgets where the lantern is?")));
+    };
+    const forgets = () => {
+      const k = runDoors(300, seed + 7, false);
+      box.replaceChildren(...head(),
+        h('p', {}, `Now Dov has forgotten. He lifts one of the other crates at random. In ${k.setAside} of 300 rounds he shows the lantern, so those rounds are set aside. In the rest:`),
+        this.barPair([{ label: 'Stay wins', n: k.stay, of: k.counted }, { label: 'Switch wins', n: k.swap, of: k.counted }]),
+        h('p', {}, 'The crates look the same, and so do the moves. The only change is what Dov knew. His knowledge was information, and it changed the answer: now it is about half and half.'),
+        this.finishField('doors'),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    pick();
+  }
+
+  /** The Ferry Guest Book: guess how many passengers sign before two share a birthday, then watch twenty boats. */
+  openGuestBook(): void {
+    const c = ctx.controller;
+    const runs = Number(c.state.flags['field.guests.runs'] ?? 0);
+    c.dispatch({ type: 'SetFlag', flag: 'field.guests.runs', value: runs + 1 });
+    const seed = runs + 5;
+    const box = this.openModal('bench-panel wide', 'The Ferry Guest Book');
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, 'The Ferry Guest Book'),
+      h('p', {}, "Tova keeps a guest book on the ferry. Each passenger writes the day of their birthday. 'The ferry folk have an old bet,' she says. 'How many passengers sign before two have the same birthday?'")];
+    let guess = 0;
+    const ask = () => {
+      const slider = h('input', { type: 'range', min: '2', max: '200', value: '60', 'aria-label': 'Your guess: passengers before two share a birthday' }) as HTMLInputElement;
+      const out = h('strong', {}, '60');
+      slider.oninput = () => { out.textContent = slider.value; };
+      box.replaceChildren(...head(), h('p', {}, 'Your guess, for a usual boat: about how many passengers sign before the first shared birthday? (A year has 365 days.)'),
+        h('div', { class: 'row' }, slider, out),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => { guess = Number(slider.value); boat(0); } }, 'Open the book for the first boat')));
+    };
+    const boat = (n: number) => {
+      const g = boatGuests(seed, n);
+      const last = g[g.length - 1], firstAt = g.indexOf(last);
+      box.replaceChildren(...head(), h('p', {}, `Boat ${n + 1}. Your guess: ${guess}.`),
+        h('ol', { class: 'guest-list' }, ...g.map((d, i) => h('li', { class: i === firstAt || i === g.length - 1 ? 'match' : '' }, dayName(d)))),
+        h('p', { role: 'status' }, h('strong', {}, `Passenger ${g.length} shares a birthday with passenger ${firstAt + 1}: ${dayName(last)}.`)),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', 'data-autofocus': true, onclick: () => many() }, 'Read the next twenty boats')));
+    };
+    const many = () => {
+      const counts = Array.from({ length: 20 }, (_, i) => boatGuests(seed, i + 1).length);
+      const max = Math.max(...counts), within23 = counts.filter((k) => k <= 23).length;
+      const W = 280, H = 110, bw = W / counts.length;
+      const svg = `<svg viewBox="0 0 ${W} ${H + 16}" class="guest-chart" role="img" aria-label="Passengers on each of twenty boats before a shared birthday">` +
+        counts.map((k, i) => `<rect x="${i * bw + 2}" y="${H - (k / max) * H}" width="${bw - 4}" height="${(k / max) * H}" class="${k <= 23 ? 'low' : 'high'}"/>`).join('') +
+        `<line x1="0" x2="${W}" y1="${H - (23 / max) * H}" y2="${H - (23 / max) * H}" class="mark"/><text x="2" y="${H - (23 / max) * H - 3}" class="lbl">23</text>` +
+        `<line x1="0" x2="${W}" y1="${H - (Math.min(guess, max) / max) * H}" y2="${H - (Math.min(guess, max) / max) * H}" class="guess"/><text x="${W - 60}" y="${H - (Math.min(guess, max) / max) * H - 3}" class="lbl">your guess</text></svg>`;
+      const chart = h('div', {}); chart.innerHTML = svg;
+      box.replaceChildren(...head(), chart,
+        h('p', { role: 'status' }, `On ${within23} of 20 boats, two passengers shared a birthday by passenger 23. The middle boat needed about ${[...counts].sort((a, b) => a - b)[10]} passengers. Your guess was ${guess}.`),
+        h('p', {}, `Tova laughs. 'It feels like you need hundreds. But you are not waiting for someone to match you. Any two can match. Twenty-three people make 253 pairs.' The chance for 23 people is ${Math.round(shareChance(23) * 1000) / 10}%; for 50 people it is ${Math.round(shareChance(50) * 1000) / 10}%.`),
+        this.finishField('guests'),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    ask();
+  }
+
+  /** The Weigh-House Slate: one line, two careful readers, two answers. The story decides; brackets make it clear. */
+  openSlate(): void {
+    const box = this.openModal('bench-panel wide', 'The Weigh-House Slate');
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, 'The Weigh-House Slate'),
+      h('p', {}, 'Someone chalked a line on the Weigh-House slate. Clerk Venn and young Ren both worked it out with care, and they do not agree.'),
+      h('p', { class: 'slate-line' }, SLATE.written)];
+    const readers = () => {
+      box.replaceChildren(...head(),
+        h('div', { class: 'slate-readers' }, ...SLATE.readers.map((r) => h('div', { class: 'ware' }, h('strong', {}, r.who), h('p', { class: 'fine' }, r.rule),
+          h('ol', { class: 'slate-steps' }, ...r.steps.map((st) => h('li', {}, st)))))),
+        h('p', {}, h('strong', {}, 'Who made a mistake?')),
+        h('div', { class: 'notice-options' },
+          h('button', { type: 'button', onclick: () => note('Venn did. Ren is right.') }, 'Venn did. Ren is right.'),
+          h('button', { type: 'button', onclick: () => note('Ren did. Venn is right.') }, 'Ren did. Venn is right.'),
+          h('button', { type: 'button', onclick: () => note('') }, 'Neither. They follow different rules.')));
+    };
+    const note = (blame: string) => {
+      box.replaceChildren(...head(),
+        h('p', { class: 'clue-view fresh' }, blame
+          ? `${blame} ... but look again: each one followed a rule, step by step, with no slip. The trouble is the line, not the sums.`
+          : 'Yes: both worked carefully. The rules for which sum to do first are a convention that people agreed on, and here two conventions meet.'),
+        h('p', {}, 'Orrin finds the person who chalked it. They tell you what the line was for. Pick the story:'),
+        h('div', { class: 'notice-options' }, ...SLATE.stories.map((st) => h('button', { type: 'button', onclick: () => write(st) }, st.text))));
+    };
+    const write = (st: (typeof SLATE.stories)[number]) => {
+      box.replaceChildren(...head(), h('p', { class: 'clue-view' }, st.text),
+        h('p', {}, 'Rewrite the line so that every reader gets the same answer, and it is the answer this story needs.'),
+        h('div', { class: 'notice-options' }, ...SLATE.clear.map((line) => h('button', { type: 'button', class: 'slate-line small', onclick: () => {
+          const v = evalClear(line);
+          if (v !== st.result) { box.querySelector('.slate-msg')?.remove(); box.append(h('p', { class: 'clue-view slate-msg', role: 'status' }, `That line is clear: everyone gets ${v}. But this story needs ${st.result}. Try the other one.`)); return; }
+          this.sfx('sfx.sparkle');
+          box.replaceChildren(...head(), h('p', { class: 'slate-line' }, line, ` = ${v}`),
+            h('p', {}, "Venn and Ren both read it the same way now. Venn: 'So the sums were never wrong. The line just did not say enough.' Ren: 'Then who decided the rule in the first place?' Orrin: 'People did. A long time ago, so that strangers could read each other's sums.'"),
+            this.finishField('slate'),
+            h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+        } }, line))));
+    };
+    readers();
+  }
+
+  /** A companion loyalty mission: three sources, the companion's blind spot, and a dilemma where every choice costs something. */
+  openLoyalty(id: string): void {
+    const c = ctx.controller;
+    const m = loyaltyOf(id);
+    if (!m) return;
+    const box = this.openModal('bench-panel wide', m.title);
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, m.title), h('p', {}, m.intro)];
+    const done = c.state.flags[`loyalty.${id}`];
+    if (typeof done === 'string') {
+      const ch = m.choices.find((x) => x.id === done)!;
+      box.replaceChildren(this.closeBtn(), h('h2', {}, m.title), h('p', {}, `You chose: ${ch.text}`), h('p', { class: 'clue-view' }, `${m.who}: ${ch.reply}`), h('p', { class: 'fine' }, `What it cost: ${ch.cost}`),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+      return;
+    }
+    const checked = new Set<number>();
+    let slip: 'open' | 'fixed' | 'missed' | null = null;
+    const render = () => {
+      const parts: (HTMLElement | string)[] = [...head(),
+        h('div', { class: 'notice-options' }, ...m.sources.map((src, i) => h('button', { type: 'button', class: checked.has(i) ? 'seen' : '', onclick: () => { checked.add(i); if (slip === null) slip = 'open'; this.sfx('sfx.page'); render(); } }, `${checked.has(i) ? '✓ ' : ''}${src.label}`))),
+        ...m.sources.filter((_, i) => checked.has(i)).map((src) => h('p', { class: 'clue-view' }, h('strong', {}, `${src.label}: `), src.text))];
+      if (slip === 'open') {
+        parts.push(h('p', { class: 'clue-view fresh' }, m.slip.says),
+          h('div', { class: 'notice-options' },
+            h('button', { type: 'button', onclick: () => { slip = 'fixed'; c.dispatch({ type: 'SetFlag', flag: `loyalty.${id}.noticed`, value: true }); this.sfx('sfx.sparkle'); render(); } }, m.slip.notice),
+            h('button', { type: 'button', onclick: () => { slip = 'missed'; render(); } }, 'Let it pass and keep reading.')));
+      } else if (slip === 'fixed') parts.push(h('p', { class: 'fine' }, m.slip.fixed));
+      if (slip === 'missed' && checked.size === m.sources.length) parts.push(h('p', { class: 'fine' }, m.slip.miss));
+      if (checked.size === m.sources.length && slip !== 'open') {
+        parts.push(h('h3', {}, m.question), h('p', { class: 'fine' }, 'Every choice here has a cost. There is no hidden right answer.'),
+          h('div', { class: 'notice-options' }, ...m.choices.map((ch) => h('button', { type: 'button', onclick: () => choose(ch) }, h('span', {}, ch.text), h('span', { class: 'fine', style: 'display:block' }, `Cost: ${ch.cost}`)))));
+      } else if (checked.size < m.sources.length) parts.push(h('p', { class: 'fine' }, `Check all three sources before you decide (${checked.size} of 3).`));
+      box.replaceChildren(...parts);
+    };
+    const choose = (ch: (typeof m.choices)[number]) => {
+      c.dispatch({ type: 'SetFlag', flag: `loyalty.${id}`, value: ch.id });
+      this.sfx('sfx.award');
+      box.replaceChildren(this.closeBtn(), h('h2', {}, m.title), h('p', { class: 'clue-view fresh' }, `${m.who}: ${ch.reply}`), h('p', { class: 'fine' }, `What it cost: ${ch.cost}`),
+        h('p', { class: 'clue-view' }, h('strong', {}, 'The idea: '), m.idea),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    render();
+  }
+
+  /** Lanterns and Bones: Juno's dice table. Is a six 'due'? Which die is loaded? No betting: only evidence. */
+  openBones(): void {
+    const c = ctx.controller;
+    const runs = Number(c.state.flags['field.bones.runs'] ?? 0);
+    c.dispatch({ type: 'SetFlag', flag: 'field.bones.runs', value: runs + 1 });
+    const seed = runs + 3;
+    const box = this.openModal('bench-panel wide', 'Lanterns and Bones');
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, 'Lanterns and Bones'),
+      h('p', {}, "Juno the ferry cook keeps a dice table by the landing. 'Nobody wins anything here,' Juno says, 'except a better guess. Old cooks say: the pot does not know how long you waited.' A small grey creature sits on the table edge, counting on its fingers.")];
+    const r = fairRng(seed * 7 + 1);
+    const rolls: number[] = [];
+    const face = (v: number) => h('span', { class: `die-face${v === 6 ? ' six' : ''}`, 'aria-label': `rolled ${v}` }, String(v));
+    const drought = () => { let n = 0; for (let i = rolls.length - 1; i >= 0 && rolls[i] !== 6; i--) n++; return n; };
+    const table = () => {
+      const d = drought();
+      const claim = d >= 3;
+      box.replaceChildren(...head(),
+        h('div', { class: 'dice-row', role: 'list' }, ...rolls.slice(-12).map(face)),
+        h('p', { class: 'fine', role: 'status' }, rolls.length ? `${rolls.length} rolls. ${d} in a row without a six.` : 'Roll the ferry die.'),
+        claim ? h('p', { class: 'clue-view' }, `The creature squeaks: '${d} without a six! The next one must be a six. It is due! Everyone knows it!'`) : '',
+        h('div', { class: 'row' },
+          h('button', { type: 'button', class: claim ? '' : 'primary', onclick: () => { rolls.push(roll(r)); this.sfx('sfx.click'); table(); } }, 'Roll'),
+          claim ? h('button', { type: 'button', class: 'primary', onclick: () => tally(d) }, "Ask Juno: 'Is it due?'") : ''));
+    };
+    const tally = (d: number) => {
+      const k = dueTest(1200, seed, 3);
+      box.replaceChildren(...head(),
+        h('p', {}, `Juno opens a greasy tally book. 'Twelve hundred rolls of this same die, from many evenings. I marked every roll that came after three or more without a six. You said ${d} in a row. Let us look.'`),
+        this.barPair([{ label: 'Six, after a dry run', n: k.sixes, of: k.after }, { label: 'Six, any roll', n: k.allSixes, of: k.all }]),
+        h('p', {}, "Both are about 1 in 6. The die has no memory of the rolls before. The creature's 'due' feeling is strong, and it is wrong. Juno: 'Its name is the Gambler's Imp. It lives on long waits.'"),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => twoDice() }, "Juno: 'Now a harder one. Two dice.'")));
+    };
+    const twoDice = () => {
+      const { loaded } = diceFor(seed);
+      const rr = fairRng(seed * 19 + 2);
+      const tallies = [[0, 0], [0, 0]];
+      const add = (i: number, n: number) => { for (let k = 0; k < n; k++) { tallies[i][0]++; if (roll(rr, i === loaded ? 1 / 3 : 1 / 6) === 6) tallies[i][1]++; } render(); };
+      const name = ['the red die', 'the bone die'];
+      const render = (msg?: HTMLElement) => box.replaceChildren(...head(),
+        h('p', {}, "Juno sets down a red die and a bone die. 'One of these is loaded: it shows six too often. Roll each as much as you like. Call it when you feel sure enough. No prize, no cost.'"),
+        this.barPair(tallies.map((t, i) => ({ label: `Sixes on ${name[i]}`, n: t[1], of: t[0] }))),
+        h('div', { class: 'row' }, ...[0, 1].flatMap((i) => [
+          h('button', { type: 'button', onclick: () => add(i, 1) }, `Roll ${name[i]}`),
+          h('button', { type: 'button', onclick: () => add(i, 10) }, `Roll ${name[i]} 10 times`)])),
+        tallies[0][0] + tallies[1][0] >= 6
+          ? h('div', { class: 'notice-options' }, ...[0, 1].map((i) => h('button', { type: 'button', onclick: () => call(i) }, `Call it: ${name[i]} is loaded`)))
+          : h('p', { class: 'fine' }, 'Roll at least six times before you call it.'),
+        ...(msg ? [msg] : []));
+      const call = (i: number) => {
+        const n = tallies[0][0] + tallies[1][0];
+        if (i !== loaded) {
+          render(h('p', { class: 'clue-view', role: 'status' }, `Juno turns ${name[i]} over. 'This one is fair. After ${n} rolls, the luck of the bones can still fool you. Roll more, and watch whether the gap stays.'`));
+          return;
+        }
+        this.sfx('sfx.sparkle');
+        box.replaceChildren(...head(),
+          this.barPair(tallies.map((t, k) => ({ label: `Sixes on ${name[k]}`, n: t[1], of: t[0] }))),
+          h('p', {}, `Juno nods. 'Right: ${name[loaded]} is loaded. You used ${n} rolls. ${n < 40 ? 'That was quick. Were you sure, or lucky? With so few rolls, a fair die can look loaded too.' : 'That is a good handful. The more rolls, the less likely a fair die looks this way by chance.'}'`),
+          h('p', {}, "The Gambler's Imp hops off the table and into the reeds, muttering about its next long wait."),
+          this.finishField('bones'),
+          h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+      };
+      render();
+    };
+    table();
+  }
+
+  /** The Missing Word: paint one fact with a word you choose, see who notices what, then name a feeling that lost its word. */
+  openMissingWord(): void {
+    const c = ctx.controller;
+    const box = this.openModal('bench-panel wide', 'The Missing Word');
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, 'The Missing Word'),
+      h('p', {}, `Odo the sign-painter dips his brush. 'Maudie wants a notice: from next market day, ${FACT.what} goes from ${FACT.from} marks to ${FACT.to} marks. The fact is fixed. The word is yours. Every word paints a different picture, so choose with care.'`)];
+    const seen = new Set<string>();
+    const reactions = (w: Wording, reason: boolean) => h('div', { class: 'word-readers' }, ...READERS.map((r) => h('div', { class: 'ware' },
+      h('strong', {}, r.who), h('p', { class: 'fine' }, r.about), h('p', {}, reason ? WITH_REASON[r.id] : w.says[r.id]))));
+    const choose = () => {
+      box.replaceChildren(...head(),
+        h('p', {}, h('strong', {}, 'Try a word on the board. '), 'Odo chalks it lightly first, so you can see how people read it.'),
+        h('div', { class: 'notice-options' }, ...WORDINGS.map((w) => h('button', { type: 'button', class: seen.has(w.id) ? 'seen' : '', onclick: () => preview(w) }, `'${w.word}'${seen.has(w.id) ? ' (tried)' : ''}`))));
+    };
+    const preview = (w: Wording) => {
+      seen.add(w.id);
+      box.replaceChildren(...head(), h('p', { class: 'slate-line small' }, w.line), h('p', { class: 'fine' }, w.tone), reactions(w, false),
+        h('div', { class: 'row' },
+          h('button', { type: 'button', onclick: () => choose() }, 'Chalk another word'),
+          seen.size >= 2
+            ? h('button', { type: 'button', class: 'primary', onclick: () => paint(w) }, `Paint '${w.word}' for good`)
+            : h('span', { class: 'fine' }, 'Try one more word before you paint.')));
+    };
+    const paint = (w: Wording) => {
+      box.replaceChildren(...head(), h('p', { class: 'slate-line small' }, w.line),
+        h('p', {}, `Maudie hurries over. 'There is room for one more line. Will you paint why? ${FACT.reason[0].toUpperCase()}${FACT.reason.slice(1)}.'`),
+        h('div', { class: 'notice-options' },
+          h('button', { type: 'button', onclick: () => painted(w, true) }, 'Paint the reason too'),
+          h('button', { type: 'button', onclick: () => painted(w, false) }, 'Leave only the toll')));
+    };
+    const painted = (w: Wording, reason: boolean) => {
+      c.dispatch({ type: 'SetFlag', flag: 'word.painted', value: w.id });
+      c.dispatch({ type: 'SetFlag', flag: 'word.reason', value: reason });
+      this.sfx('sfx.sparkle');
+      box.replaceChildren(...head(), h('p', { class: 'slate-line small' }, paintedNotice(c.state.flags) ?? w.line), reactions(w, reason),
+        h('p', { class: 'fine' }, reason
+          ? 'With a reason on the board, people argue about the beams, not only the price.'
+          : 'With only the toll on the board, people read the word and fill in the reason for themselves.'),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => chest() }, "Odo: 'Now, about my word chest...'")));
+    };
+    const chest = () => {
+      const heard = new Set<string>();
+      const render = () => box.replaceChildren(this.closeBtn(), h('h2', {}, 'The Missing Word'),
+        h('p', {}, "Odo opens his word chest. One slot is empty, and grey dust is on the lid. A Hush Moth has eaten a word. Since then, people feel something they cannot say. Ask them what they feel."),
+        h('div', { class: 'notice-options' }, ...READERS.map((r) => h('button', { type: 'button', onclick: () => { heard.add(r.id); render(); } }, `Ask ${r.who}${heard.has(r.id) ? ' (heard)' : ''}`))),
+        ...READERS.filter((r) => heard.has(r.id)).map((r) => h('p', { class: 'clue-view' }, h('strong', {}, `${r.who}: `), ATTEMPTS[r.id])),
+        heard.size === READERS.length
+          ? h('div', {}, h('p', {}, "Odo: 'Three people, three pieces of one feeling. The old word is gone. We need a new one. Which will you carve?'"),
+            h('div', { class: 'notice-options' }, ...COINAGES.map((k) => h('button', { type: 'button', onclick: () => coin(k) }, `'${k.word}': ${k.meaning}`))))
+          : h('p', { class: 'fine' }, 'Hear everyone before you carve a word.'));
+      render();
+    };
+    const coin = (k: Coinage) => {
+      c.dispatch({ type: 'SetFlag', flag: 'word.coined', value: k.id });
+      box.replaceChildren(this.closeBtn(), h('h2', {}, 'The Missing Word'),
+        h('p', { class: 'slate-line small' }, k.word),
+        h('p', {}, `You carve '${k.word}' into a new tile and drop it in the chest. The Hush Moth shakes the dust from its wings and flutters away. ${k.centre}`),
+        h('p', {}, "Odo: 'A word is a lantern. The person who holds it decides where the light falls. You held it today.'"),
+        this.finishField('word'),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    const now = paintedNotice(c.state.flags);
+    if (now) {
+      const w = wordingOf(c.state.flags['word.painted'])!, k = coinageOf(c.state.flags['word.coined']);
+      box.replaceChildren(...head(), h('p', {}, 'Your notice is still on the board:'), h('p', { class: 'slate-line small' }, now), reactions(w, c.state.flags['word.reason'] === true),
+        k ? h('p', { class: 'fine' }, `In Odo's word chest, your tile still says '${k.word}'. People use it now.`) : h('p', { class: 'fine' }, "Odo's word chest still has an empty slot."),
+        h('div', { class: 'row' },
+          h('button', { type: 'button', onclick: () => choose() }, 'Paint a new notice'),
+          k ? h('button', { type: 'button', class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Leave it') : h('button', { type: 'button', class: 'primary', onclick: () => chest() }, 'Open the word chest')));
+    } else choose();
+  }
+
   /** A fallacy seal in the Undercroft: it speaks a bad argument; name the flaw to open it. */
   openSeal(id: string): void {
     const c = ctx.controller;
@@ -3211,6 +3860,663 @@ export class UI implements UIApi {
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
+  openScoutTable(): void {
+    this.openModal('scout-table wide', 'Scout’s turn board', this.closeBtn(),
+      h('h2', {}, 'Scout’s turn board'), buildScoutBoard(ctx.controller));
+  }
+
+  openCouncilClock(): void {
+    const controller = ctx.controller;
+    const picture = h('canvas', { class: 'mark', width: 172, height: 83, 'aria-hidden': 'true' });
+    const watches = h('div', { class: 'row wrap', role: 'group', 'aria-label': 'Watches on the bench' });
+    const output = h('div', { 'aria-live': 'polite' });
+    const action = h('div', {});
+    const paint = (watch: string, reference?: string) => {
+      const g = picture.getContext('2d');
+      if (!g) return;
+      g.fillStyle = '#342e43'; g.fillRect(0, 0, picture.width, picture.height);
+      const face = (x: number, time?: string) => {
+        g.fillStyle = time ? '#ede1b4' : '#67627e';
+        g.beginPath(); g.arc(x, 35, 27, 0, 2 * Math.PI); g.fill();
+        if (!time) return;
+        const [hour, minute] = time.split(':').map(Number);
+        g.strokeStyle = '#443c44';
+        const hand = (fraction: number, length: number, width: number) => {
+          const angle = 2 * Math.PI * fraction - Math.PI / 2;
+          g.lineWidth = width;
+          g.beginPath(); g.moveTo(x, 35);
+          g.lineTo(x + length * Math.cos(angle), 35 + length * Math.sin(angle)); g.stroke();
+        };
+        hand((hour + minute / 60) / 12, 13, 3);
+        hand(minute / 60, 22, 1);
+      };
+      face(43, watch);
+      face(129, reference);
+      g.fillStyle = '#ede1b4'; g.font = '10px monospace'; g.textAlign = 'center';
+      g.fillText('Watch', 43, 76); g.fillText('Reference', 129, 76);
+    };
+    const select = (trial: CouncilTrial) => {
+      for (const button of watches.querySelectorAll('button')) {
+        button.setAttribute('aria-pressed', String(button.dataset.trial === trial));
+      }
+      const reading = councilClock(trial);
+      paint(reading.watch);
+      output.textContent = `The watch reads ${reading.watch}.`;
+      const compare = h('button', { type: 'button', onclick: () => {
+        paint(reading.watch, reading.reference);
+        output.textContent = `Watch ${reading.watch} · Reference ${reading.reference}.`;
+        const advance = h('button', { type: 'button', onclick: () => {
+          const events = controller.dispatch({ type: 'RunCouncilClock', trial });
+          if (events.some((event) => event.kind === 'error')) return;
+          const nextReference = reading.reference.slice(0, 3) + '01';
+          paint(reading.after, nextReference);
+          output.textContent = `One minute later, watch ${reading.after} · reference ${nextReference}.`;
+          clear(action);
+          watches.querySelector<HTMLButtonElement>('[aria-pressed="true"]')?.focus();
+        } }, 'Advance one minute');
+        action.replaceChildren(advance);
+        advance.focus();
+      } }, 'Uncover the reference clock');
+      action.replaceChildren(compare);
+      compare.focus();
+    };
+    for (const [index, trial] of COUNCIL_TRIALS.entries()) {
+      watches.append(h('button', { type: 'button', 'data-trial': trial, 'aria-pressed': 'false', onclick: () => select(trial) }, `Set watch ${index + 1} on the bench`));
+    }
+    paint(councilClock('working').watch);
+    this.openModal('council-clock wide', 'Watch bench', this.closeBtn(), h('h2', {}, 'Watch bench'),
+      h('p', {}, 'The three watches show the same time. Uncover the reference clock and watch what changes over a minute.'),
+      picture, watches, output, action);
+  }
+
+  openIslandPlan(): void {
+    const controller = ctx.controller;
+    let landing: IslandLanding = 'high';
+    let selected: IslandRoute | null = null;
+    const labels: Record<IslandRoute, string> = { ridge: 'Ridge cart', ferry: 'Ferry', marsh: 'Marsh handcart' };
+    const conditions = h('div', { class: 'row wrap', role: 'group', 'aria-label': 'Landing conditions' });
+    const choices = h('div', { class: 'row wrap', role: 'group', 'aria-label': 'Routes for the order' });
+    const output = h('div', { 'aria-live': 'polite' });
+    const diagram = h('canvas', { class: 'mark', width: 188, height: 94, 'aria-hidden': 'true' });
+    const traces = {
+      ridge: [[15, 47], [27, 17], [134, 17], [171, 48]],
+      ferry: [[15, 47], [57, 43], [106, 43], [171, 48]],
+      marsh: [[15, 47], [37, 74], [127, 71], [171, 48]],
+    } as const;
+    const paint = () => {
+      const g = diagram.getContext('2d');
+      if (!g) return;
+      g.fillStyle = '#447784'; g.fillRect(0, 0, 188, 94);
+      g.fillStyle = '#74876c'; g.fillRect(0, 0, 42, 94); g.fillRect(142, 0, 46, 94);
+      g.fillRect(32, 5, 120, 23); g.fillRect(27, 62, 122, 32);
+      g.fillStyle = '#8e8366'; g.fillRect(57, 10, 50, 5); g.fillRect(72, 7, 40, 3);
+      g.fillStyle = '#9bae8c';
+      for (let x = 59; x <= 119; x += 21) g.fillRect(x, 65, 10, 21);
+      for (const route of ISLAND_ROUTES) {
+        g.strokeStyle = route === selected ? '#fff0ab' : '#283d42';
+        g.lineWidth = route === selected ? 3 : 1;
+        g.beginPath();
+        for (const [i, [x, y]] of traces[route].entries()) {
+          if (i === 0) g.moveTo(x, y);
+          else g.lineTo(x, y);
+        }
+        g.stroke();
+      }
+      g.fillStyle = '#eed9a3'; g.fillRect(10, 43, 10, 9); g.fillRect(167, 43, 10, 9);
+    };
+    for (const condition of ISLAND_LANDINGS) {
+      const waiting = condition === 'low' && controller.state.flags['island.lower.read'] !== true;
+      conditions.append(h('button', {
+        type: 'button', 'data-landing': condition, 'aria-pressed': String(condition === landing), disabled: waiting,
+        onclick: () => {
+          landing = condition;
+          selected = null;
+          for (const button of conditions.querySelectorAll('button')) button.setAttribute('aria-pressed', String(button.dataset.landing === landing));
+          for (const button of choices.querySelectorAll('button')) button.setAttribute('aria-pressed', 'false');
+          clear(output);
+          paint();
+        },
+      }, condition === 'high' ? 'High landing' : waiting ? 'Lower landing report at the dock' : 'Lower landing'));
+    }
+    for (const route of ISLAND_ROUTES) {
+      choices.append(h('button', { type: 'button', 'data-route': route, 'aria-pressed': 'false', onclick: () => {
+        const events = controller.dispatch({ type: 'RunIslandPlan', route, landing });
+        if (events.some((event) => event.kind === 'error')) return;
+        selected = route;
+        for (const button of choices.querySelectorAll('button')) button.setAttribute('aria-pressed', String(button.dataset.route === route));
+        const result = islandPlan(landing, route);
+        output.replaceChildren(
+          h('p', {}, h('strong', {}, 'Transport chart'), ` · ${result.capacity} crates per run · ${result.circuits} runs`,
+            ` · first load at ${result.minutes / result.circuits} min · all crates at ${result.minutes} min`),
+          h('p', {}, h('strong', {}, 'Quiet margin map'), ` · ${result.crossings} marked strip crossings across those runs`));
+        paint();
+      } }, labels[route]));
+    }
+    paint();
+    this.openModal('island-plan wide', 'Planning table', this.closeBtn(), h('h2', {}, 'Planning table'),
+      h('p', {}, `Move ${ISLAND_CRATES} crates in a 50-minute shift. The transport chart uses a complete circuit for each run. The quiet map counts visits to marked strips.`),
+      diagram, conditions, choices, output);
+  }
+
+  openVoicesDesk(): void {
+    const controller = ctx.controller;
+    const headings: Record<VoiceView, string> = { original: 'Open the source', guide: 'Open the guide copy' };
+    const cards = h('div', { class: 'voices-records' });
+    for (const source of VOICE_SOURCES) {
+      const { label, date } = voiceReading(source, 'original');
+      const allowed = source !== 'carrier' || controller.state.flags['voices.permissions.read'] === true;
+      const output = h('div', { 'aria-live': 'polite' });
+      const controls = h('div', { class: 'row wrap' });
+      for (const view of VOICE_VIEWS) {
+        controls.append(h('button', {
+          type: 'button', 'data-view': view, 'aria-pressed': 'false', disabled: !allowed,
+          onclick: () => {
+            const events = controller.dispatch({ type: 'RunVoiceReading', source, view });
+            if (events.some((event) => event.kind === 'error')) return;
+            for (const button of controls.querySelectorAll('button')) {
+              button.setAttribute('aria-pressed', String(button.dataset.view === view));
+            }
+            const reading = voiceReading(source, view);
+            output.replaceChildren(h('p', {}, reading.text), h('p', { class: 'fine' }, reading.purpose));
+            if ('speechSynthesis' in window) output.append(h('button', { type: 'button', class: 'mini', onclick: () => this.speak(reading.text) }, 'Read this excerpt aloud'));
+          },
+        }, headings[view]));
+      }
+      cards.append(h('section', { class: 'voices-record' }, h('h3', {}, label), h('p', { class: 'fine' }, date),
+        controls, allowed ? output : h('p', {}, 'See the permission card by the listening desk.')));
+    }
+    this.openModal('voices-desk wide', 'Listening desk', this.closeBtn(), h('h2', {}, 'Listening desk'), cards);
+  }
+
+  openCivicConsole(): void {
+    const controller = ctx.controller;
+    let sample: CivicSample = 'desk';
+    const sampleLabels: Record<CivicSample, string> = { desk: 'Desk register', combined: 'Desk and walking registers' };
+    const ruleLabels: Record<CivicRule, string> = {
+      rank: 'Send all windows to the larger count',
+      reserve: 'Start with one window per stop',
+      even: 'Give both stops two windows',
+    };
+    const registers = h('div', { class: 'row wrap', role: 'group', 'aria-label': 'Registers on the console' });
+    const rules = h('div', { class: 'row wrap', role: 'group', 'aria-label': 'Rules for assigning windows' });
+    const counts = h('p', { 'aria-live': 'polite' });
+    const plan = h('div', { 'aria-live': 'polite' });
+    const drawSample = () => {
+      const { counts: { steps, canal } } = civicAllocation(sample, 'even');
+      counts.textContent = `Requests on this register: ${steps} at North Steps · ${canal} at Canal Walk.`;
+      for (const button of registers.querySelectorAll('button')) {
+        button.setAttribute('aria-pressed', String(button.dataset.sample === sample));
+      }
+      for (const button of rules.querySelectorAll('button')) button.setAttribute('aria-pressed', 'false');
+      clear(plan);
+    };
+    for (const register of CIVIC_SAMPLES) {
+      const waiting = register === 'combined' && controller.state.flags['civic.walk.read'] !== true;
+      registers.append(h('button', {
+        type: 'button', 'data-sample': register, 'aria-pressed': 'false',
+        disabled: waiting,
+        onclick: () => { sample = register; drawSample(); },
+      }, waiting ? 'Walking register at Canal Walk' : sampleLabels[register]));
+    }
+    for (const rule of CIVIC_RULES) {
+      rules.append(h('button', { type: 'button', 'data-rule': rule, 'aria-pressed': 'false', onclick: () => {
+        const events = controller.dispatch({ type: 'RunCivicTrial', sample, rule });
+        if (events.some((event) => event.kind === 'error')) return;
+        for (const button of rules.querySelectorAll('button')) {
+          button.setAttribute('aria-pressed', String(button.dataset.rule === rule));
+        }
+        const { windows } = civicAllocation(sample, rule);
+        plan.replaceChildren(h('p', {}, `Library windows: ${windows.steps} at North Steps · ${windows.canal} at Canal Walk.`),
+          h('div', { class: 'civic-windows', 'aria-hidden': 'true' },
+            ...Array.from({ length: 4 }, (_, index) => h('span', { class: index < windows.steps ? 'steps' : 'canal' },
+              index < windows.steps ? 'Steps' : 'Canal'))));
+      } }, ruleLabels[rule]));
+    }
+    drawSample();
+    this.openModal('civic-console', 'Route console', this.closeBtn(), h('h2', {}, 'Route console'),
+      h('p', {}, 'Four library appointment windows are free. Put a register on the console and run a rule.'),
+      registers, counts, rules, plan);
+  }
+
+  openWaterGate(): void {
+    const controller = ctx.controller;
+    const condition: WaterCondition = controller.state.flags['water.repaired'] === true ? 'repaired' : 'drought';
+    const labels: Record<WaterSetting, string> = { fields: 'Open toward fields', split: 'Split the flow', channel: 'Open toward the lower channel' };
+    const picture = h('canvas', { class: 'mark', width: 184, height: 96, 'aria-hidden': 'true' });
+    const controls = h('div', { class: 'row wrap', role: 'group', 'aria-label': 'Gate lever position' });
+    const readings = h('div', { 'aria-live': 'polite' });
+    const paint = (flow?: ReturnType<typeof waterTrial>) => {
+      const g = picture.getContext('2d');
+      if (!g) return;
+      g.fillStyle = '#223b45'; g.fillRect(0, 0, 184, 96);
+      g.fillStyle = '#654e3d'; g.fillRect(0, 3, 184, 23); g.fillRect(72, 42, 40, 51);
+      g.fillStyle = '#745c45'; g.fillRect(3, 57, 56, 36); g.fillRect(127, 57, 54, 36);
+      g.fillStyle = '#527258';
+      for (let x = 7; x < 57; x += 8) g.fillRect(x, 63, 3, 25);
+      g.fillStyle = '#4f6361';
+      for (let x = 133; x < 175; x += 7) g.fillRect(x, 61, 3, 28);
+      const stream = (x: number, y: number, w: number, height: number) => {
+        g.fillStyle = '#398ba3'; g.fillRect(x, y, w, height);
+        g.fillStyle = '#62b5c4'; g.fillRect(x, y, w, 2);
+      };
+      stream(83, 0, 18, 45);
+      g.fillStyle = '#bba883'; g.fillRect(73, 28, 38, 7);
+      g.fillStyle = '#453b37'; g.fillRect(89, 23, 6, 18);
+      if (!flow) return;
+      stream(33, 42, 58, flow.farm + 3);
+      stream(33, 46, flow.farm + 3, 18);
+      stream(93, 42, 54, flow.river + 3);
+      stream(145, 45, flow.river + 3, 36);
+      if (flow.leak) stream(89, 45, flow.leak + 2, 28);
+    };
+    for (const setting of WATER_SETTINGS) {
+      controls.append(h('button', { type: 'button', 'data-setting': setting, 'aria-pressed': 'false', onclick: () => {
+        const events = controller.dispatch({ type: 'RunWaterTrial', setting });
+        if (events.some((event) => event.kind === 'error')) return;
+        for (const button of controls.querySelectorAll('button')) {
+          button.setAttribute('aria-pressed', String(button.dataset.setting === setting));
+        }
+        const flow = waterTrial(condition, setting);
+        paint(flow);
+        readings.replaceChildren(h('p', {}, h('strong', {}, `${flow.incoming} buckets in`),
+          ` · ${flow.farm} to the fields · ${flow.river} to the lower channel · ${flow.leak} lost at the gate`));
+        if (condition === 'repaired' && controller.state.flags[`water.trial.drought.${setting}`] === true) {
+          const before = waterTrial('drought', setting);
+          readings.append(h('p', {}, `Before repair at this setting: ${before.farm} to the fields, ${before.river} to the lower channel, ${before.leak} lost at the gate.`));
+        }
+      } }, labels[setting]));
+    }
+    paint();
+    this.openModal('water-gate', 'Trial gate', this.closeBtn(), h('h2', {}, 'Trial gate'),
+      h('p', {}, condition === 'drought' ? 'Drought trial. Twelve buckets enter the model. Move the lever and follow where the water goes.' :
+        'After the repair. Run the gate with the same twelve buckets entering the model.'),
+      picture, controls, readings);
+  }
+
+  openMarketScale(): void {
+    const controller = ctx.controller;
+    const labels: Record<MarketBasis, string> = {
+      gross: 'Weigh the filled baskets',
+      net: 'Lift out the baskets',
+      wick: 'Set aside the short fibres',
+    };
+    const masses: Record<MarketBasis, string> = {
+      gross: 'Fibre and basket',
+      net: 'All fibre',
+      wick: 'Wick-length fibre',
+    };
+    const picture = h('canvas', { width: 184, height: 78, class: 'mark', 'aria-hidden': 'true' }) as HTMLCanvasElement;
+    const controls = h('div', { class: 'row wrap', role: 'group', 'aria-label': 'Choose what goes on the scale' });
+    const live = h('div', { 'aria-live': 'polite' });
+    const available = h('p', { role: 'status' });
+    const purse = h('input', {
+      type: 'range', id: 'market-purse', min: 6, max: 12, step: 1, value: 8,
+      oninput: (event: Event) => updatePurse((event.currentTarget as HTMLInputElement).valueAsNumber),
+      onkeydown: (event: KeyboardEvent) => { if (event.key.startsWith('Arrow')) event.stopPropagation(); },
+    });
+    const updatePurse = (credits: number) => {
+      purse.setAttribute('aria-valuetext', `${credits} credits`);
+      const within = marketOffersWithin(credits);
+      const offers = within.length === 0 ? 'neither lot fits' :
+        within.length === 1 ? `only lot ${within[0].toUpperCase()} fits` : 'either lot fits';
+      available.textContent = `With ${credits} credits: ${offers}.`;
+    };
+    const paint = (basis?: MarketBasis) => {
+      const g = picture.getContext('2d');
+      if (!g) return;
+      g.fillStyle = '#302c49'; g.fillRect(0, 0, 184, 78);
+      g.fillStyle = '#705146'; g.fillRect(0, 59, 184, 19);
+      g.fillStyle = '#a17151'; g.fillRect(0, 59, 184, 3);
+      for (const [index, row] of marketComparison(basis ?? 'gross').entries()) {
+        const x = 47 + index * 90;
+        const depth = basis ? Math.round(row.mass / 170) : 0;
+        g.fillStyle = '#382f3d'; g.fillRect(x - 28, 50, 56, 9);
+        g.fillStyle = '#bf9f6b'; g.fillRect(x - 4, 40 + depth, 8, 12 - depth);
+        g.fillStyle = '#7e9ea0'; g.fillRect(x - 28, 35 + depth, 56, 5);
+        g.fillStyle = '#b2c7be'; g.fillRect(x - 27, 35 + depth, 54, 2);
+        const top = 35 + depth;
+        g.fillStyle = index === 0 ? '#dfb46c' : '#b1c981';
+        const height = basis === 'wick' && index === 0 ? 11 : 17;
+        for (let offset = -16; offset <= 16; offset += 4) {
+          g.fillRect(x + offset, top - height + (Math.abs(offset) % 3), 2, height);
+        }
+        if (!basis || basis === 'gross') {
+          g.fillStyle = '#b9774d'; g.fillRect(x - 20, top - 11, 40, 11);
+          g.fillStyle = '#d79c59'; g.fillRect(x - 22, top - 11, 44, 2);
+          for (let offset = -16; offset <= 16; offset += 8) g.fillRect(x + offset, top - 8, 2, 8);
+        }
+        g.fillStyle = '#e9d7a9'; g.font = 'bold 9px monospace';
+        g.fillText(row.id.toUpperCase(), x - 3, 69);
+      }
+    };
+    const read = (basis: MarketBasis) => {
+      const events = controller.dispatch({ type: 'WeighMarketLots', basis });
+      if (events.some((event) => event.kind === 'error')) return;
+      for (const button of controls.querySelectorAll('button')) {
+        button.setAttribute('aria-pressed', String(button.dataset.basis === basis));
+      }
+      paint(basis);
+      clear(live);
+      live.append(h('table', { class: 'market-readings' },
+        h('caption', {}, masses[basis]),
+        h('thead', {}, h('tr', {}, ...['Lot', 'Mass', 'Whole lot', 'Grams per credit'].map((text) => h('th', { scope: 'col' }, text)))),
+        h('tbody', {}, ...marketComparison(basis).map(({ id, price, mass }) => h('tr', {},
+          h('th', { scope: 'row' }, id.toUpperCase()), h('td', {}, `${mass} g`),
+          h('td', {}, `${price} credits`), h('td', {}, (mass / price).toLocaleString('en', { maximumFractionDigits: 1 })))))));
+    };
+    for (const basis of MARKET_BASES) {
+      controls.append(h('button', { type: 'button', 'data-basis': basis, 'aria-pressed': 'false', onclick: () => read(basis) }, labels[basis]));
+    }
+    paint();
+    updatePurse(8);
+    this.openModal('market-scale', 'Test scale', this.closeBtn(), h('h2', {}, 'Test scale'),
+      h('p', {}, 'Two fibre lots from the simulated market. Their prices stay fixed while you change what goes on the scale.'),
+      picture, controls, live,
+      h('details', {}, h('summary', {}, 'Try a shopper’s purse'),
+        h('label', { for: 'market-purse' }, 'Credits to spend'), purse, available));
+  }
+
+  openStageRehearsal(): void {
+    const controller = ctx.controller;
+    const labels = { pause: 'Pause before the move', move: 'Move before the pause' };
+    const picture = h('canvas', { width: '170', height: '82', class: 'mark', 'aria-hidden': 'true' }) as HTMLCanvasElement;
+    const controls = h('div', { class: 'row' });
+    const captions = h('ol', { class: 'history' });
+    const live = h('p', { role: 'status', 'aria-live': 'polite' });
+    const paint = (moved: boolean) => {
+      const g = picture.getContext('2d');
+      if (!g) return;
+      g.fillStyle = '#302c48'; g.fillRect(0, 0, 170, 82);
+      g.fillStyle = '#80556d'; g.fillRect(0, 0, 19, 63); g.fillRect(151, 0, 19, 63);
+      g.fillStyle = '#b38b67'; g.fillRect(19, 62, 132, 20);
+      g.fillStyle = '#d2ae79'; g.fillRect(116, 16, 24, 46);
+      g.fillStyle = '#4d474f'; g.fillRect(120, 20, 16, 42);
+      const actor = (x: number, colour: string) => {
+        g.fillStyle = '#e0bd91'; g.fillRect(x + 3, 34, 8, 8);
+        g.fillStyle = colour; g.fillRect(x, 42, 14, 15);
+        g.fillStyle = '#292a35'; g.fillRect(x + 2, 57, 4, 5); g.fillRect(x + 8, 57, 4, 5);
+      };
+      actor(moved ? 92 : 39, '#4e9186');
+      actor(128, '#ca9b5b');
+      const crate = moved ? 108 : 58;
+      g.fillStyle = '#7e5d4e'; g.fillRect(crate, 49, 13, 13);
+      g.fillStyle = '#bc9265'; g.fillRect(crate, 50, 13, 2); g.fillRect(crate + 2, 53, 2, 8);
+    };
+    const choose = () => {
+      clear(controls);
+      for (const cue of STAGE_CUES) {
+        const recorded = controller.state.flags[`stage.rehearsal.${cue}`] === true;
+        controls.append(h('button', { type: 'button', onclick: () => start(cue) }, labels[cue] + (recorded ? ' (recorded)' : '')));
+      }
+    };
+    const start = (cue: StageCue) => {
+      const beats = stageRehearsal(cue);
+      let position = 0;
+      clear(captions); clear(controls); paint(false);
+      live.textContent = labels[cue] + '.';
+      const advance = h('button', { type: 'button', onclick: () => {
+        const beat = beats[position++];
+        captions.append(h('li', {}, beat.text));
+        live.textContent = beat.text;
+        if (beat.kind === 'move') paint(true);
+        if (position < beats.length) return;
+        const events = controller.dispatch({ type: 'RunStageRehearsal', cue });
+        if (!events.some((event) => event.kind === 'error')) live.textContent += ' Rehearsal recorded.';
+        choose();
+        controls.querySelector('button')?.focus();
+      } }, 'Advance the rehearsal');
+      controls.append(advance);
+      advance.focus();
+    };
+    choose();
+    paint(false);
+    this.openModal('stage-rehearsal', 'Cue table', this.closeBtn(), h('h2', {}, 'Cue table'),
+      h('p', {}, 'Place the pause and see how the order changes the scene.'), picture, controls, captions, live);
+  }
+
+  openSeaChart(chartId: string): void {
+    if (chartId !== 'harbour' && chartId !== 'shoal') return;
+    const chart = seaChart(chartId);
+    const picture = h('canvas', { width: '170', height: '90', class: 'mark', 'aria-hidden': 'true' }) as HTMLCanvasElement;
+    const notes = h('div', {});
+    const live = h('p', { role: 'status', 'aria-live': 'polite' });
+    const visible = new Set<'marks' | 'edge'>();
+    const draw = () => {
+      const g = picture.getContext('2d');
+      if (g) {
+        g.fillStyle = '#82b8c1'; g.fillRect(0, 0, 170, 90);
+        g.fillStyle = '#e7d4a6';
+        g.beginPath(); g.moveTo(0, 0); g.lineTo(170, 0); g.lineTo(170, 19);
+        g.lineTo(84, 30); g.lineTo(50, 49); g.lineTo(0, 72); g.closePath(); g.fill();
+        g.strokeStyle = '#2b4543'; g.lineWidth = 2; g.beginPath();
+        for (const [i, mark] of chart.marks.entries()) {
+          if (i === 0) g.moveTo(mark.x, mark.y); else g.lineTo(mark.x, mark.y);
+        }
+        g.stroke();
+        if (visible.has('edge')) {
+          g.fillStyle = 'rgba(30, 43, 50, 0.26)';
+          const strip = () => {
+            g.moveTo(19, 12); g.lineTo(chart.edge, 54); g.lineTo(chart.edge, 72); g.lineTo(19, 35); g.closePath();
+          };
+          if (chartId === 'shoal') {
+            g.beginPath(); g.rect(0, 0, 170, 90); strip(); g.fill('evenodd');
+          } else {
+            g.fillRect(chart.edge, 0, 170 - chart.edge, 90);
+          }
+          g.setLineDash([4, 4]);
+          g.beginPath();
+          if (chartId === 'shoal') strip();
+          else { g.moveTo(chart.edge, 2); g.lineTo(chart.edge, 88); }
+          g.stroke();
+          g.setLineDash([]);
+        }
+        if (visible.has('marks')) {
+          g.fillStyle = '#273741'; g.font = 'bold 11px sans-serif';
+          chart.marks.forEach((mark, i) => {
+            g.fillRect(mark.x - 2, mark.y - 2, 5, 5);
+            g.fillText(String(i + 1), mark.x + 4, mark.y - 5);
+          });
+        }
+      }
+      clear(notes);
+      if (visible.has('marks')) notes.append(h('ol', {}, ...chart.marks.map((mark) => h('li', {}, mark.name))));
+      if (visible.has('edge')) notes.append(h('p', {}, chart.limit));
+    };
+    const layer = (id: 'marks' | 'edge', label: string) => {
+      const button = h('button', { type: 'button', 'aria-pressed': 'false', onclick: () => {
+        if (visible.has(id)) return;
+        visible.add(id);
+        button.setAttribute('aria-pressed', 'true');
+        draw();
+        if (visible.size === 2 && !ctx.controller.dispatch({ type: 'ReadSeaChart', chart: chartId }).some((event) => event.kind === 'error')) {
+          live.textContent = 'Survey notes filed.';
+        }
+      } }, label);
+      return button;
+    };
+    draw();
+    this.openModal('sea-chart', chart.title, this.closeBtn(), h('h2', {}, chart.title),
+      h('p', { class: 'fine' }, 'Fictional chart. The line shows the survey’s reach.'),
+      picture, h('div', { class: 'row' }, layer('marks', 'Show named marks'), layer('edge', 'Show survey edge')), notes, live);
+  }
+
+  openCopyComparison(edition: string): void {
+    if (edition !== 'press' && edition !== 'landing' && edition !== 'proof') return;
+    const { before, after, lost, restored } = compareCopy(edition);
+    const columns = h('div', { class: 'two-col' });
+    const status = h('p', { role: 'status', 'aria-live': 'polite' });
+    const aligned = new Set<'time' | 'credit'>();
+    const draw = () => {
+      clear(columns);
+      for (const record of [before, after]) {
+        columns.append(h('section', { class: 'card' },
+          h('h3', {}, record.name),
+          aligned.has('time') ? h('p', { class: 'fine' }, record.time || 'No time mark on this edition.') : null,
+          h('p', {}, record.claim),
+          aligned.has('credit') ? h('p', { class: 'fine' }, record.credit || 'No source line on this edition.') : null));
+      }
+    };
+    const button = (field: 'time' | 'credit', label: string) => {
+      const control = h('button', { type: 'button', 'aria-pressed': 'false', onclick: () => {
+        if (aligned.has(field)) return;
+        aligned.add(field);
+        control.setAttribute('aria-pressed', 'true');
+        draw();
+        if (aligned.size === 2) {
+          const events = ctx.controller.dispatch({ type: 'CompareCopy', edition });
+          if (!events.some((e) => e.kind === 'error')) {
+            status.textContent = restored.length ? `Repair checked. Both lines are back: “${restored.join('”, “')}”.`
+              : `Copy checked. This step lost “${lost.join('”, “')}”.`;
+          }
+        } else {
+          status.textContent = field === 'time' ? 'The time marks are lined up.' : 'The source lines are lined up.';
+        }
+      } }, label);
+      return control;
+    };
+    draw();
+    this.openModal('copy-comparison wide', after.name, this.closeBtn(), h('h2', {}, 'Compare the copies'),
+      columns, h('div', { class: 'row' }, button('time', 'Line up the time marks'), button('credit', 'Line up the source lines')), status);
+  }
+
+  openMetalTrial(sampleId: string): void {
+    if (!Object.hasOwn(METAL_SAMPLES, sampleId)) return;
+    const sample = readMetalSample(sampleId);
+    const controller = ctx.controller;
+    const live = h('p', { role: 'status', 'aria-live': 'polite' }, 'The pan is empty.');
+    const notes = h('ul', {});
+    const refreshNotes = () => {
+      clear(notes);
+      for (const [id, reading] of Object.entries(METAL_SAMPLES)) {
+        if (controller.state.flags[`metal.test.${id}`] === true) {
+          notes.append(h('li', {}, `${reading.name}: ${reading.mass} balance units.`));
+        }
+      }
+    };
+    const picture = h('canvas', { width: '144', height: '64', class: 'mark', 'aria-hidden': 'true' }) as HTMLCanvasElement;
+    const paint = (mass: number) => {
+      const g = picture.getContext('2d');
+      if (!g) return;
+      g.fillStyle = '#eee3c9'; g.fillRect(0, 0, 144, 64);
+      g.fillStyle = '#3c4053';
+      g.fillRect(37, 52, 70, 6); g.fillRect(68, 15, 8, 39);
+      g.strokeStyle = '#3c4053'; g.lineWidth = 3;
+      g.beginPath(); g.moveTo(27, 20 + mass * 3); g.lineTo(117, 20 - mass * 3); g.stroke();
+      g.fillRect(12, 22 + mass * 3, 33, 4); g.fillRect(99, 22 - mass * 3, 33, 4);
+      if (mass) { g.fillStyle = '#386e86'; g.fillRect(17, 15 + mass * 3, 22, 7); }
+    };
+    const weigh = h('button', { type: 'button', disabled: true, onclick: () => {
+      if (controller.dispatch({ type: 'CompareMetalSample', sample: sampleId }).some((e) => e.kind === 'error')) return;
+      paint(sample.mass);
+      live.textContent = `${sample.name} reads ${sample.mass} balance units.`;
+      refreshNotes();
+    } }, 'Set the panel on the pan');
+    const zero = h('button', { type: 'button', onclick: () => {
+      paint(0);
+      live.textContent = 'Empty pan set to zero. The balance is ready.';
+      weigh.disabled = false;
+      weigh.focus();
+    } }, 'Zero the empty balance');
+    paint(0);
+    refreshNotes();
+    this.openModal('metal-trial', sample.name, this.closeBtn(), h('h2', {}, sample.name),
+      h('p', {}, 'Both blue panels fit the same frame. See what an empty balance and a panel can tell you.'),
+      picture, h('div', { class: 'row' }, zero, weigh), live,
+      h('details', {}, h('summary', {}, 'Pinned balance readings'), notes));
+  }
+
+  openForestWatch(site: string): void {
+    if (!Object.hasOwn(FOREST_WATCH, site)) return;
+    const c = ctx.controller;
+    const spot = FOREST_WATCH[site];
+    const labels = { early: 'First light', late: 'Later watch', return: 'Return watch' };
+    const controls = h('div', { class: 'row' });
+    const sightings = h('ol', { class: 'history' });
+    const live = h('p', { role: 'status', 'aria-live': 'polite' });
+    const notes = h('ul', {});
+    const recorded = (id: string, window: ForestWindow) => c.state.flags[`forest.watch.${id}.${window}`] === true;
+    const summary = (id: string, window: ForestWindow) => {
+      const watch = forestWatch(id, window);
+      const total = watch.reduce<number>((sum, n) => sum + (n ?? 0), 0);
+      return `${total} visible ${total === 1 ? 'crossing' : 'crossings'}.${watch.includes(null) ? ' The view was blocked for one beat.' : ''}`;
+    };
+    const refreshNotes = () => {
+      clear(notes);
+      for (const [id, lookout] of Object.entries(FOREST_WATCH)) {
+        for (const window of FOREST_WINDOWS.filter((w) => recorded(id, w))) {
+          notes.append(h('li', {}, `${lookout.name}, ${labels[window].toLowerCase()}: ${summary(id, window)}`));
+        }
+      }
+      if (!notes.childElementCount) notes.append(h('li', {}, 'No watches recorded yet.'));
+    };
+    const picture = h('canvas', { width: '144', height: '54', class: 'mark', 'aria-hidden': 'true' }) as HTMLCanvasElement;
+    const paint = (count: number | null) => {
+      const g = picture.getContext('2d');
+      if (!g) return;
+      g.fillStyle = '#a0c8ad'; g.fillRect(0, 0, 144, 54);
+      g.fillStyle = '#426858'; g.fillRect(0, 39, 144, 15);
+      g.fillStyle = site === 'creek' ? '#88bfc4' : '#a19c80'; g.fillRect(0, 44, 144, 10);
+      g.fillStyle = '#304e43';
+      for (const x of [5, 17, 112, 129]) {
+        g.fillRect(x, 16, 7, 29); g.fillRect(x - 5, 9, 17, 14);
+      }
+      if (count === null) {
+        g.fillStyle = '#63774a';
+        for (let x = 25; x < 112; x += 6) g.fillRect(x, 14 + x % 11, 4, 37);
+      } else {
+        g.fillStyle = '#212a38';
+        for (let i = 0; i < count; i++) {
+          const x = 50 + i * 30;
+          g.fillRect(x, 26, 7, 2); g.fillRect(x - 3, 24, 3, 2); g.fillRect(x + 7, 24, 3, 2);
+        }
+      }
+    };
+    const description = (count: number | null) => count === null ? 'The view was blocked.'
+      : count === 0 ? 'No crossings visible.' : count === 1 ? 'One crossing visible.' : `${count} crossings visible.`;
+    const start = (window: ForestWindow) => {
+      const watch = forestWatch(site, window);
+      let beat = 0;
+      clear(controls); clear(sightings);
+      paint(0);
+      live.textContent = `${labels[window]}. Watch for three beats.`;
+      const advance = h('button', { type: 'button', class: 'primary', onclick: () => {
+        const count = watch[beat++];
+        paint(count);
+        sightings.append(h('li', {}, description(count)));
+        live.textContent = description(count);
+        if (beat < watch.length) return;
+        const events = c.dispatch({ type: 'ObserveForest', site, window });
+        if (!events.some((e) => e.kind === 'error')) {
+          live.textContent = `Watch recorded. ${summary(site, window)}`;
+          refreshNotes();
+        }
+        clear(controls);
+        const another = h('button', { type: 'button', onclick: () => {
+          choose();
+          controls.querySelector('button')?.focus();
+        } }, 'Choose another watch');
+        controls.append(another);
+        another.focus();
+      } }, 'Watch the next beat');
+      controls.append(advance);
+      advance.focus();
+    };
+    const choose = () => {
+      clear(controls);
+      const windows = FOREST_WINDOWS.filter((window) => window !== 'return' || !!c.state.flags['forest.response']);
+      for (const window of windows) {
+        controls.append(h('button', { type: 'button', onclick: () => start(window) },
+          labels[window] + (recorded(site, window) ? ' (recorded)' : '')));
+      }
+    };
+    choose();
+    paint(0);
+    refreshNotes();
+    this.openModal('forest-watch', spot.name, this.closeBtn(), h('h2', {}, spot.name),
+      h('p', {}, spot.view), h('p', { class: 'fine' }, 'The same three beats at each spot. A bird can cross more than once.'),
+      picture, controls, sightings, live, h('details', {}, h('summary', {}, 'Pinned field notes'), notes));
   }
 
   /** A controlled comparison. The physical load stays fixed while the path changes. */

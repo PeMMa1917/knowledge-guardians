@@ -93,6 +93,42 @@ Rules for `historicalLabel`:
 
 Most records have a `weave` field: `{ "concepts": [...], "atl": [...], "aoks": [...], "subjects": [...] }`. The IDs are in `src/domain/curriculum.ts`. The game counts these when the player meets them, and the teacher view shows the totals. Tag only what the play really touches. A lucky event (`"luck": true`) has empty tags. EE and CAS appear as practice only. Never say that play counts as CAS.
 
+### Introduce ideas through decisions and consequences
+
+In the opening Nexus route, put the ideas on the path from the entrance to the portal. Keep a first-session playtest focused on what a new player actually does in their first 30 minutes. Follow the main route and try it again with a player who wanders. Record which ideas each player actually meets.
+
+Use the [learning design review](TOK_ALIGNMENT.md) to check how objects, consequences and different viewpoints support the reasoning. Course aims, examiner observations and teaching suggestions have separate roles in that review.
+
+Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to check the authored route estimates before a session. The traces execute real content actions and assign estimated times to the moments where players can meet each concept or framework part. A rolling gap means a tagged action fell outside that modeled window. The report also flags dimensions that rely on only one distinct annotated action in any full window. Repeating an action with the same description does not add variety. The report uses synthetic routes and gives no evidence of how long students will spend or which ideas they will notice.
+
+| Opening action | What the player can notice |
+|---|---|
+| Look at the glowing entrance label, then talk to Ise. | A seal lends power to a claim. People repeat it before they check whether it is true. |
+| Pick a direction for visitors, inspect the cases and take the Lens to the dates. | A date is evidence for a particular question. A range sets a limit on certainty. A patent, a model and a museum object tell different stories. |
+| Compare the translators’ proofs and decide what to send back. | Words acquire different meanings in different settings. A translation can change the claim a visitor hears. |
+| Pin two marking strips side by side. | Holding an input steady makes a comparison less dependent on the tester. A difference can support an explanation under the model's conditions. |
+| Hear Dace and Venn and face the crowd. | Each perspective values something different. A player can justify both a narrower claim and a reframe that lets both claims stand. |
+| Decide what to put on the loan slip, and replace the glowing label. | The public record has an audience. Give people a way to check it, respect a maker’s request, and keep a claim within its evidence. |
+
+Revisit the four parts of the knowledge framework through play.
+
+| Part | Nexus | Emberford | Nile Archive |
+|---|---|---|---|
+| Scope | Choose which kind of “first” a record can establish. | Set the limits of the claim a test sample can carry. | Decide how far the route model can speak for an ancient record. |
+| Perspectives | Hear the patent clerk, the curator and their visitors. | Read a tally with a baker's or a ferry crew's purpose. | Hear what the scribe records and leave a place for the people he did not quote. |
+| Methods and tools | Compare dates, then run a fair bench comparison. | Read the gauge marks in context and arrange a repeatable reading. | Change the road with the same load, then leave the next keeper conditions for a repeat. |
+| Ethics | Publish a checkable loan slip while keeping a name private. | Pass on a repair notice in a form the next crew can use. | Set out a legible copy and give readers a way to inspect the gap in the record. |
+
+Put TOK language where it helps a player act. A premise is something a witness is relying on, a limit is a line on the label, and a counterexample is a result that makes somebody change their claim. Return to the same idea with a different action later. Let players compare two papers, see what changes on a stand, or hear a visitor carry a changed version of the claim.
+
+Build learner-profile moments around things the player did, such as helping a reader, revising a claim in public or waiting for a better observation. Offer approaches to teaching through inquiry, local problems, characters who work together, optional Lumen help and world feedback. Give the five approaches to learning practical uses. Players plan a route, check a record, compare runs, negotiate a heading and pass the result to a crew. For EE practice, players can narrow a question about a case and trace how a source supports it. For CAS practice, the East Well gives a community problem to listen to, investigate and report back on. Keep tags and planning vocabulary in author-facing material.
+
+Use DP subjects when their methods change an action. History puts two dates and their records in order. Languages change a caption and what a reader understands. Physics and design technology change the bench setup. Mathematics and economics change how the market tally serves its users. Visual arts changes what a reader notices first. Give less-represented subjects their own appropriate actions as new cases are built.
+
+### Add a small choice to a map prop
+
+Put the opening scene and its two outcomes in `src/content/prop-scenes.json`. Use `sceneProp` to place the prop with separate art for each result. Choices set the scene's flag to the outcome ID and lead to that outcome node. On revisit, the prop opens the same outcome. A leave option keeps the decision open. Give each route a concrete use and a cost or limit. New choices here affect the scene and the visible prop, so players can choose freely without working for points.
+
 ## Add a label kit (the label builder and the Fray)
 
 A label kit (`labelKits`) is a museum label that the player builds from parts: a **subject**, a **criterion** (what the subject was "first" at), a **limit** (a qualifier), and **support cards**.
@@ -248,3 +284,39 @@ All three are in `src/content/story.json` (made by a generator script; edit the 
 - **Rumour (the rumour mill):** in `src/domain/rumours.ts` (`RUMOURS`): `heard` (who, where), `line`, at least two `sources` (`label`, `text`), `best` (the index in `VERDICTS` that the evidence fits), four `whys` (one for each verdict), `idea` (the TOK idea), optional `fray` (a Bestiary id). Rumours are about the fictional town only, never real news. Make the sources do the work: the player must be able to reach `best` from them.
 - **Dye or barter price:** in `src/domain/trade.ts`. A dye needs an outfit colour of the same key in `src/domain/appearance.ts` (`OUTFIT`, `DYE_KEYS`, `LABELS`). Every price must be shown as its parts. Never sell or lock a base appearance option (skin, hair, style, glasses, mobility aid, the base outfit colours).
 - **Fallacy seal or boss phase (the Undercroft):** in `src/domain/undercroft.ts`. Each has `says` (the bad argument), three options with `ok` and `why`, and a `fray` id from `src/content/fray.json` (met when solved). A wrong answer must be explained and must never end the fight. Place a seal on a map as kind `seal` with `seal: '<id>'` and a `visibleIf` that hides it once `trap.<id>.open` is set.
+
+## Add a field game (TOK lessons as play)
+
+- Register it in `src/domain/fieldgames.ts` (`FIELD_GAMES`): `id`, `name`, `host` (a person and a place), `idea` (the TOK idea in plain words, shown after play and in the Lore codex), `concept`, optional `fray`.
+- Put its rules in a pure module (no DOM), with seeded randomness (`rng` in `src/domain/fairgames.ts`), and test them.
+- Add its panel in `UI.openFieldGame`. The flow: act on a gut feeling first, then see many fair runs or other perspectives, then change one assumption and see what changes. End with `finishField(id)`.
+- Place it on a map as kind `fieldgame` with `game: '<id>'` (a test checks that each game has a spot).
+- Never a quiz: no score for 'right answers', no timer, no text to read and recall. Wrong moves are explained and play goes on. Use original fictional wording, never handout or IB wording.
+
+## Add a chapter person (story bible rules)
+
+- Read [STORY_BIBLE.md](STORY_BIBLE.md) section 5 first. Check that the name is new: `grep -rw <Name> src`.
+- Give the person their own look: set `sprite` to a made look (`custom:skin.hair.outfit.trousers.accessory.accent[.style.glasses.aid]`), never another named character's sheet. A test checks that the look is valid.
+- Add two lines in `src/content/chapter-voices.json`: a `life.<id>` line (their own voice, a life outside the plot, if the chapter is not finished) and an `ack.<id>` line (they notice what the player did, after the chapter's last objective).
+- Add Echo lines (`echo.<id>.<n>`) when a person should remember a choice from an earlier chapter. The condition is `all` of: the chapter's second objective done, the chapter's last objective not done, and the earlier choice flag. The line must say what the player did ('you', 'your'). `tests/echoes.test.ts` checks the flags.
+
+## Add a companion loyalty mission
+
+In `src/domain/loyalty.ts` (`LOYALTY`): `companion`, `who`, `title`, `available`, `intro`, three `sources`, a `slip` (what the companion's blind spot makes them say; the player's `notice`; the `fixed` and `miss` outcomes), a `question`, three `choices` (each with a real `cost` and the companion's `reply` to the player's reasons) and the `idea`. Place it as kind `fieldgame` with `game: 'loyalty-<id>'` and the same `visibleIf` as `available`. Add one `loyal.<id>.<choice>` line per choice in `src/content/chapter-voices.json`. A test checks all of this.
+
+## Add a crossing (a conflict in the world)
+
+Read the conflict map (story bible section 15) first, and pick a type and size that the chapter lacks. In `src/domain/crossings.ts` (`CROSSINGS`): `chapter`, `map`, `types` (main type first; one of self, person, nature, society, god, fate, supernatural, technology), `scale` (minor, mid, major), `tone` (funny, serious, mixed), `stakes` (`lose` and `gain`), `serves` (plot, arc or theme), `leadsTo` (a later crossing id or a beat in `CROSSING_BEATS`), `title`, `scene` and `idea`. Give at least three `ways`: one `overcome`, one `ignore`, and usually one `around`. Each way has a `method` (how it resolves, in the words of the conflict list), a `result` and a real `cost`. A way can need a key: `needs: { if, companion, why }`. Place it as kind `fieldgame` with `game: 'cross-<id>'` on a free tile. Then add a line to the conflict map, and an epilogue vignette (`src/domain/epilogue.ts`) for the way you most want players to remember.
+
+Rules: god and fate crossings use invented in-world patrons and prophecies only; never make a real religion's God or sacred figures an opponent. Animals are never hurt. Put a light moment (a pun, a misunderstanding) near a heavy one. `tests/crossings.test.ts` checks the spread of types, scales and tones, the keys, the placement and the links.
+
+## Add a hearth talk, a ballad verse or an epilogue line
+
+- **Hearth talk** (`src/domain/hearth.ts`): companions talk to each other after a big step (`after`). Give it a `kind` (humour, friction, doubt, misunderstanding, farewell), lines with a `who` (a character id, or `lumen`) and an optional `if`, and four `join` replies, one per tone (joke, doubt, care, plain). Kip has no set pronoun.
+- **Ballad verse** (`src/domain/ballad.ts`): Wynn's song. Each verse has a condition, a `tall` line (bigger than the truth), a `true` line built from flags, and the `crowd` reaction.
+- **Epilogue line** (`src/domain/epilogue.ts`, `VIGNETTES`): one "where are they now" line per real flag value. A test checks the values.
+
+## Tag a new encounter for learning design
+
+Give every new crossing, hearth talk, field game or loyalty mission a `LEARN` entry in `src/domain/learningLevels.ts` (concepts, framework parts, DOK, Bloom, Fink, SOLO, minutes) and a chapter in `OPTIONAL_CHAPTER` (`src/domain/learningPaths.ts`). For an objective, `weave.framework` and `weave.minutes` are optional. Then run `npx vitest run tests/learning.test.ts --mode tok-report`, and lower the gap budget if it went down. Read [LEARNING_DESIGN.md](LEARNING_DESIGN.md) for how to vary the levels.
+

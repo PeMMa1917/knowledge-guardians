@@ -60,6 +60,10 @@ export interface Weave {
   aoks?: AOK[];
   /** DP subject ids from src/domain/curriculum.ts. */
   subjects?: string[];
+  /** Knowledge framework parts (designer tag; see src/domain/learningLevels.ts). Derived from concepts when absent. */
+  framework?: ('scope' | 'perspectives' | 'methods-and-tools' | 'ethics')[];
+  /** Estimated minutes of play, for the 30-minute design audit. */
+  minutes?: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -201,6 +205,8 @@ export interface Mission {
   world: string;
   title: string;
   knowledgeQuestion: string;
+  /** What a person loses if this goes wrong, in one sentence (docs/STORY_BIBLE.md section 14). */
+  stake?: string;
   objectives: Objective[];
   available?: Condition;
 }

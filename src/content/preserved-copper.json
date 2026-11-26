@@ -1,0 +1,523 @@
+{
+ "sources": [
+  {
+   "id": "HIS-PRES-10",
+   "title": "South Tyrol Museum of Archaeology: Ötzi, the Iceman",
+   "url": "https://www.iceman.it/en/oetzi/the-iceman",
+   "locator": "Opening description and History section. The external page includes images and information about human remains.",
+   "supports": "The museum describes Ötzi as a Copper Age person who lived more than 5,300 years ago. His remains and equipment were found by hikers in 1991 at Tisenjoch/Giogo di Tisa.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-PRES-11",
+   "title": "South Tyrol Museum of Archaeology: Equipment",
+   "url": "https://www.iceman.it/en/oetzi/equipment",
+   "locator": "Copper axe paragraph on provenance. The external page includes equipment photographs and other discussion.",
+   "supports": "The museum associates the copper in the object with ore from southern Tuscany.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-PRES-12",
+   "title": "Artioli and colleagues: Long-distance connections in the Copper Age (2017)",
+   "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0179263",
+   "locator": "Abstract, sentences on lead isotope ratios and comparison with ore. The external article illustrates objects.",
+   "supports": "The study reports measurements and compares them with ore signatures. It identifies southern Tuscany as the source of the metal.",
+   "accessed": "2026-11-26"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.preserved.copper.find",
+   "title": "Museum record of the discovery",
+   "text": "The South Tyrol Museum of Archaeology records that hikers found Ötzi and his equipment in 1991 at Tisenjoch/Giogo di Tisa. The museum places him in the Copper Age, more than 5,300 years ago.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-PRES-10"
+   ],
+   "limits": "A findspot records where the evidence turned up. It cannot identify every earlier stop."
+  },
+  {
+   "id": "card.preserved.copper.ore",
+   "title": "Where the metal came from",
+   "text": "The South Tyrol Museum of Archaeology connects the copper in an object found with Ötzi to ore from southern Tuscany. A study by Artioli and colleagues compared lead isotope measurements with measurements from ore sources.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-PRES-11",
+    "HIS-PRES-12"
+   ],
+   "limits": "A material source does not identify who transported it, the route it took, or where its eventual owner lived."
+  }
+ ],
+ "exhibits": [
+  {
+   "id": "OBJ-PRES-COPPER-FIND",
+   "name": "The discovery register",
+   "art": "preserved.catalogue",
+   "historicalLabel": "documented",
+   "dateText": "Discovered in 1991, from the Copper Age",
+   "dateKind": "1991 dates the discovery. The Copper Age places the person and evidence in a much earlier period.",
+   "summary": "The museum records the high Alpine findspot of Ötzi and his equipment. The register shows two names for that place: Tisenjoch/Giogo di Tisa.",
+   "altText": "A record page with a date and a place tab.",
+   "sources": [
+    "HIS-PRES-10"
+   ],
+   "grantsCard": "card.preserved.copper.find"
+  },
+  {
+   "id": "OBJ-PRES-COPPER-ORE",
+   "name": "The copper source report",
+   "art": "preserved.context",
+   "historicalLabel": "documented",
+   "dateText": "Study published in 2017",
+   "dateKind": "2017 dates the research publication. It does not date the workings of a Copper Age exchange route.",
+   "summary": "The study compared a chemical signature in copper among the Alpine equipment with ore signatures. Its authors associate this copper with southern Tuscany.",
+   "altText": "A folder with two square markers for comparing records.",
+   "sources": [
+    "HIS-PRES-11",
+    "HIS-PRES-12"
+   ],
+   "grantsCard": "card.preserved.copper.ore"
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "copper.trial.near",
+   "speaker": "narrator",
+   "text": "The first board has a blank source peg beside the Alpine marker. Try moving a material token from that peg to the findspot. A visitor likes the short line.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Try the nearby source.",
+     "next": "copper.trail.near",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.publish"
+       },
+       {
+        "not": {
+         "flag": "copper.overlay",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copper.tested.near",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the marker where it is."
+    }
+   ],
+   "claimKind": "simulation"
+  },
+  {
+   "id": "copper.trail.near",
+   "speaker": "narrator",
+   "text": "The near token reaches the findspot on a short track. That is a possible shape for the line while its source peg is blank. Only a source record can tell you where this particular copper belongs.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "copper.trial.one",
+   "speaker": "narrator",
+   "text": "The middle board leaves a spare hook for one intermediary. Put a folded marker on it and see what happens to the endpoint. This is a model using unnamed places.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Move the material token through one exchange.",
+     "next": "copper.trail.one",
+     "if": {
+      "objective": "preserved.publish"
+     },
+     "effects": [
+      {
+       "setFlag": "copper.tested.one",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the marker where it is."
+    }
+   ],
+   "claimKind": "simulation"
+  },
+  {
+   "id": "copper.trail.one",
+   "speaker": "narrator",
+   "text": "The token reaches the Alpine marker. The middle hook stays blank because the equipment record gives no name for a place or person there. An exchange could move the metal while its eventual owner stayed put.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "copper.trial.several",
+   "speaker": "narrator",
+   "text": "The third board has several empty hooks. Try handing the material token from clip to clip. The track is schematic. It gives no measurements or dates for the journey.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Move the material token through several exchanges.",
+     "next": "copper.trail.several",
+     "if": {
+      "objective": "preserved.publish"
+     },
+     "effects": [
+      {
+       "setFlag": "copper.tested.several",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the marker where it is."
+    }
+   ],
+   "claimKind": "simulation"
+  },
+  {
+   "id": "copper.trail.several",
+   "speaker": "narrator",
+   "text": "Several handovers leave the same source marker and findspot as one handover. A visitor leans closer. Both arrangements end at the same place. The open hooks still need other records.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "copper.overlay",
+   "speaker": "narrator",
+   "text": "The two records are on the desk. Fix the source peg where the research places the copper. Keep the discovery register at the Alpine marker.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mount the source report and the discovery register.",
+     "next": "copper.overlay.fixed",
+     "if": {
+      "all": [
+       {
+        "objective": "copper.o.records"
+       },
+       {
+        "not": {
+         "flag": "copper.overlay",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copper.overlay",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Compare the empty tracks first."
+    }
+   ]
+  },
+  {
+   "id": "copper.overlay.fixed",
+   "speaker": "narrator",
+   "text": "The short track near the findspot has no source peg now. The copper belongs at the southern Tuscany peg. You can still try one handover or several without changing that source.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copper.dispatch",
+   "speaker": "narrator",
+   "text": "A visitor wants a single thread to follow. You could send two fixed markers with the space between them open. You could send the two comparison tracks too, as long as your caption says what the extra hooks are for.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Send the record markers with the space between them open.",
+     "next": "copper.end.markers",
+     "if": {
+      "all": [
+       {
+        "objective": "copper.o.compare"
+       },
+       {
+        "not": {
+         "flagSet": "copper.display"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copper.display",
+       "value": "markers"
+      }
+     ]
+    },
+    {
+     "text": "Send both trial tracks as possible exchanges with blank hooks.",
+     "next": "copper.end.chains",
+     "if": {
+      "all": [
+       {
+        "objective": "copper.o.compare"
+       },
+       {
+        "not": {
+         "flagSet": "copper.display"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copper.display",
+       "value": "chains"
+      }
+     ]
+    },
+    {
+     "text": "Leave both versions on the table for now."
+    }
+   ]
+  },
+  {
+   "id": "copper.end.markers",
+   "speaker": "narrator",
+   "text": "The keeper puts the two fixed markers under separate record tabs. A visitor asks what would fill the gap. The empty space has a clip for a dated record from an intermediate site.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copper.end.chains",
+   "speaker": "narrator",
+   "text": "The keeper labels both chains as models. A visitor moves the middle hooks and sees how little that does to the endpoints. The bottom of the board asks for dated finds with comparable copper signatures.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH3-R06",
+   "world": "WORLD-04",
+   "title": "Between the Markers",
+   "knowledgeQuestion": "What can a material source tell us about a route, and where does its trace stop?",
+   "available": {
+    "objective": "preserved.publish"
+   },
+   "objectives": [
+    {
+     "id": "copper.o.records",
+     "title": "Inspect the equipment and findspot records at the survey table.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "card": "card.preserved.copper.find"
+       },
+       {
+        "card": "card.preserved.copper.ore"
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "objectivity",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT"
+      ],
+      "subjects": [
+       "history",
+       "chemistry",
+       "geography"
+      ]
+     },
+     "skills": [
+      "SK-RSC-08",
+      "SK-MED-04"
+     ]
+    },
+    {
+     "id": "copper.o.compare",
+     "title": "Put the source on the table and compare both remaining trails.",
+     "essential": false,
+     "visible": {
+      "objective": "copper.o.records"
+     },
+     "done": {
+      "all": [
+       {
+        "flag": "copper.overlay",
+        "eq": true
+       },
+       {
+        "flag": "copper.tested.one",
+        "eq": true
+       },
+       {
+        "flag": "copper.tested.several",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "explanation",
+       "interpretation",
+       "justification",
+       "certainty"
+      ],
+      "atl": [
+       "thinking",
+       "self-management"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "geography",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-THK-05",
+      "SK-RSC-15"
+     ]
+    },
+    {
+     "id": "copper.o.display",
+     "title": "Send a clear version of the trail to the hall.",
+     "essential": false,
+     "visible": {
+      "objective": "copper.o.compare"
+     },
+     "done": {
+      "flagSet": "copper.display"
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "responsibility",
+       "power",
+       "values"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "ART"
+      ],
+      "subjects": [
+       "history",
+       "visual-arts",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-WRT-13"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.copper.display"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.copper.display",
+   "claimKind": "interpretation",
+   "text": "The equipment has a findspot and the copper has a source. A single exchange and a series of exchanges both fit those two markers. To give the gap a route we need a different kind of record."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.copper.records.1",
+   "objective": "copper.o.records",
+   "depth": 1,
+   "text": "A piece of material can have a different history from the person who last held it."
+  },
+  {
+   "id": "h.copper.records.2",
+   "objective": "copper.o.records",
+   "depth": 2,
+   "text": "The east report concerns the copper. The west register concerns the discovery."
+  },
+  {
+   "id": "h.copper.records.3",
+   "objective": "copper.o.records",
+   "depth": 3,
+   "text": "Read the two cases on either side of the north wall. Compare what each locates."
+  },
+  {
+   "id": "h.copper.records.4",
+   "objective": "copper.o.records",
+   "depth": 4,
+   "text": "Inspect the discovery register and copper report. The two records will let you mount the source marker."
+  },
+  {
+   "id": "h.copper.compare.1",
+   "objective": "copper.o.compare",
+   "depth": 1,
+   "text": "Where the material came from can rule out a source without revealing a route."
+  },
+  {
+   "id": "h.copper.compare.2",
+   "objective": "copper.o.compare",
+   "depth": 2,
+   "text": "The source peg closes one of three tracks. Walk the other two to see whether their end points differ."
+  },
+  {
+   "id": "h.copper.compare.3",
+   "objective": "copper.o.compare",
+   "depth": 3,
+   "text": "Mount the records at the centre of the north wall, then try the middle and east tracks."
+  },
+  {
+   "id": "h.copper.compare.4",
+   "objective": "copper.o.compare",
+   "depth": 4,
+   "text": "Use the origin marker and select “Mount the source report”. On the two open tracks, have the token change hands once and then several times."
+  },
+  {
+   "id": "h.copper.display.1",
+   "objective": "copper.o.display",
+   "depth": 1,
+   "text": "Leave a distinction a reader can carry out of the room."
+  },
+  {
+   "id": "h.copper.display.2",
+   "objective": "copper.o.display",
+   "depth": 2,
+   "text": "You can show only the known markers, or show an example of why more than one chain can fit them."
+  },
+  {
+   "id": "h.copper.display.3",
+   "objective": "copper.o.display",
+   "depth": 3,
+   "text": "The dispatch table is by the door. Either version names the kind of record that might fill the gap."
+  },
+  {
+   "id": "h.copper.display.4",
+   "objective": "copper.o.display",
+   "depth": 4,
+   "text": "Use the dispatch table and send either the open gap or the two labelled trial tracks. Check the display back in the Cold Store."
+  }
+ ]
+}

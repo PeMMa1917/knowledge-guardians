@@ -143,6 +143,14 @@
       "locator": "Entry",
       "supports": "Christine de Pizan wrote The Book of the City of Ladies (1405), a defence of women, centuries before 1792.",
       "accessed": "2026-11-25"
+    },
+    {
+      "id": "HIS-COUNCIL-01",
+      "title": "John Stuart Mill, On Liberty (1859), Standard Ebooks edition",
+      "url": "https://standardebooks.org/ebooks/john-stuart-mill/on-liberty/text/chapter-2",
+      "locator": "Chapter II, conclusion and its third reason for preserving discussion",
+      "supports": "Mill argues that a true opinion needs serious challenge if people are to understand its grounds.",
+      "accessed": "2026-11-26"
     }
   ]
 }

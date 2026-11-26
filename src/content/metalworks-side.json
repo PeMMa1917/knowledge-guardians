@@ -1,0 +1,313 @@
+{
+ "dialogue": [
+  {
+   "id": "metal.tag.bench",
+   "speaker": "metal-inspector",
+   "text": "The transfer note says the triangle pointed the other way at the hall. The buyer thinks the desk issued a fresh tag. An apprentice remembers turning the tag to read its back. Use the blue practice tag to try each explanation. Reset the stand before each run.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Turn the practice tag on its cord.",
+     "next": "metal.tag.turn",
+     "if": {
+      "objective": "metal.finish"
+     },
+     "effects": [
+      {
+       "setFlag": "metal.tag.turn",
+       "value": true
+      },
+      {
+       "setFlag": "metal.tag.last",
+       "value": "turn"
+      }
+     ]
+    },
+    {
+     "text": "Keep the stand still and hang a fresh tag.",
+     "next": "metal.tag.replace",
+     "if": {
+      "objective": "metal.finish"
+     },
+     "effects": [
+      {
+       "setFlag": "metal.tag.replace",
+       "value": true
+      },
+      {
+       "setFlag": "metal.tag.last",
+       "value": "replace"
+      }
+     ]
+    },
+    {
+     "text": "Leave the stand ready."
+    }
+   ]
+  },
+  {
+   "id": "metal.tag.turn",
+   "speaker": "metal-inspector",
+   "text": "The cut triangle now points the other way. The nick beside the old hole is still there when you run a finger over it. The stand and cord stayed fixed.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the stand."
+    },
+    {
+     "text": "Reset the stand for another run.",
+     "next": "metal.tag.bench",
+     "effects": [
+      {
+       "setFlag": "metal.tag.last",
+       "value": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "metal.tag.replace",
+   "speaker": "metal-inspector",
+   "text": "The fresh blue tag also makes the triangle point the other way. Its hole has a clean edge. The stand and cord stayed fixed. The transfer note gives the direction and colour. It leaves both explanations open.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the stand."
+    },
+    {
+     "text": "Reset the stand for another run.",
+     "next": "metal.tag.bench",
+     "effects": [
+      {
+       "setFlag": "metal.tag.last",
+       "value": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "metal.tag.place",
+   "speaker": "metal-steward",
+   "text": "We can check the two workshop keys and both bench runs now. Each shop uses a triangle at a different step. The reversed mark gives us two explanations to keep open. Attach the two shop keys and both results where readers can check them.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang the explanation at the yard handover.",
+     "if": {
+      "objective": "metal.tag.compared"
+     },
+     "next": "metal.tag.place.yard",
+     "effects": [
+      {
+       "setFlag": "metal.tag.mount",
+       "value": "yard"
+      }
+     ]
+    },
+    {
+     "text": "File the explanation by the Trade Hall index.",
+     "if": {
+      "objective": "metal.tag.compared"
+     },
+     "next": "metal.tag.place.hall",
+     "effects": [
+      {
+       "setFlag": "metal.tag.mount",
+       "value": "hall"
+      }
+     ]
+    },
+    {
+     "text": "Leave the two records ready."
+    }
+   ]
+  },
+  {
+   "id": "metal.tag.place.yard",
+   "speaker": "metal-steward",
+   "text": "Corra leaves two tags on hooks by the handover. One reader turns the old tag and another tries the fresh one. The separate shop keys stay at eye level. A buyer across the hall can ask a yard worker to show the difference.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.tag.place.hall",
+   "speaker": "metal-steward",
+   "text": "Bea slips the run notes beside the index. A reader follows “fit checked” back to the fitting shop and “surface to check” to the coating bench. The transfer note keeps its own line. The reader can ask the yard for a hands-on run.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH6-R02",
+   "world": "WORLD-07",
+   "title": "The Turned Tag",
+   "knowledgeQuestion": "How can two explanations fit one observation, and what would separate them?",
+   "available": {
+    "objective": "metal.finish"
+   },
+   "objectives": [
+    {
+     "id": "metal.tag.compared",
+     "title": "Try two ways the tag could change, then check the trip note and both shop keys.",
+     "done": {
+      "all": [
+       {
+        "flag": "metal.tag.turn",
+        "eq": true
+       },
+       {
+        "flag": "metal.tag.replace",
+        "eq": true
+       },
+       {
+        "flag": "metal.tag.fit-key",
+        "eq": true
+       },
+       {
+        "flag": "metal.tag.coat-key",
+        "eq": true
+       },
+       {
+        "flag": "metal.tag.transfer",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "explanation",
+       "evidence",
+       "objectivity",
+       "certainty",
+       "culture"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "design-tech",
+       "lang-langlit",
+       "psychology"
+      ]
+     },
+     "skills": [
+      "SK-THK-05",
+      "SK-MED-04"
+     ]
+    },
+    {
+     "id": "metal.tag.explained",
+     "title": "Put both runs and the shop keys where people can check them.",
+     "done": {
+      "flagSet": "metal.tag.mount"
+     },
+     "visible": {
+      "objective": "metal.tag.compared"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "justification",
+       "culture",
+       "responsibility"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "design-tech",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01"
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.metal.tag.compared.1",
+   "objective": "metal.tag.compared",
+   "depth": 1,
+   "text": "The reversed triangle has at least two possible explanations."
+  },
+  {
+   "id": "h.metal.tag.compared.2",
+   "objective": "metal.tag.compared",
+   "depth": 2,
+   "text": "Use the practice tag stand in the yard. The original box slips can stay in the hall."
+  },
+  {
+   "id": "h.metal.tag.compared.3",
+   "objective": "metal.tag.compared",
+   "depth": 3,
+   "text": "Try a turn and a replacement on the same stand. The two shop keys and the old trip note show what you can carry back from the trial."
+  },
+  {
+   "id": "h.metal.tag.compared.4",
+   "objective": "metal.tag.compared",
+   "depth": 4,
+   "text": "Handle the tag both ways. Read the fitting key by the yard table and the coating key by the Trade Hall window. The older trip note lies below the hall desk."
+  },
+  {
+   "id": "h.metal.tag.explained.1",
+   "objective": "metal.tag.explained",
+   "depth": 1,
+   "text": "The two workshop keys and the runs are ready to travel together."
+  },
+  {
+   "id": "h.metal.tag.explained.2",
+   "objective": "metal.tag.explained",
+   "depth": 2,
+   "text": "Go to Bea’s explanation clips in the Trade Hall."
+  },
+  {
+   "id": "h.metal.tag.explained.3",
+   "objective": "metal.tag.explained",
+   "depth": 3,
+   "text": "Keep the two ways a tag could move beside both shop rules."
+  },
+  {
+   "id": "h.metal.tag.explained.4",
+   "objective": "metal.tag.explained",
+   "depth": 4,
+   "text": "Choose a place where readers can check the explanation: the yard handover or the hall index."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.metal-tag-explained",
+   "attribute": "thinker",
+   "when": {
+    "objective": "metal.tag.explained"
+   },
+   "did": "You tried two explanations on one stand and kept the shop records with your results.",
+   "prompt": "What trace would help you choose between the two explanations?"
+  }
+ ],
+ "chronicle": [
+  {
+   "id": "metal-tag-explained",
+   "title": "The turned tag",
+   "text": "A turned tag and a fresh tag could both reverse the triangle. The shop keys travel with the two trial notes.",
+   "if": {
+    "objective": "metal.tag.explained"
+   }
+  }
+ ]
+}

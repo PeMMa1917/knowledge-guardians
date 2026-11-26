@@ -1,0 +1,1852 @@
+{
+ "characters": [
+  {
+   "id": "preserved-registrar",
+   "name": "Registrar Aster",
+   "role": "Registrar of the Cold Store",
+   "sprite": "custom:tan.auburn.slate.sand.none.rose.bun.none.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "preserved.tools",
+     "if": {
+      "any": [
+       {
+        "not": {
+         "item": "tool.date-lens"
+        }
+       },
+       {
+        "not": {
+         "item": "tool.provenance-thread"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "node": "preserved.registrar-after",
+     "if": {
+      "flagSet": "preserved.display"
+     }
+    },
+    {
+     "node": "preserved.publish",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.royal"
+       },
+       {
+        "objective": "preserved.coast"
+       }
+      ]
+     }
+    },
+    {
+     "node": "preserved.in-progress",
+     "if": {
+      "flagSet": "preserved.brief"
+     }
+    },
+    {
+     "node": "preserved.welcome"
+    }
+   ]
+  },
+  {
+   "id": "preserved-royal-keeper",
+   "name": "Odile",
+   "role": "Keeper of the royal files",
+   "sprite": "custom:dark.brown.woad.wine.headband.cyan.short.none.cane",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "preserved.royal-ready",
+     "if": {
+      "objective": "preserved.royal"
+     }
+    },
+    {
+     "node": "preserved.royal-first"
+    }
+   ]
+  },
+  {
+   "id": "preserved-coast-keeper",
+   "name": "Luz",
+   "role": "Keeper of the site files",
+   "sprite": "custom:warm.blonde.gold.indigo.scarf.gold.curls.darkframes.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "preserved.coast.map",
+     "if": {
+      "flag": "preserved.coastLead",
+      "eq": "map"
+     }
+    },
+    {
+     "node": "preserved.coast.notes",
+     "if": {
+      "flag": "preserved.coastLead",
+      "eq": "notes"
+     }
+    },
+    {
+     "node": "preserved.coast-ready",
+     "if": {
+      "objective": "preserved.coast"
+     }
+    },
+    {
+     "node": "preserved.coast-first"
+    }
+   ]
+  },
+  {
+   "id": "preserved-inquiry-keeper",
+   "name": "Pilar",
+   "role": "Inquiry desk keeper",
+   "sprite": "custom:brown.grey.orange.brown.both.red.long.lightframes.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "preserved.review.desk",
+     "if": {
+      "flag": "preserved.reply",
+      "eq": "desk"
+     }
+    },
+    {
+     "node": "preserved.review.margin",
+     "if": {
+      "flag": "preserved.reply",
+      "eq": "margin"
+     }
+    },
+    {
+     "node": "preserved.review.records",
+     "if": {
+      "flag": "preserved.display",
+      "eq": "records"
+     }
+    },
+    {
+     "node": "preserved.review.paired",
+     "if": {
+      "flag": "preserved.display",
+      "eq": "paired"
+     }
+    },
+    {
+     "node": "preserved.review.delayed",
+     "if": {
+      "flag": "preserved.display",
+      "eq": "delayed"
+     }
+    },
+    {
+     "node": "preserved.review.choose"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "preserved.welcome",
+   "speaker": "preserved-registrar",
+   "text": "You brought back a packet the Nexus could actually use. Now somebody has sent us a display board with one heading for two very different places. The ink has started to glow. We have until the visitors arrive to decide what goes on the two stands.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "I’ll check the royal records first.",
+     "next": "preserved.start.royal",
+     "if": {
+      "not": {
+       "flagSet": "preserved.brief"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.brief",
+       "value": "royal"
+      }
+     ]
+    },
+    {
+     "text": "I’ll start with the sites marked on the coast map.",
+     "next": "preserved.start.coast",
+     "if": {
+      "not": {
+       "flagSet": "preserved.brief"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.brief",
+       "value": "coast"
+      }
+     ]
+    },
+    {
+     "text": "I’ll come back."
+    }
+   ]
+  },
+  {
+   "id": "preserved.start.royal",
+   "speaker": "preserved-registrar",
+   "text": "Door on the left. Follow the register beyond the burial entry. The ink is telling visitors the temple record will take them all the way to the modern catalogue. Check where that trail stops.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.start.coast",
+   "speaker": "preserved-registrar",
+   "text": "Door on the right. The map was folded through the middle. Unfold it before you follow the slips. The coast record asks a different question from the royal one.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.in-progress",
+   "speaker": "preserved-registrar",
+   "text": "The stands stay empty until we can explain both records. The royal room is to the left and the coastal room is to the right. You can leave through the south door and pick this up any time.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.tools",
+   "speaker": "preserved-registrar",
+   "text": "Our spare Lens and Thread are on the desk. Take what is missing from your kit. You can keep them if you need to return to the Nexus.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Take the Date-Kind Lens.",
+     "next": "preserved.tools.lens",
+     "if": {
+      "not": {
+       "item": "tool.date-lens"
+      }
+     },
+     "effects": [
+      {
+       "giveItem": "tool.date-lens"
+      }
+     ]
+    },
+    {
+     "text": "Take the Provenance Thread.",
+     "next": "preserved.tools.thread",
+     "if": {
+      "not": {
+       "item": "tool.provenance-thread"
+      }
+     },
+     "effects": [
+      {
+       "giveItem": "tool.provenance-thread"
+      }
+     ]
+    },
+    {
+     "text": "Leave the desk."
+    }
+   ]
+  },
+  {
+   "id": "preserved.tools.lens",
+   "speaker": "preserved-registrar",
+   "text": "The Lens separates a date for a building from the date of a later account.",
+   "historicalLabel": "fictional-world",
+   "next": "preserved.tools"
+  },
+  {
+   "id": "preserved.tools.thread",
+   "speaker": "preserved-registrar",
+   "text": "Carry the Thread to the first marker. It will leave a space where we have a gap.",
+   "historicalLabel": "fictional-world",
+   "next": "preserved.tools"
+  },
+  {
+   "id": "preserved.royal-ready",
+   "speaker": "preserved-royal-keeper",
+   "text": "The name can stay on the label with its basis. You left the missing transfer open. Someone can bring us another record later without having to start the case over.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.royal-first",
+   "speaker": "preserved-royal-keeper",
+   "text": "One visitor saw the same name twice and asked why we need two records. Take the Lens to the temple sheet and the catalogue. The Thread begins at the burial marker. When you reach the end, give the stand a heading you can defend.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.coast-first",
+   "speaker": "preserved-coast-keeper",
+   "text": "Pull the site map flat. Then follow the three slips and read the context file. The old heading makes every burial here sound as if it followed the same practice. The file gives us reasons to be more careful.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.coast-ready",
+   "speaker": "preserved-coast-keeper",
+   "text": "Now we can show why context matters. A map puts readers in the right place, and the context file tells them what preservation can and cannot show on its own.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the site map uppermost.",
+     "next": "preserved.coast.map",
+     "if": {
+      "not": {
+       "flagSet": "preserved.coastLead"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.coastLead",
+       "value": "map"
+      }
+     ]
+    },
+    {
+     "text": "Leave the context file open at the preservation notes.",
+     "next": "preserved.coast.notes",
+     "if": {
+      "not": {
+       "flagSet": "preserved.coastLead"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.coastLead",
+       "value": "notes"
+      }
+     ]
+    },
+    {
+     "text": "I’ll leave the order for later."
+    }
+   ]
+  },
+  {
+   "id": "preserved.coast.map",
+   "speaker": "preserved-coast-keeper",
+   "text": "The next reader makes for the map first. A second slip sends them to the preservation notes once they find the site.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.coast.notes",
+   "speaker": "preserved-coast-keeper",
+   "text": "Two readers stop over the preservation notes and notice the different conditions. One turns over the folder and finds the map.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.publish",
+   "speaker": "preserved-registrar",
+   "text": "We can open the display with two separate record stands, put a comparison slip between them, or open the inquiry desk while the cases wait. The gap in the royal file and the limits of the coastal record stay on the page in all three.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Open two stands. Give each record room.",
+     "next": "preserved.open.records",
+     "if": {
+      "not": {
+       "flagSet": "preserved.display"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.display",
+       "value": "records"
+      }
+     ]
+    },
+    {
+     "text": "Put a comparison slip between the two stands.",
+     "next": "preserved.open.paired",
+     "if": {
+      "not": {
+       "flagSet": "preserved.display"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.display",
+       "value": "paired"
+      }
+     ]
+    },
+    {
+     "text": "Hold the cases for review. Open the inquiry desk today.",
+     "next": "preserved.open.delayed",
+     "if": {
+      "not": {
+       "flagSet": "preserved.display"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.display",
+       "value": "delayed"
+      }
+     ]
+    },
+    {
+     "text": "I’ll look through the rooms again."
+    }
+   ]
+  },
+  {
+   "id": "preserved.open.records",
+   "speaker": "preserved-registrar",
+   "text": "The room opens with a stand for each place. A reader stops at the gap in the royal chain. At the second stand, another asks whether preservation by itself can tell us how a burial was treated. The desk keeper is taking both requests.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.open.paired",
+   "speaker": "preserved-registrar",
+   "text": "Visitors walk from the comparison slip to the two records and back. A reader points to the column marked 'what we can follow' and asks where the trail goes thin in each case. The desk keeper has pulled up a chair.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.open.delayed",
+   "speaker": "preserved-registrar",
+   "text": "The cases stay closed. The evidence desk opens. Visitors can ask why the heading was withheld and view the two record summaries while the stands wait. A reader asks where to look for the missing link.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.registrar-after",
+   "speaker": "preserved-registrar",
+   "text": "The inquiry desk is open to the east. If you need to catch the portal, use the south door. The two rooms stay open if you want to check a record again.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.review.records",
+   "speaker": "preserved-inquiry-keeper",
+   "text": "A reader copied the royal heading at the first stand. They want to check the missing link when they get home. Another read only the coastal stand. They asked where we recorded its scope. How should we leave the next reader a route to the two records?",
+   "historicalLabel": "fictional-world",
+   "next": "preserved.review.choose"
+  },
+  {
+   "id": "preserved.review.paired",
+   "speaker": "preserved-inquiry-keeper",
+   "text": "A visitor copied our comparison slip. Their friend took that single page to mean the two cases shared a history. Both want to know which record supports each line. How shall we keep the explanation with its source?",
+   "historicalLabel": "fictional-world",
+   "next": "preserved.review.choose"
+  },
+  {
+   "id": "preserved.review.delayed",
+   "speaker": "preserved-inquiry-keeper",
+   "text": "A visitor thinks a closed case means we have no usable records. We can leave a trace of what is known and where the gap remains while the display waits. Where should that trace live?",
+   "historicalLabel": "fictional-world",
+   "next": "preserved.review.choose"
+  },
+  {
+   "id": "preserved.review.choose",
+   "speaker": "preserved-inquiry-keeper",
+   "text": "A desk copy can hold the whole reference trail. Short notes at each record can travel with a quick copy. This room has time to prepare one first.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "File a traceable copy at the inquiry desk.",
+     "next": "preserved.review.desk",
+     "if": {
+      "not": {
+       "flagSet": "preserved.reply"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.reply",
+       "value": "desk"
+      }
+     ]
+    },
+    {
+     "text": "Clip the limits and references to the relevant records.",
+     "next": "preserved.review.margin",
+     "if": {
+      "not": {
+       "flagSet": "preserved.reply"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.reply",
+       "value": "margin"
+      }
+     ]
+    },
+    {
+     "text": "Leave the request open."
+    }
+   ]
+  },
+  {
+   "id": "preserved.review.desk",
+   "speaker": "preserved-inquiry-keeper",
+   "text": "A reader opens the desk copy and follows the two references in order. At the Nexus, a second copy will sit beside the return door for people who miss this room.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.review.margin",
+   "speaker": "preserved-inquiry-keeper",
+   "text": "A reader takes away a reference slip with the gap still marked. The next copy is going to the Nexus, where someone can find it beside the return door.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.tut.request",
+   "speaker": "preserved-inquiry-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "A proof sheet for the excavation case has a date, a doorway and an empty space where the workers’ names could go. A first journal entry, a later study and the archive’s account of the workforce have arrived. We can put one claim at the top, with the other records below.",
+   "options": [
+    {
+     "text": "Lead with the named foremen. Leave other names open.",
+     "next": "preserved.tut.request.names",
+     "if": {
+      "not": {
+       "flagSet": "preserved.tut.request"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.tut.request",
+       "value": "names"
+      }
+     ]
+    },
+    {
+     "text": "Lead with a dated trail from the journal to the later note.",
+     "next": "preserved.tut.request.timeline",
+     "if": {
+      "not": {
+       "flagSet": "preserved.tut.request"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.tut.request",
+       "value": "timeline"
+      }
+     ]
+    },
+    {
+     "text": "Leave the proof on the desk."
+    }
+   ]
+  },
+  {
+   "id": "preserved.tut.request.names",
+   "speaker": "preserved-inquiry-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "The foremen’s names have room on the proof. A reader asks whose names the archive did not keep. The dated documents are below the heading, with spaces for what they cannot settle."
+  },
+  {
+   "id": "preserved.tut.request.timeline",
+   "speaker": "preserved-inquiry-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "The note sits later on the trail than the journal. A reader points to the gap between when a record was made and when its subject happened. The workforce record stays next to the dates, with the four names in view."
+  },
+  {
+   "id": "preserved.begin.desk",
+   "speaker": "preserved-royal-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "A returning visitor remembers starting at the temple picture. Another says their guide began with the burial file. Their memories help us find where each tour began. The sources still carry their own dates. Try the start clip in both positions before we open the doors.",
+   "options": [
+    {
+     "text": "Slide the start clip to the reign and temple.",
+     "next": "preserved.begin.try-temple",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "card": "card.preserved.reign"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAMESSEUM",
+          "eq": true
+         },
+         {
+          "card": "card.preserved.custody"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAM-CUSTODY",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "preserved.begin.temple",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.begin.clip",
+       "value": "temple"
+      },
+      {
+       "setFlag": "preserved.begin.temple",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Slide the start clip to the burial.",
+     "next": "preserved.begin.try-custody",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "card": "card.preserved.reign"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAMESSEUM",
+          "eq": true
+         },
+         {
+          "card": "card.preserved.custody"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAM-CUSTODY",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "preserved.begin.custody",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.begin.clip",
+       "value": "custody"
+      },
+      {
+       "setFlag": "preserved.begin.custody",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Choose a starting card for the visitors.",
+     "next": "preserved.begin.choose",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.begin.try"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.begin.display"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Read the temple-first route again.",
+     "next": "preserved.begin.used-temple",
+     "if": {
+      "flag": "preserved.begin.display",
+      "eq": "temple"
+     }
+    },
+    {
+     "text": "Read the burial-first route again.",
+     "next": "preserved.begin.used-custody",
+     "if": {
+      "flag": "preserved.begin.display",
+      "eq": "custody"
+     }
+    },
+    {
+     "text": "Leave the start clip here."
+    }
+   ]
+  },
+  {
+   "id": "preserved.begin.try-temple",
+   "speaker": "preserved-royal-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "With the temple first, the trail opens at a place the king built for remembrance. The Ministry gives Ramesses II’s reign as about 1279–1213 BCE. Keep that range beside ‘reign’. A visitor just asked which of those years the temple went up. The site record here gives a reign, and the trail can continue to a separate burial file.",
+   "options": [
+    {
+     "text": "Slide the start clip to the burial.",
+     "next": "preserved.begin.try-custody",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "card": "card.preserved.reign"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAMESSEUM",
+          "eq": true
+         },
+         {
+          "card": "card.preserved.custody"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAM-CUSTODY",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "preserved.begin.custody",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.begin.clip",
+       "value": "custody"
+      },
+      {
+       "setFlag": "preserved.begin.custody",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Choose a starting card for the visitors.",
+     "next": "preserved.begin.choose",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.begin.try"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.begin.display"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the clip by the temple."
+    }
+   ]
+  },
+  {
+   "id": "preserved.begin.try-custody",
+   "speaker": "preserved-royal-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "With the burial first, a visitor can start the custody trail at KV 7. The next place listed on the museum copy is the later cache at Deir el-Bahari. Leave the move date blank. The Ramesseum stays on the side flap for the earlier reign. A reader trying to follow the later move can carry that smaller trail.",
+   "options": [
+    {
+     "text": "Slide the start clip to the reign and temple.",
+     "next": "preserved.begin.try-temple",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "card": "card.preserved.reign"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAMESSEUM",
+          "eq": true
+         },
+         {
+          "card": "card.preserved.custody"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAM-CUSTODY",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "preserved.begin.temple",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.begin.clip",
+       "value": "temple"
+      },
+      {
+       "setFlag": "preserved.begin.temple",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Choose a starting card for the visitors.",
+     "next": "preserved.begin.choose",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.begin.try"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.begin.display"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the clip by the burial file."
+    }
+   ]
+  },
+  {
+   "id": "preserved.begin.choose",
+   "speaker": "preserved-royal-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "We can start a walk through a reign and its place of remembrance, or open the trail at its first recorded burial place. The starting card guides the questions people bring to the rest. Keep the other file in reach and its dates on its own line.",
+   "options": [
+    {
+     "text": "Open with the temple during the reign. Keep the custody trail on its own tab.",
+     "next": "preserved.begin.used-temple",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.begin.try"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.begin.display"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.begin.display",
+       "value": "temple"
+      },
+      {
+       "setFlag": "preserved.begin.clip",
+       "value": "temple"
+      }
+     ]
+    },
+    {
+     "text": "Open with the burial and later safekeeping. Keep the temple on the earlier tab.",
+     "next": "preserved.begin.used-custody",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.begin.try"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.begin.display"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.begin.display",
+       "value": "custody"
+      },
+      {
+       "setFlag": "preserved.begin.clip",
+       "value": "custody"
+      }
+     ]
+    },
+    {
+     "text": "Leave the two starting cards beside the clip."
+    }
+   ]
+  },
+  {
+   "id": "preserved.begin.used-temple",
+   "speaker": "preserved-royal-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "A visitor points to the temple card by the Cold Store’s doorway and asks how the king planned to be remembered. The side tab can still lead them to the later custody record. The approximate reign dates stay with the Ministry’s site record."
+  },
+  {
+   "id": "preserved.begin.used-custody",
+   "speaker": "preserved-royal-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "A reader at the burial-first card follows the known places and points to the blank move date. They ask who could speak for that handover. The museum file names the custody places. Who authorised the move remains a separate question."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH3-M01",
+   "world": "WORLD-04",
+   "title": "The Missing Transfer",
+   "knowledgeQuestion": "How can a public record name what it knows and still leave room for a missing link?",
+   "stake": "If the gap in the file is hidden, a family loses its claim to an ancestor's name.",
+   "available": {
+    "flag": "preserved.arrived",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "preserved.briefing",
+     "title": "Hear the registrar’s plan for the two stands.",
+     "done": {
+      "flagSet": "preserved.brief"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "power"
+      ],
+      "atl": [
+       "communication"
+      ],
+      "aoks": [
+       "HIS"
+      ],
+      "subjects": [
+       "history"
+      ]
+     }
+    },
+    {
+     "id": "preserved.royal",
+     "title": "Trace the royal catalogue and repair the heading in the royal room.",
+     "done": {
+      "all": [
+       {
+        "card": "card.preserved.reign"
+       },
+       {
+        "card": "card.preserved.custody"
+       },
+       {
+        "flag": "thread.preserved-royal.catalogue",
+        "eq": true
+       },
+       {
+        "flag": "label.preserved-name.everHeld",
+        "eq": true
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "truth",
+       "justification",
+       "power"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS"
+      ],
+      "subjects": [
+       "history",
+       "classics"
+      ]
+     },
+     "visible": {
+      "objective": "preserved.briefing"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.preserved.royal"
+      },
+      {
+       "journal": "j.preserved.royal"
+      }
+     ]
+    },
+    {
+     "id": "preserved.coast",
+     "title": "Compare the site map and context file in the coastal room.",
+     "done": {
+      "all": [
+       {
+        "card": "card.preserved.coast"
+       },
+       {
+        "card": "card.preserved.context"
+       },
+       {
+        "flag": "thread.preserved-coast.context",
+        "eq": true
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "objectivity",
+       "explanation",
+       "culture"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "geography",
+       "anthropology",
+       "ess"
+      ]
+     },
+     "visible": {
+      "objective": "preserved.briefing"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.preserved.coast"
+      },
+      {
+       "journal": "j.preserved.coast"
+      }
+     ]
+    },
+    {
+     "id": "preserved.publish",
+     "title": "Return to the registrar and decide how to open the display.",
+     "done": {
+      "flagSet": "preserved.display"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "values",
+       "responsibility",
+       "culture"
+      ],
+      "atl": [
+       "communication",
+       "social",
+       "self-management"
+      ],
+      "aoks": [
+       "HIS",
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "visual-arts",
+       "anthropology"
+      ]
+     },
+     "visible": {
+      "all": [
+       {
+        "objective": "preserved.royal"
+       },
+       {
+        "objective": "preserved.coast"
+       }
+      ]
+     },
+     "onComplete": [
+      {
+       "credit": "credit.preserved.publish"
+      },
+      {
+       "journal": "j.preserved.publish"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH3-R02",
+   "world": "WORLD-04",
+   "title": "Room for a Reply",
+   "knowledgeQuestion": "What helps a reader check a claim after it leaves the room?",
+   "available": {
+    "objective": "preserved.publish"
+   },
+   "objectives": [
+    {
+     "id": "preserved.answer",
+     "title": "Take the reader’s request at the inquiry desk.",
+     "done": {
+      "flagSet": "preserved.reply"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "power",
+       "perspective"
+      ],
+      "atl": [
+       "communication",
+       "social",
+       "research"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN",
+       "HIS"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "history"
+      ]
+     },
+     "onComplete": [
+      {
+       "credit": "credit.preserved.answer"
+      },
+      {
+       "journal": "j.preserved.answer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH3-R03",
+   "world": "WORLD-04",
+   "title": "Names on the Proof",
+   "knowledgeQuestion": "What can the date and author of a record tell us about whose story survives?",
+   "available": {
+    "objective": "preserved.publish"
+   },
+   "objectives": [
+    {
+     "id": "preserved.proof.checked",
+     "title": "Inspect the excavation files and use the Lens on the journal and the later note.",
+     "done": {
+      "all": [
+       {
+        "card": "card.preserved.tut.journal"
+       },
+       {
+        "card": "card.preserved.tut.note"
+       },
+       {
+        "card": "card.preserved.tut.workforce"
+       },
+       {
+        "flag": "lens.OBJ-PRES-TUT-JOURNAL",
+        "eq": true
+       },
+       {
+        "flag": "lens.OBJ-PRES-TUT-NOTE",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "certainty",
+       "objectivity"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS"
+      ],
+      "subjects": [
+       "history"
+      ]
+     }
+    },
+    {
+     "id": "preserved.proof.hung",
+     "title": "Put a lead on the excavation proof sheet.",
+     "done": {
+      "flagSet": "preserved.tut.request"
+     },
+     "visible": {
+      "objective": "preserved.proof.checked"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "power",
+       "perspective",
+       "culture",
+       "responsibility"
+      ],
+      "atl": [
+       "communication",
+       "research"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ]
+     },
+     "onComplete": [
+      {
+       "credit": "credit.preserved.proof"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH3-R08",
+   "world": "WORLD-04",
+   "title": "Where the File Begins",
+   "knowledgeQuestion": "How does choosing a starting point change what a historical display helps visitors investigate?",
+   "available": {
+    "all": [
+     {
+      "flag": "preserved.arrived",
+      "eq": true
+     },
+     {
+      "all": [
+       {
+        "card": "card.preserved.reign"
+       },
+       {
+        "flag": "lens.OBJ-PRES-RAMESSEUM",
+        "eq": true
+       },
+       {
+        "card": "card.preserved.custody"
+       },
+       {
+        "flag": "lens.OBJ-PRES-RAM-CUSTODY",
+        "eq": true
+       }
+      ]
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "preserved.begin.try",
+     "title": "Try two starting points on the Royal Records clip.",
+     "done": {
+      "all": [
+       {
+        "flag": "preserved.begin.temple",
+        "eq": true
+       },
+       {
+        "flag": "preserved.begin.custody",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "interpretation",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS"
+      ],
+      "subjects": [
+       "history",
+       "visual-arts"
+      ]
+     },
+     "skills": [
+      "SK-CUR-04",
+      "SK-MED-02"
+     ]
+    },
+    {
+     "id": "preserved.begin.publish",
+     "title": "Open one public route while leaving the other source in reach.",
+     "done": {
+      "flagSet": "preserved.begin.display"
+     },
+     "visible": {
+      "objective": "preserved.begin.try"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "power",
+       "values",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "ART"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "visual-arts"
+      ]
+     },
+     "skills": [
+      "SK-CUR-06",
+      "SK-THK-14"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.preserved.begin"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "threads": [
+  {
+   "id": "preserved-royal",
+   "title": "The custody trail",
+   "object": "OBJ-PRES-RAM-CUSTODY",
+   "nodes": [
+    {
+     "id": "burial",
+     "label": "Burial record",
+     "map": "preserved.royal",
+     "x": 7,
+     "y": 9,
+     "text": "Pin the burial reference from the catalogue. The temple sheet can help place the reign. It cannot follow the later moves."
+    },
+    {
+     "id": "cache",
+     "label": "A later location",
+     "map": "preserved.royal",
+     "x": 12,
+     "y": 9,
+     "text": "Thread the record toward Deir el-Bahari. The summary gives a later place, with room between the two entries."
+    },
+    {
+     "id": "catalogue",
+     "label": "Museum catalogue",
+     "map": "preserved.royal",
+     "x": 19,
+     "y": 9,
+     "text": "The museum uses the attribution Ramesses II. Keep its name with the custody history and the catalogue that reports it."
+    }
+   ],
+   "gap": {
+    "after": "catalogue",
+    "x": 16,
+    "y": 9,
+    "text": "No transfer slip fills this space in the copy we have. Leave it open without tearing either endpoint off the line."
+   },
+   "limit": "These stops follow a museum summary. We have not independently verified each transfer.",
+   "weave": {
+    "concepts": [
+     "evidence",
+     "justification",
+     "certainty"
+    ],
+    "atl": [
+     "research",
+     "thinking"
+    ],
+    "aoks": [
+     "HIS"
+    ],
+    "subjects": [
+     "history"
+    ]
+   }
+  },
+  {
+   "id": "preserved-coast",
+   "title": "The site and context trail",
+   "object": "OBJ-PRES-CHIN-SITES",
+   "nodes": [
+    {
+     "id": "site",
+     "label": "The site map",
+     "map": "preserved.coast",
+     "x": 7,
+     "y": 8,
+     "text": "Start with the places registered in the map. A label for one coast still needs a named site."
+    },
+    {
+     "id": "conditions",
+     "label": "Conditions and practice",
+     "map": "preserved.coast",
+     "x": 12,
+     "y": 8,
+     "text": "Follow the slip to the context file. The record describes more than one way preservation could occur. Check which process the record can actually support."
+    },
+    {
+     "id": "context",
+     "label": "The evidence in place",
+     "map": "preserved.coast",
+     "x": 17,
+     "y": 8,
+     "text": "Clip the site and the file together. Similar preservation can leave very different histories behind it."
+    }
+   ],
+   "gap": {
+    "after": "context",
+    "x": 14,
+    "y": 8,
+    "text": "This file cannot recover a particular person's wishes or every detail of a burial."
+   },
+   "limit": "Comparison starts with the evidence at each place. A resemblance cannot establish a shared practice.",
+   "weave": {
+    "concepts": [
+     "evidence",
+     "explanation",
+     "objectivity",
+     "culture"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "aoks": [
+     "HIS",
+     "NAT",
+     "HUM"
+    ],
+    "subjects": [
+     "geography",
+     "anthropology",
+     "ess"
+    ]
+   }
+  }
+ ],
+ "labelKits": [
+  {
+   "id": "preserved-name",
+   "title": "The royal records heading",
+   "oldLabel": "A NAME PROVED BY THE TEMPLE",
+   "place": "The Cold Store, royal records",
+   "legends": {
+    "subject": "Record to put first",
+    "criterion": "What this record can show",
+    "limit": "Note to keep beside the heading",
+    "intro": "The proof still says the temple settles the whole trail. Pin a heading to a record that can carry it. You can leave a note where the trail goes quiet.",
+    "button": "Pin the heading"
+   },
+   "subjects": [
+    {
+     "id": "temple",
+     "text": "The Ramesseum"
+    },
+    {
+     "id": "catalogue",
+     "text": "The museum's record for Ramesses II"
+    }
+   ],
+   "criteria": [
+    {
+     "id": "monument",
+     "text": "A monument linked to the reign",
+     "force": 3
+    },
+    {
+     "id": "custody",
+     "text": "A name with a reported custody history",
+     "force": 3
+    },
+    {
+     "id": "proves",
+     "text": "The temple proves every link in the custody chain",
+     "force": 5
+    }
+   ],
+   "limits": [
+    {
+     "id": "none",
+     "text": "",
+     "lower": 0
+    },
+    {
+     "id": "gap",
+     "text": "Some transfer steps are missing from this record.",
+     "lower": 1
+    },
+    {
+     "id": "scope",
+     "text": "The temple and the later catalogue tell different parts of the story.",
+     "lower": 1
+    }
+   ],
+   "supports": [
+    {
+     "subject": "temple",
+     "criterion": "monument",
+     "cards": [
+      {
+       "card": "card.preserved.reign",
+       "weight": 3
+      }
+     ],
+     "heard": "A visitor follows the heading to the temple sheet and asks where the later records begin."
+    },
+    {
+     "subject": "catalogue",
+     "criterion": "custody",
+     "cards": [
+      {
+       "card": "card.preserved.custody",
+       "weight": 3
+      }
+     ],
+     "heard": "The reader keeps the museum attribution beside the known locations and the missing transfer."
+    },
+    {
+     "subject": "temple",
+     "criterion": "proves",
+     "cards": [
+      {
+       "card": "card.preserved.reign",
+       "weight": 2
+      }
+     ],
+     "heard": "",
+     "weak": "A visitor traces a straight line from the temple sheet to the catalogue. There is no transfer record in the space where the line crosses."
+    }
+   ],
+   "weak": {
+    "noSupport": "The gold lights up the space where the heading needs a record.",
+    "tooStrong": "A reader follows the title farther than the record can take them. The gold catches on the missing link."
+   },
+   "weave": {
+    "concepts": [
+     "truth",
+     "evidence",
+     "certainty",
+     "justification",
+     "power"
+    ],
+    "atl": [
+     "research",
+     "communication"
+    ],
+    "aoks": [
+     "HIS"
+    ],
+    "subjects": [
+     "history",
+     "lang-langlit"
+    ]
+   }
+  }
+ ],
+ "criteria": [
+  {
+   "id": "credit.preserved.royal",
+   "concept": "justification",
+   "maximum": 8
+  },
+  {
+   "id": "credit.preserved.coast",
+   "concept": "culture",
+   "maximum": 8
+  },
+  {
+   "id": "credit.preserved.publish",
+   "concept": "responsibility",
+   "maximum": 10
+  },
+  {
+   "id": "credit.preserved.answer",
+   "concept": "perspective",
+   "maximum": 6
+  },
+  {
+   "id": "credit.preserved.proof",
+   "concept": "power",
+   "maximum": 6
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.preserved.briefing.1",
+   "objective": "preserved.briefing",
+   "depth": 1,
+   "text": "Someone has set out two empty stands in the Cold Store."
+  },
+  {
+   "id": "h.preserved.briefing.2",
+   "objective": "preserved.briefing",
+   "depth": 2,
+   "text": "The desk faces the two north doors."
+  },
+  {
+   "id": "h.preserved.briefing.3",
+   "objective": "preserved.briefing",
+   "depth": 3,
+   "text": "Speak to Registrar Aster in the middle of the hall."
+  },
+  {
+   "id": "h.preserved.briefing.4",
+   "objective": "preserved.briefing",
+   "depth": 4,
+   "text": "At the desk, take either starting route. The other room stays open."
+  },
+  {
+   "id": "h.preserved.royal.1",
+   "objective": "preserved.royal",
+   "depth": 1,
+   "text": "A building and a museum file can have the same name on them."
+  },
+  {
+   "id": "h.preserved.royal.2",
+   "objective": "preserved.royal",
+   "depth": 2,
+   "text": "Look for the temple sheet and the custody file in the left room."
+  },
+  {
+   "id": "h.preserved.royal.3",
+   "objective": "preserved.royal",
+   "depth": 3,
+   "text": "After inspecting them, follow the Thread from the burial marker to the catalogue marker."
+  },
+  {
+   "id": "h.preserved.royal.4",
+   "objective": "preserved.royal",
+   "depth": 4,
+   "text": "At the heading stand, use the temple record for a monument claim or the museum record for the custody claim."
+  },
+  {
+   "id": "h.preserved.coast.1",
+   "objective": "preserved.coast",
+   "depth": 1,
+   "text": "Start by finding out which coast the file describes."
+  },
+  {
+   "id": "h.preserved.coast.2",
+   "objective": "preserved.coast",
+   "depth": 2,
+   "text": "The right room has a map and a context file."
+  },
+  {
+   "id": "h.preserved.coast.3",
+   "objective": "preserved.coast",
+   "depth": 3,
+   "text": "Inspect both. Follow the site marker, conditions marker and context marker in that order."
+  },
+  {
+   "id": "h.preserved.coast.4",
+   "objective": "preserved.coast",
+   "depth": 4,
+   "text": "Keep the two preservation contexts separate. You can show either record first when the keeper asks."
+  },
+  {
+   "id": "h.preserved.publish.1",
+   "objective": "preserved.publish",
+   "depth": 1,
+   "text": "Both rooms leave something a visitor can check."
+  },
+  {
+   "id": "h.preserved.publish.2",
+   "objective": "preserved.publish",
+   "depth": 2,
+   "text": "Use the passage back to the Cold Store after following both trails."
+  },
+  {
+   "id": "h.preserved.publish.3",
+   "objective": "preserved.publish",
+   "depth": 3,
+   "text": "Speak to Aster. The space between the stands can hold a comparison, or they can stand apart."
+  },
+  {
+   "id": "h.preserved.publish.4",
+   "objective": "preserved.publish",
+   "depth": 4,
+   "text": "Choose separate records, a paired display, or an open review desk with the cases held."
+  },
+  {
+   "id": "h.preserved.answer.1",
+   "objective": "preserved.answer",
+   "depth": 1,
+   "text": "Someone is asking where the heading came from."
+  },
+  {
+   "id": "h.preserved.answer.2",
+   "objective": "preserved.answer",
+   "depth": 2,
+   "text": "Go to the inquiry room east of the Cold Store."
+  },
+  {
+   "id": "h.preserved.answer.3",
+   "objective": "preserved.answer",
+   "depth": 3,
+   "text": "Talk to the keeper by the desk and listen to the visitor’s request."
+  },
+  {
+   "id": "h.preserved.answer.4",
+   "objective": "preserved.answer",
+   "depth": 4,
+   "text": "Leave a full reference copy at the desk or clip individual references to the relevant records."
+  },
+  {
+   "id": "h.preserved.proof.checked.1",
+   "objective": "preserved.proof.checked",
+   "depth": 1,
+   "text": "The inquiry room holds another set of records."
+  },
+  {
+   "id": "h.preserved.proof.checked.2",
+   "objective": "preserved.proof.checked",
+   "depth": 2,
+   "text": "Find the journal, the later note, and the account of the workforce."
+  },
+  {
+   "id": "h.preserved.proof.checked.3",
+   "objective": "preserved.proof.checked",
+   "depth": 3,
+   "text": "Inspect all three. Put the Lens on the journal and the later note."
+  },
+  {
+   "id": "h.preserved.proof.checked.4",
+   "objective": "preserved.proof.checked",
+   "depth": 4,
+   "text": "The Lens shows when each record was made. It leaves earlier events open."
+  },
+  {
+   "id": "h.preserved.proof.hung.1",
+   "objective": "preserved.proof.hung",
+   "depth": 1,
+   "text": "The heading at the top catches the eye first."
+  },
+  {
+   "id": "h.preserved.proof.hung.2",
+   "objective": "preserved.proof.hung",
+   "depth": 2,
+   "text": "Read the proof sheet near the files."
+  },
+  {
+   "id": "h.preserved.proof.hung.3",
+   "objective": "preserved.proof.hung",
+   "depth": 3,
+   "text": "Choose which part of the record visitors should see first."
+  },
+  {
+   "id": "h.preserved.proof.hung.4",
+   "objective": "preserved.proof.hung",
+   "depth": 4,
+   "text": "The names can lead, or the two dated documents can lead. The other record stays on the proof."
+  },
+  {
+   "id": "h.preserved.begin.try.1",
+   "objective": "preserved.begin.try",
+   "depth": 1,
+   "text": "The two source dates describe different things."
+  },
+  {
+   "id": "h.preserved.begin.try.2",
+   "objective": "preserved.begin.try",
+   "depth": 2,
+   "text": "Use the Date-Kind Lens at the Ramesseum site record and the royal custody file."
+  },
+  {
+   "id": "h.preserved.begin.try.3",
+   "objective": "preserved.begin.try",
+   "depth": 3,
+   "text": "Find the movable start clip in the Royal Records room after reading both cases."
+  },
+  {
+   "id": "h.preserved.begin.try.4",
+   "objective": "preserved.begin.try",
+   "depth": 4,
+   "text": "Try the clip with the reign and temple first, then with the burial first. Check which claims each opens."
+  },
+  {
+   "id": "h.preserved.begin.publish.1",
+   "objective": "preserved.begin.publish",
+   "depth": 1,
+   "text": "A starting card gives a reader a question to follow."
+  },
+  {
+   "id": "h.preserved.begin.publish.2",
+   "objective": "preserved.begin.publish",
+   "depth": 2,
+   "text": "Consider a reader asking about remembrance and one tracing a later move."
+  },
+  {
+   "id": "h.preserved.begin.publish.3",
+   "objective": "preserved.begin.publish",
+   "depth": 3,
+   "text": "At the Royal Records clip choose a public start after trying both previews."
+  },
+  {
+   "id": "h.preserved.begin.publish.4",
+   "objective": "preserved.begin.publish",
+   "depth": 4,
+   "text": "Put the temple card in the Cold Store or start the custody trail at the burial. The other record stays in reach."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.preserved.royal",
+   "text": "The temple sheet and custody file carry different claims. The Thread left room for a transfer we could not follow.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.preserved.coast",
+   "text": "The sites and conditions made a difference to what we could infer from the coastal record.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.preserved.publish",
+   "text": "We opened the room with a way to check each record. The same evidence can meet different readers in different forms.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.preserved.answer",
+   "text": "We left a route from the public display to the record that could support it.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.preserved.begin",
+   "title": "Where the file begins",
+   "text": "Two visitors remembered different first stops in the room. I checked the site record and the custody account, then chose which would open the trail. The reign range stayed with the temple record and the unknown move date stayed open."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.preserved.reply",
+   "attribute": "caring",
+   "did": "Left a route to the records for readers who missed the display.",
+   "when": {
+    "flagSet": "preserved.reply"
+   },
+   "prompt": "Whose route to the record changed because of what you left?"
+  }
+ ]
+}

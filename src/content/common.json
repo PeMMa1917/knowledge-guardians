@@ -58,6 +58,7 @@
    "sprite": "warden-ise",
    "mode": "fictional",
    "talk": [
+    {"if": {"all": [{"flag": "harrowmere.found", "eq": true}, {"not": {"flagSet": "ise.harrowmere"}}]}, "node": "ise.harrowmere"},
     {"if": {"flag": "nile.returned", "eq": true}, "node": "nile.nexus-resolved"},
     {"if": {"flag": "nile.dispatch", "eq": "print"}, "node": "nile.nexus-print"},
     {"if": {"flag": "nile.dispatch", "eq": "read"}, "node": "nile.nexus-read"},

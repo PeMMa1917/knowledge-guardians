@@ -1,0 +1,386 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH4-R05",
+   "world": "WORLD-05",
+   "title": "The Number That Outlived the Weather",
+   "knowledgeQuestion": "What keeps a copied claim traceable after its conditions have changed?",
+   "available": {
+    "flag": "coast.archive.readback",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "coast.archive.published",
+     "title": "Leave the old forecast and its correction traceable.",
+     "essential": false,
+     "done": {
+      "flag": "coast.archive.readback",
+      "eq": true
+     },
+     "onComplete": [
+      {
+       "journal": "j.coast.archive"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "evidence",
+       "truth",
+       "certainty",
+       "responsibility",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "geography",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-CIT-01"
+     ]
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "coast.archive.sleeve",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The file for the old Autumn 12 forecasts has an ink mark just inside the sleeve. A later copy on the wall gives the same number in a different hand.",
+   "options": [
+    {
+     "text": "Turn the sleeve over and trace its issue stamp.",
+     "next": "coast.archive.stamp",
+     "if": {
+      "not": {
+       "flagSet": "coast.archive.forecast-read"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "coast.archive.forecast-read",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Read the forecast beside its stamp.",
+     "next": "coast.archive.stamp",
+     "if": {
+      "flag": "coast.archive.forecast-read",
+      "eq": true
+     }
+    },
+    {
+     "text": "Rest the sleeve on the shelf."
+    }
+   ]
+  },
+  {
+   "id": "coast.archive.stamp",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "F-12. Autumn 12, second bell. Estimate for the headland gauge in the third-bell interval: six finger-widths if the wind stays shoreward. One time tells you when the estimate left the desk. The other tells you when to check it.",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "coast.archive.register",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A red thread holds the gauge register open. The headland and the quay each have a column. The clerk’s nib stopped just before the last column.",
+   "options": [
+    {
+     "text": "Lay a ruled strip across the third-bell line.",
+     "next": "coast.archive.line",
+     "if": {
+      "not": {
+       "flagSet": "coast.archive.gauge-read"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "coast.archive.gauge-read",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Follow the ruled strip across the third-bell line.",
+     "next": "coast.archive.line",
+     "if": {
+      "flag": "coast.archive.gauge-read",
+      "eq": true
+     }
+    },
+    {
+     "text": "Leave the register open."
+    }
+   ]
+  },
+  {
+   "id": "coast.archive.line",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "G-12. Autumn 12, third-bell interval. Headland: three finger-widths. Wind now inland. The space where a quay reading would go is blank. There is room to lay a slip beside that gap and say exactly what is missing.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "coast.archive.copy",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A notice on the wall says 'Headland reading: six'. There is a pale edge where this sheet was folded around a smaller piece of paper.",
+   "options": [
+    {
+     "text": "Open the fold and check which heading the copy carried forward.",
+     "next": "coast.archive.crease",
+     "if": {
+      "not": {
+       "flagSet": "coast.archive.copy-read"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "coast.archive.copy-read",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Look at the heading inside the fold.",
+     "next": "coast.archive.crease",
+     "if": {
+      "flag": "coast.archive.copy-read",
+      "eq": true
+     }
+    },
+    {
+     "text": "Leave the notice on its pin."
+    }
+   ]
+  },
+  {
+   "id": "coast.archive.crease",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "C-12. Copied after the third bell. Inside the fold, the older strip still says 'estimate'. The outer heading says 'reading', and the condition about the wind ends up hidden.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "coast.archive.press",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A copyist in the archive keeps finding the old notice beside real gauge records. The people who study forecasts can work here with the originals. Harbour clerks have time to check one small card before they copy a line.",
+   "options": [
+    {
+     "text": "Mount the forecast, register and later copy in dated order at the desk.",
+     "next": "coast.archive.mounted",
+     "if": {
+      "all": [
+       {
+        "flag": "coast.archive.forecast-read",
+        "eq": true
+       },
+       {
+        "flag": "coast.archive.gauge-read",
+        "eq": true
+       },
+       {
+        "flag": "coast.archive.copy-read",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "coast.archive.edition"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "coast.archive.edition",
+       "value": "timeline"
+      }
+     ]
+    },
+    {
+     "text": "Send the working copy shelf a dated card that points back to all three sheets.",
+     "next": "coast.archive.indexed",
+     "if": {
+      "all": [
+       {
+        "flag": "coast.archive.forecast-read",
+        "eq": true
+       },
+       {
+        "flag": "coast.archive.gauge-read",
+        "eq": true
+       },
+       {
+        "flag": "coast.archive.copy-read",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "coast.archive.edition"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "coast.archive.edition",
+       "value": "register"
+      }
+     ]
+    },
+    {
+     "text": "Leave the desk open for now."
+    }
+   ]
+  },
+  {
+   "id": "coast.archive.mounted",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You slide the three papers into slots. The first is headed ESTIMATE. The second is headed OBSERVED. The copied notice stays at the end, above a note about what fell inside its fold. The timeline is open for the next apprentice to use."
+  },
+  {
+   "id": "coast.archive.indexed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The next card on the press starts with the third-bell observation. It gives F-12, G-12 and C-12 in the margin. The copy shelf by the entrance steps receives a card. The archive keeps the three sheets under their original headings."
+  },
+  {
+   "id": "coast.archive.index",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The archive’s index puts F-12 with forecasts, G-12 with gauge records and C-12 with issued copies. A line points out where the copy dropped the wind condition. The small card by the harbour steps sends the next reader back to these three files."
+  },
+  {
+   "id": "coast.archive.timeline",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "An apprentice slides the forecast next to the actual gauge mark. The values have the same unit and site. The forecast assumed the wind would stay shoreward. The gauge sheet shows that it turned. A separate slot keeps the quay line empty.",
+   "options": [
+    {
+     "text": "Clip the printed notice to its earlier source without moving either date.",
+     "next": "coast.archive.checked-timeline",
+     "if": {
+      "all": [
+       {
+        "flag": "coast.archive.edition",
+        "eq": "timeline"
+       },
+       {
+        "not": {
+         "flagSet": "coast.archive.readback"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the three sheets in their slots."
+    }
+   ]
+  },
+  {
+   "id": "coast.archive.checked-timeline",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The apprentice can trace the copy to the estimate. They write three under the observed headland mark and leave the quay slot open. The notice remains in the file, so the next reader can see why someone copied six.",
+   "effects": [
+    {
+     "setFlag": "coast.archive.readback",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "coast.archive.quay-card",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "At the copy shelf, a clerk sees a fresh card headed THIRD-BELL OBSERVATION. Three finger-widths at the headland. The quay entry is open. The old notice’s number appears underneath next to its forecast reference.",
+   "options": [
+    {
+     "text": "Slip the card into the copy rack with the three file references showing.",
+     "next": "coast.archive.checked-quay",
+     "if": {
+      "all": [
+       {
+        "flag": "coast.archive.edition",
+        "eq": "register"
+       },
+       {
+        "not": {
+         "flagSet": "coast.archive.readback"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the archive card here."
+    }
+   ]
+  },
+  {
+   "id": "coast.archive.checked-quay",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The clerk lifts the card before copying a figure into the harbour book. They leave a blank line beside the quay and a slip pointing back to the old forecast. The sources can be checked back at the Bell Archive.",
+   "effects": [
+    {
+     "setFlag": "coast.archive.readback",
+     "value": true
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.coast.archive.1",
+   "objective": "coast.archive.published",
+   "depth": 1,
+   "text": "One old number appears on two sheets with different headings."
+  },
+  {
+   "id": "h.coast.archive.2",
+   "objective": "coast.archive.published",
+   "depth": 2,
+   "text": "Look inside the forecast sleeve, follow the gauge line and unfold the later copy."
+  },
+  {
+   "id": "h.coast.archive.3",
+   "objective": "coast.archive.published",
+   "depth": 3,
+   "text": "At the copy desk, keep the two kinds of record and the issue times visible."
+  },
+  {
+   "id": "h.coast.archive.4",
+   "objective": "coast.archive.published",
+   "depth": 4,
+   "text": "Use the finished timeline in the archive or the source card at the harbour copy shelf."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.coast.archive",
+   "claimKind": "observation",
+   "text": "I kept the old Autumn 12 forecast and the later gauge entry where another reader could track them. Six came from the forecast. The headland gauge read three. The quay observation is still a gap."
+  }
+ ]
+}

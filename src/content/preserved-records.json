@@ -1,0 +1,218 @@
+{
+ "sources": [
+  {
+   "id": "HIS-PRES-01",
+   "title": "Egyptian Ministry of Tourism and Antiquities: The Ramesseum",
+   "url": "https://egymonuments.gov.eg/monuments/the-ramesseum-the-temple-of-ramses-ii/",
+   "locator": "Opening description",
+   "supports": "The Ramesseum was a funerary temple built by Ramesses II, whose reign is dated to about 1279–1213 BCE.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-PRES-02",
+   "title": "National Museum of Egyptian Civilization: Ramses II",
+   "url": "https://nmec.gov.eg/mummies-hall/ramses-ii/",
+   "locator": "Final paragraph of the biography. The museum page contains photographs of human remains.",
+   "supports": "The museum identifies Ramesses II and places his original burial in KV 7, with later custody at Deir el-Bahari.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-PRES-03",
+   "title": "UNESCO World Heritage Centre: Chinchorro property 1634, maps",
+   "url": "https://whc.unesco.org/en/list/1634/maps/",
+   "locator": "Component parts table and map",
+   "supports": "The listed property includes Faldeo Norte del Morro de Arica, Colón 10 and Desembocadura de Camarones.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-PRES-04",
+   "title": "UNESCO World Heritage Centre: Chinchorro property 1634",
+   "url": "https://whc.unesco.org/en/list/1634/",
+   "locator": "Description, Brief synthesis and Criterion (iii). The external site can include photographs of human remains.",
+   "supports": "The coast had Chinchorro communities roughly 5450–890 BCE. The property includes both deliberate mortuary treatment and preservation through environmental conditions.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-PRES-05",
+   "title": "Griffith Institute: Howard Carter's first-season journal",
+   "url": "https://www.griffith.ox.ac.uk/discoveringTut/journals-and-diaries/season-1/journal.html",
+   "locator": "Entries for 4 and 5 November 1922",
+   "supports": "The journal dates the first stair discovery to 4 November and describes the exposed sealed doorway on 5 November.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-PRES-06",
+   "title": "Griffith Institute: Alfred Lucas's notes on robberies",
+   "url": "https://tutankhamun.griffith.ox.ac.uk/miscellaneous/notes-robberies-taa-i1memo1-15verso/taa-i1memo3",
+   "locator": "TAA i.1.memo.3, catalogue metadata",
+   "supports": "The archive dates a handwritten report on robberies by Alfred Lucas to February 1923.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-PRES-07",
+   "title": "Griffith Institute: The Egyptian workforce",
+   "url": "https://tutankhamun.griffith.ox.ac.uk/stories/egyptian-workforce",
+   "locator": "Paragraph on the four named foremen",
+   "supports": "Carter acknowledged four Egyptian foremen by name. The archive notes that the Egyptian workers left no surviving diaries or letters of their own in this collection.",
+   "accessed": "2026-11-26"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.preserved.reign",
+   "title": "The Ramesseum, a funerary temple",
+   "text": "Egypt's Ministry of Tourism and Antiquities identifies the sandstone temple as a complex Ramesses II built for funerary use. Its account dates his reign to about 1279–1213 BCE.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": ["HIS-PRES-01"],
+   "limits": "This record connects the king to a place of remembrance. A temple's record cannot follow the later custody of a person.",
+   "person": {
+    "name": "Ramesses II",
+    "life": "Reigned about 1279–1213 BCE",
+    "place": "Ancient Egypt",
+    "era": "New Kingdom",
+    "continent": "Africa"
+   }
+  },
+  {
+   "id": "card.preserved.custody",
+   "title": "The museum's Ramesses II record",
+   "text": "The National Museum of Egyptian Civilization identifies the person as Ramesses II. Its account names KV 7 as his original burial and Deir el-Bahari as a later place of safekeeping. The linked museum page shows photographs of human remains.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": ["HIS-PRES-02"],
+   "limits": "The account names places in the chain. It gives neither the exact date of that move nor a record for every handover."
+  },
+  {
+   "id": "card.preserved.coast",
+   "title": "Three places on the Chinchorro coast",
+   "text": "UNESCO's property map lists two sites in Arica, Faldeo Norte del Morro de Arica and Colón 10, and a third farther south, Desembocadura de Camarones. The linked property description can show photographs of human remains.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": ["HIS-PRES-03", "HIS-PRES-04"],
+   "limits": "The map joins three places in a modern heritage listing. It cannot tell you how a particular person was cared for after death."
+  },
+  {
+   "id": "card.preserved.context",
+   "title": "Two routes to preservation",
+   "text": "UNESCO describes deliberate preservation by Chinchorro communities and people preserved through the very dry environment. The deliberate practice included people of different ages and social positions. The linked property description can show photographs of human remains.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": ["HIS-PRES-04"],
+   "limits": "The listing describes the property as a whole. It cannot identify an individual or lend everyone the same reason for a burial practice."
+  },
+  {
+   "id": "card.preserved.tut.journal",
+   "title": "The stair and the doorway",
+   "text": "Howard Carter's first-season journal places the discovery of the first stair on 4 November 1922. The next day's entry describes a doorway with seals after more of the stair was exposed.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": ["HIS-PRES-05"],
+   "limits": "This records what Carter reported that week. The state of a seal when seen tells us less than the full history of the doorway."
+  },
+  {
+   "id": "card.preserved.tut.note",
+   "title": "A later report by Alfred Lucas",
+   "text": "The Griffith Institute lists a handwritten report on robberies by Alfred Lucas. It dates the page to February 1923, several months after Carter's doorway entry.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": ["HIS-PRES-06"],
+   "limits": "The catalogue dates and identifies the report. The date on the report gives no exact date for any ancient entry."
+  },
+  {
+   "id": "card.preserved.tut.workforce",
+   "title": "Who is named in the excavation account?",
+   "text": "The Griffith Institute identifies the four Egyptian foremen named by Carter: Ahmed Gerigar, Gad Hassan, Hussein Abu Awad and Hussein Ahmed Said. Other Egyptian workers are visible in photographs, but the archive carries no diaries or letters written by the workers.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": ["HIS-PRES-07"],
+   "limits": "The acknowledgments name foremen. They give no name to a particular unidentified face and cannot speak for each worker."
+  }
+ ],
+ "exhibits": [
+  {
+   "id": "OBJ-PRES-RAMESSEUM",
+   "name": "Ramesseum site record",
+   "art": "preserved.temple",
+   "historicalLabel": "documented",
+   "dateText": "About 1279–1213 BCE",
+   "dateKind": "REIGN RANGE. The dates bracket a reign, rather than dating the building to a single year.",
+   "summary": "The Ministry's record places Ramesses II at a funerary temple. The temple and the later burial file answer different questions.",
+   "sources": ["HIS-PRES-01"],
+   "grantsCard": "card.preserved.reign",
+   "altText": "A diagram of a low stone temple on a horizon with a drawn path."
+  },
+  {
+   "id": "OBJ-PRES-RAM-CUSTODY",
+   "name": "Ramesses II custody file",
+   "art": "preserved.catalogue",
+   "historicalLabel": "documented",
+   "dateText": "New Kingdom burial, later transfer",
+   "dateKind": "SEQUENCE FROM A MODERN MUSEUM SUMMARY. The museum names the burial before the transfer. This summary does not date the move.",
+   "summary": "An evidence-only desk copy of the museum account. It records the attribution to Ramesses II, KV 7 and the later cache at Deir el-Bahari. The linked museum page shows photographs of human remains.",
+   "sources": ["HIS-PRES-02"],
+   "grantsCard": "card.preserved.custody",
+   "altText": "An open catalogue and two separate paper slips."
+  },
+  {
+   "id": "OBJ-PRES-CHIN-SITES",
+   "name": "Map of the Chinchorro heritage property",
+   "art": "preserved.coast",
+   "historicalLabel": "documented",
+   "dateText": "Inscribed in 2021",
+   "dateKind": "INSCRIPTION DATE. This is when the sites were added to the World Heritage List, long after the ancient communities lived there.",
+   "summary": "Two listed places are in Arica. A third is at the mouth of the Camarones River. The desk drawing shows the three sites without scale. The linked property description can show photographs of human remains.",
+   "sources": ["HIS-PRES-03", "HIS-PRES-04"],
+   "grantsCard": "card.preserved.coast",
+   "altText": "A schematic shore with three square site markers, drawn without scale."
+  },
+  {
+   "id": "OBJ-PRES-CHIN-CONTEXT",
+   "name": "Chinchorro site description",
+   "art": "preserved.context",
+   "historicalLabel": "documented",
+   "dateText": "Approximately 5450–890 BCE",
+   "dateKind": "REGIONAL DATE RANGE. This spans the ancient communities described by the property record. Keep the range when speaking about the whole property.",
+   "summary": "UNESCO describes cemeteries where people were preserved in different ways. See what that does to a label that gives every burial one explanation. The linked property description can show photographs of human remains.",
+   "sources": ["HIS-PRES-04"],
+   "grantsCard": "card.preserved.context",
+   "altText": "Two contrasting site-layer diagrams beside a handwritten note."
+  },
+  {
+   "id": "OBJ-PRES-TUT-JOURNAL",
+   "name": "First-season journal entries",
+   "art": "preserved.catalogue",
+   "historicalLabel": "documented",
+   "dateText": "4–5 November 1922",
+   "dateKind": "DATES OF JOURNAL ENTRIES. These dates belong to the first two days of this account of the staircase.",
+   "summary": "Carter records a stair one day and seals on a doorway the next. Set the entries beside the later report to see when each was written.",
+   "sources": ["HIS-PRES-05"],
+   "grantsCard": "card.preserved.tut.journal",
+   "altText": "An open catalogue and two separate paper slips."
+  },
+  {
+   "id": "OBJ-PRES-TUT-NOTE",
+   "name": "Catalogue record for Lucas's report",
+   "art": "preserved.catalogue",
+   "historicalLabel": "documented",
+   "dateText": "February 1923",
+   "dateKind": "REPORT DATE. The month is when Lucas's note was written. This does not date the events he considered.",
+   "summary": "The Griffith Institute identifies this note as part of Alfred Lucas's later report on robberies. A first view of a doorway and a report written months later answer different questions.",
+   "sources": ["HIS-PRES-06"],
+   "grantsCard": "card.preserved.tut.note",
+   "altText": "An open catalogue and two separate paper slips."
+  },
+  {
+   "id": "OBJ-PRES-TUT-WORKFORCE",
+   "name": "Excavation acknowledgments",
+   "art": "preserved.catalogue",
+   "historicalLabel": "documented",
+   "dateText": "Excavation beginning in 1922",
+   "dateKind": "EXCAVATION PERIOD. The workers and choices of whose names went into the records belong to the modern excavation.",
+   "summary": "The Griffith Institute's account names the four Egyptian foremen whom Carter acknowledged. The surviving written record leaves much of the workforce unnamed.",
+   "sources": ["HIS-PRES-07"],
+   "grantsCard": "card.preserved.tut.workforce",
+   "altText": "An open catalogue and two separate paper slips."
+  }
+ ]
+}

@@ -12,7 +12,20 @@ The game does not grade the player. It gives the same credit for every reasoned 
 
 - **The Nexus** is a museum hub. Each wing holds real, dated objects from many places and periods.
 - **Aethelgard** is a fictional world (labelled `fictional-world`). Its towns have their own people, trades and stories. Fictional cultures do not copy a real culture.
-- The full design has many worlds. Only chapter 1 (the Nexus and Emberford in Aethelgard) is built.
+- Chapter 2 takes the Guardian from the Nexus to the Nile Archive and back. The full design has many more worlds.
+- The Cold Store opens the Preserved Lives arc in Chapter 3. Its royal and Chinchorro rooms each distinguish a claim, the record that supports it, and a gap that stays visible.
+- Chapter 4 opens the fictional Observatory Coast. Its harbour and headland produce different readings. The first notice reaches different people depending on how the player sends it, which matters when a new reading arrives.
+- Chapter 5 opens the Living Forest field exercise. Comparable watches at two lookouts show how time and line of sight shape what an observer can record. Players leave a visible response for walkers and revisit the record with a later watch.
+- Chapter 6 opens the Metalworks yard and Trade Hall. Players compare panels on a zeroed balance, read the workshop records, and decide how to make the separate trails visible.
+- Chapter 7 opens the City of Copies. Players line up editions, track where each copy travels, and restore the context that readers need to act on a notice.
+- Chapter 8 opens the Cartographers’ Sea. Named places and survey edges can be inspected independently. Readers use the walking chart and shoal survey for different jobs, and their questions change the public key.
+- Chapter 9 opens the House of Performance. A cue table lets players move the silence while keeping the words and action steady. Readers from different seats prompt a programme correction.
+- Chapter 10 opens the Market of Measures. On the test scale, players take away the baskets and then the fibre that is too short for wicks. Readers use the figures for delivery, wick making and buying whole lots under a budget.
+- Chapter 11 opens the Water Commons. The trial gate keeps the intake steady to show what a leak repair changes. The council considers the trade-offs for the fields and lower channel, and checks the old promise separately.
+- Chapter 12 opens the Civic Machine. Players change the console’s input and rule separately, then see what a timetable leaves open for readers who could not use the original request desks.
+- Chapter 13 opens the Archive of Voices. Excerpts and guide copies keep the dates, purposes and permissions of their sources. What a traveller can see from each approach helps the player revise the first direction.
+- Chapter 14 opens the Island of Models. Two route layers show journey counts and exposure to marked quiet areas. A lower landing changes ferry capacity, and the player checks what both models say about the same order.
+- Chapter 15 opens the Council of Inquiry. A watch can match a reference by chance. Players run three cases, compare two dated readings on inquiry and leave a practical check for people arriving at the shutter.
 
 ## Core tools (play, not quizzes)
 
@@ -28,6 +41,7 @@ The game does not grade the player. It gives the same credit for every reasoned 
 
 ## Learning layer
 
+- **Recurring choices:** the entrance guide, translation proofs, river gauge and archive displays let small decisions leave visible changes the player can revisit. The [content guide](CONTENT_GUIDE.md#introduce-ideas-through-decisions-and-consequences) maps the opening route and later encounters to the curriculum for authors.
 - **Learner profile:** short "moments" in the journal when the player acts in a way that fits an attribute. Never a score.
 - **ATL skills, areas of knowledge, DP subjects:** content records carry tags. The teacher view counts them for the class.
 - **EE and CAS:** practice only. Play is never CAS.

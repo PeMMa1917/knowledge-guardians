@@ -1171,7 +1171,7 @@
   {
    "id": "kt.ise.door",
    "speaker": "warden-ise",
-   "text": "Elsbet. You found her study. Yes, she trained here, in this hall. The door with no name is real. It is not for today. When your work in Emberford is done, and you can say how you know, we will open it together."
+   "text": "Elsbet. (Ise is quiet for a moment, and straightens a label that is already straight.) You found her study. Yes, she trained here, in this hall. She and one other. The door with no name is real. It is not for today. When your work in Emberford is done, and you can say how you know, we will open it together."
   },
   {
    "id": "kt.oduya.cards",
@@ -1198,6 +1198,38 @@
     {
      "text": "Goodbye.",
      "next": null
+    },
+    {
+     "text": "Did our Nexus packet reach the landing?",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "ledger"
+     },
+     "next": "tova.nexus-copy.ledger"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "slate"
+     },
+     "next": "tova.nexus-copy.slate"
     }
    ],
    "effects": [
@@ -1227,6 +1259,38 @@
     {
      "text": "Goodbye.",
      "next": null
+    },
+    {
+     "text": "Did our Nexus packet reach the landing?",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "ledger"
+     },
+     "next": "tova.nexus-copy.ledger"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "slate"
+     },
+     "next": "tova.nexus-copy.slate"
     }
    ],
    "effects": [
@@ -1256,6 +1320,38 @@
     {
      "text": "Goodbye.",
      "next": null
+    },
+    {
+     "text": "Did our Nexus packet reach the landing?",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "ledger"
+     },
+     "next": "tova.nexus-copy.ledger"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "slate"
+     },
+     "next": "tova.nexus-copy.slate"
     }
    ]
   },
@@ -1279,6 +1375,38 @@
     {
      "text": "Goodbye.",
      "next": null
+    },
+    {
+     "text": "Did our Nexus packet reach the landing?",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "ledger"
+     },
+     "next": "tova.nexus-copy.ledger"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "slate"
+     },
+     "next": "tova.nexus-copy.slate"
     }
    ]
   },
@@ -1302,6 +1430,38 @@
     {
      "text": "Goodbye.",
      "next": null
+    },
+    {
+     "text": "Did our Nexus packet reach the landing?",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "ledger"
+     },
+     "next": "tova.nexus-copy.ledger"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "slate"
+     },
+     "next": "tova.nexus-copy.slate"
     }
    ]
   },
@@ -1325,8 +1485,163 @@
     {
      "text": "Goodbye.",
      "next": null
+    },
+    {
+     "text": "Did our Nexus packet reach the landing?",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "ledger"
+     },
+     "next": "tova.nexus-copy.ledger"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "slate"
+     },
+     "next": "tova.nexus-copy.slate"
     }
    ]
+  },
+  {
+   "id": "tova.nexus-copy",
+   "speaker": "ferry-tova",
+   "historicalLabel": "fictional-world",
+   "text": "Yes. The ferry has room for the archive's copy and for what we learn from trying it. Did you want to hear what we kept from it?",
+   "options": [
+    {
+     "text": "What happened to the dated records?",
+     "if": {
+      "flag": "nexus.ferry.packet",
+      "eq": "dates"
+     },
+     "next": "tova.nexus-copy.dates"
+    },
+    {
+     "text": "What happened to the pair of marking strips?",
+     "if": {
+      "flag": "nexus.ferry.packet",
+      "eq": "strips"
+     },
+     "next": "tova.nexus-copy.strips"
+    },
+    {
+     "text": "What happened to the translation proof?",
+     "if": {
+      "flag": "nexus.ferry.packet",
+      "eq": "proofs"
+     },
+     "next": "tova.nexus-copy.proofs"
+    },
+    {
+     "text": "I can come back."
+    }
+   ]
+  },
+  {
+   "id": "tova.nexus-copy.dates",
+   "speaker": "ferry-tova",
+   "historicalLabel": "fictional-world",
+   "text": "One of our deck hands wanted to file the landing's first voyage with the day the boat was registered. She put a second line under it when she saw your slip. On our second line we can name the skipper who remembered the crossing.",
+   "next": "tova.nexus-copy.place"
+  },
+  {
+   "id": "tova.nexus-copy.strips",
+   "speaker": "ferry-tova",
+   "historicalLabel": "fictional-world",
+   "text": "We use slate for the water because wet fingers smudge our paper. A deck hand wanted to choose a pen for the slate from your strips. Then she saw what you wrote under the marks. She wants to compare two marks here, on our slate, before she buys a pen.",
+   "next": "tova.nexus-copy.place"
+  },
+  {
+   "id": "tova.nexus-copy.proofs",
+   "speaker": "ferry-tova",
+   "historicalLabel": "fictional-world",
+   "text": "We say the first boat is the first one after the water slows. To town it means a time on a clock. A passenger saw your proof and asked me to put what sets off our first boat in both versions of the notice.",
+   "next": "tova.nexus-copy.place"
+  },
+  {
+   "id": "tova.nexus-copy.place",
+   "speaker": "ferry-tova",
+   "historicalLabel": "fictional-world",
+   "text": "I want our note to stay with their copy. We can fold both into the landing book for a careful reader, or clip the note by the water slate where crews stop. People who want the whole packet can still ask at the boat.",
+   "options": [
+    {
+     "text": "File the note with the packet in the landing book.",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy.ledger",
+     "effects": [
+      {
+       "setFlag": "ferry.copy.place",
+       "value": "ledger"
+      }
+     ]
+    },
+    {
+     "text": "Clip the note to the water slate and mark where the packet is kept.",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy.slate",
+     "effects": [
+      {
+       "setFlag": "ferry.copy.place",
+       "value": "slate"
+      }
+     ]
+    },
+    {
+     "text": "Let the crew decide later."
+    }
+   ]
+  },
+  {
+   "id": "tova.nexus-copy.ledger",
+   "speaker": "ferry-tova",
+   "historicalLabel": "fictional-world",
+   "text": "The packet lies open in the landing book. The archive's slip is on the left. Our note is on the right, in our cant and town words, with room to add what another crew finds."
+  },
+  {
+   "id": "tova.nexus-copy.slate",
+   "speaker": "ferry-tova",
+   "historicalLabel": "fictional-world",
+   "text": "The landing's note hangs beside our water slate in both sets of words. Crews see what we learned while they check the water. A little boat stamp points to the older packet on board."
   }
  ],
  "missions": [
@@ -1335,6 +1650,7 @@
    "world": "WORLD-02",
    "title": "The Dark Lamps of Emberford",
    "knowledgeQuestion": "Who keeps a town's knowledge alive when its keeper is gone?",
+   "stake": "If nobody keeps checking, the lamps stay dark, the loudest voice wins every argument, and Emberford forgets how to ask 'how do we know?'.",
    "available": {
     "objective": "m02.o1.arrive"
    },

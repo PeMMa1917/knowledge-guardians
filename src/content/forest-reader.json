@@ -1,0 +1,528 @@
+{
+ "dialogue": [
+  {
+   "id": "forest.gap.register.clear",
+   "speaker": "narrator",
+   "text": "The first row of the ridge’s return register is clear. The observer could see the opening for the whole first beat and saw no crossings. In the hurried copy, the count square looks empty.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the ridge’s clear-view note beside the empty square.",
+     "next": "forest.gap.register.clear.saved",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.finish"
+       },
+       {
+        "not": {
+         "flag": "forest.gap.clear",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.gap.clear",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the register as it is."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "forest.gap.register.clear.saved",
+   "speaker": "narrator",
+   "text": "The ridge note can travel with the count. “None crossed through this opening during this beat” belongs to a view the observer actually had.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.gap.register.blocked",
+   "speaker": "narrator",
+   "text": "On the creek’s return register the marks read one crossing, a blank, then one crossing. Reeds cut off the view in the middle beat. The hurried copy has the same empty square as the ridge’s clear beat.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the report about the reeds beside that square.",
+     "next": "forest.gap.register.blocked.saved",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.finish"
+       },
+       {
+        "not": {
+         "flag": "forest.gap.blocked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.gap.blocked",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the register as it is."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "forest.gap.register.blocked.saved",
+   "speaker": "narrator",
+   "text": "The note travels beside the empty count box. The middle beat has a recorded condition, “view blocked”. Its count remains open. The ridge observer was looking at a different opening.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.gap.format",
+   "speaker": "narrator",
+   "text": "Ayla lays the two empty squares side by side. One belongs to a clear look and one to a view behind reeds. A reader should be able to carry the difference away. Pick either a table or a plain-language slip for the public stand.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set the two records out in a short table with their own view notes.",
+     "next": "forest.gap.format.table",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.gap.o.recover"
+       },
+       {
+        "not": {
+         "flag": "forest.gap.format",
+         "eq": "table"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.gap.format",
+       "value": "table"
+      }
+     ]
+    },
+    {
+     "text": "Make a handover slip with one line for each observation.",
+     "next": "forest.gap.format.slip",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.gap.o.recover"
+       },
+       {
+        "not": {
+         "flag": "forest.gap.format",
+         "eq": "slip"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.gap.format",
+       "value": "slip"
+      }
+     ]
+    },
+    {
+     "text": "Leave the selected format on the stand."
+    }
+   ]
+  },
+  {
+   "id": "forest.gap.format.table",
+   "speaker": "narrator",
+   "text": "The table has two rows and a narrow side column. One row says zero with “clear” in the margin. The other has “reeds” in the margin and an open space in the count column. A visitor takes a copy to the reading post.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.gap.format.slip",
+   "speaker": "narrator",
+   "text": "One line says nobody crossed the ridge opening in the first beat. The next describes two crossings recorded at the creek and a blocked view. A visitor starts to read the slip back.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.gap.read.table",
+   "speaker": "narrator",
+   "text": "The first proof has a visitor’s note beside it. “Two rows, one zero and one blank. I copied the blank as another zero. I didn’t see the narrow margin.” The table has room for the words where the reader looks first.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put “No count: view blocked” in the empty count cell.",
+     "next": "forest.gap.repair.cells",
+     "if": {
+      "all": [
+       {
+        "flag": "forest.gap.format",
+        "eq": "table"
+       },
+       {
+        "not": {
+         "flag": "forest.gap.table",
+         "eq": "cells"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.gap.table",
+       "value": "cells"
+      }
+     ]
+    },
+    {
+     "text": "Give each row a wide heading that says what the observer could see.",
+     "next": "forest.gap.repair.headings",
+     "if": {
+      "all": [
+       {
+        "flag": "forest.gap.format",
+        "eq": "table"
+       },
+       {
+        "not": {
+         "flag": "forest.gap.table",
+         "eq": "headings"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.gap.table",
+       "value": "headings"
+      }
+     ]
+    },
+    {
+     "text": "Keep this table for now."
+    }
+   ]
+  },
+  {
+   "id": "forest.gap.read.slip",
+   "speaker": "narrator",
+   "text": "A visitor has returned the first slip with his retelling at the bottom. “Two crossed at the creek. I’ll tell the lamp crew that was the total.” He stopped before the part about the reeds. Move the condition before the count or give the hidden beat a line of its own.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put “while the view was open” before the creek’s two recorded crossings.",
+     "next": "forest.gap.repair.condition",
+     "if": {
+      "all": [
+       {
+        "flag": "forest.gap.format",
+        "eq": "slip"
+       },
+       {
+        "not": {
+         "flag": "forest.gap.slip",
+         "eq": "condition"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.gap.slip",
+       "value": "condition"
+      }
+     ]
+    },
+    {
+     "text": "Give the blocked beat its own line and keep both visible counts alongside.",
+     "next": "forest.gap.repair.lines",
+     "if": {
+      "all": [
+       {
+        "flag": "forest.gap.format",
+        "eq": "slip"
+       },
+       {
+        "not": {
+         "flag": "forest.gap.slip",
+         "eq": "lines"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.gap.slip",
+       "value": "lines"
+      }
+     ]
+    },
+    {
+     "text": "Keep this slip for now."
+    }
+   ]
+  },
+  {
+   "id": "forest.gap.repair.cells",
+   "speaker": "narrator",
+   "text": "The visitor copies the words this time. The clear ridge beat keeps its zero. The creek cell carries the reason the count is missing.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.gap.repair.headings",
+   "speaker": "narrator",
+   "text": "The visitor starts with the heading above each row. She leaves the hidden count unfilled and can show which observer could see which opening.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.gap.repair.condition",
+   "speaker": "narrator",
+   "text": "The visitor now retells the condition before the number. The lamp crew hears what the count describes and what the reeds left open.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.gap.repair.lines",
+   "speaker": "narrator",
+   "text": "The visitor touches each beat as he reads. One, hidden, one. There is no sum for the whole watch. The lamp crew can ask separately what happened during the hidden beat.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH5-R04",
+   "world": "WORLD-06",
+   "title": "The Missing Square",
+   "knowledgeQuestion": "How can a record pass on what people actually saw and what was hidden from them?",
+   "available": {
+    "objective": "forest.finish"
+   },
+   "objectives": [
+    {
+     "id": "forest.gap.o.recover",
+     "title": "Clip the sight conditions from the two return registers.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "forest.gap.clear",
+        "eq": true
+       },
+       {
+        "flag": "forest.gap.blocked",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "truth",
+       "certainty",
+       "objectivity"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT"
+      ],
+      "subjects": [
+       "math-ai",
+       "biology",
+       "ess"
+      ]
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-RSC-22"
+     ]
+    },
+    {
+     "id": "forest.gap.o.format",
+     "title": "Put the two notes in a format a visitor can carry.",
+     "essential": false,
+     "visible": {
+      "objective": "forest.gap.o.recover"
+     },
+     "done": {
+      "flagSet": "forest.gap.format"
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "justification",
+       "values",
+       "explanation"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "MAT",
+       "LAN"
+      ],
+      "subjects": [
+       "math-ai",
+       "lang-langlit",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-WRT-13"
+     ]
+    },
+    {
+     "id": "forest.gap.o.repair",
+     "title": "Listen to the reader and revise the public copy.",
+     "essential": false,
+     "visible": {
+      "objective": "forest.gap.o.format"
+     },
+     "done": {
+      "any": [
+       {
+        "flagSet": "forest.gap.table"
+       },
+       {
+        "flagSet": "forest.gap.slip"
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "power",
+       "perspective",
+       "responsibility",
+       "culture"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "ess",
+       "lang-langlit",
+       "anthropology"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-THK-16"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.forest.gap"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.forest.gap",
+   "claimKind": "interpretation",
+   "text": "A clear beat can give a tally of zero. A hidden beat gives a reason to leave the count open. For each version we kept the view condition where the next reader could find it."
+  }
+ ],
+ "moments": [
+  {
+   "id": "moment.forest.gap",
+   "attribute": "reflective",
+   "when": {
+    "objective": "forest.gap.o.repair"
+   },
+   "did": "You let a visitor read a record their own way, then changed the copy so they could pass its limits on.",
+   "prompt": "Which words or marks would a reader miss if they only had a moment?"
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.forest.gap.recover.1",
+   "objective": "forest.gap.o.recover",
+   "depth": 1,
+   "text": "Two empty boxes can come from different views."
+  },
+  {
+   "id": "h.forest.gap.recover.2",
+   "objective": "forest.gap.o.recover",
+   "depth": 2,
+   "text": "The first return beat on the ridge was clear. The creek view was blocked in the middle beat."
+  },
+  {
+   "id": "h.forest.gap.recover.3",
+   "objective": "forest.gap.o.recover",
+   "depth": 3,
+   "text": "Find the two copies at Fern Station, west and east of the main path. Clip what each observer could see to the blank."
+  },
+  {
+   "id": "h.forest.gap.recover.4",
+   "objective": "forest.gap.o.recover",
+   "depth": 4,
+   "text": "Use the ridge register west of the Waystone and the creek register farther east. Keep “view blocked” with the creek row."
+  },
+  {
+   "id": "h.forest.gap.format.1",
+   "objective": "forest.gap.o.format",
+   "depth": 1,
+   "text": "A copy can carry both the observation and its conditions."
+  },
+  {
+   "id": "h.forest.gap.format.2",
+   "objective": "forest.gap.o.format",
+   "depth": 2,
+   "text": "Choose a table or a short slip. They carry the same records in different forms."
+  },
+  {
+   "id": "h.forest.gap.format.3",
+   "objective": "forest.gap.o.format",
+   "depth": 3,
+   "text": "The small press is south of the station directory after both records are ready."
+  },
+  {
+   "id": "h.forest.gap.format.4",
+   "objective": "forest.gap.o.format",
+   "depth": 4,
+   "text": "Set the records in the table or write a plain handover slip at the press. The reader’s post will show how someone uses it."
+  },
+  {
+   "id": "h.forest.gap.repair.1",
+   "objective": "forest.gap.o.repair",
+   "depth": 1,
+   "text": "Try reading the copy from the visitor’s place."
+  },
+  {
+   "id": "h.forest.gap.repair.2",
+   "objective": "forest.gap.o.repair",
+   "depth": 2,
+   "text": "Look for the count their copy added, or the condition their retelling lost."
+  },
+  {
+   "id": "h.forest.gap.repair.3",
+   "objective": "forest.gap.o.repair",
+   "depth": 3,
+   "text": "Use the reader’s post east of the press. You can change which format is on the stand by returning to the press."
+  },
+  {
+   "id": "h.forest.gap.repair.4",
+   "objective": "forest.gap.o.repair",
+   "depth": 4,
+   "text": "Make the view condition visible in the table or move it into the line the visitor reads. Check the revised public copy near the station door."
+  }
+ ]
+}

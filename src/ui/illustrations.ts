@@ -174,6 +174,7 @@ const DRAW: Record<string, [number, number, (g: Ctx) => void]> = {
   'icon.thread': [16, 16, (g) => { R(g, '#c9a24a', 2, 12, 2, 2); R(g, '#c9a24a', 12, 2, 2, 2); for (let i = 0; i < 10; i++) R(g, '#e9cf7a', 3 + i, 12 - i + Math.round(Math.sin(i) * 1), 1, 1); R(g, '#3b2a1a', 10, 4, 3, 1); }],
   'icon.seal': [16, 16, (g) => { R(g, '#8a6a2a', 4, 4, 8, 8); R(g, '#c9a24a', 5, 3, 6, 10); R(g, '#c9a24a', 3, 5, 10, 6); R(g, '#e9cf7a', 6, 5, 2, 2); R(g, '#5b4a1a', 7, 7, 2, 2); }],
   'icon.blade': [16, 16, (g) => { for (let i = 0; i < 9; i++) R(g, '#aab3c4', 5 + i, 10 - i, 2, 1); R(g, '#5f6878', 6, 9, 1, 1); R(g, '#c9a24a', 3, 10, 4, 1); R(g, '#3b2a1a', 2, 11, 2, 3); }],
+  'icon.lamp': [16, 16, (g) => { R(g, '#c9a24a', 6, 3, 4, 2); R(g, '#e8c040', 5, 5, 6, 6); R(g, '#ffd98a', 7, 6, 2, 3); R(g, '#9c7426', 4, 11, 8, 2); R(g, '#c9a24a', 11, 6, 2, 1); R(g, '#c9a24a', 12, 6, 1, 4); }],
   'icon.tea': [16, 16, (g) => { R(g, '#e8e2d0', 4, 6, 7, 6); R(g, '#a4462a', 5, 7, 5, 2); R(g, '#e8e2d0', 11, 7, 2, 3); R(g, 'rgba(255,255,255,0.6)', 6, 3, 1, 2); R(g, 'rgba(255,255,255,0.6)', 8, 2, 1, 3); }],
   // Large inspection pictures (96x64)
   'big.patent': [96, 64, (g) => {
@@ -495,6 +496,13 @@ DRAW['hollow-archivist'] = [24, 36, (g) => {
   R(g, '#d8c79a', 8, 4, 8, 6); R(g, '#3b2a1a', 9, 6, 6, 1); R(g, '#3b2a1a', 9, 8, 4, 1); R(g, '#e8c040', 7, 3, 10, 1);
   R(g, '#2a2440', 9, 34, 6, 2);
 }];
+// Field games: Pell's lantern stall (three crates), the ferry guest book on a stand, and the Weigh-House slate.
+DRAW['lantern-stall'] = [32, 24, (g) => { R(g, '#5b3b22', 1, 8, 2, 16); R(g, '#5b3b22', 29, 8, 2, 16); R(g, '#c43c3c', 0, 4, 32, 4); R(g, '#e6dcc0', 4, 4, 4, 4); R(g, '#e6dcc0', 14, 4, 4, 4); R(g, '#e6dcc0', 24, 4, 4, 4);
+  for (const x of [4, 13, 22]) { R(g, '#8a5a30', x, 15, 7, 8); R(g, '#a87445', x, 15, 7, 1); R(g, '#5b3b22', x + 3, 16, 1, 7); } R(g, '#ffd25a', 15, 10, 2, 3); R(g, '#3b2a1a', 15, 9, 2, 1); }];
+DRAW['guest-book'] = [16, 24, (g) => { R(g, '#5b3b22', 7, 12, 2, 12); R(g, '#5b3b22', 4, 22, 8, 2); R(g, '#6b2b3a', 2, 6, 12, 7); R(g, '#e6dcc0', 3, 6, 5, 6); R(g, '#e6dcc0', 8, 6, 5, 6); R(g, '#2a2440', 4, 8, 3, 1); R(g, '#2a2440', 9, 8, 3, 1); R(g, '#2a2440', 4, 10, 2, 1); }];
+DRAW['slate-board'] = [16, 24, (g) => { R(g, '#5b3b22', 2, 14, 2, 10); R(g, '#5b3b22', 12, 14, 2, 10); R(g, '#8a5a30', 0, 3, 16, 12); R(g, '#2a2f2a', 1, 4, 14, 10); R(g, '#f4f0e6', 3, 6, 2, 1); R(g, '#f4f0e6', 6, 6, 1, 1); R(g, '#f4f0e6', 8, 6, 4, 1); R(g, '#f4f0e6', 3, 9, 7, 1); R(g, '#f4f0e6', 11, 9, 2, 1); }];
+// Sefa's dice table: a low table with two dice and a lantern.
+DRAW['dice-table'] = [16, 24, (g) => { R(g, '#5b3b22', 2, 17, 2, 7); R(g, '#5b3b22', 12, 17, 2, 7); R(g, '#7a4a2a', 0, 14, 16, 3); R(g, '#a87445', 0, 14, 16, 1); R(g, '#f4f0e6', 3, 11, 3, 3); R(g, '#2a2440', 4, 12, 1, 1); R(g, '#e8c040', 8, 11, 3, 3); R(g, '#2a2440', 8, 11, 1, 1); R(g, '#2a2440', 10, 13, 1, 1); R(g, '#5b3b22', 13, 6, 1, 8); R(g, '#ffd98a', 12, 3, 3, 4); R(g, '#e8a040', 12, 6, 3, 1); }];
 // Wenna's barter boat: a moored boat with dye pots and bundles.
 DRAW['barter-boat'] = [16, 24, (g) => { R(g, '#2b6f9a', 0, 18, 16, 6); R(g, '#6b4a2a', 1, 14, 14, 5); R(g, '#8a5a30', 2, 14, 12, 1); R(g, '#5b3b22', 7, 2, 1, 12); R(g, '#e8e2d0', 8, 3, 5, 7); R(g, '#b5452f', 2, 11, 2, 3); R(g, '#4a6a9a', 5, 11, 2, 3); R(g, '#c9b843', 9, 11, 2, 3); R(g, '#8a6240', 12, 11, 2, 3); R(g, '#9fd0ff', 1, 19, 4, 1); }];
 // The rumour mill: a small tea table with a pot and two cups.
@@ -557,6 +565,1034 @@ DRAW['nile.map'] = [16, 24, (g) => { smallTable(g); paper(g, 1, 3, 14, 12); R(g,
 DRAW['nile.slip'] = [16, 24, (g) => { R(g, '#664932', 4, 6, 8, 14); paper(g, 2, 3, 12, 8); R(g, '#8a5343', 5, 6, 6, 1); R(g, '#8a5343', 5, 8, 4, 1); }];
 
 DRAW['nile.stone'] = [16, 24, (g) => { smallTable(g); R(g, '#644d4d', 2, 7, 12, 9); R(g, '#9c7970', 3, 5, 9, 8); R(g, '#c5a79a', 4, 5, 6, 2); R(g, '#745654', 5, 8, 4, 1); R(g, '#745654', 6, 10, 5, 1); }];
+
+function drawLampSlip(g: Ctx, side: boolean) {
+  smallTable(g);
+  paper(g, 3, 5, 11, 10);
+  const lampX = side ? 0 : 6;
+  const lampY = side ? 8 : 1;
+  R(g, '#523d38', lampX, lampY + 2, 4, 2);
+  R(g, '#ffcf6a', lampX + 1, lampY, 2, 2);
+  R(g, '#7a533d', 5, 7, 7, 1);
+  R(g, '#7a533d', 5, 9, 7, 1);
+  if (side) R(g, '#7a533d', 5, 11, 7, 1);
+  R(g, '#a98f6d', 3, 5, 1, 2);
+  R(g, '#a98f6d', 13, 13, 1, 2);
+}
+
+DRAW['nile.lamp-above'] = [16, 24, (g) => drawLampSlip(g, false)];
+DRAW['nile.lamp-side'] = [16, 24, (g) => drawLampSlip(g, true)];
+
+// Cold Store props and documentary diagrams. No figures of people or remains.
+DRAW['preserved.door'] = [16, 24, (g) => {
+  R(g, '#182a36', 0, 4, 16, 20);
+  R(g, '#748c92', 1, 5, 14, 18);
+  R(g, '#9ab9b7', 2, 3, 12, 2);
+  R(g, '#365765', 3, 6, 10, 17);
+  R(g, '#4b7380', 4, 7, 8, 5);
+  R(g, '#b5d9d4', 5, 8, 6, 2);
+  R(g, '#dfc17d', 10, 15, 2, 2);
+  R(g, '#8398aa', 2, 22, 12, 1);
+}];
+DRAW['preserved.folder'] = [16, 24, (g) => {
+  R(g, '#3d4b58', 4, 13, 8, 8);
+  R(g, '#6f8b95', 1, 5, 14, 10);
+  R(g, '#adc3c4', 2, 3, 6, 4);
+  R(g, '#dce5d5', 2, 6, 12, 6);
+  R(g, '#576b70', 4, 8, 8, 1);
+}];
+DRAW['preserved.slip'] = [16, 24, (g) => {
+  R(g, '#2d4353', 5, 13, 6, 9);
+  R(g, '#a29d8a', 2, 5, 12, 10);
+  paper(g, 3, 4, 10, 9);
+  R(g, '#9abdca', 6, 3, 4, 2);
+  R(g, '#716951', 5, 7, 6, 1);
+  R(g, '#716951', 5, 10, 4, 1);
+}];
+
+const preservedProps = {
+  temple: (g: Ctx) => {
+    R(g, '#ead0a2', 2, 6, 12, 8);
+    R(g, '#976f49', 4, 8, 8, 4);
+    R(g, '#ead0a2', 7, 9, 2, 3);
+    R(g, '#976f49', 3, 12, 10, 1);
+  },
+  catalogue: (g: Ctx) => {
+    R(g, '#537587', 1, 6, 14, 8);
+    paper(g, 2, 4, 11, 9);
+    R(g, '#ad493c', 8, 7, 3, 2);
+    R(g, '#716951', 4, 10, 5, 1);
+  },
+  coast: (g: Ctx) => {
+    R(g, '#7bb4c5', 2, 5, 12, 9);
+    R(g, '#e0b279', 8, 5, 6, 9);
+    R(g, '#e0b279', 6, 10, 3, 4);
+    R(g, '#69516b', 9, 7, 2, 2);
+    R(g, '#69516b', 11, 10, 2, 2);
+  },
+  context: (g: Ctx) => {
+    R(g, '#adc3c4', 1, 5, 14, 9);
+    R(g, '#e0b279', 2, 7, 5, 5);
+    R(g, '#976f49', 2, 10, 5, 2);
+    R(g, '#dab98c', 9, 7, 5, 5);
+    R(g, '#9e6c62', 9, 9, 5, 2);
+  },
+};
+for (const [key, draw] of Object.entries(preservedProps)) {
+  DRAW[`preserved.${key}`] = [16, 24, (g) => { pedestal(g, 1, 14, 14); draw(g); }];
+}
+
+DRAW['preserved.display-records'] = [24, 24, (g) => {
+  pedestal(g, 2, 15, 20);
+  paper(g, 3, 5, 8, 9);
+  paper(g, 13, 5, 8, 9);
+  R(g, '#688c9a', 4, 7, 6, 1);
+  R(g, '#a37e56', 14, 7, 6, 1);
+}];
+DRAW['preserved.display-paired'] = [24, 24, (g) => {
+  pedestal(g, 1, 15, 22);
+  R(g, '#87aeb2', 1, 4, 22, 9);
+  paper(g, 2, 5, 8, 7);
+  paper(g, 14, 5, 8, 7);
+  R(g, '#697782', 8, 8, 8, 2);
+}];
+DRAW['preserved.display-delayed'] = [24, 24, (g) => {
+  pedestal(g, 1, 15, 22);
+  R(g, '#455765', 3, 3, 18, 11);
+  paper(g, 8, 5, 8, 8);
+  R(g, '#cf9d64', 10, 4, 4, 2);
+  R(g, '#7c6e5c', 10, 8, 4, 1);
+}];
+
+DRAW['big.preserved.temple'] = [96, 64, (g) => {
+  R(g, '#a9ccd6', 0, 0, 96, 64);
+  R(g, '#c6d9d4', 0, 22, 96, 12);
+  R(g, '#dcbb90', 0, 34, 96, 30);
+  R(g, '#f0d1a5', 7, 44, 83, 4);
+  R(g, '#aa7b57', 15, 26, 18, 19);
+  R(g, '#aa7b57', 57, 26, 17, 19);
+  R(g, '#e5bb85', 17, 26, 13, 4);
+  R(g, '#e5bb85', 59, 26, 13, 4);
+  R(g, '#ba8d60', 29, 32, 32, 13);
+  R(g, '#e2b97f', 31, 32, 27, 3);
+  for (const x of [33, 39, 51, 57]) R(g, '#e0b780', x, 35, 2, 10);
+  R(g, '#89644f', 44, 36, 6, 9);
+  R(g, '#b99a77', 46, 46, 2, 9);
+  R(g, '#b99a77', 46, 54, 31, 2);
+  R(g, '#886151', 75, 53, 4, 4);
+}];
+DRAW['big.preserved.catalogue'] = [96, 64, (g) => {
+  R(g, '#263747', 0, 0, 96, 64);
+  R(g, '#3c5969', 8, 9, 79, 47);
+  paper(g, 13, 7, 36, 44);
+  paper(g, 53, 13, 30, 38);
+  R(g, '#648491', 18, 12, 22, 3);
+  R(g, '#947157', 57, 18, 14, 3);
+  for (let y = 20; y <= 43; y += 6) R(g, '#a09880', 18, y, 24 - (y % 5), 1);
+  for (let y = 25; y <= 42; y += 5) R(g, '#a09880', 57, y, 20 - (y % 4), 1);
+  R(g, '#b36c56', 42, 7, 4, 9);
+  R(g, '#a6c1c8', 77, 13, 3, 8);
+}];
+DRAW['big.preserved.coast'] = [96, 64, (g) => {
+  R(g, '#354d57', 0, 0, 96, 64);
+  R(g, '#e8cf9d', 6, 5, 84, 54);
+  const shore = [37, 44, 43, 36, 29, 31, 36, 39, 35];
+  for (const [i, stop] of shore.entries()) {
+    R(g, '#7cbdca', 6, 5 + i * 6, stop, 6);
+    R(g, '#b6d8d7', stop + 3, 5 + i * 6, 3, 6);
+  }
+  R(g, '#bb9d73', 66, 8, 2, 48);
+  R(g, '#c7a877', 72, 8, 4, 48);
+  for (const [x, y] of [[53, 14], [46, 35], [70, 43]]) {
+    R(g, '#f2e1bc', x - 1, y - 1, 7, 7);
+    R(g, '#694b68', x, y, 5, 5);
+  }
+}];
+DRAW['big.preserved.context'] = [96, 64, (g) => {
+  R(g, '#32404c', 0, 0, 96, 64);
+  paper(g, 6, 6, 84, 52);
+  for (const [i, x] of [11, 50].entries()) {
+    R(g, '#78939f', x, 13, 35, 5);
+    R(g, '#e6ba84', x, 18, 35, 9);
+    R(g, '#be885d', x, 27, 35, 5);
+    R(g, '#9b6f60', x, 32, 35, 10);
+    R(g, '#d4a57b', x + 4, 23 + i * 5, 26, 2);
+    R(g, '#768c95', x + 3, 47, 21, 2);
+    R(g, '#a39980', x + 3, 52, 16, 1);
+  }
+}];
+
+// Local equipment on the Observatory Coast.
+DRAW['coast.waypost'] = [16, 24, (g) => {
+  R(g, '#314858', 7, 7, 3, 16);
+  R(g, '#e0c795', 2, 5, 11, 7);
+  R(g, '#e0c795', 13, 6, 2, 5);
+  R(g, '#707e76', 3, 10, 10, 1);
+  R(g, '#425d62', 4, 8, 3, 1);
+  R(g, '#425d62', 7, 7, 3, 1);
+  R(g, '#425d62', 10, 6, 2, 1);
+}];
+DRAW['coast.gauge'] = [16, 24, (g) => {
+  pedestal(g, 1, 15, 14);
+  R(g, '#648e9e', 4, 2, 8, 13);
+  R(g, '#d2e4da', 5, 3, 6, 11);
+  R(g, '#77b2c6', 5, 10, 6, 4);
+  for (const y of [5, 7, 9, 11, 13]) R(g, '#425c6f', 8, y, 3, 1);
+}];
+DRAW['coast.signal'] = [16, 24, (g) => {
+  R(g, '#3e565f', 2, 4, 2, 20);
+  R(g, '#3e565f', 12, 4, 2, 20);
+  R(g, '#a38d6c', 0, 7, 16, 11);
+  R(g, '#e5c896', 1, 7, 14, 2);
+  paper(g, 3, 10, 9, 6);
+  R(g, '#e09b38', 4, 4, 8, 3);
+  R(g, '#bb6f39', 9, 6, 3, 2);
+  R(g, '#6b8d92', 5, 12, 5, 1);
+}];
+DRAW['coast.runner'] = [16, 24, (g) => {
+  smallTable(g);
+  R(g, '#385367', 1, 6, 13, 8);
+  paper(g, 3, 4, 11, 8);
+  R(g, '#d49762', 3, 5, 2, 5);
+  R(g, '#7b7766', 6, 7, 6, 1);
+  R(g, '#7b7766', 6, 9, 4, 1);
+}];
+
+function drawClearFrame(g: Ctx, reading: 'ready' | 'row' | 'edge') {
+  smallTable(g);
+  R(g, '#734e39', 0, 2, 16, 13);
+  R(g, '#263536', 2, 4, 12, 9);
+  for (const x of [3, 6, 9, 12]) R(g, '#a1b1a0', x, 4, 1, 9);
+  for (const y of [5, 8, 11]) R(g, '#a1b1a0', 2, y, 12, 1);
+  R(g, '#f0ddaa', 8, 1, 5, 3);
+  if (reading === 'row') {
+    R(g, '#61d7de', 0, 7, 16, 1);
+    R(g, '#cfeddb', 13, 6, 3, 1);
+  }
+  if (reading === 'edge') {
+    R(g, '#61d7de', 0, 12, 10, 1);
+    R(g, '#61d7de', 9, 11, 1, 2);
+    R(g, '#61d7de', 9, 11, 2, 1);
+  }
+}
+
+DRAW['coast.clear-frame'] = [16, 24, (g) => drawClearFrame(g, 'ready')];
+DRAW['coast.clear-frame-row'] = [16, 24, (g) => drawClearFrame(g, 'row')];
+DRAW['coast.clear-frame-edge'] = [16, 24, (g) => drawClearFrame(g, 'edge')];
+
+// Loan turns and the little book rests used in the Nexus reading room.
+DRAW['nexus.loan-counters'] = [24, 16, (g) => {
+  R(g, '#4c3840', 1, 3, 22, 12);
+  R(g, '#8a6546', 2, 4, 20, 9);
+  R(g, '#b78a5e', 2, 4, 20);
+  for (const x of [3, 8, 13, 18]) {
+    R(g, '#5b4740', x, 7, 4, 4);
+    R(g, '#d4b472', x, 6, 4, 3);
+    R(g, '#e8cf92', x + 1, 6, 2);
+  }
+}];
+function readingRest(g: Ctx, x: number) {
+  R(g, '#483b37', x + 2, 19, 12, 3);
+  R(g, '#725644', x + 3, 12, 9, 7);
+  R(g, '#a5805a', x + 4, 15, 7, 2);
+  R(g, '#e8d6ae', x + 2, 8, 6, 6);
+  R(g, '#eddcbc', x + 8, 8, 6, 6);
+  R(g, '#937757', x + 7, 8, 1, 6);
+  R(g, '#ad9777', x + 3, 11, 3);
+  R(g, '#ad9777', x + 10, 11, 3);
+}
+DRAW['nexus.reading-rest'] = [16, 24, (g) => readingRest(g, 0)];
+DRAW['nexus.reading-rests'] = [32, 24, (g) => { readingRest(g, 0); readingRest(g, 16); }];
+
+// The date ribbon uses a brass peg for one day and a paper sleeve for a range.
+function dateStand(g: Ctx) {
+  R(g, '#302843', 2, 21, 36, 2);
+  R(g, '#513a37', 6, 12, 4, 9);
+  R(g, '#513a37', 30, 12, 4, 9);
+  R(g, '#99704f', 7, 13, 1, 7);
+  R(g, '#99704f', 31, 13, 1, 7);
+}
+function dateRail(g: Ctx, y: number) {
+  R(g, '#89624d', 2, y, 36, 5);
+  R(g, '#efd8a6', 3, y, 34, 2);
+  R(g, '#bc9b71', 4, y + 2, 32, 1);
+  R(g, '#513a37', 4, y + 4, 32, 1);
+}
+function datePeg(g: Ctx, y: number) {
+  R(g, '#6b4837', 6, y + 1, 3, 5);
+  R(g, '#ffd477', 7, y, 1, 5);
+  R(g, '#ffe7aa', 6, y, 3, 2);
+}
+function dateSleeve(g: Ctx, y: number) {
+  R(g, '#35697d', 29, y, 6, 8);
+  R(g, '#b1dfdd', 29, y, 6, 2);
+  R(g, '#69aeb3', 30, y + 3, 4, 3);
+  R(g, '#d4f1e6', 30, y + 3, 1, 3);
+}
+function sharedDateRail(g: Ctx) {
+  dateStand(g);
+  dateRail(g, 10);
+  datePeg(g, 8);
+  dateSleeve(g, 9);
+}
+function separateDateRails(g: Ctx) {
+  dateStand(g);
+  dateRail(g, 5);
+  dateRail(g, 14);
+  datePeg(g, 4);
+  dateSleeve(g, 12);
+}
+DRAW['nexus.ribbon-setup'] = [40, 24, (g) => {
+  dateStand(g);
+  dateRail(g, 10);
+  R(g, '#e8c398', 3, 15, 34, 2);
+}];
+DRAW['nexus.ribbon-single'] = [40, 24, sharedDateRail];
+DRAW['nexus.ribbon-split'] = [40, 24, separateDateRails];
+DRAW['nexus.ribbon-marked'] = [40, 24, (g) => {
+  sharedDateRail(g);
+  R(g, '#e6cba5', 17, 13, 7, 6);
+  R(g, '#7e5d51', 18, 15, 4, 1);
+  R(g, '#7e5d51', 18, 17, 3, 1);
+}];
+DRAW['nexus.ribbon-bridged'] = [40, 24, (g) => {
+  separateDateRails(g);
+  R(g, '#9a6042', 15, 4, 2, 14);
+  R(g, '#ffd477', 15, 4, 1, 14);
+  R(g, '#ffd477', 14, 4, 4, 1);
+  R(g, '#ffd477', 14, 17, 4, 1);
+}];
+
+// The thin sheet carries the red marks separately from the indigo print.
+function ferryPrint(g: Ctx, x: number, y: number) {
+  R(g, '#78513d', x - 1, y - 1, 31, 17);
+  R(g, '#f1dfb4', x, y, 29, 15);
+  R(g, '#6198a5', x + 2, y + 6, 25, 5);
+  R(g, '#4e8191', x + 2, y + 6, 25, 1);
+  R(g, '#84b9b7', x + 8, y + 9, 16, 1);
+  R(g, '#304d59', x + 7, y + 3, 1, 5);
+  R(g, '#304d59', x + 6, y + 7, 3, 1);
+  R(g, '#304d59', x + 20, y + 9, 3, 1);
+  R(g, '#304d59', x + 21, y + 10, 1, 4);
+}
+function ferryPrintMarks(g: Ctx, x: number, y: number) {
+  R(g, '#ac513d', x + 6, y + 6, 3, 2);
+  R(g, '#ac513d', x + 20, y + 8, 3, 2);
+  R(g, '#dd7650', x + 7, y + 6);
+  R(g, '#dd7650', x + 21, y + 8);
+}
+function ferryPrintPins(g: Ctx) {
+  R(g, '#77523b', 5, 5, 3, 3);
+  R(g, '#fbd280', 5, 5, 2, 2);
+  R(g, '#77523b', 29, 15, 3, 3);
+  R(g, '#fbd280', 29, 15, 2, 2);
+}
+DRAW['nexus.print-setup'] = [38, 24, (g) => {
+  ferryPrint(g, 4, 4);
+  R(g, '#e5bd88', 25, 2, 10, 16);
+  R(g, '#ac513d', 28, 8, 3, 2);
+  R(g, '#ac513d', 31, 12, 3, 2);
+  ferryPrintPins(g);
+}];
+DRAW['nexus.print-edge'] = [38, 24, (g) => {
+  ferryPrint(g, 4, 4);
+  ferryPrintMarks(g, 8, 5);
+  ferryPrintPins(g);
+}];
+DRAW['nexus.print-pinned'] = [38, 24, (g) => {
+  ferryPrint(g, 4, 4);
+  ferryPrintMarks(g, 4, 4);
+  ferryPrintPins(g);
+}];
+DRAW['nexus.print-joined'] = [38, 24, (g) => {
+  R(g, '#6b4b42', 1, 2, 36, 20);
+  ferryPrint(g, 4, 4);
+  ferryPrintMarks(g, 4, 4);
+  R(g, '#f3ce80', 14, 18, 11, 3);
+}];
+DRAW['nexus.print-layers'] = [38, 24, (g) => {
+  ferryPrint(g, 3, 5);
+  R(g, '#b8875d', 23, 2, 13, 20);
+  R(g, '#f0d4a0', 25, 4, 10, 15);
+  R(g, '#ac513d', 27, 8, 2, 2);
+  R(g, '#ac513d', 31, 12, 2, 2);
+  R(g, '#866653', 26, 5);
+  R(g, '#866653', 33, 17);
+}];
+
+// Source slips either cross the gate inside the wallets or stay under the crate lid.
+function packSketches(g: Ctx, x: number, y: number, colour: string) {
+  for (const offset of [0, 2, 4]) R(g, colour, x, y + offset, 5, 1);
+}
+function packWallet(g: Ctx, x: number, colour: string, slipInside: boolean) {
+  R(g, colour, x, 8, 10, 11);
+  R(g, '#c98851', x + 1, 9, 8, 9);
+  packSketches(g, x + 2, 10, '#f3e1bc');
+  if (slipInside) R(g, '#f3785d', x + 2, 16, 5, 1);
+}
+function packCrate(g: Ctx, slipInside: boolean) {
+  R(g, '#563b34', 1, 3, 34, 18);
+  R(g, '#966951', 2, 4, 32, 15);
+  R(g, '#b58761', 2, 4, 32, 2);
+  R(g, '#6f493c', 2, 7, 32, 2);
+  packWallet(g, 5, '#684839', slipInside);
+  packWallet(g, 17, '#684839', slipInside);
+  if (!slipInside) {
+    R(g, '#a74537', 9, 5, 6, 2);
+    R(g, '#a74537', 18, 5, 6, 2);
+  }
+}
+function packTested(g: Ctx, slipInside: boolean) {
+  R(g, '#563b34', 1, 3, 18, 18);
+  R(g, '#966951', 2, 4, 16, 15);
+  R(g, '#b58761', 2, 4, 16, 2);
+  packWallet(g, 5, '#684839', slipInside);
+  packWallet(g, 23, '#684839', slipInside);
+  if (!slipInside) {
+    R(g, '#a74537', 4, 5, 5, 2);
+    R(g, '#a74537', 11, 5, 5, 2);
+  }
+}
+function packRouteTag(g: Ctx, slipInside: boolean) {
+  R(g, '#715447', 2, 4, 32, 15);
+  R(g, '#f0ddb1', 3, 5, 30, 13);
+  for (const x of [5, 16]) {
+    R(g, '#927153', x, 7, 9, 10);
+    R(g, '#f0ddb1', x + 1, 8, 7, 8);
+    packSketches(g, x + 2, 9, '#526467');
+    if (slipInside) R(g, '#ab4b3b', x + 2, 15, 5, 1);
+  }
+  if (!slipInside) {
+    R(g, '#ab4b3b', 27, 10, 4, 2);
+    R(g, '#ab4b3b', 27, 14, 4, 2);
+  }
+}
+DRAW['nexus.pack-prep'] = [36, 24, (g) => {
+  R(g, '#6a493b', 1, 4, 34, 17);
+  R(g, '#b98e62', 2, 5, 32, 13);
+  packSketches(g, 6, 8, '#f8e6c0');
+  packSketches(g, 16, 8, '#f8e6c0');
+  R(g, '#a74537', 25, 8, 6, 2);
+  R(g, '#a74537', 25, 12, 6, 2);
+}];
+DRAW['nexus.pack-kits'] = [36, 24, (g) => packCrate(g, true)];
+DRAW['nexus.pack-outer'] = [36, 24, (g) => packCrate(g, false)];
+DRAW['nexus.pack-tested-kits'] = [36, 24, (g) => packTested(g, true)];
+DRAW['nexus.pack-tested-outer'] = [36, 24, (g) => packTested(g, false)];
+DRAW['nexus.pack-kits-route'] = [36, 24, (g) => packRouteTag(g, true)];
+DRAW['nexus.pack-outer-route'] = [36, 24, (g) => packRouteTag(g, false)];
+DRAW['nexus.pack-tally'] = [36, 24, (g) => {
+  R(g, '#715447', 2, 4, 32, 15);
+  R(g, '#f0ddb1', 3, 5, 30, 13);
+  for (const x of [8, 11, 14, 17, 20, 23]) R(g, '#526467', x, 8, 1, 3);
+  R(g, '#ab4b3b', 8, 13, 2, 2);
+  R(g, '#ab4b3b', 12, 13, 2, 2);
+}];
+
+// Living Forest equipment and a schematic field note.
+DRAW['forest.waypost'] = [16, 24, (g) => {
+  R(g, '#574235', 7, 7, 3, 16);
+  R(g, '#8f7752', 2, 5, 11, 8);
+  R(g, '#8f7752', 13, 7, 2, 4);
+  R(g, '#d5cd9c', 3, 6, 10, 1);
+  R(g, '#45664d', 5, 8, 5, 2);
+  R(g, '#45664d', 7, 7, 3, 4);
+}];
+DRAW['forest.screen'] = [16, 24, (g) => {
+  R(g, '#494939', 1, 6, 2, 17);
+  R(g, '#494939', 13, 6, 2, 17);
+  R(g, '#567653', 2, 9, 12, 10);
+  for (const x of [4, 7, 10, 12]) R(g, '#9c9b5d', x, 9 - x % 3, 1, 10);
+  R(g, '#c1c48a', 4, 12, 8, 2);
+  R(g, '#3a5947', 3, 16, 10, 1);
+}];
+DRAW['forest.ridge'] = [16, 24, (g) => {
+  R(g, '#555e58', 0, 12, 16, 10);
+  R(g, '#a6b098', 1, 12, 14, 4);
+  R(g, '#c8c8a9', 3, 12, 10, 1);
+  R(g, '#475944', 2, 6, 2, 7);
+  R(g, '#475944', 12, 6, 2, 7);
+  R(g, '#82936e', 2, 6, 12, 2);
+  R(g, '#d5c494', 6, 8, 4, 4);
+}];
+DRAW['forest.notice'] = [16, 24, (g) => {
+  R(g, '#544639', 3, 5, 2, 18);
+  R(g, '#544639', 11, 5, 2, 18);
+  R(g, '#69865e', 1, 4, 14, 12);
+  R(g, '#9db284', 1, 4, 14, 2);
+  paper(g, 4, 7, 8, 7);
+  R(g, '#6e6851', 6, 9, 4, 1);
+}];
+DRAW['forest.field-diagram'] = [16, 24, (g) => {
+  pedestal(g, 1, 15, 14);
+  paper(g, 2, 4, 12, 10);
+  R(g, '#77a18b', 4, 6, 5, 4);
+  R(g, '#a4ae75', 6, 8, 5, 4);
+  R(g, '#8e6756', 10, 6, 2, 2);
+}];
+DRAW['big.forest.field-diagram'] = [96, 64, (g) => {
+  R(g, '#344e43', 0, 0, 96, 64);
+  paper(g, 6, 5, 84, 55);
+  R(g, '#a8bb8f', 10, 10, 53, 43);
+  R(g, '#729a7d', 10, 12, 22, 20);
+  R(g, '#578473', 15, 16, 17, 18);
+  R(g, '#98a878', 40, 20, 23, 27);
+  R(g, '#5b9ca7', 27, 29, 5, 24);
+  R(g, '#5b9ca7', 27, 28, 14, 4);
+  R(g, '#5b9ca7', 37, 10, 4, 20);
+  for (const [x, y] of [[16, 40], [21, 36], [27, 33], [33, 27], [39, 26], [45, 22], [51, 17]]) R(g, '#745b51', x, y, 2, 2);
+  for (const y of [14, 22, 30, 38, 46]) R(g, '#94886e', 69, y, 16 - y % 5, 1);
+}];
+
+DRAW['forest.guide-rail'] = [32, 16, (g) => {
+  R(g, '#4d4234', 1, 10, 30, 3);
+  R(g, '#b59a69', 1, 10, 30);
+  R(g, '#624d37', 4, 3, 4, 11);
+  R(g, '#624d37', 24, 5, 3, 9);
+  R(g, '#c4a879', 5, 3, 2, 7);
+  R(g, '#c4a879', 25, 5, 1, 5);
+}];
+
+// The end post covers the second line from the bank. From the rise, the gap is visible.
+function railTracing(g: Ctx, x: number, hasGap: boolean) {
+  R(g, '#624d37', x + 7, 12, 2, 11);
+  R(g, '#686245', x + 1, 4, 14, 13);
+  paper(g, x + 3, 6, 10, 9);
+  R(g, '#483d3b', x + 5, 8, 2, 5);
+  if (hasGap) R(g, '#483d3b', x + 10, 9, 1, 4);
+  R(g, '#7c7755', x + 4, 13, 8);
+}
+DRAW['forest.guide-level'] = [16, 24, (g) => railTracing(g, 0, false)];
+DRAW['forest.guide-rise'] = [16, 24, (g) => railTracing(g, 0, true)];
+DRAW['forest.guide-hinges'] = [32, 24, (g) => {
+  railTracing(g, 0, false);
+  railTracing(g, 16, true);
+  R(g, '#a78d5e', 14, 7, 4, 2);
+  R(g, '#a78d5e', 14, 13, 4, 2);
+}];
+
+// Metalworks weighing stands and trade records.
+DRAW['metalworks.waypost'] = [16, 24, (g) => {
+  R(g, '#3e383b', 3, 4, 10, 20);
+  R(g, '#65615b', 4, 4, 8, 2);
+  R(g, '#a18765', 1, 6, 14, 10);
+  R(g, '#d8bb85', 2, 7, 12, 1);
+  R(g, '#567583', 4, 9, 8, 5);
+  R(g, '#acc0b6', 6, 11, 4, 1);
+}];
+function metalPanel(g: Ctx, base: string) {
+  R(g, '#383c42', 2, 13, 12, 10);
+  R(g, base, 3, 13, 10, 8);
+  R(g, '#596472', 1, 11, 14, 3);
+  R(g, '#6c93b5', 2, 7, 12, 5);
+  R(g, '#afc6d4', 3, 7, 10, 1);
+  R(g, '#456784', 2, 11, 12, 1);
+}
+DRAW['metalworks.panel-a'] = [16, 24, (g) => metalPanel(g, '#957a61')];
+DRAW['metalworks.panel-b'] = [16, 24, (g) => metalPanel(g, '#627c79')];
+DRAW['metalworks.receipt'] = [16, 24, (g) => {
+  smallTable(g);
+  paper(g, 3, 4, 10, 9);
+  R(g, '#a77e64', 5, 6, 5, 1);
+  R(g, '#6d7180', 5, 8, 6, 1);
+  R(g, '#6d7180', 5, 10, 4, 1);
+  R(g, '#6f93a9', 9, 11, 2, 2);
+}];
+DRAW['metalworks.window'] = [24, 24, (g) => {
+  pedestal(g, 1, 15, 22);
+  R(g, '#5d727a', 2, 4, 20, 10);
+  R(g, '#8eb3bd', 3, 5, 18, 6);
+  R(g, '#527ca7', 5, 6, 5, 3);
+  R(g, '#527ca7', 14, 6, 5, 3);
+  paper(g, 5, 10, 5, 3);
+  paper(g, 14, 10, 5, 3);
+}];
+
+// Print Workshop equipment and the different copies it sends out.
+DRAW['copies.waypost'] = [16, 24, (g) => {
+  R(g, '#413349', 3, 4, 10, 20);
+  R(g, '#765d73', 4, 4, 8, 2);
+  R(g, '#98765c', 1, 6, 14, 11);
+  paper(g, 3, 6, 10, 8);
+  R(g, '#607985', 5, 8, 6, 1);
+  R(g, '#9e8267', 5, 11, 4, 1);
+}];
+DRAW['copies.source'] = [16, 24, (g) => {
+  smallTable(g);
+  paper(g, 2, 3, 12, 11);
+  R(g, '#ab714e', 6, 2, 4, 2);
+  R(g, '#607985', 4, 6, 8, 1);
+  R(g, '#5c706d', 4, 9, 7, 1);
+  R(g, '#5c706d', 4, 11, 5, 1);
+}];
+DRAW['copies.press'] = [16, 24, (g) => {
+  R(g, '#4b3a3a', 1, 4, 2, 20);
+  R(g, '#4b3a3a', 13, 4, 2, 20);
+  R(g, '#9c7252', 1, 4, 14, 3);
+  R(g, '#52606e', 7, 3, 2, 7);
+  R(g, '#d0a575', 5, 2, 6, 2);
+  R(g, '#687380', 4, 9, 8, 3);
+  R(g, '#8b6b52', 2, 14, 12, 5);
+  paper(g, 3, 12, 10, 4);
+}];
+DRAW['copies.landing'] = [16, 24, (g) => {
+  R(g, '#514359', 2, 6, 12, 16);
+  R(g, '#728c91', 1, 4, 14, 10);
+  paper(g, 3, 4, 9, 8);
+  R(g, '#9e8267', 5, 7, 5, 1);
+  R(g, '#a97652', 2, 2, 12, 2);
+}];
+DRAW['copies.reprint'] = [16, 24, (g) => {
+  R(g, '#574453', 2, 3, 12, 19);
+  paper(g, 3, 4, 10, 12);
+  R(g, '#83a0a0', 4, 6, 8, 2);
+  for (const y of [9, 11, 13]) R(g, '#796d59', 5, y, 6, 1);
+}];
+DRAW['copies.strip'] = [16, 24, (g) => {
+  R(g, '#574453', 2, 4, 12, 18);
+  paper(g, 4, 5, 8, 9);
+  R(g, '#a78463', 5, 7, 6, 1);
+  R(g, '#83a0a0', 2, 10, 12, 2);
+  R(g, '#cadeca', 4, 10, 8, 1);
+}];
+
+// Cartographers’ Sea chart boards and skiff.
+DRAW['sea.waypost'] = [16, 24, (g) => {
+  R(g, '#344a50', 7, 7, 3, 16);
+  R(g, '#907558', 1, 5, 14, 8);
+  R(g, '#d2b884', 2, 5, 12, 2);
+  R(g, '#72a8ac', 3, 8, 10, 3);
+  R(g, '#40666a', 3, 10, 7, 1);
+  R(g, '#e5d0a2', 9, 8, 2, 3);
+}];
+DRAW['sea.skiff'] = [16, 24, (g) => {
+  R(g, '#335c6c', 1, 19, 14, 5);
+  R(g, '#594852', 2, 13, 12, 6);
+  R(g, '#a68162', 1, 12, 14, 3);
+  R(g, '#c6a17a', 4, 12, 8, 1);
+  R(g, '#84aab0', 2, 20, 5, 1);
+  R(g, '#84aab0', 8, 22, 6, 1);
+  R(g, '#dcc18b', 6, 10, 7, 1);
+  R(g, '#dcc18b', 11, 8, 4, 2);
+}];
+function mountedChart(g: Ctx) {
+  R(g, '#435257', 2, 4, 2, 19);
+  R(g, '#435257', 12, 4, 2, 19);
+  paper(g, 1, 5, 14, 11);
+  R(g, '#b29d75', 1, 4, 14, 2);
+}
+DRAW['sea.shore-chart'] = [16, 24, (g) => {
+  mountedChart(g);
+  R(g, '#79a9b0', 2, 10, 12, 5);
+  R(g, '#bea87e', 3, 8, 7, 3);
+  R(g, '#616f65', 4, 8, 6, 1);
+  R(g, '#616f65', 7, 9, 2, 1);
+}];
+DRAW['sea.shoal-chart'] = [16, 24, (g) => {
+  mountedChart(g);
+  R(g, '#79a9b0', 2, 7, 12, 8);
+  R(g, '#71918e', 3, 11, 10, 2);
+  R(g, '#d1c094', 4, 8, 3, 2);
+  R(g, '#d1c094', 9, 11, 3, 2);
+}];
+DRAW['sea.margin'] = [16, 24, (g) => {
+  mountedChart(g);
+  R(g, '#7a948f', 3, 7, 8, 2);
+  R(g, '#9e8465', 3, 11, 5, 1);
+  R(g, '#9e8465', 3, 13, 7, 1);
+  R(g, '#ac7868', 10, 9, 3, 1);
+  R(g, '#ac7868', 11, 10, 2, 1);
+  R(g, '#ac7868', 12, 11, 1, 1);
+}];
+
+// House of Performance stage, printed programmes and two cue boards.
+DRAW['stage.waypost'] = [16, 24, (g) => {
+  R(g, '#503b4a', 3, 4, 10, 20);
+  R(g, '#99725f', 1, 6, 14, 9);
+  R(g, '#d6af75', 2, 5, 12, 2);
+  R(g, '#a76372', 3, 7, 4, 6);
+  R(g, '#a76372', 9, 7, 4, 6);
+  R(g, '#e4cc95', 7, 10, 2, 2);
+}];
+DRAW['stage.rehearsal'] = [24, 24, (g) => {
+  pedestal(g, 1, 15, 22);
+  R(g, '#533d52', 2, 4, 20, 12);
+  R(g, '#944f62', 2, 4, 4, 10);
+  R(g, '#944f62', 18, 4, 4, 10);
+  R(g, '#d0a579', 6, 12, 12, 3);
+  R(g, '#b9b1c5', 11, 6, 5, 7);
+  R(g, '#493e4f', 12, 7, 3, 6);
+  R(g, '#ad795d', 8, 10, 3, 3);
+  R(g, '#e2c399', 8, 10, 3, 1);
+}];
+DRAW['stage.programme'] = [16, 24, (g) => {
+  smallTable(g);
+  paper(g, 2, 4, 12, 11);
+  R(g, '#9f5c76', 3, 4, 10, 2);
+  for (const y of [8, 10, 12]) R(g, '#7d6f6d', 4, y, 7, 1);
+}];
+DRAW['stage.cues'] = [16, 24, (g) => {
+  R(g, '#4e405d', 2, 5, 12, 18);
+  paper(g, 2, 4, 12, 10);
+  R(g, '#9d8daa', 3, 6, 4, 6);
+  R(g, '#c39670', 9, 7, 3, 3);
+  R(g, '#736f83', 7, 9, 3, 1);
+}];
+
+function stageCueBoard(g: Ctx, pauseFirst: boolean) {
+  R(g, '#5a485c', 3, 4, 10, 18);
+  paper(g, 2, 3, 12, 12);
+  const pause = pauseFirst ? 5 : 9;
+  const move = pauseFirst ? 9 : 5;
+  R(g, '#aa8ba5', 4, pause, 8, 1);
+  R(g, '#637e91', 4, move, 8, 2);
+  R(g, '#b7d2cd', 9, move, 2, 1);
+}
+DRAW['stage.pause'] = [16, 24, (g) => stageCueBoard(g, true)];
+DRAW['stage.move'] = [16, 24, (g) => stageCueBoard(g, false)];
+
+/** Original paper-stage relief. Only lighting and shadow change between views. */
+function stageDoorRelief(g: Ctx, side: boolean) {
+  R(g, '#21152c', 1, 2, 34, 19);
+  R(g, '#a47454', 2, 2, 32, 1);
+  R(g, '#684152', 2, 20, 32, 1);
+  R(g, side ? '#45304d' : '#76556a', 3, 4, 30, 15);
+  R(g, side ? '#b77953' : '#c4986e', 24, 5, 8, 2);
+  R(g, '#af7d56', 24, 7, 2, 10);
+  R(g, '#a67857', 30, 7, 2, 10);
+  R(g, '#61414c', 26, 7, 4, 10);
+  R(g, side ? '#835773' : '#a6757b', 3, 17, 30, 2);
+
+  // Raking light leaves a longer shadow, drawn in stepped strips.
+  R(g, side ? '#3a2946' : '#794e6f', 14, 18, side ? 16 : 7, 1);
+  if (side) {
+    R(g, '#3a2946', 17, 17, 11, 1);
+    R(g, '#3a2946', 21, 16, 5, 1);
+  }
+
+  // The figure, outstretched hand and basket stay in the same place.
+  R(g, '#e8bc93', 15, 8, 3, 3);
+  R(g, '#683c50', 15, 7, 3, 1);
+  R(g, side ? '#b37768' : '#dc9e7c', 14, 11, 5, 5);
+  R(g, '#ddb399', 19, 12, 2, 1);
+  R(g, '#624052', 15, 16, 1, 2);
+  R(g, '#624052', 17, 16, 1, 2);
+  R(g, '#bb875a', 20, 13, 4, 3);
+  R(g, side ? '#d49b69' : '#f1ca88', 20, 13, 4, 1);
+  R(g, side ? '#9e6f5f' : '#724b5f', 15, 14, 3, 1);
+  R(g, '#684152', 6, 21, 2, 3);
+  R(g, '#684152', 28, 21, 2, 3);
+}
+
+DRAW['stage.relief-side'] = [36, 24, (g) => stageDoorRelief(g, true)];
+DRAW['stage.relief-front'] = [36, 24, (g) => stageDoorRelief(g, false)];
+
+DRAW['market.waypost'] = [16, 24, (g) => {
+  R(g, '#514751', 6, 7, 4, 16);
+  R(g, '#6c8e83', 2, 5, 12, 10);
+  R(g, '#96ad98', 2, 5, 12, 2);
+  R(g, '#e5c589', 7, 8, 2, 5);
+  R(g, '#e5c589', 4, 8, 8, 1);
+  R(g, '#d4a678', 4, 11, 2, 2);
+  R(g, '#d4a678', 10, 11, 2, 2);
+}];
+DRAW['market.window'] = [24, 24, (g) => {
+  pedestal(g, 1, 15, 22);
+  R(g, '#5c7779', 2, 3, 20, 12);
+  paper(g, 4, 4, 16, 10);
+  R(g, '#76928d', 5, 7, 14, 1);
+  R(g, '#9a765d', 5, 10, 14, 1);
+  R(g, '#806653', 11, 6, 1, 6);
+}];
+
+// Water Commons posts and the paper records pinned in the council yard.
+DRAW['water.waypost'] = [16, 24, (g) => {
+  R(g, '#6e6255', 6, 6, 4, 17);
+  R(g, '#466e77', 1, 5, 14, 10);
+  R(g, '#8cb3ad', 2, 5, 12, 2);
+  R(g, '#bfd0b7', 3, 9, 5, 1);
+  R(g, '#bfd0b7', 7, 11, 6, 1);
+}];
+function waterLever(g: Ctx, checked: boolean) {
+  pedestal(g, 1, 15, 14);
+  R(g, '#604e4b', 4, 12, 8, 3);
+  R(g, '#53646a', 6, 7, 4, 6);
+  R(g, '#a98263', 7, 4, 2, 7);
+  R(g, '#d1b27e', 5, 3, 6, 2);
+  R(g, checked ? '#8ab39d' : '#c28570', 10, 11, 3, 2);
+}
+DRAW['water.lever'] = [16, 24, (g) => waterLever(g, false)];
+DRAW['water.lever-repaired'] = [16, 24, (g) => waterLever(g, true)];
+DRAW['water.notice'] = [16, 24, (g) => {
+  R(g, '#645c51', 4, 6, 8, 17);
+  paper(g, 2, 4, 12, 11);
+  R(g, '#6d9b96', 4, 6, 8, 2);
+  R(g, '#7f765b', 4, 10, 7, 1);
+  R(g, '#7f765b', 4, 12, 5, 1);
+}];
+function allocationRecord(g: Ctx, dividingLine: number) {
+  smallTable(g);
+  paper(g, 1, 4, 14, 11);
+  R(g, '#a6ac72', 3, 7, dividingLine, 3);
+  R(g, '#78a3a8', 3 + dividingLine, 7, 10 - dividingLine, 3);
+  R(g, '#88735a', 3, 12, 10, 1);
+}
+DRAW['water.fields'] = [16, 24, (g) => allocationRecord(g, 7)];
+DRAW['water.split'] = [16, 24, (g) => allocationRecord(g, 5)];
+DRAW['water.channel'] = [16, 24, (g) => allocationRecord(g, 3)];
+
+// Civic Machine destination markers and the original paper records that stay in each district.
+DRAW['civic.waypost'] = [20, 24, (g) => {
+  R(g, '#69595b', 8, 7, 4, 16);
+  R(g, '#817176', 1, 4, 18, 13);
+  R(g, '#a9b6a1', 2, 5, 16, 10);
+  R(g, '#d4ad88', 2, 5, 16, 2);
+  R(g, '#585d72', 8, 7, 3, 8);
+  R(g, '#585d72', 5, 8, 10, 2);
+  R(g, '#806276', 5, 10, 3, 2);
+  R(g, '#527e7c', 12, 10, 3, 2);
+}];
+DRAW['civic.console'] = [24, 24, (g) => {
+  pedestal(g, 2, 14, 20);
+  R(g, '#536575', 2, 4, 20, 12);
+  R(g, '#b3b7a0', 4, 5, 16, 2);
+  R(g, '#cfe2bd', 5, 7, 10, 6);
+  R(g, '#818a76', 6, 9, 8, 1);
+  R(g, '#818a76', 6, 11, 5, 1);
+  R(g, '#a68c7a', 17, 8, 3, 2);
+  R(g, '#ccba78', 17, 11, 3, 2);
+}];
+DRAW['civic.ledger'] = [16, 24, (g) => {
+  smallTable(g);
+  paper(g, 2, 4, 12, 11);
+  R(g, '#889ca2', 3, 6, 4, 2);
+  R(g, '#a08080', 9, 6, 4, 2);
+  for (const y of [10, 12]) {
+    R(g, '#7f7769', 4, y, 3, 1);
+    R(g, '#7f7769', 9, y, 3, 1);
+  }
+}];
+DRAW['civic.notice'] = [20, 24, (g) => {
+  R(g, '#705c5b', 7, 7, 6, 16);
+  paper(g, 2, 3, 16, 13);
+  R(g, '#738a96', 3, 5, 14, 2);
+  R(g, '#8b7964', 5, 9, 10, 1);
+  R(g, '#8b7964', 5, 12, 7, 1);
+}];
+DRAW['civic.wide'] = [24, 24, (g) => {
+  R(g, '#674f55', 3, 6, 18, 17);
+  paper(g, 1, 3, 22, 14);
+  R(g, '#718b8b', 3, 5, 18, 2);
+  R(g, '#997a6b', 4, 10, 16, 1);
+  R(g, '#7d727b', 4, 13, 16, 1);
+}];
+
+function civicWindows(g: Ctx, stepsWindows: number) {
+  R(g, '#6d5357', 7, 7, 6, 16);
+  paper(g, 1, 3, 18, 13);
+  for (let i = 0; i < 4; i++) {
+    R(g, i < stepsWindows ? '#927289' : '#5c8e8f', 3 + i * 4, 7, 3, 4);
+  }
+  R(g, '#8b7964', 4, 13, 11, 1);
+}
+DRAW['civic.rank'] = [20, 24, (g) => civicWindows(g, 0)];
+DRAW['civic.reserve'] = [20, 24, (g) => civicWindows(g, 1)];
+DRAW['civic.even'] = [20, 24, (g) => civicWindows(g, 2)];
+
+// Archive of Voices record trays and landmarks made for the fictional walk.
+DRAW['voices.waypost'] = [20, 24, (g) => {
+  R(g, '#725b67', 8, 8, 4, 15);
+  R(g, '#7e667e', 1, 4, 18, 12);
+  R(g, '#ad97a7', 2, 5, 16, 2);
+  R(g, '#dfbf9d', 3, 9, 5, 4);
+  R(g, '#dfbf9d', 12, 9, 5, 4);
+  R(g, '#596e7c', 9, 7, 2, 7);
+}];
+DRAW['voices.desk'] = [24, 24, (g) => {
+  pedestal(g, 1, 15, 22);
+  R(g, '#656372', 2, 6, 20, 10);
+  R(g, '#a7888e', 2, 5, 20, 2);
+  R(g, '#9b9c99', 4, 8, 7, 6);
+  R(g, '#ddb6a0', 6, 9, 3, 4);
+  paper(g, 13, 7, 7, 7);
+  R(g, '#83737c', 14, 9, 5, 1);
+  R(g, '#83737c', 14, 11, 4, 1);
+}];
+DRAW['voices.permission'] = [16, 24, (g) => {
+  smallTable(g);
+  paper(g, 2, 4, 12, 11);
+  R(g, '#9c788c', 2, 4, 12, 2);
+  R(g, '#84748a', 4, 8, 8, 1);
+  R(g, '#84748a', 4, 10, 6, 1);
+  R(g, '#ae8b72', 10, 11, 2, 2);
+}];
+DRAW['voices.register'] = [22, 24, (g) => {
+  pedestal(g, 1, 15, 20);
+  R(g, '#756470', 2, 4, 18, 12);
+  paper(g, 3, 5, 16, 9);
+  R(g, '#a98e86', 10, 5, 2, 9);
+  R(g, '#898463', 4, 8, 5, 1);
+  R(g, '#898463', 13, 8, 4, 1);
+  R(g, '#aa866d', 14, 10, 3, 2);
+}];
+DRAW['voices.paired'] = [24, 24, (g) => {
+  R(g, '#715e6c', 3, 7, 18, 16);
+  paper(g, 1, 3, 11, 12);
+  paper(g, 12, 3, 11, 12);
+  R(g, '#a08093', 2, 4, 8, 2);
+  R(g, '#6d8b90', 13, 4, 8, 2);
+  for (const x of [3, 14]) {
+    R(g, '#80766e', x, 9, 6, 1);
+    R(g, '#80766e', x, 12, 4, 1);
+  }
+}];
+DRAW['voices.guide'] = [20, 24, (g) => {
+  R(g, '#74636c', 8, 7, 4, 16);
+  paper(g, 1, 3, 18, 12);
+  R(g, '#6f858b', 3, 5, 14, 2);
+  R(g, '#8b657c', 4, 9, 7, 1);
+  R(g, '#8b657c', 10, 8, 2, 4);
+  R(g, '#8b657c', 12, 9, 2, 2);
+}];
+DRAW['voices.arch'] = [20, 24, (g) => {
+  R(g, '#665862', 8, 7, 4, 16);
+  paper(g, 1, 3, 18, 12);
+  R(g, '#7c9a96', 4, 8, 3, 5);
+  R(g, '#7c9a96', 13, 8, 3, 5);
+  R(g, '#7c9a96', 7, 6, 6, 3);
+  R(g, '#a98b82', 5, 11, 9, 1);
+}];
+DRAW['voices.railing'] = [16, 24, (g) => {
+  R(g, '#716670', 6, 7, 4, 16);
+  R(g, '#d0b9a5', 2, 5, 12, 8);
+  R(g, '#668689', 3, 8, 9, 2);
+  R(g, '#668689', 9, 7, 3, 5);
+}];
+DRAW['voices.lamp'] = [16, 32, (g) => {
+  R(g, '#665c64', 6, 7, 4, 24);
+  R(g, '#746568', 4, 3, 8, 12);
+  R(g, '#987b68', 5, 2, 6, 2);
+  R(g, '#dfb68a', 5, 5, 6, 8);
+  R(g, '#ffdf9f', 7, 7, 3, 5);
+  R(g, '#9f7c65', 5, 26, 6, 2);
+}];
+
+// Map parts made for the Island of Models' three hypothetical routes.
+DRAW['island.waypost'] = [20, 24, (g) => {
+  R(g, '#695b53', 8, 7, 4, 16);
+  R(g, '#707b6a', 1, 4, 18, 12);
+  R(g, '#a7b096', 2, 5, 16, 2);
+  R(g, '#d4b68c', 4, 9, 6, 2);
+  R(g, '#a893a1', 8, 7, 2, 7);
+  R(g, '#8eb2a7', 10, 10, 6, 2);
+}];
+DRAW['island.plan'] = [26, 24, (g) => {
+  pedestal(g, 1, 15, 24);
+  R(g, '#678c90', 2, 4, 22, 12);
+  R(g, '#b4aa82', 5, 7, 16, 6);
+  R(g, '#9aa07c', 8, 5, 10, 3);
+  R(g, '#a1926c', 11, 5, 3, 7);
+  R(g, '#baa183', 5, 10, 5, 2);
+  R(g, '#8f6c6d', 17, 8, 3, 4);
+  R(g, '#bb986e', 7, 11, 3, 2);
+  R(g, '#9d8398', 11, 9, 3, 2);
+}];
+DRAW['island.card'] = [16, 24, (g) => {
+  smallTable(g);
+  paper(g, 2, 4, 12, 11);
+  R(g, '#a19271', 3, 5, 10, 2);
+  for (const y of [9, 11, 13]) R(g, '#817b6a', 4, y, 7, 1);
+}];
+DRAW['island.landing'] = [20, 24, (g) => {
+  R(g, '#806d5d', 7, 6, 5, 17);
+  paper(g, 1, 4, 18, 12);
+  R(g, '#789b95', 2, 8, 16, 2);
+  R(g, '#a78e70', 4, 7, 4, 5);
+  R(g, '#74806e', 10, 11, 7, 2);
+}];
+DRAW['island.signal'] = [20, 24, (g) => {
+  R(g, '#705a51', 3, 4, 3, 19);
+  R(g, '#7a6256', 14, 12, 3, 11);
+  R(g, '#b09978', 13, 12, 5, 2);
+  R(g, '#8d685c', 2, 4, 8, 8);
+  R(g, '#c7a076', 3, 5, 6, 6);
+  R(g, '#ad8d70', 14, 16, 5, 2);
+}];
+DRAW['island.margin'] = [20, 24, (g) => {
+  R(g, '#685f50', 8, 8, 4, 15);
+  R(g, '#95886b', 1, 4, 18, 13);
+  paper(g, 2, 5, 16, 10);
+  for (const x of [4, 8, 12]) {
+    R(g, '#829671', x, 7, 2, 6);
+    R(g, '#9f9d77', x + 2, 8, 1, 4);
+  }
+}];
+
+function islandRouteNotice(g: Ctx, route: 'ridge' | 'ferry' | 'marsh') {
+  const colours = { ridge: '#8a7296', ferry: '#59918e', marsh: '#84956c' };
+  R(g, '#785f54', 7, 8, 6, 15);
+  paper(g, 1, 4, 18, 12);
+  R(g, colours[route], 3, 6, 14, 3);
+  R(g, '#8f7966', 4, 11, 10, 1);
+  R(g, '#8f7966', 4, 13, 7, 1);
+}
+DRAW['island.ridge'] = [20, 24, (g) => islandRouteNotice(g, 'ridge')];
+DRAW['island.ferry'] = [20, 24, (g) => islandRouteNotice(g, 'ferry')];
+DRAW['island.marsh'] = [20, 24, (g) => islandRouteNotice(g, 'marsh')];
+
+// Council of Inquiry instruments and reading room display cards.
+DRAW['council.waypost'] = [20, 24, (g) => {
+  R(g, '#6f595e', 8, 8, 4, 15);
+  R(g, '#6b6b82', 1, 4, 18, 12);
+  R(g, '#9a94a4', 2, 5, 16, 2);
+  R(g, '#c4a882', 4, 7, 5, 7);
+  R(g, '#e2c59b', 11, 7, 5, 7);
+  R(g, '#827272', 6, 8, 1, 4);
+  R(g, '#827272', 13, 8, 1, 4);
+}];
+
+function councilDial(g: Ctx, x: number, y: number, edge: string, hand: string) {
+  R(g, edge, x + 2, y, 6, 11);
+  R(g, edge, x, y + 2, 10, 7);
+  R(g, '#d9c5a5', x + 2, y + 2, 6, 7);
+  R(g, hand, x + 5, y + 3, 1, 5);
+}
+DRAW['council.clock'] = [24, 24, (g) => {
+  pedestal(g, 1, 15, 22);
+  councilDial(g, 1, 3, '#806970', '#6c5c62');
+  councilDial(g, 13, 3, '#779099', '#5e7177');
+  R(g, '#a88975', 2, 14, 20, 2);
+}];
+DRAW['council.record'] = [22, 24, (g) => {
+  R(g, '#735e6c', 7, 7, 7, 16);
+  paper(g, 1, 3, 20, 13);
+  R(g, '#7d8e99', 3, 5, 16, 2);
+  R(g, '#967d83', 4, 9, 13, 1);
+  R(g, '#867764', 4, 12, 13, 1);
+  R(g, '#9a856e', 17, 10, 2, 3);
+}];
+DRAW['council.relay'] = [22, 24, (g) => {
+  R(g, '#6b626d', 7, 7, 7, 16);
+  paper(g, 1, 3, 20, 13);
+  R(g, '#7a829a', 4, 8, 4, 5);
+  R(g, '#9c818b', 14, 8, 4, 5);
+  R(g, '#8d7e6e', 8, 8, 5, 1);
+  R(g, '#8d7e6e', 9, 10, 4, 1);
+}];
+DRAW['council.optics'] = [20, 24, (g) => {
+  pedestal(g, 1, 15, 18);
+  paper(g, 2, 4, 16, 11);
+  R(g, '#9a8398', 3, 5, 14, 2);
+  R(g, '#8e826d', 4, 10, 6, 1);
+  R(g, '#a78b75', 11, 8, 3, 5);
+  R(g, '#779288', 14, 10, 2, 1);
+}];
+DRAW['council.letter'] = [20, 24, (g) => {
+  pedestal(g, 1, 15, 18);
+  paper(g, 2, 4, 16, 11);
+  R(g, '#758d97', 3, 5, 14, 2);
+  for (const y of [9, 11, 13]) R(g, '#84796c', 4, y, 10 - y % 3, 1);
+}];
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {
@@ -589,8 +1625,35 @@ export function glowCanvas(size = 128): HTMLCanvasElement {
 /** Map exhibit art keys (small) to large inspection pictures. */
 export const BIG_ART: Record<string, string> = {
   'nile.scroll': 'nile.scroll', 'nile.tablet': 'nile.tablet', 'nile.map': 'nile.map', 'nile.stone': 'nile.stone',
+  'preserved.temple': 'big.preserved.temple', 'preserved.catalogue': 'big.preserved.catalogue',
+  'preserved.coast': 'big.preserved.coast', 'preserved.context': 'big.preserved.context',
+  'forest.field-diagram': 'big.forest.field-diagram',
   'exhibit.patent': 'big.patent', 'exhibit.model': 'big.model', 'exhibit.biro': 'big.biro',
   'exhibit.blade': 'big.blade', 'exhibit.ingots': 'big.ingots', 'exhibit.assay': 'big.assay',
   'plaque.earth': 'big.earth', 'plaque.optics': 'big.optics', 'plaque.type': 'big.type', 'plaque.peak': 'big.peak',
   'plaque.flight': 'big.flight', 'plaque.vote': 'big.vote', 'plaque.book': 'big.book',
 };
+
+/** Schematic icons for the original-copy viewer in the Nexus. */
+for (const view of ['sheet', 'detail'] as const) {
+  for (const fixed of [false, true]) {
+    DRAW[`nexus.viewer-${fixed ? 'fixed-' : ''}${view}`] = [23, 23, (g) => {
+      g.fillStyle = '#40344a'; g.fillRect(2, 6, 19, 15);
+      g.fillStyle = '#d6b67c'; g.fillRect(4, 5, 15, 14);
+      g.fillStyle = '#f3dba3'; g.fillRect(5, 6, 13, 12);
+      g.fillStyle = '#625069';
+      if (view === 'sheet') {
+        g.fillRect(7, 8, 7, 1); g.fillRect(7, 15, 8, 1);
+        g.fillRect(10, 10, 2, 3);
+        g.fillStyle = '#79554e'; g.fillRect(10, 13, 2, 2);
+        if (fixed) { g.strokeStyle = '#557c83'; g.lineWidth = 1; g.strokeRect(8.5, 9.5, 5, 6); }
+      } else {
+        g.fillRect(7, 7, 2, 7); g.fillRect(15, 7, 2, 7);
+        g.fillStyle = '#79554e';
+        g.beginPath(); g.arc(12, 14, 3.5, 0, Math.PI * 2); g.fill();
+        if (fixed) { g.fillStyle = '#6d9ca2'; g.fillRect(16, 15, 6, 4); }
+      }
+      g.fillStyle = '#728889'; g.fillRect(2, 10, 2, 4);
+    }];
+  }
+}

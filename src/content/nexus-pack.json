@@ -1,0 +1,288 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH1-R16",
+   "world": "WORLD-01",
+   "title": "The Packing Table",
+   "knowledgeQuestion": "What can a total hide about how things are grouped?",
+   "available": { "flagSet": "nexus.pack.sent" },
+   "objectives": [
+    {
+     "id": "nexus.pack.checked",
+     "title": "Pack the dispatch and watch a reader use its tag.",
+     "essential": false,
+     "done": { "flagSet": "nexus.pack.sent" },
+     "onComplete": [{ "journal": "j.nexus.pack" }],
+     "weave": {
+      "concepts": ["evidence", "explanation", "interpretation", "perspective", "responsibility"],
+      "atl": ["thinking", "communication", "self-management"],
+      "aoks": ["MAT", "LAN"],
+      "subjects": ["math-ai", "math-aa", "design-tech"]
+     },
+     "skills": ["SK-THK-05", "SK-ETR-01"]
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "nexus.pack.prep",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Six sketches and two red source slips are waiting for two landing stations. Each station gets three sketches. A source slip lets its keeper check where those sketches came from. The dispatch crate has two waxed wallets and space under its own lid.",
+   "options": [
+    {
+     "text": "Put three sketches and a source slip in each wallet, then seal the crate.",
+     "next": "nexus.pack.kits-placed",
+     "if": { "not": { "flagSet": "nexus.pack.tag" } },
+     "effects": [
+      { "setFlag": "nexus.pack.layout", "value": "kits" },
+      { "setFlag": "nexus.pack.tried", "value": false }
+     ]
+    },
+    {
+     "text": "Seal two wallets of three sketches. Set both source slips under the crate lid.",
+     "next": "nexus.pack.outer-placed",
+     "if": { "not": { "flagSet": "nexus.pack.tag" } },
+     "effects": [
+      { "setFlag": "nexus.pack.layout", "value": "outer" },
+      { "setFlag": "nexus.pack.tried", "value": false }
+     ]
+    },
+    { "text": "Leave the packing table open." }
+   ]
+  },
+  {
+   "id": "nexus.pack.kits-placed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You close both wallets over their groups of four sheets. The runner sets the crate on the test rack. Nothing is loose under the lid."
+  },
+  {
+   "id": "nexus.pack.outer-placed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You seal the sketches in two wallets. The loose slips go between the wallets and the lid. The runner sets the crate on the test rack."
+  },
+  {
+   "id": "nexus.pack.trial",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "At the rack, the receiving clerk opens the outer crate. A runner will take one wallet through the side gate. The other will go out later. The clerk asks what she can check while the two wallet seals are still whole.",
+   "options": [
+    {
+     "text": "Pass one wallet through the gate and see what stays at the rack.",
+     "next": "nexus.pack.kits-tested",
+     "if": { "all": [
+      { "flag": "nexus.pack.layout", "eq": "kits" },
+      { "flag": "nexus.pack.tried", "eq": false }
+     ] },
+     "effects": [{ "setFlag": "nexus.pack.tried", "value": true }]
+    },
+    {
+     "text": "Pass one wallet through the gate and see what stays at the rack.",
+     "next": "nexus.pack.outer-tested",
+     "if": { "all": [
+      { "flag": "nexus.pack.layout", "eq": "outer" },
+      { "flag": "nexus.pack.tried", "eq": false }
+     ] },
+     "effects": [{ "setFlag": "nexus.pack.tried", "value": true }]
+    },
+    { "text": "Keep both wallets on the rack." }
+   ]
+  },
+  {
+   "id": "nexus.pack.kits-tested",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The runner opens her trial wallet on the far side. Three sketches and a slip come out together. Back at the rack, the clerk has one sealed wallet. She can count that wallet now. Its source slip stays out of reach until it is opened. The runner brings the trial wallet back."
+  },
+  {
+   "id": "nexus.pack.outer-tested",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The runner opens her trial wallet on the far side. It holds three sketches. Both red slips are still at the rack. The clerk can compare them with the station names while the second wallet is sealed. The runner brings the trial wallet back."
+  },
+  {
+   "id": "nexus.pack.ready",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "All eight sheets are back. The runner needs a mark that shows what travels together. The receiving clerk can work from a tally of each kind of sheet. You can send either tag, or try closing the crate in another order.",
+   "options": [
+    {
+     "text": "Stamp the groups on the runner’s tag and send it to the dispatch gate.",
+     "next": "nexus.pack.route-tagged",
+     "if": { "all": [
+      { "flag": "nexus.pack.tried", "eq": true },
+      { "not": { "flagSet": "nexus.pack.tag" } }
+     ] },
+     "effects": [{ "setFlag": "nexus.pack.tag", "value": "route" }]
+    },
+    {
+     "text": "Tally the sketches and source slips on the receiving clerk’s tag.",
+     "next": "nexus.pack.tally-tagged",
+     "if": { "all": [
+      { "flag": "nexus.pack.tried", "eq": true },
+      { "not": { "flagSet": "nexus.pack.tag" } }
+     ] },
+     "effects": [{ "setFlag": "nexus.pack.tag", "value": "tally" }]
+    },
+    {
+     "text": "Open the wallets and try a different grouping.",
+     "next": "nexus.pack.reopened",
+     "if": { "all": [
+      { "flag": "nexus.pack.tried", "eq": true },
+      { "not": { "flagSet": "nexus.pack.tag" } }
+     ] },
+     "effects": [
+      { "setFlag": "nexus.pack.layout", "value": "open" },
+      { "setFlag": "nexus.pack.tried", "value": false }
+     ]
+    },
+    { "text": "Let the wallets wait on the rack." }
+   ]
+  },
+  {
+   "id": "nexus.pack.reopened",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You break the trial seals. Six sketches and two red slips go back on the table."
+  },
+  {
+   "id": "nexus.pack.route-tagged",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The runner’s tag has an outline for each wallet. Marks inside an outline go with that wallet. The crate moves to the dispatch gate with the tag on its handle."
+  },
+  {
+   "id": "nexus.pack.tally-tagged",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You put six strokes beside the sketches and two dots beside the source slips on the clerk’s tag. The crate moves to the dispatch gate for her check."
+  },
+  {
+   "id": "nexus.pack.dock-route",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The runner points to each wallet outline on your tag. She checks the marks before she sends one through the gate.",
+   "options": [
+    {
+     "text": "Watch her read 2 × (3 + 1) and send the first wallet.",
+     "next": "nexus.pack.kits-route",
+     "if": { "all": [
+      { "flag": "nexus.pack.tag", "eq": "route" },
+      { "flag": "nexus.pack.layout", "eq": "kits" },
+      { "not": { "flagSet": "nexus.pack.sent" } }
+     ] },
+     "effects": [{ "setFlag": "nexus.pack.sent", "value": "kits-route" }]
+    },
+    {
+     "text": "Watch her read (2 × 3) + 2 and send the first wallet.",
+     "next": "nexus.pack.outer-route",
+     "if": { "all": [
+      { "flag": "nexus.pack.tag", "eq": "route" },
+      { "flag": "nexus.pack.layout", "eq": "outer" },
+      { "not": { "flagSet": "nexus.pack.sent" } }
+     ] },
+     "effects": [{ "setFlag": "nexus.pack.sent", "value": "outer-route" }]
+    },
+    { "text": "Let the runner finish her round first." }
+   ]
+  },
+  {
+   "id": "nexus.pack.dock-tally",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The receiving clerk puts her finger on the first tally line, then the second. She lifts the lid before she signs for the eight sheets.",
+   "options": [
+    {
+     "text": "Watch what she can check without breaking a wallet seal.",
+     "next": "nexus.pack.kits-tally",
+     "if": { "all": [
+      { "flag": "nexus.pack.tag", "eq": "tally" },
+      { "flag": "nexus.pack.layout", "eq": "kits" },
+      { "not": { "flagSet": "nexus.pack.sent" } }
+     ] },
+     "effects": [{ "setFlag": "nexus.pack.sent", "value": "kits-tally" }]
+    },
+    {
+     "text": "Watch what she can check without breaking a wallet seal.",
+     "next": "nexus.pack.outer-tally",
+     "if": { "all": [
+      { "flag": "nexus.pack.tag", "eq": "tally" },
+      { "flag": "nexus.pack.layout", "eq": "outer" },
+      { "not": { "flagSet": "nexus.pack.sent" } }
+     ] },
+     "effects": [{ "setFlag": "nexus.pack.sent", "value": "outer-tally" }]
+    },
+    { "text": "Let the clerk finish opening the crate." }
+   ]
+  },
+  {
+   "id": "nexus.pack.kits-route",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The runner sees a source mark inside each group. She carries one sealed wallet straight to the shelter. Its keeper opens it and can check the sketches against their slip even though the other wallet stays at the gate."
+  },
+  {
+   "id": "nexus.pack.outer-route",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The runner sees two marks outside the wallet groups. She collects a red slip from the rack before she goes. At the shelter she hands over the closed wallet and the separate slip. The second slip stays at the gate for the next runner."
+  },
+  {
+   "id": "nexus.pack.kits-tally",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The clerk can see two whole seals. The tally says eight sheets, with two source slips among them. The clerk signs for the wallets and leaves the inner slip check for the people who open them."
+  },
+  {
+   "id": "nexus.pack.outer-tally",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The clerk touches each red slip beneath the lid and checks its station name against the tally. Both wallets keep their seals. She pins each source slip above its dispatch hook, where the next runner can take it along."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.nexus.pack.1",
+   "objective": "nexus.pack.checked",
+   "depth": 1,
+   "text": "The table holds six sketches and two slips even when the groups change."
+  },
+  {
+   "id": "h.nexus.pack.2",
+   "objective": "nexus.pack.checked",
+   "depth": 2,
+   "text": "Try putting one source slip inside each wallet or leaving the two together under the lid."
+  },
+  {
+   "id": "h.nexus.pack.3",
+   "objective": "nexus.pack.checked",
+   "depth": 3,
+   "text": "Pass one wallet through the trial gate. You can repack the same sheets if you want to compare the results."
+  },
+  {
+   "id": "h.nexus.pack.4",
+   "objective": "nexus.pack.checked",
+   "depth": 4,
+   "text": "Give the runner a tag of groups or give the clerk a tally. Check what the chosen reader does at the dispatch gate."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.nexus.pack",
+   "claimKind": "observation",
+   "text": "Six sketches and two source slips make eight sheets. Which checks were possible depended on what we sealed together. The tally carried the amounts. The group tag showed which sheets would travel together."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.nexus.pack",
+   "attribute": "communicator",
+   "when": { "flagSet": "nexus.pack.sent" },
+   "did": "You prepared a tag for a particular reader and watched what they could do with it.",
+   "prompt": ""
+  }
+ ]
+}

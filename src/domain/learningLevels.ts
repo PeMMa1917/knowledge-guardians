@@ -1,0 +1,96 @@
+/**
+ * Learning tags for designers (Mika, 2026-11-26). Every encounter should weave TOK key concepts and
+ * parts of the knowledge framework, and the thinking it asks for should vary: Webb's depth of
+ * knowledge (DOK 1 to 4), Bloom's levels, Fink's dimensions of significant learning and SOLO levels.
+ * These tags are for developers and teachers only. Players never see a level and are never graded:
+ * nothing in the game is an exam (Mika's rule). Objectives carry concepts in their `weave`; this file
+ * tags the encounters that live in TypeScript registries (crossings, hearth talks, field games,
+ * loyalty missions). Pure data, no DOM.
+ */
+import type { Concept } from './types';
+
+export type FrameworkPart = 'scope' | 'perspectives' | 'methods-and-tools' | 'ethics';
+export const FRAMEWORK: FrameworkPart[] = ['scope', 'perspectives', 'methods-and-tools', 'ethics'];
+export type Bloom = 'remember' | 'understand' | 'apply' | 'analyse' | 'evaluate' | 'create';
+export const BLOOM: Bloom[] = ['remember', 'understand', 'apply', 'analyse', 'evaluate', 'create'];
+export type Fink = 'foundational' | 'application' | 'integration' | 'human' | 'caring' | 'learning-to-learn';
+export const FINK: Fink[] = ['foundational', 'application', 'integration', 'human', 'caring', 'learning-to-learn'];
+export type Solo = 'unistructural' | 'multistructural' | 'relational' | 'extended';
+export const SOLO: Solo[] = ['unistructural', 'multistructural', 'relational', 'extended'];
+
+export interface LearnTag {
+  concepts: Concept[];
+  framework: FrameworkPart[];
+  dok: 1 | 2 | 3 | 4;
+  bloom: Bloom;
+  fink: Fink;
+  solo: Solo;
+  /** Estimated minutes of play (for the 30-minute design audit). */
+  minutes: number;
+}
+
+const S: FrameworkPart = 'scope', P: FrameworkPart = 'perspectives', M: FrameworkPart = 'methods-and-tools', E: FrameworkPart = 'ethics';
+const t = (concepts: Concept[], framework: FrameworkPart[], dok: LearnTag['dok'], bloom: Bloom, fink: Fink, solo: Solo, minutes: number): LearnTag =>
+  ({ concepts, framework, dok, bloom, fink, solo, minutes });
+
+/** Keys are `<family>:<id>`: crossing, hearth, field, loyalty. */
+export const LEARN: Record<string, LearnTag> = {
+  // Crossings (src/domain/crossings.ts)
+  'crossing:lamb': t(['evidence', 'certainty'], [M], 2, 'apply', 'application', 'multistructural', 4),
+  'crossing:lintel': t(['power', 'justification', 'truth'], [S, P], 3, 'evaluate', 'learning-to-learn', 'relational', 4),
+  'crossing:borrowed': t(['interpretation', 'perspective', 'evidence'], [P, M], 3, 'analyse', 'integration', 'relational', 4),
+  'crossing:warm-room': t(['values', 'responsibility', 'truth'], [S, E], 4, 'evaluate', 'caring', 'extended', 5),
+  'crossing:tide-engine': t(['certainty', 'objectivity', 'explanation'], [M], 3, 'analyse', 'application', 'relational', 4),
+  'crossing:geese': t(['objectivity', 'evidence'], [M, E], 2, 'apply', 'application', 'multistructural', 3),
+  'crossing:furnace': t(['evidence', 'objectivity', 'power'], [M], 3, 'apply', 'application', 'relational', 4),
+  'crossing:crowd': t(['power', 'evidence', 'responsibility'], [E, P], 3, 'evaluate', 'human', 'relational', 4),
+  'crossing:drowned-bell': t(['culture', 'interpretation', 'explanation'], [P, S], 4, 'analyse', 'integration', 'extended', 5),
+  'crossing:fortune': t(['certainty', 'explanation', 'evidence'], [M], 2, 'understand', 'foundational', 'multistructural', 3),
+  'crossing:stage-fright': t(['certainty', 'responsibility'], [P], 2, 'create', 'learning-to-learn', 'multistructural', 3),
+  'crossing:patron': t(['culture', 'values', 'power', 'justification'], [P, E, S], 4, 'evaluate', 'caring', 'extended', 5),
+  'crossing:goat': t(['evidence', 'truth', 'certainty'], [M], 2, 'analyse', 'human', 'multistructural', 3),
+  'crossing:sluice': t(['values', 'responsibility', 'evidence'], [E], 4, 'evaluate', 'caring', 'relational', 5),
+  'crossing:name-box': t(['power', 'culture', 'objectivity'], [E, S], 3, 'create', 'caring', 'extended', 4),
+  'crossing:two-elders': t(['truth', 'interpretation', 'perspective'], [P, M], 2, 'analyse', 'human', 'relational', 4),
+  'crossing:launch': t(['culture', 'perspective', 'evidence', 'justification'], [P, M], 4, 'evaluate', 'integration', 'extended', 5),
+  // Hearth talks (src/domain/hearth.ts)
+  'hearth:essay': t(['interpretation', 'explanation'], [S], 1, 'understand', 'foundational', 'unistructural', 2),
+  'hearth:bridge': t(['perspective', 'culture', 'values'], [P], 3, 'analyse', 'integration', 'relational', 3),
+  'hearth:glow': t(['certainty', 'responsibility'], [E], 2, 'evaluate', 'learning-to-learn', 'multistructural', 2),
+  'hearth:unfinished': t(['certainty', 'explanation'], [M], 1, 'understand', 'learning-to-learn', 'unistructural', 2),
+  'hearth:puns': t(['interpretation', 'truth'], [S], 1, 'create', 'human', 'multistructural', 3),
+  'hearth:source': t(['evidence', 'justification', 'perspective'], [M, P], 3, 'evaluate', 'integration', 'relational', 3),
+  'hearth:harrowmere': t(['responsibility', 'values', 'power'], [E], 4, 'evaluate', 'caring', 'extended', 3),
+  'hearth:farewell': t(['values', 'responsibility'], [E], 1, 'remember', 'caring', 'unistructural', 2),
+  // Field games (src/domain/fieldgames.ts)
+  'field:doors': t(['certainty', 'evidence', 'justification'], [M], 3, 'analyse', 'application', 'relational', 8),
+  'field:guests': t(['certainty', 'explanation'], [M, S], 2, 'apply', 'foundational', 'multistructural', 6),
+  'field:slate': t(['interpretation', 'culture', 'objectivity'], [S, M], 3, 'evaluate', 'integration', 'relational', 6),
+  'field:word': t(['power', 'perspective', 'values'], [P, E], 4, 'create', 'human', 'extended', 8),
+  'field:bones': t(['evidence', 'certainty'], [M], 2, 'apply', 'application', 'multistructural', 6),
+  'field:ballad': t(['truth', 'evidence', 'power'], [E, M], 2, 'evaluate', 'learning-to-learn', 'multistructural', 5),
+  'field:stars': t(['interpretation', 'culture', 'perspective', 'objectivity'], [P, S, M], 3, 'create', 'integration', 'relational', 7),
+  'field:dig': t(['evidence', 'responsibility', 'values', 'certainty'], [M, E], 3, 'apply', 'caring', 'relational', 7),
+  'field:trade': t(['values', 'justification', 'perspective'], [P, S], 2, 'analyse', 'human', 'multistructural', 6),
+  // Loyalty missions (src/domain/loyalty.ts)
+  'loyalty:sefa': t(['culture', 'truth', 'values'], [P, E], 4, 'evaluate', 'caring', 'extended', 10),
+  'loyalty:kip': t(['evidence', 'justification', 'truth'], [M], 3, 'analyse', 'integration', 'relational', 10),
+  'loyalty:hesper': t(['responsibility', 'culture', 'justification'], [E, P], 3, 'evaluate', 'caring', 'relational', 10),
+  'loyalty:rook': t(['evidence', 'objectivity', 'responsibility'], [M, E], 4, 'evaluate', 'learning-to-learn', 'extended', 10),
+};
+
+/**
+ * Framework parts implied by an objective's concepts, for objectives that do not list them yet.
+ * A designer's rule of thumb, not a definition: methods and tools for how we check, perspectives
+ * for who sees what, ethics for what we owe, scope for what a claim covers and its limits.
+ */
+export function frameworkFromConcepts(concepts: readonly Concept[]): FrameworkPart[] {
+  const out = new Set<FrameworkPart>();
+  for (const c of concepts) {
+    if (['evidence', 'objectivity', 'explanation', 'justification'].includes(c)) out.add(M);
+    if (['perspective', 'culture', 'interpretation'].includes(c)) out.add(P);
+    if (['values', 'responsibility', 'power'].includes(c)) out.add(E);
+    if (['truth', 'certainty'].includes(c)) out.add(S);
+  }
+  return FRAMEWORK.filter((f) => out.has(f));
+}
