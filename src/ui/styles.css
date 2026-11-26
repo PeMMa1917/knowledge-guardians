@@ -233,7 +233,7 @@ legend { color: var(--gold); padding: 0 0.4em; }
 .tabs { display: flex; gap: 0.3em; flex-wrap: wrap; margin-bottom: 0.8em; }
 .tabs [aria-selected='true'] { border-color: var(--cyan); color: var(--cyan); }
 .journal li, .notes li, .awards li, .sources-list li { margin: 0.5em 0; }
-.specimen-bibliography a { overflow-wrap: anywhere; }
+.specimen-bibliography li { overflow-wrap: anywhere; }
 .diary-tools { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .diary-export { max-width: 27rem; }
 .diary-export [role='status']:empty { display: none; }
