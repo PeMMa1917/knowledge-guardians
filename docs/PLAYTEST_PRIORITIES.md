@@ -2,7 +2,7 @@
 
 Knowledge Guardians has fifteen playable chapters and a post-Council return. The next round should measure what students encounter, what they can carry into a new setting, and which story choices they want to pursue. [Browser checks](BROWSER_CHECKS.md) · [Learning design](LEARNING_DESIGN.md)
 
-All six modeled itineraries meet the TOK opportunity floor in their first 20- and 30-minute windows. Only two of 52 executable chapter traces sustain the floor across every estimated 30-minute window. The authored micro-skill links cover 348 of the 803 supplied rows, and 50 can reach Practised. Measure the duration of long explorations, then check whether players carry the earlier method into a later world with a different task. [Learning audit](LEARNING_DESIGN.md#the-20--and-30-minute-opportunity-floor) · [Micro-skills audit](TOK_MICRO_SKILLS.md)
+Across 57 executable chapter routes, 38 reach six concepts, two framework parts, an area of knowledge and an optional theme in the first estimated 30 minutes. Twenty-two sustain that floor in every 30-minute window. In the 20-minute test, the counts are 28 and six. The micro-skill audit links 349 of the 803 supplied definitions to 643 playable uses. Students can reach Practised for 51 skills. Time real sessions on the routes with gaps and ask students to use the same method on an unfamiliar object. [Learning audit](LEARNING_DESIGN.md#the-20--and-30-minute-opportunity-floor) · [Micro-skills audit](TOK_MICRO_SKILLS.md)
 
 | Priority | Work to do | How to check the improvement |
 | --- | --- | --- |
@@ -20,3 +20,12 @@ The current subject audit lists 23 Language ab initio objectives, seven World re
 Record the build, operating system, browser engine and version, input method, and whether the test used physical hardware or emulation. Include startup, settings, movement and navigation, guidance, interruption and save recovery, and the journal or progress export on the relevant platforms. Record the specific fixture, observed outcome and any untested combinations. [Browser checks](BROWSER_CHECKS.md)
 
 Use the platform evidence to prepare the requested persona review after the game reaches readiness. Give every role its own observations, concerns, proposed changes and a replayable stress scenario. Keep proposed hidden humor optional and link it to a believable scene. Keep common fixes and disagreements visible, and identify the source of evidence for each view. Leave testimony from a specific community, institution or participant attributed to the people who actually supplied it.
+
+
+## Choices to watch in the next classroom playtest
+
+- Watch where players first follow the blue thread. Can they explain why two witnesses might leave the same mark for different reasons? At the recheck, ask whom the public rail or private desk allowed to reply.
+- Let players try the parcel counter with either keeper. Listen for a distinction between finding a matching tag and identifying the owner. Check what a player changes after seeing the line at the stair.
+- Invite one student to share a single local score and another to keep their alias private. Check whether each can tell what the recipient gets and what the withdrawal file does. A count of recorded practice measures participation. Evidence of learning needs an unfamiliar task.
+- Observe a student exporting one week of science entries and a personal reflection. Verify that their intended reader gets the chosen entries, that the student can withhold private writing, and that their own accents, line breaks and source links survive.
+- Compare free exploration with guided play in a class using screen readers, switch input, touch and high zoom. A hint can remove a control barrier while leaving both story choices available.
