@@ -35,6 +35,7 @@ export interface UIApi {
   openSeaChart(chart: string): void;
   openStageRehearsal(): void;
   openMarketScale(): void;
+  openWaterGate(): void;
   openTalents(atWaystone?: boolean): void;
   openLedger(): void;
   openClue(id: string): void;

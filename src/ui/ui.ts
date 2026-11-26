@@ -5,6 +5,7 @@ import { compareCopy } from '../domain/copyComparison';
 import { seaChart } from '../domain/seaCharts';
 import { STAGE_CUES, stageRehearsal, type StageCue } from '../domain/stageRehearsal';
 import { MARKET_BASES, marketComparison, marketOffersWithin, type MarketBasis } from '../domain/marketScale';
+import { WATER_SETTINGS, waterTrial, type WaterCondition, type WaterSetting } from '../domain/waterGate';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -3231,6 +3232,61 @@ export class UI implements UIApi {
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
+  openWaterGate(): void {
+    const controller = ctx.controller;
+    const condition: WaterCondition = controller.state.flags['water.repaired'] === true ? 'repaired' : 'drought';
+    const labels: Record<WaterSetting, string> = { fields: 'Open toward fields', split: 'Split the flow', channel: 'Open toward the lower channel' };
+    const picture = h('canvas', { class: 'mark', width: 184, height: 96, 'aria-hidden': 'true' });
+    const controls = h('div', { class: 'row wrap', role: 'group', 'aria-label': 'Gate lever position' });
+    const readings = h('div', { 'aria-live': 'polite' });
+    const paint = (flow?: ReturnType<typeof waterTrial>) => {
+      const g = picture.getContext('2d');
+      if (!g) return;
+      g.fillStyle = '#223b45'; g.fillRect(0, 0, 184, 96);
+      g.fillStyle = '#654e3d'; g.fillRect(0, 3, 184, 23); g.fillRect(72, 42, 40, 51);
+      g.fillStyle = '#745c45'; g.fillRect(3, 57, 56, 36); g.fillRect(127, 57, 54, 36);
+      g.fillStyle = '#527258';
+      for (let x = 7; x < 57; x += 8) g.fillRect(x, 63, 3, 25);
+      g.fillStyle = '#4f6361';
+      for (let x = 133; x < 175; x += 7) g.fillRect(x, 61, 3, 28);
+      const stream = (x: number, y: number, w: number, height: number) => {
+        g.fillStyle = '#398ba3'; g.fillRect(x, y, w, height);
+        g.fillStyle = '#62b5c4'; g.fillRect(x, y, w, 2);
+      };
+      stream(83, 0, 18, 45);
+      g.fillStyle = '#bba883'; g.fillRect(73, 28, 38, 7);
+      g.fillStyle = '#453b37'; g.fillRect(89, 23, 6, 18);
+      if (!flow) return;
+      stream(33, 42, 58, flow.farm + 3);
+      stream(33, 46, flow.farm + 3, 18);
+      stream(93, 42, 54, flow.river + 3);
+      stream(145, 45, flow.river + 3, 36);
+      if (flow.leak) stream(89, 45, flow.leak + 2, 28);
+    };
+    for (const setting of WATER_SETTINGS) {
+      controls.append(h('button', { type: 'button', 'data-setting': setting, 'aria-pressed': 'false', onclick: () => {
+        const events = controller.dispatch({ type: 'RunWaterTrial', setting });
+        if (events.some((event) => event.kind === 'error')) return;
+        for (const button of controls.querySelectorAll('button')) {
+          button.setAttribute('aria-pressed', String(button.dataset.setting === setting));
+        }
+        const flow = waterTrial(condition, setting);
+        paint(flow);
+        readings.replaceChildren(h('p', {}, h('strong', {}, `${flow.incoming} buckets in`),
+          ` · ${flow.farm} to the fields · ${flow.river} to the lower channel · ${flow.leak} lost at the gate`));
+        if (condition === 'repaired' && controller.state.flags[`water.trial.drought.${setting}`] === true) {
+          const before = waterTrial('drought', setting);
+          readings.append(h('p', {}, `Before repair at this setting: ${before.farm} to the fields, ${before.river} to the lower channel, ${before.leak} lost at the gate.`));
+        }
+      } }, labels[setting]));
+    }
+    paint();
+    this.openModal('water-gate', 'Trial gate', this.closeBtn(), h('h2', {}, 'Trial gate'),
+      h('p', {}, condition === 'drought' ? 'Drought trial. Twelve buckets enter the model. Move the lever and follow where the water goes.' :
+        'After the repair. Run the gate with the same twelve buckets entering the model.'),
+      picture, controls, readings);
   }
 
   openMarketScale(): void {

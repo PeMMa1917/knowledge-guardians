@@ -2502,6 +2502,221 @@
    "speaker": "nile-marek",
    "historicalLabel": "fictional-world",
    "text": "The mine map shows roads and rock. Its date concerns the making of the map. The museum links much of the writing to Amunnakht. The other side of the slip points to the separate workmen’s record."
+  },
+  {
+   "id": "nile.lamp.start",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "I left a practice slip pinned beside two lamp marks. A visitor counted two grooves and says a third was rubbed away. A reader says the third is shallow. The pins will keep the slip in place while you change the light.",
+   "options": [
+    {
+     "text": "Look down with the lamp above.",
+     "next": "nile.lamp.above",
+     "if": {
+      "all": [
+       {
+        "card": "card.nile.strike"
+       },
+       {
+        "not": {
+         "flagSet": "nile.lamp.phase"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.lamp.phase",
+       "value": "above"
+      }
+     ]
+    },
+    {
+     "text": "Move the lamp to the side.",
+     "next": "nile.lamp.side",
+     "if": {
+      "flag": "nile.lamp.phase",
+      "eq": "above"
+     },
+     "effects": [
+      {
+       "setFlag": "nile.lamp.phase",
+       "value": "side"
+      }
+     ]
+    },
+    {
+     "text": "Return the lamp above the same slip.",
+     "next": "nile.lamp.repeat",
+     "if": {
+      "flag": "nile.lamp.phase",
+      "eq": "side"
+     },
+     "effects": [
+      {
+       "setFlag": "nile.lamp.phase",
+       "value": "repeat"
+      }
+     ]
+    },
+    {
+     "text": "Set out the two readings together.",
+     "next": "nile.lamp.repeat",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.lamp.phase",
+        "eq": "repeat"
+       },
+       {
+        "not": {
+         "flagSet": "nile.lamp.placement"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Read the desk guide again.",
+     "next": "nile.lamp.desk",
+     "if": {
+      "flag": "nile.lamp.placement",
+      "eq": "desk"
+     }
+    },
+    {
+     "text": "Read the paired lamp views again.",
+     "next": "nile.lamp.copy",
+     "if": {
+      "flag": "nile.lamp.placement",
+      "eq": "copy"
+     }
+    },
+    {
+     "text": "Leave the slip pinned down."
+    }
+   ]
+  },
+  {
+   "id": "nile.lamp.above",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "Two grooves are clear from here. If a third were rubbed away, this view would look just the same. Change the lamp position and leave the pins alone.",
+   "options": [
+    {
+     "text": "Move the lamp to the side.",
+     "next": "nile.lamp.side",
+     "if": {
+      "flag": "nile.lamp.phase",
+      "eq": "above"
+     },
+     "effects": [
+      {
+       "setFlag": "nile.lamp.phase",
+       "value": "side"
+      }
+     ]
+    },
+    {
+     "text": "Leave the lamp above for now."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "nile.lamp.side",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "A third groove comes into view at the edge of its shadow. The slip and pins stayed put. Move the lamp back to see whether the first view returns.",
+   "options": [
+    {
+     "text": "Return the lamp above the same slip.",
+     "next": "nile.lamp.repeat",
+     "if": {
+      "flag": "nile.lamp.phase",
+      "eq": "side"
+     },
+     "effects": [
+      {
+       "setFlag": "nile.lamp.phase",
+       "value": "repeat"
+      }
+     ]
+    },
+    {
+     "text": "Leave the lamp to the side for now."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "nile.lamp.repeat",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "Two grooves show from above again. The angle changed what you could count. The receiving team uses grooves to count boxes. We read aloud in turns here. I cut these to show where the next reader takes over. Keep that purpose beside the two views.",
+   "options": [
+    {
+     "text": "Leave a guide beside the lamp for readers who want to try it.",
+     "next": "nile.lamp.desk",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.lamp.phase",
+        "eq": "repeat"
+       },
+       {
+        "not": {
+         "flagSet": "nile.lamp.placement"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.lamp.placement",
+       "value": "desk"
+      }
+     ]
+    },
+    {
+     "text": "Send the paired view notes to the lending bench.",
+     "next": "nile.lamp.copy",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.lamp.phase",
+        "eq": "repeat"
+       },
+       {
+        "not": {
+         "flagSet": "nile.lamp.placement"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.lamp.placement",
+       "value": "copy"
+      }
+     ]
+    },
+    {
+     "text": "Leave the readings ready for later."
+    }
+   ]
+  },
+  {
+   "id": "nile.lamp.desk",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "A reader at the desk moves the lamp and sees the third groove return. The guide tells them where to put it back and why this particular slip carries pauses."
+  },
+  {
+   "id": "nile.lamp.copy",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "Someone at the lending bench opens both views together. They can tell which lamp position produced each count. The note names this practice slip so the receiving team’s box counts stay in their own record."
   }
  ],
  "chronicle": [
@@ -3100,6 +3315,54 @@
    "objective": "nile.name.file",
    "depth": 4,
    "text": "Choose an index or two slips. Keep both records and the different limits on what a reader may conclude."
+  },
+  {
+   "id": "h.nile.lamp.compare.1",
+   "objective": "nile.lamp.compare",
+   "depth": 1,
+   "text": "A visitor and a reader disagree about a groove."
+  },
+  {
+   "id": "h.nile.lamp.compare.2",
+   "objective": "nile.lamp.compare",
+   "depth": 2,
+   "text": "Find the pinned practice slip in the Workmen’s Room."
+  },
+  {
+   "id": "h.nile.lamp.compare.3",
+   "objective": "nile.lamp.compare",
+   "depth": 3,
+   "text": "Move the lamp without moving the slip. Compare what you can see from above and the side."
+  },
+  {
+   "id": "h.nile.lamp.compare.4",
+   "objective": "nile.lamp.compare",
+   "depth": 4,
+   "text": "Read the two grooves from above. Move the lamp to the side to reveal the third, then return the lamp above the slip."
+  },
+  {
+   "id": "h.nile.lamp.file.1",
+   "objective": "nile.lamp.file",
+   "depth": 1,
+   "text": "Keep the lighting and the count together."
+  },
+  {
+   "id": "h.nile.lamp.file.2",
+   "objective": "nile.lamp.file",
+   "depth": 2,
+   "text": "Leila’s pauses and the receiving team’s tallies serve different purposes."
+  },
+  {
+   "id": "h.nile.lamp.file.3",
+   "objective": "nile.lamp.file",
+   "depth": 3,
+   "text": "Use the lamp’s note choices after you return it above the slip."
+  },
+  {
+   "id": "h.nile.lamp.file.4",
+   "objective": "nile.lamp.file",
+   "depth": 4,
+   "text": "Leave a guide at the lamp for someone who can repeat it or a paired note at the lending bench for readers farther away."
   }
  ],
  "criteria": [
@@ -3169,6 +3432,11 @@
    "id": "j.nile.name",
    "title": "A name in two places",
    "text": "The workmen’s papyrus records events. The Mine Map describes part of a place and links much of its writing to Amunnakht. The name helped me find two sources. I kept each claim with the record that could support it."
+  },
+  {
+   "id": "j.nile.lamp",
+   "title": "The third groove",
+   "text": "The same practice slip showed two grooves from above and three when I moved the lamp to the side. Moving it back restored the first view. Leila’s marks tell a reader when to pause. The receiving desk uses its own cuts to count boxes."
   }
  ],
  "portfolio": [
@@ -4311,6 +4579,98 @@
      "onComplete": [
       {
        "journal": "j.nile.name"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH2-R12",
+   "world": "WORLD-03",
+   "title": "The Third Groove",
+   "knowledgeQuestion": "How can we check whether a mark is missing or hard to see?",
+   "available": {
+    "all": [
+     {
+      "flag": "nile.arrived",
+      "eq": true
+     },
+     {
+      "card": "card.nile.strike"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "nile.lamp.compare",
+     "title": "Change the light on Leila’s pinned practice slip and then restore it.",
+     "done": {
+      "flag": "nile.lamp.phase",
+      "eq": "repeat"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "explanation",
+       "certainty",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "ART"
+      ],
+      "subjects": [
+       "physics",
+       "visual-arts"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-07"
+     ]
+    },
+    {
+     "id": "nile.lamp.file",
+     "title": "Put the light readings and the purpose of the marks where a reader can use them.",
+     "done": {
+      "flagSet": "nile.lamp.placement"
+     },
+     "visible": {
+      "objective": "nile.lamp.compare"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "culture",
+       "interpretation",
+       "responsibility"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "anthropology"
+      ]
+     },
+     "skills": [
+      "SK-ICU-18",
+      "SK-THK-14"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.nile.lamp"
       }
      ]
     }

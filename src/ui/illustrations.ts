@@ -558,6 +558,23 @@ DRAW['nile.slip'] = [16, 24, (g) => { R(g, '#664932', 4, 6, 8, 14); paper(g, 2, 
 
 DRAW['nile.stone'] = [16, 24, (g) => { smallTable(g); R(g, '#644d4d', 2, 7, 12, 9); R(g, '#9c7970', 3, 5, 9, 8); R(g, '#c5a79a', 4, 5, 6, 2); R(g, '#745654', 5, 8, 4, 1); R(g, '#745654', 6, 10, 5, 1); }];
 
+function drawLampSlip(g: Ctx, side: boolean) {
+  smallTable(g);
+  paper(g, 3, 5, 11, 10);
+  const lampX = side ? 0 : 6;
+  const lampY = side ? 8 : 1;
+  R(g, '#523d38', lampX, lampY + 2, 4, 2);
+  R(g, '#ffcf6a', lampX + 1, lampY, 2, 2);
+  R(g, '#7a533d', 5, 7, 7, 1);
+  R(g, '#7a533d', 5, 9, 7, 1);
+  if (side) R(g, '#7a533d', 5, 11, 7, 1);
+  R(g, '#a98f6d', 3, 5, 1, 2);
+  R(g, '#a98f6d', 13, 13, 1, 2);
+}
+
+DRAW['nile.lamp-above'] = [16, 24, (g) => drawLampSlip(g, false)];
+DRAW['nile.lamp-side'] = [16, 24, (g) => drawLampSlip(g, true)];
+
 // Cold Store props and documentary diagrams. No figures of people or remains.
 DRAW['preserved.door'] = [16, 24, (g) => {
   R(g, '#182a36', 0, 4, 16, 20);
@@ -1012,6 +1029,42 @@ DRAW['market.window'] = [24, 24, (g) => {
   R(g, '#9a765d', 5, 10, 14, 1);
   R(g, '#806653', 11, 6, 1, 6);
 }];
+
+// Water Commons posts and the paper records pinned in the council yard.
+DRAW['water.waypost'] = [16, 24, (g) => {
+  R(g, '#6e6255', 6, 6, 4, 17);
+  R(g, '#466e77', 1, 5, 14, 10);
+  R(g, '#8cb3ad', 2, 5, 12, 2);
+  R(g, '#bfd0b7', 3, 9, 5, 1);
+  R(g, '#bfd0b7', 7, 11, 6, 1);
+}];
+function waterLever(g: Ctx, checked: boolean) {
+  pedestal(g, 1, 15, 14);
+  R(g, '#604e4b', 4, 12, 8, 3);
+  R(g, '#53646a', 6, 7, 4, 6);
+  R(g, '#a98263', 7, 4, 2, 7);
+  R(g, '#d1b27e', 5, 3, 6, 2);
+  R(g, checked ? '#8ab39d' : '#c28570', 10, 11, 3, 2);
+}
+DRAW['water.lever'] = [16, 24, (g) => waterLever(g, false)];
+DRAW['water.lever-repaired'] = [16, 24, (g) => waterLever(g, true)];
+DRAW['water.notice'] = [16, 24, (g) => {
+  R(g, '#645c51', 4, 6, 8, 17);
+  paper(g, 2, 4, 12, 11);
+  R(g, '#6d9b96', 4, 6, 8, 2);
+  R(g, '#7f765b', 4, 10, 7, 1);
+  R(g, '#7f765b', 4, 12, 5, 1);
+}];
+function allocationRecord(g: Ctx, dividingLine: number) {
+  smallTable(g);
+  paper(g, 1, 4, 14, 11);
+  R(g, '#a6ac72', 3, 7, dividingLine, 3);
+  R(g, '#78a3a8', 3 + dividingLine, 7, 10 - dividingLine, 3);
+  R(g, '#88735a', 3, 12, 10, 1);
+}
+DRAW['water.fields'] = [16, 24, (g) => allocationRecord(g, 7)];
+DRAW['water.split'] = [16, 24, (g) => allocationRecord(g, 5)];
+DRAW['water.channel'] = [16, 24, (g) => allocationRecord(g, 3)];
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

@@ -113,3 +113,52 @@ describe('The Two-Bell Order', () => {
     expect(d.s.flags['copy.started']).toBeUndefined();
   });
 });
+
+describe('A Dry Step for the Washhouse', () => {
+  function arrived() {
+    const d = new Driver();
+    d.s.mapId = EMBERFORD.id;
+    return d;
+  }
+
+  it('can be started on arrival and uses both downstream readings for a repair order', () => {
+    const d = arrived();
+    expect(visible(d, 'washhouse-intake')).toBe(true);
+    expect(visible(d, 'washhouse-tail')).toBe(false);
+    expect(visible(d, 'washhouse-screen')).toBe(false);
+    use(d, 'washhouse-intake', 'Leave the reading');
+    expect(d.e.activeMissions(d.s).some(({ id }) => id === 'KG-CH1-S08')).toBe(false);
+    use(d, 'washhouse-intake', 'Clip the head-peg reading');
+    use(d, 'washhouse-screen', 'Follow the little side run');
+    expect(visible(d, 'washhouse-board')).toBe(false);
+    use(d, 'washhouse-tail', 'Clip the tail-peg reading');
+    expect(visible(d, 'washhouse-board')).toBe(true);
+    expect(d.done('washhouse.o.trace')).toBe(true);
+    expect(visible(d, 'ferry-road')).toBe(false);
+    expect(d.s.flags['heard.corvan']).toBeUndefined();
+  });
+
+  it.each([
+    ['clear', 'Clear the leaves', 'Mark flow restored', 'step', /reached the tray/],
+    ['step', 'Open the side crossing', 'Mark the crossing open', 'clear', /tray repair/],
+  ])('requires the same upstream mark after choosing %s and records its own downstream effect', (route, order, result, other, note) => {
+    const d = arrived();
+    const credit = { ...d.p.credit };
+    use(d, 'washhouse-intake', 'Clip the head-peg reading');
+    use(d, 'washhouse-tail', 'Clip the tail-peg reading');
+    use(d, 'washhouse-screen', 'Follow the little side run');
+    use(d, 'washhouse-board', order);
+    expect(visible(d, `washhouse-${route}-check`)).toBe(false);
+    use(d, 'washhouse-head-again', 'Keep the second head-peg reading');
+    expect(visible(d, `washhouse-${other}-check`)).toBe(false);
+    use(d, `washhouse-${route}-check`, result);
+    expect(d.done('washhouse.o.recheck')).toBe(true);
+    expect(d.s.flags['washhouse.order']).toBe(route);
+    expect(visible(d, `washhouse-${route}-note`)).toBe(true);
+    expect(visible(d, `washhouse-${other}-note`)).toBe(false);
+    expect(prop(`washhouse-${route}-note`).text).toMatch(note);
+    expect(d.s.journal).toContain('j.washhouse.recheck');
+    expect(d.p.credit).toEqual(credit);
+    expect(d.s.flags['well.shared']).toBeUndefined();
+  });
+});

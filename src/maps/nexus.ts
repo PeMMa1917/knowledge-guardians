@@ -12,6 +12,9 @@ import { sceneProp } from './sceneProps';
 const W = 40, H = 20;
 const strokeRequested: Condition = { flag: 'nexus.stroke.requested', eq: true };
 const strokeUnposted: Condition = { not: { flagSet: 'nexus.stroke.display' } };
+const guideUnhung: Condition = { not: { flagSet: 'nexus.guide.layout' } };
+const guideTrial: Condition = { all: [{ flag: 'nexus.guide.started', eq: true }, guideUnhung] };
+const guideSides: Condition = { flag: 'nexus.guide.layout', eq: 'sides' };
 
 const ferryShelf: [state: string, art: string, visible: Condition][] = [
   ['shelf', 'board-stand', { not: { flagSet: 'nexus.ferry.packet' } }],
@@ -93,6 +96,22 @@ export const NEXUS: MapDef = {
     { id: 'nexus-arrival-reference', kind: 'scene', x: 11, y: 17, w: 1, h: 1, walkThrough: true,
       label: 'the numbered slip by the entrance plan', art: 'nile.map', node: 'cold.arrival-reference',
       visibleIf: { flag: 'nexus.arrival.note', eq: 'reference' } },
+    { id: 'nexus-guide-start', kind: 'scene', x: 9, y: 17, w: 1, h: 1, walkThrough: true,
+      label: 'the spare arrow by the entrance', art: 'signpost', node: 'nexus.guide.start',
+      visibleIf: { not: { flag: 'nexus.guide.started', eq: true } } },
+    { id: 'nexus-guide-door-trial', kind: 'scene', x: 8, y: 13, w: 1, h: 1, walkThrough: true,
+      label: 'the entrance guide’s place at the turn', art: 'board-stand', node: 'nexus.guide.door-trial', visibleIf: guideTrial },
+    { id: 'nexus-guide-case-trial', kind: 'scene', x: 16, y: 13, w: 1, h: 1, walkThrough: true,
+      label: 'the clerk’s place at the turn', art: 'board-stand', node: 'nexus.guide.case-trial', visibleIf: guideTrial },
+    { id: 'nexus-guide-mount', kind: 'scene', x: 12, y: 13, w: 1, h: 1, walkThrough: true,
+      label: 'the guide’s stand at the turn', art: 'signpost', node: 'nexus.guide.mount', visibleIf: guideTrial },
+    { id: 'nexus-guide-landmark', kind: 'scene', x: 12, y: 13, w: 1, h: 1, walkThrough: true,
+      label: 'the shared sketch of the three cases', art: 'nile.map', node: 'nexus.guide.landmark',
+      visibleIf: { flag: 'nexus.guide.layout', eq: 'landmark' } },
+    { id: 'nexus-guide-door-board', kind: 'scene', x: 8, y: 13, w: 1, h: 1, walkThrough: true,
+      label: 'the direction for visitors entering the hall', art: 'coast.signal', node: 'nexus.guide.door-board', visibleIf: guideSides },
+    { id: 'nexus-guide-case-board', kind: 'scene', x: 16, y: 13, w: 1, h: 1, walkThrough: true,
+      label: 'the direction for visitors coming back from the desk', art: 'coast.signal', node: 'nexus.guide.case-board', visibleIf: guideSides },
     ...sceneProp('nexus.entrance-guide', 13, 17, 'the entrance guide stand', 'board-stand',
       { record: 'ledger', use: 'nile.slip' }),
     ...sceneProp('nexus.loan-slip', 11, 8, 'the model loan slip', 'nile.slip',
@@ -169,6 +188,9 @@ export const NEXUS: MapDef = {
     { id: 'market-door', kind: 'door', x: 22, y: 10, w: 1, h: 1, label: 'the passage to the Market of Measures', art: 'market.waypost',
       walkThrough: true, visibleIf: { objective: 'stage.finish' }, flag: 'market.arrived',
       to: { map: 'market.square', x: 17, y: 19 } },
+    { id: 'water-door', kind: 'door', x: 25, y: 11, w: 1, h: 1, label: 'the passage to the Water Commons', art: 'water.waypost',
+      walkThrough: true, visibleIf: { objective: 'market.finish' }, flag: 'water.arrived',
+      to: { map: 'water.gatehouse', x: 12, y: 12 } },
     { id: 'preserved-return-desk', kind: 'sign', x: 37, y: 16, w: 1, h: 1, label: 'the Cold Store reference copy', art: 'ledger', walkThrough: true,
       text: 'The docket points to the separate royal and coastal records. One line is left open for the transfer we cannot trace.',
       visibleIf: { flag: 'preserved.reply', eq: 'desk' } },

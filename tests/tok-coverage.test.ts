@@ -6,6 +6,7 @@ import { readMetalSample } from '../src/domain/metalSample';
 import { check } from '../src/domain/rules';
 import { seaChart } from '../src/domain/seaCharts';
 import { stageRehearsal, type StageCue } from '../src/domain/stageRehearsal';
+import { waterTrial, type WaterCondition, type WaterSetting } from '../src/domain/waterGate';
 import { MAPS } from '../src/maps';
 import { coverageGaps, singleActionDimensions, type TimedEncounter } from '../tools/tok-coverage';
 import { Driver } from './driver';
@@ -64,10 +65,11 @@ function watchForest(d: Driver, site: string, window: ForestWindow) {
 
 // Times below are author estimates of when these actions could finish. This
 // fixture exercises entry conditions and domain commands, not walking or reading speed.
-function nexusToEmberford(style: 'main' | 'explore' | 'records'): Route {
+function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide'): Route {
   const route = new Route();
   const explore = style !== 'main';
   const records = style === 'records';
+  const guide = style === 'guide';
   const arrivalExtra = explore ? 1 : 0;
   const arrival = records ? 'Leave a stand number with the copied claim, then find that stand on the plan'
     : explore ? 'Clip a blank page beside the archive’s words and open it for a second view'
@@ -83,26 +85,41 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records'): Route {
     d.talk('warden-ise', 'How can all three');
     expect(d.done('m01.o1.look')).toBe(true);
   });
-  if (explore) route.at(5 + arrivalExtra, 'Direct visitors toward the practical pen', ['scope', 'perspective'], useProp('nexus.entrance-guide', 'use'));
-  route.at(9 + arrivalExtra, 'Compare the patent, model and pen dates', ['scope', 'evidence', 'certainty', 'interpretation', 'methods-and-tools'], (d) => {
+  if (guide) {
+    route.at(6, 'Check the same arrow with readers approaching from the door and the cases', [
+      'interpretation', 'perspective', 'perspectives', 'explanation', 'objectivity', 'scope', 'methods-and-tools',
+    ], (d) => {
+      walkScene(d, 'nexus-guide-start', 'nexus.guide.accepted');
+      walkScene(d, 'nexus-guide-door-trial', 'nexus.guide.door-seen');
+      walkScene(d, 'nexus-guide-case-trial', 'nexus.guide.case-seen');
+    });
+    route.at(8, 'Use a shared landmark so visitors can follow the sign regardless of their approach', ['values', 'responsibility', 'justification', 'ethics'], (d) => {
+      walkScene(d, 'nexus-guide-mount', 'nexus.guide.landmark-set');
+      walkScene(d, 'nexus-guide-landmark', 'nexus.guide.landmark-read');
+      expect(d.done('nexus.guide.helped')).toBe(true);
+    });
+  }
+  const openingMinutes = arrivalExtra + (guide ? 4 : 0);
+  if (explore) route.at(5 + openingMinutes, 'Direct visitors toward the practical pen', ['scope', 'perspective'], useProp('nexus.entrance-guide', 'use'));
+  route.at(9 + openingMinutes, 'Compare the patent, model and pen dates', ['scope', 'evidence', 'certainty', 'interpretation', 'methods-and-tools'], (d) => {
     for (const exhibit of ['OBJ-001-A', 'OBJ-001-B', 'OBJ-001-C']) d.run({ type: 'InspectExhibit', exhibit });
     for (const exhibit of ['OBJ-001-A', 'OBJ-001-C']) d.run({ type: 'UseLens', exhibit });
     expect(d.done('m01.o3.lens')).toBe(true);
   });
-  if (explore) route.at(12 + arrivalExtra, 'Send competing translations back together', ['culture', 'interpretation', 'perspectives'], useProp('nexus.translation-slip', 'gloss'));
+  if (explore) route.at(12 + openingMinutes, 'Send competing translations back together', ['culture', 'interpretation', 'perspectives'], useProp('nexus.translation-slip', 'gloss'));
   if (records) {
-    route.at(15 + arrivalExtra, 'Check the model date and turn over the curator’s seal to see what it actually certifies', ['evidence', 'power', 'certainty', 'scope', 'methods-and-tools'], (d) => {
+    route.at(15 + openingMinutes, 'Check the model date and turn over the curator’s seal to see what it actually certifies', ['evidence', 'power', 'certainty', 'scope', 'methods-and-tools'], (d) => {
       d.run({ type: 'UseLens', exhibit: 'OBJ-001-B' });
       d.talk('curator-dace', 'Why do you favour');
       d.talk('curator-dace', 'Turn over the seal', 'Lift the backing', 'Set a card beside the seal');
     });
-    route.at(19 + arrivalExtra, 'Put the model’s build date beside the narrower handling seal and trace it at the case', ['truth', 'responsibility', 'scope', 'justification', 'ethics'], (d) => {
+    route.at(19 + openingMinutes, 'Put the model’s build date beside the narrower handling seal and trace it at the case', ['truth', 'responsibility', 'scope', 'justification', 'ethics'], (d) => {
       d.run({ type: 'BuildLabel', kit: 'nexus.handling-seal', subject: 'model', criterion: 'paired', limit: 'build' });
       walkScene(d, 'nexus-seal-case', 'nexus.seal.paired-read');
       expect(d.done('nexus.seal.checked')).toBe(true);
     });
   }
-  const extra = arrivalExtra + (records ? 7 : 0);
+  const extra = openingMinutes + (records ? 7 : 0);
   route.at(16 + extra, 'Compare two mark strips using the same pen', ['objectivity', 'explanation', 'methods-and-tools'], (d) => {
     d.run({ type: 'RunSimulation', pen: 'loud-model', surface: 'paper' });
     d.run({ type: 'RunSimulation', pen: 'loud-model', surface: 'leather' });
@@ -129,21 +146,46 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records'): Route {
     d.s.mapId = portal.to!.map;
     d.run({ type: 'Reach', zone: 'emberford' });
   });
-  route.at(33 + extra, 'Question a seller about his blade and inspect the object', ['power', 'evidence'], (d) => {
+  if (guide) {
+    route.at(37, 'Follow the washhouse water from the head peg to the dry tray and the clogged screen', [
+      'evidence', 'explanation', 'scope', 'methods-and-tools',
+    ], (d) => {
+      walkScene(d, 'washhouse-intake', 'washhouse.intake.note');
+      walkScene(d, 'washhouse-tail', 'washhouse.tail.note');
+      walkScene(d, 'washhouse-screen', 'washhouse.screen.note');
+      expect(d.done('washhouse.o.trace')).toBe(true);
+    });
+    route.at(40, 'Use the one available helper to make a dry crossing and leave a separate order for the tray', [
+      'perspective', 'perspectives', 'power', 'values', 'responsibility', 'ethics',
+    ], (d) => {
+      walkScene(d, 'washhouse-board', 'washhouse.order.step');
+      expect(d.done('washhouse.o.order')).toBe(true);
+    });
+    route.at(44, 'Check the same head mark and verify that the new crossing is dry while the rinse tray still needs work', [
+      'truth', 'certainty', 'objectivity', 'justification', 'scope', 'methods-and-tools',
+    ], (d) => {
+      walkScene(d, 'washhouse-head-again', 'washhouse.head-matched');
+      walkScene(d, 'washhouse-step-check', 'washhouse.end.step');
+      expect(d.done('washhouse.o.recheck')).toBe(true);
+      readSign(d, 'washhouse-step-note');
+    });
+  }
+  const emberfordExtra = extra + (guide ? 11 : 0);
+  route.at(33 + emberfordExtra, 'Question a seller about his blade and inspect the object', ['power', 'evidence'], (d) => {
     d.talk('merchant-corvan', 'How do you know');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-003-AE' });
     expect(d.done('m02.o2.claim')).toBe(true);
   });
-  route.at(39 + extra, 'Follow the provenance thread and find where the record ends', ['certainty', 'truth', 'scope', 'methods-and-tools'], (d) => {
+  route.at(39 + emberfordExtra, 'Follow the provenance thread and find where the record ends', ['certainty', 'truth', 'scope', 'methods-and-tools'], (d) => {
     for (const node of ['stall', 'ledger', 'workshop']) d.run({ type: 'FollowThread', thread: 'blade', node });
     expect(d.done('m02.o3.thread')).toBe(true);
   });
   if (explore) {
-    route.at(44 + extra, 'Arrange a repeat water reading from a fixed mark', ['objectivity', 'explanation', 'methods-and-tools'], useProp('emberford.gauge', 'repeat'));
-    route.at(49 + extra, 'Keep both weights and loaf counts for different readers', ['perspective', 'values', 'perspectives'], useProp('emberford.tally', 'loaves'));
-    route.at(53 + extra, 'Hang the sketch of the safe bridge approach', ['responsibility', 'ethics'], useProp('emberford.repair-notice', 'sketch'));
-    route.at(57 + extra, 'Keep the sample separate from the untraced blade', ['interpretation', 'justification', 'scope'], useProp('emberford.pattern-order', 'record'));
-    route.at(64 + extra, 'Compare the workshop’s test sample with the seller’s blade', ['evidence', 'explanation', 'objectivity', 'methods-and-tools'], (d) => {
+    route.at(44 + emberfordExtra, 'Arrange a repeat water reading from a fixed mark', ['objectivity', 'explanation', 'methods-and-tools'], useProp('emberford.gauge', 'repeat'));
+    route.at(49 + emberfordExtra, 'Keep both weights and loaf counts for different readers', ['perspective', 'values', 'perspectives'], useProp('emberford.tally', 'loaves'));
+    route.at(53 + emberfordExtra, 'Hang the sketch of the safe bridge approach', ['responsibility', 'ethics'], useProp('emberford.repair-notice', 'sketch'));
+    route.at(57 + emberfordExtra, 'Keep the sample separate from the untraced blade', ['interpretation', 'justification', 'scope'], useProp('emberford.pattern-order', 'record'));
+    route.at(64 + emberfordExtra, 'Compare the workshop’s test sample with the seller’s blade', ['evidence', 'explanation', 'objectivity', 'methods-and-tools'], (d) => {
       d.talk('smith-hesper', 'Can I try it');
       d.talk('scholar-sefa', 'What is wootz');
       d.run({ type: 'InspectExhibit', exhibit: 'OBJ-002' });
@@ -152,7 +194,7 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records'): Route {
       d.run({ type: 'CompareAssay' });
       expect(d.done('m02.o4.forge')).toBe(true);
     });
-    route.at(71 + extra, 'Narrow the maker’s claim before the market crowd', ['truth', 'justification', 'perspective', 'perspectives'], (d) => {
+    route.at(71 + emberfordExtra, 'Narrow the maker’s claim before the market crowd', ['truth', 'justification', 'perspective', 'perspectives'], (d) => {
       d.talk('merchant-corvan', 'In the square');
       d.run({ type: 'ShowdownStart', showdown: 'corvan' });
       d.moves({ move: 'claim', claim: 'honest' }, { move: 'support', card: 'card.workshop-diagram' },
@@ -177,7 +219,7 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records'): Route {
         readSign(d, 'bell-order-pair');
       });
     }
-    const later = extra + (records ? 12 : 0);
+    const later = emberfordExtra + (records ? 12 : 0);
     route.at(76 + later, 'Compare the order record, workshop consent and Sefa’s source packet', ['certainty', 'interpretation', 'scope', 'ethics'], (d) => {
       walkScene(d, 'copy-spare', 'copy.started');
       for (const prop of ['copy-order', 'copy-consent', 'copy-anchor']) walkScene(d, prop);
@@ -192,7 +234,7 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records'): Route {
   return route;
 }
 
-type NileFirstLead = 'workers' | 'reading-window' | 'borrowed-mark' | 'royal-seal';
+type NileFirstLead = 'workers' | 'reading-window' | 'borrowed-mark' | 'lamp-slip' | 'royal-seal';
 
 function nileWorkersLead(route: Route, lead: Exclude<NileFirstLead, 'royal-seal'>): void {
   route.at(15, 'Follow the scribe’s record and decide what to put in front', ['evidence', 'power', 'perspective', 'interpretation', 'perspectives'], (d) => {
@@ -211,6 +253,14 @@ function nileWorkersLead(route: Route, lead: Exclude<NileFirstLead, 'royal-seal'
     readSign(d, 'nile-window-pair');
   });
   route.at(lead === 'reading-window' ? 21 : 18, 'Put the scribe’s name first and make space for missing voices', ['perspectives', 'ethics'], useProp('nile.reader-seat', 'slip'));
+  if (lead === 'lamp-slip') route.at(22, 'Return the lamp above the same slip to check the groove count and keep two uses for the marks distinct', [
+    'truth', 'certainty', 'culture', 'explanation', 'objectivity', 'evidence', 'justification', 'scope', 'methods-and-tools',
+  ], (d) => {
+    walkScene(d, 'nile-lamp-slip', 'nile.lamp.above', 'Move the lamp to the side', 'Return the lamp above', 'Leave a guide beside');
+    expect(d.done('nile.lamp.compare')).toBe(true);
+    expect(d.done('nile.lamp.file')).toBe(true);
+    readSign(d, 'nile-lamp-note-desk');
+  });
   if (lead === 'borrowed-mark') route.at(23, 'Use the keepers’ swatch to justify a label about shared practice with the maker left unnamed', ['truth', 'certainty', 'culture', 'justification', 'scope', 'methods-and-tools'], (d) => {
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-ARCHIVE-PRACTICE-SWATCH' });
     useDoor(d, 'workyard-back');
@@ -256,7 +306,7 @@ function nileDispatch(lead: NileFirstLead = 'workers', tiltTray = false): Route 
   const royal = lead === 'royal-seal';
   if (royal) nileRoyalLead(route);
   else nileWorkersLead(route, lead);
-  const extra = { workers: 0, 'reading-window': 3, 'borrowed-mark': 5, 'royal-seal': 4 }[lead] + (tiltTray ? 3 : 0);
+  const extra = { workers: 0, 'reading-window': 3, 'borrowed-mark': 5, 'lamp-slip': 4, 'royal-seal': 4 }[lead] + (tiltTray ? 3 : 0);
   const enterMapRoom = (d: Driver) => {
     if (lead !== 'borrowed-mark') useDoor(d, royal ? 'royal-back' : 'workyard-back');
     useDoor(d, 'nile-maps');
@@ -834,6 +884,82 @@ function marketOfMeasures(): Route {
   return route;
 }
 
+function checkWaterTrial(d: Driver, condition: WaterCondition, setting: WaterSetting, farm: number, river: number): void {
+  const gate = MAPS[d.s.mapId].interactables.find((prop) => prop.kind === 'water-gate');
+  expect(gate).toBeDefined();
+  expect(check(gate?.visibleIf, d.s)).toBe(true);
+  expect(waterTrial(condition, setting)).toEqual({ incoming: 12, leak: condition === 'drought' ? 2 : 0, farm, river });
+  d.run({ type: 'RunWaterTrial', setting });
+  expect(d.s.flags[`water.trial.${condition}.${setting}`]).toBe(true);
+}
+
+function waterCommons(): Route {
+  const route = new Route();
+  // Prepared Chapter 10 save. The Market's whole-lot comparison has been revised.
+  route.driver.s.objectivesDone.push('market.finish');
+  route.at(4, 'Ask what the gatehouse can measure and find the unchecked tally on the split board', ['scope', 'perspective'], (d) => {
+    useDoor(d, 'water-door');
+    d.talk('water-keeper');
+    expect(d.done('water.arrival')).toBe(true);
+    readSign(d, 'water-draft-split');
+    expect(d.s.flags['water.draft.read']).toBe(true);
+  });
+  route.at(9, 'Route seven of the ten available measures to fields while recording the two lost from the fixed twelve', ['evidence', 'certainty', 'methods-and-tools'], (d) => {
+    checkWaterTrial(d, 'drought', 'fields', 7, 3);
+  });
+  route.at(16, 'Run the split against the draft’s claim and check the posted correction beside the lever', [
+    'truth', 'evidence', 'objectivity', 'explanation', 'interpretation', 'methods-and-tools',
+  ], (d) => {
+    checkWaterTrial(d, 'drought', 'split', 5, 5);
+    expect(d.done('water.drought')).toBe(true);
+    readSign(d, 'water-checked-split');
+    expect(d.s.flags['water.checked.read']).toBe(true);
+  });
+  route.at(24, 'Use the scribe’s account and the work cards to distinguish rows from turns down the steps', ['perspective', 'culture', 'perspectives', 'scope'], (d) => {
+    useDoor(d, 'water-council-path');
+    d.talk('water-scribe');
+    useDoor(d, 'water-council-to-lower');
+    for (const prop of ['water-farm-card', 'water-channel-marker']) readSign(d, prop);
+    expect(d.done('water.needs')).toBe(true);
+  });
+  route.at(30, 'Post the even drought split with the farm’s postponed work where both groups can check it', ['values', 'power', 'responsibility', 'justification', 'ethics'], (d) => {
+    useDoor(d, 'water-lower-to-council');
+    d.talk('water-scribe', 'Split it five and five');
+    expect(d.done('water.publish')).toBe(true);
+    expect(d.s.flags['water.response']).toBe('split');
+    readSign(d, 'water-result-split');
+  });
+  route.at(34, 'Read the repair record and change what leaks out while leaving the inflow fixed', ['evidence', 'scope', 'methods-and-tools'], (d) => {
+    readSign(d, 'water-repair-note');
+    useDoor(d, 'water-council-return');
+    d.talk('water-keeper', 'Fit the repaired gate');
+    expect(d.done('water.repair')).toBe(true);
+  });
+  route.at(42, 'Recheck the same split and a field-first setting with twelve measures and zero leaked', [
+    'objectivity', 'explanation', 'certainty', 'evidence', 'scope', 'methods-and-tools',
+  ], (d) => {
+    checkWaterTrial(d, 'repaired', 'split', 5, 7);
+    checkWaterTrial(d, 'repaired', 'fields', 7, 5);
+    expect(d.done('water.retest')).toBe(true);
+  });
+  route.at(47, 'Bring the contested claim back to the council alongside both sets of measurements', ['truth', 'interpretation', 'perspective', 'perspectives'], (d) => {
+    useDoor(d, 'water-council-path');
+    readSign(d, 'water-contested-slip');
+    expect(d.done('water.claim')).toBe(true);
+  });
+  route.at(50, 'Publish a checked revision that gives the lower channel the two recovered measures', ['truth', 'justification', 'responsibility', 'power', 'values', 'ethics'], (d) => {
+    d.talk('water-scribe', 'Keep two more in the lower channel');
+    expect(d.done('water.finish')).toBe(true);
+    readSign(d, 'water-revised-split');
+  });
+  route.at(54, 'Give readers both dated allocations beside the work cards they answer to', ['perspective', 'responsibility', 'perspectives', 'scope', 'ethics'], (d) => {
+    d.talk('water-scribe', 'Leave a wider register copy');
+    expect(d.done('water.register')).toBe(true);
+    readSign(d, 'water-register-copy');
+  });
+  return route;
+}
+
 describe('rolling TOK coverage audit', () => {
   it('checks gaps between sampled actions and expires an encounter at the window boundary', () => {
     const encounters: TimedEncounter[] = [
@@ -870,9 +996,11 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Nexus main route into Emberford', end: 42, play: () => nexusToEmberford('main') },
     { name: 'Nexus and Emberford with optional stops', end: 86, play: () => nexusToEmberford('explore') },
     { name: 'Nexus seal and Emberford’s Two-Bell Order', end: 105, play: () => nexusToEmberford('records') },
+    { name: 'Nexus with the Arrow at the Turn and the Emberford washhouse', end: 101, play: () => nexusToEmberford('guide') },
     { name: 'Nile first visit from a prepared Chapter 1 save', end: 50, play: () => nileDispatch() },
     { name: 'Nile first visit with the Reading Window', end: 53, play: () => nileDispatch('reading-window') },
     { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch('borrowed-mark') },
+    { name: 'Nile first visit with the lamp and the pinned slip', end: 54, play: () => nileDispatch('lamp-slip') },
     { name: 'Nile route through Royal Records and the route model', end: 54, play: () => nileDispatch('royal-seal') },
     { name: 'Nile Royal Records route with the Tilt Tray stop', end: 57, play: () => nileDispatch('royal-seal', true) },
     { name: 'Preserved Lives from a prepared Chapter 2 save', end: 50, play: preservedLives },
@@ -887,6 +1015,7 @@ describe('rolling TOK coverage audit', () => {
     { name: 'House of Performance with the silence first', end: 51, play: () => houseOfPerformance('pause') },
     { name: 'House of Performance starting from a gallery seat', end: 54, play: () => houseOfPerformance('move') },
     { name: 'Market of Measures from a prepared Chapter 9 save', end: 52, play: marketOfMeasures },
+    { name: 'Water Commons from a prepared Chapter 10 save', end: 57, play: waterCommons },
   ])('can execute the modeled route for $name and report its gaps', ({ name, end, play }) => {
     const route = play();
     const gaps = coverageGaps(end, route.encounters);

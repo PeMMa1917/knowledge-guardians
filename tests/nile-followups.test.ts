@@ -269,3 +269,46 @@ describe('a name in two places', () => {
     expect(choices('nile-marek').includes('nile.name.slip.map')).toBe(filing === 'slips');
   });
 });
+
+describe('the third groove', () => {
+  it.each([
+    ['Leave a guide beside', 'desk', 'nile.workyard'],
+    ['Send the paired view notes', 'copy', 'nile.hall'],
+  ])('restores the original view before making the %s record', (pick, placement, room) => {
+    const d = new Driver();
+    d.run({ type: 'SetFlag', flag: 'nile.arrived', value: true });
+    d.s.mapId = 'nile.workyard';
+    const slip = MAPS[d.s.mapId].interactables.find((prop) => prop.id === 'nile-lamp-slip')!;
+    const visiblePlacements = () => Object.values(MAPS).flatMap((map) => map.interactables
+      .filter((prop) => prop.id.startsWith('nile-lamp-note-') && check(prop.visibleIf, d.s))
+      .map((prop) => [prop.id, map.id]));
+    expect(check(slip.visibleIf, d.s)).toBe(false);
+    expect(visiblePlacements()).toEqual([]);
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-STRIKE' });
+    expect(check(slip.visibleIf, d.s)).toBe(true);
+    expect(d.e.visibleOptions(slip.node!, d.s).map(({ option }) => option.next))
+      .toEqual(['nile.lamp.above', undefined]);
+
+    const xp = totalXP(d.p);
+    d.walk(slip.node!, ['Look down with the lamp above', 'Leave the lamp above']);
+    expect(d.s.flags['nile.lamp.phase']).toBe('above');
+    expect(d.done('nile.lamp.compare')).toBe(false);
+    d.walk(slip.node!, ['Move the lamp to the side', 'Leave the lamp to the side']);
+    expect(d.s.flags['nile.lamp.phase']).toBe('side');
+    expect(slip.artBy?.keys.side).toBe('nile.lamp-side');
+    expect(d.done('nile.lamp.compare')).toBe(false);
+    expect(d.e.visibleOptions('nile.lamp.repeat', d.s).map(({ option }) => option.next)).toEqual([undefined]);
+    d.walk(slip.node!, ['Return the lamp above', 'Leave the readings ready']);
+    expect(d.s.flags['nile.lamp.phase']).toBe('repeat');
+    expect(slip.art).toBe('nile.lamp-above');
+    expect(d.done('nile.lamp.compare')).toBe(true);
+    expect(d.done('nile.lamp.file')).toBe(false);
+
+    d.walk(slip.node!, ['Set out the two readings', pick]);
+    expect(d.done('nile.lamp.file')).toBe(true);
+    expect(visiblePlacements()).toEqual([[`nile-lamp-note-${placement}`, room]]);
+    expect(d.s.flags['nile.dispatch']).toBeUndefined();
+    expect(d.done('nile.workers')).toBe(false);
+    expect(totalXP(d.p)).toBe(xp);
+  });
+});

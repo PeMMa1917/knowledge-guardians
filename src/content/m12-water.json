@@ -1,0 +1,1400 @@
+{
+ "characters": [
+  {
+   "id": "water-keeper",
+   "name": "Weirkeeper Omi",
+   "role": "Keeper of the Commons gate",
+   "sprite": "smith-hesper",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "water.keeper.repaired",
+     "if": {
+      "flag": "water.repaired",
+      "eq": true
+     }
+    },
+    {
+     "node": "water.keeper.fit",
+     "if": {
+      "all": [
+       {
+        "objective": "water.publish"
+       },
+       {
+        "flag": "water.repair.read",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "water.repaired",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "node": "water.keeper.wait-repair",
+     "if": {
+      "objective": "water.publish"
+     }
+    },
+    {
+     "node": "water.keeper.welcome"
+    }
+   ]
+  },
+  {
+   "id": "water-scribe",
+   "name": "Clerk Sena",
+   "role": "Keeper of the council’s working record",
+   "sprite": "clerk-venn",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "water.scribe.copy-ready",
+     "if": {
+      "objective": "water.register"
+     }
+    },
+    {
+     "node": "water.scribe.after",
+     "if": {
+      "objective": "water.finish"
+     }
+    },
+    {
+     "node": "water.audit.fields",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "water.retest"
+         },
+         {
+          "objective": "water.claim"
+         }
+        ]
+       },
+       {
+        "flag": "water.response",
+        "eq": "fields"
+       }
+      ]
+     }
+    },
+    {
+     "node": "water.audit.split",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "water.retest"
+         },
+         {
+          "objective": "water.claim"
+         }
+        ]
+       },
+       {
+        "flag": "water.response",
+        "eq": "split"
+       }
+      ]
+     }
+    },
+    {
+     "node": "water.audit.channel",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "water.retest"
+         },
+         {
+          "objective": "water.claim"
+         }
+        ]
+       },
+       {
+        "flag": "water.response",
+        "eq": "channel"
+       }
+      ]
+     }
+    },
+    {
+     "node": "water.scribe.audit",
+     "if": {
+      "flag": "water.repaired",
+      "eq": true
+     }
+    },
+    {
+     "node": "water.scribe.wait-repair",
+     "if": {
+      "objective": "water.publish"
+     }
+    },
+    {
+     "node": "water.scribe.agree",
+     "if": {
+      "all": [
+       {
+        "objective": "water.drought"
+       },
+       {
+        "objective": "water.needs"
+       }
+      ]
+     }
+    },
+    {
+     "node": "water.scribe.trace"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "water.keeper.welcome",
+   "speaker": "water-keeper",
+   "text": "The drought turn starts here. Our gate model takes twelve buckets. Two drain away before the split. See where the water goes with two different settings. The farm and lower crews have left notes about the work they need done.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.keeper.wait-repair",
+   "speaker": "water-keeper",
+   "text": "Sena pinned the first turn in the council room. The repair crew has left its report there. Bring its note back before we fit the gate for a fresh trial.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.keeper.fit",
+   "speaker": "water-keeper",
+   "text": "The crew closed the leak. We can run twelve incoming buckets again. Keep a gate setting from the drought run and use it first. Then try another setting with the seal fitted.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Fit the repaired gate and keep the same incoming count.",
+     "next": "water.keeper.fitted",
+     "effects": [
+      {
+       "setFlag": "water.repaired",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "water.publish"
+       },
+       {
+        "flag": "water.repair.read",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "water.repaired",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the repair board here a moment."
+    },
+    {
+     "text": "I followed the water’s route at the Emberford washhouse.",
+     "next": "water.keeper.washhouse",
+     "if": {
+      "all": [
+       {
+        "objective": "water.publish"
+       },
+       {
+        "flag": "water.repair.read",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "water.repaired",
+         "eq": true
+        }
+       },
+       {
+        "flag": "washhouse.order",
+        "in": [
+         "clear",
+         "step"
+        ]
+       },
+       {
+        "objective": "washhouse.o.recheck"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "water.keeper.fitted",
+   "speaker": "water-keeper",
+   "text": "The model now keeps the two buckets that leaked before. Reopen the gate board with the setting from the first order. Write that count beside the drought count and try a second position.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.keeper.repaired",
+   "speaker": "water-keeper",
+   "text": "Twelve come in on both boards. Use the old setting on the repaired gate once, then try a different position. The old readings stay at the gate for checking.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.scribe.trace",
+   "speaker": "water-scribe",
+   "text": "The request from the farm lists six buckets for the marked rows. The lower workshop puts five buckets beside its fetching list. One speaks in rows and one in turns down the steps. Read what each group left and bring me the two gate runs.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.scribe.agree",
+   "speaker": "water-scribe",
+   "text": "Six for the rows and five for the lower work would take eleven. The drought board lets ten reach the two turns. What should the first order protect? Tell me which work needs to wait, too.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Send seven to the rows and three to the lower channel.",
+     "next": "water.first.fields",
+     "effects": [
+      {
+       "setFlag": "water.response",
+       "value": "fields"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "water.drought"
+         },
+         {
+          "objective": "water.needs"
+         }
+        ]
+       },
+       {
+        "flag": "water.trial.drought.fields",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Split it five and five. Delay a bucket of the field work.",
+     "next": "water.first.split",
+     "effects": [
+      {
+       "setFlag": "water.response",
+       "value": "split"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "water.drought"
+         },
+         {
+          "objective": "water.needs"
+         }
+        ]
+       },
+       {
+        "flag": "water.trial.drought.split",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Give the lower channel seven so it can hold two in reserve.",
+     "next": "water.first.channel",
+     "effects": [
+      {
+       "setFlag": "water.response",
+       "value": "channel"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "water.drought"
+         },
+         {
+          "objective": "water.needs"
+         }
+        ]
+       },
+       {
+        "flag": "water.trial.drought.channel",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the first order open."
+    }
+   ]
+  },
+  {
+   "id": "water.scribe.wait-repair",
+   "speaker": "water-scribe",
+   "text": "The first order is on the wall. The report from the repair crew is on a separate sheet here. Read it, then meet Omi at the gate.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.scribe.audit",
+   "speaker": "water-scribe",
+   "text": "The repair gives us a fresh reading. A new heading by the old order says we agreed on both daily marks. Look at the heading and the numbers underneath it. Bring the old setting repeated under repair and one other repaired run.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.scribe.revise",
+   "speaker": "water-scribe",
+   "text": "The same setting now sends two more buckets past the sealed leak. Other settings can send still more to the lower channel while the rows wait. Pick a tested repaired order. The old result will stay below its own date.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Run the repaired gate for the rows and the usual lower rounds.",
+     "next": "water.revised.fields",
+     "effects": [
+      {
+       "setFlag": "water.revision",
+       "value": "fields"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "water.retest"
+         },
+         {
+          "objective": "water.claim"
+         }
+        ]
+       },
+       {
+        "flag": "water.trial.repaired.fields",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Keep two more in the lower channel. Leave one bucket of row work for later.",
+     "next": "water.revised.split",
+     "effects": [
+      {
+       "setFlag": "water.revision",
+       "value": "split"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "water.retest"
+         },
+         {
+          "objective": "water.claim"
+         }
+        ]
+       },
+       {
+        "flag": "water.trial.repaired.split",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Send the repaired flow first to the lower channel and record the paused rows.",
+     "next": "water.revised.channel",
+     "effects": [
+      {
+       "setFlag": "water.revision",
+       "value": "channel"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "water.retest"
+         },
+         {
+          "objective": "water.claim"
+         }
+        ]
+       },
+       {
+        "flag": "water.trial.repaired.channel",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave both readings ready."
+    }
+   ]
+  },
+  {
+   "id": "water.scribe.after",
+   "speaker": "water-scribe",
+   "text": "Both turns have their own dates. The old requests were goals for those crews on that day. We can give the old and new orders more room so a reader sees each beside its work card.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave a wider register copy beside the council seats.",
+     "next": "water.register.copy",
+     "effects": [
+      {
+       "setFlag": "water.register-copy",
+       "value": true
+      }
+     ],
+     "if": {
+      "objective": "water.finish"
+     }
+    },
+    {
+     "text": "Keep the records open."
+    }
+   ]
+  },
+  {
+   "id": "water.register.copy",
+   "speaker": "water-scribe",
+   "text": "The new copy gives the drought result, repair result and requests their own rows. Someone at the seats can follow the order without putting a finger over the earlier numbers.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.scribe.copy-ready",
+   "speaker": "water-scribe",
+   "text": "A field worker copied the paused rows. A lower worker checked the reserve. The dates on their two slips will tell us which gate each used.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.first.fields",
+   "speaker": "water-scribe",
+   "text": "The field crew can start its marked rows. The lower crew has three buckets. Work that needs its last two buckets has to wait. Sena keeps the lower request beside the order.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.audit.fields",
+   "speaker": "water-scribe",
+   "text": "The drought line says seven to the rows and three to the channel. Six and five were the two requests. We recorded a setting that put the rows first while the gate leaked. Keep the request and the result on different lines.",
+   "historicalLabel": "fictional-world",
+   "next": "water.scribe.revise"
+  },
+  {
+   "id": "water.revised.fields",
+   "speaker": "water-scribe",
+   "text": "Seven buckets reach the rows and five reach the lower channel. Both groups can do the work on their notes. Sena leaves the earlier shortage visible. A lower crew that wants extra in reserve will need another agreement.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.first.split",
+   "speaker": "water-scribe",
+   "text": "The lower crew can do the work on its fetching list. The field crew marks the row that has to wait for its sixth bucket. Sena puts the two stops beside the split.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.audit.split",
+   "speaker": "water-scribe",
+   "text": "The drought line reads five to the rows and five to the channel. Equal shares left one bucket of row work waiting. The later writer read equal shares as both jobs finished. The work cards have their own counts.",
+   "historicalLabel": "fictional-world",
+   "next": "water.scribe.revise"
+  },
+  {
+   "id": "water.revised.split",
+   "speaker": "water-scribe",
+   "text": "The row work still has five buckets. The lower crew now gets seven. It can hold two above the usual five. Sena adds the postponed work beside the new reserve in the register.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.first.channel",
+   "speaker": "water-scribe",
+   "text": "The lower crew can hold two beyond its usual five. The field crew gets three of its six and changes which rows it prepares. Sena leaves that cost next to the order.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.audit.channel",
+   "speaker": "water-scribe",
+   "text": "The drought line gives three to the rows and seven to the lower channel. We chose a reserve for that crew and left field rows waiting. The phrase “both daily marks” belongs to the requests beside it.",
+   "historicalLabel": "fictional-world",
+   "next": "water.scribe.revise"
+  },
+  {
+   "id": "water.revised.channel",
+   "speaker": "water-scribe",
+   "text": "The lower crew gets nine, four above its usual five. Three buckets reach the rows and three of their work-card buckets still wait. The new order shows both the reserve and the work that moves to a later turn.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.keeper.washhouse",
+   "speaker": "water-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "At the washhouse you kept the head peg in view and checked where the water went again. Here our head count is twelve on both pages. Repeat your chosen setting under repair and see which outlet gets the two buckets we kept.",
+   "options": [
+    {
+     "text": "Fit the repaired gate and keep the same incoming count.",
+     "next": "water.keeper.fitted",
+     "effects": [
+      {
+       "setFlag": "water.repaired",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "water.publish"
+       },
+       {
+        "flag": "water.repair.read",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "water.repaired",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the repair board here a moment."
+    }
+   ]
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH11-M01",
+   "world": "WORLD-12",
+   "title": "The Agreement at the Weir",
+   "knowledgeQuestion": "How can a shared rule stay fair when a measurement and the conditions change?",
+   "available": {
+    "objective": "market.finish"
+   },
+   "objectives": [
+    {
+     "id": "water.arrival",
+     "title": "Cross to the Water Commons and find the gate.",
+     "done": {
+      "flag": "water.arrived",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective"
+      ],
+      "atl": [
+       "self-management"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "geography"
+      ]
+     }
+    },
+    {
+     "id": "water.drought",
+     "title": "Try two gate settings in the drought model.",
+     "done": {
+      "any": [
+       {
+        "all": [
+         {
+          "flag": "water.trial.drought.fields",
+          "eq": true
+         },
+         {
+          "flag": "water.trial.drought.split",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "all": [
+         {
+          "flag": "water.trial.drought.fields",
+          "eq": true
+         },
+         {
+          "flag": "water.trial.drought.channel",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "all": [
+         {
+          "flag": "water.trial.drought.split",
+          "eq": true
+         },
+         {
+          "flag": "water.trial.drought.channel",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "explanation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "MAT",
+       "NAT"
+      ],
+      "subjects": [
+       "geography",
+       "ess",
+       "math-ai"
+      ]
+     },
+     "visible": {
+      "objective": "water.arrival"
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-NUM-14"
+     ],
+     "kq": {
+      "id": "KQ-NEW-003",
+      "action": "compare routes with the same incoming count"
+     }
+    },
+    {
+     "id": "water.needs",
+     "title": "Read the work-card needs for the marked rows and lower channel.",
+     "done": {
+      "all": [
+       {
+        "flag": "water.farm.note",
+        "eq": true
+       },
+       {
+        "flag": "water.channel.note",
+        "eq": true
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "culture",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "geography",
+       "anthropology"
+      ]
+     },
+     "visible": {
+      "objective": "water.arrival"
+     },
+     "skills": [
+      "SK-MED-01",
+      "SK-SPK-01"
+     ],
+     "kq": {
+      "id": "KQ-NEW-006",
+      "action": "check why each crew uses its mark"
+     }
+    },
+    {
+     "id": "water.publish",
+     "title": "Give Sena the first gate order and record the work that will wait.",
+     "done": {
+      "flagSet": "water.response"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "MAT",
+       "HUM"
+      ],
+      "subjects": [
+       "geography",
+       "economics",
+       "math-ai"
+      ]
+     },
+     "visible": {
+      "all": [
+       {
+        "objective": "water.drought"
+       },
+       {
+        "objective": "water.needs"
+       }
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "kq": {
+      "id": "KQ-NEW-006",
+      "action": "make a water order with two work cards"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.water.publish"
+      }
+     ]
+    },
+    {
+     "id": "water.repair",
+     "title": "Read the repair report and help Omi fit the repaired gate.",
+     "done": {
+      "flag": "water.repaired",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "explanation"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "NAT",
+       "TEC"
+      ],
+      "subjects": [
+       "geography",
+       "ess",
+       "design-tech"
+      ]
+     },
+     "visible": {
+      "objective": "water.publish"
+     },
+     "skills": [
+      "SK-MED-02",
+      "SK-RSC-21"
+     ]
+    },
+    {
+     "id": "water.retest",
+     "title": "Repeat the first setting under repair and try one other repaired run.",
+     "done": {
+      "all": [
+       {
+        "any": [
+         {
+          "all": [
+           {
+            "flag": "water.response",
+            "eq": "fields"
+           },
+           {
+            "flag": "water.trial.drought.fields",
+            "eq": true
+           },
+           {
+            "flag": "water.trial.repaired.fields",
+            "eq": true
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "water.response",
+            "eq": "split"
+           },
+           {
+            "flag": "water.trial.drought.split",
+            "eq": true
+           },
+           {
+            "flag": "water.trial.repaired.split",
+            "eq": true
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "water.response",
+            "eq": "channel"
+           },
+           {
+            "flag": "water.trial.drought.channel",
+            "eq": true
+           },
+           {
+            "flag": "water.trial.repaired.channel",
+            "eq": true
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "any": [
+         {
+          "all": [
+           {
+            "flag": "water.trial.repaired.fields",
+            "eq": true
+           },
+           {
+            "flag": "water.trial.repaired.split",
+            "eq": true
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "water.trial.repaired.fields",
+            "eq": true
+           },
+           {
+            "flag": "water.trial.repaired.channel",
+            "eq": true
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "water.trial.repaired.split",
+            "eq": true
+           },
+           {
+            "flag": "water.trial.repaired.channel",
+            "eq": true
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "explanation",
+       "evidence",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "MAT",
+       "NAT",
+       "TEC"
+      ],
+      "subjects": [
+       "geography",
+       "ess",
+       "math-ai",
+       "design-tech"
+      ]
+     },
+     "visible": {
+      "objective": "water.repair"
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-05"
+     ],
+     "kq": {
+      "id": "KQ-NEW-003",
+      "action": "repeat one setting before and after a repair"
+     }
+    },
+    {
+     "id": "water.claim",
+     "title": "Read the new heading above the original drought order.",
+     "done": {
+      "flag": "water.claim.read",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "power",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "geography",
+       "lang-langlit"
+      ]
+     },
+     "visible": {
+      "objective": "water.repair"
+     },
+     "skills": [
+      "SK-MED-01",
+      "SK-MED-04"
+     ],
+     "kq": {
+      "id": "KQ-NEW-002",
+      "action": "compare an old agreement with its new heading"
+     }
+    },
+    {
+     "id": "water.finish",
+     "title": "With Sena, keep the original order and add a supported repair order.",
+     "done": {
+      "flagSet": "water.revision"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "responsibility",
+       "justification",
+       "values"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "MAT"
+      ],
+      "subjects": [
+       "geography",
+       "economics",
+       "math-ai"
+      ]
+     },
+     "visible": {
+      "all": [
+       {
+        "objective": "water.retest"
+       },
+       {
+        "objective": "water.claim"
+       }
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "kq": {
+      "id": "KQ-NEW-004",
+      "action": "correct a public account while keeping the earlier result"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.water.finish"
+      },
+      {
+       "journal": "j.water.turns"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH11-R01",
+   "world": "WORLD-12",
+   "title": "Two Rows in the Register",
+   "knowledgeQuestion": "What makes a record usable to people whose work depends on it?",
+   "available": {
+    "objective": "water.finish"
+   },
+   "objectives": [
+    {
+     "id": "water.register",
+     "title": "Give both orders more room on Sena’s register copy.",
+     "done": {
+      "flag": "water.register-copy",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "culture",
+       "perspective"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "geography",
+       "lang-langlit",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01"
+     ]
+    }
+   ]
+  }
+ ],
+ "criteria": [
+  {
+   "id": "credit.water.publish",
+   "concept": "responsibility",
+   "maximum": 8
+  },
+  {
+   "id": "credit.water.finish",
+   "concept": "justification",
+   "maximum": 8
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.water.arrival.1",
+   "objective": "water.arrival",
+   "depth": 1,
+   "text": "A gate and council passage has opened in the Nexus."
+  },
+  {
+   "id": "h.water.arrival.2",
+   "objective": "water.arrival",
+   "depth": 2,
+   "text": "Look for the Water Commons sign beside the other crossings."
+  },
+  {
+   "id": "h.water.arrival.3",
+   "objective": "water.arrival",
+   "depth": 3,
+   "text": "Go through and follow the path to the central gate board."
+  },
+  {
+   "id": "h.water.arrival.4",
+   "objective": "water.arrival",
+   "depth": 4,
+   "text": "Omi stands by the board in the Gatehouse. You can try it before the council meets."
+  },
+  {
+   "id": "h.water.drought.1",
+   "objective": "water.drought",
+   "depth": 1,
+   "text": "Two of the incoming buckets drain away before either crew can use them."
+  },
+  {
+   "id": "h.water.drought.2",
+   "objective": "water.drought",
+   "depth": 2,
+   "text": "Find the gate board by Omi in the Gatehouse."
+  },
+  {
+   "id": "h.water.drought.3",
+   "objective": "water.drought",
+   "depth": 3,
+   "text": "Choose two different settings and watch what reaches each side."
+  },
+  {
+   "id": "h.water.drought.4",
+   "objective": "water.drought",
+   "depth": 4,
+   "text": "Use the fields, split or channel controls. Take two distinct readings to Sena."
+  },
+  {
+   "id": "h.water.needs.1",
+   "objective": "water.needs",
+   "depth": 1,
+   "text": "Each crew left a count that belongs to its work today."
+  },
+  {
+   "id": "h.water.needs.2",
+   "objective": "water.needs",
+   "depth": 2,
+   "text": "Go to the farm and lower channel district."
+  },
+  {
+   "id": "h.water.needs.3",
+   "objective": "water.needs",
+   "depth": 3,
+   "text": "Read the farm’s work card by the rows and the lower crew’s marker farther along the channel."
+  },
+  {
+   "id": "h.water.needs.4",
+   "objective": "water.needs",
+   "depth": 4,
+   "text": "Keep six buckets for the marked rows and five for the lower work in view as you take both notes to the council."
+  },
+  {
+   "id": "h.water.publish.1",
+   "objective": "water.publish",
+   "depth": 1,
+   "text": "The two work cards ask for eleven with only ten reaching the outlets."
+  },
+  {
+   "id": "h.water.publish.2",
+   "objective": "water.publish",
+   "depth": 2,
+   "text": "Speak with Sena after reading both cards and trying two drought settings."
+  },
+  {
+   "id": "h.water.publish.3",
+   "objective": "water.publish",
+   "depth": 3,
+   "text": "Choose a tested setting and keep the shortfall or reserve on its line."
+  },
+  {
+   "id": "h.water.publish.4",
+   "objective": "water.publish",
+   "depth": 4,
+   "text": "Set the first order at the council. The report for the repaired gate then appears nearby."
+  },
+  {
+   "id": "h.water.repair.1",
+   "objective": "water.repair",
+   "depth": 1,
+   "text": "The crew has left a report about the part that drained away."
+  },
+  {
+   "id": "h.water.repair.2",
+   "objective": "water.repair",
+   "depth": 2,
+   "text": "Look for the repair report in the council room after the first order."
+  },
+  {
+   "id": "h.water.repair.3",
+   "objective": "water.repair",
+   "depth": 3,
+   "text": "Read it before talking to Omi again at the Gatehouse."
+  },
+  {
+   "id": "h.water.repair.4",
+   "objective": "water.repair",
+   "depth": 4,
+   "text": "Tell Omi to fit the repaired gate. The board can now make another twelve-bucket run."
+  },
+  {
+   "id": "h.water.retest.1",
+   "objective": "water.retest",
+   "depth": 1,
+   "text": "Repeat your first setting before comparing with another."
+  },
+  {
+   "id": "h.water.retest.2",
+   "objective": "water.retest",
+   "depth": 2,
+   "text": "Use the repaired gate board. The drought readings stay beside it."
+  },
+  {
+   "id": "h.water.retest.3",
+   "objective": "water.retest",
+   "depth": 3,
+   "text": "Select whichever setting you published for the drought first."
+  },
+  {
+   "id": "h.water.retest.4",
+   "objective": "water.retest",
+   "depth": 4,
+   "text": "Run the published setting and one other under repair. Compare the same setting across the two conditions."
+  },
+  {
+   "id": "h.water.claim.1",
+   "objective": "water.claim",
+   "depth": 1,
+   "text": "A new heading claims the old order met both work cards."
+  },
+  {
+   "id": "h.water.claim.2",
+   "objective": "water.claim",
+   "depth": 2,
+   "text": "Look by the original order in the council room after fitting the repair."
+  },
+  {
+   "id": "h.water.claim.3",
+   "objective": "water.claim",
+   "depth": 3,
+   "text": "Read the new heading and check the older figures on its page."
+  },
+  {
+   "id": "h.water.claim.4",
+   "objective": "water.claim",
+   "depth": 4,
+   "text": "Take the disputed slip to Sena with the repeated gate readings."
+  },
+  {
+   "id": "h.water.finish.1",
+   "objective": "water.finish",
+   "depth": 1,
+   "text": "Keep the two orders on their own dates."
+  },
+  {
+   "id": "h.water.finish.2",
+   "objective": "water.finish",
+   "depth": 2,
+   "text": "After comparing the repaired readings, talk to Sena about the draft heading."
+  },
+  {
+   "id": "h.water.finish.3",
+   "objective": "water.finish",
+   "depth": 3,
+   "text": "Check what the old setting did in each condition, then choose a setting you actually tried under repair."
+  },
+  {
+   "id": "h.water.finish.4",
+   "objective": "water.finish",
+   "depth": 4,
+   "text": "Give Sena a supported repair order. Its work-card consequence appears beside the preserved drought line."
+  },
+  {
+   "id": "h.water.register.1",
+   "objective": "water.register",
+   "depth": 1,
+   "text": "A reader wants to follow the old order and the repair without swapping them."
+  },
+  {
+   "id": "h.water.register.2",
+   "objective": "water.register",
+   "depth": 2,
+   "text": "Speak with Sena after the repaired order appears."
+  },
+  {
+   "id": "h.water.register.3",
+   "objective": "water.register",
+   "depth": 3,
+   "text": "Ask her to give the two dates and the work cards more room."
+  },
+  {
+   "id": "h.water.register.4",
+   "objective": "water.register",
+   "depth": 4,
+   "text": "Choose the wider register copy, then look for it beside the council seats."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.water.turns",
+   "claimKind": "interpretation",
+   "text": "The same setting gives a different lower count after the leak is closed. We kept the drought order and the new order beside their own readings and work cards."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.water-first-turn",
+   "attribute": "caring",
+   "when": {
+    "objective": "water.publish"
+   },
+   "did": "You kept both crews’ work in view when there was too little water for both requests.",
+   "prompt": "Where did you leave the work that had to wait?"
+  },
+  {
+   "id": "mom.water-retest",
+   "attribute": "thinker",
+   "when": {
+    "objective": "water.retest"
+   },
+   "did": "You repeated a gate setting after the repair so you could compare the two conditions.",
+   "prompt": "What made the earlier run a useful comparison?"
+  },
+  {
+   "id": "mom.water-correction",
+   "attribute": "principled",
+   "when": {
+    "objective": "water.finish"
+   },
+   "did": "You corrected the heading while keeping the original decision in the record.",
+   "prompt": "What would a later reader learn from keeping both dates?"
+  }
+ ],
+ "chronicle": [
+  {
+   "id": "water-first-turn",
+   "title": "The first gate order",
+   "text": "Two work cards went into the decision. The chosen drought order kept its delayed work in view.",
+   "if": {
+    "objective": "water.publish"
+   }
+  },
+  {
+   "id": "water-revised-turn",
+   "title": "Twelve buckets again",
+   "text": "The repair changed what reached the lower channel. The council kept both orders and corrected the later heading.",
+   "if": {
+    "objective": "water.finish"
+   }
+  }
+ ]
+}

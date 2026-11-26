@@ -23,6 +23,13 @@
       "page": "tools/make_market_tiles.py",
       "made_by": "python3 tools/make_market_tiles.py"
     },
+    "water-tiles": {
+      "title": "Original Water Commons tiles",
+      "author": "Knowledge Guardians project",
+      "licence": "CC0 1.0",
+      "page": "tools/make_water_tiles.py",
+      "made_by": "python3 tools/make_water_tiles.py (requires Pillow)"
+    },
     "cynicmusic-town": {
       "title": "Town Theme RPG",
       "author": "cynicmusic",
@@ -80,6 +87,7 @@
     "art/armm1998/character.png": { "pack": "armm1998-zelda-like", "original": "character.png", "changes": "none; source for the generated character sheets" },
     "art/armm1998/objects.png": { "pack": "armm1998-zelda-like", "original": "objects.png", "changes": "none (not used yet)" },
     "art/generated/market_tiles.png": { "pack": "market-tiles", "changes": "original pixel art drawn by the generator" },
+    "art/generated/water_tiles.png": { "pack": "water-tiles", "changes": "original pixel art drawn by the generator" },
     "art/generated/characters/player-a.png": { "pack": "generated-characters", "changes": "palette swap of character.png walk rows" },
     "art/generated/characters/player-b.png": { "pack": "generated-characters", "changes": "palette swap" },
     "art/generated/characters/player-c.png": { "pack": "generated-characters", "changes": "palette swap" },

@@ -242,11 +242,18 @@ The published survey limits open the House of Performance. Rehearse the same wor
 
 The revised programme opens the Market of Measures. Weigh two simulated lots with the baskets included and then with the baskets lifted out. Compare the workshop’s wick-length grade with the stall’s shade grade. Post the price comparison for households or leave records at the trade desk. The buyer’s question sends players back to distinguish a unit rate from a whole-lot purchase. An adjustable practice purse shows how buying options depend on the budget. Players can post a large-print key and use the wick bench’s length rule on both lots.
 
+## Chapter 11: The Agreement at the Weir
+
+The revised price notice opens the Water Commons. Try different gate positions with the same intake, then visit the seed rows and lower channel to find what each crew needs. Publish a drought plan that makes its trade-off visible. Return after the leak is sealed and use the same setting to check what changed. A draft heading invites players to compare the dated drought order with both crews’ requests before publishing a new order. They can leave the old and new results side by side in a larger copy.
+
 ## Opening and return investigations
 
 - **A Page Left Open** gives the visitor’s notebook a branch as soon as play starts. Leave a place for a second observation or a record number another visitor can follow.
+- **The Arrow at the Turn** is reachable before recruitment. Work with two spotters approaching the same arrow from opposite directions. Hang a shared landmark sketch or separate directions, then see how the readers use the change.
 - **Seal at the Door** uses the actual workshop model and the reverse of its seal. Players check what the seal certifies and set a supported display card for the reader they want to reach.
+- **A Dry Step for the Washhouse** follows water through three locations in early Emberford. The player can clear the catch screen or provide a covered route for this shift. A recheck at the same head mark shows which problem the chosen fix addressed. The Water Commons keeper can recall that work during the repair.
 - **The Two-Bell Order** asks for Emberford’s specific departure stub and matching ferry record. The same words do different jobs in those two records. Players choose how to leave a checkable account of the handover.
+- **The Third Groove** lets the player move and restore a reading lamp over the same keeper’s slip in the Nile Archive. Keep both readings by the desk or send them with the travelling copies before the first dispatch.
 - **A Name in Two Places** takes players back to the Nile Archive to use the Lens on a named papyrus and the mine map. Players choose how to cross-reference records with different purposes and different strength of attribution.
 
 ## Learning design review
@@ -255,4 +262,4 @@ The [learning design review](docs/TOK_ALIGNMENT.md) uses the supplied course gui
 
 ## Thirty-minute design audit
 
-Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Fifteen of the twenty routes reach all 12 concepts and four framework areas within their first estimated half hour. The five other routes include three Nile variants, a Coast route and the gallery-first House of Performance route. The Market reaches all 16 when the price comparison is published. The report shows later gaps and marks windows where a dimension depends on one distinct annotated action. The route actions and estimates are visible so unassisted timed playtests can challenge them.
+Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Eighteen of twenty-three routes reach all 12 concepts and four framework areas within their first estimated half hour. The five other routes include three Nile variants, a Coast route and the gallery-first House of Performance route. The new Nile lamp route and the Water Commons route reach all 16 in their opening windows. Later windows still have gaps. The report also marks windows where a dimension depends on one distinct annotated action. The route actions and estimates are visible so unassisted timed playtests can challenge them.

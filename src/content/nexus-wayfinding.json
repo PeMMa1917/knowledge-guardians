@@ -1,0 +1,424 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH1-R12",
+   "world": "WORLD-01",
+   "title": "The Arrow at the Turn",
+   "knowledgeQuestion": "When does a direction depend on the person using it?",
+   "available": {
+    "flag": "nexus.guide.used",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "nexus.guide.helped",
+     "title": "Help both visitors find the same cases.",
+     "essential": false,
+     "done": {
+      "flag": "nexus.guide.used",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "interpretation",
+       "explanation",
+       "responsibility",
+       "values"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "LAN",
+       "ART"
+      ],
+      "subjects": [
+       "geography",
+       "design-tech",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-COL-05"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.nexus.guide"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "nexus.guide.start",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A guide has a spare arrow marked TURN LEFT FOR THE THREE CASES. A reader coming from the doorway says it sent her the right way. A reader coming back from the desk says it sent him away from the cases. The guide lifts the arrow. 'Could you hold it while we try it again?'",
+   "options": [
+    {
+     "text": "Take the arrow and make room for both readers to try it.",
+     "next": "nexus.guide.accepted",
+     "if": {
+      "not": {
+       "flagSet": "nexus.guide.started"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.guide.started",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the arrow with the guide."
+    }
+   ]
+  },
+  {
+   "id": "nexus.guide.accepted",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The guide puts chalk marks at two places at the turn. The first reader starts by the doorway. The second starts by the desk. TURN LEFT is printed on both faces. Keep the board on the same peg for both readers."
+  },
+  {
+   "id": "nexus.guide.door-trial",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The doorway reader stands west of the turn. She faces along the hall toward the stand. The guide puts the arrow into your hands without changing its words.",
+   "options": [
+    {
+     "text": "Hold the arrow while she follows it from the doorway.",
+     "next": "nexus.guide.door-seen",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.guide.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.guide.door-view"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.guide.door-view",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Look again from this chalk mark.",
+     "next": "nexus.guide.door-seen",
+     "if": {
+      "flag": "nexus.guide.door-view",
+      "eq": true
+     }
+    },
+    {
+     "text": "Set the arrow down."
+    }
+   ]
+  },
+  {
+   "id": "nexus.guide.door-seen",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "From here, left takes her north to the row of cases. She points to the three lids she can see when she turns. The guide makes a small sketch of those lids."
+  },
+  {
+   "id": "nexus.guide.case-trial",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The desk reader comes at the turn from the other side. His shoulder faces the same three cases, but he looks back along the hall in the opposite direction.",
+   "options": [
+    {
+     "text": "Hold the same arrow while he tries it from the desk.",
+     "next": "nexus.guide.case-seen",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.guide.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.guide.case-view"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.guide.case-view",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Look again from this chalk mark.",
+     "next": "nexus.guide.case-seen",
+     "if": {
+      "flag": "nexus.guide.case-view",
+      "eq": true
+     }
+    },
+    {
+     "text": "Set the arrow down."
+    }
+   ]
+  },
+  {
+   "id": "nexus.guide.case-seen",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "His left takes him south, away from the cases. He turns back to the chalk mark. The guide sets his view beside the first reader’s. The destination stayed where it was. The reader’s direction changed."
+  },
+  {
+   "id": "nexus.guide.mount",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The two readers meet at the turn. Both need to find the same row of cases. They agree to mark the direction they came from beside any arrow. They could also give both sides of the stand the same sketch of the cases.",
+   "options": [
+    {
+     "text": "Mount a sketch of the three cases on both sides of the stand.",
+     "next": "nexus.guide.landmark-set",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.guide.started",
+        "eq": true
+       },
+       {
+        "flag": "nexus.guide.door-view",
+        "eq": true
+       },
+       {
+        "flag": "nexus.guide.case-view",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.guide.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.guide.layout",
+       "value": "landmark"
+      }
+     ]
+    },
+    {
+     "text": "Set one board for each approach and mark where its reader starts.",
+     "next": "nexus.guide.sides-set",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.guide.started",
+        "eq": true
+       },
+       {
+        "flag": "nexus.guide.door-view",
+        "eq": true
+       },
+       {
+        "flag": "nexus.guide.case-view",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.guide.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.guide.layout",
+       "value": "sides"
+      }
+     ]
+    },
+    {
+     "text": "Leave the stand open for now."
+    }
+   ]
+  },
+  {
+   "id": "nexus.guide.landmark-set",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You slot the sketches into the two faces. The guide puts a title beneath each drawing. The readers go back to their own chalk marks to try the stand."
+  },
+  {
+   "id": "nexus.guide.sides-set",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You set one board by each chalk mark. The doorway board keeps its left arrow. The desk board has a right arrow. Each names the row of cases and says which approach it serves."
+  },
+  {
+   "id": "nexus.guide.landmark",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The same drawing faces both approaches. The readers point at the three case lids before either takes a turn. The guide asks you to check where they end up.",
+   "options": [
+    {
+     "text": "Watch both readers meet at the same row.",
+     "next": "nexus.guide.landmark-read",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.guide.layout",
+        "eq": "landmark"
+       },
+       {
+        "not": {
+         "flagSet": "nexus.guide.used"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the sketch in place."
+    }
+   ]
+  },
+  {
+   "id": "nexus.guide.landmark-read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The readers reach the cases from opposite sides. One says what she saw from the doorway. The other adds his view from the desk. The guide keeps both chalk marks under the stand so anyone can try again.",
+   "effects": [
+    {
+     "setFlag": "nexus.guide.used",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "nexus.guide.door-board",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The doorway board says LEFT FROM THE ENTRANCE SIDE. The reader points to her starting mark. Across the turn she can see the other guide’s board.",
+   "options": [
+    {
+     "text": "Hold this board facing the doorway and watch the turn.",
+     "next": "nexus.guide.door-read",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.guide.layout",
+        "eq": "sides"
+       },
+       {
+        "not": {
+         "flagSet": "nexus.guide.used"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the doorway board in place."
+    }
+   ]
+  },
+  {
+   "id": "nexus.guide.door-read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The reader takes her usual turn and reaches the cases. The desk reader comes round from the other board. They agree to keep the approach on every copy of either arrow.",
+   "effects": [
+    {
+     "setFlag": "nexus.guide.used",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "nexus.guide.case-board",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The desk board says RIGHT FROM THE DESK SIDE. The reader lines his feet up with his chalk mark. From the doorway a second reader tries the other board.",
+   "options": [
+    {
+     "text": "Hold this board facing the desk and watch the turn.",
+     "next": "nexus.guide.case-read",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.guide.layout",
+        "eq": "sides"
+       },
+       {
+        "not": {
+         "flagSet": "nexus.guide.used"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the desk board in place."
+    }
+   ]
+  },
+  {
+   "id": "nexus.guide.case-read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The desk reader turns right and meets the first reader at the row of cases. He asks the guide to keep the chalk mark beside the board. That shows anyone which journey the arrow describes.",
+   "effects": [
+    {
+     "setFlag": "nexus.guide.used",
+     "value": true
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.nexus.guide.1",
+   "objective": "nexus.guide.helped",
+   "depth": 1,
+   "text": "Two readers face the same stand from different places."
+  },
+  {
+   "id": "h.nexus.guide.2",
+   "objective": "nexus.guide.helped",
+   "depth": 2,
+   "text": "Hold the guide’s arrow at both chalk marks."
+  },
+  {
+   "id": "h.nexus.guide.3",
+   "objective": "nexus.guide.helped",
+   "depth": 3,
+   "text": "Show the common landmark or keep each approach with its own arrow."
+  },
+  {
+   "id": "h.nexus.guide.4",
+   "objective": "nexus.guide.helped",
+   "depth": 4,
+   "text": "Go to the finished sign and watch where each reader turns."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.nexus.guide",
+   "claimKind": "observation",
+   "text": "One arrow sent two people in different directions. We tested both routes at the turn and kept the readers’ approaches with the new sign."
+  }
+ ]
+}

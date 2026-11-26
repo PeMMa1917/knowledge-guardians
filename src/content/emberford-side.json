@@ -377,6 +377,324 @@
    "speaker": "narrator",
    "text": "The ferry crew tack the guide beside their basket. A later order will get its own arrival slip. The clerk leaves Order 34 open where the arrival time would go, while the buyer moves the box to the lantern bench.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.intake",
+   "speaker": "narrator",
+   "text": "Hana has sent a runner from the washhouse. The step is wet and no water is reaching the rinse tray. Somebody blamed the closed intake. The caretaker has opened her sight cover. From here, you can see water pass the head peg.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the head-peg reading and follow the channel for this round.",
+     "next": "washhouse.intake.note",
+     "if": {
+      "not": {
+       "flag": "washhouse.started",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.started",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the reading with the caretaker."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "washhouse.intake.note",
+   "speaker": "narrator",
+   "text": "Leave the intake as it is for this round. See what reaches the tray below the lane and look behind the catch screen farther west. A dry tray alone cannot tell you where the flow stopped.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.tail",
+   "speaker": "narrator",
+   "text": "At the far side of the washhouse the rinse tray is dry below the tail peg. A thin run goes beside it and across the low step. The tray only catches what comes through its own branch.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the tail-peg reading and mark the run beside the tray.",
+     "next": "washhouse.tail.note",
+     "if": {
+      "all": [
+       {
+        "flag": "washhouse.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "washhouse.tail",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.tail",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the tail marker for now."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "washhouse.tail.note",
+   "speaker": "narrator",
+   "text": "The caretaker keeps both marks in the same round. One records what entered the channel. The other shows what reached this tray. Water on the step cannot fill that space in the record.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.screen",
+   "speaker": "narrator",
+   "text": "Water has collected at the place where the channel narrows. A mat of leaves sits at the catch screen. Some water goes around the screen and joins the run across the step. The tray sits beyond the leaf mat.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Follow the little side run and clip where it leaves the channel.",
+     "next": "washhouse.screen.note",
+     "if": {
+      "all": [
+       {
+        "flag": "washhouse.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "washhouse.screen",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.screen",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the screen where it is."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "washhouse.screen.note",
+   "speaker": "narrator",
+   "text": "The three notes point to the screen as the place to try a clearing. A repair still needs a check downstream. Keep a separate question about whether people can get across the step.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.board",
+   "speaker": "narrator",
+   "text": "Hana has one helper until the end of the shift. The washers need water in the tray. The carriers need a dry walk past it. Have the helper try the screen first, or put out the side crossing and leave the screen to the next crew.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clear the leaves at the screen and leave the catch screen in place.",
+     "next": "washhouse.order.clear",
+     "if": {
+      "all": [
+       {
+        "objective": "washhouse.o.trace"
+       },
+       {
+        "not": {
+         "flagSet": "washhouse.order"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.order",
+       "value": "clear"
+      }
+     ]
+    },
+    {
+     "text": "Open the side crossing and leave the screen for the next crew.",
+     "next": "washhouse.order.step",
+     "if": {
+      "all": [
+       {
+        "objective": "washhouse.o.trace"
+       },
+       {
+        "not": {
+         "flagSet": "washhouse.order"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.order",
+       "value": "step"
+      }
+     ]
+    },
+    {
+     "text": "Keep the order on the hook for now."
+    }
+   ]
+  },
+  {
+   "id": "washhouse.order.clear",
+   "speaker": "narrator",
+   "text": "The helper clips a note to the screen and clears the leaf mat. The intake stays at the mark you read. Go from the head peg to the tray again before telling the washers what changed.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.order.step",
+   "speaker": "narrator",
+   "text": "The helper sets out the dry side step and points carriers around the run. The screen stays in place. Check the head peg again, then find what has changed at the crossing and the tray.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.head-again",
+   "speaker": "narrator",
+   "text": "You come back to the head peg. Water still passes the same notch. Clip this reading beside the one from before the helper started.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Keep the second head-peg reading with the first.",
+     "next": "washhouse.head-matched",
+     "if": {
+      "all": [
+       {
+        "objective": "washhouse.o.order"
+       },
+       {
+        "not": {
+         "flag": "washhouse.headAfter",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.headAfter",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the clip at the head peg."
+    }
+   ]
+  },
+  {
+   "id": "washhouse.head-matched",
+   "speaker": "narrator",
+   "text": "The two readings have the same starting mark. Now compare what reaches the tray and where the carriers can walk.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.check.clear",
+   "speaker": "narrator",
+   "text": "At the same head peg water still passes. Now it also reaches the rinse tray. The run across the step is thinner in this round. There is space on the screen note for the next crew’s reading.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mark flow restored this round and leave the next check open.",
+     "next": "washhouse.end.clear",
+     "if": {
+      "all": [
+       {
+        "flag": "washhouse.order",
+        "eq": "clear"
+       },
+       {
+        "flag": "washhouse.headAfter",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "washhouse.checked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.checked",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the reading in hand."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "washhouse.check.step",
+   "speaker": "narrator",
+   "text": "The side step is dry where the carriers walk. Water still runs across the low step and the rinse tray is dry below its peg. The route around the water worked. The tray needs its own repair.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mark the crossing open and keep the tray repair on the board.",
+     "next": "washhouse.end.step",
+     "if": {
+      "all": [
+       {
+        "flag": "washhouse.order",
+        "eq": "step"
+       },
+       {
+        "flag": "washhouse.headAfter",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "washhouse.checked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.checked",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the reading in hand."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "washhouse.end.clear",
+   "speaker": "narrator",
+   "text": "A washer uses the tray again. The caretaker hangs the source and tail readings together for the next crew. A carrier can see the narrower run and still chooses where to put her feet.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.end.step",
+   "speaker": "narrator",
+   "text": "Two carriers take the dry side step. The washer moves her pail to a different tray for now. The two jobs stay on separate slips, one for access and one for restored flow.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "missions": [
@@ -637,6 +955,145 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-S08",
+   "world": "WORLD-02",
+   "title": "A Dry Step for the Washhouse",
+   "knowledgeQuestion": "What changes when we check a repair from where each person needs it to work?",
+   "available": {
+    "flag": "washhouse.started",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "washhouse.o.trace",
+     "title": "Keep the intake reading and trace the water past the screen and tray.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "washhouse.started",
+        "eq": true
+       },
+       {
+        "flag": "washhouse.tail",
+        "eq": true
+       },
+       {
+        "flag": "washhouse.screen",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "certainty",
+       "explanation"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT"
+      ],
+      "subjects": [
+       "physics",
+       "geography",
+       "math-ai",
+       "ess"
+      ]
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-RSC-21"
+     ]
+    },
+    {
+     "id": "washhouse.o.order",
+     "title": "Put a repair order on the washhouse board.",
+     "essential": false,
+     "visible": {
+      "objective": "washhouse.o.trace"
+     },
+     "done": {
+      "flagSet": "washhouse.order"
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "values",
+       "power",
+       "culture"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "self-management"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT"
+      ],
+      "subjects": [
+       "ess",
+       "anthropology",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-THK-15"
+     ]
+    },
+    {
+     "id": "washhouse.o.recheck",
+     "title": "Check the change and leave a note for the next crew.",
+     "essential": false,
+     "visible": {
+      "objective": "washhouse.o.order"
+     },
+     "done": {
+      "flag": "washhouse.checked",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "truth",
+       "responsibility",
+       "justification",
+       "interpretation"
+      ],
+      "atl": [
+       "communication",
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "NAT",
+       "LAN"
+      ],
+      "subjects": [
+       "physics",
+       "design-tech",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-RSC-15"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.washhouse.recheck"
+      }
+     ]
+    }
+   ]
   }
  ],
  "moments": [
@@ -657,6 +1114,15 @@
    },
    "did": "You kept the crew’s own marks beside the guild deadline and checked what each record could tell the buyer.",
    "prompt": "Where else might two people shop or work by different ways of counting?"
+  },
+  {
+   "id": "moment.washhouse.recheck",
+   "attribute": "caring",
+   "when": {
+    "objective": "washhouse.o.recheck"
+   },
+   "did": "You checked what changed for the washers and the carriers before making a claim about the repair.",
+   "prompt": "Where would you stand if you needed to check a different part of the job?"
   }
  ],
  "journal": [
@@ -669,6 +1135,11 @@
    "id": "j.bell.order",
    "claimKind": "interpretation",
    "text": "The two parts of Order 34 fit. The deadline was in square bells. The marks on the ferry strip came from the two sides of a handover. No arrival time was recorded for this box."
+  },
+  {
+   "id": "j.washhouse.recheck",
+   "claimKind": "interpretation",
+   "text": "The head reading showed water entering. The tail reading and the side run showed where it went. A workable walk and a working tray need separate checks."
   }
  ],
  "hints": [
@@ -815,6 +1286,78 @@
    "objective": "bell.order.o.post",
    "depth": 4,
    "text": "Post either the separate headings on Order 34 or the key with a blank for a later order’s arrival. Both leave the old arrival time open."
+  },
+  {
+   "id": "h.washhouse.trace.1",
+   "objective": "washhouse.o.trace",
+   "depth": 1,
+   "text": "Water on a step and a dry tray can belong to the same observation."
+  },
+  {
+   "id": "h.washhouse.trace.2",
+   "objective": "washhouse.o.trace",
+   "depth": 2,
+   "text": "Follow the water after the head peg. Look at what enters the tray and what runs beside it."
+  },
+  {
+   "id": "h.washhouse.trace.3",
+   "objective": "washhouse.o.trace",
+   "depth": 3,
+   "text": "The head peg is near the south path. The tail peg is beside the tray. The screen is farther west."
+  },
+  {
+   "id": "h.washhouse.trace.4",
+   "objective": "washhouse.o.trace",
+   "depth": 4,
+   "text": "Clip all three readings in this round. Leave the intake in place so you can compare what reached each marker."
+  },
+  {
+   "id": "h.washhouse.order.1",
+   "objective": "washhouse.o.order",
+   "depth": 1,
+   "text": "The other people using this lane may have a different repair in mind."
+  },
+  {
+   "id": "h.washhouse.order.2",
+   "objective": "washhouse.o.order",
+   "depth": 2,
+   "text": "Clearing the screen tests flow. Marking a dry crossing helps people move now."
+  },
+  {
+   "id": "h.washhouse.order.3",
+   "objective": "washhouse.o.order",
+   "depth": 3,
+   "text": "Use Hana’s small order board near the west well after checking the tray and screen."
+  },
+  {
+   "id": "h.washhouse.order.4",
+   "objective": "washhouse.o.order",
+   "depth": 4,
+   "text": "Choose to clear the leaf mat or open the side step. Both routes still need a check."
+  },
+  {
+   "id": "h.washhouse.recheck.1",
+   "objective": "washhouse.o.recheck",
+   "depth": 1,
+   "text": "The note should say what changed for this shift."
+  },
+  {
+   "id": "h.washhouse.recheck.2",
+   "objective": "washhouse.o.recheck",
+   "depth": 2,
+   "text": "Check the same marks after the clearing, or see where the new step takes the carriers and what still reaches the tray."
+  },
+  {
+   "id": "h.washhouse.recheck.3",
+   "objective": "washhouse.o.recheck",
+   "depth": 3,
+   "text": "Read the head peg near the south path a second time. Then check the tray after clearing or use the marked side step."
+  },
+  {
+   "id": "h.washhouse.recheck.4",
+   "objective": "washhouse.o.recheck",
+   "depth": 4,
+   "text": "Leave the recheck note at your chosen site. Keep any job that still needs doing on the board."
   }
  ]
 }

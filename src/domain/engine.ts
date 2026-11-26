@@ -5,6 +5,7 @@ import { compareCopy } from './copyComparison';
 import { seaChart } from './seaCharts';
 import { stageRehearsal, type StageCue } from './stageRehearsal';
 import { marketComparison, type MarketBasis } from './marketScale';
+import { waterTrial, type WaterSetting } from './waterGate';
 /**
  * Domain engine. Scenes send typed commands; the engine checks preconditions,
  * computes ONE valid state transition and returns events for the view to show
@@ -106,6 +107,7 @@ export type Command =
   | { type: 'ReadSeaChart'; chart: string }
   | { type: 'RunStageRehearsal'; cue: StageCue }
   | { type: 'WeighMarketLots'; basis: MarketBasis }
+  | { type: 'RunWaterTrial'; setting: WaterSetting }
   | { type: 'BuildLabel'; kit: string; subject: string; criterion: string; limit: string }
   | { type: 'TurnLock'; lock: string; choice: Record<string, string> }
   | { type: 'ShowdownStart'; showdown: string; relaxed?: boolean }
@@ -561,6 +563,14 @@ export class Engine {
           if (prevPen !== undefined && changed === 2) fx.push({ addNum: 'sim.unfair', by: 1 });
           s = apply(fx, s, out);
           events.push({ kind: 'simulation', result: { pen: cmd.pen, surface: cmd.surface, markQuality: m.q, note: m.note, fairTest: fair, testCount: count } });
+          break;
+        }
+        case 'RunWaterTrial': {
+          if (s.mapId !== 'water.gatehouse' || s.flags['water.arrived'] !== true) throw new Error('Use the trial gate in the Water Commons.');
+          const condition = s.flags['water.repaired'] === true ? 'repaired' : 'drought';
+          waterTrial(condition, cmd.setting);
+          const key = `water.trial.${condition}.${cmd.setting}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
         case 'WeighMarketLots': {

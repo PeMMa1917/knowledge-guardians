@@ -6,6 +6,7 @@
  *   ow = public/assets/art/armm1998/Overworld.png (40 x 36 tiles)
  *   in = public/assets/art/armm1998/Inner.png     (40 x 25 tiles)
  *   market = public/assets/art/generated/market_tiles.png (18 x 9 tiles)
+ *   water = public/assets/art/generated/water_tiles.png (14 x 5 tiles)
  *
  * `collide` is the blocked area in tiles, relative to the stamp's top-left.
  * Leave it out for decorations the player can walk over or behind.
@@ -16,7 +17,7 @@
 export const TILE = 16;
 
 export interface Stamp {
-  sheet: 'ow' | 'in' | 'market';
+  sheet: 'ow' | 'in' | 'market' | 'water';
   x: number; y: number; w: number; h: number;
   collide?: [number, number, number, number];
   /** Draw above characters regardless of y (for roofs/awnings that overlap). */
@@ -97,6 +98,22 @@ export const STAMPS: Record<string, Stamp> = {
   'market-bench': { sheet: 'market', x: 15, y: 5, w: 3, h: 2, collide: [0, 1, 3, 1] },
   'market-lamp': { sheet: 'market', x: 15, y: 7, w: 1, h: 2, collide: [0, 1, 1, 1] },
   'market-planter': { sheet: 'market', x: 16, y: 7, w: 2, h: 2, collide: [0, 1, 2, 1] },
+
+  // Original Water Commons channels, terraces and council buildings.
+  'water-ripple-a': { sheet: 'water', x: 0, y: 0, w: 1, h: 1 },
+  'water-ripple-b': { sheet: 'water', x: 1, y: 0, w: 1, h: 1 },
+  'water-ripple-c': { sheet: 'water', x: 2, y: 0, w: 1, h: 1 },
+  'water-path': { sheet: 'water', x: 3, y: 0, w: 1, h: 1 },
+  'water-bridge': { sheet: 'water', x: 4, y: 0, w: 1, h: 1 },
+  'water-field-a': { sheet: 'water', x: 5, y: 0, w: 1, h: 1 },
+  'water-field-b': { sheet: 'water', x: 6, y: 0, w: 1, h: 1 },
+  'water-bank': { sheet: 'water', x: 7, y: 0, w: 1, h: 1 },
+  'water-council-hall': { sheet: 'water', x: 0, y: 1, w: 6, h: 4, collide: [0, 2, 6, 2] },
+  'water-weir': { sheet: 'water', x: 6, y: 1, w: 5, h: 3, collide: [0, 1, 5, 2] },
+  'water-gauge': { sheet: 'water', x: 11, y: 1, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'water-lantern': { sheet: 'water', x: 12, y: 1, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'water-banner': { sheet: 'water', x: 13, y: 1, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'water-terrace-wall': { sheet: 'water', x: 11, y: 3, w: 3, h: 2, collide: [0, 1, 3, 1] },
 };
 
 /** Character sheets: 16x32 frames, 4 per row; rows: down, right, up, left. */

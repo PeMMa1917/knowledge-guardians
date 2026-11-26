@@ -55,10 +55,15 @@ describe('scene props with two visual outcomes', () => {
 
   it('keeps follow-up props out of view until the matching Nile investigation is complete', () => {
     const d = new Driver();
-    for (const room of ['nile.royal', 'nile.workyard', 'nile.route']) {
-      const props = MAPS[room].interactables.filter((o) => o.kind === 'scene');
+    for (const [room, family] of [
+      ['nile.royal', 'nile.caption-clips'],
+      ['nile.workyard', 'nile.reader-seat'],
+      ['nile.route', 'nile.model-handover'],
+    ]) {
+      const props = MAPS[room].interactables.filter((prop) =>
+        prop.id === family || prop.id.startsWith(family + '.'));
       expect(props).toHaveLength(3);
-      expect(props.every((o) => !check(o.visibleIf, d.s))).toBe(true);
+      expect(props.every((prop) => prop.kind === 'scene' && !check(prop.visibleIf, d.s))).toBe(true);
     }
   });
 });

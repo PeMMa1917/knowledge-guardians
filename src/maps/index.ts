@@ -13,6 +13,7 @@ import { COPIES_ARCHIVE, COPIES_PRESS, COPIES_LANDING } from './copies';
 import { SEA_HARBOUR, SEA_CHARTROOM, SEA_SHOAL } from './sea';
 import { STAGE_FOYER, STAGE_GALLERY, STAGE_REHEARSAL } from './stage';
 import { MARKET_SQUARE } from './market';
+import { WATER_COUNCIL, WATER_GATEHOUSE, WATER_LOWER_CHANNEL } from './water';
 
 export const MAPS: Record<string, MapDef> = {
   [NEXUS.id]: NEXUS,
@@ -50,4 +51,7 @@ export const MAPS: Record<string, MapDef> = {
   [STAGE_REHEARSAL.id]: STAGE_REHEARSAL,
   [STAGE_GALLERY.id]: STAGE_GALLERY,
   [MARKET_SQUARE.id]: MARKET_SQUARE,
+  [WATER_GATEHOUSE.id]: WATER_GATEHOUSE,
+  [WATER_COUNCIL.id]: WATER_COUNCIL,
+  [WATER_LOWER_CHANNEL.id]: WATER_LOWER_CHANNEL,
 };
