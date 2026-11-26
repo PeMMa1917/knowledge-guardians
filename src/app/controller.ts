@@ -11,6 +11,7 @@ import {
 } from '../domain/saves';
 import type { CampaignState, ContentPack, PermanentRecord } from '../domain/types';
 import { validateContent } from '../domain/validate';
+import { addActivity, dayOf } from '../domain/ledger';
 import { MAPS } from '../maps';
 import { ctx } from './context';
 
@@ -41,6 +42,19 @@ export class GameController {
 
   onEvents(fn: Listener): void { this.listeners.push(fn); }
 
+  // ------------------------------------------------- active time (the Ledger)
+
+  private lastInput = 0;
+  private ticks = 0;
+  /** Call on any key or pointer input. Time counts only while the player is really playing. */
+  noteInput(): void { this.lastInput = Date.now(); }
+  /** Call every 15 seconds. Counts the time if the tab is visible and there was input in the last 2 minutes. */
+  tickActive(visible: boolean, secs = 15): void {
+    if (!this.state || !visible || Date.now() - this.lastInput > 120_000) return;
+    this.permanent = { ...this.permanent, activity: addActivity(this.permanent.activity, dayOf(new Date()), { secs }) };
+    if (++this.ticks % 4 === 0) this.saves.savePermanent(this.permanent);
+  }
+
   dispatch(cmd: Command): GameEvent[] {
     const o = this.engine.dispatch(cmd, this.state, this.permanent);
     this.state = o.state;
@@ -49,6 +63,8 @@ export class GameController {
       this.saves.savePermanent(this.permanent);
     }
     for (const e of o.events) if (e.kind === 'checkpoint') this.checkpoint(e.label);
+    const xp = o.events.reduce((n, e) => n + (e.kind === 'xp' ? e.amount : 0), 0);
+    if (xp) { this.permanent = { ...this.permanent, activity: addActivity(this.permanent.activity, dayOf(new Date()), { xp }) }; this.saves.savePermanent(this.permanent); }
     this.emit(o.events);
     (o.events as any).nextNode = o.nextNode;
     return o.events;
@@ -60,9 +76,9 @@ export class GameController {
 
   // ------------------------------------------------------------------ saves
 
-  newGame(name: string, look: string): void {
+  newGame(name: string, look: string, opts: Parameters<typeof newCampaign>[4] = {}): void {
     const seed = (Date.now() ^ Math.floor(Math.random() * 1e9)) >>> 0;
-    this.state = newCampaign(this.pack, name, look, seed);
+    this.state = newCampaign(this.pack, name, look, seed, opts);
     const m = MAPS['nexus.archive'];
     this.state.pos = { x: m.spawn.x, y: m.spawn.y };
     this.playStart = Date.now();

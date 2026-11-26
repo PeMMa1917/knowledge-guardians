@@ -1,0 +1,34 @@
+{
+ "questions": [
+  {
+   "id": "KQ-NEW-001",
+   "text": "How do we decide what counts as 'first'?",
+   "lastWord": "The question under this: how do we decide what counts as 'first'? You answered it with a criterion."
+  },
+  {
+   "id": "KQ-NEW-002",
+   "text": "When does a record show what happened, and when does it show what its writer wanted?",
+   "lastWord": "The question under this: does a record show what happened, or what its writer wanted? You followed it to see."
+  },
+  {
+   "id": "KQ-NEW-003",
+   "text": "How can making or testing something help us know about it?",
+   "lastWord": "The question under this: how can making or testing something help us know? Your hands gave you evidence."
+  },
+  {
+   "id": "KQ-NEW-004",
+   "text": "When is it right to change your mind, or to hold your ground, in public?",
+   "lastWord": "The question under this: when should we change our minds in public? You chose, with the crowd watching."
+  },
+  {
+   "id": "KQ-NEW-005",
+   "text": "How much should we claim when the evidence is only partial?",
+   "lastWord": "The question under this: how much should we claim when the evidence is partial? You held a mystery without inventing an answer."
+  },
+  {
+   "id": "KQ-NEW-006",
+   "text": "Whose knowledge should we ask for first when a community has a problem?",
+   "lastWord": "The question under this: whose knowledge counts first? You asked the people who live with the problem."
+  }
+ ]
+}

@@ -26,8 +26,13 @@ export function clear(el: Element): void { while (el.firstChild) el.removeChild(
 
 /** Move focus into a container and keep Tab inside it (modal focus trap). */
 export function trapFocus(container: HTMLElement): () => void {
-  const sel = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea, [tabindex]:not([tabindex="-1"])';
+  const sel = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea, summary, [tabindex]:not([tabindex="-1"])';
+  // Phaser captures Space on the window. Keep the native press and release in the dialog.
+  const keepSpace = (e: KeyboardEvent) => {
+    if (e.key === ' ' && e.target instanceof HTMLElement && e.target.matches('button, summary, input')) e.stopPropagation();
+  };
   const onKey = (e: KeyboardEvent) => {
+    keepSpace(e);
     if (e.key !== 'Tab') return;
     const items = Array.from(container.querySelectorAll<HTMLElement>(sel)).filter((x) => x.offsetParent !== null);
     if (!items.length) return;
@@ -36,9 +41,13 @@ export function trapFocus(container: HTMLElement): () => void {
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   };
   container.addEventListener('keydown', onKey);
+  container.addEventListener('keyup', keepSpace);
   setTimeout(() => {
     const f = container.querySelector<HTMLElement>('[data-autofocus]') ?? container.querySelector<HTMLElement>(sel);
     f?.focus();
   }, 0);
-  return () => container.removeEventListener('keydown', onKey);
+  return () => {
+    container.removeEventListener('keydown', onKey);
+    container.removeEventListener('keyup', keepSpace);
+  };
 }

@@ -1,0 +1,1883 @@
+{
+ "origins": [
+  {
+   "id": "archive",
+   "name": "Archive child",
+   "background": "You grew up in the Nexus stacks, among catalogues and loan slips.",
+   "link": "You know how catalogues work: who files a thing, and under what name, shapes what people can find.",
+   "journal": "j.origin.archive"
+  },
+  {
+   "id": "harbour",
+   "name": "Harbour runner",
+   "background": "You carried messages between the harbours of the coast.",
+   "link": "You know that a story changes as it travels from person to person.",
+   "journal": "j.origin.harbour"
+  },
+  {
+   "id": "workshop",
+   "name": "Workshop apprentice",
+   "background": "You trained with makers, and you test ideas with your hands.",
+   "link": "You test an idea by building it and watching what happens.",
+   "journal": "j.origin.workshop"
+  },
+  {
+   "id": "singer",
+   "name": "Village singer",
+   "background": "You learned the songs of a valley, and the people who keep them.",
+   "link": "You know that songs and stories can hold knowledge for a long time.",
+   "journal": "j.origin.singer"
+  },
+  {
+   "id": "traveller",
+   "name": "Traveller",
+   "background": "You moved between many places and many languages.",
+   "link": "You see a thing from more than one side, because you have stood on more than one side.",
+   "journal": "j.origin.traveller"
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.origin.archive",
+   "text": "Lens hint (Archive child): a catalogue entry has its own date. Check if a date tells when a thing was made, or only when someone wrote it down.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.origin.harbour",
+   "text": "Lens hint (Harbour runner): when a claim reaches you through many people, ask who told the first of them.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.origin.workshop",
+   "text": "Lens hint (Workshop apprentice): an object that works today shows what it can do. It does not show who made the first one.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.origin.singer",
+   "text": "Lens hint (Village singer): a song can keep knowledge for generations. Ask who sings it, and what it was made to remember.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.origin.traveller",
+   "text": "Lens hint (Traveller): the same word can claim different things in different places. Ask what each place means by it.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.os.archive",
+   "text": "The Misfiled Slip: the same object can be filed by who gave it or by what it is. Each way helps some people find it and hides it from others.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.os.traveller",
+   "text": "Two Words for First: one word can carry different claims in different languages. A translator chooses, and can show the reason.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.os.harbour",
+   "text": "The Changed Message: each person kept the part they cared about. A message that people can check travels better.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.os.workshop",
+   "text": "One Quench Is Not a Test: one result has many causes. A fair test changes one thing, repeats, and still only gives a strong suspect.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.os.singer",
+   "text": "The Missing Verse: two places kept different verses of one song. Naming where each verse comes from keeps the song honest.",
+   "claimKind": "interpretation"
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "origin.nexus.archive",
+   "speaker": "warden-ise",
+   "text": "The cataloguers do, and their choices last for centuries. A pen filed under 'inventions of 1888' is easy to find as a first. A pen filed under 'unfinished patents' is not. Shelves make claims too.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "origin.nexus.harbour",
+   "speaker": "warden-ise",
+   "text": "Yes. A visitor reads it, tells a friend, and the friend tells a class. Each copy drops a word. That is why a short, exact label matters more than a clever one.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "origin.nexus.workshop",
+   "speaker": "warden-ise",
+   "text": "You can. Read it to someone who has not seen the exhibits, then ask what they believe. If they repeat more than the label supports, the label is too strong.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "origin.nexus.singer",
+   "speaker": "warden-ise",
+   "text": "Some. Not enough. We keep paper well and songs badly, so our shelves say more about writers than about singers. Remember that when a record is silent.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "origin.nexus.traveller",
+   "speaker": "warden-ise",
+   "text": "That is most of it. A lawyer's first, a shopkeeper's first and an engineer's first are three different claims. You will be good at this work.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "origin.emb.archive",
+   "speaker": "scholar-sefa",
+   "text": "Collectors, mostly, a long time ago. Their words, 'Damascus' and 'ancient', are still on the cards. A catalogue is a record, and it is also a point of view.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "origin.emb.harbour",
+   "speaker": "scholar-sefa",
+   "text": "Then the story got here before the blade's maker did. Ask who started it, and who gains if people believe it.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "origin.emb.workshop",
+   "speaker": "scholar-sefa",
+   "text": "Then Hesper is your teacher, not me. Her anvil will show you more than my catalogue. Come back and tell me what the steel showed you.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "origin.emb.singer",
+   "speaker": "scholar-sefa",
+   "text": "Some lines are almost the same: watch the hands, not the shine. Songs travel like steel does. When two places keep the same line, it is worth asking why.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "origin.emb.traveller",
+   "speaker": "scholar-sefa",
+   "text": "Many places have their own name for it. A name tells you who was talking, and to whom. It does not tell you where the steel was made.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Thank you.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "os.archive.start",
+   "speaker": "cataloguer-bela",
+   "text": "You're from the stacks too? Then you will see the problem. The loan slip for the workshop model is filed under 'Toys'. Nobody looking for pens will ever find it.",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "os.archive.met",
+     "value": true
+    }
+   ],
+   "options": [
+    {
+     "text": "I'll find out why it went there.",
+     "effects": [
+      {
+       "setFlag": "os.archive.started",
+       "value": true
+      }
+     ],
+     "tag": "Your background",
+     "next": null
+    },
+    {
+     "text": "Not now.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "os.archive.wait",
+   "speaker": "cataloguer-bela",
+   "text": "Did you ask yet? I'll be here.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "os.archive.other",
+   "speaker": "curator-dace",
+   "text": "Under 'Toys'? Ah. The model came to us from a school, and a clerk filed it by the giver, not by the thing. It was not wrong, only one way of looking.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "os.archive.asked",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "os.archive.reflect",
+   "speaker": "cataloguer-bela",
+   "text": "So the clerk sorted by who gave it, and I sorted by what it is. Where should the slip go now?",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Under 'Pens', with a note that a school gave it.",
+     "effects": [
+      {
+       "setFlag": "os.archive.choice",
+       "value": "both"
+      }
+     ],
+     "next": "os.archive.done"
+    },
+    {
+     "text": "Under 'Models', because it is a copy, not the pen.",
+     "effects": [
+      {
+       "setFlag": "os.archive.choice",
+       "value": "kind"
+      }
+     ],
+     "next": "os.archive.done"
+    },
+    {
+     "text": "Leave it, but add a cross-reference card in 'Pens'.",
+     "effects": [
+      {
+       "setFlag": "os.archive.choice",
+       "value": "cross"
+      }
+     ],
+     "next": "os.archive.done"
+    },
+    {
+     "text": "I'm not sure. Every place hides something.",
+     "effects": [
+      {
+       "setFlag": "os.archive.choice",
+       "value": "unsure"
+      }
+     ],
+     "next": "os.archive.done"
+    }
+   ]
+  },
+  {
+   "id": "os.archive.done",
+   "speaker": "cataloguer-bela",
+   "text": "A shelf is a claim. Now two shelves point to the same slip, and someone looking for pens will find a school's gift.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "os.archive.idle",
+   "speaker": "cataloguer-bela",
+   "text": "Every drawer here is somebody's decision.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "os.traveller.start",
+   "speaker": "translator-lio",
+   "text": "You have lived in many places, so you know my problem. In my language, 'first' can be 'earliest' or 'leading'. The label needs one word. Which first does Clerk Venn mean?",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "os.traveller.met",
+     "value": true
+    }
+   ],
+   "options": [
+    {
+     "text": "I'll ask Venn what he means.",
+     "effects": [
+      {
+       "setFlag": "os.traveller.started",
+       "value": true
+      }
+     ],
+     "tag": "Your background",
+     "next": null
+    },
+    {
+     "text": "Not now.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "os.traveller.wait",
+   "speaker": "translator-lio",
+   "text": "Did you ask yet? I'll be here.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "os.traveller.other",
+   "speaker": "clerk-venn",
+   "text": "What do I mean? The earliest dated record. Not the best, not the most famous. The earliest one on paper. Write that down, please.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "os.traveller.asked",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "os.traveller.reflect",
+   "speaker": "translator-lio",
+   "text": "Venn means 'earliest'. But visitors will read 'leading', and think he says Loud's pen was the best. What should I write?",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Use 'earliest', and add 'on record'.",
+     "effects": [
+      {
+       "setFlag": "os.traveller.choice",
+       "value": "earliest"
+      }
+     ],
+     "next": "os.traveller.done"
+    },
+    {
+     "text": "Use both words, with a short note on each.",
+     "effects": [
+      {
+       "setFlag": "os.traveller.choice",
+       "value": "both"
+      }
+     ],
+     "next": "os.traveller.done"
+    },
+    {
+     "text": "Ask a visitor how they read each word first.",
+     "effects": [
+      {
+       "setFlag": "os.traveller.choice",
+       "value": "test"
+      }
+     ],
+     "next": "os.traveller.done"
+    },
+    {
+     "text": "I'm not sure. Every word adds something.",
+     "effects": [
+      {
+       "setFlag": "os.traveller.choice",
+       "value": "unsure"
+      }
+     ],
+     "next": "os.traveller.done"
+    }
+   ]
+  },
+  {
+   "id": "os.traveller.done",
+   "speaker": "translator-lio",
+   "text": "Translation is a choice, and a good one shows its reasons. I will put a small note under the word. Thank you, Guardian.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "os.traveller.idle",
+   "speaker": "translator-lio",
+   "text": "Every label in this hall goes into four languages. Every one is a choice.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "os.harbour.start",
+   "speaker": "runner-tamar",
+   "text": "You ran messages on the coast? Then help me. I told Mara: 'The farms will bring three carts on Fifthday.' Now the whole market says: 'Free fruit for three days.' Where did it change?",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "os.harbour.met",
+     "value": true
+    }
+   ],
+   "options": [
+    {
+     "text": "I'll ask Mara what she heard.",
+     "effects": [
+      {
+       "setFlag": "os.harbour.started",
+       "value": true
+      }
+     ],
+     "tag": "Your background",
+     "next": null
+    },
+    {
+     "text": "Not now.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "os.harbour.wait",
+   "speaker": "runner-tamar",
+   "text": "Did you ask yet? I'll be here.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "os.harbour.other",
+   "speaker": "fruit-seller",
+   "text": "Three carts on Fifthday, yes. I told my cousin: three days of fruit, come early. She must have told someone 'free'. I never said free!",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "os.harbour.asked",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "os.harbour.reflect",
+   "speaker": "runner-tamar",
+   "text": "So each person kept the part they cared about. How do we stop it next time?",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Write the message on the board, so people can check it.",
+     "effects": [
+      {
+       "setFlag": "os.harbour.choice",
+       "value": "write"
+      }
+     ],
+     "next": "os.harbour.done"
+    },
+    {
+     "text": "Ask each person to say it back before they pass it on.",
+     "effects": [
+      {
+       "setFlag": "os.harbour.choice",
+       "value": "repeat"
+      }
+     ],
+     "next": "os.harbour.done"
+    },
+    {
+     "text": "Send it from one person only, the guildmaster.",
+     "effects": [
+      {
+       "setFlag": "os.harbour.choice",
+       "value": "one"
+      }
+     ],
+     "next": "os.harbour.done"
+    },
+    {
+     "text": "I'm not sure. Messages always change a little.",
+     "effects": [
+      {
+       "setFlag": "os.harbour.choice",
+       "value": "unsure"
+      }
+     ],
+     "next": "os.harbour.done"
+    }
+   ]
+  },
+  {
+   "id": "os.harbour.done",
+   "speaker": "runner-tamar",
+   "text": "I'll try it. A message that people can check travels better than one they can only remember.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "os.harbour.idle",
+   "speaker": "runner-tamar",
+   "text": "Messages in, messages out. The river never stops.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "os.workshop.start",
+   "speaker": "apprentice-ren",
+   "text": "You trained in a workshop? Good. I quenched one knife in rain water and it cracked. So rain water cracks knives. I want to tell everyone. Is that right?",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "os.workshop.met",
+     "value": true
+    }
+   ],
+   "options": [
+    {
+     "text": "Let me ask Hesper first.",
+     "effects": [
+      {
+       "setFlag": "os.workshop.started",
+       "value": true
+      }
+     ],
+     "tag": "Your background",
+     "next": null
+    },
+    {
+     "text": "Not now.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "os.workshop.wait",
+   "speaker": "apprentice-ren",
+   "text": "Did you ask yet? I'll be here.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "os.workshop.other",
+   "speaker": "smith-hesper",
+   "text": "One knife? It cracked for a dozen reasons. The heat, the steel, the shape. Tell Ren to make three the same, change only the water, and watch.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "os.workshop.asked",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "os.workshop.reflect",
+   "speaker": "apprentice-ren",
+   "text": "Three knives, same heat, same steel, only the water changes. And if the rain ones still crack?",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Then rain water is a good suspect, and we test again.",
+     "effects": [
+      {
+       "setFlag": "os.workshop.choice",
+       "value": "suspect"
+      }
+     ],
+     "next": "os.workshop.done"
+    },
+    {
+     "text": "Then it is proven for ever.",
+     "effects": [
+      {
+       "setFlag": "os.workshop.choice",
+       "value": "proven"
+      }
+     ],
+     "next": "os.workshop.done"
+    },
+    {
+     "text": "Then we ask other smiths if they saw the same.",
+     "effects": [
+      {
+       "setFlag": "os.workshop.choice",
+       "value": "others"
+      }
+     ],
+     "next": "os.workshop.done"
+    },
+    {
+     "text": "I'm not sure what would count as enough.",
+     "effects": [
+      {
+       "setFlag": "os.workshop.choice",
+       "value": "unsure"
+      }
+     ],
+     "next": "os.workshop.done"
+    }
+   ]
+  },
+  {
+   "id": "os.workshop.done",
+   "speaker": "apprentice-ren",
+   "text": "Suspect, not proven. I like that word. I'll make the three knives tomorrow, and I'll tell people only what the knives show.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "os.workshop.idle",
+   "speaker": "apprentice-ren",
+   "text": "Hesper says watch the colour of the steel, not the clock.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "os.singer.start",
+   "speaker": "singer-teodora",
+   "text": "A singer! Then you know how songs lose verses. My grandmother sang four verses of the smiths' song. I only remember three. Sefa keeps songs. Will you ask her?",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "os.singer.met",
+     "value": true
+    }
+   ],
+   "options": [
+    {
+     "text": "I'll ask Sefa about the verse.",
+     "effects": [
+      {
+       "setFlag": "os.singer.started",
+       "value": true
+      }
+     ],
+     "tag": "Your background",
+     "next": null
+    },
+    {
+     "text": "Not now.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "os.singer.wait",
+   "speaker": "singer-teodora",
+   "text": "Did you ask yet? I'll be here.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "os.singer.other",
+   "speaker": "scholar-sefa",
+   "text": "I know a fourth verse, yes, from the hill villages: 'The hand that folds the steel is the hand that names it.' But Teodora's family may have sung a different one.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "os.singer.asked",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "os.singer.reflect",
+   "speaker": "singer-teodora",
+   "text": "Sefa's verse is beautiful. But maybe my grandmother sang another. What do I sing now?",
+   "claimKind": "interpretation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Sing Sefa's verse, and say where it comes from.",
+     "effects": [
+      {
+       "setFlag": "os.singer.choice",
+       "value": "credit"
+      }
+     ],
+     "next": "os.singer.done"
+    },
+    {
+     "text": "Keep both: three verses yours, one from the hills, named.",
+     "effects": [
+      {
+       "setFlag": "os.singer.choice",
+       "value": "both"
+      }
+     ],
+     "next": "os.singer.done"
+    },
+    {
+     "text": "Ask the older singers in town before you choose.",
+     "effects": [
+      {
+       "setFlag": "os.singer.choice",
+       "value": "ask"
+      }
+     ],
+     "next": "os.singer.done"
+    },
+    {
+     "text": "I'm not sure. A song belongs to the people who sing it.",
+     "effects": [
+      {
+       "setFlag": "os.singer.choice",
+       "value": "unsure"
+      }
+     ],
+     "next": "os.singer.done"
+    }
+   ]
+  },
+  {
+   "id": "os.singer.done",
+   "speaker": "singer-teodora",
+   "text": "Then the song stays alive and honest. I'll sing it, and I'll say whose voices are in it.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "os.singer.idle",
+   "speaker": "singer-teodora",
+   "text": "Songs are the oldest catalogues we have.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH1-O-archive",
+   "world": "WORLD-01",
+   "title": "Side quest: The Misfiled Slip",
+   "knowledgeQuestion": "How does the way we sort knowledge shape what people can find?",
+   "available": {
+    "origin": "archive"
+   },
+   "objectives": [
+    {
+     "id": "os.archive.o1",
+     "title": "Optional: hear what Bela needs.",
+     "essential": false,
+     "visible": {
+      "all": [
+       {
+        "origin": "archive"
+       },
+       {
+        "flag": "os.archive.met",
+        "eq": true
+       }
+      ]
+     },
+     "done": {
+      "flag": "os.archive.started",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "power",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ],
+      "aoks": [
+       "HIS"
+      ]
+     }
+    },
+    {
+     "id": "os.archive.o2",
+     "title": "Optional: Ask Curator Dace why the model was filed under 'Toys'.",
+     "essential": false,
+     "visible": {
+      "objective": "os.archive.o1"
+     },
+     "done": {
+      "flag": "os.archive.asked",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "power",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ],
+      "aoks": [
+       "HIS"
+      ]
+     },
+     "skills": [
+      "SK-RSC-22"
+     ]
+    },
+    {
+     "id": "os.archive.o3",
+     "title": "Optional: tell Bela what you found, and choose together.",
+     "essential": false,
+     "visible": {
+      "objective": "os.archive.o2"
+     },
+     "done": {
+      "flagSet": "os.archive.choice"
+     },
+     "weave": {
+      "concepts": [
+       "power",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ],
+      "aoks": [
+       "HIS"
+      ]
+     },
+     "onComplete": [
+      {
+       "journal": "j.os.archive"
+      },
+      {
+       "portfolio": "pf.os.archive"
+      }
+     ],
+     "skills": [
+      "SK-CUR-06"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-O-traveller",
+   "world": "WORLD-01",
+   "title": "Side quest: Two Words for First",
+   "knowledgeQuestion": "When a word is translated, whose meaning travels with it?",
+   "available": {
+    "origin": "traveller"
+   },
+   "objectives": [
+    {
+     "id": "os.traveller.o1",
+     "title": "Optional: hear what Lio needs.",
+     "essential": false,
+     "visible": {
+      "all": [
+       {
+        "origin": "traveller"
+       },
+       {
+        "flag": "os.traveller.met",
+        "eq": true
+       }
+      ]
+     },
+     "done": {
+      "flag": "os.traveller.started",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "interpretation",
+       "culture"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "subjects": [
+       "lang-b",
+       "lang-langlit"
+      ],
+      "aoks": [
+       "LAN"
+      ]
+     }
+    },
+    {
+     "id": "os.traveller.o2",
+     "title": "Optional: Ask Clerk Venn what he means by 'first'.",
+     "essential": false,
+     "visible": {
+      "objective": "os.traveller.o1"
+     },
+     "done": {
+      "flag": "os.traveller.asked",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "interpretation",
+       "culture"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "subjects": [
+       "lang-b",
+       "lang-langlit"
+      ],
+      "aoks": [
+       "LAN"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01"
+     ]
+    },
+    {
+     "id": "os.traveller.o3",
+     "title": "Optional: tell Lio what you found, and choose together.",
+     "essential": false,
+     "visible": {
+      "objective": "os.traveller.o2"
+     },
+     "done": {
+      "flagSet": "os.traveller.choice"
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "interpretation",
+       "culture"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "subjects": [
+       "lang-b",
+       "lang-langlit"
+      ],
+      "aoks": [
+       "LAN"
+      ]
+     },
+     "onComplete": [
+      {
+       "journal": "j.os.traveller"
+      },
+      {
+       "portfolio": "pf.os.traveller"
+      }
+     ],
+     "skills": [
+      "SK-ICU-10"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-O-harbour",
+   "world": "WORLD-02",
+   "title": "Side quest: The Changed Message",
+   "knowledgeQuestion": "What happens to knowledge as it passes from person to person?",
+   "available": {
+    "origin": "harbour"
+   },
+   "objectives": [
+    {
+     "id": "os.harbour.o1",
+     "title": "Optional: hear what Tamar needs.",
+     "essential": false,
+     "visible": {
+      "all": [
+       {
+        "origin": "harbour"
+       },
+       {
+        "flag": "os.harbour.met",
+        "eq": true
+       }
+      ]
+     },
+     "done": {
+      "flag": "os.harbour.started",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "truth",
+       "evidence"
+      ],
+      "atl": [
+       "communication",
+       "research"
+      ],
+      "subjects": [
+       "lang-lit",
+       "psychology"
+      ],
+      "aoks": [
+       "HUM"
+      ]
+     }
+    },
+    {
+     "id": "os.harbour.o2",
+     "title": "Optional: Ask Mara the fruit seller what message she heard.",
+     "essential": false,
+     "visible": {
+      "objective": "os.harbour.o1"
+     },
+     "done": {
+      "flag": "os.harbour.asked",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "truth",
+       "evidence"
+      ],
+      "atl": [
+       "communication",
+       "research"
+      ],
+      "subjects": [
+       "lang-lit",
+       "psychology"
+      ],
+      "aoks": [
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-RSC-08",
+      "SK-KNO-05"
+     ]
+    },
+    {
+     "id": "os.harbour.o3",
+     "title": "Optional: tell Tamar what you found, and choose together.",
+     "essential": false,
+     "visible": {
+      "objective": "os.harbour.o2"
+     },
+     "done": {
+      "flagSet": "os.harbour.choice"
+     },
+     "weave": {
+      "concepts": [
+       "truth",
+       "evidence"
+      ],
+      "atl": [
+       "communication",
+       "research"
+      ],
+      "subjects": [
+       "lang-lit",
+       "psychology"
+      ],
+      "aoks": [
+       "HUM"
+      ]
+     },
+     "onComplete": [
+      {
+       "journal": "j.os.harbour"
+      },
+      {
+       "portfolio": "pf.os.harbour"
+      }
+     ],
+     "skills": [
+      "SK-COL-05"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-O-workshop",
+   "world": "WORLD-02",
+   "title": "Side quest: One Quench Is Not a Test",
+   "knowledgeQuestion": "When is one result enough to know something?",
+   "available": {
+    "origin": "workshop"
+   },
+   "objectives": [
+    {
+     "id": "os.workshop.o1",
+     "title": "Optional: hear what Ren needs.",
+     "essential": false,
+     "visible": {
+      "all": [
+       {
+        "origin": "workshop"
+       },
+       {
+        "flag": "os.workshop.met",
+        "eq": true
+       }
+      ]
+     },
+     "done": {
+      "flag": "os.workshop.started",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "design-tech",
+       "physics"
+      ],
+      "aoks": [
+       "NAT"
+      ]
+     }
+    },
+    {
+     "id": "os.workshop.o2",
+     "title": "Optional: Ask Hesper what she thinks of Ren's cracked knife.",
+     "essential": false,
+     "visible": {
+      "objective": "os.workshop.o1"
+     },
+     "done": {
+      "flag": "os.workshop.asked",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "design-tech",
+       "physics"
+      ],
+      "aoks": [
+       "NAT"
+      ]
+     },
+     "skills": [
+      "SK-KNO-10"
+     ]
+    },
+    {
+     "id": "os.workshop.o3",
+     "title": "Optional: tell Ren what you found, and choose together.",
+     "essential": false,
+     "visible": {
+      "objective": "os.workshop.o2"
+     },
+     "done": {
+      "flagSet": "os.workshop.choice"
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "design-tech",
+       "physics"
+      ],
+      "aoks": [
+       "NAT"
+      ]
+     },
+     "onComplete": [
+      {
+       "journal": "j.os.workshop"
+      },
+      {
+       "portfolio": "pf.os.workshop"
+      }
+     ],
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-05"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-O-singer",
+   "world": "WORLD-02",
+   "title": "Side quest: The Missing Verse",
+   "knowledgeQuestion": "Can two different versions of a story both hold knowledge?",
+   "available": {
+    "origin": "singer"
+   },
+   "objectives": [
+    {
+     "id": "os.singer.o1",
+     "title": "Optional: hear what Teodora needs.",
+     "essential": false,
+     "visible": {
+      "all": [
+       {
+        "origin": "singer"
+       },
+       {
+        "flag": "os.singer.met",
+        "eq": true
+       }
+      ]
+     },
+     "done": {
+      "flag": "os.singer.started",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "interpretation",
+       "truth"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "subjects": [
+       "lang-lit",
+       "history"
+      ],
+      "aoks": [
+       "ART",
+       "HIS"
+      ]
+     }
+    },
+    {
+     "id": "os.singer.o2",
+     "title": "Optional: Ask Sefa about the missing verse of the smiths' song.",
+     "essential": false,
+     "visible": {
+      "objective": "os.singer.o1"
+     },
+     "done": {
+      "flag": "os.singer.asked",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "interpretation",
+       "truth"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "subjects": [
+       "lang-lit",
+       "history"
+      ],
+      "aoks": [
+       "ART",
+       "HIS"
+      ]
+     },
+     "skills": [
+      "SK-KNO-11",
+      "SK-ICU-18"
+     ]
+    },
+    {
+     "id": "os.singer.o3",
+     "title": "Optional: tell Teodora what you found, and choose together.",
+     "essential": false,
+     "visible": {
+      "objective": "os.singer.o2"
+     },
+     "done": {
+      "flagSet": "os.singer.choice"
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "interpretation",
+       "truth"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "subjects": [
+       "lang-lit",
+       "history"
+      ],
+      "aoks": [
+       "ART",
+       "HIS"
+      ]
+     },
+     "onComplete": [
+      {
+       "journal": "j.os.singer"
+      },
+      {
+       "portfolio": "pf.os.singer"
+      }
+     ],
+     "skills": [
+      "SK-ICU-14"
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.os.archive.o1.1",
+   "objective": "os.archive.o1",
+   "depth": 1,
+   "text": "How does the way we sort knowledge shape what people can find?"
+  },
+  {
+   "id": "h.os.archive.o1.2",
+   "objective": "os.archive.o1",
+   "depth": 2,
+   "text": "Someone in this world needs help that fits your background."
+  },
+  {
+   "id": "h.os.archive.o1.3",
+   "objective": "os.archive.o1",
+   "depth": 3,
+   "text": "Talk to Cataloguer Bela Varga."
+  },
+  {
+   "id": "h.os.archive.o1.4",
+   "objective": "os.archive.o1",
+   "depth": 4,
+   "text": "Bela is near the catalogue cabinets in the Nexus hall. Curator Dace is in the west of the hall."
+  },
+  {
+   "id": "h.os.archive.o2.1",
+   "objective": "os.archive.o2",
+   "depth": 1,
+   "text": "How does the way we sort knowledge shape what people can find?"
+  },
+  {
+   "id": "h.os.archive.o2.2",
+   "objective": "os.archive.o2",
+   "depth": 2,
+   "text": "Someone else knows part of the answer."
+  },
+  {
+   "id": "h.os.archive.o2.3",
+   "objective": "os.archive.o2",
+   "depth": 3,
+   "text": "Ask Curator Dace why the model was filed under 'Toys'."
+  },
+  {
+   "id": "h.os.archive.o2.4",
+   "objective": "os.archive.o2",
+   "depth": 4,
+   "text": "Bela is near the catalogue cabinets in the Nexus hall. Curator Dace is in the west of the hall."
+  },
+  {
+   "id": "h.os.archive.o3.1",
+   "objective": "os.archive.o3",
+   "depth": 1,
+   "text": "What did you learn from the other person?"
+  },
+  {
+   "id": "h.os.archive.o3.2",
+   "objective": "os.archive.o3",
+   "depth": 2,
+   "text": "There is no single right choice."
+  },
+  {
+   "id": "h.os.archive.o3.3",
+   "objective": "os.archive.o3",
+   "depth": 3,
+   "text": "Talk to Bela and choose an answer."
+  },
+  {
+   "id": "h.os.archive.o3.4",
+   "objective": "os.archive.o3",
+   "depth": 4,
+   "text": "Bela is near the catalogue cabinets in the Nexus hall. Curator Dace is in the west of the hall."
+  },
+  {
+   "id": "h.os.traveller.o1.1",
+   "objective": "os.traveller.o1",
+   "depth": 1,
+   "text": "When a word is translated, whose meaning travels with it?"
+  },
+  {
+   "id": "h.os.traveller.o1.2",
+   "objective": "os.traveller.o1",
+   "depth": 2,
+   "text": "Someone in this world needs help that fits your background."
+  },
+  {
+   "id": "h.os.traveller.o1.3",
+   "objective": "os.traveller.o1",
+   "depth": 3,
+   "text": "Talk to Translator Lio Ferreira."
+  },
+  {
+   "id": "h.os.traveller.o1.4",
+   "objective": "os.traveller.o1",
+   "depth": 4,
+   "text": "Lio is near the Hall of Firsts sign. Clerk Venn is in the east of the main hall."
+  },
+  {
+   "id": "h.os.traveller.o2.1",
+   "objective": "os.traveller.o2",
+   "depth": 1,
+   "text": "When a word is translated, whose meaning travels with it?"
+  },
+  {
+   "id": "h.os.traveller.o2.2",
+   "objective": "os.traveller.o2",
+   "depth": 2,
+   "text": "Someone else knows part of the answer."
+  },
+  {
+   "id": "h.os.traveller.o2.3",
+   "objective": "os.traveller.o2",
+   "depth": 3,
+   "text": "Ask Clerk Venn what he means by 'first'."
+  },
+  {
+   "id": "h.os.traveller.o2.4",
+   "objective": "os.traveller.o2",
+   "depth": 4,
+   "text": "Lio is near the Hall of Firsts sign. Clerk Venn is in the east of the main hall."
+  },
+  {
+   "id": "h.os.traveller.o3.1",
+   "objective": "os.traveller.o3",
+   "depth": 1,
+   "text": "What did you learn from the other person?"
+  },
+  {
+   "id": "h.os.traveller.o3.2",
+   "objective": "os.traveller.o3",
+   "depth": 2,
+   "text": "There is no single right choice."
+  },
+  {
+   "id": "h.os.traveller.o3.3",
+   "objective": "os.traveller.o3",
+   "depth": 3,
+   "text": "Talk to Lio and choose an answer."
+  },
+  {
+   "id": "h.os.traveller.o3.4",
+   "objective": "os.traveller.o3",
+   "depth": 4,
+   "text": "Lio is near the Hall of Firsts sign. Clerk Venn is in the east of the main hall."
+  },
+  {
+   "id": "h.os.harbour.o1.1",
+   "objective": "os.harbour.o1",
+   "depth": 1,
+   "text": "What happens to knowledge as it passes from person to person?"
+  },
+  {
+   "id": "h.os.harbour.o1.2",
+   "objective": "os.harbour.o1",
+   "depth": 2,
+   "text": "Someone in this world needs help that fits your background."
+  },
+  {
+   "id": "h.os.harbour.o1.3",
+   "objective": "os.harbour.o1",
+   "depth": 3,
+   "text": "Talk to Runner Tamar Okoro."
+  },
+  {
+   "id": "h.os.harbour.o1.4",
+   "objective": "os.harbour.o1",
+   "depth": 4,
+   "text": "Tamar waits by the river gate south of the square. Mara sells fruit near the fruit boxes."
+  },
+  {
+   "id": "h.os.harbour.o2.1",
+   "objective": "os.harbour.o2",
+   "depth": 1,
+   "text": "What happens to knowledge as it passes from person to person?"
+  },
+  {
+   "id": "h.os.harbour.o2.2",
+   "objective": "os.harbour.o2",
+   "depth": 2,
+   "text": "Someone else knows part of the answer."
+  },
+  {
+   "id": "h.os.harbour.o2.3",
+   "objective": "os.harbour.o2",
+   "depth": 3,
+   "text": "Ask Mara the fruit seller what message she heard."
+  },
+  {
+   "id": "h.os.harbour.o2.4",
+   "objective": "os.harbour.o2",
+   "depth": 4,
+   "text": "Tamar waits by the river gate south of the square. Mara sells fruit near the fruit boxes."
+  },
+  {
+   "id": "h.os.harbour.o3.1",
+   "objective": "os.harbour.o3",
+   "depth": 1,
+   "text": "What did you learn from the other person?"
+  },
+  {
+   "id": "h.os.harbour.o3.2",
+   "objective": "os.harbour.o3",
+   "depth": 2,
+   "text": "There is no single right choice."
+  },
+  {
+   "id": "h.os.harbour.o3.3",
+   "objective": "os.harbour.o3",
+   "depth": 3,
+   "text": "Talk to Tamar and choose an answer."
+  },
+  {
+   "id": "h.os.harbour.o3.4",
+   "objective": "os.harbour.o3",
+   "depth": 4,
+   "text": "Tamar waits by the river gate south of the square. Mara sells fruit near the fruit boxes."
+  },
+  {
+   "id": "h.os.workshop.o1.1",
+   "objective": "os.workshop.o1",
+   "depth": 1,
+   "text": "When is one result enough to know something?"
+  },
+  {
+   "id": "h.os.workshop.o1.2",
+   "objective": "os.workshop.o1",
+   "depth": 2,
+   "text": "Someone in this world needs help that fits your background."
+  },
+  {
+   "id": "h.os.workshop.o1.3",
+   "objective": "os.workshop.o1",
+   "depth": 3,
+   "text": "Talk to Apprentice Ren Takahashi."
+  },
+  {
+   "id": "h.os.workshop.o1.4",
+   "objective": "os.workshop.o1",
+   "depth": 4,
+   "text": "Ren works near the anvil in the west of Emberford. Hesper is at the forge."
+  },
+  {
+   "id": "h.os.workshop.o2.1",
+   "objective": "os.workshop.o2",
+   "depth": 1,
+   "text": "When is one result enough to know something?"
+  },
+  {
+   "id": "h.os.workshop.o2.2",
+   "objective": "os.workshop.o2",
+   "depth": 2,
+   "text": "Someone else knows part of the answer."
+  },
+  {
+   "id": "h.os.workshop.o2.3",
+   "objective": "os.workshop.o2",
+   "depth": 3,
+   "text": "Ask Hesper what she thinks of Ren's cracked knife."
+  },
+  {
+   "id": "h.os.workshop.o2.4",
+   "objective": "os.workshop.o2",
+   "depth": 4,
+   "text": "Ren works near the anvil in the west of Emberford. Hesper is at the forge."
+  },
+  {
+   "id": "h.os.workshop.o3.1",
+   "objective": "os.workshop.o3",
+   "depth": 1,
+   "text": "What did you learn from the other person?"
+  },
+  {
+   "id": "h.os.workshop.o3.2",
+   "objective": "os.workshop.o3",
+   "depth": 2,
+   "text": "There is no single right choice."
+  },
+  {
+   "id": "h.os.workshop.o3.3",
+   "objective": "os.workshop.o3",
+   "depth": 3,
+   "text": "Talk to Ren and choose an answer."
+  },
+  {
+   "id": "h.os.workshop.o3.4",
+   "objective": "os.workshop.o3",
+   "depth": 4,
+   "text": "Ren works near the anvil in the west of Emberford. Hesper is at the forge."
+  },
+  {
+   "id": "h.os.singer.o1.1",
+   "objective": "os.singer.o1",
+   "depth": 1,
+   "text": "Can two different versions of a story both hold knowledge?"
+  },
+  {
+   "id": "h.os.singer.o1.2",
+   "objective": "os.singer.o1",
+   "depth": 2,
+   "text": "Someone in this world needs help that fits your background."
+  },
+  {
+   "id": "h.os.singer.o1.3",
+   "objective": "os.singer.o1",
+   "depth": 3,
+   "text": "Talk to Singer Teodora Lupu."
+  },
+  {
+   "id": "h.os.singer.o1.4",
+   "objective": "os.singer.o1",
+   "depth": 4,
+   "text": "Teodora sits by the Waystone in the market. Sefa is by her catalogue table east of the square."
+  },
+  {
+   "id": "h.os.singer.o2.1",
+   "objective": "os.singer.o2",
+   "depth": 1,
+   "text": "Can two different versions of a story both hold knowledge?"
+  },
+  {
+   "id": "h.os.singer.o2.2",
+   "objective": "os.singer.o2",
+   "depth": 2,
+   "text": "Someone else knows part of the answer."
+  },
+  {
+   "id": "h.os.singer.o2.3",
+   "objective": "os.singer.o2",
+   "depth": 3,
+   "text": "Ask Sefa about the missing verse of the smiths' song."
+  },
+  {
+   "id": "h.os.singer.o2.4",
+   "objective": "os.singer.o2",
+   "depth": 4,
+   "text": "Teodora sits by the Waystone in the market. Sefa is by her catalogue table east of the square."
+  },
+  {
+   "id": "h.os.singer.o3.1",
+   "objective": "os.singer.o3",
+   "depth": 1,
+   "text": "What did you learn from the other person?"
+  },
+  {
+   "id": "h.os.singer.o3.2",
+   "objective": "os.singer.o3",
+   "depth": 2,
+   "text": "There is no single right choice."
+  },
+  {
+   "id": "h.os.singer.o3.3",
+   "objective": "os.singer.o3",
+   "depth": 3,
+   "text": "Talk to Teodora and choose an answer."
+  },
+  {
+   "id": "h.os.singer.o3.4",
+   "objective": "os.singer.o3",
+   "depth": 4,
+   "text": "Teodora sits by the Waystone in the market. Sefa is by her catalogue table east of the square."
+  }
+ ],
+ "portfolio": [
+  {
+   "id": "pf.os.archive",
+   "kind": "reflection",
+   "title": "The Misfiled Slip",
+   "text": "In the Nexus I re-filed a loan slip. How we sort things decides what people can find. A way I sort things in my own life:",
+   "weave": {
+    "concepts": [
+     "power",
+     "interpretation"
+    ],
+    "atl": [
+     "research",
+     "thinking"
+    ],
+    "subjects": [
+     "history",
+     "lang-langlit"
+    ],
+    "aoks": [
+     "HIS"
+    ]
+   }
+  },
+  {
+   "id": "pf.os.traveller",
+   "kind": "reflection",
+   "title": "Two Words for First",
+   "text": "In the Nexus I helped translate the word 'first'. A word from my own languages that does not translate easily:",
+   "weave": {
+    "concepts": [
+     "perspective",
+     "interpretation",
+     "culture"
+    ],
+    "atl": [
+     "communication",
+     "thinking"
+    ],
+    "subjects": [
+     "lang-b",
+     "lang-langlit"
+    ],
+    "aoks": [
+     "LAN"
+    ]
+   }
+  },
+  {
+   "id": "pf.os.harbour",
+   "kind": "reflection",
+   "title": "The Changed Message",
+   "text": "In Emberford I followed a message that changed as it travelled. A time I passed on something and changed it without meaning to:",
+   "weave": {
+    "concepts": [
+     "truth",
+     "evidence"
+    ],
+    "atl": [
+     "communication",
+     "research"
+    ],
+    "subjects": [
+     "lang-lit",
+     "psychology"
+    ],
+    "aoks": [
+     "HUM"
+    ]
+   }
+  },
+  {
+   "id": "pf.os.workshop",
+   "kind": "reflection",
+   "title": "One Quench Is Not a Test",
+   "text": "In Emberford I helped plan a fair test for a cracked knife. A thing I believed after only one try:",
+   "weave": {
+    "concepts": [
+     "evidence",
+     "certainty",
+     "justification"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "design-tech",
+     "physics"
+    ],
+    "aoks": [
+     "NAT"
+    ]
+   }
+  },
+  {
+   "id": "pf.os.singer",
+   "kind": "reflection",
+   "title": "The Missing Verse",
+   "text": "In Emberford I helped a singer find a missing verse. A song, story or saying in my family that has more than one version:",
+   "weave": {
+    "concepts": [
+     "culture",
+     "interpretation",
+     "truth"
+    ],
+    "atl": [
+     "social",
+     "communication"
+    ],
+    "subjects": [
+     "lang-lit",
+     "history"
+    ],
+    "aoks": [
+     "ART",
+     "HIS"
+    ]
+   }
+  }
+ ]
+}

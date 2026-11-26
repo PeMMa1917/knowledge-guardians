@@ -124,19 +124,34 @@ describe('storage, checksum and migration', () => {
       expect(r.pair.continue!.state.inventory['item.journal']).toBe(2);
     }
   });
-  it('migrates a schema 2 save (evidence board) to schema 3 (Showdown, forge, events)', () => {
+  it('migrates a schema 2 save (evidence board) to schema 3 (Showdown, forge, events) and on', () => {
     const v2: any = { ...base(), schema: 2, board: { 'claim.x': ['card.loud-patent'] } };
     delete v2.showdown; delete v2.forge; delete v2.events;
     const r = parsePair(serialisePair({ revision: 4, continue: entry('v2', v2), recovery: null }));
     expect(r.ok).toBe(true);
     if (r.ok) {
       const st: any = r.pair.continue!.state;
-      expect(st.schema).toBe(3);
+      expect(st.schema).toBe(4);
       expect(st.board).toBeUndefined();
       expect(st.showdown).toBeNull();
       expect(st.forge.route).toBe('none');
       expect(st.events.next).toBe(600);
     }
+  });
+  it('migrates a schema 3 save to schema 4 with they/them and no origin (spec 35.1)', () => {
+    const v3: any = { ...base(), schema: 3, player: { name: 'Ana', look: 'player-a' } };
+    const r = parsePair(serialisePair({ revision: 5, continue: entry('v3', v3), recovery: null }));
+    expect(r.ok).toBe(true);
+    if (r.ok) {
+      const st: any = r.pair.continue!.state;
+      expect(st.schema).toBe(4);
+      expect(st.player).toEqual({ name: 'Ana', look: 'player-a', pronouns: { subject: 'they', object: 'them', possessive: 'their' }, origin: null });
+    }
+  });
+  it('rejects a save with bad pronouns', () => {
+    const bad: any = { ...base(), player: { name: 'Ana', look: 'x', pronouns: { subject: '', object: 'them', possessive: 'their' }, origin: null } };
+    const r = parsePair(serialisePair({ revision: 6, continue: entry('bad', bad), recovery: null }));
+    expect(r.ok && r.pair.continue).toBeFalsy();
   });
   it('migrates a version 1 permanent record and keeps its credit and awards', () => {
     const p = migratePermanent({ schema: 1, credit: { 'crit.evidence.date-kinds': 20 }, awards: { 'award.dates-have-kinds': '2026-01-01' } });
@@ -144,6 +159,14 @@ describe('storage, checksum and migration', () => {
     expect(p.awards['award.dates-have-kinds']).toBeTruthy();
     expect(p.portfolio).toEqual([]);
     expect(p.met.atl).toEqual({});
+    expect(p.stones).toEqual({});
+  });
+  it('migrates a version 2 permanent record and adds Question Stones', () => {
+    const p = migratePermanent({ ...newPermanent(), schema: 2, stones: undefined, credit: { 'crit.evidence.date-kinds': 20 } } as any);
+    expect(p.schema).toBe(4);
+    expect(p.credit['crit.evidence.date-kinds']).toBe(20);
+    expect(p.stones).toEqual({});
+    expect(p.skills).toEqual({});
   });
   it('detects a write from another tab (revision check)', () => {
     const store = memoryStore();

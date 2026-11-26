@@ -1,0 +1,327 @@
+{
+ "glossary": [
+  {
+   "id": "evidence",
+   "term": "Evidence",
+   "match": [
+    "evidence"
+   ],
+   "text": "Something you can point to that makes a claim more or less likely: a record, an object, a test result, what a person saw.",
+   "examples": [
+    {
+     "if": {
+      "num": "count.inspected",
+      "gte": 3
+     },
+     "text": "You inspected three exhibits. Each record was evidence for a different kind of 'first'."
+    },
+    {
+     "text": "Inspect an exhibit. Its record is evidence for some claims and not for others."
+    }
+   ]
+  },
+  {
+   "id": "claim",
+   "term": "Claim",
+   "match": [
+    "claim",
+    "claims"
+   ],
+   "text": "Something that someone says is true. A claim can be bigger or smaller than its evidence.",
+   "examples": [
+    {
+     "if": {
+      "flag": "label.pen.everHeld",
+      "eq": true
+     },
+     "text": "Your museum label was a claim: '{flag:label.pen.text}'"
+    },
+    {
+     "text": "The old label 'The first ballpoint pen' is a claim. Is it bigger than its evidence?"
+    }
+   ]
+  },
+  {
+   "id": "justification",
+   "term": "Justification",
+   "match": [
+    "justify",
+    "justified",
+    "justification"
+   ],
+   "text": "The reasons and evidence that you give for a claim, so that someone else can check it.",
+   "examples": [
+    {
+     "if": {
+      "flag": "label.pen.everHeld",
+      "eq": true
+     },
+     "text": "Your label held because the cards you held gave it enough support."
+    },
+    {
+     "text": "When a label holds in the label builder, you have justified it."
+    }
+   ]
+  },
+  {
+   "id": "certainty",
+   "term": "Certainty",
+   "match": [
+    "certain",
+    "certainty",
+    "certainly"
+   ],
+   "text": "How sure we can be. Most knowledge comes with a range or a 'probably', not with total certainty.",
+   "examples": [
+    {
+     "text": "The Met record says the ingots are 'probably' eighteenth century. The word 'probably' is part of the knowledge."
+    }
+   ]
+  },
+  {
+   "id": "interpretation",
+   "term": "Interpretation",
+   "match": [
+    "interpretation",
+    "interpret",
+    "interprets"
+   ],
+   "text": "What someone decides a piece of evidence means. Two people can interpret the same record in different ways.",
+   "examples": [
+    {
+     "if": {
+      "flag": "heard.venn",
+      "eq": true
+     },
+     "text": "Clerk Venn and Curator Dace read the same pen records and gave different interpretations of 'first'."
+    },
+    {
+     "text": "Talk to Curator Dace and Clerk Venn. They interpret the same records differently."
+    }
+   ]
+  },
+  {
+   "id": "perspective",
+   "term": "Perspective",
+   "match": [
+    "perspective",
+    "perspectives",
+    "point of view"
+   ],
+   "text": "Where someone stands when they know something: their place, purpose, training and values. Having one is normal. It is not the same as bias.",
+   "examples": [
+    {
+     "text": "Hesper made the blade. That is her perspective, and it is also why she knows how it was made."
+    }
+   ]
+  },
+  {
+   "id": "objectivity",
+   "term": "Objectivity",
+   "match": [
+    "objective",
+    "objectivity"
+   ],
+   "text": "Trying to reduce the effect of any one person's view, by checking, comparing and staying open to correction.",
+   "examples": [
+    {
+     "if": {
+      "flag": "forge.compared",
+      "eq": true
+     },
+     "text": "You compared your own billet with the blade. That check did not depend on who you trusted."
+    },
+    {
+     "text": "A fair test, where you change one thing, is one way to be more objective."
+    }
+   ]
+  },
+  {
+   "id": "source",
+   "term": "Source",
+   "match": [
+    "source",
+    "sources"
+   ],
+   "text": "Where a piece of information comes from. Ask who made it, when, and why.",
+   "examples": [
+    {
+     "text": "Every documented exhibit in the hall lists its source. Open the Sources tab in your journal."
+    }
+   ]
+  },
+  {
+   "id": "criterion",
+   "term": "Criterion",
+   "match": [
+    "criterion",
+    "criteria"
+   ],
+   "text": "The standard that you use to judge something. 'First' needs a criterion: first to patent, first to work, first to sell?",
+   "examples": [
+    {
+     "if": {
+      "flag": "label.pen.everHeld",
+      "eq": true
+     },
+     "text": "You chose a criterion for your label: '{flag:label.pen.criterion}'."
+    },
+    {
+     "text": "In the label builder, the criterion is 'what kind of first'."
+    }
+   ]
+  },
+  {
+   "id": "counterclaim",
+   "term": "Counterclaim",
+   "match": [
+    "counterclaim",
+    "counterclaims"
+   ],
+   "text": "A reasonable claim against your own. Answering a counterclaim makes an argument stronger.",
+   "examples": [
+    {
+     "if": {
+      "flag": "ee1.argued",
+      "eq": true
+     },
+     "text": "On Tull's claim board you added a counterclaim and still held your claim."
+    },
+    {
+     "text": "In a Showdown, conceding a fair point and answering it gains the crowd's trust."
+    }
+   ]
+  },
+  {
+   "id": "provenance",
+   "term": "Provenance",
+   "match": [
+    "provenance"
+   ],
+   "text": "The history of an object: where it has been and who has held it. A gap in the provenance is where the record stops.",
+   "examples": [
+    {
+     "if": {
+      "flag": "thread.blade.gap",
+      "eq": true
+     },
+     "text": "Your Provenance Thread stopped at a gap after Hesper's workshop."
+    },
+    {
+     "text": "The Provenance Thread follows an object back through its records."
+    }
+   ]
+  },
+  {
+   "id": "documented",
+   "term": "Documented",
+   "match": [
+    "documented"
+   ],
+   "text": "In this game: supported by a real, named historical source for the exact, narrow claim.",
+   "examples": [
+    {
+     "text": "Loud's patent drawing is documented. The workshop model is a reconstruction."
+    }
+   ]
+  },
+  {
+   "id": "reconstruction",
+   "term": "Reconstruction",
+   "match": [
+    "reconstruction"
+   ],
+   "text": "Something made later to show how a thing might have been. It can teach a lot, but it is not the original.",
+   "examples": [
+    {
+     "text": "The workshop model of Loud's pen was built this year. Its date says nothing about 1888."
+    }
+   ]
+  },
+  {
+   "id": "simulation",
+   "term": "Simulation",
+   "match": [
+    "simulation",
+    "model"
+   ],
+   "text": "A test or picture that follows stated rules. It shows what happens if the rules are right, not what happened in history.",
+   "examples": [
+    {
+     "if": {
+      "flag": "sim.fair",
+      "eq": true
+     },
+     "text": "Your fair test at the bench was a simulation. Its numbers came from a stated model."
+    },
+    {
+     "text": "The marking test at the bench is a simulation with a stated model."
+    }
+   ]
+  },
+  {
+   "id": "patent",
+   "term": "Patent",
+   "match": [
+    "patent",
+    "patents",
+    "patented"
+   ],
+   "text": "An official record that gives an inventor rights to a design. It shows that a claim was made and granted, not that the thing worked or sold.",
+   "examples": [
+    {
+     "text": "US Patent 392,046 was granted to John J. Loud in 1888."
+    }
+   ]
+  },
+  {
+   "id": "bias",
+   "term": "Bias",
+   "match": [
+    "bias",
+    "biased"
+   ],
+   "text": "A lean that pushes a judgement one way without good reason. Everyone has a perspective; bias is when it distorts the judgement.",
+   "examples": [
+    {
+     "text": "Throwing out every source with a perspective would empty the archive. Check the reasoning instead."
+    }
+   ]
+  },
+  {
+   "id": "knowledge-question",
+   "term": "Knowledge question",
+   "match": [
+    "knowledge question",
+    "knowledge questions"
+   ],
+   "text": "A question about how we know, not about a fact. 'Who invented the pen?' is a history question. 'How do we decide what counts as first?' is a knowledge question.",
+   "examples": [
+    {
+     "text": "Ask Warden Ise: 'What is the question behind all this?'"
+    }
+   ]
+  },
+  {
+   "id": "research-question",
+   "term": "Research question",
+   "match": [
+    "research question",
+    "research questions"
+   ],
+   "text": "A focused question that an essay can investigate and argue. Practice only in this game: your real Extended Essay question is your own.",
+   "examples": [
+    {
+     "if": {
+      "flag": "lock.inventor.open",
+      "eq": true
+     },
+     "text": "Your practice question: '{flag:lock.inventor.question}'"
+    },
+    {
+     "text": "The Title Lock opens only for a focused, arguable question."
+    }
+   ]
+  }
+ ]
+}

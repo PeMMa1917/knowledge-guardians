@@ -1,0 +1,368 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH5-R03",
+   "world": "WORLD-06",
+   "title": "A Bridge in Two Views",
+   "knowledgeQuestion": "How can two different pictures of one thing both be faithful?",
+   "available": {
+    "all": [
+     {
+      "flag": "forest.guide.west-open",
+      "eq": true
+     },
+     {
+      "flag": "forest.guide.east-open",
+      "eq": true
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "forest.guide.used",
+     "title": "Fit the tracings to the two views of the bridge.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "forest.guide.west-open",
+        "eq": true
+       },
+       {
+        "flag": "forest.guide.east-open",
+        "eq": true
+       }
+      ]
+     },
+     "onComplete": [
+      {
+       "journal": "j.forest.guide"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "objectivity",
+       "perspective"
+      ],
+      "atl": [
+       "thinking",
+       "research",
+       "communication"
+      ],
+      "aoks": [
+       "ART",
+       "MAT",
+       "TEC"
+      ],
+      "subjects": [
+       "visual-arts",
+       "math-ai",
+       "design-tech"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "forest.guide.trace-west",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "On this level strip of bank you’re looking straight along the bridge rail. The end post hides the lower post. The joiner set a frame on this exact spot. A blank tracing strip fits in its groove.",
+   "options": [
+    {
+     "text": "Slide in a strip. Mark the post you can see.",
+     "next": "forest.guide.scratch-west",
+     "if": {
+      "not": {
+       "flag": "forest.guide.west-traced",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "forest.guide.west-traced",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the frame in place."
+    }
+   ]
+  },
+  {
+   "id": "forest.guide.scratch-west",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You draw one dark edge. The frame has a WEST notch and a flat base. You copy those marks onto the corner of the strip. The joiner’s bench in the clearing has a space for this view."
+  },
+  {
+   "id": "forest.guide.trace-east",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "From this rise you see across the rail instead of along it. There are two posts with a little daylight between them. This frame stands above the bridge deck, tilted to match that view.",
+   "options": [
+    {
+     "text": "Trace both posts and mark the space between them.",
+     "next": "forest.guide.scratch-east",
+     "if": {
+      "not": {
+       "flag": "forest.guide.east-traced",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "forest.guide.east-traced",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the frame in place."
+    }
+   ]
+  },
+  {
+   "id": "forest.guide.scratch-east",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You run the pencil along both edges. The EAST notch and the rise mark go on the corner. At the joiner’s bench, this view can go beside the one from the bank."
+  },
+  {
+   "id": "forest.guide.bench",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The joiner is building a guide to the old rail. People stop here to sketch the bridge, and some go straight to a crossing. A note asks for two drawings: one through the west-bank frame and one through the frame on the east rise. The bench has room for one hinged guide or for two small approach panels.",
+   "options": [
+    {
+     "text": "Mount the two tracings back to back on the hinged guide.",
+     "next": "forest.guide.mounted",
+     "if": {
+      "all": [
+       {
+        "flag": "forest.guide.west-traced",
+        "eq": true
+       },
+       {
+        "flag": "forest.guide.east-traced",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "forest.guide.form"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.guide.form",
+       "value": "hinged"
+      }
+     ]
+    },
+    {
+     "text": "Set each tracing in its own panel and hang it at its approach.",
+     "next": "forest.guide.hung",
+     "if": {
+      "all": [
+       {
+        "flag": "forest.guide.west-traced",
+        "eq": true
+       },
+       {
+        "flag": "forest.guide.east-traced",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "forest.guide.form"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.guide.form",
+       "value": "split"
+      }
+     ]
+    },
+    {
+     "text": "Look for the frames first."
+    }
+   ]
+  },
+  {
+   "id": "forest.guide.mounted",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You set the west tracing against one face of the guide and the taller east view against the other. Each leaf gets a label you can read below the picture. Try turning it at the bench, where a visitor can compare both pictures in one place."
+  },
+  {
+   "id": "forest.guide.hung",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You give the joiner a panel for each bank, with a small arrow for where to stand. People can walk up to the rail with the view in hand. Check each panel on the trail. The joiner leaves the two outlines on this bench."
+  },
+  {
+   "id": "forest.guide.bench-after",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The cutouts on the bench show which panels went out. The west panel hangs by the level bank. The east panel is on the rise. The two pictures still share the same scale mark."
+  },
+  {
+   "id": "forest.guide.hinges",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The guide swings on one hinge. A thin raised line along each lower edge shows the bridge deck. The leaves read LEVEL BANK and RISE.",
+   "options": [
+    {
+     "text": "Turn the leaf marked LEVEL BANK.",
+     "next": "forest.guide.hinge-west"
+    },
+    {
+     "text": "Turn the leaf marked RISE.",
+     "next": "forest.guide.hinge-east"
+    },
+    {
+     "text": "Step back from the guide."
+    }
+   ]
+  },
+  {
+   "id": "forest.guide.hinge-west",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "From the level bank, the end post covers the lower post. The joiner has put a blank space where your view stops. Both leaves have a scale mark for one plank, so readers can check how far the tracing runs.",
+   "options": [
+    {
+     "text": "Turn the leaf marked RISE.",
+     "next": "forest.guide.hinge-east"
+    },
+    {
+     "text": "Leave the guide standing."
+    }
+   ],
+   "effects": [
+    {
+     "setFlag": "forest.guide.west-open",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "forest.guide.hinge-east",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The RISE leaf shows two posts. A visitor turns it at the hinge and asks which standing place would bring those lines together. The guide puts the two places beside the drawings.",
+   "options": [
+    {
+     "text": "Turn the leaf marked LEVEL BANK.",
+     "next": "forest.guide.hinge-west"
+    },
+    {
+     "text": "Leave the guide standing."
+    }
+   ],
+   "effects": [
+    {
+     "setFlag": "forest.guide.east-open",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "forest.guide.panel-west",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The west-bank panel hangs beside the old rail. One post sits in front of the other from here. Move to the notch on the bank and line up the drawing’s raised deck line with the actual deck.",
+   "options": [
+    {
+     "text": "Line up the deck with the west notch.",
+     "next": "forest.guide.west-seen"
+    },
+    {
+     "text": "Walk on."
+    }
+   ]
+  },
+  {
+   "id": "forest.guide.west-seen",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The drawn edges meet the real edges. A walker traces the line and adds WEST BANK to the sketch that will go home. The small arrow on the panel points to the other view.",
+   "effects": [
+    {
+     "setFlag": "forest.guide.west-open",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "forest.guide.panel-east",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "At the rise the two posts separate. The east panel has the same deck line as the west panel. There is room to put a finger between the drawn posts.",
+   "options": [
+    {
+     "text": "Line up the deck with the east notch.",
+     "next": "forest.guide.east-seen"
+    },
+    {
+     "text": "Walk on."
+    }
+   ]
+  },
+  {
+   "id": "forest.guide.east-seen",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "From the rise, the gap in the tracing sits over the gap in the rail. A walker points to the lower post, then turns to see what hides it from the bank. The panel keeps both viewing places on its edge.",
+   "effects": [
+    {
+     "setFlag": "forest.guide.east-open",
+     "value": true
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.forest.guide.1",
+   "objective": "forest.guide.used",
+   "depth": 1,
+   "text": "A view changes when the observer changes banks."
+  },
+  {
+   "id": "h.forest.guide.2",
+   "objective": "forest.guide.used",
+   "depth": 2,
+   "text": "Look for the sketch frames on the level west bank and the east rise."
+  },
+  {
+   "id": "h.forest.guide.3",
+   "objective": "forest.guide.used",
+   "depth": 3,
+   "text": "Put the two tracings on the joiner’s bench in the clearing. Decide where readers should meet them."
+  },
+  {
+   "id": "h.forest.guide.4",
+   "objective": "forest.guide.used",
+   "depth": 4,
+   "text": "Turn both leaves at the bench, or follow the trail and line up the two approach panels."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.forest.guide",
+   "claimKind": "observation",
+   "text": "The two bridge tracings became a guide. They keep each standing place with its drawing. From the west the end post covers the lower one. From the rise both posts are in view."
+  }
+ ]
+}

@@ -1,0 +1,306 @@
+{
+ "dialogue": [
+  {
+   "id": "sea.symbol.desk",
+   "speaker": "sea-cartographer",
+   "text": "A market carrier says the roof-shaped mark takes her straight to Lantern House. A deckhand wants the two lights she was shown from the skiff. Clip one mark onto this plain shore sketch. Both readers will use the same sheet from the same bench. Then try the other mark.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pin the stepped roof mark to the sketch.",
+     "next": "sea.symbol.roof",
+     "if": {
+      "objective": "sea.finish"
+     },
+     "effects": [
+      {
+       "setFlag": "sea.symbol.roof",
+       "value": true
+      },
+      {
+       "setFlag": "sea.symbol.last",
+       "value": "roof"
+      }
+     ]
+    },
+    {
+     "text": "Pin two light dots in the same place.",
+     "next": "sea.symbol.lights",
+     "if": {
+      "objective": "sea.finish"
+     },
+     "effects": [
+      {
+       "setFlag": "sea.symbol.lights",
+       "value": true
+      },
+      {
+       "setFlag": "sea.symbol.last",
+       "value": "lights"
+      }
+     ]
+    },
+    {
+     "text": "Leave both marks on the desk."
+    }
+   ]
+  },
+  {
+   "id": "sea.symbol.roof",
+   "speaker": "sea-cartographer",
+   "text": "The carrier points to the step in the roof and names Lantern House. The deckhand points farther up the page. “That could be the store roof from where I work.” The sheet, bench and readers will stay the same for the next mark.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the copy on the desk."
+    },
+    {
+     "text": "Clear the mark and keep the same sheet.",
+     "next": "sea.symbol.desk",
+     "effects": [
+      {
+       "setFlag": "sea.symbol.last",
+       "value": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sea.symbol.lights",
+   "speaker": "sea-cartographer",
+   "text": "With the two dots on the same sheet, the deckhand names the pair of lights on the upper landing. The carrier asks whether the dots show two buildings. Renna tells you the shore frame can check where both first choices were meant to point.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the copy on the desk."
+    },
+    {
+     "text": "Clear the mark and keep the same sheet.",
+     "next": "sea.symbol.desk",
+     "effects": [
+      {
+       "setFlag": "sea.symbol.last",
+       "value": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sea.symbol.place",
+   "speaker": "sea-harbourkeeper",
+   "text": "You found both marks on the same landing from the shore frame. The roof and the lights each helped one reader. Put a key where someone can learn the other mark without guessing. Keep Lantern House in words alongside both.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put both marks by Market Rail.",
+     "next": "sea.symbol.place.rail",
+     "if": {
+      "objective": "sea.symbol.compared"
+     },
+     "effects": [
+      {
+       "setFlag": "sea.symbol.mount",
+       "value": "rail"
+      }
+     ]
+    },
+    {
+     "text": "Put both marks by the skiff.",
+     "next": "sea.symbol.place.skiff",
+     "if": {
+      "objective": "sea.symbol.compared"
+     },
+     "effects": [
+      {
+       "setFlag": "sea.symbol.mount",
+       "value": "skiff"
+      }
+     ]
+    },
+    {
+     "text": "Leave the two marks ready."
+    }
+   ]
+  },
+  {
+   "id": "sea.symbol.place.rail",
+   "speaker": "sea-harbourkeeper",
+   "text": "A carrier shows a new reader the roof cutout on the rail. They use the words beside it to match the two dots on the copy a deckhand carried up the steps. The key meets them before the turn to the market.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.symbol.place.skiff",
+   "speaker": "sea-harbourkeeper",
+   "text": "A deckhand uses the key to show a passenger which upper landing will show both lights. The passenger matches the roof mark from her shore copy. The key will be there when the crew begins the next handover.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH8-R02",
+   "world": "WORLD-09",
+   "title": "A Roof and Two Lights",
+   "knowledgeQuestion": "What helps people connect an unfamiliar mark to the place it stands for?",
+   "available": {
+    "objective": "sea.finish"
+   },
+   "objectives": [
+    {
+     "id": "sea.symbol.compared",
+     "title": "Try both marks with the two readers and check their landmark at the shore frame.",
+     "done": {
+      "all": [
+       {
+        "flag": "sea.symbol.roof",
+        "eq": true
+       },
+       {
+        "flag": "sea.symbol.lights",
+        "eq": true
+       },
+       {
+        "flag": "sea.symbol.sight",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "interpretation",
+       "explanation",
+       "evidence",
+       "culture",
+       "perspective"
+      ],
+      "atl": [
+       "research",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN",
+       "TEC"
+      ],
+      "subjects": [
+       "geography",
+       "lang-langlit",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-THK-05",
+      "SK-MED-04"
+     ]
+    },
+    {
+     "id": "sea.symbol.placed",
+     "title": "Leave both marks and the landmark’s name where people can use the key.",
+     "done": {
+      "flagSet": "sea.symbol.mount"
+     },
+     "visible": {
+      "objective": "sea.symbol.compared"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "culture"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "geography",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01"
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.sea.symbol.compared.1",
+   "objective": "sea.symbol.compared",
+   "depth": 1,
+   "text": "Readers can know different marks for one landmark."
+  },
+  {
+   "id": "h.sea.symbol.compared.2",
+   "objective": "sea.symbol.compared",
+   "depth": 2,
+   "text": "Look for Renna’s symbol desk in Lantern House."
+  },
+  {
+   "id": "h.sea.symbol.compared.3",
+   "objective": "sea.symbol.compared",
+   "depth": 3,
+   "text": "Put the roof mark and the two dots on the same sketch. Listen to both readers."
+  },
+  {
+   "id": "h.sea.symbol.compared.4",
+   "objective": "sea.symbol.compared",
+   "depth": 4,
+   "text": "After both trials, go to Seagrass Steps and look through the shore sight frame by the market."
+  },
+  {
+   "id": "h.sea.symbol.placed.1",
+   "objective": "sea.symbol.placed",
+   "depth": 1,
+   "text": "Give the reader the place name alongside the mark they recognise."
+  },
+  {
+   "id": "h.sea.symbol.placed.2",
+   "objective": "sea.symbol.placed",
+   "depth": 2,
+   "text": "Find the empty key holder at Seagrass Steps."
+  },
+  {
+   "id": "h.sea.symbol.placed.3",
+   "objective": "sea.symbol.placed",
+   "depth": 3,
+   "text": "Choose who will reach the key first, the carriers at Market Rail or the readers boarding the skiff."
+  },
+  {
+   "id": "h.sea.symbol.placed.4",
+   "objective": "sea.symbol.placed",
+   "depth": 4,
+   "text": "Hang the key at the rail or at the skiff. Read the new sign at your chosen place."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.sea-symbol-key",
+   "attribute": "communicator",
+   "when": {
+    "objective": "sea.symbol.placed"
+   },
+   "did": "You tested two ways to mark the same place, then kept both marks available to the next reader.",
+   "prompt": "Where else might two people use different signs for the same thing?"
+  }
+ ],
+ "chronicle": [
+  {
+   "id": "sea-symbol-key",
+   "title": "A roof and two lights",
+   "text": "Both signs for Lantern House now have a key where someone can check the place name.",
+   "if": {
+    "objective": "sea.symbol.placed"
+   }
+  }
+ ]
+}

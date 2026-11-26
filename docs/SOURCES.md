@@ -47,17 +47,17 @@ The fair test at the bench is a **simulation** (`claimKind: simulation`). Its nu
 
 ### The Nexus: the Hall of Firsts (optional side quest)
 
-Seven plaques in a side wing of the Nexus. Each plaque has an old, too-strong label ("THE FIRST…"). The player can rewrite it with a small label kit (`src/content/firsts.json`). Together with the ballpoint-pen exhibits (North America and Europe), the hall covers every inhabited continent and periods from ancient to the 20th century.
+Seven plaques in a side wing of the Nexus. Each plaque has an old, too-strong label ("THE FIRST…"). The player can rewrite it with a small label kit (`src/content/firsts.json`). Each plaque names the person's own place and people, never a continent group (Mika, 2026-11-26). An internal test checks that, with the ballpoint-pen exhibits, the people come from many parts of the world and periods from ancient to the 20th century.
 
-| Plaque | Person | Region | Period | Achievement in the game | Sources |
+| Plaque | Person | Place shown to players | Period | Achievement in the game | Sources |
 |---|---|---|---|---|---|
-| OBJ-101 | Eratosthenes | Africa (Alexandria) | Ancient | Estimated the Earth's size from noon shadows, about 240 BCE | HIS-S28 |
-| OBJ-102 | Ibn al-Haytham | West Asia and North Africa (Basra, Cairo) | Medieval | Book of Optics; tested claims about light with experiments | HIS-S29 |
-| OBJ-103 | Bi Sheng | East Asia | Medieval | Movable type of baked clay, 1040s (known from Shen Kuo) | HIS-S21, HIS-S22 |
-| OBJ-104 | Radhanath Sikdar | South Asia | 19th century | Calculations (about 1852) that showed Peak XV (Chomolungma, Sagarmatha) was the highest peak measured | HIS-S23, HIS-S24, HIS-S25 |
-| OBJ-105 | Alberto Santos-Dumont | South America (Brazil), flight in Paris | 20th century | First public airplane flight in Europe, 1906 | HIS-S26, HIS-S27 |
-| OBJ-106 | Kate Sheppard | Oceania (New Zealand) | 19th century | Led the campaign; in 1893 all adult women could vote | HIS-S20 |
-| OBJ-107 | Mary Wollstonecraft | Europe | 18th century | A Vindication of the Rights of Woman, 1792 (Christine de Pizan wrote in defence of women in 1405) | HIS-S30, HIS-S31 |
+| OBJ-101 | Eratosthenes | Alexandria, Egypt | Ancient | Estimated the Earth's size from noon shadows, about 240 BCE | HIS-S28 |
+| OBJ-102 | Ibn al-Haytham | Born in Basra; worked in Cairo | Medieval | Book of Optics; tested claims about light with experiments | HIS-S29 |
+| OBJ-103 | Bi Sheng | Song dynasty China | Medieval | Movable type of baked clay, 1040s (known from Shen Kuo) | HIS-S21, HIS-S22 |
+| OBJ-104 | Radhanath Sikdar | Bengal, India | 19th century | Calculations (about 1852) that showed Peak XV (Chomolungma, Sagarmatha) was the highest peak measured | HIS-S23, HIS-S24, HIS-S25 |
+| OBJ-105 | Alberto Santos-Dumont | Brazilian; flew in Paris | 20th century | First public airplane flight in Europe, 1906 | HIS-S26, HIS-S27 |
+| OBJ-106 | Kate Sheppard | New Zealand (Aotearoa) | 19th century | Led the campaign; in 1893 all adult women could vote | HIS-S20 |
+| OBJ-107 | Mary Wollstonecraft | London, England | 18th century | A Vindication of the Rights of Woman, 1792 (Christine de Pizan wrote in defence of women in 1405) | HIS-S30, HIS-S31 |
 
 Each source is used for its narrow claim only. The plaques show how "first" depends on the criterion: first to do what, first to be recorded, first in which place. Antarctica has no plaque (no permanent population).
 
@@ -80,3 +80,46 @@ The game does not show museum photographs. Exhibits are original pixel art drawn
 ## Checking sources
 
 Links can change. When you work on a mission, open each of its source links. If a link is dead, find the current record and update `url` and `accessed`. Do not change the claim to fit a new source without checking it.
+
+## Chapter 2: Nile Archive and Nexus return table
+
+| Record | Source | Use and limit |
+|---|---|---|
+| Papyrus Sallier III, EA10181,1 | [British Museum: Looking for the Trojan War, item 6](https://www.britishmuseum.org/sites/default/files/2019-12/Large%20print%20guide_Troy.pdf); [Hieroglyphs exhibition guide](https://www.britishmuseum.org/sites/default/files/2022-10/Hieroglyphs_unlocking_ancient_Egypt_large_print_guide_The_British_Museum_2.pdf) | An Egyptian account centred on Ramesses II. The battle, the telling and the later treaty are separate evidence. |
+| Qadesh treaty display | [United Nations Gifts: UNNY067G](https://www.un.org/ungifts/node/615) | The UN holds a modern replica of the cuneiform record. The terms name Hattusili III and Ramesses II; they do not decide who won the earlier battle. |
+| Turin Strike Papyrus, Cat. 1880 | [Museo Egizio catalogue](https://collezionepapiri.museoegizio.it/en-GB/document/131/) and [dated entries](https://collezionepapiri.museoegizio.it/en-GB/section/Papyrus-Collection/History-and-content/Highlights-Turin-Strike-Papyrus/) | Amunnakht records work stoppages and grain payments under Ramesses III, a different ruler from Ramesses II. The text is one record, not independent testimony from everyone in Deir el-Medina. |
+| Turin Mine Map | [Museo Egizio catalogue](https://collezionepapiri.museoegizio.it/en-gb/document/9/) | Roads and types of rock in Wadi Hammamat are marked; the in-game cart timings are invented and labelled as a model. |
+| Singapore Stone | [Yap, Jiao and Perono Cacciafoco: fragment history](https://www.mdpi.com/2409-9252/3/3/19); [Lee and Perono Cacciafoco: possible Kawi connection](https://www.mdpi.com/2409-9252/3/3/18) | The surviving fragment and its documented movements do not provide an agreed reading or precise date for the original carving. |
+| Badang account and later identification | [William L. Gibson, National Library Board Singapore](https://biblioasia.nlb.gov.sg/all-sections/vol-21-issue-1-apr-jun-2025-origins-badang-strongman-singapore-stone/) | The story places a thrown rock at the river mouth. The episode has no inscription; Begbie's later identification is a distinct claim. |
+
+The artwork is original, schematic and labelled as such. No photographs, manuscript images, or translations are reproduced.
+
+## Chapter 3: Preserved Lives
+
+The Cold Store is a fictional Guardian archive. Its displays use maps and schematic files. Published locations and dates stay attached to the source that supports them.
+
+| Source record | Use and limit |
+|---|---|
+| HIS-PRES-01, [Egyptian Ministry of Tourism and Antiquities, the Ramesseum](https://egymonuments.gov.eg/monuments/the-ramesseum-the-temple-of-ramses-ii/) | The temple and its attribution support a claim about the reign. The record does not follow later custody. |
+| HIS-PRES-02, [National Museum of Egyptian Civilization, Ramses II](https://nmec.gov.eg/mummies-hall/ramses-ii/) | The biography identifies KV 7 and the later Deir el-Bahari cache. The game leaves undocumented transfers open. The external museum page shows human remains. |
+| HIS-PRES-03 and -04, [UNESCO map and component table](https://whc.unesco.org/en/list/1634/maps/) and [Chinchorro property description](https://whc.unesco.org/en/list/1634/) | The case names the separate sites and compares preservation conditions and deliberate practice. The account cannot establish an individual's identity or wishes. External pages may show human remains. |
+| HIS-PRES-05 and -06, [Griffith Institute, Carter's first-season journal](https://www.griffith.ox.ac.uk/discoveringTut/journals-and-diaries/season-1/journal.html) and [Lucas's notes on robberies](https://tutankhamun.griffith.ox.ac.uk/miscellaneous/notes-robberies-taa-i1memo1-15verso/taa-i1memo3) | A November 1922 journal entry records observations at the excavation. The later note has its own date. A date on a record does not date all the events it describes. |
+| HIS-PRES-07, [Griffith Institute, The Egyptian workforce](https://tutankhamun.griffith.ox.ac.uk/stories/egyptian-workforce) | Carter acknowledges four named Egyptian foremen. The acknowledgement supports credit for the named men and leaves other identifications open. |
+| HIS-PRES-08 and -09, [Hunan Provincial Cultural Heritage Bureau, reconstruction report](https://wwj.hunan.gov.cn/wwj/c100310/c100311/202405/t20240521_33307461.html) and [ChinaCulture, Mawangdui tombs](https://en.chinaculture.org/gb/en_artqa/2003-09/24/content_39384.htm) | The Mawangdui record places Xin Zhui in Western Han burial context. The reconstruction report describes radiographs, measurements and model choices. An approximation leaves room for features the record cannot settle. The game uses diagram sheets. The external report contains project imagery and discusses human remains. |
+| HIS-PRES-10 to -12, [South Tyrol Museum of Archaeology, Ötzi](https://www.iceman.it/en/oetzi/the-iceman), [equipment record](https://www.iceman.it/en/oetzi/equipment), and [Artioli and colleagues, Long-distance connections in the Copper Age](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0179263) | The museum supplies the 1991 findspot. Its equipment record and the isotope study associate the copper with southern Tuscany. The survey-room routes are schematic possibilities for material exchange. These records do not supply Ötzi’s itinerary. The external museum page includes images of human remains. |
+
+## Chapter 5: Living Forest
+
+Fern Station and its nearby woodland are fictional. The scripted field watches record visible crossings through a gap in the trees or reeds. They provide no animal identities or estimates of the number of birds in the forest.
+
+| Source record | Use and limit |
+|---|---|
+| HIS-S17, [Jane Goodall Institute timeline](https://janegoodall.org/jgi-timeline/) | The 1960 entry documents an observation of chimpanzee tool use at Gombe. The game gives a summary rather than a re-created notebook or historical conversation. |
+| HIS-S18, [Jane Goodall Institute, Voices of Gombe](https://janegoodall.org/news/voices-of-gombe-a-network-of-impact/) | The account credits Tanzanian field staff and records a collaboration with Baraka Daniel on a datasheet. This is a separate source about how a record was made and who receives credit. |
+
+## Chapter 15: Council of Inquiry
+
+The Council stages fictional work and keeps two historical reading cards. The cards give methods the player can try on a separate case.
+
+- HIS-S29 supports the account of Ibn al-Haytham’s experimental work on light and vision. [MacTutor biography](https://mathshistory.st-andrews.ac.uk/Biographies/Al-Haytham/)
+- HIS-COUNCIL-01 supports the account of Mill’s reasons for testing received opinions through discussion. The Stanford Encyclopedia confirms the original publication date of 1859. [On Liberty, chapter II](https://standardebooks.org/ebooks/john-stuart-mill/on-liberty/text/chapter-2) · [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/mill-moral-political/)

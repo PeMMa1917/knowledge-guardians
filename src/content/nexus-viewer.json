@@ -1,0 +1,650 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH1-R18",
+   "world": "WORLD-01",
+   "title": "The Hinged Reader",
+   "knowledgeQuestion": "How does the tool that makes a detail visible change what its reader can claim?",
+   "available": {
+    "flagSet": "nexus.viewer.view"
+   },
+   "objectives": [
+    {
+     "id": "nexus.viewer.compared",
+     "title": "Check the same patent under the narrow reader and on the whole page.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "nexus.viewer.detail",
+        "eq": true
+       },
+       {
+        "flag": "nexus.viewer.sheet",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "TEC",
+       "HIS"
+      ],
+      "subjects": [
+       "design-tech",
+       "history"
+      ]
+     }
+    },
+    {
+     "id": "nexus.viewer.finished",
+     "title": "Give the next reader access to the detail and its source.",
+     "essential": false,
+     "done": {
+      "flag": "nexus.viewer.done",
+      "eq": true
+     },
+     "onComplete": [
+      {
+       "journal": "j.nexus.viewer"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "justification",
+       "responsibility"
+      ],
+      "atl": [
+       "thinking",
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "TEC",
+       "HIS"
+      ],
+      "subjects": [
+       "design-tech",
+       "history",
+       "visual-arts"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "nexus.viewer.wait",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "An apprentice sets down a hinged reader beside the patent. The object card has the grant date. Open the case before sending any of its drawing outside."
+  },
+  {
+   "id": "nexus.viewer.start",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A copy of one drawing from John J. Loud’s granted patent sits under the hinged reader. An apprentice points to the rotating marking point. A carrier asks which file the drawing came from. Between the narrow window and the full sheet they can check different things.",
+   "options": [
+    {
+     "text": "Slide the little reader over the marked point.",
+     "next": "nexus.viewer.detail-check",
+     "effects": [
+      {
+       "setFlag": "nexus.viewer.detail",
+       "value": true
+      },
+      {
+       "setFlag": "nexus.viewer.view",
+       "value": "detail"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "inspected.OBJ-001-A",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.viewer.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Fold the reader back to bring the whole drawing and date into view.",
+     "next": "nexus.viewer.sheet-check",
+     "effects": [
+      {
+       "setFlag": "nexus.viewer.sheet",
+       "value": true
+      },
+      {
+       "setFlag": "nexus.viewer.view",
+       "value": "sheet"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "inspected.OBJ-001-A",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.viewer.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Put the detail at the front and tuck its reference beside the copy.",
+     "next": "nexus.viewer.hang-detail",
+     "effects": [
+      {
+       "setFlag": "nexus.viewer.response",
+       "value": "detail"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "inspected.OBJ-001-A",
+        "eq": true
+       },
+       {
+        "flag": "nexus.viewer.detail",
+        "eq": true
+       },
+       {
+        "flag": "nexus.viewer.sheet",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.viewer.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Keep the full page at the front and leave the reader on the ledge.",
+     "next": "nexus.viewer.hang-sheet",
+     "effects": [
+      {
+       "setFlag": "nexus.viewer.response",
+       "value": "sheet"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "inspected.OBJ-001-A",
+        "eq": true
+       },
+       {
+        "flag": "nexus.viewer.detail",
+        "eq": true
+       },
+       {
+        "flag": "nexus.viewer.sheet",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.viewer.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the reader on its hinge."
+    }
+   ]
+  },
+  {
+   "id": "nexus.viewer.detail-check",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The edge of the reader covers the file number and grant line. The larger view shows the ball and its holder on this drawing. The copy carries no working pen to test."
+  },
+  {
+   "id": "nexus.viewer.sheet-check",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The full-page view brings the grant line and number back into sight. The details of the point are small at this scale. The reader can open and close without changing the paper."
+  },
+  {
+   "id": "nexus.viewer.detail-view",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The large view puts the marked point and holder in reach. The file line waits outside the little window. Fold the reader back to see how the apprentice can trace it.",
+   "options": [
+    {
+     "text": "Slide the little reader over the marked point.",
+     "next": "nexus.viewer.detail-check",
+     "effects": [
+      {
+       "setFlag": "nexus.viewer.detail",
+       "value": true
+      },
+      {
+       "setFlag": "nexus.viewer.view",
+       "value": "detail"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "inspected.OBJ-001-A",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.viewer.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Fold the reader back to bring the whole drawing and date into view.",
+     "next": "nexus.viewer.sheet-check",
+     "effects": [
+      {
+       "setFlag": "nexus.viewer.sheet",
+       "value": true
+      },
+      {
+       "setFlag": "nexus.viewer.view",
+       "value": "sheet"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "inspected.OBJ-001-A",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.viewer.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Put the detail at the front and tuck its reference beside the copy.",
+     "next": "nexus.viewer.hang-detail",
+     "effects": [
+      {
+       "setFlag": "nexus.viewer.response",
+       "value": "detail"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "inspected.OBJ-001-A",
+        "eq": true
+       },
+       {
+        "flag": "nexus.viewer.detail",
+        "eq": true
+       },
+       {
+        "flag": "nexus.viewer.sheet",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.viewer.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Keep the full page at the front and leave the reader on the ledge.",
+     "next": "nexus.viewer.hang-sheet",
+     "effects": [
+      {
+       "setFlag": "nexus.viewer.response",
+       "value": "sheet"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "inspected.OBJ-001-A",
+        "eq": true
+       },
+       {
+        "flag": "nexus.viewer.detail",
+        "eq": true
+       },
+       {
+        "flag": "nexus.viewer.sheet",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.viewer.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the reader on its hinge."
+    }
+   ]
+  },
+  {
+   "id": "nexus.viewer.sheet-view",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The whole-copy view keeps the mark beside the grant line. A visitor leans in to follow the small lines at the point.",
+   "options": [
+    {
+     "text": "Slide the little reader over the marked point.",
+     "next": "nexus.viewer.detail-check",
+     "effects": [
+      {
+       "setFlag": "nexus.viewer.detail",
+       "value": true
+      },
+      {
+       "setFlag": "nexus.viewer.view",
+       "value": "detail"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "inspected.OBJ-001-A",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.viewer.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Fold the reader back to bring the whole drawing and date into view.",
+     "next": "nexus.viewer.sheet-check",
+     "effects": [
+      {
+       "setFlag": "nexus.viewer.sheet",
+       "value": true
+      },
+      {
+       "setFlag": "nexus.viewer.view",
+       "value": "sheet"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "inspected.OBJ-001-A",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.viewer.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Put the detail at the front and tuck its reference beside the copy.",
+     "next": "nexus.viewer.hang-detail",
+     "effects": [
+      {
+       "setFlag": "nexus.viewer.response",
+       "value": "detail"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "inspected.OBJ-001-A",
+        "eq": true
+       },
+       {
+        "flag": "nexus.viewer.detail",
+        "eq": true
+       },
+       {
+        "flag": "nexus.viewer.sheet",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.viewer.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Keep the full page at the front and leave the reader on the ledge.",
+     "next": "nexus.viewer.hang-sheet",
+     "effects": [
+      {
+       "setFlag": "nexus.viewer.response",
+       "value": "sheet"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "inspected.OBJ-001-A",
+        "eq": true
+       },
+       {
+        "flag": "nexus.viewer.detail",
+        "eq": true
+       },
+       {
+        "flag": "nexus.viewer.sheet",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.viewer.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the reader on its hinge."
+    }
+   ]
+  },
+  {
+   "id": "nexus.viewer.hang-detail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The apprentice hangs the large cutaway beside the repair queue, with the patent number and date on a separate tab. A reader can point to the part before reaching for a tool."
+  },
+  {
+   "id": "nexus.viewer.hang-sheet",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The carrier places the full-page copy at the records counter. The small reader hangs beside it on a cord, ready when someone wants to look more closely."
+  },
+  {
+   "id": "nexus.viewer.read-detail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A repair reader taps the large cutaway. “Now I can see where the ball sits. Does this mean it wrote well?” Someone has put the old marking strips away after the workshop test.",
+   "options": [
+    {
+     "text": "Hang a turn-back tab for the whole patent and point to the separate model bench.",
+     "next": "nexus.viewer.fixed-detail",
+     "effects": [
+      {
+       "setFlag": "nexus.viewer.done",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.viewer.response",
+        "eq": "detail"
+       },
+       {
+        "not": {
+         "flag": "nexus.viewer.done",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the repair queue where it is."
+    }
+   ]
+  },
+  {
+   "id": "nexus.viewer.read-sheet",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A visitor copies the grant number and tries to find the marked point. “The file is clear. Which part of this page did the apprentice enlarge?” The nearby reader has no mark to place it.",
+   "options": [
+    {
+     "text": "Pin a transparent frame around the original detail and leave the grant line clear.",
+     "next": "nexus.viewer.fixed-sheet",
+     "effects": [
+      {
+       "setFlag": "nexus.viewer.done",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.viewer.response",
+        "eq": "sheet"
+       },
+       {
+        "not": {
+         "flag": "nexus.viewer.done",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the copy ready."
+    }
+   ]
+  },
+  {
+   "id": "nexus.viewer.fixed-detail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The tab sends the visitor to the patent for the design and to the model bench for a practical check. Each has a different question it can answer."
+  },
+  {
+   "id": "nexus.viewer.fixed-sheet",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The visitor sets the lens over the new frame. They can see both the ball’s holder and which drawing they used. The grant date remains beside it."
+  },
+  {
+   "id": "nexus.viewer.seen-detail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The cutaway shows the drawn point and its holder. The source tab gives U.S. Patent 392,046, granted 30 October 1888. The marking bench answers a separate question about a model’s behaviour."
+  },
+  {
+   "id": "nexus.viewer.seen-sheet",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A frame picks out the small holder on the drawing without covering the grant line. Both views point to U.S. Patent 392,046, granted 30 October 1888."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.nexus.viewer.compared.1",
+   "objective": "nexus.viewer.compared",
+   "depth": 1,
+   "text": "The apprentice and carrier need different details."
+  },
+  {
+   "id": "h.nexus.viewer.compared.2",
+   "objective": "nexus.viewer.compared",
+   "depth": 2,
+   "text": "The viewer has a hinge and a narrow window."
+  },
+  {
+   "id": "h.nexus.viewer.compared.3",
+   "objective": "nexus.viewer.compared",
+   "depth": 3,
+   "text": "Open the original patent case first."
+  },
+  {
+   "id": "h.nexus.viewer.compared.4",
+   "objective": "nexus.viewer.compared",
+   "depth": 4,
+   "text": "Try both the narrow reader and the full-page view."
+  },
+  {
+   "id": "h.nexus.viewer.finished.1",
+   "objective": "nexus.viewer.finished",
+   "depth": 1,
+   "text": "Someone will read what you leave."
+  },
+  {
+   "id": "h.nexus.viewer.finished.2",
+   "objective": "nexus.viewer.finished",
+   "depth": 2,
+   "text": "The two copies can serve different readers."
+  },
+  {
+   "id": "h.nexus.viewer.finished.3",
+   "objective": "nexus.viewer.finished",
+   "depth": 3,
+   "text": "Put one of the tested views where its reader needs it."
+  },
+  {
+   "id": "h.nexus.viewer.finished.4",
+   "objective": "nexus.viewer.finished",
+   "depth": 4,
+   "text": "Visit the installed copy and give the next reader a way to check the missing link."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.nexus.viewer",
+   "claimKind": "observation",
+   "text": "I used two views of the Loud patent and left the original reference where the next reader could find it. The drawing shows the plan for a rotating point. Testing a mark needs a different tool."
+  }
+ ]
+}

@@ -12,7 +12,7 @@ import { check } from './rules';
 export function newPermanent(): PermanentRecord {
   return {
     schema: PERMANENT_SCHEMA, credit: {}, awards: {}, moments: {}, signals: {}, dismissed: [], offered: [],
-    met: { concepts: {}, atl: {}, subjects: {}, aoks: {} }, portfolio: [],
+    met: { concepts: {}, atl: {}, subjects: {}, aoks: {} }, portfolio: [], stones: {}, skills: {},
   };
 }
 
@@ -22,6 +22,8 @@ export function migratePermanent(raw: any): PermanentRecord {
   if (raw.schema > PERMANENT_SCHEMA) throw new Error('Permanent record was made by a newer version.');
   let p = raw;
   if (p.schema === 1) p = { ...newPermanent(), credit: p.credit ?? {}, awards: p.awards ?? {} };
+  if (p.schema === 2) p = { ...p, schema: 3, stones: {} };
+  if (p.schema === 3) p = { ...p, schema: 4, skills: {} };
   return p as PermanentRecord;
 }
 
@@ -58,6 +60,14 @@ export function conceptXP(p: PermanentRecord, pack: ContentPack): Record<Concept
   const out = {} as Record<Concept, number>;
   for (const c of pack.criteria) out[c.concept] = (out[c.concept] ?? 0) + (p.credit[c.id] ?? 0);
   return out;
+}
+
+/** Competency rings (spec 47, C1): credited XP out of the most this chapter can give, per concept. */
+export function conceptRings(p: PermanentRecord, pack: ContentPack): { concept: Concept; got: number; max: number }[] {
+  const got = conceptXP(p, pack);
+  const max = {} as Record<Concept, number>;
+  for (const c of pack.criteria) max[c.concept] = (max[c.concept] ?? 0) + c.maximum;
+  return (Object.keys(max) as Concept[]).map((k) => ({ concept: k, got: Math.min(got[k] ?? 0, max[k]), max: max[k] }));
 }
 
 export function totalXP(p: PermanentRecord): number {

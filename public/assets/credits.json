@@ -16,6 +16,48 @@
       "page": "https://opengameart.org/content/zelda-like-tilesets-and-sprites",
       "made_by": "tools/make_character_variants.py (run: npm run assets:variants)"
     },
+    "market-tiles": {
+      "title": "Original Market of Measures tiles",
+      "author": "Knowledge Guardians project",
+      "licence": "CC0 1.0",
+      "page": "tools/make_market_tiles.py",
+      "made_by": "python3 tools/make_market_tiles.py"
+    },
+    "water-tiles": {
+      "title": "Original Water Commons tiles",
+      "author": "Knowledge Guardians project",
+      "licence": "CC0 1.0",
+      "page": "tools/make_water_tiles.py",
+      "made_by": "python3 tools/make_water_tiles.py (requires Pillow)"
+    },
+    "civic-tiles": {
+      "title": "Original Civic Machine tiles",
+      "author": "Knowledge Guardians project",
+      "licence": "CC0 1.0",
+      "page": "tools/make_civic_tiles.py",
+      "made_by": "python3 tools/make_civic_tiles.py (requires Pillow)"
+    },
+    "voices-tiles": {
+      "title": "Original Archive of Voices tiles",
+      "author": "Knowledge Guardians project",
+      "licence": "CC0 1.0",
+      "page": "tools/make_voices_tiles.py",
+      "made_by": "python3 tools/make_voices_tiles.py (requires Pillow)"
+    },
+    "island-tiles": {
+      "title": "Original Island of Models tiles",
+      "author": "Knowledge Guardians project",
+      "licence": "CC0 1.0",
+      "page": "tools/make_island_tiles.py",
+      "made_by": "python3 tools/make_island_tiles.py (requires Pillow)"
+    },
+    "council-tiles": {
+      "title": "Original Council of Inquiry tiles",
+      "author": "Knowledge Guardians project",
+      "licence": "CC0 1.0",
+      "page": "tools/make_council_tiles.py",
+      "made_by": "python3 tools/make_council_tiles.py (requires Pillow)"
+    },
     "cynicmusic-town": {
       "title": "Town Theme RPG",
       "author": "cynicmusic",
@@ -72,6 +114,12 @@
     "art/armm1998/cave.png": { "pack": "armm1998-zelda-like", "original": "cave.png", "changes": "none (not used yet)" },
     "art/armm1998/character.png": { "pack": "armm1998-zelda-like", "original": "character.png", "changes": "none; source for the generated character sheets" },
     "art/armm1998/objects.png": { "pack": "armm1998-zelda-like", "original": "objects.png", "changes": "none (not used yet)" },
+    "art/generated/market_tiles.png": { "pack": "market-tiles", "changes": "original pixel art drawn by the generator" },
+    "art/generated/water_tiles.png": { "pack": "water-tiles", "changes": "original pixel art drawn by the generator" },
+    "art/generated/civic_tiles.png": { "pack": "civic-tiles", "changes": "original pixel art drawn by the generator" },
+    "art/generated/voices_tiles.png": { "pack": "voices-tiles", "changes": "original pixel art drawn by the generator" },
+    "art/generated/island_tiles.png": { "pack": "island-tiles", "changes": "original pixel art drawn by the generator" },
+    "art/generated/council_tiles.png": { "pack": "council-tiles", "changes": "original pixel art drawn by the generator" },
     "art/generated/characters/player-a.png": { "pack": "generated-characters", "changes": "palette swap of character.png walk rows" },
     "art/generated/characters/player-b.png": { "pack": "generated-characters", "changes": "palette swap" },
     "art/generated/characters/player-c.png": { "pack": "generated-characters", "changes": "palette swap" },

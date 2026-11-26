@@ -22,6 +22,7 @@ export function check(c: Condition | undefined, s: CampaignState): boolean {
   if ('marks' in c) return s.marks >= c.marks;
   if ('card' in c) return s.cards.includes(c.card);
   if ('objective' in c) return s.objectivesDone.includes(c.objective);
+  if ('origin' in c) return s.player.origin === c.origin;
   return false;
 }
 

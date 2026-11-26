@@ -1,0 +1,1921 @@
+{
+ "dialogue": [
+  {
+   "id": "linen.start",
+   "speaker": "narrator",
+   "text": "Two cuttings hang on the trade basket. One looked pale out in the sun. One looked dark under the roof. The dyer wants to know whether they match. The ferry crew wants to know whether they can fold the cloth away. Both have written “ready” on their slip.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the two slips and take the same two cuttings on one board.",
+     "next": "linen.carry",
+     "if": {
+      "not": {
+       "flag": "linen.started",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "linen.started",
+       "value": true
+      },
+      {
+       "addCard": "card.person.haytham"
+      }
+     ]
+    },
+    {
+     "text": "Leave the two cuttings on their hooks."
+    }
+   ]
+  },
+  {
+   "id": "linen.carry",
+   "speaker": "narrator",
+   "text": "Sefa has clipped a small book note to the board. Ibn al-Haytham used experiments to check claims about light. The dyer points to the shade below the west tree and the clear stone farther along the lane. Carry both cuttings at once. The same board will fit on either stand.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "linen.shade",
+   "speaker": "narrator",
+   "text": "Here the tree shades the whole stand. Bring the board under it. Keep the same side of each cutting facing you.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Slide both cuttings under the shade on their board.",
+     "next": "linen.shade.result",
+     "if": {
+      "all": [
+       {
+        "flag": "linen.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "linen.shade",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "linen.shade",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the board in hand."
+    }
+   ],
+   "claimKind": "simulation"
+  },
+  {
+   "id": "linen.shade.result",
+   "speaker": "narrator",
+   "text": "Both cuttings look dark blue-grey in the shade. A thread at each corner still picks up the light. Neither stands out as the paler one on this board.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "linen.open",
+   "speaker": "narrator",
+   "text": "The clear stand takes the same board. Both cuttings can face the open light without moving their clips.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the same board in the open light.",
+     "next": "linen.open.result",
+     "if": {
+      "all": [
+       {
+        "flag": "linen.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "linen.open",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "linen.open",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the board in hand."
+    }
+   ],
+   "claimKind": "simulation"
+  },
+  {
+   "id": "linen.open.result",
+   "speaker": "narrator",
+   "text": "Both cuttings look paler here. The difference seen when the cuttings were on separate hooks does not return. These two look alike when they share the light. The folds are still a separate question.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "linen.tag",
+   "speaker": "narrator",
+   "text": "The dyer can now compare the cuttings in the same light. At the box, the ferry hand presses a corner of the full cloth. “I call it ready when it can go into the basket without damp folding against damp.” Both checks need to travel with the cloth. Put one at the front and hang the other alongside.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang the shared-light comparison at the front of the dyer’s line.",
+     "next": "linen.end.dye",
+     "if": {
+      "all": [
+       {
+        "objective": "linen.o.compare"
+       },
+       {
+        "not": {
+         "flagSet": "linen.tag"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "linen.tag",
+       "value": "dye"
+      }
+     ]
+    },
+    {
+     "text": "Hang the crew’s folding check by the basket with the comparison beside it.",
+     "next": "linen.end.ferry",
+     "if": {
+      "all": [
+       {
+        "objective": "linen.o.compare"
+       },
+       {
+        "not": {
+         "flagSet": "linen.tag"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "linen.tag",
+       "value": "ferry"
+      }
+     ]
+    },
+    {
+     "text": "Leave both tags loose while I think."
+    }
+   ]
+  },
+  {
+   "id": "linen.end.dye",
+   "speaker": "narrator",
+   "text": "The dyer pins the same-light note at eye level. A customer brings two cloth corners for the dyer to compare on the same stand. Lower down the ferry note still asks if the folds are dry enough to pack.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "linen.end.ferry",
+   "speaker": "narrator",
+   "text": "The ferry hand turns the basket tag to “check folds first.” A crew member checks the cloth before packing it. A second slip beside it tells the dyer to compare both cuttings in the same light.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "bell.order.clerk",
+   "speaker": "narrator",
+   "text": "A guild stub names Order 34, the box of blue lantern caps. “Due before the second square bell.” The clerk filed the stub with the other orders he approved before the first bell. Someone has chalked “boat late” on the margin.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the guild stub with its due-bell line.",
+     "next": "bell.order.clerk.trace",
+     "if": {
+      "all": [
+       {
+        "objective": "m02.o5.showdown"
+       },
+       {
+        "not": {
+         "flag": "bell.order.clerk",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bell.order.clerk",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the stub in the tray."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "bell.order.clerk.trace",
+   "speaker": "narrator",
+   "text": "Orrin taps a small copy from the Nexus. Loud’s grant date shows when the patent office acted. “Same with my stamp. I can vouch for the time on the permit. The desk didn’t see the box reach the landing.” A crooked notch shows where the paper was split.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "bell.order.ferry",
+   "speaker": "narrator",
+   "text": "The landing basket has a strip for Order 34. Beside the line with the blue lantern caps sit two bell-shaped marks. A porter takes one bell tally when she gives up a load. The person who receives it adds another.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the ferry strip with the two handover marks.",
+     "next": "bell.order.ferry.trace",
+     "if": {
+      "all": [
+       {
+        "objective": "m02.o5.showdown"
+       },
+       {
+        "not": {
+         "flag": "bell.order.ferry",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bell.order.ferry",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the strip on the basket."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "bell.order.ferry.trace",
+   "speaker": "narrator",
+   "text": "The crew reads a pair of marks as both sides of a handover. The guild uses its bells to mark hours of work. The ferry strip has no arrival time. It has the same crooked notch as the other half of the order.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "bell.order.align",
+   "speaker": "narrator",
+   "text": "A reader has slid the ferry’s two bell shapes under the guild’s second-bell deadline. The box of caps waits beside the reader’s tray. Turn the stub and strip until their torn edges meet. Keep the deadline and the handover marks on separate lines.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Line up the two Order 34 notches and leave a space for the arrival time.",
+     "next": "bell.order.align.proof",
+     "if": {
+      "all": [
+       {
+        "objective": "bell.order.o.collect"
+       },
+       {
+        "not": {
+         "flag": "bell.order.align",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bell.order.align",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the split copy on the board."
+    }
+   ]
+  },
+  {
+   "id": "bell.order.align.proof",
+   "speaker": "narrator",
+   "text": "The notches match. One note tells when the order was due and when someone approved it. The other tells whose hands the box passed through. The landing time still has no mark. The reader wipes the chalked “late” away and leaves the question.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "bell.order.publish",
+   "speaker": "narrator",
+   "text": "The buyer wants something she can bring back to the guild. The ferry crew want the marks they use to stay on the strip. You can put both pieces together under an order heading or keep the crew’s strip and hang a key with it.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set both records under one order with separate headings for time and handover.",
+     "next": "bell.order.end.pair",
+     "if": {
+      "all": [
+       {
+        "objective": "bell.order.o.align"
+       },
+       {
+        "not": {
+         "flagSet": "bell.order.format"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bell.order.format",
+       "value": "pair"
+      }
+     ]
+    },
+    {
+     "text": "Keep the ferry marks with their key and leave an arrival slip for the next order.",
+     "next": "bell.order.end.key",
+     "if": {
+      "all": [
+       {
+        "objective": "bell.order.o.align"
+       },
+       {
+        "not": {
+         "flagSet": "bell.order.format"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bell.order.format",
+       "value": "key"
+      }
+     ]
+    },
+    {
+     "text": "Leave the proof with the buyer while I think."
+    }
+   ]
+  },
+  {
+   "id": "bell.order.end.pair",
+   "speaker": "narrator",
+   "text": "The buyer folds the pair with Order 34 on top. She shows the guild the margin and the handover marks. The arrival line stays open when the box goes to the lantern bench.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "bell.order.end.key",
+   "speaker": "narrator",
+   "text": "The ferry crew tack the guide beside their basket. A later order will get its own arrival slip. The clerk leaves Order 34 open where the arrival time would go, while the buyer moves the box to the lantern bench.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.intake",
+   "speaker": "narrator",
+   "text": "Hana has sent a runner from the washhouse. The step is wet and no water is reaching the rinse tray. Somebody blamed the closed intake. The caretaker has opened her sight cover. From here, you can see water pass the head peg.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the head-peg reading and follow the channel for this round.",
+     "next": "washhouse.intake.note",
+     "if": {
+      "not": {
+       "flag": "washhouse.started",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.started",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the reading with the caretaker."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "washhouse.intake.note",
+   "speaker": "narrator",
+   "text": "Leave the intake as it is for this round. See what reaches the tray below the lane and look behind the catch screen farther west. A dry tray alone cannot tell you where the flow stopped.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.tail",
+   "speaker": "narrator",
+   "text": "At the far side of the washhouse the rinse tray is dry below the tail peg. A thin run goes beside it and across the low step. The tray only catches what comes through its own branch.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the tail-peg reading and mark the run beside the tray.",
+     "next": "washhouse.tail.note",
+     "if": {
+      "all": [
+       {
+        "flag": "washhouse.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "washhouse.tail",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.tail",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the tail marker for now."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "washhouse.tail.note",
+   "speaker": "narrator",
+   "text": "The caretaker keeps both marks in the same round. One records what entered the channel. The other shows what reached this tray. Water on the step cannot fill that space in the record.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.screen",
+   "speaker": "narrator",
+   "text": "Water has collected at the place where the channel narrows. A mat of leaves sits at the catch screen. Some water goes around the screen and joins the run across the step. The tray sits beyond the leaf mat.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Follow the little side run and clip where it leaves the channel.",
+     "next": "washhouse.screen.note",
+     "if": {
+      "all": [
+       {
+        "flag": "washhouse.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "washhouse.screen",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.screen",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the screen where it is."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "washhouse.screen.note",
+   "speaker": "narrator",
+   "text": "The three notes point to the screen as the place to try a clearing. A repair still needs a check downstream. Keep a separate question about whether people can get across the step.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.board",
+   "speaker": "narrator",
+   "text": "Hana has one helper until the end of the shift. The washers need water in the tray. The carriers need a dry walk past it. Have the helper try the screen first, or put out the side crossing and leave the screen to the next crew.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clear the leaves at the screen and leave the catch screen in place.",
+     "next": "washhouse.order.clear",
+     "if": {
+      "all": [
+       {
+        "objective": "washhouse.o.trace"
+       },
+       {
+        "not": {
+         "flagSet": "washhouse.order"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.order",
+       "value": "clear"
+      }
+     ]
+    },
+    {
+     "text": "Open the side crossing and leave the screen for the next crew.",
+     "next": "washhouse.order.step",
+     "if": {
+      "all": [
+       {
+        "objective": "washhouse.o.trace"
+       },
+       {
+        "not": {
+         "flagSet": "washhouse.order"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.order",
+       "value": "step"
+      }
+     ]
+    },
+    {
+     "text": "Keep the order on the hook for now."
+    }
+   ]
+  },
+  {
+   "id": "washhouse.order.clear",
+   "speaker": "narrator",
+   "text": "The helper clips a note to the screen and clears the leaf mat. The intake stays at the mark you read. Go from the head peg to the tray again before telling the washers what changed.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.order.step",
+   "speaker": "narrator",
+   "text": "The helper sets out the dry side step and points carriers around the run. The screen stays in place. Check the head peg again, then find what has changed at the crossing and the tray.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.head-again",
+   "speaker": "narrator",
+   "text": "You come back to the head peg. Water still passes the same notch. Clip this reading beside the one from before the helper started.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Keep the second head-peg reading with the first.",
+     "next": "washhouse.head-matched",
+     "if": {
+      "all": [
+       {
+        "objective": "washhouse.o.order"
+       },
+       {
+        "not": {
+         "flag": "washhouse.headAfter",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.headAfter",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the clip at the head peg."
+    }
+   ]
+  },
+  {
+   "id": "washhouse.head-matched",
+   "speaker": "narrator",
+   "text": "The two readings have the same starting mark. Now compare what reaches the tray and where the carriers can walk.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.check.clear",
+   "speaker": "narrator",
+   "text": "At the same head peg water still passes. Now it also reaches the rinse tray. The run across the step is thinner in this round. There is space on the screen note for the next crew’s reading.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mark flow restored this round and leave the next check open.",
+     "next": "washhouse.end.clear",
+     "if": {
+      "all": [
+       {
+        "flag": "washhouse.order",
+        "eq": "clear"
+       },
+       {
+        "flag": "washhouse.headAfter",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "washhouse.checked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.checked",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the reading in hand."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "washhouse.check.step",
+   "speaker": "narrator",
+   "text": "The side step is dry where the carriers walk. Water still runs across the low step and the rinse tray is dry below its peg. The route around the water worked. The tray needs its own repair.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mark the crossing open and keep the tray repair on the board.",
+     "next": "washhouse.end.step",
+     "if": {
+      "all": [
+       {
+        "flag": "washhouse.order",
+        "eq": "step"
+       },
+       {
+        "flag": "washhouse.headAfter",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "washhouse.checked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "washhouse.checked",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the reading in hand."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "washhouse.end.clear",
+   "speaker": "narrator",
+   "text": "A washer uses the tray again. The caretaker hangs the source and tail readings together for the next crew. A carrier can see the narrower run and still chooses where to put her feet.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "washhouse.end.step",
+   "speaker": "narrator",
+   "text": "Two carriers take the dry side step. The washer moves her pail to a different tray for now. The two jobs stay on separate slips, one for access and one for restored flow.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "hands.claim",
+   "speaker": "porter-idris",
+   "text": "A set of paper examples came in from the Nexus. I saved the tags with just one name. I’ve never needed more than one to take a crate to the right workshop. If there’s one name, one pair of hands did the work. Why would they leave anybody out? See the slip that says “Biro pen”?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep his example and look at one of the slips he passed over.",
+     "next": "hands.look",
+     "if": {
+      "not": {
+       "flag": "hands.started",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "hands.started",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the papers on Idris’s strap."
+    }
+   ]
+  },
+  {
+   "id": "hands.look",
+   "speaker": "porter-idris",
+   "text": "A short name helps me find a workshop on my rounds. I passed over the longer museum entry when I chose the examples for this strap. It’s in the sample tray on the way to the square.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "hands.receipt",
+   "speaker": "porter-idris",
+   "text": "Here is the museum entry I didn’t fit on the tag. Science Museum Group records this pen as object 1949-174/2. The entry names László József Bíró and his brother Georg. The patent office account on the back describes Bíró’s work on the practical pen with his brother and others. Carry the entry back to the strap.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Take that entry rather than another one-name tag.",
+     "next": "hands.receipt.held",
+     "if": {
+      "all": [
+       {
+        "flag": "hands.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "hands.checked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "hands.checked",
+       "value": true
+      },
+      {
+       "addCard": "card.biro-object"
+      },
+      {
+       "addCard": "card.dpma-history"
+      }
+     ]
+    },
+    {
+     "text": "Keep the entry in the sample tray."
+    }
+   ]
+  },
+  {
+   "id": "hands.receipt.held",
+   "speaker": "porter-idris",
+   "text": "The entry and the example tag refer to the same pen. You can take both to Idris. He has kept his other tag rather than dropping it when he heard you were coming.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "hands.review",
+   "speaker": "porter-idris",
+   "text": "I have the tag I carried. You have an entry with two names. I’d still use a short mark to find the maker’s door. How should I keep the rest of this on my route strap?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Grant that a short mark can guide a delivery, then clip the named museum entry behind it.",
+     "next": "hands.end.concede",
+     "if": {
+      "all": [
+       {
+        "objective": "hands.o.compare"
+       },
+       {
+        "all": [
+         {
+          "card": "card.biro-object"
+         },
+         {
+          "card": "card.dpma-history"
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "hands.response"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "hands.response",
+       "value": "concede"
+      },
+      {
+       "relation": "porter-idris",
+       "by": 1
+      }
+     ]
+    },
+    {
+     "text": "Put the short tag and the museum entry side by side so the next carrier can check both.",
+     "next": "hands.end.pair",
+     "if": {
+      "all": [
+       {
+        "objective": "hands.o.compare"
+       },
+       {
+        "all": [
+         {
+          "card": "card.biro-object"
+         },
+         {
+          "card": "card.dpma-history"
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "hands.response"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "hands.response",
+       "value": "pair"
+      },
+      {
+       "relation": "porter-idris",
+       "by": 1
+      }
+     ]
+    },
+    {
+     "text": "Leave the papers at the strap for now."
+    }
+   ]
+  },
+  {
+   "id": "hands.end.concede",
+   "speaker": "porter-idris",
+   "text": "We’ll keep the useful part, then. The short tag goes on the front. I’ll put a clip on the back for the names it left out. Bring me another troublesome tag if you see one.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "hands.end.pair",
+   "speaker": "porter-idris",
+   "text": "I’ll put the two together. The next carrier can see what I expected and what I found after looking again. Come by later. You can help me with the next bundle too.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "scout.review",
+   "speaker": "porter-idris",
+   "text": "Two scouts brought me the same words this morning: turn blocked. One had the notes from the yard. The other carried a gate slip. The next carriers need to know what they can do with each report. Shall we change what the scouts carry, or arrange for someone to check the whole turn?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the turning notes in each scout’s hand first. Ask them to mark the opened gate and their instructions.",
+     "next": "scout.sent.briefed",
+     "if": {
+      "all": [
+       {
+        "objective": "scout.o.compare"
+       },
+       {
+        "not": {
+         "flagSet": "scout.notice"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "scout.notice",
+       "value": "briefed"
+      }
+     ]
+    },
+    {
+     "text": "Keep the gate slips. Send a cart on a clear report and ask the lane keeper for a second look after a blocked one.",
+     "next": "scout.sent.open",
+     "if": {
+      "all": [
+       {
+        "objective": "scout.o.compare"
+       },
+       {
+        "not": {
+         "flagSet": "scout.notice"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "scout.notice",
+       "value": "open"
+      }
+     ]
+    },
+    {
+     "text": "Leave both reports on the board for now."
+    }
+   ]
+  },
+  {
+   "id": "scout.sent.briefed",
+   "speaker": "porter-idris",
+   "text": "I’ll copy the notes for the next shift. A marked report gives my carriers a place to try when two gates are still shut. They still have to look for room to turn on the lane itself.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "scout.sent.open",
+   "speaker": "porter-idris",
+   "text": "The gate volunteers can still go ahead. I’ll leave a bell by the yard for blocked slips so the lane keeper can walk the turn. Tell a carrier to wait with a heavy cart until the keeper comes back.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH1-S06",
+   "title": "Two Tags on the Line",
+   "world": "WORLD-02",
+   "knowledgeQuestion": "When does a word name different checks for people doing different work?",
+   "available": {
+    "flag": "linen.started",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "linen.o.tags",
+     "title": "Take the cuttings and the two “ready” slips.",
+     "essential": false,
+     "done": {
+      "flag": "linen.started",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "perspective",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "anthropology",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-THK-15"
+     ]
+    },
+    {
+     "id": "linen.o.compare",
+     "title": "Carry the same two cuttings into shade and open light.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "linen.shade",
+        "eq": true
+       },
+       {
+        "flag": "linen.open",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "explanation",
+       "evidence",
+       "certainty"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "NAT",
+       "ART"
+      ],
+      "subjects": [
+       "physics",
+       "visual-arts",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-05"
+     ]
+    },
+    {
+     "id": "linen.o.pin",
+     "title": "Pin both checks at the end of the line.",
+     "essential": false,
+     "visible": {
+      "objective": "linen.o.compare"
+     },
+     "done": {
+      "flagSet": "linen.tag"
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "power",
+       "justification",
+       "truth"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "business"
+      ]
+     },
+     "skills": [
+      "SK-WRT-13"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.linen.ready"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-S07",
+   "world": "WORLD-02",
+   "title": "The Two-Bell Order",
+   "knowledgeQuestion": "What do two marks establish when people use them for different purposes?",
+   "available": {
+    "objective": "m02.o5.showdown"
+   },
+   "objectives": [
+    {
+     "id": "bell.order.o.collect",
+     "title": "Bring the guild stub and ferry strip for Order 34 together.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "bell.order.clerk",
+        "eq": true
+       },
+       {
+        "flag": "bell.order.ferry",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "perspective",
+       "evidence",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "business",
+       "anthropology",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-RSC-08",
+      "SK-SPK-01"
+     ]
+    },
+    {
+     "id": "bell.order.o.align",
+     "title": "Line up the two records at the south-lane board.",
+     "essential": false,
+     "visible": {
+      "objective": "bell.order.o.collect"
+     },
+     "done": {
+      "flag": "bell.order.align",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "truth",
+       "certainty",
+       "objectivity",
+       "explanation"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "HIS",
+       "MAT"
+      ],
+      "subjects": [
+       "history",
+       "math-ai",
+       "business"
+      ]
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-THK-05"
+     ]
+    },
+    {
+     "id": "bell.order.o.post",
+     "title": "Put the pair or the key by the buyer’s box.",
+     "essential": false,
+     "visible": {
+      "objective": "bell.order.o.align"
+     },
+     "done": {
+      "flagSet": "bell.order.format"
+     },
+     "weave": {
+      "concepts": [
+       "power",
+       "responsibility",
+       "values",
+       "justification"
+      ],
+      "atl": [
+       "communication",
+       "social",
+       "self-management"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "business",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-WRT-13"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.bell.order"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-S08",
+   "world": "WORLD-02",
+   "title": "A Dry Step for the Washhouse",
+   "knowledgeQuestion": "What changes when we check a repair from where each person needs it to work?",
+   "available": {
+    "flag": "washhouse.started",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "washhouse.o.trace",
+     "title": "Keep the intake reading and trace the water past the screen and tray.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "washhouse.started",
+        "eq": true
+       },
+       {
+        "flag": "washhouse.tail",
+        "eq": true
+       },
+       {
+        "flag": "washhouse.screen",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "certainty",
+       "explanation"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT"
+      ],
+      "subjects": [
+       "physics",
+       "geography",
+       "math-ai",
+       "ess"
+      ]
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-RSC-21"
+     ]
+    },
+    {
+     "id": "washhouse.o.order",
+     "title": "Put a repair order on the washhouse board.",
+     "essential": false,
+     "visible": {
+      "objective": "washhouse.o.trace"
+     },
+     "done": {
+      "flagSet": "washhouse.order"
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "values",
+       "power",
+       "culture"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "self-management"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT"
+      ],
+      "subjects": [
+       "ess",
+       "anthropology",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-THK-15"
+     ]
+    },
+    {
+     "id": "washhouse.o.recheck",
+     "title": "Check the change and leave a note for the next crew.",
+     "essential": false,
+     "visible": {
+      "objective": "washhouse.o.order"
+     },
+     "done": {
+      "flag": "washhouse.checked",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "truth",
+       "responsibility",
+       "justification",
+       "interpretation"
+      ],
+      "atl": [
+       "communication",
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "NAT",
+       "LAN"
+      ],
+      "subjects": [
+       "physics",
+       "design-tech",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-RSC-15"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.washhouse.recheck"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-S09",
+   "world": "WORLD-02",
+   "title": "The Mark and the Hands",
+   "knowledgeQuestion": "What is still useful in a reason after one of its claims has failed?",
+   "available": {
+    "flag": "hands.started",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "hands.o.compare",
+     "title": "Bring the museum entry Idris left in the sample tray.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "hands.checked",
+        "eq": true
+       },
+       {
+        "all": [
+         {
+          "card": "card.biro-object"
+         },
+         {
+          "card": "card.dpma-history"
+         }
+        ]
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "truth",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "business"
+      ]
+     },
+     "skills": [
+      "SK-THK-07",
+      "SK-THK-12"
+     ]
+    },
+    {
+     "id": "hands.o.revise",
+     "title": "Return the entry and decide how the next carrier will see both pieces.",
+     "essential": false,
+     "visible": {
+      "objective": "hands.o.compare"
+     },
+     "done": {
+      "flagSet": "hands.response"
+     },
+     "weave": {
+      "concepts": [
+       "justification",
+       "certainty",
+       "perspective",
+       "responsibility",
+       "power"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "business"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-THK-16"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.hands"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-S10",
+   "title": "The Scout’s Second Road",
+   "world": "WORLD-02",
+   "knowledgeQuestion": "What does a report let us infer when we know how it was made?",
+   "available": {
+    "any": [
+     {
+      "flag": "scout.played.informed",
+      "eq": true
+     },
+     {
+      "flag": "scout.played.independent",
+      "eq": true
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "scout.o.compare",
+     "title": "Set up the cart with each scout’s instructions and compare the two ledgers.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "scout.checked.informed",
+        "eq": true
+       },
+       {
+        "flag": "scout.checked.independent",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "justification",
+       "explanation"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "MAT"
+      ],
+      "subjects": [
+       "math-ai"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-RSC-15"
+     ]
+    },
+    {
+     "id": "scout.o.notice",
+     "title": "Leave an instruction for the scouts and carriers with Idris.",
+     "essential": false,
+     "visible": {
+      "objective": "scout.o.compare"
+     },
+     "done": {
+      "flagSet": "scout.notice"
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "responsibility",
+       "evidence",
+       "perspective"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "MAT",
+       "HUM"
+      ],
+      "subjects": [
+       "math-ai",
+       "geography"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-THK-16"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.scout.notice"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "moments": [
+  {
+   "id": "moment.linen.ready",
+   "attribute": "balanced",
+   "when": {
+    "objective": "linen.o.pin"
+   },
+   "did": "You kept the cloth comparison and the ferry crew’s check in the same place so both groups could use the line.",
+   "prompt": "Who else might put “ready” to work in a different way?"
+  },
+  {
+   "id": "moment.bell.order",
+   "attribute": "open-minded",
+   "when": {
+    "objective": "bell.order.o.post"
+   },
+   "did": "You kept the crew’s own marks beside the guild deadline and checked what each record could tell the buyer.",
+   "prompt": "Where else might two people shop or work by different ways of counting?"
+  },
+  {
+   "id": "moment.washhouse.recheck",
+   "attribute": "caring",
+   "when": {
+    "objective": "washhouse.o.recheck"
+   },
+   "did": "You checked what changed for the washers and the carriers before making a claim about the repair.",
+   "prompt": "Where would you stand if you needed to check a different part of the job?"
+  },
+  {
+   "id": "moment.hands",
+   "attribute": "open-minded",
+   "when": {
+    "objective": "hands.o.revise"
+   },
+   "did": "You looked for the paper Idris had passed over and helped him keep the part of his first reason that worked.",
+   "prompt": "Which other paper would have changed the first story?"
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.linen.ready",
+   "claimKind": "interpretation",
+   "text": "Two corners looked different on different hooks. They looked alike when we gave both the same light. I put that comparison where it could be checked, and left a separate tag for the folds the ferry crew needed to test."
+  },
+  {
+   "id": "j.bell.order",
+   "claimKind": "interpretation",
+   "text": "The two parts of Order 34 fit. The deadline was in square bells. The marks on the ferry strip came from the two sides of a handover. No arrival time was recorded for this box."
+  },
+  {
+   "id": "j.washhouse.recheck",
+   "claimKind": "interpretation",
+   "text": "The head reading showed water entering. The tail reading and the side run showed where it went. A workable walk and a working tray need separate checks."
+  },
+  {
+   "id": "j.hands",
+   "claimKind": "interpretation",
+   "text": "The short tag could help a carrier find a door. The museum entry for this pen named two people. Idris changed the strap when he saw what his earlier choice of papers had left out."
+  },
+  {
+   "id": "j.scout.notice",
+   "claimKind": "simulation",
+   "text": "A blocked report came from both kinds of scout. When the scout had the notes, switching would fit in four of the six setups. When the scout used only a slip, two setups showed the clear turn. Switching and holding fit just as often in the four blocked cases. Idris now has a way to tell his carriers what they need to check on the lane itself."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.linen.tags.1",
+   "objective": "linen.o.tags",
+   "depth": 1,
+   "text": "Two people may use the same word because each knows their own job."
+  },
+  {
+   "id": "h.linen.tags.2",
+   "objective": "linen.o.tags",
+   "depth": 2,
+   "text": "The dyer checks how the colour looks. The ferry crew checks the folds before packing."
+  },
+  {
+   "id": "h.linen.tags.3",
+   "objective": "linen.o.tags",
+   "depth": 3,
+   "text": "Use the cuttings near the south path and take both on one board."
+  },
+  {
+   "id": "h.linen.tags.4",
+   "objective": "linen.o.tags",
+   "depth": 4,
+   "text": "Clip the two slips before walking west to the stands. The board carries both cuttings so you can compare them together."
+  },
+  {
+   "id": "h.linen.compare.1",
+   "objective": "linen.o.compare",
+   "depth": 1,
+   "text": "One difference in the set-up might explain what looked like two colours."
+  },
+  {
+   "id": "h.linen.compare.2",
+   "objective": "linen.o.compare",
+   "depth": 2,
+   "text": "Compare both cuttings under the same light, then change the light for both."
+  },
+  {
+   "id": "h.linen.compare.3",
+   "objective": "linen.o.compare",
+   "depth": 3,
+   "text": "Use the shaded stand near the west tree and the open stand farther along the south lane."
+  },
+  {
+   "id": "h.linen.compare.4",
+   "objective": "linen.o.compare",
+   "depth": 4,
+   "text": "Slide both cuttings into the shade. Then put the same board in the open light, or do the two in reverse. Keep each cutting fixed to the board."
+  },
+  {
+   "id": "h.linen.pin.1",
+   "objective": "linen.o.pin",
+   "depth": 1,
+   "text": "The crew who packs the cloth needs a different check from the person comparing colour."
+  },
+  {
+   "id": "h.linen.pin.2",
+   "objective": "linen.o.pin",
+   "depth": 2,
+   "text": "Give each check its own slip. Let the first reader see the one they can use."
+  },
+  {
+   "id": "h.linen.pin.3",
+   "objective": "linen.o.pin",
+   "depth": 3,
+   "text": "Use the loose tags beside the southwest drying line after both comparisons."
+  },
+  {
+   "id": "h.linen.pin.4",
+   "objective": "linen.o.pin",
+   "depth": 4,
+   "text": "Hang either the shared-light note or the folding check in front. Keep the other slip beside it."
+  },
+  {
+   "id": "h.bell.order.collect.1",
+   "objective": "bell.order.o.collect",
+   "depth": 1,
+   "text": "Look for a record that names what the buyer ordered."
+  },
+  {
+   "id": "h.bell.order.collect.2",
+   "objective": "bell.order.o.collect",
+   "depth": 2,
+   "text": "The guild spoke about the second bell. The crew may have meant a different thing."
+  },
+  {
+   "id": "h.bell.order.collect.3",
+   "objective": "bell.order.o.collect",
+   "depth": 3,
+   "text": "Read the stub near the guild desk and the marked strip on the south side."
+  },
+  {
+   "id": "h.bell.order.collect.4",
+   "objective": "bell.order.o.collect",
+   "depth": 4,
+   "text": "Clip both pieces marked Order 34. Their matching notches will let you line up the claims."
+  },
+  {
+   "id": "h.bell.order.align.1",
+   "objective": "bell.order.o.align",
+   "depth": 1,
+   "text": "A mark and its context can travel separately."
+  },
+  {
+   "id": "h.bell.order.align.2",
+   "objective": "bell.order.o.align",
+   "depth": 2,
+   "text": "Place the records beside each other before using either to tell the time."
+  },
+  {
+   "id": "h.bell.order.align.3",
+   "objective": "bell.order.o.align",
+   "depth": 3,
+   "text": "Use the comparison board at the south lane after keeping both strips."
+  },
+  {
+   "id": "h.bell.order.align.4",
+   "objective": "bell.order.o.align",
+   "depth": 4,
+   "text": "Line up the two Order 34 notches. Look for the empty arrival line after the two pieces meet."
+  },
+  {
+   "id": "h.bell.order.post.1",
+   "objective": "bell.order.o.post",
+   "depth": 1,
+   "text": "The next reader should be able to tell the world what actually happened."
+  },
+  {
+   "id": "h.bell.order.post.2",
+   "objective": "bell.order.o.post",
+   "depth": 2,
+   "text": "The buyer can use the two records under one heading. The crew can use a key for the markings already on the strip."
+  },
+  {
+   "id": "h.bell.order.post.3",
+   "objective": "bell.order.o.post",
+   "depth": 3,
+   "text": "Visit the buyer’s box beside the comparison board to prepare the public copy."
+  },
+  {
+   "id": "h.bell.order.post.4",
+   "objective": "bell.order.o.post",
+   "depth": 4,
+   "text": "Post either the separate headings on Order 34 or the key with a blank for a later order’s arrival. Both leave the old arrival time open."
+  },
+  {
+   "id": "h.washhouse.trace.1",
+   "objective": "washhouse.o.trace",
+   "depth": 1,
+   "text": "Water on a step and a dry tray can belong to the same observation."
+  },
+  {
+   "id": "h.washhouse.trace.2",
+   "objective": "washhouse.o.trace",
+   "depth": 2,
+   "text": "Follow the water after the head peg. Look at what enters the tray and what runs beside it."
+  },
+  {
+   "id": "h.washhouse.trace.3",
+   "objective": "washhouse.o.trace",
+   "depth": 3,
+   "text": "The head peg is near the south path. The tail peg is beside the tray. The screen is farther west."
+  },
+  {
+   "id": "h.washhouse.trace.4",
+   "objective": "washhouse.o.trace",
+   "depth": 4,
+   "text": "Clip all three readings in this round. Leave the intake in place so you can compare what reached each marker."
+  },
+  {
+   "id": "h.washhouse.order.1",
+   "objective": "washhouse.o.order",
+   "depth": 1,
+   "text": "The other people using this lane may have a different repair in mind."
+  },
+  {
+   "id": "h.washhouse.order.2",
+   "objective": "washhouse.o.order",
+   "depth": 2,
+   "text": "Clearing the screen tests flow. Marking a dry crossing helps people move now."
+  },
+  {
+   "id": "h.washhouse.order.3",
+   "objective": "washhouse.o.order",
+   "depth": 3,
+   "text": "Use Hana’s small order board near the west well after checking the tray and screen."
+  },
+  {
+   "id": "h.washhouse.order.4",
+   "objective": "washhouse.o.order",
+   "depth": 4,
+   "text": "Choose to clear the leaf mat or open the side step. Both routes still need a check."
+  },
+  {
+   "id": "h.washhouse.recheck.1",
+   "objective": "washhouse.o.recheck",
+   "depth": 1,
+   "text": "The note should say what changed for this shift."
+  },
+  {
+   "id": "h.washhouse.recheck.2",
+   "objective": "washhouse.o.recheck",
+   "depth": 2,
+   "text": "Check the same marks after the clearing, or see where the new step takes the carriers and what still reaches the tray."
+  },
+  {
+   "id": "h.washhouse.recheck.3",
+   "objective": "washhouse.o.recheck",
+   "depth": 3,
+   "text": "Read the head peg near the south path a second time. Then check the tray after clearing or use the marked side step."
+  },
+  {
+   "id": "h.washhouse.recheck.4",
+   "objective": "washhouse.o.recheck",
+   "depth": 4,
+   "text": "Leave the recheck note at your chosen site. Keep any job that still needs doing on the board."
+  },
+  {
+   "id": "h.hands.compare.1",
+   "objective": "hands.o.compare",
+   "depth": 1,
+   "text": "Think about what a short name can help a carrier do."
+  },
+  {
+   "id": "h.hands.compare.2",
+   "objective": "hands.o.compare",
+   "depth": 2,
+   "text": "Idris kept the short tag. Look for the museum entry behind it."
+  },
+  {
+   "id": "h.hands.compare.3",
+   "objective": "hands.o.compare",
+   "depth": 3,
+   "text": "The sample tray is up the path from his strap, before the lantern stalls."
+  },
+  {
+   "id": "h.hands.compare.4",
+   "objective": "hands.o.compare",
+   "depth": 4,
+   "text": "Take the museum entry with the object number. It refers to the same pen as the short tag."
+  },
+  {
+   "id": "h.hands.revise.1",
+   "objective": "hands.o.revise",
+   "depth": 1,
+   "text": "Idris can keep the useful part of what he knew."
+  },
+  {
+   "id": "h.hands.revise.2",
+   "objective": "hands.o.revise",
+   "depth": 2,
+   "text": "One clip could carry the longer entry behind the tag. You could also make it easy to compare both."
+  },
+  {
+   "id": "h.hands.revise.3",
+   "objective": "hands.o.revise",
+   "depth": 3,
+   "text": "Return to Idris’s strap at the south path."
+  },
+  {
+   "id": "h.hands.revise.4",
+   "objective": "hands.o.revise",
+   "depth": 4,
+   "text": "Clip the museum entry behind the tag or put the two side by side. Read what the next carrier will see."
+  },
+  {
+   "id": "h.scout.compare.1",
+   "objective": "scout.o.compare",
+   "depth": 1,
+   "text": "The same chalk mark can lead to two different reports on the practice board."
+  },
+  {
+   "id": "h.scout.compare.2",
+   "objective": "scout.o.compare",
+   "depth": 2,
+   "text": "Try the scout with turning notes. Then send a scout with just a slip."
+  },
+  {
+   "id": "h.scout.compare.3",
+   "objective": "scout.o.compare",
+   "depth": 3,
+   "text": "Look for the practice cart board on the south edge of the market, east of the stone path."
+  },
+  {
+   "id": "h.scout.compare.4",
+   "objective": "scout.o.compare",
+   "depth": 4,
+   "text": "Finish a cart run under each scout’s instructions. Open all six setups for both scouts and compare the blocked reports."
+  },
+  {
+   "id": "h.scout.notice.1",
+   "objective": "scout.o.notice",
+   "depth": 1,
+   "text": "A carrier can hear the same report from a person following a different rule."
+  },
+  {
+   "id": "h.scout.notice.2",
+   "objective": "scout.o.notice",
+   "depth": 2,
+   "text": "Decide who should know the turning notes and who should check a blocked turn before a loaded cart takes it."
+  },
+  {
+   "id": "h.scout.notice.3",
+   "objective": "scout.o.notice",
+   "depth": 3,
+   "text": "Read the small board beside the practice cart after comparing both sets of setups."
+  },
+  {
+   "id": "h.scout.notice.4",
+   "objective": "scout.o.notice",
+   "depth": 4,
+   "text": "Arrange for scouts to carry the turning notes or leave the slips in use with a second look after blocked reports."
+  }
+ ]
+}

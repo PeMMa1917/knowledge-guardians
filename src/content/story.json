@@ -1,0 +1,2187 @@
+{
+ "items": [
+  {
+   "id": "item.rain-gauge",
+   "name": "Rain gauge",
+   "description": "A clay cup with a scale, made at the Maker's bench. A tool is only as good as its last check.",
+   "historicalLabel": "fictional-world",
+   "art": "icon.tea"
+  },
+  {
+   "id": "item.plumb-line",
+   "name": "Plumb line",
+   "description": "A weight on a reed string, made at the Maker's bench. It shows what is upright, if it hangs free.",
+   "historicalLabel": "fictional-world",
+   "art": "icon.letter"
+  },
+  {
+   "id": "item.reed-pen",
+   "name": "Reed pen",
+   "description": "A pen cut from a river reed, made at the Maker's bench. Test a record on its reader.",
+   "historicalLabel": "fictional-world",
+   "art": "icon.letter"
+  }
+ ],
+ "communities": [
+  {
+   "id": "guild",
+   "name": "The Guild",
+   "who": [
+    "guildmaster-orrin",
+    "keeper-oduya"
+   ],
+   "knows": "Rules, measures, trade law and the town's history.",
+   "checks": "Written records that anyone can read, and rules that are the same for everyone.",
+   "gains": [
+    {
+     "if": {
+      "flag": "lamps.heard",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You asked Orrin about the dark lamps."
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "puzzle.guild-notice.done",
+        "eq": true
+       },
+       {
+        "flag": "puzzle.song-bridge.done",
+        "eq": true
+       }
+      ]
+     },
+     "pts": 2,
+     "why": "You helped the guild say how sure its notices are."
+    },
+    {
+     "if": {
+      "flag": "puzzle.toll-survey.done",
+      "eq": true
+     },
+     "pts": 2,
+     "why": "You helped the council ask the whole town."
+    },
+    {
+     "if": {
+      "flagSet": "puzzle.founders-plaque.method"
+     },
+     "pts": 1,
+     "why": "You restored the Founders' Plaque with care."
+    },
+    {
+     "if": {
+      "flag": "study.letter",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You found Elsbet's letter."
+    },
+    {
+     "if": {
+      "flag": "ktalk.orrin-survey",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You showed Orrin a fairer way to ask."
+    },
+    {
+     "if": {
+      "flag": "ktalk.oduya-cards",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You asked Oduya about Elsbet's sources."
+    },
+    {
+     "if": {
+      "flag": "reading.flood-post",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You copied the flood post and kept your guess apart from it."
+    },
+    {
+     "if": {
+      "flag": "undercroft.done",
+      "eq": true
+     },
+     "pts": 2,
+     "why": "You opened Elsbet's records vault for anyone to check."
+    }
+   ]
+  },
+  {
+   "id": "market",
+   "name": "The Market",
+   "who": [
+    "merchant-corvan",
+    "fruit-seller",
+    "stallkeeper-hana",
+    "villager-1"
+   ],
+   "knows": "Prices, people, and what sells.",
+   "checks": "Reputation and long experience: who has been right before, and who has not.",
+   "gains": [
+    {
+     "if": {
+      "flagSet": "sd.corvan.outcome"
+     },
+     "pts": 2,
+     "why": "You argued with Corvan in front of the market, with evidence."
+    },
+    {
+     "if": {
+      "flag": "rumour.done",
+      "eq": true
+     },
+     "pts": 2,
+     "why": "You traced the rumour back, person by person."
+    },
+    {
+     "if": {
+      "flag": "board.corvan-board.done",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You pinned claims to evidence on Hana's board."
+    },
+    {
+     "if": {
+      "flag": "puzzle.brass-sorter.done",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You made Mara's sorter fair to every farm."
+    },
+    {
+     "if": {
+      "flag": "puzzle.tipped-cart.done",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You sorted out the witnesses at the tipped cart."
+    },
+    {
+     "if": {
+      "flag": "ktalk.corvan-splinter",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You talked with Corvan about his old sign."
+    },
+    {
+     "if": {
+      "flag": "ktalk.tea-shard",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You asked the tea seller what changed."
+    },
+    {
+     "if": {
+      "flag": "ktalk.mara-pot",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You gave the carter's pot back."
+    },
+    {
+     "if": {
+      "flag": "reading.rain",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You measured the rain before you repeated a worry."
+    },
+    {
+     "if": {
+      "num": "count.rumours",
+      "gte": 2
+     },
+     "pts": 1,
+     "why": "You traced rumours at the tea table before you passed them on."
+    }
+   ]
+  },
+  {
+   "id": "forge",
+   "name": "The Forge",
+   "who": [
+    "smith-hesper",
+    "apprentice-ren"
+   ],
+   "knows": "Metal, heat, and how things are made.",
+   "checks": "Tests you can repeat with your own hands, and change one thing at a time.",
+   "gains": [
+    {
+     "if": {
+      "objective": "m02.o4.forge"
+     },
+     "pts": 2,
+     "why": "You forged a test billet and compared it."
+    },
+    {
+     "if": {
+      "flag": "puzzle.weigh-house.done",
+      "eq": true
+     },
+     "pts": 2,
+     "why": "You checked the weigh-house scales with a true weight."
+    },
+    {
+     "if": {
+      "objective": "m02.o6.hesper"
+     },
+     "pts": 1,
+     "why": "You talked with Hesper after the market."
+    },
+    {
+     "if": {
+      "flag": "ktalk.hesper-weight",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You asked Hesper who made the check weights."
+    },
+    {
+     "if": {
+      "flag": "puzzle.echo-bridge.done",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You measured the echo and found your own error."
+    },
+    {
+     "if": {
+      "flag": "reading.tower",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You checked the bell tower with your own plumb line."
+    }
+   ]
+  },
+  {
+   "id": "river",
+   "name": "The River folk",
+   "who": [
+    "ferry-tova",
+    "scholar-sefa",
+    "well-keeper"
+   ],
+   "knows": "Water, weather, the river cant, and the river's long history.",
+   "checks": "Watching the river for many years, and telling it carefully to the next person.",
+   "gains": [
+    {
+     "if": {
+      "flag": "puzzle.ferry-message.done",
+      "eq": true
+     },
+     "pts": 2,
+     "why": "You translated Tova's message and kept what it meant."
+    },
+    {
+     "if": {
+      "flag": "ferry.met",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You walked the old ferry road to meet Tova."
+    },
+    {
+     "if": {
+      "flag": "puzzle.forecast-board.done",
+      "eq": true
+     },
+     "pts": 2,
+     "why": "You kept Noa's forecast board."
+    },
+    {
+     "if": {
+      "flagSet": "well.reflected"
+     },
+     "pts": 1,
+     "why": "You compared the two wells with Efua."
+    },
+    {
+     "if": {
+      "flag": "ktalk.sefa-chalk",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You said 'tavi' to Sefa."
+    },
+    {
+     "if": {
+      "flag": "secret.flood-tally",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You found the flood marks under the bridge."
+    },
+    {
+     "if": {
+      "flag": "secret.star-names",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You found the ferry folk's star map."
+    },
+    {
+     "if": {
+      "flag": "trade.fair.ok",
+      "eq": true
+     },
+     "pts": 1,
+     "why": "You judged Wenna's prices by their parts."
+    }
+   ]
+  }
+ ],
+ "secrets": [
+  {
+   "id": "ember-myth",
+   "name": "The founding brick",
+   "map": "aethelgard.emberford",
+   "text": "Behind the smithy, one brick is loose. Behind it is a child's drawing: a woman carries fire down from the mountain in a clay pot. Everyone in Emberford knows this story: it is how the town got its name. Keeper Oduya's oldest record says only 'a forge was built by the ford'. The story and the record do different jobs. One tells who the town wants to be. The other tells what someone wrote down."
+  },
+  {
+   "id": "three-coins",
+   "name": "Three coins in the fountain",
+   "map": "aethelgard.emberford",
+   "text": "At the bottom of the fountain are three old coins. Each one shows a different founder of Emberford: a smith, a ferry keeper, a trader. Each coin was made by a different group, in a different year. Which founder is 'true'? Perhaps each coin tells you more about who made it."
+  },
+  {
+   "id": "flood-tally",
+   "name": "Marks under the bridge",
+   "map": "aethelgard.emberford",
+   "text": "Under the footbridge, someone cut short lines into the stone, with words in the river cant beside them. They are flood heights, one for each spring, for many years. The guild's books start much later. This record was here all along. Nobody in town could read it."
+  },
+  {
+   "id": "practice-notes",
+   "name": "Under the rug",
+   "map": "aethelgard.study",
+   "text": "Under Elsbet's rug is a folded sheet: 'Three ways I was wrong this year. 1. I trusted the guild's flood dates over Tova's mother. 2. I thought the new scales were fair because they were new. 3. I said a song was only a story.' At the bottom: 'Write a new list every year.'"
+  },
+  {
+   "id": "star-names",
+   "name": "A bottle in the reeds",
+   "map": "aethelgard.ferry",
+   "text": "A bottle in the reeds holds a child's star map. The stars are the ones you know, but the pictures and names are different: the ferry folk see a boat and a heron where the town sees a crown. The stars do not change. The patterns are what people bring to them."
+  },
+  {
+   "id": "misfiled",
+   "name": "The drawer that should not be there",
+   "map": "nexus.archive",
+   "text": "Behind a bookshelf, one drawer of the old catalogue is not on any list. It holds cards for exhibits that were never shown. One reads: 'A pen. Maker unknown. Not displayed: no famous name.' Who decides what a museum shows, and what does that teach visitors about who makes things?"
+  }
+ ],
+ "characters": [
+  {
+   "id": "ferry-tova",
+   "name": "Ferry keeper Tova",
+   "role": "Keeps the upriver ferry; speaks the river cant",
+   "sprite": "custom:olive.grey.teal.charcoal.scarf.cyan.long.none.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "ferry.met",
+      "eq": true
+     },
+     "node": "tova.again"
+    },
+    {
+     "if": {
+      "flag": "puzzle.ferry-message.done",
+      "eq": true
+     },
+     "node": "tova.thanks"
+    },
+    {
+     "node": "tova.first"
+    }
+   ]
+  }
+ ],
+ "chronicle": [
+  {
+   "id": "call",
+   "title": "The call",
+   "text": "The Nexus called you. It is a hall of memory between worlds, and it is in trouble: its labels start to say more than their evidence, and a gold glow, the Fray, grows on them. Warden Ise needs a new Guardian of Knowledge."
+  },
+  {
+   "id": "firsts",
+   "title": "Three firsts",
+   "if": {
+    "objective": "m01.o1.look"
+   },
+   "text": "Three exhibits each said 'the first ballpoint pen'. Ise asked you to find out what each claim is really about."
+  },
+  {
+   "id": "label",
+   "title": "Your first true label",
+   "if": {
+    "objective": "m01.o6.label"
+   },
+   "text": "You built a label whose force matched its support, and the Fray faded. Ise opened the portal to Aethelgard."
+  },
+  {
+   "id": "emberford",
+   "title": "Emberford",
+   "if": {
+    "objective": "m02.o1.arrive"
+   },
+   "text": "In the guild town of Emberford, sixteen lamps hang dark on the guild hall. Corvan's sign says that his blade is ancient, and the market believes whoever shouts loudest."
+  },
+  {
+   "id": "elsbet",
+   "title": "The old Guardian",
+   "if": {
+    "flag": "lamps.heard",
+    "eq": true
+   },
+   "text": "Orrin told you about Guardian Elsbet Varro. She lit a lamp each time the town worked out a hard question together. Ten years ago she left without a word, and the lamps went dark one by one."
+  },
+  {
+   "id": "lamps",
+   "title": "The lamps",
+   "if": {
+    "num": "lamps.lit",
+    "gte": 1
+   },
+   "text": "{lamps} of 16 lamps burn again. Each one is a knot that you and the town untied together."
+  },
+  {
+   "id": "showdown",
+   "title": "The market Showdown",
+   "if": {
+    "flagSet": "sd.corvan.outcome"
+   },
+   "text": "You faced Corvan in front of the market. Whatever the crowd decided, the town argued with evidence again, not with shouting."
+  },
+  {
+   "id": "ise",
+   "title": "The seal",
+   "if": {
+    "objective": "m02.o8.ise"
+   },
+   "text": "You took the Guardians' seal back to Warden Ise. Your first world is safer, but Ise is worried: the Fray came from somewhere."
+  },
+  {
+   "id": "study",
+   "title": "The study under the hall",
+   "if": {
+    "flag": "study.entered",
+    "eq": true
+   },
+   "text": "Six lamps burned, and the cellar door beside the hall opened. Under the hall, Elsbet's study waited, as she left it. Your keepsakes helped you see it with her eyes."
+  },
+  {
+   "id": "letter",
+   "title": "Elsbet's letter",
+   "if": {
+    "flag": "study.letter",
+    "eq": true
+   },
+   "text": "Her letter said the Fray is not only in Emberford. Something beyond the Nexus teaches people to stop asking 'how do we know?'. She went to find where it begins."
+  },
+  {
+   "id": "entry",
+   "title": "A new entry",
+   "if": {
+    "flag": "study.entry",
+    "eq": true
+   },
+   "text": "You wrote the first new entry in her journal in ten years. Emberford has a Guardian again."
+  },
+  {
+   "id": "ferry",
+   "title": "The ferry road",
+   "if": {
+    "flag": "ferry.met",
+    "eq": true
+   },
+   "text": "Kip's map and Elsbet's map, side by side, showed a road the guild forgot. At its end, Tova and the ferry folk keep knowledge in their own words: of the river, and of who told what to whom."
+  },
+  {
+   "id": "undercroft",
+   "title": "The Undercroft",
+   "if": {
+    "flag": "undercroft.done",
+    "eq": true
+   },
+   "text": "Under the study, Elsbet's records vault had gone quiet for ten years, and a Fray grew in the quiet: the Hollow Archivist, a keeper that nobody checked. Three seals of bad argument, then the Archivist itself. Now the vault is only a vault, and the last name on Elsbet's list of checkers is yours."
+  },
+  {
+   "id": "door",
+   "title": "The door with no name",
+   "if": {
+    "flag": "ktalk.ise-door",
+    "eq": true
+   },
+   "text": "Ise knew Elsbet. She trained in the Nexus. 'When your work in Emberford is done, and you can say how you know, we will open the door with no name together.' To be continued in chapter 2."
+  },
+  {
+   "id": "all",
+   "title": "Every lamp",
+   "if": {
+    "num": "lamps.lit",
+    "gte": 16
+   },
+   "text": "All sixteen lamps burn. Orrin says that Elsbet would say: now keep them lit."
+  }
+ ],
+ "knots": [
+  {
+   "id": "blade",
+   "name": "The Label on the Blade",
+   "who": "Corvan and Hesper",
+   "if": {
+    "flagSet": "sd.corvan.outcome"
+   },
+   "lit": "The market argues with evidence again, not with shouting."
+  },
+  {
+   "id": "words",
+   "name": "Words That Hold",
+   "who": "Orrin and Sefa",
+   "if": {
+    "all": [
+     {
+      "flag": "puzzle.guild-notice.done",
+      "eq": true
+     },
+     {
+      "flag": "puzzle.song-bridge.done",
+      "eq": true
+     }
+    ]
+   },
+   "lit": "The guild's notices say how sure they are, and Sefa's song names its sources."
+  },
+  {
+   "id": "weigh",
+   "name": "The Weigh-House Balance",
+   "who": "the weigh-house traders",
+   "if": {
+    "flag": "puzzle.weigh-house.done",
+    "eq": true
+   },
+   "lit": "Traders trust the scales again, because anyone can check them."
+  },
+  {
+   "id": "cart",
+   "name": "The Tipped Cart",
+   "who": "the carter and three witnesses",
+   "if": {
+    "flag": "puzzle.tipped-cart.done",
+    "eq": true
+   },
+   "lit": "The witnesses stop shouting: each one says what they saw and what they heard."
+  },
+  {
+   "id": "maps",
+   "name": "The Mapmaker's Table",
+   "who": "Kip and three travellers",
+   "if": {
+    "flag": "puzzle.map-table.done",
+    "eq": true
+   },
+   "lit": "Each traveller has a map for their own need, and knows what it leaves out."
+  },
+  {
+   "id": "sorter",
+   "name": "The Brass Sorter",
+   "who": "Mara and Hana",
+   "if": {
+    "flag": "puzzle.brass-sorter.done",
+    "eq": true
+   },
+   "lit": "The sorter is fair to every farm, because it learned from every farm."
+  },
+  {
+   "id": "echo",
+   "name": "The Echo Bridge",
+   "who": "Porter Idris",
+   "if": {
+    "flag": "puzzle.echo-bridge.done",
+    "eq": true
+   },
+   "lit": "The footbridge rope is cut to a measure that says how sure it is."
+  },
+  {
+   "id": "survey",
+   "name": "The Bridge Toll Survey",
+   "who": "Clerk Venn and the council",
+   "if": {
+    "flag": "puzzle.toll-survey.done",
+    "eq": true
+   },
+   "lit": "The council asks the whole town, with a plain question."
+  },
+  {
+   "id": "ferry",
+   "name": "The Ferry Message",
+   "who": "Tova and the ferry folk",
+   "if": {
+    "flag": "puzzle.ferry-message.done",
+    "eq": true
+   },
+   "lit": "Town and ferry folk understand each other again: tavi, we together."
+  },
+  {
+   "id": "frame",
+   "name": "The Painter's Frame",
+   "who": "Nell the painter",
+   "if": {
+    "flag": "puzzle.painters-frame.done",
+    "eq": true
+   },
+   "lit": "Posters in town now say who framed them, and why."
+  },
+  {
+   "id": "bells",
+   "name": "The Endless Bell Stair",
+   "who": "Maren the bell-ringer",
+   "if": {
+    "flag": "puzzle.bell-stair.done",
+    "eq": true
+   },
+   "lit": "Maren's bells still seem to climb forever, and now everyone knows why."
+  },
+  {
+   "id": "forecast",
+   "name": "The Forecast Board",
+   "who": "Fisher Noa",
+   "if": {
+    "flag": "puzzle.forecast-board.done",
+    "eq": true
+   },
+   "lit": "The fishers read the board as chances, not promises."
+  },
+  {
+   "id": "plaque",
+   "name": "The Founders' Plaque",
+   "who": "Orrin",
+   "if": {
+    "flagSet": "puzzle.founders-plaque.method"
+   },
+   "lit": "The gate plaque says honestly what was kept and what was lost."
+  },
+  {
+   "id": "rumour",
+   "name": "The Shattering Rumour",
+   "who": "the tea seller",
+   "if": {
+    "flag": "rumour.done",
+    "eq": true
+   },
+   "lit": "'Who told you?' is asked in the market again."
+  },
+  {
+   "id": "well",
+   "name": "The East Well",
+   "who": "Efua the well keeper",
+   "if": {
+    "flagSet": "well.reflected"
+   },
+   "lit": "The two wells are compared with one method, the old Guardian's knots."
+  },
+  {
+   "id": "board",
+   "name": "The Practice Board",
+   "who": "Hana",
+   "if": {
+    "flag": "board.corvan-board.done",
+    "eq": true
+   },
+   "lit": "People pin claims to evidence, with yarn instead of anger."
+  }
+ ],
+ "clues": [
+  {
+   "id": "desk",
+   "name": "Elsbet's desk",
+   "text": "A heavy oak desk, locked. The lock plate has a small Nexus star on it.",
+   "views": [
+    {
+     "keepsake": "door-key",
+     "text": "The brass key-plate from the Timeline Door fits: all Nexus locks come from one maker. Inside the desk is a note in Elsbet's hand: 'The letter is behind the hearth stone, where the time stopped.' A loose stone in the hearth is now easy to see.",
+     "effects": [
+      {
+       "setFlag": "study.desk",
+       "value": true
+      }
+     ]
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "journal",
+   "name": "Elsbet's journal",
+   "text": "Elsbet Varro's journal: ten years of entries in neat ink, from her first day as Guardian to her last.",
+   "views": [
+    {
+     "keepsake": "date-lens",
+     "text": "Through the lens, every entry is in the same fresh ink, although the dates cover ten years. She copied her old notes into a clean book before she left. A copy can be faithful and still be a copy: you cannot see what she chose to leave out."
+    },
+    {
+     "keepsake": "pen-tip",
+     "text": "You fit the spare ballpoint tip and write the first new entry in ten years: 'The lamps of Emberford are being lit again. I am the Guardian here now. I will always say how I know.'",
+     "effects": [
+      {
+       "setFlag": "study.entry",
+       "value": true
+      }
+     ]
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "clock",
+   "name": "The stopped clock",
+   "text": "A tall clock, stopped at twenty to four. One brass gear is missing from its works.",
+   "views": [
+    {
+     "keepsake": "brass-cog",
+     "text": "Mara's spare cog fits. The clock ticks, chimes four, and a panel in its case swings open onto the back of the hearth. A loose stone is now easy to see.",
+     "effects": [
+      {
+       "setFlag": "study.clock",
+       "value": true
+      }
+     ]
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "hearth",
+   "name": "The cold hearth",
+   "text": "A cold hearth. On the mantel lies a blank sheet of paper with faint dents in it.",
+   "views": [
+    {
+     "keepsake": "soot-jar",
+     "text": "You rub soot over the sheet. Pressed letters appear: '...the far portal... where people stop asking...' They are the dents of a letter written on the sheet above. The stone under the mantel sounds hollow when you tap it.",
+     "effects": [
+      {
+       "setFlag": "study.rubbing",
+       "value": true
+      }
+     ]
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "painting",
+   "name": "Elsbet's painting",
+   "text": "A painting of Emberford from the hill.",
+   "views": [
+    {
+     "keepsake": "paper-frame",
+     "text": "You hold Nell's card frame over the part that the guild's own picture of Emberford shows: the hall, the market, the bridge. Then you lower it. Outside that frame, Elsbet painted the ferry folk's camp by the river, with Tova's boats. The guild's picture leaves them out. Hers does not."
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "margin",
+   "name": "A page of margin notes",
+   "text": "A page with notes in the margin, in the river cant.",
+   "views": [
+    {
+     "keepsake": "ferry-chalk",
+     "text": "You trace the words with your chalk and remember Sefa's notes: 'Tavi bring the lamps. Belun.' Elsbet wrote to the ferry folk in their own words, and she signed with tavi: we, including you."
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "cabinet",
+   "name": "The music cabinet",
+   "text": "A cabinet with a small bell on top and a drawer that will not open.",
+   "views": [
+    {
+     "keepsake": "tiny-bell",
+     "text": "You ring Maren's tiny bell. The cabinet bell hums in answer, and the drawer latch, made to the same note, clicks open. Inside is Elsbet's map of Emberford.",
+     "effects": [
+      {
+       "setFlag": "study.drawer",
+       "value": true
+      }
+     ]
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "oldmap",
+   "name": "Elsbet's map",
+   "text": "Elsbet's map of Emberford, ten years old.",
+   "views": [
+    {
+     "keepsake": "folded-map",
+     "text": "Beside Kip's map, hers shows a road you have never seen: the old ferry road along the river, now grass. Both maps are true, ten years apart. A map is true for a time. Her road runs east, past the ferry slate, to the river. Now that you know it is there, you can find it."
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "glass",
+   "name": "Elsbet's weather glass",
+   "text": "A weather glass on the wall. It says 'fair'. Outside, it is raining.",
+   "views": [
+    {
+     "keepsake": "weather-glass",
+     "text": "Your pocket glass says 'rain'. Hers has drifted over ten years. Her note under it says: 'Check this against another glass every season.' She knew that instruments drift too."
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "floodmark",
+   "name": "The flood line",
+   "text": "Water stains on the wall, with a line scratched into the plaster.",
+   "views": [
+    {
+     "keepsake": "knot-rope",
+     "text": "You hold up the measuring knot: the line is three knots above the floor. Elsbet marked the flood of her last year here. That is why the papers on the low shelf are damaged."
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "slips",
+   "name": "A drawer of survey slips",
+   "text": "A drawer full of old survey slips.",
+   "views": [
+    {
+     "keepsake": "survey-slip",
+     "text": "Every slip is signed by a guild member. Her note says: 'I asked only the guild, and I got the guild's answer. Ask everyone next time.' Even a Guardian makes the mistakes you have learned to spot."
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "scales",
+   "name": "Elsbet's balance",
+   "text": "A small balance with a box of weights.",
+   "views": [
+    {
+     "keepsake": "check-weight",
+     "text": "With the guild check weight you test each weight. One is light: someone filed it down. She tied a red thread to it and wrote: 'Kept as an example. Check the checks.'"
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "caseboard",
+   "name": "Elsbet's clue board",
+   "text": "Her own clue board, with faded yarn.",
+   "views": [
+    {
+     "keepsake": "yarn",
+     "text": "With your red and gold yarn you can read her board. Once she pinned the blame for a bridge fire on a stranger. Then she crossed it out in gold: 'No support. I asked the wrong question.' She changed her mind, and left the change for others to see."
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "roundwin",
+   "name": "The small round window",
+   "text": "A small round window with one pane missing.",
+   "views": [
+    {
+     "keepsake": "glass-piece",
+     "text": "The 32nd piece of glass from the Nexus window fits. Light falls in a circle on the floor, onto a star cut into the boards: the Guardians' mark. Elsbet was a Guardian of the Nexus, like you."
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "drafts",
+   "name": "Drafts of notices",
+   "text": "A pile of drafts for town notices.",
+   "views": [
+    {
+     "keepsake": "notice",
+     "text": "Beside your copied notice, her drafts say 'we think', 'so far' and 'the ledger shows'. Emberford's notices once carried their limits. At some point the town stopped writing them that way."
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "cards",
+   "name": "A box of index cards",
+   "text": "A box of cards, tied with thread.",
+   "views": [
+    {
+     "keepsake": "thread-knot",
+     "text": "Your citation knot matches her ties. Each card cites a source. One names 'Tova's mother, ferry keeper' as the source for the flood dates. Elsbet cited people, not only books."
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "corner",
+   "name": "The dark corner",
+   "text": "A dark corner under the stairs. You cannot see into it.",
+   "views": [
+    {
+     "keepsake": "moth-lamp",
+     "text": "The moth lamp glows. On the wall is a long list of names: everyone who helped light a lamp in Elsbet's time. The tea seller's mother. Hesper's father. Tova. No lamp was ever lit by the Guardian alone."
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "bucket",
+   "name": "An old well bucket",
+   "text": "An old bucket with a frayed rope.",
+   "views": [
+    {
+     "keepsake": "well-rope",
+     "text": "The knots on your rope end match the knots on hers. She set up the knot marks on both wells. The method you used to compare them was hers, still working ten years later."
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "jar",
+   "name": "A jar of paper slips",
+   "text": "A glass jar full of small paper slips.",
+   "views": [
+    {
+     "keepsake": "rumour-shard",
+     "text": "Your quiet shard joins them. Each slip is a rumour with its 'who told you?' chain written under it. The longest chain ends with 'nobody knows'. She kept them to remember how stories grow."
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "stove",
+   "name": "The little stove",
+   "text": "A small stove with no pot on it.",
+   "views": [
+    {
+     "keepsake": "copper-pot",
+     "text": "You set the copper pot on the stove. A tag on the stove reads: 'For visitors. Make tea, and listen first.' You make tea. The study feels less empty."
+    }
+   ],
+   "study": true
+  },
+  {
+   "id": "letter",
+   "name": "Elsbet's letter",
+   "study": true,
+   "text": "To the next Guardian of Emberford. If you are reading this, the lamps are lit again, so the town has remembered how to ask 'how do we know?'. I could not stay. The Fray is not only in Emberford. Something beyond the Nexus is teaching people to stop asking, and I have gone to find where it begins. Keep the lamps lit. Say how you know. Ask who is missing from the picture. And when Warden Ise thinks you are ready, ask her about the door with no name. Elsbet Varro, Guardian.",
+   "onRead": [
+    {
+     "setFlag": "study.letter",
+     "value": true
+    }
+   ],
+   "views": [
+    {
+     "keepsake": "so-what",
+     "text": "The So-What stone is warm in your hand. So what? So no lamp is lit by one Guardian. Every lamp you lit, you lit with someone. A Guardian's work is to keep the town asking.",
+     "effects": [
+      {
+       "setFlag": "study.sowhat",
+       "value": true
+      }
+     ]
+    },
+    {
+     "keepsake": "seal",
+     "text": "You press your wax seal beside her signature. The marks are the same: she carried the Guardians' seal, as you do now."
+    }
+   ]
+  }
+ ],
+ "keepsakeTalks": [
+  {
+   "id": "orrin-survey",
+   "character": "guildmaster-orrin",
+   "keepsake": "survey-slip",
+   "text": "Could the council ask the whole town next time?",
+   "node": "kt.orrin.survey"
+  },
+  {
+   "id": "sefa-chalk",
+   "character": "scholar-sefa",
+   "keepsake": "ferry-chalk",
+   "text": "Tavi. I read Tova's message.",
+   "node": "kt.sefa.chalk"
+  },
+  {
+   "id": "corvan-splinter",
+   "character": "merchant-corvan",
+   "keepsake": "sign-splinter",
+   "text": "I kept a splinter of your old sign.",
+   "node": "kt.corvan.splinter"
+  },
+  {
+   "id": "efua-rope",
+   "character": "well-keeper",
+   "keepsake": "well-rope",
+   "text": "Who cut the knots on the well ropes?",
+   "node": "kt.efua.rope"
+  },
+  {
+   "id": "hesper-weight",
+   "character": "smith-hesper",
+   "keepsake": "check-weight",
+   "text": "Do you know where the guild's check weights came from?",
+   "node": "kt.hesper.weight"
+  },
+  {
+   "id": "tea-shard",
+   "character": "villager-1",
+   "keepsake": "rumour-shard",
+   "text": "The rumour is quiet now. What changed for you?",
+   "node": "kt.tea.shard"
+  },
+  {
+   "id": "mara-pot",
+   "character": "fruit-seller",
+   "keepsake": "copper-pot",
+   "text": "I found this copper pot by the tipped cart.",
+   "node": "kt.mara.pot"
+  },
+  {
+   "id": "kip-map",
+   "character": "kip-arden",
+   "keepsake": "folded-map",
+   "text": "Your map, next to Elsbet's: there was a ferry road.",
+   "node": "kt.kip.map",
+   "if": {
+    "flag": "clue.oldmap.folded-map",
+    "eq": true
+   }
+  },
+  {
+   "id": "ise-door",
+   "character": "warden-ise",
+   "keepsake": "seal",
+   "text": "Did you know Guardian Elsbet Varro?",
+   "node": "kt.ise.door",
+   "if": {
+    "flag": "study.letter",
+    "eq": true
+   }
+  },
+  {
+   "id": "oduya-cards",
+   "character": "keeper-oduya",
+   "keepsake": "thread-knot",
+   "text": "Elsbet cited 'Tova's mother'. Did she ask you for sources too?",
+   "node": "kt.oduya.cards",
+   "if": {
+    "flag": "clue.cards.thread-knot",
+    "eq": true
+   }
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "lamps.orrin",
+   "speaker": "guildmaster-orrin",
+   "text": "You are the new Guardian? Then look up at the hall. There are sixteen lamps on that wall. When Guardian Elsbet Varro kept this town, she lit one each time Emberford worked out a hard question together: a quarrel settled with evidence, a measure made fair. Ten years ago she left without a word. One by one the lamps went dark, and people stopped asking 'how do we know?'.",
+   "options": [
+    {
+     "text": "What happened to her?",
+     "next": "lamps.orrin2"
+    },
+    {
+     "text": "Tell me about the guild ledger first.",
+     "next": "orrin.start"
+    }
+   ],
+   "effects": [
+    {
+     "setFlag": "lamps.heard",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "lamps.orrin2",
+   "speaker": "guildmaster-orrin",
+   "text": "Nobody knows. Her study is under the hall, and the cellar door has not opened since she left. The old saying is that it opens when the lamps are lit again. Corvan's sign is only the loudest knot in this town. There are others. Talk to people, help them, and watch the Lamp Wall by the hall door.",
+   "options": [
+    {
+     "text": "I'll start with Corvan's blade.",
+     "next": "orrin.start"
+    },
+    {
+     "text": "I'll find the other knots.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "kt.orrin.survey",
+   "speaker": "guildmaster-orrin",
+   "text": "Bram showed us your survey. We argued for an hour. Then Efua said, 'You never asked me.' So yes: every third house, and a plain question. Will you help us word it? I want the next notice to say how we asked."
+  },
+  {
+   "id": "kt.sefa.chalk",
+   "speaker": "scholar-sefa",
+   "text": "You used tavi? Then you understood. My grandmother wrote to the old Guardian in the cant, and Elsbet always answered in it. People call the cant 'not a proper language'. It says things that English cannot say in one word."
+  },
+  {
+   "id": "kt.corvan.splinter",
+   "speaker": "merchant-corvan",
+   "text": "Keep it. I see that sign every time I close my eyes. Traders say what sells. Nobody ever taught me to say what I know and what I only guess. Your label taught me in one afternoon. I still don't like it. I am trying."
+  },
+  {
+   "id": "kt.efua.rope",
+   "speaker": "well-keeper",
+   "text": "The old Guardian cut those knots. The same knots on both wells, so the wells could be compared. People forgot the reason and kept the habit. You found the reason again."
+  },
+  {
+   "id": "kt.hesper.weight",
+   "speaker": "smith-hesper",
+   "text": "My father made those check weights for the guild. One true weight to check all the others. A smith trusts the anvil, but checks the scale. Every season."
+  },
+  {
+   "id": "kt.tea.shard",
+   "speaker": "villager-1",
+   "text": "I keep a slip by my till now. It says 'Who told you?'. I ask it before I pour. Some customers hate it. Fewer stories, better tea."
+  },
+  {
+   "id": "kt.mara.pot",
+   "speaker": "fruit-seller",
+   "text": "That is the carter's pot! He told me three people gave him three stories about the crash. You sorted them out? Then he will want this back. Here, take a pear for your trouble."
+  },
+  {
+   "id": "kt.kip.map",
+   "speaker": "kip-arden",
+   "text": "There was a ferry road? Then my map is already out of date. Good! A map that never changes is a map that nobody checks. I'll walk it tomorrow."
+  },
+  {
+   "id": "kt.ise.door",
+   "speaker": "warden-ise",
+   "text": "Elsbet. (Ise is quiet for a moment, and straightens a label that is already straight.) You found her study. Yes, she trained here, in this hall. She and one other. The door with no name is real. It is not for today. When your work in Emberford is done, and you can say how you know, we will open it together."
+  },
+  {
+   "id": "kt.oduya.cards",
+   "speaker": "keeper-oduya",
+   "text": "Elsbet's index cards? She was the first person who ever asked me for a source. I was twelve. I told her my grandmother, and she wrote it down as if it mattered. It did."
+  },
+  {
+   "id": "tova.first",
+   "speaker": "ferry-tova",
+   "text": "A Guardian, on the old road? Nobody from town walks here. I left a slate at the post by the bridge. Nobody in town reads it right. They read our words as if they were their words.",
+   "options": [
+    {
+     "text": "Did you know Guardian Elsbet?",
+     "next": "tova.elsbet"
+    },
+    {
+     "text": "Why is this road not on the guild's maps?",
+     "next": "tova.road"
+    },
+    {
+     "text": "What does the town get wrong about the ferry folk?",
+     "next": "tova.view"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    },
+    {
+     "text": "Did our Nexus packet reach the landing?",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "ledger"
+     },
+     "next": "tova.nexus-copy.ledger"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "slate"
+     },
+     "next": "tova.nexus-copy.slate"
+    }
+   ],
+   "effects": [
+    {
+     "setFlag": "ferry.met",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "tova.thanks",
+   "speaker": "ferry-tova",
+   "text": "You read my slate! Tavi: you and we, together. The council sent nobody's carts onto the ford this time. You did not make our words into town words. You kept what they meant.",
+   "options": [
+    {
+     "text": "Did you know Guardian Elsbet?",
+     "next": "tova.elsbet"
+    },
+    {
+     "text": "Why is this road not on the guild's maps?",
+     "next": "tova.road"
+    },
+    {
+     "text": "What does the town get wrong about the ferry folk?",
+     "next": "tova.view"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    },
+    {
+     "text": "Did our Nexus packet reach the landing?",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "ledger"
+     },
+     "next": "tova.nexus-copy.ledger"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "slate"
+     },
+     "next": "tova.nexus-copy.slate"
+    }
+   ],
+   "effects": [
+    {
+     "setFlag": "ferry.met",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "tova.again",
+   "speaker": "ferry-tova",
+   "text": "The water is slow today. Ask what you like, Guardian.",
+   "options": [
+    {
+     "text": "Did you know Guardian Elsbet?",
+     "next": "tova.elsbet"
+    },
+    {
+     "text": "Why is this road not on the guild's maps?",
+     "next": "tova.road"
+    },
+    {
+     "text": "What does the town get wrong about the ferry folk?",
+     "next": "tova.view"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    },
+    {
+     "text": "Did our Nexus packet reach the landing?",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "ledger"
+     },
+     "next": "tova.nexus-copy.ledger"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "slate"
+     },
+     "next": "tova.nexus-copy.slate"
+    }
+   ]
+  },
+  {
+   "id": "tova.elsbet",
+   "speaker": "ferry-tova",
+   "text": "My mother knew her. Elsbet came here when the guild would not. She wrote down our flood dates, and she wrote my mother's name next to them. The guild books say 'river folk said'. Her cards said who. That is a different kind of respect.",
+   "options": [
+    {
+     "text": "Did you know Guardian Elsbet?",
+     "next": "tova.elsbet"
+    },
+    {
+     "text": "Why is this road not on the guild's maps?",
+     "next": "tova.road"
+    },
+    {
+     "text": "What does the town get wrong about the ferry folk?",
+     "next": "tova.view"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    },
+    {
+     "text": "Did our Nexus packet reach the landing?",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "ledger"
+     },
+     "next": "tova.nexus-copy.ledger"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "slate"
+     },
+     "next": "tova.nexus-copy.slate"
+    }
+   ]
+  },
+  {
+   "id": "tova.road",
+   "speaker": "ferry-tova",
+   "text": "The road floods each spring, so the guild stopped drawing it. Then people stopped walking it. Then they forgot we were here. A map does not only show the world. It decides what people look for.",
+   "options": [
+    {
+     "text": "Did you know Guardian Elsbet?",
+     "next": "tova.elsbet"
+    },
+    {
+     "text": "Why is this road not on the guild's maps?",
+     "next": "tova.road"
+    },
+    {
+     "text": "What does the town get wrong about the ferry folk?",
+     "next": "tova.view"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    },
+    {
+     "text": "Did our Nexus packet reach the landing?",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "ledger"
+     },
+     "next": "tova.nexus-copy.ledger"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "slate"
+     },
+     "next": "tova.nexus-copy.slate"
+    }
+   ]
+  },
+  {
+   "id": "tova.view",
+   "speaker": "ferry-tova",
+   "text": "They say we are always late, because we do not sail by the town bell. We sail by the water. We have one word for slow water and another for sudden water. In town that is 'just water'. Our words carry knowledge that the town does not have, and the town has knowledge that we do not have. Both are true.",
+   "options": [
+    {
+     "text": "Did you know Guardian Elsbet?",
+     "next": "tova.elsbet"
+    },
+    {
+     "text": "Why is this road not on the guild's maps?",
+     "next": "tova.road"
+    },
+    {
+     "text": "What does the town get wrong about the ferry folk?",
+     "next": "tova.view"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    },
+    {
+     "text": "Did our Nexus packet reach the landing?",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "ledger"
+     },
+     "next": "tova.nexus-copy.ledger"
+    },
+    {
+     "text": "Show me where you kept the packet.",
+     "if": {
+      "flag": "ferry.copy.place",
+      "eq": "slate"
+     },
+     "next": "tova.nexus-copy.slate"
+    }
+   ]
+  },
+  {
+   "id": "tova.nexus-copy",
+   "speaker": "ferry-tova",
+   "historicalLabel": "fictional-world",
+   "text": "Yes. The ferry has room for the archive's copy and for what we learn from trying it. Did you want to hear what we kept from it?",
+   "options": [
+    {
+     "text": "What happened to the dated records?",
+     "if": {
+      "flag": "nexus.ferry.packet",
+      "eq": "dates"
+     },
+     "next": "tova.nexus-copy.dates"
+    },
+    {
+     "text": "What happened to the pair of marking strips?",
+     "if": {
+      "flag": "nexus.ferry.packet",
+      "eq": "strips"
+     },
+     "next": "tova.nexus-copy.strips"
+    },
+    {
+     "text": "What happened to the translation proof?",
+     "if": {
+      "flag": "nexus.ferry.packet",
+      "eq": "proofs"
+     },
+     "next": "tova.nexus-copy.proofs"
+    },
+    {
+     "text": "I can come back."
+    }
+   ]
+  },
+  {
+   "id": "tova.nexus-copy.dates",
+   "speaker": "ferry-tova",
+   "historicalLabel": "fictional-world",
+   "text": "One of our deck hands wanted to file the landing's first voyage with the day the boat was registered. She put a second line under it when she saw your slip. On our second line we can name the skipper who remembered the crossing.",
+   "next": "tova.nexus-copy.place"
+  },
+  {
+   "id": "tova.nexus-copy.strips",
+   "speaker": "ferry-tova",
+   "historicalLabel": "fictional-world",
+   "text": "We use slate for the water because wet fingers smudge our paper. A deck hand wanted to choose a pen for the slate from your strips. Then she saw what you wrote under the marks. She wants to compare two marks here, on our slate, before she buys a pen.",
+   "next": "tova.nexus-copy.place"
+  },
+  {
+   "id": "tova.nexus-copy.proofs",
+   "speaker": "ferry-tova",
+   "historicalLabel": "fictional-world",
+   "text": "We say the first boat is the first one after the water slows. To town it means a time on a clock. A passenger saw your proof and asked me to put what sets off our first boat in both versions of the notice.",
+   "next": "tova.nexus-copy.place"
+  },
+  {
+   "id": "tova.nexus-copy.place",
+   "speaker": "ferry-tova",
+   "historicalLabel": "fictional-world",
+   "text": "I want our note to stay with their copy. We can fold both into the landing book for a careful reader, or clip the note by the water slate where crews stop. People who want the whole packet can still ask at the boat.",
+   "options": [
+    {
+     "text": "File the note with the packet in the landing book.",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy.ledger",
+     "effects": [
+      {
+       "setFlag": "ferry.copy.place",
+       "value": "ledger"
+      }
+     ]
+    },
+    {
+     "text": "Clip the note to the water slate and mark where the packet is kept.",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.edition"
+       },
+       {
+        "not": {
+         "flagSet": "ferry.copy.place"
+        }
+       }
+      ]
+     },
+     "next": "tova.nexus-copy.slate",
+     "effects": [
+      {
+       "setFlag": "ferry.copy.place",
+       "value": "slate"
+      }
+     ]
+    },
+    {
+     "text": "Let the crew decide later."
+    }
+   ]
+  },
+  {
+   "id": "tova.nexus-copy.ledger",
+   "speaker": "ferry-tova",
+   "historicalLabel": "fictional-world",
+   "text": "The packet lies open in the landing book. The archive's slip is on the left. Our note is on the right, in our cant and town words, with room to add what another crew finds."
+  },
+  {
+   "id": "tova.nexus-copy.slate",
+   "speaker": "ferry-tova",
+   "historicalLabel": "fictional-world",
+   "text": "The landing's note hangs beside our water slate in both sets of words. Crews see what we learned while they check the water. A little boat stamp points to the older packet on board."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH1-LAMP",
+   "world": "WORLD-02",
+   "title": "The Dark Lamps of Emberford",
+   "knowledgeQuestion": "Who keeps a town's knowledge alive when its keeper is gone?",
+   "stake": "If nobody keeps checking, the lamps stay dark, the loudest voice wins every argument, and Emberford forgets how to ask 'how do we know?'.",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "lamp.o1.hear",
+     "title": "Ask Guildmaster Orrin about the dark lamps on the guild hall.",
+     "essential": false,
+     "done": {
+      "flag": "lamps.heard",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "evidence"
+      ],
+      "atl": [
+       "social",
+       "self-management"
+      ],
+      "subjects": [
+       "history",
+       "anthropology"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-SLF-09"
+     ]
+    },
+    {
+     "id": "lamp.o2.six",
+     "title": "Light six lamps: help the people of Emberford untie their knots. The Lamp Wall by the hall door shows which are lit.",
+     "essential": false,
+     "visible": {
+      "flag": "lamps.heard",
+      "eq": true
+     },
+     "done": {
+      "num": "lamps.lit",
+      "gte": 6
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "evidence"
+      ],
+      "atl": [
+       "social",
+       "self-management"
+      ],
+      "subjects": [
+       "history",
+       "anthropology"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-SLF-09"
+     ]
+    },
+    {
+     "id": "lamp.o3.cellar",
+     "title": "Go down to the old Guardian's study, through the cellar door beside the guild hall.",
+     "essential": false,
+     "visible": {
+      "num": "lamps.lit",
+      "gte": 6
+     },
+     "done": {
+      "flag": "study.entered",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "evidence"
+      ],
+      "atl": [
+       "social",
+       "self-management"
+      ],
+      "subjects": [
+       "history",
+       "anthropology"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-SLF-09"
+     ]
+    },
+    {
+     "id": "lamp.o4.letter",
+     "title": "Use your keepsakes in the study to find out where Guardian Elsbet went.",
+     "essential": false,
+     "visible": {
+      "flag": "study.entered",
+      "eq": true
+     },
+     "done": {
+      "flag": "study.letter",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "evidence"
+      ],
+      "atl": [
+       "social",
+       "self-management"
+      ],
+      "subjects": [
+       "history",
+       "anthropology"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-SLF-09"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.study"
+      }
+     ]
+    },
+    {
+     "id": "lamp.o5.entry",
+     "title": "Write the first new entry in Elsbet's journal.",
+     "essential": false,
+     "visible": {
+      "flag": "study.letter",
+      "eq": true
+     },
+     "done": {
+      "flag": "study.entry",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "evidence"
+      ],
+      "atl": [
+       "social",
+       "self-management"
+      ],
+      "subjects": [
+       "history",
+       "anthropology"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-SLF-09"
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.lamp.o1.hear.1",
+   "objective": "lamp.o1.hear",
+   "depth": 1,
+   "text": "Orrin stands outside the guild hall, north of the square."
+  },
+  {
+   "id": "h.lamp.o1.hear.2",
+   "objective": "lamp.o1.hear",
+   "depth": 2,
+   "text": "Talk to Orrin."
+  },
+  {
+   "id": "h.lamp.o1.hear.3",
+   "objective": "lamp.o1.hear",
+   "depth": 3,
+   "text": "Ask him what happened to the Guardian."
+  },
+  {
+   "id": "h.lamp.o1.hear.4",
+   "objective": "lamp.o1.hear",
+   "depth": 4,
+   "text": "Choose 'What happened to her?'."
+  },
+  {
+   "id": "h.lamp.o2.six.1",
+   "objective": "lamp.o2.six",
+   "depth": 1,
+   "text": "Many people in Emberford have a problem. Each one you help lights a lamp."
+  },
+  {
+   "id": "h.lamp.o2.six.2",
+   "objective": "lamp.o2.six",
+   "depth": 2,
+   "text": "Open the Lamp Wall to see which knots are still dark and who to ask."
+  },
+  {
+   "id": "h.lamp.o2.six.3",
+   "objective": "lamp.o2.six",
+   "depth": 3,
+   "text": "Try the map, the brass sorter, the survey box or the echo stone."
+  },
+  {
+   "id": "h.lamp.o2.six.4",
+   "objective": "lamp.o2.six",
+   "depth": 4,
+   "text": "Any six knots open the cellar. You do not need all sixteen."
+  },
+  {
+   "id": "h.lamp.o3.cellar.1",
+   "objective": "lamp.o3.cellar",
+   "depth": 1,
+   "text": "The cellar door is beside the guild hall."
+  },
+  {
+   "id": "h.lamp.o3.cellar.2",
+   "objective": "lamp.o3.cellar",
+   "depth": 2,
+   "text": "It opens now that six lamps are lit."
+  },
+  {
+   "id": "h.lamp.o3.cellar.3",
+   "objective": "lamp.o3.cellar",
+   "depth": 3,
+   "text": "Walk to the door and use it."
+  },
+  {
+   "id": "h.lamp.o3.cellar.4",
+   "objective": "lamp.o3.cellar",
+   "depth": 4,
+   "text": "Use the cellar door beside the hall."
+  },
+  {
+   "id": "h.lamp.o4.letter.1",
+   "objective": "lamp.o4.letter",
+   "depth": 1,
+   "text": "Each object in the study shows more with the right keepsake."
+  },
+  {
+   "id": "h.lamp.o4.letter.2",
+   "objective": "lamp.o4.letter",
+   "depth": 2,
+   "text": "Look at the desk, the clock and the hearth."
+  },
+  {
+   "id": "h.lamp.o4.letter.3",
+   "objective": "lamp.o4.letter",
+   "depth": 3,
+   "text": "Some keepsakes open a way to the hidden letter. Four keepsake views, or looking at ten objects, also helps."
+  },
+  {
+   "id": "h.lamp.o4.letter.4",
+   "objective": "lamp.o4.letter",
+   "depth": 4,
+   "text": "The letter is behind the hearth stone."
+  },
+  {
+   "id": "h.lamp.o5.entry.1",
+   "objective": "lamp.o5.entry",
+   "depth": 1,
+   "text": "The journal is on the desk table."
+  },
+  {
+   "id": "h.lamp.o5.entry.2",
+   "objective": "lamp.o5.entry",
+   "depth": 2,
+   "text": "Use the spare ballpoint tip from the Nexus on the journal."
+  },
+  {
+   "id": "h.lamp.o5.entry.3",
+   "objective": "lamp.o5.entry",
+   "depth": 3,
+   "text": "Open the journal and choose the pen tip."
+  },
+  {
+   "id": "h.lamp.o5.entry.4",
+   "objective": "lamp.o5.entry",
+   "depth": 4,
+   "text": "Write your entry."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.study",
+   "text": "Elsbet's study: no lamp was lit by one Guardian alone. She left to find where the Fray begins. Ask Ise about the door with no name.",
+   "claimKind": "interpretation"
+  }
+ ],
+ "memories": [
+  {
+   "id": "lamps.all",
+   "character": "guildmaster-orrin",
+   "if": {
+    "num": "lamps.lit",
+    "gte": 16
+   },
+   "line": "All sixteen lamps. I never thought I'd see it again. Elsbet would say: now keep them lit."
+  },
+  {
+   "id": "lamps.half",
+   "character": "scholar-sefa",
+   "if": {
+    "num": "lamps.lit",
+    "gte": 8
+   },
+   "line": "Half the lamps are lit. People argue differently now. More 'how do you know?', fewer fists."
+  },
+  {
+   "id": "trust.guild",
+   "character": "guildmaster-orrin",
+   "if": {
+    "num": "trust.guild",
+    "gte": 6
+   },
+   "line": "The guild talks about you at meetings. Mostly about how you ask for the record before you believe the story."
+  },
+  {
+   "id": "trust.market",
+   "character": "fruit-seller",
+   "if": {
+    "num": "trust.market",
+    "gte": 6
+   },
+   "line": "Traders trust you now. Not because you agree with us. Because you check, and you say so."
+  },
+  {
+   "id": "trust.forge",
+   "character": "smith-hesper",
+   "if": {
+    "num": "trust.forge",
+    "gte": 6
+   },
+   "line": "You're welcome at my anvil any time. Bring a question, not a conclusion."
+  },
+  {
+   "id": "trust.river",
+   "character": "scholar-sefa",
+   "if": {
+    "num": "trust.river",
+    "gte": 6
+   },
+   "line": "The ferry folk call you 'tavi-friend' now. That is not a small word."
+  },
+  {
+   "id": "kip.lamps3",
+   "character": "kip-arden",
+   "if": {
+    "num": "lamps.lit",
+    "gte": 3
+   },
+   "line": "Three lamps! Do you think Elsbet counted them too? I would. I count everything."
+  },
+  {
+   "id": "kip.study",
+   "character": "kip-arden",
+   "if": {
+    "flag": "study.entered",
+    "eq": true
+   },
+   "line": "Her study is so tidy. Tidy people still get things wrong, though. That is what the 'three ways I was wrong' list is for, I bet."
+  },
+  {
+   "id": "kip.ferry",
+   "character": "kip-arden",
+   "if": {
+    "flag": "ferry.met",
+    "eq": true
+   },
+   "line": "Tova's 'slow water' and 'sudden water'... we have one word, and they have two. So who knows more about water? Maybe that is the wrong question."
+  },
+  {
+   "id": "kip.secret",
+   "character": "kip-arden",
+   "if": {
+    "num": "secrets.found",
+    "gte": 1
+   },
+   "line": "A secret! Where there is one, there are more. Search odd corners: that is my method."
+  },
+  {
+   "id": "kip.shop",
+   "character": "kip-arden",
+   "if": {
+    "flagSet": "sd.corvan.outcome"
+   },
+   "line": "Did you read Corvan's new labels? 'I cannot show that it brings luck.' Ha! That is the most honest rug in Aethelgard."
+  },
+  {
+   "id": "kip.tiles",
+   "character": "kip-arden",
+   "if": {
+    "num": "tiles.runs",
+    "gte": 1
+   },
+   "line": "Knowing a word is not the same as using it well. Sefa told me that. I said, 'How do you know?' She laughed."
+  },
+  {
+   "id": "kip.trust",
+   "character": "kip-arden",
+   "if": {
+    "any": [
+     {
+      "num": "trust.guild",
+      "gte": 4
+     },
+     {
+      "num": "trust.market",
+      "gte": 4
+     },
+     {
+      "num": "trust.forge",
+      "gte": 4
+     },
+     {
+      "num": "trust.river",
+      "gte": 4
+     }
+    ]
+   },
+   "line": "People here trust you more now. Not because you agree with them. Because you listen first, then check."
+  },
+  {
+   "id": "kip.reading",
+   "character": "kip-arden",
+   "if": {
+    "num": "count.readings",
+    "gte": 1
+   },
+   "line": "You measured it yourself! Now when someone says 'everyone knows', we can say 'we checked'. Politely."
+  },
+  {
+   "id": "kip.rumours",
+   "character": "kip-arden",
+   "if": {
+    "num": "count.rumours",
+    "gte": 1
+   },
+   "line": "'Who told you?' is my new favourite question. The tea table hates it. Then they start asking it too."
+  },
+  {
+   "id": "kip.dye",
+   "character": "kip-arden",
+   "if": {
+    "any": [
+     {
+      "flag": "owned.dye.madder",
+      "eq": true
+     },
+     {
+      "flag": "owned.dye.woad",
+      "eq": true
+     },
+     {
+      "flag": "owned.dye.weld",
+      "eq": true
+     },
+     {
+      "flag": "owned.dye.walnut",
+      "eq": true
+     }
+    ]
+   },
+   "line": "New cloak colour? It suits you. And you know exactly what it cost, part by part. Very Guardian of you."
+  },
+  {
+   "id": "kip.approval3",
+   "character": "kip-arden",
+   "if": {
+    "num": "approval.kip-arden",
+    "gte": 3
+   },
+   "line": "You know what I like about walking with you? You ask the second question. Most people stop at the first one."
+  },
+  {
+   "id": "kip.approval6",
+   "character": "kip-arden",
+   "if": {
+    "num": "approval.kip-arden",
+    "gte": 6
+   },
+   "line": "I used to think a good mapmaker knows every road. Now I think a good mapmaker asks, 'Who walked this road, and when?' I got that from you."
+  },
+  {
+   "id": "kip.role",
+   "character": "kip-arden",
+   "if": {
+    "flagSet": "role"
+   },
+   "line": "A knower role! I would be a Questioner, obviously. But Hesper says that is exactly why I should try being a Maker for a week."
+  },
+  {
+   "id": "kip.undercroft",
+   "character": "kip-arden",
+   "if": {
+    "flag": "undercroft.done",
+    "eq": true
+   },
+   "line": "A Fray made of records nobody read. That is the saddest monster. I am going to check one old map every week now, just in case."
+  },
+  {
+   "id": "kip.letter",
+   "character": "kip-arden",
+   "if": {
+    "flag": "study.letter",
+    "eq": true
+   },
+   "line": "'Something beyond the Nexus teaches people to stop asking.' That is the scariest sentence I have ever read. Let's keep asking."
+  }
+ ]
+}

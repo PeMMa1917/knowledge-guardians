@@ -123,6 +123,9 @@ export const MIGRATIONS: Record<number, (s: any) => any> = {
       events: { clock: 0, next: 600, seen: [], pending: null },
     };
   },
+  // Schema 3 had no pronouns or origin. Schema 4 adds them (spec 35.1).
+  // Old saves get they/them and no origin, and the player can change pronouns at any time.
+  3: (s) => ({ ...s, schema: 4, player: { ...s.player, pronouns: { subject: 'they', object: 'them', possessive: 'their' }, origin: null } }),
 };
 
 export function migrateCampaign(raw: any): { state: CampaignState; migrated: boolean } {

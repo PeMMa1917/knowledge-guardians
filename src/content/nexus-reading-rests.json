@@ -1,0 +1,474 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH1-R13",
+   "world": "WORLD-01",
+   "title": "The Uncounted Reader",
+   "knowledgeQuestion": "What can records of use leave out when people are still waiting?",
+   "available": {
+    "flag": "nexus.rest.used",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "nexus.rest.checked",
+     "title": "Put the rests in use and keep the remaining request in view.",
+     "essential": false,
+     "done": {
+      "flag": "nexus.rest.used",
+      "eq": true
+     },
+     "onComplete": [
+      {
+       "journal": "j.nexus.rest"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "evidence",
+       "power",
+       "values",
+       "perspective",
+       "responsibility"
+      ],
+      "atl": [
+       "research",
+       "social",
+       "thinking",
+       "self-management"
+      ],
+      "aoks": [
+       "HUM",
+       "MAT"
+      ],
+      "subjects": [
+       "math-ai",
+       "economics",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-NUM-14"
+     ]
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "nexus.rest.counter",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Two small trays sit near the ledger. Each time a book goes out, a counter crosses from one tray to the other. The clerk has left space for the day’s total.",
+   "options": [
+    {
+     "text": "Slide the used counters into a line and count the loans.",
+     "next": "nexus.rest.counter-read",
+     "if": {
+      "not": {
+       "flagSet": "nexus.rest.counted"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.rest.counted",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Look at the line of used counters again.",
+     "next": "nexus.rest.counter-read",
+     "if": {
+      "flag": "nexus.rest.counted",
+      "eq": true
+     }
+    },
+    {
+     "text": "Leave the counters in the tray."
+    }
+   ]
+  },
+  {
+   "id": "nexus.rest.counter-read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Four counters have crossed. The clerk saw one visitor carry two books out in separate trips. Each trip moved a counter. 'I can tell you how many went out,' says the clerk. 'I couldn't tell you how many people borrowed.' A paper at the low table asks for two spare reading rests."
+  },
+  {
+   "id": "nexus.rest.request",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A visitor is holding two records flat against the table. They want to compare them with a friend. Another visitor is leaving soon and asks if a rest can be borrowed. Neither request has moved a counter in the lending tray.",
+   "options": [
+    {
+     "text": "Clip the two requests to the edge of the reading tray.",
+     "next": "nexus.rest.requests-read",
+     "if": {
+      "not": {
+       "flagSet": "nexus.rest.waiting"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.rest.waiting",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Read the requests beside the tray.",
+     "next": "nexus.rest.requests-read",
+     "if": {
+      "flag": "nexus.rest.waiting",
+      "eq": true
+     }
+    },
+    {
+     "text": "Leave the tray open."
+    }
+   ]
+  },
+  {
+   "id": "nexus.rest.requests-read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "One clip asks for two rests side by side. The other asks for one that can travel. The joiner has two spares by the bench. The slips can help decide where to put them."
+  },
+  {
+   "id": "nexus.rest.bench",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The joiner puts two rests into your hands. Together they hold two books open at the low table. A rest can also go out and return on a hook by the ledger. Either plan leaves someone waiting for part of what they asked for.",
+   "options": [
+    {
+     "text": "Carry both rests to the low table.",
+     "next": "nexus.rest.pair-plan",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.rest.counted",
+        "eq": true
+       },
+       {
+        "flag": "nexus.rest.waiting",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.rest.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.rest.layout",
+       "value": "together"
+      }
+     ]
+    },
+    {
+     "text": "Carry one to the low table and one to the return hook.",
+     "next": "nexus.rest.split-plan",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.rest.counted",
+        "eq": true
+       },
+       {
+        "flag": "nexus.rest.waiting",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.rest.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.rest.layout",
+       "value": "circulate"
+      }
+     ]
+    },
+    {
+     "text": "Set the rests back down."
+    }
+   ]
+  },
+  {
+   "id": "nexus.rest.pair-plan",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The joiner clears two places at the low table. The visitor who has to leave asks the clerk to keep the borrowing request where it can still be seen."
+  },
+  {
+   "id": "nexus.rest.split-plan",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The joiner clears a place at the low table and points to the return hook near the counter tray. The two people comparing books agree to swap one at a time while the other rest is away."
+  },
+  {
+   "id": "nexus.rest.pair-slot",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The two readers move their books out of the way. The joiner has cleared enough room to hold both records at once.",
+   "options": [
+    {
+     "text": "Set both rests side by side and put the books in reach.",
+     "next": "nexus.rest.pair-placed",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.rest.layout",
+        "eq": "together"
+       },
+       {
+        "not": {
+         "flagSet": "nexus.rest.pair"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.rest.pair",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the table clear for now."
+    }
+   ]
+  },
+  {
+   "id": "nexus.rest.pair-placed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The readers open both copies. One sees a correction in the margin of the other book. The visitor who wanted to borrow a rest has already left for the landing. Their slip is still at the table."
+  },
+  {
+   "id": "nexus.rest.pair-ready",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Two books sit open together on their rests. The clerk brings the loan tray over and asks what should happen to the slip for the person who had to leave.",
+   "options": [
+    {
+     "text": "Clip the request beside the loan total, on its own line.",
+     "next": "nexus.rest.pair-read",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.rest.layout",
+        "eq": "together"
+       },
+       {
+        "flag": "nexus.rest.pair",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.rest.used"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the two copies open."
+    }
+   ]
+  },
+  {
+   "id": "nexus.rest.pair-read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The clerk keeps the four lending marks and gives the remaining request its own place. Anyone who looks after the table tomorrow can see both what the open books are doing and who is still waiting for a rest.",
+   "effects": [
+    {
+     "setFlag": "nexus.rest.used",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "nexus.rest.fixed-slot",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "There is room for one steady rest at the low table. The two readers decide to open one book at a time, with the other visible beside it.",
+   "options": [
+    {
+     "text": "Set the fixed rest at the low table.",
+     "next": "nexus.rest.fixed-ready",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.rest.layout",
+        "eq": "circulate"
+       },
+       {
+        "not": {
+         "flagSet": "nexus.rest.table"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.rest.table",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the place clear."
+    }
+   ]
+  },
+  {
+   "id": "nexus.rest.fixed-ready",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The fixed rest holds one of the copies open. The readers can work here. To compare the pages, they take turns setting down one book and lifting the other."
+  },
+  {
+   "id": "nexus.rest.mobile-slot",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The return hook hangs where a borrower can leave the portable rest without taking a turn at the table. A small slip can stay with the hook.",
+   "options": [
+    {
+     "text": "Hang the portable rest where visitors can borrow it.",
+     "next": "nexus.rest.mobile-placed",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.rest.layout",
+        "eq": "circulate"
+       },
+       {
+        "not": {
+         "flagSet": "nexus.rest.mobile"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.rest.mobile",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the hook empty."
+    }
+   ]
+  },
+  {
+   "id": "nexus.rest.mobile-placed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The visitor heading away lifts the rest from the hook to check its weight. They set it back while the clerk opens the tray. The other rest belongs at the low table."
+  },
+  {
+   "id": "nexus.rest.mobile-ready",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A visitor can take this rest to a ledge by the landing. The readers at the low table left a request for a time when they can keep both books open together.",
+   "options": [
+    {
+     "text": "Clip the table’s remaining request on a separate line beside the loan total.",
+     "next": "nexus.rest.mobile-read",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.rest.layout",
+        "eq": "circulate"
+       },
+       {
+        "flag": "nexus.rest.table",
+        "eq": true
+       },
+       {
+        "flag": "nexus.rest.mobile",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.rest.used"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the portable rest on its hook."
+    }
+   ]
+  },
+  {
+   "id": "nexus.rest.mobile-read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The clerk puts a slip for the waiting pair next to the loan counters. A new loan can show that a rest went out. The slip keeps the comparison they still want in sight.",
+   "effects": [
+    {
+     "setFlag": "nexus.rest.used",
+     "value": true
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.nexus.rest.1",
+   "objective": "nexus.rest.checked",
+   "depth": 1,
+   "text": "A loan and a request leave different traces."
+  },
+  {
+   "id": "h.nexus.rest.2",
+   "objective": "nexus.rest.checked",
+   "depth": 2,
+   "text": "Look at the counters near the clerk and the requests by the low table."
+  },
+  {
+   "id": "h.nexus.rest.3",
+   "objective": "nexus.rest.checked",
+   "depth": 3,
+   "text": "Carry the rests from the joiner’s bench. Place both at the table or place one at the table and one at the hook."
+  },
+  {
+   "id": "h.nexus.rest.4",
+   "objective": "nexus.rest.checked",
+   "depth": 4,
+   "text": "Return to the installed pair or the portable rest after both places are set. Keep the waiting request separate from the loan total."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.nexus.rest",
+   "claimKind": "observation",
+   "text": "Four loan counters measured books going out. A reader could move two, and some readers were still waiting. I placed the reading rests and left a separate slip for the request that remained."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.nexus.rest",
+   "attribute": "caring",
+   "when": {
+    "flag": "nexus.rest.used",
+    "eq": true
+   },
+   "did": "You put the reading rests within reach and kept a separate place for the request someone still needed.",
+   "prompt": ""
+  }
+ ]
+}

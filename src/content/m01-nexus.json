@@ -16,7 +16,9 @@
      },
      "weave": {
       "concepts": [
-       "evidence"
+       "evidence",
+       "power",
+       "truth"
       ],
       "atl": [
        "thinking"
@@ -27,7 +29,10 @@
       "aoks": [
        "HIS"
       ]
-     }
+     },
+     "skills": [
+      "SK-THK-01"
+     ]
     },
     {
      "id": "m01.o2.inspect",
@@ -47,7 +52,8 @@
      ],
      "weave": {
       "concepts": [
-       "evidence"
+       "evidence",
+       "interpretation"
       ],
       "atl": [
        "research"
@@ -58,7 +64,11 @@
       "aoks": [
        "HIS"
       ]
-     }
+     },
+     "skills": [
+      "SK-CUR-01",
+      "SK-RSC-07"
+     ]
     },
     {
      "id": "m01.o3.lens",
@@ -74,7 +84,8 @@
      "weave": {
       "concepts": [
        "evidence",
-       "interpretation"
+       "interpretation",
+       "certainty"
       ],
       "atl": [
        "thinking",
@@ -86,7 +97,11 @@
       "aoks": [
        "HIS"
       ]
-     }
+     },
+     "skills": [
+      "SK-MED-02",
+      "SK-RSC-07"
+     ]
     },
     {
      "id": "m01.o4.test",
@@ -110,7 +125,9 @@
      "weave": {
       "concepts": [
        "evidence",
-       "justification"
+       "justification",
+       "objectivity",
+       "explanation"
       ],
       "atl": [
        "thinking",
@@ -124,7 +141,15 @@
        "NAT",
        "TEC"
       ]
-     }
+     },
+     "kq": {
+      "id": "KQ-NEW-003",
+      "action": "test"
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-NUM-14"
+     ]
     },
     {
      "id": "m01.o5.practice",
@@ -144,7 +169,8 @@
      "weave": {
       "concepts": [
        "perspective",
-       "justification"
+       "justification",
+       "values"
       ],
       "atl": [
        "communication",
@@ -157,7 +183,16 @@
       "aoks": [
        "HIS"
       ]
-     }
+     },
+     "kq": {
+      "id": "KQ-NEW-004",
+      "action": "showdown"
+     },
+     "skills": [
+      "SK-THK-16",
+      "SK-THK-15",
+      "SK-SPK-02"
+     ]
     },
     {
      "id": "m01.o6.label",
@@ -179,7 +214,8 @@
       "concepts": [
        "evidence",
        "justification",
-       "responsibility"
+       "responsibility",
+       "culture"
       ],
       "atl": [
        "communication",
@@ -193,7 +229,15 @@
        "HIS",
        "LAN"
       ]
-     }
+     },
+     "kq": {
+      "id": "KQ-NEW-001",
+      "action": "label"
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-WRT-13"
+     ]
     },
     {
      "id": "m01.o7.portal",
@@ -275,6 +319,151 @@
        "MAT",
        "POL"
       ]
+     },
+     "kq": {
+      "id": "KQ-NEW-001",
+      "action": "exhibition"
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-ICU-02"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-FERRY-COPY",
+   "world": "WORLD-01",
+   "title": "A Copy for the Ferry",
+   "knowledgeQuestion": "What must travel with a claim so someone elsewhere can check it?",
+   "available": {
+    "flagSet": "nexus.ferry.edition"
+   },
+   "objectives": [
+    {
+     "id": "nexus.ferry.published",
+     "title": "Leave a traceable copy for the ferry landing.",
+     "done": {
+      "flagSet": "nexus.ferry.edition"
+     },
+     "essential": false,
+     "onComplete": [
+      {
+       "journal": "j.m01.ferry.copy"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "evidence",
+       "perspective",
+       "responsibility",
+       "values"
+      ],
+      "atl": [
+       "communication",
+       "social",
+       "thinking"
+      ],
+      "aoks": [
+       "LAN"
+      ],
+      "subjects": [
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-R10",
+   "world": "WORLD-01",
+   "title": "Seal at the Door",
+   "knowledgeQuestion": "What does a trusted mark actually give us reason to believe?",
+   "available": {
+    "flag": "nexus.seal.readback",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "nexus.seal.checked",
+     "title": "Leave the two checks where a visitor can follow them.",
+     "essential": false,
+     "done": {
+      "flag": "nexus.seal.readback",
+      "eq": true
+     },
+     "onComplete": [
+      {
+       "journal": "j.nexus.seal"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "power",
+       "responsibility",
+       "certainty",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "communication"
+      ],
+      "aoks": [
+       "HIS"
+      ],
+      "subjects": [
+       "history"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-R11",
+   "world": "WORLD-01",
+   "title": "A Page Left Open",
+   "knowledgeQuestion": "What helps the next person check what we found?",
+   "available": {
+    "flag": "nexus.arrival.readback",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "nexus.arrival.checked",
+     "title": "Look at the note the visitors left by the entrance.",
+     "essential": false,
+     "done": {
+      "flag": "nexus.arrival.readback",
+      "eq": true
+     },
+     "onComplete": [
+      {
+       "journal": "j.nexus.arrival"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "evidence",
+       "power",
+       "perspective",
+       "responsibility"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "LAN",
+       "HIS"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "history"
+      ]
      }
     }
    ]
@@ -331,6 +520,15 @@
    "sources": [],
    "text": "In the controlled test, the model of Loud's design marked rough leather and wood better than paper. The Bíró-type model marked paper best.",
    "limits": "These results follow the game's model assumptions. They are not measurements of historical pens."
+  },
+  {
+   "id": "card.nexus.handling-docket",
+   "title": "The padded-case docket",
+   "text": "The Nexus cleared the padded case to hold the modern model on display. The workroom issued its own build tag.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "sources": [],
+   "limits": "The handling docket does not authenticate an object or supply its build date."
   }
  ],
  "exhibits": [
@@ -463,7 +661,7 @@
        "weight": 3
       }
      ],
-     "heard": "A visitor reads it aloud to a friend: 'So 1888 is the first PATENT. That is not the same as the pen in my bag.' The words survive the retelling."
+     "heard": "A visitor reads it aloud to a friend: 'So 1888 is the first PATENT. That is not the same as the pen in my bag.' The words survive the retelling. Her friend points to the word 'patent'. 'Where I grew up, first meant the earliest copy we could borrow. I'd better keep that word when I tell this one.'"
     },
     {
      "subject": "loud",
@@ -490,7 +688,7 @@
        "weight": 1
       }
      ],
-     "heard": "A visitor points at the names: 'Two brothers and their partners. I only ever heard of one.' Her friend repeats all of it correctly."
+     "heard": "A visitor points at the names: 'Two brothers and their partners. I only ever heard of one.' Her friend repeats all of it correctly. 'At home biro is the word for any pen like this,' the friend says. 'I'll keep the family name and the other hands in the story this time.'"
     },
     {
      "subject": "biro-alone",
@@ -527,7 +725,7 @@
        "weight": 2
       }
      ],
-     "heard": "A child asks: 'So this is not the real one?' Her father reads the label again: 'No. It is a model of the drawing.' The label did its job."
+     "heard": "A child asks: 'So this is not the real one?' Her father reads the label again: 'No. It is a model of the drawing.' The label did its job. 'In my workshop we keep models by the tools to help teach a job,' says the father. 'Here it's in a case. I'd better tell your sister why we made it.'"
     },
     {
      "subject": "model",
@@ -559,7 +757,7 @@
        "weight": 1
       }
      ],
-     "heard": "Two visitors argue in a friendly way: 'Which first matters most?' They are arguing about the right question now. Both repeat the dates correctly."
+     "heard": "Two visitors argue in a friendly way: 'Which first matters most?' They are arguing about the right question now. Both repeat the dates correctly. 'My family calls the first version we used the first,' says one. 'At the grant desk it has to be the earliest record,' says the other. They keep the different meanings with the dates."
     }
    ],
    "weak": {
@@ -594,6 +792,107 @@
      "HIS",
      "LAN",
      "TEC"
+    ]
+   }
+  },
+  {
+   "id": "nexus.handling-seal",
+   "title": "A card beside the archive seal",
+   "oldLabel": "NEXUS CHECKED",
+   "place": "the Nexus",
+   "sentence": true,
+   "subjects": [
+    {
+     "id": "model",
+     "text": "The brass model"
+    }
+   ],
+   "criteria": [
+    {
+     "id": "paired",
+     "text": "is modern. The seal clears its padded case for display",
+     "force": 2
+    },
+    {
+     "id": "docket",
+     "text": "has a separate build date. See the seal’s docket for the handling check",
+     "force": 2
+    }
+   ],
+   "limits": [
+    {
+     "id": "build",
+     "text": "See the workshop’s build record beside the model.",
+     "lower": 0
+    },
+    {
+     "id": "drawing",
+     "text": "Loud’s patent date belongs with the drawing.",
+     "lower": 0
+    }
+   ],
+   "supports": [
+    {
+     "subject": "model",
+     "criterion": "paired",
+     "cards": [
+      {
+       "card": "card.nexus.handling-docket",
+       "weight": 1
+      },
+      {
+       "card": "card.loud-model",
+       "weight": 1
+      }
+     ],
+     "heard": "A visitor points from the handling line to the date from the workshop. Dace leaves the paired card by the case."
+    },
+    {
+     "subject": "model",
+     "criterion": "docket",
+     "cards": [
+      {
+       "card": "card.nexus.handling-docket",
+       "weight": 1
+      },
+      {
+       "card": "card.loud-model",
+       "weight": 1
+      }
+     ],
+     "heard": "A visitor brings the card to the register and opens both records. Dace leaves a source copy there."
+    }
+   ],
+   "weak": {
+    "noSupport": "The display needs the build record and the handling docket.",
+    "tooStrong": "The two desks had different checks. The card still needs the record from the missing desk."
+   },
+   "legends": {
+    "intro": "The archive checked the padded case. The workshop tells when the model was made. Choose where a visitor should read those checks.",
+    "criterion": "Card by the case or by the register",
+    "limit": "Source line",
+    "button": "Place the seal card"
+   },
+   "weave": {
+    "concepts": [
+     "power",
+     "evidence",
+     "truth",
+     "certainty",
+     "responsibility"
+    ],
+    "atl": [
+     "research",
+     "thinking",
+     "communication"
+    ],
+    "aoks": [
+     "HIS",
+     "LAN"
+    ],
+    "subjects": [
+     "history",
+     "lang-langlit"
     ]
    }
   }
@@ -874,13 +1173,28 @@
   },
   {
    "id": "j.m01.firsts",
-   "text": "In the Hall of Firsts I repaired plaques about people from different continents and times. Each 'first' needed a criterion and a limit.",
+   "text": "In the Hall of Firsts I repaired plaques about seven people, each from their own place and time. Each 'first' needed a criterion and a limit.",
    "claimKind": "interpretation"
   },
   {
    "id": "j.m01.done",
    "text": "Recruitment complete. Warden Ise gave me the Field Annotation Pen and the Provenance Thread. Next: a field mission in Aethelgard.",
    "claimKind": "observation"
+  },
+  {
+   "id": "j.m01.ferry.copy",
+   "text": "A reader at the landing needed to check our work away from the cases. The copy on the reading shelf keeps the records, the marks or the translator's context with the words that travelled.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "j.nexus.seal",
+   "claimKind": "observation",
+   "text": "The seal on the modern model’s case records a handling check. I kept the separate build record in reach. A visitor can check the right desk for each claim."
+  },
+  {
+   "id": "j.nexus.arrival",
+   "claimKind": "observation",
+   "text": "The first visitors left a way to check the words they had copied. The open page keeps room for something another person can see or trace."
   }
  ],
  "dialogue": [
@@ -899,13 +1213,105 @@
   {
    "id": "cold.open2",
    "speaker": "villager-2",
-   "text": "'The first ballpoint pen,' says a visitor, in a flat voice. Her friend nods: 'The first ballpoint pen.' Neither of them looks at the exhibits.",
-   "next": "cold.open3"
+   "text": "A visitor starts to lift her notebook to the case. Her friend taps the archive seal on the glowing label. 'They've checked it for us.' The notebook shuts. Both repeat the words without looking at the exhibits. A page slips out. It carries the copied words alone. The visitor reaches for her pencil.",
+   "next": "cold.open3",
+   "options": [
+    {
+     "text": "Continue into the hall.",
+     "next": "cold.open3"
+    },
+    {
+     "text": "Clip a blank page beside the copied words.",
+     "next": "cold.notebook-view",
+     "effects": [
+      {
+       "setFlag": "nexus.arrival.note",
+       "value": "view"
+      }
+     ]
+    },
+    {
+     "text": "Copy the stand number beside the archive’s words.",
+     "next": "cold.notebook-reference",
+     "effects": [
+      {
+       "setFlag": "nexus.arrival.note",
+       "value": "reference"
+      }
+     ]
+    }
+   ]
   },
   {
    "id": "cold.open3",
    "speaker": "warden-ise",
-   "text": "Recruit. Do not listen to me yet. Look at that label. Then come and tell me what you see.",
+   "text": "Recruit. Before anything else: why are you here? Answer honestly. I will remember it.",
+   "next": null,
+   "options": [
+    {
+     "text": "I want to know how people know things.",
+     "next": "cold.why.curious",
+     "effects": [
+      {
+       "setFlag": "why.came",
+       "value": "curious"
+      }
+     ]
+    },
+    {
+     "text": "Someone I trust told me to come.",
+     "next": "cold.why.friend",
+     "effects": [
+      {
+       "setFlag": "why.came",
+       "value": "friend"
+      }
+     ]
+    },
+    {
+     "text": "Somebody has to keep the records honest.",
+     "next": "cold.why.duty",
+     "effects": [
+      {
+       "setFlag": "why.came",
+       "value": "duty"
+      }
+     ]
+    },
+    {
+     "text": "I once believed something false, and it cost someone.",
+     "next": "cold.why.repair",
+     "effects": [
+      {
+       "setFlag": "why.came",
+       "value": "repair"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cold.why.curious",
+   "speaker": "warden-ise",
+   "text": "Good. Curiosity is cheap to start and expensive to keep. Keep it. Now: do not listen to me yet. Look at that label. Then come and tell me what you see.",
+   "next": null
+  },
+  {
+   "id": "cold.why.friend",
+   "speaker": "warden-ise",
+   "text": "Then you came on trust. We will see if it holds. Trust is checked here, like everything else. Now: do not listen to me yet. Look at that label. Then come and tell me what you see.",
+   "next": null
+  },
+  {
+   "id": "cold.why.duty",
+   "speaker": "warden-ise",
+   "text": "Somebody. Yes. It is usually everybody, slowly, or nobody. We will see which. Now: do not listen to me yet. Look at that label. Then come and tell me what you see.",
+   "next": null
+  },
+  {
+   "id": "cold.why.repair",
+   "speaker": "warden-ise",
+   "text": "(Ise is quiet for a moment.) Then you know more than most recruits. Do not forget it. Now: do not listen to me yet. Look at that label. Then come and tell me what you see.",
    "next": null
   },
   {
@@ -954,7 +1360,7 @@
   {
    "id": "ise.start3",
    "speaker": "warden-ise",
-   "text": "Look at each exhibit. Talk to Curator Dace and Clerk Venn. They disagree, and both have reasons. Take this journal, this lens and some marks for the road.",
+   "text": "At the patent desk, 'first' means earliest on file. At the workshop, it means the original design. Our translators came back with two different slips. See what each case can support. Take this journal, lens and some marks.",
    "effects": [
     {
      "setFlag": "talked.ise",
@@ -1001,6 +1407,149 @@
      "next": "ise.fray"
     },
     {
+     "text": "So the real question is just: who invented the ballpoint pen?",
+     "next": "ise.kq",
+     "effects": [
+      {
+       "signal": "MIS-38"
+      }
+     ]
+    },
+    {
+     "text": "What is the question behind all this?",
+     "next": "ise.kq2",
+     "tag": "Ask a knowledge question"
+    },
+    {
+     "text": "Wouldn't examples from today's news be more real?",
+     "next": "ise.news",
+     "effects": [
+      {
+       "signal": "MIS-39"
+      }
+     ]
+    },
+    {
+     "text": "I grew up in these stacks. Who decides which shelf a thing goes on?",
+     "if": {
+      "all": [
+       {
+        "origin": "archive"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.archive",
+     "tag": "Your background"
+    },
+    {
+     "text": "On the coast, a message changed at every harbour. Does a label change like that?",
+     "if": {
+      "all": [
+       {
+        "origin": "harbour"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.harbour",
+     "tag": "Your background"
+    },
+    {
+     "text": "Where I trained, we tested ideas by making them. Can I test a label the same way?",
+     "if": {
+      "all": [
+       {
+        "origin": "workshop"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.workshop",
+     "tag": "Your background"
+    },
+    {
+     "text": "In my valley, the songs remember who made things. Does the Nexus keep songs?",
+     "if": {
+      "all": [
+       {
+        "origin": "singer"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.singer",
+     "tag": "Your background"
+    },
+    {
+     "text": "In each place I lived, 'first' meant something different. Is that the problem here?",
+     "if": {
+      "all": [
+       {
+        "origin": "traveller"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.traveller",
+     "tag": "Your background"
+    },
+    {
      "text": "I'll keep looking.",
      "next": null
     }
@@ -1009,7 +1558,7 @@
   {
    "id": "ise.lens",
    "speaker": "warden-ise",
-   "text": "Every date answers a question. 'When was it granted?' is a different question from 'When was it made?' The lens shows you which question a date answers."
+   "text": "The patent grant is documented. The reconstruction has a build date of its own. Put the Lens on each to see which event the date belongs to."
   },
   {
    "id": "ise.fray",
@@ -1019,7 +1568,7 @@
   {
    "id": "ise.portal",
    "speaker": "warden-ise",
-   "text": "The label holds. Whatever you wrote, you can say why. Take this: the Provenance Thread. It follows an object from hand to hand, and it shows where the record stops. Kip will go with you to Aethelgard.",
+   "text": "The label holds. Whatever you wrote, you can justify it: you can say why. Take this: the Provenance Thread. It follows an object from hand to hand, and it shows where the record stops. Kip will go with you to Aethelgard.",
    "effects": [
     {
      "companion": "kip-arden"
@@ -1034,7 +1583,133 @@
   {
    "id": "ise.after",
    "speaker": "warden-ise",
-   "text": "Back already? The portal still leads to Emberford in Aethelgard."
+   "text": "Back already? The portal still leads to Emberford in Aethelgard.",
+   "options": [
+    {
+     "text": "I grew up in these stacks. Who decides which shelf a thing goes on?",
+     "if": {
+      "all": [
+       {
+        "origin": "archive"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.archive",
+     "tag": "Your background"
+    },
+    {
+     "text": "On the coast, a message changed at every harbour. Does a label change like that?",
+     "if": {
+      "all": [
+       {
+        "origin": "harbour"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.harbour",
+     "tag": "Your background"
+    },
+    {
+     "text": "Where I trained, we tested ideas by making them. Can I test a label the same way?",
+     "if": {
+      "all": [
+       {
+        "origin": "workshop"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.workshop",
+     "tag": "Your background"
+    },
+    {
+     "text": "In my valley, the songs remember who made things. Does the Nexus keep songs?",
+     "if": {
+      "all": [
+       {
+        "origin": "singer"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.singer",
+     "tag": "Your background"
+    },
+    {
+     "text": "In each place I lived, 'first' meant something different. Is that the problem here?",
+     "if": {
+      "all": [
+       {
+        "origin": "traveller"
+       },
+       {
+        "not": {
+         "flag": "origin.talk.nexus",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "origin.talk.nexus",
+       "value": true
+      }
+     ],
+     "next": "origin.nexus.traveller",
+     "tag": "Your background"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    }
+   ]
   },
   {
    "id": "ise.seal",
@@ -1095,13 +1770,46 @@
        "by": 1
       }
      ]
+    },
+    {
+     "text": "I could use the translators' proofs for the landing.",
+     "next": "nexus.ferry.lead.proof",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.packet"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Turn over the seal on the model’s tag.",
+     "next": "dace.seal-docket",
+     "if": {
+      "all": [
+       {
+        "flag": "talked.ise",
+        "eq": true
+       },
+       {
+        "flag": "lens.OBJ-001-B",
+        "eq": true
+       }
+      ]
+     }
     }
    ]
   },
   {
    "id": "dace.why",
    "speaker": "curator-dace",
-   "text": "Because the pen people actually write with is the story they care about. A patent that nobody used is a footnote. That is my view, not a fact. Venn disagrees.",
+   "text": "When a visitor pulls a pen from her bag, I want the label to tell her how it got there. Venn shows the earliest design he can trace. His date is on the record. My interpretation is about what that date leaves out.",
    "claimKind": "value"
   },
   {
@@ -1118,12 +1826,63 @@
   {
    "id": "dace.again",
    "speaker": "curator-dace",
-   "text": "Have you looked at all three exhibits and heard Clerk Venn? Then we can put it to the visitors."
+   "text": "Have you looked at all three exhibits and heard Clerk Venn? Then we can put it to the visitors.",
+   "options": [
+    {
+     "text": "See you in the hall.",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.packet"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I could use the translators' proofs for the landing.",
+     "next": "nexus.ferry.lead.proof",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.packet"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Turn over the seal on the model’s tag.",
+     "next": "dace.seal-docket",
+     "if": {
+      "all": [
+       {
+        "flag": "talked.ise",
+        "eq": true
+       },
+       {
+        "flag": "lens.OBJ-001-B",
+        "eq": true
+       }
+      ]
+     }
+    }
+   ]
   },
   {
    "id": "dace.ready",
    "speaker": "curator-dace",
-   "text": "The visitors are curious now. Venn wants to argue his case in front of them. A friendly practice Showdown. Are you ready?",
+   "text": "The visitors have stopped between the cases. Some want a date they can check; others want to know who made a pen they could use. Venn is setting his record on the board. Bring a case for the visitors, or show why the two questions need different labels.",
    "options": [
     {
      "text": "Yes. Let's put it to the crowd.",
@@ -1138,6 +1897,39 @@
     {
      "text": "Not yet.",
      "next": null
+    },
+    {
+     "text": "I could use the translators' proofs for the landing.",
+     "next": "nexus.ferry.lead.proof",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.packet"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Turn over the seal on the model’s tag.",
+     "next": "dace.seal-docket",
+     "if": {
+      "all": [
+       {
+        "flag": "talked.ise",
+        "eq": true
+       },
+       {
+        "flag": "lens.OBJ-001-B",
+        "eq": true
+       }
+      ]
+     }
     }
    ]
   },
@@ -1160,7 +1952,7 @@
   {
    "id": "dace.label",
    "speaker": "curator-dace",
-   "text": "The old label must go. The stand by the entrance has the new label parts. Build one that visitors can repeat correctly.",
+   "text": "The visitors will carry whichever words you put on that stand. Name the people your record can name. Leave room for what it can't tell you. I'll listen to how the words travel.",
    "options": [
     {
      "text": "Show me the label stand.",
@@ -1175,13 +1967,29 @@
     {
      "text": "Later.",
      "next": null
+    },
+    {
+     "text": "Turn over the seal on the model’s tag.",
+     "next": "dace.seal-docket",
+     "if": {
+      "all": [
+       {
+        "flag": "talked.ise",
+        "eq": true
+       },
+       {
+        "flag": "lens.OBJ-001-B",
+        "eq": true
+       }
+      ]
+     }
     }
    ]
   },
   {
    "id": "dace.after",
    "speaker": "curator-dace",
-   "text": "The new label is up. People are already arguing about the right question, which is not the worst thing.",
+   "text": "A visitor read your label aloud. A friend who hadn't seen the cases came back to check the names. I told them a Guardian called {name} put the cases in reach. They'll have their own reasons for which first matters.",
    "options": [
     {
      "text": "I want to change the label.",
@@ -1191,6 +1999,22 @@
     {
      "text": "Goodbye.",
      "next": null
+    },
+    {
+     "text": "Turn over the seal on the model’s tag.",
+     "next": "dace.seal-docket",
+     "if": {
+      "all": [
+       {
+        "flag": "talked.ise",
+        "eq": true
+       },
+       {
+        "flag": "lens.OBJ-001-B",
+        "eq": true
+       }
+      ]
+     }
     }
    ]
   },
@@ -1246,13 +2070,30 @@
        "by": 1
       }
      ]
+    },
+    {
+     "text": "Help me separate the dates for the landing.",
+     "next": "nexus.ferry.lead.dates",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.packet"
+        }
+       }
+      ]
+     }
     }
    ]
   },
   {
    "id": "venn.limits",
    "speaker": "clerk-venn",
-   "text": "No. A patent proves a claim was made and granted. It does not prove the pen sold or wrote well. But it is the earliest checkable claim in this room.",
+   "text": "A clerk could check the day a patent was granted. To show that it wrote well, we'd need a different record or a test. Even a good mark from our model would tell us about this bench and this model.",
    "claimKind": "interpretation"
   },
   {
@@ -1274,12 +2115,82 @@
   {
    "id": "venn.again",
    "speaker": "clerk-venn",
-   "text": "A record has a date, an author and a purpose. Ask all three before you ask what it means."
+   "text": "A record has a date, an author and a purpose. Ask all three before you ask what it means. Then choose your criterion for 'first'.",
+   "options": [
+    {
+     "text": "See you in the hall.",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.packet"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Help me separate the dates for the landing.",
+     "next": "nexus.ferry.lead.dates",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.packet"
+        }
+       }
+      ]
+     }
+    }
+   ]
   },
   {
    "id": "venn.after",
    "speaker": "clerk-venn",
-   "text": "We may not agree, but you can say why you think what you think. That is what I ask of a Guardian."
+   "text": "We may not agree, but you can say why you think what you think. That is what I ask of a Guardian.",
+   "options": [
+    {
+     "text": "See you in the hall.",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.packet"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Help me separate the dates for the landing.",
+     "next": "nexus.ferry.lead.dates",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.packet"
+        }
+       }
+      ]
+     }
+    }
+   ]
   },
   {
    "id": "kip.start",
@@ -1293,6 +2204,23 @@
     {
      "text": "Not now, thanks.",
      "next": null
+    },
+    {
+     "text": "Will you help me make a pair of marks for the landing?",
+     "next": "nexus.ferry.lead.marks",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.packet"
+        }
+       }
+      ]
+     }
     }
    ]
   },
@@ -1317,7 +2245,42 @@
   {
    "id": "kip.again",
    "speaker": "kip-arden",
-   "text": "The workshop bench has a marking test. Try changing only one thing at a time. Otherwise you cannot tell what caused the difference."
+   "text": "The workshop bench has a marking test. Try changing only one thing at a time. Otherwise you cannot tell what caused the difference.",
+   "options": [
+    {
+     "text": "See you in the hall.",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.packet"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Will you help me make a pair of marks for the landing?",
+     "next": "nexus.ferry.lead.marks",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.packet"
+        }
+       }
+      ]
+     }
+    }
+   ]
   },
   {
    "id": "kip.afterlabel",
@@ -1336,6 +2299,39 @@
     {
      "text": "I'm still finding out.",
      "next": "visitor.end"
+    },
+    {
+     "text": "Will you tell someone outside the hall what you find here?",
+     "next": "nexus.ferry.invite",
+     "if": {
+      "not": {
+       "flagSet": "nexus.ferry.started"
+      }
+     }
+    },
+    {
+     "text": "How's the ferry copy coming along?",
+     "next": "nexus.ferry.checkin",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.edition"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "What did the next reader make of our copy?",
+     "next": "nexus.ferry.revisit",
+     "if": {
+      "flagSet": "nexus.ferry.edition"
+     }
     }
    ]
   },
@@ -1347,7 +2343,45 @@
   {
    "id": "visitor.after",
    "speaker": "villager-2",
-   "text": "I read your new label. I told my sister, and I got it right first time. That never happens."
+   "text": "I read your new label. I told my sister, and I got it right first time. That never happens. She asked who wrote it. I said a Guardian called {name}, and that I would thank {them}. So: thank you.",
+   "options": [
+    {
+     "text": "I'll let you get back to the cases."
+    },
+    {
+     "text": "Will you tell someone outside the hall what you find here?",
+     "next": "nexus.ferry.invite",
+     "if": {
+      "not": {
+       "flagSet": "nexus.ferry.started"
+      }
+     }
+    },
+    {
+     "text": "How's the ferry copy coming along?",
+     "next": "nexus.ferry.checkin",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.edition"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "What did the next reader make of our copy?",
+     "next": "nexus.ferry.revisit",
+     "if": {
+      "flagSet": "nexus.ferry.edition"
+     }
+    }
+   ]
   },
   {
    "id": "waystone.nexus",
@@ -1476,6 +2510,15 @@
        "signal": "MIS-07"
       }
      ]
+    },
+    {
+     "text": "The draught is only a theory, so it is no better than the ghost.",
+     "next": "ev.bell.end",
+     "effects": [
+      {
+       "signal": "MIS-30"
+      }
+     ]
     }
    ]
   },
@@ -1556,6 +2599,867 @@
    "claimKind": "interpretation",
    "text": "Which numbers? 1888 is a grant date. 1945 to 1948 is a range from a museum record. Put 1888 alone under 'The first pen' and visitors believe one thing. Put 1945 alone and they believe another. The number is the same; the choice is yours.",
    "next": "dace.ack"
+  },
+  {
+   "id": "sol.start",
+   "speaker": "visitor-sol",
+   "claimKind": "value",
+   "effects": [
+    {
+     "setFlag": "hall.sol.talked",
+     "value": true
+    }
+   ],
+   "text": "I come here every week. Seven plaques, seven 'firsts'. I like arguing with them. Do you?",
+   "options": [
+    {
+     "text": "Mathematics is the same everywhere. Where a method came from does not matter.",
+     "next": "sol.maths",
+     "effects": [
+      {
+       "signal": "MIS-14"
+      }
+     ]
+    },
+    {
+     "text": "Ibn al-Haytham was religious, so his science does not count.",
+     "next": "sol.faith",
+     "effects": [
+      {
+       "signal": "MIS-25"
+      }
+     ]
+    },
+    {
+     "text": "If the maths is right, the answer cannot be wrong.",
+     "next": "sol.calc",
+     "effects": [
+      {
+       "signal": "MIS-13"
+      }
+     ]
+    },
+    {
+     "text": "Which plaque do you argue with most?",
+     "next": "sol.fav",
+     "tag": "Ask a question"
+    },
+    {
+     "text": "Not today.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "sol.again",
+   "speaker": "visitor-sol",
+   "claimKind": "value",
+   "text": "Back again? Pick a plaque and tell me what kind of 'first' it really is.",
+   "options": [
+    {
+     "text": "Mathematics is the same everywhere. Where a method came from does not matter.",
+     "next": "sol.maths",
+     "effects": [
+      {
+       "signal": "MIS-14"
+      }
+     ]
+    },
+    {
+     "text": "Ibn al-Haytham was religious, so his science does not count.",
+     "next": "sol.faith",
+     "effects": [
+      {
+       "signal": "MIS-25"
+      }
+     ]
+    },
+    {
+     "text": "If the maths is right, the answer cannot be wrong.",
+     "next": "sol.calc",
+     "effects": [
+      {
+       "signal": "MIS-13"
+      }
+     ]
+    },
+    {
+     "text": "Which plaque do you argue with most?",
+     "next": "sol.fav"
+    },
+    {
+     "text": "Goodbye.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "sol.maths",
+   "speaker": "visitor-sol",
+   "claimKind": "interpretation",
+   "text": "Look at Eratosthenes. His answer was in stadia, and nobody is sure how long his stadion was. The unit came from a place and a people. Change the unit, and his 'answer' changes.",
+   "next": "sol.again"
+  },
+  {
+   "id": "sol.faith",
+   "speaker": "visitor-sol",
+   "claimKind": "interpretation",
+   "text": "His plaque says he tested claims about light with experiments. Many scholars in many places worked on faith and on nature. Ask what question each part of the work answers, then judge each part by its own method.",
+   "next": "sol.again"
+  },
+  {
+   "id": "sol.calc",
+   "speaker": "visitor-sol",
+   "claimKind": "interpretation",
+   "text": "Sikdar's plaque: his calculations started from measurements made by survey teams. Good maths on uncertain measurements gives a careful estimate, not a certainty. The maths is only as good as what goes in.",
+   "next": "sol.again"
+  },
+  {
+   "id": "sol.fav",
+   "speaker": "visitor-sol",
+   "claimKind": "value",
+   "text": "Kate Sheppard's. 'First country where women could vote' is true, and still they could not stand for Parliament until 1919. A first can be real and still be only part of the story.",
+   "next": "sol.again"
+  },
+  {
+   "id": "ise.kq",
+   "speaker": "warden-ise",
+   "claimKind": "interpretation",
+   "text": "That is a question for a historian of pens, and a good one. Our knowledge question sits under it: how do we decide what counts as 'first'? Answer that, and you can judge any 'first' in the hall.",
+   "next": "ise.again"
+  },
+  {
+   "id": "ise.kq2",
+   "speaker": "warden-ise",
+   "claimKind": "interpretation",
+   "text": "How do we decide what counts as 'first'? Is it the idea, the record, or the thing that worked? Keep that question. It travels to every world.",
+   "next": "ise.again"
+  },
+  {
+   "id": "ise.news",
+   "speaker": "warden-ise",
+   "claimKind": "interpretation",
+   "text": "A patent from 1888 and a pen from 1945 are real. So is anything you have lived. Real means you can check it, not that it happened this week.",
+   "next": "ise.again"
+  },
+  {
+   "id": "nexus.ferry.invite",
+   "speaker": "villager-2",
+   "text": "My sister is minding the landing. She was the one who put that pen in my hand. The last guide we took down called three things 'the first'. She made me promise to bring a copy she could check while I mind the boat. The reading shelf by the route board is empty. Want to put something on it with me?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "I'll help put a copy on the shelf.",
+     "next": "nexus.ferry.checkin",
+     "if": {
+      "not": {
+       "flagSet": "nexus.ferry.started"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.ferry.started",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "See you in the hall."
+    }
+   ]
+  },
+  {
+   "id": "nexus.ferry.checkin",
+   "speaker": "villager-2",
+   "text": "We have room on the landing for one new packet. Venn has dates, Kip can help at the bench, and Dace knows where the translators left their proofs. I'll wait here while you look. My sister can make the next crossing if we miss this one.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.ferry.lead.dates",
+   "speaker": "clerk-venn",
+   "text": "Put the Lens on Loud's patent drawing and on the museum's Bíró pen record. At the shelf, clip the date to the event it belongs to. A passenger can check the dates in the archive later. No one has to trust my stamp.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.ferry.lead.marks",
+   "speaker": "kip-arden",
+   "text": "Use the workshop model on paper, then put another surface underneath it. Send those marks as a pair. My first strip looked awful. I nearly blamed the pen until I tried it on leather. Leave the surface with each strip so the next person can tell what we changed.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.ferry.lead.proof",
+   "speaker": "curator-dace",
+   "text": "The translators' proofs are between the model and the pen record. Their phrases came from two familiar ways of using 'first'. Choose what travels with the text. At the landing the reader needs a way to tell those uses apart.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.ferry.shelf",
+   "speaker": "narrator",
+   "text": "A clip on the reading shelf holds the landing's request. The empty envelope is just wide enough for two pieces. Choose what to send together.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the patent grant and the museum's object date to their records.",
+     "next": "nexus.ferry.prepared.dates",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "nexus.ferry.started",
+          "eq": true
+         },
+         {
+          "not": {
+           "flagSet": "nexus.ferry.packet"
+          }
+         }
+        ]
+       },
+       {
+        "all": [
+         {
+          "flag": "lens.OBJ-001-A",
+          "eq": true
+         },
+         {
+          "flag": "lens.OBJ-001-C",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.ferry.packet",
+       "value": "dates"
+      }
+     ]
+    },
+    {
+     "text": "Pin the model's paper strip beside its leather strip with the surfaces marked.",
+     "next": "nexus.ferry.prepared.strips",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "nexus.ferry.started",
+          "eq": true
+         },
+         {
+          "not": {
+           "flagSet": "nexus.ferry.packet"
+          }
+         }
+        ]
+       },
+       {
+        "all": [
+         {
+          "flag": "sim.ran.loud-model.paper",
+          "eq": true
+         },
+         {
+          "flag": "sim.ran.loud-model.leather",
+          "eq": true
+         },
+         {
+          "num": "sim.fair",
+          "gte": 1
+         }
+        ]
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.ferry.packet",
+       "value": "strips"
+      }
+     ]
+    },
+    {
+     "text": "Pack the revised caption with the grant record the translators checked.",
+     "next": "nexus.ferry.prepared.proofs.date",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "nexus.ferry.started",
+          "eq": true
+         },
+         {
+          "not": {
+           "flagSet": "nexus.ferry.packet"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "nexus.translation-slip",
+        "eq": "date"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.ferry.packet",
+       "value": "proofs"
+      },
+      {
+       "setFlag": "nexus.ferry.proof",
+       "value": "date"
+      }
+     ]
+    },
+    {
+     "text": "Pack both proofs with the translators' note about how the words differ.",
+     "next": "nexus.ferry.prepared.proofs.gloss",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "nexus.ferry.started",
+          "eq": true
+         },
+         {
+          "not": {
+           "flagSet": "nexus.ferry.packet"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "nexus.translation-slip",
+        "eq": "gloss"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.ferry.packet",
+       "value": "proofs"
+      },
+      {
+       "setFlag": "nexus.ferry.proof",
+       "value": "gloss"
+      }
+     ]
+    },
+    {
+     "text": "Look at what can go in the envelope.",
+     "next": "nexus.ferry.shelf.leads"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "nexus.ferry.shelf.leads",
+   "speaker": "narrator",
+   "text": "Venn has space for two checked dates. Kip has a clip for two strips from the same pen model on different surfaces. Dace has left room for a proof and the context that goes with it. Bring back whichever pair you want to carry.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.ferry.prepared.dates",
+   "speaker": "narrator",
+   "text": "You clip the grant date and the object date onto separate strips. The second strip keeps the museum's range of years. The envelope now has two records a reader can trace.",
+   "historicalLabel": "fictional-world",
+   "next": "nexus.ferry.dispatch"
+  },
+  {
+   "id": "nexus.ferry.prepared.strips",
+   "speaker": "narrator",
+   "text": "You clip a thin, broken mark beside a broad one. Both came from the same workshop model. The labels give the surfaces and say these are simulated runs, so the marks travel with the conditions that made them.",
+   "historicalLabel": "fictional-world",
+   "next": "nexus.ferry.dispatch"
+  },
+  {
+   "id": "nexus.ferry.prepared.proofs.date",
+   "speaker": "narrator",
+   "text": "You put the revised proof on top and the grant record behind it. The words say 'earliest patent on this shelf'. A reader can check what the translator meant by 'earliest'.",
+   "historicalLabel": "fictional-world",
+   "next": "nexus.ferry.dispatch"
+  },
+  {
+   "id": "nexus.ferry.prepared.proofs.gloss",
+   "speaker": "narrator",
+   "text": "You fold the two proofs so that 'earliest' and 'original' open side by side. The translators' note keeps the two meanings with the words.",
+   "historicalLabel": "fictional-world",
+   "next": "nexus.ferry.dispatch"
+  },
+  {
+   "id": "nexus.ferry.dispatch",
+   "speaker": "villager-2",
+   "text": "This can go. The landing has a reader while the lamps are on. People also come through after that, sometimes with both hands on a crate. We can ask for a short reading aloud or put the packet by the rack for people to pick up. I'll leave a copy on this shelf either way.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put copies by the rack so people can take them on their own time.",
+     "next": "nexus.ferry.copies",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.packet"
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.edition"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.ferry.edition",
+       "value": "copies"
+      }
+     ]
+    },
+    {
+     "text": "Ask the landing reader to read with the packet open beside them.",
+     "next": "nexus.ferry.reading",
+     "if": {
+      "all": [
+       {
+        "flagSet": "nexus.ferry.packet"
+       },
+       {
+        "not": {
+         "flagSet": "nexus.ferry.edition"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.ferry.edition",
+       "value": "reading"
+      }
+     ]
+    },
+    {
+     "text": "Leave the packet here for a moment."
+    }
+   ]
+  },
+  {
+   "id": "nexus.ferry.copies",
+   "speaker": "narrator",
+   "text": "The visitor fastens a stack of copies by the rack. Readers can take one long after the last announcement. She leaves a large copy here and circles the trail back to the source for a reader who comes looking.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Unclip the two dated records.",
+     "next": "nexus.ferry.sent.dates",
+     "if": {
+      "flag": "nexus.ferry.packet",
+      "eq": "dates"
+     }
+    },
+    {
+     "text": "Lift the two strips.",
+     "next": "nexus.ferry.sent.strips",
+     "if": {
+      "flag": "nexus.ferry.packet",
+      "eq": "strips"
+     }
+    },
+    {
+     "text": "Turn over the translation proofs.",
+     "next": "nexus.ferry.sent.proofs.date",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.packet",
+        "eq": "proofs"
+       },
+       {
+        "flag": "nexus.ferry.proof",
+        "eq": "date"
+       }
+      ]
+     }
+    },
+    {
+     "text": "Open the fold with both words.",
+     "next": "nexus.ferry.sent.proofs.gloss",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.packet",
+        "eq": "proofs"
+       },
+       {
+        "flag": "nexus.ferry.proof",
+        "eq": "gloss"
+       }
+      ]
+     }
+    },
+    {
+     "text": "Close the copy."
+    }
+   ]
+  },
+  {
+   "id": "nexus.ferry.reading",
+   "speaker": "narrator",
+   "text": "The visitor practises the short reading while she clips it to the other end of the shelf. The landing reader can pause when a passenger asks about a word. The packet stays open beside the reader and a copy rests here.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Unclip the two dated records.",
+     "next": "nexus.ferry.sent.dates",
+     "if": {
+      "flag": "nexus.ferry.packet",
+      "eq": "dates"
+     }
+    },
+    {
+     "text": "Lift the two strips.",
+     "next": "nexus.ferry.sent.strips",
+     "if": {
+      "flag": "nexus.ferry.packet",
+      "eq": "strips"
+     }
+    },
+    {
+     "text": "Turn over the translation proofs.",
+     "next": "nexus.ferry.sent.proofs.date",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.packet",
+        "eq": "proofs"
+       },
+       {
+        "flag": "nexus.ferry.proof",
+        "eq": "date"
+       }
+      ]
+     }
+    },
+    {
+     "text": "Open the fold with both words.",
+     "next": "nexus.ferry.sent.proofs.gloss",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.packet",
+        "eq": "proofs"
+       },
+       {
+        "flag": "nexus.ferry.proof",
+        "eq": "gloss"
+       }
+      ]
+     }
+    },
+    {
+     "text": "Close the copy."
+    }
+   ]
+  },
+  {
+   "id": "nexus.ferry.revisit",
+   "speaker": "villager-2",
+   "text": "Someone tried our copy while I packed the bag. My sister asked me to keep their question with it. It gives the next reader a place to start.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Unclip the two dated records.",
+     "next": "nexus.ferry.sent.dates",
+     "if": {
+      "flag": "nexus.ferry.packet",
+      "eq": "dates"
+     }
+    },
+    {
+     "text": "Lift the two strips.",
+     "next": "nexus.ferry.sent.strips",
+     "if": {
+      "flag": "nexus.ferry.packet",
+      "eq": "strips"
+     }
+    },
+    {
+     "text": "Turn over the translation proofs.",
+     "next": "nexus.ferry.sent.proofs.date",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.packet",
+        "eq": "proofs"
+       },
+       {
+        "flag": "nexus.ferry.proof",
+        "eq": "date"
+       }
+      ]
+     }
+    },
+    {
+     "text": "Open the fold with both words.",
+     "next": "nexus.ferry.sent.proofs.gloss",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.ferry.packet",
+        "eq": "proofs"
+       },
+       {
+        "flag": "nexus.ferry.proof",
+        "eq": "gloss"
+       }
+      ]
+     }
+    },
+    {
+     "text": "Close the copy."
+    }
+   ]
+  },
+  {
+   "id": "nexus.ferry.sent.dates",
+   "speaker": "narrator",
+   "text": "The next reader ran a finger along the grant date, then back to the range on the museum card. 'I was going to use the older number for both,' they said. They left a space for the date of the first sale.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.ferry.sent.strips",
+   "speaker": "narrator",
+   "text": "The next reader turned one strip over and rubbed a finger on the back. 'What about this card?' they asked. A new test would need a card surface and its own strip. The two results in the envelope stay with their original setup.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.ferry.sent.proofs.date",
+   "speaker": "narrator",
+   "text": "The next reader tapped 'on this shelf'. 'My family uses first for the version we learned from,' they said. They left the grant record under the proof and asked for space beside it for another archive's copy.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.ferry.sent.proofs.gloss",
+   "speaker": "narrator",
+   "text": "The next reader normally tells the story aloud. They tried both phrases slowly, then kept the pause between them. One phrase starts with a date that another person can check. The other leads back to the people who remember a beginning.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "dace.seal-docket",
+   "speaker": "curator-dace",
+   "historicalLabel": "fictional-world",
+   "text": "I saw a visitor point to this seal and say the model must be Loud’s own. The workshop gave us a build record. The seal came from a different desk. The docket is folded behind the stamp.",
+   "options": [
+    {
+     "text": "Lift the backing and keep the docket with the stamp.",
+     "next": "dace.seal-found",
+     "if": {
+      "not": {
+       "card": "card.nexus.handling-docket"
+      }
+     },
+     "effects": [
+      {
+       "addCard": "card.nexus.handling-docket"
+      }
+     ]
+    },
+    {
+     "text": "Bring out the handling docket again.",
+     "next": "dace.seal-found",
+     "if": {
+      "card": "card.nexus.handling-docket"
+     }
+    },
+    {
+     "text": "Leave the seal on the tag."
+    }
+   ]
+  },
+  {
+   "id": "dace.seal-found",
+   "speaker": "curator-dace",
+   "historicalLabel": "fictional-world",
+   "text": "The docket says the archive checked the padded case before putting it out. It tells us who cleared the display. Your Lens tells you where to look for the model’s build date. Make room for both checks. The note that came with the seal can stay in the register.",
+   "options": [
+    {
+     "text": "Set a card beside the seal.",
+     "if": {
+      "card": "card.nexus.handling-docket"
+     },
+     "open": "label:nexus.handling-seal"
+    },
+    {
+     "text": "I’ll keep the two records nearby for now."
+    }
+   ]
+  },
+  {
+   "id": "nexus.seal.paired",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A visitor fingers the edge of the padded case. One line names the modern model. A second line gives the archive’s handling check. The visitor takes out the scrap on which they wrote the older date.",
+   "options": [
+    {
+     "text": "Trace the build date back to the workshop’s label.",
+     "next": "nexus.seal.paired-read",
+     "if": {
+      "not": {
+       "flag": "nexus.seal.readback",
+       "eq": true
+      }
+     }
+    },
+    {
+     "text": "Leave the two lines beside the case."
+    }
+   ]
+  },
+  {
+   "id": "nexus.seal.paired-read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The visitor folds the scrap with Loud’s patent date into the page about the drawing. They copy the model’s build record into the next space. The case seal still tells the archive that someone checked the padding.",
+   "effects": [
+    {
+     "setFlag": "nexus.seal.readback",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "nexus.seal.docket",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "At the register, a visitor has the model’s new card in hand. Beside the stamp, a one-line note says which check the archive did. The visitor wants to see how far that check goes.",
+   "options": [
+    {
+     "text": "Follow the docket number and open the build record beside it.",
+     "next": "nexus.seal.docket-read",
+     "if": {
+      "not": {
+       "flag": "nexus.seal.readback",
+       "eq": true
+      }
+     }
+    },
+    {
+     "text": "Leave the two records beside the register."
+    }
+   ]
+  },
+  {
+   "id": "nexus.seal.docket-read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The visitor follows the docket to the padding check, then turns to the separate build record. The archive’s stamp carries the first check. The workshop’s own tag tells when the model was made. The earlier public copy stays in the file.",
+   "effects": [
+    {
+     "setFlag": "nexus.seal.readback",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "cold.notebook-view",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The visitor opens her notebook again. She tucks a rough sketch beside the words from the stand and leaves the other page free for her friend. The open notebook goes on the low reading bench.",
+   "next": "cold.open3"
+  },
+  {
+   "id": "cold.notebook-reference",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The visitor adds the stand number in the margin. Her friend turns the page and puts the same number on a small slip. They leave it by the entrance plan so somebody else can find the claim.",
+   "next": "cold.open3"
+  },
+  {
+   "id": "cold.arrival-view",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The notebook keeps the official line above one rough sketch. The visiting friend saw a flat outline from her side of the case. The first visitor drew a crease. A second page gives her friend room to show where she stood.",
+   "options": [
+    {
+     "text": "Open the page for a second view.",
+     "next": "cold.arrival-view-read",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.arrival.note",
+        "eq": "view"
+       },
+       {
+        "not": {
+         "flag": "nexus.arrival.readback",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the notebook open."
+    }
+   ]
+  },
+  {
+   "id": "cold.arrival-view-read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The two sketches now have their own pages. The visitors turn back to the case to see what each could make out. Neither needs to copy the seal as proof of the shape.",
+   "effects": [
+    {
+     "setFlag": "nexus.arrival.readback",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "cold.arrival-reference",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The slip carries the words and the number 1. The plan has a 1 beside the glowing stand. The visitor’s friend starts toward that stand instead of asking any official to repeat what it said.",
+   "options": [
+    {
+     "text": "Find the exact stand on the plan.",
+     "next": "cold.arrival-reference-read",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.arrival.note",
+        "eq": "reference"
+       },
+       {
+        "not": {
+         "flag": "nexus.arrival.readback",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the slip by the plan."
+    }
+   ]
+  },
+  {
+   "id": "cold.arrival-reference-read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The number leads back to the same label. A visitor can check the words she copied. There is a blank line for the object record she still needs to look up.",
+   "effects": [
+    {
+     "setFlag": "nexus.arrival.readback",
+     "value": true
+    }
+   ]
   }
  ],
  "events": [
@@ -1927,7 +3831,7 @@
    "id": "h.m01.side.firsts.1",
    "objective": "m01.side.firsts",
    "depth": 1,
-   "text": "The east wing has seven plaques about people from many continents and times. Each plaque glows gold."
+   "text": "The east wing has seven plaques. Each one is about one person, from their own people, place and time. Each plaque glows gold."
   },
   {
    "id": "h.m01.side.firsts.2",
@@ -1946,6 +3850,78 @@
    "objective": "m01.side.firsts",
    "depth": 4,
    "text": "Open a plaque, choose 'Repair this plaque', then pick the specific achievement. Repair any three."
+  },
+  {
+   "id": "h.ferry.copy.1",
+   "objective": "nexus.ferry.published",
+   "depth": 1,
+   "text": "A reader needs a trail back to what you used."
+  },
+  {
+   "id": "h.ferry.copy.2",
+   "objective": "nexus.ferry.published",
+   "depth": 2,
+   "text": "The ferry's copy lives near the visitors' route board."
+  },
+  {
+   "id": "h.ferry.copy.3",
+   "objective": "nexus.ferry.published",
+   "depth": 3,
+   "text": "Read the copy that stayed on the shelf to see what went to the landing."
+  },
+  {
+   "id": "h.ferry.copy.4",
+   "objective": "nexus.ferry.published",
+   "depth": 4,
+   "text": "At the reading shelf, lift the strips, open the proofs or unclip the dates to find the next reader's question."
+  },
+  {
+   "id": "h.nexus.seal.1",
+   "objective": "nexus.seal.checked",
+   "depth": 1,
+   "text": "A trusted mark tells you which check someone made."
+  },
+  {
+   "id": "h.nexus.seal.2",
+   "objective": "nexus.seal.checked",
+   "depth": 2,
+   "text": "Use the Date-Kind Lens on the workshop model, then ask Dace about the seal on its tag."
+  },
+  {
+   "id": "h.nexus.seal.3",
+   "objective": "nexus.seal.checked",
+   "depth": 3,
+   "text": "Lay out a seal card using the padded-case docket and the model’s build record."
+  },
+  {
+   "id": "h.nexus.seal.4",
+   "objective": "nexus.seal.checked",
+   "depth": 4,
+   "text": "Visit the new card by the model’s case or at the register. Follow the two checks to their own records."
+  },
+  {
+   "id": "h.nexus.arrival.1",
+   "objective": "nexus.arrival.checked",
+   "depth": 1,
+   "text": "One notebook can carry more than the words on the label."
+  },
+  {
+   "id": "h.nexus.arrival.2",
+   "objective": "nexus.arrival.checked",
+   "depth": 2,
+   "text": "Look at the low bench or the slip by the entrance plan."
+  },
+  {
+   "id": "h.nexus.arrival.3",
+   "objective": "nexus.arrival.checked",
+   "depth": 3,
+   "text": "Leave room for a second view or follow the copy’s number to the same stand."
+  },
+  {
+   "id": "h.nexus.arrival.4",
+   "objective": "nexus.arrival.checked",
+   "depth": 4,
+   "text": "Read the visitors’ result, then look at the glowing label before talking to Ise."
   }
  ]
 }

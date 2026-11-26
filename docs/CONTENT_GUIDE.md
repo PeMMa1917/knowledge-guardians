@@ -10,9 +10,10 @@ This guide tells you how to add or change game content: missions, objectives, di
 |---|---|
 | `src/content/sources.json` | Historical source records (`HIS-S…`). |
 | `src/content/common.json` | Items, characters, credit criteria, awards, shop offers, learner-profile moments, misconceptions, portfolio templates. |
-| `src/content/firsts.json` | The Hall of Firsts: seven plaques (exhibits, cards and small label kits) about people from every continent. |
+| `src/content/firsts.json` | The Hall of Firsts: seven plaques (exhibits, cards and small label kits) each about one person, named with their own place and people. |
 | `src/content/m01-nexus.json` | Mission KG-CH1-M01 "Three Firsts" (The Nexus): label kit `pen`, Showdown `practice`, events EV-N01 to EV-N07. |
 | `src/content/m02-aethelgard.json` | Mission KG-CH1-M02 "The Label on the Blade" (Emberford): thread `blade`, Showdown `corvan`, events EV-E01 to EV-E08. |
+| `src/content/origins.json` | The five player origins (spec 35.1), their starting Lens hints, and the answers to each origin's own option in each world. |
 | `src/content/index.ts` | Joins the JSON files into one content pack. **Add a new file to `parts` here.** Raise `CONTENT_VERSION` when content changes in a way that saves notice. |
 | `src/maps/*.ts` | Map layouts. Register a new map in `src/maps/index.ts`. |
 
@@ -83,11 +84,50 @@ Rules for `historicalLabel`:
 
 - Connect the character to the node with a `talk` entry in `common.json`. The first entry whose `if` holds is used.
 - Players choose options with number keys. Keep option text short.
-- No runtime AI. All text is written in advance. 
+- No runtime AI. All text is written in advance.
+- **The player in text (spec 35.1).** Use `{name}`, `{they}`, `{them}`, `{their}` (and `{They}`, `{Them}`, `{Their}` at the start of a sentence). The game puts in the player's name and chosen pronouns. Write the line so that the verb does not change with the pronoun: "{they} checked every date", not "{they} is careful".
+- **Character looks.** A character's `sprite` is a sheet in `public/assets/art/generated/characters/`, or a made look such as `"custom:olive.black.blue.sand.scarf.white"` (skin, hair, outfit, trousers, accessory, accent; the names are in `src/domain/appearance.ts`). Give each new character its own look.
+- **Origin options.** An option with `"if": { "origin": "singer" }` shows only for that origin. Each origin needs one option in each world (the validator checks this). Origin options must not give credit, marks or cards: an origin gives no advantage. 
 
 ## Weave tags (WEAVE-016 to WEAVE-018)
 
 Most records have a `weave` field: `{ "concepts": [...], "atl": [...], "aoks": [...], "subjects": [...] }`. The IDs are in `src/domain/curriculum.ts`. The game counts these when the player meets them, and the teacher view shows the totals. Tag only what the play really touches. A lucky event (`"luck": true`) has empty tags. EE and CAS appear as practice only. Never say that play counts as CAS.
+
+### Introduce ideas through decisions and consequences
+
+In the opening Nexus route, put the ideas on the path from the entrance to the portal. Keep a first-session playtest focused on what a new player actually does in their first 30 minutes. Follow the main route and try it again with a player who wanders. Record which ideas each player actually meets.
+
+Use the [learning design review](TOK_ALIGNMENT.md) to check how objects, consequences and different viewpoints support the reasoning. Course aims, examiner observations and teaching suggestions have separate roles in that review.
+
+Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to check the authored route estimates before a session. The traces execute real content actions and assign estimated times to the moments where players can meet each concept or framework part. A rolling gap means a tagged action fell outside that modeled window. The report also flags dimensions that rely on only one distinct annotated action in any full window. Repeating an action with the same description does not add variety. The report uses synthetic routes and gives no evidence of how long students will spend or which ideas they will notice.
+
+| Opening action | What the player can notice |
+|---|---|
+| Look at the glowing entrance label, then talk to Ise. | A seal lends power to a claim. People repeat it before they check whether it is true. |
+| Pick a direction for visitors, inspect the cases and take the Lens to the dates. | A date is evidence for a particular question. A range sets a limit on certainty. A patent, a model and a museum object tell different stories. |
+| Compare the translators’ proofs and decide what to send back. | Words acquire different meanings in different settings. A translation can change the claim a visitor hears. |
+| Pin two marking strips side by side. | Holding an input steady makes a comparison less dependent on the tester. A difference can support an explanation under the model's conditions. |
+| Hear Dace and Venn and face the crowd. | Each perspective values something different. A player can justify both a narrower claim and a reframe that lets both claims stand. |
+| Decide what to put on the loan slip, and replace the glowing label. | The public record has an audience. Give people a way to check it, respect a maker’s request, and keep a claim within its evidence. |
+
+Revisit the four parts of the knowledge framework through play.
+
+| Part | Nexus | Emberford | Nile Archive |
+|---|---|---|---|
+| Scope | Choose which kind of “first” a record can establish. | Set the limits of the claim a test sample can carry. | Decide how far the route model can speak for an ancient record. |
+| Perspectives | Hear the patent clerk, the curator and their visitors. | Read a tally with a baker's or a ferry crew's purpose. | Hear what the scribe records and leave a place for the people he did not quote. |
+| Methods and tools | Compare dates, then run a fair bench comparison. | Read the gauge marks in context and arrange a repeatable reading. | Change the road with the same load, then leave the next keeper conditions for a repeat. |
+| Ethics | Publish a checkable loan slip while keeping a name private. | Pass on a repair notice in a form the next crew can use. | Set out a legible copy and give readers a way to inspect the gap in the record. |
+
+Put TOK language where it helps a player act. A premise is something a witness is relying on, a limit is a line on the label, and a counterexample is a result that makes somebody change their claim. Return to the same idea with a different action later. Let players compare two papers, see what changes on a stand, or hear a visitor carry a changed version of the claim.
+
+Build learner-profile moments around things the player did, such as helping a reader, revising a claim in public or waiting for a better observation. Offer approaches to teaching through inquiry, local problems, characters who work together, optional Lumen help and world feedback. Give the five approaches to learning practical uses. Players plan a route, check a record, compare runs, negotiate a heading and pass the result to a crew. For EE practice, players can narrow a question about a case and trace how a source supports it. For CAS practice, the East Well gives a community problem to listen to, investigate and report back on. Keep tags and planning vocabulary in author-facing material.
+
+Use DP subjects when their methods change an action. History puts two dates and their records in order. Languages change a caption and what a reader understands. Physics and design technology change the bench setup. Mathematics and economics change how the market tally serves its users. Visual arts changes what a reader notices first. Give less-represented subjects their own appropriate actions as new cases are built.
+
+### Add a small choice to a map prop
+
+Put the opening scene and its two outcomes in `src/content/prop-scenes.json`. Use `sceneProp` to place the prop with separate art for each result. Choices set the scene's flag to the outcome ID and lead to that outcome node. On revisit, the prop opens the same outcome. A leave option keeps the decision open. Give each route a concrete use and a cost or limit. New choices here affect the scene and the visible prop, so players can choose freely without working for points.
 
 ## Add a label kit (the label builder and the Fray)
 
@@ -98,6 +138,15 @@ A label kit (`labelKits`) is a museum label that the player builds from parts: a
 - OPEN-001: at least two criteria must be able to hold. The validator checks this. All held labels give the same credit (`onHold`, which applies only the first time).
 - A criterion or support can have `signal` (a misconception ID). Use this for a pattern of reasoning, never for a value.
 - Put the kit on a map as an interactable with `kit`. To open it from dialogue, use `"open": "label:<kit id>"`.
+
+## Add an EE practice trail (spec 92.2)
+
+A trail is an optional mission (see `src/content/ee-trails.json`) with seven steps: narrow the question at a **Title Lock**, plan the search, weigh sources, build an argument with a counterclaim, cite, find integrity problems in a practice draft, and reflect.
+
+- A **Title Lock** (`locks`) has rings (`parts`). Each option has `ok` and, when it is not ok, a `why` line. The question is the option texts joined in order. At least two questions must open the lock (OPEN-001). Put it on a map as an interactable of kind `lock`, or open it from dialogue with `"open": "lock:<id>"`.
+- The argument step reuses a label kit. Set `"sentence": true` and `legends` so the panel says "claim" and "counterclaim" instead of "label" and "limit".
+- EE-001: put the trail near a DP subject (`subject`). EE-002: the topic is authored. **Never** ask for, store or suggest the student's own research question or essay text.
+- EE-003: credit and the teacher report show the trail as practice only.
 
 ## Add a Showdown
 
@@ -140,6 +189,56 @@ A misconception (`misconceptions`) has a paraphrased `title`, the play `signal`,
 
 A template (`portfolio`) is an entry that the game adds with the effect `{ "portfolio": "pf.<id>" }`. Labels, Showdowns and forge tests also add entries. Entries are private. The student shares them by choice.
 
+## Add an Exhibition alcove (SYM-001)
+
+Alcoves are in `src/content/exhibition.json` (`alcoves`). Each has a prompt, at least two `symbols` (they bring the Symbol Mirage), and `objects` (evidence cards). Each object needs one `specific` link, one `checklist` link (the Checklist Golem) and usually one `generic` link, plus at least two good `implications` and one "so what?" trap (the So-What Sphinx). The validator checks this. Mix the order of the options. Place the alcove on a map with `kind: 'alcove'`.
+
+## Add a Loreling (spec 36.1)
+
+Add a record to `src/content/lorelings.json` (`lorelings`). A Loreling is befriended by observation only. Give it at least two sightings (`sightings`, each with a `place` and what the player sees), pattern questions (`questions`) and an `offer` (where to wait). Every wrong option in a question must name the sighting that shows it is wrong (`contradicts`), so careful watching always finds the pattern; the validator checks this. Design the sightings so that one feature is present often but is not the cause (a confound), and one sighting breaks it (a counterexample). Put the sightings on a map as interactables of kind `loreling` with `loreling` and `sighting`, and hide them with `visibleIf` when the Loreling is a friend. Forms grow from completed steps whose `weave.concepts` include the Loreling's concept (`src/domain/lorelings.ts`). Lorelings never fight, never get hurt and are fictional; real animals stay real.
+
+## Add a puzzle: timeline door, balance bench or restorer's trestle
+
+Puzzles are in `src/content/puzzles.json`. An `order` puzzle can be a knowledge-gated door: give it `needs` (`item` and a `sealed` text shown without the tool) and `words` (the feedback words: `stops`, `sags`, `done`, `notPart`). Put only one kind of date on one timeline, and give every distractor a `why`. A `balance` puzzle has `rounds`, each with a `load` (`label`, `mass`) and `weights`. Mark a weight `untrusted` (with the reason) when it belongs to the thing under test; it never counts, even when the pans balance. The validator checks that the trusted weights can balance every load. To swap a map object's art when it opens, give it `artOpen: { key, if }`.
+
+A `restore` puzzle has `layers` (top first: `id`, `name`, `colour`, `text`), a `face` (how the object looks now: `bg`, `ink`, `lines`, optional `window`) and `methods`. Each method has `keeps` and `loses` (together they name every layer once), `reversible`, a `result`, its own `face`, and `labels` (at least one `honest` and one not, each with a `why`). Every method must be a fair choice: the puzzle checks only that the label says honestly what was kept and lost. Give each method the same reward. To show the chosen method on the map, give the object `artBy: { flag, keys }`.
+
+A `sightlines` puzzle has a `grid` (`w`, `h`), `blocks` (cells that block the view: `x`, `y`, `w`, `h`, `label`, `kind`), `spots` (where things happened) and `witnesses`, each with a place and `claims` (`spot`, `text`). The map decides what each witness could see. A claim that cannot be seen must have `heard` (who told the witness); the validator checks this against the map. Give the puzzle exactly one fair report in `reports`. After you change the map, run `npm test`.
+
+An `echo` puzzle has the true `distance` (metres), the `speed` of sound, `minTimes` (tries of each kind before the reflection) and `reflect` (one `honest`). The player's times are real measurements, so never check them against a right answer.
+
+A `sorter` puzzle has `fruits` (`colour`, `size`, `bruised`, `farm`), the `crate` the player chooses from, the `basket` it is tested on, the `start` examples (which must fail), `slots`, `farms` (display names), `diagnose` and `reflect` (one `honest` each). The validator searches the crate for a set that sorts the whole basket right.
+
+A `mapmaker` puzzle has `maxLayers`, `layers` (more than the sheet holds), `audiences` (each with `wants`, the layers it `need`s, a `success` and a `lost` text) and `reflect` (exactly one `honest`). Any map that has what a person needs works; extra layers are fine. The map drawing for Emberford is `townMapSvg()` in `ui.ts`.
+
+A `conjecture` puzzle has `angles` (the points on the circle, in degrees, in the order they are added), a `claim`, `predictAt` (the point before which the player predicts), `predictions` (never graded: each has a friendly `reply`), `reflect` (exactly one `honest`) and `proof` (short steps). The validator checks that every first n points are in general position (no three chords meet at one point); a regular shape fails this.
+
+A `survey` puzzle has `groups`, `people` (each with a `group`, a view `yes` (true or false) and `firm`), `wordings` (each with a `lean`: `none`, `yes` or `no`; a leading wording moves people who are not firm to its side), `samples` (lists of people ids), a `fair` pair (`wording`, `sample`) and `reflect` (one `honest`). The validator checks that the fair pair gives the same share of yes as the whole town (within 0.15). The results are fixed, never random, so a class can compare them.
+
+A `translate` puzzle has a `source` line (in an invented language only; never use a real community's language without review, spec section 88), a `frame` (the English line with `{wordId}` places), a word `budget`, `words` (each with the `word` as it appears in the source, a `note` and `choices`: `text`, the `parts` it `keeps`, and `back`, the word a back-translation gives) and `parts` (the differences the reader needs, each with a `lost` text). Do not use the name `needs`: it is the general field for a locked puzzle. The validator checks that the first choice of every word loses something, and that two or more translations keep every part within the budget.
+
+A `frame` puzzle has a `scene` and a `frame` size (in scene units; 1 unit is 10 px), `items` (each with a place, a `label` and an `art` key that `frameScene()` in `ui.ts` can draw) and `briefs` (each with `who`, `wants`, the items it must `need` and `avoid`, and a `success` text). An item is in the frame when its centre is inside. The validator checks that each brief has at least one frame position that works. Keep every item true to the scene: the lesson is that true parts can still mislead.
+
+A `shepard` puzzle has `steps` (per octave climb), `base` (the lowest note in hertz), `octaves`, `guesses` (what the player heard: never graded, each with a friendly `reply`) and `reflect` (one `honest`). The validator checks that the notes are audible and that the last step matches the first.
+
+A `forecast` puzzle has `choices` (chances in %), `notes` (what the clues mean), `days` (each with `baro`, `clouds`, `birds`, whether it `rain`ed and the `almanac` chance) and `reflect` (one `honest`). The days are fixed, so every class sees the same weather. The validator checks that the almanac beats 'always 50%' and that there are wet and dry days. Include at least one confident forecast that misses: that is the lesson.
+
+## Add a practice clue board
+
+Add a record to `clueBoards` (in `src/content/clueboard.json`) with the `showdown` id, a `title`, an `intro`, `onComplete` and a `weave`. The board takes its claims, links and support from the Showdown record, so no other data is needed. Place it on a map with `kind: 'board'` and `board: <id>`.
+
+## Add a world-memory line
+
+`src/content/memories.json` (`memories`) holds short lines that a person says once when the player passes. Each has a `character`, a condition `if` on explicit state (a flag, a card, an objective) and a `line` of one or two sentences. Put the more specific line first (for example "after a few tries" before "after you solved it"): a person says only the first line that holds, and the others that hold are marked as heard. Remember choices and patient mistakes, never grades, and never shame the player.
+
+## Tag a step with a knowledge question (Question Stones)
+
+Give an objective `"kq": { "id": "KQ-NEW-001", "action": "label" }`. The question is in `src/content/questions.json`, in our own words (never IB wording), with Lumen's one-sentence `lastWord`. Each new world and action pair makes the stone brighter. Never ask the player to "answer" a knowledge question for points (KQ-001).
+
+## Add a glossary word (smart glossary)
+
+`src/content/glossary.json` holds key words. Each entry has a `term`, lower-case `match` forms, a plain explanation in our own words, and `examples` with optional conditions (`{flag:name}` shows a flag's value, for example the player's own label). The first use of a word in a conversation is underlined; the player can tap it. A test checks that every word appears in the chapter text. Never copy course wording into explanations.
+
 ## Open a tool from dialogue
 
 A dialogue node or option can have `"open"`: `showdown:<id>`, `label:<kit>`, `forge`, `assay` or `thread:<id>`. The tool opens when the dialogue closes.
@@ -163,4 +262,61 @@ A dialogue node or option can have `"open"`: `showdown:<id>`, `label:<kit>`, `fo
 - Write in plain, short sentences. The players are students aged about 16 to 19, and many read English as a second language.
 - Name the action that earns an award ("You compared two sources…").
 - Do not say "correct" or "wrong" about a judgement. Say what the evidence supports, qualifies or challenges.
-- People from every continent and time period. Name people and places with care (spec section 88). Give local names where they exist.
+- People from many peoples, places and times. Treat each people, nation and culture as separate: never group people by continent or region in player-facing text ("people from Africa", "East Asia"). Show each person's own place or people in `person.place`. `person.continent` is only for an internal coverage test. Name people and places with care (spec section 88). Give local names where they exist.
+
+## Add a keepsake
+
+Keepsakes are in `src/content/quarters.json`. Each has an `id` (short lowercase words with hyphens), a `name`, a one-line `text`, a condition `if` (the deed that earns it) and `where` (the hint shown while it is locked), and a `use` hint (what it might do in the world). A keepsake must matter: give it a view of a clue in the old Guardian's study, or a keepsake talk with a person, in `src/content/story.json` (the content check fails otherwise). Draw its 12 x 12 icon in `ICONS` in `src/ui/quarters.ts`; without one, a plain box is shown. Keepsakes are cosmetic: never give XP for them.
+
+## Add a lamp, a study clue or a keepsake talk (the storyline)
+
+All three are in `src/content/story.json` (made by a generator script; edit the JSON by hand if you have no script).
+
+- **Knot (lamp):** `id`, `name`, `who` (the person to help, shown while dark), `if` (the deed), `lit` (one line on how the town changed). Keep 16 lamps; six open the cellar.
+- **Clue:** `id`, `name`, `text` (plain view), `views` (each `keepsake`, `text`, optional `effects`), `study: true` for study objects. A view gives another perspective or opens a pathway (set a `study.*` flag). Place it on the study map as an interactable of kind `clue` with art `clue.<id>` (draw it in `src/ui/illustrations.ts`).
+- **Keepsake talk:** `id`, `character`, `keepsake`, `text` (the option), `node` (a dialogue node in the same file), optional `if`. It shows once, on the character's first node.
+- Keep the old Guardian's story fictional. Do not add real historical facts here without a source.
+
+## Add a tool recipe or a field reading (crafting)
+
+- **Recipe:** in `src/domain/craft.ts` (`RECIPES`): `id`, `name`, `item` (add the item to `story.json`), `cost` (ore, clay, reed), `use`, and one calibration question with three options. Each option has `ok` and `why`; exactly one is a good method, and every `why` explains itself.
+- **Field reading:** in `src/domain/readings.ts` (`READINGS`): `tool` (a recipe id), `place`, `claim` (what someone says), `result` (what the calibrated tool shows), `q` and three options, as above. Place it on a map as an interactable of kind `reading` with `reading: '<id>'`. Every recipe must have at least one placed reading (a test checks this). A reading tests a claim; it never makes the person who made the claim a liar or a fool.
+- **Rumour (the rumour mill):** in `src/domain/rumours.ts` (`RUMOURS`): `heard` (who, where), `line`, at least two `sources` (`label`, `text`), `best` (the index in `VERDICTS` that the evidence fits), four `whys` (one for each verdict), `idea` (the TOK idea), optional `fray` (a Bestiary id). Rumours are about the fictional town only, never real news. Make the sources do the work: the player must be able to reach `best` from them.
+- **Dye or barter price:** in `src/domain/trade.ts`. A dye needs an outfit colour of the same key in `src/domain/appearance.ts` (`OUTFIT`, `DYE_KEYS`, `LABELS`). Every price must be shown as its parts. Never sell or lock a base appearance option (skin, hair, style, glasses, mobility aid, the base outfit colours).
+- **Fallacy seal or boss phase (the Undercroft):** in `src/domain/undercroft.ts`. Each has `says` (the bad argument), three options with `ok` and `why`, and a `fray` id from `src/content/fray.json` (met when solved). A wrong answer must be explained and must never end the fight. Place a seal on a map as kind `seal` with `seal: '<id>'` and a `visibleIf` that hides it once `trap.<id>.open` is set.
+
+## Add a field game (TOK lessons as play)
+
+- Register it in `src/domain/fieldgames.ts` (`FIELD_GAMES`): `id`, `name`, `host` (a person and a place), `idea` (the TOK idea in plain words, shown after play and in the Lore codex), `concept`, optional `fray`.
+- Put its rules in a pure module (no DOM), with seeded randomness (`rng` in `src/domain/fairgames.ts`), and test them.
+- Add its panel in `UI.openFieldGame`. The flow: act on a gut feeling first, then see many fair runs or other perspectives, then change one assumption and see what changes. End with `finishField(id)`.
+- Place it on a map as kind `fieldgame` with `game: '<id>'` (a test checks that each game has a spot).
+- Never a quiz: no score for 'right answers', no timer, no text to read and recall. Wrong moves are explained and play goes on. Use original fictional wording, never handout or IB wording.
+
+## Add a chapter person (story bible rules)
+
+- Read [STORY_BIBLE.md](STORY_BIBLE.md) section 5 first. Check that the name is new: `grep -rw <Name> src`.
+- Give the person their own look: set `sprite` to a made look (`custom:skin.hair.outfit.trousers.accessory.accent[.style.glasses.aid]`), never another named character's sheet. A test checks that the look is valid.
+- Add two lines in `src/content/chapter-voices.json`: a `life.<id>` line (their own voice, a life outside the plot, if the chapter is not finished) and an `ack.<id>` line (they notice what the player did, after the chapter's last objective).
+- Add Echo lines (`echo.<id>.<n>`) when a person should remember a choice from an earlier chapter. The condition is `all` of: the chapter's second objective done, the chapter's last objective not done, and the earlier choice flag. The line must say what the player did ('you', 'your'). `tests/echoes.test.ts` checks the flags.
+
+## Add a companion loyalty mission
+
+In `src/domain/loyalty.ts` (`LOYALTY`): `companion`, `who`, `title`, `available`, `intro`, three `sources`, a `slip` (what the companion's blind spot makes them say; the player's `notice`; the `fixed` and `miss` outcomes), a `question`, three `choices` (each with a real `cost` and the companion's `reply` to the player's reasons) and the `idea`. Place it as kind `fieldgame` with `game: 'loyalty-<id>'` and the same `visibleIf` as `available`. Add one `loyal.<id>.<choice>` line per choice in `src/content/chapter-voices.json`. A test checks all of this.
+
+## Add a crossing (a conflict in the world)
+
+Read the conflict map (story bible section 15) first, and pick a type and size that the chapter lacks. In `src/domain/crossings.ts` (`CROSSINGS`): `chapter`, `map`, `types` (main type first; one of self, person, nature, society, god, fate, supernatural, technology), `scale` (minor, mid, major), `tone` (funny, serious, mixed), `stakes` (`lose` and `gain`), `serves` (plot, arc or theme), `leadsTo` (a later crossing id or a beat in `CROSSING_BEATS`), `title`, `scene` and `idea`. Give at least three `ways`: one `overcome`, one `ignore`, and usually one `around`. Each way has a `method` (how it resolves, in the words of the conflict list), a `result` and a real `cost`. A way can need a key: `needs: { if, companion, why }`. Place it as kind `fieldgame` with `game: 'cross-<id>'` on a free tile. Then add a line to the conflict map, and an epilogue vignette (`src/domain/epilogue.ts`) for the way you most want players to remember.
+
+Rules: god and fate crossings use invented in-world patrons and prophecies only; never make a real religion's God or sacred figures an opponent. Animals are never hurt. Put a light moment (a pun, a misunderstanding) near a heavy one. `tests/crossings.test.ts` checks the spread of types, scales and tones, the keys, the placement and the links.
+
+## Add a hearth talk, a ballad verse or an epilogue line
+
+- **Hearth talk** (`src/domain/hearth.ts`): companions talk to each other after a big step (`after`). Give it a `kind` (humour, friction, doubt, misunderstanding, farewell), lines with a `who` (a character id, or `lumen`) and an optional `if`, and four `join` replies, one per tone (joke, doubt, care, plain). Kip has no set pronoun.
+- **Ballad verse** (`src/domain/ballad.ts`): Wynn's song. Each verse has a condition, a `tall` line (bigger than the truth), a `true` line built from flags, and the `crowd` reaction.
+- **Epilogue line** (`src/domain/epilogue.ts`, `VIGNETTES`): one "where are they now" line per real flag value. A test checks the values.
+
+## Tag a new encounter for learning design
+
+Give every new crossing, hearth talk, field game or loyalty mission a `LEARN` entry in `src/domain/learningLevels.ts` (concepts, framework parts, DOK, Bloom, Fink, SOLO, minutes) and a chapter in `OPTIONAL_CHAPTER` (`src/domain/learningPaths.ts`). For an objective, `weave.framework` and `weave.minutes` are optional. Then run `npx vitest run tests/learning.test.ts --mode tok-report`, and lower the gap budget if it went down. Read [LEARNING_DESIGN.md](LEARNING_DESIGN.md) for how to vary the levels.
+

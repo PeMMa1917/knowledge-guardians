@@ -1,0 +1,139 @@
+{
+ "clueBoards": [
+  {
+   "id": "corvan-board",
+   "showdown": "corvan",
+   "title": "The practice board",
+   "intro": "A corkboard in the square, with pins and two balls of yarn. Before a Showdown, anyone may practise here. Red yarn ties a card to Corvan's claim to challenge it. Gold yarn ties a card to a claim you might make, to support it. A claim with no taut yarn glows gold: nothing holds it up yet.",
+   "onComplete": [
+    {
+     "credit": "crit.justification.board"
+    },
+    {
+     "journal": "j.board"
+    }
+   ],
+   "weave": {
+    "concepts": [
+     "justification",
+     "evidence"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "history",
+     "chemistry"
+    ],
+    "aoks": [
+     "HIS",
+     "NAT"
+    ]
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH1-C01",
+   "world": "WORLD-02",
+   "title": "The practice board",
+   "knowledgeQuestion": "How much can one piece of evidence carry?",
+   "available": {
+    "any": [
+     {
+      "card": "card.guild-ledger"
+     },
+     {
+      "card": "card.workshop-diagram"
+     },
+     {
+      "card": "card.forge-pattern"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "board.o1.practise",
+     "title": "Optional: on the practice board (west of the square), crack every link of Corvan's claim and hold one claim of yours with two taut yarns.",
+     "essential": false,
+     "done": {
+      "flag": "board.corvan-board.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "justification",
+       "evidence"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "history",
+       "chemistry"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21"
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.board.1",
+   "objective": "board.o1.practise",
+   "depth": 1,
+   "text": "Corvan's claim has three links. Each needs a card that touches that link."
+  },
+  {
+   "id": "h.board.2",
+   "objective": "board.o1.practise",
+   "depth": 2,
+   "text": "A yarn sags when the claim says more than the card can show. Try the narrower claim."
+  },
+  {
+   "id": "h.board.3",
+   "objective": "board.o1.practise",
+   "depth": 3,
+   "text": "Your test billet cracks the pattern link. The ledger cracks 'ancient'. The note on two kinds of 'Damascus' cracks the name."
+  },
+  {
+   "id": "h.board.4",
+   "objective": "board.o1.practise",
+   "depth": 4,
+   "text": "Tie the workshop sheet and the guild ledger to 'This blade is pattern-welded, made in Hesper Lyle's workshop this season.'"
+  }
+ ],
+ "criteria": [
+  {
+   "id": "crit.justification.board",
+   "concept": "justification",
+   "maximum": 5
+  },
+  {
+   "id": "crit.evidence.caption",
+   "concept": "evidence",
+   "maximum": 3
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.board",
+   "text": "The practice board: one card can crack one link of a claim. A claim of my own needs cards that carry all of it; if it says more than the cards show, the yarn sags.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.caption",
+   "text": "My photo album: a caption can say what the picture shows, or what I think about it. Only the first kind can be checked by looking.",
+   "claimKind": "interpretation"
+  }
+ ]
+}

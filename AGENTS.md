@@ -38,7 +38,7 @@ The design spec is `Knowledge_Guardians_spec_v2.10.md`. The project owner keeps 
 13. **Teacher view** (TEACH-001 to TEACH-005). Formative only, never a mark. Least data. No public ranking of named students. The student shares a progress file by choice.
 14. **Portfolio** is private and owned by the student. An entry goes to the teacher only when the student shares it.
 15. **No student-made content** (NOMAKE-001) and **no news or current events** (NONEWS-001). `validate.ts` checks for news words in sources.
-16. **Weave** (WEAVE-016 to WEAVE-018). Content records list the TOK concepts, ATL skills, areas of knowledge and DP subjects they touch. EE and CAS appear as practice only. Play is never CAS.
+16. **Weave** (WEAVE-016 to WEAVE-018). Content records list the TOK concepts, ATL skills, areas of knowledge and DP subjects they touch. EE and CAS appear as practice only. Play is never CAS. The game never asks for, stores or suggests a student's own EE question (EE-002).
 17. **Cultural care** (section 88). Name people and places with care. Give local names (for example Chomolungma and Sagarmatha). Do not use a culture as a costume. Fictional cultures must not copy a real one.
 18. **Content is data.** JSON with the restricted vocabulary in `src/domain/types.ts`. No code in content.
 19. **Accessibility** (section 21): every action works with the keyboard. Keep text scaling, reduced motion, reduced effects, high contrast and dyslexia spacing working. Give `altText` for pictures.
@@ -46,18 +46,26 @@ The design spec is `Knowledge_Guardians_spec_v2.10.md`. The project owner keeps 
 ## 3. Rules from the project owner
 
 - **Classroom use only, not commercial.**
-- **People from every continent and time period.** Keep the balance when you add people or objects. See the table in [docs/SOURCES.md](docs/SOURCES.md).
+- **People from many peoples, places and time periods.** Keep the balance when you add people or objects. Treat each people, nation and culture as separate: never group people by continent or region in anything players see. See the table in [docs/SOURCES.md](docs/SOURCES.md).
 - **Real historical objects.** Objects must be real, specific, dated and clear. Fictional things (Aethelgard and its people) are `fictional-world`.
 - **Free assets only.** CC0 first. CC-BY or OGA-BY only with attribution. No NC or ND licences. Every file in `public/assets/` must be in `public/assets/credits.json` and `CREDITS.md`. `npm run assets:check` checks this.
 - **Art direction:** rich, colourful pixel art with lighting. **Never copy** art, characters, music or levels from an existing game.
 - **Writing style:** plain, short sentences (Simplified Technical English where possible). Font: Lexend everywhere.
 - **Documents:** any `.docx` file uses A4 paper with 1.5 cm margins.
+- **Quality goals for every chapter (Mika 2026-11-26).** Check each new feature against all five:
+  1. **A branching story where choices matter.** Give real options. A choice must change something later (a line, a path, a person's trust, an ending). Say in the code or content where the effect shows.
+  2. **One cohesive, colourful art style.** Rich pixel art with light, in the same palette and scale as the existing maps and sprites. No art that looks like a different game.
+  3. **Fitting music and sound.** Each place and task has a sound that fits it (calm for thinking, bright for a win). Never silent, never jarring.
+  4. **Distinct characters.** Each person has their own name, background, perspective, way of speaking, and their own quests or side quests. Do not reuse a voice.
+  5. **Objects that matter elsewhere.** Every object, keepsake, memento or artefact must be used in another place: a new view, a path, a dialogue option, a trade or a puzzle.
+- **Story bible (Mika 2026-11-26).** Read [docs/STORY_BIBLE.md](docs/STORY_BIBLE.md) before you write any scene, person or quest. Use its checklist (section 13). Never reuse a character name. Keep the conflict map (section 15) current when you add a conflict, and check [docs/STORY_ELEMENTS.md](docs/STORY_ELEMENTS.md) (Mika's 150 story elements, adapted) when you plan content. Never make a real religion's God or sacred figures an opponent: use invented in-world patrons, myths and prophecies only. Tag new encounters for concepts, framework parts and levels of thinking, and vary the levels ([docs/LEARNING_DESIGN.md](docs/LEARNING_DESIGN.md)); check [docs/GAME_ELEMENTS.md](docs/GAME_ELEMENTS.md) for game elements to use. Nothing a student plays may feel like an exam.
+- **TOK lessons as play, never as school work (Mika 2026-11-26).** Ideas from the TOK lessons become minigames, quests, side quests and character moments. Nothing may feel like a quiz, flashcards, an essay or homework. Adapt ideas into original, fictional mechanics; never copy handout or IB wording into this public repository.
 
 ## 4. Code rules
 
 - Game rules go in `src/domain/` only. That folder must not import Phaser or use the DOM. The same applies to `src/teacher/report.ts`.
 - The UI and scenes send commands to `GameController`. They do not change state directly.
-- If you change `CampaignState`, raise `CAMPAIGN_SCHEMA` (now 3) and add a migration in `src/domain/saves.ts`, with a test. The same for `PERMANENT_SCHEMA` (now 2).
+- If you change `CampaignState`, raise `CAMPAIGN_SCHEMA` (now 4) and add a migration in `src/domain/saves.ts`, with a test. The same for `PERMANENT_SCHEMA` (now 3).
 - Do not rename content IDs after release. Saves refer to them.
 - Use exact dependency versions in `package.json` (no `^` or `~`).
 - TypeScript is strict. `npm run build` must pass.

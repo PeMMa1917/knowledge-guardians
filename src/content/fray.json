@@ -1,0 +1,172 @@
+{
+  "fray": [
+    {
+      "id": "swell-wisp",
+      "name": "Swell Wisp",
+      "error": "Overclaiming",
+      "pattern": "A gold glow on a label or a claim that has grown bigger than what holds it up. It shines brightest where the words say more than the evidence.",
+      "weakness": "Fit the claim to its support: qualify it, or find more support.",
+      "chapter": 1
+    },
+    {
+      "id": "shadow-twins",
+      "name": "Shadow Twins",
+      "error": "Correlation is not causation",
+      "pattern": "Two shadows that always move together, so one seems to cause the other.",
+      "weakness": "Look for a case where one is present and the other is not. A control or a counterexample separates them.",
+      "chapter": 1
+    },
+    {
+      "id": "hasty-hydra",
+      "name": "Hasty Hydra",
+      "error": "Hasty generalisation",
+      "pattern": "Each head grew from one example. 'All' and 'always' are its favourite words.",
+      "weakness": "One good counterexample cuts a head. Wider sampling stops it growing back.",
+      "chapter": 1
+    },
+    {
+      "id": "glimmer-knight",
+      "name": "Glimmer Knight",
+      "error": "Appeal to authority",
+      "pattern": "It shines with a famous seal and stuns the crowd for a moment.",
+      "weakness": "Ask for the source. The shine fades when nothing is under the seal.",
+      "chapter": 1
+    },
+    {
+      "id": "echo-moths",
+      "name": "Echo Moths",
+      "error": "Repetition is not support",
+      "pattern": "A swarm that copies itself. The louder and more often a claim is repeated, the bigger the swarm.",
+      "weakness": "Find the first source and test it. Volume adds no support.",
+      "chapter": 1
+    },
+    {
+      "id": "hornet-of-blame",
+      "name": "Hornet of Blame",
+      "error": "Attack on the person",
+      "pattern": "It stings a person's reputation, not their claim.",
+      "weakness": "Ignore the sting. Answer the claim and its support.",
+      "chapter": 1
+    },
+    {
+      "id": "symbol-mirage",
+      "name": "Symbol Mirage",
+      "error": "A symbol in place of an object",
+      "pattern": "A shimmer that looks like knowledge: glasses for 'perspective', a trophy for 'winning'. Nobody made, used or argued about it.",
+      "weakness": "Choose a real, specific object that shows knowledge at work in the world.",
+      "chapter": 1
+    },
+    {
+      "id": "checklist-golem",
+      "name": "Checklist Golem",
+      "error": "Naming concepts instead of using them",
+      "pattern": "A golem made of ticked boxes. Every concept name is on it, and none of them does any work.",
+      "weakness": "Say what this one object shows, in a sentence that could not fit any other object.",
+      "chapter": 1
+    },
+    {
+      "id": "so-what-sphinx",
+      "name": "So-What Sphinx",
+      "error": "A point with no implication",
+      "pattern": "It blocks the way and asks one question: so what?",
+      "weakness": "Say what follows: who acts differently, or what we now know or doubt.",
+      "chapter": 1
+    },
+    {
+      "id": "confirmling",
+      "name": "Confirmling",
+      "error": "Confirmation bias",
+      "pattern": "It swallows any evidence that agrees with it and grows bigger.",
+      "weakness": "Run a fair test that could prove it wrong.",
+      "chapter": null
+    },
+    {
+      "id": "strawman",
+      "name": "Strawman",
+      "error": "Straw man argument",
+      "pattern": "A scarecrow golem that attacks a weak copy of your claim.",
+      "weakness": "Restate your real claim. The golem loses its target.",
+      "chapter": null
+    },
+    {
+      "id": "anchor-crab",
+      "name": "Anchor Crab",
+      "error": "Anchoring bias",
+      "pattern": "It holds on to the first number it sees.",
+      "weakness": "Take a fresh, independent measurement.",
+      "chapter": null
+    },
+    {
+      "id": "fog-wraith",
+      "name": "Fog Wraith",
+      "error": "Vagueness and equivocation",
+      "pattern": "It changes the meaning of a word in the middle of a fight.",
+      "weakness": "Pin down a clear definition.",
+      "chapter": null
+    },
+    {
+      "id": "mimic-chest",
+      "name": "Mimic Chest",
+      "error": "Forgery",
+      "pattern": "It looks like a treasure chest or an old object.",
+      "weakness": "Check its layers and its provenance.",
+      "chapter": null
+    },
+    {
+      "id": "bandwagon-beetles",
+      "name": "Bandwagon Beetles",
+      "error": "Bandwagon fallacy",
+      "pattern": "They get stronger as more beetles join.",
+      "weakness": "One independent witness breaks the line.",
+      "chapter": null
+    },
+    {
+      "id": "gamblers-imp",
+      "name": "Gambler's Imp",
+      "error": "Gambler's fallacy",
+      "pattern": "It bets that a 'due' result will come.",
+      "weakness": "Show the real odds.",
+      "chapter": null
+    },
+    {
+      "id": "cherry-picker-crow",
+      "name": "Cherry-Picker Crow",
+      "error": "Cherry-picking",
+      "pattern": "It steals the evidence that does not fit.",
+      "weakness": "Restore the full record and check the gaps.",
+      "chapter": null
+    },
+    {
+      "id": "survivor-shade",
+      "name": "Survivor Shade",
+      "error": "Survivorship bias",
+      "pattern": "It shows only the winners.",
+      "weakness": "Search for the missing cases.",
+      "chapter": null
+    },
+    {
+      "id": "twin-gate-hound",
+      "name": "Twin-Gate Hound",
+      "error": "False dilemma",
+      "pattern": "Two heads block a door with two choices.",
+      "weakness": "Find the third option.",
+      "chapter": null
+    },
+    {
+      "id": "slippery-slime",
+      "name": "Slippery Slime",
+      "error": "Slippery slope",
+      "pattern": "It slides you toward a disaster, step by step.",
+      "weakness": "Ask for evidence for each step.",
+      "chapter": null
+    },
+    {
+      "id": "hush-moth",
+      "name": "Hush Moth",
+      "error": "Missing or softened words",
+      "pattern": "A grey moth that eats plain words and leaves soft ones behind, so a hard thing becomes hard to say, and a shared problem has no name.",
+      "weakness": "Name the thing plainly. Ask what each word makes people notice, and who chose the word.",
+      "chapter": 1
+    }
+  ]
+}

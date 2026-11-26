@@ -6,46 +6,15 @@
  */
 import { describe, expect, it } from 'vitest';
 import { buildPack } from '../src/content';
-import { Engine, newCampaign, type GameEvent } from '../src/domain/engine';
-import { newPermanent, totalXP } from '../src/domain/permanent';
+import { totalXP } from '../src/domain/permanent';
 import type { ShowdownMove } from '../src/domain/showdown';
-import type { CampaignState, PermanentRecord } from '../src/domain/types';
+import { MAPS } from '../src/maps';
 
 const pack = buildPack();
+const recruitment = pack.missions.find((m) => m.id === 'KG-CH1-M01')!;
+const emberford = pack.missions.find((m) => m.id === 'KG-CH1-M02')!;
 
-export class Driver {
-  e = new Engine(pack);
-  s: CampaignState = newCampaign(pack, 'Tester', 'player-a', 7);
-  p: PermanentRecord = newPermanent();
-  events: GameEvent[] = [];
-  run(cmd: Parameters<Engine['dispatch']>[0]) {
-    const o = this.e.dispatch(cmd, this.s, this.p);
-    const err = o.events.find((x) => x.kind === 'error');
-    if (err) throw new Error((err as any).message);
-    this.s = o.state; this.p = o.permanent; this.events.push(...o.events);
-    return o;
-  }
-  /** Talk to a character, choosing options whose text includes each pick in turn. */
-  talk(who: string, ...picks: string[]) {
-    const node: string | null = this.e.talkEntry(who, this.s);
-    if (!node) throw new Error(`no entry for ${who}`);
-    this.walk(node, picks);
-  }
-  walk(start: string, picks: string[] = []) {
-    let node: string | null = start;
-    while (node) {
-      this.run({ type: 'EnterNode', node });
-      const opts = this.e.visibleOptions(node, this.s);
-      if (opts.length === 0) { node = this.e.node(node).next ?? null; continue; }
-      const pick = picks.shift();
-      const choice = pick ? opts.find((o) => o.option.text.includes(pick)) : opts[0];
-      if (!choice) throw new Error(`option "${pick}" not found at ${node}: ${opts.map((o) => o.option.text).join(' | ')}`);
-      node = this.run({ type: 'ChooseDialogueOption', node, index: choice.index }).nextNode ?? null;
-    }
-  }
-  moves(...mv: ShowdownMove[]) { for (const m of mv) { if (this.s.showdown?.outcome) break; this.run({ type: 'ShowdownMove', move: m }); } }
-  done(id: string) { return this.s.objectivesDone.includes(id); }
-}
+import { Driver } from './driver';
 
 type LabelRoute = 'patent' | 'practical' | 'model' | 'three';
 const LABELS: Record<LabelRoute, { subject: string; criterion: string; limit: string }> = {
@@ -86,7 +55,7 @@ function playM01(d: Driver, label: LabelRoute, showdown: (d: Driver) => void = p
   expect(d.s.flags['label.pen.holds']).toBe(true);
   d.talk('warden-ise');
   d.run({ type: 'Reach', zone: 'portal' });
-  for (const o of pack.missions[0].objectives.filter((x) => x.essential)) expect(d.done(o.id), o.id).toBe(true);
+  for (const o of recruitment.objectives.filter((x) => x.essential)) expect(d.done(o.id), o.id).toBe(true);
   expect(d.s.inventory['tool.provenance-thread']).toBe(1);
   expect(d.events.some((e) => e.kind === 'checkpoint' && e.label === 'Recruitment complete')).toBe(true);
 }
@@ -142,7 +111,7 @@ function playM02(d: Driver, outcome: Outcome, route: 'pattern' | 'crucible' = 'p
   d.talk('smith-hesper', 'Can I try it');
   d.talk('scholar-sefa', 'What is wootz');
   d.run({ type: 'InspectExhibit', exhibit: 'OBJ-002' });
-  d.talk('guildmaster-orrin', 'Is the blade ancient', 'What does the ledger');
+  d.talk('guildmaster-orrin', 'guild ledger first', 'Is the blade ancient', 'What does the ledger');
   const steps = route === 'pattern' ? ['stack', 'stack', 'weld', 'fold', 'twist', 'cut'] : ['crucible', 'melt', 'cool', 'cut'];
   for (const a of steps) d.run({ type: 'Forge', action: a as any });
   d.run({ type: 'InspectExhibit', exhibit: 'AE-ASSAY' });
@@ -162,7 +131,7 @@ function playM02(d: Driver, outcome: Outcome, route: 'pattern' | 'crucible' = 'p
   d.talk('kip-arden');
   expect(d.s.inventory['item.gold-seal']).toBe(1);
   d.talk('warden-ise');
-  for (const o of pack.missions[1].objectives) expect(d.done(o.id), o.id).toBe(true);
+  for (const o of emberford.objectives) expect(d.done(o.id), o.id).toBe(true);
 }
 
 describe('full chapter routes', () => {
@@ -177,6 +146,10 @@ describe('full chapter routes', () => {
       for (const a of ['award.dates-have-kinds', 'skill.fair-test-1', 'award.two-sides', 'skill.force-support-1', 'skill.thread-1', 'award.forged-not-sorted', 'badge.honest-sign']) {
         expect(d.p.awards[a], a).toBeTruthy();
       }
+      // Fray Bestiary (spec 36.2): the Showdowns show the Glimmer Knight's seal to every player.
+      expect(d.s.flags['fray.glimmer-knight']).toBeDefined();
+      // Skill Atlas (spec 76.1): a full chapter records skills from several steps.
+      expect(Object.keys(d.p.skills).length).toBeGreaterThanOrEqual(5);
     });
   }
 
@@ -236,11 +209,11 @@ describe('label builder and the Fray (29.1 item 2)', () => {
     expect(d.s.flags['count.firsts']).toBe(1);
     expect(d.s.flags['count.labels.holding']).toBe(1);
   });
-  it('the Hall of Firsts covers every inhabited continent', () => {
-    const regions = new Set(pack.cards.filter((c) => c.person).map((c) => c.person!.region));
-    for (const r of ['Africa', 'Asia', 'Europe', 'North America', 'South America', 'Oceania']) {
-      expect([...regions].some((x) => x.includes(r.split(' ')[0]) || (r === 'Asia' && /Asia/.test(x))), r).toBe(true);
-    }
+  it('the Hall of Firsts covers many parts of the world, and players see each person\'s own place, never a continent group', () => {
+    const people = pack.cards.filter((c) => c.person).map((c) => c.person!);
+    const continents = new Set(people.map((x) => x.continent));
+    for (const r of ['Africa', 'Asia', 'Europe', 'South America', 'Oceania']) expect(continents.has(r), r).toBe(true);
+    for (const x of people) expect(x.place).not.toMatch(/Africa|Asia|Europe|America|Oceania|continent/i);
   });
   it('three repaired plaques earn the Hall of Firsts badge and a portfolio entry', () => {
     const d = new Driver();
@@ -395,7 +368,7 @@ describe('permanent credit and hints', () => {
   });
   it('asking for hints never reduces XP or blocks awards (GUIDE-002)', () => {
     const a = new Driver(); const b = new Driver();
-    for (let i = 0; i < 4; i++) for (const o of pack.missions[0].objectives) b.run({ type: 'RequestHint', objective: o.id });
+    for (let i = 0; i < 4; i++) for (const o of recruitment.objectives) b.run({ type: 'RequestHint', objective: o.id });
     playM01(a, 'patent'); playM01(b, 'patent');
     expect(totalXP(b.p)).toBe(totalXP(a.p));
   });
@@ -431,8 +404,9 @@ describe('permanent credit and hints', () => {
 });
 
 describe('misconception signals (phase L2, spec 95)', () => {
-  it('the game has 25 misconceptions, each with a place in play', () => {
-    expect(pack.misconceptions.length).toBe(25);
+  it('the game has 38 misconceptions; MIS-10 and MIS-11 wait for content made with advisors', () => {
+    expect(pack.misconceptions.length).toBe(38);
+    expect(pack.misconceptions.map((m) => m.id)).not.toContain('MIS-10');
   });
   const once = (d: Driver, node: string, pick: string) => {
     d.run({ type: 'EnterNode', node });
@@ -446,6 +420,10 @@ describe('misconception signals (phase L2, spec 95)', () => {
     ['orrin.ledger', 'only record', 'MIS-16'], ['ev.coin', 'just a label', 'MIS-22'], ['ev.fog', 'cannot know', 'MIS-40'],
     ['ev.memory', 'did not see', 'MIS-20'], ['ev.well', 'must be the cause', 'MIS-07'], ['ev.bell', 'portal magic', 'MIS-07'],
     ['ev.mind', 'ignore all', 'MIS-19'], ['ev.translate', 'earliest', 'MIS-21'],
+    ['sol.start', 'same everywhere', 'MIS-14'], ['sol.start', 'was religious', 'MIS-25'], ['sol.start', 'cannot be wrong', 'MIS-13'],
+    ['ise.again', 'who invented the ballpoint', 'MIS-38'], ['ise.again', 'news', 'MIS-39'], ['ev.bell', 'only a theory', 'MIS-30'],
+    ['tull.argue', 'just describe', 'MIS-35'], ['tull.draft', 'A machine made', 'MIS-24'], ['ev.price', 'what each of you feels', 'MIS-26'],
+    ['ev.well', 'gossip', 'MIS-17'], ['ev.coin', 'myth', 'MIS-32'], ['hesper.forge', 'just a tool', 'MIS-23'], ['kip.seal3', 'tiny seal', 'MIS-37'],
   ];
   for (const [node, pick, id] of sites) {
     it(`${node}: "${pick}" signals ${id}`, () => {
@@ -457,6 +435,7 @@ describe('misconception signals (phase L2, spec 95)', () => {
   it('the other options at the same places raise no signal (values and good questions never do)', () => {
     const d = new Driver();
     once(d, 'orrin.ledger', 'Who writes'); once(d, 'sefa.song', 'What does the song know'); once(d, 'ev.price', 'Who is right');
+    once(d, 'sol.start', 'Which plaque'); once(d, 'ise.again', 'question behind'); once(d, 'kip.seal3', 'take it to Ise');
     expect(Object.keys(d.p.signals)).toEqual([]);
   });
   it('"Proved the exact size of the Earth" does not hold and signals MIS-01', () => {
@@ -483,12 +462,16 @@ describe('dialogue graph', () => {
   it('every node is reachable from a character, an event or a scene entry', () => {
     const reach = new Set<string>();
     const entries = ['cold.open', 'waystone.nexus', 'waystone.emberford', 'oldsign.read'];
-    const stack = [...pack.characters.flatMap((c) => c.talk.map((t) => t.node)), ...pack.events.map((e) => e.node), ...entries];
+    const propScenes = Object.values(MAPS).flatMap((map) => map.interactables
+      .filter((prop) => prop.kind === 'scene').map((prop) => prop.node!));
+    const stack = [...pack.characters.flatMap((c) => c.talk.map((t) => t.node)), ...pack.events.map((e) => e.node),
+      ...(pack.keepsakeTalks ?? []).map((t) => t.node), ...entries, ...propScenes];
     while (stack.length) {
       const id = stack.pop()!;
       if (reach.has(id)) continue;
       reach.add(id);
-      const n = pack.dialogue.find((x) => x.id === id)!;
+      const n = pack.dialogue.find((x) => x.id === id);
+      if (!n) throw new Error(`Missing dialogue entry: ${id}`);
       if (n.next) stack.push(n.next);
       for (const o of n.options ?? []) if (o.next) stack.push(o.next);
     }

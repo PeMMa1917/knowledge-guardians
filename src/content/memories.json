@@ -1,0 +1,385 @@
+{
+ "memories": [
+  {
+   "id": "corvan.down",
+   "character": "merchant-corvan",
+   "if": {
+    "flag": "sign.state",
+    "eq": "down"
+   },
+   "line": "The sign is gone. I am selling the blade as what it is. People still buy good steel."
+  },
+  {
+   "id": "corvan.honest",
+   "character": "merchant-corvan",
+   "if": {
+    "flag": "sign.state",
+    "eq": "honest"
+   },
+   "line": "'Patterned blade, Emberford steel.' Fewer words on the sign. More buyers, strangely."
+  },
+  {
+   "id": "corvan.note",
+   "character": "merchant-corvan",
+   "if": {
+    "flag": "sign.state",
+    "eq": "note"
+   },
+   "line": "I put a note under the sign, as the crowd asked. People read it before they read me."
+  },
+  {
+   "id": "corvan.old",
+   "character": "merchant-corvan",
+   "if": {
+    "flag": "sign.state",
+    "eq": "old"
+   },
+   "line": "My sign is still up. Come back with better cards, Guardian. I will be here."
+  },
+  {
+   "id": "orrin.weigh.miss",
+   "character": "guildmaster-orrin",
+   "if": {
+    "all": [
+     {
+      "flag": "puzzle.weigh-house.done",
+      "eq": true
+     },
+     {
+      "num": "puzzle.weigh-house.misses",
+      "gte": 1
+     }
+    ]
+   },
+   "line": "It took you a few weighings? Good. The beam is patient, and so is the guild."
+  },
+  {
+   "id": "orrin.weigh",
+   "character": "guildmaster-orrin",
+   "if": {
+    "flag": "puzzle.weigh-house.done",
+    "eq": true
+   },
+   "line": "The found weight is in the guild box now, with a tag: FOUR, NOT FIVE."
+  },
+  {
+   "id": "ise.timeline.miss",
+   "character": "warden-ise",
+   "if": {
+    "all": [
+     {
+      "flag": "puzzle.timeline-door.done",
+      "eq": true
+     },
+     {
+      "num": "puzzle.timeline-door.misses",
+      "gte": 1
+     }
+    ]
+   },
+   "line": "The brass door flickered at you first, I hear. It flickers at me too, some days."
+  },
+  {
+   "id": "ise.timeline",
+   "character": "warden-ise",
+   "if": {
+    "flag": "puzzle.timeline-door.done",
+    "eq": true
+   },
+   "line": "You opened the Timeline Door. Not many notice that a date can be a date of telling."
+  },
+  {
+   "id": "hana.rumour",
+   "character": "stallkeeper-hana",
+   "if": {
+    "flag": "rumour.done",
+    "eq": true
+   },
+   "line": "After you left, I read the record book myself. Next time I will start there."
+  },
+  {
+   "id": "idris.rumour",
+   "character": "porter-idris",
+   "if": {
+    "flag": "rumour.done",
+    "eq": true
+   },
+   "line": "I told three people what the record says. One of them believed me. That is a start."
+  },
+  {
+   "id": "tea.rumour",
+   "character": "villager-1",
+   "if": {
+    "flag": "rumour.done",
+    "eq": true
+   },
+   "line": "Tea, Guardian? I now say 'I heard' before I pass a story on. It slows me down. Good."
+  },
+  {
+   "id": "hesper.billet",
+   "character": "smith-hesper",
+   "if": {
+    "card": "card.forge-pattern"
+   },
+   "line": "Your test billet is still by my anvil. Light and dark layers, and you made them."
+  },
+  {
+   "id": "sefa.ingots",
+   "character": "scholar-sefa",
+   "if": {
+    "card": "card.met-ingots"
+   },
+   "line": "The catalogue says the ingots are 'probably' eighteenth century. 'Probably' is an honest word."
+  },
+  {
+   "id": "efua.well",
+   "character": "well-keeper",
+   "if": {
+    "flag": "well.shared",
+    "eq": true
+   },
+   "line": "Both streets count the same knots on the rope now. Fewer arguments at dawn."
+  },
+  {
+   "id": "kip.board",
+   "character": "kip-arden",
+   "if": {
+    "flag": "board.corvan-board.done",
+    "eq": true
+   },
+   "line": "I saw your yarn on the practice board. The gold ones were pulled tight!"
+  },
+  {
+   "id": "dace.conceded",
+   "character": "curator-dace",
+   "if": {
+    "flag": "sd.practice.conceded",
+    "eq": true
+   },
+   "line": "You gave me a fair point in front of everyone. I have thought about it since."
+  },
+  {
+   "id": "mara.rest",
+   "character": "fruit-seller",
+   "if": {
+    "flag": "zen.sat",
+    "eq": true
+   },
+   "line": "You sat by the Waystone for a while. Good. The market will still be here."
+  },
+  {
+   "id": "visitor.pen.revised",
+   "character": "villager-2",
+   "if": {
+    "all": [
+     {
+      "flag": "label.pen.holds",
+      "eq": true
+     },
+     {
+      "flag": "label.pen.failedOnce",
+      "eq": true
+     }
+    ]
+   },
+   "line": "Your new pen label is clearer than the first one. Now I can tell what each 'first' was about."
+  },
+  {
+   "id": "visitor.pen",
+   "character": "villager-2",
+   "if": {
+    "flag": "label.pen.holds",
+    "eq": true
+   },
+   "line": "I read your pen label twice. 'First' meant a different thing for each pen. I did not know that."
+  },
+  {
+   "id": "sol.firsts",
+   "character": "visitor-sol",
+   "if": {
+    "num": "count.labels.holding",
+    "gte": 3
+   },
+   "line": "I walked the Hall of Firsts. Each plaque says what kind of first it was: first to do it, first to publish it, first we know of."
+  },
+  {
+   "id": "tull.inventor",
+   "character": "archivist-tull",
+   "if": {
+    "flag": "label.ee.inventor.holds",
+    "eq": true
+   },
+   "line": "Your claim board has a counterclaim on it. Good. A board with only one side is a poster, not research."
+  },
+  {
+   "id": "venn.glimmer",
+   "character": "clerk-venn",
+   "if": {
+    "flag": "lor.glimmermoth.friend",
+    "eq": true
+   },
+   "line": "Your Glimmermoth landed on my ledger. It went straight to the page I touch most."
+  },
+  {
+   "id": "plaque.strip",
+   "character": "keeper-oduya",
+   "if": {
+    "flag": "puzzle.founders-plaque.method",
+    "eq": "strip"
+   },
+   "line": "The bare carving is beautiful. I do miss the gold, a little. Nobody now living painted it, and nobody can paint it back."
+  },
+  {
+   "id": "plaque.clean",
+   "character": "keeper-oduya",
+   "if": {
+    "flag": "puzzle.founders-plaque.method",
+    "eq": "clean"
+   },
+   "line": "The gold is bright again, and the carving waits under it. A restorer in fifty years can still choose differently."
+  },
+  {
+   "id": "plaque.window",
+   "character": "keeper-oduya",
+   "if": {
+    "flag": "puzzle.founders-plaque.method",
+    "eq": "window"
+   },
+   "line": "Every child who reads the gate now asks: why do the two plaques say different things? That is the best question in Emberford."
+  },
+  {
+   "id": "plaque.repaint",
+   "character": "keeper-oduya",
+   "if": {
+    "flag": "puzzle.founders-plaque.method",
+    "eq": "repaint"
+   },
+   "line": "The plaque looks new. Your label is the only thing that remembers what is under the paint. I keep a copy in the ledger."
+  },
+  {
+   "id": "plaque.fruit",
+   "character": "fruit-seller",
+   "if": {
+    "flag": "puzzle.founders-plaque.method",
+    "eq": "window"
+   },
+   "line": "Ysolde! My grandmother had an aunt called Ysolde. No, I cannot prove it is the same one. But I like the name on the gate."
+  },
+  {
+   "id": "plaque.scholar",
+   "character": "scholar-sefa",
+   "if": {
+    "flagSet": "puzzle.founders-plaque.method"
+   },
+   "line": "I read your label on the gate. 'Which words belong to which time': I will use that in my own catalogue."
+  },
+  {
+   "id": "cart.mara",
+   "character": "fruit-seller",
+   "if": {
+    "flag": "puzzle.tipped-cart.done",
+    "eq": true
+   },
+   "line": "I only said a boy picked up a pot. By lunch it was 'a gang of thieves'. Thank you for writing what I actually saw."
+  },
+  {
+   "id": "cart.idris",
+   "character": "porter-idris",
+   "if": {
+    "flag": "puzzle.tipped-cart.done",
+    "eq": true
+   },
+   "line": "The guild fixed the loose stone this morning. Your report did that, not my shouting."
+  },
+  {
+   "id": "cart.hana",
+   "character": "stallkeeper-hana",
+   "if": {
+    "flag": "puzzle.tipped-cart.done",
+    "eq": true
+   },
+   "line": "I told everyone about the boy as if I had seen him. I had not. I heard it from Mara. I will say so next time."
+  },
+  {
+   "id": "maps.efua",
+   "character": "well-keeper",
+   "if": {
+    "flag": "puzzle.map-table.done",
+    "eq": true
+   },
+   "line": "We dug at the low place on your map. Water at nine knots down. The town will have its third well by winter."
+  },
+  {
+   "id": "maps.kip",
+   "character": "kip-arden",
+   "if": {
+    "flag": "puzzle.map-table.done",
+    "eq": true
+   },
+   "line": "The new children found the echo on the first day! I want to add a seventh layer: places where you can hear the bells."
+  },
+  {
+   "id": "sorter.hana",
+   "character": "stallkeeper-hana",
+   "if": {
+    "flag": "puzzle.brass-sorter.done",
+    "eq": true
+   },
+   "line": "My green apples go to market again. Mara said sorry, and the sorter did not have to. Funny, that."
+  },
+  {
+   "id": "sorter.mara",
+   "character": "fruit-seller",
+   "if": {
+    "flag": "puzzle.brass-sorter.done",
+    "eq": true
+   },
+   "line": "Every new season I put one of each new fruit in the example tray. Pears next week. I will test it first."
+  },
+  {
+   "id": "echo.idris",
+   "character": "porter-idris",
+   "if": {
+    "flag": "puzzle.echo-bridge.done",
+    "eq": true
+   },
+   "line": "We cut the footbridge rope to your measure, with a little extra. A good measurer always adds a little extra, and says so."
+  },
+  {
+   "id": "survey.idris",
+   "character": "porter-idris",
+   "if": {
+    "flag": "puzzle.toll-survey.done",
+    "eq": true
+   },
+   "line": "The council read your survey. They asked the night porters too, this time. I was very surprised to be asked."
+  },
+  {
+   "id": "ferry.sefa",
+   "character": "scholar-sefa",
+   "if": {
+    "flag": "puzzle.ferry-message.done",
+    "eq": true
+   },
+   "line": "Tova sent a slate back: 'Tavi did well.' You, and we. My grandmother would like your translation."
+  },
+  {
+   "id": "frame.orrin",
+   "character": "guildmaster-orrin",
+   "if": {
+    "flag": "puzzle.painters-frame.done",
+    "eq": true
+   },
+   "line": "Nell says the fair poster is the best one. I asked to hang the whole painting in the hall as well. People should see the old stall too."
+  },
+  {
+   "id": "forecast.efua",
+   "character": "well-keeper",
+   "if": {
+    "flag": "puzzle.forecast-board.done",
+    "eq": true
+   },
+   "line": "Noa says you kept the board well. Not always right, she says: honest about how sure you were. That is rarer."
+  }
+ ]
+}

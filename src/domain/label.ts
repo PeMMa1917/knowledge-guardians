@@ -34,6 +34,7 @@ export function labelText(kit: LabelKit, c: LabelChoice): string {
   const subj = kit.subjects.find((x) => x.id === c.subject)?.text ?? '';
   const crit = kit.criteria.find((x) => x.id === c.criterion)?.text ?? '';
   const lim = kit.limits.find((x) => x.id === c.limit)?.text ?? '';
+  if (kit.sentence) return [`${subj} ${crit}.`, lim].filter(Boolean).join(' ');
   return [crit && subj ? `${crit}: ${subj}.` : `${subj}.`, lim].filter(Boolean).join(' ');
 }
 

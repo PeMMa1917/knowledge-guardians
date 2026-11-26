@@ -1,0 +1,263 @@
+{
+ "keepsakes": [
+  {
+   "id": "pen-tip",
+   "name": "A spare ballpoint tip",
+   "text": "From the workshop model in the Nexus. Three objects, three different kinds of 'first'.",
+   "if": {
+    "objective": "m01.o6.label"
+   },
+   "where": "The Nexus: label the pen display.",
+   "use": "A pen tip can write. Somewhere there is a journal waiting for a new entry."
+  },
+  {
+   "id": "date-lens",
+   "name": "A spare lens ring",
+   "text": "From the Date Lens. It reminds you to ask: a date of what?",
+   "if": {
+    "item": "tool.date-lens"
+   },
+   "where": "The Nexus: get the Date Lens.",
+   "use": "Your lens shows when ink was laid down. Try it on old writing."
+  },
+  {
+   "id": "door-key",
+   "name": "A brass key-plate",
+   "text": "From the Timeline Door. It says: dates of telling only.",
+   "if": {
+    "flag": "puzzle.timeline-door.done",
+    "eq": true
+   },
+   "where": "The Nexus: open the Timeline Door.",
+   "use": "Nexus locks are made by one maker. This plate may fit another Nexus lock."
+  },
+  {
+   "id": "moth-lamp",
+   "name": "A moth lamp",
+   "text": "A little lamp. The Glimmermoth visits it sometimes, but only when you sit still and watch.",
+   "if": {
+    "flag": "lor.glimmermoth.friend",
+    "eq": true
+   },
+   "where": "The Nexus: befriend a Loreling.",
+   "use": "It glows in the dark. Somewhere, a dark corner hides something."
+  },
+  {
+   "id": "so-what",
+   "name": "A 'So what?' stone",
+   "text": "From the Alcove of Firsts. A display is not finished until it says why it matters.",
+   "if": {
+    "flag": "alcove.firsts.ever",
+    "eq": true
+   },
+   "where": "The Nexus: finish the Alcove of Firsts.",
+   "use": "Hold it when someone leaves you a message. Ask: so what?"
+  },
+  {
+   "id": "glass-piece",
+   "name": "The 32nd piece of glass",
+   "text": "Glazier Imre cut it for a pane that never came. A pattern is a guess until a proof holds for every case.",
+   "if": {
+    "flag": "puzzle.round-window.done",
+    "eq": true
+   },
+   "where": "The Nexus: the round window.",
+   "use": "One piece of glass is still missing from a small round window somewhere."
+  },
+  {
+   "id": "notice",
+   "name": "A copy of a notice",
+   "text": "From the Sign-Smith's board. One comma changed what the whole market did.",
+   "if": {
+    "flag": "puzzle.guild-notice.done",
+    "eq": true
+   },
+   "where": "Emberford: the Sign-Smith's notice board.",
+   "use": "Compare it with older notices. Did Emberford always write like this?"
+  },
+  {
+   "id": "thread-knot",
+   "name": "A knot of citation thread",
+   "text": "From the Citation Thread bridge. Author, title, container, publisher, date, page.",
+   "if": {
+    "flag": "puzzle.song-bridge.done",
+    "eq": true
+   },
+   "where": "Emberford: the Citation Thread bridge.",
+   "use": "Look for cards tied the same way, and ask whoever is cited."
+  },
+  {
+   "id": "check-weight",
+   "name": "A guild check weight",
+   "text": "From the Weigh-House. 'The same measure for every hand.'",
+   "if": {
+    "flag": "puzzle.weigh-house.done",
+    "eq": true
+   },
+   "where": "Emberford: the Weigh-House balance.",
+   "use": "One true weight checks the others. Hesper may know who made it."
+  },
+  {
+   "id": "yarn",
+   "name": "A twist of red and gold yarn",
+   "text": "From the practice clue board. Red to challenge, gold to support.",
+   "if": {
+    "flag": "board.corvan-board.done",
+    "eq": true
+   },
+   "where": "Emberford: the practice clue board.",
+   "use": "Red and gold yarn helps you read another person's clue board."
+  },
+  {
+   "id": "copper-pot",
+   "name": "A little copper pot",
+   "text": "A gift from the cart driver. Each witness saw one part; together the parts made a fair account.",
+   "if": {
+    "flag": "puzzle.tipped-cart.done",
+    "eq": true
+   },
+   "where": "Emberford: the guild clerk's map.",
+   "use": "Someone in the market may recognise this pot. A cold stove may want it too."
+  },
+  {
+   "id": "folded-map",
+   "name": "Kip's map of good places",
+   "text": "A warm step, an echo and a climbing tree. No official map shows them; this one does.",
+   "if": {
+    "flag": "puzzle.map-table.done",
+    "eq": true
+   },
+   "where": "Emberford: the mapmaker's table.",
+   "use": "It shows Emberford today. Compare it with an older map, and show Kip."
+  },
+  {
+   "id": "brass-cog",
+   "name": "A spare brass cog",
+   "text": "From Mara's sorter. A machine that learns from examples knows only what its examples show.",
+   "if": {
+    "flag": "puzzle.brass-sorter.done",
+    "eq": true
+   },
+   "where": "Emberford: Mara's brass sorter.",
+   "use": "A stopped clock somewhere may need it."
+  },
+  {
+   "id": "knot-rope",
+   "name": "A measuring knot",
+   "text": "From Idris's rope to the echo wall. Two methods that agree are strong evidence; a delay in every try needs its own check.",
+   "if": {
+    "flag": "puzzle.echo-bridge.done",
+    "eq": true
+   },
+   "where": "Emberford: the echo stone.",
+   "use": "Use it on a line on a wall."
+  },
+  {
+   "id": "soot-jar",
+   "name": "A tiny jar of soot",
+   "text": "From the Founders' Plaque. Even dirt can be evidence of where a thing has been.",
+   "if": {
+    "flagSet": "puzzle.founders-plaque.method"
+   },
+   "where": "Emberford: restore the Founders' Plaque.",
+   "use": "Soot shows dents in paper. Try it on a blank sheet that is not quite blank."
+  },
+  {
+   "id": "sign-splinter",
+   "name": "A splinter of an old sign",
+   "text": "From Corvan's old sign board. Whatever it said, it said too much.",
+   "if": {
+    "flagSet": "sd.corvan.outcome"
+   },
+   "where": "Emberford: the Showdown.",
+   "use": "Corvan may want to talk about his old sign."
+  },
+  {
+   "id": "rumour-shard",
+   "name": "A quiet rumour shard",
+   "text": "From the Shattering Rumour. A story is easier to check when you know where it began.",
+   "if": {
+    "flag": "rumour.done",
+    "eq": true
+   },
+   "where": "Emberford: trace the rumour.",
+   "use": "Show it to the tea seller. Rumours are also collected somewhere else."
+  },
+  {
+   "id": "well-rope",
+   "name": "A knotted rope end",
+   "text": "From the East Well. The knots measure; the people decide.",
+   "if": {
+    "flagSet": "well.reflected"
+   },
+   "where": "Emberford: the East Well side quest.",
+   "use": "Ask Efua who first cut the knots. Old buckets keep old ropes."
+  },
+  {
+   "id": "survey-slip",
+   "name": "A blank survey slip",
+   "text": "From the toll box. Who you ask, and how you ask, are part of the answer.",
+   "if": {
+    "flag": "puzzle.toll-survey.done",
+    "eq": true
+   },
+   "where": "Emberford: the Bridge Toll Survey.",
+   "use": "Show Orrin how the council could ask. Old slips may show an old mistake."
+  },
+  {
+   "id": "ferry-chalk",
+   "name": "A stub of slate chalk",
+   "text": "From the ferry slate. Loma, tavi, kethe, belun: four words that English needed a phrase for.",
+   "if": {
+    "flag": "puzzle.ferry-message.done",
+    "eq": true
+   },
+   "where": "Emberford: the Ferry Message slate.",
+   "use": "Say 'tavi' to Sefa. Chalk helps you trace notes written in the cant."
+  },
+  {
+   "id": "paper-frame",
+   "name": "A small card frame",
+   "text": "Nell cut it for you. Hold it up to anything, and ask what is outside it.",
+   "if": {
+    "flag": "puzzle.painters-frame.done",
+    "eq": true
+   },
+   "where": "Emberford: Nell's easel in the market.",
+   "use": "Hold it up to a painting and then lower it. What was outside the frame?"
+  },
+  {
+   "id": "tiny-bell",
+   "name": "A tiny brass bell",
+   "text": "Maren's thanks. It rings one note. It does not climb, however long you listen.",
+   "if": {
+    "flag": "puzzle.bell-stair.done",
+    "eq": true
+   },
+   "where": "Emberford: Maren's bell rope by the gatehouse.",
+   "use": "It rings one note. Another bell may answer it."
+  },
+  {
+   "id": "weather-glass",
+   "name": "A pocket weather glass",
+   "text": "From Fisher Noa. 'It does not tell you what will happen. It tells you how sure to be.'",
+   "if": {
+    "flag": "puzzle.forecast-board.done",
+    "eq": true
+   },
+   "where": "Emberford: Noa's forecast board by the east well.",
+   "use": "Compare it with another weather glass. Instruments drift."
+  },
+  {
+   "id": "seal",
+   "name": "A wax copy of the seal",
+   "text": "The Guardians' seal, found at the end of the chapter.",
+   "if": {
+    "flag": "seal.found",
+    "eq": true
+   },
+   "where": "Emberford: finish the chapter.",
+   "use": "Compare it with another Guardian's mark, and ask Ise."
+  }
+ ]
+}

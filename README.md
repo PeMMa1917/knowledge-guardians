@@ -2,10 +2,23 @@
 
 Knowledge Guardians is a 2D top-down pixel-art RPG for IB Diploma Theory of Knowledge (TOK) students. The player is a new Knowledge Guardian. The player examines real historical objects, compares claims and evidence, and makes honest labels.
 
-This repository holds the **first playable chapter** (spec v2.10, sections 27.1 and 29.1):
+The playable opening begins in the Nexus and continues across fifteen chapters:
 
-1. **The Nexus** (WORLD-01). Recruitment mission "Three Firsts". The player inspects three real objects about the ballpoint pen (Loud's 1888 patent, a Biro pen of 1945 to 1948, and a workshop model), uses the Date Lens, runs a fair test, and argues in a practice Showdown. Then the player builds a museum label in the label builder. A label that claims more than its evidence makes "the Fray": the room glows and visitors repeat a distorted line. An optional Hall of Firsts has seven plaques about people from every continent.
-2. **Emberford, Aethelgard** (WORLD-02). Field mission "The Label on the Blade". The trader Corvan sells a patterned blade as "ancient Damascus wootz". The player follows the Provenance Thread, forges and compares billets at the forge, and argues with Corvan in a public Showdown. The town sign changes with the outcome.
+1. **Chapter 1, the Nexus and Emberford.** Compare Loud's 1888 patent, a Bíró pen made between 1945 and 1948, and a modern workshop model. Run a fair test and argue your case in a practice Showdown. A claim that outruns the evidence makes the room glow and distorts what visitors repeat. In Emberford, trace the origin of Corvan's patterned blade, compare schematic billets and face the public Showdown. Send a packet to the ferry or carry a correction to the square when you want to see how your work travels.
+2. **Chapter 2, The Door Without a Name.** Enter the Nile Archive from the Nexus. Choose two of three leads, send a packet and see where it arrives. An optional craft investigation and a reply from the first readers give you reasons to return.
+3. **Chapter 3, The Missing Transfer.** Follow the royal custody record and compare the context of the Chinchorro sites. Decide how to open the Cold Store, then handle a reader's request and optionally prepare a proof based on excavation records.
+4. **Chapter 4, The Next Bell.** Compare the rain at the quay and on the headland. Check what the forecast can say, send a notice by board or runner, then decide how to reach the same people when the reading changes.
+5. **Chapter 5, Where the Wings Go.** Watch for crossings from the creek screen and the ridge. Compare the same-length watches with local accounts, agree on a trail response, and return to see what the next watch can show.
+6. **Chapter 6, The Blue Panels.** Weigh two panels that look alike. Trace their separate records, choose how the Trade Hall presents the evidence, and decide what a later transfer docket changes.
+7. **Chapter 7, The Missing Tuesday.** Compare a trial log, a press sheet and a landing notice. Restore the missing date and source by reprinting the sheet or sending corrections to the older copies. Check how a reader uses the repair.
+8. **Chapter 8, Where the Ink Stops.** Compare walking and shoal surveys and follow the local place names. Choose which chart a reader sees first, then show where each survey stops.
+9. **Chapter 9, The Doorway Pause.** Rehearse the same lines and movements with a different place for the silence. Stage a version for the gallery, then use audience accounts to revise its programme.
+10. **Chapter 10, The Price of a Basket.** Weigh the same two fibre lots with and without the baskets. Compare two grading rules, choose where to post your measurements and address what a shopper can afford.
+11. **Chapter 11, The Agreement at the Weir.** Route a fixed supply through fields and a lower channel. Leave a drought schedule, repeat the trial after the repair, and check whether the previous order met both crews’ requests.
+12. **Chapter 12, A Place on the Route.** Run the library dispatch console with different registers and rules. Post a timetable, then find out why a reader still has no window they can reach.
+13. **Chapter 13, The Second Lamp.** Compare a carrier’s recollection with an opening register. Keep each source in its own context, then test a translated direction from the quay and the stairs.
+14. **Chapter 14, The Eight Crates.** Route an order through a ridge, a ferry or a marsh. Balance a delivery deadline against repeated trips through quiet strips, then revise your plan when the landing changes.
+15. **Chapter 15, When the Hand Moves.** Test three watches showing the same time. Compare their readings with an independent reference and choose what a delivery crew needs to check before the shutter closes.
 
 Along the way: random events from a fair, seeded deck (calm mode can delay them), learner-profile moments in the journal, a private portfolio, and misconception reflections. A separate **teacher view** (`teacher.html`) builds a class dashboard and student reports from progress files that students choose to share.
 
@@ -30,6 +43,8 @@ Other commands:
 | `npm run preview` | Serve the `dist/` build at http://localhost:4173. |
 | `npm run validate:content` | Check only the game content (JSON) for broken links and missing sources. |
 | `npm run assets:check` | Check that every asset file has a source, an author and a licence. |
+| `npm test -- tests/tok-coverage.test.ts --mode tok-report` | Audit rolling 30-minute TOK coverage on authored route estimates. |
+| `npx vitest run tests/learning.test.ts --mode tok-report` | List the 30-minute gaps on the five play-style paths (see docs/LEARNING_DESIGN.md). |
 | `npm run assets:variants` | Make the character sprite sheets again from the source sheet (needs Python 3 and Pillow). |
 
 The build in `dist/` is static. You can put it on any static web host (for example GitHub Pages). It uses relative paths.
@@ -76,12 +91,13 @@ Settings include calm mode (delay random events), text size, reduced motion, red
 - [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md): how to add missions, dialogue, exhibits and maps.
 - [docs/ASSETS.md](docs/ASSETS.md): how to find, add and credit art and audio.
 - [docs/SOURCES.md](docs/SOURCES.md): the historical objects and the sources for each claim.
+- [docs/TOK_ALIGNMENT.md](docs/TOK_ALIGNMENT.md): how the course aims, examiner observations and teaching guidance inform the gameplay.
 
 ## Status and limits
 
 - This is a classroom demo, not for commercial use. Saves are in the browser (`localStorage`). There are no accounts and no server.
 - The teacher view reads progress files in the browser tab only. Nothing is uploaded.
-- Only the first chapter exists. The full spec describes 24 worlds. See [STATUS.md](STATUS.md).
+- The downloadable build contains the playable opening and the early arcs described above. See [STATUS.md](STATUS.md) for current coverage and what still needs playtesting.
 - The design spec (`Knowledge_Guardians_spec_v2.10.md`) is not in this public repository. Ask the project owner for a copy. [docs/DESIGN_SUMMARY.md](docs/DESIGN_SUMMARY.md) is a paraphrase, and AGENTS.md lists the rules.
 
 ## Licences
@@ -90,3 +106,7 @@ Settings include calm mode (delay random events), text size, reduced motion, red
 - Assets: see [CREDITS.md](CREDITS.md). All third-party assets are CC0 (public domain).
 - Font: Lexend, SIL Open Font License 1.1, through `@fontsource/lexend`.
 - Engine: Phaser 3, MIT licence.
+
+## Finding later chapters
+
+The Nile Archive follows Elsbet's letter. Finish the main Emberford story, read the letter in her study and return to Ise in the Nexus. The blue-and-brass door is at the north end of the east wing. Complete two leads in any order, send a first packet with Imani and follow it back to Ise. That return opens the Cold Store in the southeast corner of the Nexus. Opening the Cold Store display or inquiry desk reveals the Observatory Coast waypost. Correcting the Observatory notice reveals the Living Forest passage in the south part of the hall. The revised Living Forest notice opens the Metalworks beside the Nexus workshop bench. Completing the Metalworks transfer correction reveals the City of Copies passage nearby. The City’s separate entry notice opens the Cartographers’ Sea crossing. The revised survey boundaries open the House of Performance. Revising its programme opens the Market of Measures. See [STATUS.md](STATUS.md#chapter-2-the-door-without-a-name).

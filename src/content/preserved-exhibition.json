@@ -1,0 +1,719 @@
+{
+ "dialogue": [
+  {
+   "id": "gallery.panel.royal",
+   "speaker": "narrator",
+   "text": "This rail is for Ramesses II. The Ramesseum has its own place here. The museum’s custody record starts a different trail at KV 7 and follows a later move to Deir el-Bahari. A reader must be able to see which record names which place.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the museum’s custody record at the front.",
+     "next": "gallery.panel.royal.custody",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.publish"
+       },
+       {
+        "not": {
+         "flag": "gallery.panel.royal",
+         "eq": "custody"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gallery.panel.royal",
+       "value": "custody"
+      }
+     ]
+    },
+    {
+     "text": "Hang the temple and custody records side by side.",
+     "next": "gallery.panel.royal.temple",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.publish"
+       },
+       {
+        "not": {
+         "flag": "gallery.panel.royal",
+         "eq": "temple"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gallery.panel.royal",
+       "value": "temple"
+      }
+     ]
+    },
+    {
+     "text": "Leave this panel as it is."
+    }
+   ]
+  },
+  {
+   "id": "gallery.panel.royal.custody",
+   "speaker": "narrator",
+   "text": "The title names Ramesses II. A note asks when the transfer to Deir el-Bahari happened. The temple record sits to the side and keeps its own heading.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "gallery.panel.royal.temple",
+   "speaker": "narrator",
+   "text": "One sleeve identifies the temple. The next follows the museum’s custody account. The blank between them shows why a temple record cannot settle when the later handover took place.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "gallery.panel.coast",
+   "speaker": "narrator",
+   "text": "The Chinchorro site file names places on the coast. Its context note distinguishes evidence of people caring for the dead from preservation through local conditions. These records concern a community. Keep the place names and their own account.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the coastal sites first and keep the context alongside.",
+     "next": "gallery.panel.coast.sites",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.publish"
+       },
+       {
+        "not": {
+         "flag": "gallery.panel.coast",
+         "eq": "sites"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gallery.panel.coast",
+       "value": "sites"
+      }
+     ]
+    },
+    {
+     "text": "Open the context note and mark which file names the sites.",
+     "next": "gallery.panel.coast.conditions",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.publish"
+       },
+       {
+        "not": {
+         "flag": "gallery.panel.coast",
+         "eq": "conditions"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gallery.panel.coast",
+       "value": "conditions"
+      }
+     ]
+    },
+    {
+     "text": "Leave this panel as it is."
+    }
+   ]
+  },
+  {
+   "id": "gallery.panel.coast.sites",
+   "speaker": "narrator",
+   "text": "The place names have a space of their own. The context note stays with that geography. A reader can ask which kinds of evidence belong to a particular site.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "gallery.panel.coast.conditions",
+   "speaker": "narrator",
+   "text": "A visitor can see why different kinds of evidence may survive. The site record stays open to the side. Neither sheet gives a personal biography or one account of all the people commemorated there.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "gallery.panel.xin",
+   "speaker": "narrator",
+   "text": "The Mawangdui context file and the modern methods report have reached the gallery. They answer questions about different times. Leave room for the step where measured evidence becomes a model.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang the named methods sheets with their source beside them.",
+     "next": "gallery.panel.xin.method",
+     "if": {
+      "all": [
+       {
+        "objective": "xin.o.display"
+       },
+       {
+        "not": {
+         "flag": "gallery.panel.xin",
+         "eq": "method"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gallery.panel.xin",
+       "value": "method"
+      }
+     ]
+    },
+    {
+     "text": "Put the two dated records on the rail and hold the model off the wall.",
+     "next": "gallery.panel.xin.source",
+     "if": {
+      "all": [
+       {
+        "objective": "xin.o.display"
+       },
+       {
+        "not": {
+         "flag": "gallery.panel.xin",
+         "eq": "source"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gallery.panel.xin",
+       "value": "source"
+      }
+     ]
+    },
+    {
+     "text": "Leave this panel as it is."
+    }
+   ]
+  },
+  {
+   "id": "gallery.panel.xin.method",
+   "speaker": "narrator",
+   "text": "The modern report sits by the process. The Western Han context stays in the Mawangdui sleeve. The empty space after the model is marked for choices measurements do not determine.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "gallery.panel.xin.source",
+   "speaker": "narrator",
+   "text": "The records are available to a reader. A review clip asks which features the model estimates. The reconstruction remains something a keeper can inspect in the workroom.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "gallery.panel.copper",
+   "speaker": "narrator",
+   "text": "The evidence gives a material origin and an equipment findspot. Keep the sources by their own markers, where readers can see which kind of place each describes.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang the two evidence markers with the gap open.",
+     "next": "gallery.panel.copper.points",
+     "if": {
+      "all": [
+       {
+        "objective": "copper.o.display"
+       },
+       {
+        "not": {
+         "flag": "gallery.panel.copper",
+         "eq": "points"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gallery.panel.copper",
+       "value": "points"
+      }
+     ]
+    },
+    {
+     "text": "Set the two exchange examples below the records as models.",
+     "next": "gallery.panel.copper.relay",
+     "if": {
+      "all": [
+       {
+        "objective": "copper.o.display"
+       },
+       {
+        "not": {
+         "flag": "gallery.panel.copper",
+         "eq": "relay"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gallery.panel.copper",
+       "value": "relay"
+      }
+     ]
+    },
+    {
+     "text": "Leave this panel as it is."
+    }
+   ]
+  },
+  {
+   "id": "gallery.panel.copper.points",
+   "speaker": "narrator",
+   "text": "The source and findspot have a tab each. There is no line for a person’s journey. A reader can follow the materials report without filling the gap.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "gallery.panel.copper.relay",
+   "speaker": "narrator",
+   "text": "The models are lower than the records and have blank hooks. Their endpoints agree. A reading clip asks what dated find could help choose between them.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "gallery.layout",
+   "speaker": "narrator",
+   "text": "All the panels keep their own names and sources. Visitors could start at separate desks and stay with one file, or follow a trail that links questions as they move. Which route should the gallery open?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Open separate reading desks for the cases.",
+     "next": "gallery.layout.rooms",
+     "if": {
+      "all": [
+       {
+        "objective": "gallery.o.panels"
+       },
+       {
+        "not": {
+         "flag": "gallery.layout",
+         "eq": "rooms"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gallery.layout",
+       "value": "rooms"
+      }
+     ]
+    },
+    {
+     "text": "Connect the cases with a trail of reading questions.",
+     "next": "gallery.layout.links",
+     "if": {
+      "all": [
+       {
+        "objective": "gallery.o.panels"
+       },
+       {
+        "not": {
+         "flag": "gallery.layout",
+         "eq": "links"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gallery.layout",
+       "value": "links"
+      }
+     ]
+    },
+    {
+     "text": "Leave the route as it is."
+    }
+   ]
+  },
+  {
+   "id": "gallery.layout.rooms",
+   "speaker": "narrator",
+   "text": "The registrar moves the lamps above the separate desks. Each desk stands on its own. A visitor with a walking stick pauses by the left shelf and looks for a place to read.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "gallery.layout.links",
+   "speaker": "narrator",
+   "text": "The registrar hangs question slips between the panels. They direct a reader from the royal records to the site file. A visitor follows the first slip and stops at the turn.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "gallery.visitor.rooms",
+   "speaker": "narrator",
+   "text": "“I came to compare how those records were kept,” a visitor says. “I can read one desk from here. I can’t carry both folders across the room.” There is space beside the door and room for another chair.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Bring a large-print copy of each file to the entrance shelf.",
+     "next": "gallery.reply.copies",
+     "if": {
+      "all": [
+       {
+        "flag": "gallery.layout",
+        "eq": "rooms"
+       },
+       {
+        "not": {
+         "flag": "gallery.rooms",
+         "eq": "copies"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gallery.rooms",
+       "value": "copies"
+      }
+     ]
+    },
+    {
+     "text": "Set a chair between the two desks and bring the file a reader asks for.",
+     "next": "gallery.reply.seat",
+     "if": {
+      "all": [
+       {
+        "flag": "gallery.layout",
+        "eq": "rooms"
+       },
+       {
+        "not": {
+         "flag": "gallery.rooms",
+         "eq": "seat"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gallery.rooms",
+       "value": "seat"
+      }
+     ]
+    },
+    {
+     "text": "Leave this arrangement for now."
+    }
+   ]
+  },
+  {
+   "id": "gallery.visitor.links",
+   "speaker": "narrator",
+   "text": "“The line goes from a royal file to the coast,” says a visitor. “I read it as the same story taking place twice.” The registrar hands you another strip. The panels can share a question without asking people to treat them as one case.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Swap the link for “What evidence survives in each place?”",
+     "next": "gallery.reply.survival",
+     "if": {
+      "all": [
+       {
+        "flag": "gallery.layout",
+        "eq": "links"
+       },
+       {
+        "not": {
+         "flag": "gallery.links",
+         "eq": "survival"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gallery.links",
+       "value": "survival"
+      }
+     ]
+    },
+    {
+     "text": "Swap the link for “Where does this record leave a gap?”",
+     "next": "gallery.reply.gaps",
+     "if": {
+      "all": [
+       {
+        "flag": "gallery.layout",
+        "eq": "links"
+       },
+       {
+        "not": {
+         "flag": "gallery.links",
+         "eq": "gaps"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gallery.links",
+       "value": "gaps"
+      }
+     ]
+    },
+    {
+     "text": "Leave this arrangement for now."
+    }
+   ]
+  },
+  {
+   "id": "gallery.reply.copies",
+   "speaker": "narrator",
+   "text": "The visitor reads both copies by the door. Each keeps its own place name and source. The main folders remain on their desks for people who want to see the full record.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "gallery.reply.seat",
+   "speaker": "narrator",
+   "text": "The visitor sits between the desks. The keeper opens the requested file alongside the first one and can talk through the difference. Another reader reserves the chair for later.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "gallery.reply.survival",
+   "speaker": "narrator",
+   "text": "The visitor doubles back along the line. This time she points out what a temple record helps her see and what the coastal records can show in their own setting.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "gallery.reply.gaps",
+   "speaker": "narrator",
+   "text": "The visitor looks for two distinct blanks. One is a missing time in the royal transfer. Another is what the context record cannot say about a particular person on the coast.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH3-R07",
+   "world": "WORLD-04",
+   "title": "A Rail with Room to Read",
+   "knowledgeQuestion": "How can an exhibition let people compare records without making their subjects interchangeable?",
+   "available": {
+    "objective": "preserved.publish"
+   },
+   "objectives": [
+    {
+     "id": "gallery.o.panels",
+     "title": "Mount the royal and Chinchorro panels in their own places.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flagSet": "gallery.panel.royal"
+       },
+       {
+        "flagSet": "gallery.panel.coast"
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "evidence",
+       "certainty",
+       "objectivity"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "ART"
+      ],
+      "subjects": [
+       "history",
+       "visual-arts",
+       "geography"
+      ]
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-RSC-22"
+     ]
+    },
+    {
+     "id": "gallery.o.route",
+     "title": "Set out a route for visitors.",
+     "essential": false,
+     "visible": {
+      "objective": "gallery.o.panels"
+     },
+     "done": {
+      "flagSet": "gallery.layout"
+     },
+     "weave": {
+      "concepts": [
+       "power",
+       "values",
+       "interpretation",
+       "explanation"
+      ],
+      "atl": [
+       "communication",
+       "self-management"
+      ],
+      "aoks": [
+       "ART",
+       "HIS"
+      ],
+      "subjects": [
+       "visual-arts",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-THK-14"
+     ]
+    },
+    {
+     "id": "gallery.o.reply",
+     "title": "Try a change after a visitor reads the room.",
+     "essential": false,
+     "visible": {
+      "objective": "gallery.o.route"
+     },
+     "done": {
+      "any": [
+       {
+        "flagSet": "gallery.rooms"
+       },
+       {
+        "flagSet": "gallery.links"
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "perspective",
+       "justification",
+       "truth"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "HIS"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-THK-16"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.gallery.reply"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "moments": [
+  {
+   "id": "moment.gallery.reply",
+   "attribute": "caring",
+   "when": {
+    "objective": "gallery.o.reply"
+   },
+   "did": "You changed the exhibition after hearing how a visitor used it and kept each case’s source nearby.",
+   "prompt": "Who might take a different route through the room?"
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.gallery.reply",
+   "claimKind": "interpretation",
+   "text": "Each panel can stand on its own. A route through the room can help a reader compare the records. The visitor showed us that a route is part of what the exhibition says."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.gallery.panels.1",
+   "objective": "gallery.o.panels",
+   "depth": 1,
+   "text": "Start with what a reader needs to keep each story separate."
+  },
+  {
+   "id": "h.gallery.panels.2",
+   "objective": "gallery.o.panels",
+   "depth": 2,
+   "text": "The royal and Chinchorro rails use different cases. Both can show a record and a question that stays open."
+  },
+  {
+   "id": "h.gallery.panels.3",
+   "objective": "gallery.o.panels",
+   "depth": 3,
+   "text": "Go to the left and right rails along the north wall. Choose what each reader sees first."
+  },
+  {
+   "id": "h.gallery.panels.4",
+   "objective": "gallery.o.panels",
+   "depth": 4,
+   "text": "Mount either version on both rails. If you later complete the workroom or survey table, you can hang their panels too."
+  },
+  {
+   "id": "h.gallery.route.1",
+   "objective": "gallery.o.route",
+   "depth": 1,
+   "text": "Where a reader starts affects which records they bring together."
+  },
+  {
+   "id": "h.gallery.route.2",
+   "objective": "gallery.o.route",
+   "depth": 2,
+   "text": "Some visitors want to compare the records across the room. Others want one file at a time."
+  },
+  {
+   "id": "h.gallery.route.3",
+   "objective": "gallery.o.route",
+   "depth": 3,
+   "text": "Use the layout table between the first two panels."
+  },
+  {
+   "id": "h.gallery.route.4",
+   "objective": "gallery.o.route",
+   "depth": 4,
+   "text": "Choose separate reading desks or linked questions between the panels. Either keeps the panel headings."
+  },
+  {
+   "id": "h.gallery.reply.1",
+   "objective": "gallery.o.reply",
+   "depth": 1,
+   "text": "The room looks different to someone who did not hang the panels."
+  },
+  {
+   "id": "h.gallery.reply.2",
+   "objective": "gallery.o.reply",
+   "depth": 2,
+   "text": "A visitor may see a barrier in the room or hear too much in a connecting question."
+  },
+  {
+   "id": "h.gallery.reply.3",
+   "objective": "gallery.o.reply",
+   "depth": 3,
+   "text": "Go to the reader’s spot near the entrance. The visitor responds to the layout you opened."
+  },
+  {
+   "id": "h.gallery.reply.4",
+   "objective": "gallery.o.reply",
+   "depth": 4,
+   "text": "For separate desks, bring copies or set a chair. For the linked trail, change the connecting question. Your route and each panel can still be changed later."
+  }
+ ]
+}

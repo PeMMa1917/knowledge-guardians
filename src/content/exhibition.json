@@ -1,0 +1,424 @@
+{
+ "alcoves": [
+  {
+   "id": "firsts",
+   "title": "The Alcove of Firsts",
+   "prompt": "How do people decide who did something first?",
+   "notObject": "The plinth stays cold. A person, an essay or a summary is not an object you can stand in an alcove. Choose a thing: a record, a tool or a made object.",
+   "symbols": [
+    {
+     "id": "sym.glasses",
+     "name": "A pair of glasses (for 'perspective')",
+     "mirage": "A shimmer rises from the plinth: the Symbol Mirage. Glasses can stand for 'perspective', but these glasses show no knowledge in the world. Nobody made, used or argued about them. The lamps stay dark. Choose a real, specific object."
+    },
+    {
+     "id": "sym.trophy",
+     "name": "A trophy (for 'being first')",
+     "mirage": "The Symbol Mirage shimmers. A trophy stands for winning, but it shows nothing about how anyone decided who was first. The lamps stay dark."
+    },
+    {
+     "id": "sym.bulb",
+     "name": "A light bulb (for 'a new idea')",
+     "mirage": "The Symbol Mirage shimmers. A light bulb is a picture of an idea, not a record of one. The lamps stay dark."
+    },
+    {
+     "id": "sym.crown",
+     "name": "A crown (for 'who gets credit')",
+     "mirage": "The Symbol Mirage shimmers. A crown stands for power, but this one shows no real decision about credit. The lamps stay dark."
+    }
+   ],
+   "objects": [
+    {
+     "card": "card.loud-patent",
+     "lit": "The lamps glow. A patent is a real record, with a date, a number and an office that wrote it.",
+     "links": [
+      {
+       "text": "Loud's patent shows that, in 1888, a government office decided who could claim the idea, and wrote it down with a date.",
+       "kind": "specific",
+       "response": "The lamps burn steady. That is knowledge in the world: something real that people made, used or decided."
+      },
+      {
+       "text": "This patent shows evidence, perspective, power and culture.",
+       "kind": "checklist",
+       "response": "A small stone golem walks up and ticks four boxes on its chest: evidence, perspective, power, culture. Then the ticks fall off, one by one. Naming concepts is not using them. Which ONE idea does this object change, and how?"
+      },
+      {
+       "text": "This patent is old and interesting.",
+       "kind": "generic",
+       "response": "The lamps flicker and dim. Many things are old and interesting. What knowledge does THIS patent show in the world?"
+      }
+     ],
+     "implications": [
+      {
+       "text": "So whoever keeps the records can shape who is remembered. In any field, I should ask who kept the records.",
+       "ok": true,
+       "response": "The So-What Sphinx bows its stone head and steps aside. The alcove card fills with your words."
+      },
+      {
+       "text": "So patents are important.",
+       "ok": false,
+       "response": "The So-What Sphinx does not move. 'Important to whom? What follows from it, here or somewhere else?'"
+      },
+      {
+       "text": "So a 'first' on paper can be different from a 'first' in use. A museum label should say which kind of first it means.",
+       "ok": true,
+       "response": "The So-What Sphinx bows its stone head and steps aside. The alcove card fills with your words."
+      }
+     ]
+    },
+    {
+     "card": "card.biro-object",
+     "lit": "The lamps glow. A pen made between 1945 and 1948: a real thing that people used.",
+     "links": [
+      {
+       "text": "This pen shows evidence, perspective, power and culture.",
+       "kind": "checklist",
+       "response": "A small stone golem walks up and ticks four boxes on its chest: evidence, perspective, power, culture. Then the ticks fall off, one by one. Naming concepts is not using them. Which ONE idea does this object change, and how?"
+      },
+      {
+       "text": "This pen is old and interesting.",
+       "kind": "generic",
+       "response": "The lamps flicker and dim. Many things are old and interesting. What knowledge does THIS pen show in the world?"
+      },
+      {
+       "text": "This pen shows that the design was made to work well enough to sell and use, not only to describe on paper.",
+       "kind": "specific",
+       "response": "The lamps burn steady. That is knowledge in the world: something real that people made, used or decided."
+      }
+     ],
+     "implications": [
+      {
+       "text": "So the pen is important.",
+       "ok": false,
+       "response": "The So-What Sphinx does not move. 'Important to whom? What follows from it, here or somewhere else?'"
+      },
+      {
+       "text": "So being first to make a thing work can matter more to its users than being first to have the idea.",
+       "ok": true,
+       "response": "The So-What Sphinx bows its stone head and steps aside. The alcove card fills with your words."
+      },
+      {
+       "text": "So an invention can be shared work, and credit to one famous name can hide the partners.",
+       "ok": true,
+       "response": "The So-What Sphinx bows its stone head and steps aside. The alcove card fills with your words."
+      }
+     ]
+    },
+    {
+     "card": "card.loud-model",
+     "lit": "The lamps glow, but softly. This is a modern model, built from Loud's drawing.",
+     "links": [
+      {
+       "text": "This model is old and interesting.",
+       "kind": "generic",
+       "response": "The lamps flicker and dim. Many things are old and interesting. What knowledge does THIS model show in the world?"
+      },
+      {
+       "text": "The workshop model shows what Loud's drawing can do when someone builds it today. It shows the design, not Loud's own pen.",
+       "kind": "specific",
+       "response": "The lamps burn steady. That is knowledge in the world: something real that people made, used or decided."
+      },
+      {
+       "text": "This model shows evidence, perspective, power and culture.",
+       "kind": "checklist",
+       "response": "A small stone golem walks up and ticks four boxes on its chest: evidence, perspective, power, culture. Then the ticks fall off, one by one. Naming concepts is not using them. Which ONE idea does this object change, and how?"
+      }
+     ],
+     "implications": [
+      {
+       "text": "So a reconstruction is evidence about a design, not about the past object. A label must say which it is.",
+       "ok": true,
+       "response": "The So-What Sphinx bows its stone head and steps aside. The alcove card fills with your words."
+      },
+      {
+       "text": "So a model can test whether an idea works, but it cannot tell us who used it first.",
+       "ok": true,
+       "response": "The So-What Sphinx bows its stone head and steps aside. The alcove card fills with your words."
+      },
+      {
+       "text": "So models are important.",
+       "ok": false,
+       "response": "The So-What Sphinx does not move. 'Important to whom? What follows from it, here or somewhere else?'"
+      }
+     ]
+    },
+    {
+     "card": "card.met-ingots",
+     "lit": "The lamps glow. Ten real steel ingots, recorded by a museum.",
+     "links": [
+      {
+       "text": "The ten ingots show that crucible steel was traded as a raw material, before anyone made a blade from it.",
+       "kind": "specific",
+       "response": "The lamps burn steady. That is knowledge in the world: something real that people made, used or decided."
+      },
+      {
+       "text": "This set of ingots shows evidence, perspective, power and culture.",
+       "kind": "checklist",
+       "response": "A small stone golem walks up and ticks four boxes on its chest: evidence, perspective, power, culture. Then the ticks fall off, one by one. Naming concepts is not using them. Which ONE idea does this object change, and how?"
+      },
+      {
+       "text": "This set of ingots is old and interesting.",
+       "kind": "generic",
+       "response": "The lamps flicker and dim. Many things are old and interesting. What knowledge does THIS set of ingots show in the world?"
+      }
+     ],
+     "implications": [
+      {
+       "text": "So a museum catalogue is evidence too, and it makes its own choices about names.",
+       "ok": true,
+       "response": "The So-What Sphinx bows its stone head and steps aside. The alcove card fills with your words."
+      },
+      {
+       "text": "So the ingots are important.",
+       "ok": false,
+       "response": "The So-What Sphinx does not move. 'Important to whom? What follows from it, here or somewhere else?'"
+      },
+      {
+       "text": "So the word 'Damascus' may name a market, not the place where the steel was made.",
+       "ok": true,
+       "response": "The So-What Sphinx bows its stone head and steps aside. The alcove card fills with your words."
+      }
+     ]
+    }
+   ],
+   "onComplete": [
+    {
+     "credit": "crit.evidence.alcove"
+    },
+    {
+     "journal": "j.alcove.done"
+    }
+   ],
+   "weave": {
+    "concepts": [
+     "evidence",
+     "interpretation"
+    ],
+    "atl": [
+     "thinking",
+     "communication"
+    ],
+    "subjects": [
+     "history",
+     "design-tech"
+    ],
+    "aoks": [
+     "HIS",
+     "TEC"
+    ]
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH1-X01",
+   "world": "WORLD-01",
+   "title": "The Alcove of Firsts",
+   "knowledgeQuestion": "How do people decide who did something first?",
+   "available": {
+    "objective": "m01.o6.label"
+   },
+   "objectives": [
+    {
+     "id": "alc.o1.place",
+     "title": "Optional: stand a real, specific object in the Alcove of Firsts (Hall of Firsts).",
+     "essential": false,
+     "done": {
+      "flagSet": "alcove.firsts.item"
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "subjects": [
+       "history",
+       "design-tech"
+      ],
+      "aoks": [
+       "HIS",
+       "TEC"
+      ]
+     },
+     "skills": [
+      "SK-CUR-01",
+      "SK-CUR-03"
+     ]
+    },
+    {
+     "id": "alc.o2.link",
+     "title": "Optional: say what knowledge your object shows in the world.",
+     "essential": false,
+     "visible": {
+      "objective": "alc.o1.place"
+     },
+     "done": {
+      "flagSet": "alcove.firsts.link"
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "subjects": [
+       "history",
+       "design-tech"
+      ],
+      "aoks": [
+       "HIS",
+       "TEC"
+      ]
+     },
+     "skills": [
+      "SK-CUR-04",
+      "SK-WRT-04"
+     ]
+    },
+    {
+     "id": "alc.o3.sowhat",
+     "title": "Optional: answer the So-What Sphinx: what follows?",
+     "essential": false,
+     "visible": {
+      "objective": "alc.o2.link"
+     },
+     "done": {
+      "flag": "alcove.firsts.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "subjects": [
+       "history",
+       "design-tech"
+      ],
+      "aoks": [
+       "HIS",
+       "TEC"
+      ]
+     },
+     "skills": [
+      "SK-WRT-07"
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.alc.o1.place.1",
+   "objective": "alc.o1.place",
+   "depth": 1,
+   "text": "A symbol stands for an idea. An object shows where knowledge happens."
+  },
+  {
+   "id": "h.alc.o1.place.2",
+   "objective": "alc.o1.place",
+   "depth": 2,
+   "text": "Glasses for 'perspective' are a symbol, not an exhibit."
+  },
+  {
+   "id": "h.alc.o1.place.3",
+   "objective": "alc.o1.place",
+   "depth": 3,
+   "text": "Use the Alcove of Firsts and choose one of your evidence cards that is a real thing."
+  },
+  {
+   "id": "h.alc.o1.place.4",
+   "objective": "alc.o1.place",
+   "depth": 4,
+   "text": "Use the alcove next to the Hall of Firsts sign and choose 'Loud's patent, 1888' or 'Biro pen, 1945–1948'."
+  },
+  {
+   "id": "h.alc.o2.link.1",
+   "objective": "alc.o2.link",
+   "depth": 1,
+   "text": "Say what THIS object shows, not what concepts it touches."
+  },
+  {
+   "id": "h.alc.o2.link.2",
+   "objective": "alc.o2.link",
+   "depth": 2,
+   "text": "A list of concept names is not an argument."
+  },
+  {
+   "id": "h.alc.o2.link.3",
+   "objective": "alc.o2.link",
+   "depth": 3,
+   "text": "Choose the sentence that says what people made, used or decided."
+  },
+  {
+   "id": "h.alc.o2.link.4",
+   "objective": "alc.o2.link",
+   "depth": 4,
+   "text": "Choose the sentence that names a date, a use or a decision. Not the list of concepts, and not 'old and interesting'."
+  },
+  {
+   "id": "h.alc.o3.sowhat.1",
+   "objective": "alc.o3.sowhat",
+   "depth": 1,
+   "text": "What follows from your answer?"
+  },
+  {
+   "id": "h.alc.o3.sowhat.2",
+   "objective": "alc.o3.sowhat",
+   "depth": 2,
+   "text": "'Important' is not a consequence."
+  },
+  {
+   "id": "h.alc.o3.sowhat.3",
+   "objective": "alc.o3.sowhat",
+   "depth": 3,
+   "text": "Choose a sentence that says what should change, here or in another field."
+  },
+  {
+   "id": "h.alc.o3.sowhat.4",
+   "objective": "alc.o3.sowhat",
+   "depth": 4,
+   "text": "Choose a sentence that starts with 'So' and names a change. Not 'So ... is important'."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.alcove.done",
+   "text": "The Alcove of Firsts: a symbol stands for an idea, but an object shows where knowledge happens in the world. Naming concepts is not using them. And every answer needs a 'so what?'.",
+   "claimKind": "interpretation"
+  }
+ ],
+ "criteria": [
+  {
+   "id": "crit.evidence.alcove",
+   "concept": "evidence",
+   "maximum": 10
+  }
+ ],
+ "awards": [
+  {
+   "id": "badge.lamp-lighter",
+   "kind": "badge",
+   "name": "Lamp-Lighter",
+   "earnedBy": "You lit the Alcove of Firsts with a real object, said what it shows, and answered the So-What Sphinx.",
+   "criteria": [
+    "crit.evidence.alcove"
+   ],
+   "when": {
+    "objective": "alc.o3.sowhat"
+   },
+   "title": "Lamp-Lighter"
+  }
+ ]
+}

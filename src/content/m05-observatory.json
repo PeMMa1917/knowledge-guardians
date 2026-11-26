@@ -1,0 +1,1665 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH4-M01",
+   "world": "WORLD-05",
+   "title": "The Next Bell",
+   "knowledgeQuestion": "When should a change in evidence change what we tell other people?",
+   "stake": "If the notice is too sure, or not sure enough, the harbour does not move in time.",
+   "available": {
+    "objective": "preserved.publish"
+   },
+   "objectives": [
+    {
+     "id": "coast.arrival",
+     "title": "Follow the new passage from the Nexus to the Observatory Coast.",
+     "done": {
+      "flag": "coast.arrived",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective"
+      ],
+      "atl": [
+       "self-management"
+      ],
+      "aoks": [
+       "NAT"
+      ],
+      "subjects": [
+       "geography"
+      ]
+     },
+     "skills": []
+    },
+    {
+     "id": "coast.readings",
+     "title": "Compare the rain at the quay and the headland with Forecaster Neri.",
+     "done": {
+      "flagSet": "coast.gauge.compare"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT"
+      ],
+      "subjects": [
+       "geography",
+       "math-ai"
+      ]
+     },
+     "skills": [
+      "SK-NUM-14",
+      "SK-MED-04"
+     ],
+     "visible": {
+      "objective": "coast.arrival"
+     }
+    },
+    {
+     "id": "coast.forecast",
+     "title": "Read the model chart and decide how to carry its limit into the notice.",
+     "done": {
+      "flagSet": "coast.limit"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "explanation",
+       "interpretation",
+       "justification"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT",
+       "TEC"
+      ],
+      "subjects": [
+       "physics",
+       "geography",
+       "math-ai"
+      ]
+     },
+     "skills": [
+      "SK-KNO-14",
+      "SK-THK-14"
+     ],
+     "visible": {
+      "objective": "coast.readings"
+     }
+    },
+    {
+     "id": "coast.dispatch",
+     "title": "Choose how to send the notice with Signalkeeper Ruan.",
+     "done": {
+      "flagSet": "coast.notice"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "values",
+       "responsibility",
+       "power"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT"
+      ],
+      "subjects": [
+       "geography",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-SPK-02"
+     ],
+     "visible": {
+      "objective": "coast.forecast"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.coast.dispatch"
+      },
+      {
+       "checkpoint": "Observatory Coast: notice sent"
+      }
+     ]
+    },
+    {
+     "id": "coast.observe-again",
+     "title": "Read the headland rain gauge at the next bell.",
+     "done": {
+      "flag": "coast.gauge.recheck",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "self-management"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT"
+      ],
+      "subjects": [
+       "geography",
+       "math-ai"
+      ]
+     },
+     "skills": [
+      "SK-RSC-15"
+     ],
+     "visible": {
+      "objective": "coast.dispatch"
+     }
+    },
+    {
+     "id": "coast.revise",
+     "title": "Help Ruan update the notice using the new headland reading.",
+     "done": {
+      "flag": "coast.updated",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "geography",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-WRT-13"
+     ],
+     "visible": {
+      "objective": "coast.observe-again"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.coast.revise"
+      },
+      {
+       "journal": "j.coast.revise"
+      },
+      {
+       "checkpoint": "Observatory Coast: notice updated"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH4-R01",
+   "world": "WORLD-05",
+   "title": "A Copy Past the Sheds",
+   "knowledgeQuestion": "Whose route does an official message assume?",
+   "available": {
+    "objective": "coast.revise"
+   },
+   "objectives": [
+    {
+     "id": "coast.missed-copy",
+     "title": "Find the route that misses a notice and help Ruan reach it.",
+     "done": {
+      "flag": "coast.copy.present",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "culture",
+       "perspective",
+       "power",
+       "responsibility"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "geography",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-ICU-18",
+      "SK-SPK-01",
+      "SK-ETR-01"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.coast.copy"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH4-R03",
+   "world": "WORLD-05",
+   "title": "Two Ways to Count a Bell",
+   "knowledgeQuestion": "What can change when a local way of counting travels with a record?",
+   "available": {
+    "flag": "coast.gauge.harbour",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "coast.bell-slip.sent",
+     "title": "Help the apprentice pass on the timed gauge slip.",
+     "done": {
+      "flagSet": "coast.bell-slip"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "culture",
+       "interpretation",
+       "objectivity"
+      ],
+      "atl": [
+       "communication",
+       "research"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "anthropology",
+       "lang-b",
+       "math-ai"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH4-R06",
+   "world": "WORLD-05",
+   "title": "Clear for Whom?",
+   "knowledgeQuestion": "How do the checks behind a word change what another person can infer?",
+   "available": {
+    "flag": "coast.arrived",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "coast.clear.test",
+     "title": "Try the menders’ ribbon at the tagged row and the unmarked edge.",
+     "done": {
+      "all": [
+       {
+        "flag": "coast.clear.row",
+        "eq": true
+       },
+       {
+        "flag": "coast.clear.edge",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "culture",
+       "objectivity",
+       "evidence",
+       "certainty",
+       "explanation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "design-tech",
+       "physics",
+       "anthropology"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-07"
+     ]
+    },
+    {
+     "id": "coast.clear.share",
+     "title": "Check the lookout’s mark with the rain gauge, then put both meanings where the crews can find them.",
+     "done": {
+      "flagSet": "coast.clear.placement"
+     },
+     "visible": {
+      "objective": "coast.clear.test"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "culture",
+       "interpretation",
+       "truth",
+       "power",
+       "values",
+       "responsibility"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM",
+       "NAT"
+      ],
+      "subjects": [
+       "lang-b",
+       "anthropology",
+       "geography"
+      ]
+     },
+     "skills": [
+      "SK-ICU-18",
+      "SK-THK-14",
+      "SK-ETR-01"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.coast.clear"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "characters": [
+  {
+   "id": "coast-signalkeeper",
+   "name": "Signalkeeper Ruan",
+   "role": "Harbour signalkeeper",
+   "sprite": "custom:pale.grey.weld.charcoal.none.green.covered.none.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "coast.signal.after",
+     "if": {
+      "all": [
+       {
+        "flag": "coast.updated",
+        "eq": true
+       },
+       {
+        "flag": "coast.notice",
+        "eq": "signal"
+       }
+      ]
+     }
+    },
+    {
+     "node": "coast.runner.after",
+     "if": {
+      "all": [
+       {
+        "flag": "coast.updated",
+        "eq": true
+       },
+       {
+        "flag": "coast.notice",
+        "eq": "runner"
+       }
+      ]
+     }
+    },
+    {
+     "node": "coast.signal.revise",
+     "if": {
+      "all": [
+       {
+        "objective": "coast.observe-again"
+       },
+       {
+        "flag": "coast.notice",
+        "eq": "signal"
+       }
+      ]
+     }
+    },
+    {
+     "node": "coast.runner.revise",
+     "if": {
+      "all": [
+       {
+        "objective": "coast.observe-again"
+       },
+       {
+        "flag": "coast.notice",
+        "eq": "runner"
+       }
+      ]
+     }
+    },
+    {
+     "node": "coast.wait",
+     "if": {
+      "flagSet": "coast.notice"
+     }
+    },
+    {
+     "node": "coast.dispatch.offer",
+     "if": {
+      "all": [
+       {
+        "objective": "coast.readings"
+       },
+       {
+        "objective": "coast.forecast"
+       },
+       {
+        "not": {
+         "flagSet": "coast.notice"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "node": "coast.harbour.brief"
+    }
+   ]
+  },
+  {
+   "id": "coast-forecaster",
+   "name": "Forecaster Neri",
+   "role": "Headland observer",
+   "sprite": "custom:olive.black.green.olive.headband.white.bun.none.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "coast.station.after",
+     "if": {
+      "flag": "coast.updated",
+      "eq": true
+     }
+    },
+    {
+     "node": "coast.station.recheck",
+     "if": {
+      "flagSet": "coast.notice"
+     }
+    },
+    {
+     "node": "coast.station.route",
+     "if": {
+      "objective": "coast.forecast"
+     }
+    },
+    {
+     "node": "coast.station.model",
+     "if": {
+      "all": [
+       {
+        "objective": "coast.readings"
+       },
+       {
+        "flag": "coast.chart",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "coast.station.chart",
+     "if": {
+      "objective": "coast.readings"
+     }
+    },
+    {
+     "node": "coast.station.compare",
+     "if": {
+      "all": [
+       {
+        "flag": "coast.gauge.harbour",
+        "eq": true
+       },
+       {
+        "flag": "coast.gauge.station",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "coast.station.brief"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "coast.harbour.brief",
+   "speaker": "coast-signalkeeper",
+   "text": "I’ve been handed two notices. One says the rain is holding off. The other says it’s coming down hard. If I nail up just one, half the quay will tell me I’ve never looked out a window.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Where did the reports come from?",
+     "next": "coast.harbour.places"
+    },
+    {
+     "text": "Who is waiting for the notice?",
+     "next": "coast.harbour.audience"
+    },
+    {
+     "text": "I’ll go and look."
+    }
+   ]
+  },
+  {
+   "id": "coast.harbour.places",
+   "speaker": "coast-signalkeeper",
+   "text": "One hand was here, under the lee of the quay wall. One was up with Neri on the headland. Start with our gauge. Keep its place next to its number.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.harbour.audience",
+   "speaker": "coast-signalkeeper",
+   "text": "The cutters read the board while they sort their lines. Basket crews wait at the stone steps, out of sight of it. Both want to know which report applies to their bit of coast.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.station.brief",
+   "speaker": "coast-forecaster",
+   "text": "My sleeve is drenched. Ruan sent word that the quay barely felt it. The headland gauge is beside the chart case. Read it and bring the quay reading so we can compare the same bell.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.station.compare",
+   "speaker": "coast-forecaster",
+   "text": "Five finger-widths on the headland. Two down at the quay. Both gauges stood out for one bell. I need the apprentices to see why those two numbers can both be right.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Put both readings on the same dated strip.",
+     "next": "coast.compare.strip",
+     "effects": [
+      {
+       "setFlag": "coast.gauge.compare",
+       "value": "strip"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "coast.gauge.harbour",
+          "eq": true
+         },
+         {
+          "flag": "coast.gauge.station",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "coast.gauge.compare"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Pin each reading to the place it belongs.",
+     "next": "coast.compare.map",
+     "effects": [
+      {
+       "setFlag": "coast.gauge.compare",
+       "value": "map"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "coast.gauge.harbour",
+          "eq": true
+         },
+         {
+          "flag": "coast.gauge.station",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "coast.gauge.compare"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Give me a moment."
+    }
+   ]
+  },
+  {
+   "id": "coast.compare.strip",
+   "speaker": "coast-forecaster",
+   "text": "Now the apprentices can see they came from the same bell. I’ll keep the place names level with the figures so a copy doesn’t turn them into readings of one gauge.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.compare.map",
+   "speaker": "coast-forecaster",
+   "text": "The pins are far apart. Keep the bell set beside each mark. A visitor can follow the place names and see we’re comparing one interval at two sites.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.station.chart",
+   "speaker": "coast-forecaster",
+   "text": "There’s a second piece of paper on the chart table. The gauge sheets say what fell. The chart has our estimate for the next bell. Take a look at the two papers before we send anything.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.station.model",
+   "speaker": "coast-forecaster",
+   "text": "The chart carries the same wind into the next bell. It can help people plan if that holds. If we put the sheet up on its own, someone will copy the forecast as a fresh reading.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "options": [
+    {
+     "text": "Put the estimate on a separate strip and keep its wind condition.",
+     "next": "coast.model.separate",
+     "effects": [
+      {
+       "setFlag": "coast.limit",
+       "value": "separate"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "coast.readings"
+       },
+       {
+        "flag": "coast.chart",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "coast.limit"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Put the readings first and mark when we’ll test the estimate again.",
+     "next": "coast.model.interval",
+     "effects": [
+      {
+       "setFlag": "coast.limit",
+       "value": "interval"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "coast.readings"
+       },
+       {
+        "flag": "coast.chart",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "coast.limit"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Hold the copy here for a moment."
+    }
+   ]
+  },
+  {
+   "id": "coast.model.separate",
+   "speaker": "coast-forecaster",
+   "text": "I’ll tie the condition to the estimate. If the wind changes, Ruan can take down that one strip without losing the two readings.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.model.interval",
+   "speaker": "coast-forecaster",
+   "text": "I’ve left a space for the next bell. The estimate stays with its wind condition, and readers can see when we’ll have a fresh number.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.station.route",
+   "speaker": "coast-forecaster",
+   "text": "Ruan needs the notice now. I can check the headland gauge again at the next bell. Ask Ruan which route to send your copy along.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.dispatch.offer",
+   "speaker": "coast-signalkeeper",
+   "text": "The readings and the forecast are separate on your copy. Good. The tide is turning and I only have one hand free. I can pin the sheet on the board or send a runner to the steps before the basket crews leave.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pin the qualified notice on the quay board.",
+     "next": "coast.dispatch.signal",
+     "effects": [
+      {
+       "setFlag": "coast.notice",
+       "value": "signal"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "coast.readings"
+       },
+       {
+        "objective": "coast.forecast"
+       },
+       {
+        "not": {
+         "flagSet": "coast.notice"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Send the runner to the basket crews with the written copy.",
+     "next": "coast.dispatch.runner",
+     "effects": [
+      {
+       "setFlag": "coast.notice",
+       "value": "runner"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "coast.readings"
+       },
+       {
+        "objective": "coast.forecast"
+       },
+       {
+        "not": {
+         "flagSet": "coast.notice"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll wait a moment."
+    }
+   ]
+  },
+  {
+   "id": "coast.dispatch.signal",
+   "speaker": "coast-signalkeeper",
+   "text": "The cutters can read the condition alongside the numbers. The board is also a place to check back. I heard the basket crews call from the steps. They’ll need another way to see it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.dispatch.runner",
+   "speaker": "coast-signalkeeper",
+   "text": "The runner has the copy in hand. I’ve asked for the estimate and its condition to be read together. The steps will hear first. The copy must come back here when there’s a new reading.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.wait",
+   "speaker": "coast-signalkeeper",
+   "text": "The next bell rang while you were here. Neri should have a new headland reading by now. Bring it back so we can tell people what changed.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.station.recheck",
+   "speaker": "coast-forecaster",
+   "text": "There’s a new line at the gauge. Down from five, and the interval was one bell again. I left the quay column open. Until it comes in, we only know what the headland measured.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.signal.revise",
+   "speaker": "coast-signalkeeper",
+   "text": "The people at the board have seen our first copy. One has drawn a line in the margin where the new numbers ought to go. The next bell gave us two at the headland, with no fresh quay mark.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pin the new reading beside the earlier notice, with the quay entry left open.",
+     "next": "coast.signal.updated",
+     "effects": [
+      {
+       "setFlag": "coast.updated",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "coast.observe-again"
+       },
+       {
+        "flag": "coast.notice",
+        "eq": "signal"
+       },
+       {
+        "not": {
+         "flag": "coast.updated",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll leave the board for now."
+    }
+   ]
+  },
+  {
+   "id": "coast.runner.revise",
+   "speaker": "coast-signalkeeper",
+   "text": "The basket crews heard us at the steps first. Our runner is back. The second headland mark is two, and the quay’s second line is still missing.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Send the runner back with the new reading and leave a dated copy here.",
+     "next": "coast.runner.updated",
+     "effects": [
+      {
+       "setFlag": "coast.updated",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "coast.observe-again"
+       },
+       {
+        "flag": "coast.notice",
+        "eq": "runner"
+       },
+       {
+        "not": {
+         "flag": "coast.updated",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll leave the copy for now."
+    }
+   ]
+  },
+  {
+   "id": "coast.signal.updated",
+   "speaker": "coast-signalkeeper",
+   "text": "The board holds both notices. Someone has circled the empty quay line so the next reader knows where we’re still waiting.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.runner.updated",
+   "speaker": "coast-signalkeeper",
+   "text": "The runner will tell the same crews that the new mark is from the headland. I’ve kept a copy at the quay so nobody has to rely on who heard it first.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.signal.after",
+   "speaker": "coast-signalkeeper",
+   "text": "Thank you. Every time a bell rings someone points at the old line, then reads the new one. Keep the first where they can see it.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "A path by the sheds misses the notice. Could a copy go at the crossing?",
+     "next": "coast.copy.agree",
+     "if": {
+      "all": [
+       {
+        "flag": "coast.notebook",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "coast.copy.present",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll look around the quay."
+    }
+   ]
+  },
+  {
+   "id": "coast.runner.after",
+   "speaker": "coast-signalkeeper",
+   "text": "The runner has come back with word. The crews remembered the figure. They went back to the copy for the place. I’m glad we kept both together.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "A path by the sheds misses the notice. Could a copy go at the crossing?",
+     "next": "coast.copy.agree",
+     "if": {
+      "all": [
+       {
+        "flag": "coast.notebook",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "coast.copy.present",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll look around the quay."
+    }
+   ]
+  },
+  {
+   "id": "coast.copy.agree",
+   "speaker": "coast-signalkeeper",
+   "text": "I can use the crossing that both crews pass. People down here call their change of shift a bell, so I’ll write “station bell” by our readings. That way a crew can tell whose clock the notice follows.",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "coast.copy.present",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "coast.station.after",
+   "speaker": "coast-forecaster",
+   "text": "We can compare what fell for two bells at the headland. The quay line is still open for the next observer. I’m leaving this sheet beside the model so the next person can see which is which.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.bell-slip",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A landing apprentice holds the gauge slip beside the basket crews’ work book. The headland rings its bell to mark each timed reading. On the quay, crews say “a bell” for a turn carrying baskets. A visiting crew has copied “one bell” and put it beside the wrong mark.",
+   "options": [
+    {
+     "text": "Leave both ways of counting and add the two station bell marks.",
+     "if": {
+      "not": {
+       "flagSet": "coast.bell-slip"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "coast.bell-slip",
+       "value": "both"
+      }
+     ],
+     "next": "coast.bell-slip.both"
+    },
+    {
+     "text": "Stamp the two station bell marks on the copy. Keep the quay phrase in its book.",
+     "if": {
+      "not": {
+       "flagSet": "coast.bell-slip"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "coast.bell-slip",
+       "value": "stamp"
+      }
+     ],
+     "next": "coast.bell-slip.stamp"
+    },
+    {
+     "text": "Leave the slip for now."
+    }
+   ]
+  },
+  {
+   "id": "coast.bell-slip.both",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The apprentice clips the slip to the work book. The quay crews keep their way of counting turns. A visitor follows the station marks to the exact span used for the gauge."
+  },
+  {
+   "id": "coast.bell-slip.stamp",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The visitor takes the stamped copy to the headland. It has a start and finish anyone at the station can check. The quay work book keeps its own phrase for the next crew."
+  },
+  {
+   "id": "coast.clear.frame",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The net-menders set aside this practice frame for the next crew. Their tag says ‘clear’ beside one repaired row. An apprentice reads that as a check of the whole frame. The same blue ribbon can pass through either place.",
+   "options": [
+    {
+     "text": "Pass the ribbon through the tagged row.",
+     "next": "coast.clear.row",
+     "if": {
+      "not": {
+       "flag": "coast.clear.row",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "coast.clear.row",
+       "value": true
+      },
+      {
+       "setFlag": "coast.clear.phase",
+       "value": "row"
+      }
+     ]
+    },
+    {
+     "text": "Pass the same ribbon along the unmarked edge.",
+     "next": "coast.clear.edge",
+     "if": {
+      "not": {
+       "flag": "coast.clear.edge",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "coast.clear.edge",
+       "value": true
+      },
+      {
+       "setFlag": "coast.clear.phase",
+       "value": "edge"
+      }
+     ]
+    },
+    {
+     "text": "Keep the two readings with their places on the frame.",
+     "next": "coast.clear.compared",
+     "if": {
+      "all": [
+       {
+        "flag": "coast.clear.row",
+        "eq": true
+       },
+       {
+        "flag": "coast.clear.edge",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the frame here."
+    }
+   ]
+  },
+  {
+   "id": "coast.clear.row",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The blue ribbon passes through the tagged row. The test follows the place the menders marked.",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Pass the same ribbon along the unmarked edge.",
+     "next": "coast.clear.edge",
+     "if": {
+      "not": {
+       "flag": "coast.clear.edge",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "coast.clear.edge",
+       "value": true
+      },
+      {
+       "setFlag": "coast.clear.phase",
+       "value": "edge"
+      }
+     ]
+    },
+    {
+     "text": "Keep the two readings with their places on the frame.",
+     "next": "coast.clear.compared",
+     "if": {
+      "all": [
+       {
+        "flag": "coast.clear.row",
+        "eq": true
+       },
+       {
+        "flag": "coast.clear.edge",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the ribbon at the row."
+    }
+   ]
+  },
+  {
+   "id": "coast.clear.edge",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The same ribbon catches at the unmarked edge. The frame stayed fixed when you moved that one ribbon. The checked row and the edge can give different results.",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Pass the ribbon through the tagged row.",
+     "next": "coast.clear.row",
+     "if": {
+      "not": {
+       "flag": "coast.clear.row",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "coast.clear.row",
+       "value": true
+      },
+      {
+       "setFlag": "coast.clear.phase",
+       "value": "row"
+      }
+     ]
+    },
+    {
+     "text": "Keep the two readings with their places on the frame.",
+     "next": "coast.clear.compared",
+     "if": {
+      "all": [
+       {
+        "flag": "coast.clear.row",
+        "eq": true
+       },
+       {
+        "flag": "coast.clear.edge",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the ribbon at the edge."
+    }
+   ]
+  },
+  {
+   "id": "coast.clear.compared",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The menders leave a strip by each place so the next crew sees which row passed. ‘Clear’ is their word for a place they have checked. The station lookout has put the same word on a sight mark. Go see what the lookout was checking."
+  },
+  {
+   "id": "coast.clear.desk",
+   "speaker": "coast-forecaster",
+   "historicalLabel": "fictional-world",
+   "text": "The menders checked a row and the lookout checked a view. The tower was visible when the interval ended. The gauge still held five finger-widths of rain from that interval. Our next runner serves both crews. Should each crew keep its own caption, or should the runner carry one card naming both checks?",
+   "options": [
+    {
+     "text": "Leave separate tags at the frame and lookout. Let each crew update its own check.",
+     "next": "coast.clear.tags",
+     "if": {
+      "all": [
+       {
+        "objective": "coast.clear.test"
+       },
+       {
+        "all": [
+         {
+          "flag": "coast.clear.visibility",
+          "eq": true
+         },
+         {
+          "flag": "coast.gauge.station",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "coast.clear.placement"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "coast.clear.placement",
+       "value": "tags"
+      }
+     ]
+    },
+    {
+     "text": "Give the runner a folded copy naming both crews and both places.",
+     "next": "coast.clear.card",
+     "if": {
+      "all": [
+       {
+        "objective": "coast.clear.test"
+       },
+       {
+        "all": [
+         {
+          "flag": "coast.clear.visibility",
+          "eq": true
+         },
+         {
+          "flag": "coast.gauge.station",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "coast.clear.placement"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "coast.clear.placement",
+       "value": "card"
+      }
+     ]
+    },
+    {
+     "text": "Read the frame and lookout tags again.",
+     "next": "coast.clear.tags",
+     "if": {
+      "flag": "coast.clear.placement",
+      "eq": "tags"
+     }
+    },
+    {
+     "text": "Read the runner’s joined copy again.",
+     "next": "coast.clear.card",
+     "if": {
+      "flag": "coast.clear.placement",
+      "eq": "card"
+     }
+    },
+    {
+     "text": "Leave the checks here for now."
+    }
+   ]
+  },
+  {
+   "id": "coast.clear.tags",
+   "speaker": "coast-forecaster",
+   "historicalLabel": "fictional-world",
+   "text": "A mender can update the row tag where they do the work. The lookout keeps the sight mark beside the rain record. A runner can check either at its own place. A person moving between crews may need to visit both records."
+  },
+  {
+   "id": "coast.clear.card",
+   "speaker": "coast-forecaster",
+   "historicalLabel": "fictional-world",
+   "text": "The runner reads the menders’ row to the next crew before they try the edge. At the board, they name the lookout and the time of the sight mark. A person crossing between crews can compare both uses in one place. The card needs a fresh mark when either crew reports again."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.coast.arrival.1",
+   "objective": "coast.arrival",
+   "depth": 1,
+   "text": "There is an invitation at the Nexus."
+  },
+  {
+   "id": "h.coast.arrival.2",
+   "objective": "coast.arrival",
+   "depth": 2,
+   "text": "The Conservators leave the invitation when their exhibition opens."
+  },
+  {
+   "id": "h.coast.arrival.3",
+   "objective": "coast.arrival",
+   "depth": 3,
+   "text": "Return to the Nexus after publishing the Preserved Lives exhibition."
+  },
+  {
+   "id": "h.coast.arrival.4",
+   "objective": "coast.arrival",
+   "depth": 4,
+   "text": "Use the Observatory Coast passage in the Nexus."
+  },
+  {
+   "id": "h.coast.readings.1",
+   "objective": "coast.readings",
+   "depth": 1,
+   "text": "A wet sleeve tells you something about one place."
+  },
+  {
+   "id": "h.coast.readings.2",
+   "objective": "coast.readings",
+   "depth": 2,
+   "text": "The quay keeper and the headland observer used the same interval."
+  },
+  {
+   "id": "h.coast.readings.3",
+   "objective": "coast.readings",
+   "depth": 3,
+   "text": "Read the two rain gauges. One is at the harbour and one is by the station."
+  },
+  {
+   "id": "h.coast.readings.4",
+   "objective": "coast.readings",
+   "depth": 4,
+   "text": "After reading both gauges, talk to Neri at the station. Choose how to record the contrast."
+  },
+  {
+   "id": "h.coast.forecast.1",
+   "objective": "coast.forecast",
+   "depth": 1,
+   "text": "The chart is a sketch of what might happen next."
+  },
+  {
+   "id": "h.coast.forecast.2",
+   "objective": "coast.forecast",
+   "depth": 2,
+   "text": "Which condition does the forecast assume? Find it on the chart."
+  },
+  {
+   "id": "h.coast.forecast.3",
+   "objective": "coast.forecast",
+   "depth": 3,
+   "text": "Read the model chart at the station. Ask Neri how much of the forecast can travel."
+  },
+  {
+   "id": "h.coast.forecast.4",
+   "objective": "coast.forecast",
+   "depth": 4,
+   "text": "With the readings compared, talk to Neri after reading the chart. Pick a way to keep its scope in the notice."
+  },
+  {
+   "id": "h.coast.dispatch.1",
+   "objective": "coast.dispatch",
+   "depth": 1,
+   "text": "The harbour has two ways of getting a message past the quay."
+  },
+  {
+   "id": "h.coast.dispatch.2",
+   "objective": "coast.dispatch",
+   "depth": 2,
+   "text": "One reaches people at the board. The other reaches people waiting by the steps."
+  },
+  {
+   "id": "h.coast.dispatch.3",
+   "objective": "coast.dispatch",
+   "depth": 3,
+   "text": "Return to Signalkeeper Ruan with Neri’s qualified forecast."
+  },
+  {
+   "id": "h.coast.dispatch.4",
+   "objective": "coast.dispatch",
+   "depth": 4,
+   "text": "Ask Ruan to use the board or send the runner. The message keeps the chart’s limit either way."
+  },
+  {
+   "id": "h.coast.observe-again.1",
+   "objective": "coast.observe-again",
+   "depth": 1,
+   "text": "Neri’s estimate was for the next interval. It needs another reading."
+  },
+  {
+   "id": "h.coast.observe-again.2",
+   "objective": "coast.observe-again",
+   "depth": 2,
+   "text": "A second mark has arrived from the headland. The quay has not reported again."
+  },
+  {
+   "id": "h.coast.observe-again.3",
+   "objective": "coast.observe-again",
+   "depth": 3,
+   "text": "Return to the station after sending the notice."
+  },
+  {
+   "id": "h.coast.observe-again.4",
+   "objective": "coast.observe-again",
+   "depth": 4,
+   "text": "Read the new observation by the headland gauge. Keep the missing quay reading in mind."
+  },
+  {
+   "id": "h.coast.revise.1",
+   "objective": "coast.revise",
+   "depth": 1,
+   "text": "A later observation can change what you tell people now."
+  },
+  {
+   "id": "h.coast.revise.2",
+   "objective": "coast.revise",
+   "depth": 2,
+   "text": "A change at the headland still leaves the quay uncertain."
+  },
+  {
+   "id": "h.coast.revise.3",
+   "objective": "coast.revise",
+   "depth": 3,
+   "text": "Take the next headland reading back to Ruan in the harbour."
+  },
+  {
+   "id": "h.coast.revise.4",
+   "objective": "coast.revise",
+   "depth": 4,
+   "text": "Post a dated correction for whichever channel carried the first notice."
+  },
+  {
+   "id": "h.coast.missed-copy.1",
+   "objective": "coast.missed-copy",
+   "depth": 1,
+   "text": "The carriers do not all pass the same place."
+  },
+  {
+   "id": "h.coast.missed-copy.2",
+   "objective": "coast.missed-copy",
+   "depth": 2,
+   "text": "Check the harbour notebook for the path past the sheds."
+  },
+  {
+   "id": "h.coast.missed-copy.3",
+   "objective": "coast.missed-copy",
+   "depth": 3,
+   "text": "Find the notebook near the quay. Bring its note to Ruan after the update."
+  },
+  {
+   "id": "h.coast.missed-copy.4",
+   "objective": "coast.missed-copy",
+   "depth": 4,
+   "text": "Ask about the missed copy. Ruan can name the station bell and leave a duplicate where the paths meet."
+  },
+  {
+   "id": "h.coast.bell-slip.1",
+   "objective": "coast.bell-slip.sent",
+   "depth": 1,
+   "text": "The quay words have two uses."
+  },
+  {
+   "id": "h.coast.bell-slip.2",
+   "objective": "coast.bell-slip.sent",
+   "depth": 2,
+   "text": "Look for the slip just inland from the quay gauge."
+  },
+  {
+   "id": "h.coast.bell-slip.3",
+   "objective": "coast.bell-slip.sent",
+   "depth": 3,
+   "text": "Read the apprentice’s slip and the crews’ work book together."
+  },
+  {
+   "id": "h.coast.bell-slip.4",
+   "objective": "coast.bell-slip.sent",
+   "depth": 4,
+   "text": "Keep the two station marks so a visitor can check the reading’s interval. There are two places to leave the crews’ words."
+  },
+  {
+   "id": "h.coast.clear.test.1",
+   "objective": "coast.clear.test",
+   "depth": 1,
+   "text": "The menders’ tag points to part of the frame."
+  },
+  {
+   "id": "h.coast.clear.test.2",
+   "objective": "coast.clear.test",
+   "depth": 2,
+   "text": "Find the practice frame near the way from the quay to the station."
+  },
+  {
+   "id": "h.coast.clear.test.3",
+   "objective": "coast.clear.test",
+   "depth": 3,
+   "text": "Compare two places using the same inspection ribbon."
+  },
+  {
+   "id": "h.coast.clear.test.4",
+   "objective": "coast.clear.test",
+   "depth": 4,
+   "text": "Pass the blue ribbon through the tagged row and try it at the unmarked edge. Keep the locations with what you saw."
+  },
+  {
+   "id": "h.coast.clear.share.1",
+   "objective": "coast.clear.share",
+   "depth": 1,
+   "text": "The same word can travel ahead of the check it describes."
+  },
+  {
+   "id": "h.coast.clear.share.2",
+   "objective": "coast.clear.share",
+   "depth": 2,
+   "text": "The lookout’s ‘clear’ mark follows a view of Lantern Tower."
+  },
+  {
+   "id": "h.coast.clear.share.3",
+   "objective": "coast.clear.share",
+   "depth": 3,
+   "text": "At Headland Station, read the sight mark and rain gauge. Bring the two crew checks to Neri’s board."
+  },
+  {
+   "id": "h.coast.clear.share.4",
+   "objective": "coast.clear.share",
+   "depth": 4,
+   "text": "Choose separate tags at the frame and lookout or send one card with the runner. Keep the check and place with each use of ‘clear’."
+  }
+ ],
+ "criteria": [
+  {
+   "id": "credit.coast.dispatch",
+   "concept": "responsibility",
+   "maximum": 8
+  },
+  {
+   "id": "credit.coast.revise",
+   "concept": "truth",
+   "maximum": 8
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.coast.revise",
+   "title": "The next bell",
+   "text": "The quay and headland measured the same bell at different places. I sent the readings with a limited estimate, then helped Ruan publish the next headland mark with the second quay line still open."
+  },
+  {
+   "id": "j.coast.copy",
+   "title": "The crossing copy",
+   "text": "A message has a route. At the crossing, the two crews can reach a dated copy and tell which bell came from the station."
+  },
+  {
+   "id": "j.coast.clear",
+   "title": "Clear for whom?",
+   "text": "The menders’ ‘clear’ names one tested row. The lookout’s ‘clear’ means the tower was visible at the bell. I checked the word with the work it came from, then helped the crews share both checks."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.coast.revise",
+   "attribute": "reflective",
+   "when": {
+    "objective": "coast.revise"
+   },
+   "did": "You kept a first notice available and changed it when a new observation arrived."
+  },
+  {
+   "id": "mom.coast.copy",
+   "attribute": "caring",
+   "when": {
+    "objective": "coast.missed-copy"
+   },
+   "did": "You found a route the first notice missed and made room for those crews to see a copy."
+  }
+ ]
+}

@@ -13,8 +13,9 @@
       "person": {
         "name": "Eratosthenes",
         "life": "c. 276 to c. 194 BCE",
-        "region": "Africa (Alexandria, Egypt)",
-        "era": "Ancient"
+        "place": "Alexandria, Egypt",
+        "era": "Ancient",
+        "continent": "Africa"
       }
     },
     {
@@ -30,8 +31,9 @@
       "person": {
         "name": "Ibn al-Haytham",
         "life": "c. 965 to c. 1040",
-        "region": "West Asia and North Africa (Basra and Cairo)",
-        "era": "Medieval"
+        "place": "Born in Basra; worked in Cairo",
+        "era": "Medieval",
+        "continent": "Asia"
       }
     },
     {
@@ -48,8 +50,9 @@
       "person": {
         "name": "Bi Sheng",
         "life": "active 1040s",
-        "region": "East Asia (Song China)",
-        "era": "Medieval"
+        "place": "Song dynasty China",
+        "era": "Medieval",
+        "continent": "Asia"
       }
     },
     {
@@ -67,8 +70,9 @@
       "person": {
         "name": "Radhanath Sikdar",
         "life": "1813 to 1870",
-        "region": "South Asia (Bengal, India)",
-        "era": "19th century"
+        "place": "Bengal, India",
+        "era": "19th century",
+        "continent": "Asia"
       }
     },
     {
@@ -85,8 +89,9 @@
       "person": {
         "name": "Alberto Santos-Dumont",
         "life": "1873 to 1932",
-        "region": "South America (Brazil; flew in Paris)",
-        "era": "20th century"
+        "place": "Brazilian; flew in Paris",
+        "era": "20th century",
+        "continent": "South America"
       }
     },
     {
@@ -102,8 +107,9 @@
       "person": {
         "name": "Kate Sheppard",
         "life": "1847 to 1934",
-        "region": "Oceania (New Zealand)",
-        "era": "19th century"
+        "place": "New Zealand (Aotearoa)",
+        "era": "19th century",
+        "continent": "Oceania"
       }
     },
     {
@@ -120,8 +126,9 @@
       "person": {
         "name": "Mary Wollstonecraft",
         "life": "1759 to 1797",
-        "region": "Europe (London, England)",
-        "era": "18th century"
+        "place": "London, England",
+        "era": "18th century",
+        "continent": "Europe"
       }
     }
   ],

@@ -14,6 +14,12 @@ The art direction is "rich, colourful pixel art with lighting", inspired in gene
 |---|---|---|---|---|
 | `art/armm1998/Overworld.png`, `Inner.png`, `character.png`, `cave.png`, `objects.png` | [Zelda-like tilesets and sprites](https://opengameart.org/content/zelda-like-tilesets-and-sprites) (OpenGameArt) | ArMM1998 | CC0 1.0 | None. Original zip kept in `assets-src/armm1998/gfx_3.zip`. `cave.png` and `objects.png` are not used yet. |
 | `art/generated/characters/*.png` (14 sheets) | Made from `character.png` above | Knowledge Guardians project | CC0 1.0 | Colour (palette) swaps of the walk frames, made by `tools/make_character_variants.py`. |
+| `art/generated/market_tiles.png` | [Market tile generator](tools/make_market_tiles.py) | Knowledge Guardians project | CC0 1.0 | Original Market of Measures pavements, buildings, and furniture. |
+| `art/generated/water_tiles.png` | [Water Commons tile generator](tools/make_water_tiles.py) | Knowledge Guardians project | CC0 1.0 | Original channels, field terraces, weir and council hall. |
+| `art/generated/civic_tiles.png` | [Civic Machine tile generator](tools/make_civic_tiles.py) | Knowledge Guardians project | CC0 1.0 | Original pavers, book carts, offices and canal walk. |
+| `art/generated/voices_tiles.png` | [Archive of Voices tile generator](tools/make_voices_tiles.py) | Knowledge Guardians project | CC0 1.0 | Original listening screens, Glass Walk and Lamp Quay. |
+| `art/generated/island_tiles.png` | [Island tile generator](tools/make_island_tiles.py) | Knowledge Guardians project | CC0 1.0 | Original workshop model, landings, boardwalks and habitat margin. |
+| `art/generated/council_tiles.png` | [Council tile generator](tools/make_council_tiles.py) | Knowledge Guardians project | CC0 1.0 | Original Time Hall scales, Letter Gallery niches and Bell Rail. |
 
 Other art is **original** and drawn in code: exhibit pedestals, the evidence board, the blade, the catalogue, the assay table, the anvil, the portal, the fairy guide Lumen, icons and the large inspection pictures. See `src/ui/illustrations.ts`. Lighting, particles and glow are made in code too.
 

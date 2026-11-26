@@ -10,12 +10,14 @@ import Phaser from 'phaser';
 import { ctx } from './app/context';
 import { GameController } from './app/controller';
 import { applySettingsToDocument, loadSettings } from './app/settings';
+import { setupCaptions } from './app/captions';
 import { BootScene } from './scenes/BootScene';
 import { WorldScene } from './scenes/WorldScene';
 import { UI } from './ui/ui';
 
 ctx.settings = loadSettings();
 applySettingsToDocument(ctx.settings);
+setupCaptions(() => ctx.settings.captions);
 ctx.controller = new GameController();
 
 let game: Phaser.Game | null = null;
@@ -62,6 +64,13 @@ ui.showTitle();
 // before this finishes, so this is a convenience, not a guarantee (spec 24.1).
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'hidden' && ctx.world && ctx.controller.state) ctx.controller.suspend('Auto-save when leaving');
+});
+
+// The Guardian's Ledger: count active play time (input in the last 2 minutes, tab visible, in the world).
+for (const ev of ['keydown', 'pointerdown', 'wheel'] as const) window.addEventListener(ev, () => ctx.controller.noteInput(), { passive: true });
+setInterval(() => { if (ctx.world) ctx.controller.tickActive(document.visibilityState === 'visible'); }, 15_000);
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden' && ctx.controller.state) ctx.controller.saves.savePermanent(ctx.controller.permanent);
 });
 
 // Debug/test hook: lets automated tests read state. Not used by the game.

@@ -1,10 +1,16 @@
 /**
- * Art registry. Maps readable names to rectangles ("stamps") on the CC0
- * tile sheets by ArMM1998 (see CREDITS.md). Units are 16 px tiles.
+ * Art registry. Maps readable names to rectangles ("stamps") on tile sheets
+ * listed in CREDITS.md. Units are 16 px tiles.
  *
  * Sheets:
  *   ow = public/assets/art/armm1998/Overworld.png (40 x 36 tiles)
  *   in = public/assets/art/armm1998/Inner.png     (40 x 25 tiles)
+ *   market = public/assets/art/generated/market_tiles.png (18 x 9 tiles)
+ *   water = public/assets/art/generated/water_tiles.png (14 x 5 tiles)
+ *   civic = public/assets/art/generated/civic_tiles.png (15 x 6 tiles)
+ *   voices = public/assets/art/generated/voices_tiles.png (14 x 6 tiles)
+ *   island = public/assets/art/generated/island_tiles.png (15 x 6 tiles)
+ *   council = public/assets/art/generated/council_tiles.png (15 x 6 tiles)
  *
  * `collide` is the blocked area in tiles, relative to the stamp's top-left.
  * Leave it out for decorations the player can walk over or behind.
@@ -15,7 +21,7 @@
 export const TILE = 16;
 
 export interface Stamp {
-  sheet: 'ow' | 'in';
+  sheet: 'ow' | 'in' | 'market' | 'water' | 'civic' | 'voices' | 'island' | 'council';
   x: number; y: number; w: number; h: number;
   collide?: [number, number, number, number];
   /** Draw above characters regardless of y (for roofs/awnings that overlap). */
@@ -78,6 +84,110 @@ export const STAMPS: Record<string, Stamp> = {
   'forge': { sheet: 'in', x: 12, y: 10, w: 2, h: 3, collide: [0, 1, 2, 2] },
   'window': { sheet: 'in', x: 9, y: 4, w: 2, h: 2 },
   'painting': { sheet: 'in', x: 11, y: 4, w: 1, h: 2 },
+
+  // Original Market of Measures pavements, buildings and furniture.
+  'market-paving-a': { sheet: 'market', x: 0, y: 0, w: 1, h: 1 },
+  'market-paving-b': { sheet: 'market', x: 1, y: 0, w: 1, h: 1 },
+  'market-paving-c': { sheet: 'market', x: 2, y: 0, w: 1, h: 1 },
+  'market-paving-d': { sheet: 'market', x: 3, y: 0, w: 1, h: 1 },
+  'market-lane': { sheet: 'market', x: 4, y: 0, w: 1, h: 1 },
+  'market-edge': { sheet: 'market', x: 5, y: 0, w: 1, h: 1 },
+  'market-office': { sheet: 'market', x: 0, y: 1, w: 5, h: 4, collide: [0, 2, 5, 2] },
+  'market-workshop': { sheet: 'market', x: 5, y: 1, w: 5, h: 4, collide: [0, 2, 5, 2] },
+  'market-home': { sheet: 'market', x: 10, y: 1, w: 4, h: 4, collide: [0, 2, 4, 2] },
+  'market-wick-stall': { sheet: 'market', x: 0, y: 5, w: 4, h: 3, collide: [0, 1, 4, 2] },
+  'market-display-stall': { sheet: 'market', x: 4, y: 5, w: 4, h: 3, collide: [0, 1, 4, 2] },
+  'market-repair-stall': { sheet: 'market', x: 8, y: 5, w: 4, h: 3, collide: [0, 1, 4, 2] },
+  'market-scale-stand': { sheet: 'market', x: 12, y: 5, w: 3, h: 2, collide: [0, 1, 3, 1] },
+  'market-bench': { sheet: 'market', x: 15, y: 5, w: 3, h: 2, collide: [0, 1, 3, 1] },
+  'market-lamp': { sheet: 'market', x: 15, y: 7, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'market-planter': { sheet: 'market', x: 16, y: 7, w: 2, h: 2, collide: [0, 1, 2, 1] },
+
+  // Original Water Commons channels, terraces and council buildings.
+  'water-ripple-a': { sheet: 'water', x: 0, y: 0, w: 1, h: 1 },
+  'water-ripple-b': { sheet: 'water', x: 1, y: 0, w: 1, h: 1 },
+  'water-ripple-c': { sheet: 'water', x: 2, y: 0, w: 1, h: 1 },
+  'water-path': { sheet: 'water', x: 3, y: 0, w: 1, h: 1 },
+  'water-bridge': { sheet: 'water', x: 4, y: 0, w: 1, h: 1 },
+  'water-field-a': { sheet: 'water', x: 5, y: 0, w: 1, h: 1 },
+  'water-field-b': { sheet: 'water', x: 6, y: 0, w: 1, h: 1 },
+  'water-bank': { sheet: 'water', x: 7, y: 0, w: 1, h: 1 },
+  'water-council-hall': { sheet: 'water', x: 0, y: 1, w: 6, h: 4, collide: [0, 2, 6, 2] },
+  'water-weir': { sheet: 'water', x: 6, y: 1, w: 5, h: 3, collide: [0, 1, 5, 2] },
+  'water-gauge': { sheet: 'water', x: 11, y: 1, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'water-lantern': { sheet: 'water', x: 12, y: 1, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'water-banner': { sheet: 'water', x: 13, y: 1, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'water-terrace-wall': { sheet: 'water', x: 11, y: 3, w: 3, h: 2, collide: [0, 1, 3, 1] },
+
+  // Original Civic Machine streets, library furniture and canal walkway.
+  'civic-hall-tile': { sheet: 'civic', x: 0, y: 0, w: 1, h: 1 },
+  'civic-hall-route': { sheet: 'civic', x: 1, y: 0, w: 1, h: 1 },
+  'civic-cobbles-a': { sheet: 'civic', x: 2, y: 0, w: 1, h: 1 },
+  'civic-cobbles-b': { sheet: 'civic', x: 3, y: 0, w: 1, h: 1 },
+  'civic-kerb': { sheet: 'civic', x: 4, y: 0, w: 1, h: 1 },
+  'civic-riser': { sheet: 'civic', x: 5, y: 0, w: 1, h: 1 },
+  'civic-canal-a': { sheet: 'civic', x: 6, y: 0, w: 1, h: 1 },
+  'civic-canal-b': { sheet: 'civic', x: 7, y: 0, w: 1, h: 1 },
+  'civic-boardwalk': { sheet: 'civic', x: 8, y: 0, w: 1, h: 1 },
+  'civic-route-wall': { sheet: 'civic', x: 0, y: 1, w: 6, h: 3, collide: [0, 1, 6, 2] },
+  'civic-steps-office': { sheet: 'civic', x: 6, y: 1, w: 5, h: 4, collide: [0, 2, 5, 2] },
+  'civic-cart': { sheet: 'civic', x: 11, y: 1, w: 4, h: 2, collide: [0, 1, 4, 1] },
+  'civic-bookcases': { sheet: 'civic', x: 0, y: 4, w: 4, h: 2, collide: [0, 0, 4, 2] },
+  'civic-lamp': { sheet: 'civic', x: 4, y: 4, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'civic-stand': { sheet: 'civic', x: 5, y: 4, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'civic-rail': { sheet: 'civic', x: 6, y: 4, w: 3, h: 1 },
+
+  // Original Archive of Voices streets, glass walk, quay and listening furniture.
+  'voices-slate': { sheet: 'voices', x: 0, y: 0, w: 1, h: 1 },
+  'voices-inlay': { sheet: 'voices', x: 1, y: 0, w: 1, h: 1 },
+  'voices-paving-a': { sheet: 'voices', x: 2, y: 0, w: 1, h: 1 },
+  'voices-paving-b': { sheet: 'voices', x: 3, y: 0, w: 1, h: 1 },
+  'voices-promenade': { sheet: 'voices', x: 4, y: 0, w: 1, h: 1 },
+  'voices-glass': { sheet: 'voices', x: 5, y: 0, w: 1, h: 1 },
+  'voices-stairs': { sheet: 'voices', x: 6, y: 0, w: 1, h: 1 },
+  'voices-quay': { sheet: 'voices', x: 7, y: 0, w: 1, h: 1 },
+  'voices-tide-a': { sheet: 'voices', x: 8, y: 0, w: 1, h: 1 },
+  'voices-tide-b': { sheet: 'voices', x: 9, y: 0, w: 1, h: 1 },
+  'voices-screen': { sheet: 'voices', x: 0, y: 1, w: 4, h: 3, collide: [0, 1, 4, 2] },
+  'voices-arch': { sheet: 'voices', x: 4, y: 1, w: 5, h: 4, above: true },
+  'voices-bench': { sheet: 'voices', x: 9, y: 1, w: 3, h: 2, collide: [0, 1, 3, 1] },
+  'voices-cabinet': { sheet: 'voices', x: 12, y: 1, w: 2, h: 2, collide: [0, 1, 2, 1] },
+  'voices-reel-shelf': { sheet: 'voices', x: 9, y: 3, w: 3, h: 2, collide: [0, 0, 3, 2] },
+  'voices-rail': { sheet: 'voices', x: 0, y: 4, w: 1, h: 2 },
+  'voices-edge-rail': { sheet: 'voices', x: 1, y: 4, w: 3, h: 1 },
+
+  // Original Island of Models bay, dock landings and habitat margin.
+  'island-slate': { sheet: 'island', x: 0, y: 0, w: 1, h: 1 },
+  'island-path': { sheet: 'island', x: 1, y: 0, w: 1, h: 1 },
+  'island-sand': { sheet: 'island', x: 2, y: 0, w: 1, h: 1 },
+  'island-bay-a': { sheet: 'island', x: 3, y: 0, w: 1, h: 1 },
+  'island-bay-b': { sheet: 'island', x: 4, y: 0, w: 1, h: 1 },
+  'island-shallow': { sheet: 'island', x: 5, y: 0, w: 1, h: 1 },
+  'island-boards': { sheet: 'island', x: 6, y: 0, w: 1, h: 1 },
+  'island-marsh-a': { sheet: 'island', x: 7, y: 0, w: 1, h: 1 },
+  'island-marsh-b': { sheet: 'island', x: 8, y: 0, w: 1, h: 1 },
+  'island-wall-plan': { sheet: 'island', x: 0, y: 1, w: 6, h: 4, collide: [0, 1, 6, 3] },
+  'island-dock-shelter': { sheet: 'island', x: 6, y: 1, w: 5, h: 3, collide: [0, 1, 5, 2] },
+  'island-dock-stage': { sheet: 'island', x: 11, y: 1, w: 4, h: 2, flat: true },
+  'island-reeds': { sheet: 'island', x: 6, y: 4, w: 3, h: 2, collide: [0, 1, 3, 1] },
+  'island-maker-bench': { sheet: 'island', x: 9, y: 4, w: 3, h: 2, collide: [0, 1, 3, 1] },
+  'island-mast': { sheet: 'island', x: 12, y: 4, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'island-margin-mark': { sheet: 'island', x: 13, y: 4, w: 2, h: 2, collide: [0, 1, 2, 1] },
+
+  // Original Council of Inquiry scales, archive niches and bell rail.
+  'council-blue': { sheet: 'council', x: 0, y: 0, w: 1, h: 1 },
+  'council-inlay': { sheet: 'council', x: 1, y: 0, w: 1, h: 1 },
+  'council-purple': { sheet: 'council', x: 2, y: 0, w: 1, h: 1 },
+  'council-gallery-runner': { sheet: 'council', x: 3, y: 0, w: 1, h: 1 },
+  'council-court': { sheet: 'council', x: 4, y: 0, w: 1, h: 1 },
+  'council-riser': { sheet: 'council', x: 5, y: 0, w: 1, h: 1 },
+  'council-timing-wall': { sheet: 'council', x: 0, y: 1, w: 6, h: 4, collide: [0, 1, 6, 3] },
+  'council-clock-shelf': { sheet: 'council', x: 6, y: 1, w: 4, h: 3, collide: [0, 1, 4, 2] },
+  'council-letter-niche': { sheet: 'council', x: 10, y: 1, w: 5, h: 3, collide: [0, 1, 5, 2] },
+  'council-rail-fence': { sheet: 'council', x: 0, y: 5, w: 6, h: 1, collide: [0, 0, 6, 1] },
+  'council-bench': { sheet: 'council', x: 6, y: 4, w: 3, h: 2, collide: [0, 1, 3, 1] },
+  'council-lamp': { sheet: 'council', x: 9, y: 4, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'council-bell-rail': { sheet: 'council', x: 10, y: 4, w: 5, h: 2, collide: [0, 1, 5, 1] },
 };
 
 /** Character sheets: 16x32 frames, 4 per row; rows: down, right, up, left. */

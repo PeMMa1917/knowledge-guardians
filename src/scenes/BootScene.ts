@@ -1,3 +1,4 @@
+import { BASE_SHEET_KEY, BASE_SHEET_URL } from './looks';
 import Phaser from 'phaser';
 import { STAMPS, CHAR_FRAME } from './art';
 import { artKeys, drawArt, glowCanvas } from '../ui/illustrations';
@@ -36,6 +37,13 @@ export class BootScene extends Phaser.Scene {
     this.load.on('progress', (p: number) => { bar.width = Math.max(4, p * 300); });
     this.load.image('ow', 'assets/art/armm1998/Overworld.png');
     this.load.image('in', 'assets/art/armm1998/Inner.png');
+    this.load.image('market', 'assets/art/generated/market_tiles.png');
+    this.load.image('water', 'assets/art/generated/water_tiles.png');
+    this.load.image('civic', 'assets/art/generated/civic_tiles.png');
+    this.load.image('voices', 'assets/art/generated/voices_tiles.png');
+    this.load.image('island', 'assets/art/generated/island_tiles.png');
+    this.load.image('council', 'assets/art/generated/council_tiles.png');
+    this.load.image(BASE_SHEET_KEY, BASE_SHEET_URL); // base for custom player looks
     for (const id of CHARACTER_SHEETS) {
       this.load.spritesheet(`char.${id}`, `assets/art/generated/characters/${id}.png`, { frameWidth: CHAR_FRAME.w, frameHeight: CHAR_FRAME.h });
     }
@@ -46,7 +54,7 @@ export class BootScene extends Phaser.Scene {
 
   create(): void {
     this.children.removeAll(true); // remove the loading bar
-    // Named frames for every stamp on the two tile sheets.
+    // Named frames for every stamp on the tile sheets.
     for (const [name, s] of Object.entries(STAMPS)) {
       const tex = this.textures.get(s.sheet);
       if (!tex.has(name)) tex.add(name, 0, s.x * 16, s.y * 16, s.w * 16, s.h * 16);
@@ -57,6 +65,7 @@ export class BootScene extends Phaser.Scene {
       if (c && !this.textures.exists(key)) this.textures.addCanvas(key, c);
     }
     if (!this.textures.exists('glow')) this.textures.addCanvas('glow', glowCanvas(128));
+    if (!this.anims.exists('moth.flap')) this.anims.create({ key: 'moth.flap', frames: [{ key: 'moth.0' }, { key: 'moth.1' }], frameRate: 9, repeat: -1 });
     // Walk animations.
     const dirs = ['down', 'right', 'up', 'left'];
     for (const id of CHARACTER_SHEETS) {

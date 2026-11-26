@@ -58,6 +58,12 @@
    "sprite": "warden-ise",
    "mode": "fictional",
    "talk": [
+    {"if": {"all": [{"flag": "harrowmere.found", "eq": true}, {"not": {"flagSet": "ise.harrowmere"}}]}, "node": "ise.harrowmere"},
+    {"if": {"flag": "nile.returned", "eq": true}, "node": "nile.nexus-resolved"},
+    {"if": {"flag": "nile.dispatch", "eq": "print"}, "node": "nile.nexus-print"},
+    {"if": {"flag": "nile.dispatch", "eq": "read"}, "node": "nile.nexus-read"},
+    {"if": {"flag": "nile.dispatch", "eq": "pair"}, "node": "nile.nexus-pair"},
+    {"if": {"all": [{"flag": "study.letter", "eq": true}, {"objective": "m02.o8.ise"}, {"not": {"flag": "nile.arrived", "eq": true}}]}, "node": "nile.nexus-start"},
     {
      "if": {
       "flag": "chapter.done",
@@ -115,6 +121,26 @@
    "talk": [
     {
      "if": {
+      "all": [
+       {
+        "origin": "archive"
+       },
+       {
+        "flag": "os.archive.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "os.archive.asked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "os.archive.other"
+    },
+    {
+     "if": {
       "flag": "label.pen.everHeld",
       "eq": true
      },
@@ -164,6 +190,26 @@
    "sprite": "clerk-venn",
    "mode": "fictional",
    "talk": [
+    {
+     "if": {
+      "all": [
+       {
+        "origin": "traveller"
+       },
+       {
+        "flag": "os.traveller.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "os.traveller.asked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "os.traveller.other"
+    },
     {
      "if": {
       "flagSet": "sd.practice.outcome"
@@ -304,6 +350,43 @@
    "talk": [
     {
      "if": {
+      "all": [
+       {
+        "flag": "well.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "well.heard.hesper",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "well.hesper"
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "origin": "workshop"
+       },
+       {
+        "flag": "os.workshop.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "os.workshop.asked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "os.workshop.other"
+    },
+    {
+     "if": {
       "flag": "hesper.coming",
       "eq": true
      },
@@ -336,6 +419,59 @@
    "talk": [
     {
      "if": {
+      "all": [
+       {
+        "flagSet": "well.reflected"
+       },
+       {
+        "not": {
+         "flag": "well.shared",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "well.orrin"
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "flagSet": "sd.corvan.outcome"
+       },
+       {
+        "not": {
+         "flag": "lamps.heard",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "lamps.orrin"
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "objective": "m02.o1.arrive"
+       },
+       {
+        "not": {
+         "flag": "lamps.heard",
+         "eq": true
+        }
+       },
+       {
+        "not": {
+         "flagSet": "sd.corvan.outcome"
+        }
+       }
+      ]
+     },
+     "node": "lamps.orrin"
+    },
+    {
+     "if": {
       "flagSet": "sd.corvan.outcome"
      },
      "node": "orrin.after"
@@ -359,6 +495,26 @@
    "sprite": "scholar-sefa",
    "mode": "fictional",
    "talk": [
+    {
+     "if": {
+      "all": [
+       {
+        "origin": "singer"
+       },
+       {
+        "flag": "os.singer.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "os.singer.asked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "os.singer.other"
+    },
     {
      "if": {
       "flag": "heard.sefa",
@@ -406,15 +562,74 @@
    "id": "archivist-tull",
    "name": "Archivist Noor Tull",
    "role": "Nexus archivist",
-   "sprite": "villager-1",
+   "sprite": "custom:brown.grey.slate.charcoal.scarf.gold.bun.lightframes.none",
    "mode": "fictional",
-   "talk": []
+   "talk": [
+    {
+     "if": {
+      "objective": "ee1.o7.reflect"
+     },
+     "node": "tull.after"
+    },
+    {
+     "if": {
+      "objective": "ee1.o6.integrity"
+     },
+     "node": "tull.reflect"
+    },
+    {
+     "if": {
+      "objective": "ee1.o5.cite"
+     },
+     "node": "tull.draft"
+    },
+    {
+     "if": {
+      "objective": "ee1.o4.argue"
+     },
+     "node": "tull.cite"
+    },
+    {
+     "if": {
+      "objective": "ee1.o3.weigh"
+     },
+     "node": "tull.argue"
+    },
+    {
+     "if": {
+      "objective": "ee1.o2.plan"
+     },
+     "node": "tull.weigh"
+    },
+    {
+     "if": {
+      "objective": "ee1.o1.lock"
+     },
+     "node": "tull.plan"
+    },
+    {
+     "if": {
+      "flag": "ee1.started",
+      "eq": true
+     },
+     "node": "tull.lockagain"
+    },
+    {
+     "if": {
+      "objective": "m01.o6.label"
+     },
+     "node": "tull.start"
+    },
+    {
+     "node": "tull.busy"
+    }
+   ]
   },
   {
    "id": "translator-ama",
    "name": "Translator Ama Ofori",
    "role": "Translates the Nexus labels",
-   "sprite": "villager-2",
+   "sprite": "custom:dark.black.gold.wine.none.red.covered.none.none",
    "mode": "fictional",
    "talk": []
   },
@@ -422,25 +637,369 @@
    "id": "translator-lio",
    "name": "Translator Lio Ferreira",
    "role": "Translates the Nexus labels",
-   "sprite": "villager-1",
+   "sprite": "custom:olive.black.blue.sand.scarf.white.long.none.none",
    "mode": "fictional",
-   "talk": []
+   "talk": [
+    {
+     "if": {
+      "flagSet": "os.traveller.choice"
+     },
+     "node": "os.traveller.idle"
+    },
+    {
+     "if": {
+      "flag": "os.traveller.asked",
+      "eq": true
+     },
+     "node": "os.traveller.reflect"
+    },
+    {
+     "if": {
+      "flag": "os.traveller.started",
+      "eq": true
+     },
+     "node": "os.traveller.wait"
+    },
+    {
+     "node": "os.traveller.start"
+    }
+   ]
   },
   {
    "id": "fruit-seller",
    "name": "Fruit seller Mara",
    "role": "Emberford market",
-   "sprite": "villager-2",
+   "sprite": "custom:warm.auburn.green.sand.headband.rose",
    "mode": "fictional",
-   "talk": []
+   "talk": [
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "well.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "well.heard.fruit",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "well.fruit"
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "origin": "harbour"
+       },
+       {
+        "flag": "os.harbour.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "os.harbour.asked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "node": "os.harbour.other"
+    },
+    {
+     "node": "fruit.idle"
+    }
+   ]
   },
   {
    "id": "well-keeper",
-   "name": "Well keeper Odu",
+   "name": "Well keeper Efua Asante",
    "role": "Emberford",
-   "sprite": "villager-1",
+   "sprite": "custom:deep.black.orange.brown.headband.gold",
    "mode": "fictional",
-   "talk": []
+   "talk": [
+    {
+     "if": {
+      "flag": "well.shared",
+      "eq": true
+     },
+     "node": "well.done"
+    },
+    {
+     "if": {
+      "flagSet": "well.reflected"
+     },
+     "node": "well.show"
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "well.east.read",
+        "eq": true
+       },
+       {
+        "flag": "well.west.read",
+        "eq": true
+       }
+      ]
+     },
+     "node": "well.reflect"
+    },
+    {
+     "if": {
+      "flagSet": "well.plan"
+     },
+     "node": "well.plan.ok"
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "well.heard.keeper",
+        "eq": true
+       },
+       {
+        "flag": "well.heard.fruit",
+        "eq": true
+       },
+       {
+        "flag": "well.heard.hesper",
+        "eq": true
+       }
+      ]
+     },
+     "node": "well.plan"
+    },
+    {
+     "if": {
+      "flag": "well.started",
+      "eq": true
+     },
+     "node": "well.wait"
+    },
+    {
+     "node": "well.start"
+    }
+   ]
+  },
+  {
+   "id": "keeper-oduya",
+   "name": "Keeper Ruth Oduya",
+   "role": "Emberford record-keeper",
+   "sprite": "custom:dark.white.plum.charcoal.scarf.gold.short.lightframes.wheelchair",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "objective": "ee2.o7.reflect"
+     },
+     "node": "oduya.after"
+    },
+    {
+     "if": {
+      "objective": "ee2.o6.integrity"
+     },
+     "node": "oduya.reflect"
+    },
+    {
+     "if": {
+      "objective": "ee2.o5.cite"
+     },
+     "node": "oduya.draft"
+    },
+    {
+     "if": {
+      "objective": "ee2.o4.argue"
+     },
+     "node": "oduya.cite"
+    },
+    {
+     "if": {
+      "objective": "ee2.o3.weigh"
+     },
+     "node": "oduya.argue"
+    },
+    {
+     "if": {
+      "objective": "ee2.o2.plan"
+     },
+     "node": "oduya.weigh"
+    },
+    {
+     "if": {
+      "objective": "ee2.o1.lock"
+     },
+     "node": "oduya.plan"
+    },
+    {
+     "if": {
+      "flag": "ee2.started",
+      "eq": true
+     },
+     "node": "oduya.lockagain"
+    },
+    {
+     "if": {
+      "flag": "thread.blade.ledger",
+      "eq": true
+     },
+     "node": "oduya.start"
+    },
+    {
+     "node": "oduya.busy"
+    }
+   ]
+  },
+  {
+   "id": "visitor-sol",
+   "name": "Sol, a visitor",
+   "role": "visitor in the Hall of Firsts",
+   "sprite": "custom:tan.black.cream.indigo.none.gold.curls.none.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "hall.sol.talked",
+      "eq": true
+     },
+     "node": "sol.again"
+    },
+    {
+     "node": "sol.start"
+    }
+   ]
+  },
+  {
+   "id": "cataloguer-bela",
+   "name": "Cataloguer Bela Varga",
+   "role": "Keeps the Nexus card catalogue",
+   "sprite": "custom:pale.grey.violet.charcoal.scarf.cyan.bun.darkframes.cane",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flagSet": "os.archive.choice"
+     },
+     "node": "os.archive.idle"
+    },
+    {
+     "if": {
+      "flag": "os.archive.asked",
+      "eq": true
+     },
+     "node": "os.archive.reflect"
+    },
+    {
+     "if": {
+      "flag": "os.archive.started",
+      "eq": true
+     },
+     "node": "os.archive.wait"
+    },
+    {
+     "node": "os.archive.start"
+    }
+   ]
+  },
+  {
+   "id": "runner-tamar",
+   "name": "Runner Tamar Okoro",
+   "role": "Carries messages from the river farms",
+   "sprite": "custom:brown.black.teal.sand.headband.white",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flagSet": "os.harbour.choice"
+     },
+     "node": "os.harbour.idle"
+    },
+    {
+     "if": {
+      "flag": "os.harbour.asked",
+      "eq": true
+     },
+     "node": "os.harbour.reflect"
+    },
+    {
+     "if": {
+      "flag": "os.harbour.started",
+      "eq": true
+     },
+     "node": "os.harbour.wait"
+    },
+    {
+     "node": "os.harbour.start"
+    }
+   ]
+  },
+  {
+   "id": "apprentice-ren",
+   "name": "Apprentice Ren Takahashi",
+   "role": "Learns from Hesper",
+   "sprite": "custom:light.black.slate.brown.headband.red",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flagSet": "os.workshop.choice"
+     },
+     "node": "os.workshop.idle"
+    },
+    {
+     "if": {
+      "flag": "os.workshop.asked",
+      "eq": true
+     },
+     "node": "os.workshop.reflect"
+    },
+    {
+     "if": {
+      "flag": "os.workshop.started",
+      "eq": true
+     },
+     "node": "os.workshop.wait"
+    },
+    {
+     "node": "os.workshop.start"
+    }
+   ]
+  },
+  {
+   "id": "singer-teodora",
+   "name": "Singer Teodora Lupu",
+   "role": "Sings the old work songs",
+   "sprite": "custom:olive.auburn.plum.wine.scarf.gold.long.none.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flagSet": "os.singer.choice"
+     },
+     "node": "os.singer.idle"
+    },
+    {
+     "if": {
+      "flag": "os.singer.asked",
+      "eq": true
+     },
+     "node": "os.singer.reflect"
+    },
+    {
+     "if": {
+      "flag": "os.singer.started",
+      "eq": true
+     },
+     "node": "os.singer.wait"
+    },
+    {
+     "node": "os.singer.start"
+    }
+   ]
   }
  ],
  "criteria": [
@@ -483,6 +1042,21 @@
    "id": "crit.culture.firsts",
    "concept": "culture",
    "maximum": 15
+  },
+  {
+   "id": "crit.justification.ee-practice",
+   "concept": "justification",
+   "maximum": 15
+  },
+  {
+   "id": "crit.interpretation.ee-practice",
+   "concept": "interpretation",
+   "maximum": 15
+  },
+  {
+   "id": "crit.responsibility.well",
+   "concept": "responsibility",
+   "maximum": 10
   }
  ],
  "awards": [
@@ -505,7 +1079,8 @@
       "gte": 2
      }
     ]
-   }
+   },
+   "title": "Reader of Dates"
   },
   {
    "id": "skill.fair-test-1",
@@ -518,7 +1093,8 @@
    "when": {
     "num": "sim.fair",
     "gte": 1
-   }
+   },
+   "title": "Fair Tester"
   },
   {
    "id": "award.two-sides",
@@ -542,7 +1118,8 @@
       "flagSet": "sd.practice.outcome"
      }
     ]
-   }
+   },
+   "title": "Hearer of Both Sides"
   },
   {
    "id": "skill.force-support-1",
@@ -555,7 +1132,8 @@
    "when": {
     "flag": "label.pen.everHeld",
     "eq": true
-   }
+   },
+   "title": "Label-Mender"
   },
   {
    "id": "skill.thread-1",
@@ -568,7 +1146,8 @@
    "when": {
     "flag": "thread.blade.gap",
     "eq": true
-   }
+   },
+   "title": "Thread-Follower"
   },
   {
    "id": "award.forged-not-sorted",
@@ -581,7 +1160,8 @@
    "when": {
     "flag": "forge.compared",
     "eq": true
-   }
+   },
+   "title": "Billet-Maker"
   },
   {
    "id": "badge.honest-sign",
@@ -593,20 +1173,61 @@
    ],
    "when": {
     "flagSet": "sd.corvan.outcome"
-   }
+   },
+   "title": "Keeper of the Square"
   },
   {
    "id": "badge.hall-of-firsts",
    "kind": "badge",
    "name": "Hall of Firsts",
-   "earnedBy": "You repaired three plaques about people from different continents and times.",
+   "earnedBy": "You repaired three plaques about people, each from their own place and time.",
    "criteria": [
     "crit.culture.firsts"
    ],
    "when": {
     "num": "count.firsts",
     "gte": 3
-   }
+   },
+   "title": "Mender of Firsts"
+  },
+  {
+   "id": "skill.ee-practice-1",
+   "kind": "skill-milestone",
+   "name": "Research Practice I",
+   "earnedBy": "You narrowed a question, planned a search, argued with a counterclaim, cited your sources and reflected. Practice only, not your real Extended Essay.",
+   "criteria": [
+    "crit.justification.ee-practice"
+   ],
+   "when": {
+    "objective": "ee1.o7.reflect"
+   },
+   "title": "Lock-Turner"
+  },
+  {
+   "id": "skill.ee-practice-2",
+   "kind": "skill-milestone",
+   "name": "Research Practice II",
+   "earnedBy": "You asked who wrote a record and why, planned a search back to the writer, argued with a counterclaim, cited and reflected. Practice only, not your real Extended Essay.",
+   "criteria": [
+    "crit.interpretation.ee-practice"
+   ],
+   "when": {
+    "objective": "ee2.o7.reflect"
+   },
+   "title": "Asker of Writers"
+  },
+  {
+   "id": "badge.east-well",
+   "kind": "badge",
+   "name": "Ask First",
+   "earnedBy": "You listened to everyone, planned with them, compared two wells and showed the town. (A game quest, not CAS.)",
+   "criteria": [
+    "crit.responsibility.well"
+   ],
+   "when": {
+    "objective": "well.o5.show"
+   },
+   "title": "One Who Asks First"
   }
  ],
  "offers": [
@@ -788,6 +1409,55 @@
    },
    "did": "You admitted that Corvan paid fairly, even while you argued against his sign.",
    "prompt": ""
+  },
+  {
+   "id": "PM-15",
+   "attribute": "principled",
+   "when": {
+    "flag": "ee1.integrity",
+    "eq": true
+   },
+   "did": "You found copied words, an invented source and a missing citation, and you named each one.",
+   "prompt": "Why does it matter whose words are whose?"
+  },
+  {
+   "id": "PM-16",
+   "attribute": "reflective",
+   "when": {
+    "flagSet": "ee1.reflected"
+   },
+   "did": "You looked back at a research trail and said what changed in your thinking.",
+   "prompt": "What would you do differently next time?"
+  },
+  {
+   "id": "PM-17",
+   "attribute": "caring",
+   "when": {
+    "flag": "well.heard.keeper",
+    "eq": true
+   },
+   "did": "You asked the people at the well what they needed before you suggested anything.",
+   "prompt": "When did someone ask what you needed before they helped?"
+  },
+  {
+   "id": "PM-18",
+   "attribute": "communicator",
+   "when": {
+    "flag": "well.shared",
+    "eq": true
+   },
+   "did": "You showed the whole street the same evidence, so they could agree.",
+   "prompt": "How do you share a finding so that people on both sides trust it?"
+  },
+  {
+   "id": "PM-19",
+   "attribute": "balanced",
+   "when": {
+    "flag": "zen.sat",
+    "eq": true
+   },
+   "did": "You stopped for a few slow breaths before going on.",
+   "prompt": "What helps you rest when work gets hard?"
   }
  ],
  "misconceptions": [
@@ -992,6 +1662,46 @@
    }
   },
   {
+   "id": "MIS-13",
+   "title": "Mathematics is only facts, with no assumptions",
+   "signal": "Treats a calculated result as certain without asking what went into it.",
+   "worldResponse": "A result changes when a measurement or an assumption behind it changes.",
+   "reflection": "What measurements and assumptions went into this number? Which one, if changed, would change the result?",
+   "teacherMove": "Show one calculation with two different starting assumptions.",
+   "concepts": [
+    "certainty",
+    "justification"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-14",
+   "title": "Mathematics has nothing to do with culture",
+   "signal": "Says that where a method came from does not matter.",
+   "worldResponse": "The units, tools and purposes behind a method turn out to shape the result.",
+   "reflection": "Who used this method, with what units and tools, and for what purpose?",
+   "teacherMove": "Trace one method across places and centuries. Ask what changed on the way.",
+   "concepts": [
+    "culture",
+    "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
    "id": "MIS-15",
    "title": "A record shows exactly what happened",
    "signal": "Treats a ledger or chronicle as a direct copy of the past.",
@@ -1021,6 +1731,26 @@
    "concepts": [
     "power",
     "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-17",
+   "title": "Asking people is not real evidence",
+   "signal": "Dismisses what people report as mere gossip, with no thought of method.",
+   "worldResponse": "A careful set of reports, checked against each other, answers the question.",
+   "reflection": "How could you ask many people in a way that you can check?",
+   "teacherMove": "Compare gossip with a careful survey. Ask what makes the second one evidence.",
+   "concepts": [
+    "explanation",
+    "objectivity"
    ],
    "student": {
     "count": 3,
@@ -1132,6 +1862,86 @@
    }
   },
   {
+   "id": "MIS-23",
+   "title": "Tools are neutral",
+   "signal": "Says that a tool has no effect on what we can make or know.",
+   "worldResponse": "The tool turns out to decide what can be made, and what can be seen.",
+   "reflection": "What does this tool make easy? What does it make hard, or impossible?",
+   "teacherMove": "Ask what one instrument or tool lets people notice, and what it hides.",
+   "concepts": [
+    "responsibility",
+    "power"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-24",
+   "title": "Machines cannot be wrong",
+   "signal": "Trusts a machine's output over a check.",
+   "worldResponse": "The machine's source turns out not to exist.",
+   "reflection": "How would you check what a machine gives you? What would count as a check?",
+   "teacherMove": "Show a machine output with an invented source. Practise checking it.",
+   "concepts": [
+    "truth",
+    "evidence"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-25",
+   "title": "Religion and science must always conflict",
+   "signal": "Dismisses a scholar's work on nature because the scholar was religious.",
+   "worldResponse": "Many scholars worked on faith and on nature, and asked different questions of each.",
+   "reflection": "What question does each part of this person's work try to answer?",
+   "teacherMove": "Discuss scope: different questions, different methods. Use figures who worked in both.",
+   "concepts": [
+    "perspective",
+    "culture"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-26",
+   "title": "Ethics is only feeling, with no reasons",
+   "signal": "Refuses to give or hear reasons in a disagreement about values.",
+   "worldResponse": "Without reasons, the people cannot reach any agreement.",
+   "reflection": "You may still disagree. What reasons could each side give?",
+   "teacherMove": "Ask for reasons on both sides of one value disagreement. Do not ask for a winner.",
+   "concepts": [
+    "values",
+    "justification"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
    "id": "MIS-27",
    "title": "Only writing counts as knowledge",
    "signal": "Ignores an oral source because it is not written.",
@@ -1192,6 +2002,26 @@
    }
   },
   {
+   "id": "MIS-30",
+   "title": "A theory is just a guess",
+   "signal": "Calls a tested explanation 'only a theory' as if that meant a guess.",
+   "worldResponse": "The explanation predicts what happens next, and it does.",
+   "reflection": "What has this explanation predicted? What would show it is wrong?",
+   "teacherMove": "Separate everyday 'theory' (a hunch) from a tested explanation.",
+   "concepts": [
+    "explanation",
+    "certainty"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
    "id": "MIS-31",
    "title": "A model is a copy of reality",
    "signal": "Treats a model or reconstruction as the real thing.",
@@ -1201,6 +2031,26 @@
    "concepts": [
     "explanation",
     "interpretation"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-32",
+   "title": "A myth or song is just a false story",
+   "signal": "Calls a traditional story false and stops there.",
+   "worldResponse": "The story turns out to carry real knowledge: a name, a place, a value.",
+   "reflection": "What does this story explain or keep? What would you check it against?",
+   "teacherMove": "Ask what a myth or song does for the people who keep it, not only whether it is literally true.",
+   "concepts": [
+    "culture",
+    "values"
    ],
    "student": {
     "count": 3,
@@ -1252,6 +2102,26 @@
    }
   },
   {
+   "id": "MIS-35",
+   "title": "An essay only needs to describe",
+   "signal": "Wants to describe sources instead of making an argument.",
+   "worldResponse": "The reader asks 'so what?' and walks away.",
+   "reflection": "What is your claim? What would someone who disagrees say?",
+   "teacherMove": "Turn a description into a claim, then add a counterclaim.",
+   "concepts": [
+    "justification",
+    "explanation"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
    "id": "MIS-36",
    "title": "Admitting a fair point makes you weaker",
    "signal": "Answers a fair point with a shout or a cheap shot instead of dealing with it.",
@@ -1260,6 +2130,66 @@
    "teacherMove": "Show how a counterclaim, answered well, makes an argument stronger.",
    "concepts": [
     "justification",
+    "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-37",
+   "title": "Only impressive objects are worth showing",
+   "signal": "Ignores a small or plain object because it is not grand.",
+   "worldResponse": "The small object turns out to hold the important clue.",
+   "reflection": "What can a small, plain object show that a grand one cannot?",
+   "teacherMove": "Choose a plain personal object and ask what it shows about knowledge.",
+   "concepts": [
+    "interpretation",
+    "evidence"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-38",
+   "title": "A knowledge question is the same as a subject question",
+   "signal": "Answers with subject content when the question is about how we know.",
+   "worldResponse": "The answer gives a fact, but the disagreement goes on.",
+   "reflection": "Is your question about the pen, or about how we decide what counts as 'first'?",
+   "teacherMove": "Take one subject question and turn it into a question about knowledge.",
+   "concepts": [
+    "justification",
+    "perspective"
+   ],
+   "student": {
+    "count": 3,
+    "days": 14
+   },
+   "teacher": {
+    "count": 5,
+    "days": 21
+   }
+  },
+  {
+   "id": "MIS-39",
+   "title": "Real examples must come from the news",
+   "signal": "Wants only today's events as real examples.",
+   "worldResponse": "A dated historical object or a personal experience works just as well.",
+   "reflection": "Which real examples can you check carefully? Do they have to be recent?",
+   "teacherMove": "Collect examples from history, from the student's own life and from subjects.",
+   "concepts": [
+    "evidence",
     "perspective"
    ],
    "student": {
@@ -1329,6 +2259,79 @@
     ],
     "atl": [
      "thinking"
+    ]
+   }
+  },
+  {
+   "id": "pf.ee1",
+   "kind": "essay",
+   "title": "EE practice: The Inventor's Share",
+   "text": "Practice trail (not my real Extended Essay). I narrowed a question about who was credited for the ballpoint pen, planned a search, named a gap (no licence records), built a claim with a counterclaim, cited two records, and found three integrity problems in a draft. What changed in my thinking:",
+   "weave": {
+    "concepts": [
+     "justification",
+     "evidence"
+    ],
+    "atl": [
+     "research",
+     "thinking"
+    ],
+    "subjects": [
+     "business",
+     "history"
+    ],
+    "aoks": [
+     "HIS",
+     "HUM"
+    ]
+   }
+  },
+  {
+   "id": "pf.ee2",
+   "kind": "essay",
+   "title": "EE practice: Who Holds the Pen?",
+   "text": "Practice trail (not my real Extended Essay). I asked how the writer of a record shapes what it says, planned a search back to the writer, weighed a ledger and a song, built a claim with a counterclaim, cited two sources and found three integrity problems. What changed in my thinking:",
+   "weave": {
+    "concepts": [
+     "interpretation",
+     "power",
+     "evidence"
+    ],
+    "atl": [
+     "research",
+     "thinking"
+    ],
+    "subjects": [
+     "history"
+    ],
+    "aoks": [
+     "HIS"
+    ]
+   }
+  },
+  {
+   "id": "pf.well",
+   "kind": "reflection",
+   "title": "The East Well: listen, plan, act, reflect, show",
+   "text": "In Emberford I listened to three people, planned a fair comparison with them, read the ropes at two wells, reflected and showed the guild. These are habits of a good community project. Play is not CAS. What I would do the same way in a real project:",
+   "weave": {
+    "concepts": [
+     "responsibility",
+     "evidence",
+     "explanation"
+    ],
+    "atl": [
+     "social",
+     "communication",
+     "research"
+    ],
+    "subjects": [
+     "ess",
+     "geography"
+    ],
+    "aoks": [
+     "NAT",
+     "HUM"
     ]
    }
   }

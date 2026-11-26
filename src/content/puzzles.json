@@ -1,0 +1,3404 @@
+{
+ "puzzles": [
+  {
+   "id": "guild-notice",
+   "type": "rounds",
+   "title": "The Sign-Smith's Notice Board",
+   "intro": "Guildmaster Orrin has three new notices for the market gate. The Sign-Smith's board only lets a notice through if it says exactly what Orrin means. One small mark can change what the whole market does.",
+   "skills": [
+    "SK-GRM-07",
+    "SK-GRM-05",
+    "SK-GRM-13"
+   ],
+   "weave": {
+    "concepts": [
+     "interpretation",
+     "responsibility"
+    ],
+    "atl": [
+     "communication",
+     "thinking"
+    ],
+    "subjects": [
+     "lang-langlit",
+     "lang-b"
+    ],
+    "aoks": [
+     "LAN"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.interpretation.signs"
+    },
+    {
+     "journal": "j.signs.done"
+    }
+   ],
+   "rounds": [
+    {
+     "prompt": "Orrin means: only the traders who sell old steel must label it. Which notice says that?",
+     "options": [
+      {
+       "text": "Traders, who sell old steel, must label it.",
+       "ok": false,
+       "result": "The commas make 'who sell old steel' extra information about ALL traders. By noon, Mara has put a label on every apple: 'Not old steel.' The queue is very long."
+      },
+      {
+       "text": "Traders who sell old steel must label it.",
+       "ok": true,
+       "result": "The board glows. With no commas, 'who sell old steel' picks out which traders. Only they must label their steel."
+      },
+      {
+       "text": "Traders who sell, old steel must label it.",
+       "ok": false,
+       "result": "Now the steel must label itself. Corvan stares at his blade and waits. Nothing happens."
+      }
+     ]
+    },
+    {
+     "prompt": "Orrin means: the SMITH said the blade was new. Which notice is clear?",
+     "options": [
+      {
+       "text": "When Corvan met the smith, he said the blade was new.",
+       "ok": false,
+       "result": "Who is 'he'? Half the market thinks Corvan admitted it. Corvan's customers ask for their money back, and Corvan is very confused."
+      },
+      {
+       "text": "When Corvan met the smith, the smith said the blade was new.",
+       "ok": true,
+       "result": "The board glows. Naming the speaker again removes the doubt. A pronoun must point to one person only."
+      },
+      {
+       "text": "When he met the smith, Corvan said they said the blade was new.",
+       "ok": false,
+       "result": "Now nobody can follow it. Two pronouns, three people, and a crowd of puzzled faces."
+      }
+     ]
+    },
+    {
+     "prompt": "Orrin means: Corvan sold a steel blade to a buyer. Which notice puts the words in the right place?",
+     "options": [
+      {
+       "text": "Corvan sold a blade to a buyer made of steel.",
+       "ok": false,
+       "result": "The town crier reads it out loud. Everyone looks for the steel buyer. A child asks if the buyer clanks when walking."
+      },
+      {
+       "text": "Made of steel, Corvan sold a blade to a buyer.",
+       "ok": false,
+       "result": "Now Corvan is made of steel. He is flattered, but it is not true."
+      },
+      {
+       "text": "Corvan sold a steel blade to a buyer.",
+       "ok": true,
+       "result": "The board glows and the gate opens. A describing word must sit next to the thing it describes."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "song-bridge",
+   "type": "order",
+   "title": "The Citation Thread Bridge",
+   "intro": "Sefa wants to quote a work song in her guide for visitors. A visitor at the south gate must be able to find the song from the citation alone. Put the pieces in order (MLA core elements). Leave out anything that does not help a reader find the source.",
+   "skills": [
+    "SK-CIT-04",
+    "SK-CIT-05",
+    "SK-CIT-06",
+    "SK-CIT-07",
+    "SK-CIT-11",
+    "SK-CIT-12"
+   ],
+   "weave": {
+    "concepts": [
+     "evidence",
+     "responsibility"
+    ],
+    "atl": [
+     "research",
+     "communication"
+    ],
+    "subjects": [
+     "lang-lit",
+     "history"
+    ],
+    "aoks": [
+     "HIS",
+     "ART"
+    ]
+   },
+   "tiles": [
+    {
+     "id": "author",
+     "text": "Okon, Sefa.",
+     "role": "author"
+    },
+    {
+     "id": "title",
+     "text": "“Look at the Hand, Not the Shine.”",
+     "role": "title of the source (in quotation marks)"
+    },
+    {
+     "id": "container",
+     "text": "Songs of Aethelgard,",
+     "role": "title of the container (the book it is in, in italics)"
+    },
+    {
+     "id": "publisher",
+     "text": "Emberford Guild Press,",
+     "role": "publisher"
+    },
+    {
+     "id": "date",
+     "text": "1203,",
+     "role": "publication date"
+    },
+    {
+     "id": "location",
+     "text": "p. 14.",
+     "role": "location (the page)"
+    },
+    {
+     "id": "x.where",
+     "text": "I found it on a shelf.",
+     "role": "note",
+     "why": "Where you found a book does not help a reader find it."
+    },
+    {
+     "id": "x.good",
+     "text": "A very good song.",
+     "role": "opinion",
+     "why": "Your opinion belongs in your writing, not in the citation."
+    }
+   ],
+   "answer": [
+    "author",
+    "title",
+    "container",
+    "publisher",
+    "date",
+    "location"
+   ],
+   "success": "The thread pulls tight. A visitor reads the citation, walks to the guild library, and finds page 14. Credit, trace, trust: that is why we cite.",
+   "onComplete": [
+    {
+     "credit": "crit.evidence.citation"
+    },
+    {
+     "journal": "j.cite.done"
+    }
+   ]
+  },
+  {
+   "id": "timeline-door",
+   "type": "order",
+   "title": "The Timeline Door",
+   "intro": "A door of brass plates in the north wall. Its rule is cut above the handle: ONE TIMELINE, ONE KIND OF DATE. Light the timeline of dates when people were TOLD about something (a report, a publication, an announcement, a public showing), from earliest to latest. Leave out dates of other kinds.",
+   "needs": {
+    "item": "tool.date-lens",
+    "sealed": "The plates show dates, but no tags. You cannot tell what kind of date each one is. A Lens that shows date kinds would help. Come back when you have one."
+   },
+   "skills": [
+    "SK-MED-02",
+    "SK-RSC-07"
+   ],
+   "weave": {
+    "concepts": [
+     "evidence",
+     "certainty"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "history"
+    ],
+    "aoks": [
+     "HIS"
+    ]
+   },
+   "tiles": [
+    {
+     "id": "t.bisheng",
+     "text": "About 1088: Bi Sheng's movable type, in Shen Kuo's book [reported later]",
+     "role": "earliest telling (about 1088)"
+    },
+    {
+     "id": "t.wollstonecraft",
+     "text": "1792: A Vindication of the Rights of Woman [publication]",
+     "role": "1792 publication"
+    },
+    {
+     "id": "t.sikdar",
+     "text": "1856: the survey gives the height of Peak XV [announcement]",
+     "role": "1856 announcement"
+    },
+    {
+     "id": "t.santos",
+     "text": "1906: the 14-bis flies in Paris [public, witnessed flights]",
+     "role": "1906 public showing"
+    },
+    {
+     "id": "x.bisheng",
+     "text": "The 1040s: Bi Sheng makes movable type [the work itself]",
+     "role": "date of the work",
+     "why": "This is when the work was done. People were told about it later, in Shen Kuo's book."
+    },
+    {
+     "id": "x.sikdar",
+     "text": "About 1852: the Peak XV calculation [calculation]",
+     "role": "date of a calculation",
+     "why": "A calculation in an office is not yet a telling. The survey announced the height in 1856."
+    },
+    {
+     "id": "x.haytham",
+     "text": "1011 to 1021: the Book of Optics is written [writing]",
+     "role": "date of writing",
+     "why": "Writing makes the book. We have no separate date for when readers first had it."
+    },
+    {
+     "id": "x.biro",
+     "text": "1945 to 1948: one Biro pen [object made]",
+     "role": "date an object was made",
+     "why": "This dates the making of one pen, not a telling."
+    }
+   ],
+   "answer": [
+    "t.bisheng",
+    "t.wollstonecraft",
+    "t.sikdar",
+    "t.santos"
+   ],
+   "words": {
+    "stops": "The timeline lights {n} plates, then goes dark.",
+    "sags": "The timeline flickers",
+    "done": "The timeline is complete",
+    "notPart": "is not a date of telling."
+   },
+   "success": "Four plates glow in a line, oldest to newest. The brass door swings open onto a small reading niche. On its wall hangs a brass picture frame with tiny date marks: you can use it in Photo mode now. Lumen: 'One event can have a date of doing and a date of telling. Bi Sheng worked in the 1040s, and we know because someone told it in about 1088.'",
+   "onComplete": [
+    {
+     "credit": "crit.evidence.timeline"
+    },
+    {
+     "journal": "j.timeline"
+    }
+   ]
+  },
+  {
+   "id": "weigh-house",
+   "type": "balance",
+   "title": "The Weigh-House Balance",
+   "intro": "A brass balance stands on the east side of the square. Any buyer or seller may use it. The guild keeps one set of checked weights in a locked box; the stalls have their own. Under the beam a plate says: THE SAME MEASURE FOR EVERY HAND.",
+   "skills": [
+    "SK-NUM-14",
+    "SK-RSC-21"
+   ],
+   "weave": {
+    "concepts": [
+     "objectivity",
+     "justification"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "economics",
+     "physics"
+    ],
+    "aoks": [
+     "NAT",
+     "HUM"
+    ]
+   },
+   "rounds": [
+    {
+     "prompt": "First, learn the balance. Find the weight of the guild's sample ingot.",
+     "load": {
+      "label": "Sample ingot",
+      "mass": 7
+     },
+     "weights": [
+      {
+       "id": "g1",
+       "label": "Guild 1",
+       "mass": 1
+      },
+      {
+       "id": "g2",
+       "label": "Guild 2",
+       "mass": 2
+      },
+      {
+       "id": "g3",
+       "label": "Guild 2",
+       "mass": 2
+      },
+      {
+       "id": "g5",
+       "label": "Guild 5",
+       "mass": 5
+      }
+     ],
+     "success": "The beam is level: the ingot weighs 7 measures. The balance does not say what the ingot is worth. It says only that two pans are equal, and anyone who repeats it gets the same answer."
+    },
+    {
+     "prompt": "A weight marked '5' was found under a stall. Is it true? Weigh it with the guild weights.",
+     "load": {
+      "label": "Found weight, marked 5",
+      "mass": 4
+     },
+     "weights": [
+      {
+       "id": "g1",
+       "label": "Guild 1",
+       "mass": 1
+      },
+      {
+       "id": "g2",
+       "label": "Guild 2",
+       "mass": 2
+      },
+      {
+       "id": "g3",
+       "label": "Guild 2",
+       "mass": 2
+      },
+      {
+       "id": "g5",
+       "label": "Guild 5",
+       "mass": 5
+      }
+     ],
+     "success": "It balances at 4, not 5. Anyone who bought '5 measures' by this weight took home 4. The mark looked right. Only a check against a shared standard showed it was wrong. Lumen: 'Nobody had to guess who was honest. The pans told everyone the same thing.'"
+    },
+    {
+     "prompt": "A seller says this sack of salt is 6 measures. Check the claim.",
+     "load": {
+      "label": "Sack of salt, sold as 6",
+      "mass": 6
+     },
+     "weights": [
+      {
+       "id": "g1",
+       "label": "Guild 1",
+       "mass": 1
+      },
+      {
+       "id": "g2",
+       "label": "Guild 2",
+       "mass": 2
+      },
+      {
+       "id": "g5",
+       "label": "Guild 5",
+       "mass": 5
+      },
+      {
+       "id": "s5",
+       "label": "Seller's own 5",
+       "mass": 5,
+       "untrusted": "A check of the seller cannot use the seller's own weight. If that weight were wrong, the test would hide it. Use the guild's checked weights."
+      },
+      {
+       "id": "s1",
+       "label": "Seller's own 1",
+       "mass": 1,
+       "untrusted": "That weight belongs to the seller under test. A fair check uses a measure that does not depend on the claim."
+      }
+     ],
+     "success": "Six measures, by the guild's weights. The claim stands, and now anyone can see why. Lumen: 'Being objective here is not having a perfect eye. It is using a checked measure that does not belong to either side, so that someone else can repeat the test.'"
+    }
+   ],
+   "onComplete": [
+    {
+     "credit": "crit.objectivity.balance"
+    },
+    {
+     "journal": "j.balance"
+    }
+   ]
+  },
+  {
+   "id": "tipped-cart",
+   "type": "sightlines",
+   "title": "The Tipped Cart",
+   "intro": "Yesterday a cart of copper pots tipped over in the square. The driver left a note at the guild: she will pay for the damage that she caused, but first she asks what really happened. Three people tell you what they saw. The guild clerk has drawn a map of that corner. Click a person to draw their sightlines, then sort each claim.",
+   "skills": [
+    "SK-KNO-05",
+    "SK-MED-04",
+    "SK-RSC-08"
+   ],
+   "weave": {
+    "concepts": [
+     "perspective",
+     "evidence"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "history",
+     "psychology"
+    ],
+    "aoks": [
+     "HUM",
+     "HIS"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.perspective.sight"
+    },
+    {
+     "journal": "j.sight"
+    }
+   ],
+   "grid": {
+    "w": 16,
+    "h": 10
+   },
+   "blocks": [
+    {
+     "x": 3,
+     "y": 4,
+     "w": 3,
+     "h": 3,
+     "label": "Mara's fruit stall",
+     "kind": "stall"
+    },
+    {
+     "x": 8,
+     "y": 5,
+     "w": 3,
+     "h": 3,
+     "label": "The fountain",
+     "kind": "fountain"
+    },
+    {
+     "x": 13,
+     "y": 1,
+     "w": 2,
+     "h": 3,
+     "label": "A stack of crates",
+     "kind": "crates"
+    }
+   ],
+   "spots": [
+    {
+     "id": "stone",
+     "x": 6,
+     "y": 2,
+     "label": "the loose stone"
+    },
+    {
+     "id": "tip",
+     "x": 12,
+     "y": 6,
+     "label": "the place where the cart tipped"
+    },
+    {
+     "id": "boy",
+     "x": 3,
+     "y": 8,
+     "label": "the corner where a pot was taken"
+    }
+   ],
+   "witnesses": [
+    {
+     "id": "mara",
+     "name": "Mara",
+     "x": 1,
+     "y": 8,
+     "colour": "#e07a5f",
+     "claims": [
+      {
+       "spot": "boy",
+       "text": "A boy picked up a pot and ran off with it."
+      },
+      {
+       "spot": "tip",
+       "text": "The cart tipped over by the fountain.",
+       "heard": "Mara heard it from Idris, who ran over to help."
+      }
+     ]
+    },
+    {
+     "id": "idris",
+     "name": "Idris",
+     "x": 15,
+     "y": 8,
+     "colour": "#5fa8d3",
+     "claims": [
+      {
+       "spot": "tip",
+       "text": "The cart tipped over when the wheel came off."
+      },
+      {
+       "spot": "stone",
+       "text": "The wheel hit a loose stone first.",
+       "heard": "Idris heard it from Hana, at the well that evening."
+      }
+     ]
+    },
+    {
+     "id": "hana",
+     "name": "Hana",
+     "x": 9,
+     "y": 1,
+     "colour": "#7fd3a8",
+     "claims": [
+      {
+       "spot": "stone",
+       "text": "The wheel hit a loose stone and cracked."
+      },
+      {
+       "spot": "boy",
+       "text": "A boy stole a pot. Everyone saw it.",
+       "heard": "Hana heard it from Mara. So this is not a second witness: two voices, one source."
+      }
+     ]
+    }
+   ],
+   "reports": [
+    {
+     "text": "Three witnesses saw the whole accident, so the driver must pay for everything.",
+     "honest": false,
+     "why": "No one saw the whole accident. Each person saw one part from where they stood. And who should pay is a different question, about fairness, not about what was seen."
+    },
+    {
+     "text": "Hana saw the wheel hit a loose stone. Idris saw the cart tip by the fountain. Mara saw a boy pick up a pot; nobody saw where he went. Each part has one first-hand witness.",
+     "honest": true,
+     "why": "The report gives each part to the person who could see it, and it says where the record stops. The driver thanks you: the loose stone is the guild's to fix."
+    },
+    {
+     "text": "The witnesses tell different stories, so we cannot know what happened.",
+     "honest": false,
+     "why": "Their stories do not contradict each other. They saw different parts from different places. Put the first-hand parts together and you have a fair account."
+    },
+    {
+     "text": "Two witnesses saw a boy steal a pot.",
+     "honest": false,
+     "why": "Hana heard it from Mara: two voices, one source. And Mara saw a boy pick up a pot. 'Steal' adds a claim that she did not see."
+    }
+   ]
+  },
+  {
+   "id": "round-window",
+   "type": "conjecture",
+   "title": "The Unfinished Round Window",
+   "intro": "High in the north wall of the archive hall is an empty round window. A note from Glazier Imre is pinned below it: 'Put points on the circle and join every pair with lead. Count the panes. I have done it up to five points, and the panes double every time. So six points make 32 panes. I have cut 32 pieces of glass.'",
+   "claim": "The panes double with every new point.",
+   "skills": [
+    "SK-THK-07",
+    "SK-THK-14",
+    "SK-THK-05"
+   ],
+   "weave": {
+    "concepts": [
+     "certainty",
+     "justification"
+    ],
+    "atl": [
+     "thinking"
+    ],
+    "subjects": [
+     "math-aa",
+     "math-ai"
+    ],
+    "aoks": [
+     "MAT"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.certainty.window"
+    },
+    {
+     "journal": "j.window"
+    }
+   ],
+   "angles": [
+    196,
+    321,
+    125,
+    9,
+    73,
+    250
+   ],
+   "predictAt": 6,
+   "predictions": [
+    {
+     "text": "32 panes. The pattern doubles every time.",
+     "reply": "Imre thinks the same. Five cases in a row is a strong pattern. Add the point and count."
+    },
+    {
+     "text": "I cannot be sure until we count.",
+     "reply": "A careful answer. A pattern is a reason to expect something, not a promise. Add the point and count."
+    },
+    {
+     "text": "More than 32 panes.",
+     "reply": "An interesting guess. What would make the count grow faster? Add the point and count."
+    },
+    {
+     "text": "Fewer than 32 panes.",
+     "reply": "An interesting guess. What could make the count grow more slowly? Add the point and count."
+    }
+   ],
+   "reflect": [
+    {
+     "text": "Mathematics cannot be trusted.",
+     "honest": false,
+     "why": "The counting was exact every time. What failed was the jump from five cases to a rule for all cases. Mathematics found the mistake."
+    },
+    {
+     "text": "We must have counted wrong.",
+     "honest": false,
+     "why": "Look at the window: every pane is lit and counted once. Count again if you like; it is still 31."
+    },
+    {
+     "text": "Five cases made a pattern, not a proof. One case was enough to break the rule.",
+     "honest": true,
+     "why": "Yes. A pattern is evidence for a guess. A proof must hold for every number of points. One counterexample is enough to break a rule. Imre needs a 31st piece of glass, not a 32nd."
+    },
+    {
+     "text": "Patterns are useless in mathematics.",
+     "honest": false,
+     "why": "Patterns are where many good guesses start. The mistake is to stop at the pattern. The next step is a proof, or a counterexample."
+    }
+   ],
+   "proof": [
+    "Why 31? Watch one chord at a time. A new chord cuts each pane that it passes through into two.",
+    "A chord that crosses k other chords passes through k + 1 panes, so it adds k + 1 panes.",
+    "So: panes = 1 + (number of chords) + (number of crossings).",
+    "Every pair of points makes one chord. Every four points make exactly one crossing (the two diagonals of their four-sided shape).",
+    "With 6 points: 15 chords and 15 crossings, so 1 + 15 + 15 = 31. This works for every number of points, if no three chords meet at one point. That is a proof, not a pattern."
+   ]
+  },
+  {
+   "id": "map-table",
+   "type": "mapmaker",
+   "title": "The Mapmaker's Table",
+   "intro": "Cartographer Oskar is ill, and four people are waiting for maps of Emberford. His note says: 'The guild paper is small. A sheet can hold three layers before it turns to mud. Ask each person what they need the map for.'",
+   "skills": [
+    "SK-KNO-14",
+    "SK-THK-14"
+   ],
+   "weave": {
+    "concepts": [
+     "values",
+     "power"
+    ],
+    "atl": [
+     "thinking",
+     "communication"
+    ],
+    "subjects": [
+     "geography"
+    ],
+    "aoks": [
+     "HUM"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.values.maps"
+    },
+    {
+     "journal": "j.maps"
+    }
+   ],
+   "maxLayers": 3,
+   "layers": [
+    {
+     "id": "roads",
+     "label": "Roads and paths"
+    },
+    {
+     "id": "names",
+     "label": "Names of buildings"
+    },
+    {
+     "id": "wells",
+     "label": "Wells"
+    },
+    {
+     "id": "slope",
+     "label": "Slopes"
+    },
+    {
+     "id": "stalls",
+     "label": "Market stalls and owners"
+    },
+    {
+     "id": "loved",
+     "label": "Places people love"
+    }
+   ],
+   "audiences": [
+    {
+     "id": "traveller",
+     "name": "A traveller",
+     "wants": "I have one hour. I want to find the forge, the guild hall and the inn, and not get lost.",
+     "need": [
+      "roads",
+      "names"
+     ],
+     "success": "The traveller walks straight to the forge, then to the inn. 'A good map. I did not need to know who owns the apple stall.'",
+     "lost": "The traveller walks in circles and asks a child for the way."
+    },
+    {
+     "id": "efua",
+     "name": "Efua, the well keeper",
+     "wants": "The town wants a third well. Water runs downhill under the ground too. I need to see the wells we have and where the land goes down.",
+     "need": [
+      "wells",
+      "slope"
+     ],
+     "success": "Efua puts her finger on a low place between the two wells. 'There. We dig there first.'",
+     "lost": "Efua frowns. 'I cannot choose a place for a well from this.'"
+    },
+    {
+     "id": "clerk",
+     "name": "The guild clerk",
+     "wants": "Every stall pays a small fee each season. I need each stall, who keeps it, and the name of the street it is on.",
+     "need": [
+      "stalls",
+      "names"
+     ],
+     "success": "The clerk counts the stalls in a minute. 'Fair and quick. Nobody is missed, and nobody pays twice.'",
+     "lost": "The clerk sighs. 'I still have to walk the whole market with my book.'"
+    },
+    {
+     "id": "kip",
+     "name": "Kip",
+     "wants": "New children are coming to town. I want to show them the best places: the warm step by the bakery, the echo under the bridge, the tree you can climb. And how to get there.",
+     "need": [
+      "loved",
+      "roads"
+     ],
+     "success": "Kip grins. 'The echo is on a map now. It was always real, but nobody drew it before.'",
+     "lost": "Kip looks at the map. 'This is a map for grown-ups. Where are the good places?'"
+    }
+   ],
+   "reflect": [
+    {
+     "text": "The clerk's map is the true one, because it is the official guild map.",
+     "honest": false,
+     "why": "Official tells you who made it and who uses it, not that it is complete. It leaves out Kip's echo and Efua's slopes. Who decides what goes on the official map has power over what counts."
+    },
+    {
+     "text": "A map with all six layers would be the true one.",
+     "honest": false,
+     "why": "It would turn to mud on this paper, and it would still leave out smells, sounds, stories and the weather. Every map leaves things out. That is how it can be useful."
+    },
+    {
+     "text": "Each map is true for its purpose. None of them is the whole town, and what we leave out shows what we value.",
+     "honest": true,
+     "why": "Yes. A map is a model: it keeps what matters for one job and drops the rest. Asking 'what does this map leave out, and who decided?' is how to read any map, chart or model."
+    },
+    {
+     "text": "No map is true, because they all leave things out.",
+     "honest": false,
+     "why": "Each map got its user where they needed to go. Leaving things out is not the same as being false. A map is false when it shows a road that is not there."
+    }
+   ]
+  },
+  {
+   "id": "brass-sorter",
+   "type": "sorter",
+   "title": "The Brass Sorter",
+   "intro": "Mara bought a brass sorter from a travelling tinker. You show it some example fruit, good or bruised, and it copies them: each new fruit goes to the market chute or the bruised chute. Mara taught it with two apples from her own stall. This morning Hana came to complain.",
+   "skills": [
+    "SK-ETR-01",
+    "SK-RSC-21",
+    "SK-THK-05"
+   ],
+   "weave": {
+    "concepts": [
+     "power",
+     "objectivity"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "computer-science",
+     "design-tech"
+    ],
+    "aoks": [
+     "TEC"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.power.sorter"
+    },
+    {
+     "journal": "j.sorter"
+    }
+   ],
+   "slots": 6,
+   "fruits": [
+    {
+     "id": "c-r1",
+     "colour": "red",
+     "size": "large",
+     "bruised": false,
+     "farm": "orrin"
+    },
+    {
+     "id": "c-r2",
+     "colour": "red",
+     "size": "small",
+     "bruised": false,
+     "farm": "orrin"
+    },
+    {
+     "id": "c-r3",
+     "colour": "red",
+     "size": "large",
+     "bruised": true,
+     "farm": "orrin"
+    },
+    {
+     "id": "c-r4",
+     "colour": "red",
+     "size": "small",
+     "bruised": true,
+     "farm": "orrin"
+    },
+    {
+     "id": "c-r5",
+     "colour": "red",
+     "size": "large",
+     "bruised": false,
+     "farm": "orrin"
+    },
+    {
+     "id": "c-g1",
+     "colour": "green",
+     "size": "large",
+     "bruised": false,
+     "farm": "hana"
+    },
+    {
+     "id": "c-g2",
+     "colour": "green",
+     "size": "small",
+     "bruised": true,
+     "farm": "hana"
+    },
+    {
+     "id": "c-g3",
+     "colour": "green",
+     "size": "small",
+     "bruised": false,
+     "farm": "hana"
+    },
+    {
+     "id": "c-y1",
+     "colour": "yellow",
+     "size": "small",
+     "bruised": false,
+     "farm": "hill"
+    },
+    {
+     "id": "c-y2",
+     "colour": "yellow",
+     "size": "large",
+     "bruised": true,
+     "farm": "hill"
+    },
+    {
+     "id": "b1",
+     "colour": "red",
+     "size": "small",
+     "bruised": false,
+     "farm": "orrin"
+    },
+    {
+     "id": "b2",
+     "colour": "red",
+     "size": "large",
+     "bruised": true,
+     "farm": "orrin"
+    },
+    {
+     "id": "b3",
+     "colour": "red",
+     "size": "large",
+     "bruised": false,
+     "farm": "orrin"
+    },
+    {
+     "id": "b4",
+     "colour": "green",
+     "size": "large",
+     "bruised": false,
+     "farm": "hana"
+    },
+    {
+     "id": "b5",
+     "colour": "green",
+     "size": "small",
+     "bruised": false,
+     "farm": "hana"
+    },
+    {
+     "id": "b6",
+     "colour": "green",
+     "size": "large",
+     "bruised": true,
+     "farm": "hana"
+    },
+    {
+     "id": "b7",
+     "colour": "yellow",
+     "size": "large",
+     "bruised": false,
+     "farm": "hill"
+    },
+    {
+     "id": "b8",
+     "colour": "yellow",
+     "size": "small",
+     "bruised": true,
+     "farm": "hill"
+    },
+    {
+     "id": "b9",
+     "colour": "yellow",
+     "size": "small",
+     "bruised": false,
+     "farm": "hill"
+    }
+   ],
+   "crate": [
+    "c-r1",
+    "c-r2",
+    "c-r3",
+    "c-r4",
+    "c-r5",
+    "c-g1",
+    "c-g2",
+    "c-g3",
+    "c-y1",
+    "c-y2"
+   ],
+   "basket": [
+    "b1",
+    "b2",
+    "b3",
+    "b4",
+    "b5",
+    "b6",
+    "b7",
+    "b8",
+    "b9"
+   ],
+   "start": [
+    "c-r1",
+    "c-r3"
+   ],
+   "farms": {
+    "orrin": "Orrin's orchard (red)",
+    "hana": "Hana's trees (green)",
+    "hill": "the hill farm (yellow)"
+   },
+   "diagnose": [
+    {
+     "text": "Green and yellow fruit is worse than red fruit.",
+     "honest": false,
+     "why": "Look at the basket: many of the green and yellow fruit have no bruise marks. The fruit was fine. The sorter had never seen it."
+    },
+    {
+     "text": "The machine is broken.",
+     "honest": false,
+     "why": "It did exactly what it was built to do: copy its examples. A machine can work perfectly and still be unfair."
+    },
+    {
+     "text": "Somebody told the sorter to dislike green apples.",
+     "honest": false,
+     "why": "Nobody did, and nobody needed to. The examples were chosen without thinking about green fruit, and that was enough."
+    },
+    {
+     "text": "Mara's examples were all red. The sorter has never seen green or yellow fruit, so it sets them all aside.",
+     "honest": true,
+     "why": "Yes. The machine does not know what a good apple is. It copies its examples, and every example was red. Now choose better examples from the crate."
+    }
+   ],
+   "reflect": [
+    {
+     "text": "Machines are objective, so their sorting is always fair.",
+     "honest": false,
+     "why": "It was the same machine both times. Its first sorting was unfair because of its examples, not because of its brass."
+    },
+    {
+     "text": "Now that it is right on this basket, it will be right on every basket.",
+     "honest": false,
+     "why": "This basket had three colours. A pear, or a new kind of apple, would be 'unknown' again. Test it again when the fruit changes."
+    },
+    {
+     "text": "A machine that learns from examples knows only what its examples show. Whoever chooses the examples shapes what it can know, and who it treats fairly.",
+     "honest": true,
+     "why": "Yes. Choosing examples is a choice with power in it. Ask: who is missing from the examples, and who pays for it?"
+    },
+    {
+     "text": "We should never use sorting machines.",
+     "honest": false,
+     "why": "The sorter saves Mara hours every day. The lesson is to choose examples with care and keep checking, not to throw the machine away."
+    }
+   ]
+  },
+  {
+   "id": "echo-bridge",
+   "type": "echo",
+   "title": "The Echo Bridge",
+   "intro": "Under the east bridge the river has cut a high stone wall. Kip says that if you clap, the wall claps back. Porter Idris wants to know how far away the wall is, to plan a footbridge. Lumen says: 'Sound travels about 343 metres each second in air like this. It goes to the wall and comes back.'",
+   "skills": [
+    "SK-RSC-21",
+    "SK-THK-14",
+    "SK-NUM-14"
+   ],
+   "weave": {
+    "concepts": [
+     "certainty",
+     "evidence"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "physics"
+    ],
+    "aoks": [
+     "NAT"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.certainty.echo"
+    },
+    {
+     "journal": "j.echo"
+    }
+   ],
+   "distance": 85,
+   "speed": 343,
+   "minTimes": 3,
+   "reflect": [
+    {
+     "text": "Sound changes speed every time I clap.",
+     "honest": false,
+     "why": "In the same air, sound keeps nearly the same speed. The changes came from your hand and your ears, not from the sound."
+    },
+    {
+     "text": "The rope must be wrong.",
+     "honest": false,
+     "why": "The rope was checked against the guild's measure, and your corrected estimate came close to it. Two different methods that agree are strong evidence."
+    },
+    {
+     "text": "My reaction time adds a delay to every echo time, so every estimate was too far. Averaging cannot remove a delay that is always there, but measuring it and taking it away can.",
+     "honest": true,
+     "why": "Yes. Scientists call this a systematic error: it pushes every result the same way. Random scatter gets smaller with more tries; a systematic error needs a separate check."
+    },
+    {
+     "text": "If I clap one hundred times, the average will be exactly right.",
+     "honest": false,
+     "why": "More claps make the random scatter smaller. They do not remove a delay that is in every single time."
+    }
+   ]
+  },
+  {
+   "id": "founders-plaque",
+   "type": "restore",
+   "title": "The Founders' Plaque",
+   "intro": "The guild took the old plaque down from the gate and put it on the restorer's trestle. It is dark with soot. Keeper Oduya says: 'We want it back on the gate before the fair. You decide how to restore it. First, look at what is there. The test swab cleans a patch the size of a thumbnail, and we can fill the patch again.'",
+   "object": "The Founders' Plaque",
+   "skills": [
+    "SK-CUR-06",
+    "SK-MED-02",
+    "SK-THK-14",
+    "SK-ETR-01"
+   ],
+   "weave": {
+    "concepts": [
+     "responsibility",
+     "interpretation",
+     "evidence"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "visual-arts",
+     "history",
+     "chemistry"
+    ],
+    "aoks": [
+     "ART",
+     "HIS"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.responsibility.restore"
+    },
+    {
+     "journal": "j.restore"
+    }
+   ],
+   "face": {
+    "bg": "#241a12",
+    "ink": "#5e4a2a",
+    "lines": [
+     "EMB...D ST..L",
+     "F...ST IN AE....GARD",
+     "S...E THE F...T F..GE"
+    ]
+   },
+   "layers": [
+    {
+     "id": "soot",
+     "name": "Soot and old varnish",
+     "colour": "#3b2f25",
+     "text": "A thin, dark layer. It comes from many years of smoke from the forges. It tells you that the plaque hung near the forges for a long time."
+    },
+    {
+     "id": "gold",
+     "name": "Gold repaint",
+     "colour": "#d9b45a",
+     "text": "Gold letters: EMBERFORD STEEL, FINEST IN AETHELGARD, SINCE THE FIRST FORGE. The guild ledger says that the guild paid for this paint for the Long Fair, about 80 years ago. The words 'finest' and 'since the first forge' were added then."
+    },
+    {
+     "id": "carving",
+     "name": "Carved letters",
+     "colour": "#9a6a3c",
+     "text": "Under the paint, the wood is carved: EMBERFORD SMITHS, and a small hammer. There is no 'finest' and no date. The first makers said less than the repaint says."
+    },
+    {
+     "id": "mark",
+     "name": "Maker's note",
+     "colour": "#efe6cf",
+     "text": "On the edge, in pencil: 'Cut by Ysolde for the smiths, in the wet spring.' This is the only place that names a maker."
+    }
+   ],
+   "methods": [
+    {
+     "id": "strip",
+     "label": "Strip to the wood",
+     "does": "Remove the soot, the varnish and the gold paint with solvent and a scraper. The carving and Ysolde's note show clearly.",
+     "keeps": [
+      "carving",
+      "mark"
+     ],
+     "loses": [
+      "soot",
+      "gold"
+     ],
+     "reversible": false,
+     "result": "The plaque goes back on the gate as bare carved wood. People can read EMBERFORD SMITHS again. The 'finest' claim is gone, and so is the only paint from the Long Fair.",
+     "face": {
+      "bg": "#b07a44",
+      "ink": "#5b3b22",
+      "lines": [
+       "EMBERFORD SMITHS",
+       "⚒"
+      ]
+     },
+     "labels": [
+      {
+       "text": "Restored to exactly how the founders made it.",
+       "honest": false,
+       "why": "Not exactly. The swab showed what is there now. It cannot show that the plaque never had paint before the gold. 'Exactly' claims more than your evidence."
+      },
+      {
+       "text": "Stripped to the first carving this year. The gold repaint from the Long Fair, with its words 'finest' and 'since the first forge', was removed and cannot come back.",
+       "honest": true,
+       "why": "The label says what you kept and what you lost. A visitor can trust it."
+      },
+      {
+       "text": "Original plaque. Nothing has been changed.",
+       "honest": false,
+       "why": "Two layers were removed. A label that hides a change is the same mistake as Corvan's label on the blade."
+      }
+     ]
+    },
+    {
+     "id": "clean",
+     "label": "Clean the soot only",
+     "does": "Wash off the soot and the varnish. Leave the gold paint. Put on a wax that a later restorer can remove.",
+     "keeps": [
+      "gold",
+      "carving",
+      "mark"
+     ],
+     "loses": [
+      "soot"
+     ],
+     "reversible": true,
+     "result": "The gold shines again. The carving is safe under the paint, for a later restorer. Visitors read FINEST IN AETHELGARD, as their grandparents did.",
+     "face": {
+      "bg": "#2c1d12",
+      "ink": "#e9c45a",
+      "lines": [
+       "EMBERFORD STEEL",
+       "FINEST IN AETHELGARD",
+       "SINCE THE FIRST FORGE"
+      ]
+     },
+     "labels": [
+      {
+       "text": "Emberford steel has been the finest since the first forge.",
+       "honest": false,
+       "why": "This label repeats the repaint's claim as a fact. The swab showed that the first makers did not say it."
+      },
+      {
+       "text": "Original gold lettering by the founders.",
+       "honest": false,
+       "why": "The ledger dates the gold to the Long Fair. The founders carved the letters. They did not paint these words."
+      },
+      {
+       "text": "Gold repaint from the Long Fair, about 80 years ago, cleaned this year. Its words were added then. The first carving under the paint says only EMBERFORD SMITHS.",
+       "honest": true,
+       "why": "The label gives the date of the words and says what is under them."
+      }
+     ]
+    },
+    {
+     "id": "window",
+     "label": "Clean, and open a small window",
+     "does": "Wash off the soot and keep a sample of it in the ledger. Keep the gold paint. Open a small window in one corner, so that people can see the first carving and Ysolde's note. The window can be filled again later.",
+     "keeps": [
+      "soot",
+      "gold",
+      "carving",
+      "mark"
+     ],
+     "loses": [],
+     "reversible": true,
+     "result": "The gold shines, and in the lower corner a small window shows the old carving and Ysolde's name. Children stop to compare the two.",
+     "face": {
+      "bg": "#2c1d12",
+      "ink": "#e9c45a",
+      "lines": [
+       "EMBERFORD STEEL",
+       "FINEST IN AETHELGARD",
+       "SINCE THE FIRST FORGE"
+      ],
+      "window": {
+       "bg": "#b07a44",
+       "ink": "#3b2a1a",
+       "lines": [
+        "...SMITHS ⚒",
+        "Ysolde"
+       ]
+      }
+     },
+     "labels": [
+      {
+       "text": "The founders carved 'finest in Aethelgard'.",
+       "honest": false,
+       "why": "Your own window shows the opposite. The carving says only EMBERFORD SMITHS."
+      },
+      {
+       "text": "Two plaques in one. Carved by Ysolde for the smiths (see the window, lower left). Gold words added for the Long Fair. Cleaned this year; a soot sample is in the ledger.",
+       "honest": true,
+       "why": "The label tells the visitor which words belong to which time."
+      },
+      {
+       "text": "A plaque. Very old.",
+       "honest": false,
+       "why": "This is true, but it says too little. Visitors will think that there is only one plaque and one set of words. A label can mislead by what it leaves out."
+      }
+     ]
+    },
+    {
+     "id": "repaint",
+     "label": "Paint it new",
+     "does": "Paint over everything in fresh gold, with the same words as now. The old layers stay under the new paint, but nobody can see them, and the new paint cannot come off without damage.",
+     "keeps": [
+      "gold",
+      "carving",
+      "mark"
+     ],
+     "loses": [
+      "soot"
+     ],
+     "reversible": false,
+     "result": "The plaque looks new and bright. Most visitors now think that it was made this year.",
+     "face": {
+      "bg": "#7a1f24",
+      "ink": "#ffd75e",
+      "lines": [
+       "EMBERFORD STEEL",
+       "FINEST IN AETHELGARD",
+       "SINCE THE FIRST FORGE"
+      ]
+     },
+     "labels": [
+      {
+       "text": "Repainted this year over the gold from the Long Fair. Older layers, with a carving and a maker's note, are under the new paint.",
+       "honest": true,
+       "why": "The label tells a later restorer where to look, even if nobody can see it now."
+      },
+      {
+       "text": "As it was on the first day.",
+       "honest": false,
+       "why": "On the first day there was no gold at all. The swab showed a carving under the paint."
+      },
+      {
+       "text": "New plaque, made this year.",
+       "honest": false,
+       "why": "Only the paint is new. The wood, the carving and Ysolde's note are much older."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "toll-survey",
+   "type": "survey",
+   "title": "The Bridge Toll Survey",
+   "intro": "The new footbridge needs repairs every year. The guild council asks: does the town want a small toll to pay for them? Clerk Venn's survey box has three ways to ask the question and three groups of people to ask. Run a few surveys, compare the results, then write the council a fair report.",
+   "skills": [
+    "SK-RSC-02",
+    "SK-THK-14",
+    "SK-RSC-21"
+   ],
+   "weave": {
+    "concepts": [
+     "objectivity",
+     "evidence"
+    ],
+    "atl": [
+     "research",
+     "thinking"
+    ],
+    "subjects": [
+     "psychology",
+     "economics",
+     "global-politics"
+    ],
+    "aoks": [
+     "HUM"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.objectivity.survey"
+    },
+    {
+     "journal": "j.survey"
+    }
+   ],
+   "groups": {
+    "guild": "Guild members",
+    "west": "Families on the west side",
+    "traders": "Market traders",
+    "farmers": "Farmers from the east bank"
+   },
+   "people": [
+    {
+     "id": "g1",
+     "group": "guild",
+     "yes": true,
+     "firm": true
+    },
+    {
+     "id": "g2",
+     "group": "guild",
+     "yes": true,
+     "firm": true
+    },
+    {
+     "id": "g3",
+     "group": "guild",
+     "yes": true,
+     "firm": true
+    },
+    {
+     "id": "g4",
+     "group": "guild",
+     "yes": true,
+     "firm": false
+    },
+    {
+     "id": "w1",
+     "group": "west",
+     "yes": true,
+     "firm": true
+    },
+    {
+     "id": "w2",
+     "group": "west",
+     "yes": true,
+     "firm": true
+    },
+    {
+     "id": "w3",
+     "group": "west",
+     "yes": true,
+     "firm": true
+    },
+    {
+     "id": "w4",
+     "group": "west",
+     "yes": true,
+     "firm": true
+    },
+    {
+     "id": "w5",
+     "group": "west",
+     "yes": true,
+     "firm": false
+    },
+    {
+     "id": "w6",
+     "group": "west",
+     "yes": true,
+     "firm": false
+    },
+    {
+     "id": "w7",
+     "group": "west",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "w8",
+     "group": "west",
+     "yes": false,
+     "firm": false
+    },
+    {
+     "id": "t1",
+     "group": "traders",
+     "yes": true,
+     "firm": false
+    },
+    {
+     "id": "t2",
+     "group": "traders",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "t3",
+     "group": "traders",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "t4",
+     "group": "traders",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "t5",
+     "group": "traders",
+     "yes": false,
+     "firm": false
+    },
+    {
+     "id": "t6",
+     "group": "traders",
+     "yes": false,
+     "firm": false
+    },
+    {
+     "id": "f1",
+     "group": "farmers",
+     "yes": true,
+     "firm": false
+    },
+    {
+     "id": "f2",
+     "group": "farmers",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "f3",
+     "group": "farmers",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "f4",
+     "group": "farmers",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "f5",
+     "group": "farmers",
+     "yes": false,
+     "firm": true
+    },
+    {
+     "id": "f6",
+     "group": "farmers",
+     "yes": false,
+     "firm": false
+    }
+   ],
+   "wordings": [
+    {
+     "id": "plain",
+     "text": "Should the footbridge have a small toll to pay for its repairs?",
+     "lean": "none"
+    },
+    {
+     "id": "pushyes",
+     "text": "Most sensible people agree that a small toll is fair. Do you agree?",
+     "lean": "yes"
+    },
+    {
+     "id": "pushno",
+     "text": "Should the guild take money from every family that crosses the river?",
+     "lean": "no"
+    }
+   ],
+   "samples": [
+    {
+     "id": "meeting",
+     "label": "Everyone at tonight's guild meeting",
+     "people": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "w1",
+      "w2"
+     ]
+    },
+    {
+     "id": "market",
+     "label": "Every stall at the market",
+     "people": [
+      "t1",
+      "t2",
+      "t3",
+      "t4",
+      "t5",
+      "t6"
+     ]
+    },
+    {
+     "id": "houses",
+     "label": "Every third house in town, on both banks",
+     "people": [
+      "w3",
+      "w7",
+      "t2",
+      "f2",
+      "g2",
+      "w4",
+      "t5",
+      "f1"
+     ]
+    }
+   ],
+   "fair": {
+    "wording": "plain",
+    "sample": "houses"
+   },
+   "reflect": [
+    {
+     "text": "Six of six people said yes at the guild meeting. The town wants a toll.",
+     "honest": false,
+     "why": "Who comes to a guild meeting? Mostly guild members and their west-bank neighbours, who seldom cross the bridge. The group you ask can decide the answer before anyone speaks."
+    },
+    {
+     "text": "With the right question, 5 of 8 houses said yes. Most of the town wants a toll.",
+     "honest": false,
+     "why": "'Most sensible people agree' pushes people who are not sure. The question made some of the yeses. A fair question does not tell people what sensible people think."
+    },
+    {
+     "text": "About half of a fair sample said yes (4 of 8 houses, asked a plain question). The traders and east farmers, who cross most, mostly said no. Eight houses is a small sample, so a larger survey would make us surer.",
+     "honest": true,
+     "why": "Yes. The report says how you asked, whom you asked, what you found and how sure you can be. The council can now talk about who should pay, which is a question of fairness, not of numbers."
+    },
+    {
+     "text": "Surveys only show what the asker wants, so we can know nothing about what the town thinks.",
+     "honest": false,
+     "why": "A careless survey can do that. A plain question to a fair sample gave a result that matches the town quite well. Methods can be made fairer; that is the point of checking them."
+    }
+   ]
+  },
+  {
+   "id": "ferry-message",
+   "type": "translate",
+   "title": "The Ferry Message",
+   "intro": "A message slate came down the river from Tova, the upriver ferry keeper. The ferry folk write in their river cant, a trade language with words that English does not have. Sefa grew up on the ferries and explains each marked word. Choose how to say each one in English, so the town crier can read it to the council. The crier's slate holds only so many words.",
+   "skills": [
+    "SK-ICU-10",
+    "SK-ICU-18",
+    "SK-GRM-05",
+    "SK-WRT-13"
+   ],
+   "weave": {
+    "concepts": [
+     "interpretation",
+     "culture"
+    ],
+    "atl": [
+     "communication",
+     "thinking"
+    ],
+    "subjects": [
+     "lang-b",
+     "lang-langlit",
+     "anthropology"
+    ],
+    "aoks": [
+     "LAN"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.interpretation.ferry"
+    },
+    {
+     "journal": "j.ferry"
+    }
+   ],
+   "speaker": "Tova, the upriver ferry keeper,",
+   "source": "Loma at the bend. Tavi bring long ropes to the landing. Ford is kethe. Come belun.",
+   "frame": "From the upriver ferry: {loma} at the bend. {tavi} bring long ropes to the landing. The ford is {kethe}. Come {belun}.",
+   "budget": 30,
+   "words": [
+    {
+     "id": "loma",
+     "word": "Loma",
+     "note": "Loma is the river rising slowly, over a day or more. A sudden flood that comes in an hour is brakk.",
+     "choices": [
+      {
+       "text": "a flood",
+       "keeps": [],
+       "back": "Brakk"
+      },
+      {
+       "text": "slow high water",
+       "keeps": [
+        "slow"
+       ],
+       "back": "Loma"
+      },
+      {
+       "text": "loma (the river rising slowly, over a day)",
+       "keeps": [
+        "slow"
+       ],
+       "back": "Loma"
+      }
+     ]
+    },
+    {
+     "id": "tavi",
+     "word": "Tavi",
+     "note": "Tavi means 'we, and you too'. Tavu means 'we, but not you'. The cant always says which.",
+     "choices": [
+      {
+       "text": "We",
+       "keeps": [],
+       "back": "Tavu"
+      },
+      {
+       "text": "Both of us",
+       "keeps": [
+        "together"
+       ],
+       "back": "Tavi"
+      },
+      {
+       "text": "You and we together",
+       "keeps": [
+        "together"
+       ],
+       "back": "Tavi"
+      }
+     ]
+    },
+    {
+     "id": "kethe",
+     "word": "kethe",
+     "note": "Kethe is a ford that people can walk across, but carts cannot. A ford that is safe for everything is sena.",
+     "choices": [
+      {
+       "text": "shallow",
+       "keeps": [],
+       "back": "sena"
+      },
+      {
+       "text": "walkable, no carts",
+       "keeps": [
+        "carts"
+       ],
+       "back": "kethe"
+      },
+      {
+       "text": "open to walkers, not carts",
+       "keeps": [
+        "carts"
+       ],
+       "back": "kethe"
+      }
+     ]
+    },
+    {
+     "id": "belun",
+     "word": "belun",
+     "note": "Belun means 'before the evening bell'. 'Soon, some time' is nai.",
+     "choices": [
+      {
+       "text": "soon",
+       "keeps": [],
+       "back": "nai"
+      },
+      {
+       "text": "by dusk",
+       "keeps": [
+        "time"
+       ],
+       "back": "belun"
+      },
+      {
+       "text": "before the evening bell",
+       "keeps": [
+        "time"
+       ],
+       "back": "belun"
+      }
+     ]
+    }
+   ],
+   "parts": [
+    {
+     "id": "slow",
+     "name": "The water rises slowly, so there is time",
+     "lost": "The council hears 'flood' and rings the alarm bell. Families carry their goods uphill in the dark, for water that rises slowly over a day."
+    },
+    {
+     "id": "together",
+     "name": "Town and ferry folk both bring ropes",
+     "lost": "The council reads 'we' as 'the ferry folk'. Nobody in town brings ropes, and the ferry folk have too few."
+    },
+    {
+     "id": "carts",
+     "name": "Walkers can cross the ford, carts cannot",
+     "lost": "'Shallow' sounds safe for everyone. A grain cart tries the ford and sticks in the mud."
+    },
+    {
+     "id": "time",
+     "name": "Come before the evening bell",
+     "lost": "'Soon' can mean this hour or tomorrow. Half of the helpers come after dark."
+    }
+   ],
+   "reflect": [
+    {
+     "text": "The cant is less exact than English, because one cant word needs a whole English phrase.",
+     "honest": false,
+     "why": "Look again at tavi. English 'we' does not say if it includes you; the cant always does. Every language marks some differences and leaves out others. No language is more exact about everything."
+    },
+    {
+     "text": "A word-for-word translation is always the most faithful one.",
+     "honest": false,
+     "why": "Word for word gave 'flood', 'we', 'shallow' and 'soon', and the council did the wrong things. To keep the meaning, a translator sometimes needs more words or different words."
+    },
+    {
+     "text": "Some cant words mark a difference that English needs several words for. A good translation keeps what its readers need, within its limits. A note or a back-translation shows the choices that the translator made.",
+     "honest": true,
+     "why": "Yes. Translation is interpretation: the translator chooses what to keep, and more than one translation can work. Many languages have an inclusive and an exclusive 'we'. English does not. That is a difference, not a weakness."
+    },
+    {
+     "text": "Translation always loses something, so we cannot know what Tova meant.",
+     "honest": false,
+     "why": "Something can be lost, but Sefa's notes and the back-check helped you keep what mattered. Uncertainty can be made smaller, and you can say openly where it remains."
+    }
+   ]
+  },
+  {
+   "id": "painters-frame",
+   "type": "frame",
+   "title": "The Painter's Frame",
+   "intro": "Nell the painter made one wide, careful painting of the market this morning. Everything in it really happened. Now three people each want a poster cut from it. Move the frame to make each poster. Then look at all three together.",
+   "skills": [
+    "SK-MED-01",
+    "SK-MED-04",
+    "SK-ETR-01"
+   ],
+   "weave": {
+    "concepts": [
+     "perspective",
+     "power"
+    ],
+    "atl": [
+     "thinking",
+     "communication"
+    ],
+    "subjects": [
+     "visual-arts",
+     "film",
+     "digital-society"
+    ],
+    "aoks": [
+     "ART"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.perspective.frame"
+    },
+    {
+     "journal": "j.frame"
+    }
+   ],
+   "scene": {
+    "w": 32,
+    "h": 16
+   },
+   "frame": {
+    "w": 12,
+    "h": 9
+   },
+   "items": [
+    {
+     "id": "sun",
+     "label": "the sun",
+     "art": "sun",
+     "x": 3,
+     "y": 1,
+     "w": 2,
+     "h": 2
+    },
+    {
+     "id": "cloud",
+     "label": "the rain cloud",
+     "art": "cloud",
+     "x": 25,
+     "y": 0,
+     "w": 5,
+     "h": 4
+    },
+    {
+     "id": "stall",
+     "label": "the fruit stall",
+     "art": "stall",
+     "x": 1,
+     "y": 6,
+     "w": 7,
+     "h": 4
+    },
+    {
+     "id": "crowd",
+     "label": "the happy buyers",
+     "art": "crowd",
+     "x": 2,
+     "y": 10,
+     "w": 6,
+     "h": 4
+    },
+    {
+     "id": "child",
+     "label": "the child with a kite",
+     "art": "child",
+     "x": 10,
+     "y": 10,
+     "w": 2,
+     "h": 4
+    },
+    {
+     "id": "kite",
+     "label": "the kite",
+     "art": "kite",
+     "x": 11,
+     "y": 3,
+     "w": 2,
+     "h": 2
+    },
+    {
+     "id": "seller",
+     "label": "the old seller at an empty stall",
+     "art": "seller",
+     "x": 15,
+     "y": 7,
+     "w": 5,
+     "h": 6
+    },
+    {
+     "id": "argue",
+     "label": "the two traders in a quarrel",
+     "art": "argue",
+     "x": 22,
+     "y": 9,
+     "w": 4,
+     "h": 4
+    },
+    {
+     "id": "guard",
+     "label": "the guard",
+     "art": "guard",
+     "x": 28,
+     "y": 9,
+     "w": 2,
+     "h": 4
+    }
+   ],
+   "briefs": [
+    {
+     "id": "guild",
+     "who": "Master Orrin, for the guild",
+     "wants": "A poster for the market fair. Make our market look joyful.",
+     "need": [
+      "crowd",
+      "child"
+     ],
+     "avoid": [
+      "seller",
+      "argue"
+     ],
+     "success": "Orrin beams. 'Look at them all! Who would not come?' The poster is true: those people really were happy."
+    },
+    {
+     "id": "fund",
+     "who": "Efua, for the elders' fund",
+     "wants": "We collect coins for old sellers who have a hard winter. Show why they need help, on a grey day.",
+     "need": [
+      "seller",
+      "cloud"
+     ],
+     "avoid": [
+      "crowd",
+      "child"
+     ],
+     "success": "Efua nods slowly. 'That is how it feels for him.' The poster is true: that stall really was empty."
+    },
+    {
+     "id": "council",
+     "who": "Councillor Bram",
+     "wants": "I want the council to pay for more guards. Show that the market can get rough.",
+     "need": [
+      "argue",
+      "guard"
+     ],
+     "avoid": [
+      "crowd",
+      "child"
+     ],
+     "success": "Bram taps the poster. 'There. Trouble, and a guard on the spot.' The poster is true: the quarrel really happened."
+    }
+   ],
+   "reflect": [
+    {
+     "text": "A picture shows what was really there, so all three posters are fair.",
+     "honest": false,
+     "why": "Everything in each poster was there. But each poster leaves out most of the market, and the choice of what to leave out makes an argument. True parts can add up to a picture that misleads."
+    },
+    {
+     "text": "The joyful poster is the true one, because most people in the market were happy.",
+     "honest": false,
+     "why": "Most people were happy, so the guild poster is closest to the whole scene. But the old seller and the quarrel happened too. 'Most' is not 'all'; a fair poster might say what it leaves out."
+    },
+    {
+     "text": "Each poster is true and each leaves things out. Where the frame goes is a choice made by someone for a purpose. To judge a picture, ask who framed it, why, and what was outside the frame.",
+     "honest": true,
+     "why": "Yes. Artists, photographers and film makers always choose a frame; that is part of their craft, not a lie. Knowing the purpose helps you read the picture. Sometimes the wide view is worth asking for."
+    },
+    {
+     "text": "Because every frame leaves something out, pictures give us no knowledge.",
+     "honest": false,
+     "why": "Each poster gives real knowledge: there was a happy crowd, a struggling seller, a quarrel. The knowledge is partial, not empty. Putting the frames side by side gave you more than any one of them."
+    }
+   ]
+  },
+  {
+   "id": "bell-stair",
+   "type": "shepard",
+   "title": "The Endless Bell Stair",
+   "intro": "Bell-ringer Maren is proud of the gatehouse chimes. 'Each bell is higher than the one before,' she says, 'and the stair never stops climbing. Listen!' Ring the stair, say what you heard, then check it with the guild's tuning glass.",
+   "skills": [
+    "SK-KNO-05",
+    "SK-MED-04",
+    "SK-THK-14"
+   ],
+   "weave": {
+    "concepts": [
+     "evidence",
+     "certainty"
+    ],
+    "atl": [
+     "thinking",
+     "self-management"
+    ],
+    "subjects": [
+     "psychology",
+     "physics",
+     "music"
+    ],
+    "aoks": [
+     "NAT",
+     "HUM"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.evidence.bells"
+    },
+    {
+     "journal": "j.bells"
+    }
+   ],
+   "steps": 12,
+   "base": 55,
+   "octaves": 7,
+   "guesses": [
+    {
+     "text": "It went up the whole time.",
+     "reply": "That is what most people hear. Hold on to it: your ears reported honestly. Now let us look at the notes."
+    },
+    {
+     "text": "It went up, then dropped back down somewhere.",
+     "reply": "Some people do hear a drop. Others never do. The tuning glass can show you what happens at that point."
+    },
+    {
+     "text": "I could not tell, or I could not hear it.",
+     "reply": "That is a fair report too. The tuning glass shows the same bells as bars, so you can check without sound."
+    }
+   ],
+   "reflect": [
+    {
+     "text": "My ears are useless. Only instruments give real knowledge.",
+     "honest": false,
+     "why": "Your ears were right that each step sounds higher than the one before. And the tuning glass is a tool that people designed and that you read with your eyes. Senses and instruments check each other."
+    },
+    {
+     "text": "The tuning glass must be wrong, because I clearly heard the bells rise.",
+     "honest": false,
+     "why": "Each single step does rise. But the glass shows the same notes at step 0 and step 12, every time you look. When what we perceive and what we measure disagree, ask how both could be true."
+    },
+    {
+     "text": "Each step really does sound higher, and after twelve steps the notes are the same as at the start. High notes fade out as low notes fade in, so the climb never seems to end. The illusion teaches me how hearing works, and the measurement helped me check what I heard.",
+     "honest": true,
+     "why": "Yes. Sound scientists call this kind of illusion a Shepard scale. Perception is not 'wrong' here; it follows rules, and the illusion lets us see them. Maren was honest. She was mistaken only about 'forever'."
+    },
+    {
+     "text": "Maren lied to us about her bells.",
+     "honest": false,
+     "why": "Maren reported what she hears, honestly. An honest report can still be mistaken. A lie needs the intention to make someone believe what you think is false."
+    }
+   ]
+  },
+  {
+   "id": "forecast-board",
+   "type": "forecast",
+   "title": "The Forecast Board",
+   "intro": "The fishers decide each morning whether to go out on the river. Fisher Noa asks you to keep the forecast board for twelve days. Each morning, read the clues and say how likely rain is. You will not be right every day. Nobody is. The question is whether your chances match what happens.",
+   "skills": [
+    "SK-THK-14",
+    "SK-NUM-14",
+    "SK-SLF-09"
+   ],
+   "weave": {
+    "concepts": [
+     "certainty",
+     "evidence"
+    ],
+    "atl": [
+     "thinking",
+     "research"
+    ],
+    "subjects": [
+     "geography",
+     "math-ai",
+     "physics"
+    ],
+    "aoks": [
+     "NAT",
+     "MAT"
+    ]
+   },
+   "onComplete": [
+    {
+     "credit": "crit.certainty.forecast"
+    },
+    {
+     "journal": "j.forecast"
+    }
+   ],
+   "choices": [
+    10,
+    30,
+    50,
+    70,
+    90
+   ],
+   "notes": [
+    "When the weather glass falls, wet weather often follows. When it rises, fair weather often follows. This is the strongest sign.",
+    "Low grey clouds often bring rain. High, thin clouds can come before rain, or not. No clouds is a fair sign.",
+    "The fishers say that swallows fly low before rain, because the insects they chase fly low in damp air. It is a weak sign."
+   ],
+   "days": [
+    {
+     "baro": "falling",
+     "clouds": "low",
+     "birds": "low",
+     "rain": true,
+     "almanac": 0.95
+    },
+    {
+     "baro": "rising",
+     "clouds": "none",
+     "birds": "high",
+     "rain": false,
+     "almanac": 0.05
+    },
+    {
+     "baro": "steady",
+     "clouds": "low",
+     "birds": "low",
+     "rain": true,
+     "almanac": 0.75
+    },
+    {
+     "baro": "falling",
+     "clouds": "high",
+     "birds": "high",
+     "rain": false,
+     "almanac": 0.7
+    },
+    {
+     "baro": "rising",
+     "clouds": "none",
+     "birds": "low",
+     "rain": false,
+     "almanac": 0.15
+    },
+    {
+     "baro": "falling",
+     "clouds": "low",
+     "birds": "high",
+     "rain": true,
+     "almanac": 0.85
+    },
+    {
+     "baro": "steady",
+     "clouds": "none",
+     "birds": "high",
+     "rain": false,
+     "almanac": 0.25
+    },
+    {
+     "baro": "steady",
+     "clouds": "high",
+     "birds": "low",
+     "rain": true,
+     "almanac": 0.6
+    },
+    {
+     "baro": "rising",
+     "clouds": "low",
+     "birds": "high",
+     "rain": false,
+     "almanac": 0.25
+    },
+    {
+     "baro": "falling",
+     "clouds": "high",
+     "birds": "low",
+     "rain": true,
+     "almanac": 0.9
+    },
+    {
+     "baro": "rising",
+     "clouds": "none",
+     "birds": "high",
+     "rain": false,
+     "almanac": 0.05
+    },
+    {
+     "baro": "falling",
+     "clouds": "none",
+     "birds": "low",
+     "rain": true,
+     "almanac": 0.75
+    }
+   ],
+   "reflect": [
+    {
+     "text": "On day 4 the almanac said 70% and it stayed dry, so the almanac was wrong.",
+     "honest": false,
+     "why": "A 70% forecast says it stays dry on about 3 days in 10. One dry day cannot show that 70% was wrong. You judge a forecaster over many days, by asking if their chances match what happens."
+    },
+    {
+     "text": "Be bold: always say 10% or 90%. Then you are right more often.",
+     "honest": false,
+     "why": "Bold forecasts feel good on the days they are right, but the score punishes a confident miss heavily. Saying 90% when the clues say 'as likely as not' is claiming more certainty than your evidence gives."
+    },
+    {
+     "text": "A good forecaster is not right every day. When they say 70%, it rains on about 7 days in 10. The almanac, which uses the clues, beat 'always 50%'. Twelve days is too few to be sure how good my forecasts are.",
+     "honest": true,
+     "why": "Yes. A forecast is a claim about how sure we should be, not a promise. Matching your certainty to your evidence is called calibration. A small sample is itself a reason to be modest."
+    },
+    {
+     "text": "Weather cannot be known, so every forecast is just a guess.",
+     "honest": false,
+     "why": "The clues helped: the almanac did better than 'always 50%'. Knowledge can be uncertain and still be useful. The skill is to say how uncertain."
+    }
+   ]
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH1-S04",
+   "world": "WORLD-02",
+   "title": "Side quest: Words That Hold",
+   "knowledgeQuestion": "How can the exact form of words change what people know and do?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "words.o1.signs",
+     "title": "Optional: get Orrin's three notices through the Sign-Smith's board (north of the square).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.guild-notice.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "responsibility"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "lang-b"
+      ],
+      "aoks": [
+       "LAN"
+      ]
+     },
+     "skills": [
+      "SK-GRM-07",
+      "SK-GRM-05",
+      "SK-GRM-13"
+     ]
+    },
+    {
+     "id": "words.o2.cite",
+     "title": "Optional: build the Citation Thread bridge for Sefa's song (by the south gate).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.song-bridge.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "responsibility"
+      ],
+      "atl": [
+       "research",
+       "communication"
+      ],
+      "subjects": [
+       "lang-lit",
+       "history"
+      ],
+      "aoks": [
+       "HIS",
+       "ART"
+      ]
+     },
+     "skills": [
+      "SK-CIT-04",
+      "SK-CIT-01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-G01",
+   "world": "WORLD-01",
+   "title": "The Timeline Door",
+   "knowledgeQuestion": "Does the date of an event tell us when people knew about it?",
+   "available": {
+    "item": "tool.date-lens"
+   },
+   "objectives": [
+    {
+     "id": "gate.o1.timeline",
+     "title": "Optional: open the Timeline Door in the north wall of the archive hall with your Date-Kind Lens.",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.timeline-door.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "history"
+      ],
+      "aoks": [
+       "HIS"
+      ]
+     },
+     "skills": [
+      "SK-MED-02"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-B01",
+   "world": "WORLD-02",
+   "title": "The Weigh-House Balance",
+   "knowledgeQuestion": "What makes a measurement fair to both sides?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "bal.o1.weigh",
+     "title": "Optional: make three fair weighings at the Weigh-House balance (east side of the square).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.weigh-house.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "economics",
+       "physics"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-NUM-14",
+      "SK-RSC-21"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-V01",
+   "world": "WORLD-02",
+   "title": "The Tipped Cart",
+   "knowledgeQuestion": "How does where we stand shape what we can claim to know?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "cart.o1.sight",
+     "title": "Optional: sort the witness claims on the guild clerk's map (south-west corner, below the fruit stall).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.tipped-cart.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "evidence"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "history",
+       "psychology"
+      ],
+      "aoks": [
+       "HUM",
+       "HIS"
+      ]
+     },
+     "skills": [
+      "SK-KNO-05",
+      "SK-MED-04",
+      "SK-RSC-08"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-W01",
+   "world": "WORLD-01",
+   "title": "The Unfinished Round Window",
+   "knowledgeQuestion": "When is a pattern enough to be certain in mathematics?",
+   "available": {
+    "objective": "m01.o1.look"
+   },
+   "objectives": [
+    {
+     "id": "win.o1.count",
+     "title": "Optional: test Glazier Imre's rule at the round window (north wall of the archive hall).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.round-window.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "certainty",
+       "justification"
+      ],
+      "atl": [
+       "thinking"
+      ],
+      "subjects": [
+       "math-aa",
+       "math-ai"
+      ],
+      "aoks": [
+       "MAT"
+      ]
+     },
+     "skills": [
+      "SK-THK-07",
+      "SK-THK-14",
+      "SK-THK-05"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-K01",
+   "world": "WORLD-02",
+   "title": "The Mapmaker's Table",
+   "knowledgeQuestion": "If every map leaves something out, how can a map give us knowledge?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "maps.o1.make",
+     "title": "Optional: make maps for four people at the mapmaker's table (west of the forge, by the trees).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.map-table.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "power"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "subjects": [
+       "geography"
+      ],
+      "aoks": [
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-KNO-14",
+      "SK-THK-14"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-T01",
+   "world": "WORLD-02",
+   "title": "The Brass Sorter",
+   "knowledgeQuestion": "Can a machine that learns from examples know more than its examples show?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "sorter.o1.teach",
+     "title": "Optional: help Mara and Hana with the brass sorter (by the fruit stall).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.brass-sorter.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "power",
+       "objectivity"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "computer-science",
+       "design-tech"
+      ],
+      "aoks": [
+       "TEC"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-RSC-21",
+      "SK-THK-05"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-E01",
+   "world": "WORLD-02",
+   "title": "The Echo Bridge",
+   "knowledgeQuestion": "How can a measurement be precise and still be wrong?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "echo.o1.measure",
+     "title": "Optional: measure the distance to the echo wall (east of the bridge post, south-east of the square).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.echo-bridge.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "certainty",
+       "evidence"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "physics"
+      ],
+      "aoks": [
+       "NAT"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-14",
+      "SK-NUM-14"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-P01",
+   "world": "WORLD-02",
+   "title": "The Founders' Plaque",
+   "knowledgeQuestion": "When we restore an object, what do we owe the next person who looks at it?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "res.o1.plaque",
+     "title": "Optional: restore the Founders' Plaque by the Emberford gate (north of the square).",
+     "essential": false,
+     "done": {
+      "flagSet": "puzzle.founders-plaque.method"
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "interpretation",
+       "evidence"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "visual-arts",
+       "history",
+       "chemistry"
+      ],
+      "aoks": [
+       "ART",
+       "HIS"
+      ]
+     },
+     "skills": [
+      "SK-CUR-06",
+      "SK-MED-02",
+      "SK-THK-14",
+      "SK-ETR-01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-Q01",
+   "world": "WORLD-02",
+   "title": "The Bridge Toll Survey",
+   "knowledgeQuestion": "How can the way we ask a question shape the knowledge we get?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "survey.o1.report",
+     "title": "Optional: run Clerk Venn's bridge toll survey (the survey box, east of the guild hall).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.toll-survey.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "evidence"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "psychology",
+       "economics",
+       "global-politics"
+      ],
+      "aoks": [
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-RSC-02",
+      "SK-THK-14",
+      "SK-RSC-21"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-F01",
+   "world": "WORLD-02",
+   "title": "The Ferry Message",
+   "knowledgeQuestion": "What can be gained and lost when knowledge moves from one language to another?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "ferry.o1.send",
+     "title": "Optional: translate the ferry message for the council (the slate post by the river, east of the bridge).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.ferry-message.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "culture"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "subjects": [
+       "lang-b",
+       "lang-langlit",
+       "anthropology"
+      ],
+      "aoks": [
+       "LAN"
+      ]
+     },
+     "skills": [
+      "SK-ICU-10",
+      "SK-ICU-18",
+      "SK-GRM-05",
+      "SK-WRT-13"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-A01",
+   "world": "WORLD-02",
+   "title": "The Painter's Frame",
+   "knowledgeQuestion": "Can a picture in which everything is true still mislead?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "frame.o1.posters",
+     "title": "Optional: cut three posters from Nell's market painting (the easel in the market square).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.painters-frame.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "power"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "subjects": [
+       "visual-arts",
+       "film",
+       "digital-society"
+      ],
+      "aoks": [
+       "ART"
+      ]
+     },
+     "skills": [
+      "SK-MED-01",
+      "SK-MED-04",
+      "SK-ETR-01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-H01",
+   "world": "WORLD-02",
+   "title": "The Endless Bell Stair",
+   "knowledgeQuestion": "When our senses and our instruments disagree, which should we trust?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "bells.o1.check",
+     "title": "Optional: listen to Maren's endless bell stair, then check it (the bell rope by the gatehouse).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.bell-stair.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty"
+      ],
+      "atl": [
+       "thinking",
+       "self-management"
+      ],
+      "subjects": [
+       "psychology",
+       "physics",
+       "music"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-KNO-05",
+      "SK-MED-04",
+      "SK-THK-14"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH1-N01",
+   "world": "WORLD-02",
+   "title": "The Forecast Board",
+   "knowledgeQuestion": "Can a forecast be good even when it turns out wrong?",
+   "available": {
+    "objective": "m02.o1.arrive"
+   },
+   "objectives": [
+    {
+     "id": "forecast.o1.days",
+     "title": "Optional: keep Fisher Noa's forecast board for twelve days (the board by the east well).",
+     "essential": false,
+     "done": {
+      "flag": "puzzle.forecast-board.done",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "certainty",
+       "evidence"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "geography",
+       "math-ai",
+       "physics"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-NUM-14",
+      "SK-SLF-09"
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.words.o1.signs.1",
+   "objective": "words.o1.signs",
+   "depth": 1,
+   "text": "One mark can change what a whole market does."
+  },
+  {
+   "id": "h.words.o1.signs.2",
+   "objective": "words.o1.signs",
+   "depth": 2,
+   "text": "Commas around 'who…' make it extra information about everyone."
+  },
+  {
+   "id": "h.words.o1.signs.3",
+   "objective": "words.o1.signs",
+   "depth": 3,
+   "text": "Read each notice and ask: who exactly does it mean? Is any word pointing to two people?"
+  },
+  {
+   "id": "h.words.o1.signs.4",
+   "objective": "words.o1.signs",
+   "depth": 4,
+   "text": "Choose: no commas; name 'the smith' again; 'a steel blade'."
+  },
+  {
+   "id": "h.words.o2.cite.1",
+   "objective": "words.o2.cite",
+   "depth": 1,
+   "text": "A citation lets a reader find the source on their own."
+  },
+  {
+   "id": "h.words.o2.cite.2",
+   "objective": "words.o2.cite",
+   "depth": 2,
+   "text": "Who wrote it? What is it called? Where is it?"
+  },
+  {
+   "id": "h.words.o2.cite.3",
+   "objective": "words.o2.cite",
+   "depth": 3,
+   "text": "Order: author, title, container, publisher, date, page. Leave out notes and opinions."
+  },
+  {
+   "id": "h.words.o2.cite.4",
+   "objective": "words.o2.cite",
+   "depth": 4,
+   "text": "Okon, Sefa. / “Look at the Hand, Not the Shine.” / Songs of Aethelgard, / Emberford Guild Press, / 1203, / p. 14."
+  },
+  {
+   "id": "h.gate.1",
+   "objective": "gate.o1.timeline",
+   "depth": 1,
+   "text": "The door wants one kind of date only: dates when people were told."
+  },
+  {
+   "id": "h.gate.2",
+   "objective": "gate.o1.timeline",
+   "depth": 2,
+   "text": "Look at the tag on each plate. 'Writing', 'calculation' and 'object made' are dates of doing, not telling."
+  },
+  {
+   "id": "h.gate.3",
+   "objective": "gate.o1.timeline",
+   "depth": 3,
+   "text": "Bi Sheng has two plates. Which one is a telling?"
+  },
+  {
+   "id": "h.gate.4",
+   "objective": "gate.o1.timeline",
+   "depth": 4,
+   "text": "In order: about 1088 (report), 1792 (publication), 1856 (announcement), 1906 (public flights)."
+  },
+  {
+   "id": "h.bal.1",
+   "objective": "bal.o1.weigh",
+   "depth": 1,
+   "text": "Watch the beam. The lower pan is the heavier one."
+  },
+  {
+   "id": "h.bal.2",
+   "objective": "bal.o1.weigh",
+   "depth": 2,
+   "text": "Add or take off one weight at a time until the beam is level, then record it."
+  },
+  {
+   "id": "h.bal.3",
+   "objective": "bal.o1.weigh",
+   "depth": 3,
+   "text": "When you test a seller's claim, do not use anything that belongs to the seller."
+  },
+  {
+   "id": "h.bal.4",
+   "objective": "bal.o1.weigh",
+   "depth": 4,
+   "text": "Ingot: guild 5 and guild 2. Found weight: guild 2 and guild 2. Salt: guild 5 and guild 1."
+  },
+  {
+   "id": "h.cart.1",
+   "objective": "cart.o1.sight",
+   "depth": 1,
+   "text": "Click a person on the map. Their sightlines show what they could see."
+  },
+  {
+   "id": "h.cart.2",
+   "objective": "cart.o1.sight",
+   "depth": 2,
+   "text": "A red line stops at the thing in the way. Then the person did not see that spot."
+  },
+  {
+   "id": "h.cart.3",
+   "objective": "cart.o1.sight",
+   "depth": 3,
+   "text": "When a person could not see a spot, ask who told them. Two people who heard it from one person are one source."
+  },
+  {
+   "id": "h.cart.4",
+   "objective": "cart.o1.sight",
+   "depth": 4,
+   "text": "Mara saw the boy; Idris saw the cart tip; Hana saw the stone. Choose the report that gives each part to one first-hand witness."
+  },
+  {
+   "id": "h.win.1",
+   "objective": "win.o1.count",
+   "depth": 1,
+   "text": "Add points one at a time and watch the count of panes."
+  },
+  {
+   "id": "h.win.2",
+   "objective": "win.o1.count",
+   "depth": 2,
+   "text": "Before the sixth point, say what you expect. Any answer is fine."
+  },
+  {
+   "id": "h.win.3",
+   "objective": "win.o1.count",
+   "depth": 3,
+   "text": "Compare the sixth count with the rule. What does one case that breaks a rule show?"
+  },
+  {
+   "id": "h.win.4",
+   "objective": "win.o1.count",
+   "depth": 4,
+   "text": "Choose: five cases made a pattern, not a proof."
+  },
+  {
+   "id": "h.maps.1",
+   "objective": "maps.o1.make",
+   "depth": 1,
+   "text": "Read what each person needs the map for."
+  },
+  {
+   "id": "h.maps.2",
+   "objective": "maps.o1.make",
+   "depth": 2,
+   "text": "The sheet holds three layers. Choose the ones that help this person's trip."
+  },
+  {
+   "id": "h.maps.3",
+   "objective": "maps.o1.make",
+   "depth": 3,
+   "text": "Then ask: which map is the true one? What does each map leave out?"
+  },
+  {
+   "id": "h.maps.4",
+   "objective": "maps.o1.make",
+   "depth": 4,
+   "text": "Traveller: roads and names. Efua: wells and slopes. Clerk: stalls and names. Kip: loved places and roads. Then choose: each map is true for its purpose."
+  },
+  {
+   "id": "h.sorter.1",
+   "objective": "sorter.o1.teach",
+   "depth": 1,
+   "text": "Watch where the sorter puts each fruit. Which fruit does it set aside?"
+  },
+  {
+   "id": "h.sorter.2",
+   "objective": "sorter.o1.teach",
+   "depth": 2,
+   "text": "Look at Mara's two examples. What colour are they?"
+  },
+  {
+   "id": "h.sorter.3",
+   "objective": "sorter.o1.teach",
+   "depth": 3,
+   "text": "The sorter compares a fruit only with examples of the same colour. Give it a good and a bruised example of each colour."
+  },
+  {
+   "id": "h.sorter.4",
+   "objective": "sorter.o1.teach",
+   "depth": 4,
+   "text": "Choose one good and one bruised red, green and yellow fruit (six examples). Then: the examples shape what it can know."
+  },
+  {
+   "id": "h.echo.1",
+   "objective": "echo.o1.measure",
+   "depth": 1,
+   "text": "Clap, then press the button as soon as you hear the echo. Do it a few times."
+  },
+  {
+   "id": "h.echo.2",
+   "objective": "echo.o1.measure",
+   "depth": 2,
+   "text": "Now test how quickly you react: press when the lantern lights."
+  },
+  {
+   "id": "h.echo.3",
+   "objective": "echo.o1.measure",
+   "depth": 3,
+   "text": "Compare your first estimate, your corrected estimate and the rope. Which way was the first estimate wrong?"
+  },
+  {
+   "id": "h.echo.4",
+   "objective": "echo.o1.measure",
+   "depth": 4,
+   "text": "Choose: my reaction time adds a delay to every echo time."
+  },
+  {
+   "id": "h.res.1",
+   "objective": "res.o1.plaque",
+   "depth": 1,
+   "text": "Look before you choose. Use the swab until you have seen every layer."
+  },
+  {
+   "id": "h.res.2",
+   "objective": "res.o1.plaque",
+   "depth": 2,
+   "text": "Every method is allowed. Each one keeps some layers and loses others."
+  },
+  {
+   "id": "h.res.3",
+   "objective": "res.o1.plaque",
+   "depth": 3,
+   "text": "The label must say what you kept and what you changed. A label can mislead by saying too much or too little."
+  },
+  {
+   "id": "h.res.4",
+   "objective": "res.o1.plaque",
+   "depth": 4,
+   "text": "For any method, choose the label that names the dates of the layers and what was removed or covered."
+  },
+  {
+   "id": "h.survey.1",
+   "objective": "survey.o1.report",
+   "depth": 1,
+   "text": "Run the same question with different groups. Then run different questions with the same group."
+  },
+  {
+   "id": "h.survey.2",
+   "objective": "survey.o1.report",
+   "depth": 2,
+   "text": "Which question tells people what to think? Which group includes people from every part of town?"
+  },
+  {
+   "id": "h.survey.3",
+   "objective": "survey.o1.report",
+   "depth": 3,
+   "text": "Ask a plain question to every third house. Compare it with the other results."
+  },
+  {
+   "id": "h.survey.4",
+   "objective": "survey.o1.report",
+   "depth": 4,
+   "text": "Choose the report that says how you asked, whom you asked, what you found and how sure you can be."
+  },
+  {
+   "id": "h.ferry.1",
+   "objective": "ferry.o1.send",
+   "depth": 1,
+   "text": "Read what Sefa says about each marked word. What does the council need to do, and when?"
+  },
+  {
+   "id": "h.ferry.2",
+   "objective": "ferry.o1.send",
+   "depth": 2,
+   "text": "Send a first try and read the back-check. Which cant words came back different?"
+  },
+  {
+   "id": "h.ferry.3",
+   "objective": "ferry.o1.send",
+   "depth": 3,
+   "text": "Short and exact beats long. 'By dusk' keeps the time in two words."
+  },
+  {
+   "id": "h.ferry.4",
+   "objective": "ferry.o1.send",
+   "depth": 4,
+   "text": "Keep: slow water, both of us, walkers but not carts, and the time. Many short versions fit on the slate."
+  },
+  {
+   "id": "h.frame.1",
+   "objective": "frame.o1.posters",
+   "depth": 1,
+   "text": "Read what each person wants in the poster, and what they do not want."
+  },
+  {
+   "id": "h.frame.2",
+   "objective": "frame.o1.posters",
+   "depth": 2,
+   "text": "Drag the frame over the picture. Watch the poster on the right change."
+  },
+  {
+   "id": "h.frame.3",
+   "objective": "frame.o1.posters",
+   "depth": 3,
+   "text": "Orrin: left side, low. Efua: the empty stall and the cloud, high up. Bram: the right side, low."
+  },
+  {
+   "id": "h.frame.4",
+   "objective": "frame.o1.posters",
+   "depth": 4,
+   "text": "When all three are done, look at the three frames together. Which answer says who framed each one, and why?"
+  },
+  {
+   "id": "h.bells.1",
+   "objective": "bells.o1.check",
+   "depth": 1,
+   "text": "Ring the stair and listen. Then say honestly what you heard."
+  },
+  {
+   "id": "h.bells.2",
+   "objective": "bells.o1.check",
+   "depth": 2,
+   "text": "Move the tuning glass slider from step 0 to step 12. Watch the bars at both ends."
+  },
+  {
+   "id": "h.bells.3",
+   "objective": "bells.o1.check",
+   "depth": 3,
+   "text": "At the top, the high bars fade away. At the bottom, new low bars fade in."
+  },
+  {
+   "id": "h.bells.4",
+   "objective": "bells.o1.check",
+   "depth": 4,
+   "text": "Choose the answer that keeps both: what you heard, and what the glass showed."
+  },
+  {
+   "id": "h.forecast.1",
+   "objective": "forecast.o1.days",
+   "depth": 1,
+   "text": "Open the almanac. Which clue is the strongest?"
+  },
+  {
+   "id": "h.forecast.2",
+   "objective": "forecast.o1.days",
+   "depth": 2,
+   "text": "When the clues point different ways, a middle chance is honest."
+  },
+  {
+   "id": "h.forecast.3",
+   "objective": "forecast.o1.days",
+   "depth": 3,
+   "text": "Falling glass, low clouds and low swallows together: very likely. Rising glass and clear sky: very unlikely."
+  },
+  {
+   "id": "h.forecast.4",
+   "objective": "forecast.o1.days",
+   "depth": 4,
+   "text": "Look at the result chart. Choose the answer about matching your chances to what happens."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.signs.done",
+   "text": "The Sign-Smith's board: commas can decide who a rule is for, a pronoun must point to one person, and a describing word must sit next to its thing. Exact words carry exact knowledge.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.cite.done",
+   "text": "The Citation Thread: author, title, container, publisher, date, page. A citation gives credit, lets a reader trace the source, and builds trust.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.timeline",
+   "text": "The Timeline Door: one event can have a date of doing and a date of telling. Put only dates of the same kind on one timeline.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.balance",
+   "text": "The Weigh-House: a fair test uses a shared, checked measure that belongs to neither side, so that anyone can repeat it and get the same result.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.sight",
+   "text": "The Tipped Cart: where a person stands decides what they can know first-hand. Two people who heard a story from one person are one source, not two.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.window",
+   "text": "The round window: 1, 2, 4, 8, 16 panes, and then 31. A pattern is evidence for a guess; only a proof holds for every case. One counterexample is enough to break a rule.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.maps",
+   "text": "The Mapmaker's Table: every map leaves things out, and that is what makes it useful. A map is true for a purpose. What it leaves out, and who decided, shows what someone valued.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.sorter",
+   "text": "The Brass Sorter: a machine that learns from examples knows only what its examples show. Choosing the examples is a choice with power in it: ask who is missing, and who pays for it.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.echo",
+   "text": "The Echo Bridge: my reaction time added a delay to every echo time, so every estimate was too far. More tries shrink random scatter; a systematic error needs its own check.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.restore",
+   "text": "The Founders' Plaque: every restoration keeps some evidence and loses some. The honest part is the label: it says which words belong to which time, and what is gone.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.survey",
+   "text": "The Bridge Toll Survey: who you ask and how you ask can decide the answer. A fair report says how, whom, what, and how sure.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.ferry",
+   "text": "The Ferry Message: some words carry differences that another language needs a phrase for. A translator chooses what to keep, and can show those choices.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.frame",
+   "text": "The Painter's Frame: three true posters from one painting told three different stories. Ask who framed a picture, why, and what was outside the frame.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.bells",
+   "text": "The Endless Bell Stair: every step sounded higher, but after twelve steps the notes were the same. A measurement checked my hearing, and the illusion showed me how hearing works.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "j.forecast",
+   "text": "The Forecast Board: a good forecast is not always right. Its chances match what happens over many days, and it claims only as much certainty as the evidence gives.",
+   "claimKind": "interpretation"
+  }
+ ],
+ "criteria": [
+  {
+   "id": "crit.interpretation.signs",
+   "concept": "interpretation",
+   "maximum": 5
+  },
+  {
+   "id": "crit.evidence.citation",
+   "concept": "evidence",
+   "maximum": 5
+  },
+  {
+   "id": "crit.evidence.timeline",
+   "concept": "evidence",
+   "maximum": 5
+  },
+  {
+   "id": "crit.objectivity.balance",
+   "concept": "objectivity",
+   "maximum": 5
+  },
+  {
+   "id": "crit.perspective.sight",
+   "concept": "perspective",
+   "maximum": 5
+  },
+  {
+   "id": "crit.certainty.window",
+   "concept": "certainty",
+   "maximum": 5
+  },
+  {
+   "id": "crit.values.maps",
+   "concept": "values",
+   "maximum": 5
+  },
+  {
+   "id": "crit.power.sorter",
+   "concept": "power",
+   "maximum": 5
+  },
+  {
+   "id": "crit.certainty.echo",
+   "concept": "certainty",
+   "maximum": 5
+  },
+  {
+   "id": "crit.responsibility.restore",
+   "concept": "responsibility",
+   "maximum": 5
+  },
+  {
+   "id": "crit.objectivity.survey",
+   "concept": "objectivity",
+   "maximum": 5
+  },
+  {
+   "id": "crit.interpretation.ferry",
+   "concept": "interpretation",
+   "maximum": 5
+  },
+  {
+   "id": "crit.perspective.frame",
+   "concept": "perspective",
+   "maximum": 5
+  },
+  {
+   "id": "crit.evidence.bells",
+   "concept": "evidence",
+   "maximum": 5
+  },
+  {
+   "id": "crit.certainty.forecast",
+   "concept": "certainty",
+   "maximum": 5
+  }
+ ]
+}

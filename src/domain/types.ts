@@ -60,6 +60,10 @@ export interface Weave {
   aoks?: AOK[];
   /** DP subject ids from src/domain/curriculum.ts. */
   subjects?: string[];
+  /** Knowledge framework parts (designer tag; see src/domain/learningLevels.ts). Derived from concepts when absent. */
+  framework?: ('scope' | 'perspectives' | 'methods-and-tools' | 'ethics')[];
+  /** Estimated minutes of play, for the 30-minute design audit. */
+  minutes?: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -77,6 +81,7 @@ export type Condition =
   | { marks: number }
   | { card: string }
   | { objective: string }
+  | { origin: string }              // the player's chosen origin (spec 35.1)
   | { all: Condition[] }
   | { any: Condition[] }
   | { not: Condition };
@@ -118,7 +123,8 @@ export interface EvidenceCard {
   sources: string[];          // SourceRecord ids; empty for fictional-world cards
   limits: string;             // what this card does NOT show
   /** Real person this card is about (Guardian Card mode C, spec 44.1). */
-  person?: { name: string; life: string; region: string; era: string };
+  /** `place` is shown to players: the person's own place or people, never a continent group. `continent` is an internal coverage check only. */
+  person?: { name: string; life: string; place: string; era: string; continent: string };
 }
 
 export interface ExhibitRecord {
@@ -188,6 +194,10 @@ export interface Objective {
   essential: boolean;
   onComplete?: Effect[];
   weave?: Weave;
+  /** Skill ids practised in this step (Skill Atlas, spec 76). */
+  skills?: string[];
+  /** The knowledge question under this step, and how the player meets it (KQ-002, KQ-003). */
+  kq?: { id: string; action: string };
 }
 
 export interface Mission {
@@ -195,6 +205,8 @@ export interface Mission {
   world: string;
   title: string;
   knowledgeQuestion: string;
+  /** What a person loses if this goes wrong, in one sentence (docs/STORY_BIBLE.md section 14). */
+  stake?: string;
   objectives: Objective[];
   available?: Condition;
 }
@@ -211,6 +223,8 @@ export interface AwardRecord {
   name: string;
   /** Names the action that earned it (spec 6.2). */
   earnedBy: string;
+  /** A title the player may wear once earned (spec 47.1, C1). It names the deed. */
+  title?: string;
   criteria: string[];         // CreditCriterion ids that are credited with it
   when: Condition;
 }
@@ -255,6 +269,10 @@ export interface LabelKit {
   /** What visitors say when the label does not hold. */
   weak: { noSupport: string; tooStrong: string };
   onHold?: Effect[];
+  /** Join as one sentence ("Patents were one factor…") instead of a museum label ("First patent: Loud."). */
+  sentence?: boolean;
+  /** Words for the builder panel when the kit is not a museum label (for example an EE claim board). */
+  legends?: { intro?: string; subject?: string; criterion?: string; limit?: string; button?: string };
   weave: Weave;
 }
 
@@ -303,8 +321,57 @@ export interface ShowdownRecord {
   script: ({ move: 'press'; line: string } | { move: 'seal'; line: string } | { move: 'shout'; line: string } | { move: 'point'; point: string })[];
   outcomes: Record<ShowdownOutcome, { text: string; effects: Effect[] }>;
   canBeWonOver: boolean;
+  /**
+   * Cross-examination (spec 47, C1 one use): after this many opponent turns, the opponent
+   * makes a new statement. For one move only, the player can present a card that contradicts it.
+   */
+  testimony?: { afterTurn: number; line: string; contradictedBy: string[]; caught: string; wrong: string };
   /** Misconception signal when the player answers an open fair point with a cheap shot or a shout (MIS-36). */
   dodgeSignal?: string;
+  weave: Weave;
+}
+
+// ---------------------------------------------------------------------------
+// Knowledge questions (spec 62): our own paraphrases, never IB wording
+// ---------------------------------------------------------------------------
+
+export interface KnowledgeQuestion {
+  id: string;                 // KQ-NEW-...
+  text: string;
+  /** Lumen's last word after a step that carries this question (one sentence). */
+  lastWord: string;
+}
+
+// ---------------------------------------------------------------------------
+// Smart glossary (spec 47.10)
+// ---------------------------------------------------------------------------
+
+export interface GlossaryEntry {
+  id: string;
+  term: string;
+  /** Word forms to mark in text, lower case (for example "claim", "claims"). */
+  match: string[];
+  /** Plain explanation in our own words (no copied course wording). */
+  text: string;
+  /** Examples from play: the first whose condition holds is shown. {flag:name} shows a flag's value. */
+  examples: { if?: Condition; text: string }[];
+}
+
+// ---------------------------------------------------------------------------
+// Title Lock (spec 92.2): EE practice, narrowing a question
+// ---------------------------------------------------------------------------
+
+export interface TitleLockRecord {
+  id: string;
+  title: string;
+  /** DP subject id the practice trail sits near (EE-001). */
+  subject: string;
+  intro: string;
+  /** Rings, in the order their texts join into the question. */
+  parts: { id: string; label: string; options: { id: string; text: string; ok: boolean; why: string }[] }[];
+  openLine: string;
+  /** Applied the first time the lock opens. */
+  onOpen?: Effect[];
   weave: Weave;
 }
 
@@ -376,6 +443,235 @@ export interface EventRecord {
   weave: Weave;
 }
 
+/** An Exhibition Hall alcove (SYM-001). */
+export interface AlcoveRecord {
+  id: string;
+  title: string;
+  /** The alcove's prompt: a question about knowledge (our own paraphrase). */
+  prompt: string;
+  /** Symbol icons the player can try. They never light the lamps. */
+  symbols: { id: string; name: string; mirage: string }[];
+  /** Reply when the player places a card that is not an object (a person, an essay). */
+  notObject: string;
+  /** Real objects (evidence cards) that can light the alcove. */
+  objects: {
+    card: string;
+    lit: string;
+    links: { text: string; kind: 'specific' | 'checklist' | 'generic'; response: string }[];
+    implications: { text: string; ok: boolean; response: string }[];
+  }[];
+  onComplete?: Effect[];
+  weave: Weave;
+}
+
+/** A word puzzle (Sign-Smith lock or Citation Thread bridge; see puzzles.ts). */
+export type PuzzleRecord = {
+  id: string;
+  title: string;
+  intro: string;
+  /** A knowledge-gated puzzle (spec 12.23): it opens only with this tool; until then it shows `sealed`. */
+  needs?: { item: string; sealed: string };
+  /** Skill ids from the private skills inventory (paraphrased, e.g. "SK-GRM-05"). */
+  skills: string[];
+  onComplete?: Effect[];
+  weave: Weave;
+} & (
+  | { type: 'rounds'; rounds: { prompt: string; options: { text: string; ok: boolean; result: string }[] }[] }
+  | { type: 'order'; tiles: { id: string; text: string; role: string; why?: string }[]; answer: string[]; success: string;
+      /** Words for the feedback (default: a bridge thread). */
+      words?: { stops: string; sags: string; done: string; notPart: string } }
+  /**
+   * A balance bench (spec 47 "balance scales", C1 test bench): put weights on the right pan
+   * until it balances the load. Weights marked `untrusted` (the thing under test's own
+   * measure) never count as a fair weighing, even when the pans balance.
+   */
+  | { type: 'balance'; rounds: BalanceRound[] }
+  /**
+   * A restorer's trestle (spec 12 IT14 and EV02, C1): look under each layer with a small
+   * test swab, choose a restoration method, then write a label that says honestly what
+   * was kept and what was lost. Every method is valid; only the label is checked.
+   */
+  | { type: 'restore'; object: string; layers: RestoreLayer[]; methods: RestoreMethod[]; face: PlaqueFace }
+  /**
+   * Sightlines (perspective; first-hand and second-hand knowledge): witnesses stand in a
+   * small map with things that block the view. The player draws each witness's sightlines
+   * and sorts each claim into "saw it" or "could not see it". Then the player chooses a
+   * fair report. The map decides what each person could see, so the answer is checkable.
+   */
+  /**
+   * A conjecture window (mathematics; a pattern is evidence, not a proof): the player adds
+   * points on a circle one at a time and the window counts its panes. Before the point
+   * where the pattern breaks, the player makes a prediction (never graded). Then the
+   * player says what the break shows.
+   */
+  | { type: 'conjecture'; angles: number[]; claim: string; predictAt: number; predictions: { text: string; reply: string }[]; reflect: { text: string; honest: boolean; why: string }[]; proof: string[] }
+  /**
+   * A mapmaker's table (a model is not the thing): the sheet holds only a few layers. The
+   * player makes a map for each person, who uses it on a short trip. Any map that gives
+   * the person what they need works. Then the player says which map is "true".
+   */
+  | { type: 'mapmaker'; maxLayers: number; layers: { id: string; label: string }[]; audiences: { id: string; name: string; wants: string; need: string[]; success: string; lost: string }[]; reflect: { text: string; honest: boolean; why: string }[] }
+  /**
+   * A learning sorter (technology AOK): a brass machine sorts fruit by copying the examples
+   * it was given. First the player sees it sort with a narrow set of examples and says why
+   * it failed; then the player chooses examples; then the player reflects.
+   */
+  | { type: 'sorter'; slots: number; fruits: SorterFruit[]; crate: string[]; basket: string[]; start: string[]; diagnose: { text: string; honest: boolean; why: string }[]; reflect: { text: string; honest: boolean; why: string }[]; farms: Record<string, string> }
+  /**
+   * An echo measurement (natural sciences; error and uncertainty): clap, press when the
+   * echo returns, and work out the distance. Then measure your own reaction time, and
+   * see how a delay that is always there pushes every result the same way.
+   */
+  | { type: 'echo'; distance: number; speed: number; minTimes: number; reflect: { text: string; honest: boolean; why: string }[] }
+  /**
+   * A survey (human sciences): the wording of a question and who is asked both change the
+   * answer. Every person has a fixed view; a leading question flips people whose view is
+   * not firm. The player runs surveys, compares them, then chooses a fair report.
+   */
+  | { type: 'survey'; groups: Record<string, string>; people: SurveyPerson[]; wordings: { id: string; text: string; lean: 'none' | 'yes' | 'no' }[]; samples: { id: string; label: string; people: string[] }[]; fair: { wording: string; sample: string }; reflect: { text: string; honest: boolean; why: string }[] }
+  /**
+   * A translation relay (language AOK): a message in the ferryfolk's cant must reach the
+   * council in English. Some cant words mark a difference that English does not mark in one
+   * word. The player picks a rendering for each word within the crier's word limit. Many
+   * translations work: a translation works when it keeps every difference the reader needs.
+   */
+  | { type: 'translate'; speaker: string; source: string; frame: string; budget: number; words: TranslateWord[]; parts: { id: string; name: string; lost: string }[]; reflect: { text: string; honest: boolean; why: string }[] }
+  /**
+   * The painter's frame (the arts): one wide, true scene; people ask for posters. Where the
+   * player puts the frame decides what the poster says. Every poster is true, and none of
+   * them shows the whole scene. An item is in the frame when its centre is inside it.
+   */
+  | { type: 'frame'; scene: { w: number; h: number }; frame: { w: number; h: number }; items: FrameItem[]; briefs: FrameBrief[]; reflect: { text: string; honest: boolean; why: string }[] }
+  /**
+   * The endless bell stair (perception; natural and human sciences): a Shepard scale. Each
+   * step sounds higher, but after `steps` steps the notes are the same as at the start. The
+   * player listens, says what they heard (never graded), then compares with a measurement.
+   */
+  | { type: 'shepard'; steps: number; base: number; octaves: number; guesses: { text: string; reply: string }[]; reflect: { text: string; honest: boolean; why: string }[] }
+  /**
+   * The forecast board (certainty; natural sciences and mathematics): for each day the player
+   * reads the clues and says how likely rain is. The days are fixed, never random. At the end
+   * the board compares the player's forecasts with 'always 50%' and the almanac. The score is
+   * shown, never graded: only the reflection has a fair answer.
+   */
+  | { type: 'forecast'; choices: number[]; notes: string[]; days: ForecastDay[]; reflect: { text: string; honest: boolean; why: string }[] }
+  | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string }[] }
+);
+
+export interface ForecastDay { baro: 'falling' | 'steady' | 'rising'; clouds: 'low' | 'high' | 'none'; birds: 'low' | 'high'; rain: boolean; almanac: number }
+export interface FrameItem { id: string; label: string; art: string; x: number; y: number; w: number; h: number }
+export interface FrameBrief { id: string; who: string; wants: string; need: string[]; avoid: string[]; success: string }
+export interface TranslateWord { id: string; word: string; note: string; choices: { text: string; keeps: string[]; back: string }[] }
+export interface SurveyPerson { id: string; group: string; yes: boolean; firm: boolean }
+export interface SorterFruit { id: string; colour: 'red' | 'green' | 'yellow'; size: 'small' | 'large'; bruised: boolean; farm: string }
+export interface SightBlock { x: number; y: number; w: number; h: number; label: string; kind: 'stall' | 'fountain' | 'crates' | 'cart' }
+export interface SightSpot { id: string; x: number; y: number; label: string }
+export interface Witness { id: string; name: string; x: number; y: number; colour: string; claims: { spot: string; text: string; heard?: string }[] }
+
+/** How the object's face looks: background, ink and short lines; an optional small window. */
+export interface PlaqueFace { bg: string; ink: string; lines: string[]; window?: { bg: string; ink: string; lines: string[] } }
+
+/** One layer of an object, top layer first. */
+export interface RestoreLayer { id: string; name: string; colour: string; text: string }
+
+export interface RestoreMethod {
+  id: string;
+  label: string;
+  does: string;
+  /** Layer ids that stay (visible or hidden). */
+  keeps: string[];
+  /** Layer ids that are gone after this method. Together with keeps: every layer once. */
+  loses: string[];
+  /** A reversible method can be changed later; an irreversible one cannot. */
+  reversible: boolean;
+  result: string;
+  face: PlaqueFace;
+  labels: { text: string; honest: boolean; why: string }[];
+}
+
+/** A keepsake for the Guardian's quarters (spec 12.16): shown on a shelf once `if` holds. Cosmetic only. */
+/** `use` says where the keepsake matters in the world (shown when it is earned and in the quarters). */
+export interface Keepsake { id: string; name: string; text: string; if: Condition; where: string; use?: string }
+/** The Lamp Wall (storyline): one lamp for each of Emberford's knots that the player helps untie. */
+export interface Knot { id: string; name: string; who: string; lit: string; if: Condition }
+/** A clue object: a base description, and new views that a keepsake reveals (a perspective or a pathway). */
+export interface ClueView { keepsake: string; text: string; effects?: Effect[] }
+export interface ClueRecord { id: string; name: string; text: string; views: ClueView[]; onRead?: Effect[]; study?: boolean }
+/** A dialogue option that appears with a character once the player holds a keepsake. */
+/** The story so far (Journal): one beat shown once its condition holds. `{lamps}` is the number of lamps lit. */
+export interface ChronicleBeat { id: string; title: string; text: string; if?: Condition }
+/** A secret (Easter egg): a hidden spot with a small piece of lore. Found with the FindSecret command. */
+export interface Secret { id: string; name: string; map: string; text: string }
+/** A community of Emberford (reputation): what it knows, how it checks, and what earns its trust. */
+export interface Community { id: string; name: string; who: string[]; knows: string; checks: string; gains: { if: Condition; pts: number; why: string }[] }
+export interface KeepsakeTalk { id: string; character: string; keepsake: string; text: string; node: string; if?: Condition }
+
+/** World memory (spec 47, C1): a short line a person says when the player passes, once the condition holds. */
+export interface MemoryLine { id: string; character: string; if: Condition; line: string }
+
+/** A practice clue board for a Showdown (spec 47, C1). */
+export interface ClueBoardRecord {
+  id: string;
+  showdown: string;
+  title: string;
+  intro: string;
+  onComplete?: Effect[];
+  weave: Weave;
+}
+
+export interface BalanceRound {
+  prompt: string;
+  load: { label: string; mass: number };
+  weights: { id: string; label: string; mass: number; untrusted?: string }[];
+  success: string;
+}
+
+/**
+ * A Loreling (spec 36.1): a small fictional creature linked to one concept. The player
+ * befriends it by patient observation: watch it, note its pattern, then wait in the
+ * right place. A wrong note means it does not come; the player watches again and revises.
+ */
+export interface LorelingRecord {
+  id: string;
+  name: string;
+  concept: Concept;
+  intro: string;
+  sightings: { id: string; place: string; text: string }[];
+  /** Pattern questions. Every wrong option names the sighting that contradicts it. */
+  questions: { id: string; prompt: string; answer: string; options: { id: string; text: string; contradicts?: string; why?: string }[] }[];
+  offer: { prompt: string; answer: string; options: { id: string; text: string; result?: string }[] };
+  /** Watching in this many places before the note can be written. */
+  minSightings: number;
+  befriended: string;
+  names: string[];
+  forms: { name: string; power: string; needs?: string }[];
+  skills: string[];
+  weave: Weave;
+  onComplete?: Effect[];
+}
+
+/** Pronouns the player chose (spec 35.1). Characters use them in text through {they}, {them} and {their}. */
+export interface Pronouns { subject: string; object: string; possessive: string }
+
+/** A player origin (spec 35.1): a background, one starting Lens hint and one unique option in each world. No stat advantage. */
+export interface OriginRecord {
+  id: string;
+  name: string;
+  background: string;
+  /** What this background helps the player notice (course link, paraphrased). */
+  link: string;
+  /** Journal entry id given at the start: the extra Lens hint. */
+  journal: string;
+}
+
+export interface PlayerRecord {
+  name: string;
+  look: string;
+  pronouns: Pronouns;
+  /** Origin id, or null for saves made before origins existed. */
+  origin: string | null;
+}
+
 export interface ContentPack {
   id: string;
   contentVersion: number;
@@ -393,19 +689,44 @@ export interface ContentPack {
   journal: { id: string; text: string; claimKind?: ClaimKind }[];
   labelKits: LabelKit[];
   showdowns: ShowdownRecord[];
+  locks: TitleLockRecord[];
+  glossary: GlossaryEntry[];
+  questions: KnowledgeQuestion[];
   threads: ThreadRecord[];
   moments: MomentRule[];
   misconceptions: MisconceptionRecord[];
   portfolio: PortfolioTemplate[];
   events: EventRecord[];
+  origins: OriginRecord[];
+  alcoves: AlcoveRecord[];
+  puzzles: PuzzleRecord[];
+  lorelings: LorelingRecord[];
+  clueBoards?: ClueBoardRecord[];
+  keepsakes?: Keepsake[];
+  knots?: Knot[];
+  clues?: ClueRecord[];
+  keepsakeTalks?: KeepsakeTalk[];
+  chronicle?: ChronicleBeat[];
+  secrets?: Secret[];
+  communities?: Community[];
+  /** The Deep Dive (spec 59): prompts and the things a player can answer with. */
+  divePrompts?: import('./dive').DivePrompt[];
+  diveItems?: import('./dive').DiveItem[];
+  memories?: MemoryLine[];
+  /** The Fray Bestiary (spec 36.2): errors in reasoning shown as creatures. Recorded on first meeting. */
+  fray: { id: string; name: string; error: string; pattern: string; weakness: string; chapter: number | null }[];
+  /** The whole Loreling Atlas (spec 36.1): every Loreling, with the concept it lives near. */
+  lorelingAtlas: { name: string; concept: Concept; power: string }[];
+  skillDomains: { id: string; name: string }[];
+  skills: { id: string; domain: string; name: string }[];
 }
 
 // ---------------------------------------------------------------------------
 // State
 // ---------------------------------------------------------------------------
 
-export const CAMPAIGN_SCHEMA = 3;
-export const PERMANENT_SCHEMA = 2;
+export const CAMPAIGN_SCHEMA = 4;
+export const PERMANENT_SCHEMA = 4;
 
 export interface ShowdownLogLine { who: 'player' | 'opponent' | 'crowd' | 'witness'; text: string; why?: string }
 
@@ -427,6 +748,10 @@ export interface ShowdownState {
   openPoint: string | null;   // a fair point the player can concede now
   conceded: string[];
   cheapShots: number;
+  /** Cross-examination: the statement is open for one move, then caught or missed. */
+  testimony?: 'open' | 'caught' | 'missed';
+  /** Zen mode: the crowd waits; the Showdown ends only when the player rests or every link is cracked. */
+  relaxed?: boolean;
   log: ShowdownLogLine[];
   outcome: ShowdownOutcome | null;
 }
@@ -447,7 +772,7 @@ export interface ForgeState {
 export interface CampaignState {
   schema: number;
   contentVersion: number;
-  player: { name: string; look: string };
+  player: PlayerRecord;
   mapId: string;
   pos: { x: number; y: number };
   facing: 'down' | 'up' | 'left' | 'right';
@@ -498,4 +823,10 @@ export interface PermanentRecord {
   /** Weave tags met in play (counts), for the dashboard (spec 94.2). */
   met: { concepts: Record<string, number>; atl: Record<string, number>; subjects: Record<string, number>; aoks: Record<string, number> };
   portfolio: PortfolioEntry[];
+  /** Question Stones (KQ-003): knowledge question id -> ways met ("world|action"). */
+  stones: Record<string, string[]>;
+  /** Skill Atlas: skill id -> distinct use signatures (see skills.ts). Schema 4. */
+  skills: Record<string, string[]>;
+  /** The Guardian's Ledger: active seconds and XP per day, on this device (optional; no schema change). */
+  activity?: import('./ledger').Activity;
 }

@@ -1,0 +1,462 @@
+{
+ "cards": [
+  {
+   "id": "card.copies.mender",
+   "title": "The matching menders’ band",
+   "text": "Vesh is the workshop’s mark for a finished repair and a trip to the return desk. The lending entry has its own line.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "sources": [],
+   "limits": "It records a step in a repair. It gives no permission to borrow."
+  },
+  {
+   "id": "card.copies.reader-fold",
+   "title": "The atlas wrapper at the tray",
+   "text": "A note with the Vesh band points to the return desk. The landing visitor needed the instruction alongside the mark.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "sources": [],
+   "limits": "This describes the handling of one mended copy, not who may take it."
+  }
+ ],
+ "labelKits": [
+  {
+   "id": "copies.mending-card",
+   "title": "Lark’s mending-card press",
+   "oldLabel": "VESH",
+   "place": "the Print Workshop",
+   "subjects": [
+    {
+     "id": "mended",
+     "text": "Send this mended book to the return desk"
+    }
+   ],
+   "criteria": [
+    {
+     "id": "plain",
+     "text": "Mending finished",
+     "force": 2
+    },
+    {
+     "id": "paired",
+     "text": "Vesh (mending finished)",
+     "force": 2
+    }
+   ],
+   "limits": [
+    {
+     "id": "workshop",
+     "text": "A mark used by the local menders.",
+     "lower": 0
+    },
+    {
+     "id": "register",
+     "text": "See the menders’ register, M-4.",
+     "lower": 0
+    }
+   ],
+   "supports": [
+    {
+     "subject": "mended",
+     "criterion": "plain",
+     "cards": [
+      {
+       "card": "card.copies.mender",
+       "weight": 1
+      },
+      {
+       "card": "card.copies.reader-fold",
+       "weight": 1
+      }
+     ],
+     "heard": "A visitor reads the proof and points to the return desk. Lark marks the bundle for the shared tray."
+    },
+    {
+     "subject": "mended",
+     "criterion": "paired",
+     "cards": [
+      {
+       "card": "card.copies.mender",
+       "weight": 1
+      },
+      {
+       "card": "card.copies.reader-fold",
+       "weight": 1
+      }
+     ],
+     "heard": "A learner matches the term on the proof to the stamp. They can read the action beside it. Lark marks this bundle for the workshop rack."
+    }
+   ],
+   "weak": {
+    "noSupport": "The carrier asks for the matching mark and its instruction before taking the proof.",
+    "tooStrong": "The proof lies beside an unmarked band. The carrier will wait for the other record."
+   },
+   "legends": {
+    "intro": "Set a plain heading for readers at the tray, or keep the workshop’s word with a gloss for apprentices. Both give the same action.",
+    "criterion": "Heading on the card",
+    "limit": "Line below the instruction",
+    "button": "Pull this press proof"
+   },
+   "weave": {
+    "concepts": [
+     "interpretation",
+     "perspective",
+     "culture",
+     "responsibility"
+    ],
+    "atl": [
+     "communication",
+     "thinking",
+     "social"
+    ],
+    "aoks": [
+     "LAN",
+     "ART"
+    ],
+    "subjects": [
+     "lang-b",
+     "lang-langlit",
+     "visual-arts"
+    ]
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH7-R03",
+   "world": "WORLD-08",
+   "title": "Room for the Meaning",
+   "knowledgeQuestion": "What has to travel with a word for someone else to act on it?",
+   "available": {
+    "flag": "copies.translation.readback",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "copies.translation.circulated",
+     "title": "Use the new mending card with another repaired book.",
+     "essential": false,
+     "done": {
+      "flag": "copies.translation.readback",
+      "eq": true
+     },
+     "onComplete": [
+      {
+       "journal": "j.copies.translation"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "culture",
+       "interpretation",
+       "perspective",
+       "responsibility"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "LAN"
+      ],
+      "subjects": [
+       "lang-b",
+       "lang-langlit"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "copies.translation.file",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The menders’ file holds a paper band used to send books out of their workroom. The small stamp reads VESH. There’s a crease on the same side as a mark in the register.",
+   "options": [
+    {
+     "text": "Fit the crease against the matching register line.",
+     "next": "copies.translation.file-matched",
+     "if": {
+      "not": {
+       "card": "card.copies.mender"
+      }
+     },
+     "effects": [
+      {
+       "addCard": "card.copies.mender"
+      }
+     ]
+    },
+    {
+     "text": "Read the line under the fold.",
+     "next": "copies.translation.file-matched",
+     "if": {
+      "card": "card.copies.mender"
+     }
+    },
+    {
+     "text": "Leave the file open."
+    }
+   ]
+  },
+  {
+   "id": "copies.translation.file-matched",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "M-4. Mending finished. Move the copy to the return desk. The band only records work on the book. The register has a separate line for loans. A loose copy sent to the return tray could carry both the term and what it asks someone to do."
+  },
+  {
+   "id": "copies.translation.reader",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A visitor has set a mended atlas beside the landing’s return tray. The wrapper has the same bent corner as the bands in the Record Room. There’s a note just inside it.",
+   "options": [
+    {
+     "text": "Lift the wrapper and follow the note to the tray.",
+     "next": "copies.translation.reader-matched",
+     "if": {
+      "not": {
+       "card": "card.copies.reader-fold"
+      }
+     },
+     "effects": [
+      {
+       "addCard": "card.copies.reader-fold"
+      }
+     ]
+    },
+    {
+     "text": "Read the note at the return tray.",
+     "next": "copies.translation.reader-matched",
+     "if": {
+      "card": "card.copies.reader-fold"
+     }
+    },
+    {
+     "text": "Leave the wrapper on the atlas."
+    }
+   ]
+  },
+  {
+   "id": "copies.translation.reader-matched",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The note reads 'Vesh, ready for the return desk'. The visitor points from the band to the tray. 'I can see where it goes now. I didn’t know the word before.' A learner can use the short instruction. An apprentice can go back to check the mark. Lark has a spare press for a small card.",
+   "options": [
+    {
+     "text": "Hold the wrapper beside the repaired hall notice.",
+     "if": {
+      "flag": "copies.followup",
+      "eq": true
+     },
+     "next": "copies.translation.repaired-notice"
+    },
+    {
+     "text": "Close the wrapper.",
+     "if": {
+      "flag": "copies.followup",
+      "eq": true
+     }
+    }
+   ]
+  },
+  {
+   "id": "copies.translation.repaired-notice",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The repaired notice gives the rule for entering on a separate line. The visitor moves the wrapper down beside the return tray. They can now see where the repair mark belongs and where the entry rule belongs."
+  },
+  {
+   "id": "copies.translation.carrier",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The proof is dry. A carrier can take one stack. Visitors read at the shared return tray. The local menders learn their marks at the workshop rack.",
+   "options": [
+    {
+     "text": "Clip the plain-word cards to the carrier’s tray bundle.",
+     "next": "copies.translation.sent-plain",
+     "if": {
+      "all": [
+       {
+        "flag": "label.copies.mending-card.holds",
+        "eq": true
+       },
+       {
+        "flag": "label.copies.mending-card.criterion",
+        "eq": "plain"
+       },
+       {
+        "not": {
+         "flagSet": "copies.translation.edition"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copies.translation.edition",
+       "value": "plain"
+      }
+     ]
+    },
+    {
+     "text": "Clip the paired cards to the workshop’s next bundle.",
+     "next": "copies.translation.sent-paired",
+     "if": {
+      "all": [
+       {
+        "flag": "label.copies.mending-card.holds",
+        "eq": true
+       },
+       {
+        "flag": "label.copies.mending-card.criterion",
+        "eq": "paired"
+       },
+       {
+        "not": {
+         "flagSet": "copies.translation.edition"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copies.translation.edition",
+       "value": "paired"
+      }
+     ]
+    },
+    {
+     "text": "Leave the proof at the press."
+    }
+   ]
+  },
+  {
+   "id": "copies.translation.sent-plain",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The carrier sets a plain-word card at the shared return tray. The small line on the back names the register. A reader can follow the instruction before ever seeing the workshop’s stamp."
+  },
+  {
+   "id": "copies.translation.sent-paired",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The paired card sits beside the menders’ rack. It keeps the word from the stamp and gives the action in familiar words. The next apprentice can follow the card into the register."
+  },
+  {
+   "id": "copies.translation.landing-proof",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A reader is holding a mended notebook beside the tray. Its wrapper bears the same fold as the atlas. The card says where a book with this mark goes.",
+   "options": [
+    {
+     "text": "Put the notebook in the tray with its folded band attached.",
+     "next": "copies.translation.landing-used",
+     "if": {
+      "all": [
+       {
+        "flag": "copies.translation.edition",
+        "eq": "plain"
+       },
+       {
+        "not": {
+         "flagSet": "copies.translation.readback"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the mending card in view."
+    }
+   ]
+  },
+  {
+   "id": "copies.translation.landing-used",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The reader follows the notebook to the return desk. They can move the next copy when a mender sends it out, even if the old word is unfamiliar. The band stays with the notebook so the clerk can check the repair.",
+   "effects": [
+    {
+     "setFlag": "copies.translation.readback",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "copies.translation.workshop-proof",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "An apprentice unpacks a mended notebook. They know the word on the wrapper now but haven’t seen it on this kind of book. The card gives the same action as the register.",
+   "options": [
+    {
+     "text": "Fasten the notebook’s label beside its register copy on the rack.",
+     "next": "copies.translation.workshop-used",
+     "if": {
+      "all": [
+       {
+        "flag": "copies.translation.edition",
+        "eq": "paired"
+       },
+       {
+        "not": {
+         "flagSet": "copies.translation.readback"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the mending card in view."
+    }
+   ]
+  },
+  {
+   "id": "copies.translation.workshop-used",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The apprentice reads both parts of the card, then takes the notebook to the return desk. They leave the paired card for the next learner. The repair mark can travel with another book without becoming a claim about who may borrow it.",
+   "effects": [
+    {
+     "setFlag": "copies.translation.readback",
+     "value": true
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.copies.translation.1",
+   "objective": "copies.translation.circulated",
+   "depth": 1,
+   "text": "The same fold appears on two mended books."
+  },
+  {
+   "id": "h.copies.translation.2",
+   "objective": "copies.translation.circulated",
+   "depth": 2,
+   "text": "Match the band to the register by the archive cabinet. Look for the atlas at the landing return tray."
+  },
+  {
+   "id": "h.copies.translation.3",
+   "objective": "copies.translation.circulated",
+   "depth": 3,
+   "text": "Make a proof at the press and put it into the carrier’s clip."
+  },
+  {
+   "id": "h.copies.translation.4",
+   "objective": "copies.translation.circulated",
+   "depth": 4,
+   "text": "Use the issued card with the mended notebook at the tray or the workshop rack."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.copies.translation",
+   "claimKind": "observation",
+   "text": "A mender’s mark went from an atlas wrapper to a useful card for another book. The card kept where the book should go and the facts about its repair together."
+  }
+ ]
+}
