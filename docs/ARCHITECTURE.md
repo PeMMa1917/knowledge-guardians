@@ -117,6 +117,10 @@ Both slots are written in one `localStorage` key (`kg.slots`) in one write, with
 2. The teacher opens `teacher.html` and adds the files. `src/teacher/report.ts` (pure, tested in `tests/teacher.test.ts`) checks each file, keeps the latest file per student, and makes the class summary.
 3. The dashboard shows a weekly summary, concept, ATL, area and subject coverage, learner-profile class totals, misconception alerts (with "Not a misconception"), and a private progress list. Each student has a printable report (A4, 1.5 cm margins).
 
+An optional leaderboard is available in the game menu and in the teacher tab. The game shows private totals for today, this week, this month and the year to date. A player can choose a nickname and download a separate score file with the selected activity’s value for that period. Score files carry no player name from the save, journal, portfolio or learner profile. Rankings compare activity for one metric at a time. Equal values share a place. Missing values do not rank, while recorded zeroes are shown.
+
+Score files and withdrawal files are read only into the open tab. They never contribute to the formative reports or print views. Turning off score sharing prevents future score downloads. An older copy stops appearing in a comparison when that tab imports the newer withdrawal. Copies already held by someone else must be removed there.
+
 ## Debug hook
 
 In the browser console, `window.kg` gives `{ controller, ui, world, settings }`. The test scripts use it (for example `window.kg.world.changeMap(...)`). Do not use it in game code.

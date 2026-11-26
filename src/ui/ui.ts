@@ -20,6 +20,8 @@ import { ISLAND_CRATES, ISLAND_LANDINGS, ISLAND_ROUTES, islandPlan, type IslandL
 import { COUNCIL_TRIALS, councilClock, type CouncilTrial } from '../domain/councilClock';
 import { buildScoutBoard } from './scoutRoutes';
 import { adventureJournalTab } from './adventureJournal';
+import { leaderboardPanel } from './leaderboard';
+import type { LeaderboardFile } from '../domain/leaderboard';
 import { bindJournalEditor, discardPendingJournalWriting, flushJournalWriting, queueJournalWriting } from './journalWriting';
 import { ROUTE_ACTIONS } from '../content/questionEncounters';
 /**
@@ -493,6 +495,7 @@ export class UI implements UIApi {
   private promptEl!: HTMLElement;
   private toastBox!: HTMLElement;
   private saveFeedback: HTMLElement | null = null;
+  private readonly leaderboardFiles: LeaderboardFile[] = [];
   private lumenBubble!: HTMLElement;
   private onStart: () => void;
   private pendingChapterEnd = false;
@@ -3009,10 +3012,16 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openRoles() }, 'Knower role'),
         h('button', { onclick: () => this.openLedger() }, "The Guardian's Ledger (progress)"),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
+        h('button', { onclick: () => this.openLeaderboard() }, 'Leaderboard'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
         h('button', { onclick: () => this.openControls() }, 'Controls'),
         c.canRecover() ? h('button', { onclick: () => this.confirmRecovery() }, 'Checkpoint recovery…') : null,
         h('button', { onclick: () => this.openCredits() }, 'Credits and sources')));
+  }
+
+  private openLeaderboard(): void {
+    this.openModal('leaderboard-panel wide', 'Leaderboard', this.closeBtn(),
+      h('h2', {}, 'Leaderboard'), leaderboardPanel(this.leaderboardFiles, ctx.controller));
   }
 
   // ---------------------------------------------------------- photo mode

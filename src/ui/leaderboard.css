@@ -1,0 +1,24 @@
+.leaderboard { min-inline-size: 0; overflow-wrap: anywhere; }
+.leaderboard-filters, .leaderboard-actions { display: flex; flex-wrap: wrap; gap: .55em; }
+.leaderboard-filters > label { flex: 1 1 12rem; min-inline-size: 0; }
+.leaderboard label { display: block; }
+.leaderboard select, .leaderboard input { display: block; width: 100%; max-inline-size: 100%; font: inherit; }
+.leaderboard [hidden] { display: none; }
+.leaderboard-actions button { max-inline-size: 100%; white-space: normal; text-align: start; }
+.leaderboard-sharing, .leaderboard-compare { border-block-start: 1px solid var(--gold-dim, var(--line)); padding-block-start: .6em; margin-block-start: .8em; }
+.leaderboard-sharing summary { cursor: pointer; }
+.leaderboard-sharing label { max-inline-size: 22rem; }
+.leaderboard-caption, .leaderboard table caption { font-size: .88em; color: var(--ink-dim, var(--dim)); }
+.leaderboard-caption:empty { display: none; }
+.leaderboard-ranks table { inline-size: 100%; table-layout: fixed; border-collapse: collapse; margin-block-start: .6em; }
+.leaderboard-ranks caption { text-align: start; margin-block-end: .3em; }
+.leaderboard-ranks th, .leaderboard-ranks td { padding: .3em .3em .3em 0; text-align: start; white-space: normal; border-block-end: 1px solid var(--gold-dim, var(--line)); }
+.leaderboard-ranks th:first-child { inline-size: 5ch; }
+.leaderboard-ranks th:last-child { inline-size: 10ch; }
+.leaderboard-row-detail { display: block; font-weight: 400; }
+.leaderboard-ranks td:last-child { font-variant-numeric: tabular-nums; }
+.leaderboard-panel > h2 { padding-inline-end: 2.1em; }
+.leaderboard-teacher { margin-block-start: 1rem; }
+.leaderboard-teacher summary { cursor: pointer; }
+.leaderboard-teacher input, .leaderboard-teacher select { border: 1px solid var(--accent); border-radius: .35em; background: #fff; color: var(--ink); padding: .3em; }
+.leaderboard-teacher :is(input, select, summary):focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
