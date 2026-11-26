@@ -9,6 +9,9 @@
  * conditions and effects use the small vocabulary below (spec 22.2).
  */
 
+import type { FrameworkPart, LearnTag } from './learningLevels';
+import type { StoryMotif } from './storyMotifs';
+
 // ---------------------------------------------------------------------------
 // Claim labels (spec 2.2 and 17). Two separate axes.
 // ---------------------------------------------------------------------------
@@ -61,7 +64,9 @@ export interface Weave {
   /** DP subject ids from src/domain/curriculum.ts. */
   subjects?: string[];
   /** Knowledge framework parts (designer tag; see src/domain/learningLevels.ts). Derived from concepts when absent. */
-  framework?: ('scope' | 'perspectives' | 'methods-and-tools' | 'ethics')[];
+  framework?: FrameworkPart[];
+  /** Thinking demands for the design audit. Players do not see these levels. */
+  thinking?: Pick<LearnTag, 'dok' | 'bloom' | 'fink' | 'solo'>;
   /** Estimated minutes of play, for the 30-minute design audit. */
   minutes?: number;
 }
@@ -112,6 +117,14 @@ export interface SourceRecord {
   locator: string;            // which part of the source
   supports: string;           // the narrow claim it supports
   accessed: string;           // ISO date the authors consulted it
+  mla?: {
+    kind: 'page' | 'artwork';
+    title: string;
+    container: string;
+    author?: string;          // filed surname first, as it appears in the entry
+    workDate?: string;        // original creation date of an artwork
+    showAccessDate?: boolean;
+  };
 }
 
 export interface EvidenceCard {
@@ -138,6 +151,18 @@ export interface ExhibitRecord {
   sources: string[];
   grantsCard: string;
   altText: string;            // accessible description of the picture
+  /** Identity of this particular historical specimen and the play it supports. */
+  specimen?: {
+    key: string;             // stable institutional namespace + accession
+    institution: string;
+    accession: string;       // displayed as written by the institution
+    source: string;          // exact source in sources, rather than a comparison record
+    objective: string;       // the playable action that needs this object
+    pixelAsset?: string;    // optional local licensed image within assets/specimens/
+    people?: { name: string; role: string; detail: string; source: string }[];
+    /** A new interaction or route made possible by carrying and equipping the object. */
+    revisit?: { map: string; prop: string; method: string; hint: string };
+  };
   /** Optional label kit that repairs this exhibit's label (Hall of Firsts). */
   labelKit?: string;
 }
@@ -157,8 +182,10 @@ export interface DialogueNode {
   id: string;
   speaker: string;            // character id, "narrator", "lumen" or "mentor:<name>"
   text: string;
+  citationSource?: string;    // a SourceRecord with an MLA entry to print below this line
   claimKind?: ClaimKind;
   historicalLabel?: HistoricalLabel;
+  motif?: StoryMotif;
   effects?: Effect[];
   options?: DialogueOption[];
   next?: string | null;
@@ -196,8 +223,12 @@ export interface Objective {
   weave?: Weave;
   /** Skill ids practised in this step (Skill Atlas, spec 76). */
   skills?: string[];
+  /** Specific mechanics in which the observed skill use took place. */
+  skillActions?: Record<string, string>;
   /** The knowledge question under this step, and how the player meets it (KQ-002, KQ-003). */
   kq?: { id: string; action: string };
+  /** Other questions encountered through this action, filed in the journal. */
+  questionWays?: { id: string; action: string }[];
 }
 
 export interface Mission {
@@ -209,6 +240,8 @@ export interface Mission {
   stake?: string;
   objectives: Objective[];
   available?: Condition;
+  /** Independent case sequences for the timed design audit. Other objectives remain on each visit. */
+  caseVisits?: string[][];
 }
 
 export interface CreditCriterion {
@@ -340,6 +373,8 @@ export interface KnowledgeQuestion {
   text: string;
   /** Lumen's last word after a step that carries this question (one sentence). */
   lastWord: string;
+  /** File an incidental encounter without adding a toast after each step. */
+  journalOnly?: boolean;
 }
 
 // ---------------------------------------------------------------------------
@@ -589,9 +624,17 @@ export interface RestoreMethod {
   labels: { text: string; honest: boolean; why: string }[];
 }
 
-/** A keepsake for the Guardian's quarters (spec 12.16): shown on a shelf once `if` holds. Cosmetic only. */
-/** `use` says where the keepsake matters in the world (shown when it is earned and in the quarters). */
-export interface Keepsake { id: string; name: string; text: string; if: Condition; where: string; use?: string }
+/** A keepsake shown on a shelf once `if` holds. Some can be carried as field tools. */
+export interface Keepsake {
+  id: string;
+  name: string;
+  text: string;
+  if: Condition;
+  where: string;
+  /** A place or person who can use the item in play. */
+  use?: string;
+  equip?: { method: string; hint: string; art?: string };
+}
 /** The Lamp Wall (storyline): one lamp for each of Emberford's knots that the player helps untie. */
 export interface Knot { id: string; name: string; who: string; lit: string; if: Condition }
 /** A clue object: a base description, and new views that a keepsake reveals (a perspective or a pathway). */
@@ -645,6 +688,7 @@ export interface LorelingRecord {
   befriended: string;
   names: string[];
   forms: { name: string; power: string; needs?: string }[];
+  fieldGuide?: { sprite: string; portrait: string; portraitAlt: string; activeText: string };
   skills: string[];
   weave: Weave;
   onComplete?: Effect[];
@@ -725,7 +769,7 @@ export interface ContentPack {
 // State
 // ---------------------------------------------------------------------------
 
-export const CAMPAIGN_SCHEMA = 4;
+export const CAMPAIGN_SCHEMA = 5;
 export const PERMANENT_SCHEMA = 4;
 
 export interface ShowdownLogLine { who: 'player' | 'opponent' | 'crowd' | 'witness'; text: string; why?: string }
@@ -768,6 +812,32 @@ export interface ForgeState {
   cut: boolean;
 }
 
+export type DiaryEntryKind = 'quest' | 'choice' | 'experience';
+
+export interface DiaryEntry {
+  id: string;
+  kind: DiaryEntryKind;
+  title: string;
+  text: string;
+  at: string;
+  mapId: string;
+}
+
+export type DiaryNoteKind = 'note' | 'reflection' | 'question';
+
+export interface DiaryNoteDetails {
+  kind: DiaryNoteKind;
+  /** Old notes have no recorded date or place. */
+  at: string | null;
+  mapId: string | null;
+  resolved: boolean;
+}
+
+export interface AdventureDiary {
+  entries: DiaryEntry[];
+  noteDetails: DiaryNoteDetails[];
+}
+
 /** Everything that rolls back together when a checkpoint loads (spec 24.2). */
 export interface CampaignState {
   schema: number;
@@ -783,6 +853,7 @@ export interface CampaignState {
   journal: string[];
   /** The player's own free-text notes. Never graded (spec 22.3). */
   notes: string[];
+  adventureDiary: AdventureDiary;
   cards: string[];
   objectivesDone: string[];
   companion: string | null;

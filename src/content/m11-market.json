@@ -411,7 +411,7 @@
   {
    "id": "market.clerk.revise.window",
    "speaker": "market-clerk",
-   "text": "B gives more fibre per credit at today’s rates. The whole basket of B costs ten credits. An eight-credit purse reaches A under our whole-lot rule. Add the total beside the unit figures where the reader first saw them.",
+   "text": "B gives more fibre per credit at today’s rates. The whole basket of B costs ten credits. An eight-credit purse reaches A under our whole-lot rule. Add the total beside the unit figures where the reader first saw them. These quotes belong to the two lots on today’s slips. A new crate is due at the next bell. Leave today’s figures pinned, or put the reweigh ticket on top before the changeover.",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -421,6 +421,35 @@
       {
        "setFlag": "market.revised",
        "value": true
+      },
+      {
+       "setFlag": "market.quote.rule",
+       "value": "posted"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "market.publish"
+       },
+       {
+        "flag": "market.feedback.receipt",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Add the totals and leave a reweigh ticket over the next quote.",
+     "next": "market.update.reweigh",
+     "effects": [
+      {
+       "setFlag": "market.revised",
+       "value": true
+      },
+      {
+       "setFlag": "market.quote.rule",
+       "value": "reweigh"
       }
      ],
      "if": {
@@ -443,7 +472,7 @@
   {
    "id": "market.clerk.revise.desk",
    "speaker": "market-clerk",
-   "text": "B costs less per gram of net fibre at the desk. The reader has the small copy and eight credits. Our whole-lot rule puts B beyond that purse. Put a line for the whole lot beside its unit rate so they can take both figures back.",
+   "text": "B costs less per gram of net fibre at the desk. The reader has the small copy and eight credits. Our whole-lot rule puts B beyond that purse. Put a line for the whole lot beside its unit rate so they can take both figures back. These quotes belong to the two lots on today’s slips. A new crate is due at the next bell. Leave today’s figures pinned, or put the reweigh ticket on top before the changeover.",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -453,6 +482,35 @@
       {
        "setFlag": "market.revised",
        "value": true
+      },
+      {
+       "setFlag": "market.quote.rule",
+       "value": "posted"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "market.publish"
+       },
+       {
+        "flag": "market.feedback.receipt",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Add the totals and leave a reweigh ticket over the next quote.",
+     "next": "market.update.reweigh",
+     "effects": [
+      {
+       "setFlag": "market.revised",
+       "value": true
+      },
+      {
+       "setFlag": "market.quote.rule",
+       "value": "reweigh"
       }
      ],
      "if": {
@@ -475,14 +533,47 @@
   {
    "id": "market.update.window",
    "speaker": "market-clerk",
-   "text": "The queue can see A at eight and B at ten before it moves. One household can take A today. A buyer with ten who wants more dry fibre per credit has a reason to take B. The window carries both decisions back to the same scale.",
+   "text": "The queue can see A at eight and B at ten before it moves. One household can take A today. A buyer with ten who wants more dry fibre per credit has a reason to take B. The window carries both decisions back to the same scale. Dagny pins the lot letters above the figures. The next crates will need their own quote.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "market.update.desk",
    "speaker": "market-clerk",
-   "text": "The reader can now carry two figures to the queue: the whole-lot quote and the rate for net fibre. One reader has eight credits and can take A. The one who wanted more dry fibre per credit sets ten aside for B. The dated quotes stay beside their choices.",
+   "text": "The reader can now carry two figures to the queue: the whole-lot quote and the rate for net fibre. One reader has eight credits and can take A. The one who wanted more dry fibre per credit sets ten aside for B. The dated quotes stay beside their choices. Dagny pins the lot letters above the figures. The next crates will need their own quote.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.update.reweigh",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "The reader can buy A with eight today. Dagny keeps both totals in view and hangs an empty ticket above the new-crate space. The first person there at the next bell will have to wait at the scale before buying."
+  },
+  {
+   "id": "market.quote.return",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "Your whole-lot notice is still up. The next runner needs to know what to do when a new crate comes in. We can keep the weighed lots ready to buy or put the scale ticket first for the new arrival.",
+   "options": [
+    {
+     "text": "Pin the weighed lot letters for the queue.",
+     "next": "market.quote.return.posted",
+     "if": { "all": [{ "objective": "market.finish" }, { "not": { "flagSet": "market.quote.rule" } }] },
+     "effects": [{ "setFlag": "market.quote.rule", "value": "posted" }]
+    },
+    {
+     "text": "Leave a reweigh ticket for the next crate.",
+     "next": "market.update.reweigh",
+     "if": { "all": [{ "objective": "market.finish" }, { "not": { "flagSet": "market.quote.rule" } }] },
+     "effects": [{ "setFlag": "market.quote.rule", "value": "reweigh" }]
+    },
+    { "text": "Leave the ticket open for now." }
+   ]
+  },
+  {
+   "id": "market.quote.return.posted",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "The lot letters are up. The runner can pass the dated prices along while those lots are on sale. I’ll open a separate line for the new crate."
   },
   {
    "id": "market.clerk.after",
@@ -599,6 +690,281 @@
    "id": "market.clerk.closed-ledger",
    "speaker": "market-clerk",
    "text": "One reader took the long-fibre figures to the wick bench. Another carried the whole-lot prices back to the queue. I can look each number up from the slip it came from.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.pickup.plan",
+   "speaker": "market-clerk",
+   "text": "You saw the lane from under the lamp hood and found my two pockets. We can give the carrier a low marker or put someone at the rest to give the directions and listen back. We’ll still keep the collection slip at my desk.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip Mara’s round tab to the repair rail.",
+     "next": "market.pickup.place",
+     "if": {
+      "all": [
+       {
+        "objective": "market.pickup.scope"
+       },
+       {
+        "not": {
+         "flagSet": "market.pickup.source"
+        }
+       },
+       {
+        "item": "item.round-tray-tab"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "market.pickup.source",
+       "value": "ember"
+      },
+      {
+       "takeItem": "item.round-tray-tab"
+      }
+     ]
+    },
+    {
+     "text": "Clip Dagny’s spare tab to the repair rail.",
+     "next": "market.pickup.place",
+     "if": {
+      "all": [
+       {
+        "objective": "market.pickup.scope"
+       },
+       {
+        "not": {
+         "flagSet": "market.pickup.source"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "market.pickup.source",
+       "value": "local"
+      }
+     ]
+    },
+    {
+     "text": "Arrange the rest now that its tab is clipped.",
+     "next": "market.pickup.place",
+     "if": {
+      "all": [
+       {
+        "objective": "market.pickup.scope"
+       },
+       {
+        "flagSet": "market.pickup.source"
+       },
+       {
+        "not": {
+         "flagSet": "market.pickup.layout"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the repair counter as it is."
+    }
+   ]
+  },
+  {
+   "id": "market.pickup.place",
+   "speaker": "market-clerk",
+   "text": "At the low shelf, the carrier can see the marker and put the lamp down without a worker standing here. A worker can guide the carrier to the exact spot and give a spoken answer. A staffed handoff may mean a wait. Choose where that carrier should go.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the tab at the low rest and reserve the tagged pocket for collection.",
+     "next": "market.pickup.place.shelf",
+     "if": {
+      "all": [
+       {
+        "objective": "market.pickup.scope"
+       },
+       {
+        "flagSet": "market.pickup.source"
+       },
+       {
+        "not": {
+         "flagSet": "market.pickup.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "market.pickup.layout",
+       "value": "shelf"
+      }
+     ]
+    },
+    {
+     "text": "Put an attendant at the rest and reserve the tagged pocket for collection.",
+     "next": "market.pickup.place.attendant",
+     "if": {
+      "all": [
+       {
+        "objective": "market.pickup.scope"
+       },
+       {
+        "flagSet": "market.pickup.source"
+       },
+       {
+        "not": {
+         "flagSet": "market.pickup.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "market.pickup.layout",
+       "value": "attendant"
+      }
+     ]
+    },
+    {
+     "text": "Leave the tab clipped and come back later."
+    }
+   ]
+  },
+  {
+   "id": "market.pickup.place.shelf",
+   "speaker": "market-clerk",
+   "text": "You can see the tab under the hood from the open lane. Walk there with the carrier. I’ll keep the collection slip by my desk.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.pickup.place.attendant",
+   "speaker": "market-clerk",
+   "text": "I’ll put a worker beside the rest. Walk there with the carrier once the worker is free. The short direction can stay with the lamp’s intake tick.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.pickup.shelf",
+   "speaker": "narrator",
+   "text": "From the carrying lane, the round tab sits below the unlit lamp’s hood. The carrier can see the clear space next to it with both hands still on the lamp.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Show the low tab and guide the carrier as they set the practice lamp down.",
+     "next": "market.pickup.shelf.proof",
+     "if": {
+      "all": [
+       {
+        "flag": "market.pickup.layout",
+        "eq": "shelf"
+       },
+       {
+        "not": {
+         "flag": "market.pickup.intake",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "market.pickup.intake",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Give the carrier some room."
+    }
+   ]
+  },
+  {
+   "id": "market.pickup.shelf.proof",
+   "speaker": "narrator",
+   "text": "The carrier rests the lamp beside the tab. The desk gets an intake tick with the loop mark. Find the matching ready slip before anyone takes the lamp away.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.pickup.attendant",
+   "speaker": "narrator",
+   "text": "The attendant sets down a bundle and has a free hand. The carrier holds the unlit practice lamp level and listens for a short direction.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Say “Lamp here,” then let the attendant show the carrier where to set it.",
+     "next": "market.pickup.attendant.proof",
+     "if": {
+      "all": [
+       {
+        "flag": "market.pickup.layout",
+        "eq": "attendant"
+       },
+       {
+        "not": {
+         "flag": "market.pickup.intake",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "market.pickup.intake",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let the attendant finish with the next carrier first."
+    }
+   ]
+  },
+  {
+   "id": "market.pickup.attendant.proof",
+   "speaker": "narrator",
+   "text": "The carrier says “Here?” The attendant taps the empty rest and answers “Yes. I have it.” A loop-marked intake tick goes to the desk. Wait for the separate ready slip before handback.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.pickup.release",
+   "speaker": "market-clerk",
+   "text": "Here’s the lamp with a loop on its tie. The intake tick with that loop tells me when it came in. The workshop has sent a separate ready slip with the same loop. There is also a ready slip for a striped tag in another pocket.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Match the loop-marked ready slip to the lamp and move the tab to collection.",
+     "next": "market.pickup.release.proof",
+     "if": {
+      "all": [
+       {
+        "objective": "market.pickup.accepted"
+       },
+       {
+        "not": {
+         "flag": "market.pickup.collected",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "market.pickup.collected",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the lamp with Dagny for now."
+    }
+   ]
+  },
+  {
+   "id": "market.pickup.release.proof",
+   "speaker": "market-clerk",
+   "text": "The carrier can return to the collection pocket for this lamp. You found the lamp’s own ready slip. I’ll leave the intake tick with today’s arrivals so the next worker can still follow both steps.",
    "historicalLabel": "fictional-world"
   }
  ],
@@ -809,7 +1175,8 @@
        "truth",
        "explanation",
        "responsibility",
-       "justification"
+       "justification",
+       "certainty"
       ],
       "atl": [
        "thinking",
@@ -822,7 +1189,18 @@
       "subjects": [
        "economics",
        "math-ai"
-      ]
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "human",
+       "solo": "relational"
+      }
      },
      "visible": {
       "objective": "market.feedback"
@@ -918,6 +1296,183 @@
       "SK-RSC-21",
       "SK-THK-14"
      ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH10-R04",
+   "world": "WORLD-11",
+   "title": "Ready Means Ready",
+   "knowledgeQuestion": "What does a message need to tell the person who acts on it at each stage of a handoff?",
+   "available": {
+    "flag": "market.arrived",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "market.pickup.scope",
+     "title": "Read the carrier’s lane and Dagny’s two repair pockets.",
+     "done": {
+      "all": [
+       {
+        "flag": "market.arrived",
+        "eq": true
+       },
+       {
+        "flag": "market.pickup.carrier",
+        "eq": true
+       },
+       {
+        "flag": "market.pickup.desk",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "interpretation"
+      ],
+      "framework": [
+       "scope",
+       "perspectives"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "lang-ab-initio"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 1,
+       "bloom": "understand",
+       "fink": "human",
+       "solo": "multistructural"
+      }
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-COL-04"
+     ]
+    },
+    {
+     "id": "market.pickup.accepted",
+     "title": "Help the carrier bring one lamp in at the arranged rest.",
+     "done": {
+      "all": [
+       {
+        "objective": "market.pickup.scope"
+       },
+       {
+        "flagSet": "market.pickup.source"
+       },
+       {
+        "flagSet": "market.pickup.layout"
+       },
+       {
+        "flag": "market.pickup.intake",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "values",
+       "responsibility",
+       "explanation"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "perspectives",
+       "ethics"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "lang-ab-initio",
+       "design-tech"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-SPK-02",
+      "SK-COL-04"
+     ],
+     "visible": {
+      "objective": "market.pickup.scope"
+     }
+    },
+    {
+     "id": "market.pickup.done",
+     "title": "Follow the same lamp to Dagny’s desk and mark the checked handback.",
+     "done": {
+      "all": [
+       {
+        "objective": "market.pickup.accepted"
+       },
+       {
+        "flag": "market.pickup.collected",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "certainty",
+       "justification",
+       "evidence",
+       "responsibility"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "lang-ab-initio"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-RSC-15"
+     ],
+     "visible": {
+      "objective": "market.pickup.accepted"
+     }
     }
    ]
   }
@@ -1114,6 +1669,78 @@
    "objective": "market.wick",
    "depth": 4,
    "text": "Tell Dagny to clip that tally beside the length guide so readers can check which grade it describes."
+  },
+  {
+   "id": "h.market.pickup.scope.1",
+   "objective": "market.pickup.scope",
+   "depth": 1,
+   "text": "Someone visiting the repair stall has both hands full."
+  },
+  {
+   "id": "h.market.pickup.scope.2",
+   "objective": "market.pickup.scope",
+   "depth": 2,
+   "text": "Read the carrier’s note at the rest on the south lane."
+  },
+  {
+   "id": "h.market.pickup.scope.3",
+   "objective": "market.pickup.scope",
+   "depth": 3,
+   "text": "Find Dagny’s repair pockets by the standards office."
+  },
+  {
+   "id": "h.market.pickup.scope.4",
+   "objective": "market.pickup.scope",
+   "depth": 4,
+   "text": "Take the sightline and the separate intake and collection slips to the repair marker rail."
+  },
+  {
+   "id": "h.market.pickup.accepted.1",
+   "objective": "market.pickup.accepted",
+   "depth": 1,
+   "text": "The marker rail waits just west of the repair stall."
+  },
+  {
+   "id": "h.market.pickup.accepted.2",
+   "objective": "market.pickup.accepted",
+   "depth": 2,
+   "text": "Fit a tab and choose the low marker or a worker at the rest."
+  },
+  {
+   "id": "h.market.pickup.accepted.3",
+   "objective": "market.pickup.accepted",
+   "depth": 3,
+   "text": "Walk to the point your carrier will actually use."
+  },
+  {
+   "id": "h.market.pickup.accepted.4",
+   "objective": "market.pickup.accepted",
+   "depth": 4,
+   "text": "Guide the lamp onto the low rest or let the attendant confirm the spot. Both paths create an intake tick."
+  },
+  {
+   "id": "h.market.pickup.done.1",
+   "objective": "market.pickup.done",
+   "depth": 1,
+   "text": "Now the lamp has reached the repair counter."
+  },
+  {
+   "id": "h.market.pickup.done.2",
+   "objective": "market.pickup.done",
+   "depth": 2,
+   "text": "Go back to Dagny’s pockets by the office with that lamp’s mark in mind."
+  },
+  {
+   "id": "h.market.pickup.done.3",
+   "objective": "market.pickup.done",
+   "depth": 3,
+   "text": "Follow the loop mark from the lamp to its separate ready slip."
+  },
+  {
+   "id": "h.market.pickup.done.4",
+   "objective": "market.pickup.done",
+   "depth": 4,
+   "text": "Move the tab to collection after matching the slip. The intake tick stays with arrivals."
   }
  ],
  "criteria": [
@@ -1162,6 +1789,15 @@
    },
    "did": "You made room for a reader who needed a larger key.",
    "prompt": "Who else could use this layout?"
+  },
+  {
+   "id": "mom.market.tagged-handback",
+   "attribute": "caring",
+   "when": {
+    "objective": "market.pickup.done"
+   },
+   "did": "You gave the carrier a clear way to set down the lamp and checked which slip allowed the owner to collect it.",
+   "prompt": "Which part of your setup still works if the original carrier comes back after a shift change?"
   }
  ],
  "chronicle": [

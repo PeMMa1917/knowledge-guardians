@@ -11,6 +11,9 @@ import { SUBJECTS } from './curriculum';
 import { dailyPrompts } from './dive';
 import { chordFigure, panes, runSorter, runSurvey, sightBlock, translateLine, judgeFrame, shepardParts, brier } from './puzzles';
 import { openCombinations } from './lock';
+import { BLOOM, FINK, FRAMEWORK, SOLO } from './learningLevels';
+import { STORY_MOTIFS } from './storyMotifs';
+import { hasSpecimen, specimenToolId } from './specimenGear';
 
 const MAX_TEXT = 2000;
 const CLAIM_KINDS = ['observation', 'interpretation', 'value', 'simulation'];
@@ -31,6 +34,15 @@ export function validateCampaign(s: any): string[] {
   if (!s.pos || typeof s.pos.x !== 'number' || typeof s.pos.y !== 'number') p.push('pos invalid');
   for (const k of ['flags', 'inventory', 'relations', 'forge', 'events']) if (!s[k] || typeof s[k] !== 'object' || Array.isArray(s[k])) p.push(`${k} must be an object`);
   for (const k of ['journal', 'notes', 'cards', 'objectivesDone']) if (!Array.isArray(s[k])) p.push(`${k} must be a list`);
+  const diary = s.adventureDiary;
+  const isDate = (value: unknown) => typeof value === 'string' && Number.isFinite(Date.parse(value));
+  if (!Array.isArray(diary?.entries) || diary.entries.some((entry: any) =>
+    !entry || !['quest', 'choice', 'experience'].includes(entry.kind) || !isDate(entry.at)
+    || !['id', 'title', 'text', 'mapId'].every((key) => typeof entry[key] === 'string'))) p.push('adventure journal entries invalid');
+  if (!Array.isArray(diary?.noteDetails) || diary.noteDetails.length !== s.notes?.length || diary.noteDetails.some((note: any) =>
+    !note || !['note', 'reflection', 'question'].includes(note.kind) || (note.at !== null && !isDate(note.at))
+    || (note.mapId !== null && typeof note.mapId !== 'string') || typeof note.resolved !== 'boolean')) p.push('adventure journal note details invalid');
+  if (Array.isArray(s.notes) && s.notes.some((note: unknown) => typeof note !== 'string')) p.push('adventure journal notes invalid');
   if (s.inventory) for (const [id, q] of Object.entries(s.inventory)) if (!Number.isInteger(q) || (q as number) < 0 || (q as number) > 999) p.push(`bad quantity for ${id}`);
   if (typeof s.marks === 'number' && (s.marks < 0 || s.marks > 1_000_000)) p.push('marks out of range');
   if (s.events && (!Array.isArray(s.events.seen) || typeof s.events.clock !== 'number')) p.push('events invalid');
@@ -53,6 +65,7 @@ export function validateContent(pack: ContentPack): string[] {
   };
 
   const sources = new Set(pack.sources.map((s) => s.id));
+  const citationSources = new Set(pack.sources.filter((s) => s.mla).map((s) => s.id));
   const cards = new Set(pack.cards.map((c) => c.id));
   const items = new Set(pack.items.map((i) => i.id));
   const nodes = new Set(pack.dialogue.map((n) => n.id));
@@ -65,7 +78,18 @@ export function validateContent(pack: ContentPack): string[] {
   const pf = new Set(pack.portfolio.map((x) => x.id));
   const origins = new Set((pack.origins ?? []).map((o) => o.id));
 
-  pack.sources.forEach((s) => { dup('source', s.id); if (!/^https:\/\//.test(s.url)) p.push(`source ${s.id}: url must be https`); });
+  pack.sources.forEach((s) => {
+    dup('source', s.id);
+    if (!/^https:\/\//.test(s.url)) p.push(`source ${s.id}: url must be https`);
+    if (!s.mla) return;
+    text(`source ${s.id} MLA title`, s.mla.title);
+    text(`source ${s.id} MLA container`, s.mla.container);
+    if (!['page', 'artwork'].includes(s.mla.kind)) p.push(`source ${s.id}: unknown MLA source kind`);
+    if (s.mla.kind === 'page' && s.mla.workDate) p.push(`source ${s.id}: an artwork date belongs to the artwork entry`);
+    if (s.mla.showAccessDate && !/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(s.accessed)) {
+      p.push(`source ${s.id}: access date must use YYYY-MM-DD`);
+    }
+  });
   pack.cards.forEach((c) => {
     dup('card', c.id); text(`card ${c.id}`, c.text);
     if (!CLAIM_KINDS.includes(c.claimKind)) p.push(`card ${c.id}: bad claimKind`);
@@ -79,6 +103,24 @@ export function validateContent(pack: ContentPack): string[] {
     if (e.historicalLabel === 'documented' && e.sources.length === 0) p.push(`exhibit ${e.id}: documented exhibit needs a source`);
     if (e.labelKit && !kits.has(e.labelKit)) p.push(`exhibit ${e.id}: unknown label kit ${e.labelKit}`);
     e.sources.forEach((s) => sources.has(s) || p.push(`exhibit ${e.id}: unknown source ${s}`));
+    if (e.specimen) {
+      const { key, institution, accession, source, objective, pixelAsset } = e.specimen;
+      dup('specimen', key.trim().toLowerCase());
+      if (!/^[a-z0-9-]+:[a-z0-9./_-]+$/.test(key) || !institution.trim() || !accession.trim()) {
+        p.push(`exhibit ${e.id}: a specimen needs a stable key, institution and accession`);
+      }
+      if (e.historicalLabel !== 'documented' || !/\d/.test(e.dateText) || !e.dateKind.trim()) {
+        p.push(`exhibit ${e.id}: a specimen needs a documented, bounded date`);
+      }
+      if (!e.sources.includes(source)) p.push(`exhibit ${e.id}: specimen source must be listed with the exhibit`);
+      if (!objectives.has(objective)) p.push(`exhibit ${e.id}: unknown specimen use ${objective}`);
+      for (const person of e.specimen.people ?? []) {
+        if (!person.name.trim() || !person.role.trim() || !sources.has(person.source)) p.push(`exhibit ${e.id}: incomplete or unsourced person ${person.name}`);
+      }
+      if (pixelAsset && !/^specimens\/[a-z0-9][a-z0-9._-]*\.(png|webp|jpg)$/.test(pixelAsset)) {
+        p.push(`exhibit ${e.id}: specimen image must be a local asset`);
+      }
+    }
   });
   pack.items.forEach((i) => dup('item', i.id));
   pack.characters.forEach((c) => {
@@ -127,6 +169,8 @@ export function validateContent(pack: ContentPack): string[] {
 
   pack.dialogue.forEach((n) => {
     dup('node', n.id); text(`node ${n.id}`, n.text);
+    if (n.citationSource && !citationSources.has(n.citationSource)) p.push(`node ${n.id}: unknown MLA source ${n.citationSource}`);
+    if (n.motif !== undefined && !STORY_MOTIFS.includes(n.motif)) p.push(`node ${n.id}: unknown story motif ${n.motif}`);
     if (n.speaker !== 'narrator' && n.speaker !== 'player' && n.speaker !== 'lumen' && !n.speaker.startsWith('mentor:') && !chars.has(n.speaker)) p.push(`node ${n.id}: unknown speaker ${n.speaker}`);
     if (n.next && !nodes.has(n.next)) p.push(`node ${n.id}: unknown next ${n.next}`);
     eff(n.effects, `node ${n.id}`);
@@ -139,7 +183,15 @@ export function validateContent(pack: ContentPack): string[] {
   });
   pack.missions.forEach((m) => {
     dup('mission', m.id);
-    m.objectives.forEach((o) => { if (o.kq && !pack.questions.some((q) => q.id === o.kq!.id)) p.push(`objective ${o.id}: unknown knowledge question ${o.kq.id}`);
+    if (m.caseVisits) {
+      const optional = new Set(m.objectives.filter((o) => !o.essential).map(({ id }) => id));
+      if (!m.caseVisits.length || m.caseVisits.some((visit) => !visit.length || new Set(visit).size !== visit.length || visit.some((id) => !optional.has(id)))) {
+        p.push(`mission ${m.id}: every modeled case visit needs distinct optional objectives from that mission`);
+      }
+    }
+    m.objectives.forEach((o) => {
+      const ways = o.kq ? [o.kq, ...(o.questionWays ?? [])] : o.questionWays ?? [];
+      for (const way of ways) if (!pack.questions.some((q) => q.id === way.id)) p.push(`objective ${o.id}: unknown knowledge question ${way.id}`);
       dup('objective', o.id); cond(o.done, `objective ${o.id}`); cond(o.visible, `objective ${o.id}`); eff(o.onComplete, `objective ${o.id}`); weave(o.weave, `objective ${o.id}`, true); });
   });
   pack.hints.forEach((h) => { dup('hint', h.id); if (!objectives.has(h.objective)) p.push(`hint ${h.id}: unknown objective`); cond(h.if, `hint ${h.id}`); });
@@ -310,9 +362,14 @@ export function validateContent(pack: ContentPack): string[] {
       if (z.tiles.length <= z.answer.length) p.push(`puzzle ${z.id}: needs at least one tile to leave out`);
     }
   });
+  const specimenTools = new Set(pack.exhibits.filter(hasSpecimen).map(({ specimen }) => specimenToolId(specimen.key)));
   (pack.keepsakes ?? []).forEach((k) => {
     dup('keepsake', k.id); cond(k.if, `keepsake ${k.id}`); text(`keepsake ${k.id}`, k.text);
-    if (!/^[a-z0-9-]{1,24}$/.test(k.id)) p.push(`keepsake ${k.id}: id must be short lowercase words with hyphens`);
+    if (!specimenTools.has(k.id) && !/^[a-z0-9-]{1,24}$/.test(k.id)) p.push(`keepsake ${k.id}: id must be short lowercase words with hyphens`);
+    if (k.equip !== undefined) {
+      text(`field tool ${k.id} method`, k.equip?.method);
+      text(`field tool ${k.id} hint`, k.equip?.hint);
+    }
   });
   (pack.memories ?? []).forEach((m) => {
     dup('memory', m.id); cond(m.if, `memory ${m.id}`); text(`memory ${m.id}`, m.line);
@@ -345,7 +402,7 @@ export function validateContent(pack: ContentPack): string[] {
   (pack.keepsakes ?? []).forEach((k) => {
     if (!k.use) p.push(`keepsake ${k.id}: needs a use text`);
     const used = (pack.clues ?? []).some((c) => c.views.some((v) => v.keepsake === k.id)) || (pack.keepsakeTalks ?? []).some((t) => t.keepsake === k.id);
-    if (pack.clues?.length && !used) p.push(`keepsake ${k.id}: does nothing in the world (use it in a clue or a talk)`);
+    if (pack.clues?.length && !used && !k.equip) p.push(`keepsake ${k.id}: needs a clue, dialogue use or field tool method`);
   });
   (pack.fray ?? []).forEach((f) => { dup('fray', f.id); text(`fray ${f.id}`, f.pattern); text(`fray ${f.id}`, f.weakness); });
   pack.showdowns.forEach((sd) => (sd.testimony?.contradictedBy ?? []).forEach((cid) => pack.cards.some((x) => x.id === cid) || p.push(`showdown ${sd.id}: testimony names unknown card ${cid}`)));
@@ -436,6 +493,16 @@ export function validateContent(pack: ContentPack): string[] {
     w.atl.forEach((a) => ATLS.includes(a) || p.push(`${where}: bad ATL ${a}`));
     if (needAtl && !w.atl.length) p.push(`${where}: needs at least one ATL category (WEAVE-016)`);
     (w.subjects ?? []).forEach((x) => x in SUBJECTS || p.push(`${where}: unknown subject ${x}`));
+    if (w.framework !== undefined && (!Array.isArray(w.framework) || w.framework.some((part) => !FRAMEWORK.includes(part)))) {
+      p.push(`${where}: unknown knowledge framework part`);
+    }
+    if (w.minutes !== undefined && (!Number.isFinite(w.minutes) || w.minutes <= 0)) p.push(`${where}: invalid duration`);
+    if (w.thinking !== undefined) {
+      const tag = w.thinking;
+      if (!tag || ![1, 2, 3, 4].includes(tag.dok) || !BLOOM.includes(tag.bloom) || !FINK.includes(tag.fink) || !SOLO.includes(tag.solo)) {
+        p.push(`${where}: invalid thinking levels`);
+      }
+    }
   }
   // RECUR-035 (start): every misconception has at least one place in play that can signal it.
   const { misconceptions: _m, ...rest } = pack;

@@ -1,0 +1,1271 @@
+{
+ "characters": [
+  {
+   "id": "open-place-blythe",
+   "name": "Blythe Sloane",
+   "role": "North Steps copy runner",
+   "sprite": "villager-1",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "open.place.plan",
+      "eq": "hearing"
+     },
+     "node": "open.place.hearing.blythe"
+    },
+    {
+     "if": {
+      "flag": "open.place.retime",
+      "eq": true
+     },
+     "node": "open.place.blythe.late"
+    },
+    {
+     "node": "open.place.blythe.first"
+    }
+   ]
+  },
+  {
+   "id": "open-place-ione",
+   "name": "Ione Hebden",
+   "role": "Canal Walk key keeper",
+   "sprite": "villager-2",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "open.place.plan",
+      "eq": "hearing"
+     },
+     "node": "open.place.hearing.ione"
+    },
+    {
+     "if": {
+      "flag": "open.place.retime",
+      "eq": true
+     },
+     "node": "open.place.ione.late"
+    },
+    {
+     "node": "open.place.ione.first"
+    }
+   ]
+  },
+  {
+   "id": "open-place-edvin",
+   "name": "Edvin Fletch",
+   "role": "Council witness desk attendant",
+   "sprite": "villager-1",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "open.place.written.check"
+    }
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "item.open-place-docket",
+   "name": "The two-call docket",
+   "description": "The unused invitation, both names at the retest, and Ione’s separately signed dissent. Take it to the docket intake outside the Council’s Letter Gallery.",
+   "historicalLabel": "fictional-world",
+   "art": "preserved.display-paired"
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "open.place.draft",
+   "speaker": "civic-operator",
+   "text": "Civic Dispatch has a practice invitation for a Council hearing. The draft calls both groups to North Steps at the first bell. It asks whether corrected minutes can go straight to the printer after that call. There are two named places at the bench.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Take the first-bell invitation to North Steps.",
+     "next": "open.place.draft.kept",
+     "if": {
+      "all": [
+       {
+        "objective": "civic.finish"
+       },
+       {
+        "not": {
+         "flagSet": "open.place.trial"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.trial",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the invitation beside the route book."
+    }
+   ]
+  },
+  {
+   "id": "open.place.draft.kept",
+   "speaker": "narrator",
+   "text": "The paper gives both invitations the same time. Check who can use that time before signing the attendance line.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.empty",
+   "speaker": "narrator",
+   "text": "Blythe’s place has a signed stub. The canal place is empty. Its invitation is still folded. There is no mark for the person who was away when the trial was called.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mark the empty place as invited and absent.",
+     "next": "open.place.empty.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "open.place.trial",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "open.place.empty"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.empty",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the attendance line open."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "open.place.empty.kept",
+   "speaker": "narrator",
+   "text": "The first draft keeps the unused invitation. The canal shift can tell you why no answer reached the bench.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.blythe.first",
+   "speaker": "open-place-blythe",
+   "text": "I had to pull three slips back from the printer when names changed between copies. I want a time when we can print a reliable version. I can come to either bell. If we move the call later, my apprentice will have to take the printer’s bundle.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep Blythe’s printing request and her available times.",
+     "next": "open.place.blythe.first.kept",
+     "if": {
+      "all": [
+       {
+        "objective": "open.place.miss"
+       },
+       {
+        "not": {
+         "flagSet": "open.place.blythe"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.blythe",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let Blythe finish sorting the printer slips."
+    }
+   ],
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "open.place.blythe.first.kept",
+   "speaker": "narrator",
+   "text": "Blythe puts the two times on a separate slip. Her request concerns when the next copy goes out.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.shift",
+   "speaker": "narrator",
+   "text": "The canal handover slip puts the same name on the keys from the start of the watch to the second bell. An incoming keeper has signed for the handover. The two marks belong to this shift.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the two signed handover marks alongside the invitation.",
+     "next": "open.place.shift.kept",
+     "if": {
+      "all": [
+       {
+        "objective": "open.place.miss"
+       },
+       {
+        "not": {
+         "flagSet": "open.place.shift"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.shift",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the slip on the key rail."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "open.place.shift.kept",
+   "speaker": "narrator",
+   "text": "The handover gives the first draft a checkable limitation. One invitation arrived before its reader could leave.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.ione.first",
+   "speaker": "open-place-ione",
+   "text": "I had both keys until the second bell. The first call passed while I was here. I can come after handover. I want my sentence kept exactly as I said it. “Keep corrections open until our shift can reply.” You can read that line under my name in the meeting or put it in a signed witness pocket. Keep the crew’s other names inside.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep Ione’s signed dissent and the limit of her permission.",
+     "next": "open.place.ione.first.kept",
+     "if": {
+      "all": [
+       {
+        "objective": "open.place.miss"
+       },
+       {
+        "not": {
+         "flagSet": "open.place.ione"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.ione",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the signed slip in Ione’s hand."
+    }
+   ],
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "open.place.ione.first.kept",
+   "speaker": "narrator",
+   "text": "The dissent keeps its own signature. Ione’s availability and her agreement to appear are on a separate line.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.retime",
+   "speaker": "civic-operator",
+   "text": "The first invitation still hangs with its empty place. Clip a new time above it. Blythe can hold the printer’s bundle open. The signed canal handover gives Ione a chance to leave after the second bell.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Move the practice call to the second bell and keep the first attendance line.",
+     "next": "open.place.retime.kept",
+     "if": {
+      "all": [
+       {
+        "objective": "open.place.miss"
+       },
+       {
+        "flag": "open.place.blythe",
+        "eq": true
+       },
+       {
+        "flag": "open.place.ione",
+        "eq": true
+       },
+       {
+        "flag": "open.place.shift",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "open.place.retime"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.retime",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Give the two groups more time to read the proposed call."
+    }
+   ]
+  },
+  {
+   "id": "open.place.retime.kept",
+   "speaker": "narrator",
+   "text": "The bench now has a second-bell clip. Walk to North Steps to check both places in use.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.blythe.late",
+   "speaker": "open-place-blythe",
+   "text": "I came back. My apprentice has the bundle. I still want a printing time the printer can use. I can keep an early copy marked draft while the named correction window stays open.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Record Blythe’s second-bell reply separately from her first signature.",
+     "next": "open.place.blythe.late.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "open.place.retime",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "open.place.blythe.late"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.blythe.late",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave time for Blythe to show the marked draft."
+    }
+   ]
+  },
+  {
+   "id": "open.place.blythe.late.kept",
+   "speaker": "narrator",
+   "text": "The later reply keeps Blythe’s need for a reliable printing turn. The first attendance line stays on the clip.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.ione.late",
+   "speaker": "open-place-ione",
+   "text": "I put the keys in my relief keeper’s hand and came straight here. I can hear the answer this time. My objection still stands. “Keep corrections open until our shift can reply.” A seat at the bench gives me somewhere to say it.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Record Ione’s later attendance and keep her signed dissent.",
+     "next": "open.place.ione.late.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "open.place.retime",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "open.place.ione.late"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.ione.late",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let Ione check that the signed line stayed with her name."
+    }
+   ]
+  },
+  {
+   "id": "open.place.ione.late.kept",
+   "speaker": "narrator",
+   "text": "The two places are occupied. Ione’s objection stays on its own line.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.file",
+   "speaker": "civic-operator",
+   "text": "The first attendance line, the changed call and the two replies are available. The Council can see who was missing and what still needs an answer. Leave the approved line with its permission slip.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Bind both attendance lines and the signed dissent into the travelling docket.",
+     "next": "open.place.file.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "open.place.blythe.late",
+        "eq": true
+       },
+       {
+        "flag": "open.place.ione.late",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "open.place.file"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.file",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the docket on the dispatch table."
+    }
+   ]
+  },
+  {
+   "id": "open.place.file.kept",
+   "speaker": "civic-operator",
+   "text": "Take the docket to the intake outside the Letter Gallery when the Council opens. Ione’s dissent stays with either way of hearing it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.intake",
+   "speaker": "narrator",
+   "text": "The letter gallery has a place for a hearing and a sheltered writing desk. Both need the old and new attendance lines. Blythe and Ione can stay through the second-bell hearing. Edvin can instead receive their two signed pieces during different shifts. The written route will leave time for questions at the next desk turn.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Book the second-bell public hearing and keep a separate turn for the dissent.",
+     "next": "open.place.intake.hearing",
+     "if": {
+      "all": [
+       {
+        "objective": "council.arrival"
+       },
+       {
+        "item": "item.open-place-docket"
+       },
+       {
+        "not": {
+         "flagSet": "open.place.plan"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.plan",
+       "value": "hearing"
+      }
+     ]
+    },
+    {
+     "text": "Arrange the signed witness pocket and the next reply turn.",
+     "next": "open.place.intake.written",
+     "if": {
+      "all": [
+       {
+        "objective": "council.arrival"
+       },
+       {
+        "item": "item.open-place-docket"
+       },
+       {
+        "not": {
+         "flagSet": "open.place.plan"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.plan",
+       "value": "written"
+      }
+     ]
+    },
+    {
+     "text": "Keep the docket closed until you choose a way to hear it."
+    }
+   ]
+  },
+  {
+   "id": "open.place.intake.hearing",
+   "speaker": "narrator",
+   "text": "Blythe and Ione each have a place at the bell rail inside the Letter Gallery. Hear both replies before copying the minutes.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.intake.written",
+   "speaker": "narrator",
+   "text": "Bring the signed replies to Edvin at the quiet desk inside the Letter Gallery. He will keep the public copy and the separate access slip.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.hearing.blythe",
+   "speaker": "open-place-blythe",
+   "text": "I can print the marked draft today. I can wait with the final copy until the second-bell correction slot has been read. Put the waiting time in the minutes so the printer can plan.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Record Blythe’s public printing reply.",
+     "next": "open.place.hearing.blythe.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "open.place.plan",
+        "eq": "hearing"
+       },
+       {
+        "not": {
+         "flagSet": "open.place.heard.blythe"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.heard.blythe",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Give Blythe time to set the draft down."
+    }
+   ]
+  },
+  {
+   "id": "open.place.hearing.blythe.kept",
+   "speaker": "narrator",
+   "text": "The printer gets an answer during the hearing. The approved dissent has its own turn.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.hearing.ione",
+   "speaker": "open-place-ione",
+   "text": "“Keep corrections open until our shift can reply.” I can say that myself today. Keep it in the minute beside Blythe’s plan. I will tell the crew where the correction line stays open.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Record Ione’s public dissent in its own turn.",
+     "next": "open.place.hearing.ione.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "open.place.plan",
+        "eq": "hearing"
+       },
+       {
+        "not": {
+         "flagSet": "open.place.heard.ione"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.heard.ione",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let Ione finish reading the line."
+    }
+   ]
+  },
+  {
+   "id": "open.place.hearing.ione.kept",
+   "speaker": "narrator",
+   "text": "The two speakers can hear each other’s reasons. The minutes can now travel to North Steps.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.written.check",
+   "speaker": "open-place-edvin",
+   "text": "Two signed pieces reached the desk at different times. Ione approved her own line for the public minute. Her crew’s names stay under the inner flap. Blythe approved the separate printing request. One public reader has left a question for the next turn.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Check both signatures and keep the crew names under the witness flap.",
+     "next": "open.place.written.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "open.place.plan",
+        "eq": "written"
+       },
+       {
+        "not": {
+         "flagSet": "open.place.seal"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.seal",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Give Edvin time to check the flap."
+    }
+   ]
+  },
+  {
+   "id": "open.place.written.kept",
+   "speaker": "narrator",
+   "text": "Edvin prepares the public line under Ione’s name. “Keep corrections open until our shift can reply.” On another slip he keeps Blythe’s printing request and the unanswered question for the next desk turn.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.post.hearing",
+   "speaker": "narrator",
+   "text": "Blythe’s reply sets a time for the draft and leaves a later correction. Ione’s line stays in the same minutes. “Keep corrections open until our shift can reply.” The rail heard both, including their reasons. A person who missed the hearing can find the minute at North Steps.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Send the open minutes to the North Steps notice bench.",
+     "next": "open.place.post.hearing.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "open.place.heard.blythe",
+        "eq": true
+       },
+       {
+        "flag": "open.place.heard.ione",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "open.place.posted"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.posted",
+       "value": "hearing"
+      }
+     ]
+    },
+    {
+     "text": "Leave the minutes beside the hearing rail."
+    }
+   ]
+  },
+  {
+   "id": "open.place.post.hearing.kept",
+   "speaker": "narrator",
+   "text": "Take the ordinary route to North Steps and check what the next reader can use.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.post.written",
+   "speaker": "narrator",
+   "text": "The witness copy carries the approved line. “Keep corrections open until our shift can reply.” It keeps the signatures at the desk and the crew’s names under the flap. A question at the public line will wait for the next turn, when each writer can reply.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Send the written receipt and reply time to Canal Walk.",
+     "next": "open.place.post.written.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "open.place.seal",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "open.place.posted"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.posted",
+       "value": "written"
+      }
+     ]
+    },
+    {
+     "text": "Leave the witnessed copy closed at the desk."
+    }
+   ]
+  },
+  {
+   "id": "open.place.post.written.kept",
+   "speaker": "narrator",
+   "text": "Take the ordinary route to Canal Walk and check the slot for the next written reply.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.return.hearing",
+   "speaker": "narrator",
+   "text": "A reader finds Blythe’s response in the open minute and then finds Ione’s dissent in its own turn. They can ask the printer for the dated draft while the correction slot is open. The reader who missed the hearing asks where to leave a further question.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave a return slip beside the public minutes.",
+     "next": "open.place.return.hearing.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "open.place.posted",
+        "eq": "hearing"
+       },
+       {
+        "not": {
+         "flagSet": "open.place.returned"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.returned",
+       "value": "hearing"
+      }
+     ]
+    },
+    {
+     "text": "Give the next reader time to check the open minute."
+    }
+   ]
+  },
+  {
+   "id": "open.place.return.hearing.kept",
+   "speaker": "narrator",
+   "text": "The notice stays at North Steps. The next question has a separate line.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "open.place.return.written",
+   "speaker": "narrator",
+   "text": "A worker arrives after handover, leaves a signed question in the reply slot and keeps its numbered stub. They can read Ione’s public wording here. Edvin will open the two replies together at the next desk turn.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep both the public summary and the received-at stamp.",
+     "next": "open.place.return.written.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "open.place.posted",
+        "eq": "written"
+       },
+       {
+        "not": {
+         "flagSet": "open.place.returned"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "open.place.returned",
+       "value": "written"
+      }
+     ]
+    },
+    {
+     "text": "Leave the reply slot available for the next worker."
+    }
+   ]
+  },
+  {
+   "id": "open.place.return.written.kept",
+   "speaker": "narrator",
+   "text": "The written route stays at Canal Walk. The receipt records when a reply can be checked.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH12-R08",
+   "world": "WORLD-13",
+   "title": "The Place Left Open",
+   "available": {
+    "objective": "civic.finish"
+   },
+   "stake": "A printed minute could close before one group can correct what it says.",
+   "knowledgeQuestion": "What does an empty place tell us about the people a decision might affect?",
+   "objectives": [
+    {
+     "id": "open.place.miss",
+     "title": "Try the first invitation and record the empty place.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "objective": "civic.finish"
+       },
+       {
+        "flag": "open.place.trial",
+        "eq": true
+       },
+       {
+        "flag": "open.place.empty",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "perspective",
+       "objectivity",
+       "explanation"
+      ],
+      "framework": [
+       "perspectives",
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "POL",
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "global-politics",
+       "lang-langlit"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "open.place.retest",
+     "title": "Check the omitted worker’s shift, move the call and gather both later replies.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "objective": "open.place.miss"
+       },
+       {
+        "flag": "open.place.blythe",
+        "eq": true
+       },
+       {
+        "flag": "open.place.shift",
+        "eq": true
+       },
+       {
+        "flag": "open.place.ione",
+        "eq": true
+       },
+       {
+        "flag": "open.place.retime",
+        "eq": true
+       },
+       {
+        "flag": "open.place.blythe.late",
+        "eq": true
+       },
+       {
+        "flag": "open.place.ione.late",
+        "eq": true
+       },
+       {
+        "flag": "open.place.file",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "responsibility",
+       "perspective",
+       "explanation",
+       "power"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "atl": [
+       "research",
+       "social",
+       "self-management"
+      ],
+      "aoks": [
+       "POL",
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "global-politics",
+       "lang-langlit"
+      ],
+      "minutes": 8,
+      "thinking": {
+       "dok": 4,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "extended"
+      }
+     },
+     "visible": {
+      "objective": "open.place.miss"
+     },
+     "onComplete": [
+      {
+       "giveItem": "item.open-place-docket"
+      },
+      {
+       "journal": "j.open.place.retest"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH15-R07",
+   "world": "WORLD-16",
+   "title": "A Way to Answer",
+   "available": {
+    "all": [
+     {
+      "objective": "council.arrival"
+     },
+     {
+      "item": "item.open-place-docket"
+     }
+    ]
+   },
+   "stake": "A decision can leave enough room for a further reply while keeping its current record accessible.",
+   "knowledgeQuestion": "How can a public record keep a dissent and leave its next reader a way to respond?",
+   "objectives": [
+    {
+     "id": "open.place.channel",
+     "title": "Give the dissent its own place in a public hearing or a written witness channel.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "objective": "council.arrival"
+       },
+       {
+        "objective": "open.place.retest"
+       },
+       {
+        "any": [
+         {
+          "all": [
+           {
+            "flag": "open.place.plan",
+            "eq": "hearing"
+           },
+           {
+            "flag": "open.place.heard.blythe",
+            "eq": true
+           },
+           {
+            "flag": "open.place.heard.ione",
+            "eq": true
+           },
+           {
+            "flag": "open.place.posted",
+            "eq": "hearing"
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "open.place.plan",
+            "eq": "written"
+           },
+           {
+            "flag": "open.place.seal",
+            "eq": true
+           },
+           {
+            "flag": "open.place.posted",
+            "eq": "written"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "values",
+       "responsibility",
+       "truth",
+       "power",
+       "perspective"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "atl": [
+       "communication",
+       "social",
+       "thinking"
+      ],
+      "aoks": [
+       "POL",
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "global-politics",
+       "lang-langlit"
+      ],
+      "minutes": 6,
+      "thinking": {
+       "dok": 4,
+       "bloom": "create",
+       "fink": "integration",
+       "solo": "extended"
+      }
+     },
+     "visible": {
+      "objective": "council.arrival"
+     }
+    },
+    {
+     "id": "open.place.return",
+     "title": "Return to the district and check how the next participant can reply.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "objective": "open.place.channel"
+       },
+       {
+        "any": [
+         {
+          "all": [
+           {
+            "flag": "open.place.posted",
+            "eq": "hearing"
+           },
+           {
+            "flag": "open.place.returned",
+            "eq": "hearing"
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "open.place.posted",
+            "eq": "written"
+           },
+           {
+            "flag": "open.place.returned",
+            "eq": "written"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "perspective",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "ethics",
+       "perspectives"
+      ],
+      "atl": [
+       "communication",
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "POL",
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "global-politics",
+       "lang-langlit"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "objective": "open.place.channel"
+     },
+     "onComplete": [
+      {
+       "journal": "j.open.place.return"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.open.place.miss.1",
+   "objective": "open.place.miss",
+   "depth": 1,
+   "text": "Look for the practice invitation at Civic Dispatch after the provisional route is checked."
+  },
+  {
+   "id": "h.open.place.miss.2",
+   "objective": "open.place.miss",
+   "depth": 2,
+   "text": "Follow the first-bell paper to North Steps."
+  },
+  {
+   "id": "h.open.place.miss.3",
+   "objective": "open.place.miss",
+   "depth": 3,
+   "text": "Look beside Blythe’s place for the folded invitation."
+  },
+  {
+   "id": "h.open.place.miss.4",
+   "objective": "open.place.miss",
+   "depth": 4,
+   "text": "Keep the unanswered invitation with the attendance line. Canal Walk can supply a separate check."
+  },
+  {
+   "id": "h.open.place.retest.1",
+   "objective": "open.place.retest",
+   "depth": 1,
+   "text": "Check Blythe’s times at North Steps and both the signed shift slip and Ione’s words on Canal Walk."
+  },
+  {
+   "id": "h.open.place.retest.2",
+   "objective": "open.place.retest",
+   "depth": 2,
+   "text": "Return to Dispatch and move the practice call to the second bell. Keep the first invitation."
+  },
+  {
+   "id": "h.open.place.retest.3",
+   "objective": "open.place.retest",
+   "depth": 3,
+   "text": "Walk back to North Steps and gather both people’s replies at the new time."
+  },
+  {
+   "id": "h.open.place.retest.4",
+   "objective": "open.place.retest",
+   "depth": 4,
+   "text": "Bind both attendance lines and the retained dissent at Dispatch. The docket can travel to the Council."
+  },
+  {
+   "id": "h.open.place.channel.1",
+   "objective": "open.place.channel",
+   "depth": 1,
+   "text": "Take the bound docket to the intake outside the Letter Gallery when the ordinary Council door is available."
+  },
+  {
+   "id": "h.open.place.channel.2",
+   "objective": "open.place.channel",
+   "depth": 2,
+   "text": "The hearing gives Blythe and Ione separate speaking turns. The written desk has two dated pieces and the permission flap."
+  },
+  {
+   "id": "h.open.place.channel.3",
+   "objective": "open.place.channel",
+   "depth": 3,
+   "text": "Hear both speakers at the rail or let Edvin check both signatures at the desk."
+  },
+  {
+   "id": "h.open.place.channel.4",
+   "objective": "open.place.channel",
+   "depth": 4,
+   "text": "Send the resulting minute to North Steps or the signed written receipt to Canal Walk. Both copies retain Ione’s approved line."
+  },
+  {
+   "id": "h.open.place.return.1",
+   "objective": "open.place.return",
+   "depth": 1,
+   "text": "Follow where the Council sent the record."
+  },
+  {
+   "id": "h.open.place.return.2",
+   "objective": "open.place.return",
+   "depth": 2,
+   "text": "An immediate response stays with the open minutes at North Steps."
+  },
+  {
+   "id": "h.open.place.return.3",
+   "objective": "open.place.return",
+   "depth": 3,
+   "text": "A signed request and time for a further answer stay with the reply slot at Canal Walk."
+  },
+  {
+   "id": "h.open.place.return.4",
+   "objective": "open.place.return",
+   "depth": 4,
+   "text": "Read the next participant’s result and keep the route open for another question."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.open.place.retest",
+   "text": "After the invitation missed Ione, I checked her shift and moved the call. She reached the bench and kept her dissent.",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "j.open.place.return",
+   "text": "The hearing or witness copy carried the actual dissent. I checked how another person could leave the next question.",
+   "claimKind": "simulation"
+  }
+ ]
+}

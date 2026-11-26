@@ -1,6 +1,13 @@
+import { PRICE_DRAWERS_DOOR } from './priceDrawers';
 /** A fictional market square, with different jobs on the same set of lanes. */
 import type { Condition } from '../domain/types';
+import { MARKET_ACCESSIONS } from './pairedAccessions';
+import { MARKET_KETTLE } from './ferryKettle';
+import { MARKET_BASKET } from './marketBasket';
 import type { Interactable, MapDef } from './types';
+import { MARKET_WELCOME } from './welcome';
+import { specimenWorkEntrance, specimenWorkReadbacks } from './specimenWork';
+import { MARKET_NUMBER_LEAF } from './numberLeaves';
 
 const width = 35;
 const height = 24;
@@ -43,6 +50,14 @@ export const MARKET_SQUARE: MapDef = {
     { stamp: 'crates', x: 3, y: 9 }, { stamp: 'barrel', x: 29, y: 12 }, { stamp: 'crates', x: 6, y: 13 },
   ],
   interactables: [
+    ...MARKET_BASKET,
+    PRICE_DRAWERS_DOOR,
+    ...MARKET_WELCOME,
+    ...MARKET_ACCESSIONS,
+    ...MARKET_KETTLE,
+    specimenWorkEntrance('market'),
+    ...specimenWorkReadbacks('market'),
+    MARKET_NUMBER_LEAF,
     { id: 'cross-goat', kind: 'fieldgame', game: 'cross-goat', x: 8, y: 16, w: 1, h: 1, label: 'a goat eating price slips (a crossing)', art: 'board-stand' },
     { id: 'cross-patron', kind: 'fieldgame', game: 'cross-patron', x: 13, y: 10, w: 1, h: 1, label: 'the shrine of the Lady of Fair Measure (a crossing)', art: 'old-sign' },
     { id: 'market-nexus-return', kind: 'door', x: 17, y: 22, w: 1, h: 1, label: 'the crossing back to the Nexus',
@@ -64,6 +79,39 @@ export const MARKET_SQUARE: MapDef = {
     sheet('market-practice-purse', 8, 18, 'the house practice purse', 'preserved.folder',
       'The house practice purse holds eight credits. The practice sale uses whole lots. Lot A costs eight and Lot B costs ten.',
       { flag: 'market.purse.read' }),
+    sheet('market-pickup-carrier', 24, 17, 'the lamp carrier at the low rest', 'workbench',
+      'The unlit practice lamp fills both my hands. I can see the low rest from this lane. The board over it is too high to see past the hood. Show or tell me where to set it down.',
+      { flag: 'market.pickup.carrier', visibleIf: { all: [{ flag: 'market.arrived', eq: true }, { not: { flagSet: 'market.pickup.layout' } }] } }),
+    sheet('market-pickup-clerk', 21, 7, 'Dagny’s two repair pockets', 'preserved.folder',
+      'The intake tick tells me the lamp arrived. A separate check slip goes with it when it is ready to collect. Match the slip to the lamp tag before moving anything into the collection pocket.',
+      { flag: 'market.pickup.desk', visibleIf: { all: [{ flag: 'market.arrived', eq: true }, { not: { flag: 'market.pickup.intake', eq: true } }] } }),
+    { id: 'market-pickup-plan', kind: 'scene', node: 'market.pickup.plan', x: 22, y: 14, w: 1, h: 1, walkThrough: true,
+      label: 'the repair counter’s marker rail', art: 'preserved.slip',
+      visibleIf: { all: [{ objective: 'market.pickup.scope' }, { not: { flagSet: 'market.pickup.layout' } }] } },
+    sheet('market-pickup-ember-marker', 22, 14, 'the rail with Mara’s fitting', 'metalworks.receipt',
+      'Mara’s round tab fits this rail. Her tray used one mark for a pickup. This counter tracks the same lamp through intake and the checked handback.',
+      { visibleIf: { all: [{ flag: 'market.pickup.source', eq: 'ember' }, { flagSet: 'market.pickup.layout' }] } }),
+    sheet('market-pickup-local-marker', 22, 14, 'the rail with Dagny’s fitting', 'metalworks.receipt',
+      'Dagny’s spare is in the rail. Follow the lamp’s loop mark from the intake tick to the ready slip by her desk.',
+      { visibleIf: { all: [{ flag: 'market.pickup.source', eq: 'local' }, { flagSet: 'market.pickup.layout' }] } }),
+    { id: 'market-pickup-shelf', kind: 'scene', node: 'market.pickup.shelf', x: 24, y: 17, w: 1, h: 1, walkThrough: true,
+      label: 'the low marked intake rest', art: 'workbench',
+      visibleIf: { all: [{ flag: 'market.pickup.layout', eq: 'shelf' }, { not: { flag: 'market.pickup.intake', eq: true } }] } },
+    { id: 'market-pickup-attendant', kind: 'scene', node: 'market.pickup.attendant', x: 24, y: 18, w: 1, h: 1, walkThrough: true,
+      label: 'the staffed lamp handoff', art: 'workbench',
+      visibleIf: { all: [{ flag: 'market.pickup.layout', eq: 'attendant' }, { not: { flag: 'market.pickup.intake', eq: true } }] } },
+    sheet('market-pickup-shelf-proof', 24, 17, 'the lamp on the low intake rest', 'crate-wares',
+      'The practice lamp is at the round tab on the low rest. The intake tick marks its arrival. The separate collection pocket waits by Dagny’s desk.',
+      { visibleIf: { all: [{ flag: 'market.pickup.layout', eq: 'shelf' }, { flag: 'market.pickup.intake', eq: true }] } }),
+    sheet('market-pickup-attendant-proof', 24, 18, 'the lamp passed by the attendant', 'crate-wares',
+      'The attendant has taken the practice lamp and confirmed its arrival aloud. The live handoff took a worker. The collection pocket waits by Dagny’s desk.',
+      { visibleIf: { all: [{ flag: 'market.pickup.layout', eq: 'attendant' }, { flag: 'market.pickup.intake', eq: true }] } }),
+    { id: 'market-pickup-release', kind: 'scene', node: 'market.pickup.release', x: 21, y: 7, w: 1, h: 1, walkThrough: true,
+      label: 'Dagny’s tagged handback', art: 'preserved.folder',
+      visibleIf: { all: [{ objective: 'market.pickup.accepted' }, { not: { flag: 'market.pickup.collected', eq: true } }] } },
+    sheet('market-pickup-ready', 21, 7, 'the checked lamp in the collection pocket', 'preserved.folder',
+      'The ready slip and lamp tag carry the same loop mark. The intake tick stays with the day’s arrivals. This pocket is for the handback.',
+      { visibleIf: { flag: 'market.pickup.collected', eq: true } }),
     sheet('market-buyer-note', 25, 18, 'the buyer’s receipt question', 'preserved.slip',
       'I saw the lower price per gram and brought eight credits. The whole lot on that line costs ten. Where can I see both figures?',
       { flag: 'market.feedback.receipt', visibleIf: { flagSet: 'market.response' } }),
@@ -76,6 +124,15 @@ export const MARKET_SQUARE: MapDef = {
     sheet('market-revised', 21, 14, 'the whole-lot price notice', 'market.window',
       'Today’s trial quotes stay with the unit rates. A costs eight and gives 75 net grams per credit. B costs ten and gives 80 net grams per credit. The eight-credit purse reaches A under the whole-lot rule.',
       { visibleIf: { flag: 'market.revised', eq: true } }),
+    sheet('market-quote-posted', 19, 11, 'the pinned slip for the weighed lots', 'preserved.display-paired',
+      'Dagny has pinned the two lot letters beside today’s figures. The queue can use them while those lots are on sale. The next crate will get its own slip.',
+      { visibleIf: { flag: 'market.quote.rule', eq: 'posted' } }),
+    { id: 'market-quote-return', kind: 'scene', node: 'market.quote.return', x: 19, y: 14, w: 1, h: 1, walkThrough: true,
+      label: 'the incoming crate’s blank ticket', art: 'metalworks.receipt',
+      visibleIf: { all: [{ objective: 'market.finish' }, { not: { flagSet: 'market.quote.rule' } }] } },
+    sheet('market-quote-reweigh', 19, 14, 'the empty reweigh ticket at the incoming lane', 'metalworks.receipt',
+      'The next crate will stop at the scale before anyone quotes its rate. The runner can still look up the two earlier lots on the whole-lot notice.',
+      { visibleIf: { flag: 'market.quote.rule', eq: 'reweigh' } }),
     sheet('market-access-key', 12, 18, 'the larger measure sheet', 'preserved.display-records',
       'The large sheet gives gross weight, net fibre, the grade rule and the whole-lot price their own lines. The figures keep their unit labels.',
       { visibleIf: { flag: 'market.access-key', eq: true } }),

@@ -1,0 +1,62 @@
+.material-store {
+  display: grid;
+  gap: 0.55rem;
+}
+.material-store h2,
+.material-store h3,
+.material-store p {
+  margin-block: 0.25rem;
+}
+.material-store article,
+.material-diagram {
+  display: grid;
+  justify-items: start;
+  gap: 0.35rem;
+  border: 1px solid #ab9b79;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+}
+.material-evidence img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+.material-diagram {
+  background: #253847;
+}
+.material-gauge {
+  width: 100%;
+  min-height: 1.45rem;
+  border: 1px solid #dbcaa8;
+  padding: 0.2rem;
+}
+.material-gauge span {
+  display: block;
+  height: 1rem;
+  background: #7fcbb1;
+}
+.material-gauge.ribbon span {
+  background: repeating-linear-gradient(135deg, #91bcd5 0 6px, #386d8b 6px 12px);
+}
+.material-gauge.over span {
+  background: repeating-linear-gradient(135deg, #ffd5a8 0 6px, #a34d5e 6px 12px);
+}
+.material-gauge.reflection span {
+  background: repeating-linear-gradient(90deg, #e9c999 0 8px, #a88662 8px 12px);
+}
+.material-stamps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.material-stamp {
+  padding: 0.25rem 0.5rem;
+  border: 1px dashed #d8c7a7;
+  color: #ffefce;
+}
+.material-stamp.active {
+  border-style: solid;
+  background: #67b59a;
+  color: #172f38;
+}

@@ -1,5 +1,10 @@
 /** Civic timekeeping takes place beside a separate historical reading gallery. */
 import type { Condition } from '../domain/types';
+import { LOADING_BAY_DOOR, loadingReceiver } from './loadingBay';
+import { COUNCIL_ACCESSIONS } from './pairedAccessions';
+import { SECOND_READING_DOOR } from './secondReading';
+import { COUNCIL_PLATE_GALLERY } from './transferFaces';
+import { OPEN_PLACE_COUNCIL, OPEN_PLACE_COUNCIL_ACTORS, OPEN_PLACE_COUNCIL_INTAKE } from './openPlace';
 import type { Interactable, MapDef } from './types';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'council.waypost'): Interactable {
@@ -17,6 +22,17 @@ function ground(width: number, height: number, tile: (x: number, y: number) => s
 
 const compared: Condition = { objective: 'council.compare' };
 const published: Condition = { objective: 'council.publish' };
+const teamReady: Condition = { objective: 'council.arrival' };
+const teamStarted: Condition = { flagSet: 'council.team.workflow' };
+const teamUnposted: Condition = { not: { flagSet: 'council.team.edition' } };
+const teamActive: Condition = { all: [teamStarted, teamUnposted] };
+const teamRelay: Condition = { flag: 'council.team.edition', eq: 'relay' };
+const useLightScreen: Condition = { all: [teamReady, { flag: 'perspective.active', eq: 'folding-light-screen' }] };
+
+function teamScene(id: string, x: number, y: number, label: string, art: string, visibleIf: Condition): Interactable {
+  return { id: `council-team-${id}`, node: `council.team.${id}`, kind: 'scene', x, y, w: 1, h: 1,
+    label, art, visibleIf, walkThrough: true };
+}
 
 export const COUNCIL_HALL: MapDef = {
   id: 'council.hall', name: 'Council of Inquiry: Time Hall', world: 'WORLD-16',
@@ -37,6 +53,9 @@ export const COUNCIL_HALL: MapDef = {
     { stamp: 'council-bench', x: 21, y: 13 }, { stamp: 'market-planter', x: 7, y: 14 },
   ],
   interactables: [
+    SECOND_READING_DOOR,
+    loadingReceiver('bench', 24, 16),
+    OPEN_PLACE_COUNCIL_INTAKE,
     door('council-gallery-path', 24, 9, 'the passage to the letters and bell rail', { map: 'council.gallery', x: 6, y: 14 }),
     door('council-nexus-return', 13, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 37, y: 12 }, 'preserved.door'),
     { id: 'council-clock', kind: 'council-clock', x: 15, y: 9, w: 1, h: 1,
@@ -60,6 +79,17 @@ export const COUNCIL_HALL: MapDef = {
     sign('council-bench-slot', 21, 12, 'the loan dial at the low slot', 'council.record',
       'The spare dial is in the low slot where a dock helper parks a handcart. They can ask the keeper what set each mark when they arrive. They miss the crew check at handover.',
       { flag: 'council.bench.used', visibleIf: { flag: 'council.bench.layout', eq: 'slot' } }),
+    teamScene('brief', 7, 9, 'Hale’s practice packet bench', 'preserved.folder', { all: [teamReady, { not: teamStarted }] }),
+    { ...teamScene('clip', 8, 10, 'Hesper’s clip and practice packet', 'preserved.folder', teamActive),
+      artOpen: { key: 'preserved.display-paired', if: { flag: 'council.team.clipped', eq: true } } },
+    sign('council-team-original', 25, 11, 'Hale’s independently signed practice docket', 'council.record',
+      'Hale signed before the trial call. For this practice run, bring the copy to the low bench at the next bell. This docket gives no time for the open hearing.',
+      { flag: 'council.team.original', visibleIf: teamStarted }),
+    teamScene('receive', 20, 8, 'Kip’s far-side bench', 'copies.strip',
+      { all: [teamActive, { flag: 'council.team.called', eq: true }] }),
+    sign('council-team-relay-bench', 20, 8, 'the runner and copy at the far bench', 'preserved.display-paired',
+      'Kip waits while the reader says back the bell and the place. Hale’s signed practice docket sits beside the slip. The rota leaves a hand short at the copying desk during this turn.',
+      { flag: 'council.team.seen', visibleIf: teamRelay }),
   ],
   lights: [
     { x: 15, y: 9, r: 80, color: 0xffdda8 }, { x: 18, y: 9, r: 62, color: 0xd6d1ed },
@@ -77,7 +107,7 @@ export const COUNCIL_GALLERY: MapDef = {
     return (x >= 10 && x <= 17) || (y >= 12 && y <= 14) ? 'council-gallery-runner' : 'council-purple';
   }),
   blocks: [[1, 0, 30, 3]], zones: [], spawn: { x: 6, y: 14 },
-  npcs: [{ id: 'council-reader', x: 20, y: 11, facing: 'down' }],
+  npcs: [{ id: 'council-reader', x: 20, y: 11, facing: 'down' }, ...OPEN_PLACE_COUNCIL_ACTORS],
   stamps: [
     { stamp: 'council-letter-niche', x: 4, y: 3 }, { stamp: 'council-letter-niche', x: 12, y: 3 },
     { stamp: 'council-bell-rail', x: 22, y: 5 }, { stamp: 'council-lamp', x: 10, y: 7 },
@@ -88,12 +118,50 @@ export const COUNCIL_GALLERY: MapDef = {
   ],
   interactables: [
     door('council-gallery-return', 4, 14, 'the passage back to the Time Hall', { map: 'council.hall', x: 23, y: 9 }),
+    LOADING_BAY_DOOR,
+    loadingReceiver('call', 8, 16),
+    ...COUNCIL_ACCESSIONS,
+    ...COUNCIL_PLATE_GALLERY,
+    ...OPEN_PLACE_COUNCIL,
     sign('council-optics-letter', 6, 7, 'the dated optics record', 'council.optics',
       'Ibn al-Haytham, Book of Optics, early eleventh century. He tested explanations of light and sight with experiments. The archive uses that method card beside its own clock cases.',
       { flag: 'council.optics.read' }),
     sign('council-mill-letter', 14, 7, 'the dated comparison record', 'council.letter',
       'John Stuart Mill, On Liberty, 1859, chapter 2. Mill argued that a belief can be true and still need serious challenge so people understand its reasons.',
       { flag: 'council.mill.read' }),
+    sign('council-folded-ramp-proof', 8, 12, 'Lark’s unfolded sample on the Council rack', 'copies.reprint',
+      'Lark’s whole order helped the queue. His note says the outer stalls had to wait. The Council put a question on the rack: who sees a correction before they set out?',
+      { flag: 'council.team.read.copies', visibleIf: { flag: 'copies.margin.sent', eq: 'fold' } }),
+    sign('council-paired-ramp-proof', 8, 12, 'Lark’s clipped sample on the Council rack', 'preserved.display-paired',
+      'Lark’s linked strips reached the outer stalls. His note marks one where the clip failed. The Council put a question on the rack: when a correction travels, who checks that its limit travels too?',
+      { flag: 'council.team.read.copies', visibleIf: { flag: 'copies.margin.sent', eq: 'pair' } }),
+    sign('council-held-ramp-proof', 8, 12, 'Lark’s note about the held print run', 'preserved.folder',
+      'The landing crew called the turns until a checked sheet arrived. They were one hand short at the hoist. The Council put a question on the rack: who does the work while a notice waits?',
+      { flag: 'council.team.read.copies', visibleIf: { flag: 'copies.margin.sent', eq: 'wait' } }),
+    sign('council-repair-tokens', 12, 13, 'Emberford’s matched pickup stubs', 'preserved.display-paired',
+      'The paired stubs let the repair yard check a collection while keeping fee waivers inside. The Council asked its own desk to try the same pair before making the fee slate public.',
+      { flag: 'council.team.read.repair', visibleIf: { flag: 'repair.queue.receipt', eq: 'paired' } }),
+    sign('council-repair-relay', 12, 13, 'the Emberford relay ticket', 'copies.strip',
+      'Hana’s relay carried the pickup request around the market and kept the fee inside. A Council clerk pinned up a roster for the people who would have to make that extra trip.',
+      { flag: 'council.team.read.repair', visibleIf: { flag: 'repair.queue.receipt', eq: 'relay' } }),
+    sign('council-repair-rota', 12, 13, 'the Emberford appointment rota', 'ledger',
+      'Emberford kept private appointments for repairs. A Council runner added the next hours to the gallery copy for anyone who missed the first slot.',
+      { flag: 'council.team.read.repair', visibleIf: { flag: 'repair.queue.receipt', eq: 'leave' } }),
+    sign('council-creek-rail', 13, 10, 'the Living Forest rail-case note', 'council.record',
+      'An observer crossed the creek by the rail after checking the high-water mark. A clerk filed the note with the date and a reminder to check the path after the next storm.',
+      { visibleIf: { all: [{ objective: 'forest.spate.crossed' }, { flag: 'forest.spate.route', eq: 'rail' }] } }),
+    sign('council-creek-bend', 13, 10, 'the Living Forest cart-case note', 'council.record',
+      'An observer used the sheltered cart bend. The Council kept the higher crossing on the diagram for comparison. Each arrow gives the conditions when that path was checked.',
+      { visibleIf: { all: [{ objective: 'forest.spate.crossed' }, { flag: 'forest.spate.route', eq: 'bend' }] } }),
+    sign('council-quay-lamp', 17, 15, 'the Quay’s staffed lamp rota', 'voices.lamp',
+      'The quay bench had a host during an extra turn. The Council filed the host rota beside the closing rule. It shows who made the welcome possible on that shift.',
+      { visibleIf: { flag: 'cross.last-lamp', eq: 'quay' } }),
+    sign('council-room-lamp', 17, 15, 'the Quay’s note for indoor visitors', 'voices.guide',
+      'The welcome moved indoors and the old lamp signal stayed with the quay rules. The Council hung the route slip at eye level so late guests could plan where they would wait.',
+      { visibleIf: { flag: 'cross.last-lamp', eq: 'room' } }),
+    sign('council-deferred-lamp', 17, 15, 'the Quay’s morning keeper card', 'voices.permission',
+      'The quay keeper held the original closing time. The Council filed the morning card beside it. A later check can ask who was able to return for the promised welcome.',
+      { visibleIf: { flag: 'cross.last-lamp', eq: 'defer' } }),
     sign('council-rail-record', 24, 9, 'the independent rail timing record', 'council.record',
       'The reference drum has its own mechanism. At the shutter, record its reading at the start and at the next minute. The watch does not set the drum.',
       { flag: 'council.rail.read' }),
@@ -124,6 +192,37 @@ export const COUNCIL_GALLERY: MapDef = {
     sign('council-check-copy', 28, 15, 'the larger timing card beside the low bench', 'council.record',
       'The wider card gives the named checker, shift date, reference and two time marks their own lines. A reader can follow each mark while setting a load on the low bench.',
       { visibleIf: { flag: 'council.receipt.ready', eq: true } }),
+    { id: 'council-shadow-board', kind: 'fieldgame', game: 'council-shadow-board', x: 28, y: 7, w: 1, h: 1,
+      label: 'the bell shadow board with two lamp sockets', art: 'coast.clear-frame', walkThrough: true, visibleIf: useLightScreen },
+    { id: 'council-optics-handover', kind: 'scene', node: 'council.optics.post', x: 29, y: 7, w: 1, h: 1,
+      label: 'Essi’s practice notice rack', art: 'preserved.folder', walkThrough: true,
+      visibleIf: { all: [{ objective: 'council.optics.compare' }, { not: { flagSet: 'council.optics.plan' } }] } },
+    sign('council-optics-ramp', 28, 12, 'the double check at the ramp rest', 'preserved.display-paired',
+      'An off-notch pointer is a change you can check directly. A shadow by itself can move when just the lamp moves. The carrier sets down a load and looks at the notch before joining the line.',
+      { flag: 'council.optics.received', visibleIf: { flag: 'council.optics.plan', eq: 'ramp' } }),
+    sign('council-optics-rail', 21, 13, 'the two-part call at the rail', 'council.relay',
+      'At the opening bell, the rail pair calls where the pointer sits, then where the shadow falls. The carrier repeats both. The next shift is marked beside the call.',
+      { flag: 'council.optics.received', visibleIf: { flag: 'council.optics.plan', eq: 'rail' } }),
+    { ...teamScene('call', 10, 9, 'Sefa’s place at the speaking rail', 'council.relay',
+      { all: [teamActive, { flag: 'council.team.clipped', eq: true }] }),
+      artOpen: { key: 'stage.cues', if: { flag: 'council.team.called', eq: true } } },
+    { ...teamScene('check', 18, 13, 'Rook’s space for two separate records', 'preserved.slip',
+      { all: [teamActive, { flag: 'council.team.received', eq: true }] }),
+      artOpen: { key: 'council.record', if: { flag: 'council.team.checked', eq: true } } },
+    teamScene('set', 14, 15, 'Essi’s place for the checked practice pair', 'preserved.display-paired',
+      { all: [{ objective: 'council.team.trial' }, teamUnposted] }),
+    sign('council-team-table', 14, 15, 'the checked pair on the low board', 'preserved.display-records',
+      'The signed practice heading, next bell and low bench sit on one sheet. A visitor can put their bundle down and check each line. A keeper can read it aloud when they are free.',
+      { flag: 'council.team.seen', visibleIf: { flag: 'council.team.edition', eq: 'table' } }),
+    sign('council-team-relay-call', 10, 9, 'the relay call beside the speaking rail', 'council.relay',
+      'At the next bell, bring the signed practice copy to the low bench. Sefa calls the line and points to Kip’s bench in the Time Hall. The runner asks you to follow the slip.',
+      { visibleIf: teamRelay }),
+    ...[
+      ['copies', 'Lark’s print note sits in a corner of the practice proof. The team learned where a short slip might lose its limit. Hale’s separate docket gives this trial’s bell.'],
+      ['repair', 'An Emberford pickup mark sits beside the practice proof. Hesper uses it to join the reply to its source. The fee slate stays with the workshop. Hale’s separate docket gives this trial’s bell.'],
+      ['fresh', 'Hesper clipped a blank strip at this bench. The strip puts the place and bell together. Hale’s separate docket gives this trial’s bell.'],
+    ].map(([workflow, text]) => sign(`council-team-workflow-${workflow}`, 12, 15, 'the practice proof’s source slip', 'preserved.slip', text,
+      { visibleIf: { all: [{ flagSet: 'council.team.edition' }, { flag: 'council.team.workflow', eq: workflow }] } })),
   ],
   lights: [
     { x: 6, y: 7, r: 66, color: 0xf8cfa3 }, { x: 14, y: 7, r: 65, color: 0xd7c6e3 },

@@ -1,0 +1,110 @@
+{
+  "items": [
+    {
+      "id": "item.elsbet.index",
+      "name": "Elsbet’s listening index",
+      "description": "A copy of the reel register. It gives the order of the two takes and says where the second may be played. Take it to Vesper when you reach the Council.",
+      "historicalLabel": "fictional-world",
+      "art": "voices.permission"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH13-R04",
+      "world": "WORLD-14",
+      "title": "The Second Take",
+      "knowledgeQuestion": "What changes when an account is spoken for a different listener?",
+      "available": { "objective": "voices.finish" },
+      "objectives": [
+        {
+          "id": "voices.elsbet.heard",
+          "title": "Wind the reel, read the keeper’s slip, then turn the reel for the second take.",
+          "essential": false,
+          "done": { "all": [{ "flagSet": "node.voices.elsbet.first" }, { "flagSet": "voices.elsbet.register" }, { "flagSet": "node.voices.elsbet.second" }] },
+          "weave": {
+            "concepts": ["evidence", "interpretation", "objectivity", "truth", "perspective", "explanation"],
+            "framework": ["scope", "perspectives", "methods-and-tools"],
+            "minutes": 4,
+            "thinking": { "dok": 2, "bloom": "analyse", "fink": "integration", "solo": "relational" },
+            "atl": ["research", "thinking"],
+            "aoks": ["HIS", "ART", "LAN"],
+            "subjects": ["history", "music", "lang-langlit"]
+          }
+        },
+        {
+          "id": "voices.elsbet.handled",
+          "title": "Leave the public passage and prepare the signed listening index for the Council.",
+          "essential": false,
+          "done": { "flagSet": "voices.elsbet.edition" },
+          "weave": {
+            "concepts": ["responsibility", "power", "values", "justification", "certainty", "perspective"],
+            "framework": ["ethics", "perspectives", "scope"],
+            "minutes": 3,
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "caring", "solo": "relational" },
+            "atl": ["communication", "social"],
+            "aoks": ["HIS", "LAN"],
+            "subjects": ["history", "lang-langlit"]
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "voices.elsbet.first",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "motif": "first-light",
+      "text": "A small tune plays as you wind the reel. Elsbet clears her throat. ‘For the visiting bench. Vesper is right about the harm, and wrong about the cure. An answer can get people through Thursday. Leave them a way to check it on Friday.’ The reel clicks at a white mark. The keeper’s slip is on Glass Walk."
+    },
+    {
+      "id": "voices.elsbet.second",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "You turn the reel for the second take. The voice picks up after a long breath. ‘For the Council, in the room. The Nexus owes Harrowmere more than a quiet correction. I am taking the little lamp back where the label was cut. Tell Ise I’ve left her a place to sign.’ These marks run on a separate band. The keeper marked both takes in one hand."
+    },
+    {
+      "id": "voices.elsbet.place",
+      "speaker": "voices-steward",
+      "historicalLabel": "fictional-world",
+      "text": "Elsbet signed for the first passage to be played at the visiting bench. The next is for the Council in the room. We can set the public reel here with its signed index, or put the public passage at the busy bench and keep both originals under the spindle.",
+      "options": [
+        {
+          "text": "Keep the public reel with the index at the listening desk.",
+          "next": "voices.elsbet.desk",
+          "if": { "all": [{ "objective": "voices.elsbet.heard" }, { "not": { "flagSet": "voices.elsbet.edition" } }] },
+          "effects": [{ "setFlag": "voices.elsbet.edition", "value": "desk" }, { "giveItem": "item.elsbet.index" }]
+        },
+        {
+          "text": "Set the first passage at the visiting bench and keep the signed originals here.",
+          "next": "voices.elsbet.bench",
+          "if": { "all": [{ "objective": "voices.elsbet.heard" }, { "not": { "flagSet": "voices.elsbet.edition" } }] },
+          "effects": [{ "setFlag": "voices.elsbet.edition", "value": "bench" }, { "giveItem": "item.elsbet.index" }]
+        },
+        { "text": "Leave the reel on the spindle for now." }
+      ]
+    },
+    {
+      "id": "voices.elsbet.desk",
+      "speaker": "voices-steward",
+      "historicalLabel": "fictional-world",
+      "text": "At the desk a visitor can ask where the recording stops and why. A group at the bench will have to come here to hear it. I have made you a copy of the index for the Council."
+    },
+    {
+      "id": "voices.elsbet.bench",
+      "speaker": "voices-steward",
+      "historicalLabel": "fictional-world",
+      "text": "The waiting group hear the first take. A visitor asks why the next passage is absent. I point to the desk where the terms are signed. Here is a copy of the index for the Council."
+    }
+  ],
+  "hints": [
+    { "id": "h.elsbet.heard.1", "objective": "voices.elsbet.heard", "depth": 1, "text": "A notch in the storage reel marks a change in who may hear it." },
+    { "id": "h.elsbet.heard.2", "objective": "voices.elsbet.heard", "depth": 2, "text": "Wind the tin reel at the Listening Room’s spare shelf." },
+    { "id": "h.elsbet.heard.3", "objective": "voices.elsbet.heard", "depth": 3, "text": "Find the signed side slip beside the cabinet on Glass Walk." },
+    { "id": "h.elsbet.heard.4", "objective": "voices.elsbet.heard", "depth": 4, "text": "Use the reel a second time after checking the Glass Walk slip. This time the Council take can play." },
+    { "id": "h.elsbet.handled.1", "objective": "voices.elsbet.handled", "depth": 1, "text": "The signed slip says who may hear each part." },
+    { "id": "h.elsbet.handled.2", "objective": "voices.elsbet.handled", "depth": 2, "text": "Listener Wren has a copy slot on the table beside the spare reel." },
+    { "id": "h.elsbet.handled.3", "objective": "voices.elsbet.handled", "depth": 3, "text": "Think about who hears the first take and where they can ask about the missing part." },
+    { "id": "h.elsbet.handled.4", "objective": "voices.elsbet.handled", "depth": 4, "text": "Keep the public take at the desk or move a copy to the visiting bench. Take the index to Vesper later." }
+  ]
+}

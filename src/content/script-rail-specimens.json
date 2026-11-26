@@ -1,0 +1,1224 @@
+[
+  {
+    "slug": "koetsu-scroll",
+    "room": "verse",
+    "title": "Autumn in two hands",
+    "task": "A late reader thinks the decorations were added by the poet.",
+    "cue": "Hang the painted grasses before the first word.",
+    "readbacks": [
+      "The standing reader follows the repeating grasses before a line is introduced. They ask to see the different hands.",
+      "The seated reader finds Kōetsu and Sōtatsu on separate lines. They unfold to see where the print runs behind the writing."
+    ],
+    "revisit": [
+      "Join the two workshop credits with a doubled brace.",
+      "The archive’s slip names who brushed the writing and who supplied the printed ground without treating either as the original poet."
+    ],
+    "object": {
+      "key": "cma:1966.118",
+      "accession": "1966.118",
+      "institution": "Cleveland Museum of Art",
+      "title": "Selections from the New Collection of Japanese Poems from Ancient and Modern Times (Shinkokin wakashū) with Printed Designs of Chinese Lions and Crab Finger Grass",
+      "date": "early 1600s",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Hon'ami Kōetsu (Japanese, 1558–1637) (calligraphy by); Tawaraya Sōtatsu (Japanese, c. 1570–c. 1640) (decorator)",
+      "culture": "Japan, Edo period (1615–1868)",
+      "medium": "handscroll; ink, gold, and silver on paper",
+      "dimensions": "Overall: 23.2 x 346.6 cm (9 1/8 x 136 7/16 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1966.118",
+      "pixelAsset": "specimens/script-koetsu-scroll.jpg",
+      "observation": "Kōetsu brushed seven autumn poems over motifs printed by Sōtatsu with gold and silver.",
+      "limit": "The scroll does not name Kōetsu as the writer of those seven poems.",
+      "altText": "A long scroll with gold and silver printed motifs beneath thin vertical ink lines."
+    }
+  },
+  {
+    "slug": "nobutada-cicada",
+    "room": "verse",
+    "title": "A cicada on one leaf",
+    "task": "A runner treats this portion as an entire anthology.",
+    "cue": "Imagine a dry call that carries past the last edge of the page.",
+    "readbacks": [
+      "The runner remembers a cicada’s call and asks where this leaf belongs.",
+      "The reader finds the anthology line and leaves a blank beyond the surviving portion."
+    ],
+    "revisit": [
+      "Fit a portion tab beside the anthology title.",
+      "The archive reader can request this part without expecting its folder to contain the whole anthology."
+    ],
+    "object": {
+      "key": "cma:1978.87",
+      "accession": "1978.87",
+      "institution": "Cleveland Museum of Art",
+      "title": "Portion of a Poetry Anthology: Cicada, from \"Shinsen Roeishu\"",
+      "date": "late 1500s-early 1600s",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Konoe Nobutada (Japanese, 1565–1614) (artist)",
+      "culture": "Japan, Momoyama period (1573–1615)",
+      "medium": "ink, color, gold, and silver on paper",
+      "dimensions": "Overall: 20.7 x 17.9 cm (8 1/8 x 7 1/16 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1978.87",
+      "pixelAsset": "specimens/script-nobutada-cicada.jpg",
+      "observation": "The museum records a section called Cicada from the Shinsen Roeishu anthology and names Konoe Nobutada.",
+      "limit": "The object is a portion of an anthology. Its catalogue entry does not establish a tune.",
+      "altText": "Wide brush characters on a gold and brown paper leaf."
+    }
+  },
+  {
+    "slug": "lizong-wang-wei",
+    "room": "verse",
+    "title": "Verse and painted answer",
+    "task": "Two names are landing on one credit slip.",
+    "cue": "Let the traveler stop where the view runs out.",
+    "readbacks": [
+      "A listener makes room for silence after the traveler reaches the edge, then asks whose words they heard.",
+      "The page reader traces poet, brush hand and separate painted answer before borrowing an image for the wall."
+    ],
+    "revisit": [
+      "Clip the named companion painting as a separate reference.",
+      "The lookup now leads to the silk calligraphy first and shows where to find the related painting."
+    ],
+    "object": {
+      "key": "cma:1961.421.2",
+      "accession": "1961.421.2",
+      "institution": "Cleveland Museum of Art",
+      "title": "Poem by Wang Wei in the Cursive Script Style",
+      "date": "1256",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Song Lizong (Chinese, 1205–1264) (artist)",
+      "culture": "China, Southern Song dynasty (1127-1279)",
+      "medium": "Album leaf; ink on silk",
+      "dimensions": "Image: 25.1 x 25.3 cm (9 7/8 x 9 15/16 in.); with mat: 33.3 x 40.5 cm (13 1/8 x 15 15/16 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1961.421.2",
+      "pixelAsset": "specimens/script-lizong-wang-wei.jpg",
+      "observation": "Song emperor Lizong brushed Wang Wei’s verse onto this silk leaf. The museum links the once-joined fan to Ma Lin’s painting.",
+      "limit": "The image shown here is the calligraphy leaf. Ma Lin’s companion painting has a separate record.",
+      "altText": "Cursive lines in a round light brown silk field."
+    }
+  },
+  {
+    "slug": "plum-yi-hwang",
+    "room": "verse",
+    "title": "The plum and the later scroll",
+    "task": "A visitor mixes up the poem’s author and the museum’s scroll date.",
+    "cue": "Give the plum tree the only speaking place.",
+    "readbacks": [
+      "The traveler takes the tree as a speaker and asks which line is a human voice.",
+      "The page reader sees the poem and the scroll do not carry one date. They leave the villa’s identity open."
+    ],
+    "revisit": [
+      "Add a date line for the surviving copy.",
+      "The later reader can cite the scroll and speak of Yi Hwang’s poem without collapsing the two chronologies."
+    ],
+    "object": {
+      "key": "cma:1992.138",
+      "accession": "1992.138",
+      "institution": "Cleveland Museum of Art",
+      "title": "Poem on Plum",
+      "date": "1700s–1800s",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Poem credited to Yi Hwang (1501–1570). The copyist of this surviving scrolled version is not established here.",
+      "culture": "Korea, Joseon dynasty (1392–1910)",
+      "medium": "hanging scroll; ink on paper",
+      "dimensions": "Overall: 115 x 68.2 cm (45 1/4 x 26 7/8 in.); Painting only: 46 x 52.7 cm (18 1/8 x 20 3/4 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1992.138",
+      "pixelAsset": "specimens/script-plum-yi-hwang.jpg",
+      "observation": "The museum links the poem to Yi Hwang, who lived from 1501 to 1570. The surviving scroll is dated to the 1700s–1800s.",
+      "limit": "The catalogue’s association between the mountain villa and Dosan Academy is tentative.",
+      "altText": "Dark brush writing in loose vertical rows across the paper field."
+    }
+  },
+  {
+    "slug": "quatrains-practice",
+    "room": "verse",
+    "title": "Verse and practice strokes",
+    "task": "A typesetter is about to straighten two different quatrains into a single poem.",
+    "cue": "Follow the diagonal reading strip before turning to the outer lines.",
+    "readbacks": [
+      "The player’s first listener follows the slant and suspects the surrounding lines answer it.",
+      "The rest reader finds two poems and a separate practice area, so they leave two starts on the programme."
+    ],
+    "revisit": [
+      "Keep two verse tabs and a separate practice margin.",
+      "A reader can locate the two starting places without assigning the exercises their own verse."
+    ],
+    "object": {
+      "key": "cma:1983.1115",
+      "accession": "1983.1115",
+      "institution": "Cleveland Museum of Art",
+      "title": "Persian Quatrains (Rubayi) and Calligraphic Exercises (recto); Persian Verse (khamriyya) (verso)",
+      "date": "c. 1509–50",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Sultan Muhammad Khandan (Iranian, d. after 1550) (artist)",
+      "culture": "Afghanistan, Herat, Safavid period (1501–1722)",
+      "medium": "ink, gold, and opaque watercolor on paper",
+      "dimensions": "",
+      "catalogue": "https://www.clevelandart.org/art/1983.1115",
+      "pixelAsset": "specimens/script-quatrains-practice.jpg",
+      "observation": "The museum identifies two four-line poems on the face, plus calligraphic practice on the right. Sultan Muhammad Khandan signed the page.",
+      "limit": "The calligrapher’s signature identifies his work on the page. The layout alone does not establish who composed the poems.",
+      "altText": "A two-sided folio shown opened with two writing fields and blue, gilded borders."
+    }
+  },
+  {
+    "slug": "hokusai-tenchi",
+    "room": "verse",
+    "title": "Rain across two periods",
+    "task": "The showcase calls Hokusai’s illustration a picture made by Emperor Tenchi.",
+    "cue": "Open on the feel of a wet sleeve, then let the field fill the frame.",
+    "readbacks": [
+      "The front reader hears a wet sleeve and looks for a figure in the field. They ask who supplied that view.",
+      "The seated reader gives Tenchi the poem and Hokusai the print, then points to the upper-right cartouche."
+    ],
+    "revisit": [
+      "Give the poem and image separate maker lines.",
+      "A new visitor can find the Hokusai sheet and see why its date belongs to the print."
+    ],
+    "object": {
+      "key": "cma:1916.1164",
+      "accession": "1916.1164",
+      "institution": "Cleveland Museum of Art",
+      "title": "Poem by Emperor Tenchi, from the series One Hundred Poems by One Hundred Poets Explained by the Nurse",
+      "date": "1835–36",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Katsushika Hokusai (Japanese, 1760–1849) (artist)",
+      "culture": "Japan, Edo period (1615–1868)",
+      "medium": "color woodblock print",
+      "dimensions": "Sheet: 24.4 x 37 cm (9 5/8 x 14 9/16 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1916.1164",
+      "pixelAsset": "specimens/script-hokusai-tenchi.jpg",
+      "observation": "The nineteenth-century Hokusai print places a poem attributed to Emperor Tenchi beside the rice field scene.",
+      "limit": "The print is a later visual interpretation of the earlier poem. It does not show us what Tenchi literally saw.",
+      "altText": "Woodblock print with rows of rice fields, travelers, huts and text in the upper corner."
+    }
+  },
+  {
+    "slug": "guxiang-seasons",
+    "room": "verse",
+    "title": "The far end of the seasons",
+    "task": "A short board shows one flower and makes the scroll look like a single scene.",
+    "cue": "Begin at a fence seen through a single chrysanthemum.",
+    "readbacks": [
+      "A passerby follows the fence image and wants to know why its flower belongs here.",
+      "The rest reader traces the seasons and uses the chrysanthemum line as one reference among several."
+    ],
+    "revisit": [
+      "Place a forward-and-back tab beside the chrysanthemum.",
+      "A later visitor can find where the association sits in the unfolding sequence."
+    ],
+    "object": {
+      "key": "cma:1977.4",
+      "accession": "1977.4",
+      "institution": "Cleveland Museum of Art",
+      "title": "Flowers of Four Seasons, with Poems",
+      "date": "1531",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Wang Guxiang (Chinese, 1501–1568) (artist)",
+      "culture": "China, Ming dynasty (1368–1644)",
+      "medium": "handscroll; ink and light color on silk",
+      "dimensions": "Painting only: 24 x 545 cm (9 7/16 x 214 9/16 in.); Overall: 24 x 547.5 cm (9 7/16 x 215 9/16 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1977.4",
+      "pixelAsset": "specimens/script-guxiang-seasons.jpg",
+      "observation": "The 1531 handscroll by Wang Guxiang places poetic lines among flowers loosely arranged by season. The museum associates the chrysanthemum with Tao Yuanming.",
+      "limit": "The placement can suggest a seasonal order without showing one uninterrupted scene or a strict calendar.",
+      "altText": "Long silk painting with flowers, stems and small groups of brush writing."
+    }
+  },
+  {
+    "slug": "jiru-poems",
+    "room": "verse",
+    "title": "The inked pause",
+    "task": "The rehearsal reader takes a darker stroke as an author’s instruction to pause.",
+    "cue": "Look at the heavy mark, then listen when the voice chooses to slow.",
+    "readbacks": [
+      "The front bench tries a slow beat at the dark mark and hears an intentional performance choice.",
+      "The page reader observes the stroke and keeps the sounding choice in a separate margin."
+    ],
+    "revisit": [
+      "Add a separate mark for the rehearsal beat.",
+      "The archive visitor can find the physical stroke without mistaking the new mark for Chen Jiru’s instruction."
+    ],
+    "object": {
+      "key": "cma:2004.65",
+      "accession": "2004.65",
+      "institution": "Cleveland Museum of Art",
+      "title": "Four Poems: Calligraphy in Cursive Script (xingshu)",
+      "date": "1500s-1600s",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Chen Jiru (Chinese, 1558–1639) (artist)",
+      "culture": "China, Ming dynasty (1368–1644)",
+      "medium": "handscroll; ink on gold speckled paper",
+      "dimensions": "Calligraphy section: 27 x 195 cm (10 5/8 x 76 3/4 in.)",
+      "catalogue": "https://www.clevelandart.org/art/2004.65",
+      "pixelAsset": "specimens/script-jiru-poems.jpg",
+      "observation": "Chen Jiru brushed four poems on a gold-speckled paper scroll. Cleveland reads some darker strokes as traces of a freshly charged brush.",
+      "limit": "Ink density records marks on paper. It does not prescribe how a reader must perform the poem.",
+      "altText": "A horizontal strip of dense vertical characters and areas of darker brush marks."
+    }
+  },
+  {
+    "slug": "hayley-ballads",
+    "room": "verse",
+    "title": "The wrongly named spine",
+    "task": "A reader finds two names where they expect one.",
+    "cue": "Call a meeting for a book of animal stories.",
+    "readbacks": [
+      "The runner asks for the animal ballads using the name remembered from the call.",
+      "The rest reader opens at Hayley and can explain why the spine may have led a neighbor to Bayley."
+    ],
+    "revisit": [
+      "Add a search reference for the spine spelling.",
+      "The City reader finds Hayley’s volume from either form and sees which location carries each spelling."
+    ],
+    "object": {
+      "key": "nga:1943.17.1",
+      "accession": "1943.17.1",
+      "institution": "National Gallery of Art",
+      "title": "Ballads",
+      "date": "1805",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "William Hayley (author) and William Blake (artist)",
+      "culture": "",
+      "medium": "bound volume with text and 5 etchings with engraving on wove paper",
+      "dimensions": "page size: 16.2 × 9.1 cm (6 3/8 × 3 9/16 in.) book: 16.5 × 10.5 × 2 cm (6 1/2 × 4 1/8 × 13/16 in.)",
+      "catalogue": "https://www.nga.gov/artworks/30239-ballads",
+      "pixelAsset": "specimens/script-hayley-ballads.jpg",
+      "observation": "The title page names William Hayley and credits William Blake for designing and engraving the prints. The spine reads Bayley.",
+      "limit": "The spine form is a documented feature of this binding. It does not change the identity credited inside.",
+      "altText": "The printed title page of Ballads, surrounded by the book’s worn red binding edge.",
+      "locator": "Front photograph is the title page, while the accession also catalogues the cover and names the spine inscription."
+    }
+  },
+  {
+    "slug": "scott-volume",
+    "room": "verse",
+    "title": "One book, several hands",
+    "task": "A fresh display attributes all the engraved pages to the book’s named poet.",
+    "cue": "Wake the room with one breath before the first poem.",
+    "readbacks": [
+      "The rail visitor hears the poem introduced and wants to find who prepared its book image.",
+      "The rest visitor follows the portrait and title-page credits without losing Scott’s authorship."
+    ],
+    "revisit": [
+      "File the illustrated pages by their separate roles.",
+      "The return desk can help a reader find which engraver worked on the particular page they saw."
+    ],
+    "object": {
+      "key": "nga:1979.61.2",
+      "accession": "1979.61.2",
+      "institution": "National Gallery of Art",
+      "title": "The Poetical Works of John Scott Esq.",
+      "date": "published 1782",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "John Scott (author) and William Blake and Various Artists",
+      "culture": "",
+      "medium": "bound volume with letterpress text and engraved t.p. by Hall after Townsend, frontispiece by Bartolozzi, other engravings by Blake, Heath, Taylor, Watts, Page, Godfrey & Wollett",
+      "dimensions": "",
+      "catalogue": "https://www.nga.gov/artworks/57453-poetical-works-john-scott-esq",
+      "pixelAsset": "specimens/script-scott-volume.jpg",
+      "observation": "The 1782 volume names John Scott as author. The National Gallery lists different contributors to the title page, frontispiece and other engravings.",
+      "limit": "The catalogue does not credit a single artist for all of the plates.",
+      "altText": "John Scott’s title page with an oval portrait beneath the name."
+    }
+  },
+  {
+    "slug": "buncho-kikugoro",
+    "room": "drama",
+    "title": "The actor at the plum curtain",
+    "task": "The same name is being printed beside the actor and the character.",
+    "cue": "Set the entry call at the first hint of falling blossom.",
+    "readbacks": [
+      "The rail audience imagines someone entering on the call and asks which name belongs to the performer.",
+      "The rest visitor finds the actor, character, printmaker and theater without confusing their jobs."
+    ],
+    "revisit": [
+      "Place a cast tab next to the production locator.",
+      "A later reader can search the performer’s name and still keep the character on the separate line."
+    ],
+    "object": {
+      "key": "cma:1930.173",
+      "accession": "1930.173",
+      "institution": "Cleveland Museum of Art",
+      "title": "Onoe Kikugorō I as Izumi no Saburō in the Play Snowflakes: Plum Blossoms Kaomise",
+      "date": "1769",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Ippitsusai Bunchō (Japanese, active c. 1765–92) (artist)",
+      "culture": "Japan, Edo period (1615–1868)",
+      "medium": "color woodblock print",
+      "dimensions": "Sheet: 30.6 x 14 cm (12 1/16 x 5 1/2 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1930.173",
+      "pixelAsset": "specimens/script-buncho-kikugoro.jpg",
+      "observation": "Ippitsusai Bunchō pictured Onoe Kikugorō I as Izumi no Saburō in a play performed at the Ichimura Theater in 1769.",
+      "limit": "The woodblock print documents an actor subject and role. It does not preserve their delivery of a spoken line.",
+      "altText": "A robed actor in red and pale layers next to a stage grid."
+    }
+  },
+  {
+    "slug": "hokucho-trio",
+    "room": "drama",
+    "title": "The whole river on three sheets",
+    "task": "A small copying stand can show only the middle of the scene.",
+    "cue": "Imagine a ferry call entering from beyond the visible bank.",
+    "readbacks": [
+      "The rail reader follows the ferry call and looks for the printed ferryman. They need the outer sheet.",
+      "The page visitor unfolds to all three panels and can place the performer with the scene’s other figures."
+    ],
+    "revisit": [
+      "Make the panel titles into a three-part index.",
+      "The archive can point to the left sheet for the ferryman and direct a reader to the whole triptych from it."
+    ],
+    "object": {
+      "key": "cma:1976.62",
+      "accession": "1976.62",
+      "institution": "Cleveland Museum of Art",
+      "title": "Ichikawa Ebijūrō II as Horiguchi Manzaemon (right), Arashi Rikan II as Kizu Kansuke, Nakayama Bunshichi III as Hayashi Sanzemon (center), and Asao Gakujurō as the Ferryman Sanjūrō (left) from the Kabuki Play \"Eight Views of the Kizu River by Boating Song\"",
+      "date": "1829",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Shunshosai  Hokuchō (Japanese, active 1822–1830) (designer)",
+      "culture": "Japan, Edo period (1615–1868)",
+      "medium": "triptych of color woodblock prints",
+      "dimensions": "Each: 36.2 x 76 cm (14 1/4 x 29 15/16 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1976.62",
+      "pixelAsset": "specimens/script-hokucho-trio.jpg",
+      "observation": "Three woodblock prints form one 1829 performance scene. The museum names Namiki Gohei I for the play and Hokuchō for the design.",
+      "limit": "The depicted 1829 production and the museum’s 1778 date for the play are separate. The triptych is not a record of how the actors sounded.",
+      "altText": "Three prints with costumed figures spaced across one continuous river scene."
+    }
+  },
+  {
+    "slug": "sadahide-fan",
+    "room": "drama",
+    "title": "The curve of the theater",
+    "task": "A printer has squared off the fan shape and treated the drawing as a finished print.",
+    "cue": "Invite the reader to look past an edge that narrows.",
+    "readbacks": [
+      "The standing reader follows the curve and asks what was there before part of it was hidden.",
+      "The page reader keeps the flat design in view together with the intended outline, ready to ask about a print elsewhere."
+    ],
+    "revisit": [
+      "Index the ink design as its own object.",
+      "A reader asking for this view is led to the paper drawing and the fan-shaped format it anticipates."
+    ],
+    "object": {
+      "key": "cma:1985.296",
+      "accession": "1985.296",
+      "institution": "Cleveland Museum of Art",
+      "title": "Design for Fan-shaped Print of Kabuki Theater",
+      "date": "c. 1830s-60s",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Utagawa Sadahide (Japanese, 1807–1873) (artist)",
+      "culture": "Japan, Edo period (1615–1868)",
+      "medium": "ink on paper",
+      "dimensions": "Overall: 23.6 x 31.5 cm (9 5/16 x 12 3/8 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1985.296",
+      "pixelAsset": "specimens/script-sadahide-fan.jpg",
+      "observation": "The museum catalogues Sadahide’s ink drawing as a design for a fan-shaped print of a Kabuki theater.",
+      "limit": "The known object is the ink design. An issue of a finished print is outside this record’s claim.",
+      "altText": "An ink theater drawing within a broad curved outline narrowing towards the bottom."
+    }
+  },
+  {
+    "slug": "berain-pastorale",
+    "room": "drama",
+    "title": "An interlude in a grove",
+    "task": "A stand calls a surviving set design the complete opera.",
+    "cue": "Let a grove enter the scene before anybody speaks.",
+    "readbacks": [
+      "The standing listener lingers on the grove image and asks where it enters the whole evening.",
+      "The rest reader places the design inside the first part and asks where to look for the text next."
+    ],
+    "revisit": [
+      "Index the design beneath the named stage work.",
+      "The City reader can locate the interlude while keeping the name of the complete opera on its own line."
+    ],
+    "object": {
+      "key": "cma:2008.379",
+      "accession": "2008.379",
+      "institution": "Cleveland Museum of Art",
+      "title": "Design for the Divertissement from \"La Pastorale\" (First Entrée of the opera-ballet \"Les Muses\" by Danchet and Campra\")",
+      "date": "1703",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Jean I Bérain (French, 1640–1711) (artist)",
+      "culture": "France",
+      "medium": "pen and black ink and brush and gray wash with red, blue, and yellow wash, with graphite",
+      "dimensions": "Sheet: 35.1 x 46.3 cm (13 13/16 x 18 1/4 in.)",
+      "catalogue": "https://www.clevelandart.org/art/2008.379",
+      "pixelAsset": "specimens/script-berain-pastorale.jpg",
+      "observation": "Jean I Bérain drew a set connected to an interlude in La Pastorale, part of the 1703 opera-ballet Les Muses by Danchet and Campra.",
+      "limit": "The drawing is evidence about a designed interlude. It is not a record of every set or a score for the music.",
+      "altText": "Pale wash and careful ink lines depict trees framing an open stage."
+    }
+  },
+  {
+    "slug": "coypel-trissotin",
+    "room": "drama",
+    "title": "Listen to the far-right seat",
+    "task": "A viewer follows the center and misses one listener’s response.",
+    "cue": "Have the two closest listeners turn towards the speaker before revealing the far seat.",
+    "readbacks": [
+      "The rail reader hears applause in the invented cue and then sees the quiet figure when the strip unfolds.",
+      "The rest visitor counts lively listeners and the quieter figure before choosing where to aim the caption."
+    ],
+    "revisit": [
+      "Add a far-edge pointer to the scene locator.",
+      "The City reader finds the Act 3, Scene 2 drawing and knows why the first demonstration called attention to the edge."
+    ],
+    "object": {
+      "key": "cma:2008.401",
+      "accession": "2008.401",
+      "institution": "Cleveland Museum of Art",
+      "title": "Trissotin Reading to Philaminte, Bélise, and Armande (from act 3, scene 2 of Molière's \"Les Femmes Savantes\"",
+      "date": "probably c. 1725–1726",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Charles Coypel (French, 1694–1752) (artist)",
+      "culture": "France",
+      "medium": "graphite, graphite wash, and red chalk",
+      "dimensions": "Sheet: 21.7 x 30.6 cm (8 9/16 x 12 1/16 in.)",
+      "catalogue": "https://www.clevelandart.org/art/2008.401",
+      "pixelAsset": "specimens/script-coypel-trissotin.jpg",
+      "observation": "Charles Coypel drew a reading scene from Molière’s Les Femmes savantes. The museum contrasts the listeners’ gestures with Henrietta at the far right.",
+      "limit": "The gestures are Coypel’s rendering. They cannot settle the one performance or reaction a later production must use.",
+      "altText": "A pale drawing with listeners around a reader and a quieter figure on the far right."
+    }
+  },
+  {
+    "slug": "hogarth-troupe",
+    "room": "drama",
+    "title": "The playbill by the crown",
+    "task": "A celebratory programme leaves out the small sign that gives the picture another reading.",
+    "cue": "Let the lofty costumes catch the light before pointing to the barn floor.",
+    "readbacks": [
+      "The first listener spots the mismatch between costumes and setting and asks why a small bill deserves a second look.",
+      "The margin reader keeps both the playbill pointer and the legal date available before describing Hogarth’s satire."
+    ],
+    "revisit": [
+      "Leave a pointer to the playbill in the foreground.",
+      "A later reader can find the detail that supports a reading about licensing while leaving the precarious company life visible."
+    ],
+    "object": {
+      "key": "cma:1959.310",
+      "accession": "1959.310",
+      "institution": "Cleveland Museum of Art",
+      "title": "Strolling Actresses Dressing in a Barn",
+      "date": "1738",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "William Hogarth (British, 1697–1764) (artist)",
+      "culture": "England, 18th century",
+      "medium": "engraving",
+      "dimensions": "Platemark: 45 x 56.5 cm (17 11/16 x 22 1/4 in.); Sheet: 48.8 x 62.6 cm (19 3/16 x 24 5/8 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1959.310",
+      "pixelAsset": "specimens/script-hogarth-troupe.jpg",
+      "observation": "Hogarth’s 1738 engraving places the actresses’ costumes in a barn. Cleveland points to a playbill near a crown and discusses the print in relation to the 1737 Licensing Act.",
+      "limit": "The image is a satirical construction. It cannot stand as a neutral inventory of how every touring company worked.",
+      "altText": "An engraved group in a crowded rustic interior full of hanging stage properties."
+    }
+  },
+  {
+    "slug": "valaresso-tragedy",
+    "room": "drama",
+    "title": "The orange lines",
+    "task": "A venue clerk is treating a volume’s frontispiece as if it were a surviving stage view.",
+    "cue": "Announce a grand entrance on a strip bright enough to be found in the aisle.",
+    "readbacks": [
+      "The caller uses the strong color as the starting cue and asks whether that was a stage color.",
+      "The rest visitor identifies it as a material choice on the surviving book and keeps performance open."
+    ],
+    "revisit": [
+      "Preserve a print-color note beside the edition date.",
+      "A searcher finds the volume’s distinctive printing without receiving an unverified claim about stage design."
+    ],
+    "object": {
+      "key": "nga:2019.134.1",
+      "accession": "2019.134.1",
+      "institution": "National Gallery of Art",
+      "title": "Rutzvanscad il Giovine: Arcisopratragichissima Tragedia",
+      "date": "1737",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Zaccaria Valaresso",
+      "culture": "",
+      "medium": "bound volume with frontispiece and nine full-page etchings, printed in orange on blue laid paper",
+      "dimensions": "",
+      "catalogue": "https://www.nga.gov/artworks/219484-rutzvanscad-il-giovine-arcisopratragichissima-tragedia",
+      "pixelAsset": "specimens/script-valaresso-tragedy.jpg",
+      "observation": "The 1737 Venetian volume names Zaccaria Valaresso. Its frontispiece and nine full-page etchings are printed in orange on blue laid paper.",
+      "limit": "The printing material is documented here. The pictures cannot show the audience an actual performance without another record.",
+      "altText": "Venetian title page in blue with a fine orange image below printed words.",
+      "locator": "The publisher appears in the photographed printed title page."
+    }
+  },
+  {
+    "slug": "delacroix-faust",
+    "room": "drama",
+    "title": "A drama in lithographs",
+    "task": "A listener wants to find the playwright using the name under the French pictures.",
+    "cue": "Leave a bar of silence where the maker placed a shadow.",
+    "readbacks": [
+      "The reader’s report says the dark image changed how they heard the pause. They still ask whose story they heard.",
+      "The rest reader places the lithographic experiment beside its maker’s name without asking it to credit the play."
+    ],
+    "revisit": [
+      "Link playwright and lithographer in separate lookup fields.",
+      "A reader finding Delacroix through the image can still retrieve Goethe’s work by its proper credit."
+    ],
+    "object": {
+      "key": "nga:1976.46.1",
+      "accession": "1976.46.1",
+      "institution": "National Gallery of Art",
+      "title": "Faust",
+      "date": "published 1828",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Johann Wolfgang von Goethe (author) and Eugène Delacroix",
+      "culture": "",
+      "medium": "1 vol: ill: 18 lithographs",
+      "dimensions": "page size: 41.2 x 27.6 cm (16 1/4 x 10 7/8 in.)",
+      "catalogue": "https://www.nga.gov/artworks/55839-faust",
+      "pixelAsset": "specimens/script-delacroix-faust.jpg",
+      "observation": "The bound 1828 Faust has eighteen lithographs. The National Gallery names the author Goethe and the artist Eugène Delacroix.",
+      "limit": "A lithograph is evidence of a nineteenth-century interpretation in print, not of the actions of one historic cast.",
+      "altText": "A lithographed stage-like group on a printed page."
+    }
+  },
+  {
+    "slug": "brown-cordelia",
+    "room": "drama",
+    "title": "The scene that did not open",
+    "task": "A visitor calls the oil sketch a record of an actual run of King Lear.",
+    "cue": "Follow a farewell gesture past two people who stay behind.",
+    "readbacks": [
+      "The rail visitor reports a farewell and asks what was behind the fixed figures.",
+      "The rest reader labels the pose a painter’s selected moment, with Shakespeare’s play and Brown’s project kept apart."
+    ],
+    "revisit": [
+      "Mark the unopened project beside the depicted scene.",
+      "A reader tracing the cast will see an image record and a source play instead of a fictional list of performers."
+    ],
+    "object": {
+      "key": "cma:2013.261",
+      "accession": "2013.261",
+      "institution": "Cleveland Museum of Art",
+      "title": "Cordelia Parting from her Sisters",
+      "date": "1854",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Ford Madox Brown (British, 1821–1893) (artist)",
+      "culture": "England, 19th century",
+      "medium": "pen and oil on paper on panel",
+      "dimensions": "Framed: 30.5 x 36.8 x 3.5 cm (12 x 14 1/2 x 1 3/8 in.); Unframed: 19.5 x 26.5 cm (7 11/16 x 10 7/16 in.)",
+      "catalogue": "https://www.clevelandart.org/art/2013.261",
+      "pixelAsset": "specimens/script-brown-cordelia.jpg",
+      "observation": "Ford Madox Brown sketched Cordelia parting from her sisters in 1854. The museum describes it as a sketch for an unrealized project based on Shakespeare.",
+      "limit": "This sketch records a selected dramatic moment. It does not prove how a stage production moved the cast.",
+      "altText": "A dark colored sketch of one figure parting from a group by an open hall."
+    }
+  },
+  {
+    "slug": "genji-cloud",
+    "room": "prose",
+    "title": "Between the farewell and the fold",
+    "task": "A reader needs to keep the chapter, story and much later leaf separate.",
+    "cue": "Let the listener hear a farewell and then notice the hand holding a hem.",
+    "readbacks": [
+      "The reader remembers the child’s gesture and asks where to find the scene in the larger story.",
+      "The page reader marks this chapter and distinguishes the surviving copy from the original work."
+    ],
+    "revisit": [
+      "Index the chapter and surviving leaf on adjacent lines.",
+      "A borrower arriving by the scene can find the catalogue for the leaf without being promised the whole tale."
+    ],
+    "object": {
+      "key": "cma:1933.455",
+      "accession": "1933.455",
+      "institution": "Cleveland Museum of Art",
+      "title": "Portion of Text from the \"Wisps of Cloud\" (Usugumo) Chapter of The Tale of Genji",
+      "date": "1600s-1700s",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Anonymous copyist; literary work by Murasaki Shikibu",
+      "culture": "Japan, Edo period (1615–1868)",
+      "medium": "album leaf; ink on dyed paper with gold",
+      "dimensions": "23.3 x 21.3 cm (9 3/16 x 8 3/8 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1933.455",
+      "pixelAsset": "specimens/script-genji-cloud.jpg",
+      "observation": "The album leaf carries part of the Usugumo chapter of The Tale of Genji. The museum describes a child clinging to Genji’s clothing.",
+      "limit": "The leaf preserves a portion of the chapter and has a later date than the story. It does not identify its copyist.",
+      "altText": "Vertical cursive writing and traces of gold on deep brown paper.",
+      "locator": "Credit for the literary work is supported by Cleveland’s related accession 1961.202.",
+      "related": "https://www.clevelandart.org/art/1961.202"
+    }
+  },
+  {
+    "slug": "oishi-tale",
+    "room": "prose",
+    "title": "The missing main line",
+    "task": "The runner wants to fill missing narration from the surviving short bursts.",
+    "cue": "Tell the reader where a fox turns and leave space for the next voice.",
+    "readbacks": [
+      "The rail reader can follow the fox’s movement and can ask about a gap without guessing the missing line.",
+      "The seated reader keeps the surviving short inscriptions and the missing main account visibly distinct."
+    ],
+    "revisit": [
+      "Leave an open text bracket beside the surviving short marks.",
+      "The older archive can describe what a reader has and distinguish borrowed narration from another version."
+    ],
+    "object": {
+      "key": "cma:1983.80",
+      "accession": "1983.80",
+      "institution": "Cleveland Museum of Art",
+      "title": "The Illustrated Tale of Oishi Hyōroku",
+      "date": "1700s",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "No individual maker named in this object record",
+      "culture": "Japan, Edo period (1615–1868)",
+      "medium": "handscroll; ink and color on paper",
+      "dimensions": "Overall: 25.7 x 977.4 cm (10 1/8 x 384 13/16 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1983.80",
+      "pixelAsset": "specimens/script-oishi-tale.jpg",
+      "observation": "The eighteenth-century Oishi Hyōroku handscroll has colloquial inscriptions near pictures. Cleveland records that the main text is missing.",
+      "limit": "The surviving inscriptions do not supply every line of the lost main text.",
+      "altText": "Long horizontal handscroll with repeating small figures and interrupted groups of writing."
+    }
+  },
+  {
+    "slug": "parrot-warning",
+    "room": "prose",
+    "title": "A voice nested inside a voice",
+    "task": "The caller put the parrot mother’s warning on the outer narrator’s speech slate.",
+    "cue": "Start with an older bird speaking from the nest.",
+    "readbacks": [
+      "The first listener follows the mother’s warning and then asks who actually begins telling it.",
+      "The rest reader puts the outer teller outside the nest speech and gives the episode its own margin."
+    ],
+    "revisit": [
+      "Add an inside-story bracket to the margin.",
+      "A reader can move from the parrot mother’s episode to the Fifth Night without making them the same speaking voice."
+    ],
+    "object": {
+      "key": "cma:1962.279.32.a",
+      "accession": "1962.279.32.a",
+      "institution": "Cleveland Museum of Art",
+      "title": "The parrot mother cautions her young on the danger of playing with foxes, from a Tuti-nama (Tales of a Parrot): Fifth Night",
+      "date": "c. 1560",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Dasavanta (Indian, d. 1584) (artist)",
+      "culture": "Mughal India, court of Akbar (reigned 1556–1605)",
+      "medium": "gum tempera, ink, and gold on paper",
+      "dimensions": "Overall: 20.3 x 14 cm (8 x 5 1/2 in.); Painting only: 10 x 10.5 cm (3 15/16 x 4 1/8 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1962.279.32.a",
+      "pixelAsset": "specimens/script-parrot-warning.jpg",
+      "observation": "The museum identifies Dasavanta’s illustrated leaf as one scene within the parrot Tuti’s story to Khujasta on the Fifth Night.",
+      "limit": "The image shows an episode inside the larger tale. It is not evidence of a real warning or its exact delivery.",
+      "altText": "Illustrated leaf with a tree and animals above a band of text."
+    }
+  },
+  {
+    "slug": "nizami-owls",
+    "room": "prose",
+    "title": "Who can hear an owl?",
+    "task": "A draft attributes the interpretation directly to birds.",
+    "cue": "Sound two calls and wait for a court aide to give them meaning.",
+    "readbacks": [
+      "The rail reader first hears two sounds and asks where the minister’s meaning enters the performance.",
+      "The rest reader can pin the interpretation to the named speaker in the tale and leave the historical claim open."
+    ],
+    "revisit": [
+      "Put the minister’s account on a named layer.",
+      "A new reader can find the literary use of the owls without taking the tale for a witness report."
+    ],
+    "object": {
+      "key": "cma:1944.487",
+      "accession": "1944.487",
+      "institution": "Cleveland Museum of Art",
+      "title": "Nushirwan Listens to the Owls (recto); the Story of Nushirwan and his Minister, \"The Third Discourse on Diverse Events and Disorder in Life\" (verso) from a Khamsa (Quintet) of Nizami (1141–1209)",
+      "date": "1555–65",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "No individual maker named in this object record",
+      "culture": "Iran, Qazvin, Safavid period (1501-1722)",
+      "medium": "opaque watercolor, ink, and gold on paper",
+      "dimensions": "Sheet: 32.7 x 21.8 cm (12 7/8 x 8 9/16 in.); Image: 20.3 x 12.7 cm (8 x 5 in.); Text area: 20.3 x 12.7 cm (8 x 5 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1944.487",
+      "pixelAsset": "specimens/script-nizami-owls.jpg",
+      "observation": "The museum identifies Nizami’s story on the back of the owl illustration. Within it, Buzurgmihr interprets the owls to Nushirwan and reproves the king.",
+      "limit": "The manuscript preserves a moral tale. It does not verify a historical conversation among the people named.",
+      "altText": "Two manuscript faces, one with a painted scene over text and one with a text block."
+    }
+  },
+  {
+    "slug": "sanwalah-layla",
+    "room": "prose",
+    "title": "A reunion with another ending",
+    "task": "The wall label assumes every telling of Layla and Majnun reaches the same meeting.",
+    "cue": "Bring the two figures into the same pool of light.",
+    "readbacks": [
+      "The first reader notices the reunion and is surprised that they remember a different ending.",
+      "The page reader keeps this version’s poet and artist visible and points a new reader towards comparison."
+    ],
+    "revisit": [
+      "Give the painted reunion a version tab.",
+      "The City reader can seek this particular ending without reducing the many tellings to one."
+    ],
+    "object": {
+      "key": "cma:2013.301",
+      "accession": "2013.301",
+      "institution": "Cleveland Museum of Art",
+      "title": "Layla and Majnun in the wilderness with animals, from a Khamsa (Quintet) of Amir Khusrau Dihlavi",
+      "date": "c. 1590–1600",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Sanwalah (Indian, active c. 1580–1600) (artist)",
+      "culture": "India, Mughal",
+      "medium": "Gum tempera, ink, and gold on paper",
+      "dimensions": "Page: 24.9 x 16.8 cm (9 13/16 x 6 5/8 in.); Painting: 18.6 x 16.2 cm (7 5/16 x 6 3/8 in.)",
+      "catalogue": "https://www.clevelandart.org/art/2013.301",
+      "pixelAsset": "specimens/script-sanwalah-layla.jpg",
+      "observation": "The leaf credited to Sanwalah illustrates Amir Khusrau Dihlavi’s Persian telling. The museum contrasts this reunion with versions in which the lovers do not meet again in life.",
+      "limit": "The painting belongs to one documented telling and cannot license a claim about the ending of every telling.",
+      "altText": "Colorful rock formations and animals surround two sitting figures in this folio."
+    }
+  },
+  {
+    "slug": "shahnama-merchant",
+    "room": "prose",
+    "title": "The merchant before the marvel",
+    "task": "The front notice sends visitors straight to a dragon scene while the exposed leaf is text.",
+    "cue": "Leave a letter on a merchant’s threshold before opening a second scene.",
+    "readbacks": [
+      "The running reader wants the arrival scene and asks why the room advertises an entirely different image.",
+      "The rest visitor finds the entrance in the text and follows a separate reference to the reverse illustration."
+    ],
+    "revisit": [
+      "Put the face and reverse onto different retrieval tabs.",
+      "A later visitor can ask for the merchant passage by its exact view and still find the companion image."
+    ],
+    "object": {
+      "key": "cma:1943.658.a",
+      "accession": "1943.658.a",
+      "institution": "Cleveland Museum of Art",
+      "title": "Bahram Gur Arrives at the House of a Merchant, text page (recto), from a Shahnama (Book of Kings) of Firdausi (940–1019 or 1025), known as the Great Mongol Shahnama",
+      "date": "1330–35",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "No individual maker named in this object record",
+      "culture": "Iran, Tabriz, Ilkhanid period (1256-1353)",
+      "medium": "opaque watercolor, ink, and gold on paper",
+      "dimensions": "Sheet: 45.8 x 34.4 cm (18 1/16 x 13 9/16 in.); Image: 19.5 x 29.5 cm (7 11/16 x 11 5/8 in.); Text area: 41 x 29.5 cm (16 1/8 x 11 5/8 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1943.658.a",
+      "pixelAsset": "specimens/script-shahnama-merchant.jpg",
+      "observation": "The displayed leaf face carries Bahram Gur’s arrival at a merchant’s house in the Great Mongol Shahnama. Cleveland catalogues the picture on the reverse separately.",
+      "limit": "Firdausi is the named poet. The catalogue does not name the reader or copyist of this particular face.",
+      "altText": "A page with rows of writing divided into narrow columns."
+    }
+  },
+  {
+    "slug": "cervantes-1738",
+    "room": "prose",
+    "title": "An episode with several illustrators",
+    "task": "The book request gives a single artist credit to all four volumes.",
+    "cue": "Send the caller to look for an episode in the first volume.",
+    "readbacks": [
+      "The aisle reader takes the opening as a way into the first volume and asks which engraved scenes they will find.",
+      "The page reader asks for the book by volume and follows Cervantes and the named printmakers on separate lines."
+    ],
+    "revisit": [
+      "Add a volume field to the shared author index.",
+      "The City request now leads to the first volume’s own illustrations and lets another request lead to its neighbors."
+    ],
+    "object": {
+      "key": "nga:2006.27.1",
+      "accession": "2006.27.1",
+      "institution": "National Gallery of Art",
+      "title": "Vida y Hechos del Ingenioso Hidalgo Don Quixote de la Mancha (volume 1)",
+      "date": "1738",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Miguel de Cervantes Saavedra (author); print artists include George Vertue, Bernard Baron and Gerard Vandergucht after John Vanderbank.",
+      "culture": "",
+      "medium": "the first of four bound volumes with etched and engraved illustrations: 18 in vol. I",
+      "dimensions": "overall: 30 x 23.8 x 11.4 cm (11 13/16 x 9 3/8 x 4 1/2 in.)",
+      "catalogue": "https://www.nga.gov/artworks/134426-vida-y-hechos-del-ingenioso-hidalgo-don-quixote-de-la-mancha-volume-1",
+      "pixelAsset": "specimens/script-cervantes-1738.jpg",
+      "observation": "The National Gallery records its 1738 Don Quixote as the first of four volumes, with eighteen illustrations in this one and several printmaking credits.",
+      "limit": "The engraving list and this volume’s contents do not establish one illustrator or the contents of every other volume.",
+      "altText": "The 1738 title page of the first Don Quixote volume."
+    }
+  },
+  {
+    "slug": "laclos-proof",
+    "room": "prose",
+    "title": "Two states before opening",
+    "task": "The house caption treats a trial proof as the reader’s finished printed plate.",
+    "cue": "Give a letter a rough practice mark before it goes out as a finished line.",
+    "readbacks": [
+      "The standing reader notices the first mark and asks whether it belongs to the final letter.",
+      "The seated visitor separates the trial state, the published volume, and the fictional voices reading the letters."
+    ],
+    "revisit": [
+      "Keep the trial proof under its own search heading.",
+      "A reader can use the trial as evidence of printing without taking it as a statement made by the author or a character."
+    ],
+    "object": {
+      "key": "nga:1942.9.1452",
+      "accession": "1942.9.1452",
+      "institution": "National Gallery of Art",
+      "title": "Les liaisons dangereuses (volume I)",
+      "date": "published 1796",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Pierre-Ambroise-Francois Choderlos de Laclos and Various Artists",
+      "culture": "",
+      "medium": "1 vol: ill: etchings and engravings with stipple; includes trial proofs",
+      "dimensions": "",
+      "catalogue": "https://www.nga.gov/artworks/2432-les-liasons-dangereuses-volume-i",
+      "pixelAsset": "specimens/script-laclos-proof.jpg",
+      "observation": "The National Gallery describes the 1796 first volume of Laclos’s Les liaisons dangereuses as including trial proofs along with its prints.",
+      "limit": "The trial proofs document production of this copy. Their presence does not establish how every purchaser saw the book.",
+      "altText": "A blue bound volume with fine gold ornament on its cover."
+    }
+  },
+  {
+    "slug": "prevost-drawings",
+    "room": "prose",
+    "title": "A coloured impression",
+    "task": "A hurried page viewer thinks every preserved drawing is exactly what a first reader bought.",
+    "cue": "Let one drawing begin the scene while another catches its color.",
+    "readbacks": [
+      "The first reader catches the color and wants to see what the preparatory line looked like.",
+      "The rest visitor keeps the drawing and the impression on separate entries under Prévost’s story."
+    ],
+    "revisit": [
+      "Add drawing and counterproof as separate paths under the title.",
+      "The return desk can direct two visitors to different traces of Lefevre’s work without duplicating the novel’s authorship."
+    ],
+    "object": {
+      "key": "nga:1942.9.1801",
+      "accession": "1942.9.1801",
+      "institution": "National Gallery of Art",
+      "title": "Histoire de Manon Lescaut (volume I)",
+      "date": "published 1797",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Antoine-Francois Prévost (author) and Louis-Joseph Lefevre and Various Artists",
+      "culture": "",
+      "medium": "1 vol: ill: 4 preliminary drawings by Lefevre (assigned series a-d) and 4 counterproofs colored in gouache by Lefevre",
+      "dimensions": "book (closed): 15.8 × 10.3 × 2.3 cm (6 1/4 × 4 1/16 × 7/8 in.)",
+      "catalogue": "https://www.nga.gov/artworks/2648-histoire-de-manon-lescaut-volume-i",
+      "pixelAsset": "specimens/script-prevost-drawings.jpg",
+      "observation": "The National Gallery notes four preliminary drawings and four counterproofs coloured by Louis-Joseph Lefevre in this 1797 Manon Lescaut volume.",
+      "limit": "A preliminary drawing and coloured counterproof are separately documented types of evidence. Neither shows the only way to picture the novel.",
+      "altText": "A coloured book illustration with figures in an interior and lines of framing."
+    }
+  },
+  {
+    "slug": "champfleury-cats",
+    "room": "prose",
+    "title": "The credit beside the cats",
+    "task": "A waiting reader recognised only the illustration and asked whether the illustrator wrote the book.",
+    "cue": "Let two animals approach through a lit patch of the room.",
+    "readbacks": [
+      "The passerby recognises the cats and wants the book without remembering its author.",
+      "The reading-cushion visitor finds Champfleury on the book line and Manet on its image line."
+    ],
+    "revisit": [
+      "Attach the illustration number to the book request.",
+      "The City’s reader gets the right volume and can open the associated illustration through its own number."
+    ],
+    "object": {
+      "key": "nga:1976.17.1",
+      "accession": "1976.17.1",
+      "institution": "National Gallery of Art",
+      "title": "Les chats",
+      "date": "published 1870",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Champfleury (author)",
+      "culture": "",
+      "medium": "1 vol: ill: 1 etching and aquatint by Manet (1976.17.1.a)",
+      "dimensions": "",
+      "catalogue": "https://www.nga.gov/artworks/55769-les-chats",
+      "pixelAsset": "specimens/script-champfleury-cats.jpg",
+      "observation": "The National Gallery catalogues Champfleury’s 1870 Les chats with one etching and aquatint by Édouard Manet, separately numbered 1976.17.1.a.",
+      "limit": "The illustration record and the volume record can be linked while keeping the artist and author distinct.",
+      "altText": "A view of a bound illustration page with a dark and a light cat."
+    }
+  },
+  {
+    "slug": "venice-comedia",
+    "room": "edition",
+    "title": "The commentator on the title page",
+    "task": "The House is putting the commentator’s credit over the narrator’s name.",
+    "cue": "Open with a traveler in uncertain steps.",
+    "readbacks": [
+      "The rail reader takes the travel cue as an opening, then asks where the explanation came from.",
+      "The rest visitor keeps the explanatory text findable through Vellutello and follows Dante’s text on a different line."
+    ],
+    "revisit": [
+      "Pin the commentary under a separate byline.",
+      "A borrower can ask for the 1544 edition with its particular exposition and see how the voices differ."
+    ],
+    "object": {
+      "key": "nga:2015.80.1",
+      "accession": "2015.80.1",
+      "institution": "National Gallery of Art",
+      "title": "La Comedia",
+      "date": "1544",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Venetian 16th Century, Dante Alighieri (author)",
+      "culture": "",
+      "medium": "bound volume with 3 full-page wood-engraved illustrations and 101 wood-engraved vignettes",
+      "dimensions": "book: 23.18 × 15.88 × 6.03 cm (9 1/8 × 6 1/4 × 2 3/8 in.)",
+      "catalogue": "https://www.nga.gov/artworks/199272-la-comedia",
+      "pixelAsset": "specimens/script-venice-comedia.jpg",
+      "observation": "The 1544 Venetian volume has Dante’s Comedia, wood-engraved illustrations and a title page referring to a new exposition by Alessandro Vellutello.",
+      "limit": "The exposition belongs to the documented edition. Its presence does not make it part of Dante’s authorship.",
+      "altText": "An open Venetian volume with a blank left page and printed right title page.",
+      "locator": "Alessandro Vellutello’s credit appears in the pictured title page."
+    }
+  },
+  {
+    "slug": "dante-three-cantiche",
+    "room": "edition",
+    "title": "A dedication with its own author line",
+    "task": "The reader on arrival associates the largest name in the dedication with the poem’s making.",
+    "cue": "Give a book to a named recipient before speaking its first line.",
+    "readbacks": [
+      "The first visitor sees that somebody is being addressed and asks which words belong to the work.",
+      "The page reader follows the dedication, named poet and engraver credit as separate parts of one edition."
+    ],
+    "revisit": [
+      "Mark the address on the opening leaf as a dedication.",
+      "The older archive can describe who is addressed without making a new ownership claim."
+    ],
+    "object": {
+      "key": "nga:2022.98.1",
+      "accession": "2022.98.1",
+      "institution": "National Gallery of Art",
+      "title": "La Divina Commedia",
+      "date": "1757-1758",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Dante Alighieri (author); Giuliano Giampiccoli, Giuseppe Magnini and other etchers after works by named and other artists.",
+      "culture": "",
+      "medium": "large quarto volume with 228 etched illustrations",
+      "dimensions": "",
+      "catalogue": "https://www.nga.gov/artworks/224508-la-divina-commedia",
+      "pixelAsset": "specimens/script-dante-three-cantiche.jpg",
+      "observation": "The 1757–1758 Divina Commedia includes 228 etched illustrations. The National Gallery’s displayed opening is a dedication to Elisabetta Petrowna.",
+      "limit": "The dedication identifies an addressee in the printed book. It does not establish that she authored the poem or owned this copy.",
+      "altText": "An etched decorative dedication leaf inside the volume."
+    }
+  },
+  {
+    "slug": "manet-raven",
+    "room": "edition",
+    "title": "Three hands on The Raven",
+    "task": "The northern rail calls the French edition a new poem by the painter.",
+    "cue": "Use a dark wing as an entrance cue, then bring the language line into view.",
+    "readbacks": [
+      "The aisle reader follows the wing and asks which language the title belongs to.",
+      "The rest reader finds the writer, translator and illustrator as three paths into one book."
+    ],
+    "revisit": [
+      "Open a translation path beside the artists’ signature entry.",
+      "The archive can supply a French-edition link and the original poet’s name without relabelling each as the same maker."
+    ],
+    "object": {
+      "key": "nga:2014.112.27",
+      "accession": "2014.112.27",
+      "institution": "National Gallery of Art",
+      "title": "Le Corbeau (The Raven)",
+      "date": "1875",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Edgar Allan Poe (poet); Stéphane Mallarmé (translator); Édouard Manet (illustrator)",
+      "culture": "",
+      "medium": "bound volume with 1 original drawing in black ink, illustrative ex libris (unsigned), frontispiece, and a double suite of 4 full-page transfer lithographs",
+      "dimensions": "book: 55 × 36 × 1 cm (21 5/8 × 14 3/16 × 3/8 in.)",
+      "catalogue": "https://www.nga.gov/artworks/165853-le-corbeau-raven",
+      "pixelAsset": "specimens/script-manet-raven.jpg",
+      "observation": "The 1875 Le Corbeau includes Poe’s poem in Stéphane Mallarmé’s French translation with lithographs by Édouard Manet. The record notes Mallarmé and Manet’s signatures.",
+      "limit": "The translator and artist signed this edition. Neither signature supplies evidence that Poe personally approved this copy.",
+      "altText": "A small black raven profile printed near the center of a cream page.",
+      "locator": "The National Gallery catalogue’s public creator list names Stéphane Mallarmé and identifies the signatures on the title-page verso."
+    }
+  },
+  {
+    "slug": "mapleson-ballads",
+    "room": "edition",
+    "title": "The gift line under a title",
+    "task": "Two accessions are about to be filed by a later owner’s name alone.",
+    "cue": "Describe a song you might first meet as an illuminated page.",
+    "readbacks": [
+      "The first visitor recognises the songs but wonders whose name has appeared in the small margin.",
+      "The rest reader keeps the 1849 printed volume and the 1935 handwritten entry in distinct positions."
+    ],
+    "revisit": [
+      "Attach the handwritten date to this copy only.",
+      "A later reader can recognise the inscribed copy and retain the publication date."
+    ],
+    "object": {
+      "key": "nga:2018.44.119",
+      "accession": "2018.44.119",
+      "institution": "National Gallery of Art",
+      "title": "The Songs and Ballads of Shakespeare",
+      "date": "1849",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "T. W. Gwilt Mapleson",
+      "culture": "",
+      "medium": "bound volume with twenty-five chromolithographs",
+      "dimensions": "closed: 26 × 21 × 2.5 cm (10 1/4 × 8 1/4 × 1 in.) open: 26 × 43 cm (10 1/4 × 16 15/16 in.)",
+      "catalogue": "https://www.nga.gov/artworks/214314-songs-and-ballads-shakespeare",
+      "pixelAsset": "specimens/script-mapleson-ballads.jpg",
+      "observation": "The 1849 volume by T. W. Gwilt Mapleson contains twenty-five chromolithographs. The museum records a later inscription naming Alfred Hewlett Fletcher dated 1935.",
+      "limit": "The inscription belongs to this copy’s later history. It does not date the publication of the volume.",
+      "altText": "A black, gold-lettered volume with a heraldic crest and clasps."
+    }
+  },
+  {
+    "slug": "seneca-lipsius",
+    "room": "edition",
+    "title": "One voice over another",
+    "task": "A public slide turns the Latin editor’s explanation into Seneca’s sentence.",
+    "cue": "Let a commentator enter only after a speaker has finished.",
+    "readbacks": [
+      "The aisle reader hears a second voice and asks whether it speaks with the same authority as the first.",
+      "The rest visitor follows the edited text and its later pictures through four separate credits."
+    ],
+    "revisit": [
+      "Put the editor’s name at the boundary of the annotation.",
+      "The City’s caller can find the edition while preserving the writer’s identity and the engravers’ own ties to the illustrations."
+    ],
+    "object": {
+      "key": "nga:2010.58.1",
+      "accession": "2010.58.1",
+      "institution": "National Gallery of Art",
+      "title": "L. Annaei Senecae Philosophi Opera, quae extant omnia: A Iusto Lipsio Emendata et Scholiis Illustrata. Editio Secunda, atque ab ultima Lipsii manu",
+      "date": "1615",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Lucius Annaeus Seneca (Roman author), Justus Lipsius (editor), Cornelis Galle I and Theodor Galle (engravers) after Sir Peter Paul Rubens (designer)",
+      "culture": "",
+      "medium": "bound volume with 3 engraved illustrations after Sir Peter Paul Rubens, and woodcut historiated initials, on laid paper",
+      "dimensions": "plate for frontispiece: 31 x 18.8 cm (12 3/16 x 7 3/8 in.) book: 39.2 x 27 x 9 cm (15 7/16 x 10 5/8 x 3 9/16 in.)",
+      "catalogue": "https://www.nga.gov/artworks/151039-l-annaei-senecae-philosophi-opera-quae-extant-omnia-iusto-lipsio-emendata-et-scholiis-illustrata",
+      "pixelAsset": "specimens/script-seneca-lipsius.jpg",
+      "observation": "The National Gallery’s 1615 edition names Seneca as author and Justus Lipsius as editor. The record also names Rubens as designer and the Galles as engravers.",
+      "limit": "These roles identify contributors to the edition. Its date is not a date for Seneca’s original composition.",
+      "altText": "The photographed binding of the 1615 edition."
+    }
+  },
+  {
+    "slug": "tiebao-wang-bo",
+    "room": "edition",
+    "title": "The essay recast as a scroll",
+    "task": "A label puts the brushwriter’s year beside the first composition of the essay.",
+    "cue": "Let a reader walk the length of a line before judging where it began.",
+    "readbacks": [
+      "The rail visitor remembers the span of the line and asks which author lent it its words.",
+      "The rest visitor points to one line for the source essay and a later line for Tiebao’s calligraphic rendition."
+    ],
+    "revisit": [
+      "Index the source essay and the 1811 scroll separately.",
+      "A future visitor can find the scroll through either name while retaining the kind of work each name credits."
+    ],
+    "object": {
+      "key": "cma:2001.42",
+      "accession": "2001.42",
+      "institution": "Cleveland Museum of Art",
+      "title": "Calligraphy in Running Style based on Wang Bo's Essay on Tengwang Pavilion",
+      "date": "1811",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Tiebao (Chinese, 1752–1824) (artist)",
+      "culture": "China, Changbai, Qing dynasty (1644-1911)",
+      "medium": "handscroll, ink on paper",
+      "dimensions": "Image: 43.4 x 647.9 cm (17 1/16 x 255 1/16 in.); Overall: 44.4 x 863.6 cm (17 1/2 x 340 in.)",
+      "catalogue": "https://www.clevelandart.org/art/2001.42",
+      "pixelAsset": "specimens/script-tiebao-wang-bo.jpg",
+      "observation": "Tiebao brushed this 1811 running-style handscroll based on Wang Bo’s Essay on Tengwang Pavilion.",
+      "limit": "The museum dates Tiebao’s work. That date does not locate Wang Bo’s composition.",
+      "altText": "A long calligraphic handscroll with repeated columns of writing."
+    }
+  },
+  {
+    "slug": "ise-screens",
+    "room": "edition",
+    "title": "Entrances from the other edge",
+    "task": "A carrier opens the folding screens from the wrong end for the pictured sequence.",
+    "cue": "Enter the first room from the right-hand fold.",
+    "readbacks": [
+      "The moving reader sees a later episode first if they enter from the other rail and asks where to start.",
+      "The rest reader unfolds the scene path from the right and leaves unresolved maker information on its own tab."
+    ],
+    "revisit": [
+      "Attach a reading-direction arrow to the side identified by the source.",
+      "The City page-finder can send readers to the correctly oriented reproduction and offer the original literary link separately."
+    ],
+    "object": {
+      "key": "cma:1969.127",
+      "accession": "1969.127",
+      "institution": "Cleveland Museum of Art",
+      "title": "Scenes from the Tales of Ise",
+      "date": "mid-1600s",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "No individual maker named in this object record",
+      "culture": "Japan, Edo period (1615–1868)",
+      "medium": "Pair of six-panel folding screens; ink, color, and gold on gilded paper",
+      "dimensions": "Painting only: 95.2 x 276 cm (37 1/2 x 108 11/16 in.); Overall: 109.3 x 258.9 cm (43 1/16 x 101 15/16 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1969.127",
+      "pixelAsset": "specimens/script-ise-screens.jpg",
+      "observation": "The mid-seventeenth-century pair represents episodes from the Tales of Ise on folding screens. The museum says the scenes are read right to left and carries no artist’s signature.",
+      "limit": "An attribution to a manner is not a signature. The panels rework selected episodes, and they do not contain the whole book.",
+      "altText": "Two wide gilded folding screens with scenes separated across the paper panels."
+    }
+  },
+  {
+    "slug": "boccaccio-medusa",
+    "room": "edition",
+    "title": "The French miniature",
+    "task": "A floating picture gets advertised as an illustration from the hand of Boccaccio.",
+    "cue": "Let a courtly picture introduce a chapter and keep the speaking room open.",
+    "readbacks": [
+      "The aisle reader sees the depicted court and asks for the book that held this opening.",
+      "The rest reader follows the French version and the Italian author on separate lines and leaves space for the missing text."
+    ],
+    "revisit": [
+      "File a translation tab with the lost page boundary.",
+      "The return desk can lead a reader from the detached miniature to the named work without offering a whole surviving manuscript."
+    ],
+    "object": {
+      "key": "cma:1924.1015",
+      "accession": "1924.1015",
+      "institution": "Cleveland Museum of Art",
+      "title": "Single Miniature Excised from Boccaccio's Des Cleres et nobles femmes: Queen Medusa and Her Court",
+      "date": "c. 1470",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Maître François (French) (artist)",
+      "culture": "France",
+      "medium": "tempera and gold on vellum",
+      "dimensions": "Sheet: 13 x 9.1 cm (5 1/8 x 3 9/16 in.)",
+      "catalogue": "https://www.clevelandart.org/art/1924.1015",
+      "pixelAsset": "specimens/script-boccaccio-medusa.jpg",
+      "observation": "The circa-1470 miniature credited to Maître François introduces Queen Medusa in a French translation of Boccaccio’s book on famous women.",
+      "limit": "The surviving object is an excised miniature from a translation. Its image does not preserve the complete chapter or a documented event.",
+      "altText": "A manuscript miniature with a courtly group under a tall arch."
+    }
+  },
+  {
+    "slug": "chaghatai-verses",
+    "room": "edition",
+    "title": "A script with another language",
+    "task": "The archive’s shortcut labels the poems Persian simply because of the script.",
+    "cue": "Ask a reader to hear the language before naming the shape of the letters.",
+    "readbacks": [
+      "The rail visitor hears that their familiar script name did not identify which language to request.",
+      "The rest reader can locate the Chaghatai entry while retaining the script and later album on separate lines."
+    ],
+    "revisit": [
+      "Give language and script separate search tabs.",
+      "A reader looking for Chaghatai finds the poems without having to search under an incorrect language name."
+    ],
+    "object": {
+      "key": "cma:2013.292.b",
+      "accession": "2013.292.b",
+      "institution": "Cleveland Museum of Art",
+      "title": "Calligraphy of Chaghatai Turkish Poems in Praise of Wine (verso)",
+      "date": "c. 1500–1520",
+      "dateKind": "Date of the surviving object or edition",
+      "artist": "Mirza Muhammad (probably Persian, active c. 1520s) (calligraphy by); Sultan Muhammad Nur (Persian, c. 1472–1536) (calligraphy by)",
+      "culture": "Mughal India, court of Akbar (reigned 1556–1605)",
+      "medium": "Gum tempera, ink, and gold on paper",
+      "dimensions": "Page: 36.2 x 24.3 cm (14 1/4 x 9 9/16 in.)",
+      "catalogue": "https://www.clevelandart.org/art/2013.292.b",
+      "pixelAsset": "specimens/script-chaghatai-verses.jpg",
+      "observation": "The museum identifies Chaghatai Turkish poems in nasta‘liq script and names Mirza Muhammad and Sultan Muhammad Nur in the calligraphy credits.",
+      "limit": "The script does not identify a language by itself. This catalogue’s album history is separate from the date of the written face.",
+      "altText": "A leaf with diagonal writing framed by illuminated borders and blue details."
+    }
+  }
+]

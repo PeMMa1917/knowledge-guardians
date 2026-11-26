@@ -5,9 +5,27 @@
  * East wing (x 26-38): the Hall of Firsts, an optional side quest with
  * plaques, each about one person shown with their own place and people, from many periods.
  */
+import { NEXUS_FIELD_CUES } from './fieldBadges';
+import { BADGE_ANNEX_DOOR } from './badgeRoom';
+import { NEXUS_FACING_ACTOR, NEXUS_FACING_CUE } from './facingCue';
+import { EARLY_CURTAIN_NPC, EARLY_CURTAIN_PROPS } from './curtainCall';
+import { NEXUS_DISPATCH_STATS } from './dispatchStats';
+import { NEXUS_CORRESPONDENCE } from './correspondenceRoom';
 import type { Condition } from '../domain/types';
+import { FIRST_BENCH_EPILOGUE } from './afterCouncil';
+import { FERRY_PACKING_RETURNS } from './ferryPacking';
 import type { MapDef } from './types';
 import { sceneProp } from './sceneProps';
+import { NEXUS_VINDOLANDA } from './vindolanda';
+import { NEXUS_DOOR_FOLD } from './doorFold';
+import { NEXUS_CITATION_RAIL } from './citationRail';
+import { NEXUS_SAME_RED } from './sameRed';
+import { NEXUS_LANTERN_WEAVE } from './lanternWeave';
+import { NEXUS_SHUTTERS, SHUTTER_VISITORS } from './shutterBoard';
+import { SPECIMEN_VAULT_DOOR } from './specimenVault';
+import { NUMBER_LEAF_RETURNS } from './numberLeaves';
+import { MODEL_RECORD_RETURNS } from './modelRecords';
+import { starStations } from './starPaths';
 
 const W = 40, H = 20;
 const strokeRequested: Condition = { flag: 'nexus.stroke.requested', eq: true };
@@ -29,6 +47,18 @@ const packTried: Condition = { flag: 'nexus.pack.tried', eq: true };
 const packSent: Condition = { flagSet: 'nexus.pack.sent' };
 const packLayouts = ['kits', 'outer'] as const;
 const packReaders = ['route', 'tally'] as const;
+const handleUnfitted: Condition = { not: { flagSet: 'nexus.handle.method' } };
+const handlePaused: Condition = { flag: 'nexus.handle.paused', eq: true };
+const handleDone: Condition = { flag: 'nexus.handle.done', eq: true };
+const handleMethods = ['paired', 'mended'] as const;
+const gaugeLogged: Condition = { flag: 'lost.gauge.logged', eq: true };
+const gaugeThread: Condition = { item: 'tool.provenance-thread' };
+const gaugeEntry: Condition = { flag: 'thread.lost-gauge.entry', eq: true };
+const gaugePouch: Condition = { item: 'item.folding-gauge' };
+const gaugeResolved: Condition = { flagSet: 'lost.gauge.resolved' };
+const gaugeUsed: Condition = { flag: 'lost.gauge.used', eq: true };
+const gaugeReceipted: Condition = { flag: 'lost.gauge.receipt', eq: true };
+const gaugeShelf = { x: 3, y: 6, w: 1, h: 1, walkThrough: true };
 const viewerPatent: Condition = { flag: 'inspected.OBJ-001-A', eq: true };
 const viewerUnposted: Condition = { not: { flagSet: 'nexus.viewer.response' } };
 const viewerFinished: Condition = { flag: 'nexus.viewer.done', eq: true };
@@ -111,6 +141,9 @@ export const NEXUS: MapDef = {
     [11, 3, 1, 2], [14, 3, 1, 2],      // portal posts
   ],
   npcs: [
+    EARLY_CURTAIN_NPC,
+    NEXUS_FACING_ACTOR,
+    ...SHUTTER_VISITORS,
     { id: 'warden-ise', x: 12, y: 11, facing: 'down' },
     { id: 'curator-dace', x: 4, y: 8, facing: 'right' },
     { id: 'clerk-venn', x: 20, y: 8, facing: 'left' },
@@ -118,11 +151,31 @@ export const NEXUS: MapDef = {
     { id: 'villager-2', x: 17, y: 13, facing: 'up' },
     { id: 'archivist-tull', x: 35, y: 13, facing: 'down' },
     { id: 'visitor-sol', x: 29, y: 8, facing: 'up' },
+    { id: 'nima-fenner', x: 4, y: 5, facing: 'left', visibleIf: { not: { flag: 'preserved.arrived', eq: true } } },
     // Origin side quests (spec 35.1): each giver appears only for that origin.
     { id: 'cataloguer-bela', x: 6, y: 12, facing: 'down', visibleIf: { origin: 'archive' } },
     { id: 'translator-lio', x: 24, y: 13, facing: 'right', visibleIf: { origin: 'traveller' } },
   ],
   interactables: [
+    ...NEXUS_FIELD_CUES,
+    ...NEXUS_FACING_CUE,
+    ...starStations('inquisitor', [3, 10], [3, 11]),
+    ...NEXUS_VINDOLANDA,
+    ...NEXUS_DOOR_FOLD,
+    ...NEXUS_CITATION_RAIL,
+    ...NEXUS_SAME_RED,
+    ...NEXUS_LANTERN_WEAVE,
+    ...NEXUS_SHUTTERS,
+    SPECIMEN_VAULT_DOOR,
+    ...NUMBER_LEAF_RETURNS,
+    ...MODEL_RECORD_RETURNS,
+    ...FERRY_PACKING_RETURNS,
+    { id: 'hesper-checked-bench', kind: 'scene', node: 'hesper.nexus.bench', x: 20, y: 10, w: 1, h: 1,
+      label: 'Hesper’s reserved repair bench', art: 'nexus.viewer-sheet', walkThrough: true,
+      visibleIf: { all: [{ objective: 'm02.o8.ise' }, { flag: 'hesper.visitArrangement', eq: 'bench' }] } },
+    { id: 'hesper-checked-drawer', kind: 'scene', node: 'hesper.nexus.drawer', x: 21, y: 15, w: 1, h: 1,
+      label: 'the return drawer for Hesper’s scrap', art: 'preserved.folder', walkThrough: true,
+      visibleIf: { all: [{ objective: 'm02.o8.ise' }, { objective: 'm02.o6.hesper' }, { not: { flag: 'hesper.visitArrangement', eq: 'bench' } }] } },
     { id: 'hearth-spot', kind: 'fieldgame', game: 'hearth', x: 14, y: 10, w: 1, h: 1, label: 'the hearth where your friends gather', art: 'lantern-stall' },
     { id: 'cross-lintel', kind: 'fieldgame', game: 'cross-lintel', x: 34, y: 4, w: 1, h: 1, label: 'old words cut over an arch (a crossing)', art: 'old-sign' },
     { id: 'loyalty-kip', kind: 'fieldgame', game: 'loyalty-kip', x: 3, y: 14, w: 1, h: 1, label: "Kip's family map on a reading table (The Famous Ancestor)", art: 'ledger', visibleIf: { flag: 'study.letter', eq: true } },
@@ -299,8 +352,55 @@ export const NEXUS: MapDef = {
       ['pair', 28, 'the workshop’s paired display', 'One tag names the ancient map. Another states what the model tested, and what it cannot say about the past.', 'nile.map'],
     ] as const).map(([route, x, label, text, art]) => ({ id: 'nile-outcome-' + route, kind: 'sign' as const, x, y: 8, w: 1, h: 1, walkThrough: true, label, text, art,
       visibleIf: { all: [{ flag: 'nile.dispatch', eq: route }, { flag: 'nile.returned', eq: true }] } })),
+    { id: 'nile-transit-board', kind: 'sign', x: 30, y: 9, w: 1, h: 1, walkThrough: true,
+      label: 'the two practice dates on the public clip', art: 'preserved.display-paired', flag: 'nile.transit.received',
+      text: 'Sol checks the two dates without leaving the cases. The matched sample left on Day 4 and was shelved on Day 5. Sol follows the shelf heading to the open copy. The signed originals stay on the keeper’s hook.',
+      visibleIf: { all: [{ flag: 'nile.returned', eq: true }, { flag: 'nile.transit.layout', eq: 'board' }] } },
+    { id: 'nile-transit-desk', kind: 'sign', x: 36, y: 12, w: 1, h: 1, walkThrough: true,
+      label: 'the signed shelving slip at the pickup desk', art: 'preserved.display-records', flag: 'nile.transit.received',
+      text: 'Tull matches the Day 5 shelving slip to the Day 4 sending stub by the tear and holes. A reader with the sending date has to ask at the desk. The keeper puts both signed slips in that reader’s hands.',
+      visibleIf: { all: [{ flag: 'nile.returned', eq: true }, { flag: 'nile.transit.layout', eq: 'desk' }] } },
 
     { id: 'secret-misfiled', kind: 'secret', secret: 'misfiled', x: 22, y: 3, w: 1, h: 1, label: 'a gap behind the bookshelf' },
+    { id: 'nexus-gauge-case', kind: 'scene', node: 'lost.gauge.inspect', x: 2, y: 6, w: 1, h: 1, walkThrough: true,
+      label: 'the notched brass gauge in the found tray', art: 'lost-gauge.found', visibleIf: { all: [{ not: gaugePouch }, { not: gaugeResolved }] } },
+    { ...gaugeShelf, id: 'nexus-gauge-intake', kind: 'scene', node: 'lost.gauge.intake',
+      label: 'the open found book', art: 'ledger', visibleIf: { not: gaugeLogged } },
+    { ...gaugeShelf, id: 'nexus-gauge-wait', kind: 'scene', node: 'lost.gauge.waiting',
+      label: 'the open owner line in the found book', art: 'lost-gauge.stub', visibleIf: { all: [gaugeLogged, { not: gaugeThread }] } },
+    { ...gaugeShelf, id: 'nexus-gauge-thread', kind: 'thread', thread: 'lost-gauge', node: 'entry',
+      label: 'the blue-tie intake record', art: 'lost-gauge.stub', visibleIf: { all: [gaugeLogged, gaugeThread, { not: gaugeEntry }] } },
+    { ...gaugeShelf, id: 'nexus-gauge-carry', kind: 'scene', node: 'lost.gauge.carry',
+      label: 'the padded pouch and sign-out book', art: 'lost-gauge.pouch',
+      visibleIf: { all: [gaugeLogged, gaugeThread, gaugeEntry, { not: gaugePouch }, { not: gaugeResolved }] } },
+    { ...gaugeShelf, id: 'nexus-gauge-awaiting', kind: 'scene', node: 'lost.gauge.awaiting',
+      label: 'the sign-out stub under the blue tie', art: 'lost-gauge.stub',
+      visibleIf: { all: [{ any: [gaugePouch, gaugeResolved] }, { not: gaugeUsed }] } },
+    { ...gaugeShelf, id: 'nexus-gauge-receipt', kind: 'scene', node: 'lost.gauge.receipt',
+      label: 'Aster’s return receipt beside the found book', art: 'lost-gauge.receipt', visibleIf: { all: [gaugeUsed, { not: gaugeReceipted }] } },
+    ...(['owner', 'loan'] as const).map((mode) => ({
+      ...gaugeShelf, id: `nexus-gauge-closed-${mode}`, kind: 'scene' as const, node: `lost.gauge.closed-${mode}`,
+      label: mode === 'owner' ? 'the checked return in the found book' : 'the checked return and separate loan line',
+      art: mode === 'owner' ? 'lost-gauge.closed' : 'lost-gauge.loan-note',
+      visibleIf: { all: [gaugeReceipted, { flag: 'lost.gauge.resolved', eq: mode }] },
+    })),
+    { id: 'nexus-handle-case', kind: 'scene', x: 5, y: 17, w: 1, h: 1, walkThrough: true,
+      label: 'Kip’s case with a split handle', art: 'nexus.handle-torn', node: 'nexus.handle.start',
+      visibleIf: { all: [handleUnfitted, { not: handlePaused }] } },
+    { id: 'nexus-handle-resting', kind: 'scene', x: 5, y: 17, w: 1, h: 1, walkThrough: true,
+      label: 'Kip’s case waiting for a handle', art: 'nexus.handle-torn', node: 'nexus.handle.wait',
+      visibleIf: { all: [handleUnfitted, handlePaused] } },
+    ...handleMethods.flatMap((method) => {
+      const fitted: Condition = { flag: 'nexus.handle.method', eq: method };
+      const position = { kind: 'scene' as const, x: 16, y: 16, w: 1, h: 1, walkThrough: true };
+      const label = method === 'paired' ? 'the workshop case with two cord loops' : 'the workshop case with the stitched handle';
+      return [
+        { ...position, id: `nexus-handle-${method}-bench`, label, art: `nexus.handle-${method}`, node: `nexus.handle.${method}-bench`,
+          visibleIf: { all: [fitted, { not: handleDone }] } },
+        { ...position, id: `nexus-handle-${method}-case`, label, art: `nexus.handle-${method}-ready`, node: `nexus.handle.${method}-case`,
+          visibleIf: { all: [fitted, handleDone] } },
+      ];
+    }),
     { id: 'nexus-pack-prep', kind: 'scene', x: 4, y: 6, w: 1, h: 1, walkThrough: true,
       label: 'the packing table with six sketches and two source slips', art: 'nexus.pack-prep', node: 'nexus.pack.prep',
       visibleIf: { all: [packWaiting, { any: [{ not: { flagSet: 'nexus.pack.layout' } }, { flag: 'nexus.pack.layout', eq: 'open' }] }] } },
@@ -344,6 +444,11 @@ export const NEXUS: MapDef = {
     })),
     { id: 'bench', kind: 'bench', x: 19, y: 16, w: 3, h: 2, label: 'the workshop bench (marking test)' },
     { id: 'label-pen', kind: 'label', kit: 'pen', x: 10, y: 15, w: 1, h: 1, label: 'the label stand', art: 'label-stand' },
+    ...FIRST_BENCH_EPILOGUE,
+    BADGE_ANNEX_DOOR,
+    ...EARLY_CURTAIN_PROPS,
+    ...NEXUS_DISPATCH_STATS,
+    ...NEXUS_CORRESPONDENCE,
     { id: 'waystone', kind: 'waystone', place: 'Nexus archive hall', x: 2, y: 9, w: 1, h: 1, label: 'the Waystone (save and rest)', art: 'waystone' },
     ...([['OBJ-101', 'eratosthenes'], ['OBJ-102', 'haytham'], ['OBJ-103', 'bisheng'], ['OBJ-104', 'sikdar'], ['OBJ-105', 'santos'], ['OBJ-106', 'sheppard'], ['OBJ-107', 'wollstonecraft']] as const)
       .map(([ex, key], i) => ({ id: `plaque-${key}`, kind: 'exhibit' as const, exhibit: ex, kit: `first.${key}`, x: 27 + i * 2, y: 5, w: 1, h: 1, label: 'a plaque in the Hall of Firsts', art: 'plaque' })),

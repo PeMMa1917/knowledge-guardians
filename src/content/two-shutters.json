@@ -1,0 +1,847 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH1-R96",
+   "world": "WORLD-01",
+   "title": "The Two Shutter Room",
+   "stake": "A tray carrier needs a safe rest and a reader needs time to hear the names. The hall has one spare fitting pin.",
+   "knowledgeQuestion": "When a test succeeds in one place, what still needs checking before it serves two different people?",
+   "objectives": [
+    {
+     "id": "nexus.shutter.discover",
+     "title": "Check the wall sketch against two marks at the west bench.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "nexus.shutter.recess",
+        "eq": true
+       },
+       {
+        "flag": "nexus.shutter.found",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "objectivity",
+       "certainty"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "LAN",
+       "TEC"
+      ],
+      "subjects": [
+       "global-politics",
+       "design-tech",
+       "lang-langlit"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "nexus.shutter.verify",
+     "title": "Trace the old setting, correct it, and independently check both shutters.",
+     "essential": false,
+     "visible": {
+      "objective": "nexus.shutter.discover"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "nexus.shutter.discover"
+       },
+       {
+        "flag": "nexus.shutter.old",
+        "eq": true
+       },
+       {
+        "flag": "nexus.shutter.quiet",
+        "eq": true
+       },
+       {
+        "flag": "nexus.shutter.low",
+        "eq": true
+       }
+      ]
+     },
+     "onComplete": [
+      {
+       "giveItem": "item.nexus.shutter-pin"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "evidence",
+       "justification",
+       "explanation",
+       "objectivity"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "atl": [
+       "thinking",
+       "self-management"
+      ],
+      "aoks": [
+       "NAT",
+       "TEC"
+      ],
+      "subjects": [
+       "physics",
+       "design-tech"
+      ],
+      "minutes": 6,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "nexus.shutter.serve",
+     "title": "Fit the pin at the hall desk and get both civilian receipts.",
+     "essential": false,
+     "visible": {
+      "objective": "nexus.shutter.verify"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "nexus.shutter.verify"
+       },
+       {
+        "any": [
+         {
+          "all": [
+           {
+            "flag": "nexus.shutter.layout",
+            "eq": "low"
+           },
+           {
+            "flag": "nexus.shutter.cargo",
+            "eq": "low"
+           },
+           {
+            "flag": "nexus.shutter.reader",
+            "eq": "low"
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "nexus.shutter.layout",
+            "eq": "quiet"
+           },
+           {
+            "flag": "nexus.shutter.cargo",
+            "eq": "quiet"
+           },
+           {
+            "flag": "nexus.shutter.reader",
+            "eq": "quiet"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     "onComplete": [
+      {
+       "journal": "j.nexus.shutter.serve"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "values",
+       "perspective",
+       "power",
+       "responsibility",
+       "truth"
+      ],
+      "framework": [
+       "perspectives",
+       "scope",
+       "ethics"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "POL",
+       "LAN",
+       "TEC"
+      ],
+      "subjects": [
+       "global-politics",
+       "design-tech",
+       "lang-langlit"
+      ],
+      "minutes": 5,
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "characters": [
+  {
+   "id": "shutter-ilin",
+   "name": "Ilin Wold",
+   "role": "Caretaker of the shutter room",
+   "sprite": "villager-2",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "objective": "nexus.shutter.verify"
+     },
+     "node": "nexus.shutter.ilin.done"
+    },
+    {
+     "node": "nexus.shutter.ilin"
+    }
+   ]
+  },
+  {
+   "id": "shutter-tavin",
+   "name": "Tavin Reedhook",
+   "role": "Arrivals tray carrier",
+   "sprite": "villager-1",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "nexus.shutter.layout",
+      "eq": "low"
+     },
+     "node": "nexus.shutter.tavin.low"
+    },
+    {
+     "if": {
+      "flag": "nexus.shutter.layout",
+      "eq": "quiet"
+     },
+     "node": "nexus.shutter.tavin.quiet"
+    },
+    {
+     "node": "nexus.shutter.tavin.before"
+    }
+   ]
+  },
+  {
+   "id": "shutter-merra",
+   "name": "Merra Sedge",
+   "role": "Reader and letter copier",
+   "sprite": "villager-2",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "nexus.shutter.layout",
+      "eq": "low"
+     },
+     "node": "nexus.shutter.merra.low"
+    },
+    {
+     "if": {
+      "flag": "nexus.shutter.layout",
+      "eq": "quiet"
+     },
+     "node": "nexus.shutter.merra.quiet"
+    },
+    {
+     "node": "nexus.shutter.merra.before"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "nexus.shutter.recess",
+   "speaker": "narrator",
+   "text": "A shallow recess interrupts the straight stone joints. The bench sketch calls this section a solid wall. A line of wear runs to the next upright. There is space for a hinge below the mark.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Follow the wear line and mark the recess.",
+     "next": "nexus.shutter.recess.kept",
+     "if": {
+      "not": {
+       "flag": "nexus.shutter.recess",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.shutter.recess",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the bench sketch where it is."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "nexus.shutter.recess.kept",
+   "speaker": "narrator",
+   "text": "The recess alone could hold an old shelf. Follow the second mark beside the upright and check what lies behind it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.shutter.draft",
+   "speaker": "narrator",
+   "text": "A thin thread tied to the upright leans into the seam. The old mark and the moving thread meet at a short panel. Its handle lies under a loose wood cover.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Lift the cover and open the service hatch.",
+     "next": "nexus.shutter.draft.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.shutter.recess",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "nexus.shutter.found",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.shutter.found",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the cover in place."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "nexus.shutter.draft.kept",
+   "speaker": "narrator",
+   "text": "The hatch swings towards a narrow room. Its stairs have a clear way back to the hall.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.shutter.ilin",
+   "speaker": "shutter-ilin",
+   "text": "I used to hang one notice for both shutters. A beam stopped at the baffle and I read the bright edge as a sign that the whole room was ready. Two people waited for a reading that never came. My guide keeps that first setting. Change a mirror and see where the path ends.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.shutter.ilin.done",
+   "speaker": "shutter-ilin",
+   "text": "The pin has two narrow cuts now, one for each checked shutter. The little board is still here if you want to try any of the settings again. Last time I threw the failed path away. Leave that one in the guide.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.shutter.guide",
+   "speaker": "narrator",
+   "text": "First, trace Ilin’s old setting and find the baffle it hits. Second, turn the joining mirror to choose an upper or a lower turn. Third, turn that turn’s own mirror and test again. Walk to the shutter the beam reaches. Fourth, check the other shutter in the same way, then take the pin to the hall desk. Resetting the board keeps your two separate checks.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.shutter.quiet.check",
+   "speaker": "narrator",
+   "text": "A thin beam lies across the upper shutter’s brass line. The white border is still in shade. This shutter opens to a sitting reader’s panel high enough to keep nearby trays out of the way.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep the upper shutter’s checked mark.",
+     "next": "nexus.shutter.quiet.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.shutter.active",
+        "eq": "quiet"
+       },
+       {
+        "not": {
+         "flag": "nexus.shutter.quiet",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.shutter.quiet",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the marker in its slot."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "nexus.shutter.quiet.kept",
+   "speaker": "narrator",
+   "text": "You keep the upper mark with its own direction. The lower chamber needs its own test.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.shutter.low.check",
+   "speaker": "narrator",
+   "text": "Light runs through the lower slot and catches the broad line on the tray rest. The top seat’s little window stays dark. Here a carrier can set their load down before they turn.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep the lower shutter’s checked mark.",
+     "next": "nexus.shutter.low.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.shutter.active",
+        "eq": "low"
+       },
+       {
+        "not": {
+         "flag": "nexus.shutter.low",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.shutter.low",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the marker in its slot."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "nexus.shutter.low.kept",
+   "speaker": "narrator",
+   "text": "You keep the lower mark with its own direction. The upper shutter has a separate mark.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.shutter.fit",
+   "speaker": "narrator",
+   "text": "The hall has one fitting for the pin. Set it low, and the arrivals rail can give a carrier a place to rest a tray. Set it higher, and the screened seat stays quiet long enough for readers to follow a full slip. The ordinary hall paths stay open. Hear from both groups about the current fitting before moving the pin again.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Fit the pin to open the low tray rest.",
+     "next": "nexus.shutter.fit.low",
+     "if": {
+      "all": [
+       {
+        "item": "item.nexus.shutter-pin"
+       },
+       {
+        "not": {
+         "flag": "nexus.shutter.layout",
+         "eq": "low"
+        }
+       },
+       {
+        "any": [
+         {
+          "not": {
+           "flagSet": "nexus.shutter.layout"
+          }
+         },
+         {
+          "all": [
+           { "flag": "nexus.shutter.layout", "eq": "quiet" },
+           { "flag": "nexus.shutter.cargo", "eq": "quiet" },
+           { "flag": "nexus.shutter.reader", "eq": "quiet" }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.shutter.layout",
+       "value": "low"
+      }
+     ]
+    },
+    {
+     "text": "Fit the pin to open the screened reading seat.",
+     "next": "nexus.shutter.fit.quiet",
+     "if": {
+      "all": [
+       {
+        "item": "item.nexus.shutter-pin"
+       },
+       {
+        "not": {
+         "flag": "nexus.shutter.layout",
+         "eq": "quiet"
+        }
+       },
+       {
+        "any": [
+         {
+          "not": {
+           "flagSet": "nexus.shutter.layout"
+          }
+         },
+         {
+          "all": [
+           { "flag": "nexus.shutter.layout", "eq": "low" },
+           { "flag": "nexus.shutter.cargo", "eq": "low" },
+           { "flag": "nexus.shutter.reader", "eq": "low" }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.shutter.layout",
+       "value": "quiet"
+      }
+     ]
+    },
+    {
+     "text": "Leave the pin in its present place."
+    }
+   ]
+  },
+  {
+   "id": "nexus.shutter.fit.low",
+   "speaker": "narrator",
+   "text": "The tray rest slides level at the west end. A short notice points readers to the ordinary table. Ask Tavin at the west post and Merra by the east bench what they can use.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.shutter.fit.quiet",
+   "speaker": "narrator",
+   "text": "The eastern seat slides under its screen. A notice keeps the ordinary route clear for a carrier. Ask Merra by the east bench and Tavin at the west post what they can use.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.shutter.tavin.before",
+   "speaker": "shutter-tavin",
+   "text": "I can carry the first tray. The second is my sister’s, and I said I would leave her a route that lets her set it down. I used to lean both trays against the quiet seat. Merra told me where that put the noise.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Check the old chamber and keep both ways in view."
+    }
+   ]
+  },
+  {
+   "id": "nexus.shutter.tavin.low",
+   "speaker": "shutter-tavin",
+   "text": "I can set the tray at the west rest, turn, and get both hands under it again. I put a cloth there for my sister’s tray. The voices at the ordinary table still carry across the turn.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep Tavin’s receipt from the low rest.",
+     "next": "nexus.shutter.tavin.low.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.shutter.layout",
+        "eq": "low"
+       },
+       {
+        "not": {
+         "flag": "nexus.shutter.cargo",
+         "eq": "low"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.shutter.cargo",
+       "value": "low"
+      }
+     ]
+    },
+    {
+     "text": "Give Tavin time to use the rest."
+    }
+   ]
+  },
+  {
+   "id": "nexus.shutter.tavin.low.kept",
+   "speaker": "narrator",
+   "text": "Tavin has signed for the tray space. The reader’s receipt has its own place.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.shutter.tavin.quiet",
+   "speaker": "shutter-tavin",
+   "text": "I brought the tray round by the ordinary route. It took a longer turn, so I asked my sister to come at the next bell. I used to take this offer as a refusal. The lane and the reason are on the same slip this time.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep Tavin’s receipt from the ordinary route.",
+     "next": "nexus.shutter.tavin.quiet.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.shutter.layout",
+        "eq": "quiet"
+       },
+       {
+        "not": {
+         "flag": "nexus.shutter.cargo",
+         "eq": "quiet"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.shutter.cargo",
+       "value": "quiet"
+      }
+     ]
+    },
+    {
+     "text": "Give Tavin time for the longer turn."
+    }
+   ]
+  },
+  {
+   "id": "nexus.shutter.tavin.quiet.kept",
+   "speaker": "narrator",
+   "text": "Tavin records the extra turn while the screened seat stays open.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.shutter.merra.before",
+   "speaker": "shutter-merra",
+   "text": "I copy slowly when someone shouts above the seat. Once I hurried a name and sent a letter to the wrong bowl of keys. I can still use the ordinary table. Give me an honest direction before I choose.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep both ways open to a reply."
+    }
+   ]
+  },
+  {
+   "id": "nexus.shutter.merra.low",
+   "speaker": "shutter-merra",
+   "text": "I took my papers to the ordinary table and waited for the trays to pass. The carrier can set them down now. If we keep the rest here, leave my request for a quieter hour beside it.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep Merra’s request for a quieter hour.",
+     "next": "nexus.shutter.merra.low.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.shutter.layout",
+        "eq": "low"
+       },
+       {
+        "not": {
+         "flag": "nexus.shutter.reader",
+         "eq": "low"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.shutter.reader",
+       "value": "low"
+      }
+     ]
+    },
+    {
+     "text": "Let Merra finish the next line."
+    }
+   ]
+  },
+  {
+   "id": "nexus.shutter.merra.low.kept",
+   "speaker": "narrator",
+   "text": "The quiet-hour request remains beside the record of the open rest.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nexus.shutter.merra.quiet",
+   "speaker": "shutter-merra",
+   "text": "I can open both pages here and listen to the next name without asking twice. My neighbour can join me at the next reading. Tavin took his tray round the long way. I added his next-bell request to our stand.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep Merra’s receipt from the screened seat.",
+     "next": "nexus.shutter.merra.quiet.kept",
+     "if": {
+      "all": [
+       {
+        "flag": "nexus.shutter.layout",
+        "eq": "quiet"
+       },
+       {
+        "not": {
+         "flag": "nexus.shutter.reader",
+         "eq": "quiet"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nexus.shutter.reader",
+       "value": "quiet"
+      }
+     ]
+    },
+    {
+     "text": "Wait for the second reader."
+    }
+   ]
+  },
+  {
+   "id": "nexus.shutter.merra.quiet.kept",
+   "speaker": "narrator",
+   "text": "The next reader has a place. The carrier’s wait stays on the same plan.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "items": [
+  {
+   "id": "item.nexus.shutter-pin",
+   "name": "Shutter fitting pin",
+   "historicalLabel": "fictional-world",
+   "description": "Ilin’s spare pin. Its two marks lead to the two separately checked shutters. Use it at the Nexus arrivals desk.",
+   "art": "plumb-mark"
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.nexus.shutter.discover.1",
+   "objective": "nexus.shutter.discover",
+   "depth": 1,
+   "text": "Look around the west arrival bench for a place the floor sketch calls solid."
+  },
+  {
+   "id": "h.nexus.shutter.discover.2",
+   "objective": "nexus.shutter.discover",
+   "depth": 2,
+   "text": "The recess interrupts several joints, and an old mark runs to the next upright."
+  },
+  {
+   "id": "h.nexus.shutter.discover.3",
+   "objective": "nexus.shutter.discover",
+   "depth": 3,
+   "text": "A recess may be an old shelf. The thread at the next upright gives a separate check."
+  },
+  {
+   "id": "h.nexus.shutter.discover.4",
+   "objective": "nexus.shutter.discover",
+   "depth": 4,
+   "text": "Check the marked upright, lift the wood cover, and use the hatch that appears."
+  },
+  {
+   "id": "h.nexus.shutter.verify.1",
+   "objective": "nexus.shutter.verify",
+   "depth": 1,
+   "text": "The paper guide is inside the hatch. Keep the two shutters separately marked."
+  },
+  {
+   "id": "h.nexus.shutter.verify.2",
+   "objective": "nexus.shutter.verify",
+   "depth": 2,
+   "text": "Trace Ilin’s old setting. At the first mirror, one tilt turns the beam up and the other turns it down."
+  },
+  {
+   "id": "h.nexus.shutter.verify.3",
+   "objective": "nexus.shutter.verify",
+   "depth": 3,
+   "text": "For the upper slot, turn the high mirror so the trace travels right. For the lower slot, route the trace left."
+  },
+  {
+   "id": "h.nexus.shutter.verify.4",
+   "objective": "nexus.shutter.verify",
+   "depth": 4,
+   "text": "After each correct trace, walk to the lit shutter and keep its physical mark. Both checks earn the fitting pin."
+  },
+  {
+   "id": "h.nexus.shutter.serve.1",
+   "objective": "nexus.shutter.serve",
+   "depth": 1,
+   "text": "Use the fitting desk by the east arrival bench after checking both shutters."
+  },
+  {
+   "id": "h.nexus.shutter.serve.2",
+   "objective": "nexus.shutter.serve",
+   "depth": 2,
+   "text": "Think about what a carrier needs and what a seated reader can use. The available pin fits either place."
+  },
+  {
+   "id": "h.nexus.shutter.serve.3",
+   "objective": "nexus.shutter.serve",
+   "depth": 3,
+   "text": "Hear Tavin by the west bench and Merra by the eastern bench after fitting the pin."
+  },
+  {
+   "id": "h.nexus.shutter.serve.4",
+   "objective": "nexus.shutter.serve",
+   "depth": 4,
+   "text": "Collect both receipts for one setting. You can still move the pin and see what changes."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.nexus.shutter.serve",
+   "text": "I traced a stalled light, checked the two shutters separately, and heard from the people who used my arrangement. The other request has a place too.",
+   "claimKind": "simulation"
+  }
+ ]
+}

@@ -1,0 +1,1288 @@
+[
+  {
+    "number": 801,
+    "name": "Make one short note with two ways back to its sources",
+    "uses": [
+      {
+        "objective": "linked.study.bound",
+        "action": "Lift the dated issue slip and the separate press-work trace. Clip both into one field note under R-7 so each route back to its source stays available.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "writing",
+          "physical"
+        ],
+        "game": 169,
+        "story": 73
+      },
+      {
+        "objective": "linked.voices.indexed",
+        "action": "Look up R-7 by issue date and by room and job. Walk to both records and join the new location to the earlier signed issue without replacing its date.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "spatial",
+          "analytical"
+        ],
+        "game": 169,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 805,
+    "name": "Keep approved words distinct from a guide’s summary",
+    "uses": [
+      {
+        "objective": "voices.compare",
+        "action": "Compare the paired guide with the short public copy. Keep the carrier’s permitted words with their source and date while paraphrasing the directions on the separate line.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "linguistic",
+          "analytical"
+        ],
+        "game": 179,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 813,
+    "name": "Work out what an operating convention is for",
+    "uses": [
+      {
+        "objective": "market.terms",
+        "action": "Try the two meanings of good fibre against the wick guide and the stall’s grade. Ask Dagny why length helps the wick maker and even shade helps the seller.",
+        "styles": [
+          "strategist",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "social"
+        ],
+        "game": 191,
+        "story": 72
+      },
+      {
+        "objective": "island.signal.checked",
+        "action": "Compare the raised square, the open swing rail and the crew’s call. Find why a raised square means wait for the ramp hand even when the rail is open.",
+        "styles": [
+          "explorer",
+          "companion"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "social"
+        ],
+        "game": 175,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 819,
+    "name": "Bring different accounts to the same points of comparison",
+    "uses": [
+      {
+        "objective": "preserved.handoff.scope",
+        "action": "Sort the old acknowledgments and current receiving roster onto separate trays. Compare whose name each carries, who can check it and what permission it establishes.",
+        "styles": [
+          "helper",
+          "collector"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 193,
+        "story": 74
+      },
+      {
+        "objective": "metal.tag.compared",
+        "action": "Run both possible tag changes. Hold the trip note and shop keys beside each result so the date, movement and key can be compared on the same terms.",
+        "styles": [
+          "strategist",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 169,
+        "story": 69
+      }
+    ]
+  },
+  {
+    "number": 840,
+    "name": "Make a public service answer to people outside its queue",
+    "uses": [
+      {
+        "objective": "parcel.o.finish",
+        "action": "Carry objections from the rail and the path to Civic Dispatch. Test what its first issue gets to Water Commons, then record the bridge and landing handover under the procedure the crew can use.",
+        "styles": [
+          "helper",
+          "companion"
+        ],
+        "modes": [
+          "spatial",
+          "social",
+          "analytical"
+        ],
+        "game": 231,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 850,
+    "name": "Check a central register against what workers found at the stops",
+    "uses": [
+      {
+        "objective": "civic.compare",
+        "action": "Run an unchanged dispatch rule using the desk count and then the deduplicated walking reports. Inspect which stop appears busier under each collection route before choosing an allocation.",
+        "styles": [
+          "strategist",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 184,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 857,
+    "name": "Find an argument inside the rules of a working model",
+    "uses": [
+      {
+        "objective": "civic.incentive.audit",
+        "action": "Take Lin’s two target rules through the same shipment. Read each actual receiving point and see what actions each rule brings forward, including a count of departures before any crew has a matched kit.",
+        "styles": [
+          "strategist",
+          "challenger"
+        ],
+        "modes": [
+          "spatial",
+          "reading",
+          "analytical"
+        ],
+        "game": 250,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 864,
+    "name": "Name the outcome that makes a comparison useful",
+    "uses": [
+      {
+        "objective": "market.finish",
+        "action": "Bring the buyer’s purse to Dagny. Give the revised offer separate lines for affordable whole lots and net fibre per credit, then use each measure for the question it answers.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "social"
+        ],
+        "game": 191,
+        "story": 72
+      },
+      {
+        "objective": "island.finish",
+        "action": "Compare the changed ferry estimate with another route. Choose a delivery sheet after considering use of the lower ramp, travel time and how often the loads cross the marked edge.",
+        "styles": [
+          "strategist",
+          "explorer"
+        ],
+        "modes": [
+          "spatial",
+          "analytical"
+        ],
+        "game": 195,
+        "story": 138
+      }
+    ]
+  },
+  {
+    "number": 866,
+    "name": "Separate what a source did from what its carriers and readers do",
+    "uses": [
+      {
+        "objective": "copies.trace",
+        "action": "Read the route book to distinguish where the trial result was logged, how the printer and runner relayed it, and what the two audiences actually received.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "reading",
+          "spatial",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 72
+      },
+      {
+        "objective": "council.team.trial",
+        "action": "Have Hesper clip the evidence, Sefa relay the call and Kip check what arrived. Compare the message with the separately held docket before it reaches the hearing.",
+        "styles": [
+          "companion",
+          "helper"
+        ],
+        "modes": [
+          "social",
+          "physical",
+          "analytical"
+        ],
+        "game": 59,
+        "story": 39
+      }
+    ]
+  },
+  {
+    "number": 867,
+    "name": "Check gains and losses for the people who use a decision",
+    "uses": [
+      {
+        "objective": "water.finish",
+        "action": "After checking both branches with the repaired gate, leave an allocation and its next check for the crews. The new notice and crew responses show who can start and who still has to wait.",
+        "styles": [
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "reflective"
+        ],
+        "game": 185,
+        "story": 11
+      },
+      {
+        "objective": "civic.incentive.keep",
+        "action": "Keep either of the two targets after physically matching the same parts under both. Read the receiver’s tally where the selected rule leaves it, with the earlier part delivery and later working kit distinguished.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "spatial",
+          "analytical"
+        ],
+        "game": 212,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 868,
+    "name": "Separate what can be established from what may be shared",
+    "uses": [
+      {
+        "objective": "voices.publish",
+        "action": "Keep the limits of the public opening register and the trial recollection in their own dated lines, then publish only the excerpt the carrier allowed.",
+        "styles": [
+          "helper",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "linguistic",
+          "reflective"
+        ],
+        "game": 274,
+        "story": 95
+      },
+      {
+        "objective": "preserved.handoff.respond",
+        "action": "Check where a name appears in earlier records and who may handle the later request. Choose public access to a source or a staffed check without exposing the controlled information.",
+        "styles": [
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "reading",
+          "social",
+          "reflective"
+        ],
+        "game": 274,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 869,
+    "name": "Read an older record with the conditions it once described",
+    "uses": [
+      {
+        "objective": "shelf.room.compare",
+        "action": "Walk the present loan annex and the earlier reconstruction. Use the hinge and the broken plan at different stops and keep the reconstruction’s openings separate from the current room.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "physical",
+          "analytical"
+        ],
+        "game": 14,
+        "story": 68
+      }
+    ]
+  },
+  {
+    "number": 871,
+    "name": "Make a conclusion survive a check with a different source or method",
+    "uses": [
+      {
+        "objective": "council.compare",
+        "action": "Compare the displayed time with an independent reference and advance the three watches. Determine which initial agreements survive another reading.",
+        "styles": [
+          "challenger",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 195,
+        "story": 142
+      },
+      {
+        "objective": "metal.finish",
+        "action": "Keep the intake and repair records beside the zeroed weight tests. Use the later transfer docket to establish the shared trip while leaving a common maker unverified.",
+        "styles": [
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "physical",
+          "reading",
+          "analytical"
+        ],
+        "game": 191,
+        "story": 69
+      }
+    ]
+  },
+  {
+    "number": 873,
+    "name": "Give makers and readers separate responsibilities for a claim",
+    "uses": [
+      {
+        "objective": "stage.finish",
+        "action": "Compare the blocking plan with the side seat and the audience reply. Keep both the director’s intended cue and the limits of a viewer’s reading visible in the programme.",
+        "styles": [
+          "performer",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "social"
+        ],
+        "game": 178,
+        "story": 106
+      },
+      {
+        "objective": "copies.revise",
+        "action": "Find the reader who treated the trial claim as an entry rule. Check that inference with Mina and give the public copy separate lines for trial circumstances and admission.",
+        "styles": [
+          "helper",
+          "challenger"
+        ],
+        "modes": [
+          "reading",
+          "linguistic",
+          "social"
+        ],
+        "game": 179,
+        "story": 72
+      },
+      {
+        "objective": "ferry.pack.jar-basket.posted",
+        "action": "Handle a claim on the outside and inside of the same stand-in. Choose the first rail or the dry table, then check what the keeper must read or hold before issuing the receipt.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "reading"
+        ],
+        "game": 212,
+        "story": 55
+      }
+    ]
+  },
+  {
+    "number": 874,
+    "name": "Carry a useful checking method into a context with different limits",
+    "uses": [
+      {
+        "objective": "film.coast.received",
+        "action": "Use the editing-room distinction between an earlier still and an unfolding scene at the harbour. Walk to the current marker and place the dated still with the present direction for its own audience.",
+        "styles": [
+          "performer",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "reflective"
+        ],
+        "game": 189,
+        "story": 74
+      },
+      {
+        "objective": "stage.transfer.copy",
+        "action": "Use the performance case’s distinction between what a person sees and what a rule says at the lending hall. Read the signed register before placing an admission copy or a returns explanation.",
+        "styles": [
+          "performer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "linguistic",
+          "social"
+        ],
+        "game": 179,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 889,
+    "name": "Ground a displayed object in a particular recorded history",
+    "uses": [
+      {
+        "objective": "preserved.binak.finish",
+        "action": "Keep Mikaela’s name and the two differently purposed catalogue dates visible while mounting the practice view. Use each catalogue field for the claim it can support.",
+        "styles": [
+          "collector",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "analytical"
+        ],
+        "game": 223,
+        "story": 54
+      },
+      {
+        "objective": "nile.exhibit.mounted",
+        "action": "Read the two historical records and the visitors’ requests before placing a mount. Preserve the object’s own record when choosing who can approach it first.",
+        "styles": [
+          "collector",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "spatial",
+          "social"
+        ],
+        "game": 223,
+        "story": 95
+      },
+      {
+        "objective": "m01.o6.label",
+        "action": "Build an object label from the dated patent, working model and pen evidence. In the label stand, place the selected source and its date with the precise kind of first it supports.",
+        "styles": [
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "reading",
+          "writing",
+          "linguistic"
+        ],
+        "game": 179,
+        "story": 54
+      },
+      {
+        "objective": "ferry.pack.gourd-basket.posted",
+        "action": "Open the Edo gourd basket’s exact collection entry and its qualified Ogata Kōrin attribution. Use a separate stand-in to trial two tag positions, then take the recipient’s recorded reply.",
+        "styles": [
+          "collector",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "physical"
+        ],
+        "game": 223,
+        "story": 55
+      }
+    ]
+  },
+  {
+    "number": 891,
+    "name": "Give an exhibit a job only its evidence can do",
+    "uses": [
+      {
+        "objective": "gallery.o.route",
+        "action": "Place the royal and Chinchorro panels along a visitor’s route. Keep a named chain of custody available for one inquiry and the map and context comparison available for the other.",
+        "styles": [
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "analytical"
+        ],
+        "game": 223,
+        "story": 95
+      },
+      {
+        "objective": "nile.exhibit.used",
+        "action": "Lift the board and fit the frame to the break. Let one visitor see where a reading stops and another use the distinct evidence for their object.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "spatial"
+        ],
+        "game": 223,
+        "story": 54
+      }
+    ]
+  },
+  {
+    "number": 892,
+    "name": "Show what a missing control would let someone conclude",
+    "uses": [
+      {
+        "objective": "water.retest",
+        "action": "Repeat the same allocation after the seal changes. Compare it with the earlier leak, then try a second repaired setting so the repair effect and a changed split can be told apart.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "visual",
+          "analytical"
+        ],
+        "game": 185,
+        "story": 45
+      },
+      {
+        "objective": "council.compare",
+        "action": "Hold the first reading fixed across a stopped and a working watch. Compare what would have been concluded from a glance with what the next minute lets the keeper establish.",
+        "styles": [
+          "challenger",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 195,
+        "story": 142
+      }
+    ]
+  },
+  {
+    "number": 903,
+    "name": "Catch bright marks hitting the same detector stop",
+    "uses": [
+      {
+        "objective": "coast.detector.compared",
+        "action": "Sweep the same four practice lights on both ranges. At amplified range the two lamps hit the same top stop. The wide range gives two separate readings for them.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 206,
+        "story": 68
+      }
+    ]
+  },
+  {
+    "number": 910,
+    "name": "Identify which observations the collection method misses",
+    "uses": [
+      {
+        "objective": "civic.compare",
+        "action": "Compare desk forms gathered at work hours with the deduplicated walking reports. Look at how each collection route changes which district the dispatch rule sees.",
+        "styles": [
+          "strategist",
+          "challenger"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "analytical"
+        ],
+        "game": 184,
+        "story": 72
+      },
+      {
+        "objective": "forest.recheck",
+        "action": "Repeat the watches at the creek and ridge. Record the part of the creek watch hidden by the reeds before comparing its crossing count with the clearer view.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "nature",
+          "visual",
+          "physical"
+        ],
+        "game": 252,
+        "story": 45
+      }
+    ]
+  },
+  {
+    "number": 914,
+    "name": "See what a threshold leaves out of a one-ink copy",
+    "uses": [
+      {
+        "objective": "imprint.ruby-wristlet.mounted-proof",
+        "action": "Pull two impressions from the same accession image with different ink thresholds. Inspect which tonal regions become ink marks, then carry one checked proof to its receiver.",
+        "styles": [
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 68
+      }
+    ]
+  },
+  {
+    "number": 915,
+    "name": "Recover differences that disappear at both ends of a test",
+    "uses": [
+      {
+        "objective": "coast.detector.compared",
+        "action": "Compare the two detector strips. The wide strip groups the rim cord and lower step at its bottom stop. The amplified strip separates them and groups the two lamps at its top stop.",
+        "styles": [
+          "maker",
+          "challenger"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 238,
+        "story": 68
+      }
+    ]
+  },
+  {
+    "number": 916,
+    "name": "Use a trace with minimal disturbance to what it records",
+    "uses": [
+      {
+        "objective": "forest.moss.survey",
+        "action": "Check the green squares in place and borrow the crew’s tally of boots. Compare the edge and off-path pegs without clearing the moss or manufacturing new traffic through the plots.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "nature",
+          "spatial",
+          "physical"
+        ],
+        "game": 252,
+        "story": 45
+      }
+    ]
+  },
+  {
+    "number": 919,
+    "name": "Keep a shared measurement tied to its local reference",
+    "uses": [
+      {
+        "objective": "scope.astrolabe.mounted",
+        "action": "Hold the arm at one sky mark and try both place plates. Send a reading with its reference and give the receiver the context needed to use the result.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "analytical"
+        ],
+        "game": 206,
+        "story": 97
+      },
+      {
+        "objective": "nile.opening-pins.compare",
+        "action": "Use the same fixed pins and stop to compare the two circle positions. Keep the tested alignment tied to this rack and check whether each copy seats.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "spatial",
+          "analytical"
+        ],
+        "game": 206,
+        "story": 55
+      }
+    ]
+  },
+  {
+    "number": 920,
+    "name": "Check the work behind a convincing total",
+    "uses": [
+      {
+        "objective": "civic.incentive.audit",
+        "action": "Compare the marks posted for departures with the matched hooks and feet at Ivo’s table. Count the same four parts and test whether the public total tells the rail and bench crews what they can start.",
+        "styles": [
+          "challenger",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "physical"
+        ],
+        "game": 212,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 921,
+    "name": "Follow a statement until its meaning changes in transmission",
+    "uses": [
+      {
+        "objective": "copies.compare",
+        "action": "Align the archive original with the press proof and landing copy. Locate the stage that lost the trial time and the separate stage that lost its author before tracing the public correction.",
+        "styles": [
+          "collector",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "linguistic"
+        ],
+        "game": 179,
+        "story": 54
+      }
+    ]
+  },
+  {
+    "number": 925,
+    "name": "Read a later recollection alongside a contemporary entry",
+    "uses": [
+      {
+        "objective": "voices.verify",
+        "action": "Separate the carrier’s recollection of the trial walk from the signed public opening. Keep which event each source describes and when the opening was logged on separate lines.",
+        "styles": [
+          "collector",
+          "challenger"
+        ],
+        "modes": [
+          "reading",
+          "linguistic",
+          "analytical"
+        ],
+        "game": 173,
+        "story": 93
+      }
+    ]
+  },
+  {
+    "number": 927,
+    "name": "Count independent origins as corroboration",
+    "uses": [
+      {
+        "objective": "water.counter.compare",
+        "action": "Clip each messenger to its origin and replay both orders. Retain the lower crew’s independent check while treating Omi’s original and forwarded copy as one source.",
+        "styles": [
+          "strategist",
+          "collector"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 193,
+        "story": 137
+      },
+      {
+        "objective": "council.team.trial",
+        "action": "Compare the spoken call carried by your team with a separate signed docket. Keep their independent lines available when the hearing asks for the check.",
+        "styles": [
+          "companion",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "social",
+          "analytical"
+        ],
+        "game": 158,
+        "story": 39
+      }
+    ]
+  },
+  {
+    "number": 930,
+    "name": "Keep the historical layers visible while restoring a readable object",
+    "uses": [
+      {
+        "objective": "res.o1.plaque",
+        "action": "Peel back the test layers to inspect what belongs to the founder’s plaque, then choose a restoration policy for the public face with the earlier material accounted for.",
+        "styles": [
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "reflective"
+        ],
+        "game": 179,
+        "story": 54
+      }
+    ]
+  },
+  {
+    "number": 935,
+    "name": "Give a mistaken inference a concrete replacement explanation",
+    "uses": [
+      {
+        "objective": "copies.revise",
+        "action": "Follow the corrected trial copy to a reader who still thinks returns slips control entry. Give the reader an entry line and a separate explanation of what returns slips actually do.",
+        "styles": [
+          "helper",
+          "challenger"
+        ],
+        "modes": [
+          "reading",
+          "linguistic",
+          "social"
+        ],
+        "game": 179,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 938,
+    "name": "Track the parts of a record made by different contributors",
+    "uses": [
+      {
+        "objective": "preserved.proof.hung",
+        "action": "Compare the excavation journal, later written note and workforce record. On the names route, use the source that identifies workers before placing a public lead.",
+        "styles": [
+          "collector",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "linguistic",
+          "social"
+        ],
+        "game": 223,
+        "story": 54
+      },
+      {
+        "objective": "forest.gombe-credit",
+        "action": "Compare the timeline for Goodall’s early Gombe observation with the later team account. Give Baraka Daniel’s distinct field-sheet contribution its own place.",
+        "styles": [
+          "collector",
+          "companion"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "social"
+        ],
+        "game": 193,
+        "story": 137
+      }
+    ]
+  },
+  {
+    "number": 945,
+    "name": "Find a record of the workers behind an official event",
+    "uses": [
+      {
+        "objective": "nile.closing.post",
+        "action": "Follow the stopped work, the issue of grain and the later stoppage on separate slips. Leave an exit note that gives the workers’ continuing account space beside the payment.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "reading",
+          "spatial",
+          "reflective"
+        ],
+        "game": 169,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 947,
+    "name": "Judge an artistic reading against the work and the viewing position",
+    "uses": [
+      {
+        "objective": "stage.finish",
+        "action": "Run both cue orders with the same lines and crate movement, check what the side seat can see, and qualify the program after a viewer explains their reading.",
+        "styles": [
+          "performer",
+          "challenger"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "reflective"
+        ],
+        "game": 190,
+        "story": 106
+      }
+    ]
+  },
+  {
+    "number": 948,
+    "name": "Check a sensory effect against an independent cue",
+    "uses": [
+      {
+        "objective": "coast.optics.compare",
+        "action": "Fix the pointer, then move the lamp between the two sockets. Compare which shadow changes and which mark on the object stays put.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 188,
+        "story": 45
+      },
+      {
+        "objective": "bells.o1.check",
+        "action": "Ring the bell sequence and follow the seeming climb. Use Maren’s tuning glass to compare pitches after the full turn and keep both the listening effect and the measured result.",
+        "styles": [
+          "performer",
+          "challenger"
+        ],
+        "modes": [
+          "auditory",
+          "visual",
+          "analytical"
+        ],
+        "game": 190,
+        "story": 91
+      }
+    ]
+  },
+  {
+    "number": 952,
+    "name": "Explain how an honest record can still have a systematic blind spot",
+    "uses": [
+      {
+        "objective": "forest.recheck",
+        "action": "Repeat the creek and ridge watches. Compare the reports while noting how blocked sight limits a count without judging a tired field worker’s intentions.",
+        "styles": [
+          "explorer",
+          "companion"
+        ],
+        "modes": [
+          "nature",
+          "visual",
+          "analytical"
+        ],
+        "game": 252,
+        "story": 45
+      },
+      {
+        "objective": "civic.finish",
+        "action": "Use both request tallies and hear the reader who works after the desk closes. Keep the real counts and mark which hours and stops the collection method missed.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "social",
+          "reflective"
+        ],
+        "game": 184,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 956,
+    "name": "Read a living nation’s own current record beside older accounts",
+    "uses": [
+      {
+        "objective": "record.edge.civic.compare",
+        "action": "Fit the folio to the nineteenth-century Wea agreement and a present-day constitution. Keep the separate dates and file the constitution under the name the issuing government gives it.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "linguistic",
+          "analytical"
+        ],
+        "game": 274,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 958,
+    "name": "Find a policy choice inside an allocation rule",
+    "uses": [
+      {
+        "objective": "civic.rules",
+        "action": "Keep the joined register fixed while testing two allocation rules. Compare who gets one of four windows under each rule and what an equal share or starting reserve assumes about fairness.",
+        "styles": [
+          "strategist",
+          "challenger"
+        ],
+        "modes": [
+          "visual",
+          "analytical",
+          "social"
+        ],
+        "game": 184,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 969,
+    "name": "Give specialists their own check and put the checks back together",
+    "uses": [
+      {
+        "objective": "council.team.trial",
+        "action": "Give Hesper the packet, Sefa the call, Kip the listening point and Rook the separate docket. Carry each part to the next bench and compare the results at the last check.",
+        "styles": [
+          "companion",
+          "helper"
+        ],
+        "modes": [
+          "physical",
+          "social",
+          "analytical"
+        ],
+        "game": 59,
+        "story": 137
+      }
+    ]
+  },
+  {
+    "number": 985,
+    "name": "Keep an earlier version beside the revised one",
+    "uses": [
+      {
+        "objective": "water.finish",
+        "action": "File the repaired-gate order alongside the original drought order. Keep the old source and conditions available when the new agreement heading is challenged.",
+        "styles": [
+          "strategist",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "reflective"
+        ],
+        "game": 179,
+        "story": 54
+      },
+      {
+        "objective": "island.finish",
+        "action": "Post the lower-landing estimate beside the original high-landing sheet. Give both editions their own conditions and keep the original figures in view.",
+        "styles": [
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "reflective"
+        ],
+        "game": 177,
+        "story": 69
+      },
+      {
+        "objective": "linked.voices.indexed",
+        "action": "Keep the original issue receipt under its own date. Cross-link the later shelf check under its work name and test the revised link without rewriting the loan date.",
+        "styles": [
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "reflective"
+        ],
+        "game": 179,
+        "story": 54
+      },
+      {
+        "objective": "copies.twocalls.reply",
+        "action": "File the first proof beside the revised route and the new reader receipt. Keep the dated trial available for a later reader after changing how the notice reaches people.",
+        "styles": [
+          "strategist",
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 179,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 993,
+    "name": "Check what a money figure can buy under present terms",
+    "uses": [
+      {
+        "objective": "market.basket.compare",
+        "action": "Keep the same quantity of each good in Dagny’s basket. Compare the two dated quotes with the available credit so the large number printed on the source note cannot stand in for buying power.",
+        "styles": [
+          "strategist",
+          "challenger"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 254,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 997,
+    "name": "Bring a dispute back to the assumptions people actually disagree about",
+    "uses": [
+      {
+        "objective": "m01.o5.practice",
+        "action": "In the practice Showdown use the three dates to reframe the dispute around a patent, a working pen and a pen readers could buy. Give the other speaker’s criterion a place in the account.",
+        "styles": [
+          "challenger",
+          "companion"
+        ],
+        "modes": [
+          "linguistic",
+          "social",
+          "analytical"
+        ],
+        "game": 180,
+        "story": 78
+      },
+      {
+        "objective": "market.finish",
+        "action": "Bring the buyer’s eight-credit purse to the clerk and compare whole-lot prices with unit rates. Resolve the apparent disagreement by keeping both purchasing constraints on the same offer.",
+        "styles": [
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "social"
+        ],
+        "game": 191,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 998,
+    "name": "Keep earlier work visible when a decision changes",
+    "uses": [
+      {
+        "objective": "water.retest",
+        "action": "Rerun the same relief setting after the gate repair. Compare the resulting branch readings with the earlier run before changing the public allocation.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 185,
+        "story": 112
+      },
+      {
+        "objective": "shelf.nile.finish",
+        "action": "Bring the revision peg to Marek and mark the earlier cart practice and the current receiving permission separately. Walk to the place a new plan leaves for the next carrier.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "spatial",
+          "physical",
+          "analytical"
+        ],
+        "game": 201,
+        "story": 15
+      }
+    ]
+  }
+]

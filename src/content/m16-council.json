@@ -529,6 +529,528 @@
    "speaker": "council-reader",
    "historicalLabel": "fictional-world",
    "text": "A helper parks their cart beside the spare dial and turns it through the two marks. They missed handover, so the keeper shows them which mark to compare with the rail record."
+  },
+  {
+   "id": "council.team.brief",
+   "speaker": "council-keeper",
+   "text": "We need a handover before the next open hearing. The runner can point people to the place. They also need to know when to come. Will you try a practice run with us? Hesper has the blank clips. Sefa says the rail can hear her from anywhere. Kip says we should stand somewhere and find out.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Bring Lark’s full order to Hesper’s bench.",
+     "next": "council.team.ally.copies.fold",
+     "if": {
+      "all": [
+       {
+        "objective": "council.arrival"
+       },
+       {
+        "not": {
+         "flagSet": "council.team.workflow"
+        }
+       },
+       {
+        "flag": "council.team.read.copies",
+        "eq": true
+       },
+       {
+        "flag": "copies.margin.sent",
+        "eq": "fold"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.workflow",
+       "value": "copies"
+      }
+     ]
+    },
+    {
+     "text": "Bring Lark’s clipped strips to Hesper’s bench.",
+     "next": "council.team.ally.copies.pair",
+     "if": {
+      "all": [
+       {
+        "objective": "council.arrival"
+       },
+       {
+        "not": {
+         "flagSet": "council.team.workflow"
+        }
+       },
+       {
+        "flag": "council.team.read.copies",
+        "eq": true
+       },
+       {
+        "flag": "copies.margin.sent",
+        "eq": "pair"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.workflow",
+       "value": "copies"
+      }
+     ]
+    },
+    {
+     "text": "Bring Lark’s caller sheet to Hesper’s bench.",
+     "next": "council.team.ally.copies.wait",
+     "if": {
+      "all": [
+       {
+        "objective": "council.arrival"
+       },
+       {
+        "not": {
+         "flagSet": "council.team.workflow"
+        }
+       },
+       {
+        "flag": "council.team.read.copies",
+        "eq": true
+       },
+       {
+        "flag": "copies.margin.sent",
+        "eq": "wait"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.workflow",
+       "value": "copies"
+      }
+     ]
+    },
+    {
+     "text": "Bring Emberford’s paired stubs to Hesper’s bench.",
+     "next": "council.team.ally.repair.paired",
+     "if": {
+      "all": [
+       {
+        "objective": "council.arrival"
+       },
+       {
+        "not": {
+         "flagSet": "council.team.workflow"
+        }
+       },
+       {
+        "flag": "council.team.read.repair",
+        "eq": true
+       },
+       {
+        "flag": "repair.queue.receipt",
+        "eq": "paired"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.workflow",
+       "value": "repair"
+      }
+     ]
+    },
+    {
+     "text": "Bring Hana’s relay ticket to Hesper’s bench.",
+     "next": "council.team.ally.repair.relay",
+     "if": {
+      "all": [
+       {
+        "objective": "council.arrival"
+       },
+       {
+        "not": {
+         "flagSet": "council.team.workflow"
+        }
+       },
+       {
+        "flag": "council.team.read.repair",
+        "eq": true
+       },
+       {
+        "flag": "repair.queue.receipt",
+        "eq": "relay"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.workflow",
+       "value": "repair"
+      }
+     ]
+    },
+    {
+     "text": "Bring Emberford’s appointment rota to Hesper’s bench.",
+     "next": "council.team.ally.repair.leave",
+     "if": {
+      "all": [
+       {
+        "objective": "council.arrival"
+       },
+       {
+        "not": {
+         "flagSet": "council.team.workflow"
+        }
+       },
+       {
+        "flag": "council.team.read.repair",
+        "eq": true
+       },
+       {
+        "flag": "repair.queue.receipt",
+        "eq": "leave"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.workflow",
+       "value": "repair"
+      }
+     ]
+    },
+    {
+     "text": "Start a new packet with the blank slips.",
+     "next": "council.team.fresh",
+     "if": {
+      "all": [
+       {
+        "objective": "council.arrival"
+       },
+       {
+        "not": {
+         "flagSet": "council.team.workflow"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.workflow",
+       "value": "fresh"
+      }
+     ]
+    },
+    {
+     "text": "Leave the bench ready for later."
+    }
+   ]
+  },
+  {
+   "id": "council.team.ally.copies.fold",
+   "speaker": "copies-presskeeper",
+   "text": "You sent the full sheet. The landing queue could see the order. The outside stalls waited for it. Keep the time and place together this time, even when Sefa only has one breath.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.team.ally.copies.pair",
+   "speaker": "copies-presskeeper",
+   "text": "You sent the linked strips out to the stalls. One clip came loose. Hesper, can you put the bell beside the place on the same strip this time?",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.team.ally.copies.wait",
+   "speaker": "copies-presskeeper",
+   "text": "You gave us time to check the sheets. The landing crew had to take a hand off the hoist to call the turns. Write the whole call down so the next reader can carry it without another trip.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.team.ally.repair.paired",
+   "speaker": "smith-hesper",
+   "text": "You left the matched pickup stubs on my counter. The tick let us join the kettle to its owner and keep the fee slate inside. Use the matching mark for Hale’s docket.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.team.ally.repair.relay",
+   "speaker": "smith-hesper",
+   "text": "You sent our tray through Hana’s stall. She could check that it was ours without opening the fee slip. Here, keep a return edge so Kip can carry a change back to us.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.team.ally.repair.leave",
+   "speaker": "smith-hesper",
+   "text": "You left us our private appointments. The board told people when to return. Give Hale a mark for the bell and the place where someone can check it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.team.fresh",
+   "speaker": "council-keeper",
+   "text": "These slips belong to this practice run. I signed a separate timing docket before Sefa tried the call. Hesper can make us a packet. Leave my original in its clip for a second check.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.team.clip",
+   "speaker": "smith-hesper",
+   "text": "One piece of paper ought to reach the far end with its time still attached. Seat the clip on the short end and leave a corner for the checker.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Fold the bell line beside the place on one strip.",
+     "next": "council.team.clipped",
+     "if": {
+      "flag": "council.team.workflow",
+      "eq": "copies"
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.clipped",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Match the two notches, then turn the flap over.",
+     "next": "council.team.clipped",
+     "if": {
+      "flag": "council.team.workflow",
+      "eq": "repair"
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.clipped",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Clip a new strip across the two printed lines.",
+     "next": "council.team.clipped",
+     "if": {
+      "flag": "council.team.workflow",
+      "eq": "fresh"
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.clipped",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Set the clip down."
+    }
+   ]
+  },
+  {
+   "id": "council.team.clipped",
+   "speaker": "smith-hesper",
+   "text": "There. You can lift the packet by the corner. The time, place and small reference mark all stay on the paper.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.team.call",
+   "speaker": "scholar-sefa",
+   "text": "At our ferry, older hands teach the call in pairs. One says the place and time. The other says both back before anyone moves. I’ll take the rail and Kip will wait with the packet. Take the passage to hear what gets through this time.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep the quick doorway call that you and Vesper tried.",
+     "next": "council.team.vesper",
+     "if": {
+      "flag": "sd.stage-vesper.outcome",
+      "eq": "won-over"
+     }
+    },
+    {
+     "text": "Give Sefa the opening call.",
+     "next": "council.team.called",
+     "if": {
+      "flag": "council.team.clipped",
+      "eq": true
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.called",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let Sefa rest her voice."
+    }
+   ]
+  },
+  {
+   "id": "council.team.vesper",
+   "speaker": "scholar-sefa",
+   "text": "You gave an usher a line that helped someone find the stage. This time we need the runner to keep a time as well as a place. Keep the paper with Kip while I speak.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Go back to the practice line.",
+     "next": "council.team.call"
+    }
+   ]
+  },
+  {
+   "id": "council.team.called",
+   "speaker": "scholar-sefa",
+   "text": "“At the next bell, bring the signed practice copy to the low bench.” Sefa folds her arms and waits to hear it back.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.team.receive",
+   "speaker": "kip-arden",
+   "text": "I heard “low bench” and thought they meant now. The passage swallowed the time. Here, lift the clip. The slip has the words I missed. Shall I carry the whole line back? I can finish one sentence before I ask my next question.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Have Kip echo the whole line and carry the slip back.",
+     "next": "council.team.received",
+     "if": {
+      "flag": "council.team.called",
+      "eq": true
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.received",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let Kip keep the packet for a moment."
+    }
+   ]
+  },
+  {
+   "id": "council.team.received",
+   "speaker": "kip-arden",
+   "text": "“At the next bell, bring the signed practice copy to the low bench.” Same place. Now I can tell when to set out too. Rook wants the slip and Hale’s own docket at the rail.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.team.check",
+   "speaker": "rook-tamsin",
+   "text": "Kip first heard the bench and took it to mean come now. A runner has scribbled NOW on the shorthand draft. Kip read the rest from the packet. Those two agree because Kip read it. Lay Hale’s signed docket over the draft to check the time against another record.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Recall what Rook checked for the family at the well.",
+     "next": "council.team.well",
+     "if": {
+      "flag": "loyalty.rook",
+      "eq": "family"
+     }
+    },
+    {
+     "text": "Slide Hale’s signed docket beside the packet.",
+     "next": "council.team.checked",
+     "if": {
+      "all": [
+       {
+        "flag": "council.team.original",
+        "eq": true
+       },
+       {
+        "flag": "council.team.received",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.checked",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Go get the original docket and runner’s reply."
+    }
+   ]
+  },
+  {
+   "id": "council.team.well",
+   "speaker": "rook-tamsin",
+   "text": "You asked me to show the family when I made the check. Spring answers for spring. This docket gives the time for one practice run. Read the little line above my thumb.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Return to the docket comparison.",
+     "next": "council.team.check"
+    }
+   ]
+  },
+  {
+   "id": "council.team.checked",
+   "speaker": "rook-tamsin",
+   "text": "Hale’s own line gives the next bell. Turn the NOW strip under it. The bench stays the same. The instruction tells us when to bring this packet. The next hearing needs its own signed time.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.team.set",
+   "speaker": "council-reader",
+   "text": "The call told Kip where to go. The copy carried the time through the passage. We can leave both lines on a low board. Or we can keep the ferry’s call and answer here, with two people free to say back what reached them.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set the checked pair on the low board.",
+     "next": "council.team.table",
+     "if": {
+      "all": [
+       {
+        "objective": "council.team.trial"
+       },
+       {
+        "not": {
+         "flagSet": "council.team.edition"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.edition",
+       "value": "table"
+      }
+     ]
+    },
+    {
+     "text": "Give the runner a checked slip and post a relay shift.",
+     "next": "council.team.relay",
+     "if": {
+      "all": [
+       {
+        "objective": "council.team.trial"
+       },
+       {
+        "not": {
+         "flagSet": "council.team.edition"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "council.team.edition",
+       "value": "relay"
+      }
+     ]
+    },
+    {
+     "text": "Leave the checked pair on the worktable."
+    }
+   ]
+  },
+  {
+   "id": "council.team.table",
+   "speaker": "council-reader",
+   "text": "A visitor rests a bundle under the low board and reads the place and bell in order. Someone who needs to hear them still waits until a keeper is free to read them aloud.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "council.team.relay",
+   "speaker": "council-reader",
+   "text": "Hesper fits another clip. Sefa takes the rail, Kip takes the bench and Rook leaves the signed time beside both. A runner will wait while someone reads the line back. That takes a hand away from the next copy.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "cards": [
@@ -971,6 +1493,142 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH15-R03",
+   "world": "WORLD-16",
+   "title": "The Handover Before the Bell",
+   "knowledgeQuestion": "What lets a team check that a message and its limits reached the next person?",
+   "available": {
+    "flagSet": "council.team.workflow"
+   },
+   "objectives": [
+    {
+     "id": "council.team.trial",
+     "title": "Make a packet, carry the call and compare the reply with the signed docket.",
+     "done": {
+      "all": [
+       {
+        "flag": "council.team.clipped",
+        "eq": true
+       },
+       {
+        "flag": "council.team.called",
+        "eq": true
+       },
+       {
+        "flag": "council.team.received",
+        "eq": true
+       },
+       {
+        "flag": "council.team.original",
+        "eq": true
+       },
+       {
+        "flag": "council.team.checked",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "explanation",
+       "objectivity",
+       "perspective",
+       "truth",
+       "interpretation",
+       "culture"
+      ],
+      "atl": [
+       "social",
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "theatre"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "perspectives"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "minutes": 8
+     }
+    },
+    {
+     "id": "council.team.post",
+     "title": "Choose a place for the checked pair and see who uses it.",
+     "done": {
+      "all": [
+       {
+        "objective": "council.team.trial"
+       },
+       {
+        "flagSet": "council.team.edition"
+       },
+       {
+        "flag": "council.team.seen",
+        "eq": true
+       }
+      ]
+     },
+     "visible": {
+      "objective": "council.team.trial"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "power",
+       "justification",
+       "culture"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "global-politics",
+       "lang-langlit"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "minutes": 3
+     },
+     "onComplete": [
+      {
+       "journal": "j.council.team"
+      }
+     ]
+    }
+   ]
   }
  ],
  "criteria": [
@@ -990,6 +1648,11 @@
    "id": "j.council.shift",
    "claimKind": "interpretation",
    "text": "A stopped watch shared the drum’s first reading. Its next mark showed the limit of the match. Both loading crews now have a way to follow the check."
+  },
+  {
+   "id": "j.council.team",
+   "title": "The handover before the bell",
+   "text": "Hesper put the two lines together. Sefa made the call, and Kip found the time the call lost. Rook kept Hale’s own docket beside the reply. We left a way for the next reader to check both."
   }
  ],
  "moments": [
@@ -1246,6 +1909,54 @@
    "objective": "council.bench",
    "depth": 4,
    "text": "Find the placed dial and see what someone can do there."
+  },
+  {
+   "id": "h.council.team.trial.1",
+   "objective": "council.team.trial",
+   "depth": 1,
+   "text": "Hesper has the blank clips in the Time Hall."
+  },
+  {
+   "id": "h.council.team.trial.2",
+   "objective": "council.team.trial",
+   "depth": 2,
+   "text": "Sefa calls from the gallery. Hear what reached Kip at the far bench in the Time Hall."
+  },
+  {
+   "id": "h.council.team.trial.3",
+   "objective": "council.team.trial",
+   "depth": 3,
+   "text": "Hale’s signed practice docket sits beyond the main workbench in the Time Hall."
+  },
+  {
+   "id": "h.council.team.trial.4",
+   "objective": "council.team.trial",
+   "depth": 4,
+   "text": "After Kip checks the reply, bring the packet and the original docket to Rook on the Bell Rail."
+  },
+  {
+   "id": "h.council.team.post.1",
+   "objective": "council.team.post",
+   "depth": 1,
+   "text": "Essi can set the checked pair out at the gallery stand."
+  },
+  {
+   "id": "h.council.team.post.2",
+   "objective": "council.team.post",
+   "depth": 2,
+   "text": "A large board waits for a reader. A staffed turn lets someone hear both lines again."
+  },
+  {
+   "id": "h.council.team.post.3",
+   "objective": "council.team.post",
+   "depth": 3,
+   "text": "Follow the version you leave. Both go with the signed practice heading."
+  },
+  {
+   "id": "h.council.team.post.4",
+   "objective": "council.team.post",
+   "depth": 4,
+   "text": "Read the board in the gallery or follow the relay back to the bench in the Time Hall."
   }
  ]
 }

@@ -1,6 +1,15 @@
 /** Fictional workshops for comparing sample panels and following their records. */
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
+import { JIG_SHOP_DOOR } from './jigShop';
+import { WARM_ROOM_DOOR } from './warmRoom';
+import { METAL_CALLBOARD_RETURN } from './civicCallboard';
+import { METALWORKS_VINDOLANDA_HALL, METALWORKS_VINDOLANDA_YARD } from './vindolanda';
+import { METALWORKS_PLATE_HALL, METALWORKS_PLATE_YARD } from './transferFaces';
+import { METALWORKS_FITTING_RECORD, METALWORKS_FITTING_YARD } from './fittingViews';
+import { METAL_DEBATE_DOOR } from './benchDebate';
+import { METAL_LATCH_DOOR } from './latchCheck';
+import { REFERENCE_HALL_DOOR, REFERENCE_YARD_DOOR } from './referenceLine';
 
 type Workshop = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'interactables' | 'stamps' | 'lights'>;
@@ -42,6 +51,11 @@ export const METALWORKS_YARD = workshop({
     { stamp: 'barrel', x: 4, y: 9 }, { stamp: 'bench', x: 17, y: 12 },
   ],
   interactables: [
+    ...METALWORKS_VINDOLANDA_YARD,
+    ...METALWORKS_PLATE_YARD,
+    ...METALWORKS_FITTING_YARD,
+    METAL_LATCH_DOOR, JIG_SHOP_DOOR,
+    REFERENCE_YARD_DOOR,
     { id: 'cross-furnace', kind: 'fieldgame', game: 'cross-furnace', x: 17, y: 5, w: 1, h: 1, label: 'the furnace dial by Brindle\'s shovel (a crossing)', art: 'signpost' },
     door('metal-records-path', 12, 3, 'the passage to the trade hall', { map: 'metalworks.records', x: 11, y: 12 }),
     { ...door('metal-nexus-return', 12, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 22, y: 16 }),
@@ -73,6 +87,27 @@ export const METALWORKS_YARD = workshop({
     paper('metal-tag-handoff-yard', 10, 13, 'the paired notes at the handover', 'metalworks.window',
       'Try either tag on the same cord. Compare the hole before and after. Our fitting shop’s triangle means “fit checked”. At the coating shop it means “surface to check”. The old trip note gives only direction and colour.',
       { visibleIf: { flag: 'metal.tag.mount', eq: 'yard' } }),
+    { id: 'metal-witness-bind', kind: 'scene', node: 'metal.witness.bind', x: 14, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the sleeve tray and its unused tally strip', art: 'metalworks.receipt',
+      visibleIf: { not: { flagSet: 'metal.witness.use' } } },
+    paper('metal-witness-yard-count', 6, 12, 'the clean practice sleeves at the yard', 'metalworks.panel-a',
+      'Four clean packing sleeves stand beside the empty sleeves rack. The marked strip keeps these four slots apart from the two that go to the hall. Each sleeve can take a practice piece again here.',
+      { flag: 'metal.witness.yard', visibleIf: { all: [{ flagSet: 'metal.witness.use' }, { not: { flagSet: 'metal.witness.layout' } }] } }),
+    paper('metal-witness-local-yard', 6, 12, 'the next packing run’s local stock', 'metalworks.panel-a',
+      'All four clean sleeves are back on the yard stand for the next run. A second line counts the two torn sleeves now held at the hall for repair. The yard crew keeps both entries.',
+      { flag: 'metal.witness.local-yard', visibleIf: { flag: 'metal.witness.layout', eq: 'local' } }),
+    { id: 'metal-exhibition-model', kind: 'scene', node: 'metal.exhibit.turn', x: 11, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the practice ring on a fixed base', art: 'board-stand',
+      visibleIf: { all: [{ card: 'card.metal.astrolabe' }, { not: { flagSet: 'metal.exhibit.view' } }] } },
+    paper('metal-exhibition-index', 11, 10, 'the turned ring at the fixed mark', 'preserved.context',
+      'The pointer moved from the upper peg to the side peg. The base stayed on the same chalk line. These are positions you set on the practice stand, without a reading from the sky.',
+      { flag: 'metal.exhibit.index', visibleIf: { all: [{ flag: 'metal.exhibit.view', eq: 'turned' }, { not: { flagSet: 'metal.exhibit.layout' } }] } }),
+    { id: 'metal-exhibition-bench', kind: 'scene', node: 'metal.exhibit.bench', x: 11, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the learner’s low practice bench', art: 'board-stand',
+      visibleIf: { all: [{ flag: 'metal.exhibit.layout', eq: 'bench' }, { not: { flagSet: 'metal.exhibit.learner' } }] } },
+    paper('metal-exhibition-bench-used', 11, 10, 'the learner’s repeat mark', 'preserved.display-paired',
+      'A learner turned the practice ring back to the upper peg and repeated the move to the side peg. The base line gives the next person a place to start over.',
+      { visibleIf: { all: [{ flag: 'metal.exhibit.layout', eq: 'bench' }, { flagSet: 'metal.exhibit.learner' }] } }),
   ],
   lights: [
     { x: 5, y: 8, r: 62, color: 0xf8ba78, flicker: true }, { x: 20, y: 8, r: 62, color: 0xefaa86, flicker: true },
@@ -93,7 +128,15 @@ export const METALWORKS_RECORDS = workshop({
     { stamp: 'rug-green', x: 10, y: 9 },
   ],
   interactables: [
+    ...METALWORKS_VINDOLANDA_HALL,
+    ...METALWORKS_PLATE_HALL,
+    METALWORKS_FITTING_RECORD,
+    METAL_CALLBOARD_RETURN,
+    METAL_DEBATE_DOOR,
+    REFERENCE_HALL_DOOR, WARM_ROOM_DOOR,
     door('metal-yard-return', 11, 14, 'the passage back to the Sample Yard', { map: 'metalworks.yard', x: 12, y: 5 }),
+    { id: 'metal-exhibition-case', kind: 'exhibit', exhibit: 'OBJ-MET-ASTROLABE', x: 5, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the museum entry for Musa’s spherical astrolabe', art: 'preserved.catalogue' },
     paper('metal-custody-repair', 18, 10, 'the Box B repair slip', 'metalworks.receipt',
       'Box B. The repair crew put the coated metal panel back into the box it arrived in. The label stays with the box. This slip begins here at the yard.',
       { flag: 'metal.custody.repair' }),
@@ -123,6 +166,36 @@ export const METALWORKS_RECORDS = workshop({
     paper('metal-tag-handoff-hall', 7, 8, 'the two explanations beside the index', 'ledger',
       'First run: the old hole stays with a turned tag. Second run: the fresh tag leaves a clean hole. Keep the fitting rule and the coating rule with the slips. The trip note leaves the hole unrecorded.',
       { visibleIf: { flag: 'metal.tag.mount', eq: 'hall' } }),
+    paper('metal-witness-hall-count', 14, 9, 'the two torn sleeves by the hall ledger', 'metalworks.receipt',
+      'The hall tray holds the two torn sleeves. Its “two returned” entry is part of the original six. The workmark leaves four other slots beside the yard label.',
+      { flag: 'metal.witness.hall', visibleIf: { all: [{ flagSet: 'metal.witness.use' }, { not: { flagSet: 'metal.witness.layout' } }] } }),
+    { id: 'metal-witness-choose', kind: 'scene', node: 'metal.witness.choose', x: 13, y: 9, w: 1, h: 1, walkThrough: true,
+      label: 'the window for moving the return trays', art: 'board-stand',
+      visibleIf: { all: [{ objective: 'metal.witness.compare' }, { not: { flagSet: 'metal.witness.layout' } }] } },
+    paper('metal-witness-local-hall', 14, 9, 'the small repair tray in the hall', 'metalworks.receipt',
+      'Two torn sleeves need repair. The clean sleeves stayed in the yard for the next run. The hall keeps a separate line for this tray so these two get entered once.',
+      { flag: 'metal.witness.local-hall', visibleIf: { flag: 'metal.witness.layout', eq: 'local' } }),
+    paper('metal-witness-shared', 14, 9, 'the shared sorting stand in the hall', 'metalworks.window',
+      'One cart load brought six sleeves. Four wait here clean for the next scheduled yard return. Two wait for repair. The two open trays make all six visible without counting the cart load as a seventh entry.',
+      { flag: 'metal.witness.shared-hall', visibleIf: { flag: 'metal.witness.layout', eq: 'shared' } }),
+    { id: 'metal-exhibition-mount', kind: 'scene', node: 'metal.exhibit.mount', x: 17, y: 5, w: 1, h: 1, walkThrough: true,
+      label: 'the two display stands for the ring study', art: 'metalworks.window',
+      visibleIf: { all: [{ objective: 'metal.exhibit.scope' }, { not: { flagSet: 'metal.exhibit.layout' } }] } },
+    paper('metal-exhibition-bench-pointer', 17, 5, 'the pointer to the practice bench', 'metalworks.receipt',
+      'Run the practice ring in the Sample Yard. Musa’s museum entry stays open here. The hall does not take a current sky reading from the model.',
+      { visibleIf: { flag: 'metal.exhibit.layout', eq: 'bench' } }),
+    { id: 'metal-exhibition-window', kind: 'scene', node: 'metal.exhibit.window', x: 17, y: 5, w: 1, h: 1, walkThrough: true,
+      label: 'two demonstration views beside the window', art: 'metalworks.window',
+      visibleIf: { all: [{ flag: 'metal.exhibit.layout', eq: 'window' }, { not: { flagSet: 'metal.exhibit.learner' } }] } },
+    paper('metal-exhibition-window-used', 17, 5, 'the checked base line at the window', 'preserved.display-paired',
+      'Two views share a base line. A reader can compare the movement here and go to the yard to repeat it. The views remain a record of chosen placements.',
+      { visibleIf: { all: [{ flag: 'metal.exhibit.layout', eq: 'window' }, { flagSet: 'metal.exhibit.learner' }] } }),
+    { id: 'metal-exhibition-packet', kind: 'scene', node: 'metal.exhibit.pack', x: 18, y: 13, w: 1, h: 1, walkThrough: true,
+      label: 'the carrier’s two pocket docket', art: 'metalworks.receipt',
+      visibleIf: { all: [{ flagSet: 'metal.exhibit.layout' }, { not: { flagSet: 'metal.exhibit.carrier' } }] } },
+    paper('metal-exhibition-packet-ready', 18, 13, 'the packet checked for the next learner', 'preserved.slip',
+      'The outside pocket names the practice ring, base and clip. The inside pocket holds the source reference for Musa’s instrument and its date. The carrier has a packing count and the next reader can find the museum entry.',
+      { visibleIf: { flagSet: 'metal.exhibit.carrier' } }),
   ],
   lights: [
     { x: 6, y: 7, r: 62, color: 0xead1a8 }, { x: 17, y: 7, r: 68, color: 0xb7dbe1 },

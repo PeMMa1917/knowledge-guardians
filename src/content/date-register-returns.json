@@ -1,0 +1,33 @@
+[
+  {
+    "id": "date-register.dresden-return.open", "speaker": "narrator", "historicalLabel": "fictional-world",
+    "text": "The single-paper tray and two small reading frames wait at the old press desk. The Dresden folio gives the dimensions of the manuscript before and after a conservation decision.",
+    "options": [{ "text": "Lay the extended-strip card along the tray.", "next": "date-register.dresden-return.strip" }]
+  },
+  {
+    "id": "date-register.dresden-return.strip", "speaker": "narrator", "historicalLabel": "fictional-world",
+    "text": "The record describes an original folded strip around 356 cm long when extended. A note beside it gives the much earlier probable date for the surviving manuscript.",
+    "options": [{ "text": "Set each 1835 conservation length in a different frame.", "next": "date-register.dresden-return.place" }]
+  },
+  {
+    "id": "date-register.dresden-return.place", "speaker": "narrator", "historicalLabel": "fictional-world",
+    "text": "Falkenstein’s arrangement has two recorded lengths of 182.5 and 174.3 cm. The measured models fit the separate frames. The date of that display belongs beside them rather than in the making-date field.",
+    "options": [
+      { "text": "Leave the two-frame guide for readers at the desk.", "effects": [{ "setFlag": "date-register.dresden.return", "value": "two-frames" }] },
+      { "text": "Hang a framed-reading request beside the small shelf.", "effects": [{ "setFlag": "date-register.dresden.return", "value": "request" }] }
+    ]
+  },
+  {
+    "id": "date-register.khipu-return.open", "speaker": "narrator", "historicalLabel": "fictional-world",
+    "text": "The spare register currently has four empty cards and four places for item numbers. Your Brooklyn folio has a holding accession and a separate reference to four study entries. The two kinds of number face upwards on their own clips.",
+    "options": [{ "text": "Place the object number beside the four study names.", "next": "date-register.khipu-return.pair" }]
+  },
+  {
+    "id": "date-register.khipu-return.pair", "speaker": "narrator", "historicalLabel": "fictional-world",
+    "text": "KH0043 through KH0046 are four study entries associated with 70.177.69. Brooklyn records one accession, and credits Kajatani and Rowe for the 1993 Inca attribution. Neither row gives the meaning of the knots.",
+    "options": [
+      { "text": "Give the custodian one entry with the four links inside.", "effects": [{ "setFlag": "date-register.khipu.return", "value": "grouped" }] },
+      { "text": "Give the readers four lookup cards under the shared accession.", "effects": [{ "setFlag": "date-register.khipu.return", "value": "linked" }] }
+    ]
+  }
+]

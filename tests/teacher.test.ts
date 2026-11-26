@@ -1,8 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { buildPack } from '../src/content';
+import { teacherContentFrom } from '../src/teacher/content';
 import { latestPerStudent, readProgress, subjectCsv, summarise, type ProgressFile } from '../src/teacher/report';
 
-const pack = buildPack();
+const campaign = buildPack();
+const pack = teacherContentFrom(campaign);
 const file = (player: string, over: Partial<ProgressFile> = {}): ProgressFile => ({
   format: 'knowledge-guardians-progress', version: 1, exportedAt: '2026-11-20T10:00:00Z', player, content: 'chapter-1 v2',
   objectivesDone: [], awards: [], conceptXP: {}, totalXP: 0, moments: {},
@@ -10,6 +12,12 @@ const file = (player: string, over: Partial<ProgressFile> = {}): ProgressFile =>
 });
 
 describe('teacher view (spec 94, 95)', () => {
+  it('keeps the same chapter and activity index in the reporting projection', () => {
+    expect(pack.missions.map((mission) => mission.id)).toEqual(campaign.missions.map((mission) => mission.id));
+    expect(pack.missions.flatMap(({ objectives }) => objectives.map(({ id, essential }) => ({ id, essential }))))
+      .toEqual(campaign.missions.flatMap(({ objectives }) => objectives.map(({ id, essential }) => ({ id, essential }))));
+    expect(Object.keys(pack).sort()).toEqual(['awards', 'misconceptions', 'missions', 'skillDomains', 'skills']);
+  });
   it('rejects files that are not progress files, with a reason', () => {
     expect(readProgress({ hello: 1 }).ok).toBe(false);
     expect(readProgress({ ...file('A'), version: 9 })).toEqual({ ok: false, reason: expect.stringMatching(/another version/) });

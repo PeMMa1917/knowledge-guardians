@@ -82,6 +82,8 @@
       "gte": 2
      },
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
+      "thinking": { "dok": 2, "bloom": "apply", "fink": "application", "solo": "multistructural" },
       "concepts": [
        "evidence",
        "interpretation",
@@ -123,6 +125,8 @@
       }
      ],
      "weave": {
+      "framework": ["methods-and-tools"],
+      "thinking": { "dok": 2, "bloom": "apply", "fink": "application", "solo": "multistructural" },
       "concepts": [
        "evidence",
        "justification",
@@ -167,6 +171,8 @@
       }
      ],
      "weave": {
+      "framework": ["perspectives", "methods-and-tools"],
+      "thinking": { "dok": 3, "bloom": "evaluate", "fink": "integration", "solo": "relational" },
       "concepts": [
        "perspective",
        "justification",
@@ -211,6 +217,8 @@
       }
      ],
      "weave": {
+      "framework": ["scope", "perspectives", "methods-and-tools", "ethics"],
+      "thinking": { "dok": 3, "bloom": "evaluate", "fink": "human", "solo": "relational" },
       "concepts": [
        "evidence",
        "justification",
@@ -570,7 +578,14 @@
     "HIS-S13"
    ],
    "grantsCard": "card.biro-object",
-   "altText": "A slim pen with a dark body and a metal tip, shown as a soft glowing projection."
+   "altText": "A slim pen with a dark body and a metal tip, shown as a soft glowing projection.",
+   "specimen": {
+    "key": "smg:1949-174/2",
+    "institution": "Science Museum Group",
+    "accession": "1949-174/2",
+    "source": "HIS-S13",
+    "objective": "hands.o.compare"
+   }
   }
  ],
  "labelKits": [
@@ -1201,6 +1216,7 @@
   {
    "id": "cold.open",
    "speaker": "narrator",
+   "motif": "first-light",
    "text": "A stone hall floats among the stars. By the entrance, an old label glows a sickly gold: THE FIRST BALLPOINT PEN.",
    "effects": [
     {

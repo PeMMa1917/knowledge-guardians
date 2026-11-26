@@ -256,13 +256,13 @@
   {
    "id": "water.scribe.trace",
    "speaker": "water-scribe",
-   "text": "The request from the farm lists six buckets for the marked rows. The lower workshop puts five buckets beside its fetching list. One speaks in rows and one in turns down the steps. Read what each group left and bring me the two gate runs.",
+   "text": "Six buckets cover the named rows at the morning bell. The lower workshop’s five cover the first fetching round. Read both slips where the crews work. Bring the two gate runs so we can see which jobs the measured supply can cover.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "water.scribe.agree",
    "speaker": "water-scribe",
-   "text": "Six for the rows and five for the lower work would take eleven. The drought board lets ten reach the two turns. What should the first order protect? Tell me which work needs to wait, too.",
+   "text": "Six for the rows and five for the lower work would take eleven. With twelve in and two lost, our drought trial lets ten reach the crews. Pick an order for this intake and these work cards. Sena leaves space for another count if the intake slips or a crew adds a round.",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -363,7 +363,7 @@
   {
    "id": "water.scribe.audit",
    "speaker": "water-scribe",
-   "text": "The repair gives us a fresh reading. A new heading by the old order says we agreed on both daily marks. Look at the heading and the numbers underneath it. Bring the old setting repeated under repair and one other repaired run.",
+   "text": "The repair gives us a fresh reading. A new heading by the old order says we agreed on both daily marks. Look at the heading and the numbers underneath it. Bring the old setting repeated under repair and one other repaired run. The market kept two figures side by side for different questions. Here a request and a delivery need separate lines, too.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -500,7 +500,7 @@
   {
    "id": "water.first.fields",
    "speaker": "water-scribe",
-   "text": "The field crew can start its marked rows. The lower crew has three buckets. Work that needs its last two buckets has to wait. Sena keeps the lower request beside the order.",
+   "text": "The field crew can start its marked rows. The lower crew has three buckets. Work that needs its last two buckets has to wait. Sena keeps the lower request beside the order. She files it under twelve incoming and two lost.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -519,7 +519,7 @@
   {
    "id": "water.first.split",
    "speaker": "water-scribe",
-   "text": "The lower crew can do the work on its fetching list. The field crew marks the row that has to wait for its sixth bucket. Sena puts the two stops beside the split.",
+   "text": "The lower crew can do the work on its fetching list. The field crew marks the row that has to wait for its sixth bucket. Sena puts the two stops beside the split. She files it under twelve incoming and two lost.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -538,7 +538,7 @@
   {
    "id": "water.first.channel",
    "speaker": "water-scribe",
-   "text": "The lower crew can hold two beyond its usual five. The field crew gets three of its six and changes which rows it prepares. Sena leaves that cost next to the order.",
+   "text": "The lower crew can hold two beyond its usual five. The field crew gets three of its six and changes which rows it prepares. Sena leaves that cost next to the order. She files it under twelve incoming and two lost.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -591,6 +591,261 @@
      "text": "Leave the repair board here a moment."
     }
    ]
+  },
+  {
+   "id": "water.observer.keeper",
+   "speaker": "water-keeper",
+   "text": "Good. Bring the notebook to the clear patch above this peg. The water makes plenty of noise at the lower bank. Find the place that lets a person see the mark, or keep the time and name on whatever reading the keeper left.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.observer.upper",
+   "speaker": "narrator",
+   "text": "The notebook brings the peg’s little foot line into view. At the noon bell Omi sees three intervals from that line. Clip the standing place to the new space on the page.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the upper peg’s noon reading with Omi’s name.",
+     "next": "water.observer.upper.saved",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "observer-notebook"
+       },
+       {
+        "not": {
+         "flag": "water.observer.upper",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "water.observer.upper",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the sheet by the upper peg."
+    }
+   ]
+  },
+  {
+   "id": "water.observer.upper.saved",
+   "speaker": "narrator",
+   "text": "The upper note now holds the peg, its foot line and the noon bell. The lower bank has its own sightline.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation"
+  },
+  {
+   "id": "water.observer.blocked",
+   "speaker": "narrator",
+   "text": "You can hear the channel here. A thick patch of reeds covers the lower peg. The notebook leaves room for a different standing place or a dated handover.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mark the covered noon view and look for another way to check.",
+     "next": "water.observer.blocked.saved",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "observer-notebook"
+       },
+       {
+        "not": {
+         "flag": "water.observer.blocked",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "water.observer.blocked",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the reed-side box open."
+    }
+   ]
+  },
+  {
+   "id": "water.observer.blocked.saved",
+   "speaker": "narrator",
+   "text": "The high step east of the reeds gives you a clear line. The lower crew’s handover on the west terrace holds an earlier reading. Choose what you can keep with its date.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation"
+  },
+  {
+   "id": "water.observer.sight",
+   "speaker": "narrator",
+   "text": "From the high step the reeds fall below the sightline. You can see two notch intervals above the foot of the lower peg during the noon bell. The foot belongs to this peg.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the noon reading to the high-step drawing.",
+     "next": "water.observer.sight.saved",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "observer-notebook"
+       },
+       {
+        "flag": "water.observer.blocked",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "water.observer.lower"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "water.observer.lower",
+       "value": "sight"
+      }
+     ]
+    },
+    {
+     "text": "Leave room for the crew’s earlier handover."
+    }
+   ]
+  },
+  {
+   "id": "water.observer.sight.saved",
+   "speaker": "narrator",
+   "text": "The two noon views can sit side by side with their separate foot lines. The blank from behind the reeds stays in the notes.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation"
+  },
+  {
+   "id": "water.observer.handover",
+   "speaker": "narrator",
+   "text": "The lower keeper has signed a reading of two intervals from the lower peg’s foot at the previous bell. Slide the signed time under the clip and leave the place for noon open.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the handover with its keeper and earlier bell.",
+     "next": "water.observer.handover.saved",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "observer-notebook"
+       },
+       {
+        "flag": "water.observer.blocked",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "water.observer.lower"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "water.observer.lower",
+       "value": "handover"
+      }
+     ]
+    },
+    {
+     "text": "Leave room for the view from the high step."
+    }
+   ]
+  },
+  {
+   "id": "water.observer.handover.saved",
+   "speaker": "narrator",
+   "text": "The handover gives a reading for the earlier bell. Leave the noon square for another keeper. Both local times stay on the page.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation"
+  },
+  {
+   "id": "water.observer.board",
+   "speaker": "water-scribe",
+   "text": "Bring the upper reading and the lower note. Each has its own foot line. A single copy lets a reader hold the two lines together. Local copies let each crew check beside its peg. Leave a mark on the short crew track so the next reader can carry either copy between them.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mount both dated records at the council.",
+     "next": "water.observer.paired",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "observer-notebook"
+       },
+       {
+        "objective": "water.observer.readings"
+       },
+       {
+        "not": {
+         "flagSet": "water.observer.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "water.observer.layout",
+       "value": "paired"
+      }
+     ]
+    },
+    {
+     "text": "Leave each reader’s note beside its own peg.",
+     "next": "water.observer.local",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "observer-notebook"
+       },
+       {
+        "objective": "water.observer.readings"
+       },
+       {
+        "not": {
+         "flagSet": "water.observer.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "water.observer.layout",
+       "value": "local"
+      }
+     ]
+    },
+    {
+     "text": "Leave the clips by the board."
+    }
+   ]
+  },
+  {
+   "id": "water.observer.paired",
+   "speaker": "water-scribe",
+   "text": "I’ll leave the two foot lines and both times on one board. Anyone who needs the lower bank can follow the short observer track with the notebook open.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "water.observer.local",
+   "speaker": "water-scribe",
+   "text": "I’ll leave a copy at each peg so the crews can match a line to the place. The short observer track gives a reader a way to carry the two dates between them.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "missions": [
@@ -675,7 +930,8 @@
       "concepts": [
        "evidence",
        "objectivity",
-       "explanation"
+       "explanation",
+       "certainty"
       ],
       "atl": [
        "research",
@@ -689,7 +945,17 @@
        "geography",
        "ess",
        "math-ai"
-      ]
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "relational"
+      }
      },
      "visible": {
       "objective": "water.arrival"
@@ -762,7 +1028,8 @@
        "values",
        "power",
        "responsibility",
-       "justification"
+       "justification",
+       "certainty"
       ],
       "atl": [
        "thinking",
@@ -776,7 +1043,18 @@
        "geography",
        "economics",
        "math-ai"
-      ]
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "relational"
+      }
      },
      "visible": {
       "all": [
@@ -1112,6 +1390,620 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH11-R02",
+   "world": "WORLD-12",
+   "title": "Room in the Relief Basin",
+   "knowledgeQuestion": "What can a route model tell us about a spare bucket, and who should get it?",
+   "stake": "The crew has one wide tile before the heavier practice pulse. The new seed beds and the lower troughs both need room.",
+   "available": {
+    "objective": "water.finish"
+   },
+   "objectives": [
+    {
+     "id": "water.routing.sources",
+     "title": "Bring the seed terrace’s and lower crew’s relief slips to Omi’s bench.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "water.routing.source.first",
+        "eq": true
+       },
+       {
+        "flag": "water.routing.source.second",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "perspective",
+       "culture",
+       "values"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "ess",
+       "geography"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "understand",
+       "fink": "human",
+       "solo": "multistructural"
+      },
+      "minutes": 2
+     }
+    },
+    {
+     "id": "water.routing.compare",
+     "title": "Release the heavier pulse with the wide tile in each socket.",
+     "essential": false,
+     "visible": {
+      "objective": "water.routing.sources"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "water.routing.sources"
+       },
+       {
+        "flag": "water.routing.trial.8.first",
+        "eq": true
+       },
+       {
+        "flag": "water.routing.trial.8.second",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "explanation",
+       "certainty",
+       "truth"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT",
+       "TEC"
+      ],
+      "subjects": [
+       "math-ai",
+       "ess",
+       "design-tech"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      },
+      "minutes": 2
+     }
+    },
+    {
+     "id": "water.routing.finish",
+     "title": "Fit a tested relief layout and check the outlet on the lower path.",
+     "essential": false,
+     "visible": {
+      "objective": "water.routing.compare"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "water.routing.compare"
+       },
+       {
+        "flagSet": "water.routing.layout"
+       },
+       {
+        "flag": "water.routing.seen",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "justification",
+       "responsibility",
+       "power",
+       "interpretation"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "MAT",
+       "TEC"
+      ],
+      "subjects": [
+       "ess",
+       "global-politics",
+       "design-tech"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "minutes": 2
+     },
+     "onComplete": [
+      {
+       "journal": "j.water.routing"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH11-R03",
+   "world": "WORLD-12",
+   "title": "The Bell Behind the Reeds",
+   "knowledgeQuestion": "When can different readings sit together, and which conditions have to stay with them?",
+   "stake": "Omi wants a reader on the lower bank to know whose mark they can use and when it was checked.",
+   "available": {
+    "all": [
+     {
+      "flag": "keepsake.observer-notebook",
+      "eq": true
+     },
+     {
+      "objective": "water.arrival"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "water.observer.readings",
+     "title": "With the notebook open, check the upper peg and find a usable lower record.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "water.observer.upper",
+        "eq": true
+       },
+       {
+        "flag": "water.observer.blocked",
+        "eq": true
+       },
+       {
+        "flagSet": "water.observer.lower"
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "perspective",
+       "certainty",
+       "truth",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM",
+       "MAT"
+      ],
+      "subjects": [
+       "ess",
+       "geography",
+       "math-ai"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "minutes": 3
+     }
+    },
+    {
+     "id": "water.observer.publish",
+     "title": "Put the dated peg readings beside each other or beside their own banks.",
+     "essential": false,
+     "done": {
+      "flagSet": "water.observer.layout"
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "justification",
+       "explanation",
+       "values",
+       "power"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "ess",
+       "lang-langlit",
+       "geography"
+      ],
+      "framework": [
+       "ethics",
+       "methods-and-tools",
+       "perspectives"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "minutes": 1
+     },
+     "visible": {
+      "objective": "water.observer.readings"
+     }
+    },
+    {
+     "id": "water.observer.finish",
+     "title": "Use the notebook’s marked observer track between the lower bank and Council Yard.",
+     "essential": false,
+     "done": {
+      "flag": "water.observer.crossed",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "perspective",
+       "culture"
+      ],
+      "atl": [
+       "self-management",
+       "social"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "ess",
+       "anthropology"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "human",
+       "solo": "multistructural"
+      },
+      "minutes": 1
+     },
+     "visible": {
+      "objective": "water.observer.publish"
+     },
+     "onComplete": [
+      {
+       "journal": "j.water.observer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH11-R04",
+   "world": "WORLD-12",
+   "title": "Three Messengers",
+   "knowledgeQuestion": "When do two reports supply two independent checks?",
+   "stake": "The lower crew needs a fresh spill-line check after the bell. A repeated message can make the earlier check sound new.",
+   "available": {
+    "all": [
+     {
+      "objective": "water.arrival"
+     },
+     {
+      "objective": "forest.counter.finish"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "water.counter.sources",
+     "title": "Find Omi’s original and copy, then the lower crew’s own check.",
+     "done": {
+      "all": [
+       {
+        "flag": "water.counter.source.first",
+        "eq": true
+       },
+       {
+        "flag": "water.counter.source.second",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "culture",
+       "perspective",
+       "evidence",
+       "power"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT",
+       "TEC"
+      ],
+      "subjects": [
+       "digital-society",
+       "ess",
+       "anthropology"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "understand",
+       "fink": "human",
+       "solo": "multistructural"
+      },
+      "minutes": 2
+     }
+    },
+    {
+     "id": "water.counter.compare",
+     "title": "Fit the source clip and replay both runner orders at the council counter.",
+     "visible": {
+      "objective": "water.counter.sources"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "water.counter.sources"
+       },
+       {
+        "flag": "water.counter.source-view",
+        "eq": true
+       },
+       {
+        "flag": "water.counter.trial.outbound",
+        "eq": true
+       },
+       {
+        "flag": "water.counter.trial.return",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "truth",
+       "explanation",
+       "interpretation",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "MAT",
+       "TEC",
+       "NAT"
+      ],
+      "subjects": [
+       "computer-science",
+       "digital-society",
+       "math-ai"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "perspectives"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      },
+      "minutes": 2
+     }
+    },
+    {
+     "id": "water.counter.finish",
+     "title": "Post a check request or leave the docket, then visit the chosen display.",
+     "visible": {
+      "objective": "water.counter.compare"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "water.counter.compare"
+       },
+       {
+        "any": [
+         {
+          "flag": "water.counter.seen.marker",
+          "eq": true
+         },
+         {
+          "flag": "water.counter.seen.ledger",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "justification",
+       "values",
+       "perspective"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "TEC",
+       "NAT"
+      ],
+      "subjects": [
+       "computer-science",
+       "digital-society",
+       "ess"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "minutes": 1
+     },
+     "onComplete": [
+      {
+       "journal": "j.water.counter"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH11-R56",
+   "world": "WORLD-12",
+   "title": "Before the Next Count",
+   "stake": "A runner needs to know when the council order can go out as written.",
+   "knowledgeQuestion": "When does an old count still support the next order?",
+   "available": {
+    "all": [
+     {
+      "objective": "water.publish"
+     },
+     {
+      "flagSet": "market.quote.rule"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "water.market.copy",
+     "title": "Check where Sena has left the intake slip.",
+     "essential": false,
+     "visible": {
+      "all": [
+       {
+        "objective": "water.publish"
+       },
+       {
+        "flagSet": "market.quote.rule"
+       }
+      ]
+     },
+     "done": {
+      "flag": "water.market.order.read",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "certainty",
+       "responsibility",
+       "perspective"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT"
+      ],
+      "subjects": [
+       "geography",
+       "economics"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "minutes": 2
+     }
+    }
+   ]
   }
  ],
  "criteria": [
@@ -1342,6 +2234,246 @@
    "objective": "water.register",
    "depth": 4,
    "text": "Choose the wider register copy, then look for it beside the council seats."
+  },
+  {
+   "id": "h.water.routing.sources.1",
+   "objective": "water.routing.sources",
+   "depth": 1,
+   "text": "Omi’s relief bench needs the two local requests."
+  },
+  {
+   "id": "h.water.routing.sources.2",
+   "objective": "water.routing.sources",
+   "depth": 2,
+   "text": "Both slips are on the lower path. One is by the seed beds and one is across the boards on the lower bank."
+  },
+  {
+   "id": "h.water.routing.sources.3",
+   "objective": "water.routing.sources",
+   "depth": 3,
+   "text": "Read the relief slip at each outlet. Each has a request for this smaller trial."
+  },
+  {
+   "id": "h.water.routing.sources.4",
+   "objective": "water.routing.sources",
+   "depth": 4,
+   "text": "From the Old Weir use the lower path. Read the seed terrace’s relief slip and the lower crew’s relief slip. Return to Omi’s bench."
+  },
+  {
+   "id": "h.water.routing.compare.1",
+   "objective": "water.routing.compare",
+   "depth": 1,
+   "text": "The bench has one wide tile and two sockets."
+  },
+  {
+   "id": "h.water.routing.compare.2",
+   "objective": "water.routing.compare",
+   "depth": 2,
+   "text": "A plain layout can show why the basin matters. Try the same eight buckets with the wide piece at each outlet."
+  },
+  {
+   "id": "h.water.routing.compare.3",
+   "objective": "water.routing.compare",
+   "depth": 3,
+   "text": "Place the piece at the seed rows and release eight. Move the same piece to the lower channel and release eight."
+  },
+  {
+   "id": "h.water.routing.compare.4",
+   "objective": "water.routing.compare",
+   "depth": 4,
+   "text": "Read rows, lower channel, basin, and spill after both eight-bucket trials. The two arrangements leave different requests waiting."
+  },
+  {
+   "id": "h.water.routing.finish.1",
+   "objective": "water.routing.finish",
+   "depth": 1,
+   "text": "Choose a layout for Omi to fit. Keep the other report open."
+  },
+  {
+   "id": "h.water.routing.finish.2",
+   "objective": "water.routing.finish",
+   "depth": 2,
+   "text": "Your trial tested the same pulse for both placements. Each widened one branch."
+  },
+  {
+   "id": "h.water.routing.finish.3",
+   "objective": "water.routing.finish",
+   "depth": 3,
+   "text": "Place the wide tile at the chosen outlet then use Fit this relief layout."
+  },
+  {
+   "id": "h.water.routing.finish.4",
+   "objective": "water.routing.finish",
+   "depth": 4,
+   "text": "Fit the layout and visit its new wide relief mouth on the lower path. The seed outlet is west of the boards. The lower outlet is east."
+  },
+  {
+   "id": "h.water.observer.readings.1",
+   "objective": "water.observer.readings",
+   "depth": 1,
+   "text": "Open Elian’s notebook in your Bag at the Old Weir."
+  },
+  {
+   "id": "h.water.observer.readings.2",
+   "objective": "water.observer.readings",
+   "depth": 2,
+   "text": "The upper peg is by the clear path at the gate. Follow the lower path to the reeds at the second peg."
+  },
+  {
+   "id": "h.water.observer.readings.3",
+   "objective": "water.observer.readings",
+   "depth": 3,
+   "text": "Clip Omi’s noon reading and mark the blocked view at the reeds. Check the high step or the earlier crew handover."
+  },
+  {
+   "id": "h.water.observer.readings.4",
+   "objective": "water.observer.readings",
+   "depth": 4,
+   "text": "Use upper peg, reeds, and one of high step east or crew log west. Keep the time attached to whichever lower record you choose."
+  },
+  {
+   "id": "h.water.observer.publish.1",
+   "objective": "water.observer.publish",
+   "depth": 1,
+   "text": "Sena has a board for both peg notes at the Council Yard."
+  },
+  {
+   "id": "h.water.observer.publish.2",
+   "objective": "water.observer.publish",
+   "depth": 2,
+   "text": "Bring the two dated records to Sena’s copy board beside the register."
+  },
+  {
+   "id": "h.water.observer.publish.3",
+   "objective": "water.observer.publish",
+   "depth": 3,
+   "text": "You can put both records together or place a copy near each peg."
+  },
+  {
+   "id": "h.water.observer.publish.4",
+   "objective": "water.observer.publish",
+   "depth": 4,
+   "text": "Use Sena’s copy board and pick a place for the records. The chosen copies keep the standing place, foot line and bell."
+  },
+  {
+   "id": "h.water.observer.finish.1",
+   "objective": "water.observer.finish",
+   "depth": 1,
+   "text": "Use the marked observer track with the notebook open."
+  },
+  {
+   "id": "h.water.observer.finish.2",
+   "objective": "water.observer.finish",
+   "depth": 2,
+   "text": "Look for the new trail sign west in the Council Yard or south on the lower bank."
+  },
+  {
+   "id": "h.water.observer.finish.3",
+   "objective": "water.observer.finish",
+   "depth": 3,
+   "text": "The new track links both ways. The usual paths still carry you when you close the notebook."
+  },
+  {
+   "id": "h.water.observer.finish.4",
+   "objective": "water.observer.finish",
+   "depth": 4,
+   "text": "Use the marked track from the Council Yard or from the lower-bank bend. Then view the copy wherever you placed it."
+  },
+  {
+   "id": "h.water.counter.sources.1",
+   "objective": "water.counter.sources",
+   "depth": 1,
+   "text": "The old Forest counter method can travel with the rehearsal slips."
+  },
+  {
+   "id": "h.water.counter.sources.2",
+   "objective": "water.counter.sources",
+   "depth": 2,
+   "text": "Omi’s slip and its council copy sit near the upper rail. The lower crew has its own slip across the boards."
+  },
+  {
+   "id": "h.water.counter.sources.3",
+   "objective": "water.counter.sources",
+   "depth": 3,
+   "text": "Read who checked each view, then see who carried it. Add the lower crew’s separate observation."
+  },
+  {
+   "id": "h.water.counter.sources.4",
+   "objective": "water.counter.sources",
+   "depth": 4,
+   "text": "Near Omi read the rehearsal slip and council copy. At the lower bank read the lower crew’s independently written check."
+  },
+  {
+   "id": "h.water.counter.compare.1",
+   "objective": "water.counter.compare",
+   "depth": 1,
+   "text": "The council counter keeps runners and observers in different places."
+  },
+  {
+   "id": "h.water.counter.compare.2",
+   "objective": "water.counter.compare",
+   "depth": 2,
+   "text": "Fit the source clip. Try the first bundle where Omi’s slip comes first, then the return bundle where his copy arrives first."
+  },
+  {
+   "id": "h.water.counter.compare.3",
+   "objective": "water.counter.compare",
+   "depth": 3,
+   "text": "Run all three packets in each bundle. Each of the two independent checks records zero."
+  },
+  {
+   "id": "h.water.counter.compare.4",
+   "objective": "water.counter.compare",
+   "depth": 4,
+   "text": "Check why the origin count stays at two even when three people deliver a packet. Keep the after-bell slot open."
+  },
+  {
+   "id": "h.water.counter.finish.1",
+   "objective": "water.counter.finish",
+   "depth": 1,
+   "text": "Choose where the next watcher can see the open check."
+  },
+  {
+   "id": "h.water.counter.finish.2",
+   "objective": "water.counter.finish",
+   "depth": 2,
+   "text": "A bank marker is close to the channel. A docket carries both observer names in the Council Yard."
+  },
+  {
+   "id": "h.water.counter.finish.3",
+   "objective": "water.counter.finish",
+   "depth": 3,
+   "text": "Use the selected display on the lower path or by the council bench."
+  },
+  {
+   "id": "h.water.counter.finish.4",
+   "objective": "water.counter.finish",
+   "depth": 4,
+   "text": "Read the bank marker if you put up the request, or read the docket in the council if you kept the handover there. The board can move the display again."
+  },
+  {
+   "id": "h.water.market.copy.1",
+   "objective": "water.market.copy",
+   "depth": 1,
+   "text": "The next runner needs to know which count goes with this order."
+  },
+  {
+   "id": "h.water.market.copy.2",
+   "objective": "water.market.copy",
+   "depth": 2,
+   "text": "Look in the Council Yard after posting the drought order."
+  },
+  {
+   "id": "h.water.market.copy.3",
+   "objective": "water.market.copy",
+   "depth": 3,
+   "text": "Check either the intake mark by the runner or the blank tally at the steps. It follows the notice you left at the Market."
+  },
+  {
+   "id": "h.water.market.copy.4",
+   "objective": "water.market.copy",
+   "depth": 4,
+   "text": "Read the intake mark near the centre path or the blank tally at the east steps. Each shows what the runner should do if the intake changes."
   }
  ],
  "journal": [
@@ -1349,6 +2481,21 @@
    "id": "j.water.turns",
    "claimKind": "interpretation",
    "text": "The same setting gives a different lower count after the leak is closed. We kept the drought order and the new order beside their own readings and work cards."
+  },
+  {
+   "id": "j.water.routing",
+   "claimKind": "interpretation",
+   "text": "We sent the same pulse through two layouts. The basin showed what neither route took. Omi left the unmet request with the chosen piece so the next crew could see what still needed room."
+  },
+  {
+   "id": "j.water.observer",
+   "claimKind": "interpretation",
+   "text": "We kept a gap for the lower peg’s covered view. The follow-up kept the reading beside the time and standing place that made it possible. The path lets the crews carry those conditions with the copy."
+  },
+  {
+   "id": "j.water.counter",
+   "claimKind": "interpretation",
+   "text": "Sena’s packet came from Omi’s own rehearsal slip. The lower crew’s zero came from a different check. Both reading places stay beside the two source names, and the after-bell slot is ready for a fresh check."
   }
  ],
  "moments": [
@@ -1395,6 +2542,26 @@
    "text": "The repair changed what reached the lower channel. The council kept both orders and corrected the later heading.",
    "if": {
     "objective": "water.finish"
+   }
+  }
+ ],
+ "keepsakeTalks": [
+  {
+   "id": "water-observer-notebook",
+   "keepsake": "observer-notebook",
+   "character": "water-keeper",
+   "node": "water.observer.keeper",
+   "text": "Show Elian’s notebook and ask where this peg can be read.",
+   "if": {
+    "all": [
+     {
+      "flag": "perspective.active",
+      "eq": "observer-notebook"
+     },
+     {
+      "objective": "water.arrival"
+     }
+    ]
    }
   }
  ]

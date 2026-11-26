@@ -35,6 +35,8 @@ export interface UIApi {
   openCopyComparison(edition: string): void;
   openSeaChart(chart: string): void;
   openStageRehearsal(): void;
+  openFilmCamera(station: string): void;
+  openFilmEditor(): void;
   openMarketScale(): void;
   openWaterGate(): void;
   openCivicConsole(): void;

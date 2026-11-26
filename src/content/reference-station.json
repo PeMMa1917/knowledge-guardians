@@ -1,0 +1,1513 @@
+{
+  "characters": [
+    {
+      "id": "reference-keeper-cerin",
+      "name": "Cerin Fallow",
+      "role": "Headland reference bench fitter",
+      "sprite": "villager-1",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "objective": "refstation.proof"
+          },
+          "node": "refstation.hello.finish"
+        },
+        {
+          "if": {
+            "objective": "window.proof"
+          },
+          "node": "refstation.hello.borrowed"
+        },
+        {
+          "node": "refstation.hello"
+        }
+      ]
+    },
+    {
+      "id": "reference-observer-loen",
+      "name": "Loen Varn",
+      "role": "Headland shift recorder",
+      "sprite": "villager-2",
+      "mode": "fictional",
+      "talk": [
+        {
+          "node": "refstation.loen"
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "refstation.hello",
+      "speaker": "reference-keeper-cerin",
+      "text": "The coast board says the line moved and the sender must be nearby. I asked which line. The fitter sent me a round drawing. Before we use the note, check our reference pegs and try two readings with the same frame.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "refstation.hello.borrowed",
+      "speaker": "reference-keeper-cerin",
+      "text": "Cado’s window receipt keeps the edge beside the view. Put a second edge mark on these practice boards when you change your side. It will still be there when Loen reads what you send.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "refstation.hello.finish",
+      "speaker": "reference-keeper-cerin",
+      "text": "Loen has put the surviving measurements with their dates and receiver. The help line now points to the exact side of the ridge. The old “sender nearby” card stays in the drawer.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "refstation.loen",
+      "speaker": "reference-observer-loen",
+      "text": "The words change jobs when they reach my rail. I need to know what was seen at the coast and what I still have to repeat. My ruler got more mail than I did at the last bell.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "refstation.globe",
+      "speaker": "reference-keeper-cerin",
+      "text": "Lahore, 1663, reconstructed reading bench. Diya’ ad-Din Muhammad’s globe carries star positions on its outside. Our marker globe uses three plain study marks. Keep the silver dot fixed and look from the maker’s outside line and from the viewer’s inside copy.",
+      "historicalLabel": "reconstruction",
+      "options": [
+        {
+          "text": "Swing the reference frame to the maker’s outside line.",
+          "effects": [
+            {
+              "setFlag": "refstation.globe",
+              "value": "outside"
+            }
+          ],
+          "next": "refstation.globe.outside",
+          "if": {
+            "not": {
+              "flag": "refstation.seen.outside",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Swing the reference frame to the viewer’s inside copy.",
+          "effects": [
+            {
+              "setFlag": "refstation.globe",
+              "value": "inside"
+            }
+          ],
+          "next": "refstation.globe.inside",
+          "if": {
+            "not": {
+              "flag": "refstation.seen.inside",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Leave the silver peg in place."
+        }
+      ],
+      "claimKind": "simulation"
+    },
+    {
+      "id": "refstation.globe.outside",
+      "speaker": "narrator",
+      "text": "The reference peg stays under the silver dot. Walk to the outside mark and check the order across the frame.",
+      "historicalLabel": "reconstruction",
+      "claimKind": "simulation"
+    },
+    {
+      "id": "refstation.globe.inside",
+      "speaker": "narrator",
+      "text": "The same three marks are framed as seen from inside. Move to the inside witness strip and read from its left edge.",
+      "historicalLabel": "reconstruction",
+      "claimKind": "simulation"
+    },
+    {
+      "id": "refstation.tube",
+      "speaker": "reference-keeper-cerin",
+      "text": "Cambridge case, 1896–97, reconstructed trace table. Thomson recorded changes in the path he was testing. This bench uses printed traces. Keep the ruled strip and centre mark fixed. Move the comparison slider to each marked side and view the result from its numbered peg.",
+      "historicalLabel": "reconstruction",
+      "options": [
+        {
+          "text": "Slide the trace card to the first reference position.",
+          "effects": [
+            {
+              "setFlag": "refstation.tube",
+              "value": "left"
+            }
+          ],
+          "next": "refstation.tube.left",
+          "if": {
+            "not": {
+              "flag": "refstation.seen.left",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Slide the trace card to the opposite reference position.",
+          "effects": [
+            {
+              "setFlag": "refstation.tube",
+              "value": "right"
+            }
+          ],
+          "next": "refstation.tube.right",
+          "if": {
+            "not": {
+              "flag": "refstation.seen.right",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Leave the printed centre in place."
+        }
+      ],
+      "claimKind": "simulation"
+    },
+    {
+      "id": "refstation.tube.left",
+      "speaker": "narrator",
+      "text": "The grey reference remains in the middle. Read the marked position of the changed trace at the first peg.",
+      "historicalLabel": "reconstruction",
+      "claimKind": "simulation"
+    },
+    {
+      "id": "refstation.tube.right",
+      "speaker": "narrator",
+      "text": "The same reference line stays fixed. Read the changed trace again at the second peg.",
+      "historicalLabel": "reconstruction",
+      "claimKind": "simulation"
+    },
+    {
+      "id": "refstation.horn",
+      "speaker": "reference-keeper-cerin",
+      "text": "Holmdel, 1964–65, reconstructed listening bench. Penzias and Wilson checked their receiver and direction while tracking a persistent reading. A Princeton group proposed its explanation separately. Record our paper receiver’s blank, ridge and open-sky strips at the same interval.",
+      "historicalLabel": "reconstruction",
+      "options": [
+        {
+          "text": "Put the blank reference strip in the reader.",
+          "effects": [
+            {
+              "setFlag": "refstation.horn",
+              "value": "blank"
+            }
+          ],
+          "next": "refstation.horn.blank",
+          "if": {
+            "not": {
+              "flag": "refstation.seen.blank",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Put the ridge-facing strip in the reader.",
+          "effects": [
+            {
+              "setFlag": "refstation.horn",
+              "value": "ridge"
+            }
+          ],
+          "next": "refstation.horn.ridge",
+          "if": {
+            "not": {
+              "flag": "refstation.seen.ridge",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Put the open-sky strip in the reader.",
+          "effects": [
+            {
+              "setFlag": "refstation.horn",
+              "value": "sky"
+            }
+          ],
+          "next": "refstation.horn.sky",
+          "if": {
+            "not": {
+              "flag": "refstation.seen.sky",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Leave the reader ready for a later check."
+        }
+      ],
+      "claimKind": "simulation"
+    },
+    {
+      "id": "refstation.horn.blank",
+      "speaker": "narrator",
+      "text": "The blank strip shows the paper receiver’s own baseline for one interval. Check it at the right reading stop.",
+      "historicalLabel": "reconstruction",
+      "claimKind": "simulation"
+    },
+    {
+      "id": "refstation.horn.ridge",
+      "speaker": "narrator",
+      "text": "The ridge strip records one interval. Keep its reference slot beside it when you copy the value.",
+      "historicalLabel": "reconstruction",
+      "claimKind": "simulation"
+    },
+    {
+      "id": "refstation.horn.sky",
+      "speaker": "narrator",
+      "text": "The sky strip records an equal interval, with a different direction. Check it at the same stop.",
+      "historicalLabel": "reconstruction",
+      "claimKind": "simulation"
+    },
+    {
+      "id": "refstation.send",
+      "speaker": "reference-keeper-cerin",
+      "text": "A line moved relative to its peg at the trace bench. The receiver’s excess stayed in the two directions we tested. The local guide wants a service notice now. Loen can take a longer shift and test an independent reader. Keep the source of the extra reading open either way.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Post the local reading and its next check at the low rail.",
+          "effects": [
+            {
+              "setFlag": "refstation.plan",
+              "value": "local"
+            }
+          ],
+          "next": "refstation.posted.local"
+        },
+        {
+          "text": "Send the three strips for Loen’s independent reading.",
+          "effects": [
+            {
+              "setFlag": "refstation.plan",
+              "value": "repeat"
+            }
+          ],
+          "next": "refstation.posted.repeat"
+        },
+        {
+          "text": "Keep the board open while I check the stations again."
+        }
+      ]
+    },
+    {
+      "id": "refstation.posted.local",
+      "speaker": "narrator",
+      "text": "The local slip shows one unit at baseline and three in both positions. It gives a date and the positions. The independent reader stays above the rail for the next turn.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "refstation.posted.repeat",
+      "speaker": "narrator",
+      "text": "The first notice directs readers to Loen’s waiting clip. Loen keeps our strips separate and uses the upper reader’s own reference.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "refstation.proof.local",
+      "speaker": "reference-observer-loen",
+      "text": "The coast crew has the local readings at the first rail. The guide can open a new check here when the upper post is ready. I left a clean place for that second record.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Record the used notice and the pending repeat.",
+          "effects": [
+            {
+              "setFlag": "refstation.proof",
+              "value": "local"
+            }
+          ]
+        },
+        {
+          "text": "Leave the receipt unmarked."
+        }
+      ]
+    },
+    {
+      "id": "refstation.proof.repeat",
+      "speaker": "reference-observer-loen",
+      "text": "The second paper receiver has a different baseline. Set its own reference first. Then take the same ridge and sky views. The first crew’s strips keep their own witness marks.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Align the second reader at its own reference mark.",
+          "effects": [
+            {
+              "setFlag": "refstation.second",
+              "value": true
+            }
+          ],
+          "next": "refstation.proof.aligned"
+        },
+        {
+          "text": "Leave the second reader to warm at its stand."
+        }
+      ]
+    },
+    {
+      "id": "refstation.proof.aligned",
+      "speaker": "narrator",
+      "text": "The second reference is secured. Walk to Loen’s result strip to compare all three values for this reader.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "refstation.publish.repeat",
+      "speaker": "reference-observer-loen",
+      "text": "The upper reader gives two on the blank and four from each view. The difference stays two for this second practice instrument. That helps the reader see a repeat. We still need another source to say what produced it.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Post the separate repeat with both baselines.",
+          "effects": [
+            {
+              "setFlag": "refstation.proof",
+              "value": "repeat"
+            }
+          ]
+        },
+        {
+          "text": "Keep the verified sheets at the desk."
+        }
+      ]
+    },
+    {
+      "id": "refstation.return.globe",
+      "speaker": "reference-keeper-cerin",
+      "text": "The archive’s passage board faces two approaches. With the globe in your kit I can turn a little copy around the fixed silver room pin. Try looking from the west reading path and from the door approach before I hang it.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Turn the notice toward the reading path.",
+          "effects": [
+            {
+              "setFlag": "refstation.return.globe.view",
+              "value": "west"
+            }
+          ],
+          "next": "refstation.return.globe.west",
+          "if": {
+            "not": {
+              "flag": "refstation.return.globe.west",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Turn the same notice toward the door approach.",
+          "effects": [
+            {
+              "setFlag": "refstation.return.globe.view",
+              "value": "east"
+            }
+          ],
+          "next": "refstation.return.globe.east",
+          "if": {
+            "not": {
+              "flag": "refstation.return.globe.east",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Keep the room pin in its hole."
+        }
+      ]
+    },
+    {
+      "id": "refstation.return.globe.west",
+      "speaker": "narrator",
+      "text": "The silver room pin stays. From the reading path the storage hook appears beyond it.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "refstation.return.globe.east",
+      "speaker": "narrator",
+      "text": "The room pin stays. From the door the hook is on the other side of the room pin.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "refstation.return.globe.post",
+      "speaker": "reference-keeper-cerin",
+      "text": "The two visitors come in different ways. Both need the room pin. Decide which approach gets the main board and leave a smaller tab for the other.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Hang the large board along the west reading path.",
+          "effects": [
+            {
+              "setFlag": "refstation.return.globe.done",
+              "value": "west"
+            }
+          ]
+        },
+        {
+          "text": "Hang the large board at the east approach.",
+          "effects": [
+            {
+              "setFlag": "refstation.return.globe.done",
+              "value": "east"
+            }
+          ]
+        },
+        {
+          "text": "Leave the board ready for both readers."
+        }
+      ]
+    },
+    {
+      "id": "refstation.return.tube",
+      "speaker": "reference-keeper-cerin",
+      "text": "The Fold tally says the load mark is drifting. The keeper has a wall nail and a loose sheet. Move each thing in turn and read from the same nail. Your instrument’s record gives us two different marks to keep apart.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Shift the loose copied sheet while the load peg stays.",
+          "effects": [
+            {
+              "setFlag": "refstation.return.tube.view",
+              "value": "sheet"
+            }
+          ],
+          "next": "refstation.return.tube.sheet",
+          "if": {
+            "not": {
+              "flag": "refstation.return.tube.sheet",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Hold the sheet still and move the separate practice load peg.",
+          "effects": [
+            {
+              "setFlag": "refstation.return.tube.view",
+              "value": "load"
+            }
+          ],
+          "next": "refstation.return.tube.load",
+          "if": {
+            "not": {
+              "flag": "refstation.return.tube.load",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Leave the check at the wall nail."
+        }
+      ]
+    },
+    {
+      "id": "refstation.return.tube.sheet",
+      "speaker": "narrator",
+      "text": "The writing moves past the viewing strip. The load peg still sits under the nail.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "refstation.return.tube.load",
+      "speaker": "narrator",
+      "text": "The writing can stay aligned. The practice load peg now stands beyond the nail.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "refstation.return.tube.post",
+      "speaker": "reference-keeper-cerin",
+      "text": "The two moves leave different records. The porter wants a quick check at the nail. The next reader can also use the two traced positions at the desk.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Put a tally with the fixed nail on the porter’s rail.",
+          "effects": [
+            {
+              "setFlag": "refstation.return.tube.done",
+              "value": "rail"
+            }
+          ]
+        },
+        {
+          "text": "File the two comparisons beside their different moving parts.",
+          "effects": [
+            {
+              "setFlag": "refstation.return.tube.done",
+              "value": "desk"
+            }
+          ]
+        },
+        {
+          "text": "Keep both comparison strips here."
+        }
+      ]
+    },
+    {
+      "id": "refstation.return.horn",
+      "speaker": "reference-observer-loen",
+      "text": "Two tide notes agree. Both came from the same reader copy. Use the horn’s case to keep a separate reference. Open the local envelope first or ask the signalkeeper for their independent stamp.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Unfold the copied notes at the signal bench.",
+          "effects": [
+            {
+              "setFlag": "refstation.return.horn.view",
+              "value": "copy"
+            }
+          ],
+          "next": "refstation.return.horn.copy",
+          "if": {
+            "not": {
+              "flag": "refstation.return.horn.copy",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Ask for the independent entry at the east post.",
+          "effects": [
+            {
+              "setFlag": "refstation.return.horn.view",
+              "value": "watch"
+            }
+          ],
+          "next": "refstation.return.horn.watch",
+          "if": {
+            "not": {
+              "flag": "refstation.return.horn.watch",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Leave the tray ready for another visit."
+        }
+      ]
+    },
+    {
+      "id": "refstation.return.horn.copy",
+      "speaker": "narrator",
+      "text": "Both slips have the same source cut. The second is a tracing of the first.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "refstation.return.horn.watch",
+      "speaker": "narrator",
+      "text": "The separate post has its own date and blank reference. The recorder lists the observation separately.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "refstation.return.horn.post",
+      "speaker": "reference-observer-loen",
+      "text": "The copied slips need a shared source bracket. The independent stamp can go on the main signal or stay at the separate desk for checking.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Pin the two sources next to the harbour handover.",
+          "effects": [
+            {
+              "setFlag": "refstation.return.horn.done",
+              "value": "side"
+            }
+          ]
+        },
+        {
+          "text": "Put the independent stamp in its own keeping slot.",
+          "effects": [
+            {
+              "setFlag": "refstation.return.horn.done",
+              "value": "slot"
+            }
+          ]
+        },
+        {
+          "text": "Keep the notes ready at the bench."
+        }
+      ]
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH4-R22",
+      "world": "WORLD-05",
+      "title": "The Line That Stayed",
+      "available": {
+        "flag": "coast.arrived",
+        "eq": true
+      },
+      "stake": "The coast crew might report a nearby sender from an unchecked reference, or wait for another shift while carriers rely on an old notice.",
+      "knowledgeQuestion": "How can a fixed reference help an observer distinguish a real change from a changed view?",
+      "objectives": [
+        {
+          "id": "refstation.globe",
+          "title": "Follow the same silver peg from two sides of a frame.",
+          "done": {
+            "all": [
+              {
+                "flag": "refstation.seen.outside",
+                "eq": true
+              },
+              {
+                "flag": "refstation.seen.inside",
+                "eq": true
+              },
+              {
+                "flag": "refstation.globe.cites",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "flag": "coast.arrived",
+            "eq": true
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.refstation.globe"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "culture",
+              "perspective",
+              "objectivity"
+            ],
+            "framework": [
+              "scope",
+              "perspectives",
+              "methods-and-tools"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "NAT",
+              "HIS",
+              "ART"
+            ],
+            "subjects": [
+              "history",
+              "visual-arts",
+              "physics"
+            ],
+            "minutes": 4,
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "solo": "relational",
+              "fink": "application"
+            }
+          }
+        },
+        {
+          "id": "refstation.tube",
+          "title": "Keep the centre fixed and check both changed trace positions.",
+          "done": {
+            "all": [
+              {
+                "flag": "refstation.seen.left",
+                "eq": true
+              },
+              {
+                "flag": "refstation.seen.right",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "flag": "coast.arrived",
+            "eq": true
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.refstation.tube"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "certainty",
+              "explanation",
+              "objectivity"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "NAT",
+              "HIS",
+              "ART"
+            ],
+            "subjects": [
+              "history",
+              "physics",
+              "design-tech"
+            ],
+            "minutes": 4,
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "solo": "relational",
+              "fink": "application"
+            }
+          }
+        },
+        {
+          "id": "refstation.horn",
+          "title": "Record a blank and compare two directions at one interval.",
+          "done": {
+            "all": [
+              {
+                "flag": "refstation.seen.blank",
+                "eq": true
+              },
+              {
+                "flag": "refstation.seen.ridge",
+                "eq": true
+              },
+              {
+                "flag": "refstation.seen.sky",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "flag": "coast.arrived",
+            "eq": true
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.refstation.horn"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "truth",
+              "justification",
+              "certainty",
+              "explanation"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "NAT",
+              "HIS",
+              "ART"
+            ],
+            "subjects": [
+              "physics",
+              "history",
+              "ess"
+            ],
+            "minutes": 5,
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "solo": "relational",
+              "fink": "application"
+            }
+          }
+        },
+        {
+          "id": "refstation.proof",
+          "title": "Read the notice or verify an independent repeat on the Headland.",
+          "done": {
+            "flagSet": "refstation.proof"
+          },
+          "visible": {
+            "all": [
+              {
+                "objective": "refstation.globe"
+              },
+              {
+                "objective": "refstation.tube"
+              },
+              {
+                "objective": "refstation.horn"
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.refstation.proof"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "responsibility",
+              "values",
+              "justification",
+              "power",
+              "perspective",
+              "truth"
+            ],
+            "framework": [
+              "scope",
+              "ethics",
+              "perspectives",
+              "methods-and-tools"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "NAT",
+              "HIS",
+              "ART"
+            ],
+            "subjects": [
+              "physics",
+              "design-tech",
+              "lang-lit"
+            ],
+            "minutes": 5,
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "solo": "relational",
+              "fink": "integration"
+            }
+          }
+        },
+        {
+          "id": "refstation.return.globe",
+          "title": "Test the marked room from both archive approaches.",
+          "done": {
+            "all": [
+              {
+                "objective": "refstation.globe"
+              },
+              {
+                "flagSet": "refstation.return.globe.done"
+              }
+            ]
+          },
+          "visible": {
+            "objective": "refstation.globe"
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.refstation.return.globe"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "perspective",
+              "responsibility",
+              "values"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "NAT",
+              "HIS",
+              "ART"
+            ],
+            "subjects": [
+              "history",
+              "geography",
+              "visual-arts"
+            ],
+            "minutes": 3,
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "solo": "relational",
+              "fink": "application"
+            }
+          }
+        },
+        {
+          "id": "refstation.return.tube",
+          "title": "Check what moves against the Fold wall nail.",
+          "done": {
+            "all": [
+              {
+                "objective": "refstation.tube"
+              },
+              {
+                "flagSet": "refstation.return.tube.done"
+              }
+            ]
+          },
+          "visible": {
+            "objective": "refstation.tube"
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.refstation.return.tube"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "objectivity",
+              "evidence",
+              "certainty",
+              "explanation"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "NAT",
+              "HIS",
+              "ART"
+            ],
+            "subjects": [
+              "design-tech",
+              "physics",
+              "history"
+            ],
+            "minutes": 3,
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "solo": "relational",
+              "fink": "application"
+            }
+          }
+        },
+        {
+          "id": "refstation.return.horn",
+          "title": "Trace the shared copy and independent stamp at the harbour.",
+          "done": {
+            "all": [
+              {
+                "objective": "refstation.horn"
+              },
+              {
+                "flagSet": "refstation.return.horn.done"
+              }
+            ]
+          },
+          "visible": {
+            "objective": "refstation.horn"
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.refstation.return.horn"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "justification",
+              "explanation",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "ethics"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "NAT",
+              "HIS",
+              "ART"
+            ],
+            "subjects": [
+              "physics",
+              "history",
+              "digital-society"
+            ],
+            "minutes": 3,
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "solo": "relational",
+              "fink": "application"
+            }
+          }
+        }
+      ],
+      "caseVisits": [
+        [
+          "refstation.return.globe"
+        ],
+        [
+          "refstation.return.tube"
+        ],
+        [
+          "refstation.return.horn"
+        ]
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.refstation.globe.1",
+      "objective": "refstation.globe",
+      "depth": 1,
+      "text": "The frame and its maker each have a place."
+    },
+    {
+      "id": "h.refstation.globe.2",
+      "objective": "refstation.globe",
+      "depth": 2,
+      "text": "The globe case gives the date and maker."
+    },
+    {
+      "id": "h.refstation.globe.3",
+      "objective": "refstation.globe",
+      "depth": 3,
+      "text": "Leave the silver peg fixed when you change sides."
+    },
+    {
+      "id": "h.refstation.globe.4",
+      "objective": "refstation.globe",
+      "depth": 4,
+      "text": "Try the outside and inside frame settings at the globe bench. Read each at its own witness strip."
+    },
+    {
+      "id": "h.refstation.tube.1",
+      "objective": "refstation.tube",
+      "depth": 1,
+      "text": "One fixed mark lets you tell what moved."
+    },
+    {
+      "id": "h.refstation.tube.2",
+      "objective": "refstation.tube",
+      "depth": 2,
+      "text": "Open Thomson’s original apparatus record."
+    },
+    {
+      "id": "h.refstation.tube.3",
+      "objective": "refstation.tube",
+      "depth": 3,
+      "text": "Move the printed trial trace to each setting."
+    },
+    {
+      "id": "h.refstation.tube.4",
+      "objective": "refstation.tube",
+      "depth": 4,
+      "text": "Walk to the numbered peg after setting each comparison. Use the same centre line."
+    },
+    {
+      "id": "h.refstation.horn.1",
+      "objective": "refstation.horn",
+      "depth": 1,
+      "text": "The blank is a separate record."
+    },
+    {
+      "id": "h.refstation.horn.2",
+      "objective": "refstation.horn",
+      "depth": 2,
+      "text": "Read what was built for Project Echo and later measured."
+    },
+    {
+      "id": "h.refstation.horn.3",
+      "objective": "refstation.horn",
+      "depth": 3,
+      "text": "The receiver can register a baseline even without a view direction."
+    },
+    {
+      "id": "h.refstation.horn.4",
+      "objective": "refstation.horn",
+      "depth": 4,
+      "text": "Compare all three strips at the marked reading stop. Keep the same interval on the written tags."
+    },
+    {
+      "id": "h.refstation.proof.1",
+      "objective": "refstation.proof",
+      "depth": 1,
+      "text": "The next shift has two ways to check the excess."
+    },
+    {
+      "id": "h.refstation.proof.2",
+      "objective": "refstation.proof",
+      "depth": 2,
+      "text": "The low rail can use a dated first report. Loen’s separate reader takes another check."
+    },
+    {
+      "id": "h.refstation.proof.3",
+      "objective": "refstation.proof",
+      "depth": 3,
+      "text": "Both routes keep an explanation open."
+    },
+    {
+      "id": "h.refstation.proof.4",
+      "objective": "refstation.proof",
+      "depth": 4,
+      "text": "Choose where to send the strips. On the Headland verify the corresponding readback, including the second reference if you send a repeat."
+    },
+    {
+      "id": "h.refstation.return.globe.1",
+      "objective": "refstation.return.globe",
+      "depth": 1,
+      "text": "Revisit the Bell Archive with the globe equipped."
+    },
+    {
+      "id": "h.refstation.return.globe.2",
+      "objective": "refstation.return.globe",
+      "depth": 2,
+      "text": "Work beside the archive route frame."
+    },
+    {
+      "id": "h.refstation.return.globe.3",
+      "objective": "refstation.return.globe",
+      "depth": 3,
+      "text": "Try both approaches with the same room pin."
+    },
+    {
+      "id": "h.refstation.return.globe.4",
+      "objective": "refstation.return.globe",
+      "depth": 4,
+      "text": "Check both views and pin the board for one approach. Check the durable cue for the other."
+    },
+    {
+      "id": "h.refstation.return.tube.1",
+      "objective": "refstation.return.tube",
+      "depth": 1,
+      "text": "Revisit Marl Fold with Thomson’s exhibit equipped."
+    },
+    {
+      "id": "h.refstation.return.tube.2",
+      "objective": "refstation.return.tube",
+      "depth": 2,
+      "text": "Use the loose sheet and load peg at the two clips."
+    },
+    {
+      "id": "h.refstation.return.tube.3",
+      "objective": "refstation.return.tube",
+      "depth": 3,
+      "text": "The same wall nail lets you tell which part moved."
+    },
+    {
+      "id": "h.refstation.return.tube.4",
+      "objective": "refstation.return.tube",
+      "depth": 4,
+      "text": "Read both changed views, then leave the fixed nail check or file the two traces."
+    },
+    {
+      "id": "h.refstation.return.horn.1",
+      "objective": "refstation.return.horn",
+      "depth": 1,
+      "text": "Revisit Slate Harbour with the Holmdel Horn record equipped."
+    },
+    {
+      "id": "h.refstation.return.horn.2",
+      "objective": "refstation.return.horn",
+      "depth": 2,
+      "text": "The signal copy bench uncovers while you carry its method."
+    },
+    {
+      "id": "h.refstation.return.horn.3",
+      "objective": "refstation.return.horn",
+      "depth": 3,
+      "text": "Open the two notes and look at the independent stamp."
+    },
+    {
+      "id": "h.refstation.return.horn.4",
+      "objective": "refstation.return.horn",
+      "depth": 4,
+      "text": "Clip both sources together at the handover or leave the independent record in its own slot."
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.refstation.globe",
+      "claimKind": "observation",
+      "text": "I kept the same silver mark in both views. The order I read on the frame changed when I moved to the other side."
+    },
+    {
+      "id": "j.refstation.tube",
+      "claimKind": "observation",
+      "text": "The grey centre was fixed. Changing the position changed the printed trace in a check I could repeat."
+    },
+    {
+      "id": "j.refstation.horn",
+      "claimKind": "observation",
+      "text": "Both direction strips exceeded this reader’s own baseline by the same amount. The exercise keeps the explanation of that excess open."
+    },
+    {
+      "id": "j.refstation.proof",
+      "claimKind": "observation",
+      "text": "I left the checked readings with the next observer. We kept the first receiver and any second baseline as their own records."
+    },
+    {
+      "id": "j.refstation.return.globe",
+      "claimKind": "observation",
+      "text": "I kept the same room pin visible when I turned the board for two routes. One reading approach uses a smaller tab."
+    },
+    {
+      "id": "j.refstation.return.tube",
+      "claimKind": "observation",
+      "text": "The loose drawing could move over the fixed mark. The load peg could move by itself. The Fold can now read the two changes separately."
+    },
+    {
+      "id": "j.refstation.return.horn",
+      "claimKind": "observation",
+      "text": "I kept the two copied readings with their common source and found a separate date and baseline at the east post."
+    }
+  ],
+  "sources": [
+    {
+      "id": "HIS-REFSTATION-GLOBE",
+      "title": "Celestial globe, T.1890.330",
+      "url": "https://www.nms.ac.uk/collections/search/object?entry=204058",
+      "locator": "Exact public collection record 204058. Production, materials, description and references.",
+      "supports": "Identifies T.1890.330 as the brass globe with silver star positions by Diya’ ad-Din Muhammad in Lahore, dated 1663.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Celestial globe, T.1890.330",
+        "container": "National Museums Scotland",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-REFSTATION-GLOBE-STUDY",
+      "title": "Islamicate Celestial Globes: Their History, Construction, and Use",
+      "url": "https://repository.si.edu/items/0d9cfccc-b8c0-44b6-a132-dd055de3aeaf",
+      "locator": "Pages 40–42, 84, 91, 230–231 and the inventory index. See entry 27 and figures 16 and 35.",
+      "supports": "Classifies its no. 27 as seamless and illustrates a plug. The study gives inventory 1890-331, which differs from the museum’s current T.1890.330.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Islamicate Celestial Globes: Their History, Construction, and Use",
+        "container": "Smithsonian Studies in History and Technology",
+        "showAccessDate": true,
+        "author": "Savage-Smith, Emilie"
+      }
+    },
+    {
+      "id": "HIS-REFSTATION-THOMSON",
+      "title": "Tube used in the discovery of the electron, about 1896",
+      "url": "https://collection.sciencemuseumgroup.org.uk/objects/co5644/tube-used-in-the-discovery-of-the-electron-about-1896",
+      "locator": "Parent object number 1901-51, Cambridge date, original description and part 1901-51/1.",
+      "supports": "Identifies Thomson’s original dated Cambridge e/m apparatus and its glass tube component in the series of experiments leading to the 1897 discovery.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Tube used in the discovery of the electron, about 1896",
+        "container": "Science Museum Group",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-REFSTATION-HORN",
+      "title": "Horn Antenna, NRIS 89002457",
+      "url": "https://npgallery.nps.gov/AssetDetail/NRIS/89002457",
+      "locator": "Site title, NRIS identifier, significant years, role of architect and Holmdel location.",
+      "supports": "Identifies the exact structure in Holmdel, New Jersey, with significant years 1964–1965 and A. B. Crawford listed as architect.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Horn Antenna, NRIS 89002457",
+        "container": "U.S. National Park Service",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-REFSTATION-HORN-NOM",
+      "title": "Horn Antenna National Register nomination",
+      "url": "https://npgallery.nps.gov/GetAsset/c36a0110-7d0d-424f-b127-0f693e7cb9a6/",
+      "locator": "Sections 7 and 8. Construction for Project Echo, later receiver checks and separate research groups.",
+      "supports": "Gives the 1959 construction for Project Echo, the 1964 receiver work by Penzias and Wilson, and the separate Princeton explanation.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Horn Antenna National Register nomination",
+        "container": "U.S. National Park Service",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-REFSTATION-HORN-PAPER",
+      "title": "A Measurement of Excess Antenna Temperature at 4080 Mc/s.",
+      "url": "https://api.crossref.org/works/10.1086/148307",
+      "locator": "Journal article record, publication date and author fields.",
+      "supports": "Identifies the separate July 1965 research note of Penzias and Wilson about measured excess antenna temperature.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "A Measurement of Excess Antenna Temperature at 4080 Mc/s.",
+        "container": "The Astrophysical Journal",
+        "showAccessDate": true,
+        "author": "Penzias, A. A., and R. W. Wilson"
+      }
+    },
+    {
+      "id": "HIS-REFSTATION-BELL",
+      "title": "Is There Anybody Out There? Proving the Big Bang Theory",
+      "url": "https://www.nokia.com/blog/is-there-anybody-out-there-proving-the-big-bang-theory/",
+      "locator": "Nokia Bell Labs retrospective, paragraph on the 1964 receiver calibration.",
+      "supports": "Names the Holmdel apparatus and describes a persistent background observed in calibration by Penzias and Wilson in 1964.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Is There Anybody Out There? Proving the Big Bang Theory",
+        "container": "Nokia Bell Labs",
+        "showAccessDate": true
+      }
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-REFSTATION-NMS-T1890330",
+      "name": "Diya’ ad-Din Muhammad’s celestial globe · T.1890.330",
+      "art": "refstation.case.globe",
+      "historicalLabel": "documented",
+      "dateText": "1663",
+      "dateKind": "Production date in the current museum record.",
+      "summary": "National Museums Scotland identifies this brass globe by Diya’ ad-Din Muhammad, made in Lahore in 1663. Silver points mark stars among traditional Islamic constellation figures.",
+      "sources": [
+        "HIS-REFSTATION-GLOBE",
+        "HIS-REFSTATION-GLOBE-STUDY"
+      ],
+      "grantsCard": "card.refstation.globe",
+      "altText": "Original schematic. Golden globe with silver dots and curved engraved lines, set above a small support. Its marks are schematic.",
+      "specimen": {
+        "key": "nms:t.1890.330",
+        "institution": "National Museums Scotland",
+        "accession": "T.1890.330",
+        "source": "HIS-REFSTATION-GLOBE",
+        "objective": "refstation.globe",
+        "revisit": {
+          "map": "observatory.archive",
+          "prop": "refstation-revisit-globe",
+          "method": "Keep the room pin fixed while turning the route board.",
+          "hint": "The Bell Archive has a route board between its west path and the entrance. Equip the globe to try both viewpoints."
+        }
+      }
+    },
+    {
+      "id": "OBJ-REFSTATION-SMG-1901-51",
+      "name": "J. J. Thomson’s Cambridge cathode-ray apparatus · 1901-51",
+      "art": "refstation.case.tube",
+      "historicalLabel": "documented",
+      "dateText": "About 1896",
+      "dateKind": "Catalogue date of the apparatus. The reported electron work is dated 1897.",
+      "summary": "Science Museum Group identifies this original apparatus by Joseph John Thomson, made in Cambridge about 1896. Its glass tube is listed under 1901-51/1. The museum identifies this tube as one used in the experiments leading to the 1897 discovery of the electron.",
+      "sources": [
+        "HIS-REFSTATION-THOMSON"
+      ],
+      "grantsCard": "card.refstation.tube",
+      "altText": "Original schematic. A translucent rounded glass form with a long pale section on a dark museum support.",
+      "specimen": {
+        "key": "smg:1901-51",
+        "institution": "Science Museum Group",
+        "accession": "1901-51",
+        "source": "HIS-REFSTATION-THOMSON",
+        "objective": "refstation.tube",
+        "revisit": {
+          "map": "observatory.inland",
+          "prop": "refstation-revisit-tube",
+          "method": "Separate a moving copy from a moved practice load against one fixed nail.",
+          "hint": "Equip the tube at Marl Fold and look for the loose drawing beside a fixed mark on the west wall."
+        }
+      }
+    },
+    {
+      "id": "OBJ-REFSTATION-NHL-89002457",
+      "name": "Holmdel Horn Antenna · 89002457",
+      "art": "refstation.case.horn",
+      "historicalLabel": "documented",
+      "dateText": "1959 construction. 1964–1965 observations and publication.",
+      "dateKind": "Project Echo construction preceded the 1964 receiver work. Penzias and Wilson published their measurement in July 1965.",
+      "summary": "The National Register identifies the structure at Holmdel, New Jersey. Its nomination dates construction for Project Echo to 1959. Penzias and Wilson later investigated a persistent excess with this antenna and published their measurement in 1965.",
+      "sources": [
+        "HIS-REFSTATION-HORN",
+        "HIS-REFSTATION-HORN-NOM",
+        "HIS-REFSTATION-HORN-PAPER",
+        "HIS-REFSTATION-BELL"
+      ],
+      "grantsCard": "card.refstation.horn",
+      "altText": "Original schematic. Large flared outline on a simple support against a dark listening-sky background.",
+      "specimen": {
+        "key": "nps:89002457",
+        "institution": "U.S. National Park Service",
+        "accession": "89002457",
+        "source": "HIS-REFSTATION-HORN",
+        "objective": "refstation.horn",
+        "revisit": {
+          "map": "observatory.harbour",
+          "prop": "refstation-revisit-horn",
+          "method": "Check whether matching tide notes share the same source.",
+          "hint": "Equip the Holmdel Horn record at Slate Harbour. Follow the copy bench to its independent east-post stamp."
+        }
+      }
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.refstation.globe",
+      "title": "Diya’ ad-Din Muhammad’s celestial globe · T.1890.330",
+      "text": "National Museums Scotland identifies this brass globe by Diya’ ad-Din Muhammad, made in Lahore in 1663. Silver points mark stars among traditional Islamic constellation figures.",
+      "historicalLabel": "documented",
+      "claimKind": "observation",
+      "sources": [
+        "HIS-REFSTATION-GLOBE",
+        "HIS-REFSTATION-GLOBE-STUDY"
+      ],
+      "limits": "The current entry leaves its construction method open. The cited study gives inventory 1890-331 for its seamless globe no. 27. Keep both identifiers visible until their relationship is confirmed."
+    },
+    {
+      "id": "card.refstation.tube",
+      "title": "J. J. Thomson’s Cambridge cathode-ray apparatus · 1901-51",
+      "text": "Science Museum Group identifies this original apparatus by Joseph John Thomson, made in Cambridge about 1896. Its glass tube is listed under 1901-51/1. The museum identifies this tube as one used in the experiments leading to the 1897 discovery of the electron.",
+      "historicalLabel": "documented",
+      "claimKind": "observation",
+      "sources": [
+        "HIS-REFSTATION-THOMSON"
+      ],
+      "limits": "The museum record identifies an apparatus and its experimental purpose. The results belong to measurements made in the series of experiments."
+    },
+    {
+      "id": "card.refstation.horn",
+      "title": "Holmdel Horn Antenna · 89002457",
+      "text": "The National Register identifies the structure at Holmdel, New Jersey. Its nomination dates construction for Project Echo to 1959. Penzias and Wilson later investigated a persistent excess with this antenna and published their measurement in 1965.",
+      "historicalLabel": "documented",
+      "claimKind": "observation",
+      "sources": [
+        "HIS-REFSTATION-HORN",
+        "HIS-REFSTATION-HORN-NOM",
+        "HIS-REFSTATION-HORN-PAPER",
+        "HIS-REFSTATION-BELL"
+      ],
+      "limits": "The structure records where a measurement was made. The observation and the model used to explain it have separate documentary records."
+    }
+  ]
+}

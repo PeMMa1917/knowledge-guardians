@@ -1,0 +1,16 @@
+.half-light-stage {
+  position: relative;
+  width: min(100%, 17rem);
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #201e31;
+  border: 1px solid var(--gold-dim);
+  border-radius: .4rem;
+}
+.half-light-stage img { width: 100%; height: 100%; image-rendering: pixelated; }
+.half-light-beam { position: absolute; inset-block: 0; box-shadow: 0 0 0 18rem rgb(18 20 39 / .76); border-inline: 2px solid #efd6a2; }
+.half-light-stage.full .half-light-beam { display: none; }
+.half-light input[type="range"] { width: min(100%, 17rem); margin: .65rem 0; }
+.half-light-note { min-height: 2lh; }
+.half-light-copy { padding: .65rem; margin: .65rem 0; border: 1px solid var(--gold-dim); border-radius: .4rem; }
+.half-light-copy h3 { margin: 0; }

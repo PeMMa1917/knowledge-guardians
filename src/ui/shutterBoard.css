@@ -1,0 +1,48 @@
+.shutter-board {
+  display: grid;
+  gap: .7rem;
+}
+.shutter-board h2, .shutter-board p {
+  margin: 0;
+}
+.shutter-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .25rem;
+  max-width: 33rem;
+  padding: .4rem;
+  border: 1px solid #b19275;
+  border-radius: .35rem;
+  background: #21192f;
+}
+.shutter-cell {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 2.3rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid #68566f;
+  border-radius: .2rem;
+  background: #342942;
+  color: #fff0d7;
+  padding: .17rem;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.shutter-cell.fixed {
+  font-size: .83em;
+}
+.shutter-cell.mirror {
+  font-size: 1.15em;
+}
+.shutter-cell.lit {
+  background: #765525;
+  border: 2px solid #ffe499;
+}
+.shutter-cell.mirror:focus-visible {
+  outline: 2px solid #a2dbea;
+  outline-offset: 2px;
+}
+.shutter-board p[hidden] {
+  display: none;
+}

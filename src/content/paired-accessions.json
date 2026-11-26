@@ -1,0 +1,251 @@
+{
+  "sources": [
+    {
+      "id": "HIS-ID-01",
+      "title": "British Museum collection record Am.9941",
+      "url": "https://www.britishmuseum.org/collection/object/E_Am-9941",
+      "locator": "Object description, measurements, origin and curator’s note on the two older Christy numbers",
+      "supports": "The museum records a cotton Inka khipu made in Peru, dated 1400–1532, with knots and pendant cords. The current accession Am.9941 shares an earlier Christy number with a separate shell trumpet.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-ID-02",
+      "title": "British Museum collection record Oc.9941",
+      "url": "https://www.britishmuseum.org/collection/object/E_Oc-9941",
+      "locator": "Object description, measurements and Mangaia production and find fields",
+      "supports": "The museum records a triton-shell trumpet from Mangaia with a drilled hole and an attached fibre cord. Its current accession is Oc.9941.",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.accession.khipu",
+      "title": "Cotton khipu, Am.9941",
+      "text": "The British Museum catalogues this Inka object as made in Peru between 1400 and 1532. Knotted cotton cords hang from its main cord. It measures 53 by 70 centimetres. The curator notes that a different object shared the old Christy number 9941.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": ["HIS-ID-01"],
+      "limits": "The record identifies this object and its material. It leaves the particular meanings carried by the cords open."
+    },
+    {
+      "id": "card.accession.trumpet",
+      "title": "Shell trumpet, Oc.9941",
+      "text": "The British Museum lists Mangaia as the place of manufacture and acquisition. The object is a pierced triton shell, 17.5 centimetres wide, with an attached fibre cord. The published catalogue gives no date of manufacture.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": ["HIS-ID-02"],
+      "limits": "The catalogue identifies the shell and its place. It leaves the maker, occasion and music of a particular use open."
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-MKT-AM9941",
+      "name": "Am.9941, a cotton khipu from Peru",
+      "art": "accession-khipu",
+      "historicalLabel": "documented",
+      "dateText": "1400–1532 in the collection record",
+      "dateKind": "Date range for the making of this object",
+      "summary": "A knotted cotton khipu attributed to the Inka. The museum uses Am.9941. A note in its record explains that the older Christy number 9941 also named another object. The diagram shows the main cord and its hanging strands.",
+      "sources": ["HIS-ID-01"],
+      "grantsCard": "card.accession.khipu",
+      "altText": "Original pixel diagram of a horizontal cotton cord with several shorter knotted cords hanging below it.",
+      "specimen": {
+        "key": "british-museum:am.9941",
+        "institution": "The British Museum",
+        "accession": "Am.9941",
+        "source": "HIS-ID-01",
+        "objective": "accession.market.compare"
+      }
+    },
+    {
+      "id": "OBJ-MKT-OC9941",
+      "name": "Oc.9941, a shell trumpet from Mangaia",
+      "art": "accession-shell",
+      "historicalLabel": "documented",
+      "dateText": "Date of manufacture unstated in the catalogue",
+      "dateKind": "The collection gives a place and dimensions. The manufacturing date stays open.",
+      "summary": "A pierced triton shell with an attached fibre cord. The catalogue gives Mangaia as the place it was made. This is a different object from the cotton khipu. The diagram shows the form and cord and leaves surface details open.",
+      "sources": ["HIS-ID-02"],
+      "grantsCard": "card.accession.trumpet",
+      "altText": "Original pixel diagram of a tapered triton shell with a small opening and a loop of cord."
+    }
+  ],
+  "items": [
+    {
+      "id": "item.accession-pair",
+      "name": "The two 9941 reference stubs",
+      "description": "Am.9941 and Oc.9941 appear on separate lines with their own sources. The Council can use these stubs to rehearse a receiving check.",
+      "historicalLabel": "fictional-world",
+      "art": "preserved.display-paired"
+    }
+  ],
+  "questions": [
+    {
+      "id": "KQ-ACC-001",
+      "text": "What else must travel with a number before someone can use it as a reference?",
+      "lastWord": "You kept the numbers people already used and gave each a way back to its own record."
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH10-R05",
+      "world": "WORLD-11",
+      "title": "Two Objects, One Number",
+      "knowledgeQuestion": "What else must travel with a number before someone can use it as a reference?",
+      "available": { "objective": "market.finish" },
+      "objectives": [
+        {
+          "id": "accession.market.compare",
+          "title": "Check the two collection records where the practice cases are packed.",
+          "essential": false,
+          "done": { "all": [{ "card": "card.accession.khipu" }, { "card": "card.accession.trumpet" }] },
+          "weave": {
+            "concepts": ["evidence", "truth", "interpretation", "culture", "certainty"],
+            "framework": ["scope", "perspectives", "methods-and-tools"],
+            "thinking": { "dok": 2, "bloom": "analyse", "fink": "integration", "solo": "multistructural" },
+            "atl": ["research", "thinking"],
+            "aoks": ["HIS", "MAT", "IND", "TEC"],
+            "subjects": ["history", "anthropology", "math-ai", "digital-society"],
+            "minutes": 3
+          }
+        },
+        {
+          "id": "accession.market.read",
+          "title": "Give the porters a reference they can test and visit the chosen pickup.",
+          "essential": false,
+          "done": { "flagSet": "accession.market.checked" },
+          "onComplete": [{ "giveItem": "item.accession-pair" }, { "journal": "j.accession.market" }],
+          "kq": { "id": "KQ-ACC-001", "action": "trace" },
+          "weave": {
+            "concepts": ["responsibility", "power", "objectivity", "justification", "perspective", "explanation"],
+            "framework": ["ethics", "perspectives", "methods-and-tools"],
+            "thinking": { "dok": 3, "bloom": "create", "fink": "human", "solo": "relational" },
+            "atl": ["communication", "social"],
+            "aoks": ["HUM", "MAT", "TEC"],
+            "subjects": ["computer-science", "digital-society", "business", "design-tech"],
+            "minutes": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH15-R05",
+      "world": "WORLD-16",
+      "title": "The Next Box Mark",
+      "knowledgeQuestion": "What can a short reference carry through a noisy handover?",
+      "available": { "all": [{ "objective": "council.arrival" }, { "item": "item.accession-pair" }] },
+      "objectives": [
+        {
+          "id": "accession.council.hand",
+          "title": "Try a short spoken call and use both prefixes in the Council receipt.",
+          "essential": false,
+          "done": { "flagSet": "accession.council.checked" },
+          "onComplete": [{ "journal": "j.accession.council" }],
+          "kq": { "id": "KQ-ACC-001", "action": "fieldwork" },
+          "weave": {
+            "concepts": ["truth", "evidence", "interpretation", "certainty", "perspective", "responsibility", "values"],
+            "framework": ["scope", "perspectives", "methods-and-tools", "ethics"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "learning-to-learn", "solo": "relational" },
+            "atl": ["communication", "self-management"],
+            "aoks": ["TEC", "LAN", "HUM"],
+            "subjects": ["digital-society", "computer-science", "lang-langlit"],
+            "minutes": 4
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "accession.market.pack",
+      "speaker": "market-clerk",
+      "historicalLabel": "fictional-world",
+      "text": "Someone wrote 9941 on both practice cases. That was enough to walk them here and could send either case out again. Keep the cotton record away from the shell record. We can write both full references on the covers, or let the covers keep their short numbers and have a live joint check.",
+      "options": [
+        {
+          "text": "Show both complete references on the case sleeves.",
+          "if": { "all": [{ "objective": "accession.market.compare" }, { "not": { "flagSet": "accession.market.route" } }] },
+          "effects": [{ "setFlag": "accession.market.route", "value": "covers" }],
+          "next": "accession.market.covers"
+        },
+        {
+          "text": "Keep the full stubs at the staffed pickup.",
+          "if": { "all": [{ "objective": "accession.market.compare" }, { "not": { "flagSet": "accession.market.route" } }] },
+          "effects": [{ "setFlag": "accession.market.route", "value": "desk" }],
+          "next": "accession.market.desk"
+        },
+        { "text": "Leave the cases here for now." }
+      ]
+    },
+    {
+      "id": "accession.market.covers",
+      "speaker": "market-clerk",
+      "historicalLabel": "fictional-world",
+      "text": "A porter can check the letters at the low shelves before leaving. The full line takes more space. They’ll have to turn a case over if the wrap folds."
+    },
+    {
+      "id": "accession.market.desk",
+      "speaker": "market-clerk",
+      "historicalLabel": "fictional-world",
+      "text": "I’ll open both full stubs with a porter who brings a short number. We can move quickly together. If I miss a turn, a second keeper will need the two pockets."
+    },
+    {
+      "id": "accession.council.call",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "One voice calls ‘9941’ around the screen. Two people raise a hand. The cloth keeper has Am.9941 and the shell keeper has Oc.9941. When the caller repeats the short number, the same two hands stay raised.",
+      "effects": [{ "setFlag": "accession.council.heard", "value": true }]
+    },
+    {
+      "id": "accession.council.plan",
+      "speaker": "council-reader",
+      "historicalLabel": "fictional-world",
+      "text": "We can keep the full references on a printed pair and let both people check. Or one person can read each full reference and another repeat it back. Both need the object records within reach. Which will this crew use?",
+      "options": [
+        {
+          "text": "Clip the two full names at the waiting place.",
+          "if": { "all": [{ "flagSet": "accession.council.heard" }, { "not": { "flagSet": "accession.council.route" } }] },
+          "effects": [{ "setFlag": "accession.council.route", "value": "written" }],
+          "next": "accession.council.written"
+        },
+        {
+          "text": "Give the two full names to the caller and arrange a readback.",
+          "if": { "all": [{ "flagSet": "accession.council.heard" }, { "not": { "flagSet": "accession.council.route" } }] },
+          "effects": [{ "setFlag": "accession.council.route", "value": "spoken" }],
+          "next": "accession.council.spoken"
+        },
+        { "text": "Wait by the screen a little longer." }
+      ]
+    },
+    {
+      "id": "accession.council.written",
+      "speaker": "council-reader",
+      "historicalLabel": "fictional-world",
+      "text": "I’ll put them where a person arriving between calls can follow both. The far keeper will still need someone with the full sheet."
+    },
+    {
+      "id": "accession.council.spoken",
+      "speaker": "council-reader",
+      "historicalLabel": "fictional-world",
+      "text": "Each full name will go out once and come back once. A late porter will need the next round. The printed pair stays in the source pocket."
+    }
+  ],
+  "journal": [
+    { "id": "j.accession.market", "claimKind": "observation", "text": "I checked two old 9941 references against the full records. The cloth and shell went to different people. Both took back a reference the next person could use." },
+    { "id": "j.accession.council", "claimKind": "observation", "text": "I heard both keepers answer one short number. We handed back the complete reference in a way the next shift could check." }
+  ],
+  "hints": [
+    {"id": "h.accession.market.compare.1", "objective": "accession.market.compare", "depth": 1, "text": "The short number belongs to two things."},
+    {"id": "h.accession.market.compare.2", "objective": "accession.market.compare", "depth": 2, "text": "Find the two source stands on the west side of Lantern Square."},
+    {"id": "h.accession.market.compare.3", "objective": "accession.market.compare", "depth": 3, "text": "Open both collections, including their separate register letters."},
+    {"id": "h.accession.market.compare.4", "objective": "accession.market.compare", "depth": 4, "text": "Read the cotton khipu Am.9941 and the shell trumpet Oc.9941."},
+    {"id": "h.accession.market.read.1", "objective": "accession.market.read", "depth": 1, "text": "A reference needs to reach a porter."},
+    {"id": "h.accession.market.read.2", "objective": "accession.market.read", "depth": 2, "text": "Use the packing desk between the two western cases."},
+    {"id": "h.accession.market.read.3", "objective": "accession.market.read", "depth": 3, "text": "Choose full references on the covers or keep both at the staffed desk."},
+    {"id": "h.accession.market.read.4", "objective": "accession.market.read", "depth": 4, "text": "Visit the new cover stand or pickup desk to check the reference before carrying it away."},
+    {"id": "h.accession.council.hand.1", "objective": "accession.council.hand", "depth": 1, "text": "One short call can still leave two people answering."},
+    {"id": "h.accession.council.hand.2", "objective": "accession.council.hand", "depth": 2, "text": "Bring the two reference stubs to the screen in the Letter Gallery."},
+    {"id": "h.accession.council.hand.3", "objective": "accession.council.hand", "depth": 3, "text": "Hear what the short call does and use Essi’s rack to arrange a second attempt."},
+    {"id": "h.accession.council.hand.4", "objective": "accession.council.hand", "depth": 4, "text": "Read the printed pair at the waiting place or go to the readback spot to finish."}
+  ]
+}

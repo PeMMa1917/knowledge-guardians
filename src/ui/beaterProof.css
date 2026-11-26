@@ -1,0 +1,28 @@
+.beater-proof .beater-trials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: .55rem;
+}
+
+.beater-proof .beater-trace {
+  margin: .35rem 0 .6rem;
+}
+
+.beater-proof .beater-trace-strip {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: .15rem;
+  max-width: 18rem;
+  margin: .25rem 0;
+}
+
+.beater-proof .beater-trace-strip span {
+  border: 1px solid currentColor;
+  text-align: center;
+  padding: .18rem 0;
+}
+
+.beater-proof .beater-trace-strip .marked {
+  border-block-end-width: .25rem;
+  font-weight: 700;
+}

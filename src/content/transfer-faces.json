@@ -1,0 +1,1228 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH6-R09",
+      "world": "WORLD-07",
+      "title": "The Other Face of the Plate",
+      "knowledgeQuestion": "Which part of a piece can you check from a copy?",
+      "stake": "A Council apprentice needs the plate marks for a fitting. The Sample Yard uses the same plate to teach the next shift.",
+      "available": {
+        "all": [
+          {
+            "objective": "metal.finish"
+          },
+          {
+            "card": "card.plate.bamum"
+          }
+        ]
+      },
+      "objectives": [
+        {
+          "id": "plate.metal.compare",
+          "title": "Turn the plate and check both faces against the first print.",
+          "essential": false,
+          "done": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "plate.metal.front",
+                    "eq": true
+                  },
+                  {
+                    "flag": "plate.metal.back",
+                    "eq": true
+                  }
+                ]
+              },
+              {
+                "flag": "plate.metal.print",
+                "eq": true
+              }
+            ]
+          },
+          "skills": [
+            "SK-CIT-01"
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "explanation",
+              "objectivity",
+              "truth"
+            ],
+            "atl": [
+              "research",
+              "thinking"
+            ],
+            "aoks": [
+              "HIS",
+              "ART",
+              "TEC"
+            ],
+            "subjects": [
+              "history",
+              "design-tech",
+              "visual-arts"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 4
+          }
+        },
+        {
+          "id": "plate.metal.checked",
+          "title": "Pack a record the Council can check and read the carrier’s reply.",
+          "essential": false,
+          "visible": {
+            "objective": "plate.metal.compare"
+          },
+          "done": {
+            "any": [
+              {
+                "flag": "plate.metal.sent",
+                "eq": "loan"
+              },
+              {
+                "flag": "plate.metal.sent",
+                "eq": "pair"
+              }
+            ]
+          },
+          "onComplete": [
+            {
+              "journal": "j.plate.metal"
+            }
+          ],
+          "skills": [
+            "SK-CIT-01"
+          ],
+          "weave": {
+            "concepts": [
+              "certainty",
+              "justification",
+              "power",
+              "responsibility",
+              "values",
+              "culture"
+            ],
+            "atl": [
+              "communication",
+              "social",
+              "thinking"
+            ],
+            "aoks": [
+              "HIS",
+              "HUM",
+              "ART"
+            ],
+            "subjects": [
+              "history",
+              "visual-arts",
+              "design-tech"
+            ],
+            "framework": [
+              "ethics",
+              "perspectives",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "caring",
+              "solo": "relational"
+            },
+            "minutes": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH15-R06",
+      "world": "WORLD-16",
+      "title": "Eleven at the Council",
+      "knowledgeQuestion": "What must a visitor still be able to check after an object has travelled?",
+      "stake": "Some visitors use the outside rail before the steward begins. Others need the real edges to set the trial piece.",
+      "available": {
+        "all": [
+          {
+            "objective": "council.arrival"
+          },
+          {
+            "objective": "plate.metal.checked"
+          }
+        ]
+      },
+      "objectives": [
+        {
+          "id": "plate.council.compare",
+          "title": "Check which parts of Plate Eleven arrived at the Council.",
+          "essential": false,
+          "done": {
+            "flagSet": "plate.council.test"
+          },
+          "skills": [
+            "SK-CIT-01"
+          ],
+          "weave": {
+            "concepts": [
+              "culture",
+              "evidence",
+              "explanation",
+              "interpretation",
+              "perspective",
+              "certainty"
+            ],
+            "atl": [
+              "research",
+              "thinking"
+            ],
+            "aoks": [
+              "HIS",
+              "ART",
+              "TEC"
+            ],
+            "subjects": [
+              "history",
+              "design-tech",
+              "visual-arts"
+            ],
+            "framework": [
+              "scope",
+              "perspectives",
+              "methods-and-tools"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 3
+          }
+        },
+        {
+          "id": "plate.council.checked",
+          "title": "Give visitors a place to check the record and see it used.",
+          "essential": false,
+          "visible": {
+            "objective": "plate.council.compare"
+          },
+          "done": {
+            "flagSet": "plate.council.used"
+          },
+          "onComplete": [
+            {
+              "journal": "j.plate.council"
+            }
+          ],
+          "skills": [
+            "SK-CIT-01"
+          ],
+          "weave": {
+            "concepts": [
+              "truth",
+              "justification",
+              "values",
+              "power",
+              "responsibility",
+              "objectivity"
+            ],
+            "atl": [
+              "communication",
+              "social",
+              "thinking"
+            ],
+            "aoks": [
+              "ART",
+              "HUM",
+              "TEC"
+            ],
+            "subjects": [
+              "design-tech",
+              "visual-arts",
+              "digital-society"
+            ],
+            "framework": [
+              "scope",
+              "ethics",
+              "methods-and-tools"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "human",
+              "solo": "relational"
+            },
+            "minutes": 3
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "plate.metal.original",
+      "speaker": "narrator",
+      "text": "One hinge keeps Plate Eleven on its peg. The Two-Face Frame has a short slot and a long slot. Seat the plate in each slot to see what the first print left behind.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Set the short slot against the front.",
+          "next": "plate.metal.front",
+          "if": {
+            "all": [
+              {
+                "flag": "perspective.active",
+                "eq": "two-face-frame"
+              },
+              {
+                "not": {
+                  "flag": "plate.metal.face",
+                  "eq": "front"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "plate.metal.face",
+              "value": "front"
+            }
+          ]
+        },
+        {
+          "text": "Swing the plate over to the long slot.",
+          "next": "plate.metal.back",
+          "if": {
+            "all": [
+              {
+                "flag": "perspective.active",
+                "eq": "two-face-frame"
+              },
+              {
+                "not": {
+                  "flag": "plate.metal.face",
+                  "eq": "back"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "plate.metal.face",
+              "value": "back"
+            }
+          ]
+        },
+        {
+          "text": "Look across the front again.",
+          "next": "plate.metal.front",
+          "if": {
+            "all": [
+              {
+                "flag": "perspective.active",
+                "eq": "two-face-frame"
+              },
+              {
+                "flag": "plate.metal.face",
+                "eq": "front"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Look along the back again.",
+          "next": "plate.metal.back",
+          "if": {
+            "all": [
+              {
+                "flag": "perspective.active",
+                "eq": "two-face-frame"
+              },
+              {
+                "flag": "plate.metal.face",
+                "eq": "back"
+              }
+            ]
+          }
+        },
+        {
+          "text": "Leave the plate on its hinge."
+        }
+      ]
+    },
+    {
+      "id": "plate.metal.front",
+      "speaker": "narrator",
+      "text": "From the front, three raised pegs sit above the number eleven. The outer two catch the light. A paper print darkens all three alike.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Clip the front tab beside the three pegs.",
+          "if": {
+            "all": [
+              {
+                "flag": "plate.metal.face",
+                "eq": "front"
+              },
+              {
+                "not": {
+                  "flag": "plate.metal.front",
+                  "eq": true
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "plate.metal.front",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Let the front tab rest."
+        }
+      ]
+    },
+    {
+      "id": "plate.metal.back",
+      "speaker": "narrator",
+      "text": "The long slot lets the plate sit flat the other way round. Two deep guide grooves run past Bea’s signed repair tab, dated shop day 14. A fit made by touch needs the grooves.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Clip the back tab beside the signed repair date.",
+          "if": {
+            "all": [
+              {
+                "flag": "plate.metal.face",
+                "eq": "back"
+              },
+              {
+                "not": {
+                  "flag": "plate.metal.back",
+                  "eq": true
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "plate.metal.back",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Let the back tab rest."
+        }
+      ]
+    },
+    {
+      "id": "plate.metal.print",
+      "speaker": "narrator",
+      "text": "The first print marked eleven and showed three black spots. Its back is blank. Drop the two tabs into the tray together. The second slot should tell the next person which view this print leaves out.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Set the two tabs around the print and lift the blank backing.",
+          "next": "plate.metal.lift",
+          "if": {
+            "all": [
+              {
+                "flag": "perspective.active",
+                "eq": "two-face-frame"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "plate.metal.front",
+                    "eq": true
+                  },
+                  {
+                    "flag": "plate.metal.back",
+                    "eq": true
+                  }
+                ]
+              },
+              {
+                "not": {
+                  "flag": "plate.metal.print",
+                  "eq": true
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "plate.metal.print",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the print on the tray."
+        }
+      ]
+    },
+    {
+      "id": "plate.metal.lift",
+      "speaker": "narrator",
+      "text": "The front print can carry marks and positions. The back has no guide grooves or repair date. Bea can make a labelled print of each face. It would show the grooves but would still lie flat.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "plate.metal.pack",
+      "speaker": "metal-steward",
+      "text": "The Council apprentice wants to check a fit by touch. We can lend our plate while I put a flat example in the yard. Or I can send two full-size prints and keep the training plate here. The loan is for one shift. Tell the carrier which check goes with which piece.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "value",
+      "options": [
+        {
+          "text": "Lend Plate Eleven with both face tabs.",
+          "next": "plate.metal.pack-loan",
+          "if": {
+            "all": [
+              {
+                "objective": "plate.metal.compare"
+              },
+              {
+                "not": {
+                  "flagSet": "plate.metal.route"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "plate.metal.route",
+              "value": "loan"
+            }
+          ]
+        },
+        {
+          "text": "Clip two full-size face prints to the same docket.",
+          "next": "plate.metal.pack-pair",
+          "if": {
+            "all": [
+              {
+                "objective": "plate.metal.compare"
+              },
+              {
+                "not": {
+                  "flagSet": "plate.metal.route"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "plate.metal.route",
+              "value": "pair"
+            }
+          ]
+        },
+        {
+          "text": "Keep the crate by the bench for now."
+        }
+      ]
+    },
+    {
+      "id": "plate.metal.pack-loan",
+      "speaker": "narrator",
+      "text": "Bea moves the plate onto the padded cradle. A small paper example goes back on the yard rack. The carrier puts the return time beside the two face tabs.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "plate.metal.pack-pair",
+      "speaker": "narrator",
+      "text": "Bea lays one impression from each face in the carrier’s sleeve. The same number and date sit on both. The carrier writes ‘flat impressions’ below the return address.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "plate.metal.loan-receipt",
+      "speaker": "narrator",
+      "text": "The carrier signs for Plate Eleven, its cradle and the two tabs. The yard’s return line says one shift. The next learner goes to the rack and finds the flat example.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Record the loan and its return time.",
+          "next": "plate.metal.ready",
+          "if": {
+            "not": {
+              "any": [
+                {
+                  "flag": "plate.metal.sent",
+                  "eq": "loan"
+                },
+                {
+                  "flag": "plate.metal.sent",
+                  "eq": "pair"
+                }
+              ]
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "plate.metal.sent",
+              "value": "loan"
+            }
+          ]
+        },
+        {
+          "text": "Leave the carrier’s receipt on the desk."
+        }
+      ]
+    },
+    {
+      "id": "plate.metal.pair-receipt",
+      "speaker": "narrator",
+      "text": "The carrier fans out two prints with the same number and different face tabs. Bea turns the real plate at the yard bench. The next learner can feel its grooves there.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Record which impressions travelled.",
+          "next": "plate.metal.ready",
+          "if": {
+            "not": {
+              "any": [
+                {
+                  "flag": "plate.metal.sent",
+                  "eq": "loan"
+                },
+                {
+                  "flag": "plate.metal.sent",
+                  "eq": "pair"
+                }
+              ]
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "plate.metal.sent",
+              "value": "pair"
+            }
+          ]
+        },
+        {
+          "text": "Leave the carrier’s receipt on the desk."
+        }
+      ]
+    },
+    {
+      "id": "plate.metal.ready",
+      "speaker": "narrator",
+      "text": "The Council can use this delivery with the Two-Face Frame. Keep it for the other end of the trip.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "plate.council.loan",
+      "speaker": "narrator",
+      "text": "The Council cradle holds Plate Eleven and its two labels. Bea’s day-14 repair mark runs along the back.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Put the long slot beside the repair tab and feel for the two grooves.",
+          "next": "plate.council.loan-result",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "objective": "council.arrival"
+                      },
+                      {
+                        "objective": "plate.metal.checked"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "perspective.active",
+                    "eq": "two-face-frame"
+                  },
+                  {
+                    "card": "card.plate.bete"
+                  }
+                ]
+              },
+              {
+                "flag": "plate.metal.sent",
+                "eq": "loan"
+              },
+              {
+                "not": {
+                  "flagSet": "plate.council.test"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "plate.council.test",
+              "value": "relief"
+            }
+          ]
+        },
+        {
+          "text": "Set the plate down on the cradle."
+        }
+      ]
+    },
+    {
+      "id": "plate.council.loan-result",
+      "speaker": "narrator",
+      "text": "The two grooves meet the frame’s feet. A learner can feel the fitting here before the plate goes home. The yard apprentice has a flat piece until its return.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "plate.council.pair",
+      "speaker": "narrator",
+      "text": "The pair of prints looks like two separate pieces until the common number and the face tabs are put into the frame.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Seat both sheets and match the dates while they lie flat.",
+          "next": "plate.council.pair-result",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "objective": "council.arrival"
+                      },
+                      {
+                        "objective": "plate.metal.checked"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "perspective.active",
+                    "eq": "two-face-frame"
+                  },
+                  {
+                    "card": "card.plate.bete"
+                  }
+                ]
+              },
+              {
+                "flag": "plate.metal.sent",
+                "eq": "pair"
+              },
+              {
+                "not": {
+                  "flagSet": "plate.council.test"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "plate.council.test",
+              "value": "faces"
+            }
+          ]
+        },
+        {
+          "text": "Put the two sheets back in the sleeve."
+        }
+      ]
+    },
+    {
+      "id": "plate.council.pair-result",
+      "speaker": "narrator",
+      "text": "The numbered front lines up with the signed back view. The two groove shapes show. The sheets give no depth to feel. Essi opens a space for a check the yard can repeat.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "plate.council.place",
+      "speaker": "council-reader",
+      "text": "We have an outside rail and a keeper’s bench. Before the first bell, visitors can reach the rail. At my bench I can help someone check the fit, or send a request to the yard if we have only the prints. Which place should get this delivery?",
+      "historicalLabel": "fictional-world",
+      "claimKind": "value",
+      "options": [
+        {
+          "text": "Hang the two marked faces at the early rail.",
+          "next": "plate.council.return",
+          "if": {
+            "all": [
+              {
+                "objective": "plate.council.compare"
+              },
+              {
+                "flag": "perspective.active",
+                "eq": "two-face-frame"
+              },
+              {
+                "not": {
+                  "flagSet": "plate.council.place"
+                }
+              },
+              {
+                "flag": "plate.metal.sent",
+                "eq": "loan"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "plate.council.place",
+              "value": "rail"
+            },
+            {
+              "setFlag": "plate.council.returned",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Hang the two marked faces at the early rail.",
+          "next": "plate.council.index",
+          "if": {
+            "all": [
+              {
+                "objective": "plate.council.compare"
+              },
+              {
+                "flag": "perspective.active",
+                "eq": "two-face-frame"
+              },
+              {
+                "not": {
+                  "flagSet": "plate.council.place"
+                }
+              },
+              {
+                "flag": "plate.metal.sent",
+                "eq": "pair"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "plate.council.place",
+              "value": "rail"
+            }
+          ]
+        },
+        {
+          "text": "Set aside a checked fitting at Essi’s bench.",
+          "next": "plate.council.benched",
+          "if": {
+            "all": [
+              {
+                "objective": "plate.council.compare"
+              },
+              {
+                "flag": "perspective.active",
+                "eq": "two-face-frame"
+              },
+              {
+                "not": {
+                  "flagSet": "plate.council.place"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "plate.council.place",
+              "value": "bench"
+            }
+          ]
+        },
+        {
+          "text": "Keep the record by the cradle for now."
+        }
+      ]
+    },
+    {
+      "id": "plate.council.benched",
+      "speaker": "narrator",
+      "text": "Essi saves one place for the person who needs a fitting. The bench can check a plate or book a visit to the yard if only the prints have come. Anyone who misses the last fitting can still take the next appointment card.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "plate.council.return",
+      "speaker": "narrator",
+      "text": "Essi sends the original plate home with its fitting check. The public sheet has both faces, the signed repair date and the yard’s address. Early visitors can take it before the keeper’s bench opens.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "plate.council.index",
+      "speaker": "narrator",
+      "text": "Essi hangs both faces with the yard’s day-14 repair docket. The rail signs what the prints show. The public sheet gives the yard’s address for any visitor who needs to check the depth.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "plate.council.rail-use",
+      "speaker": "narrator",
+      "text": "A visitor reaches the rail before Essi opens the bench. They read the number and repair tab on the same sheet and take the yard’s address. Their trial fit still needs a plate with grooves.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Watch them follow the request to the yard.",
+          "if": {
+            "not": {
+              "flagSet": "plate.council.used"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "plate.council.used",
+              "value": "rail"
+            }
+          ]
+        },
+        {
+          "text": "Leave the wide sheet on the rail."
+        }
+      ]
+    },
+    {
+      "id": "plate.council.bench-loan",
+      "speaker": "narrator",
+      "text": "At the keeper’s bench, a learner turns the real plate until both grooves seat. Essi records the fit and calls the next person. The waiting card gives the last visitor a time to come back.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Sign the fitting and the return time.",
+          "if": {
+            "not": {
+              "flagSet": "plate.council.used"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "plate.council.used",
+              "value": "bench"
+            },
+            {
+              "setFlag": "plate.council.returned",
+              "value": true
+            }
+          ],
+          "next": "plate.council.bench-repacked"
+        },
+        {
+          "text": "Leave Essi with the next learner."
+        }
+      ]
+    },
+    {
+      "id": "plate.council.bench-pair",
+      "speaker": "narrator",
+      "text": "A learner can see both grooves on the signed prints. Essi keeps the fitting line open. The learner takes a booking for the plate in the Sample Yard and keeps the print number with it.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Clip the booking stub to the two face numbers.",
+          "if": {
+            "not": {
+              "flagSet": "plate.council.used"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "plate.council.used",
+              "value": "bench"
+            }
+          ]
+        },
+        {
+          "text": "Leave the booking stub by Essi."
+        }
+      ]
+    },
+    {
+      "id": "plate.council.bench-repacked",
+      "speaker": "council-reader",
+      "text": "I signed the fit and sent the plate back for Bea’s next shift. The next learner can take the checked docket home as a guide to the fitting.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.plate.metal.compare.1",
+      "objective": "plate.metal.compare",
+      "depth": 1,
+      "text": "One face of the first print looks complete while the other lies blank."
+    },
+    {
+      "id": "h.plate.metal.compare.2",
+      "objective": "plate.metal.compare",
+      "depth": 2,
+      "text": "Open the Foumban case in the Trade Hall. Equip the Two-Face Frame from the Bag and return to the Sample Yard."
+    },
+    {
+      "id": "h.plate.metal.compare.3",
+      "objective": "plate.metal.compare",
+      "depth": 3,
+      "text": "Seat the plate in the short slot, then the long slot. Leave a tab for the checked detail on each side."
+    },
+    {
+      "id": "h.plate.metal.compare.4",
+      "objective": "plate.metal.compare",
+      "depth": 4,
+      "text": "Use the checked tabs on the first print tray beside the turning bench."
+    },
+    {
+      "id": "h.plate.metal.checked.1",
+      "objective": "plate.metal.checked",
+      "depth": 1,
+      "text": "Bea’s training plate can travel. The crew also has paper, a hinge and one padded cradle."
+    },
+    {
+      "id": "h.plate.metal.checked.2",
+      "objective": "plate.metal.checked",
+      "depth": 2,
+      "text": "Go to Bea’s pack bench in the Trade Hall after the comparison."
+    },
+    {
+      "id": "h.plate.metal.checked.3",
+      "objective": "plate.metal.checked",
+      "depth": 3,
+      "text": "Send the signed loan or clip impressions from both faces to their common docket."
+    },
+    {
+      "id": "h.plate.metal.checked.4",
+      "objective": "plate.metal.checked",
+      "depth": 4,
+      "text": "Read the carrier’s receipt near the bottom of the Trade Hall before leaving."
+    },
+    {
+      "id": "h.plate.council.compare.1",
+      "objective": "plate.council.compare",
+      "depth": 1,
+      "text": "The apprentice can pick a fit only when they know what they received."
+    },
+    {
+      "id": "h.plate.council.compare.2",
+      "objective": "plate.council.compare",
+      "depth": 2,
+      "text": "Open the Alphabet Bété case in the Council Letter Gallery and take out your Two-Face Frame."
+    },
+    {
+      "id": "h.plate.council.compare.3",
+      "objective": "plate.council.compare",
+      "depth": 3,
+      "text": "Find the padded cradle for the plate or the shallow tray for the two impressions."
+    },
+    {
+      "id": "h.plate.council.compare.4",
+      "objective": "plate.council.compare",
+      "depth": 4,
+      "text": "Use the frame on the delivery. Feel for the grooves on the original or align the signed print views."
+    },
+    {
+      "id": "h.plate.council.checked.1",
+      "objective": "plate.council.checked",
+      "depth": 1,
+      "text": "Early visitors can use the rail. Fittings take time at the bench."
+    },
+    {
+      "id": "h.plate.council.checked.2",
+      "objective": "plate.council.checked",
+      "depth": 2,
+      "text": "Use Essi’s handover board with the Two-Face Frame after checking the delivery."
+    },
+    {
+      "id": "h.plate.council.checked.3",
+      "objective": "plate.council.checked",
+      "depth": 3,
+      "text": "Make a public two-face sheet at the rail or give the learner a fitting at the staffed bench."
+    },
+    {
+      "id": "h.plate.council.checked.4",
+      "objective": "plate.council.checked",
+      "depth": 4,
+      "text": "Meet the visitor at the outside rail or the learner beside Essi’s low bench."
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.plate.metal",
+      "claimKind": "observation",
+      "text": "Plate Eleven carries its marks and groove depth together. The two-face docket tells the Council which marks arrived and where to check the grooves again."
+    },
+    {
+      "id": "j.plate.council",
+      "claimKind": "observation",
+      "text": "The Council visitor needs both sides and a place to check the fitting. I kept the repair date and the yard’s part beside the record the visitor could reach."
+    }
+  ],
+  "keepsakes": [
+    {
+      "id": "two-face-frame",
+      "name": "Two-Face Frame",
+      "text": "Bea’s workshop frame has a short slot for the front and a long slot for the back. A face tab can stay with a thin impression or hang from the real plate.",
+      "if": {
+        "all": [
+          {
+            "objective": "metal.finish"
+          },
+          {
+            "card": "card.plate.bamum"
+          }
+        ]
+      },
+      "where": "The Foumban case at Bea’s Trade Hall",
+      "use": "Seat both faces of Plate Eleven and its prints in the Sample Yard. At the Council, check whichever delivery arrived.",
+      "equip": {
+        "method": "Keep separate checks for each face and its material",
+        "hint": "Use the turning bench and first print tray in the Sample Yard, then try the Council cradle or print tray.",
+        "art": "plate.frame"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "HIS-PLATE-01",
+      "title": "Foumban palace archive: King Njoya and his scribes, signed agreement",
+      "url": "https://eap.bl.uk/archive-file/EAP051-1-1-2-2",
+      "locator": "EAP051/1/1/2/2, scope and content, date signed and originals information.",
+      "supports": "The catalogue describes a single leaf with two pages and King Njoya’s red-and-blue pencil signature, dated 18 May 1922. The original is held at the Royal Palace of the Bamum Kings in Foumban.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-PLATE-02",
+      "title": "Endangered Archives Programme: Bamum manuscripts, Foumban",
+      "url": "https://eap.bl.uk/collection/EAP051-1",
+      "locator": "EAP051/1 fonds, description and originals information.",
+      "supports": "The online fonds holds digital copies of the Archives du Palais des Rois Bamoun’s collections. The catalogue identifies the palace archives as the place where the originals are held.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-PLATE-03",
+      "title": "MoMA: Frédéric Bruly Bouabré, Alphabet Bété",
+      "url": "https://www.moma.org/collection/works/296522",
+      "locator": "Object number 104.2019.1-449, artist, date and medium.",
+      "supports": "MoMA catalogues Alphabet Bété as a 1990–91 series of 449 board drawings by Frédéric Bruly Bouabré.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-PLATE-04",
+      "title": "MoMA: object 104.2019.10 from Alphabet Bété",
+      "url": "https://www.moma.org/collection/works/299029",
+      "locator": "Object number, date, artist and series fields.",
+      "supports": "MoMA gives the single 1990 drawing its own object number and links it to the full series.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-PLATE-05",
+      "title": "MoMA: Frédéric Bruly Bouabré, World Unbound",
+      "url": "https://www.moma.org/calendar/exhibitions/5348",
+      "locator": "Introduction about Alphabet Bété, from the 2022 exhibition.",
+      "supports": "The exhibition describes Bouabré’s writing system for Bété, his own people in present-day Côte d’Ivoire.",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.plate.bamum",
+      "title": "A signed page and the original in Foumban",
+      "text": "The catalogue for EAP051/1/1/2/2 describes a Bamum agreement signed on 18 May 1922. The single leaf has two pages. King Njoya’s signature is recorded in red and blue pencil. The palace archives in Foumban keep the original. The online archive provides a digital copy.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-PLATE-01",
+        "HIS-PLATE-02"
+      ],
+      "limits": "The date is the stated signing date. These catalogue notes leave both the full circumstances of the agreement and the physical condition beyond what the record describes open.",
+      "person": {
+        "name": "King Njoya",
+        "life": "Signed agreement dated 18 May 1922",
+        "place": "Foumban, Bamum Kingdom",
+        "era": "Early twentieth century",
+        "continent": "Africa"
+      }
+    },
+    {
+      "id": "card.plate.bete",
+      "title": "A drawing and its place in Alphabet Bété",
+      "text": "Frédéric Bruly Bouabré developed a writing system for Bété, the language of his community. MoMA records Alphabet Bété, made in 1990–91, as 449 drawings on board. It dates the single drawing numbered 104.2019.10 to 1990 and links it to the series.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-PLATE-03",
+        "HIS-PLATE-04",
+        "HIS-PLATE-05"
+      ],
+      "limits": "An individual image and number let a reader find that drawing. One board cannot give the full series or establish how all Bété speakers write.",
+      "person": {
+        "name": "Frédéric Bruly Bouabré",
+        "life": "Alphabet Bété drawings dated 1990–91",
+        "place": "Bété, Côte d’Ivoire",
+        "era": "Late twentieth century",
+        "continent": "Africa"
+      }
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-PLATE-FOUMBAN",
+      "name": "The signed Bamum agreement in the Foumban archive",
+      "art": "plate.case-fold",
+      "historicalLabel": "documented",
+      "dateText": "18 May 1922",
+      "dateKind": "Signing date reported in the catalogue. The physical leaf and the online copy have separate histories.",
+      "summary": "The entry counts two pages on one leaf, records King Njoya’s signature and identifies the place where the original is held.",
+      "sources": [
+        "HIS-PLATE-01",
+        "HIS-PLATE-02"
+      ],
+      "grantsCard": "card.plate.bamum",
+      "altText": "Original picture of a closed folder with two blank face tabs. It shows no marks or writing from the agreement."
+    },
+    {
+      "id": "OBJ-PLATE-BETE",
+      "name": "Frédéric Bruly Bouabré’s Alphabet Bété",
+      "art": "plate.case-set",
+      "historicalLabel": "documented",
+      "dateText": "1990–91 series, 1990 individual drawing",
+      "dateKind": "Dates of creation assigned by MoMA to the series and the individual drawing numbered 104.2019.10.",
+      "summary": "This case shows the museum’s relationship between the whole series and one dated drawing. Bouabré made both. Check how the file preserves the drawing’s own number alongside the shared series name.",
+      "sources": [
+        "HIS-PLATE-03",
+        "HIS-PLATE-04",
+        "HIS-PLATE-05"
+      ],
+      "grantsCard": "card.plate.bete",
+      "altText": "Original picture of several blank boards and one catalogue tab linking a single board to the set."
+    }
+  ]
+}

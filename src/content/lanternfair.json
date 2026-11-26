@@ -1,0 +1,1073 @@
+{
+ "dialogue": [
+  {
+   "id": "lanternfair.emberford.role",
+   "speaker": "stallkeeper-hana",
+   "text": "Two stands, three lamps and one spare helper. That is what the fair has this turn. We can put the lamps in a ring around the song bench, or hang them along the walk in. The visitors at the road and the people on the bench both need a welcome. Where will you start?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Take the runner’s peg. Start with the view from the road.",
+     "if": {
+      "flag": "reached.emberford",
+      "eq": true
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.emberford.role",
+       "value": "runner"
+      },
+      {
+       "setFlag": "lanternfair.emberford.draft",
+       "value": "stowed"
+      },
+      {
+       "setFlag": "lanternfair.emberford.road",
+       "value": false
+      },
+      {
+       "setFlag": "lanternfair.emberford.bench",
+       "value": false
+      }
+     ],
+     "next": "lanternfair.emberford.draft"
+    },
+    {
+     "text": "Take the host’s cup. Start with what people hear at the bench.",
+     "if": {
+      "flag": "reached.emberford",
+      "eq": true
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.emberford.role",
+       "value": "host"
+      },
+      {
+       "setFlag": "lanternfair.emberford.draft",
+       "value": "stowed"
+      },
+      {
+       "setFlag": "lanternfair.emberford.road",
+       "value": false
+      },
+      {
+       "setFlag": "lanternfair.emberford.bench",
+       "value": false
+      }
+     ],
+     "next": "lanternfair.emberford.draft"
+    },
+    {
+     "text": "Let Hana hang the first set when she has a moment."
+    }
+   ]
+  },
+  {
+   "id": "lanternfair.emberford.draft",
+   "speaker": "scholar-sefa",
+   "text": "At our Lantern Fair the host sings one line for the whole square. People usually join after that line. A light on the road can bring them in, but the voice is still here. Try a set of lamps and see what reaches both places.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang all three lanterns around the song bench.",
+     "if": {
+      "all": [
+       {
+        "flag": "reached.emberford",
+        "eq": true
+       },
+       {
+        "flagSet": "lanternfair.emberford.role"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.emberford.draft",
+       "value": "ring"
+      },
+      {
+       "setFlag": "lanternfair.emberford.road",
+       "value": false
+      },
+      {
+       "setFlag": "lanternfair.emberford.bench",
+       "value": false
+      }
+     ],
+     "next": "lanternfair.emberford.draft.ring"
+    },
+    {
+     "text": "Share the lanterns between the road and the song bench.",
+     "if": {
+      "all": [
+       {
+        "flag": "reached.emberford",
+        "eq": true
+       },
+       {
+        "flagSet": "lanternfair.emberford.role"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.emberford.draft",
+       "value": "trail"
+      },
+      {
+       "setFlag": "lanternfair.emberford.road",
+       "value": false
+      },
+      {
+       "setFlag": "lanternfair.emberford.bench",
+       "value": false
+      }
+     ],
+     "next": "lanternfair.emberford.draft.trail"
+    },
+    {
+     "text": "Leave the last shipped plan where it is."
+    }
+   ]
+  },
+  {
+   "id": "lanternfair.emberford.draft.ring",
+   "speaker": "scholar-sefa",
+   "text": "There is light for the whole bench. The farthest stand is a spare today.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "lanternfair.emberford.draft.trail",
+   "speaker": "scholar-sefa",
+   "text": "There is a light at each bend. Leave one lamp here for the host’s cup.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "lanternfair.emberford.road.ring",
+   "speaker": "stallkeeper-hana",
+   "text": "Stand at the road peg. I can see the bench lamps only when the tall stall flap is tied up. When I drop it again the way goes dark. A runner would have to guide arrivals the last stretch.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Lift and lower the flap. Clip the interrupted sightline to the practice strip.",
+     "if": {
+      "all": [
+       {
+        "flag": "reached.emberford",
+        "eq": true
+       },
+       {
+        "flag": "lanternfair.emberford.draft",
+        "eq": "ring"
+       },
+       {
+        "not": {
+         "flag": "lanternfair.emberford.road",
+         "eq": true
+        }
+       },
+       {
+        "any": [
+         {
+          "flag": "lanternfair.emberford.role",
+          "eq": "runner"
+         },
+         {
+          "flag": "lanternfair.emberford.bench",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.emberford.road",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the marker for another pass."
+    }
+   ]
+  },
+  {
+   "id": "lanternfair.emberford.road.trail",
+   "speaker": "stallkeeper-hana",
+   "text": "Stand at the road peg. One light shows outside the flap and a second catches the turn into the square. I can follow both with the flap down. The last bend still asks me to look toward the bench.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Walk to the second marker and clip the sightline from the road.",
+     "if": {
+      "all": [
+       {
+        "flag": "reached.emberford",
+        "eq": true
+       },
+       {
+        "flag": "lanternfair.emberford.draft",
+        "eq": "trail"
+       },
+       {
+        "not": {
+         "flag": "lanternfair.emberford.road",
+         "eq": true
+        }
+       },
+       {
+        "any": [
+         {
+          "flag": "lanternfair.emberford.role",
+          "eq": "runner"
+         },
+         {
+          "flag": "lanternfair.emberford.bench",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.emberford.road",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the marker for another pass."
+    }
+   ]
+  },
+  {
+   "id": "lanternfair.emberford.bench.ring",
+   "speaker": "scholar-sefa",
+   "text": "Sit at the end of the bench. All three lamps reach the faces. You can see the moment the host lifts a cup for the answer. A guest needs to arrive here first to share it.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Lift the host’s cup and clip what people at the bench can see.",
+     "if": {
+      "all": [
+       {
+        "flag": "reached.emberford",
+        "eq": true
+       },
+       {
+        "flag": "lanternfair.emberford.draft",
+        "eq": "ring"
+       },
+       {
+        "not": {
+         "flag": "lanternfair.emberford.bench",
+         "eq": true
+        }
+       },
+       {
+        "any": [
+         {
+          "flag": "lanternfair.emberford.role",
+          "eq": "host"
+         },
+         {
+          "flag": "lanternfair.emberford.road",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.emberford.bench",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the marker for another pass."
+    }
+   ]
+  },
+  {
+   "id": "lanternfair.emberford.bench.trail",
+   "speaker": "scholar-sefa",
+   "text": "Sit at the end of the bench. The lamp here lights the cup and leaves the last seat in shadow. The welcome still reaches it if the host turns around to face that seat for the answer.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Turn the host’s cup toward the last seat and clip what changes.",
+     "if": {
+      "all": [
+       {
+        "flag": "reached.emberford",
+        "eq": true
+       },
+       {
+        "flag": "lanternfair.emberford.draft",
+        "eq": "trail"
+       },
+       {
+        "not": {
+         "flag": "lanternfair.emberford.bench",
+         "eq": true
+        }
+       },
+       {
+        "any": [
+         {
+          "flag": "lanternfair.emberford.role",
+          "eq": "host"
+         },
+         {
+          "flag": "lanternfair.emberford.road",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.emberford.bench",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the marker for another pass."
+    }
+   ]
+  },
+  {
+   "id": "lanternfair.emberford.send",
+   "speaker": "stallkeeper-hana",
+   "text": "The strip has both marks. The envelope to the Island can carry a sketch for one layout. Send along the thing you had to watch for, too. I am tired of plans with the edges folded over.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Send the ring sketch and where the stall flap hides the bench.",
+     "if": {
+      "all": [
+       {
+        "flag": "reached.emberford",
+        "eq": true
+       },
+       {
+        "flag": "lanternfair.emberford.draft",
+        "eq": "ring"
+       },
+       {
+        "flag": "lanternfair.emberford.road",
+        "eq": true
+       },
+       {
+        "flag": "lanternfair.emberford.bench",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.emberford.plan",
+       "value": "ring"
+      }
+     ]
+    },
+    {
+     "text": "Send the trail sketch and the last seat’s welcome cue.",
+     "if": {
+      "all": [
+       {
+        "flag": "reached.emberford",
+        "eq": true
+       },
+       {
+        "flag": "lanternfair.emberford.draft",
+        "eq": "trail"
+       },
+       {
+        "flag": "lanternfair.emberford.road",
+        "eq": true
+       },
+       {
+        "flag": "lanternfair.emberford.bench",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.emberford.plan",
+       "value": "trail"
+      }
+     ]
+    },
+    {
+     "text": "Keep the rehearsal here. The last shipped copy still stands."
+    }
+   ]
+  },
+  {
+   "id": "lanternfair.emberford.toast.ring",
+   "speaker": "scholar-sefa",
+   "text": "The runner brings one last pair around the flap. Sefa raises the cup when both can see it. Lumen sticks to the rim. Kip whispers, “We have a very small guest.”",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "lanternfair.emberford.toast.trail",
+   "speaker": "kip-arden",
+   "text": "Kip comes in by the outside lights and stops at the last bench seat. Sefa turns so the cup catches the lamp. Kip lifts an empty cup with both hands. “I rehearsed that all the way from the bend.”",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "lanternfair.island.slip",
+   "speaker": "island-dockhand",
+   "text": "The loading turns are settled. Now I need a welcome that fits around them. There is a dry envelope space here and a plan from our last harvest in the back of the binder. Let’s see what we can start with.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put Hana’s ring sketch and its covered sightline in the binder.",
+     "if": {
+      "all": [
+       {
+        "objective": "island.log"
+       },
+       {
+        "not": {
+         "flagSet": "lanternfair.island.source"
+        }
+       },
+       {
+        "flag": "lanternfair.emberford.plan",
+        "eq": "ring"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.island.source",
+       "value": "ring"
+      }
+     ],
+     "next": "lanternfair.island.source.ring"
+    },
+    {
+     "text": "Put Hana’s trail sketch and its last-seat note in the binder.",
+     "if": {
+      "all": [
+       {
+        "objective": "island.log"
+       },
+       {
+        "not": {
+         "flagSet": "lanternfair.island.source"
+        }
+       },
+       {
+        "flag": "lanternfair.emberford.plan",
+        "eq": "trail"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.island.source",
+       "value": "trail"
+      }
+     ],
+     "next": "lanternfair.island.source.trail"
+    },
+    {
+     "text": "Unfold the Island crew’s chalk sketch from last harvest.",
+     "if": {
+      "all": [
+       {
+        "objective": "island.log"
+       },
+       {
+        "not": {
+         "flagSet": "lanternfair.island.source"
+        }
+       },
+       {
+        "not": {
+         "flagSet": "lanternfair.emberford.plan"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.island.source",
+       "value": "local"
+      }
+     ],
+     "next": "lanternfair.island.source.local"
+    },
+    {
+     "text": "Leave the binder on the dock for now."
+    }
+   ]
+  },
+  {
+   "id": "lanternfair.island.source.ring",
+   "speaker": "island-dockhand",
+   "text": "Three lamps around the bench and a note about a stall flap. We have a wind screen where their flap was. Walk the ramp and check the shelter before we decide where the bench goes.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "lanternfair.island.source.trail",
+   "speaker": "island-dockhand",
+   "text": "Two turns lit and a cup turned to the last seat. Their chalk dots cross the middle of a lane wider than this one. Walk the ramp and check the shelter before we borrow that line.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "lanternfair.island.source.local",
+   "speaker": "island-dockhand",
+   "text": "The old sketch has a public welcome and a short walk, but no mark for the wheel lane. We can make a fresh copy after we walk the ramp and check the shelter.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "lanternfair.island.ramp",
+   "speaker": "island-dockhand",
+   "text": "Follow the crew while they carry an empty crate past the shelter posts. Where the lower ramp meets the wall, they have to turn it sideways. A stand there would take the space they use. There is room for two lantern stands farther in, on dry land.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Walk the turn with the crew. Mark the wheel lane clear on the fair sheet.",
+     "if": {
+      "all": [
+       {
+        "objective": "island.log"
+       },
+       {
+        "flagSet": "lanternfair.island.source"
+       },
+       {
+        "not": {
+         "flag": "lanternfair.island.ramp",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.island.ramp",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the sketch off the rail."
+    }
+   ]
+  },
+  {
+   "id": "lanternfair.island.listening",
+   "speaker": "island-dockhand",
+   "text": "At the dock people wait for the returning crew to answer the harvest line. If you start while they are still out, somebody misses the reply. Under the shelter you can hear the answer without raising your voice. At the landward bend you need a lookout who can repeat it.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Carry the first line to the bend and wait for the shelter’s answer.",
+     "if": {
+      "all": [
+       {
+        "objective": "island.log"
+       },
+       {
+        "flagSet": "lanternfair.island.source"
+       },
+       {
+        "not": {
+         "flag": "lanternfair.island.listening",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.island.listening",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep a quiet moment for the crew."
+    }
+   ]
+  },
+  {
+   "id": "lanternfair.island.board",
+   "speaker": "island-dockhand",
+   "text": "We can put all three lamps inside the shelter and wait for everyone to gather. Or move two along the landward walk and have a lookout carry the answer back. This turn we have one helper. We can use them to fetch people or relay the answer.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set the ring inside the shelter. Send the helper to bring the last crew in.",
+     "if": {
+      "all": [
+       {
+        "objective": "island.log"
+       },
+       {
+        "flagSet": "lanternfair.island.source"
+       },
+       {
+        "flag": "lanternfair.island.ramp",
+        "eq": true
+       },
+       {
+        "flag": "lanternfair.island.listening",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "lanternfair.island.open",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.island.plan",
+       "value": "ring"
+      }
+     ]
+    },
+    {
+     "text": "Light the landward trail. Ask the helper to carry the answer from the bend.",
+     "if": {
+      "all": [
+       {
+        "objective": "island.log"
+       },
+       {
+        "flagSet": "lanternfair.island.source"
+       },
+       {
+        "flag": "lanternfair.island.ramp",
+        "eq": true
+       },
+       {
+        "flag": "lanternfair.island.listening",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "lanternfair.island.open",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.island.plan",
+       "value": "trail"
+      }
+     ]
+    },
+    {
+     "text": "Keep the lamps on the rack for now."
+    }
+   ]
+  },
+  {
+   "id": "lanternfair.island.open.ring",
+   "speaker": "island-dockhand",
+   "text": "The bench is warm and the wheel lane is empty. I see the helper with the last two crew. Leave room by the edge of the ring. When they sit, we can start.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Give the returning crew the last two cups and raise the ring’s lamp.",
+     "if": {
+      "all": [
+       {
+        "objective": "island.log"
+       },
+       {
+        "flag": "lanternfair.island.plan",
+        "eq": "ring"
+       },
+       {
+        "not": {
+         "flag": "lanternfair.island.open",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.island.open",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Wait inside the shelter a little longer."
+    }
+   ]
+  },
+  {
+   "id": "lanternfair.island.open.trail",
+   "speaker": "island-dockhand",
+   "text": "The lights turn landward before the ramp. We can start here while the next crew comes in. Go to the bend and tell the lookout when the voices at the shelter are ready for the answer.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Take the answering cup up to the lookout and light the last trail lantern.",
+     "if": {
+      "all": [
+       {
+        "objective": "island.log"
+       },
+       {
+        "flag": "lanternfair.island.plan",
+        "eq": "trail"
+       },
+       {
+        "not": {
+         "flag": "lanternfair.island.open",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "lanternfair.island.open",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Wait by the last stand a little longer."
+    }
+   ]
+  },
+  {
+   "id": "lanternfair.island.toast.ring",
+   "speaker": "island-dockhand",
+   "text": "The last crew fits on the bench. Joss lifts a cup, loses the first word, and waits. Three people say it together. The crew gets the full line, even though the warm bread has cooled a little.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "lanternfair.island.toast.trail",
+   "speaker": "island-dockhand",
+   "text": "An answer comes back from the bend. A loader who is still at work says it between two steps. Joss puts a cup on the dry wall for the lookout to drink after the last relay.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH1-S12",
+   "title": "The Lantern Fair: Two Places to Stand",
+   "world": "WORLD-02",
+   "knowledgeQuestion": "What can this welcome offer when people meet it from different places?",
+   "available": {
+    "flagSet": "lanternfair.emberford.role"
+   },
+   "objectives": [
+    {
+     "id": "lanternfair.emberford.o.watch",
+     "title": "Rehearse the welcome from the road and the bench.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "lanternfair.emberford.road",
+        "eq": true
+       },
+       {
+        "flag": "lanternfair.emberford.bench",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "perspective",
+       "evidence"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "ART"
+      ],
+      "subjects": [
+       "theatre",
+       "design-tech"
+      ],
+      "minutes": 4
+     }
+    },
+    {
+     "id": "lanternfair.emberford.o.send",
+     "title": "Send a plan and the two checks to the Island.",
+     "essential": false,
+     "done": {
+      "flagSet": "lanternfair.emberford.plan"
+     },
+     "visible": {
+      "objective": "lanternfair.emberford.o.watch"
+     },
+     "weave": {
+      "concepts": [
+       "explanation",
+       "truth",
+       "responsibility"
+      ],
+      "framework": [
+       "scope",
+       "ethics"
+      ],
+      "atl": [
+       "communication",
+       "self-management"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "theatre",
+       "design-tech"
+      ],
+      "minutes": 2
+     },
+     "onComplete": [
+      {
+       "journal": "j.lanternfair.emberford"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH14-S01",
+   "title": "The Lantern Fair: An Answer at the Bend",
+   "world": "WORLD-15",
+   "knowledgeQuestion": "What can the crew keep from another port’s plan, and what needs to change here?",
+   "available": {
+    "all": [{ "objective": "island.log" }, { "flagSet": "lanternfair.island.source" }]
+   },
+   "objectives": [
+    {
+     "id": "lanternfair.island.o.check",
+     "title": "Walk the wheel lane and listen for the answer to the harvest line.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "lanternfair.island.ramp",
+        "eq": true
+       },
+       {
+        "flag": "lanternfair.island.listening",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "evidence",
+       "interpretation",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "geography",
+       "theatre"
+      ],
+      "minutes": 4
+     }
+    },
+    {
+     "id": "lanternfair.island.o.open",
+     "title": "Set the welcome around the crew’s route and open the fair.",
+     "essential": false,
+     "done": {
+      "flag": "lanternfair.island.open",
+      "eq": true
+     },
+     "visible": {
+      "objective": "lanternfair.island.o.check"
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "responsibility",
+       "perspective"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "self-management"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "geography",
+       "theatre",
+       "design-tech"
+      ],
+      "minutes": 3
+     },
+     "onComplete": [
+      {
+       "journal": "j.lanternfair.island"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.lanternfair.emberford",
+   "claimKind": "interpretation",
+   "text": "The same row of lamps helped from one place and left a gap at another. We sent a sketch with the two tests where the folds would leave them in sight."
+  },
+  {
+   "id": "j.lanternfair.island",
+   "claimKind": "interpretation",
+   "text": "We kept the cart’s turn free and chose where the welcome could reach. The Island crew waits to answer the harvest line. The fair left room for that answer."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.lanternfair.emberford.o.watch.1",
+   "objective": "lanternfair.emberford.o.watch",
+   "depth": 1,
+   "text": "Take one of the two jobs at Hana’s spare lamp rack."
+  },
+  {
+   "id": "h.lanternfair.emberford.o.watch.2",
+   "objective": "lanternfair.emberford.o.watch",
+   "depth": 2,
+   "text": "Put up a ring or a trail. A runner starts by the road and a host starts by the bench."
+  },
+  {
+   "id": "h.lanternfair.emberford.o.watch.3",
+   "objective": "lanternfair.emberford.o.watch",
+   "depth": 3,
+   "text": "The road peg is southeast of the square. The song bench is north of Hana’s stall."
+  },
+  {
+   "id": "h.lanternfair.emberford.o.watch.4",
+   "objective": "lanternfair.emberford.o.watch",
+   "depth": 4,
+   "text": "Use both viewing props. You can switch roles or try the other lamp placement without changing the last sketch you sent."
+  },
+  {
+   "id": "h.lanternfair.emberford.o.send.1",
+   "objective": "lanternfair.emberford.o.send",
+   "depth": 1,
+   "text": "Send enough of the rehearsal for someone elsewhere to use it."
+  },
+  {
+   "id": "h.lanternfair.emberford.o.send.2",
+   "objective": "lanternfair.emberford.o.send",
+   "depth": 2,
+   "text": "Both viewing slips go with whichever layout you tried."
+  },
+  {
+   "id": "h.lanternfair.emberford.o.send.3",
+   "objective": "lanternfair.emberford.o.send",
+   "depth": 3,
+   "text": "Use the dispatch board on the path south of the fountain after visiting the road peg and the song bench."
+  },
+  {
+   "id": "h.lanternfair.emberford.o.send.4",
+   "objective": "lanternfair.emberford.o.send",
+   "depth": 4,
+   "text": "Send the trial’s ring with the covered view written down, or send the trail with its note from the last seat."
+  },
+  {
+   "id": "h.lanternfair.island.o.check.1",
+   "objective": "lanternfair.island.o.check",
+   "depth": 1,
+   "text": "Find a mark for the crew’s own turn, away from the marks on the model."
+  },
+  {
+   "id": "h.lanternfair.island.o.check.2",
+   "objective": "lanternfair.island.o.check",
+   "depth": 2,
+   "text": "Check both the passage for the crate and the way a returning crew answers the welcome."
+  },
+  {
+   "id": "h.lanternfair.island.o.check.3",
+   "objective": "lanternfair.island.o.check",
+   "depth": 3,
+   "text": "The ramp check is beside the lower landing. The listening flag is near the eastern shelter."
+  },
+  {
+   "id": "h.lanternfair.island.o.check.4",
+   "objective": "lanternfair.island.o.check",
+   "depth": 4,
+   "text": "Walk the lower-ramp turn with Joss, then try carrying the harvest line between the shelter and the bend."
+  },
+  {
+   "id": "h.lanternfair.island.o.open.1",
+   "objective": "lanternfair.island.o.open",
+   "depth": 1,
+   "text": "The lamps can welcome people without using the crew’s wheel lane."
+  },
+  {
+   "id": "h.lanternfair.island.o.open.2",
+   "objective": "lanternfair.island.o.open",
+   "depth": 2,
+   "text": "Decide whether the helper brings guests to the shelter or carries the answer along the landward path."
+  },
+  {
+   "id": "h.lanternfair.island.o.open.3",
+   "objective": "lanternfair.island.o.open",
+   "depth": 3,
+   "text": "The fair board is east of Joss’s dock log. The ring opens at the shelter. The trail opens farther along the landward bend."
+  },
+  {
+   "id": "h.lanternfair.island.o.open.4",
+   "objective": "lanternfair.island.o.open",
+   "depth": 4,
+   "text": "Set the ring and hand out the last two cups at its bench, or set the trail and take the answering cup to the lookout."
+  }
+ ]
+}

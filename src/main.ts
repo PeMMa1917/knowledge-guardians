@@ -24,8 +24,8 @@ let game: Phaser.Game | null = null;
 
 function startWorld(): void {
   if (!game) return;
-  if (game.scene.isActive('world')) game.scene.getScene('world').scene.restart();
-  else game.scene.start('world');
+  if (game.scene.isActive('world')) game.scene.getScene('world').scene.restart({});
+  else game.scene.start('world', {});
 }
 
 const ui = new UI(document.getElementById('ui')!, () => {
@@ -35,15 +35,27 @@ ctx.ui = ui;
 
 let booted = false, pendingStart = false;
 
+const gameParent = document.getElementById('game')!;
 game = new Phaser.Game({
   type: Phaser.AUTO,
-  parent: 'game',
+  parent: gameParent,
   backgroundColor: '#120f24',
   pixelArt: true,
   roundPixels: true,
   scale: { mode: Phaser.Scale.RESIZE, width: window.innerWidth, height: window.innerHeight },
   audio: { disableWebAudio: false },
   scene: [BootScene, WorldScene],
+});
+const { events, scale } = game;
+events.once(Phaser.Core.Events.READY, () => {
+  // Native resize can leave Phaser waiting for a game step. Reconcile with the laid-out parent.
+  const viewport = new ResizeObserver(([{ contentRect: { width, height } }]) => {
+    if (width > 0 && height > 0 && (width !== scale.width || height !== scale.height)) {
+      scale.setParentSize(width, height);
+    }
+  });
+  viewport.observe(gameParent);
+  events.once(Phaser.Core.Events.DESTROY, () => viewport.disconnect());
 });
 game.events.once('boot-complete', () => {
   booted = true;
@@ -69,9 +81,5 @@ document.addEventListener('visibilitychange', () => {
 // The Guardian's Ledger: count active play time (input in the last 2 minutes, tab visible, in the world).
 for (const ev of ['keydown', 'pointerdown', 'wheel'] as const) window.addEventListener(ev, () => ctx.controller.noteInput(), { passive: true });
 setInterval(() => { if (ctx.world) ctx.controller.tickActive(document.visibilityState === 'visible'); }, 15_000);
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'hidden' && ctx.controller.state) ctx.controller.saves.savePermanent(ctx.controller.permanent);
-});
-
 // Debug/test hook: lets automated tests read state. Not used by the game.
 (window as any).kg = ctx;

@@ -2,8 +2,11 @@ import { NILE_TRIALS, NILE_DELIVERIES, type NileDelivery } from '../domain/nileM
 import { FOREST_WATCH, FOREST_WINDOWS, forestWatch, type ForestWindow } from '../domain/forestWatch';
 import { METAL_SAMPLES, readMetalSample } from '../domain/metalSample';
 import { compareCopy } from '../domain/copyComparison';
+import { mlaCitation } from '../domain/mla';
 import { seaChart } from '../domain/seaCharts';
 import { STAGE_CUES, stageRehearsal, type StageCue } from '../domain/stageRehearsal';
+import { FILM_STATIONS, isFilmStation } from '../domain/filmCuts';
+import { cameraPanel, filmEditorPanel } from './filmCuts';
 import { MARKET_BASES, marketComparison, marketOffersWithin, type MarketBasis } from '../domain/marketScale';
 import { WATER_SETTINGS, waterTrial, type WaterCondition, type WaterSetting } from '../domain/waterGate';
 import { CIVIC_RULES, CIVIC_SAMPLES, civicAllocation, type CivicRule, type CivicSample } from '../domain/civicConsole';
@@ -11,6 +14,8 @@ import { VOICE_SOURCES, VOICE_VIEWS, voiceReading, type VoiceView } from '../dom
 import { ISLAND_CRATES, ISLAND_LANDINGS, ISLAND_ROUTES, islandPlan, type IslandLanding, type IslandRoute } from '../domain/islandPlan';
 import { COUNCIL_TRIALS, councilClock, type CouncilTrial } from '../domain/councilClock';
 import { buildScoutBoard } from './scoutRoutes';
+import { adventureJournalTab } from './adventureJournal';
+import { ROUTE_ACTIONS } from '../content/questionEncounters';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -51,7 +56,7 @@ import { studentAlerts } from '../domain/learning';
 import { MOVE_HELP, type ShowdownMove } from '../domain/showdown';
 import { AOK_NAMES, ATL_NAMES, CONCEPT_NAMES, PROFILE_NAMES, SUBJECTS } from '../domain/curriculum';
 import type { ClaimKind, DialogueNode, EvidenceCard, HistoricalLabel, ShowdownState, TitleLockRecord } from '../domain/types';
-import { PLAYER_LOOKS } from '../scenes/art';
+import { PLAYER_LOOKS, TILE } from '../scenes/art';
 import { artURL, BIG_ART } from './illustrations';
 import { clear, h, trapFocus } from './dom';
 import { dailySeed, dealTiles, decodeGhost, encodeGhost, ghostPairs, isPair, speedRank, tileRank, type Tile } from '../domain/tiles';
@@ -62,6 +67,77 @@ import { approvalOf, approvalRank } from '../domain/approval';
 import { ROLES, fitsRole, roleOf } from '../domain/roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
 import { FIELD_GAMES } from '../domain/fieldgames';
+import { routingBoard } from './routingBoards';
+import { counterReplayBoard } from './counterReplayBoard';
+import { islandSkiffPanel } from './islandSkiff';
+import { drawerCases } from './drawerCases';
+import { mapPinControls } from './mapPinControls';
+import { PIN_PURPOSES } from '../domain/mapPins';
+import { MICRO_SKILL_DOMAIN } from '../content/microSkillEvidence';
+import { specimenArt } from '../app/specimenArt';
+import { CLEARANCE_GROUP } from '../content/clearanceCases';
+import { clearanceGallery } from './clearanceGallery';
+import { RELAY_GROUP } from '../content/relayCases';
+import { specimenRelayPanel } from './specimenRelay';
+import { PASSAGE_GROUP } from '../content/passageCases';
+import { specimenPassagePanel } from './specimenPassage';
+import { TURNING_GROUP } from '../content/turningTable';
+import { turningPanel } from './turningTable';
+import { CUE_GROUP } from '../content/cueWorkshop';
+import { LOAD_GROUP } from '../content/loadingBay';
+import { BEARING_GROUP } from '../content/bearingBay';
+import { PRISM_GROUP } from '../content/prismViewer';
+import { prismViewerPanel } from './prismViewer';
+import { ALIGN_GROUP } from '../content/mapAlignment';
+import { mapAlignmentPanel } from './mapAlignment';
+import { scriptRailPanel } from './scriptRail';
+import { twoCallsPanel } from './twoCalls';
+import { localGuide, workFeedback } from './localGuide';
+import { bearingBayPanel } from './bearingBay';
+import { loadingBayPanel } from './loadingBay';
+import { cueWorkshopPanel } from './cueWorkshop';
+import { datePegPanel } from './datePeg';
+import { LANTERN_WEAVE } from '../content/lanternWeave';
+import { lanternWeavePanel } from './lanternWeave';
+import { shutterBoardPanel } from './shutterBoard';
+import { DATE_REGISTER_GROUP } from '../content/dateRegisterCases';
+import { dateRegisterPanel } from './dateRegister';
+import { STORY_FRAME_GROUP } from '../content/storyArchive';
+import { storyFramePanel } from './storyFrames';
+import { NUMBER_LEAF_GROUP } from '../content/numberLeaves';
+import { numberLeavesPanel } from './numberLeaves';
+import { IMPRINT_GROUP } from '../content/copyImprintCases';
+import { REFERENCE_PROOF } from '../domain/referenceProofs';
+import { copyImprint } from './copyImprint';
+import { referenceProofPanel } from './referenceProofs';
+import { MAKER_EXACT, MAKER_TOOL } from '../domain/makerRoom';
+import { makerRoom } from './makerRoom';
+import { makerExact } from './makerExact';
+import { marketBasketPanel } from './marketBasket';
+import { waterLoopPanel } from './waterLoop';
+import { catchmentPanel } from './catchment';
+import { civicIncentivePanel, incentiveStation } from './civicIncentive';
+import { serviceBoundaryPanel } from './boundaryBoard';
+import { waterLoopStation } from '../maps/waterLoop';
+import { SKIFF_LANDINGS } from '../maps/islandSkiff';
+import { handoverGallery } from './handoverGallery';
+import { sharedCarry } from './sharedCarry';
+import { stiltfrogWatch } from './stiltfrogWatch';
+import { linkedNotes } from './linkedNotes';
+import { CARRY, carryLocation } from '../domain/sharedCarry';
+import { opticsTrial } from './opticsTrial';
+import { DETECTOR_GAME } from '../domain/coastDetector';
+import { coastDetectorPanel } from './coastDetector';
+import { BRIDGE_PROOF_TOOL } from '../domain/bridgeProof';
+import { bridgeProofPanel } from './bridgeProof';
+import { SILL_CLOCK } from '../domain/sillBridge';
+import { sillBridgePanel, sillGuideObjective } from './sillBridge';
+import { PORTER_TOOL } from '../domain/porterPace';
+import { porterPacePanel } from './porterPace';
+import { WARM_TOOL } from '../domain/warmRoom';
+import { warmRoomPanel } from './warmRoom';
+import { BEND_TOOL, type BendSite } from '../domain/stripBend';
+import { stripBendPanel } from './stripBend';
 import { loyaltyOf } from '../domain/loyalty';
 import { CROSSINGS, WAY_LABEL, crossingOf, crossingWay, wayOpen } from '../domain/crossings';
 import { HEARTH, TONE_LABEL, type HearthTalk } from '../domain/hearth';
@@ -69,10 +145,45 @@ import { VERSES, balladName, versesFor } from '../domain/ballad';
 import { crossingEpithet, lingering, mirror, vignettesFor } from '../domain/epilogue';
 import { BRUSH_STROKES, CHART_CHOICES, DIG_CHOICES, DIG_LIGHT, DIG_W, MY_PICTURE_NAMES, SKY_PICTURES, STARS, STAR_HEIGHT, TRADE_KIND, TRADE_START, TRADE_STEPS, digNote, digReport, digSite, digStroke, type DigTool, type Trader } from '../domain/compendiumGames';
 import { arrivedLetters, composeLetter, dueLetters } from '../domain/letters';
+import { communityLetterFlag, dueCommunityLetters, receivedCommunityLetters } from '../domain/communityLetters';
+import { conversationHistory } from '../domain/conversationHistory';
+import { storyMotif, storyMotifKey, type StoryMotif } from '../domain/storyMotifs';
+import { activePerspective, ownedPerspective, perspectiveTools } from '../domain/perspectives';
+import { canClaimSpecimen, carriesSpecimen, carriedSpecimenCount, hasSpecimen, isSpecimenItem, ownsSpecimen, SPECIMEN_CAPACITY,
+  SPECIMEN_SHELF, specimenEquipped, specimenFromTool, specimenReadingFlag } from '../domain/specimenGear';
+import { specimenCase, specimenThumbnail, specimenVault } from './specimenVault';
+import { journalEvidence, specimenReferences, type SpecimenReference } from '../domain/specimenReferences';
+import { timbuktuHorizonPanel } from './timbuktuHorizon';
+import { objectUsePanel } from './objectUse';
+import { callboardPanel } from './callboardPanel';
+import { MODEL_RECORD_GROUP } from '../content/modelRecords';
+import { modelRecordPanel } from './modelRecords';
+import { TIME_TOOL } from '../domain/timeRoom';
+import { PACKING_TOOL } from '../domain/ferryPacking';
+import { ferryPackingPanel } from './ferryPacking';
+import { timeRoomPanel } from './timeRoom';
+import { materialStorePanel } from './materialStores';
+import { GLASS_RACK_PREFIX } from '../content/glassRack';
+import { glassRackPanel } from './glassRack';
+import { STAR_GAME } from '../domain/starPaths';
+import { starChart, starField } from './starPaths';
+import { BADGE_ANNEX_PREFIX } from '../content/badgeRoom';
+import { badgeAnnexPanel } from './badgeAnnex';
+import { workSchedulePanel } from './workSchedule';
+import { EARLIER_VIEWING } from '../content/earlierViewing';
+import { earlierViewingPanel } from './earlierViewing';
+import { BEATER_GAME } from '../domain/beaterProof';
+import { beaterProofPanel } from './beaterProof';
+import { JOINED_CLOTH_GAME, JOINED_CLOTH_OBJECTIVE } from '../domain/joinedCloth';
+import { joinedClothPanel } from './joinedCloth';
+import { CURTAIN_PREFIX } from '../content/curtainCall';
+import { curtainCallPanel } from './curtainCall';
+import { FACING_CUE_PREFIX } from '../content/facingCue';
+import { facingCuePanel } from './facingCue';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
-import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
-import { MIN_SOURCES, RUMOURS, VERDICTS, currentRumour, sourcesChecked } from '../domain/rumours';
+import { BARTER, DYES, TOWN_COSTS, WOAD_BLUE, ferryPrice, ownsDye, townPrice } from '../domain/trade';
+import { RUMOURS, VERDICTS, currentRumour, missingRumourSources, sourcesChecked } from '../domain/rumours';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
 import { WARES, honestLabels, lockedOption, owns, priceFor } from '../domain/shop';
 import { calendarGrid, dayOf, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
@@ -359,10 +470,13 @@ function lightInk(hex: string): string {
 export class UI implements UIApi {
   private root: HTMLElement;
   private hud!: HTMLElement;
+  private hudDock!: HTMLElement;
   private modal: HTMLElement | null = null;
+  private titleModalOpener: HTMLElement | null = null;
   private releaseTrap: (() => void) | null = null;
   private promptEl!: HTMLElement;
   private toastBox!: HTMLElement;
+  private saveFeedback: HTMLElement | null = null;
   private lumenBubble!: HTMLElement;
   private onStart: () => void;
   private pendingChapterEnd = false;
@@ -371,6 +485,8 @@ export class UI implements UIApi {
   /** Things that wait until the open panel closes: events and reflection offers. */
   private queue: (() => void)[] = [];
   private activeEvent: string | null = null;
+  private activeEventNode: string | null = null;
+  private stopStoryCue: (() => void) | null = null;
 
   constructor(root: HTMLElement, onStart: () => void) {
     this.root = root;
@@ -388,8 +504,15 @@ export class UI implements UIApi {
   private sfx(key: string): void { ctx.world?.playSfx(key); }
 
   private openModal(cls: string, label: string, ...content: (Node | string)[]): HTMLElement {
+    const active = document.activeElement;
+    const opener = active instanceof HTMLElement && active.matches('.title-screen button') ? active : this.titleModalOpener;
     this.closeModal(false);
+    this.titleModalOpener = opener;
     const box = h('div', { class: `panel ${cls}`, role: 'dialog', 'aria-modal': 'true', 'aria-label': label }, ...content);
+    const state = ctx.controller.state;
+    if (state && box.classList.contains('bench-panel') && !box.querySelector('.work-guide')) {
+      box.append(localGuide(ctx.controller, MAPS[state.mapId]?.world ?? ''));
+    }
     const wrap = h('div', { class: 'modal-wrap', onclick: (e: MouseEvent) => { if (e.target === wrap && !cls.includes('dialogue')) this.closeModal(); } }, box);
     this.root.append(wrap);
     this.modal = wrap;
@@ -399,17 +522,42 @@ export class UI implements UIApi {
   }
 
   closeModal(sound = true): void {
-    try { if (ctx.settings.readAloud) window.speechSynthesis?.cancel(); } catch { /* no speech */ }
     if (!this.modal) return;
+    try { window.speechSynthesis?.cancel(); } catch { /* no speech */ }
+    // A player can leave a Calm invitation or its conversation with Escape or a click.
+    // Internal modal changes during dialogue use closeModal(false) and keep its state.
+    const leaveEvent = sound && (
+      this.modal.querySelector('[role="dialog"].event')
+      || (this.activeEvent && this.modal.querySelector('[role="dialog"].dialogue'))
+    );
     this.releaseTrap?.();
     this.modal.remove();
     this.modal = null;
+    const opener = this.titleModalOpener;
+    this.titleModalOpener = null;
+    if (leaveEvent) {
+      if (this.activeEvent && this.activeEventNode) {
+        ctx.controller.dispatch({ type: 'SetFlag', flag: `event.resume.${this.activeEvent}`, value: this.activeEventNode });
+      }
+      this.activeEvent = null;
+      this.activeEventNode = null;
+      ctx.controller.dispatch({ type: 'DelayEvent' });
+    }
     if (sound) this.sfx('sfx.click');
-    (document.querySelector('#game canvas') as HTMLElement | null)?.focus();
+    const canvas = document.querySelector<HTMLCanvasElement>('#game canvas');
+    if (opener?.isConnected) opener.focus();
+    else if (canvas) {
+      canvas.tabIndex = -1;
+      canvas.focus();
+    }
     this.refreshHud();
     if (this.pendingChapterEnd) { this.pendingChapterEnd = false; this.chapterEnd(); return; }
-    const next = this.queue.shift();
-    if (next) setTimeout(next, 0);
+    if (this.queue.length) {
+      setTimeout(() => {
+        // A dialogue can replace its panel before this callback runs.
+        if (!this.modal) this.queue.shift()?.();
+      }, 0);
+    }
   }
 
   /** Run now if nothing is open; otherwise run when the open panel closes. */
@@ -441,14 +589,21 @@ export class UI implements UIApi {
     if (!this.promptEl) return;
     if (!text || this.modal) { this.promptEl.hidden = true; return; }
     this.promptEl.hidden = false;
+    const key = ctx.settings.keys.interact;
+    if (this.promptEl.textContent === `${key} ${text}`) return;
     clear(this.promptEl);
-    this.promptEl.append(h('kbd', {}, ctx.settings.keys.interact), ` ${text}`);
+    this.promptEl.append(h('kbd', {}, key), ` ${text}`);
   }
 
   private onKey(e: KeyboardEvent): void {
+    // Shortcuts act once per press, even when they change which panel has focus.
+    if (e.repeat) return;
     const tag = (e.target as HTMLElement)?.tagName;
     if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') { if (e.key === 'Escape') this.closeModal(); return; }
-    if (!this.hud?.isConnected) return;
+    if (!this.hud?.isConnected) {
+      if (e.key === 'Escape' && this.modal) this.closeModal();
+      return;
+    }
     if (this.photoBar) { if (e.key === 'Escape') this.closePhotoMode(); return; }
     if (this.emoteBar) {
       if (e.key === 'Escape' || actionFor(ctx.settings.keys, e.key) === 'emote') { this.closeEmotes(); return; }
@@ -491,41 +646,47 @@ export class UI implements UIApi {
 
   /** The folding map: a picture of the whole place, with pins. */
   openMap(): void {
-    const c = ctx.controller;
-    if (!ctx.world) return;
-    const box = this.openModal('map-panel wide', 'Map', this.closeBtn(), h('h2', {}, MAPS[c.state.mapId]?.name ?? 'Map'), h('p', { class: 'fine' }, 'Unfolding the map…'));
+    const c = ctx.controller, world = ctx.world;
+    const map = MAPS[c.state.mapId];
+    if (!world || !map) return;
+    world.snapshotPosition();
+    const box = this.openModal('map-panel wide', 'Map', this.closeBtn(), h('h2', {}, map.name), h('p', { class: 'fine' }, 'Unfolding the map…'));
     this.sfx('sfx.page');
-    ctx.world.mapSnap((r) => {
+    world.mapSnap((r) => {
       if (!box.isConnected) return;
       clear(box);
-      box.append(this.closeBtn(), h('h2', {}, MAPS[c.state.mapId]?.name ?? 'Map'));
+      const dismiss = this.closeBtn();
+      box.append(dismiss, h('h2', {}, map.name));
+      dismiss.focus();
       if (!r) { box.append(h('p', {}, 'This browser could not draw the map.')); return; }
       const paper = h('div', { class: 'chart' });
-      const img = h('img', { src: r.img.src, alt: `Map of ${MAPS[c.state.mapId]?.name ?? 'this place'}` }) as HTMLImageElement;
+      const img = h('img', { src: r.img.src, alt: `Map of ${map.name}` });
       paper.append(img, h('div', { class: 'folds', 'aria-hidden': 'true' }));
       const pins = h('div', { class: 'pins' });
       const ICON: Record<string, string> = { you: '★', new: '!', place: '•', waystone: '◆', portal: '⇲' };
-      img.addEventListener('load', () => {
-        const sx = img.clientWidth / r.img.naturalWidth || img.clientWidth / img.naturalWidth, sy = img.clientHeight / img.naturalHeight;
-        for (const m of r.marks) {
-          const [px, py] = r.at(m.x, m.y);
-          pins.append(h('span', { class: `pin-${m.kind}`, title: m.label, 'aria-label': m.label, role: 'img', style: { left: `${px * sx}px`, top: `${py * sy}px` } }, ICON[m.kind]));
-        }
-      }, { once: true });
+      const percentX = (x: number) => `${x / r.img.naturalWidth * 100}%`;
+      const percentY = (y: number) => `${y / r.img.naturalHeight * 100}%`;
+      const pinAt = (x: number, y: number, kind: string, label: string, symbol: string) => {
+        const [px, py] = r.at(x, y);
+        return h('span', { class: `pin-${kind}`, title: label, 'aria-label': label, role: 'img', style: { left: percentX(px), top: percentY(py) } }, symbol);
+      };
+      for (const mark of r.marks) pins.append(pinAt(mark.x, mark.y, mark.kind, mark.label, ICON[mark.kind]));
+      const plan = mapPinControls(c, map.id, (pin) => {
+        pins.querySelector('.pin-own')?.remove();
+        if (pin) pins.append(pinAt((pin.x + 0.5) * TILE, (pin.y + 0.5) * TILE, 'own', PIN_PURPOSES[pin.purpose], '▲'));
+      });
       paper.append(pins);
       // Fog of war: clouds over chunks not yet explored.
       const fogL = h('div', { class: 'fog', 'aria-hidden': 'true' });
-      img.addEventListener('load', () => {
-        const sx = img.clientWidth / img.naturalWidth, sy = img.clientHeight / img.naturalHeight;
-        for (const f of r.fog) {
-          const [x0, y0] = r.at(f.x, f.y), [x1, y1] = r.at(f.x + f.w, f.y + f.h);
-          fogL.append(h('span', { style: { left: `${x0 * sx - 1}px`, top: `${y0 * sy - 1}px`, width: `${(x1 - x0) * sx + 2}px`, height: `${(y1 - y0) * sy + 2}px` } }));
-        }
-      }, { once: true });
+      for (const f of r.fog) {
+        const [x0, y0] = r.at(f.x, f.y), [x1, y1] = r.at(f.x + f.w, f.y + f.h);
+        fogL.append(h('span', { style: { left: percentX(x0), top: percentY(y0), width: percentX(x1 - x0), height: percentY(y1 - y0) } }));
+      }
       paper.insertBefore(fogL, pins);
-      box.append(paper,
+      box.append(paper, plan,
         h('ul', { class: 'legend' }, h('li', {}, h('span', { class: 'pin-you' }, '★'), ' You'), h('li', {}, h('span', { class: 'pin-new' }, '!'), ' Someone has something new to say'),
-          h('li', {}, h('span', { class: 'pin-place' }, '•'), ' A place you have not used yet'), h('li', {}, h('span', { class: 'pin-waystone' }, '◆'), ' Waystone (save and rest)'), h('li', {}, h('span', { class: 'pin-portal' }, '⇲'), ' Way out')),
+          h('li', {}, h('span', { class: 'pin-place' }, '•'), ' A place you have not used yet'), h('li', {}, h('span', { class: 'pin-waystone' }, '◆'), ' Waystone (save and rest)'), h('li', {}, h('span', { class: 'pin-portal' }, '⇲'), ' Way out'),
+          h('li', {}, h('span', { class: 'pin-own' }, '▲'), ' Your mark')),
         h('p', { class: 'fine' }, `Explored: ${Math.round(r.explored * 100)}%. Walk around to clear the clouds. Press ${ctx.settings.keys.map} or Esc to fold the map.`));
     });
   }
@@ -556,11 +717,13 @@ export class UI implements UIApi {
       h('h1', {}, 'Knowledge Guardians'),
       h('p', { class: 'subtitle' }, 'From Three Firsts to the Door Without a Name'),
       c.loadProblem ? h('p', { class: 'warn', role: 'alert' }, `Your save could not be opened: ${c.loadProblem} Your saved data has not been changed. You can still start a new game, but starting a new game will replace it.`) : null,
+      c.loadWarning ? h('p', { class: 'warn', role: 'alert' }, c.loadWarning) : null,
+      c.saves.permanentLoadProblem ? h('p', { class: 'warn', role: 'alert' }, c.saves.permanentLoadProblem) : null,
       c.contentProblems.length ? h('p', { class: 'warn', role: 'alert' }, `Content problems: ${c.contentProblems.join('; ')}`) : null,
       h('div', { class: 'menu' },
         cont ? h('button', { 'data-autofocus': true, onclick: () => { c.loadContinue(); this.startPlaying(true); } }, h('strong', {}, 'Continue'), h('small', {}, fmt(cont))) : null,
-        rec ? h('button', { onclick: () => this.confirmRecovery() }, h('strong', {}, 'Checkpoint recovery'), h('small', {}, fmt(rec))) : null,
-        h('button', { 'data-autofocus': !cont, onclick: () => this.characterCreation() }, h('strong', {}, 'New game'), h('small', {}, cont ? 'Starts a new campaign. Your awards stay.' : 'Begin as a new recruit')),
+        rec ? h('button', { 'data-autofocus': !cont, onclick: () => this.confirmRecovery() }, h('strong', {}, 'Checkpoint recovery'), h('small', {}, fmt(rec))) : null,
+        h('button', { 'data-autofocus': !cont && !rec, onclick: () => this.characterCreation() }, h('strong', {}, 'New game'), h('small', {}, cont || rec ? 'Starts a new campaign. Your awards stay.' : 'Begin as a new recruit')),
         h('button', { onclick: () => this.openSettings() }, h('strong', {}, 'Settings'), h('small', {}, 'Text size, motion, sound, guide prompts')),
         h('button', { onclick: () => this.openCredits() }, h('strong', {}, 'Credits and sources'), h('small', {}, 'Who made the art, music and sounds, and the historical sources')),
       ),
@@ -579,7 +742,7 @@ export class UI implements UIApi {
       h('p', {}, `This makes "${rec.label}" (${rec.location}, ${new Date(rec.savedAt).toLocaleString()}) your current game. Your current Continue save will be replaced.`),
       h('p', {}, 'Awards, concept XP and badges you already earned are kept.'),
       h('div', { class: 'row' },
-        h('button', { class: 'primary', 'data-autofocus': true, onclick: () => { this.closeModal(); c.loadRecovery(); this.startPlaying(true); } }, 'Restore'),
+        h('button', { class: 'primary', 'data-autofocus': true, onclick: () => { if (c.loadRecovery()) { this.closeModal(); this.startPlaying(true); } } }, 'Restore'),
         h('button', { onclick: () => this.closeModal() }, 'Cancel')));
     void box;
   }
@@ -602,7 +765,7 @@ export class UI implements UIApi {
       ctx.controller.newGame(n.slice(0, 24), lookPick.value(), { pronouns: pron.value(), origin });
       this.startPlaying(false);
     };
-    name.addEventListener('keydown', (e) => { if (e.key === 'Enter') start(); });
+    name.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.repeat) start(); });
     const box = h('div', { class: 'title-screen create' },
       h('h1', {}, 'A new Guardian'),
       h('p', {}, 'Every student is a Knowledge Guardian from the first day. Choose a name and how you look. You can play in any way you like.'),
@@ -757,13 +920,28 @@ export class UI implements UIApi {
 
   private startPlaying(returning: boolean): void {
     const pc = ctx.controller;
+    this.stopStoryCue?.(); this.stopStoryCue = null;
     this.fullRings = new Set(conceptRings(pc.permanent, pc.pack).filter((r) => r.got >= r.max).map((r) => r.concept));
     clear(this.root); this.root.append(this.toastBox);
     this.buildHud();
     this.seenObjectives = new Set(ctx.controller.engine.visibleObjectives(ctx.controller.state).map((o) => o.id));
+    this.activeEvent = null;
+    this.activeEventNode = null;
     this.onStart();
-    if (returning) this.showRecap();
-    else if (!ctx.controller.state.flags['seen.coldopen']) setTimeout(() => this.playScene('cold.open'), ctx.settings.reducedMotion ? 50 : 700);
+    if (returning) {
+      this.showRecap();
+      const pending = pc.state.events.pending;
+      if (pending) {
+        const event = pc.pack.events.find(({ id }) => id === pending);
+        if (event?.maps.includes(pc.state.mapId) && !pc.state.events.seen.includes(pending)) {
+          this.whenFree(() => this.showEvent(pending));
+        } else {
+          pc.dispatch({ type: 'DelayEvent' });
+        }
+      }
+    } else if (!ctx.controller.state.flags['seen.coldopen']) {
+      setTimeout(() => this.playScene('cold.open'), ctx.settings.reducedMotion ? 50 : 700);
+    }
   }
 
   playScene(node: string): void { this.whenFree(() => this.showNode(node)); }
@@ -780,7 +958,9 @@ export class UI implements UIApi {
     this.hud = h('div', { class: 'hud' });
     this.promptEl = h('button', { class: 'prompt', hidden: true, onclick: () => (ctx.world as any)?.tryInteract?.() });
     this.lumenBubble = h('div', { class: 'lumen-bubble', hidden: true, role: 'status', 'aria-live': 'polite' });
-    this.root.append(this.hud, this.promptEl, this.lumenBubble);
+    this.hudDock = h('div', { class: 'hud-dock' }, this.lumenBubble, this.promptEl);
+    this.hud.append(this.hudDock);
+    this.root.append(this.hud);
     this.refreshHud();
   }
 
@@ -788,10 +968,9 @@ export class UI implements UIApi {
     if (!this.hud) return;
     const c = ctx.controller, s = c.state;
     if (!s) return;
-    clear(this.hud);
     const objs = c.engine.visibleObjectives(s);
     const missions = [...new Set(objs.map((o) => o.mission))];
-    const tracker = h('section', { class: 'tracker', 'aria-label': 'Objectives' },
+    const tracker = h('section', { class: 'tracker', 'aria-label': 'Objectives', tabindex: 0 },
       ...missions.filter((m) => objs.some((o) => o.mission === m && !o.complete)).slice(-1).map((m) => h('div', {},
         h('h2', {}, m.title),
         h('p', { class: 'kq' }, m.knowledgeQuestion),
@@ -809,7 +988,11 @@ export class UI implements UIApi {
       h('button', { onclick: () => this.openMenu(), title: 'Menu (Esc)' }, 'Menu ', h('kbd', {}, 'Esc')));
     this.compassEl ??= h('button', { class: 'compass', type: 'button', onclick: () => this.openMap(), 'aria-label': 'Compass. Click for the map.' },
       h('span', { class: 'rose', 'aria-hidden': 'true' }, 'N'), h('span', { class: 'needle idle', 'aria-hidden': 'true' }));
-    this.hud.append(tracker, bar, this.compassEl);
+    bar.append(this.compassEl);
+    this.hud.querySelector('.tracker')?.remove();
+    this.hud.prepend(tracker);
+    this.hudDock.querySelector('.hud-buttons')?.remove();
+    this.hudDock.append(bar);
     // New objectives: Lumen mentions them once if the player allows prompts (GUIDE-001).
     for (const o of objs) {
       if (!this.seenObjectives.has(o.id)) {
@@ -869,7 +1052,7 @@ export class UI implements UIApi {
         case 'item': { const it = c.pack.items.find((x) => x.id === e.id); this.toast(`${e.qty > 0 ? 'Received' : 'Gave'}: ${it?.name ?? e.id}`, 'item'); this.sfx('sfx.pickup'); break; }
         case 'stone': {
           const q = c.pack.questions.find((x) => x.id === e.question);
-          if (q) this.toast(`Lumen's last word: ${q.lastWord}${e.newWay ? ` (Question Stone: ${Math.min(e.ways, 5)} of 5 ways)` : ''}`, 'info');
+          if (q && !q.journalOnly) this.toast(`Lumen's last word: ${q.lastWord}${e.newWay ? ` (Question Stone: ${Math.min(e.ways, 5)} of 5 ways)` : ''}`, 'info');
           break;
         }
         case 'marks': this.toast(`${e.delta > 0 ? '+' : ''}${e.delta} marks`, 'item'); this.sfx('sfx.coins'); break;
@@ -888,7 +1071,16 @@ export class UI implements UIApi {
           break;
         }
         case 'checkpoint': this.toast(`Checkpoint saved: ${e.label}`, 'save'); break;
-        case 'error': this.toast(e.message, 'error'); break;
+        case 'error': {
+          if (this.saveFeedback) {
+            this.saveFeedback.textContent = e.message;
+            break;
+          }
+          const box = this.modal?.querySelector<HTMLElement>('.bench-panel, .exhibit');
+          if (box) workFeedback(box, e.message);
+          else this.toast(e.message, 'error');
+          break;
+        }
         case 'moment': this.toast(`Learner profile moment: ${PROFILE_NAMES[e.moment.attribute]}. ${e.moment.did}`, 'moment'); break;
         case 'portfolio': this.toast(`Added to your portfolio: ${e.title}`, 'info'); break;
         case 'fray': this.toast(`New in your Fray Bestiary: ${e.name} (${e.error.toLowerCase()}). See Journal, Fray Bestiary.`, 'info'); break;
@@ -913,8 +1105,19 @@ export class UI implements UIApi {
       c.dispatch({ type: 'SetFlag', flag: `letter.${letter.id}`, value: true });
       this.toast('A letter with a small gold seal has arrived. See Journal, Letters.', 'award'); this.sfx('sfx.page');
     }
+    this.deliverCommunityLetters(true);
     this.refreshHud();
     ctx.world?.refreshWorld();
+  }
+
+  private deliverCommunityLetters(announce: boolean): void {
+    const c = ctx.controller;
+    const due = dueCommunityLetters(c.state);
+    for (const letter of due) c.dispatch({ type: 'SetFlag', flag: communityLetterFlag(letter.id), value: letter.outcome });
+    if (announce && due.length) {
+      this.toast(due.length === 1 ? 'A traveller left you a letter. See Journal, Letters.' : 'Travellers left you letters. See Journal, Letters.', 'info');
+      this.sfx('sfx.page');
+    }
   }
 
   // ------------------------------------------------- events and reflection
@@ -923,15 +1126,22 @@ export class UI implements UIApi {
   private showEvent(id: string): void {
     const c = ctx.controller;
     const ev = c.pack.events.find((x) => x.id === id);
-    if (!ev || c.state.events.pending !== id) return;
-    const play = () => { this.closeModal(false); this.activeEvent = id; this.showNode(ev.node); };
+    if (!this.hud?.isConnected || !ev || c.state.events.pending !== id) return;
+    const play = () => {
+      this.closeModal(false);
+      this.activeEvent = id;
+      const saved = c.state.flags[`event.resume.${id}`];
+      const resume = typeof saved === 'string' && c.state.flags[`node.${saved}`] === true
+        && c.pack.dialogue.some(({ id }) => id === saved);
+      this.showNode(resume ? saved : ev.node, !resume);
+    };
     if (!ctx.settings.calmMode && !ctx.settings.zenMode) { play(); return; }
     this.openModal('event', ev.title,
       h('h2', {}, ev.title), h('p', {}, ev.calm),
       h('p', { class: 'fine' }, 'Nothing here is timed, and waiting costs you nothing.'),
       h('div', { class: 'row' },
         h('button', { class: 'primary', 'data-autofocus': true, onclick: play }, 'Now'),
-        h('button', { onclick: () => { c.dispatch({ type: 'DelayEvent' }); this.closeModal(); } }, 'Later')));
+        h('button', { onclick: () => this.closeModal() }, 'Later')));
   }
 
   /** A reflection offer at the student threshold (spec 95.1). Never "wrong", always optional. */
@@ -949,7 +1159,12 @@ export class UI implements UIApi {
   /** Close a conversation, then open the tool it names and finish an event. */
   private endDialogue(open?: string): void {
     this.closeModal(false);
-    if (this.activeEvent) { const id = this.activeEvent; this.activeEvent = null; ctx.controller.dispatch({ type: 'ResolveEvent', event: id }); }
+    if (this.activeEvent) {
+      const id = this.activeEvent;
+      this.activeEvent = null;
+      this.activeEventNode = null;
+      ctx.controller.dispatch({ type: 'ResolveEvent', event: id });
+    }
     if (!open) return;
     const [kind, id] = open.split(':');
     if (kind === 'showdown') this.openShowdown(id);
@@ -969,10 +1184,14 @@ export class UI implements UIApi {
     this.showNode(node);
   }
 
-  private showNode(id: string): void {
+  private showNode(id: string, enter = true): void {
     const c = ctx.controller;
-    const ev = c.dispatch({ type: 'EnterNode', node: id });
-    if (ev.some((e) => e.kind === 'error')) { this.closeModal(); return; }
+    const firstHearing = enter && c.state.flags[`node.${id}`] !== true;
+    if (enter) {
+      const events = c.dispatch({ type: 'EnterNode', node: id });
+      if (events.some((event) => event.kind === 'error')) { this.closeModal(); return; }
+    }
+    if (this.activeEvent) this.activeEventNode = id;
     const raw: DialogueNode = c.engine.node(id);
     const n: DialogueNode = { ...raw, text: personalise(raw.text, c.state.player) };
     const speaker = n.speaker === 'lumen' ? { name: 'Lumen', role: 'Fairy guide', sprite: '' }
@@ -1000,14 +1219,41 @@ export class UI implements UIApi {
       optionList.append(h('button', { 'data-autofocus': true, onclick: () => { this.sfx('sfx.click'); if (n.next) this.showNode(n.next); else this.endDialogue(n.open); } }, n.next ? 'Continue ▸' : 'Close'));
     }
     const extra = id === 'sefa.free' ? this.freeQuestion() : null;
+    const earlier = conversationHistory(c.pack.dialogue, c.state.flags).filter((line) => line.id !== id).slice(0, 5);
+    const source = n.citationSource ? c.pack.sources.find((entry) => entry.id === n.citationSource) : undefined;
+    const citation = source ? mlaCitation(source) : [];
+    const spoken = `${speaker?.name ? `${speaker.name}: ` : ''}${n.text}${citation.length ? ` ${citation.map((part) => part.text).join('')}` : ''}`;
     this.openModal('dialogue', speaker?.name ? `Conversation with ${speaker.name}` : 'Scene',
       speaker?.name ? h('div', { class: 'speaker' }, portrait, h('div', {}, h('strong', {}, speaker.name), h('small', {}, speaker.role ?? ''))) : '',
       this.glossLine(n.text),
-      'speechSynthesis' in window ? h('button', { class: 'mini speak', type: 'button', 'aria-label': 'Read this line aloud', onclick: () => this.speak(`${speaker?.name ? `${speaker.name}: ` : ''}${n.text}`) }, '🔊 Read aloud') : '',
+      citation.length ? h('p', { class: 'citation-line' }, ...citation.map((part) => part.cite ? h('cite', {}, part.text)
+        : part.href ? h('a', { href: part.href, target: '_blank', rel: 'noopener' }, part.text) : part.text)) : '',
+      'speechSynthesis' in window ? h('button', { class: 'mini speak', type: 'button', 'aria-label': 'Read this line aloud', onclick: () => this.speak(spoken) }, '🔊 Read aloud') : '',
       h('div', { class: 'chips' }, n.claimKind ? claimChip(n.claimKind) : null, n.historicalLabel ? histChip(n.historicalLabel) : null),
-      extra ?? '', optionList);
+      extra ?? '', optionList,
+      id === 'stage.call.stand' ? localGuide(c, MAPS[c.state.mapId]?.world ?? '', 'stage.call.audience') : '',
+      earlier.length ? h('details', { class: 'dialogue-recall' }, h('summary', {}, 'Earlier dialogue'),
+        ...earlier.map((line) => this.dialogueMemory(line))) : '');
+    if (n.motif && firstHearing) this.playStoryCue(n.motif);
     if (!ctx.settings.readAloud && ctx.settings.talkSounds && n.speaker !== 'narrator') babble(n.text, voiceFor(n.speaker), ctx.settings.sfxVolume);
-    if (ctx.settings.readAloud) this.speak(`${speaker?.name ? `${speaker.name}: ` : ''}${n.text}. ${opts.map((o, i) => `Option ${i + 1}: ${o.option.text}`).join('. ')}`);
+    if (ctx.settings.readAloud) this.speak(`${spoken}${citation.length ? '' : '.'} ${opts.map((o, i) => `Option ${i + 1}: ${o.option.text}`).join('. ')}`);
+  }
+
+  private playStoryCue(motif: StoryMotif): void {
+    this.stopStoryCue?.();
+    const { notes, beat, voice } = storyMotif(motif);
+    this.stopStoryCue = playNotes(notes, beat, voice, ctx.settings.musicVolume * 0.85);
+    caption(storyMotifKey(motif));
+  }
+
+  private dialogueMemory(node: DialogueNode, includeMotif = false): HTMLElement {
+    const c = ctx.controller;
+    const name = node.speaker === 'lumen' ? 'Lumen' : node.speaker === 'player' ? c.state.player.name
+      : c.pack.characters.find((character) => character.id === node.speaker)?.name;
+    const text = personalise(node.text, c.state.player);
+    const motif = node.motif;
+    return h('div', { class: 'lore-entry' }, name ? h('strong', {}, name) : '', h('p', {}, text),
+      includeMotif && motif ? h('button', { type: 'button', class: 'mini', onclick: () => this.playStoryCue(motif) }, 'Replay the scene’s music') : '');
   }
 
   /** Text-to-speech with the browser's own voice (spec 21). */
@@ -1082,14 +1328,72 @@ export class UI implements UIApi {
     const hasLens = !!c.state.inventory['tool.date-lens'];
     const card = c.pack.cards.find((x) => x.id === ex.grantsCard)!;
     const thread = c.state.inventory['tool.provenance-thread'] ? c.pack.threads.find((t) => t.object === exhibitId) : undefined;
-    this.openModal('exhibit', ex.name, this.closeBtn(),
+    const pixel = ex.specimen?.pixelAsset;
+    const image = h('img', { class: 'big-art', src: artURL(BIG_ART[ex.art] ?? (ex.specimen ? ex.art : 'big.patent')), alt: pixel ? '' : ex.altText });
+    const artCredit = h('figcaption', {}, pixel ? `Collection image from ${ex.specimen!.institution}.` : 'Original game illustration based on the written record.');
+    const claim = h('div', { class: 'row', 'aria-live': 'polite' });
+    const stand = h('div', { class: 'specimen-return-reading' });
+    if (hasSpecimen(ex)) {
+      const showClaim = () => {
+        const key = ex.specimen.key;
+        if (ownsSpecimen(c.state, key)) {
+          claim.replaceChildren(h('p', { class: 'fine' }, carriesSpecimen(c.state, key) ? 'In your satchel.' : 'On display at the Nexus.'));
+        } else if (canClaimSpecimen(c.state, ex)) {
+          claim.replaceChildren(h('button', { type: 'button', class: 'primary', onclick: () => {
+            if (c.dispatch({ type: 'ClaimSpecimen', exhibit: ex.id }).some(({ kind }) => kind === 'error')) return;
+            ctx.world?.refreshWorld();
+            showClaim();
+            claim.tabIndex = -1;
+            claim.focus();
+          } }, 'Take this object'));
+        }
+      };
+      showClaim();
+      const key = ex.specimen.key;
+      const reading = h('p', { class: 'fine', role: 'status' });
+      const read = () => {
+        const kind = c.state.flags[specimenReadingFlag(key)];
+        if (kind === 'use') reading.textContent = `The stand leads with what a visitor can check. ${card.text}`;
+        else if (kind === 'source') reading.textContent = `The stand keeps the collection number and the open question together. ${card.limits}`;
+      };
+      if (c.check(specimenEquipped(key))) {
+        const mount = (kind: 'use' | 'source', text: string) => h('button', { type: 'button', onclick: () => {
+          c.dispatch({ type: 'SetSpecimenReading', exhibit: ex.id, reading: kind });
+          ctx.world?.refreshWorld();
+          read();
+        } }, text);
+        stand.append(h('h3', {}, 'Leave a reading at this stand'),
+          h('div', { class: 'row' }, mount('use', 'Put the observation first'), mount('source', 'Keep its source and limits together')));
+      }
+      stand.append(reading);
+      read();
+    }
+    if (pixel) void specimenArt(pixel).then((drawing) => {
+      if (!image.isConnected) return;
+      if (drawing) {
+        image.src = drawing.toDataURL('image/png');
+        image.alt = ex.altText;
+        artCredit.textContent = `Pixel illustration from a collection image at ${ex.specimen!.institution}.`;
+      } else {
+        artCredit.textContent = 'Collection image unavailable. The catalogue record is linked below.';
+      }
+    });
+    const box = this.openModal('exhibit', ex.name, this.closeBtn(),
       h('div', { class: 'exhibit-grid' },
-        h('figure', {}, h('img', { class: 'big-art', src: artURL(BIG_ART[ex.art] ?? 'big.patent'), alt: ex.altText }), h('figcaption', {}, 'Original game illustration based on the written record.')),
+        h('figure', {}, image, artCredit),
         h('div', {},
           h('h2', {}, ex.name),
           h('div', { class: 'chips' }, histChip(ex.historicalLabel)),
           h('p', { class: 'date' }, h('strong', {}, 'Date: '), ex.dateText),
+          ex.specimen ? h('p', { class: 'fine' }, `${ex.specimen.institution} · ${ex.specimen.accession}`) : null,
           h('p', {}, ex.summary),
+          claim,
+          stand,
+          ex.specimen?.people?.length ? h('ul', { class: 'fine' }, ...ex.specimen.people.map((person) => {
+            const record = c.pack.sources.find(({ id }) => id === person.source);
+            return h('li', {}, h('strong', {}, person.name), ` · ${person.role}. ${person.detail}`,
+              record ? [' ', h('a', { href: record.url, target: '_blank', rel: 'noopener' }, 'Source')] : []);
+          })) : null,
           ex.sources.length ? h('p', { class: 'sources' }, h('strong', {}, 'Sources: '), ...ex.sources.flatMap((sid) => {
             const s = c.pack.sources.find((x) => x.id === sid)!;
             return [h('a', { href: s.url, target: '_blank', rel: 'noopener' }, `${s.id}: ${s.title}`), ' '];
@@ -1098,21 +1402,23 @@ export class UI implements UIApi {
           lensOut,
           ex.labelKit ? h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.openLabel(ex.labelKit!) }, c.state.flags[`label.${ex.labelKit}.everHeld`] ? 'Change this plaque' : 'Repair this plaque')) : null,
           thread ? h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.followThread(thread.id, thread.nodes[0].id) }, 'Follow the Provenance Thread')) : null,
-          h('div', { class: 'card-mini' }, h('p', { class: 'fine' }, 'Evidence card in your journal:'), this.cardView(card)))));
+          h('div', { class: 'card-mini' }, this.cardView(card)))));
+    if (ex.specimen && !ownsSpecimen(c.state, ex.specimen.key)) {
+      box.append(localGuide(c, MAPS[c.state.mapId]?.world ?? '', ex.specimen.objective));
+    }
   }
 
-  private cardView(card: EvidenceCard, extra?: Node): HTMLElement {
+  private cardView(card: EvidenceCard, includeSources = true): HTMLElement {
     return h('article', { class: 'card' },
       h('h3', {}, card.title),
       h('div', { class: 'chips' }, claimChip(card.claimKind), histChip(card.historicalLabel)),
       card.person ? h('p', { class: 'fine' }, `${card.person.name} (${card.person.life}) · ${card.person.place} · ${card.person.era}`) : null,
       h('p', {}, card.text),
       h('p', { class: 'limits' }, h('strong', {}, 'Does not show: '), card.limits),
-      card.sources.length ? h('p', { class: 'fine' }, ...card.sources.map((sid) => {
+      includeSources && card.sources.length ? h('p', { class: 'fine' }, ...card.sources.map((sid) => {
         const s = ctx.controller.pack.sources.find((x) => x.id === sid)!;
         return h('a', { href: s.url, target: '_blank', rel: 'noopener' }, s.id);
-      })) : null,
-      extra ?? null);
+      })) : null);
   }
 
   showSign(title: string, text: string): void {
@@ -1861,7 +2167,8 @@ export class UI implements UIApi {
       const friend = st.flags[`${F}.friend`] === true;
       const seen = rec.sightings.filter((x) => st.flags[`${F}.seen.${x.id}`] === true);
       clear(box);
-      box.append(this.closeBtn(), h('div', { class: 'loreling-head' }, h('img', { class: 'moth-big', src: artURL('moth.big'), alt: `${rec.name}: a tiny moth with pale gold wings` }),
+      box.append(this.closeBtn(), h('div', { class: 'loreling-head' }, h('img', { class: 'moth-big',
+        src: artURL(rec.fieldGuide?.portrait ?? 'moth.big'), alt: rec.fieldGuide?.portraitAlt ?? 'A tiny moth with pale gold wings.' }),
         h('div', {}, h('h2', {}, friend ? String(st.flags[`${F}.name`] ?? rec.name) : rec.name), h('p', { class: 'fine' }, `A Loreling of ${CONCEPT_NAMES[rec.concept]}. Lorelings are made up for this game.`))));
       if (!friend) {
         if (!seen.length || (watched && seen.length === 1)) box.append(h('p', {}, rec.intro));
@@ -1878,7 +2185,7 @@ export class UI implements UIApi {
           box.append(h('p', { class: 'fair' }, `Watch it in ${rec.minSightings - seen.length} more place${rec.minSightings - seen.length === 1 ? '' : 's'} before you write your pattern note. One sighting can mislead.`));
           return;
         }
-        box.append(h('h3', {}, 'Your pattern note'), h('p', { class: 'fine' }, 'Choose the answer that fits every place you watched, not just one.'));
+        if (rec.questions.length) box.append(h('h3', {}, 'Your pattern note'), h('p', { class: 'fine' }, 'Choose the answer that fits every place you watched, not just one.'));
         for (const q of rec.questions) {
           const pick = st.flags[`${F}.note.${q.id}`];
           box.append(h('fieldset', { class: 'note-q' }, h('legend', {}, q.prompt), ...q.options.map((o) => h('button', {
@@ -1915,7 +2222,9 @@ export class UI implements UIApi {
       box.append(h('h3', {}, 'Give it a name'), h('div', { class: 'row wrap' }, ...rec.names.map((n) => h('button', { type: 'button', onclick: () => setName(n) }, n))),
         h('div', { class: 'row' }, input, h('button', { onclick: () => setName(input.value) }, 'Use this name')));
       const out = st.flags['lor.out'] === rec.id;
-      box.append(h('h3', {}, 'In the field'), h('p', { class: 'fine' }, out ? 'It flies with you and looks for places you have not examined yet.' : 'It rests at camp. Lorelings never fight and never get hurt.'),
+      box.append(h('h3', {}, 'In the field'), h('p', { class: 'fine' },
+        out ? rec.fieldGuide?.activeText ?? 'It flies with you and looks for places you have not examined yet.'
+          : 'It rests at camp. Lorelings never fight and never get hurt.'),
         h('button', { class: 'primary', onclick: () => { c.dispatch({ type: 'LorelingField', loreling: rec.id, out: !out }); render(); } }, out ? 'Let it rest at camp' : 'Take it into the field'));
     };
     render();
@@ -2042,11 +2351,6 @@ export class UI implements UIApi {
       const f = c.state.forge;
       clear(art); art.append(this.billetCanvas());
       clear(status); status.append(f.route === 'none' ? 'The anvil is empty.' : f.route === 'pattern' ? `Pattern route: ${f.steels} strips${f.welded ? `, welded, ${layers(f)} layers` : ''}${f.twists ? `, ${f.twists} twist(s)` : ''}.${f.cut ? ' Cut.' : ''}` : `Crucible route: ${f.melted ? 'melted' : 'loaded'}${f.cooled ? ', cooled' : ''}.${f.cut ? ' Cut.' : ''}`);
-      clear(btns);
-      btns.append(
-        h('fieldset', {}, h('legend', {}, 'Weld layers'), ...(['stack', 'weld', 'twist', 'fold'] as ForgeAction[]).map((a) => h('button', { onclick: () => act(a) }, labels[a]))),
-        h('fieldset', {}, h('legend', {}, 'Sealed pot'), ...(['crucible', 'melt', 'cool'] as ForgeAction[]).map((a) => h('button', { onclick: () => act(a) }, labels[a]))),
-        h('fieldset', {}, h('legend', {}, 'Finish'), ...(['cut', 'reset'] as ForgeAction[]).map((a) => h('button', { class: a === 'cut' ? 'primary' : '', onclick: () => act(a) }, labels[a]))));
     };
     const act = (a: ForgeAction) => {
       const ev = c.dispatch({ type: 'Forge', action: a });
@@ -2057,6 +2361,10 @@ export class UI implements UIApi {
       if (a === 'cut') log.append(h('li', { class: 'fair' }, 'Take the section to the assay table, east of the square, and compare it with the blade.'));
       render();
     };
+    btns.append(
+      h('fieldset', {}, h('legend', {}, 'Weld layers'), ...(['stack', 'weld', 'twist', 'fold'] as ForgeAction[]).map((a) => h('button', { onclick: () => act(a) }, labels[a]))),
+      h('fieldset', {}, h('legend', {}, 'Sealed pot'), ...(['crucible', 'melt', 'cool'] as ForgeAction[]).map((a) => h('button', { onclick: () => act(a) }, labels[a]))),
+      h('fieldset', {}, h('legend', {}, 'Finish'), ...(['cut', 'reset'] as ForgeAction[]).map((a) => h('button', { class: a === 'cut' ? 'primary' : '', onclick: () => act(a) }, labels[a]))));
     render();
     this.openModal('forge-panel wide', "Hesper's anvil", this.closeBtn(),
       h('h2', {}, "Hesper's anvil"),
@@ -2265,7 +2573,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openBreathing() }, 'Sit a while'),
         h('button', { onclick: () => this.openTalents(true) }, 'Insight tree'),
         h('button', { onclick: () => this.openRoles(true) }, 'Knower role'),
-        h('button', { onclick: () => { c.suspend('Save and leave'); this.closeModal(false); (window as any).kgToTitle?.(); } }, 'Save and leave')));
+        this.saveControl()));
   }
 
   // ------------------------------------------------- share with teacher (94)
@@ -2312,14 +2620,17 @@ export class UI implements UIApi {
 
   // --------------------------------------------------- journal & bag
 
-  openJournal(tab = 'story'): void {
+  openJournal(tab = 'diary'): void {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
+    if (tab === 'letters') this.deliverCommunityLetters(false);
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { story: 'Story so far', entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', crossings: 'Crossings', ...(s.flags['ending.council'] ? { afterwards: 'Afterwards' } : {}), glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { diary: 'Diary', notes: 'My notes', 'open-quests': 'Open quests', story: 'Story so far', conversations: 'Conversations', entries: 'Entries', cards: 'Evidence cards', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', crossings: 'Crossings', ...(s.flags['ending.council'] ? { afterwards: 'Afterwards' } : {}), glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
-    if (tab === 'crossings') {
+    if (tab === 'diary' || tab === 'notes' || tab === 'open-quests') {
+      body.append(adventureJournalTab(tab, c, (page) => this.openJournal(page)));
+    } else if (tab === 'crossings') {
       // Conflicts met in the world, and how the player met them.
       const met = CROSSINGS.filter((x) => crossingWay(s.flags, x.id));
       const ep = crossingEpithet(s.flags);
@@ -2329,12 +2640,35 @@ export class UI implements UIApi {
     } else if (tab === 'afterwards') {
       // The epilogue: where are they now, the mirror scene and the lingering thought.
       body.append(h('h3', {}, 'Where are they now'), ...vignettesFor(s).map((v) => h('div', { class: 'lore-entry' }, h('h3', {}, v.who), h('p', {}, v.text))),
-        h('h3', {}, 'The same bench'), h('p', {}, mirror(s)), h('h3', {}, 'Last words'), ...lingering(s).map((t) => h('p', {}, t)));
+        h('h3', {}, 'The same bench'), h('p', {}, mirror(s)), h('h3', {}, 'Last words'), ...lingering(s).map((t) => h('p', {}, t)),
+        h('button', { type: 'button', onclick: () => this.openCredits() }, 'Credits from your journey'));
+    } else if (tab === 'conversations') {
+      const heard = conversationHistory(c.pack.dialogue, s.flags);
+      if (!heard.length) body.append(h('p', {}, 'No conversations yet.'));
+      else {
+        let shown = 0;
+        const lines = h('div', {});
+        const more = h('button', { type: 'button', onclick: showOlder }, 'Show earlier conversations');
+        const ui = this;
+        function showOlder() {
+          const older = heard.slice(shown, shown + 20);
+          lines.append(...older.map((node) => ui.dialogueMemory(node, true)));
+          shown += older.length;
+          more.hidden = shown >= heard.length;
+        }
+        body.append(h('p', { class: 'fine' }, 'Scenes are listed once, newest first by when you first heard them.'), lines, more);
+        showOlder();
+      }
     } else if (tab === 'letters') {
-      // Letters from the rival. Each remembers a choice the player made (spec 15.10).
-      const got = arrivedLetters(s);
-      body.append(h('p', { class: 'fine' }, got.length ? 'Letters sealed with a small gold stamp. Each one answers something you did.' : 'No letters yet.'),
-        ...[...got].reverse().map((l) => h('div', { class: 'lore-entry letter' }, h('h3', {}, `After chapter ${l.chapter}`), ...composeLetter(l, s).map((t) => h('p', {}, t)))));
+      const gold = arrivedLetters(s);
+      const neighbours = receivedCommunityLetters(s);
+      if (!gold.length && !neighbours.length) body.append(h('p', {}, 'No letters yet.'));
+      if (neighbours.length) body.append(h('h3', {}, 'From the road'), ...neighbours.reverse().map((letter) => {
+        const sender = c.pack.characters.find((character) => character.id === letter.sender)?.name;
+        return h('div', { class: 'lore-entry letter' }, h('h3', {}, letter.subject), h('p', { class: 'fine' }, `From ${sender}`), h('p', {}, letter.body));
+      }));
+      if (gold.length) body.append(h('h3', {}, 'The gold seal'),
+        ...[...gold].reverse().map((l) => h('div', { class: 'lore-entry letter' }, h('h3', {}, `After chapter ${l.chapter}`), ...composeLetter(l, s).map((t) => h('p', {}, t)))));
     } else if (tab === 'lore') {
       // Lore codex: secrets found by exploring. Each is a small myth or record that asks a knowledge question.
       const all = c.pack.secrets ?? [];
@@ -2359,12 +2693,9 @@ export class UI implements UIApi {
       })));
       if (!s.journal.length) body.append(h('p', {}, 'No entries yet.'));
     } else if (tab === 'cards') {
-      body.append(...s.cards.map((id) => this.cardView(c.pack.cards.find((x) => x.id === id)!)));
-      if (!s.cards.length) body.append(h('p', {}, 'No evidence cards yet. Inspect exhibits and talk to people.'));
-    } else if (tab === 'notes') {
-      const ta = h('textarea', { rows: '3', maxlength: '500', 'aria-label': 'New note', placeholder: 'Write a note in your own words. Notes are never graded.' }) as HTMLTextAreaElement;
-      body.append(h('ul', { class: 'notes' }, ...s.notes.map((n) => h('li', {}, n))), ta,
-        h('button', { onclick: () => { if (ta.value.trim()) { c.dispatch({ type: 'AddNote', text: ta.value }); this.openJournal('notes'); } } }, 'Add note'));
+      const cards = journalEvidence(c.pack, s);
+      body.append(...cards.map(({ card, includeSources }) => this.cardView(card, includeSources)));
+      if (!cards.length) body.append(h('p', {}, 'Talk to people and earn objects to add evidence here.'));
     } else if (tab === 'moments') {
       // Learner profile (spec 90): moments, never scores or grades (PROFILE-001).
       const got = c.pack.moments.filter((m) => c.permanent.moments[m.id]);
@@ -2389,13 +2720,14 @@ export class UI implements UIApi {
       const p = c.permanent;
       const icon: Record<SkillStage, string> = { unseen: '○', seen: '◔', practised: '◑', confident: '◕', transferred: '●' };
       body.append(h('p', { class: 'fine' }, 'Each skill grows when you use it somewhere new: Seen, Practised, Confident, Transferred. This shows practice in the game. It is not a grade.'),
-        h('div', { class: 'skill-map' }, ...c.pack.skillDomains.map((d) => {
-          const list = c.pack.skills.filter((k) => k.domain === d.id);
-          return h('section', { class: `skill-region ${list.length ? '' : 'later'}` }, h('h4', {}, d.name),
+        h('div', { class: 'skill-map' }, ...c.pack.skillDomains.flatMap((d) => {
+          const list = c.pack.skills.filter((k) => k.domain === d.id && (k.domain !== MICRO_SKILL_DOMAIN || p.skills?.[k.id]?.length));
+          if (d.id === MICRO_SKILL_DOMAIN && !list.length) return [];
+          return [h('section', { class: `skill-region ${list.length ? '' : 'later'}` }, h('h4', {}, d.name),
             list.length ? h('ul', {}, ...list.map((k) => {
               const st = skillStage(p.skills?.[k.id]);
               return h('li', { class: `stage-${st}`, title: nextStep(p.skills?.[k.id]) }, h('span', { class: 'stage-icon', 'aria-hidden': 'true' }, icon[st]), ` ${k.name} `, h('small', {}, STAGE_LABEL[st]));
-            })) : h('p', { class: 'fine' }, 'In later chapters.'));
+            })) : h('p', { class: 'fine' }, 'In later chapters.'))];
         })));
     } else if (tab === 'lorelings') {
       // Loreling Atlas (spec 36.1): friends, and the others that live in later worlds.
@@ -2425,17 +2757,20 @@ export class UI implements UIApi {
         })));
     } else if (tab === 'stones') {
       // Question Stones (KQ-003): a stone gets brighter with each new way of meeting the question. Never a quiz.
-      const ACTION: Record<string, string> = { label: 'a label', exhibition: 'a museum plaque', test: 'a fair test', showdown: 'a Showdown', thread: 'a Provenance Thread', forge: 'the forge', reflection: 'a mystery', research: 'EE practice', community: 'listening to a community', fieldwork: 'fieldwork' };
-      const WORLD: Record<string, string> = { 'WORLD-01': 'the Nexus', 'WORLD-02': 'Emberford' };
-      body.append(h('p', { class: 'fine' }, 'Each stone holds a question about knowledge that sat under something you did. A stone gets brighter when you meet the same question in a new way: a new place or a new kind of action. Five ways light it fully. Nothing here is a test.'));
+      const ACTION: Record<string, string> = { ...ROUTE_ACTIONS, label: 'a label', exhibition: 'a museum plaque', test: 'a fair test', showdown: 'a Showdown', thread: 'a Provenance Thread', forge: 'the forge', reflection: 'a mystery', research: 'an investigation', community: 'listening to a community', fieldwork: 'fieldwork', trace: 'following a source' };
+      const worlds = new Map<string, string>([['WORLD-01', 'the Nexus'], ['WORLD-02', 'Emberford']]);
+      for (const map of Object.values(MAPS)) if (!worlds.has(map.world)) worlds.set(map.world, map.name.split(':')[0]);
+      body.append(h('p', { class: 'fine' }, 'Each stone holds a question from something you did. A stone gets brighter when you meet that question in another place or through another action.'));
       const got = c.pack.questions.filter((q) => (c.permanent.stones?.[q.id] ?? []).length);
       if (!got.length) body.append(h('p', {}, 'No stones yet. They appear when you finish a step that has a question under it.'));
       body.append(h('ul', { class: 'stones' }, ...got.map((q) => {
         const ways = c.permanent.stones[q.id];
-        return h('li', { style: { '--glow': String(Math.min(ways.length, 5) / 5) } },
-          h('span', { class: 'stone', 'aria-hidden': 'true' }, ...[0, 1, 2, 3, 4].map((i) => h('i', { class: i < ways.length ? 'lit' : '' }))),
+        const total = q.journalOnly ? 3 : 5;
+        return h('li', { style: { '--glow': String(Math.min(ways.length, total) / total) } },
+          h('span', { class: 'stone', 'aria-hidden': 'true' }, ...Array.from({ length: total }, (_, i) => h('i', { class: i < ways.length ? 'lit' : '' }))),
           h('div', {}, h('strong', {}, q.text), h('br', {}),
-            h('small', { class: 'fine' }, `${Math.min(ways.length, 5)} of 5 ways: ${ways.map((w) => { const [wd, a] = w.split('|'); return `${ACTION[a] ?? a} in ${WORLD[wd] ?? wd}`; }).join('; ')}.`)));
+            q.journalOnly ? h('p', { class: 'fine' }, q.lastWord) : '',
+            h('small', { class: 'fine' }, `${Math.min(ways.length, total)} of ${total} ways · ${ways.map((w) => { const [wd, a] = w.split('|'); return `${ACTION[a] ?? a} in ${worlds.get(wd) ?? wd}`; }).join(' · ')}.`)));
       })));
     } else if (tab === 'glossary') {
       body.append(h('p', { class: 'fine' }, 'Key words, in plain English. Where you have already done something that shows the word, Lumen adds an example from your play.'),
@@ -2466,8 +2801,9 @@ export class UI implements UIApi {
         h('h3', {}, 'Not yet earned'),
         h('ul', { class: 'awards locked' }, ...c.pack.awards.filter((a) => !c.permanent.awards[a.id]).map((a) => h('li', {}, `${a.name} (${a.kind.replace('-', ' ')})`))));
     } else if (tab === 'sources') {
-      body.append(h('p', { class: 'fine' }, 'Historical claims in this chapter come from these sources. Dialogue by characters is original fiction, not quotation.'),
-        h('ul', { class: 'sources-list' }, ...c.pack.sources.map((src) => h('li', {}, h('a', { href: src.url, target: '_blank', rel: 'noopener' }, `${src.id}: ${src.title}`), h('br', {}), h('small', {}, `Supports: ${src.supports}`)))));
+      const entries = specimenReferences(c.pack, s);
+      body.append(entries.length ? this.collectionBibliography(entries, 'Sources for objects I collected')
+        : h('p', {}, 'Sources for the objects you collect will appear here.'));
     }
     const jc = decodeCrest(s.flags['crest']);
     this.openModal('journal wide', 'Journal', this.closeBtn(), h('h2', { class: 'journal-title' }, jc ? crestCanvas(jc, 30, 1) : '', `${s.player.name}'s journal`, jc ? h('small', { class: 'motto' }, ` · ${MOTTOS[jc.motto]}`) : ''), nav, body);
@@ -2475,24 +2811,87 @@ export class UI implements UIApi {
 
   private openBag(): void {
     const c = ctx.controller, s = c.state;
+    const tools = perspectiveTools(c.pack).filter((tool) => ownedPerspective(c.pack, s, tool.id));
+    const active = activePerspective(c.pack, s);
+    const equip = (keepsake: string | null) => {
+      const events = c.dispatch({ type: 'EquipPerspective', keepsake });
+      if (events.some((event) => event.kind === 'error')) return;
+      ctx.world?.refreshWorld();
+      this.openBag();
+    };
+    const toolsList = tools.map((tool) => {
+      const inUse = active?.id === tool.id;
+      const action = inUse ? `Put away ${tool.name}` : `Use ${tool.name}`;
+      const specimen = c.pack.exhibits.filter(hasSpecimen).find((record) => record.specimen.key === specimenFromTool(tool.id));
+      return h('li', {}, specimen ? specimenThumbnail(specimen) : h('img', { src: artURL(tool.equip.art ?? 'icon.book'), alt: '' }),
+        h('div', {}, h('strong', {}, tool.name), inUse ? h('span', { class: 'chip' }, 'In use') : '',
+          h('p', {}, tool.equip.method), h('small', {}, tool.equip.hint), h('br', {}),
+          h('button', { type: 'button', onclick: () => equip(inUse ? null : tool.id) }, action)));
+    });
     this.sfx('sfx.pickup');
     this.openModal('bag satchel', 'Bag', this.closeBtn(), h('div', { class: 'flap', 'aria-hidden': 'true' }), h('h2', {}, 'Satchel'),
       h('p', {}, `${s.marks} marks`),
-      h('ul', { class: 'bag' }, ...Object.entries(s.inventory).map(([id, q]) => {
+      s.flags['specimens.collected'] === true ? h('p', { class: 'fine' }, `Satchel object slots ${carriedSpecimenCount(s)} / ${SPECIMEN_CAPACITY} · Swap objects in your collection room at the Nexus.`) : '',
+      tools.length ? h('section', { class: 'field-tools' }, h('h3', {}, 'Field tools'),
+        h('p', { class: 'fine' }, 'Carry one tool at a time. Each can reveal something different at a site.'),
+        h('ul', { class: 'bag' }, ...toolsList)) : '',
+      h('ul', { class: 'bag' }, ...Object.entries(s.inventory).filter(([id]) => !isSpecimenItem(id)).map(([id, q]) => {
         const it = c.pack.items.find((x) => x.id === id);
         return h('li', {}, h('img', { src: artURL(it?.art ?? 'icon.card'), alt: '' }), h('div', {}, h('strong', {}, `${it?.name ?? id}${q > 1 ? ` ×${q}` : ''}`), h('br', {}), h('small', {}, it?.description ?? '')));
       })),
-      Object.keys(s.inventory).length ? '' : h('p', {}, 'Your bag is empty.'));
+      tools.length || Object.keys(s.inventory).length ? '' : h('p', {}, 'Your bag is empty.'));
+  }
+
+  private openSpecimenReturn(): void {
+    const c = ctx.controller;
+    const active = activePerspective(c.pack, c.state);
+    const key = active && specimenFromTool(active.id);
+    const exhibit = key ? c.pack.exhibits.filter(hasSpecimen).find((record) => record.specimen.key === key) : undefined;
+    const destination = exhibit ? Object.values(MAPS).find((map) => map.interactables.some((prop) => prop.exhibit === exhibit.id)) : undefined;
+    const revisit = exhibit?.specimen.revisit;
+    const second = revisit && c.state.flags[`visited.map.${revisit.map}`] === true ? MAPS[revisit.map] : undefined;
+    const travel = (map: NonNullable<typeof destination>) => {
+      this.closeModal(false);
+      ctx.world?.changeMap(map.id, map.spawn.x, map.spawn.y);
+    };
+    this.openModal('bench-panel wide', 'The return arch', this.closeBtn(),
+      destination && exhibit ? h('div', {}, h('h2', {}, destination.name), h('p', {}, exhibit.name),
+        exhibit.specimen.revisit ? h('p', { class: 'fine' }, exhibit.specimen.revisit.hint) : null,
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => travel(destination) }, 'Return where I found it'),
+          second && second.id !== destination.id ? h('button', { type: 'button', onclick: () => travel(second) }, `Return to ${second.name}`) : null))
+        : h('p', {}, 'Equip a collected object in your satchel to open its route.'));
   }
 
   // -------------------------------------------------------------- menu
+
+  private saveControl(): DocumentFragment {
+    const feedback = h('p', { class: 'save-feedback warn', role: 'alert' });
+    const control = document.createDocumentFragment();
+    control.append(h('button', { onclick: () => this.saveAndLeave(feedback) }, 'Save and leave'), feedback);
+    return control;
+  }
+
+  private saveAndLeave(feedback: HTMLElement): void {
+    feedback.replaceChildren();
+    this.saveFeedback = feedback;
+    let saved: boolean;
+    try {
+      saved = ctx.controller.suspend();
+    } finally {
+      this.saveFeedback = null;
+    }
+    if (!saved) return;
+    this.closeModal(false);
+    this.toast('Saved. You can close the tab.', 'save');
+    (window as any).kgToTitle?.();
+  }
 
   private openMenu(): void {
     const c = ctx.controller;
     this.openModal('menu-panel', 'Menu', this.closeBtn(), h('h2', {}, 'Menu'),
       h('div', { class: 'menu' },
         h('button', { 'data-autofocus': true, onclick: () => this.closeModal() }, 'Resume'),
-        h('button', { onclick: () => { c.suspend('Save and leave'); this.closeModal(false); this.toast('Saved. You can close the tab.', 'save'); (window as any).kgToTitle?.(); } }, 'Save and leave'),
+        this.saveControl(),
         h('button', { onclick: () => this.openGuardian() }, 'My Guardian (look and pronouns)'),
         h('button', { onclick: () => this.openCrest() }, 'Crest'),
         h('button', { onclick: () => { this.closeModal(false); this.openPhotoMode(); } }, 'Photo mode'),
@@ -2720,24 +3119,20 @@ export class UI implements UIApi {
     const c = ctx.controller;
     const box = this.openModal('shop-panel wide', "Wenna's barter boat");
     this.sfx('sfx.coins');
-    const ask = () => {
-      box.replaceChildren(this.closeBtn(), h('h2', {}, "Wenna's barter boat"),
-        h('p', {}, "Wenna trades up and down the river. 'Before you buy, a question. I ask everyone.'"),
-        h('p', {}, h('strong', {}, FAIR_PRICE.q())),
-        h('div', { class: 'notice-options' }, ...FAIR_PRICE.options.map((o, i) => h('button', { type: 'button', onclick: () => {
-          const ev = c.dispatch({ type: 'FairPrice', choice: i });
-          const res = ev.find((e) => e.kind === 'fairprice') as Extract<GameEvent, { kind: 'fairprice' }> | undefined;
-          if (!res) return;
-          this.sfx(res.ok ? 'sfx.sparkle' : 'sfx.page');
-          render(res.why);
-        } }, o.text))));
-    };
     const render = (note?: string) => {
       const s = c.state;
       const res = (k: Resource) => resCount(s.flags, k);
+      const price = ferryPrice(WOAD_BLUE);
+      const slips = h('details', { onToggle: () => {
+        if (slips.open && c.state.flags['trade.price-compared'] !== true) c.dispatch({ type: 'CompareDyePrices' });
+      } }, h('summary', {}, 'Lay the two woad price slips side by side'),
+      h('p', {}, `Wenna’s slip: ${WOAD_BLUE.parts.material} for the dye and ${WOAD_BLUE.parts.work} for the work. Total ${price} marks.`),
+      h('p', {}, `Corvan’s slip: ${price} for the dye and work, ${TOWN_COSTS.carrying} to carry it, ${TOWN_COSTS.toll} for the bridge and ${TOWN_COSTS.stall} for the stall. Total ${townPrice(WOAD_BLUE)} marks.`),
+      h('p', {}, 'Wenna taps her slip. “Each part has a name. You can see where the difference comes from. The sums don’t tell me what a buyer can spare.”'));
       box.replaceChildren(this.closeBtn(), h('h2', {}, "Wenna's barter boat"),
         ...(note ? [h('p', { class: 'clue-view fresh', role: 'status' }, note)] : []),
         h('p', { class: 'fine', role: 'status' }, `You have ${s.marks} marks. Dyes add a cloak colour (change it in Menu, My Guardian). They give no XP and no power.`),
+        slips,
         h('h3', {}, 'Cloak dyes, and the parts of each price'),
         h('div', { class: 'shop-grid' }, ...DYES.map((d) => {
           const have = ownsDye(s.flags, d.id), price = ferryPrice(d);
@@ -2764,7 +3159,7 @@ export class UI implements UIApi {
           })),
         h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
     };
-    if (c.state.flags['trade.fair.asked'] === true) render(); else ask();
+    render();
   }
 
   private wareName(w: (typeof WARES)[number]): string {
@@ -2775,7 +3170,233 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
-    if (id === 'doors') this.openDoors();
+    if (id === 'catchment-trace') {
+      this.openModal('bench-panel wide', 'Below the Gauge', this.closeBtn(),
+        catchmentPanel(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+      return;
+    }
+    if (id === 'linked-study-folio' || id === 'linked-voices-bench') {
+      this.openModal('bench-panel wide', id === 'linked-study-folio' ? 'Field folio' : 'Filing bench', this.closeBtn(),
+        linkedNotes(id === 'linked-study-folio' ? 'study' : 'voices', ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+      return;
+    }
+    const carry = carryLocation(id);
+    const loop = waterLoopStation(id);
+    const incentive = incentiveStation(id);
+    if (incentive) {
+      this.openModal('bench-panel wide', 'Ready by the Bell', this.closeBtn(),
+        civicIncentivePanel(incentive.station, ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (loop) {
+      this.openModal('bench-panel wide', 'The Water That Comes Back', this.closeBtn(),
+        waterLoopPanel(loop.site, loop.station, ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'service-boundary') {
+      this.openModal('bench-panel wide', 'The Line on the Night Map', this.closeBtn(), h('h2', {}, 'Night service map'),
+        serviceBoundaryPanel(ctx.controller));
+    } else if (id.startsWith(`${CLEARANCE_GROUP}:`)) {
+      const place = id.slice(CLEARANCE_GROUP.length + 1);
+      this.openModal('bench-panel wide', 'The viewing rails', this.closeBtn(), clearanceGallery(ctx.controller, place, () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(BADGE_ANNEX_PREFIX)) {
+      this.openModal('bench-panel wide', 'The Badge Annex', this.closeBtn(),
+        badgeAnnexPanel(ctx.controller, id.slice(BADGE_ANNEX_PREFIX.length), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(FACING_CUE_PREFIX)) {
+      this.openModal('bench-panel wide', 'The Step Across the Line', this.closeBtn(), facingCuePanel(
+        ctx.controller, id.slice(FACING_CUE_PREFIX.length), () => ctx.world?.refreshWorld(), () => this.sfx('sfx.click')));
+    } else if (id.startsWith(CURTAIN_PREFIX)) {
+      this.openModal('bench-panel wide', 'The Call behind the Curtain', this.closeBtn(), curtainCallPanel(
+        ctx.controller, id.slice(CURTAIN_PREFIX.length), () => ctx.world?.refreshWorld(), () => this.sfx('sfx.click')));
+    } else if (id.startsWith(EARLIER_VIEWING)) {
+      this.openModal('bench-panel wide', 'A second view', this.closeBtn(), earlierViewingPanel(ctx.controller,
+        id.slice(EARLIER_VIEWING.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(BEATER_GAME)) {
+      this.openModal('bench-panel wide', 'Both Faces at the Same Stop', this.closeBtn(), beaterProofPanel(ctx.controller,
+        id.slice(BEATER_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
+        localGuide(ctx.controller, MAPS[ctx.controller.state.mapId]?.world ?? '', 'beater.proof.placed'));
+    } else if (id.startsWith(JOINED_CLOTH_GAME)) {
+      this.openModal('bench-panel wide', 'The Two Supports', this.closeBtn(), joinedClothPanel(ctx.controller,
+        id.slice(JOINED_CLOTH_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
+        localGuide(ctx.controller, MAPS[ctx.controller.state.mapId]?.world ?? '', JOINED_CLOTH_OBJECTIVE));
+    } else if (id.startsWith(STAR_GAME)) {
+      this.openModal('bench-panel wide', 'Field methods', this.closeBtn(), starField(ctx.controller,
+        id.slice(STAR_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith('script-rail:')) {
+      this.openModal('bench-panel wide', 'The Script Cabinet', this.closeBtn(), scriptRailPanel(ctx.controller,
+        id.slice('script-rail:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'copies-two-calls') {
+      const c = ctx.controller;
+      const firstOpenCall = () => c.engine.visibleObjectives(c.state).find(({ id, complete }) =>
+        id.startsWith('copies.twocalls.') && !complete)?.id;
+      this.openModal('bench-panel wide', 'Two Calls After Tuesday', this.closeBtn(),
+        twoCallsPanel(c, () => ctx.world?.refreshWorld(), () => this.sfx('sfx.page')),
+        localGuide(c, MAPS[c.state.mapId]?.world ?? '', firstOpenCall));
+    } else if (id.startsWith('work-schedule:')) {
+      this.openModal('bench-panel wide', 'The Working Cupboards', this.closeBtn(), workSchedulePanel(ctx.controller,
+        id.slice('work-schedule:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith('material-stores:')) {
+      this.openModal('bench-panel wide', 'The Material Stores', this.closeBtn(), materialStorePanel(ctx.controller,
+        id.slice('material-stores:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(GLASS_RACK_PREFIX)) {
+      this.openModal('bench-panel wide', 'The Missing Face', this.closeBtn(),
+        glassRackPanel(ctx.controller, id.slice(GLASS_RACK_PREFIX.length), () => ctx.world?.refreshWorld()));
+    } else if (id === BEND_TOOL + 'nile' || id === BEND_TOOL + 'landing') {
+      const site = id.slice(BEND_TOOL.length) as BendSite;
+      const c = ctx.controller;
+      const nextBendStep = () => c.engine.visibleObjectives(c.state).find(({ id, complete }) =>
+        id.startsWith(`bend.${site}.`) && !complete)?.id;
+      this.openModal('bench-panel wide', 'The Bend That Stayed', this.closeBtn(),
+        stripBendPanel(c, site, (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
+        localGuide(c, MAPS[c.state.mapId]?.world ?? '', nextBendStep));
+    } else if (id.startsWith(`${WARM_TOOL}:`)) {
+      this.openModal('bench-panel wide', 'The Warm Side', this.closeBtn(), warmRoomPanel(ctx.controller,
+        id.slice(WARM_TOOL.length + 1), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === `${PORTER_TOOL}:emberford` || id === `${PORTER_TOOL}:water`) {
+      const site = id.endsWith(':water') ? 'water' : 'emberford';
+      this.openModal('bench-panel wide', site === 'emberford' ? 'Idris’s carry board' : 'Sena’s half-route board',
+        this.closeBtn(), porterPacePanel(ctx.controller, site, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === `${SILL_CLOCK}bridge` || id === `${SILL_CLOCK}ferry`) {
+      const c = ctx.controller;
+      const site = id === `${SILL_CLOCK}bridge` ? 'bridge' : 'ferry';
+      this.openModal('bench-panel wide', 'The bell wheel', this.closeBtn(),
+        sillBridgePanel(site, c, (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
+        localGuide(c, MAPS[c.state.mapId]?.world ?? '', () => sillGuideObjective(site, c)));
+    } else if (id === BRIDGE_PROOF_TOOL) {
+      this.openModal('bench-panel wide', 'Idris’s practice bridge', this.closeBtn(),
+        bridgeProofPanel(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === DETECTOR_GAME) {
+      this.openModal('bench-panel wide', 'Neri’s light reader', this.closeBtn(),
+        coastDetectorPanel(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${PACKING_TOOL}:`)) {
+      this.openModal('bench-panel wide', 'A Name on the Load', this.closeBtn(), ferryPackingPanel(ctx.controller,
+        id.slice(PACKING_TOOL.length + 1), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${TIME_TOOL}:`)) {
+      this.openModal('bench-panel wide', 'The Time Room', this.closeBtn(), timeRoomPanel(ctx.controller,
+        id.slice(TIME_TOOL.length + 1), () => ctx.settings.sfxVolume, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${MODEL_RECORD_GROUP}:`)) {
+      this.openModal('bench-panel wide', 'What the Model Keeps', this.closeBtn(),
+        modelRecordPanel(ctx.controller, id.slice(MODEL_RECORD_GROUP.length + 1), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith('callboard:')) {
+      const place = id.slice('callboard:'.length);
+      this.openModal('bench-panel wide', 'The Callboard Turn', this.closeBtn(), callboardPanel(ctx.controller, place, () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith('object-use:')) {
+      const place = id.slice('object-use:'.length);
+      this.openModal('bench-panel wide', 'The workroom fixture', this.closeBtn(),
+        objectUsePanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith('timbuktu:')) {
+      const place = id.slice('timbuktu:'.length);
+      this.openModal('bench-panel wide', 'The season horizon', this.closeBtn(),
+        timbuktuHorizonPanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'specimen-vault') {
+      this.openModal('bench-panel wide', 'Your collection', this.closeBtn(), specimenVault(ctx.controller, () => {
+        this.refreshHud(); ctx.world?.refreshWorld();
+      }));
+    } else if (id.startsWith(SPECIMEN_SHELF)) {
+      this.openModal('bench-panel', 'Collection display', this.closeBtn(),
+        specimenCase(ctx.controller, Number(id.slice(SPECIMEN_SHELF.length)), () => {
+          this.refreshHud(); ctx.world?.refreshWorld();
+        }));
+    } else if (id === 'specimen-return') {
+      this.openSpecimenReturn();
+    } else if (id.startsWith(`${NUMBER_LEAF_GROUP}:`)) {
+      const place = id.slice(NUMBER_LEAF_GROUP.length + 1);
+      this.openModal('bench-panel wide', 'The Ledger Room', this.closeBtn(),
+        numberLeavesPanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${STORY_FRAME_GROUP}:`)) {
+      const place = id.slice(STORY_FRAME_GROUP.length + 1);
+      this.openModal('bench-panel wide', 'The Story Archive caption frame', this.closeBtn(),
+        storyFramePanel(ctx.controller, place, () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${DATE_REGISTER_GROUP}:`)) {
+      const place = id.slice(DATE_REGISTER_GROUP.length + 1);
+      this.openModal('bench-panel wide', 'The Beside Date', this.closeBtn(),
+        dateRegisterPanel(ctx.controller, place, () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${LANTERN_WEAVE}:`)) {
+      const place = id.slice(LANTERN_WEAVE.length + 1);
+      this.openModal('bench-panel wide', 'The Half-Light Room', this.closeBtn(),
+        lanternWeavePanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'shutter-board') {
+      this.openModal('bench-panel wide', 'The Two Shutter Room', this.closeBtn(),
+        shutterBoardPanel(ctx.controller, () => ctx.world?.refreshWorld(), () => this.sfx('sfx.page')));
+    } else if (id.startsWith(`${IMPRINT_GROUP}:`)) {
+      const place = id.slice(IMPRINT_GROUP.length + 1);
+      this.openModal('bench-panel wide', 'The Second Imprint', this.closeBtn(),
+        copyImprint(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${REFERENCE_PROOF}:`)) {
+      const place = id.slice(REFERENCE_PROOF.length + 1);
+      this.openModal('bench-panel wide', 'The checked record', this.closeBtn(),
+        referenceProofPanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${MAKER_TOOL}:`)) {
+      const place = id.slice(MAKER_TOOL.length + 1);
+      this.openModal('bench-panel wide', 'A Turn at the Workbench', this.closeBtn(),
+        makerRoom(ctx.controller, place, () => ctx.settings.sfxVolume, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${MAKER_EXACT}:`)) {
+      const place = id.slice(MAKER_EXACT.length + 1);
+      this.openModal('bench-panel wide', 'The Makers’ Room', this.closeBtn(),
+        makerExact(ctx.controller, place, () => ctx.settings.sfxVolume, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith('date-peg:')) {
+      const place = id.slice('date-peg:'.length);
+      this.openModal('bench-panel wide', 'Two dates at a peg', this.closeBtn(), datePegPanel(ctx.controller, place, () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${RELAY_GROUP}:`)) {
+      const place = id.slice(RELAY_GROUP.length + 1);
+      this.openModal('bench-panel wide', 'One Clip Before the Bell', this.closeBtn(),
+        specimenRelayPanel(place, ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${PASSAGE_GROUP}:`)) {
+      const place = id.slice(PASSAGE_GROUP.length + 1);
+      this.openModal('bench-panel wide', 'Which Edge Reached the Landing', this.closeBtn(),
+        specimenPassagePanel(place, ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${TURNING_GROUP}:`)) {
+      this.openModal('bench-panel wide', 'A Shore You Can Turn', this.closeBtn(),
+        turningPanel(id.slice(TURNING_GROUP.length + 1), ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${CUE_GROUP}:`)) {
+      this.openModal('bench-panel wide', 'A Cue Beyond the Door', this.closeBtn(),
+        cueWorkshopPanel(id.slice(CUE_GROUP.length + 1), ctx.controller, ctx.settings, () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${LOAD_GROUP}:`)) {
+      this.openModal('bench-panel wide', 'The Cart Finds Its Centre', this.closeBtn(),
+        loadingBayPanel(id.slice(LOAD_GROUP.length + 1), ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${BEARING_GROUP}:`)) {
+      this.openModal('bench-panel wide', 'Where the Two Sights Meet', this.closeBtn(),
+        bearingBayPanel(id.slice(BEARING_GROUP.length + 1), ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${PRISM_GROUP}:`)) {
+      this.openModal('bench-panel wide', 'Three Bands Through One Window', this.closeBtn(),
+        prismViewerPanel(id.slice(PRISM_GROUP.length + 1), ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${ALIGN_GROUP}:`)) {
+      this.openModal('bench-panel wide', 'The Third Landmark', this.closeBtn(),
+        mapAlignmentPanel(id.slice(ALIGN_GROUP.length + 1), ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'drawer-cases') {
+      const c = ctx.controller;
+      this.openModal('bench-panel wide', 'Three Cases at the Bell', this.closeBtn(), drawerCases(c),
+        localGuide(c, MAPS[c.state.mapId]?.world ?? '', 'drawer.cases.opened'));
+    } else if (id === 'market-basket-bench' || id === 'market-basket-voucher' || id === 'market-basket-credit') {
+      const site = id === 'market-basket-bench' ? 'bench' : id === 'market-basket-voucher' ? 'voucher' : 'credit';
+      this.openModal('bench-panel wide', 'Three Goods, Two Bells', this.closeBtn(),
+        marketBasketPanel(site, ctx.controller, (key) => this.sfx(key)));
+    } else if (id === 'island-skiff') {
+      this.openModal('bench-panel wide', 'Joss’s Skiff', this.closeBtn(),
+        islandSkiffPanel(ctx.controller, (key) => this.sfx(key), (berth) => {
+          const landing = SKIFF_LANDINGS[berth];
+          this.closeModal(false);
+          ctx.world?.changeMap(landing.map, landing.x, landing.y);
+        }));
+    } else if (id === 'stiltfrog-wait') {
+      this.openLoreling('stiltfrog');
+    } else if (id === 'stiltfrog-watch-low' || id === 'stiltfrog-watch-high') {
+      this.openModal('bench-panel', 'Watch the reed hollow', this.closeBtn(),
+        stiltfrogWatch(id === 'stiltfrog-watch-low' ? 'low' : 'high', ctx.controller, (key) => this.sfx(key)));
+    } else if (carry) {
+      const [site, stop] = carry;
+      this.openModal('bench-panel wide', CARRY[site].title, this.closeBtn(),
+        sharedCarry(site, stop, ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'handover-gallery') {
+      this.openModal('bench-panel wide', 'Handover Room', this.closeBtn(),
+        handoverGallery(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'forest-counter' || id === 'water-counter') {
+      const title = id === 'forest-counter' ? 'The Silent Slot' : 'Three Messengers';
+      this.openModal('bench-panel wide', title, this.closeBtn(),
+        counterReplayBoard(id === 'forest-counter' ? 'forest' : 'water', ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'coast-shadow-board' || id === 'council-shadow-board') {
+      this.openModal('bench-panel wide', 'Shadow board', this.closeBtn(), opticsTrial(id, ctx.controller, (key) => this.sfx(key)));
+    } else if (id === 'relief-routing' || id === 'civic-lane-routing') {
+      const title = id === 'relief-routing' ? 'The weir’s relief bench' : 'The library’s lane board';
+      this.openModal('bench-panel wide', title, this.closeBtn(), routingBoard(id, ctx.controller, (key) => this.sfx(key)));
+    }
+    else if (id === 'doors') this.openDoors();
     else if (id === 'guests') this.openGuestBook();
     else if (id === 'slate') this.openSlate();
     else if (id === 'word') this.openMissingWord();
@@ -3066,11 +3687,13 @@ export class UI implements UIApi {
     const predict = () => {
       box.replaceChildren(...head(), tallyLine(),
         h('p', {}, "Dov grins. 'Feelings are free. Before my counting frame runs 300 rounds: how often do you think switching wins?' Your guess is only for you."),
-        h('div', { class: 'notice-options' }, ...['About 1 time in 3', 'About half the time', 'About 2 times in 3'].map((t) => h('button', { type: 'button', onclick: () => { guess = t; frame(); } }, t))));
+        h('div', { class: 'notice-options' }, ...['About 1 time in 3', 'About half the time', 'About 2 times in 3'].map((t) => h('button', { type: 'button', onclick: () => { guess = t; frame(); } }, t)),
+          h('button', { type: 'button', onclick: () => frame() }, 'Run the counting frame')));
     };
     const frame = () => {
       const k = runDoors(300, seed, true);
-      box.replaceChildren(...head(), h('p', {}, `The counting frame clacks through 300 rounds, with the same rules. Your guess was: ${guess.toLowerCase()}.`),
+      box.replaceChildren(...head(), h('p', {}, 'The counting frame clacks through 300 rounds, with the same rules.'),
+        guess ? h('p', { class: 'fine' }, `Your forecast was ${guess.toLowerCase()}.`) : '',
         this.barPair([{ label: 'Stay wins', n: k.stay, of: k.counted }, { label: 'Switch wins', n: k.swap, of: k.counted }]),
         h('p', {}, "Dov: 'Your first pick is right 1 time in 3. When it is wrong (2 times in 3), I must leave the lantern under the other crate, because I never lift it. So switching wins 2 times in 3.'"),
         h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => forgets() }, "But what if Dov forgets where the lantern is?")));
@@ -3451,10 +4074,17 @@ export class UI implements UIApi {
   openTalents(atWaystone = false): void {
     const c = ctx.controller;
     const box = this.openModal('talents-panel wide', 'Insight tree');
+    let shown: 'stars' | 'talents' = 'stars';
     const render = (note?: string) => {
       const s = c.state, free = insight(s) - spent(s);
       box.replaceChildren(this.closeBtn(), h('h2', {}, 'Insight tree'),
-        h('p', {}, 'Each lamp you light gives one Insight point. Spend them on small habits that help you play. They never give XP, and they never change how answers are judged.'),
+        h('div', { class: 'row', role: 'group', 'aria-label': 'Insight tree view' },
+          ...([['stars', 'Field stars'], ['talents', 'Travel abilities']] as const).map(([id, label]) => h('button', {
+            type: 'button', 'aria-pressed': String(shown === id), 'data-star-view': id,
+            onclick: () => { shown = id; render(); box.querySelector<HTMLButtonElement>(`[data-star-view="${id}"]`)?.focus(); },
+          }, label))),
+        shown === 'stars' ? starChart(c) : h('div', {},
+        h('p', {}, 'Each lamp you light gives one Insight point. Spend it on a travel ability.'),
         h('p', { class: 'fine', role: 'status' }, `Insight: ${free} free of ${insight(s)}.`),
         ...(note ? [h('p', { class: 'fine', role: 'alert' }, note)] : []),
         h('div', { class: 'talent-grid' }, ...TALENTS.map((t) => {
@@ -3467,9 +4097,11 @@ export class UI implements UIApi {
               if (ev.some((e) => e.kind === 'error')) return;
               this.sfx('sfx.sparkle'); render(`You learned ${t.name}.`);
             } }, why ?? 'Learn'));
-        })),
+        }))),
         h('div', { class: 'row' },
-          atWaystone && spent(c.state) ? h('button', { onclick: () => { c.dispatch({ type: 'ForgetTalents' }); this.sfx('sfx.page'); render('All Insight is free again. Try another set.'); } }, 'Unlearn all (free at a Waystone)') : h('span', { class: 'fine' }, atWaystone ? '' : 'You can unlearn talents for free at any Waystone.'),
+          shown === 'talents' && spent(c.state) ? atWaystone
+            ? h('button', { onclick: () => { c.dispatch({ type: 'ForgetTalents' }); this.sfx('sfx.page'); render('All Insight is free again. Try another set.'); } }, 'Unlearn all (free at a Waystone)')
+            : h('span', { class: 'fine' }, 'You can unlearn talents for free at any Waystone.') : null,
           h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
     };
     render();
@@ -3526,14 +4158,15 @@ export class UI implements UIApi {
       const f = c.state.flags;
       const solved = Number(f['count.rumours'] ?? 0);
       const r = note?.ok ? RUMOURS.find((x) => x.id === note.id) ?? null : currentRumour(f, seed);
-      const intro = h('p', { class: 'fine' }, `Rumours traced: ${solved} of ${RUMOURS.length}. Check at least ${MIN_SOURCES} sources, then say what the evidence supports.`);
+      const intro = h('p', { class: 'fine' }, `Rumours traced: ${solved} of ${RUMOURS.length}. Check the listed sources, then say what the evidence supports.`);
       if (!r) {
         box.replaceChildren(this.closeBtn(), h('h2', {}, 'The rumour mill'), h('p', {}, 'The tea table is quiet. You have traced every rumour in Emberford for now. People here now ask "who told you?" before they pass a story on.'), intro,
           h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
         return;
       }
       const seen = sourcesChecked(f, r);
-      const enough = seen.length >= MIN_SOURCES;
+      const missing = missingRumourSources(f, r);
+      const enough = missing.length === 0;
       box.replaceChildren(this.closeBtn(), h('h2', {}, 'The rumour mill'),
         h('p', { class: 'fine' }, `${r.heard}:`), h('p', { class: 'clue-view' }, r.line),
         h('h3', {}, 'Sources'),
@@ -3550,7 +4183,7 @@ export class UI implements UIApi {
               this.sfx(res.ok ? 'sfx.sparkle' : 'sfx.page');
               render({ ok: res.ok, why: res.ok ? res.why : `${v}? ${res.why} Think again.`, id: r.id });
             } }, v))),
-            enough ? null : h('p', { class: 'fine' }, `Check ${MIN_SOURCES - seen.length} more source${MIN_SOURCES - seen.length === 1 ? '' : 's'} before you judge.`)),
+            enough ? null : h('p', { class: 'fine' }, `Still needed: ${missing.map((i) => r.sources[i].label).join(' · ')}.`)),
         intro);
     };
     render();
@@ -4122,6 +4755,7 @@ export class UI implements UIApi {
         paint(flow);
         readings.replaceChildren(h('p', {}, h('strong', {}, `${flow.incoming} buckets in`),
           ` · ${flow.farm} to the fields · ${flow.river} to the lower channel · ${flow.leak} lost at the gate`));
+        readings.append(h('p', {}, 'Keep the intake and the leak with these marks. Count again if either changes.'));
         if (condition === 'repaired' && controller.state.flags[`water.trial.drought.${setting}`] === true) {
           const before = waterTrial('drought', setting);
           readings.append(h('p', {}, `Before repair at this setting: ${before.farm} to the fields, ${before.river} to the lower channel, ${before.leak} lost at the gate.`));
@@ -4216,6 +4850,21 @@ export class UI implements UIApi {
       picture, controls, live,
       h('details', {}, h('summary', {}, 'Try a shopper’s purse'),
         h('label', { for: 'market-purse' }, 'Credits to spend'), purse, available));
+  }
+
+  openFilmCamera(station: string): void {
+    const { controller } = ctx;
+    if (!isFilmStation(station) || controller.state.mapId !== 'stage.rehearsal' || controller.state.flags['film.stage.started'] !== true) return;
+    const title = station === 'front' ? 'Front camera' : 'Wing camera';
+    this.openModal('film-panel', title, this.closeBtn(), h('h2', {}, title), cameraPanel(controller, station));
+  }
+
+  openFilmEditor(): void {
+    const { controller } = ctx;
+    if (controller.state.mapId !== 'stage.rehearsal'
+      || !FILM_STATIONS.every((station) => controller.state.flags['film.take.' + station] === true)) return;
+    this.openModal('film-panel wide', 'Editing stand', this.closeBtn(), h('h2', {}, 'Editing stand'),
+      filmEditorPanel(controller));
   }
 
   openStageRehearsal(): void {
@@ -4524,11 +5173,13 @@ export class UI implements UIApi {
     const c = ctx.controller;
     const box = this.openModal('nile-model wide', 'The shelf-top model');
     const live = h('p', { 'aria-live': 'polite', class: 'nile-report' });
+    const guide = localGuide(c, MAPS[c.state.mapId]?.world ?? '', 'nile.routes');
+    const roads = ['ridge', 'wash'] as const;
     box.append(this.closeBtn(), h('h2', {}, 'The shelf-top model'),
       h('p', {}, 'Marek sets the tall crate on the cart. Try each road with the same load.'),
       h('p', { class: 'fine' }, 'Fictional model. These routes and times are built for the archive trial.'));
     if (!c.state.cards.includes('card.nile.mine')) {
-      box.append(h('p', {}, 'Marek points to the Mine Map case west of the bench. Read that record before setting out.'));
+      box.append(h('p', {}, 'Marek points to the Mine Map case west of the bench. Read that record before setting out.'), guide);
       return;
     }
     const tracks = h('div', { class: 'nile-tracks' });
@@ -4548,10 +5199,15 @@ export class UI implements UIApi {
               destinations.querySelector<HTMLElement>('h3')?.focus();
             }
           } }, NILE_DELIVERIES[id].name)));
+      } else {
+        const remaining = roads.filter((road) => c.state.flags[`nile.trial.${road}`] !== true);
+        destinations.append(h('p', { role: 'status' }, remaining.length === 1
+          ? `Run the cart on the ${remaining[0]} to open the delivery tags.`
+          : 'Run the cart on both roads to open the delivery tags.'));
       }
       destinations.querySelector('h3')?.setAttribute('tabindex', '-1');
     };
-    for (const road of ['ridge', 'wash'] as const) {
+    for (const road of roads) {
       const r = NILE_TRIALS[road];
       const track = h('div', { class: `nile-track ${road}`, 'aria-hidden': 'true' }, h('i', { class: 'nile-cart' }, '▣'), h('span', {}, '◈'));
       const result = h('p', { class: 'fine' });
@@ -4567,7 +5223,7 @@ export class UI implements UIApi {
         showDelivery();
       } }, `Run the cart on the ${road}`)));
     }
-    box.append(tracks, live, destinations);
+    box.append(tracks, live, destinations, guide);
     showDelivery();
   }
 
@@ -4790,17 +5446,43 @@ export class UI implements UIApi {
 
   private openCredits(): void {
     const c = ctx.controller;
+    const s = c.state;
+    const journey = s?.flags['ending.council'] ? vignettesFor(s) : [];
     this.openModal('credits wide', 'Credits and sources', this.closeBtn(), h('h2', {}, 'Credits and sources'),
-      h('p', {}, 'All art, music and sound in this build are free assets with the CC0 licence (public domain dedication), or original art drawn in code for this game. The full list with links is in CREDITS.md in the project repository.'),
+      journey.length ? h('section', { class: 'journey-credits' }, h('h3', {}, 'From the first label to the Council'),
+        h('div', { class: 'journey-memory' }, h('img', { src: artURL('nile.door'), alt: '' }), h('p', {}, mirror(s))),
+        ...journey.slice(0, 4).map((moment, i) => h('div', { class: 'journey-memory' },
+          h('img', { src: artURL(i === 0 ? 'council.record' : 'voices.lamp'), alt: '' }),
+          h('div', {}, h('strong', {}, moment.who), h('p', {}, moment.text)))),
+        h('button', { type: 'button', onclick: () => this.playStoryCue('in-the-open') }, 'Hear the closing theme')) : '',
+      h('p', {}, 'The full art, music and sound credits, including rights for individual collection images, are in CREDITS.md in the project repository.'),
       h('ul', {},
         h('li', {}, 'Tiles and character base: ArMM1998, "Zelda-like tilesets and sprites" (CC0), OpenGameArt.org. Characters recoloured for this game.'),
         h('li', {}, 'Music: cynicmusic, "Town Theme RPG", "Mysterious Ambience (song21)", "Happy Lullaby (song17)" (CC0), OpenGameArt.org.'),
         h('li', {}, 'Sound effects: Kenney, "51 UI sound effects" (CC0); rubberduck, "80 CC0 RPG SFX" (CC0); wobbleboxx, "Level up, power up, Coin get" (CC0); HaelDB, "Completion sound" (CC0). All from OpenGameArt.org.'),
         h('li', {}, 'Font: Lexend (SIL Open Font License), via @fontsource/lexend.'),
         h('li', {}, 'Game engine: Phaser 3 (MIT licence).')),
-      h('h3', {}, 'Historical sources'),
-      h('ul', { class: 'sources-list' }, ...c.pack.sources.map((src) => h('li', {}, h('a', { href: src.url, target: '_blank', rel: 'noopener' }, `${src.id}: ${src.title}`)))),
-      h('p', { class: 'fine' }, 'This game uses no AI service at runtime. Characters speak authored, reviewed lines.'));
+      s?.flags['ending.council'] ? this.collectionBibliography(specimenReferences(c.pack), 'Works cited for the collection') : '');
+  }
+
+  private collectionBibliography(entries: SpecimenReference[], title: string): HTMLElement {
+    const pageSize = 24;
+    let page = 0;
+    const pages = Math.max(1, Math.ceil(entries.length / pageSize));
+    const list = h('ul', { class: 'sources-list specimen-bibliography' });
+    const status = h('span', { role: 'status' });
+    const previous = h('button', { type: 'button', onclick: () => { page--; show(); } }, 'Previous citations');
+    const next = h('button', { type: 'button', onclick: () => { page++; show(); } }, 'More citations');
+    function show() {
+      list.replaceChildren(...entries.slice(page * pageSize, (page + 1) * pageSize).map((entry) => h('li', {},
+        ...entry.runs.map((run) => run.href ? h('a', { href: run.href, target: '_blank', rel: 'noopener' }, run.text)
+          : run.cite ? h('cite', {}, run.text) : run.text))));
+      status.textContent = `${page + 1} / ${pages}`;
+      previous.disabled = page === 0;
+      next.disabled = page + 1 >= pages;
+    }
+    show();
+    return h('section', {}, h('h3', {}, title), list, pages > 1 ? h('div', { class: 'row' }, previous, status, next) : null);
   }
 
   // ------------------------------------------------------- chapter end
@@ -4822,7 +5504,7 @@ export class UI implements UIApi {
       h('h3', {}, 'Who was affected'),
       h('ul', {}, ...(rel.length ? rel.map((r) => h('li', {}, r)) : [h('li', {}, 'No relationships changed much.')])),
       h('p', { class: 'fine' }, 'Different choices lead to different consequences. None of them is the hidden "right answer". Your awards, concept XP, moments and portfolio are kept if you start again.'),
-      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep exploring'), h('button', { onclick: () => { this.closeModal(); (window as any).kgToTitle?.(); } }, 'Title screen')));
+      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep exploring'), this.saveControl()));
     this.sfx('sfx.award');
   }
 }

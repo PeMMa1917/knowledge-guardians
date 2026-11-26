@@ -135,6 +135,142 @@
    "speaker": "sea-harbourkeeper",
    "text": "A deckhand uses the key to show a passenger which upper landing will show both lights. The passenger matches the roof mark from her shore copy. The key will be there when the crew begins the next handover.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.name.join",
+   "speaker": "sea-cartographer",
+   "text": "The museum records how dugouts helped Yanyuwa crews reach nearby islands. Rra-Kalwanyimara keeps a place reference in its name. Our skiff’s crew painted Glint inside its hull. Move Glint’s name to the boat line on this practice sheet and give the loading step its own position.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Use the Cold Store tabs to separate the boat name and the loading step.",
+     "next": "sea.name.joined",
+     "if": {
+      "all": [
+       {
+        "objective": "sea.name.sources"
+       },
+       {
+        "item": "item.two-place-tabs"
+       },
+       {
+        "not": {
+         "objective": "sea.name.joined"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "sea.name.tabs",
+       "value": "cold"
+      }
+     ]
+    },
+    {
+     "text": "Use two chart-room slips for the boat name and the loading step.",
+     "next": "sea.name.joined",
+     "if": {
+      "all": [
+       {
+        "objective": "sea.name.sources"
+       },
+       {
+        "not": {
+         "item": "item.two-place-tabs"
+        }
+       },
+       {
+        "not": {
+         "objective": "sea.name.joined"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "sea.name.tabs",
+       "value": "local"
+      }
+     ]
+    },
+    {
+     "text": "Leave the old key on the desk."
+    }
+   ]
+  },
+  {
+   "id": "sea.name.joined",
+   "speaker": "sea-cartographer",
+   "text": "The boat token can move when the crew reties it. Salt Step stays under the rail. One line keeps a name with the vessel. The other tells a porter where to go for the next load.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.name.publish",
+   "speaker": "sea-harbourkeeper",
+   "text": "People waiting uphill can use a wide key at the rail. The next carrier arrives with a crate and needs the loading mark beside the skiff. Either copy can lead back to the chart-room name line. Where do you want the next person to see the key?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pin the full name and loading directions to Market Rail.",
+     "next": "sea.name.rail",
+     "if": {
+      "all": [
+       {
+        "objective": "sea.name.joined"
+       },
+       {
+        "not": {
+         "flagSet": "sea.name.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "sea.name.layout",
+       "value": "rail"
+      }
+     ]
+    },
+    {
+     "text": "Clip a point-of-use strip at the skiff and keep the name file in Lantern House.",
+     "next": "sea.name.skiff",
+     "if": {
+      "all": [
+       {
+        "objective": "sea.name.joined"
+       },
+       {
+        "not": {
+         "flagSet": "sea.name.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "sea.name.layout",
+       "value": "skiff"
+      }
+     ]
+    },
+    {
+     "text": "Leave both clips for the next round."
+    }
+   ]
+  },
+  {
+   "id": "sea.name.rail",
+   "speaker": "sea-harbourkeeper",
+   "text": "A porter reads Salt Step uphill and follows the rail there. The boat name stays above the moveable token. A new mooring needs a new loading line.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.name.skiff",
+   "speaker": "sea-harbourkeeper",
+   "text": "A carrier can read Salt Step from the path beside the skiff. A small arrow sends anyone asking where Glint got its name to Renna’s chart-room file.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "missions": [
@@ -230,6 +366,202 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH8-R03",
+   "world": "WORLD-09",
+   "title": "A Name That Travels",
+   "knowledgeQuestion": "What can a name tell us about a place and where does someone need a direction?",
+   "available": {
+    "flag": "sea.arrived",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "sea.name.sources",
+     "title": "Read the named canoe’s record, then check Glint’s crew and Salt Step.",
+     "done": {
+      "all": [
+       {
+        "flag": "sea.arrived",
+        "eq": true
+       },
+       {
+        "card": "card.sea.rra"
+       },
+       {
+        "flag": "sea.name.crew",
+        "eq": true
+       },
+       {
+        "flag": "sea.name.step",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "culture",
+       "perspective",
+       "evidence",
+       "truth",
+       "interpretation",
+       "certainty"
+      ],
+      "framework": [
+       "perspectives",
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "lang-b",
+       "geography",
+       "anthropology"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "human",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-RSC-15"
+     ]
+    },
+    {
+     "id": "sea.name.joined",
+     "title": "Move the boat token and give the loading step its own map line.",
+     "done": {
+      "all": [
+       {
+        "objective": "sea.name.sources"
+       },
+       {
+        "flagSet": "sea.name.tabs"
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "explanation",
+       "objectivity",
+       "justification",
+       "interpretation",
+       "responsibility"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "perspectives",
+       "ethics"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "geography",
+       "ess",
+       "lang-langlit"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "apply",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-THK-05",
+      "SK-ETR-01"
+     ],
+     "visible": {
+      "objective": "sea.name.sources"
+     }
+    },
+    {
+     "id": "sea.name.finish",
+     "title": "Place the new key and trace it to the next loading step.",
+     "done": {
+      "all": [
+       {
+        "flagSet": "sea.name.layout"
+       },
+       {
+        "flag": "sea.name.readback",
+        "eq": true
+       },
+       {
+        "flag": "sea.name.loaded",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "perspective",
+       "responsibility",
+       "culture",
+       "justification"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN",
+       "ART"
+      ],
+      "subjects": [
+       "geography",
+       "lang-b",
+       "visual-arts"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "caring",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-THK-14"
+     ],
+     "visible": {
+      "objective": "sea.name.joined"
+     }
+    }
+   ]
   }
  ],
  "hints": [
@@ -280,6 +612,78 @@
    "objective": "sea.symbol.placed",
    "depth": 4,
    "text": "Hang the key at the rail or at the skiff. Read the new sign at your chosen place."
+  },
+  {
+   "id": "h.sea.name.sources.1",
+   "objective": "sea.name.sources",
+   "depth": 1,
+   "text": "Someone read a boat’s name as the name of a loading step."
+  },
+  {
+   "id": "h.sea.name.sources.2",
+   "objective": "sea.name.sources",
+   "depth": 2,
+   "text": "The named canoe’s museum record is in Lantern House."
+  },
+  {
+   "id": "h.sea.name.sources.3",
+   "objective": "sea.name.sources",
+   "depth": 3,
+   "text": "Find the crew’s token at Shoal Shelf and the loading slip at Seagrass Steps."
+  },
+  {
+   "id": "h.sea.name.sources.4",
+   "objective": "sea.name.sources",
+   "depth": 4,
+   "text": "Find what each record points to. A vessel can move while loading steps stay in place."
+  },
+  {
+   "id": "h.sea.name.joined.1",
+   "objective": "sea.name.joined",
+   "depth": 1,
+   "text": "The same line on an old map can make two things look like one."
+  },
+  {
+   "id": "h.sea.name.joined.2",
+   "objective": "sea.name.joined",
+   "depth": 2,
+   "text": "Return to Renna’s two rails in Lantern House."
+  },
+  {
+   "id": "h.sea.name.joined.3",
+   "objective": "sea.name.joined",
+   "depth": 3,
+   "text": "Give Glint’s token and Salt Step separate positions with the Cold Store tabs or Renna’s spare slips."
+  },
+  {
+   "id": "h.sea.name.joined.4",
+   "objective": "sea.name.joined",
+   "depth": 4,
+   "text": "Bring the separate lines to Sora at the Seagrass rail."
+  },
+  {
+   "id": "h.sea.name.finish.1",
+   "objective": "sea.name.finish",
+   "depth": 1,
+   "text": "Someone needs a direction while carrying a crate."
+  },
+  {
+   "id": "h.sea.name.finish.2",
+   "objective": "sea.name.finish",
+   "depth": 2,
+   "text": "Visit Sora’s rail at Seagrass Steps."
+  },
+  {
+   "id": "h.sea.name.finish.3",
+   "objective": "sea.name.finish",
+   "depth": 3,
+   "text": "Put the complete key at Market Rail or a short strip near the skiff."
+  },
+  {
+   "id": "h.sea.name.finish.4",
+   "objective": "sea.name.finish",
+   "depth": 4,
+   "text": "Read the chosen key and follow it to Salt Step to see where the next load went."
   }
  ],
  "moments": [
@@ -291,6 +695,15 @@
    },
    "did": "You tested two ways to mark the same place, then kept both marks available to the next reader.",
    "prompt": "Where else might two people use different signs for the same thing?"
+  },
+  {
+   "id": "mom.sea-name-source",
+   "attribute": "open-minded",
+   "when": {
+    "objective": "sea.name.finish"
+   },
+   "did": "You kept a vessel’s name with its crew and gave the next carrier a place to go.",
+   "prompt": "Which part of your map could change on the next shift while the name stayed?"
   }
  ],
  "chronicle": [
@@ -301,6 +714,45 @@
    "if": {
     "objective": "sea.symbol.placed"
    }
+  }
+ ],
+ "sources": [
+  {
+   "id": "HIS-CANOE-01",
+   "title": "Australian National Maritime Museum, Dugout Canoe Rra-Kalwanyimara, 00001826",
+   "url": "https://www.sea.museum/object/dugout-canoe",
+   "locator": "Dugout Canoe description and fields for date, medium, manufacturers, language and clan",
+   "supports": "The museum records this silver paperbark dugout as made in 1988 by Annie Karrakayn, Ida Ninganga and Issac Walayunkuma. It gives Yanyuwa for the first two and Garrawa for the third. Its public description attributes an account of linking boat names to country to Annie Karrakayn and relates this name to Kalwanyi. It describes how dugouts extended Yanyuwa access to nearby islands.",
+   "accessed": "2026-11-26"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.sea.rra",
+   "title": "Rra-Kalwanyimara, Sea Museum object 00001826",
+   "text": "The Australian National Maritime Museum records this silver paperbark dugout as made by Annie Karrakayn and Ida Ninganga, who were Yanyuwa, and Issac Walayunkuma, who was Garrawa. In its published account Annie explains why a boat’s name can keep a place with it. This canoe’s name refers to Kalwanyi.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-CANOE-01"
+   ],
+   "limits": "The record names a particular boat and its makers. It gives no route through the fictional harbour. Its teaching picture is a generic hull outline."
+  }
+ ],
+ "exhibits": [
+  {
+   "id": "OBJ-SEA-RRA-00001826",
+   "name": "The Rra-Kalwanyimara museum record",
+   "art": "sea.dugout-diagram",
+   "historicalLabel": "documented",
+   "dateText": "1988",
+   "dateKind": "The date given for the commissioned museum canoe.",
+   "summary": "Australian National Maritime Museum object 00001826 is a dugout made of silver paperbark. It was commissioned in 1987 and is dated 1988. The museum links the recorded name to Kalwanyi.",
+   "sources": [
+    "HIS-CANOE-01"
+   ],
+   "grantsCard": "card.sea.rra",
+   "altText": "An original pixel outline of a generic long dugout hull beside separate labels for a vessel name and a place."
   }
  ]
 }

@@ -1,6 +1,15 @@
 /** WORLD-03: present-day fictional archive rooms. Only their objects are historical. */
 import type { Interactable, MapDef } from './types';
 import { sceneProp } from './sceneProps';
+import { SHELF_NILE_CALLBACK } from './shelfRoom';
+import { LEAVITT_NILE_REVISIT } from './leavittPlate';
+import { ALIGN_RETURN } from './mapAlignment';
+import { NILE_GLASS_RACK_USES } from './glassRack';
+import { NILE_MAKER_PATH } from './makerRoom';
+import { starStations } from './starPaths';
+import { WORKMEN_CURTAIN_PROPS } from './curtainCall';
+import { NILE_SPARE_SEAT } from './spareSeat';
+import { NILE_BEND_BOARD } from './stripBend';
 
 const W = 25, H = 13;
 const room = (id: string, name: string, npcs: MapDef['npcs'], interactables: Interactable[], palette: number, stamps: MapDef['stamps']): MapDef => ({
@@ -23,6 +32,9 @@ const exhibit = (id: string, x: number, y: number, label: string, art: string): 
 });
 
 type Dispatch = 'print' | 'read' | 'pair';
+
+const pinsTrial = { not: { flagSet: 'nile.opening-pins.choice' } } as const;
+const pinsCompared = { objective: 'nile.opening-pins.compare' } as const;
 
 const mineMapSeen = { card: 'card.nile.mine' } as const;
 const markCopy = (format: 'fixed' | 'paired', id: string, x: number, y: number, label: string, text: string): Interactable => ({
@@ -50,7 +62,13 @@ const placedCopy = (destination: string, x: number, y: number, label: string, ar
 });
 
 export const NILE_HALL = room('nile.hall', 'Nile Archive: The Door Without a Name',
-  [{ id: 'nile-iman', x: 12, y: 6, facing: 'down' }],
+  [
+    { id: 'nile-iman', x: 12, y: 6, facing: 'down' },
+    { id: 'handoff-nellis', x: 9, y: 7, facing: 'down', visibleIf: { all: [
+      { objective: 'nile.workers' },
+      { not: { all: [{ flag: 'preserved.arrived', eq: true }, { flagSet: 'nile.handoff.mode' }] } },
+    ] } },
+  ],
   [
     // A clue for the long mystery (docs/STORY_BIBLE.md section 7).
     { id: 'cross-borrowed', kind: 'fieldgame', game: 'cross-borrowed', x: 18, y: 5, w: 1, h: 1, label: 'Ambry\'s reading desk (a crossing)', art: 'catalogue' },
@@ -76,6 +94,29 @@ export const NILE_HALL = room('nile.hall', 'Nile Archive: The Door Without a Nam
       ] } },
     ...sceneProp('nile.reading-bench', 17, 9, 'Imani’s reading bench', 'board-stand',
       { copy: 'nile.scroll', edge: 'nile.tablet' }),
+    { id: 'nile-pins-rack', kind: 'scene', x: 13, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the two test pins and one lower stop', node: 'nile.opening-pins.rack', art: 'board-stand',
+      visibleIf: { all: [{ flag: 'nile.arrived', eq: true }, pinsTrial, { not: pinsCompared }] },
+      artBy: { flag: 'nile.opening-pins.trial', keys: { punched: 'nile.tablet', printed: 'nile.slip' } } },
+    { id: 'nile-pins-choose', kind: 'scene', x: 13, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the two checked copies at the rail', node: 'nile.opening-pins.choose', art: 'preserved.display-paired',
+      visibleIf: { all: [pinsTrial, pinsCompared] } },
+    { id: 'nile-pins-punched', kind: 'sign', x: 14, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the carrier copy resting flat on both pins', art: 'nile.tablet', flag: 'nile.opening-pins.seen.punched',
+      text: 'Both pins pass through. The tag stays on the rail when you let go. The receiving crew teach new carriers to hang punched tags this way so both hands can stay under a box.',
+      visibleIf: { all: [pinsTrial, { flag: 'nile.opening-pins.trial', eq: 'punched' }] } },
+    { id: 'nile-pins-printed', kind: 'sign', x: 14, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the paper guide resting against the pin tops', art: 'nile.slip', flag: 'nile.opening-pins.seen.printed',
+      text: 'Same stop. Same circle positions. The pins meet paper and the tag cannot hang here. The reading keepers print circles to show where the holes are on the practice tag. This guide stays in a flat tray.',
+      visibleIf: { all: [pinsTrial, { flag: 'nile.opening-pins.trial', eq: 'printed' }] } },
+    { id: 'nile-pins-rail', kind: 'sign', x: 13, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the punched handling copy on the rail', art: 'nile.tablet', flag: 'nile.opening-pins.readback',
+      text: 'A carrier hangs the punched copy and keeps both hands under a box. The shelf note still gives Ketta’s tag as the source of the guide’s layout. The full flat guide is still with the keeper for readers who ask.',
+      visibleIf: { flag: 'nile.opening-pins.choice', eq: 'rail' } },
+    { id: 'nile-pins-tray', kind: 'sign', x: 14, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the flat guide beside Ketta’s case number', art: 'preserved.display-records', flag: 'nile.opening-pins.readback',
+      text: 'A seated reader follows the two circles to Ketta’s receiving tag, then checks the case number. The carrier leaves their load at the stop while the keeper brings a punched copy.',
+      visibleIf: { flag: 'nile.opening-pins.choice', eq: 'tray' } },
     { id: 'nile-lamp-note-copy', kind: 'sign', x: 20, y: 10, w: 1, h: 1, walkThrough: true,
       label: 'the paired lamp views by the lending bench', art: 'nile.scroll',
       text: 'One practice slip. Two grooves show with the lamp above. Three show from the side. Two return when the lamp goes back. The reader cut these as pauses.',
@@ -90,6 +131,33 @@ export const NILE_HALL = room('nile.hall', 'Nile Archive: The Door Without a Nam
     door('nile-nexus', 12, 12, 'the door back to the Nexus', 'nexus.archive', 37, 4),
     { id: 'nile-tag', kind: 'clue', clue: 'nile-blank-tag', x: 8, y: 5, w: 1, h: 1, label: 'Elsbet’s unnamed tag', art: 'nile.slip' },
     { id: 'nile-carrier-copy', kind: 'clue', clue: 'nile-packet-copy', x: 15, y: 5, w: 1, h: 1, label: 'the spare carrier tag', art: 'nile.slip', visibleIf: { flag: 'nile.returned', eq: true } },
+    { id: 'nile-handoff-draft', kind: 'sign', x: 9, y: 6, w: 1, h: 1, walkThrough: true,
+      label: 'Nellis’s stamped delivery slip', art: 'nile.tablet', flag: 'nile.handoff.draft',
+      text: 'A gold stamp sits across two boxes. One says “packet received”. The other says “file complete”. The receiving list records a packet at the door. It has no entry for a check of its contents.',
+      visibleIf: { all: [{ objective: 'nile.workers' }, { not: { flagSet: 'nile.handoff.mode' } }] } },
+    { id: 'nile-handoff-open', kind: 'sign', x: 9, y: 6, w: 1, h: 1, walkThrough: true,
+      label: 'the open delivery docket', art: 'nile.scroll', flag: 'nile.handoff.outcome',
+      text: 'Nellis Haig carried this packet. The receiving desk can sign for it. Leila has left a second line open for someone to check the papyrus sequence. A reader at the stand can see why the gold stamp moved.',
+      visibleIf: { flag: 'nile.handoff.mode', eq: 'open' } },
+    { id: 'nile-handoff-fold', kind: 'sign', x: 9, y: 6, w: 1, h: 1, walkThrough: true,
+      label: 'the folded delivery docket', art: 'nile.slip', flag: 'nile.handoff.outcome',
+      text: 'Packet received. Review open. Lift the fold for the order of the entries. The receiving desk can check the runner’s work without putting their name on the public rail.',
+      visibleIf: { flag: 'nile.handoff.mode', eq: 'fold' } },
+    { id: 'nile-handoff-left', kind: 'sign', x: 9, y: 6, w: 1, h: 1, walkThrough: true,
+      label: 'the delivery slip waiting for a check', art: 'nile.tablet', flag: 'nile.handoff.outcome',
+      text: 'The gold stamp still straddles the two boxes. A note clipped beside it tells readers the runner will take the question to the receiving desk.',
+      visibleIf: { flag: 'nile.handoff.mode', eq: 'left' } },
+    { id: 'nile-exhibition-porter', kind: 'sign', x: 14, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the night receiver’s request', art: 'nile.slip', flag: 'nile.exhibit.porter',
+      text: 'I carry teaching copies after the desks close. Tell me which board has a support margin and where I can put my hands. The old ticket only says “the stone”.',
+      visibleIf: { flag: 'nile.returned', eq: true } },
+    { id: 'nile-exhibition-lift', kind: 'scene', node: 'nile.exhibit.lift', x: 16, y: 7, w: 1, h: 1, walkThrough: true,
+      label: 'the carrier’s board and its two handles', art: 'nile.tablet',
+      visibleIf: { all: [{ flagSet: 'nile.exhibit.layout' }, { not: { flag: 'nile.exhibit.lifted', eq: true } }] } },
+    { id: 'nile-exhibition-loaded', kind: 'sign', x: 16, y: 7, w: 1, h: 1, walkThrough: true,
+      label: 'the checked carrying board', art: 'nile.scroll',
+      text: 'Night delivery: the teaching board has two handles outside the marked support margin. The source note points to the fragment on display in the Nexus.',
+      visibleIf: { flag: 'nile.exhibit.lifted', eq: true } },
     { id: 'nile-rest', kind: 'waystone', x: 7, y: 10, w: 1, h: 1, label: 'the archive Waystone', art: 'waystone', place: 'the Nile Archive' },
     { id: 'nile-entry-notice', kind: 'sign', x: 15, y: 9, w: 1, h: 1, label: 'Elsbet’s sign beside the threshold', art: 'nile.scroll',
       text: 'NILE ARCHIVE. These are Guardian rooms, not ancient places. Examine the real records in their cases. The people you meet here are our keepers.' },
@@ -140,6 +208,8 @@ export const NILE_ROYAL = room('nile.royal', 'Nile Archive: Royal Records Room',
 export const NILE_WORKYARD = room('nile.workyard', 'Nile Archive: Workmen’s Room',
   [{ id: 'nile-leila', x: 20, y: 9, facing: 'left' }],
   [
+    ...starStations('weaver', [3, 9], [4, 9]),
+    ...WORKMEN_CURTAIN_PROPS,
     { id: 'nile-mark-swatch', kind: 'exhibit', exhibit: 'OBJ-ARCHIVE-PRACTICE-SWATCH', x: 7, y: 5, w: 1, h: 1,
       label: 'the keepers’ practice swatch', art: 'nile.scroll' },
     { id: 'nile-lamp-slip', kind: 'scene', x: 8, y: 9, w: 1, h: 1, walkThrough: true,
@@ -181,12 +251,67 @@ export const NILE_WORKYARD = room('nile.workyard', 'Nile Archive: Workmen’s Ro
       .map(([x, node, label]) => ({ id: 'nile-thread-' + node, kind: 'thread' as const, thread: 'nile-strike', node, x, y: 7, w: 1, h: 1, label, art: 'nile.slip' })),
     { id: 'nile-workymemory', kind: 'sign', x: 20, y: 5, w: 1, h: 1, label: 'Leila’s archive slip', art: 'nile.slip',
       text: 'Amunnakht’s account names demands and replies. I can give the page a heading. I can’t give it all the voices it never recorded. —Leila' },
+    { id: 'nile-handoff-sequence', kind: 'sign', x: 7, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'Leila’s two clips on the papyrus copy', art: 'nile.scroll', flag: 'nile.handoff.sequence',
+      text: 'The first clip marks a grain delivery in Amunnakht’s account. The second marks the renewed stoppage. Both clips are still needed. Leila put this practice copy beside the modern carrier form where a single stamp covers two jobs.',
+      visibleIf: { objective: 'nile.workers' } },
+    { id: 'nile-witness-rack', kind: 'scene', node: 'nile.witness.rack', x: 7, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the loose reading guide on the copy rack', art: 'nile.slip',
+      visibleIf: { all: [{ card: 'card.nile.strike' }, { not: { flagSet: 'nile.witness.phase' } }] } },
+    { id: 'nile-witness-sill', kind: 'scene', node: 'nile.witness.watch', x: 15, y: 11, w: 1, h: 1, walkThrough: true,
+      label: 'the quiet sill facing the rack', art: 'nile.tablet',
+      visibleIf: { all: [{ flagSet: 'nile.witness.phase' }, { not: { objective: 'nile.witness.compare' } }] } },
+    { id: 'nile-witness-set', kind: 'sign', x: 7, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the folded strip beside the guide', art: 'nile.scroll',
+      text: 'The strip is pinned to the rack. Its fold meets the loose guide at the corner. The quiet sill has a view of the door and rack.',
+      visibleIf: { flag: 'nile.witness.phase', eq: 'set' } },
+    { id: 'nile-witness-closed', kind: 'sign', x: 7, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the strip crossing the guide’s edge', art: 'nile.scroll', flag: 'nile.witness.closed',
+      text: 'Three beats with the door shut. The guide’s edge still meets the folded strip. Nobody came up to the rack.',
+      visibleIf: { flag: 'nile.witness.phase', eq: 'closed' } },
+    { id: 'nile-witness-open', kind: 'sign', x: 7, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the gap beside the witness strip', art: 'nile.tablet', flag: 'nile.witness.open',
+      text: 'Three beats with one door opening. The guide slid away from the fixed strip. Nobody came up to the rack. The two corners keep the gap visible.',
+      visibleIf: { all: [{ flag: 'nile.witness.phase', eq: 'open' }, { not: { flagSet: 'nile.witness.layout' } }] } },
+    { id: 'nile-witness-mount', kind: 'scene', node: 'nile.witness.mount', x: 5, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'Leila’s clips for a readable guide', art: 'nile.scroll',
+      visibleIf: { all: [{ objective: 'nile.witness.compare' }, { not: { flagSet: 'nile.witness.layout' } }] } },
+    { id: 'nile-witness-weight', kind: 'sign', x: 7, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the guide under two spare clips', art: 'nile.tablet', flag: 'nile.witness.readback',
+      text: 'The paper clips keep this guide at the entrance rack where a reader already looks for it. Lift the corner clip to turn the sheet. The two observation times are on its margin.',
+      visibleIf: { flag: 'nile.witness.layout', eq: 'weight' } },
+    { id: 'nile-witness-shelter', kind: 'sign', x: 21, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the guide on the sheltered shelf', art: 'nile.scroll', flag: 'nile.witness.readback',
+      text: 'The guide lies flat by the sheltered shelf and lifts freely. A small direction at the entrance rack sends a reader here. Its margin gives the two observation times.',
+      visibleIf: { flag: 'nile.witness.layout', eq: 'shelter' } },
+    { id: 'nile-witness-pointers', kind: 'sign', x: 7, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the arrow to the relocated guide', art: 'nile.slip',
+      text: 'The reading guide has moved to the sheltered shelf by Leila’s bench.',
+      visibleIf: { flag: 'nile.witness.layout', eq: 'shelter' } },
+    { id: 'nile-exhibition-reader', kind: 'sign', x: 11, y: 9, w: 1, h: 1, walkThrough: true,
+      label: 'the language reader’s request', art: 'nile.scroll', flag: 'nile.exhibit.reader',
+      text: 'We can copy visible marks. A reader needs to see where a stroke stops at a break before calling the drawing a written line. Leave us a place to look at that edge.',
+      visibleIf: { flag: 'nile.returned', eq: true } },
+    { id: 'nile-exhibition-copy-class', kind: 'scene', node: 'nile.exhibit.copy', x: 14, y: 5, w: 1, h: 1, walkThrough: true,
+      label: 'the low reading copy', art: 'nile.slip',
+      visibleIf: { all: [{ flag: 'nile.exhibit.layout', eq: 'delivery' }, { not: { flag: 'nile.exhibit.copied', eq: true } }] } },
+    { id: 'nile-exhibition-readback-class', kind: 'sign', x: 14, y: 5, w: 1, h: 1, walkThrough: true,
+      label: 'the checked marks at the reading bench', art: 'nile.scroll',
+      text: 'Copy what remains above the break. Turn to the source tab for the find history. The rest of the line stays open.',
+      visibleIf: { all: [{ flag: 'nile.exhibit.layout', eq: 'delivery' }, { flag: 'nile.exhibit.copied', eq: true }] } },
   ], 0x323124,
   [{ stamp: 'crates', x: 2, y: 4 }, { stamp: 'barrel', x: 7, y: 5 }, { stamp: 'long-table', x: 10, y: 3 }, { stamp: 'bookshelf', x: 18, y: 2 }]);
 
 export const NILE_ROUTE = room('nile.route', 'Nile Archive: Map Room',
   [{ id: 'nile-marek', x: 16, y: 7, facing: 'left' }],
   [
+    ...SHELF_NILE_CALLBACK,
+    ...LEAVITT_NILE_REVISIT,
+    ...ALIGN_RETURN,
+    NILE_MAKER_PATH,
+    ...NILE_GLASS_RACK_USES,
+    ...NILE_SPARE_SEAT,
+    ...NILE_BEND_BOARD,
     ...sceneProp('nile.model-handover', 14, 8, 'Marek’s note for the next keeper', 'board-stand',
       { repeat: 'nile.slip', limit: 'nile.scroll' }, { objective: 'nile.routes' }),
     readerClue('pair', 'reply', 9, 5, 'the apprentice’s loose tag'),
@@ -238,5 +363,19 @@ export const NILE_ROUTE = room('nile.route', 'Nile Archive: Map Room',
       'Stand at the aisle mark. Glass case to your left. Crate rack to your right. A visitor holds this copy toward the table and follows the case line. The shelf end has its own clipping.'),
     markCopy('paired', 'shelf-read', 10, 3, 'the shelf’s view of the room',
       'Stand at the shelf mark. Crate rack to your left. Glass case to your right. A carrier sets down her box at the rack. This view uses the same two landmarks as the aisle copy.'),
+    { id: 'nile-exhibition-mount', kind: 'scene', node: 'nile.exhibit.mount', x: 16, y: 11, w: 1, h: 1, walkThrough: true,
+      label: 'the empty trays for two records', art: 'board-stand',
+      visibleIf: { all: [{ flag: 'nile.returned', eq: true }, { not: { flagSet: 'nile.exhibit.layout' } }] } },
+    { id: 'nile-exhibition-delivery', kind: 'sign', x: 16, y: 11, w: 1, h: 1, walkThrough: true,
+      label: 'the carrier’s two-part mount plan', art: 'nile.tablet',
+      text: 'The hall board gives the receiver the handles and the support margin. A separate note links to the fragment in the Nexus. The copy for reading strokes waits in the Workmen’s Room.',
+      visibleIf: { flag: 'nile.exhibit.layout', eq: 'delivery' } },
+    { id: 'nile-exhibition-copy-rail', kind: 'scene', node: 'nile.exhibit.copy', x: 16, y: 11, w: 1, h: 1, walkThrough: true,
+      label: 'the reading rail with two source tabs', art: 'nile.scroll',
+      visibleIf: { all: [{ flag: 'nile.exhibit.layout', eq: 'reading' }, { not: { flag: 'nile.exhibit.copied', eq: true } }] } },
+    { id: 'nile-exhibition-readback-rail', kind: 'sign', x: 16, y: 11, w: 1, h: 1, walkThrough: true,
+      label: 'the checked marks at the map rail', art: 'nile.scroll',
+      text: 'The stone tab stops at the fragment edge. The map tab links the road lines and rock colours to Wadi Hammamat. The handling guide is on a separate board in the hall.',
+      visibleIf: { all: [{ flag: 'nile.exhibit.layout', eq: 'reading' }, { flag: 'nile.exhibit.copied', eq: true }] } },
   ], 0x2b3039,
   [{ stamp: 'bookshelf', x: 4, y: 2 }, { stamp: 'crates', x: 19, y: 6 }, { stamp: 'bench', x: 12, y: 4 }, { stamp: 'plant-tall', x: 19, y: 9 }]);

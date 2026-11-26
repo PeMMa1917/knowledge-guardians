@@ -1,0 +1,1035 @@
+{
+  "characters": [
+    {
+      "id": "window-guide-talden",
+      "name": "Talden Voss",
+      "role": "Slate Harbour window fitter",
+      "sprite": "villager-1",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "flag": "window.post",
+            "eq": "deck"
+          },
+          "node": "window.guide.deck"
+        },
+        {
+          "if": {
+            "flag": "window.post",
+            "eq": "glass"
+          },
+          "node": "window.guide.glass"
+        },
+        {
+          "node": "window.guide"
+        }
+      ]
+    },
+    {
+      "id": "window-recorder-cado",
+      "name": "Cado Wythe",
+      "role": "Slate Harbour viewing-station recorder",
+      "sprite": "villager-2",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "flag": "window.post",
+            "eq": "deck"
+          },
+          "node": "window.recorder.deck"
+        },
+        {
+          "if": {
+            "flag": "window.post",
+            "eq": "glass"
+          },
+          "node": "window.recorder.glass"
+        },
+        {
+          "node": "window.recorder"
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "window.guide",
+      "speaker": "window-guide-talden",
+      "historicalLabel": "fictional-world",
+      "text": "The quay wants another print of the whole track. The show booth wants the two marks in this frame. At present the title promises both. Try our two viewing plates and see what one view can give each person. The small mark was supposed to look like a fish. Cado says it looks like my shoelace."
+    },
+    {
+      "id": "window.guide.deck",
+      "speaker": "window-guide-talden",
+      "historicalLabel": "fictional-world",
+      "text": "The whole trace went up where the pilots wait. The close view sits under a clear cover here. Cado can keep the rim marks with it."
+    },
+    {
+      "id": "window.guide.glass",
+      "speaker": "window-guide-talden",
+      "historicalLabel": "fictional-world",
+      "text": "Cado gets the fixed picture at the low glass. Tell a pilot to ask for the broad trace at the desk. The date tabs are still there."
+    },
+    {
+      "id": "window.recorder",
+      "speaker": "window-recorder-cado",
+      "historicalLabel": "fictional-world",
+      "text": "When I copy a faint mark I need the plate left still. I also need the position the viewer stood in. That gets dropped when the print travels. My job is half recording, half walking back for the missing line."
+    },
+    {
+      "id": "window.recorder.deck",
+      "speaker": "window-recorder-cado",
+      "historicalLabel": "fictional-world",
+      "text": "A pilot can trace the two turns. I bring people here to check the faint mark near the lamp. Next time I want a bigger clip."
+    },
+    {
+      "id": "window.recorder.glass",
+      "speaker": "window-recorder-cado",
+      "historicalLabel": "fictional-world",
+      "text": "The picture stays at my station and keeps its time mark. To trace the whole run, wait for me beside the boarded map."
+    },
+    {
+      "id": "window.scope",
+      "speaker": "window-guide-talden",
+      "historicalLabel": "fictional-world",
+      "text": "Galileo made both of these telescopes. The cases give two magnifications and the same small angle of view. One eyepiece was replaced later. Keep our distant stud board fixed while you move the study frame. Check each view across the rail.",
+      "options": [
+        {
+          "text": "Open the wide frame at the same stud board.",
+          "effects": [
+            {
+              "setFlag": "window.scope",
+              "value": "wide"
+            }
+          ],
+          "next": "window.scope.wide",
+          "if": {
+            "not": {
+              "flag": "window.scope.wide",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Slide the close face over the same stud board.",
+          "effects": [
+            {
+              "setFlag": "window.scope",
+              "value": "close"
+            }
+          ],
+          "next": "window.scope.close",
+          "if": {
+            "not": {
+              "flag": "window.scope.close",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Leave the frames on their hooks."
+        }
+      ]
+    },
+    {
+      "id": "window.scope.wide",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Both outer pins now fit inside the frame. From this setting the pale centre looks like one bar. The check rail is the same marked position."
+    },
+    {
+      "id": "window.scope.close",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The right outer pin drops outside the visible field. The board stays where it was. The check rail still points at the centre."
+    },
+    {
+      "id": "window.plate",
+      "speaker": "window-guide-talden",
+      "historicalLabel": "fictional-world",
+      "text": "Van Leeuwenhoek’s surviving Utrecht instrument holds a single lens. Use our manufactured teaching plate in the same place under the viewer. Turn the light shutter from the front to the edge and check the image after each move.",
+      "options": [
+        {
+          "text": "Send the lamp through the front slot.",
+          "effects": [
+            {
+              "setFlag": "window.plate",
+              "value": "front"
+            }
+          ],
+          "next": "window.plate.front",
+          "if": {
+            "not": {
+              "flag": "window.plate.front",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Send the same lamp through the edge slot.",
+          "effects": [
+            {
+              "setFlag": "window.plate",
+              "value": "edge"
+            }
+          ],
+          "next": "window.plate.edge",
+          "if": {
+            "not": {
+              "flag": "window.plate.edge",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Leave the plate clipped in place."
+        }
+      ]
+    },
+    {
+      "id": "window.plate.front",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Both etchings are under the same lens. A bright patch crosses the thin one. Look at the reading stripe before you move the lamp."
+    },
+    {
+      "id": "window.plate.edge",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The same etchings are in the same spot. The bright patch moves outside their edge. Check the reading stripe again."
+    },
+    {
+      "id": "window.trial",
+      "speaker": "window-recorder-cado",
+      "historicalLabel": "fictional-world",
+      "text": "The Navy dates Piccard and Walsh’s dive in Trieste. The museum drawing is later. Collins stayed in lunar orbit in Columbia while Eagle took Armstrong and Aldrin to the surface. Keep the view and track for our harbour run separate too. Check the witness mark on each side of the rack.",
+      "options": [
+        {
+          "text": "Turn the rack to the window sketch.",
+          "effects": [
+            {
+              "setFlag": "window.view",
+              "value": "image"
+            }
+          ],
+          "next": "window.trial.image",
+          "if": {
+            "not": {
+              "flag": "window.trial.image",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Turn the rack to the independent position strip.",
+          "effects": [
+            {
+              "setFlag": "window.view",
+              "value": "track"
+            }
+          ],
+          "next": "window.trial.track",
+          "if": {
+            "not": {
+              "flag": "window.trial.track",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Leave the rack closed for now."
+        }
+      ]
+    },
+    {
+      "id": "window.trial.image",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "One brief view at the third bell. The printed edge remains on the sketch. You can see it at the low witness rail."
+    },
+    {
+      "id": "window.trial.track",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The quay and outer-post marks come from the lookouts. They go through a second clip at the map rail, away from the picture."
+    },
+    {
+      "id": "window.publish",
+      "speaker": "window-guide-talden",
+      "historicalLabel": "fictional-world",
+      "text": "The pilot needs the two turns before departure. The clerk needs the two little marks and where the window ended. The wide rail and low glass each have one free slot. Keep the missing part findable when you choose which one goes out first.",
+      "options": [
+        {
+          "text": "Hang the traced turns at the pilot’s rail.",
+          "effects": [
+            {
+              "setFlag": "window.post",
+              "value": "deck"
+            }
+          ],
+          "next": "window.post.deck"
+        },
+        {
+          "text": "Clip the window sketch at the low glass.",
+          "effects": [
+            {
+              "setFlag": "window.post",
+              "value": "glass"
+            }
+          ],
+          "next": "window.post.glass"
+        },
+        {
+          "text": "Keep the first print under review."
+        }
+      ]
+    },
+    {
+      "id": "window.post.deck",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The wide rail carries both turns with times and names. The caption says the little sketch covers one view at the third bell. Cado pins the full-size detail at the staffed side desk."
+    },
+    {
+      "id": "window.post.glass",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The low glass receives the narrow picture and its stated edge. A dated locator points back to the lookouts’ independent trace at the staffed desk."
+    },
+    {
+      "id": "window.watch.deck",
+      "speaker": "window-recorder-cado",
+      "historicalLabel": "fictional-world",
+      "text": "I walked the two turns with the pilot. The date and lookout lines stay above the rail. The small detail is still waiting at my desk. Leave those two jobs on the receipt.",
+      "options": [
+        {
+          "text": "Mark the pilot’s confirmed walk and the waiting detail.",
+          "effects": [
+            {
+              "setFlag": "window.used",
+              "value": "deck"
+            }
+          ]
+        },
+        {
+          "text": "Leave the receipt for a second look."
+        }
+      ]
+    },
+    {
+      "id": "window.watch.glass",
+      "speaker": "window-recorder-cado",
+      "historicalLabel": "fictional-world",
+      "text": "Here I can find the two marks and the limit of the picture. The pilot asks where the second turn was. I’ll take them through the dated trace when the desk reopens.",
+      "options": [
+        {
+          "text": "Mark the checked picture and the pilot’s next stop.",
+          "effects": [
+            {
+              "setFlag": "window.used",
+              "value": "glass"
+            }
+          ]
+        },
+        {
+          "text": "Leave the receipt for a second look."
+        }
+      ]
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH4-R20",
+      "title": "A Window in the Record",
+      "world": "WORLD-05",
+      "available": {
+        "flag": "coast.arrived",
+        "eq": true
+      },
+      "stake": "A pilot may plan from a missing turn, or a recorder may copy a claim beyond the view.",
+      "knowledgeQuestion": "When a tool extends what we can see, how do we keep the edge of that view with the claim?",
+      "objectives": [
+        {
+          "id": "window.far",
+          "title": "Check the distant board through both frames.",
+          "done": {
+            "all": [
+              {
+                "flag": "window.scope.wide",
+                "eq": true
+              },
+              {
+                "flag": "window.scope.close",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "flag": "coast.arrived",
+            "eq": true
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.window.far"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "perspective",
+              "certainty",
+              "objectivity"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "scope",
+              "perspectives"
+            ],
+            "aoks": [
+              "NAT",
+              "HIS",
+              "TEC"
+            ],
+            "subjects": [
+              "physics",
+              "design-tech",
+              "history"
+            ],
+            "minutes": 4,
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "relational"
+            }
+          }
+        },
+        {
+          "id": "window.near",
+          "title": "Keep the plate fixed while checking both lamp positions.",
+          "done": {
+            "all": [
+              {
+                "flag": "window.plate.front",
+                "eq": true
+              },
+              {
+                "flag": "window.plate.edge",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "flag": "coast.arrived",
+            "eq": true
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.window.near"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "explanation",
+              "evidence",
+              "interpretation",
+              "objectivity"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "scope"
+            ],
+            "aoks": [
+              "NAT",
+              "HIS",
+              "TEC"
+            ],
+            "subjects": [
+              "physics",
+              "design-tech",
+              "history"
+            ],
+            "minutes": 4,
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "relational"
+            }
+          }
+        },
+        {
+          "id": "window.compare",
+          "title": "Check a momentary view against the independent track.",
+          "done": {
+            "all": [
+              {
+                "flag": "window.trial.image",
+                "eq": true
+              },
+              {
+                "flag": "window.trial.track",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "all": [
+              {
+                "objective": "window.far"
+              },
+              {
+                "objective": "window.near"
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.window.compare"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "certainty",
+              "truth",
+              "justification",
+              "power"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "TEC"
+            ],
+            "subjects": [
+              "physics",
+              "ess",
+              "history",
+              "geography"
+            ],
+            "minutes": 5,
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            }
+          }
+        },
+        {
+          "id": "window.proof",
+          "title": "Test the printed handover with its intended reader at the quay.",
+          "done": {
+            "flagSet": "window.used"
+          },
+          "visible": {
+            "objective": "window.compare"
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.window.proof"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "responsibility",
+              "values",
+              "interpretation",
+              "perspective",
+              "justification"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "framework": [
+              "ethics",
+              "perspectives",
+              "scope"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "HUM"
+            ],
+            "subjects": [
+              "physics",
+              "design-tech",
+              "digital-society",
+              "lang-lit"
+            ],
+            "minutes": 4,
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "relational"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.window.far",
+      "claimKind": "observation",
+      "text": "I changed the frame on the fixed stud board. The close view resolved its two middle marks. The wide view included both outside pins."
+    },
+    {
+      "id": "j.window.near",
+      "claimKind": "observation",
+      "text": "I kept the lens, place and etched plate fixed. Moving the lamp changed whether I could separate the fine line from a bright patch."
+    },
+    {
+      "id": "j.window.compare",
+      "claimKind": "observation",
+      "text": "I compared one window sketch with two independent position sightings. The route helped to locate the sketch and left the view’s own frame visible."
+    },
+    {
+      "id": "j.window.proof",
+      "claimKind": "observation",
+      "text": "I left one view where its reader could use it and gave the next worker a place to find the supporting record."
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.window.far.1",
+      "objective": "window.far",
+      "depth": 1,
+      "text": "Both frames face the same board."
+    },
+    {
+      "id": "h.window.far.2",
+      "objective": "window.far",
+      "depth": 2,
+      "text": "The Galileo cases give magnification and field for each object separately."
+    },
+    {
+      "id": "h.window.far.3",
+      "objective": "window.far",
+      "depth": 3,
+      "text": "Find how many outside pins and middle marks you can see from each setting."
+    },
+    {
+      "id": "h.window.far.4",
+      "objective": "window.far",
+      "depth": 4,
+      "text": "Read both telescope cases, move each practice frame to its stop and use the same check rail."
+    },
+    {
+      "id": "h.window.near.1",
+      "objective": "window.near",
+      "depth": 1,
+      "text": "The object does not need to change when a view changes."
+    },
+    {
+      "id": "h.window.near.2",
+      "objective": "window.near",
+      "depth": 2,
+      "text": "Use the Utrecht microscope record and keep the plate in its clip."
+    },
+    {
+      "id": "h.window.near.3",
+      "objective": "window.near",
+      "depth": 3,
+      "text": "Try the same lamp at each slot and look at the stripe."
+    },
+    {
+      "id": "h.window.near.4",
+      "objective": "window.near",
+      "depth": 4,
+      "text": "Move the lamp shutter from front to edge at the plate stand. Read the outcome separately from the lamp action each time."
+    },
+    {
+      "id": "h.window.compare.1",
+      "objective": "window.compare",
+      "depth": 1,
+      "text": "Two records can cover the same trip and show different parts of it."
+    },
+    {
+      "id": "h.window.compare.2",
+      "objective": "window.compare",
+      "depth": 2,
+      "text": "Open Trieste, the separate drawing and Columbia before using the turn rack."
+    },
+    {
+      "id": "h.window.compare.3",
+      "objective": "window.compare",
+      "depth": 3,
+      "text": "Look for the edge of the window and the dated position marks."
+    },
+    {
+      "id": "h.window.compare.4",
+      "objective": "window.compare",
+      "depth": 4,
+      "text": "Turn the rack to each side and read each witness rail. Keep the picture’s time and the route’s events in separate places."
+    },
+    {
+      "id": "h.window.proof.1",
+      "objective": "window.proof",
+      "depth": 1,
+      "text": "The two readers stand in different spots."
+    },
+    {
+      "id": "h.window.proof.2",
+      "objective": "window.proof",
+      "depth": 2,
+      "text": "Either print can stay with directions to the second record."
+    },
+    {
+      "id": "h.window.proof.3",
+      "objective": "window.proof",
+      "depth": 3,
+      "text": "Check who can act at the rail or glass after you post."
+    },
+    {
+      "id": "h.window.proof.4",
+      "objective": "window.proof",
+      "depth": 4,
+      "text": "Choose the pilot’s rail or the clerk’s glass. Walk out to the corresponding quay reader and record the arrival and one unresolved need."
+    }
+  ],
+  "sources": [
+    {
+      "id": "HIS-WINDOW-2427",
+      "title": "Galileo’s telescope, 2427",
+      "url": "https://catalogue.museogalileo.it/object/GalileosTelescope.html",
+      "locator": "Inventory field, materials, length, instrument description and optical performance",
+      "supports": "Identifies 2427 as the 1,273 mm wood, paper and copper instrument, with a 14× magnification and a 15-arcminute field of view.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Galileo’s telescope, 2427",
+        "container": "Museo Galileo, Florence",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-WINDOW-2428",
+      "title": "Galileo’s telescope, 2428",
+      "url": "https://catalogue.museogalileo.it/object/GalileosTelescope_n01.html",
+      "locator": "Inventory field, date, optics and replacement eyepiece paragraph",
+      "supports": "Identifies the separate instrument 2428, the missing original eyepiece, the nineteenth-century replacement, 21× and a 15-arcminute field.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Galileo’s telescope, 2428",
+        "container": "Museo Galileo, Florence",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-WINDOW-UM1",
+      "title": "Neutron tomography of Van Leeuwenhoek’s microscopes",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8121416/",
+      "locator": "Figure 1 caption B and the results for the Utrecht instrument",
+      "supports": "Identifies the microscope UM-1 at Utrecht University Museum as the 266× preserved instrument and locates the single lens between plates.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Neutron tomography of Van Leeuwenhoek’s microscopes",
+        "container": "Science Advances",
+        "showAccessDate": true,
+        "author": "Cocquyt, Tiemen, et al."
+      }
+    },
+    {
+      "id": "HIS-WINDOW-UMU",
+      "title": "Het Van Leeuwenhoek microscoopje",
+      "url": "https://web.archive.org/web/20250427031023/https://umu.nl/collectie-verhaal/het-van-leeuwenhoek-microscoopje/",
+      "locator": "Utrecht University Museum’s collection story, first two paragraphs",
+      "supports": "Describes the brass microscope as 2.5 × 4.6 cm and dates this possible later model to around 1700.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Het Van Leeuwenhoek microscoopje",
+        "container": "Utrecht University Museum",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-WINDOW-TRIESTE",
+      "title": "Bathyscaphe Trieste (1958–1963)",
+      "url": "https://web.archive.org/web/20230408213041/https://www.history.navy.mil/browse-by-topic/exploration-and-innovation/bathyscaph-trieste.html",
+      "locator": "Project Nekton dive paragraph, exhibit history and item captions",
+      "supports": "Records the Challenger Deep dive by Walsh and Piccard on 23 January 1960 and the vessel’s 1980 move to the National Museum of the U.S. Navy.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Bathyscaphe Trieste (1958–1963)",
+        "container": "Naval History and Heritage Command",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-WINDOW-NH95258",
+      "title": "U.S. Navy Bathyscaphe Trieste (1958–1963), NH 95258",
+      "url": "https://web.archive.org/web/20220707161302/https://www.history.navy.mil/our-collections/photography/numerical-list-of-images/nhhc-series/nh-series/NH-95000/NH-95258.html",
+      "locator": "Title, historical description and NH 95258 image number",
+      "supports": "Identifies the illustrated exterior as the configuration of about 1963, drawn in the early 1980s for the Navy museum.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "U.S. Navy Bathyscaphe Trieste (1958–1963), NH 95258",
+        "container": "Naval History and Heritage Command",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-WINDOW-COLUMBIA",
+      "title": "Command Module, Apollo 11, A19700102000",
+      "url": "https://airandspace.si.edu/collection-objects/command-module-apollo-11/nasm_A19700102000",
+      "locator": "Inventory number, catalogue introduction and distinction between Command Module and Lunar Module",
+      "supports": "Identifies Command Module 107 Columbia, the part that returned to Earth, and distinguishes Eagle, which carried Armstrong and Aldrin to the surface.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Command Module, Apollo 11, A19700102000",
+        "container": "Smithsonian National Air and Space Museum",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-WINDOW-NASA",
+      "title": "Apollo 11",
+      "url": "https://www.nasa.gov/mission/apollo-11/",
+      "locator": "Mission dates and lunar landing and return records",
+      "supports": "Separately dates the launch, lunar landing and splashdown to 16, 20 and 24 July 1969.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Apollo 11",
+        "container": "NASA",
+        "showAccessDate": true
+      }
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-WINDOW-2427",
+      "name": "Galileo’s telescope · 2427",
+      "art": "window.case.telescope",
+      "historicalLabel": "documented",
+      "dateText": "About 1610",
+      "dateKind": "Approximate object date in the Museo Galileo catalogue",
+      "summary": "Museo Galileo describes this 1,273 mm telescope by Galileo Galilei as wood and paper held with copper wire. The catalogue reports 14× magnification and a 15-arcminute field of view.",
+      "sources": [
+        "HIS-WINDOW-2427"
+      ],
+      "grantsCard": "card.window.telescope",
+      "altText": "Original schematic. Long ochre paper-covered tube with darker copper wraps and small end housings.",
+      "specimen": {
+        "key": "museo-galileo:2427",
+        "institution": "Museo Galileo, Florence",
+        "accession": "2427",
+        "source": "HIS-WINDOW-2427",
+        "objective": "window.far"
+      }
+    },
+    {
+      "id": "OBJ-WINDOW-2428",
+      "name": "Galileo’s telescope with a later eyepiece · 2428",
+      "art": "window.case.other",
+      "historicalLabel": "documented",
+      "dateText": "Late 1609–early 1610",
+      "dateKind": "Date of the telescope in the catalogue. Its replacement eyepiece dates to the nineteenth century.",
+      "summary": "The 927 mm leather-covered instrument is another Museo Galileo telescope. The museum reports 21× magnification and a 15-arcminute field with the later eyepiece described in the entry.",
+      "sources": [
+        "HIS-WINDOW-2428"
+      ],
+      "grantsCard": "card.window.other",
+      "altText": "Original schematic. Shorter brown leather-covered tube with broad end housings and simplified gold edging.",
+      "specimen": {
+        "key": "museo-galileo:2428",
+        "institution": "Museo Galileo, Florence",
+        "accession": "2428",
+        "source": "HIS-WINDOW-2428",
+        "objective": "window.far"
+      }
+    },
+    {
+      "id": "OBJ-WINDOW-UM-1",
+      "name": "Antonie van Leeuwenhoek’s Utrecht microscope · UM-1",
+      "art": "window.case.microscope",
+      "historicalLabel": "documented",
+      "dateText": "Possibly around 1700",
+      "dateKind": "Museum’s qualified estimate for this brass instrument",
+      "summary": "Utrecht’s brass microscope is about 2.5 × 4.6 cm. The museum and the 2021 study identify a single lens and 266× magnification. The study names this specific microscope UM-1.",
+      "sources": [
+        "HIS-WINDOW-UM1",
+        "HIS-WINDOW-UMU"
+      ],
+      "grantsCard": "card.window.microscope",
+      "altText": "Original schematic. Small dark-gold plate, a pin and a circular lens mark arranged on a blue display backing.",
+      "specimen": {
+        "key": "umu:um-1",
+        "institution": "Utrecht University Museum",
+        "accession": "UM-1",
+        "source": "HIS-WINDOW-UM1",
+        "objective": "window.near"
+      }
+    },
+    {
+      "id": "OBJ-WINDOW-TRIESTE",
+      "name": "Trieste · the Project Nekton vessel",
+      "art": "window.case.trieste",
+      "historicalLabel": "documented",
+      "dateText": "23 January 1960",
+      "dateKind": "Date of the Challenger Deep dive. The vessel was placed on exhibit at the Navy museum in 1980.",
+      "summary": "The U.S. Navy records Jacques Piccard and Don Walsh reaching Challenger Deep in Trieste on 23 January 1960. It records the vessel’s later transfer to Washington Navy Yard for the National Museum of the U.S. Navy.",
+      "sources": [
+        "HIS-WINDOW-TRIESTE"
+      ],
+      "grantsCard": "card.window.trieste",
+      "altText": "Original schematic. A long free-standing outline above a small round crew space. The picture shows the silhouette alone.",
+      "specimen": {
+        "key": "us-navy:project-nekton-trieste-1960",
+        "institution": "National Museum of the U.S. Navy",
+        "accession": "Bathyscaphe Trieste",
+        "source": "HIS-WINDOW-TRIESTE",
+        "objective": "window.compare"
+      }
+    },
+    {
+      "id": "OBJ-WINDOW-NH-95258",
+      "name": "Later museum profile of Trieste · NH 95258",
+      "art": "window.case.profile",
+      "historicalLabel": "documented",
+      "dateText": "Early 1980s (drawing)",
+      "dateKind": "Creation date given for this archival drawing. It depicts the configuration of about 1963.",
+      "summary": "The Navy’s museum drawing NH 95258 gives an outboard view of Trieste’s configuration about 1963. The catalogue dates the drawing itself to the early 1980s.",
+      "sources": [
+        "HIS-WINDOW-NH95258"
+      ],
+      "grantsCard": "card.window.profile",
+      "altText": "Original schematic. A document outline with a generic vessel profile and separate drawing and depicted-date tabs.",
+      "specimen": {
+        "key": "nhhc:nh-95258",
+        "institution": "Naval History and Heritage Command",
+        "accession": "NH 95258",
+        "source": "HIS-WINDOW-NH95258",
+        "objective": "window.compare"
+      }
+    },
+    {
+      "id": "OBJ-WINDOW-A19700102000",
+      "name": "Apollo 11 Command Module Columbia · A19700102000",
+      "art": "window.case.columbia",
+      "historicalLabel": "documented",
+      "dateText": "16–24 July 1969",
+      "dateKind": "Start and end of the Apollo 11 mission. Its separate lunar module landed on 20 July.",
+      "summary": "The museum calls this returning part Command Module 107, Columbia. Neil Armstrong, Buzz Aldrin and Michael Collins travelled to lunar orbit. Eagle carried Armstrong and Aldrin to the surface while Columbia remained in orbit with Collins.",
+      "sources": [
+        "HIS-WINDOW-COLUMBIA",
+        "HIS-WINDOW-NASA"
+      ],
+      "grantsCard": "card.window.columbia",
+      "altText": "Original schematic. Grey conical command module with two small viewports and a dark lower band. The schematic is an exterior view.",
+      "specimen": {
+        "key": "nasm:a19700102000",
+        "institution": "Smithsonian National Air and Space Museum",
+        "accession": "A19700102000",
+        "source": "HIS-WINDOW-COLUMBIA",
+        "objective": "window.compare"
+      }
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.window.telescope",
+      "title": "Galileo’s telescope · 2427",
+      "text": "Museo Galileo describes this 1,273 mm telescope by Galileo Galilei as wood and paper held with copper wire. The catalogue reports 14× magnification and a 15-arcminute field of view.",
+      "historicalLabel": "documented",
+      "claimKind": "observation",
+      "sources": [
+        "HIS-WINDOW-2427"
+      ],
+      "limits": "A lens description gives the instrument’s field and magnification. It does not identify which surviving instrument Galileo used for a particular observation."
+    },
+    {
+      "id": "card.window.other",
+      "title": "Galileo’s telescope with a later eyepiece · 2428",
+      "text": "The 927 mm leather-covered instrument is another Museo Galileo telescope. The museum reports 21× magnification and a 15-arcminute field with the later eyepiece described in the entry.",
+      "historicalLabel": "documented",
+      "claimKind": "observation",
+      "sources": [
+        "HIS-WINDOW-2428"
+      ],
+      "limits": "The optical figures describe the instrument with its replacement eyepiece. The entry does not recover the measured performance of its missing original eyepiece."
+    },
+    {
+      "id": "card.window.microscope",
+      "title": "Antonie van Leeuwenhoek’s Utrecht microscope · UM-1",
+      "text": "Utrecht’s brass microscope is about 2.5 × 4.6 cm. The museum and the 2021 study identify a single lens and 266× magnification. The study names this specific microscope UM-1.",
+      "historicalLabel": "documented",
+      "claimKind": "observation",
+      "sources": [
+        "HIS-WINDOW-UM1",
+        "HIS-WINDOW-UMU"
+      ],
+      "limits": "The preserved microscope establishes its optical form. Its date is approximate and the two records do not identify the object used for every observation by Van Leeuwenhoek."
+    },
+    {
+      "id": "card.window.trieste",
+      "title": "Trieste · the Project Nekton vessel",
+      "text": "The U.S. Navy records Jacques Piccard and Don Walsh reaching Challenger Deep in Trieste on 23 January 1960. It records the vessel’s later transfer to Washington Navy Yard for the National Museum of the U.S. Navy.",
+      "historicalLabel": "documented",
+      "claimKind": "observation",
+      "sources": [
+        "HIS-WINDOW-TRIESTE"
+      ],
+      "limits": "The dated dive records where the vessel reached. It does not give a complete view of the bottom or confirm the identity of every shape seen there."
+    },
+    {
+      "id": "card.window.profile",
+      "title": "Later museum profile of Trieste · NH 95258",
+      "text": "The Navy’s museum drawing NH 95258 gives an outboard view of Trieste’s configuration about 1963. The catalogue dates the drawing itself to the early 1980s.",
+      "historicalLabel": "documented",
+      "claimKind": "observation",
+      "sources": [
+        "HIS-WINDOW-NH95258"
+      ],
+      "limits": "The exterior profile is a later record. It cannot supply a viewport picture taken during the 1960 dive."
+    },
+    {
+      "id": "card.window.columbia",
+      "title": "Apollo 11 Command Module Columbia · A19700102000",
+      "text": "The museum calls this returning part Command Module 107, Columbia. Neil Armstrong, Buzz Aldrin and Michael Collins travelled to lunar orbit. Eagle carried Armstrong and Aldrin to the surface while Columbia remained in orbit with Collins.",
+      "historicalLabel": "documented",
+      "claimKind": "observation",
+      "sources": [
+        "HIS-WINDOW-COLUMBIA",
+        "HIS-WINDOW-NASA"
+      ],
+      "limits": "The returning command module records its own role. It is a different object from Eagle and from photographs made on the lunar surface."
+    }
+  ]
+}

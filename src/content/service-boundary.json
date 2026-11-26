@@ -1,0 +1,165 @@
+{
+  "items": [
+    {
+      "id": "item.boundary.plan",
+      "name": "Signed first-cart plan",
+      "description": "Nine dated request slips on Lin’s route map, with one chosen dividing line. The first cart has four places. Bring the original to Sena’s tray in the Water Commons council yard.",
+      "historicalLabel": "fictional-world",
+      "art": "preserved.folder"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH12-R06",
+      "world": "WORLD-13",
+      "title": "The Line on the Night Map",
+      "available": {"all":[{"objective":"civic.finish"},{"flag":"boundary.civic.started","eq":true}]},
+      "knowledgeQuestion": "What can a dividing line change when the records on either side stay in place?",
+      "objectives": [
+        {
+          "id": "boundary.civic.compare",
+          "title": "Move the line across the same nine requests.",
+          "essential": false,
+          "done": {"all":[{"flag":"boundary.civic.seen.ditch","eq":true},{"flag":"boundary.civic.seen.bridge","eq":true}]},
+          "weave": {
+            "concepts":["evidence","objectivity","interpretation","explanation","certainty"],
+            "framework":["scope","methods-and-tools"],
+            "thinking":{"dok":2,"bloom":"analyse","fink":"application","solo":"relational"},
+            "aoks":["MAT","HUM"],"subjects":["geography","math-ai"],"atl":["research","thinking"],"minutes":3
+          }
+        },
+        {
+          "id": "boundary.civic.post",
+          "title": "Sign one first-cart instruction and keep every request.",
+          "essential": false,
+          "visible": {"objective":"boundary.civic.compare"},
+          "done": {"flagSet":"boundary.civic.choice"},
+          "onComplete": [{"giveItem":"item.boundary.plan"}],
+          "weave": {
+            "concepts":["values","perspective","power","responsibility","justification"],
+            "framework":["perspectives","ethics","scope"],
+            "thinking":{"dok":3,"bloom":"evaluate","fink":"human","solo":"relational"},
+            "aoks":["MAT","HUM"],"subjects":["geography","global-politics"],"atl":["thinking","social","communication"],"minutes":2
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH12-R06-WATER",
+      "world": "WORLD-12",
+      "title": "The Night Map’s First Cart",
+      "available": {"all":[{"objective":"boundary.civic.post"},{"item":"item.boundary.plan"}]},
+      "knowledgeQuestion": "Whose waiting requests does the chosen route serve?",
+      "objectives": [
+        {
+          "id": "boundary.water.deliver",
+          "title": "Open the first cart at the Water Commons and leave the other slips in reach.",
+          "essential": false,
+          "visible": {"item":"item.boundary.plan"},
+          "done": {"flag":"boundary.water.checked","eq":true},
+          "onComplete": [{"journal":"j.boundary.delivery"}],
+          "weave": {
+            "concepts":["evidence","truth","perspective","responsibility","justification"],
+            "framework":["methods-and-tools","scope","ethics"],
+            "thinking":{"dok":2,"bloom":"apply","fink":"application","solo":"relational"},
+            "aoks":["HUM"],"subjects":["geography","global-politics"],"atl":["social","self-management"],"minutes":4
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "boundary.civic.start",
+      "speaker": "civic-clerk",
+      "historicalLabel": "fictional-world",
+      "text": "Sena sent nine requests from one evening shift. Every pin is exactly where someone waited. The crew kept the minutes beside each name. The old ditch is the line on the service docket. They also use the footbridge as a starting mark now that its boards are mended. Take a look before we tell the next cart which bank has waited longer.",
+      "options": [
+        {"text":"Peg the slips and leave both boundary markers free.","effects":[{"setFlag":"boundary.civic.started","value":true}]},
+        {"text":"Leave Lin’s slips at the table."}
+      ]
+    },
+    {
+      "id": "boundary.civic.post",
+      "speaker": "civic-clerk",
+      "historicalLabel": "fictional-world",
+      "text": "The longer average moved to the other bank when you moved the line. Middle shed still waited eleven minutes. The first cart has four places. It takes the longest waits in the group we send it to. The ditch line follows the docket people have used before. The footbridge line follows where the crew can now turn together. Keep both counts here, whichever line goes into the first-cart order.",
+      "options": [
+        {
+          "text":"Keep the dated ditch line on the docket. Send the first cart to the lower-bank crew.",
+          "if":{"all":[{"objective":"boundary.civic.compare"},{"not":{"flagSet":"boundary.civic.choice"}}]},
+          "effects":[{"setFlag":"boundary.civic.choice","value":"ditch"}],
+          "next":"boundary.civic.lower"
+        },
+        {
+          "text":"Use the footbridge as the line the cart follows. Send the first cart to the upper-bank crew.",
+          "if":{"all":[{"objective":"boundary.civic.compare"},{"not":{"flagSet":"boundary.civic.choice"}}]},
+          "effects":[{"setFlag":"boundary.civic.choice","value":"bridge"}],
+          "next":"boundary.civic.upper"
+        },
+        {"text":"Leave both plans at the map for now."}
+      ]
+    },
+    {
+      "id":"boundary.civic.lower",
+      "speaker":"civic-clerk",
+      "historicalLabel":"fictional-world",
+      "text":"The signed lower-bank route goes to Sena. The three middle stops and the Mooring rail go on the first load. The other requests stay on their own slips with their recorded times."
+    },
+    {
+      "id":"boundary.civic.upper",
+      "speaker":"civic-clerk",
+      "historicalLabel":"fictional-world",
+      "text":"The signed upper-bank route goes to Sena. The three middle stops and the Upper stair go on the first load. The other requests stay on their own slips with their recorded times."
+    },
+    {
+      "id":"boundary.water.receive",
+      "speaker":"water-scribe",
+      "historicalLabel":"fictional-world",
+      "text":"Here’s every slip we sent, with its time. I’ll keep the other five in the tray to start the next run. Take the first four to the bank the signed line puts first. The upper cart waits at the Old Weir. The lower one waits east of the channel marker.",
+      "options":[
+        {"text":"Keep the remaining slips in Sena’s tray and take the first load.","if":{"all":[{"item":"item.boundary.plan"},{"not":{"flagSet":"boundary.water.received"}}]},"effects":[{"setFlag":"boundary.water.received","value":true}]},
+        {"text":"Leave the signed route folded for now."}
+      ]
+    },
+    {
+      "id":"boundary.water.cart.upper",
+      "speaker":"narrator",
+      "historicalLabel":"fictional-world",
+      "text":"The upper crew takes the three middle stops by the footbridge. The last place goes to the Upper stair runner. The keeper leaves a receipt here for Sena to check.",
+      "options":[
+        {"text":"Hand the four slips over at the upper cart.","if":{"all":[{"flag":"boundary.civic.choice","eq":"bridge"},{"flag":"boundary.water.received","eq":true},{"not":{"flagSet":"boundary.water.checked"}}]},"effects":[{"setFlag":"boundary.water.checked","value":true}]}
+      ]
+    },
+    {
+      "id":"boundary.water.cart.lower",
+      "speaker":"narrator",
+      "historicalLabel":"fictional-world",
+      "text":"The lower crew takes the three middle stops inside the old ditch line. The last place goes to the Mooring rail runner. The keeper leaves a receipt here for Sena to check.",
+      "options":[
+        {"text":"Hand the four slips over at the lower cart.","if":{"all":[{"flag":"boundary.civic.choice","eq":"ditch"},{"flag":"boundary.water.received","eq":true},{"not":{"flagSet":"boundary.water.checked"}}]},"effects":[{"setFlag":"boundary.water.checked","value":true}]}
+      ]
+    }
+  ],
+  "hints": [
+    {"id":"h.boundary.compare.1","objective":"boundary.civic.compare","depth":1,"text":"The pins stay still while the line moves."},
+    {"id":"h.boundary.compare.2","objective":"boundary.civic.compare","depth":2,"text":"Look for Lin’s peg map near the south-east edge of North Steps."},
+    {"id":"h.boundary.compare.3","objective":"boundary.civic.compare","depth":3,"text":"The old ditch and footbridge put the three middle requests on different sides."},
+    {"id":"h.boundary.compare.4","objective":"boundary.civic.compare","depth":4,"text":"Use both lines on the map. Check each bank’s total and average wait against the same list of nine requests."},
+    {"id":"h.boundary.post.1","objective":"boundary.civic.post","depth":1,"text":"Both boundaries have a reason someone might keep them."},
+    {"id":"h.boundary.post.2","objective":"boundary.civic.post","depth":2,"text":"Go back to Lin’s signed order stand beside the peg map after checking both lines."},
+    {"id":"h.boundary.post.3","objective":"boundary.civic.post","depth":3,"text":"The old ditch follows the existing docket. The footbridge follows the repaired cart turn."},
+    {"id":"h.boundary.post.4","objective":"boundary.civic.post","depth":4,"text":"Sign either first-round route. The lower-bank and upper-bank routes keep different fourth stops, and both leave five slips in reach."},
+    {"id":"h.boundary.deliver.1","objective":"boundary.water.deliver","depth":1,"text":"Sena needs the original before either cart takes a load."},
+    {"id":"h.boundary.deliver.2","objective":"boundary.water.deliver","depth":2,"text":"Return through the Nexus and check the receiving tray at the Water Commons council yard."},
+    {"id":"h.boundary.deliver.3","objective":"boundary.water.deliver","depth":3,"text":"The upper cart is at the Old Weir. The lower cart is past the channel marker on its east side."},
+    {"id":"h.boundary.deliver.4","objective":"boundary.water.deliver","depth":4,"text":"Hand over the first four slips at the cart named on the signed order. The five next-round slips stay at Sena’s tray."}
+  ],
+  "journal": [
+    {
+      "id":"j.boundary.delivery",
+      "claimKind":"observation",
+      "text":"I moved the line over the same nine request slips. The number of requests in each group and its average wait changed. The cart took four slips, and the other five kept their original places and times for another run."
+    }
+  ]
+}

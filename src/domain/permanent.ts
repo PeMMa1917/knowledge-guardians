@@ -16,15 +16,70 @@ export function newPermanent(): PermanentRecord {
   };
 }
 
+export function addQuestionWay(record: PermanentRecord, id: string, way: string): PermanentRecord {
+  const ways = record.stones?.[id] ?? [];
+  if (ways.includes(way)) return record;
+  return { ...record, stones: { ...record.stones, [id]: [...ways, way] } };
+}
+
+/** Incidental question links can be added after a keeper has finished the action. */
+export function restoreQuestionWays(record: PermanentRecord, pack: ContentPack, completed: string[]): PermanentRecord {
+  const done = new Set(completed);
+  let updated = record;
+  for (const { world, objectives } of pack.missions) {
+    for (const objective of objectives) {
+      if (!done.has(objective.id)) continue;
+      for (const way of objective.questionWays ?? []) updated = addQuestionWay(updated, way.id, `${world}|${way.action}`);
+    }
+  }
+  return updated;
+}
+
+const WATER_DELIVERY_USES: Readonly<Record<string, string>> = {
+  'SK-MICRO-0233': 'game-22|parcel.o.appeal|HUM,POL',
+  'SK-MICRO-0237': 'game-284|parcel.o.finish|HUM,POL',
+  'SK-MICRO-0630': 'game-263|boundary.water.deliver|HUM',
+  'SK-MICRO-0840': 'game-231|parcel.o.finish|HUM,POL',
+};
+
+/** These uses were filed under the sending mission. Preserve a single use under the receiving world. */
+function restoreWaterAttribution(record: PermanentRecord): PermanentRecord {
+  let skills = record.skills;
+  for (const [id, evidence] of Object.entries(WATER_DELIVERY_USES)) {
+    const old = `WORLD-13|${evidence}`;
+    const current = `WORLD-12|${evidence}`;
+    const uses = skills?.[id];
+    if (!Array.isArray(uses) || !uses.includes(old)) continue;
+    let recorded = false;
+    const corrected = uses.flatMap((use) => {
+      if (use !== old && use !== current) return [use];
+      if (recorded) return [];
+      recorded = true;
+      return [current];
+    });
+    skills = { ...skills, [id]: corrected };
+  }
+  return skills === record.skills ? record : { ...record, skills };
+}
+
+export class NewerPermanentRecord extends Error {}
+
 /** Permanent record migrations. v1 had only credit and awards. */
 export function migratePermanent(raw: any): PermanentRecord {
-  if (!raw || typeof raw !== 'object' || typeof raw.schema !== 'number') return newPermanent();
-  if (raw.schema > PERMANENT_SCHEMA) throw new Error('Permanent record was made by a newer version.');
+  if (!raw || typeof raw !== 'object' || !Number.isSafeInteger(raw.schema) || raw.schema < 1) {
+    throw new Error('Permanent record has an unknown format.');
+  }
+  if (raw.schema > PERMANENT_SCHEMA) throw new NewerPermanentRecord('Permanent record was made by a newer version.');
   let p = raw;
   if (p.schema === 1) p = { ...newPermanent(), credit: p.credit ?? {}, awards: p.awards ?? {} };
   if (p.schema === 2) p = { ...p, schema: 3, stones: {} };
   if (p.schema === 3) p = { ...p, schema: 4, skills: {} };
-  return p as PermanentRecord;
+  const dictionary = (value: unknown) => !!value && typeof value === 'object' && !Array.isArray(value);
+  if (![p.credit, p.awards, p.moments, p.signals, p.stones, p.skills, p.met?.concepts, p.met?.atl, p.met?.subjects, p.met?.aoks]
+    .every(dictionary) || ![p.dismissed, p.offered, p.portfolio].every(Array.isArray)) {
+    throw new Error('Permanent record is missing required data.');
+  }
+  return restoreWaterAttribution(p as PermanentRecord);
 }
 
 /** Grant a criterion. Idempotent: the total never passes the criterion maximum. */

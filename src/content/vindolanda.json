@@ -1,0 +1,262 @@
+{
+  "sources": [
+    {
+      "id": "HIS-VIND-01",
+      "title": "British Museum collection entry for Vindolanda tablet 291",
+      "url": "https://www.britishmuseum.org/collection/object/H_1986-1001-64",
+      "locator": "1986,1001.64, Description, Production date, Inscriptions and Curator’s comments",
+      "supports": "The wooden tablet found at Vindolanda has an ink invitation from Claudia Severa to Sulpicia Lepidina, written in two hands. The museum dates it to 97–103 CE and identifies the closing hand as Severa’s.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-VIND-02",
+      "title": "Roman Inscriptions of Britain, Tabulae Vindolandenses 291",
+      "url": "https://romaninscriptionsofbritain.org/inscriptions/TabVindol291",
+      "locator": "Date, Edition and Diplomatic views, back address, and Commentary and notes on lines 7–8",
+      "supports": "The editors date the tablet broadly to 97–105 CE and distinguish visible marks from restored letters. A possible mark extending below the line leads them to prefer a different restoration in lines 7–8. They attribute the added personal greeting to Severa and identify the recipient and sender by the back address.",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.vindolanda.tablet",
+      "title": "Two hands on Vindolanda tablet 291",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": ["HIS-VIND-01"],
+      "text": "The British Museum records a wooden invitation in ink from Claudia Severa to Sulpicia Lepidina. The closing lines use a different hand from most of the letter. The catalogue attributes the closing hand to Severa.",
+      "limits": "The catalogue gives a production range of 97–103 CE. It leaves the occasion’s exact year and the outcome of the invitation open."
+    },
+    {
+      "id": "card.vindolanda.edition",
+      "title": "A gap in the tablet’s lines 7–8",
+      "claimKind": "interpretation",
+      "historicalLabel": "scholarly-interpretation",
+      "sources": ["HIS-VIND-02"],
+      "text": "An earlier edition supplied a form of ‘you will come’. The later edition prefers a form of ‘you will be present’ if the short trace below the line belongs to a letter. The invitation is clear in both readings.",
+      "limits": "The verb is partly restored in both editions. Letters shown in the editorial brackets are supplied by the editors. The mark might be stray and its interpretation does not settle who came to the celebration."
+    }
+  ],
+  "items": [
+    {
+      "id": "item.vindolanda.folio",
+      "name": "The Vindolanda comparison folio",
+      "description": "An archive copy with a trace sheet, two editorial readings and a folded address. Bea can use it at the Metalworks Trade Hall.",
+      "historicalLabel": "fictional-world",
+      "art": "preserved.folder"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-R22",
+      "title": "Across the Missing Stroke",
+      "world": "WORLD-01",
+      "available": { "card": "card.vindolanda.tablet" },
+      "knowledgeQuestion": "When is an editor entitled to put letters in a gap?",
+      "objectives": [
+        {
+          "id": "vindolanda.compare",
+          "title": "Check the surviving line and try both reading slips under it.",
+          "essential": false,
+          "done": { "all": [{ "flagSet": "vindolanda.trace" }, { "flagSet": "vindolanda.earlier" }, { "flagSet": "vindolanda.later" }] },
+          "weave": {
+            "concepts": ["evidence", "interpretation", "justification", "explanation", "certainty"],
+            "framework": ["methods-and-tools", "scope"],
+            "thinking": { "dok": 2, "bloom": "analyse", "fink": "integration", "solo": "relational" },
+            "atl": ["thinking", "research"],
+            "aoks": ["HIS", "LAN"],
+            "subjects": ["classics", "history"],
+            "minutes": 3
+          }
+        },
+        {
+          "id": "vindolanda.nexus.done",
+          "title": "Arrange the tablet’s reading table and take a copy to the Trade Hall when you go.",
+          "essential": false,
+          "visible": { "objective": "vindolanda.compare" },
+          "done": { "flagSet": "vindolanda.nexus.layout" },
+          "weave": {
+            "concepts": ["truth", "perspective", "values", "responsibility"],
+            "framework": ["scope", "perspectives", "ethics"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "human", "solo": "relational" },
+            "atl": ["communication", "social"],
+            "aoks": ["HIS", "LAN"],
+            "subjects": ["classics", "lang-langlit"],
+            "minutes": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH6-R08",
+      "title": "The Name on the Outside",
+      "world": "WORLD-07",
+      "available": { "all": [{ "item": "item.vindolanda.folio" }, { "objective": "metal.arrival" }] },
+      "knowledgeQuestion": "What different authority can a sender, writer and recipient have?",
+      "objectives": [
+        {
+          "id": "vindolanda.hall.compare",
+          "title": "Unfold the Latin address at the trade desk and find whose mark was needed at the yard.",
+          "essential": false,
+          "done": { "all": [{ "flagSet": "vindolanda.hall.fold" }, { "flagSet": "vindolanda.yard.repair" }] },
+          "weave": {
+            "concepts": ["evidence", "explanation", "interpretation", "culture", "power"],
+            "framework": ["scope", "perspectives", "methods-and-tools"],
+            "thinking": { "dok": 2, "bloom": "apply", "fink": "integration", "solo": "relational" },
+            "atl": ["thinking", "research"],
+            "aoks": ["HIS", "LAN", "HUM"],
+            "subjects": ["classics", "business"],
+            "minutes": 4
+          }
+        },
+        {
+          "id": "vindolanda.hall.done",
+          "title": "Send Bea’s next repair slip where people will use it and check the reply.",
+          "essential": false,
+          "visible": { "objective": "vindolanda.hall.compare" },
+          "done": { "flagSet": "vindolanda.hall.readback" },
+          "weave": {
+            "concepts": ["responsibility", "truth", "justification", "values", "certainty"],
+            "framework": ["scope", "ethics", "perspectives"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "caring", "solo": "relational" },
+            "atl": ["communication", "social", "self-management"],
+            "aoks": ["HIS", "LAN", "HUM"],
+            "subjects": ["classics", "business"],
+            "minutes": 3
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "vindolanda.catalogue",
+      "speaker": "narrator",
+      "historicalLabel": "documented",
+      "text": "British Museum 1986,1001.64. Claudia Severa invites Sulpicia Lepidina to a birthday celebration in a Latin letter on wood. The catalogue dates the tablet to 97–103 CE. The Roman Inscriptions of Britain edition uses 97–105 CE. A separate short close in the letter is attributed to Severa. At the rail you can look at a modern drawing of the damaged line.",
+      "options": [
+        { "text": "Open the catalogue card beside the copy.", "effects": [{ "addCard": "card.vindolanda.tablet" }] },
+        { "text": "Leave both where they are." }
+      ]
+    },
+    {
+      "id": "vindolanda.trace",
+      "speaker": "narrator",
+      "historicalLabel": "scholarly-interpretation",
+      "text": "The copy has a break in the invitation just before the greetings. One little mark extends below the line. We can trace what the editors point to. We cannot tell from this alone whether the mark is a letter.",
+      "options": [
+        {
+          "text": "Put the trace on the reading rail.",
+          "if": { "card": "card.vindolanda.tablet" },
+          "effects": [{ "setFlag": "vindolanda.trace", "value": true }, { "addCard": "card.vindolanda.edition" }]
+        },
+        { "text": "Leave the diagram face-up." }
+      ]
+    },
+    {
+      "id": "vindolanda.earlier",
+      "speaker": "narrator",
+      "historicalLabel": "scholarly-interpretation",
+      "text": "The earlier reading used a form of venies, “you will come”. It leaves the little lower mark aside. The editors explain that this hand does not take letters in that proposed form below the line.",
+      "options": [
+        {
+          "text": "Place the earlier slip under the break.",
+          "if": { "flagSet": "vindolanda.trace" },
+          "effects": [{ "setFlag": "vindolanda.earlier", "value": true }]
+        },
+        { "text": "Leave it on the tray for now." }
+      ]
+    },
+    {
+      "id": "vindolanda.later",
+      "speaker": "narrator",
+      "historicalLabel": "scholarly-interpretation",
+      "text": "The later editors prefer a form of aderis, “you will be present”. That would fit if the low mark is part of the first letter. You can see the short visible trace. The rest of the proposed letters are bracketed.",
+      "options": [
+        {
+          "text": "Place the later slip under the break.",
+          "if": { "flagSet": "vindolanda.trace" },
+          "effects": [{ "setFlag": "vindolanda.later", "value": true }]
+        },
+        { "text": "Leave it on the tray for now." }
+      ]
+    },
+    {
+      "id": "vindolanda.nexus.place",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "A visitor came to see an invitation. A reader at the long rail came to see how someone reads old writing. Both readings belong with the trace. Put the likely sense up front or put both slips directly beneath the mark.",
+      "options": [
+        {
+          "text": "Set an invitation caption in front and leave the two readings on the rail.",
+          "if": { "all": [{ "objective": "vindolanda.compare" }, { "not": { "flagSet": "vindolanda.nexus.layout" } }] },
+          "effects": [{ "setFlag": "vindolanda.nexus.layout", "value": "caption" }, { "giveItem": "item.vindolanda.folio" }]
+        },
+        {
+          "text": "Set both readings beneath the surviving mark with a short caption below.",
+          "if": { "all": [{ "objective": "vindolanda.compare" }, { "not": { "flagSet": "vindolanda.nexus.layout" } }] },
+          "effects": [{ "setFlag": "vindolanda.nexus.layout", "value": "trace" }, { "giveItem": "item.vindolanda.folio" }]
+        },
+        { "text": "Keep the two slips on the rail for now." }
+      ]
+    },
+    {
+      "id": "vindolanda.hall.fold",
+      "speaker": "metal-steward",
+      "historicalLabel": "fictional-world",
+      "text": "The foreman names the carrier in his receipt. Now the carrier thinks it gives him a place where he can sign off a repair. You brought a letter with an address on the back. Show me where the language distinguishes the people.",
+      "options": [
+        {
+          "text": "Fold the copy to show the address on the outside.",
+          "next": "vindolanda.hall.address",
+          "if": { "item": "item.vindolanda.folio" },
+          "effects": [{ "setFlag": "vindolanda.hall.fold", "value": true }]
+        },
+        { "text": "Leave the folded letter ready." }
+      ]
+    },
+    {
+      "id": "vindolanda.hall.address",
+      "speaker": "narrator",
+      "historicalLabel": "documented",
+      "text": "In the outer address, the endings in Sulpiciae Lepidinae mark the recipient. The words a Severa name who the letter is from. Inside, the short close is in the hand attributed to Severa, while the scribe takes the longer message. Those lines help you separate three roles."
+    },
+    {
+      "id": "vindolanda.hall.place",
+      "speaker": "metal-steward",
+      "historicalLabel": "fictional-world",
+      "text": "The addressed copy can travel to the hall. The yard will still witness the fit. We can keep both roles visible on a single sleeve, or leave the approval line with the yard and send the carrier with a separate greeting. Which will work for the next delivery?",
+      "options": [
+        {
+          "text": "Clip the addressed sleeve at the hall with a separate witness line.",
+          "if": { "all": [{ "objective": "vindolanda.hall.compare" }, { "not": { "flagSet": "vindolanda.hall.layout" } }] },
+          "effects": [{ "setFlag": "vindolanda.hall.layout", "value": "sleeve" }]
+        },
+        {
+          "text": "Hang the approval at the yard and send the recipient’s note separately.",
+          "if": { "all": [{ "objective": "vindolanda.hall.compare" }, { "not": { "flagSet": "vindolanda.hall.layout" } }] },
+          "effects": [{ "setFlag": "vindolanda.hall.layout", "value": "separate" }]
+        },
+        { "text": "Keep the witnesses’ lines open for now." }
+      ]
+    }
+  ],
+  "hints": [
+    { "id": "h.vindolanda.compare.1", "objective": "vindolanda.compare", "depth": 1, "text": "The surviving mark and the proposed words each have their own slip." },
+    { "id": "h.vindolanda.compare.2", "objective": "vindolanda.compare", "depth": 2, "text": "Open the letter catalogue and put the traced mark on the rail nearby." },
+    { "id": "h.vindolanda.compare.3", "objective": "vindolanda.compare", "depth": 3, "text": "Try the earlier and later slips beneath the break at the Nexus rail." },
+    { "id": "h.vindolanda.compare.4", "objective": "vindolanda.compare", "depth": 4, "text": "Use both slips. The later edition uses a low mark that the earlier one set aside. Neither covers the invitation’s actual outcome." },
+    { "id": "h.vindolanda.nexus.1", "objective": "vindolanda.nexus.done", "depth": 1, "text": "Two readers need different things from one table." },
+    { "id": "h.vindolanda.nexus.2", "objective": "vindolanda.nexus.done", "depth": 2, "text": "The table has room for the supported invitation and the unresolved letters." },
+    { "id": "h.vindolanda.nexus.3", "objective": "vindolanda.nexus.done", "depth": 3, "text": "Use the open display clip to choose which the next reader sees first." },
+    { "id": "h.vindolanda.nexus.4", "objective": "vindolanda.nexus.done", "depth": 4, "text": "Put the invitation first or put the traces first. Both leave a comparison copy you can carry to Bea." },
+    { "id": "h.vindolanda.hall.compare.1", "objective": "vindolanda.hall.compare", "depth": 1, "text": "An address and a repair witness do different work." },
+    { "id": "h.vindolanda.hall.compare.2", "objective": "vindolanda.hall.compare", "depth": 2, "text": "Show the folded folio to Bea at the Trade Hall worktable." },
+    { "id": "h.vindolanda.hall.compare.3", "objective": "vindolanda.hall.compare", "depth": 3, "text": "Look for the separate fit-witness mark in the Sample Yard as well." },
+    { "id": "h.vindolanda.hall.compare.4", "objective": "vindolanda.hall.compare", "depth": 4, "text": "Unfold the Latin outside address at the Trade Hall. Read the next-delivery fit rule at the Sample Yard." },
+    { "id": "h.vindolanda.hall.done.1", "objective": "vindolanda.hall.done", "depth": 1, "text": "Which part of the record will each reader need next?" },
+    { "id": "h.vindolanda.hall.done.2", "objective": "vindolanda.hall.done", "depth": 2, "text": "Give Bea a place for the address and a traceable check of the fit." },
+    { "id": "h.vindolanda.hall.done.3", "objective": "vindolanda.hall.done", "depth": 3, "text": "At the dispatch clips, choose one addressed sleeve or a separate yard record and recipient note." },
+    { "id": "h.vindolanda.hall.done.4", "objective": "vindolanda.hall.done", "depth": 4, "text": "Read the outcome where the fit-witness line ended up. It will be at the hall for the sleeve or at the yard for the separate notes." }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "bl:add-ms-21593-c": [
+    {"name":"Tupaia","role":"Navigator from Ra‘iātea and contributor to the chart project","detail":"Eckstein and Schwarz place Tupaia at the centre of collaborative drafting with members of the Endeavour crew in 1769–70. They propose reading routes from different points of departure.","source":"HIS-DEPART-03"},
+    {"name":"James Cook","role":"Endeavour captain named in the shelfmark’s catalogue entry","detail":"The British Library files this sheet under his name with the date 1769. This establishes the catalogue’s attribution. Te Ara identifies the same shelfmark with Tupaia.","source":"HIS-DEPART-01"}
+  ],
+  "nka:holm-collection-fig390-a": [
+    {"name":"Kunit of Umivik","role":"Tunumiit map maker credited with the carved coast piece","detail":"Holm reports that Kunit carved the chart himself and explained its features, including how to recognize a carry between two fjords.","source":"HIS-KUNIT-HOLM"},
+    {"name":"Gustav Holm","role":"Expedition leader who received and described the carvings","detail":"Holm published the exchange and distinguished the shape of the mainland coast from the separate island piece. His paper is an expedition account of Kunit’s work.","source":"HIS-KUNIT-HOLM"},
+    {"name":"Hans Harmsen","role":"Greenland National Museum curator and archaeologist","detail":"In a modern account of the pieces, Harmsen emphasizes how their shapes helped one person tell another about a route and its coast.","source":"HIS-KUNIT-HARMSEN"}
+  ],
+  "usnm:e432083-0": [
+    {"name":"Marshallese chart maker, name unrecorded","role":"Maker whose work the Smithsonian classifies as a preparation aid","detail":"The exact object record attributes the chart to Marshallese knowledge. The collection window of 1940–1959 describes when it was collected and leaves its making date open.","source":"HIS-PASSAGE-marshallese-chart"},
+    {"name":"R. Naomi Cannon","role":"Donor and witness to a repair","detail":"The Smithsonian records Cannon’s account of using string to hold broken sticks together. Her account concerns the condition of this accession.","source":"HIS-PASSAGE-marshallese-chart"}
+  ],
+  "aph:founding-docs-item-104-i": [
+    {"name":"Dhuwa artists of Yirrkala","role":"Artists of this petition’s painted surround in the parliamentary caption","detail":"The Parliamentary Education Office attributes the 14 August entry to Dhuwa artists and describes the designs as expressions of Yolŋu law.","source":"HIS-APH-YIRRKALA-CAPTION"},
+    {"name":"Jock Nelson","role":"Member who presented the Dhuwa petition","detail":"The National Archives identifies Nelson as the presenter in the House of Representatives on 14 August 1963.","source":"HIS-PASSAGE-yirrkala-dhuwa"}
+  ],
+  "aph:founding-docs-item-104-ii": [
+    {"name":"Yirritja artists of Yirrkala","role":"Artists of this petition’s painted surround in the parliamentary caption","detail":"The Parliamentary Education Office names Yirritja artists separately for the petition dated 28 August 1963.","source":"HIS-APH-YIRRKALA-CAPTION"},
+    {"name":"Arthur Calwell","role":"Member who presented the Yirritja petition","detail":"The National Archives identifies Calwell as the presenter in the House of Representatives on 28 August 1963. The typed display paper and the signed original have a separate copy history.","source":"HIS-PASSAGE-yirrkala-yirritja"}
+  ]
+}

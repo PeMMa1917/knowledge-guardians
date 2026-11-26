@@ -1,0 +1,53 @@
+[
+  {
+    "slug": "ishango",
+    "title": "The Ishango bone recovered by Lake Edward",
+    "key": "rbins:ishango-bone-1950",
+    "accession": "Ishango bone from the 1950 excavation",
+    "institution": "Royal Belgian Institute of Natural Sciences",
+    "url": "https://www.naturalsciences.be/en/museum/exhibitions-activities/exhibitions/250-years-of-natural-sciences/the-ishango-bone",
+    "date": "Nearly 20,000 years old, recovered in 1950",
+    "dateKind": "The institute’s estimate for the bone and the separately documented year of excavation",
+    "art": "number-leaf.ishango",
+    "observation": "Recovered on the Congolese bank of Lake Edward in 1950, the roughly 10 cm bone holds a quartz fragment at one end. The museum identifies groups of three and six, four and eight, and five and ten marks on one side.",
+    "limit": "Those matching counts leave the maker's purpose open. It is possible to report the numerical relationship while leaving its historical interpretation unfinished.",
+    "alt": "Original pixel drawing of the thin Ishango bone, with groups of cut marks and a small angular quartz tip.",
+    "methodReply": "Lella can hand runners a reliable way to reproduce the three doubles with beads. She clips a separate line to the tally so nobody has to guess what the bone's maker counted.",
+    "contextReply": "Omrin leaves a blank headed ‘possible uses’ below the bone's excavation record. People can still see the doubled groups while leaving the maker’s purpose open.",
+    "market": "The stall worked out twice the bundle count with the running strip. Its clerk writes ‘bundles’ beside the sum so a visitor can tell it apart from sales."
+  },
+  {
+    "slug": "plimpton",
+    "title": "Plimpton 322, the Old Babylonian clay tablet at Columbia",
+    "key": "columbia:plimpton-cuneiform-322",
+    "accession": "Plimpton Cuneiform 322",
+    "institution": "Columbia University Rare Book and Manuscript Library",
+    "url": "https://online-exhibitions.library.columbia.edu/exhibits/show/jewels/item/10987",
+    "date": "About 1820–1762 BCE",
+    "dateKind": "Date and Larsa attribution used by Columbia University Libraries",
+    "art": "number-leaf.plimpton",
+    "observation": "Columbia attributes this tablet to Larsa, now Tell Senkereh in Iraq. Its cuneiform rows encode numbers in base 60. The library presents the reading of the numbers as right-triangle relations and a scholar’s interpretation that a teacher used the tablet.",
+    "limit": "A numerical relation can hold for a row and leave the intended use of the broken tablet undecided.",
+    "alt": "Original pixel drawing of the rectangular clay tablet. One edge is broken and there are dark ruled bands of cuneiform marks.",
+    "methodReply": "Lella brings the checked triangle frames to her apprentice. He can use two example sizes before learning where each relation came from.",
+    "contextReply": "Omrin leaves sight of the broken edge on the reader’s copy. He gives the surviving relationships and the proposed teaching use separate lines.",
+    "market": "An apprentice copies the check for the two small triangular frames. The row on the display labels the fit as a property of the model and keeps the tablet’s possible use on its own slip."
+  },
+  {
+    "slug": "bakhshali",
+    "title": "Bakhshali manuscript, MS. Sansk. d. 14",
+    "key": "bodleian:ms-sansk-d-14",
+    "accession": "MS. Sansk. d. 14",
+    "institution": "Bodleian Libraries, University of Oxford",
+    "url": "https://www.glam.ox.ac.uk/article/carbon-dating-finds-bakhshali-manuscript-contains-oldest-recorded-origins-symbol-zero",
+    "date": "Birch bark from three leaves dated 224–383, 680–779 and 885–993 CE",
+    "dateKind": "Dates of tested birch bark. The writing date and assembly of the surviving manuscript are debated.",
+    "art": "number-leaf.bakhshali",
+    "observation": "The birch-bark leaves were found at Bakhshali, in present-day Pakistan, in 1881. The manuscript uses a dot where an empty place must remain in a number. Oxford’s report gives different age ranges for three bark samples.",
+    "limit": "The date of a tested leaf and the date of its writing or assembly answer different questions. Scholars have proposed different readings of the dating evidence.",
+    "alt": "Original pixel drawing of the manuscript’s thin, overlapping brown birch-bark leaves, with chipped edges and several dark lines of ink.",
+    "methodReply": "Lella uses the visible gap to check that her line of tallies gives the units a place. She keeps the demonstration apart from the old page’s dates.",
+    "contextReply": "Omrin can file the sample dates alongside a precise note about what was dated. He leaves a space for an account of when the lines were written.",
+    "market": "A shop runner can read the three columns left by the divider. The price slip gives the empty tens place a mark so the next stall can follow the same record."
+  }
+]

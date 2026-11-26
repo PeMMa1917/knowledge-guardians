@@ -1,0 +1,39 @@
+.two-calls {
+  display: grid;
+  gap: .75rem;
+}
+.two-calls h2, .two-calls h3, .two-calls p {
+  margin: 0;
+}
+.two-call-positions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: .55rem;
+}
+.two-call-positions li, .two-call-proof:not(:empty), .two-calls details {
+  display: grid;
+  gap: .35rem;
+  border: 1px solid #9d7f8b;
+  border-radius: .3rem;
+  background: #302237;
+  padding: .65rem;
+}
+.two-call-positions li > .fine {
+  color: #f1c795;
+}
+.two-call-proof:not(:empty) {
+  background: #2e2b43;
+}
+.two-call-reports {
+  margin: 0;
+  padding: 0 1.2rem;
+}
+.two-call-reports li + li {
+  margin-top: .25rem;
+}
+.two-calls details[hidden] {
+  display: none;
+}

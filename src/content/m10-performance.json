@@ -480,6 +480,87 @@
    ]
   },
   {
+   "id": "KG-CH9-R95",
+   "world": "WORLD-10",
+   "title": "The Call at the Side Bench",
+   "stake": "The first people through the door may hear a verdict about the keeper before they see the scene.",
+   "knowledgeQuestion": "Whose words reach the audience before an actor speaks?",
+   "available": {
+    "all": [
+     {
+      "objective": "stage.arrival"
+     },
+     {
+      "flag": "stage.vantage",
+      "eq": true
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "stage.call.audience",
+     "title": "Set a cue for the part of the move the post hides. Check what reaches the listeners.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flagSet": "stage.call.mode"
+       },
+       {
+        "flag": "stage.call.read",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "power",
+       "justification",
+       "values",
+       "responsibility",
+       "culture",
+       "perspective",
+       "interpretation"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "application",
+       "solo": "relational"
+      },
+      "atl": [
+       "communication",
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "lit-perf",
+       "lang-langlit",
+       "theatre"
+      ],
+      "minutes": 2
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.stage.call"
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "KG-CH9-R04",
    "world": "WORLD-10",
    "title": "The Same Door in Two Lights",
@@ -1261,6 +1342,75 @@
    "text": "The queue copy says a slip identifies the item coming back. It also carries the signed entry rule. A reader can leave the return queue and go inside without one."
   },
   {
+   "id": "stage.call.stand",
+   "speaker": "stage-host",
+   "text": "Hari holds up the printer’s call slip. It says ‘The keeper refuses entry.’ By that post, you can hear ‘I can wait’ and still miss part of the crate move. ‘The touring players give a spoken call before the first line. Here we leave that beat quiet and pass slips along the low rail. I can change what we put into people’s hands or ears. Which shall we use?’",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Give Hari a spoken cue that reaches the back. Use the quiet beat to tell listeners where the post hides the move.",
+     "next": "stage.call.spoken",
+     "if": {
+      "all": [
+       {
+        "flag": "stage.vantage",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "stage.call.mode"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.call.mode",
+       "value": "spoken"
+      }
+     ]
+    },
+    {
+     "text": "Clip a sightline slip to the low rail. Keep the opening quiet and ask the near bench to pass the cue along.",
+     "next": "stage.call.rail",
+     "if": {
+      "all": [
+       {
+        "flag": "stage.vantage",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "stage.call.mode"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.call.mode",
+       "value": "rail"
+      }
+     ]
+    },
+    {
+     "text": "Leave the slip here while I take another look."
+    }
+   ]
+  },
+  {
+   "id": "stage.call.spoken",
+   "speaker": "stage-host",
+   "text": "Hari strikes the test bell and says, ‘Watch the threshold. From beside the post, part of the crate move is hidden.’ An actor holds their first line until his voice drops. Hari nods towards the back bench. ‘Find out what carried that far.’",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.call.rail",
+   "speaker": "stage-host",
+   "text": "You clip the slip to the rail. ‘Beside the post, part of the crate move is hidden. The words carry past it.’ Hari gives the first line its quiet opening. The near bench lifts the slip from its clip. ‘See how far they pass it.’",
+   "historicalLabel": "fictional-world"
+  },
+  {
    "id": "stage.seats.request",
    "speaker": "narrator",
    "text": "A visitor has left a folded note asking for one aisle seat near the door. She gives no reason. At this house an usher can hold a place with a ribbon until the opening bell. The folded note can stay at the desk.",
@@ -1544,6 +1694,51 @@
    "speaker": "narrator",
    "text": "The foyer copy keeps the shorter shadow. A reader follows the arm to the basket. She says the grip looks like care for what is inside it. The handbill keeps that reading beside the maker’s dated note. Nobody adds a date for the arrival.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "vesper.stage.start",
+   "speaker": "vesper-quill",
+   "motif": "gold-thread",
+   "historicalLabel": "fictional-world",
+   "text": "An usher has time for one line before the bell. “The keeper refused the worker.” That will get a latecomer looking in the right direction. I wish a whole page could be said in one breath. Put your cue beside mine and let the foyer hear it.",
+   "options": [
+    {
+     "text": "Bring the rehearsal and usher’s notes to the programme stand.",
+     "open": "showdown:stage-vesper",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.finish"
+       },
+       {
+        "not": {
+         "flagSet": "sd.stage-vesper.outcome"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "addCard": "card.stage.vesper.cues"
+      },
+      {
+       "addCard": "card.stage.vesper.seats"
+      },
+      {
+       "addCard": "card.stage.vesper.usher"
+      }
+     ]
+    },
+    {
+     "text": "Leave the foyer with the revised programme as it is."
+    }
+   ]
+  },
+  {
+   "id": "vesper.stage.after",
+   "speaker": "vesper-quill",
+   "historicalLabel": "fictional-world",
+   "text": "One line, and a whole foyer to see what it did. You ought to see another line the Nexus hung up. Ask Ise about Harrowmere. I won’t keep your usher waiting."
   }
  ],
  "hints": [
@@ -1764,6 +1959,30 @@
    "text": "Choose a copy for the hall door or a note for the return queue. Both keep the rule and the source."
   },
   {
+   "id": "h.stage.call.audience.1",
+   "objective": "stage.call.audience",
+   "depth": 1,
+   "text": "A seat can lose the move and still hear the words."
+  },
+  {
+   "id": "h.stage.call.audience.2",
+   "objective": "stage.call.audience",
+   "depth": 2,
+   "text": "Use the post mark on the sightline note. The two benches can still hear ‘I can wait.’"
+  },
+  {
+   "id": "h.stage.call.audience.3",
+   "objective": "stage.call.audience",
+   "depth": 3,
+   "text": "Keep the cue within what the bench can check. Decide whether Hari should speak it or the bench should pass it."
+  },
+  {
+   "id": "h.stage.call.audience.4",
+   "objective": "stage.call.audience",
+   "depth": 4,
+   "text": "Set one cue at the stand. Check the back bench if Hari spoke, or the far end of the low rail if the slip travelled."
+  },
+  {
    "id": "h.stage.seats.inspect.1",
    "objective": "stage.seats.o.inspect",
    "depth": 1,
@@ -1889,6 +2108,11 @@
    "text": "A pause gave the theatre audience room to wonder why a person waited. The lending register answered a different question. It gave the hall’s entry rule, which we could carry as a signed line to people at the door or queue."
   },
   {
+   "id": "j.stage.call",
+   "claimKind": "observation",
+   "text": "I helped Hari send a cue about what the post hid and checked who received it. The cue left each listener room to hear a different reason in the same line."
+  },
+  {
    "id": "j.stage.seats",
    "claimKind": "interpretation",
    "text": "The ribbon and the moving queue post give a visitor different ways to find a place. The public notice says how the seats work. The folded request tells the usher only what seat was asked for."
@@ -1933,6 +2157,213 @@
    },
    "did": "You changed the light, listened to two readings of the same figure and kept the maker’s date with the account you shared.",
    "prompt": "What might another person see in the same view?"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.stage.vesper.cues",
+   "title": "Edda’s two rehearsal orders",
+   "text": "The keeper moves the crate and the worker says “I can wait” in both rehearsals. Edda moves the silence from before the crate move to after it.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "sources": [],
+   "limits": "The cue sheet records timing, words and movements. It leaves each character’s motive open."
+  },
+  {
+   "id": "card.stage.vesper.seats",
+   "title": "Hari’s two seat views",
+   "text": "The crate move is clear from the front bench. A post cuts off part of the view from the side seats. Both audiences hear the same words.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "sources": [],
+   "limits": "The two accounts cover those positions and this rehearsal."
+  },
+  {
+   "id": "card.stage.vesper.usher",
+   "title": "The usher’s quick call",
+   "text": "At the opening bell an usher called “Watch the doorway.” A late arrival turned to the doorway before the keeper moved the crate.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "sources": [],
+   "limits": "The usher saw one person turn towards the scene. It gives no account of what that person thought happened."
+  }
+ ],
+ "showdowns": [
+  {
+   "id": "stage-vesper",
+   "title": "One Line Before the Bell",
+   "place": "The House of Performance foyer",
+   "opponent": "vesper-quill",
+   "intro": "A late arrival is still looking for a seat. Hari lays the revised programme down. Vesper pins a short line beside it.",
+   "valueShowdown": false,
+   "crowd": {
+    "player": 43,
+    "opponent": 55,
+    "patience": 6
+   },
+   "opponentClaim": {
+    "text": "Tell everyone the keeper refused the worker. Anyone who saw the scene can see that much.",
+    "force": 4,
+    "links": [
+     {
+      "id": "pause",
+      "text": "The pause fixes what the keeper meant.",
+      "weakTo": [
+       "card.stage.vesper.cues"
+      ],
+      "cracked": "Two rehearsals use the same words and move. Moving the silence changes what an audience may read into it.",
+      "holds": "This card does not compare the two orders of the silence."
+     },
+     {
+      "id": "view",
+      "text": "Every seat saw the same movement.",
+      "weakTo": [
+       "card.stage.vesper.seats"
+      ],
+      "cracked": "The side post hides part of the move. The view from the front cannot stand in for the view from the side.",
+      "holds": "This card does not tell us what a person behind the post could see."
+     }
+    ],
+    "counterexamples": [
+     {
+      "card": "card.stage.vesper.seats",
+      "why": "One side reader missed part of the crate move. That reader could hear the wait without seeing all of its movement."
+     }
+    ],
+    "narrowed": "The keeper moves the crate beside the doorway. The wait is part of the scene.",
+    "sourceReply": "Vesper taps the short card. “I sat in the front. I saw the move. I heard someone behind me ask which part they should look at.”"
+   },
+   "playerClaims": [
+    {
+     "id": "cue",
+     "text": "Call “Watch the doorway.” A late arrival can find the scene and read the fuller note when they sit.",
+     "force": 2,
+     "supports": [
+      {
+       "card": "card.stage.vesper.usher",
+       "strength": 2,
+       "why": "The late reader turned to the doorway at the simple call."
+      },
+      {
+       "card": "card.stage.vesper.seats",
+       "strength": 1,
+       "why": "The post gives a reason to keep a separate note for the reader in the side seats."
+      }
+     ],
+     "reframe": "A notice can help a visitor find a moment. The rehearsal can show what moved and when. Those are two jobs."
+    },
+    {
+     "id": "comparison",
+     "text": "Give the crate move and silence their own lines, and mark the view from the side.",
+     "force": 3,
+     "supports": [
+      {
+       "card": "card.stage.vesper.cues",
+       "strength": 2,
+       "why": "The two orders keep words and movement fixed while placing the silence on different sides of the move."
+      },
+      {
+       "card": "card.stage.vesper.seats",
+       "strength": 2,
+       "why": "The side post explains why those seats need a line that keeps the visible limit."
+      }
+     ],
+     "reframe": "A witness can tell us where the crate went and what their seat hid. The character’s reason is another question."
+    }
+   ],
+   "witnesses": [
+    {
+     "id": "hari",
+     "name": "Host Hari",
+     "strength": 1,
+     "if": {
+      "flag": "stage.feedback",
+      "eq": true
+     },
+     "line": "A side reader asked whether the worker wanted to wait. I could show what our post hid and give the two cues their own lines."
+    }
+   ],
+   "fairPoints": [
+    {
+     "id": "bell",
+     "text": "Vesper says, “At the bell an usher has one breath. A visitor needs a line they can act on.”",
+     "concede": "You keep the short call. Hari leaves a place beside it for the fuller scene note."
+    }
+   ],
+   "script": [
+    {
+     "move": "point",
+     "point": "bell"
+    },
+    {
+     "move": "press",
+     "line": "Vesper asks which record an usher ought to be able to show."
+    },
+    {
+     "move": "press",
+     "line": "Vesper points to the board. “What did the side seats have to go on?”"
+    }
+   ],
+   "outcomes": {
+    "exposed": {
+     "text": "The audience asks Hari to take down the refusal caption. The two seat drawings go where it hung. Vesper lifts the pin and bows.",
+     "effects": []
+    },
+    "narrowed": {
+     "text": "Vesper crosses out “refused” and leaves the crate move on the card. Hari pins it beside the cue order.",
+     "effects": []
+    },
+    "won-over": {
+     "text": "Vesper offers “Watch the doorway.” Hari puts the short call above the side-seat note. Vesper bows to the waiting usher.",
+     "effects": []
+    },
+    "split": {
+     "text": "Some ask for the short call. Others want to see the seat drawings first. Hari leaves two stacks on the foyer stand.",
+     "effects": []
+    },
+    "lost-ground": {
+     "text": "Several arrivals take Vesper’s first card into the gallery. Hari leaves the checked scene note next to the remaining copies. A side reader goes back for it.",
+     "effects": []
+    }
+   },
+   "canBeWonOver": true,
+   "weave": {
+    "concepts": [
+     "evidence",
+     "justification",
+     "perspective",
+     "interpretation",
+     "responsibility",
+     "certainty"
+    ],
+    "atl": [
+     "communication",
+     "social",
+     "thinking"
+    ],
+    "subjects": [
+     "theatre",
+     "lit-perf",
+     "lang-langlit"
+    ],
+    "aoks": [
+     "ART",
+     "LAN"
+    ],
+    "framework": [
+     "scope",
+     "methods-and-tools",
+     "perspectives",
+     "ethics"
+    ],
+    "thinking": {
+     "dok": 3,
+     "bloom": "evaluate",
+     "fink": "human",
+     "solo": "relational"
+    },
+    "minutes": 6
+   }
   }
  ]
 }

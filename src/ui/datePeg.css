@@ -1,0 +1,79 @@
+.date-peg-panel {
+  display: grid;
+  gap: .55rem;
+  min-width: 0;
+}
+
+.date-peg-panel h2, .date-peg-panel h3, .date-peg-panel p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.date-peg-panel .row { flex-wrap: wrap; }
+.date-peg-panel button { max-width: 100%; white-space: normal; }
+
+.date-peg-timeline, .date-peg-reply {
+  border: 1px solid currentColor;
+  border-radius: .45rem;
+  display: grid;
+  gap: .75rem;
+  padding: .6rem .85rem;
+}
+
+.date-peg-row { display: grid; gap: .3rem; }
+
+.date-peg-sheets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(11em, 100%), 1fr));
+  gap: .4rem;
+}
+
+.date-peg-sheets figure {
+  align-content: start;
+  display: grid;
+  gap: .4rem;
+  margin: 0;
+  padding: .45rem;
+  border: 1px solid currentColor;
+}
+
+.date-peg-sheets img {
+  width: 6rem;
+  height: 5rem;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.date-peg-track {
+  position: relative;
+  height: 1.15rem;
+  margin: 0 .3rem;
+  border-block-end: 1px solid currentColor;
+}
+
+.date-peg-range {
+  position: absolute;
+  bottom: .24rem;
+  height: .48rem;
+  min-width: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+.date-peg-marker {
+  position: absolute;
+  inset-block: 0;
+  width: 0;
+  border-inline-start: 2px dashed currentColor;
+}
+
+.date-peg-marker::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -.24rem;
+  width: .37rem;
+  height: .37rem;
+  background: currentColor;
+  border-radius: 50%;
+}

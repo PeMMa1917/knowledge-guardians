@@ -1,0 +1,1195 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH3-R14",
+      "world": "WORLD-04",
+      "title": "The Gap in the Backdrop",
+      "knowledgeQuestion": "What does a repair change about the evidence a visitor can see?",
+      "stake": "The theatre would like to move the cloth again. The Cold Store keeper wants the surviving stitches and the repair history to stay legible.",
+      "available": {
+        "all": [
+          {
+            "objective": "preserved.publish"
+          },
+          {
+            "card": "card.seam.garjjat"
+          }
+        ]
+      },
+      "objectives": [
+        {
+          "id": "seam.cold.compare",
+          "title": "Compare the cloth under two loads and trace the two dated marks.",
+          "essential": false,
+          "done": {
+            "all": [
+              {
+                "flag": "seam.cold.free",
+                "eq": true
+              },
+              {
+                "flag": "seam.cold.support",
+                "eq": true
+              },
+              {
+                "flag": "seam.cold.marks",
+                "eq": true
+              }
+            ]
+          },
+          "skills": [
+            "SK-CIT-01"
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "explanation",
+              "objectivity",
+              "perspective",
+              "interpretation",
+              "culture"
+            ],
+            "atl": [
+              "thinking",
+              "research"
+            ],
+            "aoks": [
+              "ART",
+              "HIS",
+              "TEC"
+            ],
+            "subjects": [
+              "visual-arts",
+              "history",
+              "design-tech"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 4
+          }
+        },
+        {
+          "id": "seam.cold.checked",
+          "title": "Hang or pack the cloth and check what the theatre received.",
+          "essential": false,
+          "visible": {
+            "objective": "seam.cold.compare"
+          },
+          "done": {
+            "flagSet": "seam.cold.arrived"
+          },
+          "onComplete": [
+            {
+              "journal": "j.seam.cold"
+            }
+          ],
+          "skills": [
+            "SK-CIT-01"
+          ],
+          "weave": {
+            "concepts": [
+              "certainty",
+              "truth",
+              "justification",
+              "responsibility",
+              "values",
+              "power"
+            ],
+            "atl": [
+              "communication",
+              "social",
+              "thinking"
+            ],
+            "aoks": [
+              "ART",
+              "HIS",
+              "TEC"
+            ],
+            "subjects": [
+              "visual-arts",
+              "theatre",
+              "design-tech"
+            ],
+            "framework": [
+              "ethics",
+              "perspectives",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "caring",
+              "solo": "relational"
+            },
+            "minutes": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH9-R11",
+      "world": "WORLD-10",
+      "title": "The Edge That Stayed",
+      "knowledgeQuestion": "How does a presentation change what an audience can separate from a repair?",
+      "stake": "Hari needs a piece the company can use and a viewing arrangement the audience can check.",
+      "available": {
+        "all": [
+          {
+            "objective": "stage.arrival"
+          },
+          {
+            "objective": "seam.cold.checked"
+          }
+        ]
+      },
+      "objectives": [
+        {
+          "id": "seam.stage.compare",
+          "title": "Check the edge at the stand and from the far rail.",
+          "essential": false,
+          "done": {
+            "all": [
+              {
+                "flag": "seam.stage.near",
+                "eq": true
+              },
+              {
+                "flag": "seam.stage.far",
+                "eq": true
+              }
+            ]
+          },
+          "skills": [
+            "SK-CIT-01"
+          ],
+          "weave": {
+            "concepts": [
+              "culture",
+              "evidence",
+              "explanation",
+              "interpretation",
+              "perspective",
+              "objectivity"
+            ],
+            "atl": [
+              "research",
+              "thinking"
+            ],
+            "aoks": [
+              "ART",
+              "HIS",
+              "TEC"
+            ],
+            "subjects": [
+              "visual-arts",
+              "film",
+              "theatre",
+              "design-tech"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 4
+          }
+        },
+        {
+          "id": "seam.stage.checked",
+          "title": "Give the backdrop a place and see what an audience member checks.",
+          "essential": false,
+          "visible": {
+            "objective": "seam.stage.compare"
+          },
+          "done": {
+            "flagSet": "seam.stage.used"
+          },
+          "onComplete": [
+            {
+              "journal": "j.seam.stage"
+            }
+          ],
+          "skills": [
+            "SK-CIT-01"
+          ],
+          "weave": {
+            "concepts": [
+              "truth",
+              "certainty",
+              "justification",
+              "values",
+              "power",
+              "responsibility"
+            ],
+            "atl": [
+              "communication",
+              "social",
+              "self-management"
+            ],
+            "aoks": [
+              "ART",
+              "HUM"
+            ],
+            "subjects": [
+              "visual-arts",
+              "theatre",
+              "film"
+            ],
+            "framework": [
+              "ethics",
+              "perspectives",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "human",
+              "solo": "relational"
+            },
+            "minutes": 3
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "seam.cold.jig",
+      "speaker": "narrator",
+      "text": "An old theatre backdrop lies in the workroom jig. Both ends carry a blue cloth line. The tear leaves a space between them. The Edge Rule can rest against the two fixed pegs while you change how the cloth is held.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Rest the cloth loosely in the jig.",
+          "next": "seam.cold.free-view",
+          "if": {
+            "flag": "perspective.active",
+            "eq": "edge-rule"
+          },
+          "effects": [
+            {
+              "setFlag": "seam.cold.face",
+              "value": "free"
+            }
+          ]
+        },
+        {
+          "text": "Slide the detachable backing under the cloth.",
+          "next": "seam.cold.support-view",
+          "if": {
+            "flag": "perspective.active",
+            "eq": "edge-rule"
+          },
+          "effects": [
+            {
+              "setFlag": "seam.cold.face",
+              "value": "support"
+            }
+          ]
+        },
+        {
+          "text": "Leave the cloth in its present position."
+        }
+      ]
+    },
+    {
+      "id": "seam.cold.free-view",
+      "speaker": "narrator",
+      "text": "The cloth sags between the pegs. The left line seems to end higher. Through the rule’s windows you can see the cloth has shifted to one side of its peg.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Mark the loose position on a removable tab.",
+          "if": {
+            "not": {
+              "flag": "seam.cold.free",
+              "eq": true
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "seam.cold.free",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Keep the tab blank."
+        }
+      ]
+    },
+    {
+      "id": "seam.cold.support-view",
+      "speaker": "narrator",
+      "text": "The backing holds the two pegs level. Now the left and right lines end at the same height. The space between them stays open. That level can guide a support and still leave room for more than one drawn join.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Mark the supported position and leave the gap open.",
+          "if": {
+            "not": {
+              "flag": "seam.cold.support",
+              "eq": true
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "seam.cold.support",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Lift the rule away."
+        }
+      ]
+    },
+    {
+      "id": "seam.cold.witness-marks",
+      "speaker": "narrator",
+      "text": "The older maker’s card describes a blue border. A later stage slip describes the pale support behind the tear. Both use the name Summer Crossing. They date different work on the cloth.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Line up the maker’s mark and the later support slip.",
+          "next": "seam.cold.marks-seen",
+          "if": {
+            "all": [
+              {
+                "flag": "perspective.active",
+                "eq": "edge-rule"
+              },
+              {
+                "not": {
+                  "flag": "seam.cold.marks",
+                  "eq": true
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "seam.cold.marks",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave each slip in its pocket."
+        }
+      ]
+    },
+    {
+      "id": "seam.cold.marks-seen",
+      "speaker": "narrator",
+      "text": "You can see the blue line and the pale repair together. The older card says nothing about the lost middle. The backing holds the work and carries its own date.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "seam.cold.pack",
+      "speaker": "preserved-inquiry-keeper",
+      "text": "We can lend the cloth on its detachable support, with the gap visible. Our visitors will use a flat substitute until it comes back. Or we can keep the cloth here and send its two edge traces to Hari. That gives the theatre a picture and lets the real material stay on this bench.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "value",
+      "options": [
+        {
+          "text": "Lend the cloth on its dated support.",
+          "next": "seam.cold.to-brace",
+          "if": {
+            "all": [
+              {
+                "objective": "seam.cold.compare"
+              },
+              {
+                "not": {
+                  "flagSet": "seam.cold.plan"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "seam.cold.plan",
+              "value": "brace"
+            }
+          ]
+        },
+        {
+          "text": "Keep the cloth here and send its two traced edges.",
+          "next": "seam.cold.to-trace",
+          "if": {
+            "all": [
+              {
+                "objective": "seam.cold.compare"
+              },
+              {
+                "not": {
+                  "flagSet": "seam.cold.plan"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "seam.cold.plan",
+              "value": "trace"
+            }
+          ]
+        },
+        {
+          "text": "Leave the workroom jig open for now."
+        }
+      ]
+    },
+    {
+      "id": "seam.cold.to-brace",
+      "speaker": "narrator",
+      "text": "The carrier wraps around the support and keeps the date tab out. In the workroom, Pilar hangs a flat placeholder on the pegs. Check the loan by the east rack.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "seam.cold.to-trace",
+      "speaker": "narrator",
+      "text": "The carrier clips two traces to the edge ruler’s register. The left trace and right trace keep separate corners. Check the packet at the low bench.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "seam.cold.brace-receipt",
+      "speaker": "narrator",
+      "text": "The carrier’s receipt names the cloth, the two pegs and the later backing. It marks a return after Hari has seen the first presentation.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Record the cloth and the separate support date.",
+          "next": "seam.cold.send",
+          "if": {
+            "not": {
+              "flagSet": "seam.cold.arrived"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "seam.cold.arrived",
+              "value": "brace"
+            }
+          ]
+        },
+        {
+          "text": "Leave the receipt by the rack."
+        }
+      ]
+    },
+    {
+      "id": "seam.cold.trace-receipt",
+      "speaker": "narrator",
+      "text": "The carrier signs for two flat traces on a marked sheet. The original’s fabric and weight stay here. A space on the carrier slip says who checked the pegs.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Record that the packet carries the two edge traces.",
+          "next": "seam.cold.send",
+          "if": {
+            "not": {
+              "flagSet": "seam.cold.arrived"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "seam.cold.arrived",
+              "value": "trace"
+            }
+          ]
+        },
+        {
+          "text": "Leave the trace receipt on the bench."
+        }
+      ]
+    },
+    {
+      "id": "seam.cold.send",
+      "speaker": "narrator",
+      "text": "Take the Edge Rule to Hari at the House of Performance. They will need to see what is near the edge as well as what the distant seats see.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "seam.stage.near",
+      "speaker": "narrator",
+      "text": "At the close stand the pin positions are visible. Use the Edge Rule to keep the two ends on the same baseline. The support record marks its backing edge close to one peg.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Line up the two pegs and open the repair window.",
+          "next": "seam.stage.near-brace",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "objective": "stage.arrival"
+                  },
+                  {
+                    "objective": "seam.cold.checked"
+                  },
+                  {
+                    "flag": "perspective.active",
+                    "eq": "edge-rule"
+                  },
+                  {
+                    "card": "card.seam.point"
+                  }
+                ]
+              },
+              {
+                "flag": "seam.cold.arrived",
+                "eq": "brace"
+              },
+              {
+                "not": {
+                  "flag": "seam.stage.near",
+                  "eq": true
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "seam.stage.near",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Line up the two pegs and open the repair window.",
+          "next": "seam.stage.near-trace",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "objective": "stage.arrival"
+                  },
+                  {
+                    "objective": "seam.cold.checked"
+                  },
+                  {
+                    "flag": "perspective.active",
+                    "eq": "edge-rule"
+                  },
+                  {
+                    "card": "card.seam.point"
+                  }
+                ]
+              },
+              {
+                "flag": "seam.cold.arrived",
+                "eq": "trace"
+              },
+              {
+                "not": {
+                  "flag": "seam.stage.near",
+                  "eq": true
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "seam.stage.near",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Rest the rule by the stand."
+        }
+      ]
+    },
+    {
+      "id": "seam.stage.near-brace",
+      "speaker": "narrator",
+      "text": "You can see the blue cloth line end and the pale backing begin. The signed support slip still reaches this side of the frame. Two loose folds settle on it.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "seam.stage.near-trace",
+      "speaker": "narrator",
+      "text": "The paper carries both blue ends and the repair date. You can see where the trace ends. The paper curls slightly when you lift it. The cloth’s folds are back at the Cold Store.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "seam.stage.far",
+      "speaker": "narrator",
+      "text": "From the last seats, the display rail covers the lower mark. A dark border seems to connect the two blue ends. Hari has left one baffle loose so you can try the same view without that cover.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Lower the baffle and keep the last seat’s view.",
+          "next": "seam.stage.far-open",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "objective": "stage.arrival"
+                  },
+                  {
+                    "objective": "seam.cold.checked"
+                  },
+                  {
+                    "flag": "perspective.active",
+                    "eq": "edge-rule"
+                  },
+                  {
+                    "card": "card.seam.point"
+                  }
+                ]
+              },
+              {
+                "not": {
+                  "flag": "seam.stage.far",
+                  "eq": true
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "seam.stage.far",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the border as it is."
+        }
+      ]
+    },
+    {
+      "id": "seam.stage.far-open",
+      "speaker": "narrator",
+      "text": "The border moved. The two blue ends stayed still. From this position a whole-width caption and open space will show what survived. People in the last seats still cannot see individual stitches.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "seam.stage.choose",
+      "speaker": "stage-host",
+      "text": "We can hang the checked views for the next scene, with the edge marks still on the rail. Or I can stop the cloth at the low bench and let people compare the ends close up after the show. The crew only has this frame for the first turn.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "value",
+      "options": [
+        {
+          "text": "Hang the wide view and let the company move it.",
+          "next": "seam.stage.play-ready",
+          "if": {
+            "all": [
+              {
+                "flag": "perspective.active",
+                "eq": "edge-rule"
+              },
+              {
+                "objective": "seam.stage.compare"
+              },
+              {
+                "not": {
+                  "flagSet": "seam.stage.mode"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "seam.stage.mode",
+              "value": "play"
+            }
+          ]
+        },
+        {
+          "text": "Leave the evidence at the low bench for close viewing.",
+          "next": "seam.stage.bench-ready",
+          "if": {
+            "all": [
+              {
+                "flag": "perspective.active",
+                "eq": "edge-rule"
+              },
+              {
+                "objective": "seam.stage.compare"
+              },
+              {
+                "not": {
+                  "flagSet": "seam.stage.mode"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "seam.stage.mode",
+              "value": "bench"
+            }
+          ]
+        },
+        {
+          "text": "Leave both mounts ready for another turn."
+        }
+      ]
+    },
+    {
+      "id": "seam.stage.play-ready",
+      "speaker": "narrator",
+      "text": "Hari leaves the border down for the first turn. The long view shows both ends and their gap. Go to the wing to see how the company moves the new mount.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "seam.stage.bench-ready",
+      "speaker": "narrator",
+      "text": "Hari puts the two pegs within reach of the low seat. No one moves the checked material during the scene. Go to the bench after the players come off.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "seam.stage.play-brace",
+      "speaker": "narrator",
+      "text": "The crew moves the backed cloth with both pegs kept level. The far row can see the blue ends and the open space. A repairer comes to the wing to read the date which they could not see from their seat.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Leave the support date on the wing and sign the cloth home.",
+          "next": "seam.stage.thanks",
+          "if": {
+            "all": [
+              {
+                "flag": "seam.stage.mode",
+                "eq": "play"
+              },
+              {
+                "flag": "seam.cold.arrived",
+                "eq": "brace"
+              },
+              {
+                "not": {
+                  "flagSet": "seam.stage.used"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "seam.stage.used",
+              "value": "play"
+            }
+          ]
+        },
+        {
+          "text": "Leave the wing open."
+        }
+      ]
+    },
+    {
+      "id": "seam.stage.play-trace",
+      "speaker": "narrator",
+      "text": "The crew moves a new stage sheet bearing the checked outline. It has a different weight from the cloth. An usher clips a sign to the rail in case anyone asks to see the actual backing or stitches.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Sign the stage sheet as a reconstruction.",
+          "next": "seam.stage.thanks",
+          "if": {
+            "all": [
+              {
+                "flag": "seam.stage.mode",
+                "eq": "play"
+              },
+              {
+                "flag": "seam.cold.arrived",
+                "eq": "trace"
+              },
+              {
+                "not": {
+                  "flagSet": "seam.stage.used"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "seam.stage.used",
+              "value": "play"
+            }
+          ]
+        },
+        {
+          "text": "Leave the stage sheet in its mount."
+        }
+      ]
+    },
+    {
+      "id": "seam.stage.bench-brace",
+      "speaker": "narrator",
+      "text": "The backed cloth rests at the low bench. Two visitors see where the pale backing starts and turn the date tab. A visitor leaving early only saw the company’s practice sheet.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Sign the close-view receipt and send the loan back.",
+          "next": "seam.stage.thanks",
+          "if": {
+            "all": [
+              {
+                "flag": "seam.stage.mode",
+                "eq": "bench"
+              },
+              {
+                "flag": "seam.cold.arrived",
+                "eq": "brace"
+              },
+              {
+                "not": {
+                  "flagSet": "seam.stage.used"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "seam.stage.used",
+              "value": "bench"
+            }
+          ]
+        },
+        {
+          "text": "Leave the cloth on its support."
+        }
+      ]
+    },
+    {
+      "id": "seam.stage.bench-trace",
+      "speaker": "narrator",
+      "text": "The close bench has two trace corners and an arrow back to the cloth’s cold-room shelf. A visitor copies both marks. The trace helps them ask for the repair, with its date, when they next visit Pilar.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Add a clear source reference below both traces.",
+          "next": "seam.stage.thanks",
+          "if": {
+            "all": [
+              {
+                "flag": "seam.stage.mode",
+                "eq": "bench"
+              },
+              {
+                "flag": "seam.cold.arrived",
+                "eq": "trace"
+              },
+              {
+                "not": {
+                  "flagSet": "seam.stage.used"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "seam.stage.used",
+              "value": "bench"
+            }
+          ]
+        },
+        {
+          "text": "Leave the traces on the bench."
+        }
+      ]
+    },
+    {
+      "id": "seam.stage.thanks",
+      "speaker": "stage-host",
+      "text": "Pilar can show our reply beside the cloth. It gives the view people used, the thing our crew actually carried, and where the older marks stay.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.seam.cold.compare.1",
+      "objective": "seam.cold.compare",
+      "depth": 1,
+      "text": "A loose edge can look higher than it is on the support."
+    },
+    {
+      "id": "h.seam.cold.compare.2",
+      "objective": "seam.cold.compare",
+      "depth": 2,
+      "text": "Open the Garjját case. Equip the Edge Rule from the Bag."
+    },
+    {
+      "id": "h.seam.cold.compare.3",
+      "objective": "seam.cold.compare",
+      "depth": 3,
+      "text": "Try both positions at the workroom jig. Keep the rule at the two pegs."
+    },
+    {
+      "id": "h.seam.cold.compare.4",
+      "objective": "seam.cold.compare",
+      "depth": 4,
+      "text": "Keep a tab for the loose and supported positions. Use the other stand to compare both dated marks."
+    },
+    {
+      "id": "h.seam.cold.checked.1",
+      "objective": "seam.cold.checked",
+      "depth": 1,
+      "text": "The theatre needs an image it can use. The workroom still needs the repair details."
+    },
+    {
+      "id": "h.seam.cold.checked.2",
+      "objective": "seam.cold.checked",
+      "depth": 2,
+      "text": "After both jig settings and the date marks, go to Pilar’s packing rack."
+    },
+    {
+      "id": "h.seam.cold.checked.3",
+      "objective": "seam.cold.checked",
+      "depth": 3,
+      "text": "Lend the supported cloth or send only the two labelled traces."
+    },
+    {
+      "id": "h.seam.cold.checked.4",
+      "objective": "seam.cold.checked",
+      "depth": 4,
+      "text": "Read the carrier’s receipt at the east rack or the low west bench."
+    },
+    {
+      "id": "h.seam.stage.compare.1",
+      "objective": "seam.stage.compare",
+      "depth": 1,
+      "text": "The back row can miss an exposed edge."
+    },
+    {
+      "id": "h.seam.stage.compare.2",
+      "objective": "seam.stage.compare",
+      "depth": 2,
+      "text": "Open the Nuugaarsuk case in the Audience Gallery and take out the Edge Rule."
+    },
+    {
+      "id": "h.seam.stage.compare.3",
+      "objective": "seam.stage.compare",
+      "depth": 3,
+      "text": "At the close stand, hold both pegs on the same line and check what arrived."
+    },
+    {
+      "id": "h.seam.stage.compare.4",
+      "objective": "seam.stage.compare",
+      "depth": 4,
+      "text": "Go to the last-seat rail and lower its baffle. Observe what moved and what stayed."
+    },
+    {
+      "id": "h.seam.stage.checked.1",
+      "objective": "seam.stage.checked",
+      "depth": 1,
+      "text": "The company can use the mount in motion, or visitors can study it later."
+    },
+    {
+      "id": "h.seam.stage.checked.2",
+      "objective": "seam.stage.checked",
+      "depth": 2,
+      "text": "With both gallery views checked, bring the rule to Hari’s two mounts."
+    },
+    {
+      "id": "h.seam.stage.checked.3",
+      "objective": "seam.stage.checked",
+      "depth": 3,
+      "text": "Hang the wide view for the show or leave it at the bench for close reading."
+    },
+    {
+      "id": "h.seam.stage.checked.4",
+      "objective": "seam.stage.checked",
+      "depth": 4,
+      "text": "Check your choice at the wing or the low bench. Look for Hari’s reply in the Cold Store later."
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.seam.cold",
+      "claimKind": "observation",
+      "text": "Pilar dated the blue edge and the backing separately. The cloth settled under support. Its witness marks still leave an open space."
+    },
+    {
+      "id": "j.seam.stage",
+      "claimKind": "observation",
+      "text": "The gallery border changed what the far row could see. The checked material and the view it gave have their own entries on Hari’s receipt."
+    }
+  ],
+  "keepsakes": [
+    {
+      "id": "edge-rule",
+      "name": "Edge Rule",
+      "text": "A small rule with two windows for fixed points. Put it against pegs you can see from the same spot. Its margin leaves room for the date of a support.",
+      "if": {
+        "all": [
+          {
+            "objective": "preserved.publish"
+          },
+          {
+            "card": "card.seam.garjjat"
+          }
+        ]
+      },
+      "where": "The Garjját cases at the Cold Store workroom",
+      "use": "Test the cloth on the workroom jig. In the Audience Gallery, check the delivered edges at the close stand and the far rail.",
+      "equip": {
+        "method": "Keep the observed edge distinct from its support and display",
+        "hint": "Use the workroom jig and separate date marks. Set the same points on Hari’s close stand.",
+        "art": "seam.rule"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "HIS-SEAM-01",
+      "title": "Nasjonalmuseet: Britta Marakatt-Labba, Moving the Needle",
+      "url": "https://www.nasjonalmuseet.no/en/exhibitions-and-events/national-museum/exhibitions/2024/britta-marakatt-labba/",
+      "locator": "2024 exhibition introduction and discussion of the Alta-Kautokeino protests. The page labels its reproduction separately as a 2021 work.",
+      "supports": "Identifies Garjját (The Crows), 1981, as a work in the exhibition and describes the embroidery’s relationship to the artist’s experience of the Alta-Kautokeino protests.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-SEAM-02",
+      "title": "Moderna Museet: Garjját, MOM/2024/133",
+      "url": "https://sis.modernamuseet.se/en/objects/120998/garjjat",
+      "locator": "Moderna Museet object number, date, medium and acquisition entry.",
+      "supports": "The catalogue identifies Britta Marakatt-Labba’s 2024 Garjját as a hand-coloured serigraph on paper, purchased in 2024 with funding from the Österlind Foundation.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-SEAM-03",
+      "title": "Moderna Museet: Britta Marakatt-Labba exhibition",
+      "url": "https://www.modernamuseet.se/en/stockholm/exhibitions/britta-marakatt-labba/",
+      "locator": "Caption for the 1981 Garjját and the curator’s note about the Alta River and Mázejoavku.",
+      "supports": "Identifies the 1981 work and credits the photograph to Andreas Harvik and Nasjonalmuseet. Its context and maker belong to Sápmi.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-SEAM-04",
+      "title": "Kunsthall Trondheim: Pia Arke, Wonderland",
+      "url": "https://kunsthalltrondheim.no/en/utstillinger/pia-arke",
+      "locator": "2019 exhibition record, caption and paragraph on Nuugaarsuk / Pinhole Camera Photograph / The Point.",
+      "supports": "Identifies the 1990 series as four silver-gelatin prints on baryta paper and credits Brandts, Odense. It places Arke’s camera at the site of her former childhood home near Narsaq.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-SEAM-05",
+      "title": "Nuuk Art Museum: Pia Arke, Ittoqqortoormiit",
+      "url": "https://www.nuukkunstmuseum.com/da/pia-arke-ittoqqortoormiit/",
+      "locator": "Public Ittoqqortoormiit exhibition account and its reference to Arke’s separate 2003 publication.",
+      "supports": "The Nuuk museum describes Arke’s research around her family’s history in Ittoqqortoormiit. That site and associated work stay distinct from the 1990 photographs near Narsaq.",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.seam.garjjat",
+      "title": "Two records for Garjját",
+      "text": "Britta Marakatt-Labba made the 1981 embroidery Garjját. The museum account connects it to her experience of the Alta-Kautokeino protests. Moderna Museet catalogues a 2024 work with the same title as a hand-coloured serigraph on paper, MOM/2024/133.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SEAM-01",
+        "HIS-SEAM-02",
+        "HIS-SEAM-03"
+      ],
+      "limits": "The title links works by the same maker. Each has its own date and material record. These records leave the precise physical construction of the 1981 embroidery to a separate examination.",
+      "person": {
+        "name": "Britta Marakatt-Labba",
+        "life": "Garjját records dated 1981 and 2024",
+        "place": "Idivuoma, Sápmi",
+        "era": "Late twentieth and early twenty-first centuries",
+        "continent": "Europe"
+      }
+    },
+    {
+      "id": "card.seam.point",
+      "title": "Pia Arke’s four views of Nuugaarsuk",
+      "text": "Kunsthall Trondheim records Nuugaarsuk as four 1990 silver-gelatin prints on baryta paper by the Greenlandic-Danish artist Pia Arke. Arke set her camera at the site of her former childhood home, near Narsaq. The exhibition credits Brandts, Odense, in its caption.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SEAM-04",
+        "HIS-SEAM-05"
+      ],
+      "limits": "The recorded position gives this series a particular context. The prints do not reconstruct the house, supply a view beyond their edges or stand for every Greenlandic person’s memory. Nuuk Art Museum documents a separate part of her work in Ittoqqortoormiit.",
+      "person": {
+        "name": "Pia Arke",
+        "life": "Nuugaarsuk prints dated 1990",
+        "place": "Nuugaarsuk Point near Narsaq, Kalaallit Nunaat",
+        "era": "Late twentieth century",
+        "continent": "North America"
+      }
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-SEAM-GARJJAT",
+      "name": "Britta Marakatt-Labba’s Garjját, two material records",
+      "art": "seam.case-textile",
+      "historicalLabel": "documented",
+      "dateText": "1981 embroidery and 2024 print",
+      "dateKind": "The 1981 date belongs to the embroidered work. The separately catalogued 2024 date is for museum object MOM/2024/133 on paper.",
+      "summary": "The exhibition relates the embroidery to Marakatt-Labba’s experience of the Alta-Kautokeino protests. The museum catalogue names a separate dated hand-coloured print with the same title.",
+      "sources": [
+        "HIS-SEAM-01",
+        "HIS-SEAM-02",
+        "HIS-SEAM-03"
+      ],
+      "grantsCard": "card.seam.garjjat",
+      "altText": "Original picture of a plain piece of cloth beside a paper catalogue mount, with separate unlettered tabs."
+    },
+    {
+      "id": "OBJ-SEAM-NUUGAARSUK",
+      "name": "Pia Arke’s Nuugaarsuk photographs",
+      "art": "seam.case-photo",
+      "historicalLabel": "documented",
+      "dateText": "1990 photographs, shown in Trondheim in 2019",
+      "dateKind": "The earlier date is for the photographs. The later date refers to the Wonderland exhibition record.",
+      "summary": "The exhibition records four prints and the place where Arke set her camera near Narsaq. A separate Nuuk Art Museum account describes her research about Ittoqqortoormiit.",
+      "sources": [
+        "HIS-SEAM-04",
+        "HIS-SEAM-05"
+      ],
+      "grantsCard": "card.seam.point",
+      "altText": "Original diagram of four blank print mounts with the shared position of the viewer indicated by a plain peg."
+    }
+  ]
+}

@@ -1,0 +1,1125 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH1-S13",
+   "world": "WORLD-02",
+   "title": "The Back of the Bill",
+   "knowledgeQuestion": "What does the edge of a picture or notice put outside a reader’s view?",
+   "available": {
+    "flag": "backbill.emberford.started",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "backbill.emberford.o.send",
+     "title": "Find the hidden line and send the playbill fragment to Lark.",
+     "essential": false,
+     "done": {
+      "flagSet": "backbill.emberford.handled"
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "explanation",
+       "perspective"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "theatre",
+       "economics"
+      ],
+      "minutes": 3
+     },
+     "skills": [
+      "SK-SPK-01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH7-R05",
+   "world": "WORLD-08",
+   "title": "The Back of the Bill: Lark’s Proof",
+   "knowledgeQuestion": "What shows what a price invited readers to believe, and what shows who was to receive it?",
+   "available": {
+    "flagSet": "backbill.copies.source"
+   },
+   "objectives": [
+    {
+     "id": "backbill.copies.o.check",
+     "title": "Compare Bill 12 at the press and the signed division in the Record Room.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "clue.backbill.copies.proof.read",
+        "eq": true
+       },
+       {
+        "flag": "backbill.copies.ledger",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "objectivity"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "theatre",
+       "economics"
+      ],
+      "minutes": 3
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-THK-14"
+     ]
+    },
+    {
+     "id": "backbill.copies.o.seal",
+     "title": "Give the checked proof a copy of its signed source and take it for Hari.",
+     "essential": false,
+     "done": {
+      "flag": "backbill.copies.sealed",
+      "eq": true
+     },
+     "visible": {
+      "objective": "backbill.copies.o.check"
+     },
+     "weave": {
+      "concepts": [
+       "truth",
+       "justification",
+       "responsibility"
+      ],
+      "framework": [
+       "ethics",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "communication"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "theatre",
+       "economics"
+      ],
+      "minutes": 3
+     },
+     "skills": [
+      "SK-THK-16"
+     ],
+     "onComplete": [
+      {
+       "giveItem": "item.backbill.proof"
+      },
+      {
+       "journal": "j.backbill.copies"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH9-R05",
+   "world": "WORLD-10",
+   "title": "The Back of the Bill: The Usher’s Rack",
+   "knowledgeQuestion": "Whose needs make a good place to put a checked claim?",
+   "available": {
+    "any": [
+     {
+      "flagSet": "backbill.stage.prepared"
+     },
+     {
+      "flag": "backbill.stage.local-start",
+      "eq": true
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "backbill.stage.o.mount",
+     "title": "Put up a bill that preserves both the price and the signed split.",
+     "essential": false,
+     "done": {
+      "flag": "backbill.stage.installed",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "power",
+       "values",
+       "responsibility"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives"
+      ],
+      "atl": [
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "theatre",
+       "economics"
+      ],
+      "minutes": 3
+     },
+     "skills": [
+      "SK-THK-07"
+     ]
+    },
+    {
+     "id": "backbill.stage.o.serve",
+     "title": "Try the mounted bill with a visitor and point the next reader to it.",
+     "essential": false,
+     "done": {
+      "flag": "backbill.stage.served",
+      "eq": true
+     },
+     "visible": {
+      "objective": "backbill.stage.o.mount"
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "explanation",
+       "perspective"
+      ],
+      "framework": [
+       "perspectives",
+       "scope"
+      ],
+      "atl": [
+       "communication",
+       "social",
+       "self-management"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "theatre",
+       "economics"
+      ],
+      "minutes": 3
+     },
+     "skills": [
+      "SK-SPK-01"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.backbill.stage"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "backbill.emberford.start",
+   "speaker": "kip-arden",
+   "text": "Sefa brought a framed bill from the market players. Three marks to see The Waiting Step. Is that what the players are paid? The sign has a broad brown edge. I think there is paper under it. Have you still got Nell’s little frame?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hold the market bill by the top while Kip loosens its fold.",
+     "if": {
+      "all": [
+       {
+        "flag": "reached.emberford",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "backbill.emberford.started",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.emberford.started",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the bill at the easel for now."
+    }
+   ]
+  },
+  {
+   "id": "backbill.emberford.record",
+   "speaker": "kip-arden",
+   "text": "The front number is still there under the broad edge. Lark can take our fragment to the right press bundle if we send the number with it. The back has torn away.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mark Bill 12 and send the traced frame edge with its fragment.",
+     "if": {
+      "all": [
+       {
+        "flag": "backbill.emberford.started",
+        "eq": true
+       },
+       {
+        "flag": "clue.backbill.emberford.bill.paper-frame",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "backbill.emberford.handled"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.emberford.handled",
+       "value": "frame"
+      }
+     ],
+     "next": "backbill.emberford.note"
+    },
+    {
+     "text": "Fold the loose creased corner back. Send Bill 12 with the surviving line.",
+     "if": {
+      "all": [
+       {
+        "flag": "backbill.emberford.started",
+        "eq": true
+       },
+       {
+        "flag": "clue.backbill.emberford.bill.read",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "clue.backbill.emberford.bill.paper-frame",
+         "eq": true
+        }
+       },
+       {
+        "not": {
+         "flagSet": "backbill.emberford.handled"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.emberford.handled",
+       "value": "crease"
+      }
+     ],
+     "next": "backbill.emberford.note"
+    },
+    {
+     "text": "Keep the fragment under the easel clip for now."
+    }
+   ]
+  },
+  {
+   "id": "backbill.emberford.note",
+   "speaker": "scholar-sefa",
+   "text": "A price can tell me how much to bring. It cannot tell me whom I paid. Put our town’s name on the envelope. The printer will know which market players we mean.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "backbill.copies.start",
+   "speaker": "copies-presskeeper",
+   "text": "The company has ordered a fresh run of Bill 12. There’s plenty of room for the big three. I need the signed line before I can reprint the small one. A proof is a sample from the press. It shows what came out on that paper.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Give Lark the traced edge from Nell’s frame.",
+     "if": {
+      "all": [
+       {
+        "objective": "copies.arrival"
+       },
+       {
+        "not": {
+         "flagSet": "backbill.copies.source"
+        }
+       },
+       {
+        "flag": "backbill.emberford.handled",
+        "eq": "frame"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.copies.source",
+       "value": "frame"
+      }
+     ],
+     "next": "backbill.copies.source.frame"
+    },
+    {
+     "text": "Give Lark the pressed crease from Kip’s envelope.",
+     "if": {
+      "all": [
+       {
+        "objective": "copies.arrival"
+       },
+       {
+        "not": {
+         "flagSet": "backbill.copies.source"
+        }
+       },
+       {
+        "flag": "backbill.emberford.handled",
+        "eq": "crease"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.copies.source",
+       "value": "crease"
+      }
+     ],
+     "next": "backbill.copies.source.crease"
+    },
+    {
+     "text": "Ask Lark to pull the old Bill 12 from the press bundle.",
+     "if": {
+      "all": [
+       {
+        "objective": "copies.arrival"
+       },
+       {
+        "not": {
+         "flagSet": "backbill.copies.source"
+        }
+       },
+       {
+        "not": {
+         "flagSet": "backbill.emberford.handled"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.copies.source",
+       "value": "local"
+      }
+     ],
+     "next": "backbill.copies.source.local"
+    },
+    {
+     "text": "Leave the bundle tied for now."
+    }
+   ]
+  },
+  {
+   "id": "backbill.copies.source.frame",
+   "speaker": "copies-presskeeper",
+   "text": "Your trace meets the lower pin mark exactly. I can pull just that proof to the top. We still need the signed takings from the Record Room.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "backbill.copies.source.crease",
+   "speaker": "copies-presskeeper",
+   "text": "The crease crosses the double nick on Bill 12. Here it is. Bring the signed takings from the Record Room. That sheet can tell us how the company agreed to divide the price.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "backbill.copies.source.local",
+   "speaker": "copies-presskeeper",
+   "text": "Here is the old proof. I can read the number on the back. Bring the signed takings from the Record Room before we do anything with the cut line.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "backbill.copies.ledger",
+   "speaker": "copies-presskeeper",
+   "text": "Bill 12. The venue and company signed under these lines for this run. Each standard ticket costs three marks. Two go to the players. One pays for the hall lamps. The signed split stays here when the proof goes with you.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Match the run number. Copy the two amounts and the signatures beside Bill 12.",
+     "if": {
+      "all": [
+       {
+        "objective": "copies.arrival"
+       },
+       {
+        "flagSet": "backbill.copies.source"
+       },
+       {
+        "not": {
+         "flag": "backbill.copies.ledger",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.copies.ledger",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the signed sheet in its drawer."
+    }
+   ]
+  },
+  {
+   "id": "backbill.copies.seal",
+   "speaker": "copies-presskeeper",
+   "text": "The proof shows what the front invited me to expect. The signed sheet tells us how the marks were to be divided. Pin your check beside the big price. Hari can use the checked sheet when the players get to the House.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the signed split to the proof and take Lark’s checked copy for Hari.",
+     "if": {
+      "all": [
+       {
+        "objective": "copies.arrival"
+       },
+       {
+        "objective": "backbill.copies.o.check"
+       },
+       {
+        "not": {
+         "item": "item.backbill.proof"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.copies.sealed",
+       "value": true
+      }
+     ],
+     "next": "backbill.copies.receipt"
+    },
+    {
+     "text": "Keep the proof by the press for now."
+    }
+   ]
+  },
+  {
+   "id": "backbill.copies.receipt",
+   "speaker": "copies-presskeeper",
+   "text": "Both sides, same number. The clean copy has your check and mine. We call that a reader of both edges at the press. Someone used to bring me only the nicest print. You brought me the line I had to use.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "backbill.stage.prep",
+   "speaker": "stage-host",
+   "text": "We can hang a narrow bill at the door and put the detail where people wait, or make room for the whole bill by the benches. I need a checked division for this run before the ushers set the rack.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Offer Lark’s signed proof of Bill 12.",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.arrival"
+       },
+       {
+        "item": "item.backbill.proof"
+       },
+       {
+        "not": {
+         "flagSet": "backbill.stage.prepared"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.stage.prepared",
+       "value": "press"
+      },
+      {
+       "setFlag": "backbill.stage.recognized",
+       "value": true
+      }
+     ],
+     "next": "backbill.stage.receipt"
+    },
+    {
+     "text": "Ask Hari to find the house duplicate so you can check it here.",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.arrival"
+       },
+       {
+        "not": {
+         "item": "item.backbill.proof"
+        }
+       },
+       {
+        "not": {
+         "flagSet": "backbill.stage.prepared"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.stage.local-start",
+       "value": true
+      }
+     ],
+     "next": "backbill.stage.loan"
+    },
+    {
+     "text": "Leave room for both layouts for now."
+    }
+   ]
+  },
+  {
+   "id": "backbill.stage.receipt",
+   "speaker": "stage-host",
+   "text": "Lark has put both your checks on Bill 12. Reader of Both Edges, {name}. You can set the rack. If you carry a short call, leave the signatures where the next reader can find them.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "backbill.stage.loan",
+   "speaker": "stage-host",
+   "text": "I have a duplicate in the gallery drawer. The box tally has the ticket price. The signed company line has the split. Put both on the rack strip and I will give you the hanging pegs.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "backbill.stage.local",
+   "speaker": "stage-host",
+   "text": "The drawer has two sheets with the same bill number. The box tally says three marks per standard seat. The signed company line gives two to the players and one to the hall lamps. Match the stub to the two sheets before you lift them.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Match the stub and copy both lines onto Hari’s rack strip.",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.arrival"
+       },
+       {
+        "flag": "backbill.stage.local-start",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "backbill.stage.prepared"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.stage.prepared",
+       "value": "house"
+      }
+     ],
+     "next": "backbill.stage.local.ready"
+    },
+    {
+     "text": "Leave the drawer set out for another check."
+    }
+   ]
+  },
+  {
+   "id": "backbill.stage.local.ready",
+   "speaker": "stage-host",
+   "text": "Here are the hanging pegs. Keep the two house sheets together where they can be checked.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "backbill.stage.layout",
+   "speaker": "stage-host",
+   "text": "At the door we have a narrow hook for the big price. That will move the queue quickly, if someone can point people to the signed split. At the gallery benches there is room for the price and split together. The front usher will need to send people farther in.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set aside the short price strip for the foyer and the split for its lower pocket.",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.arrival"
+       },
+       {
+        "flagSet": "backbill.stage.prepared"
+       },
+       {
+        "not": {
+         "flag": "backbill.stage.installed",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.stage.layout",
+       "value": "folded"
+      }
+     ]
+    },
+    {
+     "text": "Set aside a full bill for the gallery’s waiting bench.",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.arrival"
+       },
+       {
+        "flagSet": "backbill.stage.prepared"
+       },
+       {
+        "not": {
+         "flag": "backbill.stage.installed",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.stage.layout",
+       "value": "whole"
+      }
+     ]
+    },
+    {
+     "text": "Keep the pegs in their dish for now."
+    }
+   ]
+  },
+  {
+   "id": "backbill.stage.mount.folded",
+   "speaker": "stage-host",
+   "text": "You can read the top line from the doorway. The signed split fits in the pocket under it at arm height. Someone who only wants the price can keep moving.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pin the big price outside and clip the split in the pocket below.",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.arrival"
+       },
+       {
+        "flag": "backbill.stage.layout",
+        "eq": "folded"
+       },
+       {
+        "not": {
+         "flag": "backbill.stage.installed",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.stage.installed",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Set the strip down beside the pegs."
+    }
+   ]
+  },
+  {
+   "id": "backbill.stage.mount.whole",
+   "speaker": "stage-host",
+   "text": "A family sits here while waiting for the play. They have time to read a wide sheet if we keep it beside the bench. The usher still needs to point to this place from the door.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mount the complete bill beside the waiting bench.",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.arrival"
+       },
+       {
+        "flag": "backbill.stage.layout",
+        "eq": "whole"
+       },
+       {
+        "not": {
+         "flag": "backbill.stage.installed",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.stage.installed",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the whole bill flat for now."
+    }
+   ]
+  },
+  {
+   "id": "backbill.stage.serve.folded",
+   "speaker": "scholar-sefa",
+   "text": "A visitor reads “three” from the doorway and asks whether the players get the whole price. Pull the small signed sheet out of its pocket. The door strip has enough room to tell visitors where that pocket is.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Show the signed split. Clip a pointer to its pocket under the price.",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.arrival"
+       },
+       {
+        "flag": "backbill.stage.layout",
+        "eq": "folded"
+       },
+       {
+        "flag": "backbill.stage.installed",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "backbill.stage.served",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.stage.served",
+       "value": true
+      }
+     ],
+     "next": "backbill.stage.outcome.folded"
+    },
+    {
+     "text": "Let Hari help this visitor for now."
+    }
+   ]
+  },
+  {
+   "id": "backbill.stage.serve.whole",
+   "speaker": "scholar-sefa",
+   "text": "A visitor at the bench points to both lines. “That tells me what the players receive. I had to find the right bench first.” The usher has a blank arrow ready by the frame.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Turn the arrow toward the bench and read the two lines to the next visitor.",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.arrival"
+       },
+       {
+        "flag": "backbill.stage.layout",
+        "eq": "whole"
+       },
+       {
+        "flag": "backbill.stage.installed",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "backbill.stage.served",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.stage.served",
+       "value": true
+      }
+     ],
+     "next": "backbill.stage.outcome.whole"
+    },
+    {
+     "text": "Let Hari help this visitor for now."
+    }
+   ]
+  },
+  {
+   "id": "backbill.stage.outcome.folded",
+   "speaker": "stage-host",
+   "text": "The queue can keep moving. Someone who wants the split can stop at the pocket. I will check that it still has a copy after each bell.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "backbill.stage.outcome.whole",
+   "speaker": "stage-host",
+   "text": "Both amounts stay in the same frame. The front usher points visitors here before calling the next group.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "backbill.stage.return",
+   "speaker": "stage-host",
+   "text": "You brought Lark’s proof too. The two checks match what you put on our rack. I’ll clip it behind the house copy so the next shift can see both sets of checks.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip Lark’s proof behind the checked house sheet.",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.arrival"
+       },
+       {
+        "flag": "backbill.stage.served",
+        "eq": true
+       },
+       {
+        "item": "item.backbill.proof"
+       },
+       {
+        "not": {
+         "flag": "backbill.stage.recognized",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "backbill.stage.recognized",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep Lark’s proof in your bag for now."
+    }
+   ]
+  }
+ ],
+ "clues": [
+  {
+   "id": "backbill.emberford.bill",
+   "name": "The framed market fragment",
+   "text": "THE WAITING STEP. STANDARD SEAT: THREE MARKS. The painted border covers the last line. A loose crease loops behind the card.",
+   "views": [
+    {
+     "keepsake": "paper-frame",
+     "text": "Nell’s frame seats against the old pin marks. Its narrow edge leaves one more line in view. “BILL 12. SEE THE BACK FOR THE DIVISION.” The back has torn away."
+    }
+   ]
+  },
+  {
+   "id": "backbill.copies.proof",
+   "name": "Bill 12 on Lark’s light rest",
+   "text": "The new print says THREE MARKS. The old proof beside it has a blank lower strip where two lines once began. A run number repeats above and below the cut.",
+   "views": [
+    {
+     "keepsake": "paper-frame",
+     "text": "With the frame on the outer pin marks, you can still see the start of the word “shares.” Move it to the small runner’s crop and the word vanishes while the price stays. The frame shows what the crop did. It cannot recover the amounts."
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.backbill.emberford.o.send.1",
+   "objective": "backbill.emberford.o.send",
+   "depth": 1,
+   "text": "Kip cannot see past the frame edge."
+  },
+  {
+   "id": "h.backbill.emberford.o.send.2",
+   "objective": "backbill.emberford.o.send",
+   "depth": 2,
+   "text": "Hold Nell’s card frame against the pin marks, or look for the loose crease you can unfold."
+  },
+  {
+   "id": "h.backbill.emberford.o.send.3",
+   "objective": "backbill.emberford.o.send",
+   "depth": 3,
+   "text": "The market players’ bill is beside the southeast stalls. The envelope is just east of it."
+  },
+  {
+   "id": "h.backbill.emberford.o.send.4",
+   "objective": "backbill.emberford.o.send",
+   "depth": 4,
+   "text": "Use the card frame on the bill or read where the loose corner can be pulled back. At the envelope, send the line and Bill 12 to Lark."
+  },
+  {
+   "id": "h.backbill.copies.o.check.1",
+   "objective": "backbill.copies.o.check",
+   "depth": 1,
+   "text": "What the press puts on the paper and what the company will receive need different checks."
+  },
+  {
+   "id": "h.backbill.copies.o.check.2",
+   "objective": "backbill.copies.o.check",
+   "depth": 2,
+   "text": "Look at what fits in the old print. Then look for who signed the numbers."
+  },
+  {
+   "id": "h.backbill.copies.o.check.3",
+   "objective": "backbill.copies.o.check",
+   "depth": 3,
+   "text": "Bill 12 is on the light rest in the Print Workshop. The signed split is in the Record Room drawer."
+  },
+  {
+   "id": "h.backbill.copies.o.check.4",
+   "objective": "backbill.copies.o.check",
+   "depth": 4,
+   "text": "Read the proof, then match Bill 12 in the drawer and take both amounts and signatures. You can use Nell’s frame on the proof for another view."
+  },
+  {
+   "id": "h.backbill.copies.o.seal.1",
+   "objective": "backbill.copies.o.seal",
+   "depth": 1,
+   "text": "Lark has a way to keep the claim and its source together."
+  },
+  {
+   "id": "h.backbill.copies.o.seal.2",
+   "objective": "backbill.copies.o.seal",
+   "depth": 2,
+   "text": "Give Lark your checked division at the press."
+  },
+  {
+   "id": "h.backbill.copies.o.seal.3",
+   "objective": "backbill.copies.o.seal",
+   "depth": 3,
+   "text": "Lark’s check tray is inside the Print Workshop’s west aisle."
+  },
+  {
+   "id": "h.backbill.copies.o.seal.4",
+   "objective": "backbill.copies.o.seal",
+   "depth": 4,
+   "text": "Clip the signed split beside the proof to take a checked copy to Hari."
+  },
+  {
+   "id": "h.backbill.stage.o.mount.1",
+   "objective": "backbill.stage.o.mount",
+   "depth": 1,
+   "text": "The ushers need a way to help people who want the price or the division."
+  },
+  {
+   "id": "h.backbill.stage.o.mount.2",
+   "objective": "backbill.stage.o.mount",
+   "depth": 2,
+   "text": "Give Hari Lark’s signed proof or check the duplicate in the gallery drawer."
+  },
+  {
+   "id": "h.backbill.stage.o.mount.3",
+   "objective": "backbill.stage.o.mount",
+   "depth": 3,
+   "text": "Pick up the hanging pegs at the gallery rack desk. The quick strip goes near the foyer bench and the full bill goes east in the gallery."
+  },
+  {
+   "id": "h.backbill.stage.o.mount.4",
+   "objective": "backbill.stage.o.mount",
+   "depth": 4,
+   "text": "Choose one layout on Hari’s rack and hang it at its marked site. Both keep the price and the checked split."
+  },
+  {
+   "id": "h.backbill.stage.o.serve.1",
+   "objective": "backbill.stage.o.serve",
+   "depth": 1,
+   "text": "Find the first person who stops at the mounted bill."
+  },
+  {
+   "id": "h.backbill.stage.o.serve.2",
+   "objective": "backbill.stage.o.serve",
+   "depth": 2,
+   "text": "The visitor may need the pocket or a route to the bench."
+  },
+  {
+   "id": "h.backbill.stage.o.serve.3",
+   "objective": "backbill.stage.o.serve",
+   "depth": 3,
+   "text": "Use the bill where you mounted it in the foyer or the gallery."
+  },
+  {
+   "id": "h.backbill.stage.o.serve.4",
+   "objective": "backbill.stage.o.serve",
+   "depth": 4,
+   "text": "Show the smaller signed sheet and mark its pocket, or point the usher toward the whole bill beside the bench."
+  }
+ ],
+ "items": [
+  {
+   "id": "item.backbill.proof",
+   "name": "Lark’s checked Bill 12",
+   "description": "A signed proof with the large price, the two shares and your check. Take it to Host Hari in the House of Performance.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "awards": [
+  {
+   "id": "award.back-of-the-bill",
+   "kind": "badge",
+   "name": "Reader of Both Edges",
+   "earnedBy": "You matched a cropped playbill to the signed split before taking a checked copy to the House of Performance.",
+   "title": "Reader of Both Edges",
+   "criteria": [],
+   "when": {
+    "objective": "backbill.copies.o.seal"
+   }
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.backbill.copies",
+   "claimKind": "interpretation",
+   "text": "Bill 12 gave the three-mark price a wide space. The signed split gave two to the players and one to the hall lamps. I clipped the split where the printed price could not travel alone."
+  },
+  {
+   "id": "j.backbill.stage",
+   "claimKind": "interpretation",
+   "text": "The box price told a visitor what to bring. The signed split told a different part of the story. At the House the usher now knows where to point a reader for both."
+  }
+ ]
+}

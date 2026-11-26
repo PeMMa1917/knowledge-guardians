@@ -1,0 +1,332 @@
+{
+  "met:1970.120": [
+    {
+      "name": "John La Farge",
+      "role": "Artist",
+      "detail": "The collection credits John La Farge for the work described under accession 1970.120.",
+      "source": "HIS-LOAD-vaiala-canoe"
+    }
+  ],
+  "met:17.78.36": [
+    {
+      "name": "Charles Meryon",
+      "role": "Printmaker",
+      "detail": "The collection credits Charles Meryon for the work described under accession 17.78.36.",
+      "source": "HIS-LOAD-akaroa-store"
+    }
+  ],
+  "met:17.78.30": [
+    {
+      "name": "Charles Meryon",
+      "role": "Printmaker",
+      "detail": "The collection credits Charles Meryon for the work described under accession 17.78.30.",
+      "source": "HIS-LOAD-tonga-pilot"
+    }
+  ],
+  "met:17.78.38": [
+    {
+      "name": "Charles Meryon",
+      "role": "Printmaker",
+      "detail": "The collection credits Charles Meryon for the work described under accession 17.78.38.",
+      "source": "HIS-LOAD-mulgrave-print"
+    }
+  ],
+  "met:2005.100.785": [
+    {
+      "name": "Alexander Gardner",
+      "role": "Photographer",
+      "detail": "The Met credits Gardner for the 1865 group photograph.",
+      "source": "HIS-LOAD-emma-portrait"
+    },
+    {
+      "name": "Queen Emma of Hawaiʻi",
+      "role": "Portrayed historical figure",
+      "detail": "The museum identifies Queen Emma and her entourage in the photograph’s title. The image gives one sitting.",
+      "source": "HIS-LOAD-emma-portrait"
+    }
+  ],
+  "met:2025.767": [
+    {
+      "name": "Constance Frederica Gordon-Cumming",
+      "role": "Artist",
+      "detail": "The collection credits Constance Frederica Gordon-Cumming for the work described under accession 2025.767.",
+      "source": "HIS-LOAD-hilo-water"
+    }
+  ],
+  "met:17.78.34": [
+    {
+      "name": "Charles Meryon",
+      "role": "Printmaker",
+      "detail": "The collection credits Charles Meryon for the work described under accession 17.78.34.",
+      "source": "HIS-LOAD-uvea-fishing"
+    }
+  ],
+  "met:63.550.17": [
+    {
+      "name": "Charles Parsons",
+      "role": "Lithographer",
+      "detail": "The lower-right inscription credits Parsons for putting the design on the stone.",
+      "source": "HIS-LOAD-red-jacket"
+    },
+    {
+      "name": "Joseph B. Smith",
+      "role": "Source designer",
+      "detail": "The Met credits a design after Joseph B. Smith. The lower-left inscription gives J. B. Smith & Son for drawing.",
+      "source": "HIS-LOAD-red-jacket"
+    },
+    {
+      "name": "Nathaniel Currier",
+      "role": "Publisher",
+      "detail": "The Met credits Nathaniel Currier for lithography and publication.",
+      "source": "HIS-LOAD-red-jacket"
+    }
+  ],
+  "met:jp473": [
+    {
+      "name": "Utagawa Hiroshige",
+      "role": "Printmaker",
+      "detail": "The collection credits Utagawa Hiroshige for the work described under accession JP473.",
+      "source": "HIS-LOAD-rokugo-ferry"
+    }
+  ],
+  "met:jp1336": [
+    {
+      "name": "Katsushika Hokusai",
+      "role": "Artist",
+      "detail": "The collection credits Katsushika Hokusai for the work described under accession JP1336.",
+      "source": "HIS-LOAD-onden-wheel"
+    }
+  ],
+  "met:jp1666": [
+    {
+      "name": "Kitagawa Utamaro",
+      "role": "Printmaker",
+      "detail": "The collection credits Kitagawa Utamaro for the work described under accession JP1666.",
+      "source": "HIS-LOAD-snow-landing"
+    }
+  ],
+  "met:1997.166": [
+    {
+      "name": "Guo Xu",
+      "role": "Artist",
+      "detail": "The collection credits Guo Xu for the work described under accession 1997.166.",
+      "source": "HIS-LOAD-weighing-books"
+    }
+  ],
+  "met:jp3230": [
+    {
+      "name": "Utagawa Kunitoshi",
+      "role": "Printmaker",
+      "detail": "The collection credits Utagawa Kunitoshi for the work described under accession JP3230.",
+      "source": "HIS-LOAD-imperial-carriage"
+    }
+  ],
+  "met:jp3270": [
+    {
+      "name": "Utagawa Kuniteru",
+      "role": "Printmaker",
+      "detail": "The collection credits Utagawa Kuniteru for the work described under accession JP3270.",
+      "source": "HIS-LOAD-takanawa-steam"
+    }
+  ],
+  "met:2007.49.127a-e": [
+    {
+      "name": "Utagawa (Gountei) Sadahide",
+      "role": "Artist",
+      "detail": "The collection credits Utagawa (Gountei) Sadahide for the work described under accession 2007.49.127a–e.",
+      "source": "HIS-LOAD-yokohama-load"
+    }
+  ],
+  "met:2026.347": [
+    {
+      "name": "Renjō Shimooka",
+      "role": "Artist",
+      "detail": "The collection credits Renjō Shimooka for the work described under accession 2026.347.",
+      "source": "HIS-LOAD-market-porter"
+    }
+  ],
+  "met:2005.100.505.1-40b": [
+    {
+      "name": "Suzuki Shin'ichi",
+      "role": "Photographer",
+      "detail": "The collection credits Suzuki Shin'ichi for the work described under accession 2005.100.505.1 (40b).",
+      "source": "HIS-LOAD-carriage-sitter"
+    }
+  ],
+  "met:54.90.155": [
+    {
+      "name": "Nicolino Calyo",
+      "role": "Artist",
+      "detail": "The collection credits Nicolino Calyo for the work described under accession 54.90.155.",
+      "source": "HIS-LOAD-harlem-cut"
+    }
+  ],
+  "met:54.90.178": [
+    {
+      "name": "William H. Schenck",
+      "role": "Artist",
+      "detail": "The collection credits William H. Schenck for the work described under accession 54.90.178.",
+      "source": "HIS-LOAD-third-avenue-depot"
+    }
+  ],
+  "met:14.102.115": [
+    {
+      "name": "Enoch Wood & Sons",
+      "role": "Maker",
+      "detail": "The collection credits Enoch Wood & Sons for the work described under accession 14.102.115.",
+      "source": "HIS-LOAD-railway-dish"
+    }
+  ],
+  "met:54.90.507": [
+    {
+      "name": "William P. Chappel",
+      "role": "Artist",
+      "detail": "The collection credits William P. Chappel for the work described under accession 54.90.507.",
+      "source": "HIS-LOAD-garbage-cart"
+    }
+  ],
+  "met:2010.518": [
+    {
+      "name": "James Fitzallen Ryder",
+      "role": "Photographer",
+      "detail": "The collection credits James Fitzallen Ryder for the work described under accession 2010.518.",
+      "source": "HIS-LOAD-winter-trestle"
+    }
+  ],
+  "met:93.10.25a-b": [
+    {
+      "name": "Louis-Oscar Roty",
+      "role": "Medalist",
+      "detail": "The collection credits Louis-Oscar Roty for the work described under accession 93.10.25a, b.",
+      "source": "HIS-LOAD-algiers-constantine"
+    }
+  ],
+  "met:1991.22": [
+    {
+      "name": "Jean-François-Antoine Bovy",
+      "role": "Medalist",
+      "detail": "The Met credits Bovy for this 1842 medal.",
+      "source": "HIS-LOAD-french-railway-medal"
+    },
+    {
+      "name": "Louis-Philippe",
+      "role": "Portrayed historical figure",
+      "detail": "The king’s profile is the medal’s visible face in the collection image.",
+      "source": "HIS-LOAD-french-railway-medal"
+    }
+  ],
+  "met:54.90.781": [
+    {
+      "name": "Nathaniel Currier",
+      "role": "Lithographer and publisher",
+      "detail": "The collection credits Currier for lithography and publication.",
+      "source": "HIS-LOAD-express-pilot"
+    },
+    {
+      "name": "Captain McGuire",
+      "role": "Commander named in the print",
+      "detail": "The legend names Captain McGuire beside the pilot boat and its February 9 departure.",
+      "source": "HIS-LOAD-express-pilot"
+    }
+  ],
+  "met:92.10.55": [
+    {
+      "name": "Robert Charles Dudley",
+      "role": "Artist",
+      "detail": "The collection credits Robert Charles Dudley for the work described under accession 92.10.55.",
+      "source": "HIS-LOAD-great-eastern-cable"
+    }
+  ],
+  "met:1972.270": [
+    {
+      "name": "Pierre Puvis de Chavannes",
+      "role": "Artist",
+      "detail": "The collection credits Pierre Puvis de Chavannes for the work described under accession 1972.270.",
+      "source": "HIS-LOAD-unloading-sketch"
+    }
+  ],
+  "met:32.100.36": [
+    {
+      "name": "Adriaen Isenbrant",
+      "role": "Artist",
+      "detail": "The collection credits Adriaen Isenbrant for the work described under accession 32.100.36.",
+      "source": "HIS-LOAD-gold-balance"
+    }
+  ],
+  "met:25.83.11": [
+    {
+      "name": "Wenceslaus Hollar",
+      "role": "Printmaker",
+      "detail": "The collection credits Wenceslaus Hollar for the work described under accession 25.83.11.",
+      "source": "HIS-LOAD-dutch-cargo-etching"
+    }
+  ],
+  "met:59.533.1696": [
+    {
+      "name": "Thomas Rowlandson",
+      "role": "Printmaker",
+      "detail": "The collection credits Rowlandson for this hand-coloured plate.",
+      "source": "HIS-LOAD-weighing-1799"
+    },
+    {
+      "name": "S. W. Fores",
+      "role": "Publisher",
+      "detail": "The Met credits this publisher for the dated issue.",
+      "source": "HIS-LOAD-weighing-1799"
+    }
+  ],
+  "met:51.501.3683": [
+    {
+      "name": "Simon Guillain II",
+      "role": "Etcher",
+      "detail": "The collection credits Guillain for this etched plate 11.",
+      "source": "HIS-LOAD-bologna-wagon"
+    },
+    {
+      "name": "Annibale Carracci",
+      "role": "Source designer",
+      "detail": "This plate carries the museum credit after a figure design by Carracci.",
+      "source": "HIS-LOAD-bologna-wagon"
+    }
+  ],
+  "cma:1953.371": [
+    {
+      "name": "Carl Gaertner",
+      "role": "Artist",
+      "detail": "The collection credits Carl Gaertner for the work described under accession 1953.371.",
+      "source": "HIS-LOAD-pie-wagon"
+    }
+  ],
+  "cma:1996.353": [
+    {
+      "name": "Alfred Rosling",
+      "role": "Photographer",
+      "detail": "The collection credits Alfred Rosling for the work described under accession 1996.353.",
+      "source": "HIS-LOAD-swansea-harbour"
+    }
+  ],
+  "cma:2021.108": [
+    {
+      "name": "Eugène Delacroix",
+      "role": "Artist",
+      "detail": "The collection credits Eugène Delacroix for the work described under accession 2021.108.",
+      "source": "HIS-LOAD-dieppe-boats"
+    }
+  ],
+  "cma:2002.50": [
+    {
+      "name": "William H. Rau",
+      "role": "Photographer",
+      "detail": "The collection credits William H. Rau for the work described under accession 2002.50.",
+      "source": "HIS-LOAD-lehigh-valley"
+    }
+  ],
+  "cma:2010.581": [
+    {
+      "name": "Frank Short",
+      "role": "Artist",
+      "detail": "The collection credits Frank Short for the work described under accession 2010.581.",
+      "source": "HIS-LOAD-chichester-haze"
+    }
+  ]
+}

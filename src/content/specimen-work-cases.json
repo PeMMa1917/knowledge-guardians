@@ -1,0 +1,738 @@
+[
+  {
+    "slug": "sieve",
+    "room": "market",
+    "title": "The Two Pans",
+    "stake": "The low table needs a fine batch now. The cart crew can use coarser meal if they know which pan it came from.",
+    "knowledgeQuestion": "What can a result mean when we change the opening of a test?",
+    "preview": "Two identical practice scoops contain twelve marked bits each. The small pan is for finer meal. The cart can take a mixed pan with its trial slip. There is one tray to send before the bell.",
+    "arrangeLabel": "the kitchen’s two packing trays",
+    "trials": [
+      {
+        "label": "the open sifting frame",
+        "art": "water.split",
+        "checkedArt": "forest.notice",
+        "action": "Shake a scoop through the wider openings.",
+        "preview": "The marked scoop sits over the wider mesh. The tray beneath is empty.",
+        "result": "Nine marked bits fall through. Three stay on the mesh. This pan includes fine and middle-sized bits."
+      },
+      {
+        "label": "the close sifting frame",
+        "art": "water.fields",
+        "checkedArt": "forest.screen",
+        "action": "Shake the matching scoop through the finer openings.",
+        "preview": "The other scoop starts with the same twelve marked bits. The mesh is tighter.",
+        "result": "Five bits fall through and seven stay above. The small pan has the finer fraction. Both scoops began with the same mix. Only the mesh changed."
+      }
+    ],
+    "branches": [
+      {
+        "key": "fine",
+        "choice": "Send the finer pan to the low table.",
+        "delivery": "the small pan at the low kitchen table",
+        "art": "market.rest-mat",
+        "doneArt": "preserved.display-records",
+        "x": 4,
+        "y": 11,
+        "opening": "The cook checks the tray with one finger. “Five pieces through the fine mesh. Good. I can start the small smooth batch here.”",
+        "action": "Set the fine pan beside the small mixing bowl.",
+        "result": "The low table serves its batch first. The coarse meal remains separate for a later cart. The cook pins the mesh used beside the pan."
+      },
+      {
+        "key": "mixed",
+        "choice": "Tag the wider-mesh pan for the cart.",
+        "delivery": "the labelled mixed pan at the loading rail",
+        "art": "nexus.pack-tally",
+        "doneArt": "preserved.display-paired",
+        "x": 7,
+        "y": 12,
+        "opening": "The loader sets a scoop beside the cart. “This goes farther. I can see why its texture differs from the small pan.”",
+        "action": "Latch the tray and clip the wider-mesh slip to it.",
+        "result": "The cart takes nine marked parts. The low table waits for its finer batch. The loader can read which mesh made this pan without reopening the shed."
+      }
+    ],
+    "journal": "Both scoops began alike. The mesh and the purpose of the receiving job explain why the pans travelled differently.",
+    "concepts": [
+      "evidence",
+      "objectivity",
+      "explanation",
+      "responsibility"
+    ],
+    "framework": [
+      "scope",
+      "methods-and-tools",
+      "ethics"
+    ],
+    "subjects": [
+      "design-tech",
+      "chemistry",
+      "math-ai"
+    ],
+    "aoks": [
+      "NAT",
+      "MAT"
+    ],
+    "object": {
+      "id": "cma:1915.464",
+      "institution": "Cleveland Museum of Art",
+      "accession": "1915.464",
+      "title": "Sifting Basket",
+      "displayName": "Sifting Basket",
+      "date": "before 1915",
+      "medium": "Plant fibers and dye",
+      "dimensions": "Overall: 39.4 cm (15 1/2 in.); Outside: 39.4 x 20.7 cm (15 1/2 x 8 1/8 in.)",
+      "attribution": "Possibly Chokwe-style maker",
+      "place": "Democratic Republic of the Congo or Angola",
+      "catalogUrl": "https://clevelandart.org/art/1915.464",
+      "observation": "The museum identifies a sifting basket woven from plant fibers, with a diameter of 39.4 cm. Its description explains the separation of fine maize flour from coarser particles.",
+      "limit": "The cultural attribution is tentative. The mesh opening and yield are open questions for this basket.",
+      "verifiedOn": "2026-11-26",
+      "dateKind": "Latest date of making recorded by the museum",
+      "altText": "Museum view of a woven basket with a round rim and interlaced plant fibers."
+    }
+  },
+  {
+    "slug": "bowl",
+    "room": "market",
+    "title": "The Wood Look",
+    "stake": "A display seller wants to catch a passer’s eye. A repair learner needs a material note they can use at a bench.",
+    "knowledgeQuestion": "When does a good resemblance stop helping us identify a material?",
+    "preview": "The catalogue calls the Kuba-style bowl earthenware. These two practice bodies share a profile and a dark finish. Vera needs an honest way to show the resemblance without sending a repair learner to the wood shelf.",
+    "arrangeLabel": "Vera’s two bowls and the display hooks",
+    "trials": [
+      {
+        "label": "the matched profiles under the angled lamp",
+        "art": "fitting-views.lamp",
+        "checkedArt": "fitting-views.surface",
+        "action": "Turn both profiles toward the same light.",
+        "preview": "Both practice rims have the same line. The side lamp lights the upper edges equally.",
+        "result": "The black finish and cut lines look close from this angle. At the lip, even the grain-like marks could belong to either practice piece."
+      },
+      {
+        "label": "the bare bases and intake slips",
+        "art": "metalworks.receipt",
+        "checkedArt": "preserved.display-records",
+        "action": "Turn the two practice bodies over and match the base tags.",
+        "preview": "The bases are unfinished. Each practice body has a separate maker’s slip under it.",
+        "result": "One base shows end grain and the tag says wood. The other shows bare clay and a clay tag. The matched lip was a poor material test."
+      }
+    ],
+    "branches": [
+      {
+        "key": "show",
+        "choice": "Hang the two look-alike profiles at the display stall with the material note.",
+        "delivery": "the finished profiles at the display stall",
+        "art": "fitting-views.surface",
+        "doneArt": "preserved.display-paired",
+        "x": 26,
+        "y": 12,
+        "opening": "The stall holder points at the two dark rims. “I can start with the surprise. Will you hang the tags where a visitor can turn them?”",
+        "action": "Clip the two material tags beneath the matched profiles.",
+        "result": "The display makes the resemblance easy to see from the lane. At the repair bench, a learner still has to request the bare bases before trying a repair."
+      },
+      {
+        "key": "repair",
+        "choice": "Take the bare-base pair to the repair learner.",
+        "delivery": "the identified bases at the repair lane",
+        "art": "fitting-views.plate",
+        "doneArt": "preserved.display-records",
+        "x": 21,
+        "y": 11,
+        "opening": "The learner clears a seat at the bench. “Show me the plain bases. I had already fetched the wood tool for both.”",
+        "action": "Set each bare base above its own intake slip.",
+        "result": "The learner can choose a material-specific practice repair. The display lane keeps a small outline card and sends visitors here for the full comparison."
+      }
+    ],
+    "journal": "The Kuba-style museum bowl has a documented material and a probable use. The repair pair made the limits of appearance visible without testing the historical bowl.",
+    "concepts": [
+      "evidence",
+      "certainty",
+      "interpretation",
+      "justification"
+    ],
+    "framework": [
+      "scope",
+      "perspectives",
+      "methods-and-tools"
+    ],
+    "subjects": [
+      "visual-arts",
+      "design-tech",
+      "chemistry"
+    ],
+    "aoks": [
+      "ART",
+      "NAT"
+    ],
+    "object": {
+      "id": "cma:1994.89",
+      "institution": "Cleveland Museum of Art",
+      "accession": "1994.89",
+      "title": "Bowl",
+      "displayName": "Kuba-style earthenware bowl with a woodlike surface",
+      "date": "early 1900s",
+      "medium": "Earthenware",
+      "dimensions": "Diameter: 26.4 cm (10 3/8 in.); Overall: 8.4 cm (3 5/16 in.)",
+      "attribution": "Kuba-style maker",
+      "place": "Democratic Republic of the Congo",
+      "catalogUrl": "https://clevelandart.org/art/1994.89",
+      "observation": "Earthenware with a surface worked to resemble carved wood. The museum suggests it may once have held cosmetics.",
+      "limit": "The material is documented. The cosmetic use is a curatorial inference.",
+      "verifiedOn": "2026-11-26",
+      "dateKind": "Period of making assigned by the museum",
+      "altText": "Museum view of a patterned earthenware bowl with a shallow body and dark surface."
+    }
+  },
+  {
+    "slug": "cover",
+    "room": "market",
+    "title": "The Cover Between Turns",
+    "stake": "A serving counter needs quick turns. The waiting bench needs a cover that stays in place while the porter is away.",
+    "knowledgeQuestion": "How do two ways to test a useful feature change what we mean by better?",
+    "preview": "The Zulu pot record shows a terracotta body and a separate plant-fiber lid. Here the crew has two plain practice water pots, a woven cover and six paper flecks. They can spare the cover for one station.",
+    "arrangeLabel": "the water pots’ one spare cover",
+    "trials": [
+      {
+        "label": "the open water pot by the paper fan",
+        "art": "water.channel",
+        "checkedArt": "water.fields",
+        "action": "Leave the first pot open for one fan turn.",
+        "preview": "Six paper flecks wait on a line. This pot’s opening stays uncovered.",
+        "result": "Three flecks land in the open pot. When the porter returns, the handle is immediately ready, but the water must be checked before serving."
+      },
+      {
+        "label": "the covered pot by its marked rest",
+        "art": "board-stand",
+        "checkedArt": "forest.screen",
+        "action": "Put the woven cover on for the same fan turn.",
+        "preview": "The second pot is the same size. Six flecks start on the same marks.",
+        "result": "The woven cover catches the three flecks that reached the opening. When it is lifted, one hand holds the cover and the other reaches the handle."
+      }
+    ],
+    "branches": [
+      {
+        "key": "turns",
+        "choice": "Station the cover at the serving counter with a lifting rest.",
+        "delivery": "the busy serving counter and its lifting rest",
+        "art": "market.rest-mat",
+        "doneArt": "workbench",
+        "x": 29,
+        "y": 11,
+        "opening": "The server has another cup ready. “When I lift with my left hand, set the cover where I can reach it on the next turn.”",
+        "action": "Set the cover in the rest between servings.",
+        "result": "The server can lift and replace the cover in one place. The waiting bench keeps its own smaller vessel until the shared cover returns."
+      },
+      {
+        "key": "wait",
+        "choice": "Leave the pot covered at the waiting bench.",
+        "delivery": "the covered pot on the waiting bench",
+        "art": "forest.screen",
+        "doneArt": "market.rest-mat",
+        "x": 30,
+        "y": 12,
+        "opening": "The porter sets both hands on the loaded crate. “I can put this down before I lift anything. Let the cover stay while I’m out.”",
+        "action": "Seat the cover and mark the waiting place.",
+        "result": "The returning porter finds the protected pot ready for a check. The serving counter must pause to bring out a second vessel when its line gets longer."
+      }
+    ],
+    "journal": "The fan trials showed what the cover prevents and what the lift costs. The delivery choice used both results.",
+    "concepts": [
+      "evidence",
+      "explanation",
+      "values",
+      "responsibility"
+    ],
+    "framework": [
+      "methods-and-tools",
+      "ethics",
+      "scope"
+    ],
+    "subjects": [
+      "design-tech",
+      "physics"
+    ],
+    "aoks": [
+      "NAT"
+    ],
+    "object": {
+      "id": "cma:1999.13",
+      "institution": "Cleveland Museum of Art",
+      "accession": "1999.13",
+      "title": "Lidded Pot",
+      "displayName": "Zulu terracotta pot and woven lid",
+      "date": "1900s",
+      "medium": "Terracotta and plant fiber",
+      "dimensions": "Diameter: 45.7 cm (18 in.); Overall: 33 cm (13 in.)",
+      "attribution": "Zulu attribution, potter and lid maker individually unrecorded",
+      "place": "South Africa",
+      "catalogUrl": "https://clevelandart.org/art/1999.13",
+      "observation": "The record catalogues a terracotta vessel and plant-fiber lid together. The museum says the lid helps keep debris out of the opening.",
+      "limit": "The catalogue associates the historic vessel with beer service. The game trial uses water and independent plain model covers.",
+      "verifiedOn": "2026-11-26",
+      "dateKind": "Century of making recorded by the museum",
+      "altText": "Museum view of a rounded lidded pot. The catalogue identifies a separate plant-fiber lid."
+    }
+  },
+  {
+    "slug": "reed",
+    "room": "market",
+    "title": "Where the Fleck Stopped",
+    "stake": "Two water stall keepers need different things from one test. One needs a quick catch tray. The other needs a way to repeat the check.",
+    "knowledgeQuestion": "What can a successful model tell us about the purpose of an older object?",
+    "preview": "The Smithsonian identifies a Ganda artist and describes a loosely woven end that probably served as a filter. Sali has two new clear trial tubes of matching width. One has a plain open end and one has a woven sleeve. Both carry water to paper catch trays.",
+    "arrangeLabel": "Sali’s tray and two signed sleeve slips",
+    "trials": [
+      {
+        "label": "the plain tube and catch sheet",
+        "art": "water.channel",
+        "checkedArt": "water.notice",
+        "action": "Release one measure of water through the plain test tube.",
+        "preview": "The plain tube has no end sleeve. A flat paper fleck floats in the trial water.",
+        "result": "The fleck reaches the catch sheet with the water. That is the comparison for the same release through the sleeved tube."
+      },
+      {
+        "label": "the sleeved tube and catch sheet",
+        "art": "forest.screen",
+        "checkedArt": "preserved.display-paired",
+        "action": "Release the second measure through the woven trial sleeve.",
+        "preview": "The second dose has another fleck of the same size. The sleeve sits across the tube end.",
+        "result": "The sleeve keeps the fleck at the opening and the water reaches the catch sheet. The trial supports a possible filter use for that shape. It tests this sleeve only."
+      }
+    ],
+    "branches": [
+      {
+        "key": "demo",
+        "choice": "Fit the removable test sleeve at the wash station and keep its test label.",
+        "delivery": "the removable trial sleeve at the wash station",
+        "art": "forest.screen",
+        "doneArt": "preserved.display-paired",
+        "x": 10,
+        "y": 11,
+        "opening": "The wash keeper holds up a clean sheet. “I can show a worker what this sample sleeve caught. Leave the comparison on the sheet.”",
+        "action": "Set the sleeved trial and the plain result side by side.",
+        "result": "A worker can repeat the catch demonstration at the wash station. The historical label keeps “probably served as a filter” with the museum object."
+      },
+      {
+        "key": "repeat",
+        "choice": "Send both labelled catch sheets to the measure desk.",
+        "delivery": "both catch sheets at the measure desk",
+        "art": "copies.source",
+        "doneArt": "preserved.display-records",
+        "x": 13,
+        "y": 12,
+        "opening": "The clerk marks two spaces on the form. “Next time they bring a different sleeve, I’ll need these two results as a pair.”",
+        "action": "Clip each catch sheet to its tested tube sketch.",
+        "result": "The desk receives records it can use in a repeat test. The wash station gets only an empty stand until a new sleeve arrives."
+      }
+    ],
+    "journal": "The water trial made a possible purpose visible. It gives no direct record of how the late nineteenth-century reed was used.",
+    "concepts": [
+      "evidence",
+      "certainty",
+      "interpretation",
+      "objectivity"
+    ],
+    "framework": [
+      "scope",
+      "methods-and-tools"
+    ],
+    "subjects": [
+      "history",
+      "physics",
+      "design-tech"
+    ],
+    "aoks": [
+      "HIS",
+      "NAT"
+    ],
+    "object": {
+      "id": "nmafa:89-8-34",
+      "institution": "Smithsonian National Museum of African Art",
+      "accession": "89-8-34",
+      "title": "Beer straw",
+      "displayName": "Ganda woven reed straw",
+      "date": "Late 19th century",
+      "medium": "Plant fiber, reed, copper alloy",
+      "dimensions": "H x W x D: 61 x 1.6 x 6.4 cm (24 x 5/8 x 2 1/2 in.)",
+      "attribution": "Ganda artist, name unrecorded",
+      "place": "Uganda, collected there in 1882 according to the Smithsonian record",
+      "catalogUrl": "https://collections.si.edu/search/detail/edanmdm:nmafa_89-8-34",
+      "observation": "The catalogue identifies a reed shaft with a plant-fibre surround. It describes a loosely woven bulb-like end that probably acted as a filter.",
+      "limit": "The historic material record gives reed, plant fibre and copper alloy. It calls the filter function probable. The fictional water trial measures what happened in the practice sleeve.",
+      "verifiedOn": "2026-11-26",
+      "dateKind": "Period of making recorded by the museum",
+      "altText": "Smithsonian photograph of a narrow curved reed with long woven sections and a wider woven end."
+    }
+  },
+  {
+    "slug": "pulley",
+    "room": "stage",
+    "title": "The Shuttle’s Path",
+    "stake": "The loom scene needs a moving part that a performer can repeat. A visitor might miss the second face if the moving frame turns away.",
+    "knowledgeQuestion": "How can the appearance and movement of a tool answer different questions?",
+    "preview": "The Met shows a Baule heddle pulley with opposing carved faces. The loft has a plain rig for its play. Two rows of cord cross at the same height, and a flat wooden shuttle waits beside them. Change the pull and see where the gap opens.",
+    "arrangeLabel": "the rig’s two rehearsal hooks",
+    "trials": [
+      {
+        "label": "the first rig pull with both rows even",
+        "art": "stage.cues",
+        "checkedArt": "nexus.print-edge",
+        "action": "Draw the marked cord to raise the near row.",
+        "preview": "The shuttle sits at the first tape mark. The far row stays low when you lift the near row.",
+        "result": "The layers separate. The shuttle passes the first gap and stops on the opposite side. A side-on drawing still shows only one face of the carved reference."
+      },
+      {
+        "label": "the second rig pull at the far hook",
+        "art": "stage.rehearsal",
+        "checkedArt": "nexus.print-pinned",
+        "action": "Ease the near row and pull the far row high.",
+        "preview": "The shuttle sits at the far tape mark for the return run. This pull opens the other gap.",
+        "result": "The shuttle can return as the two rows change places. The paired faces belong to the record drawing. The change in the thread belongs to the working rig."
+      }
+    ],
+    "branches": [
+      {
+        "key": "move",
+        "choice": "Set the working rig at the near rehearsal rail.",
+        "delivery": "the moving plain loom rig at the near rail",
+        "art": "stage.rehearsal",
+        "doneArt": "preserved.display-paired",
+        "x": 4,
+        "y": 4,
+        "opening": "One performer needs to time the shuttle to the pull. The lower rail places both hand marks within reach.",
+        "action": "Hook both pull cords on the rehearsal marks.",
+        "result": "The performer completes a back-and-forth rehearsal without an assistant. Visitors can find the Baule pulley’s name and two faces beside the drawing. The plain working rig carries the prop maker’s own mark."
+      },
+      {
+        "key": "turn",
+        "choice": "Set the paired-face drawing out at the high rail.",
+        "delivery": "the two views of the carved pulley at the high rail",
+        "art": "preserved.display-paired",
+        "doneArt": "preserved.display-records",
+        "x": 8,
+        "y": 4,
+        "opening": "A visitor rotates a drawing over their palm. “Now I can keep both views in sight. Could you leave this open while I trace the cord?”",
+        "action": "Mount the paired drawing and one working cord sample.",
+        "result": "The visitor traces the line in a still view. She leaves the Baule attribution with that drawing and uses a separate label for the practice rig. The performers can share their own method without speaking for the pulley’s maker."
+      }
+    ],
+    "journal": "The plain rig answered a movement question. The carved Baule pulley’s opposing faces gave visitors a separate reason to look.",
+    "concepts": [
+      "evidence",
+      "explanation",
+      "perspective",
+      "responsibility",
+      "culture"
+    ],
+    "framework": [
+      "scope",
+      "perspectives",
+      "methods-and-tools"
+    ],
+    "subjects": [
+      "design-tech",
+      "visual-arts",
+      "physics"
+    ],
+    "aoks": [
+      "ART",
+      "NAT"
+    ],
+    "object": {
+      "id": "met:2015.485.2",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "2015.485.2",
+      "title": "Heddle pulley with opposing faces",
+      "displayName": "Heddle pulley with opposing faces",
+      "date": "ca. 1900",
+      "medium": "Wood",
+      "dimensions": "H. 10 3/4 × W. 3 1/4 × D. 4 1/2 in. (27.3 × 8.3 × 11.4 cm)",
+      "attribution": "Baule artist, name unrecorded",
+      "place": "Côte d’Ivoire, Baule peoples",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/688888",
+      "observation": "The wooden heddle pulley has two opposing faces. The Met describes a heddle pulley as a tool that helps the heddles separate the warp on a narrow-band loom.",
+      "limit": "The pulley helps explain the operation of the loom. The maker’s name and this pulley’s users remain open questions.",
+      "verifiedOn": "2026-11-26",
+      "dateKind": "Approximate date of making assigned by the museum",
+      "altText": "Met photograph of a tall carved wooden heddle pulley with an attachment opening."
+    }
+  },
+  {
+    "slug": "door",
+    "room": "stage",
+    "title": "The Lintel That Changed",
+    "stake": "The carpenter needs an entire stage outline, while the gallery reader needs to see where the old profile breaks.",
+    "knowledgeQuestion": "When may a mismatched piece support a history of change?",
+    "preview": "The Met describes a Zanzibar door’s lotus from two angles and a top frame that may come from another door. The stage carpenter has drawn a plain invented lintel in two pieces. Trace each edge before masking the seam.",
+    "arrangeLabel": "the carpenter’s full and split framing papers",
+    "trials": [
+      {
+        "label": "the face and overhead tracings",
+        "art": "nexus.print-setup",
+        "checkedArt": "nexus.print-pinned",
+        "action": "Line up the front and top outlines using both marks.",
+        "preview": "A side outline and an overhead one share a centre peg.",
+        "result": "The two views agree on the centre. One outline shows a raised section that looks flat in the other view. Move your second mark to the outer framing piece."
+      },
+      {
+        "label": "the loose upper framing piece",
+        "art": "fold.two-hinges",
+        "checkedArt": "fold.open-door",
+        "action": "Lift the upper piece and compare the two edge sequences.",
+        "preview": "The lower model repeats a notch on both sides. The top piece has one offset hole.",
+        "result": "The notch marks align on the lower piece. The top hole has no matching mark. This practice joint makes a replacement possible without proving a date for the older door."
+      }
+    ],
+    "branches": [
+      {
+        "key": "full",
+        "choice": "Hang the whole outline with a broken line marking the join.",
+        "delivery": "the full outline on the scenery rack",
+        "art": "stage.relief-front",
+        "doneArt": "preserved.display-records",
+        "x": 15,
+        "y": 4,
+        "opening": "The carpenter has one long measure in hand. A broken line in the whole outline gives them a place to stop before mistaking the top for one piece.",
+        "action": "Hang the full outline and secure the seam key.",
+        "result": "The scenery crew can lay their opening out from one view. A visitor following the hypothesis still has to take a second look at the join key."
+      },
+      {
+        "key": "split",
+        "choice": "Set the two framing papers on separate supports with one comparison peg.",
+        "delivery": "the two framing pieces at the reading bench",
+        "art": "fold.paired",
+        "doneArt": "preserved.display-paired",
+        "x": 24,
+        "y": 4,
+        "opening": "The reader puts one finger at the left notch and another at the unmatched hole. “I can compare the pieces if you give me a shared mark.”",
+        "action": "Set the matching peg beside both framing papers.",
+        "result": "The reader can see the possible replacement and keep its uncertainty. The scenery crew takes a separate whole-width sketch for measurements."
+      }
+    ],
+    "journal": "The trial preserved the whole opening and the possibly replaced section as different questions. The date remained the museum’s qualified estimate.",
+    "concepts": [
+      "evidence",
+      "interpretation",
+      "justification",
+      "certainty"
+    ],
+    "framework": [
+      "scope",
+      "methods-and-tools",
+      "perspectives"
+    ],
+    "subjects": [
+      "history",
+      "visual-arts",
+      "design-tech"
+    ],
+    "aoks": [
+      "HIS",
+      "ART"
+    ],
+    "object": {
+      "id": "met:2026.331",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "2026.331",
+      "title": "Carved door",
+      "displayName": "Carved door from Zanzibar",
+      "date": "mid- to late-19th century",
+      "medium": "Wood, brass",
+      "dimensions": "H. 270 cm x W. 150 cm x D. 26 cm",
+      "attribution": "Zanzibar-based artist, name unrecorded",
+      "place": "Zanzibar, Tanzania, Swahili peoples",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/930571",
+      "observation": "The Met identifies an upper carving that breaks the symmetry of the rest of the door. It suggests that framing element came from another door. A lotus motif in the lintel shows two views.",
+      "limit": "The replacement is a curatorial interpretation. The original household and the date of each component remain open questions.",
+      "verifiedOn": "2026-11-26",
+      "dateKind": "Likely period of making based on stylistic comparison in the catalogue",
+      "altText": "Met photograph of a tall carved timber door with a central joint, decorated frame and brass fittings."
+    }
+  },
+  {
+    "slug": "seat",
+    "room": "stage",
+    "title": "The Pattern Below the Seat",
+    "stake": "The usher needs a clear seat profile for readers. The lighting crew needs a way to show the openings underneath without naming every shape.",
+    "knowledgeQuestion": "How does our viewing position affect what a pattern can support?",
+    "preview": "The Met assigns this carved seat to a Duala artist. The open carving sits below a curved top. Here there is a plain practice frame with an open underside. Move one light between its two fixed marks and let the viewers see what changes.",
+    "arrangeLabel": "the lighting crew’s shadow and outline carriers",
+    "trials": [
+      {
+        "label": "the front lamp at the seat outline",
+        "art": "stage.relief-front",
+        "checkedArt": "stage.relief-side",
+        "action": "Set the lamp level with the upper edge.",
+        "preview": "The practice frame rests on the white board. The lamp can be held level with its top.",
+        "result": "Both edges of the upper curve show clearly. Most of the openings underneath merge into one band in the flat shadow."
+      },
+      {
+        "label": "the lower lamp at the open underside",
+        "art": "stage.waypost",
+        "checkedArt": "forest.field-diagram",
+        "action": "Drop the lamp to the low mark and trace the openings.",
+        "preview": "The same frame stays on the board. The lower mark lights between the pieces.",
+        "result": "The separate openings are now visible. The top looks flatter from this position. The two light positions give two views of the same setup."
+      }
+    ],
+    "branches": [
+      {
+        "key": "profile",
+        "choice": "Leave the seating outline at the entry instructions.",
+        "delivery": "the seat profile by the usher’s low mark",
+        "art": "stage.cues",
+        "doneArt": "preserved.display-records",
+        "x": 3,
+        "y": 12,
+        "opening": "The usher checks the drawing from the entry mark. “The upper edge shows here. I can point to it without crowding a waiting visitor.”",
+        "action": "Clip the outline at seated eye level.",
+        "result": "The entrance can use the outline for the demonstration. The lamp crew retains the side notes, so this carrier leaves the open carving for a later view."
+      },
+      {
+        "key": "shadow",
+        "choice": "Give the separate openings to the side-light crew.",
+        "delivery": "the opening shadows at the side-light stand",
+        "art": "stage.relief-side",
+        "doneArt": "preserved.display-paired",
+        "x": 8,
+        "y": 14,
+        "opening": "A lamp worker holds the low trace against a screen. They can see three spaces, but one still looks joined from the back row.",
+        "action": "Fix the trace beside the lamp’s viewpoint mark.",
+        "result": "The side-light crew can repeat the view and explain which mark a reader used. The usher keeps the plain outline for the doorway."
+      }
+    ],
+    "journal": "The two lights changed the visible pattern. The catalogue’s stylistic reading stayed with the specific Duala seat.",
+    "concepts": [
+      "perspective",
+      "interpretation",
+      "objectivity",
+      "explanation"
+    ],
+    "framework": [
+      "scope",
+      "perspectives",
+      "methods-and-tools"
+    ],
+    "subjects": [
+      "visual-arts",
+      "theatre",
+      "physics"
+    ],
+    "aoks": [
+      "ART",
+      "NAT"
+    ],
+    "object": {
+      "id": "met:1972.4.31",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "1972.4.31",
+      "title": "Prestige seat",
+      "displayName": "Duala seat with a carved lattice",
+      "date": "Mid–late 19th century",
+      "medium": "Wood",
+      "dimensions": "H. 11 5/8 × W. 18 7/8 × D. 9 1/4 in. (29.5 × 47.9 × 23.5 cm)",
+      "attribution": "Duala artist, name unrecorded",
+      "place": "Cameroon, Duala peoples",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/309821",
+      "observation": "The wooden seat has a curving upper surface and open latticework below. The Met places it in a small group of nineteenth-century seats for prominent elders.",
+      "limit": "The gallery proposes one reading of the animal shape. The owner’s name and the exact reading of the imagery are open questions.",
+      "verifiedOn": "2026-11-26",
+      "dateKind": "Period of making assigned by the museum",
+      "altText": "Met photograph of a wooden seat with a curved top over an open carved lattice."
+    }
+  },
+  {
+    "slug": "hanging",
+    "room": "stage",
+    "title": "The Place on the Crate",
+    "stake": "The host needs something readable at the entrance. A research visitor needs enough room for two regional comparisons and a purchase receipt.",
+    "knowledgeQuestion": "What follows from where an object was bought, and what would need other evidence?",
+    "preview": "The Met’s cotton-and-wool hanging was bought in Ghana in the 1870s. Its exact origin remains open. Hari has a fictional cloth and a sale tag for a rehearsal display. The cloth has two kinds of marks. Check the hook and the folded comparison sheet before printing the place line.",
+    "arrangeLabel": "Hari’s short tag and three-panel support",
+    "trials": [
+      {
+        "label": "the sale tag under the end hook",
+        "art": "preserved.folder",
+        "checkedArt": "copies.strip",
+        "action": "Unfold the tag and match its receipt number.",
+        "preview": "The tag’s edge is tucked around the pole. A second copy of the number sits in the sale book.",
+        "result": "Both copies record where the piece changed hands. The line for who made it is blank. A number can join the two sale slips without filling that blank."
+      },
+      {
+        "label": "the hanging’s two comparison strips",
+        "art": "seam.case-textile",
+        "checkedArt": "preserved.display-paired",
+        "action": "Let down one fold and compare the strips side by side.",
+        "preview": "Each sketch marks a join, but their title strips cite different collections. The cloth being tested stays on its own pole.",
+        "result": "One detail on the cloth resembles the first sketch and another resembles the second. There is no signed making record. The match gives a reader places to investigate."
+      }
+    ],
+    "branches": [
+      {
+        "key": "tag",
+        "choice": "Put a short purchase tag at the entrance.",
+        "delivery": "the hanging’s purchase tag at the entrance",
+        "art": "copies.strip",
+        "doneArt": "stage.programme",
+        "x": 15,
+        "y": 14,
+        "opening": "A visitor can read a single line before the bell. “Ghana tells me where it was bought. Where can I see the rest?”",
+        "action": "Face the purchase tag toward the visitor and point to the study copy.",
+        "result": "The tag serves the entrance queue without assigning an origin. Readers who want to compare weaving move to the research table later."
+      },
+      {
+        "key": "study",
+        "choice": "Mount the purchase receipt and two comparison strips at the long bench.",
+        "delivery": "the cloth comparison between two readers",
+        "art": "preserved.display-paired",
+        "doneArt": "preserved.display-records",
+        "x": 24,
+        "y": 12,
+        "opening": "Two readers have enough bench space to walk around the hanging sketch. They put the purchase tag down before choosing a comparison.",
+        "action": "Mount the receipt beside both separate comparison strips.",
+        "result": "The two readers can follow different leads with the purchase kept in its own place. The entrance keeps a small arrow while it waits for a shorter copy."
+      }
+    ],
+    "journal": "The receipt located a purchase. Similarities gave a reader a research lead while the place of making remained open.",
+    "concepts": [
+      "evidence",
+      "culture",
+      "interpretation",
+      "perspective",
+      "responsibility"
+    ],
+    "framework": [
+      "scope",
+      "perspectives",
+      "methods-and-tools",
+      "ethics"
+    ],
+    "subjects": [
+      "history",
+      "visual-arts",
+      "lang-langlit"
+    ],
+    "aoks": [
+      "HIS",
+      "ART"
+    ],
+    "object": {
+      "id": "met:1971.30",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "1971.30",
+      "title": "Interior Hanging",
+      "displayName": "Cotton-and-wool interior hanging with an open attribution",
+      "date": "early–mid-19th century",
+      "medium": "Cotton, wool, natural dye",
+      "dimensions": "W. 51 x L. 120 in. (129.5 x 304.8 cm)",
+      "attribution": "Attributed in the catalogue as Mende, Vai, or Temne, maker unrecorded",
+      "place": "Sierra Leone is the catalogue’s geographic association, purchased in Ghana",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/309769",
+      "observation": "The hanging combines cotton and wool. The Met records a purchase in Ghana in the 1870s and says its exact origin is unresolved.",
+      "limit": "The curator notes similarities with several weaving traditions. The record lists Mende, Vai or Temne as possibilities. Ghana is the recorded place of purchase.",
+      "verifiedOn": "2026-11-26",
+      "dateKind": "Period of making assigned by the museum",
+      "altText": "Met photograph of a broad cloth hanging with horizontal patterned bands and narrow joined sections."
+    }
+  }
+]

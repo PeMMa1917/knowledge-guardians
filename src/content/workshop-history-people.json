@@ -1,0 +1,216 @@
+{
+  "brooklyn:76.20.4": [
+    {
+      "name": "Unidentified maker",
+      "role": "Maker of the individual lukasa",
+      "detail": "The catalogue identifies this object as Luba and records its materials. It gives no individual maker's name.",
+      "source": "HIS-STORY-FRAME-BOARD"
+    },
+    {
+      "name": "Trained Luba interpreters",
+      "role": "Role described for a separately catalogued example",
+      "detail": "The public museum article describes a specialised role. It does not identify people who used the Brooklyn object.",
+      "source": "HIS-STORY-FRAME-BOARD-CONTEXT"
+    }
+  ],
+  "hpmm:1105-0001": [
+    {
+      "name": "Shinichi Tetsutani",
+      "role": "Child whose tricycle is catalogued",
+      "detail": "The Peace Database preserves his name alongside the tricycle. The object is connected to the Hiroshima bombing of 6 August 1945.",
+      "source": "HIS-STORY-FRAME-CYCLE"
+    },
+    {
+      "name": "Nobuo Tetsutani",
+      "role": "Father and recorded museum donor",
+      "detail": "The museum's receiving entry lists Nobuo as donor and gives 6 September 1985.",
+      "source": "HIS-STORY-FRAME-CYCLE"
+    },
+    {
+      "name": "Nobuo Tetsutani",
+      "role": "Father whose remembrance was publicly reported",
+      "detail": "In a separate account ICAN attributes to Nobuo a wish for a peaceful world where children can play.",
+      "source": "HIS-STORY-FRAME-FAMILY"
+    }
+  ],
+  "loc:2021667561": [
+    {
+      "name": "Nasir al-Din Abu al-Abbas Ahmad ibn al-Hajj al-Amin al-Tawathi al-Ghalawi",
+      "role": "Catalogued author",
+      "detail": "The exhibit identifies the author of the treatise that discusses using stellar motion to locate seasonal beginnings.",
+      "source": "HIS-TIMBUKTU-SEASON-COPY"
+    },
+    {
+      "name": "Unidentified copyist",
+      "role": "Copying role",
+      "detail": "The exhibit dates the copy to 1733 and gives no name for the copyist.",
+      "source": "HIS-TIMBUKTU-SEASON-COPY"
+    },
+    {
+      "name": "Mamma Haidara Commemorative Library",
+      "role": "Timbuktu institution holding the original",
+      "detail": "The Library of Congress catalogue names the Timbuktu library as the original's holder. Its exhibit credits the library's loan.",
+      "source": "HIS-TIMBUKTU-SEASON-MARC"
+    }
+  ],
+  "cma:1929.566.1": [
+    {
+      "name": "Unidentified carver",
+      "role": "Maker of the sandal",
+      "detail": "The catalogue describes the wooden foot support and separate toe peg. It does not identify a named wearer.",
+      "source": "HIS-OBJECT-USE-SANDAL"
+    }
+  ],
+  "cma:1996.268": [
+    {
+      "name": "Unidentified maker",
+      "role": "Maker of the Shona-style headrest",
+      "detail": "The catalogue lists wood and colorant and assigns a style without identifying a named maker.",
+      "source": "HIS-OBJECT-USE-SHONA-REST"
+    }
+  ],
+  "cma:1929.356": [
+    {
+      "name": "Unidentified maker",
+      "role": "Maker of the Mangbetu-style hat",
+      "detail": "The catalogue records a date by 1928 and discusses hats made for travellers around Ekibondo. Its date and setting do not supply this maker’s name.",
+      "source": "HIS-OBJECT-USE-WOVEN-HAT"
+    }
+  ],
+  "met:2007.447": [
+    {
+      "name": "Unidentified maker",
+      "role": "Maker of the Sao bracelet",
+      "detail": "The accession lists brass and fibre. The record supplies no name of a maker or wearer.",
+      "source": "HIS-OBJECT-USE-BRACELET"
+    }
+  ],
+  "met:2005.408.2": [
+    {
+      "name": "Xhosa or Mfengu artist",
+      "role": "Catalogue attribution of the collar",
+      "detail": "The artist field leaves both attributions open. The record gives no individual name.",
+      "source": "HIS-OBJECT-USE-INGQOSHA"
+    }
+  ],
+  "met:1995.64.15": [
+    {
+      "name": "Unidentified Kru artist",
+      "role": "Maker of the currency object",
+      "detail": "The author field assigns a Kru attribution. The accession describes a fired terracotta core beneath the brass.",
+      "source": "HIS-OBJECT-USE-KRU-CORE"
+    }
+  ],
+  "nmafa:2002-10-3": [
+    {
+      "name": "Unidentified Luba maker",
+      "role": "Catalogue attribution of this ingot group",
+      "detail": "The catalogue lists five copper-alloy ingots. Its average measurements do not identify individual casting hands.",
+      "source": "HIS-OBJECT-USE-LUBA-INGOTS"
+    }
+  ],
+  "nmafa:89-4-2": [
+    {
+      "name": "Maria Theresa",
+      "role": "Historical figure represented on the coin",
+      "detail": "The coin shows Maria Theresa on one side. The named subject of the portrait and the people who made or used this particular coin are different roles.",
+      "source": "HIS-OBJECT-USE-THALER-FACES"
+    }
+  ],
+  "met:1977.224.5a-d": [
+    {
+      "name": "Akan artist",
+      "role": "Catalogue attribution of the scale",
+      "detail": "The catalogue gives a collective artist attribution and a probable geographical range. It does not identify the scale operator.",
+      "source": "HIS-OBJECT-USE-AKAN-SCALE"
+    }
+  ],
+  "met:1977.224.6a-b": [
+    {
+      "name": "Unidentified maker",
+      "role": "Maker of the Asante-Akan box",
+      "detail": "The catalogue identifies a two-part gold-dust box without naming an individual maker or owner.",
+      "source": "HIS-OBJECT-USE-ASANTE-BOX"
+    }
+  ],
+  "met:1999.47.69": [
+    {
+      "name": "Unidentified Middle Niger maker",
+      "role": "Qualified catalogue attribution of the vessel",
+      "detail": "The record assigns a qualified Middle Niger attribution and describes an impressed surface. It leaves the original contents open.",
+      "source": "HIS-OBJECT-USE-VESSEL-PRINT"
+    }
+  ],
+  "met:2018.356": [
+    {
+      "name": "Unobadula",
+      "role": "Name used by the catalogue’s stylistic attribution",
+      "detail": "The art history entry discusses a comparable group of sculptors. The listed attribution is distinct from a signed maker identification.",
+      "source": "HIS-OBJECT-USE-NGUNI-REST"
+    }
+  ],
+  "met:1972.63a-b": [
+    {
+      "name": "“Master of the Heraldic Ship”",
+      "role": "Catalogue attribution used for an Edo-Bini carver",
+      "detail": "The Met uses this art-historical name. It does not establish a personal name or confirm the possible patron.",
+      "source": "HIS-OBJECT-USE-EDO-SALTCELLAR"
+    }
+  ],
+  "met:1996.456": [
+    {
+      "name": "Chokwe artist",
+      "role": "Catalogue attribution of the necklace",
+      "detail": "The artist field gives a Chokwe attribution. The geographical entry leaves Angola or the Democratic Republic of the Congo open.",
+      "source": "HIS-OBJECT-USE-CHOKWE-LOOP"
+    }
+  ],
+  "met:89.4.926": [
+    {
+      "name": "Unidentified Ganda maker",
+      "role": "Catalogue attribution of the ennanga",
+      "detail": "The catalogue identifies the construction of the instrument without naming a performer for this example.",
+      "source": "HIS-OBJECT-USE-GANDA-ARC"
+    }
+  ],
+  "cma:1929.343": [
+    {
+      "name": "Unidentified maker",
+      "role": "Maker of the drum",
+      "detail": "The museum documents a purchase in Kampala. Its purchase location identifies a point in custody rather than this maker’s home.",
+      "source": "HIS-OBJECT-USE-NGOMA-BODY"
+    }
+  ],
+  "nmafa:84-14-7": [
+    {
+      "name": "Unidentified maker",
+      "role": "Maker of the Inland Niger Delta-style ring",
+      "detail": "The maker and exact use are open. The museum compares this ring with other forms that have different uses.",
+      "source": "HIS-OBJECT-USE-RING-JOINS"
+    }
+  ],
+  "met:89.4.498": [
+    {
+      "name": "Unidentified Mandinka maker",
+      "role": "Maker of the catalogued kora",
+      "detail": "The record locates this example in Senegambia. It discusses remembered origins of the kora tradition separately from the identity of its maker.",
+      "source": "HIS-OBJECT-USE-KORA-SPAN"
+    }
+  ],
+  "met:89.4.473": [
+    {
+      "name": "Unidentified Fulbe maker",
+      "role": "Maker of the catalogued hoddu",
+      "detail": "The museum describes the trough and gives several possible places. It has no name for the person who made the example.",
+      "source": "HIS-OBJECT-USE-HODDU-TROUGH"
+    }
+  ],
+  "met:89.4.2035": [
+    {
+      "name": "Unidentified Igbo maker",
+      "role": "Maker of the catalogued ubo akwara",
+      "detail": "The record attributes the instrument to Igbo people and describes the individual flexible sticks without naming a maker or player.",
+      "source": "HIS-OBJECT-USE-IGBO-PLURIARC"
+    }
+  ]
+}

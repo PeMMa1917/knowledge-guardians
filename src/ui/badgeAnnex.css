@@ -1,0 +1,54 @@
+.badge-cabinet, .oracle-press {
+  display: grid;
+  gap: .8rem;
+  overflow-wrap: anywhere;
+}
+.badge-cabinet :is(h2, h3, p), .oracle-press :is(h2, h3, h4, p, dl, dd) {
+  margin: 0;
+}
+.badge-cabinet details, .oracle-run, .oracle-work {
+  padding: .7rem;
+  border: 1px solid currentColor;
+  border-radius: .4rem;
+}
+.badge-cabinet summary, .oracle-run summary {
+  cursor: pointer;
+}
+.badge-cabinet :is(details > p, .badge-token) {
+  margin-block: .6rem;
+}
+.badge-token, .oracle-run, .oracle-work {
+  display: grid;
+  gap: .5rem;
+}
+.badge-token {
+  border-top: 1px solid currentColor;
+  padding-top: .65rem;
+}
+.badge-token button {
+  justify-self: start;
+}
+.oracle-runs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: .65rem;
+}
+.oracle-call {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .4rem;
+  margin-bottom: .5rem;
+}
+.oracle-tab {
+  display: inline-block;
+  border: 1px solid currentColor;
+  border-left-width: .35rem;
+  padding: .15rem .3rem;
+}
+.oracle-tab[data-ink=copper] {
+  border-left-color: #b87042;
+}
+.oracle-tab[data-ink=blue] {
+  border-left-color: #769ee0;
+}

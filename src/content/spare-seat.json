@@ -1,0 +1,450 @@
+{
+  "dialogue": [
+    {
+      "id": "spare-seat.test",
+      "speaker": "narrator",
+      "text": "The archive has one spare reading stand. Its draft promise reads, “Bring a blue peg and the stand is yours.” Two waiting slips are clipped to different test tabs.",
+      "historicalLabel": "fictional-world",
+      "effects": [
+        {
+          "setFlag": "spare-seat.started",
+          "value": true
+        }
+      ],
+      "options": [
+        {
+          "text": "Fit yesterday’s blue peg next to its return slip.",
+          "effects": [
+            {
+              "setFlag": "spare-seat.tab",
+              "value": "peg"
+            }
+          ]
+        },
+        {
+          "text": "Slide Elos’s current request into the empty peg slot.",
+          "effects": [
+            {
+              "setFlag": "spare-seat.tab",
+              "value": "request"
+            }
+          ]
+        },
+        {
+          "text": "Leave the stand at rest."
+        }
+      ]
+    },
+    {
+      "id": "spare-seat.post",
+      "speaker": "narrator",
+      "text": "Marek lays yesterday’s handback beside Elos’s current request. The peg works as a loan trace. He needs a rule that helps people use the spare stand. He can staff the rail at each bell or use the rail for checked requests between bells.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Hang a rail for checked current requests in order.",
+          "effects": [
+            {
+              "setFlag": "spare-seat.rule",
+              "value": "public"
+            }
+          ]
+        },
+        {
+          "text": "Seat the keeper at the rail to hear requests the slips missed.",
+          "effects": [
+            {
+              "setFlag": "spare-seat.rule",
+              "value": "staffed"
+            }
+          ]
+        },
+        {
+          "text": "Leave the draft open until the next bell."
+        }
+      ]
+    },
+    {
+      "id": "spare-seat.carry",
+      "speaker": "narrator",
+      "text": "The working copy gives both tests and your rule. Marek leaves room for another keeper to say what their own mark proves.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Take the checked loan warrant for a later service desk.",
+          "effects": [
+            {
+              "giveItem": "item.spare-seat.warrant"
+            }
+          ]
+        },
+        {
+          "text": "Leave the warrant on the copying hook."
+        }
+      ]
+    },
+    {
+      "id": "spare-seat.desk",
+      "speaker": "narrator",
+      "text": "Lin marks both arrivals on the same service sheet. One cart stop remains in this practice run. You can keep the first-bell stop and file a referral, or move the one stop to the lower rail after handover.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Keep the first-bell stop and send Siven’s open request to the staffed rail.",
+          "effects": [
+            {
+              "setFlag": "spare-seat.plan",
+              "value": "leave"
+            }
+          ]
+        },
+        {
+          "text": "Move the stop to the lower rail at the second bell and hold the other parcel for tomorrow.",
+          "effects": [
+            {
+              "setFlag": "spare-seat.plan",
+              "value": "move"
+            }
+          ]
+        },
+        {
+          "text": "Leave the service sheet open."
+        }
+      ]
+    }
+  ],
+  "missions": [
+    {
+      "id": "spare-seat.nile",
+      "title": "The Spare Seat",
+      "world": "WORLD-03",
+      "available": {
+        "flag": "nile.arrived",
+        "eq": true
+      },
+      "knowledgeQuestion": "When does a mark give us good grounds to act?",
+      "stake": "A promise about a peg can pass over a waiting reader and promise a stand to someone with yesterday’s tab.",
+      "objectives": [
+        {
+          "id": "spare-seat.counterexamples",
+          "title": "Check the two tabs against the draft promise",
+          "done": {
+            "all": [
+              {
+                "flag": "spare-seat.seen.peg",
+                "eq": true
+              },
+              {
+                "flag": "spare-seat.seen.request",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "flag": "spare-seat.started",
+            "eq": true
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "truth",
+              "interpretation",
+              "justification"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "scope"
+            ],
+            "subjects": [
+              "philosophy"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "atl": [
+              "thinking",
+              "communication",
+              "social"
+            ],
+            "minutes": 4,
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            }
+          }
+        },
+        {
+          "id": "spare-seat.loan",
+          "title": "Post a loan rule and see who can use it",
+          "done": {
+            "flag": "spare-seat.checked",
+            "eq": true
+          },
+          "visible": {
+            "objective": "spare-seat.counterexamples"
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "power",
+              "responsibility",
+              "values",
+              "justification",
+              "perspective"
+            ],
+            "framework": [
+              "ethics",
+              "perspectives"
+            ],
+            "subjects": [
+              "philosophy"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "atl": [
+              "thinking",
+              "communication",
+              "social"
+            ],
+            "minutes": 3,
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "human",
+              "solo": "relational"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spare-seat.canal",
+      "title": "A Place on the Rail",
+      "world": "WORLD-13",
+      "available": {
+        "all": [
+          {
+            "flag": "civic.arrived",
+            "eq": true
+          },
+          {
+            "item": "item.spare-seat.warrant"
+          }
+        ]
+      },
+      "knowledgeQuestion": "What does a sound request still leave open about access?",
+      "stake": "The cart can stop once. Changing the place and time serves one person and delays another.",
+      "objectives": [
+        {
+          "id": "spare-seat.approaches",
+          "title": "Walk the two Canal Walk approaches with the service sheet",
+          "done": {
+            "all": [
+              {
+                "flag": "spare-seat.civic.steps",
+                "eq": true
+              },
+              {
+                "flag": "spare-seat.civic.rail",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "flag": "spare-seat.civic.open",
+            "eq": true
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "perspective",
+              "explanation",
+              "justification"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "perspectives",
+              "scope"
+            ],
+            "subjects": [
+              "philosophy",
+              "global-politics"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "atl": [
+              "thinking",
+              "communication",
+              "social"
+            ],
+            "minutes": 3,
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            }
+          }
+        },
+        {
+          "id": "spare-seat.service",
+          "title": "Place the service notice and check who was reached",
+          "done": {
+            "flag": "spare-seat.civic.checked",
+            "eq": true
+          },
+          "visible": {
+            "objective": "spare-seat.approaches"
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "responsibility",
+              "power",
+              "values",
+              "justification",
+              "certainty"
+            ],
+            "framework": [
+              "ethics",
+              "scope",
+              "perspectives"
+            ],
+            "subjects": [
+              "philosophy",
+              "global-politics"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "atl": [
+              "thinking",
+              "communication",
+              "social"
+            ],
+            "minutes": 3,
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "human",
+              "solo": "relational"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.spare-seat.counterexamples.1",
+      "objective": "spare-seat.counterexamples",
+      "depth": 1,
+      "text": "Try each tab at the spare reading stand."
+    },
+    {
+      "id": "h.spare-seat.counterexamples.2",
+      "objective": "spare-seat.counterexamples",
+      "depth": 2,
+      "text": "Follow each tab to its ledger result at the low window."
+    },
+    {
+      "id": "h.spare-seat.counterexamples.3",
+      "objective": "spare-seat.counterexamples",
+      "depth": 3,
+      "text": "Check the handback date and the date on the active request."
+    },
+    {
+      "id": "h.spare-seat.counterexamples.4",
+      "objective": "spare-seat.counterexamples",
+      "depth": 4,
+      "text": "Fit the blue peg and read its handback. Slide in Elos’s unmarked request and read its new entry."
+    },
+    {
+      "id": "h.spare-seat.loan.1",
+      "objective": "spare-seat.loan",
+      "depth": 1,
+      "text": "Marek has left the draft at the end of the south rail."
+    },
+    {
+      "id": "h.spare-seat.loan.2",
+      "objective": "spare-seat.loan",
+      "depth": 2,
+      "text": "Choose how readers will use the one spare stand when slips are in order or missing."
+    },
+    {
+      "id": "h.spare-seat.loan.3",
+      "objective": "spare-seat.loan",
+      "depth": 3,
+      "text": "The request rail sets an order people can check. The staffed station gives one missed request an independent check."
+    },
+    {
+      "id": "h.spare-seat.loan.4",
+      "objective": "spare-seat.loan",
+      "depth": 4,
+      "text": "Post either rule, read its result at the rail, then take the working copy from the west hook."
+    },
+    {
+      "id": "h.spare-seat.approaches.1",
+      "objective": "spare-seat.approaches",
+      "depth": 1,
+      "text": "Bring Marek’s warrant to Canal Walk."
+    },
+    {
+      "id": "h.spare-seat.approaches.2",
+      "objective": "spare-seat.approaches",
+      "depth": 2,
+      "text": "Look for Lin’s note on the east side of the boardwalk and follow its two checks."
+    },
+    {
+      "id": "h.spare-seat.approaches.3",
+      "objective": "spare-seat.approaches",
+      "depth": 3,
+      "text": "Read Siven’s route next to the current stop and read the handover note by the lower rail."
+    },
+    {
+      "id": "h.spare-seat.approaches.4",
+      "objective": "spare-seat.approaches",
+      "depth": 4,
+      "text": "Check the signed request at the first-bell stop and check when people can reach the lower rail. Both checks unlock the practice service stand."
+    },
+    {
+      "id": "h.spare-seat.service.1",
+      "objective": "spare-seat.service",
+      "depth": 1,
+      "text": "There is one cart stop in this practice run."
+    },
+    {
+      "id": "h.spare-seat.service.2",
+      "objective": "spare-seat.service",
+      "depth": 2,
+      "text": "Each stop works for a different borrower."
+    },
+    {
+      "id": "h.spare-seat.service.3",
+      "objective": "spare-seat.service",
+      "depth": 3,
+      "text": "Keep the first-bell stop and file a follow-up, or change one stop to the rail after handover."
+    },
+    {
+      "id": "h.spare-seat.service.4",
+      "objective": "spare-seat.service",
+      "depth": 4,
+      "text": "Place either service card at the stand, then read the outcome at the first-bell stop or below the rail."
+    }
+  ],
+  "items": [
+    {
+      "id": "item.spare-seat.warrant",
+      "name": "Checked loan warrant",
+      "description": "A fictional archive working copy with a closed handback, a current request, and the reason for the loan rule. Bring it to Lin’s Canal Walk stand.",
+      "historicalLabel": "fictional-world",
+      "art": "nile.slip"
+    }
+  ]
+}

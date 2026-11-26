@@ -1,0 +1,138 @@
+{
+  "sources": [
+    {
+      "id": "HIS-BASKET-01",
+      "title": "100,000,000,000,000 Dollars, Zimbabwe, 2008",
+      "url": "https://americanhistory.si.edu/collections/object/nmah_1694052",
+      "locator": "National Museum of American History, object 2015.0071.1. Obverse Text, Description and Related Dates.",
+      "supports": "The Reserve Bank of Zimbabwe banknote is denominated at 100 trillion Zimbabwe dollars. The obverse bears Harare and 2008. The catalogue dates manufacture to 2008.",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.market-basket.zimbabwe",
+      "title": "The note’s denomination and printed date",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "text": "The Smithsonian catalogues Reserve Bank of Zimbabwe note 2015.0071.1. Its face says 100,000,000,000,000 dollars, Harare and 2008.",
+      "limits": "The face dates the inscription. An issue notice can give the first circulation date. A price record for a named place and date can show what this amount could buy there.",
+      "sources": ["HIS-BASKET-01"]
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-BASKET-ZWL-100T",
+      "name": "100 trillion Zimbabwe dollars",
+      "art": "market.note-mount",
+      "historicalLabel": "documented",
+      "dateText": "2008, printed on the note",
+      "dateKind": "Date printed on the banknote. The catalogue also dates manufacture to 2008.",
+      "summary": "Reserve Bank of Zimbabwe. National Museum of American History, National Numismatic Collection, 2015.0071.1. The printed sum is in Zimbabwe dollars. Compare a dated price record to find how far that sum reached at a particular sale.",
+      "altText": "Original diagram of a green catalogue mount for a paper note. The museum record on this case identifies the denomination and printed date.",
+      "sources": ["HIS-BASKET-01"],
+      "grantsCard": "card.market-basket.zimbabwe"
+    }
+  ],
+  "items": [
+    {
+      "id": "item.market.basket.voucher",
+      "name": "Oduya’s signed goods voucher",
+      "description": "The voucher names exact quantities. Oduya put those goods aside in Emberford and keeps them there until collection.",
+      "historicalLabel": "fictional-world",
+      "art": "preserved.slip"
+    },
+    {
+      "id": "item.market.basket.credit",
+      "name": "Corvan’s signed co-op credit",
+      "description": "Eight co-op credits for goods at the open counter in Emberford. The dated review clause can bring another three credits at the next service bell.",
+      "historicalLabel": "fictional-world",
+      "art": "preserved.slip"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH10-R07",
+      "world": "WORLD-11",
+      "title": "Three Goods, Two Bells",
+      "knowledgeQuestion": "What can a signed promise fix when market prices move?",
+      "stake": "The Emberford co-op needs oil, wicks and flour for its evening workbench. A reserve shelf holds stock aside. The open counter lets the crew adjust what it takes home.",
+      "available": { "all": [{ "objective": "market.finish" }, { "flagSet": "market.basket.phase" }] },
+      "objectives": [
+        {
+          "id": "market.basket.compare",
+          "title": "Seal a basket and quote it at both dated bells.",
+          "essential": false,
+          "done": { "all": [{ "flag": "market.basket.quoted.opening", "eq": true }, { "flag": "market.basket.quoted.next", "eq": true }] },
+          "weave": {
+            "concepts": ["evidence", "objectivity", "interpretation", "certainty"],
+            "framework": ["scope", "methods-and-tools"],
+            "atl": ["research", "thinking"],
+            "aoks": ["HUM", "MAT"],
+            "subjects": ["economics", "math-ai"],
+            "thinking": { "dok": 2, "bloom": "analyse", "fink": "application", "solo": "relational" },
+            "minutes": 3
+          }
+        },
+        {
+          "id": "market.basket.issue",
+          "title": "Sign a goods voucher or a reviewable credit.",
+          "essential": false,
+          "visible": { "objective": "market.basket.compare" },
+          "done": { "flag": "market.basket.issued", "eq": true },
+          "weave": {
+            "concepts": ["power", "values", "justification", "responsibility"],
+            "framework": ["perspectives", "ethics"],
+            "atl": ["thinking", "social"],
+            "aoks": ["HUM", "POL"],
+            "subjects": ["economics", "business", "global-politics"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "caring", "solo": "relational" },
+            "minutes": 2
+          }
+        },
+        {
+          "id": "market.basket.collect",
+          "title": "Use the signed ticket at its Emberford counter.",
+          "essential": false,
+          "visible": { "objective": "market.basket.issue" },
+          "done": { "flagSet": "market.basket.fulfilled" },
+          "weave": {
+            "concepts": ["truth", "explanation", "perspective", "responsibility"],
+            "framework": ["scope", "methods-and-tools", "ethics"],
+            "atl": ["self-management", "communication"],
+            "aoks": ["HUM", "MAT"],
+            "subjects": ["economics", "math-ai", "business"],
+            "thinking": { "dok": 3, "bloom": "apply", "fink": "integration", "solo": "relational" },
+            "minutes": 4
+          },
+          "onComplete": [{ "journal": "j.market.basket" }]
+        }
+      ]
+    }
+  ],
+  "hints": [
+    { "id": "h.market.basket.compare.1", "objective": "market.basket.compare", "depth": 1, "text": "Dagny’s basket bench is beside the banknote case in Lantern Square." },
+    { "id": "h.market.basket.compare.2", "objective": "market.basket.compare", "depth": 2, "text": "The co-op puts one of each good in the basket. Pick one more good and seal the basket." },
+    { "id": "h.market.basket.compare.3", "objective": "market.basket.compare", "depth": 3, "text": "Each rail has prices from a different day. Keep the basket sealed while you bring both quotes to the bench." },
+    { "id": "h.market.basket.compare.4", "objective": "market.basket.compare", "depth": 4, "text": "Use the Day 1 and Day 2 quote buttons with the same sealed basket. The co-op credit amount stays at eight." },
+    { "id": "h.market.basket.issue.1", "objective": "market.basket.issue", "depth": 1, "text": "The co-op signs for goods at one counter and a credit amount at another." },
+    { "id": "h.market.basket.issue.2", "objective": "market.basket.issue", "depth": 2, "text": "Oduya can put the exact goods aside. Corvan can offer a range of goods at the current price." },
+    { "id": "h.market.basket.issue.3", "objective": "market.basket.issue", "depth": 3, "text": "Look at what moved between bells. A voucher fixes the quantities and ties up stock. Credit lets you change the mix or wait for the review." },
+    { "id": "h.market.basket.issue.4", "objective": "market.basket.issue", "depth": 4, "text": "At Dagny’s bench choose Sign the goods voucher or Sign reviewable credit. The ticket travels in your bag." },
+    { "id": "h.market.basket.collect.1", "objective": "market.basket.collect", "depth": 1, "text": "Take the co-op ticket to Emberford by the usual Nexus crossing." },
+    { "id": "h.market.basket.collect.2", "objective": "market.basket.collect", "depth": 2, "text": "Look for Oduya’s shelf near the north bench or Corvan’s open counter east of the fountain." },
+    { "id": "h.market.basket.collect.3", "objective": "market.basket.collect", "depth": 3, "text": "The voucher collects the sealed basket. On the credit route pack a mix you can afford, or use the dated review for the next service bell." },
+    { "id": "h.market.basket.collect.4", "objective": "market.basket.collect", "depth": 4, "text": "Collect the reserved basket from Oduya or select goods and settle at Corvan’s counter. The checked stock receipt stays there." }
+  ],
+  "journal": [
+    {
+      "id": "j.market.basket",
+      "claimKind": "interpretation",
+      "text": "The same co-op basket used two dated prices. Its first and second value differed. At the receiving counter the voucher preserved quantities, while the credit preserved a sum until its dated review."
+    }
+  ],
+  "chronicle": [
+    { "id": "basket-voucher-filled", "title": "The reserved basket", "text": "Oduya kept the named goods aside. The crew collected that basket and released its shelf.", "if": { "flagSet": "market.basket.receipt.voucher" } },
+    { "id": "basket-credit-filled", "title": "The checked credit", "text": "Corvan kept the goods and the current bell on the receipt. Any leftover credit stayed with the co-op.", "if": { "flagSet": "market.basket.receipt.credit" } }
+  ]
+}

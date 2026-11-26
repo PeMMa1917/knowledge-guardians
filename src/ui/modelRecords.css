@@ -1,0 +1,5 @@
+.model-record-trial canvas { width: min(100%, 20rem); height: auto; image-rendering: pixelated; margin-top: .7rem; }
+.model-record-tanks { display: grid; gap: .35rem; margin-top: .7rem; }
+.model-record-tanks div { display: grid; grid-template-columns: 1fr 1fr; column-gap: .55rem; }
+.model-record-tanks meter { width: 100%; }
+.model-record-panel article { margin-block: .65rem; padding: .7rem; border: 1px solid var(--gold-dim); border-radius: .4rem; }

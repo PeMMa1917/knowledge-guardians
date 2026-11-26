@@ -1,0 +1,662 @@
+{
+ "characters": [
+  {
+   "id": "forest-hook-sorell",
+   "name": "Sorell Wedge",
+   "role": "Keeper of the west trail slate",
+   "sprite": "villager-2",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "objective": "forest.hook.readback"
+     },
+     "node": "forest.hook.keeper.after"
+    },
+    {
+     "node": "forest.hook.keeper"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "forest.hook.tirren",
+   "speaker": "narrator",
+   "text": "Tirren’s note is folded with its signature on the outside. “From the west stones I saw the direction slate come down. Sorell’s back was to me. I thought she meant to send me away, so I turned round with the basket.”",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip Tirren’s signed slip with the west stones marked.",
+     "next": "forest.hook.tirren.kept",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.arrival"
+       },
+       {
+        "not": {
+         "flag": "forest.hook.tirren",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hook.tirren",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Set the slip back in its pocket."
+    }
+   ],
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "forest.hook.tirren.kept",
+   "speaker": "narrator",
+   "text": "You keep the place Tirren was standing beside what he remembers. The basket is still on the station bench.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.hook.high",
+   "speaker": "narrator",
+   "text": "At the west stones, a black hook breaks the edge of the post. The direction slate is gone from this spot. The end of the rail hides the ground on the inner side.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mark this view on Tirren’s approach slip.",
+     "next": "forest.hook.high.marked",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.arrival"
+       },
+       {
+        "not": {
+         "flag": "forest.hook.high",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hook.high",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the post."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "forest.hook.high.marked",
+   "speaker": "narrator",
+   "text": "The mark shows what a person approaching from the stones can actually see. You can walk around the rail and check the lower bracket.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.hook.low",
+   "speaker": "narrator",
+   "text": "On the inner side of the rail, a blue direction slate rests in the lower bracket. A chipped left corner matches the outline scratched at the hook. The arrow points along the laid stones.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep the slate’s two positions on the same slip.",
+     "next": "forest.hook.low.marked",
+     "if": {
+      "all": [
+       {
+        "flag": "forest.hook.high",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "forest.hook.low",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hook.low",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the slate in place."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "forest.hook.low.marked",
+   "speaker": "narrator",
+   "text": "The new line shows where someone can see the arrow. Sorell can give you her account of why she moved it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.hook.keeper",
+   "speaker": "forest-hook-sorell",
+   "text": "The hook kept rattling against the peg. I slid the slate into the lower bracket and held the peg still for my mate. My back was to the stones. I only saw Tirren’s basket later. If you carry my words, put my name under them.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep Sorell’s account with her signature.",
+     "next": "forest.hook.keeper.kept",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.arrival"
+       },
+       {
+        "not": {
+         "flag": "forest.hook.keeper",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hook.keeper",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Give Sorell a moment to finish the peg."
+    }
+   ],
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "forest.hook.keeper.kept",
+   "speaker": "forest-hook-sorell",
+   "text": "He comes for the upper tray every Tuesday. Can we give the next carrier a way to find it when the old hook is empty?",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.hook.keeper.after",
+   "speaker": "forest-hook-sorell",
+   "text": "The new direction stays where you left it. I’m keeping the lower bracket until the hook is fixed.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.hook.dispatch",
+   "speaker": "narrator",
+   "text": "The bench has room for Tirren’s report, Sorell’s account and the two views. In both accounts the slate came down. Tirren describes how that felt from the stones. Sorell gives her own reason for moving it. Decide which approach needs a new slip first.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Send the signed accounts to the station bench.",
+     "next": "forest.hook.sent.voice",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.hook.compare"
+       },
+       {
+        "not": {
+         "flagSet": "forest.hook.plan"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hook.plan",
+       "value": "voice"
+      }
+     ]
+    },
+    {
+     "text": "Put a west-stones direction on the trail rail.",
+     "next": "forest.hook.sent.route",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.hook.compare"
+       },
+       {
+        "not": {
+         "flagSet": "forest.hook.plan"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hook.plan",
+       "value": "route"
+      }
+     ]
+    },
+    {
+     "text": "Use the Cabinet fold. Give the rail a direction and the bench two signed accounts.",
+     "next": "forest.hook.sent.fold",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.hook.compare"
+       },
+       {
+        "any": [
+         {
+          "objective": "stage.script.parrot-warning.placed"
+         },
+         {
+          "objective": "stage.script.nizami-owls.placed"
+         },
+         {
+          "objective": "stage.script.coypel-trissotin.placed"
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "forest.hook.plan"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hook.plan",
+       "value": "fold"
+      }
+     ]
+    },
+    {
+     "text": "Leave the two accounts on the bench for now."
+    }
+   ]
+  },
+  {
+   "id": "forest.hook.sent.voice",
+   "speaker": "narrator",
+   "text": "Take the signed account pocket to the station bench. The lower bracket still carries the direction.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.hook.sent.route",
+   "speaker": "narrator",
+   "text": "Carry the west-stones slip to the trail rail. The signed accounts stay together at the clearing bench.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.hook.sent.fold",
+   "speaker": "narrator",
+   "text": "Take the folded slip to the trail rail. The outside gives the approach. The inside holds the signed accounts for the bench.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.hook.receive.voice",
+   "speaker": "narrator",
+   "text": "There is an open clip here for the slip you made.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip both signed accounts to the station bench.",
+     "next": "forest.hook.reply.voice",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.hook.compare"
+       },
+       {
+        "flag": "forest.hook.plan",
+        "eq": "voice"
+       },
+       {
+        "not": {
+         "objective": "forest.hook.readback"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hook.used",
+       "value": "voice"
+      }
+     ]
+    },
+    {
+     "text": "Keep the slip with you for now."
+    }
+   ]
+  },
+  {
+   "id": "forest.hook.reply.voice",
+   "speaker": "narrator",
+   "text": "Tirren sits by the station basket and asks to hear Sorell’s line. A moment later he asks Sorell whether her tray needs a hand. The next runner can ask where to look for the arrow.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.hook.receive.route",
+   "speaker": "narrator",
+   "text": "There is an open clip here for the slip you made.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the checked direction to the trail rail.",
+     "next": "forest.hook.reply.route",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.hook.compare"
+       },
+       {
+        "flag": "forest.hook.plan",
+        "eq": "route"
+       },
+       {
+        "not": {
+         "objective": "forest.hook.readback"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hook.used",
+       "value": "route"
+      }
+     ]
+    },
+    {
+     "text": "Keep the slip with you for now."
+    }
+   ]
+  },
+  {
+   "id": "forest.hook.reply.route",
+   "speaker": "narrator",
+   "text": "Tirren matches the new arrow to the first laid stone and brings his basket straight down. He still wants to hear what Sorell remembers. Their signed slips are together at the clearing bench.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.hook.receive.fold",
+   "speaker": "narrator",
+   "text": "There is an open clip here for the slip you made.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Fit the outside slip to the rail and send the folded copy to the bench.",
+     "next": "forest.hook.reply.fold",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.hook.compare"
+       },
+       {
+        "flag": "forest.hook.plan",
+        "eq": "fold"
+       },
+       {
+        "not": {
+         "objective": "forest.hook.readback"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hook.used",
+       "value": "fold"
+      }
+     ]
+    },
+    {
+     "text": "Keep the slip with you for now."
+    }
+   ]
+  },
+  {
+   "id": "forest.hook.reply.fold",
+   "speaker": "narrator",
+   "text": "Tirren follows the rail to the basket delivery. Another carrier unfolds the inside at the station bench. She can find the two accounts and the place each person stood.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH5-R94",
+   "world": "WORLD-06",
+   "title": "The Empty Hook",
+   "available": {
+    "objective": "forest.arrival"
+   },
+   "stake": "Tirren has a basket to deliver and thinks the keeper turned him away.",
+   "knowledgeQuestion": "What can two people tell about the same event from where each was standing?",
+   "objectives": [
+    {
+     "id": "forest.hook.compare",
+     "title": "Trace the two accounts to the slate’s two positions.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "objective": "forest.arrival"
+       },
+       {
+        "flag": "forest.hook.tirren",
+        "eq": true
+       },
+       {
+        "flag": "forest.hook.high",
+        "eq": true
+       },
+       {
+        "flag": "forest.hook.low",
+        "eq": true
+       },
+       {
+        "flag": "forest.hook.keeper",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "interpretation",
+       "evidence",
+       "certainty",
+       "objectivity",
+       "explanation"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "ART",
+       "LAN"
+      ],
+      "subjects": [
+       "lang-lit",
+       "lang-langlit",
+       "lit-perf"
+      ],
+      "minutes": 5,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "forest.hook.readback",
+     "title": "Use the pocket or direction and meet its next reader.",
+     "essential": false,
+     "visible": {
+      "objective": "forest.hook.compare"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "forest.hook.compare"
+       },
+       {
+        "any": [
+         {
+          "all": [
+           {
+            "flag": "forest.hook.plan",
+            "eq": "voice"
+           },
+           {
+            "flag": "forest.hook.used",
+            "eq": "voice"
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "forest.hook.plan",
+            "eq": "route"
+           },
+           {
+            "flag": "forest.hook.used",
+            "eq": "route"
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "forest.hook.plan",
+            "eq": "fold"
+           },
+           {
+            "flag": "forest.hook.used",
+            "eq": "fold"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     "onComplete": [
+      {
+       "journal": "j.forest.hook.readback"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "perspective",
+       "interpretation",
+       "responsibility",
+       "values",
+       "truth"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "ethics"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "ART",
+       "LAN"
+      ],
+      "subjects": [
+       "lang-lit",
+       "lang-langlit",
+       "lit-perf"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.forest.hook.compare.1",
+   "objective": "forest.hook.compare",
+   "depth": 1,
+   "text": "Tirren left his signed slip by a basket at Fern Station."
+  },
+  {
+   "id": "h.forest.hook.compare.2",
+   "objective": "forest.hook.compare",
+   "depth": 2,
+   "text": "Find the hook on Listening Trail. Look from the west stones first, then walk to the lower bracket inside the rail."
+  },
+  {
+   "id": "h.forest.hook.compare.3",
+   "objective": "forest.hook.compare",
+   "depth": 3,
+   "text": "Ask Sorell at Bridge Clearing why she remembers lowering the slate."
+  },
+  {
+   "id": "h.forest.hook.compare.4",
+   "objective": "forest.hook.compare",
+   "depth": 4,
+   "text": "Keep Tirren’s signed slip, both positions and Sorell’s separate account."
+  },
+  {
+   "id": "h.forest.hook.readback.1",
+   "objective": "forest.hook.readback",
+   "depth": 1,
+   "text": "Try the packing bench near Sorell in Bridge Clearing."
+  },
+  {
+   "id": "h.forest.hook.readback.2",
+   "objective": "forest.hook.readback",
+   "depth": 2,
+   "text": "Decide which visitor needs a new slip first. The station bench holds the accounts, and the rail takes a direction."
+  },
+  {
+   "id": "h.forest.hook.readback.3",
+   "objective": "forest.hook.readback",
+   "depth": 3,
+   "text": "A relevant earlier visit to the Script Cabinet adds a fold with room for both readers."
+  },
+  {
+   "id": "h.forest.hook.readback.4",
+   "objective": "forest.hook.readback",
+   "depth": 4,
+   "text": "Install the slip where you sent it and hear the response. The rail and the station bench are in different places."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.forest.hook.readback",
+   "text": "I checked where the slate could be seen and what each person told me. The next reader got a direction, a signed account or both.",
+   "claimKind": "interpretation"
+  }
+ ]
+}

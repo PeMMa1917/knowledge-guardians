@@ -1,0 +1,739 @@
+{
+  "glossary": [
+    {
+      "id": "version",
+      "term": "Version",
+      "match": ["version"],
+      "text": "One form a record takes. Its date or a change to its markings can distinguish it from another form.",
+      "examples": [{ "text": "The binder uses two punches and a bell time to fetch a version from the right slot." }]
+    },
+    {
+      "id": "gloss",
+      "term": "Gloss",
+      "match": ["gloss"],
+      "text": "A small note that explains a word or part of a text.",
+      "examples": [{ "text": "A gloss on the wrapper tells the landing reader where the first written page begins." }]
+    },
+    {
+      "id": "witness",
+      "term": "Witness",
+      "match": ["witness"],
+      "text": "A person with direct knowledge of an event, or the act of attesting to something seen.",
+      "examples": [{ "text": "The signed arrival slip says what the witness saw and leaves the contents of the parcel open." }]
+    }
+  ],
+  "sources": [
+    {
+      "id": "LEX-WORDCLIP-VERSION",
+      "title": "Merriam-Webster.com Dictionary, version",
+      "url": "https://www.merriam-webster.com/dictionary/version",
+      "locator": "Etymology and the sense for a form or variant of a work",
+      "supports": "Middle French version came from medieval Latin versio, turning or changing, ultimately from Latin vertere.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Version",
+        "container": "Merriam-Webster.com Dictionary",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "LEX-WORDCLIP-GLOSS",
+      "title": "Merriam-Webster.com Dictionary, gloss",
+      "url": "https://www.merriam-webster.com/dictionary/gloss#h3",
+      "locator": "Noun (2), explanatory note and etymology",
+      "supports": "The explanatory noun passed through medieval Latin and Anglo-French. Its Greek antecedent had senses involving the tongue, language and an obscure word.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Gloss",
+        "container": "Merriam-Webster.com Dictionary",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "LEX-WORDCLIP-WITNESS",
+      "title": "Merriam-Webster.com Dictionary, witness",
+      "url": "https://www.merriam-webster.com/dictionary/witness",
+      "locator": "Noun senses and Old English origin",
+      "supports": "Old English witnes could mean knowledge, testimony or witness. The entry distinguishes personal knowledge and attestation.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Witness",
+        "container": "Merriam-Webster.com Dictionary",
+        "showAccessDate": true
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "item.copies.wordclip-proof",
+      "name": "The two-punch proof",
+      "description": "A folded wrapper proof with two dates, a brief explanation and a signed arrival line. Its upper line is set for the chosen receiver.",
+      "historicalLabel": "fictional-world",
+      "art": "preserved.display-paired"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH7-R43",
+      "title": "The Witness Clip",
+      "world": "WORLD-08",
+      "available": {
+        "objective": "copies.revise"
+      },
+      "stake": "A binder needs the form that arrived. One reader needs the first written page.",
+      "knowledgeQuestion": "What can readers each do when the same paper puts a different line first?",
+      "objectives": [
+        {
+          "id": "copies.wordclip.gather",
+          "title": "Clip the two dated forms, the explanatory note and the limited testimony.",
+          "essential": false,
+          "visible": {
+            "flag": "copies.wordclip.started",
+            "eq": true
+          },
+          "done": {
+            "all": [
+              {
+                "flag": "copies.wordclip.started",
+                "eq": true
+              },
+              {
+                "all": [
+                  {
+                    "flag": "copies.wordclip.version",
+                    "eq": true
+                  },
+                  {
+                    "flag": "copies.wordclip.gloss",
+                    "eq": true
+                  },
+                  {
+                    "flag": "copies.wordclip.witness",
+                    "eq": true
+                  }
+                ]
+              }
+            ]
+          },
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "perspective",
+              "justification"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "perspectives"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "aoks": [
+              "LAN",
+              "HIS"
+            ],
+            "atl": [
+              "research",
+              "communication"
+            ],
+            "subjects": [
+              "lang-langlit",
+              "history"
+            ],
+            "minutes": 5
+          }
+        },
+        {
+          "id": "copies.wordclip.bind",
+          "title": "Bind a proof for a binder or a reader.",
+          "essential": false,
+          "visible": {
+            "objective": "copies.wordclip.gather"
+          },
+          "done": {
+            "all": [
+              {
+                "objective": "copies.wordclip.gather"
+              },
+              {
+                "flagSet": "copies.wordclip.route"
+              }
+            ]
+          },
+          "onComplete": [
+            {
+              "giveItem": "item.copies.wordclip-proof"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "values",
+              "explanation",
+              "responsibility",
+              "objectivity"
+            ],
+            "framework": [
+              "scope",
+              "ethics"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "aoks": [
+              "LAN",
+              "HIS"
+            ],
+            "atl": [
+              "research",
+              "communication"
+            ],
+            "subjects": [
+              "lang-langlit",
+              "history"
+            ],
+            "minutes": 2
+          }
+        },
+        {
+          "id": "copies.wordclip.deliver",
+          "title": "Carry the proof to its receiver and set the copies in use.",
+          "essential": false,
+          "visible": {
+            "objective": "copies.wordclip.bind"
+          },
+          "done": {
+            "all": [
+              {
+                "objective": "copies.wordclip.bind"
+              },
+              {
+                "any": [
+                  {
+                    "all": [
+                      {
+                        "flag": "copies.wordclip.route",
+                        "eq": "records"
+                      },
+                      {
+                        "flag": "copies.wordclip.delivered",
+                        "eq": "records"
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "copies.wordclip.route",
+                        "eq": "landing"
+                      },
+                      {
+                        "flag": "copies.wordclip.delivered",
+                        "eq": "landing"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "onComplete": [
+            {
+              "journal": "j.copies.wordclip"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "truth",
+              "power",
+              "culture",
+              "responsibility"
+            ],
+            "framework": [
+              "perspectives",
+              "methods-and-tools",
+              "ethics"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "aoks": [
+              "LAN",
+              "HIS"
+            ],
+            "atl": [
+              "research",
+              "communication"
+            ],
+            "subjects": [
+              "lang-langlit",
+              "history"
+            ],
+            "minutes": 3
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "copies.wordclip.start",
+      "speaker": "narrator",
+      "text": "A music folio came back in a new wrapper. A reader wants the first written page. The binder wants to know which wrapper actually arrived. The Tuesday notice is fixed. This job needs the words on three pieces of paper to travel with their uses.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Take the empty clip and visit the three records.",
+          "next": "copies.wordclip.start.kept",
+          "if": {
+            "all": [
+              {
+                "objective": "copies.revise"
+              },
+              {
+                "not": {
+                  "flagSet": "copies.wordclip.started"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "copies.wordclip.started",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the clip on the hook."
+        }
+      ]
+    },
+    {
+      "id": "copies.wordclip.start.kept",
+      "speaker": "narrator",
+      "text": "Check the wrapper forms here, the binder’s explanation in the Print Workshop and the signed arrival on Lending Hall Landing.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "copies.wordclip.version",
+      "speaker": "narrator",
+      "text": "The two dated wrapper forms sit together. The first version has one punch and no pocket. The second version adds a blue pocket and two punches. Both leave the written pages as they were.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Clip the dates and both punch marks.",
+          "next": "copies.wordclip.version.kept",
+          "if": {
+            "all": [
+              {
+                "flag": "copies.wordclip.started",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "copies.wordclip.version"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "copies.wordclip.version",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Open the dictionary’s version entry.",
+          "next": "copies.wordclip.version.history"
+        },
+        {
+          "text": "Leave the paper here."
+        }
+      ]
+    },
+    {
+      "id": "copies.wordclip.version.history",
+      "speaker": "narrator",
+      "text": "The word version came through French from medieval Latin versio, which referred to turning or changing. English can use it for one form of a work. The word alone gives no date.",
+      "historicalLabel": "documented",
+      "claimKind": "observation",
+      "citationSource": "LEX-WORDCLIP-VERSION",
+      "options": [
+        {
+          "text": "Return to the working paper.",
+          "next": "copies.wordclip.version"
+        }
+      ]
+    },
+    {
+      "id": "copies.wordclip.version.kept",
+      "speaker": "narrator",
+      "text": "The punch marks travel with the two dates. A hurried copy saying only “checked” would lose which wrapper reached the hall.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "copies.wordclip.gloss",
+      "speaker": "narrator",
+      "text": "The binder’s shop line reads “Lift the guard leaf.” Below it a separate gloss reads “Lift the extra paper that protects the first written page.” The shop line stays beneath the explanation.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Fold back the protective leaf and clip the gloss.",
+          "next": "copies.wordclip.gloss.kept",
+          "if": {
+            "all": [
+              {
+                "flag": "copies.wordclip.started",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "copies.wordclip.gloss"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "copies.wordclip.gloss",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Open the dictionary’s gloss entry.",
+          "next": "copies.wordclip.gloss.history"
+        },
+        {
+          "text": "Leave the paper here."
+        }
+      ]
+    },
+    {
+      "id": "copies.wordclip.gloss.history",
+      "speaker": "narrator",
+      "text": "The explanatory noun gloss has a route through medieval Latin and French. Its Greek ancestor could refer to a tongue, a language or an unfamiliar word. English uses the explanatory sense for a note beside a passage.",
+      "historicalLabel": "documented",
+      "claimKind": "observation",
+      "citationSource": "LEX-WORDCLIP-GLOSS",
+      "options": [
+        {
+          "text": "Return to the working paper.",
+          "next": "copies.wordclip.gloss"
+        }
+      ]
+    },
+    {
+      "id": "copies.wordclip.gloss.kept",
+      "speaker": "narrator",
+      "text": "The page number is on the first written page, below the plain protective leaf. The gloss can guide the next reader to it.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "copies.wordclip.witness",
+      "speaker": "narrator",
+      "text": "The signed slip reads “I saw the blue pocket and its two punches arrive at the second bell.” The witness has left the line for the written pages empty.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Clip the witness’s signed arrival line.",
+          "next": "copies.wordclip.witness.kept",
+          "if": {
+            "all": [
+              {
+                "flag": "copies.wordclip.started",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "copies.wordclip.witness"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "copies.wordclip.witness",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Open the dictionary’s witness entry.",
+          "next": "copies.wordclip.witness.history"
+        },
+        {
+          "text": "Leave the paper here."
+        }
+      ]
+    },
+    {
+      "id": "copies.wordclip.witness.history",
+      "speaker": "narrator",
+      "text": "The Old English ancestor of witness could refer to knowledge or testimony. Modern uses include a person with personal knowledge and an attestation. This signed line gives the scope of one person’s check.",
+      "historicalLabel": "documented",
+      "claimKind": "observation",
+      "citationSource": "LEX-WORDCLIP-WITNESS",
+      "options": [
+        {
+          "text": "Return to the working paper.",
+          "next": "copies.wordclip.witness"
+        }
+      ]
+    },
+    {
+      "id": "copies.wordclip.witness.kept",
+      "speaker": "narrator",
+      "text": "The signature travels with the arrival, the mark and the time. The blank content line stays visible.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "copies.wordclip.bind",
+      "speaker": "copies-presskeeper",
+      "text": "Use both date marks and keep the signed arrival line. The wrapper can go to the records desk with the witness at the top. Put the gloss at the top if you send the proof straight to the lending rail. Both copies keep the other line below the fold.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Bind the witness first for the records desk.",
+          "next": "copies.wordclip.bind.records",
+          "if": {
+            "all": [
+              {
+                "objective": "copies.wordclip.gather"
+              },
+              {
+                "not": {
+                  "flagSet": "copies.wordclip.route"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "copies.wordclip.route",
+              "value": "records"
+            }
+          ]
+        },
+        {
+          "text": "Bind the gloss first for a reader at the landing.",
+          "next": "copies.wordclip.bind.landing",
+          "if": {
+            "all": [
+              {
+                "objective": "copies.wordclip.gather"
+              },
+              {
+                "not": {
+                  "flagSet": "copies.wordclip.route"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "copies.wordclip.route",
+              "value": "landing"
+            }
+          ]
+        },
+        {
+          "text": "Leave the pieces loose for now."
+        }
+      ]
+    },
+    {
+      "id": "copies.wordclip.bind.records",
+      "speaker": "narrator",
+      "text": "The signed arrival sits beside the two-punch form and the second-bell date. Take the folded proof to the Record Room. The gloss stays in its lower fold.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "copies.wordclip.bind.landing",
+      "speaker": "narrator",
+      "text": "The explanation sits above the first written page. Carry the folded proof to the Lending Hall Landing. The date marks and witness stay in its lower fold.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "copies.wordclip.receive.records",
+      "speaker": "narrator",
+      "text": "The binder sees that the witness’s two punches match the second form. They can now fetch the one-punch form separately when a reader needs it. The note keeps the statement about arrival within its signed line.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Set the one-punch and two-punch wrappers in separate dated slots.",
+          "next": "copies.wordclip.received.records",
+          "if": {
+            "all": [
+              {
+                "flag": "copies.wordclip.route",
+                "eq": "records"
+              },
+              {
+                "not": {
+                  "flagSet": "copies.wordclip.delivered"
+                }
+              },
+              {
+                "item": "item.copies.wordclip-proof"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "copies.wordclip.delivered",
+              "value": "records"
+            }
+          ]
+        },
+        {
+          "text": "Leave the slots open."
+        }
+      ]
+    },
+    {
+      "id": "copies.wordclip.receive.landing",
+      "speaker": "copies-lendingkeeper",
+      "text": "The reader follows the gloss and lifts the plain protective leaf. They reach the first written page without counting the wrapper. I can still find the signed arrival line under the fold.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Open the proof at the first written page and hang it at the rail.",
+          "next": "copies.wordclip.received.landing",
+          "if": {
+            "all": [
+              {
+                "flag": "copies.wordclip.route",
+                "eq": "landing"
+              },
+              {
+                "not": {
+                  "flagSet": "copies.wordclip.delivered"
+                }
+              },
+              {
+                "item": "item.copies.wordclip-proof"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "copies.wordclip.delivered",
+              "value": "landing"
+            }
+          ]
+        },
+        {
+          "text": "Keep the proof folded for now."
+        }
+      ]
+    },
+    {
+      "id": "copies.wordclip.received.records",
+      "speaker": "narrator",
+      "text": "The binder can retrieve either wrapper form from its slot. The gloss remains underneath both dates for anyone who opens the folio here.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "copies.wordclip.received.landing",
+      "speaker": "narrator",
+      "text": "The next reader has a guide at the rail. The binder can still lift the fold to see exactly which arrival the witness saw.",
+      "historicalLabel": "fictional-world"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.copies.wordclip.gather.1",
+      "objective": "copies.wordclip.gather",
+      "depth": 1,
+      "text": "Follow the waiting clip in the Record Room after the lending notice is corrected."
+    },
+    {
+      "id": "h.copies.wordclip.gather.2",
+      "objective": "copies.wordclip.gather",
+      "depth": 2,
+      "text": "Keep the dates with both wrapper forms. The punch marks tell which form you are looking at."
+    },
+    {
+      "id": "h.copies.wordclip.gather.3",
+      "objective": "copies.wordclip.gather",
+      "depth": 3,
+      "text": "Look for the protective leaf in the Print Workshop and the signed slip at the Landing."
+    },
+    {
+      "id": "h.copies.wordclip.gather.4",
+      "objective": "copies.wordclip.gather",
+      "depth": 4,
+      "text": "Clip the wording and its check at each prop. The dictionary links are there if you want to look up a word’s history."
+    },
+    {
+      "id": "h.copies.wordclip.bind.1",
+      "objective": "copies.wordclip.bind",
+      "depth": 1,
+      "text": "The binding bench is beside the east passage in the Print Workshop."
+    },
+    {
+      "id": "h.copies.wordclip.bind.2",
+      "objective": "copies.wordclip.bind",
+      "depth": 2,
+      "text": "Both ways of folding the proof keep the dated forms and the signed arrival."
+    },
+    {
+      "id": "h.copies.wordclip.bind.3",
+      "objective": "copies.wordclip.bind",
+      "depth": 3,
+      "text": "A binder wants the arrival match first. A reader at the rail needs the explanation first."
+    },
+    {
+      "id": "h.copies.wordclip.bind.4",
+      "objective": "copies.wordclip.bind",
+      "depth": 4,
+      "text": "Bind the witness first to serve the records desk, or the gloss first to serve the landing reader."
+    },
+    {
+      "id": "h.copies.wordclip.deliver.1",
+      "objective": "copies.wordclip.deliver",
+      "depth": 1,
+      "text": "Take the bound proof where the top line will be used."
+    },
+    {
+      "id": "h.copies.wordclip.deliver.2",
+      "objective": "copies.wordclip.deliver",
+      "depth": 2,
+      "text": "The records desk is in the Record Room. The open page rail is at the Landing."
+    },
+    {
+      "id": "h.copies.wordclip.deliver.3",
+      "objective": "copies.wordclip.deliver",
+      "depth": 3,
+      "text": "The binder separates the dated wrappers. The landing reader finds the first written page."
+    },
+    {
+      "id": "h.copies.wordclip.deliver.4",
+      "objective": "copies.wordclip.deliver",
+      "depth": 4,
+      "text": "Open the proof at the marked receiver and leave that finished copy for the next person."
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.copies.wordclip",
+      "claimKind": "observation",
+      "text": "I kept the two wrapper forms, the explanation and the signed arrival together. The top line helped the next reader do a different job."
+    }
+  ]
+}

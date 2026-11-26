@@ -76,4 +76,75 @@ describe('The Price of a Basket', () => {
     expect(d.done('market.wick')).toBe(true);
     expect(read(d, 'market-wick-note')).toContain('480 grams for A and 760 grams for B');
   });
+
+  it.each([
+    ['Hang the prices by the window', 'Add the totals and leave a reweigh ticket', 'reweigh', 'blank tally'],
+    ['Open the comparison at the trade desk', 'Add a whole-lot line', 'posted', 'intake number'],
+  ])('carries a checked Market procedure to the council runner', (publish, revise, rule, expected) => {
+    const d = enter();
+    d.run({ type: 'WeighMarketLots', basis: 'gross' });
+    d.run({ type: 'WeighMarketLots', basis: 'net' });
+    d.talk('market-assayer', 'Set both pairs');
+    read(d, 'market-grade-sorting');
+    read(d, 'market-grade-display');
+    d.talk('market-clerk', 'Name what each grade does');
+    read(d, 'market-practice-purse');
+    d.talk('market-clerk', publish);
+    read(d, 'market-buyer-note');
+    expect(() => read(d, `market-quote-${rule}`)).toThrow();
+    d.talk('market-clerk', revise);
+    expect(d.done('market.finish')).toBe(true);
+    expect(read(d, `market-quote-${rule}`)).toMatch(/next/i);
+    expect(d.p.credit['credit.market.finish']).toBe(8);
+
+    const waterDoor = MAPS['nexus.archive'].interactables.find(({ id }) => id === 'water-door')!;
+    expect(check(waterDoor.visibleIf, d.s)).toBe(true);
+    d.s.mapId = waterDoor.to!.map;
+    d.run({ type: 'SetFlag', flag: waterDoor.flag!, value: true });
+    d.run({ type: 'RunWaterTrial', setting: 'fields' });
+    d.run({ type: 'RunWaterTrial', setting: 'split' });
+    for (const flag of ['water.farm.note', 'water.channel.note']) d.run({ type: 'SetFlag', flag, value: true });
+    d.s.mapId = 'water.council';
+    const handovers = () => MAPS[d.s.mapId].interactables.filter(({ id, visibleIf }) => id.startsWith('water-market-') && check(visibleIf, d.s));
+    expect(handovers()).toEqual([]);
+    d.talk('water-scribe', 'Split it five and five');
+    expect(d.done('water.publish')).toBe(true);
+    expect(handovers().map(({ id }) => id)).toEqual([`water-market-${rule}`]);
+    expect(handovers()[0].text).toContain(expected);
+    expect(d.p.credit['credit.water.publish']).toBe(8);
+    expect(d.p.awards['badge.field.next-count']).toBeUndefined();
+    d.run({ type: 'SetFlag', flag: handovers()[0].flag!, value: true });
+    expect(d.done('water.market.copy')).toBe(true);
+    expect(d.p.awards['badge.field.next-count']).toBeDefined();
+    const slip = MAPS['civic.dispatch'].interactables.find(({ id }) => id === 'civic-next-count')!;
+    expect(check(slip.visibleIf, d.s)).toBe(false);
+    d.s.objectivesDone.push('civic.compare');
+    expect(check(slip.visibleIf, d.s)).toBe(true);
+    expect(slip.text).toContain('walking round');
+  });
+
+  it.each([
+    ['Pin the weighed lot letters', 'posted'],
+    ['Leave a reweigh ticket', 'reweigh'],
+  ])('lets a returning Guardian keep their earlier notice and choose the next procedure once', (choice, rule) => {
+    const d = enter();
+    const ticket = market.interactables.find(({ id }) => id === 'market-quote-return')!;
+    expect(check(ticket.visibleIf, d.s)).toBe(false);
+    d.s.objectivesDone.push('market.finish', 'water.publish', 'water.finish');
+    d.s.flags['market.revised'] = true;
+    d.s.flags['market.access-key'] = true;
+    d.s.flags['market.wick-note'] = true;
+    d.p.credit['credit.market.finish'] = 8;
+    expect(check(ticket.visibleIf, d.s)).toBe(true);
+    if (ticket.kind !== 'scene' || !ticket.node) throw new Error('The return ticket needs a conversation.');
+    d.walk(ticket.node, ['Leave the ticket open']);
+    expect(check(ticket.visibleIf, d.s)).toBe(true);
+    d.walk(ticket.node, [choice]);
+    expect(d.s.flags['market.quote.rule']).toBe(rule);
+    expect(check(ticket.visibleIf, d.s)).toBe(false);
+    expect(d.e.visibleOptions(ticket.node, d.s).map(({ option }) => option.text)).toEqual(['Leave the ticket open for now.']);
+    expect(d.p.credit['credit.market.finish']).toBe(8);
+    const handover = MAPS['water.council'].interactables.find(({ id }) => id === `water-market-${rule}`)!;
+    expect(check(handover.visibleIf, d.s)).toBe(true);
+  });
 });

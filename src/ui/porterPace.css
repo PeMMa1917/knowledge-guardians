@@ -1,0 +1,49 @@
+.porter-panel {
+  display: grid;
+  gap: .7rem;
+}
+
+.porter-panel :is(h2, h3, p, ol) {
+  margin-block: 0;
+}
+
+.porter-panel button[aria-pressed="true"] {
+  border-color: currentColor;
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+.porter-course {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem 1.6rem;
+  padding-inline-start: 1.5rem;
+}
+
+.porter-course li[aria-current="step"] {
+  font-weight: 700;
+}
+
+.porter-course .porter-passed::marker {
+  content: "✓ ";
+}
+
+.porter-measures,
+.porter-traces section {
+  display: grid;
+  gap: .3rem;
+  padding: .5rem .65rem;
+  border: 1px solid rgb(176 195 163 / .35);
+  border-radius: 8px;
+  background: rgb(59 99 87 / .17);
+}
+
+.porter-traces {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: .6rem;
+}
+
+.porter-reply:not(:empty) {
+  border-inline-start: 3px solid #bdac7d;
+  padding-inline-start: .6rem;
+}

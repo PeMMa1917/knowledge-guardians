@@ -1,10 +1,27 @@
+import { EMBERFORD_PIGMENT_WINDOW } from './pigmentWindow';
+import { PRICE_DRAWERS_RETURNS } from './priceDrawers';
+import { JIG_EMBERFORD_RETURNS } from './jigShop';
 /**
  * WORLD-02 Aethelgard: Emberford, a guild town (spec 5.4).
  * Fantasy world. Nothing here is a historical record unless an exhibit is
  * labelled "Documented" with a source. 40 x 28 tiles.
  */
+import { EMBERFORD_FIELD_ORDER } from './fieldBadges';
+import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
 import { sceneProp } from './sceneProps';
+import { EMBERFORD_LANTERN_FAIR } from './lanternfair';
+import { EMBERFORD_BACKBILL } from './backbill';
+import { EMBERFORD_DOOR_FOLD } from './doorFold';
+import { EMBERFORD_DRAWER_CASES } from './drawerCases';
+import { EMBERFORD_BASKET } from './marketBasket';
+import { EMBERFORD_BRIDGE_PROOF } from './bridgeProof';
+import { EMBERFORD_SILL_BRIDGE } from './sillBridge';
+import { PORTER_EMBERFORD } from './porterPace';
+import { EMBERFORD_WINDOW } from './ferryWindow';
+import { CART_MEMORY_ACTORS, CART_MEMORY_PROPS } from './memoryCart';
+import { EMBERFORD_LAST_TURN } from './lastTurn';
+import { starStations } from './starPaths';
 
 const W = 40, H = 28;
 // Plaza (stone) rectangle
@@ -46,6 +63,29 @@ function linenStand(id: string, x: number, y: number, label: string, text: strin
     },
   ];
 }
+
+const repairQueue = {
+  arrival: { flag: 'reached.emberford', eq: true },
+  started: { flag: 'repair.queue.started', eq: true },
+  checked: { flag: 'repair.queue.tested', eq: true },
+  permission: { flag: 'repair.queue.permission', eq: true },
+  blanks: { flag: 'repair.queue.blanks', eq: true },
+  tray: { flag: 'repair.queue.tray', eq: true },
+  stub: { flag: 'repair.queue.stub', eq: true },
+  chosen: { flagSet: 'cross.repair-queue' },
+  receipt: { flagSet: 'repair.queue.receipt' },
+} satisfies Record<string, Condition>;
+
+const repairBranch = (eq: 'paired' | 'relay' | 'leave'): Condition => ({ flag: 'cross.repair-queue', eq });
+const repairUnsettled: Condition = { all: [repairQueue.started, { not: repairQueue.chosen }] };
+
+function repairScene(id: string, node: string, x: number, y: number, label: string, art: string, visibleIf: Condition): Interactable {
+  return { id: `repair-queue-${id}`, kind: 'scene', node: `repair.queue.${node}`, x, y, w: 1, h: 1, label, art, visibleIf, walkThrough: true };
+}
+
+const REPAIR_GATE = { x: 2, y: 16 };
+const REPAIR_SHELF = { x: 4, y: 16 };
+const REPAIR_YARD_ID = 'aethelgard.repair-yard';
 
 export const EMBERFORD: MapDef = {
   id: 'aethelgard.emberford',
@@ -101,6 +141,7 @@ export const EMBERFORD: MapDef = {
     [0, -1, W, 1], [0, H, W, 1], [-1, 0, 1, H], [W, 0, 1, H],
   ],
   npcs: [
+    ...CART_MEMORY_ACTORS,
     { id: 'merchant-corvan', x: 25, y: 13, facing: 'down' },
     { id: 'smith-hesper', x: 7, y: 13, facing: 'right' },
     { id: 'guildmaster-orrin', x: 19, y: 7, facing: 'down' },
@@ -110,7 +151,7 @@ export const EMBERFORD: MapDef = {
     { id: 'well-keeper', x: 32, y: 17, facing: 'left' },
     { id: 'fruit-seller', x: 15, y: 19, facing: 'down' },
     // The Shattering Rumour (side quest): each person heard the blade story from the next.
-    { id: 'porter-idris', x: 21, y: 23, facing: 'left' },
+    { id: 'porter-idris', x: 23, y: 22, facing: 'left' },
     { id: 'stallkeeper-hana', x: 12, y: 12, facing: 'right' },
     // Origin side quests (spec 35.1): each giver appears only for that origin.
     { id: 'runner-tamar', x: 18, y: 21, facing: 'right', visibleIf: { origin: 'harbour' } },
@@ -118,9 +159,55 @@ export const EMBERFORD: MapDef = {
     { id: 'singer-teodora', x: 16, y: 15, facing: 'down', visibleIf: { origin: 'singer' } },
   ],
   interactables: [
+    ...EMBERFORD_FIELD_ORDER,
+    ...starStations('chronicler', [17, 20], [18, 20]),
+    ...EMBERFORD_WINDOW,
+    ...EMBERFORD_BASKET,
+    ...EMBERFORD_PIGMENT_WINDOW,
+    ...PRICE_DRAWERS_RETURNS,
+    ...EMBERFORD_BRIDGE_PROOF,
+    EMBERFORD_SILL_BRIDGE,
+    ...PORTER_EMBERFORD,
+    ...CART_MEMORY_PROPS,
+    ...EMBERFORD_LAST_TURN,
+    ...JIG_EMBERFORD_RETURNS,
+    ...EMBERFORD_LANTERN_FAIR,
+    ...EMBERFORD_BACKBILL,
+    ...EMBERFORD_DOOR_FOLD,
+    ...EMBERFORD_DRAWER_CASES,
     { id: 'ballad-spot', kind: 'fieldgame', game: 'ballad', x: 37, y: 9, w: 1, h: 1, label: 'Wynn the ballad-singer, by the east well', art: 'notice-board' },
     { id: 'loyalty-hesper', kind: 'fieldgame', game: 'loyalty-hesper', x: 9, y: 18, w: 1, h: 1, label: "a record on Hesper's work bench (The Traveller's Quench)", art: 'ledger', visibleIf: { num: 'lamps.lit', gte: 6 } },
     { id: 'loyalty-sefa', kind: 'fieldgame', game: 'loyalty-sefa', x: 33, y: 22, w: 1, h: 1, label: "Sefa's song sheet on the memorial stone (The Flood Song)", art: 'old-sign', visibleIf: { num: 'lamps.lit', gte: 6 } },
+    repairScene('opening', 'opening', REPAIR_SHELF.x, REPAIR_SHELF.y, 'the forge pickup slate with two twelves', 'slate-board',
+      { all: [repairQueue.arrival, { not: repairQueue.started }] }),
+    { id: 'cross-repair-queue', kind: 'fieldgame', game: 'cross-repair-queue', ...REPAIR_SHELF, w: 1, h: 1, walkThrough: true,
+      label: 'the repair queue at the west shelf', art: 'slate-board', visibleIf: repairUnsettled },
+    repairScene('bench', 'bench', 8, 17, 'Hesper’s two practice tickets', 'nile.tablet',
+      { all: [repairUnsettled, { not: repairQueue.checked }] }),
+    repairScene('permission', 'permission', 14, 16, 'Sefa’s folded copy', 'nile.slip',
+      { all: [repairUnsettled, { not: repairQueue.permission }] }),
+    repairScene('blanks', 'blanks', 8, 17, 'Hesper’s blank pairs', 'preserved.display-paired',
+      { all: [repairUnsettled, repairQueue.checked, repairQueue.permission, { not: repairQueue.blanks }] }),
+    { id: 'repair-queue-shut', kind: 'sign', ...REPAIR_GATE, w: 1, h: 1, walkThrough: true, label: 'the latched pickup yard gate', art: 'cellar-door',
+      text: 'The open shelf is out of use. Check with the forge at the slate to the east.', visibleIf: { all: [repairQueue.arrival, { not: repairBranch('paired') }] } },
+    { id: 'repair-queue-gate', kind: 'door', ...REPAIR_GATE, w: 1, h: 1, walkThrough: true, label: 'the open pickup yard gate', art: 'cellar-door.open',
+      visibleIf: repairBranch('paired'), openIf: repairBranch('paired'), to: { map: REPAIR_YARD_ID, x: 6, y: 7 } },
+    { id: 'repair-queue-paired-hours', kind: 'sign', ...REPAIR_SHELF, w: 1, h: 1, walkThrough: true, label: 'the paired ticket handoff notice', art: 'preserved.display-paired',
+      text: 'Show the matching ticket at the gate at the end of the shift. The hatch keeps a public tick for the collection. Fee decisions stay at the inside bench.', visibleIf: repairBranch('paired') },
+    repairScene('tray', 'relay.lift', REPAIR_SHELF.x, REPAIR_SHELF.y, 'the covered kettle tray', 'workbench',
+      { all: [repairBranch('relay'), { not: repairQueue.tray }] }),
+    repairScene('handover', 'relay.transfer', 11, 11, 'Hana’s return-slip stand', 'board-stand',
+      { all: [repairBranch('relay'), repairQueue.tray, { not: repairQueue.stub }] }),
+    repairScene('return-stub', 'relay.finish', REPAIR_SHELF.x, REPAIR_SHELF.y, 'the slate clip for Hana’s return stub', 'nile.scroll',
+      { all: [repairBranch('relay'), repairQueue.stub, { not: repairQueue.receipt }] }),
+    { id: 'repair-queue-relay-hours', kind: 'sign', ...REPAIR_SHELF, w: 1, h: 1, walkThrough: true, label: 'the market relay pickup notice', art: 'preserved.display-records',
+      text: 'The kettle is under Hana’s counter. Pickup at the next market round. Leave new repairs at the forge. A runner brings them over after the square clears.',
+      visibleIf: { all: [repairBranch('relay'), repairQueue.receipt] } },
+    repairScene('appointment-rota', 'leave.rota', REPAIR_SHELF.x, REPAIR_SHELF.y, 'the apprentices’ returned slate', 'ledger',
+      { all: [repairBranch('leave'), { not: repairQueue.receipt }] }),
+    { id: 'repair-queue-private-hours', kind: 'sign', ...REPAIR_SHELF, w: 1, h: 1, walkThrough: true, label: 'the next private pickup hours', art: 'notice-board',
+      text: 'Private pickups at the first and last market bells. Ask for another slot if you missed yours. The kettle is still on the inside shelf.',
+      visibleIf: { all: [repairBranch('leave'), repairQueue.receipt] } },
     ...sceneProp('emberford.gauge', 29, 19, 'the river gauge board', 'notice-board',
       { repeat: 'board-stand', compare: 'cork-board' }),
     ...sceneProp('emberford.tally', 14, 20, 'the bakers’ tally', 'ledger',
@@ -244,6 +331,29 @@ export const EMBERFORD: MapDef = {
     { id: 'copy-west-outcome', kind: 'sign', x: 11, y: 13, w: 1, h: 1, walkThrough: true, label: 'Hana’s handover board', art: 'notice-board',
       text: 'The short version Hana reads aloud is at the top. The order number and the workshop name are underneath for anyone who missed the runner.',
       visibleIf: { all: [{ flag: 'copy.route', eq: 'market' }, { flag: 'copy.delivered', eq: true }] } },
+    { id: 'ember-pickup-front', kind: 'scene', node: 'ember.pickup.front', x: 15, y: 20, w: 1, h: 1, walkThrough: true,
+      label: 'Mara’s round-edged tray', art: 'workbench',
+      visibleIf: { all: [{ flag: 'reached.emberford', eq: true }, { not: { flag: 'ember.pickup.point', eq: true } }] } },
+    { id: 'ember-pickup-back', kind: 'scene', node: 'ember.pickup.back', x: 15, y: 17, w: 1, h: 1, walkThrough: true,
+      label: 'the lane behind Mara’s stall', art: 'preserved.slip',
+      visibleIf: { all: [{ flag: 'ember.pickup.point', eq: true }, { not: { flag: 'ember.pickup.call', eq: true } }] } },
+    { id: 'ember-pickup-fix', kind: 'scene', node: 'ember.pickup.fix', x: 16, y: 19, w: 1, h: 1, walkThrough: true,
+      label: 'the pickup tab and cord', art: 'preserved.slip',
+      visibleIf: { all: [{ objective: 'ember.pickup.compare' }, { not: { flagSet: 'ember.pickup.layout' } }] } },
+    { id: 'ember-pickup-tab', kind: 'scene', node: 'ember.pickup.tab', x: 15, y: 20, w: 1, h: 1, walkThrough: true,
+      label: 'the tray at the low round tab', art: 'workbench',
+      visibleIf: { all: [{ flag: 'ember.pickup.layout', eq: 'tab' }, { not: { flag: 'ember.pickup.taken', eq: true } }] } },
+    { id: 'ember-pickup-voice', kind: 'scene', node: 'ember.pickup.voice', x: 15, y: 17, w: 1, h: 1, walkThrough: true,
+      label: 'the rear pickup peg', art: 'preserved.slip',
+      visibleIf: { all: [{ flag: 'ember.pickup.layout', eq: 'voice' }, { not: { flag: 'ember.pickup.taken', eq: true } }] } },
+    { id: 'ember-pickup-tab-done', kind: 'sign', x: 15, y: 20, w: 1, h: 1, walkThrough: true,
+      label: 'the tray returned to its low tab', art: 'workbench',
+      text: 'The return tray rests below the round tab. A visitor can show Mara which tray they need from the front lane without speaking.',
+      visibleIf: { all: [{ flag: 'ember.pickup.layout', eq: 'tab' }, { flag: 'ember.pickup.taken', eq: true }] } },
+    { id: 'ember-pickup-voice-done', kind: 'sign', x: 15, y: 17, w: 1, h: 1, walkThrough: true,
+      label: 'the tray returned to the rear peg', art: 'workbench',
+      text: 'Mara keeps the return tray at the rear peg during her shift. She taps it when she hears the pickup call. The front counter still keeps its point-and-pass tray.',
+      visibleIf: { all: [{ flag: 'ember.pickup.layout', eq: 'voice' }, { flag: 'ember.pickup.taken', eq: true }] } },
     { id: 'nile-correction-square', kind: 'sign', x: 16, y: 6, w: 1, h: 1, walkThrough: true, label: 'Oduya’s dated correction', art: 'nile.slip',
       text: 'The old claim stays beside the correction. A visitor can read both and see what changed.', visibleIf: { flag: 'nile.emberCorrection', eq: 'square' } },
     { id: 'nile-correction-talk', kind: 'sign', x: 16, y: 6, w: 1, h: 1, walkThrough: true, label: 'a copy for the market', art: 'nile.slip',
@@ -260,7 +370,7 @@ export const EMBERFORD: MapDef = {
       artBy: { flag: 'puzzle.founders-plaque.method', keys: { strip: 'plaque.strip', clean: 'plaque.clean', window: 'plaque.window', repaint: 'plaque.repaint' } } },
     { id: 'survey-box', kind: 'puzzle', puzzle: 'toll-survey', x: 26, y: 9, w: 1, h: 1, label: "Clerk Venn's survey box", art: 'survey-box' },
     { id: 'ferry-slate', kind: 'puzzle', puzzle: 'ferry-message', x: 35, y: 22, w: 1, h: 1, label: 'the ferry message slate', art: 'ferry-slate' },
-    { id: 'easel', kind: 'puzzle', puzzle: 'painters-frame', x: 27, y: 18, w: 1, h: 1, label: "Nell's easel", art: 'easel' },
+    { id: 'easel', kind: 'puzzle', puzzle: 'painters-frame', x: 28, y: 19, w: 1, h: 1, label: "Nell's easel", art: 'easel' },
     { id: 'bell-rope', kind: 'puzzle', puzzle: 'bell-stair', x: 23, y: 5, w: 1, h: 1, label: "Maren's bell rope", art: 'bell-rope' },
     { id: 'forecast-board', kind: 'puzzle', puzzle: 'forecast-board', x: 34, y: 16, w: 1, h: 1, label: "Noa's forecast board", art: 'forecast-board' },
     { id: 'echo-bridge', kind: 'puzzle', puzzle: 'echo-bridge', x: 29, y: 21, w: 1, h: 1, label: 'the echo stone by the bridge', art: 'echo-stone' },
@@ -321,4 +431,35 @@ export const EMBERFORD: MapDef = {
     { x: 15.5, y: 14.5, r: 30, color: 0x8fd3ff, flicker: true },
   ],
   spawn: { x: 20, y: 21 },
+};
+
+export const REPAIR_YARD: MapDef = {
+  id: REPAIR_YARD_ID,
+  name: 'Emberford: the pickup yard',
+  world: EMBERFORD.world,
+  width: 13,
+  height: 10,
+  music: EMBERFORD.music,
+  ambience: EMBERFORD.ambience,
+  background: 0x2f6b3a,
+  floor: (x, y) => x >= 4 && x <= 8 && y > 2 ? 'stone-c' : 'grass',
+  stamps: [
+    { stamp: 'tree', x: 1, y: 1 }, { stamp: 'crates', x: 9, y: 2 },
+    { stamp: 'long-table', x: 5, y: 2 }, { stamp: 'barrel', x: 10, y: 5 },
+    { stamp: 'flowers-white', x: 2, y: 7 }, { stamp: 'banners', x: 6, y: 0 },
+  ],
+  blocks: [[0, 0, 1, 10], [12, 0, 1, 10], [0, 0, 13, 1], [0, 9, 13, 1]],
+  npcs: [],
+  interactables: [
+    repairScene('collect', 'paired.collect', 6, 4, 'the kettle and its checked ticket', 'preserved.display-paired',
+      { all: [repairBranch('paired'), { not: repairQueue.receipt }] }),
+    { id: 'repair-queue-yard-receipt', kind: 'sign', x: 6, y: 4, w: 1, h: 1, walkThrough: true,
+      label: 'the hatch plate after collection', art: 'preserved.display-records', visibleIf: { flag: 'repair.queue.receipt', eq: 'paired' },
+      text: 'The kettle is gone. One tick shows that the two edges matched before the hatch opened. The back of the plate is blank.' },
+    { id: 'repair-queue-yard-exit', kind: 'door', x: 6, y: 8, w: 1, h: 1, label: 'the gate back to Emberford', art: 'road-post',
+      to: { map: EMBERFORD.id, x: REPAIR_GATE.x + 1, y: REPAIR_GATE.y } },
+  ],
+  zones: [{ id: 'repair-yard', x: 0, y: 0, w: 13, h: 10 }],
+  lights: [{ x: 6.5, y: 3.6, r: 55, color: 0xffd98a, flicker: true }],
+  spawn: { x: 6, y: 7 },
 };

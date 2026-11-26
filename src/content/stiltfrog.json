@@ -1,0 +1,241 @@
+{
+  "lorelings": [
+    {
+      "id": "stiltfrog",
+      "name": "Stiltfrog",
+      "concept": "perspective",
+      "intro": "A small reed-green Loreling sits at the lip of a wet hollow. Elian has set two viewing flaps. Open each flap to its stop and take the same two quiet breaths at each height.",
+      "minSightings": 2,
+      "sightings": [
+        {
+          "id": "low",
+          "place": "the knee-height flap",
+          "text": "From this low flap, two feet show at the lower stone and then go behind the reeds. The lip hides the dry top and any landing there."
+        },
+        {
+          "id": "high",
+          "place": "the raised flap",
+          "text": "From this raised flap, the frog lands on one dry corner above the reeds and stops. The bottom of the hollow drops out of sight."
+        }
+      ],
+      "questions": [],
+      "offer": {
+        "prompt": "There is room to wait beside the reeds without standing in the frog’s way.",
+        "answer": "beside",
+        "options": [{ "id": "beside", "text": "Sit one stone back and give it the open sill." }]
+      },
+      "befriended": "The frog takes the open sill. After a quiet breath it shifts along the stone beside your boot. When you stand, it follows the outside edge. You leave the reed gap free.",
+      "names": ["Sill", "Rill", "Frond", "Pipstep"],
+      "forms": [
+        {
+          "name": "Stiltfrog",
+          "power": "Can point out a dry upper rim at a freshwater seep on Shoal Shelf. Check your own footing before using it."
+        }
+      ],
+      "fieldGuide": {
+        "sprite": "stiltfrog.pet",
+        "portrait": "stiltfrog.portrait",
+        "portraitAlt": "A small reed-green frog with golden eyes sits on a flat stone.",
+        "activeText": "It follows near your feet. At a freshwater seep it can show you a dry corner above its usual view."
+      },
+      "skills": [],
+      "weave": {
+        "concepts": ["perspective", "evidence", "certainty", "responsibility"],
+        "framework": ["methods-and-tools", "perspectives", "scope", "ethics"],
+        "atl": ["thinking", "research", "self-management"],
+        "subjects": ["biology", "ess"],
+        "aoks": ["NAT"]
+      },
+      "onComplete": [{ "journal": "j.forest.frog.bond" }]
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-FOREST-R06",
+      "world": "WORLD-06",
+      "title": "Room at the Sill",
+      "knowledgeQuestion": "What can a change of position show, and what disappears from the new view?",
+      "stake": "Elian wants both watch positions recorded while the frog keeps its sheltered sill.",
+      "available": { "objective": "forest.arrival" },
+      "objectives": [
+        {
+          "id": "forest.frog.watches",
+          "title": "Make two quiet watches at the hollow from different heights.",
+          "done": { "all": [{ "flag": "lor.stiltfrog.seen.low", "eq": true }, { "flag": "lor.stiltfrog.seen.high", "eq": true }] },
+          "essential": false,
+          "weave": {
+            "concepts": ["perspective", "evidence", "interpretation", "certainty"],
+            "framework": ["scope", "perspectives", "methods-and-tools"],
+            "atl": ["thinking", "research"],
+            "aoks": ["NAT"],
+            "subjects": ["biology", "ess"],
+            "minutes": 4,
+            "thinking": { "dok": 2, "bloom": "analyse", "fink": "application", "solo": "relational" }
+          }
+        },
+        {
+          "id": "forest.frog.bond",
+          "title": "Leave the sill open and wait at the bank seat.",
+          "visible": { "objective": "forest.frog.watches" },
+          "done": { "flag": "lor.stiltfrog.friend", "eq": true },
+          "essential": false,
+          "weave": {
+            "concepts": ["perspective", "values", "responsibility"],
+            "framework": ["perspectives", "ethics"],
+            "atl": ["thinking", "self-management"],
+            "aoks": ["NAT"],
+            "subjects": ["biology"],
+            "minutes": 2,
+            "thinking": { "dok": 2, "bloom": "apply", "fink": "caring", "solo": "relational" }
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-SEA-R09",
+      "world": "WORLD-09",
+      "title": "The Rim above the Reeds",
+      "knowledgeQuestion": "What can a guide point out before a different traveller checks it for themselves?",
+      "stake": "Sora needs a place to watch the fresh water without filling the reed hollow with feet.",
+      "available": { "objective": "sea.arrival" },
+      "objectives": [
+        {
+          "id": "sea.frog.shelf",
+          "title": "Use either dry approach to make a checked watch at the seep.",
+          "done": { "any": [{ "flag": "sea.frog.read.upper", "eq": true }, { "flag": "sea.frog.read.lower", "eq": true }] },
+          "essential": false,
+          "weave": {
+            "concepts": ["responsibility", "evidence", "perspective", "justification", "certainty", "values"],
+            "framework": ["scope", "methods-and-tools", "perspectives", "ethics"],
+            "atl": ["thinking", "research", "social"],
+            "aoks": ["NAT", "HUM"],
+            "subjects": ["biology", "ess"],
+            "minutes": 6,
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "integration", "solo": "relational" }
+          },
+          "onComplete": [{ "journal": "j.sea.frog.shelf" }]
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "sea.frog.rim",
+      "speaker": "sea-harbourkeeper",
+      "historicalLabel": "fictional-world",
+      "text": "The fresh water runs down from behind the wall. My old watch partner and I used to sit right over the reed gap. I miss her. The next watchers can stand back and still see what the water is doing.",
+      "options": [
+        {
+          "text": "Give the frog room to look from the dry rim.",
+          "if": { "all": [{ "flag": "lor.stiltfrog.friend", "eq": true }, { "flag": "lor.out", "eq": "stiltfrog" }] },
+          "next": "sea.frog.rim.pointed",
+          "effects": [{ "setFlag": "sea.frog.rim.pointed", "value": true }]
+        },
+        { "text": "Use the keeper’s staff by the south planks.", "next": "sea.frog.rim.alternate" }
+      ]
+    },
+    {
+      "id": "sea.frog.rim.pointed",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The Stiltfrog crouches where a narrow stone runs above the wet hollow. The short rim comes into view. Sora points to the two ends. “That shows us where to look. Use the keeper’s rod from here before we send anyone along it.”",
+      "options": [
+        {
+          "text": "Set the foot-length rod flat at both marked seats.",
+          "next": "sea.frog.rim.checked",
+          "effects": [{ "setFlag": "sea.frog.rim.checked", "value": true }]
+        },
+        { "text": "Leave the rim unchecked for now." }
+      ]
+    },
+    {
+      "id": "sea.frog.rim.checked",
+      "speaker": "sea-harbourkeeper",
+      "historicalLabel": "fictional-world",
+      "text": "The broad face of the rod settles at both seats over the water line. The crew’s dry-rim mark covers the single-foot passage for this visit. Leave the lower reed hollow clear. There’s room for packs and two people on the south planks."
+    },
+    {
+      "id": "sea.frog.rim.alternate",
+      "speaker": "sea-harbourkeeper",
+      "historicalLabel": "fictional-world",
+      "text": "Take the south planks past my fixed staff on this bank. From the low shoulder you can watch below the reed tops. There’s room for two."
+    },
+    {
+      "id": "sea.frog.staff",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Sora’s fixed staff stands on the dry side of the planks. The dated blue mark is at the water line. The low shoulder’s rail sits above it. The planks are wide enough for two people side by side.",
+      "options": [
+        {
+          "text": "Line the blue mark up with the low shoulder peg.",
+          "next": "sea.frog.staff.checked",
+          "effects": [{ "setFlag": "sea.frog.staff.checked", "value": true }]
+        }
+      ]
+    },
+    {
+      "id": "sea.frog.staff.checked",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The marks line up from the dry side. Follow the south planks and stop at the low shoulder. The water mark tells you about this approach today."
+    },
+    {
+      "id": "sea.frog.watch.upper",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "From the dry rim you see the fresh run join one open patch. A wet mark ends at the reed lip. The hollow below stays out of sight.",
+      "options": [
+        {
+          "text": "Set the angled sight frame back from the reed lip.",
+          "next": "sea.frog.watch.upper.done",
+          "effects": [{ "setFlag": "sea.frog.read.upper", "value": true }]
+        }
+      ]
+    },
+    {
+      "id": "sea.frog.watch.upper.done",
+      "speaker": "sea-harbourkeeper",
+      "historicalLabel": "fictional-world",
+      "text": "The angled frame keeps the run and the edge in view. The hollow below has a blank in this watch. One walker can reach it along the rim when the marks hold. I’ve left a space for a second position."
+    },
+    {
+      "id": "sea.frog.watch.lower",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "From the low shoulder, you can watch the sheltered run between two reeds. A stone blocks your view of the upper corner. A second observer has room beside you.",
+      "options": [
+        {
+          "text": "Brace the low watcher’s stand beside the peg.",
+          "next": "sea.frog.watch.lower.done",
+          "if": { "all": [{ "flag": "sea.frog.staff.checked", "eq": true }, { "flag": "reached.sea-frog-low-planks", "eq": true }] },
+          "effects": [{ "setFlag": "sea.frog.read.lower", "value": true }]
+        },
+        { "text": "Leave the stand and check the fixed staff by the south planks." }
+      ]
+    },
+    {
+      "id": "sea.frog.watch.lower.done",
+      "speaker": "sea-harbourkeeper",
+      "historicalLabel": "fictional-world",
+      "text": "Two visitors can see the lower run from this stand. I’ll keep the upper corner blank in this record. We can leave the reed gap empty."
+    }
+  ],
+  "hints": [
+    { "id": "h.forest.frog.watches.1", "objective": "forest.frog.watches", "depth": 1, "text": "Elian left two viewing flaps on the Listening Trail." },
+    { "id": "h.forest.frog.watches.2", "objective": "forest.frog.watches", "depth": 2, "text": "Try the low flap west of the bridge and the raised one after the crossing." },
+    { "id": "h.forest.frog.watches.3", "objective": "forest.frog.watches", "depth": 3, "text": "Open each flap to its mark and keep the same two quiet breaths." },
+    { "id": "h.forest.frog.watches.4", "objective": "forest.frog.watches", "depth": 4, "text": "Stay for the second breath at each flap. Note which part of the hollow drops out of that view." },
+    { "id": "h.forest.frog.bond.1", "objective": "forest.frog.bond", "depth": 1, "text": "Look for the bank seat near the raised flap." },
+    { "id": "h.forest.frog.bond.2", "objective": "forest.frog.bond", "depth": 2, "text": "The open sill is the frog’s way in and out." },
+    { "id": "h.forest.frog.bond.3", "objective": "forest.frog.bond", "depth": 3, "text": "You can sit beside the sill while leaving the opening free." },
+    { "id": "h.forest.frog.bond.4", "objective": "forest.frog.bond", "depth": 4, "text": "Use the low seat by the reeds and let the Stiltfrog come over in its own time." },
+    { "id": "h.sea.frog.shelf.1", "objective": "sea.frog.shelf", "depth": 1, "text": "Look on the west bank of Shoal Shelf for the rim or the water staff." },
+    { "id": "h.sea.frog.shelf.2", "objective": "sea.frog.shelf", "depth": 2, "text": "The water staff leads to the low shoulder. An active Stiltfrog can point out the upper rim." },
+    { "id": "h.sea.frog.shelf.3", "objective": "sea.frog.shelf", "depth": 3, "text": "Check the staff from the dry side and cross the south planks, or check the dry rim with a keeper’s rod and follow the marked steps." },
+    { "id": "h.sea.frog.shelf.4", "objective": "sea.frog.shelf", "depth": 4, "text": "Set the viewing frame at either end. Each position keeps track of the part it cannot see." }
+  ],
+  "journal": [
+    { "id": "j.forest.frog.bond", "claimKind": "observation", "text": "The Stiltfrog came to the open sill while I waited a stone back. Its low and high watches showed different parts of the hollow." },
+    { "id": "j.sea.frog.shelf", "claimKind": "interpretation", "text": "At the seep the upper rim shows the join while the low shoulder shows the sheltered run. A guide points out where to look. Each approach has its own check." }
+  ]
+}

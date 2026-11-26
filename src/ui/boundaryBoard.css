@@ -1,0 +1,9 @@
+.service-boundary canvas {
+  display: block;
+  width: min(100%, 28rem);
+  border: 1px solid var(--gold-dim);
+  border-radius: 6px;
+}
+.boundary-reading { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.25em 0.75em; }
+.boundary-reading dd { margin: 0; }
+.service-boundary button[aria-pressed="true"] { border-color: var(--gold); }

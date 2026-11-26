@@ -14,7 +14,8 @@
 import type { CampaignState, PermanentRecord } from './types';
 import { CAMPAIGN_SCHEMA } from './types';
 import { validateCampaign } from './validate';
-import { migratePermanent, newPermanent } from './permanent';
+import { migratePermanent, NewerPermanentRecord, newPermanent } from './permanent';
+import { newAdventureDiary } from './adventureJournal';
 
 export type SaveKind = 'checkpoint' | 'suspend';
 
@@ -95,7 +96,7 @@ export function serialisePair(p: SlotPair): string {
 }
 
 export type LoadResult =
-  | { ok: true; pair: SlotPair; migrated: boolean }
+  | { ok: true; pair: SlotPair; migrated: boolean; warning?: string }
   | { ok: false; reason: string };
 
 /**
@@ -126,6 +127,7 @@ export const MIGRATIONS: Record<number, (s: any) => any> = {
   // Schema 3 had no pronouns or origin. Schema 4 adds them (spec 35.1).
   // Old saves get they/them and no origin, and the player can change pronouns at any time.
   3: (s) => ({ ...s, schema: 4, player: { ...s.player, pronouns: { subject: 'they', object: 'them', possessive: 'their' }, origin: null } }),
+  4: (s) => ({ ...s, schema: 5, adventureDiary: newAdventureDiary(Array.isArray(s.notes) ? s.notes : []) }),
 };
 
 export function migrateCampaign(raw: any): { state: CampaignState; migrated: boolean } {
@@ -137,6 +139,11 @@ export function migrateCampaign(raw: any): { state: CampaignState; migrated: boo
     const step = MIGRATIONS[s.schema];
     if (!step) throw new Error(`No migration from schema ${s.schema}`);
     s = step(s);
+    migrated = true;
+  }
+  // Facing is cosmetic, but the scene needs a valid direction for interaction.
+  if (!['up', 'down', 'left', 'right'].includes(s.facing)) {
+    s = { ...s, facing: 'down' };
     migrated = true;
   }
   const problems = validateCampaign(s);
@@ -151,14 +158,32 @@ export function parsePair(text: string | null): LoadResult {
     if (outer?.format !== 'kg-slots' || typeof outer.body !== 'string') return { ok: false, reason: 'Save data has an unknown format.' };
     if (checksum(outer.body) !== outer.sum) return { ok: false, reason: 'Save data is damaged (checksum does not match).' };
     const p = JSON.parse(outer.body);
+    if (!p || typeof p !== 'object' || Array.isArray(p)) return { ok: false, reason: 'Save slots have an unknown format.' };
+    // Opening either slot can later rewrite the pair. Preserve newer saves for the version that wrote them.
+    const newer = [p.continue, p.recovery].map((entry) => entry?.state?.schema)
+      .find((schema) => typeof schema === 'number' && schema > CAMPAIGN_SCHEMA);
+    if (newer !== undefined) return { ok: false, reason: `Save was made by a newer version (schema ${newer}). Update the game to open it.` };
     let migrated = false;
-    const fix = (e: any): SaveEntry | null => {
-      if (!e) return null;
-      const r = migrateCampaign(e.state);
-      migrated ||= r.migrated;
-      return { ...e, state: r.state };
+    const problems: string[] = [];
+    const fix = (e: any, name: string): SaveEntry | null => {
+      if (e == null) return null;
+      try {
+        if (!['checkpoint', 'suspend'].includes(e.kind) || typeof e.label !== 'string' || typeof e.location !== 'string'
+          || typeof e.savedAt !== 'string' || !Number.isFinite(Date.parse(e.savedAt))) throw new Error('Invalid save details.');
+        const r = migrateCampaign(e.state);
+        migrated ||= r.migrated;
+        return { ...e, state: r.state };
+      } catch (err) {
+        problems.push(`${name} could not be opened. ${(err as Error).message}`);
+        return null;
+      }
     };
-    return { ok: true, pair: { revision: Number(p.revision) || 0, continue: fix(p.continue), recovery: fix(p.recovery) }, migrated };
+    const pair = { revision: Number(p.revision) || 0, continue: fix(p.continue, 'Continue'), recovery: fix(p.recovery, 'Checkpoint recovery') };
+    const reason = problems.join(' ');
+    if (!reason) return { ok: true, pair, migrated };
+    if (!pair.continue && !pair.recovery) return { ok: false, reason };
+    const available = pair.continue ? 'Continue is available.' : 'Checkpoint recovery is available.';
+    return { ok: true, pair, migrated, warning: `${reason} ${available}` };
   } catch (err) {
     return { ok: false, reason: (err as Error).message };
   }
@@ -168,11 +193,27 @@ export function parsePair(text: string | null): LoadResult {
 // Save service
 // --------------------------------------------------------------------------
 
+export class PermanentSaveConflict extends Error {
+  constructor(message = 'The learning record changed in another tab. Reopening loads the newer saved record. Keep this tab open if you still need its unsaved progress.') {
+    super(message);
+  }
+}
+
 export class SaveService {
+  private knownCampaign: string | null | undefined;
+  private knownPermanent: string | null | undefined;
+  private learningReadProblem: string | undefined;
+
   constructor(private store: KeyValueStore) {}
 
   load(): LoadResult {
-    return parsePair(this.store.get(KEY_SLOTS));
+    try {
+      this.knownCampaign = this.store.get(KEY_SLOTS);
+      return parsePair(this.knownCampaign);
+    } catch {
+      this.knownCampaign = undefined;
+      return { ok: false, reason: 'The browser could not read your saved adventure.' };
+    }
   }
 
   /**
@@ -180,26 +221,49 @@ export class SaveService {
    * (revision check, spec 24.3). Returns the stored pair.
    */
   commit(expectedRevision: number, next: SlotPair): SlotPair {
-    const current = this.load();
-    if (current.ok && current.pair.revision !== expectedRevision) {
+    const text = this.store.get(KEY_SLOTS);
+    const current = parsePair(text);
+    // A malformed pair can be replaced only when the initial read saw those exact bytes.
+    const canWrite = current.ok ? current.pair.revision === expectedRevision : this.knownCampaign === text;
+    if (!canWrite || (this.knownCampaign !== undefined && this.knownCampaign !== text)) {
       throw new Error('Save changed in another tab. Reload to continue.');
     }
-    this.store.set(KEY_SLOTS, serialisePair(next));
+    const saved = serialisePair(next);
+    this.store.set(KEY_SLOTS, saved);
+    this.knownCampaign = saved;
     return next;
   }
 
+  get permanentLoadProblem(): string | undefined { return this.learningReadProblem; }
+
   loadPermanent(): PermanentRecord {
-    const t = this.store.get(KEY_PERMANENT);
-    if (!t) return newPermanent();
+    this.learningReadProblem = undefined;
+    let saved: string | null;
     try {
-      return migratePermanent(JSON.parse(t));
+      saved = this.store.get(KEY_PERMANENT);
     } catch {
+      this.learningReadProblem = 'The browser could not read your saved learning record. Reopen the game when storage is available. New learning in this tab is unsaved.';
+      return newPermanent();
+    }
+    this.knownPermanent = saved;
+    try {
+      return saved === null ? newPermanent() : migratePermanent(JSON.parse(saved));
+    } catch (error) {
+      this.learningReadProblem = error instanceof NewerPermanentRecord
+        ? 'Your saved learning record came from a newer game version. Reopen the game in a version that supports it. New learning in this tab is unsaved.'
+        : 'Your saved learning record is unreadable. It is still in this browser. New learning in this tab cannot be saved.';
       return newPermanent();
     }
   }
 
   savePermanent(p: PermanentRecord): void {
-    this.store.set(KEY_PERMANENT, JSON.stringify(p));
+    if (this.learningReadProblem) throw new PermanentSaveConflict(this.learningReadProblem);
+    if (this.knownPermanent !== undefined && this.store.get(KEY_PERMANENT) !== this.knownPermanent) {
+      throw new PermanentSaveConflict();
+    }
+    const next = JSON.stringify(p);
+    this.store.set(KEY_PERMANENT, next);
+    this.knownPermanent = next;
   }
 }
 
@@ -210,7 +274,7 @@ export function memoryStore(init: Record<string, string> = {}): KeyValueStore & 
 
 export function browserStore(): KeyValueStore {
   return {
-    get: (k) => { try { return window.localStorage.getItem(k); } catch { return null; } },
+    get: (k) => window.localStorage.getItem(k),
     set: (k, v) => { window.localStorage.setItem(k, v); },
   };
 }

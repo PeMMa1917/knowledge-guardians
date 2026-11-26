@@ -1,0 +1,296 @@
+{
+  "dialogue": [
+    {
+      "id": "pigment-window.try",
+      "speaker": "narrator",
+      "text": "The dry practice strips sit in a sealed picture frame. The reading is the brightness of each reed-violet patch against the marked scale. Move one control at a time.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Slide the intact strip under the warm lamp.",
+          "effects": [
+            {
+              "setFlag": "pigment-window.display",
+              "value": "warm"
+            }
+          ]
+        },
+        {
+          "text": "Slide the same intact strip under the cool lamp.",
+          "effects": [
+            {
+              "setFlag": "pigment-window.display",
+              "value": "cool"
+            }
+          ]
+        },
+        {
+          "text": "Set both custody strips under the same cool lamp at the start.",
+          "effects": [
+            {
+              "setFlag": "pigment-window.display",
+              "value": "start"
+            }
+          ]
+        },
+        {
+          "text": "Advance the model’s custody interval and keep the cool lamp fixed.",
+          "effects": [
+            {
+              "setFlag": "pigment-window.display",
+              "value": "later"
+            }
+          ],
+          "if": {
+            "flag": "pigment-window.seen.start",
+            "eq": true
+          }
+        },
+        {
+          "text": "Leave the frame open for another reader."
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "pigment-window.started",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "pigment-window.copy",
+      "speaker": "copies-lendingkeeper",
+      "text": "Your strip shows how much the lamp alone changes the reading. It also shows a change in the exposed practice patch under the same lamp. I need a proof customers can use at the landing.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Hang the two reference marks under one fixed lamp.",
+          "effects": [
+            {
+              "setFlag": "pigment-window.placement",
+              "value": "lamp"
+            }
+          ]
+        },
+        {
+          "text": "Ink a hatch marker beside the colour for readers on the outdoor path.",
+          "effects": [
+            {
+              "setFlag": "pigment-window.placement",
+              "value": "hatch"
+            }
+          ]
+        },
+        {
+          "text": "Come back with the proof another time."
+        }
+      ]
+    },
+    {
+      "id": "pigment-window.take",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The lamp check compares one strip under two lights. The custody check uses one light on both strips at two times. The clerk has clipped both readings to a copy for the Lending Hall.",
+      "options": [
+        {
+          "text": "Tuck the paired pigment proof into the bag.",
+          "effects": [
+            {
+              "giveItem": "item.pigment-window.strip"
+            }
+          ]
+        },
+        {
+          "text": "Leave the copy on the bench for now."
+        }
+      ]
+    }
+  ],
+  "missions": [
+    {
+      "id": "pigment-window",
+      "title": "The Colour That Stayed",
+      "world": "WORLD-02",
+      "available": {
+        "flag": "reached.emberford",
+        "eq": true
+      },
+      "knowledgeQuestion": "What must stay fixed to track a change in a material?",
+      "stake": "The printer may throw away a useful strip or send a reader to the wrong patch if two different checks share one colour label.",
+      "objectives": [
+        {
+          "id": "pigment-window.controlled",
+          "title": "Compare a lamp change and a custody change with a fixed reference",
+          "done": {
+            "all": [
+              {
+                "flag": "pigment-window.seen.warm",
+                "eq": true
+              },
+              {
+                "flag": "pigment-window.seen.cool",
+                "eq": true
+              },
+              {
+                "flag": "pigment-window.seen.start",
+                "eq": true
+              },
+              {
+                "flag": "pigment-window.seen.later",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "flag": "pigment-window.started",
+            "eq": true
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "objectivity",
+              "explanation",
+              "certainty",
+              "interpretation"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "scope"
+            ],
+            "subjects": [
+              "chemistry",
+              "visual-arts"
+            ],
+            "aoks": [
+              "NAT",
+              "ART"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 5
+          }
+        },
+        {
+          "id": "pigment-window.received",
+          "title": "Check the revised proof at the Lending Hall Landing",
+          "done": {
+            "all": [
+              {
+                "objective": "pigment-window.controlled"
+              },
+              {
+                "flag": "pigment-window.received",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "objective": "pigment-window.controlled"
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "perspective",
+              "values",
+              "responsibility",
+              "justification"
+            ],
+            "framework": [
+              "perspectives",
+              "ethics"
+            ],
+            "subjects": [
+              "chemistry",
+              "visual-arts"
+            ],
+            "aoks": [
+              "NAT",
+              "ART"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 3
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.pigment-window.controlled.1",
+      "objective": "pigment-window.controlled",
+      "depth": 1,
+      "text": "Try both lamps on the same strip."
+    },
+    {
+      "id": "h.pigment-window.controlled.2",
+      "objective": "pigment-window.controlled",
+      "depth": 2,
+      "text": "Use one lamp on both samples for the custody comparison."
+    },
+    {
+      "id": "h.pigment-window.controlled.3",
+      "objective": "pigment-window.controlled",
+      "depth": 3,
+      "text": "Read the start pair before advancing the model interval."
+    },
+    {
+      "id": "h.pigment-window.controlled.4",
+      "objective": "pigment-window.controlled",
+      "depth": 4,
+      "text": "Check warm and cool on the intact strip. Record the start and later readings for both custody strips without moving the cool lamp."
+    },
+    {
+      "id": "h.pigment-window.received.1",
+      "objective": "pigment-window.received",
+      "depth": 1,
+      "text": "Take the checked strip to the City of Copies."
+    },
+    {
+      "id": "h.pigment-window.received.2",
+      "objective": "pigment-window.received",
+      "depth": 2,
+      "text": "The Lending Hall Landing has a place for a proof."
+    },
+    {
+      "id": "h.pigment-window.received.3",
+      "objective": "pigment-window.received",
+      "depth": 3,
+      "text": "The fixed lamp supports a colour comparison. The hatch lets a walker identify the patch along the path."
+    },
+    {
+      "id": "h.pigment-window.received.4",
+      "objective": "pigment-window.received",
+      "depth": 4,
+      "text": "Choose a fixed-lamp proof or a hatch mark at the landing rack, then read the result where it was placed."
+    }
+  ],
+  "items": [
+    {
+      "id": "item.pigment-window.strip",
+      "name": "Paired pigment proof",
+      "description": "Fictional practice readings from Emberford. The two lamp readings share one intact sample. The custody readings share one lamp and scale. The Lending Hall keeper can use the pair.",
+      "historicalLabel": "fictional-world",
+      "art": "preserved.display-paired"
+    }
+  ]
+}

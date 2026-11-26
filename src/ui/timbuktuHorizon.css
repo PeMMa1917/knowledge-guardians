@@ -1,0 +1,57 @@
+.season-horizon {
+  display: grid;
+  gap: 0.5rem;
+}
+.season-horizon h2,
+.season-horizon p {
+  margin-block: 0.3rem;
+}
+.season-horizon-plot {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  min-height: 8rem;
+  border: 2px solid #e2caa1;
+  background: #203749;
+}
+.season-column {
+  position: relative;
+  border-inline-end: 1px solid #987f5f;
+}
+.season-column.sighted {
+  outline: 3px solid #f9cc88;
+  z-index: 1;
+}
+.season-roof,
+.season-marker,
+.season-index {
+  position: absolute;
+}
+.season-roof {
+  inset-inline: 0;
+  inset-block-end: 0;
+  background: #594e58;
+  border-block-start: 3px solid #ead9b8;
+}
+.season-marker {
+  display: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 2px solid #101827;
+}
+.season-marker.visible {
+  display: block;
+}
+.season-marker.marker-0 {
+  inset-inline-start: 13%;
+  background: #ffce7a;
+}
+.season-marker.marker-1 {
+  inset-inline-end: 13%;
+  background: #fffcf1;
+  border-radius: 50%;
+}
+.season-index {
+  inset-block-end: 0;
+  inset-inline-start: 28%;
+  color: #fffcf1;
+}

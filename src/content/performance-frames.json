@@ -1,0 +1,1228 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH9-R06",
+   "world": "WORLD-10",
+   "title": "The Third Fold",
+   "knowledgeQuestion": "How much can a short sequence tell someone who missed the start?",
+   "available": {
+    "flag": "stage.frames.started",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "stage.frames.checked",
+     "title": "Test the hinge and compare what a late reader follows in one picture and three.",
+     "essential": false,
+     "visible": {
+      "flag": "stage.frames.started",
+      "eq": true
+     },
+     "done": {
+      "all": [
+       {
+        "flag": "stage.frames.hinge",
+        "eq": true
+       },
+       {
+        "flag": "stage.frames.reader",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "interpretation",
+       "perspective",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "subjects": [
+       "film",
+       "visual-arts",
+       "lit-perf",
+       "design-tech"
+      ],
+      "aoks": [
+       "ART",
+       "LAN",
+       "TEC"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-14"
+     ]
+    },
+    {
+     "id": "stage.frames.served",
+     "title": "Set up a reading arrangement with Hari and check how the late visitors used it.",
+     "essential": false,
+     "visible": {
+      "objective": "stage.frames.checked"
+     },
+     "done": {
+      "flag": "stage.frames.served",
+      "eq": true
+     },
+     "onComplete": [
+      {
+       "journal": "j.stage.frames"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "responsibility",
+       "evidence",
+       "perspective"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "atl": [
+       "social",
+       "communication",
+       "self-management"
+      ],
+      "subjects": [
+       "visual-arts",
+       "lit-perf"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-COL-05",
+      "SK-ETR-01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH14-R05",
+   "world": "WORLD-15",
+   "title": "A Frame at the Dock",
+   "knowledgeQuestion": "Which parts of a tested design carry into a new place?",
+   "available": {
+    "flagSet": "island.frames.reference"
+   },
+   "objectives": [
+    {
+     "id": "island.frames.checked",
+     "title": "Compare the clipped strip and watch a carrier try both ways to read with one hand free.",
+     "essential": false,
+     "visible": {
+      "flagSet": "island.frames.reference"
+     },
+     "done": {
+      "all": [
+       {
+        "flag": "island.frames.draft",
+        "eq": true
+       },
+       {
+        "flag": "island.frames.reader",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "evidence",
+       "explanation",
+       "perspective",
+       "certainty"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      },
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "film",
+       "design-tech",
+       "theatre"
+      ],
+      "aoks": [
+       "ART",
+       "TEC"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-14"
+     ]
+    },
+    {
+     "id": "island.frames.finished",
+     "title": "Try the dock arrangement with the carriers. Return to the workshop to make their requested change.",
+     "essential": false,
+     "visible": {
+      "objective": "island.frames.checked"
+     },
+     "done": {
+      "flag": "island.frames.finished",
+      "eq": true
+     },
+     "onComplete": [
+      {
+       "journal": "j.island.frames"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "power",
+       "explanation",
+       "perspective"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "ethics",
+       "methods-and-tools"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "caring",
+       "solo": "extended"
+      },
+      "atl": [
+       "social",
+       "communication",
+       "self-management"
+      ],
+      "subjects": [
+       "visual-arts",
+       "theatre",
+       "design-tech"
+      ],
+      "aoks": [
+       "ART",
+       "TEC",
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-COL-05",
+      "SK-ETR-01"
+     ]
+    }
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "item.stage.frames.proof",
+   "name": "The Third Fold proof",
+   "historicalLabel": "fictional-world",
+   "art": "frames.proof",
+   "description": "Edda's dated dry fold trial beside the agreed observation from a late reader. The three frames and the local limits travel together. Ivo has room for the slip in the Island Plan Workshop."
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "stage.frames.brief",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Edda has written EVERY LATE VISITOR CAN FOLLOW THE SCENE on a blank cover. The new folio carries three pictures of a basket at a doorway. Edda saw the whole rehearsal. A visitor at the late bench missed its opening line. There are two things to try before this leaves the worktable.",
+   "options": [
+    {
+     "text": "Clip a smaller task to the test table. Check the three folds and whether a late reader can follow the basket.",
+     "next": "stage.frames.briefed",
+     "if": {
+      "not": {
+       "flagSet": "stage.frames.started"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "stage.frames.started",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the folio on the table for now."
+    }
+   ]
+  },
+  {
+   "id": "stage.frames.briefed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Edda turns the old heading face down. “Put whose hand moves the basket on our check slip. I can try the hinges here. Nera offered a turn at the late bench in the gallery.”"
+  },
+  {
+   "id": "stage.frames.hinge",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The same three pictures sit on two strips. The first has a fold scored through its paper. The second has a narrow cloth hinge between cards. Both have been on this dry table since the room opened.",
+   "options": [
+    {
+     "text": "Open and close each strip three times on the same flat table.",
+     "next": "stage.frames.hinge.read",
+     "if": {
+      "all": [
+       {
+        "flag": "stage.frames.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "stage.frames.hinge"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.frames.hinge",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep both strips flat for now."
+    }
+   ]
+  },
+  {
+   "id": "stage.frames.hinge.read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "On the third opening, the scored edge lifts and cuts into the picture of the hand. The cloth hinge still lies flat. Edda clips the dated fold result to the sample. It describes these two copies after three dry folds."
+  },
+  {
+   "id": "stage.frames.reader",
+   "speaker": "thirdfold-nera",
+   "historicalLabel": "fictional-world",
+   "text": "I came in after the basket line. The cloth folio is on the bench. I'll give you a minute with it. Use what I notice to set up the bench. Please leave my name off the public copy.",
+   "options": [
+    {
+     "text": "Ask Nera’s permission. Cover the outer frames, then open all three in order.",
+     "next": "stage.frames.reader.read",
+     "if": {
+      "all": [
+       {
+        "flag": "stage.frames.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "stage.frames.reader"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.frames.reader",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let Nera have her minute alone."
+    }
+   ]
+  },
+  {
+   "id": "stage.frames.reader.read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The middle picture shows a hand on a basket. “I couldn't tell if she was picking it up,” says Nera. With all three open, she traces full hands, the basket on the ledge, then empty hands. She can follow the action. She still wants to hear why the actor left it. Edda puts the observation in her working packet as 'late reader, second rehearsal'."
+  },
+  {
+   "id": "stage.frames.reader.after",
+   "speaker": "thirdfold-nera",
+   "historicalLabel": "fictional-world",
+   "text": "I can show a late reader the basket reaches the ledge. I'll leave the actor's reason for the scene. All the views need a clear place to wait."
+  },
+  {
+   "id": "stage.frames.plan",
+   "speaker": "stage-director",
+   "historicalLabel": "fictional-world",
+   "text": "I have two dated slips under the new heading. This cloth hinge held three dry folds. One late reader followed the basket in all three frames. Hari can spare a helper at the bench for the opening interval. The waiting row also has room for one low rail.",
+   "options": [
+    {
+     "text": "Set the full sequence on the low rail for the queue to read as it moves.",
+     "next": "stage.frames.chosen.rail",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "stage.frames.hinge",
+          "eq": true
+         },
+         {
+          "flag": "stage.frames.reader",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "stage.frames.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.frames.layout",
+       "value": "rail"
+      }
+     ]
+    },
+    {
+     "text": "Agree a first turn with Hari and fit the cloth folio at the late bench.",
+     "next": "stage.frames.chosen.folio",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "stage.frames.hinge",
+          "eq": true
+         },
+         {
+          "flag": "stage.frames.reader",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "stage.frames.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.frames.layout",
+       "value": "folio"
+      }
+     ]
+    },
+    {
+     "text": "Keep both dated slips with the worktable copies."
+    }
+   ]
+  },
+  {
+   "id": "stage.frames.chosen.rail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Hari moves the queue rope back one floor mark. He asks you to use the rail by the waiting row. Nera offers to stand where the first late viewer would."
+  },
+  {
+   "id": "stage.frames.chosen.folio",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Hari offers to hold the outer edge while a reader turns pages. Nera takes the first turn. A bench on the other side of the gallery gives people space to wait while one pair reads."
+  },
+  {
+   "id": "stage.frames.install.rail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The low rail faces the waiting row. A clip fits each end of the strip. Nera stands where she can see the rail and keep space for the next visitor.",
+   "options": [
+    {
+     "text": "Clip all three frames in order and ask Nera to follow them with her hands free.",
+     "next": "stage.frames.installed.rail",
+     "if": {
+      "all": [
+       {
+        "flag": "stage.frames.layout",
+        "eq": "rail"
+       },
+       {
+        "not": {
+         "flagSet": "stage.frames.installed"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.frames.installed",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the waiting row open until the rail is ready."
+    }
+   ]
+  },
+  {
+   "id": "stage.frames.install.folio",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The cloth hinge lies flat on the late bench. Hari checks that Nera wants him to hold one edge. The spare seat gives the next person room to wait.",
+   "options": [
+    {
+     "text": "Set the folio on the bench and let Nera turn the three frames with Hari.",
+     "next": "stage.frames.installed.folio",
+     "if": {
+      "all": [
+       {
+        "flag": "stage.frames.layout",
+        "eq": "folio"
+       },
+       {
+        "not": {
+         "flagSet": "stage.frames.installed"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.frames.installed",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave a free space on the bench for the later readers."
+    }
+   ]
+  },
+  {
+   "id": "stage.frames.installed.rail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Nera follows the basket from the first clip to the last. A second visitor needs her to step half a pace to the side. Edda says the foyer desk will hold the first interval's check."
+  },
+  {
+   "id": "stage.frames.installed.folio",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Nera can hold a picture open while she looks back to the earlier one. The next reader waits for Hari to finish. Edda says the foyer desk will hold the first interval's check."
+  },
+  {
+   "id": "stage.frames.feedback.rail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The front of the waiting row used the rail. A visitor who arrived behind the queue stood at the side and found the last picture after Hari drew the rope back. The fold result and that reader report stay on separate slips.",
+   "options": [
+    {
+     "text": "Leave the side opening clear and take the dated hinge-and-reader proof for the island makers.",
+     "next": "stage.frames.served.rail",
+     "if": {
+      "all": [
+       {
+        "flag": "stage.frames.layout",
+        "eq": "rail"
+       },
+       {
+        "flag": "stage.frames.installed",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "stage.frames.served"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.frames.served",
+       "value": true
+      },
+      {
+       "giveItem": "item.stage.frames.proof"
+      }
+     ]
+    },
+    {
+     "text": "Leave the proof with the foyer desk for now."
+    }
+   ]
+  },
+  {
+   "id": "stage.frames.feedback.folio",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Two late arrivals read successive turns when Hari held the folio. Another arrived while he helped with a seat and waited through a line. Hari offers to keep a spare rest for the folio so a reader can open it while he is away.",
+   "options": [
+    {
+     "text": "Leave a rest at the late bench and take the dated hinge-and-reader proof for the island makers.",
+     "next": "stage.frames.served.folio",
+     "if": {
+      "all": [
+       {
+        "flag": "stage.frames.layout",
+        "eq": "folio"
+       },
+       {
+        "flag": "stage.frames.installed",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "stage.frames.served"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.frames.served",
+       "value": true
+      },
+      {
+       "giveItem": "item.stage.frames.proof"
+      }
+     ]
+    },
+    {
+     "text": "Keep the evidence slips beside the foyer register."
+    }
+   ]
+  },
+  {
+   "id": "stage.frames.served.rail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The row keeps a clear route to the side of the rail. The proof names Edda's dry fold trial and its three openings. It also records what one late reader said and where she stood. The public copy leaves her name off."
+  },
+  {
+   "id": "stage.frames.served.folio",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Hari slides the spare rest under the cover. The proof names Edda's three dry folds. It records the agreed reading turn and leaves the wait during Hari's absence on its own line."
+  },
+  {
+   "id": "island.frames.brief",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Ivo has three new pictures for the dock handover. They show when a carrier should wait beside a crate, lift it, and set it down. The workshop is sheltered. Joss asks for a check with a carrier whose other hand holds a basket.",
+   "options": [
+    {
+     "text": "Clip my Stage rail proof beside the island's trial stand.",
+     "next": "island.frames.reference.rail",
+     "if": {
+      "all": [
+       {
+        "item": "item.stage.frames.proof"
+       },
+       {
+        "flag": "stage.frames.layout",
+        "eq": "rail"
+       },
+       {
+        "not": {
+         "flagSet": "island.frames.reference"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "island.frames.reference",
+       "value": "rail"
+      }
+     ]
+    },
+    {
+     "text": "Clip my Stage folio proof beside the island's trial stand.",
+     "next": "island.frames.reference.folio",
+     "if": {
+      "all": [
+       {
+        "item": "item.stage.frames.proof"
+       },
+       {
+        "flag": "stage.frames.layout",
+        "eq": "folio"
+       },
+       {
+        "not": {
+         "flagSet": "island.frames.reference"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "island.frames.reference",
+       "value": "folio"
+      }
+     ]
+    },
+    {
+     "text": "Set fresh draft and reader marks on the island worktable.",
+     "next": "island.frames.reference.local",
+     "if": {
+      "not": {
+       "flagSet": "island.frames.reference"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "island.frames.reference",
+       "value": "local"
+      }
+     ]
+    },
+    {
+     "text": "Leave the handover strip beside Ivo's model."
+    }
+   ]
+  },
+  {
+   "id": "island.frames.reference.rail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Ivo finds the rope line on the Stage proof. “Those readers could stand clear of an aisle. Our carrier will keep one hand on the basket.” He clips the old picture beside the empty line for a local try."
+  },
+  {
+   "id": "island.frames.reference.folio",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Joss points to the interval where the Stage helper was away. “I can take first shift here. Give the next carrier a way to tell where to wait when I step away.” The local trial gets its own card."
+  },
+  {
+   "id": "island.frames.reference.local",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Ivo marks two places on fresh slips. One lets him compare the strip with and without a clip. The other leaves room for what a carrier can actually do while holding a basket."
+  },
+  {
+   "id": "island.frames.draft",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Joss wheels an empty basket past a set of pictures facing the open workshop door. The paper lifts along its bottom edge each time the basket passes. Joss can repeat the same slow pass.",
+   "options": [
+    {
+     "text": "Clip the bottom edge and repeat the same empty-basket pass.",
+     "next": "island.frames.draft.read",
+     "if": {
+      "all": [
+       {
+        "flagSet": "island.frames.reference"
+       },
+       {
+        "not": {
+         "flagSet": "island.frames.draft"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "island.frames.draft",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the strip open for the next empty pass."
+    }
+   ]
+  },
+  {
+   "id": "island.frames.draft.read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The three panels stay flat with the bottom edge clipped during the next pass. Ivo keeps both tries on one line in the workshop record. The trials used an empty basket and this doorway draft."
+  },
+  {
+   "id": "island.frames.reader",
+   "speaker": "island-dockhand",
+   "historicalLabel": "fictional-world",
+   "text": "I'll be the first carrier with an empty basket. Put how I open the pictures on the work slip. Leave off anyone who didn't take a turn.",
+   "options": [
+    {
+     "text": "Let Joss try opening the folio with a basket in the other hand, then check the open rail.",
+     "next": "island.frames.reader.read",
+     "if": {
+      "all": [
+       {
+        "flagSet": "island.frames.reference"
+       },
+       {
+        "not": {
+         "flagSet": "island.frames.reader"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "island.frames.reader",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the empty basket where Joss can come back to it."
+    }
+   ]
+  },
+  {
+   "id": "island.frames.reader.read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The loose end folds shut when Joss reaches across. With the rail already open, Joss can point to wait, lift and set down in order while holding the basket. A second person holding the folio edge gives the same reach. Joss tells you which shift is free."
+  },
+  {
+   "id": "island.frames.plan",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Joss and Ivo divide the work. Ivo can clip the open rail at the dock. Joss can share the folio with single carriers during the first shift. Some carriers pass the route quickly. Others want time to see each panel beside a helper.",
+   "options": [
+    {
+     "text": "Send the rail to the dock with its tested clip and room for a basket to stop.",
+     "next": "island.frames.chosen.fixed",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "island.frames.draft",
+          "eq": true
+         },
+         {
+          "flag": "island.frames.reader",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "island.frames.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "island.frames.layout",
+       "value": "fixed"
+      }
+     ]
+    },
+    {
+     "text": "Send the folio with Joss and agree who will take the next turn.",
+     "next": "island.frames.chosen.host",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "island.frames.draft",
+          "eq": true
+         },
+         {
+          "flag": "island.frames.reader",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "island.frames.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "island.frames.layout",
+       "value": "host"
+      }
+     ]
+    },
+    {
+     "text": "Keep the trial slips together at the workshop."
+    }
+   ]
+  },
+  {
+   "id": "island.frames.chosen.fixed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Ivo sets the clip in the cart. Joss leaves a floor mark at the dock where a carrier can pause to read all three frames."
+  },
+  {
+   "id": "island.frames.chosen.host",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Joss offers the first staffed turn. Ivo says he'll keep the second turn if the first helper has another load. The empty basket and folio go to the dock."
+  },
+  {
+   "id": "island.frames.install.fixed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A carrier pauses by Joss's floor mark with an empty basket under one arm. The clip and three open frames are on the rail.",
+   "options": [
+    {
+     "text": "Close the clip and let the carrier point to the waiting mark before the lift.",
+     "next": "island.frames.installed.fixed",
+     "if": {
+      "all": [
+       {
+        "flag": "island.frames.layout",
+        "eq": "fixed"
+       },
+       {
+        "not": {
+         "flagSet": "island.frames.installed"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "island.frames.installed",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the floor mark clear until the next carrier arrives."
+    }
+   ]
+  },
+  {
+   "id": "island.frames.install.host",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Joss has the folio open on a low rest. The first carrier stops. The next is close behind with a basket under one arm.",
+   "options": [
+    {
+     "text": "Hold the first edge with Joss and help the next carrier take their own turn.",
+     "next": "island.frames.installed.host",
+     "if": {
+      "all": [
+       {
+        "flag": "island.frames.layout",
+        "eq": "host"
+       },
+       {
+        "not": {
+         "flagSet": "island.frames.installed"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "island.frames.installed",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the low rest ready for the next turn."
+    }
+   ]
+  },
+  {
+   "id": "island.frames.installed.fixed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The first carrier points to wait, then reads the remaining frames in order. Someone behind waits for the floor mark to clear. Joss sends both observations back to the workshop."
+  },
+  {
+   "id": "island.frames.installed.host",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Both carriers follow the frames in turn. Joss has to help with a crate after the reading. Ivo takes the next turn as agreed. He sends a note to the workshop that the handover still needs a clear place to wait."
+  },
+  {
+   "id": "island.frames.return.fixed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The first carrier could read while holding the basket. The second asked where to pause while the floor mark was occupied. Ivo has a second strip and one spare low clip.",
+   "options": [
+    {
+     "text": "Fit a waiting cue at the side and leave the three-frame rail clear.",
+     "next": "island.frames.finished.fixed",
+     "if": {
+      "all": [
+       {
+        "flag": "island.frames.layout",
+        "eq": "fixed"
+       },
+       {
+        "flag": "island.frames.installed",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "island.frames.finished"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "island.frames.finished",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the two carrier reports pinned together."
+    }
+   ]
+  },
+  {
+   "id": "island.frames.return.host",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Joss and Ivo covered both turns. The visitor arriving between them found the folio still on its rest but no place to put their basket. The workshop has an empty hook below the rest.",
+   "options": [
+    {
+     "text": "Set aside the low basket hook between staffed turns.",
+     "next": "island.frames.finished.host",
+     "if": {
+      "all": [
+       {
+        "flag": "island.frames.layout",
+        "eq": "host"
+       },
+       {
+        "flag": "island.frames.installed",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "island.frames.finished"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "island.frames.finished",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the request on Ivo's bench for the next shift."
+    }
+   ]
+  },
+  {
+   "id": "island.frames.finished.fixed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The side cue gives the next arrival a place to wait. The dock record keeps the tested clip arrangement, the empty load and the two readers' positions."
+  },
+  {
+   "id": "island.frames.finished.host",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The basket gets its own place near the rest. The next helper knows what the hook is for. The record keeps the two agreed turns and the earlier gap between them."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.stage.frames.checked.1",
+   "objective": "stage.frames.checked",
+   "depth": 1,
+   "text": "The fold and the viewer answer different things."
+  },
+  {
+   "id": "h.stage.frames.checked.2",
+   "objective": "stage.frames.checked",
+   "depth": 2,
+   "text": "The two test folios wait on the west side of rehearsal. Nera is at the late bench in the gallery."
+  },
+  {
+   "id": "h.stage.frames.checked.3",
+   "objective": "stage.frames.checked",
+   "depth": 3,
+   "text": "Try three openings of each strip. Keep the pictures and table the same."
+  },
+  {
+   "id": "h.stage.frames.checked.4",
+   "objective": "stage.frames.checked",
+   "depth": 4,
+   "text": "Ask Nera to try the middle picture alone, then all three in order."
+  },
+  {
+   "id": "h.stage.frames.served.1",
+   "objective": "stage.frames.served",
+   "depth": 1,
+   "text": "A queue can read an open rail. A folio turns best when someone has agreed to help."
+  },
+  {
+   "id": "h.stage.frames.served.2",
+   "objective": "stage.frames.served",
+   "depth": 2,
+   "text": "Look for Hari's place for the rail or the late bench."
+  },
+  {
+   "id": "h.stage.frames.served.3",
+   "objective": "stage.frames.served",
+   "depth": 3,
+   "text": "Set up the arrangement you agreed and try it with Nera in the gallery."
+  },
+  {
+   "id": "h.stage.frames.served.4",
+   "objective": "stage.frames.served",
+   "depth": 4,
+   "text": "Check the first interval's response at the west side of the foyer. The proof leaves with you from there."
+  },
+  {
+   "id": "h.island.frames.checked.1",
+   "objective": "island.frames.checked",
+   "depth": 1,
+   "text": "The Island has a different draft and a carrier with one hand busy."
+  },
+  {
+   "id": "h.island.frames.checked.2",
+   "objective": "island.frames.checked",
+   "depth": 2,
+   "text": "Use the clipped trial stand in the west workshop, then watch Joss try to read."
+  },
+  {
+   "id": "h.island.frames.checked.3",
+   "objective": "island.frames.checked",
+   "depth": 3,
+   "text": "Compare the empty-basket pass with the same strip and an extra clip."
+  },
+  {
+   "id": "h.island.frames.checked.4",
+   "objective": "island.frames.checked",
+   "depth": 4,
+   "text": "Let Joss try both the closed folio and the open rail before choosing a place for the pictures."
+  },
+  {
+   "id": "h.island.frames.finished.1",
+   "objective": "island.frames.finished",
+   "depth": 1,
+   "text": "Joss can help during the first shift. Ivo can set an open rail."
+  },
+  {
+   "id": "h.island.frames.finished.2",
+   "objective": "island.frames.finished",
+   "depth": 2,
+   "text": "Agree the arrangement at the west worktable. A handover stand waits at the dock."
+  },
+  {
+   "id": "h.island.frames.finished.3",
+   "objective": "island.frames.finished",
+   "depth": 3,
+   "text": "Try what you installed with the carriers at the dock."
+  },
+  {
+   "id": "h.island.frames.finished.4",
+   "objective": "island.frames.finished",
+   "depth": 4,
+   "text": "Return to Ivo's request table in the workshop and act on the last reader's report."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.stage.frames",
+   "claimKind": "observation",
+   "text": "I compared two hinges on the same three pictures. Nera's permitted observation showed what the full sequence added for a late viewer. We adjusted the reading place when another visitor needed a turn."
+  },
+  {
+   "id": "j.island.frames",
+   "claimKind": "observation",
+   "text": "I checked the hinged strip in the workshop draft and watched Joss read while carrying an empty basket. The dock test showed where the next carrier needed to wait. We changed that place after the trial."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.frames.stage",
+   "attribute": "principled",
+   "when": {
+    "flag": "stage.frames.served",
+    "eq": true
+   },
+   "did": "You kept the practical test and the reader's observation separate and honoured the reader's permission.",
+   "prompt": ""
+  },
+  {
+   "id": "mom.frames.island",
+   "attribute": "caring",
+   "when": {
+    "flag": "island.frames.finished",
+    "eq": true
+   },
+   "did": "You shared a task with the dock crew, returned to hear their experience, and made room for the next carrier.",
+   "prompt": ""
+  }
+ ],
+ "characters": [
+  {
+   "id": "thirdfold-nera",
+   "name": "Nera Sorn",
+   "role": "Late-bench reader at the House of Performance",
+   "sprite": "custom:tan.grey.plum.sand.scarf.red.short.lightframes.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "stage.frames.reader.after",
+     "if": {
+      "flag": "stage.frames.reader",
+      "eq": true
+     }
+    },
+    {
+     "node": "stage.frames.reader"
+    }
+   ]
+  }
+ ]
+}

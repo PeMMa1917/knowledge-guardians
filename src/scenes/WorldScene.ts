@@ -15,8 +15,14 @@ import { bell, chime, clink, rain, shimmer } from '../app/ambience';
 import { CYCLE, raining, skyAt } from '../app/daylight';
 import { lorelingForm } from '../domain/lorelings';
 import { caption } from '../app/captions';
+import { CampaignPlayback } from '../app/campaignPlayback';
+import { FOLLOW_PIN, PIN_PURPOSES, readMapPin } from '../domain/mapPins';
+import { specimenArt } from '../app/specimenArt';
+import { hasSpecimen, ownsSpecimen, specimenDisplay, specimenReadingFlag, SPECIMEN_BASE, SPECIMEN_SHELF, type SpecimenExhibit } from '../domain/specimenGear';
+import { BIG_ART } from '../ui/illustrations';
 import { LUMEN_COLOURS, lumenArt } from '../app/settings';
 import Phaser from 'phaser';
+import type { BootScene } from './BootScene';
 import { ctx, type WorldApi } from '../app/context';
 import { MAPS } from '../maps';
 import type { Interactable, MapDef } from '../maps/types';
@@ -53,6 +59,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private path: { x: number; y: number }[] = [];
   private pendingInteract: (() => void) | null = null;
   private zonesInside = new Set<string>();
+  private walkingArrivalFrom: string | null = null;
   private paused = false;
   private target: { kind: 'npc'; actor: Actor } | { kind: 'obj'; obj: Interactable } | null = null;
   private fx: Phaser.GameObjects.GameObject[] = [];
@@ -69,16 +76,21 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private stepTimer = 0;
   private transitioning = false;
   private objArt = new Map<string, { setVisible(v: boolean): unknown }>();
+  private specimenProps = new Map<string, SpecimenExhibit>();
+  private displayedSpecimens = new Map<string, string | undefined>();
   /** A befriended Loreling in the field (spec 36.1), and where it is flying. */
   private pet: { id: string; sprite: Phaser.GameObjects.Sprite; glow: Phaser.GameObjects.Image; target: { x: number; y: number } | null; until: number; next: number } | null = null;
   private frayGlows = new Map<string, Phaser.GameObjects.Image>();
   private threadGfx: Phaser.GameObjects.Graphics | null = null;
   private gapMark: Phaser.GameObjects.Image | null = null;
   private exploreAcc = 0;
+  private changingTiles: { x: number; y: number; closed: boolean; when: NonNullable<MapDef['conditionalBlocks']>[number]['when'] }[] = [];
+  private soundtrack?: CampaignPlayback;
+  private readonly resizeCamera = () => this.fitCamera();
 
   constructor() { super('world'); }
 
-  create(): void {
+  create(data: { walkingArrivalFrom?: string } = {}): void {
     ctx.world = this;
     // Reset per-map fields (the scene object is reused when the map changes).
     if (!this.textures.exists('mark.new')) {
@@ -91,6 +103,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     }
     this.npcs = []; this.follower = null; this.trail = []; this.path = []; this.pendingInteract = null;
     this.zonesInside = new Set(); this.target = null; this.fx = []; this.lightPools = []; this.portalRing = null;
+    this.walkingArrivalFrom = data.walkingArrivalFrom ?? null;
     this.transitioning = false; this.paused = false;
     this.objArt = new Map(); this.pet = null; this.photo = null; this.frayGlows = new Map(); this.threadGfx = null; this.gapMark = null; this.exploreAcc = 0;
     const s = ctx.controller.state;
@@ -101,14 +114,23 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const km = ctx.settings.keys;
     this.keys = kb.addKeys({ W: km.up, A: km.left, S: km.down, D: km.right, E: km.interact, UP: 'UP', DOWN: 'DOWN', LEFT: 'LEFT', RIGHT: 'RIGHT', SPACE: 'SPACE', ENTER: 'ENTER' }) as Record<string, Phaser.Input.Keyboard.Key>;
     kb.addCapture('UP,DOWN,LEFT,RIGHT,SPACE');
-    const interactKey = () => { if (!this.paused && !ctx.ui.isModalOpen()) this.tryInteract(); };
+    const interactKey = (_key: Phaser.Input.Keyboard.Key, event: KeyboardEvent) => {
+      if (!event.repeat && !this.paused && !ctx.ui.isModalOpen()) this.tryInteract();
+    };
     this.keys.E.on('down', interactKey); this.keys.SPACE.on('down', interactKey); this.keys.ENTER.on('down', interactKey);
+    const movementKey = (_key: Phaser.Input.Keyboard.Key, event: KeyboardEvent) => {
+      if (!event.repeat && !this.transitioning && !this.paused && !ctx.ui.isModalOpen()) this.walkingArrivalFrom = null;
+    };
+    for (const name of ['W', 'A', 'S', 'D', 'UP', 'DOWN', 'LEFT', 'RIGHT']) this.keys[name].on('down', movementKey);
     this.input.on('pointerdown', (p: Phaser.Input.Pointer) => this.onPointer(p));
-    this.scale.on('resize', () => this.fitCamera());
-    this.playMusic(this.map.music);
+    this.scale.on('resize', this.resizeCamera);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.scale.off('resize', this.resizeCamera));
+    this.playMusic();
     this.cameras.main.fadeIn(ctx.settings.reducedMotion ? 0 : 400, 10, 8, 24);
+    ctx.controller.dispatch({ type: 'VisitPlace', name: this.map.name });
     // Arrival zone (e.g. "emberford") is recorded the moment the map opens.
     this.checkZones(true);
+    this.refreshWorld();
     ctx.ui.refreshHud();
   }
 
@@ -116,6 +138,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   private buildMap(): void {
     const m = this.map;
+    this.specimenProps.clear();
+    this.displayedSpecimens.clear();
+    const specimens = new Map(ctx.controller.pack.exhibits.filter(hasSpecimen).map((record) => [record.id, record]));
     this.cameras.main.setBackgroundColor(m.background);
     this.blocked = Array.from({ length: m.height }, () => Array(m.width).fill(false));
     const block = (x: number, y: number, w: number, h: number) => {
@@ -173,6 +198,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         const img = this.add.image(cx, by, it.art).setOrigin(0.5, 1).setDepth(by + 16); // sits on top of tables and counters
         if (tex.height <= 16 && it.kind === 'sign') img.setOrigin(0.5, 1);
         this.objArt.set(it.id, img);
+        const record = it.kind === 'exhibit' && it.exhibit ? specimens.get(it.exhibit) : undefined;
+        if (record) {
+          this.specimenProps.set(it.id, record);
+          const asset = record.specimen.pixelAsset;
+          if (asset && !ownsSpecimen(ctx.controller.state, record.specimen.key)) this.drawMuseumObject(it.id, img, asset);
+        }
         // The Fray (spec 2.11): a sickly gold glow on a label that says more than its support.
         if (it.kit) {
           const glow = this.add.image(cx, by - tex.height / 2, 'glow').setTint(0xe8c040).setBlendMode(Phaser.BlendModes.ADD).setDepth(200001).setScale(0.32);
@@ -182,6 +213,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
       if (!it.walkThrough) block(it.x, it.y, it.w, it.h);
     }
+    this.changingTiles = (m.conditionalBlocks ?? []).map((tile) => ({
+      ...tile,
+      closed: this.blocked[tile.y]?.[tile.x] ?? true,
+    }));
+    this.refreshBlockedTiles();
     this.threadGfx = this.add.graphics().setDepth(5);
     // Noticing (Insight tree): a faint shimmer over secrets close by. Hidden until the talent is learned.
     this.secretGlows = this.map.interactables.filter((it) => it.kind === 'secret').map((it) => {
@@ -235,16 +271,28 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.fitCamera();
     this.cameras.main.startFollow(this.player.sprite, true, 0.12, 0.12);
     this.cameras.main.setBounds(-64, -96, m.width * TILE + 128, m.height * TILE + 160);
-    this.refreshWorld();
   }
 
   /** State-driven visuals. Called after every command by the interface. */
   refreshWorld(): void {
     const s = ctx.controller.state;
     if (!s || !this.threadGfx) return;
+    this.refreshBlockedTiles();
+    const cases = this.map.id === SPECIMEN_BASE ? specimenDisplay(ctx.controller.pack, s).cases : [];
     for (const it of this.map.interactables) {
       const img = this.objArt.get(it.id);
       if (img) img.setVisible(!it.visibleIf || ctx.controller.check(it.visibleIf));
+      if (it.game?.startsWith(SPECIMEN_SHELF) && img instanceof Phaser.GameObjects.Image) {
+        this.paintDisplay(it.id, img, cases[Number(it.game.slice(SPECIMEN_SHELF.length))]);
+        continue;
+      }
+      const specimen = this.specimenProps.get(it.id);
+      if (specimen && img instanceof Phaser.GameObjects.Image && ownsSpecimen(s, specimen.specimen.key)) {
+        const reading = s.flags[specimenReadingFlag(specimen.specimen.key)];
+        const art = reading === 'source' ? 'fold.paired' : reading === 'use' ? 'fold.strip' : 'collection-stand';
+        if (img.texture.key !== art) img.setTexture(art).setDisplaySize(16, 24);
+        continue;
+      }
       // A fallacy seal (Undercroft) stops blocking the corridor once it is opened.
       if (it.kind === 'seal' && s.flags[`trap.${it.seal}.open`] === true) {
         if (img) img.setVisible(false);
@@ -307,6 +355,41 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
     }
     if (this.portalRing) this.portalRing.setAlpha(ctx.controller.check({ objective: 'm01.o6.label' }) ? 1 : 0.35);
+  }
+
+  private refreshBlockedTiles(): void {
+    for (const { x, y, closed, when } of this.changingTiles) {
+      if (this.blocked[y]?.[x] !== undefined) this.blocked[y][x] = closed || ctx.controller.check(when);
+    }
+  }
+
+  private paintDisplay(id: string, display: Phaser.GameObjects.Image, record?: SpecimenExhibit): void {
+    const key = record?.specimen.key;
+    if (this.displayedSpecimens.has(id) && this.displayedSpecimens.get(id) === key) return;
+    this.displayedSpecimens.set(id, key);
+    display.setTexture('collection-stand').setDisplaySize(16, 24);
+    if (!record) return;
+    const asset = record.specimen.pixelAsset;
+    if (asset) {
+      this.drawMuseumObject(id, display, asset, () => this.displayedSpecimens.get(id) === key);
+    } else {
+      const art = BIG_ART[record.art] ?? record.art;
+      if (!this.textures.exists(art)) return;
+      const source = this.textures.get(art).getSourceImage() as HTMLCanvasElement;
+      const scale = 22 / Math.max(source.width, source.height);
+      display.setTexture(art).setDisplaySize(source.width * scale, source.height * scale);
+    }
+  }
+
+  private drawMuseumObject(id: string, display: Phaser.GameObjects.Image, asset: string, onDisplay?: () => boolean): void {
+    void specimenArt(asset).then((drawing) => {
+      if (!drawing || this.objArt.get(id) !== display || !display.active) return;
+      const record = this.specimenProps.get(id);
+      if (onDisplay ? !onDisplay() : !record || ownsSpecimen(ctx.controller.state, record.specimen.key)) return;
+      const texture = `museum.${asset}`;
+      if (!this.textures.exists(texture)) this.textures.addCanvas(texture, drawing);
+      display.setTexture(texture).setDisplaySize(22, 22);
+    });
   }
 
   /** Active play time in this browser session, for the balance reminder. */
@@ -400,6 +483,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   }
 
   applySettings(): void {
+    this.playMusic();
     // Rebuild atmosphere quickly by restarting the scene at the same spot.
     this.saveSpot();
     this.scene.restart();
@@ -501,14 +585,13 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     cam.setRoundPixels(true);
   }
 
-  private playMusic(key: string): void {
-    const vol = ctx.settings.musicVolume;
-    const current = this.sound.getAll('').find((s: any) => s.key?.startsWith('music.') && s.isPlaying) as Phaser.Sound.BaseSound | undefined;
-    if (current && (current as any).key === key) return;
-    this.sound.getAll('').forEach((s: any) => { if (s.key?.startsWith('music.')) s.stop(); });
-    caption(key);
-    if (!this.cache.audio.exists(key) || vol <= 0) return;
-    this.sound.play(key, { loop: true, volume: vol });
+  private playMusic(): void {
+    if (!this.soundtrack) {
+      const boot = this.game.scene.getScene('boot') as BootScene;
+      this.soundtrack = new CampaignPlayback(this.sound, this.cache.audio, (key) => boot.loadMusic(key));
+      this.events.once(Phaser.Scenes.Events.DESTROY, () => this.soundtrack?.destroy());
+    }
+    this.soundtrack.follow(this.map.world, this.map.id, this.map.music, ctx.settings.musicVolume);
   }
 
   playSfx(key: string): void {
@@ -610,7 +693,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
     }
     const p = this.player;
+    let moving = false;
     if (vx || vy) {
+      const startX = p.sprite.x, startY = p.sprite.y;
       const len = Math.hypot(vx, vy);
       const sp = SPEED * (hasTalent(ctx.controller.state, 'pace') ? 1.2 : 1);
       const step = sp * dt / len;
@@ -618,8 +703,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       const my = vy * Math.min(step, waypointDistance?.y ?? step);
       if (!this.collides(p.sprite.x + mx, p.sprite.y)) p.sprite.x += mx;
       if (!this.collides(p.sprite.x, p.sprite.y + my)) p.sprite.y += my;
-      const f: Dir = Math.abs(vx) > Math.abs(vy) ? (vx > 0 ? 'right' : 'left') : (vy > 0 ? 'down' : 'up');
-      p.facing = f;
+      p.facing = Math.abs(vx) > Math.abs(vy) ? (vx > 0 ? 'right' : 'left') : (vy > 0 ? 'down' : 'up');
+      moving = p.sprite.x !== startX || p.sprite.y !== startY;
+    }
+    if (moving) {
+      const f = p.facing;
       p.sprite.anims.play(`${this.playerSheet}.walk.${f}`, true);
       this.trail.push({ x: p.sprite.x, y: p.sprite.y, f });
       if (this.trail.length > 40) this.trail.shift();
@@ -644,7 +732,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       p.sprite.setFrame(this.idleFrame(p.facing));
     }
     this.place(p);
-    this.updateFollower(!!(vx || vy));
+    this.updateFollower(moving);
     this.updateCompanionWait();
     this.updateLumen();
     this.updatePet();
@@ -754,7 +842,13 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       this.compassAcc = 0;
       const s = ctx.controller.state, p = this.player.sprite;
       let best: { x: number; y: number; label: string } | null = null, bd = Infinity;
-      for (const a of this.npcs) if (a.mark) { const d = Phaser.Math.Distance.Between(a.sprite.x, a.sprite.y, p.x, p.y); if (d < bd) { bd = d; best = { x: a.sprite.x, y: a.sprite.y, label: `someone with something new to say` }; } }
+      const pin = s.flags[FOLLOW_PIN] === this.map.id ? readMapPin(s.flags, this.map.id, this.map.width, this.map.height) : undefined;
+      if (pin) {
+        best = { x: (pin.x + 0.5) * TILE, y: (pin.y + 0.5) * TILE, label: PIN_PURPOSES[pin.purpose] };
+        bd = Phaser.Math.Distance.Between(best.x, best.y, p.x, p.y);
+      } else {
+        for (const a of this.npcs) if (a.mark) { const d = Phaser.Math.Distance.Between(a.sprite.x, a.sprite.y, p.x, p.y); if (d < bd) { bd = d; best = { x: a.sprite.x, y: a.sprite.y, label: `someone with something new to say` }; } }
+      }
       if (!best) for (const it of this.map.interactables) {
         if (it.kind === 'portal' || it.kind === 'loreling' || it.kind === 'secret' || (it.visibleIf && !ctx.controller.check(it.visibleIf)) || s.flags[`used.${this.map.id}.${it.id}`] === true) continue;
         const x = (it.x + it.w / 2) * TILE, y = (it.y + it.h / 2) * TILE, d = Phaser.Math.Distance.Between(x, y, p.x, p.y);
@@ -839,9 +933,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const want = id && s.flags[`lor.${id}.friend`] === true ? id : '';
     if (this.pet && this.pet.id !== want) { this.pet.sprite.destroy(); this.pet.glow.destroy(); this.pet = null; }
     if (!want || this.pet || !this.player) return;
-    const x = this.player.sprite.x + 12, y = this.player.sprite.y - 14;
-    const glow = this.add.image(x, y, 'glow').setTint(0xfff0a0).setBlendMode(Phaser.BlendModes.ADD).setAlpha(0.85).setScale(0.18);
-    const sprite = this.add.sprite(x, y, 'moth.0').play('moth.flap');
+    const guide = ctx.controller.pack.lorelings.find((l) => l.id === want)?.fieldGuide;
+    const x = this.player.sprite.x + 12, y = this.player.sprite.y + (guide ? 0 : -14);
+    const glow = this.add.image(x, y, 'glow').setTint(0xfff0a0).setBlendMode(Phaser.BlendModes.ADD)
+      .setAlpha(guide ? 0.3 : 0.85).setScale(0.18);
+    const sprite = this.add.sprite(x, y, guide?.sprite ?? 'moth.0');
+    if (!guide) sprite.play('moth.flap');
     this.pet = { id: want, sprite, glow, target: null, until: 0, next: this.time.now + 4000 };
   }
 
@@ -854,8 +951,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     if (!pet) return;
     const now = this.time.now;
     const rec = ctx.controller.pack.lorelings.find((l) => l.id === pet.id);
+    const guide = rec?.fieldGuide;
     const form = rec ? lorelingForm(rec, ctx.controller.pack, ctx.controller.state.objectivesDone).form : 1;
-    if (!pet.target && now > pet.next && !ctx.ui.isModalOpen()) {
+    if (!guide && !pet.target && now > pet.next && !ctx.ui.isModalOpen()) {
       pet.next = now + 7000;
       const px = this.player.sprite.x, py = this.player.sprite.y, range = (form >= 2 ? 11 : 7) * TILE;
       let best: Interactable | null = null, bd = range;
@@ -872,13 +970,13 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
     }
     if (pet.target && now > pet.until) pet.target = null;
-    const t = now / 1000, bob = ctx.settings.reducedMotion ? 0 : Math.sin(t * 3.1) * 2.5;
+    const t = now / 1000, bob = guide || ctx.settings.reducedMotion ? 0 : Math.sin(t * 3.1) * 2.5;
     const side = this.player.facing === 'left' ? -1 : 1;
     const tx = pet.target ? pet.target.x + Math.sin(t * 4) * 5 : this.player.sprite.x + side * 13;
-    const ty = pet.target ? pet.target.y + bob : this.player.sprite.y - 16 + bob;
+    const ty = pet.target ? pet.target.y + bob : this.player.sprite.y + (guide ? 0 : -16) + bob;
     const k = pet.target ? 0.05 : 0.07;
     pet.sprite.x += (tx - pet.sprite.x) * k; pet.sprite.y += (ty - pet.sprite.y) * k;
-    pet.sprite.setFlipX(tx < pet.sprite.x).setDepth(this.player.sprite.y + 49);
+    pet.sprite.setFlipX(tx < pet.sprite.x).setDepth(this.player.sprite.y + (guide ? 14 : 49));
     const bright = pet.target ? (form >= 2 ? 0.45 : 0.36) : (form >= 2 ? 0.24 : 0.18);
     pet.glow.setPosition(pet.sprite.x, pet.sprite.y).setDepth(pet.sprite.depth - 1);
     pet.glow.scale += (bright - pet.glow.scale) * 0.08;
@@ -922,7 +1020,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       const id = best.actor.id;
       const c = ctx.controller.pack.characters.find((x) => x.id === id);
       ctx.ui.setPrompt(`Talk to ${c?.name ?? 'them'}`);
-    } else ctx.ui.setPrompt(`${best.obj.kind === 'sign' ? 'Read' : best.obj.kind === 'exhibit' ? 'Inspect' : best.obj.kind === 'thread' ? 'Follow the thread to' : best.obj.kind === 'loreling' ? 'Watch' : best.obj.kind === 'secret' ? 'Search' : best.obj.kind === 'seal' ? 'Read' : best.obj.kind === 'boss' ? 'Face' : 'Use'} ${best.obj.label}`);
+    } else {
+      const record = this.specimenProps.get(best.obj.id);
+      if (record && ownsSpecimen(ctx.controller.state, record.specimen.key)) ctx.ui.setPrompt(`Read the stand for ${record.name}`);
+      else ctx.ui.setPrompt(`${best.obj.kind === 'sign' ? 'Read' : best.obj.kind === 'exhibit' ? 'Inspect' : best.obj.kind === 'thread' ? 'Follow the thread to' : best.obj.kind === 'loreling' ? 'Watch' : best.obj.kind === 'secret' ? 'Search' : best.obj.kind === 'seal' ? 'Read' : best.obj.kind === 'boss' ? 'Face' : 'Use'} ${best.obj.label}`);
+    }
   }
 
   tryInteract(t = this.target): void {
@@ -940,6 +1042,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     // Remember places the player has used (the Glimmermoth looks for the others).
     const used = `used.${this.map.id}.${it.id}`;
     if (it.kind !== 'loreling' && ctx.controller.state.flags[used] !== true) ctx.controller.dispatch({ type: 'SetFlag', flag: used, value: true });
+    if (it.sfx) this.playSfx(it.sfx);
     switch (it.kind) {
       case 'loreling': ctx.ui.openLoreling(it.loreling!, it.sighting!); break;
       case 'exhibit': ctx.ui.openExhibit(it.exhibit!); break;
@@ -973,6 +1076,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'copy-compare': ctx.ui.openCopyComparison(it.node!); break;
       case 'sea-chart': ctx.ui.openSeaChart(it.node!); break;
       case 'stage-rehearsal': ctx.ui.openStageRehearsal(); break;
+      case 'film-camera': ctx.ui.openFilmCamera(it.node!); break;
+      case 'film-editor': ctx.ui.openFilmEditor(); break;
       case 'market-scale': ctx.ui.openMarketScale(); break;
       case 'water-gate': ctx.ui.openWaterGate(); break;
       case 'civic-console': ctx.ui.openCivicConsole(); break;
@@ -1009,6 +1114,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   private onPointer(p: Phaser.Input.Pointer): void {
     if (this.paused || ctx.ui.isModalOpen() || this.transitioning) return;
+    this.walkingArrivalFrom = null;
     const wx = p.worldX, wy = p.worldY;
     const tx = Math.floor(wx / TILE), ty = Math.floor(wy / TILE);
     // Clicked a character or an object? Walk next to it, then interact.
@@ -1038,7 +1144,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     for (let y = r.y; y < r.y + r.h; y++) { cands.push({ x: r.x - 1, y }); cands.push({ x: r.x + r.w, y }); }
     const ok = cands.filter((c) => this.blocked[c.y]?.[c.x] === false);
     ok.sort((a, b) => Math.hypot(a.x - pt.x, a.y - pt.y) - Math.hypot(b.x - pt.x, b.y - pt.y));
-    return ok[0] ?? null;
+    return ok.find(({ x, y }) => this.bfs(pt.x, pt.y, x, y) !== null) ?? null;
   }
 
   private walkTo(tx: number, ty: number, then: (() => void) | null): void {
@@ -1051,6 +1157,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   }
 
   private bfs(sx: number, sy: number, tx: number, ty: number): { x: number; y: number }[] | null {
+    if (this.blocked[ty]?.[tx] !== false) return null;
     const W = this.map.width, H = this.map.height;
     const prev = new Map<number, number>();
     const q = [sy * W + sx]; prev.set(q[0], -1);
@@ -1083,12 +1190,14 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       if (!inside) { this.zonesInside.delete(z.id); continue; }
       if (this.zonesInside.has(z.id) && !arrival) continue;
       this.zonesInside.add(z.id);
+      // A key held through a crossing may keep moving but cannot send the player straight back.
+      if (!arrival && z.to?.map === this.walkingArrivalFrom) continue;
       if (z.if && !ctx.controller.check(z.if)) {
         if (z.to && !arrival) ctx.ui.toast(z.id === 'portal' ? 'The portal is not open yet. Repair the label first.' : 'Not yet. Finish your work here first.', 'info');
         continue;
       }
       if (!ctx.controller.state.flags[`reached.${z.id}`]) ctx.controller.dispatch({ type: 'Reach', zone: z.id });
-      if (z.to && !arrival) this.changeMap(z.to.map, z.to.x, z.to.y);
+      if (z.to && !arrival) this.changeMap(z.to.map, z.to.x, z.to.y, true);
     }
   }
 
@@ -1101,14 +1210,15 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   /** Called by the shell before saving, so the save has the current position. */
   snapshotPosition(): void { this.saveSpot(); }
 
-  changeMap(mapId: string, x: number, y: number): void {
+  changeMap(mapId: string, x: number, y: number, throughZone = false): void {
     if (this.transitioning) return;
     this.transitioning = true;
     this.playSfx('sfx.sparkle');
+    const walkingArrivalFrom = throughZone ? this.map.id : undefined;
     const go = () => {
       const s = ctx.controller.state;
       s.mapId = mapId; s.pos = { x, y }; s.facing = 'down';
-      this.scene.restart();
+      this.scene.restart({ walkingArrivalFrom });
     };
     if (ctx.settings.reducedMotion) go();
     else { this.cameras.main.fadeOut(500, 220, 240, 255); this.cameras.main.once('camerafadeoutcomplete', go); }

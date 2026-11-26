@@ -1,0 +1,206 @@
+{
+  "sources": [
+    {
+      "id": "HIS-DOOR-01",
+      "title": "Elbridge S. Brooks, The Century Book for Young Americans, Harvard University library copy",
+      "url": "https://archive.org/details/centurybookfory00revogoog",
+      "locator": "1894 title page and Chapter VIII, Under the Dome",
+      "supports": "The title credits Brooks and presents a group of young people learning how the United States government works. The Capitol visit and pictures are part of that book's lesson.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-DOOR-02",
+      "title": "The Negro Motorist Green-Book, 1941, Smithsonian NMAAHC 2015.97.42",
+      "url": "https://nmaahc.si.edu/object/nmaahc_2015.97.42",
+      "locator": "Title, front cover, publication date, place, named publisher and description",
+      "supports": "Victor Hugo Green published this particular New York City edition in 1941. It gave African American travellers information about businesses that served them. This copy acknowledges James A. Jackson, and its entries are organized by state.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-DOOR-03",
+      "title": "National Museum of American History, An Atlas of Self-reliance",
+      "url": "https://americanhistory.si.edu/explore/stories/atlas-self-reliance-negro-motorists-green-book-1937-1964",
+      "locator": "Opening discussion about independent car travel and discrimination",
+      "supports": "Car travel created new possibilities for Black travellers in the United States. Jim Crow laws and discriminatory businesses shaped where they could stop or stay.",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.fold.century",
+      "title": "The Capitol in Brooks’s 1894 civic book",
+      "text": "Elbridge S. Brooks published this illustrated book about United States government with the Century Company in 1894. The Harvard copy includes a chapter where its party of young readers visits the Capitol. The chapter shows how the building and the people in it were presented to this book’s audience.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": ["HIS-DOOR-01"],
+      "limits": "A book’s tour cannot tell us which other people were allowed to enter that day."
+    },
+    {
+      "id": "card.fold.green",
+      "title": "A 1941 Green Book from the Smithsonian",
+      "text": "Victor Hugo Green’s Green Book helped Black travellers in the United States find businesses that served them under Jim Crow. This 1941 edition grouped its entries by state. The surviving cover names James A. Jackson, the person who presented this copy.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": ["HIS-DOOR-02", "HIS-DOOR-03"],
+      "limits": "A directory records leads readers could follow. It does not establish what happened when any particular person arrived."
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-DOOR-01",
+      "name": "The Century Book for Young Americans, 1894",
+      "art": "door-century-book",
+      "historicalLabel": "documented",
+      "dateText": "1894",
+      "dateKind": "Year on this edition",
+      "summary": "Brooks uses a visit to introduce young readers to United States government. The original two-colour pixel drawing picks out the dome as a visual landmark. The Harvard copy also contains a view of the Capitol's east front.",
+      "altText": "Original pixel drawing of an open civic book with a dome and the steps below it.",
+      "sources": ["HIS-DOOR-01"],
+      "grantsCard": "card.fold.century"
+    },
+    {
+      "id": "OBJ-DOOR-02",
+      "name": "The Negro Motorist Green-Book, 1941",
+      "art": "door-green-book",
+      "historicalLabel": "documented",
+      "dateText": "1941",
+      "dateKind": "Publication year of this copy",
+      "summary": "Smithsonian record 2015.97.42 describes a compact printed guide by Victor Hugo Green. Its cover lists several kinds of service and carries James A. Jackson’s name. The original pixel drawing picks out the border and inner scroll described in the catalogue.",
+      "altText": "Original pixel drawing of a folded guide with a dark outer border and a paper scroll at its centre.",
+      "sources": ["HIS-DOOR-02", "HIS-DOOR-03"],
+      "grantsCard": "card.fold.green",
+      "specimen": {
+        "key": "smithsonian-nmaahc:2015.97.42",
+        "institution": "Smithsonian National Museum of African American History and Culture",
+        "accession": "2015.97.42",
+        "source": "HIS-DOOR-02",
+        "objective": "fold.access.compare"
+      }
+    }
+  ],
+  "items": [
+    { "id": "item.door-fold", "name": "Two-Sided Door Fold", "description": "The front shows a landmark. The fold carries a separate place, permission and time. A later host can borrow this layout.", "kind": "keepsake" }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-S15", "world": "WORLD-01", "title": "At the Door Before the Bell",
+      "stake": "Suri could spend her only free half-bell waiting at the wrong door.",
+      "knowledgeQuestion": "Which part of a guide shows where to go, and which part tells a visitor what they can do?",
+      "available": { "objective": "m01.o6.label" },
+      "objectives": [
+        {
+          "id": "fold.access.compare", "title": "Read the two books, then follow the porch view and permission slip.", "essential": false,
+          "done": { "all": [{ "card": "card.fold.century" }, { "card": "card.fold.green" }, { "flagSet": "fold.access.porch" }, { "flagSet": "fold.access.receipt" }] },
+          "weave": { "concepts": ["evidence", "culture", "perspective", "interpretation", "power"], "framework": ["scope", "perspectives", "methods-and-tools"], "thinking": { "dok": 2, "bloom": "analyse", "fink": "integration", "solo": "multistructural" }, "atl": ["research", "thinking"], "aoks": ["HIS", "HUM", "POL", "LAN"], "subjects": ["history", "global-politics", "lang-lit", "anthropology"], "minutes": 4 }
+        },
+        {
+          "id": "fold.access.finish", "title": "Set out one layout and go to the side where a visitor can try it.", "essential": false,
+          "done": { "flagSet": "fold.access.checked" },
+          "onComplete": [{ "giveItem": "item.door-fold" }, { "journal": "j.fold.nexus" }],
+          "weave": { "concepts": ["responsibility", "values", "explanation", "justification", "truth", "objectivity", "certainty"], "framework": ["scope", "perspectives", "methods-and-tools", "ethics"], "thinking": { "dok": 3, "bloom": "create", "fink": "human", "solo": "relational" }, "atl": ["communication", "social"], "aoks": ["HIS", "HUM", "POL", "ART"], "subjects": ["global-politics", "design-tech", "visual-arts"], "minutes": 4 }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH1-R05", "world": "WORLD-02", "title": "Iven’s Last Handover",
+      "stake": "The lamp keeper will miss the evening round if the repairers take their crate to the wrong gate.",
+      "knowledgeQuestion": "Who can use an invitation when the conditions for admission change?",
+      "available": { "all": [{ "item": "item.door-fold" }, { "objective": "m02.o1.arrive" }] },
+      "objectives": [
+        {
+          "id": "fold.ember.finish", "title": "Give the lamp carriers an arrangement and visit the handover that actually follows.", "essential": false,
+          "done": { "flagSet": "fold.ember.checked" },
+          "onComplete": [{ "journal": "j.fold.ember" }],
+          "weave": { "concepts": ["evidence", "certainty", "responsibility", "power", "values"], "framework": ["scope", "perspectives", "methods-and-tools", "ethics"], "thinking": { "dok": 3, "bloom": "evaluate", "fink": "application", "solo": "relational" }, "atl": ["communication", "social", "self-management"], "aoks": ["HUM", "TEC", "POL"], "subjects": ["global-politics", "design-tech", "business"], "minutes": 4 }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "fold.access.porch", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The picture frame sits level with the tall porch window. An older visitor spots the porch from the drawn pillars and heads straight down the hall. The child beside him sees the edge of the frame and asks where the line starts.",
+      "effects": [{ "setFlag": "fold.access.porch", "value": true }]
+    },
+    {
+      "id": "fold.access.receipt", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "A small note on the side desk says Suri may drop off a mended strap here before the second bell. The picture outside gives no clue about the desk. Suri asks whether she has time to go around.",
+      "effects": [{ "setFlag": "fold.access.receipt", "value": true }]
+    },
+    {
+      "id": "fold.access.move", "speaker": "curator-dace", "historicalLabel": "fictional-world",
+      "text": "Brooks could show a reader a building. Green gave travellers leads they needed in a different time and place. Keep both histories with their books. For our own porch, we can put a landmark and permission slip together on the front, or give each approach a view it can use without coming around.",
+      "options": [
+        { "text": "Bring the landmark and the current permission to the front.", "effects": [{ "setFlag": "fold.access.route", "value": "front" }], "next": "fold.access.try-front" },
+        { "text": "Put the landmark up front and a separate permission copy by the side desk.", "effects": [{ "setFlag": "fold.access.route", "value": "side" }], "next": "fold.access.try-side" },
+        { "text": "Leave the hinges open for now." }
+      ]
+    },
+    {
+      "id": "fold.access.try-front", "speaker": "curator-dace", "historicalLabel": "fictional-world",
+      "text": "Then people at the front can check both pieces. Go to that display and see who needs a second look."
+    },
+    {
+      "id": "fold.access.try-side", "speaker": "curator-dace", "historicalLabel": "fictional-world",
+      "text": "Suri can stay on her own approach. Check that the two copies still point to one open desk."
+    },
+    {
+      "id": "fold.access.front", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The older visitor traces the porch picture to the smaller slip. He points Suri to the right desk. From the side approach she had to ask him to read it out. Dace makes a folded guide with the landmark outside and the terms still inside.",
+      "effects": [{ "setFlag": "fold.access.checked", "value": "front" }]
+    },
+    {
+      "id": "fold.access.side", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "Suri reads the slip from the side approach and hands the strap in before the bell. The older visitor comes around to ask whether his own parcel can go there. The keeper updates both sides, then makes a fold that can travel with a clean copy.",
+      "effects": [{ "setFlag": "fold.access.checked", "value": "side" }]
+    },
+    {
+      "id": "fold.ember.station", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "Iven turns the Two-Sided Door Fold over. Every carrier knows the courtyard lantern, but its front door only takes repairs while he is there. Yara can let today’s signed repair through the yard even when Iven goes on his round. Both routes need a way to tell the waiting hands.",
+      "options": [
+        { "text": "Ask Iven to call for the repair at the front, then check when the crate arrives.", "effects": [{ "setFlag": "fold.ember.route", "value": "front" }], "next": "fold.ember.try-front" },
+        { "text": "Put Yara’s signed yard permission inside the fold, then meet the carrier there.", "effects": [{ "setFlag": "fold.ember.route", "value": "yard" }], "next": "fold.ember.try-yard" },
+        { "text": "Keep the fold in my satchel for now." }
+      ]
+    },
+    {
+      "id": "fold.ember.try-front", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "Iven waits by the front step for one final call before his round. Close the fold and see who heard him."
+    },
+    {
+      "id": "fold.ember.try-yard", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "Yara takes the inside slip to the yard. She can handle a signed repair here and has to leave other deliveries with Iven."
+    },
+    {
+      "id": "fold.ember.front", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "Iven recognizes the repairers when they bring their crate to the front. They follow him in and leave the lamp where he can collect it. Behind them, a later visitor asks the empty calling place when it will be staffed again.",
+      "effects": [{ "setFlag": "fold.ember.checked", "value": "front" }]
+    },
+    {
+      "id": "fold.ember.yard", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The repairers show Yara their signed slip, and she opens the yard for the crate. The front remains available next round for someone without that slip. Yara returns the fold with the gate and the time on separate lines.",
+      "effects": [{ "setFlag": "fold.ember.checked", "value": "yard" }]
+    }
+  ],
+  "journal": [
+    { "id": "j.fold.nexus", "claimKind": "observation", "text": "I followed the porch picture and the slip telling Suri how to leave the repair. Moving the display changed who could reach the desk without asking someone else." },
+    { "id": "j.fold.ember", "claimKind": "observation", "text": "Iven borrowed my fold to mark the lantern-house delivery. I went to see where the lamp crate reached its keeper, and who would need a second visit." }
+  ],
+  "hints": [
+    { "id": "h.fold.access.compare.1", "objective": "fold.access.compare", "depth": 1, "text": "The books answer different kinds of question." },
+    { "id": "h.fold.access.compare.2", "objective": "fold.access.compare", "depth": 2, "text": "Try the east wing of the Archive Hall." },
+    { "id": "h.fold.access.compare.3", "objective": "fold.access.compare", "depth": 3, "text": "Read both texts, then follow the path from each viewing height." },
+    { "id": "h.fold.access.compare.4", "objective": "fold.access.compare", "depth": 4, "text": "Inspect the 1894 civic book and 1941 travel guide. Use the porch frame and the permission slip." },
+    { "id": "h.fold.access.finish.1", "objective": "fold.access.finish", "depth": 1, "text": "Give the next visitor a place to start." },
+    { "id": "h.fold.access.finish.2", "objective": "fold.access.finish", "depth": 2, "text": "Dace is waiting with the open hinges between the exhibits." },
+    { "id": "h.fold.access.finish.3", "objective": "fold.access.finish", "depth": 3, "text": "Try either arrangement and check what it does for a person arriving there." },
+    { "id": "h.fold.access.finish.4", "objective": "fold.access.finish", "depth": 4, "text": "Select a layout at the hinges, then read the paired front display or the two-view side display." },
+    { "id": "h.fold.ember.finish.1", "objective": "fold.ember.finish", "depth": 1, "text": "The lantern is visible from two places, but the delivery goes to one." },
+    { "id": "h.fold.ember.finish.2", "objective": "fold.ember.finish", "depth": 2, "text": "Carry the fold to Iven's handover near the west workshop." },
+    { "id": "h.fold.ember.finish.3", "objective": "fold.ember.finish", "depth": 3, "text": "Arrange the front call or the yard permission and follow the crate." },
+    { "id": "h.fold.ember.finish.4", "objective": "fold.ember.finish", "depth": 4, "text": "Read the result at the pickup step or the delivery gate after committing a layout." }
+  ],
+  "awards": [
+    { "id": "award.door-fold", "name": "Two-Sided Door Fold", "title": "Keeper of Two Approaches", "kind": "badge", "earnedBy": "Verified where a visitor could find permission to enter.", "when": { "objective": "fold.access.finish" }, "criteria": [] }
+  ]
+}

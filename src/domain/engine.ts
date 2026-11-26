@@ -1,16 +1,26 @@
 import { runNileTrial, nileDelivery, type NileRoad, type NileDelivery } from './nileModel';
+import { bendEffects, type BendAction } from './stripBend';
 import { forestWatch, type ForestWindow } from './forestWatch';
 import { readMetalSample } from './metalSample';
 import { compareCopy } from './copyComparison';
 import { seaChart } from './seaCharts';
 import { stageRehearsal, type StageCue } from './stageRehearsal';
+import { filmEffects, type FilmAction } from './filmCuts';
 import { marketComparison, type MarketBasis } from './marketScale';
 import { waterTrial, type WaterSetting } from './waterGate';
 import { civicAllocation, type CivicRule, type CivicSample } from './civicConsole';
+import { civicIncentiveEffects, type IncentiveAction } from './civicIncentive';
+import { boundaryEffects, type BoundaryAction } from './boundaryBoard';
 import { voiceReading, type VoiceSource, type VoiceView } from './voiceReadings';
 import { islandPlan, type IslandLanding, type IslandRoute } from './islandPlan';
+import { changeSkiff, type SkiffAction } from './islandSkiff';
+import { marketBasketEffects, type BasketAction } from './marketBasket';
+import { waterLoopEffects, type LoopAction } from './waterLoop';
+import { catchmentEffects, type CatchmentAction } from './catchment';
 import { councilClock, type CouncilTrial } from './councilClock';
 import { scoutDecision, scoutNextTrial, scoutTrials, type ScoutDecision, type ScoutProtocol, type ScoutRoute } from './scoutRoutes';
+import { ownedPerspective, PERSPECTIVE_FLAG } from './perspectives';
+import { moveSharedCarry, type CarrySite, type CarryStop } from './sharedCarry';
 /**
  * Domain engine. Scenes send typed commands; the engine checks preconditions,
  * computes ONE valid state transition and returns events for the view to show
@@ -21,14 +31,15 @@ import { WARES, priceFor } from './shop';
 import { TALENTS, cannotLearn, hasTalent } from './talents';
 import { GATHER_YIELD, RECIPES, RESOURCES, cannotCraft } from './craft';
 import { cannotRead, readingOf } from './readings';
-import { MIN_SOURCES, RUMOURS, rumourDone, sourcesChecked } from './rumours';
-import { BARTER, DYES, FAIR_PRICE, ferryPrice } from './trade';
+import { RUMOURS, missingRumourSources, rumourDone } from './rumours';
+import { BARTER, DYES, ferryPrice } from './trade';
 import { approvalOf, approvalRank, isInquiry } from './approval';
 import { ROLES } from './roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from './undercroft';
 import { FIELD_GAMES } from './fieldgames';
+import { DRAWER_MASK, flipDrawer } from './drawerCases';
 import type {
-  AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, Effect, Hint, MisconceptionRecord, Mission,
+  AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, DiaryNoteKind, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
 } from './types';
 import { CAMPAIGN_SCHEMA, type Pronouns } from './types';
@@ -39,17 +50,30 @@ import { dailyPrompts, diveDepth, diveItems, judgeDive } from './dive';
 import { TIME_MAX, TIME_MIN, answerRound, runSurvey, translateLine, judgeFrame, readForecasts, checkOrder, judgeSight, panes, readTimes, runSorter, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
 import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
-import { useSignature } from './skills';
+import { objectiveSkillUse, recordSkillUse } from './skills';
 import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
-import { checkAwards, grantCredit } from './permanent';
+import { addQuestionWay, checkAwards, grantCredit } from './permanent';
 import { evaluateLabel, type LabelResult } from './label';
+import { canClaimSpecimen, carriedSpecimenCount, carryFlag, hasSpecimen, ownsSpecimen, SPECIMEN_BASE, SPECIMEN_CAPACITY,
+  specimenEquipped, specimenItemId, specimenReadingFlag, specimenToolId } from './specimenGear';
 import { playMove, startShowdown, type ShowdownMove } from './showdown';
 import { tryLock, type LockResult } from './lock';
 import { compareWithBlade, forgeStep, newForge, type ForgeAction } from './forge';
 import { addPortfolio, addSignal, checkMoments, recordWeave, tickEvents } from './learning';
+import { diaryDialogueChoice, diaryNoteKind, newAdventureDiary, recordAdventure } from './adventureJournal';
 
 export type Command =
+  | IncentiveAction
+  | BendAction
+  | SkiffAction
+  | BasketAction
+  | LoopAction
+  | CatchmentAction
+  | FilmAction
   | { type: 'Reach'; zone: string }
+  | { type: 'VisitPlace'; name: string }
+  | { type: 'EquipPerspective'; keepsake: string | null }
+  | { type: 'SharedCarry'; site: CarrySite; stop: CarryStop; action: string }
   | { type: 'SetPronouns'; pronouns: Pronouns }
   | { type: 'SetLook'; look: string }
   | { type: 'AlcovePlace'; alcove: string; item: string }
@@ -83,11 +107,12 @@ export type Command =
   | { type: 'CheckRumourSource'; rumour: string; source: number }
   | { type: 'BuyDye'; dye: string }
   | { type: 'Barter'; resource: string; dir: 'buy' | 'sell' }
-  | { type: 'FairPrice'; choice: number }
+  | { type: 'CompareDyePrices' }
   | { type: 'ChooseRole'; role: string }
   | { type: 'DisarmSeal'; seal: string; choice: number }
   | { type: 'BossMove'; choice: number }
   | { type: 'FinishFieldGame'; game: string }
+  | { type: 'OpenDrawerCase'; face: number }
   | { type: 'JudgeRumour'; rumour: string; verdict: number }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
@@ -104,6 +129,9 @@ export type Command =
   | { type: 'EnterNode'; node: string }
   | { type: 'ChooseDialogueOption'; node: string; index: number }
   | { type: 'InspectExhibit'; exhibit: string }
+  | { type: 'ClaimSpecimen'; exhibit: string }
+  | { type: 'CarrySpecimen'; key: string; carry: boolean }
+  | { type: 'SetSpecimenReading'; exhibit: string; reading: 'use' | 'source' }
   | { type: 'UseLens'; exhibit: string }
   | { type: 'RunSimulation'; pen: string; surface: string }
   | { type: 'NileRouteTrial'; road: NileRoad }
@@ -116,6 +144,7 @@ export type Command =
   | { type: 'WeighMarketLots'; basis: MarketBasis }
   | { type: 'RunWaterTrial'; setting: WaterSetting }
   | { type: 'RunCivicTrial'; sample: CivicSample; rule: CivicRule }
+  | BoundaryAction
   | { type: 'RunVoiceReading'; source: VoiceSource; view: VoiceView }
   | { type: 'RunIslandPlan'; route: IslandRoute; landing: IslandLanding }
   | { type: 'RunCouncilClock'; trial: CouncilTrial }
@@ -135,7 +164,8 @@ export type Command =
   | { type: 'Purchase'; offer: string }
   | { type: 'RequestHint'; objective: string }
   | { type: 'SetFlag'; flag: string; value: string | number | boolean }
-  | { type: 'AddNote'; text: string }
+  | { type: 'AddNote'; text: string; kind?: DiaryNoteKind }
+  | { type: 'SetDiaryQuestion'; index: number; resolved: boolean }
   | { type: 'PortfolioShare'; entry: string; shared: boolean }
   | { type: 'PortfolioReflect'; entry: string; text: string };
 
@@ -173,7 +203,6 @@ export type GameEvent =
   | { kind: 'craft'; recipe: string; ok: boolean; why: string }
   | { kind: 'reading'; reading: string; ok: boolean; why: string; first: boolean }
   | { kind: 'rumour'; rumour: string; ok: boolean; why: string }
-  | { kind: 'fairprice'; ok: boolean; why: string }
   | { kind: 'seal'; seal: string; ok: boolean; why: string }
   | { kind: 'boss'; phase: number; ok: boolean; why: string; done: boolean }
   | { kind: 'fieldgame'; game: string; name: string; first: boolean }
@@ -208,6 +237,7 @@ export function newCampaign(pack: ContentPack, name: string, look: string, seed:
     relations: {},
     journal: origin ? [origin.journal] : [],
     notes: [],
+    adventureDiary: newAdventureDiary(),
     cards: [],
     objectivesDone: [],
     companion: null,
@@ -304,9 +334,9 @@ export class Engine {
 
   /** The first open, visible objective. Used by the guide and the recap. */
   currentObjective(s: CampaignState): (Objective & { mission: Mission }) | null {
-    // Main-story steps come first, so an optional side step never takes the tracker.
     const open = this.visibleObjectives(s).filter((o) => !o.complete);
-    return open.find((o) => /-M\d+$/.test(o.mission.id)) ?? open[0] ?? null;
+    const main = open.filter((o) => /-M\d+$/.test(o.mission.id));
+    return main.find((o) => o.essential) ?? main[0] ?? open[0] ?? null;
   }
 
   /** Which Fray creatures this command met (fixed rules on results, never on values). */
@@ -349,14 +379,30 @@ export class Engine {
     let s = s0;
     let p = p0;
     let nextNode: string | null | undefined;
+    let diaryChoice: ReturnType<typeof diaryDialogueChoice>;
     try {
       switch (cmd.type) {
+        case 'VisitPlace':
+          if (!cmd.name.trim()) throw new Error('This place has no name');
+          if (s.flags[`visited.map.${s.mapId}`] !== true) s = apply([{ setFlag: `visited.map.${s.mapId}`, value: true }], s, out);
+          break;
         case 'Reach':
           s = apply([{ setFlag: `reached.${cmd.zone}`, value: true }], s, out);
           break;
         case 'SetFlag':
           s = apply([{ setFlag: cmd.flag, value: cmd.value }], s, out);
           break;
+        case 'SharedCarry':
+          s = apply(moveSharedCarry(cmd.site, cmd.stop, cmd.action, s, p), s, out);
+          break;
+        case 'EquipPerspective': {
+          const id = cmd.keepsake;
+          if (id !== null && !ownedPerspective(this.pack, s, id)) throw new Error('You have not earned that field tool');
+          if (s.flags[PERSPECTIVE_FLAG] !== (id ?? false)) {
+            s = apply([{ setFlag: PERSPECTIVE_FLAG, value: id ?? false }], s, out);
+          }
+          break;
+        }
         case 'UseKeepsake': case 'ReadClue': {
           const cl = (this.pack.clues ?? []).find((x) => x.id === cmd.clue);
           if (!cl) throw new Error('Unknown clue');
@@ -414,7 +460,7 @@ export class Engine {
             s = apply([{ setFlag: `mill.${r.id}.s${cmd.source}`, value: true }], s, out);
             break;
           }
-          if (sourcesChecked(s.flags, r).length < MIN_SOURCES) throw new Error(`Check at least ${MIN_SOURCES} sources first. One source alone cannot be checked against anything.`);
+          if (missingRumourSources(s.flags, r).length) throw new Error("Check the rumour’s listed sources before giving a verdict.");
           const why = r.whys[cmd.verdict];
           if (why === undefined) throw new Error('Choose a verdict');
           const ok = cmd.verdict === r.best;
@@ -450,11 +496,11 @@ export class Engine {
           }
           break;
         }
-        case 'FairPrice': {
-          const o = FAIR_PRICE.options[cmd.choice];
-          if (!o) throw new Error('Choose an answer');
-          s = apply([{ setFlag: 'trade.fair.asked', value: true }, ...(o.ok ? [{ setFlag: 'trade.fair.ok', value: true } as Effect] : [])], s, out);
-          events.push({ kind: 'fairprice', ok: o.ok, why: o.why });
+        case 'CompareDyePrices': {
+          if (s.mapId !== 'aethelgard.ferry') throw new Error("The price slips are at Wenna’s boat.");
+          if (s.flags['trade.price-compared'] !== true) {
+            s = apply([{ setFlag: 'trade.price-compared', value: true }], s, out);
+          }
           break;
         }
         case 'DisarmSeal': {
@@ -464,6 +510,13 @@ export class Engine {
           if (!o) throw new Error('Choose an answer');
           if (o.ok && s.flags[`trap.${x.id}.open`] !== true) s = apply([{ setFlag: `trap.${x.id}.open`, value: true }, { setFlag: `meet.fray.${x.fray}`, value: true }, { addMarks: 2 }], s, out);
           events.push({ kind: 'seal', seal: x.id, ok: o.ok, why: o.why });
+          break;
+        }
+        case 'OpenDrawerCase': {
+          if (s.mapId !== 'aethelgard.emberford') throw new Error('The drawers are at Dov’s stall.');
+          const mask = Number(s.flags[DRAWER_MASK] ?? 0);
+          const updated = flipDrawer(mask, cmd.face);
+          if (updated !== mask) s = apply([{ setFlag: DRAWER_MASK, value: updated }], s, out);
           break;
         }
         case 'FinishFieldGame': {
@@ -551,6 +604,7 @@ export class Engine {
           const opt = cmd.index >= 999 ? this.visibleOptions(cmd.node, s).find((o) => o.index === cmd.index)?.option : n.options?.[cmd.index];
           if (!opt) throw new Error('That option does not exist');
           if (!check(opt.if, s)) throw new Error('That option is not available now');
+          diaryChoice = diaryDialogueChoice(this.pack, n, opt, cmd.index, this.visibleOptions(cmd.node, s).length);
           s = apply(opt.effects, s, out);
           if (s.companion && isInquiry(opt.tag)) s = this.approve(s, out, events, `${cmd.node}.${cmd.index}`);
           nextNode = opt.next ?? null;
@@ -560,6 +614,34 @@ export class Engine {
           const e = this.pack.exhibits.find((x) => x.id === cmd.exhibit);
           if (!e) throw new Error('Unknown exhibit');
           s = apply([{ setFlag: `inspected.${e.id}`, value: true }, { addCard: e.grantsCard }, { addNum: 'count.inspected', by: s.flags[`inspected.${e.id}`] ? 0 : 1 }], s, out);
+          break;
+        }
+        case 'ClaimSpecimen': {
+          const exhibit = this.pack.exhibits.find((record) => record.id === cmd.exhibit);
+          if (!exhibit || !hasSpecimen(exhibit)) throw new Error('Unknown collection object');
+          const { key } = exhibit.specimen;
+          if (ownsSpecimen(s, key)) break;
+          if (!canClaimSpecimen(s, exhibit)) throw new Error('Finish the object’s quest first');
+          const inSatchel = carriedSpecimenCount(s) < SPECIMEN_CAPACITY;
+          s = apply([{ giveItem: specimenItemId(key) }, { setFlag: carryFlag(key), value: inSatchel },
+            { setFlag: 'specimens.collected', value: true }], s, out);
+          break;
+        }
+        case 'CarrySpecimen': {
+          const { key, carry } = cmd;
+          if (s.mapId !== SPECIMEN_BASE) throw new Error('Swap collection objects at the Nexus');
+          if (!ownsSpecimen(s, key)) throw new Error('You have not collected that object');
+          if ((s.flags[carryFlag(key)] === true) === carry) break;
+          if (carry && carriedSpecimenCount(s) >= SPECIMEN_CAPACITY) throw new Error('The satchel’s object slots are full');
+          const effects: Effect[] = [{ setFlag: carryFlag(key), value: carry }];
+          if (!carry && s.flags[PERSPECTIVE_FLAG] === specimenToolId(key)) effects.push({ setFlag: PERSPECTIVE_FLAG, value: false });
+          s = apply(effects, s, out);
+          break;
+        }
+        case 'SetSpecimenReading': {
+          const exhibit = this.pack.exhibits.find((record) => record.id === cmd.exhibit);
+          if (!exhibit || !hasSpecimen(exhibit) || !check(specimenEquipped(exhibit.specimen.key), s)) throw new Error('Bring the object to its stand');
+          s = apply([{ setFlag: specimenReadingFlag(exhibit.specimen.key), value: cmd.reading }], s, out);
           break;
         }
         case 'UseLens': {
@@ -624,6 +706,21 @@ export class Engine {
           if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
+        case 'SkiffStart': case 'SkiffStroke': case 'SkiffMoor': case 'SkiffLand':
+          s = changeSkiff(cmd, s);
+          break;
+        case 'SealMarketBasket': case 'QuoteMarketBasket': case 'IssueBasketTicket': case 'ReviewBasketCredit': case 'RedeemBasketTicket':
+          s = apply(marketBasketEffects(cmd, s), s, out);
+          break;
+        case 'RunWaterLoop': case 'ReadWaterLoop': case 'FitWaterLoopCard': case 'SetWaterLoopService':
+          s = apply(waterLoopEffects(cmd, s), s, out);
+          break;
+        case 'TraceCatchment': case 'PostCatchmentNotice':
+          s = apply(catchmentEffects(cmd, s), s, out);
+          break;
+        case 'PublishDispatchTarget': case 'CheckDispatchReceipt': case 'CallDispatchBell': case 'CheckDispatchKit': case 'KeepDispatchTarget':
+          s = apply(civicIncentiveEffects(cmd, s), s, out);
+          break;
         case 'RunVoiceReading': {
           if (s.mapId !== 'voices.listening' || s.flags['voices.arrived'] !== true) throw new Error('Use the listening desk in the Archive of Voices.');
           voiceReading(cmd.source, cmd.view);
@@ -640,6 +737,9 @@ export class Engine {
           if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
+        case 'SetServiceBoundary':
+          s = apply(boundaryEffects(cmd, s), s, out);
+          break;
         case 'RunWaterTrial': {
           if (s.mapId !== 'water.gatehouse' || s.flags['water.arrived'] !== true) throw new Error('Use the trial gate in the Water Commons.');
           const condition = s.flags['water.repaired'] === true ? 'repaired' : 'drought';
@@ -662,6 +762,11 @@ export class Engine {
           if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
+        case 'CaptureFilmTake':
+        case 'ScreenFilmCut':
+        case 'PostFilmCut':
+          s = apply(filmEffects(cmd, s), s, out);
+          break;
         case 'ReadSeaChart': {
           seaChart(cmd.chart);
           if (s.mapId !== `sea.${cmd.chart}` || s.flags['sea.arrived'] !== true) throw new Error('Use the matching survey stand in the Cartographers’ Sea.');
@@ -693,6 +798,9 @@ export class Engine {
           if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
+        case 'RecordBendTrial': case 'FileBendPlan':
+          s = apply(bendEffects(cmd, s), s, out);
+          break;
         case 'NileRouteTrial': {
           if (s.mapId !== 'nile.route' || !s.cards.includes('card.nile.mine')) throw new Error('Read the Mine Map before using the table.');
           const r = runNileTrial(cmd.road);
@@ -834,9 +942,12 @@ export class Engine {
         case 'ResolveEvent': {
           const ev = this.pack.events.find((e) => e.id === cmd.event);
           if (!ev) throw new Error('Unknown event');
+          if (s.events.pending !== ev.id) break;
           s = structuredClone(s);
-          if (!s.events.seen.includes(ev.id)) s.events.seen.push(ev.id);
-          if (s.events.pending === ev.id) s.events.pending = null;
+          s.events.pending = null;
+          delete s.flags[`event.resume.${ev.id}`];
+          if (s.events.seen.includes(ev.id)) break;
+          s.events.seen.push(ev.id);
           s = apply([{ addNum: 'count.events', by: 1 }], s, out);
           weaves.push(ev.weave);
           break;
@@ -1115,9 +1226,19 @@ export class Engine {
           const t = cmd.text.trim().slice(0, 500);
           if (!t) throw new Error('The note is empty');
           if (s.notes.length >= 200) throw new Error('The journal is full');
+          const kind = cmd.kind ?? diaryNoteKind(t);
+          if (kind !== 'note' && kind !== 'reflection' && kind !== 'question') throw new Error('Unknown note type');
           s = structuredClone(s);
           s.notes.push(t);
+          s.adventureDiary.noteDetails.push({ kind, at: now, mapId: s.mapId, resolved: false });
           s = apply([{ addNum: 'count.notes', by: 1 }], s, out);
+          break;
+        }
+        case 'SetDiaryQuestion': {
+          const note = s.adventureDiary.noteDetails[cmd.index];
+          if (!Number.isInteger(cmd.index) || note?.kind !== 'question' || typeof cmd.resolved !== 'boolean') throw new Error('Unknown journal question');
+          s = structuredClone(s);
+          s.adventureDiary.noteDetails[cmd.index].resolved = cmd.resolved;
           break;
         }
         case 'RequestHint': {
@@ -1125,9 +1246,10 @@ export class Engine {
           const depth = Math.min(4, used + 1) as 1 | 2 | 3 | 4;
           const hint = this.pack.hints.find((h) => h.objective === cmd.objective && h.depth === depth && check(h.if, s))
             ?? this.pack.hints.find((h) => h.objective === cmd.objective && h.depth === depth);
+          if (!hint) throw new Error('Choose a quest step with a clue');
           // Asking for help never reduces XP or blocks awards (GUIDE-002).
           s = apply([{ setFlag: `hint.${cmd.objective}`, value: depth }], s, out);
-          if (hint) events.push({ kind: 'hint', hint });
+          events.push({ kind: 'hint', hint });
           break;
         }
         case 'PortfolioShare': {
@@ -1193,7 +1315,8 @@ export class Engine {
           s = apply(o.onComplete, s, out);
           if (o.weave) weaves.push(o.weave);
           if (o.kq) stones.push({ id: o.kq.id, way: `${m.world}|${o.kq.action}` });
-          for (const sk of o.skills ?? []) skillUses.push({ id: sk, sig: useSignature(m.world, o.kq?.action ?? 'step', o.id, o.weave?.aoks ?? []) });
+          for (const q of o.questionWays ?? []) stones.push({ id: q.id, way: `${m.world}|${q.action}` });
+          for (const sk of o.skills ?? []) skillUses.push({ id: sk, sig: objectiveSkillUse(m.world, o, sk) });
           changed = true;
         }
       }
@@ -1221,16 +1344,12 @@ export class Engine {
     }
     // Question Stones (KQ-003): Lumen names the question; a new way makes the stone brighter.
     for (const st of stones) {
-      const ways = p.stones?.[st.id] ?? [];
-      const newWay = !ways.includes(st.way);
-      if (newWay) p = { ...p, stones: { ...(p.stones ?? {}), [st.id]: [...ways, st.way] } };
-      events.push({ kind: 'stone', question: st.id, ways: newWay ? ways.length + 1 : ways.length, newWay });
+      const record = addQuestionWay(p, st.id, st.way);
+      events.push({ kind: 'stone', question: st.id, ways: record.stones[st.id].length, newWay: record !== p });
+      p = record;
     }
     // Skill Atlas (spec 76.1): one use per distinct context.
-    for (const u of skillUses) {
-      const have = p.skills?.[u.id] ?? [];
-      if (!have.includes(u.sig)) p = { ...p, skills: { ...(p.skills ?? {}), [u.id]: [...have, u.sig] } };
-    }
+    for (const { id, sig } of skillUses) p = recordSkillUse(p, id, sig);
     for (const tid of out.portfolio) {
       const t = this.pack.portfolio.find((x) => x.id === tid);
       if (t) portfolio.push({ kind: t.kind, title: t.title, text: t.text, weave: t.weave });
@@ -1241,6 +1360,7 @@ export class Engine {
     }
 
     pushOutputs(out, events);
+    s = recordAdventure(this.pack, s0, s, cmd, events, now, diaryChoice);
     return { state: s, permanent: p, events, nextNode };
   }
 }

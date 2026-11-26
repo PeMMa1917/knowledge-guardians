@@ -1,6 +1,10 @@
 /** The Living Forest field exercise takes place in a fictional woodland. */
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
+import { FERN_FIELD_RECEIVER, FERN_RECORD_DOOR } from './fernRecordRoom';
+import { carriedFrame } from './sharedCarry';
+import { WORK_SCHEDULE_ENTRANCE, WORK_SCHEDULE_FERN, WORK_SCHEDULE_TRAIL } from './workSchedule';
+import { HOOK_CLEARING, HOOK_KEEPER, HOOK_STATION, HOOK_TRAIL } from './forestNarrators';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>): Interactable {
   return { id, kind: 'door', x, y, w: 1, h: 1, art: 'forest.waypost', label, to };
@@ -35,6 +39,18 @@ const gapEdit = (format: string, edition: string): Condition =>
 const mossFrame: Condition = { flag: 'forest.moss.frame', eq: true };
 const mossMark: Condition = { flag: 'forest.moss.result', eq: 'mark' };
 const mossRibbon: Condition = { flag: 'forest.moss.result', eq: 'ribbon' };
+const forestArrived: Condition = { objective: 'forest.arrival' };
+const spateChoice = (route: 'rail' | 'bend'): Condition => ({ flag: 'forest.spate.route', eq: route });
+const spateCrossed: Condition = { objective: 'forest.spate.crossed' };
+const notebookActive: Condition = { flag: 'perspective.active', eq: 'observer-notebook' };
+const notebookMethod = (method: 'conditions' | 'crew'): Condition => ({
+  all: [notebookActive, { flag: 'forest.observer.method', eq: method }],
+});
+const notebookPassage = (method: 'conditions' | 'crew'): Condition => ({
+  all: [notebookMethod(method), { objective: 'forest.observer.notes' }],
+});
+const counterReady: Condition = { objective: 'forest.compare' };
+const counterDisplay = (layout: 'marker' | 'ledger'): Condition => ({ flag: 'forest.counter.layout', eq: layout });
 const mossReadings = 'Green touched five squares at the shaded creek bank and one at the shaded bridge edge. '
   + 'In the open, green touched two at the ridge edge and four below the path. '
   + 'The day before, the crew saw five boot contacts at the shaded edge and six at the open edge in one round. '
@@ -46,6 +62,27 @@ function mossPeg(site: string, x: number, y: number, label: string): Interactabl
     ...guideScene(`forest-moss-${site}`, x, y, label, 'forest.waypost', key, mossFrame),
     artOpen: { key: 'preserved.slip', if: { flagSet: key } },
   };
+}
+
+function notebookSlot(id: string, x: number, y: number, label: string, art: string, node: string,
+  method: 'conditions' | 'crew', slot: 'first' | 'second'): Interactable {
+  return {
+    ...guideScene(id, x, y, label, art, node, notebookMethod(method)),
+    artOpen: { key: 'preserved.slip', if: { flag: `forest.observer.${slot}`, eq: true } },
+  };
+}
+
+function spateCrossings(route: 'rail' | 'bend', y: number, eastLanding: { x: number; y: number },
+  label: string, openedArt: string, closedText: string): Interactable[] {
+  const openIf = spateChoice(route);
+  return [
+    { side: 'west', x: 13, landing: eastLanding },
+    { side: 'east', x: 17, landing: { x: 12, y } },
+  ].map(({ side, x, landing }) => ({
+    ...door(`forest-spate-${route}-${side}`, x, y, label, { map: 'forest.trail', ...landing }),
+    walkThrough: true, visibleIf: forestArrived, openIf, text: closedText,
+    artOpen: { key: openedArt, if: openIf }, flag: 'forest.spate.crossed',
+  }));
 }
 
 export const FOREST_STATION: MapDef = {
@@ -62,8 +99,11 @@ export const FOREST_STATION: MapDef = {
     { stamp: 'bench', x: 7, y: 13 },
   ],
   interactables: [
+    WORK_SCHEDULE_FERN,
+    ...HOOK_STATION,
     door('forest-trail-path', 3, 8, 'the path to the listening trail', { map: 'forest.trail', x: 4, y: 14 }),
     door('forest-community-path', 23, 8, 'the path to the bridge clearing', { map: 'forest.community', x: 12, y: 12 }),
+    FERN_RECORD_DOOR,
     { ...door('forest-nexus-return', 12, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 25, y: 16 }), art: 'preserved.door' },
     { id: 'forest-station-waystone', kind: 'waystone', x: 15, y: 12, w: 1, h: 1,
       label: 'the station Waystone', place: 'Fern Station', art: 'waystone' },
@@ -74,12 +114,24 @@ export const FOREST_STATION: MapDef = {
     note('forest-gombe-credit', 15, 8, 'the credited Gombe reference slip', 'preserved.slip',
       'The timeline records Jane Goodall’s observation in 1960. In a separate account, a visiting researcher names field assistant Baraka Daniel beside a datasheet they collected together.',
       { flag: 'forest.gombe.credited', eq: true }),
+    guideScene('forest-observer-book', 14, 7, 'Elian’s unbound field notebook', 'preserved.catalogue',
+      'forest.observer.bind', { objective: 'forest.arrival' }),
+    { id: 'forest-counter-bench', kind: 'fieldgame', game: 'forest-counter', x: 8, y: 6, w: 1, h: 1,
+      label: 'Elian’s watch counter', art: 'forest.guide-hinges', walkThrough: true, visibleIf: counterReady },
+    { ...door('forest-observer-station-to-bank', 5, 7, 'the marked lower watch trail', { map: 'forest.trail', x: 8, y: 6 }),
+      walkThrough: true, visibleIf: notebookPassage('conditions'), flag: 'forest.observer.crossed' },
+    note('forest-observer-station-proof', 14, 10, 'the dated copy of the two views', 'preserved.display-paired',
+      'The notes keep each standing place beside its view. The low path links the two check points. The gaps in each view stay on the same page.',
+      { all: [{ objective: 'forest.observer.finish' }, { flag: 'forest.observer.method', eq: 'conditions' }] }),
     note('forest-trail-directory', 10, 11, 'the station directory', 'forest.notice',
       'Fern Station. West for the listening trail. East for the bridge clearing. The two cases carry field records from Gombe. The local trail is a Guardian field exercise.'),
     guideScene('forest-moss-frame', 9, 8, 'Elian’s six-square frame', 'forest.field-diagram', 'forest.moss.loan',
       { flag: 'forest.arrived', eq: true }),
     note('forest-moss-station-sheet', 17, 12, 'the frame sheet and the bridge crew’s tally', 'preserved.display-paired',
       mossReadings, mossRibbon),
+    note('forest-spate-return-slip', 15, 14, 'Ayla’s dry return slip', 'preserved.display-paired',
+      'The dawn notes came back dry. Ayla filed the wet marks and the cart crew’s track beside the route used today. Her sister can read both before the next bell.',
+      spateCrossed),
     { ...guideScene('forest-gap-clear', 8, 12, 'the ridge return register', 'preserved.folder', 'forest.gap.register.clear', gapReady),
       artOpen: { key: 'preserved.catalogue', if: { flag: 'forest.gap.clear', eq: true } } },
     { ...guideScene('forest-gap-blocked', 20, 12, 'the creek return register', 'preserved.folder', 'forest.gap.register.blocked', gapReady),
@@ -135,14 +187,56 @@ export const FOREST_TRAIL: MapDef = {
     { stamp: 'flowers-small', x: 11, y: 11 }, { stamp: 'flowers-white', x: 27, y: 7 },
   ],
   interactables: [
+    WORK_SCHEDULE_TRAIL,
+    ...HOOK_TRAIL,
     { id: 'field-dig', kind: 'fieldgame', game: 'dig', x: 11, y: 15, w: 1, h: 1, label: 'Marisol\'s dig at the old charcoal camp (The Careful Dig)', art: 'ledger' },
+    { id: 'stiltfrog-watch-low', kind: 'fieldgame', game: 'stiltfrog-watch-low', x: 11, y: 5, w: 1, h: 1, walkThrough: true,
+      label: 'the low cloth flap at the reed hollow', art: 'stiltfrog.window-low', visibleIf: forestArrived },
+    { id: 'stiltfrog-watch-high', kind: 'fieldgame', game: 'stiltfrog-watch-high', x: 22, y: 5, w: 1, h: 1, walkThrough: true,
+      label: 'the raised cloth flap at the reed hollow', art: 'stiltfrog.window-high', visibleIf: forestArrived },
+    { id: 'stiltfrog-wait', kind: 'fieldgame', game: 'stiltfrog-wait', x: 20, y: 4, w: 1, h: 1, walkThrough: true,
+      label: 'the bank seat a stone back from the sill', art: 'stiltfrog.seat', visibleIf: { objective: 'forest.frog.watches' },
+      artOpen: { key: 'stiltfrog.track', if: { flag: 'lor.stiltfrog.friend', eq: true } } },
     { id: 'cross-geese', kind: 'fieldgame', game: 'cross-geese', x: 22, y: 12, w: 1, h: 1, label: 'a row of nesting geese across the trail (a crossing)', art: 'reeds' },
     door('forest-trail-back', 2, 14, 'the path back to Fern Station', { map: 'forest.station', x: 4, y: 8 }),
     door('forest-clearing-path', 29, 12, 'the path to the bridge clearing', { map: 'forest.community', x: 20, y: 11 }),
+    ...spateCrossings('rail', 3, { x: 18, y: 4 }, 'the north keeper’s rail', 'forest.guide-rail',
+      'The short keeper’s rail is folded into its post. Check Ayla’s storm board in the clearing. The ordinary bridge and ford are open.'),
+    ...spateCrossings('bend', 17, { x: 19, y: 17 }, 'the sheltered cart crossing', 'forest.screen',
+      'The sheltered cart crossing has no route screen. Check Ayla’s storm board in the clearing. The ordinary bridge and ford are open.'),
+    guideScene('forest-spate-west-mark', 10, 4, 'the two wet lines above the shortcut', 'forest.ridge',
+      'forest.spate.west', { all: [forestArrived, { not: { flagSet: 'forest.spate.west' } }] }),
+    note('forest-spate-west-dates', 10, 4, 'the two dated north readings', 'preserved.slip',
+      'At the north post the water was higher at the morning bell and lower at the noon bell. Both marks stay visible on the post.', { flag: 'forest.spate.west', eq: true }),
+    guideScene('forest-spate-east-mark', 23, 16, 'the cart tracks at the alder bend', 'forest.field-diagram',
+      'forest.spate.east', { all: [forestArrived, { not: { flagSet: 'forest.spate.east' } }] }),
+    note('forest-spate-east-sketch', 23, 16, 'the dated cart crew sketch', 'preserved.catalogue',
+      'The noon cart check found the sheltered bend dry. The outline shows room for a cart and a longer approach than the north path.', { flag: 'forest.spate.east', eq: true }),
     { id: 'forest-watch-creek', kind: 'forest-watch', node: 'creek', x: 11, y: 9, w: 1, h: 1,
       label: 'the creek reed screen', art: 'forest.screen', walkThrough: true },
     { id: 'forest-watch-ridge', kind: 'forest-watch', node: 'ridge', x: 24, y: 6, w: 1, h: 1,
       label: 'the ridge overlook', art: 'forest.ridge', walkThrough: true },
+    notebookSlot('forest-observer-creek-edge', 9, 9, 'the edge of the creek watch', 'forest.screen',
+      'forest.observer.creek', 'conditions', 'first'),
+    notebookSlot('forest-observer-ridge-edge', 26, 6, 'the edge of the ridge watch', 'forest.ridge',
+      'forest.observer.ridge', 'conditions', 'second'),
+    notebookSlot('forest-observer-lamp-board', 7, 7, 'the lamp crew’s return slot', 'preserved.folder',
+      'forest.observer.lamp', 'crew', 'first'),
+    notebookSlot('forest-observer-bridge-board', 21, 10, 'the bridge crew’s return slot', 'preserved.folder',
+      'forest.observer.bridge', 'crew', 'second'),
+    { ...note('forest-counter-screen-slip', 4, 10, 'the first-light creek slip', 'preserved.slip',
+      'The Fern watcher saw the whole opening for the first beat. Zero crossings. The West Runner brought this slip. The slot for a check after the next bell is still empty.', counterReady),
+      flag: 'forest.counter.source.first' },
+    { ...note('forest-counter-ridge-slip', 27, 10, 'the ridge keeper’s slip and its copy', 'preserved.display-paired',
+      'One visible crossing, first light, ridge opening. The ridge keeper carried the slip. The bridge runner brought the same entry copied on a second paper. Both papers carry the same origin mark.', counterReady),
+      flag: 'forest.counter.source.second' },
+    { ...note('forest-counter-marker', 7, 9, 'the pending-check marker beside the trail', 'forest.notice',
+      'CHECK WANTED. The after-bell slot is still waiting for a source. A walker can see this at the screen. The two finished slips keep their names back at the station.', counterDisplay('marker')),
+      flag: 'forest.counter.seen.marker' },
+    { ...door('forest-observer-bank-to-station', 8, 5, 'the marked lower trail to Fern Station', { map: 'forest.station', x: 6, y: 7 }),
+      walkThrough: true, visibleIf: notebookPassage('conditions'), flag: 'forest.observer.crossed' },
+    { ...door('forest-observer-ridge-to-clearing', 28, 5, 'the marked crew path to Bridge Clearing', { map: 'forest.community', x: 19, y: 12 }),
+      walkThrough: true, visibleIf: notebookPassage('crew'), flag: 'forest.observer.crossed' },
     note('forest-crossing-guide', 10, 13, 'the crossings sign', 'forest.waypost',
       'Follow the lower path to the creek screen. Both crossings lead to the ridge. The bridge clearing lies east. Two sketch frames face the rail at the upper bridge.'),
     note('forest-guide-rail', 16, 6, 'the old bridge rail', 'forest.guide-rail',
@@ -183,7 +277,11 @@ export const FOREST_COMMUNITY: MapDef = {
   width: 24, height: 16, music: 'music.town', ambience: 'town', background: 0x2a4030,
   floor: grassyFloor(24, 16, (x, y) => (y >= 9 && y <= 11) || (x >= 10 && x <= 14 && y >= 6)),
   spawn: { x: 12, y: 12 }, blocks: [], zones: [],
-  npcs: [{ id: 'forest-steward', x: 12, y: 6, facing: 'down' }],
+  npcs: [
+    { id: 'forest-steward', x: 12, y: 6, facing: 'down' },
+    { id: 'fern-record-lio', x: 19, y: 11, facing: 'left', visibleIf: forestArrived },
+    HOOK_KEEPER,
+  ],
   stamps: [
     { stamp: 'house-a', x: 2, y: 1 }, { stamp: 'house-b', x: 17, y: 1 },
     { stamp: 'long-table', x: 3, y: 7 }, { stamp: 'bench', x: 18, y: 7 },
@@ -192,8 +290,31 @@ export const FOREST_COMMUNITY: MapDef = {
     { stamp: 'flowers-small', x: 6, y: 12 }, { stamp: 'flowers-white', x: 16, y: 11 },
   ],
   interactables: [
+    WORK_SCHEDULE_ENTRANCE,
+    ...HOOK_CLEARING,
     door('forest-community-back', 12, 14, 'the path back to Fern Station', { map: 'forest.station', x: 22, y: 8 }),
     door('forest-bridge-to-trail', 22, 11, 'the path back to the ridge', { map: 'forest.trail', x: 28, y: 12 }),
+    ...FERN_FIELD_RECEIVER,
+    carriedFrame('forest', 'start', 3, 10, 'Ayla’s rain-mark frame on the first trestles'),
+    carriedFrame('forest', 'turn', 12, 11, 'the rain-mark frame at the bend'),
+    carriedFrame('forest', 'shelf', 20, 9, 'the rain-mark frame at the covered shelf'),
+    { ...door('forest-observer-clearing-to-ridge', 20, 12, 'the marked crew path back to the ridge', { map: 'forest.trail', x: 27, y: 5 }),
+      walkThrough: true, visibleIf: notebookPassage('crew'), flag: 'forest.observer.crossed' },
+    note('forest-observer-clearing-proof', 18, 10, 'the paired crew handover notes', 'preserved.display-paired',
+      'The crew path links both return slots. At the bench the lamp and bridge entries keep their own time, keeper and kind of observation.',
+      { all: [{ objective: 'forest.observer.finish' }, { flag: 'forest.observer.method', eq: 'crew' }] }),
+    { ...note('forest-counter-ledger', 18, 12, 'the counter’s named handover ledger', 'preserved.catalogue',
+      'The early crew clears two source slips here, one with a zero and one with a visible pass. A second envelope keeps the ridge slip’s original name. The after-bell slot says CHECK WANTED. Walkers on the trail can ask the handover crew for this page.', counterDisplay('ledger')),
+      flag: 'forest.counter.seen.ledger' },
+    guideScene('forest-spate-plan', 11, 9, 'Ayla’s storm-route board', 'forest.notice',
+      'forest.spate.plan', forestArrived),
+    note('forest-spate-rail-notice', 9, 7, 'the north rail route strip', 'forest.guide-level',
+      'The north handrail is open for one keeper at a time. A keeper can bring notes straight from the ridge. Keep carts on the ordinary bridge.', spateChoice('rail')),
+    note('forest-spate-bend-notice', 9, 7, 'the sheltered crossing route strip', 'forest.guide-rise',
+      'The bend has a wind screen and room for a cart. Follow the long sheltered bank. The ordinary bridge remains available.', spateChoice('bend')),
+    note('forest-spate-wait-notice', 9, 7, 'Ayla’s folded route strip', 'preserved.slip',
+      'Ayla’s sister took the usual round. The spare fittings are here if a later watch wants to check the two storm paths again.',
+      { all: [{ flag: 'forest.spate.waited', eq: true }, { not: { flagSet: 'forest.spate.route' } }] }),
     { ...note('forest-pathbook', 6, 9, 'the bridge keeper’s route book', 'preserved.folder',
       'On early rounds the lamp crew hears wings behind the creek reeds. Bridge keepers on later shifts hear them along the ridge. These entries record the sounds people heard.'), flag: 'forest.pathbook' },
     guideScene('forest-moss-boot-log', 5, 10, 'the bridge crew’s boot tally', 'preserved.catalogue', 'forest.moss.log', mossFrame),

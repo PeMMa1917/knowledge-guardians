@@ -52,6 +52,58 @@ describe('The Next Bell', () => {
   });
 
   it.each([
+    ['strip', 'same dated strip', 'Lay the paired readings'],
+    ['map', 'Pin each reading', 'Hang the walking guide'],
+  ])('uses the %s comparison to leave a distinct handover with the accustomed gauge names', (layout, compare, handoff) => {
+    const d = begin();
+    const handovers = ['coast-names-strip-handover', 'coast-names-map-handover'];
+    const posted = ['coast-names-strip-posted', 'coast-names-map-posted'];
+    const trace = [
+      harbour.interactables.find(({ id }) => id === 'coast-harbour-gauge')?.text,
+      station.interactables.find(({ id }) => id === 'coast-station-gauge')?.text,
+    ];
+    expect(trace[0]).toContain('Wallfoot');
+    expect(trace[0]).toContain('Two finger-widths');
+    expect(trace[1]).toContain('Wind Peg');
+    expect(trace[1]).toContain('Five finger-widths');
+    read(d, 'coast-harbour-gauge');
+    d.s.mapId = station.id;
+    read(d, 'coast-station-gauge');
+    const tray = station.interactables.find(({ id }) => id === 'coast-names-strip-tray')!;
+    expect(check(tray.visibleIf, d.s)).toBe(false);
+    d.talk('coast-forecaster', compare);
+    expect(d.done('coast.readings')).toBe(true);
+    expect(d.done('coast.names.handoff')).toBe(false);
+    expect(check(tray.visibleIf, d.s)).toBe(layout === 'strip');
+
+    const headland = 'coast-names-headland-tag';
+    expect(visible(d, [headland])).toEqual(layout === 'map' ? [headland] : []);
+    expect(d.e.visibleOptions('coast.names.receive.map', d.s).map(({ option }) => option.text)).toEqual(['Leave the hook for now.']);
+    if (layout === 'strip') {
+      expect(check(tray.artOpen?.if, d.s)).toBe(false);
+      d.walk(tray.node!, ['Wrap the dated strip']);
+      expect(check(tray.artOpen?.if, d.s)).toBe(true);
+    } else {
+      read(d, headland);
+    }
+    d.s.mapId = harbour.id;
+    expect(visible(d, posted)).toEqual([]);
+    if (layout === 'map') {
+      expect(visible(d, handovers)).toEqual([]);
+      read(d, 'coast-names-quay-tag');
+    }
+    const receiverId = `coast-names-${layout}-handover`;
+    expect(visible(d, handovers)).toEqual([receiverId]);
+    const receiver = harbour.interactables.find(({ id }) => id === receiverId)!;
+    d.walk(receiver.node!, [handoff]);
+    expect(d.done('coast.names.handoff')).toBe(true);
+    expect(visible(d, handovers)).toEqual([]);
+    expect(visible(d, posted)).toEqual([`coast-names-${layout}-posted`]);
+    expect(d.s.flags['coast.notice']).toBeUndefined();
+    expect(d.e.talkEntry('coast-forecaster', d.s)).toBe('coast.station.chart');
+  });
+
+  it.each([
     [
       'signal', 'same dated strip', 'separate strip', 'Pin the qualified notice',
       'Pin the new reading', 'coast-notice-signal',

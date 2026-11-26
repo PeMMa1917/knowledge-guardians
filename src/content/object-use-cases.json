@@ -1,0 +1,937 @@
+[
+  {
+    "key": "sandal",
+    "room": "packing",
+    "title": "The detachable toe peg",
+    "problem": "Aven has one shallow drawer and a wide tool shelf. The narrow drawer will take the flat practice sole, but some handlers need to see where the small peg belongs.",
+    "action": "Use the catalogue’s 29 cm and 10 cm spans to turn the plain sole template inside a fictional 31 by 12 cm opening. The peg travels separately.",
+    "bench": {
+      "kind": "clearance",
+      "sample": [
+        29,
+        10
+      ],
+      "opening": [
+        31,
+        12
+      ],
+      "labels": [
+        "Long side along the rail",
+        "Turn the sole across the rail"
+      ]
+    },
+    "bets": [
+      "Pack the sole longways and tie the peg to a side tab",
+      "Send a wide board that keeps the peg beside its hole"
+    ],
+    "results": [
+      "The sole slides through the gap. A tab on the drawer points to the matching loose peg when Aven pulls it out.",
+      "The peg and hole stay side by side. Aven can point to how the two parts meet, using an extra shelf slot."
+    ],
+    "object": {
+      "id": "cma:1929.566.1",
+      "institution": "Cleveland Museum of Art",
+      "accession": "1929.566.1",
+      "title": "Sandal (mtalawanda / mtawanda) or Clog (kiatu cha mti)",
+      "date": "c 1800s",
+      "dateKind": "Catalogue century range",
+      "medium": "Wood and glass beads",
+      "dimensions": "Overall: 29 x 10 x 6.3 cm (11 7/16 x 3 15/16 x 2 1/2 in.)",
+      "attribution": "Unidentified carver",
+      "place": "Democratic Republic of the Congo",
+      "catalogUrl": "https://clevelandart.org/art/1929.566.1",
+      "observation": "A record for one sandal names wood and glass beads. The museum describes the foot support as a wooden base with a separate antelope-shaped toe peg.",
+      "limit": "The image does not establish who wore this sandal. The museum treats the interpretation of preserved sole designs as an inference.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Brown wooden sandal with a raised animal-shaped toe support and small beads."
+    }
+  },
+  {
+    "key": "shona-rest",
+    "room": "packing",
+    "title": "The reversible rest",
+    "problem": "The drawer keeper wants the support edge kept in view. A hanger on the shared shelf can show the whole outline but takes another slot.",
+    "action": "The museum lists overall size with no named axes. Turn a plain outline made from the 13.1 and 16.3 cm spans. It only tests an outline.",
+    "bench": {
+      "kind": "clearance",
+      "sample": [
+        16.3,
+        13.1
+      ],
+      "opening": [
+        17,
+        14
+      ],
+      "labels": [
+        "Long listed span along the rail",
+        "Long listed span across the rail"
+      ]
+    },
+    "bets": [
+      "Fit the short listed span across the drawer and leave an edge tab",
+      "Use the separate wide shelf with all three catalogue spans"
+    ],
+    "results": [
+      "The drawer clears, and the tab points out a support edge. The other listed span stays on the ticket.",
+      "All three spans are legible from the shelf. The keeper leaves the axes unassigned."
+    ],
+    "object": {
+      "id": "cma:1996.268",
+      "institution": "Cleveland Museum of Art",
+      "accession": "1996.268",
+      "title": "Headrest",
+      "date": "1900s",
+      "dateKind": "Catalogue dating of this headrest",
+      "medium": "Wood and colorant",
+      "dimensions": "Overall: 13.1 x 6.3 x 16.3 cm (5 3/16 x 2 1/2 x 6 7/16 in.)",
+      "attribution": "Shona-style maker",
+      "place": "Mozambique",
+      "catalogUrl": "https://clevelandart.org/art/1996.268",
+      "observation": "The catalogue lists wood and colorant and gives three overall dimensions for this particular headrest.",
+      "limit": "The record attributes a style. It does not name the maker or document how this individual object was used.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Wooden headrest with a curved top over a carved upright and a double-lobed base."
+    }
+  },
+  {
+    "key": "woven-hat",
+    "room": "packing",
+    "title": "The hat profile",
+    "problem": "Aven must keep a high rim visible without squeezing it through the opening. Two plain profiles can show different parts of the catalogue dimensions.",
+    "action": "Cut a side outline to the catalogue’s 17.1 cm top diameter and 9.6 cm height. Turn it against the opening on the practice drawer.",
+    "bench": {
+      "kind": "clearance",
+      "sample": [
+        17.1,
+        9.6
+      ],
+      "opening": [
+        18,
+        10
+      ],
+      "labels": [
+        "Top span along the rail",
+        "Top span across the rail"
+      ]
+    },
+    "bets": [
+      "Slide in a side profile with a top-diameter tab",
+      "Send an open display of the top circle and side height"
+    ],
+    "results": [
+      "The side profile clears. The next keeper lifts the tab to see which dimension came from the top.",
+      "The round top and height sit on two adjacent sheets. Both can be checked before the board goes away."
+    ],
+    "object": {
+      "id": "cma:1929.356",
+      "institution": "Cleveland Museum of Art",
+      "accession": "1929.356",
+      "title": "Hat",
+      "date": "by 1928",
+      "dateKind": "Recorded latest date by which the hat existed",
+      "medium": "Plant fibers and dye",
+      "dimensions": "Overall: 9.6 cm (3 3/4 in.); Diameter of top: 17.1 cm (6 3/4 in.)",
+      "attribution": "Mangbetu-style maker",
+      "place": "Democratic Republic of the Congo",
+      "catalogUrl": "https://clevelandart.org/art/1929.356",
+      "observation": "The museum records this woven hat as made by 1928. Its catalogue associates its preserved condition with work made for visitors passing through Ekibondo.",
+      "limit": "The recorded latest date and association with an export setting do not name this maker or make the hat representative of all Mangbetu work.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Woven rounded hat with differently coloured bands across the surface."
+    }
+  },
+  {
+    "key": "bracelet",
+    "room": "packing",
+    "title": "The bracelet outline",
+    "problem": "A drawer slot is ready. Aven wants its paper aperture to leave a gap near a fragile fibre edge.",
+    "action": "Turn the practice outline from the recorded 10.5 cm width and 7 cm height. The fixture checks the outline and does not contact the bracelet.",
+    "bench": {
+      "kind": "clearance",
+      "sample": [
+        10.5,
+        7
+      ],
+      "opening": [
+        11,
+        8
+      ],
+      "labels": [
+        "Width along the rail",
+        "Width across the rail"
+      ]
+    },
+    "bets": [
+      "Use the narrow drawer and keep the fibre edge marked",
+      "Send the enlarged outline and material slip to the wide shelf"
+    ],
+    "results": [
+      "The marked edge clears the opening. A handler can see the fibre warning before drawing the pattern out.",
+      "A handler can point to the brass and fibre on the enlarged pattern. One extra shelf space is used."
+    ],
+    "object": {
+      "id": "met:2007.447",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "2007.447",
+      "title": "Bracelet",
+      "date": "12th–17th century",
+      "dateKind": "Catalogue century range",
+      "medium": "Brass, fiber",
+      "dimensions": "H. 2 3/4 x W. 4 1/8 in. (7 x 10.5 cm)",
+      "attribution": "Sao artist, individual name unrecorded",
+      "place": "Chad, Sao peoples",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/320050",
+      "observation": "The Met lists brass and fibre for this bracelet, whose maximum documented width is 10.5 cm.",
+      "limit": "The gallery discusses several sites and kinds of Sao work. The record does not establish a particular ritual use or wearer for this bracelet.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Curving bracelet with a dark green and brown surface."
+    }
+  },
+  {
+    "key": "ingqosha",
+    "room": "packing",
+    "title": "The collar strip",
+    "problem": "Aven is lending a plain length strip. One drawer has space for it, while a wide shelf can show the strip next to the separate note about uncertain attribution.",
+    "action": "Set the paper strip to the catalogue length, 45.7 cm. Its 5 cm width belongs to this workshop strip.",
+    "bench": {
+      "kind": "clearance",
+      "sample": [
+        45.7,
+        5
+      ],
+      "opening": [
+        46,
+        8
+      ],
+      "labels": [
+        "Length along the rail",
+        "Length across the rail"
+      ]
+    },
+    "bets": [
+      "Place the length strip in the drawer with its ticket",
+      "Keep the strip and two possible attributions together on the shelf"
+    ],
+    "results": [
+      "The full-length strip lies flat. The ticket still identifies Xhosa or Mfengu authorship.",
+      "Both possible attributions stay beside the strip. Aven reserves the space for readers comparing the catalogue words."
+    ],
+    "object": {
+      "id": "met:2005.408.2",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "2005.408.2",
+      "title": "Collar (Ingqosha)",
+      "date": "ca. 1870",
+      "dateKind": "Catalogue dating of this object",
+      "medium": "Sinew, glass beads, button",
+      "dimensions": "L. 18 in. (45.7 cm)",
+      "attribution": "Xhosa or Mfengu artist",
+      "place": "South Africa",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/319572",
+      "observation": "The catalogue gives a length of 45.7 cm and lists sinew, glass beads and a button. The artist field reads Xhosa or Mfengu artist.",
+      "limit": "The museum does not choose between Xhosa and Mfengu authorship or name a wearer.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Beaded collar with patterned rows and a button fastener."
+    }
+  },
+  {
+    "key": "kru-core",
+    "room": "exchange",
+    "title": "The hollow-looking tally",
+    "problem": "Veya is lending a cutaway model. A quick tally can say how many copies left. A component slip can tell the return keeper to look for the insert as well.",
+    "action": "Slide the workshop tally between whole copies and the loose pieces in the demonstration model. This ledger has no price column.",
+    "bench": {
+      "kind": "tally",
+      "counts": [
+        3,
+        3
+      ],
+      "margin": [
+        0,
+        3
+      ],
+      "labels": [
+        "Count the assembled copies",
+        "Count the copies and core inserts"
+      ],
+      "unit": "pieces"
+    },
+    "bets": [
+      "Send three assembled-copy marks to the gate desk",
+      "Send both rows to the return shelf"
+    ],
+    "results": [
+      "Veya can sign out three model copies quickly. She leaves the insert count for the full record.",
+      "The return keeper checks each insert against one of the three model shells before hanging the set."
+    ],
+    "object": {
+      "id": "met:1995.64.15",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "1995.64.15",
+      "title": "Currency",
+      "date": "probably 19th century",
+      "dateKind": "Qualified catalogue dating of this currency",
+      "medium": "Brass, fired terracotta core",
+      "dimensions": "Height 4 in.",
+      "attribution": "Kru artist",
+      "place": "Liberia",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/317616",
+      "observation": "The museum catalogues this individual currency object as brass around a fired terracotta core, probably from the nineteenth century.",
+      "limit": "The material record supplies composition. It does not supply the object’s original value, its exchange rate or a transaction.",
+      "verifiedOn": "2026-11-26",
+      "altText": "A brass band arches over rounded supports. Several ridges run along the band."
+    }
+  },
+  {
+    "key": "luba-ingots",
+    "room": "exchange",
+    "title": "Five ingots on one line",
+    "problem": "Veya needs the practice set to travel intact. One keeper counts five objects. Another needs to check the two paper sleeves separately.",
+    "action": "Count the four pieces in this museum view, then move the model tally between all five catalogued pieces and the two sleeves. The dimensions in the collection record are averages.",
+    "bench": {
+      "kind": "tally",
+      "counts": [
+        5,
+        2
+      ],
+      "margin": [
+        0,
+        3
+      ],
+      "labels": [
+        "Count the group in one line",
+        "Open the two count sleeves"
+      ],
+      "unit": "blocks"
+    },
+    "bets": [
+      "Post the five-block group count at the gate desk",
+      "Post the two-sleeve count at the return shelf"
+    ],
+    "results": [
+      "The gate desk records a five-block set. Veya clips on a note that the photograph shows four. The gallery’s dimensions are averages across the catalogued group.",
+      "The return keeper counts two in the first sleeve and three in the second. A missing block can be traced to its sleeve."
+    ],
+    "object": {
+      "id": "nmafa:2002-10-3",
+      "institution": "Smithsonian National Museum of African Art",
+      "accession": "2002-10-3",
+      "title": "Ingots",
+      "date": "13th-17th century",
+      "dateKind": "Catalogue century range",
+      "medium": "Copper alloy",
+      "dimensions": "H x W x D: 3.2 x 2.5 x 0.6 cm (1 1/4 x 1 x 1/4 in.) (average dimensions)",
+      "attribution": "Luba artist, name unrecorded",
+      "place": "Democratic Republic of the Congo, Luba attribution",
+      "catalogUrl": "https://collections.si.edu/search/detail/edanmdm:nmafa_2002-10-3",
+      "observation": "The Smithsonian describes a group of five copper-alloy ingots with casting ridges visible underneath. The measurements shown are group averages.",
+      "limit": "The average dimensions do not describe every item. The record does not state an exchange value for this group.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Four X-shaped ingots appear in this photograph. The museum catalogue lists five for the accession."
+    }
+  },
+  {
+    "key": "thaler-faces",
+    "room": "exchange",
+    "title": "Both sides of one thaler",
+    "problem": "The gate desk wants one count of the practice token. The return shelf needs the portrait and eagle to remain visible when a neighbour comes to check the markings.",
+    "action": "Match the portrait in the museum view. Flip the practice token to the eagle described in the record. One tally counts objects and another counts these two labelled views.",
+    "bench": {
+      "kind": "tally",
+      "counts": [
+        1,
+        1
+      ],
+      "margin": [
+        0,
+        1
+      ],
+      "labels": [
+        "Count the single model token",
+        "Count the portrait and eagle views"
+      ],
+      "unit": "marks"
+    },
+    "bets": [
+      "Send a single-token receipt with the type reference",
+      "Hang two labelled views on the return shelf"
+    ],
+    "results": [
+      "A runner checks out one object. The note preserves 1780 as the type reference beside the catalogue link.",
+      "The return keeper can find both faces and still groups them under one accession. No extra token is counted."
+    ],
+    "object": {
+      "id": "nmafa:89-4-2",
+      "institution": "Smithsonian National Museum of African Art",
+      "accession": "89-4-2",
+      "title": "Coin",
+      "date": "1780",
+      "dateKind": "Catalogue date and coin type inscription",
+      "medium": "Silver",
+      "dimensions": "W x D: 3.8 x 3.8 cm ( 1 1/2 x 1 1/2 in.)",
+      "attribution": "Habsburg thaler type showing Maria Theresa, individual mint or engraver not identified by this record",
+      "place": "Austria and Ethiopia appear in the Smithsonian geography fields",
+      "catalogUrl": "https://collections.si.edu/search/detail/edanmdm:nmafa_89-4-2",
+      "observation": "The catalogue identifies a silver thaler with Maria Theresa on one face and a double-headed eagle on the other. It explains the importance of this coin type in Ethiopian silver circulation.",
+      "limit": "Treat 1780 as the catalogue date and type inscription. This source does not document a specific Ethiopian transaction or a confidently identified minting date for this individual piece.",
+      "verifiedOn": "2026-11-26",
+      "altText": "One face of a round silver coin. It shows the portrait of Maria Theresa."
+    }
+  },
+  {
+    "key": "akan-scale",
+    "room": "exchange",
+    "title": "The pan already weighs something",
+    "problem": "The gate desk must read a full pan quickly. The return keeper needs to know how many of the practice marks belong to the pan itself.",
+    "action": "Slide the beam figures between the whole practice load and the reading with its empty pan counted separately.",
+    "bench": {
+      "kind": "tally",
+      "counts": [
+        6,
+        6
+      ],
+      "margin": [
+        3,
+        0
+      ],
+      "labels": [
+        "Read the loaded pan",
+        "Read the separated load"
+      ],
+      "unit": "model marks"
+    },
+    "bets": [
+      "Keep the gross and empty-pan marks together at the gate",
+      "Post the net load with the measured empty-pan row"
+    ],
+    "results": [
+      "The gate desk can compare gross loads with the same pan. Veya keeps the empty-pan figure visible on the receipt.",
+      "The return keeper reads six marks of contents and can reconstruct the nine-mark gross reading from both rows."
+    ],
+    "object": {
+      "id": "met:1977.224.5a-d",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "1977.224.5a-d",
+      "title": "Scale for Gold Measurement",
+      "date": "19th century",
+      "dateKind": "Catalogue dating of this object",
+      "medium": "Brass, string, pigment",
+      "dimensions": "H. 4 7/8 x Diam. 2 1/4 in. (12.4 x 5.7 cm)",
+      "attribution": "Akan artist",
+      "place": "Côte d'Ivoire or Ghana",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/310299",
+      "observation": "The Met catalogues this Akan scale for gold measurement in brass, string and pigment. The dimensions field lists 12.4 cm high and 5.7 cm in diameter.",
+      "limit": "The record does not give a load for these pans, a scale calibration, or an individual transaction.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Small hanging scale with round brass pans and suspension strings."
+    }
+  },
+  {
+    "key": "asante-box",
+    "room": "exchange",
+    "title": "The lid gets its own line",
+    "problem": "A labelled box form and lid form can ride as one packet. When somebody takes them apart for a display, the return account needs both pieces.",
+    "action": "Move the strip between packet and part tallies for two practice sets. The Met describes this particular accession as an Asante-Akan gold-dust box.",
+    "bench": {
+      "kind": "tally",
+      "counts": [
+        2,
+        2
+      ],
+      "margin": [
+        0,
+        2
+      ],
+      "labels": [
+        "Count the closed packets",
+        "Count the bodies and lids"
+      ],
+      "unit": "pieces"
+    },
+    "bets": [
+      "Tag the two closed packets at the gate desk",
+      "Leave a body-and-lid count where the sets come back"
+    ],
+    "results": [
+      "The runner sees two packets. Each packet keeps the two-part reference on a folded slip.",
+      "The return keeper checks two lids before sending the bodies back into storage. No stray lid is counted as a new box."
+    ],
+    "object": {
+      "id": "met:1977.224.6a-b",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "1977.224.6a, b",
+      "title": "Abamphruwa (gold-dust box)",
+      "date": "19th century",
+      "dateKind": "Catalogue dating of this object",
+      "medium": "Brass",
+      "dimensions": "H x W: 5/8 x 1 in. (1.6 x 2.5 cm)",
+      "attribution": "Asante-Akan peoples",
+      "place": "Ghana",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/310304",
+      "observation": "This brass abamphruwa is catalogued as an Asante-Akan gold-dust box. Its accession covers two parts, a and b.",
+      "limit": "The catalogue does not establish a particular owner, load or transaction for this box.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Small rectangular brass box with a raised lid on top."
+    }
+  },
+  {
+    "key": "vessel-print",
+    "room": "joinery",
+    "title": "A braid’s trace in clay",
+    "problem": "Coru wants one projection showing where a loose strand impressed the model’s surface. A second board preserves the clay edge that reveals what has the texture.",
+    "action": "Move the plain practice strip until either the braid repeat or the clay edge lines up. Each register preserves a different detail.",
+    "bench": {
+      "kind": "seam",
+      "marks": [
+        3,
+        9
+      ],
+      "labels": [
+        "Line up the impressed repeat",
+        "Line up the clay edge"
+      ]
+    },
+    "bets": [
+      "Face the repeat towards the front seat",
+      "Keep the clay edge and surface trace together at the bench"
+    ],
+    "results": [
+      "The front seat can follow the repeat. The tab marks it as an impression in clay.",
+      "A visitor can point to the edge and see that the pattern belongs to clay, even where the braid left a clear trace."
+    ],
+    "object": {
+      "id": "met:1999.47.69",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "1999.47.69",
+      "title": "Globular vessel with twine impressions",
+      "date": "12th–16th century",
+      "dateKind": "Catalogue century range",
+      "medium": "Terracotta",
+      "dimensions": "H. 12 × Diam. 10 in. (30.5 × 25.4 cm)",
+      "attribution": "Middle Niger artist(s), qualified attribution in the culture field",
+      "place": "Mali, Middle Niger civilization (?)",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/317991",
+      "observation": "The terracotta vessel preserves impressed patterns that resemble woven basketry. The Met describes braided fibre used to stamp such designs into the surface.",
+      "limit": "The impressed texture is a mark on terracotta. It does not establish what this vessel held or require a claim that the form itself was a basket.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Round terracotta vessel with overlapping impressed patterns."
+    }
+  },
+  {
+    "key": "nguni-rest",
+    "room": "joinery",
+    "title": "The join between groove and platform",
+    "problem": "Coru has a small projection of two documented details. From one seat the grooves show plainly. From the bench, the smooth platform and its supports read together.",
+    "action": "Bring the practice overlay into register with the grooves first, then with the smooth platform. Keep the catalogue’s attribution separate from the visible marks.",
+    "bench": {
+      "kind": "seam",
+      "marks": [
+        2,
+        8
+      ],
+      "labels": [
+        "Line up the grooves",
+        "Line up the platform"
+      ]
+    },
+    "bets": [
+      "Face the grooves towards the seat with the attribution slip",
+      "Place the platform and supports together at the handling bench"
+    ],
+    "results": [
+      "The grooves are easy to find. The slip says the museum attributes the work through comparison.",
+      "The bench visitor can point out the four supports, then check the separate attribution slip before retelling it."
+    ],
+    "object": {
+      "id": "met:2018.356",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "2018.356",
+      "title": "Zoomorphic headrest",
+      "date": "Mid–late 19th century",
+      "dateKind": "Catalogue dating of this object",
+      "medium": "Wood",
+      "dimensions": "H. 4 1/2 × W. 10 5/8 × D. 5 1/4 × L. 10 5/8 in. (11.4 × 27 × 13.3 × 27 cm)",
+      "attribution": "Attributed to “Unobadula” in The Met’s artist field, the public account discusses a stylistically related group of sculptors",
+      "place": "South Africa, Nguni peoples, mid-nineteenth-century makers near present-day Durban",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/787722",
+      "observation": "The wood headrest has a smooth platform above four legs and incised grooves around the sides. The Met explains the attribution through stylistic comparison.",
+      "limit": "The catalogue’s comparison does not turn a stylistic attribution into an individual autograph or show that this was the headrest in a related historical illustration.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Carved wooden headrest with four curved supports, a smooth top and groups of incised lines."
+    }
+  },
+  {
+    "key": "edo-saltcellar",
+    "room": "joinery",
+    "title": "A figure changes at an angle",
+    "problem": "Coru has two plain silhouettes for visitors. A front seat can read the face first. Readers at the handling bench can compare both poses with the museum credit.",
+    "action": "Move the paper overlay from the frontal figure line to the profile line. The practice marks are simple shapes and preserve the two orientations.",
+    "bench": {
+      "kind": "seam",
+      "marks": [
+        4,
+        10
+      ],
+      "labels": [
+        "Line up the frontal figure",
+        "Line up the figure in profile"
+      ]
+    },
+    "bets": [
+      "Place the frontal outline on the seat board",
+      "Place both outlines and the attribution on the handling bench"
+    ],
+    "results": [
+      "The first visitor finds the frontal pose. An arrow points away from the nearest figure to the profile outline.",
+      "The reader can compare frontal and profile orientations. A separate line links to the catalogue name, Master of the Heraldic Ship."
+    ],
+    "object": {
+      "id": "met:1972.63a-b",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "1972.63a, b",
+      "title": "Saltcellar with Portuguese Figures",
+      "date": "ca. 1525–1600",
+      "dateKind": "Catalogue dating of this object",
+      "medium": "Ivory",
+      "dimensions": "H. 7 1/2 × W. 3 × D. 3 1/4 in. (19.1 × 7.6 × 8.3 cm)",
+      "attribution": "\"Master of the Heraldic Ship\"",
+      "place": "Nigeria",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/309900",
+      "observation": "The Met describes this Benin saltcellar as the work of an ivory carver its catalogue calls “Master of the Heraldic Ship.” The two higher-status Portuguese figures face outward and their two attendants appear in profile.",
+      "limit": "The catalogue describes a possible set for a patron. It does not identify the patron, or establish that the labels name a historically documented maker.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Historical ivory saltcellar carved with figures around the exterior."
+    }
+  },
+  {
+    "key": "chokwe-loop",
+    "room": "joinery",
+    "title": "The strand behind the bead",
+    "problem": "Coru’s little mark board can show the cord from a distance or make room for three material tabs on a bench where visitors can check them.",
+    "action": "Line up a plain loop of cord and a material mark. The museum names wood, ceramic and raffia. The practice strip has no proposed wearer or exchange trail.",
+    "bench": {
+      "kind": "seam",
+      "marks": [
+        1,
+        6
+      ],
+      "labels": [
+        "Trace the cord",
+        "Pick out a component mark"
+      ]
+    },
+    "bets": [
+      "Mount the loop line and keep the material tab nearby",
+      "Keep the wood, ceramic and raffia tabs beside the trace"
+    ],
+    "results": [
+      "The loop shape reads from the first seat. The material tab keeps the source at hand for a follow-up.",
+      "A reader can separate the three material labels before following the continuous line. The sign leaves the wearer and origin open."
+    ],
+    "object": {
+      "id": "met:1996.456",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "1996.456",
+      "title": "Necklace",
+      "date": "18th–mid-20th century",
+      "dateKind": "Catalogue dating of this object",
+      "medium": "Wood, ceramic, raffia",
+      "dimensions": "H. 11 x W. 14 3/4 in. (27.9 x 37.5 cm)",
+      "attribution": "Chokwe artist",
+      "place": "Angola or Democratic Republic of the Congo",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/317821",
+      "observation": "The museum attributes the necklace to a Chokwe artist and lists wood, ceramic and raffia. It gives Angola or the Democratic Republic of the Congo as the geography.",
+      "limit": "The catalogue does not identify the maker or wearer by name or establish this necklace’s journey.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Strung necklace made of different shaped components on a loop."
+    }
+  },
+  {
+    "key": "ganda-arc",
+    "room": "joinery",
+    "title": "A soundbox below an arc",
+    "problem": "Coru wants a plain guide to a two-part form. A spectator sees the long curve first. A closer reader can trace the place where lines meet the soundbox.",
+    "action": "Move a practice strip between the arc and the diagonal-string line. A second printed shape marks the soundbox in each view.",
+    "bench": {
+      "kind": "seam",
+      "marks": [
+        5,
+        11
+      ],
+      "labels": [
+        "Register the neck curve",
+        "Register the line to the soundbox"
+      ]
+    },
+    "bets": [
+      "Face the neck curve towards the first seat",
+      "Mount the soundbox and diagonal trace beside each other"
+    ],
+    "results": [
+      "The arc is visible from the seat. A second pointer brings the eye back to the soundbox.",
+      "The bench reader can follow a diagonal line from neck to soundbox. The guide leaves the pitch of this instrument unclaimed."
+    ],
+    "object": {
+      "id": "met:89.4.926",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "89.4.926",
+      "title": "Ennanga",
+      "date": "19th century",
+      "dateKind": "Catalogue dating of this object",
+      "medium": "Wood, vegetal fiber, snake skin, hide",
+      "dimensions": "Height: 29 15/16 in. (76 cm) Width: 8 1/4 in. (21 cm)",
+      "attribution": "Ganda",
+      "place": "Uganda",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/501536",
+      "observation": "The Met describes this Ganda ennanga as having a soundbox and a curved neck, with diagonal strings. A small ring under each tuning peg contributes a buzz in the described instrument form.",
+      "limit": "The record is not an acoustic measurement or a recording of a performance on this individual harp.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Arched harp with a curved neck above the soundbox and diagonal strings."
+    }
+  },
+  {
+    "key": "ngoma-body",
+    "room": "trace",
+    "title": "The second surface",
+    "problem": "Sivra has two places to put a cue card. An opener at the rail wants the first impact. A reader at the bench wants the short tail too.",
+    "action": "Move the practice shutter over the strike marker and the later tail of two superposed model layers. The museum’s two hides prompted the fixture.",
+    "bench": {
+      "kind": "pulse",
+      "events": [
+        2,
+        4,
+        6,
+        9
+      ],
+      "widths": [
+        4,
+        6
+      ],
+      "labels": [
+        "Catch the first strike",
+        "Follow the second layer"
+      ]
+    },
+    "bets": [
+      "Send the strike trace to the first cue rail",
+      "Send the tail and strike together to the listening drawer"
+    ],
+    "results": [
+      "Sivra follows the first mark in the practice score. The role of the second layer stays on the accompanying slip.",
+      "A listener traces through the tail and sees the two model layers. The label gives Kampala as a purchase place."
+    ],
+    "object": {
+      "id": "cma:1929.343",
+      "institution": "Cleveland Museum of Art",
+      "accession": "1929.343",
+      "title": "Drum (ngoma)",
+      "date": "by 1928",
+      "dateKind": "Recorded latest date from purchase documentation",
+      "medium": "Wood, rawhide, and plant fiber",
+      "dimensions": "Diameter: 31.2 cm (12 5/16 in.); Overall: 40 cm (15 3/4 in.)",
+      "attribution": "Unidentified maker, museum records purchase in Kampala",
+      "place": "Purchased in Kampala, Uganda. Precise place of making unrecorded.",
+      "catalogUrl": "https://clevelandart.org/art/1929.343",
+      "observation": "The museum describes two hides over a hollow wooden body, with the outer layer secured by plant fiber. It records purchase in Kampala and distinguishes this example from sacred royal drums.",
+      "limit": "A purchase location is a custody clue. It does not determine who made the drum or where it was made.",
+      "verifiedOn": "2026-11-26",
+      "altText": "A drum with a rounded top, textured sides and a slender loose strap."
+    }
+  },
+  {
+    "key": "ring-joins",
+    "room": "trace",
+    "title": "One joined ring, two contacts",
+    "problem": "A small cue card can show the joined projections making one stimulus. A full drawer card can also show what two separated contacts look like in the empty rig.",
+    "action": "Check an early joined pair and a longer two-contact trace from plain test tabs. They demonstrate alternative contacts, not this ring’s former sound.",
+    "bench": {
+      "kind": "pulse",
+      "events": [
+        1,
+        2,
+        6,
+        10
+      ],
+      "widths": [
+        3,
+        5
+      ],
+      "labels": [
+        "Catch the joined pair",
+        "Trace the spaced contacts"
+      ]
+    },
+    "bets": [
+      "Use the joined pulse at the cue rail",
+      "Keep both possible contacts at the listening drawer"
+    ],
+    "results": [
+      "The cue rail has one compact sign. Elsewhere on the receipt, the two historical comparisons stay labelled as analogies.",
+      "The listener sees one tight pair and separated marks. Sivra keeps the two proposed comparisons distinct from measured sound."
+    ],
+    "object": {
+      "id": "nmafa:84-14-7",
+      "institution": "Smithsonian National Museum of African Art",
+      "accession": "84-14-7",
+      "title": "Ring",
+      "date": "13th-14th century",
+      "dateKind": "Catalogue century range",
+      "medium": "Copper alloy",
+      "dimensions": "H x W x D: 8.5 x 4.4 x 3.0 cm (3 3/8 x 1 3/4 x 1 3/16 in.)",
+      "attribution": "Inland Niger Delta style, maker unrecorded",
+      "place": "Mali, Inland Niger Delta style",
+      "catalogUrl": "https://collections.si.edu/search/detail/edanmdm:nmafa_84-14-7",
+      "observation": "The Smithsonian records a copper-alloy ring with incised lines and joined projections. It notes analogies to both paired finger percussion and horse bells.",
+      "limit": "The suggested uses are comparisons with related objects. Surface patina alone cannot determine this object’s exact use or archaeological context.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Copper-alloy ring with joined projections and incised lines."
+    }
+  },
+  {
+    "key": "kora-span",
+    "room": "trace",
+    "title": "A string line and a body line",
+    "problem": "Sivra wants two readable signs for a visiting reader. The first catches an onset. A second sign lets a reader follow the body tail and find the instrument record.",
+    "action": "Move the shutter over an invented pair of traces. A quick line marks the pluck and a wider line shows when the demonstration body continues.",
+    "bench": {
+      "kind": "pulse",
+      "events": [
+        2,
+        3,
+        7,
+        9
+      ],
+      "widths": [
+        4,
+        5
+      ],
+      "labels": [
+        "Catch the string onset",
+        "Follow the body tail"
+      ]
+    },
+    "bets": [
+      "Hang the onset trace at the cue rail",
+      "Keep the onset and longer tail at the listening drawer"
+    ],
+    "results": [
+      "The cue reader finds the start. Sivra leaves a link beside the onset for the museum’s description of the gourd and hide.",
+      "A visitor finds the gourd-body note after tracing the later marks. The guide labels the practice pulse as its own invention."
+    ],
+    "object": {
+      "id": "met:89.4.498",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "89.4.498",
+      "title": "Kora",
+      "date": "19th century",
+      "dateKind": "Catalogue dating of this object",
+      "medium": "Gourd, skin, leather, wood",
+      "dimensions": "L: 111.3 cm (43-7/16 in.); W: 43 cm (16-15/16 in.); D: 22 cm (8-11/16 in.)",
+      "attribution": "Mandinka",
+      "place": "Senegambia",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/501115",
+      "observation": "The Met identifies this nineteenth-century Mandinka kora from Senegambia and describes a gourd resonator covered with hide, a neck, handles and a bridge.",
+      "limit": "The catalogue shows the construction of this instrument and discusses the kora broadly. The fictional trace is not evidence of its historical tuning or performance.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Tall string instrument above a gourd resonator, with a neck and handles."
+    }
+  },
+  {
+    "key": "hoddu-trough",
+    "room": "trace",
+    "title": "Across the trough",
+    "problem": "Sivra can put a narrow launch cue at the rail or keep the launch and the second leg on a wider bench sheet.",
+    "action": "Move the shutter over a plain bridge-marker signal, then follow the longer marker attributed to a fictional trough. The hourglass form comes from the hoddu’s individual record.",
+    "bench": {
+      "kind": "pulse",
+      "events": [
+        1,
+        5,
+        7,
+        10
+      ],
+      "widths": [
+        3,
+        6
+      ],
+      "labels": [
+        "Catch the short bridge marker",
+        "Follow the trough model"
+      ]
+    },
+    "bets": [
+      "Give the cue reader the bridge-marker trace",
+      "Keep both lengths of trace in the drawer"
+    ],
+    "results": [
+      "The rail card shows a clear short start. A side tab directs the reader to the museum’s hourglass-body description.",
+      "A visitor follows both windows and finds the official account of the narrow trough. The country line stays qualified."
+    ],
+    "object": {
+      "id": "met:89.4.473",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "89.4.473",
+      "title": "Hoddu (Xalam)",
+      "date": "late 19th century",
+      "dateKind": "Catalogue dating of this object",
+      "medium": "Wood, skin",
+      "dimensions": "65cm x 12cm x 15.5cm",
+      "attribution": "Fulbe",
+      "place": "Mali, Guinea, Guinea-Bissau or the Senegambia",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/501091",
+      "observation": "The Met identifies a Fulbe hoddu with a narrow hourglass-shaped trough carved from wood and an animal-hide soundboard. Its geography field lists Mali, Guinea, Guinea-Bissau or Senegambia.",
+      "limit": "The catalogue does not fix one country in this geography field or preserve what this individual instrument sounded like on a given day.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Wooden lute with a narrow hourglass-shaped body and a long neck."
+    }
+  },
+  {
+    "key": "igbo-pluriarc",
+    "room": "trace",
+    "title": "Separate sticks on the same pulse line",
+    "problem": "Sivra needs a clean cue for one practice line or a sheet showing how staggered starts can still belong to one grouped set.",
+    "action": "Look for a start on one fictional strip and a set of later starts on the other. Each strip stands for a plain loose test part, not a copy of the instrument.",
+    "bench": {
+      "kind": "pulse",
+      "events": [
+        0,
+        4,
+        8,
+        11
+      ],
+      "widths": [
+        2,
+        5
+      ],
+      "labels": [
+        "Catch a single start",
+        "Follow the staggered starts"
+      ]
+    },
+    "bets": [
+      "Place one legible start at the rail",
+      "Keep grouped separate starts on a drawer sheet"
+    ],
+    "results": [
+      "A cue reader finds the first start without following every model mark. A tab credits the museum’s separate-stick description.",
+      "The listener can distinguish multiple starts and see that the record groups them as one instrument, each string with its own stick."
+    ],
+    "object": {
+      "id": "met:89.4.2035",
+      "institution": "The Metropolitan Museum of Art",
+      "accession": "89.4.2035",
+      "title": "Ubo akwara (pluriarc)",
+      "date": "late 19th century",
+      "dateKind": "Catalogue dating of this object",
+      "medium": "Wood, fiber",
+      "dimensions": "H. 31 × W. 8 × D. 11 in. (78.7 × 20.3 × 27.9 cm)",
+      "attribution": "Igbo (Nigeria)",
+      "place": "Nigeria",
+      "catalogUrl": "https://www.metmuseum.org/art/collection/search/502613",
+      "observation": "The Met catalogues this late nineteenth-century object as an Igbo ubo akwara from Nigeria. Its description notes that each string in the pluriarc has its own flexible stick.",
+      "limit": "The record does not give the pitches or the account of a named player. The trace compares original fictional timing markers only.",
+      "verifiedOn": "2026-11-26",
+      "altText": "Pluriarc with several curved sticks rising separately from the wooden body."
+    }
+  }
+]

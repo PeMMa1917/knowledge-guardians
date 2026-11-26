@@ -1,0 +1,244 @@
+{
+  "sources": [
+    {
+      "id": "LEX-SILL-AVANT",
+      "title": "Trésor de la langue française informatisé: avant, préposition",
+      "url": "https://www.cnrtl.fr/definition/avant/pr%C3%A9position",
+      "locator": "I.A.1, spatial precedence; II.A, temporal precedence with a noun phrase",
+      "supports": "French avant can mark a place before another point along a route, or a time earlier than a stated event. The town signs and their rules are original game writing.",
+      "accessed": "2026-11-26",
+      "mla": { "kind": "page", "title": "Avant, préposition", "container": "Centre national de ressources textuelles et lexicales" }
+    },
+    {
+      "id": "LEX-SILL-APRES",
+      "title": "Trésor de la langue française informatisé: après, préposition",
+      "url": "https://www.cnrtl.fr/definition/apr%C3%A8s/pr%C3%A9position",
+      "locator": "I.A, temporal postériorité in prepositional use",
+      "supports": "French après marks a time subsequent to the stated date or action. The ferry practice wheel and its rule are fictional.",
+      "accessed": "2026-11-26",
+      "mla": { "kind": "page", "title": "Après, préposition", "container": "Centre national de ressources textuelles et lexicales" }
+    }
+  ],
+  "items": [
+    {
+      "id": "item.sill.claim-slip",
+      "name": "Sill Bridge claim slip",
+      "historicalLabel": "fictional-world",
+      "art": "departure.strip",
+      "description": "The bridge’s peg and ring marks on two lines. The ferry has room to mark the later release under its own rule."
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "sill.take-ticket", "speaker": "mentor:Estelle Cottel", "historicalLabel": "fictional-world",
+      "text": "Ah, you found the back steps. The cloth loft has René’s parcel. He came here yesterday with his claim while the wheel was open, and left it on the far peg. All he had was a wet copy with two lines saying avant. He lost the boat while I went looking. Try this dry ticket. Start from this bank, where he did.",
+      "options": [
+        { "text": "Take a dry practice ticket.", "effects": [{ "setFlag": "sill.bridge.ticket", "value": true }], "next": "sill.ticket-lettering" },
+        { "text": "Read the two lines on the hook.", "next": "sill.ticket-lettering" },
+        { "text": "Leave the hook for later." }
+      ]
+    },
+    {
+      "id": "sill.ticket-lettering", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "Déposez le billet avant le pont. Accrochez le billet avant la deuxième sonnerie. The left margin starts at Estelle’s hook. A hand has drawn three bridge planks beside the first sentence, and a bell wheel beside the second.",
+      "options": [
+        { "text": "Lift the translation slip.", "next": "sill.lexicon.avant" },
+        { "text": "Fold the hook’s copy back." }
+      ]
+    },
+    {
+      "id": "sill.lexicon.avant", "speaker": "narrator", "claimKind": "interpretation", "historicalLabel": "documented", "citationSource": "LEX-SILL-AVANT",
+      "text": "‘Leave the ticket before the bridge. Clip the ticket on before the second ring.’ In French, avant can order places along the way or times in a sequence. Look at what comes after the word to tell which it is."
+    },
+    {
+      "id": "sill.west-peg", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "You reach this peg from Estelle’s hook before the first plank. The ring is polished where the runner slips tickets off the peg. A little charcoal roof over the hook shows which way the cloth runner comes.",
+      "options": [
+        { "text": "Hang the practice ticket where the town runner can lift it.", "if": { "flag": "sill.bridge.ticket", "eq": true },
+          "effects": [{ "setFlag": "sill.bridge.near", "value": true }], "next": "sill.west-marked" },
+        { "text": "Walk on. The dry ticket hook is by the entrance." }
+      ]
+    },
+    {
+      "id": "sill.west-marked", "speaker": "mentor:Estelle Cottel", "historicalLabel": "fictional-world",
+      "text": "That’s the peg the town runner reaches. I’ve left the mark from your test and put the ticket back in your hand. Keep it dry for the loft."
+    },
+    {
+      "id": "sill.east-peg", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The peg on the loft bank looks the same from across the water. Its basket faces the return walk. An arriving loft runner passes the basket only when going back to town. From the doorway where you started, the boards of the bridge are already behind you.",
+      "options": [
+        { "text": "Swing the return basket around and mark where its runner starts.", "effects": [{ "setFlag": "sill.bridge.far", "value": true }], "next": "sill.east-marked" },
+        { "text": "Leave the basket in place." }
+      ]
+    },
+    {
+      "id": "sill.east-marked", "speaker": "mentor:Estelle Cottel", "historicalLabel": "fictional-world",
+      "text": "A runner coming the other way would reach this peg before the bridge. Good catch. I’ll keep the arrow with the words. René could see the peg from his side and had no arrow to go by."
+    },
+    {
+      "id": "sill.access-ledger", "speaker": "mentor:Estelle Cottel", "historicalLabel": "fictional-world",
+      "text": "René came back. He needs the parcel at the landing early enough to mend a torn cover. Leïla can take it as his deputy if he signs. She’s also the first runner for the neighbours’ bundles. Or I can stay for a second, public turn. René can collect it himself and others can queue, though the loom delivery leaves one hand short. The bridge and the wheel tell me where both rules failed him. I still need to decide what we can offer now.",
+      "options": [
+        { "text": "Read back both checks and lay out the two routes.", "if": { "all": [{ "objective": "sill.bridge.checked" }, { "not": { "flagSet": "sill.bridge.plan" } }] }, "next": "sill.offer" },
+        { "text": "Check where the deputy should go.", "if": { "flag": "sill.bridge.plan", "eq": "deputy" }, "next": "sill.run.deputy" },
+        { "text": "Check where the later queue should go.", "if": { "flag": "sill.bridge.plan", "eq": "public" }, "next": "sill.run.public" },
+        { "text": "Leave both routes open for discussion. Check the pegs and the bell wheel first." }
+      ]
+    },
+    {
+      "id": "sill.offer", "speaker": "mentor:René Maret", "historicalLabel": "fictional-world",
+      "text": "If I sign, Leïla can take my parcel now. I’ve asked her, and she has one free hand. Put the slip back in my cover afterwards. If you keep a later turn, I can come with my own slip and I’ll tell the other people who missed the first handoff. Please put up an arrow and say which bell you mean, whatever you choose.",
+      "options": [
+        { "text": "Take René’s signature and open the deputy hatch for Leïla.", "effects": [{ "setFlag": "sill.bridge.plan", "value": "deputy" }], "next": "sill.run.deputy" },
+        { "text": "Put up a second-turn arrow and staff the stair for direct collection.", "effects": [{ "setFlag": "sill.bridge.plan", "value": "public" }], "next": "sill.run.public" },
+        { "text": "Leave this claim in the ledger for now." }
+      ]
+    },
+    {
+      "id": "sill.run.deputy", "speaker": "mentor:Estelle Cottel", "historicalLabel": "fictional-world",
+      "text": "The south hatch is open. Take his signed slip down to Leïla. She can have the parcel on the landing this turn. I’ve moved the neighbours’ bundles to her next run."
+    },
+    {
+      "id": "sill.run.public", "speaker": "mentor:Estelle Cottel", "historicalLabel": "fictional-world",
+      "text": "The east stair is open. I’ve clipped a fresh waiting line beside the door and asked the loom crew to cover without me for one turn. Take the full slip to René on that stair."
+    },
+    {
+      "id": "sill.receiving.deputy", "speaker": "mentor:Leïla Dautin", "historicalLabel": "fictional-world",
+      "text": "The arrow tells me where I came from and the signature says this one’s my run. The other bundles are still safe. I’ll carry them after this trip. Keep your copy for Tova. I’ll meet her by the loading lane.",
+      "options": [
+        { "text": "Hand Leïla the claim and take the signed hatch receipt.", "if": { "not": { "flagSet": "sill.bridge.receipt" } },
+          "effects": [{ "setFlag": "sill.bridge.receipt", "value": "deputy" }] },
+        { "text": "Leave the receipt on the clip." }
+      ]
+    },
+    {
+      "id": "sill.receiving.public", "speaker": "mentor:René Maret", "historicalLabel": "fictional-world",
+      "text": "I could follow your arrow from the town side. Two folks are behind me who never had a runner to name. The extra turn opened a way in for us. I can collect the parcel myself. Tova said to keep your copy beside the late-turn tag when we reach the landing.",
+      "options": [
+        { "text": "Hand René the parcel and take the staffed-stair receipt.", "if": { "not": { "flagSet": "sill.bridge.receipt" } },
+          "effects": [{ "setFlag": "sill.bridge.receipt", "value": "public" }] },
+        { "text": "Leave the receipt on the clip." }
+      ]
+    },
+    {
+      "id": "sill.ferry.deputy", "speaker": "mentor:Leïla Dautin", "historicalLabel": "fictional-world",
+      "text": "At the loft the clip held before the second bell. Here it catches after the ring. Tova waited for the lane to clear. I carried René’s parcel up the loading lane with his signed claim, then went back for the other bundles. Put your two ferry marks beside mine so the next runner can see why this time is different.",
+      "options": [
+        { "text": "Clip the checked ferry time to Leïla’s release tag.", "if": { "not": { "flagSet": "sill.ferry.receipt" } },
+          "effects": [{ "setFlag": "sill.ferry.receipt", "value": "deputy" }], "next": "sill.ferry.citation" },
+        { "text": "Leave Leïla by the loading lane." }
+      ]
+    },
+    {
+      "id": "sill.ferry.public", "speaker": "mentor:René Maret", "historicalLabel": "fictional-world",
+      "text": "I almost held up my slip at the second ring again. Tova had me wait by the east rail until the clip cleared. I reached the cover bench with my own parcel. The next claimant is still in line. Clip the checked time where they can see when the late turn starts.",
+      "options": [
+        { "text": "Clip the checked ferry time to René’s late-turn tag.", "if": { "not": { "flagSet": "sill.ferry.receipt" } },
+          "effects": [{ "setFlag": "sill.ferry.receipt", "value": "public" }], "next": "sill.ferry.citation" },
+        { "text": "Leave René by the waiting rail." }
+      ]
+    },
+    {
+      "id": "sill.ferry.citation", "speaker": "narrator", "claimKind": "interpretation", "historicalLabel": "documented", "citationSource": "LEX-SILL-APRES",
+      "text": "Après la deuxième sonnerie means ‘after the second ring’. The second ring supplies the reference point. The slip bears the mark of the notch past it."
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-SILL-BRIDGE", "title": "The Queue at Sill Bridge", "world": "WORLD-02",
+      "available": { "flag": "reached.emberford", "eq": true },
+      "stake": "René missed his pickup. A second public opening would take someone away from the loom delivery. A named deputy could carry his parcel right away while other bundles wait.",
+      "knowledgeQuestion": "How can a notice give two people the same point of reference, and who bears the cost when we act on it?",
+      "objectives": [
+        {
+          "id": "sill.bridge.checked", "title": "Walk both banks and test the loft’s ticket at an open notch and at the second ring.", "essential": false,
+          "done": { "all": [
+            { "flag": "sill.bridge.near", "eq": true }, { "flag": "sill.bridge.far", "eq": true },
+            { "flag": "sill.bridge.clock.accepted", "in": [0, 1] }, { "flag": "sill.bridge.clock.closed", "eq": 2 }
+          ] },
+          "weave": {
+            "concepts": ["evidence", "interpretation", "perspective", "explanation", "certainty"],
+            "framework": ["scope", "methods-and-tools", "perspectives"], "atl": ["communication", "research", "thinking"],
+            "aoks": ["HUM"], "subjects": ["lang-ab-initio", "lang-b"], "minutes": 5,
+            "thinking": { "dok": 2, "bloom": "apply", "fink": "integration", "solo": "relational" }
+          },
+          "onComplete": [{ "journal": "j.sill.checked" }]
+        },
+        {
+          "id": "sill.bridge.served", "title": "Open a route and collect its receipt in the receiving bay.", "essential": false,
+          "visible": { "objective": "sill.bridge.checked" },
+          "done": { "all": [
+            { "flag": "sill.bridge.passage", "eq": true },
+            { "any": [
+              { "all": [{ "flag": "sill.bridge.plan", "eq": "deputy" }, { "flag": "sill.bridge.receipt", "eq": "deputy" }] },
+              { "all": [{ "flag": "sill.bridge.plan", "eq": "public" }, { "flag": "sill.bridge.receipt", "eq": "public" }] }
+            ] }
+          ] },
+          "weave": {
+            "concepts": ["responsibility", "values", "power", "justification", "perspective"],
+            "framework": ["ethics", "perspectives", "methods-and-tools"], "atl": ["communication", "social", "thinking"],
+            "aoks": ["HUM"], "subjects": ["lang-ab-initio", "lang-b"], "minutes": 3,
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "application", "solo": "relational" }
+          },
+          "onComplete": [{ "giveItem": "item.sill.claim-slip" }, { "journal": "j.sill.receiving" }]
+        }
+      ]
+    },
+    {
+      "id": "KG-CH1-SILL-FERRY", "title": "After the Loading Bell", "world": "WORLD-02",
+      "available": { "all": [{ "objective": "sill.bridge.served" }, { "flag": "reached.ferry", "eq": true }] },
+      "stake": "Tova needs the next carrier to read the landing’s release time without carrying over the loft’s first-turn rule.",
+      "knowledgeQuestion": "What must a new reader check before applying a familiar pattern somewhere else?",
+      "objectives": [
+        {
+          "id": "sill.ferry.checked", "title": "Try Tova’s sample at the second ring and past it.", "essential": false,
+          "done": { "all": [{ "flag": "sill.ferry.clock.closed", "eq": 2 }, { "flag": "sill.ferry.clock.accepted", "eq": 3 }] },
+          "weave": {
+            "concepts": ["interpretation", "evidence", "explanation", "certainty"],
+            "framework": ["methods-and-tools", "scope"], "atl": ["communication", "thinking", "research"],
+            "aoks": ["HUM"], "subjects": ["lang-ab-initio", "lang-b"], "minutes": 2,
+            "thinking": { "dok": 2, "bloom": "apply", "fink": "application", "solo": "relational" }
+          }
+        },
+        {
+          "id": "sill.ferry.served", "title": "Clip the new time to the matching ferry receiver’s tag.", "essential": false,
+          "visible": { "objective": "sill.ferry.checked" },
+          "done": { "any": [
+            { "all": [{ "flag": "sill.bridge.receipt", "eq": "deputy" }, { "flag": "sill.ferry.receipt", "eq": "deputy" }] },
+            { "all": [{ "flag": "sill.bridge.receipt", "eq": "public" }, { "flag": "sill.ferry.receipt", "eq": "public" }] }
+          ] },
+          "weave": {
+            "concepts": ["responsibility", "perspective", "justification"],
+            "framework": ["ethics", "perspectives"], "atl": ["communication", "social"],
+            "aoks": ["HUM"], "subjects": ["lang-b"], "minutes": 2,
+            "thinking": { "dok": 2, "bloom": "apply", "fink": "application", "solo": "relational" }
+          },
+          "onComplete": [{ "journal": "j.sill.ferry" }]
+        }
+      ]
+    }
+  ],
+  "journal": [
+    { "id": "j.sill.checked", "claimKind": "observation", "text": "Starting at Estelle’s hook, we reached the town peg before stepping onto the bridge. The far peg is reached first from the other direction. The loft wheel held the ticket before its second ring. At the ring, its clip was covered." },
+    { "id": "j.sill.receiving", "claimKind": "value", "text": "We kept the direction and timing marks on separate lines of the claim. A signature could serve one parcel now. A staffed second turn could serve other claimants directly and cost the loom delivery a hand. The receiving bay kept the route actually used." },
+    { "id": "j.sill.ferry", "claimKind": "observation", "text": "Tova’s wheel held the ferry slip at the notch past the second ring. Its clip was still covered at the ring itself. The matching ferry tag shows who could actually collect on the route we opened at Sill Bridge." }
+  ],
+  "hints": [
+    { "id": "h.sill.bridge.checked.1", "objective": "sill.bridge.checked", "depth": 1, "text": "Look for a lantern post by the east lane south of the market. It leads down to Sill Bridge." },
+    { "id": "h.sill.bridge.checked.2", "objective": "sill.bridge.checked", "depth": 2, "text": "Take a dry ticket from Estelle’s hook. Her first instruction names a place. Walk to both pegs from the hook and picture the far runner coming back." },
+    { "id": "h.sill.bridge.checked.3", "objective": "sill.bridge.checked", "depth": 3, "text": "Hang the ticket at the town-bank peg and mark the far basket’s direction. Use the wheel on the far bank to compare an earlier notch and the second ring." },
+    { "id": "h.sill.bridge.checked.4", "objective": "sill.bridge.checked", "depth": 4, "text": "Offer the ticket at the second ring to save the covered-clip mark. Reset and offer it before either ring or at the first ring to save the open-clip mark." },
+    { "id": "h.sill.bridge.served.1", "objective": "sill.bridge.served", "depth": 1, "text": "Estelle’s ledger is east of the bell wheel." },
+    { "id": "h.sill.bridge.served.2", "objective": "sill.bridge.served", "depth": 2, "text": "Listen to what René and Leïla can offer, and consider who is waiting behind them." },
+    { "id": "h.sill.bridge.served.3", "objective": "sill.bridge.served", "depth": 3, "text": "Choose a signed deputy for one parcel now or a later staffed turn for people arriving on their own." },
+    { "id": "h.sill.bridge.served.4", "objective": "sill.bridge.served", "depth": 4, "text": "Use the south deputy hatch or the east second-turn stair that your plan opened. Speak to Leïla or René inside the receiving bay and take their receipt." },
+    { "id": "h.sill.ferry.checked.1", "objective": "sill.ferry.checked", "depth": 1, "text": "Look for Tova’s afternoon practice wheel on the far east bank of the old ferry landing." },
+    { "id": "h.sill.ferry.checked.2", "objective": "sill.ferry.checked", "depth": 2, "text": "Turn the wheel slowly and look at which word has changed in the French instruction." },
+    { "id": "h.sill.ferry.checked.3", "objective": "sill.ferry.checked", "depth": 3, "text": "Record what the clip does right at the second ring. Turn once more to check the notch past it." },
+    { "id": "h.sill.ferry.checked.4", "objective": "sill.ferry.checked", "depth": 4, "text": "Offer the ferry slip at ‘Second ring’ and again at ‘Past the second ring’. Reset the cycle if you already passed either notch." },
+    { "id": "h.sill.ferry.served.1", "objective": "sill.ferry.served", "depth": 1, "text": "Bring your checked ferry marks down toward the east edge of the landing." },
+    { "id": "h.sill.ferry.served.2", "objective": "sill.ferry.served", "depth": 2, "text": "Look for the person whose receipt you took at Sill Bridge." },
+    { "id": "h.sill.ferry.served.3", "objective": "sill.ferry.served", "depth": 3, "text": "The deputy used the loading lane. Direct claimants use the east waiting rail." },
+    { "id": "h.sill.ferry.served.4", "objective": "sill.ferry.served", "depth": 4, "text": "After checking both notches, use Leïla’s release tag or René’s late-turn tag. Clip your new time to the matching tag." }
+  ]
+}

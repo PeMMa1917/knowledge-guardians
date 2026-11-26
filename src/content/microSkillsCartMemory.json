@@ -1,0 +1,30 @@
+[
+  {
+    "number": 201,
+    "name": "Find out why a witness never reached the board",
+    "uses": [
+      {
+        "objective": "memory-cart.sources",
+        "action": "Follow the covered stall’s undelivered notice, then unfasten the flap used to discard west witnesses before reading them. Replay both sightlines as separate checks.",
+        "styles": ["helper", "challenger"],
+        "modes": ["spatial", "social", "analytical"],
+        "game": 173,
+        "story": 79
+      }
+    ]
+  },
+  {
+    "number": 202,
+    "name": "Keep a first perception separate from the later account",
+    "uses": [
+      {
+        "objective": "memory-cart.sources",
+        "action": "Watch the first cart pass and pin its observed detail. Hear Edrin’s later account, replay the two views and lift the saved first sketch before revising the handover.",
+        "styles": ["explorer", "strategist"],
+        "modes": ["visual", "physical", "reflective"],
+        "game": 183,
+        "story": 77
+      }
+    ]
+  }
+]

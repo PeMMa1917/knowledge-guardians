@@ -4,10 +4,11 @@
  */
 import { buildPack } from '../content';
 import { Engine, newCampaign, type Command, type GameEvent } from '../domain/engine';
-import { checkAwards } from '../domain/permanent';
+import { checkAwards, restoreQuestionWays } from '../domain/permanent';
+import { restoreMicroSkillUses } from '../domain/skills';
 import { check } from '../domain/rules';
 import {
-  SaveService, browserStore, restoreRecovery, writeCheckpoint, writeSuspend, type SaveEntry, type SlotPair,
+  PermanentSaveConflict, SaveService, browserStore, restoreRecovery, writeCheckpoint, writeSuspend, type SaveEntry, type SlotPair,
 } from '../domain/saves';
 import type { CampaignState, ContentPack, PermanentRecord } from '../domain/types';
 import { validateContent } from '../domain/validate';
@@ -25,9 +26,12 @@ export class GameController {
   permanent: PermanentRecord;
   pair: SlotPair = { revision: 0, continue: null, recovery: null };
   loadProblem: string | null = null;
+  loadWarning: string | null = null;
   contentProblems: string[];
   private listeners: Listener[] = [];
   private playStart = Date.now();
+  private permanentDirty = false;
+  private permanentWriteFailed = false;
 
   constructor() {
     this.pack = buildPack();
@@ -36,7 +40,10 @@ export class GameController {
     this.saves = new SaveService(browserStore());
     this.permanent = this.saves.loadPermanent();
     const r = this.saves.load();
-    if (r.ok) this.pair = r.pair;
+    if (r.ok) {
+      this.pair = r.pair;
+      this.loadWarning = r.warning ?? null;
+    }
     else this.loadProblem = r.reason;   // stored data is left untouched
   }
 
@@ -51,23 +58,22 @@ export class GameController {
   /** Call every 15 seconds. Counts the time if the tab is visible and there was input in the last 2 minutes. */
   tickActive(visible: boolean, secs = 15): void {
     if (!this.state || !visible || Date.now() - this.lastInput > 120_000) return;
-    this.permanent = { ...this.permanent, activity: addActivity(this.permanent.activity, dayOf(new Date()), { secs }) };
-    if (++this.ticks % 4 === 0) this.saves.savePermanent(this.permanent);
+    this.updatePermanent({ ...this.permanent, activity: addActivity(this.permanent.activity, dayOf(new Date()), { secs }) });
+    if (++this.ticks % 4 === 0) this.flushPermanent();
   }
 
   dispatch(cmd: Command): GameEvent[] {
     const o = this.engine.dispatch(cmd, this.state, this.permanent);
     this.state = o.state;
-    if (o.permanent !== this.permanent) {
-      this.permanent = o.permanent;
-      this.saves.savePermanent(this.permanent);
-    }
-    for (const e of o.events) if (e.kind === 'checkpoint') this.checkpoint(e.label);
+    const recordChanged = o.permanent !== this.permanent;
+    this.updatePermanent(o.permanent);
     const xp = o.events.reduce((n, e) => n + (e.kind === 'xp' ? e.amount : 0), 0);
-    if (xp) { this.permanent = { ...this.permanent, activity: addActivity(this.permanent.activity, dayOf(new Date()), { xp }) }; this.saves.savePermanent(this.permanent); }
-    this.emit(o.events);
-    (o.events as any).nextNode = o.nextNode;
-    return o.events;
+    if (xp) this.updatePermanent({ ...this.permanent, activity: addActivity(this.permanent.activity, dayOf(new Date()), { xp }) });
+    if (recordChanged || xp) this.flushPermanent();
+    const events = o.events.filter((event) => event.kind !== 'checkpoint' || this.checkpoint(event.label));
+    this.emit(events);
+    (events as any).nextNode = o.nextNode;
+    return events;
   }
 
   emit(events: GameEvent[]): void { if (events.length) this.listeners.forEach((l) => l(events)); }
@@ -97,19 +103,48 @@ export class GameController {
     this.playStart = now;
   }
 
-  checkpoint(label: string): void {
-    this.commit(writeCheckpoint(this.pair, this.entry('checkpoint', label)));
+  checkpoint(label: string): boolean {
+    return this.commit(writeCheckpoint(this.pair, this.entry('checkpoint', label)));
   }
 
-  suspend(label = 'Save and leave'): void {
-    this.commit(writeSuspend(this.pair, this.entry('suspend', label)));
+  suspend(label = 'Save and leave'): boolean {
+    return this.commit(writeSuspend(this.pair, this.entry('suspend', label))) && this.flushPermanent(true);
   }
 
-  private commit(next: SlotPair): void {
+  private updatePermanent(record: PermanentRecord): void {
+    if (record === this.permanent) return;
+    this.permanent = record;
+    this.permanentDirty = true;
+  }
+
+  private flushPermanent(announceFailure = false): boolean {
+    if (!this.permanentDirty) return true;
+    try {
+      this.saves.savePermanent(this.permanent);
+      this.permanentDirty = this.permanentWriteFailed = false;
+      return true;
+    } catch (error) {
+      const report = announceFailure || !this.permanentWriteFailed;
+      this.permanentWriteFailed = true;
+      const message = error instanceof PermanentSaveConflict ? error.message
+        : 'The browser could not save your learning record. Keep this tab open and try saving again.';
+      if (report) this.emit([{ kind: 'error', message }]);
+      return false;
+    }
+  }
+
+  private commit(next: SlotPair): boolean {
     try {
       this.pair = this.saves.commit(this.pair.revision, next);
+      this.loadProblem = this.loadWarning = null;
+      return true;
     } catch (err) {
-      this.emit([{ kind: 'error', message: (err as Error).message }]);
+      const error = err as Error;
+      const message = ['QuotaExceededError', 'SecurityError'].includes(error.name)
+        ? 'The browser could not save your adventure. Keep this tab open and try saving again.'
+        : error.message;
+      this.emit([{ kind: 'error', message }]);
+      return false;
     }
   }
 
@@ -119,19 +154,28 @@ export class GameController {
   loadContinue(): void {
     if (!this.pair.continue) throw new Error('No save to continue');
     this.state = structuredClone(this.pair.continue.state);
+    if (!Object.hasOwn(MAPS, this.state.mapId)) {
+      const nexus = MAPS['nexus.archive'];
+      this.state.mapId = nexus.id;
+      this.state.pos = { ...nexus.spawn };
+    }
     this.playStart = Date.now();
     this.refreshAwards();
+    const questions = restoreQuestionWays(this.permanent, this.pack, this.state.objectivesDone);
+    this.updatePermanent(restoreMicroSkillUses(questions, this.pack, this.state.objectivesDone));
+    this.flushPermanent();
   }
 
-  loadRecovery(): void {
-    this.commit(restoreRecovery(this.pair));
+  loadRecovery(): boolean {
+    if (!this.commit(restoreRecovery(this.pair))) return false;
     this.loadContinue();
+    return true;
   }
 
   /** Awards can be earned from restored state too; credit stays idempotent. */
   private refreshAwards(): void {
     const r = checkAwards(this.permanent, this.pack, this.state, new Date().toISOString());
-    if (r.newly.length) { this.permanent = r.record; this.saves.savePermanent(r.record); }
+    if (r.newly.length) this.updatePermanent(r.record);
   }
 
   /** Text for the return recap (spec 29.1 "readable return recap"). */

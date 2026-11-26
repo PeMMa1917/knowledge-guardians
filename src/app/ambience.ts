@@ -8,11 +8,11 @@ function audio(): AudioContext | null {
   try { ac ??= new (window.AudioContext || (window as any).webkitAudioContext)(); return ac.state === 'running' ? ac : null; } catch { return null; }
 }
 
-function tone(a: AudioContext, freq: number, at: number, dur: number, vol: number, type: OscillatorType = 'sine'): void {
+function tone(a: AudioContext, freq: number, at: number, dur: number, vol: number, type: OscillatorType = 'sine', destination: AudioNode = a.destination): void {
   const o = a.createOscillator(); const g = a.createGain();
   o.type = type; o.frequency.setValueAtTime(freq, at);
   g.gain.setValueAtTime(0, at); g.gain.linearRampToValueAtTime(vol, at + 0.004); g.gain.exponentialRampToValueAtTime(0.0005, at + dur);
-  o.connect(g); g.connect(a.destination); o.start(at); o.stop(at + dur + 0.02);
+  o.connect(g); g.connect(destination); o.start(at); o.stop(at + dur + 0.02);
 }
 
 /** One hammer strike on an anvil: bright metal partials that ring briefly. */
@@ -70,8 +70,8 @@ export function rain(on: boolean, volume: number): void {
   rainNode = { src, gain };
 }
 
-/** Play a list of notes (the music box). `voice`: 'box' (bell-like), 'marimba' or 'flute'. Returns a stop function. */
-export function playNotes(notes: { f: number; at: number; beats: number }[], beat: number, voice: 'box' | 'marimba' | 'flute', volume: number): () => void {
+/** Play a short score. Returns a stop function. */
+export function playNotes(notes: { f: number; at: number; beats: number }[], beat: number, voice: 'box' | 'marimba' | 'flute' | 'pluck', volume: number): () => void {
   const a = audio(); if (!a || volume <= 0.01) return () => {};
   const out = a.createGain(); out.gain.value = 1; out.connect(a.destination);
   const t0 = a.currentTime + 0.05, v = Math.min(1, volume) * 0.05;
@@ -85,11 +85,12 @@ export function playNotes(notes: { f: number; at: number; beats: number }[], bea
       g.gain.setValueAtTime(0, at); g.gain.linearRampToValueAtTime(v * 0.9, at + 0.06); g.gain.setValueAtTime(v * 0.8, at + len * 0.8); g.gain.linearRampToValueAtTime(0, at + len);
       o.start(at); o.stop(at + len + 0.05);
     } else {
-      o.type = voice === 'marimba' ? 'triangle' : 'sine'; o.frequency.setValueAtTime(n.f, at);
-      const ring = voice === 'marimba' ? 0.35 : Math.max(0.8, len * 1.6);
+      o.type = voice === 'box' ? 'sine' : 'triangle'; o.frequency.setValueAtTime(n.f, at);
+      const ring = voice === 'box' ? Math.max(0.8, len * 1.6) : voice === 'pluck' ? Math.max(0.18, len) : 0.35;
       g.gain.setValueAtTime(0, at); g.gain.linearRampToValueAtTime(v, at + 0.005); g.gain.exponentialRampToValueAtTime(0.0005, at + ring);
       o.start(at); o.stop(at + ring + 0.05);
-      if (voice === 'box') tone(a, n.f * 4.02, at, 0.25, v * 0.15);
+      if (voice === 'box') tone(a, n.f * 4.02, at, 0.25, v * 0.15, 'sine', out);
+      if (voice === 'pluck') tone(a, n.f * 2, at, 0.12, v * 0.18, 'triangle', out);
     }
   }
   return () => { try { out.gain.setValueAtTime(0, a.currentTime); out.disconnect(); } catch { /* already stopped */ } };

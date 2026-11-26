@@ -1,0 +1,563 @@
+[
+  {
+    "id": "north-turn",
+    "key": "bodleian:pococke-375-3b-4a",
+    "map": "nile.route",
+    "world": "WORLD-03",
+    "at": [
+      23,
+      10
+    ],
+    "title": "The map under the turning bar",
+    "method": "Turn the Map Room’s old counter sketch against the same landmarks.",
+    "request": "Marek has one rolling frame and two crews. One stands at the canal gate and one at the map-room door. Their left and right start in different places.",
+    "views": [
+      {
+        "label": "Start from the canal gate",
+        "read": "The gate starts at the bottom of the board. From it the landing is left of the store. The same bridge joins both banks."
+      },
+      {
+        "label": "Turn the board toward the map-room door",
+        "read": "The landing is now right of the store from the opposite start. It is still the same landing. Al-Idrisi’s map puts south above north, with its own purpose and convention."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Put both starting points on the handover board",
+        "after": "Marek keeps the same bridge line and pins a named start to either end. The arriving crew can turn the sheet before walking."
+      },
+      {
+        "label": "Keep the bridge mark large and leave the frame free to turn",
+        "after": "The crew finds the familiar bridge on a quick pass. The keeper can rotate the work board within reach when someone comes from the other side."
+      }
+    ]
+  },
+  {
+    "id": "memory-board",
+    "key": "brooklyn:76.20.4",
+    "map": "preserved.workroom",
+    "world": "WORLD-04",
+    "at": [
+      17,
+      12
+    ],
+    "title": "The rehearsal board beside the record sleeves",
+    "method": "Separate what a guide’s board shows from what its keeper can authorise.",
+    "request": "The workroom’s new guide will use its own plain pegs to remember an invented handover. A visitor is asking for a transcription of the historical Luba lukasa.",
+    "views": [
+      {
+        "label": "Follow the workroom guide’s pegs",
+        "read": "On this local practice board, the guide can tell who waited at the bench. Moving the pegs alone does not identify the people without the person’s account."
+      },
+      {
+        "label": "Open the named Brooklyn record",
+        "read": "The accession gives a public account of the Luba object and the learning of Mbudye members. The display has no key for decoding its markings or authority to retell the knowledge they prompt."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Lead with the guide and leave the catalogue within reach",
+        "after": "The workroom offers the live local example with the Brooklyn record on a separately named leaf. The guide answers for the example they actually made."
+      },
+      {
+        "label": "Leave the public record first and put the exercise on the side bench",
+        "after": "The visitor can begin at the Brooklyn accession. The practice board stays visibly separate beside the workroom guide’s table."
+      }
+    ]
+  },
+  {
+    "id": "deep-window",
+    "key": "us-navy:project-nekton-trieste-1960",
+    "map": "observatory.harbour",
+    "world": "WORLD-05",
+    "at": [
+      8,
+      12
+    ],
+    "title": "The harbour watch with a narrow window",
+    "method": "Test how the width of a lookout window changes a claim about what crossed.",
+    "request": "Ruan has found a second watch slip. Its observer used the narrow opening. One boat track passed the outer frame.",
+    "views": [
+      {
+        "label": "Shut the outer shutter",
+        "read": "One floating marker crosses the visible slot. The sheltered watcher has no view of the outer rail."
+      },
+      {
+        "label": "Open the side frame and repeat the trace",
+        "read": "A second marker crosses beyond the first slot. Trieste’s field reports also have a viewing position and conditions. The release describes a historic dive and should keep the observer’s field of view visible."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Send the sheltered report with its visible sector",
+        "after": "Ruan gives the next watch a usable inner count and draws the reach of the shutter beside it."
+      },
+      {
+        "label": "Pin the wider check directly beside the old slip",
+        "after": "Both watch positions stay visible. The seam helps visitors tell which part was outside the original observer’s view."
+      }
+    ]
+  },
+  {
+    "id": "dhuwa-receipt",
+    "key": "aph:founding-docs-item-104-i",
+    "map": "preserved.inquiry",
+    "world": "WORLD-04",
+    "at": [
+      5,
+      10
+    ],
+    "title": "The two-sided receipt tray",
+    "method": "Give the Dhuwa petition a receipt line that leaves space for its later outcome.",
+    "request": "A Cold Store docket says the claim was settled at receipt. The review keeper can separate the moment a statement reached a house from what that house recognised.",
+    "views": [
+      {
+        "label": "Lift the received-date leaf",
+        "read": "Jock Nelson tabled the Dhuwa petition on 14 August 1963. That fixes a parliamentary action and a date."
+      },
+      {
+        "label": "Lift the separate decision leaf",
+        "read": "The petition carried Yolŋu law and asserted objections to mining. A receipt gives no proof the decision-makers recognised ownership. The public note names the Yolŋu account and leaves the designs with their custodians."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Clip the attributed date beside the pending outcome",
+        "after": "The keeper shows where the dated presentation can be checked. The outcome has a separate place with its own sources."
+      },
+      {
+        "label": "Give the review desk both leaves in date order",
+        "after": "A second keeper can compare the two questions without reading the first date as a later acknowledgement."
+      }
+    ]
+  },
+  {
+    "id": "yirritja-leaves",
+    "key": "aph:founding-docs-item-104-ii",
+    "map": "preserved.inquiry",
+    "world": "WORLD-04",
+    "at": [
+      6,
+      10
+    ],
+    "title": "The protected signature sleeve",
+    "method": "Trace where a public display can preserve access while its fragile evidence is housed elsewhere.",
+    "request": "A visitor came for the sheet on display. The keeper has an index for the original signatures and the leaf visitors can see.",
+    "views": [
+      {
+        "label": "Check the exhibition leaf’s identifier",
+        "read": "This is the Yirritja petition tabled by Arthur Calwell on 28 August 1963. Keep that date and the Yolŋu makers apart from the earlier Dhuwa presentation."
+      },
+      {
+        "label": "Open the care record for the signatures",
+        "read": "The recorded care decision substituted copies for fading typed papers at the border. The archived comparison identifies what was displayed and separately where the earlier signed paper can be read."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Lead with the public leaf and attach its exact index",
+        "after": "People can find the public description and take its precise identifier to the review desk for the source."
+      },
+      {
+        "label": "Hang a paired care note near the keeper’s index",
+        "after": "The keeper leaves the original and the displayed paper on named lines so the next reader can follow each one."
+      }
+    ]
+  },
+  {
+    "id": "horizon-copy",
+    "key": "loc:2021667561",
+    "map": "nile.hall",
+    "world": "WORLD-03",
+    "at": [
+      22,
+      10
+    ],
+    "title": "The horizon slip beside Imani’s calendar",
+    "method": "Compare a copied observation guide and what a new observer can repeat.",
+    "request": "Imani needs to record two lifts of the same practice star at a low wall. The borrowed guide gives a season and the new observer needs a recorded position.",
+    "views": [
+      {
+        "label": "Fit the workshop’s low horizon strip",
+        "read": "The route’s first mark meets the wall edge. A date and a position belong to this local practice observation."
+      },
+      {
+        "label": "Raise the strip to the clerk’s second doorway",
+        "read": "The visible crossing now meets another mark. The 1733 Timbuktu manuscript supports a learned tradition of observing stars and seasons. The instruction travels, and a new place supplies its own conditions."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Put the date and observation place first",
+        "after": "Imani keeps a local detail the next observer can repeat and leaves the manuscript’s record close to the observer’s note."
+      },
+      {
+        "label": "Give the manuscript and the next observation separate leaves",
+        "after": "The next keeper can follow the teacher’s record and repeat the local check without merging their dates."
+      }
+    ]
+  },
+  {
+    "id": "red-leaf",
+    "key": "loc:52002339",
+    "map": "copies.press",
+    "world": "WORLD-08",
+    "at": [
+      20,
+      12
+    ],
+    "title": "The red proofs that go to two readers",
+    "method": "Give the press a practical way to keep the exact leaf separate from an entire printing.",
+    "request": "Lark has two working strips with red headings. The signed catalogue says which heading on the Library’s particular vellum copy was printed and where other headings came by hand.",
+    "views": [
+      {
+        "label": "Fit the leaf [129b] reference under the proof",
+        "read": "The source strip names the Library’s exact copy and particular printed heading. With the identifier attached, a reader can follow the match."
+      },
+      {
+        "label": "Compare a hand-finished heading in the other slot",
+        "read": "The paper strip looks equally red here. The catalogue describes both processes in this copy. Surface colour alone does not settle how an individual heading was added."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Pass the matched heading with its leaf number",
+        "after": "Lark gives the press queue a small usable example. The copy number and leaf stay together."
+      },
+      {
+        "label": "Leave the two proofs under separate process slips",
+        "after": "Lark opens the fuller tray for the next printer. The colour stays visible on both and each process has its own source line."
+      }
+    ]
+  },
+  {
+    "id": "earliest-line",
+    "key": "met:67.43.16",
+    "map": "nile.workyard",
+    "world": "WORLD-03",
+    "at": [
+      21,
+      11
+    ],
+    "title": "The mark and the reader’s line",
+    "method": "Use the local practice board to distinguish a visible mark from its keeper’s interpretation.",
+    "request": "Leila’s sketch has a long groove and a line of marks. Visitors need to know which part they can trace and which part a trained reader would interpret.",
+    "views": [
+      {
+        "label": "Trace only the visible marks on the local sketch",
+        "read": "The shape is reproducible from the same light. The dated Shang object’s catalogue describes an inscribed animal bone. The light exercise here uses its own practice sheet."
+      },
+      {
+        "label": "Turn over the keeper’s line of supplied context",
+        "read": "A record of divination can tell readers about a practice and how it left a trace. A present visitor needs a distinct source before supplying a particular old reading."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Leave a traceable outline with its practice date",
+        "after": "Leila moves the light sketch into a reader’s reach. The keeper’s line about the accession remains on its own slip."
+      },
+      {
+        "label": "Set the catalogue description beside the lighting notes",
+        "after": "The workroom keeps the object’s historical account within reach and labels the visible exercise as its own comparison."
+      }
+    ]
+  },
+  {
+    "id": "two-print-hands",
+    "key": "bnf:coreen-109",
+    "map": "copies.archive",
+    "world": "WORLD-08",
+    "at": [
+      10,
+      13
+    ],
+    "title": "The credits that travel with a printed page",
+    "method": "Find where a claim about a book’s printing should travel with a reader’s credit.",
+    "request": "Mina’s practice copy has space for two role slips. The book that inspired it names people who did different work to get it to its readers.",
+    "views": [
+      {
+        "label": "Open the compiler’s line",
+        "read": "Baegun’s compilation gives its text a history. The Bibliothèque nationale de France identifies its surviving July 1377 volume as a particular copy."
+      },
+      {
+        "label": "Lift the printing line",
+        "read": "Seokchan and Daldam printed the volume at Heungdeoksa in Cheongju. The printing roles explain why an author line on its own would hide part of the work."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Fit the compiler and printing lines on a single rail",
+        "after": "Mina’s next visitor keeps both roles in view on one pass. The accession stays below the two entries."
+      },
+      {
+        "label": "Make a printer’s slip and include the shared record number",
+        "after": "The workshop takes the roles it needs and can follow the same exact copy number to the compiler’s line."
+      }
+    ]
+  },
+  {
+    "id": "portable-latitude",
+    "key": "met:91.1.535a-h",
+    "map": "nile.royal",
+    "world": "WORLD-03",
+    "at": [
+      22,
+      9
+    ],
+    "title": "Two settings for the open instrument tray",
+    "method": "Pair a calibrated practice dial with the place it can describe.",
+    "request": "The keeper can fit the same star marker against two plate drawings. The astronomer’s inscription and the plates leave different evidence.",
+    "views": [
+      {
+        "label": "Fit the first workshop plate",
+        "read": "The first guide crosses nearer to the centre from this practice position. The wearer can keep its reading with the scale that made it."
+      },
+      {
+        "label": "Switch to the second plate drawing",
+        "read": "The same sky mark crosses further out against the changed plate. The Met’s exact Yemeni instrument bears ‘Umar ibn Yusuf’s name and its 690 AH date."
+      }
+    ],
+    "placements": [
+      {
+        "label": "File the chosen plate and its place together",
+        "after": "The keeper can repeat one reading from the correct diagram. The signed instrument record stays with its own date."
+      },
+      {
+        "label": "Pair the two readings under the signature reference",
+        "after": "The keeper sets the plates side by side with their settings named. The signed date stays separate from both readings."
+      }
+    ]
+  },
+  {
+    "id": "horse-sequence",
+    "key": "loc:2007678037",
+    "map": "stage.rehearsal",
+    "world": "WORLD-10",
+    "at": [
+      3,
+      12
+    ],
+    "title": "The movement behind a single frame",
+    "method": "Compare a still movement mark with its place in a staged sequence.",
+    "request": "The theatre guide has one pause to print. A carrier saw the middle of a move, and an audience reader wants to know what makes it part of a sequence.",
+    "views": [
+      {
+        "label": "Slide out the one frozen stage stance",
+        "read": "At the marked instant a foot is clear of the floor. The guide can record that instant without filling in what happened before it."
+      },
+      {
+        "label": "Put the marked instant between its lead and follow frames",
+        "read": "The practice cut supplies an order and leaves its intervals unnamed. The Library of Congress item anchors the particular Sallie Gardner sequence to the Palo Alto record."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Leave the instant first with the frame order behind it",
+        "after": "The stage helper can find their cue quickly and slide the frame back into its sequence."
+      },
+      {
+        "label": "Put the whole sequence up along the rehearsal edge",
+        "after": "The audience guide can compare the moments before and after the cue without guessing an unpictured transition."
+      }
+    ]
+  },
+  {
+    "id": "web-source",
+    "key": "cern:6qhcbugnq4rng",
+    "map": "nexus.archive",
+    "world": "WORLD-01",
+    "at": [
+      36,
+      9
+    ],
+    "title": "The source tab behind the copied doorway note",
+    "method": "Try a reader’s path back to the source of a copied notice.",
+    "request": "Dace has two door notices. One has the current date while the other keeps the pointer a reader can follow back to the first work sheet.",
+    "views": [
+      {
+        "label": "Follow the signed original pointer",
+        "read": "The pointer leads to the keeper’s exact sheet. This copy can travel and the reader can still check the place where it began."
+      },
+      {
+        "label": "Open the hand-copied notice by itself",
+        "read": "The words are present and the pointer is missing. CERN’s preserved computer gives an exact historic site to follow. Reachable copies and source pointers do different jobs."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Put the source marker on the doorway copy",
+        "after": "Dace keeps a short notice usable at the door with its full route back still printed underneath."
+      },
+      {
+        "label": "Leave the current and source sheets in a paired holder",
+        "after": "Visitors can check the doorway instructions and source side by side, with both dates close enough to compare."
+      }
+    ]
+  },
+  {
+    "id": "telescope-rim",
+    "key": "museo-galileo:2427",
+    "map": "nile.hall",
+    "world": "WORLD-03",
+    "at": [
+      9,
+      11
+    ],
+    "title": "The star behind the door rim",
+    "method": "Compare a small bright field with what the full doorway can show.",
+    "request": "Imani has one narrow aperture and a wider practice frame. A mark clear through the aperture may be only part of the sketch.",
+    "views": [
+      {
+        "label": "Check the narrow opening",
+        "read": "The bright point lies inside the marked rim. A second point is outside the frame. Museo Galileo’s instrument 2427 lets a reader follow a particular surviving telescope."
+      },
+      {
+        "label": "Swing the larger frame over the same sheet",
+        "read": "The second point appears. Its location can be checked against the first without claiming either view showed the whole sheet."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Give the first watcher a narrow mark with an edge",
+        "after": "Imani puts the bright point and the viewing limit on one slip. The next observer can repeat that observation."
+      },
+      {
+        "label": "Set both frames in reach for a paired check",
+        "after": "The two readers keep the frame edges next to the corresponding positions. The sheet stays fixed while the frame is moved."
+      }
+    ]
+  },
+  {
+    "id": "lens-scale",
+    "key": "umu:um-1",
+    "map": "preserved.workroom",
+    "world": "WORLD-04",
+    "at": [
+      14,
+      12
+    ],
+    "title": "The lens and the wider scene",
+    "method": "Check what a detailed view adds and what it leaves outside.",
+    "request": "The conservator has two repairs on a practice sheet. A very close view brings one join into reach, while its position in the sheet needs a wider view.",
+    "views": [
+      {
+        "label": "Open the high-detail view",
+        "read": "The join has two overlapping marks. Utrecht’s record identifies the specific Leeuwenhoek microscope. This detailed workroom drawing does not report what he observed."
+      },
+      {
+        "label": "Lift the sheet for its wider edges",
+        "read": "The join is on the left quarter. At this distance the overlap is no longer visible. The local ruler helps a later visitor return to the same place."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Pin the detail with the corner reference",
+        "after": "The workroom guide can bring a conservator directly back to the join. Its location stays on the small label."
+      },
+      {
+        "label": "Clip the two views together",
+        "after": "The teaching sleeve leaves the wider context first and keeps the close detail one turn away."
+      }
+    ]
+  },
+  {
+    "id": "orbital-window",
+    "key": "nasm:a19700102000",
+    "map": "observatory.station",
+    "world": "WORLD-05",
+    "at": [
+      21,
+      11
+    ],
+    "title": "The one window in the return record",
+    "method": "Give an object’s voyage and its later display their own lines.",
+    "request": "The station’s dock sheet combines a trip and a return in the same heading. Two readers need different dates and a place to check the record.",
+    "views": [
+      {
+        "label": "Open the flight leaf",
+        "read": "The Smithsonian’s Columbia record names the Apollo 11 Command Module. Its July 1969 flight contained legs with different parts and jobs."
+      },
+      {
+        "label": "Open the receiving and custody leaf",
+        "read": "This surviving vehicle has its own return and later museum identity. A display date and an earlier mission date describe different events."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Post the flight line for the watcher",
+        "after": "The watcher gets a particular launch-era record and a pointer to the receiving leaf, where later custody can be checked."
+      },
+      {
+        "label": "Use the receiving diagram at the station table",
+        "after": "The table separates the named vehicle from the voyage stages. A reader can follow either date without treating one as the other."
+      }
+    ]
+  },
+  {
+    "id": "sea-learning-notice",
+    "key": "usnm:e432083-0",
+    "map": "sea.harbour",
+    "world": "WORLD-09",
+    "at": [
+      7,
+      11
+    ],
+    "title": "The shore frame and the live harbour log",
+    "method": "Keep a learning aid beside the conditions of a later observation.",
+    "request": "The crew wants to put a shore lesson beside a timed harbour check. The historic Marshallese object has its own preparation and repair record.",
+    "views": [
+      {
+        "label": "Open the shore lesson leaf",
+        "read": "The Smithsonian records this accession as a learning aid for preparation. Its collector’s condition note records repairs on its own line."
+      },
+      {
+        "label": "Move the mark to the live log",
+        "read": "The practice watcher makes a local observation at the named bell. That slip belongs to the watcher, date and place, separate from the accession description."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Leave a paired link beside the lesson",
+        "after": "Visitors can try the local diagram and follow the public accession to its own context. The live log remains separately signed."
+      },
+      {
+        "label": "Put the live record on the harbour rail",
+        "after": "The crew gets the next observation at its working place, with a pointer back to the shore lesson for people preparing."
+      }
+    ]
+  },
+  {
+    "id": "repair-and-memory",
+    "key": "hpmm:1105-0001",
+    "map": "preserved.inquiry",
+    "world": "WORLD-04",
+    "at": [
+      7,
+      9
+    ],
+    "title": "The bench that holds a family’s record",
+    "method": "Give an object’s public testimony and a viewer’s interpretation separate places.",
+    "request": "A visitor wants a repair note to speak for the family. The review keeper can hold the accession and the family’s documented history separately.",
+    "views": [
+      {
+        "label": "Read the family line held with the object",
+        "read": "The Hiroshima Peace Memorial Museum identifies Shinichi Tetsutani and his tricycle. The personal connection is part of this object’s history."
+      },
+      {
+        "label": "Open the later custody note",
+        "read": "The museum identifies the family’s actions and later donation. A public caption can preserve that information and leave space for a visitor’s own response."
+      }
+    ],
+    "placements": [
+      {
+        "label": "Lead with the named account and a place to sit",
+        "after": "The keeper opens a quiet reading place with the family line within reach and a clear route to its recorded provenance."
+      },
+      {
+        "label": "Set the custody leaf behind the family line",
+        "after": "Another reader can retrace where the piece went while keeping the family account visible at the front."
+      }
+    ]
+  }
+]

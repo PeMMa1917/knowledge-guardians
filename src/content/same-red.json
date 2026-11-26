@@ -1,0 +1,815 @@
+{
+ "sources": [
+  {
+   "id": "HIS-LOC-GUT-01",
+   "title": "Library of Congress, Biblia Latina, BS75 1454, LCCN 52002339",
+   "url": "https://lccn.loc.gov/52002339/mods",
+   "locator": "MODS, originInfo, physicalDescription, classification, identifier and LC copy note",
+   "supports": "The Library’s vellum copy, LCCN 52002339 and BS75 1454, came from Mainz and is catalogued as probably 1454–1455, by 1456. The copy note lists leaf [129b] among chapter headings printed in red, other headings supplied by hand in red, variants on leaf [192a] compared with the Berlin facsimile, and three volumes in sixteenth-century bindings.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-LOC-GUT-02",
+   "title": "Library of Congress, The Gutenberg Bible, exhibition overview",
+   "url": "https://www.loc.gov/exhibits/bibles/interactives/gutenberg/",
+   "locator": "Overview, paragraph on the print run",
+   "supports": "The Library of Congress estimates that approximately 180 copies were printed and first made available in about 1455. The figure is for the whole print run. The overview separately identifies the Library’s own vellum copy.",
+   "accessed": "2026-11-26"
+  }
+ ],
+ "exhibits": [
+  {
+   "id": "OBJ-LOC-GUTENBERG-52002339",
+   "name": "Biblia Latina, the Library of Congress Gutenberg Bible",
+   "art": "same-red.exhibit",
+   "historicalLabel": "documented",
+   "dateText": "Mainz, probably 1454–1455. By 1456.",
+   "dateKind": "The printing dates are the catalogue’s range and upper limit. The copy has three volumes with sixteenth-century bindings.",
+   "summary": "Library of Congress BS75 1454, LCCN 52002339. This is the Library’s vellum copy of the Latin Vulgate Bible. Its catalogue lists a red printed chapter heading on leaf [129b] and describes red headings added by hand elsewhere. The overview estimates about 180 copies across the print run.",
+   "sources": [
+    "HIS-LOC-GUT-01",
+    "HIS-LOC-GUT-02"
+   ],
+   "grantsCard": "card.loc.gutenberg.52002339",
+   "altText": "Original schematic showing three cream-bound volumes on a dark mount and a separate reference card. The drawing represents the Library of Congress catalogue description.",
+   "specimen": {
+    "key": "loc:52002339",
+    "institution": "Library of Congress",
+    "accession": "LCCN 52002339 · BS75 1454",
+    "source": "HIS-LOC-GUT-01",
+    "objective": "gutenberg.red.referred"
+   }
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.loc.gutenberg.52002339",
+   "title": "This copy’s red headings",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "text": "The Library’s note identifies leaf [129b] among printed red headings and records other red headings supplied by hand. It also records variants on leaf [192a] when compared with the published Berlin facsimile. Keep the shelf mark BS75 1454 and the leaf in view.",
+   "limits": "These headings and the comparison belong to the Library of Congress copy. The overview's approximate 180 counts a print run. The catalogue’s copy identifier is LCCN 52002339.",
+   "sources": [
+    "HIS-LOC-GUT-01",
+    "HIS-LOC-GUT-02"
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "item.gutenberg-leaf-slip",
+   "name": "The Library leaf slip",
+   "art": "same-red.catalogue",
+   "historicalLabel": "fictional-world",
+   "description": "A fictional source slip with BS75 1454 and LCCN 52002339. Give it to a reader at Lark’s Print Workshop. The library exhibit keeps its own place in the Nexus."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH1-R26",
+   "world": "WORLD-01",
+   "title": "A Bookmark in Three Volumes",
+   "knowledgeQuestion": "How do we lead another reader back to a feature of this copy?",
+   "stake": "Lark needs the library’s exact copy and a place to start checking.",
+   "available": {
+    "card": "card.loc.gutenberg.52002339"
+   },
+   "objectives": [
+    {
+     "id": "gutenberg.red.referred",
+     "title": "Prepare a source slip for the City’s printer or margin worker.",
+     "visible": {
+      "card": "card.loc.gutenberg.52002339"
+     },
+     "done": {
+      "flagSet": "gutenberg.red.bookmark"
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "certainty",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      },
+      "atl": [
+       "research",
+       "communication"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "visual-arts"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN",
+       "ART"
+      ]
+     },
+     "essential": false,
+     "skills": [
+      "SK-RSC-21",
+      "SK-WRT-13"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.gutenberg.red.referred"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH7-R08",
+   "world": "WORLD-08",
+   "title": "The Same Red",
+   "knowledgeQuestion": "What can a visible mark tell us about when it was made?",
+   "stake": "The class needs two matching notices. The outside table needs one change that applies there today.",
+   "available": {
+    "all": [
+     {
+      "objective": "copies.arrival"
+     },
+     {
+      "item": "item.gutenberg-leaf-slip"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "gutenberg.red.compared",
+     "title": "Use the source slip. Pull the two printed impressions and check the before-proof for a hand-added line.",
+     "visible": {
+      "all": [
+       {
+        "objective": "copies.arrival"
+       },
+       {
+        "item": "item.gutenberg-leaf-slip"
+       }
+      ]
+     },
+     "done": {
+      "all": [
+       {
+        "flag": "gutenberg.red.type",
+        "eq": true
+       },
+       {
+        "flag": "gutenberg.red.hand",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "objectivity",
+       "explanation"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "design-tech",
+       "visual-arts",
+       "history"
+      ],
+      "aoks": [
+       "ART",
+       "HIS",
+       "TEC"
+      ]
+     },
+     "essential": false,
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-14"
+     ]
+    },
+    {
+     "id": "gutenberg.red.used",
+     "title": "Send one proof job to the Landing and see what its next reader can check.",
+     "visible": {
+      "objective": "gutenberg.red.compared"
+     },
+     "done": {
+      "flag": "gutenberg.red.read",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "perspective",
+       "responsibility",
+       "values",
+       "justification"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics",
+       "methods-and-tools"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "atl": [
+       "social",
+       "communication",
+       "self-management"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "visual-arts",
+       "design-tech"
+      ],
+      "aoks": [
+       "LAN",
+       "ART",
+       "TEC"
+      ]
+     },
+     "essential": false,
+     "skills": [
+      "SK-WRT-13",
+      "SK-COL-05"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.gutenberg.red.used"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "hint.gutenberg.red.referred.1",
+   "objective": "gutenberg.red.referred",
+   "depth": 1,
+   "text": "The catalogue gives one case and more than one way a heading got its colour."
+  },
+  {
+   "id": "hint.gutenberg.red.referred.2",
+   "objective": "gutenberg.red.referred",
+   "depth": 2,
+   "text": "Look at the keeper’s bookmark near the three-volume case."
+  },
+  {
+   "id": "hint.gutenberg.red.referred.3",
+   "objective": "gutenberg.red.referred",
+   "depth": 3,
+   "text": "Leaf [129b] is a named example of red printing. The record also describes hand additions."
+  },
+  {
+   "id": "hint.gutenberg.red.referred.4",
+   "objective": "gutenberg.red.referred",
+   "depth": 4,
+   "text": "Open the case, then use Dace’s bookmark one aisle to the east. Take either signed source slip."
+  },
+  {
+   "id": "hint.gutenberg.red.compared.1",
+   "objective": "gutenberg.red.compared",
+   "depth": 1,
+   "text": "Lark can use the slip in the City’s Print Workshop."
+  },
+  {
+   "id": "hint.gutenberg.red.compared.2",
+   "objective": "gutenberg.red.compared",
+   "depth": 2,
+   "text": "The red form and the hand-added proof have separate benches."
+  },
+  {
+   "id": "hint.gutenberg.red.compared.3",
+   "objective": "gutenberg.red.compared",
+   "depth": 3,
+   "text": "Two unchanged type impressions can match. Look at what is on the sheet before and after the keeper’s note."
+  },
+  {
+   "id": "hint.gutenberg.red.compared.4",
+   "objective": "gutenberg.red.compared",
+   "depth": 4,
+   "text": "Use the red form at the eastern bench and the before-proof west of it. Then take the comparisons to the dispatch table."
+  },
+  {
+   "id": "hint.gutenberg.red.used.1",
+   "objective": "gutenberg.red.used",
+   "depth": 1,
+   "text": "Each proof has a reader on the Landing."
+  },
+  {
+   "id": "hint.gutenberg.red.used.2",
+   "objective": "gutenberg.red.used",
+   "depth": 2,
+   "text": "The paired type proof goes to the class rail. The one hand-added copy goes to the outside table."
+  },
+  {
+   "id": "hint.gutenberg.red.used.3",
+   "objective": "gutenberg.red.used",
+   "depth": 3,
+   "text": "The class copies share a schedule. The late addition has its own keeper and place."
+  },
+  {
+   "id": "hint.gutenberg.red.used.4",
+   "objective": "gutenberg.red.used",
+   "depth": 4,
+   "text": "Open the selected mounting rail after the dispatch. Use the same rail again to help a reader respond."
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "gutenberg.red.catalogue",
+   "speaker": "curator-dace",
+   "historicalLabel": "fictional-world",
+   "text": "This red-heading bookmark came apart from its label. The library record names leaf [129b] among the headings printed in red. It also describes hand-added red headings in the same copy. Lark has asked for a source slip to keep beside the press. The two jobs in the workshop are waiting for different uses of red.",
+   "options": [
+    {
+     "text": "Clip leaf [129b] and the Library’s call number onto Lark’s printer’s slip.",
+     "next": "gutenberg.red.catalogue.leaf",
+     "if": {
+      "all": [
+       {
+        "card": "card.loc.gutenberg.52002339"
+       },
+       {
+        "not": {
+         "flagSet": "gutenberg.red.bookmark"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gutenberg.red.bookmark",
+       "value": "leaf"
+      },
+      {
+       "giveItem": "item.gutenberg-leaf-slip"
+      }
+     ]
+    },
+    {
+     "text": "Put both ways of making a red heading on the margin worker’s slip. Keep the Library’s call number with them.",
+     "next": "gutenberg.red.catalogue.methods",
+     "if": {
+      "all": [
+       {
+        "card": "card.loc.gutenberg.52002339"
+       },
+       {
+        "not": {
+         "flagSet": "gutenberg.red.bookmark"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gutenberg.red.bookmark",
+       "value": "methods"
+      },
+      {
+       "giveItem": "item.gutenberg-leaf-slip"
+      }
+     ]
+    },
+    {
+     "text": "Leave the two notes together in the case."
+    }
+   ]
+  },
+  {
+   "id": "gutenberg.red.catalogue.leaf",
+   "speaker": "curator-dace",
+   "historicalLabel": "fictional-world",
+   "text": "Dace pins a narrow source slip under the bookmark: BS75 1454, LCCN 52002339, leaf [129b]. The example gives Lark a particular heading to check. Dace puts a traveling copy of the reference in your pocket."
+  },
+  {
+   "id": "gutenberg.red.catalogue.methods",
+   "speaker": "curator-dace",
+   "historicalLabel": "fictional-world",
+   "text": "Dace puts PRINTED and BY HAND on separate folds of the same library reference. BS75 1454 stays on both folds. The margin worker can ask which kind of mark has been described."
+  },
+  {
+   "id": "gutenberg.red.type",
+   "speaker": "copies-presskeeper",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "Lark is setting a red CLASS COPIES heading on a fictional workshop form. Its black line gives the same class hours on both sheets. He has left the red letters in the frame for the second pull. The library slip sits beside this trial.",
+   "options": [
+    {
+     "text": "Set your leaf [129b] slip beside the red form. Pull two impressions without changing the setting.",
+     "next": "gutenberg.red.type.checked.leaf",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "copies.arrival"
+         },
+         {
+          "item": "item.gutenberg-leaf-slip"
+         }
+        ]
+       },
+       {
+        "flag": "gutenberg.red.bookmark",
+        "eq": "leaf"
+       },
+       {
+        "not": {
+         "flagSet": "gutenberg.red.type"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gutenberg.red.type",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Open the PRINTED fold at the red form. Pull two impressions without changing the setting.",
+     "next": "gutenberg.red.type.checked.methods",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "copies.arrival"
+         },
+         {
+          "item": "item.gutenberg-leaf-slip"
+         }
+        ]
+       },
+       {
+        "flag": "gutenberg.red.bookmark",
+        "eq": "methods"
+       },
+       {
+        "not": {
+         "flagSet": "gutenberg.red.type"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gutenberg.red.type",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the red setting in its frame."
+    }
+   ]
+  },
+  {
+   "id": "gutenberg.red.type.checked.leaf",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The red CLASS COPIES heading repeats on both fictional sheets. Lark keeps this workbench comparison beside the particular heading the library says was printed on leaf [129b]. The leaf is still in the Nexus case’s own record."
+  },
+  {
+   "id": "gutenberg.red.type.checked.methods",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "Both fictional impressions match the setting. The PRINTED fold has a job of its own here. A second fold waits for the margin worker’s change on another proof."
+  },
+  {
+   "id": "gutenberg.red.hand",
+   "speaker": "copies-presskeeper",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "Two fictional workshop proofs have the same black line. The untouched proof has no red heading. A keeper has sent a different closing time for a single outer writing table. Lark clips the before-proof next to the sheet with space for a note.",
+   "options": [
+    {
+     "text": "Keep the untouched proof in view. Add the keeper’s red heading to the outer table’s sheet.",
+     "next": "gutenberg.red.hand.checked",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "copies.arrival"
+         },
+         {
+          "item": "item.gutenberg-leaf-slip"
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "gutenberg.red.hand"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gutenberg.red.hand",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Wait with both proofs still as they are."
+    }
+   ]
+  },
+  {
+   "id": "gutenberg.red.hand.checked",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The red line is on one sheet only. The other proof keeps the earlier state, and Lark clips the keeper’s late note to the new sheet. The red word looks as firm as the printed one at the other bench. The order of the marks tells you which one was added here."
+  },
+  {
+   "id": "gutenberg.red.plan",
+   "speaker": "copies-presskeeper",
+   "historicalLabel": "fictional-world",
+   "text": "The proof bundles show what made each heading. We have room to send one job with the next runner. Two class readers need the same heading at the prepared rail. The outer table needs the keeper’s late hour on its own sheet. The other bundle can wait with its source.",
+   "options": [
+    {
+     "text": "Send both repeated impressions to the class rail. Keep the later outer-table request on the hook.",
+     "next": "gutenberg.red.sent.type",
+     "if": {
+      "all": [
+       {
+        "objective": "gutenberg.red.compared"
+       },
+       {
+        "not": {
+         "flagSet": "gutenberg.red.route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gutenberg.red.route",
+       "value": "type"
+      }
+     ]
+    },
+    {
+     "text": "Send the hand-added hour with the keeper’s note to the outer table. Keep the class pile on the tray.",
+     "next": "gutenberg.red.sent.hand",
+     "if": {
+      "all": [
+       {
+        "objective": "gutenberg.red.compared"
+       },
+       {
+        "not": {
+         "flagSet": "gutenberg.red.route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gutenberg.red.route",
+       "value": "hand"
+      }
+     ]
+    },
+    {
+     "text": "Keep both jobs in their trays for now."
+    }
+   ]
+  },
+  {
+   "id": "gutenberg.red.sent.type",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The runner clips two matching red proofs over the same black hours. The unfilled outer-table request stays with Lark. The runner’s packet is a pair of fictional workshop proofs."
+  },
+  {
+   "id": "gutenberg.red.sent.hand",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The runner takes the outer-table proof and its earlier state. Keep the keeper’s late note on the dated side. Lark leaves the two class impressions on the press tray."
+  },
+  {
+   "id": "gutenberg.red.landing.mount.type",
+   "speaker": "copies-lendingkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "Two readers have come for the same class. The red headings line up and the black hours agree. There is a long clip at the class rail for both impressions.",
+   "options": [
+    {
+     "text": "Clip the two matching class notices together. Keep the outside table’s request behind them.",
+     "next": "gutenberg.red.landing.mounted.type",
+     "if": {
+      "all": [
+       {
+        "flag": "gutenberg.red.route",
+        "eq": "type"
+       },
+       {
+        "not": {
+         "flagSet": "gutenberg.red.mounted"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gutenberg.red.mounted",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave space for both class readers."
+    }
+   ]
+  },
+  {
+   "id": "gutenberg.red.landing.mounted.type",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The two copies face readers arriving from either direction. The outside table keeps its own request with no copied hour on it."
+  },
+  {
+   "id": "gutenberg.red.landing.read.type",
+   "speaker": "copies-lendingkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "The first reader follows the heading to collect a class sheet. A second sees the same hours from the other side. She asks whether those hours also apply at the outside table.",
+   "options": [
+    {
+     "text": "Show her the black class line. Point to the outside table’s separate request.",
+     "next": "gutenberg.red.landing.kept.type",
+     "if": {
+      "all": [
+       {
+        "flag": "gutenberg.red.route",
+        "eq": "type"
+       },
+       {
+        "flag": "gutenberg.red.mounted",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "gutenberg.red.read"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gutenberg.red.read",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Give her a moment to compare the impressions."
+    }
+   ]
+  },
+  {
+   "id": "gutenberg.red.landing.kept.type",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "text": "Both class readers take the same schedule. The outside table has a space for its own dated hour. The mounted class sheets are fictional proofs."
+  },
+  {
+   "id": "gutenberg.red.landing.mount.hand",
+   "speaker": "copies-lendingkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "The keeper’s note gives one later hour at the outer table today. You have the untouched proof and the sheet with the new red heading. The paper clip here can hold both the new line and who asked for it.",
+   "options": [
+    {
+     "text": "Hang the sheet with the hand-added hour and its source. Keep the class copies on their tray.",
+     "next": "gutenberg.red.landing.mounted.hand",
+     "if": {
+      "all": [
+       {
+        "flag": "gutenberg.red.route",
+        "eq": "hand"
+       },
+       {
+        "not": {
+         "flagSet": "gutenberg.red.mounted"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gutenberg.red.mounted",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Wait until the outer reader can see both sheets."
+    }
+   ]
+  },
+  {
+   "id": "gutenberg.red.landing.mounted.hand",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The new hour faces the outside reader. The before-proof sits near the keeper’s note. The class hours remain as printed on the separate pile."
+  },
+  {
+   "id": "gutenberg.red.landing.read.hand",
+   "speaker": "copies-lendingkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "A carrier reaches the outer table at the later hour and sets a sheet on it. Her companion assumes the red line came on every impression.",
+   "options": [
+    {
+     "text": "Lay the untouched proof alongside this one. Point to the keeper’s note for the later hour.",
+     "next": "gutenberg.red.landing.kept.hand",
+     "if": {
+      "all": [
+       {
+        "flag": "gutenberg.red.route",
+        "eq": "hand"
+       },
+       {
+        "flag": "gutenberg.red.mounted",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "gutenberg.red.read"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "gutenberg.red.read",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let the carrier read the local line again."
+    }
+   ]
+  },
+  {
+   "id": "gutenberg.red.landing.kept.hand",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "text": "The carrier collects her sheet at the outer table. Her companion follows the printed class hours instead. The late note stays clipped with its fictional before-proof."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.gutenberg.red.referred",
+   "kind": "quest",
+   "title": "A Bookmark in Three Volumes",
+   "text": "I put the Library’s own call number with the heading that Lark can check. The year in the catalogue gives the time of printing. The displayed bindings have their own date."
+  },
+  {
+   "id": "j.gutenberg.red.used",
+   "kind": "quest",
+   "title": "The Same Red",
+   "text": "I kept the printed impression and the later hand mark with their own checks. A reader used one of our fictional proof bundles and could still see which request belonged elsewhere."
+  }
+ ]
+}

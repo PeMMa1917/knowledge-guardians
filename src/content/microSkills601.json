@@ -1,0 +1,1703 @@
+[
+  {
+    "number": 604,
+    "name": "Check what a numerical summary leaves out",
+    "uses": [
+      {
+        "objective": "civic.compare",
+        "action": "Use the same allocation rule on the desk and walking registers. Check which workers become visible after merging requests and setting aside duplicate numbers.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "analytical",
+          "social"
+        ],
+        "game": 184,
+        "story": 72
+      },
+      {
+        "objective": "forest.moss.place",
+        "action": "Line up the four moss frames before adding the bridge crew’s tally. Use the count of occupied squares and the record of boot contacts as different reasons for placement.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "nature",
+          "analytical",
+          "spatial"
+        ],
+        "game": 146,
+        "story": 53
+      }
+    ]
+  },
+  {
+    "number": 611,
+    "name": "Distinguish a rerun from reconstructing a past event",
+    "uses": [
+      {
+        "objective": "nile.routes",
+        "action": "Run the same cart load on two practice roads to check a delivery. Keep the trial separate from what the ancient Mine Map can establish about an earlier journey.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "spatial",
+          "analytical"
+        ],
+        "game": 195,
+        "story": 69
+      },
+      {
+        "objective": "metal.docket",
+        "action": "After making two new weighings, find the dated cart docket to check the one journey the panels actually shared. The past delivery has to be traced through its surviving record.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 69
+      }
+    ]
+  },
+  {
+    "number": 614,
+    "name": "Use a picture to make a partial view intelligible",
+    "uses": [
+      {
+        "objective": "nile.way.compare",
+        "action": "Turn the practice map so the same room marks align from the aisle and shelf. Use fixed places to explain why the sketch alone misroutes a carrier.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "physical"
+        ],
+        "game": 189,
+        "story": 95
+      },
+      {
+        "objective": "film.stage.takes",
+        "action": "Record the same three rehearsal beats from the front and wing. Compare the cart’s position with the raised palm that falls outside the wing frame.",
+        "styles": [
+          "performer",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "analytical"
+        ],
+        "game": 139,
+        "story": 106
+      }
+    ]
+  },
+  {
+    "number": 616,
+    "name": "Choose between asking new witnesses and checking surviving traces",
+    "uses": [
+      {
+        "objective": "survey.o1.report",
+        "action": "Ask a plain question at every third house on both banks. Keep the denominator and the stated limits when reporting who backs the toll.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "linguistic",
+          "analytical",
+          "social"
+        ],
+        "game": 69,
+        "story": 89
+      },
+      {
+        "objective": "nile.closing.post",
+        "action": "Turn over the stock and lending slips to see which work each desk called closed. Keep renewed stoppage and inferred motives apart in the posted note.",
+        "styles": [
+          "collector",
+          "challenger"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 173,
+        "story": 54
+      }
+    ]
+  },
+  {
+    "number": 619,
+    "name": "Distinguish a documented trace from a constructed scene",
+    "uses": [
+      {
+        "objective": "film.stage.takes",
+        "action": "Keep the named Apollo frame and the separately attributed artist’s concept in the catalogue, then make a clearly identified practice sequence from two camera positions.",
+        "styles": [
+          "performer",
+          "collector"
+        ],
+        "modes": [
+          "visual",
+          "reading"
+        ],
+        "game": 139,
+        "story": 106
+      },
+      {
+        "objective": "xin.o.layers",
+        "action": "Put supported workroom sheets beside a reconstructed context and keep the uncertain additions visible before choosing what may go to the display.",
+        "styles": [
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 144,
+        "story": 54
+      },
+      {
+        "objective": "bearing.colliers-point.received",
+        "action": "Read Meryon’s etched shore inside its plate border. Keep the dated impression and its chosen framing with the separate same-bell sight strips you carry to a receiver.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "analytical"
+        ],
+        "game": 262,
+        "story": 71
+      }
+    ]
+  },
+  {
+    "number": 620,
+    "name": "Read a work of art as a representation and a dated record",
+    "uses": [
+      {
+        "objective": "loading.vaiala-canoe.received",
+        "action": "Follow the three carriers in La Farge’s 1891 watercolour. Keep those visible positions with the dated image. Use the separate cart trial to investigate a load the painting did not weigh.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "analytical",
+          "physical"
+        ],
+        "game": 46,
+        "story": 71
+      },
+      {
+        "objective": "bearing.tautira-mouth.received",
+        "action": "Use the painted banks and small figure to orient yourself in the Tautira work. Keep the scene with its catalogue date and demonstrate a measured crossing on the separate practice board.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "analytical"
+        ],
+        "game": 262,
+        "story": 71
+      }
+    ]
+  },
+  {
+    "number": 630,
+    "name": "Check what happens to area summaries when a boundary moves",
+    "uses": [
+      {
+        "objective": "boundary.civic.compare",
+        "action": "Move the dividing line from the old ditch to the footbridge while the nine location pins and wait times stay fixed. Compare each bank’s headcount and average wait as the rank reverses.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "visual",
+          "analytical"
+        ],
+        "game": 13,
+        "story": 11
+      },
+      {
+        "objective": "boundary.water.deliver",
+        "action": "Bring the signed choice to the council yard and take the four first-run slips to the chosen bank. Check which fourth stop gets served and leave the other five at their original coordinates and times.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "spatial",
+          "physical",
+          "social"
+        ],
+        "game": 263,
+        "story": 71
+      },
+      {
+        "objective": "align.matuku.received",
+        "action": "Keep the island and harbour charts on their own scales. Turn and pin the practice sheet, then compare what both scales reproduce at the same gate, post and far turn before fitting a guide.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "visual",
+          "analytical"
+        ],
+        "game": 13,
+        "story": 71
+      }
+    ]
+  },
+  {
+    "number": 633,
+    "name": "Use accounts of lived religious practice in a concrete welcome",
+    "uses": [
+      {
+        "objective": "welcome.market.o.sources",
+        "action": "Open the separate public accounts of langar at the Fremont gurdwara and hospitality at Saint Meinrad. Clip each account beside its own community, place and reason for welcome.",
+        "styles": [
+          "collector",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "linguistic",
+          "social"
+        ],
+        "game": 175,
+        "story": 52
+      },
+      {
+        "objective": "welcome.copies.o.send",
+        "action": "Use the menders’ local welcome at the shared bench, check the visitor’s response and carry the verified scope slip to the Market.",
+        "styles": [
+          "helper",
+          "companion"
+        ],
+        "modes": [
+          "physical",
+          "spatial",
+          "social"
+        ],
+        "game": 263,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 635,
+    "name": "Test wording and framing together",
+    "uses": [
+      {
+        "objective": "film.stage.received",
+        "action": "Move the same cart shot to the front of the edit, keeping the original beat marks. Screen both orders and find the visitor whose next action changed.",
+        "styles": [
+          "performer",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "social"
+        ],
+        "game": 139,
+        "story": 106
+      },
+      {
+        "objective": "copies.margin.compare",
+        "action": "Compare two proof widths with the signed ramp order. Check which words survive the narrow edge and which restriction a runner would miss.",
+        "styles": [
+          "maker",
+          "challenger"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 179,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 636,
+    "name": "Track how a form of address changes who is included",
+    "uses": [
+      {
+        "objective": "ferry.o1.send",
+        "action": "Fit the ferry message to the crier’s slate and use Sefa’s back-reading to check whom the inclusive address brings into the instruction.",
+        "styles": [
+          "performer",
+          "helper"
+        ],
+        "modes": [
+          "linguistic",
+          "reading",
+          "social"
+        ],
+        "game": 175,
+        "story": 52
+      },
+      {
+        "objective": "welcome.copies.o.read",
+        "action": "Check the visitor’s note and the menders’ use of velin before putting a welcome in a place its intended audience can use.",
+        "styles": [
+          "companion",
+          "helper"
+        ],
+        "modes": [
+          "linguistic",
+          "social",
+          "reading"
+        ],
+        "game": 175,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 637,
+    "name": "See how a gallery layout steers interpretation",
+    "uses": [
+      {
+        "objective": "gallery.o.reply",
+        "action": "Mount the royal and Chinchorro records in their own places. Try a route through the exhibit, hear what the visitor took from it and change how people encounter the labels or the room.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "social"
+        ],
+        "game": 144,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 638,
+    "name": "Check what a tuning or editing convention makes an audience notice",
+    "uses": [
+      {
+        "objective": "bells.o1.check",
+        "action": "Compare the first bell with a full climb through the tuning glass. Check the repeating pitch pattern against the impression of an endless rise.",
+        "styles": [
+          "performer",
+          "challenger"
+        ],
+        "modes": [
+          "auditory",
+          "visual",
+          "analytical"
+        ],
+        "game": 190,
+        "story": 59
+      },
+      {
+        "objective": "film.stage.received",
+        "action": "Screen cue-first and motion-first edits of the same rehearsal. Follow the visitor to the low rail or foyer post to see how editing changed their route.",
+        "styles": [
+          "performer",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "social",
+          "analytical"
+        ],
+        "game": 139,
+        "story": 106
+      }
+    ]
+  },
+  {
+    "number": 644,
+    "name": "Check the evidence behind a machine’s display",
+    "uses": [
+      {
+        "objective": "civic.compare",
+        "action": "Read the desk forms and walking slips before relying on the machine’s whole-district heading. Run the same allocation rule with each input record and check how the omitted requests change its result.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "analytical",
+          "reading",
+          "social"
+        ],
+        "game": 184,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 651,
+    "name": "Test whether a training selection passes an old bias into a machine",
+    "uses": [
+      {
+        "objective": "sorter.o1.teach",
+        "action": "Run the brass sorter on Mara’s starting basket and check which farm’s good apples it discards. Choose training examples from the other farms, then rerun the same basket.",
+        "styles": [
+          "maker",
+          "challenger"
+        ],
+        "modes": [
+          "visual",
+          "analytical",
+          "social"
+        ],
+        "game": 258,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 655,
+    "name": "Walk a reconstruction while keeping its missing evidence visible",
+    "uses": [
+      {
+        "objective": "shelf.room.compare",
+        "action": "Read the present ledger and walk the earlier room model. Check how much of the old opening is supported by the surviving hinge and the incomplete drawing.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "spatial",
+          "physical",
+          "reading"
+        ],
+        "game": 14,
+        "story": 54
+      },
+      {
+        "objective": "xin.o.display",
+        "action": "Prepare a display after separating the research records from the reconstructed setting. Keep the placement that the printer can support with the checked sheets.",
+        "styles": [
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "analytical"
+        ],
+        "game": 144,
+        "story": 65
+      }
+    ]
+  },
+  {
+    "number": 661,
+    "name": "Check how permission limits what an audience can receive",
+    "uses": [
+      {
+        "objective": "voices.quote",
+        "action": "Open the signed permission before using the carrier’s excerpt. Put the approved passage at the queue or desk and keep the carrier’s identifying material out of both public copies.",
+        "styles": [
+          "helper",
+          "collector"
+        ],
+        "modes": [
+          "reading",
+          "social",
+          "spatial"
+        ],
+        "game": 175,
+        "story": 95
+      },
+      {
+        "objective": "voices.elsbet.handled",
+        "action": "Use Elsbet’s two takes and the signed slip to choose where the public passage may be heard. Carry the signed index rather than the material restricted by its recorder.",
+        "styles": [
+          "companion",
+          "collector"
+        ],
+        "modes": [
+          "auditory",
+          "reading",
+          "social"
+        ],
+        "game": 183,
+        "story": 121
+      }
+    ]
+  },
+  {
+    "number": 676,
+    "name": "Make a reversible public choice while a reading is still missing",
+    "uses": [
+      {
+        "objective": "coast.revise",
+        "action": "Check the new headland reading, leave the second quay reading blank and still send a qualified warning to the crews waiting to act.",
+        "styles": [
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "social",
+          "reading"
+        ],
+        "game": 104,
+        "story": 138
+      },
+      {
+        "objective": "water.finish",
+        "action": "Keep the old allocation visible and use the repaired trials to post a new operating order for the field and lower-channel crews.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "analytical",
+          "social"
+        ],
+        "game": 185,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 677,
+    "name": "Keep workshop labour and authorship visible in public credit",
+    "uses": [
+      {
+        "objective": "m01.o6.label",
+        "action": "Use the museum record and workshop team card to make a defensible label naming the Bíró team or separating the three kinds of first. Check what a visitor retains.",
+        "styles": [
+          "collector",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "linguistic",
+          "social"
+        ],
+        "game": 144,
+        "story": 54
+      },
+      {
+        "objective": "vindolanda.hall.done",
+        "action": "Keep the addressed name and the fitter’s separate witness line legible when sending the repair slip. Verify the next carrier can make the delivery without being credited for seeing the fit.",
+        "styles": [
+          "helper",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "spatial",
+          "social"
+        ],
+        "game": 263,
+        "story": 71
+      }
+    ]
+  },
+  {
+    "number": 702,
+    "name": "Distinguish a true indication from a lucky match",
+    "uses": [
+      {
+        "objective": "council.compare",
+        "action": "Advance the working watch, the stopped watch that happens to agree and the drifting watch. Compare each at a second mark against the independent drum before deciding what a true reading establishes.",
+        "styles": [
+          "strategist",
+          "challenger"
+        ],
+        "modes": [
+          "analytical",
+          "visual"
+        ],
+        "game": 234,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 703,
+    "name": "Make maps for the decision each reader needs to make",
+    "uses": [
+      {
+        "objective": "maps.o1.make",
+        "action": "Build four limited-layer maps for the traveller, well keeper, clerk and children. Check their different route-finding, site-selection and counting outcomes.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "spatial",
+          "visual",
+          "social"
+        ],
+        "game": 13,
+        "story": 68
+      },
+      {
+        "objective": "sea.finish",
+        "action": "Separate known dock landmarks and the shaded survey strip. Use the reader’s follow-up to mark where each source stops helping the crew.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "spatial",
+          "reading",
+          "social"
+        ],
+        "game": 13,
+        "story": 130
+      }
+    ]
+  },
+  {
+    "number": 705,
+    "name": "Build agreement from comparable independent observations",
+    "uses": [
+      {
+        "objective": "forest.compare",
+        "action": "Watch the creek screen and ridge at two windows. Align the two lookouts by the same watch before saying which parts of the count they can corroborate.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "nature",
+          "visual",
+          "analytical"
+        ],
+        "game": 65,
+        "story": 53
+      },
+      {
+        "objective": "coast.revise",
+        "action": "Keep the quay and station entries attached to their sites and watches. Check what the newer station entry can change and why it cannot fill the absent quay reading.",
+        "styles": [
+          "explorer",
+          "challenger"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 104,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 706,
+    "name": "Adapt a working procedure when its conditions change",
+    "uses": [
+      {
+        "objective": "loading.vaiala-canoe.refitted",
+        "action": "Run the wet-wrapped box at the old mark. Try the alternate axle position and an independent strap move before fitting the cart for another user.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 43,
+        "story": 72
+      },
+      {
+        "objective": "bearing.colliers-point.returned",
+        "action": "Try the old sight pair after the far post has moved. Compare a fresh pair from known positions with an independent side sight, then fit the support someone can actually use.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "spatial",
+          "analytical",
+          "visual"
+        ],
+        "game": 262,
+        "story": 71
+      }
+    ]
+  },
+  {
+    "number": 711,
+    "name": "Move authority back to the check that earned it",
+    "uses": [
+      {
+        "objective": "nexus.seal.checked",
+        "action": "Lift the docket behind the model’s seal. Mount the handling check beside the record it actually applies to, then follow the separately dated build line.",
+        "styles": [
+          "challenger",
+          "collector"
+        ],
+        "modes": [
+          "physical",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 48
+      },
+      {
+        "objective": "nile.royal.seal",
+        "action": "Turn over the royal seal and put it by the catalogue entry the desk verified. Leave period-specific record captions separately dated.",
+        "styles": [
+          "challenger",
+          "collector"
+        ],
+        "modes": [
+          "physical",
+          "reading",
+          "analytical"
+        ],
+        "game": 144,
+        "story": 54
+      }
+    ]
+  },
+  {
+    "number": 712,
+    "name": "Revise a warranted claim when its conditions change",
+    "uses": [
+      {
+        "objective": "island.retest",
+        "action": "Run the original ferry route from the lower landing, keeping the eight-crate job fixed. Retain the upper-landing result and mark why capacity changed.",
+        "styles": [
+          "strategist",
+          "maker"
+        ],
+        "modes": [
+          "analytical",
+          "spatial"
+        ],
+        "game": 206,
+        "story": 68
+      },
+      {
+        "objective": "water.retest",
+        "action": "Repeat the original drought setting on the repaired gate and run another setting. Keep the first round’s measured result with the leak that produced it.",
+        "styles": [
+          "strategist",
+          "maker"
+        ],
+        "modes": [
+          "analytical",
+          "visual"
+        ],
+        "game": 185,
+        "story": 11
+      },
+      {
+        "objective": "bearing.tautira-mouth.returned",
+        "action": "Leave the screen-covered east sight missing while one ray can still support several squares. Try two ways to obtain a second line and fit a useful result within those checked conditions.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "spatial",
+          "visual"
+        ],
+        "game": 262,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 713,
+    "name": "Keep complementary claims and rule out unsupported ones",
+    "uses": [
+      {
+        "objective": "m01.o6.label",
+        "action": "Separate a filed patent, a working model and a documented practical pen. Put up a label whose particular meaning of first can be supported from the cases.",
+        "styles": [
+          "collector",
+          "challenger"
+        ],
+        "modes": [
+          "reading",
+          "linguistic",
+          "analytical"
+        ],
+        "game": 144,
+        "story": 54
+      },
+      {
+        "objective": "coast.clear.share",
+        "action": "Compare a net mender’s cleared row with a lookout’s clear line of sight after rain. Leave both checks usable while excluding a dry-weather reading.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "physical",
+          "reading",
+          "social"
+        ],
+        "game": 62,
+        "story": 52
+      }
+    ]
+  },
+  {
+    "number": 717,
+    "name": "Distinguish a category chosen by people from what is measured",
+    "uses": [
+      {
+        "objective": "market.terms",
+        "action": "Read the two fibre grading cards after weighing the lots. Keep the length a wick buyer needs and the even colour a display buyer needs attached to their different grades.",
+        "styles": [
+          "collector",
+          "strategist"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "social"
+        ],
+        "game": 191,
+        "story": 55
+      },
+      {
+        "objective": "metal.finish",
+        "action": "Add a dated shared cart trip without changing the different measured weights, material descriptions or unresolved makers under the shared trade term.",
+        "styles": [
+          "maker",
+          "challenger"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "social"
+        ],
+        "game": 267,
+        "story": 69
+      }
+    ]
+  },
+  {
+    "number": 738,
+    "name": "Use a controlled light-and-vision comparison inspired by Ibn al-Haytham",
+    "uses": [
+      {
+        "objective": "coast.optics.compare",
+        "action": "Read the named method card, then hold the pointer fixed while moving the lamp between two sockets. Trace which shadow feature changes.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "physical",
+          "visual",
+          "analytical"
+        ],
+        "game": 197,
+        "story": 77
+      },
+      {
+        "objective": "council.optics.compare",
+        "action": "Read the Book of Optics account, then run separate screen tests changing the lamp and the pointer. Check which observation bears on the proposed explanation.",
+        "styles": [
+          "maker",
+          "challenger"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 188,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 746,
+    "name": "Keep the measured bands while changing visible colour",
+    "uses": [
+      {
+        "objective": "prism.delivered",
+        "action": "Read Webb’s named infrared assignments, then keep the same practice samples while highlighting the long-band seam in cyan and short-band pinholes in amber. Set each view in a different reader’s working holder.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "analytical",
+          "spatial"
+        ],
+        "game": 262,
+        "story": 72
+      },
+      {
+        "objective": "prism.accessible",
+        "action": "Use the working Webb copy to compare a shape key layered over assigned hues with a greyscale composite. Leave a display at the dim Study light with the three unaltered sample readings available.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "analytical",
+          "social"
+        ],
+        "game": 144,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 748,
+    "name": "Recover what timing and gesture add to spoken words",
+    "uses": [
+      {
+        "objective": "stage.compare",
+        "action": "Rehearse the same lines with the pause before or after the crate move. Compare what the worker can seem to mean when the gesture comes at a different time.",
+        "styles": [
+          "performer",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "linguistic",
+          "reflective"
+        ],
+        "game": 234,
+        "story": 72
+      },
+      {
+        "objective": "stage.access",
+        "action": "Use the rehearsal and the restricted side sightline to give the understudy a cue copy with movement and timing kept distinct from the unchanged words.",
+        "styles": [
+          "performer",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "linguistic",
+          "social"
+        ],
+        "game": 286,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 750,
+    "name": "Use a replica without transferring the original object’s evidence",
+    "uses": [
+      {
+        "objective": "m01.o3.lens",
+        "action": "Point the Date-Kind Lens at the workshop reconstruction and the patent drawing. Read which event each can date before handling the model at the bench.",
+        "styles": [
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "physical"
+        ],
+        "game": 46,
+        "story": 81
+      },
+      {
+        "objective": "nile.royal.seal",
+        "action": "Keep the modern display replica distinct from the Egyptian papyrus and the Hattusa clay record when choosing which catalogue line has been verified.",
+        "styles": [
+          "collector",
+          "challenger"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 54
+      }
+    ]
+  },
+  {
+    "number": 755,
+    "name": "Move a deliberate pause and check what it communicates",
+    "uses": [
+      {
+        "objective": "stage.compare",
+        "action": "Run the same lines twice with the silence before and after the crate move. Compare the reader’s account of the gatekeeper’s intention.",
+        "styles": [
+          "performer",
+          "challenger"
+        ],
+        "modes": [
+          "auditory",
+          "visual",
+          "reflective"
+        ],
+        "game": 121,
+        "story": 106
+      },
+      {
+        "objective": "island.movement.compare",
+        "action": "Run the welcome with each rest pattern and check the rear-seat view. Use the pause as a deliberate cue for when the crew can enter together.",
+        "styles": [
+          "performer",
+          "companion"
+        ],
+        "modes": [
+          "physical",
+          "auditory",
+          "visual"
+        ],
+        "game": 190,
+        "story": 133
+      }
+    ]
+  },
+  {
+    "number": 757,
+    "name": "Separate observation, model and artistic treatment in a reconstruction",
+    "uses": [
+      {
+        "objective": "xin.o.layers",
+        "action": "Pin separate workroom sheets for the dated observations, the shape based on measurements and the artist’s decisions. Use the named Xin Zhui study to check which parts the record can support.",
+        "styles": [
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "visual",
+          "analytical",
+          "reading"
+        ],
+        "game": 144,
+        "story": 54
+      },
+      {
+        "objective": "xin.o.display",
+        "action": "Choose whether the printer sends a comparison or keeps the model in the workroom. Check that the public caption still distinguishes an estimated likeness from a name in a burial record.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "social"
+        ],
+        "game": 144,
+        "story": 65
+      }
+    ]
+  },
+  {
+    "number": 760,
+    "name": "Calibrate a sensory reading with a separate control",
+    "uses": [
+      {
+        "objective": "refstation.horn",
+        "action": "Read the blank background at the receiver, then compare the ridge and open-sky traces against that blank. Keep the checks tied to each direction and the receiver that measured them.",
+        "styles": [
+          "strategist",
+          "explorer"
+        ],
+        "modes": [
+          "analytical",
+          "visual",
+          "spatial"
+        ],
+        "game": 262,
+        "story": 72
+      },
+      {
+        "objective": "leavitt.plate.used",
+        "action": "Turn the practice plate between corner stops and align the paper exposures with a fixed control circle. Try the result at the Headland before treating a changed view as a change in the sky.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "analytical"
+        ],
+        "game": 262,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 761,
+    "name": "Turn rough workshop records into a retrievable field note",
+    "uses": [
+      {
+        "objective": "linked.study.bound",
+        "action": "Keep the dated issue slip and the work trace as separate pieces. Clip them into a field note with enough context to reopen the original places later.",
+        "styles": [
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "writing",
+          "reading",
+          "analytical"
+        ],
+        "game": 39,
+        "story": 74
+      },
+      {
+        "objective": "linked.voices.indexed",
+        "action": "Follow the old loan by date and locate the changed work shelf by subject. Link the two results so the bench handover can keep the signed issue and the current tool apart.",
+        "styles": [
+          "helper",
+          "collector"
+        ],
+        "modes": [
+          "reading",
+          "linguistic",
+          "analytical"
+        ],
+        "game": 263,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 764,
+    "name": "Separate what a legal record authorizes from what it describes",
+    "uses": [
+      {
+        "objective": "record.edge.civic.compare",
+        "action": "Check the dated convention record against Article 5 and the full title of the Eastern Shawnee constitutional record. Keep the signatory and date responsible for each institutional statement.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "social"
+        ],
+        "game": 144,
+        "story": 74
+      },
+      {
+        "objective": "record.edge.civic.post",
+        "action": "Clip the separately dated treaty and constitutional lines at Civic Dispatch. Check how a reader uses the marked route back to the actual record before applying its scope to a deed.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "social"
+        ],
+        "game": 263,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 768,
+    "name": "Use a specific standard and check what its instrument can settle",
+    "uses": [
+      {
+        "objective": "bal.o1.weigh",
+        "action": "Balance a sample with checked guild weights. Use the same standard to test whether the weight stamped five gives five measures.",
+        "styles": [
+          "maker",
+          "challenger"
+        ],
+        "modes": [
+          "physical",
+          "visual",
+          "analytical"
+        ],
+        "game": 191,
+        "story": 59
+      },
+      {
+        "objective": "metal.compare",
+        "action": "Zero the empty balance before weighing each panel. Mount the actual two and four unit readings to replace the seller’s matched-weight sign.",
+        "styles": [
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "physical",
+          "visual",
+          "analytical"
+        ],
+        "game": 191,
+        "story": 112
+      }
+    ]
+  },
+  {
+    "number": 771,
+    "name": "Read a label against the material and repair its attribution",
+    "uses": [
+      {
+        "objective": "res.o1.plaque",
+        "action": "Make a test window in the Emberford gate plaque. Identify Ysolde’s old carving and the later Long Fair paint, then date each layer on the replacement label.",
+        "styles": [
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "physical",
+          "visual",
+          "reading"
+        ],
+        "game": 204,
+        "story": 54
+      },
+      {
+        "objective": "preserved.royal",
+        "action": "Read the royal catalogue and inspect the custody trail. Mount a heading that states the reason it identifies a catalogue entry and the gap a visitor still needs to see.",
+        "styles": [
+          "collector",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 144,
+        "story": 65
+      },
+      {
+        "objective": "story.frame.board.read",
+        "action": "Read the Brooklyn record beside a labelled contextual Met record. Prepare a public caption that keeps the two custody trails separate and hear how its reader uses it.",
+        "styles": [
+          "collector",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "social",
+          "reflective"
+        ],
+        "game": 179,
+        "story": 52
+      }
+    ]
+  },
+  {
+    "number": 772,
+    "name": "Test what a local route map may leave out",
+    "uses": [
+      {
+        "objective": "nile.way.publish",
+        "action": "Try one sketch from two approaches and check the carrier’s missing delivery point. Publish a fixed landmark guide or two approach-specific copies, then visit the readback.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "spatial",
+          "visual",
+          "physical"
+        ],
+        "game": 189,
+        "story": 95
+      },
+      {
+        "objective": "sea.symbol.placed",
+        "action": "Try the roof and two-light symbols at the same shore frame. Mount a key that gets both readers to Lantern House while preserving their different marker conventions.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "spatial",
+          "visual",
+          "social"
+        ],
+        "game": 13,
+        "story": 52
+      },
+      {
+        "objective": "align.keppel-harbour.returned",
+        "action": "Use the dated Keppel chart and its scale to carry a working copy to the Nile. Align the two known marks on the practice plans and inspect the separately moved third mark before setting a route limit or checking it again.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "spatial",
+          "reading",
+          "analytical"
+        ],
+        "game": 13,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 773,
+    "name": "Tie a photograph to its caption, viewpoint and dated use",
+    "uses": [
+      {
+        "objective": "film.stage.takes",
+        "action": "Catalogue NASA frame AS11-40-5903 by photographer and occasion, then compare two rendered views of the same fictional action to check what a crop can hide.",
+        "styles": [
+          "performer",
+          "collector"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 252,
+        "story": 106
+      },
+      {
+        "objective": "film.coast.received",
+        "action": "Use the dated lower-ledge image to find the painted post. Mount today’s stair instruction separately and visit the result to see which cue the carrier used.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "social"
+        ],
+        "game": 263,
+        "story": 71
+      },
+      {
+        "objective": "bearing.arctic-fog.received",
+        "action": "Read the fogged edge in Dunmore and Critcherson’s exact Arctic photograph alongside its published passage caption. Keep that single historical view separate from the paired bearings you obtain through a practice board.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "analytical",
+          "reading"
+        ],
+        "game": 262,
+        "story": 71
+      },
+      {
+        "objective": "loading.emma-portrait.received",
+        "action": "Read Gardner’s 1865 group photograph and its collection title. Keep the named sitter and visible pose with the record while testing two load positions on a separate portrait-support cart.",
+        "styles": [
+          "collector",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 46,
+        "story": 71
+      }
+    ]
+  },
+  {
+    "number": 779,
+    "name": "Infer an object’s limited history from what survives",
+    "uses": [
+      {
+        "objective": "vindolanda.compare",
+        "action": "Inspect tablet 291’s damaged line. Place two named editorial completions under the same trace and leave the uncertain letters visible.",
+        "styles": [
+          "collector",
+          "challenger"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 54
+      },
+      {
+        "objective": "xin.o.records",
+        "action": "Put the Lens on the site file and methods report separately. Carry the dates and the source limits into the archaeological workroom before choosing what to reconstruct.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "reading",
+          "spatial",
+          "analytical"
+        ],
+        "game": 144,
+        "story": 77
+      },
+      {
+        "objective": "fern.record.huila-jaw.used",
+        "action": "Set a traced jaw fragment alongside a trial extension and keep the geological epoch, collection date and uncertain missing part on separate slips.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "nature",
+          "visual",
+          "analytical"
+        ],
+        "game": 170,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 782,
+    "name": "Weigh rival readings against an explicit check",
+    "uses": [
+      {
+        "objective": "council.compare",
+        "action": "Compare an opening match and a later change in each watch case against the independent drum. Decide what would let the next checker rely on a working watch rather than one matching number.",
+        "styles": [
+          "strategist",
+          "challenger"
+        ],
+        "modes": [
+          "visual",
+          "analytical",
+          "reflective"
+        ],
+        "game": 234,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 783,
+    "name": "Test a hidden condition and follow its practical effect",
+    "uses": [
+      {
+        "objective": "loading.vaiala-canoe.refitted",
+        "action": "Keep the first marked notch and test it after a wet wrap increases one box’s weight. Compare an axle shift and a tie shift and fit a new way to carry it.",
+        "styles": [
+          "strategist",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "analytical",
+          "physical"
+        ],
+        "game": 43,
+        "story": 72
+      },
+      {
+        "objective": "bearing.havana-arkansas.returned",
+        "action": "Trace the old sight after the far rig is moved. Use the replacement starting point in a fresh pair and a separate side line before fitting the guide for the next helper.",
+        "styles": [
+          "strategist",
+          "explorer"
+        ],
+        "modes": [
+          "spatial",
+          "analytical",
+          "visual"
+        ],
+        "game": 262,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 788,
+    "name": "Address a strong exception in the revised public claim",
+    "uses": [
+      {
+        "objective": "civic.finish",
+        "action": "Take the Canal Walk reader’s after-hours problem back to Lin. Leave the existing counts provisional and choose a specific evening or walking check to resolve where and when the service can be used.",
+        "styles": [
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "social",
+          "analytical",
+          "reading"
+        ],
+        "game": 213,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 789,
+    "name": "Carry a conclusion through to a specific institutional change",
+    "uses": [
+      {
+        "objective": "civic.finish",
+        "action": "Bring the reader’s question to the schedule desk. Keep the old totals dated and give the clerk a concrete way to collect the missing times or reachable stops.",
+        "styles": [
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "social",
+          "analytical",
+          "reading"
+        ],
+        "game": 213,
+        "story": 72
+      },
+      {
+        "objective": "gallery.o.reply",
+        "action": "Hear which part of the display a visitor missed or misunderstood. Put a specific fix where the next group can use it, then see how materials, seat access or a limit becomes visible.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "social"
+        ],
+        "game": 144,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 791,
+    "name": "Match the source to this specific object and claim",
+    "uses": [
+      {
+        "objective": "gallery.o.panels",
+        "action": "Mount the royal and Chinchorro panels with their own records and context. Check which reader can reach the evidence from the chosen side of the display.",
+        "styles": [
+          "collector",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "spatial"
+        ],
+        "game": 144,
+        "story": 65
+      },
+      {
+        "objective": "vindolanda.hall.compare",
+        "action": "Open the particular Latin address and visit the yard fit record. Keep this invitation’s named recipient separate from the person needed for this repair’s witness line.",
+        "styles": [
+          "collector",
+          "helper"
+        ],
+        "modes": [
+          "linguistic",
+          "reading",
+          "physical"
+        ],
+        "game": 267,
+        "story": 71
+      },
+      {
+        "objective": "story.frame.board.read",
+        "action": "Keep Brooklyn accession 76.20.4 attached to this board and leave the separately held Met board beside its own source line when clipping a caption.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "reflective",
+          "social"
+        ],
+        "game": 179,
+        "story": 52
+      },
+      {
+        "objective": "number-leaf.bakhshali.filed",
+        "action": "Give a reader the holding-specific birch-bark sample record for MS. Sansk. d. 14. Keep the ranges for three sampled leaves separate from the date of writing.",
+        "styles": [
+          "strategist",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "reflective"
+        ],
+        "game": 179,
+        "story": 77
+      },
+      {
+        "objective": "loading.red-jacket.received",
+        "action": "Use the 1855 print and its August 1854 route caption as separate dates for one exact object. Carry the fictional test result without turning either printed date into a reading of the ship’s cargo.",
+        "styles": [
+          "collector",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 46,
+        "story": 71
+      },
+      {
+        "objective": "bearing.eddystone-lighthouse.received",
+        "action": "Keep Clerk’s edition, visible tower and chosen position with the individual print. Fit a model mark using two separately recorded lines instead of borrowing a current bearing from the image.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "analytical"
+        ],
+        "game": 262,
+        "story": 71
+      }
+    ]
+  }
+]

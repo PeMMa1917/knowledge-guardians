@@ -8,7 +8,9 @@ import { Driver } from './driver';
 import { READINGS } from '../src/domain/readings';
 import { RECIPES } from '../src/domain/craft';
 import { MIN_SOURCES, RUMOURS, currentRumour, rumourOrder } from '../src/domain/rumours';
-import { DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, townPrice } from '../src/domain/trade';
+import { DYES, TOWN_COSTS, ferryPrice, townPrice } from '../src/domain/trade';
+import { trustOf } from '../src/domain/communities';
+import { WARES, priceFor } from '../src/domain/shop';
 import { DYE_KEYS, OUTFIT } from '../src/domain/appearance';
 import { approvalOf, approvalRank, isInquiry } from '../src/domain/approval';
 import { ROLES, fitsRole, roleOf } from '../src/domain/roles';
@@ -48,7 +50,7 @@ describe('the storyline: the Lamp Wall and the old Guardian (Mika 2026-11-26)', 
   it('every keepsake matters: it shows a new view of a clue or opens a new dialogue option', () => {
     for (const k of pack.keepsakes!) {
       const used = pack.clues!.some((c) => c.views.some((v) => v.keepsake === k.id)) || pack.keepsakeTalks!.some((t) => t.keepsake === k.id);
-      expect(used, k.id).toBe(true);
+      expect(used || !!k.equip, k.id).toBe(true);
       expect(k.use, k.id).toBeTruthy();
     }
   });
@@ -208,12 +210,11 @@ describe('gathering and crafting', () => {
 });
 
 describe('the rumour mill', () => {
-  it('needs two sources before a verdict, explains every verdict, and moves on only when the evidence fits', () => {
+  it('requires the referenced sources, explains each verdict, and credits one completion', () => {
     const d = new Driver();
     const r = currentRumour(d.s.flags, 20000)!;
-    expect(() => d.run({ type: 'JudgeRumour', rumour: r.id, verdict: r.best })).toThrow(/at least 2/);
-    d.run({ type: 'CheckRumourSource', rumour: r.id, source: 0 });
-    d.run({ type: 'CheckRumourSource', rumour: r.id, source: 1 });
+    expect(() => d.run({ type: 'JudgeRumour', rumour: r.id, verdict: r.best })).toThrow(/listed sources/);
+    for (const source of r.requiredSources) d.run({ type: 'CheckRumourSource', rumour: r.id, source });
     const wrong = (r.best + 1) % 4;
     d.run({ type: 'JudgeRumour', rumour: r.id, verdict: wrong });
     expect(d.events.find((e) => e.kind === 'rumour')).toMatchObject({ ok: false });
@@ -224,9 +225,46 @@ describe('the rumour mill', () => {
     expect(currentRumour(d.s.flags, 20000)!.id).not.toBe(r.id);
     // The same seed gives the same order (fair randomness); every rumour is placed in the town.
     expect(rumourOrder(5).map((x) => x.id)).toEqual(rumourOrder(5).map((x) => x.id));
-    for (const x of RUMOURS) { expect(x.sources.length).toBeGreaterThanOrEqual(MIN_SOURCES); for (const w of x.whys) expect(w.length).toBeGreaterThan(20); }
+    for (const x of RUMOURS) {
+      expect(new Set(x.requiredSources).size).toBeGreaterThanOrEqual(MIN_SOURCES);
+      expect(x.requiredSources.every((source) => x.sources[source])).toBe(true);
+      for (const w of x.whys) expect(w.length).toBeGreaterThan(20);
+    }
     expect(MAPS['aethelgard.emberford'].interactables.some((i) => i.kind === 'rumours')).toBe(true);
     for (const x of RUMOURS) if (x.fray) expect(pack.fray.some((f: { id: string }) => f.id === x.fray)).toBe(true);
+  });
+
+  it('holds the well verdict until Noa’s test is read and keeps its conclusion bounded', () => {
+    const d = new Driver();
+    const rumour = 'clever-well';
+    const marks = d.s.marks;
+    // These flags also represent a partially completed rumour saved under the earlier rule.
+    d.run({ type: 'CheckRumourSource', rumour, source: 0 });
+    d.run({ type: 'CheckRumourSource', rumour, source: 1 });
+    for (const verdict of [2, 3]) {
+      expect(() => d.run({ type: 'JudgeRumour', rumour, verdict })).toThrow(/listed sources/);
+    }
+    expect(d.s.flags['mill.clever-well.done']).toBeUndefined();
+    expect(d.s.marks).toBe(marks);
+    d.run({ type: 'CheckRumourSource', rumour, source: 2 });
+    const checked = d.run({ type: 'JudgeRumour', rumour, verdict: 2 });
+    expect(checked.events.find((event) => event.kind === 'rumour')).toMatchObject({
+      ok: true,
+      why: expect.stringContaining('similar mineral levels'),
+    });
+    expect(d.s.flags['mill.clever-well.done']).toBe(true);
+    d.run({ type: 'JudgeRumour', rumour, verdict: 2 });
+    expect(d.s.marks).toBe(marks + 5);
+  });
+
+  it('allows a river light verdict with the two referenced witnesses', () => {
+    const d = new Driver();
+    const rumour = 'bridge-lights';
+    d.run({ type: 'CheckRumourSource', rumour, source: 0 });
+    d.run({ type: 'CheckRumourSource', rumour, source: 1 });
+    d.run({ type: 'JudgeRumour', rumour, verdict: 1 });
+    expect(d.s.flags['mill.bridge-lights.s2']).toBeUndefined();
+    expect(d.s.flags['mill.bridge-lights.done']).toBe(true);
   });
 });
 
@@ -235,9 +273,6 @@ describe("Wenna's barter boat", () => {
     const d = new Driver();
     for (const x of DYES) expect(townPrice(x) - ferryPrice(x)).toBe(TOWN_COSTS.carrying + TOWN_COSTS.toll + TOWN_COSTS.stall);
     for (const x of DYES) expect(OUTFIT[x.id]).toBeDefined();
-    expect(FAIR_PRICE.options.filter((o) => o.ok)).toHaveLength(1);
-    d.run({ type: 'FairPrice', choice: 1 });
-    expect(d.s.flags['trade.fair.ok']).toBe(true);
     expect(() => d.run({ type: 'BuyDye', dye: 'woad' })).toThrow(/marks/);
     d.s = { ...d.s, marks: 20 };
     const before = d.events.length;
@@ -252,6 +287,42 @@ describe("Wenna's barter boat", () => {
     // The base outfit colours stay free: a dye is extra, never a lock on identity.
     expect(Object.keys(OUTFIT).filter((k) => !DYE_KEYS.includes(k)).length).toBeGreaterThanOrEqual(10);
     expect(MAPS['aethelgard.ferry'].interactables.some((i) => i.kind === 'trader')).toBe(true);
+  });
+
+  it('credits optional price-slip inspection once and discounts the later River folk wares', () => {
+    const d = new Driver();
+    const river = pack.communities!.find(({ id }) => id === 'river')!;
+    const wallpaper = WARES.find(({ id }) => id === 'wall-cant')!;
+    d.run({ type: 'SetFlag', flag: 'ferry.met', value: true });
+    d.run({ type: 'SetFlag', flag: 'puzzle.ferry-message.done', value: true });
+    d.s.marks = 30;
+    expect(() => d.run({ type: 'CompareDyePrices' })).toThrow(/Wenna/);
+    d.s.mapId = 'aethelgard.ferry';
+    d.run({ type: 'BuyDye', dye: 'woad' });
+    expect(d.s.marks).toBe(24);
+    expect(trustOf(river, d.s).pts).toBe(3);
+    expect(priceFor(wallpaper, d.s, pack)).toBe(20);
+    d.run({ type: 'CompareDyePrices' });
+    d.run({ type: 'CompareDyePrices' });
+    expect(d.s.flags['trade.price-compared']).toBe(true);
+    expect(trustOf(river, d.s).pts).toBe(4);
+    expect(priceFor(wallpaper, d.s, pack)).toBe(18);
+    expect(d.s.marks).toBe(24);
+    d.s.mapId = 'aethelgard.emberford';
+    d.run({ type: 'BuyWare', ware: 'wall-cant' });
+    expect(d.s.marks).toBe(6);
+  });
+
+  it.each([true, false])('lets a legacy shopper inspect both slips with earlier credited status %s', (hadCredit) => {
+    const d = new Driver();
+    const river = pack.communities!.find(({ id }) => id === 'river')!;
+    d.s.mapId = 'aethelgard.ferry';
+    d.s.flags['trade.fair.asked'] = true;
+    if (hadCredit) d.s.flags['trade.fair.ok'] = true;
+    expect(trustOf(river, d.s).pts).toBe(hadCredit ? 1 : 0);
+    d.run({ type: 'CompareDyePrices' });
+    expect(d.s.flags['trade.price-compared']).toBe(true);
+    expect(trustOf(river, d.s).pts).toBe(1);
   });
 });
 

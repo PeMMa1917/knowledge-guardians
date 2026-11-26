@@ -6,6 +6,13 @@
  */
 import { describe, expect, it } from 'vitest';
 import { buildPack } from '../src/content';
+import { callboardEntries } from '../src/content/callboardCases';
+import { datePegEntries } from '../src/content/datePegCases';
+import { dateRegisterEntries } from '../src/content/dateRegisterCases';
+import { curtainCallEntries } from '../src/content/curtainCall';
+import { FACING_CUE_PREFIX, facingCueBeatNode, facingCueHouseReadNode, facingCuePlanNode } from '../src/content/facingCue';
+import { glassRackEntries } from '../src/content/glassRack';
+import { FACINGS, FACING_SITES } from '../src/domain/facingCue';
 import { totalXP } from '../src/domain/permanent';
 import type { ShowdownMove } from '../src/domain/showdown';
 import { MAPS } from '../src/maps';
@@ -462,8 +469,23 @@ describe('dialogue graph', () => {
   it('every node is reachable from a character, an event or a scene entry', () => {
     const reach = new Set<string>();
     const entries = ['cold.open', 'waystone.nexus', 'waystone.emberford', 'oldsign.read'];
-    const propScenes = Object.values(MAPS).flatMap((map) => map.interactables
-      .filter((prop) => prop.kind === 'scene').map((prop) => prop.node!));
+    const propScenes = Object.values(MAPS).flatMap((map) => map.interactables.flatMap((prop) => {
+      if (prop.kind === 'scene' && prop.node) return [prop.node];
+      if (prop.kind === 'fieldgame' && prop.game) {
+        const press = prop.game === 'badge-annex:press' ? ['oracle.press'] : [];
+        const facingSite = FACING_SITES.find((site) => prop.game === FACING_CUE_PREFIX + site);
+        const facing = facingSite ? [
+          ...FACINGS.map((view) => facingCueBeatNode(facingSite, view)),
+          facingCuePlanNode(facingSite),
+          ...(facingSite === 'house' ? [facingCueHouseReadNode] : []),
+        ] : [];
+        return [
+          ...datePegEntries(prop.game), ...dateRegisterEntries(prop.game), ...callboardEntries(prop.game),
+          ...glassRackEntries(prop.game), ...curtainCallEntries(prop.game), ...facing, ...press,
+        ];
+      }
+      return [];
+    }));
     const stack = [...pack.characters.flatMap((c) => c.talk.map((t) => t.node)), ...pack.events.map((e) => e.node),
       ...(pack.keepsakeTalks ?? []).map((t) => t.node), ...entries, ...propScenes];
     while (stack.length) {

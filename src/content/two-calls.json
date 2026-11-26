@@ -1,0 +1,769 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH7-R95",
+   "world": "WORLD-08",
+   "title": "Two Calls After Tuesday",
+   "available": {
+    "all": [
+     {
+      "objective": "copies.revise"
+     },
+     {
+      "item": "item.bench-debate-minute"
+     }
+    ]
+   },
+   "stake": "A reader and a carrier can reach the same hall with different questions. The next call changes the path each takes.",
+   "knowledgeQuestion": "What should a repair preserve when the same evidence has to reach different readers at a later time?",
+   "objectives": [
+    {
+     "id": "copies.twocalls.sources",
+     "title": "Bring the signed minute and match the local sources to their readers.",
+     "essential": false,
+     "visible": {
+      "all": [
+       {
+        "objective": "copies.revise"
+       },
+       {
+        "item": "item.bench-debate-minute"
+       }
+      ]
+     },
+     "done": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "copies.revise"
+         },
+         {
+          "item": "item.bench-debate-minute"
+         }
+        ]
+       },
+       {
+        "flag": "copies.twocalls.log",
+        "eq": true
+       },
+       {
+        "flag": "copies.twocalls.press",
+        "eq": true
+       },
+       {
+        "flag": "copies.twocalls.needs",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "truth",
+       "perspective",
+       "power"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM",
+       "ART"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "digital-society",
+       "business"
+      ],
+      "minutes": 5,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "copies.twocalls.proof",
+     "title": "Test two placements and keep the usable first proof.",
+     "essential": false,
+     "visible": {
+      "objective": "copies.twocalls.sources"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "copies.twocalls.sources"
+       },
+       {
+        "flagSet": "copies.twocalls.first"
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "justification",
+       "explanation",
+       "objectivity",
+       "evidence"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "thinking",
+       "self-management"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM",
+       "ART"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "digital-society",
+       "business"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "application",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "copies.twocalls.adapt",
+     "title": "Retest the saved proof under changed approaches and try both repairs.",
+     "essential": false,
+     "visible": {
+      "objective": "copies.twocalls.proof"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "copies.twocalls.proof"
+       },
+       {
+        "flag": "copies.twocalls.change",
+        "eq": true
+       },
+       {
+        "flag": "copies.twocalls.countered",
+        "eq": true
+       },
+       {
+        "flag": "copies.twocalls.paired",
+        "eq": true
+       },
+       {
+        "flagSet": "copies.twocalls.staffed"
+       },
+       {
+        "flagSet": "copies.twocalls.plan"
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "explanation",
+       "perspective",
+       "values",
+       "responsibility",
+       "certainty"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "atl": [
+       "thinking",
+       "communication",
+       "self-management"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM",
+       "ART"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "digital-society",
+       "business"
+      ],
+      "minutes": 7,
+      "thinking": {
+       "dok": 4,
+       "bloom": "create",
+       "fink": "integration",
+       "solo": "extended"
+      }
+     }
+    },
+    {
+     "id": "copies.twocalls.reply",
+     "title": "Hang one repair, then check the returned evidence at the archive.",
+     "essential": false,
+     "visible": {
+      "objective": "copies.twocalls.adapt"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "copies.twocalls.adapt"
+       },
+       {
+        "any": [
+         {
+          "all": [
+           {
+            "flag": "copies.twocalls.plan",
+            "eq": "paired"
+           },
+           {
+            "flag": "copies.twocalls.posted",
+            "eq": "paired"
+           },
+           {
+            "flag": "copies.twocalls.read",
+            "eq": "paired"
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "copies.twocalls.plan",
+            "eq": "staffed"
+           },
+           {
+            "flag": "copies.twocalls.posted",
+            "eq": "staffed"
+           },
+           {
+            "flag": "copies.twocalls.read",
+            "eq": "staffed"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "responsibility",
+       "values",
+       "interpretation",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "atl": [
+       "research",
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM",
+       "ART"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "digital-society",
+       "business"
+      ],
+      "minutes": 5,
+      "thinking": {
+       "dok": 4,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "extended"
+      }
+     },
+     "onComplete": [
+      {
+       "journal": "j.copies.twocalls.reply"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "copies.twocalls.log",
+   "speaker": "narrator",
+   "text": "The signed bench minute lies open beside the Lending Clerk’s old trial log. One line of the minute keeps the work that was served. Another keeps the request that still waits. This time the old log describes the quick return line during Tuesday’s trial. A separate slip signed by Mina gives today’s rule. Readers may come in without a slip. Returned books go to the returns clerk.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the dated trial, today’s entry rule and the return step as three separate strips.",
+     "next": "copies.twocalls.log.used",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "copies.revise"
+         },
+         {
+          "item": "item.bench-debate-minute"
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "copies.twocalls.log",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copies.twocalls.log",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the two signed records on the desk."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "copies.twocalls.log.used",
+   "speaker": "narrator",
+   "text": "You keep the minute’s separate lines beside the three new strips. The old log and Mina’s signed rule keep their own dates and purposes.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.twocalls.press",
+   "speaker": "copies-presskeeper",
+   "text": "The door card has a large line and a pocket. A passerby takes the large line. A reader who can stop can open its pocket. The moving runner’s thin strip can hold one line. Lark keeps one wider frame on the shelf. There is enough fresh type to use that frame or to staff a new source copy.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Check the door pocket and the runner frame.",
+     "next": "copies.twocalls.press.used",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "copies.revise"
+         },
+         {
+          "item": "item.bench-debate-minute"
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "copies.twocalls.press",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copies.twocalls.press",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave both holders on the press."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "copies.twocalls.press.used",
+   "speaker": "narrator",
+   "text": "There are two door positions and one runner position on the small proof board. Its three printed lines can move between them.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.twocalls.needs",
+   "speaker": "copies-lendingkeeper",
+   "text": "Here is who comes at the first call. The visitor walks past the main door and looks for permission to enter. A carrier with a book meets the runner and needs the place to return it. A third reader can stop at the door pocket. They want to see which day the trial describes.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Take each request with its own place and waiting time.",
+     "next": "copies.twocalls.needs.used",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "copies.revise"
+         },
+         {
+          "item": "item.bench-debate-minute"
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "copies.twocalls.needs",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copies.twocalls.needs",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Give these readers another moment."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "copies.twocalls.needs.used",
+   "speaker": "narrator",
+   "text": "Mina hangs the first call’s three requests on your clip. Each keeps what its reader can see.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.twocalls.change",
+   "speaker": "copies-lendingkeeper",
+   "text": "The return crate is jammed beside the landing. The visitor is being sent round to the moving runner. The carrier with the book will pass the main door and can see its top line before the next call. The third reader can still wait for the dated background. They have asked us to keep a way to find it.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Take the new routes back to the press. Keep the first proof for comparison.",
+     "next": "copies.twocalls.change.used",
+     "if": {
+      "all": [
+       {
+        "objective": "copies.twocalls.proof"
+       },
+       {
+        "not": {
+         "flag": "copies.twocalls.change",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copies.twocalls.change",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the changed requests here for now."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "copies.twocalls.change.used",
+   "speaker": "narrator",
+   "text": "The people and their questions are the same. One route change gives two readers different copies of the notice.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.twocalls.receive.paired",
+   "speaker": "narrator",
+   "text": "The wider runner frame and the large door card arrive with both working directions. The dated trial travels with a small locator to the archive.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang the two directions at both approaches. Leave the dated locator with them.",
+     "next": "copies.twocalls.received.paired",
+     "if": {
+      "all": [
+       {
+        "objective": "copies.twocalls.adapt"
+       },
+       {
+        "flag": "copies.twocalls.plan",
+        "eq": "paired"
+       },
+       {
+        "not": {
+         "flagSet": "copies.twocalls.posted"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copies.twocalls.posted",
+       "value": "paired"
+      }
+     ]
+    },
+    {
+     "text": "Keep the frame on the handcart for a moment."
+    }
+   ]
+  },
+  {
+   "id": "copies.twocalls.received.paired",
+   "speaker": "narrator",
+   "text": "The newcomer reads the strip while walking. At the door a carrier takes the returns direction. The reader looking for Tuesday’s account follows the locator and asks you to meet them at the archive.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.twocalls.receive.staffed",
+   "speaker": "narrator",
+   "text": "The returned-book line sits at the top of the door card. The old trial stays in its pocket. The runner has the entry line. Mina can guide the next reader from the other approach while the crate stays here.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Fit the re-routed lines and leave the dated trial with Mina at the door.",
+     "next": "copies.twocalls.received.staffed",
+     "if": {
+      "all": [
+       {
+        "objective": "copies.twocalls.adapt"
+       },
+       {
+        "flag": "copies.twocalls.plan",
+        "eq": "staffed"
+       },
+       {
+        "not": {
+         "flagSet": "copies.twocalls.posted"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copies.twocalls.posted",
+       "value": "staffed"
+      }
+     ]
+    },
+    {
+     "text": "Leave the signed pocket with the carrier for a moment."
+    }
+   ]
+  },
+  {
+   "id": "copies.twocalls.received.staffed",
+   "speaker": "narrator",
+   "text": "The newcomer enters after the runner shows the first line. The return carrier reads the door before the bell. The third reader can find the dated trial immediately with Mina. A later visitor from the old route may still need somebody to point out the other line.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.twocalls.reply.paired",
+   "speaker": "narrator",
+   "text": "The third reader reaches the archive holding the small locator. They can find the dated Tuesday trial here. It cost them a second stop. Hang both proofs at the desk so a later reader can see what changed. The double directions will still carry the two practical requests if the approaches swap again.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "File the first proof, the change in approach and the reader’s extra stop.",
+     "next": "copies.twocalls.finished.paired",
+     "if": {
+      "all": [
+       {
+        "flag": "copies.twocalls.posted",
+        "eq": "paired"
+       },
+       {
+        "not": {
+         "flagSet": "copies.twocalls.read"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copies.twocalls.read",
+       "value": "paired"
+      }
+     ]
+    },
+    {
+     "text": "Keep the two proofs out on the desk for now."
+    }
+   ]
+  },
+  {
+   "id": "copies.twocalls.finished.paired",
+   "speaker": "narrator",
+   "text": "The reader can point to the actual trial day and to the two open directions. The small locator is still useful.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.twocalls.reply.staffed",
+   "speaker": "narrator",
+   "text": "Mina sends a signed reply to the archive. The third reader quoted the dated trial at the door and returned the pocket. The next keeper asks for the reader routes with it. When Mina leaves the desk, a visitor returning to the old approach may still need a new pointer.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "File the first proof, the changed approach and Mina’s shift limit.",
+     "next": "copies.twocalls.finished.staffed",
+     "if": {
+      "all": [
+       {
+        "flag": "copies.twocalls.posted",
+        "eq": "staffed"
+       },
+       {
+        "not": {
+         "flagSet": "copies.twocalls.read"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "copies.twocalls.read",
+       "value": "staffed"
+      }
+     ]
+    },
+    {
+     "text": "Keep the reply open at the archive for now."
+    }
+   ]
+  },
+  {
+   "id": "copies.twocalls.finished.staffed",
+   "speaker": "narrator",
+   "text": "The signed reply keeps the source available and leaves a note about the shift that made this arrangement work.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.copies.twocalls.sources.1",
+   "objective": "copies.twocalls.sources",
+   "depth": 1,
+   "text": "The signed minute comes from the Metalworks bench hearing. Carry it to the archive after the City’s corrected notice."
+  },
+  {
+   "id": "h.copies.twocalls.sources.2",
+   "objective": "copies.twocalls.sources",
+   "depth": 2,
+   "text": "Open the two dated records together at the archive. Keep the old trial, entry and returns on three strips."
+  },
+  {
+   "id": "h.copies.twocalls.sources.3",
+   "objective": "copies.twocalls.sources",
+   "depth": 3,
+   "text": "Check the holders in the Print Workshop. Then visit Mina’s first-call request clips at the landing."
+  },
+  {
+   "id": "h.copies.twocalls.sources.4",
+   "objective": "copies.twocalls.sources",
+   "depth": 4,
+   "text": "Keep the three local checks. They are the sources, what each copy holds and which reader gets each copy."
+  },
+  {
+   "id": "h.copies.twocalls.proof.1",
+   "objective": "copies.twocalls.proof",
+   "depth": 1,
+   "text": "Open the proof board at the press. It has three places for the three civic lines."
+  },
+  {
+   "id": "h.copies.twocalls.proof.2",
+   "objective": "copies.twocalls.proof",
+   "depth": 2,
+   "text": "The moving newcomer reads the door’s top line. The return carrier reads the one runner line."
+  },
+  {
+   "id": "h.copies.twocalls.proof.3",
+   "objective": "copies.twocalls.proof",
+   "depth": 3,
+   "text": "Move the three strips in the board and run at least two layouts. A reader at the door can open the pocket for the dated trial."
+  },
+  {
+   "id": "h.copies.twocalls.proof.4",
+   "objective": "copies.twocalls.proof",
+   "depth": 4,
+   "text": "Keep a tested layout that serves the first three readers. Bring its visible limits back from the landing when the routes change."
+  },
+  {
+   "id": "h.copies.twocalls.adapt.1",
+   "objective": "copies.twocalls.adapt",
+   "depth": 1,
+   "text": "Visit Mina at the landing after the first proof. She has a new approach for both moving readers."
+  },
+  {
+   "id": "h.copies.twocalls.adapt.2",
+   "objective": "copies.twocalls.adapt",
+   "depth": 2,
+   "text": "Test the unchanged first proof at the press. The same words now reach different people."
+  },
+  {
+   "id": "h.copies.twocalls.adapt.3",
+   "objective": "copies.twocalls.adapt",
+   "depth": 3,
+   "text": "Try a wider frame with both useful directions on each copy. Then move the old three lines and preserve the dated trial in the door pocket."
+  },
+  {
+   "id": "h.copies.twocalls.adapt.4",
+   "objective": "copies.twocalls.adapt",
+   "depth": 4,
+   "text": "Try both repairs and choose. The wide frame sends the source reader to the archive. The staffed arrangement keeps the trial at the door and uses the current approach."
+  },
+  {
+   "id": "h.copies.twocalls.reply.1",
+   "objective": "copies.twocalls.reply",
+   "depth": 1,
+   "text": "Take the chosen repair to the landing and install it."
+  },
+  {
+   "id": "h.copies.twocalls.reply.2",
+   "objective": "copies.twocalls.reply",
+   "depth": 2,
+   "text": "Notice who can now find the direction and where the third reader must look for Tuesday’s account."
+  },
+  {
+   "id": "h.copies.twocalls.reply.3",
+   "objective": "copies.twocalls.reply",
+   "depth": 3,
+   "text": "Return to the archive and open the signed response or the source reader’s docket."
+  },
+  {
+   "id": "h.copies.twocalls.reply.4",
+   "objective": "copies.twocalls.reply",
+   "depth": 4,
+   "text": "File the first proof, what changed and the new cost. The permanent notice still carries your choice."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.copies.twocalls.reply",
+   "text": "I kept the first proof, then tested it again after the readers’ routes changed. The revised route and the signed reply say how a later reader can find what they need.",
+   "claimKind": "simulation"
+  }
+ ]
+}

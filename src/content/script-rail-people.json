@@ -1,0 +1,564 @@
+{
+  "cma:1966.118": [
+    {
+      "name": "Hon’ami Kōetsu",
+      "role": "Calligrapher",
+      "detail": "Kōetsu brushed seven autumn poems over motifs printed by Sōtatsu with gold and silver.",
+      "source": "HIS-SCRIPT-RAIL-KOETSU-SCROLL"
+    },
+    {
+      "name": "Tawaraya Sōtatsu",
+      "role": "Designer of the printed motifs",
+      "detail": "Kōetsu brushed seven autumn poems over motifs printed by Sōtatsu with gold and silver.",
+      "source": "HIS-SCRIPT-RAIL-KOETSU-SCROLL"
+    }
+  ],
+  "cma:1978.87": [
+    {
+      "name": "Konoe Nobutada",
+      "role": "Named artist",
+      "detail": "The museum records a section called Cicada from the Shinsen Roeishu anthology and names Konoe Nobutada.",
+      "source": "HIS-SCRIPT-RAIL-NOBUTADA-CICADA"
+    }
+  ],
+  "cma:1961.421.2": [
+    {
+      "name": "Wang Wei",
+      "role": "Poet",
+      "detail": "Song emperor Lizong brushed Wang Wei’s verse onto this silk leaf. The museum links the once-joined fan to Ma Lin’s painting.",
+      "source": "HIS-SCRIPT-RAIL-LIZONG-WANG-WEI"
+    },
+    {
+      "name": "Song Lizong",
+      "role": "Calligrapher and imperial patron",
+      "detail": "Song emperor Lizong brushed Wang Wei’s verse onto this silk leaf. The museum links the once-joined fan to Ma Lin’s painting.",
+      "source": "HIS-SCRIPT-RAIL-LIZONG-WANG-WEI"
+    },
+    {
+      "name": "Ma Lin",
+      "role": "Maker of the associated painting",
+      "detail": "Song emperor Lizong brushed Wang Wei’s verse onto this silk leaf. The museum links the once-joined fan to Ma Lin’s painting.",
+      "source": "HIS-SCRIPT-RAIL-LIZONG-WANG-WEI"
+    }
+  ],
+  "cma:1992.138": [
+    {
+      "name": "Yi Hwang",
+      "role": "Poet credited in the record",
+      "detail": "The museum links the poem to Yi Hwang, who lived from 1501 to 1570. The surviving scroll is dated to the 1700s–1800s.",
+      "source": "HIS-SCRIPT-RAIL-PLUM-YI-HWANG"
+    }
+  ],
+  "cma:1983.1115": [
+    {
+      "name": "Sultan Muhammad Khandan",
+      "role": "Signed calligrapher",
+      "detail": "The museum identifies two four-line poems on the face, plus calligraphic practice on the right. Sultan Muhammad Khandan signed the page.",
+      "source": "HIS-SCRIPT-RAIL-QUATRAINS-PRACTICE"
+    }
+  ],
+  "cma:1916.1164": [
+    {
+      "name": "Katsushika Hokusai",
+      "role": "Print artist",
+      "detail": "The nineteenth-century Hokusai print places a poem attributed to Emperor Tenchi beside the rice field scene.",
+      "source": "HIS-SCRIPT-RAIL-HOKUSAI-TENCHI"
+    },
+    {
+      "name": "Emperor Tenchi",
+      "role": "Poet named in the catalogue",
+      "detail": "The nineteenth-century Hokusai print places a poem attributed to Emperor Tenchi beside the rice field scene.",
+      "source": "HIS-SCRIPT-RAIL-HOKUSAI-TENCHI"
+    }
+  ],
+  "cma:1977.4": [
+    {
+      "name": "Wang Guxiang",
+      "role": "Painter and calligrapher",
+      "detail": "The 1531 handscroll by Wang Guxiang places poetic lines among flowers loosely arranged by season. The museum associates the chrysanthemum with Tao Yuanming.",
+      "source": "HIS-SCRIPT-RAIL-GUXIANG-SEASONS"
+    },
+    {
+      "name": "Tao Yuanming",
+      "role": "Poet associated with the chrysanthemum reference",
+      "detail": "The 1531 handscroll by Wang Guxiang places poetic lines among flowers loosely arranged by season. The museum associates the chrysanthemum with Tao Yuanming.",
+      "source": "HIS-SCRIPT-RAIL-GUXIANG-SEASONS"
+    }
+  ],
+  "cma:2004.65": [
+    {
+      "name": "Chen Jiru",
+      "role": "Poet and calligrapher",
+      "detail": "Chen Jiru brushed four poems on a gold-speckled paper scroll. Cleveland reads some darker strokes as traces of a freshly charged brush.",
+      "source": "HIS-SCRIPT-RAIL-JIRU-POEMS"
+    }
+  ],
+  "nga:1943.17.1": [
+    {
+      "name": "William Hayley",
+      "role": "Author",
+      "detail": "The title page names William Hayley and credits William Blake for designing and engraving the prints. The spine reads Bayley.",
+      "source": "HIS-SCRIPT-RAIL-HAYLEY-BALLADS"
+    },
+    {
+      "name": "William Blake",
+      "role": "Designer and engraver of the prints",
+      "detail": "The title page names William Hayley and credits William Blake for designing and engraving the prints. The spine reads Bayley.",
+      "source": "HIS-SCRIPT-RAIL-HAYLEY-BALLADS"
+    },
+    {
+      "name": "J. Seagrave",
+      "role": "Printer named on the title page",
+      "detail": "The title page names William Hayley and credits William Blake for designing and engraving the prints. The spine reads Bayley.",
+      "source": "HIS-SCRIPT-RAIL-HAYLEY-BALLADS"
+    }
+  ],
+  "nga:1979.61.2": [
+    {
+      "name": "John Scott",
+      "role": "Author",
+      "detail": "The 1782 volume names John Scott as author. The National Gallery lists different contributors to the title page, frontispiece and other engravings.",
+      "source": "HIS-SCRIPT-RAIL-SCOTT-VOLUME"
+    },
+    {
+      "name": "Francesco Bartolozzi",
+      "role": "Frontispiece printmaker",
+      "detail": "The 1782 volume names John Scott as author. The National Gallery lists different contributors to the title page, frontispiece and other engravings.",
+      "source": "HIS-SCRIPT-RAIL-SCOTT-VOLUME"
+    },
+    {
+      "name": "William Blake",
+      "role": "One of the engravers named by the museum",
+      "detail": "The 1782 volume names John Scott as author. The National Gallery lists different contributors to the title page, frontispiece and other engravings.",
+      "source": "HIS-SCRIPT-RAIL-SCOTT-VOLUME"
+    }
+  ],
+  "cma:1930.173": [
+    {
+      "name": "Ippitsusai Bunchō",
+      "role": "Print artist",
+      "detail": "Ippitsusai Bunchō pictured Onoe Kikugorō I as Izumi no Saburō in a play performed at the Ichimura Theater in 1769.",
+      "source": "HIS-SCRIPT-RAIL-BUNCHO-KIKUGORO"
+    },
+    {
+      "name": "Onoe Kikugorō I",
+      "role": "Actor pictured as Izumi no Saburō",
+      "detail": "Ippitsusai Bunchō pictured Onoe Kikugorō I as Izumi no Saburō in a play performed at the Ichimura Theater in 1769.",
+      "source": "HIS-SCRIPT-RAIL-BUNCHO-KIKUGORO"
+    }
+  ],
+  "cma:1976.62": [
+    {
+      "name": "Namiki Gohei I",
+      "role": "Playwright",
+      "detail": "Three woodblock prints form one 1829 performance scene. The museum names Namiki Gohei I for the play and Hokuchō for the design.",
+      "source": "HIS-SCRIPT-RAIL-HOKUCHO-TRIO"
+    },
+    {
+      "name": "Shunshosai Hokuchō",
+      "role": "Triptych designer",
+      "detail": "Three woodblock prints form one 1829 performance scene. The museum names Namiki Gohei I for the play and Hokuchō for the design.",
+      "source": "HIS-SCRIPT-RAIL-HOKUCHO-TRIO"
+    },
+    {
+      "name": "Asao Gakujurō",
+      "role": "Actor pictured as the ferryman Sanjūrō",
+      "detail": "Three woodblock prints form one 1829 performance scene. The museum names Namiki Gohei I for the play and Hokuchō for the design.",
+      "source": "HIS-SCRIPT-RAIL-HOKUCHO-TRIO"
+    },
+    {
+      "name": "Ichikawa Ebijūrō II",
+      "role": "Actor pictured on the right",
+      "detail": "Three woodblock prints form one 1829 performance scene. The museum names Namiki Gohei I for the play and Hokuchō for the design.",
+      "source": "HIS-SCRIPT-RAIL-HOKUCHO-TRIO"
+    }
+  ],
+  "cma:1985.296": [
+    {
+      "name": "Utagawa Sadahide",
+      "role": "Designer and named artist",
+      "detail": "The museum catalogues Sadahide’s ink drawing as a design for a fan-shaped print of a Kabuki theater.",
+      "source": "HIS-SCRIPT-RAIL-SADAHIDE-FAN"
+    }
+  ],
+  "cma:2008.379": [
+    {
+      "name": "Jean I Bérain",
+      "role": "Set designer",
+      "detail": "Jean I Bérain drew a set connected to an interlude in La Pastorale, part of the 1703 opera-ballet Les Muses by Danchet and Campra.",
+      "source": "HIS-SCRIPT-RAIL-BERAIN-PASTORALE"
+    },
+    {
+      "name": "Antoine Danchet",
+      "role": "Librettist",
+      "detail": "Jean I Bérain drew a set connected to an interlude in La Pastorale, part of the 1703 opera-ballet Les Muses by Danchet and Campra.",
+      "source": "HIS-SCRIPT-RAIL-BERAIN-PASTORALE"
+    },
+    {
+      "name": "André Campra",
+      "role": "Composer",
+      "detail": "Jean I Bérain drew a set connected to an interlude in La Pastorale, part of the 1703 opera-ballet Les Muses by Danchet and Campra.",
+      "source": "HIS-SCRIPT-RAIL-BERAIN-PASTORALE"
+    }
+  ],
+  "cma:2008.401": [
+    {
+      "name": "Charles Coypel",
+      "role": "Artist who drew the reading scene",
+      "detail": "Charles Coypel drew a reading scene from Molière’s Les Femmes savantes. The museum contrasts the listeners’ gestures with Henrietta at the far right.",
+      "source": "HIS-SCRIPT-RAIL-COYPEL-TRISSOTIN"
+    },
+    {
+      "name": "Molière",
+      "role": "Playwright",
+      "detail": "Charles Coypel drew a reading scene from Molière’s Les Femmes savantes. The museum contrasts the listeners’ gestures with Henrietta at the far right.",
+      "source": "HIS-SCRIPT-RAIL-COYPEL-TRISSOTIN"
+    }
+  ],
+  "cma:1959.310": [
+    {
+      "name": "William Hogarth",
+      "role": "Engraver and satirist",
+      "detail": "Hogarth’s 1738 engraving places the actresses’ costumes in a barn. Cleveland points to a playbill near a crown and discusses the print in relation to the 1737 Licensing Act.",
+      "source": "HIS-SCRIPT-RAIL-HOGARTH-TROUPE"
+    },
+    {
+      "name": "Robert Walpole",
+      "role": "Prime minister associated with the act in the museum’s account",
+      "detail": "Hogarth’s 1738 engraving places the actresses’ costumes in a barn. Cleveland points to a playbill near a crown and discusses the print in relation to the 1737 Licensing Act.",
+      "source": "HIS-SCRIPT-RAIL-HOGARTH-TROUPE"
+    }
+  ],
+  "nga:2019.134.1": [
+    {
+      "name": "Zaccaria Valaresso",
+      "role": "Named writer",
+      "detail": "The 1737 Venetian volume names Zaccaria Valaresso. Its frontispiece and nine full-page etchings are printed in orange on blue laid paper.",
+      "source": "HIS-SCRIPT-RAIL-VALARESSO-TRAGEDY"
+    },
+    {
+      "name": "Giuseppe Bettinelli",
+      "role": "Publisher named on the photographed title page",
+      "detail": "The 1737 Venetian volume names Zaccaria Valaresso. Its frontispiece and nine full-page etchings are printed in orange on blue laid paper.",
+      "source": "HIS-SCRIPT-RAIL-VALARESSO-TRAGEDY"
+    }
+  ],
+  "nga:1976.46.1": [
+    {
+      "name": "Johann Wolfgang von Goethe",
+      "role": "Dramatic author",
+      "detail": "The bound 1828 Faust has eighteen lithographs. The National Gallery names the author Goethe and the artist Eugène Delacroix.",
+      "source": "HIS-SCRIPT-RAIL-DELACROIX-FAUST"
+    },
+    {
+      "name": "Eugène Delacroix",
+      "role": "Artist of the lithographs",
+      "detail": "The bound 1828 Faust has eighteen lithographs. The National Gallery names the author Goethe and the artist Eugène Delacroix.",
+      "source": "HIS-SCRIPT-RAIL-DELACROIX-FAUST"
+    }
+  ],
+  "cma:2013.261": [
+    {
+      "name": "Ford Madox Brown",
+      "role": "Maker of the sketch",
+      "detail": "Ford Madox Brown sketched Cordelia parting from her sisters in 1854. The museum describes it as a sketch for an unrealized project based on Shakespeare.",
+      "source": "HIS-SCRIPT-RAIL-BROWN-CORDELIA"
+    },
+    {
+      "name": "William Shakespeare",
+      "role": "Author of the source play",
+      "detail": "Ford Madox Brown sketched Cordelia parting from her sisters in 1854. The museum describes it as a sketch for an unrealized project based on Shakespeare.",
+      "source": "HIS-SCRIPT-RAIL-BROWN-CORDELIA"
+    }
+  ],
+  "cma:1933.455": [
+    {
+      "name": "Murasaki Shikibu",
+      "role": "Author of The Tale of Genji",
+      "detail": "The album leaf carries part of the Usugumo chapter of The Tale of Genji. The museum describes a child clinging to Genji’s clothing.",
+      "source": "HIS-SCRIPT-RAIL-GENJI-CLOUD"
+    },
+    {
+      "name": "Unidentified copyist",
+      "role": "Maker of the surviving leaf is unnamed",
+      "detail": "The album leaf carries part of the Usugumo chapter of The Tale of Genji. The museum describes a child clinging to Genji’s clothing.",
+      "source": "HIS-SCRIPT-RAIL-GENJI-CLOUD"
+    }
+  ],
+  "cma:1983.80": [
+    {
+      "name": "Unidentified makers",
+      "role": "The museum does not name the scroll’s brush hands",
+      "detail": "The eighteenth-century Oishi Hyōroku handscroll has colloquial inscriptions near pictures. Cleveland records that the main text is missing.",
+      "source": "HIS-SCRIPT-RAIL-OISHI-TALE"
+    }
+  ],
+  "cma:1962.279.32.a": [
+    {
+      "name": "Dasavanta",
+      "role": "Painter of the leaf",
+      "detail": "The museum identifies Dasavanta’s illustrated leaf as one scene within the parrot Tuti’s story to Khujasta on the Fifth Night.",
+      "source": "HIS-SCRIPT-RAIL-PARROT-WARNING"
+    },
+    {
+      "name": "Tuti",
+      "role": "Outer teller in the fictional story",
+      "detail": "The museum identifies Dasavanta’s illustrated leaf as one scene within the parrot Tuti’s story to Khujasta on the Fifth Night.",
+      "source": "HIS-SCRIPT-RAIL-PARROT-WARNING"
+    }
+  ],
+  "cma:1944.487": [
+    {
+      "name": "Nizami Ganjavi",
+      "role": "Author of the source narrative",
+      "detail": "The museum identifies Nizami’s story on the back of the owl illustration. Within it, Buzurgmihr interprets the owls to Nushirwan and reproves the king.",
+      "source": "HIS-SCRIPT-RAIL-NIZAMI-OWLS"
+    },
+    {
+      "name": "Buzurgmihr",
+      "role": "Minister as represented within the tale",
+      "detail": "The museum identifies Nizami’s story on the back of the owl illustration. Within it, Buzurgmihr interprets the owls to Nushirwan and reproves the king.",
+      "source": "HIS-SCRIPT-RAIL-NIZAMI-OWLS"
+    }
+  ],
+  "cma:2013.301": [
+    {
+      "name": "Amir Khusrau Dihlavi",
+      "role": "Poet of the illustrated telling",
+      "detail": "The leaf credited to Sanwalah illustrates Amir Khusrau Dihlavi’s Persian telling. The museum contrasts this reunion with versions in which the lovers do not meet again in life.",
+      "source": "HIS-SCRIPT-RAIL-SANWALAH-LAYLA"
+    },
+    {
+      "name": "Sanwalah",
+      "role": "Artist credited for this leaf",
+      "detail": "The leaf credited to Sanwalah illustrates Amir Khusrau Dihlavi’s Persian telling. The museum contrasts this reunion with versions in which the lovers do not meet again in life.",
+      "source": "HIS-SCRIPT-RAIL-SANWALAH-LAYLA"
+    }
+  ],
+  "cma:1943.658.a": [
+    {
+      "name": "Firdausi",
+      "role": "Poet of the Shahnama",
+      "detail": "The displayed leaf face carries Bahram Gur’s arrival at a merchant’s house in the Great Mongol Shahnama. Cleveland catalogues the picture on the reverse separately.",
+      "source": "HIS-SCRIPT-RAIL-SHAHNAMA-MERCHANT"
+    },
+    {
+      "name": "Unidentified makers",
+      "role": "The catalogue does not name the scribe or painter of this leaf",
+      "detail": "The displayed leaf face carries Bahram Gur’s arrival at a merchant’s house in the Great Mongol Shahnama. Cleveland catalogues the picture on the reverse separately.",
+      "source": "HIS-SCRIPT-RAIL-SHAHNAMA-MERCHANT"
+    }
+  ],
+  "nga:2006.27.1": [
+    {
+      "name": "Miguel de Cervantes Saavedra",
+      "role": "Author",
+      "detail": "The National Gallery records its 1738 Don Quixote as the first of four volumes, with eighteen illustrations in this one and several printmaking credits.",
+      "source": "HIS-SCRIPT-RAIL-CERVANTES-1738"
+    },
+    {
+      "name": "George Vertue",
+      "role": "One of the named printmakers",
+      "detail": "The National Gallery records its 1738 Don Quixote as the first of four volumes, with eighteen illustrations in this one and several printmaking credits.",
+      "source": "HIS-SCRIPT-RAIL-CERVANTES-1738"
+    },
+    {
+      "name": "John Vanderbank",
+      "role": "Named designer behind engravings",
+      "detail": "The National Gallery records its 1738 Don Quixote as the first of four volumes, with eighteen illustrations in this one and several printmaking credits.",
+      "source": "HIS-SCRIPT-RAIL-CERVANTES-1738"
+    }
+  ],
+  "nga:1942.9.1452": [
+    {
+      "name": "Pierre-Ambroise-François Choderlos de Laclos",
+      "role": "Author",
+      "detail": "The National Gallery describes the 1796 first volume of Laclos’s Les liaisons dangereuses as including trial proofs along with its prints.",
+      "source": "HIS-SCRIPT-RAIL-LACLOS-PROOF"
+    },
+    {
+      "name": "Various artists",
+      "role": "Printmakers credited collectively in the catalogue",
+      "detail": "The National Gallery describes the 1796 first volume of Laclos’s Les liaisons dangereuses as including trial proofs along with its prints.",
+      "source": "HIS-SCRIPT-RAIL-LACLOS-PROOF"
+    }
+  ],
+  "nga:1942.9.1801": [
+    {
+      "name": "Antoine-François Prévost",
+      "role": "Author",
+      "detail": "The National Gallery notes four preliminary drawings and four counterproofs coloured by Louis-Joseph Lefevre in this 1797 Manon Lescaut volume.",
+      "source": "HIS-SCRIPT-RAIL-PREVOST-DRAWINGS"
+    },
+    {
+      "name": "Louis-Joseph Lefevre",
+      "role": "Maker of preparatory drawings and coloured counterproofs",
+      "detail": "The National Gallery notes four preliminary drawings and four counterproofs coloured by Louis-Joseph Lefevre in this 1797 Manon Lescaut volume.",
+      "source": "HIS-SCRIPT-RAIL-PREVOST-DRAWINGS"
+    }
+  ],
+  "nga:1976.17.1": [
+    {
+      "name": "Champfleury",
+      "role": "Author",
+      "detail": "The National Gallery catalogues Champfleury’s 1870 Les chats with one etching and aquatint by Édouard Manet, separately numbered 1976.17.1.a.",
+      "source": "HIS-SCRIPT-RAIL-CHAMPFLEURY-CATS"
+    },
+    {
+      "name": "Édouard Manet",
+      "role": "Maker of the associated illustration",
+      "detail": "The National Gallery catalogues Champfleury’s 1870 Les chats with one etching and aquatint by Édouard Manet, separately numbered 1976.17.1.a.",
+      "source": "HIS-SCRIPT-RAIL-CHAMPFLEURY-CATS"
+    }
+  ],
+  "nga:2015.80.1": [
+    {
+      "name": "Dante Alighieri",
+      "role": "Author",
+      "detail": "The 1544 Venetian volume has Dante’s Comedia, wood-engraved illustrations and a title page referring to a new exposition by Alessandro Vellutello.",
+      "source": "HIS-SCRIPT-RAIL-VENICE-COMEDIA"
+    },
+    {
+      "name": "Alessandro Vellutello",
+      "role": "Author of the exposition named on the title page",
+      "detail": "The 1544 Venetian volume has Dante’s Comedia, wood-engraved illustrations and a title page referring to a new exposition by Alessandro Vellutello.",
+      "source": "HIS-SCRIPT-RAIL-VENICE-COMEDIA"
+    }
+  ],
+  "nga:2022.98.1": [
+    {
+      "name": "Dante Alighieri",
+      "role": "Author",
+      "detail": "The 1757–1758 Divina Commedia includes 228 etched illustrations. The National Gallery’s displayed opening is a dedication to Elisabetta Petrowna.",
+      "source": "HIS-SCRIPT-RAIL-DANTE-THREE-CANTICHE"
+    },
+    {
+      "name": "Elisabetta Petrowna",
+      "role": "Named addressee on the pictured dedication",
+      "detail": "The 1757–1758 Divina Commedia includes 228 etched illustrations. The National Gallery’s displayed opening is a dedication to Elisabetta Petrowna.",
+      "source": "HIS-SCRIPT-RAIL-DANTE-THREE-CANTICHE"
+    },
+    {
+      "name": "Giuliano Giampiccoli",
+      "role": "One of the named etchers",
+      "detail": "The 1757–1758 Divina Commedia includes 228 etched illustrations. The National Gallery’s displayed opening is a dedication to Elisabetta Petrowna.",
+      "source": "HIS-SCRIPT-RAIL-DANTE-THREE-CANTICHE"
+    }
+  ],
+  "nga:2014.112.27": [
+    {
+      "name": "Edgar Allan Poe",
+      "role": "Author of the poem",
+      "detail": "The 1875 Le Corbeau includes Poe’s poem in Stéphane Mallarmé’s French translation with lithographs by Édouard Manet. The record notes Mallarmé and Manet’s signatures.",
+      "source": "HIS-SCRIPT-RAIL-MANET-RAVEN"
+    },
+    {
+      "name": "Stéphane Mallarmé",
+      "role": "French translator and signatory",
+      "detail": "The 1875 Le Corbeau includes Poe’s poem in Stéphane Mallarmé’s French translation with lithographs by Édouard Manet. The record notes Mallarmé and Manet’s signatures.",
+      "source": "HIS-SCRIPT-RAIL-MANET-RAVEN"
+    },
+    {
+      "name": "Édouard Manet",
+      "role": "Illustrator and signatory",
+      "detail": "The 1875 Le Corbeau includes Poe’s poem in Stéphane Mallarmé’s French translation with lithographs by Édouard Manet. The record notes Mallarmé and Manet’s signatures.",
+      "source": "HIS-SCRIPT-RAIL-MANET-RAVEN"
+    }
+  ],
+  "nga:2018.44.119": [
+    {
+      "name": "T. W. Gwilt Mapleson",
+      "role": "Creator credited for the volume",
+      "detail": "The 1849 volume by T. W. Gwilt Mapleson contains twenty-five chromolithographs. The museum records a later inscription naming Alfred Hewlett Fletcher dated 1935.",
+      "source": "HIS-SCRIPT-RAIL-MAPLESON-BALLADS"
+    },
+    {
+      "name": "Alfred Hewlett Fletcher",
+      "role": "Named in the dated inscription",
+      "detail": "The 1849 volume by T. W. Gwilt Mapleson contains twenty-five chromolithographs. The museum records a later inscription naming Alfred Hewlett Fletcher dated 1935.",
+      "source": "HIS-SCRIPT-RAIL-MAPLESON-BALLADS"
+    }
+  ],
+  "nga:2010.58.1": [
+    {
+      "name": "Lucius Annaeus Seneca",
+      "role": "Author",
+      "detail": "The National Gallery’s 1615 edition names Seneca as author and Justus Lipsius as editor. The record also names Rubens as designer and the Galles as engravers.",
+      "source": "HIS-SCRIPT-RAIL-SENECA-LIPSIUS"
+    },
+    {
+      "name": "Justus Lipsius",
+      "role": "Editor",
+      "detail": "The National Gallery’s 1615 edition names Seneca as author and Justus Lipsius as editor. The record also names Rubens as designer and the Galles as engravers.",
+      "source": "HIS-SCRIPT-RAIL-SENECA-LIPSIUS"
+    },
+    {
+      "name": "Cornelis Galle I",
+      "role": "Engraver",
+      "detail": "The National Gallery’s 1615 edition names Seneca as author and Justus Lipsius as editor. The record also names Rubens as designer and the Galles as engravers.",
+      "source": "HIS-SCRIPT-RAIL-SENECA-LIPSIUS"
+    },
+    {
+      "name": "Theodor Galle",
+      "role": "Engraver",
+      "detail": "The National Gallery’s 1615 edition names Seneca as author and Justus Lipsius as editor. The record also names Rubens as designer and the Galles as engravers.",
+      "source": "HIS-SCRIPT-RAIL-SENECA-LIPSIUS"
+    },
+    {
+      "name": "Peter Paul Rubens",
+      "role": "Designer of the engravings",
+      "detail": "The National Gallery’s 1615 edition names Seneca as author and Justus Lipsius as editor. The record also names Rubens as designer and the Galles as engravers.",
+      "source": "HIS-SCRIPT-RAIL-SENECA-LIPSIUS"
+    }
+  ],
+  "cma:2001.42": [
+    {
+      "name": "Wang Bo",
+      "role": "Author of the source essay",
+      "detail": "Tiebao brushed this 1811 running-style handscroll based on Wang Bo’s Essay on Tengwang Pavilion.",
+      "source": "HIS-SCRIPT-RAIL-TIEBAO-WANG-BO"
+    },
+    {
+      "name": "Tiebao",
+      "role": "Calligrapher",
+      "detail": "Tiebao brushed this 1811 running-style handscroll based on Wang Bo’s Essay on Tengwang Pavilion.",
+      "source": "HIS-SCRIPT-RAIL-TIEBAO-WANG-BO"
+    }
+  ],
+  "cma:1969.127": [
+    {
+      "name": "Unidentified screen painter",
+      "role": "The museum notes there is no signature or seal",
+      "detail": "The mid-seventeenth-century pair represents episodes from the Tales of Ise on folding screens. The museum says the scenes are read right to left and carries no artist’s signature.",
+      "source": "HIS-SCRIPT-RAIL-ISE-SCREENS"
+    }
+  ],
+  "cma:1924.1015": [
+    {
+      "name": "Giovanni Boccaccio",
+      "role": "Author of the source work",
+      "detail": "The circa-1470 miniature credited to Maître François introduces Queen Medusa in a French translation of Boccaccio’s book on famous women.",
+      "source": "HIS-SCRIPT-RAIL-BOCCACCIO-MEDUSA"
+    },
+    {
+      "name": "Maître François",
+      "role": "Artist credited for the miniature",
+      "detail": "The circa-1470 miniature credited to Maître François introduces Queen Medusa in a French translation of Boccaccio’s book on famous women.",
+      "source": "HIS-SCRIPT-RAIL-BOCCACCIO-MEDUSA"
+    }
+  ],
+  "cma:2013.292.b": [
+    {
+      "name": "Mirza Muhammad",
+      "role": "Named calligrapher",
+      "detail": "The museum identifies Chaghatai Turkish poems in nasta‘liq script and names Mirza Muhammad and Sultan Muhammad Nur in the calligraphy credits.",
+      "source": "HIS-SCRIPT-RAIL-CHAGHATAI-VERSES"
+    },
+    {
+      "name": "Sultan Muhammad Nur",
+      "role": "Named calligrapher",
+      "detail": "The museum identifies Chaghatai Turkish poems in nasta‘liq script and names Mirza Muhammad and Sultan Muhammad Nur in the calligraphy credits.",
+      "source": "HIS-SCRIPT-RAIL-CHAGHATAI-VERSES"
+    }
+  ]
+}

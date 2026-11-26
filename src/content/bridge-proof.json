@@ -1,0 +1,73 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH1-R84",
+      "world": "WORLD-02",
+      "title": "A Plank on the Same Bank",
+      "available": { "flag": "reached.emberford", "eq": true },
+      "stake": "Idris needs to get a small dispatch to the east rack. He could take the regular route or ask Hesper to fit one light practice plank.",
+      "knowledgeQuestion": "What can one short argument establish for all routes, and what changes when one link stops following its rule?",
+      "objectives": [
+        {
+          "id": "bridge.proof.checked",
+          "title": "Build the bank strip and unfold both route branches with and without the plank.",
+          "essential": false,
+          "done": { "all": [
+            { "flag": "bridge.proof.banks", "eq": true },
+            { "flag": "bridge.proof.banks.round", "eq": true },
+            { "flag": "bridge.proof.banks.square", "eq": true },
+            { "flag": "bridge.proof.plank.round", "eq": true },
+            { "flag": "bridge.proof.plank.square", "eq": true }
+          ] },
+          "weave": {
+            "concepts": ["evidence", "explanation", "justification", "certainty", "objectivity", "interpretation"],
+            "framework": ["scope", "methods-and-tools", "perspectives"],
+            "atl": ["thinking", "research"],
+            "aoks": ["MAT", "TEC"],
+            "subjects": ["math-aa", "math-ai", "design-tech"],
+            "thinking": { "dok": 3, "bloom": "analyse", "fink": "integration", "solo": "relational" },
+            "minutes": 4
+          }
+        },
+        {
+          "id": "bridge.proof.delivered",
+          "title": "Install one checked route and read the receipt at the east rack.",
+          "visible": { "objective": "bridge.proof.checked" },
+          "essential": false,
+          "done": { "all": [
+            { "objective": "bridge.proof.checked" },
+            { "flag": "bridge.proof.posted", "in": ["bank-route", "light-plank"] },
+            { "flag": "bridge.proof.receipt", "eq": true }
+          ] },
+          "weave": {
+            "concepts": ["responsibility", "values", "perspective", "explanation"],
+            "framework": ["ethics", "perspectives", "scope", "methods-and-tools"],
+            "atl": ["communication", "social", "thinking"],
+            "aoks": ["MAT", "HUM", "TEC"],
+            "subjects": ["math-ai", "design-tech"],
+            "thinking": { "dok": 3, "bloom": "apply", "fink": "application", "solo": "relational" },
+            "minutes": 2
+          },
+          "onComplete": [{ "journal": "j.bridge.proof" }]
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.bridge.proof",
+      "claimKind": "simulation",
+      "text": "The short bank strip ruled out every three-move route when each move switched banks. Tracing both branches found two three-move routes when we added the same-bank plank. The rack kept the rule used for the dispatch."
+    }
+  ],
+  "hints": [
+    { "id": "h.bridge.proof.checked.1", "objective": "bridge.proof.checked", "depth": 1, "text": "Look for Idris’s bridge rail northeast of the market square." },
+    { "id": "h.bridge.proof.checked.2", "objective": "bridge.proof.checked", "depth": 2, "text": "Begin on Oak bank. The receiving rack is also on Oak bank. Fold one bank mark for each ordinary step." },
+    { "id": "h.bridge.proof.checked.3", "objective": "bridge.proof.checked", "depth": 3, "text": "Unfold the round-peg branch and the square-peg branch. See where three steps end when every link crosses." },
+    { "id": "h.bridge.proof.checked.4", "objective": "bridge.proof.checked", "depth": 4, "text": "Fit the one same-bank link on the practice rail. Unfold both branches again and see which new trails reach the rack." },
+    { "id": "h.bridge.proof.delivered.1", "objective": "bridge.proof.delivered", "depth": 1, "text": "Idris can use a light shortcut or keep the route people already share." },
+    { "id": "h.bridge.proof.delivered.2", "objective": "bridge.proof.delivered", "depth": 2, "text": "The proof tells which routes reach the rack. The weights named on the handover tell which loads can take each route." },
+    { "id": "h.bridge.proof.delivered.3", "objective": "bridge.proof.delivered", "depth": 3, "text": "Post the regular four-link route or fit the light-packet plank. Each leaves a different marked starting point on the east lane." },
+    { "id": "h.bridge.proof.delivered.4", "objective": "bridge.proof.delivered", "depth": 4, "text": "Use the plank passage or sign for the regular route at the turn post, then read the matching receipt by the east rack." }
+  ]
+}

@@ -54,8 +54,11 @@
      "weave": {
       "concepts": [
        "evidence",
-       "truth"
+       "truth",
+       "power"
       ],
+      "framework": ["scope", "perspectives", "ethics"],
+      "thinking": { "dok": 2, "bloom": "understand", "fink": "integration", "solo": "multistructural" },
       "atl": [
        "research"
       ],
@@ -90,8 +93,13 @@
      "weave": {
       "concepts": [
        "evidence",
-       "responsibility"
+       "responsibility",
+       "certainty",
+       "interpretation",
+       "power"
       ],
+      "framework": ["scope", "perspectives", "methods-and-tools", "ethics"],
+      "thinking": { "dok": 3, "bloom": "analyse", "fink": "learning-to-learn", "solo": "relational" },
       "atl": [
        "research",
        "thinking"
@@ -133,8 +141,13 @@
      "weave": {
       "concepts": [
        "evidence",
-       "explanation"
+       "explanation",
+       "objectivity",
+       "certainty",
+       "interpretation"
       ],
+      "framework": ["scope", "methods-and-tools"],
+      "thinking": { "dok": 2, "bloom": "apply", "fink": "application", "solo": "multistructural" },
       "atl": [
        "thinking",
        "research"
@@ -187,8 +200,11 @@
        "evidence",
        "justification",
        "responsibility",
-       "power"
+       "power",
+       "values"
       ],
+      "framework": ["perspectives", "methods-and-tools", "ethics"],
+      "thinking": { "dok": 3, "bloom": "evaluate", "fink": "human", "solo": "relational" },
       "atl": [
        "communication",
        "social"
@@ -226,13 +242,21 @@
      },
      "weave": {
       "concepts": [
-       "perspective"
+       "perspective",
+       "culture",
+       "interpretation",
+       "values",
+       "responsibility"
       ],
+      "framework": ["perspectives", "methods-and-tools", "ethics"],
+      "thinking": { "dok": 3, "bloom": "apply", "fink": "caring", "solo": "relational" },
       "atl": [
-       "social"
+       "social",
+       "communication"
       ],
       "subjects": [
-       "design-tech"
+       "design-tech",
+       "lang-langlit"
       ],
       "aoks": [
        "TEC"
@@ -576,7 +600,14 @@
     "HIS-S16"
    ],
    "grantsCard": "card.met-ingots",
-   "altText": "A catalogue page showing ten small rounded dark metal cakes next to a cloth bag."
+   "altText": "A catalogue page showing ten small rounded dark metal cakes next to a cloth bag.",
+   "specimen": {
+    "key": "met:2023.133a-k",
+    "institution": "The Metropolitan Museum of Art",
+    "accession": "2023.133a–k",
+    "source": "HIS-S16",
+    "objective": "m02.o5.showdown"
+   }
   },
   {
    "id": "AE-ASSAY",
@@ -612,7 +643,7 @@
      "map": "aethelgard.emberford",
      "x": 21,
      "y": 7,
-     "text": "The thread runs into the guild ledger. The entry reads: 'One patterned blade. Lyle workshop to Corvan Hale. This season.'",
+     "text": "The thread runs into the guild ledger. The entry reads: 'One patterned blade. Lyle workshop to Corvan Hale. This season.' The clerk files it by the last transfer. The date tells the guild which sale to settle.",
      "card": "card.guild-ledger"
     },
     {
@@ -621,7 +652,7 @@
      "map": "aethelgard.emberford",
      "x": 3,
      "y": 13,
-     "text": "The thread ends on Hesper's workshop sheet: two steels, stacked, welded, twisted and folded, this season.",
+     "text": "The thread ends on Hesper's workshop sheet: two steels, stacked, welded, twisted and folded, this season. She records when the work was done so she can trace a repair. The two dates can agree and answer different questions.",
      "card": "card.workshop-diagram"
     }
    ],
@@ -973,6 +1004,8 @@
   }
  ],
  "journal": [
+  { "id": "j.hesper.checked-bench", "claimKind": "observation", "text": "At the bench I found Hesper’s repair tab beside the Nexus receipt. Hesper showed me which face she had promised to mend. Her apprentice kept the forge open in Emberford." },
+  { "id": "j.hesper.checked-drawer", "claimKind": "observation", "text": "In the Nexus drawer I found Hesper’s repair tab next to a separately dated receipt. Anyone at the counter could ask for the pair while the shop finished its work." },
   {
    "id": "j.m02.start",
    "text": "Arrived in Emberford, a guild town in Aethelgard. Aethelgard is a game world: nothing here is a historical record unless it says 'Documented'.",
@@ -1018,7 +1051,7 @@
   {
    "id": "corvan.start",
    "speaker": "merchant-corvan",
-   "text": "Guardians! Look at this. True wootz of ancient Damascus. See the water in the steel? Only twenty-four marks.",
+   "text": "Guardians! Look at this. True wootz of ancient Damascus. See the water in the steel? Only twenty-four marks. That gold stamp gets my price onto the order slips. Once a buyer takes a copy, the order desk uses my description too.",
    "effects": [
     {
      "setFlag": "heard.corvan",
@@ -1295,16 +1328,18 @@
   {
    "id": "hesper.offer",
    "speaker": "smith-hesper",
-   "text": "I watched the square. You did not shout, and you asked the maker first. Most people don't. Your Nexus: I want to see how you people test things. Would they let a smith visit?",
+   "text": "After the square I took out two tabs. See the square ink mark on each? In our shop it means I’ve taken on a repair. On the Nexus tab it means the counter took in a parcel. Here’s my marked scrap. Tie my tab to a bench slip and I can show which face I promised to mend. We’d need the bench for a bell. Send the tab with the scrap to the return drawer and anyone can ask for it at the counter. I can finish my turn here.",
    "options": [
     {
      "text": "Yes. Come to the Nexus.",
+     "tag": "Tie the repair tab to a bench slip",
      "next": "hesper.offer2",
      "effects": [
       {
        "setFlag": "hesper.coming",
        "value": true
       },
+      { "setFlag": "hesper.visitArrangement", "value": "bench" },
       {
        "relation": "smith-hesper",
        "by": 1
@@ -1313,20 +1348,55 @@
     },
     {
      "text": "I'll ask Warden Ise first.",
-     "next": "hesper.offer2",
+     "tag": "Clip the repair tab to the drawer packet",
+     "next": "hesper.arrange",
      "effects": [
       {
        "setFlag": "hesper.coming",
        "value": true
-      }
+      },
+      { "setFlag": "hesper.visitArrangement", "value": "confirm" }
      ]
+    },
+    {
+     "text": "Turn both tabs over.",
+     "next": "hesper.offer.tabs"
     }
    ]
   },
   {
+   "id": "hesper.offer.tabs",
+   "speaker": "smith-hesper",
+   "text": "My initials and the face I promised to mend are on the back of the shop tab. We put the square in the corner so anyone working the bench can find a repair ticket with one hand. Your counter tab has a space for the arrival time. I could leave the blank one here all week and it wouldn’t get my scrap any nearer the Nexus.",
+   "next": "hesper.offer"
+  },
+  {
    "id": "hesper.offer2",
    "speaker": "smith-hesper",
-   "text": "Good. I'll close the forge for a few days. Bring a hard question."
+   "text": "That knot will hold. I’ll bring the scrap and have your clerk date their tab when I arrive. My apprentice can cover the forge for one bell. I’ll cover their next turn when I get back."
+  },
+  {
+   "id": "hesper.arrange",
+   "speaker": "smith-hesper",
+   "text": "Clip it there, with my initials showing. Ask Ise to leave the drawer receipt beside it. People can check when the scrap reached the counter while I finish the forge turn. I’ll have to show the repair myself another day."
+  },
+  {
+   "id": "hesper.nexus.bench",
+   "speaker": "smith-hesper",
+   "text": "Hold the scrap against the shop tab you tied. See how the two corners line up? This is the face I signed to mend. That square on the other tab goes with the clerk’s arrival time. Leave both on the peg. I’ll free the bench at the bell and get back to relieve my apprentice.",
+   "effects": [
+    { "setFlag": "hesper.visitChecked", "value": "bench" },
+    { "journal": "j.hesper.checked-bench" }
+   ]
+  },
+  {
+   "id": "hesper.nexus.drawer",
+   "speaker": "warden-ise",
+   "text": "Unclip the marked tab beside the drawer receipt. Hesper signed for the face marked on her scrap. I put this bell’s time on the Nexus tab when it reached the counter. We can lend out both together. The bench is free and Hesper is still at her forge. Her demonstration can wait.",
+   "effects": [
+    { "setFlag": "hesper.visitChecked", "value": "drawer" },
+    { "journal": "j.hesper.checked-drawer" }
+   ]
   },
   {
    "id": "hesper.after",
