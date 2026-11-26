@@ -6,6 +6,8 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
+At the City of Copies, Lark and Mina can now put the two checked editions to different uses. Across the campaign, 19 of 52 executable chapter routes meet the six-concept, two-framework, one-area and one-theme floor in every estimated half-hour window. The earlier build had two. [Route measurements](docs/LEARNING_DESIGN.md#the-30-minute-design-audit)
+
 Lumen now remembers more than one place where a Guardian used a concept. After a cloth fitting and a lookout check, the journal can bring back the repair slip and the witness’s sightline together. The twelve key concepts have examples tied to actions the Guardian has actually finished. [Glossary checks](tests/glossary.test.ts)
 
 The Observatory correction lends one signed catch to the quay cutters or the basket crews. That crew can fit a dated blank at its own hook for the next field check. The other crew can submit through Ruan. The three executable Observatory traces now meet the 20- and 30-minute opportunity floors across their estimated routes. [Learning design](docs/LEARNING_DESIGN.md)

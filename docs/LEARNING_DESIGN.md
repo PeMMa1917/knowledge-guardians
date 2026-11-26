@@ -40,13 +40,13 @@ The route audit in `tests/tok-coverage.test.ts` exercises game actions in indivi
 
 | Path | Minutes with a gap | Total minutes |
 |---|---:|---:|
-| Story | 113 | 504 |
+| Story | 108 | 504 |
 | Social | 316 | 670 |
-| Explorer, representative case visits | 960 | 2,024 |
-| Puzzler | 229 | 592 |
-| Cozy | 310 | 667 |
+| Explorer, representative case visits | 959 | 2,024 |
+| Puzzler | 228 | 592 |
+| Cozy | 312 | 667 |
 
-Among 52 chapter traces, 45 cover all 16 dimensions in their first 30 estimated minutes. Four stay complete in every full modeled window. An explorer who visits every filed case has a modeled gap during 4,171 of 5,351 minutes. Longer side trips can leave a dimension behind after the chapter’s main path has covered it.
+Among 52 chapter traces, 45 cover all 16 dimensions in their first 30 estimated minutes. Four stay complete in every full modeled window. An explorer who visits every filed case has a modeled gap during 4,170 of 5,351 minutes. Longer side trips can leave a dimension behind after the chapter’s main path has covered it.
 
 Hesper’s required handover returns to culture, interpretation and values after the Showdown. The Observatory compares crew names and station records at the same gauges. In Water Commons, the player tracks which leak and intake gave rise to a measured result, and the Market procedure changes what the Water runner can carry. Two Calls After Tuesday asks players to preserve their first proof, return after the readers’ paths change, and check both repairs before somebody uses the result. The last two steps use DOK 4.
 
@@ -73,7 +73,9 @@ The itineraries give the first print and reading-rest decisions extra weight. A 
 
 Dov’s Three Doors reaches its registered conclusion after using both host protocols on the counting frame. The Missing Word uses two previews of a fixed toll with different wording before the player enacts the resulting notice. Counting their documented topics reduces the modeled minutes below the floor for the Puzzler from 441 to 404 at 20 minutes and from 381 to 331 at 30. The Cozy route changes from 471 to 433 and from 345 to 295 respectively. [Registry evidence](../src/domain/learningLevels.ts)
 
-The executable chapter report uses the same floor with authored tags from the exact completed objectives. Of 52 traces, 20 meet it in the first 20 minutes and 31 meet it in the first 30. One sustains it across every 20-minute window and 14 sustain it across every 30-minute window, including all twelve Nile traces. Both Two Shutter Room fittings meet the floor in their opening windows. Each trace has gaps in 23 of its 98 estimated minutes under the 20-minute rule and eight under the 30-minute rule. Later detours still need distinct optional-theme actions and explicitly authored framework work. [Executable chapter tests](../tests/tok-coverage.test.ts)
+The executable chapter report uses the same floor with authored tags from the exact completed objectives. Of 52 traces, 23 meet it in the first 20 minutes and 33 meet it in the first 30. Six sustain it across every 20-minute window and 19 sustain it across every 30-minute window. The latter include twelve Nile, two City of Copies and three Observatory traces. Both Two Shutter Room fittings meet the floor in their opening windows. Each trace has gaps in 23 of its 98 estimated minutes under the 20-minute rule and eight under the 30-minute rule. Later detours still need distinct optional-theme actions and explicitly authored framework work. [Executable chapter tests](../tests/tok-coverage.test.ts)
+
+At the City of Copies, the player lays a press proof over the dated notice, then follows its credit onto a landing copy. Preserving the issue date helps a clerk reconstruct the order of the changes. Pinning the dated clause and the observer’s credit beneath the repeated sentence helps a reader see which day and whose report it covers. Both tested routes meet the floor in every 20- and 30-minute window.
 
 The three executable Observatory Coast traces now have zero gap minutes at both floor widths. Before the correction, the main, bell-slip and menders paths had 16, 14 and 16 minutes below the 20-minute floor, and four, four and six minutes below the 30-minute floor. Players match work names to register names, keep the model’s wind condition with the estimate, repeat the gauge on the same interval, and select which crew receives the signed correction catch. The selected hook accepts a dated blank. The second quay reading stays open. These are author-estimated traces.
 
