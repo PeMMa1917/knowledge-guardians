@@ -24,7 +24,8 @@ export interface Letter {
 }
 
 const obj = (id: string): Condition => ({ objective: id });
-const corvan = (v: string): Condition => ({ flag: 'sd.corvan.outcome', eq: v });
+const flag = (f: string, v: string): Condition => ({ flag: f, eq: v });
+const corvan = (v: string): Condition => flag('sd.corvan.outcome', v);
 
 export const LETTERS: Letter[] = [
   { id: 'l01', chapter: 1, when: { flagSet: 'sd.corvan.outcome' },
@@ -40,8 +41,8 @@ export const LETTERS: Letter[] = [
   { id: 'l02', chapter: 2, when: obj('nile.dispatch'),
     opening: 'Dear Guardian, so the door with no name opened for you. It opened for me once.',
     remembers: [
-      { if: obj('nile.dispatch-pair'), text: 'You sent the two records as a pair. Careful. Most visitors will read the first one and walk on.' },
-      { if: obj('nile.dispatch-print'), text: 'You sent a printed copy with its limit stated. Good. Now count how many readers read the limit.' },
+      { if: flag('nile.dispatch', 'pair'), text: 'You sent the two records as a pair. Careful. Most visitors will read the first one and walk on.' },
+      { if: flag('nile.dispatch', 'print'), text: 'You sent a printed copy with its limit stated. Good. Now count how many readers read the limit.' },
       { text: 'Your dispatch was honest. Honest and slow. The Nexus likes slow.' },
     ],
     fair: 'Look at the old label on the public case, the one the Nexus wrote before you came. It says more than its records. I did not stamp that one. Your Nexus did.',
@@ -54,8 +55,8 @@ export const LETTERS: Letter[] = [
   { id: 'l04', chapter: 4, when: obj('coast.dispatch'),
     opening: 'Dear Guardian, the bell rang, and the harbour moved. Well done. Truly.',
     remembers: [
-      { if: obj('coast.dispatch.signal'), text: 'You sent the notice by signal: fast, but a signal cannot carry a "maybe".' },
-      { if: obj('coast.dispatch.runner'), text: 'You sent a runner: slower, but a person can answer questions. Your runner was out of breath, and still kinder than a flag.' },
+      { if: flag('coast.notice', 'signal'), text: 'You sent the notice by signal: fast, but a signal cannot carry a "maybe".' },
+      { if: flag('coast.notice', 'runner'), text: 'You sent a runner: slower, but a person can answer questions. Your runner was out of breath, and still kinder than a flag.' },
       { text: 'Your notice went out with its uncertainty. Good. Did the fishers read it as "go" or as "perhaps"?' },
     ],
     fair: 'People need "yes" or "no", not a percentage. You may say that is wrong. Then tell me how a fisher in a storm should read your percentage.',
@@ -88,8 +89,8 @@ export const LETTERS: Letter[] = [
   { id: 'l10', chapter: 10, when: obj('market.finish'),
     opening: 'Dear Guardian, I hear Rook Tamsin left my company and walks with you now. Look after Rook. Rook is harder than glass and breaks the same way.',
     remembers: [
-      { if: obj('market.publish.window'), text: 'You put the price comparison in the window, where households could see it. My agents could not sell a weighed-in basket on that street for a month.' },
-      { if: obj('market.publish.desk'), text: 'You left the records at the trade desk. Safe, checkable, and read by clerks. The households still buy by the basket.' },
+      { if: flag('market.response', 'window'), text: 'You put the price comparison in the window, where households could see it. My agents could not sell a weighed-in basket on that street for a month.' },
+      { if: flag('market.response', 'desk'), text: 'You left the records at the trade desk. Safe, checkable, and read by clerks. The households still buy by the basket.' },
       { text: 'You took the basket out of the weight. Small thing. Big thing.' },
     ],
     fair: 'Rook will tell you that my first customer wore your badge. Rook is right.',
@@ -102,8 +103,8 @@ export const LETTERS: Letter[] = [
   { id: 'l12', chapter: 12, when: obj('civic.finish'),
     opening: 'Dear Guardian, a machine that sends a library to some streets and not others. A rule that is sure and blind. Does it remind you of anyone?',
     remembers: [
-      { if: obj('civic.publish.even'), text: 'You chose the even rule. Same for every street, so nobody can complain. Except the streets that needed more.' },
-      { if: obj('civic.publish.reserve'), text: 'You kept a reserve window for the street the rule forgot. That is what Harrowmere needed: a window for the case nobody tested.' },
+      { if: flag('civic.response', 'even'), text: 'You chose the even rule. Same for every street, so nobody can complain. Except the streets that needed more.' },
+      { if: flag('civic.response', 'reserve'), text: 'You kept a reserve window for the street the rule forgot. That is what Harrowmere needed: a window for the case nobody tested.' },
       { text: 'You changed the rule in the open. I wish the Nexus had changed its label that way.' },
     ],
     fair: 'Rules make people feel safe. I never said that was bad. I only said it is not the same as being safe.',
@@ -116,7 +117,7 @@ export const LETTERS: Letter[] = [
   { id: 'l14', chapter: 14, when: obj('island.finish'),
     opening: 'Dear Guardian, we made one plan together, and the crates arrived. I did not stamp it. You did not caveat it to death.',
     remembers: [
-      { if: obj('island.publish.ferry'), text: 'You trusted the ferry route. So did I, in the end.' },
+      { if: flag('island.response', 'ferry'), text: 'You trusted the ferry route. So did I, in the end.' },
       { text: 'Your plan showed its trade-off on the sheet. The islanders argued about it, and then used it.' },
     ],
     fair: 'Perhaps certainty and care are not enemies. Perhaps they need a third thing: people who come to check.',

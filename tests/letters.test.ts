@@ -4,6 +4,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { LETTERS, composeLetter, dueLetters } from '../src/domain/letters';
 import type { Condition } from '../src/domain/types';
 import { Driver } from './driver';
+import { buildPack } from '../src/content';
 
 const content = readdirSync('src/content').filter((f: string) => f.endsWith('.json')).map((f: string) => readFileSync(`src/content/${f}`, 'utf8')).join('\n');
 const objectives = (c: Condition | undefined): string[] => !c ? [] : 'objective' in c ? [c.objective] : 'all' in c ? c.all.flatMap(objectives) : 'any' in c ? c.any.flatMap(objectives) : 'not' in c ? objectives(c.not) : [];
@@ -18,9 +19,15 @@ describe("Vesper Quill's letters (the rival)", () => {
     }
   });
 
-  it('every objective a letter waits for or remembers exists in the content', () => {
+  it('every objective a letter waits for is a real objective, and every remembered flag value is set somewhere', () => {
+    const real = new Set(buildPack().missions.flatMap((m) => m.objectives.map((o) => o.id)));
     for (const l of LETTERS) for (const id of [...objectives(l.when), ...l.remembers.flatMap((r) => objectives(r.if))])
-      expect(content.includes(`"id": "${id}"`), `${l.id}: ${id}`).toBe(true);
+      expect(real.has(id), `${l.id}: ${id}`).toBe(true);
+    const flagConds = (c: Condition | undefined): { flag: string; eq: unknown }[] => !c ? [] : 'eq' in c ? [c] : 'all' in c ? c.all.flatMap(flagConds) : 'any' in c ? c.any.flatMap(flagConds) : [];
+    for (const l of LETTERS) for (const r of l.remembers) for (const f of flagConds(r.if)) {
+      if (f.flag.startsWith('sd.')) continue; // Showdown outcomes are set by the engine
+      expect(content.includes(`"setFlag": "${f.flag}"`) && content.includes(`"value": "${f.eq}"`), `${l.id}: ${f.flag}=${f.eq}`).toBe(true);
+    }
   });
 
   it('the first letter arrives after the Corvan Showdown and remembers its outcome', () => {
