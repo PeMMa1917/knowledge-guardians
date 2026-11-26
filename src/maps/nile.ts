@@ -1,5 +1,6 @@
 /** WORLD-03: present-day fictional archive rooms. Only their objects are historical. */
 import type { Interactable, MapDef } from './types';
+import { sceneProp } from './sceneProps';
 
 const W = 25, H = 13;
 const room = (id: string, name: string, npcs: MapDef['npcs'], interactables: Interactable[], palette: number, stamps: MapDef['stamps']): MapDef => ({
@@ -24,6 +25,8 @@ const exhibit = (id: string, x: number, y: number, label: string, art: string): 
 export const NILE_HALL = room('nile.hall', 'Nile Archive: The Door Without a Name',
   [{ id: 'nile-iman', x: 12, y: 6, facing: 'down' }],
   [
+    ...sceneProp('nile.reading-bench', 17, 9, 'Imani’s reading bench', 'board-stand',
+      { copy: 'nile.scroll', edge: 'nile.tablet' }),
     door('nile-royal', 12, 3, 'the Royal Records Room (north)', 'nile.royal', 12, 10),
     door('nile-workers', 2, 6, 'the Workmen’s Room (west)', 'nile.workyard', 12, 10),
     door('nile-maps', 22, 6, 'the Map Room (east)', 'nile.route', 12, 10),
@@ -39,6 +42,8 @@ export const NILE_HALL = room('nile.hall', 'Nile Archive: The Door Without a Nam
 export const NILE_ROYAL = room('nile.royal', 'Nile Archive: Royal Records Room',
   [{ id: 'nile-nasir', x: 12, y: 7, facing: 'down' }],
   [
+    ...sceneProp('nile.caption-clips', 15, 5, 'Nasir’s caption clips', 'board-stand',
+      { dates: 'nile.slip', purposes: 'nile.scroll' }, { objective: 'nile.diplomacy' }),
     door('royal-back', 12, 12, 'the passage back to Imani', 'nile.hall', 12, 4),
     exhibit('SALLIER', 6, 5, 'Papyrus Sallier III', 'scroll'),
     exhibit('TREATY', 18, 5, 'the peace treaty and its replica', 'tablet'),
@@ -49,6 +54,8 @@ export const NILE_ROYAL = room('nile.royal', 'Nile Archive: Royal Records Room',
 export const NILE_WORKYARD = room('nile.workyard', 'Nile Archive: Workmen’s Room',
   [{ id: 'nile-leila', x: 20, y: 9, facing: 'left' }],
   [
+    ...sceneProp('nile.reader-seat', 17, 9, 'Leila’s reader seat', 'board-stand',
+      { chair: 'nile.slip', slip: 'nile.scroll' }, { objective: 'nile.workers' }),
     door('workyard-back', 12, 12, 'the passage back to Imani', 'nile.hall', 3, 6),
     exhibit('STRIKE', 5, 4, 'the Turin Strike Papyrus', 'scroll'),
     ...([[3, 'delay', 'the first stoppage'], [12, 'payment', 'a payment of grain'], [19, 'return', 'the second stoppage']] as const)
@@ -61,6 +68,8 @@ export const NILE_WORKYARD = room('nile.workyard', 'Nile Archive: Workmen’s Ro
 export const NILE_ROUTE = room('nile.route', 'Nile Archive: Map Room',
   [{ id: 'nile-marek', x: 16, y: 7, facing: 'left' }],
   [
+    ...sceneProp('nile.model-handover', 14, 8, 'Marek’s note for the next keeper', 'board-stand',
+      { repeat: 'nile.slip', limit: 'nile.scroll' }, { objective: 'nile.routes' }),
     door('route-back', 12, 12, 'the passage back to Imani', 'nile.hall', 21, 6),
     exhibit('MINE', 6, 5, 'the Turin Mine Map', 'map'),
     { id: 'nile-route-model', kind: 'model', x: 12, y: 6, w: 1, h: 1, label: 'the shelf-top route model', art: 'nile.map' },

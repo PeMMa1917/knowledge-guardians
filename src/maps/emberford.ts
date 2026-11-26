@@ -4,6 +4,7 @@
  * labelled "Documented" with a source. 40 x 28 tiles.
  */
 import type { MapDef } from './types';
+import { sceneProp } from './sceneProps';
 
 const W = 40, H = 28;
 // Plaza (stone) rectangle
@@ -101,6 +102,14 @@ export const EMBERFORD: MapDef = {
     { id: 'singer-teodora', x: 16, y: 15, facing: 'down', visibleIf: { origin: 'singer' } },
   ],
   interactables: [
+    ...sceneProp('emberford.gauge', 29, 19, 'the river gauge board', 'notice-board',
+      { repeat: 'board-stand', compare: 'cork-board' }),
+    ...sceneProp('emberford.tally', 14, 20, 'the bakers’ tally', 'ledger',
+      { weight: 'nile.tablet', loaves: 'nile.scroll' }),
+    ...sceneProp('emberford.repair-notice', 30, 21, 'the bridge repair notice', 'notice-board',
+      { sketch: 'nile.map', direction: 'signpost' }),
+    ...sceneProp('emberford.pattern-order', 9, 15, 'the smith’s sample tray', 'nile.tablet',
+      { sample: 'board-stand', record: 'ledger' }),
     { id: 'nile-correction-square', kind: 'sign', x: 16, y: 6, w: 1, h: 1, walkThrough: true, label: 'Oduya’s dated correction', art: 'nile.slip',
       text: 'The old claim stays beside the correction. A visitor can read both and see what changed.', visibleIf: { flag: 'nile.emberCorrection', eq: 'square' } },
     { id: 'nile-correction-talk', kind: 'sign', x: 16, y: 6, w: 1, h: 1, walkThrough: true, label: 'a copy for the market', art: 'nile.slip',

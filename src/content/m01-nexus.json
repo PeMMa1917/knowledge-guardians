@@ -16,7 +16,9 @@
      },
      "weave": {
       "concepts": [
-       "evidence"
+       "evidence",
+       "power",
+       "truth"
       ],
       "atl": [
        "thinking"
@@ -50,7 +52,8 @@
      ],
      "weave": {
       "concepts": [
-       "evidence"
+       "evidence",
+       "interpretation"
       ],
       "atl": [
        "research"
@@ -81,7 +84,8 @@
      "weave": {
       "concepts": [
        "evidence",
-       "interpretation"
+       "interpretation",
+       "certainty"
       ],
       "atl": [
        "thinking",
@@ -121,7 +125,9 @@
      "weave": {
       "concepts": [
        "evidence",
-       "justification"
+       "justification",
+       "objectivity",
+       "explanation"
       ],
       "atl": [
        "thinking",
@@ -163,7 +169,8 @@
      "weave": {
       "concepts": [
        "perspective",
-       "justification"
+       "justification",
+       "values"
       ],
       "atl": [
        "communication",
@@ -943,7 +950,7 @@
   {
    "id": "cold.open2",
    "speaker": "villager-2",
-   "text": "'The first ballpoint pen,' says a visitor, in a flat voice. Her friend nods: 'The first ballpoint pen.' Neither of them looks at the exhibits.",
+   "text": "A visitor starts to lift her notebook to the case. Her friend taps the archive seal on the glowing label. 'They've checked it for us.' The notebook shuts. Both repeat the words without looking at the exhibits.",
    "next": "cold.open3"
   },
   {
@@ -998,7 +1005,7 @@
   {
    "id": "ise.start3",
    "speaker": "warden-ise",
-   "text": "Look at each exhibit. Two are documented by real records; one is a reconstruction. Talk to Curator Dace and Clerk Venn. They disagree, and both have reasons. Take this journal, this lens and some marks for the road.",
+   "text": "At the patent desk, 'first' means earliest on file. At the workshop, it means the original design. Our translators came back with two different slips. See what each case can support. Take this journal, lens and some marks.",
    "effects": [
     {
      "setFlag": "talked.ise",
@@ -1196,7 +1203,7 @@
   {
    "id": "ise.lens",
    "speaker": "warden-ise",
-   "text": "Every date answers a question. 'When was it granted?' is a different question from 'When was it made?' The lens shows you which question a date answers."
+   "text": "The patent grant is documented. The reconstruction has a build date of its own. Put the Lens on each to see which event the date belongs to."
   },
   {
    "id": "ise.fray",
@@ -1414,7 +1421,7 @@
   {
    "id": "dace.why",
    "speaker": "curator-dace",
-   "text": "Because the pen people actually write with is the story they care about. A patent that nobody used is a footnote. That is my interpretation, not a fact. Venn disagrees.",
+   "text": "When a visitor pulls a pen from her bag, I want the label to tell her how it got there. Venn shows the earliest design he can trace. His date is on the record. My interpretation is about what that date leaves out.",
    "claimKind": "value"
   },
   {
@@ -1436,7 +1443,7 @@
   {
    "id": "dace.ready",
    "speaker": "curator-dace",
-   "text": "The visitors are curious now. Venn wants to argue his case in front of them. A friendly practice Showdown. Are you ready?",
+   "text": "The visitors have stopped between the cases. Some want a date they can check; others want to know who made a pen they could use. Venn is setting his record on the board. Bring a case for the visitors, or show why the two questions need different labels.",
    "options": [
     {
      "text": "Yes. Let's put it to the crowd.",
@@ -1473,7 +1480,7 @@
   {
    "id": "dace.label",
    "speaker": "curator-dace",
-   "text": "The old label must go. The stand by the entrance has the new label parts. Build one that visitors can repeat correctly.",
+   "text": "The visitors will carry whichever words you put on that stand. Name the people your record can name. Leave room for what it can't tell you. I'll listen to how the words travel.",
    "options": [
     {
      "text": "Show me the label stand.",
@@ -1494,7 +1501,7 @@
   {
    "id": "dace.after",
    "speaker": "curator-dace",
-   "text": "The new label is up. A visitor asked who wrote it. I said {name} did, and that {they} checked every date. People are already arguing about the right question, which is not the worst thing.",
+   "text": "A visitor read your label aloud. A friend who hadn't seen the cases came back to check the names. I told them a Guardian called {name} put the cases in reach. They'll have their own reasons for which first matters.",
    "options": [
     {
      "text": "I want to change the label.",
@@ -1565,7 +1572,7 @@
   {
    "id": "venn.limits",
    "speaker": "clerk-venn",
-   "text": "No. A patent proves a claim was made and granted. It does not prove the pen sold or wrote well. But it is the earliest checkable claim in this room.",
+   "text": "A clerk could check the day a patent was granted. To show that it wrote well, we'd need a different record or a test. Even a good mark from our model would tell us about this bench and this model.",
    "claimKind": "interpretation"
   },
   {

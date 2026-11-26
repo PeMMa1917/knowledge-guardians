@@ -6,6 +6,7 @@
  * plaques, each about one person shown with their own place and people, from many periods.
  */
 import type { MapDef } from './types';
+import { sceneProp } from './sceneProps';
 
 const W = 40, H = 20;
 
@@ -76,6 +77,14 @@ export const NEXUS: MapDef = {
     { id: 'translator-lio', x: 24, y: 13, facing: 'right', visibleIf: { origin: 'traveller' } },
   ],
   interactables: [
+    ...sceneProp('nexus.entrance-guide', 13, 17, 'the entrance guide stand', 'board-stand',
+      { record: 'ledger', use: 'nile.slip' }),
+    ...sceneProp('nexus.loan-slip', 11, 8, 'the model loan slip', 'nile.slip',
+      { alias: 'nile.scroll', number: 'ledger' }),
+    ...sceneProp('nexus.translation-slip', 15, 8, 'the two translators’ proofs', 'nile.slip',
+      { date: 'ledger', gloss: 'nile.scroll' }),
+    ...sceneProp('nexus.route-board', 18, 14, 'the visitors’ route board', 'cork-board',
+      { objects: 'nile.map', sources: 'ledger' }),
     { id: 'nile-stone-case', kind: 'exhibit', exhibit: 'OBJ-NILE-STONE', x: 31, y: 17, w: 1, h: 1, walkThrough: true, label: 'the Singapore Stone fragment', art: 'nile.stone', visibleIf: { flag: 'nile.returned', eq: true } },
     { id: 'nile-badang-case', kind: 'exhibit', exhibit: 'OBJ-NILE-BADANG', x: 34, y: 17, w: 1, h: 1, walkThrough: true, label: 'the Badang account', art: 'nile.scroll', visibleIf: { flag: 'nile.returned', eq: true } },
     { id: 'nile-stone-label', kind: 'label', kit: 'nile-stone', x: 36, y: 17, w: 1, h: 1, walkThrough: true, label: 'the river records label stand', art: 'label-stand', visibleIf: { flag: 'nile.returned', eq: true } },

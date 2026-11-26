@@ -12,7 +12,7 @@ The game does not grade the player. It gives the same credit for every reasoned 
 
 - **The Nexus** is a museum hub. Each wing holds real, dated objects from many places and periods.
 - **Aethelgard** is a fictional world (labelled `fictional-world`). Its towns have their own people, trades and stories. Fictional cultures do not copy a real culture.
-- The full design has many worlds. Only chapter 1 (the Nexus and Emberford in Aethelgard) is built.
+- Chapter 2 takes the Guardian from the Nexus to the Nile Archive and back. The full design has many more worlds.
 
 ## Core tools (play, not quizzes)
 
@@ -28,6 +28,7 @@ The game does not grade the player. It gives the same credit for every reasoned 
 
 ## Learning layer
 
+- **Recurring choices:** the entrance guide, translation proofs, river gauge and archive displays let small decisions leave visible changes the player can revisit. The [content guide](CONTENT_GUIDE.md#introduce-ideas-through-decisions-and-consequences) maps the opening route and later encounters to the curriculum for authors.
 - **Learner profile:** short "moments" in the journal when the player acts in a way that fits an attribute. Never a score.
 - **ATL skills, areas of knowledge, DP subjects:** content records carry tags. The teacher view counts them for the class.
 - **EE and CAS:** practice only. Play is never CAS.

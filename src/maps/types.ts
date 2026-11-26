@@ -3,7 +3,7 @@
  * characters, interactable objects, zones and lights. Units are tiles.
  * The WorldScene turns this data into a playable place.
  */
-export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door' | 'secret' | 'tiles' | 'shop' | 'gather' | 'workbench' | 'reading' | 'rumours' | 'trader' | 'seal' | 'boss' | 'model';
+export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door' | 'secret' | 'tiles' | 'shop' | 'gather' | 'workbench' | 'reading' | 'rumours' | 'trader' | 'seal' | 'boss' | 'model' | 'scene';
 
 export interface Interactable {
   id: string;
@@ -19,7 +19,7 @@ export interface Interactable {
   sighting?: string;
   alcove?: string;            // for kind 'alcove': an Exhibition Hall alcove (SYM-001)
   thread?: string;            // for kind 'thread'
-  node?: string;              // for kind 'thread': the node at this spot
+  node?: string;              // for kind 'thread' or 'scene': the node at this spot
   place?: string;             // for kind 'waystone': the place name
   text?: string;              // for kind 'sign'
   flag?: string;              // for kind 'sign': set to true when read; for kind 'door': set when used

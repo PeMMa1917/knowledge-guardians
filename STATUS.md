@@ -172,3 +172,9 @@ Start from a Chapter 1 save after showing Ise the gold seal and reading Elsbet's
 - **Teacher view:** Chapter 1 and Chapter 2 are counted separately. Existing voluntary exports, skill records and privacy boundaries are unchanged.
 
 The sources and object limits are in `docs/SOURCES.md`; the rooms and their fictional responses use original schematic art. Next: playtest on school devices, read the object wording with a history teacher, and expand the archive with more documented people, communities and cross-world investigations.
+
+## Learning through small actions
+
+- The opening Nexus story puts the archive's authority, different meanings of “first,” and the effects of a public label in front of the player. At the bench, the latest two test strips can be read side by side, with text descriptions of the marks.
+- Twelve optional props across the Nexus, Emberford and Nile Archive offer two ways to act. The stand changes after the decision and can be revisited. The three archive-room follow-ups appear after their corresponding investigations.
+- The [content guide](docs/CONTENT_GUIDE.md#introduce-ideas-through-decisions-and-consequences) maps the opening and later encounters to the concepts and framework. Time the first route with new players to see which choices they meet in 30 minutes, then use that evidence when placing the next encounters.

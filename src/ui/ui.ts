@@ -30,7 +30,7 @@ import { STAGE_LABEL, nextStep, skillStage, type SkillStage } from '../domain/sk
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
 import type { FrameItem, PlaqueFace, Pronouns, RestoreLayer, PuzzleRecord, SorterFruit } from '../domain/types';
 import { ACTIONS, PRESETS, actionFor, assignKey, mappableKey, type Action } from '../app/keymap';
-import type { GameEvent, SimulationResult } from '../domain/engine';
+import { SIM_MODEL, type GameEvent } from '../domain/engine';
 import { conceptRings, conceptXP, totalXP } from '../domain/permanent';
 import { describeSection, layers, type ForgeAction } from '../domain/forge';
 import { labelText, type LabelResult } from '../domain/label';
@@ -961,6 +961,8 @@ export class UI implements UIApi {
         if (ctx.settings.talkSounds) bark(PLAYER_VOICES.find((x) => x.id === ctx.settings.playerVoice)?.v ?? null, ctx.settings.sfxVolume); else this.sfx('sfx.click');
         const r = c.dispatch({ type: 'ChooseDialogueOption', node: id, index: o.index }) as any;
         if (r.some((e: GameEvent) => e.kind === 'error')) return;
+        // A choice can change map props without emitting feedback events.
+        if (r.length === 0) ctx.world?.refreshWorld();
         const next = r.nextNode as string | null;
         if (next) this.showNode(next); else this.endDialogue(o.option.open);
       } }, h('span', { class: 'num', 'aria-hidden': 'true' }, `${i + 1}`), o.option.tag ? h('em', {}, `${o.option.tag}: `) : null, personalise(o.option.text, c.state.player),
@@ -1100,27 +1102,39 @@ export class UI implements UIApi {
     const radios = (name: string, opts: Record<string, string>, cur: string, set: (v: string) => void) =>
       h('fieldset', {}, h('legend', {}, name), ...Object.entries(opts).map(([v, label]) => h('label', { class: 'radio' },
         h('input', { type: 'radio', name, value: v, checked: v === cur, onchange: () => set(v) }), ` ${label}`)));
+    const setup = (pen: string, surface: string) => `${PEN_NAMES[pen]} on ${SURFACES[surface].toLowerCase()}`;
+    const strip = (label: string, pen: string, surface: string, mark: number, note: string) =>
+      h('section', {}, h('h3', {}, label), h('p', {}, setup(pen, surface)),
+        this.markCanvas(mark), h('p', { class: 'fine' }, note));
     const run = () => {
-      const ev = c.dispatch({ type: 'RunSimulation', pen, surface });
-      const r = (ev.find((e) => e.kind === 'simulation') as any)?.result as SimulationResult | undefined;
+      const oldPen = String(c.state.flags['sim.lastPen'] ?? '');
+      const oldSurface = String(c.state.flags['sim.lastSurface'] ?? '');
+      const previous = SIM_MODEL[oldPen]?.[oldSurface];
+      const r = c.dispatch({ type: 'RunSimulation', pen, surface }).find((e) => e.kind === 'simulation')?.result;
       if (!r) return;
       this.sfx('sfx.metal');
       clear(result);
-      result.append(this.markCanvas(r.markQuality), h('p', {}, r.note),
-        h('p', { class: r.fairTest ? 'fair' : 'unfair' }, r.testCount === 1 ? 'First test. Run another to compare.' : r.fairTest ? 'Fair comparison: you changed exactly one thing since the last test.' : 'Not a fair comparison: you changed both the pen and the surface (or nothing). You cannot tell which change made the difference.'));
-      history.append(h('li', {}, `${PEN_NAMES[r.pen]} on ${SURFACES[r.surface].toLowerCase()}: mark quality ${r.markQuality}/3${r.fairTest ? ' (fair comparison)' : ''}`));
+      const comparison = !previous ? 'Pin a second strip beside this one to compare.'
+        : r.fairTest ? (r.pen === oldPen ? 'Same pen, different surface.' : 'Same surface, different pen.')
+          : r.pen === oldPen && r.surface === oldSurface ? 'Same setup again. Try changing the pen or the surface.'
+            : 'Both the pen and the surface changed. Try one change to see which made the difference.';
+      result.append(h('div', { class: 'two-col' },
+        previous ? strip('Previous strip', oldPen, oldSurface, previous.q, previous.note) : null,
+        strip('New strip', r.pen, r.surface, r.markQuality, r.note)),
+        h('p', { class: r.fairTest ? 'fair' : 'fine' }, comparison));
+      history.append(h('li', {}, setup(r.pen, r.surface)));
     };
     this.openModal('bench', 'Marking test', this.closeBtn(),
       h('h2', {}, 'Workshop bench: marking test'),
       h('div', { class: 'chips' }, claimChip('simulation'), histChip('reconstruction')),
-      h('p', { class: 'fine' }, 'A controlled simulation. The values are MODEL ASSUMPTIONS for play, not measurements of historical pens. Change one thing at a time.'),
+      h('p', { class: 'fine' }, 'Make two marks and pin the strips together. Each strip comes from the workshop model. It tells you how this setup behaves in the simulation.'),
       h('div', { class: 'two-col' }, radios('Pen', PEN_NAMES, pen, (v) => { pen = v; }), radios('Surface', SURFACES, surface, (v) => { surface = v; })),
       h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: run }, 'Run test')),
       result, h('h3', {}, 'Your tests'), history);
   }
 
   private markCanvas(q: number): HTMLElement {
-    const cv = h('canvas', { width: '160', height: '24', class: 'mark', role: 'img', 'aria-label': `Mark quality ${q} out of 3` }) as HTMLCanvasElement;
+    const cv = h('canvas', { width: '160', height: '24', class: 'mark', 'aria-hidden': 'true' }) as HTMLCanvasElement;
     const g = cv.getContext('2d')!;
     g.fillStyle = '#efe4c4'; g.fillRect(0, 0, 160, 24);
     g.fillStyle = '#1d2b45';

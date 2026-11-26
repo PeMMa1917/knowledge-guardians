@@ -8,6 +8,7 @@ import { describe, expect, it } from 'vitest';
 import { buildPack } from '../src/content';
 import { totalXP } from '../src/domain/permanent';
 import type { ShowdownMove } from '../src/domain/showdown';
+import { MAPS } from '../src/maps';
 
 const pack = buildPack();
 
@@ -459,7 +460,10 @@ describe('dialogue graph', () => {
   it('every node is reachable from a character, an event or a scene entry', () => {
     const reach = new Set<string>();
     const entries = ['cold.open', 'waystone.nexus', 'waystone.emberford', 'oldsign.read'];
-    const stack = [...pack.characters.flatMap((c) => c.talk.map((t) => t.node)), ...pack.events.map((e) => e.node), ...(pack.keepsakeTalks ?? []).map((t) => t.node), ...entries];
+    const propScenes = Object.values(MAPS).flatMap((map) => map.interactables
+      .filter((prop) => prop.kind === 'scene').map((prop) => prop.node!));
+    const stack = [...pack.characters.flatMap((c) => c.talk.map((t) => t.node)), ...pack.events.map((e) => e.node),
+      ...(pack.keepsakeTalks ?? []).map((t) => t.node), ...entries, ...propScenes];
     while (stack.length) {
       const id = stack.pop()!;
       if (reach.has(id)) continue;

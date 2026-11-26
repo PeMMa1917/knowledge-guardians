@@ -93,6 +93,38 @@ Rules for `historicalLabel`:
 
 Most records have a `weave` field: `{ "concepts": [...], "atl": [...], "aoks": [...], "subjects": [...] }`. The IDs are in `src/domain/curriculum.ts`. The game counts these when the player meets them, and the teacher view shows the totals. Tag only what the play really touches. A lucky event (`"luck": true`) has empty tags. EE and CAS appear as practice only. Never say that play counts as CAS.
 
+### Introduce ideas through decisions and consequences
+
+In the opening Nexus route, put the ideas on the path from the entrance to the portal. Keep a first-session playtest focused on what a new player actually does in their first 30 minutes. Follow the main route and try it again with a player who wanders. Record which ideas each player actually meets.
+
+| Opening action | What the player can notice |
+|---|---|
+| Look at the glowing entrance label, then talk to Ise. | A seal lends power to a claim. People repeat it before they check whether it is true. |
+| Pick a direction for visitors, inspect the cases and take the Lens to the dates. | A date is evidence for a particular question. A range sets a limit on certainty. A patent, a model and a museum object tell different stories. |
+| Compare the translators’ proofs and decide what to send back. | Words acquire different meanings in different settings. A translation can change the claim a visitor hears. |
+| Pin two marking strips side by side. | Holding an input steady makes a comparison less dependent on the tester. A difference can support an explanation under the model's conditions. |
+| Hear Dace and Venn and face the crowd. | Each perspective values something different. A player can justify both a narrower claim and a reframe that lets both claims stand. |
+| Decide what to put on the loan slip, and replace the glowing label. | The public record has an audience. Give people a way to check it, respect a maker’s request, and keep a claim within its evidence. |
+
+Revisit the four parts of the knowledge framework through play.
+
+| Part | Nexus | Emberford | Nile Archive |
+|---|---|---|---|
+| Scope | Choose which kind of “first” a record can establish. | Set the limits of the claim a test sample can carry. | Decide how far the route model can speak for an ancient record. |
+| Perspectives | Hear the patent clerk, the curator and their visitors. | Read a tally with a baker's or a ferry crew's purpose. | Hear what the scribe records and leave a place for the people he did not quote. |
+| Methods and tools | Compare dates, then run a fair bench comparison. | Read the gauge marks in context and arrange a repeatable reading. | Change the road with the same load, then leave the next keeper conditions for a repeat. |
+| Ethics | Publish a checkable loan slip while keeping a name private. | Pass on a repair notice in a form the next crew can use. | Set out a legible copy and give readers a way to inspect the gap in the record. |
+
+Put TOK language where it helps a player act. A premise is something a witness is relying on, a limit is a line on the label, and a counterexample is a result that makes somebody change their claim. Return to the same idea with a different action later. Let players compare two papers, see what changes on a stand, or hear a visitor carry a changed version of the claim.
+
+Build learner-profile moments around things the player did, such as helping a reader, revising a claim in public or waiting for a better observation. Offer approaches to teaching through inquiry, local problems, characters who work together, optional Lumen help and world feedback. Give the five approaches to learning practical uses. Players plan a route, check a record, compare runs, negotiate a heading and pass the result to a crew. For EE practice, players can narrow a question about a case and trace how a source supports it. For CAS practice, the East Well gives a community problem to listen to, investigate and report back on. Keep tags and planning vocabulary in author-facing material.
+
+Use DP subjects when their methods change an action. History puts two dates and their records in order. Languages change a caption and what a reader understands. Physics and design technology change the bench setup. Mathematics and economics change how the market tally serves its users. Visual arts changes what a reader notices first. Give less-represented subjects their own appropriate actions as new cases are built.
+
+### Add a small choice to a map prop
+
+Put the opening scene and its two outcomes in `src/content/prop-scenes.json`. Use `sceneProp` to place the prop with separate art for each result. Choices set the scene's flag to the outcome ID and lead to that outcome node. On revisit, the prop opens the same outcome. A leave option keeps the decision open. Give each route a concrete use and a cost or limit. New choices here affect the scene and the visible prop, so players can choose freely without working for points.
+
 ## Add a label kit (the label builder and the Fray)
 
 A label kit (`labelKits`) is a museum label that the player builds from parts: a **subject**, a **criterion** (what the subject was "first" at), a **limit** (a qualifier), and **support cards**.
