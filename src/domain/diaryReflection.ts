@@ -11,15 +11,25 @@ type ReflectionSource = Pick<DiaryEntry, 'id' | 'title' | 'kind'> & {
   event?: { kind: string; key: string; outcome?: string };
 };
 type Questions = Readonly<Record<string, string>>;
+function questPrompt(title: string) {
+  return `Which part of your work in “${title}” would you show a Guardian who had just arrived?`;
+}
 const questionsByEntry: Readonly<Record<string, Questions>> = authored;
 
 export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
   return value === 'note' || value === 'reflection' || value === 'question';
 }
 
-export function diaryQuestions(entry: ReflectionSource): Questions {
+export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
-  if (Object.hasOwn(questionsByEntry, key)) return questionsByEntry[key];
+  if (Object.hasOwn(questionsByEntry, key)) {
+    const questions = questionsByEntry[key];
+    // A student may already have answered the earlier general question on this quest.
+    if (key.startsWith('quest:') && saved && Object.hasOwn(saved, 'quest') && !Object.hasOwn(questions, 'quest')) {
+      return { quest: questPrompt(entry.title), ...questions };
+    }
+    return questions;
+  }
   const title = entry.title;
   const event = entry.event?.kind ?? entry.kind;
   switch (event) {
@@ -44,7 +54,7 @@ export function diaryQuestions(entry: ReflectionSource): Questions {
     case 'correction':
       return { correction: `After “${title}”, what would you check to see whether the person affected got the update?` };
     case 'quest':
-      return { quest: `Which part of your work in “${title}” would you show a Guardian who had just arrived?` };
+      return { quest: questPrompt(title) };
     default:
       if (entry.id.startsWith('place:')) return { arrival: `What first caught your eye at ${title}, and where did it lead you?` };
       if (entry.id.startsWith('thread:')) return { thread: `Where on “${title}” did you want to ask who left the next record?` };

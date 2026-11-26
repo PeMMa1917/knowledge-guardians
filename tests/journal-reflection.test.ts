@@ -100,6 +100,22 @@ describe('optional private journal prompts', () => {
     expect(restored.notes[1].reflections?.[0].response).toBe('Try another angle.');
   });
 
+  it('keeps an earlier quest question beside a new scene question if the student wrote an answer', () => {
+    const state = campaign();
+    state.objectivesDone.push('sea.feedback');
+    const id = 'quest:sea.feedback';
+    state.adventureDiary.reflectionResponses = { [id]: { quest: 'I want to show the blank water.' } };
+    const prior = view(readBack(state)).entries.find((entry) => entry.id === id)!;
+    expect(prior.reflections).toEqual([
+      { id: 'quest', prompt: expect.stringContaining('Guardian who had just arrived'), response: 'I want to show the blank water.' },
+      { id: 'from-the-scene', prompt: expect.stringContaining('boat') },
+    ]);
+    const edited = engine.dispatch({ type: 'SetDiaryReflection', entry: id, prompt: 'quest', text: 'Two crews.' }, state, newPermanent(), at);
+    expect(edited.state.adventureDiary.reflectionResponses?.[id]?.quest).toBe('Two crews.');
+    state.adventureDiary.reflectionResponses = {};
+    expect(view(state).entries.find((entry) => entry.id === id)?.reflections).toHaveLength(1);
+  });
+
   it('keeps a blocked route’s prompt distinct from a completed walk', () => {
     const state = campaign();
     state.adventureDiary.entries.push({

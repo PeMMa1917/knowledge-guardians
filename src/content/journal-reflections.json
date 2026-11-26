@@ -203,5 +203,68 @@
   },
   "quest:pigment-sample.reconciled": {
     "quest": "Which detail on the two new captions keeps a reader from borrowing R13’s story for the older loan?"
+  },
+  "quest:m01.o3.lens": {
+    "from-the-scene": "Which date could you read off the object, and which date needed a keeper’s record?"
+  },
+  "quest:m02.o2.claim": {
+    "from-the-scene": "If you had seen only Corvan’s stall, which part of his story could you have checked there?"
+  },
+  "quest:nile.return": {
+    "from-the-scene": "Which visitor can act on the packet Imani sent, and who is still waiting on a different piece of the archive?"
+  },
+  "quest:preserved.coast": {
+    "from-the-scene": "Which mark on the coastal map needed its place in the ground before you could read it?"
+  },
+  "quest:coast.forecast": {
+    "from-the-scene": "If the wind changes before the notice reaches the quay, which part of the forecast can Ruan still stand by?"
+  },
+  "quest:forest.account": {
+    "from-the-scene": "What can the bridge keeper remember on a day when no lookout could see the trail?"
+  },
+  "quest:metal.docket": {
+    "from-the-scene": "The docket follows a cart. Which part of a panel’s history can travel with it?"
+  },
+  "quest:copies.feedback": {
+    "from-the-scene": "If the landing reader passed the notice to a friend, what detail about access could vanish in the retelling?"
+  },
+  "quest:sea.feedback": {
+    "from-the-scene": "Whose boat might turn back because someone read blank water as a warning?"
+  },
+  "quest:stage.sightline": {
+    "from-the-scene": "Which gesture would a gallery visitor miss while the director could still see it?"
+  },
+  "quest:market.terms": {
+    "from-the-scene": "If Dagny swapped the wick and display headings, which buyer might change their mind first?"
+  },
+  "quest:water.retest": {
+    "from-the-scene": "After the repair, which change in the water can you trace to the gate setting, and which needs another run?"
+  },
+  "quest:civic.rules": {
+    "from-the-scene": "Who moves closer to a window when you change the rule while keeping the request slips in place?"
+  },
+  "quest:voices.verify": {
+    "from-the-scene": "A visitor remembers being at the trial. Which part of their memory belongs on the public opening notice?"
+  },
+  "quest:island.lower": {
+    "from-the-scene": "If a courier brought only the upper-landing sheet, where would their instructions run out?"
+  },
+  "quest:council.reader": {
+    "from-the-scene": "What would the courier have to do to see the hand from the far side of the shutter?"
+  },
+  "quest:parcel.rack": {
+    "from-the-scene": "What happened to the two slips that went missing from Omrin’s count?"
+  },
+  "quest:parcel.roll": {
+    "from-the-scene": "Could two matching moons tell Omrin which runner owned the wrapper? What could he check next?"
+  },
+  "quest:parcel.reply": {
+    "from-the-scene": "Which person would have the hardest time using the counter you left behind?"
+  },
+  "parcel:reply:desk": {
+    "chair": "What could Omrin learn from the torn wrapping that a mark on the roll never recorded?"
+  },
+  "parcel:reply:token": {
+    "token": "Who can return now without telling the waiting line why they came back?"
   }
 }

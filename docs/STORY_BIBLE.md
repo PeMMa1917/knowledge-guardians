@@ -407,3 +407,9 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 ## 16. The 150 story elements
 
 Mika's list of 150 story elements is adapted to this game in [STORY_ELEMENTS.md](STORY_ELEMENTS.md), with a mark for each (in the game, partly, planned). Check it when you plan new content.
+
+### Two People for One Parcel
+
+A torn parcel wrapper comes under the Ledger Room door after its claim has closed. Lella opens an empty drawer on purpose. Omrin’s blind spring sometimes exposes the seal. Players pin a drawer and run both opening rules on the same six slips. A second work surface lets them thread Lella’s own tag to the queue, then run the thread between every pair. The two moon tags are grounds to reopen the claim. Neither identifies an owner.
+
+At the return slot, the Guardian can leave anonymous tokens or stay to hear both accounts. Lella and Omrin remember the arrangement in separate conversations. Both arrangements can be tried on the same save. The rack and roll give a civic use to the reasoning encountered at Dov’s lantern crates and Tova’s ferry.

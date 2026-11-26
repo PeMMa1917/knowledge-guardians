@@ -2139,6 +2139,20 @@
         ],
         "game": 218,
         "story": 77
+      },
+      {
+        "objective": "parcel.rack",
+        "action": "Pin a drawer, then run the same six placements through a sighted keeper and a blind spring. Keep the two early reveals in view when comparing the counts.",
+        "styles": [
+          "strategist",
+          "explorer"
+        ],
+        "modes": [
+          "physical",
+          "analytical"
+        ],
+        "game": 110,
+        "story": 77
       }
     ]
   },

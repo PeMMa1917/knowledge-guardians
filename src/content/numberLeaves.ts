@@ -53,9 +53,11 @@ function sourceLinks(record: NumberLeaf) {
 export const numberLeafContent = {
   characters: [
     { id: 'number-leaf-lella', name: 'Lella Sorn', role: 'Teaches new runners on the low practice boards', mode: 'fictional',
-      sprite: 'villager-2', talk: [{ node: 'number-leaf.lella' }] },
+      sprite: 'villager-2', talk: [{ node: 'parcel.lella.desk', if: { flag: 'parcel.reply', eq: 'desk' } },
+        { node: 'parcel.lella.token', if: { flag: 'parcel.reply', eq: 'token' } }, { node: 'number-leaf.lella' }] },
     { id: 'number-leaf-omrin', name: 'Omrin Fenn', role: 'Keeps the finding desk and its corrections', mode: 'fictional',
-      sprite: 'villager-1', talk: [{ node: 'number-leaf.omrin' }] },
+      sprite: 'villager-1', talk: [{ node: 'parcel.omrin.desk', if: { flag: 'parcel.reply', eq: 'desk' } },
+        { node: 'parcel.omrin.token', if: { flag: 'parcel.reply', eq: 'token' } }, { node: 'number-leaf.omrin' }] },
   ],
   dialogue: [
     { id: 'number-leaf.lella', speaker: 'number-leaf-lella', historicalLabel: 'fictional-world',

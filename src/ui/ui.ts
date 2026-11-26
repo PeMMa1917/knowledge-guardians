@@ -115,6 +115,7 @@ import { dateRegisterPanel } from './dateRegister';
 import { STORY_FRAME_GROUP } from '../content/storyArchive';
 import { storyFramePanel } from './storyFrames';
 import { NUMBER_LEAF_GROUP } from '../content/numberLeaves';
+import { parcelLedgerPanel } from './parcelLedger';
 import { numberLeavesPanel } from './numberLeaves';
 import { IMPRINT_GROUP } from '../content/copyImprintCases';
 import { REFERENCE_PROOF } from '../domain/referenceProofs';
@@ -3429,6 +3430,9 @@ export class UI implements UIApi {
         }));
     } else if (id === 'specimen-return') {
       this.openSpecimenReturn();
+    } else if (id.startsWith('parcel-ledger:')) {
+      this.openModal('bench-panel wide', 'Two People for One Parcel', this.closeBtn(),
+        parcelLedgerPanel(ctx.controller, id.slice('parcel-ledger:'.length), () => this.sfx('sfx.page')));
     } else if (id.startsWith(`${NUMBER_LEAF_GROUP}:`)) {
       const place = id.slice(NUMBER_LEAF_GROUP.length + 1);
       this.openModal('bench-panel wide', 'The Ledger Room', this.closeBtn(),
@@ -3791,14 +3795,19 @@ export class UI implements UIApi {
     const doorRow = (onPick: ((d: number) => void) | null, show: (d: number) => string, cls: (d: number) => string) =>
       h('div', { class: 'doors-row' }, ...[0, 1, 2].map((d) => h('button', { type: 'button', class: `door-crate ${cls(d)}`, disabled: !onPick, 'aria-label': `Crate ${d + 1}: ${show(d) || 'closed'}`, onclick: () => onPick?.(d) },
         h('span', { class: 'door-num' }, String(d + 1)), h('span', { class: 'door-show' }, show(d)))));
-    const head = () => [this.closeBtn(), h('h2', {}, "Dov's Three Doors"),
+    const parcel = c.state.flags['parcel.reply'];
+    const head = () => [this.closeBtn(), h('h2', {}, "Dov's Three Doors")];
+    const welcome = () => [
+      ...(parcel === 'desk' || parcel === 'token' ? [h('p', { class: 'fine' }, parcel === 'desk'
+        ? 'Dov pats a stool reserved for the next runner. “Lella told me about the chair. Sit on this side. You can see exactly which crate I open.”'
+        : 'A brass token lies beside Dov’s lantern. “Omrin sent it. Anyone can take another turn with me, even if they’ve forgotten which box they picked.”')] : []),
       h('p', {}, "Dov hides a lantern under one of three crates. You pick one. Then Dov, who knows where the lantern is, lifts an empty crate you did not pick. Do you stay, or switch to the last crate?")];
     const tallyLine = () => h('p', { class: 'fine', role: 'status' }, `Your rounds: stayed ${tally.stay.n} times, won ${tally.stay.w} · switched ${tally.swap.n} times, won ${tally.swap.w}.`);
     const pick = () => {
       const prize = doorPrize(seed, round);
-      box.replaceChildren(...head(), h('p', {}, h('strong', {}, `Round ${round + 1}. `), 'Pick a crate.'),
+      box.replaceChildren(...head(), ...(round === 0 ? welcome() : []), h('p', {}, h('strong', {}, `Round ${round + 1}. `), 'Pick a crate.'),
         doorRow((d) => decide(prize, d), () => '', () => ''), tallyLine(),
-        round >= 6 ? h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => predict() }, "Enough rounds: ask for Dov's counting frame")) : h('p', { class: 'fine' }, `Play at least ${6 - round} more round${6 - round === 1 ? '' : 's'}. Try both plans.`));
+        round > 0 ? h('div', { class: 'row' }, h('button', { type: 'button', onclick: () => predict() }, 'Try Dov’s counting frame')) : '');
     };
     const decide = (prize: number, mine: number) => {
       const opened = pellOpens(prize, mine, true, fairRng(seed * 31 + round));
@@ -3852,22 +3861,25 @@ export class UI implements UIApi {
     const seed = runs + 5;
     const box = this.openModal('bench-panel wide', 'The Ferry Guest Book');
     this.sfx('sfx.page');
-    const head = () => [this.closeBtn(), h('h2', {}, 'The Ferry Guest Book'),
-      h('p', {}, "Tova keeps a guest book on the ferry. Each passenger writes the day of their birthday. 'The ferry folk have an old bet,' she says. 'How many passengers sign before two have the same birthday?'")];
-    let guess = 0;
+    const head = () => [this.closeBtn(), h('h2', {}, 'The Ferry Guest Book')];
+    let guess: number | null = null;
     const ask = () => {
       const slider = h('input', { type: 'range', min: '2', max: '200', value: '60', 'aria-label': 'Your guess: passengers before two share a birthday' }) as HTMLInputElement;
       const out = h('strong', {}, '60');
       slider.oninput = () => { out.textContent = slider.value; };
-      box.replaceChildren(...head(), h('p', {}, 'Your guess, for a usual boat: about how many passengers sign before the first shared birthday? (A year has 365 days.)'),
+      box.replaceChildren(...head(), h('p', {}, 'Tova unties the ferry book. Two passengers have marked the same day. “I remember the crowd. I can never remember how far down the page it happened.”'),
+        h('p', {}, 'Set a marker where you expect the first shared birthday, or open the book with the marker in your pocket. The ferry model uses 365 equally likely days.'),
         ...this.rumourReplies('ferry'),
+        ...(c.state.flags['parcel.reply'] === 'desk' ? [h('p', { class: 'clue-view' }, 'Tova leaves the bench beside the gangplank free. “Omrin said a second account was worth a little waiting. Listen from here. You can hear the people who never signed.”')]
+          : c.state.flags['parcel.reply'] === 'token' ? [h('p', { class: 'clue-view' }, 'Two plain counters sit beside the book. Tova taps them. “The ledger runners sent those. Anyone who wants a second turn can take one quietly.”')] : []),
         h('div', { class: 'row' }, slider, out),
-        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => { guess = Number(slider.value); boat(0); } }, 'Open the book for the first boat')));
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => { guess = Number(slider.value); boat(0); } }, 'Set the marker and open the book'),
+          h('button', { type: 'button', onclick: () => boat(0) }, 'Open the book for the first boat')));
     };
     const boat = (n: number) => {
       const g = boatGuests(seed, n);
       const last = g[g.length - 1], firstAt = g.indexOf(last);
-      box.replaceChildren(...head(), h('p', {}, `Boat ${n + 1}. Your guess: ${guess}.`),
+      box.replaceChildren(...head(), h('p', {}, `Boat ${n + 1}.${guess === null ? '' : ' Your marker is at passenger ' + guess + '.'}`),
         h('ol', { class: 'guest-list' }, ...g.map((d, i) => h('li', { class: i === firstAt || i === g.length - 1 ? 'match' : '' }, dayName(d)))),
         h('p', { role: 'status' }, h('strong', {}, `Passenger ${g.length} shares a birthday with passenger ${firstAt + 1}: ${dayName(last)}.`)),
         h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', 'data-autofocus': true, onclick: () => many() }, 'Read the next twenty boats')));
@@ -3882,7 +3894,7 @@ export class UI implements UIApi {
         `<line x1="0" x2="${W}" y1="${H - (Math.min(guess, max) / max) * H}" y2="${H - (Math.min(guess, max) / max) * H}" class="guess"/><text x="${W - 60}" y="${H - (Math.min(guess, max) / max) * H - 3}" class="lbl">your guess</text></svg>`;
       const chart = h('div', {}); chart.innerHTML = svg;
       box.replaceChildren(...head(), chart,
-        h('p', { role: 'status' }, `On ${within23} of 20 boats, two passengers shared a birthday by passenger 23. The middle boat needed about ${[...counts].sort((a, b) => a - b)[10]} passengers. Your guess was ${guess}.`),
+        h('p', { role: 'status' }, `On ${within23} of 20 boats, two passengers shared a birthday by passenger 23. The middle boat needed about ${[...counts].sort((a, b) => a - b)[10]} passengers.${guess === null ? '' : ' Your marker is at passenger ' + guess + '.'}`),
         h('p', {}, `Tova laughs. 'It feels like you need hundreds. But you are not waiting for someone to match you. Any two can match. Twenty-three people make 253 pairs.' The chance for 23 people is ${Math.round(shareChance(23) * 1000) / 10}%; for 50 people it is ${Math.round(shareChance(50) * 1000) / 10}%.`),
         this.finishField('guests'),
         h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));

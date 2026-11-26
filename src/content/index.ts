@@ -129,6 +129,7 @@ import { readingWorksContent } from './readingWorks';
 import { storyArchiveContent } from './storyArchive';
 import { copyImprintContent } from './copyImprintCases';
 import referenceProofs from './reference-proofs.json';
+import { parcelLedgerContent } from './parcelLedger';
 import { numberLeafContent } from './numberLeaves';
 import { surveyDepotContent } from './surveyDepot';
 import { referenceLineContent } from './referenceLine';
@@ -198,7 +199,7 @@ export function buildPack(): ContentPack {
   const pack: any = { id: 'chapter-1', contentVersion: CONTENT_VERSION };
   const collectionRooms = [clearanceContent, beaterProof, datePegContent, relayContent, joinedCloth, asiaLabelContent, specimenWorkContent, polarStore, fernRecordContent,
     lanternWeaveContent, dateRegisterContent, passageContent, windowShop, readingWorksContent, storyArchiveContent, copyImprintContent,
-    referenceProofs, numberLeafContent, surveyDepotContent, referenceLineContent, islandProofRackContent, turningTableContent, coastCopyContent, makerRoomContent, makerExactContent,
+    referenceProofs, parcelLedgerContent, numberLeafContent, surveyDepotContent, referenceLineContent, islandProofRackContent, turningTableContent, coastCopyContent, makerRoomContent, makerExactContent,
     timbuktuManuscriptContent, objectUseContent, leavittPlateContent, referenceStation, callboardContent, cueWorkshopContent,
     modelRecordsContent, secondReadingContent, timeRoomContent, fieldStoreContent, materialStoreContent,
     loadingBayContent, glassRackContent, shoreReplyContent, ferryWindowContent, starPathContent, tokBadgeContent,

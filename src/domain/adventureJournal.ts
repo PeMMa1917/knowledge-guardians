@@ -1,4 +1,5 @@
 import { crossingOf, crossingWay } from './crossings';
+import { PARCEL_REPLY } from './parcelLedger';
 import { RUMOURS } from './rumours';
 import { personalise } from './player';
 import { LOYALTY } from './loyalty';
@@ -110,6 +111,9 @@ function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignS
         text: `I carried the reading and its limit to the desk. ${slip[cmd.desk]}` };
   }
   if (cmd.type !== 'SetFlag' || previous.flags[cmd.flag] === next.flags[cmd.flag]) return;
+  if (cmd.flag === 'parcel.reply' && (cmd.value === 'desk' || cmd.value === 'token')) {
+    return diaryEvent(`parcel:reply:${cmd.value}`, 'choice', 'parcel.reply', 'At the parcel counter', PARCEL_REPLY[cmd.value].journal);
+  }
   if (cmd.flag.startsWith('earlier-viewing.') && cmd.flag.endsWith('.layout')) {
     const record = earlierViews.find(({ flag }) => cmd.flag === `${flag}.layout`);
     const pick = record?.placements[cmd.value === 'single' ? 0 : cmd.value === 'paired' ? 1 : -1];
@@ -308,12 +312,13 @@ export function recordAdventure(
 
 function availableDiaryQuestions(pack: ContentPack, state: CampaignState, entry: string) {
   const recorded = state.adventureDiary.entries.find(({ id }) => id === entry);
-  if (recorded) return diaryQuestions(recorded);
+  const saved = state.adventureDiary.reflectionResponses?.[entry];
+  if (recorded) return diaryQuestions(recorded, saved);
   if (entry.startsWith('quest:')) {
     const id = entry.slice('quest:'.length);
     if (!state.objectivesDone.includes(id)) return;
     const prior = objectiveEntries(pack).find(({ objective }) => objective.id === id);
-    if (prior) return diaryQuestions(objectiveDraft(pack, prior.mission, prior.objective));
+    if (prior) return diaryQuestions(objectiveDraft(pack, prior.mission, prior.objective), saved);
   }
   if (entry.startsWith('record:')) {
     const id = entry.slice('record:'.length);
@@ -385,7 +390,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     name: state.player.name,
     entries: entries.map((entry) => {
       const encyclopedia = encyclopediaForDiaryEvent(pack, entry.event);
-      return { ...entry, ...(encyclopedia && { encyclopedia }), reflections: journalReflections(state.adventureDiary, entry.id, diaryQuestions(entry)) };
+      return { ...entry, ...(encyclopedia && { encyclopedia }), reflections: journalReflections(state.adventureDiary, entry.id, diaryQuestions(entry, state.adventureDiary.reflectionResponses?.[entry.id])) };
     }),
     notes,
     portfolioWriting: Object.entries(state.adventureDiary.portfolioWriting).flatMap(([id, writing]) => writing.text ? [{ id, ...writing }] : []),
