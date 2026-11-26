@@ -948,6 +948,42 @@
     ]
   },
   {
+    "number": 744,
+    "name": "Check what raised marks let another reader find",
+    "uses": [
+      {
+        "objective": "reading-works.perkins-procede.used",
+        "action": "Compare the raised proof with the model dot-and-dash strip. At the Landing, use the chosen setup with Kori and keep the credit or date tabs beside the right raised marks.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "spatial",
+          "social"
+        ],
+        "game": 144,
+        "story": 55
+      },
+      {
+        "objective": "turning.kunit.received",
+        "action": "Use Kunit’s documented coast piece to frame the practice trial. Turn the shore relief with the offshore peg fixed, move the peg separately, then check a raised start at the low rail or compare both positions with Renna.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "spatial"
+        ],
+        "game": 189,
+        "story": 52
+      }
+    ]
+  },
+  {
     "number": 746,
     "name": "Keep the measured bands while changing visible colour",
     "uses": [

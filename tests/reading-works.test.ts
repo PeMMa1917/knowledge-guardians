@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { microSkillId } from '../src/content/microSkillEvidence';
 import {
   PERKINS_KEY, PERKINS_REVISIT, READING_ROUTES, READING_WORKS_CASES, READING_WORKS_LAST, READING_WORKS_RECEIVER,
 } from '../src/content/readingWorks';
@@ -88,17 +89,22 @@ describe('The Reader Across the Landing', () => {
     expect(d.done('copies.revise')).toBe(false);
   });
 
-  it('uses the earned Perkins working copy to leave two separate credit stops at an earlier archive', () => {
+  it.each(READING_ROUTES)('records raised-mark practice after the %s Perkins handover and keeps its working copy usable', (route) => {
     const d = new Driver();
     const original = READING_WORKS_CASES.find(({ key }) => key === PERKINS_KEY)!;
+    const chosen = original.routes[READING_ROUTES.indexOf(route)];
+    const skill = microSkillId(744);
     d.s.objectivesDone.push('copies.arrival');
     d.s.mapId = 'copies.archive';
     d.run({ type: 'InspectExhibit', exhibit: original.exhibit });
     expect(() => d.run({ type: 'ClaimSpecimen', exhibit: original.exhibit })).toThrow('Finish the object’s quest first');
     original.trials.forEach((trial, index) => d.walk(`${original.flag}.trial.${index}`, [trial.action]));
-    d.walk(`${original.flag}.send`, [original.routes[0].action]);
+    d.walk(`${original.flag}.send`, [chosen.action]);
     d.s.mapId = 'copies.landing';
-    d.walk(READING_WORKS_RECEIVER, [original.pad, original.routes[0].use]);
+    d.walk(READING_WORKS_RECEIVER, [original.pad, 'Keep the setup waiting']);
+    expect(d.p.skills[skill]).toBeUndefined();
+    d.walk(READING_WORKS_RECEIVER, [original.pad, chosen.use]);
+    expect(d.p.skills[skill]).toEqual([expect.stringContaining(`WORLD-08|game-144|${original.objective}`)]);
     d.s.mapId = 'copies.archive';
     d.run({ type: 'ClaimSpecimen', exhibit: original.exhibit });
     expect(ownsSpecimen(d.s, PERKINS_KEY)).toBe(true);
@@ -110,6 +116,7 @@ describe('The Reader Across the Landing', () => {
     d.walk(revisit.node!, ['fit a raised stop']);
     expect(d.s.journal).toContain('j.reading-works.perkins.cold');
     expect(d.s.flags['reading-works.perkins.cold.used']).toBe(true);
+    expect(d.p.skills[skill]).toHaveLength(1);
     expect(check(revisit.visibleIf, d.s)).toBe(false);
   });
 });

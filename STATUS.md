@@ -588,3 +588,7 @@ The Clean Well now carries each choice into its own aftermath. Rook signs the pu
 ## Screen reader navigation in dialogs
 
 An open dialog keeps the title, game world and Objectives out of screen reader navigation. Dialog controls and the live action messages stay available. Closing the dialog restores access to the game or title.
+
+## Reading raised marks
+
+The Skill Atlas records #744 after Kori uses the raised proof at the Landing or a reader checks the turned shore relief. The first keeps the credit or date tabs with the right proof. The second keeps the offshore peg separate, so a reader can check what moving the relief changes. [Landing checks](tests/reading-works.test.ts) · [Turning Room checks](tests/turning-table.test.ts)
