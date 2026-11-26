@@ -608,3 +608,7 @@ An engine playthrough now reaches Confident for #791, matching evidence to its p
 ## Moving the Painter’s Frame
 
 The arrow keeps keyboard focus after each nudge, so a player can move the frame several steps with consecutive presses. [Keyboard replay](tools/smoke-fieldgames.mjs)
+
+## The Lower Rail
+
+The old Nexus label in the Nile hall now leads to Leila’s practice window. Clear paper that holds a whole line makes a different trace from the old scrape. After opening the Harrowmere drawer, the Guardian helps Omi keep the watch limit in view and brings a full-width board or a working teaching hinge back to the hall. Both leave a physical result that Tessi and a visitor can use. [Branch, save and access checks](tests/lower-rail.test.ts) · [Story and stakes](docs/STORY_BIBLE.md#7-the-long-mystery-setup-and-payoff)

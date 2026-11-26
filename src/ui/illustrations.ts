@@ -2780,6 +2780,29 @@ DRAW['council.letter'] = [20, 24, (g) => {
   R(g, '#758d97', 3, 5, 14, 2);
   for (const y of [9, 11, 13]) R(g, '#84796c', 4, y, 10 - y % 3, 1);
 }];
+
+for (const position of ['empty', 'masked', 'open', 'wide', 'hinge']) {
+  DRAW[`lower-rail.${position}`] = [16, 24, (g) => {
+    R(g, '#4e372d', 6, 13, 4, 9);
+    R(g, '#7f5c42', 3, 20, 10, 2);
+    R(g, '#624535', 1, 3, 14, 13);
+    R(g, '#bf9e65', 2, 4, 12, 1);
+    if (position !== 'empty') {
+      paper(g, 3, 5, 10, 10);
+      R(g, '#53433c', 5, 7, 6, 1);
+      R(g, '#53433c', 5, 9, 5, 1);
+      R(g, '#57736f', 5, 12, 6, 1);
+    }
+    if (position === 'empty' || position === 'masked') R(g, '#936746', 1, 11, 14, 3);
+    if (position === 'wide') R(g, '#d3a76b', 0, 14, 16, 2);
+    if (position === 'hinge') {
+      R(g, '#987a59', 13, 5, 2, 10);
+      R(g, '#d3a76b', 12, 3, 3, 2);
+    }
+    R(g, '#f1cc84', 2, 12, 1, 1);
+    R(g, '#f1cc84', 13, 12, 1, 1);
+  }];
+}
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

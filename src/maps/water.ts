@@ -9,6 +9,7 @@ import { WATER_FITTING_BENCHES } from './fittingViews';
 import { WATER_LATCH_DOOR } from './latchCheck';
 import { COUNCIL_BOUNDARY, LOWER_BOUNDARY, UPPER_BOUNDARY } from './serviceBoundary';
 import { CATCHMENT_LOWER, CATCHMENT_UPPER } from './catchment';
+import { WATER_LOWER_RAIL } from './lowerRail';
 import type { Interactable, MapDef } from './types';
 
 function crossing(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'water.waypost'): Interactable {
@@ -84,6 +85,7 @@ export const WATER_GATEHOUSE: MapDef = {
     { id: 'harrowmere-order', kind: 'sign', x: 9, y: 7, w: 1, h: 1, label: 'an old drawer under the gate-house window', art: 'ledger',
       flag: 'harrowmere.found', visibleIf: { objective: 'water.drought' },
       text: "Under a stack of drought orders is a much older card, in the Nexus style. 'WEIR AT HARROWMERE. This weir is safe in all floods.' The Nexus mark is in the corner, and a signature: I. Marrow. Under the main line, someone scraped a second line away. Lumen holds a little light close. You can read three words: 'tested only in...'. Weirkeeper Omi, behind you, says nothing for a long time." },
+    ...WATER_LOWER_RAIL,
     sign('water-weir-directory', 10, 11, 'the weir path sign', 'water.waypost',
       'The gate lever is by the upper crossing. The council yard lies east of that crossing. The lower path goes to the seed rows and channel marker.'),
     sign('water-draft-split', 15, 10, 'the draft split claim', 'preserved.slip',
