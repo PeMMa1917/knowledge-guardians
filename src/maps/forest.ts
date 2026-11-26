@@ -1,6 +1,7 @@
 /** The Living Forest field exercise takes place in a fictional woodland. */
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
+import { FOREST_SHEET_CLEARING, FOREST_SHEET_STATION } from './observationSheet';
 import { FERN_FIELD_RECEIVER, FERN_RECORD_DOOR } from './fernRecordRoom';
 import { carriedFrame } from './sharedCarry';
 import { WORK_SCHEDULE_ENTRANCE, WORK_SCHEDULE_FERN, WORK_SCHEDULE_TRAIL } from './workSchedule';
@@ -101,6 +102,7 @@ export const FOREST_STATION: MapDef = {
   interactables: [
     WORK_SCHEDULE_FERN,
     ...HOOK_STATION,
+    ...FOREST_SHEET_STATION,
     door('forest-trail-path', 3, 8, 'the path to the listening trail', { map: 'forest.trail', x: 4, y: 14 }),
     door('forest-community-path', 23, 8, 'the path to the bridge clearing', { map: 'forest.community', x: 12, y: 12 }),
     FERN_RECORD_DOOR,
@@ -292,6 +294,7 @@ export const FOREST_COMMUNITY: MapDef = {
   interactables: [
     WORK_SCHEDULE_ENTRANCE,
     ...HOOK_CLEARING,
+    FOREST_SHEET_CLEARING,
     door('forest-community-back', 12, 14, 'the path back to Fern Station', { map: 'forest.station', x: 22, y: 8 }),
     door('forest-bridge-to-trail', 22, 11, 'the path back to the ridge', { map: 'forest.trail', x: 28, y: 12 }),
     ...FERN_FIELD_RECEIVER,

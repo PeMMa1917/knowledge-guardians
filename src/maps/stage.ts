@@ -5,6 +5,7 @@ import { STAGE_FACING_CUE } from './facingCue';
 import { CUE_HOUSE_READER } from './cueWorkshop';
 import { GALLERY_SEAM } from './seamWitness';
 import type { Interactable, MapDef } from './types';
+import { STAGE_SHEET_GALLERY, STAGE_SHEET_REHEARSAL } from './observationSheet';
 import { STAGE_FOYER_BACKBILL, STAGE_GALLERY_BACKBILL } from './backbill';
 import { STAGE_FOYER_FRAMES, STAGE_GALLERY_FRAMES, STAGE_REHEARSAL_FRAMES } from './frames';
 import { CUE_FRAME_READER, MOTION_FRAME_READER, STAGE_FILM_FOYER, STAGE_FILM_GALLERY, STAGE_FILM_REHEARSAL } from './filmCuts';
@@ -125,6 +126,7 @@ export const STAGE_REHEARSAL = room({
   interactables: [
     ...STAGE_REHEARSAL_FRAMES,
     ...STAGE_FILM_REHEARSAL,
+    STAGE_SHEET_REHEARSAL,
     door('stage-rehearsal-return', 12, 16, 'the passage back to the foyer', { map: 'stage.foyer', x: 6, y: 5 }),
     door('stage-rehearsal-to-gallery', 25, 8, 'the wing door to the audience gallery', { map: 'stage.gallery', x: 3, y: 8 }),
     { id: 'stage-rehearsal-table', kind: 'stage-rehearsal', x: 13, y: 8, w: 1, h: 1,
@@ -185,6 +187,7 @@ export const STAGE_GALLERY = room({
     STAGE_FACING_CUE,
     ...STAGE_GALLERY_FRAMES,
     STAGE_FILM_GALLERY,
+    ...STAGE_SHEET_GALLERY,
     door('stage-gallery-return', 11, 16, 'the passage back to the foyer', { map: 'stage.foyer', x: 22, y: 5 }),
     door('stage-gallery-to-rehearsal', 2, 8, 'the wing door to rehearsal', { map: 'stage.rehearsal', x: 24, y: 8 }),
     notice('stage-vantage', 18, 7, 'the audience sightlines note', 'stage.cues',

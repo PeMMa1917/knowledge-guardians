@@ -546,3 +546,7 @@ The Rim That Slipped puts a fixed-line tray test and a separate shift docket on 
 ## Encyclopedia lookups after encounters
 
 The adventure diary keeps Wikipedia lookups for actual historical conversations, opened biographies and documented exhibit inspections. Dated encounter rows display their corresponding lookup when the save records the event. The display distinguishes exact articles, related reading and searches while keeping earned institutional Works Cited in its own section. See the [source review and counts](docs/SOURCES.md#encyclopedia-reading-after-encounters).
+
+## The observation sheet
+
+At Fern Station, the Guardian can check the same three marks from two positions and repeat the recorder’s view after moving the seat. Elian keeps the 1960 Gombe observation and the later team account with their dates and credited work. Ayla’s next watch can keep two differently limited notes or prepare an earlier seat. The earned field notebook applies the method at the House of Performance, where the caller and the person who sees the rise can serve different roles. [Modeled route and methods](docs/LEARNING_DESIGN.md) · [Replay checks](tests/observation-sheet.test.ts)
