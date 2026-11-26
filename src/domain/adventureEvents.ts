@@ -14,6 +14,7 @@ import { stageRehearsal } from './stageRehearsal';
 import { voiceReading } from './voiceReadings';
 import { waterTrial } from './waterGate';
 import { hasSpecimen, ownsSpecimen } from './specimenGear';
+import { biographyReadFlag, isHistoricalBiography } from './historicalEncounters';
 import type { Command } from './engine';
 import type { CampaignState, ContentPack, DiaryEntry, DiaryEvent } from './types';
 
@@ -57,6 +58,14 @@ export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, ne
       return diaryEvent(`conversation:${node.id}`, 'conversation', node.id, title,
         `${actor ? `I heard ${actor}.` : 'I heard this along the way.'} ${node.text}`,
         node.citationSource ? { sourceIds: [node.citationSource] } : {}, 'after-break');
+    }
+    case 'ReadBiography': {
+      const card = pack.cards.find(({ id }) => id === cmd.card);
+      if (card && isHistoricalBiography(card) && next.flags[biographyReadFlag(card.id)] === true) {
+        return diaryEvent(`biography:${card.id}`, 'inspection', card.id, `About ${card.person.name}`,
+          `I opened the biography for ${card.person.name}.`, {}, 'after-break');
+      }
+      break;
     }
     case 'InspectExhibit': case 'UseLens': case 'ClaimSpecimen': case 'SetSpecimenReading': {
       const object = pack.exhibits.find(({ id }) => id === cmd.exhibit);

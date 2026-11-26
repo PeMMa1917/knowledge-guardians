@@ -67,6 +67,32 @@ export function encyclopediaForExhibit(exhibit: ExhibitRecord): EncyclopediaLink
     ...(match?.language ? { language: match.language } : {}) });
 }
 
+export interface EncyclopediaDiaryEvent {
+  kind: string;
+  key: string;
+  ref: string;
+}
+
+export function encyclopediaForDiaryEvent(pack: ContentPack, event?: EncyclopediaDiaryEvent): EncyclopediaLink | undefined {
+  if (!event) return undefined;
+  if (event.kind === 'conversation' && event.key === `conversation:${event.ref}`) {
+    const speaker = pack.dialogue.find(({ id }) => id === event.ref)?.speaker;
+    const character = pack.characters.find(({ id }) => id === speaker);
+    return character ? encyclopediaForCharacter(character) : undefined;
+  }
+  if (event.kind === 'inspection' && event.key === `biography:${event.ref}`) {
+    const card = pack.cards.find(({ id }) => id === event.ref);
+    return card ? encyclopediaForBiography(card) : undefined;
+  }
+  if (event.kind === 'inspection' || event.kind === 'finding') {
+    const exhibit = pack.exhibits.find(({ id }) => id === event.ref);
+    if (exhibit && (event.key === `exhibit:${exhibit.id}` || (exhibit.specimen && event.key === `specimen:${exhibit.specimen.key}`))) {
+      return encyclopediaForExhibit(exhibit);
+    }
+  }
+  return undefined;
+}
+
 export function encyclopediaLinks(pack: ContentPack, state: CampaignState): EncyclopediaLink[] {
   const encounters = historicalEncounters(pack, state);
   const links = new Map<string, EncyclopediaLink>();

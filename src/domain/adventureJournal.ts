@@ -3,7 +3,7 @@ import { RUMOURS } from './rumours';
 import { LOYALTY } from './loyalty';
 import { DISPATCH_DESKS, dispatchFlag, dispatchSlip } from './tiles';
 import { specimenReferences, type SpecimenReference } from './specimenReferences';
-import { encyclopediaLinks, type EncyclopediaLink } from './encyclopedia';
+import { encyclopediaForDiaryEvent, encyclopediaLinks, type EncyclopediaLink } from './encyclopedia';
 import { earlierViews } from '../content/earlierViewing';
 import { STAR_PATHS } from '../content/starPaths';
 import { STAR_METHODS, starFlag } from './starPaths';
@@ -33,7 +33,7 @@ export interface JournalNote extends DiaryNoteDetails {
   draft?: true;
 }
 
-export type JournalEntry = EntryDraft & { at: string | null; mapId: string | null; reflections?: JournalReflection[] };
+export type JournalEntry = EntryDraft & { at: string | null; mapId: string | null; reflections?: JournalReflection[]; encyclopedia?: EncyclopediaLink };
 
 export interface AdventureJournalView {
   name: string;
@@ -378,7 +378,10 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
   const entries = [...prior.map((entry) => ({ ...entry, at: null, mapId: null })), ...state.adventureDiary.entries];
   return {
     name: state.player.name,
-    entries: entries.map((entry) => ({ ...entry, reflections: journalReflections(state.adventureDiary, entry.id, diaryQuestions(entry)) })),
+    entries: entries.map((entry) => {
+      const encyclopedia = encyclopediaForDiaryEvent(pack, entry.event);
+      return { ...entry, ...(encyclopedia && { encyclopedia }), reflections: journalReflections(state.adventureDiary, entry.id, diaryQuestions(entry)) };
+    }),
     notes,
     portfolioWriting: Object.entries(state.adventureDiary.portfolioWriting).flatMap(([id, writing]) => writing.text ? [{ id, ...writing }] : []),
     quests: [...quests.values()],

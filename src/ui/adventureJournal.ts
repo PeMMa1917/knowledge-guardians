@@ -5,7 +5,7 @@ import { MAPS } from '../maps';
 import { adventureDocx, ADVENTURE_DOCX_TYPE } from './adventureDocx';
 import { printAdventureJournal } from './adventurePrint';
 import { adventureReferences } from './adventureReferences';
-import { adventureEncyclopedia } from './adventureEncyclopedia';
+import { adventureEncyclopedia, wikipediaLink } from './adventureEncyclopedia';
 import { clear, h } from './dom';
 import { conceptEditor } from './conceptEditor';
 import { bindJournalEditor, flushJournalWriting, queueJournalWriting } from './journalWriting';
@@ -114,6 +114,7 @@ function diaryFeed(view: AdventureJournalView, controller: GameController, refre
     const part = results.slice(shown, shown + 24);
     list.append(...part.map((entry) => h('li', {}, h('h3', {}, entry.title),
       entryDetails(entryLabels[entry.kind], entry.at, entry.mapId), h('p', {}, entry.text),
+      entry.encyclopedia ? h('p', { class: 'fine' }, wikipediaLink(entry.encyclopedia)) : null,
       diaryReflections(entry.id, entry.reflections, controller))));
     shown += part.length;
     more.hidden = shown >= results.length;
