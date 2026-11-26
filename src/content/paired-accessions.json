@@ -48,7 +48,14 @@
       "summary": "A knotted cotton khipu attributed to the Inka. The museum uses Am.9941. A note in its record explains that the older Christy number 9941 also named another object. The diagram shows the main cord and its hanging strands.",
       "sources": ["HIS-ID-01"],
       "grantsCard": "card.accession.khipu",
-      "altText": "Original pixel diagram of a horizontal cotton cord with several shorter knotted cords hanging below it."
+      "altText": "Original pixel diagram of a horizontal cotton cord with several shorter knotted cords hanging below it.",
+      "specimen": {
+        "key": "british-museum:am.9941",
+        "institution": "The British Museum",
+        "accession": "Am.9941",
+        "source": "HIS-ID-01",
+        "objective": "accession.market.compare"
+      }
     },
     {
       "id": "OBJ-MKT-OC9941",

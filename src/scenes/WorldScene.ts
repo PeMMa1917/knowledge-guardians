@@ -17,6 +17,7 @@ import { lorelingForm } from '../domain/lorelings';
 import { caption } from '../app/captions';
 import { CampaignPlayback } from '../app/campaignPlayback';
 import { FOLLOW_PIN, PIN_PURPOSES, readMapPin } from '../domain/mapPins';
+import { specimenArt } from '../app/specimenArt';
 import { LUMEN_COLOURS, lumenArt } from '../app/settings';
 import Phaser from 'phaser';
 import type { BootScene } from './BootScene';
@@ -181,6 +182,10 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         const img = this.add.image(cx, by, it.art).setOrigin(0.5, 1).setDepth(by + 16); // sits on top of tables and counters
         if (tex.height <= 16 && it.kind === 'sign') img.setOrigin(0.5, 1);
         this.objArt.set(it.id, img);
+        if (it.kind === 'exhibit') {
+          const asset = ctx.controller.pack.exhibits.find((exhibit) => exhibit.id === it.exhibit)?.specimen?.pixelAsset;
+          if (asset) this.drawMuseumObject(it.id, img, asset);
+        }
         // The Fray (spec 2.11): a sickly gold glow on a label that says more than its support.
         if (it.kit) {
           const glow = this.add.image(cx, by - tex.height / 2, 'glow').setTint(0xe8c040).setBlendMode(Phaser.BlendModes.ADD).setDepth(200001).setScale(0.32);
@@ -327,6 +332,15 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     for (const { x, y, closed, when } of this.changingTiles) {
       if (this.blocked[y]?.[x] !== undefined) this.blocked[y][x] = closed || ctx.controller.check(when);
     }
+  }
+
+  private drawMuseumObject(id: string, display: Phaser.GameObjects.Image, asset: string): void {
+    void specimenArt(asset).then((drawing) => {
+      if (!drawing || this.objArt.get(id) !== display || !display.active) return;
+      const texture = `museum.${asset}`;
+      if (!this.textures.exists(texture)) this.textures.addCanvas(texture, drawing);
+      display.setTexture(texture).setDisplaySize(22, 22);
+    });
   }
 
   /** Active play time in this browser session, for the balance reminder. */

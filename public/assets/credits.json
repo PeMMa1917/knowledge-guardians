@@ -106,7 +106,8 @@
       "licence": "CC0 1.0 (page also offers OGA-BY 3.0; we use CC0)",
       "page": "https://opengameart.org/content/completion-sound",
       "download": "https://opengameart.org/sites/default/files/completetask_0.mp3"
-    }
+    },
+    "cma-open-access": {"title": "Open Access collection photographs", "author": "The Cleveland Museum of Art", "licence": "CC0 1.0", "page": "https://www.clevelandart.org/open-access"}
   },
   "files": {
     "art/armm1998/Overworld.png": { "pack": "armm1998-zelda-like", "original": "Overworld.png", "changes": "none" },
@@ -150,6 +151,11 @@
     "audio/sfx/step-rubberduck.mp3": { "pack": "rubberduck-rpg-sfx", "original": "stones_01", "changes": "converted to mono 96 kbit/s MP3" },
     "audio/sfx/award-wobbleboxx.mp3": { "pack": "wobbleboxx-levelup", "original": "Rise03.aif", "changes": "converted to mono 96 kbit/s MP3" },
     "audio/sfx/coin-wobbleboxx.mp3": { "pack": "wobbleboxx-levelup", "original": "Coin01.aif", "changes": "converted to mono 96 kbit/s MP3" },
-    "audio/sfx/complete-haeldb.mp3": { "pack": "haeldb-completion", "original": "completetask_0.mp3", "changes": "converted to mono 96 kbit/s MP3" }
+    "audio/sfx/complete-haeldb.mp3": { "pack": "haeldb-completion", "original": "completetask_0.mp3", "changes": "converted to mono 96 kbit/s MP3" },
+    "specimens/cma-2020.222.jpg": {"pack": "cma-open-access", "source": "https://clevelandart.org/art/2020.222", "download": "https://openaccess-cdn.clevelandart.org/2020.222/2020.222_web.jpg", "changes": "Reduced to a small JPEG for in-game pixel illustration"},
+    "specimens/cma-1914.680.jpg": {"pack": "cma-open-access", "source": "https://clevelandart.org/art/1914.680", "download": "https://openaccess-cdn.clevelandart.org/1914.680/1914.680_web.jpg", "changes": "Reduced to a small JPEG for in-game pixel illustration"},
+    "specimens/cma-1962.244.jpg": {"pack": "cma-open-access", "source": "https://clevelandart.org/art/1962.244", "download": "https://openaccess-cdn.clevelandart.org/1962.244/1962.244_web.jpg", "changes": "Reduced to a small JPEG for in-game pixel illustration"},
+    "specimens/cma-1971.152.jpg": {"pack": "cma-open-access", "source": "https://clevelandart.org/art/1971.152", "download": "https://openaccess-cdn.clevelandart.org/1971.152/1971.152_web.jpg", "changes": "Reduced to a small JPEG for in-game pixel illustration"},
+    "specimens/cma-1948.308.jpg": {"pack": "cma-open-access", "source": "https://clevelandart.org/art/1948.308", "download": "https://openaccess-cdn.clevelandart.org/1948.308/1948.308_web.jpg", "changes": "Reduced to a small JPEG for in-game pixel illustration"}
   }
 }

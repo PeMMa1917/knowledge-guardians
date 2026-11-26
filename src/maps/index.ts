@@ -5,6 +5,7 @@ import { HANDOVER_GALLERY } from './handoverGallery';
 import { EMBERFORD, REPAIR_YARD } from './emberford';
 import { STUDY } from './study';
 import { SHELF_MODEL, SHELF_ROOM } from './shelfRoom';
+import { CLEARANCE_GALLERY } from './clearanceGallery';
 import { FERRY } from './ferry';
 import { NILE_HALL, NILE_ROYAL, NILE_ROUTE, NILE_WORKYARD } from './nile';
 import { UNDERCROFT } from './undercroft';
@@ -41,6 +42,7 @@ export const MAPS: Record<string, MapDef> = {
   [NILE_WORKYARD.id]: NILE_WORKYARD,
   [NILE_ROUTE.id]: NILE_ROUTE,
   [PRESERVED_ARCHIVE.id]: PRESERVED_ARCHIVE,
+  [CLEARANCE_GALLERY.id]: CLEARANCE_GALLERY,
   [PRESERVED_ROYAL.id]: PRESERVED_ROYAL,
   [PRESERVED_COAST.id]: PRESERVED_COAST,
   [PRESERVED_INQUIRY.id]: PRESERVED_INQUIRY,

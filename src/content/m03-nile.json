@@ -242,14 +242,21 @@
    "name": "Turin Mine Map",
    "art": "nile.map",
    "historicalLabel": "documented",
-   "dateText": "New Kingdom, Ramesside period",
+   "dateText": "New Kingdom, 20th Dynasty (1190–1077 BCE in the catalogue)",
    "dateKind": "The date describes production of this historical record, not conditions on a road today.",
    "summary": "The map shows routes through Wadi Hammamat and uses different colours for different rock. The museum associates much of the writing with Amunnakht.",
    "sources": [
     "HIS-NILE-06"
    ],
    "grantsCard": "card.nile.mine",
-   "altText": "Original schematic with two roads, a pink ridge and a brown ridge; not a facsimile."
+   "altText": "Original schematic with two roads, a pink ridge and a brown ridge; not a facsimile.",
+   "specimen": {
+    "key": "museo-egizio:papyrus-document-9",
+    "institution": "Museo Egizio",
+    "accession": "Cat.1879, Cat.1899, Cat.1969, Cat.2082/174 and Cat.2083/182",
+    "source": "HIS-NILE-06",
+    "objective": "nile.routes"
+   }
   },
   {
    "id": "OBJ-NILE-STONE",

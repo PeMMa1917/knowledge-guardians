@@ -578,7 +578,14 @@
     "HIS-S13"
    ],
    "grantsCard": "card.biro-object",
-   "altText": "A slim pen with a dark body and a metal tip, shown as a soft glowing projection."
+   "altText": "A slim pen with a dark body and a metal tip, shown as a soft glowing projection.",
+   "specimen": {
+    "key": "smg:1949-174/2",
+    "institution": "Science Museum Group",
+    "accession": "1949-174/2",
+    "source": "HIS-S13",
+    "objective": "hands.o.compare"
+   }
   }
  ],
  "labelKits": [

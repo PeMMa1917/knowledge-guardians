@@ -25,6 +25,13 @@ function pedestal(g: Ctx, x: number, y: number, w: number) {
 }
 
 const DRAW: Record<string, [number, number, (g: Ctx) => void]> = {
+  'collection-stand': [16, 24, (g) => {
+    pedestal(g, 1, 14, 14);
+    R(g, '#66868b', 2, 2, 12, 12);
+    R(g, '#aacbd2', 3, 3, 10, 10);
+    R(g, '#384b58', 4, 4, 8, 8);
+    R(g, '#e8c788', 8, 15, 5, 2);
+  }],
   'pedestal.patent': [16, 24, (g) => {
     pedestal(g, 2, 14, 12);
     R(g, '#3b3355', 3, 4, 10, 11); R(g, '#f4ecd2', 4, 3, 8, 11); R(g, '#d9cfae', 4, 13, 8, 1);
@@ -1864,6 +1871,31 @@ DRAW['big.fitting-views.case'] = [96, 64, (g) => {
   fittingRecordCase(g);
   g.restore();
 }];
+// The empty mount identifies the exposure. The study of a hand and ring belongs to A606881.
+DRAW['big.fitting-views.photograph'] = [96, 64, (g) => {
+  R(g, '#2c3542', 0, 0, 96, 64);
+  R(g, '#86777b', 9, 13, 32, 36);
+  R(g, '#303541', 12, 16, 26, 30);
+  R(g, '#bc956f', 16, 51, 18, 3);
+
+  R(g, '#9ea99f', 47, 6, 40, 50);
+  R(g, '#dae1cb', 49, 8, 36, 46);
+  R(g, '#27363d', 51, 10, 32, 42);
+  R(g, '#58767a', 60, 34, 17, 13);
+  R(g, '#829d95', 65, 45, 9, 6);
+  for (const [x, y, end] of [[58, 23, 36], [63, 16, 38], [68, 13, 40], [73, 17, 39]]) {
+    for (let joint = y; joint < end; joint += 5) {
+      R(g, '#adc8b5', x, joint, 2, Math.min(4, end - joint));
+    }
+  }
+  R(g, '#adc8b5', 77, 31, 3, 5);
+  R(g, '#adc8b5', 75, 37, 3, 6);
+  R(g, '#adc8b5', 65, 43, 2, 5);
+  R(g, '#adc8b5', 71, 43, 2, 5);
+  R(g, '#e1c98a', 61, 24, 6, 2);
+  R(g, '#e1c98a', 61, 27, 6, 1);
+  R(g, '#77a8a0', 55, 58, 25, 2);
+}];
 function practiceFitting(g: Ctx, x: number, y: number, side = false) {
   R(g, '#8b766e', x, y + (side ? 4 : 1), 17, side ? 7 : 10);
   R(g, '#d7aa8d', x + 2, y + (side ? 3 : 0), 13, side ? 5 : 8);
@@ -2821,7 +2853,7 @@ export const BIG_ART: Record<string, string> = {
   'plate.case-set': 'big.plate.case-set',
   'preserved.coast': 'big.preserved.coast', 'preserved.context': 'big.preserved.context',
   'preserved.binak-diagram': 'big.preserved.binak-diagram', 'sea.dugout-diagram': 'big.sea.dugout-diagram',
-  'fitting-views.case': 'big.fitting-views.case',
+  'fitting-views.case': 'big.fitting-views.photograph',
   'same-red.exhibit': 'big.same-red.exhibit',
   'forest.field-diagram': 'big.forest.field-diagram',
   'exhibit.patent': 'big.patent', 'exhibit.model': 'big.model', 'exhibit.biro': 'big.biro',

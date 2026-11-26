@@ -598,7 +598,14 @@
     "HIS-S16"
    ],
    "grantsCard": "card.met-ingots",
-   "altText": "A catalogue page showing ten small rounded dark metal cakes next to a cloth bag."
+   "altText": "A catalogue page showing ten small rounded dark metal cakes next to a cloth bag.",
+   "specimen": {
+    "key": "met:2023.133a-k",
+    "institution": "The Metropolitan Museum of Art",
+    "accession": "2023.133a–k",
+    "source": "HIS-S16",
+    "objective": "m02.o5.showdown"
+   }
   },
   {
    "id": "AE-ASSAY",

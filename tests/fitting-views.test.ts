@@ -98,9 +98,14 @@ describe('The Mark Beneath the Lip', () => {
   it('separates the documented exposure from the catalogue copy and invented practice', () => {
     const d = new Driver();
     const record = buildPack().exhibits.find((item) => item.id === exhibit);
-    expect(record).toMatchObject({ historicalLabel: 'documented', dateText: '22 December 1895 (original exposure)', dateKind: expect.stringContaining('catalogue year of 1895') });
+    expect(record).toMatchObject({
+      historicalLabel: 'documented',
+      dateText: '1895 (catalogue date), from the exposure of 22 December 1895',
+      dateKind: expect.stringContaining('catalogue year of 1895'),
+      specimen: { key: 'smg:a606881', accession: 'A606881' },
+    });
     expect(record?.summary).toContain('Deutsches Museum');
-    expect(BIG_ART[record!.art]).toBe('big.fitting-views.case');
+    expect(BIG_ART[record!.art]).toBe('big.fitting-views.photograph');
     expect(d.e.node('fitting.views.side-record')).toMatchObject({ claimKind: 'simulation', historicalLabel: 'fictional-world' });
   });
 });

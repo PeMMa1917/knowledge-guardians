@@ -1,5 +1,41 @@
 [
   {
+    "number": 408,
+    "name": "Break a circular check with an independent reference",
+    "uses": [
+      {
+        "objective": "latch.metal.observed",
+        "action": "Move the model to both known stops under one request, read the lamp and its copied tally, then inspect the live latch from its separate grille.",
+        "styles": [
+          "maker",
+          "challenger"
+        ],
+        "modes": [
+          "physical",
+          "visual",
+          "analytical"
+        ],
+        "game": 38,
+        "story": 77
+      },
+      {
+        "objective": "latch.water.finish",
+        "action": "Check both known positions against the lowered flag, observe the live latch at the white mark, then take a tray through the route you can support.",
+        "styles": [
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "spatial",
+          "social"
+        ],
+        "game": 195,
+        "story": 74
+      }
+    ]
+  },
+  {
     "number": 410,
     "name": "Ask how far a field count carries",
     "uses": [

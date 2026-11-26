@@ -68,7 +68,14 @@
       "summary": "Smithsonian record 2015.97.42 describes a compact printed guide by Victor Hugo Green. Its cover lists several kinds of service and carries James A. Jackson’s name. The original pixel drawing picks out the border and inner scroll described in the catalogue.",
       "altText": "Original pixel drawing of a folded guide with a dark outer border and a paper scroll at its centre.",
       "sources": ["HIS-DOOR-02", "HIS-DOOR-03"],
-      "grantsCard": "card.fold.green"
+      "grantsCard": "card.fold.green",
+      "specimen": {
+        "key": "smithsonian-nmaahc:2015.97.42",
+        "institution": "Smithsonian National Museum of African American History and Culture",
+        "accession": "2015.97.42",
+        "source": "HIS-DOOR-02",
+        "objective": "fold.access.compare"
+      }
     }
   ],
   "items": [

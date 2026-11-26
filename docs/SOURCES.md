@@ -220,6 +220,16 @@ The folio and its keepers are fictional. The historical exhibits use original il
 
 The rehearsal frames and the harbour’s dated records are original fictional material. The NASA items contribute catalogue evidence about who made each image, its date and its role.
 
+## Gallery with Two Rails, Preserved Lives
+
+Five individual collection records supply the measured edge used at the viewing frames. Tavi and Jase, the guides and the frame dimensions belong to the fictional campaign. The exercise uses one catalogue dimension per object and leaves other dimensions and previous uses open. The museum photographs used to draw the exhibit sprites are CC0. [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access)
+
+- Recuay architectural vessel made in the Central Andes, 1–700 CE. The fitting uses its 19.4 cm catalogue width. [CMA 2020.222](https://clevelandart.org/art/2020.222)
+- Paint box inscribed for Vizier Amenemope, Dynasty 18, about 1427–1401 BCE. The fitting uses its 21 cm width. [CMA 1914.680](https://clevelandart.org/art/1914.680)
+- Akan-style copper-alloy gold weight from Ghana, 1800s. The fitting uses the 2.4 cm side. [CMA 1962.244](https://clevelandart.org/art/1962.244)
+- Wooden tapa cloth beater from Hawai‘i, 20th century before 1930. The fitting uses its recorded length of 38.7 cm. [CMA 1971.152](https://clevelandart.org/art/1971.152)
+- Feline incense burner from Khurasan, Iran, 1150–1200 CE. The fitting uses its catalogue height of 35.5 cm. [CMA 1948.308](https://clevelandart.org/art/1948.308)
+
 ## Chapter 15: Council of Inquiry
 
 The Council stages fictional work and keeps two historical reading cards. The cards give methods the player can try on a separate case.

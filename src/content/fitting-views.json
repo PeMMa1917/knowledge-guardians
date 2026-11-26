@@ -21,14 +21,21 @@
    "name": "Photograph of a radiograph of a hand",
    "art": "fitting-views.case",
    "historicalLabel": "documented",
-   "dateText": "22 December 1895 (original exposure)",
+   "dateText": "1895 (catalogue date), from the exposure of 22 December 1895",
    "dateKind": "Date of the original exposure described by the catalogue. The copy has a catalogue year of 1895. Its making day is unstated.",
    "summary": "Science Museum Group A606881 is a photograph on paper under glass. It preserves an image of the ring on the left hand of Wilhelm Conrad Röntgen’s wife. The original radiograph is held by the Deutsches Museum in Munich. The museum lists the copy’s maker as unknown.",
    "sources": [
     "HIS-MET-RONTGEN-A606881"
    ],
    "grantsCard": "card.fitting.rontgen-copy",
-   "altText": "Original schematic showing two frames with separate tabs. The filled frame represents the photograph under glass in the Science Museum Group record. The empty frame points to the original in Munich."
+   "altText": "Original schematic with two separately labelled frames. A hand and ring are drawn in the Science Museum Group photograph’s frame. The empty frame points to the original in Munich.",
+   "specimen": {
+    "key": "smg:a606881",
+    "institution": "Science Museum Group",
+    "accession": "A606881",
+    "source": "HIS-MET-RONTGEN-A606881",
+    "objective": "fitting.views.compared"
+   }
   }
  ],
  "cards": [

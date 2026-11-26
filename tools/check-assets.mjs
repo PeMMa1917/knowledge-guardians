@@ -28,6 +28,9 @@ for (const [f, entry] of Object.entries(manifest.files)) {
   if (!pack) { errors.push(`Unknown pack "${entry.pack}" for ${f}`); continue; }
   if (!pack.licence || !pack.page || !pack.author) errors.push(`Pack "${entry.pack}" needs licence, page and author`);
   if (/\b(NC|ND)\b/.test(pack.licence)) errors.push(`Pack "${entry.pack}" has a non-commercial or no-derivatives licence`);
+  if (f.startsWith('specimens/') && ![entry.source, entry.download].every((value) => /^https:\/\//.test(value ?? ''))) {
+    errors.push(`Museum image ${f} needs its own catalogue and original image URLs.`);
+  }
 }
 
 if (errors.length) {

@@ -74,6 +74,9 @@ import { drawerCases } from './drawerCases';
 import { mapPinControls } from './mapPinControls';
 import { PIN_PURPOSES } from '../domain/mapPins';
 import { MICRO_SKILL_DOMAIN } from '../content/microSkillEvidence';
+import { specimenArt } from '../app/specimenArt';
+import { CLEARANCE_GROUP } from '../content/clearanceCases';
+import { clearanceGallery } from './clearanceGallery';
 import { marketBasketPanel } from './marketBasket';
 import { waterLoopPanel } from './waterLoop';
 import { civicIncentivePanel, incentiveStation } from './civicIncentive';
@@ -1169,11 +1172,21 @@ export class UI implements UIApi {
     const card = c.pack.cards.find((x) => x.id === ex.grantsCard)!;
     const thread = c.state.inventory['tool.provenance-thread'] ? c.pack.threads.find((t) => t.object === exhibitId) : undefined;
     const pixel = ex.specimen?.pixelAsset;
-    const image = pixel ? `${import.meta.env.BASE_URL}assets/${pixel}` : artURL(BIG_ART[ex.art] ?? 'big.patent');
+    const image = h('img', { class: 'big-art', src: artURL(BIG_ART[ex.art] ?? (pixel ? ex.art : 'big.patent')), alt: pixel ? '' : ex.altText });
+    const artCredit = h('figcaption', {}, pixel ? `Collection image from ${ex.specimen!.institution}.` : 'Original game illustration based on the written record.');
+    if (pixel) void specimenArt(pixel).then((drawing) => {
+      if (!image.isConnected) return;
+      if (drawing) {
+        image.src = drawing.toDataURL('image/png');
+        image.alt = ex.altText;
+        artCredit.textContent = `Pixel illustration from the ${ex.specimen!.institution} collection image.`;
+      } else {
+        artCredit.textContent = 'Collection image unavailable. The catalogue record is linked below.';
+      }
+    });
     this.openModal('exhibit', ex.name, this.closeBtn(),
       h('div', { class: 'exhibit-grid' },
-        h('figure', {}, h('img', { class: 'big-art', src: image, alt: ex.altText }),
-          h('figcaption', {}, pixel ? `Pixel illustration from the ${ex.specimen!.institution} collection image.` : 'Original game illustration based on the written record.')),
+        h('figure', {}, image, artCredit),
         h('div', {},
           h('h2', {}, ex.name),
           h('div', { class: 'chips' }, histChip(ex.historicalLabel)),
@@ -2930,6 +2943,9 @@ export class UI implements UIApi {
     } else if (id === 'service-boundary') {
       this.openModal('bench-panel wide', 'The Line on the Night Map', this.closeBtn(), h('h2', {}, 'Night service map'),
         serviceBoundaryPanel(ctx.controller));
+    } else if (id.startsWith(`${CLEARANCE_GROUP}:`)) {
+      const place = id.slice(CLEARANCE_GROUP.length + 1);
+      this.openModal('bench-panel wide', 'The viewing rails', this.closeBtn(), clearanceGallery(ctx.controller, place, () => ctx.world?.refreshWorld()));
     } else if (id === 'drawer-cases') {
       const board = this.openModal('bench-panel wide', 'Three Cases at the Bell');
       drawerCases(board, ctx.controller, this.closeBtn());
