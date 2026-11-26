@@ -27,6 +27,7 @@ import { SPECIMEN_VAULT_DOOR } from './specimenVault';
 import { NUMBER_LEAF_RETURNS } from './numberLeaves';
 import { MODEL_RECORD_RETURNS } from './modelRecords';
 import { starStations } from './starPaths';
+import { NEXUS_PUBLIC_VOICES } from './publicVoices';
 
 const W = 40, H = 20;
 const strokeRequested: Condition = { flag: 'nexus.stroke.requested', eq: true };
@@ -451,6 +452,7 @@ export const NEXUS: MapDef = {
     ...EARLY_CURTAIN_PROPS,
     ...NEXUS_DISPATCH_STATS,
     ...NEXUS_CORRESPONDENCE,
+    ...NEXUS_PUBLIC_VOICES,
     { id: 'waystone', kind: 'waystone', place: 'Nexus archive hall', x: 2, y: 9, w: 1, h: 1, label: 'the Waystone (save and rest)', art: 'waystone' },
     ...([['OBJ-101', 'eratosthenes'], ['OBJ-102', 'haytham'], ['OBJ-103', 'bisheng'], ['OBJ-104', 'sikdar'], ['OBJ-105', 'santos'], ['OBJ-106', 'sheppard'], ['OBJ-107', 'wollstonecraft']] as const)
       .map(([ex, key], i) => ({ id: `plaque-${key}`, kind: 'exhibit' as const, exhibit: ex, kit: `first.${key}`, x: 27 + i * 2, y: 5, w: 1, h: 1, label: 'a plaque in the Hall of Firsts', art: 'plaque' })),

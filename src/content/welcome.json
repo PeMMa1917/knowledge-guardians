@@ -949,6 +949,7 @@
    "id": "REL-WELCOME-01",
    "title": "Harvard Pluralism Project: Langar, the Communal Meal",
    "url": "https://pluralism.org/langar-the-communal-meal",
+   "mla": { "kind": "page", "title": "Langar, the Communal Meal", "container": "The Pluralism Project" },
    "locator": "Account of the Sodhi family and communal meal at the Sikh gurdwara in Fremont, California",
    "supports": "The account describes visitors sharing the Sikh communal meal and connects the practice to equality. It describes the Sodhi family preparing a meal at a gurdwara in Fremont.",
    "accessed": "2026-11-26"
@@ -957,6 +958,7 @@
    "id": "REL-WELCOME-02",
    "title": "Saint Meinrad Archabbey: Visit Us",
    "url": "https://www.saintmeinrad.org/visit-us/",
+   "mla": { "kind": "page", "title": "Visit Us", "container": "Saint Meinrad Archabbey" },
    "locator": "The Benedictine community’s welcome to visitors in southern Indiana",
    "supports": "Saint Meinrad describes its welcome as following Saint Benedict’s call to receive guests as Christ.",
    "accessed": "2026-11-26"
@@ -965,6 +967,7 @@
    "id": "REL-WELCOME-03",
    "title": "Saint Meinrad Archabbey: Prayer Schedule and Tours",
    "url": "https://www.saintmeinrad.org/visit-us/prayer-schedule-tours/",
+   "mla": { "kind": "page", "title": "Prayer Schedule & Tours", "container": "Saint Meinrad Archabbey" },
    "locator": "Prayer Schedule and Tours sections",
    "supports": "The abbey distinguishes its self-guided visitor tour from the public church prayer schedule. The schedule may change.",
    "accessed": "2026-11-26"

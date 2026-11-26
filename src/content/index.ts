@@ -191,6 +191,7 @@ import { facingCueContent } from './facingCue';
 import witnessClip from './witness-clip.json';
 import threadBend from './thread-bend.json';
 import sillBridge from './sill-bridge.json';
+import publicVoices from './nexus-public-voices.json';
 
 export const CONTENT_VERSION = 5;
 
@@ -209,7 +210,7 @@ export function buildPack(): ContentPack {
     ferryPackingContent, workScheduleContent, bearingBayContent, jigShopContent, earlierViewsContent, curtainContent,
     coastDetector, coastBreeze, bridgeProof, memoryCart, dispatchStatsContent, prismViewerContent, priceDrawersContent, warmRoomContent,
     mapAlignmentContent, scriptRailContent, pigmentWindow, pigmentSample, correspondenceRoomContent, porterPace, leafFrame, forestNarrators, spareSeat, lastTurn, twoCalls, twoShutters, openPlace, catchmentContent, facingCueContent, witnessClip, stripBend, sillBridge,
-    threadBend, circularReport];
+    threadBend, circularReport, publicVoices];
   for (const k of keys) pack[k] = [...parts, ...collectionRooms].flatMap((p) => p[k] ?? []);
   const content = pack as ContentPack;
   content.questions.push(...QUESTION_ROUTES.map(({ question }) => question));

@@ -182,6 +182,8 @@ The chapters exist in code (see STATUS.md). This table adds what each one needs 
 
 In Emberford’s Tipped Cart, the driver needs names to follow up on a missing pot. Passing carters need an immediate warning about a loose stone. Sending the driver the full accounts leaves the stone without a public mark. Marking a public detour leaves the pot’s story at the clerk’s desk. The receipt on the lane rail changes when the Guardian redirects the report.
 
+In the Nexus, Venn needs a date index while Kip needs a source he can put straight into a reader’s hands. The player can amend the index or redirect Kip to the public history of the Buku-Larrŋgay Mulka Centre. Sella’s visitor needs directions they can use alone while Dace’s visitor wants time to trace two distinct accounts of hospitality. The player can place the tour details at the hall clip or leave both accounts open at the staffed case. Both jobs can wait.
+
 
 Mika asked for a wide variety of conflicts (2026-11-26): every type, every size, and different ways to end them. Conflicts must connect and build: each one moves the plot, a character's arc, or the theme forward. Misunderstandings, jokes and puns sit next to serious moments.
 
