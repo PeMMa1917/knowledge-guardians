@@ -17,6 +17,7 @@ import { BootScene } from './scenes/BootScene';
 import { WorldScene } from './scenes/WorldScene';
 import { UI } from './ui/ui';
 import { observeConceptText } from './ui/conceptMarkup';
+import { flushJournalWriting } from './ui/journalWriting';
 
 ctx.settings = loadSettings();
 applySettingsToDocument(ctx.settings);
@@ -80,7 +81,12 @@ ui.showTitle();
 // Save a suspend state when the tab is hidden. A browser may still close
 // before this finishes, so this is a convenience, not a guarantee (spec 24.1).
 document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'hidden' && ctx.world && ctx.controller.state) ctx.controller.suspend('Auto-save when leaving');
+  if (document.visibilityState !== 'hidden' || !ctx.world || !ctx.controller.state) return;
+  const label = 'Auto-save when leaving';
+  if (flushJournalWriting(ctx.controller, label) === null) ctx.controller.suspend(label);
+});
+window.addEventListener('pagehide', () => {
+  if (ctx.world && ctx.controller.state) flushJournalWriting(ctx.controller, 'Auto-save when leaving');
 });
 
 // The Guardian's Ledger: count active play time (input in the last 2 minutes, tab visible, in the world).

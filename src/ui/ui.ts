@@ -20,7 +20,7 @@ import { ISLAND_CRATES, ISLAND_LANDINGS, ISLAND_ROUTES, islandPlan, type IslandL
 import { COUNCIL_TRIALS, councilClock, type CouncilTrial } from '../domain/councilClock';
 import { buildScoutBoard } from './scoutRoutes';
 import { adventureJournalTab } from './adventureJournal';
-import { bindJournalEditor, flushJournalWriting, queueJournalWriting } from './journalWriting';
+import { bindJournalEditor, discardPendingJournalWriting, flushJournalWriting, queueJournalWriting } from './journalWriting';
 import { conceptEditor } from './conceptEditor';
 import { ROUTE_ACTIONS } from '../content/questionEncounters';
 /**
@@ -737,7 +737,7 @@ export class UI implements UIApi {
       c.saves.permanentLoadProblem ? h('p', { class: 'warn', role: 'alert' }, c.saves.permanentLoadProblem) : null,
       c.contentProblems.length ? h('p', { class: 'warn', role: 'alert' }, `Content problems: ${c.contentProblems.join('; ')}`) : null,
       h('div', { class: 'menu' },
-        cont ? h('button', { 'data-autofocus': true, onclick: () => { c.loadContinue(); this.startPlaying(true); } }, h('strong', {}, 'Continue'), h('small', {}, fmt(cont))) : null,
+        cont ? h('button', { 'data-autofocus': true, onclick: () => { discardPendingJournalWriting(c); c.loadContinue(); this.startPlaying(true); } }, h('strong', {}, 'Continue'), h('small', {}, fmt(cont))) : null,
         rec ? h('button', { 'data-autofocus': !cont, onclick: () => this.confirmRecovery() }, h('strong', {}, 'Checkpoint recovery'), h('small', {}, fmt(rec))) : null,
         h('button', { 'data-autofocus': !cont && !rec, onclick: () => this.characterCreation() }, h('strong', {}, 'New game'), h('small', {}, cont || rec ? 'Starts a new campaign. Your awards stay.' : 'Begin as a new recruit')),
         h('button', { onclick: () => this.openSettings() }, h('strong', {}, 'Settings'), h('small', {}, 'Text size, motion, sound, guide prompts')),
@@ -758,7 +758,7 @@ export class UI implements UIApi {
       h('p', {}, `This makes "${rec.label}" (${rec.location}, ${new Date(rec.savedAt).toLocaleString()}) your current game. Your current Continue save will be replaced.`),
       h('p', {}, 'Awards, concept XP and badges you already earned are kept.'),
       h('div', { class: 'row' },
-        h('button', { class: 'primary', 'data-autofocus': true, onclick: () => { if (c.loadRecovery()) { this.closeModal(); this.startPlaying(true); } } }, 'Restore'),
+        h('button', { class: 'primary', 'data-autofocus': true, onclick: () => { if (c.loadRecovery()) { discardPendingJournalWriting(c); this.closeModal(); this.startPlaying(true); } } }, 'Restore'),
         h('button', { onclick: () => this.closeModal() }, 'Cancel')));
     void box;
   }
@@ -778,6 +778,7 @@ export class UI implements UIApi {
       }));
     const start = () => {
       const n = name.value.trim() || 'Recruit';
+      discardPendingJournalWriting(ctx.controller);
       ctx.controller.newGame(n.slice(0, 24), lookPick.value(), { pronouns: pron.value(), origin });
       this.startPlaying(false);
     };

@@ -7,18 +7,24 @@ interface PendingSave {
 
 const pending = new WeakMap<GameController, PendingSave>();
 
-export function flushJournalWriting(controller: GameController): boolean {
+export function flushJournalWriting(controller: GameController, label = 'Adventure journal'): boolean | null {
   const save = pending.get(controller);
-  if (!save) return true;
+  if (!save) return null;
   window.clearTimeout(save.timer);
   save.timer = undefined;
-  if (controller.suspend('Adventure journal')) {
+  if (controller.suspend(label)) {
     pending.delete(controller);
     if (save.status) save.status.textContent = '';
     return true;
   }
   if (save.status) save.status.textContent = 'Your writing is still open in this tab. Try saving again or export a copy.';
   return false;
+}
+
+/** Loading another save supersedes any write queued for the adventure just left. */
+export function discardPendingJournalWriting(controller: GameController): void {
+  window.clearTimeout(pending.get(controller)?.timer);
+  pending.delete(controller);
 }
 
 /** Update the campaign on input, then combine short bursts into one Continue write. */
