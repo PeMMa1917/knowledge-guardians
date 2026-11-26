@@ -204,6 +204,8 @@ export interface Objective {
   skills?: string[];
   /** The knowledge question under this step, and how the player meets it (KQ-002, KQ-003). */
   kq?: { id: string; action: string };
+  /** Other questions encountered through this action, filed in the journal. */
+  questionWays?: { id: string; action: string }[];
 }
 
 export interface Mission {
@@ -346,6 +348,8 @@ export interface KnowledgeQuestion {
   text: string;
   /** Lumen's last word after a step that carries this question (one sentence). */
   lastWord: string;
+  /** File an incidental encounter without adding a toast after each step. */
+  journalOnly?: boolean;
 }
 
 // ---------------------------------------------------------------------------

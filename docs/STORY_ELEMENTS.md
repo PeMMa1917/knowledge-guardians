@@ -4,9 +4,9 @@ This tracker maps every numbered story element in the supplied *Universal RPG Bl
 
 | Status | Meaning | Story elements |
 | --- | --- | ---: |
-| ✓ Playable | At least one authored scene demonstrates the core adapted idea. | 129 |
+| ✓ Playable | At least one authored scene demonstrates the core adapted idea. | 130 |
 | ◐ Partial | The story uses the idea in limited form. The remaining work is named. | 19 |
-| ○ Planned | The corresponding scene or system is open. | 1 |
+| ○ Planned | The corresponding scene or system is open. | 0 |
 | ✗ Excluded | The original aspect is outside the classroom design. | 1 |
 
 These are examples, not a measure of whether every player will find, enjoy or interpret them the same way. The story uses argument, investigation and material checks as challenges. Relationships are platonic. In-world myths and patrons are fictional. See the [story bible](STORY_BIBLE.md) for the conflict map and [learning design](LEARNING_DESIGN.md) for timed route estimates.
@@ -229,10 +229,10 @@ These are examples, not a measure of whether every player will find, enjoy or in
 | 142 | Final showdown tests the theme | The Council tests whether to display, correct or act on evidence people trusted, and who bears the cost of each response. | ✓ | [vesper.json](../src/content/vesper.json), [council-team.test.ts](../tests/council-team.test.ts) |
 | 143 | Whole party helps | The Council handover gives four companions distinct jobs and leaves their work visible after the hearing. Players can choose any Council ending. | ✓ | [council-team.test.ts](../tests/council-team.test.ts), [m16-council.json](../src/content/m16-council.json) |
 | 144 | Ending reflects choices | Four endings; letter 15; the epilogue. | ✓ | [vesper.json](../src/content/vesper.json), [letters.ts](../src/domain/letters.ts), [epilogue.ts](../src/domain/epilogue.ts) |
-| 145 | Walkable epilogue | After choosing an ending, players can continue to walk the worlds, finish optional Council work and attend The Last Hearth. | ✓ | [vesper.json](../src/content/vesper.json), [hearth.ts](../src/domain/hearth.ts), [council-team.test.ts](../tests/council-team.test.ts) |
+| 145 | Walkable epilogue | After choosing an ending, players can continue travelling, attend The Last Hearth or bring the original pen to Lia’s new bench. | ✓ | [vesper.json](../src/content/vesper.json), [after-council.test.ts](../tests/after-council.test.ts) |
 | 146 | Where are they now | The Afterwards tab shows people’s later circumstances based on saved decisions. | ✓ | [epilogue.ts](../src/domain/epilogue.ts), [ui.ts](../src/ui/ui.ts) |
-| 147 | Post-game | Formal post-ending rematches and New Game Plus remain open. Continuing to visit existing worlds is available. | ○ | [epilogue.ts](../src/domain/epilogue.ts), [saves.ts](../src/domain/saves.ts) |
-| 148 | Mirror scene | Afterwards returns to the first label bench in a written scene. A separate interactive end-of-campaign visit to that bench remains open. | ◐ | [epilogue.ts](../src/domain/epilogue.ts), [ui.ts](../src/ui/ui.ts) |
+| 147 | Post-game | The Handover Room rotates three new evidence bundles and preserves the previous display. A full New Game Plus remains open. | ◐ | [handover-gallery.test.ts](../tests/handover-gallery.test.ts) |
+| 148 | Mirror scene | The first label stand sends the Guardian to Lia with the original pen. Players visit the recipient of their new arrangement and bring its effect back to the same stand. | ✓ | [after-council.test.ts](../tests/after-council.test.ts), [epilogue.ts](../src/domain/epilogue.ts) |
 | 149 | Credits with your choices | After the Council, the Journal’s Afterwards page opens illustrated vignettes drawn from the ending and earlier deeds. Players can hear an original theme reprise alongside the credits. | ✓ | [ui.ts](../src/ui/ui.ts), [epilogue.ts](../src/domain/epilogue.ts), [storyMotifs.ts](../src/domain/storyMotifs.ts) |
 | 150 | A lingering thought | The last words in Afterwards, built from why you came. | ✓ | [epilogue.ts](../src/domain/epilogue.ts), [crossings.test.ts](../tests/crossings.test.ts) |
 

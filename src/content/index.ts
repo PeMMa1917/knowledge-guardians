@@ -8,6 +8,7 @@ import sources from './sources.json';
 import common from './common.json';
 import m01 from './m01-nexus.json';
 import openingPractice from './opening-practice.json';
+import doorFold from './door-fold.json';
 import nexusWayfinding from './nexus-wayfinding.json';
 import nexusReadingRests from './nexus-reading-rests.json';
 import nexusDateRibbon from './nexus-date-ribbon.json';
@@ -64,10 +65,12 @@ import cartographers from './m09-cartographers.json';
 import cartographersSide from './cartographers-side.json';
 import performance from './m10-performance.json';
 import performanceFrames from './performance-frames.json';
+import paperLanding from './paper-landing.json';
 import market from './m11-market.json';
 import pairedAccessions from './paired-accessions.json';
 import water from './m12-water.json';
 import civic from './m13-civic.json';
+import civicAppeal from './civic-appeal.json';
 import voices from './m14-voices.json';
 import elsbetReel from './voices-elsbet.json';
 import island from './m15-island.json';
@@ -78,15 +81,28 @@ import handoverGallery from './handover-gallery.json';
 import observatoryInland from './observatory-inland.json';
 import observatoryArchive from './observatory-archive.json';
 import departureStrip from './departure-strip.json';
+import ferryKettle from './ferry-kettle.json';
+import transferFaces from './transfer-faces.json';
+import { QUESTION_ROUTES, questionWaysByObjective } from './questionEncounters';
 
 export const CONTENT_VERSION = 5;
 
-const parts: any[] = [sources, common, m01, openingPractice, nexusWayfinding, nexusReadingRests, nexusDateRibbon, nexusPrint, nexusPacking, nexusViewer, nexusHandle, nexusLostGauge, vindolanda, m02, emberfordSide, lanternfair, backbill, welcome, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, fray, rumour, clueboard, memories, chapterVoices, quarters, dive, story, nile, scenes, preservedRecords, preserved, reconstruction, copper, preservedExhibition, observatory, opticsScreen, observatoryInland, observatoryArchive, departureStrip, forest, forestSide, forestReader, metalworks, metalworksSide, copies, copiesSide, copiesMargin, cartographers, cartographersSide, performance, performanceFrames, market, pairedAccessions, rook, water, harrowmere, vesper, civic, voices, elsbetReel, island, islandMovement, council, afterCouncil, handoverGallery];
+const parts: any[] = [sources, common, m01, openingPractice, doorFold, nexusWayfinding, nexusReadingRests, nexusDateRibbon, nexusPrint, nexusPacking, nexusViewer, nexusHandle, nexusLostGauge, vindolanda, m02, emberfordSide, lanternfair, backbill, welcome, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, fray, rumour, clueboard, memories, chapterVoices, quarters, dive, story, nile, scenes, preservedRecords, preserved, reconstruction, copper, preservedExhibition, observatory, opticsScreen, observatoryInland, observatoryArchive, departureStrip, ferryKettle, transferFaces, forest, forestSide, forestReader, metalworks, metalworksSide, copies, copiesSide, copiesMargin, cartographers, cartographersSide, paperLanding, performance, performanceFrames, market, pairedAccessions, rook, water, harrowmere, vesper, civic, civicAppeal, voices, elsbetReel, island, islandMovement, council, afterCouncil, handoverGallery];
 const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'missions', 'hints', 'criteria', 'awards', 'items', 'offers', 'journal',
   'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks', 'glossary', 'questions', 'origins', 'alcoves', 'puzzles', 'skillDomains', 'skills', 'lorelings', 'lorelingAtlas', 'fray', 'clueBoards', 'memories', 'keepsakes', 'divePrompts', 'diveItems', 'knots', 'clues', 'keepsakeTalks', 'chronicle', 'secrets', 'communities'] as const;
 
 export function buildPack(): ContentPack {
   const pack: any = { id: 'chapter-1', contentVersion: CONTENT_VERSION };
   for (const k of keys) pack[k] = parts.flatMap((p) => p[k] ?? []);
-  return pack as ContentPack;
+  const content = pack as ContentPack;
+  content.questions.push(...QUESTION_ROUTES.map(({ question }) => question));
+  const ways = questionWaysByObjective();
+  content.missions = content.missions.map((mission) => ({
+    ...mission,
+    objectives: mission.objectives.map((objective) => {
+      const questionWays = ways.get(objective.id);
+      return questionWays ? { ...objective, questionWays } : objective;
+    }),
+  }));
+  return content;
 }

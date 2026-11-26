@@ -42,7 +42,7 @@ import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
 import { useSignature } from './skills';
 import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
-import { checkAwards, grantCredit } from './permanent';
+import { addQuestionWay, checkAwards, grantCredit } from './permanent';
 import { evaluateLabel, type LabelResult } from './label';
 import { playMove, startShowdown, type ShowdownMove } from './showdown';
 import { tryLock, type LockResult } from './lock';
@@ -1222,6 +1222,7 @@ export class Engine {
           s = apply(o.onComplete, s, out);
           if (o.weave) weaves.push(o.weave);
           if (o.kq) stones.push({ id: o.kq.id, way: `${m.world}|${o.kq.action}` });
+          for (const q of o.questionWays ?? []) stones.push({ id: q.id, way: `${m.world}|${q.action}` });
           for (const sk of o.skills ?? []) skillUses.push({ id: sk, sig: useSignature(m.world, o.kq?.action ?? 'step', o.id, o.weave?.aoks ?? []) });
           changed = true;
         }
@@ -1250,10 +1251,9 @@ export class Engine {
     }
     // Question Stones (KQ-003): Lumen names the question; a new way makes the stone brighter.
     for (const st of stones) {
-      const ways = p.stones?.[st.id] ?? [];
-      const newWay = !ways.includes(st.way);
-      if (newWay) p = { ...p, stones: { ...(p.stones ?? {}), [st.id]: [...ways, st.way] } };
-      events.push({ kind: 'stone', question: st.id, ways: newWay ? ways.length + 1 : ways.length, newWay });
+      const record = addQuestionWay(p, st.id, st.way);
+      events.push({ kind: 'stone', question: st.id, ways: record.stones[st.id].length, newWay: record !== p });
+      p = record;
     }
     // Skill Atlas (spec 76.1): one use per distinct context.
     for (const u of skillUses) {

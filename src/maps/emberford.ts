@@ -8,6 +8,7 @@ import type { Interactable, MapDef } from './types';
 import { sceneProp } from './sceneProps';
 import { EMBERFORD_LANTERN_FAIR } from './lanternfair';
 import { EMBERFORD_BACKBILL } from './backbill';
+import { EMBERFORD_DOOR_FOLD } from './doorFold';
 
 const W = 40, H = 28;
 // Plaza (stone) rectangle
@@ -146,6 +147,7 @@ export const EMBERFORD: MapDef = {
   interactables: [
     ...EMBERFORD_LANTERN_FAIR,
     ...EMBERFORD_BACKBILL,
+    ...EMBERFORD_DOOR_FOLD,
     { id: 'ballad-spot', kind: 'fieldgame', game: 'ballad', x: 37, y: 9, w: 1, h: 1, label: 'Wynn the ballad-singer, by the east well', art: 'notice-board' },
     { id: 'loyalty-hesper', kind: 'fieldgame', game: 'loyalty-hesper', x: 9, y: 18, w: 1, h: 1, label: "a record on Hesper's work bench (The Traveller's Quench)", art: 'ledger', visibleIf: { num: 'lamps.lit', gte: 6 } },
     { id: 'loyalty-sefa', kind: 'fieldgame', game: 'loyalty-sefa', x: 33, y: 22, w: 1, h: 1, label: "Sefa's song sheet on the memorial stone (The Flood Song)", art: 'old-sign', visibleIf: { num: 'lamps.lit', gte: 6 } },

@@ -4,7 +4,7 @@
  */
 import { buildPack } from '../content';
 import { Engine, newCampaign, type Command, type GameEvent } from '../domain/engine';
-import { checkAwards } from '../domain/permanent';
+import { checkAwards, restoreQuestionWays } from '../domain/permanent';
 import { check } from '../domain/rules';
 import {
   SaveService, browserStore, restoreRecovery, writeCheckpoint, writeSuspend, type SaveEntry, type SlotPair,
@@ -121,6 +121,11 @@ export class GameController {
     this.state = structuredClone(this.pair.continue.state);
     this.playStart = Date.now();
     this.refreshAwards();
+    const record = restoreQuestionWays(this.permanent, this.pack, this.state.objectivesDone);
+    if (this.permanent !== record) {
+      this.permanent = record;
+      this.saves.savePermanent(record);
+    }
   }
 
   loadRecovery(): void {

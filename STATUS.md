@@ -6,7 +6,13 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
-Fifteen chapters and the post-Council return are playable. A clean install, 827 tests, production build and 42-file asset check passed. Chromium rendered and walked all 52 maps, and covered both first-bench endings, all three rotating Handover Room cases, the two Market/Council catalogue handovers, and the optional routes listed below. The browser checks staged prior chapter progress in several cases and exercised the new interactions through the game. The thirty-minute audit uses author estimates.
+Fifteen chapters and the post-Council return are playable. A clean install, 852 tests, production build and 42-file asset check passed. Chromium rendered and walked all 52 maps in the previous checkpoint. It also exercised both first-bench endings, all three rotating Handover Room cases, the two Market/Council catalogue handovers, and the new routes below. Earlier chapter progress and positioning were staged in several checks. The thirty-minute audit uses author estimates. [Browser checks](docs/BROWSER_CHECKS.md)
+
+- At the Door Before the Bell connects two specific historical books to a fictional choice about porch directions and permission. Both portable folds can change a later Emberford delivery.
+- The Ferry’s kettle compares the same stock in two heating orders. Its checked card changes how sellers track delivered and remaining stock at the Market.
+- The Paper Landing is a playable fictional fable. Its print meets an independently dated receipt in the Cold Store. The Second Delivery carries a filed Civic appeal back to the Water Commons and opens a different collection gate for each policy.
+- The Two-Face Frame carries the results of a letterform reproduction check from Metalworks to the Council. Lending a teaching plate leaves a different next step for the yard than sending paired prints.
+- The Journal’s Question Stones now hold 35 exhibition question families. Players meet each family through three different situations, with earlier completed actions carried forward from older saves. [Curriculum notes](docs/TOK_ALIGNMENT.md#exhibition-habits-in-play)
 
 ### Later departures, returns and room sound
 

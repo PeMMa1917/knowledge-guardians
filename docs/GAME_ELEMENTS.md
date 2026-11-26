@@ -4,9 +4,9 @@ This tracker maps each numbered item in the supplied *Ultimate Universal RPG Com
 
 | Status | Meaning | Numbered items |
 | --- | --- | ---: |
-| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 102 |
+| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 103 |
 | ◐ Partial | A reachable analogue covers part of the idea, or operates in a narrower setting. The gap is stated. | 110 |
-| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 49 |
+| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 48 |
 | ✗ Excluded | The classroom, privacy or nonviolent game rules exclude the original system. | 27 |
 
 The marks reflect inspection of authored maps, dialogue, interfaces and tests. A mark does not measure how often players find the activity, how long they spend, or what they learn. Each numbered row refers to the attachment’s item number. Source links point to playable evidence or the existing feature nearest to a planned adaptation.
@@ -49,7 +49,7 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | 25 | Guilds and affiliations | ◐ | Emberford communities and the Seal have preferences and memory. Multi-chapter affiliation ranks remain open. | [communities.ts](../src/domain/communities.ts), [archive-handoff.test.ts](../tests/archive-handoff.test.ts) |
 | 26 | Loyalty and mentorship | ✓ | Four companion investigations test trust through evidence and costly acts of care. | [loyalty.ts](../src/domain/loyalty.ts), [loyalty.test.ts](../tests/loyalty.test.ts) |
 | 27 | Ending branches | ✓ | The Council resolution sets one of four endings and changes letters, memory and the Afterwards account. | [vesper.json](../src/content/vesper.json), [epilogue.ts](../src/domain/epilogue.ts), [letters.test.ts](../tests/letters.test.ts) |
-| 28 | Hearth conversations and food | ◐ | Hearth discussions let companions exchange views or take a breath. Making a shared meal with preparation effects remains open. | [hearth.ts](../src/domain/hearth.ts) |
+| 28 | Hearth conversations and food | ◐ | Hearth discussions let companions exchange views or take a breath. The ferry service has preparation effects. Shared preparation at the companion hearth remains open. | [hearth.ts](../src/domain/hearth.ts), [ferry-kettle.test.ts](../tests/ferry-kettle.test.ts) |
 | 29 | Configurable companion help | ○ | A future helper could offer a chosen task, such as keeping a second source in view. No programmable helper system is live. | [loyalty.ts](../src/domain/loyalty.ts) |
 | 30 | Lending companions online | ✗ | The campaign is offline and has no shared accounts or lending. NPC companionship is the local alternative. | [loyalty.ts](../src/domain/loyalty.ts), [DESIGN_SUMMARY.md](DESIGN_SUMMARY.md) |
 | 31 | Recall a returning person | ◐ | Use the conversation recall while talking or open the Journal history. A short profile card dedicated to returning people remains open. | [conversationHistory.ts](../src/domain/conversationHistory.ts), [ui.ts](../src/ui/ui.ts) |
@@ -352,7 +352,7 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | 258 | Find a story's weak link through play | ✓ | Check sources in The Mark and the Hands or use the Forecast Board. Trivia quizzes are outside the classroom design. | [emberford-followups.test.ts](../tests/emberford-followups.test.ts), [forecast.test.ts](../tests/forecast.test.ts), [AGENTS.md](../AGENTS.md) |
 | 259 | Art, clothing and decorating | ◐ | Dyes, crest, quarters and exhibit layout support creative decisions. Runways and appearance grades are absent. | [appearance.ts](../src/domain/appearance.ts), [quarters.ts](../src/domain/quarters.ts), [preserved-exhibition.test.ts](../tests/preserved-exhibition.test.ts) |
 | 260 | Delicate dig and restoration | ✓ | The Careful Dig weighs how excavation changes an observation. The Founders' Plaque compares restoration choices and what survives. | [compendiumGames.ts](../src/domain/compendiumGames.ts), [learning.test.ts](../tests/learning.test.ts), [restore.test.ts](../tests/restore.test.ts) |
-| 261 | Prepare food for a visitor | ○ | A small food service choice could compare timing and what guests can use. A cooking or café loop remains open. | [hearth.ts](../src/domain/hearth.ts), [emberford.ts](../src/maps/emberford.ts) |
+| 261 | Prepare food for a visitor | ✓ | Try two heating orders for the same six measures, choose when to serve and see who actually got a cup. Reopen the practice bench with a different shift. | [ferry-kettle.test.ts](../tests/ferry-kettle.test.ts), [ferryKettle.ts](../src/maps/ferryKettle.ts) |
 | 262 | Trace the sky and measure a view | ✓ | Star Pictures compares constellation traditions and measures the same height from the instrument. | [compendiumGames.ts](../src/domain/compendiumGames.ts), [observatory.ts](../src/maps/observatory.ts) |
 
 ## XVI. Side quests
@@ -405,5 +405,5 @@ These nine preferences pair an early invitation with later play. Six have a play
 ### Unfilled opportunities
 
 - A piloted ferry, a calm movement course, a recurring research challenge and a post-ending replay remain open. Existing convoy models and private retry support are listed alongside those gaps.
-- A small food-preparation loop, a diorama, a portable passport, a specialist traversal tool and advanced apprenticeship remain open. Each has a nearby authored case that can be expanded through play.
+- A diorama, a portable passport, a specialist traversal tool and advanced apprenticeship remain open. Each has a nearby authored case that can be expanded through play.
 - Online systems, student publishing, wagers, grading and combat are governed by the [repository rules](../AGENTS.md). The adapted alternatives sit in the individual rows.

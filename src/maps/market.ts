@@ -1,6 +1,7 @@
 /** A fictional market square, with different jobs on the same set of lanes. */
 import type { Condition } from '../domain/types';
 import { MARKET_ACCESSIONS } from './pairedAccessions';
+import { MARKET_KETTLE } from './ferryKettle';
 import type { Interactable, MapDef } from './types';
 import { MARKET_WELCOME } from './welcome';
 
@@ -47,6 +48,7 @@ export const MARKET_SQUARE: MapDef = {
   interactables: [
     ...MARKET_WELCOME,
     ...MARKET_ACCESSIONS,
+    ...MARKET_KETTLE,
     { id: 'cross-goat', kind: 'fieldgame', game: 'cross-goat', x: 8, y: 16, w: 1, h: 1, label: 'a goat eating price slips (a crossing)', art: 'board-stand' },
     { id: 'cross-patron', kind: 'fieldgame', game: 'cross-patron', x: 13, y: 10, w: 1, h: 1, label: 'the shrine of the Lady of Fair Measure (a crossing)', art: 'old-sign' },
     { id: 'market-nexus-return', kind: 'door', x: 17, y: 22, w: 1, h: 1, label: 'the crossing back to the Nexus',

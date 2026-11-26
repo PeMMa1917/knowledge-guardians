@@ -2,6 +2,7 @@
 import type { Condition } from '../domain/types';
 import { CIVIC_ARRIVAL_TRAYS, civicReceivingArrangements, civicReceivingLoad } from '../domain/civicArrivals';
 import { civicLaneReading, civicLaneRouting, type RouteSocket } from '../domain/routeTiles';
+import { CIVIC_APPEAL_CANAL, CIVIC_APPEAL_DISPATCH } from './civicAppeal';
 import type { Interactable, MapDef } from './types';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'civic.waypost'): Interactable {
@@ -102,6 +103,7 @@ export const CIVIC_DISPATCH: MapDef = {
     { id: 'civic-edge-place', kind: 'scene', node: 'record.edge.post', x: 11, y: 14, w: 1, h: 1,
       label: 'Lin’s stand for the source copies', art: 'civic.notice', walkThrough: true,
       visibleIf: { all: [recordFolio, { objective: 'record.edge.civic.compare' }, { not: { flagSet: 'record.edge.civic.mount' } }] } },
+    ...CIVIC_APPEAL_DISPATCH,
   ],
   lights: [
     { x: 13, y: 7, r: 85, color: 0xe5bd87 }, { x: 15, y: 9, r: 68, color: 0xc3dfda },
@@ -230,6 +232,7 @@ export const CIVIC_CANAL: MapDef = {
     sign('civic-edge-scope', 13, 10, 'the named constitution’s source line at Canal Walk', 'civic.notice',
       'The direction points to the Eastern Shawnee Tribe of Oklahoma’s own public constitution at North Steps. Beside it, a reader has made two columns for the Civic rehearsal. One names who wrote down the request. The other names who may decide it.',
       { flag: 'record.edge.seen', visibleIf: { flag: 'record.edge.civic.mount', eq: 'scope' } }),
+    ...CIVIC_APPEAL_CANAL,
   ],
   lights: [
     { x: 9, y: 9, r: 67, color: 0xf1c591 }, { x: 16, y: 8, r: 70, color: 0xd5dbb2 },

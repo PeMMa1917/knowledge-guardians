@@ -703,6 +703,73 @@ DRAW['big.sea.dugout-diagram'] = [96, 64, (g) => {
   for (const x of [19, 57]) R(g, '#5c777b', x, 46, 17, 1);
 }];
 
+// Invented workshop parts and blank catalogue mounts for the two-face study.
+DRAW['plate.front'] = [24, 24, (g) => {
+  pedestal(g, 2, 15, 20);
+  R(g, '#59463a', 3, 3, 18, 12);
+  R(g, '#cc956e', 5, 4, 14, 10);
+  for (const x of [6, 11, 16]) {
+    R(g, '#785243', x, 5, 3, 4);
+    R(g, '#f2cc97', x, 5, 3);
+  }
+  R(g, '#614e40', 10, 10, 1, 3);
+  R(g, '#614e40', 13, 10, 1, 3);
+}];
+DRAW['plate.back'] = [24, 24, (g) => {
+  pedestal(g, 2, 15, 20);
+  R(g, '#59463a', 2, 5, 20, 10);
+  R(g, '#c3977e', 4, 6, 16, 8);
+  R(g, '#675567', 5, 7, 10, 2);
+  R(g, '#675567', 5, 11, 10, 2);
+  paper(g, 15, 5, 6, 8);
+  R(g, '#a67854', 16, 8, 4);
+}];
+DRAW['plate.print'] = [24, 24, (g) => {
+  pedestal(g, 2, 15, 20);
+  paper(g, 3, 6, 18, 9);
+  for (const x of [6, 11, 16]) R(g, '#7c6c62', x, 8, 2, 2);
+  R(g, '#7c6c62', 10, 12);
+  R(g, '#7c6c62', 13, 12);
+}];
+DRAW['plate.frame'] = [24, 24, (g) => {
+  pedestal(g, 2, 15, 20);
+  R(g, '#694f45', 2, 4, 20, 10);
+  R(g, '#deb090', 3, 4, 18, 9);
+  R(g, '#55606a', 5, 6, 5, 4);
+  R(g, '#55606a', 12, 6, 7, 4);
+  R(g, '#f3d59f', 4, 5, 16);
+}];
+for (const set of [false, true]) {
+  const key = set ? 'plate.case-set' : 'plate.case-fold';
+  DRAW[key] = [24, 24, (g) => {
+    pedestal(g, 2, 15, 20);
+    paper(g, 3, 6, 18, 8);
+    R(g, '#78968b', 6, 5, 3, 5);
+    R(g, '#b68766', 14, 5, 3, 5);
+    if (set) R(g, '#907252', 11, 6, 1, 6);
+  }];
+  DRAW[`big.${key}`] = [96, 64, (g) => {
+    R(g, '#302734', 0, 0, 96, 64);
+    R(g, '#483c48', 5, 6, 86, 49);
+    if (set) {
+      for (const x of [11, 35, 59]) {
+        R(g, '#9b795f', x, 12, 21, 25);
+        R(g, '#d4ae87', x + 1, 13, 19, 22);
+      }
+      R(g, '#719785', 49, 34, 28, 4);
+      R(g, '#769686', 63, 28, 4, 10);
+      paper(g, 26, 37, 36, 12);
+    } else {
+      R(g, '#ac8062', 17, 16, 63, 33);
+      paper(g, 14, 19, 63, 32);
+      R(g, '#b88b68', 15, 20, 61, 3);
+      R(g, '#7f9e8d', 25, 13, 12, 12);
+      R(g, '#aa7f73', 51, 13, 12, 12);
+      R(g, '#896b5d', 30, 40, 32, 2);
+    }
+  }];
+}
+
 // Original archive cards and a fictional ferry kit. The catalogue card shows no historical map marks.
 DRAW['departure.catalogue'] = [24, 24, (g) => {
   pedestal(g, 2, 15, 20);
@@ -1414,6 +1481,85 @@ DRAW['sea.margin'] = [16, 24, (g) => {
   R(g, '#ac7868', 12, 11, 1, 1);
 }];
 
+// Sora's fictional paper play and the Cold Store practice dispatch slips.
+function paperLandingBoard(g: Ctx, position: 'rail' | 'shelter', mark?: 'rail' | 'shelter') {
+  R(g, '#393e52', 1, 6, 30, 17);
+  paper(g, 2, 5, 28, 15);
+  R(g, '#91bfc6', 4, 9, 24, 9);
+  R(g, '#69959f', 4, 15, 24, 2);
+  R(g, '#795e64', 5, 10, 6, 1);
+  R(g, '#795e64', 6, 11, 1, 3);
+  R(g, '#795e64', 9, 11, 1, 3);
+  R(g, '#745f67', 21, 9, 6, 4);
+  R(g, '#a86f6b', 22, 8, 4, 1);
+  R(g, '#efcd99', 23, 10, 2, 3);
+  const landing = position === 'rail' ? 6 : 21;
+  R(g, '#be8367', landing, 13, 6, 3);
+  R(g, '#f4d49d', landing + 1, 13, 4, 1);
+  if (mark) {
+    const peg = mark === 'rail' ? 8 : 23;
+    R(g, '#493e5d', peg, 12, 2, 6);
+    R(g, '#bf89c4', peg - 1, 11, 4, 2);
+  }
+}
+DRAW['paper-landing.near'] = [32, 24, (g) => paperLandingBoard(g, 'rail')];
+DRAW['paper-landing.near-tagged'] = [32, 24, (g) => paperLandingBoard(g, 'rail', 'rail')];
+DRAW['paper-landing.far'] = [32, 24, (g) => paperLandingBoard(g, 'shelter')];
+DRAW['paper-landing.trail'] = [32, 24, (g) => paperLandingBoard(g, 'shelter', 'rail')];
+DRAW['paper-landing.arrival'] = [32, 24, (g) => paperLandingBoard(g, 'shelter', 'shelter')];
+DRAW['paper-landing.peg'] = [18, 22, (g) => {
+  R(g, '#57495b', 2, 16, 14, 5);
+  R(g, '#a28783', 3, 15, 12, 2);
+  R(g, '#6f4e75', 8, 8, 3, 9);
+  R(g, '#c899ce', 6, 6, 7, 3);
+}];
+DRAW['paper-landing.wheel'] = [18, 22, (g) => {
+  R(g, '#634d61', 7, 5, 4, 16);
+  R(g, '#634d61', 2, 8, 14, 8);
+  R(g, '#daa479', 4, 7, 10, 2);
+  R(g, '#daa479', 4, 15, 10, 2);
+  R(g, '#a47c70', 2, 10, 2, 5);
+  R(g, '#a47c70', 14, 10, 2, 5);
+  R(g, '#f2cf96', 7, 10, 4, 4);
+}];
+DRAW['paper-landing.press'] = [24, 24, (g) => {
+  R(g, '#694a60', 4, 9, 3, 14);
+  R(g, '#694a60', 17, 9, 3, 14);
+  paper(g, 4, 13, 16, 5);
+  R(g, '#bd946f', 3, 9, 18, 4);
+  R(g, '#f1c796', 3, 8, 18, 2);
+  R(g, '#8a6274', 11, 3, 3, 5);
+  R(g, '#d98986', 7, 2, 11, 2);
+}];
+function paperLandingSlip(g: Ctx, paired: boolean, tone: 'play' | 'desk', checked = false) {
+  R(g, '#584454', 3, 8, 26, 14);
+  const sheetWidth = paired ? 11 : 21;
+  const line = tone === 'play' ? '#9974a7' : '#5b969c';
+  const columns = paired ? [4, 17] : [6];
+  for (const x of columns) {
+    paper(g, x, 6, sheetWidth, 13);
+    R(g, line, x + 2, 9, sheetWidth - 4, 2);
+    R(g, '#8f7869', x + 2, 13, sheetWidth - 6, 1);
+    R(g, '#8f7869', x + 2, 15, sheetWidth - 5, 1);
+  }
+  if (checked) {
+    R(g, '#b4816a', 22, 15, 7, 5);
+    R(g, '#f0bd7b', 23, 16, 5, 2);
+  }
+}
+DRAW['paper-landing.proof-trail'] = [32, 24, (g) => paperLandingSlip(g, true, 'play')];
+DRAW['paper-landing.proof-arrival'] = [32, 24, (g) => paperLandingSlip(g, false, 'play')];
+DRAW['paper-landing.receipt'] = [32, 24, (g) => paperLandingSlip(g, true, 'desk')];
+DRAW['paper-landing.ticket-trail'] = [32, 24, (g) => paperLandingSlip(g, true, 'desk')];
+DRAW['paper-landing.ticket-arrival'] = [32, 24, (g) => paperLandingSlip(g, false, 'desk')];
+DRAW['paper-landing.checked-trail'] = [32, 24, (g) => paperLandingSlip(g, true, 'desk', true)];
+DRAW['paper-landing.checked-arrival'] = [32, 24, (g) => paperLandingSlip(g, false, 'desk', true)];
+DRAW['paper-landing.empty-clip'] = [20, 24, (g) => {
+  R(g, '#55485e', 2, 7, 16, 16);
+  R(g, '#887176', 3, 7, 14, 2);
+  R(g, '#d8a97d', 7, 5, 6, 5);
+}];
+
 // House of Performance stage, printed programmes and two cue boards.
 DRAW['stage.waypost'] = [16, 24, (g) => {
   R(g, '#503b4a', 3, 4, 10, 20);
@@ -1948,12 +2094,49 @@ DRAW['big.accession-shell'] = [40, 29, (g) => {
   for (const [x, top, tall] of [[15, 9, 12], [21, 10, 10], [26, 11, 7]]) R(g, '#7f665d', x, top, 1, tall);
 }];
 
+// The two books use their documented features in original schematics.
+DRAW['big.door-century-book'] = [40, 28, (g) => {
+  R(g, '#3f4655', 3, 3, 34, 22);
+  R(g, '#e8d8ac', 4, 4, 15, 19); R(g, '#ece1c2', 20, 4, 16, 19);
+  R(g, '#9e6956', 19, 4, 1, 19); R(g, '#8b654b', 6, 6, 11, 2);
+  for (const y of [10, 13, 16, 19]) R(g, '#9c8263', 6, y, 11, 1);
+  for (const [width, y] of [[2, 7], [4, 8], [6, 9], [8, 10], [10, 11]]) R(g, '#587079', 28 - width / 2, y, width, 1);
+  R(g, '#587079', 22, 12, 12, 2); R(g, '#587079', 23, 19, 10, 2);
+  for (const x of [24, 27, 30]) R(g, '#587079', x, 14, 1, 5);
+}];
+DRAW['big.door-green-book'] = [40, 28, (g) => {
+  R(g, '#3f4655', 3, 3, 34, 22);
+  R(g, '#505c45', 10, 2, 20, 24); R(g, '#c8be86', 12, 4, 16, 20); R(g, '#363e35', 13, 5, 14, 18);
+  R(g, '#dbca96', 14, 6, 12, 16); R(g, '#626550', 15, 7, 10, 2);
+  R(g, '#8e785c', 16, 11, 8, 7); R(g, '#ead69a', 17, 11, 6, 6); R(g, '#ead69a', 15, 11, 2, 2);
+  R(g, '#78664d', 18, 13, 4, 1); R(g, '#78664d', 18, 15, 4, 1); R(g, '#626550', 16, 20, 8, 1);
+}];
+DRAW['fold.open-door'] = [16, 16, (g) => {
+  R(g, '#28364c', 3, 2, 10, 12); R(g, '#d9ae69', 4, 3, 8, 11);
+  R(g, '#263c4b', 6, 5, 4, 9); R(g, '#4f8f85', 6, 6, 3, 7); R(g, '#d7dd8d', 8, 9, 1, 1);
+}];
+DRAW['fold.strip'] = [16, 16, (g) => {
+  R(g, '#5b473f', 3, 4, 10, 11); R(g, '#e7d6ae', 4, 5, 8, 10); R(g, '#6f7958', 5, 7, 6, 1);
+  R(g, '#945d54', 8, 10, 3, 3); R(g, '#a69170', 5, 10, 2, 1);
+}];
+DRAW['fold.two-hinges'] = [16, 16, (g) => {
+  R(g, '#57616b', 1, 5, 14, 9); R(g, '#eccb86', 2, 5, 5, 8); R(g, '#e3b874', 9, 5, 5, 8);
+  R(g, '#665b4d', 7, 6, 2, 6); R(g, '#547c77', 3, 8, 3, 2); R(g, '#a65f56', 10, 8, 2, 3);
+}];
+DRAW['fold.paired'] = [16, 16, (g) => {
+  R(g, '#67514b', 2, 4, 12, 11); R(g, '#dfc38b', 3, 5, 10, 8);
+  R(g, '#507c77', 4, 6, 3, 6); R(g, '#9e624f', 9, 7, 2, 3); R(g, '#645f53', 8, 11, 4, 1);
+}];
+
 /** Map exhibit art keys (small) to large inspection pictures. */
 export const BIG_ART: Record<string, string> = {
+  'door-century-book': 'big.door-century-book', 'door-green-book': 'big.door-green-book',
   'accession-khipu': 'big.accession-khipu', 'accession-shell': 'big.accession-shell',
   'nile.scroll': 'nile.scroll', 'nile.tablet': 'nile.tablet', 'nile.map': 'nile.map', 'nile.stone': 'nile.stone',
   'preserved.temple': 'big.preserved.temple', 'preserved.catalogue': 'big.preserved.catalogue',
   'departure.catalogue': 'big.departure.catalogue',
+  'plate.case-fold': 'big.plate.case-fold',
+  'plate.case-set': 'big.plate.case-set',
   'preserved.coast': 'big.preserved.coast', 'preserved.context': 'big.preserved.context',
   'preserved.binak-diagram': 'big.preserved.binak-diagram', 'sea.dugout-diagram': 'big.sea.dugout-diagram',
   'forest.field-diagram': 'big.forest.field-diagram',

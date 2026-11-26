@@ -103,13 +103,20 @@ async function button(browser, label) {
   }, label), 'button ' + label);
 }
 
-async function press(browser, key, shift = false) {
-  const nativeCodes = { Escape: 27, Tab: 9, Enter: 13, End: 35, ' ': 32 };
+function sendKey(browser, key, release, shift = false) {
+  const nativeCodes = { Escape: 27, Tab: 9, Enter: 13, End: 35, ' ': 32,
+    ArrowLeft: 37, ArrowUp: 38, ArrowRight: 39, ArrowDown: 40 };
   const keyCode = nativeCodes[key];
+  const text = !release && key === 'Enter' ? '\r' : undefined;
   const data = { key, code: key === ' ' ? 'Space' : key, modifiers: shift ? 8 : 0,
-    windowsVirtualKeyCode: keyCode, nativeVirtualKeyCode: keyCode };
-  await browser.send('Input.dispatchKeyEvent', { ...data, type: 'rawKeyDown' });
-  await browser.send('Input.dispatchKeyEvent', { ...data, type: 'keyUp' });
+    windowsVirtualKeyCode: keyCode, nativeVirtualKeyCode: keyCode, text,
+    type: release ? 'keyUp' : text ? 'keyDown' : 'rawKeyDown' };
+  return browser.send('Input.dispatchKeyEvent', data);
+}
+
+async function press(browser, key, shift = false) {
+  await sendKey(browser, key, false, shift);
+  await sendKey(browser, key, true, shift);
 }
 
 async function tabTo(browser, label) {
@@ -142,6 +149,10 @@ async function smokeAccess(browser, nexus) {
   await until(() => browser.evaluate(() => document.activeElement?.getAttribute('aria-label') === 'Close'), 'Tab wraps to the first setting');
   await tabTo(browser, 'Text size');
   await press(browser, 'End');
+  await until(() => browser.evaluate(() => window.kg.settings.textScale === 1.75), 'End reaches the largest text option');
+  await press(browser, 'ArrowUp');
+  await until(() => browser.evaluate(() => window.kg.settings.textScale === 1.5), 'ArrowUp changes the native select');
+  await press(browser, 'ArrowDown');
   await until(() => browser.evaluate(() => window.kg.settings.textScale === 1.75 &&
     document.documentElement.style.getPropertyValue('--text-scale') === '1.75'), 'keyboard selects 175% text');
   for (const control of ['High-contrast interface', 'Wider letter and line spacing', 'Calm mode:', 'Sound captions:']) {
@@ -159,6 +170,28 @@ async function smokeAccess(browser, nexus) {
   await press(browser, 'Escape');
   await until(() => browser.evaluate(() =>
     !document.querySelector('[role="dialog"]') && document.activeElement === document.querySelector('#game canvas')), 'Escape returns focus to the canvas');
+  const movement = await browser.evaluate(() => {
+    const world = window.kg.world;
+    const { x, y } = world.player.sprite;
+    const tx = Math.floor(x / 16);
+    const ty = Math.floor(y / 16);
+    const choices = [
+      { key: 'ArrowLeft', dx: -1, dy: 0 }, { key: 'ArrowRight', dx: 1, dy: 0 },
+      { key: 'ArrowUp', dx: 0, dy: -1 }, { key: 'ArrowDown', dx: 0, dy: 1 },
+    ];
+    const direction = choices.find(({ dx, dy }) => world.blocked[ty + dy]?.[tx + dx] === false);
+    return direction && { ...direction, x, y };
+  });
+  if (!movement) throw new Error('No path to test keyboard movement after closing Settings');
+  try {
+    await sendKey(browser, movement.key, false);
+    await until(() => browser.evaluate(({ dx, dy, x, y }) => {
+      const sprite = window.kg.world.player.sprite;
+      return (sprite.x - x) * dx + (sprite.y - y) * dy >= 4;
+    }, movement), 'world responds to an arrow key after closing Settings');
+  } finally {
+    await sendKey(browser, movement.key, true);
+  }
 
   // Stage the clock only. The ordinary event deck, modal and Later action run in the browser.
   const seen = await browser.evaluate(() => {

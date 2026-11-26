@@ -1,0 +1,1015 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH8-R04",
+   "world": "WORLD-09",
+   "title": "The Paper Landing",
+   "knowledgeQuestion": "How can the order in which we take a reading change what we can carry forward?",
+   "stake": "If Sora sends the story without its label, the next reader may use a paper landing as a direction.",
+   "available": {
+    "flagSet": "paper.landing.phase"
+   },
+   "objectives": [
+    {
+     "id": "paper.landing.proof",
+     "title": "Try the peg and tide wheel. Press a proof for the Cold Store.",
+     "essential": false,
+     "visible": {
+      "flagSet": "paper.landing.phase"
+     },
+     "done": {
+      "flagSet": "paper.landing.order"
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "evidence",
+       "perspective",
+       "certainty",
+       "explanation"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "theatre",
+       "film",
+       "geography",
+       "visual-arts"
+      ],
+      "aoks": [
+       "ART",
+       "HUM",
+       "TEC"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-RSC-21"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.paper.landing.proof"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH3-R12",
+   "world": "WORLD-04",
+   "title": "Where the Slip Takes You",
+   "knowledgeQuestion": "When does a useful instruction need the history behind it?",
+   "stake": "A new caller has little time. An earlier caller still needs a way to check the old return.",
+   "available": {
+    "flagSet": "paper.landing.cold"
+   },
+   "objectives": [
+    {
+     "id": "paper.landing.compare",
+     "title": "Bring the print to Aster and line it up with the practice desk receipts.",
+     "essential": false,
+     "visible": {
+      "flagSet": "paper.landing.cold"
+     },
+     "done": {
+      "flag": "paper.landing.receipts",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "truth",
+       "justification",
+       "objectivity",
+       "interpretation"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "perspectives"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      },
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "geography"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN",
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-14"
+     ]
+    },
+    {
+     "id": "paper.landing.checked",
+     "title": "Hang the checked directions. See where the reader goes.",
+     "essential": false,
+     "visible": {
+      "objective": "paper.landing.compare"
+     },
+     "done": {
+      "flag": "paper.landing.readback",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "values",
+       "power",
+       "responsibility",
+       "explanation"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "caring",
+       "solo": "extended"
+      },
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "subjects": [
+       "design-tech",
+       "lang-langlit"
+      ],
+      "aoks": [
+       "LAN",
+       "TEC",
+       "HUM"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-ETR-01"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.paper.landing.checked"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "item.paper-landing-proof",
+   "name": "The Paper Landing proof",
+   "art": "paper-landing.press",
+   "historicalLabel": "fictional-world",
+   "description": "A print from Sora’s invented cut-paper tale. The press took the reading made during one pass. The Cold Store’s practice desk has room for it."
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "paper.landing.board",
+   "speaker": "sea-harbourkeeper",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "Sora’s cut-paper play has a rail on the left and a shelter on the right. In the tale, a landing can follow a voice. A baker once called it by accident and found the whole landing under her flour table. In Sora’s model the tide wheel calls it to the shelter. A peg stays in whichever hole you press it into.",
+   "options": [
+    {
+     "text": "Unfold the play with its landing by the rail.",
+     "next": "paper.landing.open",
+     "if": {
+      "all": [
+       {
+        "objective": "sea.finish"
+       },
+       {
+        "not": {
+         "flagSet": "paper.landing.phase"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.phase",
+       "value": "near"
+      }
+     ]
+    },
+    {
+     "text": "Lift the peg. Turn the paper landing back to the rail.",
+     "next": "paper.landing.reset",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flagSet": "paper.landing.phase"
+         },
+         {
+          "not": {
+           "flagSet": "paper.landing.order"
+          }
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "paper.landing.phase",
+         "eq": "near"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.phase",
+       "value": "near"
+      }
+     ]
+    },
+    {
+     "text": "Step back from the practice rail."
+    }
+   ]
+  },
+  {
+   "id": "paper.landing.open",
+   "speaker": "sea-harbourkeeper",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "On the real harbour chart you left a margin where the survey stopped. The checked strip is still on the chart. This is our made-up landing. The peg is north of the board. The wheel is to the south. See what happens to your mark here."
+  },
+  {
+   "id": "paper.landing.reset",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The model starts again by the rail. Your peg is loose. Sora leaves the paper press open while you try another pass."
+  },
+  {
+   "id": "paper.landing.peg",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The removable peg fits either of the paper board’s two holes. The landing and the hole line up at this moment.",
+   "options": [
+    {
+     "text": "Push the peg in beside the rail before turning the wheel.",
+     "next": "paper.landing.peg.near",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flagSet": "paper.landing.phase"
+         },
+         {
+          "not": {
+           "flagSet": "paper.landing.order"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "paper.landing.phase",
+        "eq": "near"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.phase",
+       "value": "near-tagged"
+      }
+     ]
+    },
+    {
+     "text": "Push the peg in under the shelter where the landing is now.",
+     "next": "paper.landing.peg.far",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flagSet": "paper.landing.phase"
+         },
+         {
+          "not": {
+           "flagSet": "paper.landing.order"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "paper.landing.phase",
+        "eq": "far-unmarked"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.phase",
+       "value": "arrival"
+      }
+     ]
+    },
+    {
+     "text": "Leave the peg loose."
+    }
+   ]
+  },
+  {
+   "id": "paper.landing.peg.near",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The peg holds the first place by the rail. From the shelter, the new arrival still has a wall between their eyes and the peg. The tide wheel is ready."
+  },
+  {
+   "id": "paper.landing.peg.far",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The peg holds the current place under the shelter. A reader at the shelter can match it to the landing. The hole by the rail stayed empty during this pass."
+  },
+  {
+   "id": "paper.landing.wheel",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "A paper caller lifts a little hand as you take the wheel. The slot leads across the board from the rail to the shelter. The real chart on Market Rail stays in place.",
+   "options": [
+    {
+     "text": "Turn the wheel and bring the landing under the shelter.",
+     "next": "paper.landing.wheel.first",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flagSet": "paper.landing.phase"
+         },
+         {
+          "not": {
+           "flagSet": "paper.landing.order"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "paper.landing.phase",
+        "eq": "near"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.phase",
+       "value": "far-unmarked"
+      }
+     ]
+    },
+    {
+     "text": "Turn the wheel while holding your first-place peg still.",
+     "next": "paper.landing.wheel.second",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flagSet": "paper.landing.phase"
+         },
+         {
+          "not": {
+           "flagSet": "paper.landing.order"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "paper.landing.phase",
+        "eq": "near-tagged"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.phase",
+       "value": "trail"
+      }
+     ]
+    },
+    {
+     "text": "Leave the caller’s hand down."
+    }
+   ]
+  },
+  {
+   "id": "paper.landing.wheel.first",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The landing tucks under the shelter by the paper caller. There is still time to put a peg where it is now. The first hole keeps no mark of where it was."
+  },
+  {
+   "id": "paper.landing.wheel.second",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The cutout arrives under the shelter. Your peg stays one position back by the rail. Sora lays your two places along the same turn, with their order marked."
+  },
+  {
+   "id": "paper.landing.press",
+   "speaker": "sea-harbourkeeper",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "Sora has one pocket for the copy to travel. The press takes an impression from the pass you just played. You can reset the cutouts at the board before making a copy.",
+   "options": [
+    {
+     "text": "Press a two-place proof with before and after in order.",
+     "next": "paper.landing.kept.trail",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flagSet": "paper.landing.phase"
+         },
+         {
+          "not": {
+           "flagSet": "paper.landing.order"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "paper.landing.phase",
+        "eq": "trail"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.order",
+       "value": "trail"
+      },
+      {
+       "giveItem": "item.paper-landing-proof"
+      }
+     ]
+    },
+    {
+     "text": "Press an arrival proof with the place you could mark.",
+     "next": "paper.landing.kept.arrival",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flagSet": "paper.landing.phase"
+         },
+         {
+          "not": {
+           "flagSet": "paper.landing.order"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "paper.landing.phase",
+        "eq": "arrival"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.order",
+       "value": "arrival"
+      },
+      {
+       "giveItem": "item.paper-landing-proof"
+      }
+     ]
+    },
+    {
+     "text": "Leave the press open and walk back to the board."
+    }
+   ]
+  },
+  {
+   "id": "paper.landing.kept.trail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "BEFORE THE TURN: beside the rail. AT THE TURN: under the shelter. The first peg stays at the rail. Sora stamps FICTIONAL PAPER PLAY on the proof. Aster in the Cold Store keeps a separate practice desk for trying ways of passing a record."
+  },
+  {
+   "id": "paper.landing.cold.trail",
+   "speaker": "preserved-registrar",
+   "historicalLabel": "fictional-world",
+   "text": "Your print saved where the paper landing started. I have a visitor looking for a slot she used last week. Before we point, check the actual practice desk receipts on the short shelf.",
+   "options": [
+    {
+     "text": "Place the fictional print on the practice desk.",
+     "next": "paper.landing.cold.placed",
+     "if": {
+      "all": [
+       {
+        "flag": "paper.landing.order",
+        "eq": "trail"
+       },
+       {
+        "item": "item.paper-landing-proof"
+       },
+       {
+        "flag": "preserved.arrived",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "paper.landing.cold"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.cold",
+       "value": "trail"
+      }
+     ]
+    },
+    {
+     "text": "Keep the practice print in my pocket."
+    }
+   ]
+  },
+  {
+   "id": "paper.landing.kept.arrival",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "AT MY ARRIVAL: under the shelter. The peg stays where I saw the paper landing. The start of this pass is unmarked. Sora stamps FICTIONAL PAPER PLAY on the proof. Aster in the Cold Store keeps a separate practice desk for trying ways of passing a record."
+  },
+  {
+   "id": "paper.landing.cold.arrival",
+   "speaker": "preserved-registrar",
+   "historicalLabel": "fictional-world",
+   "text": "Your print kept the arrival sighting close to the instruction. There is a late caller coming for a new rehearsal request. Check the dates on the actual practice desk receipts before you make a ticket.",
+   "options": [
+    {
+     "text": "Place the fictional print on the practice desk.",
+     "next": "paper.landing.cold.placed",
+     "if": {
+      "all": [
+       {
+        "flag": "paper.landing.order",
+        "eq": "arrival"
+       },
+       {
+        "item": "item.paper-landing-proof"
+       },
+       {
+        "flag": "preserved.arrived",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "paper.landing.cold"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.cold",
+       "value": "arrival"
+      }
+     ]
+    },
+    {
+     "text": "Keep the practice print in my pocket."
+    }
+   ]
+  },
+  {
+   "id": "paper.landing.cold.placed",
+   "speaker": "preserved-registrar",
+   "historicalLabel": "fictional-world",
+   "text": "Aster puts a blue cover under the paper play. A plain strip points to the practice receipts. The Cold Store’s collection records have their own cases."
+  },
+  {
+   "id": "paper.landing.receipt",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "text": "Last week, bell two: Aster signed for completed rehearsal returns at the west rail. Today, bell four: Aster signed to take new rehearsal requests at the east shelf. The current intake line also directs return questions to the registrar.",
+   "options": [
+    {
+     "text": "Set the actual receipts beside the fiction. Keep the signers, jobs and dates with the directions.",
+     "next": "paper.landing.receipt.checked",
+     "if": {
+      "all": [
+       {
+        "flagSet": "paper.landing.cold"
+       },
+       {
+        "not": {
+         "flagSet": "paper.landing.receipts"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.receipts",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Close the practice folder."
+    }
+   ]
+  },
+  {
+   "id": "paper.landing.receipt.checked",
+   "speaker": "preserved-registrar",
+   "historicalLabel": "fictional-world",
+   "text": "Both actual slips belong to this fictional archive’s practice desk. Their dates and different jobs give Aster something to check before hanging a direction. The paper landing stays with the play."
+  },
+  {
+   "id": "paper.landing.plan.trail",
+   "speaker": "preserved-registrar",
+   "historicalLabel": "fictional-world",
+   "text": "The old receipt and the current one include different dates and duties. A two-place slip at the former rail would help someone arriving on the old directions. She will have one more line to read.",
+   "options": [
+    {
+     "text": "Fold the dated slips together for the former collection rail.",
+     "next": "paper.landing.gather.trail",
+     "if": {
+      "all": [
+       {
+        "flag": "paper.landing.cold",
+        "eq": "trail"
+       },
+       {
+        "objective": "paper.landing.compare"
+       },
+       {
+        "not": {
+         "flagSet": "paper.landing.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.layout",
+       "value": "trail"
+      }
+     ]
+    },
+    {
+     "text": "Let Aster keep both receipts on the short shelf."
+    }
+   ]
+  },
+  {
+   "id": "paper.landing.gather.trail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The folded slip has two panels. The former rail and the current shelf have a date, a signature and a different job each."
+  },
+  {
+   "id": "paper.landing.fit.trail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The folded slip has two panels. The former rail and the current shelf have a date, a signature and a different job each.",
+   "options": [
+    {
+     "text": "Hook the two dated panels side by side.",
+     "next": "paper.landing.fitted.trail",
+     "if": {
+      "all": [
+       {
+        "flag": "paper.landing.layout",
+        "eq": "trail"
+       },
+       {
+        "not": {
+         "flagSet": "paper.landing.hung"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.hung",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the clip empty for now."
+    }
+   ]
+  },
+  {
+   "id": "paper.landing.fitted.trail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Aster clears the old clip. The first panel says where rehearsal returns were taken before the move. The second takes callers with new requests to the east shelf."
+  },
+  {
+   "id": "paper.landing.use.trail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A visitor comes back to the former rail holding last week’s request. She stops at the date on the left panel. Her own receipt has the same little corner cut.",
+   "options": [
+    {
+     "text": "Align her receipt with the old date. Let her follow the newer panel.",
+     "next": "paper.landing.checked.trail",
+     "if": {
+      "all": [
+       {
+        "flag": "paper.landing.layout",
+        "eq": "trail"
+       },
+       {
+        "flag": "paper.landing.hung",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "paper.landing.readback"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.readback",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Give the reader some time."
+    }
+   ]
+  },
+  {
+   "id": "paper.landing.checked.trail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "She confirms which shift took her return. Aster handles her question. She takes the new request east. Aster keeps both panels and adds a small clip for visitors carrying an old receipt."
+  },
+  {
+   "id": "paper.landing.plan.arrival",
+   "speaker": "preserved-registrar",
+   "historicalLabel": "fictional-world",
+   "text": "A single line at the east shelf would send a late caller straight to new requests. The former rail still has the older receipt for returns. We can give that trip to the keeper if the caller needs it.",
+   "options": [
+    {
+     "text": "Cut a current-room ticket for the east shelf.",
+     "next": "paper.landing.gather.arrival",
+     "if": {
+      "all": [
+       {
+        "flag": "paper.landing.cold",
+        "eq": "arrival"
+       },
+       {
+        "objective": "paper.landing.compare"
+       },
+       {
+        "not": {
+         "flagSet": "paper.landing.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.layout",
+       "value": "arrival"
+      }
+     ]
+    },
+    {
+     "text": "Let Aster keep both receipts on the short shelf."
+    }
+   ]
+  },
+  {
+   "id": "paper.landing.gather.arrival",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The short ticket names the current place and job. There is room underneath for one dated footnote."
+  },
+  {
+   "id": "paper.landing.fit.arrival",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The short ticket names the current place and job. There is room underneath for one dated footnote.",
+   "options": [
+    {
+     "text": "Attach the short ticket and clip the earlier receipt reference beneath it.",
+     "next": "paper.landing.fitted.arrival",
+     "if": {
+      "all": [
+       {
+        "flag": "paper.landing.layout",
+        "eq": "arrival"
+       },
+       {
+        "not": {
+         "flagSet": "paper.landing.hung"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.hung",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the clip empty for now."
+    }
+   ]
+  },
+  {
+   "id": "paper.landing.fitted.arrival",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The face of the ticket gives new requests to the east shelf. A small dated tab sends questions about last week’s returns to the keeper."
+  },
+  {
+   "id": "paper.landing.use.arrival",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A late caller checks the job on the front of the ticket. He has a new request in one hand. His companion still has a return slip.",
+   "options": [
+    {
+     "text": "Slide the request tray towards him. Pull out the earlier receipt reference for his companion.",
+     "next": "paper.landing.checked.arrival",
+     "if": {
+      "all": [
+       {
+        "flag": "paper.landing.layout",
+        "eq": "arrival"
+       },
+       {
+        "flag": "paper.landing.hung",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "paper.landing.readback"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "paper.landing.readback",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Give the reader some time."
+    }
+   ]
+  },
+  {
+   "id": "paper.landing.checked.arrival",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "He files the new request from the east shelf. His companion takes the referral to the keeper. Aster leaves the pull-out tab in reach for the next pair."
+  }
+ ],
+ "hints": [
+  {
+   "id": "hint.paper.landing.proof.1",
+   "objective": "paper.landing.proof",
+   "depth": 1,
+   "text": "The peg and wheel have different jobs on Sora’s model."
+  },
+  {
+   "id": "hint.paper.landing.proof.2",
+   "objective": "paper.landing.proof",
+   "depth": 2,
+   "text": "Follow what happens to the mark as the cutout crosses. The board can reset a pass."
+  },
+  {
+   "id": "hint.paper.landing.proof.3",
+   "objective": "paper.landing.proof",
+   "depth": 3,
+   "text": "A peg can stay at the first place. A later peg can give a reader the arrival place."
+  },
+  {
+   "id": "hint.paper.landing.proof.4",
+   "objective": "paper.landing.proof",
+   "depth": 4,
+   "text": "Use both props, then go to the press at the pocket. Your latest pass sets the copy."
+  },
+  {
+   "id": "hint.paper.landing.compare.1",
+   "objective": "paper.landing.compare",
+   "depth": 1,
+   "text": "Aster has a practice desk for the print."
+  },
+  {
+   "id": "hint.paper.landing.compare.2",
+   "objective": "paper.landing.compare",
+   "depth": 2,
+   "text": "The practice receipts have their own shelf. Look for a pair of dated slips."
+  },
+  {
+   "id": "hint.paper.landing.compare.3",
+   "objective": "paper.landing.compare",
+   "depth": 3,
+   "text": "The former rail and the current shelf have different jobs on the signed slips."
+  },
+  {
+   "id": "hint.paper.landing.compare.4",
+   "objective": "paper.landing.compare",
+   "depth": 4,
+   "text": "Read the receipt scene east of Aster’s practice desk, then bring the checked slips back."
+  },
+  {
+   "id": "hint.paper.landing.checked.1",
+   "objective": "paper.landing.checked",
+   "depth": 1,
+   "text": "Aster has a place ready for the checked direction."
+  },
+  {
+   "id": "hint.paper.landing.checked.2",
+   "objective": "paper.landing.checked",
+   "depth": 2,
+   "text": "The two-place slip goes at the former rail. The compact ticket goes by the current shelf."
+  },
+  {
+   "id": "hint.paper.landing.checked.3",
+   "objective": "paper.landing.checked",
+   "depth": 3,
+   "text": "Hang the direction, then see which reader stops there."
+  },
+  {
+   "id": "hint.paper.landing.checked.4",
+   "objective": "paper.landing.checked",
+   "depth": 4,
+   "text": "Open the same rail a second time after fitting the slip. Help the reader use it."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.paper.landing.proof",
+   "kind": "quest",
+   "title": "The Paper Landing",
+   "text": "I kept the result of one order from Sora’s fictional paper play. Aster can try its way of marking a place against the practice desk receipts."
+  },
+  {
+   "id": "j.paper.landing.checked",
+   "kind": "quest",
+   "title": "Where the Slip Takes You",
+   "text": "I used the archive's own dates and signatures for the directions. I kept the paper story with its own label and helped a reader try the new slip."
+  }
+ ]
+}

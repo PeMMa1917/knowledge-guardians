@@ -12,6 +12,7 @@ import { ISLAND_CRATES, ISLAND_LANDINGS, ISLAND_ROUTES, islandPlan, type IslandL
 import { COUNCIL_TRIALS, councilClock, type CouncilTrial } from '../domain/councilClock';
 import { buildScoutBoard } from './scoutRoutes';
 import { adventureJournalTab } from './adventureJournal';
+import { ROUTE_ACTIONS } from '../content/questionEncounters';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -884,7 +885,7 @@ export class UI implements UIApi {
         case 'item': { const it = c.pack.items.find((x) => x.id === e.id); this.toast(`${e.qty > 0 ? 'Received' : 'Gave'}: ${it?.name ?? e.id}`, 'item'); this.sfx('sfx.pickup'); break; }
         case 'stone': {
           const q = c.pack.questions.find((x) => x.id === e.question);
-          if (q) this.toast(`Lumen's last word: ${q.lastWord}${e.newWay ? ` (Question Stone: ${Math.min(e.ways, 5)} of 5 ways)` : ''}`, 'info');
+          if (q && !q.journalOnly) this.toast(`Lumen's last word: ${q.lastWord}${e.newWay ? ` (Question Stone: ${Math.min(e.ways, 5)} of 5 ways)` : ''}`, 'info');
           break;
         }
         case 'marks': this.toast(`${e.delta > 0 ? '+' : ''}${e.delta} marks`, 'item'); this.sfx('sfx.coins'); break;
@@ -2495,17 +2496,20 @@ export class UI implements UIApi {
         })));
     } else if (tab === 'stones') {
       // Question Stones (KQ-003): a stone gets brighter with each new way of meeting the question. Never a quiz.
-      const ACTION: Record<string, string> = { label: 'a label', exhibition: 'a museum plaque', test: 'a fair test', showdown: 'a Showdown', thread: 'a Provenance Thread', forge: 'the forge', reflection: 'a mystery', research: 'EE practice', community: 'listening to a community', fieldwork: 'fieldwork' };
-      const WORLD: Record<string, string> = { 'WORLD-01': 'the Nexus', 'WORLD-02': 'Emberford' };
-      body.append(h('p', { class: 'fine' }, 'Each stone holds a question about knowledge that sat under something you did. A stone gets brighter when you meet the same question in a new way: a new place or a new kind of action. Five ways light it fully. Nothing here is a test.'));
+      const ACTION: Record<string, string> = { ...ROUTE_ACTIONS, label: 'a label', exhibition: 'a museum plaque', test: 'a fair test', showdown: 'a Showdown', thread: 'a Provenance Thread', forge: 'the forge', reflection: 'a mystery', research: 'an investigation', community: 'listening to a community', fieldwork: 'fieldwork', trace: 'following a source' };
+      const worlds = new Map<string, string>([['WORLD-01', 'the Nexus'], ['WORLD-02', 'Emberford']]);
+      for (const map of Object.values(MAPS)) if (!worlds.has(map.world)) worlds.set(map.world, map.name.split(':')[0]);
+      body.append(h('p', { class: 'fine' }, 'Each stone holds a question from something you did. A stone gets brighter when you meet that question in another place or through another action.'));
       const got = c.pack.questions.filter((q) => (c.permanent.stones?.[q.id] ?? []).length);
       if (!got.length) body.append(h('p', {}, 'No stones yet. They appear when you finish a step that has a question under it.'));
       body.append(h('ul', { class: 'stones' }, ...got.map((q) => {
         const ways = c.permanent.stones[q.id];
-        return h('li', { style: { '--glow': String(Math.min(ways.length, 5) / 5) } },
-          h('span', { class: 'stone', 'aria-hidden': 'true' }, ...[0, 1, 2, 3, 4].map((i) => h('i', { class: i < ways.length ? 'lit' : '' }))),
+        const total = q.journalOnly ? 3 : 5;
+        return h('li', { style: { '--glow': String(Math.min(ways.length, total) / total) } },
+          h('span', { class: 'stone', 'aria-hidden': 'true' }, ...Array.from({ length: total }, (_, i) => h('i', { class: i < ways.length ? 'lit' : '' }))),
           h('div', {}, h('strong', {}, q.text), h('br', {}),
-            h('small', { class: 'fine' }, `${Math.min(ways.length, 5)} of 5 ways: ${ways.map((w) => { const [wd, a] = w.split('|'); return `${ACTION[a] ?? a} in ${WORLD[wd] ?? wd}`; }).join('; ')}.`)));
+            q.journalOnly ? h('p', { class: 'fine' }, q.lastWord) : '',
+            h('small', { class: 'fine' }, `${Math.min(ways.length, total)} of ${total} ways · ${ways.map((w) => { const [wd, a] = w.split('|'); return `${ACTION[a] ?? a} in ${worlds.get(wd) ?? wd}`; }).join(' · ')}.`)));
       })));
     } else if (tab === 'glossary') {
       body.append(h('p', { class: 'fine' }, 'Key words, in plain English. Where you have already done something that shows the word, Lumen adds an example from your play.'),

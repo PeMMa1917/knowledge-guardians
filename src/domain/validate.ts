@@ -151,7 +151,9 @@ export function validateContent(pack: ContentPack): string[] {
   });
   pack.missions.forEach((m) => {
     dup('mission', m.id);
-    m.objectives.forEach((o) => { if (o.kq && !pack.questions.some((q) => q.id === o.kq!.id)) p.push(`objective ${o.id}: unknown knowledge question ${o.kq.id}`);
+    m.objectives.forEach((o) => {
+      const ways = o.kq ? [o.kq, ...(o.questionWays ?? [])] : o.questionWays ?? [];
+      for (const way of ways) if (!pack.questions.some((q) => q.id === way.id)) p.push(`objective ${o.id}: unknown knowledge question ${way.id}`);
       dup('objective', o.id); cond(o.done, `objective ${o.id}`); cond(o.visible, `objective ${o.id}`); eff(o.onComplete, `objective ${o.id}`); weave(o.weave, `objective ${o.id}`, true); });
   });
   pack.hints.forEach((h) => { dup('hint', h.id); if (!objectives.has(h.objective)) p.push(`hint ${h.id}: unknown objective`); cond(h.if, `hint ${h.id}`); });

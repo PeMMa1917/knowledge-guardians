@@ -1,6 +1,7 @@
 /** Civic timekeeping takes place beside a separate historical reading gallery. */
 import type { Condition } from '../domain/types';
 import { COUNCIL_ACCESSIONS } from './pairedAccessions';
+import { COUNCIL_PLATE_GALLERY } from './transferFaces';
 import type { Interactable, MapDef } from './types';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'council.waypost'): Interactable {
@@ -112,6 +113,7 @@ export const COUNCIL_GALLERY: MapDef = {
   interactables: [
     door('council-gallery-return', 4, 14, 'the passage back to the Time Hall', { map: 'council.hall', x: 23, y: 9 }),
     ...COUNCIL_ACCESSIONS,
+    ...COUNCIL_PLATE_GALLERY,
     sign('council-optics-letter', 6, 7, 'the dated optics record', 'council.optics',
       'Ibn al-Haytham, Book of Optics, early eleventh century. He tested explanations of light and sight with experiments. The archive uses that method card beside its own clock cases.',
       { flag: 'council.optics.read' }),

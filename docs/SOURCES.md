@@ -81,6 +81,11 @@ The game does not show museum photographs. Exhibits are original pixel art drawn
 
 Links can change. When you work on a mission, open each of its source links. If a link is dead, find the current record and update `url` and `accessed`. Do not change the claim to fit a new source without checking it.
 
+## At the Door Before the Bell, Nexus and Emberford
+
+- HIS-DOOR-01 identifies Elbridge S. Brooks’s 1894 civic book and its Capitol visit chapter. A picture and a story written for young readers make part of the institution legible. They leave the experience of other visitors open. The book was selected from the attached object deck and checked against a separately catalogued edition. [Harvard University copy on Internet Archive](https://archive.org/details/centurybookfory00revogoog)
+- HIS-DOOR-02 identifies Victor Hugo Green’s 1941 travel guide and names James A. Jackson on this particular copy. HIS-DOOR-03 supplies the context of Jim Crow and discriminatory travel. The shelf, dated permission slips and visitors in the game are fictional. The original pixel sketches show described features of the books without reproducing their covers or pages. [Smithsonian record 2015.97.42](https://nmaahc.si.edu/object/nmaahc_2015.97.42) · [National Museum of American History](https://americanhistory.si.edu/explore/stories/atlas-self-reliance-negro-motorists-green-book-1937-1964)
+
 ## Vindolanda tablet 291 in the Nexus and Metalworks
 
 - HIS-VIND-01 identifies the wooden invitation from Claudia Severa to Sulpicia Lepidina, found at Vindolanda, and the two hands. The museum gives 97–103 CE and identifies the hand in the closing lines as Severa’s. [British Museum, 1986,1001.64](https://www.britishmuseum.org/collection/object/H_1986-1001-64)
@@ -146,6 +151,13 @@ HIS-CANOE-01 records Rra-Kalwanyimara, Australian National Maritime Museum objec
 - REL-WELCOME-02 and REL-WELCOME-03 give Saint Meinrad Archabbey’s own account in southern Indiana. The community identifies its welcome with Saint Benedict’s call to receive guests as Christ. Its visitor information gives separate details for self-guided tours and the church prayer schedule. [Visit Us](https://www.saintmeinrad.org/visit-us/) · [Prayer Schedule and Tours](https://www.saintmeinrad.org/visit-us/prayer-schedule-tours/)
 
 Players keep the accounts with their own places, sources and reasons for welcome. The menders’ invitation and the Market’s tally boundary are fictional access decisions. The public accounts are summarized in plain language.
+
+## The Other Face of the Plate, Metalworks and Council of Inquiry
+
+Plate Eleven, its jig and the workshop loan are fictional. The two historical displays use original drawings of blank catalogue mounts.
+
+- HIS-PLATE-01 gives the signing date, the leaf and page count, and the two pencil colours in King Njoya’s signature on the Bamum agreement. The catalogue locates the original in the Foumban palace archives. HIS-PLATE-02 describes the programme’s holdings as digital copies. The game gives the signed date and custody separately from the contents of the agreement. [Bamum item EAP051/1/1/2/2](https://eap.bl.uk/archive-file/EAP051-1-1-2-2) · [Foumban archive collection](https://eap.bl.uk/collection/EAP051-1)
+- HIS-PLATE-03 records Frédéric Bruly Bouabré’s *Alphabet Bété* as a 1990–91 series of 449 drawings. HIS-PLATE-04 gives object 104.2019.10 its own date and entry within that series. HIS-PLATE-05 attributes the writing system to Bouabré, who was Bété, and locates that work in Côte d’Ivoire. The game adapts the relationship between a board and a set without reproducing the artist’s marks. [MoMA series record](https://www.moma.org/collection/works/296522) · [Individual drawing](https://www.moma.org/collection/works/299029) · [World Unbound exhibition](https://www.moma.org/calendar/exhibitions/5348)
 
 ## The Edge of the Record, Archive of Voices and Civic Machine
 

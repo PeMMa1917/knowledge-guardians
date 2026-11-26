@@ -1,6 +1,7 @@
 /** Water Commons. The allocation records and gate experiment are fictional. */
 import type { Condition } from '../domain/types';
 import { reliefReading, reliefRouting } from '../domain/routeTiles';
+import { WATER_APPEAL_LOWER, WATER_APPEAL_WITNESSES, WATER_APPEAL_YARD } from './civicAppeal';
 import type { Interactable, MapDef } from './types';
 
 function crossing(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'water.waypost'): Interactable {
@@ -163,6 +164,7 @@ export const WATER_COUNCIL: MapDef = {
     sign('water-register-copy', 6, 12, 'the larger register copy', 'preserved.display-records',
       'The drought and repair entries have separate columns. Each keeps the seed-row card and the lower channel line in reach. The old heading stays beside the checked wording.',
       { visibleIf: { flag: 'water.register-copy', eq: true } }),
+    ...WATER_APPEAL_YARD,
   ],
   lights: [
     { x: 12, y: 6, r: 77, color: 0xffdfaf }, { x: 16, y: 8, r: 69, color: 0xcde0cb },
@@ -183,7 +185,7 @@ export const WATER_LOWER_CHANNEL: MapDef = {
     return 'water-bank';
   }),
   blocks: [[17, 0, 2, 6], [17, 7, 2, 5], [17, 13, 2, 4]], zones: [],
-  spawn: { x: 5, y: 12 }, npcs: [],
+  spawn: { x: 5, y: 12 }, npcs: WATER_APPEAL_WITNESSES,
   stamps: [
     { stamp: 'water-terrace-wall', x: 6, y: 1 }, { stamp: 'water-terrace-wall', x: 10, y: 1 },
     { stamp: 'water-terrace-wall', x: 6, y: 12 }, { stamp: 'water-terrace-wall', x: 10, y: 12 },
@@ -237,6 +239,7 @@ export const WATER_LOWER_CHANNEL: MapDef = {
     sign('water-relief-installed-channel', 22, 8, 'the wide relief mouth at the lower bank', 'water.channel',
       `Omi fits the wide tile at the lower bank. The eight-bucket trial records ${reliefReading(reliefRouting(8, 'second'))}. The seed beds’ four-bucket request stays beside the new reading.`,
       { flag: 'water.routing.seen', visibleIf: reliefChoice('second') }),
+    ...WATER_APPEAL_LOWER,
   ],
   lights: [
     { x: 7, y: 7, r: 69, color: 0xffd8a7 }, { x: 21, y: 9, r: 68, color: 0xb9dcd8 },
