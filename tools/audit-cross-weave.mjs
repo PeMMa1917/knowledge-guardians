@@ -144,6 +144,48 @@ const proofRows = [
   ...emberfordEvidenceInvestigations,
   ...copiesEvidenceInvestigations,
   {
+    objective: 'forest.hands.context', map: 'forest.station', target: 'forest-hands-board',
+    source: 'tests/observation-sheet.test.ts', anchor: "expect(d.done('forest.hands.context')).toBe(true)",
+    action: 'Keep the old two-mark observation when the moved bench permits three. At the recording frame, attach the 1960 Gombe observation and the later team account to distinct tabs.',
+    comparison: {
+      concepts: ['evidence', 'perspective'], framework: ['scope', 'perspectives'],
+      areas: [
+        { id: 'NAT', method: 'Repeat the same three-mark watch from the moved recorder seat. Keep the original strip that identifies the copied mark.',
+          limit: 'A fuller view on the second run cannot supply a firsthand observation from the first seat.' },
+        { id: 'HIS', method: 'Separate the dated tool-use observation attributed to Jane Goodall from the later account naming Baraka Daniel on a particular datasheet.',
+          limit: 'The dates and attributions concern separate acts. The fictional practice run supplies no new historical testimony.' },
+      ],
+      connection: 'Use the source and position of each record to decide what Ayla can attribute to the observer and the recorder on her next-watch sheet.',
+    },
+    dimensions: ['area:NAT', 'area:HIS', 'concept:evidence', 'concept:perspective', 'framework:scope', 'framework:perspectives'],
+    elements: ['game:267'],
+  },
+  {
+    objective: 'stage.hands.compare', map: 'stage.gallery', target: 'stage-hands-floor',
+    source: 'tests/observation-sheet.test.ts', anchor: "expect(d.done('stage.hands.compare')).toBe(true)",
+    action: 'Bring the notebook earned after the Forest watch. Give the knocks from the screened wing, then follow the low pin from the gallery before assigning the next confirmation.',
+    reasoning: [{ mode: 'analogical', basis: 'Transfer the distinction between a firsthand and a copied Forest mark to the stage. Giving a cue and seeing its effect require separate evidence from the two positions.' }],
+    dimensions: ['concept:perspective', 'concept:evidence', 'framework:scope'],
+    elements: ['game:267'],
+  },
+  {
+    objective: 'preserved.scale.compare', map: 'preserved.royal', target: 'preserved-scale-board',
+    source: 'tests/preserved-scale.test.ts', anchor: 'opens a checked %s handover after a recoverable draft',
+    action: 'Follow burial, cache and catalogue entries. From a common zero walk the two practice distances before giving the next carrier or file reader the appropriate record.',
+    comparison: {
+      concepts: ['evidence', 'justification'], framework: ['scope', 'methods-and-tools'],
+      areas: [
+        { id: 'MAT', method: 'Measure two paving strips and six from the same bracket. Compare the physical lengths with the equal intervals in a drawing.',
+          limit: 'Only the distances between these practice pegs have been measured.' },
+        { id: 'HIS', method: 'Follow the custody entries from KV 7 to the later cache and the catalogue. Keep their sequence when making a file slip.',
+          limit: 'The order in this file gives neither the distance traveled nor the scale of the arrows.' },
+      ],
+      connection: 'Decide what “next” lets a carrier do at the practice bench and what it lets a later reader say about the custody record.',
+    },
+    dimensions: ['area:MAT', 'area:HIS', 'concept:evidence', 'concept:justification', 'framework:scope', 'framework:methods-and-tools'],
+    elements: ['game:267'],
+  },
+  {
     objective: 'clearbay.use', map: 'preserved.archive', target: 'clear-bay-board',
     source: 'tests/clear-bay.test.ts', anchor: 'awards 78 only for the full comparison and observed %s handover',
     action: 'Test the cart with and without a helper, compare gates, pin two first-bell accounts and a later repair, fold a private name and deliver the resulting opening notice to its reader.',
