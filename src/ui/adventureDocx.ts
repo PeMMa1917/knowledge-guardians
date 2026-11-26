@@ -56,7 +56,7 @@ const styles = `${xmlHeader}<w:styles xmlns:w="${WORD}">
 
 /** Pack a real Office Open XML document. The ZIP and document are made in memory. */
 export function adventureDocx(view: AdventureJournalView, options: AdventureExportOptions): Uint8Array<ArrayBuffer> {
-  const { title, entries, notes, portfolio, quests, questions, references, encyclopedia } = adventureExportSnapshot(view, options);
+  const { title, scoped, entries, notes, portfolio, quests, questions, references, encyclopedia } = adventureExportSnapshot(view, options);
   const links = new Map<string, string>();
   const hyperlink = (text: string, url: string, italic?: boolean) => {
     const id = links.get(url) ?? `rId${links.size + 2}`;
@@ -71,7 +71,7 @@ export function adventureDocx(view: AdventureJournalView, options: AdventureExpo
     }
   };
   blocks.push(paragraph('Adventure diary', 'Heading1'));
-  if (!entries.length) blocks.push(paragraph('I have yet to make a diary entry on this adventure.'));
+  if (!entries.length) blocks.push(paragraph(scoped ? 'No diary entries match this selection.' : 'I have yet to make a diary entry on this adventure.'));
   for (const entry of entries) {
     blocks.push(paragraph(entry.title, 'Heading2'), paragraph(entry.details, 'JournalDetails'), paragraph(entry.text));
     addReflections(entry.reflections);
@@ -87,8 +87,8 @@ export function adventureDocx(view: AdventureJournalView, options: AdventureExpo
     blocks.push(paragraph('My Portfolio writing', 'Heading1'));
     for (const entry of portfolio) blocks.push(paragraph(entry.title, 'Heading2'), paragraph(entry.details, 'JournalDetails'), paragraph(entry.text));
   }
-  blocks.push(paragraph('Open quests and questions', 'Heading1'));
-  if (!quests.length && !questions.length) blocks.push(paragraph('There are no open quests or questions in this journal.'));
+  if (!scoped || quests.length || questions.length) blocks.push(paragraph('Open quests and questions', 'Heading1'));
+  if (!scoped && !quests.length && !questions.length) blocks.push(paragraph('There are no open quests or questions in this journal.'));
   for (const quest of quests) {
     blocks.push(paragraph(quest.title, 'Heading2'));
     if (quest.question) blocks.push(paragraph(quest.question));

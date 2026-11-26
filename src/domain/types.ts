@@ -772,7 +772,7 @@ export interface ContentPack {
 // State
 // ---------------------------------------------------------------------------
 
-export const CAMPAIGN_SCHEMA = 6;
+export const CAMPAIGN_SCHEMA = 7;
 export const PERMANENT_SCHEMA = 4;
 
 export interface ShowdownLogLine { who: 'player' | 'opponent' | 'crowd' | 'witness'; text: string; why?: string }
@@ -863,7 +863,7 @@ export interface AdventureDiary {
   entries: DiaryEntry[];
   noteDetails: DiaryNoteDetails[];
   reflectionResponses: Record<string, Record<string, string>>;
-  noteDraft: { kind: DiaryNoteKind; text: string } | null;
+  noteDraft: { kind: DiaryNoteKind; text: string; at?: string; mapId?: string } | null;
   portfolioWriting: Record<string, DiaryPortfolioWriting>;
 }
 

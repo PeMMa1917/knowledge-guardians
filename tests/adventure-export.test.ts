@@ -112,6 +112,36 @@ describe('full adventure journal export', () => {
     expect(view.entries[0].reflections![0].response).toBe(response);
   });
 
+  it('gives Word and the shared print snapshot only matching encounters and their source links', () => {
+    const view = fixture();
+    Object.assign(view.entries[0], {
+      topics: { concepts: ['evidence'], framework: ['methods-and-tools'], areas: ['HIS'], themes: ['LAN'] },
+      specimenReference: view.references[0].key, encyclopedia: view.encyclopedia[0],
+    });
+    Object.assign(view.entries[1], { topics: { concepts: ['explanation'] }, encyclopedia: view.encyclopedia[1] });
+    const scopedOptions = { ...options, includeNotes: false, selection: {
+      now: new Date(at), time: { kind: 'session' as const, startedAt: Date.parse(at) },
+      topics: { concepts: ['evidence', 'truth'] as const, framework: ['methods-and-tools'] as const,
+        areas: ['HIS'] as const, themes: ['LAN'] as const },
+    } };
+    const snapshot = adventureExportSnapshot(view, scopedOptions);
+    expect(snapshot.entries.map(({ title }) => title)).toEqual(['First evidence']);
+    expect(snapshot.entries[0].reflections?.[0]).toEqual({ prompt: 'Where did the truth appear?' });
+    expect(snapshot.references.map(({ url }) => url)).toEqual([source]);
+    expect(snapshot.encyclopedia.map(({ url }) => url)).toEqual([article]);
+    expect(snapshot.quests).toEqual([]);
+    expect(snapshot.portfolio).toEqual([]);
+    const files = unzipSync(adventureDocx(view, scopedOptions));
+    const doc = strFromU8(files['word/document.xml']);
+    const rels = strFromU8(files['word/_rels/document.xml.rels']);
+    expect(paragraphs(doc)).toContain('First evidence');
+    expect(paragraphs(doc)).not.toContain('Second event');
+    expect(doc).not.toContain('Final line');
+    expect(rels).toContain(article);
+    expect(rels).not.toContain(search);
+    expect(rels).toContain('https://collection.example/item?id=2&amp;view=exact#part');
+  });
+
   it('renders all concept forms as bold, underlined palette colours and retains citation italics', () => {
     const { document } = readWord(fixture());
     for (const [concept, colours] of Object.entries(CONCEPT_COLOURS)) {

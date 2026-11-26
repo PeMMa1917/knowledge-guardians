@@ -1,8 +1,12 @@
 import type { GameController } from '../app/controller';
 import { adventureJournalView, type AdventureJournalView, type JournalNote, type JournalReflection } from '../domain/adventureJournal';
-import type { DiaryNoteKind } from '../domain/types';
+import { CONCEPTS, type DiaryNoteKind } from '../domain/types';
+import { AOK_NAMES, CONCEPT_NAMES } from '../domain/curriculum';
+import { FRAMEWORK, type FrameworkPart } from '../domain/learningLevels';
+import { DIARY_AREAS, DIARY_THEMES, hasDiaryTopics, selectDiary, type DiarySelection, type DiaryTime } from '../domain/diarySelection';
 import { MAPS } from '../maps';
 import { adventureDocx, ADVENTURE_DOCX_TYPE } from './adventureDocx';
+import type { AdventureExportOptions } from './adventureExport';
 import { printAdventureJournal } from './adventurePrint';
 import { adventureReferences } from './adventureReferences';
 import { adventureEncyclopedia, wikipediaLink } from './adventureEncyclopedia';
@@ -26,15 +30,87 @@ function journalView(controller: GameController): AdventureJournalView {
   return adventureJournalView(controller.pack, controller.state, controller.engine.visibleObjectives(controller.state));
 }
 
-function exportControls(controller: GameController): HTMLElement {
+const frameworkNames: Record<FrameworkPart, string> = {
+  scope: 'Scope', perspectives: 'Perspectives', 'methods-and-tools': 'Methods and tools', ethics: 'Ethics',
+};
+
+function topicOptions<T extends string>(title: string, values: readonly T[], labels: Record<T, string>) {
+  const options = values.map((value) => ({ value, input: h('input', { type: 'checkbox' }) }));
+  return {
+    element: h('fieldset', {}, h('legend', {}, title),
+      ...options.map(({ value, input }) => h('label', { class: 'check' }, input, ` ${labels[value]}`))),
+    selected: () => options.filter(({ input }) => input.checked).map(({ value }) => value),
+    clear: () => { for (const { input } of options) input.checked = false; },
+  };
+}
+
+function exportControls(controller: GameController, initialView: AdventureJournalView): HTMLElement {
   const include = h('input', { type: 'checkbox', checked: true });
   const status = h('p', { role: 'status', class: 'fine' });
-  const options = () => ({ includeNotes: include.checked, placeName: (id: string) => MAPS[id]?.name });
+  const range = h('select', {},
+    h('option', { value: 'all' }, 'All time'), h('option', { value: 'session' }, 'This session'),
+    h('option', { value: 'week' }, 'This calendar week (Monday–Sunday)'), h('option', { value: 'dates' }, 'Custom dates'));
+  const from = h('input', { type: 'date' });
+  const through = h('input', { type: 'date' });
+  const dates = h('div', { class: 'diary-export-dates', hidden: true },
+    h('label', {}, 'From', from), h('label', {}, 'Through', through));
+  const concepts = topicOptions('TOK concepts', CONCEPTS, CONCEPT_NAMES);
+  const framework = topicOptions('Knowledge framework', FRAMEWORK, frameworkNames);
+  const areas = topicOptions('Areas of knowledge', DIARY_AREAS, AOK_NAMES);
+  const themes = topicOptions('Optional themes', DIARY_THEMES, AOK_NAMES);
+  const groups = [concepts, framework, areas, themes];
+  const topics = h('details', { class: 'diary-export-topics' }, h('summary', {}, 'Filter by TOK topics'),
+    h('p', { class: 'fine' }, 'Choose any topics within a group. Entries must match each selected group. Private notes and Portfolio writing can be selected by date.'),
+    h('div', { class: 'diary-export-groups' }, ...groups.map(({ element }) => element)));
+  const filters = h('div', { class: 'diary-export-filters' }, h('label', {}, 'Export time range', range), dates, topics);
+
+  function timeRange(): DiaryTime {
+    switch (range.value) {
+      case 'session': return { kind: 'session', startedAt: controller.diarySessionStartedAt };
+      case 'week': return { kind: 'week' };
+      case 'dates': return { kind: 'dates', from: from.value, through: through.value };
+      default: return { kind: 'all' };
+    }
+  }
+
+  function currentSelection(): DiarySelection {
+    return { time: timeRange(), now: new Date(), topics: {
+      concepts: concepts.selected(), framework: framework.selected(), areas: areas.selected(), themes: themes.selected(),
+    } };
+  }
+
+  function readSelection(view: AdventureJournalView) {
+    const selection = currentSelection();
+    const result = selectDiary(view, selection);
+    if (!result.view) { status.textContent = result.error; return null; }
+    const filtered = selection.time.kind !== 'all' || hasDiaryTopics(selection.topics);
+    const entryCount = result.view.entries.length;
+    const personalCount = include.checked ? result.view.notes.length + (result.view.portfolioWriting?.length ?? 0) : 0;
+    if (filtered && !entryCount && !personalCount) { status.textContent = 'No entries or writing match these filters.'; return null; }
+    status.textContent = filtered ? `${entryCount} diary ${entryCount === 1 ? 'entry' : 'entries'} and ${personalCount} pieces of standalone writing match.` : '';
+    const options: AdventureExportOptions = { selection, includeNotes: include.checked, placeName: (id) => MAPS[id]?.name };
+    return { view, options };
+  }
+
+  function changed() {
+    dates.hidden = range.value !== 'dates';
+    readSelection(initialView);
+  }
+  filters.addEventListener('change', changed);
+  include.addEventListener('change', changed);
+  const reset = h('button', { type: 'button', onclick: () => {
+    range.value = 'all';
+    from.value = through.value = '';
+    for (const group of groups) group.clear();
+    changed();
+  } }, 'Clear export filters');
   const download = h('button', { type: 'button', onclick: () => {
     download.disabled = true;
     try {
-      const view = journalView(controller);
-      const bytes = adventureDocx(view, options());
+      const selected = readSelection(journalView(controller));
+      if (!selected) return;
+      const { view, options } = selected;
+      const bytes = adventureDocx(view, options);
       const url = URL.createObjectURL(new Blob([bytes], { type: ADVENTURE_DOCX_TYPE }));
       const name = view.name.replace(/[^\p{L}\p{N}-]+/gu, '-').replace(/^-+|-+$/g, '');
       const link = h('a', { href: url, download: `adventure-journal${name ? `-${name}` : ''}.docx` });
@@ -50,12 +126,14 @@ function exportControls(controller: GameController): HTMLElement {
     }
   } }, 'Download journal (.docx)');
   const print = h('button', { type: 'button', onclick: () => {
-    status.textContent = '';
-    printAdventureJournal(journalView(controller), options(), () => {
+    const selected = readSelection(journalView(controller));
+    if (!selected) return;
+    printAdventureJournal(selected.view, selected.options, () => {
       status.textContent = 'Print preview could not open. You can download the Word journal.';
     });
   } }, 'Print or save as PDF');
   return h('div', { class: 'diary-export' },
+    filters, reset,
     h('label', { class: 'check' }, include, ' Include my private writing in this export'),
     h('div', { class: 'row' }, download, print), status);
 }
@@ -133,7 +211,7 @@ function diaryFeed(view: AdventureJournalView, controller: GameController, refre
       h('div', { class: 'row' },
         h('button', { type: 'button', onclick: () => refresh('notes') }, 'Write a note'),
         h('button', { type: 'button', onclick: () => refresh('open-quests') }, 'Open quests and questions'))),
-    exportControls(controller)),
+    exportControls(controller, view)),
     h('label', { class: 'diary-filter' }, 'Show ', select), empty, list, more,
     h('details', { class: 'diary-source-list' }, h('summary', {}, 'Sources for my collected specimens'),
       view.references.length ? adventureReferences(view.references) : h('p', {}, 'Collected specimens will add their catalogue references here.')),

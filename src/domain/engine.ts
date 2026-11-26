@@ -1278,7 +1278,7 @@ export class Engine {
         }
         case 'SetDiaryNoteDraft': {
           if (!isDiaryNoteKind(cmd.kind) || typeof cmd.text !== 'string') throw new Error('Unknown note type');
-          const noteDraft = cmd.text.length || cmd.kind !== 'note' ? { text: cmd.text, kind: cmd.kind } : null;
+          const noteDraft = cmd.text.length || cmd.kind !== 'note' ? { text: cmd.text, kind: cmd.kind, at: now, mapId: s.mapId } : null;
           const current = s.adventureDiary.noteDraft;
           if (current?.text === noteDraft?.text && current?.kind === noteDraft?.kind) return { state: s, permanent: p, events };
           const state = { ...s, adventureDiary: { ...s.adventureDiary, noteDraft } };

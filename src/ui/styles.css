@@ -235,8 +235,23 @@ legend { color: var(--gold); padding: 0 0.4em; }
 .journal li, .notes li, .awards li, .sources-list li { margin: 0.5em 0; }
 .specimen-bibliography li { overflow-wrap: anywhere; }
 .diary-tools { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-.diary-export { max-width: 27rem; }
+.diary-export { max-width: 27rem; min-width: 0; }
 .diary-export [role='status']:empty { display: none; }
+.diary-export-filters, .diary-export-filters > label, .diary-export-dates label {
+  display: grid;
+  gap: 0.3rem;
+  min-width: 0;
+}
+.diary-export-filters select, .diary-export-dates input { width: 100%; min-width: 0; font: inherit; }
+.diary-export-dates:not([hidden]), .diary-export-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: 0.45rem;
+}
+.diary-export-topics > summary { cursor: pointer; }
+.diary-export-groups fieldset { min-width: 0; margin: 0; padding: 0.45rem; }
+.diary-export-groups .check { display: flex; align-items: start; gap: 0.3rem; }
+.diary-export-groups input { flex: none; }
 .diary-filter { display: block; margin-top: 1rem; }
 .diary-filter select { max-inline-size: 100%; }
 .diary-feed { list-style: none; padding: 0; display: grid; gap: 0.6rem; }

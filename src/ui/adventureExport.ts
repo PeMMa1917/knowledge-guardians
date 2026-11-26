@@ -1,5 +1,6 @@
 import type { SpecimenReference } from '../domain/specimenReferences';
 import type { AdventureJournalView } from '../domain/adventureJournal';
+import { selectDiary, type DiarySelection } from '../domain/diarySelection';
 import { encyclopediaEncounterLabel, encyclopediaLinkLabel, isEncyclopediaURL } from '../domain/encyclopedia';
 
 type JournalReflection = NonNullable<AdventureJournalView['entries'][number]['reflections']>[number];
@@ -7,6 +8,7 @@ type JournalReflection = NonNullable<AdventureJournalView['entries'][number]['re
 export interface AdventureExportOptions {
   includeNotes?: boolean;
   placeName: (mapId: string) => string | undefined;
+  selection?: DiarySelection;
 }
 
 export function journalUtc(at: string | null): string {
@@ -27,6 +29,10 @@ export function safeJournalLink(url: string): boolean {
 
 /** Select the same complete diary for Word and print. A shareable copy can omit personal writing. */
 export function adventureExportSnapshot(view: AdventureJournalView, options: AdventureExportOptions) {
+  const selected = selectDiary(view, options.selection);
+  if (!selected.view) throw new Error(selected.error);
+  const scoped = selected.view !== view;
+  view = selected.view;
   const includePersonal = options.includeNotes !== false;
   const notes = includePersonal ? view.notes : [];
   const details = (kind: string, at: string | null, mapId: string | null) =>
@@ -42,13 +48,14 @@ export function adventureExportSnapshot(view: AdventureJournalView, options: Adv
   }));
   return {
     title: `${view.name}’s Adventure Journal`,
+    scoped,
     entries: view.entries.map((entry) => ({
       title: entry.title, details: details(kindLabels[entry.kind], entry.at, entry.mapId), text: entry.text,
       ...reflections(entry.reflections),
     })),
     notes: notes.map((note) => ({
-      details: note.draft ? 'Draft note' : details(note.kind === 'question' ? (note.resolved ? 'Resolved question' : 'Open question')
-        : kindLabels[note.kind], note.at, note.mapId),
+      details: note.draft && !note.at ? 'Draft note' : details(note.draft ? 'Draft note'
+        : note.kind === 'question' ? (note.resolved ? 'Resolved question' : 'Open question') : kindLabels[note.kind], note.at, note.mapId),
       text: note.text, ...reflections(note.reflections),
     })),
     portfolio: includePersonal ? (view.portfolioWriting ?? []).map((entry) => ({

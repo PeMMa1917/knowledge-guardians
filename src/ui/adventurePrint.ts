@@ -24,7 +24,7 @@ export function printAdventureJournal(
   view: AdventureJournalView, options: AdventureExportOptions, onUnavailable: () => void,
 ): void {
   closeActivePrint?.();
-  const { title, entries, notes, portfolio, quests, questions, references, encyclopedia } = adventureExportSnapshot(view, options);
+  const { title, scoped, entries, notes, portfolio, quests, questions, references, encyclopedia } = adventureExportSnapshot(view, options);
   const printedAt = new Date().toISOString();
   const snapshot = h('main', { class: 'adventure-print' },
     h('header', {}, h('h1', {}, printProse(title)),
@@ -33,20 +33,20 @@ export function printAdventureJournal(
     h('section', {}, h('h2', {}, 'Adventure diary'),
       entries.length ? entries.map((entry) => h('article', {}, h('h3', {}, printProse(entry.title)),
         h('p', { class: 'print-details' }, printProse(entry.details)), h('p', {}, printProse(entry.text)), printReflections(entry.reflections)))
-        : h('p', {}, 'I have yet to make a diary entry on this adventure.')),
+        : h('p', {}, scoped ? 'No diary entries match this selection.' : 'I have yet to make a diary entry on this adventure.')),
     notes.length ? h('section', {}, h('h2', {}, 'My notes and reflections'),
       notes.map((note) => h('article', {}, h('p', { class: 'print-details' }, printProse(note.details)),
         h('p', {}, printProse(note.text)), printReflections(note.reflections)))) : null,
     portfolio.length ? h('section', {}, h('h2', {}, 'My Portfolio writing'),
       portfolio.map((entry) => h('article', {}, h('h3', {}, printProse(entry.title)),
         h('p', { class: 'print-details' }, printProse(entry.details)), h('p', {}, printProse(entry.text))))) : null,
-    h('section', {}, h('h2', {}, 'Open quests and questions'),
+    !scoped || quests.length || questions.length ? h('section', {}, h('h2', {}, 'Open quests and questions'),
       !quests.length && !questions.length ? h('p', {}, 'There are no open quests or questions in this journal.') : null,
       quests.map((quest) => h('article', {}, h('h3', {}, printProse(quest.title)),
         quest.question ? h('p', {}, printProse(quest.question)) : null,
         h('ul', {}, quest.steps.map((step) => h('li', {}, printProse(step)))))),
       questions.length ? h('article', {}, h('h3', {}, 'My open questions'),
-        h('ul', {}, questions.map((question) => h('li', {}, printProse(question))))) : null),
+        h('ul', {}, questions.map((question) => h('li', {}, printProse(question))))) : null) : null,
     references.length ? h('section', {}, h('h2', {}, 'Works Cited'), adventureReferences(references, printProse)) : null,
     encyclopedia.length ? h('section', {}, h('h2', {}, 'Wikipedia links from my adventure'),
       h('ul', { class: 'print-encyclopedia' }, encyclopedia.map((link) => h('li', {}, printProse(link.label), ' · ',

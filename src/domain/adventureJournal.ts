@@ -10,12 +10,15 @@ import { earlierViews } from '../content/earlierViewing';
 import { STAR_PATHS } from '../content/starPaths';
 import { STAR_METHODS, starFlag } from './starPaths';
 import { commandDiaryEvent, diaryEvent, type DiaryEntryDraft } from './adventureEvents';
+import { diaryTopics, type DiaryTopics } from './diarySelection';
+import { FIELD_GAMES } from './fieldgames';
+import { CONCEPTS } from './types';
 import type { Command, GameEvent } from './engine';
 import { diaryNoteQuestions, diaryQuestions, journalReflections, type JournalReflection } from './diaryReflection';
 export type { JournalReflection } from './diaryReflection';
 import type {
   AdventureDiary, CampaignState, ContentPack, DialogueNode, DialogueOption, DiaryEntry, DiaryNoteDetails, DiaryPortfolioWriting,
-  DiaryNoteKind, Effect, Mission, Objective,
+  DiaryNoteKind, Effect, Mission, Objective, Weave,
 } from './types';
 
 type EntryDraft = Omit<DiaryEntryDraft, 'repeat'>;
@@ -35,7 +38,10 @@ export interface JournalNote extends DiaryNoteDetails {
   draft?: true;
 }
 
-export type JournalEntry = EntryDraft & { at: string | null; mapId: string | null; reflections?: JournalReflection[]; encyclopedia?: EncyclopediaLink };
+export type JournalEntry = EntryDraft & {
+  at: string | null; mapId: string | null; reflections?: JournalReflection[]; encyclopedia?: EncyclopediaLink;
+  topics?: DiaryTopics; specimenReference?: string;
+};
 
 export interface AdventureJournalView {
   name: string;
@@ -384,13 +390,40 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     return { text, index, ...details, reflections: journalReflections(state.adventureDiary, `note:${index}`, diaryNoteQuestions(details.kind)) };
   });
   const draft = state.adventureDiary.noteDraft;
-  if (draft?.text.length) notes.push({ ...draft, index: -1, at: null, mapId: null, resolved: false, draft: true });
+  if (draft?.text.length) notes.push({ ...draft, index: -1, at: draft.at ?? null, mapId: draft.mapId ?? null, resolved: false, draft: true });
   const entries = [...prior.map((entry) => ({ ...entry, at: null, mapId: null })), ...state.adventureDiary.entries];
+  const exhibits = new Map(pack.exhibits.map((entry) => [entry.id, entry]));
+  const taggedTools = new Map<string, Weave | undefined>([
+    ...pack.labelKits.map(({ id, weave }) => [`label:${id}`, weave] as const),
+    ...pack.showdowns.flatMap(({ id, weave }) => [[`showdown:${id}`, weave], [`showdown-move:${id}`, weave]] as const),
+    ...pack.locks.map(({ id, weave }) => [`lock:${id}`, weave] as const),
+    ...pack.threads.map(({ id, weave }) => [`thread:${id}`, weave] as const),
+    ...pack.puzzles.map(({ id, weave }) => [`puzzle:${id}`, weave] as const),
+    ...pack.alcoves.map(({ id, weave }) => [`alcove:${id}`, weave] as const),
+    ...pack.lorelings.map(({ id, weave }) => [`loreling:${id}`, weave] as const),
+    ...(pack.clueBoards ?? []).map(({ id, weave }) => [`board:${id}`, weave] as const),
+  ]);
+  function linkedTopics(entry: JournalEntry) {
+    const event = entry.event;
+    if (!event) return undefined;
+    const [family] = event.key.split(':', 1);
+    const specimen = family === 'specimen' ? exhibits.get(event.ref)?.specimen : undefined;
+    const objective = family === 'quest' || family === 'hint' ? event.ref : specimen?.objective;
+    const weave = objective ? objectivesById.get(objective)?.objective.weave : taggedTools.get(`${family}:${event.ref}`);
+    if (weave) return diaryTopics(weave);
+    const fieldConcept = family === 'field' ? FIELD_GAMES.find(({ id }) => id === event.ref)?.concept : undefined;
+    const concept = CONCEPTS.find((id) => id === fieldConcept);
+    return concept ? { concepts: [concept] } : undefined;
+  }
   return {
     name: state.player.name,
     entries: entries.map((entry) => {
       const encyclopedia = encyclopediaForDiaryEvent(pack, entry.event);
-      return { ...entry, ...(encyclopedia && { encyclopedia }), reflections: journalReflections(state.adventureDiary, entry.id, diaryQuestions(entry, state.adventureDiary.reflectionResponses?.[entry.id])) };
+      const specimen = entry.event && exhibits.get(entry.event.ref)?.specimen;
+      const specimenReference = specimen && entry.event?.sourceIds?.includes(specimen.source) ? specimen.key : undefined;
+      const topics = linkedTopics(entry);
+      return { ...entry, ...(encyclopedia && { encyclopedia }), ...(topics && { topics }), ...(specimenReference && { specimenReference }),
+        reflections: journalReflections(state.adventureDiary, entry.id, diaryQuestions(entry, state.adventureDiary.reflectionResponses?.[entry.id])) };
     }),
     notes,
     portfolioWriting: Object.entries(state.adventureDiary.portfolioWriting).flatMap(([id, writing]) => writing.text ? [{ id, ...writing }] : []),

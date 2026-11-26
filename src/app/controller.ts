@@ -30,6 +30,7 @@ export class GameController {
   contentProblems: string[];
   private listeners: Listener[] = [];
   private playStart = Date.now();
+  private diarySessionStart: number | null = null;
   private permanentDirty = false;
   private permanentWriteFailed = false;
 
@@ -48,6 +49,12 @@ export class GameController {
   }
 
   onEvents(fn: Listener): void { this.listeners.push(fn); }
+
+  get diarySessionStartedAt(): number | null { return this.diarySessionStart; }
+
+  private beginSession(): void {
+    this.diarySessionStart = this.playStart = Date.now();
+  }
 
   // ------------------------------------------------- active time (the Ledger)
 
@@ -87,7 +94,7 @@ export class GameController {
     this.state = newCampaign(this.pack, name, look, seed, opts);
     const m = MAPS['nexus.archive'];
     this.state.pos = { x: m.spawn.x, y: m.spawn.y };
-    this.playStart = Date.now();
+    this.beginSession();
     this.checkpoint('New recruit');
   }
 
@@ -159,7 +166,7 @@ export class GameController {
       this.state.mapId = nexus.id;
       this.state.pos = { ...nexus.spawn };
     }
-    this.playStart = Date.now();
+    this.beginSession();
     this.refreshAwards();
     const questions = restoreQuestionWays(this.permanent, this.pack, this.state.objectivesDone);
     this.updatePermanent(restoreMicroSkillUses(questions, this.pack, this.state.objectivesDone));

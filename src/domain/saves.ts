@@ -132,6 +132,8 @@ export const MIGRATIONS: Record<number, (s: any) => any> = {
   5: (s) => ({ ...s, schema: 6, adventureDiary: {
     ...newAdventureDiary(Array.isArray(s.notes) ? s.notes : []), ...s.adventureDiary,
   } }),
+  // Earlier drafts retain their text and remain undated.
+  6: (s) => ({ ...s, schema: 7 }),
 };
 
 export function migrateCampaign(raw: any): { state: CampaignState; migrated: boolean } {

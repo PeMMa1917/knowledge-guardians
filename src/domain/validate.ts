@@ -54,7 +54,8 @@ export function validateCampaign(s: any): string[] {
     || Object.values(group).some((text) => typeof text !== 'string'))) p.push('adventure journal responses invalid');
   const draft = diary?.noteDraft;
   if (draft !== null && (!isObject(draft) || typeof draft.kind !== 'string' || !noteKinds.includes(draft.kind)
-    || typeof draft.text !== 'string')) p.push('adventure journal draft invalid');
+    || typeof draft.text !== 'string' || (draft.at !== undefined && !isDate(draft.at))
+    || (draft.mapId !== undefined && typeof draft.mapId !== 'string'))) p.push('adventure journal draft invalid');
   const writing = diary?.portfolioWriting;
   if (!isObject(writing) || Object.values(writing).some((entry) => !isObject(entry) || typeof entry.title !== 'string'
     || typeof entry.text !== 'string' || typeof entry.mapId !== 'string' || !isDate(entry.at) || (entry.draft !== undefined && entry.draft !== true)))
