@@ -121,6 +121,20 @@ describe('Encyclopedia links for actual encounters', () => {
     expect(record('OBJ-PRES-BINAK-X104841')).toMatchObject({ kind: 'search' });
   });
 
+  it('links the exact Museo Egizio map and distinguishes it from a separate papyrus and printed editions', () => {
+    const d = new Driver();
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-MINE' });
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-STRIKE' });
+    const records = view(d).encyclopedia;
+    expect(records).toContainEqual(expect.objectContaining({ key: 'object:museo-egizio:papyrus-document-9',
+      kind: 'article', url: 'https://en.wikipedia.org/wiki/Turin_Papyrus_Map' }));
+    expect(records).toContainEqual(expect.objectContaining({ key: 'object:OBJ-NILE-STRIKE',
+      kind: 'related', url: 'https://en.wikipedia.org/wiki/Deir_el-Medina' }));
+    expect(view(d).references).toEqual([]);
+    const guide = d.e.pack.exhibits.find(({ id }) => id === 'OBJ-DOOR-02')!;
+    expect(encyclopediaForExhibit(guide)).toMatchObject({ kind: 'related', title: 'The Negro Motorist Green Book' });
+  });
+
   it('accepts article routes and explicit searches over the approved Wikipedia hosts only', () => {
     expect(isEncyclopediaURL('https://en.wikipedia.org/w/index.php?search=Amunnakht', 'search')).toBe(true);
     expect(isEncyclopediaURL('https://it.wikipedia.org/wiki/Codice_Quetzalecatzin', 'article')).toBe(true);

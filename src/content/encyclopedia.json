@@ -404,6 +404,20 @@
       "basis": "The navigator has a separate article. The physical chart copy and attributions have their own shelfmark."
     },
     {
+      "id": "OBJ-DOOR-01",
+      "title": "Elbridge Streeter Brooks",
+      "kind": "related",
+      "wikidata": "Q5353819",
+      "basis": "The article concerns the named author. The 1894 copy in the exhibit is the separately recorded Harvard copy."
+    },
+    {
+      "id": "OBJ-DOOR-02",
+      "title": "The Negro Motorist Green Book",
+      "kind": "related",
+      "wikidata": "Q17114195",
+      "basis": "The article covers the published guidebook series. The Smithsonian record identifies this particular 1941 edition."
+    },
+    {
       "id": "OBJ-DRAWER-01",
       "title": "Joseph Bertrand",
       "kind": "related",
@@ -873,6 +887,13 @@
       "basis": "The article is about the named figure in the traditional narrative, rather than a separate artefact."
     },
     {
+      "id": "OBJ-NILE-MINE",
+      "title": "Turin Papyrus Map",
+      "kind": "article",
+      "wikidata": "Q1889662",
+      "basis": "The article names the Turin papyrus and links the Museo Egizio document 9 record for its documented group of fragments."
+    },
+    {
       "id": "OBJ-NILE-SALLIER",
       "title": "Kadesh inscriptions",
       "kind": "related",
@@ -1146,6 +1167,13 @@
       "basis": "The collection credits Eugène Delacroix with this role: Artist of the lithographs. The article provides background on that role."
     },
     {
+      "id": "OBJ-SCRIPT-RAIL-GENJI-CLOUD",
+      "title": "The Tale of Genji",
+      "kind": "related",
+      "wikidata": "Q8269",
+      "basis": "The article concerns the underlying literary work. Cleveland 1933.455 is an identified portion of a single chapter."
+    },
+    {
       "id": "OBJ-SCRIPT-RAIL-HAYLEY-BALLADS",
       "title": "William Blake",
       "kind": "related",
@@ -1165,6 +1193,13 @@
       "kind": "related",
       "wikidata": "Q234908",
       "basis": "The collection credits Nizami Ganjavi with this role: Author of the source narrative. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-SCRIPT-RAIL-PREVOST-DRAWINGS",
+      "title": "Manon Lescaut",
+      "kind": "related",
+      "wikidata": "Q1141032",
+      "basis": "The article concerns the novel. The National Gallery identifies this separately accessioned illustrated volume."
     },
     {
       "id": "OBJ-SCRIPT-RAIL-SCOTT-VOLUME",
