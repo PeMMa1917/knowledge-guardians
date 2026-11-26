@@ -470,7 +470,8 @@ describe('dialogue graph', () => {
       const id = stack.pop()!;
       if (reach.has(id)) continue;
       reach.add(id);
-      const n = pack.dialogue.find((x) => x.id === id)!;
+      const n = pack.dialogue.find((x) => x.id === id);
+      if (!n) throw new Error(`Missing dialogue entry: ${id}`);
       if (n.next) stack.push(n.next);
       for (const o of n.options ?? []) if (o.next) stack.push(o.next);
     }

@@ -10,6 +10,11 @@ function note(id: string, x: number, y: number, label: string, art: string, text
   return { id, kind: 'sign', x, y, w: 1, h: 1, label, art, text, walkThrough: true, visibleIf };
 }
 
+function guideScene(id: string, x: number, y: number, label: string, art: string, node: string,
+  visibleIf?: Condition): Interactable {
+  return { id, kind: 'scene', x, y, w: 1, h: 1, label, art, node, walkThrough: true, visibleIf };
+}
+
 function grassyFloor(width: number, height: number, path: (x: number, y: number) => boolean) {
   return (x: number, y: number) => {
     if (x < 0 || y < 0 || x >= width || y >= height) return null;
@@ -21,6 +26,8 @@ const quiet: Condition = { flag: 'forest.response', eq: 'quiet' };
 const brief: Condition = { flag: 'forest.response', eq: 'brief' };
 const reviewed: Condition = { flag: 'forest.followup', eq: true };
 const lowRoute: Condition = { flag: 'forest.low-route', eq: true };
+const splitGuide: Condition = { flag: 'forest.guide.form', eq: 'split' };
+const hingedGuide: Condition = { flag: 'forest.guide.form', eq: 'hinged' };
 
 export const FOREST_STATION: MapDef = {
   id: 'forest.station', name: 'Living Forest: Fern Station', world: 'WORLD-06',
@@ -95,7 +102,17 @@ export const FOREST_TRAIL: MapDef = {
     { id: 'forest-watch-ridge', kind: 'forest-watch', node: 'ridge', x: 24, y: 6, w: 1, h: 1,
       label: 'the ridge overlook', art: 'forest.ridge', walkThrough: true },
     note('forest-crossing-guide', 10, 13, 'the crossings sign', 'forest.waypost',
-      'Follow the lower path to the creek screen. Both crossings lead to the ridge. The bridge clearing lies east.'),
+      'Follow the lower path to the creek screen. Both crossings lead to the ridge. The bridge clearing lies east. Two sketch frames face the rail at the upper bridge.'),
+    note('forest-guide-rail', 16, 6, 'the old bridge rail', 'forest.guide-rail',
+      'A tall end post and a lower post hold the rail. The bridge deck is the long line beneath both posts. The joiner keeps sketch frames at two standing places on the banks.'),
+    guideScene('forest-guide-west-frame', 12, 6, 'the west-bank sketch frame', 'forest.guide-level',
+      'forest.guide.trace-west'),
+    guideScene('forest-guide-east-frame', 20, 9, 'the east-rise sketch frame', 'forest.guide-rise',
+      'forest.guide.trace-east'),
+    guideScene('forest-guide-west-panel', 13, 7, 'the panel for the west approach', 'forest.guide-level',
+      'forest.guide.panel-west', splitGuide),
+    guideScene('forest-guide-east-panel', 22, 8, 'the panel for the east rise', 'forest.guide-rise',
+      'forest.guide.panel-east', splitGuide),
     note('forest-quiet-screen', 10, 8, 'the quiet-route marker', 'forest.notice',
       'The marker asks walkers to leave a gap at the screen. A second opening still leads to the bridge from the north.', quiet),
     note('forest-bridge-copy', 19, 7, 'the bridge’s observation cards', 'preserved.folder',
@@ -133,6 +150,12 @@ export const FOREST_COMMUNITY: MapDef = {
       'The return watch recorded two crossings from each lookout. The creek reeds hid part of that watch. Leave a gap in the record for the time behind the reeds.', reviewed),
     note('forest-low-route', 10, 12, 'the low viewing route', 'forest.waypost',
       'A low bench holds both field notes with the view limits and the observers’ names. Readers can reach the notes here. The ridge still has its own lookout.', lowRoute),
+    guideScene('forest-guide-bench', 7, 8, 'the joiner’s layout board', 'forest.field-diagram',
+      'forest.guide.bench', { not: { flagSet: 'forest.guide.form' } }),
+    guideScene('forest-guide-hinges', 7, 8, 'the hinged guide on the joiner’s board', 'forest.guide-hinges',
+      'forest.guide.hinges', hingedGuide),
+    guideScene('forest-guide-bench-after', 7, 8, 'the joiner’s empty outlines', 'forest.field-diagram',
+      'forest.guide.bench-after', splitGuide),
   ],
   lights: [
     { x: 12, y: 6, r: 76, color: 0xf8dfaa }, { x: 7, y: 10, r: 52, color: 0xb9cf9e },

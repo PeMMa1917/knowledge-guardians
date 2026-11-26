@@ -185,12 +185,15 @@ The sources and object limits are in `docs/SOURCES.md`; the rooms and their fict
 - **The Copy in the Square:** trace how a claim travelled in Emberford and decide who should carry the correction. The new notice and the buyer's response depend on the handover.
 - **The Borrowed Mark and A Slip Comes Back:** compare a craft record with a shared method, then choose a label that leaves the first maker open. After dispatch, find the reader's reply and decide where to leave the response.
 - **The Reading Window:** either Workmen's Room route can try two first lines with the reader and papers held fixed. Compare what the reader notices, then leave a display that keeps the date, the source and the different reading practices together.
+- **The Seal on the Copy:** use the Lens on both Royal Records exhibits and turn over the archive seal. Move it to the desk or place it beneath separate captions so readers can see what was checked.
 
 ## Chapter 3: The Missing Transfer
 
 The Nile Archive return opens the Cold Store independent of its optional trails. Follow the royal custody trail through a gap in the file, put up a supported heading, and visit the Chinchorro records to compare preservation in context. Choose separate stands, paired records or review before display. Each opens the inquiry room with a different reader request. The response travels back to the Nexus. An optional excavation proof places the documented workers' names or a dated record trail first. The [source register](docs/SOURCES.md#chapter-3-preserved-lives) describes what each record supports.
 
 **The Printer's Empty Sleeve** adds a separate workroom. Compare the Mawangdui context and the published methods of the Xin Zhui reconstruction, then lift or attach papers to show what is constrained and what the model supplies. The archive can open a process display or retain a working set with its limits. Both routes leave a visible result.
+
+**Between the Markers** adds a survey room for the copper record and the findspot. Mount the source and trace which material model it rules out. The remaining alternatives leave the person’s route unresolved. Choose which version of that uncertainty readers see at the archive.
 
 ## Chapter 4: The Next Bell
 
@@ -202,6 +205,12 @@ The quay and headland reports give two readings for the same bell. Compare them 
 
 The Observatory correction opens the Living Forest. Take equal three-beat watches at the creek screen and ridge in either order. Compare the first-light and later crossing counts, then check the bridge crews' separate accounts before choosing a quiet-route notice or a public briefing. Return to both lookouts and add an honest correction that leaves the blocked creek beat open. Optional trails bring the record to a low bench and use two historical Gombe records to add contributor credit.
 
+**A Bridge in Two Views** puts the same crossing in two sketch frames. Trace what each position lets you see, then make a paired guide in the clearing or place the views at the approaches. Check both views in the chosen display.
+
+## Chapter 6: The Blue Panels
+
+The revised Living Forest notice opens the Sample Yard. Zero the empty balance at each stand, measure two same-sized panels and check the different readings without naming a material from the weight alone. Compare the separate workshop papers and choose a window comparison or ledger-first notice. The later transfer docket connects the crates for one cart trip. Each response leaves a place to record that shared trip without merging the earlier histories.
+
 ## Thirty-minute design audit
 
-Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Both opening traces, the Nile Reading Window route, the Cold Store trace, the Observatory route with the quay slip, and the Living Forest trace reach all 12 concepts and four framework areas within their first estimated half hour. Three alternate traces and some later windows still show gaps. The report keeps the route actions and time estimates visible so unassisted timed playtests can challenge them.
+Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Eight of the twelve routes reach all 12 concepts and four framework areas within their first estimated half hour. They include both opening traces, the Nile Reading Window, the Cold Store, the Observatory with the quay slip, both Living Forest traces, and the Metalworks. The Royal Records and Model Room path reaches explanation and objectivity at the estimated 31-minute comparison. Other paths and later windows still show gaps. The report keeps the route actions and time estimates visible so unassisted timed playtests can challenge them.

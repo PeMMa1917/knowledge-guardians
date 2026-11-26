@@ -143,3 +143,46 @@ describe('the reading window', () => {
     expect(totalXP(d.p)).toBe(xp);
   });
 });
+
+describe('the seal on the copy', () => {
+  it.each([
+    ['Move the seal to the catalogue', 'catalogue'],
+    ['Move the seal under', 'docket'],
+  ])('places a check where it can be traced after both Lens readings: %s', (pick, destination) => {
+    const d = new Driver();
+    d.s.mapId = 'nile.royal';
+    d.s.inventory['tool.date-lens'] = 1;
+    d.run({ type: 'SetFlag', flag: 'nile.arrived', value: true });
+    const props = MAPS['nile.royal'].interactables.filter(({ id }) =>
+      id.startsWith('nile-royal-seal-') || id.endsWith('-caption'));
+    const visibleIds = () => props.filter(({ visibleIf }) => check(visibleIf, d.s)).map(({ id }) => id);
+    const canMoveSeal = () => d.e.visibleOptions(d.e.talkEntry('nile-nasir', d.s)!, d.s)
+      .some(({ option }) => option.text.startsWith('Move the seal'));
+    expect(visibleIds()).toEqual([]);
+
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-SALLIER' });
+    d.run({ type: 'UseLens', exhibit: 'OBJ-NILE-SALLIER' });
+    expect(visibleIds()).toEqual([]);
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-TREATY' });
+    d.run({ type: 'UseLens', exhibit: 'OBJ-NILE-TREATY' });
+    expect(visibleIds()).toEqual(['nile-royal-seal-backing']);
+    expect(canMoveSeal()).toBe(false);
+
+    d.run({ type: 'ReadClue', clue: 'nile-royal-seal-backing' });
+    expect(canMoveSeal()).toBe(true);
+    const xp = totalXP(d.p);
+    d.talk('nile-nasir', 'Move the seal to what', pick);
+    expect(visibleIds()).toEqual([
+      `nile-royal-seal-${destination}`,
+      'nile-royal-papyrus-caption',
+      'nile-royal-treaty-caption',
+    ]);
+    expect(d.done('nile.royal.seal')).toBe(true);
+    expect(d.done('nile.diplomacy')).toBe(false);
+    expect(totalXP(d.p)).toBe(xp);
+
+    d.run({ type: 'BuildLabel', kit: 'nile-qadesh', subject: 'poem', criterion: 'account', limit: 'qualified' });
+    expect(d.done('nile.diplomacy')).toBe(true);
+    expect(canMoveSeal()).toBe(true);
+  });
+});

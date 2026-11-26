@@ -1,5 +1,6 @@
 import { NILE_TRIALS, NILE_DELIVERIES, type NileDelivery } from '../domain/nileModel';
 import { FOREST_WATCH, FOREST_WINDOWS, forestWatch, type ForestWindow } from '../domain/forestWatch';
+import { METAL_SAMPLES, readMetalSample } from '../domain/metalSample';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -3226,6 +3227,52 @@ export class UI implements UIApi {
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
+  openMetalTrial(sampleId: string): void {
+    if (!Object.hasOwn(METAL_SAMPLES, sampleId)) return;
+    const sample = readMetalSample(sampleId);
+    const controller = ctx.controller;
+    const live = h('p', { role: 'status', 'aria-live': 'polite' }, 'The pan is empty.');
+    const notes = h('ul', {});
+    const refreshNotes = () => {
+      clear(notes);
+      for (const [id, reading] of Object.entries(METAL_SAMPLES)) {
+        if (controller.state.flags[`metal.test.${id}`] === true) {
+          notes.append(h('li', {}, `${reading.name}: ${reading.mass} balance units.`));
+        }
+      }
+    };
+    const picture = h('canvas', { width: '144', height: '64', class: 'mark', 'aria-hidden': 'true' }) as HTMLCanvasElement;
+    const paint = (mass: number) => {
+      const g = picture.getContext('2d');
+      if (!g) return;
+      g.fillStyle = '#eee3c9'; g.fillRect(0, 0, 144, 64);
+      g.fillStyle = '#3c4053';
+      g.fillRect(37, 52, 70, 6); g.fillRect(68, 15, 8, 39);
+      g.strokeStyle = '#3c4053'; g.lineWidth = 3;
+      g.beginPath(); g.moveTo(27, 20 + mass * 3); g.lineTo(117, 20 - mass * 3); g.stroke();
+      g.fillRect(12, 22 + mass * 3, 33, 4); g.fillRect(99, 22 - mass * 3, 33, 4);
+      if (mass) { g.fillStyle = '#386e86'; g.fillRect(17, 15 + mass * 3, 22, 7); }
+    };
+    const weigh = h('button', { type: 'button', disabled: true, onclick: () => {
+      if (controller.dispatch({ type: 'CompareMetalSample', sample: sampleId }).some((e) => e.kind === 'error')) return;
+      paint(sample.mass);
+      live.textContent = `${sample.name} reads ${sample.mass} balance units.`;
+      refreshNotes();
+    } }, 'Set the panel on the pan');
+    const zero = h('button', { type: 'button', onclick: () => {
+      paint(0);
+      live.textContent = 'Empty pan set to zero. The balance is ready.';
+      weigh.disabled = false;
+      weigh.focus();
+    } }, 'Zero the empty balance');
+    paint(0);
+    refreshNotes();
+    this.openModal('metal-trial', sample.name, this.closeBtn(), h('h2', {}, sample.name),
+      h('p', {}, 'Both blue panels fit the same frame. See what an empty balance and a panel can tell you.'),
+      picture, h('div', { class: 'row' }, zero, weigh), live,
+      h('details', {}, h('summary', {}, 'Pinned balance readings'), notes));
   }
 
   openForestWatch(site: string): void {

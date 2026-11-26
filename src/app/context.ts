@@ -30,6 +30,7 @@ export interface UIApi {
   openBoss(): void;
   openNileModel(): void;
   openForestWatch(site: string): void;
+  openMetalTrial(sample: string): void;
   openTalents(atWaystone?: boolean): void;
   openLedger(): void;
   openClue(id: string): void;

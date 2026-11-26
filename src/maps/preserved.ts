@@ -68,6 +68,8 @@ export const PRESERVED_ARCHIVE = room({
       openIf: { flagSet: 'preserved.display' }, text: 'The review room opens after the first display goes up. The registrar has the two folders.' },
     { ...door('preserved-door-workroom', 24, 10, 'the reconstruction workroom', { map: 'preserved.workroom', x: 10, y: 11 }),
       openIf: { objective: 'preserved.publish' }, text: 'The printer will open the workroom when the first display is ready.' },
+    { ...door('preserved-door-copper', 3, 8, 'the survey table room', { map: 'preserved.copper', x: 10, y: 11 }),
+      openIf: { objective: 'preserved.publish' }, text: 'The keeper is waiting for the first display before opening the survey table.' },
     door('preserved-door-nexus', 14, 16, 'the door back to the Nexus', { map: 'nexus.archive', x: 35, y: 15 }),
     { id: 'preserved-rest', kind: 'waystone', x: 9, y: 13, w: 1, h: 1, label: 'the Cold Store Waystone', place: 'the Cold Store', art: 'waystone' },
     notice('preserved-directory', 17, 13, 'the Cold Store directory', 'preserved.folder',
@@ -81,6 +83,10 @@ export const PRESERVED_ARCHIVE = room({
       'The source, model, swatches and caption each have a named space. The board shows how a reconstruction is made. It includes no image of Xin Zhui.', { flag: 'xin.display', eq: 'process' }),
     notice('preserved-xin-review-display', 19, 8, 'the printer’s review request', 'preserved.display-delayed',
       'The archive kept the mock-up at the workroom. On the wall, the sources and dates sit beside a request to trace which parts of the model came from measurement and which from comparison.', { flag: 'xin.display', eq: 'review' }),
+    notice('preserved-copper-marker-display', 9, 7, 'the two separate record markers', 'preserved.display-records',
+      'The material source and the equipment findspot have separate tabs. The space between them has a clip for a dated intermediate record.', { flag: 'copper.display', eq: 'markers' }),
+    notice('preserved-copper-chain-display', 9, 7, 'the two open exchange chains', 'preserved.display-paired',
+      'Two schematic chains share the same endpoints. Their exchange hooks have no place names. A note asks for dated finds with comparable metal signatures.', { flag: 'copper.display', eq: 'chains' }),
   ],
   lights: [
     { x: 5, y: 5, r: 58, color: 0xb5dcff }, { x: 21, y: 5, r: 58, color: 0xffd598 },
@@ -214,5 +220,50 @@ export const PRESERVED_WORKROOM = room({
   lights: [
     { x: 5, y: 6, r: 58, color: 0xd4e0ff }, { x: 15, y: 6, r: 58, color: 0xf7dfb1 },
     { x: 10, y: 8, r: 72, color: 0xdce1ec },
+  ],
+});
+
+function copperTrial(id: string, x: number, label: string, art: string, visibleIf?: Condition): Interactable {
+  return {
+    id: `preserved-copper-trial-${id}`, kind: 'scene', node: `copper.trial.${id}`, x, y: 8, w: 1, h: 1,
+    label, art: 'preserved.folder', walkThrough: true, visibleIf,
+    artOpen: { key: art, if: { flag: `copper.tested.${id}`, eq: true } },
+  };
+}
+
+export const PRESERVED_COPPER = room({
+  id: 'preserved.copper', name: 'Preserved Lives: Survey Table', width: 21, height: 14,
+  background: 0x242f38, spawn: { x: 10, y: 11 },
+  npcs: [],
+  stamps: [
+    { stamp: 'bookshelf', x: 2, y: 2 }, { stamp: 'bookshelf', x: 16, y: 2 },
+    { stamp: 'window', x: 9, y: 1 }, { stamp: 'rug-green', x: 9, y: 9 },
+    { stamp: 'bench', x: 16, y: 10 }, { stamp: 'plant-tall', x: 2, y: 10 },
+  ],
+  interactables: [
+    door('preserved-copper-back', 10, 13, 'the passage back to the Cold Store', { map: 'preserved.archive', x: 4, y: 9 }),
+    record('COPPER-FIND', 5, 5, 'the discovery register', 'preserved.catalogue'),
+    record('COPPER-ORE', 15, 5, 'the copper source report', 'preserved.context'),
+    notice('preserved-copper-guide', 7, 11, 'the surveyor’s note', 'preserved.slip',
+      'These tracks are models. Place a material token to try the three tracks. When you have both records, move the source peg to the place marked in the report.'),
+    { id: 'preserved-copper-source-peg', kind: 'scene', node: 'copper.overlay', x: 10, y: 5, w: 1, h: 1,
+      label: 'the movable origin peg', art: 'preserved.folder', walkThrough: true,
+      visibleIf: { all: [{ objective: 'copper.o.records' }, { not: { flag: 'copper.overlay', eq: true } }] } },
+    notice('preserved-copper-source-fixed', 10, 5, 'the two fixed pegs', 'preserved.display-records',
+      'The ore comparison points to southern Tuscany. The equipment findspot is in the Alps. A peg for each gives the model its endpoints.', { flag: 'copper.overlay', eq: true }),
+    copperTrial('near', 5, 'the nearby-source trial', 'nile.map', { not: { flag: 'copper.overlay', eq: true } }),
+    notice('preserved-copper-near-closed', 5, 8, 'the closed trial', 'preserved.display-delayed',
+      'The report puts the source elsewhere. The nearby-source trial is shelved. A short line with an unsupported start cannot trace this copper.', { flag: 'copper.overlay', eq: true }),
+    copperTrial('one', 10, 'the track with one exchange', 'preserved.context'),
+    copperTrial('several', 15, 'the track with several exchanges', 'preserved.display-paired'),
+    { id: 'preserved-copper-dispatch', kind: 'scene', node: 'copper.dispatch', x: 13, y: 11, w: 1, h: 1,
+      label: 'the survey table dispatch', art: 'preserved.folder', walkThrough: true,
+      visibleIf: { all: [{ objective: 'copper.o.compare' }, { not: { flagSet: 'copper.display' } }] } },
+    notice('preserved-copper-dispatched', 13, 11, 'the dispatch receipt', 'preserved.slip',
+      'The keeper took your copy to the Cold Store hall. The trial boards remain here to test another example.', { flagSet: 'copper.display' }),
+  ],
+  lights: [
+    { x: 5, y: 6, r: 56, color: 0xbbdef5 }, { x: 15, y: 6, r: 58, color: 0xf5d5a3 },
+    { x: 10, y: 9, r: 75, color: 0xcfe4d9 },
   ],
 });

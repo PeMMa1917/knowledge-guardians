@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { forestWatch, type ForestWindow } from '../src/domain/forestWatch';
+import { readMetalSample } from '../src/domain/metalSample';
 import { check } from '../src/domain/rules';
 import { MAPS } from '../src/maps';
 import { coverageGaps, type TimedEncounter } from '../tools/tok-coverage';
@@ -144,15 +145,9 @@ function nexusToEmberford(explore: boolean): Route {
   return route;
 }
 
-function nileDispatch({ borrowedMark = false, readingWindow = false } = {}): Route {
-  const route = new Route();
-  const d = route.driver;
-  // Independent return-session fixture. These flags represent earlier progress.
-  d.s.objectivesDone.push('m02.o8.ise');
-  d.s.inventory['tool.provenance-thread'] = 1;
-  d.run({ type: 'SetFlag', flag: 'study.letter', value: true });
-  useDoor(d, 'door-without-a-name');
-  route.at(5, 'Give the bench to a reader who needs the large copy while marking the missing line', ['values', 'ethics', 'responsibility'], useProp('nile.reading-bench', 'copy'));
+type NileFirstLead = 'workers' | 'reading-window' | 'borrowed-mark' | 'royal-seal';
+
+function nileWorkersLead(route: Route, lead: Exclude<NileFirstLead, 'royal-seal'>): void {
   route.at(15, 'Follow the scribe’s record and decide what to put in front', ['evidence', 'power', 'perspective', 'interpretation', 'perspectives'], (d) => {
     useDoor(d, 'nile-workers');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-STRIKE' });
@@ -160,7 +155,7 @@ function nileDispatch({ borrowedMark = false, readingWindow = false } = {}): Rou
     d.talk('nile-leila', 'workers stopping');
     expect(d.done('nile.workers')).toBe(true);
   });
-  if (readingWindow) route.at(18, 'Change the opening under the same reading window, then show both reading customs beside the same dated record', [
+  if (lead === 'reading-window') route.at(18, 'Change the opening under the same reading window, then show both reading customs beside the same dated record', [
     'objectivity', 'explanation', 'interpretation', 'truth', 'certainty', 'culture', 'scope', 'methods-and-tools',
   ], (d) => {
     d.talk('nile-leila', 'Try the two readings again', 'Turn the clips', 'Ask Leila how', 'Hang both ways');
@@ -168,32 +163,71 @@ function nileDispatch({ borrowedMark = false, readingWindow = false } = {}): Rou
     expect(d.s.flags['nile.workerLead']).toBe('voices');
     readSign(d, 'nile-window-pair');
   });
-  const readingMinutes = readingWindow ? 3 : 0;
-  route.at(18 + readingMinutes, 'Put the scribe’s name first and make space for missing voices', ['perspectives', 'ethics'], useProp('nile.reader-seat', 'slip'));
-  if (borrowedMark) route.at(23 + readingMinutes, 'Use the keepers’ swatch to justify a label about shared practice with the maker left unnamed', ['truth', 'certainty', 'culture', 'justification', 'scope', 'methods-and-tools'], (d) => {
+  route.at(lead === 'reading-window' ? 21 : 18, 'Put the scribe’s name first and make space for missing voices', ['perspectives', 'ethics'], useProp('nile.reader-seat', 'slip'));
+  if (lead === 'borrowed-mark') route.at(23, 'Use the keepers’ swatch to justify a label about shared practice with the maker left unnamed', ['truth', 'certainty', 'culture', 'justification', 'scope', 'methods-and-tools'], (d) => {
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-ARCHIVE-PRACTICE-SWATCH' });
     useDoor(d, 'workyard-back');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-ARCHIVE-RECEIVING-TAG' });
     d.run({ type: 'BuildLabel', kit: 'nile-borrowed-mark', subject: 'cloth', criterion: 'shared', limit: 'open' });
     expect(d.done('nile.mark.publish')).toBe(true);
   });
-  const extra = readingMinutes + (borrowedMark ? 5 : 0);
+}
+
+function nileRoyalLead(route: Route): void {
+  route.at(13, 'Use the Lens on the Egyptian royal account and the later treaty record', ['evidence', 'interpretation', 'certainty', 'scope', 'methods-and-tools'], (d) => {
+    useDoor(d, 'nile-royal');
+    for (const exhibit of ['OBJ-NILE-SALLIER', 'OBJ-NILE-TREATY']) {
+      d.run({ type: 'InspectExhibit', exhibit });
+      d.run({ type: 'UseLens', exhibit });
+    }
+  });
+  route.at(17, 'Give the treaty a label about terms of peace, keeping its claim separate from the account of battle', ['perspective', 'perspectives', 'justification', 'scope'], (d) => {
+    d.run({ type: 'BuildLabel', kit: 'nile-qadesh', subject: 'treaty', criterion: 'terms', limit: 'qualified' });
+    expect(d.done('nile.diplomacy')).toBe(true);
+  });
+  route.at(22, 'Turn over the seal, limit it to the copies it checked, and keep distinct captions at both cases', ['truth', 'certainty', 'culture', 'power', 'responsibility', 'ethics', 'scope', 'methods-and-tools'], (d) => {
+    const backing = MAPS[d.s.mapId].interactables.find((p) => p.kind === 'clue' && p.clue === 'nile-royal-seal-backing');
+    expect(backing).toBeDefined();
+    expect(check(backing?.visibleIf, d.s)).toBe(true);
+    d.run({ type: 'ReadClue', clue: 'nile-royal-seal-backing' });
+    d.talk('nile-nasir', 'Move the seal to what', 'Move the seal under');
+    expect(d.done('nile.royal.seal')).toBe(true);
+    for (const prop of ['nile-royal-seal-docket', 'nile-royal-papyrus-caption', 'nile-royal-treaty-caption']) readSign(d, prop);
+  });
+}
+
+function nileDispatch(lead: NileFirstLead = 'workers'): Route {
+  const route = new Route();
+  const d = route.driver;
+  // Independent return-session fixture. These flags represent earlier progress.
+  d.s.objectivesDone.push('m02.o8.ise');
+  d.s.inventory['tool.provenance-thread'] = 1;
+  d.s.inventory['tool.date-lens'] = 1;
+  d.run({ type: 'SetFlag', flag: 'study.letter', value: true });
+  useDoor(d, 'door-without-a-name');
+  route.at(5, 'Give the bench to a reader who needs the large copy while marking the missing line', ['values', 'ethics', 'responsibility'], useProp('nile.reading-bench', 'copy'));
+  const royal = lead === 'royal-seal';
+  if (royal) nileRoyalLead(route);
+  else nileWorkersLead(route, lead);
+  const extra = { workers: 0, 'reading-window': 3, 'borrowed-mark': 5, 'royal-seal': 4 }[lead];
   route.at(27 + extra, 'Compare two model roads and choose what travels', ['objectivity', 'explanation', 'values', 'justification', 'scope', 'methods-and-tools'], (d) => {
-    if (!borrowedMark) useDoor(d, 'workyard-back');
+    if (lead !== 'borrowed-mark') useDoor(d, royal ? 'royal-back' : 'workyard-back');
     useDoor(d, 'nile-maps');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-MINE' });
     d.run({ type: 'NileRouteTrial', road: 'ridge' });
     d.run({ type: 'NileRouteTrial', road: 'wash' });
-    d.run({ type: 'NileDelivery', choice: 'copy' });
+    d.run({ type: 'NileDelivery', choice: royal ? 'cast' : 'copy' });
     expect(d.done('nile.routes')).toBe(true);
   });
   route.at(31 + extra, 'Leave the next keeper the conditions of the model trial', ['certainty', 'scope', 'methods-and-tools'], useProp('nile.model-handover', 'repeat'));
-  route.at(38 + extra, 'Send the workmen’s slips and open the Nexus reading table', ['responsibility', 'power', 'perspectives', 'ethics'], (d) => {
+  const dispatch = royal ? 'Keep the ancient map and the route trial side by side in the Nexus workshop' : 'Send the workmen’s slips and open the Nexus reading table';
+  route.at(38 + extra, dispatch, ['responsibility', 'power', 'perspectives', 'ethics'], (d) => {
     useDoor(d, 'route-back');
-    d.talk('nile-iman', 'reading table');
+    d.talk('nile-iman', royal ? 'workshop table' : 'reading table');
     useDoor(d, 'nile-nexus');
-    d.talk('warden-ise', 'Lay both slips', 'come back');
+    d.talk('warden-ise', royal ? 'Leave the ancient route' : 'Lay both slips', 'come back');
     expect(d.done('nile.return')).toBe(true);
+    readSign(d, royal ? 'nile-outcome-pair' : 'nile-outcome-read');
   });
   route.at(47 + extra, 'Present the Singapore Stone and the Malay Annals without conflating them', ['culture', 'truth', 'interpretation', 'scope'], (d) => {
     for (const exhibit of ['OBJ-NILE-STONE', 'OBJ-NILE-BADANG']) d.run({ type: 'InspectExhibit', exhibit });
@@ -312,40 +346,51 @@ function observatoryCoast(bellSlip: boolean): Route {
   return route;
 }
 
-function livingForest(): Route {
+function livingForest(pathbookFirst: boolean): Route {
   const route = new Route();
   // Independent Chapter 5 session. The coast's revised notice is already up.
   route.driver.s.objectivesDone.push('coast.revise');
+  const readPathbook = (d: Driver) => {
+    useDoor(d, 'forest-community-path');
+    readSign(d, 'forest-pathbook');
+    d.talk('forest-steward', pathbookFirst ? 'Give heard and seen' : 'Keep the crews’ own words');
+    expect(d.done('forest.account')).toBe(true);
+  };
   route.at(4, 'Hear what a lookout crossing counts before heading out to check the bridge claim', ['perspective', 'scope'], (d) => {
     useDoor(d, 'forest-door');
     d.talk('forest-naturalist', 'What do we call a crossing');
     expect(d.done('forest.arrival')).toBe(true);
   });
-  route.at(11, 'Compare early crossings at the creek and ridge, one against three', ['evidence', 'methods-and-tools'], (d) => {
-    useDoor(d, 'forest-trail-path');
+  if (pathbookFirst) route.at(9, 'Separate what the bridge and lamp crews heard on their rounds from what observers saw', ['culture', 'perspective', 'interpretation', 'perspectives'], readPathbook);
+  const extraTrailMinutes = pathbookFirst ? 3 : 0;
+  route.at(11 + extraTrailMinutes, 'Compare early crossings at the creek and ridge, one against three', ['evidence', 'methods-and-tools'], (d) => {
+    useDoor(d, pathbookFirst ? 'forest-bridge-to-trail' : 'forest-trail-path');
     expect(watchForest(d, 'creek', 'early')).toEqual([0, 1, 0]);
     expect(watchForest(d, 'ridge', 'early')).toEqual([1, 2, 0]);
   });
-  route.at(18, 'Repeat at the same sites in a later window and find the order reversed, three crossings against one', ['objectivity', 'certainty', 'truth', 'methods-and-tools'], (d) => {
+  route.at(18 + extraTrailMinutes, 'Repeat at the same sites in a later window and find the order reversed, three crossings against one', ['objectivity', 'certainty', 'truth', 'methods-and-tools'], (d) => {
     expect(watchForest(d, 'creek', 'late')).toEqual([1, 0, 2]);
     expect(watchForest(d, 'ridge', 'late')).toEqual([0, 0, 1]);
   });
-  route.at(22, 'Compare matching windows with the naturalist and state how visibility limits a crossing count', ['explanation', 'interpretation', 'justification', 'scope'], (d) => {
+  const comparison = pathbookFirst
+    ? 'Put the early and late notes side by side for each lookout, where a combined total would hide the difference'
+    : 'Compare matching windows with the naturalist and state how visibility limits a crossing count';
+  route.at(22 + extraTrailMinutes, comparison, ['explanation', 'interpretation', 'justification', 'scope'], (d) => {
     useDoor(d, 'forest-trail-back');
-    d.talk('forest-naturalist', 'same watch');
+    d.talk('forest-naturalist', pathbookFirst ? 'each lookout’s early' : 'same watch');
     expect(d.done('forest.compare')).toBe(true);
   });
-  route.at(26, 'Keep the words of the lamp crew and the bridge keepers with their own rounds in the pathbook', ['culture', 'perspective', 'perspectives'], (d) => {
-    useDoor(d, 'forest-community-path');
-    readSign(d, 'forest-pathbook');
-    d.talk('forest-steward', 'Keep the crews’ own words');
-    expect(d.done('forest.account')).toBe(true);
-  });
-  route.at(29, 'Choose a quiet watch route and point large groups toward the wider lookout', ['power', 'values', 'responsibility', 'ethics'], (d) => {
-    d.talk('forest-steward', 'Keep the creek stop');
+  if (!pathbookFirst) route.at(26, 'Keep the words of the lamp crew and the bridge keepers with their own rounds in the pathbook', ['culture', 'perspective', 'perspectives'], readPathbook);
+  const publication = pathbookFirst
+    ? 'Brief people at the bridge with both records where they can hear them before choosing a path'
+    : 'Choose a quiet watch route and point large groups toward the wider lookout';
+  route.at(29, publication, ['power', 'values', 'responsibility', 'ethics'], (d) => {
+    if (pathbookFirst) useDoor(d, 'forest-community-path');
+    d.talk('forest-steward', pathbookFirst ? 'Read both lookout notes' : 'Keep the creek stop');
     expect(d.done('forest.publish')).toBe(true);
-    expect(d.s.flags['forest.response']).toBe('quiet');
-    readSign(d, 'forest-response-quiet');
+    const response = pathbookFirst ? 'brief' : 'quiet';
+    expect(d.s.flags['forest.response']).toBe(response);
+    readSign(d, `forest-response-${response}`);
   });
   route.at(37, 'Record two crossings at each return watch and keep the blocked creek beat unknown', ['truth', 'certainty', 'objectivity', 'evidence', 'methods-and-tools'], (d) => {
     useDoor(d, 'forest-bridge-to-trail');
@@ -353,9 +398,12 @@ function livingForest(): Route {
     expect(watchForest(d, 'ridge', 'return')).toEqual([0, 1, 1]);
     expect(d.done('forest.recheck')).toBe(true);
   });
-  route.at(42, 'Show how an unseen crossing could make the recorded counts match', ['interpretation', 'justification', 'explanation', 'responsibility', 'scope', 'ethics'], (d) => {
+  const correction = pathbookFirst
+    ? 'Return to the bridge readers to show why two equal counts do not imply two identical views'
+    : 'Show how an unseen crossing could make the recorded counts match';
+  route.at(42, correction, ['interpretation', 'justification', 'explanation', 'responsibility', 'scope', 'ethics'], (d) => {
     useDoor(d, 'forest-clearing-path');
-    d.talk('forest-steward', 'mark the hidden stretch');
+    d.talk('forest-steward', pathbookFirst ? 'Brief the bridge readers' : 'mark the hidden stretch');
     expect(d.done('forest.finish')).toBe(true);
     readSign(d, 'forest-followup-note');
   });
@@ -369,6 +417,64 @@ function livingForest(): Route {
     for (const exhibit of ['OBJ-FOREST-GOMBE', 'OBJ-FOREST-GOMBE-CONTEXT']) d.run({ type: 'InspectExhibit', exhibit });
     d.talk('forest-naturalist', 'put the Gombe team back');
     expect(d.done('forest.gombe-credit')).toBe(true);
+  });
+  return route;
+}
+
+function metalworks(): Route {
+  const route = new Route();
+  // Independent Chapter 6 session. The Forest keepers already revised their notice.
+  route.driver.s.objectivesDone.push('forest.finish');
+  route.at(4, 'Hear the seller’s claim of a matched set and why it raises the price', ['perspective', 'power', 'values'], (d) => {
+    useDoor(d, 'metalworks-door');
+    readSign(d, 'metal-weight-tag');
+    d.talk('metal-inspector');
+    expect(d.done('metal.arrival')).toBe(true);
+  });
+  route.at(13, 'Check the matched-weight claim, replace it with readings of two and four, and leave composition open', ['evidence', 'truth', 'objectivity', 'explanation', 'scope', 'methods-and-tools'], (d) => {
+    const readings = ['panel-a', 'panel-b'].map((sample) => {
+      const stand = MAPS[d.s.mapId].interactables.find((p) => p.kind === 'metal-trial' && p.node === sample);
+      expect(stand, `${sample} has its own stand`).toBeDefined();
+      expect(check(stand?.visibleIf, d.s), `${sample} stand visible`).toBe(true);
+      d.run({ type: 'CompareMetalSample', sample });
+      expect(d.s.flags[`metal.test.${sample}`]).toBe(true);
+      return readMetalSample(sample).mass;
+    });
+    expect(readings).toEqual([2, 4]);
+    d.talk('metal-inspector', 'Pin the two balance readings');
+    expect(d.done('metal.compare')).toBe(true);
+    readSign(d, 'metal-weight-correction');
+  });
+  route.at(17, 'Hear how a paint shop and a seller use “matched set” for different claims', ['culture', 'interpretation', 'perspective', 'perspectives'], (d) => {
+    readSign(d, 'metal-custody-intake');
+    useDoor(d, 'metal-records-path');
+    expect(d.e.talkEntry('metal-steward', d.s)).toBe('metal.steward.welcome');
+    d.talk('metal-steward');
+  });
+  route.at(23, 'File the mineral-panel and coated-metal descriptions beside their own custody stages', ['evidence', 'certainty', 'interpretation', 'scope', 'methods-and-tools'], (d) => {
+    readSign(d, 'metal-custody-repair');
+    d.talk('metal-steward', 'Pin each slip');
+    expect(d.done('metal.trace')).toBe(true);
+    expect(d.s.flags['metal.custody.return']).toBeUndefined();
+  });
+  route.at(28, 'Open the window display with the panel readings and a blank clip for the maker', ['values', 'power', 'responsibility', 'justification', 'perspectives', 'ethics'], (d) => {
+    d.talk('metal-steward', 'Put the two panel readings');
+    expect(d.done('metal.publish')).toBe(true);
+    readSign(d, 'metal-response-window');
+  });
+  route.at(35, 'Read the transfer docket to check which trip the two boxes actually shared', ['evidence', 'truth', 'certainty', 'scope'], (d) => {
+    readSign(d, 'metal-custody-return');
+    expect(d.done('metal.docket')).toBe(true);
+  });
+  route.at(40, 'Add the dated cart card without giving either panel a maker', ['truth', 'responsibility', 'justification', 'interpretation', 'ethics'], (d) => {
+    d.talk('metal-steward', 'Add a dated cart card');
+    expect(d.done('metal.finish')).toBe(true);
+    readSign(d, 'metal-followup-notice');
+  });
+  route.at(46, 'Make a copy with one line per box so more readers can check the records', ['perspective', 'objectivity', 'responsibility', 'perspectives', 'ethics'], (d) => {
+    d.talk('metal-steward', 'Make a larger copy');
+    expect(d.done('metal.copy')).toBe(true);
+    readSign(d, 'metal-large-copy');
   });
   return route;
 }
@@ -398,12 +504,15 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Nexus main route into Emberford', end: 42, play: () => nexusToEmberford(false) },
     { name: 'Nexus and Emberford with optional stops', end: 85, play: () => nexusToEmberford(true) },
     { name: 'Nile first visit from a prepared Chapter 1 save', end: 50, play: () => nileDispatch() },
-    { name: 'Nile first visit with the Reading Window', end: 53, play: () => nileDispatch({ readingWindow: true }) },
-    { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch({ borrowedMark: true }) },
+    { name: 'Nile first visit with the Reading Window', end: 53, play: () => nileDispatch('reading-window') },
+    { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch('borrowed-mark') },
+    { name: 'Nile route through Royal Records and the route model', end: 54, play: () => nileDispatch('royal-seal') },
     { name: 'Preserved Lives from a prepared Chapter 2 save', end: 50, play: preservedLives },
     { name: 'Observatory Coast from a prepared Chapter 3 save', end: 50, play: () => observatoryCoast(false) },
     { name: 'Observatory Coast with the quay bell slip', end: 52, play: () => observatoryCoast(true) },
-    { name: 'Living Forest from a prepared Chapter 4 save', end: 55, play: livingForest },
+    { name: 'Living Forest from a prepared Chapter 4 save', end: 55, play: () => livingForest(false) },
+    { name: 'Living Forest starting with the bridge route book', end: 55, play: () => livingForest(true) },
+    { name: 'Metalworks from a prepared Chapter 5 save', end: 50, play: metalworks },
   ])('can execute the modeled route for $name and report its gaps', ({ name, end, play }) => {
     const route = play();
     const gaps = coverageGaps(end, route.encounters);

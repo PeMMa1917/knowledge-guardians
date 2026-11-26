@@ -787,6 +787,70 @@ DRAW['big.forest.field-diagram'] = [96, 64, (g) => {
   for (const [x, y] of [[16, 40], [21, 36], [27, 33], [33, 27], [39, 26], [45, 22], [51, 17]]) R(g, '#745b51', x, y, 2, 2);
   for (const y of [14, 22, 30, 38, 46]) R(g, '#94886e', 69, y, 16 - y % 5, 1);
 }];
+
+DRAW['forest.guide-rail'] = [32, 16, (g) => {
+  R(g, '#4d4234', 1, 10, 30, 3);
+  R(g, '#b59a69', 1, 10, 30);
+  R(g, '#624d37', 4, 3, 4, 11);
+  R(g, '#624d37', 24, 5, 3, 9);
+  R(g, '#c4a879', 5, 3, 2, 7);
+  R(g, '#c4a879', 25, 5, 1, 5);
+}];
+
+// The end post covers the second line from the bank. From the rise, the gap is visible.
+function railTracing(g: Ctx, x: number, hasGap: boolean) {
+  R(g, '#624d37', x + 7, 12, 2, 11);
+  R(g, '#686245', x + 1, 4, 14, 13);
+  paper(g, x + 3, 6, 10, 9);
+  R(g, '#483d3b', x + 5, 8, 2, 5);
+  if (hasGap) R(g, '#483d3b', x + 10, 9, 1, 4);
+  R(g, '#7c7755', x + 4, 13, 8);
+}
+DRAW['forest.guide-level'] = [16, 24, (g) => railTracing(g, 0, false)];
+DRAW['forest.guide-rise'] = [16, 24, (g) => railTracing(g, 0, true)];
+DRAW['forest.guide-hinges'] = [32, 24, (g) => {
+  railTracing(g, 0, false);
+  railTracing(g, 16, true);
+  R(g, '#a78d5e', 14, 7, 4, 2);
+  R(g, '#a78d5e', 14, 13, 4, 2);
+}];
+
+// Metalworks weighing stands and trade records.
+DRAW['metalworks.waypost'] = [16, 24, (g) => {
+  R(g, '#3e383b', 3, 4, 10, 20);
+  R(g, '#65615b', 4, 4, 8, 2);
+  R(g, '#a18765', 1, 6, 14, 10);
+  R(g, '#d8bb85', 2, 7, 12, 1);
+  R(g, '#567583', 4, 9, 8, 5);
+  R(g, '#acc0b6', 6, 11, 4, 1);
+}];
+function metalPanel(g: Ctx, base: string) {
+  R(g, '#383c42', 2, 13, 12, 10);
+  R(g, base, 3, 13, 10, 8);
+  R(g, '#596472', 1, 11, 14, 3);
+  R(g, '#6c93b5', 2, 7, 12, 5);
+  R(g, '#afc6d4', 3, 7, 10, 1);
+  R(g, '#456784', 2, 11, 12, 1);
+}
+DRAW['metalworks.panel-a'] = [16, 24, (g) => metalPanel(g, '#957a61')];
+DRAW['metalworks.panel-b'] = [16, 24, (g) => metalPanel(g, '#627c79')];
+DRAW['metalworks.receipt'] = [16, 24, (g) => {
+  smallTable(g);
+  paper(g, 3, 4, 10, 9);
+  R(g, '#a77e64', 5, 6, 5, 1);
+  R(g, '#6d7180', 5, 8, 6, 1);
+  R(g, '#6d7180', 5, 10, 4, 1);
+  R(g, '#6f93a9', 9, 11, 2, 2);
+}];
+DRAW['metalworks.window'] = [24, 24, (g) => {
+  pedestal(g, 1, 15, 22);
+  R(g, '#5d727a', 2, 4, 20, 10);
+  R(g, '#8eb3bd', 3, 5, 18, 6);
+  R(g, '#527ca7', 5, 6, 5, 3);
+  R(g, '#527ca7', 14, 6, 5, 3);
+  paper(g, 5, 10, 5, 3);
+  paper(g, 14, 10, 5, 3);
+}];
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

@@ -880,6 +880,26 @@
     },
     {
      "text": "I’ll look at the two cases."
+    },
+    {
+     "text": "Move the seal to what the desk checked.",
+     "next": "nile.seal-mount",
+     "if": {
+      "all": [
+       {
+        "flag": "lens.OBJ-NILE-SALLIER",
+        "eq": true
+       },
+       {
+        "flag": "lens.OBJ-NILE-TREATY",
+        "eq": true
+       },
+       {
+        "flag": "clue.nile-royal-seal-backing.read",
+        "eq": true
+       }
+      ]
+     }
     }
    ],
    "effects": [],
@@ -888,7 +908,7 @@
   {
    "id": "nile.royal-tip",
    "speaker": "nile-nasir",
-   "text": "Start with the two cases. Look once at what happened and once at when someone made the record. Either object can take the first line, if the words fit it.",
+   "text": "Start with the two cases. Look once at what happened and once at when someone made the record. Either object can take the first line, if the words fit it. Once you have the dates, turn over the brass seal between the cases. My desk left a check on its back.",
    "historicalLabel": "fictional-world",
    "options": [],
    "effects": [],
@@ -906,6 +926,26 @@
     },
     {
      "text": "Leave the hall."
+    },
+    {
+     "text": "Move the seal to what the desk checked.",
+     "next": "nile.seal-mount",
+     "if": {
+      "all": [
+       {
+        "flag": "lens.OBJ-NILE-SALLIER",
+        "eq": true
+       },
+       {
+        "flag": "lens.OBJ-NILE-TREATY",
+        "eq": true
+       },
+       {
+        "flag": "clue.nile-royal-seal-backing.read",
+        "eq": true
+       }
+      ]
+     }
     }
    ],
    "effects": [],
@@ -1870,6 +1910,81 @@
    "speaker": "nile-leila",
    "text": "Leila keeps the paper opening. Under the flap she pins the stoppage, payment and later stoppage in order. On the outer tab she names the two reading habits so a visitor can see why either might start somewhere else.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.seal-mount",
+   "speaker": "nile-nasir",
+   "text": "A visitor saw the brass above the words “victory proved” and took it as my promise. My desk traced the copies. We can put that check where we can stand behind it. Each caption still needs its own record and date.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Move the seal to the catalogue desk.",
+     "next": "nile.seal-catalogue",
+     "if": {
+      "all": [
+       {
+        "flag": "lens.OBJ-NILE-SALLIER",
+        "eq": true
+       },
+       {
+        "flag": "lens.OBJ-NILE-TREATY",
+        "eq": true
+       },
+       {
+        "flag": "clue.nile-royal-seal-backing.read",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.royal.seal.mount",
+       "value": "catalogue"
+      }
+     ]
+    },
+    {
+     "text": "Move the seal under the two separate copy labels.",
+     "next": "nile.seal-docket",
+     "if": {
+      "all": [
+       {
+        "flag": "lens.OBJ-NILE-SALLIER",
+        "eq": true
+       },
+       {
+        "flag": "lens.OBJ-NILE-TREATY",
+        "eq": true
+       },
+       {
+        "flag": "clue.nile-royal-seal-backing.read",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.royal.seal.mount",
+       "value": "docket"
+      }
+     ]
+    },
+    {
+     "text": "Leave the seal loose for now."
+    }
+   ]
+  },
+  {
+   "id": "nile.seal-catalogue",
+   "speaker": "nile-nasir",
+   "text": "Nasir bolts the seal beside the catalogue check at his desk. The cases keep separate captions for the Egyptian account and the Hattusa treaty. A visitor follows a shelf number to ask what the brass mark covers before carrying the caption away.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.seal-docket",
+   "speaker": "nile-nasir",
+   "text": "Nasir sets the brass low on a strip that only says “copies checked”. Both caption cards sit above it, each with its own date and source. A hurried reader can tell which description belongs to which case without walking to the desk.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "chronicle": [
@@ -2348,6 +2463,30 @@
    "objective": "nile.workers.proof",
    "depth": 4,
    "text": "Leave the readings side by side or keep the opening flap with the full record underneath."
+  },
+  {
+   "id": "h.nile.royal.seal.1",
+   "objective": "nile.royal.seal",
+   "depth": 1,
+   "text": "A brass stamp can mark a very small check. Find out what this one covers."
+  },
+  {
+   "id": "h.nile.royal.seal.2",
+   "objective": "nile.royal.seal",
+   "depth": 2,
+   "text": "Use the Lens on both cases in the Royal Records Room."
+  },
+  {
+   "id": "h.nile.royal.seal.3",
+   "objective": "nile.royal.seal",
+   "depth": 3,
+   "text": "Turn the seal over between the two cases and use its backing to trace the display copies."
+  },
+  {
+   "id": "h.nile.royal.seal.4",
+   "objective": "nile.royal.seal",
+   "depth": 4,
+   "text": "Tell Nasir to move the seal. Put the check at the desk or below the separate copy labels."
   }
  ],
  "criteria": [
@@ -3271,6 +3410,76 @@
      }
     }
    ]
+  },
+  {
+   "id": "KG-CH2-R09",
+   "world": "WORLD-03",
+   "title": "The Seal on the Copy",
+   "knowledgeQuestion": "How can an archive show what it has checked and leave the wider claim open?",
+   "available": {
+    "all": [
+     {
+      "flag": "nile.arrived",
+      "eq": true
+     },
+     {
+      "flag": "lens.OBJ-NILE-SALLIER",
+      "eq": true
+     },
+     {
+      "flag": "lens.OBJ-NILE-TREATY",
+      "eq": true
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "nile.royal.seal",
+     "title": "Turn over Nasir’s seal and move the check to the part the desk verified.",
+     "done": {
+      "all": [
+       {
+        "flag": "clue.nile-royal-seal-backing.read",
+        "eq": true
+       },
+       {
+        "flagSet": "nile.royal.seal.mount"
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "truth",
+       "certainty",
+       "power",
+       "culture",
+       "responsibility"
+      ],
+      "atl": [
+       "research",
+       "communication"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-ETR-01"
+     ],
+     "kq": {
+      "id": "KQ-NILE-05",
+      "action": "move a seal to the check it records"
+     }
+    }
+   ]
   }
  ],
  "clues": [
@@ -3379,6 +3588,12 @@
    "id": "nile-proof-pair",
    "name": "The double clip",
    "text": "Nasir uses one clip for the map description and another for the trial result. Under the trial he leaves the load and road settings. A copyist can take the model note away and still see exactly which run produced it.",
+   "views": []
+  },
+  {
+   "id": "nile-royal-seal-backing",
+   "name": "The stamp’s backing slip",
+   "text": "Turn the seal over. Nasir’s mark links each display copy to a catalogue entry: the Egyptian papyrus gives a royal account of the battle; the clay treaty record from Hattusa records a later agreement. The United Nations keeps a modern replica of that clay record. A line through both catalogue entries reads “copy checked”. The larger heading above the seal reads “victory proved”. There is no check beside that heading.",
    "views": []
   }
  ],
@@ -3499,6 +3714,15 @@
    },
    "did": "You tried a reader’s other opening with the same record and kept both reading habits in reach.",
    "prompt": "Where else could a first line change what a reader expects to find?"
+  },
+  {
+   "id": "mom.nile-checked-seal",
+   "attribute": "principled",
+   "when": {
+    "objective": "nile.royal.seal"
+   },
+   "did": "You put the official seal with the step the archive checked, so readers can trace the copies.",
+   "prompt": "The next time a sign looks official, where could you look to see what someone checked?"
   }
  ]
 }
