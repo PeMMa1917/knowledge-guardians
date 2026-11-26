@@ -20,7 +20,7 @@ function visit(d: Driver, id: string): void {
   d.s.mapId = door.to.map;
 }
 
-function read(d: Driver, id: string): void {
+function read(d: Driver, id: string) {
   const item = MAPS[d.s.mapId].interactables.find((prop) => prop.kind === 'sign' && prop.id === id);
   if (!item?.flag || !check(item.visibleIf, d.s)) throw new Error(`Cannot read ${id} here`);
   d.run({ type: 'SetFlag', flag: item.flag, value: true });
