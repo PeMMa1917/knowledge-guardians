@@ -9,6 +9,7 @@
 | `public/assets/art/generated/market_tiles.png` | Original pavements, stalls, buildings and furniture for Lantern Square. | `market` sheet in `BootScene.ts` |
 | `public/assets/art/generated/water_tiles.png` | Original Water Commons channels, bridges, field rows, weir and council hall. | `water` sheet in `BootScene.ts` |
 | `public/assets/art/generated/civic_tiles.png` | Original Civic Machine offices, book carts, route mural and canal walk. | `civic` sheet in `BootScene.ts` |
+| `public/assets/art/generated/voices_tiles.png` | Original Archive of Voices listening screens, Glass Walk and Lamp Quay. | `voices` sheet in `BootScene.ts` |
 | `public/assets/audio/music/` | Music loops. | `AUDIO` in `BootScene.ts` |
 | `public/assets/audio/sfx/` | Sound effects. | `AUDIO` in `BootScene.ts` |
 | `public/assets/credits.json` | Source, author and licence of **every** file above. | `tools/check-assets.mjs` |
@@ -64,3 +65,5 @@ Lantern Square uses an 18 × 9 tile sheet with the same tile size. Run `python3 
 The Water Commons uses a 14 × 5 sheet. Run `python3 tools/make_water_tiles.py` with Pillow to regenerate it.
 
 Library Dispatch, North Steps and Canal Walk use a 15 × 6 sheet. Run `python3 tools/make_civic_tiles.py` with Pillow to regenerate it.
+
+The Listening Room, Glass Walk and Lamp Quay use a 14 × 6 sheet. Run `python3 tools/make_voices_tiles.py` with Pillow to regenerate it.

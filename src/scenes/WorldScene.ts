@@ -587,6 +587,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const modal = this.paused || ctx.ui.isModalOpen() || this.transitioning;
     this.updateMemory(dt, modal);
     let vx = 0, vy = 0;
+    let waypointDistance: { x: number; y: number } | undefined;
     if (!modal) {
       const k = this.keys;
       if (k.LEFT.isDown || k.A.isDown) vx -= 1;
@@ -601,14 +602,20 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         if (Math.abs(dx) < 2 && Math.abs(dy) < 2) {
           this.player.sprite.x = tx; this.player.sprite.y = ty; this.path.shift();
           if (!this.path.length && this.pendingInteract) { const f = this.pendingInteract; this.pendingInteract = null; f(); }
-        } else { vx = Math.abs(dx) > 1 ? Math.sign(dx) : 0; vy = Math.abs(dy) > 1 ? Math.sign(dy) : 0; }
+        } else {
+          waypointDistance = { x: Math.abs(dx), y: Math.abs(dy) };
+          vx = waypointDistance.x > 1 ? Math.sign(dx) : 0;
+          vy = waypointDistance.y > 1 ? Math.sign(dy) : 0;
+        }
       }
     }
     const p = this.player;
     if (vx || vy) {
       const len = Math.hypot(vx, vy);
       const sp = SPEED * (hasTalent(ctx.controller.state, 'pace') ? 1.2 : 1);
-      const mx = (vx / len) * sp * dt, my = (vy / len) * sp * dt;
+      const step = sp * dt / len;
+      const mx = vx * Math.min(step, waypointDistance?.x ?? step);
+      const my = vy * Math.min(step, waypointDistance?.y ?? step);
       if (!this.collides(p.sprite.x + mx, p.sprite.y)) p.sprite.x += mx;
       if (!this.collides(p.sprite.x, p.sprite.y + my)) p.sprite.y += my;
       const f: Dir = Math.abs(vx) > Math.abs(vy) ? (vx > 0 ? 'right' : 'left') : (vy > 0 ? 'down' : 'up');
@@ -968,6 +975,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'market-scale': ctx.ui.openMarketScale(); break;
       case 'water-gate': ctx.ui.openWaterGate(); break;
       case 'civic-console': ctx.ui.openCivicConsole(); break;
+      case 'voices-desk': ctx.ui.openVoicesDesk(); break;
       case 'scene': ctx.ui.playScene(it.node!); break;
       case 'secret': {
         const x = (ctx.controller.pack.secrets ?? []).find((y) => y.id === it.secret);

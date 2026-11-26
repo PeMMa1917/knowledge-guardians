@@ -40,6 +40,7 @@ export class BootScene extends Phaser.Scene {
     this.load.image('market', 'assets/art/generated/market_tiles.png');
     this.load.image('water', 'assets/art/generated/water_tiles.png');
     this.load.image('civic', 'assets/art/generated/civic_tiles.png');
+    this.load.image('voices', 'assets/art/generated/voices_tiles.png');
     this.load.image(BASE_SHEET_KEY, BASE_SHEET_URL); // base for custom player looks
     for (const id of CHARACTER_SHEETS) {
       this.load.spritesheet(`char.${id}`, `assets/art/generated/characters/${id}.png`, { frameWidth: CHAR_FRAME.w, frameHeight: CHAR_FRAME.h });

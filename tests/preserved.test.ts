@@ -121,3 +121,43 @@ describe('Chapter 3: The Missing Transfer', () => {
     expect(d.p.credit['credit.preserved.proof']).toBe(6);
   });
 });
+
+describe('Where the File Begins', () => {
+  it.each([
+    ['temple', 'Slide the start clip to the reign', 'Leave the clip by the temple',
+      'Slide the start clip to the burial', 'Open with the temple', 'preserved.archive'],
+    ['custody', 'Slide the start clip to the burial', 'Leave the clip by the burial',
+      'Slide the start clip to the reign', 'Open with the burial', 'preserved.royal'],
+  ] as const)('previews both starting points, then opens the %s route with its own source',
+  (opening, first, leave, second, choose, room) => {
+    const d = start();
+    d.s.mapId = 'preserved.royal';
+    const clip = MAPS[d.s.mapId].interactables.find((prop) => prop.id === 'preserved-begin-clip')!;
+    const visibleCards = () => Object.values(MAPS).flatMap((map) => map.interactables
+      .filter((prop) => prop.id.startsWith('preserved-begin-') && prop.kind === 'sign' && check(prop.visibleIf, d.s))
+      .map((prop) => [prop.id, map.id]));
+    const credits = { ...d.p.credit };
+    expect(check(clip.visibleIf, d.s)).toBe(false);
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-PRES-RAMESSEUM' });
+    d.run({ type: 'UseLens', exhibit: 'OBJ-PRES-RAMESSEUM' });
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-PRES-RAM-CUSTODY' });
+    expect(check(clip.visibleIf, d.s)).toBe(false);
+    d.run({ type: 'UseLens', exhibit: 'OBJ-PRES-RAM-CUSTODY' });
+    expect(check(clip.visibleIf, d.s)).toBe(true);
+
+    d.walk(clip.node!, [first, leave]);
+    expect(d.s.flags['preserved.begin.clip']).toBe(opening);
+    expect(d.done('preserved.begin.try')).toBe(false);
+    expect(visibleCards()).toEqual([]);
+    expect(d.e.visibleOptions('preserved.begin.choose', d.s).map(({ option }) => option.next))
+      .toEqual([undefined]);
+    d.walk(clip.node!, [second, 'Choose a starting card', choose]);
+    expect(d.done('preserved.begin.try')).toBe(true);
+    expect(d.done('preserved.begin.publish')).toBe(true);
+    expect(d.s.flags['preserved.begin.clip']).toBe(opening);
+    expect(visibleCards()).toEqual([[`preserved-begin-${opening}-display`, room]]);
+    expect(d.done('preserved.royal')).toBe(false);
+    expect(d.done('preserved.publish')).toBe(false);
+    expect(d.p.credit).toEqual(credits);
+  });
+});

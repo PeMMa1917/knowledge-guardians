@@ -8,6 +8,7 @@
  *   market = public/assets/art/generated/market_tiles.png (18 x 9 tiles)
  *   water = public/assets/art/generated/water_tiles.png (14 x 5 tiles)
  *   civic = public/assets/art/generated/civic_tiles.png (15 x 6 tiles)
+ *   voices = public/assets/art/generated/voices_tiles.png (14 x 6 tiles)
  *
  * `collide` is the blocked area in tiles, relative to the stamp's top-left.
  * Leave it out for decorations the player can walk over or behind.
@@ -18,7 +19,7 @@
 export const TILE = 16;
 
 export interface Stamp {
-  sheet: 'ow' | 'in' | 'market' | 'water' | 'civic';
+  sheet: 'ow' | 'in' | 'market' | 'water' | 'civic' | 'voices';
   x: number; y: number; w: number; h: number;
   collide?: [number, number, number, number];
   /** Draw above characters regardless of y (for roofs/awnings that overlap). */
@@ -133,6 +134,25 @@ export const STAMPS: Record<string, Stamp> = {
   'civic-lamp': { sheet: 'civic', x: 4, y: 4, w: 1, h: 2, collide: [0, 1, 1, 1] },
   'civic-stand': { sheet: 'civic', x: 5, y: 4, w: 1, h: 2, collide: [0, 1, 1, 1] },
   'civic-rail': { sheet: 'civic', x: 6, y: 4, w: 3, h: 1 },
+
+  // Original Archive of Voices streets, glass walk, quay and listening furniture.
+  'voices-slate': { sheet: 'voices', x: 0, y: 0, w: 1, h: 1 },
+  'voices-inlay': { sheet: 'voices', x: 1, y: 0, w: 1, h: 1 },
+  'voices-paving-a': { sheet: 'voices', x: 2, y: 0, w: 1, h: 1 },
+  'voices-paving-b': { sheet: 'voices', x: 3, y: 0, w: 1, h: 1 },
+  'voices-promenade': { sheet: 'voices', x: 4, y: 0, w: 1, h: 1 },
+  'voices-glass': { sheet: 'voices', x: 5, y: 0, w: 1, h: 1 },
+  'voices-stairs': { sheet: 'voices', x: 6, y: 0, w: 1, h: 1 },
+  'voices-quay': { sheet: 'voices', x: 7, y: 0, w: 1, h: 1 },
+  'voices-tide-a': { sheet: 'voices', x: 8, y: 0, w: 1, h: 1 },
+  'voices-tide-b': { sheet: 'voices', x: 9, y: 0, w: 1, h: 1 },
+  'voices-screen': { sheet: 'voices', x: 0, y: 1, w: 4, h: 3, collide: [0, 1, 4, 2] },
+  'voices-arch': { sheet: 'voices', x: 4, y: 1, w: 5, h: 4, above: true },
+  'voices-bench': { sheet: 'voices', x: 9, y: 1, w: 3, h: 2, collide: [0, 1, 3, 1] },
+  'voices-cabinet': { sheet: 'voices', x: 12, y: 1, w: 2, h: 2, collide: [0, 1, 2, 1] },
+  'voices-reel-shelf': { sheet: 'voices', x: 9, y: 3, w: 3, h: 2, collide: [0, 0, 3, 2] },
+  'voices-rail': { sheet: 'voices', x: 0, y: 4, w: 1, h: 2 },
+  'voices-edge-rail': { sheet: 'voices', x: 1, y: 4, w: 3, h: 1 },
 };
 
 /** Character sheets: 16x32 frames, 4 per row; rows: down, right, up, left. */

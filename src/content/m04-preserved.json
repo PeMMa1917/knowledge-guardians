@@ -542,6 +542,346 @@
    "speaker": "preserved-inquiry-keeper",
    "historicalLabel": "fictional-world",
    "text": "The note sits later on the trail than the journal. A reader points to the gap between when a record was made and when its subject happened. The workforce record stays next to the dates, with the four names in view."
+  },
+  {
+   "id": "preserved.begin.desk",
+   "speaker": "preserved-royal-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "A returning visitor remembers starting at the temple picture. Another says their guide began with the burial file. Their memories help us find where each tour began. The sources still carry their own dates. Try the start clip in both positions before we open the doors.",
+   "options": [
+    {
+     "text": "Slide the start clip to the reign and temple.",
+     "next": "preserved.begin.try-temple",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "card": "card.preserved.reign"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAMESSEUM",
+          "eq": true
+         },
+         {
+          "card": "card.preserved.custody"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAM-CUSTODY",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "preserved.begin.temple",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.begin.clip",
+       "value": "temple"
+      },
+      {
+       "setFlag": "preserved.begin.temple",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Slide the start clip to the burial.",
+     "next": "preserved.begin.try-custody",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "card": "card.preserved.reign"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAMESSEUM",
+          "eq": true
+         },
+         {
+          "card": "card.preserved.custody"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAM-CUSTODY",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "preserved.begin.custody",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.begin.clip",
+       "value": "custody"
+      },
+      {
+       "setFlag": "preserved.begin.custody",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Choose a starting card for the visitors.",
+     "next": "preserved.begin.choose",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.begin.try"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.begin.display"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Read the temple-first route again.",
+     "next": "preserved.begin.used-temple",
+     "if": {
+      "flag": "preserved.begin.display",
+      "eq": "temple"
+     }
+    },
+    {
+     "text": "Read the burial-first route again.",
+     "next": "preserved.begin.used-custody",
+     "if": {
+      "flag": "preserved.begin.display",
+      "eq": "custody"
+     }
+    },
+    {
+     "text": "Leave the start clip here."
+    }
+   ]
+  },
+  {
+   "id": "preserved.begin.try-temple",
+   "speaker": "preserved-royal-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "With the temple first, the trail opens at a place the king built for remembrance. The Ministry gives Ramesses II’s reign as about 1279–1213 BCE. Keep that range beside ‘reign’. A visitor just asked which of those years the temple went up. The site record here gives a reign, and the trail can continue to a separate burial file.",
+   "options": [
+    {
+     "text": "Slide the start clip to the burial.",
+     "next": "preserved.begin.try-custody",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "card": "card.preserved.reign"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAMESSEUM",
+          "eq": true
+         },
+         {
+          "card": "card.preserved.custody"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAM-CUSTODY",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "preserved.begin.custody",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.begin.clip",
+       "value": "custody"
+      },
+      {
+       "setFlag": "preserved.begin.custody",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Choose a starting card for the visitors.",
+     "next": "preserved.begin.choose",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.begin.try"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.begin.display"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the clip by the temple."
+    }
+   ]
+  },
+  {
+   "id": "preserved.begin.try-custody",
+   "speaker": "preserved-royal-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "With the burial first, a visitor can start the custody trail at KV 7. The next place listed on the museum copy is the later cache at Deir el-Bahari. Leave the move date blank. The Ramesseum stays on the side flap for the earlier reign. A reader trying to follow the later move can carry that smaller trail.",
+   "options": [
+    {
+     "text": "Slide the start clip to the reign and temple.",
+     "next": "preserved.begin.try-temple",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "card": "card.preserved.reign"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAMESSEUM",
+          "eq": true
+         },
+         {
+          "card": "card.preserved.custody"
+         },
+         {
+          "flag": "lens.OBJ-PRES-RAM-CUSTODY",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "preserved.begin.temple",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.begin.clip",
+       "value": "temple"
+      },
+      {
+       "setFlag": "preserved.begin.temple",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Choose a starting card for the visitors.",
+     "next": "preserved.begin.choose",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.begin.try"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.begin.display"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the clip by the burial file."
+    }
+   ]
+  },
+  {
+   "id": "preserved.begin.choose",
+   "speaker": "preserved-royal-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "We can start a walk through a reign and its place of remembrance, or open the trail at its first recorded burial place. The starting card guides the questions people bring to the rest. Keep the other file in reach and its dates on its own line.",
+   "options": [
+    {
+     "text": "Open with the temple during the reign. Keep the custody trail on its own tab.",
+     "next": "preserved.begin.used-temple",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.begin.try"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.begin.display"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.begin.display",
+       "value": "temple"
+      },
+      {
+       "setFlag": "preserved.begin.clip",
+       "value": "temple"
+      }
+     ]
+    },
+    {
+     "text": "Open with the burial and later safekeeping. Keep the temple on the earlier tab.",
+     "next": "preserved.begin.used-custody",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.begin.try"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.begin.display"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.begin.display",
+       "value": "custody"
+      },
+      {
+       "setFlag": "preserved.begin.clip",
+       "value": "custody"
+      }
+     ]
+    },
+    {
+     "text": "Leave the two starting cards beside the clip."
+    }
+   ]
+  },
+  {
+   "id": "preserved.begin.used-temple",
+   "speaker": "preserved-royal-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "A visitor points to the temple card by the Cold Store’s doorway and asks how the king planned to be remembered. The side tab can still lead them to the later custody record. The approximate reign dates stay with the Ministry’s site record."
+  },
+  {
+   "id": "preserved.begin.used-custody",
+   "speaker": "preserved-royal-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "A reader at the burial-first card follows the known places and points to the blank move date. They ask who could speak for that handover. The museum file names the custody places. Who authorised the move remains a separate question."
   }
  ],
  "missions": [
@@ -869,6 +1209,120 @@
      "onComplete": [
       {
        "credit": "credit.preserved.proof"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH3-R08",
+   "world": "WORLD-04",
+   "title": "Where the File Begins",
+   "knowledgeQuestion": "How does choosing a starting point change what a historical display helps visitors investigate?",
+   "available": {
+    "all": [
+     {
+      "flag": "preserved.arrived",
+      "eq": true
+     },
+     {
+      "all": [
+       {
+        "card": "card.preserved.reign"
+       },
+       {
+        "flag": "lens.OBJ-PRES-RAMESSEUM",
+        "eq": true
+       },
+       {
+        "card": "card.preserved.custody"
+       },
+       {
+        "flag": "lens.OBJ-PRES-RAM-CUSTODY",
+        "eq": true
+       }
+      ]
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "preserved.begin.try",
+     "title": "Try two starting points on the Royal Records clip.",
+     "done": {
+      "all": [
+       {
+        "flag": "preserved.begin.temple",
+        "eq": true
+       },
+       {
+        "flag": "preserved.begin.custody",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "interpretation",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS"
+      ],
+      "subjects": [
+       "history",
+       "visual-arts"
+      ]
+     },
+     "skills": [
+      "SK-CUR-04",
+      "SK-MED-02"
+     ]
+    },
+    {
+     "id": "preserved.begin.publish",
+     "title": "Open one public route while leaving the other source in reach.",
+     "done": {
+      "flagSet": "preserved.begin.display"
+     },
+     "visible": {
+      "objective": "preserved.begin.try"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "power",
+       "values",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "ART"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "visual-arts"
+      ]
+     },
+     "skills": [
+      "SK-CUR-06",
+      "SK-THK-14"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.preserved.begin"
       }
      ]
     }
@@ -1306,6 +1760,54 @@
    "objective": "preserved.proof.hung",
    "depth": 4,
    "text": "The names can lead, or the two dated documents can lead. The other record stays on the proof."
+  },
+  {
+   "id": "h.preserved.begin.try.1",
+   "objective": "preserved.begin.try",
+   "depth": 1,
+   "text": "The two source dates describe different things."
+  },
+  {
+   "id": "h.preserved.begin.try.2",
+   "objective": "preserved.begin.try",
+   "depth": 2,
+   "text": "Use the Date-Kind Lens at the Ramesseum site record and the royal custody file."
+  },
+  {
+   "id": "h.preserved.begin.try.3",
+   "objective": "preserved.begin.try",
+   "depth": 3,
+   "text": "Find the movable start clip in the Royal Records room after reading both cases."
+  },
+  {
+   "id": "h.preserved.begin.try.4",
+   "objective": "preserved.begin.try",
+   "depth": 4,
+   "text": "Try the clip with the reign and temple first, then with the burial first. Check which claims each opens."
+  },
+  {
+   "id": "h.preserved.begin.publish.1",
+   "objective": "preserved.begin.publish",
+   "depth": 1,
+   "text": "A starting card gives a reader a question to follow."
+  },
+  {
+   "id": "h.preserved.begin.publish.2",
+   "objective": "preserved.begin.publish",
+   "depth": 2,
+   "text": "Consider a reader asking about remembrance and one tracing a later move."
+  },
+  {
+   "id": "h.preserved.begin.publish.3",
+   "objective": "preserved.begin.publish",
+   "depth": 3,
+   "text": "At the Royal Records clip choose a public start after trying both previews."
+  },
+  {
+   "id": "h.preserved.begin.publish.4",
+   "objective": "preserved.begin.publish",
+   "depth": 4,
+   "text": "Put the temple card in the Cold Store or start the custody trail at the burial. The other record stays in reach."
   }
  ],
  "journal": [
@@ -1328,6 +1830,11 @@
    "id": "j.preserved.answer",
    "text": "We left a route from the public display to the record that could support it.",
    "claimKind": "interpretation"
+  },
+  {
+   "id": "j.preserved.begin",
+   "title": "Where the file begins",
+   "text": "Two visitors remembered different first stops in the room. I checked the site record and the custody account, then chose which would open the trail. The reign range stayed with the temple record and the unknown move date stayed open."
   }
  ],
  "moments": [

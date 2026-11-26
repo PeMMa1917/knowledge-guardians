@@ -13,6 +13,7 @@ import { COPIES_ARCHIVE, COPIES_PRESS, COPIES_LANDING } from './copies';
 import { SEA_HARBOUR, SEA_CHARTROOM, SEA_SHOAL } from './sea';
 import { STAGE_FOYER, STAGE_GALLERY, STAGE_REHEARSAL } from './stage';
 import { MARKET_SQUARE } from './market';
+import { VOICES_LISTENING, VOICES_QUAY, VOICES_WALK } from './voices';
 import { CIVIC_CANAL, CIVIC_DISPATCH, CIVIC_STEPS } from './civic';
 import { WATER_COUNCIL, WATER_GATEHOUSE, WATER_LOWER_CHANNEL } from './water';
 
@@ -58,4 +59,7 @@ export const MAPS: Record<string, MapDef> = {
   [CIVIC_DISPATCH.id]: CIVIC_DISPATCH,
   [CIVIC_STEPS.id]: CIVIC_STEPS,
   [CIVIC_CANAL.id]: CIVIC_CANAL,
+  [VOICES_LISTENING.id]: VOICES_LISTENING,
+  [VOICES_WALK.id]: VOICES_WALK,
+  [VOICES_QUAY.id]: VOICES_QUAY,
 };

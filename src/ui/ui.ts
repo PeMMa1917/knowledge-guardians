@@ -7,6 +7,7 @@ import { STAGE_CUES, stageRehearsal, type StageCue } from '../domain/stageRehear
 import { MARKET_BASES, marketComparison, marketOffersWithin, type MarketBasis } from '../domain/marketScale';
 import { WATER_SETTINGS, waterTrial, type WaterCondition, type WaterSetting } from '../domain/waterGate';
 import { CIVIC_RULES, CIVIC_SAMPLES, civicAllocation, type CivicRule, type CivicSample } from '../domain/civicConsole';
+import { VOICE_SOURCES, VOICE_VIEWS, voiceReading, type VoiceView } from '../domain/voiceReadings';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -3233,6 +3234,36 @@ export class UI implements UIApi {
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
+  openVoicesDesk(): void {
+    const controller = ctx.controller;
+    const headings: Record<VoiceView, string> = { original: 'Open the source', guide: 'Open the guide copy' };
+    const cards = h('div', { class: 'voices-records' });
+    for (const source of VOICE_SOURCES) {
+      const { label, date } = voiceReading(source, 'original');
+      const allowed = source !== 'carrier' || controller.state.flags['voices.permissions.read'] === true;
+      const output = h('div', { 'aria-live': 'polite' });
+      const controls = h('div', { class: 'row wrap' });
+      for (const view of VOICE_VIEWS) {
+        controls.append(h('button', {
+          type: 'button', 'data-view': view, 'aria-pressed': 'false', disabled: !allowed,
+          onclick: () => {
+            const events = controller.dispatch({ type: 'RunVoiceReading', source, view });
+            if (events.some((event) => event.kind === 'error')) return;
+            for (const button of controls.querySelectorAll('button')) {
+              button.setAttribute('aria-pressed', String(button.dataset.view === view));
+            }
+            const reading = voiceReading(source, view);
+            output.replaceChildren(h('p', {}, reading.text), h('p', { class: 'fine' }, reading.purpose));
+            if ('speechSynthesis' in window) output.append(h('button', { type: 'button', class: 'mini', onclick: () => this.speak(reading.text) }, 'Read this excerpt aloud'));
+          },
+        }, headings[view]));
+      }
+      cards.append(h('section', { class: 'voices-record' }, h('h3', {}, label), h('p', { class: 'fine' }, date),
+        controls, allowed ? output : h('p', {}, 'See the permission card by the listening desk.')));
+    }
+    this.openModal('voices-desk wide', 'Listening desk', this.closeBtn(), h('h2', {}, 'Listening desk'), cards);
   }
 
   openCivicConsole(): void {

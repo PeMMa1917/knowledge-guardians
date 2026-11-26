@@ -20,6 +20,17 @@ const restCirculate: Condition = { flag: 'nexus.rest.layout', eq: 'circulate' };
 const restTablePlaced: Condition = { flag: 'nexus.rest.table', eq: true };
 const restPortablePlaced: Condition = { flag: 'nexus.rest.mobile', eq: true };
 const restPairPlaced: Condition = { flag: 'nexus.rest.pair', eq: true };
+const ribbonSingle: Condition = { flag: 'nexus.ribbon.layout', eq: 'single' };
+const ribbonSplit: Condition = { flag: 'nexus.ribbon.layout', eq: 'split' };
+const ribbonRead: Condition = { flag: 'nexus.ribbon.read', eq: true };
+
+const ribbonStages: [stage: string, label: string, visible: Condition][] = [
+  ['setup', 'the keeper’s folded date ribbon between the cases', { not: { flagSet: 'nexus.ribbon.layout' } }],
+  ['single', 'the ribbon with a grant peg and an object sleeve', { all: [ribbonSingle, { not: ribbonRead }] }],
+  ['split', 'the separate registry and object rails', { all: [ribbonSplit, { not: ribbonRead }] }],
+  ['marked', 'the shared rail with a tab between the two records', { all: [ribbonSingle, ribbonRead] }],
+  ['bridged', 'the two date rails with a shared comparison bar', { all: [ribbonSplit, ribbonRead] }],
+];
 
 const ferryShelf: [state: string, art: string, visible: Condition][] = [
   ['shelf', 'board-stand', { not: { flagSet: 'nexus.ferry.packet' } }],
@@ -225,6 +236,9 @@ export const NEXUS: MapDef = {
     { id: 'civic-door', kind: 'door', x: 28, y: 11, w: 1, h: 1, label: 'the passage to the Civic Machine', art: 'civic.waypost',
       walkThrough: true, visibleIf: { objective: 'water.finish' }, flag: 'civic.arrived',
       to: { map: 'civic.dispatch', x: 12, y: 12 } },
+    { id: 'voices-door', kind: 'door', x: 31, y: 11, w: 1, h: 1, label: 'the passage to the Archive of Voices', art: 'voices.waypost',
+      walkThrough: true, visibleIf: { objective: 'civic.finish' }, flag: 'voices.arrived',
+      to: { map: 'voices.listening', x: 12, y: 12 } },
     { id: 'preserved-return-desk', kind: 'sign', x: 37, y: 16, w: 1, h: 1, label: 'the Cold Store reference copy', art: 'ledger', walkThrough: true,
       text: 'The docket points to the separate royal and coastal records. One line is left open for the transfer we cannot trace.',
       visibleIf: { flag: 'preserved.reply', eq: 'desk' } },
@@ -242,6 +256,10 @@ export const NEXUS: MapDef = {
     { id: 'ex-a', kind: 'exhibit', exhibit: 'OBJ-001-A', x: 8, y: 7, w: 1, h: 1, label: 'the patent drawing', art: 'pedestal.patent' },
     { id: 'ex-b', kind: 'exhibit', exhibit: 'OBJ-001-B', x: 12, y: 7, w: 2, h: 1, label: 'the workshop model', art: 'pedestal.model' },
     { id: 'ex-c', kind: 'exhibit', exhibit: 'OBJ-001-C', x: 17, y: 7, w: 1, h: 1, label: 'the Biro pen record', art: 'pedestal.biro' },
+    ...ribbonStages.map(([stage, label, visibleIf]) => ({
+      id: `nexus-ribbon-${stage}`, kind: 'scene' as const, x: 16, y: 5, w: 1, h: 1, walkThrough: true,
+      label, art: `nexus.ribbon-${stage}`, node: `nexus.ribbon.${stage}`, visibleIf,
+    })),
     { id: 'bench', kind: 'bench', x: 19, y: 16, w: 3, h: 2, label: 'the workshop bench (marking test)' },
     { id: 'label-pen', kind: 'label', kit: 'pen', x: 10, y: 15, w: 1, h: 1, label: 'the label stand', art: 'label-stand' },
     { id: 'waystone', kind: 'waystone', place: 'Nexus archive hall', x: 2, y: 9, w: 1, h: 1, label: 'the Waystone (save and rest)', art: 'waystone' },

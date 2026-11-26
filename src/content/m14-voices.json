@@ -1,0 +1,1203 @@
+{
+ "characters": [
+  {
+   "id": "voices-steward",
+   "name": "Listener Mara",
+   "role": "Keeper of the Listening Room",
+   "sprite": "scholar-sefa",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "voices.steward.quiet",
+     "if": {
+      "objective": "voices.publish"
+     }
+    },
+    {
+     "node": "voices.steward.ready",
+     "if": {
+      "objective": "voices.compare"
+     }
+    },
+    {
+     "node": "voices.steward.gloss",
+     "if": {
+      "objective": "voices.verify"
+     }
+    },
+    {
+     "node": "voices.steward.pin",
+     "if": {
+      "objective": "voices.sources"
+     }
+    },
+    {
+     "node": "voices.steward.greet"
+    }
+   ]
+  },
+  {
+   "id": "voices-clerk",
+   "name": "Walk Clerk Eren",
+   "role": "Keeper of the Glass Walk notice",
+   "sprite": "clerk-venn",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "voices.clerk.wide-ready",
+     "if": {
+      "objective": "voices.access"
+     }
+    },
+    {
+     "node": "voices.clerk.after",
+     "if": {
+      "objective": "voices.finish"
+     }
+    },
+    {
+     "node": "voices.clerk.revisit",
+     "if": {
+      "objective": "voices.reader"
+     }
+    },
+    {
+     "node": "voices.clerk.reader",
+     "if": {
+      "objective": "voices.publish"
+     }
+    },
+    {
+     "node": "voices.clerk.choose",
+     "if": {
+      "objective": "voices.compare"
+     }
+    },
+    {
+     "node": "voices.clerk.record"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "voices.steward.greet",
+   "speaker": "voices-steward",
+   "text": "The glassmakers need the reopened path for their first delivery. The draft calls the public opening its first crossing. A carrier remembers taking the rail two days earlier. Bring me the signed entry and the carrier’s permission card before you change the heading.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "voices.steward.pin",
+   "speaker": "voices-steward",
+   "text": "The carrier dates the trial by the lamps coming on. The clerk dates public passage by the signature. Both can sit on the same board with their own headings.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pin the two dated records under separate headings.",
+     "next": "voices.steward.pinned",
+     "effects": [
+      {
+       "setFlag": "voices.verified",
+       "value": true
+      }
+     ],
+     "if": {
+      "objective": "voices.sources"
+     }
+    },
+    {
+     "text": "Leave the draft clipped up for now."
+    },
+    {
+     "text": "We left room on the Nexus date ribbon.",
+     "next": "voices.steward.ribbon",
+     "if": {
+      "flag": "nexus.ribbon.read",
+      "eq": true
+     }
+    },
+    {
+     "text": "Where should we put the approved reading copy?",
+     "next": "voices.steward.quote",
+     "if": {
+      "all": [
+       {
+        "objective": "voices.sources"
+       },
+       {
+        "not": {
+         "flagSet": "voices.quote.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "voices.steward.ribbon",
+   "speaker": "voices-steward",
+   "text": "The patent peg had a day, and the museum sleeve covered years. They left the start of everyday use open. We can leave room on this board for when someone first crossed, too.",
+   "historicalLabel": "fictional-world",
+   "next": "voices.steward.pin"
+  },
+  {
+   "id": "voices.steward.pinned",
+   "speaker": "voices-steward",
+   "text": "The trial goes on the Lantern 4 line with the carrier’s account. The public opening keeps the Lantern 6 date from the register. Leave a gap where a record of the first crossing would go.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "voices.steward.gloss",
+   "speaker": "voices-steward",
+   "text": "Try both guide copies at the listening desk. The carrier’s local line starts at the quay, where people count lamps. The register tells us when the gates opened for public passage. Eren needs to know where the route line came from before it goes outside.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the desk ready."
+    },
+    {
+     "text": "Where should we put the approved reading copy?",
+     "next": "voices.steward.quote",
+     "if": {
+      "all": [
+       {
+        "objective": "voices.sources"
+       },
+       {
+        "not": {
+         "flagSet": "voices.quote.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "voices.steward.ready",
+   "speaker": "voices-steward",
+   "text": "You have the dated lines and the plain directions. Clerk Eren can put the approved phrase next to the guide or keep it at this desk with the dates. The carrier gave us permission for that one phrase.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the desk ready."
+    },
+    {
+     "text": "Where should we put the approved reading copy?",
+     "next": "voices.steward.quote",
+     "if": {
+      "all": [
+       {
+        "objective": "voices.sources"
+       },
+       {
+        "not": {
+         "flagSet": "voices.quote.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "voices.steward.quiet",
+   "speaker": "voices-steward",
+   "text": "The excerpts and both guide copies stay here. The carrier’s permission card tells every clerk which phrase they may repeat. The empty line beside the two dates stays open for a record that could settle it.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the desk ready."
+    },
+    {
+     "text": "Where should we put the approved reading copy?",
+     "next": "voices.steward.quote",
+     "if": {
+      "all": [
+       {
+        "objective": "voices.sources"
+       },
+       {
+        "not": {
+         "flagSet": "voices.quote.layout"
+        }
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "voices.clerk.record",
+   "speaker": "voices-clerk",
+   "text": "My stamp opened the path for public use. The crew could bring lamps along the rail before my desk opened. Take the signed Lantern 6 entry back to Mara.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "voices.clerk.choose",
+   "speaker": "voices-clerk",
+   "text": "The quay crews ask for the words they use on the rail. New carriers ask for a short line they can read with both hands full. We have room for either notice. The archive can carry the dated records on both routes.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep the carrier’s wording beside a plain direction.",
+     "next": "voices.publish.paired",
+     "effects": [
+      {
+       "setFlag": "voices.response",
+       "value": "paired"
+      }
+     ],
+     "if": {
+      "objective": "voices.compare"
+     }
+    },
+    {
+     "text": "Put the short route guide on the walk.",
+     "next": "voices.publish.guide",
+     "effects": [
+      {
+       "setFlag": "voices.response",
+       "value": "guide"
+      }
+     ],
+     "if": {
+      "objective": "voices.compare"
+     }
+    },
+    {
+     "text": "Leave the board ready for now."
+    }
+   ]
+  },
+  {
+   "id": "voices.publish.paired",
+   "speaker": "voices-clerk",
+   "text": "Eren puts “Second lamp, then the rail” above the quay direction. The two dates have short source lines. A new carrier can match the words people call to each other on the quay and see who recalled the trial.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "voices.publish.guide",
+   "speaker": "voices-clerk",
+   "text": "Eren puts one direction on the board for someone carrying a crate. A small line sends curious readers to the dated records and the carrier’s approved words at Mara’s desk.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "voices.clerk.reader",
+   "speaker": "voices-clerk",
+   "text": "There is a reply by the quay rail. A carrier came in from the stairs. Look at what stands in front of you from the stairs and the quay before you move the arrows.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "voices.clerk.revisit",
+   "speaker": "voices-clerk",
+   "text": "You saw lamps from the quay and the arch from the stairs. Both routes reach the same rail. We could give the two groups a marker they both see, or keep the quay line and give the stairs its own direction.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Use the arch and rail as shared markers.",
+     "next": "voices.revise.landmarks",
+     "effects": [
+      {
+       "setFlag": "voices.revision",
+       "value": "landmarks"
+      }
+     ],
+     "if": {
+      "objective": "voices.reader"
+     }
+    },
+    {
+     "text": "Give each arrival point its own line.",
+     "next": "voices.revise.routes",
+     "effects": [
+      {
+       "setFlag": "voices.revision",
+       "value": "routes"
+      }
+     ],
+     "if": {
+      "objective": "voices.reader"
+     }
+    },
+    {
+     "text": "Keep the notice ready."
+    },
+    {
+     "text": "A library reader asked us where they could reach a stop.",
+     "next": "voices.clerk.civic",
+     "if": {
+      "all": [
+       {
+        "objective": "voices.reader"
+       },
+       {
+        "flag": "civic.revised",
+        "eq": true
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "voices.clerk.civic",
+   "speaker": "voices-clerk",
+   "text": "Then you already know to start where the reader arrives. The library had a count without a reachable stop. We had a direction with one starting point. Put the markers where a person can use them.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Use the arch and rail as shared markers.",
+     "next": "voices.revise.landmarks",
+     "effects": [
+      {
+       "setFlag": "voices.revision",
+       "value": "landmarks"
+      }
+     ],
+     "if": {
+      "objective": "voices.reader"
+     }
+    },
+    {
+     "text": "Give each arrival point its own line.",
+     "next": "voices.revise.routes",
+     "effects": [
+      {
+       "setFlag": "voices.revision",
+       "value": "routes"
+      }
+     ],
+     "if": {
+      "objective": "voices.reader"
+     }
+    },
+    {
+     "text": "Keep the notice ready."
+    }
+   ]
+  },
+  {
+   "id": "voices.revise.landmarks",
+   "speaker": "voices-clerk",
+   "text": "Eren puts the arch and rail on the arrow above the two approaches. Someone coming in from either side can use those landmarks. The first notice stays on the public board and Mara keeps the dated records.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "voices.revise.routes",
+   "speaker": "voices-clerk",
+   "text": "Eren leaves the quay’s lamp line on the arrow from the water. A second arrow takes a reader from the stairs straight to the arch and rail. The first notice and both dated records stay available.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "voices.clerk.after",
+   "speaker": "voices-clerk",
+   "text": "A glassmaker stopped at the arch with a crate. They could see the arrow but had to lean over the rail to follow its small lines.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put a larger card by the arch.",
+     "next": "voices.clerk.wide",
+     "effects": [
+      {
+       "setFlag": "voices.access.ready",
+       "value": true
+      }
+     ],
+     "if": {
+      "objective": "voices.finish"
+     }
+    },
+    {
+     "text": "Leave the arrow where it is."
+    }
+   ]
+  },
+  {
+   "id": "voices.clerk.wide",
+   "speaker": "voices-clerk",
+   "text": "Eren moves a broad copy onto the low rest at the arch. A carrier can set down a crate and follow the directions. Each date and source keeps a line of its own.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "voices.clerk.wide-ready",
+   "speaker": "voices-clerk",
+   "text": "The low card gives people room to look up and match a line to the path. The original excerpts are still at Mara’s desk.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "voices.steward.quote",
+   "speaker": "voices-steward",
+   "historicalLabel": "fictional-world",
+   "text": "A line forms at the desk when the boats come in. We can put the approved excerpt by the queue where someone can read while they wait. At the reading slot it can sit beside the record and permission. Which place should get the copy?",
+   "options": [
+    {
+     "text": "Give people in the queue an approved excerpt.",
+     "next": "voices.quote.queue",
+     "if": {
+      "all": [
+       {
+        "objective": "voices.sources"
+       },
+       {
+        "not": {
+         "flagSet": "voices.quote.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "voices.quote.layout",
+       "value": "queue"
+      }
+     ]
+    },
+    {
+     "text": "Keep the excerpt at the reading slot with its record.",
+     "next": "voices.quote.desk",
+     "if": {
+      "all": [
+       {
+        "objective": "voices.sources"
+       },
+       {
+        "not": {
+         "flagSet": "voices.quote.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "voices.quote.layout",
+       "value": "desk"
+      }
+     ]
+    },
+    {
+     "text": "Leave the copy with you for now."
+    }
+   ]
+  },
+  {
+   "id": "voices.quote.queue",
+   "speaker": "voices-steward",
+   "historicalLabel": "fictional-world",
+   "text": "Mara clips a short copy where the waiting line turns. It names the test walk and directs people to the record. A dock runner starts to read while the clerk helps someone else."
+  },
+  {
+   "id": "voices.quote.desk",
+   "speaker": "voices-steward",
+   "historicalLabel": "fictional-world",
+   "text": "Mara clips the approved line to its date and permission at the reading slot. The first reader follows the clips to see what the carrier let the archive share. People behind them wait until the slot is free."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH13-M01",
+   "world": "WORLD-14",
+   "title": "The Second Lamp",
+   "knowledgeQuestion": "How can a public sign carry a local account and help someone who arrives by another path?",
+   "available": {
+    "objective": "civic.finish"
+   },
+   "objectives": [
+    {
+     "id": "voices.arrival",
+     "title": "Find Mara in the Archive of Voices.",
+     "done": {
+      "flag": "voices.arrived",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective"
+      ],
+      "atl": [
+       "self-management"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ]
+     }
+    },
+    {
+     "id": "voices.sources",
+     "title": "Read the permission card and register, then open both sources at the desk.",
+     "done": {
+      "all": [
+       {
+        "flag": "voices.permissions.read",
+        "eq": true
+       },
+       {
+        "flag": "voices.register.read",
+        "eq": true
+       },
+       {
+        "flag": "voices.read.carrier.original",
+        "eq": true
+       },
+       {
+        "flag": "voices.read.clerk.original",
+        "eq": true
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "culture",
+       "perspective",
+       "power",
+       "responsibility"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN",
+       "POL"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "global-politics"
+      ]
+     },
+     "visible": {
+      "objective": "voices.arrival"
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-MED-01"
+     ],
+     "kq": {
+      "id": "KQ-NEW-006",
+      "action": "use the permitted parts of two differently made records"
+     }
+    },
+    {
+     "id": "voices.verify",
+     "title": "Give the trial and public opening their own dated lines with Mara.",
+     "done": {
+      "flag": "voices.verified",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "truth",
+       "certainty",
+       "justification",
+       "objectivity",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ]
+     },
+     "visible": {
+      "objective": "voices.sources"
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-05"
+     ],
+     "kq": {
+      "id": "KQ-NEW-003",
+      "action": "limit a public timeline to what each source supports"
+     }
+    },
+    {
+     "id": "voices.compare",
+     "title": "Try both guide copies at Mara’s desk and check what each line carries.",
+     "done": {
+      "all": [
+       {
+        "objective": "voices.verify"
+       },
+       {
+        "flag": "voices.read.carrier.guide",
+        "eq": true
+       },
+       {
+        "flag": "voices.read.clerk.guide",
+        "eq": true
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "explanation",
+       "culture",
+       "interpretation",
+       "perspective",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-b",
+       "lang-langlit"
+      ]
+     },
+     "visible": {
+      "objective": "voices.verify"
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-THK-05"
+     ]
+    },
+    {
+     "id": "voices.publish",
+     "title": "Put a route notice on Glass Walk with Eren.",
+     "done": {
+      "flagSet": "voices.response"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "culture",
+       "responsibility",
+       "power",
+       "values",
+       "perspective"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "LAN",
+       "POL"
+      ],
+      "subjects": [
+       "lang-b",
+       "global-politics",
+       "design-tech"
+      ]
+     },
+     "visible": {
+      "objective": "voices.compare"
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-MED-04"
+     ],
+     "kq": {
+      "id": "KQ-NEW-004",
+      "action": "show a route to readers while respecting the carrier’s permission"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.voices.publish"
+      }
+     ]
+    },
+    {
+     "id": "voices.reader",
+     "title": "Read the reply and check the markers from the quay and stairs.",
+     "done": {
+      "all": [
+       {
+        "flag": "voices.reader.read",
+        "eq": true
+       },
+       {
+        "flag": "voices.quay.view",
+        "eq": true
+       },
+       {
+        "flag": "voices.stairs.view",
+        "eq": true
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "evidence",
+       "objectivity",
+       "interpretation",
+       "explanation"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "geography",
+       "design-tech",
+       "lang-langlit"
+      ]
+     },
+     "visible": {
+      "objective": "voices.publish"
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-MED-04"
+     ]
+    },
+    {
+     "id": "voices.finish",
+     "title": "Leave a direction that starts where each reader arrives.",
+     "done": {
+      "flagSet": "voices.revision"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "perspective",
+       "explanation",
+       "justification",
+       "culture"
+      ],
+      "atl": [
+       "communication",
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM",
+       "POL"
+      ],
+      "subjects": [
+       "geography",
+       "global-politics",
+       "design-tech"
+      ]
+     },
+     "visible": {
+      "objective": "voices.reader"
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "kq": {
+      "id": "KQ-NEW-004",
+      "action": "revise a sign using what people can see from both approaches"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.voices.finish"
+      },
+      {
+       "journal": "j.voices.lines"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH13-R01",
+   "world": "WORLD-14",
+   "title": "Room on the Rail",
+   "knowledgeQuestion": "How can a reader check a sign while carrying something?",
+   "available": {
+    "objective": "voices.finish"
+   },
+   "objectives": [
+    {
+     "id": "voices.access",
+     "title": "Put a larger copy where a carrier can set down a crate.",
+     "done": {
+      "flag": "voices.access.ready",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "perspective",
+       "values"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "design-tech",
+       "geography"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH13-R02",
+   "world": "WORLD-14",
+   "title": "A Place for the Copy",
+   "knowledgeQuestion": "Where can someone see the words they need while staying close to their source?",
+   "available": {
+    "objective": "voices.sources"
+   },
+   "objectives": [
+    {
+     "id": "voices.quote",
+     "title": "Put the approved reading copy by the queue or at the reading slot.",
+     "essential": false,
+     "done": {
+      "flagSet": "voices.quote.layout"
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "responsibility",
+       "power",
+       "perspective"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "LAN",
+       "HIS"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-ETR-01"
+     ]
+    }
+   ]
+  }
+ ],
+ "criteria": [
+  {
+   "id": "credit.voices.publish",
+   "concept": "culture",
+   "maximum": 8
+  },
+  {
+   "id": "credit.voices.finish",
+   "concept": "responsibility",
+   "maximum": 8
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.voices.lines",
+   "claimKind": "interpretation",
+   "text": "The trial and the public opening have separate dates and sources. We kept the carrier’s approved words and used two approaches to check the direction. The date of the first crossing is still open."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.voices-permission",
+   "attribute": "principled",
+   "when": {
+    "objective": "voices.verify"
+   },
+   "did": "You kept two dated records and used the carrier’s approved words.",
+   "prompt": "What did each person choose to put on the public board?"
+  },
+  {
+   "id": "mom.voices-marker",
+   "attribute": "open-minded",
+   "when": {
+    "objective": "voices.reader"
+   },
+   "did": "You crossed to the other approach to check a reader’s reply.",
+   "prompt": "Which landmark can disappear when someone starts in another place?"
+  },
+  {
+   "id": "mom.voices-copy",
+   "attribute": "caring",
+   "when": {
+    "objective": "voices.access"
+   },
+   "did": "You put a copy near a place where a carrier can read it.",
+   "prompt": "What could someone see from the rest that they could miss at the rail?"
+  }
+ ],
+ "chronicle": [
+  {
+   "id": "voices-walk-dated",
+   "title": "Two dates on the walk",
+   "text": "The carrier recalls a Lantern 4 trial. The public opening register starts on Lantern 6. Mara has kept the limits of both records visible.",
+   "if": {
+    "objective": "voices.verify"
+   }
+  },
+  {
+   "id": "voices-walk-notice",
+   "title": "A route from both sides",
+   "text": "A reader arrived from the stairs. The walk now gives a direction from both approaches, with the first notice and the approved excerpts still available.",
+   "if": {
+    "objective": "voices.finish"
+   }
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.voices.arrival.1",
+   "objective": "voices.arrival",
+   "depth": 1,
+   "text": "The glassmakers need a route across the reopened walk."
+  },
+  {
+   "id": "h.voices.arrival.2",
+   "objective": "voices.arrival",
+   "depth": 2,
+   "text": "Find the Archive of Voices passage in the Nexus."
+  },
+  {
+   "id": "h.voices.arrival.3",
+   "objective": "voices.arrival",
+   "depth": 3,
+   "text": "Listen for news of the Glass Walk in the Listening Room."
+  },
+  {
+   "id": "h.voices.arrival.4",
+   "objective": "voices.arrival",
+   "depth": 4,
+   "text": "Mara is beside the desk where you can read the public excerpts."
+  },
+  {
+   "id": "h.voices.sources.1",
+   "objective": "voices.sources",
+   "depth": 1,
+   "text": "The draft draws from one dated record. Find the other voice and its permission."
+  },
+  {
+   "id": "h.voices.sources.2",
+   "objective": "voices.sources",
+   "depth": 2,
+   "text": "Read the permission card in the archive and the signed register on Glass Walk."
+  },
+  {
+   "id": "h.voices.sources.3",
+   "objective": "voices.sources",
+   "depth": 3,
+   "text": "Use Open the source at Mara’s desk for both the carrier and the clerk."
+  },
+  {
+   "id": "h.voices.sources.4",
+   "objective": "voices.sources",
+   "depth": 4,
+   "text": "Notice the carrier’s approved short line, and which event the clerk’s date begins."
+  },
+  {
+   "id": "h.voices.verify.1",
+   "objective": "voices.verify",
+   "depth": 1,
+   "text": "The public stamp and the carrier’s lamps mark different events."
+  },
+  {
+   "id": "h.voices.verify.2",
+   "objective": "voices.verify",
+   "depth": 2,
+   "text": "Return to Mara with the permission card, signed entry and both source excerpts."
+  },
+  {
+   "id": "h.voices.verify.3",
+   "objective": "voices.verify",
+   "depth": 3,
+   "text": "Pin the two dated records under separate headings."
+  },
+  {
+   "id": "h.voices.verify.4",
+   "objective": "voices.verify",
+   "depth": 4,
+   "text": "Read the checked label. It leaves the date of the first crossing open."
+  },
+  {
+   "id": "h.voices.compare.1",
+   "objective": "voices.compare",
+   "depth": 1,
+   "text": "A short route line can reveal its starting point."
+  },
+  {
+   "id": "h.voices.compare.2",
+   "objective": "voices.compare",
+   "depth": 2,
+   "text": "Find Open the guide copy beside each source at the listening desk."
+  },
+  {
+   "id": "h.voices.compare.3",
+   "objective": "voices.compare",
+   "depth": 3,
+   "text": "Read the carrier’s guide copy and then the clerk’s copy."
+  },
+  {
+   "id": "h.voices.compare.4",
+   "objective": "voices.compare",
+   "depth": 4,
+   "text": "When the route line and public opening date have separate sources, take them to Eren."
+  },
+  {
+   "id": "h.voices.publish.1",
+   "objective": "voices.publish",
+   "depth": 1,
+   "text": "Two notices can give someone a way onto the walk."
+  },
+  {
+   "id": "h.voices.publish.2",
+   "objective": "voices.publish",
+   "depth": 2,
+   "text": "Go to Eren by the public board on Glass Walk."
+  },
+  {
+   "id": "h.voices.publish.3",
+   "objective": "voices.publish",
+   "depth": 3,
+   "text": "Choose a side-by-side notice or a short guide linked to the listening desk."
+  },
+  {
+   "id": "h.voices.publish.4",
+   "objective": "voices.publish",
+   "depth": 4,
+   "text": "Look at the new public board. The excerpts and dates stay at Mara’s desk."
+  },
+  {
+   "id": "h.voices.reader.1",
+   "objective": "voices.reader",
+   "depth": 1,
+   "text": "A new carrier approached the rail from somewhere else."
+  },
+  {
+   "id": "h.voices.reader.2",
+   "objective": "voices.reader",
+   "depth": 2,
+   "text": "Look for the reply and the marker view at the quay."
+  },
+  {
+   "id": "h.voices.reader.3",
+   "objective": "voices.reader",
+   "depth": 3,
+   "text": "Cross to Glass Walk and check the stairs view there."
+  },
+  {
+   "id": "h.voices.reader.4",
+   "objective": "voices.reader",
+   "depth": 4,
+   "text": "Find the arch and rail from each side. Bring both views and the reply to Eren."
+  },
+  {
+   "id": "h.voices.finish.1",
+   "objective": "voices.finish",
+   "depth": 1,
+   "text": "Both approaches meet the same rail."
+  },
+  {
+   "id": "h.voices.finish.2",
+   "objective": "voices.finish",
+   "depth": 2,
+   "text": "Bring the two views and the reader’s reply to Eren."
+  },
+  {
+   "id": "h.voices.finish.3",
+   "objective": "voices.finish",
+   "depth": 3,
+   "text": "Choose a common marker line or one arrow for each approach."
+  },
+  {
+   "id": "h.voices.finish.4",
+   "objective": "voices.finish",
+   "depth": 4,
+   "text": "Look at the new direction and the first notice on Glass Walk. The dated lines remain at the desk."
+  },
+  {
+   "id": "h.voices.access.1",
+   "objective": "voices.access",
+   "depth": 1,
+   "text": "A glassmaker needs to take their eyes off the crate to read."
+  },
+  {
+   "id": "h.voices.access.2",
+   "objective": "voices.access",
+   "depth": 2,
+   "text": "Speak to Eren after the directions have been revised."
+  },
+  {
+   "id": "h.voices.access.3",
+   "objective": "voices.access",
+   "depth": 3,
+   "text": "Ask for a larger card by the arch."
+  },
+  {
+   "id": "h.voices.access.4",
+   "objective": "voices.access",
+   "depth": 4,
+   "text": "Find the low copy beside the rail and trace its lines to the path."
+  },
+  {
+   "id": "h.voices.quote.1",
+   "objective": "voices.quote",
+   "depth": 1,
+   "text": "The reading queue can stretch past the next cabinet."
+  },
+  {
+   "id": "h.voices.quote.2",
+   "objective": "voices.quote",
+   "depth": 2,
+   "text": "Ask Mara about the approved reading copy after you check both source excerpts."
+  },
+  {
+   "id": "h.voices.quote.3",
+   "objective": "voices.quote",
+   "depth": 3,
+   "text": "Decide whether to give the waiting line a copy or keep it beside the source."
+  },
+  {
+   "id": "h.voices.quote.4",
+   "objective": "voices.quote",
+   "depth": 4,
+   "text": "Find your copy at the queue or reading slot. The source and permission card stay at the listening desk."
+  }
+ ]
+}

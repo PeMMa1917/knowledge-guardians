@@ -796,6 +796,65 @@ function readingRest(g: Ctx, x: number) {
 DRAW['nexus.reading-rest'] = [16, 24, (g) => readingRest(g, 0)];
 DRAW['nexus.reading-rests'] = [32, 24, (g) => { readingRest(g, 0); readingRest(g, 16); }];
 
+// The date ribbon uses a brass peg for one day and a paper sleeve for a range.
+function dateStand(g: Ctx) {
+  R(g, '#302843', 2, 21, 36, 2);
+  R(g, '#513a37', 6, 12, 4, 9);
+  R(g, '#513a37', 30, 12, 4, 9);
+  R(g, '#99704f', 7, 13, 1, 7);
+  R(g, '#99704f', 31, 13, 1, 7);
+}
+function dateRail(g: Ctx, y: number) {
+  R(g, '#89624d', 2, y, 36, 5);
+  R(g, '#efd8a6', 3, y, 34, 2);
+  R(g, '#bc9b71', 4, y + 2, 32, 1);
+  R(g, '#513a37', 4, y + 4, 32, 1);
+}
+function datePeg(g: Ctx, y: number) {
+  R(g, '#6b4837', 6, y + 1, 3, 5);
+  R(g, '#ffd477', 7, y, 1, 5);
+  R(g, '#ffe7aa', 6, y, 3, 2);
+}
+function dateSleeve(g: Ctx, y: number) {
+  R(g, '#35697d', 29, y, 6, 8);
+  R(g, '#b1dfdd', 29, y, 6, 2);
+  R(g, '#69aeb3', 30, y + 3, 4, 3);
+  R(g, '#d4f1e6', 30, y + 3, 1, 3);
+}
+function sharedDateRail(g: Ctx) {
+  dateStand(g);
+  dateRail(g, 10);
+  datePeg(g, 8);
+  dateSleeve(g, 9);
+}
+function separateDateRails(g: Ctx) {
+  dateStand(g);
+  dateRail(g, 5);
+  dateRail(g, 14);
+  datePeg(g, 4);
+  dateSleeve(g, 12);
+}
+DRAW['nexus.ribbon-setup'] = [40, 24, (g) => {
+  dateStand(g);
+  dateRail(g, 10);
+  R(g, '#e8c398', 3, 15, 34, 2);
+}];
+DRAW['nexus.ribbon-single'] = [40, 24, sharedDateRail];
+DRAW['nexus.ribbon-split'] = [40, 24, separateDateRails];
+DRAW['nexus.ribbon-marked'] = [40, 24, (g) => {
+  sharedDateRail(g);
+  R(g, '#e6cba5', 17, 13, 7, 6);
+  R(g, '#7e5d51', 18, 15, 4, 1);
+  R(g, '#7e5d51', 18, 17, 3, 1);
+}];
+DRAW['nexus.ribbon-bridged'] = [40, 24, (g) => {
+  separateDateRails(g);
+  R(g, '#9a6042', 15, 4, 2, 14);
+  R(g, '#ffd477', 15, 4, 1, 14);
+  R(g, '#ffd477', 14, 4, 4, 1);
+  R(g, '#ffd477', 14, 17, 4, 1);
+}];
+
 // Living Forest equipment and a schematic field note.
 DRAW['forest.waypost'] = [16, 24, (g) => {
   R(g, '#574235', 7, 7, 3, 16);
@@ -1058,6 +1117,42 @@ function stageCueBoard(g: Ctx, pauseFirst: boolean) {
 DRAW['stage.pause'] = [16, 24, (g) => stageCueBoard(g, true)];
 DRAW['stage.move'] = [16, 24, (g) => stageCueBoard(g, false)];
 
+/** Original paper-stage relief. Only lighting and shadow change between views. */
+function stageDoorRelief(g: Ctx, side: boolean) {
+  R(g, '#21152c', 1, 2, 34, 19);
+  R(g, '#a47454', 2, 2, 32, 1);
+  R(g, '#684152', 2, 20, 32, 1);
+  R(g, side ? '#45304d' : '#76556a', 3, 4, 30, 15);
+  R(g, side ? '#b77953' : '#c4986e', 24, 5, 8, 2);
+  R(g, '#af7d56', 24, 7, 2, 10);
+  R(g, '#a67857', 30, 7, 2, 10);
+  R(g, '#61414c', 26, 7, 4, 10);
+  R(g, side ? '#835773' : '#a6757b', 3, 17, 30, 2);
+
+  // Raking light leaves a longer shadow, drawn in stepped strips.
+  R(g, side ? '#3a2946' : '#794e6f', 14, 18, side ? 16 : 7, 1);
+  if (side) {
+    R(g, '#3a2946', 17, 17, 11, 1);
+    R(g, '#3a2946', 21, 16, 5, 1);
+  }
+
+  // The figure, outstretched hand and basket stay in the same place.
+  R(g, '#e8bc93', 15, 8, 3, 3);
+  R(g, '#683c50', 15, 7, 3, 1);
+  R(g, side ? '#b37768' : '#dc9e7c', 14, 11, 5, 5);
+  R(g, '#ddb399', 19, 12, 2, 1);
+  R(g, '#624052', 15, 16, 1, 2);
+  R(g, '#624052', 17, 16, 1, 2);
+  R(g, '#bb875a', 20, 13, 4, 3);
+  R(g, side ? '#d49b69' : '#f1ca88', 20, 13, 4, 1);
+  R(g, side ? '#9e6f5f' : '#724b5f', 15, 14, 3, 1);
+  R(g, '#684152', 6, 21, 2, 3);
+  R(g, '#684152', 28, 21, 2, 3);
+}
+
+DRAW['stage.relief-side'] = [36, 24, (g) => stageDoorRelief(g, true)];
+DRAW['stage.relief-front'] = [36, 24, (g) => stageDoorRelief(g, false)];
+
 DRAW['market.waypost'] = [16, 24, (g) => {
   R(g, '#514751', 6, 7, 4, 16);
   R(g, '#6c8e83', 2, 5, 12, 10);
@@ -1169,6 +1264,84 @@ function civicWindows(g: Ctx, stepsWindows: number) {
 DRAW['civic.rank'] = [20, 24, (g) => civicWindows(g, 0)];
 DRAW['civic.reserve'] = [20, 24, (g) => civicWindows(g, 1)];
 DRAW['civic.even'] = [20, 24, (g) => civicWindows(g, 2)];
+
+// Archive of Voices record trays and landmarks made for the fictional walk.
+DRAW['voices.waypost'] = [20, 24, (g) => {
+  R(g, '#725b67', 8, 8, 4, 15);
+  R(g, '#7e667e', 1, 4, 18, 12);
+  R(g, '#ad97a7', 2, 5, 16, 2);
+  R(g, '#dfbf9d', 3, 9, 5, 4);
+  R(g, '#dfbf9d', 12, 9, 5, 4);
+  R(g, '#596e7c', 9, 7, 2, 7);
+}];
+DRAW['voices.desk'] = [24, 24, (g) => {
+  pedestal(g, 1, 15, 22);
+  R(g, '#656372', 2, 6, 20, 10);
+  R(g, '#a7888e', 2, 5, 20, 2);
+  R(g, '#9b9c99', 4, 8, 7, 6);
+  R(g, '#ddb6a0', 6, 9, 3, 4);
+  paper(g, 13, 7, 7, 7);
+  R(g, '#83737c', 14, 9, 5, 1);
+  R(g, '#83737c', 14, 11, 4, 1);
+}];
+DRAW['voices.permission'] = [16, 24, (g) => {
+  smallTable(g);
+  paper(g, 2, 4, 12, 11);
+  R(g, '#9c788c', 2, 4, 12, 2);
+  R(g, '#84748a', 4, 8, 8, 1);
+  R(g, '#84748a', 4, 10, 6, 1);
+  R(g, '#ae8b72', 10, 11, 2, 2);
+}];
+DRAW['voices.register'] = [22, 24, (g) => {
+  pedestal(g, 1, 15, 20);
+  R(g, '#756470', 2, 4, 18, 12);
+  paper(g, 3, 5, 16, 9);
+  R(g, '#a98e86', 10, 5, 2, 9);
+  R(g, '#898463', 4, 8, 5, 1);
+  R(g, '#898463', 13, 8, 4, 1);
+  R(g, '#aa866d', 14, 10, 3, 2);
+}];
+DRAW['voices.paired'] = [24, 24, (g) => {
+  R(g, '#715e6c', 3, 7, 18, 16);
+  paper(g, 1, 3, 11, 12);
+  paper(g, 12, 3, 11, 12);
+  R(g, '#a08093', 2, 4, 8, 2);
+  R(g, '#6d8b90', 13, 4, 8, 2);
+  for (const x of [3, 14]) {
+    R(g, '#80766e', x, 9, 6, 1);
+    R(g, '#80766e', x, 12, 4, 1);
+  }
+}];
+DRAW['voices.guide'] = [20, 24, (g) => {
+  R(g, '#74636c', 8, 7, 4, 16);
+  paper(g, 1, 3, 18, 12);
+  R(g, '#6f858b', 3, 5, 14, 2);
+  R(g, '#8b657c', 4, 9, 7, 1);
+  R(g, '#8b657c', 10, 8, 2, 4);
+  R(g, '#8b657c', 12, 9, 2, 2);
+}];
+DRAW['voices.arch'] = [20, 24, (g) => {
+  R(g, '#665862', 8, 7, 4, 16);
+  paper(g, 1, 3, 18, 12);
+  R(g, '#7c9a96', 4, 8, 3, 5);
+  R(g, '#7c9a96', 13, 8, 3, 5);
+  R(g, '#7c9a96', 7, 6, 6, 3);
+  R(g, '#a98b82', 5, 11, 9, 1);
+}];
+DRAW['voices.railing'] = [16, 24, (g) => {
+  R(g, '#716670', 6, 7, 4, 16);
+  R(g, '#d0b9a5', 2, 5, 12, 8);
+  R(g, '#668689', 3, 8, 9, 2);
+  R(g, '#668689', 9, 7, 3, 5);
+}];
+DRAW['voices.lamp'] = [16, 32, (g) => {
+  R(g, '#665c64', 6, 7, 4, 24);
+  R(g, '#746568', 4, 3, 8, 12);
+  R(g, '#987b68', 5, 2, 6, 2);
+  R(g, '#dfb68a', 5, 5, 6, 8);
+  R(g, '#ffdf9f', 7, 7, 3, 5);
+  R(g, '#9f7c65', 5, 26, 6, 2);
+}];
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

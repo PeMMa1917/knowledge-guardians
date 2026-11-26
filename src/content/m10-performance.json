@@ -477,6 +477,111 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH9-R04",
+   "world": "WORLD-10",
+   "title": "The Same Door in Two Lights",
+   "knowledgeQuestion": "What can a way of showing a moment teach someone about the moment?",
+   "available": {
+    "objective": "stage.arrival"
+   },
+   "objectives": [
+    {
+     "id": "stage.light.o.compare",
+     "title": "Try both lights on the same relief and read the dated maker’s slip.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "stage.light.view.side",
+        "eq": true
+       },
+       {
+        "flag": "stage.light.view.front",
+        "eq": true
+       },
+       {
+        "flag": "stage.light.maker",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "explanation",
+       "interpretation",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "ART",
+       "HIS",
+       "NAT"
+      ],
+      "subjects": [
+       "visual-arts",
+       "theatre",
+       "physics",
+       "history"
+      ]
+     },
+     "skills": [
+      "SK-THK-05",
+      "SK-RSC-15"
+     ]
+    },
+    {
+     "id": "stage.light.o.display",
+     "title": "Hang a view in the foyer with its reader and the maker’s slip.",
+     "essential": false,
+     "visible": {
+      "objective": "stage.light.o.compare"
+     },
+     "done": {
+      "flagSet": "stage.light.display"
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "perspective",
+       "power",
+       "responsibility",
+       "justification",
+       "truth"
+      ],
+      "atl": [
+       "communication",
+       "social",
+       "thinking"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "film",
+       "visual-arts",
+       "theatre",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-WRT-04"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.stage.light"
+      }
+     ]
+    }
+   ]
   }
  ],
  "characters": [
@@ -1302,6 +1407,142 @@
    "speaker": "narrator",
    "text": "The post moves to the wall. Everyone has a turn at the low map before the line moves. When her turn comes, the visitor points to the unclaimed aisle seat. She has room to explain what seat she wants without opening her note for the room.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.light.stand",
+   "speaker": "narrator",
+   "text": "The paper scene shows a person with a basket just outside a doorway. Both the figure and the door are fixed to the panel. The same lamp fits a low bracket to the side and a stand facing the panel. Change the light and look at what the visitor notices.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Lower the lamp into the side bracket.",
+     "next": "stage.light.setting.side",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.arrival"
+       },
+       {
+        "not": {
+         "flag": "stage.light.mode",
+         "eq": "side"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.light.mode",
+       "value": "side"
+      }
+     ]
+    },
+    {
+     "text": "Set the lamp to face the relief.",
+     "next": "stage.light.setting.front",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.arrival"
+       },
+       {
+        "not": {
+         "flag": "stage.light.mode",
+         "eq": "front"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.light.mode",
+       "value": "front"
+      }
+     ]
+    },
+    {
+     "text": "Leave the lighting as it is."
+    }
+   ]
+  },
+  {
+   "id": "stage.light.setting.side",
+   "speaker": "narrator",
+   "text": "The side lamp stretches the figure’s shadow across the step. The basket and the person are still on their original marks. The relief is ready beside the bracket.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.light.setting.front",
+   "speaker": "narrator",
+   "text": "The shadow draws closer to the figure. You can see the hand on the basket strap and where the paper coat is creased. Nothing on the panel moved. Look at this view from the same place.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.light.dispatch",
+   "speaker": "narrator",
+   "text": "The keeper wants a relief for people waiting in the foyer. The maker’s slip records the time of this rehearsal. Nobody has a dated account of the event in the scene. You can show what one reader felt and which part of the work helped them feel it.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang the side-lit relief with the visitor’s account of hesitation.",
+     "next": "stage.light.end.shadow",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.light.o.compare"
+       },
+       {
+        "not": {
+         "flagSet": "stage.light.display"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.light.display",
+       "value": "shadow"
+      }
+     ]
+    },
+    {
+     "text": "Hang the front-lit relief with the reader’s account of care.",
+     "next": "stage.light.end.craft",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.light.o.compare"
+       },
+       {
+        "not": {
+         "flagSet": "stage.light.display"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.light.display",
+       "value": "craft"
+      }
+     ]
+    },
+    {
+     "text": "Keep both views at the rehearsal bench for now."
+    }
+   ]
+  },
+  {
+   "id": "stage.light.end.shadow",
+   "speaker": "narrator",
+   "text": "The foyer copy keeps the long shadow. A visitor pauses when the shaded strip crosses the doorway. She says she can feel a wait before the next step. The handbill names the light and the rehearsal. The arrival date remains open.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.light.end.craft",
+   "speaker": "narrator",
+   "text": "The foyer copy keeps the shorter shadow. A reader follows the arm to the basket. She says the grip looks like care for what is inside it. The handbill keeps that reading beside the maker’s dated note. Nobody adds a date for the arrival.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "hints": [
@@ -1568,6 +1809,54 @@
    "objective": "stage.seats.o.place",
    "depth": 4,
    "text": "Name the seat and time of a hold, or move the queue to the wall so visitors can use the low map. Read the resulting notice."
+  },
+  {
+   "id": "h.stage.light.compare.1",
+   "objective": "stage.light.o.compare",
+   "depth": 1,
+   "text": "A shadow can move even when the thing casting it stays still."
+  },
+  {
+   "id": "h.stage.light.compare.2",
+   "objective": "stage.light.o.compare",
+   "depth": 2,
+   "text": "Try both places for the lamp. Find the maker’s slip to see which time it records."
+  },
+  {
+   "id": "h.stage.light.compare.3",
+   "objective": "stage.light.o.compare",
+   "depth": 3,
+   "text": "The lantern bracket and relief face the lower bench in rehearsal. Read the maker’s slip east of them."
+  },
+  {
+   "id": "h.stage.light.compare.4",
+   "objective": "stage.light.o.compare",
+   "depth": 4,
+   "text": "Choose the side bracket and look at the relief. Choose the front stand and look again. Read the slip beside the bench."
+  },
+  {
+   "id": "h.stage.light.display.1",
+   "objective": "stage.light.o.display",
+   "depth": 1,
+   "text": "A reader’s experience has a place beside the work."
+  },
+  {
+   "id": "h.stage.light.display.2",
+   "objective": "stage.light.o.display",
+   "depth": 2,
+   "text": "One visitor noticed the long shadow. One noticed the grip on the basket. Both can support a display."
+  },
+  {
+   "id": "h.stage.light.display.3",
+   "objective": "stage.light.o.display",
+   "depth": 3,
+   "text": "Use the foyer proof stand after recording both views and checking the maker’s date."
+  },
+  {
+   "id": "h.stage.light.display.4",
+   "objective": "stage.light.o.display",
+   "depth": 4,
+   "text": "Send either lit view with one reader’s account. Look for the resulting relief in the foyer."
   }
  ],
  "criteria": [
@@ -1602,6 +1891,11 @@
    "id": "j.stage.seats",
    "claimKind": "interpretation",
    "text": "The ribbon and the moving queue post give a visitor different ways to find a place. The public notice says how the seats work. The folded request tells the usher only what seat was asked for."
+  },
+  {
+   "id": "j.stage.light",
+   "claimKind": "interpretation",
+   "text": "One light gave the paper figure a long shadow, and the other let a reader see the grip on the basket. Both readers had something they could point to. The maker’s slip dated the rehearsal, while the event in the relief kept its open date."
   }
  ],
  "moments": [
@@ -1629,6 +1923,15 @@
    },
    "did": "You checked how a visitor could reach the aisle and protected their folded request while arranging the queue.",
    "prompt": "Which part of the seating rule helps a person who arrives after the room is half full?"
+  },
+  {
+   "id": "mom.stage.light",
+   "attribute": "reflective",
+   "when": {
+    "objective": "stage.light.o.display"
+   },
+   "did": "You changed the light, listened to two readings of the same figure and kept the maker’s date with the account you shared.",
+   "prompt": "What might another person see in the same view?"
   }
  ]
 }

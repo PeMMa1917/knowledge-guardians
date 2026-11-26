@@ -35,6 +35,12 @@ function visible(d: Driver, ids: string[]) {
     .map((prop) => prop.id);
 }
 
+function use(d: Driver, id: string, choice: string) {
+  const prop = MAPS[d.s.mapId].interactables.find((item) => item.id === id);
+  if (!prop?.node || !check(prop.visibleIf, d.s)) throw new Error(`Unable to use ${id} here`);
+  d.walk(prop.node, [choice]);
+}
+
 describe('The Doorway Pause', () => {
   it('needs both performances and a comparison of audience and actor sightlines', () => {
     const d = enter();
@@ -92,12 +98,6 @@ describe('The Doorway Pause', () => {
 });
 
 describe('The Seat before the Bell', () => {
-  function use(d: Driver, id: string, choice: string) {
-    const prop = MAPS[d.s.mapId].interactables.find((item) => item.id === id);
-    if (!prop?.node || !check(prop.visibleIf, d.s)) throw new Error(`Unable to use ${id} here`);
-    d.walk(prop.node, [choice]);
-  }
-
   it('can be found gallery-first and needs both the visitor’s request and the post check', () => {
     const d = enter();
     d.s.mapId = gallery;
@@ -133,5 +133,56 @@ describe('The Seat before the Bell', () => {
     expect(d.s.flags['stage.audience']).toBeUndefined();
     expect(d.s.flags['stage.response']).toBeUndefined();
     expect(d.e.talkEntry(host, d.s)).toBe('stage.host.welcome');
+  });
+});
+
+describe('The Same Door in Two Lights', () => {
+  const views = ['stage-light-view-side', 'stage-light-view-front'];
+  const displays = ['stage-light-shadow-display', 'stage-light-craft-display'];
+
+  it('changes the view at one fixed relief and requires observing both lights and the maker’s date', () => {
+    const d = enter();
+    d.s.mapId = rehearsal;
+    expect(visible(d, views)).toEqual([]);
+    use(d, 'stage-light-stand', 'Lower the lamp');
+    expect(visible(d, views)).toEqual(['stage-light-view-side']);
+    sign(d, 'stage-light-view-side');
+    use(d, 'stage-light-stand', 'Set the lamp to face');
+    expect(visible(d, views)).toEqual(['stage-light-view-front']);
+    sign(d, 'stage-light-view-front');
+    expect(d.done('stage.light.o.compare')).toBe(false);
+    sign(d, 'stage-light-maker');
+    expect(d.done('stage.light.o.compare')).toBe(true);
+
+    const [side, front] = MAPS[rehearsal].interactables.filter((item) => views.includes(item.id));
+    expect([side.x, side.y]).toEqual([front.x, front.y]);
+    expect(side.art).not.toBe(front.art);
+    expect(d.s.flags['stage.rehearsal.pause']).toBeUndefined();
+    expect(d.s.flags['stage.rehearsal.move']).toBeUndefined();
+  });
+
+  it.each([
+    ['shadow', 'Hang the side-lit relief', 'stage.relief-side'],
+    ['craft', 'Hang the front-lit relief', 'stage.relief-front'],
+  ])('hangs a bounded %s account with its corresponding light and neutral credit', (display, choice, art) => {
+    const d = enter();
+    const credit = { ...d.p.credit };
+    d.s.mapId = rehearsal;
+    sign(d, 'stage-light-maker');
+    use(d, 'stage-light-stand', 'Set the lamp to face');
+    sign(d, 'stage-light-view-front');
+    use(d, 'stage-light-stand', 'Lower the lamp');
+    sign(d, 'stage-light-view-side');
+
+    d.s.mapId = foyer;
+    use(d, 'stage-light-proof', choice);
+    const copy = `stage-light-${display}-display`;
+    expect(visible(d, displays)).toEqual([copy]);
+    const displayProp = MAPS[foyer].interactables.find((item) => item.id === copy);
+    expect(displayProp?.art).toBe(art);
+    expect(displayProp?.text).toContain('pictured arrival has no recorded date');
+    expect(d.s.journal).toContain('j.stage.light');
+    expect(d.p.credit).toEqual(credit);
+    expect(d.s.flags['stage.response']).toBeUndefined();
   });
 });

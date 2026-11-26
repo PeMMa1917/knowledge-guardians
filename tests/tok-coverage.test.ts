@@ -7,30 +7,83 @@ import { readMetalSample } from '../src/domain/metalSample';
 import { check } from '../src/domain/rules';
 import { seaChart } from '../src/domain/seaCharts';
 import { stageRehearsal, type StageCue } from '../src/domain/stageRehearsal';
+import { voiceReading, type VoiceSource, type VoiceView } from '../src/domain/voiceReadings';
 import { waterTrial, type WaterCondition, type WaterSetting } from '../src/domain/waterGate';
 import { MAPS } from '../src/maps';
 import { coverageGaps, singleActionDimensions, type TimedEncounter } from '../tools/tok-coverage';
 import { Driver } from './driver';
 
-type Play = (driver: Driver) => void;
+type Format = 'object inspection' | 'source tracing' | 'tool trials' | 'field observations'
+  | 'archive tools' | 'record reading' | 'map visits' | 'conversations' | 'environmental choices'
+  | 'public debate' | 'label building' | 'forging';
+type Command = Parameters<Driver['run']>[0];
+const commandFormats: Partial<Record<Command['type'], Format>> = {
+  InspectExhibit: 'object inspection',
+  UseLens: 'object inspection',
+  FollowThread: 'source tracing',
+  RunSimulation: 'tool trials',
+  NileRouteTrial: 'tool trials',
+  CompareMetalSample: 'tool trials',
+  CompareAssay: 'tool trials',
+  RunStageRehearsal: 'tool trials',
+  WeighMarketLots: 'tool trials',
+  RunWaterTrial: 'tool trials',
+  RunCivicTrial: 'tool trials',
+  RunVoiceReading: 'archive tools',
+  ReadClue: 'record reading',
+  CompareCopy: 'archive tools',
+  ReadSeaChart: 'archive tools',
+  Reach: 'map visits',
+  ObserveForest: 'field observations',
+  ShowdownStart: 'public debate',
+  ShowdownMove: 'public debate',
+  BuildLabel: 'label building',
+  Forge: 'forging',
+};
 
-class Route {
-  readonly driver = new Driver();
-  readonly encounters: TimedEncounter[] = [];
+class AuditDriver extends Driver {
+  readonly formats = new Set<Format>();
 
-  at(minute: number, action: string, dimensions: TimedEncounter['dimensions'], play: Play): void {
-    play(this.driver);
-    this.encounters.push({ minute, action, dimensions });
+  override run(command: Command) {
+    const result = super.run(command);
+    const format = commandFormats[command.type];
+    if (format) this.formats.add(format);
+    return result;
+  }
+
+  override talk(who: string, ...picks: string[]): void {
+    super.talk(who, ...picks);
+    this.formats.add('conversations');
   }
 }
 
-function walkScene(d: Driver, id: string, next?: string, ...picks: string[]): void {
+type Play = (driver: AuditDriver) => void;
+type PlayedEncounter = TimedEncounter & { formats: Format[] };
+
+class Route {
+  readonly driver = new AuditDriver();
+  readonly encounters: PlayedEncounter[] = [];
+
+  at(minute: number, action: string, dimensions: TimedEncounter['dimensions'], play: Play): void {
+    this.driver.formats.clear();
+    play(this.driver);
+    this.encounters.push({ minute, action, dimensions, formats: [...this.driver.formats] });
+  }
+
+  formatsThrough(minute: number): Format[] {
+    return [...new Set(this.encounters.filter((encounter) => encounter.minute <= minute)
+      .flatMap((encounter) => encounter.formats))].sort();
+  }
+}
+
+function walkScene(d: AuditDriver, id: string, next?: string, ...picks: string[]): void {
   const prop = MAPS[d.s.mapId].interactables.find((p) => p.id === id && p.kind === 'scene');
   if (!prop?.node) throw new Error(`Missing scene prop ${id}`);
   expect(check(prop.visibleIf, d.s), `${id} visible`).toBe(true);
   const choice = next ? d.e.visibleOptions(prop.node, d.s).find(({ option }) => option.next === next) : undefined;
   if (next && !choice) throw new Error(`Missing choice from ${id} to ${next}`);
   d.walk(prop.node, choice ? [choice.option.text, ...picks] : picks);
+  d.formats.add('environmental choices');
 }
 
 function useProp(id: string, choice: string): Play {
@@ -40,19 +93,21 @@ function useProp(id: string, choice: string): Play {
   };
 }
 
-function useDoor(d: Driver, id: string): void {
+function useDoor(d: AuditDriver, id: string): void {
   const door = MAPS[d.s.mapId].interactables.find((p) => p.id === id && p.kind === 'door');
   expect(door?.to, `${id} destination`).toBeDefined();
   expect(check(door!.visibleIf, d.s) && check(door!.openIf, d.s), `${id} open`).toBe(true);
   if (door!.flag) d.run({ type: 'SetFlag', flag: door!.flag, value: true });
   d.s.mapId = door!.to!.map;
+  d.formats.add('map visits');
 }
 
-function readSign(d: Driver, id: string): void {
+function readSign(d: AuditDriver, id: string): void {
   const sign = MAPS[d.s.mapId].interactables.find((p) => p.id === id && p.kind === 'sign');
   if (!sign?.text) throw new Error(`Missing sign text for ${id}`);
   expect(check(sign.visibleIf, d.s), `${id} visible`).toBe(true);
   if (sign.flag) d.run({ type: 'SetFlag', flag: sign.flag, value: true });
+  d.formats.add('record reading');
 }
 
 function watchForest(d: Driver, site: string, window: ForestWindow) {
@@ -66,7 +121,7 @@ function watchForest(d: Driver, site: string, window: ForestWindow) {
 
 // Times below are author estimates of when these actions could finish. This
 // fixture exercises entry conditions and domain commands, not walking or reading speed.
-function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide'): Route {
+function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'rests'): Route {
   const route = new Route();
   const explore = style !== 'main';
   const records = style === 'records';
@@ -100,7 +155,31 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide'): Rout
       expect(d.done('nexus.guide.helped')).toBe(true);
     });
   }
-  const openingMinutes = arrivalExtra + (guide ? 4 : 0);
+  if (style === 'rests') {
+    route.at(6, 'Move the used counters and compare loans with the requests still waiting at the table', [
+      'evidence', 'scope', 'perspective', 'perspectives', 'interpretation', 'methods-and-tools',
+    ], (d) => {
+      walkScene(d, 'nexus-rest-counter', 'nexus.rest.counter-read');
+      walkScene(d, 'nexus-rest-request', 'nexus.rest.requests-read');
+      expect(d.s.flags['nexus.rest.counted']).toBe(true);
+      expect(d.s.flags['nexus.rest.waiting']).toBe(true);
+    });
+    route.at(8, 'Set both rests together so the readers can compare the two copies directly', [
+      'values', 'power', 'justification', 'ethics',
+    ], (d) => {
+      walkScene(d, 'nexus-rest-bench', 'nexus.rest.pair-plan');
+      walkScene(d, 'nexus-rest-pair-slot', 'nexus.rest.pair-placed');
+      expect(d.s.flags['nexus.rest.layout']).toBe('together');
+      expect(d.done('nexus.rest.checked')).toBe(false);
+    });
+    route.at(9, 'Leave the borrower’s unmet request on its own line beside the loan count', [
+      'responsibility', 'scope', 'perspectives', 'ethics',
+    ], (d) => {
+      walkScene(d, 'nexus-rest-pair-ready', 'nexus.rest.pair-read');
+      expect(d.done('nexus.rest.checked')).toBe(true);
+    });
+  }
+  const openingMinutes = arrivalExtra + (guide ? 4 : 0) + (style === 'rests' ? 5 : 0);
   if (explore) route.at(5 + openingMinutes, 'Direct visitors toward the practical pen', ['scope', 'perspective'], useProp('nexus.entrance-guide', 'use'));
   route.at(9 + openingMinutes, 'Compare the patent, model and pen dates', ['scope', 'evidence', 'certainty', 'interpretation', 'methods-and-tools'], (d) => {
     for (const exhibit of ['OBJ-001-A', 'OBJ-001-B', 'OBJ-001-C']) d.run({ type: 'InspectExhibit', exhibit });
@@ -308,7 +387,7 @@ function nileDispatch(lead: NileFirstLead = 'workers', tiltTray = false): Route 
   if (royal) nileRoyalLead(route);
   else nileWorkersLead(route, lead);
   const extra = { workers: 0, 'reading-window': 3, 'borrowed-mark': 5, 'lamp-slip': 4, 'royal-seal': 4 }[lead] + (tiltTray ? 3 : 0);
-  const enterMapRoom = (d: Driver) => {
+  const enterMapRoom = (d: AuditDriver) => {
     if (lead !== 'borrowed-mark') useDoor(d, royal ? 'royal-back' : 'workyard-back');
     useDoor(d, 'nile-maps');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-MINE' });
@@ -473,7 +552,7 @@ function livingForest(pathbookFirst: boolean): Route {
   const route = new Route();
   // Independent Chapter 5 session. The coast's revised notice is already up.
   route.driver.s.objectivesDone.push('coast.revise');
-  const readPathbook = (d: Driver) => {
+  const readPathbook = (d: AuditDriver) => {
     useDoor(d, 'forest-community-path');
     readSign(d, 'forest-pathbook');
     d.talk('forest-steward', pathbookFirst ? 'Give heard and seen' : 'Keep the crews’ own words');
@@ -1076,6 +1155,123 @@ function civicMachine(): Route {
   return route;
 }
 
+function openVoiceReading(d: Driver, source: VoiceSource, view: VoiceView) {
+  const desk = MAPS[d.s.mapId].interactables.find((prop) => prop.id === 'voices-desk');
+  expect(desk?.kind).toBe('voices-desk');
+  expect(check(desk?.visibleIf, d.s)).toBe(true);
+  d.run({ type: 'RunVoiceReading', source, view });
+  expect(d.s.flags[`voices.read.${source}.${view}`]).toBe(true);
+  return voiceReading(source, view);
+}
+
+function archiveOfVoices(quoteInQueue = false): Route {
+  const route = new Route();
+  const extra = quoteInQueue ? 3 : 0;
+  // Prepared Chapter 12 save. The Civic Machine has a revised notice.
+  route.driver.s.objectivesDone.push('civic.finish');
+  route.driver.s.flags['civic.revised'] = true;
+  route.at(4, 'Read a signed opening date presented as the first crossing and ask what it covered', ['scope', 'perspective'], (d) => {
+    useDoor(d, 'voices-door');
+    expect(d.done('voices.arrival')).toBe(true);
+    d.talk('voices-steward');
+    readSign(d, 'voices-draft-label');
+  });
+  route.at(10, 'Check what the carrier agreed to share and use the approved excerpt at the desk', [
+    'evidence', 'responsibility', 'scope', 'methods-and-tools', 'ethics',
+  ], (d) => {
+    readSign(d, 'voices-permission');
+    const carrier = openVoiceReading(d, 'carrier', 'original');
+    expect(carrier.date).toBe('Lantern 4, dusk');
+    expect(carrier.text).toContain('Second lamp, then the rail.');
+    expect(d.done('voices.sources')).toBe(false);
+  });
+  route.at(17, 'Follow the dated record to the signing clerk and open its original entry beside the carrier’s', [
+    'evidence', 'perspective', 'perspectives', 'scope',
+  ], (d) => {
+    useDoor(d, 'voices-walk-path');
+    readSign(d, 'voices-opening-register');
+    d.talk('voices-clerk');
+    useDoor(d, 'voices-walk-return');
+    const register = openVoiceReading(d, 'clerk', 'original');
+    expect(register.date).toBe('Lantern 6');
+    expect(register.text).toContain('opened for public passage');
+    expect(d.done('voices.sources')).toBe(true);
+  });
+  if (quoteInQueue) route.at(20, 'Give people in the queue the approved excerpt with a date and a link to the fuller record', [
+    'values', 'power', 'responsibility', 'justification', 'ethics', 'scope',
+  ], (d) => {
+    d.talk('voices-steward', 'Where should we put the approved reading copy', 'Give people in the queue an approved excerpt');
+    expect(d.done('voices.quote')).toBe(true);
+    expect(d.s.flags['voices.quote.layout']).toBe('queue');
+    readSign(d, 'voices-quote-queue');
+  });
+  route.at(22 + extra, 'Give the carrier’s trial and the clerk’s public opening their own headings and leave the first crossing open', [
+    'truth', 'certainty', 'interpretation', 'power', 'justification', 'scope',
+  ], (d) => {
+    d.talk('voices-steward', 'Pin the two dated records');
+    expect(d.done('voices.verify')).toBe(true);
+    readSign(d, 'voices-checked-label');
+  });
+  route.at(27 + extra, 'Keep both sources fixed while checking how each guide explains the local words or the public date', [
+    'objectivity', 'explanation', 'culture', 'interpretation', 'perspectives', 'methods-and-tools',
+  ], (d) => {
+    d.talk('voices-steward');
+    for (const source of ['carrier', 'clerk'] as const) {
+      const original = voiceReading(source, 'original');
+      const guide = openVoiceReading(d, source, 'guide');
+      expect(guide.date).toBe(original.date);
+      expect(guide.purpose).toBe(original.purpose);
+      expect(guide.text).not.toBe(original.text);
+    }
+    expect(voiceReading('carrier', 'guide').text).toContain('From the quay');
+    expect(d.done('voices.compare')).toBe(true);
+  });
+  route.at(33 + extra, 'Put the permitted quay phrase beside a plain direction so local and new carriers can use both', [
+    'values', 'power', 'culture', 'responsibility', 'justification', 'ethics',
+  ], (d) => {
+    useDoor(d, 'voices-walk-path');
+    d.talk('voices-clerk', 'Keep the carrier’s wording beside a plain direction');
+    expect(d.done('voices.publish')).toBe(true);
+    expect(d.s.flags['voices.response']).toBe('paired');
+    readSign(d, 'voices-result-paired');
+  });
+  route.at(39 + extra, 'Find the stair reader’s question about the missing lamp at the end of the rail', [
+    'perspective', 'perspectives', 'scope',
+  ], (d) => {
+    useDoor(d, 'voices-walk-to-quay');
+    readSign(d, 'voices-reader-note');
+    expect(d.done('voices.reader')).toBe(false);
+  });
+  route.at(46 + extra, 'Compare what can be seen along the quay and from the stair foot before changing the notice', [
+    'evidence', 'explanation', 'truth', 'objectivity', 'perspective', 'perspectives', 'methods-and-tools',
+  ], (d) => {
+    for (const sign of ['voices-quay-first-lamp', 'voices-quay-second-lamp', 'voices-quay-view', 'voices-shared-rail']) {
+      readSign(d, sign);
+    }
+    useDoor(d, 'voices-quay-to-walk');
+    readSign(d, 'voices-stairs-view');
+    expect(d.done('voices.reader')).toBe(true);
+  });
+  route.at(52 + extra, 'Use the library reader’s question to give each approach its own direction without removing the original notice', [
+    'culture', 'interpretation', 'justification', 'responsibility', 'values', 'power', 'ethics',
+  ], (d) => {
+    d.talk('voices-clerk', 'A library reader asked us', 'Give each arrival point its own line');
+    expect(d.done('voices.finish')).toBe(true);
+    expect(d.s.flags['voices.response']).toBe('paired');
+    expect(d.s.flags['voices.revision']).toBe('routes');
+    readSign(d, 'voices-result-paired');
+    readSign(d, 'voices-revised-routes');
+  });
+  route.at(57 + extra, 'Set a wider card by the arch so a carrier can set down a crate to read both approaches', [
+    'scope', 'perspective', 'responsibility', 'ethics',
+  ], (d) => {
+    d.talk('voices-clerk', 'Put a larger card by the arch');
+    expect(d.done('voices.access')).toBe(true);
+    readSign(d, 'voices-wide-note');
+  });
+  return route;
+}
+
 describe('rolling TOK coverage audit', () => {
   it('checks gaps between sampled actions and expires an encounter at the window boundary', () => {
     const encounters: TimedEncounter[] = [
@@ -1113,6 +1309,7 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Nexus and Emberford with optional stops', end: 86, play: () => nexusToEmberford('explore') },
     { name: 'Nexus seal and Emberford’s Two-Bell Order', end: 105, play: () => nexusToEmberford('records') },
     { name: 'Nexus with the Arrow at the Turn and the Emberford washhouse', end: 101, play: () => nexusToEmberford('guide') },
+    { name: 'Nexus with the Uncounted Reader and two reading rests', end: 91, play: () => nexusToEmberford('rests') },
     { name: 'Nile first visit from a prepared Chapter 1 save', end: 50, play: () => nileDispatch() },
     { name: 'Nile first visit with the Reading Window', end: 53, play: () => nileDispatch('reading-window') },
     { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch('borrowed-mark') },
@@ -1135,6 +1332,8 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Market of Measures from a prepared Chapter 9 save', end: 52, play: marketOfMeasures },
     { name: 'Water Commons from a prepared Chapter 10 save', end: 57, play: waterCommons },
     { name: 'Civic Machine from a prepared Chapter 11 save', end: 63, play: civicMachine },
+    { name: 'Archive of Voices from a prepared Chapter 12 save', end: 60, play: () => archiveOfVoices() },
+    { name: 'Archive of Voices with the approved queue excerpt', end: 63, play: () => archiveOfVoices(true) },
   ])('can execute the modeled route for $name and report its gaps', ({ name, end, play }) => {
     const route = play();
     const gaps = coverageGaps(end, route.encounters);
@@ -1145,6 +1344,8 @@ describe('rolling TOK coverage audit', () => {
       `\n${name} (${end} estimated minutes)`,
       ...route.encounters.map(({ minute, action, dimensions }) => `  ${minute}m  ${action} [${dimensions.join(', ')}]`),
       `Missing in the first 30m: ${opening.join(', ') || 'none in this trace'}`,
+      `Gameplay formats traced by 30m: ${route.formatsThrough(30).join(', ') || 'none recorded'}`,
+      `Gameplay formats traced across the route: ${route.formatsThrough(end).join(', ') || 'none recorded'}`,
       'Trailing 30m gaps (end times of windows):',
       ...(gaps.length ? gaps.map(({ dimension, from, until }) =>
         `  ${dimension}: ${from}m ${until === null ? 'through the trace end' : `to before ${until}m`}`) : ['  None in this trace']),

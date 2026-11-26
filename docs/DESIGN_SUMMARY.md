@@ -23,6 +23,7 @@ The game does not grade the player. It gives the same credit for every reasoned 
 - Chapter 10 opens the Market of Measures. On the test scale, players take away the baskets and then the fibre that is too short for wicks. Readers use the figures for delivery, wick making and buying whole lots under a budget.
 - Chapter 11 opens the Water Commons. The trial gate keeps the intake steady to show what a leak repair changes. The council considers the trade-offs for the fields and lower channel, and checks the old promise separately.
 - Chapter 12 opens the Civic Machine. Players change the console’s input and rule separately, then see what a timetable leaves open for readers who could not use the original request desks.
+- Chapter 13 opens the Archive of Voices. Excerpts and guide copies keep the dates, purposes and permissions of their sources. What a traveller can see from each approach helps the player revise the first direction.
 
 ## Core tools (play, not quizzes)
 
