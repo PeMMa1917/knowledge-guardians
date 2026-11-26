@@ -281,6 +281,9 @@ export const EMBERFORD: MapDef = {
     { id: 'reeds-bridge', kind: 'gather', resource: 'reed', x: 30, y: 23, w: 1, h: 1, label: 'the reeds by the bridge (gather)', art: 'reeds' },
     { id: 'makers-bench', kind: 'workbench', x: 9, y: 19, w: 1, h: 1, label: "the Maker's bench (make tools)", art: 'workbench' },
     { id: 'rumour-mill', kind: 'rumours', x: 16, y: 17, w: 1, h: 1, label: 'the tea table (listen to the rumour mill)', art: 'tea-table' },
+    // Field games from the TOK lessons (src/domain/fieldgames.ts).
+    { id: 'pell-doors', kind: 'fieldgame', game: 'doors', x: 25, y: 17, w: 2, h: 1, label: "Pell's lantern stall (Three Doors)", art: 'lantern-stall' },
+    { id: 'weigh-slate', kind: 'fieldgame', game: 'slate', x: 29, y: 18, w: 1, h: 1, label: 'the Weigh-House slate', art: 'slate-board' },
     // Field readings: a made, calibrated tool tests a claim (src/domain/readings.ts).
     { id: 'reading-rain', kind: 'reading', reading: 'rain', x: 35, y: 17, w: 1, h: 1, label: "the rain stake by Noa's board (take a reading)", art: 'rain-stake' },
     { id: 'reading-tower', kind: 'reading', reading: 'tower', x: 22, y: 6, w: 1, h: 1, label: 'the bell tower door frame (take a reading)', art: 'plumb-mark' },

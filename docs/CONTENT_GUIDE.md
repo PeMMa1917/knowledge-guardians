@@ -284,3 +284,11 @@ All three are in `src/content/story.json` (made by a generator script; edit the 
 - **Rumour (the rumour mill):** in `src/domain/rumours.ts` (`RUMOURS`): `heard` (who, where), `line`, at least two `sources` (`label`, `text`), `best` (the index in `VERDICTS` that the evidence fits), four `whys` (one for each verdict), `idea` (the TOK idea), optional `fray` (a Bestiary id). Rumours are about the fictional town only, never real news. Make the sources do the work: the player must be able to reach `best` from them.
 - **Dye or barter price:** in `src/domain/trade.ts`. A dye needs an outfit colour of the same key in `src/domain/appearance.ts` (`OUTFIT`, `DYE_KEYS`, `LABELS`). Every price must be shown as its parts. Never sell or lock a base appearance option (skin, hair, style, glasses, mobility aid, the base outfit colours).
 - **Fallacy seal or boss phase (the Undercroft):** in `src/domain/undercroft.ts`. Each has `says` (the bad argument), three options with `ok` and `why`, and a `fray` id from `src/content/fray.json` (met when solved). A wrong answer must be explained and must never end the fight. Place a seal on a map as kind `seal` with `seal: '<id>'` and a `visibleIf` that hides it once `trap.<id>.open` is set.
+
+## Add a field game (TOK lessons as play)
+
+- Register it in `src/domain/fieldgames.ts` (`FIELD_GAMES`): `id`, `name`, `host` (a person and a place), `idea` (the TOK idea in plain words, shown after play and in the Lore codex), `concept`, optional `fray`.
+- Put its rules in a pure module (no DOM), with seeded randomness (`rng` in `src/domain/fairgames.ts`), and test them.
+- Add its panel in `UI.openFieldGame`. The flow: act on a gut feeling first, then see many fair runs or other perspectives, then change one assumption and see what changes. End with `finishField(id)`.
+- Place it on a map as kind `fieldgame` with `game: '<id>'` (a test checks that each game has a spot).
+- Never a quiz: no score for 'right answers', no timer, no text to read and recall. Wrong moves are explained and play goes on. Use original fictional wording, never handout or IB wording.

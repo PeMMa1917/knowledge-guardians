@@ -495,6 +495,11 @@ DRAW['hollow-archivist'] = [24, 36, (g) => {
   R(g, '#d8c79a', 8, 4, 8, 6); R(g, '#3b2a1a', 9, 6, 6, 1); R(g, '#3b2a1a', 9, 8, 4, 1); R(g, '#e8c040', 7, 3, 10, 1);
   R(g, '#2a2440', 9, 34, 6, 2);
 }];
+// Field games: Pell's lantern stall (three crates), the ferry guest book on a stand, and the Weigh-House slate.
+DRAW['lantern-stall'] = [32, 24, (g) => { R(g, '#5b3b22', 1, 8, 2, 16); R(g, '#5b3b22', 29, 8, 2, 16); R(g, '#c43c3c', 0, 4, 32, 4); R(g, '#e6dcc0', 4, 4, 4, 4); R(g, '#e6dcc0', 14, 4, 4, 4); R(g, '#e6dcc0', 24, 4, 4, 4);
+  for (const x of [4, 13, 22]) { R(g, '#8a5a30', x, 15, 7, 8); R(g, '#a87445', x, 15, 7, 1); R(g, '#5b3b22', x + 3, 16, 1, 7); } R(g, '#ffd25a', 15, 10, 2, 3); R(g, '#3b2a1a', 15, 9, 2, 1); }];
+DRAW['guest-book'] = [16, 24, (g) => { R(g, '#5b3b22', 7, 12, 2, 12); R(g, '#5b3b22', 4, 22, 8, 2); R(g, '#6b2b3a', 2, 6, 12, 7); R(g, '#e6dcc0', 3, 6, 5, 6); R(g, '#e6dcc0', 8, 6, 5, 6); R(g, '#2a2440', 4, 8, 3, 1); R(g, '#2a2440', 9, 8, 3, 1); R(g, '#2a2440', 4, 10, 2, 1); }];
+DRAW['slate-board'] = [16, 24, (g) => { R(g, '#5b3b22', 2, 14, 2, 10); R(g, '#5b3b22', 12, 14, 2, 10); R(g, '#8a5a30', 0, 3, 16, 12); R(g, '#2a2f2a', 1, 4, 14, 10); R(g, '#f4f0e6', 3, 6, 2, 1); R(g, '#f4f0e6', 6, 6, 1, 1); R(g, '#f4f0e6', 8, 6, 4, 1); R(g, '#f4f0e6', 3, 9, 7, 1); R(g, '#f4f0e6', 11, 9, 2, 1); }];
 // Wenna's barter boat: a moored boat with dye pots and bundles.
 DRAW['barter-boat'] = [16, 24, (g) => { R(g, '#2b6f9a', 0, 18, 16, 6); R(g, '#6b4a2a', 1, 14, 14, 5); R(g, '#8a5a30', 2, 14, 12, 1); R(g, '#5b3b22', 7, 2, 1, 12); R(g, '#e8e2d0', 8, 3, 5, 7); R(g, '#b5452f', 2, 11, 2, 3); R(g, '#4a6a9a', 5, 11, 2, 3); R(g, '#c9b843', 9, 11, 2, 3); R(g, '#8a6240', 12, 11, 2, 3); R(g, '#9fd0ff', 1, 19, 4, 1); }];
 // The rumour mill: a small tea table with a pot and two cups.

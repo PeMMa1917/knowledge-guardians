@@ -61,6 +61,8 @@ import { READINGS, cannotRead, readingOf, toolOf } from '../domain/readings';
 import { approvalOf, approvalRank } from '../domain/approval';
 import { ROLES, fitsRole, roleOf } from '../domain/roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
+import { FIELD_GAMES } from '../domain/fieldgames';
+import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, runDoors, shareChance } from '../domain/fairgames';
 import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
 import { MIN_SOURCES, RUMOURS, VERDICTS, currentRumour, sourcesChecked } from '../domain/rumours';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
@@ -2308,6 +2310,9 @@ export class UI implements UIApi {
       const found = all.filter((x) => s.flags[`secret.${x.id}`] === true);
       body.append(h('p', { class: 'fine' }, `${found.length} of ${all.length} secrets found. Search odd corners: loose bricks, reeds, the bottom of things.`),
         ...found.map((x) => h('div', { class: 'lore-entry' }, h('h3', {}, x.name), h('p', { class: 'fine' }, MAPS[x.map]?.name ?? ''), h('p', {}, x.text))));
+      const games = FIELD_GAMES.filter((g) => s.flags[`field.${g.id}.done`] === true);
+      if (games.length) body.append(h('h3', {}, 'Field games'),
+        ...games.map((g) => h('div', { class: 'lore-entry' }, h('h3', {}, g.name), h('p', { class: 'fine' }, g.host), h('p', {}, g.idea))));
     } else if (tab === 'story') {
       // The story so far: the beats the player has reached, written as a short chronicle.
       const lit = String(Number(s.flags['lamps.lit'] ?? 0));
@@ -2582,6 +2587,7 @@ export class UI implements UIApi {
       ['Secrets found', flagsOn('secret.', (pk.secrets ?? []).map((k) => k.id)), (pk.secrets ?? []).length],
       ['Field readings taken', Number(s.flags['count.readings'] ?? 0), READINGS.length],
       ['Rumours traced to a source', Number(s.flags['count.rumours'] ?? 0), RUMOURS.length],
+      ['Field games played', Number(s.flags['count.fieldgames'] ?? 0), FIELD_GAMES.length],
       ['Places visited', places, Object.keys(MAPS).length],
       ['Skills used (Skill Atlas)', Object.keys(c.permanent.skills ?? {}).length, (pk.skills ?? []).length],
       ['Areas of knowledge met', Object.keys(c.permanent.met.aoks).length, Object.keys(AOK_NAMES).length],
@@ -2735,6 +2741,179 @@ export class UI implements UIApi {
   }
 
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
+  /** Field games from the TOK lessons: one entry point, one panel per game. */
+  openFieldGame(id: string): void {
+    if (id === 'doors') this.openDoors();
+    else if (id === 'guests') this.openGuestBook();
+    else if (id === 'slate') this.openSlate();
+  }
+
+  /** Close a field game: first time gives marks and the idea in the Lore codex. */
+  private finishField(id: string): HTMLElement {
+    const g = FIELD_GAMES.find((x) => x.id === id)!;
+    const ev = ctx.controller.dispatch({ type: 'FinishFieldGame', game: id });
+    const first = ev.some((e) => e.kind === 'fieldgame' && e.first);
+    if (first) this.sfx('sfx.award');
+    return h('p', { class: 'clue-view fresh', role: 'status' }, h('strong', {}, 'The idea: '), g.idea, first ? ' (+3 marks; it is in your Lore codex.)' : '');
+  }
+
+  private barPair(rows: { label: string; n: number; of: number }[]): HTMLElement {
+    return h('div', { class: 'field-bars' }, ...rows.map((r) => h('div', { class: 'field-bar' },
+      h('span', {}, r.label),
+      h('span', { class: 'track', role: 'img', 'aria-label': `${r.label}: ${r.n} of ${r.of}` }, h('span', { class: 'fill', style: `width:${r.of ? Math.round((100 * r.n) / r.of) : 0}%` })),
+      h('span', { class: 'fine' }, `${r.n} of ${r.of} (${r.of ? Math.round((100 * r.n) / r.of) : 0}%)`))));
+  }
+
+  /** Pell's Three Doors: play by feel, then let the counting frame run 300 rounds, then change one assumption. */
+  openDoors(): void {
+    const c = ctx.controller;
+    const runs = Number(c.state.flags['field.doors.runs'] ?? 0);
+    c.dispatch({ type: 'SetFlag', flag: 'field.doors.runs', value: runs + 1 });
+    const seed = runs + 11;
+    const box = this.openModal('bench-panel wide', "Pell's Three Doors");
+    this.sfx('sfx.page');
+    const tally = { stay: { w: 0, n: 0 }, swap: { w: 0, n: 0 } };
+    let round = 0, guess = '';
+    const doorRow = (onPick: ((d: number) => void) | null, show: (d: number) => string, cls: (d: number) => string) =>
+      h('div', { class: 'doors-row' }, ...[0, 1, 2].map((d) => h('button', { type: 'button', class: `door-crate ${cls(d)}`, disabled: !onPick, 'aria-label': `Crate ${d + 1}: ${show(d) || 'closed'}`, onclick: () => onPick?.(d) },
+        h('span', { class: 'door-num' }, String(d + 1)), h('span', { class: 'door-show' }, show(d)))));
+    const head = () => [this.closeBtn(), h('h2', {}, "Pell's Three Doors"),
+      h('p', {}, "Pell hides a lantern under one of three crates. You pick one. Then Pell, who knows where the lantern is, lifts an empty crate you did not pick. Do you stay, or switch to the last crate?")];
+    const tallyLine = () => h('p', { class: 'fine', role: 'status' }, `Your rounds: stayed ${tally.stay.n} times, won ${tally.stay.w} · switched ${tally.swap.n} times, won ${tally.swap.w}.`);
+    const pick = () => {
+      const prize = doorPrize(seed, round);
+      box.replaceChildren(...head(), h('p', {}, h('strong', {}, `Round ${round + 1}. `), 'Pick a crate.'),
+        doorRow((d) => decide(prize, d), () => '', () => ''), tallyLine(),
+        round >= 6 ? h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => predict() }, "Enough rounds: ask for Pell's counting frame")) : h('p', { class: 'fine' }, `Play at least ${6 - round} more round${6 - round === 1 ? '' : 's'}. Try both plans.`));
+    };
+    const decide = (prize: number, mine: number) => {
+      const opened = pellOpens(prize, mine, true, fairRng(seed * 31 + round));
+      const other = [0, 1, 2].find((d) => d !== mine && d !== opened)!;
+      box.replaceChildren(...head(), h('p', {}, `You picked crate ${mine + 1}. Pell lifts crate ${opened + 1}: empty. Crate ${other + 1} is still closed.`),
+        doorRow(null, (d) => (d === opened ? 'empty' : ''), (d) => (d === mine ? 'mine' : d === opened ? 'open' : '')),
+        h('div', { class: 'row' },
+          h('button', { type: 'button', onclick: () => reveal(prize, mine, opened, mine) }, `Stay with crate ${mine + 1}`),
+          h('button', { type: 'button', onclick: () => reveal(prize, mine, opened, other) }, `Switch to crate ${other + 1}`)), tallyLine());
+    };
+    const reveal = (prize: number, mine: number, opened: number, final: number) => {
+      const plan = final === mine ? 'stay' : 'swap', won = final === prize;
+      tally[plan].n++; if (won) tally[plan].w++;
+      round++;
+      this.sfx(won ? 'sfx.sparkle' : 'sfx.page');
+      box.replaceChildren(...head(), h('p', {}, won ? `The lantern was under crate ${prize + 1}. You win it!` : `The lantern was under crate ${prize + 1}. Not this time.`),
+        doorRow(null, (d) => (d === prize ? '🏮' : 'empty'), (d) => (d === final ? 'mine' : d === opened ? 'open' : '')), tallyLine(),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', 'data-autofocus': true, onclick: () => pick() }, 'Next round')));
+    };
+    const predict = () => {
+      box.replaceChildren(...head(), tallyLine(),
+        h('p', {}, "Pell grins. 'Feelings are free. Before my counting frame runs 300 rounds: how often do you think switching wins?' Your guess is only for you."),
+        h('div', { class: 'notice-options' }, ...['About 1 time in 3', 'About half the time', 'About 2 times in 3'].map((t) => h('button', { type: 'button', onclick: () => { guess = t; frame(); } }, t))));
+    };
+    const frame = () => {
+      const k = runDoors(300, seed, true);
+      box.replaceChildren(...head(), h('p', {}, `The counting frame clacks through 300 rounds, with the same rules. Your guess was: ${guess.toLowerCase()}.`),
+        this.barPair([{ label: 'Stay wins', n: k.stay, of: k.counted }, { label: 'Switch wins', n: k.swap, of: k.counted }]),
+        h('p', {}, "Pell: 'Your first pick is right 1 time in 3. When it is wrong (2 times in 3), I must leave the lantern under the other crate, because I never lift it. So switching wins 2 times in 3.'"),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => forgets() }, "But what if Pell forgets where the lantern is?")));
+    };
+    const forgets = () => {
+      const k = runDoors(300, seed + 7, false);
+      box.replaceChildren(...head(),
+        h('p', {}, `Now Pell has forgotten. He lifts one of the other crates at random. In ${k.setAside} of 300 rounds he shows the lantern, so those rounds are set aside. In the rest:`),
+        this.barPair([{ label: 'Stay wins', n: k.stay, of: k.counted }, { label: 'Switch wins', n: k.swap, of: k.counted }]),
+        h('p', {}, 'The crates look the same, and so do the moves. The only change is what Pell knew. His knowledge was information, and it changed the answer: now it is about half and half.'),
+        this.finishField('doors'),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    pick();
+  }
+
+  /** The Ferry Guest Book: guess how many passengers sign before two share a birthday, then watch twenty boats. */
+  openGuestBook(): void {
+    const c = ctx.controller;
+    const runs = Number(c.state.flags['field.guests.runs'] ?? 0);
+    c.dispatch({ type: 'SetFlag', flag: 'field.guests.runs', value: runs + 1 });
+    const seed = runs + 5;
+    const box = this.openModal('bench-panel wide', 'The Ferry Guest Book');
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, 'The Ferry Guest Book'),
+      h('p', {}, "Tova keeps a guest book on the ferry. Each passenger writes the day of their birthday. 'The ferry folk have an old bet,' she says. 'How many passengers sign before two have the same birthday?'")];
+    let guess = 0;
+    const ask = () => {
+      const slider = h('input', { type: 'range', min: '2', max: '200', value: '60', 'aria-label': 'Your guess: passengers before two share a birthday' }) as HTMLInputElement;
+      const out = h('strong', {}, '60');
+      slider.oninput = () => { out.textContent = slider.value; };
+      box.replaceChildren(...head(), h('p', {}, 'Your guess, for a usual boat: about how many passengers sign before the first shared birthday? (A year has 365 days.)'),
+        h('div', { class: 'row' }, slider, out),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => { guess = Number(slider.value); boat(0); } }, 'Open the book for the first boat')));
+    };
+    const boat = (n: number) => {
+      const g = boatGuests(seed, n);
+      const last = g[g.length - 1], firstAt = g.indexOf(last);
+      box.replaceChildren(...head(), h('p', {}, `Boat ${n + 1}. Your guess: ${guess}.`),
+        h('ol', { class: 'guest-list' }, ...g.map((d, i) => h('li', { class: i === firstAt || i === g.length - 1 ? 'match' : '' }, dayName(d)))),
+        h('p', { role: 'status' }, h('strong', {}, `Passenger ${g.length} shares a birthday with passenger ${firstAt + 1}: ${dayName(last)}.`)),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', 'data-autofocus': true, onclick: () => many() }, 'Read the next twenty boats')));
+    };
+    const many = () => {
+      const counts = Array.from({ length: 20 }, (_, i) => boatGuests(seed, i + 1).length);
+      const max = Math.max(...counts), within23 = counts.filter((k) => k <= 23).length;
+      const W = 280, H = 110, bw = W / counts.length;
+      const svg = `<svg viewBox="0 0 ${W} ${H + 16}" class="guest-chart" role="img" aria-label="Passengers on each of twenty boats before a shared birthday">` +
+        counts.map((k, i) => `<rect x="${i * bw + 2}" y="${H - (k / max) * H}" width="${bw - 4}" height="${(k / max) * H}" class="${k <= 23 ? 'low' : 'high'}"/>`).join('') +
+        `<line x1="0" x2="${W}" y1="${H - (23 / max) * H}" y2="${H - (23 / max) * H}" class="mark"/><text x="2" y="${H - (23 / max) * H - 3}" class="lbl">23</text>` +
+        `<line x1="0" x2="${W}" y1="${H - (Math.min(guess, max) / max) * H}" y2="${H - (Math.min(guess, max) / max) * H}" class="guess"/><text x="${W - 60}" y="${H - (Math.min(guess, max) / max) * H - 3}" class="lbl">your guess</text></svg>`;
+      const chart = h('div', {}); chart.innerHTML = svg;
+      box.replaceChildren(...head(), chart,
+        h('p', { role: 'status' }, `On ${within23} of 20 boats, two passengers shared a birthday by passenger 23. The middle boat needed about ${[...counts].sort((a, b) => a - b)[10]} passengers. Your guess was ${guess}.`),
+        h('p', {}, `Tova laughs. 'It feels like you need hundreds. But you are not waiting for someone to match you. Any two can match. Twenty-three people make 253 pairs.' The chance for 23 people is ${Math.round(shareChance(23) * 1000) / 10}%; for 50 people it is ${Math.round(shareChance(50) * 1000) / 10}%.`),
+        this.finishField('guests'),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    ask();
+  }
+
+  /** The Weigh-House Slate: one line, two careful readers, two answers. The story decides; brackets make it clear. */
+  openSlate(): void {
+    const box = this.openModal('bench-panel wide', 'The Weigh-House Slate');
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, 'The Weigh-House Slate'),
+      h('p', {}, 'Someone chalked a line on the Weigh-House slate. Clerk Venn and young Ren both worked it out with care, and they do not agree.'),
+      h('p', { class: 'slate-line' }, SLATE.written)];
+    const readers = () => {
+      box.replaceChildren(...head(),
+        h('div', { class: 'slate-readers' }, ...SLATE.readers.map((r) => h('div', { class: 'ware' }, h('strong', {}, r.who), h('p', { class: 'fine' }, r.rule),
+          h('ol', { class: 'slate-steps' }, ...r.steps.map((st) => h('li', {}, st)))))),
+        h('p', {}, h('strong', {}, 'Who made a mistake?')),
+        h('div', { class: 'notice-options' },
+          h('button', { type: 'button', onclick: () => note('Venn did. Ren is right.') }, 'Venn did. Ren is right.'),
+          h('button', { type: 'button', onclick: () => note('Ren did. Venn is right.') }, 'Ren did. Venn is right.'),
+          h('button', { type: 'button', onclick: () => note('') }, 'Neither. They follow different rules.')));
+    };
+    const note = (blame: string) => {
+      box.replaceChildren(...head(),
+        h('p', { class: 'clue-view fresh' }, blame
+          ? `${blame} ... but look again: each one followed a rule, step by step, with no slip. The trouble is the line, not the sums.`
+          : 'Yes: both worked carefully. The rules for which sum to do first are a convention that people agreed on, and here two conventions meet.'),
+        h('p', {}, 'Orrin finds the person who chalked it. They tell you what the line was for. Pick the story:'),
+        h('div', { class: 'notice-options' }, ...SLATE.stories.map((st) => h('button', { type: 'button', onclick: () => write(st) }, st.text))));
+    };
+    const write = (st: (typeof SLATE.stories)[number]) => {
+      box.replaceChildren(...head(), h('p', { class: 'clue-view' }, st.text),
+        h('p', {}, 'Rewrite the line so that every reader gets the same answer, and it is the answer this story needs.'),
+        h('div', { class: 'notice-options' }, ...SLATE.clear.map((line) => h('button', { type: 'button', class: 'slate-line small', onclick: () => {
+          const v = evalClear(line);
+          if (v !== st.result) { box.querySelector('.slate-msg')?.remove(); box.append(h('p', { class: 'clue-view slate-msg', role: 'status' }, `That line is clear: everyone gets ${v}. But this story needs ${st.result}. Try the other one.`)); return; }
+          this.sfx('sfx.sparkle');
+          box.replaceChildren(...head(), h('p', { class: 'slate-line' }, line, ` = ${v}`),
+            h('p', {}, "Venn and Ren both read it the same way now. Venn: 'So the sums were never wrong. The line just did not say enough.' Ren: 'Then who decided the rule in the first place?' Orrin: 'People did. A long time ago, so that strangers could read each other's sums.'"),
+            this.finishField('slate'),
+            h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+        } }, line))));
+    };
+    readers();
+  }
+
   /** A fallacy seal in the Undercroft: it speaks a bad argument; name the flaw to open it. */
   openSeal(id: string): void {
     const c = ctx.controller;

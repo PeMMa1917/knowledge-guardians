@@ -26,6 +26,7 @@ import { BARTER, DYES, FAIR_PRICE, ferryPrice } from './trade';
 import { approvalOf, approvalRank, isInquiry } from './approval';
 import { ROLES } from './roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from './undercroft';
+import { FIELD_GAMES } from './fieldgames';
 import type {
   AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
@@ -86,6 +87,7 @@ export type Command =
   | { type: 'ChooseRole'; role: string }
   | { type: 'DisarmSeal'; seal: string; choice: number }
   | { type: 'BossMove'; choice: number }
+  | { type: 'FinishFieldGame'; game: string }
   | { type: 'JudgeRumour'; rumour: string; verdict: number }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
@@ -174,6 +176,7 @@ export type GameEvent =
   | { kind: 'fairprice'; ok: boolean; why: string }
   | { kind: 'seal'; seal: string; ok: boolean; why: string }
   | { kind: 'boss'; phase: number; ok: boolean; why: string; done: boolean }
+  | { kind: 'fieldgame'; game: string; name: string; first: boolean }
   | { kind: 'approval'; who: string; n: number; rank: string; up: boolean }
   | { kind: 'trust'; id: string; name: string; rank: string }
   | { kind: 'secret'; id: string; name: string; found: number; total: number }
@@ -461,6 +464,14 @@ export class Engine {
           if (!o) throw new Error('Choose an answer');
           if (o.ok && s.flags[`trap.${x.id}.open`] !== true) s = apply([{ setFlag: `trap.${x.id}.open`, value: true }, { setFlag: `meet.fray.${x.fray}`, value: true }, { addMarks: 2 }], s, out);
           events.push({ kind: 'seal', seal: x.id, ok: o.ok, why: o.why });
+          break;
+        }
+        case 'FinishFieldGame': {
+          const g = FIELD_GAMES.find((x) => x.id === cmd.game);
+          if (!g) throw new Error('Unknown game');
+          const first = s.flags[`field.${g.id}.done`] !== true;
+          if (first) s = apply([{ setFlag: `field.${g.id}.done`, value: true }, { addNum: 'count.fieldgames', by: 1 }, { addMarks: 3 }, ...(g.fray ? [{ setFlag: `meet.fray.${g.fray}`, value: true } as Effect] : [])], s, out);
+          events.push({ kind: 'fieldgame', game: g.id, name: g.name, first });
           break;
         }
         case 'BossMove': {

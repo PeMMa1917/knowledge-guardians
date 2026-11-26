@@ -143,6 +143,19 @@ Mika asked for many RPG elements, each tied to TOK concepts, words and skills. K
   11. **Class-wide co-op goals** (needs a server; spec says single-player for now): skip until the teacher view has a safe class store.
 - **Not planned, by rule:** survival meters (hunger, thirst), crime and prison, pickpocketing, gambling-like loot boxes or random paid drops, real-money anything, level editors, student guidebooks, news.
 
+### Quality goals (Mika 2026-11-26)
+
+These apply to all chapters, 1 to 15. See AGENTS.md section 3 for the full rules: a branching story where choices matter; one cohesive colourful art style; fitting music and sound; distinct characters (name, background, perspective, voice, quests); and objects that matter in other places. When you review a chapter, check all five and list the gaps here.
+
+### Field games from the TOK lessons (2026-11-26)
+
+Ideas from Mika's TOK lessons, made into games in places, with people. Never a quiz. The registry is `src/domain/fieldgames.ts`; the rules for the maths games are in `src/domain/fairgames.ts` (seeded, fair randomness). Each first finish gives +3 marks, adds the idea to the Lore codex, and counts in the Ledger ('Field games played').
+
+- **Pell's Three Doors** (Emberford, lantern stall): play rounds by gut feeling, guess, then watch 300 seeded rounds. Then Pell forgets where the lantern is, and the answer changes. TOK: intuition and reason, assumptions, certainty.
+- **The Ferry Guest Book** (ferry landing): guess how many passengers sign before two share a birthday, then watch 20 boats. TOK: paradox, intuition, certainty.
+- **The Weigh-House Slate** (Emberford): two careful readers get 16 and 1 from the same line. Find the story the writer meant, then pick a line that can only be read one way. TOK: convention, interpretation, mathematics as invented or discovered.
+- **Next:** the Missing Word (language and power), the Breakfast Sign (signs and culture), the Drawer of Missing Trials (publication bias), then more from the other lesson folders.
+
 ## Known limits and problems
 
 - **Toasts:** at most three show at once and the rest wait their turn; XP from one action shows as one toast. A busy moment can still take about ten seconds to read through.

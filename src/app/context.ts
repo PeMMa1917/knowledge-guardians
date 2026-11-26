@@ -28,6 +28,7 @@ export interface UIApi {
   openTrader(): void;
   openSeal(seal: string): void;
   openBoss(): void;
+  openFieldGame(game: string): void;
   openNileModel(): void;
   openForestWatch(site: string): void;
   openMetalTrial(sample: string): void;

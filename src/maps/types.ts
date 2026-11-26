@@ -3,7 +3,7 @@
  * characters, interactable objects, zones and lights. Units are tiles.
  * The WorldScene turns this data into a playable place.
  */
-export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door' | 'secret' | 'tiles' | 'shop' | 'gather' | 'workbench' | 'reading' | 'rumours' | 'trader' | 'seal' | 'boss' | 'model' | 'scene' | 'forest-watch' | 'metal-trial' | 'copy-compare' | 'sea-chart' | 'stage-rehearsal' | 'market-scale' | 'water-gate' | 'civic-console' | 'voices-desk' | 'island-plan' | 'council-clock' | 'scout-table';
+export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door' | 'secret' | 'tiles' | 'shop' | 'gather' | 'workbench' | 'reading' | 'rumours' | 'trader' | 'seal' | 'boss' | 'fieldgame' | 'model' | 'scene' | 'forest-watch' | 'metal-trial' | 'copy-compare' | 'sea-chart' | 'stage-rehearsal' | 'market-scale' | 'water-gate' | 'civic-console' | 'voices-desk' | 'island-plan' | 'council-clock' | 'scout-table';
 
 export interface Interactable {
   id: string;
@@ -42,6 +42,8 @@ export interface Interactable {
   reading?: string;
   /** For kind 'seal': the fallacy seal (src/domain/undercroft.ts). It stops blocking once opened. */
   seal?: string;
+  /** For kind 'fieldgame': the game id (src/domain/fieldgames.ts). */
+  game?: string;
   /** For kind 'door': where it leads, when it opens (else `text` is shown). */
   to?: { map: string; x: number; y: number };
   openIf?: import('../domain/types').Condition;
