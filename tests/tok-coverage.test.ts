@@ -995,8 +995,11 @@ function livingForest(pathbookFirst: boolean, greenSquares = false): Route {
   return route;
 }
 
-function metalworks(turnedTag: boolean): Route {
+function metalworks(turnedTag: boolean, rim?: 'hall' | 'yard'): Route {
   const route = new Route();
+  const rackMinutes = rim ? 4 : 0;
+  const clippingMinutes = rim ? 2 : 0;
+  const receivingMinutes = rim ? 3 : 0;
   // Independent Chapter 6 session. The Forest keepers already revised their notice.
   route.driver.s.objectivesDone.push('forest.finish');
   route.at(4, 'Hear the seller’s claim of a matched set and why it raises the price', ['perspective', 'power', 'values'], (d) => {
@@ -1005,7 +1008,20 @@ function metalworks(turnedTag: boolean): Route {
     d.talk('metal-inspector');
     expect(d.done('metal.arrival')).toBe(true);
   });
-  route.at(13, 'Check the matched-weight claim, replace it with readings of two and four, and leave composition open', ['evidence', 'truth', 'objectivity', 'explanation', 'scope', 'methods-and-tools'], (d) => {
+  if (rim) {
+    route.at(7, 'Repeat the same slipped tray with a low peg and a padded sleeve',
+      ['truth', 'evidence', 'objectivity', 'explanation', 'certainty', 'scope', 'methods-and-tools'], (d) => {
+        walkScene(d, 'metal-rim-rack', 'metal.rim.slip', 'Set the sample back', 'Raise the low peg',
+          'Set the sample back', 'Close the padded sleeve', 'Leave the rack');
+        expect(d.done('metal.rim.runs')).toBe(true);
+      });
+    route.at(8, 'Lift the reused caption and check the earlier sample, bench and time on its signed docket',
+      ['evidence', 'interpretation', 'perspective', 'certainty', 'scope', 'perspectives'], (d) => {
+        walkScene(d, 'metal-rim-note', 'metal.rim.docket', 'Clip the dated docket');
+        expect(d.done('metal.rim.record')).toBe(true);
+      });
+  }
+  route.at(13 + rackMinutes, 'Check the matched-weight claim, replace it with readings of two and four, and leave composition open', ['evidence', 'truth', 'objectivity', 'explanation', 'scope', 'methods-and-tools'], (d) => {
     const readings = ['panel-a', 'panel-b'].map((sample) => {
       const stand = MAPS[d.s.mapId].interactables.find((p) => p.kind === 'metal-trial' && p.node === sample);
       expect(stand, `${sample} has its own stand`).toBeDefined();
@@ -1019,34 +1035,56 @@ function metalworks(turnedTag: boolean): Route {
     expect(d.done('metal.compare')).toBe(true);
     readSign(d, 'metal-weight-correction');
   });
-  route.at(17, 'Hear how a paint shop and a seller use “matched set” for different claims', ['culture', 'interpretation', 'perspective', 'perspectives'], (d) => {
+  route.at(17 + rackMinutes, 'Hear how a paint shop and a seller use “matched set” for different claims', ['culture', 'interpretation', 'perspective', 'perspectives'], (d) => {
     readSign(d, 'metal-custody-intake');
     useDoor(d, 'metal-records-path');
     expect(d.e.talkEntry('metal-steward', d.s)).toBe('metal.steward.welcome');
     d.talk('metal-steward');
   });
-  route.at(23, 'File the mineral-panel and coated-metal descriptions beside their own custody stages', ['evidence', 'certainty', 'interpretation', 'scope', 'methods-and-tools'], (d) => {
+  if (rim) {
+    route.at(22, 'Keep the past grey sleeve docket beside the current blue tests',
+      ['explanation', 'justification', 'truth', 'scope', 'methods-and-tools'], (d) => {
+        walkScene(d, 'metal-rim-compare', 'metal.rim.plan', 'Leave the receiving choice');
+        expect(d.done('metal.rim.compare')).toBe(true);
+      });
+    route.at(23, 'Set one receiving station for the actual crew that can use it',
+      ['values', 'power', 'responsibility', 'justification', 'perspectives', 'ethics'], (d) => {
+        walkScene(d, 'metal-rim-plan', `metal.rim.${rim}.plan`,
+          rim === 'hall' ? 'Set the sleeve cradle' : 'Set the low peg');
+        expect(d.done('metal.rim.setup')).toBe(true);
+      });
+  }
+  route.at(23 + rackMinutes + clippingMinutes, 'File the mineral-panel and coated-metal descriptions beside their own custody stages', ['evidence', 'certainty', 'interpretation', 'scope', 'methods-and-tools'], (d) => {
     readSign(d, 'metal-custody-repair');
     d.talk('metal-steward', 'Pin each slip');
     expect(d.done('metal.trace')).toBe(true);
     expect(d.s.flags['metal.custody.return']).toBeUndefined();
   });
-  route.at(28, 'Open the window display with the panel readings and a blank clip for the maker', ['values', 'power', 'responsibility', 'justification', 'perspectives', 'ethics'], (d) => {
+  route.at(28 + rackMinutes + clippingMinutes, 'Open the window display with the panel readings and a blank clip for the maker', ['values', 'power', 'responsibility', 'justification', 'perspectives', 'ethics'], (d) => {
     d.talk('metal-steward', 'Put the two panel readings');
     expect(d.done('metal.publish')).toBe(true);
     readSign(d, 'metal-response-window');
   });
-  route.at(35, 'Read the transfer docket to check which trip the two boxes actually shared', ['evidence', 'truth', 'certainty', 'scope'], (d) => {
+  route.at(35 + rackMinutes + clippingMinutes, 'Read the transfer docket to check which trip the two boxes actually shared', ['evidence', 'truth', 'certainty', 'scope'], (d) => {
     readSign(d, 'metal-custody-return');
     expect(d.done('metal.docket')).toBe(true);
   });
-  route.at(40, 'Add the dated cart card without giving either panel a maker', ['truth', 'responsibility', 'justification', 'interpretation', 'ethics'], (d) => {
+  if (rim) {
+    route.at(44, 'Have the chosen receiving station serve its first tray and check what remains on the other route',
+      ['values', 'power', 'responsibility', 'justification', 'perspective', 'perspectives', 'ethics', 'scope'], (d) => {
+        if (rim === 'yard') useDoor(d, 'metal-yard-return');
+        walkScene(d, `metal-rim-${rim}`, `metal.rim.${rim}.received`, rim === 'yard' ? 'Leave the peg' : 'Leave the cradle');
+        expect(d.done('metal.rim.receive')).toBe(true);
+        if (rim === 'yard') useDoor(d, 'metal-records-path');
+      });
+  }
+  route.at(40 + rackMinutes + clippingMinutes + receivingMinutes, 'Add the dated cart card without giving either panel a maker', ['truth', 'responsibility', 'justification', 'interpretation', 'ethics'], (d) => {
     d.talk('metal-steward', 'Add a dated cart card');
     expect(d.done('metal.finish')).toBe(true);
     readSign(d, 'metal-followup-notice');
   });
   if (turnedTag) {
-    route.at(47, 'Turn the tag and replace it in separate runs on the same cord, then compare the two shop keys', [
+    route.at(47 + rackMinutes + clippingMinutes + receivingMinutes, 'Turn the tag and replace it in separate runs on the same cord, then compare the two shop keys', [
       'evidence', 'objectivity', 'explanation', 'certainty', 'culture', 'scope', 'methods-and-tools',
     ], (d) => {
       for (const prop of ['metal-tag-transfer-note', 'metal-tag-coat-key']) readSign(d, prop);
@@ -1055,14 +1093,14 @@ function metalworks(turnedTag: boolean): Route {
       walkScene(d, 'metal-tag-bench', 'metal.tag.turn', 'Reset the stand', 'Keep the stand still', 'Leave the stand');
       expect(d.done('metal.tag.compared')).toBe(true);
     });
-    route.at(50, 'File both runs by the index and show what would separate them', ['justification', 'culture', 'responsibility', 'ethics'], (d) => {
+    route.at(50 + rackMinutes + clippingMinutes + receivingMinutes, 'File both runs by the index and show what would separate them', ['justification', 'culture', 'responsibility', 'ethics'], (d) => {
       useDoor(d, 'metal-records-path');
       walkScene(d, 'metal-tag-explanation-clips', 'metal.tag.place.hall');
       expect(d.done('metal.tag.explained')).toBe(true);
       readSign(d, 'metal-tag-handoff-hall');
     });
   }
-  route.at(turnedTag ? 54 : 46, 'Make a copy with one line per box so more readers can check the records', ['perspective', 'objectivity', 'responsibility', 'perspectives', 'ethics'], (d) => {
+  route.at((turnedTag ? 54 : 46) + rackMinutes + clippingMinutes + receivingMinutes, 'Make a copy with one line per box so more readers can check the records', ['perspective', 'objectivity', 'responsibility', 'perspectives', 'ethics'], (d) => {
     d.talk('metal-steward', 'Make a larger copy');
     expect(d.done('metal.copy')).toBe(true);
     readSign(d, 'metal-large-copy');
@@ -2034,6 +2072,8 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Living Forest with the Green Squares survey', end: 67, play: () => livingForest(true, true) },
     { name: 'Metalworks from a prepared Chapter 5 save', end: 50, play: () => metalworks(false) },
     { name: 'Metalworks with the Turned Tag investigation', end: 57, play: () => metalworks(true) },
+    { name: 'Metalworks with the staffed tray cradle', end: 59, play: () => metalworks(false, 'hall') },
+    { name: 'Metalworks with the low peg and Turned Tag', end: 66, play: () => metalworks(true, 'yard') },
     { name: 'City of Copies from a prepared Chapter 6 save', end: 51, play: () => cityOfCopies() },
     { name: 'City of Copies with a matched ramp warning', end: 59, play: () => cityOfCopies(true) },
     { name: 'Cartographers’ Sea from a prepared Chapter 7 save', end: 51, play: () => cartographersSea() },

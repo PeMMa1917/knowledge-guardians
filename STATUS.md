@@ -530,3 +530,7 @@ The current audit links 337 of the 803 supplied micro-skills to 611 actual actio
 ## Named object source corrections
 
 The MONIAC identifies its inventor and maker separately. The 1733 Timbuktu manuscript label and bibliography give the original holder and online catalogue roles. Both Yirrkala entries describe their replacement papers. The Kunit, Tupaia and al-Idrisi records identify the sources for their maker and date wording. See the [historical source guide](docs/SOURCES.md).
+
+## Metalworks practice rack
+
+The Rim That Slipped puts a fixed-line tray test and a separate shift docket on the route from the Sample Yard to the Trade Hall. Corra can serve the small carriers at a low peg. Bea can staff a wider sleeve cradle at her bell. The selected station retains its first local receipt, and the ordinary panel investigation stays available. Two additional executable traces meet the 30-minute opportunity floor in every modeled window. [Modeled timing and methods](docs/LEARNING_DESIGN.md) · [Route tests](tests/metal-rim.test.ts)

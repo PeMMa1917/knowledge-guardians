@@ -1,0 +1,723 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH6-R13",
+   "world": "WORLD-07",
+   "title": "The Rim That Slipped",
+   "knowledgeQuestion": "What has to travel with a bench result before someone else can use it?",
+   "stake": "Corra needs to keep a small-carrier queue moving. Bea needs any method borrowed from an older shift to keep its limits.",
+   "available": {
+    "objective": "metal.arrival"
+   },
+   "objectives": [
+    {
+     "id": "metal.rim.runs",
+     "title": "Try the loose tray, the low peg and the padded sleeve at the rack.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "metal.rim.slip",
+        "eq": true
+       },
+       {
+        "flag": "metal.rim.peg",
+        "eq": true
+       },
+       {
+        "flag": "metal.rim.sleeve",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "minutes": 3,
+      "concepts": [
+       "truth",
+       "evidence",
+       "objectivity",
+       "explanation",
+       "certainty"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "TEC"
+      ],
+      "subjects": [
+       "physics",
+       "design-tech"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "skills": []
+    },
+    {
+     "id": "metal.rim.record",
+     "title": "Lift the copied caption and keep the shift docket beside it.",
+     "essential": false,
+     "done": {
+      "flag": "metal.rim.record",
+      "eq": true
+     },
+     "weave": {
+      "minutes": 1,
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "perspective",
+       "certainty"
+      ],
+      "framework": [
+       "perspectives",
+       "scope"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS"
+      ],
+      "subjects": [
+       "history"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "skills": []
+    },
+    {
+     "id": "metal.rim.compare",
+     "title": "Put the old docket and the three new runs together at the receiving stand.",
+     "essential": false,
+     "done": {
+      "flag": "metal.rim.compared",
+      "eq": true
+     },
+     "visible": {
+      "all": [
+       {
+        "objective": "metal.rim.runs"
+       },
+       {
+        "objective": "metal.rim.record"
+       }
+      ]
+     },
+     "weave": {
+      "minutes": 1,
+      "concepts": [
+       "explanation",
+       "justification",
+       "truth"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "atl": [
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT",
+       "TEC"
+      ],
+      "subjects": [
+       "history",
+       "physics",
+       "design-tech"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "skills": []
+    },
+    {
+     "id": "metal.rim.setup",
+     "title": "Fit one receiving place for the next tray.",
+     "essential": false,
+     "done": {
+      "flagSet": "metal.rim.place"
+     },
+     "visible": {
+      "objective": "metal.rim.compare"
+     },
+     "weave": {
+      "minutes": 1,
+      "concepts": [
+       "values",
+       "power",
+       "responsibility",
+       "justification"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "TEC"
+      ],
+      "subjects": [
+       "economics",
+       "design-tech"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "human",
+       "solo": "relational"
+      }
+     },
+     "skills": []
+    },
+    {
+     "id": "metal.rim.receive",
+     "title": "Check the first use of the selected receiving place.",
+     "essential": false,
+     "done": {
+      "any": [
+       {
+        "all": [
+         {
+          "flag": "metal.rim.place",
+          "eq": "yard"
+         },
+         {
+          "flag": "metal.rim.used",
+          "eq": "yard"
+         }
+        ]
+       },
+       {
+        "all": [
+         {
+          "flag": "metal.rim.place",
+          "eq": "hall"
+         },
+         {
+          "flag": "metal.rim.used",
+          "eq": "hall"
+         }
+        ]
+       }
+      ]
+     },
+     "visible": {
+      "objective": "metal.rim.compare"
+     },
+     "weave": {
+      "minutes": 3,
+      "concepts": [
+       "values",
+       "power",
+       "responsibility",
+       "justification",
+       "perspective"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics",
+       "scope"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT",
+       "TEC"
+      ],
+      "subjects": [
+       "history",
+       "design-tech"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "human",
+       "solo": "relational"
+      }
+     },
+     "skills": []
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "metal.rim.rack",
+   "speaker": "metal-inspector",
+   "text": "This is the practice tray. The blue sample fits its rim. I want the small-carrier queue moving, but “fits” only tells me where it starts. Pull the tray to the second chalk mark and watch the inside edge.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pull the loose tray to the second chalk mark.",
+     "next": "metal.rim.slip",
+     "effects": [
+      {
+       "setFlag": "metal.rim.slip",
+       "value": true
+      },
+      {
+       "setFlag": "metal.rim.last",
+       "value": "slip"
+      }
+     ]
+    },
+    {
+     "text": "Raise the low peg and pull the same tray to the mark.",
+     "if": {
+      "flag": "metal.rim.slip",
+      "eq": true
+     },
+     "next": "metal.rim.peg",
+     "effects": [
+      {
+       "setFlag": "metal.rim.peg",
+       "value": true
+      },
+      {
+       "setFlag": "metal.rim.last",
+       "value": "peg"
+      }
+     ]
+    },
+    {
+     "text": "Close the padded sleeve and pull the same tray to the mark.",
+     "if": {
+      "flag": "metal.rim.slip",
+      "eq": true
+     },
+     "next": "metal.rim.sleeve",
+     "effects": [
+      {
+       "setFlag": "metal.rim.sleeve",
+       "value": true
+      },
+      {
+       "setFlag": "metal.rim.last",
+       "value": "sleeve"
+      }
+     ]
+    },
+    {
+     "text": "Leave the rack for now."
+    }
+   ]
+  },
+  {
+   "id": "metal.rim.slip",
+   "speaker": "narrator",
+   "text": "The tray reaches the second line. The little sample passes the inside rim and lands on the felt. The tray fit it when both stood still. A chalk smear crosses the rim. Leave it there while you try a way to hold the sample.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "options": [
+    {
+     "text": "Set the sample back at the first chalk mark.",
+     "next": "metal.rim.rack"
+    },
+    {
+     "text": "Leave the rack for now."
+    }
+   ]
+  },
+  {
+   "id": "metal.rim.peg",
+   "speaker": "narrator",
+   "text": "The same blue sample starts at the same line and the tray stops at the same mark. This time the sample taps the low peg and stays inside. The peg takes up the width of one small finger.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "options": [
+    {
+     "text": "Set the sample back at the first chalk mark.",
+     "next": "metal.rim.rack"
+    },
+    {
+     "text": "Leave the rack for now."
+    }
+   ]
+  },
+  {
+   "id": "metal.rim.sleeve",
+   "speaker": "narrator",
+   "text": "Same sample, same chalk marks. The padded sleeve flexes, then holds the sample inside. A wider practice piece will fit this cradle, but someone at the receiving end needs a hand free to unclip it.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "options": [
+    {
+     "text": "Set the sample back at the first chalk mark.",
+     "next": "metal.rim.rack"
+    },
+    {
+     "text": "Leave the rack for now."
+    }
+   ]
+  },
+  {
+   "id": "metal.rim.note",
+   "speaker": "narrator",
+   "text": "The top caption says BOTH BENCHES PASSED. Its corners curl away from the shift docket underneath.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Lift the caption and read the docket underneath.",
+     "next": "metal.rim.docket",
+     "effects": [
+      {
+       "setFlag": "metal.rim.record",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the docket on its hook."
+    }
+   ]
+  },
+  {
+   "id": "metal.rim.docket",
+   "speaker": "narrator",
+   "text": "Second Frost, third bell. Hall sleeve check, grey sample. The shift hand held the tray at the far end. The yard handling line is blank. The top caption has no signature or date. The Hall entry tells us where and how that earlier sleeve was checked.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Clip the dated docket back below the copied line."
+    }
+   ]
+  },
+  {
+   "id": "metal.rim.compare",
+   "speaker": "metal-steward",
+   "text": "The old caption claims both benches. Your blue runs did not happen then. The first tray slipped at the mark, and two different supports held it here. Where should the old trial sit before we set out this week’s tray?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep the older docket on its date tab beside the three blue runs.",
+     "next": "metal.rim.plan",
+     "effects": [
+      {
+       "setFlag": "metal.rim.compared",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the papers in their clips for now."
+    }
+   ]
+  },
+  {
+   "id": "metal.rim.plan",
+   "speaker": "metal-steward",
+   "text": "Corra can keep the low peg ready in the yard. The small trays reach it while both my hands are full. I can staff a wider sleeve cradle here at third bell. The old docket names a grey sample and another shift. Leave that record beside your blue runs so neither crew borrows the wrong date.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Open Corra’s low peg for the small carriers.",
+     "if": {
+      "not": {
+       "flag": "metal.rim.place",
+       "eq": "yard"
+      }
+     },
+     "next": "metal.rim.yard.plan"
+    },
+    {
+     "text": "Set the wide cradle at Bea’s staffed hall desk.",
+     "if": {
+      "not": {
+       "flag": "metal.rim.place",
+       "eq": "hall"
+      }
+     },
+     "next": "metal.rim.hall.plan"
+    },
+    {
+     "text": "Leave the receiving choice open."
+    }
+   ]
+  },
+  {
+   "id": "metal.rim.yard.plan",
+   "speaker": "metal-steward",
+   "text": "The narrow peg is at the north side of the yard. Once we fit the peg, small carriers can use the tray right away. Wide trays keep their usual staffed stop. Read back the checked blue run before Corra lets the next carrier touch the tray.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Reopen the receiving choice.",
+     "next": "metal.rim.plan"
+    },
+    {
+     "text": "Set the low peg and open the yard slot.",
+     "effects": [
+      {
+       "setFlag": "metal.rim.place",
+       "value": "yard"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "metal.rim.hall.plan",
+   "speaker": "metal-steward",
+   "text": "I can leave one sleeve in the cradle by my desk. I can unclip a wide carrier’s sample at third bell. Until then it waits here. Bring the dated checks to the cradle. There is room for both dates.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Reopen the receiving choice.",
+     "next": "metal.rim.plan"
+    },
+    {
+     "text": "Set the sleeve cradle for Bea’s staffed bell.",
+     "effects": [
+      {
+       "setFlag": "metal.rim.place",
+       "value": "hall"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "metal.rim.yard",
+   "speaker": "metal-inspector",
+   "text": "The next tray is narrow enough for the peg. The widest slot remains closed. The old sleeve entry has its own tab so Corra can show which condition belonged to which run.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Seat the small sample behind the peg and let the carrier take the tray.",
+     "if": {
+      "not": {
+       "objective": "metal.rim.receive"
+      }
+     },
+     "next": "metal.rim.yard.received",
+     "effects": [
+      {
+       "setFlag": "metal.rim.used",
+       "value": "yard"
+      }
+     ]
+    },
+    {
+     "text": "Check the yard’s first receipt.",
+     "if": {
+      "objective": "metal.rim.receive"
+     },
+     "next": "metal.rim.yard.received"
+    },
+    {
+     "text": "Step back from the receiving peg."
+    }
+   ]
+  },
+  {
+   "id": "metal.rim.yard.received",
+   "speaker": "metal-inspector",
+   "text": "The small carrier leaves now. Corra keeps the grey sleeve docket beside the separate blue run. A wide tray keeps its bell-time stop at the staffed desk.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the peg clear for the next tray."
+    }
+   ]
+  },
+  {
+   "id": "metal.rim.hall",
+   "speaker": "metal-steward",
+   "text": "A wide practice tray waits in the padded cradle. The hall hand needs to be here for the release. Bea has a separate slot for each docket. The current blue test can go above the older grey trial.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hold the sleeve while Bea unclips the wide tray at third bell.",
+     "if": {
+      "not": {
+       "objective": "metal.rim.receive"
+      }
+     },
+     "next": "metal.rim.hall.received",
+     "effects": [
+      {
+       "setFlag": "metal.rim.used",
+       "value": "hall"
+      }
+     ]
+    },
+    {
+     "text": "Check the hall’s first receipt.",
+     "if": {
+      "objective": "metal.rim.receive"
+     },
+     "next": "metal.rim.hall.received"
+    },
+    {
+     "text": "Step away from the cradle."
+    }
+   ]
+  },
+  {
+   "id": "metal.rim.hall.received",
+   "speaker": "metal-steward",
+   "text": "The wide carrier’s sample is free. Bea stamps the bell and the grey docket keeps its original date. There is no unattended sleeve at the yard. A small carrier can still use the ordinary stops there.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the cradle ready for Bea."
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.metal.rim.runs.1",
+   "objective": "metal.rim.runs",
+   "depth": 1,
+   "text": "Look for the chalk-line practice rack between Corra and the west panel stand."
+  },
+  {
+   "id": "h.metal.rim.runs.2",
+   "objective": "metal.rim.runs",
+   "depth": 2,
+   "text": "Corra left the blue sample and two chalk marks for a repeat. Watch the inside edge when the tray moves."
+  },
+  {
+   "id": "h.metal.rim.runs.3",
+   "objective": "metal.rim.runs",
+   "depth": 3,
+   "text": "The loose case is a starting reading. Keep the same tray and sample when you change what holds it."
+  },
+  {
+   "id": "h.metal.rim.runs.4",
+   "objective": "metal.rim.runs",
+   "depth": 4,
+   "text": "Try the loose tray, then the raised peg and the closed sleeve. Compare where the blue sample ends up in each run."
+  },
+  {
+   "id": "h.metal.rim.record.1",
+   "objective": "metal.rim.record",
+   "depth": 1,
+   "text": "A reused caption curls above a docket north of the practice rack."
+  },
+  {
+   "id": "h.metal.rim.record.2",
+   "objective": "metal.rim.record",
+   "depth": 2,
+   "text": "Look beneath the claim about both benches for the shift, sample and supporting hands."
+  },
+  {
+   "id": "h.metal.rim.record.3",
+   "objective": "metal.rim.record",
+   "depth": 3,
+   "text": "Only one bench has a name and a bell in the old docket. The other line stays blank."
+  },
+  {
+   "id": "h.metal.rim.record.4",
+   "objective": "metal.rim.record",
+   "depth": 4,
+   "text": "Lift the copied caption and clip the dated docket back below it. Keep the older sample and setting with that reading."
+  },
+  {
+   "id": "h.metal.rim.compare.1",
+   "objective": "metal.rim.compare",
+   "depth": 1,
+   "text": "Corra needs a rack that will work on the next round. Bea wants the older record to keep its own date."
+  },
+  {
+   "id": "h.metal.rim.compare.2",
+   "objective": "metal.rim.compare",
+   "depth": 2,
+   "text": "One mark comes from the prior shift. The other marks come from the three blue sample runs you can repeat."
+  },
+  {
+   "id": "h.metal.rim.compare.3",
+   "objective": "metal.rim.compare",
+   "depth": 3,
+   "text": "The grey sample had a staffed sleeve. Your blue tray has a separate chalk test for each support."
+  },
+  {
+   "id": "h.metal.rim.compare.4",
+   "objective": "metal.rim.compare",
+   "depth": 4,
+   "text": "Finish all three rack runs and read the docket below the newer caption. At the Trade Hall’s receiving stand, keep the older docket on its date tab beside all three blue runs."
+  },
+  {
+   "id": "h.metal.rim.setup.1",
+   "objective": "metal.rim.setup",
+   "depth": 1,
+   "text": "Bea’s receiving stand is by the central floor in the Trade Hall."
+  },
+  {
+   "id": "h.metal.rim.setup.2",
+   "objective": "metal.rim.setup",
+   "depth": 2,
+   "text": "One station saves small carriers a wait. The other reserves a hand for wide trays at a named bell."
+  },
+  {
+   "id": "h.metal.rim.setup.3",
+   "objective": "metal.rim.setup",
+   "depth": 3,
+   "text": "The first choice shows who can use a station. The second action fits it for that crew."
+  },
+  {
+   "id": "h.metal.rim.setup.4",
+   "objective": "metal.rim.setup",
+   "depth": 4,
+   "text": "Set the low peg for the yard slot or the sleeve cradle for Bea’s staffed bell. You can change it before the first tray moves."
+  },
+  {
+   "id": "h.metal.rim.receive.1",
+   "objective": "metal.rim.receive",
+   "depth": 1,
+   "text": "Look for the receiving place you set from Bea’s stand."
+  },
+  {
+   "id": "h.metal.rim.receive.2",
+   "objective": "metal.rim.receive",
+   "depth": 2,
+   "text": "The yard peg serves small trays now. Bea can unclip a wider tray at the staffed bell. Choose whose wait is worth changing."
+  },
+  {
+   "id": "h.metal.rim.receive.3",
+   "objective": "metal.rim.receive",
+   "depth": 3,
+   "text": "Once the first tray has moved, its receipt stays with that physical receiving place. Before that, you can go back to change the placement."
+  },
+  {
+   "id": "h.metal.rim.receive.4",
+   "objective": "metal.rim.receive",
+   "depth": 4,
+   "text": "Choose the low peg and seat the small sample in the Sample Yard, or choose the staffed cradle and hold the sleeve at the Trade Hall."
+  }
+ ]
+}
