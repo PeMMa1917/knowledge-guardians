@@ -2,6 +2,7 @@
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
 import { ISLAND_LANTERN_FAIR } from './lanternfair';
+import { ISLAND_MOVEMENT_DOCK, ISLAND_MOVEMENT_WORKSHOP } from './island-movement';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'island.waypost'): Interactable {
   return { id, kind: 'door', x, y, w: 1, h: 1, label, to, art };
@@ -38,6 +39,7 @@ export const ISLAND_WORKSHOP: MapDef = {
     { stamp: 'market-planter', x: 20, y: 13 }, { stamp: 'voices-bench', x: 5, y: 14 },
   ],
   interactables: [
+    ...ISLAND_MOVEMENT_WORKSHOP,
     door('island-dock-path', 4, 10, 'the west path to the dock', { map: 'island.dock', x: 7, y: 10 }),
     door('island-margin-path', 24, 10, 'the east path to the quiet margin', { map: 'island.margin', x: 5, y: 10 }),
     door('island-nexus-return', 13, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 34, y: 12 }, 'preserved.door'),
@@ -90,7 +92,10 @@ export const ISLAND_DOCK: MapDef = {
   }),
   blocks: [[1, 12, 10, 6], [11, 16, 4, 2], [15, 12, 5, 6], [20, 17, 4, 1], [24, 12, 5, 6]],
   zones: [], spawn: { x: 7, y: 10 },
-  npcs: [{ id: 'island-dockhand', x: 13, y: 8, facing: 'down' }],
+  npcs: [
+    { id: 'island-dockhand', x: 13, y: 8, facing: 'down' },
+    { id: 'island-caller', x: 17, y: 9, facing: 'down' },
+  ],
   stamps: [
     { stamp: 'island-dock-shelter', x: 7, y: 2 }, { stamp: 'island-dock-shelter', x: 20, y: 3 },
     { stamp: 'island-dock-stage', x: 11, y: 13 }, { stamp: 'island-dock-stage', x: 20, y: 14 },
@@ -99,6 +104,7 @@ export const ISLAND_DOCK: MapDef = {
     { stamp: 'market-planter', x: 14, y: 3 }, { stamp: 'voices-bench', x: 4, y: 7 },
   ],
   interactables: [
+    ...ISLAND_MOVEMENT_DOCK,
     { id: 'cross-launch', kind: 'fieldgame', game: 'cross-launch', x: 18, y: 6, w: 1, h: 1, label: 'the launch board on the dock (a crossing)', art: 'signpost' },
     ...ISLAND_LANTERN_FAIR,
     door('island-dock-return', 5, 10, 'the dock path back to the workshop', { map: 'island.workshop', x: 5, y: 10 }),

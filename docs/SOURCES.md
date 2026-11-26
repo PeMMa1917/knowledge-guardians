@@ -117,6 +117,17 @@ Fern Station and its nearby woodland are fictional. The scripted field watches r
 | HIS-S17, [Jane Goodall Institute timeline](https://janegoodall.org/jgi-timeline/) | The 1960 entry documents an observation of chimpanzee tool use at Gombe. The game gives a summary rather than a re-created notebook or historical conversation. |
 | HIS-S18, [Jane Goodall Institute, Voices of Gombe](https://janegoodall.org/news/voices-of-gombe-a-network-of-impact/) | The account credits Tanzanian field staff and records a collaboration with Baraka Daniel on a datasheet. This is a separate source about how a record was made and who receives credit. |
 
+Elian’s fictional notebook uses the two source cards for different jobs. The timeline places Goodall’s observation in 1960. The later account names a contributor to a separate field sheet. Players apply those ways of keeping a record to authored observations in the Living Forest and Water Commons.
+
+## The Edge of the Record, Archive of Voices and Civic Machine
+
+The folio and its keepers are fictional. The historical exhibits use original illustrations and prose summaries of public documents.
+
+- HIS-EDGE-01 gives the date, parties and terms recorded at Fort Wayne on 30 September 1809. Article 5 calls for a separate Wea agreement for the first tract. [Oklahoma State University treaty transcript, 7 Stat. 113](https://treaties.okstate.edu/treaties/treaty-with-the-delawares-etc-1809-0101)
+- HIS-EDGE-02 gives the Absentee Shawnee Tribe’s public account of Tecumseh’s coalition work. HIS-EDGE-03 gives the Indiana state marker’s account of the meetings in 1810 and 1811 and of Tecumseh’s objection. The game attributes each account and leaves the exact words spoken open. [Absentee Shawnee Tribe public introduction](https://www.astribe.com/) · [Indiana Historical Bureau marker](https://www.in.gov/history/state-historical-markers/find-a-marker/tecumseh-and-harrison/)
+- HIS-EDGE-05 supplies the separate convention dated 26 October 1809. Its preamble and signatures identify listed Wea representatives and William Henry Harrison. The text records a declaration and leaves the circumstances of negotiation open. [Oklahoma State University treaty transcript, 7 Stat. 116](https://treaties.okstate.edu/treaties/treaty-with-the-wea-1809-0103)
+- HIS-EDGE-04 distinguishes the three federally recognized Shawnee governments. HIS-EDGE-06 supplies the Eastern Shawnee Tribe of Oklahoma’s own constitutional name and branches of government from Articles I and VI. The 1999 amendment certification dates part of the published file. [Eastern Shawnee Tribe of Oklahoma history](https://www.estoo-nsn.gov/history) · [Official constitutional copy](https://www.estoo-nsn.gov/government/page/constitution-eastern-shawnee-tribe-oklahoma)
+
 ## Chapter 15: Council of Inquiry
 
 The Council stages fictional work and keeps two historical reading cards. The cards give methods the player can try on a separate case.

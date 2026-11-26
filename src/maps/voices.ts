@@ -21,6 +21,8 @@ const lastLampReady: Condition = { objective: 'voices.finish' };
 const lastLampUndecided: Condition = { all: [lastLampReady, { not: { flagSet: 'cross.last-lamp' } }] };
 const lastLamp = (way: string): Condition => ({ flag: 'cross.last-lamp', eq: way });
 const lampTrial = (bracket: string): Condition => ({ all: [lastLampUndecided, { flag: 'voices.vow.last', eq: bracket }] });
+const recordFolio: Condition = { flag: 'perspective.active', eq: 'record-edge-folio' };
+const recordCases: Condition = { objective: 'voices.arrival' };
 
 export const VOICES_LISTENING: MapDef = {
   id: 'voices.listening', name: 'Archive of Voices: Listening Room', world: 'WORLD-14',
@@ -81,6 +83,20 @@ export const VOICES_LISTENING: MapDef = {
     sign('voices-vow-room-seat', 22, 11, 'the promise lamp at the staffed reading-room seat', 'voices.lamp',
       'The lamp is here for the reading turn. A carrier took the extra walk from the quay and found somebody at the seat. The desk still has its own check-in hours.',
       { visibleIf: lastLamp('room') }),
+    { id: 'voices-edge-account-case', kind: 'exhibit', exhibit: 'OBJ-EDGE-TECUMSEH', x: 17, y: 11, w: 1, h: 1,
+      label: 'the two published accounts of Tecumseh', art: 'voices.permission', visibleIf: recordCases },
+    { id: 'voices-edge-account-stand', kind: 'scene', node: 'record.edge.voice', x: 18, y: 11, w: 1, h: 1,
+      label: 'the accounts’ date windows', art: 'preserved.folder', walkThrough: true, visibleIf: recordFolio,
+      artOpen: { key: 'voices.paired', if: { flag: 'record.edge.account', eq: true } } },
+    { id: 'voices-edge-mount', kind: 'scene', node: 'record.edge.mount', x: 16, y: 13, w: 1, h: 1,
+      label: 'the hinged stand for the two readings', art: 'preserved.folder', walkThrough: true,
+      visibleIf: { all: [recordFolio, { objective: 'record.edge.voices.compare' }, { not: { flagSet: 'record.edge.voices.mount' } }] } },
+    sign('voices-edge-open-article', 16, 13, 'Article 5 on the first leaf', 'preserved.catalogue',
+      'Fort Wayne, 30 September 1809. This article calls for a separate Wea agreement for the first tract. The facing leaf gives Tecumseh’s challenge its own dates and names both accounts. See the separately dated convention at Civic Library Dispatch.',
+      { visibleIf: { flag: 'record.edge.voices.mount', eq: 'treaty' } }),
+    sign('voices-edge-open-voice', 6, 10, 'the public accounts facing the treaty', 'voices.paired',
+      'The Absentee Shawnee Tribe’s public account sits beside the Indiana marker’s dates for Tecumseh’s meetings in 1810 and 1811. The treaty leaf shows who appears as a party and points to the separate convention at Civic Library Dispatch.',
+      { visibleIf: { flag: 'record.edge.voices.mount', eq: 'voice' } }),
   ],
   lights: [
     { x: 8, y: 8, r: 61, color: 0xf0c1aa }, { x: 14, y: 8, r: 77, color: 0xe9c7ad },
@@ -143,6 +159,11 @@ export const VOICES_WALK: MapDef = {
     sign('voices-vow-next-card', 8, 9, 'the promise lamp’s next watch card', 'voices.permission',
       'The check-in desk closed at its usual hour. A visitor came after it shut. She chose to come back in the morning. Her seat and the keeper’s first turn are marked here.',
       { visibleIf: lastLamp('defer') }),
+    { id: 'voices-edge-treaty-case', kind: 'exhibit', exhibit: 'OBJ-EDGE-FORT-WAYNE', x: 5, y: 8, w: 1, h: 1,
+      label: 'the Fort Wayne treaty case', art: 'preserved.catalogue', visibleIf: recordCases },
+    { id: 'voices-edge-treaty-stand', kind: 'scene', node: 'record.edge.fort', x: 6, y: 8, w: 1, h: 1,
+      label: 'the treaty’s party and article windows', art: 'preserved.folder', walkThrough: true, visibleIf: recordFolio,
+      artOpen: { key: 'voices.register', if: { flag: 'record.edge.parties', eq: true } } },
   ],
   lights: [
     { x: 11, y: 7, r: 64, color: 0xffd5a4 }, { x: 17, y: 8, r: 82, color: 0xc0d8d5 },

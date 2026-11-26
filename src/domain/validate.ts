@@ -33,6 +33,15 @@ export function validateCampaign(s: any): string[] {
   if (!s.pos || typeof s.pos.x !== 'number' || typeof s.pos.y !== 'number') p.push('pos invalid');
   for (const k of ['flags', 'inventory', 'relations', 'forge', 'events']) if (!s[k] || typeof s[k] !== 'object' || Array.isArray(s[k])) p.push(`${k} must be an object`);
   for (const k of ['journal', 'notes', 'cards', 'objectivesDone']) if (!Array.isArray(s[k])) p.push(`${k} must be a list`);
+  const diary = s.adventureDiary;
+  const isDate = (value: unknown) => typeof value === 'string' && Number.isFinite(Date.parse(value));
+  if (!Array.isArray(diary?.entries) || diary.entries.some((entry: any) =>
+    !entry || !['quest', 'choice', 'experience'].includes(entry.kind) || !isDate(entry.at)
+    || !['id', 'title', 'text', 'mapId'].every((key) => typeof entry[key] === 'string'))) p.push('adventure journal entries invalid');
+  if (!Array.isArray(diary?.noteDetails) || diary.noteDetails.length !== s.notes?.length || diary.noteDetails.some((note: any) =>
+    !note || !['note', 'reflection', 'question'].includes(note.kind) || (note.at !== null && !isDate(note.at))
+    || (note.mapId !== null && typeof note.mapId !== 'string') || typeof note.resolved !== 'boolean')) p.push('adventure journal note details invalid');
+  if (Array.isArray(s.notes) && s.notes.some((note: unknown) => typeof note !== 'string')) p.push('adventure journal notes invalid');
   if (s.inventory) for (const [id, q] of Object.entries(s.inventory)) if (!Number.isInteger(q) || (q as number) < 0 || (q as number) > 999) p.push(`bad quantity for ${id}`);
   if (typeof s.marks === 'number' && (s.marks < 0 || s.marks > 1_000_000)) p.push('marks out of range');
   if (s.events && (!Array.isArray(s.events.seen) || typeof s.events.clock !== 'number')) p.push('events invalid');
@@ -316,6 +325,10 @@ export function validateContent(pack: ContentPack): string[] {
   (pack.keepsakes ?? []).forEach((k) => {
     dup('keepsake', k.id); cond(k.if, `keepsake ${k.id}`); text(`keepsake ${k.id}`, k.text);
     if (!/^[a-z0-9-]{1,24}$/.test(k.id)) p.push(`keepsake ${k.id}: id must be short lowercase words with hyphens`);
+    if (k.equip !== undefined) {
+      text(`field tool ${k.id} method`, k.equip?.method);
+      text(`field tool ${k.id} hint`, k.equip?.hint);
+    }
   });
   (pack.memories ?? []).forEach((m) => {
     dup('memory', m.id); cond(m.if, `memory ${m.id}`); text(`memory ${m.id}`, m.line);
@@ -348,7 +361,7 @@ export function validateContent(pack: ContentPack): string[] {
   (pack.keepsakes ?? []).forEach((k) => {
     if (!k.use) p.push(`keepsake ${k.id}: needs a use text`);
     const used = (pack.clues ?? []).some((c) => c.views.some((v) => v.keepsake === k.id)) || (pack.keepsakeTalks ?? []).some((t) => t.keepsake === k.id);
-    if (pack.clues?.length && !used) p.push(`keepsake ${k.id}: does nothing in the world (use it in a clue or a talk)`);
+    if (pack.clues?.length && !used && !k.equip) p.push(`keepsake ${k.id}: needs a clue, dialogue use or field tool method`);
   });
   (pack.fray ?? []).forEach((f) => { dup('fray', f.id); text(`fray ${f.id}`, f.pattern); text(`fray ${f.id}`, f.weakness); });
   pack.showdowns.forEach((sd) => (sd.testimony?.contradictedBy ?? []).forEach((cid) => pack.cards.some((x) => x.id === cid) || p.push(`showdown ${sd.id}: testimony names unknown card ${cid}`)));

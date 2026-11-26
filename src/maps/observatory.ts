@@ -15,6 +15,8 @@ function archiveScene(id: string, x: number, y: number, label: string, art: stri
 
 const archiveTimeline: Condition = { flag: 'coast.archive.edition', eq: 'timeline' };
 const archiveRegister: Condition = { flag: 'coast.archive.edition', eq: 'register' };
+const opticalCase: Condition = { objective: 'coast.revise' };
+const useLightScreen: Condition = { flag: 'perspective.active', eq: 'folding-light-screen' };
 
 const harbourWidth = 29;
 const harbourHeight = 21;
@@ -152,6 +154,19 @@ export const OBSERVATORY_STATION: MapDef = {
     sign('coast-station-recheck', 20, 9, 'the headland’s next reading', 'coast.gauge',
       'Two finger-widths at the headland. Same gauge, same interval, one bell later. No second quay reading has reached the station.',
       { flag: 'coast.gauge.recheck', visibleIf: { flagSet: 'coast.notice' } }),
+    { id: 'coast-shadow-board', kind: 'fieldgame', game: 'coast-shadow-board', x: 6, y: 10, w: 1, h: 1,
+      label: 'Neri’s two-lamp trial board', art: 'coast.clear-frame', walkThrough: true, visibleIf: opticalCase },
+    archiveScene('coast-optics-handover', 7, 10, 'Neri’s unfilled shadow handover', 'preserved.slip', 'coast.optics.post',
+      { all: [{ objective: 'coast.optics.compare' }, { not: { flagSet: 'coast.optics.plan' } }] }),
+    sign('coast-optics-board-copy', 7, 10, 'the finished shadow board', 'forecast-board',
+      'The shadow moves between the two marks under the two lamps. The pointer stays on the notch. The crew compares the notch before reporting that the pointer moved.',
+      { visibleIf: { flag: 'coast.optics.plan', eq: 'board' } }),
+    sign('coast-optics-runner-copy', 7, 10, 'the runner’s shadow handover', 'preserved.display-paired',
+      'At the second bell, take the quay crew the two lamp marks together with a tracing of the stationary notch. The runner can show where the shadow was made.',
+      { visibleIf: { flag: 'coast.optics.plan', eq: 'runner' } }),
+    { id: 'coast-optics-arch', kind: 'door', x: 19, y: 13, w: 1, h: 1,
+      label: 'the service arch visible under the light screen', art: 'preserved.door', visibleIf: useLightScreen,
+      to: { map: 'observatory.archive', x: 16, y: 12 } },
   ],
   lights: [
     { x: 11, y: 5, r: 58, color: 0xf8d7a7 }, { x: 15, y: 9, r: 52, color: 0xf4e5b0 },
@@ -251,6 +266,11 @@ export const OBSERVATORY_ARCHIVE: MapDef = {
       'coast.archive.timeline', archiveTimeline),
     archiveScene('coast-archive-index', 8, 10, 'the archive index for the quay card', 'preserved.display-records',
       'coast.archive.index', archiveRegister),
+    archiveScene('coast-optics-method', 15, 7, 'the source card for the trial board', 'icon.book',
+      'coast.optics.card', opticalCase),
+    { id: 'coast-optics-arch-return', kind: 'door', x: 17, y: 13, w: 1, h: 1,
+      label: 'the service passage up to the headland', art: 'preserved.door', visibleIf: useLightScreen,
+      to: { map: 'observatory.station', x: 18, y: 13 } },
   ],
   lights: [
     { x: 4, y: 6, r: 61, color: 0xecd8a3 }, { x: 18, y: 6, r: 60, color: 0xa7d2ce },

@@ -107,6 +107,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.scale.on('resize', () => this.fitCamera());
     this.playMusic(this.map.music);
     this.cameras.main.fadeIn(ctx.settings.reducedMotion ? 0 : 400, 10, 8, 24);
+    ctx.controller.dispatch({ type: 'VisitPlace', name: this.map.name });
     // Arrival zone (e.g. "emberford") is recorded the moment the map opens.
     this.checkZones(true);
     ctx.ui.refreshHud();

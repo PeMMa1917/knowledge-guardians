@@ -27,6 +27,8 @@ const counted: Condition = { flag: 'civic.overlap.counted', eq: true };
 const arrangements = civicReceivingArrangements();
 const laneAvailable: Condition = { objective: 'civic.finish' };
 const laneChoice = (route: RouteSocket): Condition => ({ flag: 'civic.routing.layout', eq: route });
+const recordReferral: Condition = { flagSet: 'record.edge.voices.mount' };
+const recordFolio: Condition = { all: [recordReferral, { flag: 'perspective.active', eq: 'record-edge-folio' }] };
 const reliefReply = (route: RouteSocket): Condition => ({ all: [
   { objective: 'water.routing.finish' }, { flag: 'water.routing.layout', eq: route },
 ] });
@@ -92,6 +94,14 @@ export const CIVIC_DISPATCH: MapDef = {
     sign('civic-routing-water-channel', 17, 6, 'Omi’s relief note from the lower channel', 'water.channel',
       'You widened the lower route at the weir. Ade has hung the seed rows’ unmet request beside the count. The lane board has the same spare-piece constraint. Its readers can tell Ade whether a route and a time fit.',
       { visibleIf: reliefReply('second') }),
+    { id: 'civic-edge-wea-case', kind: 'exhibit', exhibit: 'OBJ-EDGE-WEA', x: 5, y: 6, w: 1, h: 1,
+      label: 'the separate Wea convention', art: 'civic.ledger', visibleIf: recordReferral },
+    { id: 'civic-edge-wea-stand', kind: 'scene', node: 'record.edge.wea', x: 5, y: 7, w: 1, h: 1,
+      label: 'the stand for the two treaty dates', art: 'preserved.folder', walkThrough: true, visibleIf: recordFolio,
+      artOpen: { key: 'preserved.display-paired', if: { flag: 'record.edge.wea', eq: true } } },
+    { id: 'civic-edge-place', kind: 'scene', node: 'record.edge.post', x: 11, y: 14, w: 1, h: 1,
+      label: 'Lin’s stand for the source copies', art: 'civic.notice', walkThrough: true,
+      visibleIf: { all: [recordFolio, { objective: 'record.edge.civic.compare' }, { not: { flagSet: 'record.edge.civic.mount' } }] } },
   ],
   lights: [
     { x: 13, y: 7, r: 85, color: 0xe5bd87 }, { x: 15, y: 9, r: 68, color: 0xc3dfda },
@@ -157,6 +167,14 @@ export const CIVIC_STEPS: MapDef = {
     sign('civic-routing-steps-ramp', 19, 7, 'the ramp and trial notice at North Steps', 'forest.ridge',
       `The ramp tile comes to North Steps. In the trial North Steps ${civicLaneReading(civicLaneRouting('first').steps)}. Keep the Canal Walk requests visible and ask which evening time would work.`,
       { flag: 'civic.routing.seen', visibleIf: laneChoice('first') }),
+    { id: 'civic-edge-eastern-case', kind: 'exhibit', exhibit: 'OBJ-EDGE-EASTERN', x: 14, y: 6, w: 1, h: 1,
+      label: 'the Eastern Shawnee Tribe of Oklahoma’s constitutional case', art: 'preserved.folder', visibleIf: recordReferral },
+    { id: 'civic-edge-eastern-stand', kind: 'scene', node: 'record.edge.eastern', x: 14, y: 7, w: 1, h: 1,
+      label: 'the constitutional title window', art: 'preserved.slip', walkThrough: true, visibleIf: recordFolio,
+      artOpen: { key: 'civic.ledger', if: { flag: 'record.edge.eastern', eq: true } } },
+    sign('civic-edge-dates', 14, 9, 'two separate treaty records at North Steps', 'preserved.display-paired',
+      '30 September 1809, Fort Wayne. Article 5 calls for a separate agreement. 26 October 1809, Vincennes. The convention records a declaration by the listed Wea representatives. A reader has pencilled in both document locators for the next copy.',
+      { flag: 'record.edge.seen', visibleIf: { flag: 'record.edge.civic.mount', eq: 'dates' } }),
   ],
   lights: [
     { x: 11, y: 8, r: 72, color: 0xf9d4a2 }, { x: 16, y: 8, r: 67, color: 0xe6b7ab },
@@ -209,6 +227,9 @@ export const CIVIC_CANAL: MapDef = {
     sign('civic-routing-canal-ramp', 24, 8, 'the ramp and trial notice at Canal Walk', 'forest.ridge',
       `The ramp tile comes to Canal Walk. In the trial Canal Walk ${civicLaneReading(civicLaneRouting('second').canal)}. Keep the North Steps requests visible and ask which pick-up time would work.`,
       { flag: 'civic.routing.seen', visibleIf: laneChoice('second') }),
+    sign('civic-edge-scope', 13, 10, 'the named constitution’s source line at Canal Walk', 'civic.notice',
+      'The direction points to the Eastern Shawnee Tribe of Oklahoma’s own public constitution at North Steps. Beside it, a reader has made two columns for the Civic rehearsal. One names who wrote down the request. The other names who may decide it.',
+      { flag: 'record.edge.seen', visibleIf: { flag: 'record.edge.civic.mount', eq: 'scope' } }),
   ],
   lights: [
     { x: 9, y: 9, r: 67, color: 0xf1c591 }, { x: 16, y: 8, r: 70, color: 0xd5dbb2 },

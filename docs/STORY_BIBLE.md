@@ -208,6 +208,7 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 1 | A Second Handle | Self, Person | s | mixed | carry together, mend in private, set the case down | Kip recalls when to offer help or share a setback in Emberford |
 | 1 | The Repair Queue | Person, Society | m | mixed | pay for paired tickets and open the yard, carry a relay tray across the market, return the slate and keep appointments | Kip follows the handoff to its end. The Council can recall what the public kept and what stayed private. |
 | 1 | The Lantern Fair: Two Places to Stand | Society, Person | s | mixed | rehearse the ring or the trail from both stations, dispatch one tested plan, or leave the rehearsal open | The Island fair borrows the sketch and its limits. |
+| 1 | The Back of the Bill | Person, Society | s | mixed | use Nell’s frame, unfold the loose crease, or leave the fragment | Bill 12 reaches Lark with what Kip and Sefa could see. |
 | 2 | The dispatch: a king's boast | Self, Society | M | serious | pair, print, read | Vesper is right that the case over-claims |
 | 2 | The Borrowed Translation | Person | s | funny | argue, go elsewhere, do without | Ambry's footnotes |
 | 2 | The Runner's Second Line | Person, Society | m | mixed | split the public docket, fold the receipt, leave the runner's form | Nellis remembers who could see the correction and when the packet arrived |
@@ -218,9 +219,11 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 3 | The Fold in the Gauge (opens in the Nexus) | Person, Society | s | mixed | leave the owner line open, return the checked tool, or arrange its owner's loan | Nima returns, the tool works again, and the Nexus closes the found entry |
 | 4 | The forecast: how sure to say it | Self, Society | M | serious | signal, runner | Vesper uses Ise's phrase |
 | 4 | The Tide Engine | Technology | m | mixed | reset (readings), post both, trust it | The furnace dial |
+| 4 | The Shadow on the Handover | Nature, Technology | s | serious | compare both lamps, then leave a board or send the runner with a traced notch | The screen opens the service arch and supports a new check at the Council. |
 | 5 | The biased count | Self, Nature | M | serious | chapter response | A sighting nobody explains |
 | 5 | The Geese on the Path | Nature | s | funny | watch, wade, turn back | Observer effect |
 | 5 | The Creek Keeps Its Own Time | Nature | m | mixed | check both banks and open the north rail, mark the sheltered cart bend, or let Ayla’s crew take the usual round | The next watch can check both banks. The Council files the crossing that the player actually used. |
+| 5 | The Edge of the Page | Nature, Society | s | mixed | bind the view limits or the crew handovers first and follow the resulting trail | Elian’s field notebook carries the method to Water Commons |
 | 6 | The material call | Technology, Self | M | serious | chapter response | Hesper's loyalty mission |
 | 6 | The Sleeves That Come Back | Society, Technology | s | mixed | reuse clean sleeves locally, sort at one stand, leave the counts open | The next shift finds four usable sleeves and two awaiting repair with a single count |
 | 6 | The Furnace Dial | Technology, Person | s | mixed | tin test, ask about colour, leave | The gate machine |
@@ -228,11 +231,13 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 7 | The missing Tuesday | Society | M | serious | chapter response | Lark: "The Nexus did the same" |
 | 7 | The Crowd at the Press | Society | m | serious | read the ledger, invite three, shut the doors | Osk keeps checking |
 | 7 | The Crooked Margin | Technology, Society | m | mixed | compare both proofs, then fold the full order, send linked strips, or let the crew call turns | Lark hints at an earlier missing limit. The Council receives the actual landing outcome. |
+| 7 | The Back of the Bill: Lark’s Proof | Society, Technology | s | mixed | match the press proof and the signed division, or leave the proof at the press | The checked copy shows Hari what the player checked. |
 | 8 | The chart's blank | Nature, Society | M | serious | chapter response | Local names |
 | 8 | The Bell under the Water | Supernatural | m | mixed | listen, write in the margin, dismiss | A myth that carries a fact |
 | 9 | One Line Before the Bell (optional foyer Showdown) | Person, Society | M | serious | step away or reach one of five Showdown outcomes | Vesper's lead to Harrowmere opens after the Showdown |
 | 9 | Madame Quandary's Card | Fate, Self | s | funny | ask how often, fail on purpose, worry | Before the Curtain |
 | 9 | Before the Curtain | Self | s | mixed | speak, read cards, pass to a companion | Courage while unsure |
+| 9 | The Back of the Bill: The Usher’s Rack | Society, Person | s | mixed | hang the price at the door with a separate split, hang both at the bench, or let Hari wait | A visitor gets a checked answer and the next shift can use the rack. |
 | 10 | The weighed-in basket | Society, Person | M | serious | chapter response | Rook joins |
 | 10 | The Lady of Fair Measure | God (invented), Society | m | serious | ask the keeper, test beside it, step back | Harrowmere (a claim sold as sacred certainty) |
 | 10 | The Goat Who Was Certain | Nature, Person | s | funny | chase, follow the slips, let it eat | Memory fills gaps |
@@ -240,6 +245,7 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 11 | The drought plan | Society, Self | M | serious | chapter response | The Harrowmere card |
 | 11 | The Night Surge | Nature, Self | M | serious | open, half open (gauge), keep shut | Harrowmere: a flood choice made long ago |
 | 11 | Room in the Relief Basin | Nature, Technology | m | mixed | rehearse two pulse sizes, widen the rows or the lower channel, keep the other request | Ade sees the unmet request beside the installed Water Commons plan |
+| 11 | The Bell Behind the Reeds | Nature, Society | s | mixed | find a same-bell view or a dated handover, leave local notes or pair the readings | The crew can follow the notebook’s return track and check the next reading |
 | 11 | Ise's confession | Self, Person | M | serious | quiet, open, herself | Letters 11 and 12; epilogue |
 | 11 | The Clean Well (Rook) | Self, Society | m | serious | public, quiet, the family | Rook's epilogue |
 | 12 | The dispatch rule | Technology, Society | M | serious | chapter response | Ise defends quiet correction |
@@ -249,12 +255,14 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 13 | The Second Take | Person, Society | m | serious | wind both takes, then keep the public passage at the desk or copy it to the waiting bench | Elsbet’s index lets the player show Vesper who each passage was for. |
 | 13 | Two Friends, One Walk | Person (friends) | s | funny | find the ledger, record both, leave | Both partly right |
 | 13 | The Lamp We Owe | God (invented promise), Society | m | mixed | staff the quay bench, bring the welcome indoors, hand over to the morning keeper | The Council's review of what a rule and a promise can each do |
+| 13 | The Edge of the Record | Society | s | serious | open with Article 5 or Tecumseh’s challenge, then choose where to post the separately checked records | Civic readers keep a treaty declaration, a request and a decision tied to their own records |
 | 13 | The Famous Ancestor (Kip) | Self | m | mixed | proud, not, mixed | Kip's epilogue |
 | 14 | The island plan with Vesper | Person, Nature | M | mixed | chapter response | Vesper comes to the Council |
 | 14 | When to Launch | Society, Nature | m | mixed | test both, launch when both agree, leave | Two communities of knowers |
 | 14 | The Lantern Fair: An Answer at the Bend | Society, Nature | s | mixed | fit the welcome under the shelter, carry the answer along the landward trail, or leave the lamps on the rack | The loading crew keeps its turn and a place in the celebration. |
 | 15 | The Council: what do the Guardians owe? | Self, Person, Society | M | serious | correct, recruit, expose, both (or "Not yet") | Afterwards |
 | 15 | The Handover Before the Bell | Person, Society | s | mixed | use an earlier proof or a fresh packet, then post the pair or staff the relay | The next hearing and the crew's epilogue |
+| 15 | The Pointer and Its Shadow | Technology, Society | s | serious | compare actual movement with a change in light, then post the notch or staff the rail | The next carrier can check the cue while handling a load. |
 
 **Gaps to fill next:** Seal agents who remember the player in chapters 6 and 7, a weather or creature crossing in chapter 15, and a technology crossing that uses the Civic Machine itself.
 

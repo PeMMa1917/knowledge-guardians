@@ -220,6 +220,167 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH5-R07",
+   "world": "WORLD-06",
+   "title": "The Edge of the Page",
+   "knowledgeQuestion": "How do a standing place and a person’s work determine what a field record can show?",
+   "stake": "Elian wants the next crew to see whose view a copied count carries.",
+   "available": {
+    "objective": "forest.arrival"
+   },
+   "objectives": [
+    {
+     "id": "forest.observer.bound",
+     "title": "Compare the trail watches, credit both Gombe records, and bind Elian’s new notebook.",
+     "essential": false,
+     "done": {
+      "flag": "keepsake.observer-notebook",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "perspective",
+       "power",
+       "evidence",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "biology",
+       "anthropology"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "human",
+       "solo": "relational"
+      },
+      "minutes": 3
+     }
+    },
+    {
+     "id": "forest.observer.notes",
+     "title": "Open the notebook in your Bag and make two field checks for its first page.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "forest.observer.first",
+        "eq": true
+       },
+       {
+        "flag": "forest.observer.second",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "certainty",
+       "objectivity",
+       "interpretation",
+       "explanation",
+       "perspective"
+      ],
+      "atl": [
+       "research",
+       "self-management"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "biology",
+       "ess",
+       "geography"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      },
+      "minutes": 2
+     },
+     "visible": {
+      "objective": "forest.observer.bound"
+     }
+    },
+    {
+     "id": "forest.observer.finish",
+     "title": "Follow the return path that the two notebook entries reveal.",
+     "essential": false,
+     "done": {
+      "flag": "forest.observer.crossed",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "responsibility",
+       "justification",
+       "power"
+      ],
+      "atl": [
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "geography",
+       "ess",
+       "anthropology"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "minutes": 2
+     },
+     "visible": {
+      "objective": "forest.observer.notes"
+     },
+     "onComplete": [
+      {
+       "journal": "j.forest.observer"
+      }
+     ]
+    }
+   ]
   }
  ],
  "dialogue": [
@@ -746,6 +907,263 @@
    "speaker": "forest-steward",
    "text": "Both readings stay here with the chosen route strip. Leave today’s times on them. My sister will need her own checks next time the creek moves.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.observer.bind",
+   "speaker": "forest-naturalist",
+   "text": "Goodall’s observation at Gombe has a year and a particular action. The later account names Baraka Daniel and a different field sheet. Keep those parts on their own pages. Now look at the sheets from our creek and ridge. I have space to stitch a first section into a new notebook for this station.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Stitch in a first section for the limits of each view.",
+     "next": "forest.observer.bound.conditions",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.gombe-credit"
+       },
+       {
+        "objective": "forest.compare"
+       },
+       {
+        "not": {
+         "flag": "keepsake.observer-notebook",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.observer.method",
+       "value": "conditions"
+      }
+     ]
+    },
+    {
+     "text": "Stitch in a first section for the crew whose watch is missing.",
+     "next": "forest.observer.bound.crew",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.gombe-credit"
+       },
+       {
+        "objective": "forest.compare"
+       },
+       {
+        "not": {
+         "flag": "keepsake.observer-notebook",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.observer.method",
+       "value": "crew"
+      }
+     ]
+    },
+    {
+     "text": "Read how to open the notebook in the field.",
+     "next": "forest.observer.remember",
+     "if": {
+      "flag": "keepsake.observer-notebook",
+      "eq": true
+     }
+    },
+    {
+     "text": "Leave both pages on Elian’s desk."
+    }
+   ]
+  },
+  {
+   "id": "forest.observer.bound.conditions",
+   "speaker": "forest-naturalist",
+   "text": "I’ll clip each drawing beside its standing place. Open the new notebook in your Bag and take it to the creek screen and ridge. The two drawings can point you to the covered path I use on the lower return.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.observer.bound.crew",
+   "speaker": "forest-naturalist",
+   "text": "I’ll put a return slot on the first page for both crews. Open the new notebook in your Bag and follow the two handovers. When you have both, the marks can take you along the ridge crew’s quieter way into the clearing.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.observer.remember",
+   "speaker": "forest-naturalist",
+   "text": "Open the notebook in your Bag to follow its field marks. The chapter watches can still use the old paths. See which field page you stitched first.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.observer.creek",
+   "speaker": "narrator",
+   "text": "A reed lies across the opening. You saw the whole gap a beat earlier. Slip the narrow drawing under the notebook clip and mark the beat when the opening disappeared.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the reed edge beside the hidden part of the watch.",
+     "next": "forest.observer.creek.saved",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "observer-notebook"
+       },
+       {
+        "not": {
+         "flag": "forest.observer.first",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.observer.first",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the view slip in its slot."
+    }
+   ]
+  },
+  {
+   "id": "forest.observer.creek.saved",
+   "speaker": "narrator",
+   "text": "The notebook keeps a blank for the covered beat. It keeps a separate place for a clear view with zero crossings. The edge line starts an old lower return mark.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation"
+  },
+  {
+   "id": "forest.observer.ridge",
+   "speaker": "narrator",
+   "text": "From this post, the ridge opening is clear. A tree hides the way out of it. Two wing passes go through the opening. Match the actual lines of sight to the short diagram.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the clear opening and the hidden exit to the page.",
+     "next": "forest.observer.ridge.saved",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "observer-notebook"
+       },
+       {
+        "not": {
+         "flag": "forest.observer.second",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.observer.second",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the ridge drawing under its clip."
+    }
+   ]
+  },
+  {
+   "id": "forest.observer.ridge.saved",
+   "speaker": "narrator",
+   "text": "The two marks stand for passes through this gap. A later reader gets the place, the number and the hidden exit. Together the two field sketches show Elian’s covered return trail.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation"
+  },
+  {
+   "id": "forest.observer.lamp",
+   "speaker": "narrator",
+   "text": "The dawn lamp crew keeps its slip at this slot. The keeper wrote that they heard wings from behind the screen at the early bell. Use the handover clips to bring the keeper’s role with the time.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the lamp crew and their early bell beside the heard entry.",
+     "next": "forest.observer.lamp.saved",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "observer-notebook"
+       },
+       {
+        "not": {
+         "flag": "forest.observer.first",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.observer.first",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the dawn slip in the slot."
+    }
+   ]
+  },
+  {
+   "id": "forest.observer.lamp.saved",
+   "speaker": "narrator",
+   "text": "The early slip has a crew, a place and a sound. It also points toward a ridge return slot where another keeper can say what was visible.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation"
+  },
+  {
+   "id": "forest.observer.bridge",
+   "speaker": "narrator",
+   "text": "The bridge crew kept a later slip. Their watch on the ridge counted passages through an open gap. The keeper left a trail mark after clocking out. Keep this entry with the job that shaped it.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the ridge keeper and their later bell beside the seen entry.",
+     "next": "forest.observer.bridge.saved",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "observer-notebook"
+       },
+       {
+        "not": {
+         "flag": "forest.observer.second",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.observer.second",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the bridge slip in its slot."
+    }
+   ]
+  },
+  {
+   "id": "forest.observer.bridge.saved",
+   "speaker": "narrator",
+   "text": "The two entries keep their own kind of observation. The ridge crew’s mark starts along the higher path into Bridge Clearing. They use it to take the late copy back.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation"
   }
  ],
  "hints": [
@@ -844,6 +1262,78 @@
    "objective": "forest.spate.crossed",
    "depth": 4,
    "text": "On Listening Trail use the opened rail or the screened crossing. The return slip will be at Fern Station."
+  },
+  {
+   "id": "h.forest.observer.bound.1",
+   "objective": "forest.observer.bound",
+   "depth": 1,
+   "text": "Elian has an unbound notebook by the two Gombe cases."
+  },
+  {
+   "id": "h.forest.observer.bound.2",
+   "objective": "forest.observer.bound",
+   "depth": 2,
+   "text": "Read both source cards and talk to Elian about the separate credits. Make the repeated watches before you bind a cover."
+  },
+  {
+   "id": "h.forest.observer.bound.3",
+   "objective": "forest.observer.bound",
+   "depth": 3,
+   "text": "Use the creek screen and ridge overlook at first light and later. Compare the watches with Elian."
+  },
+  {
+   "id": "h.forest.observer.bound.4",
+   "objective": "forest.observer.bound",
+   "depth": 4,
+   "text": "When Elian has credited the two cases and compared your watches, open the binding table near him and pick the first section."
+  },
+  {
+   "id": "h.forest.observer.notes.1",
+   "objective": "forest.observer.notes",
+   "depth": 1,
+   "text": "Open the field observer’s notebook from your Bag."
+  },
+  {
+   "id": "h.forest.observer.notes.2",
+   "objective": "forest.observer.notes",
+   "depth": 2,
+   "text": "Your first section brings out two marks on Listening Trail."
+  },
+  {
+   "id": "h.forest.observer.notes.3",
+   "objective": "forest.observer.notes",
+   "depth": 3,
+   "text": "For standing places, follow the creek and ridge edges. For crew handovers, follow the lamp and bridge slots."
+  },
+  {
+   "id": "h.forest.observer.notes.4",
+   "objective": "forest.observer.notes",
+   "depth": 4,
+   "text": "Open both marks, then clip each observation to the notebook. Keep the notebook open to see the marked return path."
+  },
+  {
+   "id": "h.forest.observer.finish.1",
+   "objective": "forest.observer.finish",
+   "depth": 1,
+   "text": "The paired notes point to a return path."
+  },
+  {
+   "id": "h.forest.observer.finish.2",
+   "objective": "forest.observer.finish",
+   "depth": 2,
+   "text": "Find the lower trail if you followed the two views. Find the higher trail if you followed the crew slots."
+  },
+  {
+   "id": "h.forest.observer.finish.3",
+   "objective": "forest.observer.finish",
+   "depth": 3,
+   "text": "Walk to the marked onward path with the notebook active."
+  },
+  {
+   "id": "h.forest.observer.finish.4",
+   "objective": "forest.observer.finish",
+   "depth": 4,
+   "text": "Use the lower path to Fern Station from west of the creek, or the crew path into Bridge Clearing from the far ridge."
   }
  ],
  "journal": [
@@ -856,6 +1346,28 @@
    "id": "j.forest.spate",
    "claimKind": "interpretation",
    "text": "The creek marks put two readings in one place. The cart crew’s tracks added a view of the bend. The route we opened carried the notes. The crew kept the two places and their times with the next watch’s copy."
+  },
+  {
+   "id": "j.forest.observer",
+   "claimKind": "interpretation",
+   "text": "The new Fern Station notebook takes each field note with its place, view, keeper and time. It led to a return path. The Gombe records keep their own dates and contributors."
+  }
+ ],
+ "keepsakes": [
+  {
+   "id": "observer-notebook",
+   "name": "Elian’s field notebook",
+   "text": "Elian stitched this notebook for Fern Station. A clip holds a dated view or crew handover beside the line it helps test.",
+   "if": {
+    "flagSet": "forest.observer.method"
+   },
+   "where": "Fern Station, after the two Gombe records and the trail watch comparison.",
+   "use": "Open it in your Bag. Follow the field marks at Listening Trail and check two pegs in Water Commons.",
+   "equip": {
+    "method": "Hold the count beside its place, time and observer. Mark a gap when the view is covered.",
+    "hint": "Look for the first-section field marks at Listening Trail, or the upper and lower peg marks in Water Commons.",
+    "art": "preserved.catalogue"
+   }
   }
  ]
 }

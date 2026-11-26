@@ -3482,6 +3482,153 @@
    "speaker": "nile-leila",
    "text": "The guide lies flat on the shelf with both readings beside it. The entrance arrow sends the next reader to it. Take my spare strip. A folded edge can hold a starting place elsewhere.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.exhibit.mount",
+   "speaker": "nile-marek",
+   "text": "The receiver needs to move a teaching board at night. Leila’s readers need to follow marks to the edge of a broken source. Find their notes, the fragment in the Nexus and the map beside us. The museum map gives us named roads and rock colours. A stroke on the surviving stone can end at the break.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the support plan first and take the reading copy to Leila.",
+     "next": "nile.exhibit.delivery",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.exhibit.scope"
+       },
+       {
+        "not": {
+         "flagSet": "nile.exhibit.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.exhibit.layout",
+       "value": "delivery"
+      }
+     ]
+    },
+    {
+     "text": "Put the two source tabs on the rail and give the receiver a separate board.",
+     "next": "nile.exhibit.reading",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.exhibit.scope"
+       },
+       {
+        "not": {
+         "flagSet": "nile.exhibit.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.exhibit.layout",
+       "value": "reading"
+      }
+     ]
+    },
+    {
+     "text": "Leave both trays on the table."
+    }
+   ]
+  },
+  {
+   "id": "nile.exhibit.delivery",
+   "speaker": "nile-marek",
+   "text": "I’ll leave a two-handled board in the hall. Its support line has its own space. Leila can give the class a lower copy in the Workmen’s Room. Go try both before a copy travels.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.exhibit.reading",
+   "speaker": "nile-marek",
+   "text": "I’ll bring the stone tab and Mine Map key level with the reading rail. The receiver gets a separate small board in the hall. Check it on your way back so the receiver can find the handling line in the dark.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.exhibit.lift",
+   "speaker": "narrator",
+   "text": "The old ticket says “the stone”. The night receiver reaches for the loose sheet. The cut board has two handles and a line for the edge of the teaching copy. Clip the ticket to the handles so it follows the board.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Seat the teaching copy on the board and lift it by the two handles.",
+     "next": "nile.exhibit.lifted",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.exhibit.mounted"
+       },
+       {
+        "not": {
+         "flag": "nile.exhibit.lifted",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.exhibit.lifted",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the copy on the table."
+    }
+   ]
+  },
+  {
+   "id": "nile.exhibit.lifted",
+   "speaker": "narrator",
+   "text": "The board lifts and the loose paper stays flat. The receiver crosses out “the stone” on the ticket and calls for the teaching board. The name of the historical object stays on a source slip in its own pocket.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.exhibit.copy",
+   "speaker": "nile-leila",
+   "text": "A reader follows the road line in the map’s key. She moves the same tracing frame to the fragment and asks where to continue a stroke. Stop her frame at the broken edge. The copied trace can name the part she has in front of her.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Stop the tracing frame at the fragment edge and attach its source tab.",
+     "next": "nile.exhibit.copied",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.exhibit.mounted"
+       },
+       {
+        "not": {
+         "flag": "nile.exhibit.copied",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.exhibit.copied",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the frame ready."
+    }
+   ]
+  },
+  {
+   "id": "nile.exhibit.copied",
+   "speaker": "nile-leila",
+   "text": "She moves her pencil along the marks and leaves the next space open. Someone can bring another reading to the same edge later. The map’s roads and rock colours can keep their separate key.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "chronicle": [
@@ -4296,6 +4443,78 @@
    "objective": "nile.witness.publish",
    "depth": 4,
    "text": "Find the guide you left. Leila’s spare strip can travel to a second workshop."
+  },
+  {
+   "id": "h.nile.exhibit.scope.1",
+   "objective": "nile.exhibit.scope",
+   "depth": 1,
+   "text": "A receiver and a reader need different things from the next case."
+  },
+  {
+   "id": "h.nile.exhibit.scope.2",
+   "objective": "nile.exhibit.scope",
+   "depth": 2,
+   "text": "Find the receiver’s ticket in the Nile Hall and the reader’s note in the Workmen’s Room."
+  },
+  {
+   "id": "h.nile.exhibit.scope.3",
+   "objective": "nile.exhibit.scope",
+   "depth": 3,
+   "text": "Inspect the Turin Mine Map here, then visit the Singapore Stone in the Nexus."
+  },
+  {
+   "id": "h.nile.exhibit.scope.4",
+   "objective": "nile.exhibit.scope",
+   "depth": 4,
+   "text": "Use the two requests with the display trays at the back of the Map Room."
+  },
+  {
+   "id": "h.nile.exhibit.mounted.1",
+   "objective": "nile.exhibit.mounted",
+   "depth": 1,
+   "text": "Two audiences can use the same source without following the same route."
+  },
+  {
+   "id": "h.nile.exhibit.mounted.2",
+   "objective": "nile.exhibit.mounted",
+   "depth": 2,
+   "text": "Find Marek’s empty trays in the Map Room."
+  },
+  {
+   "id": "h.nile.exhibit.mounted.3",
+   "objective": "nile.exhibit.mounted",
+   "depth": 3,
+   "text": "Choose the first display for careful handling or for close reading."
+  },
+  {
+   "id": "h.nile.exhibit.mounted.4",
+   "objective": "nile.exhibit.mounted",
+   "depth": 4,
+   "text": "Go to the hall for the handling board. The reader’s frame will be at the Map Room rail or with Leila."
+  },
+  {
+   "id": "h.nile.exhibit.used.1",
+   "objective": "nile.exhibit.used",
+   "depth": 1,
+   "text": "See what someone can do with each mount."
+  },
+  {
+   "id": "h.nile.exhibit.used.2",
+   "objective": "nile.exhibit.used",
+   "depth": 2,
+   "text": "Use the two handles on the teaching board in the hall."
+  },
+  {
+   "id": "h.nile.exhibit.used.3",
+   "objective": "nile.exhibit.used",
+   "depth": 3,
+   "text": "Find the tracing frame in the Workmen’s Room or Map Room, depending on what you put first."
+  },
+  {
+   "id": "h.nile.exhibit.used.4",
+   "objective": "nile.exhibit.used",
+   "depth": 4,
+   "text": "Stop the frame at the broken edge. The finished copies can travel in two pockets."
   }
  ],
  "criteria": [
@@ -6075,6 +6294,201 @@
      }
     }
    ]
+  },
+  {
+   "id": "KG-CH2-R16",
+   "world": "WORLD-03",
+   "title": "Where the Copy Stops",
+   "knowledgeQuestion": "How can the same exhibit help people who need to do different things?",
+   "available": {
+    "flag": "nile.returned",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "nile.exhibit.scope",
+     "title": "Find the two historical records and both visitors’ requests.",
+     "done": {
+      "all": [
+       {
+        "flag": "nile.returned",
+        "eq": true
+       },
+       {
+        "card": "card.nile.mine"
+       },
+       {
+        "card": "card.nile.stone"
+       },
+       {
+        "flag": "nile.exhibit.reader",
+        "eq": true
+       },
+       {
+        "flag": "nile.exhibit.porter",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "evidence",
+       "interpretation",
+       "certainty",
+       "culture"
+      ],
+      "framework": [
+       "perspectives",
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "geography"
+      ],
+      "minutes": 5,
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "human",
+       "solo": "multistructural"
+      }
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-MED-04"
+     ]
+    },
+    {
+     "id": "nile.exhibit.mounted",
+     "title": "Choose which audience finds its mount first.",
+     "done": {
+      "flagSet": "nile.exhibit.layout"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "explanation",
+       "responsibility",
+       "justification"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "communication",
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "design-tech",
+       "lang-langlit"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-ETR-01"
+     ],
+     "visible": {
+      "objective": "nile.exhibit.scope"
+     }
+    },
+    {
+     "id": "nile.exhibit.used",
+     "title": "Lift the teaching board and set the reader’s frame at the broken edge.",
+     "done": {
+      "all": [
+       {
+        "objective": "nile.exhibit.mounted"
+       },
+       {
+        "flag": "nile.exhibit.lifted",
+        "eq": true
+       },
+       {
+        "flag": "nile.exhibit.copied",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "truth",
+       "objectivity",
+       "certainty",
+       "evidence",
+       "responsibility",
+       "interpretation"
+      ],
+      "framework": [
+       "scope",
+       "ethics",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "communication",
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "design-tech"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "apply",
+       "fink": "caring",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-ETR-01"
+     ],
+     "visible": {
+      "objective": "nile.exhibit.mounted"
+     },
+     "onComplete": [
+      {
+       "giveItem": "item.split-mount-folio"
+      }
+     ]
+    }
+   ]
   }
  ],
  "clues": [
@@ -6352,6 +6766,13 @@
    "historicalLabel": "fictional-world",
    "art": "icon.letter",
    "description": "Leila folded this spare strip to hold a starting mark. Carry it to another bench and use the same fold to keep track of what moves or which count travels."
+  },
+  {
+   "id": "item.split-mount-folio",
+   "name": "Two-pocket mount folio",
+   "historicalLabel": "fictional-world",
+   "art": "icon.letter",
+   "description": "Marek’s paired tabs for a teaching copy. One marks what you can move and where it starts. The other leads back to the documented object. Take the folio to the Trade Hall in the Metalworks."
   }
  ]
 }

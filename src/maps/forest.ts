@@ -38,6 +38,13 @@ const mossRibbon: Condition = { flag: 'forest.moss.result', eq: 'ribbon' };
 const forestArrived: Condition = { objective: 'forest.arrival' };
 const spateChoice = (route: 'rail' | 'bend'): Condition => ({ flag: 'forest.spate.route', eq: route });
 const spateCrossed: Condition = { objective: 'forest.spate.crossed' };
+const notebookActive: Condition = { flag: 'perspective.active', eq: 'observer-notebook' };
+const notebookMethod = (method: 'conditions' | 'crew'): Condition => ({
+  all: [notebookActive, { flag: 'forest.observer.method', eq: method }],
+});
+const notebookPassage = (method: 'conditions' | 'crew'): Condition => ({
+  all: [notebookMethod(method), { objective: 'forest.observer.notes' }],
+});
 const mossReadings = 'Green touched five squares at the shaded creek bank and one at the shaded bridge edge. '
   + 'In the open, green touched two at the ridge edge and four below the path. '
   + 'The day before, the crew saw five boot contacts at the shaded edge and six at the open edge in one round. '
@@ -48,6 +55,14 @@ function mossPeg(site: string, x: number, y: number, label: string): Interactabl
   return {
     ...guideScene(`forest-moss-${site}`, x, y, label, 'forest.waypost', key, mossFrame),
     artOpen: { key: 'preserved.slip', if: { flagSet: key } },
+  };
+}
+
+function notebookSlot(id: string, x: number, y: number, label: string, art: string, node: string,
+  method: 'conditions' | 'crew', slot: 'first' | 'second'): Interactable {
+  return {
+    ...guideScene(id, x, y, label, art, node, notebookMethod(method)),
+    artOpen: { key: 'preserved.slip', if: { flag: `forest.observer.${slot}`, eq: true } },
   };
 }
 
@@ -90,6 +105,13 @@ export const FOREST_STATION: MapDef = {
     note('forest-gombe-credit', 15, 8, 'the credited Gombe reference slip', 'preserved.slip',
       'The timeline records Jane Goodall’s observation in 1960. In a separate account, a visiting researcher names field assistant Baraka Daniel beside a datasheet they collected together.',
       { flag: 'forest.gombe.credited', eq: true }),
+    guideScene('forest-observer-book', 14, 7, 'Elian’s unbound field notebook', 'preserved.catalogue',
+      'forest.observer.bind', { objective: 'forest.arrival' }),
+    { ...door('forest-observer-station-to-bank', 5, 7, 'the marked lower watch trail', { map: 'forest.trail', x: 8, y: 6 }),
+      walkThrough: true, visibleIf: notebookPassage('conditions'), flag: 'forest.observer.crossed' },
+    note('forest-observer-station-proof', 14, 10, 'the dated copy of the two views', 'preserved.display-paired',
+      'The notes keep each standing place beside its view. The low path links the two check points. The gaps in each view stay on the same page.',
+      { all: [{ objective: 'forest.observer.finish' }, { flag: 'forest.observer.method', eq: 'conditions' }] }),
     note('forest-trail-directory', 10, 11, 'the station directory', 'forest.notice',
       'Fern Station. West for the listening trail. East for the bridge clearing. The two cases carry field records from Gombe. The local trail is a Guardian field exercise.'),
     guideScene('forest-moss-frame', 9, 8, 'Elian’s six-square frame', 'forest.field-diagram', 'forest.moss.loan',
@@ -174,6 +196,18 @@ export const FOREST_TRAIL: MapDef = {
       label: 'the creek reed screen', art: 'forest.screen', walkThrough: true },
     { id: 'forest-watch-ridge', kind: 'forest-watch', node: 'ridge', x: 24, y: 6, w: 1, h: 1,
       label: 'the ridge overlook', art: 'forest.ridge', walkThrough: true },
+    notebookSlot('forest-observer-creek-edge', 9, 9, 'the edge of the creek watch', 'forest.screen',
+      'forest.observer.creek', 'conditions', 'first'),
+    notebookSlot('forest-observer-ridge-edge', 26, 6, 'the edge of the ridge watch', 'forest.ridge',
+      'forest.observer.ridge', 'conditions', 'second'),
+    notebookSlot('forest-observer-lamp-board', 7, 7, 'the lamp crew’s return slot', 'preserved.folder',
+      'forest.observer.lamp', 'crew', 'first'),
+    notebookSlot('forest-observer-bridge-board', 21, 10, 'the bridge crew’s return slot', 'preserved.folder',
+      'forest.observer.bridge', 'crew', 'second'),
+    { ...door('forest-observer-bank-to-station', 8, 5, 'the marked lower trail to Fern Station', { map: 'forest.station', x: 6, y: 7 }),
+      walkThrough: true, visibleIf: notebookPassage('conditions'), flag: 'forest.observer.crossed' },
+    { ...door('forest-observer-ridge-to-clearing', 28, 5, 'the marked crew path to Bridge Clearing', { map: 'forest.community', x: 19, y: 12 }),
+      walkThrough: true, visibleIf: notebookPassage('crew'), flag: 'forest.observer.crossed' },
     note('forest-crossing-guide', 10, 13, 'the crossings sign', 'forest.waypost',
       'Follow the lower path to the creek screen. Both crossings lead to the ridge. The bridge clearing lies east. Two sketch frames face the rail at the upper bridge.'),
     note('forest-guide-rail', 16, 6, 'the old bridge rail', 'forest.guide-rail',
@@ -225,6 +259,11 @@ export const FOREST_COMMUNITY: MapDef = {
   interactables: [
     door('forest-community-back', 12, 14, 'the path back to Fern Station', { map: 'forest.station', x: 22, y: 8 }),
     door('forest-bridge-to-trail', 22, 11, 'the path back to the ridge', { map: 'forest.trail', x: 28, y: 12 }),
+    { ...door('forest-observer-clearing-to-ridge', 20, 12, 'the marked crew path back to the ridge', { map: 'forest.trail', x: 27, y: 5 }),
+      walkThrough: true, visibleIf: notebookPassage('crew'), flag: 'forest.observer.crossed' },
+    note('forest-observer-clearing-proof', 18, 10, 'the paired crew handover notes', 'preserved.display-paired',
+      'The crew path links both return slots. At the bench the lamp and bridge entries keep their own time, keeper and kind of observation.',
+      { all: [{ objective: 'forest.observer.finish' }, { flag: 'forest.observer.method', eq: 'crew' }] }),
     guideScene('forest-spate-plan', 11, 9, 'Ayla’s storm-route board', 'forest.notice',
       'forest.spate.plan', forestArrived),
     note('forest-spate-rail-notice', 9, 7, 'the north rail route strip', 'forest.guide-level',

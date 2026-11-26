@@ -20,6 +20,17 @@ const ripples = ['water-ripple-a', 'water-ripple-b', 'water-ripple-c'];
 const repaired: Condition = { flag: 'water.repaired', eq: true };
 const reliefAvailable: Condition = { objective: 'water.finish' };
 const reliefChoice = (route: 'first' | 'second'): Condition => ({ flag: 'water.routing.layout', eq: route });
+const observerNotebook: Condition = { all: [
+  { objective: 'water.arrival' }, { flag: 'perspective.active', eq: 'observer-notebook' },
+] };
+const lowerCheck: Condition = { all: [observerNotebook, { flag: 'water.observer.blocked', eq: true }] };
+const observerNote = (layout: 'paired' | 'local'): Condition => ({ flag: 'water.observer.layout', eq: layout });
+const observerPath: Condition = { all: [observerNotebook, { flagSet: 'water.observer.layout' }] };
+
+function observerScene(id: string, x: number, y: number, label: string,
+  art: string, node: string, visibleIf: Condition): Interactable {
+  return { id, kind: 'scene', x, y, w: 1, h: 1, label, art, node, visibleIf, walkThrough: true };
+}
 const checkedSplit: Condition = { all: [
   { objective: 'water.drought' }, { flag: 'water.trial.drought.split', eq: true },
 ] };
@@ -69,6 +80,11 @@ export const WATER_GATEHOUSE: MapDef = {
       { visibleIf: repaired }),
     { id: 'water-relief-bench', kind: 'fieldgame', game: 'relief-routing', x: 10, y: 9, w: 1, h: 1,
       label: 'Omi’s relief bench', art: 'water.split', walkThrough: true, visibleIf: reliefAvailable },
+    observerScene('water-observer-upper', 14, 12, 'the clear space above the upper peg', 'water.notice',
+      'water.observer.upper', observerNotebook),
+    sign('water-observer-upper-copy', 15, 14, 'the upper peg’s local note', 'preserved.slip',
+      'Omi’s noon peg, three notch intervals from its own foot. The checked lower view and its date sit with the crew that took it.',
+      { visibleIf: observerNote('local') }),
   ],
   lights: [
     { x: 13, y: 7, r: 72, color: 0xf6dbaa }, { x: 16, y: 8, r: 76, color: 0xcee2cc },
@@ -110,6 +126,16 @@ export const WATER_COUNCIL: MapDef = {
   interactables: [
     crossing('water-council-return', 12, 15, 'the path back to the Old Weir', { map: 'water.gatehouse', x: 23, y: 8 }),
     crossing('water-council-to-lower', 23, 10, 'the council steps to the lower path', { map: 'water.lower-channel', x: 23, y: 6 }),
+    { ...crossing('water-observer-council-track', 7, 9, 'the marked observer track to the lower bank', { map: 'water.lower-channel', x: 25, y: 14 }),
+      visibleIf: observerPath, walkThrough: true, flag: 'water.observer.crossed' },
+    observerScene('water-observer-board', 14, 9, 'Sena’s two-peg copy board', 'preserved.display-records',
+      'water.observer.board', { all: [observerNotebook, { objective: 'water.observer.readings' }] }),
+    sign('water-observer-paired-sight', 8, 7, 'the paired noon peg copy', 'preserved.display-paired',
+      'Both readings belong to the noon bell. The upper peg showed three intervals from its own foot. The high step showed two intervals at the lower peg. Each peg keeps its own base and viewing position.',
+      { visibleIf: { all: [observerNote('paired'), { flag: 'water.observer.lower', eq: 'sight' }] } }),
+    sign('water-observer-paired-handover', 8, 7, 'the paired copy with different bells', 'preserved.display-paired',
+      'Omi’s upper peg gives three intervals at noon. The lower keeper’s handover gives two at the previous bell. Its noon square stays blank. Keep the times and the people who checked them with the readings.',
+      { visibleIf: { all: [observerNote('paired'), { flag: 'water.observer.lower', eq: 'handover' }] } }),
     ...droughtDisplays.map(([setting, label, text]) => sign(
       'water-result-' + setting, 12, 6, label, 'water.' + setting, text,
       { visibleIf: { flag: 'water.response', eq: setting } },
@@ -161,6 +187,20 @@ export const WATER_LOWER_CHANNEL: MapDef = {
     { id: 'loyalty-rook', kind: 'fieldgame', game: 'loyalty-rook', x: 10, y: 10, w: 1, h: 1, label: "an old well with a flaking gold seal (The Clean Well)", art: 'old-sign', visibleIf: { flag: 'rook.joined', eq: true } },
     crossing('water-lower-return', 3, 12, 'the upper gate path', { map: 'water.gatehouse', x: 24, y: 14 }),
     crossing('water-lower-to-council', 25, 6, 'the steps back to the council yard', { map: 'water.council', x: 22, y: 10 }),
+    { ...crossing('water-observer-bank-track', 26, 14, 'the marked observer track to the council', { map: 'water.council', x: 7, y: 8 }),
+      visibleIf: observerPath, walkThrough: true, flag: 'water.observer.crossed' },
+    observerScene('water-observer-blocked', 22, 10, 'the reeds beside the lower peg', 'forest.screen',
+      'water.observer.blocked', observerNotebook),
+    observerScene('water-observer-high-step', 25, 13, 'the high step above the reeds', 'forest.ridge',
+      'water.observer.sight', lowerCheck),
+    observerScene('water-observer-crew-log', 5, 8, 'the lower keeper’s dated handover', 'preserved.folder',
+      'water.observer.handover', lowerCheck),
+    sign('water-observer-lower-sight-copy', 20, 10, 'the lower peg’s local noon note', 'preserved.slip',
+      'From the high step the lower peg showed two intervals at noon. The figures travel with the standing place. The lower watch keeps a blank beside the view from behind the reeds.',
+      { visibleIf: { all: [observerNote('local'), { flag: 'water.observer.lower', eq: 'sight' }] } }),
+    sign('water-observer-lower-handover-copy', 20, 10, 'the local note from the previous bell', 'preserved.slip',
+      'The handover records two intervals from the lower peg’s foot at the previous bell. The noon square stays blank for someone who can take the high step.',
+      { visibleIf: { all: [observerNote('local'), { flag: 'water.observer.lower', eq: 'handover' }] } }),
     sign('water-farm-card', 7, 7, 'the seed-row work card', 'preserved.folder',
       'Today’s marked seed rows need six buckets for the work on this card. The outside rows can wait until the next count.',
       { flag: 'water.farm.note' }),

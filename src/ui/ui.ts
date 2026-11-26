@@ -11,6 +11,7 @@ import { VOICE_SOURCES, VOICE_VIEWS, voiceReading, type VoiceView } from '../dom
 import { ISLAND_CRATES, ISLAND_LANDINGS, ISLAND_ROUTES, islandPlan, type IslandLanding, type IslandRoute } from '../domain/islandPlan';
 import { COUNCIL_TRIALS, councilClock, type CouncilTrial } from '../domain/councilClock';
 import { buildScoutBoard } from './scoutRoutes';
+import { adventureJournalTab } from './adventureJournal';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -63,6 +64,7 @@ import { ROLES, fitsRole, roleOf } from '../domain/roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
 import { FIELD_GAMES } from '../domain/fieldgames';
 import { routingBoard } from './routingBoards';
+import { opticsTrial } from './opticsTrial';
 import { loyaltyOf } from '../domain/loyalty';
 import { CROSSINGS, WAY_LABEL, crossingOf, crossingWay, wayOpen } from '../domain/crossings';
 import { HEARTH, TONE_LABEL, type HearthTalk } from '../domain/hearth';
@@ -73,6 +75,7 @@ import { arrivedLetters, composeLetter, dueLetters } from '../domain/letters';
 import { communityLetterFlag, dueCommunityLetters, receivedCommunityLetters } from '../domain/communityLetters';
 import { conversationHistory } from '../domain/conversationHistory';
 import { storyMotif, storyMotifKey, type StoryMotif } from '../domain/storyMotifs';
+import { activePerspective, ownedPerspective, perspectiveTools } from '../domain/perspectives';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
 import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
@@ -2351,15 +2354,17 @@ export class UI implements UIApi {
 
   // --------------------------------------------------- journal & bag
 
-  openJournal(tab = 'story'): void {
+  openJournal(tab = 'diary'): void {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
     if (tab === 'letters') this.deliverCommunityLetters(false);
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { story: 'Story so far', conversations: 'Conversations', entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', crossings: 'Crossings', ...(s.flags['ending.council'] ? { afterwards: 'Afterwards' } : {}), glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { diary: 'Diary', notes: 'My notes', 'open-quests': 'Open quests', story: 'Story so far', conversations: 'Conversations', entries: 'Entries', cards: 'Evidence cards', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', crossings: 'Crossings', ...(s.flags['ending.council'] ? { afterwards: 'Afterwards' } : {}), glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
-    if (tab === 'crossings') {
+    if (tab === 'diary' || tab === 'notes' || tab === 'open-quests') {
+      body.append(adventureJournalTab(tab, c, (page) => this.openJournal(page)));
+    } else if (tab === 'crossings') {
       // Conflicts met in the world, and how the player met them.
       const met = CROSSINGS.filter((x) => crossingWay(s.flags, x.id));
       const ep = crossingEpithet(s.flags);
@@ -2424,10 +2429,6 @@ export class UI implements UIApi {
     } else if (tab === 'cards') {
       body.append(...s.cards.map((id) => this.cardView(c.pack.cards.find((x) => x.id === id)!)));
       if (!s.cards.length) body.append(h('p', {}, 'No evidence cards yet. Inspect exhibits and talk to people.'));
-    } else if (tab === 'notes') {
-      const ta = h('textarea', { rows: '3', maxlength: '500', 'aria-label': 'New note', placeholder: 'Write a note in your own words. Notes are never graded.' }) as HTMLTextAreaElement;
-      body.append(h('ul', { class: 'notes' }, ...s.notes.map((n) => h('li', {}, n))), ta,
-        h('button', { onclick: () => { if (ta.value.trim()) { c.dispatch({ type: 'AddNote', text: ta.value }); this.openJournal('notes'); } } }, 'Add note'));
     } else if (tab === 'moments') {
       // Learner profile (spec 90): moments, never scores or grades (PROFILE-001).
       const got = c.pack.moments.filter((m) => c.permanent.moments[m.id]);
@@ -2538,14 +2539,33 @@ export class UI implements UIApi {
 
   private openBag(): void {
     const c = ctx.controller, s = c.state;
+    const tools = perspectiveTools(c.pack).filter((tool) => ownedPerspective(c.pack, s, tool.id));
+    const active = activePerspective(c.pack, s);
+    const equip = (keepsake: string | null) => {
+      const events = c.dispatch({ type: 'EquipPerspective', keepsake });
+      if (events.some((event) => event.kind === 'error')) return;
+      ctx.world?.refreshWorld();
+      this.openBag();
+    };
+    const toolsList = tools.map((tool) => {
+      const inUse = active?.id === tool.id;
+      const action = inUse ? `Put away ${tool.name}` : `Use ${tool.name}`;
+      return h('li', {}, h('img', { src: artURL(tool.equip.art ?? 'icon.book'), alt: '' }),
+        h('div', {}, h('strong', {}, tool.name), inUse ? h('span', { class: 'chip' }, 'In use') : '',
+          h('p', {}, tool.equip.method), h('small', {}, tool.equip.hint), h('br', {}),
+          h('button', { type: 'button', onclick: () => equip(inUse ? null : tool.id) }, action)));
+    });
     this.sfx('sfx.pickup');
     this.openModal('bag satchel', 'Bag', this.closeBtn(), h('div', { class: 'flap', 'aria-hidden': 'true' }), h('h2', {}, 'Satchel'),
       h('p', {}, `${s.marks} marks`),
+      tools.length ? h('section', { class: 'field-tools' }, h('h3', {}, 'Field tools'),
+        h('p', { class: 'fine' }, 'Carry one tool at a time. Each can reveal something different at a site.'),
+        h('ul', { class: 'bag' }, ...toolsList)) : '',
       h('ul', { class: 'bag' }, ...Object.entries(s.inventory).map(([id, q]) => {
         const it = c.pack.items.find((x) => x.id === id);
         return h('li', {}, h('img', { src: artURL(it?.art ?? 'icon.card'), alt: '' }), h('div', {}, h('strong', {}, `${it?.name ?? id}${q > 1 ? ` ×${q}` : ''}`), h('br', {}), h('small', {}, it?.description ?? '')));
       })),
-      Object.keys(s.inventory).length ? '' : h('p', {}, 'Your bag is empty.'));
+      tools.length || Object.keys(s.inventory).length ? '' : h('p', {}, 'Your bag is empty.'));
   }
 
   // -------------------------------------------------------------- menu
@@ -2838,7 +2858,9 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
-    if (id === 'relief-routing' || id === 'civic-lane-routing') {
+    if (id === 'coast-shadow-board' || id === 'council-shadow-board') {
+      this.openModal('bench-panel wide', 'Shadow board', this.closeBtn(), opticsTrial(id, ctx.controller, (key) => this.sfx(key)));
+    } else if (id === 'relief-routing' || id === 'civic-lane-routing') {
       const title = id === 'relief-routing' ? 'The weir’s relief bench' : 'The library’s lane board';
       this.openModal('bench-panel wide', title, this.closeBtn(), routingBoard(id, ctx.controller, (key) => this.sfx(key)));
     }

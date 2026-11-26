@@ -10,6 +10,13 @@ Fifteen chapters are playable. A clean install, 744 tests, production build and 
 
 ## What works now
 
+### Playable perspective tools and adventure diary
+
+- The Satchel can carry one field tool. The Folding Light Screen distinguishes light changes from a moving pointer and reveals the headland service arch. Elian’s notebook opens different Forest trails and spot checks a water report. The Record-Edge Folio follows who is named in a treaty, a separate account of Tecumseh, and who can authorize a local record in Civic Machine.
+- The first-person Adventure Diary records important actions with timestamps, shows open leads, and keeps room for private notes, reflections and questions. Its offline Word export uses a separate choice for the player’s writing. Existing saves keep their progress and notes.
+- The Nile display folio teaches two visitors to use different evidence, then helps pack a hands-on astrolabe demonstration in Metalworks. The Reader of Both Edges badge and signed proof let the House of Performance recognize the player’s earlier day at the City press. A fresh reader can check the local copy.
+- The Island’s Held Count compares an enacted pause from two audience positions and tests what an agreed crew pause changes. The chosen dock welcome becomes a usable workshop cue sheet. The [curriculum and examiner review](docs/TOK_ALIGNMENT.md) records these links and priorities for further work.
+
 ### Recurring stories and mechanics
 
 - **The Lantern Fair** starts as two possible rehearsals in Emberford. A runner or host can send a tested sketch. The Island of Models checks the lower ramp and listening position before following it, revising it, or using a local sketch. The arrangement changes where the crew can join the celebration.

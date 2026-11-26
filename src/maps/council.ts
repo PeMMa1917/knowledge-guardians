@@ -22,6 +22,7 @@ const teamStarted: Condition = { flagSet: 'council.team.workflow' };
 const teamUnposted: Condition = { not: { flagSet: 'council.team.edition' } };
 const teamActive: Condition = { all: [teamStarted, teamUnposted] };
 const teamRelay: Condition = { flag: 'council.team.edition', eq: 'relay' };
+const useLightScreen: Condition = { all: [teamReady, { flag: 'perspective.active', eq: 'folding-light-screen' }] };
 
 function teamScene(id: string, x: number, y: number, label: string, art: string, visibleIf: Condition): Interactable {
   return { id: `council-team-${id}`, node: `council.team.${id}`, kind: 'scene', x, y, w: 1, h: 1,
@@ -178,6 +179,17 @@ export const COUNCIL_GALLERY: MapDef = {
     sign('council-check-copy', 28, 15, 'the larger timing card beside the low bench', 'council.record',
       'The wider card gives the named checker, shift date, reference and two time marks their own lines. A reader can follow each mark while setting a load on the low bench.',
       { visibleIf: { flag: 'council.receipt.ready', eq: true } }),
+    { id: 'council-shadow-board', kind: 'fieldgame', game: 'council-shadow-board', x: 28, y: 7, w: 1, h: 1,
+      label: 'the bell shadow board with two lamp sockets', art: 'coast.clear-frame', walkThrough: true, visibleIf: useLightScreen },
+    { id: 'council-optics-handover', kind: 'scene', node: 'council.optics.post', x: 29, y: 7, w: 1, h: 1,
+      label: 'Essi’s practice notice rack', art: 'preserved.folder', walkThrough: true,
+      visibleIf: { all: [{ objective: 'council.optics.compare' }, { not: { flagSet: 'council.optics.plan' } }] } },
+    sign('council-optics-ramp', 28, 12, 'the double check at the ramp rest', 'preserved.display-paired',
+      'An off-notch pointer is a change you can check directly. A shadow by itself can move when just the lamp moves. The carrier sets down a load and looks at the notch before joining the line.',
+      { flag: 'council.optics.received', visibleIf: { flag: 'council.optics.plan', eq: 'ramp' } }),
+    sign('council-optics-rail', 21, 13, 'the two-part call at the rail', 'council.relay',
+      'At the opening bell, the rail pair calls where the pointer sits, then where the shadow falls. The carrier repeats both. The next shift is marked beside the call.',
+      { flag: 'council.optics.received', visibleIf: { flag: 'council.optics.plan', eq: 'rail' } }),
     { ...teamScene('call', 10, 9, 'Sefa’s place at the speaking rail', 'council.relay',
       { all: [teamActive, { flag: 'council.team.clipped', eq: true }] }),
       artOpen: { key: 'stage.cues', if: { flag: 'council.team.called', eq: true } } },

@@ -1,6 +1,7 @@
 /** Fictional theatre with separate backstage and audience sightlines. */
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
+import { STAGE_FOYER_BACKBILL, STAGE_GALLERY_BACKBILL } from './backbill';
 
 type TheatreRoom = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'stamps' | 'interactables' | 'lights'>;
@@ -42,6 +43,7 @@ export const STAGE_FOYER = room({
     { stamp: 'plant-tall', x: 19, y: 13 }, { stamp: 'long-table', x: 12, y: 5 },
   ],
   interactables: [
+    ...STAGE_FOYER_BACKBILL,
     { id: 'cross-stage-fright', kind: 'fieldgame', game: 'cross-stage-fright', x: 21, y: 12, w: 1, h: 1, label: 'the curtain, two minutes before you go on (a crossing)', art: 'label-stand' },
     { id: 'cross-fortune', kind: 'fieldgame', game: 'cross-fortune', x: 8, y: 9, w: 1, h: 1, label: 'Madame Quandary\'s card table (a crossing)', art: 'cork-board' },
     door('stage-rehearsal-path', 6, 3, 'the west passage to rehearsal', { map: 'stage.rehearsal', x: 12, y: 12 }),
@@ -132,6 +134,7 @@ export const STAGE_GALLERY = room({
     { stamp: 'plant-tall', x: 3, y: 14 }, { stamp: 'plant-tall', x: 23, y: 14 },
   ],
   interactables: [
+    ...STAGE_GALLERY_BACKBILL,
     door('stage-gallery-return', 11, 16, 'the passage back to the foyer', { map: 'stage.foyer', x: 22, y: 5 }),
     door('stage-gallery-to-rehearsal', 2, 8, 'the wing door to rehearsal', { map: 'stage.rehearsal', x: 24, y: 8 }),
     notice('stage-vantage', 18, 7, 'the audience sightlines note', 'stage.cues',

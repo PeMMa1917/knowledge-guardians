@@ -15,6 +15,7 @@ import type { CampaignState, PermanentRecord } from './types';
 import { CAMPAIGN_SCHEMA } from './types';
 import { validateCampaign } from './validate';
 import { migratePermanent, newPermanent } from './permanent';
+import { newAdventureDiary } from './adventureJournal';
 
 export type SaveKind = 'checkpoint' | 'suspend';
 
@@ -126,6 +127,7 @@ export const MIGRATIONS: Record<number, (s: any) => any> = {
   // Schema 3 had no pronouns or origin. Schema 4 adds them (spec 35.1).
   // Old saves get they/them and no origin, and the player can change pronouns at any time.
   3: (s) => ({ ...s, schema: 4, player: { ...s.player, pronouns: { subject: 'they', object: 'them', possessive: 'their' }, origin: null } }),
+  4: (s) => ({ ...s, schema: 5, adventureDiary: newAdventureDiary(Array.isArray(s.notes) ? s.notes : []) }),
 };
 
 export function migrateCampaign(raw: any): { state: CampaignState; migrated: boolean } {

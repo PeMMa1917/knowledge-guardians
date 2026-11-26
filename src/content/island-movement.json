@@ -1,0 +1,254 @@
+{
+  "characters": [
+    {
+      "id": "island-caller",
+      "name": "Rella Torne",
+      "role": "Maker of the dock’s welcome dance",
+      "sprite": "custom:warm.black.teal.indigo.headband.gold.bun.none.none",
+      "mode": "fictional",
+      "talk": [
+        { "node": "island.movement.plan", "if": { "objective": "island.movement.compare" } },
+        { "node": "island.movement.started", "if": { "flagSet": "island.movement.started" } },
+        { "node": "island.movement.start" }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item.island.movement.sheet",
+      "name": "Rella’s two-part cue sheet",
+      "description": "The bench view says how the dock phrase reads. The work line records what happened in rehearsal. Share it at the Plan Workshop.",
+      "historicalLabel": "fictional-world",
+      "art": "island.card"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH14-R04",
+      "title": "The Held Count",
+      "world": "WORLD-15",
+      "available": { "flagSet": "island.movement.started" },
+      "knowledgeQuestion": "How can the same pause give two groups a different reason to act?",
+      "objectives": [
+        {
+          "id": "island.movement.compare",
+          "title": "Run both versions from the front mark, then see what carries to the back seats.",
+          "essential": false,
+          "done": {
+            "all": [
+              { "flagSet": "island.movement.flow" },
+              { "flagSet": "island.movement.hold" },
+              { "flagSet": "island.movement.back" }
+            ]
+          },
+          "weave": {
+            "concepts": ["evidence", "explanation", "objectivity", "interpretation", "perspective", "certainty"],
+            "framework": ["scope", "perspectives", "methods-and-tools"],
+            "atl": ["thinking", "research"],
+            "aoks": ["ART", "NAT"],
+            "subjects": ["dance", "sehs"],
+            "thinking": { "dok": 2, "bloom": "analyse", "fink": "integration", "solo": "relational" },
+            "minutes": 4
+          }
+        },
+        {
+          "id": "island.movement.deliver",
+          "title": "Choose how Rella will stage the welcome, then try the cue sheet at the Plan Workshop.",
+          "essential": false,
+          "visible": { "objective": "island.movement.compare" },
+          "done": { "flagSet": "island.movement.workshop" },
+          "weave": {
+            "concepts": ["evidence", "perspective", "values", "responsibility", "justification"],
+            "framework": ["scope", "ethics", "perspectives", "methods-and-tools"],
+            "atl": ["social", "communication", "self-management"],
+            "aoks": ["ART", "NAT", "HUM"],
+            "subjects": ["dance", "sehs"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "human", "solo": "relational" },
+            "minutes": 3
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "island.movement.start",
+      "speaker": "island-caller",
+      "text": "The first load gets a welcome dance. I make it with the people who carry the load. I used to fill every beat. Now a carrier wants a moment to settle the box. Try both versions while the dock is clear?",
+      "options": [
+        {
+          "text": "Set out the empty rehearsal box.",
+          "next": "island.movement.started",
+          "effects": [{ "setFlag": "island.movement.started", "value": true }]
+        },
+        { "text": "I’ll come back when the boards are quiet." }
+      ]
+    },
+    {
+      "id": "island.movement.started",
+      "speaker": "island-caller",
+      "text": "Two takes. Same four steps, same floor and empty box. Keep the pace while we move. Here you can see hands and feet. Check the rear seat after we’ve tried both."
+    },
+    {
+      "id": "island.movement.flow",
+      "speaker": "island-caller",
+      "text": "I call the first two steps. At the corner I sweep an arm out like a wake. People at the front follow the line. The carrier moves beside me, box in both hands.",
+      "options": [
+        {
+          "text": "Call the next two steps without a break.",
+          "next": "island.movement.flow.seen",
+          "if": { "flagSet": "island.movement.started" },
+          "effects": [{ "setFlag": "island.movement.flow", "value": true }]
+        },
+        { "text": "Put the cue down for now." }
+      ]
+    },
+    {
+      "id": "island.movement.flow.seen",
+      "speaker": "island-caller",
+      "text": "The long sweep carries the shape straight into the next phrase. Our carrier asks for a set-down before another run. At the corner, the box tipped and they took a little extra step. We’ll set the box down and begin each take after a break."
+    },
+    {
+      "id": "island.movement.hold",
+      "speaker": "island-caller",
+      "text": "Same two steps to the corner. This time let the open palm hold the shape. The box can rest on the rail for that count.",
+      "options": [
+        {
+          "text": "Hold the shape for a count, then call the next two steps.",
+          "next": "island.movement.hold.seen",
+          "if": { "flagSet": "island.movement.started" },
+          "effects": [{ "setFlag": "island.movement.hold", "value": true }]
+        },
+        { "text": "Put the cue down for now." }
+      ]
+    },
+    {
+      "id": "island.movement.hold.seen",
+      "speaker": "island-caller",
+      "text": "The held shape looks like an invitation for the next dancer. The carrier sets a foot square before the turn and finishes this take with the box level. That tells us about this rehearsal. A working load needs its own check."
+    },
+    {
+      "id": "island.movement.back",
+      "speaker": "island-caller",
+      "text": "Sit here. The corner rail hides the small hand. At the back, the sweep is easy to spot. Under the held count the people behind you stand up because they assume the dance is over.",
+      "options": [
+        {
+          "text": "Watch from your seat as I mark both endings.",
+          "next": "island.movement.back.seen",
+          "if": { "all": [{ "flagSet": "island.movement.flow" }, { "flagSet": "island.movement.hold" }] },
+          "effects": [{ "setFlag": "island.movement.back", "value": true }]
+        },
+        { "text": "Leave the rear seat clear." }
+      ]
+    },
+    {
+      "id": "island.movement.back.seen",
+      "speaker": "island-caller",
+      "text": "Now put that same open shape higher. The seat behind you stays put and waits for the last sweep. From the front I never noticed that problem."
+    },
+    {
+      "id": "island.movement.plan",
+      "speaker": "island-caller",
+      "text": "We can give everyone the held phrase if I raise my palm. Or keep the long sweep for the people who want it and rehearse the set-down separately. One group can share a pattern. Two groups can each have a pattern that fits.",
+      "options": [
+        {
+          "text": "Stage one shared phrase with the raised palm and a rest.",
+          "next": "island.movement.shared",
+          "if": { "not": { "flagSet": "island.movement.layout" } },
+          "effects": [{ "setFlag": "island.movement.layout", "value": "shared" }, { "giveItem": "item.island.movement.sheet" }]
+        },
+        {
+          "text": "Keep the sweep in the show and send a separate rest cue for practice.",
+          "next": "island.movement.split",
+          "if": { "not": { "flagSet": "island.movement.layout" } },
+          "effects": [{ "setFlag": "island.movement.layout", "value": "split" }, { "giveItem": "item.island.movement.sheet" }]
+        },
+        {
+          "text": "The square board had a similar problem at the ramp.",
+          "next": "island.movement.signal",
+          "if": { "objective": "island.signal" }
+        },
+        { "text": "Let the crew finish its break." }
+      ]
+    },
+    {
+      "id": "island.movement.shared",
+      "speaker": "island-caller",
+      "text": "The back row takes the last step with the front. Two carriers can stay in the dance. The welcome takes an extra count before the next load is called. Take the cue sheet to the workshop so the planner leaves room for that pause.",
+      "motif": "in-the-open"
+    },
+    {
+      "id": "island.movement.split",
+      "speaker": "island-caller",
+      "text": "The front row gets its long sweep. The two carriers who need the rest do a separate practice turn. They want the practice cue at the workshop so learners can join without seeing the full show.",
+      "motif": "in-the-open"
+    },
+    {
+      "id": "island.movement.signal",
+      "speaker": "island-caller",
+      "text": "Wait for the dock hand or follow the dance. Small signs can ask for different things. We should show which rule is in use.",
+      "next": "island.movement.plan"
+    },
+    {
+      "id": "island.movement.workshop",
+      "speaker": "island-planner",
+      "text": "The row for the empty box can go on the rehearsal side of my board. The loaded route figures keep their own pegs. Show me which cue went to the dock.",
+      "options": [
+        {
+          "text": "Clip the shared raised-palm pattern onto the rehearsal rail.",
+          "next": "island.movement.workshop.shared",
+          "if": {
+            "all": [
+              { "item": "item.island.movement.sheet" },
+              { "flag": "island.movement.layout", "eq": "shared" },
+              { "not": { "flagSet": "island.movement.workshop" } }
+            ]
+          },
+          "effects": [{ "setFlag": "island.movement.workshop", "value": "shared" }]
+        },
+        {
+          "text": "Hang the practice rest cue away from the show’s sweep.",
+          "next": "island.movement.workshop.split",
+          "if": {
+            "all": [
+              { "item": "item.island.movement.sheet" },
+              { "flag": "island.movement.layout", "eq": "split" },
+              { "not": { "flagSet": "island.movement.workshop" } }
+            ]
+          },
+          "effects": [{ "setFlag": "island.movement.workshop", "value": "split" }]
+        },
+        { "text": "Keep the two kinds of result on separate lines." }
+      ]
+    },
+    {
+      "id": "island.movement.workshop.shared",
+      "speaker": "island-planner",
+      "text": "I'll leave a beat between the welcome and the load call. The new apprentice can learn one visible cue. The twelve-minute ferry circuit stays where it is."
+    },
+    {
+      "id": "island.movement.workshop.split",
+      "speaker": "island-planner",
+      "text": "I'll pair the newcomer with someone who can show the rest mark before their first practice. The welcome can keep its sweep. The twelve-minute ferry figure stays where it is."
+    }
+  ],
+  "hints": [
+    { "id": "h.island.movement.compare.1", "objective": "island.movement.compare", "depth": 1, "text": "The dock caller wants to see how the same dance works with one held beat." },
+    { "id": "h.island.movement.compare.2", "objective": "island.movement.compare", "depth": 2, "text": "Find both chalk marks on the dry boards by Rella." },
+    { "id": "h.island.movement.compare.3", "objective": "island.movement.compare", "depth": 3, "text": "Follow each rehearsal through its four steps. One version gives the carrier a count with the box on the rail." },
+    { "id": "h.island.movement.compare.4", "objective": "island.movement.compare", "depth": 4, "text": "Once you have tried the continuous and held versions at the front, try the occupied rear seat to the east." },
+    { "id": "h.island.movement.deliver.1", "objective": "island.movement.deliver", "depth": 1, "text": "Rella wants a welcome people can follow. The planner needs to keep the rehearsal separate from a delivery." },
+    { "id": "h.island.movement.deliver.2", "objective": "island.movement.deliver", "depth": 2, "text": "Return to Rella after checking both takes and the view from the rear." },
+    { "id": "h.island.movement.deliver.3", "objective": "island.movement.deliver", "depth": 3, "text": "You can raise the shared cue or keep a different cue for practice. Both choices leave a cue sheet." },
+    { "id": "h.island.movement.deliver.4", "objective": "island.movement.deliver", "depth": 4, "text": "Take the cue sheet to the rehearsal rail in the Plan Workshop and choose where its cue should hang." }
+  ],
+  "moments": [
+    {
+      "id": "mom.island.movement.test",
+      "attribute": "risk-taker",
+      "when": { "objective": "island.movement.deliver" },
+      "did": "You let the people in back challenge a cue that already made sense from the front. Then you tried raising the gesture.",
+      "prompt": ""
+    }
+  ]
+}

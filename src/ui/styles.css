@@ -169,6 +169,9 @@ legend { color: var(--gold); padding: 0 0.4em; }
 .radio, .check, .range { display: block; margin: 0.35em 0; cursor: pointer; }
 .sim-result { margin-top: 0.8em; }
 .mark { width: 100%; max-width: 320px; image-rendering: pixelated; border-radius: 6px; }
+.optics-board { display: block; width: 100%; max-width: 360px; image-rendering: pixelated; border-radius: 6px; }
+.field-tools .bag p { margin: 0.3rem 0; }
+.field-tools .bag button { margin-top: 0.45rem; }
 .fair { color: var(--ok); } .unfair { color: var(--warn); }
 .sort-list { list-style: none; padding: 0; }
 .sort-list li { display: flex; justify-content: space-between; gap: 1em; align-items: center; padding: 0.4em 0.6em; border-radius: 8px; margin: 0.3em 0; background: rgba(255,255,255,0.04); }
@@ -176,6 +179,17 @@ legend { color: var(--gold); padding: 0 0.4em; }
 .tabs { display: flex; gap: 0.3em; flex-wrap: wrap; margin-bottom: 0.8em; }
 .tabs [aria-selected='true'] { border-color: var(--cyan); color: var(--cyan); }
 .journal li, .notes li, .awards li, .sources-list li { margin: 0.5em 0; }
+.diary-tools { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.diary-export { max-width: 27rem; }
+.diary-export [role='status']:empty { display: none; }
+.diary-filter { display: block; margin-top: 1rem; }
+.diary-feed { list-style: none; padding: 0; display: grid; gap: 0.6rem; }
+.diary-feed > li { padding: 0.7rem 0.9rem; border: 1px solid var(--line, #444); border-radius: 8px; }
+.diary-feed h3, .diary-meta { margin: 0 0 0.45rem; }
+.diary-feed > li p:last-child { margin-bottom: 0; }
+.diary-note-form { display: grid; gap: 0.5rem; max-width: 40rem; }
+.diary-note-form button, .diary-note-form select { justify-self: start; }
+.diary-notes > li p { white-space: pre-wrap; overflow-wrap: anywhere; }
 .awards.locked { color: var(--ink-dim); }
 .bag { list-style: none; padding: 0; }
 .bag li { display: flex; gap: 0.7em; align-items: flex-start; margin: 0.6em 0; }

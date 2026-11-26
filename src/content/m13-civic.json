@@ -534,6 +534,163 @@
    "historicalLabel": "fictional-world",
    "text": "The North Steps clerk pins three separate marks to the practice stand. The counts guarantee room if the assigned marks hold. A spare mark gives someone with a changed shift a place to try.",
    "claimKind": "simulation"
+  },
+  {
+   "id": "record.edge.wea",
+   "speaker": "civic-operator",
+   "text": "Here is the separate convention that the earlier article led you to. Use the folio to keep that promise to find a record apart from the date written on the record you found.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Line up 30 September and 26 October under their own headings.",
+     "next": "record.edge.wea.reveal",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "record-edge-folio"
+       },
+       {
+        "card": "card.record-edge.wea"
+       },
+       {
+        "flagSet": "record.edge.voices.mount"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "record.edge.wea",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the second date in its case."
+    }
+   ]
+  },
+  {
+   "id": "record.edge.wea.reveal",
+   "speaker": "civic-operator",
+   "text": "The treaty is dated 30 September 1809. The Vincennes convention is dated 26 October. It records a declaration by its listed Wea representatives. The words on the page tell us what the record says. They leave open what happened in the negotiations and how freely people could act.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "record.edge.eastern",
+   "speaker": "civic-clerk",
+   "text": "An old cabinet card says “Shawnee government.” Fit the folio over the name on the public constitution. Leave the treaty dates in their own slot.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Expose the full name and the article on its own government.",
+     "next": "record.edge.eastern.reveal",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "record-edge-folio"
+       },
+       {
+        "card": "card.record-edge.eastern"
+       },
+       {
+        "flagSet": "record.edge.voices.mount"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "record.edge.eastern",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the cabinet card in place for now."
+    }
+   ]
+  },
+  {
+   "id": "record.edge.eastern.reveal",
+   "speaker": "civic-clerk",
+   "text": "This cover names the Eastern Shawnee Tribe of Oklahoma. Its constitution sets out its own branches of government. The Absentee Shawnee Tribe and the Shawnee Tribe are separate governments. This copy gives the history shelves a present-day voice with its own name.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "record.edge.post",
+   "speaker": "civic-clerk",
+   "text": "The learner who carried the cabinet card to our desk thought signing a request meant the signer could decide for the street. We use one line for the person who logged a request and another for the body that decides it. Help the next reader see the difference. Keep the real records with their names and dates.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hold the two dated treaty records open at North Steps.",
+     "next": "record.edge.post.dates",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "record-edge-folio"
+       },
+       {
+        "objective": "record.edge.civic.compare"
+       },
+       {
+        "not": {
+         "flagSet": "record.edge.civic.mount"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "record.edge.civic.mount",
+       "value": "dates"
+      }
+     ]
+    },
+    {
+     "text": "Clip the full constitutional name and source directions beside the Canal Walk practice ledger.",
+     "next": "record.edge.post.scope",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "record-edge-folio"
+       },
+       {
+        "objective": "record.edge.civic.compare"
+       },
+       {
+        "not": {
+         "flagSet": "record.edge.civic.mount"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "record.edge.civic.mount",
+       "value": "scope"
+      }
+     ]
+    },
+    {
+     "text": "Leave the new lines at my desk."
+    }
+   ]
+  },
+  {
+   "id": "record.edge.post.dates",
+   "speaker": "civic-clerk",
+   "text": "A desk reader goes back to Article 5 and then to the October convention. They ask for each date the next time a deed is copied. The constitutional record stays at its own stand.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "record.edge.post.scope",
+   "speaker": "civic-clerk",
+   "text": "A Canal reader follows the named constitution back to its own case. They mark the difference between a request and a decision on the practice ledger. The two treaty records stay together at Dispatch.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "missions": [
@@ -1681,6 +1838,79 @@
    "objective": "civic.routing.finish",
    "depth": 4,
    "text": "Walk to the chosen stop. Read the ramp notice and see which readers still need a usable time."
+  }
+ ],
+ "sources": [
+  {
+   "id": "HIS-EDGE-05",
+   "title": "Separate Wea convention, 7 Stat. 116",
+   "url": "https://treaties.okstate.edu/treaties/treaty-with-the-wea-1809-0103",
+   "locator": "October 26, 1809. Preamble and passage recording the Wea representatives’ declaration. NARA 94278486.",
+   "supports": "The convention separately lists William Henry Harrison and Wea representatives at Vincennes. The text records a declaration concerning the September agreement and its separate article.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-EDGE-06",
+   "title": "Eastern Shawnee Tribe of Oklahoma: Constitution",
+   "url": "https://www.estoo-nsn.gov/government/page/constitution-eastern-shawnee-tribe-oklahoma",
+   "locator": "Official public PDF, Article I on the name, Article VI on government, and the 1999 amendment certificate.",
+   "supports": "The constitutional copy names this government and describes its executive, legislative and judicial branches. Its closing material includes a 1999 amendment certificate.",
+   "accessed": "2026-11-26"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.record-edge.wea",
+   "title": "The separate Wea convention",
+   "text": "The 26 October 1809 agreement at Vincennes records a declaration by listed Wea representatives about the Fort Wayne treaty and a separate article. William Henry Harrison appears as the United States commissioner.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-EDGE-05"
+   ],
+   "limits": "The record gives the named parties and terms of this agreement. Its words cannot establish how free the negotiations were, how every Wea person understood them, or what other nations agreed to."
+  },
+  {
+   "id": "card.record-edge.eastern",
+   "title": "A constitutional record of a present-day government",
+   "text": "Article I of the public constitution names the Eastern Shawnee Tribe of Oklahoma. Article VI describes an executive led by the Chief, a legislature made up of the Business Committee, and a judiciary.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-EDGE-06",
+    "HIS-EDGE-04"
+   ],
+   "limits": "This is the Eastern Shawnee Tribe of Oklahoma’s own constitutional record. The Absentee Shawnee Tribe and the Shawnee Tribe govern separately. The copy gives no account of political authority in 1809."
+  }
+ ],
+ "exhibits": [
+  {
+   "id": "OBJ-EDGE-WEA",
+   "name": "Vincennes convention with Wea representatives",
+   "art": "civic.ledger",
+   "historicalLabel": "documented",
+   "dateText": "26 October 1809",
+   "dateKind": "Date the convention gives for the agreement. Its ratification and proclamation occurred in January 1810.",
+   "summary": "This separate record names Wea representatives and gives their recorded declaration about the September agreement. Article 5 of the earlier treaty directs the reader to a separate record.",
+   "sources": [
+    "HIS-EDGE-05"
+   ],
+   "grantsCard": "card.record-edge.wea",
+   "altText": "Original illustration of a paper folio with two marked edges."
+  },
+  {
+   "id": "OBJ-EDGE-EASTERN",
+   "name": "Constitution of the Eastern Shawnee Tribe of Oklahoma",
+   "art": "preserved.folder",
+   "historicalLabel": "documented",
+   "dateText": "Public copy with a certified 1999 amendment",
+   "dateKind": "The year belongs to the amendment certification included with the copy. The preamble asserts the Tribe’s inherent sovereignty.",
+   "summary": "The Tribe publishes its own constitutional copy. Article I gives its full name. Article VI describes the branches of its government.",
+   "sources": [
+    "HIS-EDGE-06"
+   ],
+   "grantsCard": "card.record-edge.eastern",
+   "altText": "Original illustration of a paper folio with two marked edges."
   }
  ]
 }

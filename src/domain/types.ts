@@ -595,9 +595,17 @@ export interface RestoreMethod {
   labels: { text: string; honest: boolean; why: string }[];
 }
 
-/** A keepsake for the Guardian's quarters (spec 12.16): shown on a shelf once `if` holds. Cosmetic only. */
-/** `use` says where the keepsake matters in the world (shown when it is earned and in the quarters). */
-export interface Keepsake { id: string; name: string; text: string; if: Condition; where: string; use?: string }
+/** A keepsake shown on a shelf once `if` holds. Some can be carried as field tools. */
+export interface Keepsake {
+  id: string;
+  name: string;
+  text: string;
+  if: Condition;
+  where: string;
+  /** A place or person who can use the item in play. */
+  use?: string;
+  equip?: { method: string; hint: string; art?: string };
+}
 /** The Lamp Wall (storyline): one lamp for each of Emberford's knots that the player helps untie. */
 export interface Knot { id: string; name: string; who: string; lit: string; if: Condition }
 /** A clue object: a base description, and new views that a keepsake reveals (a perspective or a pathway). */
@@ -731,7 +739,7 @@ export interface ContentPack {
 // State
 // ---------------------------------------------------------------------------
 
-export const CAMPAIGN_SCHEMA = 4;
+export const CAMPAIGN_SCHEMA = 5;
 export const PERMANENT_SCHEMA = 4;
 
 export interface ShowdownLogLine { who: 'player' | 'opponent' | 'crowd' | 'witness'; text: string; why?: string }
@@ -774,6 +782,32 @@ export interface ForgeState {
   cut: boolean;
 }
 
+export type DiaryEntryKind = 'quest' | 'choice' | 'experience';
+
+export interface DiaryEntry {
+  id: string;
+  kind: DiaryEntryKind;
+  title: string;
+  text: string;
+  at: string;
+  mapId: string;
+}
+
+export type DiaryNoteKind = 'note' | 'reflection' | 'question';
+
+export interface DiaryNoteDetails {
+  kind: DiaryNoteKind;
+  /** Old notes have no recorded date or place. */
+  at: string | null;
+  mapId: string | null;
+  resolved: boolean;
+}
+
+export interface AdventureDiary {
+  entries: DiaryEntry[];
+  noteDetails: DiaryNoteDetails[];
+}
+
 /** Everything that rolls back together when a checkpoint loads (spec 24.2). */
 export interface CampaignState {
   schema: number;
@@ -789,6 +823,7 @@ export interface CampaignState {
   journal: string[];
   /** The player's own free-text notes. Never graded (spec 22.3). */
   notes: string[];
+  adventureDiary: AdventureDiary;
   cards: string[];
   objectivesDone: string[];
   companion: string | null;

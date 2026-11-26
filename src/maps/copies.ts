@@ -1,6 +1,7 @@
 /** A fictional city where the archive, press and landing share written notices. */
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
+import { COPIES_ARCHIVE_BACKBILL, COPIES_PRESS_BACKBILL } from './backbill';
 
 type CitySite = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'interactables' | 'stamps' | 'lights'>;
@@ -52,6 +53,7 @@ export const COPIES_ARCHIVE = interior({
     { stamp: 'rug-green', x: 11, y: 10 },
   ],
   interactables: [
+    ...COPIES_ARCHIVE_BACKBILL,
     door('copies-press-path', 4, 3, 'the west passage to the press', { map: 'copies.press', x: 11, y: 12 }),
     door('copies-landing-path', 21, 3, 'the east steps to the landing', { map: 'copies.landing', x: 12, y: 12 }),
     { ...door('copies-nexus-return', 12, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 21, y: 13 }),
@@ -89,6 +91,7 @@ export const COPIES_PRESS = interior({
     { stamp: 'bench', x: 14, y: 11 },
   ],
   interactables: [
+    ...COPIES_PRESS_BACKBILL,
     { id: 'cross-crowd', kind: 'fieldgame', game: 'cross-crowd', x: 9, y: 6, w: 1, h: 1, label: 'the crowd at the press door (a crossing)', art: 'notice-board' },
     door('copies-press-return', 11, 14, 'the passage back to the Record Room', { map: 'copies.archive', x: 4, y: 5 }),
     door('copies-press-to-landing', 22, 9, 'the passage to the landing', { map: 'copies.landing', x: 5, y: 9 }),

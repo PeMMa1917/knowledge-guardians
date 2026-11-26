@@ -11,6 +11,7 @@ import { voiceReading, type VoiceSource, type VoiceView } from './voiceReadings'
 import { islandPlan, type IslandLanding, type IslandRoute } from './islandPlan';
 import { councilClock, type CouncilTrial } from './councilClock';
 import { scoutDecision, scoutNextTrial, scoutTrials, type ScoutDecision, type ScoutProtocol, type ScoutRoute } from './scoutRoutes';
+import { ownedPerspective, PERSPECTIVE_FLAG } from './perspectives';
 /**
  * Domain engine. Scenes send typed commands; the engine checks preconditions,
  * computes ONE valid state transition and returns events for the view to show
@@ -28,7 +29,7 @@ import { ROLES } from './roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from './undercroft';
 import { FIELD_GAMES } from './fieldgames';
 import type {
-  AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, Effect, Hint, MisconceptionRecord, Mission,
+  AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, DiaryNoteKind, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
 } from './types';
 import { CAMPAIGN_SCHEMA, type Pronouns } from './types';
@@ -47,9 +48,12 @@ import { playMove, startShowdown, type ShowdownMove } from './showdown';
 import { tryLock, type LockResult } from './lock';
 import { compareWithBlade, forgeStep, newForge, type ForgeAction } from './forge';
 import { addPortfolio, addSignal, checkMoments, recordWeave, tickEvents } from './learning';
+import { diaryDialogueChoice, diaryNoteKind, newAdventureDiary, recordAdventure } from './adventureJournal';
 
 export type Command =
   | { type: 'Reach'; zone: string }
+  | { type: 'VisitPlace'; name: string }
+  | { type: 'EquipPerspective'; keepsake: string | null }
   | { type: 'SetPronouns'; pronouns: Pronouns }
   | { type: 'SetLook'; look: string }
   | { type: 'AlcovePlace'; alcove: string; item: string }
@@ -135,7 +139,8 @@ export type Command =
   | { type: 'Purchase'; offer: string }
   | { type: 'RequestHint'; objective: string }
   | { type: 'SetFlag'; flag: string; value: string | number | boolean }
-  | { type: 'AddNote'; text: string }
+  | { type: 'AddNote'; text: string; kind?: DiaryNoteKind }
+  | { type: 'SetDiaryQuestion'; index: number; resolved: boolean }
   | { type: 'PortfolioShare'; entry: string; shared: boolean }
   | { type: 'PortfolioReflect'; entry: string; text: string };
 
@@ -208,6 +213,7 @@ export function newCampaign(pack: ContentPack, name: string, look: string, seed:
     relations: {},
     journal: origin ? [origin.journal] : [],
     notes: [],
+    adventureDiary: newAdventureDiary(),
     cards: [],
     objectivesDone: [],
     companion: null,
@@ -349,14 +355,26 @@ export class Engine {
     let s = s0;
     let p = p0;
     let nextNode: string | null | undefined;
+    let diaryChoice: ReturnType<typeof diaryDialogueChoice>;
     try {
       switch (cmd.type) {
+        case 'VisitPlace':
+          if (!cmd.name.trim()) throw new Error('This place has no name');
+          break;
         case 'Reach':
           s = apply([{ setFlag: `reached.${cmd.zone}`, value: true }], s, out);
           break;
         case 'SetFlag':
           s = apply([{ setFlag: cmd.flag, value: cmd.value }], s, out);
           break;
+        case 'EquipPerspective': {
+          const id = cmd.keepsake;
+          if (id !== null && !ownedPerspective(this.pack, s, id)) throw new Error('You have not earned that field tool');
+          if (s.flags[PERSPECTIVE_FLAG] !== (id ?? false)) {
+            s = apply([{ setFlag: PERSPECTIVE_FLAG, value: id ?? false }], s, out);
+          }
+          break;
+        }
         case 'UseKeepsake': case 'ReadClue': {
           const cl = (this.pack.clues ?? []).find((x) => x.id === cmd.clue);
           if (!cl) throw new Error('Unknown clue');
@@ -551,6 +569,7 @@ export class Engine {
           const opt = cmd.index >= 999 ? this.visibleOptions(cmd.node, s).find((o) => o.index === cmd.index)?.option : n.options?.[cmd.index];
           if (!opt) throw new Error('That option does not exist');
           if (!check(opt.if, s)) throw new Error('That option is not available now');
+          diaryChoice = diaryDialogueChoice(this.pack, n, opt, cmd.index, this.visibleOptions(cmd.node, s).length);
           s = apply(opt.effects, s, out);
           if (s.companion && isInquiry(opt.tag)) s = this.approve(s, out, events, `${cmd.node}.${cmd.index}`);
           nextNode = opt.next ?? null;
@@ -1115,9 +1134,19 @@ export class Engine {
           const t = cmd.text.trim().slice(0, 500);
           if (!t) throw new Error('The note is empty');
           if (s.notes.length >= 200) throw new Error('The journal is full');
+          const kind = cmd.kind ?? diaryNoteKind(t);
+          if (kind !== 'note' && kind !== 'reflection' && kind !== 'question') throw new Error('Unknown note type');
           s = structuredClone(s);
           s.notes.push(t);
+          s.adventureDiary.noteDetails.push({ kind, at: now, mapId: s.mapId, resolved: false });
           s = apply([{ addNum: 'count.notes', by: 1 }], s, out);
+          break;
+        }
+        case 'SetDiaryQuestion': {
+          const note = s.adventureDiary.noteDetails[cmd.index];
+          if (!Number.isInteger(cmd.index) || note?.kind !== 'question' || typeof cmd.resolved !== 'boolean') throw new Error('Unknown journal question');
+          s = structuredClone(s);
+          s.adventureDiary.noteDetails[cmd.index].resolved = cmd.resolved;
           break;
         }
         case 'RequestHint': {
@@ -1241,6 +1270,7 @@ export class Engine {
     }
 
     pushOutputs(out, events);
+    s = recordAdventure(this.pack, s0, s, cmd, events, now, diaryChoice);
     return { state: s, permanent: p, events, nextNode };
   }
 }
