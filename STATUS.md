@@ -6,6 +6,10 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
+The narrow diary, source catalogue and ending credits wrap long controls, titles and links at enlarged text sizes. A completed controlled trial at the Nexus bench now unlocks Lumen’s simulation and causal memories. Six Jig Shop exhibits have distinct original graphics. The photographic plate vise uses its own catalogue slip because the available photographs depict plate cases. [Bench memories](tests/glossary.test.ts) · [Jig Shop](tests/jig-shop.test.ts)
+
+The 1941 Green-Book records Victor Hugo Green as publisher and James A. Jackson as the presenter named on the cover. Checking the object opens its historical context. Earning it controls the museum citation in the adventure export. [Door Fold](tests/door-fold.test.ts)
+
 In The Last Loose Swatch, Nell’s older loan stays sealed. A player can keep the separate workshop swatch intact or trade its edge for a material report. The two objects need separate captions in either case. The final reader’s action records skill 911 and the journal remembers which future check the player made possible. [Both swatch outcomes](tests/pigment-sample.test.ts)
 
 Odile’s floor ruler in the Cold Store turns an ambiguous custody copy into an optional check. Readers get a measured floor guide or a bounded file slip and use it at different stations. [Route checks](tests/preserved-scale.test.ts)
