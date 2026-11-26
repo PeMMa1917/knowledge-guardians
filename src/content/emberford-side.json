@@ -732,7 +732,7 @@
   {
    "id": "hands.receipt",
    "speaker": "porter-idris",
-   "text": "Here is the museum entry I didn’t fit on the tag. Science Museum Group records this pen as object 1949-174/2. The entry names László József Bíró and his brother Georg. The patent office account on the back describes Bíró’s work on the practical pen with his brother and others. Carry the entry back to the strap.",
+   "text": "Three jobs on one little pen. László József Bíró developed the design. His brother Georg helped with the ink. The Miles Martin Pen Company made this pen in Reading. Here’s the museum number, 1949-174/2. The patent office account is on the back. Which job would you guess from my tag?",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -779,7 +779,7 @@
   {
    "id": "hands.review",
    "speaker": "porter-idris",
-   "text": "I have the tag I carried. You have an entry with two names. I’d still use a short mark to find the maker’s door. How should I keep the rest of this on my route strap?",
+   "text": "I wrote “Biro” so I could find the bundle in a hurry. Now somebody wants to know where this pen was made. A short tag got my cart here. What should go on the strap for the next carrier?",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -862,13 +862,13 @@
   {
    "id": "hands.end.concede",
    "speaker": "porter-idris",
-   "text": "We’ll keep the useful part, then. The short tag goes on the front. I’ll put a clip on the back for the names it left out. Bring me another troublesome tag if you see one.",
+   "text": "I can still call out “Biro” from the cart. For the ink, lift this clip and look for Georg. I’ve left my thumb enough room to hold the page open.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "hands.end.pair",
    "speaker": "porter-idris",
-   "text": "I’ll put the two together. The next carrier can see what I expected and what I found after looking again. Come by later. You can help me with the next bundle too.",
+   "text": "Put the tags side by side. I could have sent a letter to the inventor asking about the Reading workshop. Now the next carrier can find the factory before the cart goes.",
    "historicalLabel": "fictional-world"
   },
   {

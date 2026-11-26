@@ -1,0 +1,52 @@
+{
+  "smg:1949-174/2": [
+    {
+      "name": "László József Bíró",
+      "role": "Inventor named in the museum record",
+      "detail": "The object is a British-made example of the ballpoint pen developed by Bíró. The museum dates this pen to 1945–1948.",
+      "source": "HIS-S13"
+    },
+    {
+      "name": "Georg Bíró",
+      "role": "Collaborator on the ink",
+      "detail": "The museum credits Georg with helping his brother develop the thick ink. The family name on the tag leaves that contribution hard to see.",
+      "source": "HIS-S13"
+    },
+    {
+      "name": "Miles Martin Pen Company Limited",
+      "role": "Manufacturer of this pen",
+      "detail": "The catalogue traces this surviving pen to the company in Reading, England. That is a separate credit from inventing the pen or developing its ink.",
+      "source": "HIS-S13"
+    }
+  ],
+  "smg:a606881": [
+    {
+      "name": "Wilhelm Conrad Röntgen",
+      "role": "Maker of the original exposure",
+      "detail": "Röntgen exposed the radiograph in Würzburg on 22 December 1895. The museum holds a photograph of that image under glass. Its maker is unrecorded.",
+      "source": "HIS-MET-RONTGEN-A606881"
+    },
+    {
+      "name": "Anna Bertha Ludwig",
+      "role": "Subject of the exposure",
+      "detail": "The museum identifies the left hand with the ring as that of Röntgen’s wife. His Nobel biography gives her name.",
+      "source": "HIS-RONTGEN-BIO"
+    }
+  ],
+  "loc:52002339": [
+    {
+      "name": "Johann Gutenberg",
+      "role": "Printer named in the catalogue",
+      "detail": "The Library credits the printer of the 42-line Bible. Its record lists red printed headings alongside ones added by hand in this vellum copy. The printer credit alone does not identify the hand responsible for those additions.",
+      "source": "HIS-LOC-GUT-01"
+    }
+  ],
+  "cma:1914.680": [
+    {
+      "name": "Amenemope",
+      "role": "Vizier named on the paint box",
+      "detail": "The front inscription names the overseer of the city and vizier. The museum distinguishes him from a different man of the same name on a coffin panel.",
+      "source": "HIS-CMA-1914.680"
+    }
+  ]
+}

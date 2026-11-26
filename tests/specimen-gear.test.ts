@@ -103,6 +103,28 @@ describe('The collection and field gear', () => {
       .toEqual([{ record: greenBook, page: 0 }]);
   });
 
+  it('finds earned early objects by the specific contribution recorded for each person', () => {
+    const d = new Driver();
+    const people = [
+      ['smg:1949-174/2', 'Georg Bíró', 'Collaborator on the ink'],
+      ['smg:1949-174/2', 'Miles Martin Pen Company Limited', 'Manufacturer of this pen'],
+      ['smg:a606881', 'Anna Bertha Ludwig', 'Subject of the exposure'],
+      ['loc:52002339', 'Johann Gutenberg', 'Printer named in the catalogue'],
+      ['cma:1914.680', 'Amenemope', 'Vizier named on the paint box'],
+    ];
+    for (const [key, name, role] of people) {
+      const exhibit = d.e.pack.exhibits.filter(hasSpecimen).find(({ specimen }) => specimen.key === key)!;
+      expect(exhibit.specimen.people).toContainEqual(expect.objectContaining({ name, role }));
+      if (!d.s.inventory[specimenItemId(key)]) {
+        expect(findCollectedSpecimens(specimenDisplay(d.e.pack, d.s), name)).toEqual([]);
+        d.s.objectivesDone.push(exhibit.specimen.objective);
+        d.run({ type: 'InspectExhibit', exhibit: exhibit.id });
+        d.run({ type: 'ClaimSpecimen', exhibit: exhibit.id });
+      }
+      expect(findCollectedSpecimens(specimenDisplay(d.e.pack, d.s), name).map(({ record }) => record.id)).toContain(exhibit.id);
+    }
+  });
+
   it('uses matching pages for the visible cases and the satchel hooks', () => {
     const d = new Driver();
     const samples = d.e.pack.exhibits.filter(hasSpecimen).slice(0, SPECIMEN_CAPACITY + SPECIMEN_CASES + 1);

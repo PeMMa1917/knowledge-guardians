@@ -13,6 +13,14 @@
     "container": "Science Museum Group Collection",
     "showAccessDate": true
    }
+  },
+  {
+   "id": "HIS-RONTGEN-BIO",
+   "title": "Nobel Prize, Wilhelm Conrad Röntgen, Biographical",
+   "url": "https://www.nobelprize.org/prizes/physics/1901/rontgen/biographical/",
+   "locator": "Biographical account, paragraph on Röntgen’s family",
+   "supports": "The biography names Anna Bertha Ludwig as Röntgen’s wife. The Science Museum Group object record independently identifies his wife’s left hand as the subject of the exposure.",
+   "accessed": "2026-11-26"
   }
  ],
  "exhibits": [
@@ -23,9 +31,10 @@
    "historicalLabel": "documented",
    "dateText": "1895 (catalogue date), from the exposure of 22 December 1895",
    "dateKind": "Date of the original exposure described by the catalogue. The copy has a catalogue year of 1895. Its making day is unstated.",
-   "summary": "Science Museum Group A606881 is a photograph on paper under glass. It preserves an image of the ring on the left hand of Wilhelm Conrad Röntgen’s wife. The original radiograph is held by the Deutsches Museum in Munich. The museum lists the copy’s maker as unknown.",
+   "summary": "Science Museum Group A606881 is a photograph on paper under glass. It preserves an image of the ring on Anna Bertha Ludwig’s left hand. The original radiograph is held by the Deutsches Museum in Munich. The museum lists the copy’s maker as unknown.",
    "sources": [
-    "HIS-MET-RONTGEN-A606881"
+    "HIS-MET-RONTGEN-A606881",
+    "HIS-RONTGEN-BIO"
    ],
    "grantsCard": "card.fitting.rontgen-copy",
    "altText": "Original schematic with two separately labelled frames. A hand and ring are drawn in the Science Museum Group photograph’s frame. The empty frame points to the original in Munich.",
