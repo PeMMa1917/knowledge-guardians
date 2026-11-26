@@ -30,7 +30,7 @@ import { TALENTS, cannotLearn, hasTalent } from './talents';
 import { GATHER_YIELD, RECIPES, RESOURCES, cannotCraft } from './craft';
 import { cannotRead, readingOf } from './readings';
 import { RUMOURS, missingRumourSources, rumourDone } from './rumours';
-import { BARTER, DYES, FAIR_PRICE, ferryPrice } from './trade';
+import { BARTER, DYES, ferryPrice } from './trade';
 import { approvalOf, approvalRank, isInquiry } from './approval';
 import { ROLES } from './roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from './undercroft';
@@ -103,7 +103,7 @@ export type Command =
   | { type: 'CheckRumourSource'; rumour: string; source: number }
   | { type: 'BuyDye'; dye: string }
   | { type: 'Barter'; resource: string; dir: 'buy' | 'sell' }
-  | { type: 'FairPrice'; choice: number }
+  | { type: 'CompareDyePrices' }
   | { type: 'ChooseRole'; role: string }
   | { type: 'DisarmSeal'; seal: string; choice: number }
   | { type: 'BossMove'; choice: number }
@@ -199,7 +199,6 @@ export type GameEvent =
   | { kind: 'craft'; recipe: string; ok: boolean; why: string }
   | { kind: 'reading'; reading: string; ok: boolean; why: string; first: boolean }
   | { kind: 'rumour'; rumour: string; ok: boolean; why: string }
-  | { kind: 'fairprice'; ok: boolean; why: string }
   | { kind: 'seal'; seal: string; ok: boolean; why: string }
   | { kind: 'boss'; phase: number; ok: boolean; why: string; done: boolean }
   | { kind: 'fieldgame'; game: string; name: string; first: boolean }
@@ -331,9 +330,9 @@ export class Engine {
 
   /** The first open, visible objective. Used by the guide and the recap. */
   currentObjective(s: CampaignState): (Objective & { mission: Mission }) | null {
-    // Main-story steps come first, so an optional side step never takes the tracker.
     const open = this.visibleObjectives(s).filter((o) => !o.complete);
-    return open.find((o) => /-M\d+$/.test(o.mission.id)) ?? open[0] ?? null;
+    const main = open.filter((o) => /-M\d+$/.test(o.mission.id));
+    return main.find((o) => o.essential) ?? main[0] ?? open[0] ?? null;
   }
 
   /** Which Fray creatures this command met (fixed rules on results, never on values). */
@@ -493,11 +492,11 @@ export class Engine {
           }
           break;
         }
-        case 'FairPrice': {
-          const o = FAIR_PRICE.options[cmd.choice];
-          if (!o) throw new Error('Choose an answer');
-          s = apply([{ setFlag: 'trade.fair.asked', value: true }, ...(o.ok ? [{ setFlag: 'trade.fair.ok', value: true } as Effect] : [])], s, out);
-          events.push({ kind: 'fairprice', ok: o.ok, why: o.why });
+        case 'CompareDyePrices': {
+          if (s.mapId !== 'aethelgard.ferry') throw new Error("The price slips are at Wenna’s boat.");
+          if (s.flags['trade.price-compared'] !== true) {
+            s = apply([{ setFlag: 'trade.price-compared', value: true }], s, out);
+          }
           break;
         }
         case 'DisarmSeal': {

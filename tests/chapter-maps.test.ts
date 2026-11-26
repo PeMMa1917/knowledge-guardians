@@ -29,6 +29,25 @@ function walkable(map: MapDef) {
   return (x: number, y: number) => map.floor(x, y) !== null && !blocked.has(`${x},${y}`);
 }
 
+it('keeps always available interactions from sharing an identical physical target', () => {
+  const conflicts: string[] = [];
+  for (const map of Object.values(MAPS)) {
+    const targets = new Map<string, typeof map.interactables>();
+    for (const prop of map.interactables) {
+      const place = `${prop.x},${prop.y},${prop.w},${prop.h}`;
+      const samePlace = targets.get(place) ?? [];
+      samePlace.push(prop);
+      targets.set(place, samePlace);
+    }
+    for (const group of targets.values()) {
+      if (group.length > 1 && group.some((prop) => !prop.visibleIf)) {
+        conflicts.push(`${map.id} ${group.map((prop) => prop.id).join(', ')}`);
+      }
+    }
+  }
+  expect(conflicts).toEqual([]);
+});
+
 it('leaves the Emberford portal post clear for Kip after the market Showdown', () => {
   const map = MAPS['aethelgard.emberford'];
   // WorldScene moves Kip to this post when the player must collect the gold seal.

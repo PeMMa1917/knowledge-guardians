@@ -14,7 +14,7 @@
 import type { CampaignState, PermanentRecord } from './types';
 import { CAMPAIGN_SCHEMA } from './types';
 import { validateCampaign } from './validate';
-import { migratePermanent, newPermanent } from './permanent';
+import { migratePermanent, NewerPermanentRecord, newPermanent } from './permanent';
 import { newAdventureDiary } from './adventureJournal';
 
 export type SaveKind = 'checkpoint' | 'suspend';
@@ -194,18 +194,26 @@ export function parsePair(text: string | null): LoadResult {
 // --------------------------------------------------------------------------
 
 export class PermanentSaveConflict extends Error {
-  constructor() {
-    super('The learning record changed in another tab. This tab still has your unsaved progress.');
+  constructor(message = 'The learning record changed in another tab. Reopening loads the newer saved record. Keep this tab open if you still need its unsaved progress.') {
+    super(message);
   }
 }
 
 export class SaveService {
+  private knownCampaign: string | null | undefined;
   private knownPermanent: string | null | undefined;
+  private learningReadProblem: string | undefined;
 
   constructor(private store: KeyValueStore) {}
 
   load(): LoadResult {
-    return parsePair(this.store.get(KEY_SLOTS));
+    try {
+      this.knownCampaign = this.store.get(KEY_SLOTS);
+      return parsePair(this.knownCampaign);
+    } catch {
+      this.knownCampaign = undefined;
+      return { ok: false, reason: 'The browser could not read your saved adventure.' };
+    }
   }
 
   /**
@@ -213,26 +221,43 @@ export class SaveService {
    * (revision check, spec 24.3). Returns the stored pair.
    */
   commit(expectedRevision: number, next: SlotPair): SlotPair {
-    const current = this.load();
-    if (current.ok && current.pair.revision !== expectedRevision) {
+    const text = this.store.get(KEY_SLOTS);
+    const current = parsePair(text);
+    // A malformed pair can be replaced only when the initial read saw those exact bytes.
+    const canWrite = current.ok ? current.pair.revision === expectedRevision : this.knownCampaign === text;
+    if (!canWrite || (this.knownCampaign !== undefined && this.knownCampaign !== text)) {
       throw new Error('Save changed in another tab. Reload to continue.');
     }
-    this.store.set(KEY_SLOTS, serialisePair(next));
+    const saved = serialisePair(next);
+    this.store.set(KEY_SLOTS, saved);
+    this.knownCampaign = saved;
     return next;
   }
 
+  get permanentLoadProblem(): string | undefined { return this.learningReadProblem; }
+
   loadPermanent(): PermanentRecord {
-    const t = this.store.get(KEY_PERMANENT);
-    this.knownPermanent = t;
-    if (!t) return newPermanent();
+    this.learningReadProblem = undefined;
+    let saved: string | null;
     try {
-      return migratePermanent(JSON.parse(t));
+      saved = this.store.get(KEY_PERMANENT);
     } catch {
+      this.learningReadProblem = 'The browser could not read your saved learning record. Reopen the game when storage is available. New learning in this tab is unsaved.';
+      return newPermanent();
+    }
+    this.knownPermanent = saved;
+    try {
+      return saved === null ? newPermanent() : migratePermanent(JSON.parse(saved));
+    } catch (error) {
+      this.learningReadProblem = error instanceof NewerPermanentRecord
+        ? 'Your saved learning record came from a newer game version. Reopen the game in a version that supports it. New learning in this tab is unsaved.'
+        : 'Your saved learning record is unreadable. It is still in this browser. New learning in this tab cannot be saved.';
       return newPermanent();
     }
   }
 
   savePermanent(p: PermanentRecord): void {
+    if (this.learningReadProblem) throw new PermanentSaveConflict(this.learningReadProblem);
     if (this.knownPermanent !== undefined && this.store.get(KEY_PERMANENT) !== this.knownPermanent) {
       throw new PermanentSaveConflict();
     }
@@ -249,7 +274,7 @@ export function memoryStore(init: Record<string, string> = {}): KeyValueStore & 
 
 export function browserStore(): KeyValueStore {
   return {
-    get: (k) => { try { return window.localStorage.getItem(k); } catch { return null; } },
+    get: (k) => window.localStorage.getItem(k),
     set: (k, v) => { window.localStorage.setItem(k, v); },
   };
 }

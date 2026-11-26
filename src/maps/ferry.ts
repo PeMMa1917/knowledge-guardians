@@ -71,7 +71,7 @@ export const FERRY: MapDef = {
     { id: 'reeds-ferry', kind: 'gather', resource: 'reed', x: 19, y: 8, w: 1, h: 1, label: 'the tall reeds (gather)', art: 'reeds' },
     { id: 'barter-boat', kind: 'trader', x: 17, y: 8, w: 1, h: 1, label: "Wenna's barter boat (dyes and materials)", art: 'barter-boat' },
     { id: 'ferry-dice', kind: 'fieldgame', game: 'bones', x: 4, y: 3, w: 1, h: 1, label: "Juno's dice table (Lanterns and Bones)", art: 'dice-table' },
-    { id: 'ferry-guest-book', kind: 'fieldgame', game: 'guests', x: 14, y: 5, w: 1, h: 1, label: "Tova's ferry guest book", art: 'guest-book' },
+    { id: 'ferry-guest-book', kind: 'fieldgame', game: 'guests', x: 12, y: 5, w: 1, h: 1, label: "Tova's ferry guest book", art: 'guest-book' },
     { id: 'ferry-waystone', kind: 'waystone', place: 'the old ferry landing', x: 6, y: 3, w: 1, h: 1, label: 'the Waystone by the old road (save and rest)', art: 'waystone' },
     { id: 'ferry-camp-sign', kind: 'sign', x: 15, y: 5, w: 1, h: 1, label: 'the ferry folk\'s board', art: 'ferry-slate', flag: 'ferry.board',
       text: 'A slate board, written in the river cant and in town words. TODAY: slow water. The ford is good for walkers, not for carts. The next boat goes when the water says, not when the bell says. Ask Tova.' },

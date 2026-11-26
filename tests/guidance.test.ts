@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { guideObjectives } from '../src/domain/guidance';
 import { totalXP } from '../src/domain/permanent';
+import { KEY_SLOTS, SaveService, emptyPair, memoryStore, serialisePair, writeSuspend } from '../src/domain/saves';
 import { Driver } from './driver';
 
 describe('Lumen’s workbench guidance', () => {
@@ -47,5 +48,60 @@ describe('Lumen’s workbench guidance', () => {
     expect(d.s.inventory['item.drawer-stencil']).toBe(1);
     expect(clues()).not.toContain('drawer.cases.opened');
     expect(clues()).not.toContain('drawer.fold.finish');
+  });
+
+  it('prioritizes the Nile story over the unfinished optional Firsts step from Chapter 1', () => {
+    const d = new Driver();
+    for (const mission of d.e.pack.missions.filter(({ id }) => ['KG-CH1-M01', 'KG-CH1-M02'].includes(id))) {
+      d.s.objectivesDone.push(...mission.objectives.filter(({ essential }) => essential).map(({ id }) => id));
+    }
+    expect(d.e.currentObjective(d.s)?.id).toBe('m01.side.firsts');
+    d.run({ type: 'SetFlag', flag: 'study.letter', value: true });
+    expect(d.e.currentObjective(d.s)?.id).toBe('nile.door');
+    d.s.mapId = 'nile.hall';
+    d.run({ type: 'SetFlag', flag: 'nile.arrived', value: true });
+    expect(d.e.visibleObjectives(d.s).find(({ id }) => id === 'm01.side.firsts')?.complete).toBe(false);
+    expect(d.e.currentObjective(d.s)?.id).toBe('nile.two');
+  });
+
+  it.each([
+    ['ridge', 'wash'],
+    ['wash', 'ridge'],
+  ] as const)('offers the missing Mine Map, then the other road when resuming a saved %s run', (first, remaining) => {
+    const d = new Driver();
+    d.s.mapId = 'nile.route';
+    d.run({ type: 'SetFlag', flag: 'nile.arrived', value: true });
+    const objective = 'nile.routes';
+    const goals = () => guideObjectives(d.e.visibleObjectives(d.s), 'WORLD-03', objective);
+    const ask = () => {
+      const event = d.run({ type: 'RequestHint', objective }).events.find(({ kind }) => kind === 'hint');
+      return event?.kind === 'hint' ? event.hint : undefined;
+    };
+    expect(goals()[0]?.id).toBe(objective);
+    const before = d.s;
+    expect(() => d.run({ type: 'NileRouteTrial', road: first })).toThrow('Read the Mine Map');
+    expect(d.s).toBe(before);
+    for (const depth of [1, 2, 3]) expect(ask()?.depth).toBe(depth);
+    expect(ask()).toMatchObject({ depth: 4, text: 'Read the Mine Map west of this model. Come back to the shelf to run the cart.' });
+
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-MINE' });
+    expect(ask()?.text).toContain('“Run the cart on the ridge” and “Run the cart on the wash”');
+    d.run({ type: 'NileRouteTrial', road: first });
+    const slots = writeSuspend(emptyPair(), {
+      kind: 'suspend', label: 'One road', location: 'Map Room', savedAt: '2026-11-26T00:00:00Z', state: d.s,
+    });
+    const loaded = new SaveService(memoryStore({ [KEY_SLOTS]: serialisePair(slots) })).load();
+    if (!loaded.ok || !loaded.pair.continue) throw new Error('Could not continue the Map Room trial');
+    d.s = loaded.pair.continue.state;
+    expect(d.s.flags[`nile.trial.${first}`]).toBe(true);
+    expect(d.s.flags[`nile.trial.${remaining}`]).toBeUndefined();
+    expect(() => d.run({ type: 'NileDelivery', choice: 'copy' })).toThrow('Try both roads');
+    expect(ask()).toMatchObject({ depth: 4, text: expect.stringContaining(`Choose “Run the cart on the ${remaining}”`) });
+
+    d.run({ type: 'NileRouteTrial', road: remaining });
+    expect(ask()?.text).toContain('Both readings are recorded. Choose one delivery tag');
+    d.run({ type: 'NileDelivery', choice: 'copy' });
+    expect(d.done(objective)).toBe(true);
+    expect(goals().map(({ id }) => id)).not.toContain(objective);
   });
 });

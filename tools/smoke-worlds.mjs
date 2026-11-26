@@ -164,6 +164,44 @@ async function smokeTitle(browser) {
   console.log('PASS native Enter and Escape for title Credits and Settings, with focus restored to the opening button');
 }
 
+async function smokeManualSpeech(browser) {
+  await browser.evaluate(() => {
+    const synth = window.speechSynthesis;
+    const original = Object.getOwnPropertyDescriptors(synth);
+    window.manualSpeech = { text: null, restore() {
+      delete synth.speak;
+      delete synth.cancel;
+      Object.defineProperties(synth, original);
+      delete window.manualSpeech;
+    } };
+    // Keep utterances pending so the check does not depend on an installed voice or speech speed.
+    Object.defineProperties(synth, {
+      speak: { configurable: true, value: (utterance) => { window.manualSpeech.text = utterance.text; } },
+      cancel: { configurable: true, value: () => { window.manualSpeech.text = null; } },
+    });
+  });
+  const readLine = async (words) => {
+    await until(() => browser.evaluate(() => {
+      const control = document.querySelector('button[aria-label="Read this line aloud"]');
+      control?.focus();
+      return !!control;
+    }), 'focus Read aloud');
+    await press(browser, 'Enter');
+    await until(() => browser.evaluate((text) => !window.kg.settings.readAloud && window.manualSpeech.text?.includes(text), words), 'read the current line manually');
+  };
+  try {
+    await readLine('A stone hall floats');
+    await button(browser, 'Continue ▸');
+    if (await browser.evaluate(() => window.manualSpeech.text !== null)) throw new Error('Reading from the prior dialogue is still active');
+    await readLine('archive seal');
+    await press(browser, 'Escape');
+    if (await browser.evaluate(() => window.manualSpeech.text !== null)) throw new Error('Reading from a dismissed dialogue is still active');
+    console.log('PASS manual Read aloud stops when the dialogue changes or closes, with automatic reading off');
+  } finally {
+    await browser.evaluate(() => window.manualSpeech.restore());
+  }
+}
+
 async function smokeAccess(browser, nexus) {
   await browser.evaluate(({ id, spawn }) => window.kg.world.changeMap(id, spawn.x, spawn.y), nexus);
   await until(() => browser.evaluate(() => window.kg.world.map.id === 'nexus.archive' && !window.kg.world.transitioning), 'Nexus for accessibility checks');
@@ -441,6 +479,7 @@ try {
   await button(browser, 'Begin');
   await until(() => browser.evaluate(() => window.kg?.world?.map?.id === 'nexus.archive'), 'new Guardian in the Nexus');
   await until(() => browser.evaluate(() => !!document.querySelector('[role="dialog"].dialogue')), 'cold-opening dialogue');
+  if (mode === 'all' || mode === 'access') await smokeManualSpeech(browser);
   await browser.evaluate(() => {
     window.kg.settings.reducedMotion = true;
     window.kg.settings.reducedEffects = true;

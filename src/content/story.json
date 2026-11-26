@@ -333,11 +333,13 @@
     },
     {
      "if": {
-      "flag": "trade.fair.ok",
-      "eq": true
+      "any": [
+       { "flag": "trade.price-compared", "eq": true },
+       { "flag": "trade.fair.ok", "eq": true }
+      ]
      },
      "pts": 1,
-     "why": "You judged Wenna's prices by their parts."
+     "why": "You compared what goes into Wenna’s and Corvan’s dye prices."
     }
    ]
   }

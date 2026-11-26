@@ -7,7 +7,7 @@ export const NEXUS_LANTERN_WEAVE: Interactable[] = [
     visibleIf: LANTERN_WEAVE_OPEN, to: { map: 'nexus.half-light', x: 13, y: 17 } },
   { id: 'lantern-weave-window', kind: 'fieldgame', game: `${LANTERN_WEAVE}:window`, x: 36, y: 6, w: 1, h: 1,
     label: 'Nell’s daylight viewing stand', art: 'nexus.viewer-detail', walkThrough: true, visibleIf: LANTERN_WEAVE_OPEN },
-  { id: 'lantern-weave-table', kind: 'fieldgame', game: `${LANTERN_WEAVE}:table`, x: 29, y: 5, w: 1, h: 1,
+  { id: 'lantern-weave-table', kind: 'fieldgame', game: `${LANTERN_WEAVE}:table`, x: 32, y: 4, w: 1, h: 1,
     label: 'Hem’s whole-sheet drawer', art: 'nexus.viewer-sheet', walkThrough: true, visibleIf: LANTERN_WEAVE_OPEN },
 ];
 

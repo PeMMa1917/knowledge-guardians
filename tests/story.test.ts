@@ -8,7 +8,9 @@ import { Driver } from './driver';
 import { READINGS } from '../src/domain/readings';
 import { RECIPES } from '../src/domain/craft';
 import { MIN_SOURCES, RUMOURS, currentRumour, rumourOrder } from '../src/domain/rumours';
-import { DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, townPrice } from '../src/domain/trade';
+import { DYES, TOWN_COSTS, ferryPrice, townPrice } from '../src/domain/trade';
+import { trustOf } from '../src/domain/communities';
+import { WARES, priceFor } from '../src/domain/shop';
 import { DYE_KEYS, OUTFIT } from '../src/domain/appearance';
 import { approvalOf, approvalRank, isInquiry } from '../src/domain/approval';
 import { ROLES, fitsRole, roleOf } from '../src/domain/roles';
@@ -271,9 +273,6 @@ describe("Wenna's barter boat", () => {
     const d = new Driver();
     for (const x of DYES) expect(townPrice(x) - ferryPrice(x)).toBe(TOWN_COSTS.carrying + TOWN_COSTS.toll + TOWN_COSTS.stall);
     for (const x of DYES) expect(OUTFIT[x.id]).toBeDefined();
-    expect(FAIR_PRICE.options.filter((o) => o.ok)).toHaveLength(1);
-    d.run({ type: 'FairPrice', choice: 1 });
-    expect(d.s.flags['trade.fair.ok']).toBe(true);
     expect(() => d.run({ type: 'BuyDye', dye: 'woad' })).toThrow(/marks/);
     d.s = { ...d.s, marks: 20 };
     const before = d.events.length;
@@ -288,6 +287,42 @@ describe("Wenna's barter boat", () => {
     // The base outfit colours stay free: a dye is extra, never a lock on identity.
     expect(Object.keys(OUTFIT).filter((k) => !DYE_KEYS.includes(k)).length).toBeGreaterThanOrEqual(10);
     expect(MAPS['aethelgard.ferry'].interactables.some((i) => i.kind === 'trader')).toBe(true);
+  });
+
+  it('credits optional price-slip inspection once and discounts the later River folk wares', () => {
+    const d = new Driver();
+    const river = pack.communities!.find(({ id }) => id === 'river')!;
+    const wallpaper = WARES.find(({ id }) => id === 'wall-cant')!;
+    d.run({ type: 'SetFlag', flag: 'ferry.met', value: true });
+    d.run({ type: 'SetFlag', flag: 'puzzle.ferry-message.done', value: true });
+    d.s.marks = 30;
+    expect(() => d.run({ type: 'CompareDyePrices' })).toThrow(/Wenna/);
+    d.s.mapId = 'aethelgard.ferry';
+    d.run({ type: 'BuyDye', dye: 'woad' });
+    expect(d.s.marks).toBe(24);
+    expect(trustOf(river, d.s).pts).toBe(3);
+    expect(priceFor(wallpaper, d.s, pack)).toBe(20);
+    d.run({ type: 'CompareDyePrices' });
+    d.run({ type: 'CompareDyePrices' });
+    expect(d.s.flags['trade.price-compared']).toBe(true);
+    expect(trustOf(river, d.s).pts).toBe(4);
+    expect(priceFor(wallpaper, d.s, pack)).toBe(18);
+    expect(d.s.marks).toBe(24);
+    d.s.mapId = 'aethelgard.emberford';
+    d.run({ type: 'BuyWare', ware: 'wall-cant' });
+    expect(d.s.marks).toBe(6);
+  });
+
+  it.each([true, false])('lets a legacy shopper inspect both slips with earlier credited status %s', (hadCredit) => {
+    const d = new Driver();
+    const river = pack.communities!.find(({ id }) => id === 'river')!;
+    d.s.mapId = 'aethelgard.ferry';
+    d.s.flags['trade.fair.asked'] = true;
+    if (hadCredit) d.s.flags['trade.fair.ok'] = true;
+    expect(trustOf(river, d.s).pts).toBe(hadCredit ? 1 : 0);
+    d.run({ type: 'CompareDyePrices' });
+    expect(d.s.flags['trade.price-compared']).toBe(true);
+    expect(trustOf(river, d.s).pts).toBe(1);
   });
 });
 

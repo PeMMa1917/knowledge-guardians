@@ -45,6 +45,9 @@ kbd { font-family: inherit; font-size: 0.75em; border: 1px solid var(--gold-dim)
 .fine { font-size: 0.85rem; color: var(--ink-dim); }
 .citation-line { padding-inline-start: 1.25em; text-indent: -1.25em; overflow-wrap: anywhere; }
 .warn { color: var(--warn); background: rgba(80, 50, 0, 0.5); padding: 0.6em 0.9em; border-radius: 8px; max-width: 40rem; }
+.save-feedback { margin: 0; overflow-wrap: anywhere; }
+.row > .save-feedback { flex: 1 0 100%; }
+.save-feedback:empty { position: absolute; width: 1px; height: 1px; overflow: hidden; padding: 0; clip-path: inset(50%); }
 button, select, input, textarea {
   font: inherit; color: var(--ink); background: var(--panel-2); border: 1px solid var(--gold-dim);
   border-radius: 8px; padding: 0.45em 0.9em; cursor: pointer;

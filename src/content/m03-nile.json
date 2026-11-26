@@ -4237,13 +4237,47 @@
    "id": "h.nile.routes.3",
    "objective": "nile.routes",
    "depth": 3,
-   "text": "Make the same cart try the ridge and the wash before you brief Marek."
+   "text": "Run the same cart on the ridge and the wash at the model. The delivery tags appear below the readings."
+  },
+  {
+   "id": "h.nile.routes.4.need-map",
+   "objective": "nile.routes",
+   "depth": 4,
+   "text": "Read the Mine Map west of this model. Come back to the shelf to run the cart.",
+   "if": { "not": { "card": "card.nile.mine" } }
+  },
+  {
+   "id": "h.nile.routes.4.ridge-saved",
+   "objective": "nile.routes",
+   "depth": 4,
+   "text": "The ridge reading is saved. Choose “Run the cart on the wash” to add the other reading.",
+   "if": { "all": [
+    { "flag": "nile.trial.ridge", "eq": true },
+    { "not": { "flag": "nile.trial.wash", "eq": true } }
+   ] }
+  },
+  {
+   "id": "h.nile.routes.4.wash-saved",
+   "objective": "nile.routes",
+   "depth": 4,
+   "text": "The wash reading is saved. Choose “Run the cart on the ridge” to add the other reading.",
+   "if": { "all": [
+    { "flag": "nile.trial.wash", "eq": true },
+    { "not": { "flag": "nile.trial.ridge", "eq": true } }
+   ] }
+  },
+  {
+   "id": "h.nile.routes.4.both-saved",
+   "objective": "nile.routes",
+   "depth": 4,
+   "text": "Both readings are recorded. Choose one delivery tag below them. The tags show what each delivery brings.",
+   "if": { "card": "card.nile.model" }
   },
   {
    "id": "h.nile.routes.4",
    "objective": "nile.routes",
    "depth": 4,
-   "text": "Send the cast and a courier separately, or send only the paper copy. State what the recipient loses."
+   "text": "Choose “Run the cart on the ridge” and “Run the cart on the wash”. Then choose a delivery tag under the two readings."
   },
   {
    "id": "h.nile.stone.look.1",

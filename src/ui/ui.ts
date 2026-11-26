@@ -175,7 +175,7 @@ import { CURTAIN_PREFIX } from '../content/curtainCall';
 import { curtainCallPanel } from './curtainCall';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
-import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
+import { BARTER, DYES, TOWN_COSTS, WOAD_BLUE, ferryPrice, ownsDye, townPrice } from '../domain/trade';
 import { RUMOURS, VERDICTS, currentRumour, missingRumourSources, sourcesChecked } from '../domain/rumours';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
 import { WARES, honestLabels, lockedOption, owns, priceFor } from '../domain/shop';
@@ -469,6 +469,7 @@ export class UI implements UIApi {
   private releaseTrap: (() => void) | null = null;
   private promptEl!: HTMLElement;
   private toastBox!: HTMLElement;
+  private saveFeedback: HTMLElement | null = null;
   private lumenBubble!: HTMLElement;
   private onStart: () => void;
   private pendingChapterEnd = false;
@@ -514,8 +515,8 @@ export class UI implements UIApi {
   }
 
   closeModal(sound = true): void {
-    try { if (ctx.settings.readAloud) window.speechSynthesis?.cancel(); } catch { /* no speech */ }
     if (!this.modal) return;
+    try { window.speechSynthesis?.cancel(); } catch { /* no speech */ }
     // A player can leave a Calm invitation or its conversation with Escape or a click.
     // Internal modal changes during dialogue use closeModal(false) and keep its state.
     const leaveEvent = sound && (
@@ -710,6 +711,7 @@ export class UI implements UIApi {
       h('p', { class: 'subtitle' }, 'From Three Firsts to the Door Without a Name'),
       c.loadProblem ? h('p', { class: 'warn', role: 'alert' }, `Your save could not be opened: ${c.loadProblem} Your saved data has not been changed. You can still start a new game, but starting a new game will replace it.`) : null,
       c.loadWarning ? h('p', { class: 'warn', role: 'alert' }, c.loadWarning) : null,
+      c.saves.permanentLoadProblem ? h('p', { class: 'warn', role: 'alert' }, c.saves.permanentLoadProblem) : null,
       c.contentProblems.length ? h('p', { class: 'warn', role: 'alert' }, `Content problems: ${c.contentProblems.join('; ')}`) : null,
       h('div', { class: 'menu' },
         cont ? h('button', { 'data-autofocus': true, onclick: () => { c.loadContinue(); this.startPlaying(true); } }, h('strong', {}, 'Continue'), h('small', {}, fmt(cont))) : null,
@@ -1063,6 +1065,10 @@ export class UI implements UIApi {
         }
         case 'checkpoint': this.toast(`Checkpoint saved: ${e.label}`, 'save'); break;
         case 'error': {
+          if (this.saveFeedback) {
+            this.saveFeedback.textContent = e.message;
+            break;
+          }
           const box = this.modal?.querySelector<HTMLElement>('.bench-panel, .exhibit');
           if (box) workFeedback(box, e.message);
           else this.toast(e.message, 'error');
@@ -2338,11 +2344,6 @@ export class UI implements UIApi {
       const f = c.state.forge;
       clear(art); art.append(this.billetCanvas());
       clear(status); status.append(f.route === 'none' ? 'The anvil is empty.' : f.route === 'pattern' ? `Pattern route: ${f.steels} strips${f.welded ? `, welded, ${layers(f)} layers` : ''}${f.twists ? `, ${f.twists} twist(s)` : ''}.${f.cut ? ' Cut.' : ''}` : `Crucible route: ${f.melted ? 'melted' : 'loaded'}${f.cooled ? ', cooled' : ''}.${f.cut ? ' Cut.' : ''}`);
-      clear(btns);
-      btns.append(
-        h('fieldset', {}, h('legend', {}, 'Weld layers'), ...(['stack', 'weld', 'twist', 'fold'] as ForgeAction[]).map((a) => h('button', { onclick: () => act(a) }, labels[a]))),
-        h('fieldset', {}, h('legend', {}, 'Sealed pot'), ...(['crucible', 'melt', 'cool'] as ForgeAction[]).map((a) => h('button', { onclick: () => act(a) }, labels[a]))),
-        h('fieldset', {}, h('legend', {}, 'Finish'), ...(['cut', 'reset'] as ForgeAction[]).map((a) => h('button', { class: a === 'cut' ? 'primary' : '', onclick: () => act(a) }, labels[a]))));
     };
     const act = (a: ForgeAction) => {
       const ev = c.dispatch({ type: 'Forge', action: a });
@@ -2353,6 +2354,10 @@ export class UI implements UIApi {
       if (a === 'cut') log.append(h('li', { class: 'fair' }, 'Take the section to the assay table, east of the square, and compare it with the blade.'));
       render();
     };
+    btns.append(
+      h('fieldset', {}, h('legend', {}, 'Weld layers'), ...(['stack', 'weld', 'twist', 'fold'] as ForgeAction[]).map((a) => h('button', { onclick: () => act(a) }, labels[a]))),
+      h('fieldset', {}, h('legend', {}, 'Sealed pot'), ...(['crucible', 'melt', 'cool'] as ForgeAction[]).map((a) => h('button', { onclick: () => act(a) }, labels[a]))),
+      h('fieldset', {}, h('legend', {}, 'Finish'), ...(['cut', 'reset'] as ForgeAction[]).map((a) => h('button', { class: a === 'cut' ? 'primary' : '', onclick: () => act(a) }, labels[a]))));
     render();
     this.openModal('forge-panel wide', "Hesper's anvil", this.closeBtn(),
       h('h2', {}, "Hesper's anvil"),
@@ -2561,7 +2566,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openBreathing() }, 'Sit a while'),
         h('button', { onclick: () => this.openTalents(true) }, 'Insight tree'),
         h('button', { onclick: () => this.openRoles(true) }, 'Knower role'),
-        h('button', { onclick: () => this.saveAndLeave() }, 'Save and leave')));
+        this.saveControl()));
   }
 
   // ------------------------------------------------- share with teacher (94)
@@ -2852,8 +2857,23 @@ export class UI implements UIApi {
 
   // -------------------------------------------------------------- menu
 
-  private saveAndLeave(): void {
-    if (!ctx.controller.suspend()) return;
+  private saveControl(): DocumentFragment {
+    const feedback = h('p', { class: 'save-feedback warn', role: 'alert' });
+    const control = document.createDocumentFragment();
+    control.append(h('button', { onclick: () => this.saveAndLeave(feedback) }, 'Save and leave'), feedback);
+    return control;
+  }
+
+  private saveAndLeave(feedback: HTMLElement): void {
+    feedback.replaceChildren();
+    this.saveFeedback = feedback;
+    let saved: boolean;
+    try {
+      saved = ctx.controller.suspend();
+    } finally {
+      this.saveFeedback = null;
+    }
+    if (!saved) return;
     this.closeModal(false);
     this.toast('Saved. You can close the tab.', 'save');
     (window as any).kgToTitle?.();
@@ -2864,7 +2884,7 @@ export class UI implements UIApi {
     this.openModal('menu-panel', 'Menu', this.closeBtn(), h('h2', {}, 'Menu'),
       h('div', { class: 'menu' },
         h('button', { 'data-autofocus': true, onclick: () => this.closeModal() }, 'Resume'),
-        h('button', { onclick: () => this.saveAndLeave() }, 'Save and leave'),
+        this.saveControl(),
         h('button', { onclick: () => this.openGuardian() }, 'My Guardian (look and pronouns)'),
         h('button', { onclick: () => this.openCrest() }, 'Crest'),
         h('button', { onclick: () => { this.closeModal(false); this.openPhotoMode(); } }, 'Photo mode'),
@@ -3092,24 +3112,20 @@ export class UI implements UIApi {
     const c = ctx.controller;
     const box = this.openModal('shop-panel wide', "Wenna's barter boat");
     this.sfx('sfx.coins');
-    const ask = () => {
-      box.replaceChildren(this.closeBtn(), h('h2', {}, "Wenna's barter boat"),
-        h('p', {}, "Wenna trades up and down the river. 'Before you buy, a question. I ask everyone.'"),
-        h('p', {}, h('strong', {}, FAIR_PRICE.q())),
-        h('div', { class: 'notice-options' }, ...FAIR_PRICE.options.map((o, i) => h('button', { type: 'button', onclick: () => {
-          const ev = c.dispatch({ type: 'FairPrice', choice: i });
-          const res = ev.find((e) => e.kind === 'fairprice') as Extract<GameEvent, { kind: 'fairprice' }> | undefined;
-          if (!res) return;
-          this.sfx(res.ok ? 'sfx.sparkle' : 'sfx.page');
-          render(res.why);
-        } }, o.text))));
-    };
     const render = (note?: string) => {
       const s = c.state;
       const res = (k: Resource) => resCount(s.flags, k);
+      const price = ferryPrice(WOAD_BLUE);
+      const slips = h('details', { onToggle: () => {
+        if (slips.open && c.state.flags['trade.price-compared'] !== true) c.dispatch({ type: 'CompareDyePrices' });
+      } }, h('summary', {}, 'Lay the two woad price slips side by side'),
+      h('p', {}, `Wenna’s slip: ${WOAD_BLUE.parts.material} for the dye and ${WOAD_BLUE.parts.work} for the work. Total ${price} marks.`),
+      h('p', {}, `Corvan’s slip: ${price} for the dye and work, ${TOWN_COSTS.carrying} to carry it, ${TOWN_COSTS.toll} for the bridge and ${TOWN_COSTS.stall} for the stall. Total ${townPrice(WOAD_BLUE)} marks.`),
+      h('p', {}, 'Wenna taps her slip. “Each part has a name. You can see where the difference comes from. The sums don’t tell me what a buyer can spare.”'));
       box.replaceChildren(this.closeBtn(), h('h2', {}, "Wenna's barter boat"),
         ...(note ? [h('p', { class: 'clue-view fresh', role: 'status' }, note)] : []),
         h('p', { class: 'fine', role: 'status' }, `You have ${s.marks} marks. Dyes add a cloak colour (change it in Menu, My Guardian). They give no XP and no power.`),
+        slips,
         h('h3', {}, 'Cloak dyes, and the parts of each price'),
         h('div', { class: 'shop-grid' }, ...DYES.map((d) => {
           const have = ownsDye(s.flags, d.id), price = ferryPrice(d);
@@ -3136,7 +3152,7 @@ export class UI implements UIApi {
           })),
         h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
     };
-    if (c.state.flags['trade.fair.asked'] === true) render(); else ask();
+    render();
   }
 
   private wareName(w: (typeof WARES)[number]): string {
@@ -5128,11 +5144,13 @@ export class UI implements UIApi {
     const c = ctx.controller;
     const box = this.openModal('nile-model wide', 'The shelf-top model');
     const live = h('p', { 'aria-live': 'polite', class: 'nile-report' });
+    const guide = localGuide(c, MAPS[c.state.mapId]?.world ?? '', 'nile.routes');
+    const roads = ['ridge', 'wash'] as const;
     box.append(this.closeBtn(), h('h2', {}, 'The shelf-top model'),
       h('p', {}, 'Marek sets the tall crate on the cart. Try each road with the same load.'),
       h('p', { class: 'fine' }, 'Fictional model. These routes and times are built for the archive trial.'));
     if (!c.state.cards.includes('card.nile.mine')) {
-      box.append(h('p', {}, 'Marek points to the Mine Map case west of the bench. Read that record before setting out.'));
+      box.append(h('p', {}, 'Marek points to the Mine Map case west of the bench. Read that record before setting out.'), guide);
       return;
     }
     const tracks = h('div', { class: 'nile-tracks' });
@@ -5152,10 +5170,15 @@ export class UI implements UIApi {
               destinations.querySelector<HTMLElement>('h3')?.focus();
             }
           } }, NILE_DELIVERIES[id].name)));
+      } else {
+        const remaining = roads.filter((road) => c.state.flags[`nile.trial.${road}`] !== true);
+        destinations.append(h('p', { role: 'status' }, remaining.length === 1
+          ? `Run the cart on the ${remaining[0]} to open the delivery tags.`
+          : 'Run the cart on both roads to open the delivery tags.'));
       }
       destinations.querySelector('h3')?.setAttribute('tabindex', '-1');
     };
-    for (const road of ['ridge', 'wash'] as const) {
+    for (const road of roads) {
       const r = NILE_TRIALS[road];
       const track = h('div', { class: `nile-track ${road}`, 'aria-hidden': 'true' }, h('i', { class: 'nile-cart' }, '▣'), h('span', {}, '◈'));
       const result = h('p', { class: 'fine' });
@@ -5171,7 +5194,7 @@ export class UI implements UIApi {
         showDelivery();
       } }, `Run the cart on the ${road}`)));
     }
-    box.append(tracks, live, destinations);
+    box.append(tracks, live, destinations, guide);
     showDelivery();
   }
 
@@ -5452,7 +5475,7 @@ export class UI implements UIApi {
       h('h3', {}, 'Who was affected'),
       h('ul', {}, ...(rel.length ? rel.map((r) => h('li', {}, r)) : [h('li', {}, 'No relationships changed much.')])),
       h('p', { class: 'fine' }, 'Different choices lead to different consequences. None of them is the hidden "right answer". Your awards, concept XP, moments and portfolio are kept if you start again.'),
-      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep exploring'), h('button', { onclick: () => this.saveAndLeave() }, 'Save and leave')));
+      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep exploring'), this.saveControl()));
     this.sfx('sfx.award');
   }
 }

@@ -62,14 +62,23 @@ function restoreWaterAttribution(record: PermanentRecord): PermanentRecord {
   return skills === record.skills ? record : { ...record, skills };
 }
 
+export class NewerPermanentRecord extends Error {}
+
 /** Permanent record migrations. v1 had only credit and awards. */
 export function migratePermanent(raw: any): PermanentRecord {
-  if (!raw || typeof raw !== 'object' || typeof raw.schema !== 'number') return newPermanent();
-  if (raw.schema > PERMANENT_SCHEMA) throw new Error('Permanent record was made by a newer version.');
+  if (!raw || typeof raw !== 'object' || !Number.isSafeInteger(raw.schema) || raw.schema < 1) {
+    throw new Error('Permanent record has an unknown format.');
+  }
+  if (raw.schema > PERMANENT_SCHEMA) throw new NewerPermanentRecord('Permanent record was made by a newer version.');
   let p = raw;
   if (p.schema === 1) p = { ...newPermanent(), credit: p.credit ?? {}, awards: p.awards ?? {} };
   if (p.schema === 2) p = { ...p, schema: 3, stones: {} };
   if (p.schema === 3) p = { ...p, schema: 4, skills: {} };
+  const dictionary = (value: unknown) => !!value && typeof value === 'object' && !Array.isArray(value);
+  if (![p.credit, p.awards, p.moments, p.signals, p.stones, p.skills, p.met?.concepts, p.met?.atl, p.met?.subjects, p.met?.aoks]
+    .every(dictionary) || ![p.dismissed, p.offered, p.portfolio].every(Array.isArray)) {
+    throw new Error('Permanent record is missing required data.');
+  }
   return restoreWaterAttribution(p as PermanentRecord);
 }
 
