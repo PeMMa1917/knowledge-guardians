@@ -44,6 +44,7 @@ Other commands:
 | `npm run validate:content` | Check only the game content (JSON) for broken links and missing sources. |
 | `npm run assets:check` | Check that every asset file has a source, an author and a licence. |
 | `npm test -- tests/tok-coverage.test.ts --mode tok-report` | Audit rolling 30-minute TOK coverage on authored route estimates. |
+| `npx vitest run tests/learning.test.ts --mode tok-report` | List the 30-minute gaps on the five play-style paths (see docs/LEARNING_DESIGN.md). |
 | `npm run assets:variants` | Make the character sprite sheets again from the source sheet (needs Python 3 and Pillow). |
 
 The build in `dist/` is static. You can put it on any static web host (for example GitHub Pages). It uses relative paths.

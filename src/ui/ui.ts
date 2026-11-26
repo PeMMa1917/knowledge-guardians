@@ -67,6 +67,7 @@ import { CROSSINGS, WAY_LABEL, crossingOf, crossingWay, wayOpen } from '../domai
 import { HEARTH, TONE_LABEL, type HearthTalk } from '../domain/hearth';
 import { VERSES, balladName, versesFor } from '../domain/ballad';
 import { crossingEpithet, lingering, mirror, vignettesFor } from '../domain/epilogue';
+import { BRUSH_STROKES, CHART_CHOICES, DIG_CHOICES, DIG_LIGHT, DIG_W, MY_PICTURE_NAMES, SKY_PICTURES, STARS, STAR_HEIGHT, TRADE_KIND, TRADE_START, TRADE_STEPS, digNote, digReport, digSite, digStroke, type DigTool, type Trader } from '../domain/compendiumGames';
 import { arrivedLetters, composeLetter, dueLetters } from '../domain/letters';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
@@ -2783,6 +2784,139 @@ export class UI implements UIApi {
     else if (id.startsWith('cross-')) this.openCrossing(id.slice(6));
     else if (id === 'hearth') this.openHearth();
     else if (id === 'ballad') this.openBallad();
+    else if (id === 'stars') this.openStars();
+    else if (id === 'dig') this.openDig();
+    else if (id === 'trade') this.openTrade();
+  }
+
+  /** Star Pictures: draw your own picture, see two traditions, measure, then choose what the chart says. */
+  openStars(): void {
+    const c = ctx.controller;
+    const box = this.openModal('bench-panel wide', 'Star Pictures');
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, 'Star Pictures'),
+      h('p', {}, "Night-keeper Anwen hands you a chalk stick and points at seven stars over the sea wall. 'Everyone sees the same seven. Join them up however you like. Then I will show you what my neighbours see.'")];
+    const sky = (lines: [number, number][][], pick: number | null, onStar?: (i: number) => void) => {
+      const cls = ['mine', 'heron', 'ladder'];
+      const svg = `<svg viewBox="0 0 100 70" class="star-sky" role="img" aria-label="Seven stars and the lines drawn between them">` +
+        lines.map((ls, k) => ls.map(([a, b]) => `<line x1="${STARS[a].x}" y1="${STARS[a].y}" x2="${STARS[b].x}" y2="${STARS[b].y}" class="${cls[k]}"/>`).join('')).join('') +
+        STARS.map((st, i) => `<circle cx="${st.x}" cy="${st.y}" r="${st.bright ? 2.6 : 1.8}" class="${i === pick ? 'picked' : ''}"/>`).join('') + '</svg>';
+      const wrap = h('div', { class: 'star-wrap' }); wrap.innerHTML = svg;
+      if (onStar) wrap.append(h('div', { class: 'star-buttons' }, ...STARS.map((st, i) => h('button', { type: 'button', class: 'star-btn', style: `left:${st.x}%;top:${(st.y / 70) * 100}%`, 'aria-label': `Star ${i + 1}${st.bright ? ', the bright one' : ''}`, onclick: () => onStar(i) }))));
+      return wrap;
+    };
+    const mine: [number, number][] = [];
+    let pick: number | null = null;
+    const draw = () => {
+      box.replaceChildren(...head(), sky([mine], pick, (i) => {
+        if (pick === null) { pick = i; this.sfx('sfx.click'); }
+        else if (pick !== i) { mine.push([pick, i]); pick = null; this.sfx('sfx.sparkle'); }
+        else pick = null;
+        draw();
+      }), h('p', { class: 'fine', role: 'status' }, pick === null ? `Click a star, then another, to draw a line. ${mine.length} line${mine.length === 1 ? '' : 's'} so far.` : `Star ${pick + 1} picked. Now click the star to join it to.`),
+        mine.length >= 3 ? h('div', { class: 'notice-options' }, ...MY_PICTURE_NAMES.map((n) => h('button', { type: 'button', onclick: () => traditions(n) }, `Call it ${n}`))) : h('p', { class: 'fine' }, 'Draw at least three lines.'));
+    };
+    const traditions = (myName: string) => {
+      box.replaceChildren(...head(), sky([mine, SKY_PICTURES[0].lines, SKY_PICTURES[1].lines], null),
+        h('p', {}, `Anwen laughs. '${myName.replace('the ', 'A ')}! Good. Now look: the same stars, two more pictures.'`),
+        ...SKY_PICTURES.map((sp) => h('p', { class: 'clue-view' }, h('strong', {}, `${sp.name[0].toUpperCase()}${sp.name.slice(1)}, as ${sp.who} see it: `), sp.knows)),
+        h('p', {}, "'Which picture is right?' Anwen asks, and waits."),
+        h('div', { class: 'notice-options' },
+          h('button', { type: 'button', onclick: () => measure("'None of them is right. They are pictures.'") }, 'None of them. They are pictures.'),
+          h('button', { type: 'button', onclick: () => measure("'All of them, in a way. Each one does a job.'") }, 'All of them, for different jobs.'),
+          h('button', { type: 'button', onclick: () => measure("'Mine, obviously.'") }, 'Mine, obviously.')));
+    };
+    const measure = (said: string) => {
+      box.replaceChildren(...head(), h('p', {}, `You say: ${said} Anwen nods. 'Then here is a question with one answer.' She gives you the brass quadrant, and a shepherd who is visiting takes a second one.`),
+        h('p', { class: 'clue-view fresh' }, `You sight the bright star over the sea wall: ${STAR_HEIGHT} degrees. The shepherd, with the other quadrant: ${STAR_HEIGHT} degrees. The quay keeper, last week, wrote: ${STAR_HEIGHT} degrees.`),
+        h('p', {}, "'The height is the same for anyone with a quadrant,' says Anwen. 'The picture is not. Both are knowledge. They answer different questions.' Now the harbour chart needs a label for these stars."),
+        h('div', { class: 'notice-options' }, ...CHART_CHOICES.map((ch) => h('button', { type: 'button', onclick: () => {
+          c.dispatch({ type: 'SetFlag', flag: 'field.stars.chart', value: ch.id });
+          this.sfx('sfx.award');
+          box.replaceChildren(...head(), h('p', { class: 'clue-view fresh' }, ch.text), h('p', { class: 'fine' }, `What it costs: ${ch.cost}`), this.finishField('stars'),
+            h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+        } }, h('span', {}, ch.text), h('span', { class: 'fine', style: 'display:block' }, `Cost: ${ch.cost}`)))));
+    };
+    draw();
+  }
+
+  /** The Careful Dig: brush or pick, take notes, then decide whether to dig the second trench. */
+  openDig(): void {
+    const c = ctx.controller;
+    const runs = Number(c.state.flags['field.dig.runs'] ?? 0);
+    c.dispatch({ type: 'SetFlag', flag: 'field.dig.runs', value: runs + 1 });
+    let site = digSite(runs + 2);
+    let tool: DigTool = 'brush', strokes = 0;
+    const calm = !!(ctx.settings.calmMode || ctx.settings.zenMode);
+    const box = this.openModal('bench-panel wide', 'The Careful Dig');
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, 'The Careful Dig'),
+      h('p', {}, "Site lead Marisol kneels at an old charcoal-burners' camp in the forest. 'Something is under here. A pot, I think, from the old camp. The pick is fast. The brush is slow. Notes are slower. Your choice.'")];
+    const render = () => {
+      const r = digReport(site), dark = !calm && strokes >= DIG_LIGHT;
+      const grid = h('div', { class: 'dig-grid', role: 'grid', style: `grid-template-columns:repeat(${DIG_W},1fr)` }, ...site.map((cell, i) => {
+        const open = cell.cleared >= BRUSH_STROKES;
+        const label = open ? (cell.find ? (cell.cracked ? 'a cracked piece of pot' : 'a whole piece of pot') : `${cell.layer}, nothing here`) : `soil, ${cell.cleared} of ${BRUSH_STROKES} brushed`;
+        return h('button', { type: 'button', class: `dig-cell ${open ? `open ${cell.layer}` : `d${cell.cleared}`}${cell.find && open ? (cell.cracked ? ' cracked' : ' find') : ''}${cell.noted ? ' noted' : ''}`, disabled: dark || (open && cell.noted), 'aria-label': `${label}${cell.noted ? ', noted' : ''}`,
+          onclick: () => { if (open) { site = digNote(site, i); this.sfx('sfx.page'); } else { site = digStroke(site, i, tool); strokes++; this.sfx(tool === 'pick' ? 'sfx.click' : 'sfx.page'); } render(); } },
+          open ? (cell.find ? (cell.cracked ? '✕' : '◍') : '·') : '');
+      }));
+      box.replaceChildren(...head(),
+        h('div', { class: 'row' }, ...(['brush', 'pick'] as DigTool[]).map((t) => h('button', { type: 'button', class: tool === t ? 'primary' : '', 'aria-pressed': String(tool === t), onclick: () => { tool = t; render(); } }, t === 'brush' ? `Brush (${BRUSH_STROKES} strokes a square, safe)` : 'Pick (one stroke, can crack a find)'))),
+        grid,
+        h('p', { class: 'fine', role: 'status' }, `Click soil to dig. Click an open square to write a note about the layer where it lay. Pieces found: ${r.pieces} (${r.whole} whole, ${r.cracked} cracked). Notes: ${r.notedAll}. ${calm ? 'Calm mode: no daylight limit.' : `Daylight left: ${Math.max(0, DIG_LIGHT - strokes)} strokes.`}`),
+        r.pieces === 4 || dark ? h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => end() }, dark ? 'The light is gone. Show Marisol.' : 'Show Marisol what you found')) : '');
+    };
+    const end = () => {
+      const r = digReport(site);
+      box.replaceChildren(...head(),
+        h('p', { class: 'clue-view fresh' }, `${r.pieces} of 4 pieces found: ${r.whole} whole, ${r.cracked} cracked. You noted where ${r.notedFinds} of them lay.`),
+        h('p', {}, r.notedFinds >= r.pieces && r.pieces > 0
+          ? "Marisol beams. 'Charcoal layer, every piece. So the pot was in the fire pit, not thrown away. Your notes tell us how it was used. Without them it is just a pot.'"
+          : "Marisol turns a piece over. 'A pot. But where exactly did it lie? In the fire pit, or in the rubbish? Without the notes, we cannot tell how it was used. The soil is gone now, so we never will.'"),
+        r.cracked ? h('p', { class: 'fine' }, "'And the pick was quick. That crack is from today, not from the old camp. A future reader may not know the difference, so write it down.'") : '',
+        h('p', {}, "Marisol points to a second patch of dark soil. 'There is a second trench. What do we do?'"),
+        h('div', { class: 'notice-options' }, ...DIG_CHOICES.map((ch) => h('button', { type: 'button', onclick: () => {
+          c.dispatch({ type: 'SetFlag', flag: 'field.dig.trench', value: ch.id });
+          this.sfx('sfx.award');
+          box.replaceChildren(...head(), h('p', { class: 'clue-view fresh' }, ch.text), h('p', { class: 'fine' }, `What it costs: ${ch.cost}`), this.finishField('dig'),
+            h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+        } }, h('span', {}, ch.text), h('span', { class: 'fine', style: 'display:block' }, `Cost: ${ch.cost}`)))));
+    };
+    render();
+  }
+
+  /** The Spare Tag: a trading chain. Each time, two people want what you hold, for different kinds of reasons. */
+  openTrade(): void {
+    const c = ctx.controller;
+    const box = this.openModal('bench-panel wide', 'The Spare Tag');
+    this.sfx('sfx.page');
+    let have = TRADE_START;
+    const kinds: Trader['kind'][] = [];
+    const trail: string[] = [];
+    const head = () => [this.closeBtn(), h('h2', {}, 'The Spare Tag'), h('p', { class: 'fine' }, `You hold: ${have}.`)];
+    const step = (n: number) => {
+      if (n >= TRADE_STEPS.length) return end();
+      const offers = TRADE_STEPS[n](have);
+      box.replaceChildren(...head(),
+        h('p', {}, n === 0 ? "A carrier left a spare tag on the ferry step. Two people have seen it in your hand." : `Two people stop you. Both want ${have}.`),
+        ...offers.map((o) => h('p', { class: 'clue-view' }, h('strong', {}, `${o.who}: `), o.why)),
+        h('div', { class: 'notice-options' }, ...offers.map((o) => h('button', { type: 'button', onclick: () => {
+          kinds.push(o.kind); trail.push(`${o.who} wanted it ${TRADE_KIND[o.kind]}`);
+          have = o.gives; this.sfx('sfx.coins'); step(n + 1);
+        } }, `Give it to ${o.who.split(' ')[0]} (they give you ${o.gives})`))));
+    };
+    const end = () => {
+      c.dispatch({ type: 'SetFlag', flag: 'field.trade.end', value: have });
+      const distinct = new Set(kinds).size;
+      box.replaceChildren(...head(),
+        h('p', {}, `From ${TRADE_START} to ${have}, in three trades.`),
+        h('ul', {}, ...trail.map((t) => h('li', {}, t))),
+        h('p', {}, `Lumen counts on its glow. 'The tag was worth ${distinct === 1 ? 'the same kind of thing' : `${distinct} different kinds of thing`} along the way. Nobody was wrong about its value. They were valuing different things.'`),
+        this.finishField('trade'),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    step(0);
   }
 
   /** A crossing: one conflict, two or three ways through (face it, go around, leave it). Each way costs something. */

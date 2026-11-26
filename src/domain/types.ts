@@ -60,6 +60,10 @@ export interface Weave {
   aoks?: AOK[];
   /** DP subject ids from src/domain/curriculum.ts. */
   subjects?: string[];
+  /** Knowledge framework parts (designer tag; see src/domain/learningLevels.ts). Derived from concepts when absent. */
+  framework?: ('scope' | 'perspectives' | 'methods-and-tools' | 'ethics')[];
+  /** Estimated minutes of play, for the 30-minute design audit. */
+  minutes?: number;
 }
 
 // ---------------------------------------------------------------------------

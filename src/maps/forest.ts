@@ -135,6 +135,7 @@ export const FOREST_TRAIL: MapDef = {
     { stamp: 'flowers-small', x: 11, y: 11 }, { stamp: 'flowers-white', x: 27, y: 7 },
   ],
   interactables: [
+    { id: 'field-dig', kind: 'fieldgame', game: 'dig', x: 11, y: 15, w: 1, h: 1, label: 'Marisol\'s dig at the old charcoal camp (The Careful Dig)', art: 'ledger' },
     { id: 'cross-geese', kind: 'fieldgame', game: 'cross-geese', x: 22, y: 12, w: 1, h: 1, label: 'a row of nesting geese across the trail (a crossing)', art: 'reeds' },
     door('forest-trail-back', 2, 14, 'the path back to Fern Station', { map: 'forest.station', x: 4, y: 8 }),
     door('forest-clearing-path', 29, 12, 'the path to the bridge clearing', { map: 'forest.community', x: 20, y: 11 }),

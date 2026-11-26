@@ -316,3 +316,7 @@ Rules: god and fate crossings use invented in-world patrons and prophecies only;
 - **Ballad verse** (`src/domain/ballad.ts`): Wynn's song. Each verse has a condition, a `tall` line (bigger than the truth), a `true` line built from flags, and the `crowd` reaction.
 - **Epilogue line** (`src/domain/epilogue.ts`, `VIGNETTES`): one "where are they now" line per real flag value. A test checks the values.
 
+## Tag a new encounter for learning design
+
+Give every new crossing, hearth talk, field game or loyalty mission a `LEARN` entry in `src/domain/learningLevels.ts` (concepts, framework parts, DOK, Bloom, Fink, SOLO, minutes) and a chapter in `OPTIONAL_CHAPTER` (`src/domain/learningPaths.ts`). For an objective, `weave.framework` and `weave.minutes` are optional. Then run `npx vitest run tests/learning.test.ts --mode tok-report`, and lower the gap budget if it went down. Read [LEARNING_DESIGN.md](LEARNING_DESIGN.md) for how to vary the levels.
+

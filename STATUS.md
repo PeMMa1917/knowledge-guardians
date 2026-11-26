@@ -156,6 +156,7 @@ Ideas from Mika's TOK lessons, made into games in places, with people. Never a q
 - **The Weigh-House Slate** (Emberford): two careful readers get 16 and 1 from the same line. Find the story the writer meant, then pick a line that can only be read one way. TOK: convention, interpretation, mathematics as invented or discovered.
 - **The Missing Word** (Emberford, Odo's notice board): paint one fact (the toll goes from 2 to 4 marks) as 'adjusted', 'raised' or 'doubled', and add the reason or not. Three readers react in their own voices; the notice stays on the board. Then coin a word for a feeling a Hush Moth took away. TOK: language and power, denotation and connotation, euphemism. New Fray: Hush Moth.
 - **Lanterns and Bones** (ferry landing, Juno's dice table; no betting): the Gambler's Imp says a six is 'due'; Juno's tally book shows it is not. Then find the loaded die of two, rolling as much as you want. TOK: evidence, sample size, certainty.
+- **Star Pictures**, **The Careful Dig** and **The Spare Tag**: see 'Game elements compendium' above.
 - **Next:** the Breakfast Sign (signs and culture), the Drawer of Missing Trials (publication bias), then more from the other lesson folders.
 
 ### Conflicts and story elements (Mika 2026-11-26)
@@ -168,6 +169,15 @@ Mika asked for many kinds of conflict (self, person, nature, society, god, fate,
 - **Afterwards** (Journal, after the Council): where are they now (from your flags), the mirror scene, and last words built from why you came. Ise now asks why you came (`why.came`), and the Council choice warns that it is final and offers "Not yet".
 - **Docs:** the conflict map is story bible section 15; the 150 elements, adapted, with marks, are in [docs/STORY_ELEMENTS.md](docs/STORY_ELEMENTS.md).
 - **Still to do (from both):** Seal agents who remember; the chapter 9 Showdown and clue; leitmotifs and music per chapter; Lantern Fair; a full conversation log; credits with your choices; post-game.
+
+### Game elements compendium and learning levels (Mika 2026-11-26)
+
+Mika wants all the compendium's game elements and the story elements woven through the game many times, with the course content, never as a quiz, flashcards, an essay, homework or an exam. The 12 concepts and the four framework parts must show up very often, and the level of thinking must vary (DOK, Bloom, Fink, SOLO).
+
+- **Coverage:** [docs/GAME_ELEMENTS.md](docs/GAME_ELEMENTS.md) (compendium, with marks and reasons) and [docs/STORY_ELEMENTS.md](docs/STORY_ELEMENTS.md).
+- **Tags and audit:** [docs/LEARNING_DESIGN.md](docs/LEARNING_DESIGN.md). `src/domain/learningLevels.ts` tags crossings, hearth talks, field games and loyalty missions; `src/domain/learningPaths.ts` builds five play-style paths; `tests/learning.test.ts` keeps a budget of 30-minute windows that still miss a concept or framework part (it may only go down). Today: story 36, social 63, explorer 130, puzzler 47, cozy 63.
+- **New field games:** Star Pictures (Observatory Coast: draw your own picture, see two traditions, measure the same height, choose the chart label), The Careful Dig (Living Forest: brush or pick, notes give a find its value, dig the second trench or not), The Spare Tag (ferry landing: a trading chain where value depends on who and why).
+- **Next:** close the chapter 1 and side-mission gaps (LEARNING_DESIGN.md, fix order); then the planned items in GAME_ELEMENTS.md.
 
 ### Story audit against the story bible (2026-11-26)
 

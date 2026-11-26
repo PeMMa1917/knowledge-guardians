@@ -29,6 +29,12 @@ export const FIELD_GAMES: FieldGame[] = [
     idea: 'A fair die does not remember: after a long run without a six, a six is no more likely than before. To tell a loaded die from a fair one you need many rolls, because a few rolls can fool anyone. More evidence lets you be more sure, but never certain.' },
   { id: 'ballad', name: 'The Ballad of the Guardian', host: 'Wynn the ballad-singer, by the east well in Emberford', concept: 'truth',
     idea: 'A story grows each time it is retold, because a good story is made to be told again. Fame is not evidence. A true verse is often less exciting than a tall one, and choosing it has a cost.' },
+  { id: 'trade', name: 'The Spare Tag', host: 'people around Emberford and the ferry landing', concept: 'values',
+    idea: 'The same thing can be worth different things to different people, and for different kinds of reasons: what it does, what it reminds them of, how it looks, or need. A value is a judgement made by someone, for something.' },
+  { id: 'dig', name: 'The Careful Dig', host: 'Site lead Marisol, at the old charcoal camp in the Living Forest', concept: 'evidence',
+    idea: 'A tool decides what you can find and what you damage. A find without notes about where it lay loses most of its value as evidence. A site can only be dug once, so digging is also a choice about what later people can know.' },
+  { id: 'stars', name: 'Star Pictures', host: 'Night-keeper Anwen, on the Observatory Coast', concept: 'interpretation',
+    idea: 'The stars and their measured positions are the same for everyone. The pictures people draw between them differ, and each picture carries real knowledge: when to fish, how to walk home. Measurement and interpretation answer different questions.' },
 ];
 
 export const fieldDone = (flags: Record<string, unknown>, id: string): boolean => flags[`field.${id}.done`] === true;

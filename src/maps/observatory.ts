@@ -49,6 +49,7 @@ export const OBSERVATORY_HARBOUR: MapDef = {
     { stamp: 'flowers-small', x: 4, y: 7 }, { stamp: 'flowers-white', x: 17, y: 4 },
   ],
   interactables: [
+    { id: 'field-stars', kind: 'fieldgame', game: 'stars', x: 12, y: 9, w: 1, h: 1, label: 'Anwen\'s quadrant on the sea wall (Star Pictures)', art: 'coast.signal' },
     { id: 'cross-tide-engine', kind: 'fieldgame', game: 'cross-tide-engine', x: 16, y: 6, w: 1, h: 1, label: 'the brass tide engine on the harbour wall (a crossing)', art: 'coast.signal' },
     { id: 'coast-headland-path', kind: 'door', x: 13, y: 4, w: 1, h: 1, label: 'the steps up to the observatory',
       art: 'coast.waypost', to: { map: 'observatory.station', x: 11, y: 13 } },
