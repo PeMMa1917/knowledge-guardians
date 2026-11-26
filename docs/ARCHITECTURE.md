@@ -107,6 +107,8 @@ Both slots are written in one `localStorage` key (`kg.slots`) in one write, with
 
 `src/domain/conceptText.ts` matches the twelve TOK concept words and their plural forms at Unicode word boundaries. It preserves the original spelling and case, and supplies foreground colours for dark panels and paper. `src/ui/conceptMarkup.ts` formats new interface text with bold, underlined spans, including the text inside existing glossary buttons. It updates only changed text and skips native inputs and editable content. Captions and companion speech use the same formatter outside the main interface. Forced-colour mode retains the bold and underline. The markers are display markup, so saved text and accessible control names keep their original values.
 
+`src/ui/conceptEditor.ts` layers the same concept colours and an underline behind designated prose editors. The real field keeps its text, focus, selection, caret and scrollbar. A slightly thicker letter stroke leaves the caret spacing aligned. IME composition and operating-system forced colours use the browser's own visible text. Draft formatting performs no save or network action.
+
 ## Teacher view
 
 `teacher.html` is a second Vite entry (see `vite.config.ts`). It has no server.

@@ -2,6 +2,7 @@ import type { GameController } from '../app/controller';
 import { h } from './dom';
 import { artURL } from './illustrations';
 import { flushJournalWriting, queueJournalWriting } from './journalWriting';
+import { conceptEditor, syncConceptEditor } from './conceptEditor';
 
 const SOURCES = [
   { key: 'issue', title: 'Issue reference', text: '7 Rainbell · Neran sent R-7 to the Study.', target: 'the loan book by the north wall' },
@@ -54,11 +55,12 @@ export function linkedNotes(
         const result = controller.dispatch({ type: 'AddNote', text: input.value, kind: 'note' });
         if (result.some(({ kind }) => kind === 'error')) return;
         input.value = '';
+        syncConceptEditor(input);
         queueJournalWriting(controller, status);
         if (flushJournalWriting(controller)) status.textContent = 'Private line saved in My Notes.';
         sound('sfx.page');
       } },
-      h('label', { for: input.id }, 'A private line for yourself (optional)'), input,
+      h('label', { for: input.id }, 'A private line for yourself (optional)'), conceptEditor(input),
       h('button', { type: 'submit' }, 'Save private line'), status);
       panel.append(h('p', { class: 'fine' }, 'The two references are linked under R-7. Wren can use those references when you reach the Listening Room.'), form);
     }

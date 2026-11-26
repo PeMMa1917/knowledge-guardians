@@ -59,6 +59,7 @@ import { conceptRings, conceptXP, totalXP } from '../domain/permanent';
 import { describeSection, layers, type ForgeAction } from '../domain/forge';
 import { labelText, type LabelResult } from '../domain/label';
 import { examplesFor, segmentText } from '../domain/glossary';
+import { conceptEditor, syncConceptEditor } from './conceptEditor';
 import { studentAlerts } from '../domain/learning';
 import { MOVE_HELP, type ShowdownMove } from '../domain/showdown';
 import { AOK_NAMES, ATL_NAMES, CONCEPT_NAMES, PROFILE_NAMES, SUBJECTS } from '../domain/curriculum';
@@ -1167,7 +1168,7 @@ export class UI implements UIApi {
     this.openModal('reflection', 'A question to think about', this.closeBtn(),
       h('div', { class: 'lumen-head' }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '', class: 'lumen-big' }), h('h2', {}, 'A question to think about')),
       h('p', { class: 'fine' }, `Lumen noticed a pattern in your play: ${title.toLowerCase()}. This is not a mark. It may even be wrong.`),
-      h('p', { class: 'hint-text' }, question), ta,
+      h('p', { class: 'hint-text' }, question), conceptEditor(ta),
       h('div', { class: 'row' },
         h('button', { class: 'primary', onclick: () => {
           if (ta.value.length) {
@@ -1362,12 +1363,13 @@ export class UI implements UIApi {
           queueJournalWriting(c);
           if (flushJournalWriting(c)) this.toast('Saved to your journal notes', 'info');
           input.value = '';
+          syncConceptEditor(input);
           clear(out);
         } }, 'Keep it in my journal'));
     };
     input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.isComposing && e.keyCode !== 229) ask(); });
     return h('div', { class: 'free' }, h('p', { class: 'fine' }, 'Sefa can answer prepared topics: wootz, crucible steel, ingots and the museum example. Other questions are kept in your journal. Nothing you type is sent anywhere.'),
-      h('div', { class: 'row' }, input, h('button', { onclick: ask }, 'Ask')), out);
+      h('div', { class: 'row' }, conceptEditor(input), h('button', { onclick: ask }, 'Ask')), out);
   }
 
   // ----------------------------------------------------------- exhibit
@@ -2635,7 +2637,7 @@ export class UI implements UIApi {
       h('h2', {}, 'Waystone'),
       h('p', {}, 'The Waystone hums softly. Your progress is saved here. Resting is never required, and nothing is lost if you keep going.'),
       h('ul', {}, ...r.lines.slice(1).map((l) => h('li', {}, l))),
-      h('p', { class: 'hint-text' }, h('strong', {}, 'Campfire log: '), prompt), ta,
+      h('p', { class: 'hint-text' }, h('strong', {}, 'Campfire log: '), prompt), conceptEditor(ta),
       h('div', { class: 'row' },
         h('button', { class: 'primary', 'data-autofocus': true, onclick: () => {
           if (ta.value.length) {
