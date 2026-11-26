@@ -4,6 +4,7 @@ import people from '../src/content/jig-shop-people.json';
 import { check } from '../src/domain/rules';
 import { SPECIMEN_BASE, specimenItemId, specimenToolId } from '../src/domain/specimenGear';
 import { MAPS } from '../src/maps';
+import { JIG_SHOP_ART } from '../src/ui/jigShopArt';
 import { Driver } from './driver';
 
 function prop(d: Driver, id: string) {
@@ -27,6 +28,36 @@ function closedLanes(d: Driver) {
 }
 
 describe('The Parts You Can Replace', () => {
+  it('renders a distinct case diagram for every record and describes the catalogue forms', () => {
+    const d = new Driver();
+    const pixelIdentities = new Set<string>();
+    const singledOut = new Set([
+      'portslade-anvil', 'hirata-workholder', 'garrett-guard-model',
+      'jarboe-plate-vise', 'concave-plane', 'angell-loom-temple',
+    ]);
+    for (const entry of JIG_CASES) {
+      const [width, height, draw] = JIG_SHOP_ART[entry.art];
+      const cells = Array<string>(width * height).fill('');
+      const brush = {
+        fillStyle: '',
+        fillRect(x: number, y: number, w: number, h: number) {
+          for (let row = y; row < y + h; row++) {
+            cells.fill(this.fillStyle, row * width + x, row * width + x + w);
+          }
+        },
+      };
+      draw(brush as CanvasRenderingContext2D);
+      const identity = cells.join(',');
+      expect(pixelIdentities.has(identity), entry.accession).toBe(false);
+      pixelIdentities.add(identity);
+      if (singledOut.has(entry.slug)) {
+        const exhibit = d.e.pack.exhibits.find(({ id }) => id === entry.exhibit);
+        expect(entry.artDescription, entry.accession).toBeTruthy();
+        expect(exhibit?.altText).toBe(entry.artDescription);
+      }
+    }
+  });
+
   it('keeps a distinct dated placement for each of 40 exact records and validates the physical lanes', () => {
     const d = new Driver();
     d.s.mapId = 'metalworks.yard';

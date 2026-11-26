@@ -137,7 +137,7 @@ export const jigShopContent: Partial<ContentPack> = {
   exhibits: JIG_CASES.map((entry) => ({
     id: entry.exhibit, name: entry.title, art: entry.art, dateText: entry.date, dateKind: entry.dateKind,
     historicalLabel: 'documented', summary: entry.summary, sources: [entry.source], grantsCard: entry.card,
-    altText: `Original character-scale study graphic for the ${entry.family} trial linked to ${entry.accession}.`,
+    altText: entry.artDescription ?? `Original character-scale study graphic for the ${entry.family} trial linked to ${entry.accession}.`,
     specimen: {
       key: entry.key, institution: entry.institution, accession: entry.accession, source: entry.source, objective: entry.checked,
       revisit: { map: JIG_RETURN, prop: entry.returnProp, method: 'Adapt the checked support at an earlier working bench.',
