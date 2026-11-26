@@ -8,6 +8,7 @@ import { SEA_PAPER_LANDING } from './paperLanding';
 import { SHOAL_PROOF_DOOR, SHOAL_PROOF_LOWER, SHOAL_PROOF_READERS, SHOAL_PROOF_UPPER } from './specimenPassage';
 import { SEA_RELAY_CHART_RECEIVER, SEA_RELAY_ENTRANCE, SEA_RELAY_HARBOUR_RECEIVER } from './specimenRelay';
 import { TURNING_DOOR, TURNING_READERS } from './turningTable';
+import { THREAD_BEND_CHARTROOM, THREAD_BEND_HARBOUR } from './threadBend';
 import type { Interactable, MapDef } from './types';
 
 function crossing(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'sea.waypost'): Interactable {
@@ -50,6 +51,7 @@ export const SEA_HARBOUR: MapDef = {
   ],
   interactables: [
     ...SEA_PAPER_LANDING,
+    ...THREAD_BEND_HARBOUR,
     SEA_RELAY_HARBOUR_RECEIVER,
     ...SEA_DATE_PEG_RECEIVERS,
     ...SEA_DATE_REGISTER_PROPS,
@@ -143,6 +145,7 @@ export const SEA_CHARTROOM: MapDef = {
   ],
   interactables: [
     SEA_DATE_PEG_DOOR,
+    ...THREAD_BEND_CHARTROOM,
     ...SEA_CALLBOARD_RETURNS,
     SEA_RELAY_ENTRANCE, SEA_RELAY_CHART_RECEIVER, TURNING_DOOR, ...TURNING_READERS,
     crossing('sea-chartroom-return', 12, 15, 'the path back to Seagrass Steps', { map: 'sea.harbour', x: 7, y: 6 }),

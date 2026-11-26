@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { CONCEPTS } from '../src/domain/types';
 import { buildPack } from '../src/content';
 import { exampleFor, segmentText } from '../src/domain/glossary';
 import { check } from '../src/domain/rules';
@@ -20,6 +21,14 @@ describe('smart glossary (spec 47.10)', () => {
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-001-A' });
     d.run({ type: 'BuildLabel', kit: 'pen', subject: 'loud', criterion: 'patent', limit: 'none' });
     expect(exampleFor(claim, d.s, (c) => check(c, d.s))).toMatch(/Your museum label was a claim: '.*Loud/);
+  });
+  it('covers all twelve concepts and offers a dictionary source for each registered word history', () => {
+    const ids = pack.glossary.map((entry) => entry.id);
+    for (const concept of CONCEPTS) expect(ids).toContain(concept);
+    for (const entry of pack.glossary) {
+      expect(entry.history?.note.length, entry.term).toBeGreaterThan(25);
+      expect(entry.history?.url, entry.term).toMatch(/^https:\/\//);
+    }
   });
   it('every term appears somewhere in the chapter text', () => {
     const all = JSON.stringify(pack.dialogue.map((n) => n.text)).toLowerCase();

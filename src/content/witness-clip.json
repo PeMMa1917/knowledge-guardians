@@ -4,6 +4,7 @@
       "id": "version",
       "term": "Version",
       "match": ["version"],
+      "history": {"note": "Latin vertere meant to turn. Medieval Latin versio named a turning or change, and the word passed through French.", "url": "https://www.merriam-webster.com/dictionary/version"},
       "text": "One form a record takes. Its date or a change to its markings can distinguish it from another form.",
       "examples": [{ "text": "The binder uses two punches and a bell time to fetch a version from the right slot." }]
     },
@@ -11,6 +12,7 @@
       "id": "gloss",
       "term": "Gloss",
       "match": ["gloss"],
+      "history": {"note": "The gloss at the edge of a page traces back to Greek glossa. That word could mean a tongue, a language or a word that needed explaining.", "url": "https://www.merriam-webster.com/dictionary/gloss#h3"},
       "text": "A small note that explains a word or part of a text.",
       "examples": [{ "text": "A gloss on the wrapper tells the landing reader where the first written page begins." }]
     },
@@ -18,6 +20,7 @@
       "id": "witness",
       "term": "Witness",
       "match": ["witness"],
+      "history": {"note": "Old English witnes could mean knowledge or testimony. It gives us the modern word for someone who can speak from experience.", "url": "https://www.merriam-webster.com/dictionary/witness"},
       "text": "A person with direct knowledge of an event, or the act of attesting to something seen.",
       "examples": [{ "text": "The signed arrival slip says what the witness saw and leaves the contents of the parcel open." }]
     }

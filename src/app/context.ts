@@ -53,7 +53,7 @@ export interface UIApi {
   followThread(thread: string, node: string): void;
   openWaystone(place: string): void;
   playScene(node: string): void;
-  showSign(title: string, text: string): void;
+  showSign(title: string, text: string, propId?: string): void;
   setPrompt(text: string | null): void;
   toast(text: string, kind?: string): void;
   refreshHud(): void;

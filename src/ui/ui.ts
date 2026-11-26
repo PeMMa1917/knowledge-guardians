@@ -1,3 +1,4 @@
+import type { GlossaryEntry } from '../domain/types';
 import { NILE_TRIALS, NILE_DELIVERIES, type NileDelivery } from '../domain/nileModel';
 import { FOREST_WATCH, FOREST_WINDOWS, forestWatch, type ForestWindow } from '../domain/forestWatch';
 import { METAL_SAMPLES, readMetalSample } from '../domain/metalSample';
@@ -183,7 +184,7 @@ import { facingCuePanel } from './facingCue';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
 import { BARTER, DYES, TOWN_COSTS, WOAD_BLUE, ferryPrice, ownsDye, townPrice } from '../domain/trade';
-import { RUMOURS, VERDICTS, currentRumour, missingRumourSources, sourcesChecked } from '../domain/rumours';
+import { RUMOURS, RUMOUR_DESKS, type RumourDesk, VERDICTS, currentRumour, missingRumourSources, sourcesChecked } from '../domain/rumours';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
 import { WARES, honestLabels, lockedOption, owns, priceFor } from '../domain/shop';
 import { calendarGrid, dayOf, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
@@ -1218,6 +1219,12 @@ export class UI implements UIApi {
     } else {
       optionList.append(h('button', { 'data-autofocus': true, onclick: () => { this.sfx('sfx.click'); if (n.next) this.showNode(n.next); else this.endDialogue(n.open); } }, n.next ? 'Continue ▸' : 'Close'));
     }
+    const cornerObjective = id.startsWith('corner.') && c.state.flags['corner.found'] && !c.state.objectivesDone.includes('corner.receive')
+      ? c.state.objectivesDone.includes('corner.compare') ? 'corner.receive' : 'corner.compare'
+      : undefined;
+    const guideObjective = id.startsWith('sea.threadbend.')
+      ? c.engine.visibleObjectives(c.state).find((step) => !step.complete && step.id.startsWith('sea.threadbend.'))?.id
+      : id === 'stage.call.stand' ? 'stage.call.audience' : cornerObjective;
     const extra = id === 'sefa.free' ? this.freeQuestion() : null;
     const earlier = conversationHistory(c.pack.dialogue, c.state.flags).filter((line) => line.id !== id).slice(0, 5);
     const source = n.citationSource ? c.pack.sources.find((entry) => entry.id === n.citationSource) : undefined;
@@ -1231,7 +1238,7 @@ export class UI implements UIApi {
       'speechSynthesis' in window ? h('button', { class: 'mini speak', type: 'button', 'aria-label': 'Read this line aloud', onclick: () => this.speak(spoken) }, '🔊 Read aloud') : '',
       h('div', { class: 'chips' }, n.claimKind ? claimChip(n.claimKind) : null, n.historicalLabel ? histChip(n.historicalLabel) : null),
       extra ?? '', optionList,
-      id === 'stage.call.stand' ? localGuide(c, MAPS[c.state.mapId]?.world ?? '', 'stage.call.audience') : '',
+      guideObjective ? localGuide(c, MAPS[c.state.mapId]?.world ?? '', guideObjective) : '',
       earlier.length ? h('details', { class: 'dialogue-recall' }, h('summary', {}, 'Earlier dialogue'),
         ...earlier.map((line) => this.dialogueMemory(line))) : '');
     if (n.motif && firstHearing) this.playStoryCue(n.motif);
@@ -1279,6 +1286,12 @@ export class UI implements UIApi {
     return h('div', {}, line, pop);
   }
 
+  private wordHistory(entry: GlossaryEntry): HTMLElement | null {
+    if (!entry.history) return null;
+    return h('details', { class: 'fine' }, h('summary', {}, 'Word history'),
+      h('p', {}, entry.history.note, ' ', h('a', { href: entry.history.url, target: '_blank', rel: 'noopener' }, 'Dictionary entry')));
+  }
+
   private fillGloss(id: string, pop: HTMLElement): void {
     const c = ctx.controller;
     const g = c.pack.glossary.find((x) => x.id === id);
@@ -1286,7 +1299,7 @@ export class UI implements UIApi {
     clear(pop);
     const ex = exampleFor(g, c.state, (cond) => c.check(cond));
     pop.append(h('img', { src: artURL(lumenArt(ctx.settings)), alt: '', class: 'gloss-lumen' }),
-      h('div', {}, h('strong', {}, g.term), ' ', g.text, ex ? h('p', { class: 'fine' }, h('em', {}, 'From your play: '), ex) : ''));
+      h('div', {}, h('strong', {}, g.term), ' ', g.text, ex ? h('p', { class: 'fine' }, h('em', {}, 'In the game: '), ex) : '', this.wordHistory(g)));
     pop.style.display = '';
   }
 
@@ -1421,8 +1434,9 @@ export class UI implements UIApi {
       })) : null);
   }
 
-  showSign(title: string, text: string): void {
+  showSign(title: string, text: string, propId?: string): void {
     this.openModal('sign', title, this.closeBtn(), h('h2', {}, title), h('p', {}, text),
+      ...(propId === 'record-book' ? this.rumourReplies('ledger') : []),
       h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
   }
 
@@ -2776,7 +2790,7 @@ export class UI implements UIApi {
       body.append(h('p', { class: 'fine' }, 'Key words, in plain English. Where you have already done something that shows the word, Lumen adds an example from your play.'),
         h('dl', { class: 'glossary' }, ...c.pack.glossary.flatMap((g) => {
           const ex = exampleFor(g, s, (cond) => c.check(cond));
-          return [h('dt', {}, g.term), h('dd', {}, g.text, ex ? h('br', {}) : '', ex ? h('small', { class: 'fine' }, `From your play: ${ex}`) : '')];
+          return [h('dt', {}, g.term), h('dd', {}, g.text, ex ? h('br', {}) : '', ex ? h('small', { class: 'fine' }, `In the game: ${ex}`) : '', this.wordHistory(g))];
         })));
     } else if (tab === 'atlas') {
       // Concepts, ATL ribbons and subjects met (spec 91, 92). Counts of meetings, not grades.
@@ -3726,6 +3740,7 @@ export class UI implements UIApi {
       const out = h('strong', {}, '60');
       slider.oninput = () => { out.textContent = slider.value; };
       box.replaceChildren(...head(), h('p', {}, 'Your guess, for a usual boat: about how many passengers sign before the first shared birthday? (A year has 365 days.)'),
+        ...this.rumourReplies('ferry'),
         h('div', { class: 'row' }, slider, out),
         h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => { guess = Number(slider.value); boat(0); } }, 'Open the book for the first boat')));
     };
@@ -4147,44 +4162,70 @@ export class UI implements UIApi {
     render();
   }
 
-  /** The rumour mill at the tea table: hear one rumour, check sources, then give a verdict. */
+  private rumourReplies(desk: RumourDesk): HTMLElement[] {
+    const received = RUMOURS.filter((r) => ctx.controller.state.flags[`mill.${r.id}.desk`] === desk);
+    if (!received.length) return [];
+    return [h('section', {}, h('h3', {}, 'Slips from the tea table'),
+      ...received.map((r) => h('p', {}, h('strong', {}, r.title + '. '), r.handoffs[desk].reply)))];
+  }
+
   openRumours(): void {
     const c = ctx.controller;
     const d = new Date();
-    const seed = Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000); // the same order for the whole class today
+    const seed = Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000);
     const box = this.openModal('bench-panel wide', 'The rumour mill');
     this.sfx('sfx.page');
-    const render = (note?: { ok: boolean; why: string; id: string }) => {
-      const f = c.state.flags;
-      const solved = Number(f['count.rumours'] ?? 0);
-      const r = note?.ok ? RUMOURS.find((x) => x.id === note.id) ?? null : currentRumour(f, seed);
-      const intro = h('p', { class: 'fine' }, `Rumours traced: ${solved} of ${RUMOURS.length}. Check the listed sources, then say what the evidence supports.`);
+    const render = (selected?: string, feedback = '', checkOpen = false) => {
+      const flags = c.state.flags;
+      const filed = RUMOURS.filter((caseFile) => flags[`mill.${caseFile.id}.done`] === true);
+      const r = selected ? RUMOURS.find((candidate) => candidate.id === selected) : currentRumour(flags, seed);
+      const focusNext = () => box.querySelector<HTMLElement>('.source-btn, .notice-options button:enabled, .slip-tray summary')?.focus();
+      const tray = filed.length ? h('details', { class: 'slip-tray' }, h('summary', {}, 'Reopen a traced slip'),
+        ...filed.map((file) => h('button', { type: 'button', onclick: () => { render(file.id); focusNext(); } }, file.title))) : null;
+      const head = [this.closeBtn(), h('h2', {}, 'The rumour mill')];
       if (!r) {
-        box.replaceChildren(this.closeBtn(), h('h2', {}, 'The rumour mill'), h('p', {}, 'The tea table is quiet. You have traced every rumour in Emberford for now. People here now ask "who told you?" before they pass a story on.'), intro,
-          h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+        box.replaceChildren(...head, h('p', {}, 'The tea is cold. Every story has been traced. The afternoon runner can still move a slip to a different reader.'), ...(tray ? [tray] : []));
         return;
       }
-      const seen = sourcesChecked(f, r);
-      const missing = missingRumourSources(f, r);
-      const enough = missing.length === 0;
-      box.replaceChildren(this.closeBtn(), h('h2', {}, 'The rumour mill'),
-        h('p', { class: 'fine' }, `${r.heard}:`), h('p', { class: 'clue-view' }, r.line),
-        h('h3', {}, 'Sources'),
-        ...r.sources.map((src, i) => seen.includes(i)
-          ? h('p', { class: 'clue-view fresh' }, h('strong', {}, `${src.label}: `), src.text)
-          : note?.ok ? null : h('button', { type: 'button', class: 'source-btn', onclick: () => { c.dispatch({ type: 'CheckRumourSource', rumour: r.id, source: i }); this.sfx('sfx.page'); render(); } }, src.label)).filter((x) => x !== null) as HTMLElement[],
-        ...(note ? [h('p', { class: `clue-view ${note.ok ? 'fresh' : ''}`, role: 'status' }, note.why), ...(note.ok ? [h('p', {}, h('strong', {}, 'The idea: '), r.idea)] : [])] : []),
-        note?.ok ? h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => render() }, 'Listen for the next rumour'), h('button', { onclick: () => this.closeModal() }, 'Close'))
-          : h('div', {}, h('h3', {}, 'Your verdict'),
-            h('div', { class: 'notice-options' }, ...VERDICTS.map((v, i) => h('button', { type: 'button', disabled: !enough, onclick: () => {
-              const ev = c.dispatch({ type: 'JudgeRumour', rumour: r.id, verdict: i });
-              const res = ev.find((e) => e.kind === 'rumour') as Extract<GameEvent, { kind: 'rumour' }> | undefined;
-              if (!res) return;
-              this.sfx(res.ok ? 'sfx.sparkle' : 'sfx.page');
-              render({ ok: res.ok, why: res.ok ? res.why : `${v}? ${res.why} Think again.`, id: r.id });
-            } }, v))),
-            enough ? null : h('p', { class: 'fine' }, `Still needed: ${missing.map((i) => r.sources[i].label).join(' · ')}.`)),
-        intro);
+      const seen = sourcesChecked(flags, r);
+      const missing = missingRumourSources(flags, r);
+      const ready = missing.length === 0;
+      const done = filed.includes(r);
+      const desk = flags[`mill.${r.id}.desk`];
+      const route = (destination: RumourDesk) => {
+        const event = c.dispatch({ type: 'RouteRumour', rumour: r.id, desk: destination }).find((e) => e.kind === 'rumour');
+        if (!event) return;
+        this.sfx('sfx.page');
+        render(r.id, event.why);
+        box.querySelector<HTMLElement>('.next-rumour')?.focus();
+      };
+      const verdict = (index: number) => {
+        const event = c.dispatch({ type: 'JudgeRumour', rumour: r.id, verdict: index }).find((e) => e.kind === 'rumour');
+        if (!event) return;
+        this.sfx(event.ok ? 'sfx.sparkle' : 'sfx.page');
+        render(r.id, event.why, !event.ok);
+        (box.querySelector<HTMLElement>('.next-rumour') ?? box.querySelectorAll<HTMLElement>('.verdicts button')[index])?.focus();
+      };
+      box.replaceChildren(...head,
+        h('p', { class: 'fine' }, r.heard), h('p', { class: 'clue-view' }, r.line),
+        ...r.sources.map((src, index) => seen.includes(index)
+          ? h('p', { class: 'clue-view fresh' }, h('strong', {}, src.label + '. '), src.text)
+          : h('button', { type: 'button', class: 'source-btn', onclick: () => {
+            c.dispatch({ type: 'CheckRumourSource', rumour: r.id, source: index });
+            this.sfx('sfx.page'); render(r.id); focusNext();
+          } }, src.label)),
+        ...(!ready ? [h('p', { class: 'fine' }, `The runner waits for another record. ${missing.map((i) => r.sources[i].label).join(' · ')}.`)] : []),
+        h('h3', {}, 'One slip for the next shift'),
+        h('p', {}, 'The guild copy stays in town. The ferry copy goes to the landing. The runner can move it on a later shift.'),
+        h('div', { class: 'notice-options' }, ...RUMOUR_DESKS.map((dest) =>
+          h('button', { type: 'button', disabled: !ready || desk === dest, onclick: () => route(dest) }, r.handoffs[dest].action))),
+        ...(desk === 'ledger' || desk === 'ferry' ? [h('small', {}, desk === 'ledger' ? 'Current slip in the guild’s public record book.' : 'Current slip in Tova’s ferry guest book.')] : []),
+        ...(!done ? [h('details', { class: 'verdicts', open: checkOpen }, h('summary', {}, 'Record a verdict'),
+          h('div', { class: 'notice-options' }, ...VERDICTS.map((v, i) => h('button', { type: 'button', disabled: !ready, onclick: () => verdict(i) }, v))))] : []),
+        ...(feedback ? [h('p', { class: 'clue-view fresh', role: 'status' }, feedback)] : []),
+        ...(done ? [h('button', { type: 'button', class: 'primary next-rumour', onclick: () => { render(); focusNext(); } }, 'Listen for the next rumour')] : []),
+        ...(done ? [h('details', {}, h('summary', {}, 'Look back at the records'), h('p', {}, r.whys[r.best]), h('p', {}, r.idea))] : []),
+        ...(tray ? [tray] : []), h('small', { class: 'fine' }, `Rumours traced: ${filed.length} of ${RUMOURS.length}.`));
     };
     render();
   }

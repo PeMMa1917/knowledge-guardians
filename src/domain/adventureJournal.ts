@@ -1,4 +1,5 @@
 import { crossingOf, crossingWay } from './crossings';
+import { RUMOURS } from './rumours';
 import { LOYALTY } from './loyalty';
 import { specimenReferences, type SpecimenReference } from './specimenReferences';
 import { earlierViews } from '../content/earlierViewing';
@@ -152,6 +153,15 @@ function experienceDraft(pack: ContentPack, cmd: Command, event: GameEvent): Ent
         id: `thread:${cmd.thread}:${event.node}`, kind: 'experience', title: thread?.title ?? 'A provenance trail',
         text: `I followed the Provenance Thread. ${event.text}${event.gap ? ` ${event.gap}` : ''}`,
       };
+    }
+    case 'rumour': {
+      if (cmd.type !== 'RouteRumour' || !event.ok) break;
+      const rumour = RUMOURS.find((r) => r.id === cmd.rumour);
+      if (rumour) return {
+        id: `rumour:${rumour.id}:${cmd.desk}`, kind: 'choice', title: rumour.title,
+        text: `I chose to ${rumour.handoffs[cmd.desk].action[0].toLowerCase()}${rumour.handoffs[cmd.desk].action.slice(1)}. ${event.why}`,
+      };
+      break;
     }
     case 'simulation':
       if (event.result.fairTest) return {

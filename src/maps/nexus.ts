@@ -8,6 +8,7 @@
 import { NEXUS_FIELD_CUES } from './fieldBadges';
 import { BADGE_ANNEX_DOOR } from './badgeRoom';
 import { NEXUS_FACING_ACTOR, NEXUS_FACING_CUE } from './facingCue';
+import { NEXUS_FOURTH_CORNER } from './fourthCorner';
 import { EARLY_CURTAIN_NPC, EARLY_CURTAIN_PROPS } from './curtainCall';
 import { NEXUS_DISPATCH_STATS } from './dispatchStats';
 import { NEXUS_CORRESPONDENCE } from './correspondenceRoom';
@@ -159,6 +160,7 @@ export const NEXUS: MapDef = {
   interactables: [
     ...NEXUS_FIELD_CUES,
     ...NEXUS_FACING_CUE,
+    ...NEXUS_FOURTH_CORNER,
     ...starStations('inquisitor', [3, 10], [3, 11]),
     ...NEXUS_VINDOLANDA,
     ...NEXUS_DOOR_FOLD,

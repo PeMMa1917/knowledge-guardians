@@ -1107,7 +1107,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
           const events = ctx.controller.dispatch({ type: 'SetFlag', flag: it.flag, value: true });
           if (!events.length) this.refreshWorld();
         }
-        ctx.ui.showSign(it.label, it.text ?? ''); break;
+        ctx.ui.showSign(it.label, it.text ?? '', it.id); break;
       case 'portal': break;
     }
   }

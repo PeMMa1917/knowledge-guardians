@@ -339,3 +339,9 @@ The Chromium navigation sweep covered 125 maps, 71,149 tiles, 1,497 sampled rout
 ### Startup with delayed sound
 
 Fresh headless Firefox ESR 153.5.1 reached the opening text on the previous and five-investigation builds, then waited on audio decoding through a 60-second observation. In a diagnostic build, all 37 files finished downloading and the 14 sound effects were still processing. The startup path now builds the world from the art and continues loading effects in the background. [Startup scene](../src/scenes/BootScene.ts)
+
+### Repair evidence, thread and the next reader
+
+From a fresh Nexus save, Chromium turned the two trial inserts, cancelled an input during rotation, kept the first fit across a page reload and checked the separate dated repair order. Play reached the cutter's repeat pattern or the repairer's open seam and used all four Lumen clues in each phase. At the Sea, after staging the earlier chapter gate, players kept an inner tray run that stopped, retied the cord and checked the outer turn. The two guides reached their own harbour receivers. [Corner tests](../tests/fourth-corner.test.ts) · [Thread tests](../tests/thread-bend.test.ts)
+
+At Emberford, the player checked the blue-light rumour with the porter and ferry account. The public book got a sightline map. Reopening the slip and sending it to Tova took that map out of the public book and offered a near-bank walk at the landing. Both handovers appeared in the diary after a page reload. The fixture used adjacent-tile positioning and staged travel to both places. The tests exercise all five reports, both destinations, legacy completions and equal credit. [Rumour handoffs](../tests/rumour-handoffs.test.ts)

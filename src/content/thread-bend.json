@@ -1,0 +1,675 @@
+{
+  "glossary": [
+    {
+      "id": "clue",
+      "term": "Clue",
+      "match": [
+        "clue",
+        "clues"
+      ],
+      "text": "A detail you can follow to find out more. You still need to check where it leads.",
+      "history": {
+        "note": "A clew was a ball of thread. The story of Theseus following a thread through a maze helped give clue its sense of a guide.",
+        "url": "https://www.ahdictionary.com/word/search.html?q=clue"
+      },
+      "examples": [
+        {
+          "if": {
+            "objective": "sea.threadbend.compare"
+          },
+          "text": "The cord leads through both passages. Sliding the tray between the posts tests which passage it can use."
+        },
+        {
+          "text": "A mark on a copy can point you toward the person who handled it. Follow it to their record."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "MYTH-ARIADNE-APOLLODORUS",
+      "title": "Pseudo-Apollodorus, Library, Epitome 1.8–9",
+      "url": "https://www.theoi.com/Text/ApollodorusE.html#1",
+      "locator": "Epitome 1.8 and 1.9, English translation by J. G. Frazer",
+      "supports": "This Greek myth account credits Ariadne with asking Daedalus about a way out and giving Theseus the clue or thread. Theseus attaches it at the door and uses it to get back. The source records a version of the story.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "author": "Pseudo-Apollodorus",
+        "title": "Library. Epitome 1.8–9. Translated by J. G. Frazer",
+        "container": "Theoi Texts Library",
+        "showAccessDate": true
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "item.sea.threadbend-guide",
+      "name": "The starting-peg guide",
+      "description": "A rolled guide with one fixed start, an observed gap and the tested load for the next handoff.",
+      "historicalLabel": "fictional-world",
+      "art": "preserved.folder"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH8-R25",
+      "world": "WORLD-09",
+      "title": "The Thread at the Bend",
+      "available": {
+        "objective": "sea.finish"
+      },
+      "stake": "The messenger is early and the tray crew needs more room. There is time to set up one checked guide.",
+      "knowledgeQuestion": "What can a story suggest for a test, and what do you still need to measure before passing the result on?",
+      "objectives": [
+        {
+          "id": "sea.threadbend.compare",
+          "title": "Use the story’s fixed start, run the two markers and compare the tray at both gaps.",
+          "essential": false,
+          "visible": {
+            "flag": "sea.threadbend.started",
+            "eq": true
+          },
+          "done": {
+            "all": [
+              {
+                "flag": "sea.threadbend.started",
+                "eq": true
+              },
+              {
+                "flag": "sea.threadbend.inner.envelope",
+                "eq": true
+              },
+              {
+                "flag": "sea.threadbend.inner.tray",
+                "eq": true
+              },
+              {
+                "flag": "sea.threadbend.outer.tray",
+                "eq": true
+              }
+            ]
+          },
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "objectivity",
+              "certainty"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "ART",
+              "MAT"
+            ],
+            "subjects": [
+              "lang-langlit",
+              "math-ai"
+            ],
+            "minutes": 6
+          }
+        },
+        {
+          "id": "sea.threadbend.prepare",
+          "title": "Choose which tested guide can serve the next handoff.",
+          "essential": false,
+          "visible": {
+            "objective": "sea.threadbend.compare"
+          },
+          "done": {
+            "all": [
+              {
+                "objective": "sea.threadbend.compare"
+              },
+              {
+                "flagSet": "sea.threadbend.choice"
+              }
+            ]
+          },
+          "onComplete": [
+            {
+              "giveItem": "item.sea.threadbend-guide"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "values",
+              "responsibility",
+              "perspective",
+              "justification"
+            ],
+            "framework": [
+              "scope",
+              "ethics",
+              "perspectives"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "ART",
+              "MAT"
+            ],
+            "subjects": [
+              "lang-langlit",
+              "math-ai"
+            ],
+            "minutes": 2
+          }
+        },
+        {
+          "id": "sea.threadbend.finish",
+          "title": "Carry the guide to the intended receiver and check the other group’s next turn.",
+          "essential": false,
+          "visible": {
+            "objective": "sea.threadbend.prepare"
+          },
+          "done": {
+            "all": [
+              {
+                "objective": "sea.threadbend.prepare"
+              },
+              {
+                "any": [
+                  {
+                    "all": [
+                      {
+                        "flag": "sea.threadbend.choice",
+                        "eq": "letter"
+                      },
+                      {
+                        "flag": "sea.threadbend.placed",
+                        "eq": "letter"
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "sea.threadbend.choice",
+                        "eq": "tray"
+                      },
+                      {
+                        "flag": "sea.threadbend.placed",
+                        "eq": "tray"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "onComplete": [
+            {
+              "journal": "j.sea.threadbend"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "responsibility",
+              "explanation",
+              "evidence",
+              "values"
+            ],
+            "framework": [
+              "perspectives",
+              "ethics"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "ART",
+              "MAT"
+            ],
+            "subjects": [
+              "lang-langlit",
+              "math-ai"
+            ],
+            "minutes": 3
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "sea.threadbend.story",
+      "speaker": "narrator",
+      "text": "In one Greek account of the Labyrinth, Ariadne asks Daedalus for a way out and gives Theseus a thread. He fixes one end at the doorway. Later he uses that same line to find his way back.",
+      "historicalLabel": "documented",
+      "citationSource": "MYTH-ARIADNE-APOLLODORUS",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Keep Ariadne’s starting point beside the model.",
+          "next": "sea.threadbend.started",
+          "if": {
+            "all": [
+              {
+                "objective": "sea.finish"
+              },
+              {
+                "not": {
+                  "flagSet": "sea.threadbend.started"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "sea.threadbend.started",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the story on its stand."
+        }
+      ]
+    },
+    {
+      "id": "sea.threadbend.started",
+      "speaker": "sea-cartographer",
+      "text": "The chart kept its checked edge. Let’s mark where the cord starts, too. I’ve made two turns with wooden posts. Sora needs a quick way to pass one envelope, or room to bring a tray round the bend. Here’s a clue you can hold. Keep one end of the cord on the peg.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "sea.threadbend.pin",
+      "speaker": "sea-cartographer",
+      "text": "Both runs start at the same peg and end at the same marker. The inner turn has one bend and a gap two notches wide. The outer turn adds a bend and opens to four notches. The cord can move from one set of stops to the other.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Move the cord to the inner turn.",
+          "next": "sea.threadbend.pin.inner",
+          "if": {
+            "flag": "sea.threadbend.started",
+            "eq": true
+          },
+          "effects": [
+            {
+              "setFlag": "sea.threadbend.set",
+              "value": "inner"
+            }
+          ]
+        },
+        {
+          "text": "Move the cord to the outer turn.",
+          "next": "sea.threadbend.pin.outer",
+          "if": {
+            "flag": "sea.threadbend.started",
+            "eq": true
+          },
+          "effects": [
+            {
+              "setFlag": "sea.threadbend.set",
+              "value": "outer"
+            }
+          ]
+        },
+        {
+          "text": "Leave the cord where it is."
+        }
+      ]
+    },
+    {
+      "id": "sea.threadbend.pin.inner",
+      "speaker": "narrator",
+      "text": "The cord turns toward the inner posts. The other route stays clear for the next test.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "sea.threadbend.pin.outer",
+      "speaker": "narrator",
+      "text": "The cord takes the second bend and reaches the outer posts. The inner runs stay in the model record.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "sea.threadbend.inner",
+      "speaker": "narrator",
+      "text": "The nearer posts leave a gap of two notches. The envelope marker is one notch wide. The tray marker is three. Slide either marker along the cord and see what reaches the end.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Slide the envelope marker.",
+          "next": "sea.threadbend.inner.envelope",
+          "if": {
+            "flag": "sea.threadbend.set",
+            "eq": "inner"
+          },
+          "effects": [
+            {
+              "setFlag": "sea.threadbend.inner.envelope",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Slide the tray marker.",
+          "next": "sea.threadbend.inner.tray",
+          "if": {
+            "flag": "sea.threadbend.set",
+            "eq": "inner"
+          },
+          "effects": [
+            {
+              "setFlag": "sea.threadbend.inner.tray",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the markers at the start."
+        }
+      ]
+    },
+    {
+      "id": "sea.threadbend.inner.envelope",
+      "speaker": "narrator",
+      "text": "The envelope slides past both posts and reaches the end after one bend. Its route keeps the fixed starting mark.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "sea.threadbend.inner.tray",
+      "speaker": "narrator",
+      "text": "The tray stops against the inner posts. The cord still reaches the end. Keep this failed run, then retie the cord and try the same tray at the outer turn.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "sea.threadbend.outer",
+      "speaker": "narrator",
+      "text": "The outer posts leave a gap of four notches. The tray marker is still three notches wide. It starts beside the peg used for the inner turn.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Slide the tray marker.",
+          "next": "sea.threadbend.outer.tray",
+          "if": {
+            "flag": "sea.threadbend.set",
+            "eq": "outer"
+          },
+          "effects": [
+            {
+              "setFlag": "sea.threadbend.outer.tray",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the tray marker at the start."
+        }
+      ]
+    },
+    {
+      "id": "sea.threadbend.outer.tray",
+      "speaker": "narrator",
+      "text": "The same tray clears the posts this time. The cord leads it through two bends. The tray has room here and takes an extra turn.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "sea.threadbend.bind",
+      "speaker": "sea-cartographer",
+      "text": "The model record keeps the inner stop and the outer pass. The messenger wants one envelope across before the signal. The tray crew needs the extra room. Sora has space for one guide at the next handoff. Keep the starting mark and the tested load on the guide.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Roll the inner guide for a single envelope.",
+          "next": "sea.threadbend.bind.letter",
+          "if": {
+            "all": [
+              {
+                "objective": "sea.threadbend.compare"
+              },
+              {
+                "not": {
+                  "flagSet": "sea.threadbend.choice"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "sea.threadbend.choice",
+              "value": "letter"
+            }
+          ]
+        },
+        {
+          "text": "Roll the outer guide for the tray crew.",
+          "next": "sea.threadbend.bind.tray",
+          "if": {
+            "all": [
+              {
+                "objective": "sea.threadbend.compare"
+              },
+              {
+                "not": {
+                  "flagSet": "sea.threadbend.choice"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "sea.threadbend.choice",
+              "value": "tray"
+            }
+          ]
+        },
+        {
+          "text": "Leave both routes on the model."
+        }
+      ]
+    },
+    {
+      "id": "sea.threadbend.bind.letter",
+      "speaker": "narrator",
+      "text": "The narrow guide keeps the one-notch envelope limit beside the start. Take it to the messenger’s hook at Seagrass Steps.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "sea.threadbend.bind.tray",
+      "speaker": "narrator",
+      "text": "The wide guide keeps both bends and the tested tray beside the start. Take it to the tray crew’s table at Seagrass Steps.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "sea.threadbend.receive.letter",
+      "speaker": "sea-harbourkeeper",
+      "text": "The messenger checks the single envelope against the pictured mark. She can leave before the signal. I can hold the tray here for the ordinary crew turn.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Hang the envelope-only guide.",
+          "next": "sea.threadbend.delivered.letter",
+          "if": {
+            "all": [
+              {
+                "flag": "sea.threadbend.choice",
+                "eq": "letter"
+              },
+              {
+                "item": "item.sea.threadbend-guide"
+              },
+              {
+                "not": {
+                  "flagSet": "sea.threadbend.placed"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "sea.threadbend.placed",
+              "value": "letter"
+            }
+          ]
+        },
+        {
+          "text": "Give the messenger more time."
+        }
+      ]
+    },
+    {
+      "id": "sea.threadbend.delivered.letter",
+      "speaker": "narrator",
+      "text": "The envelope goes out by the short route. The tray stays for the crew’s turn. The messenger leaves the same load limit on the hook.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "sea.threadbend.receive.tray",
+      "speaker": "sea-harbourkeeper",
+      "text": "The tray crew checks its three-notch marker beside the start, then carries it round the extra bend. I can send the envelope with the next handoff. Keep the guide on the table for the next crew.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Lay the guide on the tray crew’s table.",
+          "next": "sea.threadbend.delivered.tray",
+          "if": {
+            "all": [
+              {
+                "flag": "sea.threadbend.choice",
+                "eq": "tray"
+              },
+              {
+                "item": "item.sea.threadbend-guide"
+              },
+              {
+                "not": {
+                  "flagSet": "sea.threadbend.placed"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "sea.threadbend.placed",
+              "value": "tray"
+            }
+          ]
+        },
+        {
+          "text": "Give the tray crew more time."
+        }
+      ]
+    },
+    {
+      "id": "sea.threadbend.delivered.tray",
+      "speaker": "narrator",
+      "text": "The tray reaches the far stand. The envelope leaves with the next handoff. Both bends and the tray mark stay visible for the next crew.",
+      "historicalLabel": "fictional-world"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.sea.threadbend.compare.1",
+      "objective": "sea.threadbend.compare",
+      "depth": 1,
+      "text": "Read the Greek story beside the wooden model in Lantern House. Keep the fixed starting point."
+    },
+    {
+      "id": "h.sea.threadbend.compare.2",
+      "objective": "sea.threadbend.compare",
+      "depth": 2,
+      "text": "Set the cord at the inner turn. Try the envelope there, then try the tray."
+    },
+    {
+      "id": "h.sea.threadbend.compare.3",
+      "objective": "sea.threadbend.compare",
+      "depth": 3,
+      "text": "The stop is part of the evidence. Return to the pin and move the cord to the outer turn."
+    },
+    {
+      "id": "h.sea.threadbend.compare.4",
+      "objective": "sea.threadbend.compare",
+      "depth": 4,
+      "text": "Slide the same three-notch tray past the four-notch gap. Keep the extra bend with the successful run."
+    },
+    {
+      "id": "h.sea.threadbend.prepare.1",
+      "objective": "sea.threadbend.prepare",
+      "depth": 1,
+      "text": "Look for Renna’s guide clips beyond the outer posts in Lantern House."
+    },
+    {
+      "id": "h.sea.threadbend.prepare.2",
+      "objective": "sea.threadbend.prepare",
+      "depth": 2,
+      "text": "Both guides start at the same point. Only the wider test carries the tray."
+    },
+    {
+      "id": "h.sea.threadbend.prepare.3",
+      "objective": "sea.threadbend.prepare",
+      "depth": 3,
+      "text": "The messenger has one envelope and wants the short turn now. The tray crew needs room around the posts."
+    },
+    {
+      "id": "h.sea.threadbend.prepare.4",
+      "objective": "sea.threadbend.prepare",
+      "depth": 4,
+      "text": "Roll a guide for the envelope or for the tray. Keep the load that you actually tested with the route."
+    },
+    {
+      "id": "h.sea.threadbend.finish.1",
+      "objective": "sea.threadbend.finish",
+      "depth": 1,
+      "text": "Take the guide back to Seagrass Steps."
+    },
+    {
+      "id": "h.sea.threadbend.finish.2",
+      "objective": "sea.threadbend.finish",
+      "depth": 2,
+      "text": "The narrow guide goes to the messenger’s hook near the middle. The wide one goes to the tray crew’s table by the east path."
+    },
+    {
+      "id": "h.sea.threadbend.finish.3",
+      "objective": "sea.threadbend.finish",
+      "depth": 3,
+      "text": "Open the guide with the person at its stop. Check the load against the mark you carried."
+    },
+    {
+      "id": "h.sea.threadbend.finish.4",
+      "objective": "sea.threadbend.finish",
+      "depth": 4,
+      "text": "Hang the envelope-only guide or lay the wide guide on the crew’s table. The next handoff for the other load stays on the record."
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.sea.threadbend",
+      "claimKind": "simulation",
+      "text": "I used Ariadne’s fixed start in a model. The narrow gap stopped the tray. The wider run carried the same tray farther. I sent a guide with the load it could serve."
+    }
+  ]
+}

@@ -695,3 +695,9 @@ Quena’s Glass Rack has 40 numbered Cleveland Museum of Art collection cases. E
 The Step Across the Line draws on the distinction between movement direction and timing. Its four-beat sequence and signs are original. [Dance Notation Bureau fundamentals](https://www.dancenotation.org/labanotation-fundamentals/)
 
 Below the Gauge includes Whanganui Iwi’s named public context through Ngā Tāngata Tiaki o Whanganui. The trust describes the river, its tributaries and its people in terms of a living whole. The Water Commons float model and staffing decisions belong to the game’s fictional setting. [Tupua te Kawa](https://www.ngatangatatiaki.co.nz/our-story/tupua-te-kawa/)
+
+### The cord and the fourth corner
+
+The Sea chartroom draws on the account in which Ariadne asks Daedalus for a way out and gives Theseus a thread. The envelope, tray, notches and harbour jobs belong to the fictional chartroom. The word *clue* offers a related line of enquiry when a player picks up the cord. [Pseudo-Apollodorus, Epitome 1.8–9, translated by J. G. Frazer](https://www.theoi.com/Text/ApollodorusE.html#1) · [American Heritage Dictionary, clue](https://www.ahdictionary.com/word/search.html?q=clue)
+
+In the Nexus, symmetry guides a new cutting pattern. The trace of a repair and its dated order support a different claim about the old cloth. The hanging and its repair record are fictional. The glossary's word histories link to individual dictionary entries. [American Heritage Dictionary, symmetry](https://www.ahdictionary.com/word/search.html?q=symmetry) · [American Heritage Dictionary, trace](https://www.ahdictionary.com/word/search.html?q=trace) · [Word histories](../src/content/glossary.json)

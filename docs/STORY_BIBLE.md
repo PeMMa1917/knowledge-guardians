@@ -202,6 +202,8 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | Ch | Conflict | Type | Scale | Tone | Ends | Builds to |
 |---|---|---|---|---|---|---|
 | 1 | Corvan's 'ancient' blade (Showdown) | Person, Society | M | mixed | expose, narrow, split, win over, lose ground | Vesper's first letter |
+| 1 | The Fourth Corner | Person, Technology | s | quiet | fit two inserts and match the later repair order to the cord holes | Aro takes a cutting pattern for new cloth, or Junel carries a removable repair sample. |
+| 1 | The tea table runner | Society, Person | s | neighbourly | trace a rumour and choose a reader for the next shift | The guild binds a local record or Tova gives an account to people at the landing. The runner can move each slip again. |
 | 1 | Hesper’s visit | Person, Society | s | mixed | inspect the repair and arrival marks, then reserve one bell at the Nexus bench or send the drawer packet | The physical handover either uses Hesper’s demonstration or leaves the bench free and puts both records in the drawer. |
 | 1 | The Step Across the Line | Person, Society | s | mixed | run a fixed four-beat phrase from each facing, then hang one lamp-side cue or two entrance cards | A shared cue needs Sella’s lead-in and frees a hook. Paired cards let late runners enter alone. The House uses the slip beside a moved lamp. |
 | 1 | The Hollow Archivist (Undercroft) | Supernatural | M | serious | name each error | The brass lamp (ch 15) |
@@ -310,6 +312,7 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 8 | The chart's blank | Nature, Society | M | serious | chapter response | Local names |
 | 8 | The Bell under the Water | Supernatural | m | mixed | listen, write in the margin, dismiss | A myth that carries a fact |
 | 8 | The Paper Landing | Supernatural, Technology | s | mixed | peg before turning, turn before pegging, or reset the cutouts | A clearly labelled fictional paper play supplies a reading method for the Cold Store’s separate practice receipts. |
+| 8 | The Thread at the Bend | Person, Technology | s | quiet | keep Ariadne’s fixed start, try both loads and retie after a stop, then roll the envelope-only or tray guide | The first crew can use its checked route. The other load keeps its later turn. The practice cord remains available. |
 | 8 | The Rim above the Reeds | Nature, Person | s | quiet | verify the guide’s dry rim or check Sora’s staff before walking the south planks | The high frame shows the join. The low frame makes room for two and shows the sheltered run. Both leave the reeds alone. |
 | 8 and 4 | The Reply from Shore | Society, Technology | s | mixed | check the two ends of a chart, cue or issue record and carry the loan to an upper lookout or a lower receiver | The east pier marks the actual use and keeps what the receiving point still cannot show. The early watch can change which reply it displays. |
 | 8 | One Clip Before the Bell | Nature, Technology | s | mixed | test one thread order in still air and a gust, then send an early clip to Sora, leave both in Renna’s late tray, or leave the cord unthreaded | Work can start at the bell before the reference or detail arrives. A complete late dispatch keeps both pieces together. Each reader keeps a checked copy for the specific object. |

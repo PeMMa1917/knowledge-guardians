@@ -31,7 +31,7 @@ import { WARES, priceFor } from './shop';
 import { TALENTS, cannotLearn, hasTalent } from './talents';
 import { GATHER_YIELD, RECIPES, RESOURCES, cannotCraft } from './craft';
 import { cannotRead, readingOf } from './readings';
-import { RUMOURS, missingRumourSources, rumourDone } from './rumours';
+import { RUMOUR_DESKS, RUMOURS, type RumourDesk, missingRumourSources, rumourDone } from './rumours';
 import { BARTER, DYES, ferryPrice } from './trade';
 import { approvalOf, approvalRank, isInquiry } from './approval';
 import { ROLES } from './roles';
@@ -113,6 +113,7 @@ export type Command =
   | { type: 'BossMove'; choice: number }
   | { type: 'FinishFieldGame'; game: string }
   | { type: 'OpenDrawerCase'; face: number }
+  | { type: 'RouteRumour'; rumour: string; desk: RumourDesk }
   | { type: 'JudgeRumour'; rumour: string; verdict: number }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
@@ -452,7 +453,7 @@ export class Engine {
           events.push({ kind: 'reading', reading: r.id, ok: o.ok, why: o.why, first });
           break;
         }
-        case 'CheckRumourSource': case 'JudgeRumour': {
+        case 'CheckRumourSource': case 'RouteRumour': case 'JudgeRumour': {
           const r = RUMOURS.find((x) => x.id === cmd.rumour);
           if (!r) throw new Error('Unknown rumour');
           if (cmd.type === 'CheckRumourSource') {
@@ -461,10 +462,21 @@ export class Engine {
             break;
           }
           if (missingRumourSources(s.flags, r).length) throw new Error("Check the rumour’s listed sources before giving a verdict.");
-          const why = r.whys[cmd.verdict];
-          if (why === undefined) throw new Error('Choose a verdict');
-          const ok = cmd.verdict === r.best;
-          const fx: Effect[] = [{ addNum: `mill.${r.id}.tries`, by: 1 }];
+          let why: string;
+          let ok: boolean;
+          const fx: Effect[] = [];
+          if (cmd.type === 'RouteRumour') {
+            if (s.mapId !== 'aethelgard.emberford' || !RUMOUR_DESKS.includes(cmd.desk)) throw new Error('Choose a receiver at the tea table.');
+            const flag = `mill.${r.id}.desk`;
+            if (s.flags[flag] !== cmd.desk) fx.push({ setFlag: flag, value: cmd.desk });
+            why = cmd.desk === 'ledger' ? 'The slip is in the guild’s public record book.' : 'The slip is in Tova’s guest book at the old ferry landing.';
+            ok = true;
+          } else {
+            why = r.whys[cmd.verdict];
+            if (why === undefined) throw new Error('Choose a verdict');
+            ok = cmd.verdict === r.best;
+            fx.push({ addNum: `mill.${r.id}.tries`, by: 1 });
+          }
           if (ok && !rumourDone(s.flags, r.id)) {
             fx.push({ setFlag: `mill.${r.id}.done`, value: true }, { addNum: 'count.rumours', by: 1 }, { addMarks: 5 });
             if (r.fray) fx.push({ setFlag: `meet.fray.${r.fray}`, value: true });

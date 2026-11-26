@@ -7,13 +7,17 @@ import { createServer } from 'vite';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 export const TARGET = 10;
+const reasoningModes = new Map([
+  ['deductive', 'Deductive'], ['inductive', 'Inductive'], ['abductive', 'Abductive'],
+  ['analogical', 'Analogical'], ['causal', 'Causal'], ['pragmatic', 'Pragmatic'],
+]);
 const catalogueStatus = new Map([['✓', 'playable'], ['◐', 'partial'], ['○', 'planned'], ['✗', 'excluded']]);
 const listId = (kind, id) => `${kind}:${id}`;
 const distinct = (items) => [...new Set(items)];
 const cellKey = (world, dimension, element) => [world, dimension, element].join('|');
 
 // Each row identifies a complete action and the intersection its trace actually supports.
-// Optional branches and composite objectives count once per objective in one physical world.
+// Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
   {
     objective: 'nexus.facing.compare', map: 'nexus.archive', target: 'facing-cue-nexus',
@@ -37,6 +41,7 @@ const proofRows = [
     objective: 'catchment.compare', map: 'water.culvert', target: 'catchment-model',
     source: 'tests/catchment.test.ts', anchor: 'keeps the upper pulse fixed and lets the player find the missing floats',
     action: 'Trace the same six floats through each setting and account for the lower count at the changed pocket.',
+    reasoning: [{ mode: 'causal', basis: 'Only the pocket setting changes. Two of the same six floats stay in the exposed pocket and the lower count rises from four to six when it is covered.' }],
     dimensions: ['concept:evidence', 'concept:objectivity', 'framework:methods-and-tools', 'subject:physics', 'micro:411',
       'question:KQ-CATCHMENT-01'], elements: ['game:195', 'story:77'],
   },
@@ -66,6 +71,23 @@ const proofRows = [
     elements: ['game:271', 'story:72'],
   },
   {
+    objective: 'corner.compare', map: 'nexus.archive', target: 'fourth-corner-inserts',
+    source: 'tests/fourth-corner.test.ts', anchor: 'no date or sketch for the first weaving',
+    action: 'Try both inserts against the pinned hanging and check the dated repair tab before choosing how to display the gap.',
+    comparison: {
+      concepts: ['evidence', 'justification'], framework: ['scope', 'methods-and-tools'],
+      areas: [
+        { id: 'MAT', method: 'Turn the square to extend the repeating diamond and slide the clipped insert to compare the two fits.',
+          limit: 'A pattern match shows which completion follows the repeat. It leaves the original missing corner unresolved.' },
+        { id: 'HIS', method: 'Match the shelf number to the dated order and relate it to the old edge and later stitches.',
+          limit: 'The order establishes the recorded repair. It gives neither a date nor a diagram of the first weaving.' },
+      ],
+      connection: 'The display decision uses both results. It can make a full tracing available as a proposed repeat or preserve the gap beside the dated repair.',
+    },
+    dimensions: ['concept:evidence', 'concept:justification', 'area:MAT', 'area:HIS', 'framework:scope', 'framework:methods-and-tools'],
+    elements: ['game:184'],
+  },
+  {
     objective: 'nile.way.compare', map: 'nile.route', target: 'nile-way-board',
     source: 'tests/nile-map-guide.test.ts', anchor: 'Hold the room marks steady',
     action: 'Check the aisle and shelf ends of the same room, then turn its sketch against the fixed landmarks.',
@@ -79,6 +101,31 @@ const proofRows = [
     action: 'Run the same cart load on the model’s two roads and leave the trial conditions separate from the Mine Map record.',
     dimensions: ['concept:objectivity', 'concept:evidence', 'framework:methods-and-tools', 'question:KQ-ROUTE-32', 'micro:611'],
     elements: ['game:195'],
+  },
+  {
+    objective: 'nile.lamp.compare', map: 'nile.workyard', target: 'nile-lamp-slip',
+    source: 'tests/nile-followups.test.ts', anchor: 'Return the lamp above',
+    action: 'Change the lamp position on a fixed slip, then restore the original light to compare what can be seen.',
+    reasoning: [{ mode: 'abductive', basis: 'The first view fits an erased groove or a hidden one. Reappearance from the side and disappearance on return favor the viewing-angle account.' }],
+    dimensions: ['concept:explanation', 'framework:methods-and-tools'], elements: ['game:267', 'story:77'],
+  },
+  {
+    objective: 'forest.moss.place', map: 'forest.community', target: 'forest-moss-table',
+    source: 'tests/forest-sampling.test.ts', anchor: 'compares both light pairs and publishes only the %s route',
+    action: 'Pair four frame counts by light, add the crew’s boot tally and replace the shade notice with a local observation or next check.',
+    reasoning: [{ mode: 'inductive', basis: 'Both light pairs show fewer green squares beside the path. The notice keeps that provisional pattern bounded to the four sampled places.' }],
+    comparison: {
+      concepts: ['evidence', 'explanation'], framework: ['scope', 'methods-and-tools'],
+      areas: [
+        { id: 'NAT', method: 'Count squares showing green in fixed-size frames near and away from the path in each light condition.',
+          limit: 'Four frame counts support a local pattern. Other conditions such as moisture were not tested.' },
+        { id: 'HUM', method: 'The crew’s separate tally records where walkers’ boots contacted the ground during one round.',
+          limit: 'The tally describes observed behavior. It leaves open whether walkers chose already-bare ground.' },
+      ],
+      connection: 'Put the two records beside each other before replacing the shade notice. The frame counts locate a pattern and the human observations suggest one explanation that a later check could distinguish.',
+    },
+    dimensions: ['concept:evidence', 'concept:explanation', 'area:NAT', 'area:HUM', 'framework:scope', 'framework:methods-and-tools'],
+    elements: ['game:146'],
   },
   {
     objective: 'sea.finish', map: 'sea.harbour', target: 'sea-harbourkeeper',
@@ -95,9 +142,23 @@ const proofRows = [
     elements: ['game:234', 'game:247'],
   },
   {
+    objective: 'stage.light.o.display', map: 'stage.rehearsal', target: 'stage-light-stand',
+    source: 'tests/performance-story.test.ts', anchor: 'lets both first-look arrangements change the scene in either order',
+    action: 'Invite a visitor to the same paper relief after hanging the foyer display. Either leave the lamp fixed for their first look or move it in front of them and hear what they ask.',
+    observation: { flag: 'stage.light.visitor', values: ['quiet', 'shown'] },
+    titleApplications: [{
+      id: 'essay-title:PT-M25-06',
+      basis: 'Showing how the paper grip or shadow is made prompts a specific new inquiry. The fixed relief makes the lighting change visible.',
+      foil: 'The quiet first look also prompts a specific inquiry without a demonstration. The question is different after the player moves the lamp.',
+      limit: 'The responses are written for individual fictional visitors. The encounter cannot establish changes in a real learner’s curiosity or feelings.',
+    }],
+    dimensions: [], elements: ['game:253', 'story:106'],
+  },
+  {
     objective: 'water.publish', map: 'water.council', target: 'water-scribe',
     source: 'tests/water-story.test.ts', anchor: "d.done('water.publish')",
     action: 'Use measured drought flows and two work cards to post a tested allocation and show which work must wait.',
+    reasoning: [{ mode: 'pragmatic', basis: 'Choose a feasible tested setting according to which work must go first, then keep its cost for the crew that waits visible on the order.' }],
     dimensions: ['concept:values', 'concept:responsibility', 'framework:ethics', 'question:KQ-NEW-006', 'question:KQ-ROUTE-35', 'micro:436'],
     elements: ['game:271', 'story:11'],
   },
@@ -105,8 +166,27 @@ const proofRows = [
     objective: 'civic.overlap.evidence', map: 'civic.dispatch', target: 'civic-overlap-rack',
     source: 'tests/civic-story.test.ts', anchor: 'Group the remaining rows',
     action: 'Fill and group the arrival rows, then check them against the local crew’s release time.',
-    dimensions: ['concept:evidence', 'area:MAT', 'atl:thinking', 'subject:math-ai'],
+    reasoning: [{ mode: 'deductive', basis: 'Three ordered arrivals have four possible marks each. Grouping all 64 assignments gives 24 using separate marks and 40 sharing a mark under the stated rules.' }],
+    comparison: {
+      concepts: ['evidence', 'certainty'], framework: ['scope', 'methods-and-tools'],
+      areas: [
+        { id: 'MAT', method: 'Enumerate ordered outcomes in a four-mark model and distinguish separate from shared arrivals.',
+          limit: 'The proportions treat the 64 assignments as equally likely under independent draws.' },
+        { id: 'HUM', method: 'Check the crew’s end-of-shift account for a working practice affecting when couriers arrive.',
+          limit: 'The shared release bell makes grouped arrivals plausible. One crew’s slip supplies no frequency for the four marks.' },
+      ],
+      connection: 'The rack tells which outcomes are possible under its rules. The crew’s record tells when those rules might misdescribe a real queue in the game. Both enter the same dispatch decision.',
+    },
+    dimensions: ['concept:evidence', 'concept:certainty', 'area:MAT', 'area:HUM', 'framework:scope',
+      'framework:methods-and-tools', 'atl:thinking', 'subject:math-ai'],
     elements: ['game:184', 'story:72'],
+  },
+  {
+    objective: 'asia.loft.compare', map: 'island.label-loft', target: 'loft-copy',
+    source: 'tests/asia-label-loft.test.ts', anchor: 'uses distinct methods, then changes the open physical lane',
+    action: 'Compare case strips and carry a method for tying a claim to its setting into a different two-berth dock copy.',
+    reasoning: [{ mode: 'analogical', basis: 'A measurement or named provenance belongs to its own case. Use the same relationship to attach each dock trial figure or place tag to its corresponding berth row.' }],
+    dimensions: ['concept:interpretation', 'framework:scope'], elements: ['game:179'],
   },
 ];
 
@@ -126,7 +206,28 @@ export function parseCatalogue(text, kind, size) {
   return [...rows.values()].sort((a, b) => a.number - b.number);
 }
 
-function makeDimensions({ pack, curriculum, levels, topics, exhibition, micro, suppliedMicro, microSkillId }) {
+/** These metadata rows carry access evidence only. A source ordinal is not a gameplay link. */
+export function essayTitleInventory(sources) {
+  const codes = new Set();
+  const urls = new Set();
+  return sources.flatMap(({ code, session, source, page, ordinals, verifiedOn }) => {
+    const match = /^(May|Nov) (20\d{2})$/.exec(session);
+    if (!match || code !== `${match[1][0]}${match[2].slice(-2)}` || codes.has(code) || urls.has(source)
+      || !/^https:\/\/drive\.google\.com\/file\/d\/[A-Za-z\d_-]+\/view$/.test(source)
+      || !Number.isInteger(page) || page < 1 || !/^\d{4}-\d{2}-\d{2}$/.test(verifiedOn)
+      || !Array.isArray(ordinals) || ordinals.length !== 6 || !ordinals.every((ordinal, i) => ordinal === i + 1)) {
+      throw Error(`Invalid prescribed title source for ${session}.`);
+    }
+    codes.add(code);
+    urls.add(source);
+    return ordinals.map((ordinal) => ({
+      id: `essay-title:PT-${code}-${String(ordinal).padStart(2, '0')}`, kind: 'essay-title',
+      name: `${session} title ${ordinal}`, session, ordinal, source, page, verifiedOn,
+    }));
+  });
+}
+
+function makeDimensions({ pack, curriculum, levels, topics, exhibition, micro, suppliedMicro, microSkillId, titleSources }) {
   const group = (kind, items) => items.map(([value, name]) => ({ id: listId(kind, value), kind, name }));
   const named = (values) => Object.entries(values).map(([id, name]) => [id, name]);
   const names = (values) => values.map((id) => [id, id]);
@@ -159,6 +260,8 @@ function makeDimensions({ pack, curriculum, levels, topics, exhibition, micro, s
     ...group('vocabulary', pack.glossary.map(({ id, term }) => [id, term])),
     ...group('etymology', pack.glossary.map(({ id, term }) => [id, term])),
     ...questions,
+    ...essayTitleInventory(titleSources),
+    ...group('reasoning', [...reasoningModes]),
     ...Array.from({ length: 1000 }, (_, i) => i + 1).map((number) => ({
       id: listId('micro', number), kind: 'micro', name: microNames.get(number) ?? `#${number}`,
       supplied: supplied.has(number), skillId: microSkillId(number),
@@ -172,18 +275,62 @@ function countsBy(rows, key) {
   return counts;
 }
 
-export function collectProofs({ objectives, maps, elements, dimensions, rows, sourceText }) {
+function reviewComparison(row, dimensions) {
+  if (!row.comparison) return;
+  const { areas = [], concepts = [], framework = [], connection } = row.comparison;
+  const attached = [
+    ...areas.map(({ id }) => listId('area', id)),
+    ...concepts.map((id) => listId('concept', id)),
+    ...framework.map((id) => listId('framework', id)),
+  ];
+  if (areas.length !== 2 || distinct(areas.map(({ id }) => id)).length !== 2
+    || distinct(areas.map(({ method }) => method)).length !== 2 || !concepts.length || !framework.length
+    || areas.some(({ method, limit }) => !method?.trim() || !limit?.trim()) || !connection?.trim()
+    || attached.some((id) => !dimensions.includes(id))) {
+    throw Error(`Incomplete cross-area evidence for ${row.objective}.`);
+  }
+}
+
+function reviewObservation(row, dialogue, trace) {
+  if (!row.observation) return;
+  const { flag, values = [] } = row.observation;
+  const effects = dialogue.flatMap((node) => (node.options ?? []).flatMap((option) => option.effects ?? []));
+  if (!flag || !trace.includes(flag) || values.length < 2 || distinct(values).length !== values.length
+    || values.some((value) => typeof value !== 'string' || !value.trim() || !trace.includes(value)
+      || !effects.some((effect) => effect.setFlag === flag && effect.value === value))) {
+    throw Error(`Unresolved optional outcome for ${row.objective}.`);
+  }
+}
+
+export function collectProofs({ objectives, maps, elements, dimensions, rows, sourceText, dialogue = [] }) {
   const elementById = new Map(elements.map((row) => [row.id, row]));
   const dimensionById = new Map(dimensions.map((row) => [row.id, row]));
   return rows.map((row) => {
     const place = objectives.get(row.objective);
     const map = maps[row.map];
     const targets = [...(map?.interactables ?? []), ...(map?.npcs ?? [])];
-    if (!place || !targets.some(({ id }) => id === row.target) || !row.anchor || !sourceText.get(row.source)?.includes(row.anchor)) {
+    const trace = sourceText.get(row.source);
+    if (!place || !targets.some(({ id }) => id === row.target) || !row.anchor || !trace?.includes(row.anchor)) {
       throw Error(`Unresolved action proof for ${row.objective} at ${row.map}/${row.target}.`);
     }
-    if (!row.action.trim() || !row.dimensions.length || !row.elements.length) throw Error(`Empty proof for ${row.objective}.`);
-    for (const id of row.dimensions) {
+    reviewObservation(row, dialogue, trace);
+    const reasoning = row.reasoning ?? [];
+    const reasoningIds = new Set(reasoning.map(({ mode, basis }) => {
+      if (!reasoningModes.has(mode) || !basis?.trim()) throw Error(`Unresolved reasoning evidence for ${row.objective}.`);
+      return listId('reasoning', mode);
+    }));
+    const titleApplications = (row.titleApplications ?? []).map(({ id, basis, foil, limit }) => {
+      const title = dimensionById.get(id);
+      if (title?.kind !== 'essay-title' || !basis?.trim() || !foil?.trim() || !limit?.trim()) {
+        throw Error(`Unresolved title adaptation for ${row.objective}.`);
+      }
+      const { session, ordinal, source, page } = title;
+      return { id, session, ordinal, source, page, basis, foil, limit };
+    });
+    const titleIds = new Set(titleApplications.map(({ id }) => id));
+    const linked = distinct([...row.dimensions, ...reasoningIds, ...titleIds]);
+    if (!row.action.trim() || !linked.length || !row.elements.length) throw Error(`Empty proof for ${row.objective}.`);
+    for (const id of linked) {
       const dimension = dimensionById.get(id);
       if (!dimension || dimension.supplied === false) throw Error(`Unavailable dimension ${id} in proof for ${row.objective}.`);
       if (dimension.kind === 'question') {
@@ -195,23 +342,32 @@ export function collectProofs({ objectives, maps, elements, dimensions, rows, so
       if (dimension.kind === 'micro' && !place.step.skills?.includes(dimension.skillId)) {
         throw Error(`Unsupported micro-skill ${id} in proof for ${row.objective}.`);
       }
+      if (dimension.kind === 'reasoning' && !reasoningIds.has(id)) {
+        throw Error(`Unresolved reasoning evidence for ${row.objective}.`);
+      }
+      if (dimension.kind === 'essay-title' && !titleIds.has(id)) {
+        throw Error(`Unresolved title adaptation for ${row.objective}.`);
+      }
     }
     for (const id of row.elements) {
       const element = elementById.get(id);
       if (!element || !['playable', 'partial'].includes(element.status)) throw Error(`Unavailable element ${id} in proof for ${row.objective}.`);
     }
-    return { ...row, world: map.world, mission: place.mission.id, missionWorld: place.mission.world };
+    reviewComparison(row, linked);
+    const actionId = row.observation ? `outcome:${row.observation.flag}` : row.objective;
+    return { ...row, actionId, dimensions: linked, world: map.world, mission: place.mission.id, missionWorld: place.mission.world,
+      ...(titleApplications.length ? { titleApplications } : {}) };
   });
 }
 
-/** An objective identity is counted once in the same physical world and pair, even with several proof rows. */
+/** A reviewed action is counted once in the same physical world and pair, even with several proof rows. */
 export function indexPairs(proofs) {
   const cells = new Map();
   for (const row of proofs) {
     for (const dimension of row.dimensions) for (const element of row.elements) {
       const key = cellKey(row.world, dimension, element);
       const actions = cells.get(key) ?? new Set();
-      actions.add(row.objective);
+      actions.add(row.actionId ?? row.objective);
       cells.set(key, actions);
     }
   }
@@ -269,16 +425,18 @@ function authoredLinks(objectives, micro, elements) {
 async function loadAudit() {
   const server = await createServer({
     root, configFile: false, optimizeDeps: { noDiscovery: true, include: [] },
-    server: { middlewareMode: true, watch: null, hmr: false },
+    server: { middlewareMode: true, watch: null, hmr: false, ws: false },
   });
   try {
-    const [{ buildPack }, { MAPS }, curriculum, levels, topics, { QUESTION_ROUTES }, { MICRO_SKILLS, microSkillId }, { SUPPLIED_SKILL_IDS }, game, story] =
+    const [{ buildPack }, { MAPS }, curriculum, levels, topics, { QUESTION_ROUTES }, { MICRO_SKILLS, microSkillId },
+      { SUPPLIED_SKILL_IDS }, game, story, titleSources] =
       await Promise.all([
         server.ssrLoadModule('/src/content/index.ts'), server.ssrLoadModule('/src/maps/index.ts'),
         server.ssrLoadModule('/src/domain/curriculum.ts'), server.ssrLoadModule('/src/domain/learningLevels.ts'),
         server.ssrLoadModule('/tools/tok-floor.ts'), server.ssrLoadModule('/src/content/questionEncounters.ts'),
         server.ssrLoadModule('/src/content/microSkillEvidence.ts'), server.ssrLoadModule('/src/domain/microSkillAudit.ts'),
         readFile(resolve(root, 'docs/GAME_ELEMENTS.md'), 'utf8'), readFile(resolve(root, 'docs/STORY_ELEMENTS.md'), 'utf8'),
+        readFile(resolve(root, 'tools/prescribed-title-sources.json'), 'utf8').then(JSON.parse),
       ]);
     const pack = buildPack();
     const objectives = new Map(pack.missions.flatMap((mission) => mission.objectives.map((step) => [step.id, { mission, step }])));
@@ -288,11 +446,11 @@ async function loadAudit() {
     }));
     const elements = [...parseCatalogue(game, 'game', 288), ...parseCatalogue(story, 'story', 150)];
     const dimensions = makeDimensions({ pack, curriculum, levels, topics, exhibition: QUESTION_ROUTES,
-      micro: MICRO_SKILLS, suppliedMicro: SUPPLIED_SKILL_IDS, microSkillId });
+      micro: MICRO_SKILLS, suppliedMicro: SUPPLIED_SKILL_IDS, microSkillId, titleSources });
     if (new Set(dimensions.map(({ id }) => id)).size !== dimensions.length) throw Error('Duplicate learning dimension IDs.');
     const sourceText = new Map(await Promise.all(distinct(proofRows.map(({ source }) => source)).map(async (file) =>
       [file, await readFile(resolve(root, file), 'utf8')])));
-    const proofs = collectProofs({ objectives, maps: MAPS, elements, dimensions, rows: proofRows, sourceText });
+    const proofs = collectProofs({ objectives, maps: MAPS, elements, dimensions, rows: proofRows, sourceText, dialogue: pack.dialogue });
     const candidates = authoredLinks(objectives, MICRO_SKILLS, elements);
     return { worlds, elements, dimensions, proofs, candidates };
   } finally {
@@ -304,14 +462,15 @@ const limitations = [
   'Proof rows are source-reviewed actions anchored to a map target and a representative test. This audit does not run gameplay, measure participation, or establish learning.',
   'An objective can cover several steps. Mission-wide tags, shared world, item names, text matches, repeated plays and micro-skill candidate records do not themselves count as action-level proof.',
   'Vocabulary and etymology use the current glossary IDs as a bounded inventory. Each needs an explicit action proof. The glossary does not define all TOK vocabulary.',
-  'Past essay prompt access has no documented item inventory here, so its coverage and denominator are unknown. Extended Essay and CAS are practice opportunities only.',
+  'Seven past essay sets have verified source metadata. These 42 title ordinals establish access to those sources. Any gameplay adaptation needs its own reviewed action proof. Extended Essay and CAS are practice opportunities only.',
   'The 35 exhibition question families are a labeled subset of the knowledge-question IDs and enter the denominator once.',
   'The 197 unsupplied micro-skill numbers are reported as source-unavailable. Their descriptions and action links are unknown.',
   'Thinking taxonomies and player or encounter preferences have their own separate semantics and reports. They do not multiply this intersection census.',
+  'A reasoning or cross-area entry describes the action available to players. It does not assert their reasoning, or infer an area comparison from co-occurring tags.',
 ];
 
 const unknownInventories = [
-  { scope: 'past-essay-prompts', total: null, reason: 'An itemized accessible source inventory is unavailable to this audit.' },
+  { scope: 'past-essay-prompts-beyond-the-verified-sets', total: null, reason: 'No itemized source was verified for sessions outside the listed inventory.' },
   { scope: 'tok-vocabulary-beyond-the-glossary', total: null, reason: 'The registered terms define the bounded vocabulary and etymology census.' },
 ];
 
@@ -319,12 +478,14 @@ function readOptions(args) {
   const options = {};
   while (args.length) {
     const key = args.shift();
-    if (['--help', '--json', '--cells'].includes(key)) options[key.slice(2)] = true;
+    if (['--help', '--json', '--cells', '--action-report'].includes(key)) options[key.slice(2)] = true;
     else if (['--world', '--dimension', '--element'].includes(key) && args[0] && !args[0].startsWith('--')) {
       options[key.slice(2)] = args.shift();
     } else throw Error(`Unknown or incomplete audit option ${key}. Use --help.`);
   }
-  if (options.json && options.cells) throw Error('Use --json for the sparse report or --cells for expanded JSON lines.');
+  if ([options.json, options.cells, options['action-report']].filter(Boolean).length > 1) {
+    throw Error('Choose one output format: --json, --cells or --action-report.');
+  }
   return options;
 }
 
@@ -350,8 +511,8 @@ async function expand(worlds, dimensions, elements, index) {
 async function main() {
   const options = readOptions(process.argv.slice(2));
   if (options.help) {
-    console.log('node tools/audit-cross-weave.mjs [--json | --cells] [--world WORLD-01] [--dimension concept:evidence] [--element game:271]');
-    console.log('--json returns the sparse audit with inventories. --cells expands every selected pair as one JSON line.');
+    console.log('node tools/audit-cross-weave.mjs [--json | --cells | --action-report] [--world WORLD-01] [--dimension concept:evidence] [--element game:271]');
+    console.log('--json returns the sparse audit with inventories. --cells expands selected pairs. --action-report prints reviewed actions.');
     console.log('Use a kind such as concept or story to select the whole kind. Exhibition prompts can be selected as exhibition-prompt.');
     return;
   }
@@ -361,6 +522,37 @@ async function main() {
   const elements = select(audit.elements, options.element, 'element');
   const index = indexPairs(audit.proofs);
   if (options.cells) return expand(worlds, dimensions, elements, index);
+  const worldIds = new Set(worlds.map(({ id }) => id));
+  const dimIds = new Set(dimensions.map(({ id }) => id));
+  const elementIds = new Set(elements.map(({ id }) => id));
+  const proofs = audit.proofs.filter((row) => worldIds.has(row.world) && row.dimensions.some((id) => dimIds.has(id))
+    && row.elements.some((id) => elementIds.has(id)));
+  const crossAreaComparisons = proofs.flatMap((row) => row.comparison ? [{
+    objective: row.objective, world: row.world, map: row.map, source: row.source, action: row.action, ...row.comparison,
+  }] : []);
+  if (options['action-report']) {
+    console.log(`${proofs.length} reviewed ${proofs.length === 1 ? 'action' : 'actions'}. Each shown action has its own source and map proof.`);
+    for (const row of proofs) {
+      console.log(`\n${row.world} · ${row.actionId} · ${row.source}`);
+      console.log(row.action);
+      if (row.observation) {
+        console.log(`Observed optional outcome ${row.observation.flag} (${row.observation.values.join(' or ')}). Prerequisite ${row.objective}.`);
+      }
+      for (const title of row.titleApplications ?? []) {
+        console.log(`${title.session} title ${title.ordinal} · page ${title.page} · ${title.basis}`);
+        console.log(`Foil · ${title.foil}`);
+        console.log(`Limit · ${title.limit}`);
+        console.log(title.source);
+      }
+      for (const { mode, basis } of row.reasoning ?? []) console.log(`${reasoningModes.get(mode)} · ${basis}`);
+      if (row.comparison) {
+        for (const { id, method, limit } of row.comparison.areas) console.log(`${id} · ${method} ${limit}`);
+        console.log(`${row.comparison.concepts.join(', ')} · ${row.comparison.framework.join(', ')}`);
+        console.log(row.comparison.connection);
+      }
+    }
+    return;
+  }
   const summary = totalsFor(worlds, dimensions, elements, index);
   const worldSummary = worlds.map((world) => ({ world: world.id, ...totalsFor([world], dimensions, elements, index) }));
   const elementSummary = distinct(elements.map(({ kind }) => kind)).map((kind) => {
@@ -368,9 +560,6 @@ async function main() {
     return { kind, catalogue: countsBy(group, 'status'), ...totalsFor(worlds, dimensions, group, index) };
   });
   if (options.json) {
-    const worldIds = new Set(worlds.map(({ id }) => id));
-    const dimIds = new Set(dimensions.map(({ id }) => id));
-    const elementIds = new Set(elements.map(({ id }) => id));
     const provenCells = [...index].flatMap(([key, actions]) => {
       const [world, dimension, element] = key.split('|');
       return worldIds.has(world) && dimIds.has(dimension) && elementIds.has(element)
@@ -378,10 +567,8 @@ async function main() {
           missingToTarget: Math.max(0, TARGET - actions.size), status: actions.size >= TARGET ? 'meets-target' : 'below-target' }] : [];
     });
     console.log(JSON.stringify({
-      schema: 1, target: TARGET, summary, worldSummary, elementSummary, limitations, unknownInventories,
-      worlds, dimensions, elements, provenCells,
-      proofs: audit.proofs.filter((row) => worldIds.has(row.world) && row.dimensions.some((id) => dimIds.has(id))
-        && row.elements.some((id) => elementIds.has(id))),
+      schema: 2, target: TARGET, summary, worldSummary, elementSummary, limitations, unknownInventories,
+      worlds, dimensions, elements, provenCells, proofs, crossAreaComparisons,
       authoredCandidates: audit.candidates.filter((row) => worldIds.has(row.missionWorld) && dimIds.has(row.dimension)
         && row.elements.some((id) => elementIds.has(id))),
       allCandidateNotes: countsBy(audit.candidates, 'note'),
@@ -391,6 +578,7 @@ async function main() {
   }
   console.log(`Target ${TARGET} distinct documented actions for each learning dimension × element in each world.`);
   console.log(`${worlds.length} worlds, ${dimensions.length} dimensions, ${elements.length} elements.`);
+  console.log(`${crossAreaComparisons.length} reviewed actions compare two areas using explicit methods and limits.`);
   console.log(`Dimension inventories ${JSON.stringify(countsBy(dimensions, 'kind'))}`);
   console.log(`Catalogue statuses ${JSON.stringify(countsBy(elements, 'status'))}`);
   console.log(JSON.stringify(summary));

@@ -1,0 +1,595 @@
+{
+  "characters": [
+    {
+      "id": "corner-aro",
+      "name": "Aro Fen",
+      "role": "A draper setting the rehearsal-room hanging",
+      "sprite": "villager-1",
+      "mode": "fictional",
+      "talk": [
+        {
+          "node": "corner.aro"
+        }
+      ]
+    },
+    {
+      "id": "corner-junel",
+      "name": "Junel Marr",
+      "role": "A stitch keeper working on the archive hanging",
+      "sprite": "villager-2",
+      "mode": "fictional",
+      "talk": [
+        {
+          "node": "corner.junel"
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "corner.frame",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "text": "Three corners of the blue hanging end in the same diamond. Where the fourth should be, a loose hem is tucked under the brass frame.",
+      "options": [
+        {
+          "text": "Lift the loose corner of the hanging.",
+          "if": {
+            "not": {
+              "flagSet": "corner.found"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "corner.found",
+              "value": true
+            }
+          ],
+          "next": "corner.back"
+        }
+      ]
+    },
+    {
+      "id": "corner.back",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "text": "A second row of stitch holes runs into the gap. Someone has left a square insert and a clipped insert below it. A brass 43 on the frame matches a tab on the repair shelf."
+    },
+    {
+      "id": "corner.try",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "text": "Fit a trial insert against the empty corner. The surviving cloth stays pinned while you work.",
+      "options": [
+        {
+          "text": "Turn the square insert a quarter turn into place.",
+          "if": {
+            "all": [
+              {
+                "flag": "corner.found",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "corner.repeatFit"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "corner.repeatFit",
+              "value": true
+            },
+            {
+              "setFlag": "corner.preview",
+              "value": "repeat"
+            }
+          ],
+          "next": "corner.repeat-fit"
+        },
+        {
+          "text": "Slide the clipped insert along the inner row of holes.",
+          "if": {
+            "all": [
+              {
+                "flag": "corner.found",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "corner.cutFit"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "corner.cutFit",
+              "value": true
+            },
+            {
+              "setFlag": "corner.preview",
+              "value": "cut"
+            }
+          ],
+          "next": "corner.cut-fit"
+        }
+      ]
+    },
+    {
+      "id": "corner.repeat-fit",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "claimKind": "interpretation",
+      "text": "The quarter turn puts a fourth diamond at the same distance from each edge. Aro calls that symmetry. The repeat meets both hems and covers the loose inner holes.",
+      "citationSource": "LEX-CORNER-SYMMETRY"
+    },
+    {
+      "id": "corner.cut-fit",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "text": "The clipped insert leaves a narrow opening and meets the inner row of stitch holes. A cord passes freely. The fourth diamond stops at the opening."
+    },
+    {
+      "id": "corner.order",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "text": "The tag is for hanging 43. “Year 29. After the hall flood, leave a gap at the new hem for the pull cord.” The slip records the later job. It gives no date or sketch for the first weaving.",
+      "options": [
+        {
+          "text": "Pin the dated order beside the inner stitch holes.",
+          "if": {
+            "all": [
+              {
+                "flag": "corner.found",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "corner.order"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "corner.order",
+              "value": true
+            }
+          ],
+          "next": "corner.pinned"
+        }
+      ]
+    },
+    {
+      "id": "corner.pinned",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "text": "The repair order now points to the openings used by the clipped insert. The older patterned edge is still in view. The holes are a trace of work on this cloth. A tracing made here today will have a fresh date.",
+      "citationSource": "LEX-CORNER-TRACE"
+    },
+    {
+      "id": "corner.choose",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "text": "Aro will use a whole repeat to cut a new hanging. Junel wants the open corner to stay reachable when she tries a reversible repair. The archive has one display bay for today.",
+      "options": [
+        {
+          "text": "Hang the complete repeat as a tracing for Aro.",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "corner.repeatFit",
+                    "eq": true
+                  },
+                  {
+                    "flag": "corner.cutFit",
+                    "eq": true
+                  },
+                  {
+                    "flag": "corner.order",
+                    "eq": true
+                  }
+                ]
+              },
+              {
+                "not": {
+                  "flagSet": "corner.layout"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "corner.layout",
+              "value": "repeat"
+            }
+          ],
+          "next": "corner.repeat-hung"
+        },
+        {
+          "text": "Hang the repair order beside the open corner for Junel.",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "corner.repeatFit",
+                    "eq": true
+                  },
+                  {
+                    "flag": "corner.cutFit",
+                    "eq": true
+                  },
+                  {
+                    "flag": "corner.order",
+                    "eq": true
+                  }
+                ]
+              },
+              {
+                "not": {
+                  "flagSet": "corner.layout"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "corner.layout",
+              "value": "gap"
+            }
+          ],
+          "next": "corner.gap-hung"
+        }
+      ]
+    },
+    {
+      "id": "corner.repeat-hung",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "text": "The new tracing sits on a high hook. Its fourth diamond has a dashed outline. A label dates the cord opening separately. Aro has gone to the cutting rail."
+    },
+    {
+      "id": "corner.gap-hung",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "text": "The missing corner stays open. The order lies below it and the clipping fits loosely beside it. Junel takes the working light to her stitch shelf."
+    },
+    {
+      "id": "corner.aro",
+      "speaker": "corner-aro",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "text": "I can turn this at the cutting rail and get equal distances from both hems. The dotted corner lets me see which part you drew. I’ll cut the rehearsal cloth whole and leave the old hanging out of my scissors.",
+      "options": [
+        {
+          "text": "Hold the tracing while Aro cuts the new corner.",
+          "if": {
+            "all": [
+              {
+                "flag": "corner.layout",
+                "eq": "repeat"
+              },
+              {
+                "not": {
+                  "flagSet": "corner.checked"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "corner.checked",
+              "value": "repeat"
+            }
+          ],
+          "next": "corner.aro-after"
+        }
+      ]
+    },
+    {
+      "id": "corner.aro-after",
+      "speaker": "corner-aro",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "text": "Aro clips the new cloth to the rail in one long piece. “Four diamonds. I hope the ushers know when to stop counting.” The archive hanging stays on its original frame."
+    },
+    {
+      "id": "corner.junel",
+      "speaker": "corner-junel",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "text": "The order tells me why the cord needs room. I can pin my trial through the empty space without taking out the older holes. Come see how it lifts.",
+      "options": [
+        {
+          "text": "Hold the cord while Junel lifts the sample free.",
+          "if": {
+            "all": [
+              {
+                "flag": "corner.layout",
+                "eq": "gap"
+              },
+              {
+                "not": {
+                  "flagSet": "corner.checked"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "corner.checked",
+              "value": "gap"
+            }
+          ],
+          "next": "corner.junel-after"
+        }
+      ]
+    },
+    {
+      "id": "corner.junel-after",
+      "speaker": "corner-junel",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "text": "Junel lifts the trial with two fingers and draws the cord through again. “A seam I can undo is one I can sleep through.” The handling shelf stays open for another repairer."
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-FOURTH-CORNER",
+      "title": "The Fourth Corner",
+      "world": "WORLD-01",
+      "stake": "A draper and a stitch keeper need different parts of a damaged hanging. There is one display bay for today.",
+      "knowledgeQuestion": "What can a repeating pattern and a dated repair each support about a missing corner?",
+      "objectives": [
+        {
+          "id": "corner.compare",
+          "title": "Try both inserts and match the order slip to the hanging.",
+          "essential": false,
+          "visible": {
+            "flag": "corner.found",
+            "eq": true
+          },
+          "done": {
+            "all": [
+              {
+                "flag": "corner.repeatFit",
+                "eq": true
+              },
+              {
+                "flag": "corner.cutFit",
+                "eq": true
+              },
+              {
+                "flag": "corner.order",
+                "eq": true
+              }
+            ]
+          },
+          "weave": {
+            "concepts": [
+              "evidence",
+              "explanation",
+              "certainty",
+              "interpretation",
+              "perspective"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "perspectives",
+              "scope"
+            ],
+            "aoks": [
+              "HIS",
+              "ART",
+              "MAT"
+            ],
+            "subjects": [
+              "history",
+              "visual-arts",
+              "math-aa",
+              "math-ai"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 4
+          }
+        },
+        {
+          "id": "corner.receive",
+          "title": "Choose what to show and check how the first reader uses it.",
+          "essential": false,
+          "visible": {
+            "objective": "corner.compare"
+          },
+          "done": {
+            "flagSet": "corner.checked"
+          },
+          "onComplete": [
+            {
+              "journal": "j.nexus.fourth-corner"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "justification",
+              "values",
+              "responsibility",
+              "power"
+            ],
+            "framework": [
+              "ethics",
+              "perspectives"
+            ],
+            "aoks": [
+              "HIS",
+              "ART"
+            ],
+            "subjects": [
+              "history",
+              "visual-arts"
+            ],
+            "atl": [
+              "thinking",
+              "communication",
+              "social"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "human",
+              "solo": "relational"
+            },
+            "minutes": 3
+          }
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.nexus.fourth-corner",
+      "claimKind": "observation",
+      "text": "I turned one insert to continue the diamond and fitted the other to the stitch holes. The dated slip supported the cord opening after a flood. I checked how the chosen display served its reader."
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.corner.compare.1",
+      "objective": "corner.compare",
+      "depth": 1,
+      "text": "Something peeks out from under the loose corner of the blue hanging."
+    },
+    {
+      "id": "h.corner.compare.2",
+      "objective": "corner.compare",
+      "depth": 2,
+      "text": "Lift the corner. There are two inserts on its ledge and a slip on the nearby repair shelf."
+    },
+    {
+      "id": "h.corner.compare.3",
+      "objective": "corner.compare",
+      "depth": 3,
+      "text": "The turning insert continues the diamond. The clipped insert lines up with a different row of holes."
+    },
+    {
+      "id": "h.corner.compare.4",
+      "objective": "corner.compare",
+      "depth": 4,
+      "text": "Try both inserts. Then match the number on the repair slip to the frame and pin it beside the row of holes."
+    },
+    {
+      "id": "h.corner.receive.1",
+      "objective": "corner.receive",
+      "depth": 1,
+      "text": "The small square and the order slip are ready to use. Each tells a reader something different."
+    },
+    {
+      "id": "h.corner.receive.2",
+      "objective": "corner.receive",
+      "depth": 2,
+      "text": "Go back to the hanging after both fits and the order slip. Lay out a display for a specific person."
+    },
+    {
+      "id": "h.corner.receive.3",
+      "objective": "corner.receive",
+      "depth": 3,
+      "text": "Aro needs a pattern the drapers can use. Junel needs to keep the repair edge and empty space accessible."
+    },
+    {
+      "id": "h.corner.receive.4",
+      "objective": "corner.receive",
+      "depth": 4,
+      "text": "Hang the repeat tracing and visit Aro’s cutting rail, or keep the open corner and visit Junel’s stitch shelf. Both have a handover."
+    }
+  ],
+  "glossary": [
+    {
+      "id": "trace",
+      "term": "Trace",
+      "match": [
+        "trace"
+      ],
+      "history": {
+        "note": "Middle English could use trace for a track. It came through Old French, where it could also follow a course or draw a line.",
+        "url": "https://www.ahdictionary.com/word/search.html?q=trace"
+      },
+      "text": "A mark left by an event or action.",
+      "examples": [
+        {
+          "text": "The needle left a trace the stitch keeper can follow. The draper works from a tracing made today."
+        }
+      ]
+    },
+    {
+      "id": "symmetry",
+      "term": "Symmetry",
+      "match": [
+        "symmetry"
+      ],
+      "history": {
+        "note": "The word passed through Latin from Greek. Its Greek parts bring together and measure into the same word.",
+        "url": "https://www.ahdictionary.com/word/search.html?q=symmetry"
+      },
+      "text": "Matching positions or measures around a line or point.",
+      "examples": [
+        {
+          "text": "Turn the square insert to keep the diamond the same distance from both edges."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "LEX-CORNER-TRACE",
+      "title": "American Heritage Dictionary, trace",
+      "url": "https://www.ahdictionary.com/word/search.html?q=trace",
+      "locator": "Trace¹, noun senses 1–2 and Etymology",
+      "supports": "The current noun can refer to a mark or indication left behind. Its Old French antecedent could mean track and relates to following a course.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Trace",
+        "container": "The American Heritage Dictionary of the English Language",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "LEX-CORNER-SYMMETRY",
+      "title": "American Heritage Dictionary, symmetry",
+      "url": "https://www.ahdictionary.com/word/search.html?q=symmetry",
+      "locator": "Symmetry, geometry sense and Etymology",
+      "supports": "Latin symmetria comes from Greek summetriā. Its Greek parts combine together and measure, and the mathematical sense concerns correspondence around a point, line or plane.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Symmetry",
+        "container": "The American Heritage Dictionary of the English Language",
+        "showAccessDate": true
+      }
+    }
+  ]
+}

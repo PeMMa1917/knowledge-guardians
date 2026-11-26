@@ -1831,7 +1831,7 @@
   {
    "id": "dace.source",
    "speaker": "curator-dace",
-   "text": "Look at the museum record for the Biro pen. It names the makers and the dates. The record supports what the object is. Whether it is the 'first' is my judgement.",
+   "text": "Look at the museum record for the Biro pen. It names the makers and the dates. The record supports what the object is. Whether it is the 'first' is my judgement. Even a visitor who doubts my judgement can check the truth of the date.",
    "claimKind": "interpretation"
   },
   {
@@ -1968,7 +1968,7 @@
   {
    "id": "dace.label",
    "speaker": "curator-dace",
-   "text": "The visitors will carry whichever words you put on that stand. Name the people your record can name. Leave room for what it can't tell you. I'll listen to how the words travel.",
+   "text": "The visitors will carry whichever words you put on that stand. Name the people your record can name. Leave room for what it can't tell you. I'll listen to how the words travel. If someone finds an error, send them to me. This stand is my responsibility.",
    "options": [
     {
      "text": "Show me the label stand.",

@@ -1612,6 +1612,22 @@
      ]
     },
     {
+     "text": "Set a first look for the next visitor.",
+     "next": "stage.light.visitor.shadow",
+     "if": {
+      "flag": "stage.light.display",
+      "eq": "shadow"
+     }
+    },
+    {
+     "text": "Set a first look for the next visitor.",
+     "next": "stage.light.visitor.craft",
+     "if": {
+      "flag": "stage.light.display",
+      "eq": "craft"
+     }
+    },
+    {
      "text": "Leave the lighting as it is."
     }
    ]
@@ -1686,14 +1702,170 @@
   {
    "id": "stage.light.end.shadow",
    "speaker": "narrator",
-   "text": "The foyer copy keeps the long shadow. A visitor pauses when the shaded strip crosses the doorway. She says she can feel a wait before the next step. The handbill names the light and the rehearsal. The arrival date remains open.",
+   "text": "The foyer copy keeps the long shadow. A visitor pauses when the shaded strip crosses the doorway. She says she can feel a wait before the next step. The handbill names the light and the rehearsal. The arrival date remains open. A later visitor asks if you can show the rehearsal relief when you go back.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "stage.light.end.craft",
    "speaker": "narrator",
-   "text": "The foyer copy keeps the shorter shadow. A reader follows the arm to the basket. She says the grip looks like care for what is inside it. The handbill keeps that reading beside the maker’s dated note. Nobody adds a date for the arrival.",
+   "text": "The foyer copy keeps the shorter shadow. A reader follows the arm to the basket. She says the grip looks like care for what is inside it. The handbill keeps that reading beside the maker’s dated note. Nobody adds a date for the arrival. A later visitor asks if you can show the rehearsal relief when you go back.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.light.visitor.shadow.quiet",
+   "speaker": "narrator",
+   "text": "The visitor stays in the doorway for a full breath. “I keep waiting for the paper foot to rise.” She traces the edge in the air, then lifts the handbill on her way out.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.light.visitor.shadow.first",
+   "speaker": "narrator",
+   "text": "The shadow covers the step from here. The visitor leans far enough to see the lamp and the same paper foot together.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Bring the light round to the front.",
+     "next": "stage.light.visitor.shadow.shown",
+     "effects": [
+      {
+       "setFlag": "stage.light.mode",
+       "value": "front"
+      },
+      {
+       "setFlag": "stage.light.visitor",
+       "value": "shown"
+      },
+      {
+       "journal": "j.stage.light.visitor.shown"
+      }
+     ]
+    },
+    {
+     "text": "Leave this first position for a longer look."
+    }
+   ]
+  },
+  {
+   "id": "stage.light.visitor.shadow.shown",
+   "speaker": "narrator",
+   "text": "The visitor watches the shadow shorten without the figure moving. Then she follows the crease in the paper hand. “I thought their arm was empty. What are they trying so hard to carry?”",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.light.visitor.shadow",
+   "speaker": "narrator",
+   "text": "The next visitor has time for one look at the rehearsal relief. The copy you hung in the foyer can stay where it is. You can let the first view stand for a moment, or let the visitor watch you change the light.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the side lamp for a quiet first look.",
+     "next": "stage.light.visitor.shadow.quiet",
+     "effects": [
+      {
+       "setFlag": "stage.light.mode",
+       "value": "side"
+      },
+      {
+       "setFlag": "stage.light.visitor",
+       "value": "quiet"
+      },
+      {
+       "journal": "j.stage.light.visitor.quiet"
+      }
+     ]
+    },
+    {
+     "text": "Put the side lamp where the visitor can see how it casts the long shadow.",
+     "next": "stage.light.visitor.shadow.first",
+     "effects": [
+      {
+       "setFlag": "stage.light.mode",
+       "value": "side"
+      }
+     ]
+    },
+    {
+     "text": "Leave the rehearsal relief as it is for now."
+    }
+   ]
+  },
+  {
+   "id": "stage.light.visitor.craft.quiet",
+   "speaker": "narrator",
+   "text": "The visitor follows the bent arm to the basket. “Look how tight they’re holding it. I want to hear what’s inside before the door opens.” He reads the handbill after a long look at the grip.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.light.visitor.craft.first",
+   "speaker": "narrator",
+   "text": "The bent paper arm lies in the light. The visitor shifts farther back so he can watch the arm and the lamp together.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Move the lamp into the side bracket.",
+     "next": "stage.light.visitor.craft.shown",
+     "effects": [
+      {
+       "setFlag": "stage.light.mode",
+       "value": "side"
+      },
+      {
+       "setFlag": "stage.light.visitor",
+       "value": "shown"
+      },
+      {
+       "journal": "j.stage.light.visitor.shown"
+      }
+     ]
+    },
+    {
+     "text": "Leave this first position for a longer look."
+    }
+   ]
+  },
+  {
+   "id": "stage.light.visitor.craft.shown",
+   "speaker": "narrator",
+   "text": "The visitor sees the grip fade while the long shadow reaches the step. “The paper foot is still fixed there. How can I feel the wait more from here?” He takes a step sideways to see where the shadow ends.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.light.visitor.craft",
+   "speaker": "narrator",
+   "text": "The next visitor has time for one look at the rehearsal relief. The copy you hung in the foyer can stay where it is. You can let the first view stand for a moment, or let the visitor watch you change the light.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the front lamp for a quiet first look.",
+     "next": "stage.light.visitor.craft.quiet",
+     "effects": [
+      {
+       "setFlag": "stage.light.mode",
+       "value": "front"
+      },
+      {
+       "setFlag": "stage.light.visitor",
+       "value": "quiet"
+      },
+      {
+       "journal": "j.stage.light.visitor.quiet"
+      }
+     ]
+    },
+    {
+     "text": "Put the front lamp where the visitor can see it pick out the grip.",
+     "next": "stage.light.visitor.craft.first",
+     "effects": [
+      {
+       "setFlag": "stage.light.mode",
+       "value": "front"
+      }
+     ]
+    },
+    {
+     "text": "Leave the rehearsal relief as it is for now."
+    }
+   ]
   },
   {
    "id": "vesper.stage.start",
@@ -2121,6 +2293,16 @@
    "id": "j.stage.light",
    "claimKind": "interpretation",
    "text": "One light gave the paper figure a long shadow, and the other let a reader see the grip on the basket. Both readers had something they could point to. The maker’s slip dated the rehearsal, while the event in the relief kept its open date."
+  },
+  {
+   "id": "j.stage.light.visitor.quiet",
+   "claimKind": "observation",
+   "text": "The visitor had a moment with the first lighting before opening the handbill. They asked about a movement or an object that the maker has left off the page."
+  },
+  {
+   "id": "j.stage.light.visitor.shown",
+   "claimKind": "observation",
+   "text": "We kept the paper figure fixed and showed the next visitor what moving the light did. They asked about something that had only just caught their eye."
   }
  ],
  "moments": [

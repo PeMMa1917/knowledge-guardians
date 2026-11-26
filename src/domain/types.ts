@@ -388,6 +388,8 @@ export interface GlossaryEntry {
   match: string[];
   /** Plain explanation in our own words (no copied course wording). */
   text: string;
+  /** A sourced word history, available on demand. */
+  history?: { note: string; url: string };
   /** Examples from play: the first whose condition holds is shown. {flag:name} shows a flag's value. */
   examples: { if?: Condition; text: string }[];
 }

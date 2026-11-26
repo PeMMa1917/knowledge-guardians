@@ -1,11 +1,117 @@
 {
  "glossary": [
   {
+   "id": "truth",
+   "term": "Truth",
+   "match": [
+    "truth"
+   ],
+   "text": "Whether a claim fits what is actually the case.",
+   "history": {
+    "note": "Old English treowth carried a sense of faithfulness. Its descendant trewthe was used in Middle English.",
+    "url": "https://www.merriam-webster.com/dictionary/truth"
+   },
+   "examples": [
+    {
+     "text": "A new reading can make you reopen a perfectly tidy label."
+    }
+   ]
+  },
+  {
+   "id": "power",
+   "term": "Power",
+   "match": [
+    "power"
+   ],
+   "text": "Who has the means or authority to make something happen.",
+   "history": {
+    "note": "The Anglo-French poer could describe being able to do something. The English noun power grew out of that verb.",
+    "url": "https://www.merriam-webster.com/dictionary/power"
+   },
+   "examples": [
+    {
+     "text": "At the Civic hearing, who can get an objection onto the record?"
+    }
+   ]
+  },
+  {
+   "id": "explanation",
+   "term": "Explanation",
+   "match": [
+    "explanation",
+    "explanations"
+   ],
+   "text": "An account of how or why something happens.",
+   "history": {
+    "note": "The verb explain goes back to Latin explanare, to make level. Its relative planus meant flat.",
+    "url": "https://www.merriam-webster.com/dictionary/explain"
+   },
+   "examples": [
+    {
+     "text": "Two lanterns can look alike from the bank. Ask who carried them before explaining the light."
+    }
+   ]
+  },
+  {
+   "id": "culture",
+   "term": "Culture",
+   "match": [
+    "culture",
+    "cultures"
+   ],
+   "text": "Practices, meanings and ways of knowing that people share, question and pass on.",
+   "history": {
+    "note": "Culture came through French from Latin cultura. In Middle English it could refer to cultivated ground or the work of tending it.",
+    "url": "https://www.merriam-webster.com/dictionary/culture"
+   },
+   "examples": [
+    {
+     "text": "A map keeper and a visiting crew may read the same mark in different ways."
+    }
+   ]
+  },
+  {
+   "id": "values",
+   "term": "Values",
+   "match": [
+    "values"
+   ],
+   "text": "What someone thinks is worth protecting or pursuing.",
+   "history": {
+    "note": "The Middle English word for worth came through French. Farther back, Latin valere could mean to be strong or well.",
+    "url": "https://www.merriam-webster.com/dictionary/value"
+   },
+   "examples": [
+    {
+     "text": "Posting a notice now helps the queue. Waiting gives another crew time to sign it."
+    }
+   ]
+  },
+  {
+   "id": "responsibility",
+   "term": "Responsibility",
+   "match": [
+    "responsibility",
+    "responsibilities"
+   ],
+   "text": "What someone is answerable for when they act on or pass on knowledge.",
+   "history": {
+    "note": "In this word family, responsible came from Anglo-French responsable. The older word is related to an answer or response.",
+    "url": "https://www.merriam-webster.com/dictionary/responsible"
+   },
+   "examples": [
+    {
+     "text": "The reader who posts a notice can also leave room for a correction."
+    }
+   ]
+  },
+  {
    "id": "evidence",
    "term": "Evidence",
    "match": [
     "evidence"
    ],
+   "history": {"note": "Latin videre meant to see. It sits behind evidentia, something plain to view.", "url": "https://www.merriam-webster.com/dictionary/evidence"},
    "text": "Something you can point to that makes a claim more or less likely: a record, an object, a test result, what a person saw.",
    "examples": [
     {
@@ -27,6 +133,7 @@
     "claim",
     "claims"
    ],
+   "history": {"note": "Anglo-French clamer could mean asking for something as a right. Its Latin ancestor clamare meant to call out.", "url": "https://www.merriam-webster.com/dictionary/claim"},
    "text": "Something that someone says is true. A claim can be bigger or smaller than its evidence.",
    "examples": [
     {
@@ -49,6 +156,7 @@
     "justified",
     "justification"
    ],
+   "history": {"note": "Follow the verb justify back through Middle English justifien to Late Latin justificare, a relative of justus, meaning just.", "url": "https://www.merriam-webster.com/dictionary/justify"},
    "text": "The reasons and evidence that you give for a claim, so that someone else can check it.",
    "examples": [
     {
@@ -71,6 +179,7 @@
     "certainty",
     "certainly"
    ],
+   "history": {"note": "Middle English speakers used certeinte. They borrowed it from Anglo-French certeinté, built from the word for certain.", "url": "https://www.merriam-webster.com/dictionary/certainty"},
    "text": "How sure we can be. Most knowledge comes with a range or a 'probably', not with total certainty.",
    "examples": [
     {
@@ -86,6 +195,7 @@
     "interpret",
     "interprets"
    ],
+   "history": {"note": "The verb interpret leads back to Latin interpres. An interpres could be an interpreter, an agent or a negotiator.", "url": "https://www.merriam-webster.com/dictionary/interpret"},
    "text": "What someone decides a piece of evidence means. Two people can interpret the same record in different ways.",
    "examples": [
     {
@@ -108,6 +218,7 @@
     "perspectives",
     "point of view"
    ],
+   "history": {"note": "The word has several histories of looking. A Middle English form for an optical device goes back to Latin perspicere, to look through.", "url": "https://www.merriam-webster.com/dictionary/perspective"},
    "text": "Where someone stands when they know something: their place, purpose, training and values. Having one is normal. It is not the same as bias.",
    "examples": [
     {
@@ -122,6 +233,7 @@
     "objective",
     "objectivity"
    ],
+   "history": {"note": "Objective traces back to Medieval Latin objectivus and objectum, something presented to the mind. English formed objectivity from objective.", "url": "https://www.merriam-webster.com/dictionary/objective"},
    "text": "Trying to reduce the effect of any one person's view, by checking, comparing and staying open to correction.",
    "examples": [
     {
@@ -143,6 +255,7 @@
     "source",
     "sources"
    ],
+   "history": {"note": "A surse in Anglo-French could be a spring. Its verb meant to rise, like water coming out of the ground.", "url": "https://www.merriam-webster.com/dictionary/source"},
    "text": "Where a piece of information comes from. Ask who made it, when, and why.",
    "examples": [
     {
@@ -157,6 +270,7 @@
     "criterion",
     "criteria"
    ],
+   "history": {"note": "Greek kritērion was a means of judging. It belongs to the same word family as krinein, to separate or decide.", "url": "https://www.merriam-webster.com/dictionary/criterion"},
    "text": "The standard that you use to judge something. 'First' needs a criterion: first to patent, first to work, first to sell?",
    "examples": [
     {
@@ -178,6 +292,7 @@
     "counterclaim",
     "counterclaims"
    ],
+   "history": {"note": "The counter- in counterclaim came by way of French. Its Latin ancestor contra meant against or facing.", "url": "https://www.merriam-webster.com/dictionary/counter"},
    "text": "A reasonable claim against your own. Answering a counterclaim makes an argument stronger.",
    "examples": [
     {
@@ -198,6 +313,7 @@
    "match": [
     "provenance"
    ],
+   "history": {"note": "French provenir means to come from. Further back are two Latin parts meaning forth and come.", "url": "https://www.merriam-webster.com/dictionary/provenance"},
    "text": "The history of an object: where it has been and who has held it. A gap in the provenance is where the record stops.",
    "examples": [
     {
@@ -218,6 +334,7 @@
    "match": [
     "documented"
    ],
+   "history": {"note": "Document comes from Latin documentum. It could mean a lesson or a piece of proof. The related verb docere meant to teach.", "url": "https://www.merriam-webster.com/dictionary/document"},
    "text": "In this game: supported by a real, named historical source for the exact, narrow claim.",
    "examples": [
     {
@@ -231,6 +348,7 @@
    "match": [
     "reconstruction"
    ],
+   "history": {"note": "Look inside reconstruction for construct. Its Latin relative construere was formed with struere, to build.", "url": "https://www.merriam-webster.com/dictionary/construct"},
    "text": "Something made later to show how a thing might have been. It can teach a lot, but it is not the original.",
    "examples": [
     {
@@ -245,6 +363,7 @@
     "simulation",
     "model"
    ],
+   "history": {"note": "Latin simulatio could mean imitation. Middle English used simulacioun for pretence. A workshop simulation gives that old idea of imitation a different job.", "url": "https://www.merriam-webster.com/dictionary/simulation"},
    "text": "A test or picture that follows stated rules. It shows what happens if the rules are right, not what happened in history.",
    "examples": [
     {
@@ -267,6 +386,7 @@
     "patents",
     "patented"
    ],
+   "history": {"note": "Latin patere meant to stand open. It supplied the word that came through French into English as patent.", "url": "https://www.merriam-webster.com/dictionary/patent"},
    "text": "An official record that gives an inventor rights to a design. It shows that a claim was made and granted, not that the thing worked or sold.",
    "examples": [
     {
@@ -281,6 +401,7 @@
     "bias",
     "biased"
    ],
+   "history": {"note": "English borrowed bias from Middle French biais. One early image associated with the word is a slant.", "url": "https://ahdictionary.com/word/search.html?q=bias"},
    "text": "A lean that pushes a judgement one way without good reason. Everyone has a perspective; bias is when it distorts the judgement.",
    "examples": [
     {
@@ -295,6 +416,7 @@
     "knowledge question",
     "knowledge questions"
    ],
+   "history": {"note": "The question in this phrase came through French from Latin quaestio. Its verb quaerere meant to seek or ask.", "url": "https://www.merriam-webster.com/dictionary/question"},
    "text": "A question about how we know, not about a fact. 'Who invented the pen?' is a history question. 'How do we decide what counts as first?' is a knowledge question.",
    "examples": [
     {
@@ -309,6 +431,7 @@
     "research question",
     "research questions"
    ],
+   "history": {"note": "The research in this phrase came through French recerche. The related verb described going about in search of something.", "url": "https://www.merriam-webster.com/dictionary/research"},
    "text": "A focused question that an essay can investigate and argue. Practice only in this game: your real Extended Essay question is your own.",
    "examples": [
     {
