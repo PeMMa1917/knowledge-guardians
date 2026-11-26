@@ -136,6 +136,10 @@ describe('The Next Bell', () => {
     d.talk(signalkeeper, revise);
     expect(d.done('coast.revise')).toBe(true);
     expect(visible(d, ['coast-notice-revision'])).toEqual(['coast-notice-revision']);
+    const recipient = notice === 'signal' ? 'quay' : 'steps';
+    const other = recipient === 'quay' ? 'steps' : 'quay';
+    expect(visible(d, [`coast-correction-${recipient}`, `coast-correction-${other}`])).toEqual([`coast-correction-${recipient}`]);
+    expect(d.s.flags['coast.correction.catch']).toBe(recipient);
     expect(d.p.credit['credit.coast.dispatch']).toBe(8);
     expect(d.p.credit['credit.coast.revise']).toBe(8);
 
@@ -150,6 +154,55 @@ describe('The Next Bell', () => {
     expect(d.p.credit['credit.coast.dispatch']).toBe(8);
     expect(d.p.credit['credit.coast.revise']).toBe(8);
   });
+
+  it.each([
+    ['signal', 'Pin the qualified notice', 'Send the signed catch', 'steps', 'Fit the dated blank under the basket crews'],
+    ['runner', 'Send the runner to', 'Leave the signed catch with the quay cutters', 'quay', 'Fit the dated blank at the cutters'],
+  ])('lets the %s issue keep its original route while the other crew receives the right to post a check',
+    (notice, send, handover, recipient, install) => {
+      const d = begin();
+      const keeper = 'coast-signalkeeper';
+      const props = ['coast-correction-quay', 'coast-correction-steps'];
+      read(d, 'coast-harbour-gauge');
+      d.s.mapId = station.id;
+      read(d, 'coast-station-gauge');
+      d.talk('coast-forecaster', 'Pin each reading');
+      read(d, 'coast-chart-board');
+      d.talk('coast-forecaster', 'separate strip');
+      d.s.mapId = harbour.id;
+      d.talk(keeper, send);
+      expect(visible(d, props)).toEqual([]);
+      expect(d.e.visibleOptions(d.e.talkEntry(keeper, d.s)!, d.s).some(({ option }) => option.text.includes(handover))).toBe(false);
+      d.s.mapId = station.id;
+      read(d, 'coast-station-recheck');
+      d.s.mapId = harbour.id;
+      d.talk(keeper, handover);
+      expect(d.done('coast.revise')).toBe(true);
+      expect(d.s.flags['coast.notice']).toBe(notice);
+      const id = `coast-correction-${recipient}`;
+      expect(visible(d, props)).toEqual([id]);
+      const hook = harbour.interactables.find((entry) => entry.id === id)!;
+      expect(harbour.interactables.filter(({ x, y }) => x === hook.x && Math.abs(y - hook.y) < 2)).toEqual([hook]);
+      expect(check(hook.artOpen?.if, d.s)).toBe(false);
+      d.walk(hook.node!, ['Leave the catch']);
+      expect(check(hook.artOpen?.if, d.s)).toBe(false);
+      d.walk(hook.node!, [install]);
+      expect(check(hook.artOpen?.if, d.s)).toBe(true);
+      expect(d.s.flags['coast.correction.fitted']).toBe(recipient);
+      expect(d.e.node(`${hook.node}.fitted`).text).toContain(recipient === 'quay' ? 'waits for a second quay reading' : 'line stays open');
+      d.walk(hook.node!, ['Read the signed catch again']);
+      expect(d.s.journal.filter((entry) => entry === `j.coast.correction.${recipient}`)).toHaveLength(1);
+      expect(d.p.credit['credit.coast.revise']).toBe(8);
+      expect(d.done('coast.missed-copy')).toBe(false);
+    });
+
+  it('leaves a previously revised save with its original notice and no assigned catch', () => {
+    const d = begin();
+    d.run({ type: 'SetFlag', flag: 'coast.notice', value: 'runner' });
+    d.run({ type: 'SetFlag', flag: 'coast.updated', value: true });
+    expect(visible(d, ['coast-notice-revision', 'coast-correction-quay', 'coast-correction-steps'])).toEqual(['coast-notice-revision']);
+  });
+
 });
 
 describe('Clear for Whom?', () => {

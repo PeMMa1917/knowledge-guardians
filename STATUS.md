@@ -8,6 +8,8 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 Lumen now remembers more than one place where a Guardian used a concept. After a cloth fitting and a lookout check, the journal can bring back the repair slip and the witness’s sightline together. The twelve key concepts have examples tied to actions the Guardian has actually finished. [Glossary checks](tests/glossary.test.ts)
 
+The Observatory correction lends one signed catch to the quay cutters or the basket crews. That crew can fit a dated blank at its own hook for the next field check. The other crew can submit through Ruan. The three executable Observatory traces now meet the 20- and 30-minute opportunity floors across their estimated routes. [Learning design](docs/LEARNING_DESIGN.md)
+
 At Sefa’s market table, matching two cut edges restores a field observation and its limit. Sending the completed slip to the guild or the ferry changes what the next reader can do. The desk receipt also enters the Guardian’s diary. [Dispatch tests](tests/sefa-dispatch.test.ts)
 
 At the Cold Store, fitting a cart and its handler changes how an old first-bell notice can be used. In Emberford, tracing two notices to the same press changes what a runner will carry. Both routes record the supplied skill when the player completes the relevant work. [Cold Store](tests/clear-bay.test.ts) · [Emberford](tests/circular-report.test.ts)
