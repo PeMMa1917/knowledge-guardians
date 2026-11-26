@@ -1,0 +1,35 @@
+import { describe, expect, it } from 'vitest';
+import { readFileSync, readdirSync } from 'node:fs';
+import { LETTERS, composeLetter, dueLetters } from '../src/domain/letters';
+import type { Condition } from '../src/domain/types';
+import { Driver } from './driver';
+
+const content = readdirSync('src/content').filter((f) => f.endsWith('.json')).map((f) => readFileSync(`src/content/${f}`, 'utf8')).join('\n');
+const objectives = (c: Condition | undefined): string[] => !c ? [] : 'objective' in c ? [c.objective] : 'all' in c ? c.all.flatMap(objectives) : 'any' in c ? c.any.flatMap(objectives) : 'not' in c ? objectives(c.not) : [];
+
+describe("Vesper Quill's letters (the rival)", () => {
+  it('one letter per chapter, 1 to 15, each with a fallback line, a fair point and a hook', () => {
+    expect(LETTERS.map((l) => l.chapter)).toEqual(Array.from({ length: 15 }, (_, i) => i + 1));
+    for (const l of LETTERS) {
+      expect(l.remembers[l.remembers.length - 1].if).toBeUndefined();
+      expect(l.fair.length).toBeGreaterThan(20);
+      expect(l.hook.length).toBeGreaterThan(10);
+    }
+  });
+
+  it('every objective a letter waits for or remembers exists in the content', () => {
+    for (const l of LETTERS) for (const id of [...objectives(l.when), ...l.remembers.flatMap((r) => objectives(r.if))])
+      expect(content.includes(`"id": "${id}"`), `${l.id}: ${id}`).toBe(true);
+  });
+
+  it('the first letter arrives after the Corvan Showdown and remembers its outcome', () => {
+    const d = new Driver();
+    expect(dueLetters(d.s)).toHaveLength(0);
+    d.run({ type: 'SetFlag', flag: 'sd.corvan.outcome', value: 'won-over' });
+    const due = dueLetters(d.s);
+    expect(due.map((l) => l.id)).toEqual(['l01']);
+    expect(composeLetter(due[0], d.s).join(' ')).toContain('won Corvan over');
+    d.run({ type: 'SetFlag', flag: 'letter.l01', value: true });
+    expect(dueLetters(d.s)).toHaveLength(0);
+  });
+});

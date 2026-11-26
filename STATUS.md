@@ -158,6 +158,29 @@ Ideas from Mika's TOK lessons, made into games in places, with people. Never a q
 - **Lanterns and Bones** (ferry landing, Juno's dice table; no betting): the Gambler's Imp says a six is 'due'; Juno's tally book shows it is not. Then find the loaded die of two, rolling as much as you want. TOK: evidence, sample size, certainty.
 - **Next:** the Breakfast Sign (signs and culture), the Drawer of Missing Trials (publication bias), then more from the other lesson folders.
 
+### Story audit against the story bible (2026-11-26)
+
+Mika asked for a coherent, branching story in a living world, with the story-craft rules now in [docs/STORY_BIBLE.md](docs/STORY_BIBLE.md). This is a first audit, made from the code and the chapter summaries in this file. Fix the gaps in the order below and tick them here.
+
+**Gaps across the whole game**
+
+1. **No rival in the game.** Vesper Quill, the Gilded Seal and Seal agents (spec 15.10) do not appear anywhere in `src/`. There is no recurring antagonist, no letters that remember choices, and no 'Vesper is right' moment. Biggest gap.
+2. **No long mystery.** The Harrowmere label, Ise's part in it and the clues for chapters 1 to 10 are not planted. The brass lamp from the Undercroft has no payoff yet.
+3. **Missing companion.** Rook Tamsin (the Sceptic) is not in the game. Kip has approval; Hesper and Sefa have no loyalty missions; companions do not banter with each other.
+4. **Chapter people are jobs, not people.** Chapters 2 to 15 each have two or four 'Keepers' defined by their work only. They need a want, a blind spot, a voice and a life outside the plot.
+5. **Name clashes.** Tavi is used in chapter 3 (royal files) and chapter 6 (Inspector Tavi). Mara is used in chapter 1 (memory lines) and chapter 13. Neri (chapter 4) and Nera (chapter 10) are too alike. Rename one of each pair.
+6. **One loop in every chapter.** Chapters 2 to 15 mostly repeat one loop: compare two records, choose a display, a reader responds, revise. The TOK is good, but the pace is flat. Add cold opens, climaxes, humour, and minigames from the coverage table.
+7. **Stakes are not personal.** The chapter summaries name tasks, not losses. Each chapter needs its one-sentence stake (story bible section 14) said by a person who would lose something.
+8. **Music.** Only three music loops (`music.town` on 22 maps, `music.archive` on 12, `music.box` on 2). No leitmotifs. Each chapter needs its own loop (free licence), and the music box tune needs its three versions.
+9. **Echoes are not tracked.** Each chapter must take three Echoes in and send three out (spec ECHO-003). Some exist (a correction opens the next chapter; the Water Commons keeper recalls the washhouse), but nobody counts them. Add a register and a test.
+10. **Small acknowledgements outside chapter 1.** World memory lines are mostly in Emberford. Add at least five per chapter.
+
+**Chapter 1 (strong; small gaps):** the lamps, the letter, the study, the Undercroft and the choices work. Missing: rival seeds (Corvan's gold stamp, the Harrowmere box in the vault index), Ise's subtext about Elsbet, and a cold open for the Emberford arrival.
+
+**Done so far:** (1) chapter 1 seeds: Ise's pause about Elsbet ('She and one other'), the gold stamp on Corvan's old sign, and the blank 'Weir report, Harrowmere' box in the vault index. (2) Vesper's letters: `src/domain/letters.ts`, 15 letters, one after each chapter's last objective; each remembers one choice (Showdown outcome or a publish route), makes a fair point and plants a clue. Shown in Journal, Letters, with a toast. **Note:** letters 9 to 15 refer to beats that are not built yet (the public Showdown with Vesper, Rook joining, the Harrowmere order, Elsbet's recording, the brass lamp at the Council). Build those beats next, or soften the letters.
+
+**Order of fixes:** (1) plant the chapter 1 seeds; (2) add Vesper's letters as a system that reads flags, one per chapter; (3) give each chapter's people a want and a voice, and fix the name clashes; (4) one personal stake line per chapter; (5) an Echo register with a test; (6) Rook and the loyalty missions; (7) music per chapter.
+
 ### Minigame and side-quest coverage (Mika's list, 2026-11-26)
 
 Mika wants many kinds of minigames and side quests in every part of the game, each mixing TOK ideas and skills in a new way. Adapt each kind with our own names, art and rules; never copy a named game. Two rules: nothing may feel like a quiz (rework trivia into play), and card and dice games never use real gambling, betting or poker (they are probability and evidence games). Update this table when you add or plan one. Chapter numbers: 1 Emberford and the Nexus, 2 Nile Archive, 3 Cold Store, 4 Next Bell, 5 Living Forest, 6 Metalworks, 7 City of Copies, 8 Seagrass Steps, 9 House of Performance, 10 Market of Measures, 11 Water Commons, 12 Civic Machine, 13 Archive of Voices, 14 Island of Models, 15 Council of Inquiry.

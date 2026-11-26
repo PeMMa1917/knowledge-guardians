@@ -62,6 +62,7 @@ import { approvalOf, approvalRank } from '../domain/approval';
 import { ROLES, fitsRole, roleOf } from '../domain/roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
 import { FIELD_GAMES } from '../domain/fieldgames';
+import { arrivedLetters, composeLetter, dueLetters } from '../domain/letters';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
 import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
@@ -898,6 +899,12 @@ export class UI implements UIApi {
         case 'lamp': this.toast(`A lamp is lit on the Lamp Wall: ${e.name} (${e.count} of ${e.total}). ${e.lit}`, 'award'); this.sfx('sfx.award'); ctx.world?.lumenBurst(); break;
         default: break;
       }
+    }
+    // Vesper Quill's letters (docs/STORY_BIBLE.md section 6): one after each chapter, at most one per action.
+    const letter = c.state ? dueLetters(c.state)[0] : undefined;
+    if (letter) {
+      c.dispatch({ type: 'SetFlag', flag: `letter.${letter.id}`, value: true });
+      this.toast('A letter with a small gold seal has arrived. See Journal, Letters.', 'award'); this.sfx('sfx.page');
     }
     this.refreshHud();
     ctx.world?.refreshWorld();
@@ -2302,10 +2309,15 @@ export class UI implements UIApi {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { story: 'Story so far', entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { story: 'Story so far', entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
-    if (tab === 'lore') {
+    if (tab === 'letters') {
+      // Letters from the rival. Each remembers a choice the player made (spec 15.10).
+      const got = arrivedLetters(s);
+      body.append(h('p', { class: 'fine' }, got.length ? 'Letters sealed with a small gold stamp. Each one answers something you did.' : 'No letters yet.'),
+        ...[...got].reverse().map((l) => h('div', { class: 'lore-entry letter' }, h('h3', {}, `After chapter ${l.chapter}`), ...composeLetter(l, s).map((t) => h('p', {}, t)))));
+    } else if (tab === 'lore') {
       // Lore codex: secrets found by exploring. Each is a small myth or record that asks a knowledge question.
       const all = c.pack.secrets ?? [];
       const found = all.filter((x) => s.flags[`secret.${x.id}`] === true);

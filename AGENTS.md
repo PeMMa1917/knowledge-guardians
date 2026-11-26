@@ -58,6 +58,7 @@ The design spec is `Knowledge_Guardians_spec_v2.10.md`. The project owner keeps 
   3. **Fitting music and sound.** Each place and task has a sound that fits it (calm for thinking, bright for a win). Never silent, never jarring.
   4. **Distinct characters.** Each person has their own name, background, perspective, way of speaking, and their own quests or side quests. Do not reuse a voice.
   5. **Objects that matter elsewhere.** Every object, keepsake, memento or artefact must be used in another place: a new view, a path, a dialogue option, a trade or a puzzle.
+- **Story bible (Mika 2026-11-26).** Read [docs/STORY_BIBLE.md](docs/STORY_BIBLE.md) before you write any scene, person or quest. Use its checklist (section 13). Never reuse a character name.
 - **TOK lessons as play, never as school work (Mika 2026-11-26).** Ideas from the TOK lessons become minigames, quests, side quests and character moments. Nothing may feel like a quiz, flashcards, an essay or homework. Adapt ideas into original, fictional mechanics; never copy handout or IB wording into this public repository.
 
 ## 4. Code rules

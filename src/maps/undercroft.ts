@@ -44,7 +44,7 @@ export const UNDERCROFT: MapDef = {
     seal('chosen', 25, 'the seal of chosen pages'),
     { id: 'archivist', kind: 'boss', x: 29, y: 4, w: 1, h: 2, label: 'the Hollow Archivist', art: 'hollow-archivist', visibleIf: { not: { flag: 'undercroft.done', eq: true } } },
     { id: 'vault-index', kind: 'sign', x: 29, y: 4, w: 1, h: 1, label: "Elsbet's index of the vault", art: 'ledger', visibleIf: { flag: 'undercroft.done', eq: true },
-      text: "The first line, in Elsbet's small hand: 'Every record here can be wrong. That is why they are kept where anyone can check them.' The rest is a list of boxes: wells, floods, prices, the toll survey, the plaque. Each has a line: 'last checked by ...'. The last name is yours." },
+      text: "The first line, in Elsbet's small hand: 'Every record here can be wrong. That is why they are kept where anyone can check them.' The rest is a list of boxes: wells, floods, prices, the toll survey, the plaque. Each has a line: 'last checked by ...'. The last name is yours. One box near the bottom is different: 'Weir report, Harrowmere'. Its line says only 'last checked by' and then nothing. The name has been left blank." },
   ],
   zones: [{ id: 'undercroft', x: 0, y: 0, w: W, h: H }],
   lights: [

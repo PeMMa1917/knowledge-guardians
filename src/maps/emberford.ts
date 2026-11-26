@@ -298,7 +298,7 @@ export const EMBERFORD: MapDef = {
     { id: 'ferry-road', kind: 'door', x: 39, y: 18, w: 1, h: 1, label: 'the old ferry road', art: 'road-post', visibleIf: { flag: 'clue.oldmap.folded-map', eq: true }, to: { map: 'aethelgard.ferry', x: 1, y: 5 } },
     { id: 'waystone', kind: 'waystone', place: 'Emberford market', x: 15, y: 14, w: 1, h: 1, label: 'the Waystone (save and rest)', art: 'waystone' },
     { id: 'old-sign', kind: 'sign', x: 22, y: 23, w: 1, h: 1, label: "Corvan's old sign board", art: 'old-sign', visibleIf: { flagSet: 'sd.corvan.outcome' },
-      text: "Corvan's old sign board leans against the portal stone. Most of the words are scratched out. Kip says there is something on the back." },
+      text: "Corvan's old sign board leans against the portal stone. Most of the words are scratched out. Kip says there is something on the back. In one corner of the front is a tiny gold stamp, no bigger than a thumbnail. Kip does not know the mark. Lumen does not like how it shines." },
     { id: 'rope-east', kind: 'sign', x: 31, y: 18, w: 1, h: 1, label: 'the knotted rope at the east well', flag: 'well.east.read',
       text: 'A rope with a knot for every hand of depth. The water is four knots below the summer mark.' },
     { id: 'rope-west', kind: 'sign', x: 8, y: 22, w: 1, h: 1, label: 'the knotted rope at the west well', flag: 'well.west.read',
