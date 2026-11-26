@@ -81,6 +81,13 @@ describe('Adventure encounter capture', () => {
     }));
   });
 
+  it('remembers the same personalized conversation that actually opened', () => {
+    const d = setup();
+    d.action({ type: 'EnterNode', node: 'visitor.after' });
+    expect(d.view().entries).toContainEqual(expect.objectContaining({ id: 'conversation:visitor.after',
+      text: expect.stringContaining('a Guardian called Route test, and that I would thank them') }));
+  });
+
   it('allows exact specimen collection citations only after the actual claim', () => {
     const d = setup();
     const specimen = pack.exhibits.find(hasSpecimen)!;

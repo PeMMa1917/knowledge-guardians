@@ -8,6 +8,7 @@ import { islandPlan } from './islandPlan';
 import { marketComparison } from './marketScale';
 import { readMetalSample } from './metalSample';
 import { nileDelivery, runNileTrial } from './nileModel';
+import { personalise } from './player';
 import { scoutDecision, scoutReport, scoutTrials } from './scoutRoutes';
 import { seaChart } from './seaCharts';
 import { stageRehearsal } from './stageRehearsal';
@@ -56,7 +57,7 @@ export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, ne
       const actor = pack.characters.find(({ id }) => id === node.speaker)?.name;
       const title = actor ? `With ${actor}` : node.speaker === 'lumen' ? 'With Lumen' : 'On the road';
       return diaryEvent(`conversation:${node.id}`, 'conversation', node.id, title,
-        `${actor ? `I heard ${actor}.` : 'I heard this along the way.'} ${node.text}`,
+        `${actor ? `I heard ${actor}.` : 'I heard this along the way.'} ${personalise(node.text, next.player)}`,
         node.citationSource ? { sourceIds: [node.citationSource] } : {}, 'after-break');
     }
     case 'ReadBiography': {
@@ -171,10 +172,10 @@ export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, ne
     }
     case 'CaptureFilmTake': {
       const first = filmTake(cmd.station)[0];
-      return trial(`film-camera:${cmd.station}`, cmd.station, 'Filming the doorway', `I kept the same rehearsal and moved the camera. ${first.description}`);
+      return trial(`film-camera:${cmd.station}`, cmd.station, 'Filming the doorway', `I filmed the rehearsal. ${first.description}`);
     }
     case 'ScreenFilmCut':
-      return trial(`film-screening:${cmd.cut}`, cmd.cut, 'Screening a doorway cut', `I showed the shots in a different order. ${FILM_READER[cmd.cut]}`);
+      return trial(`film-screening:${cmd.cut}`, cmd.cut, 'Screening a doorway cut', `I showed the cut that opens with ${cmd.cut === 'cue' ? 'the keeper’s hand' : 'the moving cart'}. ${FILM_READER[cmd.cut]}`);
     case 'PostFilmCut':
       return diaryEvent(`film-post:${cmd.cut}`, 'choice', cmd.cut, 'Hanging the doorway cut',
         `I posted the cut that opens with ${cmd.cut === 'cue' ? 'the keeper’s hand' : 'the moving cart'}. ${FILM_READER[cmd.cut]}`, { outcome: 'changed' });

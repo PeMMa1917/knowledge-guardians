@@ -633,7 +633,7 @@ export class Engine {
           const opt = cmd.index >= 999 ? this.visibleOptions(cmd.node, s).find((o) => o.index === cmd.index)?.option : n.options?.[cmd.index];
           if (!opt) throw new Error('That option does not exist');
           if (!check(opt.if, s)) throw new Error('That option is not available now');
-          diaryChoice = diaryDialogueChoice(this.pack, n, opt, cmd.index, this.visibleOptions(cmd.node, s).length);
+          diaryChoice = diaryDialogueChoice(this.pack, n, opt, cmd.index, this.visibleOptions(cmd.node, s).length, s.player);
           s = apply(opt.effects, s, out);
           if (s.companion && isInquiry(opt.tag)) s = this.approve(s, out, events, `${cmd.node}.${cmd.index}`);
           nextNode = opt.next ?? null;

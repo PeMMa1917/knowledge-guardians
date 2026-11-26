@@ -1199,7 +1199,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       // A key held through a crossing may keep moving but cannot send the player straight back.
       if (!arrival && z.to?.map === this.walkingArrivalFrom) continue;
       if (z.if && !ctx.controller.check(z.if)) {
-        if (z.to && !arrival) ctx.ui.toast(z.id === 'portal' ? 'The portal is not open yet. Repair the label first.' : 'Not yet. Finish your work here first.', 'info');
+        if (z.to && !arrival) {
+          const portal = z.id === 'portal';
+          const text = portal ? 'The portal is not open yet. Repair the label first.' : 'Not yet. Finish your work here first.';
+          ctx.controller.dispatch({ type: 'ReadWorldSign', id: z.id, title: portal ? 'the portal' : 'the crossing', text, blocked: true });
+          ctx.ui.toast(text, 'info');
+        }
         continue;
       }
       if (!ctx.controller.state.flags[`reached.${z.id}`]) ctx.controller.dispatch({ type: 'Reach', zone: z.id });

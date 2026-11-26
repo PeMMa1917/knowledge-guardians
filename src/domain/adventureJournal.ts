@@ -1,5 +1,6 @@
 import { crossingOf, crossingWay } from './crossings';
 import { RUMOURS } from './rumours';
+import { personalise } from './player';
 import { LOYALTY } from './loyalty';
 import { DISPATCH_DESKS, dispatchFlag, dispatchSlip } from './tiles';
 import { specimenReferences, type SpecimenReference } from './specimenReferences';
@@ -95,12 +96,12 @@ function choiceCanChange(effects: Effect[] | undefined): boolean {
 }
 
 /** Record substantive alternatives and actions rather than dismissal buttons. */
-export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, option: DialogueOption, index: number, alternatives: number): DiaryEntryDraft | undefined {
+export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, option: DialogueOption, index: number, alternatives: number, player: CampaignState['player']): DiaryEntryDraft | undefined {
   const next = option.next ? pack.dialogue.find((line) => line.id === option.next) : undefined;
   if (!option.tag && !option.open && !choiceCanChange(option.effects) && !choiceCanChange(next?.effects) && !(next && alternatives > 1)) return;
   const person = pack.characters.find((character) => character.id === node.speaker)?.name;
   return diaryEvent(`choice:${node.id}:${index}`, 'choice', node.id, person ? `With ${person}` : 'A choice on the road',
-    `I chose “${option.text}”${person ? ` when I spoke with ${person}` : ''}.`, {}, 'after-break');
+    `I chose “${personalise(option.text, player)}”${person ? ` when I spoke with ${person}` : ''}.`, {}, 'after-break');
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
