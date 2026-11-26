@@ -4,6 +4,7 @@ import {
 } from '../src/content/readingWorks';
 import { check } from '../src/domain/rules';
 import { ownsSpecimen, specimenToolId } from '../src/domain/specimenGear';
+import { specimenReferences } from '../src/domain/specimenReferences';
 import { MAPS } from '../src/maps';
 import { READING_WORKS, READING_WORKS_DOOR, READING_WORKS_LANDING } from '../src/maps/readingWorks';
 import { artKeys } from '../src/ui/illustrations';
@@ -37,6 +38,21 @@ describe('The Reader Across the Landing', () => {
     }
     expect(READING_WORKS_CASES.find(({ slug }) => slug === 'braille')?.date).toContain('Facsimile date unlisted');
     expect(READING_WORKS_CASES.find(({ slug }) => slug === 'next')?.accession).not.toContain('2008-5019');
+  });
+
+  it('dates the al-Idrisi copy from its own manifest and shows the discrepant Fihrist field', () => {
+    const { e: { pack } } = new Driver();
+    const key = 'bodleian:pococke-375-3b-4a';
+    const record = pack.exhibits.find(({ specimen }) => specimen?.key === key)!;
+    expect(record.specimen?.accession).toBe('MS. Pococke 375, fols. 3b–4a');
+    expect(record.dateText).toBe('1553 CE in the Digital Bodleian');
+    expect(record.dateKind).toContain('Fihrist lists 960 AH alongside a Gregorian date of 1533');
+    expect(record.dateKind).toContain('January 1154');
+    expect(record.sources).toContain('HIS-READING-WORKS-IDRISI-MANIFEST');
+    expect(specimenReferences(pack).find((reference) => reference.key === key)).toMatchObject({
+      text: expect.stringContaining(record.dateText),
+      url: 'https://digital.bodleian.ox.ac.uk/objects/ced0d8bd-1019-4af2-9086-e411115f1507/',
+    });
   });
 
   it.each(READING_ROUTES)('makes each %s setup usable only after both trials and a landing action', (route) => {

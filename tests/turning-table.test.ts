@@ -17,6 +17,8 @@ describe('A Shore You Can Turn', () => {
     expect(e.dateText).toContain('8 February 1885');
     expect(e.dateKind).toContain('received it from Kunit');
     expect(e.summary).toContain('separate islands piece 390 B');
+    expect(e.specimen?.people).toContainEqual(expect.objectContaining({ name: 'Kunit of Umivik',
+      role: 'Inuit map maker from Umivik named in the Walters label', source: 'HIS-KUNIT-WALTERS' }));
     expect(BIG_ART[e.art]).toBe('big.turning.kunit-case');
     const placements = Object.values(MAPS).flatMap((map) => map.interactables.filter((prop) => prop.exhibit === e.id).map(() => map.id));
     expect(placements).toEqual(['sea.turning-room']);

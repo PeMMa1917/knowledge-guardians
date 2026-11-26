@@ -904,8 +904,8 @@
       "id": "HIS-DEPART-03",
       "title": "Eckstein and Schwarz: The Making of Tupaia’s Map",
       "url": "https://doi.org/10.25932/publishup-42309",
-      "locator": "The Journal of Pacific History 54(1), 2019, pp. 1–95. Introduction, Figure 1 and the section on the British Library copy.",
-      "supports": "The authors place Tupaia from Ra‘iātea at the centre of the collaborative drafting in 1769–70. They propose reading the arrangement with changing points of departure and date the British Library version to 1770.",
+      "locator": "The Journal of Pacific History 54(1), 2019, pp. 1–95. Introduction, Figure 1 and the chronology of later copies.",
+      "supports": "The authors place Tupaia from Ra‘iātea at the centre of the collaborative drafting in 1769–70. They propose reading the arrangement with changing points of departure. Figure 1 gives 1770. The chronology places the probable fair copy for Joseph Banks in 1770 or 1771.",
       "accessed": "2026-11-26"
     },
     {
@@ -933,7 +933,7 @@
     {
       "id": "card.departure.reading",
       "title": "Tupaia’s chart and a proposed reading",
-      "text": "Tupaia of Ra‘iātea developed a chart with members of the Endeavour crew in 1769–70, according to Eckstein and Schwarz. They propose that several points of departure help explain the arrangement. They identify the British Library sheet as a copy of a late draft.",
+      "text": "Tupaia of Ra‘iātea developed a chart with members of the Endeavour crew in 1769–70, according to Eckstein and Schwarz. They propose that several points of departure help explain the arrangement. They identify the British Library sheet as a fair copy of a late draft, probably made for Joseph Banks in 1770 or 1771.",
       "claimKind": "interpretation",
       "historicalLabel": "scholarly-interpretation",
       "sources": [
@@ -974,7 +974,7 @@
       "art": "departure.catalogue",
       "historicalLabel": "documented",
       "dateText": "1769 in the library entry",
-      "dateKind": "The catalogue’s date for the sheet. Eckstein and Schwarz date the surviving version to 1770 in their scholarly reconstruction of the drafting.",
+      "dateKind": "The British Library entry gives 1769. In Eckstein and Schwarz’s study, Figure 1 gives 1770. Their chronology places the probable fair copy for Joseph Banks in 1770 or 1771.",
       "summary": "The British Library’s catalogue names James Cook. Te Ara calls the copy Tupaia’s chart. Both point to the same manuscript reference. Eckstein and Schwarz place Tupaia of Ra‘iātea at the centre of the collaborative drafting. The separate study case gives their reading and its limits.",
       "sources": [
         "HIS-DEPART-01",

@@ -84,6 +84,7 @@ export function validateContent(pack: ContentPack): string[] {
     if (!s.mla) return;
     text(`source ${s.id} MLA title`, s.mla.title);
     text(`source ${s.id} MLA container`, s.mla.container);
+    if (s.mla.repository !== undefined) text(`source ${s.id} MLA repository`, s.mla.repository);
     if (!['page', 'artwork'].includes(s.mla.kind)) p.push(`source ${s.id}: unknown MLA source kind`);
     if (s.mla.kind === 'page' && s.mla.workDate) p.push(`source ${s.id}: an artwork date belongs to the artwork entry`);
     if (s.mla.showAccessDate && !/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(s.accessed)) {

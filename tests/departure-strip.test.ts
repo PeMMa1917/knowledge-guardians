@@ -57,6 +57,11 @@ describe('The Departure Strip and The Name on the Back', () => {
       person: { name: 'Tupaia', place: 'Ra‘iātea' },
     });
     expect(cards['card.departure.reading'].text).toContain('They propose');
+    expect(cards['card.departure.reading'].text).toContain('probably made for Joseph Banks in 1770 or 1771');
+    const chart = pack.exhibits.find(({ id }) => id === 'OBJ-DEPART-TUPAIA')!;
+    expect(chart.dateText).toBe('1769 in the library entry');
+    expect(chart.dateKind).toContain('Figure 1 gives 1770');
+    expect(chart.dateKind).toContain('1770 or 1771');
     expect(cards['card.departure.pere']).toMatchObject({
       historicalLabel: 'documented', claimKind: 'observation', sources: ['HIS-DEPART-04'],
     });

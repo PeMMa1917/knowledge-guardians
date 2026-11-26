@@ -123,6 +123,7 @@ export interface SourceRecord {
     container: string;
     author?: string;          // filed surname first, as it appears in the entry
     workDate?: string;        // original creation date of an artwork
+    repository?: string;      // physical collection when the online container is separate
     showAccessDate?: boolean;
   };
 }

@@ -71,8 +71,13 @@ describe('Which Edge Reached the Landing', () => {
     expect(first.summary).toContain('Dhuwa moiety');
     expect(second.dateText).toContain('28 August 1963');
     expect(second.summary).toContain('Yirritja moiety');
-    expect(second.dateKind).toContain('a copy');
-    for (const petition of [first, second]) {
+    expect(first.specimen?.accession).toBe('Founding Docs item 104 (i)');
+    expect(second.specimen?.accession).toBe('Founding Docs item 104 (ii)');
+    for (const [petition, presenter] of [[first, 'Jock Nelson'], [second, 'Arthur Calwell']] as const) {
+      expect(petition.dateKind).toContain(presenter);
+      expect(petition.dateKind).toContain('a copy');
+      expect(petition.summary).toContain('copies replaced the typed papers on both bark borders');
+      expect(d.e.pack.cards.find(({ id }) => id === petition.grantsCard)?.limits).toContain('The online image digitally reunites');
       expect(petition.sources).toContain('HIS-YIRRKALA-BUKU-HISTORY');
       expect(petition.specimen?.pixelAsset).toBeUndefined();
     }

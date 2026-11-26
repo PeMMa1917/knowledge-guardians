@@ -520,3 +520,7 @@ The collection has 825 individually identified and dated objects. Its 524 equipp
 The integrated checkpoint passed 1,677 tests in 201 files, type checking, the production build, the 704-asset check and the strict collection audit. Chromium rendered and walked through all 112 maps and checked keyboard, touch, enlarged text, Calm and Continue after resizing. One new campaign reached the Council and returned to the Nexus with 112 earned objectives. It used normal prerequisites and gates, with debug positioning beside interactions. Separate runs checked both opening Curtain gifts, both dispatch branches, the Oracle press and its notice, and equipped historical returns. See the browser log for where those runs staged prerequisites.
 
 The current audit links 337 of the 803 supplied micro-skills to 611 actual actions. The next collection target is 1,000 precise objects. Sustained 30-minute recurrence, fuller subject and skill coverage, and wider branch and recovery QA remain active work.
+
+## Named object source corrections
+
+The MONIAC identifies its inventor and maker separately. The 1733 Timbuktu manuscript label and bibliography give the original holder and online catalogue roles. Both Yirrkala entries describe their replacement papers. The Kunit, Tupaia and al-Idrisi records identify the sources for their maker and date wording. See the [historical source guide](docs/SOURCES.md).

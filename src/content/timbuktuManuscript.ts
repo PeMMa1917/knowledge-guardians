@@ -9,6 +9,8 @@ export const TIMBUKTU_FLAG = 'timbuktu.seasons';
 export const TIMBUKTU_OPEN = { objective: 'coast.revise' };
 export const TIMBUKTU_AUTHOR = 'Nasir al-Din Abu al-Abbas Ahmad ibn al-Hajj al-Amin al-Tawathi al-Ghalawi';
 export const TIMBUKTU_TITLE = 'The Important Stars Among the Multitude of the Heavens';
+const HOLDER = 'Mamma Haidara Commemorative Library';
+const ONLINE_RECORD = 'Library of Congress';
 
 const hintText = [
   'Read the 1733 manuscript record in the Bell Archive. The date belongs to the copy.',
@@ -22,6 +24,8 @@ export const timbuktuManuscriptContent = {
     {
       id: TIMBUKTU_SOURCE, title: 'Library of Congress, Structure of the Heavens, object 1',
       url: 'https://www.loc.gov/exhibits/mali/mali-exhibit.html#obj1',
+      mla: { kind: 'artwork', title: TIMBUKTU_TITLE, workDate: '1733 manuscript copy',
+        repository: `${HOLDER}, Timbuktu`, container: ONLINE_RECORD, showAccessDate: true },
       locator: 'Object 1, Structure of the Heavens, with its caption and images of both manuscript faces',
       supports: 'The caption names the author and the Mamma Haidara Commemorative Library in Timbuktu. It dates the manuscript copy to 1733. The description relates stellar motions to the calculation of the beginning of seasons.',
       accessed: '2026-11-26',
@@ -37,10 +41,11 @@ export const timbuktuManuscriptContent = {
   exhibits: [{
     id: TIMBUKTU_EXHIBIT, name: `${TIMBUKTU_TITLE} · 2021667561`, art: 'timbuktu.horizon-case',
     historicalLabel: 'documented', dateText: 'Copy dated 1733', dateKind: 'Date of this manuscript copy',
-    summary: `Kashf al-Ghummah fi Nafa al-Ummah. The catalogue identifies ${TIMBUKTU_AUTHOR} as the author. The original is held at the Mamma Haidara Commemorative Library in Timbuktu, Mali. The Library of Congress provides the online record.`,
+    summary: `Kashf al-Ghummah fi Nafa al-Ummah. The catalogue identifies ${TIMBUKTU_AUTHOR} as the author. The original is held at the ${HOLDER} in Timbuktu, Mali. The library lent it to the ${ONLINE_RECORD}, which provides the online record.`,
     altText: 'A closed catalogue folder beside two invented skyline slips. The manuscript itself is available through the source.',
     sources: [TIMBUKTU_SOURCE, TIMBUKTU_MARC], grantsCard: TIMBUKTU_CARD,
-    specimen: { key: 'loc:2021667561', institution: 'Library of Congress', accession: '2021667561', source: TIMBUKTU_SOURCE, objective: TIMBUKTU_OBJECTIVE },
+    specimen: { key: 'loc:2021667561', institution: `${HOLDER} (original holder) · ${ONLINE_RECORD} (online record)`,
+      accession: '2021667561', source: TIMBUKTU_SOURCE, objective: TIMBUKTU_OBJECTIVE },
   }],
   cards: [{
     id: TIMBUKTU_CARD, title: 'The 1733 astronomical manuscript copy · 2021667561', claimKind: 'observation',
