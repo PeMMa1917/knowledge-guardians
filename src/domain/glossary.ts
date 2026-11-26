@@ -29,9 +29,14 @@ export function segmentText(text: string, glossary: GlossaryEntry[]): Segment[] 
   return out;
 }
 
-/** The first example whose condition holds, with {flag:name} replaced by the flag's value. */
+/** Remember only this campaign's actions. Offer one starting example until a memory is earned. */
+export function examplesFor(entry: GlossaryEntry, s: CampaignState, check: (c: Condition | undefined) => boolean): string[] {
+  const earned = entry.examples.filter((example) => example.if && check(example.if));
+  const fallback = entry.examples.find((example) => !example.if);
+  const visible = earned.length ? earned : fallback ? [fallback] : [];
+  return visible.map(({ text }) => text.replace(/\{flag:([\w.-]+)\}/g, (_, f: string) => String(s.flags[f] ?? '…')));
+}
+
 export function exampleFor(entry: GlossaryEntry, s: CampaignState, check: (c: Condition | undefined) => boolean): string {
-  const ex = entry.examples.find((e) => check(e.if));
-  if (!ex) return '';
-  return ex.text.replace(/\{flag:([\w.-]+)\}/g, (_, f: string) => String(s.flags[f] ?? '…'));
+  return examplesFor(entry, s, check)[0] ?? '';
 }

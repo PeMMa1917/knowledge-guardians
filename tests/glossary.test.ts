@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { CONCEPTS } from '../src/domain/types';
 import { buildPack } from '../src/content';
-import { exampleFor, segmentText } from '../src/domain/glossary';
+import { exampleFor, examplesFor, segmentText } from '../src/domain/glossary';
 import { check } from '../src/domain/rules';
+import { migrateCampaign } from '../src/domain/saves';
 import { Driver } from './driver';
 
 const pack = buildPack();
@@ -21,6 +22,44 @@ describe('smart glossary (spec 47.10)', () => {
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-001-A' });
     d.run({ type: 'BuildLabel', kit: 'pen', subject: 'loud', criterion: 'patent', limit: 'none' });
     expect(exampleFor(claim, d.s, (c) => check(c, d.s))).toMatch(/Your museum label was a claim: '.*Loud/);
+  });
+  it('keeps the fitting and the lookout as distinct memories only after their checks, including after a reload', () => {
+    const d = new Driver();
+    const evidence = pack.glossary.find((entry) => entry.id === 'evidence')!;
+    const recollections = () => examplesFor(evidence, d.s, (c) => check(c, d.s));
+    expect(recollections()).toEqual([expect.stringContaining('Inspect an exhibit')]);
+    d.walk('corner.frame', ['Lift the loose corner']);
+    d.walk('corner.try', ['Turn the square insert']);
+    d.walk('corner.try', ['Slide the clipped insert']);
+    expect(recollections()[0]).toContain('Inspect an exhibit');
+    d.walk('corner.order', ['Pin the dated order']);
+    expect(recollections()).toEqual([expect.stringContaining('repair slip')]);
+
+    d.s.objectivesDone.push('m01.o6.label');
+    d.run({ type: 'Reach', zone: 'portal' });
+    d.s.mapId = 'aethelgard.emberford';
+    d.run({ type: 'Reach', zone: 'emberford' });
+    d.walk('ember.circle.stall', ['Lift the corner']);
+    d.walk('ember.circle.tea', ['Keep the tea slip']);
+    d.walk('ember.circle.ledger', ['Lay both slips']);
+    expect(recollections()).toHaveLength(1);
+    d.walk('ember.circle.witness', ['Set the signed sightline']);
+    d.s = migrateCampaign(JSON.parse(JSON.stringify(d.s))).state;
+    expect(recollections()).toEqual([expect.stringContaining('repair slip'), expect.stringContaining('Havra')]);
+  });
+  it('remembers only the carrier who received a route and lets another save keep its own examples', () => {
+    const d = new Driver();
+    const values = pack.glossary.find((entry) => entry.id === 'values')!;
+    const recollections = () => examplesFor(values, d.s, (c) => check(c, d.s));
+    const fallback = recollections();
+    d.run({ type: 'SetFlag', flag: 'sea.threadbend.choice', value: 'tray' });
+    expect(recollections()).toEqual(fallback);
+    d.run({ type: 'SetFlag', flag: 'sea.threadbend.placed', value: 'tray' });
+    expect(recollections()).toEqual([expect.stringContaining('wide turn')]);
+    d.run({ type: 'SetFlag', flag: 'clearbay.checked', value: 'west' });
+    expect(recollections()).toEqual([expect.stringContaining('wide turn'), expect.stringContaining('hand parcel')]);
+    const fresh = new Driver();
+    expect(examplesFor(values, fresh.s, (c) => check(c, fresh.s))).toEqual(fallback);
   });
   it('covers all twelve concepts and offers a dictionary source for each registered word history', () => {
     const ids = pack.glossary.map((entry) => entry.id);

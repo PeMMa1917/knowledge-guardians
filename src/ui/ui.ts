@@ -54,7 +54,7 @@ import { SIM_MODEL, type GameEvent } from '../domain/engine';
 import { conceptRings, conceptXP, totalXP } from '../domain/permanent';
 import { describeSection, layers, type ForgeAction } from '../domain/forge';
 import { labelText, type LabelResult } from '../domain/label';
-import { exampleFor, segmentText } from '../domain/glossary';
+import { examplesFor, segmentText } from '../domain/glossary';
 import { studentAlerts } from '../domain/learning';
 import { MOVE_HELP, type ShowdownMove } from '../domain/showdown';
 import { AOK_NAMES, ATL_NAMES, CONCEPT_NAMES, PROFILE_NAMES, SUBJECTS } from '../domain/curriculum';
@@ -1303,14 +1303,22 @@ export class UI implements UIApi {
       h('p', {}, entry.history.note, ' ', h('a', { href: entry.history.url, target: '_blank', rel: 'noopener' }, 'Dictionary entry')));
   }
 
+  private glossaryExamples(entry: GlossaryEntry): HTMLElement | null {
+    const c = ctx.controller;
+    const [first, ...others] = examplesFor(entry, c.state, (condition) => c.check(condition));
+    if (!first) return null;
+    return h('div', { class: 'fine' }, h('p', {}, first),
+      others.length ? h('details', {}, h('summary', {}, 'Other moments from my journey'),
+        h('ul', {}, ...others.map((text) => h('li', {}, text)))) : null);
+  }
+
   private fillGloss(id: string, pop: HTMLElement): void {
     const c = ctx.controller;
     const g = c.pack.glossary.find((x) => x.id === id);
     if (!g) return;
     clear(pop);
-    const ex = exampleFor(g, c.state, (cond) => c.check(cond));
     pop.append(h('img', { src: artURL(lumenArt(ctx.settings)), alt: '', class: 'gloss-lumen' }),
-      h('div', {}, h('strong', {}, g.term), ' ', g.text, ex ? h('p', { class: 'fine' }, h('em', {}, 'In the game: '), ex) : '', this.wordHistory(g)));
+      h('div', {}, h('strong', {}, g.term), ' ', g.text, this.glossaryExamples(g), this.wordHistory(g)));
     pop.style.display = '';
   }
 
@@ -2798,11 +2806,10 @@ export class UI implements UIApi {
             h('small', { class: 'fine' }, `${Math.min(ways.length, total)} of ${total} ways · ${ways.map((w) => { const [wd, a] = w.split('|'); return `${ACTION[a] ?? a} in ${worlds.get(wd) ?? wd}`; }).join(' · ')}.`)));
       })));
     } else if (tab === 'glossary') {
-      body.append(h('p', { class: 'fine' }, 'Key words, in plain English. Where you have already done something that shows the word, Lumen adds an example from your play.'),
-        h('dl', { class: 'glossary' }, ...c.pack.glossary.flatMap((g) => {
-          const ex = exampleFor(g, s, (cond) => c.check(cond));
-          return [h('dt', {}, g.term), h('dd', {}, g.text, ex ? h('br', {}) : '', ex ? h('small', { class: 'fine' }, `In the game: ${ex}`) : '', this.wordHistory(g))];
-        })));
+      body.append(h('p', { class: 'fine' }, 'Lumen remembers where a word came up on your journey. Open a word history to follow it further.'),
+        h('dl', { class: 'glossary' }, ...c.pack.glossary.flatMap((g) => [
+          h('dt', {}, g.term), h('dd', {}, g.text, this.glossaryExamples(g), this.wordHistory(g)),
+        ])));
     } else if (tab === 'atlas') {
       // Concepts, ATL ribbons and subjects met (spec 91, 92). Counts of meetings, not grades.
       const m = c.permanent.met;

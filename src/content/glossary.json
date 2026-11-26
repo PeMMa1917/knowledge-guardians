@@ -13,6 +13,18 @@
    },
    "examples": [
     {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "The stall and tea table agreed about a closure. In the issue book you found that the two notices traced back to one unchecked report."
+    },
+    {
+     "if": {
+      "objective": "corner.compare"
+     },
+     "text": "Both inserts fitted the cloth you tried. Only the repair order dated a change to the hem. The first weaving stayed an open question."
+    },
+    {
      "text": "A new reading can make you reopen a perfectly tidy label."
     }
    ]
@@ -29,6 +41,18 @@
     "url": "https://www.merriam-webster.com/dictionary/power"
    },
    "examples": [
+    {
+     "if": {
+      "objective": "clearbay.use"
+     },
+     "text": "You put the visitor’s waiting time beside the duty book. The keeper’s entry had been able to set the public rule on its own."
+    },
+    {
+     "if": {
+      "objective": "voices.elsbet.handled"
+     },
+     "text": "With Elsbet’s signed index you could give visitors access to her first take. Her signature still reserved the second take for the Council."
+    },
     {
      "text": "At the Civic hearing, who can get an objection onto the record?"
     }
@@ -48,6 +72,18 @@
    },
    "examples": [
     {
+     "if": {
+      "objective": "forest.moss.place"
+     },
+     "text": "Your frames showed where more squares stayed green. The walkers’ tally gave you a possible reason. It also left open why they picked that path."
+    },
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "You followed the broken C back through the issue book. That print trail explained why the stall and tea table sounded like two witnesses to one closure."
+    },
+    {
      "text": "Two lanterns can look alike from the bank. Ask who carried them before explaining the light."
     }
    ]
@@ -66,6 +102,18 @@
    },
    "examples": [
     {
+     "if": {
+      "objective": "sea.threadbend.compare"
+     },
+     "text": "At the harbour, Ariadne’s thread gave your crew a way to remember the return. You had to try your own loads before the old story could guide a working route."
+    },
+    {
+     "if": {
+      "objective": "voices.elsbet.handled"
+     },
+     "text": "At the listening desk, the place where people gathered mattered to Elsbet. Her index gave the two groups different ways to hear her account."
+    },
+    {
      "text": "A map keeper and a visiting crew may read the same mark in different ways."
     }
    ]
@@ -82,6 +130,34 @@
     "url": "https://www.merriam-webster.com/dictionary/value"
    },
    "examples": [
+    {
+     "if": {
+      "flag": "sea.threadbend.placed",
+      "eq": "letter"
+     },
+     "text": "You gave the messenger the quick turn before the signal. The wide tray waited for its ordinary crew."
+    },
+    {
+     "if": {
+      "flag": "sea.threadbend.placed",
+      "eq": "tray"
+     },
+     "text": "You kept the wide turn free for the tray. The letter went with the next handoff."
+    },
+    {
+     "if": {
+      "flag": "clearbay.checked",
+      "eq": "north"
+     },
+     "text": "You saved a staffed opening for a cart and helper. The visitor who came with a parcel at first bell had to wait."
+    },
+    {
+     "if": {
+      "flag": "clearbay.checked",
+      "eq": "west"
+     },
+     "text": "You let the hand parcel through at first bell. A porter had to meet the wide cart later."
+    },
     {
      "text": "Posting a notice now helps the queue. Waiting gives another crew time to sign it."
     }
@@ -100,6 +176,18 @@
     "url": "https://www.merriam-webster.com/dictionary/responsible"
    },
    "examples": [
+    {
+     "if": {
+      "objective": "clearbay.compare"
+     },
+     "text": "You kept the visitor’s experience on the notice and folded the private family name out of sight. Another visitor could still check the wait."
+    },
+    {
+     "if": {
+      "objective": "voices.elsbet.handled"
+     },
+     "text": "Elsbet trusted the keeper with two recordings. You left a way for visitors to hear one and kept the other for the room she named."
+    },
     {
      "text": "The reader who posts a notice can also leave room for a correction."
     }
@@ -120,6 +208,18 @@
       "gte": 3
      },
      "text": "You inspected three exhibits. Each record was evidence for a different kind of 'first'."
+    },
+    {
+     "if": {
+      "objective": "corner.compare"
+     },
+     "text": "The matching diamonds and the dated repair slip told you different things about the same gap in the cloth."
+    },
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "Havra watched a porter use the upper landing at second bell. A wall blocked her view of the lower landing. You kept that limit with her sighting."
     },
     {
      "text": "Inspect an exhibit. Its record is evidence for some claims and not for others."
@@ -167,6 +267,18 @@
      "text": "Your label held because the cards you held gave it enough support."
     },
     {
+     "if": {
+      "objective": "sea.threadbend.compare"
+     },
+     "text": "You kept the run where the tray caught on the inner posts. Sending it the long way now had a reason another carrier could try."
+    },
+    {
+     "if": {
+      "objective": "clearbay.compare"
+     },
+     "text": "Your notice could name which loads fitted because you tried the cart alone and again with its handler."
+    },
+    {
      "text": "When a label holds in the label builder, you have justified it."
     }
    ]
@@ -182,6 +294,18 @@
    "history": {"note": "Middle English speakers used certeinte. They borrowed it from Anglo-French certeinté, built from the word for certain.", "url": "https://www.merriam-webster.com/dictionary/certainty"},
    "text": "How sure we can be. Most knowledge comes with a range or a 'probably', not with total certainty.",
    "examples": [
+    {
+     "if": {
+      "objective": "corner.compare"
+     },
+     "text": "Turning the insert settled how the diamond repeat would fit. The first maker’s choice stayed uncertain after you read the later repair order."
+    },
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "You could date the upper crossing to Havra’s bell. The issue book gave you no witness who could settle the lower crossing."
+    },
     {
      "text": "The Met record says the ingots are 'probably' eighteenth century. The word 'probably' is part of the knowledge."
     }
@@ -206,6 +330,26 @@
      "text": "Clerk Venn and Curator Dace read the same pen records and gave different interpretations of 'first'."
     },
     {
+     "if": {
+      "flag": "corner.checked",
+      "eq": "repeat"
+     },
+     "text": "Aro could use your tracing to cut a new repeat. The dashed fourth diamond marked a proposal for the cloth."
+    },
+    {
+     "if": {
+      "flag": "corner.checked",
+      "eq": "gap"
+     },
+     "text": "Junel could lift the hem and follow the old holes because you left the corner open beside the dated order."
+    },
+    {
+     "if": {
+      "objective": "forest.moss.place"
+     },
+     "text": "The boot count and the green squares could fit two stories. Boots might wear a patch bare, or walkers might choose bare patches."
+    },
+    {
      "text": "Talk to Curator Dace and Clerk Venn. They interpret the same records differently."
     }
    ]
@@ -221,6 +365,18 @@
    "history": {"note": "The word has several histories of looking. A Middle English form for an optical device goes back to Latin perspicere, to look through.", "url": "https://www.merriam-webster.com/dictionary/perspective"},
    "text": "Where someone stands when they know something: their place, purpose, training and values. Having one is normal. It is not the same as bias.",
    "examples": [
+    {
+     "if": {
+      "objective": "clearbay.compare"
+     },
+     "text": "The keeper recorded where a crew was stationed. The visitor recorded who waited. You put them beside the same bell and gate."
+    },
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "You stood at Havra’s mark. From there a porter on the upper landing was visible, while the retaining wall hid the route below."
+    },
     {
      "text": "Hesper made the blade. That is her perspective, and it is also why she knows how it was made."
     }
@@ -242,6 +398,18 @@
       "eq": true
      },
      "text": "You compared your own billet with the blade. That check did not depend on who you trusted."
+    },
+    {
+     "if": {
+      "objective": "sea.threadbend.compare"
+     },
+     "text": "You kept the same tray and starting peg when you moved the cord to the wider turn. The tray cleared the posts on that run."
+    },
+    {
+     "if": {
+      "objective": "forest.moss.survey"
+     },
+     "text": "By counting squares within the same size frame, you gave someone at a different part of the path a way to repeat your comparison."
     },
     {
      "text": "A fair test, where you change one thing, is one way to be more objective."
