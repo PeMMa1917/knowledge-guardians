@@ -25,6 +25,8 @@ export const FIELD_GAMES: FieldGame[] = [
     idea: 'The order of operations is a convention people agreed on, not a fact found in nature. When a line can be read two ways, ask what the writer meant, then write it so it can only be read one way.' },
   { id: 'word', name: 'The Missing Word', host: 'Odo the sign-painter, at the notice board in Emberford', concept: 'perspective', fray: 'hush-moth',
     idea: 'Two words can point at the same fact (denotation) and still make people feel and notice different things (connotation). A soft word can hide a hard fact. When a word is missing, a shared problem is hard to talk about, so the person who chooses the words has power.' },
+  { id: 'bones', name: 'Lanterns and Bones', host: 'Sefa the ferry cook, at the dice table on the landing', concept: 'evidence', fray: 'gamblers-imp',
+    idea: 'A fair die does not remember: after a long run without a six, a six is no more likely than before. To tell a loaded die from a fair one you need many rolls, because a few rolls can fool anyone. More evidence lets you be more sure, but never certain.' },
 ];
 
 export const fieldDone = (flags: Record<string, unknown>, id: string): boolean => flags[`field.${id}.done`] === true;

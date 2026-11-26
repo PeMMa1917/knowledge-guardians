@@ -106,3 +106,29 @@ export function evalClear(src: string): number {
   const expr = (): number => { let v = term(); while (t[i] === '+' || t[i] === '-') { const op = t[i++]; const w = term(); v = op === '+' ? v + w : v - w; } return v; };
   return expr();
 }
+
+// ---------------------------------------------------------------- Lanterns and Bones (dice, no betting)
+
+/** One roll (1..6). A loaded die shows six with chance `six` (the other faces share the rest). */
+export function roll(r: () => number, six = 1 / 6): number {
+  const u = r();
+  if (u < six) return 6;
+  return 1 + Math.floor(((u - six) / (1 - six)) * 5);
+}
+
+/** Sefa's tally book: in `n` fair rolls, what follows a run of `drought` or more rolls without a six? */
+export function dueTest(n: number, seed: number, drought = 3): { after: number; sixes: number; all: number; allSixes: number } {
+  const r = rng(seed);
+  let run = 0, after = 0, sixes = 0, allSixes = 0;
+  for (let i = 0; i < n; i++) {
+    const v = roll(r);
+    if (run >= drought) { after++; if (v === 6) sixes++; }
+    if (v === 6) { allSixes++; run = 0; } else run++;
+  }
+  return { after, sixes, all: n, allSixes };
+}
+
+/** The two dice on Sefa's table. One is loaded (six comes up 1 time in 3). Which one depends on the seed. */
+export function diceFor(seed: number): { loaded: 0 | 1 } {
+  return { loaded: rng(seed * 13 + 5)() < 0.5 ? 0 : 1 };
+}

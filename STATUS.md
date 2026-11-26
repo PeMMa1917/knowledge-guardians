@@ -154,7 +154,9 @@ Ideas from Mika's TOK lessons, made into games in places, with people. Never a q
 - **Pell's Three Doors** (Emberford, lantern stall): play rounds by gut feeling, guess, then watch 300 seeded rounds. Then Pell forgets where the lantern is, and the answer changes. TOK: intuition and reason, assumptions, certainty.
 - **The Ferry Guest Book** (ferry landing): guess how many passengers sign before two share a birthday, then watch 20 boats. TOK: paradox, intuition, certainty.
 - **The Weigh-House Slate** (Emberford): two careful readers get 16 and 1 from the same line. Find the story the writer meant, then pick a line that can only be read one way. TOK: convention, interpretation, mathematics as invented or discovered.
-- **Next:** the Missing Word (language and power), the Breakfast Sign (signs and culture), the Drawer of Missing Trials (publication bias), then more from the other lesson folders.
+- **The Missing Word** (Emberford, Odo's notice board): paint one fact (the toll goes from 2 to 4 marks) as 'adjusted', 'raised' or 'doubled', and add the reason or not. Three readers react in their own voices; the notice stays on the board. Then coin a word for a feeling a Hush Moth took away. TOK: language and power, denotation and connotation, euphemism. New Fray: Hush Moth.
+- **Lanterns and Bones** (ferry landing, Sefa's dice table; no betting): the Gambler's Imp says a six is 'due'; Sefa's tally book shows it is not. Then find the loaded die of two, rolling as much as you want. TOK: evidence, sample size, certainty.
+- **Next:** the Breakfast Sign (signs and culture), the Drawer of Missing Trials (publication bias), then more from the other lesson folders.
 
 ### Minigame and side-quest coverage (Mika's list, 2026-11-26)
 
@@ -163,7 +165,7 @@ Mika wants many kinds of minigames and side quests in every part of the game, ea
 | Kind | In the game now | Gap: plan (TOK twist) |
 |---|---|---|
 | Timing and reflex | none | **Steady Hand** (ch 6): stop a swinging balance needle at zero; one lucky stop is not a measurement, so repeat and average. **Net the Shallows** (ch 5): fast fish are hard to net, so the catch is biased. |
-| Card, board and dice (no betting) | Pell's Three Doors (ch 1) | **Lanterns and Bones** dice table at the ferry (ch 1): the Gambler's Imp says a six is 'due'. **Claim Cards** (ch 2, 7): play evidence cards against claims; strength must match scope. |
+| Card, board and dice (no betting) | Pell's Three Doors, Lanterns and Bones (ch 1) | **Claim Cards** (ch 2, 7): play evidence cards against claims; strength must match scope. |
 | Puzzle and logic | 15 puzzles, Word Tiles, the Weigh-House Slate (ch 1) | Cipher where the key is a convention (ch 7); route a dispatch rule and see who it misses (ch 12). |
 | Rhythm and music | music box, bell stair (ch 1) | **Cue and Pause** (ch 9): the same notes with different timing mean different things. |
 | Crafting, cooking, alchemy | forge, tool recipes, field readings, dyes (ch 1) | Alloy bench with a fair test: change one thing at a time (ch 6). |

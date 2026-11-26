@@ -893,3 +893,6 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 
 .word-readers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 8px 0; }
 @media (max-width: 640px) { .word-readers { grid-template-columns: 1fr; } }
+.dice-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; min-height: 36px; }
+.die-face { display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 6px; background: #f4f0e6; color: #2a2440; font-weight: 700; }
+.die-face.six { background: #e8c040; }

@@ -63,7 +63,7 @@ import { ROLES, fitsRole, roleOf } from '../domain/roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
 import { FIELD_GAMES } from '../domain/fieldgames';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
-import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, runDoors, shareChance } from '../domain/fairgames';
+import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
 import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
 import { MIN_SOURCES, RUMOURS, VERDICTS, currentRumour, sourcesChecked } from '../domain/rumours';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
@@ -2749,6 +2749,7 @@ export class UI implements UIApi {
     else if (id === 'guests') this.openGuestBook();
     else if (id === 'slate') this.openSlate();
     else if (id === 'word') this.openMissingWord();
+    else if (id === 'bones') this.openBones();
   }
 
   /** Close a field game: first time gives marks and the idea in the Lore codex. */
@@ -2915,6 +2916,74 @@ export class UI implements UIApi {
         } }, line))));
     };
     readers();
+  }
+
+  /** Lanterns and Bones: Sefa's dice table. Is a six 'due'? Which die is loaded? No betting: only evidence. */
+  openBones(): void {
+    const c = ctx.controller;
+    const runs = Number(c.state.flags['field.bones.runs'] ?? 0);
+    c.dispatch({ type: 'SetFlag', flag: 'field.bones.runs', value: runs + 1 });
+    const seed = runs + 3;
+    const box = this.openModal('bench-panel wide', 'Lanterns and Bones');
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, 'Lanterns and Bones'),
+      h('p', {}, "Sefa the ferry cook keeps a dice table by the landing. 'Nobody wins anything here,' Sefa says, 'except a better guess. Old cooks say: the pot does not know how long you waited.' A small grey creature sits on the table edge, counting on its fingers.")];
+    const r = fairRng(seed * 7 + 1);
+    const rolls: number[] = [];
+    const face = (v: number) => h('span', { class: `die-face${v === 6 ? ' six' : ''}`, 'aria-label': `rolled ${v}` }, String(v));
+    const drought = () => { let n = 0; for (let i = rolls.length - 1; i >= 0 && rolls[i] !== 6; i--) n++; return n; };
+    const table = () => {
+      const d = drought();
+      const claim = d >= 3;
+      box.replaceChildren(...head(),
+        h('div', { class: 'dice-row', role: 'list' }, ...rolls.slice(-12).map(face)),
+        h('p', { class: 'fine', role: 'status' }, rolls.length ? `${rolls.length} rolls. ${d} in a row without a six.` : 'Roll the ferry die.'),
+        claim ? h('p', { class: 'clue-view' }, `The creature squeaks: '${d} without a six! The next one must be a six. It is due! Everyone knows it!'`) : '',
+        h('div', { class: 'row' },
+          h('button', { type: 'button', class: claim ? '' : 'primary', onclick: () => { rolls.push(roll(r)); this.sfx('sfx.click'); table(); } }, 'Roll'),
+          claim ? h('button', { type: 'button', class: 'primary', onclick: () => tally(d) }, "Ask Sefa: 'Is it due?'") : ''));
+    };
+    const tally = (d: number) => {
+      const k = dueTest(1200, seed, 3);
+      box.replaceChildren(...head(),
+        h('p', {}, `Sefa opens a greasy tally book. 'Twelve hundred rolls of this same die, from many evenings. I marked every roll that came after three or more without a six. You said ${d} in a row. Let us look.'`),
+        this.barPair([{ label: 'Six, after a dry run', n: k.sixes, of: k.after }, { label: 'Six, any roll', n: k.allSixes, of: k.all }]),
+        h('p', {}, "Both are about 1 in 6. The die has no memory of the rolls before. The creature's 'due' feeling is strong, and it is wrong. Sefa: 'Its name is the Gambler's Imp. It lives on long waits.'"),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => twoDice() }, "Sefa: 'Now a harder one. Two dice.'")));
+    };
+    const twoDice = () => {
+      const { loaded } = diceFor(seed);
+      const rr = fairRng(seed * 19 + 2);
+      const tallies = [[0, 0], [0, 0]];
+      const add = (i: number, n: number) => { for (let k = 0; k < n; k++) { tallies[i][0]++; if (roll(rr, i === loaded ? 1 / 3 : 1 / 6) === 6) tallies[i][1]++; } render(); };
+      const name = ['the red die', 'the bone die'];
+      const render = (msg?: HTMLElement) => box.replaceChildren(...head(),
+        h('p', {}, "Sefa sets down a red die and a bone die. 'One of these is loaded: it shows six too often. Roll each as much as you like. Call it when you feel sure enough. No prize, no cost.'"),
+        this.barPair(tallies.map((t, i) => ({ label: `Sixes on ${name[i]}`, n: t[1], of: t[0] }))),
+        h('div', { class: 'row' }, ...[0, 1].flatMap((i) => [
+          h('button', { type: 'button', onclick: () => add(i, 1) }, `Roll ${name[i]}`),
+          h('button', { type: 'button', onclick: () => add(i, 10) }, `Roll ${name[i]} 10 times`)])),
+        tallies[0][0] + tallies[1][0] >= 6
+          ? h('div', { class: 'notice-options' }, ...[0, 1].map((i) => h('button', { type: 'button', onclick: () => call(i) }, `Call it: ${name[i]} is loaded`)))
+          : h('p', { class: 'fine' }, 'Roll at least six times before you call it.'),
+        ...(msg ? [msg] : []));
+      const call = (i: number) => {
+        const n = tallies[0][0] + tallies[1][0];
+        if (i !== loaded) {
+          render(h('p', { class: 'clue-view', role: 'status' }, `Sefa turns ${name[i]} over. 'This one is fair. After ${n} rolls, the luck of the bones can still fool you. Roll more, and watch whether the gap stays.'`));
+          return;
+        }
+        this.sfx('sfx.sparkle');
+        box.replaceChildren(...head(),
+          this.barPair(tallies.map((t, k) => ({ label: `Sixes on ${name[k]}`, n: t[1], of: t[0] }))),
+          h('p', {}, `Sefa nods. 'Right: ${name[loaded]} is loaded. You used ${n} rolls. ${n < 40 ? 'That was quick. Were you sure, or lucky? With so few rolls, a fair die can look loaded too.' : 'That is a good handful. The more rolls, the less likely a fair die looks this way by chance.'}'`),
+          h('p', {}, "The Gambler's Imp hops off the table and into the reeds, muttering about its next long wait."),
+          this.finishField('bones'),
+          h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+      };
+      render();
+    };
+    table();
   }
 
   /** The Missing Word: paint one fact with a word you choose, see who notices what, then name a feeling that lost its word. */

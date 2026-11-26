@@ -86,3 +86,18 @@ describe('the Missing Word (language and power)', () => {
     expect(d.s.flags['meet.fray.hush-moth']).toBe(true);
   });
 });
+
+describe('Lanterns and Bones (dice, no betting)', () => {
+  it('a fair die has no memory, and a loaded die shows more sixes', async () => {
+    const { dueTest, roll, rng, diceFor } = await import('../src/domain/fairgames');
+    const k = dueTest(20000, 3, 3);
+    expect(k.sixes / k.after).toBeGreaterThan(0.14);
+    expect(k.sixes / k.after).toBeLessThan(0.19);
+    const r = rng(8); let six = 0, bad = 0;
+    for (let i = 0; i < 6000; i++) { const v = roll(r, 1 / 3); if (v === 6) six++; if (v < 1 || v > 6) bad++; }
+    expect(bad).toBe(0);
+    expect(six / 6000).toBeGreaterThan(0.3);
+    expect([0, 1]).toContain(diceFor(4).loaded);
+    expect(new Set([1, 2, 3, 4, 5, 6, 7, 8].map((s) => diceFor(s).loaded)).size).toBe(2);
+  });
+});
