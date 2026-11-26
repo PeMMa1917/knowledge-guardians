@@ -90,3 +90,48 @@ describe('The Doorway Pause', () => {
     expect(d.p.credit['credit.stage.finish']).toBe(8);
   });
 });
+
+describe('The Seat before the Bell', () => {
+  function use(d: Driver, id: string, choice: string) {
+    const prop = MAPS[d.s.mapId].interactables.find((item) => item.id === id);
+    if (!prop?.node || !check(prop.visibleIf, d.s)) throw new Error(`Unable to use ${id} here`);
+    d.walk(prop.node, [choice]);
+  }
+
+  it('can be found gallery-first and needs both the visitor’s request and the post check', () => {
+    const d = enter();
+    d.s.mapId = gallery;
+    expect(visible(d, ['stage-seat-request', 'stage-seat-post', 'stage-seat-desk']))
+      .toEqual(['stage-seat-request', 'stage-seat-post']);
+    use(d, 'stage-seat-post', 'Check where the post');
+    expect(visible(d, ['stage-seat-desk'])).toEqual([]);
+    use(d, 'stage-seat-request', 'Keep the folded request');
+    expect(d.done('stage.seats.o.inspect')).toBe(true);
+    expect(visible(d, ['stage-seat-desk'])).toEqual(['stage-seat-desk']);
+    expect(d.s.flags['stage.vantage']).toBeUndefined();
+  });
+
+  it.each([
+    ['reserve', 'Reserve the aisle place', /held until the opening bell/],
+    ['queue', 'Move the queue post', /open in order/],
+  ])('gives the %s choice a concrete notice without changing the rehearsal or sightlines', (plan, choice, noticeText) => {
+    const d = enter();
+    d.s.mapId = gallery;
+    const credit = { ...d.p.credit };
+    use(d, 'stage-seat-request', 'Keep the folded request');
+    use(d, 'stage-seat-post', 'Check where the post');
+    use(d, 'stage-seat-desk', choice);
+
+    expect(d.s.flags['stage.seats.plan']).toBe(plan);
+    expect(d.done('stage.seats.o.place')).toBe(true);
+    expect(visible(d, ['stage-seat-request', 'stage-seat-post', 'stage-seat-desk', 'stage-seat-reserve', 'stage-seat-queue']))
+      .toEqual([`stage-seat-${plan}`]);
+    expect(MAPS[gallery].interactables.find((item) => item.id === `stage-seat-${plan}`)?.text).toMatch(noticeText);
+    expect(d.s.journal).toContain('j.stage.seats');
+    expect(d.p.moments['mom.stage.seats']).toBeTruthy();
+    expect(d.p.credit).toEqual(credit);
+    expect(d.s.flags['stage.audience']).toBeUndefined();
+    expect(d.s.flags['stage.response']).toBeUndefined();
+    expect(d.e.talkEntry(host, d.s)).toBe('stage.host.welcome');
+  });
+});

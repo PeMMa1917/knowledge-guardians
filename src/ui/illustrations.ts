@@ -750,6 +750,52 @@ DRAW['coast.runner'] = [16, 24, (g) => {
   R(g, '#7b7766', 6, 9, 4, 1);
 }];
 
+function drawClearFrame(g: Ctx, reading: 'ready' | 'row' | 'edge') {
+  smallTable(g);
+  R(g, '#734e39', 0, 2, 16, 13);
+  R(g, '#263536', 2, 4, 12, 9);
+  for (const x of [3, 6, 9, 12]) R(g, '#a1b1a0', x, 4, 1, 9);
+  for (const y of [5, 8, 11]) R(g, '#a1b1a0', 2, y, 12, 1);
+  R(g, '#f0ddaa', 8, 1, 5, 3);
+  if (reading === 'row') {
+    R(g, '#61d7de', 0, 7, 16, 1);
+    R(g, '#cfeddb', 13, 6, 3, 1);
+  }
+  if (reading === 'edge') {
+    R(g, '#61d7de', 0, 12, 10, 1);
+    R(g, '#61d7de', 9, 11, 1, 2);
+    R(g, '#61d7de', 9, 11, 2, 1);
+  }
+}
+
+DRAW['coast.clear-frame'] = [16, 24, (g) => drawClearFrame(g, 'ready')];
+DRAW['coast.clear-frame-row'] = [16, 24, (g) => drawClearFrame(g, 'row')];
+DRAW['coast.clear-frame-edge'] = [16, 24, (g) => drawClearFrame(g, 'edge')];
+
+// Loan turns and the little book rests used in the Nexus reading room.
+DRAW['nexus.loan-counters'] = [24, 16, (g) => {
+  R(g, '#4c3840', 1, 3, 22, 12);
+  R(g, '#8a6546', 2, 4, 20, 9);
+  R(g, '#b78a5e', 2, 4, 20);
+  for (const x of [3, 8, 13, 18]) {
+    R(g, '#5b4740', x, 7, 4, 4);
+    R(g, '#d4b472', x, 6, 4, 3);
+    R(g, '#e8cf92', x + 1, 6, 2);
+  }
+}];
+function readingRest(g: Ctx, x: number) {
+  R(g, '#483b37', x + 2, 19, 12, 3);
+  R(g, '#725644', x + 3, 12, 9, 7);
+  R(g, '#a5805a', x + 4, 15, 7, 2);
+  R(g, '#e8d6ae', x + 2, 8, 6, 6);
+  R(g, '#eddcbc', x + 8, 8, 6, 6);
+  R(g, '#937757', x + 7, 8, 1, 6);
+  R(g, '#ad9777', x + 3, 11, 3);
+  R(g, '#ad9777', x + 10, 11, 3);
+}
+DRAW['nexus.reading-rest'] = [16, 24, (g) => readingRest(g, 0)];
+DRAW['nexus.reading-rests'] = [32, 24, (g) => { readingRest(g, 0); readingRest(g, 16); }];
+
 // Living Forest equipment and a schematic field note.
 DRAW['forest.waypost'] = [16, 24, (g) => {
   R(g, '#574235', 7, 7, 3, 16);
@@ -1065,6 +1111,64 @@ function allocationRecord(g: Ctx, dividingLine: number) {
 DRAW['water.fields'] = [16, 24, (g) => allocationRecord(g, 7)];
 DRAW['water.split'] = [16, 24, (g) => allocationRecord(g, 5)];
 DRAW['water.channel'] = [16, 24, (g) => allocationRecord(g, 3)];
+
+// Civic Machine destination markers and the original paper records that stay in each district.
+DRAW['civic.waypost'] = [20, 24, (g) => {
+  R(g, '#69595b', 8, 7, 4, 16);
+  R(g, '#817176', 1, 4, 18, 13);
+  R(g, '#a9b6a1', 2, 5, 16, 10);
+  R(g, '#d4ad88', 2, 5, 16, 2);
+  R(g, '#585d72', 8, 7, 3, 8);
+  R(g, '#585d72', 5, 8, 10, 2);
+  R(g, '#806276', 5, 10, 3, 2);
+  R(g, '#527e7c', 12, 10, 3, 2);
+}];
+DRAW['civic.console'] = [24, 24, (g) => {
+  pedestal(g, 2, 14, 20);
+  R(g, '#536575', 2, 4, 20, 12);
+  R(g, '#b3b7a0', 4, 5, 16, 2);
+  R(g, '#cfe2bd', 5, 7, 10, 6);
+  R(g, '#818a76', 6, 9, 8, 1);
+  R(g, '#818a76', 6, 11, 5, 1);
+  R(g, '#a68c7a', 17, 8, 3, 2);
+  R(g, '#ccba78', 17, 11, 3, 2);
+}];
+DRAW['civic.ledger'] = [16, 24, (g) => {
+  smallTable(g);
+  paper(g, 2, 4, 12, 11);
+  R(g, '#889ca2', 3, 6, 4, 2);
+  R(g, '#a08080', 9, 6, 4, 2);
+  for (const y of [10, 12]) {
+    R(g, '#7f7769', 4, y, 3, 1);
+    R(g, '#7f7769', 9, y, 3, 1);
+  }
+}];
+DRAW['civic.notice'] = [20, 24, (g) => {
+  R(g, '#705c5b', 7, 7, 6, 16);
+  paper(g, 2, 3, 16, 13);
+  R(g, '#738a96', 3, 5, 14, 2);
+  R(g, '#8b7964', 5, 9, 10, 1);
+  R(g, '#8b7964', 5, 12, 7, 1);
+}];
+DRAW['civic.wide'] = [24, 24, (g) => {
+  R(g, '#674f55', 3, 6, 18, 17);
+  paper(g, 1, 3, 22, 14);
+  R(g, '#718b8b', 3, 5, 18, 2);
+  R(g, '#997a6b', 4, 10, 16, 1);
+  R(g, '#7d727b', 4, 13, 16, 1);
+}];
+
+function civicWindows(g: Ctx, stepsWindows: number) {
+  R(g, '#6d5357', 7, 7, 6, 16);
+  paper(g, 1, 3, 18, 13);
+  for (let i = 0; i < 4; i++) {
+    R(g, i < stepsWindows ? '#927289' : '#5c8e8f', 3 + i * 4, 7, 3, 4);
+  }
+  R(g, '#8b7964', 4, 13, 11, 1);
+}
+DRAW['civic.rank'] = [20, 24, (g) => civicWindows(g, 0)];
+DRAW['civic.reserve'] = [20, 24, (g) => civicWindows(g, 1)];
+DRAW['civic.even'] = [20, 24, (g) => civicWindows(g, 2)];
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

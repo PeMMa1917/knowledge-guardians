@@ -246,15 +246,22 @@ The revised programme opens the Market of Measures. Weigh two simulated lots wit
 
 The revised price notice opens the Water Commons. Try different gate positions with the same intake, then visit the seed rows and lower channel to find what each crew needs. Publish a drought plan that makes its trade-off visible. Return after the leak is sealed and use the same setting to check what changed. A draft heading invites players to compare the dated drought order with both crews’ requests before publishing a new order. They can leave the old and new results side by side in a larger copy.
 
+## Chapter 12: A Place on the Route
+
+The repaired gate order opens the Civic Machine. Collect request slips from North Steps and Canal Walk. Run one dispatch rule against both registers, then try a different rule with the same combined records. Post one of three allocations for the mobile library’s four appointment windows. Keep the original rule in view while a reader’s question prompts an evening request stop or a wider walking round. The larger timetable gives each district, count and next check its own line.
+
 ## Opening and return investigations
 
 - **A Page Left Open** gives the visitor’s notebook a branch as soon as play starts. Leave a place for a second observation or a record number another visitor can follow.
 - **The Arrow at the Turn** is reachable before recruitment. Work with two spotters approaching the same arrow from opposite directions. Hang a shared landmark sketch or separate directions, then see how the readers use the change.
+- **The Uncounted Reader** begins by the Nexus workbench. The loan tray and two requests for a book support count different things. Try an arrangement, see which request remains, and carry what happened into the Civic Machine.
 - **Seal at the Door** uses the actual workshop model and the reverse of its seal. Players check what the seal certifies and set a supported display card for the reader they want to reach.
 - **A Dry Step for the Washhouse** follows water through three locations in early Emberford. The player can clear the catch screen or provide a covered route for this shift. A recheck at the same head mark shows which problem the chosen fix addressed. The Water Commons keeper can recall that work during the repair.
 - **The Two-Bell Order** asks for Emberford’s specific departure stub and matching ferry record. The same words do different jobs in those two records. Players choose how to leave a checkable account of the handover.
 - **The Third Groove** lets the player move and restore a reading lamp over the same keeper’s slip in the Nile Archive. Keep both readings by the desk or send them with the travelling copies before the first dispatch.
 - **A Name in Two Places** takes players back to the Nile Archive to use the Lens on a named papyrus and the mine map. Players choose how to cross-reference records with different purposes and different strength of attribution.
+- **Clear for Whom?** gives the dock menders a frame test and the lookout a separate visibility observation. The player can hang task-specific tags or carry both checks together.
+- **The Seat before the Bell** offers the gallery queue a timed reserved seat or an open entrance. Read the request and check the movable post before setting the public notice.
 
 ## Learning design review
 
@@ -262,4 +269,4 @@ The [learning design review](docs/TOK_ALIGNMENT.md) uses the supplied course gui
 
 ## Thirty-minute design audit
 
-Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Eighteen of twenty-three routes reach all 12 concepts and four framework areas within their first estimated half hour. The five other routes include three Nile variants, a Coast route and the gallery-first House of Performance route. The new Nile lamp route and the Water Commons route reach all 16 in their opening windows. Later windows still have gaps. The report also marks windows where a dimension depends on one distinct annotated action. The route actions and estimates are visible so unassisted timed playtests can challenge them.
+Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Twenty of twenty-six routes reach all 12 concepts and four framework areas within their first estimated half hour. The new Coast frame and theatre seat routes close gaps for players who take those stops. Two traces reach every dimension in all modeled windows. The report shows where an encounter is missing or where a dimension depends on one distinct annotated action. The route actions and estimates are visible so unassisted timed playtests can challenge them.

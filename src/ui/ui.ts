@@ -6,6 +6,7 @@ import { seaChart } from '../domain/seaCharts';
 import { STAGE_CUES, stageRehearsal, type StageCue } from '../domain/stageRehearsal';
 import { MARKET_BASES, marketComparison, marketOffersWithin, type MarketBasis } from '../domain/marketScale';
 import { WATER_SETTINGS, waterTrial, type WaterCondition, type WaterSetting } from '../domain/waterGate';
+import { CIVIC_RULES, CIVIC_SAMPLES, civicAllocation, type CivicRule, type CivicSample } from '../domain/civicConsole';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -3232,6 +3233,56 @@ export class UI implements UIApi {
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
+  openCivicConsole(): void {
+    const controller = ctx.controller;
+    let sample: CivicSample = 'desk';
+    const sampleLabels: Record<CivicSample, string> = { desk: 'Desk register', combined: 'Desk and walking registers' };
+    const ruleLabels: Record<CivicRule, string> = {
+      rank: 'Send all windows to the larger count',
+      reserve: 'Start with one window per stop',
+      even: 'Give both stops two windows',
+    };
+    const registers = h('div', { class: 'row wrap', role: 'group', 'aria-label': 'Registers on the console' });
+    const rules = h('div', { class: 'row wrap', role: 'group', 'aria-label': 'Rules for assigning windows' });
+    const counts = h('p', { 'aria-live': 'polite' });
+    const plan = h('div', { 'aria-live': 'polite' });
+    const drawSample = () => {
+      const { counts: { steps, canal } } = civicAllocation(sample, 'even');
+      counts.textContent = `Requests on this register: ${steps} at North Steps · ${canal} at Canal Walk.`;
+      for (const button of registers.querySelectorAll('button')) {
+        button.setAttribute('aria-pressed', String(button.dataset.sample === sample));
+      }
+      for (const button of rules.querySelectorAll('button')) button.setAttribute('aria-pressed', 'false');
+      clear(plan);
+    };
+    for (const register of CIVIC_SAMPLES) {
+      const waiting = register === 'combined' && controller.state.flags['civic.walk.read'] !== true;
+      registers.append(h('button', {
+        type: 'button', 'data-sample': register, 'aria-pressed': 'false',
+        disabled: waiting,
+        onclick: () => { sample = register; drawSample(); },
+      }, waiting ? 'Walking register at Canal Walk' : sampleLabels[register]));
+    }
+    for (const rule of CIVIC_RULES) {
+      rules.append(h('button', { type: 'button', 'data-rule': rule, 'aria-pressed': 'false', onclick: () => {
+        const events = controller.dispatch({ type: 'RunCivicTrial', sample, rule });
+        if (events.some((event) => event.kind === 'error')) return;
+        for (const button of rules.querySelectorAll('button')) {
+          button.setAttribute('aria-pressed', String(button.dataset.rule === rule));
+        }
+        const { windows } = civicAllocation(sample, rule);
+        plan.replaceChildren(h('p', {}, `Library windows: ${windows.steps} at North Steps · ${windows.canal} at Canal Walk.`),
+          h('div', { class: 'civic-windows', 'aria-hidden': 'true' },
+            ...Array.from({ length: 4 }, (_, index) => h('span', { class: index < windows.steps ? 'steps' : 'canal' },
+              index < windows.steps ? 'Steps' : 'Canal'))));
+      } }, ruleLabels[rule]));
+    }
+    drawSample();
+    this.openModal('civic-console', 'Route console', this.closeBtn(), h('h2', {}, 'Route console'),
+      h('p', {}, 'Four library appointment windows are free. Put a register on the console and run a rule.'),
+      registers, counts, rules, plan);
   }
 
   openWaterGate(): void {

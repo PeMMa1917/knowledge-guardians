@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { civicAllocation, type CivicRule, type CivicSample } from '../src/domain/civicConsole';
 import { compareCopy } from '../src/domain/copyComparison';
 import { forestWatch, type ForestWindow } from '../src/domain/forestWatch';
 import { marketComparison, type MarketBasis } from '../src/domain/marketScale';
@@ -401,9 +402,9 @@ function preservedLives(): Route {
   return route;
 }
 
-function observatoryCoast(bellSlip: boolean): Route {
+function observatoryCoast(stop?: 'bell-slip' | 'clear-terms'): Route {
   const route = new Route();
-  const extra = bellSlip ? 2 : 0;
+  const extra = stop === 'clear-terms' ? 4 : stop ? 2 : 0;
   // Independent Chapter 4 session. The Cold Store's first display is already open.
   route.driver.s.objectivesDone.push('preserved.publish');
   route.at(4, 'Ask which crews need the notice and which route each follows', ['perspective', 'perspectives'], (d) => {
@@ -414,13 +415,27 @@ function observatoryCoast(bellSlip: boolean): Route {
   route.at(8, 'Read the sheltered quay gauge with its place and interval attached', ['evidence', 'scope', 'methods-and-tools'], (d) => {
     readSign(d, 'coast-harbour-gauge');
   });
-  if (bellSlip) route.at(10, 'Keep the quay crew’s way of counting alongside the timed station marks',
+  if (stop === 'bell-slip') route.at(10, 'Keep the quay crew’s way of counting alongside the timed station marks',
     ['culture', 'interpretation', 'perspectives'], useProp('coast.bell-slip', 'both'));
-  route.at(16 + extra, 'Align the two sites by time and show how two rain reports can both be true', ['evidence', 'truth', 'objectivity', 'certainty', 'methods-and-tools'], (d) => {
+  if (stop === 'clear-terms') route.at(10, 'Move the same ribbon through the marked row and unmarked edge to check the net-menders’ claim', [
+    'evidence', 'truth', 'objectivity', 'certainty', 'scope', 'methods-and-tools',
+  ], (d) => {
+    walkScene(d, 'coast-clear-net-frame', 'coast.clear.row', 'Pass the same ribbon', 'Keep the two readings');
+    expect(d.done('coast.clear.test')).toBe(true);
+  });
+  route.at(16 + (stop ? 2 : 0), 'Align the two sites by time and show how two rain reports can both be true', ['evidence', 'truth', 'objectivity', 'certainty', 'methods-and-tools'], (d) => {
     useDoor(d, 'coast-headland-path');
     readSign(d, 'coast-station-gauge');
     d.talk('coast-forecaster', 'Pin each reading to the place');
     expect(d.done('coast.readings')).toBe(true);
+  });
+  if (stop === 'clear-terms') route.at(20, 'Distinguish the menders’ clear row from the lookout’s clear view, then let each crew update its own heading', [
+    'culture', 'interpretation', 'scope', 'perspective', 'perspectives', 'power', 'values', 'justification', 'responsibility', 'ethics',
+  ], (d) => {
+    readSign(d, 'coast-clear-visibility');
+    walkScene(d, 'coast-clear-terms', 'coast.clear.tags');
+    expect(d.done('coast.clear.share')).toBe(true);
+    readSign(d, 'coast-clear-tower-tag');
   });
   route.at(22 + extra, 'Separate the forecast from the measurements and keep the wind assumption with the estimate', ['explanation', 'interpretation', 'justification', 'scope'], (d) => {
     readSign(d, 'coast-chart-board');
@@ -429,6 +444,7 @@ function observatoryCoast(bellSlip: boolean): Route {
   });
   route.at(28 + extra, 'Send a written copy with the runner to the crews who cannot see the quay board', ['perspective', 'values', 'power', 'responsibility', 'perspectives', 'ethics'], (d) => {
     useDoor(d, 'coast-headland-return');
+    if (stop === 'clear-terms') readSign(d, 'coast-clear-net-tag');
     d.talk('coast-signalkeeper', 'Send the runner to the basket crews');
     expect(d.done('coast.dispatch')).toBe(true);
     readSign(d, 'coast-notice-runner');
@@ -750,10 +766,10 @@ function runStage(d: Driver, cue: StageCue) {
   return beats;
 }
 
-function houseOfPerformance(firstCue: StageCue): Route {
+function houseOfPerformance(firstCue: StageCue, seatRequest = false): Route {
   const route = new Route();
   const galleryFirst = firstCue === 'move';
-  const extra = galleryFirst ? 3 : 0;
+  const extra = (galleryFirst ? 3 : 0) + (seatRequest ? 4 : 0);
   const alternateCue = galleryFirst ? 'pause' : 'move';
   // Independent Chapter 9 session. Both survey edges have been published.
   route.driver.s.objectivesDone.push('sea.finish');
@@ -764,6 +780,16 @@ function houseOfPerformance(firstCue: StageCue): Route {
     useDoor(d, 'stage-gallery-path');
     readSign(d, 'stage-vantage');
     d.talk('stage-host');
+  });
+  if (seatRequest) route.at(11, 'Compare seat customs and reserve an aisle place without posting the reason for the request', [
+    'culture', 'evidence', 'values', 'power', 'responsibility', 'justification', 'ethics',
+  ], (d) => {
+    walkScene(d, 'stage-seat-request', undefined, 'Keep the folded request');
+    walkScene(d, 'stage-seat-post', undefined, 'Check where the post can stand');
+    walkScene(d, 'stage-seat-desk', undefined, 'Reserve the aisle place');
+    expect(d.done('stage.seats.o.place')).toBe(true);
+    expect(d.s.flags['stage.seats.plan']).toBe('reserve');
+    readSign(d, 'stage-seat-reserve');
   });
   route.at(10 + extra, 'Check the positions in the blocking plan and run one order of the scene', ['evidence', 'scope', 'methods-and-tools'], (d) => {
     useDoor(d, galleryFirst ? 'stage-gallery-to-rehearsal' : 'stage-rehearsal-path');
@@ -960,6 +986,96 @@ function waterCommons(): Route {
   return route;
 }
 
+function checkCivicTrial(d: Driver, sample: CivicSample, rule: CivicRule, steps: number, canal: number): void {
+  const console = MAPS[d.s.mapId].interactables.find((prop) => prop.id === 'civic-console');
+  expect(console?.kind).toBe('civic-console');
+  expect(check(console?.visibleIf, d.s)).toBe(true);
+  const counts = sample === 'desk' ? { steps: 12, canal: 5 } : { steps: 15, canal: 16 };
+  expect(civicAllocation(sample, rule)).toEqual({ counts, windows: { steps, canal } });
+  d.run({ type: 'RunCivicTrial', sample, rule });
+  expect(d.s.flags[`civic.trial.${sample}.${rule}`]).toBe(true);
+}
+
+function civicMachine(): Route {
+  const route = new Route();
+  // Prepared Chapter 11 save. Both allocations at the weir have been entered.
+  route.driver.s.objectivesDone.push('water.finish');
+  route.at(4, 'Hear how the library allocates four windows and what is counted as a request', ['scope', 'perspective'], (d) => {
+    useDoor(d, 'civic-door');
+    d.talk('civic-operator');
+    expect(d.done('civic.arrival')).toBe(true);
+  });
+  route.at(9, 'Allocate all four windows by rank using only the desk requests', ['evidence', 'scope', 'methods-and-tools'], (d) => {
+    checkCivicTrial(d, 'desk', 'rank', 4, 0);
+    expect(d.done('civic.compare')).toBe(false);
+  });
+  route.at(18, 'Read the draft’s claim and check how the desk and walking crews record requests', ['evidence', 'perspective', 'perspectives', 'scope'], (d) => {
+    useDoor(d, 'civic-steps-path');
+    readSign(d, 'civic-ledger-draft');
+    readSign(d, 'civic-desk-slip');
+    useDoor(d, 'civic-steps-to-canal');
+    readSign(d, 'civic-walk-slip');
+    expect(d.done('civic.sources')).toBe(true);
+  });
+  route.at(24, 'Keep the rule fixed, change the register and see why the larger count reverses', [
+    'certainty', 'evidence', 'objectivity', 'explanation', 'interpretation', 'methods-and-tools',
+  ], (d) => {
+    useDoor(d, 'civic-canal-return');
+    d.talk('civic-operator');
+    checkCivicTrial(d, 'combined', 'rank', 0, 4);
+    expect(d.done('civic.compare')).toBe(true);
+  });
+  route.at(28, 'Keep the combined register fixed and try protecting one window in each district', [
+    'objectivity', 'explanation', 'values', 'justification', 'methods-and-tools',
+  ], (d) => {
+    d.talk('civic-operator');
+    checkCivicTrial(d, 'combined', 'reserve', 1, 3);
+    expect(d.done('civic.rules')).toBe(true);
+  });
+  route.at(30, 'Return to the ledger and check the draft against the two counts it left out', ['truth', 'interpretation', 'scope'], (d) => {
+    useDoor(d, 'civic-steps-path');
+    readSign(d, 'civic-ledger-checked');
+  });
+  route.at(36, 'Post a starting window for each district and send the two remaining windows by demand', [
+    'power', 'values', 'responsibility', 'justification', 'ethics',
+  ], (d) => {
+    d.talk('civic-clerk', 'Leave one starting window');
+    expect(d.done('civic.publish')).toBe(true);
+    expect(d.s.flags['civic.response']).toBe('reserve');
+    readSign(d, 'civic-result-reserve');
+  });
+  route.at(43, 'Read how the published window still misses a reader who cannot use the desk in time', [
+    'interpretation', 'perspective', 'perspectives', 'scope',
+  ], (d) => {
+    useDoor(d, 'civic-steps-to-canal');
+    readSign(d, 'civic-reader-note');
+    expect(d.done('civic.reader')).toBe(true);
+  });
+  route.at(50, 'Keep the original rule and add an evening request stop for the next count', [
+    'evidence', 'responsibility', 'power', 'values', 'justification', 'ethics',
+  ], (d) => {
+    useDoor(d, 'civic-canal-to-steps');
+    d.talk('civic-clerk', 'Leave an evening request stop');
+    expect(d.done('civic.finish')).toBe(true);
+    expect(d.s.flags['civic.response']).toBe('reserve');
+    expect(d.s.flags['civic.revision']).toBe('evening');
+    readSign(d, 'civic-revised');
+  });
+  route.at(55, 'Check that the evening crew’s notice gives readers a place to leave the times they could use', [
+    'perspective', 'perspectives', 'responsibility', 'methods-and-tools',
+  ], (d) => {
+    useDoor(d, 'civic-steps-to-canal');
+    readSign(d, 'civic-evening-call');
+  });
+  route.at(60, 'Leave a wider notice with the rule, both district counts and the details still needed', ['scope', 'responsibility', 'perspectives', 'ethics'], (d) => {
+    useDoor(d, 'civic-canal-to-steps');
+    d.talk('civic-clerk', 'Leave a wider route notice');
+    expect(d.done('civic.access')).toBe(true);
+    readSign(d, 'civic-wide-notice');
+  });
+  return route;
+}
+
 describe('rolling TOK coverage audit', () => {
   it('checks gaps between sampled actions and expires an encounter at the window boundary', () => {
     const encounters: TimedEncounter[] = [
@@ -1004,8 +1120,9 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Nile route through Royal Records and the route model', end: 54, play: () => nileDispatch('royal-seal') },
     { name: 'Nile Royal Records route with the Tilt Tray stop', end: 57, play: () => nileDispatch('royal-seal', true) },
     { name: 'Preserved Lives from a prepared Chapter 2 save', end: 50, play: preservedLives },
-    { name: 'Observatory Coast from a prepared Chapter 3 save', end: 50, play: () => observatoryCoast(false) },
-    { name: 'Observatory Coast with the quay bell slip', end: 52, play: () => observatoryCoast(true) },
+    { name: 'Observatory Coast from a prepared Chapter 3 save', end: 50, play: observatoryCoast },
+    { name: 'Observatory Coast with the quay bell slip', end: 52, play: () => observatoryCoast('bell-slip') },
+    { name: 'Observatory Coast with the menders’ frame and lookout’s check', end: 54, play: () => observatoryCoast('clear-terms') },
     { name: 'Living Forest from a prepared Chapter 4 save', end: 55, play: () => livingForest(false) },
     { name: 'Living Forest starting with the bridge route book', end: 55, play: () => livingForest(true) },
     { name: 'Metalworks from a prepared Chapter 5 save', end: 50, play: () => metalworks(false) },
@@ -1014,8 +1131,10 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Cartographers’ Sea from a prepared Chapter 7 save', end: 51, play: cartographersSea },
     { name: 'House of Performance with the silence first', end: 51, play: () => houseOfPerformance('pause') },
     { name: 'House of Performance starting from a gallery seat', end: 54, play: () => houseOfPerformance('move') },
+    { name: 'House of Performance with an early aisle-seat request', end: 58, play: () => houseOfPerformance('move', true) },
     { name: 'Market of Measures from a prepared Chapter 9 save', end: 52, play: marketOfMeasures },
     { name: 'Water Commons from a prepared Chapter 10 save', end: 57, play: waterCommons },
+    { name: 'Civic Machine from a prepared Chapter 11 save', end: 63, play: civicMachine },
   ])('can execute the modeled route for $name and report its gaps', ({ name, end, play }) => {
     const route = play();
     const gaps = coverageGaps(end, route.encounters);

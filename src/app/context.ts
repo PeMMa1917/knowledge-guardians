@@ -36,6 +36,7 @@ export interface UIApi {
   openStageRehearsal(): void;
   openMarketScale(): void;
   openWaterGate(): void;
+  openCivicConsole(): void;
   openTalents(atWaystone?: boolean): void;
   openLedger(): void;
   openClue(id: string): void;

@@ -40,6 +40,21 @@ Authors can use these sequences when reviewing linked DP subjects and practice f
 - Keep fictional models labelled, and give documented objects a specific source. For classroom transfer, invite students to choose different examples from their learning or surroundings and explain what those examples actually show.
 - Use the current guide for formal assessment requirements and academic integrity. The game provides practice in reasoning and communication. A play route, its credit and its coverage report describe activity in the game.
 
+## Ideas from the supplied teaching materials
+
+The additional teaching plans, slides and discussion guides inform how characters disagree and what the player can do about it. The uploaded coversheets describe some resources that were supplied separately. Use the materials for their reasoning and examples of teaching approaches. The cases, worlds and game dialogue are original.
+
+| Idea to revisit | Early play | A later use that changes the problem |
+|---|---|---|
+| What a measure leaves out | The Nexus loan tray records a transaction while a waiting tally records people who need a support. Move the supports and find out who can use them. | At the Civic console change which requests count while holding the rule fixed. Then change the rule with the same requests. The result allocates four windows exactly, but who needs an evening window is still open. |
+| How an authoritative account gains force | A visitor trusts the gold seal. Turn over the workshop seal to see which check it records. | Compare the drafts at the City press, the Water Commons and the Civic desk. In each case a reader can be led beyond the record in a different way. |
+| How a frame or wording shapes what people notice | Help two readers test where the same arrow points from their approaches. Try the same keeper’s slip under a different lamp in the Nile Archive. | At the Observatory Coast check two practical uses of the same word. In the theatre compare how timing and viewing position change what a performance makes apparent. |
+| What makes evidence adequate for a particular claim | Compare the model mark on two surfaces and keep its test claim small. | In the Forest a blocked view affects what can be inferred from a zero. At the Weir keep intake steady after repair, then compare that result with separate records of what the crews agreed to do. |
+| Who is responsible for a record that people rely on | Keep a publicly checkable reference for the model while protecting a detail a reader does not need. | A seat request can justify a public reservation without naming its reader. The Civic plan keeps the inputs and rule visible while opening a way to report a need the counter missed. |
+| How an expert can revise a strong belief | Put a limited claim in front of Clerk Venn and reframe the claim in the Showdown when another piece of evidence changes it. | At the Market or Civic desk retain the earlier result and the evidence that revised it. Update where the next reader actually uses the notice. |
+
+For political and technological questions, give players an identifiable decision-maker, a route by which a claim or rule travels, and somebody who cannot use the result as written. For history and the arts, give records and performances distinct purposes. A recorded date, a remembered experience and a staged cue can all matter to an investigation for different reasons. Avoid giving them one common test of reliability.
+
 ## Next checks
 
 Review each new chapter for a claim that can fail, a reason another perspective matters, and a decision worth revising. Check whether a second case genuinely calls for a different method. Continue reviewing underrepresented subjects and perspectives, routes that skip optional investigations, and later half-hour windows. Time those routes with students before drawing conclusions about pacing or transfer.

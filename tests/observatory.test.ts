@@ -99,3 +99,42 @@ describe('The Next Bell', () => {
     expect(d.p.credit['credit.coast.revise']).toBe(8);
   });
 });
+
+describe('Clear for Whom?', () => {
+  it.each([
+    ['Pass the ribbon through', 'row', 'Leave the ribbon at the row', 'Pass the same ribbon', 'tags', 'Leave separate tags'],
+    ['Pass the same ribbon', 'edge', 'Leave the ribbon at the edge', 'Pass the ribbon through', 'card', 'Give the runner'],
+  ])('uses both checks after the %s reading, then files the appropriate copy',
+  (first, phase, exit, second, placement, choose) => {
+    const d = begin();
+    const frame = harbour.interactables.find((prop) => prop.id === 'coast-clear-net-frame')!;
+    const desk = station.interactables.find((prop) => prop.id === 'coast-clear-terms')!;
+    const stationTag = ['coast-clear-tower-tag'];
+    const harbourNotes = ['coast-clear-net-tag', 'coast-clear-runner-card'];
+    const credits = { ...d.p.credit };
+
+    expect(visible(d, harbourNotes)).toEqual([]);
+    d.walk(frame.node!, [first, exit]);
+    expect(d.s.flags['coast.clear.phase']).toBe(phase);
+    expect(frame.artBy?.keys[phase]).toBe(`coast.clear-frame-${phase}`);
+    expect(d.done('coast.clear.test')).toBe(false);
+    expect(check(desk.visibleIf, d.s)).toBe(false);
+    d.walk(frame.node!, [second, 'Keep the two readings']);
+    expect(d.done('coast.clear.test')).toBe(true);
+
+    d.s.mapId = station.id;
+    read(d, 'coast-clear-visibility');
+    expect(check(desk.visibleIf, d.s)).toBe(false);
+    expect(d.e.visibleOptions(desk.node!, d.s).map(({ option }) => option.next)).toEqual([undefined]);
+    read(d, 'coast-station-gauge');
+    expect(check(desk.visibleIf, d.s)).toBe(true);
+    d.walk(desk.node!, [choose]);
+    expect(d.done('coast.clear.share')).toBe(true);
+    expect(d.done('coast.readings')).toBe(false);
+    expect(d.s.flags['coast.notice']).toBeUndefined();
+    expect(d.p.credit).toEqual(credits);
+    expect(visible(d, stationTag)).toEqual(placement === 'tags' ? stationTag : []);
+    d.s.mapId = harbour.id;
+    expect(visible(d, harbourNotes)).toEqual([placement === 'tags' ? harbourNotes[0] : harbourNotes[1]]);
+  });
+});

@@ -382,6 +382,101 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH9-R03",
+   "world": "WORLD-10",
+   "title": "The Seat before the Bell",
+   "knowledgeQuestion": "Who gets to use a room when its usual rules give people different starting points?",
+   "available": {
+    "objective": "stage.arrival"
+   },
+   "objectives": [
+    {
+     "id": "stage.seats.o.inspect",
+     "title": "Check the folded seat request and try the other queue-post location.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "stage.seats.request",
+        "eq": true
+       },
+       {
+        "flag": "stage.seats.post",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "perspective",
+       "evidence",
+       "objectivity"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "ART"
+      ],
+      "subjects": [
+       "theatre",
+       "anthropology",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-ICU-18",
+      "SK-RSC-15"
+     ]
+    },
+    {
+     "id": "stage.seats.o.place",
+     "title": "Set out a seating notice that keeps the aisle clear.",
+     "essential": false,
+     "visible": {
+      "objective": "stage.seats.o.inspect"
+     },
+     "done": {
+      "flagSet": "stage.seats.plan"
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "justification",
+       "responsibility"
+      ],
+      "atl": [
+       "communication",
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "ART"
+      ],
+      "subjects": [
+       "theatre",
+       "design-tech",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.stage.seats"
+      }
+     ]
+    }
+   ]
   }
  ],
  "characters": [
@@ -1058,6 +1153,155 @@
    "speaker": "copies-lendingkeeper",
    "historicalLabel": "fictional-world",
    "text": "The queue copy says a slip identifies the item coming back. It also carries the signed entry rule. A reader can leave the return queue and go inside without one."
+  },
+  {
+   "id": "stage.seats.request",
+   "speaker": "narrator",
+   "text": "A visitor has left a folded note asking for one aisle seat near the door. She gives no reason. At this house an usher can hold a place with a ribbon until the opening bell. The folded note can stay at the desk.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep the folded request at the usher’s desk.",
+     "next": "stage.seats.request.kept",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.arrival"
+       },
+       {
+        "not": {
+         "flag": "stage.seats.request",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.seats.request",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the folded note on its hook."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "stage.seats.request.kept",
+   "speaker": "narrator",
+   "text": "The usher records which seat is being asked for. A ribbon can name the place and when the hold ends. People in the queue can read that much.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.seats.post",
+   "speaker": "narrator",
+   "text": "The queue post is on a movable foot. A visitor who waits beside it can read the tall programme, but the queue hides the low seat map. Touring groups mark the queue on the wall before they choose their own seats, so everyone in turn can see the map.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Check where the post can stand without covering the seat map.",
+     "next": "stage.seats.post.checked",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.arrival"
+       },
+       {
+        "not": {
+         "flag": "stage.seats.post",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.seats.post",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the post at its old mark."
+    }
+   ],
+   "claimKind": "observation"
+  },
+  {
+   "id": "stage.seats.post.checked",
+   "speaker": "narrator",
+   "text": "The wall mark leaves a path to the low map. Walkers can read the map as they reach the front of the queue. The post on stage is a different one. The scenery stays where the actors set it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.seats.desk",
+   "speaker": "narrator",
+   "text": "Two regulars are waiting in order. One wants to keep her place in the queue while the visitor waits by the door. The visitor wants to know where she can sit. You have room to keep the aisle clear either way. Which arrangement should the usher use for this performance?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Reserve the aisle place until the opening bell. Put the queue by the wall.",
+     "next": "stage.seats.end.reserve",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.seats.o.inspect"
+       },
+       {
+        "not": {
+         "flagSet": "stage.seats.plan"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.seats.plan",
+       "value": "reserve"
+      }
+     ]
+    },
+    {
+     "text": "Move the queue post to the wall. Let visitors choose their places in order.",
+     "next": "stage.seats.end.queue",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.seats.o.inspect"
+       },
+       {
+        "not": {
+         "flagSet": "stage.seats.plan"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.seats.plan",
+       "value": "queue"
+      }
+     ]
+    },
+    {
+     "text": "Leave the seating decision with the usher for now."
+    }
+   ]
+  },
+  {
+   "id": "stage.seats.end.reserve",
+   "speaker": "narrator",
+   "text": "A ribbon on the aisle seat gives the visitor a place before she joins the room. The notice tells the regulars which other seats are open. If she leaves it unused when the first bell goes, the usher will offer it to the queue. The folded request stays at the desk.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.seats.end.queue",
+   "speaker": "narrator",
+   "text": "The post moves to the wall. Everyone has a turn at the low map before the line moves. When her turn comes, the visitor points to the unclaimed aisle seat. She has room to explain what seat she wants without opening her note for the room.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "hints": [
@@ -1276,6 +1520,54 @@
    "objective": "stage.transfer.copy",
    "depth": 4,
    "text": "Choose a copy for the hall door or a note for the return queue. Both keep the rule and the source."
+  },
+  {
+   "id": "h.stage.seats.inspect.1",
+   "objective": "stage.seats.o.inspect",
+   "depth": 1,
+   "text": "A person looking for a place may need to see something the queue hides."
+  },
+  {
+   "id": "h.stage.seats.inspect.2",
+   "objective": "stage.seats.o.inspect",
+   "depth": 2,
+   "text": "The request tells you what place is needed. The post helps you see how people can get there."
+  },
+  {
+   "id": "h.stage.seats.inspect.3",
+   "objective": "stage.seats.o.inspect",
+   "depth": 3,
+   "text": "The folded slip is just to the left of the gallery arrival. The movable post is on the other side of the aisle."
+  },
+  {
+   "id": "h.stage.seats.inspect.4",
+   "objective": "stage.seats.o.inspect",
+   "depth": 4,
+   "text": "Keep the folded request at the desk and test the wall mark for the queue post."
+  },
+  {
+   "id": "h.stage.seats.place.1",
+   "objective": "stage.seats.o.place",
+   "depth": 1,
+   "text": "Think about what the public needs to know before it can wait or choose."
+  },
+  {
+   "id": "h.stage.seats.place.2",
+   "objective": "stage.seats.o.place",
+   "depth": 2,
+   "text": "A held seat gives certainty early. An open queue can let people choose after everyone has a view of the plan."
+  },
+  {
+   "id": "h.stage.seats.place.3",
+   "objective": "stage.seats.o.place",
+   "depth": 3,
+   "text": "Use the usher’s desk near the gallery entrance after checking the request and the post."
+  },
+  {
+   "id": "h.stage.seats.place.4",
+   "objective": "stage.seats.o.place",
+   "depth": 4,
+   "text": "Name the seat and time of a hold, or move the queue to the wall so visitors can use the low map. Read the resulting notice."
   }
  ],
  "criteria": [
@@ -1305,6 +1597,11 @@
    "id": "j.stage.transfer",
    "title": "A rule by the door",
    "text": "A pause gave the theatre audience room to wonder why a person waited. The lending register answered a different question. It gave the hall’s entry rule, which we could carry as a signed line to people at the door or queue."
+  },
+  {
+   "id": "j.stage.seats",
+   "claimKind": "interpretation",
+   "text": "The ribbon and the moving queue post give a visitor different ways to find a place. The public notice says how the seats work. The folded request tells the usher only what seat was asked for."
   }
  ],
  "moments": [
@@ -1323,6 +1620,15 @@
     "objective": "stage.access"
    },
    "did": "You left a working cue sheet for an understudy who missed rehearsal."
+  },
+  {
+   "id": "mom.stage.seats",
+   "attribute": "caring",
+   "when": {
+    "objective": "stage.seats.o.place"
+   },
+   "did": "You checked how a visitor could reach the aisle and protected their folded request while arranging the queue.",
+   "prompt": "Which part of the seating rule helps a person who arrives after the room is half full?"
   }
  ]
 }

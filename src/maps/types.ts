@@ -3,7 +3,7 @@
  * characters, interactable objects, zones and lights. Units are tiles.
  * The WorldScene turns this data into a playable place.
  */
-export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door' | 'secret' | 'tiles' | 'shop' | 'gather' | 'workbench' | 'reading' | 'rumours' | 'trader' | 'seal' | 'boss' | 'model' | 'scene' | 'forest-watch' | 'metal-trial' | 'copy-compare' | 'sea-chart' | 'stage-rehearsal' | 'market-scale' | 'water-gate';
+export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door' | 'secret' | 'tiles' | 'shop' | 'gather' | 'workbench' | 'reading' | 'rumours' | 'trader' | 'seal' | 'boss' | 'model' | 'scene' | 'forest-watch' | 'metal-trial' | 'copy-compare' | 'sea-chart' | 'stage-rehearsal' | 'market-scale' | 'water-gate' | 'civic-console';
 
 export interface Interactable {
   id: string;

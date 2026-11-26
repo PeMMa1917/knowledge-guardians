@@ -15,6 +15,11 @@ const strokeUnposted: Condition = { not: { flagSet: 'nexus.stroke.display' } };
 const guideUnhung: Condition = { not: { flagSet: 'nexus.guide.layout' } };
 const guideTrial: Condition = { all: [{ flag: 'nexus.guide.started', eq: true }, guideUnhung] };
 const guideSides: Condition = { flag: 'nexus.guide.layout', eq: 'sides' };
+const restTogether: Condition = { flag: 'nexus.rest.layout', eq: 'together' };
+const restCirculate: Condition = { flag: 'nexus.rest.layout', eq: 'circulate' };
+const restTablePlaced: Condition = { flag: 'nexus.rest.table', eq: true };
+const restPortablePlaced: Condition = { flag: 'nexus.rest.mobile', eq: true };
+const restPairPlaced: Condition = { flag: 'nexus.rest.pair', eq: true };
 
 const ferryShelf: [state: string, art: string, visible: Condition][] = [
   ['shelf', 'board-stand', { not: { flagSet: 'nexus.ferry.packet' } }],
@@ -142,6 +147,32 @@ export const NEXUS: MapDef = {
     { id: 'nexus-stroke-carrier', kind: 'scene', x: 18, y: 15, w: 1, h: 1, label: 'the two-surface comparison by the bundles',
       art: 'copies.strip', walkThrough: true, node: 'nexus.stroke.carrier',
       visibleIf: { flag: 'nexus.stroke.display', eq: 'carrier' } },
+    { id: 'nexus-rest-counter', kind: 'scene', x: 21, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the tray of loan counters', art: 'nexus.loan-counters', node: 'nexus.rest.counter' },
+    { id: 'nexus-rest-request', kind: 'scene', x: 23, y: 12, w: 1, h: 1, walkThrough: true,
+      label: 'the waiting requests by the low table', art: 'preserved.slip', node: 'nexus.rest.request' },
+    { id: 'nexus-rest-bench', kind: 'scene', x: 24, y: 17, w: 1, h: 1, walkThrough: true,
+      label: 'the two spare reading rests', art: 'nexus.reading-rests', node: 'nexus.rest.bench',
+      visibleIf: { all: [{ flag: 'nexus.rest.counted', eq: true }, { flag: 'nexus.rest.waiting', eq: true },
+        { not: { flagSet: 'nexus.rest.layout' } }] } },
+    { id: 'nexus-rest-pair-slot', kind: 'scene', x: 24, y: 11, w: 1, h: 1, walkThrough: true,
+      label: 'the low table ready for two rests', art: 'board-stand', node: 'nexus.rest.pair-slot',
+      visibleIf: { all: [restTogether, { not: restPairPlaced }] } },
+    { id: 'nexus-rest-pair-ready', kind: 'scene', x: 24, y: 11, w: 1, h: 1, walkThrough: true,
+      label: 'the books resting together on the low table', art: 'nexus.reading-rests', node: 'nexus.rest.pair-ready',
+      visibleIf: { all: [restTogether, restPairPlaced] } },
+    { id: 'nexus-rest-fixed-slot', kind: 'scene', x: 24, y: 11, w: 1, h: 1, walkThrough: true,
+      label: 'the low table ready for a fixed rest', art: 'board-stand', node: 'nexus.rest.fixed-slot',
+      visibleIf: { all: [restCirculate, { not: restTablePlaced }] } },
+    { id: 'nexus-rest-fixed-ready', kind: 'scene', x: 24, y: 11, w: 1, h: 1, walkThrough: true,
+      label: 'the fixed rest on the low table', art: 'nexus.reading-rest', node: 'nexus.rest.fixed-ready',
+      visibleIf: { all: [restCirculate, restTablePlaced] } },
+    { id: 'nexus-rest-mobile-slot', kind: 'scene', x: 19, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the return hook for a portable rest', art: 'board-stand', node: 'nexus.rest.mobile-slot',
+      visibleIf: { all: [restCirculate, { not: restPortablePlaced }] } },
+    { id: 'nexus-rest-mobile-ready', kind: 'scene', x: 19, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the portable rest at the return hook', art: 'nexus.reading-rest', node: 'nexus.rest.mobile-ready',
+      visibleIf: { all: [restCirculate, restPortablePlaced] } },
     // One shelf carries the request, the prepared envelope and the edition kept for visitors.
     ...ferryShelf.map(([state, art, condition]) => ({
       id: `nexus.ferry.${state}`, kind: 'scene' as const, node: `nexus.ferry.${state}`,
@@ -191,6 +222,9 @@ export const NEXUS: MapDef = {
     { id: 'water-door', kind: 'door', x: 25, y: 11, w: 1, h: 1, label: 'the passage to the Water Commons', art: 'water.waypost',
       walkThrough: true, visibleIf: { objective: 'market.finish' }, flag: 'water.arrived',
       to: { map: 'water.gatehouse', x: 12, y: 12 } },
+    { id: 'civic-door', kind: 'door', x: 28, y: 11, w: 1, h: 1, label: 'the passage to the Civic Machine', art: 'civic.waypost',
+      walkThrough: true, visibleIf: { objective: 'water.finish' }, flag: 'civic.arrived',
+      to: { map: 'civic.dispatch', x: 12, y: 12 } },
     { id: 'preserved-return-desk', kind: 'sign', x: 37, y: 16, w: 1, h: 1, label: 'the Cold Store reference copy', art: 'ledger', walkThrough: true,
       text: 'The docket points to the separate royal and coastal records. One line is left open for the transfer we cannot trace.',
       visibleIf: { flag: 'preserved.reply', eq: 'desk' } },

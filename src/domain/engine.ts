@@ -6,6 +6,7 @@ import { seaChart } from './seaCharts';
 import { stageRehearsal, type StageCue } from './stageRehearsal';
 import { marketComparison, type MarketBasis } from './marketScale';
 import { waterTrial, type WaterSetting } from './waterGate';
+import { civicAllocation, type CivicRule, type CivicSample } from './civicConsole';
 /**
  * Domain engine. Scenes send typed commands; the engine checks preconditions,
  * computes ONE valid state transition and returns events for the view to show
@@ -108,6 +109,7 @@ export type Command =
   | { type: 'RunStageRehearsal'; cue: StageCue }
   | { type: 'WeighMarketLots'; basis: MarketBasis }
   | { type: 'RunWaterTrial'; setting: WaterSetting }
+  | { type: 'RunCivicTrial'; sample: CivicSample; rule: CivicRule }
   | { type: 'BuildLabel'; kit: string; subject: string; criterion: string; limit: string }
   | { type: 'TurnLock'; lock: string; choice: Record<string, string> }
   | { type: 'ShowdownStart'; showdown: string; relaxed?: boolean }
@@ -563,6 +565,14 @@ export class Engine {
           if (prevPen !== undefined && changed === 2) fx.push({ addNum: 'sim.unfair', by: 1 });
           s = apply(fx, s, out);
           events.push({ kind: 'simulation', result: { pen: cmd.pen, surface: cmd.surface, markQuality: m.q, note: m.note, fairTest: fair, testCount: count } });
+          break;
+        }
+        case 'RunCivicTrial': {
+          if (s.mapId !== 'civic.dispatch' || s.flags['civic.arrived'] !== true) throw new Error('Use the route console in the Civic Machine.');
+          civicAllocation(cmd.sample, cmd.rule);
+          if (cmd.sample === 'combined' && s.flags['civic.walk.read'] !== true) throw new Error('Bring the walking register from Canal Walk.');
+          const key = `civic.trial.${cmd.sample}.${cmd.rule}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
         case 'RunWaterTrial': {

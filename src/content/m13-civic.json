@@ -1,0 +1,1080 @@
+{
+ "characters": [
+  {
+   "id": "civic-operator",
+   "name": "Keeper Ade",
+   "role": "Civic route machine keeper",
+   "sprite": "smith-hesper",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "civic.operator.ready",
+     "if": {
+      "all": [
+       {
+        "objective": "civic.compare"
+       },
+       {
+        "objective": "civic.rules"
+       }
+      ]
+     }
+    },
+    {
+     "node": "civic.operator.compare",
+     "if": {
+      "objective": "civic.compare"
+     }
+    },
+    {
+     "node": "civic.operator.sources",
+     "if": {
+      "objective": "civic.sources"
+     }
+    },
+    {
+     "node": "civic.operator.welcome"
+    }
+   ]
+  },
+  {
+   "id": "civic-clerk",
+   "name": "Route Clerk Lin",
+   "role": "Public notice keeper",
+   "sprite": "clerk-venn",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "civic.clerk.copy-ready",
+     "if": {
+      "objective": "civic.access"
+     }
+    },
+    {
+     "node": "civic.clerk.after",
+     "if": {
+      "objective": "civic.finish"
+     }
+    },
+    {
+     "node": "civic.clerk.review",
+     "if": {
+      "objective": "civic.reader"
+     }
+    },
+    {
+     "node": "civic.clerk.wait",
+     "if": {
+      "objective": "civic.publish"
+     }
+    },
+    {
+     "node": "civic.clerk.choose",
+     "if": {
+      "all": [
+       {
+        "objective": "civic.compare"
+       },
+       {
+        "objective": "civic.rules"
+       }
+      ]
+     }
+    },
+    {
+     "node": "civic.clerk.trace"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "civic.operator.welcome",
+   "speaker": "civic-operator",
+   "text": "North Steps and Canal Walk have four library windows to share. This route machine runs a small practice schedule with the rule and request counts you give it. A draft claims the desk heard every request. Walk beyond the desk and bring both slips back.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "civic.operator.sources",
+   "speaker": "civic-operator",
+   "text": "The desk sheet recorded twelve and five. The walking round brings three and eleven more after repeated request numbers are set aside. Keep one rule in the machine while you swap the input. At the weir, you held one setting steady to see what the repair changed.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "civic.operator.compare",
+   "speaker": "civic-operator",
+   "text": "You held the rule steady. It ran with seventeen requests from the desk and thirty-one when the walking slips joined it. Both numbers belong to the way they were collected. Now hold the joined tally steady and change the rule to see who gets the windows.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "civic.operator.ready",
+   "speaker": "civic-operator",
+   "text": "The same joined tally can give different windows to the two districts. The machine follows the rule you give it. Take your two results to Lin so the public notice carries the rule as well as the numbers.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "civic.clerk.trace",
+   "speaker": "civic-clerk",
+   "text": "The desk opens during the workday. The walking crew speaks to people as it goes. Bring both collection slips to Ade. Try one rule first on the desk record and then on the joined record. Next, try a second rule on the joined record.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "civic.clerk.choose",
+   "speaker": "civic-clerk",
+   "text": "The joined tally reads fifteen for North Steps and sixteen for Canal Walk. A starting window at each keeps both places on the first schedule. A queue rule follows the larger count. An equal split gives both the same number. Put a rule you tested on the public notice.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Send all four windows to the larger recorded queue.",
+     "next": "civic.publish.rank",
+     "effects": [
+      {
+       "setFlag": "civic.response",
+       "value": "rank"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "civic.compare"
+         },
+         {
+          "objective": "civic.rules"
+         }
+        ]
+       },
+       {
+        "flag": "civic.trial.combined.rank",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave one starting window in each district, then give the larger count the other two.",
+     "next": "civic.publish.reserve",
+     "effects": [
+      {
+       "setFlag": "civic.response",
+       "value": "reserve"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "civic.compare"
+         },
+         {
+          "objective": "civic.rules"
+         }
+        ]
+       },
+       {
+        "flag": "civic.trial.combined.reserve",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Give each district two windows.",
+     "next": "civic.publish.even",
+     "effects": [
+      {
+       "setFlag": "civic.response",
+       "value": "even"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "civic.compare"
+         },
+         {
+          "objective": "civic.rules"
+         }
+        ]
+       },
+       {
+        "flag": "civic.trial.combined.even",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the route open for now."
+    }
+   ]
+  },
+  {
+   "id": "civic.clerk.wait",
+   "speaker": "civic-clerk",
+   "text": "The printed rule and count are beside the desk. A reader left a reply on the Canal Walk rail. They needed something the count could not show.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "civic.clerk.review",
+   "speaker": "civic-clerk",
+   "text": "One request number tells us a request was made. The reader at Canal Walk has to find a stop at a time they can reach. The window counts leave that question open. Keep the first rule in view and give the next request round a place and a time to check.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave an evening request stop with a time-and-place line.",
+     "next": "civic.revise.evening",
+     "effects": [
+      {
+       "setFlag": "civic.revision",
+       "value": "evening"
+      },
+      {
+       "setFlag": "civic.revised",
+       "value": true
+      }
+     ],
+     "if": {
+      "objective": "civic.reader"
+     }
+    },
+    {
+     "text": "Give the walking crew a place-and-time line for its next round.",
+     "next": "civic.revise.walk",
+     "effects": [
+      {
+       "setFlag": "civic.revision",
+       "value": "walk"
+      },
+      {
+       "setFlag": "civic.revised",
+       "value": true
+      }
+     ],
+     "if": {
+      "objective": "civic.reader"
+     }
+    },
+    {
+     "text": "Leave the notice ready."
+    },
+    {
+     "text": "I kept a separate waiting tally at the Nexus bench.",
+     "next": "civic.review.nexus",
+     "if": {
+      "all": [
+       {
+        "objective": "civic.reader"
+       },
+       {
+        "flag": "nexus.rest.used",
+        "eq": true
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "civic.review.nexus",
+   "speaker": "civic-clerk",
+   "text": "At the Nexus, the tray recorded a loan move. Your waiting tally kept a different count. Here the route ledger records requests. A person waiting for an evening window still needs a way to leave that detail. Keep both kinds of record where readers can check them.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave an evening request stop with a time-and-place line.",
+     "next": "civic.revise.evening",
+     "effects": [
+      {
+       "setFlag": "civic.revision",
+       "value": "evening"
+      },
+      {
+       "setFlag": "civic.revised",
+       "value": true
+      }
+     ],
+     "if": {
+      "objective": "civic.reader"
+     }
+    },
+    {
+     "text": "Give the walking crew a place-and-time line for its next round.",
+     "next": "civic.revise.walk",
+     "effects": [
+      {
+       "setFlag": "civic.revision",
+       "value": "walk"
+      },
+      {
+       "setFlag": "civic.revised",
+       "value": true
+      }
+     ],
+     "if": {
+      "objective": "civic.reader"
+     }
+    },
+    {
+     "text": "Leave the notice ready."
+    }
+   ]
+  },
+  {
+   "id": "civic.revise.evening",
+   "speaker": "civic-clerk",
+   "text": "Lin clips a place-and-time card by the public desk for an evening round. The first four window counts stay on their own dated line. A reader finishing work later can leave a place they can reach before the next schedule is drawn.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "civic.revise.walk",
+   "speaker": "civic-clerk",
+   "text": "The walking crew carries a second sheet past the canal stairs. People can give a reachable place and time during the next round. The four window counts remain on the wall while the crew gathers the new details.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "civic.clerk.after",
+   "speaker": "civic-clerk",
+   "text": "A reader at the low bench can find both district names. The rule, counts and open schedule details run together on the small card. Shall we leave them their own lines?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave a wider route notice at the low bench.",
+     "next": "civic.copy.wide",
+     "effects": [
+      {
+       "setFlag": "civic.wide-notice",
+       "value": true
+      }
+     ],
+     "if": {
+      "objective": "civic.finish"
+     }
+    },
+    {
+     "text": "Keep the notice where it is."
+    }
+   ]
+  },
+  {
+   "id": "civic.copy.wide",
+   "speaker": "civic-clerk",
+   "text": "The wider sheet gives the trial rule, each district’s count and the next place-and-time check their own lines. A reader can go back to the line they need.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "civic.clerk.copy-ready",
+   "speaker": "civic-clerk",
+   "text": "The wider sheet leaves room for the next evening or walking record. Someone at the bench can follow how the first four windows were shared and where to leave a reply.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "civic.publish.rank",
+   "speaker": "civic-clerk",
+   "text": "The plan sends all four windows to Canal Walk, which has sixteen recorded requests. North Steps has fifteen and gets zero in this trial. Lin leaves that count and the zero together on the door. A reader has room to add a question below.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "civic.publish.reserve",
+   "speaker": "civic-clerk",
+   "text": "One window goes to North Steps, three to Canal Walk. The first window lets each district begin on the plan. The extra two follow the larger recorded count. Lin leaves room for a question about when they will happen.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "civic.publish.even",
+   "speaker": "civic-clerk",
+   "text": "Both districts get two. The notice puts the equal split alongside the two different counts so a reader can see the rule did the sharing. Lin leaves a clip under the notice for the next reader.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH12-M01",
+   "world": "WORLD-13",
+   "title": "A Place on the Route",
+   "knowledgeQuestion": "How do the people we count and the rules we use shape the service others can reach?",
+   "available": {
+    "objective": "water.finish"
+   },
+   "objectives": [
+    {
+     "id": "civic.arrival",
+     "title": "Cross into the Civic Machine district and meet Ade.",
+     "done": {
+      "flag": "civic.arrived",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective"
+      ],
+      "atl": [
+       "self-management"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "geography"
+      ]
+     }
+    },
+    {
+     "id": "civic.sources",
+     "title": "Find the desk and walking-crew request slips.",
+     "done": {
+      "all": [
+       {
+        "flag": "civic.desk.read",
+        "eq": true
+       },
+       {
+        "flag": "civic.walk.read",
+        "eq": true
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "perspective",
+       "culture",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "geography",
+       "anthropology",
+       "lang-langlit"
+      ]
+     },
+     "visible": {
+      "objective": "civic.arrival"
+     },
+     "skills": [
+      "SK-MED-01",
+      "SK-RSC-15"
+     ],
+     "kq": {
+      "id": "KQ-NEW-006",
+      "action": "listen to the people reached by two request routes"
+     }
+    },
+    {
+     "id": "civic.compare",
+     "title": "Try the same rule on both request tallies and check the desk heading.",
+     "done": {
+      "all": [
+       {
+        "objective": "civic.sources"
+       },
+       {
+        "any": [
+         {
+          "all": [
+           {
+            "flag": "civic.trial.desk.rank",
+            "eq": true
+           },
+           {
+            "flag": "civic.trial.combined.rank",
+            "eq": true
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "civic.trial.desk.reserve",
+            "eq": true
+           },
+           {
+            "flag": "civic.trial.combined.reserve",
+            "eq": true
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "civic.trial.desk.even",
+            "eq": true
+           },
+           {
+            "flag": "civic.trial.combined.even",
+            "eq": true
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "explanation",
+       "objectivity",
+       "evidence",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "MAT",
+       "HUM",
+       "TEC"
+      ],
+      "subjects": [
+       "computer-science",
+       "math-ai",
+       "geography"
+      ]
+     },
+     "visible": {
+      "objective": "civic.sources"
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-05"
+     ],
+     "kq": {
+      "id": "KQ-NEW-003",
+      "action": "hold the allocation rule fixed and change the request sample"
+     }
+    },
+    {
+     "id": "civic.rules",
+     "title": "Try two different rules with the joined request tally.",
+     "done": {
+      "any": [
+       {
+        "all": [
+         {
+          "flag": "civic.trial.combined.rank",
+          "eq": true
+         },
+         {
+          "flag": "civic.trial.combined.reserve",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "all": [
+         {
+          "flag": "civic.trial.combined.rank",
+          "eq": true
+         },
+         {
+          "flag": "civic.trial.combined.even",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "all": [
+         {
+          "flag": "civic.trial.combined.reserve",
+          "eq": true
+         },
+         {
+          "flag": "civic.trial.combined.even",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "explanation",
+       "interpretation",
+       "power",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "MAT",
+       "TEC",
+       "POL"
+      ],
+      "subjects": [
+       "computer-science",
+       "global-politics",
+       "math-ai"
+      ]
+     },
+     "visible": {
+      "objective": "civic.compare"
+     },
+     "skills": [
+      "SK-THK-05",
+      "SK-RSC-21"
+     ]
+    },
+    {
+     "id": "civic.publish",
+     "title": "Choose a tested rule and put the four windows on Lin’s notice.",
+     "done": {
+      "flagSet": "civic.response"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "POL",
+       "TEC"
+      ],
+      "subjects": [
+       "digital-society",
+       "global-politics",
+       "geography"
+      ]
+     },
+     "visible": {
+      "all": [
+       {
+        "objective": "civic.compare"
+       },
+       {
+        "objective": "civic.rules"
+       }
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "kq": {
+      "id": "KQ-NEW-006",
+      "action": "choose a record and show who receives a service window"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.civic.publish"
+      }
+     ]
+    },
+    {
+     "id": "civic.reader",
+     "title": "Find the reader’s reply on Canal Walk.",
+     "done": {
+      "flag": "civic.reader.read",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "perspective",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "geography",
+       "anthropology"
+      ]
+     },
+     "visible": {
+      "objective": "civic.publish"
+     },
+     "skills": [
+      "SK-MED-04"
+     ]
+    },
+    {
+     "id": "civic.finish",
+     "title": "Mark the schedule gaps and give Lin a way to hear the next reader.",
+     "done": {
+      "flag": "civic.revised",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "responsibility",
+       "power",
+       "justification"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "POL",
+       "TEC"
+      ],
+      "subjects": [
+       "digital-society",
+       "geography",
+       "global-politics"
+      ]
+     },
+     "visible": {
+      "objective": "civic.reader"
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "kq": {
+      "id": "KQ-NEW-004",
+      "action": "keep a public decision visible while requesting missed context"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.civic.finish"
+      },
+      {
+       "journal": "j.civic.reply"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH12-R01",
+   "world": "WORLD-13",
+   "title": "A Notice Within Reach",
+   "knowledgeQuestion": "How does a notice help someone find the line they actually need?",
+   "available": {
+    "objective": "civic.finish"
+   },
+   "objectives": [
+    {
+     "id": "civic.access",
+     "title": "Give the rule, counts and next check more room on the notice.",
+     "done": {
+      "flag": "civic.wide-notice",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "perspective",
+       "values"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN",
+       "TEC"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "design-tech",
+       "digital-society"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01"
+     ]
+    }
+   ]
+  }
+ ],
+ "criteria": [
+  {
+   "id": "credit.civic.publish",
+   "concept": "responsibility",
+   "maximum": 8
+  },
+  {
+   "id": "credit.civic.finish",
+   "concept": "justification",
+   "maximum": 8
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.civic.reply",
+   "claimKind": "interpretation",
+   "text": "Changing the recorded requests changed the route under the same rule. We kept the first window counts beside the rule and asked where and when readers can reach the stops."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.civic-sample",
+   "attribute": "inquirer",
+   "when": {
+    "objective": "civic.compare"
+   },
+   "did": "You held one rule steady while trying the requests from two routes.",
+   "prompt": "Who could leave a request through one route and miss the other?"
+  },
+  {
+   "id": "mom.civic-listener",
+   "attribute": "caring",
+   "when": {
+    "objective": "civic.finish"
+   },
+   "did": "You helped a reader ask for a place and time they could reach.",
+   "prompt": "Which part of a notice might look different to the next reader?"
+  },
+  {
+   "id": "mom.civic-wide",
+   "attribute": "communicator",
+   "when": {
+    "objective": "civic.access"
+   },
+   "did": "You made room for someone to follow each reason and each figure.",
+   "prompt": "Where could someone go to check how a notice was made?"
+  }
+ ],
+ "chronicle": [
+  {
+   "id": "civic-trial-public",
+   "title": "Four windows on a notice",
+   "text": "The public board gives both district counts and the rule that shared the four library windows.",
+   "if": {
+    "objective": "civic.publish"
+   }
+  },
+  {
+   "id": "civic-route-revised",
+   "title": "Places and times still open",
+   "text": "A reader asked which window they could reach. The next request round will leave room for a time and a place.",
+   "if": {
+    "objective": "civic.finish"
+   }
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.civic.arrival.1",
+   "objective": "civic.arrival",
+   "depth": 1,
+   "text": "A new passage has opened in the Nexus."
+  },
+  {
+   "id": "h.civic.arrival.2",
+   "objective": "civic.arrival",
+   "depth": 2,
+   "text": "Look for the Civic Machine sign near the archive crossings."
+  },
+  {
+   "id": "h.civic.arrival.3",
+   "objective": "civic.arrival",
+   "depth": 3,
+   "text": "Step into the dispatch hall and find the trial console."
+  },
+  {
+   "id": "h.civic.arrival.4",
+   "objective": "civic.arrival",
+   "depth": 4,
+   "text": "Keeper Ade stands by the console. The paths lead to the public desk and the canal."
+  },
+  {
+   "id": "h.civic.sources.1",
+   "objective": "civic.sources",
+   "depth": 1,
+   "text": "Two crews collected requests in different places."
+  },
+  {
+   "id": "h.civic.sources.2",
+   "objective": "civic.sources",
+   "depth": 2,
+   "text": "Find the public desk at North Steps and the walking board at Canal Walk."
+  },
+  {
+   "id": "h.civic.sources.3",
+   "objective": "civic.sources",
+   "depth": 3,
+   "text": "Read both slips. See where the walking numbers differ and what happened to repeated requests."
+  },
+  {
+   "id": "h.civic.sources.4",
+   "objective": "civic.sources",
+   "depth": 4,
+   "text": "Bring the desk slip and walking slip back to the dispatch hall before comparing the two tallies."
+  },
+  {
+   "id": "h.civic.compare.1",
+   "objective": "civic.compare",
+   "depth": 1,
+   "text": "A draft heading calls one request route complete."
+  },
+  {
+   "id": "h.civic.compare.2",
+   "objective": "civic.compare",
+   "depth": 2,
+   "text": "Try a rule using the desk tally at Ade’s console."
+  },
+  {
+   "id": "h.civic.compare.3",
+   "objective": "civic.compare",
+   "depth": 3,
+   "text": "Choose the same rule again with the joined tally after reading both slips."
+  },
+  {
+   "id": "h.civic.compare.4",
+   "objective": "civic.compare",
+   "depth": 4,
+   "text": "Check the draft desk heading against the extra requests on the walking slip. The checked heading appears after a matched trial."
+  },
+  {
+   "id": "h.civic.rules.1",
+   "objective": "civic.rules",
+   "depth": 1,
+   "text": "Keep the joined tally while changing how windows are shared."
+  },
+  {
+   "id": "h.civic.rules.2",
+   "objective": "civic.rules",
+   "depth": 2,
+   "text": "Find the three rule controls on the trial console."
+  },
+  {
+   "id": "h.civic.rules.3",
+   "objective": "civic.rules",
+   "depth": 3,
+   "text": "Try a second distinct rule with the joined tally."
+  },
+  {
+   "id": "h.civic.rules.4",
+   "objective": "civic.rules",
+   "depth": 4,
+   "text": "Check which districts receive windows under your two rules. Take those results to Lin."
+  },
+  {
+   "id": "h.civic.publish.1",
+   "objective": "civic.publish",
+   "depth": 1,
+   "text": "The rule can be part of the notice readers see."
+  },
+  {
+   "id": "h.civic.publish.2",
+   "objective": "civic.publish",
+   "depth": 2,
+   "text": "Visit Route Clerk Lin at the North Steps desk."
+  },
+  {
+   "id": "h.civic.publish.3",
+   "objective": "civic.publish",
+   "depth": 3,
+   "text": "Choose a rule you tried on the joined tally."
+  },
+  {
+   "id": "h.civic.publish.4",
+   "objective": "civic.publish",
+   "depth": 4,
+   "text": "Put the four windows on the notice and read the public result by the desk."
+  },
+  {
+   "id": "h.civic.reader.1",
+   "objective": "civic.reader",
+   "depth": 1,
+   "text": "A reader tried to use the numbers on the first notice."
+  },
+  {
+   "id": "h.civic.reader.2",
+   "objective": "civic.reader",
+   "depth": 2,
+   "text": "Follow the crossing to Canal Walk."
+  },
+  {
+   "id": "h.civic.reader.3",
+   "objective": "civic.reader",
+   "depth": 3,
+   "text": "Find the reply on the canal rail after you publish."
+  },
+  {
+   "id": "h.civic.reader.4",
+   "objective": "civic.reader",
+   "depth": 4,
+   "text": "Read what a person working late still needs to know about the windows."
+  },
+  {
+   "id": "h.civic.finish.1",
+   "objective": "civic.finish",
+   "depth": 1,
+   "text": "The reply asks for a time and a place."
+  },
+  {
+   "id": "h.civic.finish.2",
+   "objective": "civic.finish",
+   "depth": 2,
+   "text": "Bring the reader’s reply back to Lin."
+  },
+  {
+   "id": "h.civic.finish.3",
+   "objective": "civic.finish",
+   "depth": 3,
+   "text": "Keep the trial counts dated and open a way to record times and reachable places."
+  },
+  {
+   "id": "h.civic.finish.4",
+   "objective": "civic.finish",
+   "depth": 4,
+   "text": "Choose an evening request visit or a wider walking round. Then find the revised notice."
+  },
+  {
+   "id": "h.civic.access.1",
+   "objective": "civic.access",
+   "depth": 1,
+   "text": "A reader at the bench needs room to trace the lines."
+  },
+  {
+   "id": "h.civic.access.2",
+   "objective": "civic.access",
+   "depth": 2,
+   "text": "Visit Lin after posting the revised notice."
+  },
+  {
+   "id": "h.civic.access.3",
+   "objective": "civic.access",
+   "depth": 3,
+   "text": "Ask for a wider notice with separate lines for the rule, counts and next check."
+  },
+  {
+   "id": "h.civic.access.4",
+   "objective": "civic.access",
+   "depth": 4,
+   "text": "Look for the larger notice by the bench after you commission it."
+  }
+ ]
+}

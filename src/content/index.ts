@@ -9,6 +9,7 @@ import common from './common.json';
 import m01 from './m01-nexus.json';
 import openingPractice from './opening-practice.json';
 import nexusWayfinding from './nexus-wayfinding.json';
+import nexusReadingRests from './nexus-reading-rests.json';
 import m02 from './m02-aethelgard.json';
 import emberfordSide from './emberford-side.json';
 import firsts from './firsts.json';
@@ -48,12 +49,13 @@ import cartographersSide from './cartographers-side.json';
 import performance from './m10-performance.json';
 import market from './m11-market.json';
 import water from './m12-water.json';
+import civic from './m13-civic.json';
 import observatoryInland from './observatory-inland.json';
 import observatoryArchive from './observatory-archive.json';
 
 export const CONTENT_VERSION = 5;
 
-const parts: any[] = [sources, common, m01, openingPractice, nexusWayfinding, m02, emberfordSide, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, fray, rumour, clueboard, memories, quarters, dive, story, nile, scenes, preservedRecords, preserved, reconstruction, copper, preservedExhibition, observatory, observatoryInland, observatoryArchive, forest, forestSide, forestReader, metalworks, metalworksSide, copies, copiesSide, cartographers, cartographersSide, performance, market, water];
+const parts: any[] = [sources, common, m01, openingPractice, nexusWayfinding, nexusReadingRests, m02, emberfordSide, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, fray, rumour, clueboard, memories, quarters, dive, story, nile, scenes, preservedRecords, preserved, reconstruction, copper, preservedExhibition, observatory, observatoryInland, observatoryArchive, forest, forestSide, forestReader, metalworks, metalworksSide, copies, copiesSide, cartographers, cartographersSide, performance, market, water, civic];
 const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'missions', 'hints', 'criteria', 'awards', 'items', 'offers', 'journal',
   'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks', 'glossary', 'questions', 'origins', 'alcoves', 'puzzles', 'skillDomains', 'skills', 'lorelings', 'lorelingAtlas', 'fray', 'clueBoards', 'memories', 'keepsakes', 'divePrompts', 'diveItems', 'knots', 'clues', 'keepsakeTalks', 'chronicle', 'secrets', 'communities'] as const;
 

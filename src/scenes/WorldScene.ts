@@ -967,6 +967,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'stage-rehearsal': ctx.ui.openStageRehearsal(); break;
       case 'market-scale': ctx.ui.openMarketScale(); break;
       case 'water-gate': ctx.ui.openWaterGate(); break;
+      case 'civic-console': ctx.ui.openCivicConsole(); break;
       case 'scene': ctx.ui.playScene(it.node!); break;
       case 'secret': {
         const x = (ctx.controller.pack.secrets ?? []).find((y) => y.id === it.secret);

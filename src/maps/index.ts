@@ -13,6 +13,7 @@ import { COPIES_ARCHIVE, COPIES_PRESS, COPIES_LANDING } from './copies';
 import { SEA_HARBOUR, SEA_CHARTROOM, SEA_SHOAL } from './sea';
 import { STAGE_FOYER, STAGE_GALLERY, STAGE_REHEARSAL } from './stage';
 import { MARKET_SQUARE } from './market';
+import { CIVIC_CANAL, CIVIC_DISPATCH, CIVIC_STEPS } from './civic';
 import { WATER_COUNCIL, WATER_GATEHOUSE, WATER_LOWER_CHANNEL } from './water';
 
 export const MAPS: Record<string, MapDef> = {
@@ -54,4 +55,7 @@ export const MAPS: Record<string, MapDef> = {
   [WATER_GATEHOUSE.id]: WATER_GATEHOUSE,
   [WATER_COUNCIL.id]: WATER_COUNCIL,
   [WATER_LOWER_CHANNEL.id]: WATER_LOWER_CHANNEL,
+  [CIVIC_DISPATCH.id]: CIVIC_DISPATCH,
+  [CIVIC_STEPS.id]: CIVIC_STEPS,
+  [CIVIC_CANAL.id]: CIVIC_CANAL,
 };

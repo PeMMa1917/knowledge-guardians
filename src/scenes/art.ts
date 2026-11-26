@@ -7,6 +7,7 @@
  *   in = public/assets/art/armm1998/Inner.png     (40 x 25 tiles)
  *   market = public/assets/art/generated/market_tiles.png (18 x 9 tiles)
  *   water = public/assets/art/generated/water_tiles.png (14 x 5 tiles)
+ *   civic = public/assets/art/generated/civic_tiles.png (15 x 6 tiles)
  *
  * `collide` is the blocked area in tiles, relative to the stamp's top-left.
  * Leave it out for decorations the player can walk over or behind.
@@ -17,7 +18,7 @@
 export const TILE = 16;
 
 export interface Stamp {
-  sheet: 'ow' | 'in' | 'market' | 'water';
+  sheet: 'ow' | 'in' | 'market' | 'water' | 'civic';
   x: number; y: number; w: number; h: number;
   collide?: [number, number, number, number];
   /** Draw above characters regardless of y (for roofs/awnings that overlap). */
@@ -114,6 +115,24 @@ export const STAMPS: Record<string, Stamp> = {
   'water-lantern': { sheet: 'water', x: 12, y: 1, w: 1, h: 2, collide: [0, 1, 1, 1] },
   'water-banner': { sheet: 'water', x: 13, y: 1, w: 1, h: 2, collide: [0, 1, 1, 1] },
   'water-terrace-wall': { sheet: 'water', x: 11, y: 3, w: 3, h: 2, collide: [0, 1, 3, 1] },
+
+  // Original Civic Machine streets, library furniture and canal walkway.
+  'civic-hall-tile': { sheet: 'civic', x: 0, y: 0, w: 1, h: 1 },
+  'civic-hall-route': { sheet: 'civic', x: 1, y: 0, w: 1, h: 1 },
+  'civic-cobbles-a': { sheet: 'civic', x: 2, y: 0, w: 1, h: 1 },
+  'civic-cobbles-b': { sheet: 'civic', x: 3, y: 0, w: 1, h: 1 },
+  'civic-kerb': { sheet: 'civic', x: 4, y: 0, w: 1, h: 1 },
+  'civic-riser': { sheet: 'civic', x: 5, y: 0, w: 1, h: 1 },
+  'civic-canal-a': { sheet: 'civic', x: 6, y: 0, w: 1, h: 1 },
+  'civic-canal-b': { sheet: 'civic', x: 7, y: 0, w: 1, h: 1 },
+  'civic-boardwalk': { sheet: 'civic', x: 8, y: 0, w: 1, h: 1 },
+  'civic-route-wall': { sheet: 'civic', x: 0, y: 1, w: 6, h: 3, collide: [0, 1, 6, 2] },
+  'civic-steps-office': { sheet: 'civic', x: 6, y: 1, w: 5, h: 4, collide: [0, 2, 5, 2] },
+  'civic-cart': { sheet: 'civic', x: 11, y: 1, w: 4, h: 2, collide: [0, 1, 4, 1] },
+  'civic-bookcases': { sheet: 'civic', x: 0, y: 4, w: 4, h: 2, collide: [0, 0, 4, 2] },
+  'civic-lamp': { sheet: 'civic', x: 4, y: 4, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'civic-stand': { sheet: 'civic', x: 5, y: 4, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'civic-rail': { sheet: 'civic', x: 6, y: 4, w: 3, h: 1 },
 };
 
 /** Character sheets: 16x32 frames, 4 per row; rows: down, right, up, left. */

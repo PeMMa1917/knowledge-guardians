@@ -8,6 +8,7 @@
 | `public/assets/art/generated/characters/` | Character sheets made by `tools/make_character_variants.py`. | `CHARACTER_SHEETS` in `BootScene.ts` |
 | `public/assets/art/generated/market_tiles.png` | Original pavements, stalls, buildings and furniture for Lantern Square. | `market` sheet in `BootScene.ts` |
 | `public/assets/art/generated/water_tiles.png` | Original Water Commons channels, bridges, field rows, weir and council hall. | `water` sheet in `BootScene.ts` |
+| `public/assets/art/generated/civic_tiles.png` | Original Civic Machine offices, book carts, route mural and canal walk. | `civic` sheet in `BootScene.ts` |
 | `public/assets/audio/music/` | Music loops. | `AUDIO` in `BootScene.ts` |
 | `public/assets/audio/sfx/` | Sound effects. | `AUDIO` in `BootScene.ts` |
 | `public/assets/credits.json` | Source, author and licence of **every** file above. | `tools/check-assets.mjs` |
@@ -61,3 +62,5 @@ Music: stereo MP3 is fine. Keep each file under about 5 MB. Audio is never neede
 Lantern Square uses an 18 × 9 tile sheet with the same tile size. Run `python3 tools/make_market_tiles.py` to regenerate it from the original drawings in the script.
 
 The Water Commons uses a 14 × 5 sheet. Run `python3 tools/make_water_tiles.py` with Pillow to regenerate it.
+
+Library Dispatch, North Steps and Canal Walk use a 15 × 6 sheet. Run `python3 tools/make_civic_tiles.py` with Pillow to regenerate it.
