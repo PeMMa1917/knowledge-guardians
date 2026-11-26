@@ -269,37 +269,61 @@
    "id": "emberford.tally",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "The bakers' tally counts every sale by the loaf. The ferry crew buys baskets by weight. The steward wants one line for the morning market notice.",
+   "text": "The order says “Six for the first crossing.” Two trays cool beside it. Six small loaves balance at six scale weights. Three large loaves also balance at six weights. Della bakes for six stalls. Idris has space for six weights on deck. Both need a copy.",
    "options": [
     {
-     "text": "Compare equal weights and keep the loaf counts on the back.",
-     "if": {
-      "not": {
-       "flagSet": "emberford.tally"
-      }
-     },
+     "text": "Lead with scale weights. Keep both loaf counts beside them.",
      "effects": [
       {
        "setFlag": "emberford.tally",
        "value": "weight"
+      },
+      {
+       "setFlag": "emberford.tally.placed",
+       "value": false
+      },
+      {
+       "setFlag": "emberford.tally.witness",
+       "value": false
       }
      ],
-     "next": "emberford.tally.weight"
-    },
-    {
-     "text": "List the loaf counts and give the loaf weights alongside.",
+     "next": "emberford.tally.weight",
      "if": {
       "not": {
-       "flagSet": "emberford.tally"
+       "flag": "emberford.tally",
+       "in": [
+        "weight",
+        "loaves"
+       ]
       }
-     },
+     }
+    },
+    {
+     "text": "Lead with loaf counts. Keep both scale weights beside them.",
      "effects": [
       {
        "setFlag": "emberford.tally",
        "value": "loaves"
+      },
+      {
+       "setFlag": "emberford.tally.placed",
+       "value": false
+      },
+      {
+       "setFlag": "emberford.tally.witness",
+       "value": false
       }
      ],
-     "next": "emberford.tally.loaves"
+     "next": "emberford.tally.loaves",
+     "if": {
+      "not": {
+       "flag": "emberford.tally",
+       "in": [
+        "weight",
+        "loaves"
+       ]
+      }
+     }
     },
     {
      "text": "Leave it for now."
@@ -310,13 +334,127 @@
    "id": "emberford.tally.weight",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "The ferry crew can compare how much bread it will take aboard. A baker turns the board to check how many loaves to bake tomorrow."
+   "text": "WEIGHT FOR THE FERRY sits at the top of both copies. The small tray reads six weights and six loaves. The large tray reads six weights and three loaves. Idris has a copy by the cart. Della has the other at the bake bench.",
+   "options": [
+    {
+     "text": "Leave it for now."
+    },
+    {
+     "text": "Turn both copies. Put the loaf counts first.",
+     "effects": [
+      {
+       "setFlag": "emberford.tally",
+       "value": "loaves"
+      },
+      {
+       "setFlag": "emberford.tally.placed",
+       "value": false
+      },
+      {
+       "setFlag": "emberford.tally.witness",
+       "value": false
+      }
+     ],
+     "next": "emberford.tally.loaves"
+    }
+   ]
   },
   {
    "id": "emberford.tally.loaves",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "The bakers can plan the next batch. The ferry crew adds up the weights before it pays. Nobody has to guess how large a loaf is."
+   "text": "LOAVES FOR THE STALLS sits at the top of both copies. The small tray reads six loaves and six weights. The large tray reads three loaves and six weights. Della has a copy at her bench. Idris has the other by the cart.",
+   "options": [
+    {
+     "text": "Leave it for now."
+    },
+    {
+     "text": "Turn both copies. Put the scale weights first.",
+     "effects": [
+      {
+       "setFlag": "emberford.tally",
+       "value": "weight"
+      },
+      {
+       "setFlag": "emberford.tally.placed",
+       "value": false
+      },
+      {
+       "setFlag": "emberford.tally.witness",
+       "value": false
+      }
+     ],
+     "next": "emberford.tally.weight"
+    }
+   ]
+  },
+  {
+   "id": "emberford.tally.bake.read",
+   "speaker": "baker-della",
+   "historicalLabel": "fictional-world",
+   "text": "Six stalls. Six doorsteps to leave a loaf on. The small tray gives me all six and weighs six. The large tray also weighs six, but three stalls would be left waiting. Hold the corner steady for me.",
+   "options": [
+    {
+     "text": "Hold the tally while Della marks the six-stall plan.",
+     "if": {
+      "flag": "emberford.tally",
+      "eq": "loaves"
+     },
+     "effects": [
+      {
+       "setFlag": "emberford.tally.placed",
+       "value": "loaves"
+      }
+     ],
+     "next": "emberford.tally.bake.marked"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "emberford.tally.bake.marked",
+   "speaker": "baker-della",
+   "historicalLabel": "fictional-world",
+   "text": "One notch for each doorstep. There. We can keep the three large loaves for a different order. Read the plan here beside the bench before you go."
+  },
+  {
+   "id": "emberford.tally.bake.weight",
+   "speaker": "baker-della",
+   "historicalLabel": "fictional-world",
+   "text": "Six weights catches my eye first. I nearly reached for the three large loaves. Your smaller line gives me all six stalls. I can set out the dough now and leave the tray marks blank while Idris loads."
+  },
+  {
+   "id": "emberford.tally.ferry.read",
+   "speaker": "porter-idris",
+   "historicalLabel": "fictional-world",
+   "text": "I need six weights in that bay. Six small loaves, or three large ones, both hit the mark. I can tie three into one cloth. When the loaf count leads, I lay out the six stall tags first and leave this load hook empty.",
+   "options": [
+    {
+     "text": "Hold the cloth while Idris ties the three-loaf deck bundle.",
+     "if": {
+      "flag": "emberford.tally",
+      "eq": "weight"
+     },
+     "effects": [
+      {
+       "setFlag": "emberford.tally.placed",
+       "value": "weight"
+      }
+     ],
+     "next": "emberford.tally.ferry.tied"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "emberford.tally.ferry.tied",
+   "speaker": "porter-idris",
+   "historicalLabel": "fictional-world",
+   "text": "One cloth, one bay. I clipped a slip here so the next hand knows what went into the cloth. Read it before I turn the cart."
   },
   {
    "id": "emberford.repair-notice",
@@ -635,6 +773,169 @@
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
    "text": "Readers can see which load each result belongs to. The keeper sets the spare card by the cart and keeps the two runs apart."
+  }
+ ],
+ "characters": [
+  {
+   "id": "baker-della",
+   "name": "Della Fen",
+   "role": "Bakes the morning loaves for Emberford’s six stalls",
+   "sprite": "villager-2",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "emberford.tally",
+        "eq": "loaves"
+       },
+       {
+        "not": {
+         "flag": "emberford.tally.placed",
+         "eq": "loaves"
+        }
+       }
+      ]
+     },
+     "node": "emberford.tally.bake.read"
+    },
+    {
+     "if": {
+      "flag": "emberford.tally",
+      "eq": "loaves"
+     },
+     "node": "emberford.tally.bake.marked"
+    },
+    {
+     "node": "emberford.tally.bake.weight"
+    }
+   ]
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH1-S18",
+   "world": "WORLD-02",
+   "title": "Two Sixes",
+   "knowledgeQuestion": "How can the same numbers give two readers a different order?",
+   "stake": "The bake stalls each need a loaf and the ferry needs a bundle for one bay.",
+   "available": {
+    "flag": "emberford.tally",
+    "in": [
+     "weight",
+     "loaves"
+    ]
+   },
+   "objectives": [
+    {
+     "id": "emberford.tally.o.readback",
+     "title": "Read the plan or slip someone makes from the tally.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "emberford.tally.witness",
+        "eq": true
+       },
+       {
+        "any": [
+         {
+          "all": [
+           {
+            "flag": "emberford.tally",
+            "eq": "weight"
+           },
+           {
+            "flag": "emberford.tally.placed",
+            "eq": "weight"
+           }
+          ]
+         },
+         {
+          "all": [
+           {
+            "flag": "emberford.tally",
+            "eq": "loaves"
+           },
+           {
+            "flag": "emberford.tally.placed",
+            "eq": "loaves"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "perspective",
+       "responsibility"
+      ],
+      "framework": [
+       "perspectives",
+       "scope"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "lang-langlit"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "human",
+       "solo": "relational"
+      },
+      "minutes": 2
+     },
+     "kq": {
+      "id": "KQ-EMBERFORD-TALLY",
+      "action": "follow the leading line to see Della’s bake plan or Idris’s load slip"
+     }
+    }
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "id": "KQ-EMBERFORD-TALLY",
+   "text": "How can the same numbers give two readers a different order?",
+   "lastWord": "Both readers had the same measures. Which line they used first changed what they could do next."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.emberford.tally.1",
+   "objective": "emberford.tally.o.readback",
+   "depth": 1,
+   "text": "Two trays can weigh the same and serve different readers."
+  },
+  {
+   "id": "h.emberford.tally.2",
+   "objective": "emberford.tally.o.readback",
+   "depth": 2,
+   "text": "The tally is south of Mara’s stall. Della’s bench is just west. Idris keeps his slip by the cart in the lower lane."
+  },
+  {
+   "id": "h.emberford.tally.3",
+   "objective": "emberford.tally.o.readback",
+   "depth": 3,
+   "text": "Bring the loaf line to the front for Della, or the weighing line for Idris. They each have both measurements."
+  },
+  {
+   "id": "h.emberford.tally.4",
+   "objective": "emberford.tally.o.readback",
+   "depth": 4,
+   "text": "Help the reader finish their plan or tie their bundle, then read their new slip. You can turn the tally again later."
   }
  ]
 }

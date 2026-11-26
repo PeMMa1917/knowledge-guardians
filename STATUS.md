@@ -16,6 +16,8 @@ In the Nexus Ledger Room, Lella’s brass drawer and Omrin’s torn roll reopen 
 
 The east-well rumour has two receiving tasks. At the guild, clip both leaves and line up Noa’s mineral headings. At the landing, set Efua’s first peg and follow the school route to Tova’s readback. Either task keeps its source limits and leaves the other use available through the tea table. Earlier verdicts, credit and saved slips carry forward. [Both receiving paths](tests/rumour-well-play.test.ts)
 
+At Emberford’s bakers’ tally, both trays and both measurements stay in view. A loaf-first heading gives Della a six-stall bake plan. A weight-first heading gives Idris a load slip for one ferry bay. Reading the new plan or slip records how the heading affected the next person’s work. [Both readers and save checks](tests/emberford-tally.test.ts)
+
 The narrow diary, source catalogue and ending credits wrap long controls, titles and links at enlarged text sizes. A completed controlled trial at the Nexus bench now unlocks Lumen’s simulation and causal memories. Six Jig Shop exhibits have distinct original graphics. The outline of J. W. Jarboe’s photographic plate vise follows the exterior in his 1857 patent drawing. The source note distinguishes that design from the surviving model’s surface finish. [Bench memories](tests/glossary.test.ts) · [Jig Shop](tests/jig-shop.test.ts)
 
 The 1941 Green-Book records Victor Hugo Green as publisher and James A. Jackson as the presenter named on the cover. Checking the object opens its historical context. Earning it controls the museum citation in the adventure export. [Door Fold](tests/door-fold.test.ts)

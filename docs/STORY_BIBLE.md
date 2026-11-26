@@ -216,6 +216,7 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 1 | The Lamb on the Ford Stone | Nature | s | mixed | face, around (pay marks), leave | The ballad |
 | 1 | The Prophecy over the Arch | Fate, Supernatural | m | mixed | face (source), around (a hope), leave (believe it) | Madame Quandary (ch 9) |
 | 1 | The Missing Word (toll notice) | Society, Person | s | mixed | three wordings; coin a word | Who chooses words has power |
+| 1 | Two Sixes | Person, Society | s | quiet | put the loaf count or the scale weight first on both copies, then help the reader make a plan, revise or leave | Della marks six stalls for the smaller loaves. Idris ties the three larger loaves for one ferry bay. Both keep both measurements where the next reader can check them. |
 | 1 | The Queue at Sill Bridge | Society, Person | m | mixed | check the pegs and the bell wheel; send one signed deputy, staff a public second turn or leave the claim for later | The matching recipient needs a different bell cue at the old ferry landing. |
 | 1 | A Second Handle | Self, Person | s | mixed | carry together, mend in private, set the case down | Kip recalls when to offer help or share a setback in Emberford |
 | 1 | Across the Missing Stroke | Person, Technology | s | mixed | bring the invitation to the front, put the editorial traces at the front, or leave both slips on the rail | A folio reaches Bea with the invitation, two readings and an address. |

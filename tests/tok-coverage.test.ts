@@ -135,7 +135,7 @@ function watchForest(d: Driver, site: string, window: ForestWindow) {
 
 // Times below are author estimates of when these actions could finish. This
 // fixture exercises entry conditions and domain commands, not walking or reading speed.
-function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'rests' | 'ribbon' | 'print' | 'packing' | 'scout' | 'viewer' | 'curtain' | 'last-turn' | 'shutters-low' | 'shutters-quiet'): Route {
+function nexusToEmberford(style: 'main' | 'explore' | 'tally-readback' | 'records' | 'guide' | 'rests' | 'ribbon' | 'print' | 'packing' | 'scout' | 'viewer' | 'curtain' | 'last-turn' | 'shutters-low' | 'shutters-quiet'): Route {
   const route = new Route();
   const explore = style !== 'main';
   const records = style === 'records';
@@ -487,6 +487,22 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
   if (explore) {
     route.at(44 + emberfordExtra, 'Arrange a repeat water reading from a fixed mark', ['objectivity', 'explanation', 'methods-and-tools'], useProp('emberford.gauge', 'repeat'));
     route.at(49 + emberfordExtra, 'Keep both weights and loaf counts for different readers', ['perspective', 'values', 'perspectives'], useProp('emberford.tally', 'loaves'));
+    if (style === 'tally-readback') {
+      route.at(51 + emberfordExtra, 'Help Della put the same measured tray on the six-stall plan and read her result',
+        ['interpretation', 'perspective', 'responsibility', 'perspectives', 'scope'], (d) => {
+          const map = MAPS[d.s.mapId];
+          const baker = map.npcs.find((npc) => npc.id === 'baker-della');
+          expect(baker && check(baker.visibleIf, d.s)).toBe(true);
+          expect(d.done('emberford.tally.o.readback')).toBe(false);
+          d.talk('baker-della', 'Hold the tally while');
+          const plan = map.interactables.find((prop) => prop.id === 'tally-bake-plan')!;
+          expect(check(plan.visibleIf, d.s)).toBe(true);
+          expect(plan.text).toContain('Small tray for six stalls');
+          d.run({ type: 'ReadWorldSign', id: plan.id, title: plan.label, text: plan.text!, readFlag: plan.flag });
+          d.formats.add('record reading');
+          expect(d.done('emberford.tally.o.readback')).toBe(true);
+        });
+    }
     route.at(53 + emberfordExtra, 'Hang the sketch of the safe bridge approach', ['responsibility', 'ethics'], useProp('emberford.repair-notice', 'sketch'));
     route.at(57 + emberfordExtra, 'Keep the sample separate from the untraced blade', ['interpretation', 'justification', 'scope'], useProp('emberford.pattern-order', 'record'));
     route.at(64 + emberfordExtra, 'Compare the workshop’s test sample with the seller’s blade', ['evidence', 'explanation', 'objectivity', 'methods-and-tools'], (d) => {
@@ -2091,6 +2107,7 @@ describe('rolling TOK coverage audit', () => {
   it.each([
     { name: 'Nexus main route into Emberford', end: 42, play: () => nexusToEmberford('main') },
     { name: 'Nexus and Emberford with optional stops', end: 86, play: () => nexusToEmberford('explore') },
+    { name: 'Nexus and Emberford with Della’s bake-plan readback', end: 86, play: () => nexusToEmberford('tally-readback') },
     { name: 'Nexus seal and Emberford’s Two-Bell Order', end: 105, play: () => nexusToEmberford('records') },
     { name: 'Nexus with the Arrow at the Turn and the Emberford washhouse', end: 101, play: () => nexusToEmberford('guide') },
     { name: 'Nexus with the Uncounted Reader and two reading rests', end: 91, play: () => nexusToEmberford('rests') },

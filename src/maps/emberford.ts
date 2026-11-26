@@ -91,6 +91,24 @@ const REPAIR_GATE = { x: 2, y: 16 };
 const REPAIR_SHELF = { x: 4, y: 16 };
 const REPAIR_YARD_ID = 'aethelgard.repair-yard';
 
+const tallyHeading: Condition = { flag: 'emberford.tally', in: ['weight', 'loaves'] };
+const [unsetTally, ...setTallies] = sceneProp('emberford.tally', 14, 20, 'the bakers’ tally', 'ledger',
+  { weight: 'nile.tablet', loaves: 'nile.scroll' });
+const tallyPlaced = (heading: 'weight' | 'loaves'): Condition => ({ flag: 'emberford.tally.placed', eq: heading });
+const tallyReceivers: Interactable[] = [
+  { id: 'tally-bake-plan', kind: 'sign', x: 12, y: 20, w: 1, h: 1, walkThrough: true,
+    label: 'Della’s marked bake plan', art: 'nile.scroll', flag: 'emberford.tally.witness',
+    text: 'Small tray for six stalls. Six loaves at six scale weights. Reserve the large tray: three loaves at the same weight.',
+    visibleIf: { all: [{ flag: 'emberford.tally', eq: 'loaves' }, tallyPlaced('loaves')] } },
+  { id: 'tally-ferry-read', kind: 'scene', node: 'emberford.tally.ferry.read', x: 24, y: 23, w: 1, h: 1, walkThrough: true,
+    label: 'Idris’s ferry copy of the tally', art: 'nile.slip',
+    visibleIf: { all: [tallyHeading, { not: tallyPlaced('weight') }] } },
+  { id: 'tally-load-slip', kind: 'sign', x: 24, y: 23, w: 1, h: 1, walkThrough: true,
+    label: 'Idris’s clipped load slip', art: 'preserved.folder', flag: 'emberford.tally.witness',
+    text: 'One deck compartment, six scale weights. Tie the three large loaves as one bundle. The six small loaves would weigh the same.',
+    visibleIf: { all: [{ flag: 'emberford.tally', eq: 'weight' }, tallyPlaced('weight')] } },
+];
+
 export const EMBERFORD: MapDef = {
   id: 'aethelgard.emberford',
   name: 'Aethelgard: Emberford market',
@@ -156,6 +174,7 @@ export const EMBERFORD: MapDef = {
     { id: 'fruit-seller', x: 15, y: 19, facing: 'down' },
     // The Shattering Rumour (side quest): each person heard the blade story from the next.
     { id: 'porter-idris', x: 23, y: 22, facing: 'left' },
+    { id: 'baker-della', x: 11, y: 20, facing: 'right', visibleIf: tallyHeading },
     { id: 'stallkeeper-hana', x: 12, y: 12, facing: 'right' },
     // Origin side quests (spec 35.1): each giver appears only for that origin.
     { id: 'runner-tamar', x: 18, y: 21, facing: 'right', visibleIf: { origin: 'harbour' } },
@@ -215,8 +234,9 @@ export const EMBERFORD: MapDef = {
       visibleIf: { all: [repairBranch('leave'), repairQueue.receipt] } },
     ...sceneProp('emberford.gauge', 29, 19, 'the river gauge board', 'notice-board',
       { repeat: 'board-stand', compare: 'cork-board' }),
-    ...sceneProp('emberford.tally', 14, 20, 'the bakers’ tally', 'ledger',
-      { weight: 'nile.tablet', loaves: 'nile.scroll' }),
+    { ...unsetTally, visibleIf: { not: tallyHeading } },
+    ...setTallies,
+    ...tallyReceivers,
     ...sceneProp('emberford.repair-notice', 30, 21, 'the bridge repair notice', 'notice-board',
       { sketch: 'nile.map', direction: 'signpost' }),
     ...sceneProp('emberford.pattern-order', 9, 15, 'the smith’s sample tray', 'nile.tablet',
