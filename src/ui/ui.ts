@@ -1858,9 +1858,21 @@ export class UI implements UIApi {
         svg.addEventListener('pointermove', (ev) => { if (dragging) moveTo(ev); });
         const endDrag = () => { if (!dragging) return; dragging = false; feedback = null; this.sfx('sfx.click'); render(); };
         svg.addEventListener('pointerup', endDrag); svg.addEventListener('pointercancel', endDrag);
-        const nudge = (dx: number, dy: number) => { framePos.set(b.id, clamp(pos.x + dx, pos.y + dy)); feedback = null; render(); };
+        const nudgeButton = (direction: string, arrow: string, dx: number, dy: number) => {
+          const label = `Move the frame ${direction}`;
+          return h('button', { type: 'button', 'aria-label': label, onclick: (event: MouseEvent) => {
+            const keepFocus = document.activeElement === event.currentTarget;
+            framePos.set(b.id, clamp(pos.x + dx, pos.y + dy));
+            feedback = null;
+            render();
+            if (keepFocus) box.querySelector<HTMLButtonElement>(`.frame-nudge [aria-label="${label}"]`)?.focus({ preventScroll: true });
+          } }, arrow);
+        };
         box.append(h('div', { class: 'frame-body' }, h('div', {}, canvas,
-          h('div', { class: 'row frame-nudge', 'aria-label': 'Move the frame' }, h('button', { type: 'button', 'aria-label': 'Move the frame left', onclick: () => nudge(-1, 0) }, '←'), h('button', { type: 'button', 'aria-label': 'Move the frame up', onclick: () => nudge(0, -1) }, '↑'), h('button', { type: 'button', 'aria-label': 'Move the frame down', onclick: () => nudge(0, 1) }, '↓'), h('button', { type: 'button', 'aria-label': 'Move the frame right', onclick: () => nudge(1, 0) }, '→'), h('span', { class: 'fine' }, 'Drag on the picture, or use the arrows.'))),
+          h('div', { class: 'row frame-nudge', 'aria-label': 'Move the frame' },
+            nudgeButton('left', '←', -1, 0), nudgeButton('up', '↑', 0, -1),
+            nudgeButton('down', '↓', 0, 1), nudgeButton('right', '→', 1, 0),
+            h('span', { class: 'fine' }, 'Drag on the picture, or use the arrows.'))),
           h('div', { class: 'frame-side' }, h('p', { class: 'label' }, 'The poster'), poster,
             h('button', { class: 'primary', onclick: () => { const ev = c.dispatch({ type: 'PuzzleFrame', puzzle: rec.id, brief: b.id, x: pos.x, y: pos.y }); take(ev); if (doneB(b.id)) { this.sfx('sfx.sparkle'); const nx = rec.briefs.findIndex((q) => !doneB(q.id)); if (nx >= 0) frameB = nx; render(); } } }, `Give it to ${b.who.split(',')[0]}`))));
         if (rec.briefs.every((q) => doneB(q.id))) {

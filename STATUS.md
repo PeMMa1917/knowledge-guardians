@@ -604,3 +604,7 @@ The Skill Atlas records #744 after Kori uses the raised proof at the Landing or 
 ## Matching sources to particular objects
 
 An engine playthrough now reaches Confident for #791, matching evidence to its particular object and claim, after eight compatible uses. The Cold Store reader keeps the body and replacement lid’s dates separate, and a House of Performance reader keeps the surviving Usugumo leaf and the earlier tale on different lines. The stage describes practice recorded in the game. [Eight-use replay](tests/object-specific-skill.test.ts)
+
+## Moving the Painter’s Frame
+
+The arrow keeps keyboard focus after each nudge, so a player can move the frame several steps with consecutive presses. [Keyboard replay](tools/smoke-fieldgames.mjs)
