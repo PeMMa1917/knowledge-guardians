@@ -35,6 +35,17 @@ export const jigReturned = (entry: JigCase, mode: JigReturn): Condition => ({
 
 const smith = 'jig-shop-nesta';
 const recipient = 'smith-hesper';
+const jarboePatent = {
+  id: 'HIS-JIG-SHOP-JARBOE-PATENT',
+  title: 'John William Jarboe, Photographic-Plate Vise, U.S. Patent 16,841',
+  url: 'https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/0016841',
+  locator: 'First plate, figures 1–3, and signed patent specification dated 17 March 1857',
+  supports: 'The patent names John William Jarboe and shows the wooden vise design. Its inventor, object type and date match the Smithsonian model record. The plate documents the design’s form.',
+  accessed: '2026-11-26',
+};
+
+const jigSources = (entry: JigCase): string[] => entry.key === 'nmah:pg.000762'
+  ? [entry.source, jarboePatent.id] : [entry.source];
 
 function jigDialogue(entry: JigCase): DialogueNode[] {
   return [{
@@ -136,7 +147,7 @@ export const jigShopContent: Partial<ContentPack> = {
   }],
   exhibits: JIG_CASES.map((entry) => ({
     id: entry.exhibit, name: entry.title, art: entry.art, dateText: entry.date, dateKind: entry.dateKind,
-    historicalLabel: 'documented', summary: entry.summary, sources: [entry.source], grantsCard: entry.card,
+    historicalLabel: 'documented', summary: entry.summary, sources: jigSources(entry), grantsCard: entry.card,
     altText: entry.artDescription ?? `Original character-scale study graphic for the ${entry.family} trial linked to ${entry.accession}.`,
     specimen: {
       key: entry.key, institution: entry.institution, accession: entry.accession, source: entry.source, objective: entry.checked,
@@ -146,13 +157,13 @@ export const jigShopContent: Partial<ContentPack> = {
   })),
   cards: JIG_CASES.map((entry) => ({
     id: entry.card, title: `${entry.accession} · ${entry.title}`, text: entry.summary,
-    sources: [entry.source], limits: entry.limit, historicalLabel: 'documented', claimKind: 'observation',
+    sources: jigSources(entry), limits: entry.limit, historicalLabel: 'documented', claimKind: 'observation',
   })),
-  sources: JIG_CASES.map((entry) => ({
+  sources: [jarboePatent, ...JIG_CASES.map((entry) => ({
     id: entry.source, title: `${entry.institution}, ${entry.title} (${entry.accession})`, url: entry.url,
     locator: 'Exact item identity, dated history, descriptive record and roles as named', supports: entry.summary,
     accessed: '2026-11-26', mla: { kind: 'page', title: entry.title, container: entry.institution, showAccessDate: true },
-  })),
+  } as const))],
   hints: JIG_CASES.flatMap(hints),
   journal: JIG_CASES.flatMap((entry) => [{
     id: `j.${entry.flag}.check`, claimKind: 'simulation' as const,

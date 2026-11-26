@@ -54,12 +54,13 @@ const catalogueForms: Partial<Record<string, Art[2]>> = {
     box(g, '#5c767d', 15, 16, 3);
   },
   'jarboe-plate-vise': (g) => {
-    // The selected catalogue photos show plate cases. This is an external catalogue slip.
-    box(g, shine, 9, 6, 14, 11);
-    box(g, iron, 11, 8, 5);
-    box(g, iron, 11, 10, 10);
-    box(g, '#ad8190', 11, 12, 3, 3);
-    box(g, plank, 15, 13, 6);
+    // Exterior only, from Jarboe’s patent plate. Its finish is illustrative.
+    box(g, '#a77750', 6, 14, 21, 3);
+    box(g, brass, 7, 14, 19);
+    box(g, '#a77750', 14, 11, 3, 3);
+    box(g, '#a77750', 23, 11, 3, 3);
+    box(g, iron, 12, 10, 1, 4);
+    box(g, iron, 11, 8, 3, 2);
   },
   'concave-plane': (g) => {
     box(g, '#a77750', 7, 12, 18, 3);

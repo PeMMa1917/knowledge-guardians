@@ -58,6 +58,22 @@ describe('The Parts You Can Replace', () => {
     }
   });
 
+  it('credits Jarboe’s exterior design separately from the surviving patent model', () => {
+    const d = new Driver();
+    const entry = JIG_CASES.find(({ key }) => key === 'nmah:pg.000762')!;
+    const exhibit = d.e.pack.exhibits.find(({ id }) => id === entry.exhibit)!;
+    const card = d.e.pack.cards.find(({ id }) => id === entry.card)!;
+    const patent = 'HIS-JIG-SHOP-JARBOE-PATENT';
+    expect(exhibit.specimen?.source).toBe(entry.source);
+    expect(exhibit.sources).toEqual([entry.source, patent]);
+    expect(card.sources).toEqual(exhibit.sources);
+    expect(d.e.pack.sources.find(({ id }) => id === patent)?.url).toBe(
+      'https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/0016841',
+    );
+    expect(exhibit.altText).toContain('1857 patented design');
+    expect(exhibit.altText).toContain('surviving model’s finish is unverified');
+  });
+
   it('keeps a distinct dated placement for each of 40 exact records and validates the physical lanes', () => {
     const d = new Driver();
     d.s.mapId = 'metalworks.yard';
