@@ -540,3 +540,7 @@ The MONIAC identifies its inventor and maker separately. The 1733 Timbuktu manus
 ## Metalworks practice rack
 
 The Rim That Slipped puts a fixed-line tray test and a separate shift docket on the route from the Sample Yard to the Trade Hall. Corra can serve the small carriers at a low peg. Bea can staff a wider sleeve cradle at her bell. The selected station retains its first local receipt, and the ordinary panel investigation stays available. Two additional executable traces meet the 30-minute opportunity floor in every modeled window. [Modeled timing and methods](docs/LEARNING_DESIGN.md) · [Route tests](tests/metal-rim.test.ts)
+
+## Encyclopedia lookups after encounters
+
+The adventure diary keeps Wikipedia lookups for actual historical conversations, opened biographies and documented exhibit inspections. Dated encounter rows display their corresponding lookup when the save records the event. The display distinguishes exact articles, related reading and searches while keeping earned institutional Works Cited in its own section. See the [source review and counts](docs/SOURCES.md#encyclopedia-reading-after-encounters).
