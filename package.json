@@ -2,7 +2,7 @@
   "name": "knowledge-guardians",
   "private": true,
   "version": "0.1.0",
-  "description": "Knowledge Guardians: a 2D RPG for IB Theory of Knowledge. First playable chapter.",
+  "description": "A fifteen-chapter pixel-art RPG for IB Theory of Knowledge.",
   "type": "module",
   "scripts": {
     "dev": "vite",
