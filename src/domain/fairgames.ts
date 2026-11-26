@@ -3,7 +3,7 @@
  * never asked as a quiz. The player first acts on a gut feeling, then runs many seeded rounds, then
  * changes one assumption and sees the answer change. Fair randomness: every run comes from a seed.
  *
- * - Pell's Three Doors (a three-door game): does switching help? Only when the host knows.
+ * - Dov's Three Doors (a three-door game): does switching help? Only when the host knows.
  * - The Ferry Guest Book (shared birthdays): how many passengers before two share a birthday?
  * - The Weigh-House Slate (order of operations): a convention we agree on, and the story that decides.
  * TOK link: intuition and reason, certainty, assumptions, mathematics as discovered or invented.
@@ -14,7 +14,7 @@ export function rng(seed: number): () => number {
 }
 const pickOf = <T>(list: T[], r: () => number): T => list[Math.floor(r() * list.length)];
 
-// ---------------------------------------------------------------- Pell's Three Doors
+// ---------------------------------------------------------------- Dov's Three Doors
 
 export interface DoorRound { prize: number; opened: number | null }
 
@@ -24,7 +24,7 @@ export function doorPrize(seed: number, n: number): number {
 }
 
 /**
- * Which door Pell opens after the player picks. If Pell knows, he opens an empty door that the player
+ * Which door Dov opens after the player picks. If Dov knows, he opens an empty door that the player
  * did not pick. If he has forgotten, he opens either other door at random, and may show the lantern.
  */
 export function pellOpens(prize: number, pick: number, knows: boolean, r: () => number): number {
@@ -32,7 +32,7 @@ export function pellOpens(prize: number, pick: number, knows: boolean, r: () => 
   return pickOf(knows ? others.filter((d) => d !== prize) : others, r);
 }
 
-/** Run many rounds with both plans. Rounds where Pell shows the lantern are set aside (not counted). */
+/** Run many rounds with both plans. Rounds where Dov shows the lantern are set aside (not counted). */
 export function runDoors(n: number, seed: number, knows: boolean): { stay: number; swap: number; counted: number; setAside: number } {
   const r = rng(seed);
   let stay = 0, swap = 0, counted = 0, setAside = 0;
@@ -116,7 +116,7 @@ export function roll(r: () => number, six = 1 / 6): number {
   return 1 + Math.floor(((u - six) / (1 - six)) * 5);
 }
 
-/** Sefa's tally book: in `n` fair rolls, what follows a run of `drought` or more rolls without a six? */
+/** Juno's tally book: in `n` fair rolls, what follows a run of `drought` or more rolls without a six? */
 export function dueTest(n: number, seed: number, drought = 3): { after: number; sixes: number; all: number; allSixes: number } {
   const r = rng(seed);
   let run = 0, after = 0, sixes = 0, allSixes = 0;
@@ -128,7 +128,7 @@ export function dueTest(n: number, seed: number, drought = 3): { after: number; 
   return { after, sixes, all: n, allSixes };
 }
 
-/** The two dice on Sefa's table. One is loaded (six comes up 1 time in 3). Which one depends on the seed. */
+/** The two dice on Juno's table. One is loaded (six comes up 1 time in 3). Which one depends on the seed. */
 export function diceFor(seed: number): { loaded: 0 | 1 } {
   return { loaded: rng(seed * 13 + 5)() < 0.5 ? 0 : 1 };
 }

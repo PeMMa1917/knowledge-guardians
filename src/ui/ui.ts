@@ -2768,32 +2768,32 @@ export class UI implements UIApi {
       h('span', { class: 'fine' }, `${r.n} of ${r.of} (${r.of ? Math.round((100 * r.n) / r.of) : 0}%)`))));
   }
 
-  /** Pell's Three Doors: play by feel, then let the counting frame run 300 rounds, then change one assumption. */
+  /** Dov's Three Doors: play by feel, then let the counting frame run 300 rounds, then change one assumption. */
   openDoors(): void {
     const c = ctx.controller;
     const runs = Number(c.state.flags['field.doors.runs'] ?? 0);
     c.dispatch({ type: 'SetFlag', flag: 'field.doors.runs', value: runs + 1 });
     const seed = runs + 11;
-    const box = this.openModal('bench-panel wide', "Pell's Three Doors");
+    const box = this.openModal('bench-panel wide', "Dov's Three Doors");
     this.sfx('sfx.page');
     const tally = { stay: { w: 0, n: 0 }, swap: { w: 0, n: 0 } };
     let round = 0, guess = '';
     const doorRow = (onPick: ((d: number) => void) | null, show: (d: number) => string, cls: (d: number) => string) =>
       h('div', { class: 'doors-row' }, ...[0, 1, 2].map((d) => h('button', { type: 'button', class: `door-crate ${cls(d)}`, disabled: !onPick, 'aria-label': `Crate ${d + 1}: ${show(d) || 'closed'}`, onclick: () => onPick?.(d) },
         h('span', { class: 'door-num' }, String(d + 1)), h('span', { class: 'door-show' }, show(d)))));
-    const head = () => [this.closeBtn(), h('h2', {}, "Pell's Three Doors"),
-      h('p', {}, "Pell hides a lantern under one of three crates. You pick one. Then Pell, who knows where the lantern is, lifts an empty crate you did not pick. Do you stay, or switch to the last crate?")];
+    const head = () => [this.closeBtn(), h('h2', {}, "Dov's Three Doors"),
+      h('p', {}, "Dov hides a lantern under one of three crates. You pick one. Then Dov, who knows where the lantern is, lifts an empty crate you did not pick. Do you stay, or switch to the last crate?")];
     const tallyLine = () => h('p', { class: 'fine', role: 'status' }, `Your rounds: stayed ${tally.stay.n} times, won ${tally.stay.w} · switched ${tally.swap.n} times, won ${tally.swap.w}.`);
     const pick = () => {
       const prize = doorPrize(seed, round);
       box.replaceChildren(...head(), h('p', {}, h('strong', {}, `Round ${round + 1}. `), 'Pick a crate.'),
         doorRow((d) => decide(prize, d), () => '', () => ''), tallyLine(),
-        round >= 6 ? h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => predict() }, "Enough rounds: ask for Pell's counting frame")) : h('p', { class: 'fine' }, `Play at least ${6 - round} more round${6 - round === 1 ? '' : 's'}. Try both plans.`));
+        round >= 6 ? h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => predict() }, "Enough rounds: ask for Dov's counting frame")) : h('p', { class: 'fine' }, `Play at least ${6 - round} more round${6 - round === 1 ? '' : 's'}. Try both plans.`));
     };
     const decide = (prize: number, mine: number) => {
       const opened = pellOpens(prize, mine, true, fairRng(seed * 31 + round));
       const other = [0, 1, 2].find((d) => d !== mine && d !== opened)!;
-      box.replaceChildren(...head(), h('p', {}, `You picked crate ${mine + 1}. Pell lifts crate ${opened + 1}: empty. Crate ${other + 1} is still closed.`),
+      box.replaceChildren(...head(), h('p', {}, `You picked crate ${mine + 1}. Dov lifts crate ${opened + 1}: empty. Crate ${other + 1} is still closed.`),
         doorRow(null, (d) => (d === opened ? 'empty' : ''), (d) => (d === mine ? 'mine' : d === opened ? 'open' : '')),
         h('div', { class: 'row' },
           h('button', { type: 'button', onclick: () => reveal(prize, mine, opened, mine) }, `Stay with crate ${mine + 1}`),
@@ -2810,22 +2810,22 @@ export class UI implements UIApi {
     };
     const predict = () => {
       box.replaceChildren(...head(), tallyLine(),
-        h('p', {}, "Pell grins. 'Feelings are free. Before my counting frame runs 300 rounds: how often do you think switching wins?' Your guess is only for you."),
+        h('p', {}, "Dov grins. 'Feelings are free. Before my counting frame runs 300 rounds: how often do you think switching wins?' Your guess is only for you."),
         h('div', { class: 'notice-options' }, ...['About 1 time in 3', 'About half the time', 'About 2 times in 3'].map((t) => h('button', { type: 'button', onclick: () => { guess = t; frame(); } }, t))));
     };
     const frame = () => {
       const k = runDoors(300, seed, true);
       box.replaceChildren(...head(), h('p', {}, `The counting frame clacks through 300 rounds, with the same rules. Your guess was: ${guess.toLowerCase()}.`),
         this.barPair([{ label: 'Stay wins', n: k.stay, of: k.counted }, { label: 'Switch wins', n: k.swap, of: k.counted }]),
-        h('p', {}, "Pell: 'Your first pick is right 1 time in 3. When it is wrong (2 times in 3), I must leave the lantern under the other crate, because I never lift it. So switching wins 2 times in 3.'"),
-        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => forgets() }, "But what if Pell forgets where the lantern is?")));
+        h('p', {}, "Dov: 'Your first pick is right 1 time in 3. When it is wrong (2 times in 3), I must leave the lantern under the other crate, because I never lift it. So switching wins 2 times in 3.'"),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => forgets() }, "But what if Dov forgets where the lantern is?")));
     };
     const forgets = () => {
       const k = runDoors(300, seed + 7, false);
       box.replaceChildren(...head(),
-        h('p', {}, `Now Pell has forgotten. He lifts one of the other crates at random. In ${k.setAside} of 300 rounds he shows the lantern, so those rounds are set aside. In the rest:`),
+        h('p', {}, `Now Dov has forgotten. He lifts one of the other crates at random. In ${k.setAside} of 300 rounds he shows the lantern, so those rounds are set aside. In the rest:`),
         this.barPair([{ label: 'Stay wins', n: k.stay, of: k.counted }, { label: 'Switch wins', n: k.swap, of: k.counted }]),
-        h('p', {}, 'The crates look the same, and so do the moves. The only change is what Pell knew. His knowledge was information, and it changed the answer: now it is about half and half.'),
+        h('p', {}, 'The crates look the same, and so do the moves. The only change is what Dov knew. His knowledge was information, and it changed the answer: now it is about half and half.'),
         this.finishField('doors'),
         h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
     };
@@ -2918,7 +2918,7 @@ export class UI implements UIApi {
     readers();
   }
 
-  /** Lanterns and Bones: Sefa's dice table. Is a six 'due'? Which die is loaded? No betting: only evidence. */
+  /** Lanterns and Bones: Juno's dice table. Is a six 'due'? Which die is loaded? No betting: only evidence. */
   openBones(): void {
     const c = ctx.controller;
     const runs = Number(c.state.flags['field.bones.runs'] ?? 0);
@@ -2927,7 +2927,7 @@ export class UI implements UIApi {
     const box = this.openModal('bench-panel wide', 'Lanterns and Bones');
     this.sfx('sfx.page');
     const head = () => [this.closeBtn(), h('h2', {}, 'Lanterns and Bones'),
-      h('p', {}, "Sefa the ferry cook keeps a dice table by the landing. 'Nobody wins anything here,' Sefa says, 'except a better guess. Old cooks say: the pot does not know how long you waited.' A small grey creature sits on the table edge, counting on its fingers.")];
+      h('p', {}, "Juno the ferry cook keeps a dice table by the landing. 'Nobody wins anything here,' Juno says, 'except a better guess. Old cooks say: the pot does not know how long you waited.' A small grey creature sits on the table edge, counting on its fingers.")];
     const r = fairRng(seed * 7 + 1);
     const rolls: number[] = [];
     const face = (v: number) => h('span', { class: `die-face${v === 6 ? ' six' : ''}`, 'aria-label': `rolled ${v}` }, String(v));
@@ -2941,15 +2941,15 @@ export class UI implements UIApi {
         claim ? h('p', { class: 'clue-view' }, `The creature squeaks: '${d} without a six! The next one must be a six. It is due! Everyone knows it!'`) : '',
         h('div', { class: 'row' },
           h('button', { type: 'button', class: claim ? '' : 'primary', onclick: () => { rolls.push(roll(r)); this.sfx('sfx.click'); table(); } }, 'Roll'),
-          claim ? h('button', { type: 'button', class: 'primary', onclick: () => tally(d) }, "Ask Sefa: 'Is it due?'") : ''));
+          claim ? h('button', { type: 'button', class: 'primary', onclick: () => tally(d) }, "Ask Juno: 'Is it due?'") : ''));
     };
     const tally = (d: number) => {
       const k = dueTest(1200, seed, 3);
       box.replaceChildren(...head(),
-        h('p', {}, `Sefa opens a greasy tally book. 'Twelve hundred rolls of this same die, from many evenings. I marked every roll that came after three or more without a six. You said ${d} in a row. Let us look.'`),
+        h('p', {}, `Juno opens a greasy tally book. 'Twelve hundred rolls of this same die, from many evenings. I marked every roll that came after three or more without a six. You said ${d} in a row. Let us look.'`),
         this.barPair([{ label: 'Six, after a dry run', n: k.sixes, of: k.after }, { label: 'Six, any roll', n: k.allSixes, of: k.all }]),
-        h('p', {}, "Both are about 1 in 6. The die has no memory of the rolls before. The creature's 'due' feeling is strong, and it is wrong. Sefa: 'Its name is the Gambler's Imp. It lives on long waits.'"),
-        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => twoDice() }, "Sefa: 'Now a harder one. Two dice.'")));
+        h('p', {}, "Both are about 1 in 6. The die has no memory of the rolls before. The creature's 'due' feeling is strong, and it is wrong. Juno: 'Its name is the Gambler's Imp. It lives on long waits.'"),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => twoDice() }, "Juno: 'Now a harder one. Two dice.'")));
     };
     const twoDice = () => {
       const { loaded } = diceFor(seed);
@@ -2958,7 +2958,7 @@ export class UI implements UIApi {
       const add = (i: number, n: number) => { for (let k = 0; k < n; k++) { tallies[i][0]++; if (roll(rr, i === loaded ? 1 / 3 : 1 / 6) === 6) tallies[i][1]++; } render(); };
       const name = ['the red die', 'the bone die'];
       const render = (msg?: HTMLElement) => box.replaceChildren(...head(),
-        h('p', {}, "Sefa sets down a red die and a bone die. 'One of these is loaded: it shows six too often. Roll each as much as you like. Call it when you feel sure enough. No prize, no cost.'"),
+        h('p', {}, "Juno sets down a red die and a bone die. 'One of these is loaded: it shows six too often. Roll each as much as you like. Call it when you feel sure enough. No prize, no cost.'"),
         this.barPair(tallies.map((t, i) => ({ label: `Sixes on ${name[i]}`, n: t[1], of: t[0] }))),
         h('div', { class: 'row' }, ...[0, 1].flatMap((i) => [
           h('button', { type: 'button', onclick: () => add(i, 1) }, `Roll ${name[i]}`),
@@ -2970,13 +2970,13 @@ export class UI implements UIApi {
       const call = (i: number) => {
         const n = tallies[0][0] + tallies[1][0];
         if (i !== loaded) {
-          render(h('p', { class: 'clue-view', role: 'status' }, `Sefa turns ${name[i]} over. 'This one is fair. After ${n} rolls, the luck of the bones can still fool you. Roll more, and watch whether the gap stays.'`));
+          render(h('p', { class: 'clue-view', role: 'status' }, `Juno turns ${name[i]} over. 'This one is fair. After ${n} rolls, the luck of the bones can still fool you. Roll more, and watch whether the gap stays.'`));
           return;
         }
         this.sfx('sfx.sparkle');
         box.replaceChildren(...head(),
           this.barPair(tallies.map((t, k) => ({ label: `Sixes on ${name[k]}`, n: t[1], of: t[0] }))),
-          h('p', {}, `Sefa nods. 'Right: ${name[loaded]} is loaded. You used ${n} rolls. ${n < 40 ? 'That was quick. Were you sure, or lucky? With so few rolls, a fair die can look loaded too.' : 'That is a good handful. The more rolls, the less likely a fair die looks this way by chance.'}'`),
+          h('p', {}, `Juno nods. 'Right: ${name[loaded]} is loaded. You used ${n} rolls. ${n < 40 ? 'That was quick. Were you sure, or lucky? With so few rolls, a fair die can look loaded too.' : 'That is a good handful. The more rolls, the less likely a fair die looks this way by chance.'}'`),
           h('p', {}, "The Gambler's Imp hops off the table and into the reeds, muttering about its next long wait."),
           this.finishField('bones'),
           h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
@@ -2992,7 +2992,7 @@ export class UI implements UIApi {
     const box = this.openModal('bench-panel wide', 'The Missing Word');
     this.sfx('sfx.page');
     const head = () => [this.closeBtn(), h('h2', {}, 'The Missing Word'),
-      h('p', {}, `Odo the sign-painter dips his brush. 'Ysolde wants a notice: from next market day, ${FACT.what} goes from ${FACT.from} marks to ${FACT.to} marks. The fact is fixed. The word is yours. Every word paints a different picture, so choose with care.'`)];
+      h('p', {}, `Odo the sign-painter dips his brush. 'Maudie wants a notice: from next market day, ${FACT.what} goes from ${FACT.from} marks to ${FACT.to} marks. The fact is fixed. The word is yours. Every word paints a different picture, so choose with care.'`)];
     const seen = new Set<string>();
     const reactions = (w: Wording, reason: boolean) => h('div', { class: 'word-readers' }, ...READERS.map((r) => h('div', { class: 'ware' },
       h('strong', {}, r.who), h('p', { class: 'fine' }, r.about), h('p', {}, reason ? WITH_REASON[r.id] : w.says[r.id]))));
@@ -3012,7 +3012,7 @@ export class UI implements UIApi {
     };
     const paint = (w: Wording) => {
       box.replaceChildren(...head(), h('p', { class: 'slate-line small' }, w.line),
-        h('p', {}, `Ysolde hurries over. 'There is room for one more line. Will you paint why? ${FACT.reason[0].toUpperCase()}${FACT.reason.slice(1)}.'`),
+        h('p', {}, `Maudie hurries over. 'There is room for one more line. Will you paint why? ${FACT.reason[0].toUpperCase()}${FACT.reason.slice(1)}.'`),
         h('div', { class: 'notice-options' },
           h('button', { type: 'button', onclick: () => painted(w, true) }, 'Paint the reason too'),
           h('button', { type: 'button', onclick: () => painted(w, false) }, 'Leave only the toll')));

@@ -17,7 +17,7 @@ export interface FieldGame {
 }
 
 export const FIELD_GAMES: FieldGame[] = [
-  { id: 'doors', name: "Pell's Three Doors", host: 'Pell, at the lantern stall in Emberford', concept: 'certainty',
+  { id: 'doors', name: "Dov's Three Doors", host: 'Dov, at the lantern stall in Emberford', concept: 'certainty',
     idea: 'A strong gut feeling can be wrong, and the answer can change when one assumption changes (does the host know?). Many careful runs can correct an intuition; an argument can explain why.' },
   { id: 'guests', name: 'The Ferry Guest Book', host: 'Tova, at the old ferry landing', concept: 'certainty',
     idea: 'A paradox is not a contradiction: it is a true result that surprises intuition. With 23 people, a shared birthday is more likely than not, because there are 253 pairs.' },
@@ -25,7 +25,7 @@ export const FIELD_GAMES: FieldGame[] = [
     idea: 'The order of operations is a convention people agreed on, not a fact found in nature. When a line can be read two ways, ask what the writer meant, then write it so it can only be read one way.' },
   { id: 'word', name: 'The Missing Word', host: 'Odo the sign-painter, at the notice board in Emberford', concept: 'perspective', fray: 'hush-moth',
     idea: 'Two words can point at the same fact (denotation) and still make people feel and notice different things (connotation). A soft word can hide a hard fact. When a word is missing, a shared problem is hard to talk about, so the person who chooses the words has power.' },
-  { id: 'bones', name: 'Lanterns and Bones', host: 'Sefa the ferry cook, at the dice table on the landing', concept: 'evidence', fray: 'gamblers-imp',
+  { id: 'bones', name: 'Lanterns and Bones', host: 'Juno the ferry cook, at the dice table on the landing', concept: 'evidence', fray: 'gamblers-imp',
     idea: 'A fair die does not remember: after a long run without a six, a six is no more likely than before. To tell a loaded die from a fair one you need many rolls, because a few rolls can fool anyone. More evidence lets you be more sure, but never certain.' },
 ];
 

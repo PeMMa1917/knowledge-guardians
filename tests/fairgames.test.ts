@@ -12,7 +12,7 @@ describe('fair games from the mathematics lessons', () => {
     expect([a(), a(), a()]).toEqual([b(), b(), b()]);
   });
 
-  it('when Pell knows, he never shows the lantern, and switching wins about two times in three', () => {
+  it('when Dov knows, he never shows the lantern, and switching wins about two times in three', () => {
     const r = rng(1);
     for (let p = 0; p < 3; p++) for (let k = 0; k < 3; k++) {
       const o = pellOpens(p, k, true, r);
@@ -25,7 +25,7 @@ describe('fair games from the mathematics lessons', () => {
     expect(run.stay + run.swap).toBe(run.counted);
   });
 
-  it('when Pell forgets, the counted rounds split about half and half', () => {
+  it('when Dov forgets, the counted rounds split about half and half', () => {
     const run = runDoors(6000, 42, false);
     expect(run.setAside).toBeGreaterThan(1000);
     expect(run.swap / run.counted).toBeGreaterThan(0.45);
