@@ -38,5 +38,25 @@
     "near": "The scale keeper follows the arriving units rather than the level already held in reserve. The model slips now show which run moved money sooner.",
     "study": "The study table writes the reserve rule beside the forecast. A later reader can change the rule and compare a new result with the fixed rule used here.",
     "revisit": {"map":"nexus.archive","prop":"model-record-return-moniac","method":"Open the receipts drawer that separates a stock from a flow.","hint":"Bring the MONIAC to the two-slot drawer beside the south reading lane."}
+  },
+  {
+    "slug": "theseus",
+    "key": "mit-museum:2007.030.001",
+    "accession": "2007.030.001",
+    "title": "Theseus, the magnetic mouse and maze in the MIT Museum",
+    "maker": "Claude Shannon",
+    "institution": "MIT Museum",
+    "source": "https://mitmuseum.mit.edu/collections/object/2007.030.001",
+    "date": "1950 · Shannon family gift recorded in 2007",
+    "dateKind": "Year the machine was created and the separate year the museum received it",
+    "art": "model-record.theseus",
+    "about": "The MIT Museum keeps the mouse, its configurable table-top maze and related parts and working records. MIT describes a magnetically moved mouse controlled by a relay circuit beneath the maze.",
+    "limit": "A shorter second run in the practice maze shows what a saved route can do here. It leaves open what this kind of machine could know about a new maze.",
+    "role": "Information theorist and inventor",
+    "line": "You can look at the mouse all afternoon and never see its route. Lift the floor and watch which direction the relay record sends it. Keep the boards in the same places for your second run.",
+    "job": "A visitor sees that the mouse arrives sooner. A keeper wants people to be able to follow which part of the machine kept the route.",
+    "near": "The keeper posts the saved path on the public bench. Visitors can lap the same maze again and read the number of moves beside each run.",
+    "study": "The study reader moves the record to the slot below the board. The same mouse runs over it again, so the next visitor can compare where the route lives.",
+    "revisit": {"map":"nexus.archive","prop":"model-record-return-theseus","method":"Find the route record under the archive’s old practice maze.","hint":"Bring Theseus to the low maze near the south reading lane."}
   }
 ]

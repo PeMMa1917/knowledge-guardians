@@ -218,6 +218,12 @@ The Library of Congress lists the 1733 copy of *Kashf al-Ghummah fi Nafa al-Umma
 
 Each workshop case keeps the accession, published date, attribution, scope and official museum record together. The geometric outlines, tally weights, joint markers and pulse strips use fictional fixtures. A photographed object associated with sound does not supply a recording. On the return side, each receiver uses a different working slip and can reopen the result. The record of the earlier Kuba-style bowl can be clipped beside the Middle Niger vessel trace after both completed jobs. [Individual collection records and game uses](../src/content/object-use-cases.json) · [Cleveland Museum Open Access](https://www.clevelandart.org/open-access) · [The Met Open Access](https://www.metmuseum.org/policies/image-resources) · [Smithsonian Open Access](https://www.si.edu/openaccess)
 
+## The Material Stores, Water Commons and Canal Walk
+
+Each of the 36 local collection views comes from its own dated catalogue accession and an institution-marked CC0 image. The fibre bench uses mock pulls at equal loads. The bearing bench compares supports at equal inclines. The docket rail keeps recorded discovery, custody and making in their separate fields. The lamp bench reports visibility on fictional swatches. On Canal Walk, an equipped working copy can alter its own shelf guide. [Exact accessions, museum links and fixture notes](../src/content/material-store-cases.json) · [Publicly recorded people and roles](../src/content/material-store-people.json)
+
+The Walters identifies Gnaios’s name on a dated garnet intaglio and separately discusses a possible older sculptural model associated with Polykleitos. The Smithsonian records an Antwerp collection in the Bartmann jug’s provenance and gives several places in a separate geography field. The Met gives the Edo brass-casting guild and the represented merchants different roles. The game keeps all three boundaries visible in the working copy or its shelf correction. [Walters, 42.109](https://art.thewalters.org/object/42.109/) · [Smithsonian National Museum of African Art, 89-13-73](https://collections.si.edu/search/detail/edanmdm:nmafa_89-13-73) · [The Met, 1991.17.18](https://www.metmuseum.org/art/collection/search/316490)
+
 ## The Line a Reader Can Follow and A Sunset on the Proof
 
 - The Nexus uses the catalogue page for the same A606881 record. Its title includes the year 1895, the collection dates the photograph to 1895, and the description dates the original exposure to 22 December 1895. The page supplies no personal byline or page publication date. The rendered entry begins with the title and ends with the date the game's authors consulted it. [Science Museum Group, A606881](https://collection.sciencemuseumgroup.org.uk/objects/co134691/photograph-of-a-radiograph-of-hand-taken-by-wilhelm-conrad-rontgen-germany-1895)
@@ -269,6 +275,51 @@ Five individual collection records supply the measured edge used at the viewing 
 - Akan-style copper-alloy gold weight from Ghana, 1800s. The fitting uses the 2.4 cm side. [CMA 1962.244](https://clevelandart.org/art/1962.244)
 - Wooden tapa cloth beater from Hawai‘i, 20th century before 1930. The fitting uses its recorded length of 38.7 cm. [CMA 1971.152](https://clevelandart.org/art/1971.152)
 - Feline incense burner from Khurasan, Iran, 1150–1200 CE. The fitting uses its catalogue height of 35.5 cm. [CMA 1948.308](https://clevelandart.org/art/1948.308)
+
+## When the Two Clocks Agree, Emberford Study
+
+The study holds exact collection records of cases, dials, shadow clocks, water clocks and musical timekeepers. The simulated readings give the first mark and the elapsed interval in two setups. The figures and practice sounds are original and belong to the model. Named clockmakers, case makers, workshops and other attributions follow the collection records. [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access) · [The Met Open Access](https://www.metmuseum.org/hubs/open-access)
+
+- Seventeenth-century German watch, 1600s. [1916.322](https://clevelandart.org/art/1916.322)
+- Ray and Montague watch, 1813. [1964.416](https://clevelandart.org/art/1964.416)
+- Engraved Egg Watch, 1590–1600. [1929.994](https://clevelandart.org/art/1929.994)
+- Marchand’s enamelled watch, late 1700s - early 1800s. [1916.357](https://clevelandart.org/art/1916.357)
+- Swiss chatelaine watch, mid 1800s. [1918.826](https://clevelandart.org/art/1918.826)
+- Italian watch case, 1600s. [1916.564](https://clevelandart.org/art/1916.564)
+- Jewelled American pendant watch, c. 1890–1910. [2009.360](https://clevelandart.org/art/2009.360)
+- Wigström nephrite clock, 1908–17. [1966.475](https://clevelandart.org/art/1966.475)
+- Kremlin Tower Clock, c. 1913. [1966.477](https://clevelandart.org/art/1966.477)
+- James Cox’s cabinet clock, c. 1770–75. [2009.77](https://clevelandart.org/art/2009.77)
+- Butterfield-type silver sundial, 1700s. [1942.490](https://clevelandart.org/art/1942.490)
+- Tiffany & Co. tall clock, c. 1880. [1992.70](https://clevelandart.org/art/1992.70)
+- Boulle and Martinot clock, c. 1695. [1967.153](https://clevelandart.org/art/1967.153)
+- Paris mantel clock, c. 1780–90. [2011.204](https://clevelandart.org/art/2011.204)
+- Latz and Stollewerck tall-case clock, 1744. [1949.200](https://clevelandart.org/art/1949.200)
+- Baumgartinger clock, c. 1750. [1966.362](https://clevelandart.org/art/1966.362)
+- Gilt French wall clock, c. 1750–60. [1950.376](https://clevelandart.org/art/1950.376)
+- Tiffany and Lenzkirch mantel clock, 1901. [2009.443](https://clevelandart.org/art/2009.443)
+- Japanese wall clock 00.12.10, 19th century. [00.12.10](https://www.metmuseum.org/art/collection/search/62821)
+- Japanese wall clock 00.12.11, 19th century. [00.12.11](https://www.metmuseum.org/art/collection/search/62825)
+- Japanese astronomical clock, 18th–19th century. [00.12.19](https://www.metmuseum.org/art/collection/search/62833)
+- Egyptian water clock with a baboon, 664–30 BCE. [17.194.2341](https://www.metmuseum.org/art/collection/search/572126)
+- Egyptian Shadow Clock, 305–30 BCE. [12.181.307](https://www.metmuseum.org/art/collection/search/576278)
+- Musical Clock with Spinet and Organ, ca. 1625. [2002.323a–f](https://www.metmuseum.org/art/collection/search/503530)
+- Bockeltz astronomical clock-watch, ca. 1605–10. [17.190.1603](https://www.metmuseum.org/art/collection/search/194191)
+- Forfaict clock-watch with alarm, ca. 1600–1610. [17.190.1607](https://www.metmuseum.org/art/collection/search/194195)
+- Augsburg astronomical table clock, second quarter 17th century. [17.190.747](https://www.metmuseum.org/art/collection/search/193624)
+- David Beringer’s portable cube sundial, ca. 1780–1821. [03.21.8](https://www.metmuseum.org/art/collection/search/188836)
+- Charles Bloud’s diptych sundial, ca. 1666–80. [03.21.58](https://www.metmuseum.org/art/collection/search/188859)
+- Tompion repeater and Northcott case, before 1682. [17.190.1488a, b](https://www.metmuseum.org/art/collection/search/194080)
+- Johann Wutky repeater watch, ca. 1675–80. [17.190.1523](https://www.metmuseum.org/art/collection/search/194116)
+- Bordier Frères calendar watch, ca. 1780–90. [89.2.83](https://www.metmuseum.org/art/collection/search/187194)
+- Godemar musical repeater, 18th–19th century. [17.190.1581](https://www.metmuseum.org/art/collection/search/194172)
+- Delaunoy oscillating clock, ca. 1815–30. [26.256.4](https://www.metmuseum.org/art/collection/search/209245)
+- Aaron Willard Jr. banjo clock, ca. 1825. [30.120.15](https://www.metmuseum.org/art/collection/search/316)
+- Boston Clock Company carriage clock, ca. 1890. [1981.434](https://www.metmuseum.org/art/collection/search/1454)
+- Forestville acorn clock, 1847–50. [1970.289.6](https://www.metmuseum.org/art/collection/search/34)
+- Isaac Johnson’s sundial, 1731. [2003.163](https://www.metmuseum.org/art/collection/search/17560)
+- Goldsmith Chandlee sundial, ca. 1800. [1986.9](https://www.metmuseum.org/art/collection/search/8026)
+- Lépine clock with Arabic calendar inscriptions, last quarter 18th century. [2019.283.71](https://www.metmuseum.org/art/collection/search/822719)
 
 ## A Turn at the Workbench, Nile Archive and Archive of Voices
 
@@ -417,3 +468,52 @@ The Council stages fictional work and keeps two historical reading cards. The ca
 
 - HIS-S29 supports the account of Ibn al-Haytham’s experimental work on light and vision. [MacTutor biography](https://mathshistory.st-andrews.ac.uk/Biographies/Al-Haytham/)
 - HIS-COUNCIL-01 supports the account of Mill’s reasons for testing received opinions through discussion. The Stanford Encyclopedia confirms the original publication date of 1859. [On Liberty, chapter II](https://standardebooks.org/ebooks/john-stuart-mill/on-liberty/text/chapter-2) · [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/mill-moral-political/)
+
+### The Second Reading Store
+
+The store compares exact records from four custodians. Its images are original pixel-style study diagrams made from the written facts. The study aids and archive readings are fictional, and their results stay with the named positions tested in play.
+
+| Custodian | Identifier and date | Exact record |
+|---|---|---|
+| Science Museum Group | 1926-419 · 1673 (made) | [Christopher Cock’s five-draw telescope](https://collection.sciencemuseumgroup.org.uk/objects/co4075/telescope-by-christopher-cock) |
+| Science Museum Group | 1908-160 · 1795–1816 (catalogue date range) | [Caroline Herschel’s reflecting telescope](https://collection.sciencemuseumgroup.org.uk/objects/co56400/caroline-herschels-telescope-1795-1816) |
+| Science Museum Group | 1876-1000 · 1783–85 (made) | [William Herschel’s reflecting telescope for William Watson](https://collection.sciencemuseumgroup.org.uk/objects/co56255/reflecting-telescope-by-william-herschel-1783-1785) |
+| Science Museum Group | 1925-469 · 1780–1800 (made) | [William Herschel’s filar micrometer](https://collection.sciencemuseumgroup.org.uk/objects/co56837/filar-micrometer-by-william-herschel-1780-1800) |
+| Science Museum Group | 1878-12 · 1554 (made) | [Girolamo della Volpaia’s armillary sphere](https://collection.sciencemuseumgroup.org.uk/objects/co56284/armillary-sphere-by-girolamo-della-volpaia) |
+| Science Museum Group | 1949-117/1 · 1797 (made) | [John Russell’s Moon globe](https://collection.sciencemuseumgroup.org.uk/objects/co424467/moon-globe-by-john-russell-england-1797) |
+| Science Museum Group | 1889-39 · 1770 (made and installed) | [Jeremiah Sisson’s mural arc](https://collection.sciencemuseumgroup.org.uk/objects/co56333/mural-arc-made-for-king-george-iii) |
+| Science Museum Group | 1974-541 · 1939 (made) | [Kew Observatory’s short-period vertical seismometer](https://collection.sciencemuseumgroup.org.uk/objects/co53848/short-period-vertical-seismometer-used-at-kew-observatory) |
+| Science Museum Group | 1994-570 · 1979 (made) | [Willmore Mark IV borehole seismometer no. 5509](https://collection.sciencemuseumgroup.org.uk/objects/co54250/3-component-borehole-seismometer) |
+| Science Museum Group | 1948-227 · 1695–1705 (made) | [Daniel Quare’s portable barometer](https://collection.sciencemuseumgroup.org.uk/objects/co54541/barometer-by-daniel-quare) |
+| Science Museum Group | 1975-7531 · 1834–44; described as about 1839 (made) | [Birmingham & Derby Junction Railway guard’s timepiece no. 1](https://collection.sciencemuseumgroup.org.uk/objects/co224156/guards-chronometer-birmingham-derby-junction-railway) |
+| Science Museum Group | 1980-1913 · 1603 (made) | [Willem Janszoon Blaeu’s celestial globe](https://collection.sciencemuseumgroup.org.uk/objects/co57097/celestial-globe-by-willem-janszoon-blaeu) |
+| Museo Galileo | 684 · 18th century (made) | [Dubois’s Cassini-type altazimuth quadrant](https://catalogue.museogalileo.it/object/AltazimuthQuadrant.html) |
+| Museo Galileo | 345 · First half of the 19th century (made) | [Giovanni Battista Amici’s wooden telescope mount](https://catalogue.museogalileo.it/object/AmiciITelescope.html) |
+| Museo Galileo | 2563 · About 1675 (made) | [Chérubin d’Orléans’s binocular telescope](https://catalogue.museogalileo.it/object/BinocularTelescope.html) |
+| Museo Galileo | 2429 · Lens: late 1609–early 1610. Frame: 1677 (used; later frame made) | [Galileo’s objective lens with Vittorio Crosten’s frame](https://catalogue.museogalileo.it/object/GalileosObjectiveLens.html) |
+| Museo Galileo | 1419 · 18th century (made) | [Selva workshop’s incomplete Gregorian telescope](https://catalogue.museogalileo.it/object/GregorianTelescopeBySelva.html) |
+| Museo Galileo | 576 · First half of the 19th century (made) | [Reichenbach workshop’s repeating circle](https://catalogue.museogalileo.it/object/RepeatingCircle.html) |
+| Museo Galileo | 735 · Second half of the 18th century (made) | [Florence workshop’s two-telescope level](https://catalogue.museogalileo.it/object/Level_n01.html) |
+| Museo Galileo | 3242 · 1838 (made) | [Galgano Gori’s mobile eyepiece mount](https://catalogue.museogalileo.it/object/MobileMountForEyepiece.html) |
+| Museo Galileo | 595 · First half of the 19th century (made) | [Giovanni Battista Amici’s dipleidoscope](https://catalogue.museogalileo.it/object/Dipleidoscope.html) |
+| The Metropolitan Museum of Art | 2025.347a–j · 1462 (made) | [Cardinal Bessarion’s astrolabe](https://www.metmuseum.org/art/collection/search/923639) |
+| The Metropolitan Museum of Art | 63.166a–j · 1065 AH / 1654–55 CE (dated on object) | [Muhammad Zaman’s planispheric astrolabe](https://www.metmuseum.org/art/collection/search/451699) |
+| The Metropolitan Museum of Art | 25.17 · May 1540 (printed) | [Petrus Apianus’s Astronomicum Caesareum](https://www.metmuseum.org/art/collection/search/337061) |
+| The Metropolitan Museum of Art | 17.190.639 · About 1565–70 (made) | [Nuremberg mirror clock](https://www.metmuseum.org/art/collection/search/193609) |
+| The Metropolitan Museum of Art | 58.75.58 · 1764–70 (made) | [Wall clock and thermometer with Sèvres plaques](https://www.metmuseum.org/art/collection/search/202164) |
+| The Metropolitan Museum of Art | 03.21.24 · 1602 (made) | [Paulus Reinman’s diptych sundial](https://www.metmuseum.org/art/collection/search/188844) |
+| The Metropolitan Museum of Art | 03.21.69 · About 1550–82 (made) | [French combined portable astronomical dial](https://www.metmuseum.org/art/collection/search/188866) |
+| The Metropolitan Museum of Art | 03.21.37 · 1714 (made) | [Claude Dunod’s portable compass dial](https://www.metmuseum.org/art/collection/search/188848) |
+| NASA Image and Video Library | AS08-14-2383 · 24 December 1968 (photographed) | [Apollo 8 Earthrise frame AS08-14-2383](https://images-api.nasa.gov/search?media_type=image&nasa_id=as08-14-2383) |
+| NASA Image and Video Library | AS17-148-22727 · 7 December 1972 (photographed) | [Apollo 17 Earth frame AS17-148-22727](https://images-api.nasa.gov/search?media_type=image&nasa_id=as17-148-22727) |
+| NASA Image and Video Library | PIA00381 · 20 July 1976; digital record dated 12 December 1996 (photographed; later catalogue record) | [Viking 1’s first Mars surface photograph](https://photojournal.jpl.nasa.gov/catalog/PIA00381) |
+| NASA Image and Video Library | PIA14032 · 12 April 2011; underlying image released 15 July 1965 (processed publication; earlier release) | [Enhanced contrast release of the first Mariner 4 Mars image](https://photojournal.jpl.nasa.gov/catalog/PIA14032) |
+| NASA Image and Video Library | PIA17172 · 19 July 2013; released 12 November 2013 (acquired; published) | [Cassini mosaic The Day the Earth Smiled](https://photojournal.jpl.nasa.gov/catalog/PIA17172) |
+| NASA Image and Video Library | PIA21837 · 12 May 2016; released 20 July 2017 (exposures acquired; published) | [Hubble sequence of Phobos beside Mars](https://photojournal.jpl.nasa.gov/catalog/PIA21837) |
+| NASA Image and Video Library | PIA22115 · 20 November 2017 (compilation published) | [Fifty Years of Mars Imaging: Mariner 4 to HiRISE](https://photojournal.jpl.nasa.gov/catalog/PIA22115) |
+
+## What the Model Keeps, Island of Models
+
+- The Museum of Modern Art’s 149.1953.a–i accession ties Marcel Duchamp to his three preserved thread curves and straight measuring practice. The workshop uses an original practice route with constant thread length. [3 Standard Stoppages](https://www.moma.org/collection/works/78990)
+- The Science Museum Group identifies accession 1995-210 as Bill Phillips’s hydraulic economic computer that the London School of Economics used in teaching. The Island’s reservoir uses an explicitly fixed share to let readers compare flow with stock. [Phillips Economic Computer](https://collection.sciencemuseumgroup.org.uk/objects/co64127/phillips-economic-computer)
+- The MIT Museum holds the 1950 magnetic maze and mouse under accession 2007.030.001. Its collection record credits Betty Shannon for the wiring she carried out at home. Claude Shannon and Betty Shannon appear at the maze bench. The practice route holds the board fixed across a search run and a run with saved turns. [Theseus](https://mitmuseum.mit.edu/collections/object/2007.030.001)

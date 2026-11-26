@@ -15,10 +15,10 @@
     "dimensions": "128 × 100 × 4.5 cm",
     "family": "surface",
     "first": "The public record describes a preparation aid that models how ocean swells meet land. The museum says it was used for learning before a voyage.",
-    "boundary": "Its collection date is a range, 1940–1959. Present navigation depends on local expertise and current conditions.",
+    "boundary": "The collection window is 1940–1959. Donor R. Naomi Cannon described tying string around breaks. That observation belongs to the object’s condition record. Present navigation depends on local expertise and current conditions.",
     "stake": "Shoal Shelf needs a place to put a reading aid on shore. The watch log needs another place for what people actually see at sea.",
     "lower": "Halen leaves the reference on the shore learning rail and moves the observed-current chalk beside the lookout. Each has its own task.",
-    "upper": "Clio files the collected date and the museum's description of the preparation aid on separate leaves. The local crew has a different binder for present observations.",
+    "upper": "Clio separates the collection window, Cannon’s report of a repair and the museum’s account of the preparation aid. The local crew keeps current observations in another binder.",
     "altText": "A blank, proportioned outline with measurements of 128 and 100 centimetres. The inventory panel shows 28 shells and the 1940–1959 collection window.",
     "art": "passage.marshall-outline"
   },
@@ -41,7 +41,7 @@
     "boundary": "The Parliamentary Education Office states that the designs express Yolŋu law. The House received the petition. Yolŋu ownership remained unrecognised under Australian law in the proceedings that followed.",
     "stake": "The fictional Shelter has a public index for documentary references. The date someone received a request belongs apart from the decision they made about it.",
     "lower": "Halen keeps the date of presentation on the public index and sends readers to the Yolŋu centre for the community account. The rail offers a public reference.",
-    "upper": "Clio keeps the Dhuwa attribution and the parliamentary presentation in separate fields. The binder names the Yolŋu account and keeps the receipt apart from the outcome.",
+    "upper": "Clio keeps the Dhuwa artists and Jock Nelson’s act of presentation in separate fields. The binder names the Yolŋu account and keeps the receipt apart from the outcome.",
     "altText": "Diagram of a blank backing and a paper insert. The label reads Dhuwa, 14 August 1963. A separate receipt card names J. Nelson.",
     "art": "passage.dhuwa-receipt"
   },
@@ -64,7 +64,7 @@
     "boundary": "The National Archives says copies replaced the typed papers on both bark borders to protect the signatures from fading. Its online view reunites photographs of the originals. The designs remain under Yolŋu cultural authority.",
     "stake": "The fictional Shelter is updating its public reference. The two notices share an issue and have separate dates and attributions. The reader needs to see where the archive describes the copies.",
     "lower": "Halen puts the 28 August public reference on its own line and gives a link to the Yolŋu centre. Visitors can keep it separate from the 14 August entry.",
-    "upper": "Clio keeps a separate Yirritja leaf with a copy-history note. The binder links both public references while the display and the original signed paper retain distinct descriptions.",
+    "upper": "Clio files a Yirritja leaf with Arthur Calwell’s presentation and the copy-history note. The linked references keep the displayed paper and the original signed paper in distinct fields.",
     "altText": "Diagram of a blank backing and a paper insert. The label reads Yirritja, 28 August 1963. Stacked papers distinguish the display copy and signed paper.",
     "art": "passage.yirritja-copy"
   }

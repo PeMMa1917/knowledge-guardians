@@ -133,6 +133,12 @@ import referenceStation from './reference-station.json';
 import { callboardContent } from './callboardCases';
 import { cueWorkshopContent } from './cueWorkshop';
 import { modelRecordsContent } from './modelRecords';
+import { secondReadingContent } from './secondReading';
+import { timeRoomContent } from './timeRoomCases';
+import { fieldStoreContent } from './fieldStore';
+import { materialStoreContent } from './materialStores';
+import { loadingBayContent } from './loadingBay';
+import { glassRackContent } from './glassRack';
 
 export const CONTENT_VERSION = 5;
 
@@ -145,7 +151,9 @@ export function buildPack(): ContentPack {
   const collectionRooms = [clearanceContent, datePegContent, relayContent, asiaLabelContent, specimenWorkContent, polarStore, fernRecordContent,
     lanternWeaveContent, dateRegisterContent, passageContent, windowShop, readingWorksContent, storyArchiveContent, copyImprintContent,
     referenceProofs, numberLeafContent, surveyDepotContent, referenceLineContent, turningTableContent, makerRoomContent, makerExactContent,
-    timbuktuManuscriptContent, objectUseContent, leavittPlateContent, referenceStation, callboardContent, cueWorkshopContent, modelRecordsContent];
+    timbuktuManuscriptContent, objectUseContent, leavittPlateContent, referenceStation, callboardContent, cueWorkshopContent,
+    modelRecordsContent, secondReadingContent, timeRoomContent, fieldStoreContent, materialStoreContent,
+    loadingBayContent, glassRackContent];
   for (const k of keys) pack[k] = [...parts, ...collectionRooms].flatMap((p) => p[k] ?? []);
   const content = pack as ContentPack;
   content.questions.push(...QUESTION_ROUTES.map(({ question }) => question));

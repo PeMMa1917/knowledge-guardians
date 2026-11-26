@@ -1,0 +1,35 @@
+.load-panel .load-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+  gap: .65rem;
+  margin-block: .65rem;
+}
+
+.load-panel .load-layout button {
+  margin: .2rem .3rem .15rem 0;
+}
+
+.load-cart-board, .load-cart-axle {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  max-inline-size: 23rem;
+}
+
+.load-cart-board {
+  border-bottom: .3rem solid currentColor;
+  transform: rotate(var(--tilt));
+  margin-block-start: .7rem;
+}
+
+.load-slot {
+  justify-self: center;
+  min-inline-size: 1.35em;
+  text-align: center;
+  font-weight: bold;
+}
+
+.load-cart-board .load-slot {
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  padding-inline: .12em;
+}

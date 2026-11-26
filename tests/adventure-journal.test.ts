@@ -6,7 +6,7 @@ import { Engine, newCampaign, type Command } from '../src/domain/engine';
 import { newPermanent } from '../src/domain/permanent';
 import { emptyPair, migrateCampaign, parsePair, serialisePair, writeCheckpoint, writeSuspend } from '../src/domain/saves';
 import { hasSpecimen, SPECIMEN_BASE } from '../src/domain/specimenGear';
-import { specimenReferences } from '../src/domain/specimenReferences';
+import { journalEvidence, specimenReferences } from '../src/domain/specimenReferences';
 import { CAMPAIGN_SCHEMA, type CampaignState } from '../src/domain/types';
 import { adventureDocx } from '../src/ui/adventureDocx';
 import { adventureExportSnapshot } from '../src/ui/adventureExport';
@@ -161,6 +161,7 @@ describe('Adventure diary', () => {
     d.action({ type: 'InspectExhibit', exhibit: unearned.id });
     d.action({ type: 'InspectExhibit', exhibit: exhibit.id });
     expect(d.view().references).toEqual([]);
+    expect(journalEvidence(pack, d.state).map(({ card }) => card.id)).not.toContain(unearned.grantsCard);
     expect(d.action({ type: 'ClaimSpecimen', exhibit: exhibit.id }).events).toContainEqual(expect.objectContaining({ kind: 'error' }));
     d.state.objectivesDone.push(exhibit.specimen.objective);
     d.action({ type: 'ClaimSpecimen', exhibit: exhibit.id });
@@ -174,6 +175,9 @@ describe('Adventure diary', () => {
       runs: expect.arrayContaining([expect.objectContaining({ href: official.url }), expect.objectContaining({ cite: true })]),
     })]);
     expect(specimenReferences(pack)).toHaveLength(pack.exhibits.filter(hasSpecimen).length);
+    expect(journalEvidence(pack, d.state)).toContainEqual({
+      card: expect.objectContaining({ id: exhibit.grantsCard }), includeSources: false,
+    });
     expect(adventureExportSnapshot(view, { placeName: () => undefined }).references).toEqual(view.references);
   });
 

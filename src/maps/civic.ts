@@ -8,6 +8,7 @@ import { CIVIC_BENCH_DEBATE } from './benchDebate';
 import { CIVIC_BOUNDARY } from './serviceBoundary';
 import { CIVIC_DATE_REGISTER_PROPS, CIVIC_DATE_REGISTER_READERS } from './dateRegister';
 import { CIVIC_CALLBOARD_DOOR } from './civicCallboard';
+import { MATERIAL_CANAL_REVISIT } from './materialStores';
 import type { Interactable, MapDef } from './types';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'civic.waypost'): Interactable {
@@ -213,6 +214,7 @@ export const CIVIC_CANAL: MapDef = {
     { stamp: 'bench', x: 12, y: 10 }, { stamp: 'market-planter', x: 23, y: 5 },
   ],
   interactables: [
+    MATERIAL_CANAL_REVISIT,
     door('civic-canal-return', 3, 10, 'the east passage back to Library Dispatch', { map: 'civic.dispatch', x: 24, y: 11 }),
     door('civic-canal-to-steps', 25, 9, 'the street back to North Steps', { map: 'civic.steps', x: 24, y: 12 }),
     sign('civic-walk-slip', 9, 9, 'the walking crew’s request slip', 'civic.ledger',

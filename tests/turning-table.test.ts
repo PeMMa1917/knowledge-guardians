@@ -36,7 +36,8 @@ describe('A Shore You Can Turn', () => {
     const places = Object.values(MAPS).flatMap((map) => map.interactables.filter((prop) => prop.exhibit === specimen.id).map(() => map.id));
     expect(places).toEqual(['aethelgard.ferry']);
     for (const [key, roles] of Object.entries(people)) {
-      expect(d.e.pack.exhibits.some((e) => e.specimen?.key === key), key).toBe(true);
+      const record = d.e.pack.exhibits.find((e) => e.specimen?.key === key);
+      expect(record?.specimen?.people, key).toEqual(expect.arrayContaining(roles));
       for (const { name, source } of roles) expect(d.e.pack.sources.some(({ id }) => id === source), name).toBe(true);
     }
   });

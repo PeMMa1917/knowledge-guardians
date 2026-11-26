@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { MODEL_RECORDS } from '../src/content/modelRecords';
-import { flowModel, layThread } from '../src/domain/modelRecords';
+import { flowModel, layThread, runMouse } from '../src/domain/modelRecords';
 import { check } from '../src/domain/rules';
 import { specimenToolId } from '../src/domain/specimenGear';
 import { MODEL_RECORD_ROOM, MODEL_RECORD_RETURNS } from '../src/maps/modelRecords';
@@ -14,6 +14,15 @@ describe('What the Model Keeps', () => {
     expect(folded.at(-1)?.x).toBe(8);
     expect(flowModel(1, 3)).toEqual({ intake: 9, exchange: 2, reserve: 1 });
     expect(flowModel(1, 6)).toEqual({ intake: 6, exchange: 4, reserve: 2 });
+  });
+
+  it('reuses the saved turns with the same practice maze and mouse', () => {
+    const searching = runMouse(false), saved = runMouse(true);
+    expect(searching).toHaveLength(11);
+    expect(saved).toHaveLength(7);
+    expect(searching[0]).toEqual(saved[0]);
+    expect(searching.at(-1)).toEqual(saved.at(-1));
+    expect(saved.every((point) => searching.some(({ x, y }) => x === point.x && y === point.y))).toBe(true);
   });
 
   for (const record of MODEL_RECORDS) {

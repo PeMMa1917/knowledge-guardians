@@ -105,12 +105,46 @@ Chromium continued a disposable copy of the previously completed campaign and wa
 
 Chromium continued the earned Nile campaign, walked to the Turin Mine Map and took the object through its exhibit control. The Diary showed one clickable collection citation. The downloaded Word file’s external hyperlink relationship and the PDF annotation both resolved to the exact Museo Egizio catalogue URL. The browser-generated documents kept private writing out of the default export. [Diary and Word tests](../tests/adventure-journal.test.ts) · [Catalogue item](https://collezionepapiri.museoegizio.it/en-gb/document/9/)
 
+## The Callboard Turn
+
+Chromium continued the previously earned Civic and Lantern House save. The signed folio opened a short passage into the Callboard Room and Neris appeared at the other desk. The test sent the Codex Quetzalecatzin on the paired bench route and the Gage mount account on the separate calls. After claiming and equipping the objects, the player returned to Lantern House and the Metalworks Trade Hall and mounted two different notices. The test used real paths, keyboard Enter, 175% text at 390 CSS pixels and a final Nexus save. [Callboard route tests](../tests/callboard.test.ts)
+
+## City of Copies return visits
+
+Hesper’s drawer and the City of Copies door originally shared one Nexus tile. When the drawer was visible, it received the interaction instead of the door. The drawer now sits one tile south. Chromium opened the drawer and entered the city through its ordinary door on a continued legacy save. A separate pass set the earlier bench arrangement and confirmed the same doorway. In the Record Room, the two equipped Date Register objects opened separate workstations. The Dresden folio left a two-frame conservation guide and the Brooklyn khipu left four study links under one accession. Both notices remained readable after changing tools. [Map regression](../tests/chapter-maps.test.ts) · [Date Register route tests](../tests/date-register.test.ts)
+
 ## Past the Roof Line and four workshops
 
 Chromium used two disposable saves to inspect the 1733 Timbuktu manuscript record and trace the first sightings at columns 6 and 7 over the roof and columns 4 and 5 over the wall. The quay route reopened its pocket trace. The headland route reopened the paired frame. The test staged the earlier Cold Store publication and Coast revision, positioned the player beside each interaction, and used the normal doors and controls. [Sighting and handoff tests](../tests/timbuktu-manuscript.test.ts)
 
 Two additional Chromium saves inspected all 20 different workshop records and loaded their local museum images. Each save tested both settings at every fixture before placing the results at the selected receiving stands in the Sample Shed or Prop Room. The two saves covered all 40 handoffs and reopened each completed stand. One used Enter to operate the work controls. The test staged the preceding chapter gates and positioned the player beside the normal doors and props. [Workshop tests](../tests/object-use.test.ts) · [Collection records](../src/content/object-use-cases.json)
 
+## The Material Stores
+
+Two Chromium saves inspected the 36 exact records and displayed 36 different local museum images per save. Both saves tested both settings at each fixture, then placed and reopened the work slips at the Council Yard or Lower Channel. The 72 combined handoffs covered both recipient choices for every case. After completing four representative cases, the player used the real exhibit and Bag controls to collect and equip the Merina wrapper, Nupe jar, repaired Sicilian comb and Gnaios intaglio working copies. Each gave its own persistent Canal Walk correction. The Lower Channel save used Enter at 390 CSS pixels, 175% text and wider spacing. The tests staged prior chapter gates and positioned the player beside the usual doors and props. [Routing and equipment tests](../tests/material-stores.test.ts) · [Collection records](../src/content/material-store-cases.json)
+
+## A Shore You Can Turn and the Departure Strip
+
+Chromium walked from the Nexus through Seagrass Steps and Lantern House to Kunit’s coast-piece record. The player turned the practice block while the offshore peg stayed fixed, moved the peg, and installed the result at the low rail. The player claimed the working copy at its exhibit and fitted it in the satchel to reveal the reversible rack. A prepared copy of the earlier ferry quest then confirmed that Tupaia’s own equipped working copy opens the marked ferry footpath and reaches a separate dock-stair receipt. The historical collection record stays in its original ferry location. [Navigation checks](../tests/turning-table.test.ts)
+
+## Which Edge Reached the Landing
+
+Desktop Chromium used the completed cord relay to enter Shoal Shelf’s Reading Shelter. A 390 px run used the normal Cartographers’ Sea ending. Both runs carried a checked guide to Clio and another to Halen. The player put a first guide back, selected another recipient and tested the correct bench. A separate 390 px pass opened three independently illustrated documentary records for the Marshallese stick navigation chart and the two Yirrkala petitions. [Passage checks](../tests/specimen-passage.test.ts)
+
+## A Cue Beyond the Door
+
+Chromium at 390 px entered the Cue Workshop from Lamp Quay after staging the published guide. The Fiji reed-pipe case loaded its exact image. The same workshop order produced three cue tones on the quiet side and one surviving cue tone with two work sounds on the service side. The timing line marked the covered beats. Eren’s working indicator retained those visible marks after the handover. The Hawaiʻi puniu case played through with sound volume at zero. Its timing line remained readable and Hari’s copy persisted after the player walked to the House audience gallery and reopened the side-seat table. The fixtures emit original game sounds. [Cue tests](../tests/cue-workshop.test.ts)
+
 ## A Turn at the Workbench
 
 Chromium checked the hidden entrance before the Nile return flag, then used the regular Nile and Archive of Voices doors from staged prior chapter progress. Two different catalogue cases produced different sections at their marked bands. The player installed a front pattern at Lamp Quay and repeated the full pair of cuts on the Glass Walk. The same run generated two practice sounds at 166 and 252 Hz, read both faces of B16665 and placed the named fields of the Laguna clearance. Each of the three mounted copies was checked at its later receiver. The B16665 exhibit gave one object to the satchel only after that mounting. These interactions used proximity positioning and the normal in-game controls. [Workbench tests](../tests/maker-room.test.ts)
+
+## When the Two Clocks Agree and three equipped reuses
+
+Chromium staged the earlier Emberford lamp count, opened the Study through its cellar door and checked that the Time Room appeared only after the letter. The gilt watch’s practice clock reached 18 against 24 with a matched start and 25 against 24 with matched pace. With the Egyptian shadow clock covered, the reference advanced while the shadow observation remained unset. The player posted both types of notice across the two cases. After taking and equipping the gilt watch, the separate Study fixture reopened and retained the chosen record of 30 against 30 after changes to the new starting mark and pace. [Time Room tests](../tests/time-room.test.ts)
+
+A separate Chromium save staged the three completed Makers cases, then claimed and equipped each copy through its usual item and tool controls. Only the matching fixture appeared. The player compared unequal and equal practice tones, moved the name and relief guides at the disk swivel and posted two different ledger outcomes with the dated receipt. The final outcomes still appeared after each fixture was reopened. [Makers’ Room tests](../tests/maker-room.test.ts)
+
+### The Second Reading Store
+
+A production preview showed all 36 Council case positions. At 390 CSS pixels, the route checked both positions, took and equipped 63.166a–j and 2429, then used their distinct public rail and staffed table at the Bell Archive. At 1100 CSS pixels, the same checks reached both handovers with 1974-541 and PIA22115. In each route, the initial exhibit had no claim button, the stand graphic changed with the selected setting, and the earlier archive scene stayed gated until the earned object was equipped. The route staged the earlier chapter prerequisites and used the normal doors and interaction controls after that. [Object and return checks](../tests/second-reading.test.ts)

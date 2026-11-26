@@ -34,6 +34,7 @@ export function cueWorkshopPanel(place: string, controller: GameController, sett
     if (action.type === 'send' || action.type === 'install') refreshWorld();
     const ticket = ++playback;
     render();
+    report.classList.toggle('sr-only', action.type === 'try');
     report.textContent = message;
     (body.querySelector<HTMLElement>(`button[data-cue-step="${id}"]:enabled`) ?? body.querySelector<HTMLElement>('button:enabled') ?? panel).focus();
     const state = cueTrialState(record.slug, controller.state.flags);

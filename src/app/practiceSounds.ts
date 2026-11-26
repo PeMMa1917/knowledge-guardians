@@ -1,7 +1,8 @@
 /** Brief original tones for accessible practice models. */
 export function playPracticeTones(frequencies: readonly number[], volume: number) {
   if (volume <= 0 || frequencies.length === 0 || typeof AudioContext === 'undefined') return;
-  const context = new AudioContext();
+  let context: AudioContext;
+  try { context = new AudioContext(); } catch { return; }
   const gain = context.createGain();
   const start = context.currentTime;
   gain.gain.setValueAtTime(0, start);

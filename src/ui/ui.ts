@@ -84,6 +84,8 @@ import { specimenPassagePanel } from './specimenPassage';
 import { TURNING_GROUP } from '../content/turningTable';
 import { turningPanel } from './turningTable';
 import { CUE_GROUP } from '../content/cueWorkshop';
+import { LOAD_GROUP } from '../content/loadingBay';
+import { loadingBayPanel } from './loadingBay';
 import { cueWorkshopPanel } from './cueWorkshop';
 import { datePegPanel } from './datePeg';
 import { LANTERN_WEAVE } from '../content/lanternWeave';
@@ -127,12 +129,17 @@ import { activePerspective, ownedPerspective, perspectiveTools } from '../domain
 import { canClaimSpecimen, carriesSpecimen, carriedSpecimenCount, hasSpecimen, isSpecimenItem, ownsSpecimen, SPECIMEN_CAPACITY,
   specimenEquipped, specimenFromTool, specimenReadingFlag } from '../domain/specimenGear';
 import { specimenThumbnail, specimenVault } from './specimenVault';
-import { specimenReferences, type SpecimenReference } from '../domain/specimenReferences';
+import { journalEvidence, specimenReferences, type SpecimenReference } from '../domain/specimenReferences';
 import { timbuktuHorizonPanel } from './timbuktuHorizon';
 import { objectUsePanel } from './objectUse';
 import { callboardPanel } from './callboardPanel';
 import { MODEL_RECORD_GROUP } from '../content/modelRecords';
 import { modelRecordPanel } from './modelRecords';
+import { TIME_TOOL } from '../domain/timeRoom';
+import { timeRoomPanel } from './timeRoom';
+import { materialStorePanel } from './materialStores';
+import { GLASS_RACK_PREFIX } from '../content/glassRack';
+import { glassRackPanel } from './glassRack';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
 import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
@@ -1278,21 +1285,20 @@ export class UI implements UIApi {
           lensOut,
           ex.labelKit ? h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.openLabel(ex.labelKit!) }, c.state.flags[`label.${ex.labelKit}.everHeld`] ? 'Change this plaque' : 'Repair this plaque')) : null,
           thread ? h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.followThread(thread.id, thread.nodes[0].id) }, 'Follow the Provenance Thread')) : null,
-          h('div', { class: 'card-mini' }, h('p', { class: 'fine' }, 'Evidence card in your journal:'), this.cardView(card)))));
+          h('div', { class: 'card-mini' }, this.cardView(card)))));
   }
 
-  private cardView(card: EvidenceCard, extra?: Node): HTMLElement {
+  private cardView(card: EvidenceCard, includeSources = true): HTMLElement {
     return h('article', { class: 'card' },
       h('h3', {}, card.title),
       h('div', { class: 'chips' }, claimChip(card.claimKind), histChip(card.historicalLabel)),
       card.person ? h('p', { class: 'fine' }, `${card.person.name} (${card.person.life}) · ${card.person.place} · ${card.person.era}`) : null,
       h('p', {}, card.text),
       h('p', { class: 'limits' }, h('strong', {}, 'Does not show: '), card.limits),
-      card.sources.length ? h('p', { class: 'fine' }, ...card.sources.map((sid) => {
+      includeSources && card.sources.length ? h('p', { class: 'fine' }, ...card.sources.map((sid) => {
         const s = ctx.controller.pack.sources.find((x) => x.id === sid)!;
         return h('a', { href: s.url, target: '_blank', rel: 'noopener' }, s.id);
-      })) : null,
-      extra ?? null);
+      })) : null);
   }
 
   showSign(title: string, text: string): void {
@@ -2568,8 +2574,9 @@ export class UI implements UIApi {
       })));
       if (!s.journal.length) body.append(h('p', {}, 'No entries yet.'));
     } else if (tab === 'cards') {
-      body.append(...s.cards.map((id) => this.cardView(c.pack.cards.find((x) => x.id === id)!)));
-      if (!s.cards.length) body.append(h('p', {}, 'No evidence cards yet. Inspect exhibits and talk to people.'));
+      const cards = journalEvidence(c.pack, s);
+      body.append(...cards.map(({ card, includeSources }) => this.cardView(card, includeSources)));
+      if (!cards.length) body.append(h('p', {}, 'Talk to people and earn objects to add evidence here.'));
     } else if (tab === 'moments') {
       // Learner profile (spec 90): moments, never scores or grades (PROFILE-001).
       const got = c.pack.moments.filter((m) => c.permanent.moments[m.id]);
@@ -3046,6 +3053,15 @@ export class UI implements UIApi {
     } else if (id.startsWith(`${CLEARANCE_GROUP}:`)) {
       const place = id.slice(CLEARANCE_GROUP.length + 1);
       this.openModal('bench-panel wide', 'The viewing rails', this.closeBtn(), clearanceGallery(ctx.controller, place, () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith('material-stores:')) {
+      this.openModal('bench-panel wide', 'The Material Stores', this.closeBtn(), materialStorePanel(ctx.controller,
+        id.slice('material-stores:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(GLASS_RACK_PREFIX)) {
+      this.openModal('bench-panel wide', 'The Missing Face', this.closeBtn(),
+        glassRackPanel(ctx.controller, id.slice(GLASS_RACK_PREFIX.length), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${TIME_TOOL}:`)) {
+      this.openModal('bench-panel wide', 'The Time Room', this.closeBtn(), timeRoomPanel(ctx.controller,
+        id.slice(TIME_TOOL.length + 1), () => ctx.settings.sfxVolume, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(`${MODEL_RECORD_GROUP}:`)) {
       this.openModal('bench-panel wide', 'What the Model Keeps', this.closeBtn(),
         modelRecordPanel(ctx.controller, id.slice(MODEL_RECORD_GROUP.length + 1), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
@@ -3113,6 +3129,9 @@ export class UI implements UIApi {
     } else if (id.startsWith(`${CUE_GROUP}:`)) {
       this.openModal('bench-panel wide', 'A Cue Beyond the Door', this.closeBtn(),
         cueWorkshopPanel(id.slice(CUE_GROUP.length + 1), ctx.controller, ctx.settings, () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${LOAD_GROUP}:`)) {
+      this.openModal('bench-panel wide', 'The Cart Finds Its Centre', this.closeBtn(),
+        loadingBayPanel(id.slice(LOAD_GROUP.length + 1), ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === 'drawer-cases') {
       const board = this.openModal('bench-panel wide', 'Three Cases at the Bell');
       drawerCases(board, ctx.controller, this.closeBtn());

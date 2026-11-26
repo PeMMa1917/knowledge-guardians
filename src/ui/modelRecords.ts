@@ -1,12 +1,13 @@
 import type { GameController } from '../app/controller';
 import { MODEL_DESTINATIONS, MODEL_RECORDS, type ModelDestination, type ModelRecord } from '../content/modelRecords';
-import { flowModel, layThread } from '../domain/modelRecords';
+import { flowModel, layThread, runMouse } from '../domain/modelRecords';
 import { h } from './dom';
 import './modelRecords.css';
 
 const READER = { near: 'the scale keeper', study: 'the study reader' };
 
 function displayTrial(record: ModelRecord, trial: number) {
+  if (record.slug === 'theseus') return mouseTrial(trial === 1);
   if (record.slug === 'moniac') {
     const moved = trial === 0 ? 3 : 6;
     const model = flowModel(1, moved);
@@ -27,6 +28,31 @@ function displayTrial(record: ModelRecord, trial: number) {
     for (const { x, y } of [path[0], path[path.length - 1]]) drawing.fillRect(x * 9 + 7, y * 9 + 7, 5, 5);
   }
   return h('div', {}, canvas, h('p', {}, `The thread uses ${path.length - 1} segments. Its end marks are ${path[path.length - 1].x} spaces apart.`));
+}
+
+function mouseTrial(saved: boolean) {
+  const route = runMouse(saved);
+  const board = h('canvas', { width: 140, height: 88, 'aria-hidden': 'true' });
+  const drawing = board.getContext('2d');
+  if (drawing) {
+    drawing.fillStyle = '#292d40';
+    drawing.fillRect(0, 0, 140, 88);
+    for (const [x, y, width, height] of [[9, 34, 18, 42], [55, 8, 29, 24], [115, 9, 18, 22], [91, 59, 42, 19]]) {
+      drawing.fillStyle = '#615549';
+      drawing.fillRect(x, y, width, height);
+    }
+    drawing.beginPath();
+    for (const { x, y } of route) drawing.lineTo(18 + x * 26, 17 + y * 26);
+    drawing.strokeStyle = saved ? '#a4dceb' : '#efc79c';
+    drawing.lineWidth = 3;
+    drawing.stroke();
+    const stop = route[route.length - 1];
+    drawing.fillStyle = '#f2ddb9';
+    drawing.fillRect(14 + stop.x * 26, 13 + stop.y * 26, 8, 8);
+  }
+  return h('div', {}, board,
+    h('p', {}, saved ? 'The mouse follows the turns stored below the floor.' : 'The mouse tries two dead ends and backs out of each one.'),
+    h('p', {}, `${route.length - 1} moves. Same board, mouse and destination.`));
 }
 
 export function modelRecordPanel(controller: GameController, place: string, sound: (key: string) => void, refresh: () => void) {
@@ -66,7 +92,8 @@ export function modelRecordPanel(controller: GameController, place: string, soun
   } }, revisit ? (route === 'near' ? 'Use the shorter note' : 'Keep both trials in reach')
     : (route === 'near' ? 'Send the checked guide to the scale' : 'Leave the fuller guide at the study table')));
   function show() {
-    const ready = revisit || [0, 1].every((index) => flag(`${record.flag}.trial.${index}`) === true);
+    const trialScope = revisit && record.slug === 'theseus' ? 'return.trial' : 'trial';
+    const ready = (revisit && record.slug !== 'theseus') || [0, 1].every((index) => flag(`${record.flag}.${trialScope}.${index}`) === true);
     const route = flag(`${record.flag}.${key}`);
     report.textContent = route === 'near' || route === 'study'
       ? revisit ? record[route] : `The checked guide waits for ${READER[route]}.`
@@ -76,10 +103,12 @@ export function modelRecordPanel(controller: GameController, place: string, soun
       button.setAttribute('aria-pressed', String(route === MODEL_DESTINATIONS[index]));
     });
   }
-  const labels = record.slug === 'moniac' ? ['Send three units through', 'Send six units through'] : ['Stretch the practice thread', 'Lay the same segments in a bend'];
+  const labels = record.slug === 'moniac' ? ['Send three units through', 'Send six units through']
+    : record.slug === 'theseus' ? ['Clear the route and release the mouse', 'Reconnect the saved route and release the mouse']
+    : ['Stretch the practice thread', 'Lay the same segments in a bend'];
   const tools = labels.map((label, trial) => h('button', { type: 'button', onclick: () => {
     result.replaceChildren(displayTrial(record, trial));
-    if (!revisit) set(`${record.flag}.trial.${trial}`, true);
+    if (!revisit || record.slug === 'theseus') set(`${record.flag}.${revisit ? 'return.trial' : 'trial'}.${trial}`, true);
     show();
   } }, label));
   panel.append(h('h2', {}, revisit ? record.revisit.method : record.title), h('p', {}, record.job), h('div', { class: 'row' }, tools), result,

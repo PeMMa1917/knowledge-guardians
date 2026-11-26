@@ -1,0 +1,35 @@
+.glass-rack {
+  display: grid;
+  gap: .8rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.glass-rack :is(h2, h3, p, figure) {
+  margin: 0;
+}
+.glass-window, .glass-record, .glass-source, .glass-photo {
+  display: grid;
+  gap: .5rem;
+}
+.glass-record {
+  border-top: 1px solid currentColor;
+  padding-top: .75rem;
+}
+.glass-pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: .9rem;
+}
+.glass-photo img {
+  max-width: 100%;
+  width: 11.5rem;
+  height: 9rem;
+  object-fit: contain;
+  background: #202a30;
+}
+.glass-photo figcaption p {
+  margin-top: .3rem;
+}
+.glass-source a {
+  justify-self: start;
+}

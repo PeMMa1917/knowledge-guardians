@@ -1,5 +1,6 @@
 import { benchPacket, CONSTRUCTIONS, readFlag, receivedFlag, routeFlag, WORKBENCH_BANDS, type MakerKind, type MakerRoute } from '../domain/makerRoom';
 import type { Condition, ContentPack, Hint, Objective } from '../domain/types';
+import { MAKER_RETURNS } from '../domain/makerReturns';
 import records from './maker-room-cases.json';
 import exact from './maker-room-exact.json';
 
@@ -17,7 +18,15 @@ export const MAKER_CASES = records.map((record) => {
 export type MakerCase = (typeof MAKER_CASES)[number];
 
 type MakerContent = Pick<ContentPack, 'sources' | 'cards' | 'exhibits' | 'missions' | 'hints' | 'journal'>;
-export const makerExactContent = exact as MakerContent;
+export const makerExactContent: MakerContent = {
+  ...exact as MakerContent,
+  exhibits: (exact as MakerContent).exhibits.map((record) => {
+    const revisit = MAKER_RETURNS.find((entry) => entry.key === record.specimen?.key);
+    if (!revisit || !record.specimen) return record;
+    const { prop, method, hint } = revisit;
+    return { ...record, specimen: { ...record.specimen, revisit: { map: 'nile.makers-room', prop, method, hint } } };
+  }),
+};
 
 const initialObjectives: Objective[] = MAKER_CASES.map((record) => ({
   id: record.sent, title: `Compare two work methods for ${record.title}.`,

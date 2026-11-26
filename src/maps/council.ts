@@ -1,6 +1,8 @@
 /** Civic timekeeping takes place beside a separate historical reading gallery. */
 import type { Condition } from '../domain/types';
+import { LOADING_BAY_DOOR, loadingReceiver } from './loadingBay';
 import { COUNCIL_ACCESSIONS } from './pairedAccessions';
+import { SECOND_READING_DOOR } from './secondReading';
 import { COUNCIL_PLATE_GALLERY } from './transferFaces';
 import type { Interactable, MapDef } from './types';
 
@@ -50,6 +52,8 @@ export const COUNCIL_HALL: MapDef = {
     { stamp: 'council-bench', x: 21, y: 13 }, { stamp: 'market-planter', x: 7, y: 14 },
   ],
   interactables: [
+    SECOND_READING_DOOR,
+    loadingReceiver('bench', 24, 16),
     door('council-gallery-path', 24, 9, 'the passage to the letters and bell rail', { map: 'council.gallery', x: 6, y: 14 }),
     door('council-nexus-return', 13, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 37, y: 12 }, 'preserved.door'),
     { id: 'council-clock', kind: 'council-clock', x: 15, y: 9, w: 1, h: 1,
@@ -112,6 +116,8 @@ export const COUNCIL_GALLERY: MapDef = {
   ],
   interactables: [
     door('council-gallery-return', 4, 14, 'the passage back to the Time Hall', { map: 'council.hall', x: 23, y: 9 }),
+    LOADING_BAY_DOOR,
+    loadingReceiver('call', 8, 16),
     ...COUNCIL_ACCESSIONS,
     ...COUNCIL_PLATE_GALLERY,
     sign('council-optics-letter', 6, 7, 'the dated optics record', 'council.optics',

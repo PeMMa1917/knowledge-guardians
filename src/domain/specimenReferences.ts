@@ -1,6 +1,6 @@
 import { mlaCitation, type CitationPart } from './mla';
 import { hasSpecimen, ownsSpecimen } from './specimenGear';
-import type { CampaignState, ContentPack } from './types';
+import type { CampaignState, ContentPack, EvidenceCard } from './types';
 
 export interface SpecimenReference {
   key: string;
@@ -8,6 +8,20 @@ export interface SpecimenReference {
   url: string;
   text: string;
   runs: CitationPart[];
+}
+
+export function journalEvidence(pack: ContentPack, state: CampaignState): { card: EvidenceCard; includeSources: boolean }[] {
+  const cards = new Map(pack.cards.map((card) => [card.id, card]));
+  const specimenCards = new Map<string, boolean>();
+  for (const exhibit of pack.exhibits.filter(hasSpecimen)) {
+    if (!exhibit.grantsCard) continue;
+    const earned = ownsSpecimen(state, exhibit.specimen.key);
+    specimenCards.set(exhibit.grantsCard, earned || specimenCards.get(exhibit.grantsCard) === true);
+  }
+  return state.cards.flatMap((id) => {
+    const card = cards.get(id);
+    return card && specimenCards.get(id) !== false ? [{ card, includeSources: !specimenCards.has(id) }] : [];
+  });
 }
 
 /** List the exact citations earned by this adventure. Without a state, list the public collection credits. */

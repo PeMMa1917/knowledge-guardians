@@ -11,7 +11,9 @@ import { FOLD_DRAWER_CASES } from './drawerCases';
 import { ARCHIVE_WATER_LOOP } from './waterLoop';
 import { COAST_REFERENCE_PROOFS, HARBOUR_REFERENCE_PROOFS } from './referenceProofs';
 import { TIMBUKTU_ARCHIVE_PROPS, timbuktuReceiver } from './timbuktuManuscript';
+import { SECOND_READING_ARCHIVE_PROPS } from './secondReading';
 import { LEAVITT_ARCHIVE, LEAVITT_HEADLAND } from './leavittPlate';
+import { FIELD_STORE_FOLD } from './fieldStore';
 
 function sign(id: string, x: number, y: number, label: string, art: string, text: string,
   options: { flag?: string; visibleIf?: Condition } = {}): Interactable {
@@ -223,6 +225,7 @@ export const OBSERVATORY_INLAND: MapDef = {
     { stamp: 'bush', x: 6, y: 13 }, { stamp: 'flowers-small', x: 18, y: 12 },
   ],
   interactables: [
+    ...FIELD_STORE_FOLD,
     ...FOLD_DRAWER_CASES,
     ...FOLD_TUBE_REVISIT,
     { id: 'coast-fold-return', kind: 'door', x: 23, y: 13, w: 1, h: 1, label: 'the track back to Headland Station',
@@ -286,6 +289,7 @@ export const OBSERVATORY_ARCHIVE: MapDef = {
     ...ARCHIVE_GLOBE_REVISIT,
     ...COAST_REFERENCE_PROOFS,
     ...TIMBUKTU_ARCHIVE_PROPS,
+    ...SECOND_READING_ARCHIVE_PROPS,
     { id: 'coast-archive-return', kind: 'door', x: 12, y: 14, w: 1, h: 1, label: 'the steps back to Slate Harbour',
       art: 'coast.waypost', to: { map: 'observatory.harbour', x: 25, y: 7 } },
     archiveScene('coast-archive-sleeve', 4, 6, 'the forecast sleeve', 'preserved.folder', 'coast.archive.sleeve'),

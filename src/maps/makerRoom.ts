@@ -83,7 +83,10 @@ export const NILE_MAKERS_ROOM: MapDef = {
       id: entry.prop, kind: 'fieldgame', game: `${MAKER_EXACT}:return-${entry.slug}`,
       x: entry.x, y: entry.y, w: 1, h: 1, walkThrough: true, label: entry.method,
       art: 'board-stand', visibleIf: specimenEquipped(entry.key),
-      artOpen: { key: 'preserved.display-paired', if: { flagSet: `makers.return.${entry.slug}` } },
+      artBy: { flag: `makers.return.${entry.slug}`, keys: {
+        paired: 'fold.paired', split: 'fold.strip', side: 'preserved.display-paired', swivel: 'preserved.display-records',
+        dated: 'fold.strip', witness: 'preserved.folder',
+      } },
     })),
     {
       id: 'nile-makers-guide', kind: 'sign', x: 13, y: 23, w: 1, h: 1, walkThrough: true,

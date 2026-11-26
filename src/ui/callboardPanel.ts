@@ -8,7 +8,9 @@ import './callboard.css';
 
 function proof(c: CallboardCase, content: 'view' | 'record'): HTMLElement {
   if (content === 'record') return h('article', { class: 'callboard-proof' },
-    h('h3', {}, 'Catalogue support'), h('p', {}, c.record), h('p', { class: 'fine' }, c.limit));
+    h('h3', {}, 'Catalogue support'), h('p', {}, c.record),
+    c.maker ? h('p', {}, `Collection credit names ${c.maker}.`) : null,
+    h('p', { class: 'fine' }, c.limit));
   return h('article', { class: 'callboard-proof' }, h('h3', {}, 'Visible detail'),
     h('img', { src: c.asset ? `${import.meta.env.BASE_URL}assets/${c.asset}` : artURL('big.callboard.gage-mount'), alt: `View of ${c.alt}.` }),
     h('p', {}, c.view), h('p', { class: 'fine' }, `${c.institution} · ${c.accession} · ${c.date}`));

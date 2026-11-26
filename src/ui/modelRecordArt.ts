@@ -5,6 +5,20 @@ function fill(g: CanvasRenderingContext2D, color: string, x: number, y: number, 
 }
 
 export const MODEL_RECORD_ART: Record<string, Picture> = {
+  'model-record.theseus': [58, 52, (g) => {
+    fill(g, '#25263a', 0, 0, 58, 52);
+    fill(g, '#5b463e', 6, 32, 46, 11);
+    fill(g, '#2c2d40', 9, 36, 40, 5);
+    for (let x = 13; x < 43; x += 6) fill(g, '#ae8256', x, 37, 3, 2);
+    fill(g, '#d1ae7d', 5, 8, 48, 27);
+    fill(g, '#7d6954', 7, 10, 44, 23);
+    for (const [x, y, width, height] of [[13,10,3,14],[14,22,20,2],[25,14,24,2],[34,16,3,12],[20,29,25,2]]) {
+      fill(g, '#ddd0a3', x, y, width, height);
+    }
+    fill(g, '#b38852', 22, 24, 7, 4);
+    fill(g, '#e0bc8b', 27, 23, 4, 3);
+    fill(g, '#433238', 30, 24, 1, 1);
+  }],
   'model-record.stoppages': [64, 46, (g) => {
     fill(g, '#25263a', 0, 0, 64, 46);
     fill(g, '#5e3e36', 5, 7, 54, 31);

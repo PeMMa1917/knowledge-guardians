@@ -29,6 +29,12 @@ import { REFERENCE_STATION } from './referenceStation';
 import { CIVIC_CALLBOARD } from './civicCallboard';
 import { CUE_WORKSHOP } from './cueWorkshop';
 import { MODEL_RECORD_ROOM } from './modelRecords';
+import { SECOND_READING_STORE } from './secondReading';
+import { TIME_ROOM } from './timeRoom';
+import { FIELD_STORE } from './fieldStore';
+import { MATERIAL_STORE_MAPS } from './materialStores';
+import { COUNCIL_LOADING_BAY, COUNCIL_LOAD_CHECK } from './loadingBay';
+import { PRESERVED_GLASS_RACK } from './glassRack';
 import { FERRY } from './ferry';
 import { NILE_HALL, NILE_ROYAL, NILE_ROUTE, NILE_WORKYARD } from './nile';
 import { UNDERCROFT } from './undercroft';
@@ -60,6 +66,7 @@ export const MAPS: Record<string, MapDef> = {
   [EMBERFORD.id]: EMBERFORD,
   [REPAIR_YARD.id]: REPAIR_YARD,
   [STUDY.id]: STUDY,
+  [TIME_ROOM.id]: TIME_ROOM,
   [SHELF_ROOM.id]: SHELF_ROOM,
   [SHELF_MODEL.id]: SHELF_MODEL,
   [FERRY.id]: FERRY,
@@ -119,6 +126,8 @@ export const MAPS: Record<string, MapDef> = {
   ...Object.fromEntries(OBJECT_USE_WORKSHOPS.map((room) => [room.id, room])),
   [WATER_GATEHOUSE.id]: WATER_GATEHOUSE,
   [WATER_COUNCIL.id]: WATER_COUNCIL,
+  [FIELD_STORE.id]: FIELD_STORE,
+  ...Object.fromEntries(MATERIAL_STORE_MAPS.map((room) => [room.id, room])),
   [WATER_LOWER_CHANNEL.id]: WATER_LOWER_CHANNEL,
   [WATER_SERVICE_LANE.id]: WATER_SERVICE_LANE,
   [CIVIC_DISPATCH.id]: CIVIC_DISPATCH,
@@ -136,5 +145,9 @@ export const MAPS: Record<string, MapDef> = {
   [ISLAND_DOCK.id]: ISLAND_DOCK,
   [ISLAND_MARGIN.id]: ISLAND_MARGIN,
   [COUNCIL_HALL.id]: COUNCIL_HALL,
+  [SECOND_READING_STORE.id]: SECOND_READING_STORE,
   [COUNCIL_GALLERY.id]: COUNCIL_GALLERY,
+  [COUNCIL_LOADING_BAY.id]: COUNCIL_LOADING_BAY,
+  [COUNCIL_LOAD_CHECK.id]: COUNCIL_LOAD_CHECK,
+  [PRESERVED_GLASS_RACK.id]: PRESERVED_GLASS_RACK,
 };

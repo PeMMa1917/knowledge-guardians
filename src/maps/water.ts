@@ -1,5 +1,7 @@
 /** Water Commons. The allocation records and gate experiment are fictional. */
 import type { Condition } from '../domain/types';
+import { FIELD_STORE_DOOR } from './fieldStore';
+import { MATERIAL_CHANNEL_RECEIVER, MATERIAL_YARD_PROPS } from './materialStores';
 import { reliefReading, reliefRouting } from '../domain/routeTiles';
 import { WATER_APPEAL_LOWER, WATER_APPEAL_WITNESSES, WATER_APPEAL_YARD } from './civicAppeal';
 import { WATER_FITTING_BENCHES } from './fittingViews';
@@ -136,6 +138,8 @@ export const WATER_COUNCIL: MapDef = {
     { stamp: 'tree', x: 1, y: 2 }, { stamp: 'tree', x: 22, y: 3 },
   ],
   interactables: [
+    FIELD_STORE_DOOR,
+    ...MATERIAL_YARD_PROPS,
     ...COUNCIL_BOUNDARY,
     crossing('water-council-return', 12, 15, 'the path back to the Old Weir', { map: 'water.gatehouse', x: 23, y: 8 }),
     crossing('water-council-to-lower', 23, 10, 'the council steps to the lower path', { map: 'water.lower-channel', x: 23, y: 6 }),
@@ -203,6 +207,7 @@ export const WATER_LOWER_CHANNEL: MapDef = {
   ],
   interactables: [
     ...LOWER_BOUNDARY,
+    MATERIAL_CHANNEL_RECEIVER,
     { id: 'cross-sluice', kind: 'fieldgame', game: 'cross-sluice', x: 20, y: 6, w: 1, h: 1, label: 'the upper sluice gate (a crossing)', art: 'flood-post' },
     { id: 'loyalty-rook', kind: 'fieldgame', game: 'loyalty-rook', x: 10, y: 10, w: 1, h: 1, label: "an old well with a flaking gold seal (The Clean Well)", art: 'old-sign', visibleIf: { flag: 'rook.joined', eq: true } },
     crossing('water-lower-return', 3, 12, 'the upper gate path', { map: 'water.gatehouse', x: 24, y: 14 }),

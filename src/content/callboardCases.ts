@@ -100,6 +100,12 @@ function caseSources(c: CallboardCase): string[] {
   return c.key === QUETZALECATZIN ? [exactSource(c), c.source] : [c.source];
 }
 
+function caseSummary(c: CallboardCase): string {
+  const details = [c.origin, c.material, c.dimension];
+  if (c.maker) details.push(`Collection credit names ${c.maker}`);
+  return [...details.map((line) => line.endsWith('.') ? line : `${line}.`), c.record].join(' ');
+}
+
 const objectives: Objective[] = CALLBOARD_CASES.map((c) => ({
   id: c.objective, title: `Receive a signed reading for ${c.accession}.`, visible: { card: c.card }, essential: false,
   done: { flagSet: `${c.flag}.heard` }, onComplete: [{ journal: `j.${c.objective}` }],
@@ -134,7 +140,7 @@ export const callboardContent = {
   }]),
   exhibits: CALLBOARD_CASES.map((c) => ({
     id: c.artifact, name: c.title, historicalLabel: 'documented', art: c.key === GAGE ? GAGE_ART : 'preserved.folder',
-    dateText: c.date, dateKind: c.dateKind, summary: `${c.origin}. ${c.material}. ${c.dimension} ${c.record}`,
+    dateText: c.date, dateKind: c.dateKind, summary: caseSummary(c),
     altText: `Pixel view of ${c.alt}.`, sources: caseSources(c), grantsCard: c.card,
     specimen: { key: c.key, institution: c.institution, accession: c.accession, source: exactSource(c), objective: c.objective,
       ...(c.asset ? { pixelAsset: c.asset } : {}), revisit: c.revisit },
