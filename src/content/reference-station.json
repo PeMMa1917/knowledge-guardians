@@ -1288,7 +1288,7 @@
       "title": "Celestial globe, T.1890.330",
       "url": "https://www.nms.ac.uk/collections/search/object?entry=204058",
       "locator": "Exact public collection record 204058. Production, materials, description and references.",
-      "supports": "Identifies T.1890.330 as the brass globe with silver star positions by Diya’ ad-Din Muhammad in Lahore, dated 1663.",
+      "supports": "Records Diya’ ad-Din Muhammad, Lahore and 1663 under production, brass and silver under materials, and the Paris Exhibition of 1889 under associations.",
       "accessed": "2026-11-26",
       "mla": {
         "kind": "page",
@@ -1398,7 +1398,7 @@
         "HIS-REFSTATION-GLOBE-STUDY"
       ],
       "grantsCard": "card.refstation.globe",
-      "altText": "Original schematic. Golden globe with silver dots and curved engraved lines, set above a small support. Its marks are schematic.",
+      "altText": "Schematic of a golden globe on a small support. Silver dots sit between curved engraved lines.",
       "specimen": {
         "key": "nms:t.1890.330",
         "institution": "National Museums Scotland",
@@ -1475,7 +1475,7 @@
     {
       "id": "card.refstation.globe",
       "title": "Diya’ ad-Din Muhammad’s celestial globe · T.1890.330",
-      "text": "National Museums Scotland identifies this brass globe by Diya’ ad-Din Muhammad, made in Lahore in 1663. Silver points mark stars among traditional Islamic constellation figures.",
+      "text": "Two dates belong on this card. In 1663 Diya’ ad-Din Muhammad made the globe in Lahore. Its silver points stand for stars. The museum files the Paris Exhibition of 1889 under a separate heading. A reader following the globe’s later history needs that second date.",
       "historicalLabel": "documented",
       "claimKind": "observation",
       "sources": [
