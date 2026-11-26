@@ -6,6 +6,8 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
+In The Last Loose Swatch, Nell’s older loan stays sealed. A player can keep the separate workshop swatch intact or trade its edge for a material report. The two objects need separate captions in either case. The final reader’s action records skill 911 and the journal remembers which future check the player made possible. [Both swatch outcomes](tests/pigment-sample.test.ts)
+
 Odile’s floor ruler in the Cold Store turns an ambiguous custody copy into an optional check. Readers get a measured floor guide or a bounded file slip and use it at different stations. [Route checks](tests/preserved-scale.test.ts)
 
 The adventure diary keeps a dated account of encounters, choices, investigations and returns. Each entry offers optional questions. Notes, responses, unfinished writing and Portfolio reflections attached to the current adventure travel with it through Continue, Checkpoint recovery, Word and print/PDF. Writers can leave their private text out of a shared copy. A long save that exceeds the browser’s plain-text quota is retried in a losslessly compressed two-slot record. [Diary](src/ui/adventureJournal.ts) · [Save regression](tests/long-journal-save.test.ts)

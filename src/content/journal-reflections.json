@@ -147,5 +147,61 @@
   },
   "showdown-move:practice:reframe": {
     "two-firsts": "If Venn pinned the patent beside the working pen, what could each of you still mean by “first”?"
+  },
+  "quest:forest.hands.first": {
+    "quest": "If the recorder handed you the first strip, which mark would you ask the other observer about?"
+  },
+  "quest:forest.hands.retry": {
+    "quest": "What would be lost if Ayla erased the first strip once the recorder could see all three marks?"
+  },
+  "quest:forest.hands.context": {
+    "quest": "When you separated the dated cards, which detail belonged with Baraka Daniel’s work?",
+    "limit": "What would you still need before connecting that work to the 1960 observation?"
+  },
+  "choice:forest.hands.receiver:0": {
+    "choice": "Ayla has two records. How could the next watch tell that one mark on the first strip came from someone else?"
+  },
+  "choice:forest.hands.receiver:1": {
+    "choice": "The recorder can see more after the move. Which part of the older account would you still keep?"
+  },
+  "quest:stage.hands.compare": {
+    "quest": "Imagine hearing the two knocks with your eyes closed. Which part of the account would you leave for the person by the pin?"
+  },
+  "choice:stage.hands.plan:0": {
+    "choice": "The helper signals while the caller stays in place. How would the caller know what the helper actually saw?"
+  },
+  "choice:stage.hands.plan:1": {
+    "choice": "The caller waits for a sightline. What might that extra beat change for someone watching the scene?"
+  },
+  "quest:preserved.scale.compare": {
+    "quest": "The paper arrows were the same length. What changed when you stood at zero and walked both routes?"
+  },
+  "choice:preserved.scale.choose:0": {
+    "choice": "The floor guide reaches the carrier. What might someone misunderstand if they filed it with the historical journey?"
+  },
+  "choice:preserved.scale.choose:1": {
+    "choice": "Why might a blank space for distance be useful to the next reader of your file slip?"
+  },
+  "choice:preserved.scale.choose:2": {
+    "choice": "What would you want to see someone do with the papers before choosing which one to pass on?"
+  },
+  "quest:coast-copy.delivered": {
+    "quest": "If someone at a different bench received just one leaf, how could they find the other?",
+    "attribution": "What came from the carving itself? What depends on the account of Kunit’s explanation?"
+  },
+  "choice:metal.rim.plan:0": {
+    "choice": "At the low peg a small carrier can work without waiting. Who still needs another arrangement?"
+  },
+  "choice:metal.rim.plan:1": {
+    "choice": "The wide cradle works while Bea is there. What would the next shift need to know before relying on it?"
+  },
+  "choice:pigment-sample.plan:0": {
+    "choice": "If the next visitor wants to inspect the missing edge of R13, what can you still offer them?"
+  },
+  "choice:pigment-sample.plan:1": {
+    "choice": "R13 still has both notches. What would you say to a visitor who asks which colourants made it?"
+  },
+  "quest:pigment-sample.reconciled": {
+    "quest": "Which detail on the two new captions keeps a reader from borrowing R13’s story for the older loan?"
   }
 }

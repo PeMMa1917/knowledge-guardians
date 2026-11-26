@@ -186,6 +186,23 @@ const proofRows = [
     elements: ['game:267'],
   },
   {
+    objective: 'pigment-sample.reconciled', map: 'aethelgard.emberford', target: 'pigment-sample.bench',
+    source: 'tests/pigment-sample.test.ts', anchor: "expect(d.done(prefix + 'reconciled')).toBe(true)",
+    action: 'Distinguish the borrowed W27 from the consented R13 swatch. Retain the last R13 edge for another viewing or give it up for the workshop report. Correct the shared heading and follow the reader to the result.',
+    comparison: {
+      concepts: ['evidence', 'responsibility'], framework: ['scope', 'ethics'],
+      areas: [
+        { id: 'ART', method: 'Use the glass window to view the older loan and compare the notches on the separate workshop swatch. Preserve or document what the next viewer can inspect.',
+          limit: 'The appearance of either object gives no chemical identification of its colourants.' },
+        { id: 'NAT', method: 'Check the specific sample number on the analysis record. The report route has a material result and an empty wrapper. On the intact route the report stays blank.',
+          limit: 'A result from R13 cannot establish the material of W27. Once the workshop consumes R13, a later visitor cannot repeat the edge check on it.' },
+      ],
+      connection: 'Decide which future inquiry the workshop will support, then check the reader uses the right object number on each caption.',
+    },
+    dimensions: ['micro:911', 'area:ART', 'area:NAT', 'concept:evidence', 'concept:responsibility', 'framework:scope', 'framework:ethics'],
+    elements: ['game:267'],
+  },
+  {
     objective: 'clearbay.use', map: 'preserved.archive', target: 'clear-bay-board',
     source: 'tests/clear-bay.test.ts', anchor: 'awards 78 only for the full comparison and observed %s handover',
     action: 'Test the cart with and without a helper, compare gates, pin two first-bell accounts and a later repair, fold a private name and deliver the resulting opening notice to its reader.',
