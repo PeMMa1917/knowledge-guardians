@@ -137,5 +137,15 @@
   },
   "quest:pigment-window.controlled": {
     "lamp": "If someone changed the lamp and left the strip uncovered on the same day, what would you do before blaming either change?"
+  },
+  "quest:m01.o5.practice": {
+    "visitor": "If a visitor left halfway through your exchange with Venn, what might they tell the next person about the pen?",
+    "return": "Which detail would you put back in front of that visitor so they could check the story for themselves?"
+  },
+  "showdown-move:practice:concede": {
+    "concession": "What could you let Venn keep without giving up the part of your account that the pen still supports?"
+  },
+  "showdown-move:practice:reframe": {
+    "two-firsts": "If Venn pinned the patent beside the working pen, what could each of you still mean by “first”?"
   }
 }
