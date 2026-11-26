@@ -1,5 +1,6 @@
 import type { Condition, ContentPack, DialogueNode, Hint, Objective, Weave } from '../domain/types';
 import data from './reference-line-specimens.json';
+import { islandSpecimenRevisits } from './islandProofRack';
 
 export const REFERENCE_LINE_AVAILABLE: Condition = { objective: 'metal.arrival' };
 export const REFERENCE_LAYOUT = 'reference-line.installed-layout';
@@ -165,7 +166,7 @@ export const referenceLineContent = {
     id: entry.exhibit, name: entry.title, dateText: entry.date, dateKind: entry.dateKind, historicalLabel: 'documented',
     art: 'collection-stand', altText: entry.alt, summary: entry.observation, sources: [entry.source], grantsCard: entry.card,
     specimen: { key: entry.key, accession: entry.accession, institution: entry.institution, source: entry.source,
-      objective: entry.objective, pixelAsset: entry.asset },
+      objective: entry.objective, pixelAsset: entry.asset, revisit: islandSpecimenRevisits[entry.key] },
   })),
   cards: REFERENCE_CASES.map((entry) => ({
     id: entry.card, title: entry.title, text: entry.observation, limits: entry.limit, sources: [entry.source],

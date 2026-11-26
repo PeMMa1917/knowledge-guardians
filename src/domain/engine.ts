@@ -6,6 +6,7 @@ import { compareCopy } from './copyComparison';
 import { seaChart } from './seaCharts';
 import { stageRehearsal, type StageCue } from './stageRehearsal';
 import { filmEffects, type FilmAction } from './filmCuts';
+import { tileDispatchEffects, type TileDispatchAction } from './tiles';
 import { marketComparison, type MarketBasis } from './marketScale';
 import { waterTrial, type WaterSetting } from './waterGate';
 import { civicAllocation, type CivicRule, type CivicSample } from './civicConsole';
@@ -70,6 +71,7 @@ export type Command =
   | LoopAction
   | CatchmentAction
   | FilmAction
+  | TileDispatchAction
   | { type: 'Reach'; zone: string }
   | { type: 'VisitPlace'; name: string }
   | { type: 'EquipPerspective'; keepsake: string | null }
@@ -392,6 +394,9 @@ export class Engine {
           break;
         case 'SetFlag':
           s = apply([{ setFlag: cmd.flag, value: cmd.value }], s, out);
+          break;
+        case 'CompleteTileStitch': case 'SendTileDispatch': case 'ReceiveTileDispatch':
+          s = apply(tileDispatchEffects(cmd, s), s, out);
           break;
         case 'SharedCarry':
           s = apply(moveSharedCarry(cmd.site, cmd.stop, cmd.action, s, p), s, out);

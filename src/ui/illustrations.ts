@@ -640,7 +640,7 @@ DRAW['tea-table'] = [16, 24, (g) => { R(g, '#5b3b22', 2, 17, 2, 7); R(g, '#5b3b2
 DRAW['rain-stake'] = [16, 24, (g) => { R(g, '#5b3b22', 7, 10, 2, 14); R(g, '#c98d60', 4, 6, 8, 6); R(g, '#9fd0ff', 5, 8, 6, 3); R(g, '#3b2a1a', 4, 12, 8, 1); for (let i = 0; i < 3; i++) R(g, '#3b2a1a', 11, 7 + i * 2, 1, 1); R(g, '#4a7a3a', 3, 22, 10, 2); }];
 DRAW['plumb-mark'] = [16, 24, (g) => { R(g, '#8b8f99', 2, 2, 12, 22); R(g, '#6f737d', 3, 3, 10, 20); R(g, '#4a4d55', 5, 3, 1, 20); R(g, '#e8e2d0', 9, 3, 1, 14); R(g, '#c9a24a', 8, 17, 3, 3); R(g, '#2a2440', 9, 5, 3, 1); }];
 DRAW['flood-post'] = [16, 24, (g) => { R(g, '#6b4a2a', 6, 3, 4, 21); R(g, '#8a5a30', 7, 3, 2, 21); R(g, '#2a2440', 5, 12, 6, 1); R(g, '#d8c79a', 6, 6, 4, 3); R(g, '#9a8a6a', 7, 7, 1, 1); R(g, '#2b6f9a', 2, 21, 12, 3); R(g, '#9fd0ff', 3, 21, 4, 1); }];
-// Sefa's word tiles: a small table with face-down tiles, two turned up.
+// Sefa's stitching table with two work-slip halves turned up.
 DRAW['tile-table'] = [16, 24, (g) => {
   R(g, '#5b3b22', 2, 17, 1, 7); R(g, '#5b3b22', 13, 17, 1, 7); R(g, '#8a5a30', 0, 13, 16, 4); R(g, '#a87445', 0, 13, 16, 1);
   for (let i = 0; i < 6; i++) R(g, i === 1 || i === 4 ? '#efe1bd' : '#3b3355', 1 + (i % 3) * 5, 7 + Math.floor(i / 3) * 3, 4, 2);

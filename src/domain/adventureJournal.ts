@@ -1,6 +1,7 @@
 import { crossingOf, crossingWay } from './crossings';
 import { RUMOURS } from './rumours';
 import { LOYALTY } from './loyalty';
+import { DISPATCH_DESKS, dispatchFlag, dispatchSlip } from './tiles';
 import { specimenReferences, type SpecimenReference } from './specimenReferences';
 import { earlierViews } from '../content/earlierViewing';
 import { STAR_PATHS } from '../content/starPaths';
@@ -91,6 +92,17 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
+  if (cmd.type === 'SendTileDispatch' || cmd.type === 'ReceiveTileDispatch') {
+    const flag = dispatchFlag(cmd.desk, cmd.slip);
+    const slip = dispatchSlip(cmd.slip);
+    if (!slip || previous.flags[flag] === next.flags[flag]) return;
+    const desk = DISPATCH_DESKS[cmd.desk];
+    return cmd.type === 'SendTileDispatch'
+      ? { id: flag + ':sent', kind: 'choice', title: `${slip.name} dispatch`,
+        text: `I sent the two halves of the ${slip.name.toLowerCase()} slip to the ${desk}. ${slip.limit}` }
+      : { id: flag + ':received', kind: 'experience', title: `${slip.name} at the ${desk}`,
+        text: `I carried the reading and its limit to the desk. ${slip[cmd.desk]}` };
+  }
   if (cmd.type !== 'SetFlag' || previous.flags[cmd.flag] === next.flags[cmd.flag]) return;
   if (cmd.flag.startsWith('earlier-viewing.') && cmd.flag.endsWith('.layout')) {
     const record = earlierViews.find(({ flag }) => cmd.flag === `${flag}.layout`);

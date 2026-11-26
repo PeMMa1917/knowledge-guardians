@@ -53,24 +53,23 @@ describe('secrets and lore', () => {
   });
 });
 
-describe("Sefa's Word Tiles", async () => {
-  const { dealTiles, isPair, tileRank } = await import('../src/domain/tiles');
-  it('deals the same tiles for the same run, six pairs, each word with its meaning', () => {
-    const words = pack.glossary.map((g) => ({ id: g.id, term: g.term, text: g.text }));
-    const a = dealTiles(words, 3), b = dealTiles(words, 3), c = dealTiles(words, 4);
-    expect(a).toEqual(b);
-    expect(a).not.toEqual(c);
-    expect(a).toHaveLength(12);
-    for (const t of a) expect(a.filter((u) => isPair(t, u))).toHaveLength(1);
+describe('Sefa’s stitching table', async () => {
+  const { DISPATCH_SLIPS, dealTiles, isPair, tileRank } = await import('../src/domain/tiles');
+  it('deals six physically identifiable reading and limit pairs from a larger pool', () => {
+    const tray = dealTiles(3);
+    expect(tray).toEqual(dealTiles(3));
+    expect(tray).not.toEqual(dealTiles(4));
+    expect(new Set(DISPATCH_SLIPS.map((slip) => slip.print)).size).toBeGreaterThan(6);
+    expect(tray).toHaveLength(12);
+    for (const tile of tray) {
+      const matches = tray.filter((other) => isPair(tile, other));
+      expect(matches).toHaveLength(1);
+      expect(matches[0].slip.print).toBe(tile.slip.print);
+      expect(matches[0].text).not.toBe(tile.text);
+    }
     expect(tileRank(6, 6)).toBe('S');
     expect(tileRank(20, 6)).toBe('C');
   });
-});
-
-it('a meaning tile never shows its own word', async () => {
-  const { hideTerm } = await import('../src/domain/tiles');
-  expect(hideTerm('Something that someone says is true. A claim can be bigger.', 'Claim')).toBe('Something that someone says is true. A ___ can be bigger.');
-  expect(hideTerm('Claims and more claims.', 'Claim')).toBe('___ and more ___.');
 });
 
 it('fog of war clears around the player, chunk by chunk', async () => {
@@ -87,11 +86,10 @@ it('fog of war clears around the player, chunk by chunk', async () => {
 
 it("today's challenge is one deal per day; the ghost replays your fastest run", async () => {
   const { dailySeed, dealTiles, decodeGhost, encodeGhost, ghostPairs } = await import('../src/domain/tiles');
-  const words = pack.glossary.map((g) => ({ id: g.id, term: g.term, text: g.text }));
   const d1 = new Date(2026, 10, 25, 9), d1b = new Date(2026, 10, 25, 15), d2 = new Date(2026, 10, 26, 9);
   expect(dailySeed(d1)).toBe(dailySeed(d1b));
-  expect(dealTiles(words, dailySeed(d1))).toEqual(dealTiles(words, dailySeed(d1b)));
-  expect(dealTiles(words, dailySeed(d1))).not.toEqual(dealTiles(words, dailySeed(d2)));
+  expect(dealTiles(dailySeed(d1))).toEqual(dealTiles(dailySeed(d1b)));
+  expect(dealTiles(dailySeed(d1))).not.toEqual(dealTiles(dailySeed(d2)));
   expect(dailySeed(new Date(2026, 0, 31))).not.toBe(dailySeed(new Date(2026, 1, 1)));
   const g = decodeGhost(encodeGhost([3.2, 7.9, 12, 20, 21, 30]));
   expect(g).toEqual([3, 8, 12, 20, 21, 30]);

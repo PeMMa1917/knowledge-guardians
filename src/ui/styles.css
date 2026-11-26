@@ -892,15 +892,21 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .journey-memory p { margin: 0; }
 .tiles-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; margin: 0.6rem 0; }
 @media (max-width: 640px) { .tiles-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.word-tile { min-height: 5.5rem; padding: 0.4rem; border-radius: 10px; font-size: 0.82rem; line-height: 1.25; background: var(--panel-2); border: 2px solid var(--gold-dim); color: var(--ink); transition: transform 0.2s; }
+@media (max-width: 440px) { .tiles-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.word-tile { min-height: 5.5rem; overflow-wrap: anywhere; padding: 0.4rem; border-radius: 10px; font-size: 0.82rem; line-height: 1.25; background: var(--panel-2); border: 2px solid var(--gold-dim); color: var(--ink); transition: transform 0.2s; }
 .word-tile .tile-back { font-size: 1.6rem; color: var(--gold); }
 .word-tile.open { background: #efe1bd; color: #2a2440; transform: rotateY(0deg); }
-.word-tile.open.term { font-weight: 700; font-size: 1rem; }
 .word-tile.matched { border-color: #5fbf7a; background: #dff2e3; opacity: 0.85; }
 @media (prefers-reduced-motion: reduce) { .word-tile { transition: none; } }
-.tile-ranks { display: flex; gap: 1rem; margin: 0.6rem 0; }
-.tile-ranks > div { display: flex; flex-direction: column; align-items: center; padding: 0.5rem 1rem; border-radius: 8px; background: var(--panel-2); border: 1px solid var(--gold-dim); }
-.tile-ranks .rank { font-size: 2rem; color: var(--gold); }
+.sefa-stamp, .sefa-print { display: block; }
+.sefa-stamp { font-size: 1.2em; font-weight: 600; letter-spacing: 0.12em; }
+.sefa-print { font-size: 0.8em; overflow-wrap: anywhere; }
+.word-tile.open .fine { color: inherit; }
+.sefa-slip-text { border-inline-start: 0.2rem solid var(--gold-dim); padding-inline-start: 0.65rem; }
+.sefa-slip-text p { margin: 0.3rem 0; }
+.sefa-stitch-help, .sefa-pending, .sefa-dispatch-result { margin-block: 0.65rem; }
+.sefa-stitch-help summary, .sefa-pending summary { cursor: pointer; }
+.sefa-desk-slip { margin-block: 0.75rem; padding-block-start: 0.5rem; border-block-start: 1px solid var(--gold-dim); }
 .community-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 0.7rem; }
 .community { padding: 0.6rem 0.8rem; border-radius: 10px; background: var(--panel-2); border: 1px solid var(--gold-dim); }
 .community h3 { margin: 0 0 0.3rem; display: flex; justify-content: space-between; align-items: center; color: var(--gold); }

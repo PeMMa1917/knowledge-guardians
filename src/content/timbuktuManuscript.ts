@@ -22,7 +22,7 @@ export const timbuktuManuscriptContent = {
     {
       id: TIMBUKTU_SOURCE, title: 'Library of Congress, Structure of the Heavens, object 1',
       url: 'https://www.loc.gov/exhibits/mali/mali-exhibit.html#obj1',
-      locator: 'Object 1 caption and description, recto and verso loan',
+      locator: 'Object 1, Structure of the Heavens, with its caption and images of both manuscript faces',
       supports: 'The caption names the author and the Mamma Haidara Commemorative Library in Timbuktu. It dates the manuscript copy to 1733. The description relates stellar motions to the calculation of the beginning of seasons.',
       accessed: '2026-11-26',
     },
@@ -40,7 +40,7 @@ export const timbuktuManuscriptContent = {
     summary: `Kashf al-Ghummah fi Nafa al-Ummah. The catalogue identifies ${TIMBUKTU_AUTHOR} as the author. The original is held at the Mamma Haidara Commemorative Library in Timbuktu, Mali. The Library of Congress provides the online record.`,
     altText: 'A closed catalogue folder beside two invented skyline slips. The manuscript itself is available through the source.',
     sources: [TIMBUKTU_SOURCE, TIMBUKTU_MARC], grantsCard: TIMBUKTU_CARD,
-    specimen: { key: 'loc:2021667561', institution: 'Library of Congress', accession: '2021667561', source: TIMBUKTU_MARC, objective: TIMBUKTU_OBJECTIVE },
+    specimen: { key: 'loc:2021667561', institution: 'Library of Congress', accession: '2021667561', source: TIMBUKTU_SOURCE, objective: TIMBUKTU_OBJECTIVE },
   }],
   cards: [{
     id: TIMBUKTU_CARD, title: 'The 1733 astronomical manuscript copy · 2021667561', claimKind: 'observation',

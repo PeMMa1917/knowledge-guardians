@@ -1,0 +1,16 @@
+[
+  {
+    "number": 78,
+    "name": "Set two kinds of evidence to work on the same decision",
+    "uses": [
+      {
+        "objective": "clearbay.use",
+        "action": "Test the two gates with scoped loads and a real handler's square, match the keeper and visitor records by bell, separate the later repair from current measurements, and hand over a notice that retains both the safe limit and the visitor's privacy.",
+        "styles": ["strategist", "explorer", "maker", "helper"],
+        "modes": ["visual", "spatial", "physical", "reading", "analytical", "social"],
+        "game": 223,
+        "story": 72
+      }
+    ]
+  }
+]

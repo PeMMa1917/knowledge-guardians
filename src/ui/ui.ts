@@ -1,4 +1,6 @@
 import type { GlossaryEntry } from '../domain/types';
+import { CLEAR_BAY_GAME } from '../domain/clearBay';
+import { clearBayPanel } from './clearBay';
 import { NILE_TRIALS, NILE_DELIVERIES, type NileDelivery } from '../domain/nileModel';
 import { FOREST_WATCH, FOREST_WINDOWS, forestWatch, type ForestWindow } from '../domain/forestWatch';
 import { METAL_SAMPLES, readMetalSample } from '../domain/metalSample';
@@ -60,7 +62,8 @@ import type { ClaimKind, DialogueNode, EvidenceCard, HistoricalLabel, ShowdownSt
 import { PLAYER_LOOKS, TILE } from '../scenes/art';
 import { artURL, BIG_ART } from './illustrations';
 import { clear, h, trapFocus } from './dom';
-import { dailySeed, dealTiles, decodeGhost, encodeGhost, ghostPairs, isPair, speedRank, tileRank, type Tile } from '../domain/tiles';
+import { DISPATCH_DESKS, DISPATCH_GAME } from '../domain/tiles';
+import { SEFA_TABLE, sefaDeskPanel, sefaStitching } from './sefaDispatch';
 import { TRUST_RANKS, rankOf, trustOf } from '../domain/communities';
 import { RECIPES, RESOURCES, cannotCraft, resCount, type Resource } from '../domain/craft';
 import { READINGS, cannotRead, readingOf, toolOf } from '../domain/readings';
@@ -131,6 +134,8 @@ import { DETECTOR_GAME } from '../domain/coastDetector';
 import { coastDetectorPanel } from './coastDetector';
 import { BREEZE_CHECK, BREEZE_FOLLOW, BREEZE_TOOL } from '../domain/coastBreeze';
 import { coastBreezePanel } from './coastBreeze';
+import { ISLAND_PROOF_CASES, ISLAND_PROOF_TOOL, islandProofFlag } from '../domain/islandProofRack';
+import { islandProofRackPanel } from './islandProofRack';
 import { BRIDGE_PROOF_TOOL } from '../domain/bridgeProof';
 import { bridgeProofPanel } from './bridgeProof';
 import { SILL_CLOCK } from '../domain/sillBridge';
@@ -189,7 +194,7 @@ import { BARTER, DYES, TOWN_COSTS, WOAD_BLUE, ferryPrice, ownsDye, townPrice } f
 import { RUMOURS, RUMOUR_DESKS, type RumourDesk, VERDICTS, currentRumour, missingRumourSources, sourcesChecked } from '../domain/rumours';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
 import { WARES, honestLabels, lockedOption, owns, priceFor } from '../domain/shop';
-import { calendarGrid, dayOf, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
+import { calendarGrid, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
 
 const HIST_LABEL_TEXT: Record<HistoricalLabel, [string, string]> = {
   'documented': ['Documented', 'Supported by a named, checkable source. Open the source link to see it.'],
@@ -477,6 +482,7 @@ export class UI implements UIApi {
   private modal: HTMLElement | null = null;
   private titleModalOpener: HTMLElement | null = null;
   private releaseTrap: (() => void) | null = null;
+  private releaseStitching: (() => void) | null = null;
   private promptEl!: HTMLElement;
   private toastBox!: HTMLElement;
   private saveFeedback: HTMLElement | null = null;
@@ -534,6 +540,8 @@ export class UI implements UIApi {
       || (this.activeEvent && this.modal.querySelector('[role="dialog"].dialogue'))
     );
     this.releaseTrap?.();
+    this.releaseStitching?.();
+    this.releaseStitching = null;
     this.modal.remove();
     this.modal = null;
     const opener = this.titleModalOpener;
@@ -1224,8 +1232,9 @@ export class UI implements UIApi {
     const cornerObjective = id.startsWith('corner.') && c.state.flags['corner.found'] && !c.state.objectivesDone.includes('corner.receive')
       ? c.state.objectivesDone.includes('corner.compare') ? 'corner.receive' : 'corner.compare'
       : undefined;
-    const guideObjective = id.startsWith('sea.threadbend.')
-      ? c.engine.visibleObjectives(c.state).find((step) => !step.complete && step.id.startsWith('sea.threadbend.'))?.id
+    const guidedCase = ['sea.threadbend.', 'ember.circle.'].find((prefix) => id.startsWith(prefix));
+    const guideObjective = guidedCase
+      ? c.engine.visibleObjectives(c.state).find((step) => !step.complete && step.id.startsWith(guidedCase))?.id
       : id === 'stage.call.stand' ? 'stage.call.audience' : cornerObjective;
     const extra = id === 'sefa.free' ? this.freeQuestion() : null;
     const earlier = conversationHistory(c.pack.dialogue, c.state.flags).filter((line) => line.id !== id).slice(0, 5);
@@ -3048,7 +3057,7 @@ export class UI implements UIApi {
     const scores: string[] = [
       `Deep Dive, deepest day: ${Number(s.flags['dive.best'] ?? 0)} m`,
       fc?.days && fs.length ? `Forecast Board: Brier score ${brier(fs.map((p) => p / 100), fc.days.slice(0, fs.length).map((d) => d.rain)).toFixed(2)} (lower is closer; 0.25 is 'always 50%')` : 'Forecast Board: not played yet',
-      s.flags['tiles.best.moves'] ? `Sefa's Word Tiles: best ${s.flags['tiles.best.moves']} moves, fastest ${s.flags['tiles.best.secs']} s` : "Sefa's Word Tiles: not played yet",
+      s.flags['tiles.best.moves'] ? `Sefa’s stitching table: best ${s.flags['tiles.best.moves']} moves, fastest ${s.flags['tiles.best.secs']} s` : 'Sefa’s stitching table: awaiting a tray',
       `Total play time in this campaign: ${fmtTime(s.playSeconds ?? 0)}`,
     ];
     box.append(this.closeBtn(), h('h2', {}, "The Guardian's Ledger"),
@@ -3186,6 +3195,17 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    if (id === CLEAR_BAY_GAME) {
+      this.openModal('bench-panel wide', 'The First Bell at the Cold Store', this.closeBtn(),
+        clearBayPanel(ctx.controller, () => ctx.world?.refreshWorld(), (key) => this.sfx(key)));
+      return;
+    }
+    if (id.startsWith(DISPATCH_GAME)) {
+      const desk = id.slice(DISPATCH_GAME.length);
+      if (desk === 'guild' || desk === 'ferry') this.openModal('tiles-panel wide', DISPATCH_DESKS[desk], this.closeBtn(),
+        sefaDeskPanel(ctx.controller, desk, () => ctx.world?.refreshWorld(), (key) => this.sfx(key)));
+      return;
+    }
     if (id === 'catchment-trace') {
       this.openModal('bench-panel wide', 'Below the Gauge', this.closeBtn(),
         catchmentPanel(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
@@ -3199,7 +3219,14 @@ export class UI implements UIApi {
     const carry = carryLocation(id);
     const loop = waterLoopStation(id);
     const incentive = incentiveStation(id);
-    if (incentive) {
+    const islandProof = ISLAND_PROOF_CASES.find((entry) => id === `${ISLAND_PROOF_TOOL}${entry}`);
+    if (islandProof) {
+      const c = ctx.controller;
+      const checked = islandProofFlag(islandProof, 'checked');
+      this.openModal('bench-panel wide', 'Ivo’s proof rack', this.closeBtn(),
+        islandProofRackPanel(islandProof, c, (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
+        localGuide(c, MAPS[c.state.mapId]?.world ?? '', () => c.check({ objective: checked }) ? islandProofFlag(islandProof, 'used') : checked));
+    } else if (incentive) {
       this.openModal('bench-panel wide', 'Ready by the Bell', this.closeBtn(),
         civicIncentivePanel(incentive.station, ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (loop) {
@@ -4274,89 +4301,17 @@ export class UI implements UIApi {
       h('p', { class: 'fine' }, `Field readings taken: ${done} of ${READINGS.length}. A reading is evidence; what it shows is your call, and you explain it.`));
   }
 
-  /** Sefa's Word Tiles: match each TOK word with its meaning. Scores for moves and time; no XP. */
   openTiles(daily = false): void {
-    const c = ctx.controller;
-    const PAIRS = 6;
-    const run = Number(c.state.flags['tiles.runs'] ?? 0);
-    const today = dayOf(new Date());
-    const tiles: Tile[] = dealTiles(c.pack.glossary.map((g) => ({ id: g.id, term: g.term, text: g.text })), daily ? dailySeed(new Date()) : run, PAIRS);
-    const matched = new Set<number>();
-    let up: number[] = [], moves = 0, started = 0, done = false, lock = false;
-    // Personal-best ghost: when each pair was made in your fastest run. Daily best: today's challenge only.
-    const ghost = ctx.settings.calmMode ? [] : decodeGhost(c.state.flags['tiles.ghost']); // calm mode: no race
-    const pairTimes: number[] = [];
-    const dailyBest = c.state.flags['tiles.daily.day'] === today ? { moves: Number(c.state.flags['tiles.daily.moves']), secs: Number(c.state.flags['tiles.daily.secs']) } : null;
-    const ghostLine = h('p', { class: 'fine ghost-line', 'aria-live': 'off' });
-    const tick = setInterval(() => {
-      if (!ghostLine.isConnected && started) { clearInterval(tick); return; }
-      if (!ghost.length || done) { ghostLine.textContent = ghost.length || ctx.settings.calmMode ? '' : 'Your fastest run will become a ghost to race.'; return; }
-      const t = started ? (performance.now() - started) / 1000 : 0;
-      const g = ghostPairs(ghost, t), me = matched.size / 2;
-      ghostLine.textContent = `Ghost of your fastest run: ${g} of ${PAIRS} pairs${started ? (me > g ? ' · you are ahead' : me < g ? ' · the ghost is ahead' : ' · level') : ''}.`;
-    }, 300);
-    // Recall (Insight tree): every tile shows for 3 seconds at the start.
-    const preview = hasTalent(c.state, 'recall');
-    if (preview) { lock = true; up = tiles.map((_, i) => i); setTimeout(() => { up = []; lock = false; render(); }, 3000); }
-    const bestMoves = Number(c.state.flags['tiles.best.moves'] ?? 0), bestSecs = Number(c.state.flags['tiles.best.secs'] ?? 0);
-    const box = this.openModal('tiles-panel wide', "Sefa's Word Tiles");
-    const status = h('p', { class: 'fine', role: 'status', 'aria-live': 'polite' });
-    const grid = h('div', { class: 'tiles-grid' });
-    const result = h('div', {});
-    const render = () => {
-      grid.replaceChildren(...tiles.map((t, i) => {
-        const open = up.includes(i) || matched.has(i);
-        return h('button', { type: 'button', class: `word-tile ${t.kind} ${open ? 'open' : ''} ${matched.has(i) ? 'matched' : ''}`, disabled: matched.has(i) || done,
-          'aria-label': open ? `${t.kind === 'term' ? 'Word' : 'Meaning'}: ${t.text}` : `Tile ${i + 1}, face down`, onclick: () => flip(i) },
-          open ? h('span', {}, t.text) : h('span', { class: 'tile-back', 'aria-hidden': 'true' }, '✦'));
-      }));
-      status.textContent = `${matched.size / 2} of ${PAIRS} pairs · ${moves} move${moves === 1 ? '' : 's'}${bestMoves ? ` · your best: ${bestMoves} moves, ${bestSecs} s` : ''}`;
-    };
-    const flip = (i: number) => {
-      if (lock || up.includes(i) || matched.has(i)) return;
-      if (!started) started = performance.now();
-      up.push(i); this.sfx('sfx.page');
-      if (up.length === 2) {
-        moves++;
-        const [a, b] = up;
-        if (isPair(tiles[a], tiles[b])) {
-          matched.add(a); matched.add(b); up = [];
-          pairTimes.push((performance.now() - started) / 1000);
-          playNotes([{ f: 660, at: 0, beats: 0.3 }, { f: 880, at: 0.15, beats: 0.4 }], 0.2, 'flute', ctx.settings.sfxVolume);
-          if (matched.size === tiles.length) finish();
-        } else { lock = true; setTimeout(() => { up = []; lock = false; render(); }, 1100); }
-      }
-      render();
-    };
-    const finish = () => {
-      done = true;
-      const secs = Math.max(1, Math.round((performance.now() - started) / 1000));
-      const newMoves = !bestMoves || moves < bestMoves, newSecs = !bestSecs || secs < bestSecs;
-      if (!daily) c.dispatch({ type: 'SetFlag', flag: 'tiles.runs', value: run + 1 });
-      if (newMoves) c.dispatch({ type: 'SetFlag', flag: 'tiles.best.moves', value: moves });
-      if (newSecs) { c.dispatch({ type: 'SetFlag', flag: 'tiles.best.secs', value: secs }); c.dispatch({ type: 'SetFlag', flag: 'tiles.ghost', value: encodeGhost(pairTimes) }); }
-      if (daily) {
-        if (!dailyBest || moves < dailyBest.moves || (moves === dailyBest.moves && secs < dailyBest.secs)) {
-          c.dispatch({ type: 'SetFlag', flag: 'tiles.daily.day', value: today });
-          c.dispatch({ type: 'SetFlag', flag: 'tiles.daily.moves', value: moves });
-          c.dispatch({ type: 'SetFlag', flag: 'tiles.daily.secs', value: secs });
-        }
-      }
-      this.sfx('sfx.award');
-      const pace = bestSecs ? (secs < bestSecs ? `${bestSecs - secs} s faster than your best.` : `${secs - bestSecs} s behind your best.`) : 'Your first run sets your best.';
-      result.replaceChildren(h('div', { class: 'tile-ranks' },
-        h('div', {}, h('span', { class: 'fine' }, 'Precision'), h('strong', { class: 'rank' }, tileRank(moves, PAIRS)), h('span', {}, `${moves} moves${newMoves ? ' · new best' : ''}`)),
-        h('div', {}, h('span', { class: 'fine' }, 'Speed'), h('strong', { class: 'rank' }, speedRank(secs, PAIRS)), h('span', {}, `${secs} s${newSecs ? ' · new best' : ''}`))),
-        h('p', {}, pace, ' Sefa: "Knowing the words is a start. Using them well, on a real claim, is the real game."'),
-        ...(daily ? [h('p', { class: 'fine' }, "Today's challenge: everyone in your class gets the same six words today. Compare your moves with a friend, and how you got them.")] : []),
-        h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.openTiles() }, 'Play again (new words)'),
-          daily ? null : h('button', { onclick: () => this.openTiles(true) }, "Today's challenge"), h('button', { onclick: () => this.closeModal() }, 'Close')));
-    };
-    box.append(this.closeBtn(), h('h2', {}, daily ? "Sefa's Word Tiles: today's challenge" : "Sefa's Word Tiles"),
-      h('p', {}, daily ? `Turn two tiles. A word and its meaning make a pair. Today (${today}) everyone gets the same six words.${dailyBest ? ` Your best today: ${dailyBest.moves} moves, ${dailyBest.secs} s.` : ''}` : 'Turn two tiles. A word and its meaning make a pair. Each new game deals six new words from the Guardian glossary.'),
-      ...(daily ? [] : [h('div', { class: 'row' }, h('button', { type: 'button', onclick: () => this.openTiles(true) }, "Play today's challenge instead"))]),
-      status, ghostLine, grid, result);
-    render();
+    const box = this.openModal('tiles-panel wide', SEFA_TABLE, this.closeBtn());
+    const stitching = sefaStitching(ctx.controller, {
+      daily,
+      calm: ctx.settings.calmMode,
+      sound: (key) => this.sfx(key),
+      replay: (mode) => this.openTiles(mode),
+      refresh: () => ctx.world?.refreshWorld(),
+    });
+    this.releaseStitching = stitching.dispose;
+    box.append(stitching.panel);
   }
 
   /** The Lamp Wall (storyline): one lamp for each knot the town unties. Six lamps open the old Guardian's cellar. */

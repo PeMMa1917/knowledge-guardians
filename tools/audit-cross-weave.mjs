@@ -76,6 +76,30 @@ const nexusEvidenceInvestigations = [
 const proofRows = [
   ...nexusEvidenceInvestigations,
   {
+    objective: 'clearbay.use', map: 'preserved.archive', target: 'clear-bay-board',
+    source: 'tests/clear-bay.test.ts', anchor: 'awards 78 only for the full comparison and observed %s handover',
+    action: 'Test the cart with and without a helper, compare gates, pin two first-bell accounts and a later repair, fold a private name and deliver the resulting opening notice to its reader.',
+    comparison: {
+      concepts: ['evidence', 'responsibility'], framework: ['scope', 'perspectives', 'methods-and-tools', 'ethics'],
+      areas: [
+        { id: 'MAT', method: 'Hold the gate fixed and compare space for the cart alone, the handled cart and a parcel. Take the handled cart to the other opening to locate the bound.',
+          limit: 'These measured widths cover the tested loads at the present gates. The cart alone leaves its handler out of the calculation.' },
+        { id: 'HIS', method: 'Pin the duty book and a visitor’s account to the same bell. Date the later moved post separately and fold the name while keeping the account of the queue visible.',
+          limit: 'The staff entry and visitor’s account describe different experiences of an earlier opening. Its later repair prevents using that record as a present measurement.' },
+      ],
+      connection: 'Use both records for the same access notice. One reader opens a staffed cart rail later. Another receives parcels at first bell and stages a cart transfer.',
+    },
+    dimensions: ['micro:78', 'area:MAT', 'area:HIS', 'concept:evidence', 'concept:responsibility', 'framework:scope', 'framework:perspectives', 'framework:methods-and-tools', 'framework:ethics'],
+    elements: ['game:223', 'story:72'],
+  },
+  {
+    objective: 'ember.circle.trace', map: 'aethelgard.emberford', target: 'circlereport-ledger',
+    source: 'tests/circular-report.test.ts', anchor: 'awards row 317 once after physically tracing the return citation and keeping the limited independent view',
+    action: 'Follow the tea copy to the stall report and then the replacement notice citing the tea copy. Use the printer’s issue book to trace the loop. Havra’s separate view reaches the upper landing at one bell.',
+    dimensions: ['micro:317', 'concept:evidence', 'concept:justification', 'framework:scope', 'framework:methods-and-tools'],
+    elements: ['game:258', 'story:77'],
+  },
+  {
     objective: 'nexus.facing.compare', map: 'nexus.archive', target: 'facing-cue-nexus',
     source: 'tests/facing-cue.test.ts', anchor: 'runs the %s Nexus readback and the %s House handover',
     action: 'Repeat the four-beat phrase from the two facings and see how the same call changes the endpoint.',

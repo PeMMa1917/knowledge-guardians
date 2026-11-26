@@ -1,3 +1,4 @@
+import { sefaDispatchDesk } from './sefaDispatch';
 /**
  * WORLD-02 Aethelgard: the old ferry road and the ferry folk's landing, east of Emberford.
  * A pathway that a keepsake opens: Kip's map beside Elsbet's map shows the forgotten road
@@ -61,6 +62,7 @@ export const FERRY: MapDef = {
     ...FERRY_SILL_BRIDGE,
     { id: 'field-trade', kind: 'fieldgame', game: 'trade', x: 13, y: 3, w: 1, h: 1, label: 'a spare carrier tag on the ferry step (The Spare Tag)', art: 'guest-book' },
     { id: 'cross-lamb', kind: 'fieldgame', game: 'cross-lamb', x: 10, y: 5, w: 1, h: 1, label: 'the lamb on the old ford stone (a crossing)', art: 'flood-post' },
+    sefaDispatchDesk('ferry', 13, 8),
     { id: 'ferry-copy-ledger', kind: 'scene', node: 'tova.nexus-copy.ledger', x: 11, y: 7, w: 1, h: 1,
       label: 'the landing book with the Nexus packet', art: 'ledger', walkThrough: true,
       visibleIf: { flag: 'ferry.copy.place', eq: 'ledger' } },

@@ -1,5 +1,6 @@
 /** Fictional Guardian archive. Its rooms contain documentary evidence and original schematic illustrations. */
 import type { Condition } from '../domain/types';
+import { COLD_CLEAR_BAY } from './clearBay';
 import { GLASS_RACK_DOOR } from './glassRack';
 import { COLD_LINTEL } from './lintelFold';
 import { WORKROOM_SEAM } from './seamWitness';
@@ -78,6 +79,7 @@ export const PRESERVED_ARCHIVE = room({
     { stamp: 'plant-tall', x: 2, y: 13 }, { stamp: 'plant-tall', x: 26, y: 13 },
   ],
   interactables: [
+    ...COLD_CLEAR_BAY,
     CLEARANCE_DOOR,
     ...BEATER_COLD_STORE,
     GLASS_RACK_DOOR,

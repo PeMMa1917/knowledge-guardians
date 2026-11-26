@@ -1,3 +1,4 @@
+import { sefaDispatchDesk } from './sefaDispatch';
 import { EMBERFORD_PIGMENT_WINDOW } from './pigmentWindow';
 import { PRICE_DRAWERS_RETURNS } from './priceDrawers';
 import { JIG_EMBERFORD_RETURNS } from './jigShop';
@@ -21,6 +22,7 @@ import { PORTER_EMBERFORD } from './porterPace';
 import { EMBERFORD_WINDOW } from './ferryWindow';
 import { CART_MEMORY_ACTORS, CART_MEMORY_PROPS } from './memoryCart';
 import { EMBERFORD_LAST_TURN } from './lastTurn';
+import { CIRCULAR_REPORT_EMBERFORD } from './circularReport';
 import { starStations } from './starPaths';
 
 const W = 40, H = 28;
@@ -382,6 +384,7 @@ export const EMBERFORD: MapDef = {
     { id: 'table-authors', kind: 'label', kit: 'ee.authors', x: 15, y: 7, w: 1, h: 1, label: "Keeper Oduya's table", art: 'label-stand', visibleIf: { objective: 'ee2.o3.weigh' } },
     { id: 'thread-ledger', kind: 'thread', thread: 'blade', node: 'ledger', x: 21, y: 7, w: 1, h: 1, label: 'the guild ledger desk', art: 'ledger' },
     { id: 'thread-workshop', kind: 'thread', thread: 'blade', node: 'workshop', x: 3, y: 13, w: 1, h: 1, label: "Hesper's workshop sheet", art: 'board-stand' },
+    sefaDispatchDesk('guild', 12, 8),
     { id: 'record-book', kind: 'sign', x: 13, y: 8, w: 1, h: 1, label: "the guild's public record book", art: 'ledger', flag: 'rumour.record',
       text: 'GUILD RECORD, WINTER. Test blade from Hesper\'s forge: cracked in the quench. Cause: the quench water was too cold. Action: Hesper warms the water. Three new test blades passed. This book is open to everyone.' },
     // The story (Lamp Wall): each knot the town unties lights a lamp; six open the old Guardian's cellar.
@@ -394,6 +397,7 @@ export const EMBERFORD: MapDef = {
     { id: 'reeds-bridge', kind: 'gather', resource: 'reed', x: 30, y: 23, w: 1, h: 1, label: 'the reeds by the bridge (gather)', art: 'reeds' },
     { id: 'makers-bench', kind: 'workbench', x: 9, y: 19, w: 1, h: 1, label: "the Maker's bench (make tools)", art: 'workbench' },
     { id: 'rumour-mill', kind: 'rumours', x: 16, y: 17, w: 1, h: 1, label: 'the tea table (listen to the rumour mill)', art: 'tea-table' },
+    ...CIRCULAR_REPORT_EMBERFORD,
     // Field games from the TOK lessons (src/domain/fieldgames.ts).
     { id: 'pell-doors', kind: 'fieldgame', game: 'doors', x: 25, y: 17, w: 2, h: 1, label: "Dov's lantern stall (Three Doors)", art: 'lantern-stall' },
     { id: 'odo-notice', kind: 'fieldgame', game: 'word', x: 27, y: 22, w: 1, h: 1, label: "Odo's notice board and word chest", art: 'notice-board' },
@@ -402,7 +406,7 @@ export const EMBERFORD: MapDef = {
     { id: 'reading-rain', kind: 'reading', reading: 'rain', x: 35, y: 17, w: 1, h: 1, label: "the rain stake by Noa's board (take a reading)", art: 'rain-stake' },
     { id: 'reading-tower', kind: 'reading', reading: 'tower', x: 22, y: 6, w: 1, h: 1, label: 'the bell tower door frame (take a reading)', art: 'plumb-mark' },
     { id: 'reading-flood', kind: 'reading', reading: 'flood-post', x: 32, y: 21, w: 1, h: 1, label: 'the old flood post (copy it)', art: 'flood-post' },
-    { id: 'word-tiles', kind: 'tiles', x: 12, y: 15, w: 1, h: 1, label: "Sefa's word tiles (a memory game)", art: 'tile-table' },
+    { id: 'word-tiles', kind: 'tiles', x: 12, y: 15, w: 1, h: 1, label: "Sefa's stitching table for work slips", art: 'tile-table' },
     // Secrets (Easter eggs): no art, found by searching. Lore in story.json, Journal > Lore.
     { id: 'secret-ember-myth', kind: 'secret', secret: 'ember-myth', x: 7, y: 9, w: 1, h: 1, label: 'a loose brick in the smithy wall' },
     { id: 'secret-three-coins', kind: 'secret', secret: 'three-coins', x: 19, y: 15, w: 1, h: 1, label: 'the bottom of the fountain' },

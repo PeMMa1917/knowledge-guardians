@@ -2,7 +2,7 @@
 
 Knowledge Guardians has fifteen playable chapters and a post-Council return. The next round should measure what students encounter, what they can carry into a new setting, and which story choices they want to pursue. [Browser checks](BROWSER_CHECKS.md) · [Learning design](LEARNING_DESIGN.md)
 
-All six modeled itineraries meet the TOK opportunity floor in their first 20- and 30-minute windows. Only two of 52 executable chapter traces sustain the floor across every estimated 30-minute window. The authored micro-skill links cover 346 of the 803 supplied rows, and 50 can reach Practised. Measure the duration of long explorations, then check whether players carry the earlier method into a later world with a different task. [Learning audit](LEARNING_DESIGN.md#the-20--and-30-minute-opportunity-floor) · [Micro-skills audit](TOK_MICRO_SKILLS.md)
+All six modeled itineraries meet the TOK opportunity floor in their first 20- and 30-minute windows. Only two of 52 executable chapter traces sustain the floor across every estimated 30-minute window. The authored micro-skill links cover 348 of the 803 supplied rows, and 50 can reach Practised. Measure the duration of long explorations, then check whether players carry the earlier method into a later world with a different task. [Learning audit](LEARNING_DESIGN.md#the-20--and-30-minute-opportunity-floor) · [Micro-skills audit](TOK_MICRO_SKILLS.md)
 
 | Priority | Work to do | How to check the improvement |
 | --- | --- | --- |

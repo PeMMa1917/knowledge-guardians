@@ -10,6 +10,7 @@ import { ISLAND_WATER_LOOP, MARGIN_WATER_LOOP } from './waterLoop';
 import { ISLAND_INCENTIVE_DOCK, ISLAND_INCENTIVE_WORKSHOP } from './civicIncentive';
 import { LABEL_LOFT_OUTSIDE } from './asiaLabelLoft';
 import { JOINED_CLOTH_FRAME, JOINED_CLOTH_LEDGE, JOINED_CLOTH_RACK } from './joinedCloth';
+import { ISLAND_SPECIMEN_DOCK, ISLAND_SPECIMEN_MARGIN, ISLAND_SPECIMEN_RACKS } from './islandProofRack';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'island.waypost'): Interactable {
   return { id, kind: 'door', x, y, w: 1, h: 1, label, to, art };
@@ -52,6 +53,7 @@ export const ISLAND_WORKSHOP: MapDef = {
     ...ISLAND_WORKSHOP_FRAMES,
     ...ISLAND_WATER_LOOP,
     JOINED_CLOTH_RACK,
+    ...ISLAND_SPECIMEN_RACKS,
     door('island-dock-path', 4, 10, 'the west path to the dock', { map: 'island.dock', x: 7, y: 10 }),
     door('island-margin-path', 24, 10, 'the east path to the quiet margin', { map: 'island.margin', x: 5, y: 10 }),
     door('island-nexus-return', 13, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 34, y: 12 }, 'preserved.door'),
@@ -119,6 +121,7 @@ export const ISLAND_DOCK: MapDef = {
     ...ISLAND_INCENTIVE_DOCK,
     ...ISLAND_MOVEMENT_DOCK,
     ...ISLAND_DOCK_FRAMES,
+    ...ISLAND_SPECIMEN_DOCK,
     JOINED_CLOTH_FRAME,
     JOINED_CLOTH_LEDGE,
     ISLAND_SKIFF_LAUNCH,
@@ -198,6 +201,7 @@ export const ISLAND_MARGIN: MapDef = {
       'A new slip leaves room for a place, time and what a listener heard. The strip tally keeps its own page. The crew can make a fresh observation at the bend.',
       { visibleIf: { flag: 'island.margin.log', eq: true } }),
     ...ISLAND_SKIFF_RECEIVERS,
+    ...ISLAND_SPECIMEN_MARGIN,
     ...MARGIN_WATER_LOOP,
     ...LABEL_LOFT_OUTSIDE,
   ],

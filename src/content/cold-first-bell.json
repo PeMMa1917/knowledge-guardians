@@ -1,0 +1,722 @@
+{
+  "characters": [
+    {
+      "id": "clearbay-marret",
+      "name": "Marret Finn",
+      "role": "Cold Store keeper and duty book custodian",
+      "mode": "fictional",
+      "sprite": "villager-1",
+      "talk": [
+        {
+          "node": "clearbay.duty-book"
+        }
+      ]
+    },
+    {
+      "id": "clearbay-tarin",
+      "name": "Tarin Lye",
+      "role": "Volunteer load carrier and visitor slip steward",
+      "mode": "fictional",
+      "sprite": "villager-2",
+      "talk": [
+        {
+          "node": "clearbay.visitor-note"
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "clearbay.duty-book",
+      "speaker": "clearbay-marret",
+      "text": "Keeper Marret opens the duty book to Year 11. “At first bell, North is kept for the handling crew. Wide deliveries use it at second bell when I can stand here.” In a different ink, Year 19 moves West’s post one square into the old opening. Both entries name the same two gates.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Lift a copy of the first-bell entry and its later repair tab.",
+          "if": {
+            "all": [
+              {
+                "flag": "preserved.arrived",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "clearbay.duty"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "clearbay.duty",
+              "value": true
+            }
+          ],
+          "next": "clearbay.duty-copied"
+        }
+      ]
+    },
+    {
+      "id": "clearbay.duty-copied",
+      "speaker": "clearbay-marret",
+      "text": "The date stays on the duty entry. The repair tab folds over its footer. Marret has a shelf for books that are heavier than the things they govern.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "clearbay.visitor-note",
+      "speaker": "clearbay-tarin",
+      "text": "A visitor’s Year 11 stub says, “I came at first bell. West let me in with a parcel. The cart beside me had to wait.” The family loaned the stub for this review. A folded margin holds their name and asks for their waiting time to be kept on the public copy.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Clip a copy of the visitor’s first-bell account to the work rack.",
+          "if": {
+            "all": [
+              {
+                "flag": "preserved.arrived",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "clearbay.request"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "clearbay.request",
+              "value": true
+            }
+          ],
+          "next": "clearbay.note-copied"
+        }
+      ]
+    },
+    {
+      "id": "clearbay.note-copied",
+      "speaker": "clearbay-tarin",
+      "text": "Tarin rests a finger on the word “cart”. “That is one visitor and the cart they actually saw. I can carry their request without copying a whole family onto the wall.”",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "clearbay.trials",
+      "speaker": "narrator",
+      "text": "Keep the straight approach marked and slide the model loads along the bay.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Slide the cart template to West without its handler.",
+          "if": {
+            "all": [
+              {
+                "flag": "preserved.arrived",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "clearbay.trial.bare"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "clearbay.trial.bare",
+              "value": true
+            },
+            {
+              "setFlag": "clearbay.preview",
+              "value": "bare"
+            }
+          ]
+        },
+        {
+          "text": "Add the handler and try the cart at West.",
+          "if": {
+            "all": [
+              {
+                "flag": "preserved.arrived",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "clearbay.trial.west"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "clearbay.trial.west",
+              "value": true
+            },
+            {
+              "setFlag": "clearbay.preview",
+              "value": "west"
+            }
+          ]
+        },
+        {
+          "text": "Move the same cart and handler to North.",
+          "if": {
+            "all": [
+              {
+                "flag": "preserved.arrived",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "clearbay.trial.north"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "clearbay.trial.north",
+              "value": true
+            },
+            {
+              "setFlag": "clearbay.preview",
+              "value": "north"
+            }
+          ]
+        },
+        {
+          "text": "Try the hand parcel and handler at West.",
+          "if": {
+            "all": [
+              {
+                "flag": "preserved.arrived",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "clearbay.trial.parcel"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "clearbay.trial.parcel",
+              "value": true
+            },
+            {
+              "setFlag": "clearbay.preview",
+              "value": "parcel"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clearbay.prepare",
+      "speaker": "narrator",
+      "text": "Fit the route notices into two public slots.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Pin both Year 11 entries to the first bell. Place the Year 19 repair below.",
+          "if": {
+            "all": [
+              {
+                "flag": "preserved.arrived",
+                "eq": true
+              },
+              {
+                "all": [
+                  {
+                    "flag": "clearbay.duty",
+                    "eq": true
+                  },
+                  {
+                    "flag": "clearbay.request",
+                    "eq": true
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "flag": "clearbay.trial.bare",
+                    "eq": true
+                  },
+                  {
+                    "flag": "clearbay.trial.west",
+                    "eq": true
+                  },
+                  {
+                    "flag": "clearbay.trial.north",
+                    "eq": true
+                  },
+                  {
+                    "flag": "clearbay.trial.parcel",
+                    "eq": true
+                  }
+                ]
+              },
+              {
+                "not": {
+                  "flagSet": "clearbay.aligned"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "clearbay.aligned",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Chalk the measured handling limit onto both bay cards.",
+          "if": {
+            "all": [
+              {
+                "flag": "preserved.arrived",
+                "eq": true
+              },
+              {
+                "flag": "clearbay.aligned",
+                "eq": true
+              },
+              {
+                "all": [
+                  {
+                    "flag": "clearbay.trial.bare",
+                    "eq": true
+                  },
+                  {
+                    "flag": "clearbay.trial.west",
+                    "eq": true
+                  },
+                  {
+                    "flag": "clearbay.trial.north",
+                    "eq": true
+                  },
+                  {
+                    "flag": "clearbay.trial.parcel",
+                    "eq": true
+                  }
+                ]
+              },
+              {
+                "not": {
+                  "flagSet": "clearbay.chalked"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "clearbay.chalked",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Fold the name behind the witness slip. Keep the wait in view.",
+          "if": {
+            "all": [
+              {
+                "flag": "preserved.arrived",
+                "eq": true
+              },
+              {
+                "flag": "clearbay.aligned",
+                "eq": true
+              },
+              {
+                "all": [
+                  {
+                    "flag": "clearbay.duty",
+                    "eq": true
+                  },
+                  {
+                    "flag": "clearbay.request",
+                    "eq": true
+                  }
+                ]
+              },
+              {
+                "not": {
+                  "flagSet": "clearbay.folded"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "clearbay.folded",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clearbay.publish",
+      "speaker": "narrator",
+      "text": "Choose a loading arrangement while the north crew is available at only the second bell.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Staff wide North at second bell.",
+          "if": {
+            "all": [
+              {
+                "flag": "preserved.arrived",
+                "eq": true
+              },
+              {
+                "all": [
+                  {
+                    "flag": "clearbay.aligned",
+                    "eq": true
+                  },
+                  {
+                    "flag": "clearbay.chalked",
+                    "eq": true
+                  },
+                  {
+                    "flag": "clearbay.folded",
+                    "eq": true
+                  }
+                ]
+              },
+              {
+                "not": {
+                  "flagSet": "clearbay.layout"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "clearbay.layout",
+              "value": "north"
+            }
+          ]
+        },
+        {
+          "text": "Open West for hand parcels at first bell and relay the carts.",
+          "if": {
+            "all": [
+              {
+                "flag": "preserved.arrived",
+                "eq": true
+              },
+              {
+                "all": [
+                  {
+                    "flag": "clearbay.aligned",
+                    "eq": true
+                  },
+                  {
+                    "flag": "clearbay.chalked",
+                    "eq": true
+                  },
+                  {
+                    "flag": "clearbay.folded",
+                    "eq": true
+                  }
+                ]
+              },
+              {
+                "not": {
+                  "flagSet": "clearbay.layout"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "clearbay.layout",
+              "value": "west"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clearbay.north-reader",
+      "speaker": "clearbay-tarin",
+      "text": "Tarin returns at second bell. The cart and its helper fit through North together. Marret has the same crew spot as in the duty entry. A visitor who came early reads the waiting time and puts down their parcel beside the bench.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Hold the measured line while Tarin brings the cart through.",
+          "if": {
+            "all": [
+              {
+                "flag": "preserved.arrived",
+                "eq": true
+              },
+              {
+                "flag": "clearbay.layout",
+                "eq": "north"
+              },
+              {
+                "not": {
+                  "flagSet": "clearbay.checked"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "clearbay.checked",
+              "value": "north"
+            }
+          ],
+          "next": "clearbay.north-after"
+        }
+      ]
+    },
+    {
+      "id": "clearbay.north-after",
+      "speaker": "clearbay-tarin",
+      "text": "The wheels go through with a square left for the helper. Tarin ties a wide-cart tab to North. Early hand parcels wait on the bench until the crew arrives.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "clearbay.west-reader",
+      "speaker": "clearbay-tarin",
+      "text": "Tarin arrives at first bell with a hand parcel. It and the helper fit through West. The cart stays at the relay rack until a porter takes it to North at second bell. “I’m glad my name doesn’t have to get through for my parcel to get through.”",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Pass Tarin’s parcel through and tie the cart to its second-bell ticket.",
+          "if": {
+            "all": [
+              {
+                "flag": "preserved.arrived",
+                "eq": true
+              },
+              {
+                "flag": "clearbay.layout",
+                "eq": "west"
+              },
+              {
+                "not": {
+                  "flagSet": "clearbay.checked"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "clearbay.checked",
+              "value": "west"
+            }
+          ],
+          "next": "clearbay.west-after"
+        }
+      ]
+    },
+    {
+      "id": "clearbay.west-after",
+      "speaker": "clearbay-tarin",
+      "text": "The hand parcel reaches its shelf at first bell. The wide cart has a staffed relay ticket with the measured restriction clipped above it.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH3-CLEAR-BAY",
+      "world": "WORLD-04",
+      "title": "The First Bell at the Cold Store",
+      "stake": "A hand parcel is waiting and a wider cart still needs room. Marret has a handling crew for one bell.",
+      "knowledgeQuestion": "What can today’s measurements and two accounts from the same day each tell a new arrival?",
+      "objectives": [
+        {
+          "id": "clearbay.compare",
+          "title": "Check the two gates and put the first-bell records beside the marks.",
+          "essential": false,
+          "visible": {
+            "flag": "preserved.arrived",
+            "eq": true
+          },
+          "done": {
+            "all": [
+              {
+                "flag": "clearbay.aligned",
+                "eq": true
+              },
+              {
+                "flag": "clearbay.chalked",
+                "eq": true
+              },
+              {
+                "flag": "clearbay.folded",
+                "eq": true
+              }
+            ]
+          },
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "explanation",
+              "perspective",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "perspectives",
+              "methods-and-tools",
+              "ethics"
+            ],
+            "aoks": [
+              "MAT",
+              "HIS"
+            ],
+            "subjects": [
+              "history",
+              "math-ai",
+              "math-aa"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 5
+          }
+        },
+        {
+          "id": "clearbay.use",
+          "title": "Put up a bounded notice and check what Tarin can bring through.",
+          "essential": false,
+          "visible": {
+            "objective": "clearbay.compare"
+          },
+          "done": {
+            "flagSet": "clearbay.checked"
+          },
+          "weave": {
+            "concepts": [
+              "values",
+              "evidence",
+              "justification",
+              "responsibility",
+              "power",
+              "perspective"
+            ],
+            "framework": [
+              "scope",
+              "perspectives",
+              "methods-and-tools",
+              "ethics"
+            ],
+            "aoks": [
+              "MAT",
+              "HIS"
+            ],
+            "subjects": [
+              "history",
+              "math-ai",
+              "math-aa"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication",
+              "social"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 3
+          },
+          "onComplete": [
+            {
+              "journal": "j.clearbay.use"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.clearbay.use",
+      "claimKind": "observation",
+      "text": "I checked both routes with measured loads and matched two accounts from the same first bell. A later repair changed West. Tarin used the handling limit and the public wait on the notice."
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.clearbay.compare.1",
+      "objective": "clearbay.compare",
+      "depth": 1,
+      "text": "The marked bay is near the Cold Store’s middle walk. There are two paper records to the west."
+    },
+    {
+      "id": "h.clearbay.compare.2",
+      "objective": "clearbay.compare",
+      "depth": 2,
+      "text": "Try the same cart with and without its helper. Try the hand parcel at West. Its older margin may have moved."
+    },
+    {
+      "id": "h.clearbay.compare.3",
+      "objective": "clearbay.compare",
+      "depth": 3,
+      "text": "Set the visitor’s first bell next to the duty entry for that same bell. The later repair belongs beneath them."
+    },
+    {
+      "id": "h.clearbay.compare.4",
+      "objective": "clearbay.compare",
+      "depth": 4,
+      "text": "Finish all four trials and check both paper records. At the bay pin the dated records, chalk both current limits and fold the name behind the public wait."
+    },
+    {
+      "id": "h.clearbay.use.1",
+      "objective": "clearbay.use",
+      "depth": 1,
+      "text": "One crew can hold a wide gate at second bell. A hand parcel needs less room."
+    },
+    {
+      "id": "h.clearbay.use.2",
+      "objective": "clearbay.use",
+      "depth": 2,
+      "text": "Both plans can keep the waiting time and the width limit visible."
+    },
+    {
+      "id": "h.clearbay.use.3",
+      "objective": "clearbay.use",
+      "depth": 3,
+      "text": "North takes the wide cart and the helper together. West can take the hand parcel first with a relay for the cart."
+    },
+    {
+      "id": "h.clearbay.use.4",
+      "objective": "clearbay.use",
+      "depth": 4,
+      "text": "Post either notice. Meet Tarin by North’s wide-rail receipt or West’s relay rack. The check ends after they bring a real load through."
+    }
+  ]
+}
