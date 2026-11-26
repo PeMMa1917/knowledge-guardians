@@ -5196,16 +5196,24 @@ export class UI implements UIApi {
       box.append(h('p', {}, 'Marek points to the Mine Map case west of the bench. Read that record before setting out.'), guide);
       return;
     }
+    box.append(h('p', {}, 'The Mine Map records routes and rock colours in Wadi Hammamat. Marek’s practice cart checks how a tall load fares on each model track.'));
     const tracks = h('div', { class: 'nile-tracks' });
     const destinations = h('div', { class: 'nile-deliveries' });
     const showDelivery = () => {
       clear(destinations);
+      const remaining = roads.filter((road) => c.state.flags[`nile.trial.${road}`] !== true);
+      if (!remaining.length) {
+        const { ridge, wash } = NILE_TRIALS;
+        destinations.append(h('p', {},
+          `Both runs used the tall crate. On the wide wash the cart took ${wash.turns - ridge.turns} more turns and the crate stayed upright. It tipped at the ridge turn. Use these practice runs for Marek’s delivery.`));
+      }
       const choice = c.state.flags['nile.routeLead'] as NileDelivery | undefined;
       if (choice) {
         const r = NILE_DELIVERIES[choice];
         destinations.append(h('h3', {}, 'Your delivery tag'), h('strong', {}, r.name), h('p', {}, r.line));
       } else if (c.state.cards.includes('card.nile.model')) {
-        destinations.append(h('h3', {}, 'Tie on a delivery tag'), h('p', {}, 'Send the cast after a quick note, or send a paper copy and keep the heavy cast here.'),
+        destinations.append(h('h3', {}, 'Tie on a delivery tag'),
+          h('p', {}, 'Send the cast when the Nexus reader needs to check weight or texture. Send the paper copy when the image needs to reach the reader with the note.'),
           ...(['cast', 'copy'] as const).map((id) => h('button', { type: 'button', class: 'primary', onclick: () => {
             if (!c.dispatch({ type: 'NileDelivery', choice: id }).some((e) => e.kind === 'error')) {
               live.textContent = NILE_DELIVERIES[id].line;
@@ -5214,9 +5222,9 @@ export class UI implements UIApi {
             }
           } }, NILE_DELIVERIES[id].name)));
       } else {
-        const remaining = roads.filter((road) => c.state.flags[`nile.trial.${road}`] !== true);
-        destinations.append(h('p', { role: 'status' }, remaining.length === 1
-          ? `Run the cart on the ${remaining[0]} to open the delivery tags.`
+        const next = remaining[0];
+        destinations.append(h('p', { role: 'status' }, next && remaining.length === 1
+          ? `Run the cart on the ${next} to open the delivery tags. Keep the tall crate in place for the comparison.`
           : 'Run the cart on both roads to open the delivery tags.'));
       }
       destinations.querySelector('h3')?.setAttribute('tabindex', '-1');
@@ -5228,7 +5236,11 @@ export class UI implements UIApi {
       const fill = () => { result.textContent = c.state.flags[`nile.trial.${road}`] ? `${r.turns} turns. ${r.line}` : 'Waiting for a run.'; };
       fill();
       tracks.append(h('section', {}, h('h3', {}, r.name), track, result, h('button', { type: 'button', onclick: () => {
-        if (c.dispatch({ type: 'NileRouteTrial', road }).some((e) => e.kind === 'error')) return;
+        const failure = c.dispatch({ type: 'NileRouteTrial', road }).find((e) => e.kind === 'error');
+        if (failure?.kind === 'error') {
+          live.textContent = failure.message;
+          return;
+        }
         track.classList.remove('rolling');
         if (!ctx.settings.reducedMotion) requestAnimationFrame(() => track.classList.add('rolling'));
         else track.classList.add('rolling');

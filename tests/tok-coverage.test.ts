@@ -584,7 +584,9 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
 type NileFirstLead = 'workers' | 'reading-window' | 'borrowed-mark' | 'lamp-slip' | 'closing-peg' | 'royal-seal';
 
 function nileWorkersLead(route: Route, lead: Exclude<NileFirstLead, 'royal-seal'>, entryMinutes: number): void {
-  route.at(15 + entryMinutes, 'Follow the scribe’s record and decide what to put in front', ['evidence', 'power', 'perspective', 'interpretation', 'perspectives'], (d) => {
+  route.at(15 + entryMinutes, 'Check the entry for the crew’s grain provisions against the later stoppage and choose which slip leads', [
+    'evidence', 'power', 'perspective', 'interpretation', 'truth', 'certainty', 'culture', 'perspectives', 'scope', 'methods-and-tools',
+  ], (d) => {
     useDoor(d, 'nile-workers');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-STRIKE' });
     for (const node of ['delay', 'payment', 'return']) d.run({ type: 'FollowThread', thread: 'nile-strike', node });
@@ -717,7 +719,9 @@ function nileDispatch(lead: NileFirstLead = 'workers', mapStop?: 'tilt-tray' | '
       expect(d.done('nile.way.publish')).toBe(true);
     });
   }
-  route.at(27 + extra, 'Compare two model roads and choose what travels', ['objectivity', 'explanation', 'values', 'justification', 'scope', 'methods-and-tools'], (d) => {
+  route.at(27 + extra, 'Compare two fixed-load runs and decide what form of evidence travels', [
+    'objectivity', 'explanation', 'values', 'justification', 'evidence', 'certainty', 'scope', 'methods-and-tools',
+  ], (d) => {
     if (!mapStop) enterMapRoom(d);
     d.run({ type: 'NileRouteTrial', road: 'ridge' });
     d.run({ type: 'NileRouteTrial', road: 'wash' });

@@ -10,6 +10,8 @@ Lumen now remembers more than one place where a Guardian used a concept. After a
 
 The Observatory correction lends one signed catch to the quay cutters or the basket crews. That crew can fit a dated blank at its own hook for the next field check. The other crew can submit through Ruan. The three executable Observatory traces now meet the 20- and 30-minute opportunity floors across their estimated routes. [Learning design](docs/LEARNING_DESIGN.md)
 
+The Nile workmen’s thread puts the grain delivery beside the later stoppage before Leila asks which slip should lead. Marek’s cart bench keeps the next road in view, displays the two fixed-load results together, and names what each kind of delivery lets a Nexus reader check. [Timing audit](docs/LEARNING_DESIGN.md#the-30-minute-design-audit)
+
 At Sefa’s market table, matching two cut edges restores a field observation and its limit. Sending the completed slip to the guild or the ferry changes what the next reader can do. The desk receipt also enters the Guardian’s diary. [Dispatch tests](tests/sefa-dispatch.test.ts)
 
 At the Cold Store, fitting a cart and its handler changes how an old first-bell notice can be used. In Emberford, tracing two notices to the same press changes what a runner will carry. Both routes record the supplied skill when the player completes the relevant work. [Cold Store](tests/clear-bay.test.ts) · [Emberford](tests/circular-report.test.ts)

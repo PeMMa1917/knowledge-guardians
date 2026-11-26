@@ -332,7 +332,7 @@
      "map": "nile.workyard",
      "x": 12,
      "y": 7,
-     "text": "A delivery of grain followed a protest. Lay a marker here. A delivery answers one demand at one time."
+     "text": "A later entry records a grain delivery. Grain was part of the crew’s regular provisions. Lay a marker for that delivery."
     },
     {
      "id": "return",
@@ -340,7 +340,7 @@
      "map": "nile.workyard",
      "x": 19,
      "y": 7,
-     "text": "The scribe records a further stoppage. Keep the payment in your chain, but do not put “case closed” after it."
+     "text": "The scribe records a further stoppage after the grain delivery. Keep both marks in order. The record still shows a dispute after the payment."
     }
    ],
    "gap": {
@@ -1167,7 +1167,7 @@
   {
    "id": "nile.workers-ready",
    "speaker": "nile-leila",
-   "text": "I’m copying two slips from the workmen’s record. The first will face the corridor; the other stays right beside it. Which one should visitors meet first?",
+   "text": "The grain entry shows when provisions came. The later stoppage shows that the dispute was still open. I’ll keep both slips together. Which one should face the corridor?",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -5097,6 +5097,10 @@
        "responsibility",
        "power"
       ],
+      "framework": [
+       "perspectives",
+       "ethics"
+      ],
       "atl": [
        "thinking",
        "research"
@@ -5452,7 +5456,15 @@
      "weave": {
       "concepts": [
        "interpretation",
-       "certainty"
+       "certainty",
+       "evidence",
+       "justification",
+       "perspective"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "perspectives"
       ],
       "atl": [
        "thinking",
@@ -5513,7 +5525,17 @@
      "weave": {
       "concepts": [
        "perspective",
-       "evidence"
+       "evidence",
+       "interpretation",
+       "truth",
+       "certainty",
+       "culture",
+       "power"
+      ],
+      "framework": [
+       "perspectives",
+       "scope",
+       "methods-and-tools"
       ],
       "atl": [
        "thinking",
@@ -5632,7 +5654,15 @@
      "weave": {
       "concepts": [
        "objectivity",
-       "certainty"
+       "certainty",
+       "evidence",
+       "explanation",
+       "justification",
+       "values"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
       ],
       "atl": [
        "thinking",
@@ -5640,7 +5670,8 @@
       ],
       "aoks": [
        "HIS",
-       "NAT"
+       "NAT",
+       "TEC"
       ],
       "subjects": [
        "geography",
