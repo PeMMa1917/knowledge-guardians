@@ -18,7 +18,7 @@ import { join, resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { pathToFileURL } from 'node:url';
 import { smokeCollections } from './smoke-collections.mjs';
-import { smokeCallboardReader, smokeFerryFocus, smokeNavigation, smokePortalReturn, smokeWallRealtime } from './smoke-navigation.mjs';
+import { smokeCallboardReader, smokeFerryFocus, smokeInteractionEscape, smokeNavigation, smokePortalReturn, smokeWallRealtime } from './smoke-navigation.mjs';
 import { smokeGuidance } from './smoke-guidance.mjs';
 
 const [url, directory = '.', mode = 'all'] = process.argv.slice(2);
@@ -524,7 +524,10 @@ try {
   if (mode === 'stress') await smokeNavigation(browser, { press, until }, maps);
   if (mode === 'portal') await smokePortalReturn(browser, { until });
   if (mode === 'cast' || mode === 'stress') await smokeCallboardReader(browser, { press, until });
-  if (mode === 'focus') await smokeFerryFocus(browser, { until });
+  if (mode === 'focus') {
+    await smokeFerryFocus(browser, { until });
+    await smokeInteractionEscape(browser, { until });
+  }
   if (mode === 'soak') await smokeWallRealtime(browser, { until });
   if (mode === 'guidance') await smokeGuidance(browser, { button, press, until });
   if (mode === 'events') {

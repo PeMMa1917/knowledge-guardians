@@ -300,6 +300,48 @@ export async function smokeFerryFocus(browser, { until }) {
   }
 }
 
+export async function smokeInteractionEscape(browser, { until }) {
+  await browser.evaluate(() => {
+    const { controller, settings, world } = window.kg;
+    settings.reducedMotion = true;
+    controller.dispatch({ type: 'SetFlag', flag: 'rook.joined', value: true });
+    controller.dispatch({ type: 'SetFlag', flag: 'loyalty.rook', value: 'family' });
+    world.changeMap('water.lower-channel', 10, 11);
+  });
+  await until(() => browser.evaluate(() => window.kg.world.map.id === 'water.lower-channel' &&
+    !window.kg.world.transitioning), 'the completed Clean Well');
+
+  // One page task guarantees that Phaser sees every key before its next queue flush.
+  for (const [key, code, keyCode, journalOpen] of [
+    ['e', 'KeyE', 69, false], [' ', 'Space', 32, false], ['Enter', 'Enter', 13, false], ['e', 'KeyE', 69, true],
+  ]) {
+    const trial = await browser.evaluate(({ key, code, keyCode, journalOpen }) => {
+      const { ui, world } = window.kg;
+      world.player.facing = 'up';
+      world.updateTarget();
+      if (world.target?.obj?.id !== 'loyalty-rook') throw new Error('Expected to face the Clean Well');
+      if (journalOpen) ui.openJournal();
+      const dispatch = (type, key, code, keyCode) => {
+        const event = new KeyboardEvent(type, { bubbles: true, cancelable: true, key, code, keyCode });
+        Object.defineProperty(event, 'keyCode', { value: keyCode });
+        (document.activeElement ?? document.body).dispatchEvent(event);
+      };
+      const modal = () => document.querySelector('[role="dialog"]')?.getAttribute('aria-label') ?? null;
+      dispatch('keydown', key, code, keyCode);
+      dispatch('keyup', key, code, keyCode);
+      const opened = modal();
+      dispatch('keydown', 'Escape', 'Escape', 27);
+      dispatch('keyup', 'Escape', 'Escape', 27);
+      return { opened, remaining: modal(), frame: world.game.loop.frame };
+    }, { key, code, keyCode, journalOpen });
+    if (trial.opened !== (journalOpen ? 'Journal' : 'The Clean Well') || trial.remaining !== null) {
+      throw new Error('Escape replayed an interaction key: ' + JSON.stringify({ key, journalOpen, ...trial }));
+    }
+    await until(() => browser.evaluate((frame) => window.kg.world.game.loop.frame > frame, trial.frame), 'keyboard queue flush');
+  }
+  console.log('PASS same-frame Escape closes the result for E, Space and Enter, including an interaction first received in the Journal.');
+}
+
 async function holdAgainstEdge(browser, press, { x, y, direction }, mapId) {
   const labels = { LEFT: ['ArrowLeft', 37], UP: ['ArrowUp', 38], RIGHT: ['ArrowRight', 39], DOWN: ['ArrowDown', 40] };
   const [key, code] = labels[direction];

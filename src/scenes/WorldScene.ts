@@ -61,6 +61,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private lumen!: Phaser.GameObjects.Image;
   private lumenGlow!: Phaser.GameObjects.Image;
   private keys!: Record<string, Phaser.Input.Keyboard.Key>;
+  private readonly handledInteractEvents = new WeakSet<KeyboardEvent>();
   private playerSheet = 'player-a';
   private path: { x: number; y: number }[] = [];
   private pendingInteract: { run: () => void; actor?: Actor } | null = null;
@@ -122,6 +123,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.keys = kb.addKeys({ W: km.up, A: km.left, S: km.down, D: km.right, E: km.interact, UP: 'UP', DOWN: 'DOWN', LEFT: 'LEFT', RIGHT: 'RIGHT', SPACE: 'SPACE', ENTER: 'ENTER' }) as Record<string, Phaser.Input.Keyboard.Key>;
     kb.addCapture('UP,DOWN,LEFT,RIGHT,SPACE');
     const interactKey = (_key: Phaser.Input.Keyboard.Key, event: KeyboardEvent) => {
+      // Phaser can deliver the same DOM event again when more keys arrive before the next frame.
+      if (this.handledInteractEvents.has(event)) return;
+      this.handledInteractEvents.add(event);
       if (!event.repeat && !this.paused && !ctx.ui.isModalOpen()) this.tryInteract();
     };
     this.keys.E.on('down', interactKey); this.keys.SPACE.on('down', interactKey); this.keys.ENTER.on('down', interactKey);
