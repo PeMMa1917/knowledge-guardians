@@ -20,7 +20,10 @@ The art direction is "rich, colourful pixel art with lighting", inspired in gene
 | `art/generated/voices_tiles.png` | [Archive of Voices tile generator](tools/make_voices_tiles.py) | Knowledge Guardians project | CC0 1.0 | Original listening screens, Glass Walk and Lamp Quay. |
 | `art/generated/island_tiles.png` | [Island tile generator](tools/make_island_tiles.py) | Knowledge Guardians project | CC0 1.0 | Original workshop model, landings, boardwalks and habitat margin. |
 | `art/generated/council_tiles.png` | [Council tile generator](tools/make_council_tiles.py) | Knowledge Guardians project | CC0 1.0 | Original Time Hall scales, Letter Gallery niches and Bell Rail. |
-| `specimens/cma-*.jpg` | [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access) | The Cleveland Museum of Art | CC0 1.0 | Reduced for download and rendered in the game’s pixel style. The manifest links each exact object and source photograph. |
+| Collection images from Cleveland in `specimens/` | [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access) | The Cleveland Museum of Art | CC0 1.0 | Reduced for download and rendered in the game’s pixel style. |
+| Collection images from The Met in `specimens/` | [The Met Open Access](https://www.metmuseum.org/hubs/open-access) | The Metropolitan Museum of Art | CC0 1.0 | The manifest links the accession and exact source image for each file. |
+| Smithsonian collection images in `specimens/` | [Smithsonian Open Access](https://www.si.edu/openaccess) | Smithsonian Institution | CC0 1.0 | Images with documented open rights in the National Museum of Asian Art, National Museum of African Art and National Museum of Natural History collections. |
+| Yale Peabody collection image in `specimens/` | [Yale Peabody Museum specimen and image record](https://api.gbif.org/v1/occurrence/1039401135) | Marilyn Fox, Yale Peabody Museum | CC0 1.0 | The manifest links the museum accession, image and rights evidence. |
 
 Other art is **original** and drawn in code: exhibit pedestals, the evidence board, the blade, the catalogue, the assay table, the anvil, the portal, the fairy guide Lumen, icons and the large inspection pictures. See `src/ui/illustrations.ts`. Lighting, particles and glow are made in code too.
 
@@ -65,4 +68,4 @@ All sound effects were converted to mono 96 kbit/s MP3 with ffmpeg. The sound di
 
 ## Historical sources
 
-The historical sources for the real objects in the game are in [docs/SOURCES.md](docs/SOURCES.md) and in `src/content/sources.json`. The game shows text about these objects and links to the records. It does not include photographs from the museums.
+The historical sources for the real objects in the game are in [docs/SOURCES.md](docs/SOURCES.md) and in the chapter content. The game uses original pixel drawings and transforms collection images released under verified open licences. The Polar Store’s exact accession illustrations are original drawings based on catalogue descriptions. Per-image rights, catalogue and download links are in [the asset manifest](public/assets/credits.json).

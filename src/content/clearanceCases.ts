@@ -3,10 +3,7 @@ import objects from './clearance-specimens.json';
 
 const COLLECTION = 'Cleveland Museum of Art';
 const ARCHIVE = 'https://clevelandart.org/art';
-export const NEAR_RAIL = 18;
-export const WIDE_RAIL = 42;
 export const CLEARANCE_GROUP = 'collection-clearance';
-export type Rail = 'near' | 'wide';
 
 export const CLEARANCE_CASES = objects.map((record) => ({
   ...record,
@@ -17,12 +14,6 @@ export const CLEARANCE_CASES = objects.map((record) => ({
   objective: `clearance.${record.slug}.heard`,
 }));
 export type ClearanceCase = (typeof CLEARANCE_CASES)[number];
-
-export function compareRail(span: number, rail: Rail) {
-  const aperture = rail === 'near' ? NEAR_RAIL : WIDE_RAIL;
-  const scale = Math.min(1, aperture / span);
-  return { aperture, scale };
-}
 
 const objectives: Objective[] = CLEARANCE_CASES.map((record) => ({
   id: record.objective,
@@ -99,6 +90,7 @@ export const clearanceContent = {
     knowledgeQuestion: 'What can a drawn outline let someone check about the object it represents?',
     available: { objective: 'preserved.publish' },
     objectives,
+    caseVisits: objectives.map(({ id }) => [id]),
   }],
   journal: CLEARANCE_CASES.map((record) => ({
     id: `j.${record.flag}`,

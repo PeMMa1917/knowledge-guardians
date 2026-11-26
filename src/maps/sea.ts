@@ -1,6 +1,8 @@
 /** Fictional island charts, drawn for the Seagrass Steps and Shoal Shelf surveys. */
 import type { Condition } from '../domain/types';
+import { SEA_DATE_PEG_DOOR, SEA_DATE_PEG_READERS, SEA_DATE_PEG_RECEIVERS } from './datePeg';
 import { SEA_PAPER_LANDING } from './paperLanding';
+import { SEA_RELAY_CHART_RECEIVER, SEA_RELAY_ENTRANCE, SEA_RELAY_HARBOUR_RECEIVER } from './specimenRelay';
 import type { Interactable, MapDef } from './types';
 
 function crossing(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'sea.waypost'): Interactable {
@@ -32,7 +34,7 @@ export const SEA_HARBOUR: MapDef = {
   width: harbourWidth, height: harbourHeight, music: 'music.town', ambience: 'town',
   background: 0x28566c, floor: harbourFloor,
   spawn: { x: 12, y: 12 }, blocks: [], zones: [],
-  npcs: [{ id: 'sea-harbourkeeper', x: 14, y: 8, facing: 'down' }],
+  npcs: [{ id: 'sea-harbourkeeper', x: 14, y: 8, facing: 'down' }, ...SEA_DATE_PEG_READERS],
   stamps: [
     { stamp: 'house-b', x: 2, y: 1 }, { stamp: 'house-a', x: 11, y: 1 },
     { stamp: 'tower', x: 20, y: 0 }, { stamp: 'stall', x: 20, y: 5 },
@@ -43,6 +45,8 @@ export const SEA_HARBOUR: MapDef = {
   ],
   interactables: [
     ...SEA_PAPER_LANDING,
+    SEA_RELAY_HARBOUR_RECEIVER,
+    ...SEA_DATE_PEG_RECEIVERS,
     { id: 'cross-drowned-bell', kind: 'fieldgame', game: 'cross-drowned-bell', x: 8, y: 8, w: 1, h: 1, label: 'the old pier where the bell is said to ring (a crossing)', art: 'sea.margin' },
     crossing('sea-chartroom-path', 7, 4, 'the path to Lantern House', { map: 'sea.chartroom', x: 12, y: 12 }),
     crossing('sea-shoal-path', 24, 12, 'the skiff to Shoal Shelf', { map: 'sea.shoal', x: 6, y: 12 }, 'sea.skiff'),
@@ -132,6 +136,8 @@ export const SEA_CHARTROOM: MapDef = {
     { stamp: 'rug-green', x: 11, y: 9 },
   ],
   interactables: [
+    SEA_DATE_PEG_DOOR,
+    SEA_RELAY_ENTRANCE, SEA_RELAY_CHART_RECEIVER,
     crossing('sea-chartroom-return', 12, 15, 'the path back to Seagrass Steps', { map: 'sea.harbour', x: 7, y: 6 }),
     crossing('sea-chartroom-to-shoal', 24, 8, 'the lower skiff stair to Shoal Shelf', { map: 'sea.shoal', x: 6, y: 8 }, 'sea.skiff'),
     { id: 'sea-name-canoe', kind: 'exhibit', exhibit: 'OBJ-SEA-RRA-00001826', x: 9, y: 5, w: 1, h: 1, walkThrough: true,

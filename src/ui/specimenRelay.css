@@ -1,0 +1,23 @@
+.specimen-relay .relay-cord,
+.specimen-relay .relay-trials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: .65rem;
+  margin-block: .75rem;
+}
+.specimen-relay .relay-cord {
+  padding-top: .45rem;
+  border-top: .22rem double currentColor;
+}
+.specimen-relay .relay-clip {
+  display: grid;
+  gap: .25rem;
+  padding: .5rem .75rem;
+  margin-block: .35rem;
+  border: 1px solid currentColor;
+  border-inline-start-width: .26rem;
+  overflow-wrap: anywhere;
+}
+.specimen-relay .relay-detail { border-inline-start-style: double; }
+.specimen-relay .relay-action-status:empty { margin: 0; }
+.specimen-relay button { white-space: normal; }

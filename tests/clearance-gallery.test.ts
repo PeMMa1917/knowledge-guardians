@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { CLEARANCE_CASES, compareRail } from '../src/content/clearanceCases';
+import { CLEARANCE_CASES } from '../src/content/clearanceCases';
+import { compareRail } from '../src/domain/clearance';
 import { MAPS } from '../src/maps';
 import { CLEARANCE_DOOR, CLEARANCE_GALLERY } from '../src/maps/clearanceGallery';
 import { check } from '../src/domain/rules';

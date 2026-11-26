@@ -179,6 +179,12 @@ export function validateContent(pack: ContentPack): string[] {
   });
   pack.missions.forEach((m) => {
     dup('mission', m.id);
+    if (m.caseVisits) {
+      const optional = new Set(m.objectives.filter((o) => !o.essential).map(({ id }) => id));
+      if (!m.caseVisits.length || m.caseVisits.some((visit) => !visit.length || new Set(visit).size !== visit.length || visit.some((id) => !optional.has(id)))) {
+        p.push(`mission ${m.id}: every modeled case visit needs distinct optional objectives from that mission`);
+      }
+    }
     m.objectives.forEach((o) => {
       const ways = o.kq ? [o.kq, ...(o.questionWays ?? [])] : o.questionWays ?? [];
       for (const way of ways) if (!pack.questions.some((q) => q.id === way.id)) p.push(`objective ${o.id}: unknown knowledge question ${way.id}`);

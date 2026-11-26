@@ -92,8 +92,8 @@ function wants(style: PlayStyle, key: string): boolean {
 
 const chapterOf = (m: Mission): number => Number(/^KG-CH(\d+)-/.exec(m.id)?.[1] ?? 0);
 
-/** The estimated order of play for one style. */
-export function playPath(pack: ContentPack, style: PlayStyle): PathStep[] {
+/** The estimated order of play for one style. Select a case visit, or follow every optional case. */
+export function playPath(pack: ContentPack, style: PlayStyle, caseVisit: number | 'all' = 0): PathStep[] {
   const objById = new Map<string, Objective>();
   for (const m of pack.missions) for (const o of m.objectives) objById.set(o.id, o);
   const out: PathStep[] = [];
@@ -110,7 +110,16 @@ export function playPath(pack: ContentPack, style: PlayStyle): PathStep[] {
       inferredFramework: o.weave?.framework === undefined,
     });
   };
-  const addMission = (mid: string, ch: number, all = false) => { const m = pack.missions.find((x) => x.id === mid); if (m) for (const o of m.objectives) if (all || o.essential || !m.objectives.some((x) => x.essential)) addObj(o.id, ch); };
+  const addMission = (mid: string, ch: number, all = false) => {
+    const m = pack.missions.find((x) => x.id === mid);
+    if (!m) return;
+    const visits = m.caseVisits ?? [];
+    const visit = caseVisit === 'all' || !visits.length ? undefined : visits[caseVisit % visits.length];
+    if (visit) for (const id of visit) addObj(id, ch);
+    const independent = new Set(visit ? visits.flat() : []);
+    const required = m.objectives.some((o) => o.essential);
+    for (const o of m.objectives) if (!independent.has(o.id) && (all || o.essential || !required)) addObj(o.id, ch);
+  };
   const addOptional = (ch: number) => {
     for (const [key, c] of Object.entries(OPTIONAL_CHAPTER)) if (c === ch && wants(style, key)) {
       const l = LEARN[key];

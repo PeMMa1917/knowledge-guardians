@@ -5,6 +5,7 @@ import type { Interactable, MapDef } from './types';
 import { STAGE_FOYER_BACKBILL, STAGE_GALLERY_BACKBILL } from './backbill';
 import { STAGE_FOYER_FRAMES, STAGE_GALLERY_FRAMES, STAGE_REHEARSAL_FRAMES } from './frames';
 import { CUE_FRAME_READER, MOTION_FRAME_READER, STAGE_FILM_FOYER, STAGE_FILM_GALLERY, STAGE_FILM_REHEARSAL } from './filmCuts';
+import { specimenWorkEntrance, specimenWorkReadbacks } from './specimenWork';
 
 type TheatreRoom = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'stamps' | 'interactables' | 'lights'>;
@@ -150,6 +151,8 @@ export const STAGE_GALLERY = room({
   interactables: [
     ...STAGE_GALLERY_BACKBILL,
     ...GALLERY_SEAM,
+    specimenWorkEntrance('stage'),
+    ...specimenWorkReadbacks('stage'),
     ...STAGE_GALLERY_FRAMES,
     STAGE_FILM_GALLERY,
     door('stage-gallery-return', 11, 16, 'the passage back to the foyer', { map: 'stage.foyer', x: 22, y: 5 }),

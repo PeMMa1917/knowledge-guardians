@@ -237,6 +237,8 @@ export interface Mission {
   stake?: string;
   objectives: Objective[];
   available?: Condition;
+  /** Independent case sequences for the timed design audit. Other objectives remain on each visit. */
+  caseVisits?: string[][];
 }
 
 export interface CreditCriterion {

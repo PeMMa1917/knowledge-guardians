@@ -1,4 +1,5 @@
 import { createServer } from 'vite';
+import { existsSync, readFileSync } from 'node:fs';
 
 const server = await createServer({
   configFile: false,
@@ -9,8 +10,12 @@ try {
   const { buildPack } = await server.ssrLoadModule('/src/content/index.ts');
   const { MAPS } = await server.ssrLoadModule('/src/maps/index.ts');
   const { validateContent } = await server.ssrLoadModule('/src/domain/validate.ts');
+  const { artKeys, BIG_ART } = await server.ssrLoadModule('/src/ui/illustrations.ts');
   const pack = buildPack();
   const errors = validateContent(pack);
+  const authoredArt = new Set(artKeys());
+  const manifest = JSON.parse(readFileSync('public/assets/credits.json', 'utf8'));
+  const illustrations = new Map();
   const physical = new Map();
   for (const map of Object.values(MAPS)) {
     for (const prop of map.interactables) {
@@ -25,6 +30,13 @@ try {
     const found = physical.get(record.id) ?? [];
     const sites = new Set(found.map(({ map, x, y }) => `${map}|${x}|${y}`));
     if (sites.size !== 1) errors.push(`${specimen.key}: expected one physical exhibit, saw ${sites.size}`);
+    const picture = specimen.pixelAsset ?? BIG_ART[record.art] ?? record.art;
+    const earlier = illustrations.get(picture);
+    if (earlier) errors.push(`${specimen.key}: its image is also registered to ${earlier}`);
+    illustrations.set(picture, specimen.key);
+    if (specimen.pixelAsset) {
+      if (!manifest.files[picture] || !existsSync(`public/assets/${picture}`)) errors.push(`${specimen.key}: missing licensed local image ${picture}`);
+    } else if (!authoredArt.has(picture)) errors.push(`${specimen.key}: missing original illustration ${picture}`);
     return {
       ...specimen,
       exhibit: record.id,

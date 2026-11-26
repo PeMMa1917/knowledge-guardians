@@ -46,6 +46,16 @@ describe('the 30-minute design audit along play-style paths', () => {
     story: 160, social: 356, explorer: 667, puzzler: 260, cozy: 342,
   };
 
+  it('keeps alternative museum visits in the full route and audits distinct explorer itineraries', () => {
+    const take = (visit: number | 'all') => playPath(pack, 'explorer', visit).filter(({ id }) => id.startsWith('clearance.'));
+    expect(take(0).map(({ id }) => id)).toEqual(['clearance.recuay-vessel.heard']);
+    expect(take(1).map(({ id }) => id)).toEqual(['clearance.amenemope-paint-box.heard']);
+    expect(take('all')).toHaveLength(5);
+    const complete = auditPath(playPath(pack, 'explorer', 'all'));
+    expect(complete.firstWindow?.missing).toEqual([]);
+    if (import.meta.env.MODE === 'tok-report') console.log(`Explorer with all filed cases (${complete.minutes} estimated minutes, ${complete.gapMinutes} with a trailing-window gap)`);
+  });
+
   it('counts a step at its estimated completion and finds gaps between completions', () => {
     const covered = CONCEPTS.filter((concept) => concept !== 'culture');
     const report = auditPath([

@@ -1,6 +1,7 @@
 /** The Living Forest field exercise takes place in a fictional woodland. */
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
+import { FERN_FIELD_RECEIVER, FERN_RECORD_DOOR } from './fernRecordRoom';
 import { carriedFrame } from './sharedCarry';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>): Interactable {
@@ -98,6 +99,7 @@ export const FOREST_STATION: MapDef = {
   interactables: [
     door('forest-trail-path', 3, 8, 'the path to the listening trail', { map: 'forest.trail', x: 4, y: 14 }),
     door('forest-community-path', 23, 8, 'the path to the bridge clearing', { map: 'forest.community', x: 12, y: 12 }),
+    FERN_RECORD_DOOR,
     { ...door('forest-nexus-return', 12, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 25, y: 16 }), art: 'preserved.door' },
     { id: 'forest-station-waystone', kind: 'waystone', x: 15, y: 12, w: 1, h: 1,
       label: 'the station Waystone', place: 'Fern Station', art: 'waystone' },
@@ -269,7 +271,10 @@ export const FOREST_COMMUNITY: MapDef = {
   width: 24, height: 16, music: 'music.town', ambience: 'town', background: 0x2a4030,
   floor: grassyFloor(24, 16, (x, y) => (y >= 9 && y <= 11) || (x >= 10 && x <= 14 && y >= 6)),
   spawn: { x: 12, y: 12 }, blocks: [], zones: [],
-  npcs: [{ id: 'forest-steward', x: 12, y: 6, facing: 'down' }],
+  npcs: [
+    { id: 'forest-steward', x: 12, y: 6, facing: 'down' },
+    { id: 'fern-record-lio', x: 19, y: 11, facing: 'left', visibleIf: forestArrived },
+  ],
   stamps: [
     { stamp: 'house-a', x: 2, y: 1 }, { stamp: 'house-b', x: 17, y: 1 },
     { stamp: 'long-table', x: 3, y: 7 }, { stamp: 'bench', x: 18, y: 7 },
@@ -280,6 +285,7 @@ export const FOREST_COMMUNITY: MapDef = {
   interactables: [
     door('forest-community-back', 12, 14, 'the path back to Fern Station', { map: 'forest.station', x: 22, y: 8 }),
     door('forest-bridge-to-trail', 22, 11, 'the path back to the ridge', { map: 'forest.trail', x: 28, y: 12 }),
+    ...FERN_FIELD_RECEIVER,
     carriedFrame('forest', 'start', 3, 10, 'Ayla’s rain-mark frame on the first trestles'),
     carriedFrame('forest', 'turn', 12, 11, 'the rain-mark frame at the bend'),
     carriedFrame('forest', 'shelf', 20, 9, 'the rain-mark frame at the covered shelf'),

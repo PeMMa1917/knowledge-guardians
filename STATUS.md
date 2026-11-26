@@ -6,6 +6,10 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
+The 26 November 2026 collection checkpoint registers 91 exact dated specimens with one physical display, a source and a playable objective for each. The new routes include changing a lantern’s view across twelve documented works, sending a comparison to one of two readers, checking a handover after a gust, fitting a polar load, and preparing a workshop demonstration. The target is 750 registered specimens. Run `node tools/audit-specimens.mjs` to inspect the current count and `node tools/audit-specimens.mjs --release` to check the publication target.
+
+The checkpoint passed 1,009 tests, the production build and the credit check for 108 assets. Chromium loaded and walked all 68 registered maps. The Half-Light Room test began from a fresh title screen, earned the Nexus introduction and opened all twelve exhibits. It checked the two light positions for each work, both readers, and reuse of the checked copy in the City of Copies. The City arrival and prior revision were staged for the last check. The inspection and handover controls were tested at 390 px and 175% text size.
+
 Fifteen chapters and the post-Council return are playable. A clean install, 952 tests, production build and 42-file asset check passed. A continuous Chromium run reached the Council ending on one fresh save using normal chapter gates. Several individual branch checks used staged earlier progress or within-room positioning. The thirty-minute audit uses author estimates. [Browser checks](docs/BROWSER_CHECKS.md) · [Playtest priorities](docs/PLAYTEST_PRIORITIES.md)
 
 - Vesper can return to repair a public warning. The player checks a signed or staffed arrangement and sees the result at a different place. The debate at the bench gives both sides a source and requires a listener’s readback before the signed minute travels.

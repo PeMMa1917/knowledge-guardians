@@ -693,6 +693,21 @@
         ],
         "game": 179,
         "story": 112
+      },
+      {
+        "objective": "asia.loft.compare",
+        "action": "Turn two kinds of exhibit strip and move each berth name to the row for its own trial, or clip a per-circuit tab to each count. Read the copy made by the chosen edit.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "reading",
+          "analytical"
+        ],
+        "game": 179,
+        "story": 112
       }
     ]
   },
@@ -729,6 +744,21 @@
         ],
         "game": 252,
         "story": 106
+      },
+      {
+        "objective": "asia.loft.outcome",
+        "action": "Check Nellin’s installed bay to see whether its copy prompted a crew to split a load or helped a visitor trace the tally. Bring that bay’s own notice back to Quiet Margin.",
+        "styles": [
+          "helper",
+          "companion"
+        ],
+        "modes": [
+          "spatial",
+          "social",
+          "reading"
+        ],
+        "game": 179,
+        "story": 112
       }
     ]
   },

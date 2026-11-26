@@ -1,5 +1,6 @@
 import type { GameController } from '../app/controller';
-import { CLEARANCE_CASES, compareRail, type ClearanceCase, type Rail, WIDE_RAIL } from '../content/clearanceCases';
+import { CLEARANCE_CASES, type ClearanceCase } from '../content/clearanceCases';
+import { compareRail, type Rail, WIDE_RAIL } from '../domain/clearance';
 import { h } from './dom';
 import './clearanceGallery.css';
 

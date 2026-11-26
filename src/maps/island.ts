@@ -7,6 +7,7 @@ import { ISLAND_DOCK_FRAMES, ISLAND_WORKSHOP_FRAMES } from './frames';
 import { ISLAND_SKIFF_LAUNCH, ISLAND_SKIFF_RECEIVERS } from './islandSkiff';
 import { ISLAND_WATER_LOOP, MARGIN_WATER_LOOP } from './waterLoop';
 import { ISLAND_INCENTIVE_DOCK, ISLAND_INCENTIVE_WORKSHOP } from './civicIncentive';
+import { LABEL_LOFT_OUTSIDE } from './asiaLabelLoft';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'island.waypost'): Interactable {
   return { id, kind: 'door', x, y, w: 1, h: 1, label, to, art };
@@ -192,6 +193,7 @@ export const ISLAND_MARGIN: MapDef = {
       { visibleIf: { flag: 'island.margin.log', eq: true } }),
     ...ISLAND_SKIFF_RECEIVERS,
     ...MARGIN_WATER_LOOP,
+    ...LABEL_LOFT_OUTSIDE,
   ],
   lights: [
     { x: 12, y: 10, r: 72, color: 0xf1d9a4 }, { x: 18, y: 11, r: 71, color: 0xcee1b4 },

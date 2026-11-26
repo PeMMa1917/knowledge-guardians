@@ -105,6 +105,13 @@ import seamWitness from './seam-witness.json';
 import { QUESTION_ROUTES, questionWaysByObjective } from './questionEncounters';
 import { addMicroSkills } from './microSkillEvidence';
 import { clearanceContent } from './clearanceCases';
+import { datePegContent } from './datePegCases';
+import { relayContent } from './relayCases';
+import { asiaLabelContent } from './asiaLabelCases';
+import { specimenWorkContent } from './specimenWorkCases';
+import polarStore from './polar-store.json';
+import { fernRecordContent } from './fernRecords';
+import { lanternWeaveContent } from './lanternWeave';
 
 export const CONTENT_VERSION = 5;
 
@@ -114,7 +121,7 @@ const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'mission
 
 export function buildPack(): ContentPack {
   const pack: any = { id: 'chapter-1', contentVersion: CONTENT_VERSION };
-  for (const k of keys) pack[k] = [...parts, clearanceContent].flatMap((p) => p[k] ?? []);
+  for (const k of keys) pack[k] = [...parts, clearanceContent, datePegContent, relayContent, asiaLabelContent, specimenWorkContent, polarStore, fernRecordContent, lanternWeaveContent].flatMap((p) => p[k] ?? []);
   const content = pack as ContentPack;
   content.questions.push(...QUESTION_ROUTES.map(({ question }) => question));
   const ways = questionWaysByObjective();

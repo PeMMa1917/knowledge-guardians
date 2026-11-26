@@ -77,6 +77,11 @@ import { MICRO_SKILL_DOMAIN } from '../content/microSkillEvidence';
 import { specimenArt } from '../app/specimenArt';
 import { CLEARANCE_GROUP } from '../content/clearanceCases';
 import { clearanceGallery } from './clearanceGallery';
+import { RELAY_GROUP } from '../content/relayCases';
+import { specimenRelayPanel } from './specimenRelay';
+import { datePegPanel } from './datePeg';
+import { LANTERN_WEAVE } from '../content/lanternWeave';
+import { lanternWeavePanel } from './lanternWeave';
 import { marketBasketPanel } from './marketBasket';
 import { waterLoopPanel } from './waterLoop';
 import { civicIncentivePanel, incentiveStation } from './civicIncentive';
@@ -1172,14 +1177,14 @@ export class UI implements UIApi {
     const card = c.pack.cards.find((x) => x.id === ex.grantsCard)!;
     const thread = c.state.inventory['tool.provenance-thread'] ? c.pack.threads.find((t) => t.object === exhibitId) : undefined;
     const pixel = ex.specimen?.pixelAsset;
-    const image = h('img', { class: 'big-art', src: artURL(BIG_ART[ex.art] ?? (pixel ? ex.art : 'big.patent')), alt: pixel ? '' : ex.altText });
+    const image = h('img', { class: 'big-art', src: artURL(BIG_ART[ex.art] ?? (ex.specimen ? ex.art : 'big.patent')), alt: pixel ? '' : ex.altText });
     const artCredit = h('figcaption', {}, pixel ? `Collection image from ${ex.specimen!.institution}.` : 'Original game illustration based on the written record.');
     if (pixel) void specimenArt(pixel).then((drawing) => {
       if (!image.isConnected) return;
       if (drawing) {
         image.src = drawing.toDataURL('image/png');
         image.alt = ex.altText;
-        artCredit.textContent = `Pixel illustration from the ${ex.specimen!.institution} collection image.`;
+        artCredit.textContent = `Pixel illustration from a collection image at ${ex.specimen!.institution}.`;
       } else {
         artCredit.textContent = 'Collection image unavailable. The catalogue record is linked below.';
       }
@@ -2946,6 +2951,17 @@ export class UI implements UIApi {
     } else if (id.startsWith(`${CLEARANCE_GROUP}:`)) {
       const place = id.slice(CLEARANCE_GROUP.length + 1);
       this.openModal('bench-panel wide', 'The viewing rails', this.closeBtn(), clearanceGallery(ctx.controller, place, () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${LANTERN_WEAVE}:`)) {
+      const place = id.slice(LANTERN_WEAVE.length + 1);
+      this.openModal('bench-panel wide', 'The Half-Light Room', this.closeBtn(),
+        lanternWeavePanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith('date-peg:')) {
+      const place = id.slice('date-peg:'.length);
+      this.openModal('bench-panel wide', 'Two dates at a peg', this.closeBtn(), datePegPanel(ctx.controller, place, () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${RELAY_GROUP}:`)) {
+      const place = id.slice(RELAY_GROUP.length + 1);
+      this.openModal('bench-panel wide', 'One Clip Before the Bell', this.closeBtn(),
+        specimenRelayPanel(place, ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === 'drawer-cases') {
       const board = this.openModal('bench-panel wide', 'Three Cases at the Bell');
       drawerCases(board, ctx.controller, this.closeBtn());

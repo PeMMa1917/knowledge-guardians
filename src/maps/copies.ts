@@ -6,6 +6,7 @@ import { COPIES_WELCOME } from './welcome';
 import { carriedFrame } from './sharedCarry';
 import { COPIES_ARCHIVE_CITATION_RAIL, COPIES_PRESS_CITATION_RAIL } from './citationRail';
 import { LANDING_SAME_RED, PRESS_SAME_RED } from './sameRed';
+import { PRESS_LANTERN_WEAVE } from './lanternWeave';
 
 type CitySite = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'interactables' | 'stamps' | 'lights'>;
@@ -109,6 +110,7 @@ export const COPIES_PRESS = interior({
     ...COPIES_PRESS_BACKBILL,
     ...COPIES_PRESS_CITATION_RAIL,
     ...PRESS_SAME_RED,
+    PRESS_LANTERN_WEAVE,
     { id: 'cross-crowd', kind: 'fieldgame', game: 'cross-crowd', x: 9, y: 6, w: 1, h: 1, label: 'the crowd at the press door (a crossing)', art: 'notice-board' },
     door('copies-press-return', 11, 14, 'the passage back to the Record Room', { map: 'copies.archive', x: 4, y: 5 }),
     door('copies-press-to-landing', 22, 9, 'the passage to the landing', { map: 'copies.landing', x: 5, y: 9 }),

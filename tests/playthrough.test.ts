@@ -6,6 +6,7 @@
  */
 import { describe, expect, it } from 'vitest';
 import { buildPack } from '../src/content';
+import { datePegEntries } from '../src/content/datePegCases';
 import { totalXP } from '../src/domain/permanent';
 import type { ShowdownMove } from '../src/domain/showdown';
 import { MAPS } from '../src/maps';
@@ -462,8 +463,11 @@ describe('dialogue graph', () => {
   it('every node is reachable from a character, an event or a scene entry', () => {
     const reach = new Set<string>();
     const entries = ['cold.open', 'waystone.nexus', 'waystone.emberford', 'oldsign.read'];
-    const propScenes = Object.values(MAPS).flatMap((map) => map.interactables
-      .filter((prop) => prop.kind === 'scene').map((prop) => prop.node!));
+    const propScenes = Object.values(MAPS).flatMap((map) => map.interactables.flatMap((prop) => {
+      if (prop.kind === 'scene' && prop.node) return [prop.node];
+      if (prop.kind === 'fieldgame' && prop.game) return datePegEntries(prop.game);
+      return [];
+    }));
     const stack = [...pack.characters.flatMap((c) => c.talk.map((t) => t.node)), ...pack.events.map((e) => e.node),
       ...(pack.keepsakeTalks ?? []).map((t) => t.node), ...entries, ...propScenes];
     while (stack.length) {

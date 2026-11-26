@@ -167,6 +167,19 @@ Elian’s fictional notebook uses the two source cards for different jobs. The t
 
 HIS-CANOE-01 records Rra-Kalwanyimara, Australian National Maritime Museum object 00001826, dated 1988. The museum lists Annie Karrakayn and Ida Ninganga as Yanyuwa makers and Issac Walayunkuma as a Garrawa maker. It attributes the account of place-linked boat names to Annie Karrakayn and relates this name to Kalwanyi. The original pixel outline represents a generic dugout. Glint and Salt Step belong to the fictional harbour map. [Australian National Maritime Museum, Dugout Canoe](https://www.sea.museum/object/dugout-canoe)
 
+### Two Dates at a Peg
+
+The Lantern House annex has 12 individually accessioned Cleveland Museum of Art specimens. The local collection views use CC0 photographs. Each date strip keeps the catalogue’s date wording. The simulated peg moves through the catalogue API’s inclusive search bounds, which can be wider than the usually published estimate. Overlap shows compatibility with the catalogued ranges. The paired items retain separate making dates, attribution, materials and record numbers. Irven, Mireth and the two print layouts are fictional. [Exhibit details and exact source links](../src/content/date-peg-specimens.json) · [Catalogue API and Open Access terms](https://www.clevelandart.org/open-access)
+
+| Collection records on the same bench | What the playable check uses |
+|---|---|
+| Architectural Model 1990.185 and Fish Pendant 1990.190 | The two serpentine objects have the same broad Mezcala dates. The catalogue asks different questions about their settings of use. |
+| Painted Vase with Ruler and Scribe 1990.181 and Carved Vessel 1990.173 | The date brackets partly overlap. The shown scenes and the carved motif remain separately described. |
+| Saltillo Sarape 1921.568 and Huipil 1945.230 | The approximate garment dates come from distinct regional records and preserve their different materials and techniques. |
+| Lace Handkerchief 1936.718 and May Day, Central Park 1926.17 | The 1889 Cuban textile and the 1901 work on paper make two distinct point dates. The display draws no historical connection between them. |
+| Falls of Niagara 1993.25 and Bridal Veil, Yosemite 1992.12 | One printed photograph is dated by decade, the other to two years. Their shared interval leaves the actual year of either print open. |
+| Water Jar (Olla) 1984.159 and Jar 1990.10 | The two ancestral Pueblo jar entries give different style attributions and date ranges. The gap is between these entries. |
+
 ## Where the Welcome Goes, City of Copies and Market of Measures
 
 - REL-WELCOME-01 describes the Sodhi family preparing langar at their Sikh gurdwara in Fremont, California. The account connects a meal shared with visitors to the commitment to equality. [Harvard Pluralism Project, Langar: The Communal Meal](https://pluralism.org/langar-the-communal-meal)
@@ -229,6 +242,38 @@ Five individual collection records supply the measured edge used at the viewing 
 - Akan-style copper-alloy gold weight from Ghana, 1800s. The fitting uses the 2.4 cm side. [CMA 1962.244](https://clevelandart.org/art/1962.244)
 - Wooden tapa cloth beater from Hawai‘i, 20th century before 1930. The fitting uses its recorded length of 38.7 cm. [CMA 1971.152](https://clevelandart.org/art/1971.152)
 - Feline incense burner from Khurasan, Iran, 1150–1200 CE. The fitting uses its catalogue height of 35.5 cm. [CMA 1948.308](https://clevelandart.org/art/1948.308)
+
+## A Slip for Both Berths, Island of Models
+
+Twelve individual catalogue records anchor the Quiet Margin label loft. Each stand lets the player turn a short record and a second strip that preserves a limit on its use. The catalogue photographs are CC0. The stands, their strips, Nellin and the docks belong to the fictional campaign. [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access) · [Smithsonian Open Access](https://www.si.edu/openaccess)
+
+- Dragon ewer attributed to Vietnam (Annam), 1400s. The filling hole is in the tail and the outlet is at the mouth. [CMA 1989.359](https://clevelandart.org/art/1989.359)
+- Sawankhalok storage jar attributed to Thailand, 1300s. The recorded diameter and overall value use separate fields. [CMA 1986.65](https://clevelandart.org/art/1986.65)
+- Silk sampot attributed to Cambodia, early 1900s. The record gives weft ikat, tabby weave and overall dimensions. [CMA 1925.117](https://clevelandart.org/art/1925.117)
+- Bagobo shoulder basket from Davao, Philippines, about 1875–1917. The record describes rattan, its cotton cover, abacá stitching and glass bead decoration. [CMA 1917.771](https://clevelandart.org/art/1917.771)
+- Pillow-end plate attributed to Malaysia, 1800s. The component accession keeps its own identity beside the average measurement. [CMA 1916.438.a](https://clevelandart.org/art/1916.438.a)
+- Glass box attributed to Java, Indonesia, 20th century. Its parent record links to two components. [CMA 1916.583](https://clevelandart.org/art/1916.583)
+- Shoulder cloth attributed to Palembang, Sumatra, Indonesia, 1800s. The record lists silk, gold and three construction descriptions. [CMA 1991.313](https://clevelandart.org/art/1991.313)
+- Embroidered satin skirt panel attributed to Kachchh, Gujarat, western India, late 1800s or early 1900s. The catalogue gives the size of the surviving panel. [CMA 1925.682](https://clevelandart.org/art/1925.682)
+- Jar attributed to the Indus Valley civilization, about 2800–2500 BCE. Four decorative ibex are identified. The place attribution is probably Quetta, in present-day Pakistan. [CMA 2001.1](https://clevelandart.org/art/2001.1)
+- Brisé fan attributed to China, 1800s. The recorded radius is 21 cm and the spread is 40.5 cm. [CMA 1916.366](https://clevelandart.org/art/1916.366)
+- Scroll box attributed to Joseon Korea, 1800s. The 87 cm measurement is overall. [CMA 1990.15](https://clevelandart.org/art/1990.15)
+- Ofuke kiln tea bowl made in Nagoya, Japan, 1624–1641. The catalogue describes Vietnamese style separately from production place. [Smithsonian National Museum of Asian Art F1898.441](https://asia.si.edu/object/F1898.441/)
+
+## What Reached the Far Bench, Preserved Lives
+
+The Polar Store has 18 accession-specific cases. Antarctica is the setting of the documented visits and collections. Dates, people, retrievals and places stay with their own records. The practice shed, its nine-minute window and its deliveries are fictional. All drawings are original schematics based on written descriptions.
+
+- The hatch uses the recorded upright heights of the empty cargo sledge from the 1949–1952 Norwegian-British-Swedish Antarctic Expedition (67.5 cm) and the dog sledge from Cape Evans (18.5 cm). SPRI describes the latter as probably from the *Aurora* expedition. It gives no load rating for either object. [Y: 52/15](https://www.spri.cam.ac.uk/museum/shackleton/articles/y52.15/) · [Y: 56/17](https://www.spri.cam.ac.uk/museum/shackleton/articles/y56.17/)
+- The Quest crampon record describes five points at the toe and three at the heel. Two invented mat impressions show how one sole can leave different traces. [N: 104a-b](https://www.spri.cam.ac.uk/museum/shackleton/articles/n104a-b/)
+- The depot bag’s leather tag leaves its expedition membership open. The separate chocolate and cocoa tins reached the collection through the storekeeper at Elephant Island. The pemmican tin came from the Nimrod hut at Cape Royds. The packing rail keeps the different object names and the recovery shelf keeps each location. [N: 1132](https://www.spri.cam.ac.uk/museum/shackleton/articles/n1132/) · [Y: 72/1/1](https://www.spri.cam.ac.uk/museum/shackleton/articles/y72.1.1/) · [Y: 72/1/2](https://www.spri.cam.ac.uk/museum/shackleton/articles/y72.1.2/) · [Y: 2008/31/2](https://www.spri.cam.ac.uk/museum/shackleton/articles/y2008.31.2/)
+- The shade table draws on the replaceable glass of a Nimrod test set, the green lenses of Wordie’s separate Endurance pair, the canopy form of a Nimrod tent cap, the Cape Royds thermometer’s sheltered mounting and the stable base of Dunlop’s stone candle holder. The thermometer entry gives conflicting scale endpoints, which the game leaves open. The lamp and filter results describe a fictional tabletop test. [N: 53a-d](https://www.spri.cam.ac.uk/museum/shackleton/articles/n53a-d/) · [N: 878a](https://www.spri.cam.ac.uk/museum/shackleton/articles/n878a/) · [Y: 61/18/9](https://www.spri.cam.ac.uk/museum/shackleton/articles/y61.18.9/) · [Y: 57/4](https://www.spri.cam.ac.uk/museum/shackleton/articles/y57.4/) · [Y: 2011/67/3](https://www.spri.cam.ac.uk/museum/shackleton/articles/y2011.67.3/)
+- Worsley’s sextant case gives a certificate date of August 1914. The chronometer bears an inscription dated May 1916. The other records show separate means for carrying a line into a drawing or preparing a notebook for future use. The game leaves the time of the fictional sighting open. [Y: 2010/75a](https://www.spri.cam.ac.uk/museum/shackleton/articles/y2010.75a/) · [N: 999a](https://www.spri.cam.ac.uk/museum/shackleton/articles/n999a/) · [Y: 2011/67/1](https://www.spri.cam.ac.uk/museum/shackleton/articles/y2011.67.1/) · [N: 741](https://www.spri.cam.ac.uk/museum/shackleton/articles/n741/)
+- The Smithsonian records identify an *Austroraptus praecox* and an *Achelia communis* with separate accessions. W. Tressler collected both on 17 February 1955 in a bay east of Cape Norvegica. Both published depths are 68 metres and the public records leave the collection method open. The drawer illustrations have no scale. [USNM 128653](https://api.gbif.org/v1/occurrence/1317862071) · [USNM 122242](https://api.gbif.org/v1/occurrence/1319423586)
+
+## A Light Between the Frames, the Nexus and City of Copies
+
+Twelve specific Cleveland impressions, drawings and album prints supply the two details for each simulated lantern arm. The gallery’s limited light, queues and reading stands belong to the campaign. The reproductions stay tied to their accession and to the museum’s description of the date, maker and medium. A public cut gives a visitor a starting point. A whole sheet can preserve the relationship between two parts of the image, its margin or its collaborators’ work. The dated catalogue remains available from either. [Objects and catalogue records](../src/content/lantern-weave-specimens.json)
 
 ## Chapter 15: Council of Inquiry
 

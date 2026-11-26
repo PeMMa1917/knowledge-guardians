@@ -1,17 +1,24 @@
 import type { MapDef } from './types';
 import { NEXUS } from './nexus';
+import { HALF_LIGHT_ROOM } from './lanternWeave';
 import { NEXT_BENCH } from './afterCouncil';
 import { HANDOVER_GALLERY } from './handoverGallery';
 import { EMBERFORD, REPAIR_YARD } from './emberford';
 import { STUDY } from './study';
 import { SHELF_MODEL, SHELF_ROOM } from './shelfRoom';
 import { CLEARANCE_GALLERY } from './clearanceGallery';
+import { DATE_PEG_ROOM } from './datePeg';
+import { SEA_RELAY_ROOM } from './specimenRelay';
+import { ASIA_LABEL_LOFT } from './asiaLabelLoft';
+import { MARKET_SAMPLE_SHED, STAGE_PROP_ROOM } from './specimenWork';
+import { POLAR_RECORDS, POLAR_TRIAL } from './polarStore';
 import { FERRY } from './ferry';
 import { NILE_HALL, NILE_ROYAL, NILE_ROUTE, NILE_WORKYARD } from './nile';
 import { UNDERCROFT } from './undercroft';
 import { PRESERVED_ARCHIVE, PRESERVED_COAST, PRESERVED_COPPER, PRESERVED_GALLERY, PRESERVED_INQUIRY, PRESERVED_ROYAL, PRESERVED_WORKROOM } from './preserved';
 import { OBSERVATORY_ARCHIVE, OBSERVATORY_HARBOUR, OBSERVATORY_INLAND, OBSERVATORY_STATION } from './observatory';
 import { FOREST_STATION, FOREST_TRAIL, FOREST_COMMUNITY } from './forest';
+import { FERN_RECORD_ROOM } from './fernRecordRoom';
 import { METALWORKS_YARD, METALWORKS_RECORDS } from './metalworks';
 import { METAL_BENCH_MEETING } from './benchDebate';
 import { METAL_LATCH_BAY, WATER_SERVICE_LANE } from './latchCheck';
@@ -28,6 +35,7 @@ import { WATER_COUNCIL, WATER_GATEHOUSE, WATER_LOWER_CHANNEL } from './water';
 
 export const MAPS: Record<string, MapDef> = {
   [NEXUS.id]: NEXUS,
+  [HALF_LIGHT_ROOM.id]: HALF_LIGHT_ROOM,
   [NEXT_BENCH.id]: NEXT_BENCH,
   [HANDOVER_GALLERY.id]: HANDOVER_GALLERY,
   [EMBERFORD.id]: EMBERFORD,
@@ -43,6 +51,8 @@ export const MAPS: Record<string, MapDef> = {
   [NILE_ROUTE.id]: NILE_ROUTE,
   [PRESERVED_ARCHIVE.id]: PRESERVED_ARCHIVE,
   [CLEARANCE_GALLERY.id]: CLEARANCE_GALLERY,
+  [POLAR_RECORDS.id]: POLAR_RECORDS,
+  [POLAR_TRIAL.id]: POLAR_TRIAL,
   [PRESERVED_ROYAL.id]: PRESERVED_ROYAL,
   [PRESERVED_COAST.id]: PRESERVED_COAST,
   [PRESERVED_INQUIRY.id]: PRESERVED_INQUIRY,
@@ -54,6 +64,7 @@ export const MAPS: Record<string, MapDef> = {
   [OBSERVATORY_STATION.id]: OBSERVATORY_STATION,
   [OBSERVATORY_INLAND.id]: OBSERVATORY_INLAND,
   [FOREST_STATION.id]: FOREST_STATION,
+  [FERN_RECORD_ROOM.id]: FERN_RECORD_ROOM,
   [FOREST_TRAIL.id]: FOREST_TRAIL,
   [FOREST_COMMUNITY.id]: FOREST_COMMUNITY,
   [METALWORKS_YARD.id]: METALWORKS_YARD,
@@ -65,11 +76,15 @@ export const MAPS: Record<string, MapDef> = {
   [COPIES_LANDING.id]: COPIES_LANDING,
   [SEA_HARBOUR.id]: SEA_HARBOUR,
   [SEA_CHARTROOM.id]: SEA_CHARTROOM,
+  [DATE_PEG_ROOM.id]: DATE_PEG_ROOM,
+  [SEA_RELAY_ROOM.id]: SEA_RELAY_ROOM,
   [SEA_SHOAL.id]: SEA_SHOAL,
   [STAGE_FOYER.id]: STAGE_FOYER,
   [STAGE_REHEARSAL.id]: STAGE_REHEARSAL,
   [STAGE_GALLERY.id]: STAGE_GALLERY,
+  [STAGE_PROP_ROOM.id]: STAGE_PROP_ROOM,
   [MARKET_SQUARE.id]: MARKET_SQUARE,
+  [MARKET_SAMPLE_SHED.id]: MARKET_SAMPLE_SHED,
   [WATER_GATEHOUSE.id]: WATER_GATEHOUSE,
   [WATER_COUNCIL.id]: WATER_COUNCIL,
   [WATER_LOWER_CHANNEL.id]: WATER_LOWER_CHANNEL,
@@ -82,6 +97,7 @@ export const MAPS: Record<string, MapDef> = {
   [VOICES_QUAY.id]: VOICES_QUAY,
   [VESPER_PROOF_ROOM.id]: VESPER_PROOF_ROOM,
   [ISLAND_WORKSHOP.id]: ISLAND_WORKSHOP,
+  [ASIA_LABEL_LOFT.id]: ASIA_LABEL_LOFT,
   [ISLAND_DOCK.id]: ISLAND_DOCK,
   [ISLAND_MARGIN.id]: ISLAND_MARGIN,
   [COUNCIL_HALL.id]: COUNCIL_HALL,

@@ -26,7 +26,7 @@ A funny scene can be high level (the goat asks how memory fills gaps), and a ser
 
 ## The 30-minute design audit
 
-`src/domain/learningPaths.ts` builds five estimated play-style paths through all 15 chapters: **story** (main steps only), **social** (hearth, loyalty, person and society crossings), **explorer** (every crossing and side mission), **puzzler** (field games, technology and fate crossings, puzzle lamps) and **cozy** (hearth, field games, lighter crossings). Minutes are design estimates, not measurements.
+`src/domain/learningPaths.ts` builds five estimated play-style paths through all 15 chapters. The story route follows main steps. The social route favours hearth conversations, loyalty and conflicts between people or groups. The explorer route visits side missions and tries a separately authored case in each repeatable collection. The puzzler route prioritises tools and puzzles. The cozy route combines hearth, field games and lighter crossings. The full explorer itinerary goes through every registered collection case. Both explorer itineraries appear in the report. Minutes come from author estimates.
 
 `tests/learning.test.ts` counts an encounter at its estimated completion. The trailing window excludes its starting boundary and includes its ending boundary. The audit checks every point where coverage can change, then totals the duration with a missing dimension. It also lists framework parts supported only by inference, dimensions supported by only one distinct action, and steps with missing action or thinking tags. The tests require all 16 dimensions in the first half hour and track a separate gap budget for later play.
 

@@ -6,6 +6,8 @@
  * written records (spec 21.1). They are not copies of museum photographs.
  * Each picture has a text description in the content data (altText).
  */
+import { POLAR_ART } from './polarStoreArt';
+
 type Ctx = CanvasRenderingContext2D;
 
 function canvas(w: number, h: number): [HTMLCanvasElement, Ctx] {
@@ -2836,6 +2838,8 @@ DRAW['big.drawer-cases'] = [40, 28, (g) => {
 }];
 
 /** Map exhibit art keys (small) to large inspection pictures. */
+Object.assign(DRAW, POLAR_ART);
+
 export const BIG_ART: Record<string, string> = {
   'water-loop.jewel': 'water-loop.jewel',
   'drawer-cases': 'big.drawer-cases',

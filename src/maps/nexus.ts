@@ -13,6 +13,7 @@ import { NEXUS_VINDOLANDA } from './vindolanda';
 import { NEXUS_DOOR_FOLD } from './doorFold';
 import { NEXUS_CITATION_RAIL } from './citationRail';
 import { NEXUS_SAME_RED } from './sameRed';
+import { NEXUS_LANTERN_WEAVE } from './lanternWeave';
 
 const W = 40, H = 20;
 const strokeRequested: Condition = { flag: 'nexus.stroke.requested', eq: true };
@@ -145,6 +146,7 @@ export const NEXUS: MapDef = {
     ...NEXUS_DOOR_FOLD,
     ...NEXUS_CITATION_RAIL,
     ...NEXUS_SAME_RED,
+    ...NEXUS_LANTERN_WEAVE,
     { id: 'hesper-checked-bench', kind: 'scene', node: 'hesper.nexus.bench', x: 20, y: 10, w: 1, h: 1,
       label: 'Hesper’s reserved repair bench', art: 'nexus.viewer-sheet', walkThrough: true,
       visibleIf: { all: [{ objective: 'm02.o8.ise' }, { flag: 'hesper.visitArrangement', eq: 'bench' }] } },
