@@ -15,6 +15,14 @@ describe('smart glossary (spec 47.10)', () => {
     expect(seg.map((x) => x.text).join('')).toBe(text);
     expect(seg.filter((x) => x.term).map((x) => x.term)).toEqual(['knowledge-question', 'claim', 'evidence']);
   });
+  it('does not split a larger Unicode word into a glossary control and ordinary text', () => {
+    const text = 'éevidence evidence\u0301 evidence2 _evidence (EVIDENCE)!truth and evidence';
+    const segments = segmentText(text, pack.glossary);
+    expect(segments.map((part) => part.text).join('')).toBe(text);
+    expect(segments.filter((part) => part.term)).toEqual([
+      { text: 'EVIDENCE', term: 'evidence' }, { text: 'truth', term: 'truth' },
+    ]);
+  });
   it('gives an example from the player\'s own play when there is one', () => {
     const d = new Driver();
     const claim = pack.glossary.find((g) => g.id === 'claim')!;

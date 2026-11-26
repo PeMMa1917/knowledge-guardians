@@ -105,6 +105,8 @@ Both slots are written in one `localStorage` key (`kg.slots`) in one write, with
 
 `src/ui/ui.ts` makes all panels in HTML over the canvas (`#ui`). HTML gives keyboard focus, screen-reader text, text scaling and high contrast. Modals trap focus. Esc closes them.
 
+`src/domain/conceptText.ts` matches the twelve TOK concept words and their plural forms at Unicode word boundaries. It preserves the original spelling and case, and supplies foreground colours for dark panels and paper. `src/ui/conceptMarkup.ts` formats new interface text with bold, underlined spans, including the text inside existing glossary buttons. It updates only changed text and skips native inputs and editable content. Captions and companion speech use the same formatter outside the main interface. Forced-colour mode retains the bold and underline. The markers are display markup, so saved text and accessible control names keep their original values.
+
 ## Teacher view
 
 `teacher.html` is a second Vite entry (see `vite.config.ts`). It has no server.

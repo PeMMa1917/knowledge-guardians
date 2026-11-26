@@ -1,0 +1,28 @@
+.concept-term {
+  color: var(--concept-on-dark);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: .09em;
+  text-underline-offset: .12em;
+}
+
+/* Paper surfaces use dark foreground colours. The default game panels have dark surfaces. */
+:where([data-concept-paper], .label-preview, .cork-note, .cork-card,
+  .album-thumb, .album-caption, .world-say, .pin-new, .pin-place, .pin-own, .crier-slate,
+  .word-tile.open, .word-tile.matched, .die-face) .concept-term {
+  color: var(--concept-on-light);
+}
+
+/* Keep the ink readable over mid-tone labels and bars that can change colour. */
+:where(button.primary, .alcove-stage .plinth, .bridge .plank, .dig-cell, .survey-bar, .cant, .pin-waystone, .pin-portal) .concept-term {
+  color: var(--concept-on-light);
+  background: #fffdf6;
+}
+
+tspan.concept-term { fill: currentColor; }
+:where(button, summary, a) .concept-term { pointer-events: none; }
+
+@media (forced-colors: active) {
+  .concept-term { color: CanvasText; text-decoration-color: currentColor; }
+}

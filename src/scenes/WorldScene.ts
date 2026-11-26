@@ -30,6 +30,7 @@ import { STAMPS, TILE } from './art';
 import { CHUNK, explored, isRevealed, revealAround } from '../domain/fog';
 import { hasTalent } from '../domain/talents';
 import { frayLevel } from '../domain/label';
+import { decorateConceptText } from '../ui/conceptMarkup';
 
 type Dir = 'down' | 'up' | 'left' | 'right';
 
@@ -880,6 +881,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       el.className = 'world-say'; el.setAttribute('role', 'status');
       const b = document.createElement('strong'); b.textContent = name.split(' ').slice(-2).join(' ');
       el.append(b, document.createTextNode(m.line));
+      decorateConceptText(el);
       document.body.append(el);
       this.sayEl = { el, target: a.sprite, until: this.time.now + 3500 + m.line.length * 45 };
       if (ctx.settings.talkSounds) babble(m.line, voiceFor(a.id), ctx.settings.sfxVolume);

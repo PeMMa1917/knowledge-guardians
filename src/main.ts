@@ -5,7 +5,9 @@
 import '@fontsource/lexend/300.css';
 import '@fontsource/lexend/400.css';
 import '@fontsource/lexend/600.css';
+import '@fontsource/lexend/700.css';
 import './ui/styles.css';
+import './ui/conceptMarkup.css';
 import Phaser from 'phaser';
 import { ctx } from './app/context';
 import { GameController } from './app/controller';
@@ -14,6 +16,7 @@ import { setupCaptions } from './app/captions';
 import { BootScene } from './scenes/BootScene';
 import { WorldScene } from './scenes/WorldScene';
 import { UI } from './ui/ui';
+import { observeConceptText } from './ui/conceptMarkup';
 
 ctx.settings = loadSettings();
 applySettingsToDocument(ctx.settings);
@@ -28,7 +31,9 @@ function startWorld(): void {
   else game.scene.start('world', {});
 }
 
-const ui = new UI(document.getElementById('ui')!, () => {
+const uiRoot = document.getElementById('ui')!;
+observeConceptText(uiRoot);
+const ui = new UI(uiRoot, () => {
   if (booted) startWorld(); else pendingStart = true;
 });
 ctx.ui = ui;

@@ -1,4 +1,5 @@
 import { soundtrackCaption } from '../domain/campaignScore';
+import { conceptTextNodes } from '../ui/conceptMarkup';
 
 /**
  * Sound captions (spec 21 accessibility): a short text line for each sound, so a
@@ -82,7 +83,12 @@ function render(): void {
     box.setAttribute('aria-hidden', 'true'); // screen readers get the same events from toasts and text
     document.body.append(box);
   }
-  box.replaceChildren(...lines.map((t) => { const d = document.createElement('div'); d.className = 'caption'; d.textContent = `[${t}]`; return d; }));
+  box.replaceChildren(...lines.map((t) => {
+    const line = document.createElement('div');
+    line.className = 'caption';
+    line.append(...conceptTextNodes(`[${t}]`));
+    return line;
+  }));
   box.hidden = lines.length === 0;
   if (timer) window.clearTimeout(timer);
   if (lines.length) timer = window.setTimeout(render, 500);
