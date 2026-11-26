@@ -176,6 +176,7 @@ button.mini { padding: 0.1em 0.5em; font-size: 0.85rem; }
 }
 .panel.wide { width: min(56rem, 100%); }
 .panel .close { position: absolute; top: 0.6em; right: 0.6em; padding: 0.1em 0.55em; }
+.panel > .close + h2 { margin-inline-end: 2rem; overflow-wrap: anywhere; }
 .panel.dialogue { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); width: min(50rem, calc(100% - 24px)); }
 .modal-wrap:has(.dialogue) { background: transparent; align-items: flex-end; }
 .speaker { display: flex; gap: 0.8em; align-items: center; }
