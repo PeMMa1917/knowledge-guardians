@@ -110,6 +110,28 @@ describe('optional private journal prompts', () => {
     expect(view(state).entries[0].reflections?.[0].prompt).toContain('before trying “Door Without a Name” again');
   });
 
+  it('keeps current Portfolio draft text in this campaign without modifying previously shared writing', () => {
+    const state = campaign();
+    const permanent = newPermanent();
+    permanent.portfolio.push({
+      id: 'pf-legacy', title: 'An earlier adventure', kind: 'label', world: 'WORLD-01',
+      text: 'An older label.', reflection: 'An older private note.', at, shared: true,
+      weave: { concepts: [], aoks: [], atl: [], subjects: [] },
+    });
+    expect(view(state).portfolioWriting).toEqual([]);
+    const write = (s: CampaignState, text: string) =>
+      engine.dispatch({ type: 'SetDiaryPortfolioDraft', entry: 'pf-legacy', text }, s, permanent, at);
+    const draft = write(state, longText);
+    expect(draft.permanent).toBe(permanent);
+    expect(view(readBack(draft.state)).portfolioWriting).toEqual([expect.objectContaining({
+      title: 'An earlier adventure', text: longText, draft: true,
+    })]);
+    const cleared = readBack(write(draft.state, '').state);
+    expect(cleared.adventureDiary.portfolioWriting['pf-legacy']).toMatchObject({ text: '', draft: true });
+    expect(view(cleared).portfolioWriting).toEqual([]);
+    expect(permanent.portfolio[0].reflection).toBe('An older private note.');
+  });
+
   it('keeps a long, unsaved note in the current journal, then moves it once under its saved type', () => {
     const state = campaign();
     state.notes = Array.from({ length: 200 }, (_, index) => `Earlier note ${index}`);

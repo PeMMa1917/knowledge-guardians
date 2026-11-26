@@ -2790,18 +2790,18 @@ export class UI implements UIApi {
         const current = c.state.adventureDiary.portfolioWriting?.[e.id];
         ta.value = current?.text ?? e.reflection;
         let edited = ta.value;
-        let submitted = current?.draft !== true;
+        let changedInPanel = false;
         const status = h('p', { class: 'fine', role: 'status' });
         const draft = (text: string) => {
           if (text === edited) return;
           if (c.dispatch({ type: 'SetDiaryPortfolioDraft', entry: e.id, text }).some(({ kind }) => kind === 'error')) return;
           edited = text;
-          submitted = false;
+          changedInPanel = true;
           queueJournalWriting(c, status);
         };
         bindJournalEditor(ta, draft, () => {
-          if (!submitted && !c.dispatch({ type: 'PortfolioReflect', entry: e.id, text: edited }).some(({ kind }) => kind === 'error')) {
-            submitted = true;
+          if (changedInPanel && !c.dispatch({ type: 'PortfolioReflect', entry: e.id, text: edited }).some(({ kind }) => kind === 'error')) {
+            changedInPanel = false;
             queueJournalWriting(c, status);
           }
           flushJournalWriting(c);
