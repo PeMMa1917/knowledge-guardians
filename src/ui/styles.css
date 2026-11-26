@@ -981,11 +981,16 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .nile-deliveries button { margin: .3rem .35rem .3rem 0; }
 /* Field games (TOK lessons) */
 .doors-row { display: flex; gap: 0.8rem; justify-content: center; margin: 0.6rem 0; }
-.door-crate { width: 6rem; height: 6.5rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 0.4rem; background: linear-gradient(#8a5a30, #5b3b22); border: 2px solid var(--gold-dim); border-radius: 8px; color: #fff3c4; }
+.door-crate { width: 6rem; min-width: 0; min-height: 6.5rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 0.4rem; background: linear-gradient(#8a5a30, #5b3b22); border: 2px solid var(--gold-dim); border-radius: 8px; color: #fff3c4; }
 .door-crate.mine { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
 .door-crate.open { opacity: 0.55; }
 .door-num { font-weight: 700; font-size: 1.2rem; }
-.door-show { font-size: 1.4rem; min-height: 1.6rem; }
+.door-show { max-width: 100%; font-size: 1.4rem; min-height: 1.6rem; overflow-wrap: anywhere; text-align: center; }
+@media (max-width: 400px) {
+  .doors-row { gap: .25rem; }
+  .door-crate { padding-inline: .1rem; }
+  .door-show { font-size: 1rem; }
+}
 .field-bars { display: grid; gap: 0.35rem; margin: 0.6rem 0; }
 .field-bar { display: grid; grid-template-columns: 7rem 1fr 9rem; gap: 0.5rem; align-items: center; }
 .field-bar .track { height: 0.8rem; border-radius: 6px; background: var(--panel-2); border: 1px solid var(--gold-dim); overflow: hidden; }

@@ -3895,13 +3895,15 @@ export class UI implements UIApi {
     };
     const many = () => {
       const counts = Array.from({ length: 20 }, (_, i) => boatGuests(seed, i + 1).length);
-      const max = Math.max(...counts), within23 = counts.filter((k) => k <= 23).length;
+      const within23 = counts.filter((k) => k <= 23).length;
       const W = 280, H = 110, bw = W / counts.length;
-      const markerY = guess === null ? null : H - Math.min(guess, max) / max * H;
-      const marker = markerY === null ? '' : `<line x1="0" x2="${W}" y1="${markerY}" y2="${markerY}" class="guess"/><text x="${W - 60}" y="${markerY - 3}" class="lbl">your marker</text>`;
+      const ceiling = Math.max(...counts, 23, guess ?? 0);
+      const rowY = (passengers: number) => H - (passengers / ceiling) * H;
+      const labelY = (passengers: number) => Math.max(9, rowY(passengers) - 3);
+      const marker = guess === null ? '' : `<line x1="0" x2="${W}" y1="${rowY(guess)}" y2="${rowY(guess)}" class="guess"/><text x="${W - 2}" y="${labelY(guess)}" text-anchor="end" class="lbl">your marker</text>`;
       const svg = `<svg viewBox="0 0 ${W} ${H + 16}" class="guest-chart" role="img" aria-label="Passengers on each of twenty boats before a shared birthday">` +
-        counts.map((k, i) => `<rect x="${i * bw + 2}" y="${H - (k / max) * H}" width="${bw - 4}" height="${(k / max) * H}" class="${k <= 23 ? 'low' : 'high'}"/>`).join('') +
-        `<line x1="0" x2="${W}" y1="${H - (23 / max) * H}" y2="${H - (23 / max) * H}" class="mark"/><text x="2" y="${H - (23 / max) * H - 3}" class="lbl">23</text>` +
+        counts.map((k, i) => `<rect x="${i * bw + 2}" y="${rowY(k)}" width="${bw - 4}" height="${H - rowY(k)}" class="${k <= 23 ? 'low' : 'high'}"/>`).join('') +
+        `<line x1="0" x2="${W}" y1="${rowY(23)}" y2="${rowY(23)}" class="mark"/><text x="2" y="${labelY(23)}" class="lbl">23</text>` +
         marker + '</svg>';
       const chart = h('div', {}); chart.innerHTML = svg;
       box.replaceChildren(...head(), chart,
