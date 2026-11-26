@@ -8,7 +8,7 @@ import {
   type SaveEntry,
 } from '../src/domain/saves';
 import type { CampaignState } from '../src/domain/types';
-import { CAMPAIGN_SCHEMA } from '../src/domain/types';
+import { CAMPAIGN_SCHEMA, PERMANENT_SCHEMA } from '../src/domain/types';
 import { MAPS } from '../src/maps';
 
 const pack = buildPack();
@@ -321,7 +321,7 @@ describe('storage, checksum and migration', () => {
   });
   it('migrates a version 2 permanent record and adds Question Stones', () => {
     const p = migratePermanent({ ...newPermanent(), schema: 2, stones: undefined, credit: { 'crit.evidence.date-kinds': 20 } } as any);
-    expect(p.schema).toBe(4);
+    expect(p.schema).toBe(PERMANENT_SCHEMA);
     expect(p.credit['crit.evidence.date-kinds']).toBe(20);
     expect(p.stones).toEqual({});
     expect(p.skills).toEqual({});

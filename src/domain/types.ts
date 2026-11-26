@@ -773,7 +773,7 @@ export interface ContentPack {
 // ---------------------------------------------------------------------------
 
 export const CAMPAIGN_SCHEMA = 7;
-export const PERMANENT_SCHEMA = 4;
+export const PERMANENT_SCHEMA = 5;
 
 export interface ShowdownLogLine { who: 'player' | 'opponent' | 'crowd' | 'witness'; text: string; why?: string }
 
@@ -929,4 +929,6 @@ export interface PermanentRecord {
   skills: Record<string, string[]>;
   /** The Guardian's Ledger: active seconds and XP per day, on this device (optional; no schema change). */
   activity?: import('./ledger').Activity;
+  /** Dated local play measures and optional nickname sharing, separate from teacher progress files. */
+  leaderboard?: import('./leaderboard').LeaderboardRecord;
 }

@@ -657,7 +657,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     // Fog of war: clear the map around the player when they enter a new chunk.
     if (this.player && !this.transitioning) {
       const tx = Math.floor(this.player.sprite.x / TILE), ty = Math.floor(this.player.sprite.y / TILE);
-      const ck = `${Math.floor(tx / CHUNK)},${Math.floor(ty / CHUNK)}`;
+      const ck = `${this.map.id}:${Math.floor(tx / CHUNK)},${Math.floor(ty / CHUNK)}`;
       if (ck !== this.fogChunk) {
         this.fogChunk = ck;
         const key = `fog.${this.map.id}`, was = ctx.controller.state.flags[key];
@@ -1036,6 +1036,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       const dx = this.player.sprite.x - a.sprite.x, dy = this.player.sprite.y - a.sprite.y;
       a.facing = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
       a.sprite.setFrame(this.idleFrame(a.facing));
+      ctx.controller.recordLeaderboardNpc(a.id);
       ctx.ui.openDialogue(a.id);
       return;
     }

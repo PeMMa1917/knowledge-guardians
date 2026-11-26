@@ -8,6 +8,7 @@
 import type { AwardRecord, CampaignState, Concept, ContentPack, PermanentRecord } from './types';
 import { PERMANENT_SCHEMA } from './types';
 import { check } from './rules';
+import { normalizeLeaderboard } from './leaderboard';
 
 export function newPermanent(): PermanentRecord {
   return {
@@ -74,11 +75,13 @@ export function migratePermanent(raw: any): PermanentRecord {
   if (p.schema === 1) p = { ...newPermanent(), credit: p.credit ?? {}, awards: p.awards ?? {} };
   if (p.schema === 2) p = { ...p, schema: 3, stones: {} };
   if (p.schema === 3) p = { ...p, schema: 4, skills: {} };
+  if (p.schema === 4) p = { ...p, schema: 5 };
   const dictionary = (value: unknown) => !!value && typeof value === 'object' && !Array.isArray(value);
   if (![p.credit, p.awards, p.moments, p.signals, p.stones, p.skills, p.met?.concepts, p.met?.atl, p.met?.subjects, p.met?.aoks]
     .every(dictionary) || ![p.dismissed, p.offered, p.portfolio].every(Array.isArray)) {
     throw new Error('Permanent record is missing required data.');
   }
+  if (p.leaderboard !== undefined) p = { ...p, leaderboard: normalizeLeaderboard(p.leaderboard) };
   return restoreWaterAttribution(p as PermanentRecord);
 }
 

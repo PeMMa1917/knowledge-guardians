@@ -262,6 +262,15 @@ export class SaveService {
     }
   }
 
+  /** Refuse publication from a tab whose stored consent may have changed. */
+  permanentIsCurrent(): boolean {
+    try {
+      return !this.learningReadProblem && this.knownPermanent !== undefined && this.store.get(KEY_PERMANENT) === this.knownPermanent;
+    } catch {
+      return false;
+    }
+  }
+
   savePermanent(p: PermanentRecord): void {
     if (this.learningReadProblem) throw new PermanentSaveConflict(this.learningReadProblem);
     if (this.knownPermanent !== undefined && this.store.get(KEY_PERMANENT) !== this.knownPermanent) {

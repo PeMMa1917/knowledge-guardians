@@ -41,3 +41,22 @@ export function explored(hex: unknown, w: number, h: number): number {
   const b = bits(hex, cw * ch);
   return b.filter(Boolean).length / b.length;
 }
+
+/** Number of chunks in the same grid used by the displayed fog. */
+export function mapChunkCount(w: number, h: number): number {
+  const { cw, ch } = dims(w, h);
+  return cw * ch;
+}
+
+/** Keep every already revealed chunk and count only newly revealed chunks. */
+export function mergeExploration(previous: unknown, current: unknown, w: number, h: number): { hex: string; added: number } {
+  const count = mapChunkCount(w, h);
+  const oldBits = bits(previous, count);
+  const nextBits = bits(current, count);
+  let added = 0;
+  const merged = oldBits.map((bit, index) => {
+    if (!bit && nextBits[index]) added++;
+    return bit | nextBits[index];
+  });
+  return { hex: hexOf(merged), added };
+}
