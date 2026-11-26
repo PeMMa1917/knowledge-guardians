@@ -4,6 +4,7 @@ import { LOADING_BAY_DOOR, loadingReceiver } from './loadingBay';
 import { COUNCIL_ACCESSIONS } from './pairedAccessions';
 import { SECOND_READING_DOOR } from './secondReading';
 import { COUNCIL_PLATE_GALLERY } from './transferFaces';
+import { OPEN_PLACE_COUNCIL, OPEN_PLACE_COUNCIL_ACTORS, OPEN_PLACE_COUNCIL_INTAKE } from './openPlace';
 import type { Interactable, MapDef } from './types';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'council.waypost'): Interactable {
@@ -54,6 +55,7 @@ export const COUNCIL_HALL: MapDef = {
   interactables: [
     SECOND_READING_DOOR,
     loadingReceiver('bench', 24, 16),
+    OPEN_PLACE_COUNCIL_INTAKE,
     door('council-gallery-path', 24, 9, 'the passage to the letters and bell rail', { map: 'council.gallery', x: 6, y: 14 }),
     door('council-nexus-return', 13, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 37, y: 12 }, 'preserved.door'),
     { id: 'council-clock', kind: 'council-clock', x: 15, y: 9, w: 1, h: 1,
@@ -105,7 +107,7 @@ export const COUNCIL_GALLERY: MapDef = {
     return (x >= 10 && x <= 17) || (y >= 12 && y <= 14) ? 'council-gallery-runner' : 'council-purple';
   }),
   blocks: [[1, 0, 30, 3]], zones: [], spawn: { x: 6, y: 14 },
-  npcs: [{ id: 'council-reader', x: 20, y: 11, facing: 'down' }],
+  npcs: [{ id: 'council-reader', x: 20, y: 11, facing: 'down' }, ...OPEN_PLACE_COUNCIL_ACTORS],
   stamps: [
     { stamp: 'council-letter-niche', x: 4, y: 3 }, { stamp: 'council-letter-niche', x: 12, y: 3 },
     { stamp: 'council-bell-rail', x: 22, y: 5 }, { stamp: 'council-lamp', x: 10, y: 7 },
@@ -120,6 +122,7 @@ export const COUNCIL_GALLERY: MapDef = {
     loadingReceiver('call', 8, 16),
     ...COUNCIL_ACCESSIONS,
     ...COUNCIL_PLATE_GALLERY,
+    ...OPEN_PLACE_COUNCIL,
     sign('council-optics-letter', 6, 7, 'the dated optics record', 'council.optics',
       'Ibn al-Haytham, Book of Optics, early eleventh century. He tested explanations of light and sight with experiments. The archive uses that method card beside its own clock cases.',
       { flag: 'council.optics.read' }),

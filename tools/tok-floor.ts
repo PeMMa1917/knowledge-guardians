@@ -25,7 +25,7 @@ export interface CourseEncounter extends Tags {
 
 /** Look up the evidence attached to the exact objective or registered activity. */
 export function courseTags(pack: ContentPack): ReadonlyMap<string, Tags> {
-  const byId = new Map<string, Tags>(Object.entries(LEARN).map(([id, { concepts, framework }]) => [id, { concepts, framework }]));
+  const byId = new Map<string, Tags>(Object.entries(LEARN).map(([id, { concepts, framework, aoks }]) => [id, { concepts, framework, aoks }]));
   for (const { objectives } of pack.missions) {
     for (const { id, weave } of objectives) {
       const { concepts, framework, aoks } = weave ?? {};
@@ -54,9 +54,14 @@ function breadth(encounters: readonly CourseEncounter[]) {
   const seen = { concepts, framework, areas: aoks, optionalThemes: aoks };
   const present = Object.fromEntries(axes.map((axis) => [axis, inventory[axis].filter((tag) => seen[axis].has(tag))])) as Record<Axis, string[]>;
   const missing = Object.fromEntries(axes.map((axis) => [axis, inventory[axis].filter((tag) => !seen[axis].has(tag))])) as Record<Axis, string[]>;
+  const singleActionTags = Object.fromEntries(axes.map((axis) => {
+    const field = axis === 'areas' || axis === 'optionalThemes' ? 'aoks' : axis;
+    return [axis, present[axis].filter((tag) => distinct(encounters.filter((step) => step[field]?.includes(tag)).map(({ id }) => id)).size === 1)];
+  })) as Record<Axis, string[]>;
   const unknownEncounters = (field: keyof Tags) => [...distinct(encounters.filter((step) => step[field] === undefined).map(({ id }) => id))];
   return {
-    present, missing,
+    present, missing, singleActionTags,
+    distinctActions: distinct(encounters.map(({ id }) => id)).size,
     unknownEncounters: { concepts: unknownEncounters('concepts'), framework: unknownEncounters('framework'), topics: unknownEncounters('aoks') },
     unrecognisedTags: {
       concepts: [...concepts].filter((tag) => !inventory.concepts.includes(tag)),

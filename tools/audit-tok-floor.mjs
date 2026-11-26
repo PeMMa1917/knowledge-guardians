@@ -4,7 +4,7 @@ import { createServer } from 'vite';
 const server = await createServer({
   configFile: false,
   optimizeDeps: { noDiscovery: true, include: [] },
-  server: { middlewareMode: true, watch: null, hmr: false },
+  server: { middlewareMode: true, watch: null, hmr: false, ws: false },
 });
 
 try {
@@ -33,6 +33,7 @@ try {
         }
         console.log(`  Rolling ${width} min: ${minutesWithGap.toFixed(1)} min below the floor in ${gaps.length} interval(s); first window counts ${counts(firstWindow)}`);
         console.log(`    Below-floor dimensions: ${[...new Set(gaps.flatMap(({ below }) => below))].join(', ') || 'none'}`);
+        console.log(`    First window: ${firstWindow.distinctActions} distinct actions; tags supported by one action ${Object.entries(firstWindow.singleActionTags).map(([axis, tags]) => `${axis} ${tags.length}`).join(' / ')}`);
       }
       console.log(`  First ${firstHour.minutes} min cumulative${firstHour.complete ? '' : ' (partial hour)'}: ${counts(firstHour)}`);
       console.log(`  First-hour missing: ${Object.entries(firstHour.missing).map(([axis, missing]) => `${axis} ${missing.join(', ') || 'none'}`).join(' / ')}`);

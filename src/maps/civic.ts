@@ -10,6 +10,7 @@ import { CIVIC_DATE_REGISTER_PROPS, CIVIC_DATE_REGISTER_READERS } from './dateRe
 import { CIVIC_CALLBOARD_DOOR } from './civicCallboard';
 import { MATERIAL_CANAL_REVISIT } from './materialStores';
 import { CIVIC_SPARE_SEAT } from './spareSeat';
+import { OPEN_PLACE_CANAL, OPEN_PLACE_CANAL_ACTORS, OPEN_PLACE_DISPATCH, OPEN_PLACE_STEPS, OPEN_PLACE_STEPS_ACTORS } from './openPlace';
 import { starStations } from './starPaths';
 import type { Interactable, MapDef } from './types';
 
@@ -118,6 +119,7 @@ export const CIVIC_DISPATCH: MapDef = {
       label: 'Lin’s stand for the source copies', art: 'civic.notice', walkThrough: true,
       visibleIf: { all: [recordFolio, { objective: 'record.edge.civic.compare' }, { not: { flagSet: 'record.edge.civic.mount' } }] } },
     ...CIVIC_APPEAL_DISPATCH,
+    ...OPEN_PLACE_DISPATCH,
   ],
   lights: [
     { x: 13, y: 7, r: 85, color: 0xe5bd87 }, { x: 15, y: 9, r: 68, color: 0xc3dfda },
@@ -144,7 +146,7 @@ export const CIVIC_STEPS: MapDef = {
     return cobbles[(y + Math.floor(x / 2)) % cobbles.length];
   }),
   blocks: [], zones: [], spawn: { x: 12, y: 14 },
-  npcs: [{ id: 'civic-clerk', x: 11, y: 8, facing: 'down' }],
+  npcs: [{ id: 'civic-clerk', x: 11, y: 8, facing: 'down' }, ...OPEN_PLACE_STEPS_ACTORS],
   stamps: [
     { stamp: 'civic-steps-office', x: 10, y: 1 }, { stamp: 'civic-steps-office', x: 21, y: 1 },
     { stamp: 'market-home', x: 2, y: 1 }, { stamp: 'civic-cart', x: 5, y: 9 },
@@ -155,6 +157,7 @@ export const CIVIC_STEPS: MapDef = {
   ],
   interactables: [
     CIVIC_INCENTIVE_BOARD,
+    ...OPEN_PLACE_STEPS,
     ...CIVIC_BENCH_DEBATE,
     ...CIVIC_BOUNDARY,
     { id: 'cross-name-box', kind: 'fieldgame', game: 'cross-name-box', x: 19, y: 5, w: 1, h: 1, label: 'the gate machine (a crossing)', art: 'board-stand' },
@@ -210,7 +213,7 @@ export const CIVIC_CANAL: MapDef = {
     if (y >= 8 && y <= 10) return 'civic-kerb';
     return cobbles[(x + Math.floor(y / 2)) % cobbles.length];
   }),
-  blocks: [[1, 13, 26, 4]], zones: [], spawn: { x: 5, y: 10 }, npcs: [],
+  blocks: [[1, 13, 26, 4]], zones: [], spawn: { x: 5, y: 10 }, npcs: OPEN_PLACE_CANAL_ACTORS,
   stamps: [
     { stamp: 'market-home', x: 3, y: 2 }, { stamp: 'market-home', x: 19, y: 2 },
     { stamp: 'civic-cart', x: 8, y: 6 }, { stamp: 'civic-stand', x: 14, y: 7 },
@@ -252,6 +255,7 @@ export const CIVIC_CANAL: MapDef = {
       { flag: 'record.edge.seen', visibleIf: { flag: 'record.edge.civic.mount', eq: 'scope' } }),
     ...CIVIC_APPEAL_CANAL,
     ...CIVIC_SPARE_SEAT,
+    ...OPEN_PLACE_CANAL,
   ],
   lights: [
     { x: 9, y: 9, r: 67, color: 0xf1c591 }, { x: 16, y: 8, r: 70, color: 0xd5dbb2 },

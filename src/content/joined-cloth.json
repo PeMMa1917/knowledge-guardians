@@ -1,0 +1,52 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH14-R43",
+      "title": "The Two Supports",
+      "world": "WORLD-15",
+      "available": { "objective": "relay.hawaii-join.received" },
+      "stake": "The workshop and the dock each need a way to move their packet without catching the practice cover.",
+      "knowledgeQuestion": "Which features of a test have to travel with its result before another crew can use it?",
+      "objectives": [
+        {
+          "id": "joined.cloth.handoff",
+          "title": "Compare the two supports and check a transfer at the receiving rack or ledge.",
+          "essential": false,
+          "done": { "all": [
+            { "flag": "joined.cloth.trial.beam.centre", "eq": true },
+            { "flag": "joined.cloth.trial.beam.edge", "eq": true },
+            { "flag": "joined.cloth.trial.separate.centre", "eq": true },
+            { "flag": "joined.cloth.trial.separate.edge", "eq": true },
+            { "any": [
+              { "all": [{ "flag": "joined.cloth.destination", "eq": "rack" }, { "flag": "joined.cloth.used", "eq": "rack" }] },
+              { "all": [{ "flag": "joined.cloth.destination", "eq": "ledge" }, { "flag": "joined.cloth.used", "eq": "ledge" }] }
+            ] }
+          ] },
+          "onComplete": [{ "journal": "j.joined.cloth.handoff" }],
+          "weave": {
+            "concepts": ["evidence", "objectivity", "explanation", "justification", "responsibility"],
+            "framework": ["scope", "methods-and-tools", "ethics"],
+            "thinking": { "dok": 3, "bloom": "analyse", "fink": "application", "solo": "relational" },
+            "atl": ["research", "thinking", "communication"],
+            "aoks": ["NAT", "HIS", "ART"],
+            "subjects": ["physics", "design-tech", "math-ai"],
+            "minutes": 4
+          }
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.joined.cloth.handoff",
+      "claimKind": "observation",
+      "text": "I kept the packet the same and moved it on two layouts. At the receiver I recorded which support cleared the model stop in the place the crew actually uses. The joined tapa cloth has its own catalogue entry."
+    }
+  ],
+  "hints": [
+    { "id": "h.joined.cloth.1", "objective": "joined.cloth.handoff", "depth": 1, "text": "Equip the joined tapa cloth working copy. Find the two-panel test frame at the east end of Two-Tide Dock." },
+    { "id": "h.joined.cloth.2", "objective": "joined.cloth.handoff", "depth": 2, "text": "The packet stays the same size. Run it in the middle and at the outer mark on the shared beam." },
+    { "id": "h.joined.cloth.3", "objective": "joined.cloth.handoff", "depth": 3, "text": "Fit one support under each panel and repeat from both marks. Find how far the join moves before the pin." },
+    { "id": "h.joined.cloth.4", "objective": "joined.cloth.handoff", "depth": 4, "text": "Send the centred transfer to the Plan Workshop or send the separate supports to the east ledge. At that receiver, put the packet at the mark that fits the crew’s place and try the transfer." }
+  ]
+}

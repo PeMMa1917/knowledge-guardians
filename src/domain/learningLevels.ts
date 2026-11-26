@@ -7,7 +7,7 @@
  * tags the encounters that live in TypeScript registries (crossings, hearth talks, field games,
  * loyalty missions). Pure data, no DOM.
  */
-import type { Concept } from './types';
+import type { AOK, Concept } from './types';
 
 export type FrameworkPart = 'scope' | 'perspectives' | 'methods-and-tools' | 'ethics';
 export const FRAMEWORK: FrameworkPart[] = ['scope', 'perspectives', 'methods-and-tools', 'ethics'];
@@ -21,6 +21,8 @@ export const SOLO: Solo[] = ['unistructural', 'multistructural', 'relational', '
 export interface LearnTag {
   concepts: Concept[];
   framework: FrameworkPart[];
+  /** Areas and optional themes encountered on every normal completion route. */
+  aoks?: readonly AOK[];
   dok: 1 | 2 | 3 | 4;
   bloom: Bloom;
   fink: Fink;
@@ -65,10 +67,12 @@ export const LEARN: Record<string, LearnTag> = {
   'hearth:harrowmere': t(['responsibility', 'values', 'power'], [E], 4, 'evaluate', 'caring', 'extended', 3),
   'hearth:farewell': t(['values', 'responsibility'], [E], 1, 'remember', 'caring', 'unistructural', 2),
   // Field games (src/domain/fieldgames.ts)
-  'field:doors': t(['certainty', 'evidence', 'justification'], [M], 3, 'analyse', 'application', 'relational', 8),
+  // The counting frame runs with an informed host and a forgetful host before completion.
+  'field:doors': { ...t(['certainty', 'evidence', 'justification'], [M], 3, 'analyse', 'application', 'relational', 8), aoks: ['MAT', 'TEC'] },
   'field:guests': t(['certainty', 'explanation'], [M, S], 2, 'apply', 'foundational', 'multistructural', 6),
   'field:slate': t(['interpretation', 'culture', 'objectivity'], [S, M], 3, 'evaluate', 'integration', 'relational', 6),
-  'field:word': t(['power', 'perspective', 'values'], [P, E], 4, 'create', 'human', 'extended', 8),
+  // Before painting, players see the same readers react to at least two wordings of the same toll.
+  'field:word': { ...t(['power', 'perspective', 'values'], [P, E], 4, 'create', 'human', 'extended', 8), aoks: ['HUM', 'LAN'] },
   'field:bones': t(['evidence', 'certainty'], [M], 2, 'apply', 'application', 'multistructural', 6),
   'field:ballad': t(['truth', 'evidence', 'power'], [E, M], 2, 'evaluate', 'learning-to-learn', 'multistructural', 5),
   'field:stars': t(['interpretation', 'culture', 'perspective', 'objectivity'], [P, S, M], 3, 'create', 'integration', 'relational', 7),

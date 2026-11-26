@@ -169,6 +169,8 @@ import { EARLIER_VIEWING } from '../content/earlierViewing';
 import { earlierViewingPanel } from './earlierViewing';
 import { BEATER_GAME } from '../domain/beaterProof';
 import { beaterProofPanel } from './beaterProof';
+import { JOINED_CLOTH_GAME, JOINED_CLOTH_OBJECTIVE } from '../domain/joinedCloth';
+import { joinedClothPanel } from './joinedCloth';
 import { CURTAIN_PREFIX } from '../content/curtainCall';
 import { curtainCallPanel } from './curtainCall';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
@@ -3167,6 +3169,10 @@ export class UI implements UIApi {
       this.openModal('bench-panel wide', 'Both Faces at the Same Stop', this.closeBtn(), beaterProofPanel(ctx.controller,
         id.slice(BEATER_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
         localGuide(ctx.controller, MAPS[ctx.controller.state.mapId]?.world ?? '', 'beater.proof.placed'));
+    } else if (id.startsWith(JOINED_CLOTH_GAME)) {
+      this.openModal('bench-panel wide', 'The Two Supports', this.closeBtn(), joinedClothPanel(ctx.controller,
+        id.slice(JOINED_CLOTH_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
+        localGuide(ctx.controller, MAPS[ctx.controller.state.mapId]?.world ?? '', JOINED_CLOTH_OBJECTIVE));
     } else if (id.startsWith(STAR_GAME)) {
       this.openModal('bench-panel wide', 'Field methods', this.closeBtn(), starField(ctx.controller,
         id.slice(STAR_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));

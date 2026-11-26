@@ -39,6 +39,17 @@ describe('rolling TOK opportunity floor', () => {
     expect(report.rolling[1].gaps).toEqual([{ from: 30, until: null, below: ['concepts', 'framework', 'areas'] }]);
   });
 
+  it('counts separate authored actions and keeps repeats at one use per tag', () => {
+    const source = { id: 'trace the bench mark', concepts: ['truth', 'certainty'], framework, aoks: ['HIS', 'TEC'] };
+    const report = auditCourseFloor(40, [
+      { ...source, minute: 2 }, { ...source, minute: 8 },
+      { id: 'use the fitted notice', minute: 11, concepts: ['truth'], framework: ['scope'], aoks: ['HIS', 'POL'] },
+    ]);
+    expect(report.rolling[0].firstWindow).toMatchObject({ distinctActions: 2, singleActionTags: {
+      concepts: ['certainty'], framework: ['methods-and-tools'], areas: [], optionalThemes: ['TEC', 'POL'],
+    } });
+  });
+
   it('distinguishes a partial hour and a terminal failure with zero duration', () => {
     const evidence = [{ id: 'publish a bounded claim', minute: 1, concepts, framework, aoks: ['HIS', 'LAN'] }];
     const short = auditCourseFloor(19, evidence);
@@ -51,7 +62,7 @@ describe('rolling TOK opportunity floor', () => {
     expect(() => auditCourseFloor(0, evidence)).toThrow(RangeError);
   });
 
-  it('uses the authored Nexus classifications and leaves registry topic labels unknown', () => {
+  it('uses the authored Nexus classifications and leaves absent framework labels unknown', () => {
     const pack = buildPack();
     const tags = courseTags(pack);
     const route = estimatedCourseEncounters(playPath(pack, 'story'), tags);
@@ -59,13 +70,32 @@ describe('rolling TOK opportunity floor', () => {
     const trial = route.encounters.find(({ id }) => id === 'm01.o4.test')!;
     expect(start).toMatchObject({ minute: 3, framework: undefined, aoks: ['HIS'] });
     expect(trial).toMatchObject({ minute: 16, framework: ['methods-and-tools'], aoks: ['NAT', 'TEC'] });
-    expect(tags.get('field:doors')?.aoks).toBeUndefined();
-    expect(tags.get('field:doors')?.framework).toEqual(['methods-and-tools']);
     const first = auditCourseFloor(route.duration, route.encounters).firstHour;
     expect(first.unknownEncounters.framework).toContain('m01.o1.look');
     expect(first.present.areas).toContain('NAT');
     expect(first.present.optionalThemes).toContain('TEC');
     expect(first.present.optionalThemes).not.toContain('NAT');
+  });
+
+  it('counts explicit registry topics at completion and leaves contingent topics unknown', () => {
+    const pack = buildPack();
+    const tags = courseTags(pack);
+    const { encounters, duration } = estimatedCourseEncounters(playPath(pack, 'puzzler'), tags);
+    const required = {
+      'field:doors': { areas: ['MAT'], optionalThemes: ['TEC'] },
+      'field:word': { areas: ['HUM'], optionalThemes: ['LAN'] },
+    };
+    for (const [id, topics] of Object.entries(required)) {
+      const completed = encounters.filter((step) => step.id === id);
+      expect(completed).toHaveLength(1);
+      const { wholeRoute } = auditCourseFloor(duration, completed);
+      expect(wholeRoute.present).toMatchObject(topics);
+      expect(wholeRoute.unknownEncounters.topics).toEqual([]);
+    }
+    for (const id of ['field:dig', 'field:ballad', 'crossing:repair-queue', 'crossing:last-lamp']) {
+      expect(tags.has(id)).toBe(true);
+      expect(tags.get(id)?.aoks).toBeUndefined();
+    }
   });
 
   it('covers the 20- and 30-minute opening floors on each modeled itinerary', () => {

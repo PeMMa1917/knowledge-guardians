@@ -349,6 +349,10 @@ Five individual collection records supply the measured edge used at the viewing 
 - Wooden tapa cloth beater from Hawaiʻi, 20th century before 1930. The fitting uses the overall length of 38.7 cm. The equipped return uses the museum’s description of four differently grooved faces to prompt a comparison on the workroom’s plain fictional block. Its contact marks and press settings belong to that model. [CMA 1971.152](https://clevelandart.org/art/1971.152)
 - Feline incense burner from Khurasan, Iran, 1150–1200 CE. The fitting uses its catalogue height of 35.5 cm. [CMA 1948.308](https://clevelandart.org/art/1948.308)
 
+## The Two Supports, Cartographers’ Sea and Island of Models
+
+The Cleveland Museum of Art records the joined tapa cloth from Hawaiʻi as made before 1930. Its two pieces together measure 31.2 × 20.7 cm. The catalogue describes the material as probably paper mulberry bark. Separate piece sizes and the strength of the join remain open. The dock’s blank panels, packet, supports and measured ticks belong to the fictional model. [CMA 1971.160](https://clevelandart.org/art/1971.160)
+
 ## When the Two Clocks Agree, Emberford Study
 
 The study holds exact collection records of cases, dials, shadow clocks, water clocks and musical timekeepers. The simulated readings give the first mark and the elapsed interval in two setups. The figures and practice sounds are original and belong to the model. Named clockmakers, case makers, workshops and other attributions follow the collection records. [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access) · [The Met Open Access](https://www.metmuseum.org/hubs/open-access)

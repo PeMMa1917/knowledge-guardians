@@ -2058,7 +2058,8 @@ describe('rolling TOK coverage audit', () => {
         engineObjectives: route.encounters.reduce((total, { completed }) => total + completed.length, 0),
         marksWithoutObjective: route.encounters.filter(({ completed }) => !completed.length).length,
         metadataMissing: Object.fromEntries(Object.entries(wholeRoute.unknownEncounters).map(([field, ids]) => [field, ids.length])),
-        rolling: rolling.map(({ width, firstWindow, gaps, minutesWithGap }) => ({ width, firstWindow: firstWindow?.present ?? null, gaps, minutesWithGap })),
+        rolling: rolling.map(({ width, firstWindow, gaps, minutesWithGap }) => ({ width, firstWindow: firstWindow?.present ?? null,
+          singleActionTags: firstWindow?.singleActionTags ?? null, firstWindowFormats: route.formatsThrough(width), gaps, minutesWithGap })),
       }));
       return;
     }

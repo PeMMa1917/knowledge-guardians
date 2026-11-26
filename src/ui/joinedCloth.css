@@ -1,0 +1,59 @@
+.joined-cloth .joined-frame {
+  position: relative;
+  padding-block-start: 1.45rem;
+  max-width: 22rem;
+  margin-block: .5rem;
+}
+
+.joined-cloth .joined-panels,
+.joined-cloth .joined-support {
+  display: flex;
+}
+
+.joined-cloth .joined-panels > div {
+  flex: 1;
+  min-height: 1.75rem;
+  border: 1px solid currentColor;
+  background: color-mix(in srgb, currentColor 14%, transparent);
+}
+
+.joined-cloth .joined-packet {
+  position: absolute;
+  display: block;
+  top: .1rem;
+  width: 1.2rem;
+  height: 1.1rem;
+  border: 2px solid currentColor;
+  transform: translateX(-50%);
+}
+
+.joined-cloth .joined-centre { left: 50%; }
+.joined-cloth .joined-edge { left: 82%; }
+
+.joined-cloth .joined-support > span {
+  height: .35rem;
+  background: currentColor;
+  flex: 1;
+}
+
+.joined-cloth .joined-separate {
+  gap: .7rem;
+}
+
+.joined-cloth .joined-trials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: .5rem;
+}
+
+.joined-cloth .joined-travel {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  max-width: 22rem;
+  margin-block: .35rem;
+  text-align: center;
+}
+
+.joined-cloth .joined-travel span { border: 1px solid currentColor; }
+.joined-cloth .joined-pin { border-inline-end-width: .2rem; }
+.joined-cloth .joined-measured { font-weight: 700; text-decoration: underline; }

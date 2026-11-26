@@ -9,6 +9,7 @@ import { ISLAND_SKIFF_LAUNCH, ISLAND_SKIFF_RECEIVERS } from './islandSkiff';
 import { ISLAND_WATER_LOOP, MARGIN_WATER_LOOP } from './waterLoop';
 import { ISLAND_INCENTIVE_DOCK, ISLAND_INCENTIVE_WORKSHOP } from './civicIncentive';
 import { LABEL_LOFT_OUTSIDE } from './asiaLabelLoft';
+import { JOINED_CLOTH_FRAME, JOINED_CLOTH_LEDGE, JOINED_CLOTH_RACK } from './joinedCloth';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'island.waypost'): Interactable {
   return { id, kind: 'door', x, y, w: 1, h: 1, label, to, art };
@@ -50,6 +51,7 @@ export const ISLAND_WORKSHOP: MapDef = {
     ...ISLAND_MOVEMENT_WORKSHOP,
     ...ISLAND_WORKSHOP_FRAMES,
     ...ISLAND_WATER_LOOP,
+    JOINED_CLOTH_RACK,
     door('island-dock-path', 4, 10, 'the west path to the dock', { map: 'island.dock', x: 7, y: 10 }),
     door('island-margin-path', 24, 10, 'the east path to the quiet margin', { map: 'island.margin', x: 5, y: 10 }),
     door('island-nexus-return', 13, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 34, y: 12 }, 'preserved.door'),
@@ -117,6 +119,8 @@ export const ISLAND_DOCK: MapDef = {
     ...ISLAND_INCENTIVE_DOCK,
     ...ISLAND_MOVEMENT_DOCK,
     ...ISLAND_DOCK_FRAMES,
+    JOINED_CLOTH_FRAME,
+    JOINED_CLOTH_LEDGE,
     ISLAND_SKIFF_LAUNCH,
     { id: 'cross-launch', kind: 'fieldgame', game: 'cross-launch', x: 18, y: 6, w: 1, h: 1, label: 'the launch board on the dock (a crossing)', art: 'signpost' },
     ...ISLAND_LANTERN_FAIR,

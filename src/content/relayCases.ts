@@ -1,4 +1,5 @@
 import type { ContentPack, Hint, Objective } from '../domain/types';
+import { JOINED_CLOTH_MAP, JOINED_CLOTH_PROP, JOINED_CLOTH_SOURCE } from '../domain/joinedCloth';
 import { RELAY_CLIPS, RELAY_WEATHER } from '../domain/specimenRelay';
 import records from './relay-specimens.json';
 
@@ -69,6 +70,11 @@ export const relayContent = {
       source: record.source,
       objective: record.objective,
       pixelAsset: record.asset,
+      ...(record.source === JOINED_CLOTH_SOURCE ? {
+        revisit: { map: JOINED_CLOTH_MAP, prop: JOINED_CLOTH_PROP,
+          method: 'Compare a shared beam and independent supports under the same model packet.',
+          hint: 'Equip the working copy and find the two-panel test frame at the east end of Two-Tide Dock.' },
+      } : {}),
     },
   })),
   cards: RELAY_CASES.map((record) => ({
