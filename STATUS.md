@@ -4,6 +4,10 @@ This file is for the next developer, human or AI. Read [AGENTS.md](AGENTS.md) fi
 
 Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master specification is version 3, expanded from version 2.10. See [the design summary](docs/DESIGN_SUMMARY.md).
 
+## Accounts and hosting (planned, 26 November 2026)
+
+Mika chose Cloudflare (Workers + D1) with our own login. Students use a username only, with no email. Teachers reset student passwords. Nothing is built yet. Read [docs/ACCOUNTS_AND_HOSTING.md](docs/ACCOUNTS_AND_HOSTING.md) before you add any login, online save or class feature.
+
 ## Playtest build
 
 Neris follows the signed Civic Callboard passage to the source desk during the same visit. The old bench becomes walkable. If the Guardian is standing where a character is due to arrive, the character waits for room. A click on a departing character drops the old walking target. Other encounters with conditional characters use the same movement rules. Tull now gives his first research question in dialogue and explains what it left out. [Browser regression](tools/smoke-navigation.mjs) · [Word histories](tests/glossary.test.ts)
