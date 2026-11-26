@@ -182,6 +182,7 @@ The sources and object limits are in `docs/SOURCES.md`; the rooms and their fict
 ## Expanded stories across the opening
 
 - **A Copy for the Ferry:** prepare the packet from dated records, workshop strips or translation proofs. Choose a public reader or copies, then meet the packet again at Tova's landing.
+- **The Same Stroke:** run both pens on paper and wood. The comparison matters differently to the catalogue clerk and the bundle carrier, who read different surfaces at work.
 - **The Copy in the Square:** trace how a claim travelled in Emberford and decide who should carry the correction. The new notice and the buyer's response depend on the handover.
 - **Two Tags on the Line:** take the same cuttings from shade to open light, keep each observation with its conditions, and choose whether the dye or ferry crew’s use of “ready” goes first.
 - **The Borrowed Mark and A Slip Comes Back:** compare a craft record with a shared method, then choose a label that leaves the first maker open. After dispatch, find the reader's reply and decide where to leave the response.
@@ -213,6 +214,8 @@ The Observatory correction opens the Living Forest. Take equal three-beat watche
 
 **A Bridge in Two Views** puts the same crossing in two sketch frames. Trace what each position lets you see, then make a paired guide in the clearing or place the views at the approaches. Check both views in the chosen display.
 
+**The Missing Square** lets players recover a clear-zero entry and a blocked entry from the field register. Use a table or a handover slip, see how a reader interpreted it, and revise either format.
+
 ## Chapter 6: The Blue Panels
 
 The revised Living Forest notice opens the Sample Yard. Zero the empty balance at each stand, measure two same-sized panels and check the different readings without naming a material from the weight alone. Compare the separate workshop papers and choose a window comparison or ledger-first notice. The later transfer docket connects the crates for one cart trip. Each response leaves a place to record that shared trip without merging the earlier histories.
@@ -229,6 +232,16 @@ An optional translation press follows a local phrase between the hall and landin
 
 The City correction opens Seagrass Steps. Inspect the named marks and reach of the walking chart and the shoal survey, then trace the local names through the Lantern House route book. Publish a shore-first chart or pair the separate surveys at the landing. The reader response points to an unmapped place that needs an explicit limit. Mark the blank and optionally leave a wider labelled key.
 
+**A Roof and Two Lights** tests different symbols with the same drawing and readers. Check where both symbols point, then leave a key at Market Rail or the skiff.
+
+## Chapter 9: The Doorway Pause
+
+The published survey limits open the House of Performance. Rehearse the same words and crate move with silence before or after the move. Compare what the stage plan and separate seats let people observe, then stage either version. Revise the programme after an audience member asks what they can infer from their seat. Players can leave a cue copy for the understudy or take a related question back to the City. The signed register can settle the lending rule, while the cue and sightline describe the stage action and leave motive open.
+
+## Learning design review
+
+The [learning design review](docs/TOK_ALIGNMENT.md) uses the supplied course guide, examiner observations, exhibition commentary and teaching guidance. It links recurring concerns to existing playable actions and gives authors questions about the evidence, the audience and what happens when a conclusion moves to a new context.
+
 ## Thirty-minute design audit
 
-Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Twelve of the sixteen routes reach all 12 concepts and four framework areas within their first estimated half hour. The Cartographers’ Sea trace does so after checking the draft page-edge claim against both surveys. The Royal Records route reaches explanation and objectivity before its first window closes with the Tilt Tray stop. The route straight to the cart reaches them at the estimated 31-minute comparison. Some routes and later windows still show gaps. The report also flags windows where a dimension depends on one distinct annotated action. The route actions and estimates are visible so unassisted timed playtests can challenge them.
+Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Thirteen of the eighteen routes reach all 12 concepts and four framework areas within their first estimated half hour. The House of Performance rehearsal-first route does so after checking the printer’s claim against both cue orders. Its gallery-first route brings five dimensions into play at the estimated 32-minute staging decision. Some routes and later windows still show gaps. The report also flags windows where a dimension depends on one distinct annotated action. The route actions and estimates are visible so unassisted timed playtests can challenge them.

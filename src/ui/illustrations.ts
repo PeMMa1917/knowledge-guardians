@@ -948,6 +948,52 @@ DRAW['sea.margin'] = [16, 24, (g) => {
   R(g, '#ac7868', 11, 10, 2, 1);
   R(g, '#ac7868', 12, 11, 1, 1);
 }];
+
+// House of Performance stage, printed programmes and two cue boards.
+DRAW['stage.waypost'] = [16, 24, (g) => {
+  R(g, '#503b4a', 3, 4, 10, 20);
+  R(g, '#99725f', 1, 6, 14, 9);
+  R(g, '#d6af75', 2, 5, 12, 2);
+  R(g, '#a76372', 3, 7, 4, 6);
+  R(g, '#a76372', 9, 7, 4, 6);
+  R(g, '#e4cc95', 7, 10, 2, 2);
+}];
+DRAW['stage.rehearsal'] = [24, 24, (g) => {
+  pedestal(g, 1, 15, 22);
+  R(g, '#533d52', 2, 4, 20, 12);
+  R(g, '#944f62', 2, 4, 4, 10);
+  R(g, '#944f62', 18, 4, 4, 10);
+  R(g, '#d0a579', 6, 12, 12, 3);
+  R(g, '#b9b1c5', 11, 6, 5, 7);
+  R(g, '#493e4f', 12, 7, 3, 6);
+  R(g, '#ad795d', 8, 10, 3, 3);
+  R(g, '#e2c399', 8, 10, 3, 1);
+}];
+DRAW['stage.programme'] = [16, 24, (g) => {
+  smallTable(g);
+  paper(g, 2, 4, 12, 11);
+  R(g, '#9f5c76', 3, 4, 10, 2);
+  for (const y of [8, 10, 12]) R(g, '#7d6f6d', 4, y, 7, 1);
+}];
+DRAW['stage.cues'] = [16, 24, (g) => {
+  R(g, '#4e405d', 2, 5, 12, 18);
+  paper(g, 2, 4, 12, 10);
+  R(g, '#9d8daa', 3, 6, 4, 6);
+  R(g, '#c39670', 9, 7, 3, 3);
+  R(g, '#736f83', 7, 9, 3, 1);
+}];
+
+function stageCueBoard(g: Ctx, pauseFirst: boolean) {
+  R(g, '#5a485c', 3, 4, 10, 18);
+  paper(g, 2, 3, 12, 12);
+  const pause = pauseFirst ? 5 : 9;
+  const move = pauseFirst ? 9 : 5;
+  R(g, '#aa8ba5', 4, pause, 8, 1);
+  R(g, '#637e91', 4, move, 8, 2);
+  R(g, '#b7d2cd', 9, move, 2, 1);
+}
+DRAW['stage.pause'] = [16, 24, (g) => stageCueBoard(g, true)];
+DRAW['stage.move'] = [16, 24, (g) => stageCueBoard(g, false)];
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

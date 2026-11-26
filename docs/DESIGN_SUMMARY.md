@@ -19,6 +19,7 @@ The game does not grade the player. It gives the same credit for every reasoned 
 - Chapter 6 opens the Metalworks yard and Trade Hall. Players compare panels on a zeroed balance, read the workshop records, and decide how to make the separate trails visible.
 - Chapter 7 opens the City of Copies. Players line up editions, track where each copy travels, and restore the context that readers need to act on a notice.
 - Chapter 8 opens the Cartographers’ Sea. Named places and survey edges can be inspected independently. Readers use the walking chart and shoal survey for different jobs, and their questions change the public key.
+- Chapter 9 opens the House of Performance. A cue table lets players move the silence while keeping the words and action steady. Readers from different seats prompt a programme correction.
 
 ## Core tools (play, not quizzes)
 

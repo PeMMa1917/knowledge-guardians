@@ -10,6 +10,8 @@ import type { MapDef } from './types';
 import { sceneProp } from './sceneProps';
 
 const W = 40, H = 20;
+const strokeRequested: Condition = { flag: 'nexus.stroke.requested', eq: true };
+const strokeUnposted: Condition = { not: { flagSet: 'nexus.stroke.display' } };
 
 const ferryShelf: [state: string, art: string, visible: Condition][] = [
   ['shelf', 'board-stand', { not: { flagSet: 'nexus.ferry.packet' } }],
@@ -93,6 +95,18 @@ export const NEXUS: MapDef = {
       { date: 'ledger', gloss: 'nile.scroll' }),
     ...sceneProp('nexus.route-board', 18, 14, 'the visitors’ route board', 'cork-board',
       { objects: 'nile.map', sources: 'ledger' }),
+    { id: 'nexus-stroke-brief', kind: 'scene', x: 18, y: 17, w: 1, h: 1, label: 'the bench request from the clerk and the carrier',
+      art: 'preserved.slip', walkThrough: true, node: 'nexus.stroke.brief',
+      visibleIf: { all: [{ flag: 'talked.ise', eq: true }, { not: strokeRequested }] } },
+    { id: 'nexus-stroke-layout', kind: 'scene', x: 18, y: 17, w: 1, h: 1, label: 'the stand for the four bench strips',
+      art: 'board-stand', walkThrough: true, node: 'nexus.stroke.layout',
+      visibleIf: { all: [strokeRequested, strokeUnposted] } },
+    { id: 'nexus-stroke-ledger', kind: 'scene', x: 14, y: 15, w: 1, h: 1, label: 'the two-surface comparison by the ledger',
+      art: 'preserved.display-paired', walkThrough: true, node: 'nexus.stroke.ledger',
+      visibleIf: { flag: 'nexus.stroke.display', eq: 'ledger' } },
+    { id: 'nexus-stroke-carrier', kind: 'scene', x: 18, y: 15, w: 1, h: 1, label: 'the two-surface comparison by the bundles',
+      art: 'copies.strip', walkThrough: true, node: 'nexus.stroke.carrier',
+      visibleIf: { flag: 'nexus.stroke.display', eq: 'carrier' } },
     // One shelf carries the request, the prepared envelope and the edition kept for visitors.
     ...ferryShelf.map(([state, art, condition]) => ({
       id: `nexus.ferry.${state}`, kind: 'scene' as const, node: `nexus.ferry.${state}`,
@@ -133,6 +147,9 @@ export const NEXUS: MapDef = {
     { id: 'sea-door', kind: 'door', x: 20, y: 13, w: 1, h: 1, label: 'the passage to the Cartographers’ Sea', art: 'sea.waypost',
       walkThrough: true, visibleIf: { objective: 'copies.revise' }, flag: 'sea.arrived',
       to: { map: 'sea.harbour', x: 12, y: 12 } },
+    { id: 'stage-door', kind: 'door', x: 19, y: 12, w: 1, h: 1, label: 'the passage to the House of Performance', art: 'stage.waypost',
+      walkThrough: true, visibleIf: { objective: 'sea.finish' }, flag: 'stage.arrived',
+      to: { map: 'stage.foyer', x: 12, y: 12 } },
     { id: 'preserved-return-desk', kind: 'sign', x: 37, y: 16, w: 1, h: 1, label: 'the Cold Store reference copy', art: 'ledger', walkThrough: true,
       text: 'The docket points to the separate royal and coastal records. One line is left open for the transfer we cannot trace.',
       visibleIf: { flag: 'preserved.reply', eq: 'desk' } },

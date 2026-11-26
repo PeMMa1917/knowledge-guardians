@@ -3,6 +3,7 @@ import { FOREST_WATCH, FOREST_WINDOWS, forestWatch, type ForestWindow } from '..
 import { METAL_SAMPLES, readMetalSample } from '../domain/metalSample';
 import { compareCopy } from '../domain/copyComparison';
 import { seaChart } from '../domain/seaCharts';
+import { STAGE_CUES, stageRehearsal, type StageCue } from '../domain/stageRehearsal';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -3229,6 +3230,64 @@ export class UI implements UIApi {
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
+  openStageRehearsal(): void {
+    const controller = ctx.controller;
+    const labels = { pause: 'Pause before the move', move: 'Move before the pause' };
+    const picture = h('canvas', { width: '170', height: '82', class: 'mark', 'aria-hidden': 'true' }) as HTMLCanvasElement;
+    const controls = h('div', { class: 'row' });
+    const captions = h('ol', { class: 'history' });
+    const live = h('p', { role: 'status', 'aria-live': 'polite' });
+    const paint = (moved: boolean) => {
+      const g = picture.getContext('2d');
+      if (!g) return;
+      g.fillStyle = '#302c48'; g.fillRect(0, 0, 170, 82);
+      g.fillStyle = '#80556d'; g.fillRect(0, 0, 19, 63); g.fillRect(151, 0, 19, 63);
+      g.fillStyle = '#b38b67'; g.fillRect(19, 62, 132, 20);
+      g.fillStyle = '#d2ae79'; g.fillRect(116, 16, 24, 46);
+      g.fillStyle = '#4d474f'; g.fillRect(120, 20, 16, 42);
+      const actor = (x: number, colour: string) => {
+        g.fillStyle = '#e0bd91'; g.fillRect(x + 3, 34, 8, 8);
+        g.fillStyle = colour; g.fillRect(x, 42, 14, 15);
+        g.fillStyle = '#292a35'; g.fillRect(x + 2, 57, 4, 5); g.fillRect(x + 8, 57, 4, 5);
+      };
+      actor(moved ? 92 : 39, '#4e9186');
+      actor(128, '#ca9b5b');
+      const crate = moved ? 108 : 58;
+      g.fillStyle = '#7e5d4e'; g.fillRect(crate, 49, 13, 13);
+      g.fillStyle = '#bc9265'; g.fillRect(crate, 50, 13, 2); g.fillRect(crate + 2, 53, 2, 8);
+    };
+    const choose = () => {
+      clear(controls);
+      for (const cue of STAGE_CUES) {
+        const recorded = controller.state.flags[`stage.rehearsal.${cue}`] === true;
+        controls.append(h('button', { type: 'button', onclick: () => start(cue) }, labels[cue] + (recorded ? ' (recorded)' : '')));
+      }
+    };
+    const start = (cue: StageCue) => {
+      const beats = stageRehearsal(cue);
+      let position = 0;
+      clear(captions); clear(controls); paint(false);
+      live.textContent = labels[cue] + '.';
+      const advance = h('button', { type: 'button', onclick: () => {
+        const beat = beats[position++];
+        captions.append(h('li', {}, beat.text));
+        live.textContent = beat.text;
+        if (beat.kind === 'move') paint(true);
+        if (position < beats.length) return;
+        const events = controller.dispatch({ type: 'RunStageRehearsal', cue });
+        if (!events.some((event) => event.kind === 'error')) live.textContent += ' Rehearsal recorded.';
+        choose();
+        controls.querySelector('button')?.focus();
+      } }, 'Advance the rehearsal');
+      controls.append(advance);
+      advance.focus();
+    };
+    choose();
+    paint(false);
+    this.openModal('stage-rehearsal', 'Cue table', this.closeBtn(), h('h2', {}, 'Cue table'),
+      h('p', {}, 'Place the pause and see how the order changes the scene.'), picture, controls, captions, live);
   }
 
   openSeaChart(chartId: string): void {

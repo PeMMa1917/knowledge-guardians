@@ -11,6 +11,7 @@ import { FOREST_STATION, FOREST_TRAIL, FOREST_COMMUNITY } from './forest';
 import { METALWORKS_YARD, METALWORKS_RECORDS } from './metalworks';
 import { COPIES_ARCHIVE, COPIES_PRESS, COPIES_LANDING } from './copies';
 import { SEA_HARBOUR, SEA_CHARTROOM, SEA_SHOAL } from './sea';
+import { STAGE_FOYER, STAGE_GALLERY, STAGE_REHEARSAL } from './stage';
 
 export const MAPS: Record<string, MapDef> = {
   [NEXUS.id]: NEXUS,
@@ -44,4 +45,7 @@ export const MAPS: Record<string, MapDef> = {
   [SEA_HARBOUR.id]: SEA_HARBOUR,
   [SEA_CHARTROOM.id]: SEA_CHARTROOM,
   [SEA_SHOAL.id]: SEA_SHOAL,
+  [STAGE_FOYER.id]: STAGE_FOYER,
+  [STAGE_REHEARSAL.id]: STAGE_REHEARSAL,
+  [STAGE_GALLERY.id]: STAGE_GALLERY,
 };

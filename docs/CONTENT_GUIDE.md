@@ -97,6 +97,8 @@ Most records have a `weave` field: `{ "concepts": [...], "atl": [...], "aoks": [
 
 In the opening Nexus route, put the ideas on the path from the entrance to the portal. Keep a first-session playtest focused on what a new player actually does in their first 30 minutes. Follow the main route and try it again with a player who wanders. Record which ideas each player actually meets.
 
+Use the [learning design review](TOK_ALIGNMENT.md) to check how objects, consequences and different viewpoints support the reasoning. Course aims, examiner observations and teaching suggestions have separate roles in that review.
+
 Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to check the authored route estimates before a session. The traces execute real content actions and assign estimated times to the moments where players can meet each concept or framework part. A rolling gap means a tagged action fell outside that modeled window. The report also flags dimensions that rely on only one distinct annotated action in any full window. Repeating an action with the same description does not add variety. The report uses synthetic routes and gives no evidence of how long students will spend or which ideas they will notice.
 
 | Opening action | What the player can notice |

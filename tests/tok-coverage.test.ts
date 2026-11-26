@@ -4,6 +4,7 @@ import { forestWatch, type ForestWindow } from '../src/domain/forestWatch';
 import { readMetalSample } from '../src/domain/metalSample';
 import { check } from '../src/domain/rules';
 import { seaChart } from '../src/domain/seaCharts';
+import { stageRehearsal, type StageCue } from '../src/domain/stageRehearsal';
 import { MAPS } from '../src/maps';
 import { coverageGaps, singleActionDimensions, type TimedEncounter } from '../tools/tok-coverage';
 import { Driver } from './driver';
@@ -644,6 +645,81 @@ function cartographersSea(): Route {
   return route;
 }
 
+function runStage(d: Driver, cue: StageCue) {
+  const stand = MAPS[d.s.mapId].interactables.find((p) => p.kind === 'stage-rehearsal');
+  expect(stand).toBeDefined();
+  expect(check(stand?.visibleIf, d.s), 'rehearsal stand visible').toBe(true);
+  const beats = stageRehearsal(cue);
+  expect(beats.map((beat) => beat.kind)).toEqual(['line', cue, cue === 'pause' ? 'move' : 'pause', 'line']);
+  d.run({ type: 'RunStageRehearsal', cue });
+  expect(d.s.flags[`stage.rehearsal.${cue}`]).toBe(true);
+  return beats;
+}
+
+function houseOfPerformance(firstCue: StageCue): Route {
+  const route = new Route();
+  const galleryFirst = firstCue === 'move';
+  const extra = galleryFirst ? 3 : 0;
+  const alternateCue = galleryFirst ? 'pause' : 'move';
+  // Independent Chapter 9 session. Both survey edges have been published.
+  route.driver.s.objectivesDone.push('sea.finish');
+  useDoor(route.driver, 'stage-door');
+  expect(route.driver.done('stage.arrival')).toBe(true);
+  readSign(route.driver, 'stage-foyer-programme');
+  if (galleryFirst) route.at(7, 'Start from the gallery and find the post that hides the crate from the side seats', ['perspective', 'perspectives', 'scope'], (d) => {
+    useDoor(d, 'stage-gallery-path');
+    readSign(d, 'stage-vantage');
+    d.talk('stage-host');
+  });
+  route.at(10 + extra, 'Check the positions in the blocking plan and run one order of the scene', ['evidence', 'scope', 'methods-and-tools'], (d) => {
+    useDoor(d, galleryFirst ? 'stage-gallery-to-rehearsal' : 'stage-rehearsal-path');
+    d.talk('stage-director');
+    readSign(d, 'stage-blocking');
+    readSign(d, 'stage-script-draft');
+    runStage(d, firstCue);
+    expect(d.s.flags[`stage.rehearsal.${alternateCue}`]).toBeUndefined();
+  });
+  route.at(16 + extra, 'Reverse silence and movement with the same spoken lines and crate move', ['objectivity', 'explanation', 'evidence', 'methods-and-tools'], (d) => {
+    const second = runStage(d, alternateCue);
+    const first = stageRehearsal(firstCue);
+    expect(first[0]).toEqual({ kind: 'line', text: 'Keeper: “Leave it by the door.”' });
+    expect(first[3]).toEqual({ kind: 'line', text: 'Worker: “I can wait.”' });
+    expect(second).toEqual([first[0], first[2], first[1], first[3]]);
+  });
+  route.at(21 + extra, galleryFirst ? 'Check the printer’s claim and place the movement marks side by side' : 'Check the printer’s claim and circle the different pauses', ['truth', 'interpretation', 'certainty', 'explanation', 'scope'], (d) => {
+    d.talk('stage-director', galleryFirst ? 'Set the two movement marks' : 'Circle the pause');
+    expect(d.done('stage.compare')).toBe(true);
+    readSign(d, 'stage-script-checked');
+  });
+  route.at(25 + extra, galleryFirst ? 'Keep the full front view and mark what a neighbour’s seat hides' : 'Give the side-seat account a place beside the same spoken lines', ['perspective', 'culture', 'perspectives'], (d) => {
+    useDoor(d, 'stage-rehearsal-to-gallery');
+    if (!galleryFirst) readSign(d, 'stage-vantage');
+    d.talk('stage-host', galleryFirst ? 'Keep a front-seat view' : 'Keep the side view');
+    expect(d.done('stage.sightline')).toBe(true);
+  });
+  route.at(29 + extra, galleryFirst ? 'Stage the crate move first so it catches the eye before the quiet beat' : 'Stage the silence first to give the worker a visible wait', ['values', 'power', 'responsibility', 'justification', 'ethics'], (d) => {
+    d.talk('stage-host', galleryFirst ? 'Stage the crate move' : 'Stage the silence');
+    expect(d.done('stage.perform')).toBe(true);
+    expect(d.s.flags['stage.response']).toBe(firstCue);
+    readSign(d, `stage-response-${firstCue}`);
+  });
+  route.at(36 + extra, 'Read an audience account that leaves the worker’s reason in question', ['perspective', 'interpretation', 'perspectives'], (d) => {
+    readSign(d, 'stage-reader-note');
+    expect(d.done('stage.feedback')).toBe(true);
+  });
+  route.at(41 + extra, 'Record what the actor did and what each seat could see so readers can check their accounts', ['truth', 'certainty', 'responsibility', 'justification', 'scope', 'ethics'], (d) => {
+    d.talk('stage-host', galleryFirst ? 'Add the movement cue' : 'Add the pause cue');
+    expect(d.done('stage.finish')).toBe(true);
+    readSign(d, 'stage-followup-notice');
+  });
+  route.at(47 + extra, 'Give the understudy a large copy for rehearsing either order', ['objectivity', 'perspective', 'responsibility', 'perspectives', 'methods-and-tools'], (d) => {
+    d.talk('stage-host', 'Leave the understudy');
+    expect(d.done('stage.access')).toBe(true);
+    readSign(d, 'stage-cue-copy');
+  });
+  return route;
+}
+
 describe('rolling TOK coverage audit', () => {
   it('checks gaps between sampled actions and expires an encounter at the window boundary', () => {
     const encounters: TimedEncounter[] = [
@@ -693,6 +769,8 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Metalworks with the Turned Tag investigation', end: 57, play: () => metalworks(true) },
     { name: 'City of Copies from a prepared Chapter 6 save', end: 51, play: cityOfCopies },
     { name: 'Cartographers’ Sea from a prepared Chapter 7 save', end: 51, play: cartographersSea },
+    { name: 'House of Performance with the silence first', end: 51, play: () => houseOfPerformance('pause') },
+    { name: 'House of Performance starting from a gallery seat', end: 54, play: () => houseOfPerformance('move') },
   ])('can execute the modeled route for $name and report its gaps', ({ name, end, play }) => {
     const route = play();
     const gaps = coverageGaps(end, route.encounters);

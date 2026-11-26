@@ -2,7 +2,7 @@
 
 Knowledge Guardians is a 2D top-down pixel-art RPG for IB Diploma Theory of Knowledge (TOK) students. The player is a new Knowledge Guardian. The player examines real historical objects, compares claims and evidence, and makes honest labels.
 
-The playable opening begins in the Nexus and continues across eight chapters:
+The playable opening begins in the Nexus and continues across nine chapters:
 
 1. **Chapter 1, the Nexus and Emberford.** Compare Loud's 1888 patent, a Bíró pen made between 1945 and 1948, and a modern workshop model. Run a fair test and argue your case in a practice Showdown. A claim that outruns the evidence makes the room glow and distorts what visitors repeat. In Emberford, trace the origin of Corvan's patterned blade, compare schematic billets and face the public Showdown. Send a packet to the ferry or carry a correction to the square when you want to see how your work travels.
 2. **Chapter 2, The Door Without a Name.** Enter the Nile Archive from the Nexus. Choose two of three leads, send a packet and see where it arrives. An optional craft investigation and a reply from the first readers give you reasons to return.
@@ -12,6 +12,7 @@ The playable opening begins in the Nexus and continues across eight chapters:
 6. **Chapter 6, The Blue Panels.** Weigh two panels that look alike. Trace their separate records, choose how the Trade Hall presents the evidence, and decide what a later transfer docket changes.
 7. **Chapter 7, The Missing Tuesday.** Compare a trial log, a press sheet and a landing notice. Restore the missing date and source by reprinting the sheet or sending corrections to the older copies. Check how a reader uses the repair.
 8. **Chapter 8, Where the Ink Stops.** Compare walking and shoal surveys and follow the local place names. Choose which chart a reader sees first, then show where each survey stops.
+9. **Chapter 9, The Doorway Pause.** Rehearse the same lines and movements with a different place for the silence. Stage a version for the gallery, then use audience accounts to revise its programme.
 
 Along the way: random events from a fair, seeded deck (calm mode can delay them), learner-profile moments in the journal, a private portfolio, and misconception reflections. A separate **teacher view** (`teacher.html`) builds a class dashboard and student reports from progress files that students choose to share.
 
@@ -83,6 +84,7 @@ Settings include calm mode (delay random events), text size, reduced motion, red
 - [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md): how to add missions, dialogue, exhibits and maps.
 - [docs/ASSETS.md](docs/ASSETS.md): how to find, add and credit art and audio.
 - [docs/SOURCES.md](docs/SOURCES.md): the historical objects and the sources for each claim.
+- [docs/TOK_ALIGNMENT.md](docs/TOK_ALIGNMENT.md): how the course aims, examiner observations and teaching guidance inform the gameplay.
 
 ## Status and limits
 
@@ -100,4 +102,4 @@ Settings include calm mode (delay random events), text size, reduced motion, red
 
 ## Finding later chapters
 
-The Nile Archive follows Elsbet's letter. Finish the main Emberford story, read the letter in her study and return to Ise in the Nexus. The blue-and-brass door is at the north end of the east wing. Complete two leads in any order, send a first packet with Imani and follow it back to Ise. That return opens the Cold Store in the southeast corner of the Nexus. Opening the Cold Store display or inquiry desk reveals the Observatory Coast waypost. Correcting the Observatory notice reveals the Living Forest passage in the south part of the hall. The revised Living Forest notice opens the Metalworks beside the Nexus workshop bench. Completing the Metalworks transfer correction reveals the City of Copies passage nearby. The City’s separate entry notice opens the Cartographers’ Sea crossing. See [STATUS.md](STATUS.md#chapter-2-the-door-without-a-name).
+The Nile Archive follows Elsbet's letter. Finish the main Emberford story, read the letter in her study and return to Ise in the Nexus. The blue-and-brass door is at the north end of the east wing. Complete two leads in any order, send a first packet with Imani and follow it back to Ise. That return opens the Cold Store in the southeast corner of the Nexus. Opening the Cold Store display or inquiry desk reveals the Observatory Coast waypost. Correcting the Observatory notice reveals the Living Forest passage in the south part of the hall. The revised Living Forest notice opens the Metalworks beside the Nexus workshop bench. Completing the Metalworks transfer correction reveals the City of Copies passage nearby. The City’s separate entry notice opens the Cartographers’ Sea crossing. The revised survey boundaries open the House of Performance. See [STATUS.md](STATUS.md#chapter-2-the-door-without-a-name).

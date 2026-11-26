@@ -33,6 +33,7 @@ export interface UIApi {
   openMetalTrial(sample: string): void;
   openCopyComparison(edition: string): void;
   openSeaChart(chart: string): void;
+  openStageRehearsal(): void;
   openTalents(atWaystone?: boolean): void;
   openLedger(): void;
   openClue(id: string): void;

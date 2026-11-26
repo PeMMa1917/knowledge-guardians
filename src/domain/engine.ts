@@ -3,6 +3,7 @@ import { forestWatch, type ForestWindow } from './forestWatch';
 import { readMetalSample } from './metalSample';
 import { compareCopy } from './copyComparison';
 import { seaChart } from './seaCharts';
+import { stageRehearsal, type StageCue } from './stageRehearsal';
 /**
  * Domain engine. Scenes send typed commands; the engine checks preconditions,
  * computes ONE valid state transition and returns events for the view to show
@@ -102,6 +103,7 @@ export type Command =
   | { type: 'CompareMetalSample'; sample: string }
   | { type: 'CompareCopy'; edition: string }
   | { type: 'ReadSeaChart'; chart: string }
+  | { type: 'RunStageRehearsal'; cue: StageCue }
   | { type: 'BuildLabel'; kit: string; subject: string; criterion: string; limit: string }
   | { type: 'TurnLock'; lock: string; choice: Record<string, string> }
   | { type: 'ShowdownStart'; showdown: string; relaxed?: boolean }
@@ -557,6 +559,13 @@ export class Engine {
           if (prevPen !== undefined && changed === 2) fx.push({ addNum: 'sim.unfair', by: 1 });
           s = apply(fx, s, out);
           events.push({ kind: 'simulation', result: { pen: cmd.pen, surface: cmd.surface, markQuality: m.q, note: m.note, fairTest: fair, testCount: count } });
+          break;
+        }
+        case 'RunStageRehearsal': {
+          stageRehearsal(cmd.cue);
+          if (s.mapId !== 'stage.rehearsal' || s.flags['stage.arrived'] !== true) throw new Error('Use the cue table in the House of Performance.');
+          const key = `stage.rehearsal.${cmd.cue}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
         case 'ReadSeaChart': {

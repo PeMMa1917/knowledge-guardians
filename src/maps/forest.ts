@@ -28,6 +28,10 @@ const reviewed: Condition = { flag: 'forest.followup', eq: true };
 const lowRoute: Condition = { flag: 'forest.low-route', eq: true };
 const splitGuide: Condition = { flag: 'forest.guide.form', eq: 'split' };
 const hingedGuide: Condition = { flag: 'forest.guide.form', eq: 'hinged' };
+const gapReady: Condition = { objective: 'forest.finish' };
+const gapFormat = (format: string): Condition => ({ flag: 'forest.gap.format', eq: format });
+const gapEdit = (format: string, edition: string): Condition =>
+  ({ all: [gapFormat(format), { flag: `forest.gap.${format}`, eq: edition }] });
 
 export const FOREST_STATION: MapDef = {
   id: 'forest.station', name: 'Living Forest: Fern Station', world: 'WORLD-06',
@@ -57,6 +61,23 @@ export const FOREST_STATION: MapDef = {
       { flag: 'forest.gombe.credited', eq: true }),
     note('forest-trail-directory', 10, 11, 'the station directory', 'forest.notice',
       'Fern Station. West for the listening trail. East for the bridge clearing. The two cases carry field records from Gombe. The local trail is a Guardian field exercise.'),
+    { ...guideScene('forest-gap-clear', 8, 12, 'the ridge return register', 'preserved.folder', 'forest.gap.register.clear', gapReady),
+      artOpen: { key: 'preserved.catalogue', if: { flag: 'forest.gap.clear', eq: true } } },
+    { ...guideScene('forest-gap-blocked', 20, 12, 'the creek return register', 'preserved.folder', 'forest.gap.register.blocked', gapReady),
+      artOpen: { key: 'preserved.catalogue', if: { flag: 'forest.gap.blocked', eq: true } } },
+    { ...guideScene('forest-gap-press', 10, 13, 'the reader’s copy stand', 'preserved.folder', 'forest.gap.format',
+      { objective: 'forest.gap.o.recover' }),
+      artBy: { flag: 'forest.gap.format', keys: { table: 'preserved.display-paired', slip: 'preserved.slip' } } },
+    guideScene('forest-gap-reader-table', 19, 13, 'the reader’s copy of the table', 'forest.notice', 'forest.gap.read.table', gapFormat('table')),
+    guideScene('forest-gap-reader-slip', 19, 13, 'the reader’s handover slip', 'forest.notice', 'forest.gap.read.slip', gapFormat('slip')),
+    note('forest-gap-table-cells', 13, 13, 'the table with a missing-count cell', 'preserved.display-records',
+      'Ridge, first beat. Clear view and zero crossings. Creek, middle beat. No count because the view was blocked.', gapEdit('table', 'cells')),
+    note('forest-gap-table-headings', 13, 13, 'the table with two view headings', 'preserved.display-paired',
+      'Under “Ridge view clear”, the first beat has a zero. Under “Creek view blocked”, the middle beat has no count.', gapEdit('table', 'headings')),
+    note('forest-gap-slip-condition', 13, 13, 'the condition-first slip', 'preserved.slip',
+      'While the view was open at the creek, the observer recorded two crossings. The middle beat was hidden. At the ridge the first beat was clear, with no crossings.', gapEdit('slip', 'condition')),
+    note('forest-gap-slip-lines', 13, 13, 'the three-beat record slip', 'forest.notice',
+      'Creek beats one and three each show one crossing. The middle beat was hidden. On a different line, the ridge’s first beat shows zero from a clear view.', gapEdit('slip', 'lines')),
   ],
   lights: [
     { x: 12, y: 7, r: 76, color: 0xcbe2ac }, { x: 7, y: 9, r: 56, color: 0xffdeab },

@@ -1,0 +1,1328 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH9-M01",
+   "world": "WORLD-10",
+   "title": "The Doorway Pause",
+   "knowledgeQuestion": "How does the timing of an action shape the reason an audience sees in it?",
+   "available": {
+    "objective": "sea.finish"
+   },
+   "objectives": [
+    {
+     "id": "stage.arrival",
+     "title": "Follow the passage to the House of Performance.",
+     "done": {
+      "flag": "stage.arrived",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective"
+      ],
+      "atl": [
+       "self-management"
+      ],
+      "aoks": [
+       "ART"
+      ],
+      "subjects": [
+       "theatre"
+      ]
+     },
+     "skills": []
+    },
+    {
+     "id": "stage.compare",
+     "title": "Run both cue orders and compare the timing with Director Edda.",
+     "done": {
+      "flagSet": "stage.comparison"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "interpretation",
+       "explanation",
+       "certainty",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "ART",
+       "LAN"
+      ],
+      "subjects": [
+       "theatre",
+       "lit-perf",
+       "music"
+      ]
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-KNO-14"
+     ],
+     "visible": {
+      "objective": "stage.arrival"
+     }
+    },
+    {
+     "id": "stage.sightline",
+     "title": "Read the blocking plan and gallery sightline with Host Hari.",
+     "done": {
+      "flagSet": "stage.audience"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "culture",
+       "evidence"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "theatre",
+       "film",
+       "anthropology"
+      ]
+     },
+     "skills": [
+      "SK-ICU-18",
+      "SK-SPK-01"
+     ],
+     "visible": {
+      "objective": "stage.arrival"
+     }
+    },
+    {
+     "id": "stage.perform",
+     "title": "Choose the cue order for tonight’s scene.",
+     "done": {
+      "flagSet": "stage.response"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "communication",
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "theatre",
+       "lit-perf",
+       "film"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "visible": {
+      "all": [
+       {
+        "objective": "stage.compare"
+       },
+       {
+        "objective": "stage.sightline"
+       }
+      ]
+     },
+     "onComplete": [
+      {
+       "credit": "credit.stage.perform"
+      },
+      {
+       "checkpoint": "House of Performance: cue order chosen"
+      }
+     ]
+    },
+    {
+     "id": "stage.feedback",
+     "title": "Read the audience’s note after the show.",
+     "done": {
+      "flag": "stage.feedback",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "interpretation",
+       "truth"
+      ],
+      "atl": [
+       "social",
+       "research"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "theatre",
+       "psychology"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-THK-05"
+     ],
+     "visible": {
+      "objective": "stage.perform"
+     }
+    },
+    {
+     "id": "stage.finish",
+     "title": "Help Hari keep the movement and the audience’s reading distinct in the program.",
+     "done": {
+      "flag": "stage.followup",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "perspective",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "ART",
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "theatre",
+       "lit-perf",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-THK-15"
+     ],
+     "visible": {
+      "objective": "stage.feedback"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.stage.finish"
+      },
+      {
+       "journal": "j.stage.finish"
+      },
+      {
+       "checkpoint": "House of Performance: program updated"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH9-R01",
+   "world": "WORLD-10",
+   "title": "A Copy for the Understudy",
+   "knowledgeQuestion": "What does another performer need in order to try a staging they did not see?",
+   "available": {
+    "objective": "stage.finish"
+   },
+   "objectives": [
+    {
+     "id": "stage.access",
+     "title": "Make a cue copy the understudy can use from the rehearsal bench.",
+     "done": {
+      "flag": "stage.cue-copy",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "responsibility",
+       "objectivity"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "ART",
+       "LAN"
+      ],
+      "subjects": [
+       "theatre",
+       "design-tech",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-COL-05",
+      "SK-WRT-13"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.stage.access"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH9-R02",
+   "world": "WORLD-08",
+   "title": "A Rule by the Door",
+   "knowledgeQuestion": "When can a record settle what waiting at a door means?",
+   "available": {
+    "all": [
+     {
+      "objective": "stage.finish"
+     },
+     {
+      "flag": "stage.transfer.started",
+      "eq": true
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "stage.transfer.check",
+     "title": "Find the signed admission register in the City of Copies.",
+     "done": {
+      "flag": "stage.transfer.rule",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "justification"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-MED-01",
+      "SK-THK-15"
+     ]
+    },
+    {
+     "id": "stage.transfer.copy",
+     "title": "Take the admission register’s line to the hall door or the returns queue.",
+     "done": {
+      "flagSet": "stage.transfer.notice"
+     },
+     "visible": {
+      "objective": "stage.transfer.check"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "interpretation",
+       "power"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.stage.transfer"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "characters": [
+  {
+   "id": "stage-director",
+   "name": "Director Edda",
+   "role": "Rehearsal director",
+   "sprite": "smith-hesper",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "stage.director.after",
+     "if": {
+      "objective": "stage.finish"
+     }
+    },
+    {
+     "node": "stage.director.ready",
+     "if": {
+      "objective": "stage.compare"
+     }
+    },
+    {
+     "node": "stage.director.compare",
+     "if": {
+      "all": [
+       {
+        "flag": "stage.rehearsal.pause",
+        "eq": true
+       },
+       {
+        "flag": "stage.rehearsal.move",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "stage.director.welcome"
+    }
+   ]
+  },
+  {
+   "id": "stage-host",
+   "name": "Host Hari",
+   "role": "Gallery host",
+   "sprite": "clerk-venn",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "stage.host.after",
+     "if": {
+      "objective": "stage.finish"
+     }
+    },
+    {
+     "node": "stage.host.revise.pause",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "stage.feedback"
+         },
+         {
+          "not": {
+           "flag": "stage.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "stage.response",
+        "eq": "pause"
+       }
+      ]
+     }
+    },
+    {
+     "node": "stage.host.revise.move",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "stage.feedback"
+         },
+         {
+          "not": {
+           "flag": "stage.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "stage.response",
+        "eq": "move"
+       }
+      ]
+     }
+    },
+    {
+     "node": "stage.host.wait",
+     "if": {
+      "flagSet": "stage.response"
+     }
+    },
+    {
+     "node": "stage.host.choose",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.compare"
+       },
+       {
+        "objective": "stage.sightline"
+       },
+       {
+        "not": {
+         "flagSet": "stage.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "node": "stage.host.pending",
+     "if": {
+      "objective": "stage.sightline"
+     }
+    },
+    {
+     "node": "stage.host.sightline",
+     "if": {
+      "all": [
+       {
+        "flag": "stage.blocking",
+        "eq": true
+       },
+       {
+        "flag": "stage.vantage",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "stage.host.welcome"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "stage.director.welcome",
+   "speaker": "stage-director",
+   "text": "A keeper says, ‘Leave it by the door.’ A worker at the threshold replies, ‘I can wait.’ Between them the keeper moves a crate and the room goes quiet for a beat. Run our two rehearsals. Keep the words in place and see where your eye goes.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.director.compare",
+   "speaker": "stage-director",
+   "text": "The printer’s draft says the worker has a new line. Both rehearsals end with ‘I can wait.’ The line stays put. It is the silence that moves around the crate move. How should we mark the change for the cast?",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Circle the pause on both cue sheets and keep the lines where they are.",
+     "next": "stage.compare.pause",
+     "effects": [
+      {
+       "setFlag": "stage.comparison",
+       "value": "pause"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "stage.rehearsal.pause",
+          "eq": true
+         },
+         {
+          "flag": "stage.rehearsal.move",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "stage.comparison"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Set the two movement marks beside each other on the rehearsal board.",
+     "next": "stage.compare.move",
+     "effects": [
+      {
+       "setFlag": "stage.comparison",
+       "value": "move"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "stage.rehearsal.pause",
+          "eq": true
+         },
+         {
+          "flag": "stage.rehearsal.move",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "stage.comparison"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Give me another moment with the scene."
+    }
+   ]
+  },
+  {
+   "id": "stage.compare.pause",
+   "speaker": "stage-director",
+   "text": "The cast can see where the quiet beat falls and practise both versions. One actor felt the pause put the worker in the foreground. Another watched the keeper. I’ll leave space for both readings.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.compare.move",
+   "speaker": "stage-director",
+   "text": "A pair of marks makes the order visible. The actors still hear the same words. I’ll keep the blocking plan nearby so they can check what actually moves.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.director.ready",
+   "speaker": "stage-director",
+   "text": "Take the rehearsal notes to Hari. Some audience seats see the edges of our stage. Their view can change which beat they notice first.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.director.after",
+   "speaker": "stage-director",
+   "text": "The cast kept its lines and movement. Hari has recorded where a person watching from the side might lose sight of the crate. I’ll use that when we arrange the next scene.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.host.welcome",
+   "speaker": "stage-host",
+   "text": "People at the front see both actors and the full crate move. A post changes what people at the side can see. Check the blocking plan in rehearsal and our view note here. We hear the same dialogue from both.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.host.sightline",
+   "speaker": "stage-host",
+   "text": "On these boards the company calls the crate mark a cue. Regulars in the side seats know that they can follow a missed move by listening for its rhythm. New audience members may only hear a silence. Which view would you put beside the cast’s plan?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep a front-seat view with the full move visible.",
+     "next": "stage.sightline.front",
+     "effects": [
+      {
+       "setFlag": "stage.audience",
+       "value": "front"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "stage.blocking",
+          "eq": true
+         },
+         {
+          "flag": "stage.vantage",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "stage.audience"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Keep the side view beside the lines the audience can still hear.",
+     "next": "stage.sightline.side",
+     "effects": [
+      {
+       "setFlag": "stage.audience",
+       "value": "side"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "stage.blocking",
+          "eq": true
+         },
+         {
+          "flag": "stage.vantage",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "stage.audience"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll look through both seats again."
+    }
+   ]
+  },
+  {
+   "id": "stage.sightline.front",
+   "speaker": "stage-host",
+   "text": "I’ll keep the front view and add the post at the edge of the picture. A visitor can see why a neighbour heard the same words and missed part of the move.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.sightline.side",
+   "speaker": "stage-host",
+   "text": "The side seats have a place on our board now. I’ll add the front view beside them. Together the two notes show what people in either seat can follow.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.host.pending",
+   "speaker": "stage-host",
+   "text": "Both views are here. Ask Edda to compare the rehearsals before we set a cue order. A good staging can hold two readings at once.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.host.choose",
+   "speaker": "stage-host",
+   "text": "The hall is filling. We can hold the audience with the worker at the threshold, or let the crate move catch their eye first. The company will use either cue order and keep the same words.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Stage the silence before the keeper moves the crate.",
+     "next": "stage.response.pause",
+     "effects": [
+      {
+       "setFlag": "stage.response",
+       "value": "pause"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "stage.compare"
+       },
+       {
+        "objective": "stage.sightline"
+       },
+       {
+        "not": {
+         "flagSet": "stage.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Stage the crate move before the silence.",
+     "next": "stage.response.move",
+     "effects": [
+      {
+       "setFlag": "stage.response",
+       "value": "move"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "stage.compare"
+       },
+       {
+        "objective": "stage.sightline"
+       },
+       {
+        "not": {
+         "flagSet": "stage.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Keep the stage open a little longer."
+    }
+   ]
+  },
+  {
+   "id": "stage.response.pause",
+   "speaker": "stage-host",
+   "text": "The company holds still for a beat. From the front row, a reader is watching the worker by the door. Then the crate moves and the worker replies. Someone in the gallery stays behind after the scene.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.response.move",
+   "speaker": "stage-host",
+   "text": "The crate moves beside the door before the quiet beat. A reader in the front follows it, then looks back at the worker. From the side, someone has heard the reply and wants to talk.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.host.wait",
+   "speaker": "stage-host",
+   "text": "A note has appeared in the gallery. A reader asks why the worker waited. Go and see how they heard the scene.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.host.revise.pause",
+   "speaker": "stage-host",
+   "text": "From the side a reader heard the waiting line and took the earlier silence for a refusal. The program can say where we placed the pause and what the side seat could see. The keeper’s reason can stay open.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Add the pause cue and side-seat view to tonight’s program.",
+     "next": "stage.update.pause",
+     "effects": [
+      {
+       "setFlag": "stage.followup",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "stage.feedback"
+         },
+         {
+          "not": {
+           "flag": "stage.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "stage.response",
+        "eq": "pause"
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll return to the gallery first."
+    }
+   ]
+  },
+  {
+   "id": "stage.host.revise.move",
+   "speaker": "stage-host",
+   "text": "The first row saw the crate move and called the silence a welcome. The side seats heard the same reply without the same view. Put our move and silence in the program and leave both readers room to compare.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Add the movement cue and the two views to tonight’s program.",
+     "next": "stage.update.move",
+     "effects": [
+      {
+       "setFlag": "stage.followup",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "stage.feedback"
+         },
+         {
+          "not": {
+           "flag": "stage.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "stage.response",
+        "eq": "move"
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll check the sightline again."
+    }
+   ]
+  },
+  {
+   "id": "stage.update.pause",
+   "speaker": "stage-host",
+   "text": "The reader has moved nearer the front for the next show. They want to see the crate move after the pause. I’ve written that question beside the cue, where the actors can find it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.update.move",
+   "speaker": "stage-host",
+   "text": "A reader in the side seats says the movement cue will help them compare the scene with the front row. The notes name the move. The two groups can still disagree about the keeper’s reason.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.host.after",
+   "speaker": "stage-host",
+   "text": "Our understudy helped put the benches back. They missed one rehearsal. A cue sheet could let them follow the cast’s work and try the other timing on their own.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the understudy a large cue copy with both orders.",
+     "next": "stage.access.copy",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.finish"
+       },
+       {
+        "not": {
+         "flag": "stage.cue-copy",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Take the doorstep question back to the City of Copies.",
+     "next": "stage.transfer.invite",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.finish"
+       },
+       {
+        "not": {
+         "flag": "stage.transfer.started",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll take another look at the hall."
+    }
+   ]
+  },
+  {
+   "id": "stage.access.copy",
+   "speaker": "stage-host",
+   "text": "The understudy can check the spoken line, move and silent beat from the bench. I’ll mark the two orders as alternatives and keep tonight’s program with them.",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "stage.cue-copy",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "stage.transfer.invite",
+   "speaker": "stage-host",
+   "historicalLabel": "fictional-world",
+   "text": "Mina mentioned the people who waited outside her reading hall. Our program can show a move and a pause. A signed register could tell us a doorway rule. See what Mina’s clerk has signed, then decide where to put a copy.",
+   "effects": [
+    {
+     "setFlag": "stage.transfer.started",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "stage.transfer.dispatch",
+   "speaker": "copies-lendingkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "The trial log tells us about the queue on Tuesday. The admission register gives the hall’s rule. Watch a person at the door and you could still guess wrong about why they’re waiting. Which copy would help them check the rule?",
+   "options": [
+    {
+     "text": "Post the signed admission line at the door, where readers decide whether to enter.",
+     "next": "stage.transfer.door",
+     "if": {
+      "all": [
+       {
+        "flag": "stage.transfer.started",
+        "eq": true
+       },
+       {
+        "flag": "stage.transfer.rule",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "stage.transfer.notice"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.transfer.notice",
+       "value": "door"
+      }
+     ]
+    },
+    {
+     "text": "Send the rule and the slip’s purpose to the returns queue.",
+     "next": "stage.transfer.queue",
+     "if": {
+      "all": [
+       {
+        "flag": "stage.transfer.started",
+        "eq": true
+       },
+       {
+        "flag": "stage.transfer.rule",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "stage.transfer.notice"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.transfer.notice",
+       "value": "queue"
+      }
+     ]
+    },
+    {
+     "text": "Leave the register open for now."
+    }
+   ]
+  },
+  {
+   "id": "stage.transfer.door",
+   "speaker": "copies-lendingkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "The door copy says readers can enter with or without a return slip. It names the signed admission register. Someone can check the stated rule before deciding whether to go in."
+  },
+  {
+   "id": "stage.transfer.queue",
+   "speaker": "copies-lendingkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "The queue copy says a slip identifies the item coming back. It also carries the signed entry rule. A reader can leave the return queue and go inside without one."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.stage.arrival.1",
+   "objective": "stage.arrival",
+   "depth": 1,
+   "text": "A new passage has opened."
+  },
+  {
+   "id": "h.stage.arrival.2",
+   "objective": "stage.arrival",
+   "depth": 2,
+   "text": "Someone at the theatre wants to see what two audiences hear in one line."
+  },
+  {
+   "id": "h.stage.arrival.3",
+   "objective": "stage.arrival",
+   "depth": 3,
+   "text": "Return to the Nexus after marking where both surveys stopped."
+  },
+  {
+   "id": "h.stage.arrival.4",
+   "objective": "stage.arrival",
+   "depth": 4,
+   "text": "Follow the passage to the House of Performance. The foyer leads to rehearsal and the gallery."
+  },
+  {
+   "id": "h.stage.compare.1",
+   "objective": "stage.compare",
+   "depth": 1,
+   "text": "One beat changes place. Keep the lines in view."
+  },
+  {
+   "id": "h.stage.compare.2",
+   "objective": "stage.compare",
+   "depth": 2,
+   "text": "The silence can come before or after the same movement."
+  },
+  {
+   "id": "h.stage.compare.3",
+   "objective": "stage.compare",
+   "depth": 3,
+   "text": "At the rehearsal table, watch the pause-first and move-first versions to the end."
+  },
+  {
+   "id": "h.stage.compare.4",
+   "objective": "stage.compare",
+   "depth": 4,
+   "text": "Talk to Edda after advancing all four cues in both versions. Choose how you want the cast to compare the two."
+  },
+  {
+   "id": "h.stage.sightline.1",
+   "objective": "stage.sightline",
+   "depth": 1,
+   "text": "An audience can hear a scene it only partly sees."
+  },
+  {
+   "id": "h.stage.sightline.2",
+   "objective": "stage.sightline",
+   "depth": 2,
+   "text": "The blocking plan follows the actors. The gallery note says which seats can follow the move."
+  },
+  {
+   "id": "h.stage.sightline.3",
+   "objective": "stage.sightline",
+   "depth": 3,
+   "text": "Read the blocking plan in rehearsal and the sightline note in the gallery."
+  },
+  {
+   "id": "h.stage.sightline.4",
+   "objective": "stage.sightline",
+   "depth": 4,
+   "text": "Talk to Hari about whose view the crew should prepare for. The two notes belong to different parts of the show."
+  },
+  {
+   "id": "h.stage.perform.1",
+   "objective": "stage.perform",
+   "depth": 1,
+   "text": "Both cue orders tell the same short scene. Each points the eye somewhere first."
+  },
+  {
+   "id": "h.stage.perform.2",
+   "objective": "stage.perform",
+   "depth": 2,
+   "text": "A pause before the crate move holds attention on the waiting worker. A move first makes the action easier to notice."
+  },
+  {
+   "id": "h.stage.perform.3",
+   "objective": "stage.perform",
+   "depth": 3,
+   "text": "Ask Hari to call the cue order once rehearsal and both view notes are ready."
+  },
+  {
+   "id": "h.stage.perform.4",
+   "objective": "stage.perform",
+   "depth": 4,
+   "text": "Keep the pause first or move the crate first. The actor will keep both spoken lines."
+  },
+  {
+   "id": "h.stage.feedback.1",
+   "objective": "stage.feedback",
+   "depth": 1,
+   "text": "Someone stayed behind to ask about the keeper."
+  },
+  {
+   "id": "h.stage.feedback.2",
+   "objective": "stage.feedback",
+   "depth": 2,
+   "text": "Look for the audience note in the gallery."
+  },
+  {
+   "id": "h.stage.feedback.3",
+   "objective": "stage.feedback",
+   "depth": 3,
+   "text": "Read what the audience member heard the worker say."
+  },
+  {
+   "id": "h.stage.feedback.4",
+   "objective": "stage.feedback",
+   "depth": 4,
+   "text": "Keep what the audience saw and heard separate from what it took the keeper to mean."
+  },
+  {
+   "id": "h.stage.finish.1",
+   "objective": "stage.finish",
+   "depth": 1,
+   "text": "The keeper moves a crate. The keeper’s reason remains open."
+  },
+  {
+   "id": "h.stage.finish.2",
+   "objective": "stage.finish",
+   "depth": 2,
+   "text": "Use the blocking plan and the side seats’ view to talk about the audience’s reading."
+  },
+  {
+   "id": "h.stage.finish.3",
+   "objective": "stage.finish",
+   "depth": 3,
+   "text": "Take the audience note to Hari after the performance."
+  },
+  {
+   "id": "h.stage.finish.4",
+   "objective": "stage.finish",
+   "depth": 4,
+   "text": "Add a cue note to the program for tonight’s order. Give the audience its question without turning it into a fact."
+  },
+  {
+   "id": "h.stage.access.1",
+   "objective": "stage.access",
+   "depth": 1,
+   "text": "The understudy needs a record of the order, words and movement."
+  },
+  {
+   "id": "h.stage.access.2",
+   "objective": "stage.access",
+   "depth": 2,
+   "text": "Leave the silent beat clearly named on the page."
+  },
+  {
+   "id": "h.stage.access.3",
+   "objective": "stage.access",
+   "depth": 3,
+   "text": "Speak with Hari after the program update."
+  },
+  {
+   "id": "h.stage.access.4",
+   "objective": "stage.access",
+   "depth": 4,
+   "text": "Ask for a larger cue sheet so another performer can rehearse either arrangement."
+  },
+  {
+   "id": "h.stage.transfer.check.1",
+   "objective": "stage.transfer.check",
+   "depth": 1,
+   "text": "Think about what could state a doorway rule rather than report a queue."
+  },
+  {
+   "id": "h.stage.transfer.check.2",
+   "objective": "stage.transfer.check",
+   "depth": 2,
+   "text": "A trial log and a signed register serve different purposes."
+  },
+  {
+   "id": "h.stage.transfer.check.3",
+   "objective": "stage.transfer.check",
+   "depth": 3,
+   "text": "Return to the City of Copies. Look in the Record Room for the admission register."
+  },
+  {
+   "id": "h.stage.transfer.check.4",
+   "objective": "stage.transfer.check",
+   "depth": 4,
+   "text": "Read the signed admission register. It gives the current entrance rule and the purpose of a return slip."
+  },
+  {
+   "id": "h.stage.transfer.copy.1",
+   "objective": "stage.transfer.copy",
+   "depth": 1,
+   "text": "There are readers at the door and people waiting in the returns queue."
+  },
+  {
+   "id": "h.stage.transfer.copy.2",
+   "objective": "stage.transfer.copy",
+   "depth": 2,
+   "text": "Place the rule where one of those groups is deciding what to do."
+  },
+  {
+   "id": "h.stage.transfer.copy.3",
+   "objective": "stage.transfer.copy",
+   "depth": 3,
+   "text": "Take the signed register’s line to the admission desk on the landing."
+  },
+  {
+   "id": "h.stage.transfer.copy.4",
+   "objective": "stage.transfer.copy",
+   "depth": 4,
+   "text": "Choose a copy for the hall door or a note for the return queue. Both keep the rule and the source."
+  }
+ ],
+ "criteria": [
+  {
+   "id": "credit.stage.perform",
+   "concept": "perspective",
+   "maximum": 8
+  },
+  {
+   "id": "credit.stage.finish",
+   "concept": "interpretation",
+   "maximum": 8
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.stage.finish",
+   "title": "The doorway pause",
+   "text": "The cast spoke the same lines and moved the same crate in both rehearsals. I chose where to place the pause, then helped the gallery describe the cue and the views without assigning the keeper a reason."
+  },
+  {
+   "id": "j.stage.access",
+   "title": "A copy for the understudy",
+   "text": "Hari and I separated the lines, move and pause on a larger cue sheet. The next performer can try either order."
+  },
+  {
+   "id": "j.stage.transfer",
+   "title": "A rule by the door",
+   "text": "A pause gave the theatre audience room to wonder why a person waited. The lending register answered a different question. It gave the hall’s entry rule, which we could carry as a signed line to people at the door or queue."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.stage.finish",
+   "attribute": "open-minded",
+   "when": {
+    "objective": "stage.finish"
+   },
+   "did": "You compared how the scene looked from two seats and left room for different readings."
+  },
+  {
+   "id": "mom.stage.access",
+   "attribute": "caring",
+   "when": {
+    "objective": "stage.access"
+   },
+   "did": "You left a working cue sheet for an understudy who missed rehearsal."
+  }
+ ]
+}
