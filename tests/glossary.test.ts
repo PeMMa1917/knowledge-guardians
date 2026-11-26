@@ -24,6 +24,31 @@ describe('smart glossary (spec 47.10)', () => {
       { text: 'EVIDENCE', term: 'evidence' }, { text: 'truth', term: 'truth' },
     ]);
   });
+  it('keeps two distinct earned memories and a fresh starting example for each registered word', () => {
+    const d = new Driver();
+    for (const entry of pack.glossary) {
+      const earned = entry.examples.filter(({ if: condition }) => condition);
+      expect(new Set(earned.map(({ if: condition }) => JSON.stringify(condition))).size, entry.id).toBeGreaterThanOrEqual(2);
+      expect(new Set(earned.map(({ text }) => text)).size, entry.id).toBe(earned.length);
+      expect(memories(d, entry.id), entry.id).toEqual(entry.examples.filter(({ if: condition }) => !condition).map(({ text }) => text));
+    }
+  });
+  it('remembers the inspected pen and the tried cloth insert independently after a reload', () => {
+    const d = new Driver();
+    const startingModel = memories(d, 'reconstruction');
+    const startingFit = memories(d, 'symmetry');
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-001-A' });
+    expect(memories(d, 'patent')).toEqual([expect.stringContaining('US 392,046')]);
+    expect(memories(d, 'reconstruction')).toEqual(startingModel);
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-001-B' });
+    d.walk('corner.frame', ['Lift the loose corner']);
+    expect(memories(d, 'symmetry')).toEqual(startingFit);
+    d.walk('corner.try', ['Turn the square insert']);
+    d.s = migrateCampaign(JSON.parse(JSON.stringify(d.s))).state;
+    expect(memories(d, 'reconstruction')).toEqual([expect.stringContaining('workshop’s version')]);
+    expect(memories(d, 'symmetry')).toEqual([expect.stringContaining('fourth diamond')]);
+    expect(memories(d, 'documented')).toEqual([expect.stringContaining('date on Loud’s patent')]);
+  });
   it('gives an example from the player\'s own play when there is one', () => {
     const d = new Driver();
     const claim = pack.glossary.find((g) => g.id === 'claim')!;

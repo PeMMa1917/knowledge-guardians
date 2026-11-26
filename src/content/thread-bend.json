@@ -20,6 +20,12 @@
           "text": "The cord leads through both passages. Sliding the tray between the posts tests which passage it can use."
         },
         {
+          "if": {
+            "objective": "tail.metal"
+          },
+          "text": "The torn hole in the blue strip looked like a sign of force. A shallow slot made a similar tear in your trial. The hole gave you a lead and left more than one cause alive."
+        },
+        {
           "text": "A mark on a copy can point you toward the person who handled it. Follow it to their record."
         }
       ]

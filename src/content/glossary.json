@@ -318,6 +318,12 @@
      "text": "Your museum label was a claim: '{flag:label.pen.text}'"
     },
     {
+     "if": {
+      "objective": "tail.coast"
+     },
+     "text": "At the Coast you returned each report to the watch that produced it. A claim about the quiet interval still needed somebody who had actually been there."
+    },
+    {
      "text": "The old label 'The first ballpoint pen' is a claim. Is it bigger than its evidence?"
     }
    ]
@@ -501,6 +507,18 @@
    "text": "Where a piece of information comes from. Ask who made it, when, and why.",
    "examples": [
     {
+     "if": {
+      "objective": "citation.rail.nexus.found"
+     },
+     "text": "The reader with your strip reached A606881. She could follow a catalogue number back to the record that supplied it."
+    },
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "At Emberford you followed two printed notices back to the same unsigned slip. Counting the sheets twice would give one source two votes."
+    },
+    {
      "text": "Every documented exhibit in the hall lists its source. Open the Sources tab in your journal."
     }
    ]
@@ -521,6 +539,12 @@
       "eq": true
      },
      "text": "You chose a criterion for your label: '{flag:label.pen.criterion}'."
+    },
+    {
+     "if": {
+      "objective": "market.terms"
+     },
+     "text": "Dagny showed you what the wick grade and the display grade each valued in a fibre lot. A lot could change standing while the fibre stayed the same."
     },
     {
      "text": "In the label builder, the criterion is 'what kind of first'."
@@ -545,6 +569,12 @@
      "text": "On Tull's claim board you added a counterclaim and still held your claim."
     },
     {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "The stall said both landings were closed. Havra saw a porter cross the upper one. Her account challenged the word “both” and left the lower landing open for another lookout."
+    },
+    {
      "text": "In a Showdown, conceding a fair point and answering it gains the crowd's trust."
     }
    ]
@@ -566,6 +596,12 @@
      "text": "Your Provenance Thread stopped at a gap after Hesper's workshop."
     },
     {
+     "if": {
+      "objective": "copies.check.landing"
+     },
+     "text": "At the landing you compared the signature on the press proof with the one on the copy. Following the hands on the sheets gave you a history of how the notice travelled."
+    },
+    {
      "text": "The Provenance Thread follows an object back through its records."
     }
    ]
@@ -580,6 +616,18 @@
    "text": "In this game: supported by a real, named historical source for the exact, narrow claim.",
    "examples": [
     {
+     "if": {
+      "card": "card.loud-patent"
+     },
+     "text": "The date on Loud’s patent belongs to the grant. You could point to a document for that day even while the date of somebody’s first purchase stayed open."
+    },
+    {
+     "if": {
+      "objective": "xin.o.records"
+     },
+     "text": "At the Cold Store you put dates on the Mawangdui place file and the modern methods report. A visitor could now ask which record supported a detail of the burial and which described later work."
+    },
+    {
      "text": "Loud's patent drawing is documented. The workshop model is a reconstruction."
     }
    ]
@@ -593,6 +641,18 @@
    "history": {"note": "Look inside reconstruction for construct. Its Latin relative construere was formed with struere, to build.", "url": "https://www.merriam-webster.com/dictionary/construct"},
    "text": "Something made later to show how a thing might have been. It can teach a lot, but it is not the original.",
    "examples": [
+    {
+     "if": {
+      "card": "card.loud-model"
+     },
+     "text": "You met the Nexus workshop’s version of Loud’s pen. Its build date follows the workshop that made the model. The older patent has its own date."
+    },
+    {
+     "if": {
+      "objective": "xin.o.layers"
+     },
+     "text": "In the Cold Store you handled the observation sheet and the model sheet separately. A reader who lifts the model can still see which features had a recorded starting point."
+    },
     {
      "text": "The workshop model of Loud's pen was built this year. Its date says nothing about 1888."
     }
@@ -616,6 +676,12 @@
      "text": "Your fair test at the bench was a simulation. Its numbers came from a stated model."
     },
     {
+     "if": {
+      "objective": "catchment.compare"
+     },
+     "text": "In the culvert you sent the same six practice floats past the open pocket and the cover. You could account for each float on the model before deciding what to try at the real weir."
+    },
+    {
      "text": "The marking test at the bench is a simulation with a stated model."
     }
    ]
@@ -632,6 +698,18 @@
    "text": "An official record that gives an inventor rights to a design. It shows that a claim was made and granted, not that the thing worked or sold.",
    "examples": [
     {
+     "if": {
+      "card": "card.loud-patent"
+     },
+     "text": "US 392,046 gave you Loud’s design and a grant date. A buyer’s name or a shop receipt would have to come from somewhere else."
+    },
+    {
+     "if": {
+      "objective": "nexus.ribbon.checked"
+     },
+     "text": "You fastened the grant to one day on the date ribbon. When a binder asked when people started using the pen, the years between the peg and the museum sleeve stayed open."
+    },
+    {
      "text": "US Patent 392,046 was granted to John J. Loud in 1888."
     }
    ]
@@ -647,6 +725,18 @@
    "text": "A lean that pushes a judgement one way without good reason. Everyone has a perspective; bias is when it distorts the judgement.",
    "examples": [
     {
+     "if": {
+      "objective": "forest.hands.retry"
+     },
+     "text": "At the Forest bench the observer behind the cover missed the first beat. Moving the recorder brought it into view on the same three marks. A careful person could keep making the same omission from the first seat."
+    },
+    {
+     "if": {
+      "objective": "civic.incentive.audit"
+     },
+     "text": "Lin’s crews could gain marks by splitting a load. At the other desk the hooks and feet still had to make a usable kit. You checked how the target steered what went into the count."
+    },
+    {
      "text": "Throwing out every source with a perspective would empty the archive. Check the reasoning instead."
     }
    ]
@@ -661,6 +751,18 @@
    "history": {"note": "The question in this phrase came through French from Latin quaestio. Its verb quaerere meant to seek or ask.", "url": "https://www.merriam-webster.com/dictionary/question"},
    "text": "A question about how we know, not about a fact. 'Who invented the pen?' is a history question. 'How do we decide what counts as first?' is a knowledge question.",
    "examples": [
+    {
+     "if": {
+      "objective": "m01.o6.label"
+     },
+     "text": "Deciding which pen to name forced another decision on the label stand. What would make one use of “first” worth defending to the next visitor?"
+    },
+    {
+     "if": {
+      "objective": "sea.names"
+     },
+     "text": "You traced the names on the two sea charts to their users. Whose knowledge of a passage can give it a name, and what happens to that authority when another crew copies the chart?"
+    },
     {
      "text": "Ask Warden Ise: 'What is the question behind all this?'"
     }
@@ -682,6 +784,12 @@
       "eq": true
      },
      "text": "Your practice question: '{flag:lock.inventor.question}'"
+    },
+    {
+     "if": {
+      "objective": "ee2.o1.lock"
+     },
+     "text": "The wooden lock at Oduya’s table opened when you chose a particular case, a record and a writer to investigate. Now you had somewhere to start looking for a counterexample."
     },
     {
      "text": "The Title Lock opens only for a focused, arguable question."

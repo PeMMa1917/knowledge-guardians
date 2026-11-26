@@ -540,6 +540,18 @@
       "text": "A mark left by an event or action.",
       "examples": [
         {
+          "if": {
+            "objective": "corner.compare"
+          },
+          "text": "You put the repair slip beside the stitch holes. The marks survived the hand that made them. The slip helped you connect some of them to the cord after the flood."
+        },
+        {
+          "if": {
+            "objective": "ember.circle.trace"
+          },
+          "text": "A broken C appeared on both Emberford notices. You followed that small mark into the issue book to recover the order of copying."
+        },
+        {
           "text": "The needle left a trace the stitch keeper can follow. The draper works from a tracing made today."
         }
       ]
@@ -556,6 +568,19 @@
       },
       "text": "Matching positions or measures around a line or point.",
       "examples": [
+        {
+          "if": {
+            "flag": "corner.repeatFit",
+            "eq": true
+          },
+          "text": "Turning the square insert kept the fourth diamond as far from both edges as the other three. It gave Aro a way to repeat the pattern."
+        },
+        {
+          "if": {
+            "card": "card.specimen.work.door"
+          },
+          "text": "On the carved door from Zanzibar, the upper carving breaks the balance of the frame. The Met offers a possible reason it differs. The shape alone cannot date a replacement."
+        },
         {
           "text": "Turn the square insert to keep the diamond the same distance from both edges."
         }

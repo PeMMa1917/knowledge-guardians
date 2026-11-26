@@ -6,6 +6,8 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
+Every one of the 38 glossary entries has a short word history and at least two examples that a Guardian can unlock through play. At Havra’s lookout the wall sets a limit on what a witness could see. At the City of Copies a signature establishes what arrived in a wrapper. The Journal remembers those two uses independently. [Glossary checks](tests/glossary.test.ts)
+
 Dov’s revealed crates and Tova’s high ferry predictions remain readable at enlarged text sizes. A player can compare a marked and an unmarked voyage. Rook’s unsigned warning and the family’s account each carry through to their own aftermath. In the Script Rail, the Hogarth impression links to its Cleveland catalogue and to a related account of the composition. [Field game browser check](docs/BROWSER_CHECKS.md#crate-results-and-the-ferry-marker) · [Well aftermaths](tests/loyalty.test.ts) · [Source links](tests/encyclopedia.test.ts)
 
 Word and PDF diary exports can use all recorded time, the current play session, the local Monday–Sunday week, or custom dates including both selected days. Choose multiple topics within a group and combine groups to narrow the export. Topic matches use recorded references to authored activity tags, and dated ranges use saved timestamps. Undated older entries remain available under All time. A topic-filtered copy can keep untagged private notes, Portfolio writing and responses in the selected time range when the writer opts in. [Diary selection](tests/diary-selection.test.ts) · [Export regression](tests/adventure-export.test.ts)
