@@ -6,6 +6,8 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
+Neris follows the signed Civic Callboard passage to the source desk during the same visit. The old bench becomes walkable. If the Guardian is standing where a character is due to arrive, the character waits for room. A click on a departing character drops the old walking target. Other encounters with conditional characters use the same movement rules. Tull now gives his first research question in dialogue and explains what it left out. [Browser regression](tools/smoke-navigation.mjs) · [Word histories](tests/glossary.test.ts)
+
 At Bridge Clearing, the Guardian can take two accounts of the same dawn to different readers. Ayla’s sister uses the crew’s exact words to add a listening stop. A walker at the low rail puts a single sighting under Seen and keeps the crew’s hearing place under Heard. The copy and the player’s choice survive a save and return. In Emberford, the Skill Atlas records how a heading changed a bake plan or a ferry load after the recipient acts and the Guardian reads the result. [Forest handovers](tests/forest-accounts.test.ts) · [Emberford readbacks](tests/emberford-tally.test.ts)
 
 Every one of the 38 glossary entries has a short word history and at least two examples that a Guardian can unlock through play. At Havra’s lookout the wall sets a limit on what a witness could see. At the City of Copies a signature establishes what arrived in a wrapper. The Journal remembers those two uses independently. [Glossary checks](tests/glossary.test.ts)

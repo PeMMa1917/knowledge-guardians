@@ -1112,13 +1112,13 @@
   {
    "id": "tull.busy",
    "speaker": "archivist-tull",
-   "text": "Not now, Guardian. Repair the old label first. Then come and see me: I have a lock that only opens for good questions.",
+   "text": "My hands are full. Can you steady the old label first? A visitor has brought me two names for one invention. I’d like you here when I open the drawer.",
    "claimKind": "observation"
   },
   {
    "id": "tull.start",
    "speaker": "archivist-tull",
-   "text": "A visitor wants to know who got the credit for the pen. I have a patent bearing one name and a pen bearing another. The brass lock will open a drawer for us. Give it a question we can follow past the first slip.",
+   "text": "A visitor wants to know who got the credit for the pen. I have a patent bearing one name and a pen bearing another. My first research question was ‘Who came first?’ That left half her story in the drawer. Turn the brass rings. What shall we follow?",
    "claimKind": "interpretation",
    "options": [
     {

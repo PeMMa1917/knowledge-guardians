@@ -10,6 +10,17 @@ const pack = buildPack();
 const memories = (d: Driver, id: string) => examplesFor(pack.glossary.find((entry) => entry.id === id)!, d.s, (c) => check(c, d.s));
 
 describe('smart glossary (spec 47.10)', () => {
+  it('offers every registered word history from a line a character or narrator speaks', () => {
+    const missing = new Set(pack.glossary.map((entry) => entry.id));
+    for (const scene of pack.dialogue) {
+      for (const segment of segmentText(scene.text, pack.glossary)) {
+        if (segment.term) missing.delete(segment.term);
+      }
+      if (missing.size === 0) break;
+    }
+    expect([...missing]).toEqual([]);
+  });
+
   it('marks each term once, keeps the text the same, and prefers the longest form', () => {
     const text = 'A knowledge question is not a claim. Another claim needs evidence.';
     const seg = segmentText(text, pack.glossary);
