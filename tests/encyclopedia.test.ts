@@ -135,6 +135,17 @@ describe('Encyclopedia links for actual encounters', () => {
     expect(encyclopediaForExhibit(guide)).toMatchObject({ kind: 'related', title: 'The Negro Motorist Green Book' });
   });
 
+  it('offers the Hogarth composition as context for the inspected Cleveland impression', () => {
+    const d = new Driver();
+    const exhibit = 'OBJ-SCRIPT-RAIL-HOGARTH-TROUPE';
+    d.run({ type: 'InspectExhibit', exhibit });
+    const journal = view(d);
+    expect(journal.encyclopedia).toEqual([expect.objectContaining({ key: 'object:cma:1959.310',
+      kind: 'related', url: 'https://en.wikipedia.org/wiki/Strolling_Actresses_Dressing_in_a_Barn' })]);
+    expect(encyclopediaLinkLabel(journal.encyclopedia[0]!)).toMatch(/^Related Wikipedia article/);
+    expect(journal.references).toEqual([]);
+  });
+
   it.each([
     ['OBJ-FERN-POST-LANDSCAPE', '1981.318', 'arz', 'منظر_طبيعى_برازيلى', 'Egyptian Arabic'],
     ['OBJ-BEARING-brittany-boudin', '1983.1.11', 'avk', 'Krimta_ke_Breiza_(trutca_ke_Boudin)', 'Kotava'],
