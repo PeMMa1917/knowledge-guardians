@@ -6,6 +6,8 @@ import { CIVIC_APPEAL_CANAL, CIVIC_APPEAL_DISPATCH } from './civicAppeal';
 import { CIVIC_INCENTIVE_BOARD } from './civicIncentive';
 import { CIVIC_BENCH_DEBATE } from './benchDebate';
 import { CIVIC_BOUNDARY } from './serviceBoundary';
+import { CIVIC_DATE_REGISTER_PROPS, CIVIC_DATE_REGISTER_READERS } from './dateRegister';
+import { CIVIC_CALLBOARD_DOOR } from './civicCallboard';
 import type { Interactable, MapDef } from './types';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'civic.waypost'): Interactable {
@@ -63,7 +65,7 @@ export const CIVIC_DISPATCH: MapDef = {
     return (x >= 11 && x <= 17) || (y >= 10 && y <= 13) ? 'civic-hall-route' : 'civic-hall-tile';
   }),
   blocks: [[1, 0, 27, 3]], zones: [], spawn: { x: 12, y: 12 },
-  npcs: [{ id: 'civic-operator', x: 13, y: 7, facing: 'down' }],
+  npcs: [{ id: 'civic-operator', x: 13, y: 7, facing: 'down' }, ...CIVIC_DATE_REGISTER_READERS],
   stamps: [
     { stamp: 'civic-route-wall', x: 11, y: 2 }, { stamp: 'civic-bookcases', x: 3, y: 3 },
     { stamp: 'civic-bookcases', x: 22, y: 3 }, { stamp: 'civic-cart', x: 6, y: 7 },
@@ -73,6 +75,8 @@ export const CIVIC_DISPATCH: MapDef = {
     { stamp: 'plant-tall', x: 16, y: 14 },
   ],
   interactables: [
+    ...CIVIC_DATE_REGISTER_PROPS,
+    CIVIC_CALLBOARD_DOOR,
     door('civic-steps-path', 3, 11, 'the west passage to North Steps', { map: 'civic.steps', x: 12, y: 14 }),
     door('civic-canal-path', 25, 11, 'the east passage to Canal Walk', { map: 'civic.canal', x: 5, y: 10 }),
     door('civic-nexus-return', 13, 16, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 28, y: 12 }, 'preserved.door'),

@@ -14,6 +14,9 @@ import { NEXUS_DOOR_FOLD } from './doorFold';
 import { NEXUS_CITATION_RAIL } from './citationRail';
 import { NEXUS_SAME_RED } from './sameRed';
 import { NEXUS_LANTERN_WEAVE } from './lanternWeave';
+import { SPECIMEN_VAULT_DOOR } from './specimenVault';
+import { NUMBER_LEAF_RETURNS } from './numberLeaves';
+import { MODEL_RECORD_RETURNS } from './modelRecords';
 
 const W = 40, H = 20;
 const strokeRequested: Condition = { flag: 'nexus.stroke.requested', eq: true };
@@ -147,10 +150,13 @@ export const NEXUS: MapDef = {
     ...NEXUS_CITATION_RAIL,
     ...NEXUS_SAME_RED,
     ...NEXUS_LANTERN_WEAVE,
+    SPECIMEN_VAULT_DOOR,
+    ...NUMBER_LEAF_RETURNS,
+    ...MODEL_RECORD_RETURNS,
     { id: 'hesper-checked-bench', kind: 'scene', node: 'hesper.nexus.bench', x: 20, y: 10, w: 1, h: 1,
       label: 'Hesper’s reserved repair bench', art: 'nexus.viewer-sheet', walkThrough: true,
       visibleIf: { all: [{ objective: 'm02.o8.ise' }, { flag: 'hesper.visitArrangement', eq: 'bench' }] } },
-    { id: 'hesper-checked-drawer', kind: 'scene', node: 'hesper.nexus.drawer', x: 21, y: 14, w: 1, h: 1,
+    { id: 'hesper-checked-drawer', kind: 'scene', node: 'hesper.nexus.drawer', x: 21, y: 15, w: 1, h: 1,
       label: 'the return drawer for Hesper’s scrap', art: 'preserved.folder', walkThrough: true,
       visibleIf: { all: [{ objective: 'm02.o8.ise' }, { objective: 'm02.o6.hesper' }, { not: { flag: 'hesper.visitArrangement', eq: 'bench' } }] } },
     { id: 'hearth-spot', kind: 'fieldgame', game: 'hearth', x: 14, y: 10, w: 1, h: 1, label: 'the hearth where your friends gather', art: 'lantern-stall' },

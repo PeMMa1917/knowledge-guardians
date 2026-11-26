@@ -1,0 +1,41 @@
+.maker-room-tool {
+  display: grid;
+  gap: .65rem;
+}
+
+.maker-cut-result {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+}
+
+.maker-strip { margin: 0; }
+.maker-strip-cells {
+  display: flex;
+  gap: 3px;
+  min-width: 4rem;
+  width: min(14rem, 100%);
+}
+
+.maker-cell {
+  display: inline-block;
+  width: 1.55rem;
+  height: 1.55rem;
+  border: 1px solid currentColor;
+}
+.maker-stock { background: #9b6643; }
+.maker-mark { background: #389492; }
+.maker-tie { background: #baa26e; }
+.maker-void { background: transparent; }
+.maker-receipt { border-block-start: 1px solid currentColor; padding-block: .5rem; }
+.maker-room-tool button[aria-pressed="true"] { box-shadow: inset 0 0 0 2px currentColor; }
+
+.maker-exact-model { padding: .55rem; border: 1px solid currentColor; }
+.maker-disc {
+  display: grid;
+  place-content: center;
+  width: min(9rem, 100%);
+  aspect-ratio: 1;
+  border: 4px double #baa26e;
+  border-radius: 50%;
+}

@@ -1,11 +1,13 @@
 /** Fictional workshops for comparing sample panels and following their records. */
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
+import { METAL_CALLBOARD_RETURN } from './civicCallboard';
 import { METALWORKS_VINDOLANDA_HALL, METALWORKS_VINDOLANDA_YARD } from './vindolanda';
 import { METALWORKS_PLATE_HALL, METALWORKS_PLATE_YARD } from './transferFaces';
 import { METALWORKS_FITTING_RECORD, METALWORKS_FITTING_YARD } from './fittingViews';
 import { METAL_DEBATE_DOOR } from './benchDebate';
 import { METAL_LATCH_DOOR } from './latchCheck';
+import { REFERENCE_HALL_DOOR, REFERENCE_YARD_DOOR } from './referenceLine';
 
 type Workshop = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'interactables' | 'stamps' | 'lights'>;
@@ -51,6 +53,7 @@ export const METALWORKS_YARD = workshop({
     ...METALWORKS_PLATE_YARD,
     ...METALWORKS_FITTING_YARD,
     METAL_LATCH_DOOR,
+    REFERENCE_YARD_DOOR,
     { id: 'cross-furnace', kind: 'fieldgame', game: 'cross-furnace', x: 17, y: 5, w: 1, h: 1, label: 'the furnace dial by Brindle\'s shovel (a crossing)', art: 'signpost' },
     door('metal-records-path', 12, 3, 'the passage to the trade hall', { map: 'metalworks.records', x: 11, y: 12 }),
     { ...door('metal-nexus-return', 12, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 22, y: 16 }),
@@ -126,7 +129,9 @@ export const METALWORKS_RECORDS = workshop({
     ...METALWORKS_VINDOLANDA_HALL,
     ...METALWORKS_PLATE_HALL,
     METALWORKS_FITTING_RECORD,
+    METAL_CALLBOARD_RETURN,
     METAL_DEBATE_DOOR,
+    REFERENCE_HALL_DOOR,
     door('metal-yard-return', 11, 14, 'the passage back to the Sample Yard', { map: 'metalworks.yard', x: 12, y: 5 }),
     { id: 'metal-exhibition-case', kind: 'exhibit', exhibit: 'OBJ-MET-ASTROLABE', x: 5, y: 8, w: 1, h: 1, walkThrough: true,
       label: 'the museum entry for Musa’s spherical astrolabe', art: 'preserved.catalogue' },

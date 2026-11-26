@@ -6,6 +6,7 @@
  * Tiles with no floor show the background colour: here, the river.
  */
 import type { Condition } from '../domain/types';
+import { specimenEquipped } from '../domain/specimenGear';
 import { FERRY_KETTLE } from './ferryKettle';
 import type { MapDef } from './types';
 
@@ -14,6 +15,7 @@ const RIVER = 9; // first row of water
 const departureCases: Condition = { all: [{ card: 'card.departure.tupaia' }, { card: 'card.departure.reading' }] };
 const departureTag: Condition = { flag: 'departure.ferry.tag', eq: true };
 const departureUndecided: Condition = { not: { flagSet: 'departure.ferry.route' } };
+const tupaiaWorking = specimenEquipped('bl:add-ms-21593-c');
 
 function floor(x: number, y: number): string | null {
   if (x < 0 || x >= W || y < 0 || y >= H) return null;
@@ -69,6 +71,18 @@ export const FERRY: MapDef = {
       label: 'two records of Tupaia’s chart copy', art: 'departure.catalogue', walkThrough: true },
     { id: 'ferry-departure-reading', kind: 'exhibit', exhibit: 'OBJ-DEPART-READING', x: 9, y: 5, w: 1, h: 1,
       label: 'a proposed reading beside the chart records', art: 'departure.catalogue', walkThrough: true },
+    { id: 'ferry-tupaia-return', kind: 'scene', node: 'departure.ferry.tupaia-return', x: 7, y: 6, w: 1, h: 1,
+      art: 'departure.peg', walkThrough: true, label: 'Tova’s spare return hook',
+      visibleIf: { all: [tupaiaWorking, { not: { flagSet: 'departure.tupaia.plan' } }] } },
+    { id: 'ferry-tupaia-footpath', kind: 'door', x: 8, y: 7, w: 1, h: 1, art: 'departure.peg-marked', walkThrough: true,
+      label: 'the marked low footpath to the dock stair', to: { map: 'aethelgard.ferry', x: 12, y: 11 }, flag: 'departure.tupaia.crossed',
+      visibleIf: { flag: 'departure.tupaia.plan', eq: 'path' } },
+    { id: 'ferry-tupaia-low-reply', kind: 'sign', x: 13, y: 11, w: 1, h: 1, art: 'departure.strip', walkThrough: true,
+      label: 'the footpath’s named arrival mark', flag: 'departure.tupaia.used', visibleIf: { flag: 'departure.tupaia.crossed', eq: true },
+      text: 'This peg is the arrival by the Dock Stair. The low path begins at Tova’s return hook. The next carrier can take the marked route from that side.' },
+    { id: 'ferry-tupaia-bench-reply', kind: 'sign', x: 20, y: 5, w: 1, h: 1, art: 'departure.strip', walkThrough: true,
+      label: 'Wenna’s two starting notes', flag: 'departure.tupaia.used', visibleIf: { flag: 'departure.tupaia.plan', eq: 'bench' },
+      text: 'Wenna clips an old-road note and a dock-stair note to separate ends. A carrier who comes the other way pulls the strip for their own starting place.' },
     { id: 'ferry-departure-table', kind: 'scene', node: 'departure.ferry.table', x: 13, y: 6, w: 1, h: 1,
       label: 'Tova’s carrier tag for the wick bundle', art: 'departure.strip', walkThrough: true,
       visibleIf: { all: [departureCases, { not: departureTag }] } },

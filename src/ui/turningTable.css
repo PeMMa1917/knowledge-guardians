@@ -1,0 +1,16 @@
+.turning-tracks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .35rem;
+  margin-block: .75rem;
+}
+.turning-slot {
+  display: grid;
+  gap: .2rem;
+  padding: .3rem;
+  border: 1px solid currentColor;
+  overflow-wrap: anywhere;
+}
+.turning-mark, .turning-peg { border-inline-start: .2rem double currentColor; padding-inline-start: .3rem; }
+.turning-peg { border-inline-start-style: solid; }
+.turning-table button { white-space: normal; }

@@ -52,6 +52,8 @@ import { objectiveSkillUse, recordSkillUse } from './skills';
 import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
 import { addQuestionWay, checkAwards, grantCredit } from './permanent';
 import { evaluateLabel, type LabelResult } from './label';
+import { canClaimSpecimen, carriedSpecimenCount, carryFlag, hasSpecimen, ownsSpecimen, SPECIMEN_BASE, SPECIMEN_CAPACITY,
+  specimenEquipped, specimenItemId, specimenReadingFlag, specimenToolId } from './specimenGear';
 import { playMove, startShowdown, type ShowdownMove } from './showdown';
 import { tryLock, type LockResult } from './lock';
 import { compareWithBlade, forgeStep, newForge, type ForgeAction } from './forge';
@@ -123,6 +125,9 @@ export type Command =
   | { type: 'EnterNode'; node: string }
   | { type: 'ChooseDialogueOption'; node: string; index: number }
   | { type: 'InspectExhibit'; exhibit: string }
+  | { type: 'ClaimSpecimen'; exhibit: string }
+  | { type: 'CarrySpecimen'; key: string; carry: boolean }
+  | { type: 'SetSpecimenReading'; exhibit: string; reading: 'use' | 'source' }
   | { type: 'UseLens'; exhibit: string }
   | { type: 'RunSimulation'; pen: string; surface: string }
   | { type: 'NileRouteTrial'; road: NileRoad }
@@ -376,6 +381,7 @@ export class Engine {
       switch (cmd.type) {
         case 'VisitPlace':
           if (!cmd.name.trim()) throw new Error('This place has no name');
+          if (s.flags[`visited.map.${s.mapId}`] !== true) s = apply([{ setFlag: `visited.map.${s.mapId}`, value: true }], s, out);
           break;
         case 'Reach':
           s = apply([{ setFlag: `reached.${cmd.zone}`, value: true }], s, out);
@@ -605,6 +611,34 @@ export class Engine {
           const e = this.pack.exhibits.find((x) => x.id === cmd.exhibit);
           if (!e) throw new Error('Unknown exhibit');
           s = apply([{ setFlag: `inspected.${e.id}`, value: true }, { addCard: e.grantsCard }, { addNum: 'count.inspected', by: s.flags[`inspected.${e.id}`] ? 0 : 1 }], s, out);
+          break;
+        }
+        case 'ClaimSpecimen': {
+          const exhibit = this.pack.exhibits.find((record) => record.id === cmd.exhibit);
+          if (!exhibit || !hasSpecimen(exhibit)) throw new Error('Unknown collection object');
+          const { key } = exhibit.specimen;
+          if (ownsSpecimen(s, key)) break;
+          if (!canClaimSpecimen(s, exhibit)) throw new Error('Finish the object’s quest first');
+          const inSatchel = carriedSpecimenCount(s) < SPECIMEN_CAPACITY;
+          s = apply([{ giveItem: specimenItemId(key) }, { setFlag: carryFlag(key), value: inSatchel },
+            { setFlag: 'specimens.collected', value: true }], s, out);
+          break;
+        }
+        case 'CarrySpecimen': {
+          const { key, carry } = cmd;
+          if (s.mapId !== SPECIMEN_BASE) throw new Error('Swap collection objects at the Nexus');
+          if (!ownsSpecimen(s, key)) throw new Error('You have not collected that object');
+          if ((s.flags[carryFlag(key)] === true) === carry) break;
+          if (carry && carriedSpecimenCount(s) >= SPECIMEN_CAPACITY) throw new Error('The satchel’s object slots are full');
+          const effects: Effect[] = [{ setFlag: carryFlag(key), value: carry }];
+          if (!carry && s.flags[PERSPECTIVE_FLAG] === specimenToolId(key)) effects.push({ setFlag: PERSPECTIVE_FLAG, value: false });
+          s = apply(effects, s, out);
+          break;
+        }
+        case 'SetSpecimenReading': {
+          const exhibit = this.pack.exhibits.find((record) => record.id === cmd.exhibit);
+          if (!exhibit || !hasSpecimen(exhibit) || !check(specimenEquipped(exhibit.specimen.key), s)) throw new Error('Bring the object to its stand');
+          s = apply([{ setFlag: specimenReadingFlag(exhibit.specimen.key), value: cmd.reading }], s, out);
           break;
         }
         case 'UseLens': {

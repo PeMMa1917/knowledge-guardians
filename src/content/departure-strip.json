@@ -6,6 +6,7 @@
       "title": "The Departure Strip",
       "knowledgeQuestion": "When do two people who follow the same instruction end up in different places?",
       "stake": "Wenna needs the lamp wick before she packs the Bell Archive’s next crate.",
+      "caseVisits": [["departure.ferry.compare", "departure.ferry.checked"]],
       "available": {
         "all": [
           {
@@ -280,6 +281,17 @@
     }
   ],
   "dialogue": [
+    {
+      "id": "departure.ferry.tupaia-return",
+      "speaker": "ferry-tova",
+      "historicalLabel": "fictional-world",
+      "text": "The chart’s working copy keeps the starting point with the direction. A carrier just missed the dock while the windy path was busy. The low path can take a marked start, or Wenna can leave both starting notes by her bench.",
+      "options": [
+        { "text": "Set a marked start for the low footpath.", "effects": [{ "setFlag": "departure.tupaia.plan", "value": "path" }] },
+        { "text": "Leave a two-start copy with Wenna.", "effects": [{ "setFlag": "departure.tupaia.plan", "value": "bench" }] },
+        { "text": "Leave the spare hook for now." }
+      ]
+    },
     {
       "id": "departure.ferry.table",
       "speaker": "ferry-tova",
@@ -962,14 +974,28 @@
       "art": "departure.catalogue",
       "historicalLabel": "documented",
       "dateText": "1769 in the library entry",
-      "dateKind": "The catalogue’s date for the sheet. A later scholarly reading dates the surviving version to 1770.",
-      "summary": "Read the filing slip. The British Library’s catalogue names James Cook. Te Ara calls the copy Tupaia’s chart. Both point to the same manuscript reference.",
+      "dateKind": "The catalogue’s date for the sheet. Eckstein and Schwarz date the surviving version to 1770 in their scholarly reconstruction of the drafting.",
+      "summary": "The British Library’s catalogue names James Cook. Te Ara calls the copy Tupaia’s chart. Both point to the same manuscript reference. Eckstein and Schwarz place Tupaia of Ra‘iātea at the centre of the collaborative drafting. The separate study case gives their reading and its limits.",
       "sources": [
         "HIS-DEPART-01",
-        "HIS-DEPART-02"
+        "HIS-DEPART-02",
+        "HIS-DEPART-03"
       ],
       "grantsCard": "card.departure.tupaia",
-      "altText": "Original diagram of a reference number joining two paper catalogue tabs."
+      "altText": "Original diagram of a reference number joining two paper catalogue tabs.",
+      "specimen": {
+        "key": "bl:add-ms-21593-c",
+        "accession": "Add MS 21593 C",
+        "institution": "British Library",
+        "source": "HIS-DEPART-01",
+        "objective": "departure.ferry.checked",
+        "revisit": {
+          "map": "aethelgard.ferry",
+          "prop": "ferry-tupaia-return",
+          "method": "Set a return instruction for a carrier’s actual starting side.",
+          "hint": "With the chart’s working copy fitted, approach Tova’s spare return hook near the old-road marker."
+        }
+      }
     },
     {
       "id": "OBJ-DEPART-READING",

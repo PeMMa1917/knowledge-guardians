@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { opticalReading, OPTICS_TRIALS } from '../src/domain/opticsBench';
 import { activePerspective, perspectiveTools, PERSPECTIVE_FLAG } from '../src/domain/perspectives';
+import { specimenFromTool } from '../src/domain/specimenGear';
 import { check } from '../src/domain/rules';
 import { emptyPair, parsePair, serialisePair, writeSuspend } from '../src/domain/saves';
 import type { Condition } from '../src/domain/types';
@@ -24,9 +25,10 @@ function propsFor(map: MapDef, id: string) {
 }
 
 describe('equipped keepsakes', () => {
-  it('gives each tool exclusive uses in at least two worlds', () => {
+  it('gives each crafted perspective tool exclusive uses in at least two worlds', () => {
     const d = new Driver();
-    const tools = perspectiveTools(d.e.pack);
+    const tools = perspectiveTools(d.e.pack).filter((tool) => !specimenFromTool(tool.id));
+    expect(tools.length).toBeGreaterThanOrEqual(3);
     for (const tool of tools) {
       const worlds = new Set(Object.values(MAPS).filter((map) => propsFor(map, tool.id).length).map((map) => map.world));
       expect(worlds.size, tool.name).toBeGreaterThanOrEqual(2);

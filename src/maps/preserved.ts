@@ -5,6 +5,7 @@ import { WORKROOM_SEAM } from './seamWitness';
 import { COLD_PAPER_LANDING } from './paperLanding';
 import { CLEARANCE_DOOR } from './clearanceGallery';
 import { POLAR_ARCHIVE_PROPS } from './polarStore';
+import { PERKINS_COLD_REVISIT } from './perkinsReturn';
 import { sceneProp } from './sceneProps';
 import type { Interactable, MapDef } from './types';
 
@@ -77,6 +78,7 @@ export const PRESERVED_ARCHIVE = room({
   interactables: [
     CLEARANCE_DOOR,
     ...POLAR_ARCHIVE_PROPS,
+    ...PERKINS_COLD_REVISIT,
     ...COLD_PAPER_LANDING,
     { id: 'cross-warm-room', kind: 'fieldgame', game: 'cross-warm-room', x: 20, y: 5, w: 1, h: 1, label: 'the cooling fan in the record store (a crossing)', art: 'ledger' },
     door('preserved-door-royal', 5, 3, 'the Royal Records room', { map: 'preserved.royal', x: 12, y: 12 }),

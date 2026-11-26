@@ -1,0 +1,1495 @@
+{
+  "characters": [
+    {
+      "id": "depot-keeper-eland",
+      "name": "Eland Thorne",
+      "role": "Instrument and sample depot keeper",
+      "sprite": "clerk-venn",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "objective": "depot.proof"
+          },
+          "node": "depot.after"
+        },
+        {
+          "node": "depot.meet"
+        }
+      ]
+    },
+    {
+      "id": "depot-visitor-mayle",
+      "name": "Mayle Arven",
+      "role": "Depot visitor and volunteer loan porter",
+      "sprite": "villager-2",
+      "mode": "fictional",
+      "talk": [
+        {
+          "node": "depot.mayle"
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "depot.meet",
+      "speaker": "depot-keeper-eland",
+      "text": "The shop’s loan card takes its number from the lid. Mayle borrowed one stand and found a different number behind its foot. I’ve set the training fittings on that table. The only thing the brass stamp guarantees is trouble if you turn it the wrong way.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.after",
+      "speaker": "depot-keeper-eland",
+      "text": "Both marks have a place in my new index. I keep the old card with them. Someone has crossed out the part where one clip was supposed to do all the work.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.mayle",
+      "speaker": "depot-visitor-mayle",
+      "text": "I can read a serial on a case through the glass. A body number at the back needs a keeper to turn it. If both come out today, I can see what matches before my loan appointment.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.load",
+      "speaker": "depot-keeper-eland",
+      "text": "The first library record links a known instrument and its case. A second case once carried a different instrument. Set each pair of practice facsimiles on the inspection stand. The clear side gives the body mark. The lid’s own clip gives the box record.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Set the known linked scope and case on the stand.",
+          "effects": [
+            {
+              "setFlag": "depot.pair",
+              "value": "known"
+            }
+          ],
+          "next": "depot.load.known",
+          "if": {
+            "not": {
+              "objective": "depot.known"
+            }
+          }
+        },
+        {
+          "text": "Set the reused microscope case and its fitted body on the stand.",
+          "effects": [
+            {
+              "setFlag": "depot.pair",
+              "value": "reused"
+            }
+          ],
+          "next": "depot.load.reused",
+          "if": {
+            "not": {
+              "objective": "depot.reused"
+            }
+          }
+        },
+        {
+          "text": "Keep the stand empty for now."
+        }
+      ]
+    },
+    {
+      "id": "depot.load.known",
+      "speaker": "narrator",
+      "text": "The square scope plate fits the stand facing the reading lamp. The case file keeps a separate clip with an explicit catalogue link.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.load.reused",
+      "speaker": "narrator",
+      "text": "The microscope fitting rests in the varnished case. The body plate is turned to the lamp. An older number waits on the folded lid.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.compare",
+      "speaker": "depot-keeper-eland",
+      "text": "Our old intake card calls everything in the second case “30607”. The body shows 16616. A museum record confirms the reuse. Mayle wants to inspect both in one visit. The runner wants a body card to take to the loan shelf. We can keep either request first and leave a trail for the other.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Mount the lid clip and body plate together at Mayle’s open tray.",
+          "effects": [
+            {
+              "setFlag": "depot.index",
+              "value": "paired"
+            }
+          ],
+          "next": "depot.index.paired"
+        },
+        {
+          "text": "File the body for loans and keep a staffed link to the case.",
+          "effects": [
+            {
+              "setFlag": "depot.index",
+              "value": "linked"
+            }
+          ],
+          "next": "depot.index.linked"
+        },
+        {
+          "text": "Leave the intake card on the review stand."
+        }
+      ]
+    },
+    {
+      "id": "depot.index.paired",
+      "speaker": "narrator",
+      "text": "The open tray now keeps the pair in its current arrangement and gives each number a separate place. The loan runner will wait until the shared view is put away.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.index.linked",
+      "speaker": "narrator",
+      "text": "The loan shelf has the body record for 16616. The lid for 30607 stays at the records table with a check-out link. Mayle needs a keeper to bring the whole comparison.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.proof.paired",
+      "speaker": "depot-visitor-mayle",
+      "text": "I can see both numbers at the shared tray. The old lid goes with the reuse note. The runner’s slot has shifted because the body stays here today.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Record the checked pair and the waiting loan.",
+          "effects": [
+            {
+              "setFlag": "depot.proof",
+              "value": "paired"
+            }
+          ]
+        },
+        {
+          "text": "Leave this receipt unmarked."
+        }
+      ]
+    },
+    {
+      "id": "depot.proof.linked",
+      "speaker": "depot-visitor-mayle",
+      "text": "The runner took the numbered body card. The old case stays here and I need the staffed tray to compare both. The two parts of my visit have their own times.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Record the delivered body card and the appointment for its case.",
+          "effects": [
+            {
+              "setFlag": "depot.proof",
+              "value": "linked"
+            }
+          ]
+        },
+        {
+          "text": "Leave this receipt unmarked."
+        }
+      ]
+    },
+    {
+      "id": "depot.date",
+      "speaker": "depot-keeper-eland",
+      "text": "A June certificate sits in one case, an August certificate in another. Worsley’s watch has a journey date. The wallet and the two scraps have later recovery dates. Clip the dates so a visitor can follow their use or find their custody.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Put the dates in one line with a separate event tab at each date.",
+          "effects": [
+            {
+              "setFlag": "depot.date",
+              "value": "line"
+            }
+          ],
+          "next": "depot.date.line"
+        },
+        {
+          "text": "Give examinations, use and retrieval their own rows.",
+          "effects": [
+            {
+              "setFlag": "depot.date",
+              "value": "rows"
+            }
+          ],
+          "next": "depot.date.rows"
+        },
+        {
+          "text": "Keep the tags by their cases."
+        }
+      ]
+    },
+    {
+      "id": "depot.date.line",
+      "speaker": "narrator",
+      "text": "The visitor can follow the order. Each date stays with the name of its event. Mayle adds a finger tab at the gap between certification and travel.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.date.rows",
+      "speaker": "narrator",
+      "text": "The three rows put related uses together. The visiting reader can find the dates of retrieval without moving the examination cards. They have to read across rows to trace the sequence.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.pressure",
+      "speaker": "depot-keeper-eland",
+      "text": "Two catalogue entries keep an instrument with its case or spare. Neither supplies a trace from an expedition. Run our paper storm once in each view. Hold its three printed steps fixed. Read the dial at the last mark and the strip across all three marks.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Run the fixed paper storm with the final dial facing out.",
+          "effects": [
+            {
+              "setFlag": "depot.pressure.view",
+              "value": "dial"
+            }
+          ],
+          "next": "depot.pressure.dial",
+          "if": {
+            "not": {
+              "flag": "depot.seen.dial",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Run the fixed paper storm with its trace facing out.",
+          "effects": [
+            {
+              "setFlag": "depot.pressure.view",
+              "value": "trace"
+            }
+          ],
+          "next": "depot.pressure.trace",
+          "if": {
+            "not": {
+              "flag": "depot.seen.trace",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Leave the strip at its starting peg."
+        }
+      ]
+    },
+    {
+      "id": "depot.pressure.dial",
+      "speaker": "narrator",
+      "text": "The dial ends at its starting height. Read it at the small check peg next to the stand.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.pressure.trace",
+      "speaker": "narrator",
+      "text": "The strip keeps three marked time steps. The sheet rides the same pegs it used before.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.pressure.pin",
+      "speaker": "depot-keeper-eland",
+      "text": "The last tick gives the starting value again. The strip has kept a drop between. Which reader needs to act at the first look?",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Put the end dial by the current turn slip.",
+          "effects": [
+            {
+              "setFlag": "depot.pressure",
+              "value": "current"
+            }
+          ],
+          "next": "depot.pressure.current"
+        },
+        {
+          "text": "Hang the three timed marks for the keeper reviewing the shift.",
+          "effects": [
+            {
+              "setFlag": "depot.pressure",
+              "value": "history"
+            }
+          ],
+          "next": "depot.pressure.history"
+        },
+        {
+          "text": "Leave both slips ready."
+        }
+      ]
+    },
+    {
+      "id": "depot.pressure.current",
+      "speaker": "narrator",
+      "text": "The runner checks the current value at the peg. The shift watcher takes a separate ticket for the trace.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.pressure.history",
+      "speaker": "narrator",
+      "text": "The keeper can see when the middle value changed. The runner points to the final tick before copying today’s value.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.models",
+      "speaker": "depot-keeper-eland",
+      "text": "Mawson’s wheel has a type and a known journey. The recipe packet recalls an earlier biscuit. A model and empty record forms show plans. Make a shelf people can handle or a shelf that traces the exact record. Leave the purpose of each thing on its tab.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Set the handling copies next to their source handles.",
+          "effects": [
+            {
+              "setFlag": "depot.models",
+              "value": "touch"
+            }
+          ],
+          "next": "depot.models.touch"
+        },
+        {
+          "text": "Set the dated evidence trail with a separate model shelf.",
+          "effects": [
+            {
+              "setFlag": "depot.models",
+              "value": "trail"
+            }
+          ],
+          "next": "depot.models.trail"
+        },
+        {
+          "text": "Keep the shelf open."
+        }
+      ]
+    },
+    {
+      "id": "depot.models.touch",
+      "speaker": "narrator",
+      "text": "The reader can lift the current packet replica and loose sledge model. Their labels name what was recreated. The scoped evidence stays under glass.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.models.trail",
+      "speaker": "narrator",
+      "text": "The reader traces intended use, later remake and return at the dated rail. The model stays on a second shelf. The reader can check the type without taking a training copy today.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.count",
+      "speaker": "depot-keeper-eland",
+      "text": "Use our transparent facsimile sleeves. The box record gives six packages. Each package has a separate accession and its own slide count. Turn the tally wheel to show packages or slides.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Turn the wheel to package tabs.",
+          "effects": [
+            {
+              "setFlag": "depot.count.mode",
+              "value": "bundles"
+            }
+          ],
+          "next": "depot.count.bundles",
+          "if": {
+            "not": {
+              "flag": "depot.seen.bundles",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Turn the wheel to slide tallies.",
+          "effects": [
+            {
+              "setFlag": "depot.count.mode",
+              "value": "slides"
+            }
+          ],
+          "next": "depot.count.slides",
+          "if": {
+            "not": {
+              "flag": "depot.seen.slides",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Keep the box and tally still."
+        }
+      ]
+    },
+    {
+      "id": "depot.count.bundles",
+      "speaker": "narrator",
+      "text": "Six numbered package tabs appear. Visit the counting slot and check the unit printed on its rail.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.count.slides",
+      "speaker": "narrator",
+      "text": "The wheel shows a separate count for each accession. Visit the counting slot again.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.count.pin",
+      "speaker": "depot-keeper-eland",
+      "text": "The courier wants to see if the shelf will take the six cases. The examiner needs the slide count and its separate accession labels. Both will get the unit they need somewhere. Choose what the first rail carries.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Put the six package tabs by the packing space.",
+          "effects": [
+            {
+              "setFlag": "depot.count",
+              "value": "pack"
+            }
+          ],
+          "next": "depot.count.pack"
+        },
+        {
+          "text": "Put all six accession tallies at the study rail.",
+          "effects": [
+            {
+              "setFlag": "depot.count",
+              "value": "study"
+            }
+          ],
+          "next": "depot.count.study"
+        },
+        {
+          "text": "Keep both sheets here."
+        }
+      ]
+    },
+    {
+      "id": "depot.count.pack",
+      "speaker": "narrator",
+      "text": "The courier can count six package places on the bench. The examiner follows the study tab to each individual count.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.count.study",
+      "speaker": "narrator",
+      "text": "The examiner can count slides by accession, including the two separate bundles with 21 each. The courier checks the single box record before bringing the shelf.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.signal",
+      "speaker": "depot-keeper-eland",
+      "text": "The Hut Point flag was sent across a distance. Two sun compasses have their own reference marks. The folding lantern and its case have separate jobs. Turn our paper signal toward the low railing or the far post. Use separate view marks to see where it actually arrives.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Turn the paper signal toward the low railing.",
+          "effects": [
+            {
+              "setFlag": "depot.signal.view",
+              "value": "low"
+            }
+          ],
+          "next": "depot.signal.low",
+          "if": {
+            "not": {
+              "flag": "depot.seen.low",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Turn the paper signal toward the far post.",
+          "effects": [
+            {
+              "setFlag": "depot.signal.view",
+              "value": "high"
+            }
+          ],
+          "next": "depot.signal.high",
+          "if": {
+            "not": {
+              "flag": "depot.seen.high",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Leave the paper signal on its peg."
+        }
+      ]
+    },
+    {
+      "id": "depot.signal.low",
+      "speaker": "narrator",
+      "text": "The low side now faces the low railing. The model’s board hides the upper corner from the far post.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.signal.high",
+      "speaker": "narrator",
+      "text": "The paper tag now faces the far post. The stamped signal is still the same shape.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.signal.pin",
+      "speaker": "depot-keeper-eland",
+      "text": "The two receivers have different clear views. Keep the low rail with the person who can reach it, or give the outward face to the far post and leave a runner’s note at the first rail.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Hang it at the tested low position.",
+          "effects": [
+            {
+              "setFlag": "depot.signal",
+              "value": "rail"
+            }
+          ],
+          "next": "depot.signal.rail"
+        },
+        {
+          "text": "Hang it toward the far post and put a runner’s note at the rail.",
+          "effects": [
+            {
+              "setFlag": "depot.signal",
+              "value": "post"
+            }
+          ],
+          "next": "depot.signal.post"
+        },
+        {
+          "text": "Keep the signal unposted."
+        }
+      ]
+    },
+    {
+      "id": "depot.signal.rail",
+      "speaker": "narrator",
+      "text": "The low rail reader receives the signal without moving. The far post sees a blank face and sends someone to the low rail.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.signal.post",
+      "speaker": "narrator",
+      "text": "The far reader sees the sign. A runner takes the low-rail note over beside the seated reader.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.water",
+      "speaker": "depot-keeper-eland",
+      "text": "The case gauge records one sort of field movement. The bottle can carry a sample for a different question. Our practice bottle and height slip have two different jobs. Send the first which can answer what the next worker is checking.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Send the dated height mark first to the dock reader.",
+          "effects": [
+            {
+              "setFlag": "depot.water",
+              "value": "height"
+            }
+          ],
+          "next": "depot.water.height"
+        },
+        {
+          "text": "Send the empty model bottle with the sample worksheet.",
+          "effects": [
+            {
+              "setFlag": "depot.water",
+              "value": "sample"
+            }
+          ],
+          "next": "depot.water.sample"
+        },
+        {
+          "text": "Leave both dated tracks at the bench."
+        }
+      ]
+    },
+    {
+      "id": "depot.water.height",
+      "speaker": "narrator",
+      "text": "The dock reader checks a change at the marked place. The bottle stays on the rack ready for a separate sample record.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "depot.water.sample",
+      "speaker": "narrator",
+      "text": "The bench reader marks a place to record a later sample. The height trace stays in the dock file. The blank fields make the new work visible.",
+      "historicalLabel": "fictional-world"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH4-R21",
+      "world": "WORLD-05",
+      "title": "A Lid with Two Names",
+      "available": {
+        "flag": "coast.arrived",
+        "eq": true
+      },
+      "stake": "Mayle could borrow a case labelled with the wrong body number, or lose her chance to compare the two records today.",
+      "knowledgeQuestion": "How can people preserve a number that used to fit while giving the next person a reliable record of what is there now?",
+      "caseVisits": [
+        ["depot.date"],
+        ["depot.pressure"],
+        ["depot.models"],
+        ["depot.count"],
+        ["depot.signal"],
+        ["depot.water"]
+      ],
+      "objectives": [
+        {
+          "id": "depot.known",
+          "title": "Read the linked body and case record.",
+          "done": {
+            "all": [
+              {
+                "flag": "depot.known.body",
+                "eq": true
+              },
+              {
+                "flag": "depot.known.lid",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "all": [
+              {
+                "card": "card.depot.scope"
+              },
+              {
+                "card": "card.depot.survey-case"
+              },
+              {
+                "card": "card.depot.micro"
+              },
+              {
+                "card": "card.depot.micro-case"
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.depot.known"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "justification",
+              "objectivity"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "TEC"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "subjects": [
+              "history",
+              "physics",
+              "design-tech"
+            ],
+            "minutes": 3
+          }
+        },
+        {
+          "id": "depot.reused",
+          "title": "Check both numbers on the reused pair.",
+          "done": {
+            "all": [
+              {
+                "flag": "depot.reused.body",
+                "eq": true
+              },
+              {
+                "flag": "depot.reused.lid",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "all": [
+              {
+                "card": "card.depot.scope"
+              },
+              {
+                "card": "card.depot.survey-case"
+              },
+              {
+                "card": "card.depot.micro"
+              },
+              {
+                "card": "card.depot.micro-case"
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.depot.reused"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "certainty",
+              "truth"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "TEC"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "subjects": [
+              "history",
+              "physics",
+              "design-tech"
+            ],
+            "minutes": 3
+          }
+        },
+        {
+          "id": "depot.proof",
+          "title": "Check the loan or joint viewing handover on the quay.",
+          "done": {
+            "flagSet": "depot.proof"
+          },
+          "visible": {
+            "all": [
+              {
+                "objective": "depot.known"
+              },
+              {
+                "objective": "depot.reused"
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.depot.proof"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "responsibility",
+              "values",
+              "perspective",
+              "truth"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "TEC"
+            ],
+            "framework": [
+              "ethics",
+              "perspectives",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "subjects": [
+              "history",
+              "physics",
+              "design-tech"
+            ],
+            "minutes": 4
+          }
+        },
+        {
+          "id": "depot.date",
+          "title": "Lay out certification, use and recovery dates.",
+          "done": {
+            "flagSet": "depot.date"
+          },
+          "visible": {
+            "all": [
+              {
+                "card": "card.depot.heath"
+              },
+              {
+                "card": "card.depot.other-sextant"
+              },
+              {
+                "card": "card.depot.watch"
+              },
+              {
+                "card": "card.depot.wallet"
+              },
+              {
+                "card": "card.depot.tent-label"
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.depot.date"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "explanation",
+              "certainty"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "TEC"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "subjects": [
+              "history",
+              "physics",
+              "design-tech"
+            ],
+            "minutes": 3
+          }
+        },
+        {
+          "id": "depot.pressure",
+          "title": "Choose a current value or a trace after comparing both.",
+          "done": {
+            "flagSet": "depot.pressure"
+          },
+          "visible": {
+            "all": [
+              {
+                "card": "card.depot.barometer"
+              },
+              {
+                "card": "card.depot.barometer-case"
+              },
+              {
+                "card": "card.depot.barograph"
+              },
+              {
+                "card": "card.depot.ink"
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.depot.pressure"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "objectivity",
+              "interpretation",
+              "evidence",
+              "explanation"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "TEC"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "perspectives"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "subjects": [
+              "history",
+              "physics",
+              "design-tech"
+            ],
+            "minutes": 4
+          }
+        },
+        {
+          "id": "depot.models",
+          "title": "Set up a handling shelf or a dated model trail.",
+          "done": {
+            "flagSet": "depot.models"
+          },
+          "visible": {
+            "all": [
+              {
+                "card": "card.depot.wheel"
+              },
+              {
+                "card": "card.depot.biscuit"
+              },
+              {
+                "card": "card.depot.packet"
+              },
+              {
+                "card": "card.depot.sledge-model"
+              },
+              {
+                "card": "card.depot.bird-forms"
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.depot.models"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "responsibility",
+              "perspective"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "TEC"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "subjects": [
+              "history",
+              "physics",
+              "design-tech"
+            ],
+            "minutes": 3
+          }
+        },
+        {
+          "id": "depot.count",
+          "title": "Bring the correct counting unit to the first rail.",
+          "done": {
+            "flagSet": "depot.count"
+          },
+          "visible": {
+            "all": [
+              {
+                "card": "card.depot.bundle-box"
+              },
+              {
+                "card": "card.depot.bundle-2"
+              },
+              {
+                "card": "card.depot.bundle-3"
+              },
+              {
+                "card": "card.depot.bundle-4"
+              },
+              {
+                "card": "card.depot.bundle-5"
+              },
+              {
+                "card": "card.depot.bundle-6"
+              },
+              {
+                "card": "card.depot.bundle-7"
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.depot.count"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "explanation",
+              "evidence",
+              "objectivity",
+              "justification"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "TEC"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "subjects": [
+              "history",
+              "biology",
+              "math-ai"
+            ],
+            "minutes": 4
+          }
+        },
+        {
+          "id": "depot.signal",
+          "title": "Read both carrier views before posting a paper signal.",
+          "done": {
+            "flagSet": "depot.signal"
+          },
+          "visible": {
+            "all": [
+              {
+                "card": "card.depot.flag"
+              },
+              {
+                "card": "card.depot.discovery-compass"
+              },
+              {
+                "card": "card.depot.evans-compass"
+              },
+              {
+                "card": "card.depot.lantern"
+              },
+              {
+                "card": "card.depot.lantern-case"
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.depot.signal"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "perspective",
+              "power",
+              "responsibility"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "TEC"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "subjects": [
+              "history",
+              "physics",
+              "geography"
+            ],
+            "minutes": 4
+          }
+        },
+        {
+          "id": "depot.water",
+          "title": "Send the height slip or a separate sample worksheet.",
+          "done": {
+            "flagSet": "depot.water"
+          },
+          "visible": {
+            "all": [
+              {
+                "card": "card.depot.gauge"
+              },
+              {
+                "card": "card.depot.bottle"
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.depot.water"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "justification",
+              "explanation",
+              "responsibility"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "TEC"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "subjects": [
+              "history",
+              "ess",
+              "physics"
+            ],
+            "minutes": 3
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.depot.known.1",
+      "objective": "depot.known",
+      "depth": 1,
+      "text": "Start from a known link."
+    },
+    {
+      "id": "h.depot.known.2",
+      "objective": "depot.known",
+      "depth": 2,
+      "text": "Read the Zeiss scope and its companion case."
+    },
+    {
+      "id": "h.depot.known.3",
+      "objective": "depot.known",
+      "depth": 3,
+      "text": "Set the known facsimiles and visit both viewing positions."
+    },
+    {
+      "id": "h.depot.known.4",
+      "objective": "depot.known",
+      "depth": 4,
+      "text": "Read the body mark and the catalogue case clip from the two labelled stands."
+    },
+    {
+      "id": "h.depot.reused.1",
+      "objective": "depot.reused",
+      "depth": 1,
+      "text": "A number can belong to the case or the instrument."
+    },
+    {
+      "id": "h.depot.reused.2",
+      "objective": "depot.reused",
+      "depth": 2,
+      "text": "Look up the two Swift records."
+    },
+    {
+      "id": "h.depot.reused.3",
+      "objective": "depot.reused",
+      "depth": 3,
+      "text": "Place the reused pair in the stand."
+    },
+    {
+      "id": "h.depot.reused.4",
+      "objective": "depot.reused",
+      "depth": 4,
+      "text": "Read both the body mark and the lid plate at their own viewing positions."
+    },
+    {
+      "id": "h.depot.proof.1",
+      "objective": "depot.proof",
+      "depth": 1,
+      "text": "Keep both numbers with their own claims."
+    },
+    {
+      "id": "h.depot.proof.2",
+      "objective": "depot.proof",
+      "depth": 2,
+      "text": "Mayle and the runner need different things first."
+    },
+    {
+      "id": "h.depot.proof.3",
+      "objective": "depot.proof",
+      "depth": 3,
+      "text": "Post a joined display or a loan record with separate access."
+    },
+    {
+      "id": "h.depot.proof.4",
+      "objective": "depot.proof",
+      "depth": 4,
+      "text": "Choose the display at the checked intake table. Walk to the matching quay receipt and see who gets the body or case first."
+    },
+    {
+      "id": "h.depot.date.1",
+      "objective": "depot.date",
+      "depth": 1,
+      "text": "Dates can name different events."
+    },
+    {
+      "id": "h.depot.date.2",
+      "objective": "depot.date",
+      "depth": 2,
+      "text": "Read the two certificates, watch, wallet and recovered labels."
+    },
+    {
+      "id": "h.depot.date.3",
+      "objective": "depot.date",
+      "depth": 3,
+      "text": "The paper pieces have a separate January 1911 recovery."
+    },
+    {
+      "id": "h.depot.date.4",
+      "objective": "depot.date",
+      "depth": 4,
+      "text": "At the event strips, set a single annotated line or separate rows."
+    },
+    {
+      "id": "h.depot.pressure.1",
+      "objective": "depot.pressure",
+      "depth": 1,
+      "text": "Hold the same three steps in each view."
+    },
+    {
+      "id": "h.depot.pressure.2",
+      "objective": "depot.pressure",
+      "depth": 2,
+      "text": "The dial and chart record different amounts of the shift."
+    },
+    {
+      "id": "h.depot.pressure.3",
+      "objective": "depot.pressure",
+      "depth": 3,
+      "text": "Read both teaching views before mounting a result."
+    },
+    {
+      "id": "h.depot.pressure.4",
+      "objective": "depot.pressure",
+      "depth": 4,
+      "text": "Run the fixed paper storm twice with the dial and trace facing you. Use the comparison clips."
+    },
+    {
+      "id": "h.depot.models.1",
+      "objective": "depot.models",
+      "depth": 1,
+      "text": "Objects can be plans, models or records of use."
+    },
+    {
+      "id": "h.depot.models.2",
+      "objective": "depot.models",
+      "depth": 2,
+      "text": "Read the wheel, forms and Edward Nelson’s model."
+    },
+    {
+      "id": "h.depot.models.3",
+      "objective": "depot.models",
+      "depth": 3,
+      "text": "Compare the original biscuit record with the separate modern packet."
+    },
+    {
+      "id": "h.depot.models.4",
+      "objective": "depot.models",
+      "depth": 4,
+      "text": "At the handling shelf, mount the reproduction and model or lay out their dated links."
+    },
+    {
+      "id": "h.depot.count.1",
+      "objective": "depot.count",
+      "depth": 1,
+      "text": "A box count and a slide count answer different requests."
+    },
+    {
+      "id": "h.depot.count.2",
+      "objective": "depot.count",
+      "depth": 2,
+      "text": "The six packages have separate accession numbers."
+    },
+    {
+      "id": "h.depot.count.3",
+      "objective": "depot.count",
+      "depth": 3,
+      "text": "Turn the display to both units."
+    },
+    {
+      "id": "h.depot.count.4",
+      "objective": "depot.count",
+      "depth": 4,
+      "text": "Read the six package tabs and their item counts separately. Put the first display where a courier or examiner can use it."
+    },
+    {
+      "id": "h.depot.signal.1",
+      "objective": "depot.signal",
+      "depth": 1,
+      "text": "A sender can make a mark without a receiver seeing it."
+    },
+    {
+      "id": "h.depot.signal.2",
+      "objective": "depot.signal",
+      "depth": 2,
+      "text": "Read the sign and direction sources plus the lantern and its case."
+    },
+    {
+      "id": "h.depot.signal.3",
+      "objective": "depot.signal",
+      "depth": 3,
+      "text": "Send the same teaching tag to both positions."
+    },
+    {
+      "id": "h.depot.signal.4",
+      "objective": "depot.signal",
+      "depth": 4,
+      "text": "Turn the model toward the rail and far post, then inspect each viewer. Mount the chosen sightline with a way to reach the other viewer."
+    },
+    {
+      "id": "h.depot.water.1",
+      "objective": "depot.water",
+      "depth": 1,
+      "text": "Two kinds of evidence can come from one place."
+    },
+    {
+      "id": "h.depot.water.2",
+      "objective": "depot.water",
+      "depth": 2,
+      "text": "Read the tide gauge and water bottle records."
+    },
+    {
+      "id": "h.depot.water.3",
+      "objective": "depot.water",
+      "depth": 3,
+      "text": "The container still needs a collection record."
+    },
+    {
+      "id": "h.depot.water.4",
+      "objective": "depot.water",
+      "depth": 4,
+      "text": "Use the sending clips to keep the dated height trace separate from any sample worksheet."
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.depot.known",
+      "claimKind": "observation",
+      "text": "The two records for the survey kit say how their parts are linked. I checked the case file and the instrument number separately."
+    },
+    {
+      "id": "j.depot.reused",
+      "claimKind": "observation",
+      "text": "The microscope body and case have different numbers in the archive. I read each number where it belongs."
+    },
+    {
+      "id": "j.depot.proof",
+      "claimKind": "observation",
+      "text": "At the quay I checked which record the next visitor could use. The old case and newer association still have different index lines."
+    },
+    {
+      "id": "j.depot.date",
+      "claimKind": "observation",
+      "text": "A certificate and a retrieval entry mark different events in an object’s history. I arranged those lines while keeping each object separate."
+    },
+    {
+      "id": "j.depot.pressure",
+      "claimKind": "observation",
+      "text": "The last dial reading returned to the first level. The separate strip still showed a drop between them."
+    },
+    {
+      "id": "j.depot.models",
+      "claimKind": "observation",
+      "text": "I kept a model, a prepared record and a later recreation in different roles. The route helps the next visitor trace which one they can handle."
+    },
+    {
+      "id": "j.depot.count",
+      "claimKind": "observation",
+      "text": "I checked packages at one setting and slides at the other. I kept both units with the case and accession tabs."
+    },
+    {
+      "id": "j.depot.signal",
+      "claimKind": "observation",
+      "text": "I checked both viewpoints before treating one signal as a received message."
+    },
+    {
+      "id": "j.depot.water",
+      "claimKind": "observation",
+      "text": "The dated height note can help a dock reader. The empty bottle leaves a different question to a later worker."
+    }
+  ]
+}

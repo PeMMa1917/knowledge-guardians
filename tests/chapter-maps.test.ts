@@ -43,6 +43,24 @@ it('leaves the Emberford portal post clear for Kip after the market Showdown', (
   expect(isWalkable(idris.x, idris.y - 1) || isWalkable(idris.x + 1, idris.y)).toBe(true);
 });
 
+it('gives Hesper’s return drawer and the City of Copies door separate facing targets in the Nexus', () => {
+  const map = MAPS['nexus.archive'];
+  const approach = walkable(map);
+  // Both can be present after the debrief, including when a legacy save has no visit arrangement.
+  for (const [id, y] of [['copies-door', 14], ['hesper-checked-drawer', 15]] as const) {
+    const point = map.interactables.find((prop) => prop.id === id)!;
+    expect([point.x, point.y]).toEqual([21, y]);
+    expect(approach(20, y)).toBe(true);
+
+    // Position at the centre of the western tile and face right, as WorldScene does.
+    const frontX = 20 * 16 + 8 + 12;
+    const frontY = y * 16 + 12;
+    const targets = map.interactables.filter(({ x, y, w, h }) => x * 16 <= frontX && frontX <= (x + w) * 16
+      && y * 16 <= frontY && frontY <= (y + h) * 16 + 6);
+    expect(targets.map(({ id }) => id)).toEqual([id]);
+  }
+});
+
 describe('Chapter layouts after the Nile Archive', () => {
   it.each(maps)('$name has an approach to every actor and prop, and clear arrival tiles', (map) => {
     const isWalkable = walkable(map);

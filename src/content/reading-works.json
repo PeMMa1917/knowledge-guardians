@@ -1,0 +1,227 @@
+[
+  {
+    "slug": "idrisi",
+    "key": "bodleian:pococke-375-3b-4a",
+    "institution": "Bodleian Libraries, University of Oxford",
+    "accession": "MS. Pococke 375, fols. 3b–4a",
+    "title": "Al-Idrisi’s circular map, fols. 3b–4a",
+    "date": "1553 CE",
+    "dateKind": "1553 dates this manuscript copy. The Bodleian describes the earlier work as composed in 1152. Britannica dates its completion to January 1154.",
+    "source": "https://digital.bodleian.ox.ac.uk/objects/ced0d8bd-1019-4af2-9086-e411115f1507/",
+    "locator": "Manuscript catalogue and the canvas labelled fol. 3b-4a in the digital viewer",
+    "observation": "A circular map spans the opening of this written copy of Al-Idrisi’s Arabic geography. Its south is at the top. The Bodleian dates this manuscript copy to 1553. Fihrist names ʻAlī ibn Ḥasan al-Ḥūfī al-Qāsimī as the scribe.",
+    "limit": "This is one manuscript’s map. Turning its orientation changes what is at the top, while the relative positions of places can stay the same. It does not establish navigable routes for an actual present-day journey.",
+    "alt": "Original schematic of an open book with a circular blue map and a fold down the middle.",
+    "pad": "the landing practice map",
+    "trials": [
+      {
+        "label": "the worn orientation key",
+        "before": "Two numbered piers sit on a practice shore. The key names the direction along the upper edge of this fictional copy.",
+        "action": "Set the south key against the upper edge",
+        "after": "The nearer pier is still beside the headland. The direction at the top is south, as it is on the recorded manuscript spread."
+      },
+      {
+        "label": "the turntable practice shore",
+        "before": "The landing crew has a second practice map on a turntable. Its two piers match the same two notches.",
+        "action": "Turn the practice shore a half turn and check both notches",
+        "after": "Both piers stay beside their own notches. The other shoreline edge is now at the top, and the key has to turn with the map."
+      }
+    ],
+    "send": "A crew borrowing the old sheet can follow its south key. A carrier used to north-up maps can use the turned inset. Both prints will need a key.",
+    "routes": [
+      {
+        "action": "Clip the south key and the scribe’s tab beside the older sheet",
+        "setup": "The landing board opens on the south-up copy. Its key is beside the map, where someone can read both before starting. Al-Idrisi’s author credit and the scribe’s later work keep separate tabs.",
+        "use": "Set the carrier’s peg by the headland with the south key",
+        "reply": "She takes the same pier even with south at the top. I’ll keep this key with the older view so the next carrier can repeat her move."
+      },
+      {
+        "action": "Mount a north-up inset with its own new key",
+        "setup": "The landing board opens on the turned practice inset. The original sheet stays named on the back tab.",
+        "use": "Guide the carrier’s peg by both notches on the turned inset",
+        "reply": "There’s the same pier. She can start with the inset she knows, and we can still find the south-up record if she asks."
+      }
+    ],
+    "kind": "map"
+  },
+  {
+    "slug": "braille",
+    "key": "aph:procdpourcrirele00loui",
+    "institution": "American Printing House for the Blind, M. C. Migel Library",
+    "accession": "HV1669 .B73 1829 · procdpourcrirele00loui",
+    "title": "Louis Braille’s 1829 Procédé, the Migel facsimile",
+    "date": "1829 text. Facsimile date unlisted.",
+    "dateKind": "1829 dates the first-edition text printed in Paris. The Migel Library identifies its scanned held copy as a facsimile.",
+    "source": "https://archive.org/details/procdpourcrirele00loui",
+    "locator": "Migel Library contributed scan, title page, source notes and Introduction",
+    "observation": "Louis Braille’s Procédé describes raised signs for words, music and plainsong. The exact Migel Library copy in the linked record is catalogued as a facsimile of the 1829 work.",
+    "limit": "The dated title page belongs to the work reproduced. The catalogue does not give a making date for this facsimile or show that its scanned pages can be read by touch. The working markers here are fictional.",
+    "alt": "Original schematic of an open book with a small uneven raised-mark illustration alongside its page edge.",
+    "pad": "Kori’s practice locator",
+    "trials": [
+      {
+        "label": "the printed box names",
+        "before": "Three return boxes have printed names at the back. Kori can ask the keeper to read them aloud. The names are too high for her to find a box by touch.",
+        "action": "Slide the practice box names down to the low ledge",
+        "after": "The boxes now put the marker at a stable place by each opening. Printed ink still feels the same under Kori’s fingers."
+      },
+      {
+        "label": "the practice corner markers",
+        "before": "Kori offers a pair of raised corner shapes she already uses to track which practice box is open. They don’t reproduce the book’s writing.",
+        "action": "Fit the two raised corner markers where Kori asks",
+        "after": "Kori follows the fixed ledge and tells the two corners apart. She asks you to leave a written key too, so the next keeper can put them back in order."
+      }
+    ],
+    "send": "The quiet hour has no keeper on the landing. The staffed hour moves boxes sometimes. Kori can use a fixed row alone, or check where a keeper has moved the same markers.",
+    "routes": [
+      {
+        "action": "Install the fixed raised row for the quiet hour",
+        "setup": "Kori heads to the low ledge on her own. The raised corners stay fixed and the written key sits beside them.",
+        "use": "Leave the row in place while Kori checks the next box",
+        "reply": "Found the corner and the open box. Keep the extra box at the end, please. I can come back at a quiet hour when the keeper is off."
+      },
+      {
+        "action": "Staff a changeable row with the raised markers and written key",
+        "setup": "Kori asks where the repair queue ends. The keeper has already moved one practice box and can check the raised marks against the key.",
+        "use": "Let Kori test the revised row with the keeper",
+        "reply": "Now we can put both marks back when the queue changes. Keep their names on the key. I’ll ask for this route when the boxes have to move."
+      }
+    ],
+    "kind": "access"
+  },
+  {
+    "slug": "muybridge",
+    "key": "loc:2007678037",
+    "institution": "Library of Congress",
+    "accession": "LOT 3081 · LCCN 2007678037 · LC-DIG-ppmsca-23778",
+    "title": "Sallie Gardner on the Palo Alto track",
+    "date": "19 June 1878",
+    "dateKind": "The run date printed on this exact Library of Congress reproduction of a photographic print.",
+    "source": "https://www.loc.gov/item/2007678037/",
+    "locator": "Library of Congress reproduction LC-DIG-ppmsca-23778, heading and note beneath the panels",
+    "observation": "Eadweard Muybridge’s print names Sallie Gardner and the Palo Alto track. The labelled digital reproduction places successive views against ruled reference lines. The printed note says the negatives were made at intervals of twenty-seven inches.",
+    "limit": "Each view records one position. The card gives distances between views and describes its test. The views alone cannot supply a continuous track for each foot or show how every horse moves.",
+    "alt": "Original schematic of a ruled photography card with a few dark motion marks in separate panels.",
+    "pad": "the rail’s motion check",
+    "trials": [
+      {
+        "label": "the separate practice frames",
+        "before": "A practice runner drew a cart past a mark. Two cards show its wheels at different places. Each card keeps the same low chalk line.",
+        "action": "Slide both frames against the same chalk chord",
+        "after": "The wheels touch the lower line in one view and stand above it in another. You have two recorded wheel positions, with a stretch of movement in between."
+      },
+      {
+        "label": "the hand-turned play viewer",
+        "before": "The small practice viewer can loop those positions. Its handle can move past each picture at different speeds.",
+        "action": "Turn the handle twice at different speeds",
+        "after": "The wheel marks hold their positions on the cards. A faster turn makes the loop seem quicker, without changing the spacing recorded on the exercise cards."
+      }
+    ],
+    "send": "At the rail Vara needs a visitor to see the wheel check and its gap. A keeper staffing the long bench can use the loop as long as visitors keep the still cards.",
+    "routes": [
+      {
+        "action": "Hang the still cards with the shared chalk line",
+        "setup": "The rail opens on two fixed positions. A blank slot holds the space between the cards.",
+        "use": "Set the second card back against the line with Vara",
+        "reply": "Two checks anyone can repeat, with the gap still visible. The visitor can say where the wheels are in these frames."
+      },
+      {
+        "action": "Lend the turn handle with the still cards and spacing slip",
+        "setup": "The staffed bench keeps the original interval slip beside the hand-turned loop. Vara invites a visitor to slow the handle down.",
+        "use": "Open the viewer to the matching still frame",
+        "reply": "She can stop, find the still position and get the gap back. I’ll leave the interval slip out when the loop is on."
+      }
+    ],
+    "kind": "motion"
+  },
+  {
+    "slug": "next",
+    "key": "cern:6qhcbugnq4rng",
+    "institution": "CERN · Science Museum exhibition record",
+    "accession": "6QHcxbuGnQ4rng · CERN-loaned original",
+    "title": "The NeXT computer used as CERN’s first Web server",
+    "date": "December 1990",
+    "dateKind": "The first Web page hosting period given for this exact NeXT computer in the Science Museum’s loan record.",
+    "source": "https://artsandculture.google.com/asset/original-next-computer-used-by-sir-tim-berners-lee-to-design-the-world-wide-web-next/6QHcxbuGnQ4rng?hl=en",
+    "locator": "Science Museum description of the CERN loan, date, creator and credit",
+    "observation": "The Science Museum describes this particular NeXT computer as the one Tim Berners-Lee used to design the Web and host the first Web page at CERN in December 1990. CERN identifies its NeXT machine as the first Web server.",
+    "limit": "Other NeXT workstations are separate objects. The date describes early Web use of this machine, and does not date all networking or every change to the pages.",
+    "alt": "Original schematic of a dark square computer with one pale label and a small link light.",
+    "pad": "the keeper’s linked notices",
+    "trials": [
+      {
+        "label": "the small shared index",
+        "before": "This fictional model uses one lit index by the press. It points two readers to the same set of dated landing notices.",
+        "action": "Close the model index shutter and open both request cards",
+        "after": "Both request cards lead to the same closed slot. The far reader can still see the address, but the route to the current notice depends on the lit index."
+      },
+      {
+        "label": "the dated practice copy",
+        "before": "A day-old practice copy sits on the reader’s rail. Two lines have changed at the main index since the reader made it.",
+        "action": "Check the copy through a closed shutter, then compare dates",
+        "after": "The old copy stays readable. Its date lets a reader notice that two other lines may need a later comparison."
+      }
+    ],
+    "send": "The staffed desk can reopen one shared index after a pause. A closing bell reader can use a dated local copy while the main index is shut.",
+    "routes": [
+      {
+        "action": "Send the staffed desk the live index slip",
+        "setup": "Vara has the live index address and an open desk. If the press shutter closes, a keeper will put a wait slip at the common slot.",
+        "use": "Open a current notice through the shared model index",
+        "reply": "Both readers see the same revision. I’ll stay at the desk until this watch ends, and leave a wait slip if it closes."
+      },
+      {
+        "action": "Share a dated local copy and leave a place for the next update",
+        "setup": "The landing rail keeps a copy where a closing-hour reader can still reach it. A date is visible at the fold.",
+        "use": "Open the local copy and mark where the next dated line goes",
+        "reply": "The reader gets the last available notice before the bell. I’ll compare its date against the press when the shutter opens again."
+      }
+    ],
+    "kind": "network"
+  },
+  {
+    "slug": "perkins-procede",
+    "key": "perkins:procede-1829",
+    "institution": "Hayes Research Library and Perkins Archives",
+    "accession": "Perkins Archives’ held copy of Procédé (1829)",
+    "title": "Louis Braille’s Procédé, Perkins’s 1829 copy",
+    "date": "1829",
+    "dateKind": "The printing date of this first-edition copy held at Perkins. The school’s source leaves its acquisition history open.",
+    "source": "https://www.perkins.org/brailles-most-famous-book/",
+    "locator": "Perkins Archives’ held-copy account, photograph, first-edition description and acquisition paragraph",
+    "observation": "Perkins Archives holds a copy of Louis Braille’s 1829 book. Its publication account says most of the book uses raised letters and that the proposed signs included dots and dashes. Braille credits Charles Barbier’s earlier dot work.",
+    "limit": "This copy shows the early system, before Braille dropped the dashes. The archive account leaves open who brought this exact copy to Perkins.",
+    "alt": "Original schematic of a dark red book open on an embossed title page, with dots and a dash in a separate model strip.",
+    "pad": "the author’s proof and credit slip",
+    "trials": [
+      {
+        "label": "the author’s raised-letter proof block",
+        "before": "Perkins describes raised letters pressed into damp paper for much of the book. We can make a little proof of one model line. It carries no letters from the original.",
+        "action": "Lift the proof off the block and keep the author’s source tab",
+        "after": "The proof shows raised marks. Louis Braille’s named source tab remains with the proof rather than becoming part of the printed sample."
+      },
+      {
+        "label": "the dot and dash comparison strip",
+        "before": "Kori has made two model patterns. One uses only dots. The other lets her compare dots with a short ridge. Braille’s first version used dots and dashes and named Barbier’s earlier work.",
+        "action": "Switch the two patterns and let Kori check their space",
+        "after": "Kori finds the short line and the dots apart. Turning the strip keeps their two jobs clear. The trial is about space between marks, in a fictional pattern."
+      }
+    ],
+    "send": "One reader can keep the early version in view with the credit that accompanied it. A room practising a later layout can keep both versions and their dates apart.",
+    "routes": [
+      {
+        "action": "Leave the early proof beside the credit Braille gave Barbier",
+        "setup": "One proof and one credit slip sit side by side. Kori can compare the separate marks and find the credit with the book.",
+        "use": "Turn the early proof and hand Kori the credit separately",
+        "reply": "I can discuss what Braille changed and still find the person he credited. Leave both beside the early proof for the next reader."
+      },
+      {
+        "action": "Mount separate early and later model strips with their own tabs",
+        "setup": "Two removable strips have different labels. One keeps its ridge. The second has only dots. The credit for Barbier stays with the early proof.",
+        "use": "Let Kori swap the two strips without switching their date tabs",
+        "reply": "The later strip has a different job. Now a reader can try it and still return to the earlier arrangement and its credit."
+      }
+    ],
+    "kind": "composition"
+  }
+]

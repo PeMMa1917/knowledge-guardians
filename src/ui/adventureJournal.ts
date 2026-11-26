@@ -4,6 +4,7 @@ import type { DiaryNoteKind } from '../domain/types';
 import { MAPS } from '../maps';
 import { adventureDocx, ADVENTURE_DOCX_TYPE } from './adventureDocx';
 import { printAdventureJournal } from './adventurePrint';
+import { adventureReferences } from './adventureReferences';
 import { clear, h } from './dom';
 
 type DiaryTab = 'diary' | 'notes' | 'open-quests';
@@ -85,7 +86,9 @@ function diaryFeed(view: AdventureJournalView, refresh: (tab: DiaryTab) => void)
         h('button', { type: 'button', onclick: () => refresh('notes') }, 'Write a note'),
         h('button', { type: 'button', onclick: () => refresh('open-quests') }, 'Open quests and questions'))),
     exportControls(view)),
-    h('label', { class: 'diary-filter' }, 'Show ', select), empty, list, more);
+    h('label', { class: 'diary-filter' }, 'Show ', select), empty, list, more,
+    h('details', { class: 'diary-source-list' }, h('summary', {}, 'Sources for my collected specimens'),
+      view.references.length ? adventureReferences(view.references) : h('p', {}, 'Collected specimens will add their catalogue references here.')));
 }
 
 function questionButton(note: JournalNote, controller: GameController, refresh: () => void): HTMLElement | null {

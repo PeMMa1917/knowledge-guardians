@@ -26,6 +26,10 @@ The later kettle feature also passed a production browser route. I staged the la
 
 Both Film paths passed in Chromium on a frozen `fa0b611` build with the Film change applied. The House and Coast doors were closed in a fresh save. I staged `sea.finish` and `preserved.publish`, then walked the actual passages and used keyboard interaction at both cameras, the editing stand, the branch-specific reader and the two harbour records. I checked that the camera pixels differed, found the visitor at the gallery rail or the foyer route post, and confirmed that reading the historical frame alone kept the harbour placement locked. Both camera and editor panels fit at 390 CSS pixels with 175% text. Enter on the focused camera control advanced one beat. [Film route tests](../tests/film-cuts.test.ts)
 
+## The Story Archive
+
+Chromium used the House of Performance and Gallery doors after staging `sea.finish`. Two fresh profiles positioned the player beside reachable tiles and opened the exhibits and paper clips with E. Both profiles checked both caption previews and completed a different set of Gallery deliveries. One profile earned Dace’s comb in the Nexus and used it in the frame. The other reached both alternate readers with Enter on the frame controls at 390 CSS pixels and 175% text. Both cases showed the correct exact catalogue links, separate dates and original diagrams. [Story Archive tests](../tests/story-archive.test.ts)
+
 ## The Sample Shed and Prop Room
 
 Two fresh Chromium profiles reached the new rooms through the regular Stage Gallery and Market doors. The runs staged `sea.finish` and later `stage.finish` for those chapter gates and positioned the player beside reachable tiles. The profiles used E to examine all eight museum specimens, ran both practice steps for each, and completed the two different sets of deliveries outside the rooms. The alternate set activated focused choices with Enter. Each exhibit showed a distinct local image, catalogue link and date. Each completed job left its own receiving display in place for a second visit. [Specimen work tests](../tests/specimen-work.test.ts)
@@ -92,3 +96,21 @@ The production teacher page now receives the reporting fields derived from the c
 ## Two Dates at a Peg
 
 Chromium replayed the ordinary Cartographers’ Sea chart, publication and revision from a disposable copy of an earned campaign with the Sea chapter state cleared. The annex and both receiving desks stayed hidden before revision. Afterward the test walked to both cases for the photograph and jar pairs, loaded their exact collection artwork and moved the peg twice with Enter. The overlap and separate date ranges rendered at 390 CSS pixels and 175% text. The player carried the two-sheet photograph guide to the market bench and the one-image jar guide to the dock. Each signed delivery removed its guide from inventory and left a dated receipt in the journal. [Route tests](../tests/date-peg.test.ts) · [Object records](../src/content/date-peg-specimens.json)
+
+## The Beside Date
+
+Chromium continued a disposable copy of the previously completed campaign and walked through the normal Sea and Civic doors. The test inspected Mscr.Dresd.R.310 and 70.177.69, compared both display models for each, and kept Winslow Homer’s 1885 source sketches distinct from the 1902 canvas. It sent a wide guide and two event strips through the separate harbour readers, then filed each signed receipt in the corresponding Civic tray. The controls worked with Enter at 390 CSS pixels and 175% text. No uncaught page exceptions occurred. The save returned to the Nexus. [Route tests](../tests/date-register.test.ts) · [Exact exhibit records](../src/content/date-register-specimens.json)
+
+## Earned specimen references
+
+Chromium continued the earned Nile campaign, walked to the Turin Mine Map and took the object through its exhibit control. The Diary showed one clickable collection citation. The downloaded Word file’s external hyperlink relationship and the PDF annotation both resolved to the exact Museo Egizio catalogue URL. The browser-generated documents kept private writing out of the default export. [Diary and Word tests](../tests/adventure-journal.test.ts) · [Catalogue item](https://collezionepapiri.museoegizio.it/en-gb/document/9/)
+
+## Past the Roof Line and four workshops
+
+Chromium used two disposable saves to inspect the 1733 Timbuktu manuscript record and trace the first sightings at columns 6 and 7 over the roof and columns 4 and 5 over the wall. The quay route reopened its pocket trace. The headland route reopened the paired frame. The test staged the earlier Cold Store publication and Coast revision, positioned the player beside each interaction, and used the normal doors and controls. [Sighting and handoff tests](../tests/timbuktu-manuscript.test.ts)
+
+Two additional Chromium saves inspected all 20 different workshop records and loaded their local museum images. Each save tested both settings at every fixture before placing the results at the selected receiving stands in the Sample Shed or Prop Room. The two saves covered all 40 handoffs and reopened each completed stand. One used Enter to operate the work controls. The test staged the preceding chapter gates and positioned the player beside the normal doors and props. [Workshop tests](../tests/object-use.test.ts) · [Collection records](../src/content/object-use-cases.json)
+
+## A Turn at the Workbench
+
+Chromium checked the hidden entrance before the Nile return flag, then used the regular Nile and Archive of Voices doors from staged prior chapter progress. Two different catalogue cases produced different sections at their marked bands. The player installed a front pattern at Lamp Quay and repeated the full pair of cuts on the Glass Walk. The same run generated two practice sounds at 166 and 252 Hz, read both faces of B16665 and placed the named fields of the Laguna clearance. Each of the three mounted copies was checked at its later receiver. The B16665 exhibit gave one object to the satchel only after that mounting. These interactions used proximity positioning and the normal in-game controls. [Workbench tests](../tests/maker-room.test.ts)

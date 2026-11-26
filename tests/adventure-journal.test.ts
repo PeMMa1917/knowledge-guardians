@@ -5,6 +5,8 @@ import { adventureJournalView } from '../src/domain/adventureJournal';
 import { Engine, newCampaign, type Command } from '../src/domain/engine';
 import { newPermanent } from '../src/domain/permanent';
 import { emptyPair, migrateCampaign, parsePair, serialisePair, writeCheckpoint, writeSuspend } from '../src/domain/saves';
+import { hasSpecimen, SPECIMEN_BASE } from '../src/domain/specimenGear';
+import { specimenReferences } from '../src/domain/specimenReferences';
 import { CAMPAIGN_SCHEMA, type CampaignState } from '../src/domain/types';
 import { adventureDocx } from '../src/ui/adventureDocx';
 import { adventureExportSnapshot } from '../src/ui/adventureExport';
@@ -151,5 +153,52 @@ describe('Adventure diary', () => {
     ]);
     expect(personal.questions).toEqual(['Still to check?']);
     expect(adventureExportSnapshot(view, options)).toEqual(standard);
+  });
+
+  it('keeps exact MLA links for collected exhibits only, including when a specimen is shelved', () => {
+    const [exhibit, unearned] = pack.exhibits.filter(hasSpecimen);
+    const d = adventure();
+    d.action({ type: 'InspectExhibit', exhibit: unearned.id });
+    d.action({ type: 'InspectExhibit', exhibit: exhibit.id });
+    expect(d.view().references).toEqual([]);
+    expect(d.action({ type: 'ClaimSpecimen', exhibit: exhibit.id }).events).toContainEqual(expect.objectContaining({ kind: 'error' }));
+    d.state.objectivesDone.push(exhibit.specimen.objective);
+    d.action({ type: 'ClaimSpecimen', exhibit: exhibit.id });
+    d.state.mapId = SPECIMEN_BASE;
+    d.action({ type: 'CarrySpecimen', key: exhibit.specimen.key, carry: false });
+    const view = d.view();
+    const official = pack.sources.find((source) => source.id === exhibit.specimen.source)!;
+    expect(view.references).toEqual([expect.objectContaining({
+      key: exhibit.specimen.key, label: expect.stringContaining(exhibit.specimen.accession), url: official.url,
+      text: expect.stringContaining(exhibit.name),
+      runs: expect.arrayContaining([expect.objectContaining({ href: official.url }), expect.objectContaining({ cite: true })]),
+    })]);
+    expect(specimenReferences(pack)).toHaveLength(pack.exhibits.filter(hasSpecimen).length);
+    expect(adventureExportSnapshot(view, { placeName: () => undefined }).references).toEqual(view.references);
+  });
+
+  it('preserves italics and an external Word hyperlink for the exact collection source without exporting private writing', () => {
+    const exhibit = pack.exhibits.find(hasSpecimen)!;
+    const d = adventure();
+    d.action({ type: 'InspectExhibit', exhibit: exhibit.id });
+    d.state.objectivesDone.push(exhibit.specimen.objective);
+    d.action({ type: 'ClaimSpecimen', exhibit: exhibit.id });
+    d.action({ type: 'AddNote', text: 'This paragraph stays private.' });
+    const url = 'https://collection.example/item?id=2&view=exact';
+    const fixture = { ...pack, sources: pack.sources.map((source) => source.id === exhibit.specimen.source
+      ? { ...source, url, accessed: '2026-11-26', mla: { kind: 'artwork' as const, title: exhibit.name, author: 'Maker, Known',
+        container: 'The Museum', workDate: exhibit.dateText, showAccessDate: true } } : source) };
+    const references = specimenReferences(fixture, d.state);
+    expect(references[0].text).toContain('Maker, Known. ');
+    expect(references[0].text).toContain('Accessed 26 Nov. 2026.');
+    const exported = unzipSync(adventureDocx({ ...d.view(), references }, { placeName: () => undefined }));
+    const document = strFromU8(exported['word/document.xml']);
+    const relations = strFromU8(exported['word/_rels/document.xml.rels']);
+    expect(document).toContain('Works Cited');
+    expect(document).toContain('<w:hyperlink r:id="rId2">');
+    expect(document).toContain('<w:i/>');
+    expect(document).not.toContain('This paragraph stays private');
+    expect(relations).toContain('Target="https://collection.example/item?id=2&amp;view=exact" TargetMode="External"');
+    expect(relations).toContain('Id="rId1"');
   });
 });

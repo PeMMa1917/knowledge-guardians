@@ -1,0 +1,225 @@
+{
+  "sources": [
+    {
+      "id": "HIS-STORY-FRAME-BOARD",
+      "title": "Brooklyn Museum, Lukasa (Memory Board), 76.20.4",
+      "url": "https://www.brooklynmuseum.org/objects/102210",
+      "locator": "Object record and publicly indexed museum caption for 76.20.4",
+      "supports": "The museum identifies this Luba work as a lukasa dated to the late 19th or early 20th century. The caption lists wood, metal and beads and records its dimensions and gift credit.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-STORY-FRAME-BOARD-CONTEXT",
+      "title": "The Metropolitan Museum of Art, Lukasa (memory board), 1977.467.3",
+      "url": "https://www.metmuseum.org/art/collection/search/690570",
+      "locator": "Public description for a separate Luba memory board",
+      "supports": "The Met describes Luba memory boards as aids for interpreting and recalling historical knowledge among people with particular training and responsibilities.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-STORY-FRAME-CYCLE",
+      "title": "Hiroshima Peace Memorial Museum, Tricycle, 1105-0001",
+      "url": "https://hpmm-db.jp/list/detail/?cate=artifact_en&search_type=detail&data_id=19519",
+      "locator": "Peace Database record 19519, ID Code, Donor, Receiving Date and Description",
+      "supports": "The museum identifies Shinichi Tetsutani’s tricycle and names his father Nobuo as the donor. It records receiving the tricycle on 6 September 1985 and gives its dimensions.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-STORY-FRAME-FAMILY",
+      "title": "International Campaign to Abolish Nuclear Weapons, Shinichi’s tricycle",
+      "url": "https://www.icanw.org/shinichi_s_tricycle",
+      "locator": "Public article that attributes a remembrance to Shinichi’s father",
+      "supports": "ICAN connects the object to the Hiroshima bombing and attributes to Shinichi’s father a wish for a peaceful world where children can play.",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "cases": [
+    {
+      "key": "board",
+      "exhibit": "OBJ-STORY-FRAME-LUKASA",
+      "name": "Luba lukasa · 76.20.4",
+      "identity": "Brooklyn Museum · 76.20.4",
+      "title": "The Part That Travels",
+      "stake": "Nell needs a compact public tag. The host of the reading table has time to walk a visitor through the two sources.",
+      "prompt": "Put the catalogue details and the public method note in the frame. One face makes the accession easy to carry. The other gives a reader time to follow the separate context source.",
+      "date": "Late 19th or early 20th century",
+      "place": "Luba attribution. Brooklyn Museum.",
+      "dateKind": "Approximate period of making in the Brooklyn Museum caption.",
+      "art": "story-archive.board",
+      "alt": "Original diagram of a closed wood-coloured mount beside a plain accession slip. No pattern is shown on the mount.",
+      "summary": "The Brooklyn Museum records this Luba memory board as wood, metal and beads. Its catalogue caption gives 25.4 × 14.6 × 5.7 cm and credits a gift from Marcia and John Friede.",
+      "observation": "The Brooklyn Museum caption identifies Luba lukasa 76.20.4 and describes what it is made of. A public Met article for a separate specimen describes a role for trained Luba interpreters.",
+      "limit": "The Met’s article supplies public context about a kind of object. The specific use and interpretations of the Brooklyn board remain with the people and records that can support them.",
+      "sources": [
+        "HIS-STORY-FRAME-BOARD",
+        "HIS-STORY-FRAME-BOARD-CONTEXT"
+      ],
+      "stamps": [
+        {
+          "name": "identity",
+          "label": "the Brooklyn caption with the accession",
+          "art": "preserved.folder",
+          "text": "The paper has 76.20.4, the broad making period and the materials. You can send these details with the tag.",
+          "action": "Clip the Brooklyn accession and making period to the work order."
+        },
+        {
+          "name": "context",
+          "label": "the separate public note on memory boards",
+          "art": "preserved.catalogue",
+          "text": "The Met page uses another object, 1977.467.3, to explain that trained Luba interpreters draw on memory boards. Its accession goes on the context note for this display.",
+          "action": "Fit the context note in its own sleeve."
+        }
+      ],
+      "variants": [
+        {
+          "key": "tag",
+          "control": "Put the Brooklyn locator on the outside tag",
+          "title": "Public locator tag",
+          "lines": [
+            "Luba lukasa. Late 19th or early 20th century. Wood, metal and beads.",
+            "Brooklyn Museum 76.20.4. The public context note is at the reading table."
+          ],
+          "destination": "the locator tag by the Gallery aisle",
+          "x": 4,
+          "y": 15,
+          "opening": "Nell tries the tag during the walk-in queue. A visitor copies 76.20.4 and asks where they can read the separate context note.",
+          "action": "Turn the tag outward and show the table’s direction.",
+          "result": "Nell can send a visitor straight to the Brooklyn record. The context note is at the staffed table, where the next group can bring its own questions."
+        },
+        {
+          "key": "table",
+          "control": "Put the two separately sourced lines at the reading table",
+          "title": "Two-source reading spread",
+          "lines": [
+            "Luba lukasa, Brooklyn Museum 76.20.4. Late 19th or early 20th century.",
+            "The Met’s public note discusses trained interpretation through a separate Luba memory board, 1977.467.3."
+          ],
+          "destination": "the two-source spread on the Gallery table",
+          "x": 17,
+          "y": 14,
+          "opening": "The host makes a second place at the table. “Leave a finger’s width between the two museum names. Both sources belong on the spread.”",
+          "action": "Open the spread with both accessions visible.",
+          "result": "The reader matches the board to Brooklyn and the public context to The Met. The aisle keeps a smaller tag that points readers to this table."
+        }
+      ],
+      "journal": "I kept Brooklyn 76.20.4 with the object details and Met 1977.467.3 with the public account about trained interpretation.",
+      "concepts": [
+        "culture",
+        "evidence",
+        "responsibility",
+        "perspective",
+        "power",
+        "justification"
+      ],
+      "framework": [
+        "scope",
+        "perspectives",
+        "methods-and-tools",
+        "ethics"
+      ],
+      "disciplines": [
+        "history",
+        "anthropology",
+        "visual-arts"
+      ],
+      "aoks": [
+        "ART",
+        "HIS",
+        "HUM"
+      ]
+    },
+    {
+      "key": "cycle",
+      "exhibit": "OBJ-STORY-FRAME-TRICYCLE",
+      "name": "Shinichi Tetsutani’s tricycle · 1105-0001",
+      "identity": "Hiroshima Peace Memorial Museum · 1105-0001",
+      "title": "A Name and Two Dates",
+      "stake": "A reader at the quiet bench wants a name they can remember. The research stand needs both dates with enough room to say what each one dates.",
+      "prompt": "The family strip and the museum strip have their own places in this frame. Try each first line before carrying a version back to the Gallery.",
+      "date": "Associated with 6 August 1945. Museum received it on 6 September 1985.",
+      "place": "Hiroshima, Japan.",
+      "dateKind": "Historical event date and museum receiving date. The tricycle’s date of making remains open.",
+      "art": "story-archive.cycle",
+      "alt": "Original simple pixel drawing of a small empty tricycle with three wheels on a neutral background.",
+      "summary": "The Hiroshima Peace Memorial Museum identifies this as Shinichi Tetsutani’s tricycle. It measures 450 × 475 × 360 mm. The museum names his father Nobuo as the donor.",
+      "observation": "Peace Database record 19519 identifies object 1105-0001 and gives its receiving date. In a separate public account, ICAN attributes to Nobuo Tetsutani a wish for a peaceful world in which children can play.",
+      "limit": "The museum supplies the custody entry. The remembrance is Nobuo’s, as reported in ICAN’s public account.",
+      "sources": [
+        "HIS-STORY-FRAME-CYCLE",
+        "HIS-STORY-FRAME-FAMILY"
+      ],
+      "stamps": [
+        {
+          "name": "dates",
+          "label": "the museum’s two date clips",
+          "art": "nexus.ribbon-split",
+          "text": "The first clip marks the Hiroshima bombing on 6 August 1945. The museum’s receipt names Nobuo Tetsutani and records 6 September 1985. Put both labels beside the event they date.",
+          "action": "Set the associated event and receiving date on separate clips."
+        },
+        {
+          "name": "family",
+          "label": "the source strip for the public family remembrance",
+          "art": "preserved.slip",
+          "text": "The public ICAN account attributes a wish to Shinichi’s father. He wanted children to grow up able to play in peace. Keep the account’s name with that remembrance.",
+          "action": "Set the father’s name and the public account on the family strip."
+        }
+      ],
+      "variants": [
+        {
+          "key": "name",
+          "control": "Lead the bench caption with Shinichi’s name",
+          "title": "Quiet bench caption",
+          "lines": [
+            "Shinichi Tetsutani rode this tricycle. His father Nobuo later gave it to the Hiroshima Peace Memorial Museum.",
+            "The museum connects it to the Hiroshima bombing on 6 August 1945. Museum receipt 6 September 1985, 1105-0001. ICAN’s public account attributes the family remembrance to Nobuo."
+          ],
+          "destination": "the name caption at the quiet Gallery bench",
+          "x": 22,
+          "y": 6,
+          "opening": "A visitor sits before the doors open. They read Shinichi’s name first and ask how the tricycle reached the museum.",
+          "action": "Clip the museum receipt behind the name strip and open it for the reader.",
+          "result": "The visitor follows the donation at their own pace. They copy Nobuo’s name with the account that carries his remembrance. The research stand has a pointer to this bench."
+        },
+        {
+          "key": "dates",
+          "control": "Lead the research stand with the two dated events",
+          "title": "Dated museum record",
+          "lines": [
+            "Hiroshima bombing, 6 August 1945. The museum received object 1105-0001 on 6 September 1985.",
+            "Shinichi Tetsutani’s tricycle. His father Nobuo was the donor. ICAN’s public account attributes the family remembrance to him."
+          ],
+          "destination": "the dated tricycle caption at the Gallery research stand",
+          "x": 24,
+          "y": 15,
+          "opening": "Two readers put the date clips side by side. One points to the receipt. “Here is where the tricycle enters the museum record. Keep the names beside both dates.”",
+          "action": "Seat both clips and fasten the family strip alongside.",
+          "result": "Readers can trace the change in custody and keep both names in view. The quiet bench has a smaller card that leads to the full entry."
+        }
+      ],
+      "journal": "I kept the Hiroshima event and the museum receipt as separate dates. I credited the museum’s record and the public account that attributes the family remembrance.",
+      "concepts": [
+        "evidence",
+        "responsibility",
+        "values",
+        "perspective",
+        "truth",
+        "culture"
+      ],
+      "framework": [
+        "scope",
+        "perspectives",
+        "methods-and-tools",
+        "ethics"
+      ],
+      "disciplines": [
+        "history",
+        "lang-langlit",
+        "visual-arts"
+      ],
+      "aoks": [
+        "ART",
+        "HIS"
+      ]
+    }
+  ]
+}

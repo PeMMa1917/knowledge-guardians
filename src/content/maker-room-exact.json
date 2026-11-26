@@ -1,0 +1,1222 @@
+{
+  "sources": [
+    {
+      "id": "HIS-JIAHU-FEATURED",
+      "title": "Henan Museum, Jiahu crane-bone flute, 23.1 cm",
+      "url": "https://english.chnmus.net/en/collection/details.html?id=7052472642044956672",
+      "locator": "Collection record and object labels",
+      "supports": "The Henan Museum identifies this featured flute as 23.1 cm long, with seven holes along a crane-family wing bone. It was excavated at Jiahu, Wuyang, Henan, in 1987.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "artwork",
+        "title": "Jiahu crane-bone flute, 23.1 cm",
+        "container": "Henan Museum",
+        "workDate": "Peiligang period, 9000–7000 BP"
+      }
+    },
+    {
+      "id": "HIS-ENHEDUANNA-DISK",
+      "title": "Penn Museum, Disc of Enheduanna",
+      "url": "https://collections.penn.museum/collections/object/293415",
+      "locator": "Collection record and object labels",
+      "supports": "The Penn Museum dates this limestone or calcite disk from Ur to about 2300 BCE. It records a relief on one side and an inscription on the other naming Enheduanna and identifying her as the daughter of Sargon.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "artwork",
+        "title": "Disc of Enheduanna",
+        "container": "Penn Museum",
+        "workDate": "About 2300 BCE"
+      }
+    },
+    {
+      "id": "HIS-LAGUNA-HOLDING",
+      "title": "National Museum of the Philippines, Laguna Copperplate Inscription",
+      "url": "https://www.nationalmuseum.gov.ph/our-collections/archaeology/national-cultural-treasures/",
+      "locator": "Collection record and object labels",
+      "supports": "Collection record for the inscribed copperplate from the Pagsanjan River Delta, with catalogue date 900 CE.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "artwork",
+        "title": "Laguna Copperplate Inscription",
+        "container": "National Museum of the Philippines",
+        "workDate": "822 Saka / 900 CE"
+      }
+    },
+    {
+      "id": "HIS-JIAHU-REPORT",
+      "title": "Oldest playable musical instruments found at Jiahu early Neolithic site in China",
+      "url": "https://www.nature.com/articles/43865",
+      "locator": "Author list and abstract",
+      "accessed": "2026-11-26",
+      "supports": "Juzhong Zhang and colleagues reported the Jiahu instruments, archaeological context and sound tests.",
+      "mla": {
+        "kind": "page",
+        "title": "Oldest playable musical instruments found at Jiahu early Neolithic site in China",
+        "container": "Nature",
+        "author": "Zhang, Juzhong, et al."
+      }
+    },
+    {
+      "id": "HIS-LAGUNA-READING",
+      "title": "The Laguna Copper-Plate Inscription, Text and Commentary",
+      "url": "https://archium.ateneo.edu/phstudies/vol40/iss2/3/",
+      "locator": "Translation of LCI and the accompanying script and date discussion",
+      "supports": "The preliminary transcription identifies a clearance, its date, some named people and the stated purpose of keeping a future record.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "The Laguna Copper-Plate Inscription, Text and Commentary",
+        "container": "Philippine Studies, Ateneo de Manila University",
+        "author": "Postma, Antoon"
+      }
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.makers.exact.jiahu",
+      "title": "Jiahu crane-bone flute, 23.1 cm",
+      "text": "The Henan Museum identifies this featured flute as 23.1 cm long, with seven holes along a crane-family wing bone. It was excavated at Jiahu, Wuyang, Henan, in 1987.",
+      "limits": "The museum’s period range is an archaeological attribution. The practice tones use a fictional model and give no tuning measurements or fingering for the collection object.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-JIAHU-FEATURED",
+        "HIS-JIAHU-REPORT"
+      ]
+    },
+    {
+      "id": "card.makers.exact.disk",
+      "title": "Disc of Enheduanna",
+      "text": "The Penn Museum dates this limestone or calcite disk from Ur to about 2300 BCE. It records a relief on one side and an inscription on the other naming Enheduanna and identifying her as the daughter of Sargon.",
+      "limits": "The inscription identifies Enheduanna. The disk alone gives no surviving manuscript in her hand and no proof of who composed a particular hymn.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-ENHEDUANNA-DISK"
+      ]
+    },
+    {
+      "id": "card.makers.exact.laguna",
+      "title": "Laguna Copperplate Inscription",
+      "text": "The National Museum records this inscribed copperplate from the Pagsanjan River Delta, Laguna, with the date 900 CE. In Postma’s preliminary reading, a document clears a debt associated with Namwran. Angkatan, Bukah and the witness Kasumuran appear in the reading.",
+      "limits": "The preliminary reading names a person, a clearance and witnesses. It leaves their individual voices and any later otherwise unrecorded debt open.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-LAGUNA-HOLDING",
+        "HIS-LAGUNA-READING"
+      ]
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-MAKERS-EXACT-JIAHU",
+      "name": "Jiahu crane-bone flute, 23.1 cm",
+      "art": "maker-exact-jiahu",
+      "dateText": "Peiligang period, 9000–7000 BP",
+      "dateKind": "The Henan Museum’s archaeological period range in years before present. The collection page records excavation in 1987 separately.",
+      "historicalLabel": "documented",
+      "summary": "The Henan Museum identifies this featured flute as 23.1 cm long, with seven holes along a crane-family wing bone. It was excavated at Jiahu, Wuyang, Henan, in 1987.",
+      "altText": "Original diagram showing seven places to change a practice tube’s path. It gives no scale for the historical holes.",
+      "sources": [
+        "HIS-JIAHU-FEATURED",
+        "HIS-JIAHU-REPORT"
+      ],
+      "grantsCard": "card.makers.exact.jiahu",
+      "specimen": {
+        "key": "henan:7052472642044956672",
+        "institution": "Henan Museum",
+        "accession": "7052472642044956672",
+        "source": "HIS-JIAHU-FEATURED",
+        "objective": "makers.exact.jiahu.mounted"
+      }
+    },
+    {
+      "id": "OBJ-MAKERS-EXACT-DISK",
+      "name": "Disc of Enheduanna",
+      "art": "maker-exact-disk",
+      "dateText": "About 2300 BCE",
+      "dateKind": "The date of making attributed by the Penn Museum. Its exhibition record names the Old Akkadian period.",
+      "historicalLabel": "documented",
+      "summary": "The Penn Museum dates this limestone or calcite disk from Ur to about 2300 BCE. It records a relief on one side and an inscription on the other naming Enheduanna and identifying her as the daughter of Sargon.",
+      "altText": "An original model of a round record mount with a raised panel and a separate inscription label. The historical scene is not reproduced.",
+      "sources": [
+        "HIS-ENHEDUANNA-DISK"
+      ],
+      "grantsCard": "card.makers.exact.disk",
+      "specimen": {
+        "key": "penn:b16665",
+        "institution": "Penn Museum",
+        "accession": "B16665",
+        "source": "HIS-ENHEDUANNA-DISK",
+        "objective": "makers.exact.disk.mounted"
+      }
+    },
+    {
+      "id": "OBJ-MAKERS-EXACT-LAGUNA",
+      "name": "Laguna Copperplate Inscription",
+      "art": "maker-exact-laguna",
+      "dateText": "822 Saka / 900 CE",
+      "dateKind": "The stated date of the record, briefly given by the museum as 900 CE.",
+      "historicalLabel": "documented",
+      "summary": "The National Museum records this inscribed copperplate from the Pagsanjan River Delta, Laguna, with the date 900 CE. In Postma’s preliminary reading, a document clears a debt associated with Namwran. Angkatan, Bukah and the witness Kasumuran appear in the reading.",
+      "altText": "Original schematic of a docket with separate name, witness and date tags. No historical writing is reproduced.",
+      "sources": [
+        "HIS-LAGUNA-HOLDING",
+        "HIS-LAGUNA-READING"
+      ],
+      "grantsCard": "card.makers.exact.laguna",
+      "specimen": {
+        "key": "nmp:laguna-copperplate",
+        "institution": "National Museum of the Philippines",
+        "accession": "Laguna Copperplate Inscription",
+        "source": "HIS-LAGUNA-HOLDING",
+        "objective": "makers.exact.laguna.mounted"
+      }
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH2-R42",
+      "world": "WORLD-03",
+      "title": "Changing One Opening",
+      "knowledgeQuestion": "How can a model help when an old object can no longer be heard in its first setting?",
+      "available": {
+        "flag": "nile.returned",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "makers.exact.jiahu.sent",
+          "title": "Changing One Opening and select a copy to carry.",
+          "visible": {
+            "card": "card.makers.exact.jiahu"
+          },
+          "done": {
+            "all": [
+              {
+                "any": [
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.0",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.1",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.0",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.2",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.0",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.3",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.0",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.4",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.0",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.5",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.0",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.6",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.0",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.7",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.1",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.2",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.1",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.3",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.1",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.4",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.1",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.5",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.1",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.6",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.1",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.7",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.2",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.3",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.2",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.4",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.2",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.5",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.2",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.6",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.2",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.7",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.3",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.4",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.3",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.5",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.3",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.6",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.3",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.7",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.4",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.5",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.4",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.6",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.4",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.7",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.5",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.6",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.5",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.7",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.tone.6",
+                        "eq": true
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.tone.7",
+                        "eq": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "flag": "makers.exact.jiahu.route",
+                "in": [
+                  "quay",
+                  "walk"
+                ]
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "perspective",
+              "justification",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "ART",
+              "TEC"
+            ],
+            "subjects": [
+              "history",
+              "music"
+            ],
+            "minutes": 3,
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH2-R43",
+      "world": "WORLD-03",
+      "title": "Set the Disk on Its Other Face",
+      "knowledgeQuestion": "What does an inscription let a reader say about a person who is also the subject of later stories?",
+      "available": {
+        "flag": "nile.returned",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "makers.exact.disk.sent",
+          "title": "Set the Disk on Its Other Face and select a copy to carry.",
+          "visible": {
+            "card": "card.makers.exact.disk"
+          },
+          "done": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "makers.exact.disk.front",
+                    "eq": true
+                  },
+                  {
+                    "flag": "makers.exact.disk.back",
+                    "eq": true
+                  }
+                ]
+              },
+              {
+                "flag": "makers.exact.disk.route",
+                "in": [
+                  "quay",
+                  "walk"
+                ]
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "perspective",
+              "justification",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "ART",
+              "TEC"
+            ],
+            "subjects": [
+              "history",
+              "visual-arts"
+            ],
+            "minutes": 3,
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH2-R44",
+      "world": "WORLD-03",
+      "title": "The Receipt That Still Holds",
+      "knowledgeQuestion": "What has to travel with a receipt if another person needs it to act?",
+      "available": {
+        "flag": "nile.returned",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "makers.exact.laguna.sent",
+          "title": "The Receipt That Still Holds and select a copy to carry.",
+          "visible": {
+            "card": "card.makers.exact.laguna"
+          },
+          "done": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "makers.exact.laguna.recipient",
+                    "eq": true
+                  },
+                  {
+                    "flag": "makers.exact.laguna.debt",
+                    "eq": true
+                  },
+                  {
+                    "flag": "makers.exact.laguna.witness",
+                    "eq": true
+                  },
+                  {
+                    "flag": "makers.exact.laguna.date",
+                    "eq": true
+                  }
+                ]
+              },
+              {
+                "flag": "makers.exact.laguna.route",
+                "in": [
+                  "quay",
+                  "walk"
+                ]
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "perspective",
+              "justification",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "ART",
+              "TEC"
+            ],
+            "subjects": [
+              "history",
+              "lang-langlit"
+            ],
+            "minutes": 3,
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH13-R49",
+      "world": "WORLD-14",
+      "title": "A Receiving Copy for Changing One Opening",
+      "knowledgeQuestion": "How can a model help when an old object can no longer be heard in its first setting?",
+      "available": {
+        "all": [
+          {
+            "objective": "makers.exact.jiahu.sent"
+          },
+          {
+            "objective": "voices.arrival"
+          }
+        ]
+      },
+      "objectives": [
+        {
+          "id": "makers.exact.jiahu.mounted",
+          "title": "Changing One Opening and mount the receiving copy.",
+          "visible": {
+            "objective": "makers.exact.jiahu.sent"
+          },
+          "done": {
+            "all": [
+              {
+                "objective": "makers.exact.jiahu.sent"
+              },
+              {
+                "any": [
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.route",
+                        "eq": "quay"
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.display",
+                        "eq": "quay"
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.jiahu.route",
+                        "eq": "walk"
+                      },
+                      {
+                        "flag": "makers.exact.jiahu.display",
+                        "eq": "walk"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.makers.exact.jiahu"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "perspective",
+              "justification",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "ART",
+              "TEC"
+            ],
+            "subjects": [
+              "history",
+              "music"
+            ],
+            "minutes": 2,
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH13-R50",
+      "world": "WORLD-14",
+      "title": "A Receiving Copy for Set the Disk on Its Other Face",
+      "knowledgeQuestion": "What does an inscription let a reader say about a person who is also the subject of later stories?",
+      "available": {
+        "all": [
+          {
+            "objective": "makers.exact.disk.sent"
+          },
+          {
+            "objective": "voices.arrival"
+          }
+        ]
+      },
+      "objectives": [
+        {
+          "id": "makers.exact.disk.mounted",
+          "title": "Set the Disk on Its Other Face and mount the receiving copy.",
+          "visible": {
+            "objective": "makers.exact.disk.sent"
+          },
+          "done": {
+            "all": [
+              {
+                "objective": "makers.exact.disk.sent"
+              },
+              {
+                "any": [
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.disk.route",
+                        "eq": "quay"
+                      },
+                      {
+                        "flag": "makers.exact.disk.display",
+                        "eq": "quay"
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.disk.route",
+                        "eq": "walk"
+                      },
+                      {
+                        "flag": "makers.exact.disk.display",
+                        "eq": "walk"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.makers.exact.disk"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "perspective",
+              "justification",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "ART",
+              "TEC"
+            ],
+            "subjects": [
+              "history",
+              "visual-arts"
+            ],
+            "minutes": 2,
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH13-R51",
+      "world": "WORLD-14",
+      "title": "A Receiving Copy for The Receipt That Still Holds",
+      "knowledgeQuestion": "What has to travel with a receipt if another person needs it to act?",
+      "available": {
+        "all": [
+          {
+            "objective": "makers.exact.laguna.sent"
+          },
+          {
+            "objective": "voices.arrival"
+          }
+        ]
+      },
+      "objectives": [
+        {
+          "id": "makers.exact.laguna.mounted",
+          "title": "The Receipt That Still Holds and mount the receiving copy.",
+          "visible": {
+            "objective": "makers.exact.laguna.sent"
+          },
+          "done": {
+            "all": [
+              {
+                "objective": "makers.exact.laguna.sent"
+              },
+              {
+                "any": [
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.laguna.route",
+                        "eq": "quay"
+                      },
+                      {
+                        "flag": "makers.exact.laguna.display",
+                        "eq": "quay"
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "makers.exact.laguna.route",
+                        "eq": "walk"
+                      },
+                      {
+                        "flag": "makers.exact.laguna.display",
+                        "eq": "walk"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.makers.exact.laguna"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "perspective",
+              "justification",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "ART",
+              "TEC"
+            ],
+            "subjects": [
+              "history",
+              "lang-langlit"
+            ],
+            "minutes": 2,
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.makers.exact.jiahu.mounted.1",
+      "objective": "makers.exact.jiahu.mounted",
+      "depth": 1,
+      "text": "Find the 23.1 cm flute record in the Makers’ Room."
+    },
+    {
+      "id": "h.makers.exact.jiahu.mounted.2",
+      "objective": "makers.exact.jiahu.mounted",
+      "depth": 2,
+      "text": "Find the paper packet at Lamp Quay or the Glass Walk."
+    },
+    {
+      "id": "h.makers.exact.jiahu.mounted.3",
+      "objective": "makers.exact.jiahu.mounted",
+      "depth": 3,
+      "text": "Use the packet to set the receiving display. The record keeps the original’s date and named roles."
+    },
+    {
+      "id": "h.makers.exact.jiahu.mounted.4",
+      "objective": "makers.exact.jiahu.mounted",
+      "depth": 4,
+      "text": "Mount your installed copy at the marked receiver."
+    },
+    {
+      "id": "h.makers.exact.disk.mounted.1",
+      "objective": "makers.exact.disk.mounted",
+      "depth": 1,
+      "text": "The disk has two independent faces."
+    },
+    {
+      "id": "h.makers.exact.disk.mounted.2",
+      "objective": "makers.exact.disk.mounted",
+      "depth": 2,
+      "text": "Find the paper packet at Lamp Quay or the Glass Walk."
+    },
+    {
+      "id": "h.makers.exact.disk.mounted.3",
+      "objective": "makers.exact.disk.mounted",
+      "depth": 3,
+      "text": "Use the packet to set the receiving display. The record keeps the original’s date and named roles."
+    },
+    {
+      "id": "h.makers.exact.disk.mounted.4",
+      "objective": "makers.exact.disk.mounted",
+      "depth": 4,
+      "text": "Mount your installed copy at the marked receiver."
+    },
+    {
+      "id": "h.makers.exact.laguna.mounted.1",
+      "objective": "makers.exact.laguna.mounted",
+      "depth": 1,
+      "text": "The receiver needs a named clearance and a date."
+    },
+    {
+      "id": "h.makers.exact.laguna.mounted.2",
+      "objective": "makers.exact.laguna.mounted",
+      "depth": 2,
+      "text": "Find the paper packet at Lamp Quay or the Glass Walk."
+    },
+    {
+      "id": "h.makers.exact.laguna.mounted.3",
+      "objective": "makers.exact.laguna.mounted",
+      "depth": 3,
+      "text": "Use the packet to set the receiving display. The record keeps the original’s date and named roles."
+    },
+    {
+      "id": "h.makers.exact.laguna.mounted.4",
+      "objective": "makers.exact.laguna.mounted",
+      "depth": 4,
+      "text": "Mount your installed copy at the marked receiver."
+    },
+    {
+      "id": "h.makers.exact.jiahu.sent.1",
+      "objective": "makers.exact.jiahu.sent",
+      "depth": 1,
+      "text": "Find the 23.1 cm flute record in the Makers’ Room."
+    },
+    {
+      "id": "h.makers.exact.jiahu.sent.2",
+      "objective": "makers.exact.jiahu.sent",
+      "depth": 2,
+      "text": "Move the stop on the fictional tube and make two samples."
+    },
+    {
+      "id": "h.makers.exact.jiahu.sent.3",
+      "objective": "makers.exact.jiahu.sent",
+      "depth": 3,
+      "text": "Keep the sound measures for both settings even if you send one sample."
+    },
+    {
+      "id": "h.makers.exact.jiahu.sent.4",
+      "objective": "makers.exact.jiahu.sent",
+      "depth": 4,
+      "text": "Choose one sample or the pair, then mount it at Lamp Quay or the Glass Walk."
+    },
+    {
+      "id": "h.makers.exact.disk.sent.1",
+      "objective": "makers.exact.disk.sent",
+      "depth": 1,
+      "text": "The disk has two independent faces."
+    },
+    {
+      "id": "h.makers.exact.disk.sent.2",
+      "objective": "makers.exact.disk.sent",
+      "depth": 2,
+      "text": "Read B16665 and turn the practice mount to examine each side."
+    },
+    {
+      "id": "h.makers.exact.disk.sent.3",
+      "objective": "makers.exact.disk.sent",
+      "depth": 3,
+      "text": "The relief and the name enter the interpretation separately. Keep each face with the record."
+    },
+    {
+      "id": "h.makers.exact.disk.sent.4",
+      "objective": "makers.exact.disk.sent",
+      "depth": 4,
+      "text": "Send the named line or the paired view. The receiver opens it in the later archive."
+    },
+    {
+      "id": "h.makers.exact.laguna.sent.1",
+      "objective": "makers.exact.laguna.sent",
+      "depth": 1,
+      "text": "The receiver needs a named clearance and a date."
+    },
+    {
+      "id": "h.makers.exact.laguna.sent.2",
+      "objective": "makers.exact.laguna.sent",
+      "depth": 2,
+      "text": "Open the copperplate record and prepare the four written tokens in the next stand."
+    },
+    {
+      "id": "h.makers.exact.laguna.sent.3",
+      "objective": "makers.exact.laguna.sent",
+      "depth": 3,
+      "text": "Keep Angkatan and Bukah together in the recipient line. Make a separate line for Namwran and for the witness."
+    },
+    {
+      "id": "h.makers.exact.laguna.sent.4",
+      "objective": "makers.exact.laguna.sent",
+      "depth": 4,
+      "text": "Choose one compact receipt or the full docket, then have the later receiver activate it."
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.makers.exact.jiahu",
+      "claimKind": "observation",
+      "text": "The Henan Museum identifies this featured flute as 23.1 cm long, with seven holes along a crane-family wing bone. It was excavated at Jiahu, Wuyang, Henan, in 1987. The museum’s period range is an archaeological attribution. The practice tones use a fictional model and give no tuning measurements or fingering for the collection object."
+    },
+    {
+      "id": "j.makers.exact.disk",
+      "claimKind": "observation",
+      "text": "The Penn Museum dates this limestone or calcite disk from Ur to about 2300 BCE. It records a relief on one side and an inscription on the other naming Enheduanna and identifying her as the daughter of Sargon. The inscription identifies Enheduanna. The disk alone gives no surviving manuscript in her hand and no proof of who composed a particular hymn."
+    },
+    {
+      "id": "j.makers.exact.laguna",
+      "claimKind": "observation",
+      "text": "The National Museum records this inscribed copperplate from the Pagsanjan River Delta, Laguna, with the date 900 CE. In Postma’s preliminary reading, a document clears a debt associated with Namwran. Angkatan, Bukah and the witness Kasumuran appear in the reading. The preliminary reading names a person, a clearance and witnesses. It leaves their individual voices and any later otherwise unrecorded debt open."
+    }
+  ]
+}

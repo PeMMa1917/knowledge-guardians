@@ -18,6 +18,7 @@ import { caption } from '../app/captions';
 import { CampaignPlayback } from '../app/campaignPlayback';
 import { FOLLOW_PIN, PIN_PURPOSES, readMapPin } from '../domain/mapPins';
 import { specimenArt } from '../app/specimenArt';
+import { hasSpecimen, ownsSpecimen, specimenReadingFlag, type SpecimenExhibit } from '../domain/specimenGear';
 import { LUMEN_COLOURS, lumenArt } from '../app/settings';
 import Phaser from 'phaser';
 import type { BootScene } from './BootScene';
@@ -73,6 +74,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private stepTimer = 0;
   private transitioning = false;
   private objArt = new Map<string, { setVisible(v: boolean): unknown }>();
+  private specimenProps = new Map<string, SpecimenExhibit>();
   /** A befriended Loreling in the field (spec 36.1), and where it is flying. */
   private pet: { id: string; sprite: Phaser.GameObjects.Sprite; glow: Phaser.GameObjects.Image; target: { x: number; y: number } | null; until: number; next: number } | null = null;
   private frayGlows = new Map<string, Phaser.GameObjects.Image>();
@@ -125,6 +127,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   private buildMap(): void {
     const m = this.map;
+    this.specimenProps.clear();
+    const specimens = new Map(ctx.controller.pack.exhibits.filter(hasSpecimen).map((record) => [record.id, record]));
     this.cameras.main.setBackgroundColor(m.background);
     this.blocked = Array.from({ length: m.height }, () => Array(m.width).fill(false));
     const block = (x: number, y: number, w: number, h: number) => {
@@ -182,9 +186,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         const img = this.add.image(cx, by, it.art).setOrigin(0.5, 1).setDepth(by + 16); // sits on top of tables and counters
         if (tex.height <= 16 && it.kind === 'sign') img.setOrigin(0.5, 1);
         this.objArt.set(it.id, img);
-        if (it.kind === 'exhibit') {
-          const asset = ctx.controller.pack.exhibits.find((exhibit) => exhibit.id === it.exhibit)?.specimen?.pixelAsset;
-          if (asset) this.drawMuseumObject(it.id, img, asset);
+        const record = it.kind === 'exhibit' && it.exhibit ? specimens.get(it.exhibit) : undefined;
+        if (record) {
+          this.specimenProps.set(it.id, record);
+          const asset = record.specimen.pixelAsset;
+          if (asset && !ownsSpecimen(ctx.controller.state, record.specimen.key)) this.drawMuseumObject(it.id, img, asset);
         }
         // The Fray (spec 2.11): a sickly gold glow on a label that says more than its support.
         if (it.kit) {
@@ -264,6 +270,13 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     for (const it of this.map.interactables) {
       const img = this.objArt.get(it.id);
       if (img) img.setVisible(!it.visibleIf || ctx.controller.check(it.visibleIf));
+      const specimen = this.specimenProps.get(it.id);
+      if (specimen && img instanceof Phaser.GameObjects.Image && ownsSpecimen(s, specimen.specimen.key)) {
+        const reading = s.flags[specimenReadingFlag(specimen.specimen.key)];
+        const art = reading === 'source' ? 'fold.paired' : reading === 'use' ? 'fold.strip' : 'collection-stand';
+        if (img.texture.key !== art) img.setTexture(art).setDisplaySize(16, 24);
+        continue;
+      }
       // A fallacy seal (Undercroft) stops blocking the corridor once it is opened.
       if (it.kind === 'seal' && s.flags[`trap.${it.seal}.open`] === true) {
         if (img) img.setVisible(false);
@@ -337,6 +350,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private drawMuseumObject(id: string, display: Phaser.GameObjects.Image, asset: string): void {
     void specimenArt(asset).then((drawing) => {
       if (!drawing || this.objArt.get(id) !== display || !display.active) return;
+      const record = this.specimenProps.get(id);
+      if (!record || ownsSpecimen(ctx.controller.state, record.specimen.key)) return;
       const texture = `museum.${asset}`;
       if (!this.textures.exists(texture)) this.textures.addCanvas(texture, drawing);
       display.setTexture(texture).setDisplaySize(22, 22);
@@ -966,7 +981,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       const id = best.actor.id;
       const c = ctx.controller.pack.characters.find((x) => x.id === id);
       ctx.ui.setPrompt(`Talk to ${c?.name ?? 'them'}`);
-    } else ctx.ui.setPrompt(`${best.obj.kind === 'sign' ? 'Read' : best.obj.kind === 'exhibit' ? 'Inspect' : best.obj.kind === 'thread' ? 'Follow the thread to' : best.obj.kind === 'loreling' ? 'Watch' : best.obj.kind === 'secret' ? 'Search' : best.obj.kind === 'seal' ? 'Read' : best.obj.kind === 'boss' ? 'Face' : 'Use'} ${best.obj.label}`);
+    } else {
+      const record = this.specimenProps.get(best.obj.id);
+      if (record && ownsSpecimen(ctx.controller.state, record.specimen.key)) ctx.ui.setPrompt(`Read the stand for ${record.name}`);
+      else ctx.ui.setPrompt(`${best.obj.kind === 'sign' ? 'Read' : best.obj.kind === 'exhibit' ? 'Inspect' : best.obj.kind === 'thread' ? 'Follow the thread to' : best.obj.kind === 'loreling' ? 'Watch' : best.obj.kind === 'secret' ? 'Search' : best.obj.kind === 'seal' ? 'Read' : best.obj.kind === 'boss' ? 'Face' : 'Use'} ${best.obj.label}`);
+    }
   }
 
   tryInteract(t = this.target): void {

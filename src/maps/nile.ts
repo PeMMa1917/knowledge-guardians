@@ -2,6 +2,8 @@
 import type { Interactable, MapDef } from './types';
 import { sceneProp } from './sceneProps';
 import { SHELF_NILE_CALLBACK } from './shelfRoom';
+import { LEAVITT_NILE_REVISIT } from './leavittPlate';
+import { NILE_MAKER_PATH } from './makerRoom';
 
 const W = 25, H = 13;
 const room = (id: string, name: string, npcs: MapDef['npcs'], interactables: Interactable[], palette: number, stamps: MapDef['stamps']): MapDef => ({
@@ -270,6 +272,8 @@ export const NILE_ROUTE = room('nile.route', 'Nile Archive: Map Room',
   [{ id: 'nile-marek', x: 16, y: 7, facing: 'left' }],
   [
     ...SHELF_NILE_CALLBACK,
+    ...LEAVITT_NILE_REVISIT,
+    NILE_MAKER_PATH,
     ...sceneProp('nile.model-handover', 14, 8, 'Marek’s note for the next keeper', 'board-stand',
       { repeat: 'nile.slip', limit: 'nile.scroll' }, { objective: 'nile.routes' }),
     readerClue('pair', 'reply', 9, 5, 'the apprentice’s loose tag'),

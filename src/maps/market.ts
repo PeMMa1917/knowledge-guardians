@@ -6,6 +6,7 @@ import { MARKET_BASKET } from './marketBasket';
 import type { Interactable, MapDef } from './types';
 import { MARKET_WELCOME } from './welcome';
 import { specimenWorkEntrance, specimenWorkReadbacks } from './specimenWork';
+import { MARKET_NUMBER_LEAF } from './numberLeaves';
 
 const width = 35;
 const height = 24;
@@ -54,6 +55,7 @@ export const MARKET_SQUARE: MapDef = {
     ...MARKET_KETTLE,
     specimenWorkEntrance('market'),
     ...specimenWorkReadbacks('market'),
+    MARKET_NUMBER_LEAF,
     { id: 'cross-goat', kind: 'fieldgame', game: 'cross-goat', x: 8, y: 16, w: 1, h: 1, label: 'a goat eating price slips (a crossing)', art: 'board-stand' },
     { id: 'cross-patron', kind: 'fieldgame', game: 'cross-patron', x: 13, y: 10, w: 1, h: 1, label: 'the shrine of the Lady of Fair Measure (a crossing)', art: 'old-sign' },
     { id: 'market-nexus-return', kind: 'door', x: 17, y: 22, w: 1, h: 1, label: 'the crossing back to the Nexus',

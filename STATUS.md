@@ -462,3 +462,9 @@ The [learning design review](docs/TOK_ALIGNMENT.md) uses the supplied course gui
 ## Thirty-minute design audit
 
 Run `npm test -- tests/learning.test.ts tests/tok-coverage.test.ts --mode tok-report` for the five campaign models and the executable chapter traces. Thirty-four of forty-four chapter traces reach all 12 concepts and four framework areas within their first estimated half hour. Three reach every dimension in all their modeled windows. The reports show where coverage rests on a single distinct action. Timing still needs student playtests.
+
+## Collection, equipment and citations
+
+The campaign currently includes 366 dated, individually identified real specimens, with 45 equipped returns written for specific places. Check a specimen's record and finish its investigation to collect it. The satchel has three places, and the Nexus cabinet displays the rest. Carrying a specimen lets a player equip it at its original site or use it to open a particular return interaction where one is available. The source shelf in the journal, the Word download, and the print and PDF layout list earned objects in MLA format with links to their catalogue records. The credits offer the full bibliography after the Council ending.
+
+The collection checkpoint passed 1,250 tests, the production build, type checking and the 318-asset check. Chromium rendered and moved through all 89 maps. A fresh Nexus save earned four specimens, sent the fourth to base automatically, swapped it into the satchel, and used the equipped Ishango bone in the Archive Hall. The browser checked earned-only citations, live institution links in DOCX and PDF, and the credits with the Council ending flag staged. Earlier saves and their original perspective items are covered by the regression suite.

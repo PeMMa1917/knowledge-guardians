@@ -1,5 +1,6 @@
 import { DATE_PEG_CASES, DATE_PEG_DOCK, DATE_PEG_GROUP, DATE_PEG_MARKET, datePegProof, datePegRecords } from '../content/datePegCases';
 import type { Condition } from '../domain/types';
+import { DATE_REGISTER_DOOR } from './dateRegister';
 import type { Interactable, MapDef } from './types';
 
 const OPEN: Condition = { objective: 'sea.finish' };
@@ -51,6 +52,7 @@ export const DATE_PEG_ROOM: MapDef = {
     { x: 16, y: 6, r: 71, color: 0xf6deb3 }, { x: 10, y: 14, r: 82, color: 0xddf4ed },
   ],
   interactables: [
+    DATE_REGISTER_DOOR,
     ...DATE_PEG_CASES.flatMap((record, index): Interactable[] => {
       const x = 4 + (index % 3) * 6;
       const y = index < 3 ? 5 : 10;

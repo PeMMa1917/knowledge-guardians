@@ -1,0 +1,53 @@
+.reference-proof {
+  display: grid;
+  gap: .6rem;
+}
+
+.reference-print-feed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.reference-print-feed figure {
+  margin: 0;
+  max-width: 14rem;
+}
+
+.reference-glyphs {
+  color: #302b3b;
+  background: #dcd0a9;
+  padding: .6rem;
+  letter-spacing: .25rem;
+}
+
+.reference-dial {
+  position: relative;
+  border-radius: 50%;
+  width: 6rem;
+  aspect-ratio: 1;
+  background: repeating-conic-gradient(from -5deg, #d2a666 0 4deg, #685352 4deg 30deg);
+  border: 4px solid #d2a666;
+  box-shadow: inset 0 0 0 10px #a7784f;
+}
+
+.reference-dial span {
+  position: absolute;
+  inset: 8% 48% 48%;
+  background: #403949;
+  transform-origin: center bottom;
+  transform: rotate(var(--arm, 45deg));
+}
+
+.reference-dial::before {
+  content: '';
+  position: absolute;
+  inset: 4% 46% 50%;
+  background: linear-gradient(#46787c 0 32%, transparent 32%);
+  transform-origin: center bottom;
+  transform: rotate(var(--plate-offset, 15deg));
+}
+
+.reference-proof button[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 2px currentColor;
+}

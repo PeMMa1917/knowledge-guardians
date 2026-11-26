@@ -79,9 +79,28 @@ import { CLEARANCE_GROUP } from '../content/clearanceCases';
 import { clearanceGallery } from './clearanceGallery';
 import { RELAY_GROUP } from '../content/relayCases';
 import { specimenRelayPanel } from './specimenRelay';
+import { PASSAGE_GROUP } from '../content/passageCases';
+import { specimenPassagePanel } from './specimenPassage';
+import { TURNING_GROUP } from '../content/turningTable';
+import { turningPanel } from './turningTable';
+import { CUE_GROUP } from '../content/cueWorkshop';
+import { cueWorkshopPanel } from './cueWorkshop';
 import { datePegPanel } from './datePeg';
 import { LANTERN_WEAVE } from '../content/lanternWeave';
 import { lanternWeavePanel } from './lanternWeave';
+import { DATE_REGISTER_GROUP } from '../content/dateRegisterCases';
+import { dateRegisterPanel } from './dateRegister';
+import { STORY_FRAME_GROUP } from '../content/storyArchive';
+import { storyFramePanel } from './storyFrames';
+import { NUMBER_LEAF_GROUP } from '../content/numberLeaves';
+import { numberLeavesPanel } from './numberLeaves';
+import { IMPRINT_GROUP } from '../content/copyImprintCases';
+import { REFERENCE_PROOF } from '../domain/referenceProofs';
+import { copyImprint } from './copyImprint';
+import { referenceProofPanel } from './referenceProofs';
+import { MAKER_EXACT, MAKER_TOOL } from '../domain/makerRoom';
+import { makerRoom } from './makerRoom';
+import { makerExact } from './makerExact';
 import { marketBasketPanel } from './marketBasket';
 import { waterLoopPanel } from './waterLoop';
 import { civicIncentivePanel, incentiveStation } from './civicIncentive';
@@ -105,6 +124,15 @@ import { communityLetterFlag, dueCommunityLetters, receivedCommunityLetters } fr
 import { conversationHistory } from '../domain/conversationHistory';
 import { storyMotif, storyMotifKey, type StoryMotif } from '../domain/storyMotifs';
 import { activePerspective, ownedPerspective, perspectiveTools } from '../domain/perspectives';
+import { canClaimSpecimen, carriesSpecimen, carriedSpecimenCount, hasSpecimen, isSpecimenItem, ownsSpecimen, SPECIMEN_CAPACITY,
+  specimenEquipped, specimenFromTool, specimenReadingFlag } from '../domain/specimenGear';
+import { specimenThumbnail, specimenVault } from './specimenVault';
+import { specimenReferences, type SpecimenReference } from '../domain/specimenReferences';
+import { timbuktuHorizonPanel } from './timbuktuHorizon';
+import { objectUsePanel } from './objectUse';
+import { callboardPanel } from './callboardPanel';
+import { MODEL_RECORD_GROUP } from '../content/modelRecords';
+import { modelRecordPanel } from './modelRecords';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
 import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
@@ -1179,6 +1207,43 @@ export class UI implements UIApi {
     const pixel = ex.specimen?.pixelAsset;
     const image = h('img', { class: 'big-art', src: artURL(BIG_ART[ex.art] ?? (ex.specimen ? ex.art : 'big.patent')), alt: pixel ? '' : ex.altText });
     const artCredit = h('figcaption', {}, pixel ? `Collection image from ${ex.specimen!.institution}.` : 'Original game illustration based on the written record.');
+    const claim = h('div', { class: 'row', 'aria-live': 'polite' });
+    const stand = h('div', { class: 'specimen-return-reading' });
+    if (hasSpecimen(ex)) {
+      const showClaim = () => {
+        const key = ex.specimen.key;
+        if (ownsSpecimen(c.state, key)) {
+          claim.replaceChildren(h('p', { class: 'fine' }, carriesSpecimen(c.state, key) ? 'In your satchel.' : 'On display at the Nexus.'));
+        } else if (canClaimSpecimen(c.state, ex)) {
+          claim.replaceChildren(h('button', { type: 'button', class: 'primary', onclick: () => {
+            if (c.dispatch({ type: 'ClaimSpecimen', exhibit: ex.id }).some(({ kind }) => kind === 'error')) return;
+            ctx.world?.refreshWorld();
+            showClaim();
+            claim.tabIndex = -1;
+            claim.focus();
+          } }, 'Take this object'));
+        }
+      };
+      showClaim();
+      const key = ex.specimen.key;
+      const reading = h('p', { class: 'fine', role: 'status' });
+      const read = () => {
+        const kind = c.state.flags[specimenReadingFlag(key)];
+        if (kind === 'use') reading.textContent = `The stand leads with what a visitor can check. ${card.text}`;
+        else if (kind === 'source') reading.textContent = `The stand keeps the collection number and the open question together. ${card.limits}`;
+      };
+      if (c.check(specimenEquipped(key))) {
+        const mount = (kind: 'use' | 'source', text: string) => h('button', { type: 'button', onclick: () => {
+          c.dispatch({ type: 'SetSpecimenReading', exhibit: ex.id, reading: kind });
+          ctx.world?.refreshWorld();
+          read();
+        } }, text);
+        stand.append(h('h3', {}, 'Leave a reading at this stand'),
+          h('div', { class: 'row' }, mount('use', 'Put the observation first'), mount('source', 'Keep its source and limits together')));
+      }
+      stand.append(reading);
+      read();
+    }
     if (pixel) void specimenArt(pixel).then((drawing) => {
       if (!image.isConnected) return;
       if (drawing) {
@@ -1198,6 +1263,13 @@ export class UI implements UIApi {
           h('p', { class: 'date' }, h('strong', {}, 'Date: '), ex.dateText),
           ex.specimen ? h('p', { class: 'fine' }, `${ex.specimen.institution} · ${ex.specimen.accession}`) : null,
           h('p', {}, ex.summary),
+          claim,
+          stand,
+          ex.specimen?.people?.length ? h('ul', { class: 'fine' }, ...ex.specimen.people.map((person) => {
+            const record = c.pack.sources.find(({ id }) => id === person.source);
+            return h('li', {}, h('strong', {}, person.name), ` · ${person.role}. ${person.detail}`,
+              record ? [' ', h('a', { href: record.url, target: '_blank', rel: 'noopener' }, 'Source')] : []);
+          })) : null,
           ex.sources.length ? h('p', { class: 'sources' }, h('strong', {}, 'Sources: '), ...ex.sources.flatMap((sid) => {
             const s = c.pack.sources.find((x) => x.id === sid)!;
             return [h('a', { href: s.url, target: '_blank', rel: 'noopener' }, `${s.id}: ${s.title}`), ' '];
@@ -2603,8 +2675,9 @@ export class UI implements UIApi {
         h('h3', {}, 'Not yet earned'),
         h('ul', { class: 'awards locked' }, ...c.pack.awards.filter((a) => !c.permanent.awards[a.id]).map((a) => h('li', {}, `${a.name} (${a.kind.replace('-', ' ')})`))));
     } else if (tab === 'sources') {
-      body.append(h('p', { class: 'fine' }, 'Historical claims in this chapter come from these sources. Dialogue by characters is original fiction, not quotation.'),
-        h('ul', { class: 'sources-list' }, ...c.pack.sources.map((src) => h('li', {}, h('a', { href: src.url, target: '_blank', rel: 'noopener' }, `${src.id}: ${src.title}`), h('br', {}), h('small', {}, `Supports: ${src.supports}`)))));
+      const entries = specimenReferences(c.pack, s);
+      body.append(entries.length ? this.collectionBibliography(entries, 'Sources for objects I collected')
+        : h('p', {}, 'Sources for the objects you collect will appear here.'));
     }
     const jc = decodeCrest(s.flags['crest']);
     this.openModal('journal wide', 'Journal', this.closeBtn(), h('h2', { class: 'journal-title' }, jc ? crestCanvas(jc, 30, 1) : '', `${s.player.name}'s journal`, jc ? h('small', { class: 'motto' }, ` · ${MOTTOS[jc.motto]}`) : ''), nav, body);
@@ -2623,7 +2696,8 @@ export class UI implements UIApi {
     const toolsList = tools.map((tool) => {
       const inUse = active?.id === tool.id;
       const action = inUse ? `Put away ${tool.name}` : `Use ${tool.name}`;
-      return h('li', {}, h('img', { src: artURL(tool.equip.art ?? 'icon.book'), alt: '' }),
+      const specimen = c.pack.exhibits.filter(hasSpecimen).find((record) => record.specimen.key === specimenFromTool(tool.id));
+      return h('li', {}, specimen ? specimenThumbnail(specimen) : h('img', { src: artURL(tool.equip.art ?? 'icon.book'), alt: '' }),
         h('div', {}, h('strong', {}, tool.name), inUse ? h('span', { class: 'chip' }, 'In use') : '',
           h('p', {}, tool.equip.method), h('small', {}, tool.equip.hint), h('br', {}),
           h('button', { type: 'button', onclick: () => equip(inUse ? null : tool.id) }, action)));
@@ -2631,14 +2705,35 @@ export class UI implements UIApi {
     this.sfx('sfx.pickup');
     this.openModal('bag satchel', 'Bag', this.closeBtn(), h('div', { class: 'flap', 'aria-hidden': 'true' }), h('h2', {}, 'Satchel'),
       h('p', {}, `${s.marks} marks`),
+      s.flags['specimens.collected'] === true ? h('p', { class: 'fine' }, `Satchel object slots ${carriedSpecimenCount(s)} / ${SPECIMEN_CAPACITY} · Swap objects in your collection room at the Nexus.`) : '',
       tools.length ? h('section', { class: 'field-tools' }, h('h3', {}, 'Field tools'),
         h('p', { class: 'fine' }, 'Carry one tool at a time. Each can reveal something different at a site.'),
         h('ul', { class: 'bag' }, ...toolsList)) : '',
-      h('ul', { class: 'bag' }, ...Object.entries(s.inventory).map(([id, q]) => {
+      h('ul', { class: 'bag' }, ...Object.entries(s.inventory).filter(([id]) => !isSpecimenItem(id)).map(([id, q]) => {
         const it = c.pack.items.find((x) => x.id === id);
         return h('li', {}, h('img', { src: artURL(it?.art ?? 'icon.card'), alt: '' }), h('div', {}, h('strong', {}, `${it?.name ?? id}${q > 1 ? ` ×${q}` : ''}`), h('br', {}), h('small', {}, it?.description ?? '')));
       })),
       tools.length || Object.keys(s.inventory).length ? '' : h('p', {}, 'Your bag is empty.'));
+  }
+
+  private openSpecimenReturn(): void {
+    const c = ctx.controller;
+    const active = activePerspective(c.pack, c.state);
+    const key = active && specimenFromTool(active.id);
+    const exhibit = key ? c.pack.exhibits.filter(hasSpecimen).find((record) => record.specimen.key === key) : undefined;
+    const destination = exhibit ? Object.values(MAPS).find((map) => map.interactables.some((prop) => prop.exhibit === exhibit.id)) : undefined;
+    const revisit = exhibit?.specimen.revisit;
+    const second = revisit && c.state.flags[`visited.map.${revisit.map}`] === true ? MAPS[revisit.map] : undefined;
+    const travel = (map: NonNullable<typeof destination>) => {
+      this.closeModal(false);
+      ctx.world?.changeMap(map.id, map.spawn.x, map.spawn.y);
+    };
+    this.openModal('bench-panel wide', 'The return arch', this.closeBtn(),
+      destination && exhibit ? h('div', {}, h('h2', {}, destination.name), h('p', {}, exhibit.name),
+        exhibit.specimen.revisit ? h('p', { class: 'fine' }, exhibit.specimen.revisit.hint) : null,
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => travel(destination) }, 'Return where I found it'),
+          second && second.id !== destination.id ? h('button', { type: 'button', onclick: () => travel(second) }, `Return to ${second.name}`) : null))
+        : h('p', {}, 'Equip a collected object in your satchel to open its route.'));
   }
 
   // -------------------------------------------------------------- menu
@@ -2951,10 +3046,56 @@ export class UI implements UIApi {
     } else if (id.startsWith(`${CLEARANCE_GROUP}:`)) {
       const place = id.slice(CLEARANCE_GROUP.length + 1);
       this.openModal('bench-panel wide', 'The viewing rails', this.closeBtn(), clearanceGallery(ctx.controller, place, () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${MODEL_RECORD_GROUP}:`)) {
+      this.openModal('bench-panel wide', 'What the Model Keeps', this.closeBtn(),
+        modelRecordPanel(ctx.controller, id.slice(MODEL_RECORD_GROUP.length + 1), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith('callboard:')) {
+      const place = id.slice('callboard:'.length);
+      this.openModal('bench-panel wide', 'The Callboard Turn', this.closeBtn(), callboardPanel(ctx.controller, place, () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith('object-use:')) {
+      const place = id.slice('object-use:'.length);
+      this.openModal('bench-panel wide', 'The workroom fixture', this.closeBtn(),
+        objectUsePanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith('timbuktu:')) {
+      const place = id.slice('timbuktu:'.length);
+      this.openModal('bench-panel wide', 'The season horizon', this.closeBtn(),
+        timbuktuHorizonPanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'specimen-vault') {
+      this.openModal('bench-panel wide', 'Your collection', this.closeBtn(), specimenVault(ctx.controller, () => this.refreshHud()));
+    } else if (id === 'specimen-return') {
+      this.openSpecimenReturn();
+    } else if (id.startsWith(`${NUMBER_LEAF_GROUP}:`)) {
+      const place = id.slice(NUMBER_LEAF_GROUP.length + 1);
+      this.openModal('bench-panel wide', 'The Ledger Room', this.closeBtn(),
+        numberLeavesPanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${STORY_FRAME_GROUP}:`)) {
+      const place = id.slice(STORY_FRAME_GROUP.length + 1);
+      this.openModal('bench-panel wide', 'The Story Archive caption frame', this.closeBtn(),
+        storyFramePanel(ctx.controller, place, () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${DATE_REGISTER_GROUP}:`)) {
+      const place = id.slice(DATE_REGISTER_GROUP.length + 1);
+      this.openModal('bench-panel wide', 'The Beside Date', this.closeBtn(),
+        dateRegisterPanel(ctx.controller, place, () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(`${LANTERN_WEAVE}:`)) {
       const place = id.slice(LANTERN_WEAVE.length + 1);
       this.openModal('bench-panel wide', 'The Half-Light Room', this.closeBtn(),
         lanternWeavePanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${IMPRINT_GROUP}:`)) {
+      const place = id.slice(IMPRINT_GROUP.length + 1);
+      this.openModal('bench-panel wide', 'The Second Imprint', this.closeBtn(),
+        copyImprint(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${REFERENCE_PROOF}:`)) {
+      const place = id.slice(REFERENCE_PROOF.length + 1);
+      this.openModal('bench-panel wide', 'The checked record', this.closeBtn(),
+        referenceProofPanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${MAKER_TOOL}:`)) {
+      const place = id.slice(MAKER_TOOL.length + 1);
+      this.openModal('bench-panel wide', 'A Turn at the Workbench', this.closeBtn(),
+        makerRoom(ctx.controller, place, () => ctx.settings.sfxVolume, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${MAKER_EXACT}:`)) {
+      const place = id.slice(MAKER_EXACT.length + 1);
+      this.openModal('bench-panel wide', 'The Makers’ Room', this.closeBtn(),
+        makerExact(ctx.controller, place, () => ctx.settings.sfxVolume, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith('date-peg:')) {
       const place = id.slice('date-peg:'.length);
       this.openModal('bench-panel wide', 'Two dates at a peg', this.closeBtn(), datePegPanel(ctx.controller, place, () => ctx.world?.refreshWorld()));
@@ -2962,6 +3103,16 @@ export class UI implements UIApi {
       const place = id.slice(RELAY_GROUP.length + 1);
       this.openModal('bench-panel wide', 'One Clip Before the Bell', this.closeBtn(),
         specimenRelayPanel(place, ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${PASSAGE_GROUP}:`)) {
+      const place = id.slice(PASSAGE_GROUP.length + 1);
+      this.openModal('bench-panel wide', 'Which Edge Reached the Landing', this.closeBtn(),
+        specimenPassagePanel(place, ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${TURNING_GROUP}:`)) {
+      this.openModal('bench-panel wide', 'A Shore You Can Turn', this.closeBtn(),
+        turningPanel(id.slice(TURNING_GROUP.length + 1), ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${CUE_GROUP}:`)) {
+      this.openModal('bench-panel wide', 'A Cue Beyond the Door', this.closeBtn(),
+        cueWorkshopPanel(id.slice(CUE_GROUP.length + 1), ctx.controller, ctx.settings, () => ctx.world?.refreshWorld()));
     } else if (id === 'drawer-cases') {
       const board = this.openModal('bench-panel wide', 'Three Cases at the Bell');
       drawerCases(board, ctx.controller, this.closeBtn());
@@ -5039,16 +5190,34 @@ export class UI implements UIApi {
           h('img', { src: artURL(i === 0 ? 'council.record' : 'voices.lamp'), alt: '' }),
           h('div', {}, h('strong', {}, moment.who), h('p', {}, moment.text)))),
         h('button', { type: 'button', onclick: () => this.playStoryCue('in-the-open') }, 'Hear the closing theme')) : '',
-      h('p', {}, 'All art, music and sound in this build are free assets with the CC0 licence (public domain dedication), or original art drawn in code for this game. The full list with links is in CREDITS.md in the project repository.'),
+      h('p', {}, 'The full art, music and sound credits, including rights for individual collection images, are in CREDITS.md in the project repository.'),
       h('ul', {},
         h('li', {}, 'Tiles and character base: ArMM1998, "Zelda-like tilesets and sprites" (CC0), OpenGameArt.org. Characters recoloured for this game.'),
         h('li', {}, 'Music: cynicmusic, "Town Theme RPG", "Mysterious Ambience (song21)", "Happy Lullaby (song17)" (CC0), OpenGameArt.org.'),
         h('li', {}, 'Sound effects: Kenney, "51 UI sound effects" (CC0); rubberduck, "80 CC0 RPG SFX" (CC0); wobbleboxx, "Level up, power up, Coin get" (CC0); HaelDB, "Completion sound" (CC0). All from OpenGameArt.org.'),
         h('li', {}, 'Font: Lexend (SIL Open Font License), via @fontsource/lexend.'),
         h('li', {}, 'Game engine: Phaser 3 (MIT licence).')),
-      h('h3', {}, 'Historical sources'),
-      h('ul', { class: 'sources-list' }, ...c.pack.sources.map((src) => h('li', {}, h('a', { href: src.url, target: '_blank', rel: 'noopener' }, `${src.id}: ${src.title}`)))),
-      h('p', { class: 'fine' }, 'This game uses no AI service at runtime. Characters speak authored, reviewed lines.'));
+      s?.flags['ending.council'] ? this.collectionBibliography(specimenReferences(c.pack), 'Works cited for the collection') : '');
+  }
+
+  private collectionBibliography(entries: SpecimenReference[], title: string): HTMLElement {
+    const pageSize = 24;
+    let page = 0;
+    const pages = Math.max(1, Math.ceil(entries.length / pageSize));
+    const list = h('ul', { class: 'sources-list specimen-bibliography' });
+    const status = h('span', { role: 'status' });
+    const previous = h('button', { type: 'button', onclick: () => { page--; show(); } }, 'Previous citations');
+    const next = h('button', { type: 'button', onclick: () => { page++; show(); } }, 'More citations');
+    function show() {
+      list.replaceChildren(...entries.slice(page * pageSize, (page + 1) * pageSize).map((entry) => h('li', {},
+        ...entry.runs.map((run) => run.href ? h('a', { href: run.href, target: '_blank', rel: 'noopener' }, run.text)
+          : run.cite ? h('cite', {}, run.text) : run.text))));
+      status.textContent = `${page + 1} / ${pages}`;
+      previous.disabled = page === 0;
+      next.disabled = page + 1 >= pages;
+    }
+    show();
+    return h('section', {}, h('h3', {}, title), list, pages > 1 ? h('div', { class: 'row' }, previous, status, next) : null);
   }
 
   // ------------------------------------------------------- chapter end

@@ -159,6 +159,9 @@ export interface ExhibitRecord {
     source: string;          // exact source in sources, rather than a comparison record
     objective: string;       // the playable action that needs this object
     pixelAsset?: string;    // optional local licensed image within assets/specimens/
+    people?: { name: string; role: string; detail: string; source: string }[];
+    /** A new interaction or route made possible by carrying and equipping the object. */
+    revisit?: { map: string; prop: string; method: string; hint: string };
   };
   /** Optional label kit that repairs this exhibit's label (Hall of Firsts). */
   labelKit?: string;

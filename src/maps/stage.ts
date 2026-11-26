@@ -1,11 +1,13 @@
 /** Fictional theatre with separate backstage and audience sightlines. */
 import type { Condition } from '../domain/types';
+import { CUE_HOUSE_READER } from './cueWorkshop';
 import { GALLERY_SEAM } from './seamWitness';
 import type { Interactable, MapDef } from './types';
 import { STAGE_FOYER_BACKBILL, STAGE_GALLERY_BACKBILL } from './backbill';
 import { STAGE_FOYER_FRAMES, STAGE_GALLERY_FRAMES, STAGE_REHEARSAL_FRAMES } from './frames';
 import { CUE_FRAME_READER, MOTION_FRAME_READER, STAGE_FILM_FOYER, STAGE_FILM_GALLERY, STAGE_FILM_REHEARSAL } from './filmCuts';
 import { specimenWorkEntrance, specimenWorkReadbacks } from './specimenWork';
+import { STORY_ARCHIVE_ENTRANCE, STORY_ARCHIVE_READBACKS } from './storyArchive';
 
 type TheatreRoom = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'stamps' | 'interactables' | 'lights'>;
@@ -153,6 +155,9 @@ export const STAGE_GALLERY = room({
     ...GALLERY_SEAM,
     specimenWorkEntrance('stage'),
     ...specimenWorkReadbacks('stage'),
+    STORY_ARCHIVE_ENTRANCE,
+    ...STORY_ARCHIVE_READBACKS,
+    CUE_HOUSE_READER,
     ...STAGE_GALLERY_FRAMES,
     STAGE_FILM_GALLERY,
     door('stage-gallery-return', 11, 16, 'the passage back to the foyer', { map: 'stage.foyer', x: 22, y: 5 }),

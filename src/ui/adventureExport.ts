@@ -28,5 +28,6 @@ export function adventureExportSnapshot(view: AdventureJournalView, options: Adv
     })),
     quests: view.quests,
     questions: notes.filter((note) => note.kind === 'question' && !note.resolved).map((note) => note.text),
+    references: view.references,
   };
 }

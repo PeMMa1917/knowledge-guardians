@@ -1,6 +1,7 @@
 /** A fictional island dock order investigated from a workshop and field paths. */
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
+import { MODEL_RECORD_EXITS } from './modelRecords';
 import { ISLAND_LANTERN_FAIR } from './lanternfair';
 import { ISLAND_MOVEMENT_DOCK, ISLAND_MOVEMENT_WORKSHOP } from './island-movement';
 import { ISLAND_DOCK_FRAMES, ISLAND_WORKSHOP_FRAMES } from './frames';
@@ -44,6 +45,7 @@ export const ISLAND_WORKSHOP: MapDef = {
     { stamp: 'market-planter', x: 20, y: 13 }, { stamp: 'voices-bench', x: 5, y: 14 },
   ],
   interactables: [
+    ...MODEL_RECORD_EXITS,
     ...ISLAND_INCENTIVE_WORKSHOP,
     ...ISLAND_MOVEMENT_WORKSHOP,
     ...ISLAND_WORKSHOP_FRAMES,

@@ -255,6 +255,35 @@
         ],
         "game": 191,
         "story": 77
+      },
+      {
+        "objective": "date-peg.water-photographs.filed",
+        "action": "Move the precise year peg across two different ranges, then give the reader both labelled ranges so the exact year does not turn into a making date.",
+        "styles": [
+          "explorer",
+          "challenger"
+        ],
+        "modes": [
+          "spatial",
+          "analytical",
+          "reading"
+        ],
+        "game": 191,
+        "story": 77
+      },
+      {
+        "objective": "date-peg.jar-marks.filed",
+        "action": "Find where both catalogue ranges admit the same year, then keep the two object dates separate when you prepare the public guide.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "analytical"
+        ],
+        "game": 191,
+        "story": 11
       }
     ]
   },

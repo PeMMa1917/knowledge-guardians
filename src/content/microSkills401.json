@@ -273,6 +273,57 @@
     ]
   },
   {
+    "number": 470,
+    "name": "Follow what a clipped or timed message loses",
+    "uses": [
+      {
+        "objective": "relay.hawaii-join.received",
+        "action": "Run the same two clips through still air and a gust. Ask the receiver for the missing source clip or take the full later bundle.",
+        "styles": [
+          "helper",
+          "maker"
+        ],
+        "modes": [
+          "auditory",
+          "analytical",
+          "social"
+        ],
+        "game": 179,
+        "story": 95
+      },
+      {
+        "objective": "relay.dish-cast.received",
+        "action": "Check what the first clip led the recipient to expect and attach the cast’s exact accession and date before you leave the receipt.",
+        "styles": [
+          "strategist",
+          "collector"
+        ],
+        "modes": [
+          "reading",
+          "auditory",
+          "social"
+        ],
+        "game": 179,
+        "story": 137
+      },
+      {
+        "objective": "lantern.weave.lautensack-two-plates.hung",
+        "action": "Swing the beam across each half of the 1551 impression. Lead with one section at the window or preserve the two-plate relation at the desk.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "reading"
+        ],
+        "game": 197,
+        "story": 95
+      }
+    ]
+  },
+  {
     "number": 474,
     "name": "Keep the terms of permission with a traveling excerpt",
     "uses": [

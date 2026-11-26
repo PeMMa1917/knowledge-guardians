@@ -1,5 +1,6 @@
 import { crossingOf, crossingWay } from './crossings';
 import { LOYALTY } from './loyalty';
+import { specimenReferences, type SpecimenReference } from './specimenReferences';
 import type { Command, GameEvent } from './engine';
 import type {
   AdventureDiary, CampaignState, ContentPack, DialogueNode, DialogueOption, DiaryEntry, DiaryNoteDetails,
@@ -26,6 +27,7 @@ export interface AdventureJournalView {
   entries: (EntryDraft & { at: string | null; mapId: string | null })[];
   notes: JournalNote[];
   quests: JournalQuest[];
+  references: SpecimenReference[];
 }
 
 export function diaryNoteKind(text: string): DiaryNoteKind {
@@ -232,5 +234,6 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     entries: [...prior.map((entry) => ({ ...entry, at: null, mapId: null })), ...state.adventureDiary.entries],
     notes: state.notes.map((text, index) => ({ text, index, ...state.adventureDiary.noteDetails[index] })),
     quests: [...quests.values()],
+    references: specimenReferences(pack, state),
   };
 }

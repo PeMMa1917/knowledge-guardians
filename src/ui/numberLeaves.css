@@ -1,0 +1,13 @@
+.number-leaf-panel article { padding: .7rem; margin: .7rem 0; border: 1px solid var(--gold-dim); border-radius: .4rem; }
+.number-leaf-panel article > a { display: block; margin-bottom: .7rem; }
+.number-leaf-trial { margin: .7rem 0; }
+.number-leaf-pair { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; }
+.number-leaf-joined .number-leaf-pair { border-inline-start: .22rem solid #d7b973; margin-block: .3rem; padding-inline-start: .45rem; }
+.number-leaf-separated .number-leaf-pair { display: contents; }
+.number-leaf-ticks { display: inline-flex; flex-wrap: wrap; align-items: center; column-gap: .18rem; margin-inline-end: .4rem; }
+.number-leaf-ticks i { height: .7rem; width: .16rem; background: #abcedc; }
+.number-leaf-areas { display: flex; width: min(14rem, 100%); border: 1px solid #e6c57b; }
+.number-leaf-areas span { display: block; background: #b6cbe0; height: 1.15rem; }
+.number-leaf-areas span + span { background: #e3b282; }
+.number-leaf-digits { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; }
+.number-leaf-digits span { display: inline-block; padding: .3rem .6rem; border: 1px solid var(--gold-dim); background: #3c2e39; }

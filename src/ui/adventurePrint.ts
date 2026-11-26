@@ -1,6 +1,7 @@
 import type { AdventureJournalView } from '../domain/adventureJournal';
 import { adventureExportSnapshot, journalUtc, type AdventureExportOptions } from './adventureExport';
 import { h } from './dom';
+import { adventureReferences } from './adventureReferences';
 import './adventurePrint.css';
 
 let closeActivePrint: (() => void) | undefined;
@@ -10,7 +11,7 @@ export function printAdventureJournal(
   view: AdventureJournalView, options: AdventureExportOptions, onUnavailable: () => void,
 ): void {
   closeActivePrint?.();
-  const { title, entries, notes, quests, questions } = adventureExportSnapshot(view, options);
+  const { title, entries, notes, quests, questions, references } = adventureExportSnapshot(view, options);
   const printedAt = new Date().toISOString();
   const snapshot = h('main', { class: 'adventure-print' },
     h('header', {}, h('h1', {}, title),
@@ -29,7 +30,8 @@ export function printAdventureJournal(
         quest.question ? h('p', {}, quest.question) : null,
         h('ul', {}, quest.steps.map((step) => h('li', {}, step))))),
       questions.length ? h('article', {}, h('h3', {}, 'My open questions'),
-        h('ul', { class: 'print-writing' }, questions.map((question) => h('li', {}, question)))) : null));
+        h('ul', { class: 'print-writing' }, questions.map((question) => h('li', {}, question)))) : null),
+    references.length ? h('section', {}, h('h2', {}, 'Works Cited'), adventureReferences(references)) : null);
 
   const root = document.documentElement;
   const oldTitle = document.title;

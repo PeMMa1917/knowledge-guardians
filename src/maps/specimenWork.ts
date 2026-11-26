@@ -1,6 +1,7 @@
 import { SPECIMEN_WORK, workChoice, workReady, workTrial, type SpecimenWork } from '../content/specimenWorkCases';
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
+import { objectUseEntries } from './objectUse';
 
 type Workshop = SpecimenWork['room'];
 const positions = [[4, 5], [15, 5], [4, 10], [15, 10]] as const;
@@ -96,6 +97,7 @@ function workshop(room: Workshop): MapDef {
       { x: 12, y: 14, r: 52, color: 0xffc9a5 },
     ],
     interactables: [
+      ...objectUseEntries(room),
       ...cases(room).flatMap(station),
       { id: `specimen-work-${room}-back`, kind: 'door', x: 12, y: 16, w: 1, h: 1, art: plan.doorArt,
         label: room === 'market' ? 'the way to Lantern Square' : 'the way to the Audience Gallery',

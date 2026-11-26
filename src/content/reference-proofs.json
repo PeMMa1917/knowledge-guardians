@@ -1,0 +1,396 @@
+{
+  "sources": [
+    {
+      "id": "HIS-BONE-SPECIMEN",
+      "title": "The Metropolitan Museum of Art, Inscribed Shang oracle bone (67.43.16)",
+      "url": "https://www.metmuseum.org/art/collection/search/60696",
+      "locator": "Object details and collection description",
+      "supports": "The Met places this object in the Shang period and records it as inscribed bone. Its separate credit line records a gift in 1967.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "artwork",
+        "title": "Inscribed Shang oracle bone",
+        "container": "The Metropolitan Museum of Art",
+        "workDate": "Shang dynasty, about 1600–1046 BCE"
+      }
+    },
+    {
+      "id": "HIS-JIKJI-SPECIMEN",
+      "title": "Bibliothèque nationale de France, Jikji, surviving second volume (Coréen 109)",
+      "url": "https://www.bnf.fr/fr/le-jikji-un-tresor-de-limprimerie",
+      "locator": "Object details and collection description",
+      "supports": "The BnF identifies Coréen 109 as the second volume of the Jikji printed with cast movable metal type in 1377. Its description places the 1378 woodblock version in another record.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "artwork",
+        "title": "Jikji, surviving second volume",
+        "container": "Bibliothèque nationale de France",
+        "workDate": "1377"
+      }
+    },
+    {
+      "id": "HIS-ASTROLABE-SPECIMEN",
+      "title": "The Metropolitan Museum of Art, Rasulid astrolabe of ‘Umar ibn Yusuf (91.1.535a–h)",
+      "url": "https://www.metmuseum.org/art/collection/search/444408",
+      "locator": "Object details and collection description",
+      "supports": "The Met describes four plates. Three original plates carry latitudes for locations in Yemen along with Mecca and Medina. Its record describes a reused plate and a modern pin.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "artwork",
+        "title": "Rasulid astrolabe of ‘Umar ibn Yusuf",
+        "container": "The Metropolitan Museum of Art",
+        "workDate": "Dated 690 AH / 1291 CE"
+      }
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.scope.bone",
+      "title": "Inscribed Shang oracle bone",
+      "text": "The Met places this object in the Shang period and records it as inscribed bone. Its separate credit line records a gift in 1967.",
+      "limits": "The catalogue gives a period rather than a single production year. An image of the marks alone supplies neither a translation nor the identity of their individual maker.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-BONE-SPECIMEN"
+      ]
+    },
+    {
+      "id": "card.scope.jikji",
+      "title": "Jikji, surviving second volume",
+      "text": "The BnF identifies Coréen 109 as the second volume of the Jikji printed with cast movable metal type in 1377. Its description places the 1378 woodblock version in another record.",
+      "limits": "The surviving metal-type volume gives no copy of the missing first volume. The date describes an edition. An earlier or later material witness keeps its own record.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-JIKJI-SPECIMEN"
+      ]
+    },
+    {
+      "id": "card.scope.astrolabe",
+      "title": "Rasulid astrolabe of ‘Umar ibn Yusuf",
+      "text": "The Met describes four plates. Three original plates carry latitudes for locations in Yemen along with Mecca and Medina. Its record describes a reused plate and a modern pin.",
+      "limits": "The practice dial’s landing angles are fictional. This catalogue object cannot establish the right reading for a place without checking its corresponding plate and scale.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-ASTROLABE-SPECIMEN"
+      ]
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-BONE-EXACT",
+      "name": "Inscribed Shang oracle bone",
+      "art": "reference-bone-tabs",
+      "dateText": "Shang dynasty, about 1600–1046 BCE",
+      "dateKind": "The catalogue’s period range for this object. The museum records its gift separately in 1967.",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-BONE-SPECIMEN"
+      ],
+      "summary": "The Met attributes this inscribed bone to China’s Shang dynasty. The object is 23.5 cm long and 12.7 cm wide. The Met records the gift in 1967. The practice drawer uses an original diagram for the record tabs.",
+      "altText": "Original diagram of an inscribed-bone record with two separate documentation tabs. The bone’s marks are omitted.",
+      "grantsCard": "card.scope.bone",
+      "specimen": {
+        "key": "met:67.43.16",
+        "institution": "The Metropolitan Museum of Art",
+        "accession": "67.43.16",
+        "source": "HIS-BONE-SPECIMEN",
+        "objective": "scope.bone.mounted"
+      }
+    },
+    {
+      "id": "OBJ-JIKJI-EXACT",
+      "name": "Jikji, surviving second volume",
+      "art": "reference-jikji-type",
+      "dateText": "1377",
+      "dateKind": "The printing of the metal-type volume held at the BnF. The reported 1378 woodblock version is another edition.",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-JIKJI-SPECIMEN"
+      ],
+      "summary": "The BnF holds the second volume of the Jikji, a Buddhist work compiled by Baegun. The BnF records its production in 1377 using cast movable metal type at Heungdeok-sa in Cheongju. A complete woodblock version dated 1378 is held in Korea. The three geometric blocks are a practice kit.",
+      "altText": "Original demonstration with three geometric type blocks and one small sheet. The historical page is not reproduced.",
+      "grantsCard": "card.scope.jikji",
+      "specimen": {
+        "key": "bnf:coreen-109",
+        "institution": "Bibliothèque nationale de France",
+        "accession": "Coréen 109",
+        "source": "HIS-JIKJI-SPECIMEN",
+        "objective": "scope.jikji.mounted"
+      }
+    },
+    {
+      "id": "OBJ-ASTROLABE-EXACT",
+      "name": "Rasulid astrolabe of ‘Umar ibn Yusuf",
+      "art": "reference-rasulid-dial",
+      "dateText": "Dated 690 AH / 1291 CE",
+      "dateKind": "The date of the inscription reported by the museum. Present parts include a later pin and one plate identified as a replacement.",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-ASTROLABE-SPECIMEN"
+      ],
+      "summary": "Made in Yemen. Brass, worked and inlaid in silver. The museum names ‘Umar ibn Yusuf ibn ‘Umar ibn ‘Ali ibn Rasul al-Muzaffari and gives the case diameter as 15.6 cm. The Met identifies three original plates with latitude markings for named locations and a fourth plate from a different instrument.",
+      "altText": "Original practice dial with two illustrated plate lines and a pivot arm. The historical inscriptions and scales are not reproduced.",
+      "grantsCard": "card.scope.astrolabe",
+      "specimen": {
+        "key": "met:91.1.535a-h",
+        "institution": "The Metropolitan Museum of Art",
+        "accession": "91.1.535a–h",
+        "source": "HIS-ASTROLABE-SPECIMEN",
+        "objective": "scope.astrolabe.mounted"
+      }
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH7-R27",
+      "world": "WORLD-08",
+      "title": "Inscribed Shang oracle bone",
+      "knowledgeQuestion": "When can a date on a collection label tell us how old the thing is?",
+      "available": {
+        "objective": "copies.revise"
+      },
+      "objectives": [
+        {
+          "id": "scope.bone.mounted",
+          "title": "Read both date records and mount a scoped guide beside the bone.",
+          "visible": {
+            "card": "card.scope.bone"
+          },
+          "done": {
+            "flag": "scope.bone.mounted",
+            "eq": true
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "objectivity",
+              "explanation",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "TEC"
+            ],
+            "subjects": [
+              "history",
+              "design-tech"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH7-R28",
+      "world": "WORLD-08",
+      "title": "Jikji, surviving second volume",
+      "knowledgeQuestion": "How does keeping an edition with its printing method change what we can claim?",
+      "available": {
+        "objective": "copies.revise"
+      },
+      "objectives": [
+        {
+          "id": "scope.jikji.mounted",
+          "title": "Change a moveable piece, compare a one-block impression and post a guide with the edition.",
+          "visible": {
+            "card": "card.scope.jikji"
+          },
+          "done": {
+            "flag": "scope.jikji.mounted",
+            "eq": true
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "objectivity",
+              "explanation",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "TEC"
+            ],
+            "subjects": [
+              "history",
+              "design-tech"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH4-R24",
+      "world": "WORLD-05",
+      "title": "Rasulid astrolabe of ‘Umar ibn Yusuf",
+      "knowledgeQuestion": "What must move with a measurement when another person uses it somewhere else?",
+      "available": {
+        "objective": "coast.revise"
+      },
+      "objectives": [
+        {
+          "id": "scope.astrolabe.mounted",
+          "title": "Use both plates on the same observed mark and carry a labelled result to the next reader.",
+          "visible": {
+            "card": "card.scope.astrolabe"
+          },
+          "done": {
+            "flag": "scope.astrolabe.mounted",
+            "eq": true
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "objectivity",
+              "explanation",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "TEC"
+            ],
+            "subjects": [
+              "history",
+              "design-tech"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 4
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.scope.bone.mounted.1",
+      "objective": "scope.bone.mounted",
+      "depth": 1,
+      "text": "The oracle-bone record has two dates with different jobs."
+    },
+    {
+      "id": "h.scope.bone.mounted.2",
+      "objective": "scope.bone.mounted",
+      "depth": 2,
+      "text": "Use the accession record stand and then collect the period and the gift line at the two drawers."
+    },
+    {
+      "id": "h.scope.bone.mounted.3",
+      "objective": "scope.bone.mounted",
+      "depth": 3,
+      "text": "The period belongs under the inscribed bone. The gift belongs with the collection history."
+    },
+    {
+      "id": "h.scope.bone.mounted.4",
+      "objective": "scope.bone.mounted",
+      "depth": 4,
+      "text": "Clip the two separate records to the guide. Choose which guide opens first."
+    },
+    {
+      "id": "h.scope.jikji.mounted.1",
+      "objective": "scope.jikji.mounted",
+      "depth": 1,
+      "text": "The surviving volume and a complete woodblock version have separate histories."
+    },
+    {
+      "id": "h.scope.jikji.mounted.2",
+      "objective": "scope.jikji.mounted",
+      "depth": 2,
+      "text": "Read Coréen 109. Run the two invented type demonstrations at the neighbouring worktable."
+    },
+    {
+      "id": "h.scope.jikji.mounted.3",
+      "objective": "scope.jikji.mounted",
+      "depth": 3,
+      "text": "Change one movable piece and check what moves together on the whole-block copy."
+    },
+    {
+      "id": "h.scope.jikji.mounted.4",
+      "objective": "scope.jikji.mounted",
+      "depth": 4,
+      "text": "Once both models have printed, mount a short accession guide or leave both trial proofs side by side."
+    },
+    {
+      "id": "h.scope.astrolabe.mounted.1",
+      "objective": "scope.astrolabe.mounted",
+      "depth": 1,
+      "text": "A dial plate keeps the reference for a place."
+    },
+    {
+      "id": "h.scope.astrolabe.mounted.2",
+      "objective": "scope.astrolabe.mounted",
+      "depth": 2,
+      "text": "Read the signed instrument in the Bell Archive and find the local model beside it."
+    },
+    {
+      "id": "h.scope.astrolabe.mounted.3",
+      "objective": "scope.astrolabe.mounted",
+      "depth": 3,
+      "text": "Keep the dial’s observation fixed. Try both named place plates and compare what the relative value does."
+    },
+    {
+      "id": "h.scope.astrolabe.mounted.4",
+      "objective": "scope.astrolabe.mounted",
+      "depth": 4,
+      "text": "Leave one labelled reading at the quay or file both scoped comparisons at the archive side table."
+    }
+  ]
+}

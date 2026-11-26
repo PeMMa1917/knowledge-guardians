@@ -1,9 +1,11 @@
 /** Fictional listening archive and the two approaches to Glass Walk. */
 import type { Condition } from '../domain/types';
+import { CUE_WALK_READER, CUE_WORKSHOP_DOOR } from './cueWorkshop';
 import { LISTENING_LINTEL, MAT_READY_AT_PUBLIC_DOOR, WALK_LINTEL } from './lintelFold';
 import type { Interactable, MapDef } from './types';
 import { LINKED_LISTENING } from './linkedNotes';
 import { QUAY_VESPER_TRUST } from './vesperTrust';
+import { MAKER_QUAY, MAKER_WALK } from './makerRoom';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'voices.waypost'): Interactable {
   return { id, kind: 'door', x, y, w: 1, h: 1, label, to, art };
@@ -132,7 +134,9 @@ export const VOICES_WALK: MapDef = {
     { stamp: 'market-planter', x: 3, y: 9 }, { stamp: 'market-planter', x: 24, y: 13 },
   ],
   interactables: [
+    CUE_WALK_READER,
     { id: 'cross-two-elders', kind: 'fieldgame', game: 'cross-two-elders', x: 18, y: 10, w: 1, h: 1, label: 'two old friends on separate benches (a crossing)', art: 'ledger' },
+    MAKER_WALK,
     ...WALK_LINTEL,
     { ...glassWalkStairs, visibleIf: { not: MAT_READY_AT_PUBLIC_DOOR } },
     { ...glassWalkStairs, id: 'walk-lintel-public-door', label: 'the public stairs to the bench with the mat',
@@ -200,7 +204,9 @@ export const VOICES_QUAY: MapDef = {
   ],
   interactables: [
     ...QUAY_VESPER_TRUST,
+    CUE_WORKSHOP_DOOR,
     door('voices-quay-return', 3, 12, 'the quay passage back to the Listening Room', { map: 'voices.listening', x: 24, y: 11 }),
+    MAKER_QUAY,
     door('voices-quay-to-walk', 25, 12, 'the rail passage to the Glass Walk stairs', { map: 'voices.walk', x: 24, y: 11 }),
     sign('voices-quay-first-lamp', 6, 9, 'the first lamp on the quay', 'voices.lamp',
       'The first lamp has a round pane. There is another pool of amber light farther along the quay.'),

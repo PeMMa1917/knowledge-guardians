@@ -77,9 +77,9 @@ Evidence cards with real sources in this mission: `card.met-ingots` (HIS-S16), `
 
 The forge is **schematic only**. The player chooses a method (pattern welding or crucible) and sees a billet pattern. It is not a working recipe, and it gives no temperatures, times or amounts.
 
-## No images from museums
+## Collection artwork
 
-The game does not show museum photographs. Exhibits are original pixel art drawn in code, with an `altText` description. Before you add a museum image, check the rights statement on the record (it is different for each image) and credit it in `CREDITS.md`.
+Each exact specimen has distinctive pixel artwork and a description for screen readers. Exhibits can use an original drawing based on the documented form or a licensed collection image reduced locally and drawn at the game’s pixel scale. Check the rights for the specific image. Record the catalogue, original image and reuse terms in the asset manifest and credit the institution. [Asset credits](../CREDITS.md)
 
 ## Checking sources
 
@@ -180,6 +180,20 @@ The Lantern House annex has 12 individually accessioned Cleveland Museum of Art 
 | Falls of Niagara 1993.25 and Bridal Veil, Yosemite 1992.12 | One printed photograph is dated by decade, the other to two years. Their shared interval leaves the actual year of either print open. |
 | Water Jar (Olla) 1984.159 and Jar 1990.10 | The two ancestral Pueblo jar entries give different style attributions and date ranges. The gap is between these entries. |
 
+### The Beside Date and The Borrowed Date Guide
+
+The register room has 28 separately identified specimens. The making date stays with the object’s accession. A second hinge opens a separately attested reference, transfer, display, conservation decision or scholarly attribution. An exact event year does not make an uncertain object date exact. Eneth, Caren and Elwen file fictional folios based on these records. The interval display compares bounds at calendar-year precision. The complete records and exact collection links are kept with the content. [Register room object records](../src/content/date-register-specimens.json)
+
+- The Saxon State and University Library Dresden catalogues the Dresden Maya Codex as Mscr.Dresd.R.310. It gives a probable date of about 1300–1521 and a probable northern or northeastern Yucatán origin. The book may draw on an older model. The holding library reports 39 leaves and about 3.56 metres for the original extended strip. Its record gives 182.5 and 174.3 centimetres for the two parts in the 1835 glass arrangement. Götze’s reported 1739 Vienna acquisition and the 1740 transfer list are distinct events. The route to Vienna remains uncertain. Play uses a schematic with blank folds and a fictional 240 cm rail. [Origin](https://www.slub-dresden.de/en/explore/manuscripts/the-dresden-maya-codex/origin) · [Material and conservation](https://www.slub-dresden.de/en/explore/manuscripts/the-dresden-maya-codex/material-conservation-presentation) · [Provenance](https://www.slub-dresden.de/en/explore/manuscripts/the-dresden-maya-codex/provenance-acquisition)
+- Brooklyn Museum object 96982 is exact accession **70.177.69**. The archived collection record identifies the 39 × 77 cm cotton object, gives 1400–1532, and names Nobuko Kajatani and Anne Rowe for the 1993 Inca attribution. The four scholarly component records refer back to that one accession. The game rotates a measured outline and keeps the photograph, object range and attribution separate. The 192-pixel photo derivative credits Brooklyn Museum’s CC BY 3.0 source. [Archived Brooklyn Museum collection record](https://web.archive.org/web/20171025011939id_/https://www.brooklynmuseum.org/opencollection/objects/96982) · [Khipu Field Guide, KH0043–KH0046](https://www.khipufieldguide.com/sketchbook/index.html)
+
+### The Callboard Turn
+
+The Civic reading room keeps 31 exact collection records under separate numbers. The visible detail and what the source can establish each have a clip. The public bench and the later source call are fictional. Players can earn a collection object and bring it back to an earlier setting to mount a similarly supported local notice. [Object records and rights evidence](../src/content/callboard-specimens.json)
+
+- John Hessler gives 1570–1595 for the surviving Codex Quetzalecatzin and describes its Nahua conventions, Latin-letter glosses and the de León family’s genealogy and land claims. Lord-11 Quetzalecatzin is an ancestor in the account. The glosses name don Alonso and don Matheo. Individual painter-scribes are unnamed. The scan is a public-domain reproduction of the Library of Congress item. The model keeps the depicted claim and the names of the people who made, presented and interpreted it distinct. [Exact Library of Congress item](https://www.loc.gov/resource/g4701g.ct009133/) · [Hessler’s institutional essay](https://blogs.loc.gov/maps/2017/11/the-codex-quetzelecatzin/) · [Scan rights](https://commons.wikimedia.org/wiki/File:Codex_Quetzalecatzin.jpg)
+- The Warren Anatomical Museum gives object 03106 a making date of about 1848 and identifies the maker as an unnamed Cavendish blacksmith. The date and name transcribed from the 1850 inscription have their own line. Gage’s mother Hannah Trussell Swetland Gage passed the iron to John Martyn Harlow in 1867. His museum donation followed in 1868. The original game schematic shows the museum mount. Play compares two kinds of record and leaves clinical claims about personality open. [Warren Anatomical Museum, 03106](https://collections.countway.harvard.edu/onview/items/show/26376)
+
 ## Where the Welcome Goes, City of Copies and Market of Measures
 
 - REL-WELCOME-01 describes the Sodhi family preparing langar at their Sikh gurdwara in Fremont, California. The account connects a meal shared with visitors to the commitment to equality. [Harvard Pluralism Project, Langar: The Communal Meal](https://pluralism.org/langar-the-communal-meal)
@@ -190,6 +204,19 @@ Players keep the accounts with their own places, sources and reasons for welcome
 ## The Mark Beneath the Lip, Metalworks and Water Commons
 
 HIS-MET-RONTGEN-A606881 records Science Museum Group object A606881 as a photograph on paper under glass, catalogue year 1895 and maker unknown. The catalogue describes Röntgen’s exposure of his wife’s left hand on 22 December 1895 and the visible ring. It places the original radiograph at the Deutsches Museum in Munich. The game shows an original custody diagram. Corra’s fitting, shape plate and the Commons’ practice tests are fictional. [Science Museum Group, A606881](https://collection.sciencemuseumgroup.org.uk/objects/co134691/photograph-of-a-radiograph-of-hand-taken-by-wilhelm-conrad-rontgen-germany-1895)
+
+## The Story Archive
+
+- The Brooklyn Museum identifies *Lukasa (Memory Board)* as Luba object 76.20.4, late 19th or early 20th century, wood, metal and beads, 25.4 × 14.6 × 5.7 cm. The direct page returned 403 in the development environment. Its publicly indexed museum caption supplies the accession, dimensions and gift credit. The Met’s 1977.467.3 is a separate object whose public catalogue gives context about trained Luba interpretation. The game draws a closed mount with a paper tag and keeps the two accessions separate on the reading spread. [Brooklyn Museum, 76.20.4](https://www.brooklynmuseum.org/objects/102210) · [The Met, 1977.467.3](https://www.metmuseum.org/art/collection/search/690570)
+- The Hiroshima Peace Memorial Museum’s Peace Database identifies Shinichi Tetsutani’s tricycle as 1105-0001. It measures 450 × 475 × 360 mm. The entry gives his father Nobuo as donor and 6 September 1985 as the receiving date. The event date is 6 August 1945. ICAN separately attributes a remembrance about children playing in peace to Nobuo. The game shows an original drawing of an empty tricycle and gives each date and source its own line. [Hiroshima Peace Memorial Museum, 1105-0001](https://hpmm-db.jp/list/detail/?cate=artifact_en&search_type=detail&data_id=19519) · [Museum online exhibit, August 6, 1945](https://artsandculture.google.com/story/qAWha-B-4bWvLQ) · [ICAN, Shinichi’s tricycle](https://www.icanw.org/shinichi_s_tricycle)
+
+## Past the Roof Line
+
+The Library of Congress lists the 1733 copy of *Kashf al-Ghummah fi Nafa al-Ummah*, LCCN 2021667561, under a supplied English title, *The Important Stars Among the Multitude of the Heavens*. The exhibit names Nasir al-Din Abu al-Abbas Ahmad ibn al-Hajj al-Amin al-Tawathi al-Ghalawi as author and the Mamma Haidara Commemorative Library, Timbuktu, as lender. The MARC record identifies the original’s custodian. The exhibit associates the treatise with calculating the beginning of seasons using stellar motions and describes a diagram of rotating heavens. The game uses original plain skyline slips and invented marker paths. Direct access to the item landing page was blocked in the development environment. Both exact catalogue and exhibit records returned the cited details. [Library of Congress exhibition caption](https://www.loc.gov/exhibits/mali/mali-exhibit.html#obj1) · [Library of Congress MARC record](https://lccn.loc.gov/2021667561/marcxml)
+
+## The Packing Loft, Exchange Bench, Joinery Bay and Trace Gallery
+
+Each workshop case keeps the accession, published date, attribution, scope and official museum record together. The geometric outlines, tally weights, joint markers and pulse strips use fictional fixtures. A photographed object associated with sound does not supply a recording. On the return side, each receiver uses a different working slip and can reopen the result. The record of the earlier Kuba-style bowl can be clipped beside the Middle Niger vessel trace after both completed jobs. [Individual collection records and game uses](../src/content/object-use-cases.json) · [Cleveland Museum Open Access](https://www.clevelandart.org/open-access) · [The Met Open Access](https://www.metmuseum.org/policies/image-resources) · [Smithsonian Open Access](https://www.si.edu/openaccess)
 
 ## The Line a Reader Can Follow and A Sunset on the Proof
 
@@ -243,6 +270,81 @@ Five individual collection records supply the measured edge used at the viewing 
 - Wooden tapa cloth beater from Hawai‘i, 20th century before 1930. The fitting uses its recorded length of 38.7 cm. [CMA 1971.152](https://clevelandart.org/art/1971.152)
 - Feline incense burner from Khurasan, Iran, 1150–1200 CE. The fitting uses its catalogue height of 35.5 cm. [CMA 1948.308](https://clevelandart.org/art/1948.308)
 
+## A Turn at the Workbench, Nile Archive and Archive of Voices
+
+The documented cases identify particular materials and workmanship. The same pattern on the fictional practice surface can come from either build. A workbench cut reveals a cross-section of the toy model. The carrying routes and the readers belong to the story. The museum photographs are CC0. [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access)
+
+- Gilded Iznik dish, c. 1590. [1915.663](https://clevelandart.org/art/1915.663)
+- Iznik floral spandrel, c. 1570–75. [2004.70](https://clevelandart.org/art/2004.70)
+- Kashan mina’i beaker, 1180–1220. [1917.977](https://clevelandart.org/art/1917.977)
+- Jug with running animals, 1150–1220. [1947.495](https://clevelandart.org/art/1947.495)
+- Kashan lampas fragment, 1700s. [1918.196](https://clevelandart.org/art/1918.196)
+- Damascus brass bowl, 1450–1500. [1945.133](https://clevelandart.org/art/1945.133)
+- Mamluk quilted silk cap, 1300s. [1950.510](https://clevelandart.org/art/1950.510)
+- Mamluk striped silk fragment, 1200s–1300s. [1919.28](https://clevelandart.org/art/1919.28)
+- Tunisian bordered textile, early 1900s. [1916.1223](https://clevelandart.org/art/1916.1223)
+- Gujarat silk patolu sari, 1800s. [1940.607](https://clevelandart.org/art/1940.607)
+- Surat striped panel fragment, 1900. [1925.498](https://clevelandart.org/art/1925.498)
+- Bukhara munisak, 1850–75. [2009.267](https://clevelandart.org/art/2009.267)
+- Five-panel Bukhara pardah, 1850–75. [2006.152](https://clevelandart.org/art/2006.152)
+- Shahr-i Sabz khalat, late 1800s. [1916.1412](https://clevelandart.org/art/1916.1412)
+- Khmer silk hanging or canopy, early 1900s. [1925.118](https://clevelandart.org/art/1925.118)
+- Sumba hinggi, 1800s. [1925.490](https://clevelandart.org/art/1925.490)
+- Mandaya dagmay, c. early 1900s. [1917.748](https://clevelandart.org/art/1917.748)
+- Teapot with Begonias, 1897–1914. [2022.168](https://clevelandart.org/art/2022.168)
+- Sweets Bowl with Chrysanthemums, 1914–46. [2022.206](https://clevelandart.org/art/2022.206)
+- Cloisonné napkin ring, early 1900s. [1939.370](https://clevelandart.org/art/1939.370)
+- Qing bowl with splayed foot, 1700s. [1989.319](https://clevelandart.org/art/1989.319)
+- Joseon buncheong fish bottle, 1400s–1500s. [1962.153](https://clevelandart.org/art/1962.153)
+- Joseon peony and scroll bottle, 1400s. [1990.14](https://clevelandart.org/art/1990.14)
+- Byzantine deep plate, 1100s. [1967.139](https://clevelandart.org/art/1967.139)
+- Crescent gold earring, 1000–1100. [1946.493](https://clevelandart.org/art/1946.493)
+- Portrait plate from Faenza, c. 1525–30. [1923.1087](https://clevelandart.org/art/1923.1087)
+- Samadet faience plate, c. 1770. [1983.37](https://clevelandart.org/art/1983.37)
+- Sceaux Plate of Walnuts, c. 1770. [1983.50](https://clevelandart.org/art/1983.50)
+- Mennecy underglaze cup, c. 1737. [1964.506](https://clevelandart.org/art/1964.506)
+- Visigothic belt buckle, c. 525–560. [2001.119](https://clevelandart.org/art/2001.119)
+- Enamelled sugar tongs, 1887–96. [1966.500.10](https://clevelandart.org/art/1966.500.10)
+- Cloisonné-mounted belt, early 1700s. [1916.360](https://clevelandart.org/art/1916.360)
+- Roman millefiori glass bowl, 1–100 CE. [1919.10](https://clevelandart.org/art/1919.10)
+
+- The 23.1 cm featured Jiahu flute has seven holes and was made from crane-family wing bone. The museum records the 1987 find at Jiahu, Wuyang, Henan. Juzhong Zhang and colleagues reported on Jiahu instruments. The practice tube’s measured settings and sounds are original. [Henan Museum 7052472642044956672](https://english.chnmus.net/en/collection/details.html?id=7052472642044956672) · [Nature report](https://www.nature.com/articles/43865)
+- The Penn Museum dates B16665 from Ur to about 2300 BCE. An inscription names Enheduanna, daughter of Sargon. The other face carries a relief. The museum’s description of the two surfaces supplies the workbench evidence. [Penn Museum B16665](https://collections.penn.museum/collections/object/293415)
+- The National Museum dates the Laguna Copperplate Inscription to 900 CE. Postma’s preliminary reading names Angkatan, Bukah, Namwran and Kasumuran in the clearance. The practice docket uses the roles, record date and scope in original wording. [National Museum of the Philippines collection](https://www.nationalmuseum.gov.ph/our-collections/archaeology/national-cultural-treasures/) · [Ateneo de Manila University, Antoon Postma](https://archium.ateneo.edu/phstudies/vol40/iss2/3/)
+
+## The Second Imprint, City of Copies
+
+Each imprint starts from a single accession’s collection image. The fictional press changes the tonal threshold and shows the resulting ink coverage on paper. The photos are CC0. The scope slip beside each proof gives the particular thing a photograph or a one-ink copy leaves open. [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access)
+
+- Burma, present-day Myanmar, gold and ruby wristlet. [CMA 1916.440](https://clevelandart.org/art/1916.440)
+- Kashmir, patterned wool shawl and its size overall. [CMA 2008.215](https://clevelandart.org/art/2008.215)
+- Punjab, Kehar Singh’s painted account of spinning and weaving, attributed to probably Amritsar or Lahore. [CMA 1987.162](https://clevelandart.org/art/1987.162)
+- Bengal or Bangladesh, a sitar with one modern replacement string documented. [CMA 1918.346](https://clevelandart.org/art/1918.346)
+- Kandy, gold necklace named Siro Bo Maleya. [CMA 1944.66](https://clevelandart.org/art/1944.66)
+- Zhejiang, Guan ware brush rest with raised hills. [CMA 1957.42](https://clevelandart.org/art/1957.42)
+- Korea, tray made with lacquer over coiled paper. [CMA 1988.248](https://clevelandart.org/art/1988.248)
+- Kamakura-period Japan, wooden lacquer jar dated 1302. [CMA 1984.8](https://clevelandart.org/art/1984.8)
+- Cambodia, surviving half of a silk sampot. [CMA 1925.120](https://clevelandart.org/art/1925.120)
+- Central Java, batik slendang in cotton. [CMA 1917.31](https://clevelandart.org/art/1917.31)
+- North coast of Java, batik slendang in silk. [CMA 1929.136](https://clevelandart.org/art/1929.136)
+- Savu, selimut in ikat-dyed cotton. [CMA 1981.216](https://clevelandart.org/art/1981.216)
+- Lampung, ship cloth in cotton with supplementary weft. [CMA 1984.50](https://clevelandart.org/art/1984.50)
+- Palembang, wearing cloth brocaded with silk and metallic threads. [CMA 1955.307](https://clevelandart.org/art/1955.307)
+- Baekje, impressed earthenware jar body pictured with its separately catalogued lid. [CMA 1997.188.a](https://clevelandart.org/art/1997.188.a)
+- Goryeo, box and cover with inlaid design. [CMA 1916.1186](https://clevelandart.org/art/1916.1186)
+- Goryeo, spoon with a split fish-tail handle. [CMA 1917.349](https://clevelandart.org/art/1917.349)
+- Goryeo, bowl with fish and waves described in relief. [CMA 1918.445](https://clevelandart.org/art/1918.445)
+- Joseon, ink and colour landscape with separate painting and overall dimensions. [CMA 1915.216](https://clevelandart.org/art/1915.216)
+- Basilan, Yakan seputangan in cotton and silk. [CMA 1917.746](https://clevelandart.org/art/1917.746)
+- Ilocos Norte, Binakol textile fragment with an uncertain date. [CMA 1921.1596](https://clevelandart.org/art/1921.1596)
+- Vietnam, covered stoneware jar with blue and white decoration. [CMA 1998.285](https://clevelandart.org/art/1998.285)
+
+## Three checked records, City of Copies and Observatory Coast
+
+- The Shang oracle bone’s period attribution spans about 1600–1046 BCE. Its accession credit names Paul E. Manheim and 1967. Two separate documentary tabs carry these fields. The stand uses an original diagram with the historical marks omitted. [The Met 67.43.16](https://www.metmuseum.org/art/collection/search/60696)
+- Coréen 109 is the surviving second volume of the metal-type printing of the Buddhist Jikji, made at Heungdeok-sa, Cheongju, in 1377. The BnF records the complete 1378 woodblock version separately. The demonstration uses invented shapes and leaves the book text in the linked collection. [BnF Coréen 109](https://www.bnf.fr/fr/le-jikji-un-tresor-de-limprimerie) · [Gallica item](https://gallica.bnf.fr/ark:/12148/btv1b52513236c)
+- ‘Umar ibn Yusuf’s signed Rasulid astrolabe was made in Yemen and dated 690 AH or 1291 CE. The Met identifies the plates, original geographical inscriptions and later components. The two plate references and angles in the Bell Archive belong to the fictional practice dial. [The Met 91.1.535a–h](https://www.metmuseum.org/art/collection/search/444408)
+
 ## A Slip for Both Berths, Island of Models
 
 Twelve individual catalogue records anchor the Quiet Margin label loft. Each stand lets the player turn a short record and a second strip that preserves a limit on its use. The catalogue photographs are CC0. The stands, their strips, Nellin and the docks belong to the fictional campaign. [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access) · [Smithsonian Open Access](https://www.si.edu/openaccess)
@@ -260,6 +362,32 @@ Twelve individual catalogue records anchor the Quiet Margin label loft. Each sta
 - Scroll box attributed to Joseon Korea, 1800s. The 87 cm measurement is overall. [CMA 1990.15](https://clevelandart.org/art/1990.15)
 - Ofuke kiln tea bowl made in Nagoya, Japan, 1624–1641. The catalogue describes Vietnamese style separately from production place. [Smithsonian National Museum of Asian Art F1898.441](https://asia.si.edu/object/F1898.441/)
 
+## The Line That Stayed, Observatory Coast
+
+The three benches recreate period questions using fictional paper comparisons. The obtainable collection exhibits are tied to the exact public records. Their drawn images and all later Headland observation figures are original.
+
+- National Museums Scotland identifies T.1890.330 as the brass celestial globe made by Diya’ ad-Din Muhammad in Lahore in 1663, with silver star positions. The museum cites Emilie Savage-Smith’s figures 16 and 35 and catalogue entry no. 27. The study calls its item seamless, shows a plug and gives the Royal Scottish Museum number 1890-331. The current catalogue uses 330. The bench keeps both identifiers and leaves the link between them for further checking. [National Museums Scotland, record 204058](https://www.nms.ac.uk/collections/search/object?entry=204058) · [Savage-Smith, pp. 41, 84, 91 and 230–231](https://repository.si.edu/items/0d9cfccc-b8c0-44b6-a132-dd055de3aeaf)
+- Science Museum Group identifies 1901-51 as J. J. Thomson’s original apparatus from Cambridge around 1896, including the glass tube recorded as 1901-51/1. The catalogue dates the experiment series leading to the electron discovery to 1897. The table recreates the logic of a changed trace against a fixed reference using paper. [Science Museum Group, 1901-51](https://collection.sciencemuseumgroup.org.uk/objects/co5644/tube-used-in-the-discovery-of-the-electron-about-1896)
+- The National Register identifies Holmdel’s Horn Antenna as 89002457 and names A. B. Crawford. The nomination dates its construction for Project Echo to 1959 and the receiver work of Arno Penzias and Robert Wilson to 1964. The two observers’ July 1965 paper reported the excess separately from the proposed explanation by Robert Dicke’s Princeton team. The local and upper readers use separate fictional baselines. [National Register entry](https://npgallery.nps.gov/AssetDetail/NRIS/89002457) · [National Register nomination, sections 7–8](https://npgallery.nps.gov/GetAsset/c36a0110-7d0d-424f-b127-0f693e7cb9a6/) · [Measurement paper record](https://api.crossref.org/works/10.1086/148307)
+
+## A Lid with Two Names, Observatory Coast
+
+The Instrument Depot links 30 bounded accession records and two undated context records from the Scott Polar Research Institute. The branching loan, open tray and all experiments are fictional. Every display has an original schematic and the precise collection page. [Exact records](../src/content/survey-depot-records.json)
+
+- The linked Zeiss scope has the body number 16166 and a catalogue link from its companion case. The unrelated Swift microscope has the body number 16616 and a reused case with an older plate for 30607. The Swift entries give no making date or Antarctic trip, so the game leaves both open. [N: 115a](https://www.spri.cam.ac.uk/museum/catalogue/article/n115a/) · [N: 115b-i](https://www.spri.cam.ac.uk/museum/catalogue/article/n115b-i/) · [Z: 408a](https://www.spri.cam.ac.uk/museum/catalogue/article/z408a/) · [Z: 408j](https://www.spri.cam.ac.uk/museum/catalogue/article/z408j/)
+- The pressure table uses the difference between a dial and a time trace. The online records qualify the two instrument associations with Nimrod. The additional case and bottle records give no historical time-series values. [Y: 2019/44a](https://www.spri.cam.ac.uk/museum/catalogue/article/y2019.44a/) · [Y: 2019/44b](https://www.spri.cam.ac.uk/museum/catalogue/article/y2019.44b/) · [Y: 2024/6a](https://www.spri.cam.ac.uk/museum/catalogue/article/y2024.6a/) · [Y: 2024/6b](https://www.spri.cam.ac.uk/museum/catalogue/article/y2024.6b/)
+- Hal Lister’s box has six bundles. Six individual records give 7, 5, 21, 25, 21 and 18 slides, totalling 97 documented slides. The third accession gives the Instituto Antártico Argentino wrapper. The game keeps its location open and shows that the two groups of 21 have different accessions. [Collection box](https://www.spri.cam.ac.uk/museum/catalogue/article/y2022.9.1/) · [Institute wrapper](https://www.spri.cam.ac.uk/museum/catalogue/article/y2022.9.3/)
+- Other stations keep certification apart from use and recovery, an adapted 2013 product apart from earlier rations, and signal dispatch apart from reception. The Penola gauge and sample bottle cards keep one method’s evidence distinct from the other’s. [Heath case certificate](https://www.spri.cam.ac.uk/museum/catalogue/article/y2010.75b/) · [Later product packet](https://www.spri.cam.ac.uk/museum/catalogue/article/m2013.5/) · [Hut Point flag](https://www.spri.cam.ac.uk/museum/catalogue/article/n200/) · [Penola tide gauge](https://www.spri.cam.ac.uk/museum/catalogue/article/n781/)
+
+## A Window in the Record, Observatory Coast
+
+The shop keeps separate records for six objects. Its distant stud board, etched plate, harbour run and characters are fictional. Each case has an original pixel schematic based on the written catalogue.
+
+- Museo Galileo records telescope 2427 at 1,273 mm, about 1610, with 14× magnification and a field of 15 arcminutes. The separate 927 mm telescope 2428 has a nineteenth-century replacement eyepiece. The catalogue gives 21× and the same angular field for that instrument. The comparisons use the stated field and magnification without assigning any single surviving object to an astronomical observation. [Museo Galileo, 2427](https://catalogue.museogalileo.it/object/GalileosTelescope.html) · [Museo Galileo, 2428](https://catalogue.museogalileo.it/object/GalileosTelescope_n01.html)
+- Utrecht University Museum dates the small brass Leeuwenhoek microscope to possibly around 1700. Figure 1B of the published study identifies the instrument as UM-1 and reports 266× magnification. The teaching plate is a separate, manufactured object. [Utrecht University Museum, archived collection story](https://web.archive.org/web/20250427031023/https://umu.nl/collectie-verhaal/het-van-leeuwenhoek-microscoopje/) · [Cocquyt et al., Figure 1](https://pmc.ncbi.nlm.nih.gov/articles/PMC8121416/)
+- The Navy identifies the specific bathyscaphe *Trieste* that carried Jacques Piccard and Don Walsh to Challenger Deep on 23 January 1960. Its history names the vessel and gives its later museum placement. The record provides no museum inventory number for the vessel. NH 95258 is the separate drawing from the early 1980s that depicts the vessel’s configuration about 1963. An exterior profile leaves the window view during the dive open. [Naval History and Heritage Command, vessel history](https://web.archive.org/web/20230408213041/https://www.history.navy.mil/browse-by-topic/exploration-and-innovation/bathyscaph-trieste.html) · [NH 95258 drawing](https://web.archive.org/web/20220707161302/https://www.history.navy.mil/our-collections/photography/numerical-list-of-images/nhhc-series/nh-series/NH-95000/NH-95258.html)
+- The Smithsonian identifies A19700102000 as Apollo 11 Command Module 107, *Columbia*. The separate lunar module *Eagle* took Armstrong and Aldrin to the surface on 20 July. NASA dates launch to 16 July and splashdown to 24 July 1969. The game keeps *Columbia* and the lunar surface photograph used elsewhere as two objects with different roles. [Smithsonian National Air and Space Museum, A19700102000](https://airandspace.si.edu/collection-objects/command-module-apollo-11/nasm_A19700102000) · [NASA mission summary](https://www.nasa.gov/mission/apollo-11/)
+
 ## What Reached the Far Bench, Preserved Lives
 
 The Polar Store has 18 accession-specific cases. Antarctica is the setting of the documented visits and collections. Dates, people, retrievals and places stay with their own records. The practice shed, its nine-minute window and its deliveries are fictional. All drawings are original schematics based on written descriptions.
@@ -274,6 +402,14 @@ The Polar Store has 18 accession-specific cases. Antarctica is the setting of th
 ## A Light Between the Frames, the Nexus and City of Copies
 
 Twelve specific Cleveland impressions, drawings and album prints supply the two details for each simulated lantern arm. The gallery’s limited light, queues and reading stands belong to the campaign. The reproductions stay tied to their accession and to the museum’s description of the date, maker and medium. A public cut gives a visitor a starting point. A whole sheet can preserve the relationship between two parts of the image, its margin or its collaborators’ work. The dated catalogue remains available from either. [Objects and catalogue records](../src/content/lantern-weave-specimens.json)
+
+## The Ledger with No Name, the Nexus and Market of Measures
+
+The practice boards use separate tests for a repeated number pattern, a relation between triangle side lengths, and the empty place in a written number. Players carry a checked method or a bounded source slip to a reader. Equipping the collected object opens a different exercise in the Archive Hall.
+
+- The Royal Belgian Institute of Natural Sciences identifies the specific Ishango bone found on the Congolese shore of Lake Edward in 1950. It dates the specimen to nearly 20,000 years ago and records paired groups of three and six, four and eight, and five and ten. Those pairs give the trial a stable comparison, while the marks’ intended use remains open. [Institute of Natural Sciences](https://www.naturalsciences.be/en/museum/exhibitions-activities/exhibitions/250-years-of-natural-sciences/the-ishango-bone)
+- Columbia dates Plimpton Cuneiform 322 to approximately 1820–1762 BCE and attributes it to Larsa. The exhibit discusses both the right-triangle relationships and Eleanor Robson’s interpretation of the tablet’s use. The drawn workshop examples have their own lengths. [Exact Columbia item](https://online-exhibitions.library.columbia.edu/exhibits/show/jewels/item/10987) · [Exhibit commentary](https://online-exhibitions.library.columbia.edu/exhibits/show/jewels/themes/science/158)
+- Oxford discusses the dot used as a place marker in the Bakhshali manuscript and its separate dates for three samples of birch bark. Another study gives the calibrated ranges and examines what they can establish about the writing and manuscript’s assembly. [Oxford account](https://www.glam.ox.ac.uk/article/carbon-dating-finds-bakhshali-manuscript-contains-oldest-recorded-origins-symbol-zero) · [Plofker and colleagues](https://doi.org/10.18732/H2XT07)
 
 ## Chapter 15: Council of Inquiry
 

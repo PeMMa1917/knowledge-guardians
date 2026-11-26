@@ -2,6 +2,13 @@
   display: none;
 }
 
+.diary-source-list { margin-block-start: .75rem; }
+.diary-source-list summary { cursor: pointer; }
+.diary-references { list-style: none; padding-inline-start: 0; }
+.diary-references li { margin-block-end: .7rem; }
+.diary-reference-label { font-weight: 600; }
+.diary-citation { overflow-wrap: anywhere; }
+
 @page adventure-journal {
   size: A4;
   margin: 15mm;
@@ -58,4 +65,7 @@
   .adventure-print ul { margin: 0 0 2mm; }
   .adventure-print .print-details { color: #425855; font-size: 9.5pt; break-after: avoid-page; }
   .adventure-print .print-writing { white-space: pre-wrap; }
+  .adventure-print .diary-references li { break-inside: avoid-page; }
+  .adventure-print .diary-citation { padding-inline-start: .5in; text-indent: -.5in; line-height: 2; }
+  .adventure-print .diary-citation a { color: #184e4b; text-decoration: underline; }
 }

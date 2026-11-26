@@ -1,11 +1,17 @@
 /** Fictional coast. The weather records describe local game conditions. */
 import type { Condition } from '../domain/types';
 import { COAST_FILM_STANDS } from './filmCuts';
+import { WINDOW_HARBOUR_PROPS } from './windowShop';
+import { DEPOT_HARBOUR_PROPS } from './surveyDepot';
+import { ARCHIVE_GLOBE_REVISIT, FOLD_TUBE_REVISIT, HARBOUR_HORN_REVISIT, HEADLAND_REFERENCE } from './referenceStation';
 import { sceneProp } from './sceneProps';
 import type { Interactable, MapDef } from './types';
 import { COAST_VESPER_TRUST } from './vesperTrust';
 import { FOLD_DRAWER_CASES } from './drawerCases';
 import { ARCHIVE_WATER_LOOP } from './waterLoop';
+import { COAST_REFERENCE_PROOFS, HARBOUR_REFERENCE_PROOFS } from './referenceProofs';
+import { TIMBUKTU_ARCHIVE_PROPS, timbuktuReceiver } from './timbuktuManuscript';
+import { LEAVITT_ARCHIVE, LEAVITT_HEADLAND } from './leavittPlate';
 
 function sign(id: string, x: number, y: number, label: string, art: string, text: string,
   options: { flag?: string; visibleIf?: Condition } = {}): Interactable {
@@ -59,6 +65,11 @@ export const OBSERVATORY_HARBOUR: MapDef = {
   ],
   interactables: [
     ...COAST_FILM_STANDS,
+    ...WINDOW_HARBOUR_PROPS,
+    ...DEPOT_HARBOUR_PROPS,
+    ...HARBOUR_HORN_REVISIT,
+    ...HARBOUR_REFERENCE_PROOFS,
+    timbuktuReceiver('quay'),
     { id: 'field-stars', kind: 'fieldgame', game: 'stars', x: 12, y: 9, w: 1, h: 1, label: 'Anwen\'s quadrant on the sea wall (Star Pictures)', art: 'coast.signal' },
     { id: 'cross-tide-engine', kind: 'fieldgame', game: 'cross-tide-engine', x: 16, y: 6, w: 1, h: 1, label: 'the brass tide engine on the harbour wall (a crossing)', art: 'coast.signal' },
     { id: 'coast-headland-path', kind: 'door', x: 13, y: 4, w: 1, h: 1, label: 'the steps up to the observatory',
@@ -141,7 +152,9 @@ export const OBSERVATORY_STATION: MapDef = {
     { stamp: 'barrel', x: 8, y: 10 }, { stamp: 'barrel', x: 17, y: 11 },
   ],
   interactables: [
+    ...LEAVITT_HEADLAND,
     ...COAST_VESPER_TRUST,
+    ...HEADLAND_REFERENCE,
     { id: 'coast-headland-return', kind: 'door', x: 11, y: 15, w: 1, h: 1, label: 'the steps down to Slate Harbour',
       art: 'coast.waypost', to: { map: 'observatory.harbour', x: 13, y: 6 } },
     { id: 'coast-fold-path', kind: 'door', x: 3, y: 9, w: 1, h: 1, label: 'the track to Marl Fold',
@@ -163,6 +176,7 @@ export const OBSERVATORY_STATION: MapDef = {
     sign('coast-station-recheck', 20, 9, 'the headland’s next reading', 'coast.gauge',
       'Two finger-widths at the headland. Same gauge, same interval, one bell later. No second quay reading has reached the station.',
       { flag: 'coast.gauge.recheck', visibleIf: { flagSet: 'coast.notice' } }),
+    timbuktuReceiver('headland'),
     { id: 'coast-shadow-board', kind: 'fieldgame', game: 'coast-shadow-board', x: 6, y: 10, w: 1, h: 1,
       label: 'Neri’s two-lamp trial board', art: 'coast.clear-frame', walkThrough: true, visibleIf: opticalCase },
     archiveScene('coast-optics-handover', 7, 10, 'Neri’s unfilled shadow handover', 'preserved.slip', 'coast.optics.post',
@@ -210,6 +224,7 @@ export const OBSERVATORY_INLAND: MapDef = {
   ],
   interactables: [
     ...FOLD_DRAWER_CASES,
+    ...FOLD_TUBE_REVISIT,
     { id: 'coast-fold-return', kind: 'door', x: 23, y: 13, w: 1, h: 1, label: 'the track back to Headland Station',
       art: 'coast.waypost', to: { map: 'observatory.station', x: 4, y: 9 } },
     sign('coast-fold-stair-log', 5, 8, 'the porter’s dry-day tally', 'coast.runner',
@@ -257,7 +272,8 @@ export const OBSERVATORY_ARCHIVE: MapDef = {
   id: 'observatory.archive', name: 'Observatory Coast: the Bell Archive', world: 'WORLD-05',
   width: archiveWidth, height: archiveHeight, music: 'music.archive', ambience: 'archive',
   background: 0x223645, floor: archiveFloor,
-  blocks: [[1, 0, archiveWidth - 2, 3]], npcs: [], zones: [], spawn: { x: 12, y: 12 },
+  blocks: [[1, 0, archiveWidth - 2, 3]], zones: [], spawn: { x: 12, y: 12 },
+  npcs: [{ id: 'coast-olwen-veer', x: 6, y: 13, facing: 'right' }],
   stamps: [
     { stamp: 'bookshelf', x: 3, y: 2 }, { stamp: 'bookshelf', x: 17, y: 2 },
     { stamp: 'long-table', x: 6, y: 8 }, { stamp: 'long-table', x: 16, y: 9 },
@@ -265,7 +281,11 @@ export const OBSERVATORY_ARCHIVE: MapDef = {
     { stamp: 'crates', x: 19, y: 5 }, { stamp: 'rug-green', x: 11, y: 10 },
   ],
   interactables: [
+    ...LEAVITT_ARCHIVE,
     ...ARCHIVE_WATER_LOOP,
+    ...ARCHIVE_GLOBE_REVISIT,
+    ...COAST_REFERENCE_PROOFS,
+    ...TIMBUKTU_ARCHIVE_PROPS,
     { id: 'coast-archive-return', kind: 'door', x: 12, y: 14, w: 1, h: 1, label: 'the steps back to Slate Harbour',
       art: 'coast.waypost', to: { map: 'observatory.harbour', x: 25, y: 7 } },
     archiveScene('coast-archive-sleeve', 4, 6, 'the forecast sleeve', 'preserved.folder', 'coast.archive.sleeve'),

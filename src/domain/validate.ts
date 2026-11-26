@@ -13,6 +13,7 @@ import { chordFigure, panes, runSorter, runSurvey, sightBlock, translateLine, ju
 import { openCombinations } from './lock';
 import { BLOOM, FINK, FRAMEWORK, SOLO } from './learningLevels';
 import { STORY_MOTIFS } from './storyMotifs';
+import { hasSpecimen, specimenToolId } from './specimenGear';
 
 const MAX_TEXT = 2000;
 const CLAIM_KINDS = ['observation', 'interpretation', 'value', 'simulation'];
@@ -113,6 +114,9 @@ export function validateContent(pack: ContentPack): string[] {
       }
       if (!e.sources.includes(source)) p.push(`exhibit ${e.id}: specimen source must be listed with the exhibit`);
       if (!objectives.has(objective)) p.push(`exhibit ${e.id}: unknown specimen use ${objective}`);
+      for (const person of e.specimen.people ?? []) {
+        if (!person.name.trim() || !person.role.trim() || !sources.has(person.source)) p.push(`exhibit ${e.id}: incomplete or unsourced person ${person.name}`);
+      }
       if (pixelAsset && !/^specimens\/[a-z0-9][a-z0-9._-]*\.(png|webp|jpg)$/.test(pixelAsset)) {
         p.push(`exhibit ${e.id}: specimen image must be a local asset`);
       }
@@ -358,9 +362,10 @@ export function validateContent(pack: ContentPack): string[] {
       if (z.tiles.length <= z.answer.length) p.push(`puzzle ${z.id}: needs at least one tile to leave out`);
     }
   });
+  const specimenTools = new Set(pack.exhibits.filter(hasSpecimen).map(({ specimen }) => specimenToolId(specimen.key)));
   (pack.keepsakes ?? []).forEach((k) => {
     dup('keepsake', k.id); cond(k.if, `keepsake ${k.id}`); text(`keepsake ${k.id}`, k.text);
-    if (!/^[a-z0-9-]{1,24}$/.test(k.id)) p.push(`keepsake ${k.id}: id must be short lowercase words with hyphens`);
+    if (!specimenTools.has(k.id) && !/^[a-z0-9-]{1,24}$/.test(k.id)) p.push(`keepsake ${k.id}: id must be short lowercase words with hyphens`);
     if (k.equip !== undefined) {
       text(`field tool ${k.id} method`, k.equip?.method);
       text(`field tool ${k.id} hint`, k.equip?.hint);

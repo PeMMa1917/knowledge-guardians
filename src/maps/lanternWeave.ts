@@ -1,4 +1,5 @@
 import { LANTERN_LEAVES, LANTERN_WEAVE, LANTERN_WEAVE_OPEN } from '../content/lanternWeave';
+import { NUMBER_LEAF_DOOR } from './numberLeaves';
 import type { Interactable, MapDef } from './types';
 
 export const NEXUS_LANTERN_WEAVE: Interactable[] = [
@@ -41,6 +42,7 @@ export const HALF_LIGHT_ROOM: MapDef = {
   ],
   zones: [],
   interactables: [
+    NUMBER_LEAF_DOOR,
     ...LANTERN_LEAVES.flatMap((record, i): Interactable[] => {
       const x = 2 + (i % 6) * 4;
       const y = i < 6 ? 5 : 11;

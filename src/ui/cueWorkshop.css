@@ -1,0 +1,17 @@
+.cue-timing-line {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  list-style: none;
+  padding: 0;
+  gap: .2rem;
+  margin: .5rem 0;
+}
+.cue-timing-line li {
+  display: grid;
+  text-align: center;
+  border: 1px solid currentColor;
+  padding-block: .18rem;
+}
+.cue-timing-line .cue-playing { outline: .2rem solid currentColor; outline-offset: -.2rem; }
+.cue-workshop button { white-space: normal; }
+.cue-report:empty { margin: 0; }

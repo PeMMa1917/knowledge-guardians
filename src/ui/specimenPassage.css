@@ -1,0 +1,8 @@
+.specimen-passage .passage-leaves {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: .6rem;
+  margin-block-end: .7rem;
+}
+.specimen-passage .passage-status:empty { margin: 0; }
+.specimen-passage button { white-space: normal; }

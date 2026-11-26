@@ -11,6 +11,7 @@ try {
   const { MAPS } = await server.ssrLoadModule('/src/maps/index.ts');
   const { validateContent } = await server.ssrLoadModule('/src/domain/validate.ts');
   const { artKeys, BIG_ART } = await server.ssrLoadModule('/src/ui/illustrations.ts');
+  const { specimenToolId } = await server.ssrLoadModule('/src/domain/specimenGear.ts');
   const pack = buildPack();
   const errors = validateContent(pack);
   const authoredArt = new Set(artKeys());
@@ -37,6 +38,12 @@ try {
     if (specimen.pixelAsset) {
       if (!manifest.files[picture] || !existsSync(`public/assets/${picture}`)) errors.push(`${specimen.key}: missing licensed local image ${picture}`);
     } else if (!authoredArt.has(picture)) errors.push(`${specimen.key}: missing original illustration ${picture}`);
+    if (specimen.revisit) {
+      const revisit = MAPS[specimen.revisit.map]?.interactables.find((prop) => prop.id === specimen.revisit.prop);
+      if (!revisit || !JSON.stringify(revisit.visibleIf ?? {}).includes(specimenToolId(specimen.key))) {
+        errors.push(`${specimen.key}: missing equipped return interaction ${specimen.revisit.prop}`);
+      }
+    }
     return {
       ...specimen,
       exhibit: record.id,
@@ -55,6 +62,7 @@ try {
     console.log(JSON.stringify({ target: 750, unique: unique.size, registered, legacyExhibits: legacy.map(({ id, name }) => ({ id, name })), errors }, null, 2));
   } else {
     console.log(`${unique.size} unique exact specimens registered and ${legacy.length} documented exhibits awaiting exact identity review.`);
+    console.log(`${registered.filter(({ revisit }) => revisit).length} have a distinct equipped return interaction. Other collected objects open their return route from the Nexus.`);
     console.log(`${Math.max(0, 750 - unique.size)} open places in the 750-specimen target.`);
     for (const error of errors) console.error(error);
   }

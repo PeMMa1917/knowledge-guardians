@@ -1,0 +1,37 @@
+{
+  "museo-galileo:2427": [
+    { "name": "Galileo Galilei", "role": "Maker and observing instrument designer", "detail": "The Museo Galileo gives his 1,273 mm telescope its own figures of 14× and 15 arcminutes. The player checks both a view’s detail and the area it covers.", "source": "HIS-WINDOW-2427" }
+  ],
+  "museo-galileo:2428": [
+    { "name": "Galileo Galilei", "role": "Maker of the original telescope", "detail": "The original eyepiece was lost. The museum gives the current telescope’s stated optical properties with a later replacement eyepiece.", "source": "HIS-WINDOW-2428" }
+  ],
+  "umu:um-1": [
+    { "name": "Antonie van Leeuwenhoek", "role": "Maker of the single-lens microscope", "detail": "The museum identifies this brass instrument as possibly a later model around 1700. The bench uses a manufactured line plate so the range of earlier observations stays open.", "source": "HIS-WINDOW-UMU" },
+    { "name": "Tiemen Cocquyt", "role": "Co-author of the 2021 instrument study", "detail": "The study identifies UM-1 in its Figure 1 caption and records the preserved instrument’s 266× magnification.", "source": "HIS-WINDOW-UM1" }
+  ],
+  "us-navy:project-nekton-trieste-1960": [
+    { "name": "Jacques Piccard", "role": "Participant in the 1960 Challenger Deep dive", "detail": "The Navy records Piccard reaching Challenger Deep aboard this specific Trieste on 23 January 1960.", "source": "HIS-WINDOW-TRIESTE" },
+    { "name": "Don Walsh", "role": "U.S. Navy lieutenant and participant in the dive", "detail": "The Navy dates Walsh’s Project Nekton dive in the vessel. The dated journey and the view from the vessel have different sources.", "source": "HIS-WINDOW-TRIESTE" }
+  ],
+  "nhhc:nh-95258": [
+    { "name": "Don Walsh", "role": "Participant in the earlier 1960 dive", "detail": "Walsh’s 1960 trip has its own record. The related profile was drawn in the early 1980s and shows the configuration of about 1963.", "source": "HIS-WINDOW-TRIESTE" }
+  ],
+  "nasm:a19700102000": [
+    { "name": "Michael Collins", "role": "Command module pilot", "detail": "Collins remained aboard Columbia in lunar orbit while Eagle took the other two crew members to the surface.", "source": "HIS-WINDOW-NASA" },
+    { "name": "Neil Armstrong", "role": "Apollo 11 commander", "detail": "Armstrong travelled with the mission crew in Columbia and descended to the lunar surface with Aldrin in Eagle.", "source": "HIS-WINDOW-COLUMBIA" },
+    { "name": "Buzz Aldrin", "role": "Lunar module pilot", "detail": "Aldrin travelled in Columbia on the mission and descended with Armstrong in the separate Eagle spacecraft.", "source": "HIS-WINDOW-COLUMBIA" }
+  ],
+  "nms:t.1890.330": [
+    { "name": "Diya’ ad-Din Muhammad", "role": "Lahore globe maker", "detail": "National Museums Scotland records brass with silver star positions on the celestial globe he made in 1663. In the bench trial the player keeps a silver reference mark fixed.", "source": "HIS-REFSTATION-GLOBE" },
+    { "name": "Emilie Savage-Smith", "role": "Historian and author of the later globe study", "detail": "The study’s numbered entry and index give 1890-331 for its no. 27. The museum’s current accession field gives T.1890.330, leaving their exact relationship open.", "source": "HIS-REFSTATION-GLOBE-STUDY" }
+  ],
+  "smg:1901-51": [
+    { "name": "J. J. Thomson", "role": "Cambridge physicist and experimenter", "detail": "His series of cathode-ray investigations used apparatus including this original tube. The safe table trial asks which mark moved with a changed condition.", "source": "HIS-REFSTATION-THOMSON" }
+  ],
+  "nps:89002457": [
+    { "name": "A. B. Crawford", "role": "Architect named by the National Register", "detail": "The nomination connects Crawford to the Holmdel structure. It gives Project Echo as the original purpose.", "source": "HIS-REFSTATION-HORN-NOM" },
+    { "name": "Arno Penzias", "role": "Bell Labs observer and co-author", "detail": "Penzias and Wilson published their measurement of excess antenna temperature in July 1965.", "source": "HIS-REFSTATION-HORN-PAPER" },
+    { "name": "Robert Wilson", "role": "Bell Labs observer and co-author", "detail": "Wilson and Penzias checked the receiver and compared directions while tracking a persistent excess.", "source": "HIS-REFSTATION-HORN-NOM" },
+    { "name": "Robert Dicke", "role": "Princeton investigator on the companion explanation", "detail": "Dicke’s team supplied a separately argued interpretation of the observed excess.", "source": "HIS-REFSTATION-HORN-NOM" }
+  ]
+}

@@ -7,6 +7,17 @@
  * Each picture has a text description in the content data (altText).
  */
 import { POLAR_ART } from './polarStoreArt';
+import { WINDOW_ART } from './windowShopArt';
+import { READING_WORKS_ART } from './readingWorksArt';
+import { STORY_ARCHIVE_ART, STORY_ARCHIVE_LARGE_ART } from './storyArchiveArt';
+import { NUMBER_LEAF_ART } from './numberLeafArt';
+import { DEPOT_ART } from './surveyDepotArt';
+import { REFERENCE_STATION_ART } from './referenceStationArt';
+import { MODEL_RECORD_ART } from './modelRecordArt';
+import { REFERENCE_PROOF_ART } from './referenceProofArt';
+import { MAKER_ROOM_ART } from './makerRoomArt';
+import { PASSAGE_DOCUMENTARY_ART, PASSAGE_DOCUMENTARY_LARGE_ART } from './specimenPassageArt';
+import { TURNING_ART } from './turningTableArt';
 
 type Ctx = CanvasRenderingContext2D;
 
@@ -2838,9 +2849,75 @@ DRAW['big.drawer-cases'] = [40, 28, (g) => {
 }];
 
 /** Map exhibit art keys (small) to large inspection pictures. */
-Object.assign(DRAW, POLAR_ART);
+Object.assign(DRAW, POLAR_ART, WINDOW_ART, READING_WORKS_ART, STORY_ARCHIVE_ART, NUMBER_LEAF_ART, DEPOT_ART, REFERENCE_STATION_ART, MODEL_RECORD_ART);
+Object.assign(DRAW, REFERENCE_PROOF_ART, PASSAGE_DOCUMENTARY_ART);
+Object.assign(DRAW, MAKER_ROOM_ART);
+
+// A proportioned conservation diagram. Pale divisions show folds, not glyphs or folio order.
+DRAW['register.codex-fold'] = [16, 24, (g) => {
+  pedestal(g, 1, 15, 14);
+  R(g, '#46636f', 2, 5, 12, 10);
+  R(g, '#d6bc8c', 3, 6, 10, 3); R(g, '#e9d3a7', 3, 11, 9, 3);
+  for (const x of [4, 6, 8, 10]) { R(g, '#a58c6b', x, 6, 1, 3); R(g, '#b39c79', x, 11, 1, 3); }
+}];
+DRAW['big.register.codex-fold'] = [120, 72, (g) => {
+  R(g, '#273a45', 0, 0, 120, 72);
+  R(g, '#172832', 7, 8, 106, 19); R(g, '#d9bf90', 12, 13, 96, 8);
+  for (let fold = 1; fold < 39; fold++) R(g, '#a38562', 12 + Math.round(96 * fold / 39), 13, 1, 8);
+  R(g, '#243847', 12, 43, 52, 19); R(g, '#91afab', 13, 42, 51, 15); R(g, '#cfb588', 14, 47, 49, 6);
+  R(g, '#243847', 66, 43, 49, 19); R(g, '#91afab', 66, 42, 49, 15); R(g, '#e4cca0', 67, 47, 47, 6);
+  R(g, '#b9cdce', 12, 35, 65, 1); R(g, '#b9cdce', 12, 33, 1, 5); R(g, '#b9cdce', 76, 33, 1, 5);
+}];
+
+Object.assign(DRAW, TURNING_ART);
+
+// A closed catalogue folder beside two fictional skyline slips.
+DRAW['timbuktu.horizon-case'] = [16, 24, (g) => {
+  pedestal(g, 1, 14, 14);
+  R(g, '#776052', 2, 4, 12, 10); R(g, '#bc8f63', 2, 3, 12, 9);
+  R(g, '#f0cf9f', 3, 4, 10, 1); R(g, '#6fa9b1', 9, 8, 4, 3);
+}];
+DRAW['big.timbuktu.horizon-case'] = [64, 40, (g) => {
+  R(g, '#213549', 0, 0, 64, 40); R(g, '#385264', 1, 1, 62, 37);
+  R(g, '#293842', 6, 30, 51, 3);
+  R(g, '#71523f', 8, 6, 24, 25); R(g, '#b6865e', 8, 5, 24, 24);
+  R(g, '#edc992', 9, 6, 22, 1); R(g, '#d4aa79', 10, 24, 18, 2);
+  R(g, '#e9d1ab', 38, 7, 18, 10); R(g, '#e9d1ab', 40, 19, 18, 10);
+  R(g, '#456776', 40, 11, 14, 2); R(g, '#456776', 42, 24, 14, 2);
+  R(g, '#a06748', 49, 9, 2, 2); R(g, '#a06748', 47, 22, 2, 2);
+}];
+
+// An original drawing of the museum mount based on its catalogue description.
+DRAW['callboard.gage-mount'] = [16, 24, (g) => {
+  pedestal(g, 1, 15, 14);
+  R(g, '#6c4738', 2, 12, 12, 2); R(g, '#c2a274', 3, 11, 2, 2); R(g, '#c2a274', 11, 11, 2, 2);
+  R(g, '#738189', 2, 9, 12, 2); R(g, '#a6a9a1', 2, 9, 12, 1); R(g, '#d7d3a4', 6, 9, 3, 1);
+}];
+DRAW['big.callboard.gage-mount'] = [96, 64, (g) => {
+  R(g, '#283c45', 0, 0, 96, 64);
+  R(g, '#412e2a', 9, 41, 78, 10); R(g, '#795744', 11, 39, 74, 8);
+  R(g, '#ae8c60', 20, 34, 7, 8); R(g, '#b29a71', 70, 34, 7, 8);
+  R(g, '#4e5a62', 13, 26, 68, 8); R(g, '#7a8990', 13, 26, 68, 3);
+  R(g, '#6f7c84', 6, 29, 9, 3); R(g, '#a4aaa8', 7, 28, 8, 1);
+  R(g, '#c1baa0', 34, 28, 28, 4); R(g, '#d1c7ab', 35, 28, 27, 1);
+  R(g, '#daca9a', 56, 48, 23, 5); R(g, '#9f876e', 58, 50, 15, 1);
+}];
 
 export const BIG_ART: Record<string, string> = {
+  'callboard.gage-mount': 'big.callboard.gage-mount',
+  'maker-exact-jiahu': 'maker-exact-jiahu', 'maker-exact-disk': 'maker-exact-disk',
+  'maker-exact-laguna': 'maker-exact-laguna',
+  'timbuktu.horizon-case': 'big.timbuktu.horizon-case',
+  'turning.kunit-case': 'big.turning.kunit-case',
+  ...PASSAGE_DOCUMENTARY_LARGE_ART,
+  'window.case.trieste': 'window.case.trieste',
+  'reading-works.braille': 'reading-works.braille',
+  'depot.case.micro': 'depot.case.micro',
+  'depot.case.micro-case': 'depot.case.micro-case',
+  ...STORY_ARCHIVE_LARGE_ART,
+  'reference-bone-tabs': 'reference-bone-tabs', 'reference-jikji-type': 'reference-jikji-type',
+  'reference-rasulid-dial': 'reference-rasulid-dial',
+  'register.codex-fold': 'big.register.codex-fold',
   'water-loop.jewel': 'water-loop.jewel',
   'drawer-cases': 'big.drawer-cases',
   'market.note-mount': 'market.note-mount',
