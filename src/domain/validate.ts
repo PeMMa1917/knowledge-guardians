@@ -364,7 +364,12 @@ export function validateContent(pack: ContentPack): string[] {
         if (could && c.heard) p.push(`puzzle ${z.id} ${w.id} claim ${i + 1}: can be seen, so remove 'heard'`);
       }));
       if (!seen || !unseen) p.push(`puzzle ${z.id}: needs claims that were seen and claims that were not`);
-      if (z.reports.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair report`);
+      const supported = z.reports.filter((report) => report.honest);
+      if (!supported.length) p.push(`puzzle ${z.id}: needs a supported report`);
+      if (supported.length > 1 && (supported.some((report) => !report.delivery)
+        || new Set(supported.map((report) => report.delivery)).size !== supported.length)) {
+        p.push(`puzzle ${z.id}: each supported report needs its own delivery`);
+      }
     }
     else if (z.type === 'balance') z.rounds.forEach((r, i) => {
       // Every round must balance with the trusted weights alone.
