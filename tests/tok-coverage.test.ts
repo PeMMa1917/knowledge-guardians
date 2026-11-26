@@ -763,8 +763,9 @@ function nileDispatch(lead: NileFirstLead = 'workers', mapStop?: 'tilt-tray' | '
   return route;
 }
 
-function preservedLives(): Route {
+function preservedLives(scale?: 'floor' | 'file'): Route {
   const route = new Route();
+  const extra = scale ? 5 : 0;
   const d = route.driver;
   // Independent Chapter 3 session. The previous chapter's packet already returned.
   d.s.inventory['tool.date-lens'] = 1;
@@ -787,33 +788,56 @@ function preservedLives(): Route {
     d.run({ type: 'BuildLabel', kit: 'preserved-name', subject: 'catalogue', criterion: 'custody', limit: 'gap' });
     expect(d.done('preserved.royal')).toBe(true);
   });
-  route.at(23, 'Compare the sites and conditions before drawing conclusions about burial practice', ['culture', 'explanation', 'objectivity', 'methods-and-tools'], (d) => {
+  if (scale) {
+    route.at(18, 'Check Odile’s equal arrow spacing against the two practice pegs from one zero', [
+      'evidence', 'certainty', 'objectivity', 'justification', 'scope', 'methods-and-tools', 'explanation',
+    ], (d) => {
+      walkScene(d, 'preserved-scale-board', 'preserved.scale.draft', 'Set zero at the bracket');
+      expect(d.s.flags['preserved.scale.draft']).toBe(true);
+      expect(readSign(d, 'preserved-scale-near')).toContain('two paving strips');
+      expect(d.done('preserved.scale.compare')).toBe(false);
+      expect(readSign(d, 'preserved-scale-far')).toContain('six paving strips');
+      expect(d.done('preserved.scale.compare')).toBe(true);
+    });
+    route.at(20, 'Leave a measured floor guide or mark the next recorded place, then check the reader’s action', [
+      'interpretation', 'perspective', 'responsibility', 'values', 'scope', 'perspectives',
+    ], (d) => {
+      walkScene(d, 'preserved-scale-board', 'preserved.scale.choose', scale === 'floor' ? 'Clip a measured floor guide' : 'File a');
+      expect(d.s.flags['preserved.scale.outcome']).toBe(scale);
+      expect(d.done('preserved.scale.receive')).toBe(false);
+      const opposite = MAPS[d.s.mapId].interactables.find(({ id }) => id === `preserved-scale-${scale === 'floor' ? 'file' : 'floor'}`)!;
+      expect(check(opposite.visibleIf, d.s)).toBe(false);
+      expect(readSign(d, `preserved-scale-${scale}`)).toContain(scale === 'floor' ? 'loads the nearer parcel first' : 'leaves the distance blank');
+      expect(d.done('preserved.scale.receive')).toBe(true);
+    });
+  }
+  route.at(23 + extra, 'Compare the sites and conditions before drawing conclusions about burial practice', ['culture', 'explanation', 'objectivity', 'methods-and-tools'], (d) => {
     useDoor(d, 'preserved-royal-back');
     useDoor(d, 'preserved-door-coast');
     for (const exhibit of ['OBJ-PRES-CHIN-SITES', 'OBJ-PRES-CHIN-CONTEXT']) d.run({ type: 'InspectExhibit', exhibit });
     for (const node of ['site', 'conditions', 'context']) d.run({ type: 'FollowThread', thread: 'preserved-coast', node });
     expect(d.done('preserved.coast')).toBe(true);
   });
-  route.at(25, 'Put the sites map first for a reader trying to find the place', ['perspective', 'perspectives'], (d) => {
+  route.at(25 + extra, 'Put the sites map first for a reader trying to find the place', ['perspective', 'perspectives'], (d) => {
     d.talk('preserved-coast-keeper', 'site map uppermost');
     expect(d.s.flags['preserved.coastLead']).toBe('map');
   });
-  route.at(29, 'Publish a comparison while carrying the limits of each source into the public display', ['values', 'responsibility', 'ethics', 'scope'], (d) => {
+  route.at(29 + extra, 'Publish a comparison while carrying the limits of each source into the public display', ['values', 'responsibility', 'ethics', 'scope'], (d) => {
     useDoor(d, 'preserved-coast-back');
     d.talk('preserved-registrar', 'comparison slip');
     expect(d.s.flags['preserved.display']).toBe('paired');
   });
-  route.at(37, 'Answer visitors who took the comparison to mean a shared history by clipping references to each record', ['interpretation', 'power', 'responsibility', 'perspectives', 'ethics'], (d) => {
+  route.at(37 + extra, 'Answer visitors who took the comparison to mean a shared history by clipping references to each record', ['interpretation', 'power', 'responsibility', 'perspectives', 'ethics'], (d) => {
     useDoor(d, 'preserved-door-inquiry');
     d.talk('preserved-inquiry-keeper', 'Clip the limits');
     expect(d.done('preserved.answer')).toBe(true);
   });
-  route.at(43, 'Check the excavation journal, later account and workforce record side by side', ['evidence', 'certainty', 'methods-and-tools'], (d) => {
+  route.at(43 + extra, 'Check the excavation journal, later account and workforce record side by side', ['evidence', 'certainty', 'methods-and-tools'], (d) => {
     for (const exhibit of ['OBJ-PRES-TUT-JOURNAL', 'OBJ-PRES-TUT-NOTE', 'OBJ-PRES-TUT-WORKFORCE']) d.run({ type: 'InspectExhibit', exhibit });
     for (const exhibit of ['OBJ-PRES-TUT-JOURNAL', 'OBJ-PRES-TUT-NOTE']) d.run({ type: 'UseLens', exhibit });
     expect(d.done('preserved.proof.checked')).toBe(true);
   });
-  route.at(47, 'Give the named foremen space on the display while leaving other names open', ['power', 'perspective', 'responsibility', 'ethics'], (d) => {
+  route.at(47 + extra, 'Give the named foremen space on the display while leaving other names open', ['power', 'perspective', 'responsibility', 'ethics'], (d) => {
     useProp('preserved.tut.request', 'names')(d);
     expect(d.done('preserved.proof.hung')).toBe(true);
   });
@@ -2092,6 +2116,8 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Nile Royal Records route with the Tilt Tray stop', end: 57, play: () => nileDispatch('royal-seal', 'tilt-tray') },
     { name: 'Nile first visit with the Map Room sketch', end: 56, play: () => nileDispatch('workers', 'wayfinding') },
     { name: 'Preserved Lives from a prepared Chapter 2 save', end: 50, play: preservedLives },
+    { name: 'Preserved Lives with the measured floor guide', end: 55, play: () => preservedLives('floor') },
+    { name: 'Preserved Lives with the next recorded place', end: 55, play: () => preservedLives('file') },
     { name: 'Observatory Coast from a prepared Chapter 3 save', end: 50, play: observatoryCoast },
     { name: 'Observatory Coast with the quay bell slip', end: 52, play: () => observatoryCoast('bell-slip') },
     { name: 'Observatory Coast with the menders’ frame and lookout’s check', end: 54, play: () => observatoryCoast('clear-terms') },
@@ -2131,6 +2157,9 @@ describe('rolling TOK coverage audit', () => {
       const completions = route.encounters.flatMap(({ minute, action, completed }) => completed.length
         ? completed.map((id) => ({ id, minute, ...tags.get(id) })) : [{ id: action, minute }]);
       const { firstHour, wholeRoute, rolling } = auditCourseFloor(end, completions);
+      if (name === 'Preserved Lives with the measured floor guide' || name === 'Preserved Lives with the next recorded place') {
+        expect(rolling.find(({ width }) => width === 30)?.gaps.some(({ from }) => from === 30)).toBe(false);
+      }
       console.log('TOK floor ' + JSON.stringify({ route: name, estimatedMinutes: end, firstTraceHour: firstHour,
         engineObjectives: route.encounters.reduce((total, { completed }) => total + completed.length, 0),
         marksWithoutObjective: route.encounters.filter(({ completed }) => !completed.length).length,

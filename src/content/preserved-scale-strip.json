@@ -1,0 +1,375 @@
+{
+ "dialogue": [
+  {
+   "id": "preserved.scale.board",
+   "text": "Two equal arrows join the burial, later cache and museum catalogue on Odile’s practice copy. A carrier has taken “next” to mean the nearby stand. Odile lays a floor ruler by the two practice pegs.",
+   "options": [
+    {
+     "text": "Copy the equal spacing onto the carrier’s route card.",
+     "next": "preserved.scale.draft",
+     "if": {
+      "all": [
+       {
+        "flag": "thread.preserved-royal.catalogue",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "preserved.scale.outcome"
+        }
+       },
+       {
+        "not": {
+         "flag": "preserved.scale.draft",
+         "eq": true
+        }
+       },
+       {
+        "not": {
+         "flag": "preserved.scale.open",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.scale.draft",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Set zero at the bracket and check both pegs.",
+     "next": "preserved.scale.set",
+     "if": {
+      "all": [
+       {
+        "flag": "thread.preserved-royal.catalogue",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "preserved.scale.outcome"
+        }
+       },
+       {
+        "not": {
+         "flag": "preserved.scale.open",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.scale.open",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Put the two floor readings beside the custody entry.",
+     "next": "preserved.scale.choose",
+     "if": {
+      "all": [
+       {
+        "not": {
+         "flagSet": "preserved.scale.outcome"
+        }
+       },
+       {
+        "objective": "preserved.scale.compare"
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the floor ruler here."
+    }
+   ],
+   "historicalLabel": "fictional-world",
+   "speaker": "narrator"
+  },
+  {
+   "id": "preserved.scale.draft",
+   "text": "The first peg fits the copied arrow. Odile reaches toward the farther peg. Its notch misses the second mark. She sets down the route card before the carrier leaves. The two arrows still show which entry comes next.",
+   "options": [
+    {
+     "text": "Set zero at the bracket and check both pegs.",
+     "next": "preserved.scale.set",
+     "if": {
+      "flag": "thread.preserved-royal.catalogue",
+      "eq": true
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.scale.open",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the draft on the bench."
+    }
+   ],
+   "historicalLabel": "fictional-world",
+   "speaker": "narrator"
+  },
+  {
+   "id": "preserved.scale.set",
+   "text": "The zero bracket is here. Check the brass peg two paving strips along and the blue peg farther down this same row. Count from the same bracket for each reading.",
+   "historicalLabel": "fictional-world",
+   "speaker": "preserved-royal-keeper"
+  },
+  {
+   "id": "preserved.scale.choose",
+   "text": "With zero at the bracket, the short run spans two paving strips and the long run spans six. Odile holds up the museum file. It gives KV 7 as the burial place and Deir el-Bahari as the later cache. The equal arrows can show the order of those entries. The file leaves travelling distance open.",
+   "options": [
+    {
+     "text": "Clip a measured floor guide to the carrier’s bag.",
+     "next": "preserved.scale.floor",
+     "if": {
+      "all": [
+       {
+        "not": {
+         "flagSet": "preserved.scale.outcome"
+        }
+       },
+       {
+        "objective": "preserved.scale.compare"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.scale.outcome",
+       "value": "floor"
+      }
+     ]
+    },
+    {
+     "text": "File a ‘next recorded place’ slip for the reader.",
+     "next": "preserved.scale.file",
+     "if": {
+      "all": [
+       {
+        "not": {
+         "flagSet": "preserved.scale.outcome"
+        }
+       },
+       {
+        "objective": "preserved.scale.compare"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.scale.outcome",
+       "value": "file"
+      }
+     ]
+    },
+    {
+     "text": "Leave both papers on the bench for now."
+    }
+   ],
+   "historicalLabel": "fictional-world",
+   "speaker": "narrator"
+  },
+  {
+   "id": "preserved.scale.floor",
+   "text": "Odile clips two and six paving strips to the practice guide. The burial and cache stay on the separate file. Check what the carrier does by the west bench.",
+   "historicalLabel": "fictional-world",
+   "speaker": "narrator"
+  },
+  {
+   "id": "preserved.scale.file",
+   "text": "Odile adds ‘next recorded place’ above the cache entry and leaves the distance line unfilled. Check how the reader uses it by the east cabinet.",
+   "historicalLabel": "fictional-world",
+   "speaker": "narrator"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH3-R16",
+   "world": "WORLD-04",
+   "title": "The Space Between Stops",
+   "knowledgeQuestion": "When can a sequence tell a reader where to go?",
+   "available": {
+    "flag": "thread.preserved-royal.catalogue",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "preserved.scale.compare",
+     "title": "Use one bracket to check both practice distances.",
+     "essential": false,
+     "visible": {
+      "flag": "preserved.scale.open",
+      "eq": true
+     },
+     "done": {
+      "all": [
+       {
+        "flag": "preserved.scale.open",
+        "eq": true
+       },
+       {
+        "flag": "preserved.scale.near",
+        "eq": true
+       },
+       {
+        "flag": "preserved.scale.far",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "objectivity",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "HIS",
+       "MAT"
+      ],
+      "subjects": [
+       "history",
+       "math-ai"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "preserved.scale.receive",
+     "title": "Send a guide or a file slip and check what its reader uses.",
+     "essential": false,
+     "visible": {
+      "objective": "preserved.scale.compare"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "preserved.scale.compare"
+       },
+       {
+        "flag": "preserved.scale.read",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "perspective",
+       "responsibility",
+       "values"
+      ],
+      "framework": [
+       "scope",
+       "perspectives"
+      ],
+      "atl": [
+       "communication",
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "human",
+       "solo": "relational"
+      }
+     },
+     "onComplete": [
+      {
+       "journal": "j.preserved.scale"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.preserved.scale",
+   "text": "I checked two floor distances from the same bracket. I left the museum’s order of known places separate from the room’s measured guide."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.preserved.scale.compare.1",
+   "objective": "preserved.scale.compare",
+   "depth": 1,
+   "text": "Use the same zero for both pegs."
+  },
+  {
+   "id": "h.preserved.scale.compare.2",
+   "objective": "preserved.scale.compare",
+   "depth": 2,
+   "text": "Odile’s bracket and both pegs are on one row by the temple case."
+  },
+  {
+   "id": "h.preserved.scale.compare.3",
+   "objective": "preserved.scale.compare",
+   "depth": 3,
+   "text": "Set the ruler at the western bracket. Read both marked pegs before coming back."
+  },
+  {
+   "id": "h.preserved.scale.compare.4",
+   "objective": "preserved.scale.compare",
+   "depth": 4,
+   "text": "Start at the ruler, inspect the brass peg two paving strips east, then the blue peg six east."
+  },
+  {
+   "id": "h.preserved.scale.receive.1",
+   "objective": "preserved.scale.receive",
+   "depth": 1,
+   "text": "Who needs the measured floor guide, and who needs the original record?"
+  },
+  {
+   "id": "h.preserved.scale.receive.2",
+   "objective": "preserved.scale.receive",
+   "depth": 2,
+   "text": "Bring the two readings back to Odile’s bracket and choose which paper to send."
+  },
+  {
+   "id": "h.preserved.scale.receive.3",
+   "objective": "preserved.scale.receive",
+   "depth": 3,
+   "text": "The floor guide goes to the west bench. The record slip goes to the east cabinet."
+  },
+  {
+   "id": "h.preserved.scale.receive.4",
+   "objective": "preserved.scale.receive",
+   "depth": 4,
+   "text": "After choosing, walk up to the posted guide at the west bench or the filed slip by the east cabinet and read it."
+  }
+ ]
+}

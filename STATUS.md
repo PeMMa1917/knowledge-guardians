@@ -6,6 +6,8 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
+Odile’s floor ruler in the Cold Store turns an ambiguous custody copy into an optional check. Readers get a measured floor guide or a bounded file slip and use it at different stations. [Route checks](tests/preserved-scale.test.ts)
+
 The adventure diary keeps a dated account of encounters, choices, investigations and returns. Each entry offers optional questions. Notes, responses, unfinished writing and Portfolio reflections attached to the current adventure travel with it through Continue, Checkpoint recovery, Word and print/PDF. Writers can leave their private text out of a shared copy. A long save that exceeds the browser’s plain-text quota is retried in a losslessly compressed two-slot record. [Diary](src/ui/adventureJournal.ts) · [Save regression](tests/long-journal-save.test.ts)
 
 The twelve TOK concepts have individual colours, bold type and underlining in game prose and journal exports. Meeting a historical person, opening a biography or inspecting a documented object adds Wikipedia reading to the journal. An article on the individual, background reading and a search for a particular catalogue item carry different labels. Earning the object still controls its museum citation. [Concepts](src/domain/conceptText.ts) · [Wikipedia](src/domain/encyclopedia.ts)
