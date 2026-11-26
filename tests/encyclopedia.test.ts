@@ -98,7 +98,7 @@ describe('Encyclopedia links for actual encounters', () => {
       { kind: 'inspection', ref: 'card.person.haytham', key: 'biography:card.person.haytham' },
       { kind: 'conversation', ref: 'model-record.theseus.wiring', key: 'conversation:model-record.theseus.wiring' },
       { kind: 'conversation', ref: 'ise.start3', key: 'conversation:ise.start3' },
-    ];
+    ] as const;
     const at = '2026-11-26T10:00:00.000Z';
     d.s.adventureDiary.entries = events.map((event) => ({ id: event.key,
       kind: 'experience' as const, at, mapId: 'nexus.archive', title: event.ref, text: 'A recorded visit.', event }));

@@ -1,3 +1,4 @@
+import type { SpecimenReference } from '../domain/specimenReferences';
 import type { AdventureJournalView } from '../domain/adventureJournal';
 import { encyclopediaEncounterLabel, encyclopediaLinkLabel, isEncyclopediaURL } from '../domain/encyclopedia';
 
@@ -35,7 +36,7 @@ export function adventureExportSnapshot(view: AdventureJournalView, options: Adv
       prompt, ...(includePersonal && response !== undefined ? { response } : {}),
     })),
   } : {};
-  const references = view.references.map((reference) => ({
+  const references: SpecimenReference[] = view.references.map((reference) => ({
     ...reference,
     runs: reference.runs.map(({ href, ...part }) => (href && safeJournalLink(href) ? { ...part, href } : part)),
   }));
