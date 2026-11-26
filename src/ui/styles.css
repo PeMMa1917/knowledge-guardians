@@ -895,6 +895,7 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .lore-entry h3 { margin: 0; color: var(--gold); }
 .dialogue-recall { margin-top: 1rem; }
 .dialogue-recall summary { cursor: pointer; }
+.credits > ul, .credits .journey-credits { overflow-wrap: anywhere; }
 .journey-credits { padding: 0.6rem 0; }
 .journey-memory { display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); gap: 0.75rem; align-items: start; margin-bottom: 0.6rem; }
 .journey-memory img { width: 100%; max-height: 3.75rem; object-fit: contain; image-rendering: pixelated; }
