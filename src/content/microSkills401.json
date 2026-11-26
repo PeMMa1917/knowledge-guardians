@@ -123,6 +123,14 @@
     "name": "Separate a pattern from a causal account",
     "uses": [
       {
+        "objective": "catchment.compare",
+        "action": "Release the same six floats in both runs. Compare the unchanged upper count with the lower count and find the missing floats in the changed pocket.",
+        "styles": ["explorer", "challenger", "strategist"],
+        "modes": ["visual", "spatial", "analytical"],
+        "game": 218,
+        "story": 77
+      },
+      {
         "objective": "coast.forecast",
         "action": "Bring the sheltered and exposed rain readings to a model notice that keeps its wind assumption available before predicting another bell.",
         "styles": [
@@ -886,6 +894,21 @@
     "number": 449,
     "name": "Change a performance without rewriting its line",
     "uses": [
+      {
+        "objective": "nexus.facing.compare",
+        "action": "Hold the four beats and the spoken direction steady while turning the performer. Follow the landing mark that changes.",
+        "styles": [
+          "performer",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "physical"
+        ],
+        "game": 247,
+        "story": 95
+      },
       {
         "objective": "stage.compare",
         "action": "Run the same crate scene with the pause before and after the movement, then mark that timing difference on the cue sheets.",

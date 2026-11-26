@@ -9,6 +9,7 @@ import { CIVIC_BOUNDARY } from './serviceBoundary';
 import { CIVIC_DATE_REGISTER_PROPS, CIVIC_DATE_REGISTER_READERS } from './dateRegister';
 import { CIVIC_CALLBOARD_DOOR } from './civicCallboard';
 import { MATERIAL_CANAL_REVISIT } from './materialStores';
+import { CATCHMENT_CANAL } from './catchment';
 import { CIVIC_SPARE_SEAT } from './spareSeat';
 import { OPEN_PLACE_CANAL, OPEN_PLACE_CANAL_ACTORS, OPEN_PLACE_DISPATCH, OPEN_PLACE_STEPS, OPEN_PLACE_STEPS_ACTORS } from './openPlace';
 import { starStations } from './starPaths';
@@ -224,6 +225,7 @@ export const CIVIC_CANAL: MapDef = {
   ],
   interactables: [
     MATERIAL_CANAL_REVISIT,
+    ...CATCHMENT_CANAL,
     door('civic-canal-return', 3, 10, 'the east passage back to Library Dispatch', { map: 'civic.dispatch', x: 24, y: 11 }),
     door('civic-canal-to-steps', 25, 9, 'the street back to North Steps', { map: 'civic.steps', x: 24, y: 12 }),
     sign('civic-walk-slip', 9, 9, 'the walking crew’s request slip', 'civic.ledger',

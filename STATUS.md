@@ -6,6 +6,8 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
+Five optional investigations now carry a method between places. The Nexus rehearsal keeps four beats fixed while the player changes the facing, then sends a checked cue to a moved lamp at the House of Performance. Sill Bridge tests French place and time instructions and puts its parcel through either a deputy hatch or a staffed stair. The Nile bend bench sends a checked strip to a new support at the City of Copies. The Witness Clip uses version, gloss and witness to let two readers act on the same record. Below the Gauge opens a hidden Water Commons passage from two same-bell clues and sends a signed crossing receipt to Canal Walk. [Cross-weave audit](docs/CROSS_WEAVE_AUDIT.md) · [Browser checks](docs/BROWSER_CHECKS.md)
+
 The current collection checkpoint registers 1,018 individually identified and dated objects. Each has a physical exhibit, a source and a playable acquisition. There are 719 bespoke interactions that become available when a specific earned object is equipped. The Nexus displays shelved objects six at a time, with three places in the satchel and one object equipped.
 
 The hidden Two Shutter Room opens in a fresh game. Players find the hatch, trace two stalled beam paths, correct the mirrors and carry one shared fitting into an allocation between the tray carrier and the quiet reader. Both receive separate replies. The earned Hawaiʻi beater from Cleveland accession 1971.152 opens a fictional proof press in the Workroom. A matched pair travels to an alignment rail or a staffed Cold Store repeat. [Browser checks](docs/BROWSER_CHECKS.md) · [Source register](docs/SOURCES.md)
@@ -57,6 +59,8 @@ Fifteen chapters and the post-Council return are playable. A clean install, 952 
 - Original music follows the 16 worlds with three room variations, shared motifs, adjustable volume and captions. Legacy playback remains available on devices that use the HTML5 audio backend.
 
 ## What works now
+
+- The Queue at Sill Bridge is an optional Emberford investigation. Players walk two banks to check where a French instruction points, then turn a repeatable bell wheel to check when the same word applies. A signed deputy hatch and a staffed second-turn stair admit different recipients. The old ferry landing puts its own timing rule to work with the recipient who actually collected.
 
 ### Playable perspective tools and adventure diary
 

@@ -170,6 +170,11 @@ import porterPace from './porter-pace.json';
 import leafFrame from './leaf-frame.json';
 import spareSeat from './spare-seat.json';
 import lastTurn from './last-turn.json';
+import stripBend from './strip-bend.json';
+import { catchmentContent } from './catchment';
+import { facingCueContent } from './facingCue';
+import witnessClip from './witness-clip.json';
+import sillBridge from './sill-bridge.json';
 
 export const CONTENT_VERSION = 5;
 
@@ -187,7 +192,7 @@ export function buildPack(): ContentPack {
     loadingBayContent, glassRackContent, shoreReplyContent, ferryWindowContent, starPathContent, tokBadgeContent,
     ferryPackingContent, workScheduleContent, bearingBayContent, jigShopContent, earlierViewsContent, curtainContent,
     coastDetector, bridgeProof, memoryCart, dispatchStatsContent, prismViewerContent, priceDrawersContent, warmRoomContent,
-    mapAlignmentContent, scriptRailContent, pigmentWindow, correspondenceRoomContent, porterPace, leafFrame, forestNarrators, spareSeat, lastTurn, twoCalls, twoShutters, openPlace];
+    mapAlignmentContent, scriptRailContent, pigmentWindow, correspondenceRoomContent, porterPace, leafFrame, forestNarrators, spareSeat, lastTurn, twoCalls, twoShutters, openPlace, catchmentContent, facingCueContent, witnessClip, stripBend, sillBridge];
   for (const k of keys) pack[k] = [...parts, ...collectionRooms].flatMap((p) => p[k] ?? []);
   const content = pack as ContentPack;
   content.questions.push(...QUESTION_ROUTES.map(({ question }) => question));

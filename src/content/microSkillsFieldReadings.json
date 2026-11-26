@@ -119,6 +119,14 @@
     "name": "Place a scope limit beside an actionable claim",
     "uses": [
       {
+        "objective": "catchment.civic.receipt",
+        "action": "Confirm how the Canal crew uses the signed Commons receipt, keeping an open line for a missing watcher or holding the first carrier until both watchers arrive.",
+        "styles": ["helper", "strategist"],
+        "modes": ["reading", "spatial", "social"],
+        "game": 263,
+        "story": 15
+      },
+      {
         "objective": "market.finish",
         "action": "Revise the whole-lot notice for the two weighed lots. Keep their posted figures tied to their letters or leave a check for the next crate.",
         "styles": [

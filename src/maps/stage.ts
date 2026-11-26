@@ -1,6 +1,7 @@
 /** Fictional theatre with separate backstage and audience sightlines. */
 import type { Condition } from '../domain/types';
 import { SCRIPT_RAIL_ENTRANCE, SCRIPT_RAIL_GALLERY } from './scriptRail';
+import { STAGE_FACING_CUE } from './facingCue';
 import { CUE_HOUSE_READER } from './cueWorkshop';
 import { GALLERY_SEAM } from './seamWitness';
 import type { Interactable, MapDef } from './types';
@@ -181,6 +182,7 @@ export const STAGE_GALLERY = room({
     STORY_ARCHIVE_ENTRANCE,
     ...STORY_ARCHIVE_READBACKS,
     CUE_HOUSE_READER,
+    STAGE_FACING_CUE,
     ...STAGE_GALLERY_FRAMES,
     STAGE_FILM_GALLERY,
     door('stage-gallery-return', 11, 16, 'the passage back to the foyer', { map: 'stage.foyer', x: 22, y: 5 }),

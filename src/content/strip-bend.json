@@ -1,0 +1,139 @@
+{
+  "items": [
+    {
+      "id": "item.bend-card",
+      "name": "Marek’s load and lift card",
+      "description": "A copied set of readings from Marek’s modern practice rail. The place and starting mark are written beside each load and lift mark. Mina keeps its matching hook at the City of Copies Landing.",
+      "historicalLabel": "fictional-world",
+      "art": "nile.slip"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH2-BEND",
+      "world": "WORLD-03",
+      "title": "The Bend That Stayed",
+      "available": { "card": "card.nile.mine" },
+      "stake": "Marek has a short rail or a long tray. The seated reader needs to see the line during use, and the runner needs room for a wide bundle.",
+      "knowledgeQuestion": "How can we tell a change that lasts from a change that depends on the test conditions?",
+      "objectives": [
+        {
+          "id": "bend.nile.compare",
+          "title": "Take load and lift marks for both strips at both stops.",
+          "essential": false,
+          "done": { "all": [
+            { "flag": "bend.trial.spring-near", "eq": true },
+            { "flag": "bend.trial.spring-far", "eq": true },
+            { "flag": "bend.trial.stiff-near", "eq": true },
+            { "flag": "bend.trial.stiff-far", "eq": true }
+          ] },
+          "weave": {
+            "concepts": ["evidence", "objectivity", "explanation", "certainty"],
+            "framework": ["scope", "methods-and-tools"],
+            "aoks": ["NAT", "TEC", "MAT"],
+            "atl": ["thinking", "research"],
+            "subjects": ["physics", "design-tech", "math-ai"],
+            "thinking": { "dok": 3, "bloom": "analyse", "fink": "integration", "solo": "relational" },
+            "minutes": 4
+          }
+        },
+        {
+          "id": "bend.nile.issue",
+          "title": "Carry one checked card and see where Marek puts the model.",
+          "essential": false,
+          "visible": { "objective": "bend.nile.compare" },
+          "done": { "all": [
+            { "item": "item.bend-card" },
+            { "flag": "bend.nile.received", "eq": true }
+          ] },
+          "weave": {
+            "concepts": ["justification", "perspective", "values", "responsibility"],
+            "framework": ["perspectives", "ethics"],
+            "aoks": ["NAT", "TEC"],
+            "atl": ["thinking", "communication"],
+            "subjects": ["physics", "design-tech"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "application", "solo": "relational" },
+            "minutes": 2
+          },
+          "onComplete": [{ "journal": "j.bend.nile" }]
+        }
+      ]
+    },
+    {
+      "id": "KG-CH7-BEND",
+      "world": "WORLD-08",
+      "title": "Before the Next Bundle",
+      "available": { "item": "item.bend-card" },
+      "stake": "A used strip sits below the line with no weight on it. Mina has to set up returns without promising the reading rail and the wide tray at the same time.",
+      "knowledgeQuestion": "What has to be checked again before a result can guide work in a different place?",
+      "objectives": [
+        {
+          "id": "bend.landing.compare",
+          "title": "Read the used strip before loading, then check both replacements.",
+          "essential": false,
+          "done": { "all": [
+            { "flag": "bend.trial.worn", "eq": true },
+            { "flag": "bend.trial.short", "eq": true },
+            { "flag": "bend.trial.long", "eq": true }
+          ] },
+          "weave": {
+            "concepts": ["evidence", "certainty", "interpretation", "explanation", "justification"],
+            "framework": ["scope", "methods-and-tools"],
+            "aoks": ["NAT", "TEC", "MAT"],
+            "atl": ["research", "thinking"],
+            "subjects": ["physics", "design-tech", "math-ai"],
+            "thinking": { "dok": 3, "bloom": "analyse", "fink": "integration", "solo": "relational" },
+            "minutes": 4
+          }
+        },
+        {
+          "id": "bend.landing.finish",
+          "title": "Fit a checked setup and see how the Landing uses it.",
+          "essential": false,
+          "visible": { "objective": "bend.landing.compare" },
+          "done": { "flag": "bend.landing.received", "eq": true },
+          "weave": {
+            "concepts": ["perspective", "values", "responsibility", "justification"],
+            "framework": ["perspectives", "ethics", "methods-and-tools"],
+            "aoks": ["NAT", "TEC"],
+            "atl": ["thinking", "communication", "social"],
+            "subjects": ["physics", "design-tech"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "application", "solo": "relational" },
+            "minutes": 2
+          },
+          "onComplete": [{ "journal": "j.bend.landing" }]
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.bend.nile",
+      "claimKind": "simulation",
+      "text": "At the far stop, the spring strip went farther below the line than the stiff strip. The spring came back to zero when lifted. The stiff strip kept two marks. The Turin Mine Map has a different job. It records routes and rock colours in Wadi Hammamat."
+    },
+    {
+      "id": "j.bend.landing",
+      "claimKind": "simulation",
+      "text": "The used strip began and ended two marks below the line even at the near stop. The card helped Mina choose how to compare it with fresh strips. She kept the worn starting mark beside the new reading."
+    }
+  ],
+  "hints": [
+    { "id": "h.bend.nile.compare.1", "objective": "bend.nile.compare", "depth": 1, "text": "Read the Turin Mine Map, then look just east of its case for Marek’s practice strip." },
+    { "id": "h.bend.nile.compare.2", "objective": "bend.nile.compare", "depth": 2, "text": "Pick a strip and a stop. See where the strip starts and add the weight." },
+    { "id": "h.bend.nile.compare.3", "objective": "bend.nile.compare", "depth": 3, "text": "Lift the weight to file that reading. Keep the strip and move from near to far for the next trial." },
+    { "id": "h.bend.nile.compare.4", "objective": "bend.nile.compare", "depth": 4, "text": "Take all four lift readings. At the far stop, compare which strip bends more under weight and which one stays below the line afterward." },
+    { "id": "h.bend.nile.issue.1", "objective": "bend.nile.issue", "depth": 1, "text": "Marek can make room for the seated reader or the wide bundle first." },
+    { "id": "h.bend.nile.issue.2", "objective": "bend.nile.issue", "depth": 2, "text": "The near stiff strip moves just one mark under weight. The far spring strip goes six marks down and comes back to zero after the lift." },
+    { "id": "h.bend.nile.issue.3", "objective": "bend.nile.issue", "depth": 3, "text": "Carry the reading card for the short rail, or the return card for the long tray." },
+    { "id": "h.bend.nile.issue.4", "objective": "bend.nile.issue", "depth": 4, "text": "Read the plan at the short rail southwest of the practice board or the long tray to its south. The card can also travel to the City of Copies Landing." },
+    { "id": "h.bend.landing.compare.1", "objective": "bend.landing.compare", "depth": 1, "text": "Find Mina’s practice board northeast of the Landing entrance." },
+    { "id": "h.bend.landing.compare.2", "objective": "bend.landing.compare", "depth": 2, "text": "Start with the used strip. Its line is already two marks down before the weight goes on." },
+    { "id": "h.bend.landing.compare.3", "objective": "bend.landing.compare", "depth": 3, "text": "Put the weight on and lift it. Compare the last mark to the start. Then both replacement strips are available." },
+    { "id": "h.bend.landing.compare.4", "objective": "bend.landing.compare", "depth": 4, "text": "Finish the near trial with the fresh stiff strip and the far trial with the spring strip. Check when each strip gives a useful line." },
+    { "id": "h.bend.landing.finish.1", "objective": "bend.landing.finish", "depth": 1, "text": "The reader needs the line while checking a bundle. The runner needs space for its full width." },
+    { "id": "h.bend.landing.finish.2", "objective": "bend.landing.finish", "depth": 2, "text": "The short stand helps the reader during the check. The far tray holds the wide bundle without moving it first." },
+    { "id": "h.bend.landing.finish.3", "objective": "bend.landing.finish", "depth": 3, "text": "Set the short stand or open the far tray at Mina’s board after the three checks." },
+    { "id": "h.bend.landing.finish.4", "objective": "bend.landing.finish", "depth": 4, "text": "Read the new stand by the bench or the far tray by the ramp. Mina keeps the used strip’s starting mark with either plan." }
+  ]
+}

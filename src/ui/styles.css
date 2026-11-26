@@ -1000,3 +1000,24 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .dig-cell.find { background: #e0b070; color: #2a2440; }
 .dig-cell.cracked { background: #b06a4a; color: #fff; }
 .dig-cell.noted { outline: 2px solid #ffd060; outline-offset: -3px; }
+
+/* Two visible peg counts and the side pocket on Omi’s practice board. */
+.catchment-current {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.25em;
+  margin-block: 0.6em;
+  padding: 0.35em;
+  border: 1px solid var(--cyan);
+  border-radius: 8px;
+  background: var(--panel-2);
+}
+.catchment-current > div {
+  min-inline-size: 0;
+  padding: 0.3em;
+  border-block-end: 3px solid var(--cyan);
+  overflow-wrap: anywhere;
+}
+.catchment-current[data-pocket='open'] > :nth-child(2) { border-block-end-style: dashed; }
+.catchment-floats { min-block-size: 1em; display: flex; align-items: center; gap: 0.25em; flex-wrap: wrap; }
+.catchment-floats i { width: 0.45em; height: 0.45em; background: var(--gold); border: 1px solid var(--ink); }

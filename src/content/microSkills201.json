@@ -2216,6 +2216,14 @@
     "name": "Post the place and conditions where a claim applies",
     "uses": [
       {
+        "objective": "catchment.local-receipt",
+        "action": "Post a notice for one crossing and read its signed receipt naming the waiting crew or the later bell that sets its limit.",
+        "styles": ["strategist", "helper"],
+        "modes": ["spatial", "reading", "social"],
+        "game": 22,
+        "story": 11
+      },
+      {
         "objective": "sea.finish",
         "action": "Name where the shore walk ended and where the shoal survey stopped, then keep both limits on the directions readers use.",
         "styles": [

@@ -1,4 +1,5 @@
 import { LANDING_PIGMENT_WINDOW } from './pigmentWindow';
+import { LANDING_BEND_BOARD } from './stripBend';
 /** A fictional city where the archive, press and landing share written notices. */
 import type { Condition } from '../domain/types';
 import { WORK_SCHEDULE_COPIES } from './workSchedule';
@@ -16,6 +17,7 @@ import { TWO_CALLS_ARCHIVE, TWO_CALLS_LANDING, TWO_CALLS_PRESS } from './twoCall
 import { IMPRINT_LANDING, IMPRINT_PATH } from './copyImprint';
 import { CORRESPONDENCE_DOOR } from './correspondenceRoom';
 import { READING_WORKS_DOOR, READING_WORKS_LANDING, READING_WORKS_PERKINS } from './readingWorks';
+import { WITNESS_CLIP_ARCHIVE, WITNESS_CLIP_LANDING, WITNESS_CLIP_PRESS } from './witnessClip';
 
 type CitySite = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'interactables' | 'stamps' | 'lights'>;
@@ -78,6 +80,7 @@ export const COPIES_ARCHIVE = interior({
   ],
   interactables: [
     SCRIPT_RAIL_COPIES,
+    ...WITNESS_CLIP_ARCHIVE,
     ...TWO_CALLS_ARCHIVE,
     WORK_SCHEDULE_COPIES,
     ALIGN_DOOR,
@@ -125,6 +128,7 @@ export const COPIES_PRESS = interior({
   ],
   interactables: [
     ...COPIES_PRESS_BACKBILL,
+    ...WITNESS_CLIP_PRESS,
     ...TWO_CALLS_PRESS,
     alignmentReceiver('pair', 9, 9),
     ...COPIES_PRESS_CITATION_RAIL,
@@ -187,10 +191,12 @@ export const COPIES_LANDING: MapDef = {
   ],
   interactables: [
     ...COPIES_WELCOME,
+    ...WITNESS_CLIP_LANDING,
     ...TWO_CALLS_LANDING,
     alignmentReceiver('strip', 7, 12),
     ...LANDING_SAME_RED,
     ...LANDING_PIGMENT_WINDOW,
+    ...LANDING_BEND_BOARD,
     ...IMPRINT_LANDING,
     READING_WORKS_LANDING,
     door('copies-landing-return', 12, 15, 'the steps back to the Record Room', { map: 'copies.archive', x: 21, y: 5 }),

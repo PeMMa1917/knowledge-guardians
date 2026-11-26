@@ -9,6 +9,7 @@ import { NILE_MAKER_PATH } from './makerRoom';
 import { starStations } from './starPaths';
 import { WORKMEN_CURTAIN_PROPS } from './curtainCall';
 import { NILE_SPARE_SEAT } from './spareSeat';
+import { NILE_BEND_BOARD } from './stripBend';
 
 const W = 25, H = 13;
 const room = (id: string, name: string, npcs: MapDef['npcs'], interactables: Interactable[], palette: number, stamps: MapDef['stamps']): MapDef => ({
@@ -310,6 +311,7 @@ export const NILE_ROUTE = room('nile.route', 'Nile Archive: Map Room',
     NILE_MAKER_PATH,
     ...NILE_GLASS_RACK_USES,
     ...NILE_SPARE_SEAT,
+    ...NILE_BEND_BOARD,
     ...sceneProp('nile.model-handover', 14, 8, 'Marek’s note for the next keeper', 'board-stand',
       { repeat: 'nile.slip', limit: 'nile.scroll' }, { objective: 'nile.routes' }),
     readerClue('pair', 'reply', 9, 5, 'the apprentice’s loose tag'),

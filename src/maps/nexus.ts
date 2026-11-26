@@ -7,6 +7,7 @@
  */
 import { NEXUS_FIELD_CUES } from './fieldBadges';
 import { BADGE_ANNEX_DOOR } from './badgeRoom';
+import { NEXUS_FACING_ACTOR, NEXUS_FACING_CUE } from './facingCue';
 import { EARLY_CURTAIN_NPC, EARLY_CURTAIN_PROPS } from './curtainCall';
 import { NEXUS_DISPATCH_STATS } from './dispatchStats';
 import { NEXUS_CORRESPONDENCE } from './correspondenceRoom';
@@ -141,6 +142,7 @@ export const NEXUS: MapDef = {
   ],
   npcs: [
     EARLY_CURTAIN_NPC,
+    NEXUS_FACING_ACTOR,
     ...SHUTTER_VISITORS,
     { id: 'warden-ise', x: 12, y: 11, facing: 'down' },
     { id: 'curator-dace', x: 4, y: 8, facing: 'right' },
@@ -156,6 +158,7 @@ export const NEXUS: MapDef = {
   ],
   interactables: [
     ...NEXUS_FIELD_CUES,
+    ...NEXUS_FACING_CUE,
     ...starStations('inquisitor', [3, 10], [3, 11]),
     ...NEXUS_VINDOLANDA,
     ...NEXUS_DOOR_FOLD,

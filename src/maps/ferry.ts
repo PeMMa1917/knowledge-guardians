@@ -12,6 +12,7 @@ import { FERRY_PACKING_DOOR } from './ferryPacking';
 import { WARM_FERRY_RETURNS } from './warmRoom';
 import { FERRY_KETTLE } from './ferryKettle';
 import { FERRY_WINDOW_DOOR } from './ferryWindow';
+import { FERRY_SILL_BRIDGE } from './sillBridge';
 import type { MapDef } from './types';
 
 const W = 26, H = 14;
@@ -57,6 +58,7 @@ export const FERRY: MapDef = {
     FERRY_PACKING_DOOR,
     ...WARM_FERRY_RETURNS,
     FERRY_WINDOW_DOOR,
+    ...FERRY_SILL_BRIDGE,
     { id: 'field-trade', kind: 'fieldgame', game: 'trade', x: 13, y: 3, w: 1, h: 1, label: 'a spare carrier tag on the ferry step (The Spare Tag)', art: 'guest-book' },
     { id: 'cross-lamb', kind: 'fieldgame', game: 'cross-lamb', x: 10, y: 5, w: 1, h: 1, label: 'the lamb on the old ford stone (a crossing)', art: 'flood-post' },
     { id: 'ferry-copy-ledger', kind: 'scene', node: 'tova.nexus-copy.ledger', x: 11, y: 7, w: 1, h: 1,

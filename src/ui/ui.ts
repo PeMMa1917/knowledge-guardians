@@ -115,6 +115,7 @@ import { makerRoom } from './makerRoom';
 import { makerExact } from './makerExact';
 import { marketBasketPanel } from './marketBasket';
 import { waterLoopPanel } from './waterLoop';
+import { catchmentPanel } from './catchment';
 import { civicIncentivePanel, incentiveStation } from './civicIncentive';
 import { serviceBoundaryPanel } from './boundaryBoard';
 import { waterLoopStation } from '../maps/waterLoop';
@@ -129,10 +130,14 @@ import { DETECTOR_GAME } from '../domain/coastDetector';
 import { coastDetectorPanel } from './coastDetector';
 import { BRIDGE_PROOF_TOOL } from '../domain/bridgeProof';
 import { bridgeProofPanel } from './bridgeProof';
+import { SILL_CLOCK } from '../domain/sillBridge';
+import { sillBridgePanel, sillGuideObjective } from './sillBridge';
 import { PORTER_TOOL } from '../domain/porterPace';
 import { porterPacePanel } from './porterPace';
 import { WARM_TOOL } from '../domain/warmRoom';
 import { warmRoomPanel } from './warmRoom';
+import { BEND_TOOL, type BendSite } from '../domain/stripBend';
+import { stripBendPanel } from './stripBend';
 import { loyaltyOf } from '../domain/loyalty';
 import { CROSSINGS, WAY_LABEL, crossingOf, crossingWay, wayOpen } from '../domain/crossings';
 import { HEARTH, TONE_LABEL, type HearthTalk } from '../domain/hearth';
@@ -173,6 +178,8 @@ import { JOINED_CLOTH_GAME, JOINED_CLOTH_OBJECTIVE } from '../domain/joinedCloth
 import { joinedClothPanel } from './joinedCloth';
 import { CURTAIN_PREFIX } from '../content/curtainCall';
 import { curtainCallPanel } from './curtainCall';
+import { FACING_CUE_PREFIX } from '../content/facingCue';
+import { facingCuePanel } from './facingCue';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
 import { BARTER, DYES, TOWN_COSTS, WOAD_BLUE, ferryPrice, ownsDye, townPrice } from '../domain/trade';
@@ -3163,6 +3170,11 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    if (id === 'catchment-trace') {
+      this.openModal('bench-panel wide', 'Below the Gauge', this.closeBtn(),
+        catchmentPanel(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+      return;
+    }
     if (id === 'linked-study-folio' || id === 'linked-voices-bench') {
       this.openModal('bench-panel wide', id === 'linked-study-folio' ? 'Field folio' : 'Filing bench', this.closeBtn(),
         linkedNotes(id === 'linked-study-folio' ? 'study' : 'voices', ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
@@ -3186,6 +3198,9 @@ export class UI implements UIApi {
     } else if (id.startsWith(BADGE_ANNEX_PREFIX)) {
       this.openModal('bench-panel wide', 'The Badge Annex', this.closeBtn(),
         badgeAnnexPanel(ctx.controller, id.slice(BADGE_ANNEX_PREFIX.length), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(FACING_CUE_PREFIX)) {
+      this.openModal('bench-panel wide', 'The Step Across the Line', this.closeBtn(), facingCuePanel(
+        ctx.controller, id.slice(FACING_CUE_PREFIX.length), () => ctx.world?.refreshWorld(), () => this.sfx('sfx.click')));
     } else if (id.startsWith(CURTAIN_PREFIX)) {
       this.openModal('bench-panel wide', 'The Call behind the Curtain', this.closeBtn(), curtainCallPanel(
         ctx.controller, id.slice(CURTAIN_PREFIX.length), () => ctx.world?.refreshWorld(), () => this.sfx('sfx.click')));
@@ -3222,6 +3237,14 @@ export class UI implements UIApi {
     } else if (id.startsWith(GLASS_RACK_PREFIX)) {
       this.openModal('bench-panel wide', 'The Missing Face', this.closeBtn(),
         glassRackPanel(ctx.controller, id.slice(GLASS_RACK_PREFIX.length), () => ctx.world?.refreshWorld()));
+    } else if (id === BEND_TOOL + 'nile' || id === BEND_TOOL + 'landing') {
+      const site = id.slice(BEND_TOOL.length) as BendSite;
+      const c = ctx.controller;
+      const nextBendStep = () => c.engine.visibleObjectives(c.state).find(({ id, complete }) =>
+        id.startsWith(`bend.${site}.`) && !complete)?.id;
+      this.openModal('bench-panel wide', 'The Bend That Stayed', this.closeBtn(),
+        stripBendPanel(c, site, (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
+        localGuide(c, MAPS[c.state.mapId]?.world ?? '', nextBendStep));
     } else if (id.startsWith(`${WARM_TOOL}:`)) {
       this.openModal('bench-panel wide', 'The Warm Side', this.closeBtn(), warmRoomPanel(ctx.controller,
         id.slice(WARM_TOOL.length + 1), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
@@ -3229,6 +3252,12 @@ export class UI implements UIApi {
       const site = id.endsWith(':water') ? 'water' : 'emberford';
       this.openModal('bench-panel wide', site === 'emberford' ? 'Idris’s carry board' : 'Sena’s half-route board',
         this.closeBtn(), porterPacePanel(ctx.controller, site, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === `${SILL_CLOCK}bridge` || id === `${SILL_CLOCK}ferry`) {
+      const c = ctx.controller;
+      const site = id === `${SILL_CLOCK}bridge` ? 'bridge' : 'ferry';
+      this.openModal('bench-panel wide', 'The bell wheel', this.closeBtn(),
+        sillBridgePanel(site, c, (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
+        localGuide(c, MAPS[c.state.mapId]?.world ?? '', () => sillGuideObjective(site, c)));
     } else if (id === BRIDGE_PROOF_TOOL) {
       this.openModal('bench-panel wide', 'Idris’s practice bridge', this.closeBtn(),
         bridgeProofPanel(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));

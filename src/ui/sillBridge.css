@@ -1,0 +1,29 @@
+.sill-clock blockquote {
+  margin: 1rem 0;
+  padding: .7rem .9rem;
+  border-inline-start: .24rem solid #c7a56a;
+  background: rgba(199, 165, 106, .12);
+}
+.sill-clock-track {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.25rem, 1fr));
+  gap: .45rem;
+  list-style: none;
+  padding: 0;
+}
+.sill-clock-track li {
+  border: 1px solid currentColor;
+  border-radius: .35rem;
+  display: grid;
+  gap: .2rem;
+  padding: .45rem;
+  text-align: center;
+}
+.sill-clock-track li[aria-current="step"] {
+  outline: .17rem solid #c7a56a;
+  outline-offset: -.17rem;
+  background: rgba(199, 165, 106, .16);
+  font-weight: bold;
+}
+.sill-clock-gate { font-weight: bold; }
+.sill-clock-traces { padding-inline-start: 1.3rem; }

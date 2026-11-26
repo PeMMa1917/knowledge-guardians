@@ -684,3 +684,14 @@ The store compares exact records from four custodians. Its images are original p
 ## The Missing Face
 
 Quena’s Glass Rack has 40 numbered Cleveland Museum of Art collection cases. Each uses a distinct pair of CC0 photographs of the same catalogue record. The extra image can show a turned form, separated parts or a closer frame. Both views retain the accession. The source text distinguishes what the image reveals from what the museum’s accession and maker fields document. Where the Japanese water container has a replacement lid, the game keeps that part’s different date history visible. The Glass Rack, its receivers and the later practice mounts are fictional. [Exact records](../src/content/glass-rack-specimens.json) · [Named makers and catalogue credits](../src/content/glass-rack-people.json) · [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access)
+
+### The Queue at Sill Bridge
+
+- CNRTL’s TLFi entry for French *avant* distinguishes spatial precedence in I.A.1 from temporal precedence in II.A. Estelle’s route and bell instructions are original fictional examples. [Avant, préposition](https://www.cnrtl.fr/definition/avant/pr%C3%A9position)
+- The *après* entry defines temporal precedence in the other direction under I.A. The ferry’s four-notch wheel is an original model, with the second ring itself occupying a separate notch. [Après, préposition](https://www.cnrtl.fr/definition/apr%C3%A8s/pr%C3%A9position)
+
+## Playable language and observation references
+
+The Step Across the Line draws on the distinction between movement direction and timing. Its four-beat sequence and signs are original. [Dance Notation Bureau fundamentals](https://www.dancenotation.org/labanotation-fundamentals/)
+
+Below the Gauge includes Whanganui Iwi’s named public context through Ngā Tāngata Tiaki o Whanganui. The trust describes the river, its tributaries and its people in terms of a living whole. The Water Commons float model and staffing decisions belong to the game’s fictional setting. [Tupua te Kawa](https://www.ngatangatatiaki.co.nz/our-story/tupua-te-kawa/)

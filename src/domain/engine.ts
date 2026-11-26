@@ -1,4 +1,5 @@
 import { runNileTrial, nileDelivery, type NileRoad, type NileDelivery } from './nileModel';
+import { bendEffects, type BendAction } from './stripBend';
 import { forestWatch, type ForestWindow } from './forestWatch';
 import { readMetalSample } from './metalSample';
 import { compareCopy } from './copyComparison';
@@ -15,6 +16,7 @@ import { islandPlan, type IslandLanding, type IslandRoute } from './islandPlan';
 import { changeSkiff, type SkiffAction } from './islandSkiff';
 import { marketBasketEffects, type BasketAction } from './marketBasket';
 import { waterLoopEffects, type LoopAction } from './waterLoop';
+import { catchmentEffects, type CatchmentAction } from './catchment';
 import { councilClock, type CouncilTrial } from './councilClock';
 import { scoutDecision, scoutNextTrial, scoutTrials, type ScoutDecision, type ScoutProtocol, type ScoutRoute } from './scoutRoutes';
 import { ownedPerspective, PERSPECTIVE_FLAG } from './perspectives';
@@ -62,9 +64,11 @@ import { diaryDialogueChoice, diaryNoteKind, newAdventureDiary, recordAdventure 
 
 export type Command =
   | IncentiveAction
+  | BendAction
   | SkiffAction
   | BasketAction
   | LoopAction
+  | CatchmentAction
   | FilmAction
   | { type: 'Reach'; zone: string }
   | { type: 'VisitPlace'; name: string }
@@ -711,6 +715,9 @@ export class Engine {
         case 'RunWaterLoop': case 'ReadWaterLoop': case 'FitWaterLoopCard': case 'SetWaterLoopService':
           s = apply(waterLoopEffects(cmd, s), s, out);
           break;
+        case 'TraceCatchment': case 'PostCatchmentNotice':
+          s = apply(catchmentEffects(cmd, s), s, out);
+          break;
         case 'PublishDispatchTarget': case 'CheckDispatchReceipt': case 'CallDispatchBell': case 'CheckDispatchKit': case 'KeepDispatchTarget':
           s = apply(civicIncentiveEffects(cmd, s), s, out);
           break;
@@ -791,6 +798,9 @@ export class Engine {
           if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
+        case 'RecordBendTrial': case 'FileBendPlan':
+          s = apply(bendEffects(cmd, s), s, out);
+          break;
         case 'NileRouteTrial': {
           if (s.mapId !== 'nile.route' || !s.cards.includes('card.nile.mine')) throw new Error('Read the Mine Map before using the table.');
           const r = runNileTrial(cmd.road);

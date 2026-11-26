@@ -8,6 +8,7 @@ import { WATER_APPEAL_LOWER, WATER_APPEAL_WITNESSES, WATER_APPEAL_YARD } from '.
 import { WATER_FITTING_BENCHES } from './fittingViews';
 import { WATER_LATCH_DOOR } from './latchCheck';
 import { COUNCIL_BOUNDARY, LOWER_BOUNDARY, UPPER_BOUNDARY } from './serviceBoundary';
+import { CATCHMENT_LOWER, CATCHMENT_UPPER } from './catchment';
 import type { Interactable, MapDef } from './types';
 
 function crossing(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'water.waypost'): Interactable {
@@ -69,6 +70,7 @@ export const WATER_GATEHOUSE: MapDef = {
   ],
   interactables: [
     ...WATER_FITTING_BENCHES,
+    CATCHMENT_UPPER,
     WATER_LATCH_DOOR,
     ...UPPER_BOUNDARY,
     crossing('water-council-path', 24, 7, 'the path to the council yard', { map: 'water.council', x: 12, y: 13 }),
@@ -219,6 +221,7 @@ export const WATER_LOWER_CHANNEL: MapDef = {
   ],
   interactables: [
     ...LOWER_BOUNDARY,
+    ...CATCHMENT_LOWER,
     MATERIAL_CHANNEL_RECEIVER,
     { id: 'cross-sluice', kind: 'fieldgame', game: 'cross-sluice', x: 20, y: 6, w: 1, h: 1, label: 'the upper sluice gate (a crossing)', art: 'flood-post' },
     { id: 'loyalty-rook', kind: 'fieldgame', game: 'loyalty-rook', x: 10, y: 10, w: 1, h: 1, label: "an old well with a flaking gold seal (The Clean Well)", art: 'old-sign', visibleIf: { flag: 'rook.joined', eq: true } },

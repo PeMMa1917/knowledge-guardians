@@ -69,8 +69,11 @@ import { VOICES_LISTENING, VOICES_QUAY, VOICES_WALK } from './voices';
 import { VESPER_PROOF_ROOM } from './vesperTrust';
 import { CIVIC_CANAL, CIVIC_DISPATCH, CIVIC_STEPS } from './civic';
 import { WATER_COUNCIL, WATER_GATEHOUSE, WATER_LOWER_CHANNEL } from './water';
+import { WATER_CULVERT } from './catchment';
+import { SILL_BRIDGE, SILL_RECEIVING } from './sillBridge';
 
 const campaignMaps: Record<string, MapDef> = {
+  [WATER_CULVERT.id]: WATER_CULVERT,
   [NEXUS.id]: NEXUS,
   [HALF_LIGHT_ROOM.id]: HALF_LIGHT_ROOM,
   [TWO_SHUTTER_ROOM.id]: TWO_SHUTTER_ROOM,
@@ -80,6 +83,8 @@ const campaignMaps: Record<string, MapDef> = {
   [HANDOVER_GALLERY.id]: HANDOVER_GALLERY,
   [EMBERFORD.id]: EMBERFORD,
   [REPAIR_YARD.id]: REPAIR_YARD,
+  [SILL_BRIDGE.id]: SILL_BRIDGE,
+  [SILL_RECEIVING.id]: SILL_RECEIVING,
   [STUDY.id]: STUDY,
   [TIME_ROOM.id]: TIME_ROOM,
   [SHELF_ROOM.id]: SHELF_ROOM,

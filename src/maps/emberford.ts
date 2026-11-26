@@ -16,6 +16,7 @@ import { EMBERFORD_DOOR_FOLD } from './doorFold';
 import { EMBERFORD_DRAWER_CASES } from './drawerCases';
 import { EMBERFORD_BASKET } from './marketBasket';
 import { EMBERFORD_BRIDGE_PROOF } from './bridgeProof';
+import { EMBERFORD_SILL_BRIDGE } from './sillBridge';
 import { PORTER_EMBERFORD } from './porterPace';
 import { EMBERFORD_WINDOW } from './ferryWindow';
 import { CART_MEMORY_ACTORS, CART_MEMORY_PROPS } from './memoryCart';
@@ -165,6 +166,7 @@ export const EMBERFORD: MapDef = {
     ...EMBERFORD_PIGMENT_WINDOW,
     ...PRICE_DRAWERS_RETURNS,
     ...EMBERFORD_BRIDGE_PROOF,
+    EMBERFORD_SILL_BRIDGE,
     ...PORTER_EMBERFORD,
     ...CART_MEMORY_PROPS,
     ...EMBERFORD_LAST_TURN,
