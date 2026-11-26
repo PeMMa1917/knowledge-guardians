@@ -6,7 +6,13 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
-At the City of Copies, Lark and Mina can now put the two checked editions to different uses. Across the campaign, 19 of 52 executable chapter routes meet the six-concept, two-framework, one-area and one-theme floor in every estimated half-hour window. The earlier build had two. [Route measurements](docs/LEARNING_DESIGN.md#the-30-minute-design-audit)
+The adventure diary keeps a dated account of encounters, choices, investigations and returns. Each entry offers optional questions. Notes, responses, unfinished writing and Portfolio reflections attached to the current adventure travel with it through Continue, Checkpoint recovery, Word and print/PDF. Writers can leave their private text out of a shared copy. A long save that exceeds the browser’s plain-text quota is retried in a losslessly compressed two-slot record. [Diary](src/ui/adventureJournal.ts) · [Save regression](tests/long-journal-save.test.ts)
+
+The twelve TOK concepts have individual colours, bold type and underlining in game prose and journal exports. Meeting a historical person, opening a biography or inspecting a documented object adds Wikipedia reading to the journal. An article on the individual, background reading and a search for a particular catalogue item carry different labels. Earning the object still controls its museum citation. [Concepts](src/domain/conceptText.ts) · [Wikipedia](src/domain/encyclopedia.ts)
+
+After tracing three witnesses around a tipped cart, the Guardian can hand the accounts to the driver or chalk a detour for passing carters. The receipt on the rail changes, and the Guardian can make a different handover later. Across the Nexus and Emberford, two world-specific intersections now have ten distinct investigations using evidence. [Cart](tests/sightlines.test.ts) · [Action evidence](docs/CROSS_WEAVE_AUDIT.md)
+
+At the City of Copies, Lark and Mina can now put the two checked editions to different uses. In the earlier 52-route census, 19 executable chapter routes met the six-concept, two-framework, one-area and one-theme floor in every estimated half-hour window. The earlier build had two. [Route measurements](docs/LEARNING_DESIGN.md#the-30-minute-design-audit)
 
 Lumen now remembers more than one place where a Guardian used a concept. After a cloth fitting and a lookout check, the journal can bring back the repair slip and the witness’s sightline together. The twelve key concepts have examples tied to actions the Guardian has actually finished. [Glossary checks](tests/glossary.test.ts)
 
