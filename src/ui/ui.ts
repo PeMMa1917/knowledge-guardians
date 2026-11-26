@@ -21,6 +21,7 @@ import { COUNCIL_TRIALS, councilClock, type CouncilTrial } from '../domain/counc
 import { buildScoutBoard } from './scoutRoutes';
 import { adventureJournalTab } from './adventureJournal';
 import { bindJournalEditor, flushJournalWriting, queueJournalWriting } from './journalWriting';
+import { conceptEditor } from './conceptEditor';
 import { ROUTE_ACTIONS } from '../content/questionEncounters';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
@@ -2812,7 +2813,7 @@ export class UI implements UIApi {
           queueJournalWriting(c, status);
           flushJournalWriting(c);
         } }, 'Add this reflection to this adventure’s journal') : null;
-        body.append(h('article', { class: 'card' }, h('h3', {}, e.title), h('p', { class: 'fine' }, `${new Date(e.at).toLocaleString()} · ${e.world}`), h('p', {}, e.text), ta, attach, status,
+        body.append(h('article', { class: 'card' }, h('h3', {}, e.title), h('p', { class: 'fine' }, `${new Date(e.at).toLocaleString()} · ${e.world}`), h('p', {}, e.text), conceptEditor(ta), attach, status,
           h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: e.shared, onchange: (ev: Event) => c.dispatch({ type: 'PortfolioShare', entry: e.id, shared: (ev.target as HTMLInputElement).checked }) }), ' Share with my teacher')));
       }
     } else if (tab === 'skills') {

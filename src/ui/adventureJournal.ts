@@ -7,6 +7,7 @@ import { printAdventureJournal } from './adventurePrint';
 import { adventureReferences } from './adventureReferences';
 import { adventureEncyclopedia } from './adventureEncyclopedia';
 import { clear, h } from './dom';
+import { conceptEditor } from './conceptEditor';
 import { bindJournalEditor, flushJournalWriting, queueJournalWriting } from './journalWriting';
 
 type DiaryTab = 'diary' | 'notes' | 'open-quests';
@@ -66,12 +67,14 @@ function diaryReflections(
   const status = h('p', { class: 'fine', role: 'status' });
   const editors = reflections.map(({ id, prompt, response }) => {
     const fieldId = `reflection-${encodeURIComponent(entry)}-${encodeURIComponent(id)}`;
-    const field = h('textarea', { id: fieldId, rows: 3, hidden: !!response });
+    const field = h('textarea', { id: fieldId, rows: 3 });
     field.value = response ?? '';
+    const editor = conceptEditor(field);
+    editor.hidden = !!response;
     const answer = h('p', { class: 'diary-response', hidden: !response }, response);
     const edit = h('button', { type: 'button', hidden: !response, onclick: () => {
       edit.hidden = answer.hidden = true;
-      field.hidden = false;
+      editor.hidden = false;
       field.focus();
     } }, 'Edit reflection');
     let stored = field.value;
@@ -87,9 +90,9 @@ function diaryReflections(
       if (!stored || stored !== field.value) return;
       answer.textContent = stored;
       answer.hidden = edit.hidden = false;
-      field.hidden = true;
+      editor.hidden = true;
     });
-    return h('div', { class: 'diary-reflection' }, h('label', { for: fieldId }, prompt), answer, edit, field);
+    return h('div', { class: 'diary-reflection' }, h('label', { for: fieldId }, prompt), answer, edit, editor);
   });
   return h('details', { class: 'diary-reflections' },
     h('summary', {}, 'Optional reflections'), ...editors, status);
@@ -172,7 +175,7 @@ function diaryNotes(view: AdventureJournalView, controller: GameController, refr
     flushJournalWriting(controller);
     refresh();
   } }, h('label', { for: 'diary-note-kind' }, 'Entry type'), kind,
-    h('label', { for: 'diary-note-text' }, 'Your note'), text,
+    h('label', { for: 'diary-note-text' }, 'Your note'), conceptEditor(text),
     h('button', { type: 'submit' }, 'Save note'), status);
   return h('section', { class: 'adventure-journal' }, h('h3', {}, 'My notes, reflections, and questions'),
     h('p', { class: 'fine' }, 'Private entries saved with this adventure.'), form,
