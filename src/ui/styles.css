@@ -247,6 +247,8 @@ legend { color: var(--gold); padding: 0 0.4em; }
 .diary-reflections { margin-top: 0.7rem; }
 .diary-reflections > summary { cursor: pointer; width: fit-content; max-width: 100%; }
 .diary-reflection { display: grid; gap: 0.3rem; margin-top: 0.65rem; }
+.diary-response { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.diary-reflection button { justify-self: start; }
 .diary-reflection textarea, .diary-note-form textarea { width: 100%; box-sizing: border-box; }
 .diary-reflections [role='status']:empty, .diary-note-form [role='status']:empty { display: none; }
 .awards.locked { color: var(--ink-dim); }

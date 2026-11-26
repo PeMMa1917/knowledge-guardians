@@ -65,8 +65,15 @@ function diaryReflections(
   if (!reflections?.length) return null;
   const status = h('p', { class: 'fine', role: 'status' });
   const editors = reflections.map(({ id, prompt, response }) => {
-    const field = h('textarea', { rows: 3 });
+    const fieldId = `reflection-${encodeURIComponent(entry)}-${encodeURIComponent(id)}`;
+    const field = h('textarea', { id: fieldId, rows: 3, hidden: !!response });
     field.value = response ?? '';
+    const answer = h('p', { class: 'diary-response', hidden: !response }, response);
+    const edit = h('button', { type: 'button', hidden: !response, onclick: () => {
+      edit.hidden = answer.hidden = true;
+      field.hidden = false;
+      field.focus();
+    } }, 'Edit reflection');
     let stored = field.value;
     bindJournalEditor(field, (text) => {
       if (text === stored) return;
@@ -75,8 +82,14 @@ function diaryReflections(
       if (failure) { status.textContent = failure.message; return; }
       stored = text;
       queueJournalWriting(controller, status);
-    }, () => flushJournalWriting(controller));
-    return h('label', { class: 'diary-reflection' }, h('span', {}, prompt), field);
+    }, () => {
+      flushJournalWriting(controller);
+      if (!stored || stored !== field.value) return;
+      answer.textContent = stored;
+      answer.hidden = edit.hidden = false;
+      field.hidden = true;
+    });
+    return h('div', { class: 'diary-reflection' }, h('label', { for: fieldId }, prompt), answer, edit, field);
   });
   return h('details', { class: 'diary-reflections' },
     h('summary', {}, 'Optional reflections'), ...editors, status);
