@@ -20,12 +20,15 @@ const problems: string[] = [];
 let dismissed: string[] = [];
 try { dismissed = JSON.parse(localStorage.getItem('kg.teacher.dismissed') ?? '[]'); } catch { /* storage blocked */ }
 
-const chapterSteps = [1, 2, 3, 4].map((number) => {
-  const belongs = (id: string) => number === 1 ? !/^KG-CH[234]-/.test(id) : id.startsWith(`KG-CH${number}-`);
-  const ids = new Set(pack.missions.filter((m) => belongs(m.id))
-    .flatMap((m) => m.objectives.filter((o) => o.essential).map((o) => o.id)));
-  return { label: `Chapter ${number} steps`, ids };
-});
+const essentialByChapter = new Map<number, Set<string>>();
+for (const mission of pack.missions) {
+  const chapter = Number(/^KG-CH(\d+)-/.exec(mission.id)?.[1] ?? 1);
+  const ids = essentialByChapter.get(chapter) ?? new Set<string>();
+  for (const objective of mission.objectives) if (objective.essential) ids.add(objective.id);
+  if (ids.size) essentialByChapter.set(chapter, ids);
+}
+const chapterSteps = [...essentialByChapter].sort(([a], [b]) => a - b)
+  .map(([chapter, ids]) => ({ label: `Chapter ${chapter} steps`, ids }));
 
 /** EE practice trails (spec 92.2): shown as practice only (EE-003). */
 const EE_STEPS = pack.missions.filter((m) => m.id.includes('-EE')).flatMap((m) => m.objectives);

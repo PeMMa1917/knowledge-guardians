@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { forestWatch, type ForestWindow } from '../src/domain/forestWatch';
 import { check } from '../src/domain/rules';
 import { MAPS } from '../src/maps';
 import { coverageGaps, type TimedEncounter } from '../tools/tok-coverage';
@@ -45,6 +46,15 @@ function readSign(d: Driver, id: string): void {
   if (!sign?.text) throw new Error(`Missing sign text for ${id}`);
   expect(check(sign.visibleIf, d.s), `${id} visible`).toBe(true);
   if (sign.flag) d.run({ type: 'SetFlag', flag: sign.flag, value: true });
+}
+
+function watchForest(d: Driver, site: string, window: ForestWindow) {
+  const spot = MAPS[d.s.mapId].interactables.find((p) => p.kind === 'forest-watch' && p.node === site);
+  if (!spot) throw new Error(`Missing watch spot for ${site}`);
+  expect(check(spot.visibleIf, d.s), `${site} watch spot visible`).toBe(true);
+  d.run({ type: 'ObserveForest', site, window });
+  expect(d.s.flags[`forest.watch.${site}.${window}`]).toBe(true);
+  return forestWatch(site, window);
 }
 
 // Times below are author estimates of when these actions could finish. This
@@ -134,7 +144,7 @@ function nexusToEmberford(explore: boolean): Route {
   return route;
 }
 
-function nileDispatch(borrowedMark: boolean): Route {
+function nileDispatch({ borrowedMark = false, readingWindow = false } = {}): Route {
   const route = new Route();
   const d = route.driver;
   // Independent return-session fixture. These flags represent earlier progress.
@@ -150,15 +160,24 @@ function nileDispatch(borrowedMark: boolean): Route {
     d.talk('nile-leila', 'workers stopping');
     expect(d.done('nile.workers')).toBe(true);
   });
-  route.at(18, 'Put the scribe’s name first and make space for missing voices', ['perspectives', 'ethics'], useProp('nile.reader-seat', 'slip'));
-  if (borrowedMark) route.at(23, 'Use the keepers’ swatch to justify a label about shared practice with the maker left unnamed', ['truth', 'certainty', 'culture', 'justification', 'scope', 'methods-and-tools'], (d) => {
+  if (readingWindow) route.at(18, 'Change the opening under the same reading window, then show both reading customs beside the same dated record', [
+    'objectivity', 'explanation', 'interpretation', 'truth', 'certainty', 'culture', 'scope', 'methods-and-tools',
+  ], (d) => {
+    d.talk('nile-leila', 'Try the two readings again', 'Turn the clips', 'Ask Leila how', 'Hang both ways');
+    expect(d.done('nile.workers.proof')).toBe(true);
+    expect(d.s.flags['nile.workerLead']).toBe('voices');
+    readSign(d, 'nile-window-pair');
+  });
+  const readingMinutes = readingWindow ? 3 : 0;
+  route.at(18 + readingMinutes, 'Put the scribe’s name first and make space for missing voices', ['perspectives', 'ethics'], useProp('nile.reader-seat', 'slip'));
+  if (borrowedMark) route.at(23 + readingMinutes, 'Use the keepers’ swatch to justify a label about shared practice with the maker left unnamed', ['truth', 'certainty', 'culture', 'justification', 'scope', 'methods-and-tools'], (d) => {
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-ARCHIVE-PRACTICE-SWATCH' });
     useDoor(d, 'workyard-back');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-ARCHIVE-RECEIVING-TAG' });
     d.run({ type: 'BuildLabel', kit: 'nile-borrowed-mark', subject: 'cloth', criterion: 'shared', limit: 'open' });
     expect(d.done('nile.mark.publish')).toBe(true);
   });
-  const extra = borrowedMark ? 5 : 0;
+  const extra = readingMinutes + (borrowedMark ? 5 : 0);
   route.at(27 + extra, 'Compare two model roads and choose what travels', ['objectivity', 'explanation', 'values', 'justification', 'scope', 'methods-and-tools'], (d) => {
     if (!borrowedMark) useDoor(d, 'workyard-back');
     useDoor(d, 'nile-maps');
@@ -293,6 +312,67 @@ function observatoryCoast(bellSlip: boolean): Route {
   return route;
 }
 
+function livingForest(): Route {
+  const route = new Route();
+  // Independent Chapter 5 session. The coast's revised notice is already up.
+  route.driver.s.objectivesDone.push('coast.revise');
+  route.at(4, 'Hear what a lookout crossing counts before heading out to check the bridge claim', ['perspective', 'scope'], (d) => {
+    useDoor(d, 'forest-door');
+    d.talk('forest-naturalist', 'What do we call a crossing');
+    expect(d.done('forest.arrival')).toBe(true);
+  });
+  route.at(11, 'Compare early crossings at the creek and ridge, one against three', ['evidence', 'methods-and-tools'], (d) => {
+    useDoor(d, 'forest-trail-path');
+    expect(watchForest(d, 'creek', 'early')).toEqual([0, 1, 0]);
+    expect(watchForest(d, 'ridge', 'early')).toEqual([1, 2, 0]);
+  });
+  route.at(18, 'Repeat at the same sites in a later window and find the order reversed, three crossings against one', ['objectivity', 'certainty', 'truth', 'methods-and-tools'], (d) => {
+    expect(watchForest(d, 'creek', 'late')).toEqual([1, 0, 2]);
+    expect(watchForest(d, 'ridge', 'late')).toEqual([0, 0, 1]);
+  });
+  route.at(22, 'Compare matching windows with the naturalist and state how visibility limits a crossing count', ['explanation', 'interpretation', 'justification', 'scope'], (d) => {
+    useDoor(d, 'forest-trail-back');
+    d.talk('forest-naturalist', 'same watch');
+    expect(d.done('forest.compare')).toBe(true);
+  });
+  route.at(26, 'Keep the words of the lamp crew and the bridge keepers with their own rounds in the pathbook', ['culture', 'perspective', 'perspectives'], (d) => {
+    useDoor(d, 'forest-community-path');
+    readSign(d, 'forest-pathbook');
+    d.talk('forest-steward', 'Keep the crews’ own words');
+    expect(d.done('forest.account')).toBe(true);
+  });
+  route.at(29, 'Choose a quiet watch route and point large groups toward the wider lookout', ['power', 'values', 'responsibility', 'ethics'], (d) => {
+    d.talk('forest-steward', 'Keep the creek stop');
+    expect(d.done('forest.publish')).toBe(true);
+    expect(d.s.flags['forest.response']).toBe('quiet');
+    readSign(d, 'forest-response-quiet');
+  });
+  route.at(37, 'Record two crossings at each return watch and keep the blocked creek beat unknown', ['truth', 'certainty', 'objectivity', 'evidence', 'methods-and-tools'], (d) => {
+    useDoor(d, 'forest-bridge-to-trail');
+    expect(watchForest(d, 'creek', 'return')).toEqual([1, null, 1]);
+    expect(watchForest(d, 'ridge', 'return')).toEqual([0, 1, 1]);
+    expect(d.done('forest.recheck')).toBe(true);
+  });
+  route.at(42, 'Show how an unseen crossing could make the recorded counts match', ['interpretation', 'justification', 'explanation', 'responsibility', 'scope', 'ethics'], (d) => {
+    useDoor(d, 'forest-clearing-path');
+    d.talk('forest-steward', 'mark the hidden stretch');
+    expect(d.done('forest.finish')).toBe(true);
+    readSign(d, 'forest-followup-note');
+  });
+  route.at(47, 'Bring both notes and the view limits down to the low bench', ['power', 'responsibility', 'perspective', 'perspectives', 'ethics'], (d) => {
+    d.talk('forest-steward', 'Bring both notes');
+    expect(d.done('forest.access')).toBe(true);
+    readSign(d, 'forest-low-route');
+  });
+  route.at(52, 'Give the Gombe field caption the date and the people behind the record', ['evidence', 'culture', 'responsibility', 'power'], (d) => {
+    useDoor(d, 'forest-community-back');
+    for (const exhibit of ['OBJ-FOREST-GOMBE', 'OBJ-FOREST-GOMBE-CONTEXT']) d.run({ type: 'InspectExhibit', exhibit });
+    d.talk('forest-naturalist', 'put the Gombe team back');
+    expect(d.done('forest.gombe-credit')).toBe(true);
+  });
+  return route;
+}
+
 describe('rolling TOK coverage audit', () => {
   it('checks gaps between sampled actions and expires an encounter at the window boundary', () => {
     const encounters: TimedEncounter[] = [
@@ -317,11 +397,13 @@ describe('rolling TOK coverage audit', () => {
   it.each([
     { name: 'Nexus main route into Emberford', end: 42, play: () => nexusToEmberford(false) },
     { name: 'Nexus and Emberford with optional stops', end: 85, play: () => nexusToEmberford(true) },
-    { name: 'Nile first visit from a prepared Chapter 1 save', end: 50, play: () => nileDispatch(false) },
-    { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch(true) },
+    { name: 'Nile first visit from a prepared Chapter 1 save', end: 50, play: () => nileDispatch() },
+    { name: 'Nile first visit with the Reading Window', end: 53, play: () => nileDispatch({ readingWindow: true }) },
+    { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch({ borrowedMark: true }) },
     { name: 'Preserved Lives from a prepared Chapter 2 save', end: 50, play: preservedLives },
     { name: 'Observatory Coast from a prepared Chapter 3 save', end: 50, play: () => observatoryCoast(false) },
     { name: 'Observatory Coast with the quay bell slip', end: 52, play: () => observatoryCoast(true) },
+    { name: 'Living Forest from a prepared Chapter 4 save', end: 55, play: livingForest },
   ])('can execute the modeled route for $name and report its gaps', ({ name, end, play }) => {
     const route = play();
     const gaps = coverageGaps(end, route.encounters);

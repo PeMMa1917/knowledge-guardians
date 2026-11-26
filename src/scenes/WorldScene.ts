@@ -960,6 +960,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'seal': if (ctx.controller.state.flags[`trap.${it.seal}.open`] !== true) ctx.ui.openSeal(it.seal!); break;
       case 'boss': ctx.ui.openBoss(); break;
       case 'model': ctx.ui.openNileModel(); break;
+      case 'forest-watch': ctx.ui.openForestWatch(it.node!); break;
       case 'scene': ctx.ui.playScene(it.node!); break;
       case 'secret': {
         const x = (ctx.controller.pack.secrets ?? []).find((y) => y.id === it.secret);

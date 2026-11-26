@@ -4,7 +4,7 @@ import type { MapDef } from '../src/maps/types';
 import { STAMPS } from '../src/scenes/art';
 import { artKeys, BIG_ART } from '../src/ui/illustrations';
 
-const maps = Object.values(MAPS).filter((map) => ['WORLD-04', 'WORLD-05'].includes(map.world));
+const maps = Object.values(MAPS).filter((map) => ['WORLD-04', 'WORLD-05', 'WORLD-06'].includes(map.world));
 const art = new Set(artKeys());
 
 /** The same walkable tiles as the world scene, including furniture and actors. */
@@ -29,7 +29,7 @@ function walkable(map: MapDef) {
   return (x: number, y: number) => map.floor(x, y) !== null && !blocked.has(`${x},${y}`);
 }
 
-describe('Preserved Lives and Observatory Coast layouts', () => {
+describe('Chapter layouts after the Nile Archive', () => {
   it.each(maps)('$name has an approach to every actor and prop, and clear arrival tiles', (map) => {
     const isWalkable = walkable(map);
     const directions = [[0, 1], [0, -1], [1, 0], [-1, 0]];

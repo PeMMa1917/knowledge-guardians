@@ -1,0 +1,337 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH4-R04",
+   "world": "WORLD-05",
+   "title": "One Yard, Two Ways",
+   "knowledgeQuestion": "When do two honest measures of a route lead to different decisions?",
+   "available": {
+    "flag": "coast.fold.received",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "coast.fold.handover",
+     "title": "Follow the Fold’s marked route and see who receives its readings.",
+     "essential": false,
+     "done": {
+      "flag": "coast.fold.received",
+      "eq": true
+     },
+     "onComplete": [
+      {
+       "journal": "j.coast.fold"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "perspective",
+       "values",
+       "responsibility"
+      ],
+      "atl": [
+       "thinking",
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "MAT",
+       "HUM",
+       "ART"
+      ],
+      "subjects": [
+       "math-ai",
+       "geography",
+       "visual-arts"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "characters": [
+  {
+   "id": "coast-fold-keeper",
+   "name": "Talla Muir",
+   "role": "Keeps Marl Fold’s shared yard",
+   "sprite": "custom:tan.auburn.cream.indigo.scarf.gold.bun.none.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "if": {
+      "flag": "coast.fold.received",
+      "eq": true
+     },
+     "node": "coast.fold.received"
+    },
+    {
+     "if": {
+      "flag": "coast.fold.route",
+      "eq": "stair"
+     },
+     "node": "coast.fold.stair"
+    },
+    {
+     "if": {
+      "flag": "coast.fold.route",
+      "eq": "cart"
+     },
+     "node": "coast.fold.cart"
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "flagSet": "coast.notice"
+       },
+       {
+        "flag": "coast.fold.stair-log",
+        "eq": true
+       },
+       {
+        "flag": "coast.fold.cart-log",
+        "eq": true
+       }
+      ]
+     },
+     "node": "coast.fold.plan"
+    },
+    {
+     "if": {
+      "all": [
+       {
+        "not": {
+         "flagSet": "coast.notice"
+        }
+       },
+       {
+        "flag": "coast.fold.stair-log",
+        "eq": true
+       },
+       {
+        "flag": "coast.fold.cart-log",
+        "eq": true
+       }
+      ]
+     },
+     "node": "coast.fold.wait"
+    },
+    {
+     "node": "coast.fold.hello"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "coast.fold.hello",
+   "speaker": "coast-fold-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "When the quay asks for the Fold’s readings, the porters go down the stone stair and the growers send a cart. The path chart calls both 'the short way'. The next crew needs a clearer board.",
+   "options": [
+    {
+     "text": "Where do you count a run from?",
+     "next": "coast.fold.measure"
+    },
+    {
+     "text": "Will you mark both ways?",
+     "next": "coast.fold.reserve"
+    },
+    {
+     "text": "I’ll go around the yard."
+    }
+   ]
+  },
+  {
+   "id": "coast.fold.measure",
+   "speaker": "coast-fold-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "From this yard to the same quay, before any unloading. That’s where our two tallies stop. Look by the lower wall for the porter’s tally. The carter’s is near the stall."
+  },
+  {
+   "id": "coast.fold.reserve",
+   "speaker": "coast-fold-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "The trail crew can set and tend one line of markers this week. The other way stays on the yard chart. We can give the crew a first job without rubbing either path off the map."
+  },
+  {
+   "id": "coast.fold.wait",
+   "speaker": "coast-fold-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "Both tallies are here. They came from a dry day. Before we put times on the route board, let’s put the harbour’s dated notice next to them. That way the crew can tell which sheet is a measurement of rain and which gives travel times."
+  },
+  {
+   "id": "coast.fold.plan",
+   "speaker": "coast-fold-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "The dated notice can go beside the tallies. The stone stair gets one tray there sooner. The cart takes longer for one trip, but it can take a full stack. We have one trail crew. Give them a mark for the route you want them to tend first.",
+   "options": [
+    {
+     "text": "Paint a stair outline for porters carrying one tray.",
+     "next": "coast.fold.stair",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flagSet": "coast.notice"
+         },
+         {
+          "flag": "coast.fold.stair-log",
+          "eq": true
+         },
+         {
+          "flag": "coast.fold.cart-log",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "coast.fold.route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "coast.fold.route",
+       "value": "stair"
+      }
+     ]
+    },
+    {
+     "text": "Draw a wheel for carts with a full stack of trays.",
+     "next": "coast.fold.cart",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flagSet": "coast.notice"
+         },
+         {
+          "flag": "coast.fold.stair-log",
+          "eq": true
+         },
+         {
+          "flag": "coast.fold.cart-log",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "coast.fold.route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "coast.fold.route",
+       "value": "cart"
+      }
+     ]
+    },
+    {
+     "text": "Why did two old sheets both say 'first boat'?",
+     "next": "coast.fold.old-names",
+     "if": {
+      "flag": "coast.fold.old-sheet",
+      "eq": true
+     }
+    },
+    {
+     "text": "Leave the chalk here for now."
+    }
+   ]
+  },
+  {
+   "id": "coast.fold.old-names",
+   "speaker": "coast-fold-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "My aunt counted the first tray out of the yard. The clerk at the quay counted the first one unloaded. Both wrote 'first boat' on the tally. We can keep their old words and put the two endpoints beside them.",
+   "options": [
+    {
+     "text": "Clip a slip under each heading to show where the count starts.",
+     "if": {
+      "not": {
+       "flag": "coast.fold.names-noted",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "coast.fold.names-noted",
+       "value": true
+      }
+     ],
+     "next": "coast.fold.names-posted"
+    },
+    {
+     "text": "Leave the sheets here."
+    }
+   ]
+  },
+  {
+   "id": "coast.fold.names-posted",
+   "speaker": "coast-fold-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "The next clerk can see both headings, and which tally starts where. I’ll leave a clip beside them for the day we find the old unloading times."
+  },
+  {
+   "id": "coast.fold.stair",
+   "speaker": "coast-fold-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "I’ll send a porter with the fresh readings. The first marks go down the steps by the lower wall. We’ll keep the cart road on the chart and leave the wet-day line blank until a crew walks it. Follow the marked stair if you want to see the handover."
+  },
+  {
+   "id": "coast.fold.cart",
+   "speaker": "coast-fold-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "I’ll send the readings on the first cart. A wheel mark can go by the hedge gate and the ramp at the far end. We’ll leave the stair on the chart and keep the timing beside the word 'dry'. Follow the marked lane if you want to see the handover."
+  },
+  {
+   "id": "coast.fold.received",
+   "speaker": "coast-fold-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "The quay clerk sent the empty clip back. They kept the place and the time with the readings. We’ll put a separate line in the tally after the next wet-day run."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.coast.fold.1",
+   "objective": "coast.fold.handover",
+   "depth": 1,
+   "text": "Two crews carry the Fold’s readings to the same quay."
+  },
+  {
+   "id": "h.coast.fold.2",
+   "objective": "coast.fold.handover",
+   "depth": 2,
+   "text": "The porters’ tally is by the lower wall. The carter’s tally is near the stall."
+  },
+  {
+   "id": "h.coast.fold.3",
+   "objective": "coast.fold.handover",
+   "depth": 3,
+   "text": "When there’s a dated notice from the harbour and both tallies are open, ask Talla which path the crew should mark."
+  },
+  {
+   "id": "h.coast.fold.4",
+   "objective": "coast.fold.handover",
+   "depth": 4,
+   "text": "Use the marked stair or hedge lane after setting the board. Look for the Fold’s bundle at the landing side of that route."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.coast.fold",
+   "claimKind": "observation",
+   "text": "Marl Fold’s readings reached the quay. Its two dry-day tallies count distance in time and cargo in trays. Our board keeps both measures. The wet-day line is still open."
+  }
+ ]
+}

@@ -114,3 +114,32 @@ describe('the borrowed mark', () => {
     expect(totalXP(d.p)).toBe(xp);
   });
 });
+
+describe('the reading window', () => {
+  it.each([
+    ['workers stopping', 'voices', 'Hang both ways', 'pair'],
+    ['Lead with the payment', 'payment', 'Keep the reading window', 'fold'],
+  ])('turns the clips after choosing %s and preserves the dispatch option', (pick, lead, placement, display) => {
+    const d = new Driver();
+    d.s.mapId = 'nile.workyard';
+    d.s.inventory['tool.provenance-thread'] = 1;
+    d.run({ type: 'SetFlag', flag: 'nile.arrived', value: true });
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-STRIKE' });
+    for (const node of ['delay', 'payment', 'return']) d.run({ type: 'FollowThread', thread: 'nile-strike', node });
+
+    // The completed investigation remains available on its original conditions.
+    d.talk('nile-leila', pick, 'Leave the opening');
+    expect(d.done('nile.workers')).toBe(true);
+    expect(d.done('nile.workers.proof')).toBe(false);
+    expect(d.s.flags['nile.workerLead']).toBe(lead);
+
+    const xp = totalXP(d.p);
+    d.talk('nile-leila', 'Try the two readings', 'Turn the clips', 'Ask Leila how', placement);
+    expect(d.done('nile.workers.proof')).toBe(true);
+    expect(d.s.flags['nile.workerLead']).toBe(lead);
+    expect(MAPS['nile.workyard'].interactables
+      .filter((prop) => prop.id.startsWith('nile-window-') && check(prop.visibleIf, d.s))
+      .map((prop) => prop.id)).toEqual([`nile-window-${display}`]);
+    expect(totalXP(d.p)).toBe(xp);
+  });
+});

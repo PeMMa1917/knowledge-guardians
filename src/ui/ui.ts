@@ -1,4 +1,5 @@
 import { NILE_TRIALS, NILE_DELIVERIES, type NileDelivery } from '../domain/nileModel';
+import { FOREST_WATCH, FOREST_WINDOWS, forestWatch, type ForestWindow } from '../domain/forestWatch';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -3225,6 +3226,98 @@ export class UI implements UIApi {
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
+  openForestWatch(site: string): void {
+    if (!Object.hasOwn(FOREST_WATCH, site)) return;
+    const c = ctx.controller;
+    const spot = FOREST_WATCH[site];
+    const labels = { early: 'First light', late: 'Later watch', return: 'Return watch' };
+    const controls = h('div', { class: 'row' });
+    const sightings = h('ol', { class: 'history' });
+    const live = h('p', { role: 'status', 'aria-live': 'polite' });
+    const notes = h('ul', {});
+    const recorded = (id: string, window: ForestWindow) => c.state.flags[`forest.watch.${id}.${window}`] === true;
+    const summary = (id: string, window: ForestWindow) => {
+      const watch = forestWatch(id, window);
+      const total = watch.reduce<number>((sum, n) => sum + (n ?? 0), 0);
+      return `${total} visible ${total === 1 ? 'crossing' : 'crossings'}.${watch.includes(null) ? ' The view was blocked for one beat.' : ''}`;
+    };
+    const refreshNotes = () => {
+      clear(notes);
+      for (const [id, lookout] of Object.entries(FOREST_WATCH)) {
+        for (const window of FOREST_WINDOWS.filter((w) => recorded(id, w))) {
+          notes.append(h('li', {}, `${lookout.name}, ${labels[window].toLowerCase()}: ${summary(id, window)}`));
+        }
+      }
+      if (!notes.childElementCount) notes.append(h('li', {}, 'No watches recorded yet.'));
+    };
+    const picture = h('canvas', { width: '144', height: '54', class: 'mark', 'aria-hidden': 'true' }) as HTMLCanvasElement;
+    const paint = (count: number | null) => {
+      const g = picture.getContext('2d');
+      if (!g) return;
+      g.fillStyle = '#a0c8ad'; g.fillRect(0, 0, 144, 54);
+      g.fillStyle = '#426858'; g.fillRect(0, 39, 144, 15);
+      g.fillStyle = site === 'creek' ? '#88bfc4' : '#a19c80'; g.fillRect(0, 44, 144, 10);
+      g.fillStyle = '#304e43';
+      for (const x of [5, 17, 112, 129]) {
+        g.fillRect(x, 16, 7, 29); g.fillRect(x - 5, 9, 17, 14);
+      }
+      if (count === null) {
+        g.fillStyle = '#63774a';
+        for (let x = 25; x < 112; x += 6) g.fillRect(x, 14 + x % 11, 4, 37);
+      } else {
+        g.fillStyle = '#212a38';
+        for (let i = 0; i < count; i++) {
+          const x = 50 + i * 30;
+          g.fillRect(x, 26, 7, 2); g.fillRect(x - 3, 24, 3, 2); g.fillRect(x + 7, 24, 3, 2);
+        }
+      }
+    };
+    const description = (count: number | null) => count === null ? 'The view was blocked.'
+      : count === 0 ? 'No crossings visible.' : count === 1 ? 'One crossing visible.' : `${count} crossings visible.`;
+    const start = (window: ForestWindow) => {
+      const watch = forestWatch(site, window);
+      let beat = 0;
+      clear(controls); clear(sightings);
+      paint(0);
+      live.textContent = `${labels[window]}. Watch for three beats.`;
+      const advance = h('button', { type: 'button', class: 'primary', onclick: () => {
+        const count = watch[beat++];
+        paint(count);
+        sightings.append(h('li', {}, description(count)));
+        live.textContent = description(count);
+        if (beat < watch.length) return;
+        const events = c.dispatch({ type: 'ObserveForest', site, window });
+        if (!events.some((e) => e.kind === 'error')) {
+          live.textContent = `Watch recorded. ${summary(site, window)}`;
+          refreshNotes();
+        }
+        clear(controls);
+        const another = h('button', { type: 'button', onclick: () => {
+          choose();
+          controls.querySelector('button')?.focus();
+        } }, 'Choose another watch');
+        controls.append(another);
+        another.focus();
+      } }, 'Watch the next beat');
+      controls.append(advance);
+      advance.focus();
+    };
+    const choose = () => {
+      clear(controls);
+      const windows = FOREST_WINDOWS.filter((window) => window !== 'return' || !!c.state.flags['forest.response']);
+      for (const window of windows) {
+        controls.append(h('button', { type: 'button', onclick: () => start(window) },
+          labels[window] + (recorded(site, window) ? ' (recorded)' : '')));
+      }
+    };
+    choose();
+    paint(0);
+    refreshNotes();
+    this.openModal('forest-watch', spot.name, this.closeBtn(), h('h2', {}, spot.name),
+      h('p', {}, spot.view), h('p', { class: 'fine' }, 'The same three beats at each spot. A bird can cross more than once.'),
+      picture, controls, sightings, live, h('details', {}, h('summary', {}, 'Pinned field notes'), notes));
   }
 
   /** A controlled comparison. The physical load stays fixed while the path changes. */

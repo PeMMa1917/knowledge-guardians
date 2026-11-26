@@ -980,18 +980,34 @@
   {
    "id": "nile.workers-led-voices",
    "speaker": "nile-leila",
-   "text": "That puts the workers at the entrance to their own story. I’ll move the official reply alongside, where it can answer them.",
+   "text": "That puts the workers at the entrance to their own story. I’ll move the official reply alongside, where it can answer them. Leila sets a narrow paper window over your first slip. A visitor reads the stoppage and asks how the people in charge replied.",
    "historicalLabel": "fictional-world",
-   "options": [],
+   "options": [
+    {
+     "text": "Leave the opening slip in place."
+    },
+    {
+     "text": "Turn the clips with the same reading window.",
+     "next": "nile.window-turn-voices"
+    }
+   ],
    "effects": [],
    "next": null
   },
   {
    "id": "nile.workers-led-payment",
    "speaker": "nile-leila",
-   "text": "The official reply can go first, if the next line keeps the dispute open. I’ll pin both slips under the same clip.",
+   "text": "The official reply can go first, if the next line keeps the dispute open. I’ll pin both slips under the same clip. Leila sets a narrow paper window over your first slip. A visitor reads that grain arrives and asks if that settled the matter.",
    "historicalLabel": "fictional-world",
-   "options": [],
+   "options": [
+    {
+     "text": "Leave the opening slip in place."
+    },
+    {
+     "text": "Turn the clips with the same reading window.",
+     "next": "nile.window-turn-payment"
+    }
+   ],
    "effects": [],
    "next": null
   },
@@ -1000,7 +1016,27 @@
    "speaker": "nile-leila",
    "text": "The clips have stopped rattling. People pause over the second slip now, long enough to see why the first one cannot stand alone.",
    "historicalLabel": "fictional-world",
-   "options": [],
+   "options": [
+    {
+     "text": "Leave the room open."
+    },
+    {
+     "text": "Try the two readings again.",
+     "next": "nile.workers-led-voices",
+     "if": {
+      "flag": "nile.workerLead",
+      "eq": "voices"
+     }
+    },
+    {
+     "text": "Try the two readings again.",
+     "next": "nile.workers-led-payment",
+     "if": {
+      "flag": "nile.workerLead",
+      "eq": "payment"
+     }
+    }
+   ],
    "effects": [],
    "next": null
   },
@@ -1761,6 +1797,79 @@
    "speaker": "nile-iman",
    "historicalLabel": "fictional-world",
    "text": "People keep bringing me tags with Mara’s name on both lines. The receiving tag is beside the old stand. Leila shows the apprentices how they make their marks in the Workmen’s Room."
+  },
+  {
+   "id": "nile.window-turn-voices",
+   "speaker": "nile-leila",
+   "text": "Under the same paper window, the same visitor now reads about the grain first. “Oh. So they paid and the workers stayed?” Lift the paper. The renewed stoppage is right where it was. You changed the opening and kept the window and the lines. You have heard what this reader made of the two openings.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Ask Leila how people carry these readings home.",
+     "next": "nile.window-customs"
+    },
+    {
+     "text": "Close the window for now."
+    }
+   ]
+  },
+  {
+   "id": "nile.window-turn-payment",
+   "speaker": "nile-leila",
+   "text": "Under the same paper window, the same visitor now reads the stoppage first. “So the payment was one answer to a demand.” Lift the paper. The renewed stoppage is right where it was. You changed the opening and kept the window and the lines. You have heard what this reader made of the two openings.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Ask Leila how people carry these readings home.",
+     "next": "nile.window-customs"
+    },
+    {
+     "text": "Close the window for now."
+    }
+   ]
+  },
+  {
+   "id": "nile.window-customs",
+   "speaker": "nile-leila",
+   "text": "The visitors here have two habits. People who learned the stories at our lending table take turns speaking a request and then its reply. The desk readers start with the dated delivery line they can check in the book. When a paper leaves this room, it needs a name and a date for either reading. The source gives a record of more than one stoppage. It leaves the workers’ private feelings open.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang both ways of reading with names and dates.",
+     "next": "nile.window-pair",
+     "effects": [
+      {
+       "setFlag": "nile.workers.window",
+       "value": "pair"
+      }
+     ]
+    },
+    {
+     "text": "Keep the reading window. Pin the full sequence below it.",
+     "next": "nile.window-fold",
+     "effects": [
+      {
+       "setFlag": "nile.workers.window",
+       "value": "fold"
+      }
+     ]
+    },
+    {
+     "text": "Leave the slips as they were."
+    }
+   ]
+  },
+  {
+   "id": "nile.window-pair",
+   "speaker": "nile-leila",
+   "text": "Leila pins the lending-table reading beside the desk order with the scribe’s name on both. Two readers can hear the other order without swapping the source.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.window-fold",
+   "speaker": "nile-leila",
+   "text": "Leila keeps the paper opening. Under the flap she pins the stoppage, payment and later stoppage in order. On the outer tab she names the two reading habits so a visitor can see why either might start somewhere else.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "chronicle": [
@@ -2215,6 +2324,30 @@
    "objective": "nile.mark.publish",
    "depth": 4,
    "text": "Mount a label about the handover or the practice and leave the first maker unnamed. Both displays can hold."
+  },
+  {
+   "id": "h.nile.workers.proof.1",
+   "objective": "nile.workers.proof",
+   "depth": 1,
+   "text": "Leila keeps the slips in clips so the top line can change."
+  },
+  {
+   "id": "h.nile.workers.proof.2",
+   "objective": "nile.workers.proof",
+   "depth": 2,
+   "text": "Speak to Leila in the Workmen’s Room after you choose which slip leads."
+  },
+  {
+   "id": "h.nile.workers.proof.3",
+   "objective": "nile.workers.proof",
+   "depth": 3,
+   "text": "Turn the clips under the same paper window, then ask how the readers carry the story home."
+  },
+  {
+   "id": "h.nile.workers.proof.4",
+   "objective": "nile.workers.proof",
+   "depth": 4,
+   "text": "Leave the readings side by side or keep the opening flap with the full record underneath."
   }
  ],
  "criteria": [
@@ -3087,6 +3220,57 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH2-R08",
+   "world": "WORLD-03",
+   "title": "The Reading Window",
+   "knowledgeQuestion": "How does the first line shape what people think a record explains?",
+   "available": {
+    "objective": "nile.workers"
+   },
+   "objectives": [
+    {
+     "id": "nile.workers.proof",
+     "title": "Try both openings with Leila, then leave a proof visitors can check.",
+     "done": {
+      "flagSet": "nile.workers.window"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "explanation",
+       "truth",
+       "certainty",
+       "culture"
+      ],
+      "atl": [
+       "thinking",
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "psychology"
+      ]
+     },
+     "skills": [
+      "SK-THK-05",
+      "SK-MED-04"
+     ],
+     "kq": {
+      "id": "KQ-NILE-02",
+      "action": "turn two readings through the same window"
+     }
+    }
+   ]
   }
  ],
  "clues": [
@@ -3306,6 +3490,15 @@
    },
    "did": "You gave the workers credit for what their records showed and left the maker’s name open.",
    "prompt": "What would you need to find before signing the empty line?"
+  },
+  {
+   "id": "mom.nile-reading-window",
+   "attribute": "open-minded",
+   "when": {
+    "objective": "nile.workers.proof"
+   },
+   "did": "You tried a reader’s other opening with the same record and kept both reading habits in reach.",
+   "prompt": "Where else could a first line change what a reader expects to find?"
   }
  ]
 }

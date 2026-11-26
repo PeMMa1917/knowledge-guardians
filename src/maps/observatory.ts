@@ -67,6 +67,16 @@ export const OBSERVATORY_HARBOUR: MapDef = {
     sign('coast-notice-spare', 14, 7, 'the notice at the steps', 'coast.signal',
       'A spare notice carries both places and the time of the reading. The next crew can see what was measured even if they miss the first copy.',
       { visibleIf: { flag: 'coast.copy.present', eq: true } }),
+    sign('coast-fold-harbour-stair', 6, 10, 'the Fold’s bundle at the stone stair', 'coast.runner',
+      'The quay clerk takes the Fold’s readings from a porter at the stair. The marked walk gives each porter a place to hand over a sheet. Boxes still reach the quay by the longer road.',
+      { flag: 'coast.fold.received', visibleIf: { all: [
+        { flag: 'coast.fold.route', eq: 'stair' }, { flag: 'coast.fold.crossed', eq: true },
+      ] } }),
+    sign('coast-fold-harbour-cart', 19, 10, 'the Fold’s bundle at the unloading ramp', 'preserved.slip',
+      'A carter hangs the Fold’s readings where the trays are unloaded. The crew moves four trays in one delivery. The clerk keeps the stair on the map for people already walking.',
+      { flag: 'coast.fold.received', visibleIf: { all: [
+        { flag: 'coast.fold.route', eq: 'cart' }, { flag: 'coast.fold.crossed', eq: true },
+      ] } }),
   ],
   lights: [
     { x: 21, y: 15, r: 58, color: 0xa3dbdf }, { x: 9, y: 12, r: 65, color: 0xf5d29b },
@@ -101,6 +111,8 @@ export const OBSERVATORY_STATION: MapDef = {
   interactables: [
     { id: 'coast-headland-return', kind: 'door', x: 11, y: 15, w: 1, h: 1, label: 'the steps down to Slate Harbour',
       art: 'coast.waypost', to: { map: 'observatory.harbour', x: 13, y: 6 } },
+    { id: 'coast-fold-path', kind: 'door', x: 3, y: 9, w: 1, h: 1, label: 'the track to Marl Fold',
+      art: 'coast.waypost', to: { map: 'observatory.inland', x: 21, y: 13 } },
     sign('coast-station-gauge', 20, 6, 'the station gauge', 'coast.gauge',
       'Headland rain gauge. Five finger-widths of water in one bell, on the exposed headland.',
       { flag: 'coast.gauge.station' }),
@@ -114,5 +126,64 @@ export const OBSERVATORY_STATION: MapDef = {
   lights: [
     { x: 11, y: 5, r: 58, color: 0xf8d7a7 }, { x: 15, y: 9, r: 52, color: 0xf4e5b0 },
     { x: 20, y: 8, r: 61, color: 0xaadbd9 },
+  ],
+};
+
+const foldWidth = 26;
+const foldHeight = 18;
+
+function foldFloor(x: number, y: number): string | null {
+  if (x < 0 || x >= foldWidth || y < 0 || y >= foldHeight) return null;
+  if (y >= 14 && x <= 6) return null;
+  if (y >= 11 && y <= 13 && x >= 4 && x <= 22) return 'stone-c';
+  if (x >= 9 && x <= 13 && y >= 5 && y <= 10) return 'stone-c';
+  return 'grass';
+}
+
+export const OBSERVATORY_INLAND: MapDef = {
+  id: 'observatory.inland', name: 'Observatory Coast: Marl Fold', world: 'WORLD-05',
+  width: foldWidth, height: foldHeight, music: 'music.town', ambience: 'town',
+  background: 0x3d6154, floor: foldFloor,
+  blocks: [], zones: [], spawn: { x: 21, y: 13 },
+  npcs: [{ id: 'coast-fold-keeper', x: 12, y: 9, facing: 'down' }],
+  stamps: [
+    { stamp: 'house-a', x: 4, y: 2 }, { stamp: 'house-b', x: 17, y: 2 },
+    { stamp: 'stall', x: 10, y: 5 }, { stamp: 'tree', x: 1, y: 2 },
+    { stamp: 'tree', x: 21, y: 5 }, { stamp: 'tree', x: 7, y: 8 },
+    { stamp: 'crates', x: 10, y: 8 }, { stamp: 'barrel', x: 4, y: 12 },
+    { stamp: 'bench', x: 15, y: 11 }, { stamp: 'flowers-white', x: 8, y: 4 },
+    { stamp: 'bush', x: 6, y: 13 }, { stamp: 'flowers-small', x: 18, y: 12 },
+  ],
+  interactables: [
+    { id: 'coast-fold-return', kind: 'door', x: 23, y: 13, w: 1, h: 1, label: 'the track back to Headland Station',
+      art: 'coast.waypost', to: { map: 'observatory.station', x: 4, y: 9 } },
+    sign('coast-fold-stair-log', 5, 8, 'the porter’s dry-day tally', 'coast.runner',
+      'Marl Fold yard to Slate Harbour quay. Dry day. Stone stair: nine minutes out, nine back. A porter takes one tray. The narrow turn blocks the cart. The tally ends at the quay, before unloading.',
+      { flag: 'coast.fold.stair-log' }),
+    sign('coast-fold-cart-log', 16, 7, 'the carter’s dry-day tally', 'preserved.slip',
+      'Marl Fold yard to Slate Harbour quay. Dry day. Hedge lane: fourteen minutes out, fourteen back. A cart takes four trays. The tally ends at the quay, before unloading.',
+      { flag: 'coast.fold.cart-log' }),
+    sign('coast-fold-old-sheet', 12, 7, 'the old sheet beside the route board', 'forecast-board',
+      'One faint line is marked “first boat”. The Fold’s older sheet counted a tray from the yard. The quay’s sheet counted a delivery when the trays were off the cart. Two clerks had copied the same heading.',
+      { flag: 'coast.fold.old-sheet', visibleIf: { not: { flag: 'coast.fold.names-noted', eq: true } } }),
+    sign('coast-fold-endpoints', 12, 7, 'the old tallies with their endpoints', 'preserved.display-paired',
+      'Both sheets still say “first boat”. A slip under the Fold’s heading marks the first tray out of the yard. A second slip marks the quay’s first tray unloaded. The dates and writing on the sheets stay visible.',
+      { visibleIf: { flag: 'coast.fold.names-noted', eq: true } }),
+    sign('coast-fold-stair-board', 13, 9, 'the posted foot route', 'coast.runner',
+      'STONE STAIR. One tray by hand. The stair outline marks the turn. The board gives the dry-day times and leaves a space for a wet-day run.',
+      { visibleIf: { flag: 'coast.fold.route', eq: 'stair' } }),
+    sign('coast-fold-cart-board', 13, 9, 'the posted cart route', 'coast.waypost',
+      'HEDGE LANE. Four trays in one cart. The wheel mark leads to the ramp. The board gives the dry-day times and leaves a space for a wet-day run.',
+      { visibleIf: { flag: 'coast.fold.route', eq: 'cart' } }),
+    { id: 'coast-fold-stair', kind: 'door', x: 2, y: 10, w: 1, h: 1, label: 'the marked stone stair to Slate Harbour',
+      art: 'coast.runner', flag: 'coast.fold.crossed', to: { map: 'observatory.harbour', x: 7, y: 11 },
+      visibleIf: { flag: 'coast.fold.route', eq: 'stair' } },
+    { id: 'coast-fold-cart', kind: 'door', x: 19, y: 9, w: 1, h: 1, label: 'the marked hedge lane to Slate Harbour',
+      art: 'coast.waypost', flag: 'coast.fold.crossed', to: { map: 'observatory.harbour', x: 18, y: 10 },
+      visibleIf: { flag: 'coast.fold.route', eq: 'cart' } },
+  ],
+  lights: [
+    { x: 11, y: 8, r: 67, color: 0xf6d9a0 }, { x: 16, y: 7, r: 48, color: 0xf1e6b0 },
+    { x: 5, y: 8, r: 48, color: 0xd3e2d4 }, { x: 22, y: 13, r: 49, color: 0xb4decc },
   ],
 };

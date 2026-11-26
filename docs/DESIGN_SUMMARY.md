@@ -15,6 +15,7 @@ The game does not grade the player. It gives the same credit for every reasoned 
 - Chapter 2 takes the Guardian from the Nexus to the Nile Archive and back. The full design has many more worlds.
 - The Cold Store opens the Preserved Lives arc in Chapter 3. Its royal and Chinchorro rooms each distinguish a claim, the record that supports it, and a gap that stays visible.
 - Chapter 4 opens the fictional Observatory Coast. Its harbour and headland produce different readings. The first notice reaches different people depending on how the player sends it, which matters when a new reading arrives.
+- Chapter 5 opens the Living Forest field exercise. Comparable watches at two lookouts show how time and line of sight shape what an observer can record. Players leave a visible response for walkers and revisit the record with a later watch.
 
 ## Core tools (play, not quizzes)
 

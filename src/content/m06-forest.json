@@ -1,0 +1,1386 @@
+{
+ "sources": [
+  {
+   "id": "HIS-S17",
+   "title": "Jane Goodall Institute: Timeline",
+   "url": "https://janegoodall.org/jgi-timeline/",
+   "locator": "1960 entry on making and using tools",
+   "supports": "At Gombe in 1960, Jane Goodall recorded a chimpanzee making and using a tool to obtain termites.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-S18",
+   "title": "Jane Goodall Institute: Voices of Gombe",
+   "url": "https://janegoodall.org/news/voices-of-gombe-a-network-of-impact/",
+   "locator": "Historical overview of the field team and Sims Patton's account of a first datasheet",
+   "supports": "The historical account credits generations of Tanzanian scientists and field assistants. A researcher names field assistant Baraka Daniel as a collaborator on a datasheet.",
+   "accessed": "2026-11-26"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.forest.gombe",
+   "title": "A tool use observation at Gombe",
+   "text": "The Jane Goodall Institute's timeline describes Jane Goodall observing the chimpanzee David Greybeard making and using a tool to obtain termites at Gombe in 1960.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-S17"
+   ],
+   "limits": "An observation places this behaviour at a time and place. This summary gives neither every chimpanzee's use of tools nor what an animal thought.",
+   "person": {
+    "name": "Jane Goodall",
+    "life": "Gombe observation recorded in 1960",
+    "place": "Gombe, present-day Tanzania",
+    "era": "20th century",
+    "continent": "Africa"
+   }
+  },
+  {
+   "id": "card.forest.team",
+   "title": "The people who kept the Gombe record",
+   "text": "The Jane Goodall Institute's account describes the Tanzanian scientists and field assistants who helped sustain research at Gombe. In one account, a visiting researcher names Baraka Daniel as a field assistant who helped collect data.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-S18"
+   ],
+   "limits": "The account describes contributions over many years. This later field sheet gives no information about who was present at the 1960 observation."
+  }
+ ],
+ "exhibits": [
+  {
+   "id": "OBJ-FOREST-GOMBE",
+   "name": "A 1960 Gombe observation",
+   "art": "preserved.catalogue",
+   "historicalLabel": "documented",
+   "dateText": "1960",
+   "dateKind": "OBSERVATION YEAR. The timeline gives the year of the observation. The desk copy is a modern summary.",
+   "summary": "The Institute's timeline describes a chimpanzee making and using a tool at Gombe. The Living Forest lookout is a separate, invented record.",
+   "sources": [
+    "HIS-S17"
+   ],
+   "grantsCard": "card.forest.gombe",
+   "altText": "An open catalogue and two separate paper slips."
+  },
+  {
+   "id": "OBJ-FOREST-GOMBE-CONTEXT",
+   "name": "The Gombe research team",
+   "art": "forest.field-diagram",
+   "historicalLabel": "documented",
+   "dateText": "65 years of work described in 2025",
+   "dateKind": "DATE OF A RETROSPECTIVE ACCOUNT. It was written long after the observation in the other exhibit.",
+   "summary": "The Gombe record grew through the work of field assistants and scientists across generations. The acknowledgement keeps a specific collaborator’s name beside what they helped to record.",
+   "sources": [
+    "HIS-S18"
+   ],
+   "grantsCard": "card.forest.team",
+   "altText": "A woodland route diagram with a blue creek, a dotted path and ruled field notes."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH5-M01",
+   "world": "WORLD-06",
+   "title": "Where the Wings Go",
+   "knowledgeQuestion": "What changes when we watch the same place from another position or listen to someone who works there?",
+   "available": {
+    "objective": "coast.revise"
+   },
+   "objectives": [
+    {
+     "id": "forest.arrival",
+     "title": "Take the forest passage after the Observatory Coast sends its correction.",
+     "done": {
+      "flag": "forest.arrived",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective"
+      ],
+      "atl": [
+       "self-management"
+      ],
+      "aoks": [
+       "NAT"
+      ],
+      "subjects": [
+       "biology"
+      ]
+     },
+     "skills": []
+    },
+    {
+     "id": "forest.compare",
+     "title": "Watch both trail lookouts twice, then compare notes with Naturalist Elian.",
+     "done": {
+      "flagSet": "forest.comparison"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "explanation",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "self-management"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT"
+      ],
+      "subjects": [
+       "biology",
+       "ess",
+       "math-ai"
+      ]
+     },
+     "skills": [
+      "SK-NUM-14",
+      "SK-RSC-21"
+     ],
+     "visible": {
+      "objective": "forest.arrival"
+     }
+    },
+    {
+     "id": "forest.account",
+     "title": "Read the bridge keeper’s route book and talk it over with Steward Ayla.",
+     "done": {
+      "flag": "forest.report",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "interpretation",
+       "culture"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT"
+      ],
+      "subjects": [
+       "anthropology",
+       "geography"
+      ]
+     },
+     "skills": [
+      "SK-ICU-18",
+      "SK-SPK-01"
+     ],
+     "visible": {
+      "objective": "forest.arrival"
+     }
+    },
+    {
+     "id": "forest.publish",
+     "title": "Help Ayla decide where visitors will get the new record.",
+     "done": {
+      "flagSet": "forest.response"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT"
+      ],
+      "subjects": [
+       "ess",
+       "geography",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "visible": {
+      "all": [
+       {
+        "objective": "forest.compare"
+       },
+       {
+        "objective": "forest.account"
+       }
+      ]
+     },
+     "onComplete": [
+      {
+       "credit": "credit.forest.publish"
+      },
+      {
+       "checkpoint": "Living Forest: visitor notice posted"
+      }
+     ]
+    },
+    {
+     "id": "forest.recheck",
+     "title": "Watch the two lookouts again and keep track of the obstructed view.",
+     "done": {
+      "all": [
+       {
+        "flag": "forest.watch.creek.return",
+        "eq": true
+       },
+       {
+        "flag": "forest.watch.ridge.return",
+        "eq": true
+       }
+      ]
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "truth",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "self-management"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT"
+      ],
+      "subjects": [
+       "biology",
+       "math-ai"
+      ]
+     },
+     "skills": [
+      "SK-RSC-15"
+     ],
+     "visible": {
+      "objective": "forest.publish"
+     }
+    },
+    {
+     "id": "forest.finish",
+     "title": "Bring the return watches to Ayla and change the notice.",
+     "done": {
+      "flag": "forest.followup",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "interpretation",
+       "responsibility",
+       "certainty"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "biology",
+       "lang-langlit",
+       "ess"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-WRT-13"
+     ],
+     "visible": {
+      "objective": "forest.recheck"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.forest.finish"
+      },
+      {
+       "journal": "j.forest.finish"
+      },
+      {
+       "checkpoint": "Living Forest: return watch shared"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH5-R01",
+   "world": "WORLD-06",
+   "title": "A Seat for the Record",
+   "knowledgeQuestion": "Who has a way to examine a shared record?",
+   "available": {
+    "objective": "forest.finish"
+   },
+   "objectives": [
+    {
+     "id": "forest.access",
+     "title": "Leave lookout notes at the low waiting bench.",
+     "done": {
+      "flag": "forest.low-route",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "responsibility",
+       "power"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "geography",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-COL-05"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.forest.access"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH5-R02",
+   "world": "WORLD-06",
+   "title": "Names in the Notebook",
+   "knowledgeQuestion": "What work becomes harder to see when an account keeps only its best-known name?",
+   "available": {
+    "all": [
+     {
+      "flag": "forest.arrived",
+      "eq": true
+     },
+     {
+      "card": "card.forest.gombe"
+     },
+     {
+      "card": "card.forest.team"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "forest.gombe-credit",
+     "title": "Trace two different contributions in the Gombe records.",
+     "done": {
+      "flag": "forest.gombe.credited",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "culture",
+       "power",
+       "perspective",
+       "evidence"
+      ],
+      "atl": [
+       "research",
+       "communication"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT"
+      ],
+      "subjects": [
+       "history",
+       "biology",
+       "anthropology"
+      ]
+     },
+     "skills": [
+      "SK-ICU-14",
+      "SK-MED-01"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.forest.gombe"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "characters": [
+  {
+   "id": "forest-naturalist",
+   "name": "Naturalist Elian",
+   "role": "Forest lookout keeper",
+   "sprite": "scholar-sefa",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "forest.station.returned",
+     "if": {
+      "objective": "forest.finish"
+     }
+    },
+    {
+     "node": "forest.station.return",
+     "if": {
+      "flagSet": "forest.response"
+     }
+    },
+    {
+     "node": "forest.station.ready",
+     "if": {
+      "objective": "forest.compare"
+     }
+    },
+    {
+     "node": "forest.station.compare",
+     "if": {
+      "all": [
+       {
+        "flag": "forest.watch.creek.early",
+        "eq": true
+       },
+       {
+        "flag": "forest.watch.creek.late",
+        "eq": true
+       },
+       {
+        "flag": "forest.watch.ridge.early",
+        "eq": true
+       },
+       {
+        "flag": "forest.watch.ridge.late",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "forest.station.welcome"
+    }
+   ]
+  },
+  {
+   "id": "forest-steward",
+   "name": "Steward Ayla",
+   "role": "Steward of the forest bridge",
+   "sprite": "warden-ise",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "forest.steward.after",
+     "if": {
+      "objective": "forest.finish"
+     }
+    },
+    {
+     "node": "forest.steward.revise.quiet",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.recheck"
+       },
+       {
+        "flag": "forest.response",
+        "eq": "quiet"
+       }
+      ]
+     }
+    },
+    {
+     "node": "forest.steward.revise.brief",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.recheck"
+       },
+       {
+        "flag": "forest.response",
+        "eq": "brief"
+       }
+      ]
+     }
+    },
+    {
+     "node": "forest.steward.wait",
+     "if": {
+      "flagSet": "forest.response"
+     }
+    },
+    {
+     "node": "forest.steward.decide",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.compare"
+       },
+       {
+        "objective": "forest.account"
+       },
+       {
+        "not": {
+         "flagSet": "forest.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "node": "forest.steward.revisit",
+     "if": {
+      "objective": "forest.account"
+     }
+    },
+    {
+     "node": "forest.steward.book",
+     "if": {
+      "flag": "forest.pathbook",
+      "eq": true
+     }
+    },
+    {
+     "node": "forest.steward.welcome"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "forest.station.welcome",
+   "speaker": "forest-naturalist",
+   "text": "The bridge board says the birds have left the creek. Every shift seems to tell a different story. Take the trail to the creek and ridge lookouts. Watch the same two intervals at each. Keep the crossing count with the part of the forest you could see.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "What do we call a crossing?",
+     "next": "forest.station.crossing"
+    },
+    {
+     "text": "Could we put the Gombe team back in the caption?",
+     "next": "forest.station.history",
+     "if": {
+      "all": [
+       {
+        "card": "card.forest.gombe"
+       },
+       {
+        "card": "card.forest.team"
+       },
+       {
+        "not": {
+         "flag": "forest.gombe.credited",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll take the trail."
+    }
+   ]
+  },
+  {
+   "id": "forest.station.crossing",
+   "speaker": "forest-naturalist",
+   "text": "A small bird passes across the open part of your view. That is one crossing. If it turns round and comes back, that can leave two marks. Reeds can hide some passes completely.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.station.compare",
+   "speaker": "forest-naturalist",
+   "text": "Look, the early notes go one at the creek and three at the ridge. The later notes go the other way. Before Ayla hangs up a visitor notice, how shall we set out the notes so a visitor can see the difference?",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Put the two lookouts together under the same watch.",
+     "next": "forest.compare.watch",
+     "effects": [
+      {
+       "setFlag": "forest.comparison",
+       "value": "watch"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "forest.watch.creek.early",
+          "eq": true
+         },
+         {
+          "flag": "forest.watch.creek.late",
+          "eq": true
+         },
+         {
+          "flag": "forest.watch.ridge.early",
+          "eq": true
+         },
+         {
+          "flag": "forest.watch.ridge.late",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "forest.comparison"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Put each lookout’s early and late marks together.",
+     "next": "forest.compare.place",
+     "effects": [
+      {
+       "setFlag": "forest.comparison",
+       "value": "place"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "forest.watch.creek.early",
+          "eq": true
+         },
+         {
+          "flag": "forest.watch.creek.late",
+          "eq": true
+         },
+         {
+          "flag": "forest.watch.ridge.early",
+          "eq": true
+         },
+         {
+          "flag": "forest.watch.ridge.late",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "forest.comparison"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Could we put the Gombe team back in the caption?",
+     "next": "forest.station.history",
+     "if": {
+      "all": [
+       {
+        "card": "card.forest.gombe"
+       },
+       {
+        "card": "card.forest.team"
+       },
+       {
+        "not": {
+         "flag": "forest.gombe.credited",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll look again."
+    }
+   ]
+  },
+  {
+   "id": "forest.compare.watch",
+   "speaker": "forest-naturalist",
+   "text": "That layout lets us compare places before we compare times. The early creek figure stays beside the reeds note. It counts the crossings we could see from the screen.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.compare.place",
+   "speaker": "forest-naturalist",
+   "text": "Each site now has a before and after. Keep the two sets on the same page. The ridge goes down while the creek goes up. A single forest total would hide that.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.station.ready",
+   "speaker": "forest-naturalist",
+   "text": "Take the comparison to Ayla. She works with the lamp rounds and the bridge shifts. Their book goes back farther than our two watches, but it has a different job.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Could we put the Gombe team back in the caption?",
+     "next": "forest.station.history",
+     "if": {
+      "all": [
+       {
+        "card": "card.forest.gombe"
+       },
+       {
+        "card": "card.forest.team"
+       },
+       {
+        "not": {
+         "flag": "forest.gombe.credited",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll find Ayla."
+    }
+   ]
+  },
+  {
+   "id": "forest.station.return",
+   "speaker": "forest-naturalist",
+   "text": "There’s room for one more interval on both sheets. Try both lookouts again before we call what we saw a pattern.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Could we put the Gombe team back in the caption?",
+     "next": "forest.station.history",
+     "if": {
+      "all": [
+       {
+        "card": "card.forest.gombe"
+       },
+       {
+        "card": "card.forest.team"
+       },
+       {
+        "not": {
+         "flag": "forest.gombe.credited",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll try the return watch."
+    }
+   ]
+  },
+  {
+   "id": "forest.station.returned",
+   "speaker": "forest-naturalist",
+   "text": "I kept the matched intervals on the board. A worker can add another line without losing the difference between a heard note and a crossing seen from the screen.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Could we put the Gombe team back in the caption?",
+     "next": "forest.station.history",
+     "if": {
+      "all": [
+       {
+        "card": "card.forest.gombe"
+       },
+       {
+        "card": "card.forest.team"
+       },
+       {
+        "not": {
+         "flag": "forest.gombe.credited",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll leave the notes with you."
+    }
+   ]
+  },
+  {
+   "id": "forest.station.history",
+   "speaker": "forest-naturalist",
+   "text": "The timeline tells us about a 1960 observation. The other source shows the many hands behind the long record. I’ll put both on the caption. There’s room to name Baraka Daniel beside the field sheet described in that later account.",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "forest.gombe.credited",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "forest.steward.welcome",
+   "speaker": "forest-steward",
+   "text": "My sister keeps the bridge after the late bell. I lead the dawn lamp round. Listen to us both and you’ll hear about wings in different places. Take the route book on the bridge before we decide what to tell the visitors.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.steward.book",
+   "speaker": "forest-steward",
+   "text": "Our notes follow the work shifts. The lamp crew went past the reeds early. The bridge keepers heard wings along the ridge later. We wrote those notes so the next crew could compare what it heard. How would you keep them beside the lookout counts?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep the crews’ own words beside the lookout names.",
+     "next": "forest.account.words",
+     "effects": [
+      {
+       "setFlag": "forest.report",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "forest.pathbook",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "forest.report",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Give heard and seen notes their own lines.",
+     "next": "forest.account.lines",
+     "effects": [
+      {
+       "setFlag": "forest.report",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "forest.pathbook",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "forest.report",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll come back."
+    }
+   ]
+  },
+  {
+   "id": "forest.account.words",
+   "speaker": "forest-steward",
+   "text": "Good. A new keeper will know whose round to ask about. Our notes may point to a place worth watching. They don’t tell you how many passed.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.account.lines",
+   "speaker": "forest-steward",
+   "text": "That leaves a line for what we heard without turning it into a count. I’ll keep the crew names on both, so the next person can ask where the notes began.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.steward.revisit",
+   "speaker": "forest-steward",
+   "text": "The bridge book's ready. Ask Elian to set out the two watches from each lookout. We can use both records once you have that comparison.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.steward.decide",
+   "speaker": "forest-steward",
+   "text": "People are coming to ask whether to try the creek or the ridge. A large group could get in the way at the small creek screen. Some of the people waiting on the bridge won’t go up the ridge at all. I can put a quiet-screen notice by the creek or brief everyone here with both logs.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep the creek stop for small groups and point larger groups to the ridge.",
+     "next": "forest.response.quiet",
+     "effects": [
+      {
+       "setFlag": "forest.response",
+       "value": "quiet"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "forest.compare"
+       },
+       {
+        "objective": "forest.account"
+       },
+       {
+        "not": {
+         "flagSet": "forest.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Read both lookout notes at the bridge, with both lookouts still open.",
+     "next": "forest.response.brief",
+     "effects": [
+      {
+       "setFlag": "forest.response",
+       "value": "brief"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "forest.compare"
+       },
+       {
+        "objective": "forest.account"
+       },
+       {
+        "not": {
+         "flagSet": "forest.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Wait here a moment."
+    }
+   ]
+  },
+  {
+   "id": "forest.response.quiet",
+   "speaker": "forest-steward",
+   "text": "The quiet-screen notice will help small groups wait their turn. I’ll show people where the ridge offers a wider view. Put the lookout notes with the route so nobody takes the route choice as proof about the birds.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.response.brief",
+   "speaker": "forest-steward",
+   "text": "The people who stay at the bridge can hear both notes. I’ll keep room in the briefing circle for someone to read the crews’ lines too. Anyone who goes on will know why the views may differ.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.steward.wait",
+   "speaker": "forest-steward",
+   "text": "The notice has gone out. One more watch at each lookout could help us see which parts of it we’ll want to change.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.steward.revise.quiet",
+   "speaker": "forest-steward",
+   "text": "Two crossings from each lookout on the return watch. The creek reeds interrupted your view this time. People at the screen asked whether they should tell the next group that there are equal numbers of birds.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Add the return counts to the screen notice and mark the hidden stretch.",
+     "next": "forest.update.quiet",
+     "effects": [
+      {
+       "setFlag": "forest.followup",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "forest.recheck"
+       },
+       {
+        "flag": "forest.response",
+        "eq": "quiet"
+       },
+       {
+        "not": {
+         "flag": "forest.followup",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the sheet here for a moment."
+    }
+   ]
+  },
+  {
+   "id": "forest.steward.revise.brief",
+   "speaker": "forest-steward",
+   "text": "A reader at the bridge saw the two return counts and said the views must be equal now. They haven’t heard about the reeds yet. We can add the new note without taking down the first account.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Brief the bridge readers on the matched counts and the interrupted view.",
+     "next": "forest.update.brief",
+     "effects": [
+      {
+       "setFlag": "forest.followup",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "forest.recheck"
+       },
+       {
+        "flag": "forest.response",
+        "eq": "brief"
+       },
+       {
+        "not": {
+         "flag": "forest.followup",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the sheet here for a moment."
+    }
+   ]
+  },
+  {
+   "id": "forest.update.quiet",
+   "speaker": "forest-steward",
+   "text": "A visitor taps the empty beat on the notice. A crossing hidden by the reeds would never reach the tally. That could make the totals match even if more crossings happened at the creek. She leaves a pencil by the gap for the next watcher.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.update.brief",
+   "speaker": "forest-steward",
+   "text": "A reader traces the two sight lines. At the creek, the reeds could hide a crossing that the ridge watcher would have seen. We’ll clip the sight lines beside the tallies and keep the earlier watches within reach.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.steward.after",
+   "speaker": "forest-steward",
+   "text": "You can still take either trail. If you stay by the bridge, we can make the notes easier to reach from the lower path.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Bring both notes and their view limits down to the low bench.",
+     "next": "forest.access.copy",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.finish"
+       },
+       {
+        "not": {
+         "flag": "forest.low-route",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll look around first."
+    }
+   ]
+  },
+  {
+   "id": "forest.access.copy",
+   "speaker": "forest-steward",
+   "text": "There’s a dry ledge beside the waiting bench. I’ll leave both notes there and mark who made them. A person who waits below can still set our observations side by side.",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "forest.low-route",
+     "value": true
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.forest.arrival.1",
+   "objective": "forest.arrival",
+   "depth": 1,
+   "text": "Someone is waiting for the next record in the Nexus."
+  },
+  {
+   "id": "h.forest.arrival.2",
+   "objective": "forest.arrival",
+   "depth": 2,
+   "text": "Elian has sent an invitation from the Living Forest station."
+  },
+  {
+   "id": "h.forest.arrival.3",
+   "objective": "forest.arrival",
+   "depth": 3,
+   "text": "Return to the Nexus after helping Ruan update the Observatory Coast notice."
+  },
+  {
+   "id": "h.forest.arrival.4",
+   "objective": "forest.arrival",
+   "depth": 4,
+   "text": "Use the forest passage in the Nexus."
+  },
+  {
+   "id": "h.forest.compare.1",
+   "objective": "forest.compare",
+   "depth": 1,
+   "text": "Two crossings can be two trips by one bird."
+  },
+  {
+   "id": "h.forest.compare.2",
+   "objective": "forest.compare",
+   "depth": 2,
+   "text": "The creek and ridge give different views. Compare at the same times."
+  },
+  {
+   "id": "h.forest.compare.3",
+   "objective": "forest.compare",
+   "depth": 3,
+   "text": "At each lookout, observe the early and late watches. The intervals take the same amount of time within the story."
+  },
+  {
+   "id": "h.forest.compare.4",
+   "objective": "forest.compare",
+   "depth": 4,
+   "text": "Read both watches at each lookout, then return to Elian and choose how to lay out the four notes."
+  },
+  {
+   "id": "h.forest.account.1",
+   "objective": "forest.account",
+   "depth": 1,
+   "text": "People working nearby may notice things the lookout notes miss."
+  },
+  {
+   "id": "h.forest.account.2",
+   "objective": "forest.account",
+   "depth": 2,
+   "text": "Follow the path to the community bridge and find the route book."
+  },
+  {
+   "id": "h.forest.account.3",
+   "objective": "forest.account",
+   "depth": 3,
+   "text": "The route book records things the lamp crew and bridge keepers heard. Read it before talking to Ayla."
+  },
+  {
+   "id": "h.forest.account.4",
+   "objective": "forest.account",
+   "depth": 4,
+   "text": "With the book read, ask Ayla how to keep the crews’ notes alongside the lookout counts."
+  },
+  {
+   "id": "h.forest.publish.1",
+   "objective": "forest.publish",
+   "depth": 1,
+   "text": "Both proposals share the observations. They serve people in different ways."
+  },
+  {
+   "id": "h.forest.publish.2",
+   "objective": "forest.publish",
+   "depth": 2,
+   "text": "Consider visitors at the creek screen and the people who wait at the bridge."
+  },
+  {
+   "id": "h.forest.publish.3",
+   "objective": "forest.publish",
+   "depth": 3,
+   "text": "Go back to Ayla once Elian has the comparison and you’ve heard the local account."
+  },
+  {
+   "id": "h.forest.publish.4",
+   "objective": "forest.publish",
+   "depth": 4,
+   "text": "Choose a quiet screen with a wider ridge visit, or a bridge briefing and both open lookouts."
+  },
+  {
+   "id": "h.forest.recheck.1",
+   "objective": "forest.recheck",
+   "depth": 1,
+   "text": "A second visit tests what the first record can carry."
+  },
+  {
+   "id": "h.forest.recheck.2",
+   "objective": "forest.recheck",
+   "depth": 2,
+   "text": "The next watch is set on both lookouts after Ayla posts the notice."
+  },
+  {
+   "id": "h.forest.recheck.3",
+   "objective": "forest.recheck",
+   "depth": 3,
+   "text": "Return to the creek and ridge. Use the return watch at each one."
+  },
+  {
+   "id": "h.forest.recheck.4",
+   "objective": "forest.recheck",
+   "depth": 4,
+   "text": "The return counts match. Keep the interruption at the creek attached to its count."
+  },
+  {
+   "id": "h.forest.finish.1",
+   "objective": "forest.finish",
+   "depth": 1,
+   "text": "Two matching counts can still come from different views."
+  },
+  {
+   "id": "h.forest.finish.2",
+   "objective": "forest.finish",
+   "depth": 2,
+   "text": "Tell people which return view was partly hidden."
+  },
+  {
+   "id": "h.forest.finish.3",
+   "objective": "forest.finish",
+   "depth": 3,
+   "text": "Talk to Ayla at the bridge after the return watch at both lookouts."
+  },
+  {
+   "id": "h.forest.finish.4",
+   "objective": "forest.finish",
+   "depth": 4,
+   "text": "Add the limits to the quiet-screen notice or the bridge briefing, whichever you sent first."
+  },
+  {
+   "id": "h.forest.access.1",
+   "objective": "forest.access",
+   "depth": 1,
+   "text": "Find out who can follow the lookout trails and who waits lower down."
+  },
+  {
+   "id": "h.forest.access.2",
+   "objective": "forest.access",
+   "depth": 2,
+   "text": "Ayla can show you the waiting bench by the bridge."
+  },
+  {
+   "id": "h.forest.access.3",
+   "objective": "forest.access",
+   "depth": 3,
+   "text": "Talk to Ayla after the return watch notice is up."
+  },
+  {
+   "id": "h.forest.access.4",
+   "objective": "forest.access",
+   "depth": 4,
+   "text": "Ask to bring copies of both lookout notes to the low bench. Keep the views and limits named."
+  },
+  {
+   "id": "h.forest.gombe-credit.1",
+   "objective": "forest.gombe-credit",
+   "depth": 1,
+   "text": "There are two historical records in the Field Station."
+  },
+  {
+   "id": "h.forest.gombe-credit.2",
+   "objective": "forest.gombe-credit",
+   "depth": 2,
+   "text": "Look for the note on tool use and the later account of the team at Gombe."
+  },
+  {
+   "id": "h.forest.gombe-credit.3",
+   "objective": "forest.gombe-credit",
+   "depth": 3,
+   "text": "Read both exhibits and return to Elian."
+  },
+  {
+   "id": "h.forest.gombe-credit.4",
+   "objective": "forest.gombe-credit",
+   "depth": 4,
+   "text": "Discuss both credits with Elian. Keep the 1960 observation apart from the later history of the field team."
+  }
+ ],
+ "criteria": [
+  {
+   "id": "credit.forest.publish",
+   "concept": "responsibility",
+   "maximum": 8
+  },
+  {
+   "id": "credit.forest.finish",
+   "concept": "certainty",
+   "maximum": 8
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.forest.finish",
+   "title": "Where the wings go",
+   "text": "I put the two lookout counts beside the crews' accounts, then made room for a return watch. Both return counts were two crossings. The reeds had interrupted the creek view. We added that detail to the notice."
+  },
+  {
+   "id": "j.forest.access",
+   "title": "A seat for the record",
+   "text": "Ayla and I set both lookout notes by the low bench. The copy names the lookout, the interval, the observer and what was out of view."
+  },
+  {
+   "id": "j.forest.gombe",
+   "title": "Names in the notebook",
+   "text": "The 1960 timeline and the later history of the Gombe team tell us about different contributions. We kept Jane Goodall's observation alongside a later account that credits field assistant Baraka Daniel."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.forest.compare",
+   "attribute": "inquirer",
+   "when": {
+    "objective": "forest.compare"
+   },
+   "did": "You returned to both lookouts and kept their different views in the observation notes."
+  },
+  {
+   "id": "mom.forest.finish",
+   "attribute": "reflective",
+   "when": {
+    "objective": "forest.finish"
+   },
+   "did": "You added an interrupted view to the public account after comparing the return watches."
+  },
+  {
+   "id": "mom.forest.access",
+   "attribute": "caring",
+   "when": {
+    "objective": "forest.access"
+   },
+   "did": "You brought the full observation notes to people who use the lower path."
+  }
+ ]
+}

@@ -184,15 +184,24 @@ The sources and object limits are in `docs/SOURCES.md`; the rooms and their fict
 - **A Copy for the Ferry:** prepare the packet from dated records, workshop strips or translation proofs. Choose a public reader or copies, then meet the packet again at Tova's landing.
 - **The Copy in the Square:** trace how a claim travelled in Emberford and decide who should carry the correction. The new notice and the buyer's response depend on the handover.
 - **The Borrowed Mark and A Slip Comes Back:** compare a craft record with a shared method, then choose a label that leaves the first maker open. After dispatch, find the reader's reply and decide where to leave the response.
+- **The Reading Window:** either Workmen's Room route can try two first lines with the reader and papers held fixed. Compare what the reader notices, then leave a display that keeps the date, the source and the different reading practices together.
 
 ## Chapter 3: The Missing Transfer
 
 The Nile Archive return opens the Cold Store independent of its optional trails. Follow the royal custody trail through a gap in the file, put up a supported heading, and visit the Chinchorro records to compare preservation in context. Choose separate stands, paired records or review before display. Each opens the inquiry room with a different reader request. The response travels back to the Nexus. An optional excavation proof places the documented workers' names or a dated record trail first. The [source register](docs/SOURCES.md#chapter-3-preserved-lives) describes what each record supports.
 
+**The Printer's Empty Sleeve** adds a separate workroom. Compare the Mawangdui context and the published methods of the Xin Zhui reconstruction, then lift or attach papers to show what is constrained and what the model supplies. The archive can open a process display or retain a working set with its limits. Both routes leave a visible result.
+
 ## Chapter 4: The Next Bell
 
 The quay and headland reports give two readings for the same bell. Compare them with a conditional weather model, then send a notice by signal or runner. A later reading puts the first notice under pressure. Update it in the same channel or make a copy for readers it missed. The board and route reflect the choice. An optional quay slip lets the player keep local work language and the station's timed interval clear for two reading audiences.
 
+**One Yard, Two Ways** adds Marl Fold, an inland district reached from the station path. Compare two dry-day tallies, then use the crew's one marking shift on the foot stair or the cart lane. Walk the marked route and find its handover point at the harbour.
+
+## Chapter 5: Where the Wings Go
+
+The Observatory correction opens the Living Forest. Take equal three-beat watches at the creek screen and ridge in either order. Compare the first-light and later crossing counts, then check the bridge crews' separate accounts before choosing a quiet-route notice or a public briefing. Return to both lookouts and add an honest correction that leaves the blocked creek beat open. Optional trails bring the record to a low bench and use two historical Gombe records to add contributor credit.
+
 ## Thirty-minute design audit
 
-Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Both opening traces, the Cold Store trace and the Observatory route with the quay slip reach all 12 concepts and four framework areas within their first estimated half hour. The route past the quay slip can miss culture. Later windows still have gaps. In the Nile Archive, the direct trace misses certainty, truth and culture in its first window. The detour through The Borrowed Mark supplies those while moving the evidence comparison for objectivity and explanation past that first window. The estimates need checking in unassisted timed playtests.
+Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Both opening traces, the Nile Reading Window route, the Cold Store trace, the Observatory route with the quay slip, and the Living Forest trace reach all 12 concepts and four framework areas within their first estimated half hour. Three alternate traces and some later windows still show gaps. The report keeps the route actions and time estimates visible so unassisted timed playtests can challenge them.

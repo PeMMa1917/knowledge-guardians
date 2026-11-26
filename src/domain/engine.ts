@@ -1,4 +1,5 @@
 import { runNileTrial, nileDelivery, type NileRoad, type NileDelivery } from './nileModel';
+import { forestWatch, type ForestWindow } from './forestWatch';
 /**
  * Domain engine. Scenes send typed commands; the engine checks preconditions,
  * computes ONE valid state transition and returns events for the view to show
@@ -94,6 +95,7 @@ export type Command =
   | { type: 'RunSimulation'; pen: string; surface: string }
   | { type: 'NileRouteTrial'; road: NileRoad }
   | { type: 'NileDelivery'; choice: NileDelivery }
+  | { type: 'ObserveForest'; site: string; window: ForestWindow }
   | { type: 'BuildLabel'; kit: string; subject: string; criterion: string; limit: string }
   | { type: 'TurnLock'; lock: string; choice: Record<string, string> }
   | { type: 'ShowdownStart'; showdown: string; relaxed?: boolean }
@@ -549,6 +551,14 @@ export class Engine {
           if (prevPen !== undefined && changed === 2) fx.push({ addNum: 'sim.unfair', by: 1 });
           s = apply(fx, s, out);
           events.push({ kind: 'simulation', result: { pen: cmd.pen, surface: cmd.surface, markQuality: m.q, note: m.note, fairTest: fair, testCount: count } });
+          break;
+        }
+        case 'ObserveForest': {
+          if (s.mapId !== 'forest.trail' || s.flags['forest.arrived'] !== true) throw new Error('Use a watch spot on the forest trail.');
+          if (cmd.window === 'return' && !s.flags['forest.response']) throw new Error('Agree on the trail response before making the return watch.');
+          forestWatch(cmd.site, cmd.window);
+          const key = `forest.watch.${cmd.site}.${cmd.window}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
         case 'NileRouteTrial': {

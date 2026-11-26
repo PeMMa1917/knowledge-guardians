@@ -29,6 +29,7 @@ export interface UIApi {
   openSeal(seal: string): void;
   openBoss(): void;
   openNileModel(): void;
+  openForestWatch(site: string): void;
   openTalents(atWaystone?: boolean): void;
   openLedger(): void;
   openClue(id: string): void;

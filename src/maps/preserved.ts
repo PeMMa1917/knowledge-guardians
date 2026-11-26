@@ -66,6 +66,8 @@ export const PRESERVED_ARCHIVE = room({
     door('preserved-door-coast', 21, 3, 'the Chinchorro Records room', { map: 'preserved.coast', x: 12, y: 12 }),
     { ...door('preserved-door-inquiry', 24, 7, 'the review room', { map: 'preserved.inquiry', x: 8, y: 10 }),
       openIf: { flagSet: 'preserved.display' }, text: 'The review room opens after the first display goes up. The registrar has the two folders.' },
+    { ...door('preserved-door-workroom', 24, 10, 'the reconstruction workroom', { map: 'preserved.workroom', x: 10, y: 11 }),
+      openIf: { objective: 'preserved.publish' }, text: 'The printer will open the workroom when the first display is ready.' },
     door('preserved-door-nexus', 14, 16, 'the door back to the Nexus', { map: 'nexus.archive', x: 35, y: 15 }),
     { id: 'preserved-rest', kind: 'waystone', x: 9, y: 13, w: 1, h: 1, label: 'the Cold Store Waystone', place: 'the Cold Store', art: 'waystone' },
     notice('preserved-directory', 17, 13, 'the Cold Store directory', 'preserved.folder',
@@ -75,6 +77,10 @@ export const PRESERVED_ARCHIVE = room({
     ...displays.map(([choice, label, art, text]) => notice(
       `preserved-display-${choice}`, 14, 5, label, art, text, { flag: 'preserved.display', eq: choice },
     )),
+    notice('preserved-xin-methods-display', 19, 8, 'the four process sheets', 'preserved.display-paired',
+      'The source, model, swatches and caption each have a named space. The board shows how a reconstruction is made. It includes no image of Xin Zhui.', { flag: 'xin.display', eq: 'process' }),
+    notice('preserved-xin-review-display', 19, 8, 'the printer’s review request', 'preserved.display-delayed',
+      'The archive kept the mock-up at the workroom. On the wall, the sources and dates sit beside a request to trace which parts of the model came from measurement and which from comparison.', { flag: 'xin.display', eq: 'review' }),
   ],
   lights: [
     { x: 5, y: 5, r: 58, color: 0xb5dcff }, { x: 21, y: 5, r: 58, color: 0xffd598 },
@@ -158,5 +164,55 @@ export const PRESERVED_INQUIRY = room({
   ],
   lights: [
     { x: 5, y: 6, r: 58, color: 0xead4af }, { x: 10, y: 7, r: 63, color: 0xc7d1ef },
+  ],
+});
+
+/** Each workroom sheet changes appearance and can be lifted for another comparison. */
+function workroomSheet(key: string, x: number, title: string, pinnedArt: string): Interactable[] {
+  const ready = { objective: 'xin.o.records' };
+  const pinned = { flag: `xin.layer.${key}`, eq: true };
+  const common = { kind: 'scene', x, y: 8, w: 1, h: 1, walkThrough: true } as const;
+  return [
+    {
+      ...common, id: `preserved-workroom-${key}`, node: `xin.layer.${key}`, label: title,
+      art: 'preserved.folder', visibleIf: { all: [ready, { not: pinned }] },
+    },
+    {
+      ...common, id: `preserved-workroom-${key}-pinned`, node: `xin.layer.${key}.pinned`, label: `the pinned ${title}`,
+      art: pinnedArt, visibleIf: { all: [ready, pinned] },
+    },
+  ];
+}
+
+export const PRESERVED_WORKROOM = room({
+  id: 'preserved.workroom', name: 'Preserved Lives: Reconstruction Workroom', width: 21, height: 14,
+  background: 0x282d39, spawn: { x: 10, y: 11 },
+  npcs: [],
+  stamps: [
+    { stamp: 'bookshelf', x: 2, y: 2 }, { stamp: 'bookshelf', x: 16, y: 2 },
+    { stamp: 'window', x: 9, y: 1 }, { stamp: 'rug-green', x: 9, y: 10 },
+    { stamp: 'bench', x: 2, y: 10 }, { stamp: 'plant-tall', x: 18, y: 10 },
+  ],
+  interactables: [
+    door('preserved-workroom-back', 10, 13, 'the passage back to the Cold Store', { map: 'preserved.archive', x: 23, y: 11 }),
+    record('XIN-CONTEXT', 5, 5, 'the Mawangdui context file', 'preserved.context'),
+    record('XIN-METHOD', 15, 5, 'the Hunan methods report', 'preserved.catalogue'),
+    notice('preserved-workroom-guide', 8, 11, 'the workroom instructions', 'preserved.slip',
+      'The two cases have different kinds of dates. Use the Lens on both. Then look along the line of sleeves. A printer can attach a sheet or lift it again as you compare them.'),
+    ...workroomSheet('observation', 4, 'observation sheet', 'preserved.catalogue'),
+    ...workroomSheet('model', 8, 'model sheet', 'preserved.context'),
+    ...workroomSheet('style', 12, 'artist’s swatches', 'preserved.display-paired'),
+    ...workroomSheet('caption', 16, 'caption slip', 'preserved.slip'),
+    { id: 'preserved-workroom-printer', kind: 'scene', node: 'xin.commission', x: 10, y: 5, w: 1, h: 1,
+      label: 'the printer’s tray', art: 'preserved.display-delayed', walkThrough: true,
+      visibleIf: { all: [{ objective: 'xin.o.layers' }, { not: { flagSet: 'xin.display' } }] } },
+    notice('preserved-workroom-printed', 10, 5, 'the printer’s copy', 'preserved.display-paired',
+      'A copy of the four named sheets went to the main hall. The comparison remains here for the next keeper.', { flag: 'xin.display', eq: 'process' }),
+    notice('preserved-workroom-held', 10, 5, 'the held mock-up', 'preserved.display-records',
+      'The mock-up stays in the workroom so a keeper can inspect the process. The hall has received the two sources and the request for further review.', { flag: 'xin.display', eq: 'review' }),
+  ],
+  lights: [
+    { x: 5, y: 6, r: 58, color: 0xd4e0ff }, { x: 15, y: 6, r: 58, color: 0xf7dfb1 },
+    { x: 10, y: 8, r: 72, color: 0xdce1ec },
   ],
 });

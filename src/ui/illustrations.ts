@@ -732,6 +732,61 @@ DRAW['coast.runner'] = [16, 24, (g) => {
   R(g, '#7b7766', 6, 7, 6, 1);
   R(g, '#7b7766', 6, 9, 4, 1);
 }];
+
+// Living Forest equipment and a schematic field note.
+DRAW['forest.waypost'] = [16, 24, (g) => {
+  R(g, '#574235', 7, 7, 3, 16);
+  R(g, '#8f7752', 2, 5, 11, 8);
+  R(g, '#8f7752', 13, 7, 2, 4);
+  R(g, '#d5cd9c', 3, 6, 10, 1);
+  R(g, '#45664d', 5, 8, 5, 2);
+  R(g, '#45664d', 7, 7, 3, 4);
+}];
+DRAW['forest.screen'] = [16, 24, (g) => {
+  R(g, '#494939', 1, 6, 2, 17);
+  R(g, '#494939', 13, 6, 2, 17);
+  R(g, '#567653', 2, 9, 12, 10);
+  for (const x of [4, 7, 10, 12]) R(g, '#9c9b5d', x, 9 - x % 3, 1, 10);
+  R(g, '#c1c48a', 4, 12, 8, 2);
+  R(g, '#3a5947', 3, 16, 10, 1);
+}];
+DRAW['forest.ridge'] = [16, 24, (g) => {
+  R(g, '#555e58', 0, 12, 16, 10);
+  R(g, '#a6b098', 1, 12, 14, 4);
+  R(g, '#c8c8a9', 3, 12, 10, 1);
+  R(g, '#475944', 2, 6, 2, 7);
+  R(g, '#475944', 12, 6, 2, 7);
+  R(g, '#82936e', 2, 6, 12, 2);
+  R(g, '#d5c494', 6, 8, 4, 4);
+}];
+DRAW['forest.notice'] = [16, 24, (g) => {
+  R(g, '#544639', 3, 5, 2, 18);
+  R(g, '#544639', 11, 5, 2, 18);
+  R(g, '#69865e', 1, 4, 14, 12);
+  R(g, '#9db284', 1, 4, 14, 2);
+  paper(g, 4, 7, 8, 7);
+  R(g, '#6e6851', 6, 9, 4, 1);
+}];
+DRAW['forest.field-diagram'] = [16, 24, (g) => {
+  pedestal(g, 1, 15, 14);
+  paper(g, 2, 4, 12, 10);
+  R(g, '#77a18b', 4, 6, 5, 4);
+  R(g, '#a4ae75', 6, 8, 5, 4);
+  R(g, '#8e6756', 10, 6, 2, 2);
+}];
+DRAW['big.forest.field-diagram'] = [96, 64, (g) => {
+  R(g, '#344e43', 0, 0, 96, 64);
+  paper(g, 6, 5, 84, 55);
+  R(g, '#a8bb8f', 10, 10, 53, 43);
+  R(g, '#729a7d', 10, 12, 22, 20);
+  R(g, '#578473', 15, 16, 17, 18);
+  R(g, '#98a878', 40, 20, 23, 27);
+  R(g, '#5b9ca7', 27, 29, 5, 24);
+  R(g, '#5b9ca7', 27, 28, 14, 4);
+  R(g, '#5b9ca7', 37, 10, 4, 20);
+  for (const [x, y] of [[16, 40], [21, 36], [27, 33], [33, 27], [39, 26], [45, 22], [51, 17]]) R(g, '#745b51', x, y, 2, 2);
+  for (const y of [14, 22, 30, 38, 46]) R(g, '#94886e', 69, y, 16 - y % 5, 1);
+}];
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {
@@ -766,6 +821,7 @@ export const BIG_ART: Record<string, string> = {
   'nile.scroll': 'nile.scroll', 'nile.tablet': 'nile.tablet', 'nile.map': 'nile.map', 'nile.stone': 'nile.stone',
   'preserved.temple': 'big.preserved.temple', 'preserved.catalogue': 'big.preserved.catalogue',
   'preserved.coast': 'big.preserved.coast', 'preserved.context': 'big.preserved.context',
+  'forest.field-diagram': 'big.forest.field-diagram',
   'exhibit.patent': 'big.patent', 'exhibit.model': 'big.model', 'exhibit.biro': 'big.biro',
   'exhibit.blade': 'big.blade', 'exhibit.ingots': 'big.ingots', 'exhibit.assay': 'big.assay',
   'plaque.earth': 'big.earth', 'plaque.optics': 'big.optics', 'plaque.type': 'big.type', 'plaque.peak': 'big.peak',
