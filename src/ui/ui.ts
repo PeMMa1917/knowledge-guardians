@@ -6,6 +6,8 @@ import { FOREST_WATCH, FOREST_WINDOWS, forestWatch, type ForestWindow } from '..
 import { METAL_SAMPLES, readMetalSample } from '../domain/metalSample';
 import { compareCopy } from '../domain/copyComparison';
 import { mlaCitation } from '../domain/mla';
+import { encyclopediaForBiography, encyclopediaForCharacter, encyclopediaForExhibit } from '../domain/encyclopedia';
+import { wikipediaLink } from './adventureEncyclopedia';
 import { seaChart } from '../domain/seaCharts';
 import { STAGE_CUES, stageRehearsal, type StageCue } from '../domain/stageRehearsal';
 import { FILM_STATIONS, isFilmStation } from '../domain/filmCuts';
@@ -1251,9 +1253,11 @@ export class UI implements UIApi {
     const source = n.citationSource ? c.pack.sources.find((entry) => entry.id === n.citationSource) : undefined;
     const citation = source ? mlaCitation(source) : [];
     const spoken = `${speaker?.name ? `${speaker.name}: ` : ''}${n.text}${citation.length ? ` ${citation.map((part) => part.text).join('')}` : ''}`;
+    const encyclopedia = speaker && 'mode' in speaker ? encyclopediaForCharacter(speaker) : undefined;
     this.openModal('dialogue', speaker?.name ? `Conversation with ${speaker.name}` : 'Scene',
       speaker?.name ? h('div', { class: 'speaker' }, portrait, h('div', {}, h('strong', {}, speaker.name), h('small', {}, speaker.role ?? ''))) : '',
       this.glossLine(n.text),
+      encyclopedia ? h('p', { class: 'fine' }, wikipediaLink(encyclopedia)) : '',
       citation.length ? h('p', { class: 'citation-line' }, ...citation.map((part) => part.cite ? h('cite', {}, part.text)
         : part.href ? h('a', { href: part.href, target: '_blank', rel: 'noopener' }, part.text) : part.text)) : '',
       'speechSynthesis' in window ? h('button', { class: 'mini speak', type: 'button', 'aria-label': 'Read this line aloud', onclick: () => this.speak(spoken) }, '🔊 Read aloud') : '',
@@ -1376,6 +1380,7 @@ export class UI implements UIApi {
     if (c.state.flags[`lens.${exhibitId}`]) showLens();
     const hasLens = !!c.state.inventory['tool.date-lens'];
     const card = c.pack.cards.find((x) => x.id === ex.grantsCard)!;
+    const encyclopedia = encyclopediaForExhibit(ex);
     const thread = c.state.inventory['tool.provenance-thread'] ? c.pack.threads.find((t) => t.object === exhibitId) : undefined;
     const pixel = ex.specimen?.pixelAsset;
     const image = h('img', { class: 'big-art', src: artURL(BIG_ART[ex.art] ?? (ex.specimen ? ex.art : 'big.patent')), alt: pixel ? '' : ex.altText });
@@ -1451,6 +1456,7 @@ export class UI implements UIApi {
           lensOut,
           ex.labelKit ? h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.openLabel(ex.labelKit!) }, c.state.flags[`label.${ex.labelKit}.everHeld`] ? 'Change this plaque' : 'Repair this plaque')) : null,
           thread ? h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.followThread(thread.id, thread.nodes[0].id) }, 'Follow the Provenance Thread')) : null,
+          encyclopedia ? h('p', { class: 'fine' }, wikipediaLink(encyclopedia)) : null,
           h('div', { class: 'card-mini' }, this.cardView(card)))));
     if (ex.specimen && !ownsSpecimen(c.state, ex.specimen.key)) {
       box.append(localGuide(c, MAPS[c.state.mapId]?.world ?? '', ex.specimen.objective));
@@ -1458,10 +1464,20 @@ export class UI implements UIApi {
   }
 
   private cardView(card: EvidenceCard, includeSources = true): HTMLElement {
+    const encyclopedia = encyclopediaForBiography(card);
+    const person = card.person;
+    const biography = encyclopedia && person ? h('details', {
+      ontoggle: (event: Event) => {
+        if (event.currentTarget instanceof HTMLDetailsElement && event.currentTarget.open) {
+          ctx.controller.dispatch({ type: 'ReadBiography', card: card.id });
+        }
+      },
+    }, h('summary', {}, `Read about ${person.name}`), h('p', { class: 'fine' }, `${person.life} · ${person.place} · ${person.era}`),
+    h('p', { class: 'fine' }, wikipediaLink(encyclopedia))) : null;
     return h('article', { class: 'card' },
       h('h3', {}, card.title),
       h('div', { class: 'chips' }, claimChip(card.claimKind), histChip(card.historicalLabel)),
-      card.person ? h('p', { class: 'fine' }, `${card.person.name} (${card.person.life}) · ${card.person.place} · ${card.person.era}`) : null,
+      biography,
       h('p', {}, card.text),
       h('p', { class: 'limits' }, h('strong', {}, 'Does not show: '), card.limits),
       includeSources && card.sources.length ? h('p', { class: 'fine' }, ...card.sources.map((sid) => {

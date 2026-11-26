@@ -3,6 +3,7 @@ import { RUMOURS } from './rumours';
 import { LOYALTY } from './loyalty';
 import { DISPATCH_DESKS, dispatchFlag, dispatchSlip } from './tiles';
 import { specimenReferences, type SpecimenReference } from './specimenReferences';
+import { encyclopediaLinks, type EncyclopediaLink } from './encyclopedia';
 import { earlierViews } from '../content/earlierViewing';
 import { STAR_PATHS } from '../content/starPaths';
 import { STAR_METHODS, starFlag } from './starPaths';
@@ -39,6 +40,7 @@ export interface AdventureJournalView {
   notes: JournalNote[];
   quests: JournalQuest[];
   references: SpecimenReference[];
+  encyclopedia: EncyclopediaLink[];
 }
 
 export function diaryNoteKind(text: string): DiaryNoteKind {
@@ -329,5 +331,6 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     notes,
     quests: [...quests.values()],
     references: specimenReferences(pack, state),
+    encyclopedia: encyclopediaLinks(pack, state),
   };
 }

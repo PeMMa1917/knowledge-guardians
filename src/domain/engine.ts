@@ -64,6 +64,7 @@ import { addPortfolio, addSignal, checkMoments, recordWeave, tickEvents } from '
 import { diaryDialogueChoice, diaryNoteKind, newAdventureDiary, recordAdventure, setDiaryReflection } from './adventureJournal';
 import { isDiaryNoteKind } from './diaryReflection';
 import { setDiaryPortfolioWriting } from './adventureWriting';
+import { biographyReadFlag, isHistoricalBiography } from './historicalEncounters';
 
 export type Command =
   | IncentiveAction
@@ -134,6 +135,7 @@ export type Command =
   | { type: 'EnterNode'; node: string }
   | { type: 'ChooseDialogueOption'; node: string; index: number }
   | { type: 'InspectExhibit'; exhibit: string }
+  | { type: 'ReadBiography'; card: string }
   | { type: 'ClaimSpecimen'; exhibit: string }
   | { type: 'CarrySpecimen'; key: string; carry: boolean }
   | { type: 'SetSpecimenReading'; exhibit: string; reading: 'use' | 'source' }
@@ -636,6 +638,13 @@ export class Engine {
           const e = this.pack.exhibits.find((x) => x.id === cmd.exhibit);
           if (!e) throw new Error('Unknown exhibit');
           s = apply([{ setFlag: `inspected.${e.id}`, value: true }, { addCard: e.grantsCard }, { addNum: 'count.inspected', by: s.flags[`inspected.${e.id}`] ? 0 : 1 }], s, out);
+          break;
+        }
+        case 'ReadBiography': {
+          const card = this.pack.cards.find(({ id }) => id === cmd.card);
+          if (!card || !isHistoricalBiography(card) || !s.cards.includes(card.id)) throw new Error('Open a historical evidence card first');
+          const flag = biographyReadFlag(card.id);
+          if (s.flags[flag] !== true) s = apply([{ setFlag: flag, value: true }], s, out);
           break;
         }
         case 'ClaimSpecimen': {

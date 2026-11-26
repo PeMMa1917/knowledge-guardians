@@ -5,6 +5,7 @@ import { MAPS } from '../maps';
 import { adventureDocx, ADVENTURE_DOCX_TYPE } from './adventureDocx';
 import { printAdventureJournal } from './adventurePrint';
 import { adventureReferences } from './adventureReferences';
+import { adventureEncyclopedia } from './adventureEncyclopedia';
 import { clear, h } from './dom';
 import { bindJournalEditor, flushJournalWriting, queueJournalWriting } from './journalWriting';
 
@@ -118,7 +119,8 @@ function diaryFeed(view: AdventureJournalView, controller: GameController, refre
     exportControls(controller)),
     h('label', { class: 'diary-filter' }, 'Show ', select), empty, list, more,
     h('details', { class: 'diary-source-list' }, h('summary', {}, 'Sources for my collected specimens'),
-      view.references.length ? adventureReferences(view.references) : h('p', {}, 'Collected specimens will add their catalogue references here.')));
+      view.references.length ? adventureReferences(view.references) : h('p', {}, 'Collected specimens will add their catalogue references here.')),
+    adventureEncyclopedia(view.encyclopedia));
 }
 
 function questionButton(note: JournalNote, controller: GameController, refresh: () => void): HTMLElement | null {
