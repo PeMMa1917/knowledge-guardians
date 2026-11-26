@@ -35,15 +35,27 @@ ctx.ui = ui;
 
 let booted = false, pendingStart = false;
 
+const gameParent = document.getElementById('game')!;
 game = new Phaser.Game({
   type: Phaser.AUTO,
-  parent: 'game',
+  parent: gameParent,
   backgroundColor: '#120f24',
   pixelArt: true,
   roundPixels: true,
   scale: { mode: Phaser.Scale.RESIZE, width: window.innerWidth, height: window.innerHeight },
   audio: { disableWebAudio: false },
   scene: [BootScene, WorldScene],
+});
+const { events, scale } = game;
+events.once(Phaser.Core.Events.READY, () => {
+  // Native resize can leave Phaser waiting for a game step. Reconcile with the laid-out parent.
+  const viewport = new ResizeObserver(([{ contentRect: { width, height } }]) => {
+    if (width > 0 && height > 0 && (width !== scale.width || height !== scale.height)) {
+      scale.setParentSize(width, height);
+    }
+  });
+  viewport.observe(gameParent);
+  events.once(Phaser.Core.Events.DESTROY, () => viewport.disconnect());
 });
 game.events.once('boot-complete', () => {
   booted = true;

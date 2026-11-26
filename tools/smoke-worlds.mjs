@@ -264,16 +264,26 @@ async function smokeResize(browser) {
   const calls = await browser.evaluate(() => window.resizeCameraCalls);
   if (calls !== 1) throw new Error(`One resize ran ${calls} world camera callbacks`);
 
+  // A native resize must fit the canvas even if the game has no frame to handle it yet.
+  await browser.evaluate(() => window.kg.world.game.loop.sleep());
+  try {
+    await resize(394);
+    const updated = await browser.evaluate(() => !window.kg.world.game.loop.running && window.resizeCameraCalls === 2);
+    if (!updated) throw new Error('A resize with the game loop stopped did not run exactly one world camera callback');
+  } finally {
+    await browser.evaluate(() => window.kg.world.game.loop.wake());
+  }
+
   await press(browser, 'Escape');
   await until(() => browser.evaluate(() => !!document.querySelector('[role="dialog"][aria-label="Menu"]')), 'menu before leaving');
   await button(browser, 'Save and leave');
   await until(() => browser.evaluate(() => !window.kg.world), 'return to title');
   await resize(390);
-  if (await browser.evaluate(() => window.resizeCameraCalls) !== calls) throw new Error('World camera callback ran on the title screen');
+  if (await browser.evaluate(() => window.resizeCameraCalls) !== calls + 1) throw new Error('World camera callback ran on the title screen');
 
   await button(browser, 'Continue');
   await until(() => browser.evaluate((id) => window.kg.world?.map.id === id && !window.kg.world.transitioning, savedMap), 'resume a saved map after resizing');
-  console.log('PASS one world camera resize callback, none on the title screen, and Continue after resizing');
+  console.log('PASS one world camera callback per resize with a running or sleeping game loop, none on the title screen, and Continue after resizing');
 }
 
 async function smokeInteractionPrompt(browser) {
