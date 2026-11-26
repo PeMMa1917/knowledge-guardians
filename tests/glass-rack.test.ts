@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { GLASS_RACK_CASES, glassRackEntries } from '../src/content/glassRack';
+import { GLASS_RACK_CASES, glassRackContent, glassRackEntries } from '../src/content/glassRack';
+import voices from '../src/content/glass-rack-lines.json';
 import { check } from '../src/domain/rules';
 import { specimenItemId, specimenToolId } from '../src/domain/specimenGear';
 import { MAPS } from '../src/maps';
@@ -25,6 +26,25 @@ describe('The Missing Face', () => {
     expect(room.interactables.filter(({ x, y }) => x === exit.to?.x && y === exit.to?.y)).toEqual([]);
     expect(new Set(GLASS_RACK_CASES.map(({ key }) => key)).size).toBe(40);
     expect(new Set(GLASS_RACK_CASES.flatMap(({ wholeAsset, otherAsset }) => [wholeAsset, otherAsset])).size).toBe(80);
+  });
+
+  it('gives each photo pair its own work, reader and physical return lines', () => {
+    expect(Object.keys(voices).sort()).toEqual(GLASS_RACK_CASES.map(({ slug }) => slug).sort());
+    const registry = new Map(glassRackContent.dialogue.map(node => [node.id, node]));
+    const fields = ['work', 'comparison', 'rail', 'railDone', 'pocket', 'pocketDone', 'revisit', 'boardDone', 'deskDone'] as const;
+    const unique = new Set<string>();
+    for (const record of GLASS_RACK_CASES) {
+      for (const field of fields) {
+        const line = record.story[field];
+        expect(line.trim().length, record.slug + ' ' + field).toBeGreaterThan(20);
+        expect(unique.has(line), record.slug + ' ' + field).toBe(false);
+        unique.add(line);
+      }
+      for (const field of ['work', 'rail', 'pocket', 'revisit'] as const) {
+        expect(registry.get(record.nodes[field])?.text).toBe(record.story[field]);
+      }
+    }
+    expect(unique.size).toBe(360);
   });
 
   it.each(GLASS_RACK_CASES)('earns and equips $accession through either reading space, and mounts the chosen return view', (object) => {
