@@ -10,7 +10,9 @@ import { callboardEntries } from '../src/content/callboardCases';
 import { datePegEntries } from '../src/content/datePegCases';
 import { dateRegisterEntries } from '../src/content/dateRegisterCases';
 import { curtainCallEntries } from '../src/content/curtainCall';
+import { FACING_CUE_PREFIX, facingCueBeatNode, facingCueHouseReadNode, facingCuePlanNode } from '../src/content/facingCue';
 import { glassRackEntries } from '../src/content/glassRack';
+import { FACINGS, FACING_SITES } from '../src/domain/facingCue';
 import { totalXP } from '../src/domain/permanent';
 import type { ShowdownMove } from '../src/domain/showdown';
 import { MAPS } from '../src/maps';
@@ -471,7 +473,16 @@ describe('dialogue graph', () => {
       if (prop.kind === 'scene' && prop.node) return [prop.node];
       if (prop.kind === 'fieldgame' && prop.game) {
         const press = prop.game === 'badge-annex:press' ? ['oracle.press'] : [];
-        return [...datePegEntries(prop.game), ...dateRegisterEntries(prop.game), ...callboardEntries(prop.game), ...glassRackEntries(prop.game), ...curtainCallEntries(prop.game), ...press];
+        const facingSite = FACING_SITES.find((site) => prop.game === FACING_CUE_PREFIX + site);
+        const facing = facingSite ? [
+          ...FACINGS.map((view) => facingCueBeatNode(facingSite, view)),
+          facingCuePlanNode(facingSite),
+          ...(facingSite === 'house' ? [facingCueHouseReadNode] : []),
+        ] : [];
+        return [
+          ...datePegEntries(prop.game), ...dateRegisterEntries(prop.game), ...callboardEntries(prop.game),
+          ...glassRackEntries(prop.game), ...curtainCallEntries(prop.game), ...facing, ...press,
+        ];
       }
       return [];
     }));

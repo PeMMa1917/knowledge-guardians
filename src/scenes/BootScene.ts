@@ -85,8 +85,6 @@ export class BootScene extends Phaser.Scene {
     for (const id of CHARACTER_SHEETS) {
       this.load.spritesheet(`char.${id}`, `assets/art/generated/characters/${id}.png`, { frameWidth: CHAR_FRAME.w, frameHeight: CHAR_FRAME.h });
     }
-    for (const [k, url] of Object.entries(AUDIO)) this.load.audio(k, url);
-    // A missing audio file must not stop the game (audio is never essential).
     this.load.on('loaderror', (f: Phaser.Loader.File) => console.warn('Could not load', f.key));
   }
 
@@ -112,5 +110,8 @@ export class BootScene extends Phaser.Scene {
       });
     }
     this.game.events.emit('boot-complete');
+    // Browser audio decoders can stall. Start the world with its textures, then load effects in the background.
+    for (const [key, url] of Object.entries(AUDIO)) this.load.audio(key, url);
+    this.load.start();
   }
 }
