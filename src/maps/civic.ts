@@ -1,6 +1,7 @@
 /** A fictional mobile-library route with a dispatch hall and two street stops. */
 import type { Condition } from '../domain/types';
 import { CIVIC_ARRIVAL_TRAYS, civicReceivingArrangements, civicReceivingLoad } from '../domain/civicArrivals';
+import { civicLaneReading, civicLaneRouting, type RouteSocket } from '../domain/routeTiles';
 import type { Interactable, MapDef } from './types';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'civic.waypost'): Interactable {
@@ -24,6 +25,11 @@ const overlapAvailable: Condition = { objective: 'civic.arrival' };
 const rackReady: Condition = { objective: 'civic.overlap.trays' };
 const counted: Condition = { flag: 'civic.overlap.counted', eq: true };
 const arrangements = civicReceivingArrangements();
+const laneAvailable: Condition = { objective: 'civic.finish' };
+const laneChoice = (route: RouteSocket): Condition => ({ flag: 'civic.routing.layout', eq: route });
+const reliefReply = (route: RouteSocket): Condition => ({ all: [
+  { objective: 'water.routing.finish' }, { flag: 'water.routing.layout', eq: route },
+] });
 
 function overlapScene(id: string, x: number, y: number, label: string, art: string, visibleIf: Condition): Interactable {
   return { id, kind: 'scene', x, y, w: 1, h: 1, label, art, node: id, walkThrough: true, visibleIf };
@@ -78,6 +84,14 @@ export const CIVIC_DISPATCH: MapDef = {
       { visibleIf: counted }),
     overlapScene('civic-overlap-plan', 19, 6, 'the practice dispatch board', 'civic.wide',
       { all: [{ objective: 'civic.overlap.evidence' }, { not: { flagSet: 'civic.overlap.layout' } }] }),
+    { id: 'civic-route-tiles', kind: 'fieldgame', game: 'civic-lane-routing', x: 18, y: 9, w: 1, h: 1,
+      label: 'Ade’s two-stop lane board', art: 'civic.reserve', walkThrough: true, visibleIf: laneAvailable },
+    sign('civic-routing-water-rows', 17, 6, 'Omi’s relief note from the rows', 'water.fields',
+      'You widened the seed route at the weir. Ade has hung the lower crew’s unmet request beside the count. The lane board has the same spare-piece constraint. Its readers can tell Ade whether a route and a time fit.',
+      { visibleIf: reliefReply('first') }),
+    sign('civic-routing-water-channel', 17, 6, 'Omi’s relief note from the lower channel', 'water.channel',
+      'You widened the lower route at the weir. Ade has hung the seed rows’ unmet request beside the count. The lane board has the same spare-piece constraint. Its readers can tell Ade whether a route and a time fit.',
+      { visibleIf: reliefReply('second') }),
   ],
   lights: [
     { x: 13, y: 7, r: 85, color: 0xe5bd87 }, { x: 15, y: 9, r: 68, color: 0xc3dfda },
@@ -137,6 +151,12 @@ export const CIVIC_STEPS: MapDef = {
     sign('civic-overlap-stagger', 7, 9, 'the staggered practice board', 'civic.even',
       'The practice dispatch assigns three couriers to separate marks. All three loads fit if everyone can use their assigned mark. A spare mark stays open for a courier whose shift pattern changes.',
       { flag: 'civic.overlap.seen', visibleIf: { flag: 'civic.overlap.layout', eq: 'stagger' } }),
+    sign('civic-routing-steps-slip', 5, 7, 'the North Steps stair and ramp slip', 'civic.ledger',
+      'The school families meet below North Steps at the pick-up bell. They sent four practice requests. Two people can use either lane. Two ask for a step-free approach before the bell. The stop has three trial places.',
+      { flag: 'civic.routing.source.first', visibleIf: laneAvailable }),
+    sign('civic-routing-steps-ramp', 19, 7, 'the ramp and trial notice at North Steps', 'forest.ridge',
+      `The ramp tile comes to North Steps. In the trial North Steps ${civicLaneReading(civicLaneRouting('first').steps)}. Keep the Canal Walk requests visible and ask which evening time would work.`,
+      { flag: 'civic.routing.seen', visibleIf: laneChoice('first') }),
   ],
   lights: [
     { x: 11, y: 8, r: 72, color: 0xf9d4a2 }, { x: 16, y: 8, r: 67, color: 0xe6b7ab },
@@ -183,6 +203,12 @@ export const CIVIC_CANAL: MapDef = {
     sign('civic-overlap-buffer', 21, 7, 'the second receiving spot for the practice run', 'civic.reserve',
       'A helper makes one mark wide enough for two loads. The red tray can clear if its two couriers reach that mark. Three loads together would still make somebody wait.',
       { flag: 'civic.overlap.seen', visibleIf: { flag: 'civic.overlap.layout', eq: 'buffer' } }),
+    sign('civic-routing-canal-slip', 8, 11, 'the Canal Walk stair and ramp slip', 'civic.ledger',
+      'Canal Walk crews hand their keys to the next watch before they go. They sent four practice requests. Two people can use either lane. Two ask for a step-free approach after handover. The stop has three trial places.',
+      { flag: 'civic.routing.source.second', visibleIf: laneAvailable }),
+    sign('civic-routing-canal-ramp', 24, 8, 'the ramp and trial notice at Canal Walk', 'forest.ridge',
+      `The ramp tile comes to Canal Walk. In the trial Canal Walk ${civicLaneReading(civicLaneRouting('second').canal)}. Keep the North Steps requests visible and ask which pick-up time would work.`,
+      { flag: 'civic.routing.seen', visibleIf: laneChoice('second') }),
   ],
   lights: [
     { x: 9, y: 9, r: 67, color: 0xf1c591 }, { x: 16, y: 8, r: 70, color: 0xd5dbb2 },

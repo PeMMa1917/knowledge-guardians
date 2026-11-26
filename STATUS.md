@@ -6,9 +6,20 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
-Fifteen chapters are playable. A clean install, 705 tests, production build and 42-file asset check passed. Chromium checks covered Kip’s two repairs, the three Emberford pickup routes, two Living Forest crossings, three Nile-to-Cold Store handoffs, three press outcomes and their Council proofs, one Vesper Showdown, and the three Lamp Quay resolutions. Later checks used staged progress or positions. The thirty-minute audit uses author estimates.
+Fifteen chapters are playable. A clean install, 744 tests, production build and 42-file asset check passed. Chromium checks covered the Lantern Fair rehearsal and Island setup, both gauge resolutions and a mid-loan save, the witness strip’s paired and local routes, both Water and Civic placements, and two Council handovers. Both layouts of Elsbet’s reel made it through to Vesper, the ending and the choice-aware credits. Later checks used staged progress or debug positioning. The thirty-minute audit uses author estimates.
 
 ## What works now
+
+### Recurring stories and mechanics
+
+- **The Lantern Fair** starts as two possible rehearsals in Emberford. A runner or host can send a tested sketch. The Island of Models checks the lower ramp and listening position before following it, revising it, or using a local sketch. The arrangement changes where the crew can join the celebration.
+- **The Fold in the Gauge** starts with a found tool in the Nexus. Come back with the Provenance Thread and trace the gauge to the Cold Store. A dated jig and signed gift entry support different claims. Return it to Nima or arrange a loan with her consent, then close the original Nexus receipt.
+- **Witness strips** control the viewing conditions at a copy rack in the Nile Archive. In Metalworks, the same strip can trace used packing sleeves and help sort out a return arrangement. The yard also lends strips to new arrivals.
+- **The Water and Civic routing boards** let players move one shared tile between two sockets. The Water trial accounts for storage and spill. The Civic trial shows who cannot board at one stop even while seats stay empty. The published decisions install different props and the Civic board recalls the earlier Water case.
+- **The Second Take and the Council handover** carry early objects into the last chapters. At the Archive of Voices, the signed reel slip separates what Elsbet said to visitors from what she left for the Council. Her listening index can be handed to Vesper. At the Council rehearsal, Hesper, Sefa, Kip and Rook test how a packet travels from the rail to the low bench. Use an earlier checked press or repair record, or try a new packet, then post a board or run a staffed relay.
+- **Across the campaign**, the journal and dialogue offer first-heard scene recall. Five characters send branch-specific letters as the player reaches a later chapter. One original theme has opening, rival and closing arrangements with captions. After the ending, the credits show illustrated vignettes of the chosen route and can replay the closing music.
+
+The two source inventories give each item a status and link to its implementation or remaining gap. See [story elements](docs/STORY_ELEMENTS.md) and [game elements](docs/GAME_ELEMENTS.md).
 
 ### Chapter 1 (spec 29.1, the chapter rework, items 1 to 8)
 

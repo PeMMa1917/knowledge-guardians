@@ -47,6 +47,8 @@ export const VIGNETTES: Vignette[] = [
   { who: 'The Lamp Quay', if: f('cross.last-lamp', 'quay'), text: 'Three people take turns at Wren’s bench now. Each takes one turn a week and hands the coat to the next. The slate still shows how many people sat down, with room for another tally.' },
   { who: 'The Lamp Quay', if: f('cross.last-lamp', 'room'), text: 'The promise lamp stands just inside the Listening Room. A carrier who took the longer walk now helps set out the arrow before the reading turn.' },
   { who: 'The Lamp Quay', if: f('cross.last-lamp', 'defer'), text: 'The morning keeper sets a second cup beside the lamp. A visitor who came after closing is often the first through the door now.' },
+  { who: 'The Council crew', if: f('council.team.edition', 'table'), text: 'People set their bundles down beside the low board. Hale clips a fresh signed time under the heading for each open hearing. Sefa reads both lines when the bench fills.' },
+  { who: 'The Council crew', if: f('council.team.edition', 'relay'), text: 'An apprentice takes Kip’s turn at the far bench. Kip stays until the apprentice can say both lines back from that side of the passage. The next crew keeps two places on the rota.' },
   { who: 'The Island', if: f('cross.launch', 'test'), text: "The island's harbour board has two columns now: 'Gulls' and 'Model'. When they disagree, the boats stay in, and both groups compare notes." },
   { who: 'Ottilie', if: f('cross.patron', 'keeper'), text: "The Lady's shrine in the market has its stone scales back, and nothing else on it. Ottilie dusts it every morning, and checks the town standard weight every evening." },
 ];

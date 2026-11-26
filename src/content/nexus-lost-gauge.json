@@ -1,0 +1,329 @@
+{
+ "characters": [
+  {
+   "id": "nima-fenner",
+   "name": "Nima Fenner",
+   "role": "Mender of the Cold Store’s dividing trays",
+   "sprite": "custom:warm.grey.woad.wine.scarf.gold.long.lightframes.none",
+   "mode": "fictional",
+   "talk": [
+    { "node": "lost.gauge.nima.owner", "if": { "flag": "lost.gauge.resolved", "eq": "owner" } },
+    { "node": "lost.gauge.nima.loan", "if": { "flag": "lost.gauge.resolved", "eq": "loan" } },
+    { "node": "lost.gauge.nima.ready", "if": { "all": [
+     { "flag": "preserved.arrived", "eq": true }, { "flag": "thread.lost-gauge.gift", "eq": true }, { "item": "item.folding-gauge" }
+    ] } },
+    { "node": "lost.gauge.nima.cold-returning", "if": { "all": [
+     { "flag": "preserved.arrived", "eq": true }, { "flag": "node.lost.gauge.nima.nexus", "eq": true }
+    ] } },
+    { "node": "lost.gauge.nima.cold", "if": { "flag": "preserved.arrived", "eq": true } },
+    { "node": "lost.gauge.nima.nexus" }
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "item.folding-gauge",
+   "name": "Folding gauge in a padded pouch",
+   "description": "A small brass gauge from the Nexus found shelf. The pouch's ticket authorises carrying it to the Cold Store for a comparison. The ticket leaves the owner line open.",
+   "historicalLabel": "fictional-world",
+   "art": "lost-gauge.pouch"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.lost-gauge.found",
+   "title": "The folded gauge in the found tray",
+   "text": "The short arm has a filed notch. The clerk clipped a blue tie on the gauge after finding it under a workshop cloth.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "sources": [],
+   "limits": "The blue tie identifies the receiving shelf. It gives no owner."
+  }
+ ],
+ "threads": [
+  {
+   "id": "lost-gauge",
+   "title": "The gauge's path",
+   "object": "item.folding-gauge",
+   "nodes": [
+    {
+     "id": "entry", "label": "the Nexus intake", "map": "nexus.archive", "x": 3, "y": 6,
+     "text": "The intake records a folding gauge in a cloth brought over from the Cold Store. The blue tie was put on when it reached the Nexus. There is a second note at the old jig where the Cold Store tests its tray tools."
+    },
+    {
+     "id": "jig", "label": "the Cold Store jig", "map": "preserved.archive", "x": 6, "y": 9,
+     "text": "You set the gauge arms against the old jig. The notch clears the jig's peg. A little stamp under the open hinge reads G-17. The jig's tool list gives the same number beside a drawing. That matches this gauge to the record of tools used at the bench."
+    },
+    {
+     "id": "gift", "label": "the signed gift line", "map": "preserved.archive", "x": 11, "y": 9,
+     "text": "The bench book records borrowing G-17 from Nima. An earlier signed slip records Bel Orwen giving G-17 to Nima when she finished learning to line trays. The gauge number joins these two records. The store used it with permission. Nima kept ownership."
+    }
+   ],
+   "gap": { "after": "entry", "x": 4, "y": 6, "text": "The record starts when the cloth reached the found shelf. No one wrote down how the gauge got into the cloth." },
+   "limit": "The jig identifies a tool that was used here. The gift and loan records support who should get it back. None of them follows every move between the two rooms.",
+   "weave": {
+    "concepts": ["evidence", "interpretation", "justification", "certainty"],
+    "framework": ["scope", "perspectives", "methods-and-tools"],
+    "atl": ["thinking", "research"], "aoks": ["HIS", "TEC"], "subjects": ["design-tech", "history"]
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH1-R19", "world": "WORLD-01", "title": "The Fold in the Gauge",
+   "knowledgeQuestion": "What does finding a thing let a keeper say about its owner?",
+   "available": { "card": "card.lost-gauge.found" },
+   "objectives": [
+    {
+     "id": "lost.gauge.intake", "title": "Enter the gauge at the found shelf with the owner line open.", "essential": false,
+     "done": { "flag": "lost.gauge.logged", "eq": true },
+     "weave": {
+      "concepts": ["evidence", "certainty", "perspective", "power", "responsibility"],
+      "framework": ["scope", "perspectives", "methods-and-tools", "ethics"], "minutes": 2,
+      "thinking": { "dok": 2, "bloom": "apply", "fink": "caring", "solo": "multistructural" },
+      "atl": ["communication", "research"], "aoks": ["HUM", "TEC"], "subjects": ["design-tech", "history"]
+     }
+    },
+    {
+     "id": "lost.gauge.acknowledged", "title": "Close the found entry with the receipt from the Cold Store.", "essential": false,
+     "visible": { "flag": "lost.gauge.used", "eq": true }, "done": { "flag": "lost.gauge.receipt", "eq": true },
+     "onComplete": [{ "journal": "j.lost.gauge" }],
+     "weave": {
+      "concepts": ["evidence", "explanation", "values", "responsibility"],
+      "framework": ["scope", "methods-and-tools", "ethics"], "minutes": 1,
+      "thinking": { "dok": 2, "bloom": "apply", "fink": "integration", "solo": "relational" },
+      "atl": ["communication", "self-management"], "aoks": ["HUM"], "subjects": ["history"]
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH3-R10", "world": "WORLD-04", "title": "The Gauge at the Cold Store",
+   "knowledgeQuestion": "How can someone separate a record of borrowing from a record of ownership?",
+   "available": { "all": [{ "flag": "preserved.arrived", "eq": true }, { "flag": "lost.gauge.logged", "eq": true }] },
+   "objectives": [
+    {
+     "id": "lost.gauge.traced", "title": "Check the gauge against the jig and follow its number to the gift record.", "essential": false,
+     "done": { "flag": "thread.lost-gauge.gift", "eq": true },
+     "weave": {
+      "concepts": ["evidence", "interpretation", "justification", "certainty"],
+      "framework": ["scope", "methods-and-tools", "perspectives"], "minutes": 3,
+      "thinking": { "dok": 3, "bloom": "analyse", "fink": "integration", "solo": "relational" },
+      "atl": ["thinking", "research"], "aoks": ["HIS", "TEC"], "subjects": ["design-tech", "history"]
+     },
+     "skills": ["SK-CUR-06", "SK-THK-05"]
+    },
+    {
+     "id": "lost.gauge.returned", "title": "Agree with Nima where the gauge should go and check the result at the bench.", "essential": false,
+     "visible": { "objective": "lost.gauge.traced" }, "done": { "flag": "lost.gauge.used", "eq": true },
+     "weave": {
+      "concepts": ["values", "power", "perspective", "responsibility"],
+      "framework": ["perspectives", "ethics", "methods-and-tools"], "minutes": 2,
+      "thinking": { "dok": 3, "bloom": "evaluate", "fink": "human", "solo": "relational" },
+      "atl": ["social", "communication", "thinking"], "aoks": ["HUM", "TEC"], "subjects": ["design-tech", "psychology"]
+     },
+     "skills": ["SK-COL-05", "SK-ETR-01"]
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "lost.gauge.inspect", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "A small brass gauge lies across the tray. One arm has a notch near the end. The blue tie holds both arms together. A short note says Venn found it under a workshop cloth during the previous shift.",
+   "options": [
+    {
+     "text": "Turn the gauge and record the notch and the blue tie.", "next": "lost.gauge.inspected",
+     "if": { "not": { "card": "card.lost-gauge.found" } },
+     "effects": [{ "addCard": "card.lost-gauge.found" }]
+    },
+    { "text": "Keep the gauge on its tray." }
+   ]
+  },
+  {
+   "id": "lost.gauge.inspected", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "The notch is cut into the brass. The tie can be slipped off and replaced. The found book has a place for the observations."
+  },
+  {
+   "id": "lost.gauge.nima.nexus", "speaker": "nima-fenner", "historicalLabel": "fictional-world",
+   "text": "I mend dividing trays at the Cold Store. I had a gauge like that once. Mine had one short notch so it would clear a peg. I can see the blue tie from here. Clerk Venn uses that colour when he puts anything on this shelf. I'd look at the old jig before I called it mine."
+  },
+  {
+   "id": "lost.gauge.intake", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "Venn's found book has spaces for the object, who holds it, and who should get it back. Nima remembers using a gauge. The blue tie was added when it reached this shelf. Two people waiting in the hall ask if a blue tie means the Nexus owns what it finds.",
+   "options": [
+    {
+     "text": "File the tray entry and clip an open owner line beside it.", "next": "lost.gauge.logged",
+     "if": { "all": [{ "card": "card.lost-gauge.found" }, { "not": { "flag": "lost.gauge.logged", "eq": true } }] },
+     "effects": [{ "setFlag": "lost.gauge.logged", "value": true }]
+    },
+    { "text": "Leave room to inspect the gauge in the tray.", "next": "lost.gauge.inspect-first" }
+   ]
+  },
+  {
+   "id": "lost.gauge.inspect-first", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "The blue tie and the open book will wait. The gauge itself is in the tray beside them."
+  },
+  {
+   "id": "lost.gauge.logged", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "The entry reads 'Held at the Nexus. Owner still to be checked.' A slip goes over the book so the next helper can find the same line. The gauge remains in the tray."
+  },
+  {
+   "id": "lost.gauge.waiting", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "The open line still shows. Once a Guardian brings the Provenance Thread, this entry can lead to the older record at the Cold Store. For now Venn holds the gauge here."
+  },
+  {
+   "id": "lost.gauge.carry", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "Venn puts a padded pouch beside the gauge. The Thread found the old jig's note. He can sign the gauge out for a check at the Cold Store. The form leaves the owner line open.",
+   "options": [
+    {
+     "text": "Sign for the pouch and take the gauge to the Cold Store for a check.", "next": "lost.gauge.carried",
+     "if": { "all": [
+      { "flag": "lost.gauge.logged", "eq": true }, { "flag": "thread.lost-gauge.entry", "eq": true },
+      { "item": "tool.provenance-thread" }, { "not": { "item": "item.folding-gauge" } }, { "not": { "flagSet": "lost.gauge.resolved" } }
+     ] },
+     "effects": [{ "giveItem": "item.folding-gauge" }]
+    },
+    { "text": "Keep the gauge safe on Venn's shelf for now." }
+   ]
+  },
+  {
+   "id": "lost.gauge.carried", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "The pouch goes in your pack. The stub stays under the blue tie. At the Cold Store, look for the peg on the old jig."
+  },
+  {
+   "id": "lost.gauge.awaiting", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "The stub remains on Venn's shelf. It lists the Cold Store as the checking room. The found book stays open until a return receipt comes back."
+  },
+  {
+   "id": "lost.gauge.nima.cold-returning", "speaker": "nima-fenner", "historicalLabel": "fictional-world",
+   "text": "Nima, from the blue-tie shelf. We had a notch to check. The jig's on the west side. Open the gauge on the jig before you pull out the gift book."
+  },
+  {
+   "id": "lost.gauge.nima.cold", "speaker": "nima-fenner", "historicalLabel": "fictional-world",
+   "text": "I'm Nima. I can line almost any tray if I have one square edge to start from. Venn is holding an old folding gauge at the Nexus. I can show you how we used it if it comes here under a checking ticket."
+  },
+  {
+   "id": "lost.gauge.nima.ready", "speaker": "nima-fenner", "historicalLabel": "fictional-world",
+   "text": "Bel used to say a good hinge was worth carrying. That's her hand on the gift line. I'd like to take the gauge on my next call. I can lend it here for a week as well. The apprentices could use it if we write down when it comes back. Either suits me if the book says whose it is.",
+   "options": [
+    {
+     "text": "Set the gauge in Nima's tool roll and record that she received it.", "next": "lost.gauge.nima.owner",
+     "if": { "all": [
+      { "flag": "preserved.arrived", "eq": true }, { "flag": "thread.lost-gauge.gift", "eq": true },
+      { "item": "item.folding-gauge" }, { "not": { "flagSet": "lost.gauge.resolved" } }
+     ] },
+     "effects": [{ "takeItem": "item.folding-gauge" }, { "setFlag": "lost.gauge.resolved", "value": "owner" }]
+    },
+    {
+     "text": "Set the gauge on the teaching bench and sign the one-week loan with Nima.", "next": "lost.gauge.nima.loan",
+     "if": { "all": [
+      { "flag": "preserved.arrived", "eq": true }, { "flag": "thread.lost-gauge.gift", "eq": true },
+      { "item": "item.folding-gauge" }, { "not": { "flagSet": "lost.gauge.resolved" } }
+     ] },
+     "effects": [{ "takeItem": "item.folding-gauge" }, { "setFlag": "lost.gauge.resolved", "value": "loan" }]
+    },
+    { "text": "Hold the pouch here until you and Nima decide where it belongs." }
+   ]
+  },
+  {
+   "id": "lost.gauge.nima.owner", "speaker": "nima-fenner", "historicalLabel": "fictional-world",
+   "text": "It fits the old roll exactly. I forgot how flat it folds. Come to the bench before I go. I have a tray whose divider leans a little farther each time I look away."
+  },
+  {
+   "id": "lost.gauge.nima.loan", "speaker": "nima-fenner", "historicalLabel": "fictional-world",
+   "text": "The loan line has my name and the return shift. I've kept a receipt, and I know which hook to ask for. Come to the bench. I can show the next apprentice how the notch sits over the peg."
+  },
+  {
+   "id": "lost.gauge.bench-owner", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "Nima opens her roll and lifts out the gauge. A new divider stands on one side of the tray. You can hold it while she sets the long arm against it.",
+   "options": [
+    {
+     "text": "Hold the divider while Nima checks it with the returned gauge.", "next": "lost.gauge.used-owner",
+     "if": { "all": [{ "flag": "lost.gauge.resolved", "eq": "owner" }, { "not": { "flag": "lost.gauge.used", "eq": true } }] },
+     "effects": [{ "setFlag": "lost.gauge.used", "value": true }]
+    },
+    { "text": "Leave the divider on the bench for now." }
+   ]
+  },
+  {
+   "id": "lost.gauge.bench-loan", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "The apprentice checks the loan line before taking the gauge from its hook. Nima points out the short notch. The jig's peg can hold one end steady while the other arm opens.",
+   "options": [
+    {
+     "text": "Fit the notch around the peg so the apprentice can check the divider.", "next": "lost.gauge.used-loan",
+     "if": { "all": [{ "flag": "lost.gauge.resolved", "eq": "loan" }, { "not": { "flag": "lost.gauge.used", "eq": true } }] },
+     "effects": [{ "setFlag": "lost.gauge.used", "value": true }]
+    },
+    { "text": "Leave the gauge on its numbered hook for now." }
+   ]
+  },
+  {
+   "id": "lost.gauge.used-owner", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "The divider is steady. Nima folds the gauge into her roll for the next repair. Aster sends the signed return to the Nexus."
+  },
+  {
+   "id": "lost.gauge.used-loan", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "The apprentice checks a tray and puts the gauge back on its hook. The loan line gives the next learner the same chance. Aster sends a copy with the agreed return shift to the Nexus."
+  },
+  {
+   "id": "lost.gauge.receipt", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "Aster's signed copy has reached the old shelf. Venn leaves the original arrival line in the book. There is room to check off the receipt beside it.",
+   "options": [
+    {
+     "text": "Close the found entry beside Nima's signed return.", "next": "lost.gauge.closed-owner",
+     "if": { "all": [
+      { "flag": "lost.gauge.resolved", "eq": "owner" }, { "flag": "lost.gauge.used", "eq": true }, { "not": { "flag": "lost.gauge.receipt", "eq": true } }
+     ] },
+     "effects": [{ "setFlag": "lost.gauge.receipt", "value": true }]
+    },
+    {
+     "text": "Close the found entry and file the loan as a separate line.", "next": "lost.gauge.closed-loan",
+     "if": { "all": [
+      { "flag": "lost.gauge.resolved", "eq": "loan" }, { "flag": "lost.gauge.used", "eq": true }, { "not": { "flag": "lost.gauge.receipt", "eq": true } }
+     ] },
+     "effects": [{ "setFlag": "lost.gauge.receipt", "value": true }]
+    },
+    { "text": "Leave the copy beside the open book." }
+   ]
+  },
+  {
+   "id": "lost.gauge.closed-owner", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "A blue tie still marks where the gauge was received. The closed entry now points to a checked return to Nima. The tray is empty."
+  },
+  {
+   "id": "lost.gauge.closed-loan", "speaker": "narrator", "historicalLabel": "fictional-world",
+   "text": "The found line ends at the checked return to Nima. The new loan from Nima to the teaching bench has its own line and its own return shift. The tray is empty."
+  }
+ ],
+ "hints": [
+  { "id": "h.lost.intake.1", "objective": "lost.gauge.intake", "depth": 1, "text": "A blue tie tells you where the gauge is held today." },
+  { "id": "h.lost.intake.2", "objective": "lost.gauge.intake", "depth": 2, "text": "Look for Nima and the found shelf in the west of the Nexus." },
+  { "id": "h.lost.intake.3", "objective": "lost.gauge.intake", "depth": 3, "text": "Inspect the brass gauge in the tray before filing its entry." },
+  { "id": "h.lost.intake.4", "objective": "lost.gauge.intake", "depth": 4, "text": "Use Venn's found book. Record who holds the gauge and leave the owner line open." },
+  { "id": "h.lost.traced.1", "objective": "lost.gauge.traced", "depth": 1, "text": "The old notebook might have a record for the notch Nima remembers." },
+  { "id": "h.lost.traced.2", "objective": "lost.gauge.traced", "depth": 2, "text": "Use the Provenance Thread at the found shelf with the intake entry on file." },
+  { "id": "h.lost.traced.3", "objective": "lost.gauge.traced", "depth": 3, "text": "Sign for the padded pouch at the same shelf. Take it to the jig on the west side of the Cold Store." },
+  { "id": "h.lost.traced.4", "objective": "lost.gauge.traced", "depth": 4, "text": "Use the Thread at the jig, then at the gift book near it. Check what the two records say about G-17." },
+  { "id": "h.lost.returned.1", "objective": "lost.gauge.returned", "depth": 1, "text": "Nima can say what she wants to do with the gauge now." },
+  { "id": "h.lost.returned.2", "objective": "lost.gauge.returned", "depth": 2, "text": "Speak to Nima south of the old jig once you have followed both Cold Store records." },
+  { "id": "h.lost.returned.3", "objective": "lost.gauge.returned", "depth": 3, "text": "Return it to Nima's roll or set up the one-week loan she offers." },
+  { "id": "h.lost.returned.4", "objective": "lost.gauge.returned", "depth": 4, "text": "Use the divider bench beside Nima and help her or the apprentice put the gauge to work." },
+  { "id": "h.lost.closed.1", "objective": "lost.gauge.acknowledged", "depth": 1, "text": "Nima's return has a witness now. Aster sent a copy back." },
+  { "id": "h.lost.closed.2", "objective": "lost.gauge.acknowledged", "depth": 2, "text": "Return through the Cold Store door to the Nexus and revisit the west found shelf." },
+  { "id": "h.lost.closed.3", "objective": "lost.gauge.acknowledged", "depth": 3, "text": "Venn keeps the old entry and Aster's new receipt side by side." },
+  { "id": "h.lost.closed.4", "objective": "lost.gauge.acknowledged", "depth": 4, "text": "Close the found entry and keep any later loan on a separate line." }
+ ],
+ "journal": [
+  {
+   "id": "j.lost.gauge", "claimKind": "observation",
+   "text": "Venn held a folding gauge in the Nexus while we found its record. Its number matched the jig, the borrowing line and the gift to Nima. The book closed the found entry after its return and kept any later loan separate."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.lost.gauge", "attribute": "principled", "when": { "flag": "lost.gauge.receipt", "eq": true },
+   "did": "You kept a found tool safe, checked who should have it, and left a record the next keeper can follow.", "prompt": ""
+  }
+ ]
+}

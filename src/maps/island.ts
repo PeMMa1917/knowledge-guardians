@@ -1,6 +1,7 @@
 /** A fictional island dock order investigated from a workshop and field paths. */
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
+import { ISLAND_LANTERN_FAIR } from './lanternfair';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'island.waypost'): Interactable {
   return { id, kind: 'door', x, y, w: 1, h: 1, label, to, art };
@@ -99,6 +100,7 @@ export const ISLAND_DOCK: MapDef = {
   ],
   interactables: [
     { id: 'cross-launch', kind: 'fieldgame', game: 'cross-launch', x: 18, y: 6, w: 1, h: 1, label: 'the launch board on the dock (a crossing)', art: 'signpost' },
+    ...ISLAND_LANTERN_FAIR,
     door('island-dock-return', 5, 10, 'the dock path back to the workshop', { map: 'island.workshop', x: 5, y: 10 }),
     door('island-dock-to-margin', 26, 10, 'the beach path to the quiet margin', { map: 'island.margin', x: 23, y: 10 }),
     sign('island-route-card', 10, 7, 'the loading-cycle route card', 'island.card',

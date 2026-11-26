@@ -51,6 +51,8 @@ const displays = [
 ] as const;
 
 const handoffAtColdStore: Condition = { all: [{ flag: 'preserved.arrived', eq: true }, { flagSet: 'nile.handoff.mode' }] };
+const gaugeAtColdStore: Condition = { all: [{ flag: 'preserved.arrived', eq: true }, { item: 'item.folding-gauge' }] };
+const gaugeUsed: Condition = { flag: 'lost.gauge.used', eq: true };
 
 export const PRESERVED_ARCHIVE = room({
   id: 'preserved.archive', name: 'Preserved Lives: the Cold Store', width: 28, height: 17,
@@ -58,6 +60,7 @@ export const PRESERVED_ARCHIVE = room({
   npcs: [
     { id: 'preserved-registrar', x: 14, y: 7, facing: 'down' },
     { id: 'handoff-nellis', x: 18, y: 10, facing: 'left', visibleIf: handoffAtColdStore },
+    { id: 'nima-fenner', x: 7, y: 13, facing: 'right', visibleIf: { flag: 'preserved.arrived', eq: true } },
   ],
   stamps: [
     { stamp: 'bookshelf', x: 2, y: 2 }, { stamp: 'bookshelf', x: 23, y: 2 },
@@ -102,6 +105,21 @@ export const PRESERVED_ARCHIVE = room({
     ...displays.map(([choice, label, art, text]) => notice(
       `preserved-display-${choice}`, 14, 5, label, art, text, { flag: 'preserved.display', eq: choice },
     )),
+    { ...slip('lost-gauge', 'jig', 6, 9, 'the old tray jig with a peg',
+      { all: [gaugeAtColdStore, { flag: 'thread.lost-gauge.entry', eq: true }] }), art: 'lost-gauge.jig' },
+    { ...slip('lost-gauge', 'gift', 11, 9, 'the signed gift and borrowing book',
+      { all: [gaugeAtColdStore, { flag: 'thread.lost-gauge.jig', eq: true }] }), art: 'ledger' },
+    ...(['owner', 'loan'] as const).flatMap((mode) => {
+      const atBench: Condition = { flag: 'lost.gauge.resolved', eq: mode };
+      const position = { kind: 'scene' as const, x: 8, y: 12, w: 1, h: 1, walkThrough: true };
+      const label = mode === 'owner' ? 'Nima’s gauge and the new tray divider' : 'the apprentice’s jig and signed loan';
+      return [
+        { ...position, id: `preserved-gauge-${mode}`, node: `lost.gauge.bench-${mode}`,
+          label, art: `lost-gauge.bench-${mode}`, visibleIf: { all: [atBench, { not: gaugeUsed }] } },
+        { ...position, id: `preserved-gauge-used-${mode}`, node: `lost.gauge.used-${mode}`,
+          label, art: mode === 'owner' ? 'lost-gauge.divider' : 'lost-gauge.hook', visibleIf: { all: [atBench, gaugeUsed] } },
+      ];
+    }),
     notice('preserved-xin-methods-display', 19, 8, 'the four process sheets', 'preserved.display-paired',
       'The source, model, swatches and caption each have a named space. The board shows how a reconstruction is made. It includes no image of Xin Zhui.', { flag: 'xin.display', eq: 'process' }),
     notice('preserved-xin-review-display', 19, 8, 'the printer’s review request', 'preserved.display-delayed',

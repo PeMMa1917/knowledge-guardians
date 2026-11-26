@@ -34,7 +34,7 @@ A funny scene can be high level (the goat asks how memory fills gaps), and a ser
 npx vitest run tests/learning.test.ts --mode tok-report
 ```
 
-The route audit in `tests/tok-coverage.test.ts` exercises game actions in individual chapters, with earlier prerequisites staged for later chapters. The campaign models and the route audit both use author estimates. Student playtests are needed to establish real timing and variation.
+The route audit in `tests/tok-coverage.test.ts` exercises game actions in individual chapters, with earlier prerequisites staged for later chapters. The Explorer model now places missions with explicit late prerequisites after the required revision. That means the signed Island dock log comes before the fair, and the opening-directions revision comes before Elsbet’s recordings. The campaign models and the route audit use author estimates. Student playtests are needed to establish real timing and variation.
 
 **26 November 2026.** All five modeled openings reach the 12 concepts and four explicitly tagged framework parts in 30 estimated minutes. The social model includes Kip’s case. The explorer, puzzler and cozy models use the date rails, ferry print and reading rests. Later gap time is still substantial. The denominator is each model’s total estimated play time.
 
@@ -42,7 +42,7 @@ The route audit in `tests/tok-coverage.test.ts` exercises game actions in indivi
 |---|---:|---:|
 | Story | 160 | 504 |
 | Social | 356 | 663 |
-| Explorer | 667 | 1,079 |
+| Explorer | 631 | 1,137 |
 | Puzzler | 260 | 592 |
 | Cozy | 342 | 667 |
 

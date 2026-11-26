@@ -1,5 +1,6 @@
 /** Water Commons. The allocation records and gate experiment are fictional. */
 import type { Condition } from '../domain/types';
+import { reliefReading, reliefRouting } from '../domain/routeTiles';
 import type { Interactable, MapDef } from './types';
 
 function crossing(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'water.waypost'): Interactable {
@@ -17,6 +18,8 @@ function ground(width: number, height: number, tile: (x: number, y: number) => s
 
 const ripples = ['water-ripple-a', 'water-ripple-b', 'water-ripple-c'];
 const repaired: Condition = { flag: 'water.repaired', eq: true };
+const reliefAvailable: Condition = { objective: 'water.finish' };
+const reliefChoice = (route: 'first' | 'second'): Condition => ({ flag: 'water.routing.layout', eq: route });
 const checkedSplit: Condition = { all: [
   { objective: 'water.drought' }, { flag: 'water.trial.drought.split', eq: true },
 ] };
@@ -64,6 +67,8 @@ export const WATER_GATEHOUSE: MapDef = {
     sign('water-repair-mark', 15, 6, 'the checked repair mark', 'water.notice',
       'The keeper checked the repaired gate. A fresh tally starts here. Keep the drought readings on the previous page.',
       { visibleIf: repaired }),
+    { id: 'water-relief-bench', kind: 'fieldgame', game: 'relief-routing', x: 10, y: 9, w: 1, h: 1,
+      label: 'Omi’s relief bench', art: 'water.split', walkThrough: true, visibleIf: reliefAvailable },
   ],
   lights: [
     { x: 13, y: 7, r: 72, color: 0xf6dbaa }, { x: 16, y: 8, r: 76, color: 0xcee2cc },
@@ -164,6 +169,18 @@ export const WATER_LOWER_CHANNEL: MapDef = {
       { flag: 'water.channel.note' }),
     sign('water-lower-path-sign', 15, 13, 'the lower crossing sign', 'water.waypost',
       'Follow the lower boards to the use line, or take the upper boards to the council path. The seed-row card is on the west terrace.'),
+    sign('water-relief-seed-slip', 9, 7, 'the seed terrace’s relief slip', 'preserved.folder',
+      'The seed crew passes a marked scoop down the row at each handover. For the small relief trial, it asks for four buckets to wet all the new beds. The old daily work card stays with the main gate records.',
+      { flag: 'water.routing.source.first', visibleIf: reliefAvailable }),
+    sign('water-relief-channel-slip', 24, 8, 'the lower crew’s relief slip', 'water.notice',
+      'The lower crew rinses the shared troughs before passing the lane to the next households. It needs five buckets in this trial. The spare basin holds two. When it fills, later water reaches the practice bank.',
+      { flag: 'water.routing.source.second', visibleIf: reliefAvailable }),
+    sign('water-relief-installed-rows', 11, 8, 'the wide relief mouth at the rows', 'water.fields',
+      `Omi fits the wide tile to the branch at the seed beds. The eight-bucket trial records ${reliefReading(reliefRouting(8, 'first'))}. The lower crew’s five-bucket request stays beside the new reading.`,
+      { flag: 'water.routing.seen', visibleIf: reliefChoice('first') }),
+    sign('water-relief-installed-channel', 22, 8, 'the wide relief mouth at the lower bank', 'water.channel',
+      `Omi fits the wide tile at the lower bank. The eight-bucket trial records ${reliefReading(reliefRouting(8, 'second'))}. The seed beds’ four-bucket request stays beside the new reading.`,
+      { flag: 'water.routing.seen', visibleIf: reliefChoice('second') }),
   ],
   lights: [
     { x: 7, y: 7, r: 69, color: 0xffd8a7 }, { x: 21, y: 9, r: 68, color: 0xb9dcd8 },

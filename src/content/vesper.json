@@ -81,6 +81,7 @@
   {
    "id": "vesper.meet",
    "speaker": "vesper-quill",
+   "motif": "gold-thread",
    "text": "A tall figure with gold thread at the cuffs bows to you, very correctly. 'Guardian. You came.' Vesper Quill smiles: polite, funny, tired. 'I hoped you would bring the card. Shall we look at it together? In front of the Council. In the open, as Elsbet liked.'",
    "historicalLabel": "fictional-world",
    "options": [
@@ -110,8 +111,21 @@
      "text": "(Sceptical) Why should the Council trust you, of all people?",
      "tag": "Ask for a source",
      "next": "vesper.why"
+    },
+    {
+     "text": "Slide Elsbet’s listening index across the table.",
+     "if": { "all": [{ "item": "item.elsbet.index" }, { "not": { "flagSet": "node.vesper.index" } }] },
+     "next": "vesper.index",
+     "effects": [{ "takeItem": "item.elsbet.index" }]
     }
    ]
+  },
+  {
+   "id": "vesper.index",
+   "speaker": "vesper-quill",
+   "historicalLabel": "fictional-world",
+   "text": "Vesper blocks the top of the slip with one finger as a visitor passes. ‘The two bands are Elsbet’s voice. They don’t give us two witnesses. Thank you for bringing the mark that says where each belongs. I wish she were here to ask about Friday.’ Vesper leaves the slip on the inner table.",
+   "next": "vesper.meet"
   },
   {
    "id": "vesper.why",
@@ -146,6 +160,7 @@
   {
    "id": "vesper.lamp",
    "speaker": "narrator",
+   "motif": "first-light",
    "text": "In the lamp's warm light, the scraped line comes back, letter by letter: 'Tested only in a dry year. Not tested in flood. Do not say safe.' Under it, in the small hand you know from the study: 'Last checked by Elsbet Varro. Not yet corrected. I am sorry, Ise. I am sorry, Vesper. E.' The hall is very quiet. Somewhere, a music box plays Elsbet's tune.",
    "historicalLabel": "fictional-world",
    "options": [
@@ -225,24 +240,28 @@
   {
    "id": "vesper.end.correct",
    "speaker": "vesper-quill",
+   "motif": "in-the-open",
    "text": "The corrected label goes up that evening, with every name from Harrowmere on it, and the line that was cut. Ise reads it aloud herself. Vesper puts the Seal's stamp on the table and does not pick it up again. Cost: many visitors now doubt every label in the hall, the good ones too. You will spend years earning that back. 'Last checked by' has your name under Elsbet's.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "vesper.end.recruit",
    "speaker": "vesper-quill",
+   "motif": "in-the-open",
    "text": "Vesper is quiet for a long moment. 'You would have me back? After the seals?' The Council argues all night. In the morning, Vesper signs the Guardians' book, in small careful letters. Cost: some people the Seal fooled feel that you forgave the person who fooled them. They are not wrong to feel it.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "vesper.end.expose",
    "speaker": "vesper-quill",
+   "motif": "in-the-open",
    "text": "You lay out the Seal's price lists and the claims it stamped. The Council closes the Seal. Vesper does not argue. 'Fair,' Vesper says, 'and Harrowmere?' You put the card beside the price lists. Cost: Vesper leaves again, and the Nexus's own mistake is only half in the light. Some of the hall will remember only the villain.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "vesper.end.both",
    "speaker": "vesper-quill",
+   "motif": "in-the-open",
    "text": "Both go on the Council table: the weir label with its cut line, and a year of the Seal's stamped claims. The Council writes its answer with a line about how sure it is. Nobody is fully pleased. Ise and Vesper stand at opposite ends of the table and, after an hour, talk. Cost: it takes a long time, and the town wanted an answer by Thursday.",
    "historicalLabel": "fictional-world"
   },

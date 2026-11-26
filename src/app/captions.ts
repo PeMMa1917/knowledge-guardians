@@ -30,6 +30,9 @@ export const CAPTIONS: Record<string, string> = {
   'music.town': 'Music: warm town tune',
   'music.box': 'Your music box plays',
   'music.title': 'Music: gentle lullaby',
+  'music.story.first-light': 'A small music box plays a rising tune',
+  'music.story.gold-thread': 'The same tune returns lower, in a minor key',
+  'music.story.in-the-open': 'The opening tune returns with a fuller harmony',
   'voice.player': 'You make a short sound',
 };
 

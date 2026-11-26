@@ -62,6 +62,7 @@ import { approvalOf, approvalRank } from '../domain/approval';
 import { ROLES, fitsRole, roleOf } from '../domain/roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
 import { FIELD_GAMES } from '../domain/fieldgames';
+import { routingBoard } from './routingBoards';
 import { loyaltyOf } from '../domain/loyalty';
 import { CROSSINGS, WAY_LABEL, crossingOf, crossingWay, wayOpen } from '../domain/crossings';
 import { HEARTH, TONE_LABEL, type HearthTalk } from '../domain/hearth';
@@ -69,6 +70,9 @@ import { VERSES, balladName, versesFor } from '../domain/ballad';
 import { crossingEpithet, lingering, mirror, vignettesFor } from '../domain/epilogue';
 import { BRUSH_STROKES, CHART_CHOICES, DIG_CHOICES, DIG_LIGHT, DIG_W, MY_PICTURE_NAMES, SKY_PICTURES, STARS, STAR_HEIGHT, TRADE_KIND, TRADE_START, TRADE_STEPS, digNote, digReport, digSite, digStroke, type DigTool, type Trader } from '../domain/compendiumGames';
 import { arrivedLetters, composeLetter, dueLetters } from '../domain/letters';
+import { communityLetterFlag, dueCommunityLetters, receivedCommunityLetters } from '../domain/communityLetters';
+import { conversationHistory } from '../domain/conversationHistory';
+import { storyMotif, storyMotifKey, type StoryMotif } from '../domain/storyMotifs';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
 import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
@@ -371,6 +375,7 @@ export class UI implements UIApi {
   /** Things that wait until the open panel closes: events and reflection offers. */
   private queue: (() => void)[] = [];
   private activeEvent: string | null = null;
+  private stopStoryCue: (() => void) | null = null;
 
   constructor(root: HTMLElement, onStart: () => void) {
     this.root = root;
@@ -757,6 +762,7 @@ export class UI implements UIApi {
 
   private startPlaying(returning: boolean): void {
     const pc = ctx.controller;
+    this.stopStoryCue?.(); this.stopStoryCue = null;
     this.fullRings = new Set(conceptRings(pc.permanent, pc.pack).filter((r) => r.got >= r.max).map((r) => r.concept));
     clear(this.root); this.root.append(this.toastBox);
     this.buildHud();
@@ -913,8 +919,19 @@ export class UI implements UIApi {
       c.dispatch({ type: 'SetFlag', flag: `letter.${letter.id}`, value: true });
       this.toast('A letter with a small gold seal has arrived. See Journal, Letters.', 'award'); this.sfx('sfx.page');
     }
+    this.deliverCommunityLetters(true);
     this.refreshHud();
     ctx.world?.refreshWorld();
+  }
+
+  private deliverCommunityLetters(announce: boolean): void {
+    const c = ctx.controller;
+    const due = dueCommunityLetters(c.state);
+    for (const letter of due) c.dispatch({ type: 'SetFlag', flag: communityLetterFlag(letter.id), value: letter.outcome });
+    if (announce && due.length) {
+      this.toast(due.length === 1 ? 'A traveller left you a letter. See Journal, Letters.' : 'Travellers left you letters. See Journal, Letters.', 'info');
+      this.sfx('sfx.page');
+    }
   }
 
   // ------------------------------------------------- events and reflection
@@ -971,6 +988,7 @@ export class UI implements UIApi {
 
   private showNode(id: string): void {
     const c = ctx.controller;
+    const firstHearing = c.state.flags[`node.${id}`] !== true;
     const ev = c.dispatch({ type: 'EnterNode', node: id });
     if (ev.some((e) => e.kind === 'error')) { this.closeModal(); return; }
     const raw: DialogueNode = c.engine.node(id);
@@ -1000,14 +1018,35 @@ export class UI implements UIApi {
       optionList.append(h('button', { 'data-autofocus': true, onclick: () => { this.sfx('sfx.click'); if (n.next) this.showNode(n.next); else this.endDialogue(n.open); } }, n.next ? 'Continue ▸' : 'Close'));
     }
     const extra = id === 'sefa.free' ? this.freeQuestion() : null;
+    const earlier = conversationHistory(c.pack.dialogue, c.state.flags).filter((line) => line.id !== id).slice(0, 5);
     this.openModal('dialogue', speaker?.name ? `Conversation with ${speaker.name}` : 'Scene',
       speaker?.name ? h('div', { class: 'speaker' }, portrait, h('div', {}, h('strong', {}, speaker.name), h('small', {}, speaker.role ?? ''))) : '',
       this.glossLine(n.text),
       'speechSynthesis' in window ? h('button', { class: 'mini speak', type: 'button', 'aria-label': 'Read this line aloud', onclick: () => this.speak(`${speaker?.name ? `${speaker.name}: ` : ''}${n.text}`) }, '🔊 Read aloud') : '',
       h('div', { class: 'chips' }, n.claimKind ? claimChip(n.claimKind) : null, n.historicalLabel ? histChip(n.historicalLabel) : null),
-      extra ?? '', optionList);
+      extra ?? '', optionList,
+      earlier.length ? h('details', { class: 'dialogue-recall' }, h('summary', {}, 'Earlier dialogue'),
+        ...earlier.map((line) => this.dialogueMemory(line))) : '');
+    if (n.motif && firstHearing) this.playStoryCue(n.motif);
     if (!ctx.settings.readAloud && ctx.settings.talkSounds && n.speaker !== 'narrator') babble(n.text, voiceFor(n.speaker), ctx.settings.sfxVolume);
     if (ctx.settings.readAloud) this.speak(`${speaker?.name ? `${speaker.name}: ` : ''}${n.text}. ${opts.map((o, i) => `Option ${i + 1}: ${o.option.text}`).join('. ')}`);
+  }
+
+  private playStoryCue(motif: StoryMotif): void {
+    this.stopStoryCue?.();
+    const { notes, beat, voice } = storyMotif(motif);
+    this.stopStoryCue = playNotes(notes, beat, voice, ctx.settings.musicVolume * 0.85);
+    caption(storyMotifKey(motif));
+  }
+
+  private dialogueMemory(node: DialogueNode, includeMotif = false): HTMLElement {
+    const c = ctx.controller;
+    const name = node.speaker === 'lumen' ? 'Lumen' : node.speaker === 'player' ? c.state.player.name
+      : c.pack.characters.find((character) => character.id === node.speaker)?.name;
+    const text = personalise(node.text, c.state.player);
+    const motif = node.motif;
+    return h('div', { class: 'lore-entry' }, name ? h('strong', {}, name) : '', h('p', {}, text),
+      includeMotif && motif ? h('button', { type: 'button', class: 'mini', onclick: () => this.playStoryCue(motif) }, 'Replay the scene’s music') : '');
   }
 
   /** Text-to-speech with the browser's own voice (spec 21). */
@@ -2315,8 +2354,9 @@ export class UI implements UIApi {
   openJournal(tab = 'story'): void {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
+    if (tab === 'letters') this.deliverCommunityLetters(false);
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { story: 'Story so far', entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', crossings: 'Crossings', ...(s.flags['ending.council'] ? { afterwards: 'Afterwards' } : {}), glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { story: 'Story so far', conversations: 'Conversations', entries: 'Entries', cards: 'Evidence cards', notes: 'My notes', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', crossings: 'Crossings', ...(s.flags['ending.council'] ? { afterwards: 'Afterwards' } : {}), glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
     if (tab === 'crossings') {
@@ -2329,12 +2369,35 @@ export class UI implements UIApi {
     } else if (tab === 'afterwards') {
       // The epilogue: where are they now, the mirror scene and the lingering thought.
       body.append(h('h3', {}, 'Where are they now'), ...vignettesFor(s).map((v) => h('div', { class: 'lore-entry' }, h('h3', {}, v.who), h('p', {}, v.text))),
-        h('h3', {}, 'The same bench'), h('p', {}, mirror(s)), h('h3', {}, 'Last words'), ...lingering(s).map((t) => h('p', {}, t)));
+        h('h3', {}, 'The same bench'), h('p', {}, mirror(s)), h('h3', {}, 'Last words'), ...lingering(s).map((t) => h('p', {}, t)),
+        h('button', { type: 'button', onclick: () => this.openCredits() }, 'Credits from your journey'));
+    } else if (tab === 'conversations') {
+      const heard = conversationHistory(c.pack.dialogue, s.flags);
+      if (!heard.length) body.append(h('p', {}, 'No conversations yet.'));
+      else {
+        let shown = 0;
+        const lines = h('div', {});
+        const more = h('button', { type: 'button', onclick: showOlder }, 'Show earlier conversations');
+        const ui = this;
+        function showOlder() {
+          const older = heard.slice(shown, shown + 20);
+          lines.append(...older.map((node) => ui.dialogueMemory(node, true)));
+          shown += older.length;
+          more.hidden = shown >= heard.length;
+        }
+        body.append(h('p', { class: 'fine' }, 'Scenes are listed once, newest first by when you first heard them.'), lines, more);
+        showOlder();
+      }
     } else if (tab === 'letters') {
-      // Letters from the rival. Each remembers a choice the player made (spec 15.10).
-      const got = arrivedLetters(s);
-      body.append(h('p', { class: 'fine' }, got.length ? 'Letters sealed with a small gold stamp. Each one answers something you did.' : 'No letters yet.'),
-        ...[...got].reverse().map((l) => h('div', { class: 'lore-entry letter' }, h('h3', {}, `After chapter ${l.chapter}`), ...composeLetter(l, s).map((t) => h('p', {}, t)))));
+      const gold = arrivedLetters(s);
+      const neighbours = receivedCommunityLetters(s);
+      if (!gold.length && !neighbours.length) body.append(h('p', {}, 'No letters yet.'));
+      if (neighbours.length) body.append(h('h3', {}, 'From the road'), ...neighbours.reverse().map((letter) => {
+        const sender = c.pack.characters.find((character) => character.id === letter.sender)?.name;
+        return h('div', { class: 'lore-entry letter' }, h('h3', {}, letter.subject), h('p', { class: 'fine' }, `From ${sender}`), h('p', {}, letter.body));
+      }));
+      if (gold.length) body.append(h('h3', {}, 'The gold seal'),
+        ...[...gold].reverse().map((l) => h('div', { class: 'lore-entry letter' }, h('h3', {}, `After chapter ${l.chapter}`), ...composeLetter(l, s).map((t) => h('p', {}, t)))));
     } else if (tab === 'lore') {
       // Lore codex: secrets found by exploring. Each is a small myth or record that asks a knowledge question.
       const all = c.pack.secrets ?? [];
@@ -2775,7 +2838,11 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
-    if (id === 'doors') this.openDoors();
+    if (id === 'relief-routing' || id === 'civic-lane-routing') {
+      const title = id === 'relief-routing' ? 'The weir’s relief bench' : 'The library’s lane board';
+      this.openModal('bench-panel wide', title, this.closeBtn(), routingBoard(id, ctx.controller, (key) => this.sfx(key)));
+    }
+    else if (id === 'doors') this.openDoors();
     else if (id === 'guests') this.openGuestBook();
     else if (id === 'slate') this.openSlate();
     else if (id === 'word') this.openMissingWord();
@@ -4790,7 +4857,15 @@ export class UI implements UIApi {
 
   private openCredits(): void {
     const c = ctx.controller;
+    const s = c.state;
+    const journey = s?.flags['ending.council'] ? vignettesFor(s) : [];
     this.openModal('credits wide', 'Credits and sources', this.closeBtn(), h('h2', {}, 'Credits and sources'),
+      journey.length ? h('section', { class: 'journey-credits' }, h('h3', {}, 'From the first label to the Council'),
+        h('div', { class: 'journey-memory' }, h('img', { src: artURL('nile.door'), alt: '' }), h('p', {}, mirror(s))),
+        ...journey.slice(0, 4).map((moment, i) => h('div', { class: 'journey-memory' },
+          h('img', { src: artURL(i === 0 ? 'council.record' : 'voices.lamp'), alt: '' }),
+          h('div', {}, h('strong', {}, moment.who), h('p', {}, moment.text)))),
+        h('button', { type: 'button', onclick: () => this.playStoryCue('in-the-open') }, 'Hear the closing theme')) : '',
       h('p', {}, 'All art, music and sound in this build are free assets with the CC0 licence (public domain dedication), or original art drawn in code for this game. The full list with links is in CREDITS.md in the project repository.'),
       h('ul', {},
         h('li', {}, 'Tiles and character base: ArMM1998, "Zelda-like tilesets and sprites" (CC0), OpenGameArt.org. Characters recoloured for this game.'),

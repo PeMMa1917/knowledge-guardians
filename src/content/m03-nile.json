@@ -3311,6 +3311,177 @@
    "speaker": "handoff-nellis",
    "text": "Read the docket by the stand. When the Cold Store opens, I’ll be there. You can check what came through with me.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.witness.rack",
+   "speaker": "nile-leila",
+   "text": "The next reader says someone pulled the guide away from its clip. They found it skewed after the door opened. The papyrus stays in its case. We can try the loose copy here and see what moves while nobody touches the rack.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pin a folded strip by the guide’s corner.",
+     "next": "nile.witness.set",
+     "if": {
+      "all": [
+       {
+        "card": "card.nile.strike"
+       },
+       {
+        "not": {
+         "flagSet": "nile.witness.phase"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.witness.phase",
+       "value": "set"
+      }
+     ]
+    },
+    {
+     "text": "Leave the loose guide on the rack."
+    }
+   ]
+  },
+  {
+   "id": "nile.witness.set",
+   "speaker": "nile-leila",
+   "text": "The corner lies against the fold. Stand at the quiet sill where the door and rack share a view. Leave the clip tight and keep the guide as it is.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.witness.watch",
+   "speaker": "nile-leila",
+   "text": "Take three beats from this sill. Keep the same guide, rack, strip and sightline. I can keep the door shut for one pass. When the hall is clear, I can open it once for the next pass.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Watch for three beats with the door shut.",
+     "next": "nile.witness.wait-closed",
+     "if": {
+      "flag": "nile.witness.phase",
+      "eq": "set"
+     },
+     "effects": [
+      {
+       "setFlag": "nile.witness.phase",
+       "value": "closed"
+      }
+     ]
+    },
+    {
+     "text": "Watch the same rack for three beats with one door opening.",
+     "next": "nile.witness.wait-open",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.witness.phase",
+        "eq": "closed"
+       },
+       {
+        "flag": "nile.witness.closed",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.witness.phase",
+       "value": "open"
+      }
+     ]
+    },
+    {
+     "text": "Step away from the sill for now."
+    }
+   ]
+  },
+  {
+   "id": "nile.witness.wait-closed",
+   "speaker": "nile-leila",
+   "text": "Three beats pass. Nobody reaches the rack. Go back to the guide and check where its corner lies against the strip.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.witness.wait-open",
+   "speaker": "nile-leila",
+   "text": "The door swings. A loose thread at the edge of the rack rises. Nobody reaches the guide for those three beats. Go back to the same corner.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.witness.mount",
+   "speaker": "nile-leila",
+   "text": "The first corner stayed put. The second slid away with the open door. A hand could move the guide on another day. Today it moved while we kept that rack clear. The guide can stay where a reader expects, under clips. On the sheltered shelf it can lie loose, but we need a pointer.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Fit two spare clips to the entrance rack.",
+     "next": "nile.witness.weight",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.witness.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.witness.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.witness.layout",
+       "value": "weight"
+      },
+      {
+       "giveItem": "item.witness-strip"
+      }
+     ]
+    },
+    {
+     "text": "Move the guide to the sheltered shelf and leave a pointer.",
+     "next": "nile.witness.shelter",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.witness.compare"
+       },
+       {
+        "not": {
+         "flagSet": "nile.witness.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.witness.layout",
+       "value": "shelter"
+      },
+      {
+       "giveItem": "item.witness-strip"
+      }
+     ]
+    },
+    {
+     "text": "Leave both observations with the guide."
+    }
+   ]
+  },
+  {
+   "id": "nile.witness.weight",
+   "speaker": "nile-leila",
+   "text": "The guide stays at the entrance. A reader can lift a clip to turn a page. Keep my spare strip for the next place that needs to record what moved.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.witness.shelter",
+   "speaker": "nile-leila",
+   "text": "The guide lies flat on the shelf with both readings beside it. The entrance arrow sends the next reader to it. Take my spare strip. A folded edge can hold a starting place elsewhere.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "chronicle": [
@@ -4077,6 +4248,54 @@
    "objective": "nile.handoff.send",
    "depth": 4,
    "text": "Inspect the changed docket. The Cold Store gets its own copy when the runner moves on."
+  },
+  {
+   "id": "h.nile.witness.compare.1",
+   "objective": "nile.witness.compare",
+   "depth": 1,
+   "text": "Someone found the guide out of place by the door."
+  },
+  {
+   "id": "h.nile.witness.compare.2",
+   "objective": "nile.witness.compare",
+   "depth": 2,
+   "text": "Pin the folded strip near the guide in the Workmen’s Room."
+  },
+  {
+   "id": "h.nile.witness.compare.3",
+   "objective": "nile.witness.compare",
+   "depth": 3,
+   "text": "Watch from the sill with the door shut. Return to its corner to see the first result."
+  },
+  {
+   "id": "h.nile.witness.compare.4",
+   "objective": "nile.witness.compare",
+   "depth": 4,
+   "text": "Watch the same rack for three beats with one opening. Check the gap at the strip again."
+  },
+  {
+   "id": "h.nile.witness.publish.1",
+   "objective": "nile.witness.publish",
+   "depth": 1,
+   "text": "Leila wants the guide to stay readable for the next visitor."
+  },
+  {
+   "id": "h.nile.witness.publish.2",
+   "objective": "nile.witness.publish",
+   "depth": 2,
+   "text": "Talk through the clips by the rack once both watches are recorded."
+  },
+  {
+   "id": "h.nile.witness.publish.3",
+   "objective": "nile.witness.publish",
+   "depth": 3,
+   "text": "Choose a clipped entrance guide or a sheltered shelf with a pointer."
+  },
+  {
+   "id": "h.nile.witness.publish.4",
+   "objective": "nile.witness.publish",
+   "depth": 4,
+   "text": "Find the guide you left. Leila’s spare strip can travel to a second workshop."
   }
  ],
  "criteria": [
@@ -5729,6 +5948,133 @@
      }
     }
    ]
+  },
+  {
+   "id": "KG-CH2-R15",
+   "world": "WORLD-03",
+   "title": "The Corner That Moved",
+   "knowledgeQuestion": "How can we see what happened without deciding who did it first?",
+   "available": {
+    "card": "card.nile.strike"
+   },
+   "objectives": [
+    {
+     "id": "nile.witness.compare",
+     "title": "Compare the marked guide after two matched watches.",
+     "done": {
+      "all": [
+       {
+        "card": "card.nile.strike"
+       },
+       {
+        "flag": "nile.witness.closed",
+        "eq": true
+       },
+       {
+        "flag": "nile.witness.open",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "truth",
+       "evidence",
+       "certainty",
+       "objectivity",
+       "explanation",
+       "perspective"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT"
+      ],
+      "subjects": [
+       "history",
+       "physics",
+       "design-tech"
+      ],
+      "minutes": 5,
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-THK-05"
+     ]
+    },
+    {
+     "id": "nile.witness.publish",
+     "title": "Set out the loose guide and check where the next reader finds it.",
+     "done": {
+      "all": [
+       {
+        "flagSet": "nile.witness.layout"
+       },
+       {
+        "flag": "nile.witness.readback",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "justification",
+       "perspective",
+       "interpretation"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "design-tech"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-MED-04"
+     ],
+     "visible": {
+      "objective": "nile.witness.compare"
+     }
+    }
+   ]
   }
  ],
  "clues": [
@@ -5999,6 +6345,13 @@
    "historicalLabel": "fictional-world",
    "art": "icon.letter",
    "description": "The runner’s signed receipt from the Nile Archive. Its second line stays open for the separate check. Take the copy to Nellis at the Cold Store."
+  },
+  {
+   "id": "item.witness-strip",
+   "name": "Folded witness strip",
+   "historicalLabel": "fictional-world",
+   "art": "icon.letter",
+   "description": "Leila folded this spare strip to hold a starting mark. Carry it to another bench and use the same fold to keep track of what moves or which count travels."
   }
  ]
 }

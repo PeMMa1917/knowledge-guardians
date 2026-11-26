@@ -10,6 +10,7 @@
  */
 
 import type { FrameworkPart, LearnTag } from './learningLevels';
+import type { StoryMotif } from './storyMotifs';
 
 // ---------------------------------------------------------------------------
 // Claim labels (spec 2.2 and 17). Two separate axes.
@@ -163,6 +164,7 @@ export interface DialogueNode {
   text: string;
   claimKind?: ClaimKind;
   historicalLabel?: HistoricalLabel;
+  motif?: StoryMotif;
   effects?: Effect[];
   options?: DialogueOption[];
   next?: string | null;

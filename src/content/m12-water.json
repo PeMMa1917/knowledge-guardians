@@ -1112,6 +1112,185 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH11-R02",
+   "world": "WORLD-12",
+   "title": "Room in the Relief Basin",
+   "knowledgeQuestion": "What can a route model tell us about a spare bucket, and who should get it?",
+   "stake": "The crew has one wide tile before the heavier practice pulse. The new seed beds and the lower troughs both need room.",
+   "available": {
+    "objective": "water.finish"
+   },
+   "objectives": [
+    {
+     "id": "water.routing.sources",
+     "title": "Bring the seed terrace’s and lower crew’s relief slips to Omi’s bench.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "water.routing.source.first",
+        "eq": true
+       },
+       {
+        "flag": "water.routing.source.second",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "perspective",
+       "culture",
+       "values"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "ess",
+       "geography"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "understand",
+       "fink": "human",
+       "solo": "multistructural"
+      },
+      "minutes": 2
+     }
+    },
+    {
+     "id": "water.routing.compare",
+     "title": "Release the heavier pulse with the wide tile in each socket.",
+     "essential": false,
+     "visible": {
+      "objective": "water.routing.sources"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "water.routing.sources"
+       },
+       {
+        "flag": "water.routing.trial.8.first",
+        "eq": true
+       },
+       {
+        "flag": "water.routing.trial.8.second",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "explanation",
+       "certainty",
+       "truth"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT",
+       "TEC"
+      ],
+      "subjects": [
+       "math-ai",
+       "ess",
+       "design-tech"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      },
+      "minutes": 2
+     }
+    },
+    {
+     "id": "water.routing.finish",
+     "title": "Fit a tested relief layout and check the outlet on the lower path.",
+     "essential": false,
+     "visible": {
+      "objective": "water.routing.compare"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "water.routing.compare"
+       },
+       {
+        "flagSet": "water.routing.layout"
+       },
+       {
+        "flag": "water.routing.seen",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "justification",
+       "responsibility",
+       "power",
+       "interpretation"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "MAT",
+       "TEC"
+      ],
+      "subjects": [
+       "ess",
+       "global-politics",
+       "design-tech"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "minutes": 2
+     },
+     "onComplete": [
+      {
+       "journal": "j.water.routing"
+      }
+     ]
+    }
+   ]
   }
  ],
  "criteria": [
@@ -1342,6 +1521,78 @@
    "objective": "water.register",
    "depth": 4,
    "text": "Choose the wider register copy, then look for it beside the council seats."
+  },
+  {
+   "id": "h.water.routing.sources.1",
+   "objective": "water.routing.sources",
+   "depth": 1,
+   "text": "Omi’s relief bench needs the two local requests."
+  },
+  {
+   "id": "h.water.routing.sources.2",
+   "objective": "water.routing.sources",
+   "depth": 2,
+   "text": "Both slips are on the lower path. One is by the seed beds and one is across the boards on the lower bank."
+  },
+  {
+   "id": "h.water.routing.sources.3",
+   "objective": "water.routing.sources",
+   "depth": 3,
+   "text": "Read the relief slip at each outlet. Each has a request for this smaller trial."
+  },
+  {
+   "id": "h.water.routing.sources.4",
+   "objective": "water.routing.sources",
+   "depth": 4,
+   "text": "From the Old Weir use the lower path. Read the seed terrace’s relief slip and the lower crew’s relief slip. Return to Omi’s bench."
+  },
+  {
+   "id": "h.water.routing.compare.1",
+   "objective": "water.routing.compare",
+   "depth": 1,
+   "text": "The bench has one wide tile and two sockets."
+  },
+  {
+   "id": "h.water.routing.compare.2",
+   "objective": "water.routing.compare",
+   "depth": 2,
+   "text": "A plain layout can show why the basin matters. Try the same eight buckets with the wide piece at each outlet."
+  },
+  {
+   "id": "h.water.routing.compare.3",
+   "objective": "water.routing.compare",
+   "depth": 3,
+   "text": "Place the piece at the seed rows and release eight. Move the same piece to the lower channel and release eight."
+  },
+  {
+   "id": "h.water.routing.compare.4",
+   "objective": "water.routing.compare",
+   "depth": 4,
+   "text": "Read rows, lower channel, basin, and spill after both eight-bucket trials. The two arrangements leave different requests waiting."
+  },
+  {
+   "id": "h.water.routing.finish.1",
+   "objective": "water.routing.finish",
+   "depth": 1,
+   "text": "Choose a layout for Omi to fit. Keep the other report open."
+  },
+  {
+   "id": "h.water.routing.finish.2",
+   "objective": "water.routing.finish",
+   "depth": 2,
+   "text": "Your trial tested the same pulse for both placements. Each widened one branch."
+  },
+  {
+   "id": "h.water.routing.finish.3",
+   "objective": "water.routing.finish",
+   "depth": 3,
+   "text": "Place the wide tile at the chosen outlet then use Fit this relief layout."
+  },
+  {
+   "id": "h.water.routing.finish.4",
+   "objective": "water.routing.finish",
+   "depth": 4,
+   "text": "Fit the layout and visit its new wide relief mouth on the lower path. The seed outlet is west of the boards. The lower outlet is east."
   }
  ],
  "journal": [
@@ -1349,6 +1600,11 @@
    "id": "j.water.turns",
    "claimKind": "interpretation",
    "text": "The same setting gives a different lower count after the leak is closed. We kept the drought order and the new order beside their own readings and work cards."
+  },
+  {
+   "id": "j.water.routing",
+   "claimKind": "interpretation",
+   "text": "We sent the same pulse through two layouts. The basin showed what neither route took. Omi left the unmet request with the chosen piece so the next crew could see what still needed room."
   }
  ],
  "moments": [

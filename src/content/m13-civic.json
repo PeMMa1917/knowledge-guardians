@@ -1090,6 +1090,183 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH12-R03",
+   "world": "WORLD-13",
+   "title": "A Place Beyond the Steps",
+   "knowledgeQuestion": "When does an empty place count as access?",
+   "stake": "Ade has one ramp for the practice board. The North Steps and Canal Walk readers have different times to reach it.",
+   "available": {
+    "objective": "civic.finish"
+   },
+   "objectives": [
+    {
+     "id": "civic.routing.sources",
+     "title": "Check the stair and ramp requests at both stops.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "civic.routing.source.first",
+        "eq": true
+       },
+       {
+        "flag": "civic.routing.source.second",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "perspective",
+       "culture",
+       "values"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "POL"
+      ],
+      "subjects": [
+       "geography",
+       "design-tech"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "understand",
+       "fink": "human",
+       "solo": "multistructural"
+      },
+      "minutes": 2
+     }
+    },
+    {
+     "id": "civic.routing.compare",
+     "title": "Open the same two trial queues with the ramp tile at each stop.",
+     "essential": false,
+     "visible": {
+      "objective": "civic.routing.sources"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "civic.routing.sources"
+       },
+       {
+        "flag": "civic.routing.trial.first",
+        "eq": true
+       },
+       {
+        "flag": "civic.routing.trial.second",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "explanation",
+       "objectivity",
+       "certainty",
+       "truth",
+       "interpretation"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "MAT",
+       "HUM",
+       "TEC"
+      ],
+      "subjects": [
+       "math-ai",
+       "digital-society"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "perspectives"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "minutes": 2
+     }
+    },
+    {
+     "id": "civic.routing.finish",
+     "title": "Post a practice queue and visit the stop that gets the ramp.",
+     "essential": false,
+     "visible": {
+      "objective": "civic.routing.compare"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "civic.routing.compare"
+       },
+       {
+        "flagSet": "civic.routing.layout"
+       },
+       {
+        "flag": "civic.routing.seen",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "power",
+       "justification",
+       "values"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "POL",
+       "TEC"
+      ],
+      "subjects": [
+       "global-politics",
+       "design-tech"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "minutes": 2
+     },
+     "onComplete": [
+      {
+       "journal": "j.civic.routing"
+      }
+     ]
+    }
+   ]
   }
  ],
  "criteria": [
@@ -1114,6 +1291,11 @@
    "id": "j.civic.overlap",
    "claimKind": "interpretation",
    "text": "In the equal, independent draw model, 40 of 64 ordered arrivals shared a mark. The fixed trays showed whether three known loads fit. The crew’s shared release time changed what it was reasonable to assume about actual arrival times."
+  },
+  {
+   "id": "j.civic.routing",
+   "claimKind": "interpretation",
+   "text": "The trial lanes had the same place count. An empty place could still be behind steps. One ramp changed who could come through, and the two crews still needed different times."
   }
  ],
  "moments": [
@@ -1427,6 +1609,78 @@
    "objective": "civic.overlap.finish",
    "depth": 4,
    "text": "Choose a setup. The helper goes to Canal Walk, or the staggered board goes to North Steps. Read the selected setup when you arrive."
+  },
+  {
+   "id": "h.civic.routing.sources.1",
+   "objective": "civic.routing.sources",
+   "depth": 1,
+   "text": "The ramp board needs a slip from each stop."
+  },
+  {
+   "id": "h.civic.routing.sources.2",
+   "objective": "civic.routing.sources",
+   "depth": 2,
+   "text": "Visit North Steps to the west and Canal Walk to the east from Dispatch."
+  },
+  {
+   "id": "h.civic.routing.sources.3",
+   "objective": "civic.routing.sources",
+   "depth": 3,
+   "text": "Read the stair and ramp slip at each stop. The bell or shift tells you when people can reach it."
+  },
+  {
+   "id": "h.civic.routing.sources.4",
+   "objective": "civic.routing.sources",
+   "depth": 4,
+   "text": "Take the North Steps slip off the west post and the Canal Walk slip by the approach boards. Bring both to Ade’s lane board."
+  },
+  {
+   "id": "h.civic.routing.compare.1",
+   "objective": "civic.routing.compare",
+   "depth": 1,
+   "text": "Some people can use either lane. Some need the step-free approach."
+  },
+  {
+   "id": "h.civic.routing.compare.2",
+   "objective": "civic.routing.compare",
+   "depth": 2,
+   "text": "There are two sockets and one ramp tile. Try both placements with the same request sets."
+  },
+  {
+   "id": "h.civic.routing.compare.3",
+   "objective": "civic.routing.compare",
+   "depth": 3,
+   "text": "Place the ramp at North Steps and open both queues. Move the ramp to Canal Walk and open both queues again."
+  },
+  {
+   "id": "h.civic.routing.compare.4",
+   "objective": "civic.routing.compare",
+   "depth": 4,
+   "text": "Compare the empty places with the people waiting after each placement. Plans with the same total can leave different people waiting."
+  },
+  {
+   "id": "h.civic.routing.finish.1",
+   "objective": "civic.routing.finish",
+   "depth": 1,
+   "text": "The trial still owes the waiting readers a real place and time."
+  },
+  {
+   "id": "h.civic.routing.finish.2",
+   "objective": "civic.routing.finish",
+   "depth": 2,
+   "text": "Choose a stop for the practice ramp."
+  },
+  {
+   "id": "h.civic.routing.finish.3",
+   "objective": "civic.routing.finish",
+   "depth": 3,
+   "text": "Place the ramp at the chosen stop then use Post this practice queue."
+  },
+  {
+   "id": "h.civic.routing.finish.4",
+   "objective": "civic.routing.finish",
+   "depth": 4,
+   "text": "Walk to the chosen stop. Read the ramp notice and see which readers still need a usable time."
   }
  ]
 }

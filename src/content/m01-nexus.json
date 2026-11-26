@@ -1209,6 +1209,7 @@
   {
    "id": "cold.open",
    "speaker": "narrator",
+   "motif": "first-light",
    "text": "A stone hall floats among the stars. By the entrance, an old label glows a sickly gold: THE FIRST BALLPOINT PEN.",
    "effects": [
     {

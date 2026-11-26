@@ -940,6 +940,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     // Remember places the player has used (the Glimmermoth looks for the others).
     const used = `used.${this.map.id}.${it.id}`;
     if (it.kind !== 'loreling' && ctx.controller.state.flags[used] !== true) ctx.controller.dispatch({ type: 'SetFlag', flag: used, value: true });
+    if (it.sfx) this.playSfx(it.sfx);
     switch (it.kind) {
       case 'loreling': ctx.ui.openLoreling(it.loreling!, it.sighting!); break;
       case 'exhibit': ctx.ui.openExhibit(it.exhibit!); break;

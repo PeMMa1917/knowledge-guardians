@@ -1,0 +1,60 @@
+[
+  {
+    "id": "second-handle",
+    "sender": "kip-arden",
+    "subject": "One quiet repair",
+    "prerequisites": ["nexus.handle.checked", "m02.o5.showdown"],
+    "outcomeFlag": "nexus.handle.method",
+    "byOutcome": {
+      "paired": "We tried two loops on an Emberford basket today. I asked the person holding it which side would help. That is the thing I forgot to do with our case. I used to think a hand held out was a very small tool.",
+      "mended": "I taught an Emberford trader the stitch we used on the case. He wanted to put my name on a card at his stall. I asked him to put the stitch there. I’ll tell my own story when I have words for it."
+    }
+  },
+  {
+    "id": "receiving-copy",
+    "sender": "handoff-nellis",
+    "subject": "My next receipt",
+    "prerequisites": ["preserved.handoff.respond", "metal.arrival"],
+    "outcomeFlag": "preserved.handoff.arrangement",
+    "byOutcome": {
+      "public": "I’ve split a receipt on the road again. One line is public, and the receiver can still ask at the desk about where it came from. It adds four breaths to my handover. I timed it.",
+      "desk": "I wrote the hours on the outside of my next folder. A runner can take them to someone who has a record to show. That person can choose when to come and who sees their name.",
+      "leave": "I kept a blank receiving line on the next form. The supervisor frowned until someone came back with a docket we had missed. The blank finally had a job to do."
+    }
+  },
+  {
+    "id": "creek-notes",
+    "sender": "forest-steward",
+    "subject": "After a second rise",
+    "prerequisites": ["forest.spate.crossed", "copies.arrival"],
+    "outcomeFlag": "forest.spate.route",
+    "byOutcome": {
+      "rail": "The low mark on the rail case stayed dry in the next rise. A cart wheel could still never fit it. I pinned the date and the width on the same scrap. Ask Lark to keep both if it goes through a press.",
+      "bend": "A cart made the longer bend in the next rise. The wind pulled the second knot on the screen loose. I wrote that on the route slip before the cart turned home. I hope the next copy keeps the knot."
+    }
+  },
+  {
+    "id": "the-spare-clip",
+    "sender": "copies-presskeeper",
+    "subject": "Room for a limit",
+    "prerequisites": ["copies.margin.deliver", "sea.arrival"],
+    "outcomeFlag": "copies.margin.sent",
+    "byOutcome": {
+      "fold": "The stalls rigged their own board. A whole copy reaches them now. I left a wide margin for the trial date. There is always room for more heading. The date is harder to persuade.",
+      "pair": "I sent a spare clip with the runner. She says a string will do better in the wet. Your next chart will meet weather before it meets its next reader. I would ask the deck crew what stays put.",
+      "wait": "The caller tried taking the signed order down to the stalls. They could hear the directions there. A person at the ramp could not. We set the full order by the hoist while the caller walks."
+    }
+  },
+  {
+    "id": "a-place-at-first-bell",
+    "sender": "voices-steward",
+    "subject": "The next visitor",
+    "prerequisites": ["island.arrival"],
+    "outcomeFlag": "cross.last-lamp",
+    "byOutcome": {
+      "quay": "I kept the next quay turn. A guest arrived just as I reached for my coat. We had one dry bench and two stories. The new rota beside the lamp told me whose coat to reach for after mine.",
+      "room": "The visitor who missed the quay light found the room arrow and waited by the near shelf. I moved the chair so the next person can see it from the doorway. Two steps made the difference.",
+      "defer": "The morning keeper set out the promised chair. Our first visitor had already taken a boat. We’ve left a second date on the card. We can still keep a place without pretending everyone can come."
+    }
+  }
+]

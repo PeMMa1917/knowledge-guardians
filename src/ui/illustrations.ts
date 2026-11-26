@@ -1027,6 +1027,94 @@ DRAW['nexus.handle-mended'] = [24, 24, (g) => handleCase(g, 'mended', false)];
 DRAW['nexus.handle-paired-ready'] = [24, 24, (g) => handleCase(g, 'paired', true)];
 DRAW['nexus.handle-mended-ready'] = [24, 24, (g) => handleCase(g, 'mended', true)];
 
+// Brass folding gauge, the old tray jig, and the receipt left at the found shelf.
+function foldingGauge(g: Ctx, x: number, y: number, opened: boolean) {
+  R(g, '#775036', x, y + 6, 16, 4);
+  R(g, '#e5bc6f', x, y + 6, 15, 2);
+  R(g, '#b67a43', x + 11, y + 7, 2, 2);
+  if (opened) {
+    R(g, '#a46e40', x + 1, y, 4, 7);
+    R(g, '#edcb7f', x + 1, y, 2, 6);
+    R(g, '#614a47', x + 3, y + 3, 2, 2);
+  } else {
+    R(g, '#aa7746', x + 1, y + 3, 11, 3);
+    R(g, '#f0ca7b', x + 1, y + 3, 9, 1);
+    R(g, '#614a47', x + 8, y + 4, 2, 2);
+  }
+  R(g, '#74523d', x + 1, y + 7, 3, 2);
+  R(g, '#f1d491', x + 2, y + 7);
+}
+function gaugeReceipt(g: Ctx, closed: boolean, loan: boolean) {
+  R(g, '#564150', 2, 8, 22, 12);
+  R(g, '#e6d0a7', 4, 8, 17, 10);
+  R(g, '#ac8f75', 6, 10, 7);
+  R(g, '#ac8f75', 6, 13, 7);
+  R(g, '#648c9c', 3, 6, 3, 13);
+  if (closed) {
+    R(g, '#537a65', 16, 12, 2, 2);
+    R(g, '#537a65', 18, 10, 2, 2);
+  }
+  if (loan) {
+    R(g, '#c79c81', 20, 5, 5, 11);
+    R(g, '#874b51', 21, 8, 3, 1);
+    R(g, '#874b51', 21, 11, 3, 1);
+  }
+}
+function gaugeBench(g: Ctx) {
+  R(g, '#4f3c41', 1, 9, 25, 12);
+  R(g, '#a48968', 3, 10, 21, 8);
+  R(g, '#685853', 3, 16, 21, 2);
+  R(g, '#c0a082', 3, 10, 20, 1);
+}
+DRAW['lost-gauge.found'] = [26, 24, (g) => {
+  gaugeBench(g);
+  foldingGauge(g, 5, 5, false);
+  R(g, '#6babb0', 12, 7, 2, 10);
+}];
+DRAW['lost-gauge.pouch'] = [26, 24, (g) => {
+  R(g, '#554445', 3, 9, 20, 12);
+  R(g, '#88775d', 4, 10, 18, 9);
+  R(g, '#b09a72', 6, 10, 14, 2);
+  R(g, '#6597a2', 13, 8, 2, 14);
+  R(g, '#e5cb98', 15, 10, 6, 5);
+}];
+DRAW['lost-gauge.stub'] = [26, 24, (g) => gaugeReceipt(g, false, false)];
+DRAW['lost-gauge.receipt'] = [26, 24, (g) => {
+  gaugeReceipt(g, false, false);
+  R(g, '#f3ddb6', 16, 6, 8, 6);
+  R(g, '#8c6358', 18, 8, 4, 1);
+}];
+DRAW['lost-gauge.closed'] = [26, 24, (g) => gaugeReceipt(g, true, false)];
+DRAW['lost-gauge.loan-note'] = [26, 24, (g) => gaugeReceipt(g, true, true)];
+DRAW['lost-gauge.jig'] = [26, 24, (g) => {
+  gaugeBench(g);
+  foldingGauge(g, 6, 5, true);
+  R(g, '#6d6256', 9, 8, 2, 2);
+}];
+DRAW['lost-gauge.bench-owner'] = [26, 24, (g) => {
+  gaugeBench(g);
+  foldingGauge(g, 5, 7, true);
+  R(g, '#cbb496', 10, 3, 3, 10);
+}];
+DRAW['lost-gauge.bench-loan'] = [26, 24, (g) => {
+  gaugeBench(g);
+  foldingGauge(g, 5, 6, true);
+  R(g, '#e8bf9c', 19, 7, 5, 6);
+  R(g, '#914958', 20, 9, 3, 1);
+}];
+DRAW['lost-gauge.divider'] = [26, 24, (g) => {
+  gaugeBench(g);
+  R(g, '#d3bb99', 10, 4, 3, 12);
+  R(g, '#f0d9b2', 10, 4, 1, 11);
+}];
+DRAW['lost-gauge.hook'] = [26, 24, (g) => {
+  gaugeBench(g);
+  foldingGauge(g, 5, 5, false);
+  R(g, '#647b7b', 10, 5, 2, 5);
+  R(g, '#e8bf9c', 19, 7, 5, 7);
+  R(g, '#914958', 20, 9, 3, 2);
+}];
+
 // Living Forest equipment and a schematic field note.
 DRAW['forest.waypost'] = [16, 24, (g) => {
   R(g, '#574235', 7, 7, 3, 16);

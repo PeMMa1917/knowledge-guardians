@@ -22,6 +22,7 @@ export interface Interactable {
   node?: string;              // node, watch site, sample, edition or chart ID, depending on kind
   place?: string;             // for kind 'waystone': the place name
   text?: string;              // for kind 'sign'
+  sfx?: string;               // optional captioned sound when used
   flag?: string;              // for kind 'sign': set to true when read; for kind 'door': set when used
   /** Procedural art key drawn at this spot (see BootScene.makeTextures). */
   art?: string;

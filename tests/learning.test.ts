@@ -79,6 +79,14 @@ describe('the 30-minute design audit along play-style paths', () => {
     expect(() => auditPath([{ ...step, minutes: Number.NaN }])).toThrow(RangeError);
   });
 
+  it('places Elsbet’s optional reels and the Island fair after the required chapter steps', () => {
+    const explorer = playPath(pack, 'explorer').map((step) => step.id);
+    expect(explorer).toContain('voices.finish');
+    expect(explorer).toContain('island.log');
+    expect(explorer.indexOf('voices.elsbet.heard')).toBeGreaterThan(explorer.indexOf('voices.finish'));
+    expect(explorer.indexOf('lanternfair.island.o.check')).toBeGreaterThan(explorer.indexOf('island.log'));
+  });
+
   it('keeps inferred framework support and repeated actions visible in the first window', () => {
     const repeated: PathStep = {
       id: 'repeatable gauge', chapter: 1, minutes: 10, concepts: ['evidence'], framework: ['methods-and-tools', 'scope'],

@@ -135,6 +135,142 @@
    "speaker": "metal-steward",
    "text": "Bea slips the run notes beside the index. A reader follows “fit checked” back to the fitting shop and “surface to check” to the coating bench. The transfer note keeps its own line. The reader can ask the yard for a hands-on run.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.witness.bind",
+   "speaker": "metal-inspector",
+   "text": "Six sleeves came off the practice pieces. The yard needs clean ones back this shift. An apprentice went all the way to the hall for stock that was still here. Mark all six slots on one strip before copying either return count.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip Leila’s folded witness strip to the tally.",
+     "next": "metal.witness.archive",
+     "if": {
+      "all": [
+       {
+        "item": "item.witness-strip"
+       },
+       {
+        "not": {
+         "flagSet": "metal.witness.use"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.witness.use",
+       "value": "archive"
+      }
+     ]
+    },
+    {
+     "text": "Clip the yard’s spare strip to the tally.",
+     "next": "metal.witness.loan",
+     "if": {
+      "all": [
+       {
+        "not": {
+         "item": "item.witness-strip"
+        }
+       },
+       {
+        "not": {
+         "flagSet": "metal.witness.use"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.witness.use",
+       "value": "loan"
+      }
+     ]
+    },
+    {
+     "text": "Leave the empty tally by the sleeves."
+    }
+   ]
+  },
+  {
+   "id": "metal.witness.archive",
+   "speaker": "metal-inspector",
+   "text": "The fold held a guide’s starting corner in the Nile Archive. It can keep the same six slots in order here. Check the clean stand in the yard and the repair tray across the hall.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.witness.loan",
+   "speaker": "metal-inspector",
+   "text": "The fold keeps six spaces in order as the tally moves. Check the clean stand in the yard and the repair tray in the trade hall.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.witness.choose",
+   "speaker": "metal-steward",
+   "text": "The four clean sleeves and two torn ones fill the same six slots. There is a place for the next yard run and a place for the repairs. Keep the clean stock in the yard for a quick start and send only the repair tray. Or move all six together so we can check them on one hall bench. The clean ones will wait here for the next cart.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep four clean sleeves at the yard and send two for repair.",
+     "next": "metal.witness.local",
+     "if": {
+      "all": [
+       {
+        "objective": "metal.witness.compare"
+       },
+       {
+        "not": {
+         "flagSet": "metal.witness.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.witness.layout",
+       "value": "local"
+      }
+     ]
+    },
+    {
+     "text": "Send the six together to the shared sorting stand.",
+     "next": "metal.witness.shared",
+     "if": {
+      "all": [
+       {
+        "objective": "metal.witness.compare"
+       },
+       {
+        "not": {
+         "flagSet": "metal.witness.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.witness.layout",
+       "value": "shared"
+      }
+     ]
+    },
+    {
+     "text": "Leave the two counts open for the next shift."
+    }
+   ]
+  },
+  {
+   "id": "metal.witness.local",
+   "speaker": "metal-steward",
+   "text": "The yard takes the four straight back to the packing stand. We leave a repair tray for the other two and a duplicate line so the next shift can reconcile them. Check each end before the cart goes.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.witness.shared",
+   "speaker": "metal-steward",
+   "text": "The carrier loads one tray. At the hall I split it between clean stock and repairs. The next yard run waits for a return cart, but I can check the whole count from one stand.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "missions": [
@@ -237,6 +373,160 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH6-R03",
+   "world": "WORLD-07",
+   "title": "The Sleeves That Come Back",
+   "knowledgeQuestion": "How can a return count change what a workshop keeps in use?",
+   "available": {
+    "flag": "metal.arrived",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "metal.witness.compare",
+     "title": "Trace the six returned sleeves between yard and hall.",
+     "done": {
+      "all": [
+       {
+        "flagSet": "metal.witness.use"
+       },
+       {
+        "flag": "metal.witness.yard",
+        "eq": true
+       },
+       {
+        "flag": "metal.witness.hall",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "truth",
+       "evidence",
+       "objectivity",
+       "explanation",
+       "interpretation",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "MAT"
+      ],
+      "subjects": [
+       "economics",
+       "math-ai",
+       "design-tech"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-RSC-21"
+     ]
+    },
+    {
+     "id": "metal.witness.publish",
+     "title": "Choose a return route and check where its sleeves are held.",
+     "done": {
+      "any": [
+       {
+        "all": [
+         {
+          "flag": "metal.witness.layout",
+          "eq": "local"
+         },
+         {
+          "flag": "metal.witness.local-yard",
+          "eq": true
+         },
+         {
+          "flag": "metal.witness.local-hall",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "all": [
+         {
+          "flag": "metal.witness.layout",
+          "eq": "shared"
+         },
+         {
+          "flag": "metal.witness.shared-hall",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "values",
+       "responsibility",
+       "power",
+       "perspective",
+       "justification"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "MAT"
+      ],
+      "subjects": [
+       "economics",
+       "ess",
+       "design-tech"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "visible": {
+      "objective": "metal.witness.compare"
+     },
+     "onComplete": [
+      {
+       "journal": "j.metal.witness"
+      }
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -287,6 +577,54 @@
    "objective": "metal.tag.explained",
    "depth": 4,
    "text": "Choose a place where readers can check the explanation: the yard handover or the hall index."
+  },
+  {
+   "id": "h.metal.witness.compare.1",
+   "objective": "metal.witness.compare",
+   "depth": 1,
+   "text": "Two workshops can move the same stock and make two entries for it."
+  },
+  {
+   "id": "h.metal.witness.compare.2",
+   "objective": "metal.witness.compare",
+   "depth": 2,
+   "text": "Clip a strip to the return tally at the Sample Yard."
+  },
+  {
+   "id": "h.metal.witness.compare.3",
+   "objective": "metal.witness.compare",
+   "depth": 3,
+   "text": "Check the clean sleeves in the yard and the repair tray in the Trade Hall."
+  },
+  {
+   "id": "h.metal.witness.compare.4",
+   "objective": "metal.witness.compare",
+   "depth": 4,
+   "text": "Give each physical sleeve its slot in the same six. The cart is a journey for the sleeves."
+  },
+  {
+   "id": "h.metal.witness.publish.1",
+   "objective": "metal.witness.publish",
+   "depth": 1,
+   "text": "The clean stock can return immediately or wait for the hall cart."
+  },
+  {
+   "id": "h.metal.witness.publish.2",
+   "objective": "metal.witness.publish",
+   "depth": 2,
+   "text": "Find Bea’s return board beside the repair tray."
+  },
+  {
+   "id": "h.metal.witness.publish.3",
+   "objective": "metal.witness.publish",
+   "depth": 3,
+   "text": "Choose whether to fill both local stands or sort the whole return in the hall."
+  },
+  {
+   "id": "h.metal.witness.publish.4",
+   "objective": "metal.witness.publish",
+   "depth": 4,
+   "text": "Read both trays if you split the batch, or see both counts at the single hall stand."
   }
  ],
  "moments": [
@@ -308,6 +646,13 @@
    "if": {
     "objective": "metal.tag.explained"
    }
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.metal.witness",
+   "claimKind": "interpretation",
+   "text": "The strip kept the yard and hall in one count. Four sleeves could go back into use. Two needed repair. We chose where the next shift could find them."
   }
  ]
 }

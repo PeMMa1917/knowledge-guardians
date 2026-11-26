@@ -116,7 +116,6 @@ export function playPath(pack: ContentPack, style: PlayStyle): PathStep[] {
       const l = LEARN[key];
       if (l) out.push({ id: key, chapter: ch, minutes: l.minutes, concepts: l.concepts, framework: l.framework, action: key.split(':')[0], levels: l });
     }
-    if (style === 'explorer') for (const m of pack.missions) if (chapterOf(m) === ch && ch > 1 && !/-M01$/.test(m.id)) addMission(m.id, ch, true);
   };
   for (let ch = 1; ch <= 15; ch++) {
     if (ch === 1) {
@@ -140,9 +139,25 @@ export function playPath(pack: ContentPack, style: PlayStyle): PathStep[] {
     const main = pack.missions.find((m) => m.id === `KG-CH${ch}-M01`);
     if (!main) continue;
     const half = Math.ceil(main.objectives.length / 2);
+    const laterObjectives = new Set(main.objectives.slice(half).map((o) => o.id));
+    const middle = new Set(style === 'explorer' ? pack.missions.filter((m) => chapterOf(m) === ch && m.id !== main.id) : []);
+    const afterRevision: Mission[] = [];
+    // A side mission can depend on another side mission that opens after the revision.
+    for (let moved = true; moved;) {
+      moved = false;
+      for (const m of middle) {
+        if (!deps(m.available).some((id) => laterObjectives.has(id))) continue;
+        middle.delete(m);
+        afterRevision.push(m);
+        for (const o of m.objectives) laterObjectives.add(o.id);
+        moved = true;
+      }
+    }
     main.objectives.slice(0, half).forEach((o) => o.essential && addObj(o.id, ch));
     addOptional(ch);
+    middle.forEach((m) => addMission(m.id, ch, true));
     main.objectives.slice(half).forEach((o) => o.essential && addObj(o.id, ch));
+    afterRevision.forEach((m) => addMission(m.id, ch, true));
   }
   return out;
 }

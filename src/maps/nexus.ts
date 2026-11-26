@@ -33,6 +33,14 @@ const handleUnfitted: Condition = { not: { flagSet: 'nexus.handle.method' } };
 const handlePaused: Condition = { flag: 'nexus.handle.paused', eq: true };
 const handleDone: Condition = { flag: 'nexus.handle.done', eq: true };
 const handleMethods = ['paired', 'mended'] as const;
+const gaugeLogged: Condition = { flag: 'lost.gauge.logged', eq: true };
+const gaugeThread: Condition = { item: 'tool.provenance-thread' };
+const gaugeEntry: Condition = { flag: 'thread.lost-gauge.entry', eq: true };
+const gaugePouch: Condition = { item: 'item.folding-gauge' };
+const gaugeResolved: Condition = { flagSet: 'lost.gauge.resolved' };
+const gaugeUsed: Condition = { flag: 'lost.gauge.used', eq: true };
+const gaugeReceipted: Condition = { flag: 'lost.gauge.receipt', eq: true };
+const gaugeShelf = { x: 3, y: 6, w: 1, h: 1, walkThrough: true };
 const viewerPatent: Condition = { flag: 'inspected.OBJ-001-A', eq: true };
 const viewerUnposted: Condition = { not: { flagSet: 'nexus.viewer.response' } };
 const viewerFinished: Condition = { flag: 'nexus.viewer.done', eq: true };
@@ -122,6 +130,7 @@ export const NEXUS: MapDef = {
     { id: 'villager-2', x: 17, y: 13, facing: 'up' },
     { id: 'archivist-tull', x: 35, y: 13, facing: 'down' },
     { id: 'visitor-sol', x: 29, y: 8, facing: 'up' },
+    { id: 'nima-fenner', x: 4, y: 5, facing: 'left', visibleIf: { not: { flag: 'preserved.arrived', eq: true } } },
     // Origin side quests (spec 35.1): each giver appears only for that origin.
     { id: 'cataloguer-bela', x: 6, y: 12, facing: 'down', visibleIf: { origin: 'archive' } },
     { id: 'translator-lio', x: 24, y: 13, facing: 'right', visibleIf: { origin: 'traveller' } },
@@ -305,6 +314,28 @@ export const NEXUS: MapDef = {
       visibleIf: { all: [{ flag: 'nile.dispatch', eq: route }, { flag: 'nile.returned', eq: true }] } })),
 
     { id: 'secret-misfiled', kind: 'secret', secret: 'misfiled', x: 22, y: 3, w: 1, h: 1, label: 'a gap behind the bookshelf' },
+    { id: 'nexus-gauge-case', kind: 'scene', node: 'lost.gauge.inspect', x: 2, y: 6, w: 1, h: 1, walkThrough: true,
+      label: 'the notched brass gauge in the found tray', art: 'lost-gauge.found', visibleIf: { all: [{ not: gaugePouch }, { not: gaugeResolved }] } },
+    { ...gaugeShelf, id: 'nexus-gauge-intake', kind: 'scene', node: 'lost.gauge.intake',
+      label: 'the open found book', art: 'ledger', visibleIf: { not: gaugeLogged } },
+    { ...gaugeShelf, id: 'nexus-gauge-wait', kind: 'scene', node: 'lost.gauge.waiting',
+      label: 'the open owner line in the found book', art: 'lost-gauge.stub', visibleIf: { all: [gaugeLogged, { not: gaugeThread }] } },
+    { ...gaugeShelf, id: 'nexus-gauge-thread', kind: 'thread', thread: 'lost-gauge', node: 'entry',
+      label: 'the blue-tie intake record', art: 'lost-gauge.stub', visibleIf: { all: [gaugeLogged, gaugeThread, { not: gaugeEntry }] } },
+    { ...gaugeShelf, id: 'nexus-gauge-carry', kind: 'scene', node: 'lost.gauge.carry',
+      label: 'the padded pouch and sign-out book', art: 'lost-gauge.pouch',
+      visibleIf: { all: [gaugeLogged, gaugeThread, gaugeEntry, { not: gaugePouch }, { not: gaugeResolved }] } },
+    { ...gaugeShelf, id: 'nexus-gauge-awaiting', kind: 'scene', node: 'lost.gauge.awaiting',
+      label: 'the sign-out stub under the blue tie', art: 'lost-gauge.stub',
+      visibleIf: { all: [{ any: [gaugePouch, gaugeResolved] }, { not: gaugeUsed }] } },
+    { ...gaugeShelf, id: 'nexus-gauge-receipt', kind: 'scene', node: 'lost.gauge.receipt',
+      label: 'Aster’s return receipt beside the found book', art: 'lost-gauge.receipt', visibleIf: { all: [gaugeUsed, { not: gaugeReceipted }] } },
+    ...(['owner', 'loan'] as const).map((mode) => ({
+      ...gaugeShelf, id: `nexus-gauge-closed-${mode}`, kind: 'scene' as const, node: `lost.gauge.closed-${mode}`,
+      label: mode === 'owner' ? 'the checked return in the found book' : 'the checked return and separate loan line',
+      art: mode === 'owner' ? 'lost-gauge.closed' : 'lost-gauge.loan-note',
+      visibleIf: { all: [gaugeReceipted, { flag: 'lost.gauge.resolved', eq: mode }] },
+    })),
     { id: 'nexus-handle-case', kind: 'scene', x: 5, y: 17, w: 1, h: 1, walkThrough: true,
       label: 'Kip’s case with a split handle', art: 'nexus.handle-torn', node: 'nexus.handle.start',
       visibleIf: { all: [handleUnfitted, { not: handlePaused }] } },

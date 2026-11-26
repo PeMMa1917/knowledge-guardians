@@ -12,6 +12,7 @@ import { dailyPrompts } from './dive';
 import { chordFigure, panes, runSorter, runSurvey, sightBlock, translateLine, judgeFrame, shepardParts, brier } from './puzzles';
 import { openCombinations } from './lock';
 import { BLOOM, FINK, FRAMEWORK, SOLO } from './learningLevels';
+import { STORY_MOTIFS } from './storyMotifs';
 
 const MAX_TEXT = 2000;
 const CLAIM_KINDS = ['observation', 'interpretation', 'value', 'simulation'];
@@ -128,6 +129,7 @@ export function validateContent(pack: ContentPack): string[] {
 
   pack.dialogue.forEach((n) => {
     dup('node', n.id); text(`node ${n.id}`, n.text);
+    if (n.motif !== undefined && !STORY_MOTIFS.includes(n.motif)) p.push(`node ${n.id}: unknown story motif ${n.motif}`);
     if (n.speaker !== 'narrator' && n.speaker !== 'player' && n.speaker !== 'lumen' && !n.speaker.startsWith('mentor:') && !chars.has(n.speaker)) p.push(`node ${n.id}: unknown speaker ${n.speaker}`);
     if (n.next && !nodes.has(n.next)) p.push(`node ${n.id}: unknown next ${n.next}`);
     eff(n.effects, `node ${n.id}`);
