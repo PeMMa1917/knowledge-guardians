@@ -5,6 +5,7 @@
    "world": "WORLD-05",
    "title": "The Next Bell",
    "knowledgeQuestion": "When should a change in evidence change what we tell other people?",
+   "stake": "If the notice is too sure, or not sure enough, the harbour does not move in time.",
    "available": {
     "objective": "preserved.publish"
    },

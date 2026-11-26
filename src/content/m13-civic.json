@@ -542,6 +542,7 @@
    "world": "WORLD-13",
    "title": "A Place on the Route",
    "knowledgeQuestion": "How do the people we count and the rules we use shape the service others can reach?",
+   "stake": "If the dispatch rule stays as it is, one street never gets the mobile library.",
    "available": {
     "objective": "water.finish"
    },

@@ -201,6 +201,8 @@ export interface Mission {
   world: string;
   title: string;
   knowledgeQuestion: string;
+  /** What a person loses if this goes wrong, in one sentence (docs/STORY_BIBLE.md section 14). */
+  stake?: string;
   objectives: Objective[];
   available?: Condition;
 }

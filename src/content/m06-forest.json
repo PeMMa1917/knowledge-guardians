@@ -84,6 +84,7 @@
    "world": "WORLD-06",
    "title": "Where the Wings Go",
    "knowledgeQuestion": "What changes when we watch the same place from another position or listen to someone who works there?",
+   "stake": "If the count is biased, the crews close the wrong route and the birds lose their crossing.",
    "available": {
     "objective": "coast.revise"
    },

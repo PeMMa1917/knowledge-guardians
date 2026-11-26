@@ -5,6 +5,7 @@
    "world": "WORLD-07",
    "title": "The Blue Panels",
    "knowledgeQuestion": "How far can a material test support a story about where two things came from?",
+   "stake": "If a metal is named from its weight alone, a weak part goes into the ferry winch.",
    "available": {
     "objective": "forest.finish"
    },

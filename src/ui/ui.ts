@@ -789,6 +789,7 @@ export class UI implements UIApi {
       ...missions.filter((m) => objs.some((o) => o.mission === m && !o.complete)).slice(-1).map((m) => h('div', {},
         h('h2', {}, m.title),
         h('p', { class: 'kq' }, m.knowledgeQuestion),
+        ...(m.stake ? [h('p', { class: 'stake' }, h('strong', {}, 'At stake: '), m.stake)] : []),
         h('ul', {}, ...objs.filter((o) => o.mission === m).map((o) => h('li', { class: o.complete ? 'done' : '' }, h('span', { 'aria-hidden': 'true' }, o.complete ? '✓ ' : '◇ '), h('span', { class: 'sr' }, o.complete ? 'Done: ' : 'To do: '), o.title))))),
       objs.length && objs.every((o) => o.complete) ? h('div', {}, h('h2', {}, 'Chapter complete'), h('p', {}, 'Explore freely, or open the menu.')) : null);
     const km = ctx.settings.keys;

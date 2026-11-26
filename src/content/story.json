@@ -1650,6 +1650,7 @@
    "world": "WORLD-02",
    "title": "The Dark Lamps of Emberford",
    "knowledgeQuestion": "Who keeps a town's knowledge alive when its keeper is gone?",
+   "stake": "If nobody keeps checking, the lamps stay dark, the loudest voice wins every argument, and Emberford forgets how to ask 'how do we know?'.",
    "available": {
     "objective": "m02.o1.arrive"
    },

@@ -890,6 +890,7 @@
    "world": "WORLD-04",
    "title": "The Missing Transfer",
    "knowledgeQuestion": "How can a public record name what it knows and still leave room for a missing link?",
+   "stake": "If the gap in the file is hidden, a family loses its claim to an ancestor's name.",
    "available": {
     "flag": "preserved.arrived",
     "eq": true
