@@ -76,6 +76,29 @@ export const NEXUS: MapDef = {
     { id: 'translator-lio', x: 24, y: 13, facing: 'right', visibleIf: { origin: 'traveller' } },
   ],
   interactables: [
+    { id: 'nile-stone-case', kind: 'exhibit', exhibit: 'OBJ-NILE-STONE', x: 31, y: 17, w: 1, h: 1, walkThrough: true, label: 'the Singapore Stone fragment', art: 'nile.stone', visibleIf: { flag: 'nile.returned', eq: true } },
+    { id: 'nile-badang-case', kind: 'exhibit', exhibit: 'OBJ-NILE-BADANG', x: 34, y: 17, w: 1, h: 1, walkThrough: true, label: 'the Badang account', art: 'nile.scroll', visibleIf: { flag: 'nile.returned', eq: true } },
+    { id: 'nile-stone-label', kind: 'label', kit: 'nile-stone', x: 36, y: 17, w: 1, h: 1, walkThrough: true, label: 'the river records label stand', art: 'label-stand', visibleIf: { flag: 'nile.returned', eq: true } },
+    ...([
+      ['voices', 32, 'The stoppage leads. Beside it, a dated slip traces one payment and the next protest.'],
+      ['payment', 32, 'The grain payment leads. Right beside it, the renewed protest keeps a visitor from mistaking payment for a settlement.'],
+    ] as const).map(([choice, x, text]) => ({ id: 'nile-worker-tag-' + choice, kind: 'sign' as const, x, y: 8, w: 1, h: 1, walkThrough: true, label: 'the heading on the workers’ slips', text, art: 'nile.slip',
+      visibleIf: { all: [{ flag: 'nile.dispatch', eq: 'read' }, { flag: 'nile.returned', eq: true }, { flag: 'nile.workerLead', eq: choice }] } })),
+    ...([
+      ['cast', 27, 'The cast arrived intact with the slower cart. The apprentice sets it next to the quick note and invites visitors to compare weight and texture.'],
+      ['copy', 27, 'The quick courier brought the paper copy. The cast stays in the archive. A visitor can look for marks here, but cannot weigh them.'],
+    ] as const).map(([choice, x, text]) => ({ id: 'nile-delivery-tag-' + choice, kind: 'sign' as const, x, y: 10, w: 1, h: 1, walkThrough: true, label: 'the tag from the model route', text, art: 'nile.slip',
+      visibleIf: { all: [{ flag: 'nile.dispatch', eq: 'pair' }, { flag: 'nile.returned', eq: true }, { flag: 'nile.routeLead', eq: choice }] } })),
+
+    { id: 'door-without-a-name', kind: 'door', x: 37, y: 2, w: 1, h: 1, label: 'the Door Without a Name', art: 'nile.door',
+      visibleIf: { all: [{ flag: 'study.letter', eq: true }, { objective: 'm02.o8.ise' }] }, flag: 'nile.arrived', to: { map: 'nile.hall', x: 12, y: 10 } },
+    ...([
+      ['print', 34, 'the corrected public case', 'The old heading is crossed out. Both dates stay in the case.', 'nile.tablet'],
+      ['read', 31, 'the workers’ reading table', 'Two slips sit side by side. Amunnakht’s name is on both. Beside them is an empty chair.', 'nile.scroll'],
+      ['pair', 28, 'the workshop’s paired display', 'One tag names the ancient map. Another states what the model tested, and what it cannot say about the past.', 'nile.map'],
+    ] as const).map(([route, x, label, text, art]) => ({ id: 'nile-outcome-' + route, kind: 'sign' as const, x, y: 8, w: 1, h: 1, walkThrough: true, label, text, art,
+      visibleIf: { all: [{ flag: 'nile.dispatch', eq: route }, { flag: 'nile.returned', eq: true }] } })),
+
     { id: 'secret-misfiled', kind: 'secret', secret: 'misfiled', x: 22, y: 3, w: 1, h: 1, label: 'a gap behind the bookshelf' },
     { id: 'ex-a', kind: 'exhibit', exhibit: 'OBJ-001-A', x: 8, y: 7, w: 1, h: 1, label: 'the patent drawing', art: 'pedestal.patent' },
     { id: 'ex-b', kind: 'exhibit', exhibit: 'OBJ-001-B', x: 12, y: 7, w: 2, h: 1, label: 'the workshop model', art: 'pedestal.model' },

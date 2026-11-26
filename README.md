@@ -90,3 +90,7 @@ Settings include calm mode (delay random events), text size, reduced motion, red
 - Assets: see [CREDITS.md](CREDITS.md). All third-party assets are CC0 (public domain).
 - Font: Lexend, SIL Open Font License 1.1, through `@fontsource/lexend`.
 - Engine: Phaser 3, MIT licence.
+
+## Chapter 2 development branch
+
+The Nile Archive follows Elsbet's letter. Finish the main Emberford story, read the letter in her study and return to Ise in the Nexus. The blue-and-brass door is at the north end of the east wing. Complete two leads in any order, send a first packet with Imani and follow it back to Ise. Optional leads and the return-table case remain available afterward. See [STATUS.md](STATUS.md#chapter-2-the-door-without-a-name).

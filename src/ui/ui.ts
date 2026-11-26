@@ -1,3 +1,4 @@
+import { NILE_TRIALS, NILE_DELIVERIES, type NileDelivery } from '../domain/nileModel';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -531,7 +532,7 @@ export class UI implements UIApi {
     const box = h('div', { class: 'title-screen' },
       h('div', { class: 'title-art', 'aria-hidden': 'true' }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '' })),
       h('h1', {}, 'Knowledge Guardians'),
-      h('p', { class: 'subtitle' }, 'Chapter 1: Three Firsts and The Label on the Blade'),
+      h('p', { class: 'subtitle' }, 'From Three Firsts to the Door Without a Name'),
       c.loadProblem ? h('p', { class: 'warn', role: 'alert' }, `Your save could not be opened: ${c.loadProblem} Your saved data has not been changed. You can still start a new game, but starting a new game will replace it.`) : null,
       c.contentProblems.length ? h('p', { class: 'warn', role: 'alert' }, `Content problems: ${c.contentProblems.join('; ')}`) : null,
       h('div', { class: 'menu' },
@@ -3210,6 +3211,58 @@ export class UI implements UIApi {
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
+  /** A controlled comparison. The physical load stays fixed while the path changes. */
+  openNileModel(): void {
+    const c = ctx.controller;
+    const box = this.openModal('nile-model wide', 'The shelf-top model');
+    const live = h('p', { 'aria-live': 'polite', class: 'nile-report' });
+    box.append(this.closeBtn(), h('h2', {}, 'The shelf-top model'),
+      h('p', {}, 'Marek sets the tall crate on the cart. Try each road with the same load.'),
+      h('p', { class: 'fine' }, 'Fictional model. These routes and times are built for the archive trial.'));
+    if (!c.state.cards.includes('card.nile.mine')) {
+      box.append(h('p', {}, 'Marek points to the Mine Map case west of the bench. Read that record before setting out.'));
+      return;
+    }
+    const tracks = h('div', { class: 'nile-tracks' });
+    const destinations = h('div', { class: 'nile-deliveries' });
+    const showDelivery = () => {
+      clear(destinations);
+      const choice = c.state.flags['nile.routeLead'] as NileDelivery | undefined;
+      if (choice) {
+        const r = NILE_DELIVERIES[choice];
+        destinations.append(h('h3', {}, 'Your delivery tag'), h('strong', {}, r.name), h('p', {}, r.line));
+      } else if (c.state.cards.includes('card.nile.model')) {
+        destinations.append(h('h3', {}, 'Tie on a delivery tag'), h('p', {}, 'Send the cast after a quick note, or send a paper copy and keep the heavy cast here.'),
+          ...(['cast', 'copy'] as const).map((id) => h('button', { type: 'button', class: 'primary', onclick: () => {
+            if (!c.dispatch({ type: 'NileDelivery', choice: id }).some((e) => e.kind === 'error')) {
+              live.textContent = NILE_DELIVERIES[id].line;
+              showDelivery();
+              destinations.querySelector<HTMLElement>('h3')?.focus();
+            }
+          } }, NILE_DELIVERIES[id].name)));
+      }
+      destinations.querySelector('h3')?.setAttribute('tabindex', '-1');
+    };
+    for (const road of ['ridge', 'wash'] as const) {
+      const r = NILE_TRIALS[road];
+      const track = h('div', { class: `nile-track ${road}`, 'aria-hidden': 'true' }, h('i', { class: 'nile-cart' }, '▣'), h('span', {}, '◈'));
+      const result = h('p', { class: 'fine' });
+      const fill = () => { result.textContent = c.state.flags[`nile.trial.${road}`] ? `${r.turns} turns. ${r.line}` : 'Waiting for a run.'; };
+      fill();
+      tracks.append(h('section', {}, h('h3', {}, r.name), track, result, h('button', { type: 'button', onclick: () => {
+        if (c.dispatch({ type: 'NileRouteTrial', road }).some((e) => e.kind === 'error')) return;
+        track.classList.remove('rolling');
+        if (!ctx.settings.reducedMotion) requestAnimationFrame(() => track.classList.add('rolling'));
+        else track.classList.add('rolling');
+        fill();
+        live.textContent = `${r.name}: ${r.turns} turns. ${r.line}`;
+        showDelivery();
+      } }, `Run the cart on the ${road}`)));
+    }
+    box.append(tracks, live, destinations);
+    showDelivery();
   }
 
   openMusicBox(): void {

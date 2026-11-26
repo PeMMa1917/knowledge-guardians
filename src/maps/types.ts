@@ -3,7 +3,7 @@
  * characters, interactable objects, zones and lights. Units are tiles.
  * The WorldScene turns this data into a playable place.
  */
-export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door' | 'secret' | 'tiles' | 'shop' | 'gather' | 'workbench' | 'reading' | 'rumours' | 'trader' | 'seal' | 'boss';
+export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door' | 'secret' | 'tiles' | 'shop' | 'gather' | 'workbench' | 'reading' | 'rumours' | 'trader' | 'seal' | 'boss' | 'model';
 
 export interface Interactable {
   id: string;
@@ -30,6 +30,8 @@ export interface Interactable {
   /** Picture chosen by a string flag's value (e.g. the restoration method); `art` when unset. */
   artBy?: { flag: string; keys: Record<string, string> };
   visibleIf?: import('../domain/types').Condition;
+  /** A paper notice or other prop that does not block walking. */
+  walkThrough?: boolean;
   /** For kind 'clue': the clue record (a keepsake can show a new view). */
   clue?: string;
   /** For kind 'secret': the secret record (no art; found by searching). */

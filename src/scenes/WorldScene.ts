@@ -180,7 +180,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
           this.frayGlows.set(it.kit, glow);
         }
       }
-      block(it.x, it.y, it.w, it.h);
+      if (!it.walkThrough) block(it.x, it.y, it.w, it.h);
     }
     this.threadGfx = this.add.graphics().setDepth(5);
     // Noticing (Insight tree): a faint shimmer over secrets close by. Hidden until the talent is learned.
@@ -959,6 +959,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'trader': ctx.ui.openTrader(); break;
       case 'seal': if (ctx.controller.state.flags[`trap.${it.seal}.open`] !== true) ctx.ui.openSeal(it.seal!); break;
       case 'boss': ctx.ui.openBoss(); break;
+      case 'model': ctx.ui.openNileModel(); break;
       case 'secret': {
         const x = (ctx.controller.pack.secrets ?? []).find((y) => y.id === it.secret);
         if (!x) break;

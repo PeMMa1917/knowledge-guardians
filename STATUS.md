@@ -158,3 +158,17 @@ Mika asked for many RPG elements, each tied to TOK concepts, words and skills. K
 - Portfolios are private and owned by the student; shared only by choice.
 - Real, specific, dated historical objects. Aethelgard is a fictional world.
 - Free assets only (CC0 first). Lexend font. Simplified Technical English. `.docx` on A4 with 1.5 cm margins.
+
+## Chapter 2: The Door Without a Name
+
+Start from a Chapter 1 save after showing Ise the gold seal and reading Elsbet's letter in the study. Ise points to the door at the north edge of the Nexus east wing. The Nile Archive is a Guardian setting, not a historical reconstruction.
+
+- **Royal Records:** use the Date-Kind Lens on the Sallier III papyrus and the Qadesh treaty display. Publish a label about either the Egyptian account or the later agreement. A later treaty cannot settle the outcome of the earlier battle.
+- **Workmen's Room:** follow the entries in the Turin Strike Papyrus from a stoppage to a payment and a renewed stoppage. Decide which entry should lead while keeping the second in view. The thread marks where the scribe's account stops speaking for others.
+- **Map Room:** compare two roads with the same crate in a labelled shelf-top model. Send a cast via the steadier road with an advance courier, or send a quick paper copy with a stated limit. The historical Mine Map inspires the model; it does not supply its measurements.
+- **Return:** any two leads unlock the dispatch. Send a supported packet to the public case, the reading table or the workshop; activate its display with Ise. Each first destination has the same credit. Both campaign slots still work and the other leads stay open. Existing keepsakes expose optional views; a rubbing earned on return gives a new use for the spare carrier tag.
+- **One River, Two Records:** use the same judgement in a different place and time. The Singapore Stone and the Malay Annals can share a case without being presented as proof of one another.
+- **A Correction That Travels:** carry the archive method back to Keeper Oduya in Emberford and choose how the correction reaches people who heard the old claim.
+- **Teacher view:** Chapter 1 and Chapter 2 are counted separately. Existing voluntary exports, skill records and privacy boundaries are unchanged.
+
+The sources and object limits are in `docs/SOURCES.md`; the rooms and their fictional responses use original schematic art. Next: playtest on school devices, read the object wording with a history teacher, and expand the archive with more documented people, communities and cross-world investigations.

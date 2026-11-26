@@ -842,3 +842,16 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .boss-phases span.on { background: var(--gold); }
 @media (max-width: 640px) { .boss-stage { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .boss-art { transition: none; } }
+
+/* Nile archive comparison table: no essential information is conveyed by movement or colour. */
+.nile-tracks { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem),1fr)); gap: .8rem; }
+.nile-tracks section { border: 1px solid currentColor; border-radius: .5rem; padding: .65rem; }
+.nile-track { height: 2.3rem; margin: .6rem 0; display: flex; align-items: center; justify-content: space-between; position: relative; overflow: hidden; background: #1a2e39; color: #fff1c8; border: 1px solid #b7a983; border-radius: .25rem; padding: 0 .35rem; }
+.nile-track.ridge { border-bottom: 4px dashed #d99271; }
+.nile-track.wash { border-bottom: 4px double #8fcbde; }
+.nile-cart { position: absolute; left: .4rem; font-style: normal; font-size: 1.25rem; }
+.nile-track span { margin-left: auto; }
+.nile-track.rolling .nile-cart { left: calc(100% - 2.1rem); transition: left .65s ease-in; }
+.nile-track.ridge.rolling .nile-cart { left: 58%; transform: rotate(32deg); }
+@media (prefers-reduced-motion: reduce) { .nile-track.rolling .nile-cart { transition: none; } }
+.nile-deliveries button { margin: .3rem .35rem .3rem 0; }

@@ -25,10 +25,11 @@ import memories from './memories.json';
 import quarters from './quarters.json';
 import dive from './dive.json';
 import story from './story.json';
+import nile from './m03-nile.json';
 
-export const CONTENT_VERSION = 4;
+export const CONTENT_VERSION = 5;
 
-const parts: any[] = [sources, common, m01, m02, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, fray, rumour, clueboard, memories, quarters, dive, story];
+const parts: any[] = [sources, common, m01, m02, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, fray, rumour, clueboard, memories, quarters, dive, story, nile];
 const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'missions', 'hints', 'criteria', 'awards', 'items', 'offers', 'journal',
   'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks', 'glossary', 'questions', 'origins', 'alcoves', 'puzzles', 'skillDomains', 'skills', 'lorelings', 'lorelingAtlas', 'fray', 'clueBoards', 'memories', 'keepsakes', 'divePrompts', 'diveItems', 'knots', 'clues', 'keepsakeTalks', 'chronicle', 'secrets', 'communities'] as const;
 
