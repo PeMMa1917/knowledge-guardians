@@ -158,6 +158,17 @@ Ideas from Mika's TOK lessons, made into games in places, with people. Never a q
 - **Lanterns and Bones** (ferry landing, Juno's dice table; no betting): the Gambler's Imp says a six is 'due'; Juno's tally book shows it is not. Then find the loaded die of two, rolling as much as you want. TOK: evidence, sample size, certainty.
 - **Next:** the Breakfast Sign (signs and culture), the Drawer of Missing Trials (publication bias), then more from the other lesson folders.
 
+### Conflicts and story elements (Mika 2026-11-26)
+
+Mika asked for many kinds of conflict (self, person, nature, society, god, fate, supernatural, technology), of every size, that the player can face, get around or leave, with jokes, puns and misunderstandings next to serious moments. She also shared 150 elements of an engaging RPG story.
+
+- **Crossings** (`src/domain/crossings.ts`): 17 conflicts in chapters 1 to 14, covering all eight types, three sizes and three tones. Each has a way to face it, a way around, and a way to leave it, with a method, stakes, a cost and a link to a later conflict. Some ways need a key (a companion, marks, or a finished step). Journal, Crossings lists them and gives a name from how you met them.
+- **Hearth talks** (`src/domain/hearth.ts`, the hearth in the Nexus): eight evenings where companions talk to each other (a misunderstanding, pun night, two disagreements, two doubts, the Harrowmere night, a farewell). The player joins with a joke, a hard question, a kind word or plain words.
+- **The Ballad of the Guardian** (Emberford, Wynn): tall verses about your deeds that you can correct or let stand. Gives a name.
+- **Afterwards** (Journal, after the Council): where are they now (from your flags), the mirror scene, and last words built from why you came. Ise now asks why you came (`why.came`), and the Council choice warns that it is final and offers "Not yet".
+- **Docs:** the conflict map is story bible section 15; the 150 elements, adapted, with marks, are in [docs/STORY_ELEMENTS.md](docs/STORY_ELEMENTS.md).
+- **Still to do (from both):** Seal agents who remember; the chapter 9 Showdown and clue; leitmotifs and music per chapter; Lantern Fair; a full conversation log; credits with your choices; post-game.
+
 ### Story audit against the story bible (2026-11-26)
 
 Mika asked for a coherent, branching story in a living world, with the story-craft rules now in [docs/STORY_BIBLE.md](docs/STORY_BIBLE.md). This is a first audit, made from the code and the chapter summaries in this file. Fix the gaps in the order below and tick them here.

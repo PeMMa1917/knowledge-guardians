@@ -303,3 +303,16 @@ All three are in `src/content/story.json` (made by a generator script; edit the 
 ## Add a companion loyalty mission
 
 In `src/domain/loyalty.ts` (`LOYALTY`): `companion`, `who`, `title`, `available`, `intro`, three `sources`, a `slip` (what the companion's blind spot makes them say; the player's `notice`; the `fixed` and `miss` outcomes), a `question`, three `choices` (each with a real `cost` and the companion's `reply` to the player's reasons) and the `idea`. Place it as kind `fieldgame` with `game: 'loyalty-<id>'` and the same `visibleIf` as `available`. Add one `loyal.<id>.<choice>` line per choice in `src/content/chapter-voices.json`. A test checks all of this.
+
+## Add a crossing (a conflict in the world)
+
+Read the conflict map (story bible section 15) first, and pick a type and size that the chapter lacks. In `src/domain/crossings.ts` (`CROSSINGS`): `chapter`, `map`, `types` (main type first; one of self, person, nature, society, god, fate, supernatural, technology), `scale` (minor, mid, major), `tone` (funny, serious, mixed), `stakes` (`lose` and `gain`), `serves` (plot, arc or theme), `leadsTo` (a later crossing id or a beat in `CROSSING_BEATS`), `title`, `scene` and `idea`. Give at least three `ways`: one `overcome`, one `ignore`, and usually one `around`. Each way has a `method` (how it resolves, in the words of the conflict list), a `result` and a real `cost`. A way can need a key: `needs: { if, companion, why }`. Place it as kind `fieldgame` with `game: 'cross-<id>'` on a free tile. Then add a line to the conflict map, and an epilogue vignette (`src/domain/epilogue.ts`) for the way you most want players to remember.
+
+Rules: god and fate crossings use invented in-world patrons and prophecies only; never make a real religion's God or sacred figures an opponent. Animals are never hurt. Put a light moment (a pun, a misunderstanding) near a heavy one. `tests/crossings.test.ts` checks the spread of types, scales and tones, the keys, the placement and the links.
+
+## Add a hearth talk, a ballad verse or an epilogue line
+
+- **Hearth talk** (`src/domain/hearth.ts`): companions talk to each other after a big step (`after`). Give it a `kind` (humour, friction, doubt, misunderstanding, farewell), lines with a `who` (a character id, or `lumen`) and an optional `if`, and four `join` replies, one per tone (joke, doubt, care, plain). Kip has no set pronoun.
+- **Ballad verse** (`src/domain/ballad.ts`): Wynn's song. Each verse has a condition, a `tall` line (bigger than the truth), a `true` line built from flags, and the `crowd` reaction.
+- **Epilogue line** (`src/domain/epilogue.ts`, `VIGNETTES`): one "where are they now" line per real flag value. A test checks the values.
+

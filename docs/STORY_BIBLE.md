@@ -148,6 +148,8 @@ Each chapter also has a **local guide** who joins for that chapter only. Local g
 6. Is there one small acknowledgement of an earlier choice?
 7. Does the art, colour and sound fit the style and the mood?
 8. Does an object here matter in another place?
+9. Which conflict type and size is it, how can the player end it (face, go around, leave), and what does it lead to? Add it to the conflict map (section 15).
+10. Is there a light moment near a heavy one (a joke, a pun, a misunderstanding)?
 
 ## 14. Chapter plan
 
@@ -170,3 +172,76 @@ The chapters exist in code (see STATUS.md). This table adds what each one needs 
 | 13 | Archive of Voices | If the remembered walk is filed as a record, a lantern opening is dated wrong. | Elsbet's recorded voice: she partly agreed with Vesper. | Kip's loyalty mission: the family story, with mixed evidence. | Where Elsbet went. |
 | 14 | Island of Models | If the plan fails, the island's harvest fair has no crates. | Vesper and the player must work together on one plan. | Banter: every companion has a different model. | Vesper agrees to come to the Council. |
 | 15 | Council of Inquiry | If the old label stands, Harrowmere's loss is never owned. | The final choice: expose, recruit, change the Nexus, or another path. The brass lamp reveals the cut caveat. | Each companion speaks for a different ending. | The last door opens. |
+
+## 15. Conflict map
+
+Mika asked for a wide variety of conflicts (2026-11-26): every type, every size, and different ways to end them. Conflicts must connect and build: each one moves the plot, a character's arc, or the theme forward. Misunderstandings, jokes and puns sit next to serious moments.
+
+**Code.** Small and mid conflicts in the world are **crossings** (`src/domain/crossings.ts`, flag `cross.<id>`). Each has a way to face it, a way around it, and a way to leave it, with a resolution method, stakes, a cost, a tone and a `leadsTo` link. `tests/crossings.test.ts` checks that all eight types, all three scales and all tones are present. Big conflicts are the chapter quests, Showdowns, loyalty missions and the Council.
+
+### The eight types, and how they end here
+
+| Type | What it looks like here | Ways it can end (methods) | Stakes we use |
+|---|---|---|---|
+| Self | Doubt, fear, a wish to be chosen, a choice where every option hurts. | Epiphany, a personal choice, overcoming or giving in to a weakness, new information. | Your own voice; living with a choice; who you become. |
+| Person | Rivals, stubborn people, friends who disagree, a goat. | Convince with evidence, compromise, agree to disagree, go separate ways, one side changes. | Trust, friendship, a plot goal. |
+| Nature | Floods, warm rooms, geese, storms, tides. | Preparation, new knowledge, skill, coping, help from others. | Time, records, food, safety. |
+| Society | Crowds, rules, institutions, two communities of knowers. | Educate, compromise, persuade, withdraw, both groups see more. | Trust in an institution; who fits the rules. |
+| God | An **invented** patron of one fictional town (the Lady of Fair Measure). The conflict is with a person who claims to speak for the belief, never with the belief. | A better understanding of the belief; separating the questions; stepping back respectfully. | Faith used for profit; respect for belief. |
+| Fate | An invented prophecy over an arch; a fortune-teller's card. | Learn where it came from, fulfil it in an unexpected way, embrace it, give in to it. | Being chosen against choosing. |
+| Supernatural | Fray creatures (named errors); the drowned bell myth with three versions. | Learn how the unknown works, live with it, dismiss it. | A true warning missed or heard. |
+| Technology | The tide engine, the furnace dial, the gate machine, the Civic Machine. | Learn to use it, check it against something fixed, change it, be beaten by it. | Dependence; who the machine leaves out. |
+
+**Rules.** Never make a real religion's God or sacred figures an opponent. Use invented in-world patrons, myths and prophecies only, and treat real belief as a TOK lens with respect. Animals are never hurt. No crime: no theft, no betting. Every "leave it" way is valid: the world goes on and remembers.
+
+### By chapter
+
+Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" lists the ways open to the player.
+
+| Ch | Conflict | Type | Scale | Tone | Ends | Builds to |
+|---|---|---|---|---|---|---|
+| 1 | Corvan's 'ancient' blade (Showdown) | Person, Society | M | mixed | expose, narrow, split, win over, lose ground | Vesper's first letter |
+| 1 | The Hollow Archivist (Undercroft) | Supernatural | M | serious | name each error | The brass lamp (ch 15) |
+| 1 | The Lamb on the Ford Stone | Nature | s | mixed | face, around (pay marks), leave | The ballad |
+| 1 | The Prophecy over the Arch | Fate, Supernatural | m | mixed | face (source), around (a hope), leave (believe it) | Madame Quandary (ch 9) |
+| 1 | The Missing Word (toll notice) | Society, Person | s | mixed | three wordings; coin a word | Who chooses words has power |
+| 2 | The dispatch: a king's boast | Self, Society | M | serious | pair, print, read | Vesper is right that the case over-claims |
+| 2 | The Borrowed Translation | Person | s | funny | argue, go elsewhere, do without | Ambry's footnotes |
+| 3 | The gap in the file | Society, Self | M | serious | chapter response | The Seal agent remembers |
+| 3 | The Warm Room | Nature, Self | m | serious | fix (Hesper), save letters, save counts, let the keeper choose | What survives shapes what is known |
+| 4 | The forecast: how sure to say it | Self, Society | M | serious | signal, runner | Vesper uses Ise's phrase |
+| 4 | The Tide Engine | Technology | m | mixed | reset (readings), post both, trust it | The furnace dial |
+| 5 | The biased count | Self, Nature | M | serious | chapter response | A sighting nobody explains |
+| 5 | The Geese on the Path | Nature | s | funny | watch, wade, turn back | Observer effect |
+| 6 | The material call | Technology, Self | M | serious | chapter response | Hesper's loyalty mission |
+| 6 | The Furnace Dial | Technology, Person | s | mixed | tin test, ask about colour, leave | The gate machine |
+| 6 | The Traveller's Quench (Hesper) | Self, Person | m | serious | sign, private, find Imre's family | Hesper's epilogue |
+| 7 | The missing Tuesday | Society | M | serious | chapter response | Lark: "The Nexus did the same" |
+| 7 | The Crowd at the Press | Society | m | serious | read the ledger, invite three, shut the doors | Osk keeps checking |
+| 8 | The chart's blank | Nature, Society | M | serious | chapter response | Local names |
+| 8 | The Bell under the Water | Supernatural | m | mixed | listen, write in the margin, dismiss | A myth that carries a fact |
+| 9 | The programme that misleads; public Showdown with Vesper (planned) | Person, Society | M | serious | Showdown outcomes | "Ask Ise about Harrowmere" |
+| 9 | Madame Quandary's Card | Fate, Self | s | funny | ask how often, fail on purpose, worry | Before the Curtain |
+| 9 | Before the Curtain | Self | s | mixed | speak, read cards, pass to a companion | Courage while unsure |
+| 10 | The weighed-in basket | Society, Person | M | serious | chapter response | Rook joins |
+| 10 | The Lady of Fair Measure | God (invented), Society | m | serious | ask the keeper, test beside it, step back | Harrowmere (a claim sold as sacred certainty) |
+| 10 | The Goat Who Was Certain | Nature, Person | s | funny | chase, follow the slips, let it eat | Memory fills gaps |
+| 10 | Source, or Story? (hearth) | Person (friends) | s | funny | four tones | Rook and Sefa's truce |
+| 11 | The drought plan | Society, Self | M | serious | chapter response | The Harrowmere card |
+| 11 | The Night Surge | Nature, Self | M | serious | open, half open (gauge), keep shut | Harrowmere: a flood choice made long ago |
+| 11 | Ise's confession | Self, Person | M | serious | quiet, open, herself | Letters 11 and 12; epilogue |
+| 11 | The Clean Well (Rook) | Self, Society | m | serious | public, quiet, the family | Rook's epilogue |
+| 12 | The dispatch rule | Technology, Society | M | serious | chapter response | Ise defends quiet correction |
+| 12 | Three Boxes for a Name | Technology, Society | m | serious | rewrite the rule, write by hand, leave | Who designs the boxes |
+| 13 | The remembered walk | Self, Society | M | serious | chapter response | Where Elsbet went |
+| 13 | Two Friends, One Walk | Person (friends) | s | funny | find the ledger, record both, leave | Both partly right |
+| 13 | The Famous Ancestor (Kip) | Self | m | mixed | proud, not, mixed | Kip's epilogue |
+| 14 | The island plan with Vesper | Person, Nature | M | mixed | chapter response | Vesper comes to the Council |
+| 14 | When to Launch | Society, Nature | m | mixed | test both, launch when both agree, leave | Two communities of knowers |
+| 15 | The Council: what do the Guardians owe? | Self, Person, Society | M | serious | correct, recruit, expose, both (or "Not yet") | Afterwards |
+
+**Gaps to fill next:** Seal agents who remember the player (chapters 3, 6 and 7); the public Showdown with Vesper in chapter 9; a weather or creature crossing in chapter 15; a technology crossing that uses the Civic Machine itself.
+
+## 16. The 150 story elements
+
+Mika's list of 150 story elements is adapted to this game in [STORY_ELEMENTS.md](STORY_ELEMENTS.md), with a mark for each (in the game, partly, planned). Check it when you plan new content.
