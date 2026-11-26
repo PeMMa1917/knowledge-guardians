@@ -1,6 +1,7 @@
 /** Fictional Guardian archive. Its rooms contain documentary evidence and original schematic illustrations. */
 import type { Condition } from '../domain/types';
 import { COLD_LINTEL } from './lintelFold';
+import { WORKROOM_SEAM } from './seamWitness';
 import { COLD_PAPER_LANDING } from './paperLanding';
 import { sceneProp } from './sceneProps';
 import type { Interactable, MapDef } from './types';
@@ -286,6 +287,7 @@ export const PRESERVED_WORKROOM = room({
   ],
   interactables: [
     door('preserved-workroom-back', 10, 13, 'the passage back to the Cold Store', { map: 'preserved.archive', x: 23, y: 11 }),
+    ...WORKROOM_SEAM,
     record('XIN-CONTEXT', 5, 5, 'the Mawangdui context file', 'preserved.context'),
     record('XIN-METHOD', 15, 5, 'the Hunan methods report', 'preserved.catalogue'),
     notice('preserved-workroom-guide', 8, 11, 'the workroom instructions', 'preserved.slip',

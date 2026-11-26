@@ -26,6 +26,18 @@ The later kettle feature also passed a production browser route. I staged the la
 
 Both Film paths passed in Chromium on a frozen `fa0b611` build with the Film change applied. The House and Coast doors were closed in a fresh save. I staged `sea.finish` and `preserved.publish`, then walked the actual passages and used keyboard interaction at both cameras, the editing stand, the branch-specific reader and the two harbour records. I checked that the camera pixels differed, found the visitor at the gallery rail or the foyer route post, and confirmed that reading the historical frame alone kept the harbour placement locked. Both camera and editor panels fit at 390 CSS pixels with 175% text. Enter on the focused camera control advanced one beat. [Film route tests](../tests/film-cuts.test.ts)
 
+## Source tracing in the Nexus and City of Copies
+
+Chromium walked both optional citation routes from a fresh Nexus. The Full Source Strip led to the Full Sheet at Lark’s rail. The Short Tag led to the Nexus shelf, then the NG524 Card led to the Record Room. Each run staged only `metal.finish` after a reader found A606881, then walked through the regular City and Print Workshop doors. Both reader checks completed. The printed lines showed the page title in quotation marks, the artwork and container titles in italics, the right kinds of dates and the exact museums’ record links. A separate layout check positioned the player at the tray and confirmed that the long A606881 address stayed within the dialog at 390 CSS pixels and 175% text with wider spacing. [Citation route tests](../tests/citation-rail.test.ts)
+
+## Fresh campaign through the Council
+
+One disposable Chromium profile progressed from New game through all 15 chapters and Vesper’s ending. The run activated the game’s own controls and used its normal chapter gates and Save and leave/Continue. It used debug positioning at nearby tiles for most interactions and the game’s pathfinder to walk onto the Chapter 1 portals. No chapter prerequisites, objectives, tools, map transitions or story outcomes were seeded. The profile reached the Nexus after the Council with 111 earned objectives.
+
+The run began on the `fa0b611` production snapshot with Film applied. It revealed that Kip’s required post-Showdown position in Emberford was also occupied by Idris, who took priority during keyboard interaction. With Idris moved to a nearby clear tile, the same profile could speak separately to both characters, collect the seal and debrief with Ise. The Nile door stayed closed until the player had relit six lamps and read Elsbet’s letter. Both Nile leads and the reading-table dispatch preceded the later chapter gates. The run found the Harrowmere card at the Water Commons and used it to reach Vesper’s side-by-side outcome at the Council. [Emberford map](../src/maps/emberford.ts) · [Layout regression](../tests/chapter-maps.test.ts)
+
+Two copies of that completed save tested the Night Map on a later production build. I used the world pathfinder and keyboard interaction at each stand. Both runs checked the same nine underlying request locations and times against the two rendered dividing lines. The old ditch sent the first cart to the lower bank and included Mooring rail. The footbridge sent it to the upper bank and included Upper stair. In each case I read the receipt and checked that the stop served by the other route kept its coordinates and original wait on the Council Yard’s next-cart list. [Night Map route tests](../tests/service-boundary.test.ts)
+
 ## Results on the frozen baseline
 
 The production build of `9ab5b34` rendered and traversed all 50 registered maps. The smoke completed a two-tile walk on each map and recorded no uncaught page exceptions or failed asset responses. Debug entrance bypasses chapter gates. The following additional checks used the live game controls and inspected visible outcomes. Most started a fresh save and staged previous chapters’ state. These were individual exercise routes through the build.
@@ -54,6 +66,8 @@ The production build of `9ab5b34` rendered and traversed all 50 registered maps.
 In the baseline build browser Enter on a focused Settings button was cancelled by the game’s global keyboard capture. At a 390 CSS-pixel viewport, the Settings content also measured 497 pixels wide after raising text to 175% with wider spacing.
 
 The patched production check activates Settings with Enter, wraps focus with Tab and Shift+Tab, changes the native text-size control, toggles contrast, spacing, Calm and captions, and returns focus to the game canvas on Escape. Settings fits its own panel at 175%. The check advances only the fictional event clock, then chooses Later through the normal Calm dialog and verifies that the event stays unconsumed. [Dialog focus](../src/ui/dom.ts), [Settings and focus return](../src/ui/ui.ts), [Settings width](../src/ui/styles.css)
+
+The old reed hollow prompt covered all five menu buttons at 390 × 844 CSS pixels with 175% text and wider spacing. The patched access smoke keeps the full prompt at that size and checks the tracker, Lumen hint, compass and menu controls separately from the game canvas. It resizes through 390 × 844, 320 × 568 and 844 × 390, then returns to 320 × 568 and taps both Menu and the reed hollow prompt. [HUD layout](../src/ui/styles.css), [Smoke runner](../tools/smoke-worlds.mjs)
 
 ## Resizing and reduced effects
 

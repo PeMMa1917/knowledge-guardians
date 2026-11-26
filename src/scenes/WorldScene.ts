@@ -16,6 +16,7 @@ import { CYCLE, raining, skyAt } from '../app/daylight';
 import { lorelingForm } from '../domain/lorelings';
 import { caption } from '../app/captions';
 import { CampaignPlayback } from '../app/campaignPlayback';
+import { FOLLOW_PIN, PIN_PURPOSES, readMapPin } from '../domain/mapPins';
 import { LUMEN_COLOURS, lumenArt } from '../app/settings';
 import Phaser from 'phaser';
 import type { BootScene } from './BootScene';
@@ -773,7 +774,13 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       this.compassAcc = 0;
       const s = ctx.controller.state, p = this.player.sprite;
       let best: { x: number; y: number; label: string } | null = null, bd = Infinity;
-      for (const a of this.npcs) if (a.mark) { const d = Phaser.Math.Distance.Between(a.sprite.x, a.sprite.y, p.x, p.y); if (d < bd) { bd = d; best = { x: a.sprite.x, y: a.sprite.y, label: `someone with something new to say` }; } }
+      const pin = s.flags[FOLLOW_PIN] === this.map.id ? readMapPin(s.flags, this.map.id, this.map.width, this.map.height) : undefined;
+      if (pin) {
+        best = { x: (pin.x + 0.5) * TILE, y: (pin.y + 0.5) * TILE, label: PIN_PURPOSES[pin.purpose] };
+        bd = Phaser.Math.Distance.Between(best.x, best.y, p.x, p.y);
+      } else {
+        for (const a of this.npcs) if (a.mark) { const d = Phaser.Math.Distance.Between(a.sprite.x, a.sprite.y, p.x, p.y); if (d < bd) { bd = d; best = { x: a.sprite.x, y: a.sprite.y, label: `someone with something new to say` }; } }
+      }
       if (!best) for (const it of this.map.interactables) {
         if (it.kind === 'portal' || it.kind === 'loreling' || it.kind === 'secret' || (it.visibleIf && !ctx.controller.check(it.visibleIf)) || s.flags[`used.${this.map.id}.${it.id}`] === true) continue;
         const x = (it.x + it.w / 2) * TILE, y = (it.y + it.h / 2) * TILE, d = Phaser.Math.Distance.Between(x, y, p.x, p.y);

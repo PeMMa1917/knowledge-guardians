@@ -7,6 +7,7 @@
  */
 import type { MapDef, Interactable } from './types';
 import { SHELF_ROOM_DOOR } from './shelfRoom';
+import { LINKED_STUDY } from './linkedNotes';
 
 const W = 20, H = 14;
 
@@ -46,6 +47,7 @@ export const STUDY: MapDef = {
   npcs: [],
   interactables: [
     SHELF_ROOM_DOOR,
+    ...LINKED_STUDY,
     clue('painting', 5, 3, "Elsbet's painting"),
     clue('clock', 7, 3, 'the stopped clock'),
     clue('roundwin', 9, 3, 'the small round window'),

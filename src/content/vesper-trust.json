@@ -1,0 +1,1418 @@
+{
+ "characters": [
+  {
+   "id": "tavia-rell",
+   "name": "Tavia Rell",
+   "role": "Carrier who keeps work slips on the Headland and Lamp Quay",
+   "sprite": "custom:warm.auburn.plum.sand.scarf.rose.long.none.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "vesper.line.coast.witness"
+    }
+   ]
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH4-R09",
+   "title": "The Narrow Line",
+   "world": "WORLD-05",
+   "stake": "A carrier lost a paid turn. The same heading could send the next load to the same closed gate.",
+   "knowledgeQuestion": "Who should answer for a direction when its conditions fall away?",
+   "available": {
+    "flag": "vesper.line.begun",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "vesper.line.coast.checked",
+     "title": "Compare the upper order and the copy at the lower turn.",
+     "essential": false,
+     "visible": {
+      "flag": "vesper.line.begun",
+      "eq": true
+     },
+     "done": {
+      "all": [
+       {
+        "flag": "vesper.line.order",
+        "eq": true
+       },
+       {
+        "flag": "vesper.line.witness",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "objectivity",
+       "perspective",
+       "justification",
+       "power"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "history",
+       "global-politics"
+      ],
+      "aoks": [
+       "LAN",
+       "HIS",
+       "POL"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-14"
+     ]
+    },
+    {
+     "id": "vesper.line.coast.done",
+     "title": "Put the new direction where the next carrier can use it.",
+     "essential": false,
+     "visible": {
+      "objective": "vesper.line.coast.checked"
+     },
+     "done": {
+      "flag": "vesper.line.coast.kept",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "explanation",
+       "perspective",
+       "power"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "atl": [
+       "social",
+       "communication",
+       "self-management"
+      ],
+      "subjects": [
+       "global-politics",
+       "lit-perf",
+       "lang-langlit"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN",
+       "POL"
+      ]
+     },
+     "skills": [
+      "SK-COL-05",
+      "SK-ETR-01"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.vesper.line.coast"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH13-R06",
+   "title": "The Other End of OPEN",
+   "world": "WORLD-14",
+   "stake": "The old heading is taking callers back to the rail. Tavia wants the route changed before the next turn.",
+   "knowledgeQuestion": "How can a publisher earn back trust after a public claim has done harm?",
+   "available": {
+    "flag": "vesper.line.seen",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "vesper.line.quay.admitted",
+     "title": "Bring Wren enough of a checked record to open the Proof Room.",
+     "essential": false,
+     "visible": {
+      "flag": "vesper.line.seen",
+      "eq": true
+     },
+     "done": {
+      "flagSet": "vesper.line.basis"
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "objectivity",
+       "perspective",
+       "justification",
+       "power"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "history",
+       "global-politics"
+      ],
+      "aoks": [
+       "LAN",
+       "HIS",
+       "POL"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-COL-05"
+     ]
+    },
+    {
+     "id": "vesper.line.quay.checked",
+     "title": "Uncover the full proof and check who may use the two approaches with Tavia.",
+     "essential": false,
+     "visible": {
+      "objective": "vesper.line.quay.admitted"
+     },
+     "done": {
+      "all": [
+       {
+        "flag": "vesper.line.plain",
+        "eq": true
+       },
+       {
+        "flag": "vesper.line.worker",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "objectivity",
+       "perspective",
+       "justification",
+       "power"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "history",
+       "global-politics"
+      ],
+      "aoks": [
+       "LAN",
+       "HIS",
+       "POL"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-ETR-01"
+     ]
+    },
+    {
+     "id": "vesper.line.quay.done",
+     "title": "Bring the checked direction out to the rail. See a caller use it.",
+     "essential": false,
+     "visible": {
+      "objective": "vesper.line.quay.checked"
+     },
+     "done": {
+      "flag": "vesper.line.confirmed",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "explanation",
+       "perspective",
+       "power"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "atl": [
+       "social",
+       "communication",
+       "self-management"
+      ],
+      "subjects": [
+       "global-politics",
+       "lit-perf",
+       "lang-langlit"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN",
+       "POL"
+      ]
+     },
+     "skills": [
+      "SK-COL-05",
+      "SK-ETR-01"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.vesper.line.quay"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "item.vesper-narrow-line",
+   "name": "The Headland correction strip",
+   "historicalLabel": "fictional-world",
+   "art": "vesper-line.letter",
+   "description": "A checked direction from the Headland at Observatory Coast. The strip keeps the person who can answer for the change or the turn they agreed to take. Tavia took a new route to Lamp Quay."
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "vesper.line.coast.open",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The new forecast is up. Beside it a gold-backed card still says OPEN in large type. Tavia stands below the board with the case of blank slips she brought uphill again. “I trusted the big word. The lower gate was bolted, and my paid turn went to someone else while I found the upper desk.”",
+   "options": [
+    {
+     "text": "Lift the OPEN sleeve. Keep the two delivery numbers visible.",
+     "next": "vesper.line.coast.started",
+     "if": {
+      "all": [
+       {
+        "objective": "coast.revise"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.begun"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.begun",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Give Tavia space to put her case down."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.coast.started",
+   "speaker": "coast-forecaster",
+   "historicalLabel": "fictional-world",
+   "text": "Neri takes the weight off Tavia's wrist. The sleeve shows an upper desk number and an empty lower line. The received order is at the upper board. Tavia can show you what reached the bolt at the lower turn."
+  },
+  {
+   "id": "vesper.line.coast.order",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "At first bell the keeper signed for the upper desk to receive one trial load. The order says a keeper must be present. A gold clip marks the whole delivery as ready. Its outer edge covers the smaller letters of the condition.",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Slide the clip off the condition. Keep the upper desk number with the signed line.",
+     "next": "vesper.line.coast.order.revealed",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.begun",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.order"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.order",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the order on its board."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.coast.order.revealed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The keeper approved one load at the upper desk. There is no signature from the lower gate. The small print specifies who needs to be there at the upper one.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "vesper.line.coast.witness",
+   "speaker": "tavia-rell",
+   "historicalLabel": "fictional-world",
+   "text": "I followed the same word from below. This catch was across. I could put the case down here but I couldn't get it to the desk. My sleeve did get through the slot. It is the only delivery this coat ever made on time.",
+   "options": [
+    {
+     "text": "Read the strip from Tavia’s side of the closed slot. Compare its delivery number.",
+     "next": "vesper.line.coast.witness.checked",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.begun",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.witness"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.witness",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Take the case for a moment. Leave the strip in place."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.coast.witness.checked",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The lower strip has the same main number and the word OPEN. The keeper’s condition is missing from this printing. Tavia allows the route and missed turn to go on the correction. She keeps her name and pay slip for the keeper.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "vesper.line.coast.choice",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Neri sets the two checks well apart. Vesper’s reply has one line in a cramped hand. “I paid for a splendid large O and a very small condition. That is my signature on the order to print. Will you have it on a replacement, or shall I stand at the lower turn until the old copies come back?”",
+   "options": [
+    {
+     "text": "Bring Vesper’s signed replacement to the original board. Let earlier readers see whose copy changed.",
+     "next": "vesper.line.coast.chosen.signed",
+     "if": {
+      "all": [
+       {
+        "objective": "vesper.line.coast.checked"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.coast"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.coast",
+       "value": "signed"
+      }
+     ]
+    },
+    {
+     "text": "Ask Vesper to cover the lower turn. Put the checked direction where Tavia came up.",
+     "next": "vesper.line.coast.chosen.walked",
+     "if": {
+      "all": [
+       {
+        "objective": "vesper.line.coast.checked"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.coast"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.coast",
+       "value": "walked"
+      }
+     ]
+    },
+    {
+     "text": "Leave both checks with Neri until Tavia is ready."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.coast.chosen.signed",
+   "speaker": "coast-forecaster",
+   "historicalLabel": "fictional-world",
+   "text": "Vesper has signed the new line beneath the number on the sleeve. Neri carries the fresh board to the lower turn. Tavia asks that the lost shift be handled at the desk. Her name can stay there."
+  },
+  {
+   "id": "vesper.line.coast.chosen.walked",
+   "speaker": "coast-forecaster",
+   "historicalLabel": "fictional-world",
+   "text": "Neri sets the slower handover on the slate. Vesper will take the next turn at the lower approach and catch anyone with an old copy. The current direction still goes out tonight."
+  },
+  {
+   "id": "vesper.line.coast.mount.signed",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The fresh board says UPPER DESK WITH KEEPER. LOWER GATE CLOSED. A carrier has brought the older gold copy back. The upper desk number is under the curled edge.",
+   "options": [
+    {
+     "text": "Clip the signed replacement above the old slot. Match the two copies for the carrier.",
+     "next": "vesper.line.coast.kept.signed",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.coast",
+        "eq": "signed"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.coast.kept"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.coast.kept",
+       "value": true
+      },
+      {
+       "giveItem": "item.vesper-narrow-line"
+      }
+     ]
+    },
+    {
+     "text": "Leave the new card in Neri's hands."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.coast.kept.signed",
+   "speaker": "coast-forecaster",
+   "historicalLabel": "fictional-world",
+   "text": "The carrier finds the same number and takes the upper turn. Neri tears off a duplicate of the signed correction. Tavia says her next turn is at Lamp Quay. “I am keeping this coat. Someone has to remember the gate.”"
+  },
+  {
+   "id": "vesper.line.coast.mount.walked",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "From the lower turn you can read UPPER DESK WITH KEEPER. LOWER GATE CLOSED. The slate asks its next reader to stay until the last carrier has seen the correction. Tavia knows the exact spot where a caller can be heard.",
+   "options": [
+    {
+     "text": "Turn the new arrow toward the low approach. Clip Vesper’s promise to the shift slate.",
+     "next": "vesper.line.coast.kept.walked",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.coast",
+        "eq": "walked"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.coast.kept"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.coast.kept",
+       "value": true
+      },
+      {
+       "giveItem": "item.vesper-narrow-line"
+      }
+     ]
+    },
+    {
+     "text": "Wait for the next person on the slate."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.coast.kept.walked",
+   "speaker": "tavia-rell",
+   "historicalLabel": "fictional-world",
+   "text": "The first carrier stops at the arrow while the keeper is busy. Tavia leaves a witnessed turn on the slate for Vesper and pockets a matching copy for you. “My next job is at Lamp Quay. I asked if their coats have elbows.”"
+  },
+  {
+   "id": "vesper.line.quay.open",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The old OPEN card has reached Lamp Quay. It points to the east rail. The rail is held shut with a catch, and a caller is turning back with an armful of old proof slips. A round wear mark shows where people keep trying the catch.",
+   "options": [
+    {
+     "text": "Lift the copy just far enough to see its batch mark. Leave its edge whole.",
+     "next": "vesper.line.quay.seen",
+     "if": {
+      "all": [
+       {
+        "objective": "voices.finish"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.seen"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.seen",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Take the main path back to the quay lamps."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.quay.seen",
+   "speaker": "voices-steward",
+   "historicalLabel": "fictional-world",
+   "text": "Two small squares sit at the foot of the big word. Wren puts a search slip into the inspection case above the Proof Room door. The printer’s counterfoil and the handover book are still out here."
+  },
+  {
+   "id": "vesper.line.quay.copy",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The counterfoil has two square punches and the number on the rail copy. The print job reused OPEN from a stock heading ordered by V. Quill. The smaller local instruction was set below its cut line.",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Align the counterfoil with the punches. Keep its local job number in view.",
+     "next": "vesper.line.quay.copy.checked",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.seen",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.copy"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.copy",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the printer’s counterfoil clipped."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.quay.copy.checked",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Both punches and the number match. You can follow this copy back to the heading job. The line about today’s east rail still needs an opening check.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "vesper.line.quay.latch",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The afternoon keeper pushes the east rail from the far side. The catch stays across. Her signed entry says EAST RAIL WITH KEEPER. The keeper is on the west side until the second bell. She can take a checked turn later.",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Stand at the catch while the keeper checks it. Fold the handover book to her entry.",
+     "next": "vesper.line.quay.latch.checked",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.seen",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.latch"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.latch",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let the afternoon keeper work."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.quay.latch.checked",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The latch has its own entry and time. Wren can check it against a copy, or against a handover that names who takes the next turn.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "vesper.line.quay.keeper",
+   "speaker": "voices-steward",
+   "historicalLabel": "fictional-world",
+   "text": "Vesper asked to wait in the Proof Room with the first paper. Tavia is there to check the new direction. I can open the room when I know which paper or which shift reaches this gate.",
+   "options": [
+    {
+     "text": "Set the Headland signature against the printer’s counterfoil. Ask Wren to check the opening with us.",
+     "next": "vesper.line.quay.admitted.signed",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.seen",
+        "eq": true
+       },
+       {
+        "flag": "vesper.line.copy",
+        "eq": true
+       },
+       {
+        "flag": "vesper.line.coast",
+        "eq": "signed"
+       },
+       {
+        "item": "item.vesper-narrow-line"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.basis"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.basis",
+       "value": "signed"
+      }
+     ]
+    },
+    {
+     "text": "Show the Headland handover beside the keeper’s timed entry. Ask for a joint check at the room.",
+     "next": "vesper.line.quay.admitted.walked",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.seen",
+        "eq": true
+       },
+       {
+        "flag": "vesper.line.latch",
+        "eq": true
+       },
+       {
+        "flag": "vesper.line.coast",
+        "eq": "walked"
+       },
+       {
+        "item": "item.vesper-narrow-line"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.basis"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.basis",
+       "value": "walked"
+      }
+     ]
+    },
+    {
+     "text": "Bring the local print number and the signed latch check together. Ask Wren to open the room.",
+     "next": "vesper.line.quay.admitted.local",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.seen",
+        "eq": true
+       },
+       {
+        "flag": "vesper.line.copy",
+        "eq": true
+       },
+       {
+        "flag": "vesper.line.latch",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.basis"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.basis",
+       "value": "local"
+      }
+     ]
+    },
+    {
+     "text": "Keep the door closed while I finish checking the copies."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.quay.admitted.signed",
+   "speaker": "voices-steward",
+   "historicalLabel": "fictional-world",
+   "text": "The Headland replacement and the counterfoil tie Vesper to the reusable heading. Wren takes the opening mark personally while you go to the proof table. The small appointment slot on the door swings back."
+  },
+  {
+   "id": "vesper.line.quay.admitted.walked",
+   "speaker": "voices-steward",
+   "historicalLabel": "fictional-world",
+   "text": "The two shift records say who can stand at each approach. Wren signs out the Proof Room so Vesper and Tavia can walk both directions with you. You can open the door now."
+  },
+  {
+   "id": "vesper.line.quay.admitted.local",
+   "speaker": "voices-steward",
+   "historicalLabel": "fictional-world",
+   "text": "The two local slips have different jobs. One gives the printed claim, the other gives the actual access. Wren clips both to the door’s appointment slot. You can open the door now."
+  },
+  {
+   "id": "vesper.line.proof.plain",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The full-width setting proof lies flat under a clip. Its first line is OPEN. Under the cut edge is KEEPER AT EAST RAIL AFTER SECOND BELL. A smaller signature is V. QUILL, HEADING APPROVED.",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Lift the trimming guide. Keep the lower line and the signature with the proof.",
+     "next": "vesper.line.proof.plain.checked",
+     "if": {
+      "all": [
+       {
+        "flagSet": "vesper.line.basis"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.plain"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.plain",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the proof untrimmed."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.proof.plain.checked",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The agreed local condition is still in the wide proof. The rail copy lost it. Vesper signed the reusable heading. The correction needs the local line to travel with the printing.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "vesper.line.proof.worker",
+   "speaker": "tavia-rell",
+   "historicalLabel": "fictional-world",
+   "text": "I started using the upper route after the Headland. Here I watch a caller stop at a gate again. Mine was half a day's pay. This caller went home with the old notice still in their hand. I will help with the timing. Put the printer’s promise on the notice. Vesper can answer for my missed pay at Wren’s desk tomorrow, away from the queue.",
+   "options": [
+    {
+     "text": "Mark where the caller turned back. Keep Tavia’s permission with the work record.",
+     "next": "vesper.line.proof.worker.checked",
+     "if": {
+      "all": [
+       {
+        "flagSet": "vesper.line.basis"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.worker"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.worker",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Wait while Tavia checks her rota."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.proof.worker.checked",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Tavia signs the two times: west desk now; east rail with keeper after second bell. She gives you the caller’s route to share. The smaller sleeve goes back into her coat.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "vesper.line.proof.vesper",
+   "speaker": "vesper-quill",
+   "historicalLabel": "fictional-world",
+   "text": "Vesper has pulled one cuff back. A fleck of gold stays in the seam. “I thought the large word could do a small job quickly. It was very good at leaving on its own. The printer asked who would collect old copies. I left the line empty.”",
+   "options": [
+    {
+     "text": "Show Vesper the signed Headland correction and the new printer’s proof.",
+     "next": "vesper.line.proof.echo.signed",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.basis",
+        "eq": "signed"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.echo"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.echo",
+       "value": "signed"
+      }
+     ]
+    },
+    {
+     "text": "Lay the two shift slips where Vesper and Tavia can reach them.",
+     "next": "vesper.line.proof.echo.walked",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.basis",
+        "eq": "walked"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.echo"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.echo",
+       "value": "walked"
+      }
+     ]
+    },
+    {
+     "text": "Set the local slips between them. Ask Vesper to keep both jobs on the table.",
+     "next": "vesper.line.proof.echo.local",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.basis",
+        "eq": "local"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.echo"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.echo",
+       "value": "local"
+      }
+     ]
+    },
+    {
+     "text": "Have Vesper sign the full replacement and recall the old prints from the incoming rail.",
+     "next": "vesper.line.proof.agreed.print",
+     "if": {
+      "all": [
+       {
+        "objective": "vesper.line.quay.checked"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.edition"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.edition",
+       "value": "print"
+      }
+     ]
+    },
+    {
+     "text": "Put Vesper on the former dead end with a checked instruction. Let Wren replace the copies by the next turn.",
+     "next": "vesper.line.proof.agreed.cover",
+     "if": {
+      "all": [
+       {
+        "objective": "vesper.line.quay.checked"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.edition"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.edition",
+       "value": "cover"
+      }
+     ]
+    },
+    {
+     "text": "Leave the proof uncut while we look at the setting and talk to Tavia."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.proof.echo.signed",
+   "speaker": "vesper-quill",
+   "historicalLabel": "fictional-world",
+   "text": "I liked the idea that a signature was a good ending. It is a good place to start looking. We should have paid someone to bring the old copies back.",
+   "next": "vesper.line.proof.vesper"
+  },
+  {
+   "id": "vesper.line.proof.echo.walked",
+   "speaker": "vesper-quill",
+   "historicalLabel": "fictional-world",
+   "text": "I stood at the Headland turn until my shoes gave up. I thought that would be the end of it. The plate went on taking turns without me.",
+   "next": "vesper.line.proof.vesper"
+  },
+  {
+   "id": "vesper.line.proof.echo.local",
+   "speaker": "vesper-quill",
+   "historicalLabel": "fictional-world",
+   "text": "People keep asking what I intended. You brought me the word they saw and where they stopped. Two receipts. Terribly unflattering. Keep them here.",
+   "next": "vesper.line.proof.vesper"
+  },
+  {
+   "id": "vesper.line.proof.agreed.print",
+   "speaker": "vesper-quill",
+   "historicalLabel": "fictional-world",
+   "text": "Then write my name where the old copy caught their eye. Wren can stay at the desk. I will put each returned sheet against this proof and strike it out myself. It will take the next bell as well."
+  },
+  {
+   "id": "vesper.line.proof.agreed.cover",
+   "speaker": "vesper-quill",
+   "historicalLabel": "fictional-world",
+   "text": "I will stay at the bad turn while Wren replaces the notices. My name goes on the recall list. The direction goes on the rail tonight. I can learn to be the smallest part of a sentence."
+  },
+  {
+   "id": "vesper.line.proof.mount.print",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Vesper signs the full proof. Tavia clips the hours to it rather than trimming them. A small sleeve waits for the rejected gold cards from the rail.",
+   "options": [
+    {
+     "text": "Bind the time line and the signature under the full heading. Take the replacement to the incoming rail.",
+     "next": "vesper.line.proof.kept.print",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.edition",
+        "eq": "print"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.mounted"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.mounted",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let the fresh proof dry on the table."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.proof.kept.print",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The full proof will be at the incoming rail. The second sleeve stays empty until a caller brings an old copy back. Tavia keeps the public line close to the name that answers for it."
+  },
+  {
+   "id": "vesper.line.proof.mount.cover",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Wren brings the handover book. It has a place to sign into the shift and a place to mark how many old copies are still out. The public direction names the west desk and the second bell.",
+   "options": [
+    {
+     "text": "Clip the full direction to the shift slate. Take the handover to Vesper at the old gate.",
+     "next": "vesper.line.proof.kept.cover",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.edition",
+        "eq": "cover"
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.mounted"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.mounted",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the next shift line blank for a moment."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.proof.kept.cover",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Vesper takes the slot nearest the old catch. Wren has the full direction to post. The recall list still has room for people none of you have seen."
+  },
+  {
+   "id": "vesper.line.quay.use.print",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A caller brings a gold card to the incoming rail. She lays it beside the signed replacement and looks for the same little squares. She stops before taking the long walk to the old latch.",
+   "options": [
+    {
+     "text": "Line up the two edges with her. Let her carry the corrected direction.",
+     "next": "vesper.line.quay.kept.print",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.edition",
+        "eq": "print"
+       },
+       {
+        "flag": "vesper.line.mounted",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.confirmed"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.confirmed",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let the caller read the time line."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.quay.kept.print",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "She puts the old card into the recall sleeve and gets her slip at the west desk before the bell. One sheet is back. Vesper keeps a bigger sleeve for the rest.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "vesper.line.quay.use.cover",
+   "speaker": "vesper-quill",
+   "historicalLabel": "fictional-world",
+   "text": "Vesper stands where the old card sent people. They leave the dead-end latch shut and ask a caller where they started. He holds out a gold copy. He can read the correction aloud with you before he turns back.",
+   "options": [
+    {
+     "text": "Keep the rail closed. Show the caller the west desk and sign off the shared turn.",
+     "next": "vesper.line.quay.kept.cover",
+     "if": {
+      "all": [
+       {
+        "flag": "vesper.line.edition",
+        "eq": "cover"
+       },
+       {
+        "flag": "vesper.line.mounted",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "vesper.line.confirmed"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "vesper.line.confirmed",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Stay for the next line on the slate."
+    }
+   ]
+  },
+  {
+   "id": "vesper.line.quay.kept.cover",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The caller reaches the west desk with both hands on his case. Vesper marks which direction he came from. Wren will take the next turn. Their recall list keeps the old copies separate from the people who carried them.",
+   "claimKind": "observation"
+  }
+ ],
+ "hints": [
+  {
+   "id": "hint.vesper.line.coast.checked.1",
+   "objective": "vesper.line.coast.checked",
+   "depth": 1,
+   "text": "The upper and lower parts of the delivery have different slips."
+  },
+  {
+   "id": "hint.vesper.line.coast.checked.2",
+   "objective": "vesper.line.coast.checked",
+   "depth": 2,
+   "text": "The signed order is west of the centre. Tavia is at the copy slot east of the model chart."
+  },
+  {
+   "id": "hint.vesper.line.coast.checked.3",
+   "objective": "vesper.line.coast.checked",
+   "depth": 3,
+   "text": "Take the clip off the upper condition. Stand on the side that received the lower copy."
+  },
+  {
+   "id": "hint.vesper.line.coast.checked.4",
+   "objective": "vesper.line.coast.checked",
+   "depth": 4,
+   "text": "Use both the order board and the copy slot. Then bring them to Vesper’s reply between those two stations."
+  },
+  {
+   "id": "hint.vesper.line.coast.done.1",
+   "objective": "vesper.line.coast.done",
+   "depth": 1,
+   "text": "Someone will arrive using the big word on the old copy."
+  },
+  {
+   "id": "hint.vesper.line.coast.done.2",
+   "objective": "vesper.line.coast.done",
+   "depth": 2,
+   "text": "A signed replacement can answer for the original. A staffed turn can catch a reader who never sees the replacement."
+  },
+  {
+   "id": "hint.vesper.line.coast.done.3",
+   "objective": "vesper.line.coast.done",
+   "depth": 3,
+   "text": "The original board is west. The lower turn is nearer the approach."
+  },
+  {
+   "id": "hint.vesper.line.coast.done.4",
+   "objective": "vesper.line.coast.done",
+   "depth": 4,
+   "text": "After the choice, use either the corrected board or the arrow at the lower turn. The checked strip can go to the Lamp Quay."
+  },
+  {
+   "id": "hint.vesper.line.quay.admitted.1",
+   "objective": "vesper.line.quay.admitted",
+   "depth": 1,
+   "text": "Wren has an appointment case above the Proof Room door."
+  },
+  {
+   "id": "hint.vesper.line.quay.admitted.2",
+   "objective": "vesper.line.quay.admitted",
+   "depth": 2,
+   "text": "The counterfoil names the printing. The handover book names the gate and its keeper."
+  },
+  {
+   "id": "hint.vesper.line.quay.admitted.3",
+   "objective": "vesper.line.quay.admitted",
+   "depth": 3,
+   "text": "The Headland strip can help with one of the local checks. You can also use both local records."
+  },
+  {
+   "id": "hint.vesper.line.quay.admitted.4",
+   "objective": "vesper.line.quay.admitted",
+   "depth": 4,
+   "text": "Use the printing counterfoil or timed catch as your strip requires. With no strip, check both. Then present the record in Wren’s case."
+  },
+  {
+   "id": "hint.vesper.line.quay.checked.1",
+   "objective": "vesper.line.quay.checked",
+   "depth": 1,
+   "text": "There is room to see a whole sheet in the Proof Room."
+  },
+  {
+   "id": "hint.vesper.line.quay.checked.2",
+   "objective": "vesper.line.quay.checked",
+   "depth": 2,
+   "text": "The setting proof has a lower line. Tavia has a work record with two different times."
+  },
+  {
+   "id": "hint.vesper.line.quay.checked.3",
+   "objective": "vesper.line.quay.checked",
+   "depth": 3,
+   "text": "The approved heading and the lost instruction need to travel together. Use the part of Tavia’s account she can share."
+  },
+  {
+   "id": "hint.vesper.line.quay.checked.4",
+   "objective": "vesper.line.quay.checked",
+   "depth": 4,
+   "text": "Lift the proof’s trimming guide. Speak to Tavia beside the spare copies. Bring both to Vesper at the proof table."
+  },
+  {
+   "id": "hint.vesper.line.quay.done.1",
+   "objective": "vesper.line.quay.done",
+   "depth": 1,
+   "text": "A correction can catch different callers depending on where it faces."
+  },
+  {
+   "id": "hint.vesper.line.quay.done.2",
+   "objective": "vesper.line.quay.done",
+   "depth": 2,
+   "text": "The signed sheet will face incoming callers. Vesper’s turn covers the callers already at the old catch."
+  },
+  {
+   "id": "hint.vesper.line.quay.done.3",
+   "objective": "vesper.line.quay.done",
+   "depth": 3,
+   "text": "Finish the proof or the handover at the table, then use the quay rail that matches it."
+  },
+  {
+   "id": "hint.vesper.line.quay.done.4",
+   "objective": "vesper.line.quay.done",
+   "depth": 4,
+   "text": "Return through the Proof Room door. For the signed copy walk west to the incoming rail. For the handover stay east by Vesper and help the caller find the west desk."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.vesper.line.coast",
+   "kind": "quest",
+   "title": "The Narrow Line",
+   "text": "I helped a carrier read which approach would admit the next load. I kept a copy of the correction and told Tavia I would look for her at Lamp Quay."
+  },
+  {
+   "id": "j.vesper.line.quay",
+   "kind": "quest",
+   "title": "The Other End of OPEN",
+   "text": "I brought the missing line back where a caller could use it. Vesper took responsibility for the old heading. The work to recall the other copies still has a place on the list."
+  }
+ ]
+}

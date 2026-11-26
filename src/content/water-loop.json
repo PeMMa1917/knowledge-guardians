@@ -1,0 +1,118 @@
+{
+  "sources": [
+    {
+      "id": "HIS-JEWEL-01",
+      "title": "Jewel Changi Airport",
+      "url": "https://www.safdiearchitects.com/projects/jewel-changi-airport",
+      "locator": "Singapore, 2019 project header and Waterfall feature",
+      "supports": "Safdie Architects describes the glass roof’s oculus, the Rain Vortex and indoor garden. The project record describes recirculated rainwater and collecting water for reuse.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-JEWEL-02",
+      "title": "Jewel Rain Vortex",
+      "url": "https://www.jewelchangiairport.com/en/attractions/rain-vortex.html",
+      "locator": "Rain Vortex visitor attraction description",
+      "supports": "The operator identifies the installation as the Rain Vortex in the Forest Valley and describes places from which visitors can see it.",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.jewel.rain",
+      "title": "Water through Jewel’s roof",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "text": "Safdie Architects’ 2019 Singapore project has a glass roof opening above the Rain Vortex. Water falls into the interior beside the Forest Valley garden. The architect describes recirculation and rainwater reuse.",
+      "limits": "The public view shows where water travels. A water balance and power reading would need measurements from the installation over a stated period.",
+      "sources": ["HIS-JEWEL-01", "HIS-JEWEL-02"]
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-JEWEL-RAIN",
+      "name": "Jewel Rain Vortex, Singapore",
+      "art": "water-loop.jewel",
+      "historicalLabel": "documented",
+      "dateText": "2019, Safdie Architects’ project date",
+      "dateKind": "The project record dates the building in Singapore. The year describes the project.",
+      "summary": "An opening in the glass roof sends water down beside the Forest Valley. Safdie Architects describes recirculated rainwater and rainwater reuse. The visitor attraction and circulation system have their own records.",
+      "altText": "Original diagram of an opening in a glass roof, a pale waterfall and planted banks inside Jewel.",
+      "sources": ["HIS-JEWEL-01", "HIS-JEWEL-02"],
+      "grantsCard": "card.jewel.rain"
+    }
+  ],
+  "items": [
+    { "id": "item.water-loop.strip", "name": "The Archive’s punched setup strip",
+      "description": "The strip records the display setting and a return route. Its readings belong to the Bell Archive inlet. Ivo can use these settings to begin a fresh test on the Island.",
+      "historicalLabel": "fictional-world", "art": "preserved.slip" }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH4-R10", "world": "WORLD-05", "title": "The Water That Comes Back",
+      "knowledgeQuestion": "What can a visitor see about water use from the display alone?",
+      "stake": "The Bell Archive has one attendant. Its visitor model can hold a reserve for little gardens or run a powered tide plate.",
+      "available": { "all": [{ "objective": "coast.revise" }, { "flagSet": "waterLoop.archive.trial" }] },
+      "objectives": [
+        { "id": "waterLoop.archive.compare", "title": "Run two setups and clip the basin, return and spill readings for each.",
+          "done": { "flag": "waterLoop.archive.compared", "eq": true }, "essential": false,
+          "weave": { "concepts": ["evidence", "interpretation", "objectivity", "explanation"], "framework": ["scope", "methods-and-tools"],
+            "atl": ["research", "thinking"], "aoks": ["NAT", "TEC", "MAT"], "subjects": ["ess", "physics", "math-ai"],
+            "thinking": { "dok": 3, "bloom": "analyse", "fink": "integration", "solo": "relational" }, "minutes": 5 } },
+        { "id": "waterLoop.archive.send", "title": "Punch a checked setup on a strip for Ivo.",
+          "visible": { "objective": "waterLoop.archive.compare" }, "done": { "flagSet": "waterLoop.archive.service" }, "essential": false,
+          "weave": { "concepts": ["justification", "values", "responsibility"], "framework": ["scope", "ethics", "perspectives"],
+            "atl": ["communication", "thinking"], "aoks": ["NAT", "HUM"], "subjects": ["design-tech", "geography"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "human", "solo": "relational" }, "minutes": 1 } }
+      ]
+    },
+    {
+      "id": "KG-CH14-R07", "world": "WORLD-15", "title": "A Smaller Inlet",
+      "knowledgeQuestion": "Which parts of a working setup can travel to a different site?",
+      "stake": "The Island’s old rain garden and powered tide plate share an attendant. Its inlet is smaller and its plate draws more power.",
+      "available": { "all": [{ "objective": "island.finish" }, { "flagSet": "waterLoop.island.source" }] },
+      "objectives": [
+        { "id": "waterLoop.island.compare", "title": "Fit a starting card and check all three gauges at the Island manifold.",
+          "done": { "flag": "waterLoop.island.compared", "eq": true }, "essential": false,
+          "weave": { "concepts": ["certainty", "evidence", "explanation", "interpretation"], "framework": ["scope", "methods-and-tools"],
+            "atl": ["thinking", "research"], "aoks": ["NAT", "TEC"], "subjects": ["ess", "physics", "design-tech"],
+            "thinking": { "dok": 3, "bloom": "apply", "fink": "integration", "solo": "relational" }, "minutes": 4 } },
+        { "id": "waterLoop.island.finish", "title": "Open one service, take its side path and read the destination.",
+          "visible": { "objective": "waterLoop.island.compare" },
+          "done": { "any": [{ "flag": "waterLoop.island.seen.garden", "eq": true }, { "flag": "waterLoop.island.seen.plate", "eq": true }] },
+          "essential": false,
+          "weave": { "concepts": ["perspective", "power", "values", "responsibility"], "framework": ["perspectives", "ethics"],
+            "atl": ["social", "self-management"], "aoks": ["NAT", "HUM"], "subjects": ["geography", "ess"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "caring", "solo": "relational" }, "minutes": 2 },
+          "onComplete": [{ "journal": "j.water.loop" }] }
+      ]
+    }
+  ],
+  "hints": [
+    { "id": "h.waterLoop.archive.compare.1", "objective": "waterLoop.archive.compare", "depth": 1, "text": "Find the Bell Archive’s model, beside the Jewel catalogue case." },
+    { "id": "h.waterLoop.archive.compare.2", "objective": "waterLoop.archive.compare", "depth": 2, "text": "Fit a short shower or long curtain, with a near or lifted return. Run two pulses." },
+    { "id": "h.waterLoop.archive.compare.3", "objective": "waterLoop.archive.compare", "depth": 3, "text": "Visit the three gauge stands around the model. Clip each reading before changing the model settings." },
+    { "id": "h.waterLoop.archive.compare.4", "objective": "waterLoop.archive.compare", "depth": 4, "text": "Run a second setup, then clip its three readings. Both entries appear under Completed gauge records." },
+    { "id": "h.waterLoop.archive.send.1", "objective": "waterLoop.archive.send", "depth": 1, "text": "The file needs a setup and the service it can support." },
+    { "id": "h.waterLoop.archive.send.2", "objective": "waterLoop.archive.send", "depth": 2, "text": "The lifted return adds to the reserve and spends power. The tide plate needs spare power at both pulses." },
+    { "id": "h.waterLoop.archive.send.3", "objective": "waterLoop.archive.send", "depth": 3, "text": "At the model, choose a service the latest measured setup can support." },
+    { "id": "h.waterLoop.archive.send.4", "objective": "waterLoop.archive.send", "depth": 4, "text": "Use Keep the rain garden path open or Power the public tide plate. The punched strip goes in your bag." },
+    { "id": "h.waterLoop.island.compare.1", "objective": "waterLoop.island.compare", "depth": 1, "text": "Ivo’s circulation model is in the Island’s Plan Workshop." },
+    { "id": "h.waterLoop.island.compare.2", "objective": "waterLoop.island.compare", "depth": 2, "text": "Fit the Bell Archive strip or Ivo’s local card. Both begin a test under the Island’s own conditions." },
+    { "id": "h.waterLoop.island.compare.3", "objective": "waterLoop.island.compare", "depth": 3, "text": "Run two pulses, then look for the basin staff, return counter and spill tray across the workshop." },
+    { "id": "h.waterLoop.island.compare.4", "objective": "waterLoop.island.compare", "depth": 4, "text": "Clip all three readings from the same run. Return to the model to see which service it supports." },
+    { "id": "h.waterLoop.island.finish.1", "objective": "waterLoop.island.finish", "depth": 1, "text": "One attendant can open one side path. The ordinary route to Quiet Margin stays in use." },
+    { "id": "h.waterLoop.island.finish.2", "objective": "waterLoop.island.finish", "depth": 2, "text": "The garden needs stored water. The tide plate needs spare power at both pulses." },
+    { "id": "h.waterLoop.island.finish.3", "objective": "waterLoop.island.finish", "depth": 3, "text": "A short shower and lifted return can hold the garden reserve. A near return can leave power for the plate." },
+    { "id": "h.waterLoop.island.finish.4", "objective": "waterLoop.island.finish", "depth": 4, "text": "Set the supported service on the model. Enter its workshop side gate, then read the display near your landing square." }
+  ],
+  "journal": [
+    { "id": "j.water.loop", "claimKind": "interpretation", "text": "Some water passed the display more than once. The basin and spill tray kept separate counts. The Island used a fresh test because its inlet and power demands differed from the Archive’s." }
+  ],
+  "chronicle": [
+    { "id": "water-loop-garden-opened", "title": "A path to the rain garden", "text": "The attendant opened the closer garden path while the basin held enough for the next draw.",
+      "if": { "flag": "waterLoop.island.seen.garden", "eq": true } },
+    { "id": "water-loop-plate-opened", "title": "A light above the covered path", "text": "The covered passage opened when the tide plate had enough power across both pulses.",
+      "if": { "flag": "waterLoop.island.seen.plate", "eq": true } }
+  ]
+}

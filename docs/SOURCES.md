@@ -29,6 +29,10 @@ Each source supports only a **narrow** claim. The "Supports" column says what th
 | HIS-S30 | [Library of Parliament (Canada), rare books: A Vindication of the Rights of Woman, by Mary Wollstonecraft, 1792](https://lop.parl.ca/en/about/spotlight/rarebooks/vindicationrightswomanmarywollstonecraft1792) | Mary Wollstonecraft published A Vindication of the Rights of Woman in 1792; it argued for women's education and rights. | 2026-11-25 |
 | HIS-S31 | [Encyclopaedia Britannica: The Book of the City of Ladies](https://www.britannica.com/topic/The-Book-of-the-City-of-Ladies) | Christine de Pizan wrote The Book of the City of Ladies (1405), a defence of women, centuries before 1792. | 2026-11-25 |
 
+## The Same Red, the Nexus and the City of Copies
+
+HIS-LOC-GUT-01 identifies the Library of Congress *Biblia Latina*, LCCN 52002339, call number BS75 1454. The catalogue gives Mainz, probably 1454–1455, and an upper printing limit of 1456. The Library’s copy is on vellum and has three volumes with sixteenth-century bindings. Its copy note identifies red printed headings on leaf [129b] and four other leaves, hand-added red headings elsewhere, and variants on leaf [192a] compared with the published Berlin facsimile. The Library’s overview, HIS-LOC-GUT-02, estimates approximately 180 copies across the print run. The in-game case contains one original schematic of the three bindings. Lark’s red headings and all workshop proofs are fictional. [Library of Congress catalogue record](https://lccn.loc.gov/52002339/mods) · [Library of Congress print-run overview](https://www.loc.gov/exhibits/bibles/interactives/gutenberg/)
+
 ## Objects in chapter 1
 
 ### The Nexus: mission "Three Firsts" (who invented the ballpoint pen?)
@@ -126,6 +130,13 @@ The Cold Store is a fictional Guardian archive. Its displays use maps and schema
 
 HIS-BINAK-01 records Museums Victoria X 104841, a coiled grass-fibre binak by Wurundjeri maker Mikaela Rose Cottingham. The catalogue describes her learning at Bunjilaka. The heading and First Peoples fields say 2012, while the Date Made association says 2011. The display preserves the two fields. The pixel profile represents a generic paper model in the fictional support trial. [Museums Victoria, X 104841](https://collections.museumsvictoria.com.au/items/1915791)
 
+## The Gap in the Backdrop, Cold Store and House of Performance
+
+The workroom cloth, Edge Rule and audience views are original inventions. The art cases use plain sample materials and blank print mounts.
+
+- HIS-SEAM-01 and -03 identify Britta Marakatt-Labba’s 1981 embroidery *Garjját* and describe its connection to her experience of the Alta-Kautokeino protests. Nasjonalmuseet’s exhibition page separately captions a 2021 work. HIS-SEAM-02 gives the date, paper medium and 2024 acquisition of another work of the same title, Moderna Museet MOM/2024/133. Each description stays with its version. [Nasjonalmuseet exhibition](https://www.nasjonalmuseet.no/en/exhibitions-and-events/national-museum/exhibitions/2024/britta-marakatt-labba/) · [Moderna Museet exhibition](https://www.modernamuseet.se/en/stockholm/exhibitions/britta-marakatt-labba/) · [Moderna Museet exact 2024 object](https://sis.modernamuseet.se/en/objects/120998/garjjat)
+- HIS-SEAM-04 gives the 1990 date, four prints on baryta paper and the position of Pia Arke’s camera near Narsaq. Kunsthall Trondheim’s 2019 exhibition credits Brandts, Odense. HIS-SEAM-05 records Nuuk Art Museum’s separate account of Arke’s work on the history of Ittoqqortoormiit. Those two places and records have distinct roles. [Kunsthall Trondheim exhibition record](https://kunsthalltrondheim.no/en/utstillinger/pia-arke) · [Nuuk Art Museum account](https://www.nuukkunstmuseum.com/da/pia-arke-ittoqqortoormiit/)
+
 ## A Door in Two Lines, Cold Store and Archive of Voices
 
 The two historical cases have separate places, publishers and purposes. Pilar’s writing rail, Eren’s mat and the worker door belong to the fictional setting. The display art shows case tabs and building materials.
@@ -167,6 +178,12 @@ Players keep the accounts with their own places, sources and reasons for welcome
 
 HIS-MET-RONTGEN-A606881 records Science Museum Group object A606881 as a photograph on paper under glass, catalogue year 1895 and maker unknown. The catalogue describes Röntgen’s exposure of his wife’s left hand on 22 December 1895 and the visible ring. It places the original radiograph at the Deutsches Museum in Munich. The game shows an original custody diagram. Corra’s fitting, shape plate and the Commons’ practice tests are fictional. [Science Museum Group, A606881](https://collection.sciencemuseumgroup.org.uk/objects/co134691/photograph-of-a-radiograph-of-hand-taken-by-wilhelm-conrad-rontgen-germany-1895)
 
+## The Line a Reader Can Follow and A Sunset on the Proof
+
+- The Nexus uses the catalogue page for the same A606881 record. Its title includes the year 1895, the collection dates the photograph to 1895, and the description dates the original exposure to 22 December 1895. The page supplies no personal byline or page publication date. The rendered entry begins with the title and ends with the date the game's authors consulted it. [Science Museum Group, A606881](https://collection.sciencemuseumgroup.org.uk/objects/co134691/photograph-of-a-radiograph-of-hand-taken-by-wilhelm-conrad-rontgen-germany-1895)
+- HIS-COPIES-TURNER-NG524 identifies the online artwork *The Fighting Temeraire* by Joseph Mallord William Turner, made in 1839. The longer title includes the year of the tow, 1838. The National Gallery's catalogue describes the painted sunset and says the ship likely reached Rotherhithe during the afternoon. The artwork entry and the catalogue account support different claims. The archive desks, captions and people using the source slips are fictional. [The National Gallery, NG524](https://www.nationalgallery.org.uk/paintings/joseph-mallord-william-turner-the-fighting-temeraire)
+- The two printed entries follow MLA 9 core elements for the source type and its online container. The stable page addresses in the entries are live links. The shorter physical tags also include the inventory numbers the museums give. The Style Center's example for a painting viewed online includes a creation year separate from the website's date. The example for an undated web source explains the optional access date. [Works Cited quick guide](https://style.mla.org/works-cited/works-cited-a-quick-guide/) · [Citations by Format](https://style.mla.org/works-cited/citations-by-format/) · [Undated web source example](https://style.mla.org/web-sites-no-publication-date/)
+
 ## The Other Face of the Plate, Metalworks and Council of Inquiry
 
 Plate Eleven, its jig and the workshop loan are fictional. The two historical displays use original drawings of blank catalogue mounts.
@@ -191,6 +208,10 @@ The folio and its keepers are fictional. The historical exhibits use original il
 ## Three Goods, Two Bells, Market of Measures and Emberford
 
 - HIS-BASKET-01 identifies the Smithsonian’s own 100 trillion Zimbabwe dollar note, 2015.0071.1. Its face records the Reserve Bank of Zimbabwe, Harare, the amount and the year 2008. The game describes what is printed and leaves the exact first-use date and local purchasing power for separate dated sources. The mount is an original diagram. The catalogue’s specimen identity stays with its own record. Lantern Day prices, co-op credit and the voucher are fictional. [Smithsonian National Museum of American History, 2015.0071.1](https://americanhistory.si.edu/collections/object/nmah_1694052)
+
+## The Water That Comes Back, Bell Archive and Island of Models
+
+- HIS-JEWEL-01 dates the Safdie Architects project in Singapore to 2019 and describes the glass roof opening, Forest Valley and the Rain Vortex’s recirculation and collection for reuse. HIS-JEWEL-02 identifies the visitor attraction and its viewing areas. The game’s section diagram is original. Its two-pulse inflow, basin volume and power units describe fictional models. The cited public descriptions give no measured water balance or energy budget for the playable case. [Safdie Architects project](https://www.safdiearchitects.com/projects/jewel-changi-airport) · [Jewel’s Rain Vortex page](https://www.jewelchangiairport.com/en/attractions/rain-vortex.html)
 
 ## The First Frame, House of Performance and Slate Harbour
 

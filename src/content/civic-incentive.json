@@ -1,0 +1,67 @@
+{
+  "items": [
+    { "id": "item.incentive.manifest", "name": "Lin’s four-part manifest", "art": "preserved.folder",
+      "description": "One rail kit and one bench kit. Each needs its own hook and foot. Keep these four marks for both Island runs.",
+      "historicalLabel": "fictional-world" }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH12-R07", "world": "WORLD-13", "title": "Ready by the Bell",
+      "knowledgeQuestion": "How does a public target change the work it counts?",
+      "stake": "The Island needs two working kits for its visitor stop. Lin can ask for an early dispatch target or for complete kits at the receiving bell.",
+      "available": { "all": [{ "objective": "civic.finish" }, { "item": "item.incentive.manifest" }] },
+      "objectives": [
+        {
+          "id": "civic.incentive.post", "title": "Post a target on Lin’s North Steps board and carry the order.",
+          "done": { "item": "item.incentive.manifest" }, "essential": false,
+          "weave": { "concepts": ["power", "values", "perspective"], "framework": ["perspectives", "ethics"],
+            "atl": ["thinking", "self-management"], "aoks": ["POL", "HUM"], "subjects": ["economics", "business", "global-politics"],
+            "thinking": { "dok": 2, "bloom": "apply", "fink": "human", "solo": "relational" }, "minutes": 2 }
+        },
+        {
+          "id": "civic.incentive.audit", "title": "Check both bells under both targets and match the delivered kits.",
+          "visible": { "objective": "civic.incentive.post" },
+          "done": { "all": [{ "flag": "incentive.audited.dispatch", "eq": true }, { "flag": "incentive.audited.kits", "eq": true }] },
+          "essential": false,
+          "weave": { "concepts": ["evidence", "objectivity", "explanation", "interpretation"], "framework": ["scope", "methods-and-tools"],
+            "atl": ["research", "thinking"], "aoks": ["HUM", "MAT", "POL"], "subjects": ["economics", "math-ai", "business"],
+            "thinking": { "dok": 3, "bloom": "analyse", "fink": "integration", "solo": "relational" }, "minutes": 7 }
+        },
+        {
+          "id": "civic.incentive.keep", "title": "Keep one target and check its receiver’s final tally.",
+          "visible": { "objective": "civic.incentive.audit" },
+          "done": { "flag": "incentive.readback", "eq": true }, "essential": false,
+          "weave": { "concepts": ["responsibility", "values", "justification", "power"], "framework": ["methods-and-tools", "ethics"],
+            "atl": ["communication", "thinking"], "aoks": ["HUM", "POL"], "subjects": ["business", "economics", "global-politics"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "caring", "solo": "relational" }, "minutes": 2 },
+          "onComplete": [{ "journal": "j.civic.incentive" }]
+        }
+      ]
+    }
+  ],
+  "hints": [
+    { "id": "h.civic.incentive.post.1", "objective": "civic.incentive.post", "depth": 1, "text": "Lin has a new target board at North Steps after the main route is posted." },
+    { "id": "h.civic.incentive.post.2", "objective": "civic.incentive.post", "depth": 2, "text": "The same two crews need the same four marked parts under either target." },
+    { "id": "h.civic.incentive.post.3", "objective": "civic.incentive.post", "depth": 3, "text": "Post either first-bell tags or second-bell matched kits. Lin gives you the manifest." },
+    { "id": "h.civic.incentive.post.4", "objective": "civic.incentive.post", "depth": 4, "text": "Take the signed order to Ivo’s trace table in the Island workshop once you can visit." },
+    { "id": "h.civic.incentive.audit.1", "objective": "civic.incentive.audit", "depth": 1, "text": "A mark on Lin’s notice and a working kit can tell different parts of the handover." },
+    { "id": "h.civic.incentive.audit.2", "objective": "civic.incentive.audit", "depth": 2, "text": "Before calling the second bell, clip a trace from the workshop rail shelf and from the dock bench rack." },
+    { "id": "h.civic.incentive.audit.3", "objective": "civic.incentive.audit", "depth": 3, "text": "Read the later cart at the rail shelf. When kits are sent together, the second kit is on the dock rack." },
+    { "id": "h.civic.incentive.audit.4", "objective": "civic.incentive.audit", "depth": 4, "text": "Fit both marked pairs at Ivo’s table. Run again with the other target, then check both pairs again." },
+    { "id": "h.civic.incentive.keep.1", "objective": "civic.incentive.keep", "depth": 1, "text": "Read the two runs side by side at Ivo’s trace table." },
+    { "id": "h.civic.incentive.keep.2", "objective": "civic.incentive.keep", "depth": 2, "text": "Some workers need an early start. Others can collect a working pair in one visit." },
+    { "id": "h.civic.incentive.keep.3", "objective": "civic.incentive.keep", "depth": 3, "text": "Keep the target that suits the workers you want to help. Both first-bell pieces and complete kits have a line on the checked tally." },
+    { "id": "h.civic.incentive.keep.4", "objective": "civic.incentive.keep", "depth": 4, "text": "Read the kept dispatch tally at the dock’s early hook rack or the kept kit tally at the workshop rail shelf." }
+  ],
+  "journal": [
+    { "id": "j.civic.incentive", "claimKind": "interpretation", "text": "Lin’s four marks and Ivo’s two kit receipts counted different units. The target changed when the crews split the load and where the pieces arrived. Matching the hooks and feet gave us a separate count of usable kits." }
+  ],
+  "chronicle": [
+    { "id": "incentive-keep-dispatch", "title": "A head start with a separate count",
+      "text": "The early hook rack stayed open. The kept tally distinguishes the dispatch tags from the later matched kits.",
+      "if": { "all": [{ "flag": "incentive.standing", "eq": "dispatch" }, { "flag": "incentive.readback", "eq": true }] } },
+    { "id": "incentive-keep-kits", "title": "A second-bell matched pair",
+      "text": "The crew collected each joined kit once at the later bell. The arrival board kept each hook with its marked foot.",
+      "if": { "all": [{ "flag": "incentive.standing", "eq": "kits" }, { "flag": "incentive.readback", "eq": true }] } }
+  ]
+}

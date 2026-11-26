@@ -8,10 +8,13 @@ import { filmEffects, type FilmAction } from './filmCuts';
 import { marketComparison, type MarketBasis } from './marketScale';
 import { waterTrial, type WaterSetting } from './waterGate';
 import { civicAllocation, type CivicRule, type CivicSample } from './civicConsole';
+import { civicIncentiveEffects, type IncentiveAction } from './civicIncentive';
+import { boundaryEffects, type BoundaryAction } from './boundaryBoard';
 import { voiceReading, type VoiceSource, type VoiceView } from './voiceReadings';
 import { islandPlan, type IslandLanding, type IslandRoute } from './islandPlan';
 import { changeSkiff, type SkiffAction } from './islandSkiff';
 import { marketBasketEffects, type BasketAction } from './marketBasket';
+import { waterLoopEffects, type LoopAction } from './waterLoop';
 import { councilClock, type CouncilTrial } from './councilClock';
 import { scoutDecision, scoutNextTrial, scoutTrials, type ScoutDecision, type ScoutProtocol, type ScoutRoute } from './scoutRoutes';
 import { ownedPerspective, PERSPECTIVE_FLAG } from './perspectives';
@@ -45,7 +48,7 @@ import { dailyPrompts, diveDepth, diveItems, judgeDive } from './dive';
 import { TIME_MAX, TIME_MIN, answerRound, runSurvey, translateLine, judgeFrame, readForecasts, checkOrder, judgeSight, panes, readTimes, runSorter, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
 import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
-import { useSignature } from './skills';
+import { objectiveSkillUse, recordSkillUse } from './skills';
 import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
 import { addQuestionWay, checkAwards, grantCredit } from './permanent';
 import { evaluateLabel, type LabelResult } from './label';
@@ -56,8 +59,10 @@ import { addPortfolio, addSignal, checkMoments, recordWeave, tickEvents } from '
 import { diaryDialogueChoice, diaryNoteKind, newAdventureDiary, recordAdventure } from './adventureJournal';
 
 export type Command =
+  | IncentiveAction
   | SkiffAction
   | BasketAction
+  | LoopAction
   | FilmAction
   | { type: 'Reach'; zone: string }
   | { type: 'VisitPlace'; name: string }
@@ -130,6 +135,7 @@ export type Command =
   | { type: 'WeighMarketLots'; basis: MarketBasis }
   | { type: 'RunWaterTrial'; setting: WaterSetting }
   | { type: 'RunCivicTrial'; sample: CivicSample; rule: CivicRule }
+  | BoundaryAction
   | { type: 'RunVoiceReading'; source: VoiceSource; view: VoiceView }
   | { type: 'RunIslandPlan'; route: IslandRoute; landing: IslandLanding }
   | { type: 'RunCouncilClock'; trial: CouncilTrial }
@@ -669,6 +675,12 @@ export class Engine {
         case 'SealMarketBasket': case 'QuoteMarketBasket': case 'IssueBasketTicket': case 'ReviewBasketCredit': case 'RedeemBasketTicket':
           s = apply(marketBasketEffects(cmd, s), s, out);
           break;
+        case 'RunWaterLoop': case 'ReadWaterLoop': case 'FitWaterLoopCard': case 'SetWaterLoopService':
+          s = apply(waterLoopEffects(cmd, s), s, out);
+          break;
+        case 'PublishDispatchTarget': case 'CheckDispatchReceipt': case 'CallDispatchBell': case 'CheckDispatchKit': case 'KeepDispatchTarget':
+          s = apply(civicIncentiveEffects(cmd, s), s, out);
+          break;
         case 'RunVoiceReading': {
           if (s.mapId !== 'voices.listening' || s.flags['voices.arrived'] !== true) throw new Error('Use the listening desk in the Archive of Voices.');
           voiceReading(cmd.source, cmd.view);
@@ -685,6 +697,9 @@ export class Engine {
           if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
+        case 'SetServiceBoundary':
+          s = apply(boundaryEffects(cmd, s), s, out);
+          break;
         case 'RunWaterTrial': {
           if (s.mapId !== 'water.gatehouse' || s.flags['water.arrived'] !== true) throw new Error('Use the trial gate in the Water Commons.');
           const condition = s.flags['water.repaired'] === true ? 'repaired' : 'drought';
@@ -1254,7 +1269,7 @@ export class Engine {
           if (o.weave) weaves.push(o.weave);
           if (o.kq) stones.push({ id: o.kq.id, way: `${m.world}|${o.kq.action}` });
           for (const q of o.questionWays ?? []) stones.push({ id: q.id, way: `${m.world}|${q.action}` });
-          for (const sk of o.skills ?? []) skillUses.push({ id: sk, sig: useSignature(m.world, o.kq?.action ?? 'step', o.id, o.weave?.aoks ?? []) });
+          for (const sk of o.skills ?? []) skillUses.push({ id: sk, sig: objectiveSkillUse(m.world, o, sk) });
           changed = true;
         }
       }
@@ -1287,10 +1302,7 @@ export class Engine {
       p = record;
     }
     // Skill Atlas (spec 76.1): one use per distinct context.
-    for (const u of skillUses) {
-      const have = p.skills?.[u.id] ?? [];
-      if (!have.includes(u.sig)) p = { ...p, skills: { ...(p.skills ?? {}), [u.id]: [...have, u.sig] } };
-    }
+    for (const { id, sig } of skillUses) p = recordSkillUse(p, id, sig);
     for (const tid of out.portfolio) {
       const t = this.pack.portfolio.find((x) => x.id === tid);
       if (t) portfolio.push({ kind: t.kind, title: t.title, text: t.text, weave: t.weave });

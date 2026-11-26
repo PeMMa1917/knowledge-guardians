@@ -3,6 +3,9 @@ import type { Condition } from '../domain/types';
 import { CIVIC_ARRIVAL_TRAYS, civicReceivingArrangements, civicReceivingLoad } from '../domain/civicArrivals';
 import { civicLaneReading, civicLaneRouting, type RouteSocket } from '../domain/routeTiles';
 import { CIVIC_APPEAL_CANAL, CIVIC_APPEAL_DISPATCH } from './civicAppeal';
+import { CIVIC_INCENTIVE_BOARD } from './civicIncentive';
+import { CIVIC_BENCH_DEBATE } from './benchDebate';
+import { CIVIC_BOUNDARY } from './serviceBoundary';
 import type { Interactable, MapDef } from './types';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'civic.waypost'): Interactable {
@@ -140,6 +143,9 @@ export const CIVIC_STEPS: MapDef = {
     { stamp: 'market-planter', x: 4, y: 5 },
   ],
   interactables: [
+    CIVIC_INCENTIVE_BOARD,
+    ...CIVIC_BENCH_DEBATE,
+    ...CIVIC_BOUNDARY,
     { id: 'cross-name-box', kind: 'fieldgame', game: 'cross-name-box', x: 19, y: 5, w: 1, h: 1, label: 'the gate machine (a crossing)', art: 'board-stand' },
     door('civic-steps-return', 12, 16, 'the west passage back to Library Dispatch', { map: 'civic.dispatch', x: 4, y: 11 }),
     door('civic-steps-to-canal', 25, 12, 'the street to Canal Walk', { map: 'civic.canal', x: 23, y: 9 }),

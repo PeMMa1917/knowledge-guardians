@@ -64,6 +64,7 @@ export function validateContent(pack: ContentPack): string[] {
   };
 
   const sources = new Set(pack.sources.map((s) => s.id));
+  const citationSources = new Set(pack.sources.filter((s) => s.mla).map((s) => s.id));
   const cards = new Set(pack.cards.map((c) => c.id));
   const items = new Set(pack.items.map((i) => i.id));
   const nodes = new Set(pack.dialogue.map((n) => n.id));
@@ -76,7 +77,18 @@ export function validateContent(pack: ContentPack): string[] {
   const pf = new Set(pack.portfolio.map((x) => x.id));
   const origins = new Set((pack.origins ?? []).map((o) => o.id));
 
-  pack.sources.forEach((s) => { dup('source', s.id); if (!/^https:\/\//.test(s.url)) p.push(`source ${s.id}: url must be https`); });
+  pack.sources.forEach((s) => {
+    dup('source', s.id);
+    if (!/^https:\/\//.test(s.url)) p.push(`source ${s.id}: url must be https`);
+    if (!s.mla) return;
+    text(`source ${s.id} MLA title`, s.mla.title);
+    text(`source ${s.id} MLA container`, s.mla.container);
+    if (!['page', 'artwork'].includes(s.mla.kind)) p.push(`source ${s.id}: unknown MLA source kind`);
+    if (s.mla.kind === 'page' && s.mla.workDate) p.push(`source ${s.id}: an artwork date belongs to the artwork entry`);
+    if (s.mla.showAccessDate && !/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(s.accessed)) {
+      p.push(`source ${s.id}: access date must use YYYY-MM-DD`);
+    }
+  });
   pack.cards.forEach((c) => {
     dup('card', c.id); text(`card ${c.id}`, c.text);
     if (!CLAIM_KINDS.includes(c.claimKind)) p.push(`card ${c.id}: bad claimKind`);
@@ -90,6 +102,21 @@ export function validateContent(pack: ContentPack): string[] {
     if (e.historicalLabel === 'documented' && e.sources.length === 0) p.push(`exhibit ${e.id}: documented exhibit needs a source`);
     if (e.labelKit && !kits.has(e.labelKit)) p.push(`exhibit ${e.id}: unknown label kit ${e.labelKit}`);
     e.sources.forEach((s) => sources.has(s) || p.push(`exhibit ${e.id}: unknown source ${s}`));
+    if (e.specimen) {
+      const { key, institution, accession, source, objective, pixelAsset } = e.specimen;
+      dup('specimen', key.trim().toLowerCase());
+      if (!/^[a-z0-9-]+:[a-z0-9./_-]+$/.test(key) || !institution.trim() || !accession.trim()) {
+        p.push(`exhibit ${e.id}: a specimen needs a stable key, institution and accession`);
+      }
+      if (e.historicalLabel !== 'documented' || !/\d/.test(e.dateText) || !e.dateKind.trim()) {
+        p.push(`exhibit ${e.id}: a specimen needs a documented, bounded date`);
+      }
+      if (!e.sources.includes(source)) p.push(`exhibit ${e.id}: specimen source must be listed with the exhibit`);
+      if (!objectives.has(objective)) p.push(`exhibit ${e.id}: unknown specimen use ${objective}`);
+      if (pixelAsset && !/^specimens\/[a-z0-9][a-z0-9._-]*\.(png|webp|jpg)$/.test(pixelAsset)) {
+        p.push(`exhibit ${e.id}: specimen image must be a local asset`);
+      }
+    }
   });
   pack.items.forEach((i) => dup('item', i.id));
   pack.characters.forEach((c) => {
@@ -138,6 +165,7 @@ export function validateContent(pack: ContentPack): string[] {
 
   pack.dialogue.forEach((n) => {
     dup('node', n.id); text(`node ${n.id}`, n.text);
+    if (n.citationSource && !citationSources.has(n.citationSource)) p.push(`node ${n.id}: unknown MLA source ${n.citationSource}`);
     if (n.motif !== undefined && !STORY_MOTIFS.includes(n.motif)) p.push(`node ${n.id}: unknown story motif ${n.motif}`);
     if (n.speaker !== 'narrator' && n.speaker !== 'player' && n.speaker !== 'lumen' && !n.speaker.startsWith('mentor:') && !chars.has(n.speaker)) p.push(`node ${n.id}: unknown speaker ${n.speaker}`);
     if (n.next && !nodes.has(n.next)) p.push(`node ${n.id}: unknown next ${n.next}`);

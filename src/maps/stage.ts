@@ -1,5 +1,6 @@
 /** Fictional theatre with separate backstage and audience sightlines. */
 import type { Condition } from '../domain/types';
+import { GALLERY_SEAM } from './seamWitness';
 import type { Interactable, MapDef } from './types';
 import { STAGE_FOYER_BACKBILL, STAGE_GALLERY_BACKBILL } from './backbill';
 import { STAGE_FOYER_FRAMES, STAGE_GALLERY_FRAMES, STAGE_REHEARSAL_FRAMES } from './frames';
@@ -148,6 +149,7 @@ export const STAGE_GALLERY = room({
   ],
   interactables: [
     ...STAGE_GALLERY_BACKBILL,
+    ...GALLERY_SEAM,
     ...STAGE_GALLERY_FRAMES,
     STAGE_FILM_GALLERY,
     door('stage-gallery-return', 11, 16, 'the passage back to the foyer', { map: 'stage.foyer', x: 22, y: 5 }),

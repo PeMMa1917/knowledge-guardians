@@ -4,6 +4,8 @@ import type { Interactable, MapDef } from './types';
 import { COPIES_ARCHIVE_BACKBILL, COPIES_PRESS_BACKBILL } from './backbill';
 import { COPIES_WELCOME } from './welcome';
 import { carriedFrame } from './sharedCarry';
+import { COPIES_ARCHIVE_CITATION_RAIL, COPIES_PRESS_CITATION_RAIL } from './citationRail';
+import { LANDING_SAME_RED, PRESS_SAME_RED } from './sameRed';
 
 type CitySite = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'interactables' | 'stamps' | 'lights'>;
@@ -66,6 +68,7 @@ export const COPIES_ARCHIVE = interior({
   ],
   interactables: [
     ...COPIES_ARCHIVE_BACKBILL,
+    ...COPIES_ARCHIVE_CITATION_RAIL,
     door('copies-press-path', 4, 3, 'the west passage to the press', { map: 'copies.press', x: 11, y: 12 }),
     door('copies-landing-path', 21, 3, 'the east steps to the landing', { map: 'copies.landing', x: 12, y: 12 }),
     { ...door('copies-nexus-return', 12, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 21, y: 13 }),
@@ -104,6 +107,8 @@ export const COPIES_PRESS = interior({
   ],
   interactables: [
     ...COPIES_PRESS_BACKBILL,
+    ...COPIES_PRESS_CITATION_RAIL,
+    ...PRESS_SAME_RED,
     { id: 'cross-crowd', kind: 'fieldgame', game: 'cross-crowd', x: 9, y: 6, w: 1, h: 1, label: 'the crowd at the press door (a crossing)', art: 'notice-board' },
     door('copies-press-return', 11, 14, 'the passage back to the Record Room', { map: 'copies.archive', x: 4, y: 5 }),
     door('copies-press-to-landing', 22, 9, 'the passage to the landing', { map: 'copies.landing', x: 5, y: 9 }),
@@ -160,6 +165,7 @@ export const COPIES_LANDING: MapDef = {
   ],
   interactables: [
     ...COPIES_WELCOME,
+    ...LANDING_SAME_RED,
     door('copies-landing-return', 12, 15, 'the steps back to the Record Room', { map: 'copies.archive', x: 21, y: 5 }),
     carriedFrame('copies', 'start', 5, 12, 'Mina’s wide-page frame on the delivery hooks'),
     carriedFrame('copies', 'cart', 11, 10, 'the wide-page frame at the first cart rest'),

@@ -2,6 +2,7 @@ import { NILE_TRIALS, NILE_DELIVERIES, type NileDelivery } from '../domain/nileM
 import { FOREST_WATCH, FOREST_WINDOWS, forestWatch, type ForestWindow } from '../domain/forestWatch';
 import { METAL_SAMPLES, readMetalSample } from '../domain/metalSample';
 import { compareCopy } from '../domain/copyComparison';
+import { mlaCitation } from '../domain/mla';
 import { seaChart } from '../domain/seaCharts';
 import { STAGE_CUES, stageRehearsal, type StageCue } from '../domain/stageRehearsal';
 import { FILM_STATIONS, isFilmStation } from '../domain/filmCuts';
@@ -55,7 +56,7 @@ import { studentAlerts } from '../domain/learning';
 import { MOVE_HELP, type ShowdownMove } from '../domain/showdown';
 import { AOK_NAMES, ATL_NAMES, CONCEPT_NAMES, PROFILE_NAMES, SUBJECTS } from '../domain/curriculum';
 import type { ClaimKind, DialogueNode, EvidenceCard, HistoricalLabel, ShowdownState, TitleLockRecord } from '../domain/types';
-import { PLAYER_LOOKS } from '../scenes/art';
+import { PLAYER_LOOKS, TILE } from '../scenes/art';
 import { artURL, BIG_ART } from './illustrations';
 import { clear, h, trapFocus } from './dom';
 import { dailySeed, dealTiles, decodeGhost, encodeGhost, ghostPairs, isPair, speedRank, tileRank, type Tile } from '../domain/tiles';
@@ -70,11 +71,19 @@ import { routingBoard } from './routingBoards';
 import { counterReplayBoard } from './counterReplayBoard';
 import { islandSkiffPanel } from './islandSkiff';
 import { drawerCases } from './drawerCases';
+import { mapPinControls } from './mapPinControls';
+import { PIN_PURPOSES } from '../domain/mapPins';
+import { MICRO_SKILL_DOMAIN } from '../content/microSkillEvidence';
 import { marketBasketPanel } from './marketBasket';
+import { waterLoopPanel } from './waterLoop';
+import { civicIncentivePanel, incentiveStation } from './civicIncentive';
+import { serviceBoundaryPanel } from './boundaryBoard';
+import { waterLoopStation } from '../maps/waterLoop';
 import { SKIFF_LANDINGS } from '../maps/islandSkiff';
 import { handoverGallery } from './handoverGallery';
 import { sharedCarry } from './sharedCarry';
 import { stiltfrogWatch } from './stiltfrogWatch';
+import { linkedNotes } from './linkedNotes';
 import { CARRY, carryLocation } from '../domain/sharedCarry';
 import { opticsTrial } from './opticsTrial';
 import { loyaltyOf } from '../domain/loyalty';
@@ -378,6 +387,7 @@ function lightInk(hex: string): string {
 export class UI implements UIApi {
   private root: HTMLElement;
   private hud!: HTMLElement;
+  private hudDock!: HTMLElement;
   private modal: HTMLElement | null = null;
   private releaseTrap: (() => void) | null = null;
   private promptEl!: HTMLElement;
@@ -465,8 +475,10 @@ export class UI implements UIApi {
     if (!this.promptEl) return;
     if (!text || this.modal) { this.promptEl.hidden = true; return; }
     this.promptEl.hidden = false;
+    const key = ctx.settings.keys.interact;
+    if (this.promptEl.textContent === `${key} ${text}`) return;
     clear(this.promptEl);
-    this.promptEl.append(h('kbd', {}, ctx.settings.keys.interact), ` ${text}`);
+    this.promptEl.append(h('kbd', {}, key), ` ${text}`);
   }
 
   private onKey(e: KeyboardEvent): void {
@@ -515,41 +527,47 @@ export class UI implements UIApi {
 
   /** The folding map: a picture of the whole place, with pins. */
   openMap(): void {
-    const c = ctx.controller;
-    if (!ctx.world) return;
-    const box = this.openModal('map-panel wide', 'Map', this.closeBtn(), h('h2', {}, MAPS[c.state.mapId]?.name ?? 'Map'), h('p', { class: 'fine' }, 'Unfolding the map…'));
+    const c = ctx.controller, world = ctx.world;
+    const map = MAPS[c.state.mapId];
+    if (!world || !map) return;
+    world.snapshotPosition();
+    const box = this.openModal('map-panel wide', 'Map', this.closeBtn(), h('h2', {}, map.name), h('p', { class: 'fine' }, 'Unfolding the map…'));
     this.sfx('sfx.page');
-    ctx.world.mapSnap((r) => {
+    world.mapSnap((r) => {
       if (!box.isConnected) return;
       clear(box);
-      box.append(this.closeBtn(), h('h2', {}, MAPS[c.state.mapId]?.name ?? 'Map'));
+      const dismiss = this.closeBtn();
+      box.append(dismiss, h('h2', {}, map.name));
+      dismiss.focus();
       if (!r) { box.append(h('p', {}, 'This browser could not draw the map.')); return; }
       const paper = h('div', { class: 'chart' });
-      const img = h('img', { src: r.img.src, alt: `Map of ${MAPS[c.state.mapId]?.name ?? 'this place'}` }) as HTMLImageElement;
+      const img = h('img', { src: r.img.src, alt: `Map of ${map.name}` });
       paper.append(img, h('div', { class: 'folds', 'aria-hidden': 'true' }));
       const pins = h('div', { class: 'pins' });
       const ICON: Record<string, string> = { you: '★', new: '!', place: '•', waystone: '◆', portal: '⇲' };
-      img.addEventListener('load', () => {
-        const sx = img.clientWidth / r.img.naturalWidth || img.clientWidth / img.naturalWidth, sy = img.clientHeight / img.naturalHeight;
-        for (const m of r.marks) {
-          const [px, py] = r.at(m.x, m.y);
-          pins.append(h('span', { class: `pin-${m.kind}`, title: m.label, 'aria-label': m.label, role: 'img', style: { left: `${px * sx}px`, top: `${py * sy}px` } }, ICON[m.kind]));
-        }
-      }, { once: true });
+      const percentX = (x: number) => `${x / r.img.naturalWidth * 100}%`;
+      const percentY = (y: number) => `${y / r.img.naturalHeight * 100}%`;
+      const pinAt = (x: number, y: number, kind: string, label: string, symbol: string) => {
+        const [px, py] = r.at(x, y);
+        return h('span', { class: `pin-${kind}`, title: label, 'aria-label': label, role: 'img', style: { left: percentX(px), top: percentY(py) } }, symbol);
+      };
+      for (const mark of r.marks) pins.append(pinAt(mark.x, mark.y, mark.kind, mark.label, ICON[mark.kind]));
+      const plan = mapPinControls(c, map.id, (pin) => {
+        pins.querySelector('.pin-own')?.remove();
+        if (pin) pins.append(pinAt((pin.x + 0.5) * TILE, (pin.y + 0.5) * TILE, 'own', PIN_PURPOSES[pin.purpose], '▲'));
+      });
       paper.append(pins);
       // Fog of war: clouds over chunks not yet explored.
       const fogL = h('div', { class: 'fog', 'aria-hidden': 'true' });
-      img.addEventListener('load', () => {
-        const sx = img.clientWidth / img.naturalWidth, sy = img.clientHeight / img.naturalHeight;
-        for (const f of r.fog) {
-          const [x0, y0] = r.at(f.x, f.y), [x1, y1] = r.at(f.x + f.w, f.y + f.h);
-          fogL.append(h('span', { style: { left: `${x0 * sx - 1}px`, top: `${y0 * sy - 1}px`, width: `${(x1 - x0) * sx + 2}px`, height: `${(y1 - y0) * sy + 2}px` } }));
-        }
-      }, { once: true });
+      for (const f of r.fog) {
+        const [x0, y0] = r.at(f.x, f.y), [x1, y1] = r.at(f.x + f.w, f.y + f.h);
+        fogL.append(h('span', { style: { left: percentX(x0), top: percentY(y0), width: percentX(x1 - x0), height: percentY(y1 - y0) } }));
+      }
       paper.insertBefore(fogL, pins);
-      box.append(paper,
+      box.append(paper, plan,
         h('ul', { class: 'legend' }, h('li', {}, h('span', { class: 'pin-you' }, '★'), ' You'), h('li', {}, h('span', { class: 'pin-new' }, '!'), ' Someone has something new to say'),
-          h('li', {}, h('span', { class: 'pin-place' }, '•'), ' A place you have not used yet'), h('li', {}, h('span', { class: 'pin-waystone' }, '◆'), ' Waystone (save and rest)'), h('li', {}, h('span', { class: 'pin-portal' }, '⇲'), ' Way out')),
+          h('li', {}, h('span', { class: 'pin-place' }, '•'), ' A place you have not used yet'), h('li', {}, h('span', { class: 'pin-waystone' }, '◆'), ' Waystone (save and rest)'), h('li', {}, h('span', { class: 'pin-portal' }, '⇲'), ' Way out'),
+          h('li', {}, h('span', { class: 'pin-own' }, '▲'), ' Your mark')),
         h('p', { class: 'fine' }, `Explored: ${Math.round(r.explored * 100)}%. Walk around to clear the clouds. Press ${ctx.settings.keys.map} or Esc to fold the map.`));
     });
   }
@@ -805,7 +823,9 @@ export class UI implements UIApi {
     this.hud = h('div', { class: 'hud' });
     this.promptEl = h('button', { class: 'prompt', hidden: true, onclick: () => (ctx.world as any)?.tryInteract?.() });
     this.lumenBubble = h('div', { class: 'lumen-bubble', hidden: true, role: 'status', 'aria-live': 'polite' });
-    this.root.append(this.hud, this.promptEl, this.lumenBubble);
+    this.hudDock = h('div', { class: 'hud-dock' }, this.lumenBubble, this.promptEl);
+    this.hud.append(this.hudDock);
+    this.root.append(this.hud);
     this.refreshHud();
   }
 
@@ -813,10 +833,9 @@ export class UI implements UIApi {
     if (!this.hud) return;
     const c = ctx.controller, s = c.state;
     if (!s) return;
-    clear(this.hud);
     const objs = c.engine.visibleObjectives(s);
     const missions = [...new Set(objs.map((o) => o.mission))];
-    const tracker = h('section', { class: 'tracker', 'aria-label': 'Objectives' },
+    const tracker = h('section', { class: 'tracker', 'aria-label': 'Objectives', tabindex: 0 },
       ...missions.filter((m) => objs.some((o) => o.mission === m && !o.complete)).slice(-1).map((m) => h('div', {},
         h('h2', {}, m.title),
         h('p', { class: 'kq' }, m.knowledgeQuestion),
@@ -834,7 +853,11 @@ export class UI implements UIApi {
       h('button', { onclick: () => this.openMenu(), title: 'Menu (Esc)' }, 'Menu ', h('kbd', {}, 'Esc')));
     this.compassEl ??= h('button', { class: 'compass', type: 'button', onclick: () => this.openMap(), 'aria-label': 'Compass. Click for the map.' },
       h('span', { class: 'rose', 'aria-hidden': 'true' }, 'N'), h('span', { class: 'needle idle', 'aria-hidden': 'true' }));
-    this.hud.append(tracker, bar, this.compassEl);
+    bar.append(this.compassEl);
+    this.hud.querySelector('.tracker')?.remove();
+    this.hud.prepend(tracker);
+    this.hudDock.querySelector('.hud-buttons')?.remove();
+    this.hudDock.append(bar);
     // New objectives: Lumen mentions them once if the player allows prompts (GUIDE-001).
     for (const o of objs) {
       if (!this.seenObjectives.has(o.id)) {
@@ -1038,17 +1061,22 @@ export class UI implements UIApi {
     }
     const extra = id === 'sefa.free' ? this.freeQuestion() : null;
     const earlier = conversationHistory(c.pack.dialogue, c.state.flags).filter((line) => line.id !== id).slice(0, 5);
+    const source = n.citationSource ? c.pack.sources.find((entry) => entry.id === n.citationSource) : undefined;
+    const citation = source ? mlaCitation(source) : [];
+    const spoken = `${speaker?.name ? `${speaker.name}: ` : ''}${n.text}${citation.length ? ` ${citation.map((part) => part.text).join('')}` : ''}`;
     this.openModal('dialogue', speaker?.name ? `Conversation with ${speaker.name}` : 'Scene',
       speaker?.name ? h('div', { class: 'speaker' }, portrait, h('div', {}, h('strong', {}, speaker.name), h('small', {}, speaker.role ?? ''))) : '',
       this.glossLine(n.text),
-      'speechSynthesis' in window ? h('button', { class: 'mini speak', type: 'button', 'aria-label': 'Read this line aloud', onclick: () => this.speak(`${speaker?.name ? `${speaker.name}: ` : ''}${n.text}`) }, '🔊 Read aloud') : '',
+      citation.length ? h('p', { class: 'citation-line' }, ...citation.map((part) => part.cite ? h('cite', {}, part.text)
+        : part.href ? h('a', { href: part.href, target: '_blank', rel: 'noopener' }, part.text) : part.text)) : '',
+      'speechSynthesis' in window ? h('button', { class: 'mini speak', type: 'button', 'aria-label': 'Read this line aloud', onclick: () => this.speak(spoken) }, '🔊 Read aloud') : '',
       h('div', { class: 'chips' }, n.claimKind ? claimChip(n.claimKind) : null, n.historicalLabel ? histChip(n.historicalLabel) : null),
       extra ?? '', optionList,
       earlier.length ? h('details', { class: 'dialogue-recall' }, h('summary', {}, 'Earlier dialogue'),
         ...earlier.map((line) => this.dialogueMemory(line))) : '');
     if (n.motif && firstHearing) this.playStoryCue(n.motif);
     if (!ctx.settings.readAloud && ctx.settings.talkSounds && n.speaker !== 'narrator') babble(n.text, voiceFor(n.speaker), ctx.settings.sfxVolume);
-    if (ctx.settings.readAloud) this.speak(`${speaker?.name ? `${speaker.name}: ` : ''}${n.text}. ${opts.map((o, i) => `Option ${i + 1}: ${o.option.text}`).join('. ')}`);
+    if (ctx.settings.readAloud) this.speak(`${spoken}${citation.length ? '' : '.'} ${opts.map((o, i) => `Option ${i + 1}: ${o.option.text}`).join('. ')}`);
   }
 
   private playStoryCue(motif: StoryMotif): void {
@@ -1140,13 +1168,17 @@ export class UI implements UIApi {
     const hasLens = !!c.state.inventory['tool.date-lens'];
     const card = c.pack.cards.find((x) => x.id === ex.grantsCard)!;
     const thread = c.state.inventory['tool.provenance-thread'] ? c.pack.threads.find((t) => t.object === exhibitId) : undefined;
+    const pixel = ex.specimen?.pixelAsset;
+    const image = pixel ? `${import.meta.env.BASE_URL}assets/${pixel}` : artURL(BIG_ART[ex.art] ?? 'big.patent');
     this.openModal('exhibit', ex.name, this.closeBtn(),
       h('div', { class: 'exhibit-grid' },
-        h('figure', {}, h('img', { class: 'big-art', src: artURL(BIG_ART[ex.art] ?? 'big.patent'), alt: ex.altText }), h('figcaption', {}, 'Original game illustration based on the written record.')),
+        h('figure', {}, h('img', { class: 'big-art', src: image, alt: ex.altText }),
+          h('figcaption', {}, pixel ? `Pixel illustration from the ${ex.specimen!.institution} collection image.` : 'Original game illustration based on the written record.')),
         h('div', {},
           h('h2', {}, ex.name),
           h('div', { class: 'chips' }, histChip(ex.historicalLabel)),
           h('p', { class: 'date' }, h('strong', {}, 'Date: '), ex.dateText),
+          ex.specimen ? h('p', { class: 'fine' }, `${ex.specimen.institution} · ${ex.specimen.accession}`) : null,
           h('p', {}, ex.summary),
           ex.sources.length ? h('p', { class: 'sources' }, h('strong', {}, 'Sources: '), ...ex.sources.flatMap((sid) => {
             const s = c.pack.sources.find((x) => x.id === sid)!;
@@ -2472,13 +2504,14 @@ export class UI implements UIApi {
       const p = c.permanent;
       const icon: Record<SkillStage, string> = { unseen: '○', seen: '◔', practised: '◑', confident: '◕', transferred: '●' };
       body.append(h('p', { class: 'fine' }, 'Each skill grows when you use it somewhere new: Seen, Practised, Confident, Transferred. This shows practice in the game. It is not a grade.'),
-        h('div', { class: 'skill-map' }, ...c.pack.skillDomains.map((d) => {
-          const list = c.pack.skills.filter((k) => k.domain === d.id);
-          return h('section', { class: `skill-region ${list.length ? '' : 'later'}` }, h('h4', {}, d.name),
+        h('div', { class: 'skill-map' }, ...c.pack.skillDomains.flatMap((d) => {
+          const list = c.pack.skills.filter((k) => k.domain === d.id && (k.domain !== MICRO_SKILL_DOMAIN || p.skills?.[k.id]?.length));
+          if (d.id === MICRO_SKILL_DOMAIN && !list.length) return [];
+          return [h('section', { class: `skill-region ${list.length ? '' : 'later'}` }, h('h4', {}, d.name),
             list.length ? h('ul', {}, ...list.map((k) => {
               const st = skillStage(p.skills?.[k.id]);
               return h('li', { class: `stage-${st}`, title: nextStep(p.skills?.[k.id]) }, h('span', { class: 'stage-icon', 'aria-hidden': 'true' }, icon[st]), ` ${k.name} `, h('small', {}, STAGE_LABEL[st]));
-            })) : h('p', { class: 'fine' }, 'In later chapters.'));
+            })) : h('p', { class: 'fine' }, 'In later chapters.'))];
         })));
     } else if (tab === 'lorelings') {
       // Loreling Atlas (spec 36.1): friends, and the others that live in later worlds.
@@ -2880,8 +2913,24 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    if (id === 'linked-study-folio' || id === 'linked-voices-bench') {
+      this.openModal('bench-panel wide', id === 'linked-study-folio' ? 'Field folio' : 'Filing bench', this.closeBtn(),
+        linkedNotes(id === 'linked-study-folio' ? 'study' : 'voices', ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+      return;
+    }
     const carry = carryLocation(id);
-    if (id === 'drawer-cases') {
+    const loop = waterLoopStation(id);
+    const incentive = incentiveStation(id);
+    if (incentive) {
+      this.openModal('bench-panel wide', 'Ready by the Bell', this.closeBtn(),
+        civicIncentivePanel(incentive.station, ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (loop) {
+      this.openModal('bench-panel wide', 'The Water That Comes Back', this.closeBtn(),
+        waterLoopPanel(loop.site, loop.station, ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'service-boundary') {
+      this.openModal('bench-panel wide', 'The Line on the Night Map', this.closeBtn(), h('h2', {}, 'Night service map'),
+        serviceBoundaryPanel(ctx.controller));
+    } else if (id === 'drawer-cases') {
       const board = this.openModal('bench-panel wide', 'Three Cases at the Bell');
       drawerCases(board, ctx.controller, this.closeBtn());
     } else if (id === 'market-basket-bench' || id === 'market-basket-voucher' || id === 'market-basket-credit') {

@@ -1,0 +1,38 @@
+[
+  {
+    "number": 571,
+    "name": "Answer the premise that carries a proposal",
+    "uses": [
+      {
+        "objective": "bench.debate.exchange",
+        "action": "Move to the other lectern, use its signed work or audience evidence, and let a listener repeat what the first proposal settled and what they would still have to do.",
+        "styles": ["challenger", "performer", "companion", "strategist"],
+        "modes": ["linguistic", "social", "reading", "physical"],
+        "game": 180,
+        "story": 78
+      }
+    ]
+  },
+  {
+    "number": 795,
+    "name": "Keep short and full references tied to the same record",
+    "uses": [
+      {
+        "objective": "citation.rail.nexus.found",
+        "action": "Carry the catalogue identifier and checked MLA reference to either reading position. Follow the chosen arrangement back to the catalogue record for the photograph.",
+        "styles": ["collector", "maker", "explorer"],
+        "modes": ["reading", "writing", "linguistic", "spatial"],
+        "game": 179,
+        "story": 77
+      },
+      {
+        "objective": "citation.rail.copies.found",
+        "action": "Check the painting’s catalogue data, separate the visitor's inference, and watch a later reader follow the short reference to a full source entry.",
+        "styles": ["maker", "helper", "explorer"],
+        "modes": ["reading", "writing", "social", "analytical"],
+        "game": 179,
+        "story": 74
+      }
+    ]
+  }
+]

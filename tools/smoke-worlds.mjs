@@ -244,6 +244,70 @@ async function smokeResize(browser) {
   console.log('PASS one world camera resize callback, none on the title screen, and Continue after resizing');
 }
 
+async function smokeInteractionPrompt(browser) {
+  await browser.evaluate(() => {
+    const { controller, world } = window.kg;
+    controller.state.objectivesDone.push('coast.revise');
+    controller.dispatch({ type: 'SetFlag', flag: 'forest.arrived', value: true });
+    world.changeMap('forest.trail', 22, 6);
+  });
+  await until(() => browser.evaluate(() => window.kg.world.map.id === 'forest.trail' && !window.kg.world.transitioning), 'reed hollow approach');
+  await browser.evaluate(() => { window.kg.world.player.facing = 'up'; });
+  const label = 'Use the raised cloth flap at the reed hollow';
+  await until(() => browser.evaluate((text) => document.querySelector('.prompt:not([hidden])')?.textContent.trim().endsWith(text), label), 'raised reed hollow prompt');
+
+  for (const [width, height] of [[390, 844], [320, 568], [844, 390], [320, 568]]) {
+    await browser.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
+    await until(() => browser.evaluate((w) => document.querySelector('#game canvas')?.width === w, width), `prompt viewport ${width}px`);
+    const problems = await browser.evaluate((text) => {
+      const { settings, ui } = window.kg;
+      ui.lumenSay('Look where the lower rail meets the reeds.');
+      const prompt = document.querySelector('.prompt:not([hidden])');
+      if (!prompt?.textContent.trim().endsWith(text)) return ['Full interaction prompt missing'];
+      const tracker = document.querySelector('.tracker').getBoundingClientRect();
+      const hint = document.querySelector('.lumen-bubble').getBoundingClientRect();
+      const box = prompt.getBoundingClientRect();
+      const controls = [...document.querySelectorAll('.hud-buttons button, .compass, .lumen-bubble button')];
+      const bad = [];
+      if (settings.textScale !== 1.75 || !settings.calmMode || getComputedStyle(prompt).fontSize !== '28px') bad.push('Text scale or Calm changed');
+      if (prompt.scrollHeight > prompt.clientHeight || prompt.scrollWidth > prompt.clientWidth) bad.push('Prompt needs to scroll');
+      if (box.left < 0 || box.right > innerWidth || box.top < 0 || box.bottom > innerHeight) bad.push('Prompt outside viewport');
+      if (tracker.bottom >= hint.top || hint.bottom >= box.top) bad.push('Tracker, hint and prompt overlap');
+      if (hint.top - tracker.bottom < 44 || document.elementFromPoint(innerWidth / 2, (tracker.bottom + hint.top) / 2)?.tagName !== 'CANVAS') bad.push('No clear touch path to the world');
+      for (const button of [prompt, ...controls]) {
+        const r = button.getBoundingClientRect();
+        if (r.left < 0 || r.right > innerWidth || r.top < 0 || r.bottom > innerHeight || r.width < 44 || r.height < 44) bad.push(`Control outside its touch area: ${button.textContent.trim()}`);
+        if (document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2)?.closest('button') !== button) bad.push(`Covered control: ${button.textContent.trim()}`);
+        if (button !== prompt && r.left < box.right && r.right > box.left && r.top < box.bottom && r.bottom > box.top) bad.push(`Prompt overlaps control: ${button.textContent.trim()}`);
+      }
+      return bad;
+    }, label);
+    if (problems.length) throw new Error(`${width} × ${height}: ${problems.join(', ')}`);
+  }
+
+  const tap = async (selector) => {
+    const point = await browser.evaluate((query) => {
+      const r = document.querySelector(query).getBoundingClientRect();
+      return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+    }, selector);
+    await browser.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [point] });
+    await browser.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  };
+  await browser.send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 1 });
+  try {
+    await tap('.hud-buttons button[title="Menu (Esc)"]');
+    await until(() => browser.evaluate(() => !!document.querySelector('[role="dialog"][aria-label="Menu"]')), 'tap opens the menu beside the prompt');
+    await press(browser, 'Escape');
+    await until(() => browser.evaluate(() => !!document.querySelector('.prompt:not([hidden])')), 'prompt after leaving menu');
+    await tap('.prompt');
+    await until(() => browser.evaluate(() => !!document.querySelector('[role="dialog"][aria-label="Watch the reed hollow"]')), 'tap uses the full reed hollow prompt');
+    await press(browser, 'Escape');
+  } finally {
+    await browser.send('Emulation.setTouchEmulationEnabled', { enabled: false });
+  }
+  console.log('PASS full prompt, hint and touch controls at 320px, 390px and short landscape with 175% text and Calm');
+}
+
 async function snapshot(browser) {
   return browser.evaluate(() => {
     const { game } = window.kg.world;
@@ -356,6 +420,7 @@ try {
   if (mode !== 'maps') {
     try {
       await smokeAccess(browser, maps.find(({ id }) => id === 'nexus.archive'));
+      await smokeInteractionPrompt(browser);
       await smokeResize(browser);
     } catch (error) {
       console.log('FAIL', 'accessibility', error.message);

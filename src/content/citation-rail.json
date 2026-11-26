@@ -1,0 +1,742 @@
+{
+  "sources": [
+    {
+      "id": "HIS-COPIES-TURNER-NG524",
+      "title": "The National Gallery, The Fighting Temeraire, NG524",
+      "url": "https://www.nationalgallery.org.uk/paintings/joseph-mallord-william-turner-the-fighting-temeraire",
+      "locator": "NG524; Overview and Key facts",
+      "supports": "The National Gallery attributes the oil painting to Joseph Mallord William Turner and dates its creation to 1839. Its full title includes 1838. The gallery says the painting places a sunset behind the tow and that the ship probably arrived in the afternoon.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "artwork",
+        "title": "The Fighting Temeraire",
+        "container": "The National Gallery",
+        "author": "Turner, Joseph Mallord William",
+        "workDate": "1839"
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "item.source-rail-comb",
+      "name": "The two-slot source comb",
+      "historicalLabel": "fictional-world",
+      "art": "copies.strip",
+      "description": "Dace sent this little comb with a space for a claim and a space for the record that lets another reader check it. Lark can fit it to a proof in the City of Copies."
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-R25",
+      "world": "WORLD-01",
+      "title": "The Line a Reader Can Follow",
+      "available": {
+        "flag": "citation.rail.nexus.started",
+        "eq": true
+      },
+      "knowledgeQuestion": "How can a reader find what you used when the record leaves facts blank?",
+      "stake": "Dace can give the first reader a claim she can check before she has to leave the hall.",
+      "objectives": [
+        {
+          "id": "citation.rail.nexus.found",
+          "title": "Build a source strip and try the route a reader will use.",
+          "essential": false,
+          "done": {
+            "flag": "citation.rail.nexus.found",
+            "eq": true
+          },
+          "onComplete": [
+            {
+              "journal": "j.citation.rail.nexus"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "justification",
+              "responsibility"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "ethics"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "multistructural"
+            },
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS"
+            ],
+            "subjects": [
+              "lang-langlit",
+              "history"
+            ]
+          },
+          "skills": [
+            "SK-CIT-01",
+            "SK-CIT-04"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KG-CH7-R07",
+      "world": "WORLD-08",
+      "title": "A Sunset on the Proof",
+      "available": {
+        "flag": "citation.rail.copies.started",
+        "eq": true
+      },
+      "knowledgeQuestion": "When can a painted detail support a claim about an event?",
+      "stake": "A reading group needs to find the same painting and the limit on what it can show. Their cart has room for one more bundle.",
+      "objectives": [
+        {
+          "id": "citation.rail.copies.found",
+          "title": "Set Lark’s correction where a reader can check the painting and the catalogue.",
+          "essential": false,
+          "done": {
+            "flag": "citation.rail.copies.found",
+            "eq": true
+          },
+          "onComplete": [
+            {
+              "journal": "j.citation.rail.copies"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "truth",
+              "perspective",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "perspectives",
+              "methods-and-tools",
+              "ethics"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "ART",
+              "HIS"
+            ],
+            "subjects": [
+              "lang-langlit",
+              "visual-arts",
+              "history"
+            ]
+          },
+          "skills": [
+            "SK-CIT-01",
+            "SK-CIT-04",
+            "SK-CIT-15"
+          ]
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "citation.rail.nexus.request",
+      "speaker": "curator-dace",
+      "historicalLabel": "fictional-world",
+      "text": "My reader needs to find the museum record we used for this caption. I set the record in the low drawer. Keep the event date in the note. Give the reader a line that leads all the way back.",
+      "options": [
+        {
+          "text": "Put the blank caption on the bench.",
+          "if": {
+            "not": {
+              "flagSet": "citation.rail.nexus.started"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.nexus.started",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the bench for now."
+        }
+      ]
+    },
+    {
+      "id": "citation.rail.nexus.drawer",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The record A606881 is for a photograph. It dates the original exposure to 22 December 1895 and the photograph to 1895. The photograph’s maker is unknown. The page has no personal byline or publication date. Its header names the collection. The address leads to this record.",
+      "options": [
+        {
+          "text": "Lift the exact catalogue heading onto the title slip.",
+          "if": {
+            "not": {
+              "flagSet": "citation.rail.nexus.title"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.nexus.title",
+              "value": true
+            }
+          ],
+          "next": "citation.rail.nexus.drawer"
+        },
+        {
+          "text": "Copy the collection name and the record address onto the source slip.",
+          "if": {
+            "not": {
+              "flagSet": "citation.rail.nexus.location"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.nexus.location",
+              "value": true
+            }
+          ],
+          "next": "citation.rail.nexus.drawer"
+        },
+        {
+          "text": "Set the record down."
+        }
+      ]
+    },
+    {
+      "id": "citation.rail.nexus.tray",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The tray has a bed for quoted titles and slanted type for the site that holds them. Röntgen made the exposure. His name belongs in the caption about it. The page title leads the source line. The date on the access stamp records when we checked the page.",
+      "options": [
+        {
+          "text": "Seat the two slips and pull a source-strip proof.",
+          "if": {
+            "all": [
+              {
+                "flag": "citation.rail.nexus.title",
+                "eq": true
+              },
+              {
+                "flag": "citation.rail.nexus.location",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "citation.rail.nexus.proof"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.nexus.proof",
+              "value": true
+            }
+          ],
+          "next": "citation.rail.nexus.proof"
+        },
+        {
+          "text": "Back from the tray."
+        }
+      ]
+    },
+    {
+      "id": "citation.rail.nexus.proof",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The proof is dry. The full strip can go below the caption, where a reader can check it at once. Or clip the short tag to the caption and file the long strip by the reading shelf. A visitor is ready to try either route.",
+      "citationSource": "HIS-MET-RONTGEN-A606881",
+      "options": [
+        {
+          "text": "Mount the full strip under the caption.",
+          "if": {
+            "not": {
+              "flagSet": "citation.rail.nexus.layout"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.nexus.layout",
+              "value": "under"
+            }
+          ]
+        },
+        {
+          "text": "Clip the short tag to the caption and file the long strip at the reading shelf.",
+          "if": {
+            "not": {
+              "flagSet": "citation.rail.nexus.layout"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.nexus.layout",
+              "value": "shelf"
+            }
+          ]
+        },
+        {
+          "text": "Keep the proof at the tray for now."
+        }
+      ]
+    },
+    {
+      "id": "citation.rail.nexus.under",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The reader starts at the words about the 1895 exposure. She traces down to the quoted title, then runs her finger along the collection and its address. “Let me see whether the object number matches.”",
+      "citationSource": "HIS-MET-RONTGEN-A606881",
+      "options": [
+        {
+          "text": "Open the referenced record at A606881 with the reader.",
+          "if": {
+            "all": [
+              {
+                "flag": "citation.rail.nexus.proof",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "citation.rail.nexus.found"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.nexus.found",
+              "value": true
+            },
+            {
+              "giveItem": "item.source-rail-comb"
+            }
+          ],
+          "next": "citation.rail.nexus.under-done"
+        },
+        {
+          "text": "Leave the mounted strip."
+        }
+      ]
+    },
+    {
+      "id": "citation.rail.nexus.under-done",
+      "speaker": "curator-dace",
+      "historicalLabel": "fictional-world",
+      "text": "A606881. There it is. She could stay at the case and look again. Could you send the little source comb to Lark? His press works faster than his pencil.",
+      "citationSource": "HIS-MET-RONTGEN-A606881"
+    },
+    {
+      "id": "citation.rail.nexus.tag",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The paper tag reads “Photograph,” A606881. You can reach the full line at the low reading shelf. The reader copies the number so she can check that the shelf has the same one.",
+      "options": [
+        {
+          "text": "Carry the matching tag to the reading shelf.",
+          "if": {
+            "not": {
+              "flagSet": "citation.rail.nexus.tag"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.nexus.tag",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the tag on its clip."
+        }
+      ]
+    },
+    {
+      "id": "citation.rail.nexus.shelf",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The full strip sits in the slot marked A606881. One reader has room to spread it out here. She holds her tag beside the shelf label and looks to see whether both marks agree.",
+      "citationSource": "HIS-MET-RONTGEN-A606881",
+      "options": [
+        {
+          "text": "Match the tag and open A606881 with the reader.",
+          "if": {
+            "all": [
+              {
+                "flag": "citation.rail.nexus.tag",
+                "eq": true
+              },
+              {
+                "all": [
+                  {
+                    "flag": "citation.rail.nexus.proof",
+                    "eq": true
+                  },
+                  {
+                    "not": {
+                      "flagSet": "citation.rail.nexus.found"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.nexus.found",
+              "value": true
+            },
+            {
+              "giveItem": "item.source-rail-comb"
+            }
+          ],
+          "next": "citation.rail.nexus.shelf-done"
+        },
+        {
+          "text": "Leave the slip flat on the shelf."
+        }
+      ]
+    },
+    {
+      "id": "citation.rail.nexus.shelf-done",
+      "speaker": "curator-dace",
+      "historicalLabel": "fictional-world",
+      "text": "She reached the same record and took a little stack of other slips to check at the same table. Lark could use the comb from this shelf. Take it to him if you pass the press.",
+      "citationSource": "HIS-MET-RONTGEN-A606881"
+    },
+    {
+      "id": "citation.rail.copies.request",
+      "speaker": "copies-presskeeper",
+      "historicalLabel": "fictional-world",
+      "text": "Good. That two-slot comb fits my rack. The sunset on this draft has turned into an arrival time. A reader wants a reliable trail back to the image. One plate holds the gallery details. The other compares the picture with its catalogue account.",
+      "options": [
+        {
+          "text": "Fit the source comb to Lark’s rack.",
+          "if": {
+            "not": {
+              "flagSet": "citation.rail.copies.started"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.copies.started",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Let the press run without this proof for now."
+        }
+      ]
+    },
+    {
+      "id": "citation.rail.copies.object",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The gallery’s heading calls the painting The Fighting Temeraire. Its key facts name Joseph Mallord William Turner, give 1839 as the date made, and list NG524. The longer title ends with 1838. The two dates belong to different things.",
+      "options": [
+        {
+          "text": "Set Turner’s name, the painting title, and 1839 in the source slot.",
+          "if": {
+            "not": {
+              "flagSet": "citation.rail.copies.identity"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.copies.identity",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the gallery plate."
+        }
+      ]
+    },
+    {
+      "id": "citation.rail.copies.compare",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Lark’s draft reads “The ship arrived at sunset.” Slide his line down. The gallery image shows a sunset. The catalogue account says the ship probably reached Rotherhithe in the afternoon, and calls the painted sun a choice Turner made. The image and the account can support different lines.",
+      "options": [
+        {
+          "text": "Slide the arrival claim away and clip in the two separate lines.",
+          "if": {
+            "not": {
+              "flagSet": "citation.rail.copies.limit"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.copies.limit",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the comparison plate on its hook."
+        }
+      ]
+    },
+    {
+      "id": "citation.rail.copies.tray",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "There is space for one bundle. The reading group can take a full correction from this room. Or they can take a narrow card with a cue to the Record Room. There, readers have space to lay the picture, source entry and catalogue note beside each other.",
+      "options": [
+        {
+          "text": "Pull a full correction with the source entry below it.",
+          "if": {
+            "all": [
+              {
+                "flag": "citation.rail.copies.identity",
+                "eq": true
+              },
+              {
+                "flag": "citation.rail.copies.limit",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "citation.rail.copies.layout"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.copies.layout",
+              "value": "sheet"
+            }
+          ],
+          "next": "citation.rail.copies.pull.sheet"
+        },
+        {
+          "text": "Set a narrow card with the keyed entry and comparison in the Record Room.",
+          "if": {
+            "all": [
+              {
+                "flag": "citation.rail.copies.identity",
+                "eq": true
+              },
+              {
+                "flag": "citation.rail.copies.limit",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "citation.rail.copies.layout"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.copies.layout",
+              "value": "index"
+            }
+          ],
+          "next": "citation.rail.copies.pull.index"
+        },
+        {
+          "text": "Keep the type in the rack."
+        }
+      ]
+    },
+    {
+      "id": "citation.rail.copies.pull.sheet",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "“Full Sheet” is ready. Its claim line says Turner paints a sunset and the gallery places the likely arrival in the afternoon. Set it where the runner can check it before rolling it up.",
+      "citationSource": "HIS-COPIES-TURNER-NG524"
+    },
+    {
+      "id": "citation.rail.copies.pull.index",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "“NG524 Card” is ready. It says Turner paints a sunset. The card sends readers to the Record Room for the gallery account and the full source entry. Its short tag reads Turner, NG524."
+    },
+    {
+      "id": "citation.rail.copies.sheet",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The runner taps the line about Turner’s sunset, then the gallery’s likely time. The full source entry is right below them. “If this opens the painting you used, I can take the full sheet as far as the lower bridge.”",
+      "citationSource": "HIS-COPIES-TURNER-NG524",
+      "options": [
+        {
+          "text": "Trace the source line to NG524 with the runner.",
+          "if": {
+            "not": {
+              "flagSet": "citation.rail.copies.found"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.copies.found",
+              "value": true
+            }
+          ],
+          "next": "citation.rail.copies.sheet-done"
+        },
+        {
+          "text": "Leave the full sheet on its rail."
+        }
+      ]
+    },
+    {
+      "id": "citation.rail.copies.sheet-done",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The runner finds NG524 and rolls the sheet with its record still attached. Readers at the lower bridge can see why sunset belongs to the image. She takes a spare full copy for a reader who cannot come upstairs.",
+      "citationSource": "HIS-COPIES-TURNER-NG524"
+    },
+    {
+      "id": "citation.rail.copies.tag",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "On the rail, the runner can read the painted detail at a glance. “Turner, NG524” sends her to the Record Room for the longer account. She notes the number on the back of the card.",
+      "options": [
+        {
+          "text": "Carry “Turner, NG524” to the Record Room.",
+          "if": {
+            "not": {
+              "flagSet": "citation.rail.copies.tag"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.copies.tag",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the card in its rail."
+        }
+      ]
+    },
+    {
+      "id": "citation.rail.copies.index",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The Record Room has the artwork entry and a separate note from the gallery account. Turner paints a sunset. The gallery says the arrival was probably in the afternoon. The reading group can inspect the two lines in parallel at this table.",
+      "citationSource": "HIS-COPIES-TURNER-NG524",
+      "options": [
+        {
+          "text": "Match Turner and NG524, then open the work for the reading group.",
+          "if": {
+            "all": [
+              {
+                "flag": "citation.rail.copies.tag",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "citation.rail.copies.found"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "citation.rail.copies.found",
+              "value": true
+            }
+          ],
+          "next": "citation.rail.copies.index-done"
+        },
+        {
+          "text": "Leave the two lines face up."
+        }
+      ]
+    },
+    {
+      "id": "citation.rail.copies.index-done",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The group reaches NG524 and checks the two lines at the same desk. One reader keeps the card as a return tab. The long sheet stays flat, ready for the next group to compare the painted sky with the account.",
+      "citationSource": "HIS-COPIES-TURNER-NG524"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.citation.rail.nexus.found.1",
+      "objective": "citation.rail.nexus.found",
+      "depth": 1,
+      "text": "Dace left a blank caption at the low bench."
+    },
+    {
+      "id": "h.citation.rail.nexus.found.2",
+      "objective": "citation.rail.nexus.found",
+      "depth": 2,
+      "text": "Take the heading and the exact location from the low drawer. The exposure belongs in the caption. The page has no publication date."
+    },
+    {
+      "id": "h.citation.rail.nexus.found.3",
+      "objective": "citation.rail.nexus.found",
+      "depth": 3,
+      "text": "Use both slips in the type tray. Pull a proof and choose where a reader should find it."
+    },
+    {
+      "id": "h.citation.rail.nexus.found.4",
+      "objective": "citation.rail.nexus.found",
+      "depth": 4,
+      "text": "Try the full strip at the case, or copy its number from the short tag and use the full strip at the reading shelf."
+    },
+    {
+      "id": "h.citation.rail.copies.found.1",
+      "objective": "citation.rail.copies.found",
+      "depth": 1,
+      "text": "The two-slot source comb fits a rack at Lark’s press."
+    },
+    {
+      "id": "h.citation.rail.copies.found.2",
+      "objective": "citation.rail.copies.found",
+      "depth": 2,
+      "text": "Check the gallery plate for the artist, year and record number. Check the comparison plate for what the image and the account each support."
+    },
+    {
+      "id": "h.citation.rail.copies.found.3",
+      "objective": "citation.rail.copies.found",
+      "depth": 3,
+      "text": "Use Lark’s type tray after both checks. Pull a full correction or print the keyed card and keep the long entry in the Record Room."
+    },
+    {
+      "id": "h.citation.rail.copies.found.4",
+      "objective": "citation.rail.copies.found",
+      "depth": 4,
+      "text": "Trace the full correction on the rail with the runner, or take the card’s number to the Record Room and match it to the entry."
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.citation.rail.nexus",
+      "title": "The Line a Reader Can Follow",
+      "text": "A visitor found A606881. The page’s quoted title, collection name and address gave her a route back. The day of the exposure stayed with the thing it dated."
+    },
+    {
+      "id": "j.citation.rail.copies",
+      "title": "A Sunset on the Proof",
+      "text": "A reader found Turner’s NG524. The caption kept the painted sunset apart from the gallery’s account of a likely afternoon arrival."
+    }
+  ]
+}

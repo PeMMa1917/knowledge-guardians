@@ -2,6 +2,8 @@
 import type { Condition } from '../domain/types';
 import { LISTENING_LINTEL, MAT_READY_AT_PUBLIC_DOOR, WALK_LINTEL } from './lintelFold';
 import type { Interactable, MapDef } from './types';
+import { LINKED_LISTENING } from './linkedNotes';
+import { QUAY_VESPER_TRUST } from './vesperTrust';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'voices.waypost'): Interactable {
   return { id, kind: 'door', x, y, w: 1, h: 1, label, to, art };
@@ -43,6 +45,7 @@ export const VOICES_LISTENING: MapDef = {
   ],
   interactables: [
     door('voices-walk-path', 3, 11, 'the passage to the Glass Walk stairs', { map: 'voices.walk', x: 11, y: 13 }),
+    ...LINKED_LISTENING,
     ...LISTENING_LINTEL,
     door('voices-quay-path', 25, 11, 'the passage to the lamp quay', { map: 'voices.quay', x: 5, y: 12 }),
     door('voices-nexus-return', 13, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 31, y: 12 }, 'preserved.door'),
@@ -196,6 +199,7 @@ export const VOICES_QUAY: MapDef = {
     { stamp: 'voices-bench', x: 13, y: 9 }, { stamp: 'crates', x: 25, y: 6 },
   ],
   interactables: [
+    ...QUAY_VESPER_TRUST,
     door('voices-quay-return', 3, 12, 'the quay passage back to the Listening Room', { map: 'voices.listening', x: 24, y: 11 }),
     door('voices-quay-to-walk', 25, 12, 'the rail passage to the Glass Walk stairs', { map: 'voices.walk', x: 24, y: 11 }),
     sign('voices-quay-first-lamp', 6, 9, 'the first lamp on the quay', 'voices.lamp',

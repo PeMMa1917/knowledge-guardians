@@ -117,6 +117,14 @@ export interface SourceRecord {
   locator: string;            // which part of the source
   supports: string;           // the narrow claim it supports
   accessed: string;           // ISO date the authors consulted it
+  mla?: {
+    kind: 'page' | 'artwork';
+    title: string;
+    container: string;
+    author?: string;          // filed surname first, as it appears in the entry
+    workDate?: string;        // original creation date of an artwork
+    showAccessDate?: boolean;
+  };
 }
 
 export interface EvidenceCard {
@@ -143,6 +151,15 @@ export interface ExhibitRecord {
   sources: string[];
   grantsCard: string;
   altText: string;            // accessible description of the picture
+  /** Identity of this particular historical specimen and the play it supports. */
+  specimen?: {
+    key: string;             // stable institutional namespace + accession
+    institution: string;
+    accession: string;       // displayed as written by the institution
+    source: string;          // exact source in sources, rather than a comparison record
+    objective: string;       // the playable action that needs this object
+    pixelAsset?: string;    // optional local licensed image within assets/specimens/
+  };
   /** Optional label kit that repairs this exhibit's label (Hall of Firsts). */
   labelKit?: string;
 }
@@ -162,6 +179,7 @@ export interface DialogueNode {
   id: string;
   speaker: string;            // character id, "narrator", "lumen" or "mentor:<name>"
   text: string;
+  citationSource?: string;    // a SourceRecord with an MLA entry to print below this line
   claimKind?: ClaimKind;
   historicalLabel?: HistoricalLabel;
   motif?: StoryMotif;
@@ -202,6 +220,8 @@ export interface Objective {
   weave?: Weave;
   /** Skill ids practised in this step (Skill Atlas, spec 76). */
   skills?: string[];
+  /** Specific mechanics in which the observed skill use took place. */
+  skillActions?: Record<string, string>;
   /** The knowledge question under this step, and how the player meets it (KQ-002, KQ-003). */
   kq?: { id: string; action: string };
   /** Other questions encountered through this action, filed in the journal. */

@@ -5,6 +5,8 @@
  *
  * A use is stored as "world|action|context|AOK,AOK" (a distinct signature, RECUR-001).
  */
+import type { ContentPack, Objective, PermanentRecord } from './types';
+
 export type SkillStage = 'unseen' | 'seen' | 'practised' | 'confident' | 'transferred';
 
 export const STAGE_LABEL: Record<SkillStage, string> = {
@@ -13,6 +15,29 @@ export const STAGE_LABEL: Record<SkillStage, string> = {
 
 export function useSignature(world: string, action: string, context: string, aoks: string[] = []): string {
   return `${world}|${action}|${context}|${[...aoks].sort().join(',')}`;
+}
+
+export function objectiveSkillUse(world: string, objective: Objective, id: string): string {
+  return useSignature(world, objective.skillActions?.[id] ?? objective.kq?.action ?? 'step', objective.id, objective.weave?.aoks);
+}
+
+export function recordSkillUse(record: PermanentRecord, id: string, signature: string): PermanentRecord {
+  const known = record.skills?.[id] ?? [];
+  if (known.includes(signature)) return record;
+  return { ...record, skills: { ...record.skills, [id]: [...known, signature] } };
+}
+
+/** Restore added evidence links only where the save already records the underlying action. */
+export function restoreMicroSkillUses(record: PermanentRecord, pack: ContentPack, completed: string[]): PermanentRecord {
+  const done = new Set(completed);
+  let next = record;
+  for (const { world, objectives } of pack.missions) {
+    for (const objective of objectives) {
+      if (!objective.skillActions || !done.has(objective.id)) continue;
+      for (const id of Object.keys(objective.skillActions)) next = recordSkillUse(next, id, objectiveSkillUse(world, objective, id));
+    }
+  }
+  return next;
 }
 
 export function skillStage(uses: string[] | undefined): SkillStage {

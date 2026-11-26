@@ -1,0 +1,80 @@
+[
+  {
+    "number": 79,
+    "name": "Make an expert’s cue usable to another crew",
+    "uses": [
+      {
+        "objective": "nile.way.compare",
+        "action": "Follow the same map symbols from the aisle and shelf ends, where the landmarks change sides.",
+        "styles": [
+          "explorer",
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "physical",
+          "analytical"
+        ],
+        "game": 13,
+        "story": 52
+      },
+      {
+        "objective": "stage.access",
+        "action": "Make an understudy’s cue copy that keeps performance marks legible from the rehearsal bench.",
+        "styles": [
+          "maker",
+          "performer",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "linguistic",
+          "social"
+        ],
+        "game": 234,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 80,
+    "name": "Notice what a filing rule leaves out",
+    "uses": [
+      {
+        "objective": "nexus.ribbon.checked",
+        "action": "Put a patent grant and an object date on one dated ribbon or separate rails, then hear what the first reader assumes.",
+        "styles": [
+          "collector",
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "reading",
+          "analytical"
+        ],
+        "game": 223,
+        "story": 72
+      },
+      {
+        "objective": "nile.name.file",
+        "action": "File the workmen’s papyrus and mine map with their separate purposes visible.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 175,
+        "story": 52
+      }
+    ]
+  }
+]

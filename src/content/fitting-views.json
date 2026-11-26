@@ -6,7 +6,13 @@
    "url": "https://collection.sciencemuseumgroup.org.uk/objects/co134691/photograph-of-a-radiograph-of-hand-taken-by-wilhelm-conrad-rontgen-germany-1895",
    "locator": "A606881, description and Details",
    "supports": "The catalogue lists a photograph on paper under glass, dated 1895. It describes Röntgen’s source exposure on 22 December 1895. The image shows his wife’s left hand with a ring. The original radiograph is in the Deutsches Museum. The catalogue lists the copy’s maker as unknown.",
-   "accessed": "2026-11-26"
+   "accessed": "2026-11-26",
+   "mla": {
+    "kind": "page",
+    "title": "Photograph of a Radiograph of Hand Taken by Wilhelm Conrad Röntgen, Germany, 1895",
+    "container": "Science Museum Group Collection",
+    "showAccessDate": true
+   }
   }
  ],
  "exhibits": [

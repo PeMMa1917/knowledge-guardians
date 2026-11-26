@@ -3,6 +3,8 @@ import type { Condition } from '../domain/types';
 import { reliefReading, reliefRouting } from '../domain/routeTiles';
 import { WATER_APPEAL_LOWER, WATER_APPEAL_WITNESSES, WATER_APPEAL_YARD } from './civicAppeal';
 import { WATER_FITTING_BENCHES } from './fittingViews';
+import { WATER_LATCH_DOOR } from './latchCheck';
+import { COUNCIL_BOUNDARY, LOWER_BOUNDARY, UPPER_BOUNDARY } from './serviceBoundary';
 import type { Interactable, MapDef } from './types';
 
 function crossing(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'water.waypost'): Interactable {
@@ -61,6 +63,8 @@ export const WATER_GATEHOUSE: MapDef = {
   ],
   interactables: [
     ...WATER_FITTING_BENCHES,
+    WATER_LATCH_DOOR,
+    ...UPPER_BOUNDARY,
     crossing('water-council-path', 24, 7, 'the path to the council yard', { map: 'water.council', x: 12, y: 13 }),
     crossing('water-lower-path', 25, 14, 'the lower path past the fields', { map: 'water.lower-channel', x: 5, y: 12 }),
     crossing('water-nexus-return', 12, 17, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 24, y: 11 }, 'preserved.door'),
@@ -132,6 +136,7 @@ export const WATER_COUNCIL: MapDef = {
     { stamp: 'tree', x: 1, y: 2 }, { stamp: 'tree', x: 22, y: 3 },
   ],
   interactables: [
+    ...COUNCIL_BOUNDARY,
     crossing('water-council-return', 12, 15, 'the path back to the Old Weir', { map: 'water.gatehouse', x: 23, y: 8 }),
     crossing('water-council-to-lower', 23, 10, 'the council steps to the lower path', { map: 'water.lower-channel', x: 23, y: 6 }),
     { ...crossing('water-observer-council-track', 7, 9, 'the marked observer track to the lower bank', { map: 'water.lower-channel', x: 25, y: 14 }),
@@ -197,6 +202,7 @@ export const WATER_LOWER_CHANNEL: MapDef = {
     { stamp: 'crates', x: 3, y: 8 }, { stamp: 'barrel', x: 19, y: 14 },
   ],
   interactables: [
+    ...LOWER_BOUNDARY,
     { id: 'cross-sluice', kind: 'fieldgame', game: 'cross-sluice', x: 20, y: 6, w: 1, h: 1, label: 'the upper sluice gate (a crossing)', art: 'flood-post' },
     { id: 'loyalty-rook', kind: 'fieldgame', game: 'loyalty-rook', x: 10, y: 10, w: 1, h: 1, label: "an old well with a flaking gold seal (The Clean Well)", art: 'old-sign', visibleIf: { flag: 'rook.joined', eq: true } },
     crossing('water-lower-return', 3, 12, 'the upper gate path', { map: 'water.gatehouse', x: 24, y: 14 }),

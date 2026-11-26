@@ -6,7 +6,13 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
-Fifteen chapters and the post-Council return are playable. A clean install, 900 tests, production build and 42-file asset check passed. Chromium rendered and walked all 54 maps in this checkpoint and exercised the routes below. Earlier chapter progress and positioning were staged in several individual branch checks. The thirty-minute audit uses author estimates. [Browser checks](docs/BROWSER_CHECKS.md) · [Playtest priorities](docs/PLAYTEST_PRIORITIES.md)
+Fifteen chapters and the post-Council return are playable. A clean install, 952 tests, production build and 42-file asset check passed. A continuous Chromium run reached the Council ending on one fresh save using normal chapter gates. Several individual branch checks used staged earlier progress or within-room positioning. The thirty-minute audit uses author estimates. [Browser checks](docs/BROWSER_CHECKS.md) · [Playtest priorities](docs/PLAYTEST_PRIORITIES.md)
+
+- Vesper can return to repair a public warning. The player checks a signed or staffed arrangement and sees the result at a different place. The debate at the bench gives both sides a source and requires a listener’s readback before the signed minute travels.
+- The Citation Rail pairs a short reference with a full MLA source and sends the reader back to the specific catalogue. The Study’s borrowed straightedge can be indexed by date or work category. Private writing remains optional.
+- The Library of Congress Gutenberg Bible has a single documented display, with its own written and printed features available to a later press investigation. [Source register](docs/SOURCES.md)
+- The original 803 supplied skill rows support a growing set of specific gameplay links. The first audit covers 119 rows in 190 authored actions, including 65 across more than one world. It reports open combinations and the 197 missing source rows. [Micro-skills audit](docs/TOK_MICRO_SKILLS.md)
+- A personal map mark can direct the compass and persist across saves. A separate narrow-screen pass preserves the full interaction prompt and the touch menu. Other new routes use market incentives, map boundaries, circulatory water and independent latch checks.
 
 - In the first chapter, Hesper now leaves a different Nexus follow-up after agreeing to visit. The loan annex offers two walkable states and a real change to the present path. Dov’s six drawers help a later Coast courier account for missing visits. Idris now stands clear of Kip’s required post at the south portal.
 - Joss’s skiff makes weather, cargo and a second crew member affect steering. The Forest Bridge Partner title can call a second City keeper, while the cart keeps a different passage open. A Stiltfrog can guide a player to a checked upper rim. A local tide staff still leads to a lower view.

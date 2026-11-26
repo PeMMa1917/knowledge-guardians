@@ -3,7 +3,9 @@ import type { Condition } from '../domain/types';
 import { COAST_FILM_STANDS } from './filmCuts';
 import { sceneProp } from './sceneProps';
 import type { Interactable, MapDef } from './types';
+import { COAST_VESPER_TRUST } from './vesperTrust';
 import { FOLD_DRAWER_CASES } from './drawerCases';
+import { ARCHIVE_WATER_LOOP } from './waterLoop';
 
 function sign(id: string, x: number, y: number, label: string, art: string, text: string,
   options: { flag?: string; visibleIf?: Condition } = {}): Interactable {
@@ -139,6 +141,7 @@ export const OBSERVATORY_STATION: MapDef = {
     { stamp: 'barrel', x: 8, y: 10 }, { stamp: 'barrel', x: 17, y: 11 },
   ],
   interactables: [
+    ...COAST_VESPER_TRUST,
     { id: 'coast-headland-return', kind: 'door', x: 11, y: 15, w: 1, h: 1, label: 'the steps down to Slate Harbour',
       art: 'coast.waypost', to: { map: 'observatory.harbour', x: 13, y: 6 } },
     { id: 'coast-fold-path', kind: 'door', x: 3, y: 9, w: 1, h: 1, label: 'the track to Marl Fold',
@@ -262,6 +265,7 @@ export const OBSERVATORY_ARCHIVE: MapDef = {
     { stamp: 'crates', x: 19, y: 5 }, { stamp: 'rug-green', x: 11, y: 10 },
   ],
   interactables: [
+    ...ARCHIVE_WATER_LOOP,
     { id: 'coast-archive-return', kind: 'door', x: 12, y: 14, w: 1, h: 1, label: 'the steps back to Slate Harbour',
       art: 'coast.waypost', to: { map: 'observatory.harbour', x: 25, y: 7 } },
     archiveScene('coast-archive-sleeve', 4, 6, 'the forecast sleeve', 'preserved.folder', 'coast.archive.sleeve'),
