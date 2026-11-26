@@ -65,3 +65,24 @@ describe('fair games from the mathematics lessons', () => {
     expect(d.events.filter((e) => e.kind === 'fieldgame' && e.first)).toHaveLength(FIELD_GAMES.length);
   });
 });
+
+describe('the Missing Word (language and power)', () => {
+  it('every wording keeps the same fact and gives each reader a line', async () => {
+    const { WORDINGS, READERS, WITH_REASON, ATTEMPTS, COINAGES, paintedNotice } = await import('../src/domain/wordgames');
+    for (const w of WORDINGS) {
+      expect(w.line).toContain('4 marks');
+      for (const r of READERS) expect(w.says[r.id]).toBeTruthy();
+    }
+    for (const r of READERS) { expect(WITH_REASON[r.id]).toBeTruthy(); expect(ATTEMPTS[r.id]).toBeTruthy(); }
+    expect(new Set(COINAGES.map((k) => k.whose))).toEqual(new Set(READERS.map((r) => r.id)));
+    expect(paintedNotice({})).toBeNull();
+    expect(paintedNotice({ 'word.painted': 'raised', 'word.reason': true })).toContain('rotten beams');
+    expect(paintedNotice({ 'word.painted': 'raised' })).not.toContain('Reason');
+  });
+
+  it('finishing it meets the Hush Moth', () => {
+    const d = new Driver();
+    d.run({ type: 'FinishFieldGame', game: 'word' });
+    expect(d.s.flags['meet.fray.hush-moth']).toBe(true);
+  });
+});

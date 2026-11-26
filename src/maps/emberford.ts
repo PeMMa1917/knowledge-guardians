@@ -283,6 +283,7 @@ export const EMBERFORD: MapDef = {
     { id: 'rumour-mill', kind: 'rumours', x: 16, y: 17, w: 1, h: 1, label: 'the tea table (listen to the rumour mill)', art: 'tea-table' },
     // Field games from the TOK lessons (src/domain/fieldgames.ts).
     { id: 'pell-doors', kind: 'fieldgame', game: 'doors', x: 25, y: 17, w: 2, h: 1, label: "Pell's lantern stall (Three Doors)", art: 'lantern-stall' },
+    { id: 'odo-notice', kind: 'fieldgame', game: 'word', x: 27, y: 22, w: 1, h: 1, label: "Odo's notice board and word chest", art: 'notice-board' },
     { id: 'weigh-slate', kind: 'fieldgame', game: 'slate', x: 29, y: 18, w: 1, h: 1, label: 'the Weigh-House slate', art: 'slate-board' },
     // Field readings: a made, calibrated tool tests a claim (src/domain/readings.ts).
     { id: 'reading-rain', kind: 'reading', reading: 'rain', x: 35, y: 17, w: 1, h: 1, label: "the rain stake by Noa's board (take a reading)", art: 'rain-stake' },

@@ -62,6 +62,7 @@ import { approvalOf, approvalRank } from '../domain/approval';
 import { ROLES, fitsRole, roleOf } from '../domain/roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
 import { FIELD_GAMES } from '../domain/fieldgames';
+import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, runDoors, shareChance } from '../domain/fairgames';
 import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
 import { MIN_SOURCES, RUMOURS, VERDICTS, currentRumour, sourcesChecked } from '../domain/rumours';
@@ -2312,7 +2313,8 @@ export class UI implements UIApi {
         ...found.map((x) => h('div', { class: 'lore-entry' }, h('h3', {}, x.name), h('p', { class: 'fine' }, MAPS[x.map]?.name ?? ''), h('p', {}, x.text))));
       const games = FIELD_GAMES.filter((g) => s.flags[`field.${g.id}.done`] === true);
       if (games.length) body.append(h('h3', {}, 'Field games'),
-        ...games.map((g) => h('div', { class: 'lore-entry' }, h('h3', {}, g.name), h('p', { class: 'fine' }, g.host), h('p', {}, g.idea))));
+        ...games.map((g) => h('div', { class: 'lore-entry' }, h('h3', {}, g.name), h('p', { class: 'fine' }, g.host), h('p', {}, g.idea),
+          ...(g.id === 'word' && coinageOf(s.flags['word.coined']) ? [h('p', { class: 'fine' }, `Your word: '${coinageOf(s.flags['word.coined'])!.word}', ${coinageOf(s.flags['word.coined'])!.meaning}.`)] : []))));
     } else if (tab === 'story') {
       // The story so far: the beats the player has reached, written as a short chronicle.
       const lit = String(Number(s.flags['lamps.lit'] ?? 0));
@@ -2746,6 +2748,7 @@ export class UI implements UIApi {
     if (id === 'doors') this.openDoors();
     else if (id === 'guests') this.openGuestBook();
     else if (id === 'slate') this.openSlate();
+    else if (id === 'word') this.openMissingWord();
   }
 
   /** Close a field game: first time gives marks and the idea in the Lore codex. */
@@ -2912,6 +2915,79 @@ export class UI implements UIApi {
         } }, line))));
     };
     readers();
+  }
+
+  /** The Missing Word: paint one fact with a word you choose, see who notices what, then name a feeling that lost its word. */
+  openMissingWord(): void {
+    const c = ctx.controller;
+    const box = this.openModal('bench-panel wide', 'The Missing Word');
+    this.sfx('sfx.page');
+    const head = () => [this.closeBtn(), h('h2', {}, 'The Missing Word'),
+      h('p', {}, `Odo the sign-painter dips his brush. 'Ysolde wants a notice: from next market day, ${FACT.what} goes from ${FACT.from} marks to ${FACT.to} marks. The fact is fixed. The word is yours. Every word paints a different picture, so choose with care.'`)];
+    const seen = new Set<string>();
+    const reactions = (w: Wording, reason: boolean) => h('div', { class: 'word-readers' }, ...READERS.map((r) => h('div', { class: 'ware' },
+      h('strong', {}, r.who), h('p', { class: 'fine' }, r.about), h('p', {}, reason ? WITH_REASON[r.id] : w.says[r.id]))));
+    const choose = () => {
+      box.replaceChildren(...head(),
+        h('p', {}, h('strong', {}, 'Try a word on the board. '), 'Odo chalks it lightly first, so you can see how people read it.'),
+        h('div', { class: 'notice-options' }, ...WORDINGS.map((w) => h('button', { type: 'button', class: seen.has(w.id) ? 'seen' : '', onclick: () => preview(w) }, `'${w.word}'${seen.has(w.id) ? ' (tried)' : ''}`))));
+    };
+    const preview = (w: Wording) => {
+      seen.add(w.id);
+      box.replaceChildren(...head(), h('p', { class: 'slate-line small' }, w.line), h('p', { class: 'fine' }, w.tone), reactions(w, false),
+        h('div', { class: 'row' },
+          h('button', { type: 'button', onclick: () => choose() }, 'Chalk another word'),
+          seen.size >= 2
+            ? h('button', { type: 'button', class: 'primary', onclick: () => paint(w) }, `Paint '${w.word}' for good`)
+            : h('span', { class: 'fine' }, 'Try one more word before you paint.')));
+    };
+    const paint = (w: Wording) => {
+      box.replaceChildren(...head(), h('p', { class: 'slate-line small' }, w.line),
+        h('p', {}, `Ysolde hurries over. 'There is room for one more line. Will you paint why? ${FACT.reason[0].toUpperCase()}${FACT.reason.slice(1)}.'`),
+        h('div', { class: 'notice-options' },
+          h('button', { type: 'button', onclick: () => painted(w, true) }, 'Paint the reason too'),
+          h('button', { type: 'button', onclick: () => painted(w, false) }, 'Leave only the toll')));
+    };
+    const painted = (w: Wording, reason: boolean) => {
+      c.dispatch({ type: 'SetFlag', flag: 'word.painted', value: w.id });
+      c.dispatch({ type: 'SetFlag', flag: 'word.reason', value: reason });
+      this.sfx('sfx.sparkle');
+      box.replaceChildren(...head(), h('p', { class: 'slate-line small' }, paintedNotice(c.state.flags) ?? w.line), reactions(w, reason),
+        h('p', { class: 'fine' }, reason
+          ? 'With a reason on the board, people argue about the beams, not only the price.'
+          : 'With only the toll on the board, people read the word and fill in the reason for themselves.'),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => chest() }, "Odo: 'Now, about my word chest...'")));
+    };
+    const chest = () => {
+      const heard = new Set<string>();
+      const render = () => box.replaceChildren(this.closeBtn(), h('h2', {}, 'The Missing Word'),
+        h('p', {}, "Odo opens his word chest. One slot is empty, and grey dust is on the lid. A Hush Moth has eaten a word. Since then, people feel something they cannot say. Ask them what they feel."),
+        h('div', { class: 'notice-options' }, ...READERS.map((r) => h('button', { type: 'button', onclick: () => { heard.add(r.id); render(); } }, `Ask ${r.who}${heard.has(r.id) ? ' (heard)' : ''}`))),
+        ...READERS.filter((r) => heard.has(r.id)).map((r) => h('p', { class: 'clue-view' }, h('strong', {}, `${r.who}: `), ATTEMPTS[r.id])),
+        heard.size === READERS.length
+          ? h('div', {}, h('p', {}, "Odo: 'Three people, three pieces of one feeling. The old word is gone. We need a new one. Which will you carve?'"),
+            h('div', { class: 'notice-options' }, ...COINAGES.map((k) => h('button', { type: 'button', onclick: () => coin(k) }, `'${k.word}': ${k.meaning}`))))
+          : h('p', { class: 'fine' }, 'Hear everyone before you carve a word.'));
+      render();
+    };
+    const coin = (k: Coinage) => {
+      c.dispatch({ type: 'SetFlag', flag: 'word.coined', value: k.id });
+      box.replaceChildren(this.closeBtn(), h('h2', {}, 'The Missing Word'),
+        h('p', { class: 'slate-line small' }, k.word),
+        h('p', {}, `You carve '${k.word}' into a new tile and drop it in the chest. The Hush Moth shakes the dust from its wings and flutters away. ${k.centre}`),
+        h('p', {}, "Odo: 'A word is a lantern. The person who holds it decides where the light falls. You held it today.'"),
+        this.finishField('word'),
+        h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+    };
+    const now = paintedNotice(c.state.flags);
+    if (now) {
+      const w = wordingOf(c.state.flags['word.painted'])!, k = coinageOf(c.state.flags['word.coined']);
+      box.replaceChildren(...head(), h('p', {}, 'Your notice is still on the board:'), h('p', { class: 'slate-line small' }, now), reactions(w, c.state.flags['word.reason'] === true),
+        k ? h('p', { class: 'fine' }, `In Odo's word chest, your tile still says '${k.word}'. People use it now.`) : h('p', { class: 'fine' }, "Odo's word chest still has an empty slot."),
+        h('div', { class: 'row' },
+          h('button', { type: 'button', onclick: () => choose() }, 'Paint a new notice'),
+          k ? h('button', { type: 'button', class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Leave it') : h('button', { type: 'button', class: 'primary', onclick: () => chest() }, 'Open the word chest')));
+    } else choose();
   }
 
   /** A fallacy seal in the Undercroft: it speaks a bad argument; name the flaw to open it. */

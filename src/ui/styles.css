@@ -890,3 +890,6 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .slate-readers { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
 .slate-steps { margin: 0.2rem 0 0; }
 @media (max-width: 640px) { .slate-readers { grid-template-columns: 1fr; } .field-bar { grid-template-columns: 1fr; } }
+
+.word-readers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 8px 0; }
+@media (max-width: 640px) { .word-readers { grid-template-columns: 1fr; } }
