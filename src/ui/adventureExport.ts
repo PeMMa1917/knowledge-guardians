@@ -46,7 +46,7 @@ export function adventureExportSnapshot(view: AdventureJournalView, options: Adv
       ...reflections(entry.reflections),
     })),
     notes: notes.map((note) => ({
-      details: details(note.draft ? 'Draft note' : note.kind === 'question' ? (note.resolved ? 'Resolved question' : 'Open question')
+      details: note.draft ? 'Draft note' : details(note.kind === 'question' ? (note.resolved ? 'Resolved question' : 'Open question')
         : kindLabels[note.kind], note.at, note.mapId),
       text: note.text, ...reflections(note.reflections),
     })),

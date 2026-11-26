@@ -82,7 +82,7 @@ describe('full adventure journal export', () => {
       view.notes[0].reflections![0].prompt, view.notes[0].reflections![0].response!,
     ]) expect(lines).toContain(body.replace(/\r\n/g, '\n'));
     expect(lines.filter((text) => text === 'What could change your perspective?')).toHaveLength(1);
-    expect(lines).toContain('Draft note · Earlier in this adventure');
+    expect(lines).toContain('Draft note');
     expect(document).toContain('&lt;draft&gt; &amp; 漢字');
     expect(document).toContain('<w:tab/>');
     expect(document).toContain('<w:br/><w:br/>');
