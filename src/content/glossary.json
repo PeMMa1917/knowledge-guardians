@@ -663,7 +663,7 @@
    "term": "Simulation",
    "match": [
     "simulation",
-    "model"
+    "simulations"
    ],
    "history": {"note": "Latin simulatio could mean imitation. Middle English used simulacioun for pretence. A workshop simulation gives that old idea of imitation a different job.", "url": "https://www.merriam-webster.com/dictionary/simulation"},
    "text": "A test or picture that follows stated rules. It shows what happens if the rules are right, not what happened in history.",
@@ -1061,6 +1061,156 @@
     },
     {
      "text": "Before arguing over whose map is better, ask whether the reader is carrying a tray or looking for an exhibit."
+    }
+   ]
+  },
+  {
+   "id": "model",
+   "term": "Model",
+   "match": [
+    "model",
+    "models"
+   ],
+   "text": "A representation that keeps features useful for a particular job. Its omissions matter when someone tries to use it for another job.",
+   "history": {
+    "note": "English took model from French modelle. Its Italian ancestor modello goes back to Latin modulus, a small measure.",
+    "url": "https://www.merriam-webster.com/dictionary/model"
+   },
+   "examples": [
+    {
+     "if": {
+      "card": "card.loud-model"
+     },
+     "text": "You saw the Nexus workshop’s version of Loud’s pen. It gave you a shape to inspect, while the patent kept the date of the design."
+    },
+    {
+     "if": {
+      "objective": "latch.water.observed"
+     },
+     "text": "You brought the model bar to both known stops. The live service bar still needed its own sighting before the crew could move a tray."
+    },
+    {
+     "text": "A tiny gate might show where the bar moves. It cannot tell a waiting porter where the real bar is now."
+    }
+   ]
+  },
+  {
+   "id": "context",
+   "term": "Context",
+   "match": [
+    "context",
+    "contexts"
+   ],
+   "text": "The surroundings or circumstances that help a reader understand what a record can mean.",
+   "history": {
+    "note": "Latin contexere meant to weave together. Contextus could describe a connection or the way words fit together before context took on its wider English sense.",
+    "url": "https://www.merriam-webster.com/dictionary/context"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "preserved.coast"
+     },
+     "text": "You placed the site map beside the coastal record. The way a burial survived could not settle which practice every burial followed."
+    },
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "Havra could see the upper landing at the second bell. You kept the place and the time beside her observation when the stall notice claimed more."
+    },
+    {
+     "text": "A mark for a closed landing means something different before the tide turns."
+    }
+   ]
+  },
+  {
+   "id": "measurement",
+   "term": "Measurement",
+   "match": [
+    "measurement",
+    "measurements"
+   ],
+   "text": "A comparison made with a chosen unit or rule. Another person needs to know where and how it was made.",
+   "history": {
+    "note": "Middle English mesurement came from an Anglo-French word for the act of measuring. It was also used for the apportioning of shares.",
+    "url": "https://www.merriam-webster.com/dictionary/measurement"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "forest.moss.survey"
+     },
+     "text": "You used the same six squares at four pegs. A square with a speck of green counted just as much as one that was full."
+    },
+    {
+     "if": {
+      "objective": "xin.o.layers"
+     },
+     "text": "You checked which sheets could go on the portrait board. A cleanly drawn edge on the illustration brought no new measurement of its own."
+    },
+    {
+     "text": "A tray might clear one gap and catch in the next. The edges you measured belong on the slip."
+    }
+   ]
+  },
+  {
+   "id": "hypothesis",
+   "term": "Hypothesis",
+   "match": [
+    "hypothesis",
+    "hypotheses"
+   ],
+   "text": "An explanation or supposition you can investigate. A useful check can turn out differently depending on whether it holds.",
+   "history": {
+    "note": "Greek hypotithenai could mean to put under or to suppose. Hypothesis comes from that idea of laying down a supposition.",
+    "url": "https://www.merriam-webster.com/dictionary/hypothesis"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "The matching broken C gave you a lead about the two notices. The dated issue book let you check which copy drew on which."
+    },
+    {
+     "if": {
+      "objective": "forest.moss.place"
+     },
+     "text": "The patches near both paths held fewer green squares. Boots, drier edges and bare ground offered different explanations to investigate."
+    },
+    {
+     "text": "A second copy might be an independent report. Where would you look for its first observer?"
+    }
+   ]
+  },
+  {
+   "id": "correlation",
+   "term": "Correlation",
+   "match": [
+    "correlation",
+    "correlations"
+   ],
+   "text": "A pattern in the way two things vary together. Several different causes can produce the same pattern.",
+   "history": {
+    "note": "Medieval Latin correlatio joined a form of com-, together, to relatio, a relation.",
+    "url": "https://www.merriam-webster.com/dictionary/correlation"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "forest.moss.place"
+     },
+     "text": "Green squares were less common at both path edges. Yesterday’s shoe counts suggested a question about boots, and the four frames left several explanations open."
+    },
+    {
+     "if": {
+      "objective": "latch.water.observed"
+     },
+     "text": "The flag and the tick sheet agreed even when the practice bar moved. You traced both readings to the same request."
+    },
+    {
+     "text": "Two markers may rise together because each takes its reading from one float."
     }
    ]
   }

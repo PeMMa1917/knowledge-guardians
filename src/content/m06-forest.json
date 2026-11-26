@@ -1527,7 +1527,7 @@
   {
    "id": "forest.moss.table",
    "speaker": "forest-steward",
-   "text": "The old notice says “Shade is why we saw more green.” Four clips on this stand let us put cards with the same light together. The crew’s tally has its own clip.",
+   "text": "The old notice blames the shade. My hypothesis is that we missed something at the path edge. Clip the shaded pair together, or start with the open pair. The crew’s tally has its own clip.",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -1702,7 +1702,7 @@
   {
    "id": "forest.moss.compare",
    "speaker": "forest-steward",
-   "text": "The crew saw boots touch both edge patches. Maybe the boots wear the green away. Maybe the edges dry out sooner, or people step where the surface was already bare. We checked four places along one trail and left the ground alone. That’s an induction we could check at another trail edge. Let’s take down the shade notice and make the next look easier.",
+   "text": "Fewer green squares by both paths. That correlation gives us a lead. Boots might wear the green away. The edges might dry sooner, or walkers might choose bare ground. Four pegs on one trail. I’d try that induction on another trail before I put our shade notice back.",
    "historicalLabel": "fictional-world",
    "options": [
     {

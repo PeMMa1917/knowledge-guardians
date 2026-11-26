@@ -27,6 +27,19 @@ describe('smart glossary (spec 47.10)', () => {
     expect(seg.map((x) => x.text).join('')).toBe(text);
     expect(seg.filter((x) => x.term).map((x) => x.term)).toEqual(['knowledge-question', 'claim', 'evidence']);
   });
+  it('distinguishes a model from a simulation and a suggested cause from an observed relationship', () => {
+    const text = 'A model can be used in a simulation. A correlation gives us a hypothesis to check.';
+    expect(segmentText(text, pack.glossary).filter(({ term }) => term).map(({ term }) => term))
+      .toEqual(['model', 'simulation', 'correlation', 'hypothesis']);
+    const d = new Driver();
+    const firstModel = memories(d, 'model');
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-001-A' });
+    expect(memories(d, 'model')).toEqual(firstModel);
+    d.run({ type: 'InspectExhibit', exhibit: 'OBJ-001-B' });
+    expect(memories(d, 'model')).toEqual([expect.stringContaining('Loud’s pen')]);
+    expect(memories(d, 'simulation')).toHaveLength(1);
+    expect(memories(d, 'simulation')[0]).toMatch(/marking test/i);
+  });
   it('does not split a larger Unicode word into a glossary control and ordinary text', () => {
     const text = 'éevidence evidence\u0301 evidence2 _evidence (EVIDENCE)!truth and evidence';
     const segments = segmentText(text, pack.glossary);
