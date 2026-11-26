@@ -123,6 +123,25 @@ it('lets Observatory readers inspect drafts and choose a checked dispatch at sep
   checkFacingTarget(references, d, 'refstation-sent-local', 17, 14, 17, 15, 'up');
 });
 
+it('keeps both Emberford circular runner phases clear of the bridge and the standing gauge', () => {
+  const d = new Driver();
+  d.s.inventory['item.ember.circle-packet'] = 1;
+  d.s.flags['ember.circle.choice'] = 'runner';
+  const emberford = MAPS['aethelgard.emberford'];
+  checkFacingTarget(emberford, d, 'circlereport-receive.runner', 30, 19, 30, 18, 'down');
+  d.s.flags['ember.circle.placed'] = 'runner';
+  checkFacingTarget(emberford, d, 'circlereport-result.runner', 30, 19, 30, 18, 'down');
+});
+
+it('gives the Harbour date receiver a tap target beside Irven and the bell relay', () => {
+  const d = new Driver();
+  d.s.objectivesDone.push('sea.arrival', 'sea.finish');
+  const harbour = MAPS['sea.harbour'];
+  const irven = harbour.npcs.find((npc) => npc.id === 'peg-reader-irven');
+  expect([irven?.x, irven?.y]).toEqual([6, 8]);
+  checkFacingTarget(harbour, d, 'sea-date-market', 7, 9, 7, 8, 'down');
+});
+
 function checkFacingTarget(
   map: MapDef, d: Driver, id: string, x: number, y: number, standX: number, standY: number, facing: 'up' | 'down',
 ) {

@@ -12,7 +12,7 @@ export const SEA_DATE_PEG_DOOR: Interactable = {
 };
 
 export const SEA_DATE_PEG_RECEIVERS: Interactable[] = ([
-  { route: DATE_PEG_MARKET, x: 6, y: 9, label: 'Irven’s wide market bench', art: 'fold.paired' },
+  { route: DATE_PEG_MARKET, x: 7, y: 9, label: 'Irven’s wide market bench', art: 'fold.paired' },
   { route: DATE_PEG_DOCK, x: 24, y: 8, label: 'Mireth’s pocket guide roll', art: 'fold.strip' },
 ] as const).map(({ route, ...prop }) => ({
   ...prop, id: `sea-date-${route}`, kind: 'fieldgame', game: `${DATE_PEG_GROUP}:${route}`,
