@@ -80,12 +80,16 @@ describe('The Rim That Slipped', () => {
   it('requires the dated entry and the runs, then personally lays both sources on the stand', () => {
     const d = enter();
     makeRuns(d);
+    expect(d.e.node('metal.rim.slip').text).toContain('passes the inside rim');
+    expect(d.e.node('metal.rim.peg').text).toMatch(/same blue sample.*same mark.*stays inside/);
+    expect(d.e.node('metal.rim.sleeve').text).toMatch(/Same sample, same chalk marks.*holds the sample inside/);
     takeDoor(d, 'metal-records-path');
     expect(has(d, 'metal-rim-compare')).toBe(false);
     takeDoor(d, 'metal-yard-return');
     play(d, 'note', 'Leave the docket');
     expect(d.done('metal.rim.record')).toBe(false);
     play(d, 'note', 'Lift the caption', 'Clip the dated docket');
+    expect(d.e.node('metal.rim.docket').text).toMatch(/Second Frost, third bell.*Hall sleeve check, grey sample.*yard handling line is blank.*no signature or date/);
     takeDoor(d, 'metal-records-path');
     expect(d.done('metal.rim.record')).toBe(true);
     expect(d.done('metal.rim.compare')).toBe(false);
@@ -93,6 +97,7 @@ describe('The Rim That Slipped', () => {
     expect(has(d, 'metal-rim-plan')).toBe(false);
     play(d, 'compare', 'Keep the older docket', 'Leave the receiving choice');
     expect(d.done('metal.rim.compare')).toBe(true);
+    expect(d.e.node('metal.rim.plan').text).toContain('a grey sample and another shift');
     expect(d.done('metal.rim.receive')).toBe(false);
     expect(has(d, 'metal-rim-compare')).toBe(false);
     expect(has(d, 'metal-rim-plan')).toBe(true);

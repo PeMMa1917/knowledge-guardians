@@ -1015,7 +1015,7 @@ function metalworks(turnedTag: boolean, rim?: 'hall' | 'yard'): Route {
           'Set the sample back', 'Close the padded sleeve', 'Leave the rack');
         expect(d.done('metal.rim.runs')).toBe(true);
       });
-    route.at(8, 'Lift the reused caption and check the earlier sample, bench and time on its signed docket',
+    route.at(8, 'Lift the reused caption and check the earlier sample, bench and time on its dated docket',
       ['evidence', 'interpretation', 'perspective', 'certainty', 'scope', 'perspectives'], (d) => {
         walkScene(d, 'metal-rim-note', 'metal.rim.docket', 'Clip the dated docket');
         expect(d.done('metal.rim.record')).toBe(true);

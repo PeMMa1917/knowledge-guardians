@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { councilClock } from '../src/domain/councilClock';
 import { check } from '../src/domain/rules';
 import { MAPS } from '../src/maps';
 import { Driver } from './driver';
@@ -23,6 +24,7 @@ function read(d: Driver, id: string): void {
   const item = MAPS[d.s.mapId].interactables.find((prop) => prop.kind === 'sign' && prop.id === id);
   if (!item?.flag || !check(item.visibleIf, d.s)) throw new Error(`Cannot read ${id} here`);
   d.run({ type: 'SetFlag', flag: item.flag, value: true });
+  return item;
 }
 
 function visible(d: Driver, id: string): boolean {
@@ -34,14 +36,17 @@ describe('When the Hand Moves', () => {
   const routes = (['rail', 'record'] as const).flatMap((policy) =>
     (['relay', 'mark'] as const).map((revision) => ({ policy, revision })));
 
-  it.each(routes)('keeps the $policy docket after adding $revision', ({ policy, revision }) => {
+  it.each(routes)('checks the two readings and keeps the $policy docket after adding $revision', ({ policy, revision }) => {
     const d = new Driver();
     expect(d.e.activeMissions(d.s).some((mission) => mission.id === 'KG-CH15-M01')).toBe(false);
     d.s.objectivesDone.push('island.finish');
     visit(d, 'council-door');
     expect(d.done('council.arrival')).toBe(true);
     expect(visible(d, 'council-draft')).toBe(true);
-    read(d, 'council-repair-record');
+    const seal = read(d, 'council-repair-record');
+    expect(seal.text).toMatch(/day 8 noon shift.*Rail drum 12:00, then 12:01.*seal covers the signed shift/);
+    expect(councilClock('matched')).toEqual({ watch: '12:00', reference: '12:00', after: '12:00' });
+    expect(councilClock('working')).toEqual({ watch: '12:00', reference: '12:00', after: '12:01' });
     d.run({ type: 'RunCouncilClock', trial: 'matched' });
     expect(d.done('council.compare')).toBe(false);
 
@@ -69,6 +74,8 @@ describe('When the Hand Moves', () => {
       .filter((prop) => prop.id.startsWith(prefix) && check(prop.visibleIf, d.s))
       .map((prop) => prop.id);
     expect(displayed('council-result-')).toEqual([`council-result-${policy}`]);
+    const notice = MAPS['council.gallery'].interactables.find((prop) => prop.id === `council-result-${policy}`);
+    expect(notice?.text).toMatch(policy === 'rail' ? /At each shift start.*opening mark and the next minute/ : /old, broken or undated seal.*independent rail/);
 
     read(d, 'council-reader-note');
     expect(d.done('council.reader')).toBe(false);

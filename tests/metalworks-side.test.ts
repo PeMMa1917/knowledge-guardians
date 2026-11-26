@@ -11,6 +11,7 @@ function read(d: Driver, id: string) {
   const prop = MAPS[d.s.mapId].interactables.find((item) => item.id === id && item.kind === 'sign');
   if (!prop?.flag || !check(prop.visibleIf, d.s)) throw new Error(`Cannot read ${id} here`);
   d.run({ type: 'SetFlag', flag: prop.flag, value: true });
+  return prop;
 }
 
 function visit(d: Driver, id: string, ...choices: string[]) {
@@ -53,22 +54,26 @@ describe('The Turned Tag', () => {
   it.each([
     ['yard', 'Hang the explanation', yard],
     ['hall', 'File the explanation', hall],
-  ])('shows the explanation in the %s without altering the original display', (choice, placement, room) => {
+  ])('publishes both hole traces and workshop keys in the %s without altering the original display', (choice, placement, room) => {
     const d = new Driver();
     begin(d);
     const xp = totalXP(d.p);
     visit(d, 'metal-tag-bench', 'Keep the stand still', 'Reset the stand', 'Turn the practice tag', 'Leave the stand');
-    read(d, 'metal-tag-fit-key');
+    expect(d.e.node('metal.tag.turn').text).toMatch(/other way.*nick beside the old hole.*stand and cord stayed fixed/i);
+    expect(d.e.node('metal.tag.replace').text).toMatch(/other way.*clean edge.*stand and cord stayed fixed/i);
+    expect(read(d, 'metal-tag-fit-key').text).toContain('once a piece fits the frame');
     d.s.mapId = hall;
-    read(d, 'metal-tag-coat-key');
+    expect(read(d, 'metal-tag-coat-key').text).toContain('when the surface needs another look');
     expect(d.done('metal.tag.compared')).toBe(false);
-    read(d, 'metal-tag-transfer-note');
+    expect(read(d, 'metal-tag-transfer-note').text).toMatch(/Same blue.*right in the yard and left at the hall.*tag hole is blank/);
     visit(d, 'metal-tag-explanation-clips', placement);
 
     const displays = Object.values(MAPS).flatMap((map) => map.interactables
       .filter((prop) => prop.id.startsWith('metal-tag-handoff-') && check(prop.visibleIf, d.s))
       .map((prop) => [map.id, prop.id]));
     expect(displays).toEqual([[room, `metal-tag-handoff-${choice}`]]);
+    const visibleCopy = MAPS[room].interactables.find((prop) => prop.id === `metal-tag-handoff-${choice}`);
+    expect(visibleCopy?.text).toMatch(/fitting.*coating.*(?:only direction and colour|hole unrecorded)/);
     expect(d.done('metal.tag.explained')).toBe(true);
     expect(d.p.moments['mom.metal-tag-explained']).toBeTruthy();
     expect(d.s.flags['metal.response']).toBe('window');
