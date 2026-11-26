@@ -98,5 +98,44 @@
   "quest:council.finish": {
     "next-crew": "What could the next crew check for themselves using the arrangement you left?",
     "shutter": "Whose view do you still need to ask about when the shutter goes down?"
+  },
+  "quest:cart.o1.sight": {
+    "one-source": "Whose word reached the clerk twice? What did the second telling add to the account of the pot?",
+    "other-recipient": "If you met the driver and a passing carter together, which part of your report could each act on?"
+  },
+  "quest:metal.rim.runs": {
+    "change-one": "Which part of the tray setup would you keep still if the rim slipped again?",
+    "one-tray": "What would a wider tray have to do before you trusted the same support with it?"
+  },
+  "quest:metal.rim.record": {
+    "docket": "Which marks on the old docket would help someone repeat its check? Where does that docket fall silent?"
+  },
+  "quest:metal.rim.compare": {
+    "two-kinds": "If the copied caption blew away, what could the old shift hand still tell you? What could your blue tray show them in return?"
+  },
+  "quest:metal.rim.receive": {
+    "missing-reader": "Whose tray still needs another time or place after the handover you chose?",
+    "change-plan": "What would have to happen at the next bell for you to send the crew a different plan?"
+  },
+  "quest:copies.check.press": {
+    "tuesday": "Which queues could use the line before the date was lifted? Who might take a risk if only the shorter line travels?"
+  },
+  "quest:copies.check.landing": {
+    "clerk": "If somebody challenged the claim at the landing, whom could they find with each copy in hand?"
+  },
+  "quest:ember.circle.trace": {
+    "third-copy": "What could a third copy tell you about how far the report travelled? Who could tell you whether the crossing was actually open?"
+  },
+  "quest:hands.o.compare": {
+    "changed-name": "If the small tag has room for only one detail, what would lead a visitor back to the other hands that made the pen possible?"
+  },
+  "quest:last-turn.compare": {
+    "gesture": "Which detail would you need from the next speaker to tell whether a face-down slate ended a turn or kept it open?"
+  },
+  "quest:linen.o.compare": {
+    "two-readers": "If you took the cuttings away, which part of your note could the dyer still check? What would the ferry crew want back?"
+  },
+  "quest:pigment-window.controlled": {
+    "lamp": "If someone changed the lamp and left the strip uncovered on the same day, what would you do before blaming either change?"
   }
 }
