@@ -41,3 +41,23 @@ describe("Vesper Quill's letters (the rival)", () => {
     expect(dueLetters(d.s)).toHaveLength(0);
   });
 });
+
+describe('the Harrowmere reveal (chapter 11)', () => {
+  it('the card sits in the Water Commons; Ise asks the player to choose; letters remember it', async () => {
+    const { MAPS } = await import('../src/maps');
+    const card = MAPS['water.gatehouse'].interactables.find((i) => i.id === 'harrowmere-order')!;
+    expect(card.flag).toBe('harrowmere.found');
+    const pack = buildPack();
+    const ise = pack.characters.find((c) => c.id === 'warden-ise')!;
+    expect(ise.talk![0].node).toBe('ise.harrowmere');
+    const node = pack.dialogue.find((n) => n.id === 'ise.harrowmere')!;
+    expect(node.options!.filter((o) => o.effects?.some((e) => 'setFlag' in e && e.setFlag === 'ise.harrowmere'))).toHaveLength(3);
+    const d = new Driver();
+    const l11 = LETTERS.find((l) => l.id === 'l11')!;
+    expect(composeLetter(l11, d.s).join(' ')).toContain('drawer');
+    d.run({ type: 'SetFlag', flag: 'harrowmere.found', value: true });
+    expect(composeLetter(l11, d.s).join(' ')).toContain('Harrowmere had a weir');
+    d.run({ type: 'SetFlag', flag: 'ise.harrowmere', value: 'herself' });
+    expect(composeLetter(LETTERS.find((l) => l.id === 'l12')!, d.s).join(' ')).toContain('tell Harrowmere herself');
+  });
+});

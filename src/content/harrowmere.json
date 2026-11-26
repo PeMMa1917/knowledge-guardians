@@ -1,0 +1,107 @@
+{
+ "dialogue": [
+  {
+   "id": "ise.harrowmere",
+   "speaker": "warden-ise",
+   "historicalLabel": "fictional-world",
+   "text": "Ise sees the card in your hand before you speak. She straightens a label that is already straight. 'Harrowmere.' A long breath. 'I signed it. The surveyor's draft said the weir was tested only in a dry year. The line was long, the case was small, and I wanted people to feel safe. I cut it. The flood came in the spring.' She looks at you, not at the card. 'If this is known, people will stop trusting every label in this hall, the good ones too. I am asking you to keep it quiet while I make it right. Quietly.'",
+   "options": [
+    {
+     "text": "I will keep it quiet for now. Make it right, and tell me how.",
+     "next": "ise.harrowmere.quiet",
+     "effects": [
+      {
+       "setFlag": "ise.harrowmere",
+       "value": "quiet"
+      }
+     ]
+    },
+    {
+     "text": "It must be corrected in the open, where Harrowmere can see it.",
+     "tag": "Name the difference",
+     "next": "ise.harrowmere.open",
+     "effects": [
+      {
+       "setFlag": "ise.harrowmere",
+       "value": "open"
+      }
+     ]
+    },
+    {
+     "text": "Then tell the story yourself, to the people it hurt. I will stand with you.",
+     "tag": "Listen first",
+     "next": "ise.harrowmere.herself",
+     "effects": [
+      {
+       "setFlag": "ise.harrowmere",
+       "value": "herself"
+      }
+     ]
+    },
+    {
+     "text": "Who else knew? Did Elsbet?",
+     "tag": "Ask for a source",
+     "next": "ise.harrowmere.elsbet"
+    }
+   ]
+  },
+  {
+   "id": "ise.harrowmere.elsbet",
+   "speaker": "warden-ise",
+   "historicalLabel": "fictional-world",
+   "text": "'Elsbet found the draft. She asked me to correct it in public. I asked her to wait. She waited a year, and then she left.' Ise's hand is still on the straight label. 'Vesper left first. Vesper did not wait at all.'",
+   "options": [
+    {
+     "text": "I will keep it quiet for now. Make it right, and tell me how.",
+     "next": "ise.harrowmere.quiet",
+     "effects": [
+      {
+       "setFlag": "ise.harrowmere",
+       "value": "quiet"
+      }
+     ]
+    },
+    {
+     "text": "It must be corrected in the open, where Harrowmere can see it.",
+     "tag": "Name the difference",
+     "next": "ise.harrowmere.open",
+     "effects": [
+      {
+       "setFlag": "ise.harrowmere",
+       "value": "open"
+      }
+     ]
+    },
+    {
+     "text": "Then tell the story yourself, to the people it hurt. I will stand with you.",
+     "tag": "Listen first",
+     "next": "ise.harrowmere.herself",
+     "effects": [
+      {
+       "setFlag": "ise.harrowmere",
+       "value": "herself"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ise.harrowmere.quiet",
+   "speaker": "warden-ise",
+   "historicalLabel": "fictional-world",
+   "text": "'Thank you.' She means it, and it costs her something to say. 'I will write to the families. You have my word.' A pause. 'Elsbet would not have agreed. You know that.'"
+  },
+  {
+   "id": "ise.harrowmere.open",
+   "speaker": "warden-ise",
+   "historicalLabel": "fictional-world",
+   "text": "Ise is quiet for a long time. 'That is what Elsbet said.' She takes the card from you, and then gives it back. 'Keep it. When the Council of Inquiry meets, bring it. I will not stop you.' Her voice is very even. 'I may not be able to stand next to you.'"
+  },
+  {
+   "id": "ise.harrowmere.herself",
+   "speaker": "warden-ise",
+   "historicalLabel": "fictional-world",
+   "text": "'Myself.' Ise says the word as if it is new. 'Yes. Not a label. Me, in front of them.' She almost smiles. 'You are a strange Guardian. You make the hard thing sound like the obvious thing.'"
+  }
+ ]
+}
