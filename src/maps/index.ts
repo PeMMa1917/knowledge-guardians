@@ -44,6 +44,7 @@ import { WORK_SCHEDULE_MAPS } from './workSchedule';
 import { BEARING_ROOM, BEARING_RETURN_ROOM } from './bearingBay';
 import { JIG_SHOP_MAP } from './jigShop';
 import { earlierViewingAt } from './earlierViewing';
+import { publicationReturnsAt } from './publicationReturns';
 import { blueTailAt } from './blueTail';
 import { PRICE_DRAWERS_MAP } from './priceDrawers';
 import { WARM_ROOM } from './warmRoom';
@@ -187,6 +188,6 @@ const campaignMaps: Record<string, MapDef> = {
 };
 
 export const MAPS: Record<string, MapDef> = Object.fromEntries(Object.values(campaignMaps).map((map) => {
-  const returns = [...earlierViewingAt(map.id), ...blueTailAt(map.id)];
+  const returns = [...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id)];
   return [map.id, returns.length ? { ...map, interactables: [...map.interactables, ...returns] } : map];
 }));

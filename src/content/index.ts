@@ -186,6 +186,7 @@ import leafFrame from './leaf-frame.json';
 import spareSeat from './spare-seat.json';
 import lastTurn from './last-turn.json';
 import stripBend from './strip-bend.json';
+import { addPublicationReturns, publicationReturnContent } from './publicationReturns';
 import { catchmentContent } from './catchment';
 import { facingCueContent } from './facingCue';
 import witnessClip from './witness-clip.json';
@@ -210,7 +211,7 @@ export function buildPack(): ContentPack {
     ferryPackingContent, workScheduleContent, bearingBayContent, jigShopContent, earlierViewsContent, curtainContent,
     coastDetector, coastBreeze, bridgeProof, memoryCart, dispatchStatsContent, prismViewerContent, priceDrawersContent, warmRoomContent,
     mapAlignmentContent, scriptRailContent, pigmentWindow, pigmentSample, correspondenceRoomContent, porterPace, leafFrame, forestNarrators, spareSeat, lastTurn, twoCalls, twoShutters, openPlace, catchmentContent, facingCueContent, witnessClip, stripBend, sillBridge,
-    threadBend, circularReport, publicVoices];
+    threadBend, circularReport, publicVoices, publicationReturnContent];
   for (const k of keys) pack[k] = [...parts, ...collectionRooms].flatMap((p) => p[k] ?? []);
   const content = pack as ContentPack;
   content.questions.push(...QUESTION_ROUTES.map(({ question }) => question));
@@ -224,6 +225,7 @@ export function buildPack(): ContentPack {
   }));
   addSpecimenPeople(content);
   installEarlierViews(content);
+  addPublicationReturns(content);
   specimenEquipment(content);
   addMicroSkills(content);
   return content;

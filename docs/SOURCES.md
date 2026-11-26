@@ -221,6 +221,11 @@ The collection credits link to the exact Cleveland or Met accession. Catalogues 
 - The Met credits an Ènata artist for the tahiì from the Marquesas Islands and gives its 2.5 cm depth. The cord and tray are fictional handling choices. The artist’s personal name remains open. [Met, 1979.206.1757](https://www.metmuseum.org/art/collection/search/313971)
 - The Met lists Mende, Vai, or Temne as separate possibilities for the maker of an interior hanging. A recorded purchase in Ghana concerns its later history. The stage tag and comparison strips offer different levels of detail to fictional readers. [Met, 1971.30](https://www.metmuseum.org/art/collection/search/309769)
 
+### The Travelling Tally and The Second Bell
+
+- The Science Museum Group identifies the surviving pen as a 1945–1948 example made by the Miles Martin Pen Company and credits the Bíró brothers for their separate work on the invention and its ink. Emberford’s two writing trials use fictional strips, a practice pen and two supports. Their marks carry a bounded result about those supports to Della or Idris. [Science Museum Group, 1949-174/2](https://collection.sciencemuseumgroup.org.uk/objects/co8057178/biro-ballpoint-pen)
+- The Smithsonian credits Victor Hugo Green as publisher of the 1941 guide and records James A. Jackson’s presentation line on this copy. The guide addressed Black motorists’ need for reliable leads to businesses that served them under Jim Crow. The ferry exercise uses an invented local shelter, an old posting and the host’s current permission to make a dated update usable. [NMAAHC, 2015.97.42](https://nmaahc.si.edu/object/nmaahc_2015.97.42) · [National Museum of American History, An Atlas of Self-reliance](https://americanhistory.si.edu/explore/stories/atlas-self-reliance-negro-motorists-green-book-1937-1964)
+
 ## Where the Welcome Goes, City of Copies and Market of Measures
 
 - REL-WELCOME-01 describes the Sodhi family preparing langar at their Sikh gurdwara in Fremont, California. The account connects a meal shared with visitors to the commitment to equality. [Harvard Pluralism Project, Langar: The Communal Meal](https://pluralism.org/langar-the-communal-meal)
