@@ -2,7 +2,8 @@ import research from '../content/encyclopedia.json';
 import { historicalEncounters, isHistoricalBiography } from './historicalEncounters';
 import type { CampaignState, CharacterRecord, ContentPack, EvidenceCard, ExhibitRecord } from './types';
 
-type ArticleLanguage = 'de' | 'it';
+const languageNames = { de: 'German', it: 'Italian', arz: 'Egyptian Arabic', avk: 'Kotava' } as const;
+type ArticleLanguage = keyof typeof languageNames;
 
 export interface EncyclopediaLink {
   key: string;
@@ -34,7 +35,6 @@ const peopleByCharacter = new Map(researched.people.flatMap((entry) => entry.cha
 const peopleByBiography = new Map(researched.people.flatMap((entry) => entry.biographies.map((id) => [id, entry] as const)));
 const exhibitsById = new Map(researched.exhibits.map((entry) => [entry.id, entry] as const));
 const english = 'https://en.wikipedia.org';
-const languageNames = { de: 'German', it: 'Italian' } as const;
 
 function destination(link: Omit<EncyclopediaLink, 'url'>): EncyclopediaLink {
   const url = link.kind === 'search' ? `${english}/w/index.php?${new URLSearchParams({ search: link.title })}`

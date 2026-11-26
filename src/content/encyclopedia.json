@@ -271,10 +271,11 @@
     },
     {
       "id": "OBJ-BEARING-brittany-boudin",
-      "title": "Eugène Boudin",
-      "kind": "related",
-      "wikidata": "Q212600",
-      "basis": "The collection credits Eugène Boudin with this role: Artist. The article provides background on that role."
+      "title": "Krimta ke Breiza (trutca ke Boudin)",
+      "language": "avk",
+      "kind": "article",
+      "wikidata": "Q20188726",
+      "basis": "The article links NGA object 61361 and identifies Boudin’s 1870 canvas with its catalogue dimensions, 47.3 by 66 centimetres. The NGA records accession 1983.1.11."
     },
     {
       "id": "OBJ-BEARING-colliers-point",
@@ -317,6 +318,14 @@
       "kind": "related",
       "wikidata": "Q309759",
       "basis": "The collection credits Edward Lear with this role: Artist. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-BEARING-mount-desert-fog",
+      "title": "Sel koe Mount Desert (trutca ke Church)",
+      "language": "avk",
+      "kind": "article",
+      "wikidata": "Q20201660",
+      "basis": "The pictured painting matches the vessel, rocks and dated inscription in NGA object 126132. Its image record names accession 2025.89.2. Use the current NGA record for measurements and custody."
     },
     {
       "id": "OBJ-BEARING-panama-moonlight",
@@ -444,6 +453,14 @@
       "kind": "related",
       "wikidata": "Q257808",
       "basis": "The article concerns the historical person discussed in both records."
+    },
+    {
+      "id": "OBJ-FERN-POST-LANDSCAPE",
+      "title": "منظر طبيعى برازيلى",
+      "language": "arz",
+      "kind": "article",
+      "wikidata": "Q19906272",
+      "basis": "The article identifies Frans Post’s 1650 painting in the Met. The displayed image is credited to Met object 437323 and accession 1981.318."
     },
     {
       "id": "OBJ-FERRY-PACK-lukutin-lacquer",

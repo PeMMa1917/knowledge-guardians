@@ -135,6 +135,24 @@ describe('Encyclopedia links for actual encounters', () => {
     expect(encyclopediaForExhibit(guide)).toMatchObject({ kind: 'related', title: 'The Negro Motorist Green Book' });
   });
 
+  it.each([
+    ['OBJ-FERN-POST-LANDSCAPE', '1981.318', 'arz', 'منظر_طبيعى_برازيلى', 'Egyptian Arabic'],
+    ['OBJ-BEARING-brittany-boudin', '1983.1.11', 'avk', 'Krimta_ke_Breiza_(trutca_ke_Boudin)', 'Kotava'],
+    ['OBJ-BEARING-mount-desert-fog', '2025.89.2', 'avk', 'Sel_koe_Mount_Desert_(trutca_ke_Church)', 'Kotava'],
+  ])('links the exact localized article after inspecting %s', (id, accession, language, path, label) => {
+    const d = new Driver();
+    const exhibit = d.e.pack.exhibits.find((row) => row.id === id)!;
+    expect(exhibit.specimen?.accession).toBe(accession);
+    d.run({ type: 'InspectExhibit', exhibit: id });
+    const journal = view(d);
+    const link = journal.encyclopedia[0];
+    expect(journal.references).toEqual([]);
+    expect(link).toMatchObject({ kind: 'article', language, encounter: 'inspected' });
+    expect(decodeURI(link.url)).toBe(`https://${language}.wikipedia.org/wiki/${path}`);
+    expect(encyclopediaLinkLabel(link)).toContain(`(${label})`);
+    expect(isEncyclopediaURL(link.url, link.kind)).toBe(true);
+  });
+
   it('accepts article routes and explicit searches over the approved Wikipedia hosts only', () => {
     expect(isEncyclopediaURL('https://en.wikipedia.org/w/index.php?search=Amunnakht', 'search')).toBe(true);
     expect(isEncyclopediaURL('https://it.wikipedia.org/wiki/Codice_Quetzalecatzin', 'article')).toBe(true);
