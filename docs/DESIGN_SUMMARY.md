@@ -1,6 +1,6 @@
 # Design summary
 
-This is a short paraphrase of the design for Knowledge Guardians. The full spec (version 2.10) is private and belongs to the project owner. It is **not** in this public repository, and no IB course wording is copied here. The rules that the code must follow are in [AGENTS.md](../AGENTS.md).
+This is the public summary of version 3 of the Knowledge Guardians design, expanded from version 2.10. The project owner maintains the full specification privately. The rules for authored content and implementation are in [AGENTS.md](../AGENTS.md).
 
 ## The idea
 
@@ -26,6 +26,7 @@ The game does not grade the player. It gives the same credit for every reasoned 
 - Chapter 13 opens the Archive of Voices. Excerpts and guide copies keep the dates, purposes and permissions of their sources. What a traveller can see from each approach helps the player revise the first direction.
 - Chapter 14 opens the Island of Models. Two route layers show journey counts and exposure to marked quiet areas. A lower landing changes ferry capacity, and the player checks what both models say about the same order.
 - Chapter 15 opens the Council of Inquiry. A watch can match a reference by chance. Players run three cases, compare two dated readings on inquiry and leave a practical check for people arriving at the shutter.
+- After the Council, the first label stand sends the player to Lia Vann’s Next Bench. The player leaves a usable pen and records by the public shelf or a loan desk, hears the effect on the next visitor, and opens the Handover Room’s repeatable source work.
 
 ## Core tools (play, not quizzes)
 
@@ -38,6 +39,8 @@ The game does not grade the player. It gives the same credit for every reasoned 
 | Showdown | Argues in public: challenge a link, give a counterexample, qualify, reframe, concede a fair point, call a witness, ask for the source. | Perspective, power, values |
 | Provenance Thread | Follows an object back through records until the record stops. | Evidence, interpretation |
 | Forge and assay | Makes a schematic billet and compares it with an object. | Explanation, objectivity |
+| Carried perspectives | Equips one field tool in the Satchel. The tool can expose an observation, reading or route in another world. | Scope, methods and tools |
+| Adventure Diary | Remembers choices and open leads in the Guardian’s voice. Players can keep private notes, download a Word copy, or print a copy through the browser. | Reflection, self-management |
 
 ## Learning layer
 

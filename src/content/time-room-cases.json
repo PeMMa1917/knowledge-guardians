@@ -1,0 +1,1058 @@
+[
+  {
+    "slug": "german-gilt-watch",
+    "key": "cma:1916.322",
+    "accession": "1916.322",
+    "title": "Seventeenth-century German watch",
+    "catalogueTitle": "Watch",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/1916.322",
+    "date": "1600s",
+    "place": "Germany",
+    "material": "gilded metal",
+    "dimensions": "Overall: 5.3 x 4.5 cm (2 1/16 x 1 3/4 in.)",
+    "people": [],
+    "kind": "case",
+    "feature": "gilded outer case",
+    "fact": "The collection identifies gilded metal and a seventeenth-century date.",
+    "limit": "The photographed exterior gives no interval between the ticks of the movement.",
+    "alt": "Small oval gold-coloured case with an upper ring.",
+    "pixelAsset": "specimens/time-cma-1916.322.jpg",
+    "offset": 1,
+    "drift": -2
+  },
+  {
+    "slug": "english-jeweled-watch",
+    "key": "cma:1964.416",
+    "accession": "1964.416",
+    "title": "Ray and Montague watch",
+    "catalogueTitle": "Watch",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/1964.416",
+    "date": "1813",
+    "place": "England",
+    "material": "gold, silver, pearls, diamonds, and enamel",
+    "dimensions": "Diameter: 8.6 x 6.1 cm (3 3/8 x 2 3/8 in.)",
+    "people": [
+      {
+        "name": "John Ray",
+        "role": "case maker"
+      },
+      {
+        "name": "James Montague",
+        "role": "case maker"
+      },
+      {
+        "name": "Just and Son",
+        "role": "movement maker"
+      }
+    ],
+    "kind": "case",
+    "feature": "decorated watch cover",
+    "fact": "The Cleveland record dates the watch to 1813 and credits John Ray, James Montague and Just and Son in different roles.",
+    "limit": "Its case decoration and documented makers give useful identity. A new running record is needed to check the rate.",
+    "alt": "Circular case with a dark jewelled border and small winding ring.",
+    "pixelAsset": "specimens/time-cma-1964.416.jpg",
+    "offset": 2,
+    "drift": -2
+  },
+  {
+    "slug": "martinot-egg-watch",
+    "key": "cma:1929.994",
+    "accession": "1929.994",
+    "title": "Engraved Egg Watch",
+    "catalogueTitle": "Engraved Egg Watch",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/1929.994",
+    "date": "1590–1600",
+    "place": "France",
+    "material": "silver, steel, and rock crystal",
+    "dimensions": "Overall: 7.4 x 4.8 x 3.2 cm (2 15/16 x 1 7/8 x 1 1/4 in.)",
+    "people": [
+      {
+        "name": "Denis Martinot",
+        "role": "designed by"
+      },
+      {
+        "name": "Theodor de Bry",
+        "role": "Decoration attributed by the museum"
+      }
+    ],
+    "kind": "case",
+    "feature": "engraved case",
+    "fact": "Cleveland credits Denis Martinot as designer and attributes the decoration to Theodor de Bry. The catalogue lists silver, steel and rock crystal.",
+    "limit": "An engraving can link a design to a source. It leaves the case’s running rate to its movement.",
+    "alt": "Oval watch with an elaborate repeating design and a loop at the top.",
+    "pixelAsset": "specimens/time-cma-1929.994.jpg",
+    "offset": 3,
+    "drift": -2
+  },
+  {
+    "slug": "marchand-watch",
+    "key": "cma:1916.357",
+    "accession": "1916.357",
+    "title": "Marchand’s enamelled watch",
+    "catalogueTitle": "Watch",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/1916.357",
+    "date": "late 1700s - early 1800s",
+    "place": "Paris, France",
+    "material": "enameled case mounted in engraved gilded metal",
+    "dimensions": "Diameter: 4.4 cm (1 3/4 in.)",
+    "people": [
+      {
+        "name": "Marchand",
+        "role": "made by"
+      }
+    ],
+    "kind": "dial",
+    "feature": "dial beside the enamel cover",
+    "fact": "The catalogue names Marchand and identifies the enamelled case mounted in engraved gilded metal.",
+    "limit": "The case and dial show how the object is presented. Their appearance leaves its regularity open.",
+    "alt": "Open watch with circular enamel decoration and a separate dial.",
+    "pixelAsset": "specimens/time-cma-1916.357.jpg",
+    "offset": 4,
+    "drift": -2
+  },
+  {
+    "slug": "swiss-chatelaine",
+    "key": "cma:1918.826",
+    "accession": "1918.826",
+    "title": "Swiss chatelaine watch",
+    "catalogueTitle": "Chatelaine Watch",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/1918.826",
+    "date": "mid 1800s",
+    "place": "Switzerland",
+    "material": "metal and enamel",
+    "dimensions": "Overall: 16.5 cm (6 1/2 in.)",
+    "people": [],
+    "kind": "dial",
+    "feature": "hanging dial",
+    "fact": "The museum names metal and enamel and dates the chatelaine watch to the mid-nineteenth century.",
+    "limit": "The pendant view shows how a dial can be carried. It gives no record of a reading taken while it moved.",
+    "alt": "An ornate hanging arrangement holds a small round dial at its lowest point.",
+    "pixelAsset": "specimens/time-cma-1918.826.jpg",
+    "offset": 5,
+    "drift": -2
+  },
+  {
+    "slug": "italian-watch-case",
+    "key": "cma:1916.564",
+    "accession": "1916.564",
+    "title": "Italian watch case",
+    "catalogueTitle": "Watch Case",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/1916.564",
+    "date": "1600s",
+    "place": "Italy",
+    "material": "crystal, gilt metal, enamel",
+    "dimensions": "Overall: 6.1 x 4.2 cm (2 3/8 x 1 5/8 in.)",
+    "people": [],
+    "kind": "case",
+    "feature": "bare cover",
+    "fact": "This catalogue entry is for a watch case in crystal, gilt metal and enamel.",
+    "limit": "A case is evidence for a cover and its material. The movement needs its own record.",
+    "alt": "Ring-shaped watch case with a dark translucent centre.",
+    "pixelAsset": "specimens/time-cma-1916.564.jpg",
+    "offset": 6,
+    "drift": -2
+  },
+  {
+    "slug": "american-pendant",
+    "key": "cma:2009.360",
+    "accession": "2009.360",
+    "title": "Jewelled American pendant watch",
+    "catalogueTitle": "Pendant Watch",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/2009.360",
+    "date": "c. 1890–1910",
+    "place": "United States",
+    "material": "diamonds, rubies, pearl, gold, platinum",
+    "dimensions": "Overall: 6 x 2.5 x 2 cm (2 3/8 x 1 x 13/16 in.)",
+    "people": [],
+    "kind": "case",
+    "feature": "suspended watch body",
+    "fact": "The museum records a pendant watch in gold and platinum with stones and a pearl.",
+    "limit": "Its material and form can guide a display. The image does not measure its running pace.",
+    "alt": "An ornate pendant with a pearl link and a round white form set with stones.",
+    "pixelAsset": "specimens/time-cma-2009.360.jpg",
+    "offset": 7,
+    "drift": -2
+  },
+  {
+    "slug": "wigstrom-clock",
+    "key": "cma:1966.475",
+    "accession": "1966.475",
+    "title": "Wigström nephrite clock",
+    "catalogueTitle": "Clock",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/1966.475",
+    "date": "1908–17",
+    "place": "St. Petersburg, Russia",
+    "material": "nephrite, gold, enamel, diamonds",
+    "dimensions": "Overall: 7.9 x 3.4 x 2.5 cm (3 1/8 x 1 5/16 x 1 in.)",
+    "people": [
+      {
+        "name": "Henrik Wigström",
+        "role": "workmaster"
+      },
+      {
+        "name": "House of Fabergé",
+        "role": "maker"
+      }
+    ],
+    "kind": "dial",
+    "feature": "small face on the stone case",
+    "fact": "The record names Henrik Wigström and the House of Fabergé and identifies the green case as nephrite.",
+    "limit": "The stone helps identify the worked case for the catalogue. Its appearance does not give a rate.",
+    "alt": "A rectangular dark green clock with a small dial and light corner marks.",
+    "pixelAsset": "specimens/time-cma-1966.475.jpg",
+    "offset": 8,
+    "drift": -2
+  },
+  {
+    "slug": "kremlin-clock",
+    "key": "cma:1966.477",
+    "accession": "1966.477",
+    "title": "Kremlin Tower Clock",
+    "catalogueTitle": "Kremlin Tower Clock",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/1966.477",
+    "date": "c. 1913",
+    "place": "St. Petersburg, Russia",
+    "material": "rhodonite, silver, enamel, emeralds, sapphires",
+    "dimensions": "Overall: 29 x 14.6 cm (11 7/16 x 5 3/4 in.)",
+    "people": [
+      {
+        "name": "House of Fabergé",
+        "role": "maker"
+      }
+    ],
+    "kind": "dial",
+    "feature": "dial in a miniature tower",
+    "fact": "The House of Fabergé catalogue piece is a clock styled as the Kremlin tower, made with rhodonite and other materials.",
+    "limit": "The shaped case depicts a tower. This accession gives no direct timing record from the tower itself.",
+    "alt": "A tall pink model tower has green accents and a circular dial.",
+    "pixelAsset": "specimens/time-cma-1966.477.jpg",
+    "offset": 1,
+    "drift": -1
+  },
+  {
+    "slug": "cox-cabinet",
+    "key": "cma:2009.77",
+    "accession": "2009.77",
+    "title": "James Cox’s cabinet clock",
+    "catalogueTitle": "Cabinet Clock",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/2009.77",
+    "date": "c. 1770–75",
+    "place": "England",
+    "material": "gold, agate, enamel dial, glass",
+    "dimensions": "Overall: 16.5 x 8.9 cm (6 1/2 x 3 1/2 in.)",
+    "people": [
+      {
+        "name": "James Cox",
+        "role": "artist"
+      }
+    ],
+    "kind": "dial",
+    "feature": "small cabinet dial",
+    "fact": "The museum credits James Cox and lists gold, agate, an enamel dial and glass.",
+    "limit": "The catalogue identifies a dial within the cabinet. A still image preserves one reading position.",
+    "alt": "Square cabinet clock with paired decorative panels below the face.",
+    "pixelAsset": "specimens/time-cma-2009.77.jpg",
+    "offset": 2,
+    "drift": -1
+  },
+  {
+    "slug": "butterfield-shadow",
+    "key": "cma:1942.490",
+    "accession": "1942.490",
+    "title": "Butterfield-type silver sundial",
+    "catalogueTitle": "Butterfield Sundial",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/1942.490",
+    "date": "1700s",
+    "place": "France",
+    "material": "silver",
+    "dimensions": "Overall: 7.7 x 7.4 cm (3 1/16 x 2 15/16 in.)",
+    "people": [
+      {
+        "name": "Michael Butterfield",
+        "role": "Instrument maker for whom the dial style is named"
+      }
+    ],
+    "kind": "shadow",
+    "feature": "shadow from the adjustable fin",
+    "fact": "The museum describes an adjustable gnomon, which casts a shadow on the dial. It connects the style’s name to the English instrument maker Butterfield, who worked in Paris.",
+    "limit": "The shadow depends on the light and the instrument’s position. A missing shadow leaves a reading open.",
+    "alt": "An octagonal engraved dial carries a small hinged fin.",
+    "pixelAsset": "specimens/time-cma-1942.490.jpg",
+    "offset": 3,
+    "drift": -1
+  },
+  {
+    "slug": "new-york-tall",
+    "key": "cma:1992.70",
+    "accession": "1992.70",
+    "title": "Tiffany & Co. tall clock",
+    "catalogueTitle": "Tall Clock",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/1992.70",
+    "date": "c. 1880",
+    "place": "New York, United States",
+    "material": "mahogany, teak with dial faces of gilded and patinated metal, glass",
+    "dimensions": "Overall: 247.3 x 66 x 36.5 cm (97 3/8 x 26 x 14 3/8 in.)",
+    "people": [
+      {
+        "name": "Tiffany & Co.",
+        "role": "manufacturer"
+      }
+    ],
+    "kind": "dial",
+    "feature": "dial in the long case",
+    "fact": "Cleveland lists Tiffany & Co., mahogany and teak, and dial surfaces in gilded and patinated metal.",
+    "limit": "The case records material and scale. More than one time reading is needed for a rate.",
+    "alt": "A tall carved wooden case with a dial across the upper front.",
+    "pixelAsset": "specimens/time-cma-1992.70.jpg",
+    "offset": 4,
+    "drift": -1
+  },
+  {
+    "slug": "boulle-martinot",
+    "key": "cma:1967.153",
+    "accession": "1967.153",
+    "title": "Boulle and Martinot clock",
+    "catalogueTitle": "Clock",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/1967.153",
+    "date": "c. 1695",
+    "place": "France",
+    "material": "tortoise shell and brass inlay, gilt bronze",
+    "dimensions": "Overall: 113.7 cm (44 3/4 in.)",
+    "people": [
+      {
+        "name": "André-Charles Boulle",
+        "role": "maker"
+      },
+      {
+        "name": "Balthazar Martinot II",
+        "role": "clockmaker"
+      }
+    ],
+    "kind": "dial",
+    "feature": "face in a marquetry case",
+    "fact": "The museum names the cabinetmaker André-Charles Boulle and clockmaker Balthazar Martinot II.",
+    "limit": "The two attributions are separate contributions. The case pattern cannot measure how the movement runs.",
+    "alt": "A tall dark clock with gilt figures and inlay around its face.",
+    "pixelAsset": "specimens/time-cma-1967.153.jpg",
+    "offset": 5,
+    "drift": -1
+  },
+  {
+    "slug": "paris-mantel",
+    "key": "cma:2011.204",
+    "accession": "2011.204",
+    "title": "Paris mantel clock",
+    "catalogueTitle": "Mantel Clock",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/2011.204",
+    "date": "c. 1780–90",
+    "place": "Paris, France",
+    "material": "marble, gilt-bronze, glass",
+    "dimensions": "Overall: 70.5 x 58 x 20.5 cm (27 3/4 x 22 13/16 x 8 1/16 in.)",
+    "people": [],
+    "kind": "dial",
+    "feature": "central mantel dial",
+    "fact": "The museum records marble, gilt bronze and glass for this mantel clock, dated about 1780–90.",
+    "limit": "The collection photograph preserves a presentation of the dial and case. It has no sequence for working out elapsed time.",
+    "alt": "A light dial sits above two dark columns and between gilt figures.",
+    "pixelAsset": "specimens/time-cma-2011.204.jpg",
+    "offset": 6,
+    "drift": -1
+  },
+  {
+    "slug": "latz-regulator",
+    "key": "cma:1949.200",
+    "accession": "1949.200",
+    "title": "Latz and Stollewerck tall-case clock",
+    "catalogueTitle": "Tall- case Clock (Regulateur)",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/1949.200",
+    "date": "1744",
+    "place": "Paris, France",
+    "material": "boulle marquetry with gilt bronze mounts",
+    "dimensions": "Overall: 261.6 x 69.9 x 41.9 cm (103 x 27 1/2 x 16 1/2 in.)",
+    "people": [
+      {
+        "name": "Jean-Pierre Latz",
+        "role": "artist"
+      },
+      {
+        "name": "Stollewerck",
+        "role": "movement maker"
+      }
+    ],
+    "kind": "dial",
+    "feature": "tall regulator face",
+    "fact": "The collection dates the clock to 1744 and credits Jean-Pierre Latz and Stollewerck in separate work roles.",
+    "limit": "The maker record and the readout identify the instrument. A timed comparison is needed to establish an observed pace.",
+    "alt": "A narrow ornate standing case carries a large dial high on the front.",
+    "pixelAsset": "specimens/time-cma-1949.200.jpg",
+    "offset": 7,
+    "drift": -1
+  },
+  {
+    "slug": "baumgartinger-clock",
+    "key": "cma:1966.362",
+    "accession": "1966.362",
+    "title": "Baumgartinger clock",
+    "catalogueTitle": "Clock",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/1966.362",
+    "date": "c. 1750",
+    "place": "Germany",
+    "material": "carved and gilded wood, faience",
+    "dimensions": "Overall: 97.8 x 59.7 x 37.2 cm (38 1/2 x 23 1/2 x 14 5/8 in.)",
+    "people": [
+      {
+        "name": "Baumgartinger",
+        "role": "movement maker"
+      }
+    ],
+    "kind": "dial",
+    "feature": "face in a gilded stand",
+    "fact": "Cleveland names Baumgartinger and lists carved and gilded wood with faience.",
+    "limit": "The carved surround and maker line identify this case. A rate needs readings separated by an observed interval.",
+    "alt": "A gilt sculpted clock stand frames a circular dial.",
+    "pixelAsset": "specimens/time-cma-1966.362.jpg",
+    "offset": 8,
+    "drift": -1
+  },
+  {
+    "slug": "french-wall-clock",
+    "key": "cma:1950.376",
+    "accession": "1950.376",
+    "title": "Gilt French wall clock",
+    "catalogueTitle": "Wall Clock",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/1950.376",
+    "date": "c. 1750–60",
+    "place": "France",
+    "material": "gilt bronze",
+    "dimensions": "Overall: 116.9 x 50.8 x 27.7 cm (46 x 20 x 10 7/8 in.)",
+    "people": [],
+    "kind": "dial",
+    "feature": "wall-facing hand",
+    "fact": "The catalogue places the gilt bronze wall clock in France around 1750–60.",
+    "limit": "The front can face a public space while its inner rate remains separate evidence.",
+    "alt": "An elongated gilded clock case has an openwork surround around the face.",
+    "pixelAsset": "specimens/time-cma-1950.376.jpg",
+    "offset": 1,
+    "drift": 1
+  },
+  {
+    "slug": "tiffany-lenzkirch",
+    "key": "cma:2009.443",
+    "accession": "2009.443",
+    "title": "Tiffany and Lenzkirch mantel clock",
+    "catalogueTitle": "Mantle Clock",
+    "institution": "Cleveland Museum of Art",
+    "catalogue": "https://clevelandart.org/art/2009.443",
+    "date": "1901",
+    "place": "American and German firms named separately",
+    "material": "brass, mahogany",
+    "dimensions": "Overall: 40 x 22.9 x 8.9 cm (15 3/4 x 9 x 3 1/2 in.)",
+    "people": [
+      {
+        "name": "Lenzkirch Clock Factory",
+        "role": "clockmaker"
+      },
+      {
+        "name": "Tiffany & Co.",
+        "role": "retailer"
+      }
+    ],
+    "kind": "dial",
+    "feature": "face above the case opening",
+    "fact": "The collection credits Tiffany & Co. and the Lenzkirch Clock Factory and gives the date 1901.",
+    "limit": "The maker records belong to their respective contributions. A still dial view cannot check later accuracy.",
+    "alt": "A curved wooden case has an upper dial and a small lower opening.",
+    "pixelAsset": "specimens/time-cma-2009.443.jpg",
+    "offset": 2,
+    "drift": 1
+  },
+  {
+    "slug": "japanese-pillar-a",
+    "key": "met:00.12.10",
+    "accession": "00.12.10",
+    "title": "Japanese wall clock 00.12.10",
+    "catalogueTitle": "Wall Clock",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/62821",
+    "date": "19th century",
+    "place": "Japan",
+    "material": "Brass and wood",
+    "dimensions": "H. 19 1/2 in. (49.5 cm)",
+    "people": [],
+    "kind": "dial",
+    "feature": "label alongside the narrow case",
+    "fact": "The Met records this Japanese wall clock with accession 00.12.10 and a nineteenth-century date.",
+    "limit": "The collection view shows a dial and long case. How a particular owner read them needs another record.",
+    "alt": "Long narrow wall clock with a small rectangular top and a marked vertical strip.",
+    "pixelAsset": "specimens/time-met-62821.jpg",
+    "offset": 3,
+    "drift": 1
+  },
+  {
+    "slug": "japanese-pillar-b",
+    "key": "met:00.12.11",
+    "accession": "00.12.11",
+    "title": "Japanese wall clock 00.12.11",
+    "catalogueTitle": "Wall Clock",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/62825",
+    "date": "19th century",
+    "place": "Japan",
+    "material": "Brass and wood",
+    "dimensions": "H. 16 in. (40.6 cm)",
+    "people": [],
+    "kind": "dial",
+    "feature": "front of the long case",
+    "fact": "The Met catalogues this as a separate nineteenth-century Japanese wall clock, accession 00.12.11.",
+    "limit": "The similar cases have two accessions. One cannot establish what the other display showed at a given time.",
+    "alt": "A narrow dark wooden case has an upper circular feature above a single long door.",
+    "pixelAsset": "specimens/time-met-62825.jpg",
+    "offset": 4,
+    "drift": 1
+  },
+  {
+    "slug": "japanese-astronomical",
+    "key": "met:00.12.19",
+    "accession": "00.12.19",
+    "title": "Japanese astronomical clock",
+    "catalogueTitle": "Astronomical Clock",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/62833",
+    "date": "18th–19th century",
+    "place": "Japan",
+    "material": "Brass, steel and wood",
+    "dimensions": "Diam. of dial 6 1/8 in. (15.6 cm)",
+    "people": [],
+    "kind": "calendar",
+    "feature": "broad astronomical dial",
+    "fact": "The Met calls accession 00.12.19 an astronomical clock and assigns an eighteenth- to nineteenth-century date.",
+    "limit": "The large dial shows the form of a display. Its photograph gives no successive observations for running pace.",
+    "alt": "Black case with a wide circular pale dial marked in rings.",
+    "pixelAsset": "specimens/time-met-62833.jpg",
+    "offset": 5,
+    "drift": 1
+  },
+  {
+    "slug": "egypt-water",
+    "key": "met:17.194.2341",
+    "accession": "17.194.2341",
+    "title": "Egyptian water clock with a baboon",
+    "catalogueTitle": "Water Clock Decorated with a Baboon",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/572126",
+    "date": "664–30 BCE",
+    "place": "Egypt",
+    "material": "Faience",
+    "dimensions": "H. 5.7 × W. 3 × D. 7.2 cm (2 1/4 × 1 3/16 × 2 13/16 in.)",
+    "people": [],
+    "kind": "water",
+    "feature": "reference to a water clock",
+    "fact": "The Met identifies the object as a water clock with a baboon and dates it to 664–30 BCE.",
+    "limit": "The intact-looking form offers an object study. The trial’s water levels and elapsed marks are invented.",
+    "alt": "Pale small rectangular object with a recessed front and sculpted animal.",
+    "pixelAsset": "specimens/time-met-572126.jpg",
+    "offset": 6,
+    "drift": 1
+  },
+  {
+    "slug": "egypt-shadow",
+    "key": "met:12.181.307",
+    "accession": "12.181.307",
+    "title": "Egyptian Shadow Clock",
+    "catalogueTitle": "Shadow Clock",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/576278",
+    "date": "305–30 BCE",
+    "place": "Egypt",
+    "material": "Marble",
+    "dimensions": "H. 9.3 × W. 5.2 × D. 14.7 cm, 1.3 kg (3 11/16 × 2 1/16 × 5 13/16 in., 2.9 lb.)",
+    "people": [],
+    "kind": "shadow",
+    "feature": "shadow surface",
+    "fact": "The Met gives a Ptolemaic-period range of 305–30 BCE and identifies this object as a shadow clock.",
+    "limit": "A shadow clock’s reading needs a case with illumination and position. Its stone can still be studied without a shadow.",
+    "alt": "A brown stepped object slopes up towards a broad standing end.",
+    "pixelAsset": "specimens/time-met-576278.jpg",
+    "offset": 7,
+    "drift": 1
+  },
+  {
+    "slug": "augsburg-musical",
+    "key": "met:2002.323a-f",
+    "accession": "2002.323a–f",
+    "title": "Musical Clock with Spinet and Organ",
+    "catalogueTitle": "Musical Clock with Spinet and Organ",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/503530",
+    "date": "ca. 1625",
+    "place": "Germany",
+    "material": "Ebony, gliding, brass, silver gilt, gilt brass, iron, various wood and metals, wire, parchment and leather",
+    "dimensions": "30 3/4 × 19 11/16 × 12 5/8 in. (78.1 × 50 × 32 cm)\r\nInner Mechanism: 10 3/4 × 19 × 10 in. (27.3 × 48.3 × 25.4 cm)",
+    "people": [
+      {
+        "name": "Veit Langenbucher",
+        "role": "Maker"
+      },
+      {
+        "name": "Samuel Bidermann",
+        "role": "Maker"
+      }
+    ],
+    "kind": "sound",
+    "feature": "musical cue",
+    "fact": "The Met names Veit Langenbucher and Samuel Bidermann in its record for this musical clock with a spinet and organ.",
+    "limit": "A caption can identify its music apparatus. Its original sound and timing are separate tests.",
+    "alt": "A dark tall case shows arched compartments and small gold-coloured figures.",
+    "pixelAsset": "specimens/time-met-503530.jpg",
+    "offset": 8,
+    "drift": 1
+  },
+  {
+    "slug": "haarlem-dial",
+    "key": "met:17.190.1603",
+    "accession": "17.190.1603",
+    "title": "Bockeltz astronomical clock-watch",
+    "catalogueTitle": "Clock watch with astronomical dial and sundial",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/194191",
+    "date": "ca. 1605–10",
+    "place": "Haarlem, Netherlands",
+    "material": "Case: gilded brass; Dial: gilded brass, silver, and copper; Movement: gilded brass, partly blued steel, and silver",
+    "dimensions": "Overall: 3 1/2 × 2 7/16 × 2 5/16 in. (8.9 × 6.2 × 5.9 cm); Width of back plate: 2 1/8 in. (5.4 cm)",
+    "people": [
+      {
+        "name": "Watchmaker: Jan Jansen Bockeltz",
+        "role": "Maker"
+      }
+    ],
+    "kind": "shadow",
+    "feature": "sundial inside the watch",
+    "fact": "The Met credits Jan Jansen Bockeltz and identifies both an astronomical dial and a sundial.",
+    "limit": "Two readouts in one object can use different references. One captured reading does not calibrate both.",
+    "alt": "Small gold clock-watch lies open with a gold lid and a circular face.",
+    "pixelAsset": "specimens/time-met-194191.jpg",
+    "offset": 1,
+    "drift": 2
+  },
+  {
+    "slug": "forfaict-alarm",
+    "key": "met:17.190.1607",
+    "accession": "17.190.1607",
+    "title": "Forfaict clock-watch with alarm",
+    "catalogueTitle": "Clock-watch with alarm and calendar",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/194195",
+    "date": "ca. 1600–1610",
+    "place": "Paris, France",
+    "material": "Movement: gilded breass and steel, partly blued; case and dial: brass, silvered brass, silver; hand: steel",
+    "dimensions": "2 1/8 x 1 3/8 in. (5.4 x 3.5 cm)",
+    "people": [
+      {
+        "name": "Watchmaker: Nicolas Forfaict",
+        "role": "Maker"
+      }
+    ],
+    "kind": "sound",
+    "feature": "alarm and calendar",
+    "fact": "The Met credits Nicolas Forfaict and catalogues an alarm alongside the calendar.",
+    "limit": "A cue and calendar give different readings. An alarm heard once gives no evidence of the later pace.",
+    "alt": "Gold open watch with a light face and an ornamented edge.",
+    "pixelAsset": "specimens/time-met-194195.jpg",
+    "offset": 2,
+    "drift": 2
+  },
+  {
+    "slug": "augsburg-table",
+    "key": "met:17.190.747",
+    "accession": "17.190.747",
+    "title": "Augsburg astronomical table clock",
+    "catalogueTitle": "Astronomical table clock",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/193624",
+    "date": "second quarter 17th century",
+    "place": "Augsburg, Germany",
+    "material": "Case: gilded brass and gilded copper; Dials: gilded brass and silver; Movement: brass, gilded brass, and steel",
+    "dimensions": "Overall: 25 × 10 × 10 in. (63.5 × 25.4 × 25.4 cm)",
+    "people": [],
+    "kind": "calendar",
+    "feature": "astronomical dial",
+    "fact": "The Met dates this German astronomical table clock to the second quarter of the seventeenth century.",
+    "limit": "The astronomical face identifies a display type. A still position cannot give its changes over time.",
+    "alt": "Gold-coloured clock tower with a circular central dial and a pointed crown.",
+    "pixelAsset": "specimens/time-met-193624.jpg",
+    "offset": 3,
+    "drift": 2
+  },
+  {
+    "slug": "beringer-cube",
+    "key": "met:03.21.8",
+    "accession": "03.21.8",
+    "title": "David Beringer’s portable cube sundial",
+    "catalogueTitle": "Portable cube sundial",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/188836",
+    "date": "ca. 1780–1821",
+    "place": "Nuremberg, Germany",
+    "material": "Fruitwood and paper",
+    "dimensions": "Overall: 7 1/8 × 5 1/8 × 3 7/8 in. (18.1 × 13 × 9.8 cm)",
+    "people": [
+      {
+        "name": "David Beringer",
+        "role": "Maker"
+      }
+    ],
+    "kind": "shadow",
+    "feature": "different faces of the cube",
+    "fact": "The Met credits David Beringer and identifies this as a portable cube sundial.",
+    "limit": "A shadow shown on one face depends on how the cube is placed and lit.",
+    "alt": "Pale cube with a pointed top fin on a dark wooden stand.",
+    "pixelAsset": "specimens/time-met-188836.jpg",
+    "offset": 4,
+    "drift": 2
+  },
+  {
+    "slug": "bloud-diptych",
+    "key": "met:03.21.58",
+    "accession": "03.21.58",
+    "title": "Charles Bloud’s diptych sundial",
+    "catalogueTitle": "Portable diptych sundial",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/188859",
+    "date": "ca. 1666–80",
+    "place": "Dieppe, France",
+    "material": "Ivory, pewter, brass, paper",
+    "dimensions": "Overall: 2 13/16 × 2 5/16 × 9/16 in. (7.1 × 5.9 × 1.4 cm)",
+    "people": [
+      {
+        "name": "Probably by Charles Bloud",
+        "role": "Maker"
+      }
+    ],
+    "kind": "shadow",
+    "feature": "two open hinged leaves",
+    "fact": "The Met credits Charles Bloud and dates the portable diptych sundial to about 1666–80.",
+    "limit": "The open leaves show the instrument’s shape. Its reading depends on where and how the piece is used.",
+    "alt": "Open rectangular sundial with a marked circle on each leaf.",
+    "pixelAsset": "specimens/time-met-188859.jpg",
+    "offset": 5,
+    "drift": 2
+  },
+  {
+    "slug": "tompion-repeater",
+    "key": "met:17.190.1488a-b",
+    "accession": "17.190.1488a, b",
+    "title": "Tompion repeater and Northcott case",
+    "catalogueTitle": "Repeater watch and case",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/194080",
+    "date": "before 1682",
+    "place": "London, England",
+    "material": "Gilt metal, enamel; tortoiseshell, silver",
+    "dimensions": "Diameter: 1 3/4 in. (4.4 cm)",
+    "people": [
+      {
+        "name": "Watchmaker: Thomas Tompion",
+        "role": "Maker"
+      },
+      {
+        "name": "Case maker: John Northcott",
+        "role": "Maker"
+      }
+    ],
+    "kind": "sound",
+    "feature": "repeater signal",
+    "fact": "The Met identifies both Thomas Tompion and John Northcott in the repeater watch and case record.",
+    "limit": "The case and work are distinct contributions. The collection view supplies no historical sound sample.",
+    "alt": "A round watch with a complex light face and a dark narrow frame.",
+    "pixelAsset": "specimens/time-met-194080.jpg",
+    "offset": 6,
+    "drift": 2
+  },
+  {
+    "slug": "wutky-repeater",
+    "key": "met:17.190.1523",
+    "accession": "17.190.1523",
+    "title": "Johann Wutky repeater watch",
+    "catalogueTitle": "Repeater watch",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/194116",
+    "date": "ca. 1675–80",
+    "place": "Historic Breslau, now Wrocław",
+    "material": "Case: pierced and incised brass, with silver dial; Movement: brass; steel, partly blued; and silver",
+    "dimensions": "Diameter: 1 3/4 in. (4.4 cm)",
+    "people": [
+      {
+        "name": "Watchmaker: Johann Wutky",
+        "role": "Maker"
+      }
+    ],
+    "kind": "sound",
+    "feature": "enclosed repeat mechanism",
+    "fact": "The Met credits Johann Wutky in its record for this repeater watch, dated about 1675–80.",
+    "limit": "The image shows the closed ornament. Sounding the historical watch would require a separate recorded observation.",
+    "alt": "Gold round watch with an ornate perforated-looking cover and a ring.",
+    "pixelAsset": "specimens/time-met-194116.jpg",
+    "offset": 7,
+    "drift": 2
+  },
+  {
+    "slug": "bordier-calendar",
+    "key": "met:89.2.83",
+    "accession": "89.2.83",
+    "title": "Bordier Frères calendar watch",
+    "catalogueTitle": "Watch with calendar",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/187194",
+    "date": "ca. 1780–90",
+    "place": "Geneva, Switzerland",
+    "material": "Case: varicolored gold, partly enameled; Dial: white enamel; Movement: brass and steel",
+    "dimensions": "Diameter (case): 1 1/2 in. (3.8 cm);\r\nDiameter (back plate): 1 3/16 in. (3 cm)",
+    "people": [
+      {
+        "name": "Watchmaker: Firm of Bordier Frères",
+        "role": "Maker"
+      }
+    ],
+    "kind": "calendar",
+    "feature": "calendar wheel",
+    "fact": "The Met identifies the firm of Bordier Frères and dates its calendar watch to about 1780–90.",
+    "limit": "The catalogue records a calendar display. The decorative side leaves its calendar position hidden.",
+    "alt": "An oval red and gold case surrounds a portrait and has a loop above.",
+    "pixelAsset": "specimens/time-met-187194.jpg",
+    "offset": 8,
+    "drift": 2
+  },
+  {
+    "slug": "godemar-musical",
+    "key": "met:17.190.1581",
+    "accession": "17.190.1581",
+    "title": "Godemar musical repeater",
+    "catalogueTitle": "Musical repeater watch",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/194172",
+    "date": "18th–19th century",
+    "place": "Geneva, Switzerland",
+    "material": "Gold, enamel, pearls",
+    "dimensions": "Diameter: 2 1/4 in. (5.7 cm)",
+    "people": [
+      {
+        "name": "Watchmaker: Godemar of Geneva",
+        "role": "Maker"
+      }
+    ],
+    "kind": "sound",
+    "feature": "musical repeat",
+    "fact": "The Met’s record names Godemar of Geneva and describes the object as a musical repeater watch.",
+    "limit": "Its outward portrait and musical capability use different records. The original tune is not recovered here.",
+    "alt": "A watch case has an oval pale portrait inside a dark surround.",
+    "pixelAsset": "specimens/time-met-194172.jpg",
+    "offset": 1,
+    "drift": 3
+  },
+  {
+    "slug": "delaunoy-pendulum",
+    "key": "met:26.256.4",
+    "accession": "26.256.4",
+    "title": "Delaunoy oscillating clock",
+    "catalogueTitle": "Clock in the form of an oscillating pendulum (pendule oscillante)",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/209245",
+    "date": "ca. 1815–30",
+    "place": "France",
+    "material": "Gilt bronze, mahogany veneer",
+    "dimensions": "Height: 22 1/2 in. (57.2 cm)",
+    "people": [
+      {
+        "name": "Delaunoy (elève de Breguet)",
+        "role": "Maker"
+      }
+    ],
+    "kind": "dial",
+    "feature": "visible pendulum form",
+    "fact": "The Met names Delaunoy and describes the case as a clock in the form of an oscillating pendulum.",
+    "limit": "The appearance of a pendulum shape does not give the repeated intervals of the clock in operation.",
+    "alt": "A pale clock face hangs beneath a narrow curving tall frame.",
+    "pixelAsset": "specimens/time-met-209245.jpg",
+    "offset": 2,
+    "drift": 3
+  },
+  {
+    "slug": "willard-banjo",
+    "key": "met:30.120.15",
+    "accession": "30.120.15",
+    "title": "Aaron Willard Jr. banjo clock",
+    "catalogueTitle": "Banjo Clock",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/316",
+    "date": "ca. 1825",
+    "place": "United States",
+    "material": "Mahogany, gilt gesso, eglomise tablets, white pine, tulip\r poplar",
+    "dimensions": "34 1/2 x 10 in. (87.6 x 25.4 cm)",
+    "people": [
+      {
+        "name": "Aaron Willard Jr.",
+        "role": "Maker"
+      }
+    ],
+    "kind": "dial",
+    "feature": "dial above the shaped case",
+    "fact": "The Met credits Aaron Willard Jr. and dates this banjo clock to about 1825.",
+    "limit": "The shape identifies a kind of case. Testing its pace would need separated readings.",
+    "alt": "A narrow tall case links a round upper dial to a rectangular lower box.",
+    "pixelAsset": "specimens/time-met-316.jpg",
+    "offset": 3,
+    "drift": 3
+  },
+  {
+    "slug": "boston-carriage",
+    "key": "met:1981.434",
+    "accession": "1981.434",
+    "title": "Boston Clock Company carriage clock",
+    "catalogueTitle": "Carriage Clock",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/1454",
+    "date": "ca. 1890",
+    "place": "United States",
+    "material": "Brass, glass, enamel",
+    "dimensions": "6 1/8 x 3 1/4 x 2 5/8 in. (15.6 x 8.3 x 6.7 cm)",
+    "people": [
+      {
+        "name": "Boston Clock Company",
+        "role": "Maker"
+      }
+    ],
+    "kind": "dial",
+    "feature": "portable front dial",
+    "fact": "The Met credits the Boston Clock Company and dates this carriage clock to about 1890.",
+    "limit": "Portability gives a setting for a comparison. The archival record does not quantify its rate in motion.",
+    "alt": "A compact rectangular clock has an upper handle and a front dial.",
+    "pixelAsset": "specimens/time-met-1454.jpg",
+    "offset": 4,
+    "drift": 3
+  },
+  {
+    "slug": "forestville-acorn",
+    "key": "met:1970.289.6",
+    "accession": "1970.289.6",
+    "title": "Forestville acorn clock",
+    "catalogueTitle": "Acorn Clock",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/34",
+    "date": "1847–50",
+    "place": "United States",
+    "material": "Mahogany, laminated",
+    "dimensions": "24 3/8 x 14 5/8 x 5 1/8 in. (61.9 x 37.1 x 13 cm)",
+    "people": [
+      {
+        "name": "Forestville Manufacturing Company",
+        "role": "Maker"
+      }
+    ],
+    "kind": "dial",
+    "feature": "dial in a shaped shelf case",
+    "fact": "The Met credits the Forestville Manufacturing Company and dates the clock to 1847–50.",
+    "limit": "The collection photograph records its form. A schedule needs a second time observation as well.",
+    "alt": "Dark brown shelf clock with a round upper section and a broad curved base.",
+    "pixelAsset": "specimens/time-met-34.jpg",
+    "offset": 5,
+    "drift": 3
+  },
+  {
+    "slug": "isaac-johnson-sundial",
+    "key": "met:2003.163",
+    "accession": "2003.163",
+    "title": "Isaac Johnson’s sundial",
+    "catalogueTitle": "Sundial",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/17560",
+    "date": "1731",
+    "place": "United States",
+    "material": "Brass",
+    "dimensions": "6 15/16 x 6 15/16 in. (17.6 x 17.6 cm)",
+    "people": [
+      {
+        "name": "Isaac Johnson",
+        "role": "Maker"
+      }
+    ],
+    "kind": "shadow",
+    "feature": "engraved shadow scale",
+    "fact": "The museum credits Isaac Johnson and gives the date 1731.",
+    "limit": "Its engraved scale survives as evidence. A prediction from a shadow still needs a specific position and light.",
+    "alt": "Flat brass plate with engraved radiating lines and characters.",
+    "pixelAsset": "specimens/time-met-17560.jpg",
+    "offset": 6,
+    "drift": 3
+  },
+  {
+    "slug": "chandlee-sundial",
+    "key": "met:1986.9",
+    "accession": "1986.9",
+    "title": "Goldsmith Chandlee sundial",
+    "catalogueTitle": "Sundial",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/8026",
+    "date": "ca. 1800",
+    "place": "United States",
+    "material": "Brass, mahogany",
+    "dimensions": "9 3/8 x 9 3/8 in. (23.8 x 23.8 cm)",
+    "people": [
+      {
+        "name": "Goldsmith Chandlee",
+        "role": "Maker"
+      }
+    ],
+    "kind": "shadow",
+    "feature": "raised pointer",
+    "fact": "The Met credits Goldsmith Chandlee and dates the sundial to about 1800.",
+    "limit": "A photograph at one orientation presents the scale. It gives no reading at another hour by itself.",
+    "alt": "Square plate with a circular scale and a dark upright pointer.",
+    "pixelAsset": "specimens/time-met-8026.jpg",
+    "offset": 7,
+    "drift": 3
+  },
+  {
+    "slug": "lepine-calendar",
+    "key": "met:2019.283.71",
+    "accession": "2019.283.71",
+    "title": "Lépine clock with Arabic calendar inscriptions",
+    "catalogueTitle": "Clock with perpetual calendar and moon cycle inscribed in Arabic",
+    "institution": "The Metropolitan Museum of Art",
+    "catalogue": "https://www.metmuseum.org/art/collection/search/822719",
+    "date": "last quarter 18th century",
+    "place": "French maker and Arabic inscription, separately recorded",
+    "material": "Gilded bronze, enamel",
+    "dimensions": "confirmed: 8 × 8 1/16 × 2 3/4 in. (20.3 × 20.5 × 7 cm)",
+    "people": [
+      {
+        "name": "Jean Antoine Lépine",
+        "role": "Maker"
+      }
+    ],
+    "kind": "calendar",
+    "feature": "calendar and moon displays",
+    "fact": "The museum names Jean Antoine Lépine and catalogues a perpetual calendar and moon cycle with Arabic inscriptions.",
+    "limit": "The maker’s attribution and the language on the instrument are different pieces of evidence. Neither identifies every person who read it.",
+    "alt": "Gilded clock with three circular displays and an ornamented crest.",
+    "pixelAsset": "specimens/time-met-822719.jpg",
+    "offset": 8,
+    "drift": 3
+  }
+]

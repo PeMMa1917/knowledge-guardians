@@ -1,6 +1,14 @@
 /** A fictional mobile-library route with a dispatch hall and two street stops. */
 import type { Condition } from '../domain/types';
 import { CIVIC_ARRIVAL_TRAYS, civicReceivingArrangements, civicReceivingLoad } from '../domain/civicArrivals';
+import { civicLaneReading, civicLaneRouting, type RouteSocket } from '../domain/routeTiles';
+import { CIVIC_APPEAL_CANAL, CIVIC_APPEAL_DISPATCH } from './civicAppeal';
+import { CIVIC_INCENTIVE_BOARD } from './civicIncentive';
+import { CIVIC_BENCH_DEBATE } from './benchDebate';
+import { CIVIC_BOUNDARY } from './serviceBoundary';
+import { CIVIC_DATE_REGISTER_PROPS, CIVIC_DATE_REGISTER_READERS } from './dateRegister';
+import { CIVIC_CALLBOARD_DOOR } from './civicCallboard';
+import { MATERIAL_CANAL_REVISIT } from './materialStores';
 import type { Interactable, MapDef } from './types';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'civic.waypost'): Interactable {
@@ -24,6 +32,13 @@ const overlapAvailable: Condition = { objective: 'civic.arrival' };
 const rackReady: Condition = { objective: 'civic.overlap.trays' };
 const counted: Condition = { flag: 'civic.overlap.counted', eq: true };
 const arrangements = civicReceivingArrangements();
+const laneAvailable: Condition = { objective: 'civic.finish' };
+const laneChoice = (route: RouteSocket): Condition => ({ flag: 'civic.routing.layout', eq: route });
+const recordReferral: Condition = { flagSet: 'record.edge.voices.mount' };
+const recordFolio: Condition = { all: [recordReferral, { flag: 'perspective.active', eq: 'record-edge-folio' }] };
+const reliefReply = (route: RouteSocket): Condition => ({ all: [
+  { objective: 'water.routing.finish' }, { flag: 'water.routing.layout', eq: route },
+] });
 
 function overlapScene(id: string, x: number, y: number, label: string, art: string, visibleIf: Condition): Interactable {
   return { id, kind: 'scene', x, y, w: 1, h: 1, label, art, node: id, walkThrough: true, visibleIf };
@@ -51,7 +66,7 @@ export const CIVIC_DISPATCH: MapDef = {
     return (x >= 11 && x <= 17) || (y >= 10 && y <= 13) ? 'civic-hall-route' : 'civic-hall-tile';
   }),
   blocks: [[1, 0, 27, 3]], zones: [], spawn: { x: 12, y: 12 },
-  npcs: [{ id: 'civic-operator', x: 13, y: 7, facing: 'down' }],
+  npcs: [{ id: 'civic-operator', x: 13, y: 7, facing: 'down' }, ...CIVIC_DATE_REGISTER_READERS],
   stamps: [
     { stamp: 'civic-route-wall', x: 11, y: 2 }, { stamp: 'civic-bookcases', x: 3, y: 3 },
     { stamp: 'civic-bookcases', x: 22, y: 3 }, { stamp: 'civic-cart', x: 6, y: 7 },
@@ -61,6 +76,8 @@ export const CIVIC_DISPATCH: MapDef = {
     { stamp: 'plant-tall', x: 16, y: 14 },
   ],
   interactables: [
+    ...CIVIC_DATE_REGISTER_PROPS,
+    CIVIC_CALLBOARD_DOOR,
     door('civic-steps-path', 3, 11, 'the west passage to North Steps', { map: 'civic.steps', x: 12, y: 14 }),
     door('civic-canal-path', 25, 11, 'the east passage to Canal Walk', { map: 'civic.canal', x: 5, y: 10 }),
     door('civic-nexus-return', 13, 16, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 28, y: 12 }, 'preserved.door'),
@@ -78,6 +95,23 @@ export const CIVIC_DISPATCH: MapDef = {
       { visibleIf: counted }),
     overlapScene('civic-overlap-plan', 19, 6, 'the practice dispatch board', 'civic.wide',
       { all: [{ objective: 'civic.overlap.evidence' }, { not: { flagSet: 'civic.overlap.layout' } }] }),
+    { id: 'civic-route-tiles', kind: 'fieldgame', game: 'civic-lane-routing', x: 18, y: 9, w: 1, h: 1,
+      label: 'Ade’s two-stop lane board', art: 'civic.reserve', walkThrough: true, visibleIf: laneAvailable },
+    sign('civic-routing-water-rows', 17, 6, 'Omi’s relief note from the rows', 'water.fields',
+      'You widened the seed route at the weir. Ade has hung the lower crew’s unmet request beside the count. The lane board has the same spare-piece constraint. Its readers can tell Ade whether a route and a time fit.',
+      { visibleIf: reliefReply('first') }),
+    sign('civic-routing-water-channel', 17, 6, 'Omi’s relief note from the lower channel', 'water.channel',
+      'You widened the lower route at the weir. Ade has hung the seed rows’ unmet request beside the count. The lane board has the same spare-piece constraint. Its readers can tell Ade whether a route and a time fit.',
+      { visibleIf: reliefReply('second') }),
+    { id: 'civic-edge-wea-case', kind: 'exhibit', exhibit: 'OBJ-EDGE-WEA', x: 5, y: 6, w: 1, h: 1,
+      label: 'the separate Wea convention', art: 'civic.ledger', visibleIf: recordReferral },
+    { id: 'civic-edge-wea-stand', kind: 'scene', node: 'record.edge.wea', x: 5, y: 7, w: 1, h: 1,
+      label: 'the stand for the two treaty dates', art: 'preserved.folder', walkThrough: true, visibleIf: recordFolio,
+      artOpen: { key: 'preserved.display-paired', if: { flag: 'record.edge.wea', eq: true } } },
+    { id: 'civic-edge-place', kind: 'scene', node: 'record.edge.post', x: 11, y: 14, w: 1, h: 1,
+      label: 'Lin’s stand for the source copies', art: 'civic.notice', walkThrough: true,
+      visibleIf: { all: [recordFolio, { objective: 'record.edge.civic.compare' }, { not: { flagSet: 'record.edge.civic.mount' } }] } },
+    ...CIVIC_APPEAL_DISPATCH,
   ],
   lights: [
     { x: 13, y: 7, r: 85, color: 0xe5bd87 }, { x: 15, y: 9, r: 68, color: 0xc3dfda },
@@ -114,6 +148,9 @@ export const CIVIC_STEPS: MapDef = {
     { stamp: 'market-planter', x: 4, y: 5 },
   ],
   interactables: [
+    CIVIC_INCENTIVE_BOARD,
+    ...CIVIC_BENCH_DEBATE,
+    ...CIVIC_BOUNDARY,
     { id: 'cross-name-box', kind: 'fieldgame', game: 'cross-name-box', x: 19, y: 5, w: 1, h: 1, label: 'the gate machine (a crossing)', art: 'board-stand' },
     door('civic-steps-return', 12, 16, 'the west passage back to Library Dispatch', { map: 'civic.dispatch', x: 4, y: 11 }),
     door('civic-steps-to-canal', 25, 12, 'the street to Canal Walk', { map: 'civic.canal', x: 23, y: 9 }),
@@ -137,6 +174,20 @@ export const CIVIC_STEPS: MapDef = {
     sign('civic-overlap-stagger', 7, 9, 'the staggered practice board', 'civic.even',
       'The practice dispatch assigns three couriers to separate marks. All three loads fit if everyone can use their assigned mark. A spare mark stays open for a courier whose shift pattern changes.',
       { flag: 'civic.overlap.seen', visibleIf: { flag: 'civic.overlap.layout', eq: 'stagger' } }),
+    sign('civic-routing-steps-slip', 5, 7, 'the North Steps stair and ramp slip', 'civic.ledger',
+      'The school families meet below North Steps at the pick-up bell. They sent four practice requests. Two people can use either lane. Two ask for a step-free approach before the bell. The stop has three trial places.',
+      { flag: 'civic.routing.source.first', visibleIf: laneAvailable }),
+    sign('civic-routing-steps-ramp', 19, 7, 'the ramp and trial notice at North Steps', 'forest.ridge',
+      `The ramp tile comes to North Steps. In the trial North Steps ${civicLaneReading(civicLaneRouting('first').steps)}. Keep the Canal Walk requests visible and ask which evening time would work.`,
+      { flag: 'civic.routing.seen', visibleIf: laneChoice('first') }),
+    { id: 'civic-edge-eastern-case', kind: 'exhibit', exhibit: 'OBJ-EDGE-EASTERN', x: 14, y: 6, w: 1, h: 1,
+      label: 'the Eastern Shawnee Tribe of Oklahoma’s constitutional case', art: 'preserved.folder', visibleIf: recordReferral },
+    { id: 'civic-edge-eastern-stand', kind: 'scene', node: 'record.edge.eastern', x: 14, y: 7, w: 1, h: 1,
+      label: 'the constitutional title window', art: 'preserved.slip', walkThrough: true, visibleIf: recordFolio,
+      artOpen: { key: 'civic.ledger', if: { flag: 'record.edge.eastern', eq: true } } },
+    sign('civic-edge-dates', 14, 9, 'two separate treaty records at North Steps', 'preserved.display-paired',
+      '30 September 1809, Fort Wayne. Article 5 calls for a separate agreement. 26 October 1809, Vincennes. The convention records a declaration by the listed Wea representatives. A reader has pencilled in both document locators for the next copy.',
+      { flag: 'record.edge.seen', visibleIf: { flag: 'record.edge.civic.mount', eq: 'dates' } }),
   ],
   lights: [
     { x: 11, y: 8, r: 72, color: 0xf9d4a2 }, { x: 16, y: 8, r: 67, color: 0xe6b7ab },
@@ -163,6 +214,7 @@ export const CIVIC_CANAL: MapDef = {
     { stamp: 'bench', x: 12, y: 10 }, { stamp: 'market-planter', x: 23, y: 5 },
   ],
   interactables: [
+    MATERIAL_CANAL_REVISIT,
     door('civic-canal-return', 3, 10, 'the east passage back to Library Dispatch', { map: 'civic.dispatch', x: 24, y: 11 }),
     door('civic-canal-to-steps', 25, 9, 'the street back to North Steps', { map: 'civic.steps', x: 24, y: 12 }),
     sign('civic-walk-slip', 9, 9, 'the walking crew’s request slip', 'civic.ledger',
@@ -183,6 +235,16 @@ export const CIVIC_CANAL: MapDef = {
     sign('civic-overlap-buffer', 21, 7, 'the second receiving spot for the practice run', 'civic.reserve',
       'A helper makes one mark wide enough for two loads. The red tray can clear if its two couriers reach that mark. Three loads together would still make somebody wait.',
       { flag: 'civic.overlap.seen', visibleIf: { flag: 'civic.overlap.layout', eq: 'buffer' } }),
+    sign('civic-routing-canal-slip', 8, 11, 'the Canal Walk stair and ramp slip', 'civic.ledger',
+      'Canal Walk crews hand their keys to the next watch before they go. They sent four practice requests. Two people can use either lane. Two ask for a step-free approach after handover. The stop has three trial places.',
+      { flag: 'civic.routing.source.second', visibleIf: laneAvailable }),
+    sign('civic-routing-canal-ramp', 24, 8, 'the ramp and trial notice at Canal Walk', 'forest.ridge',
+      `The ramp tile comes to Canal Walk. In the trial Canal Walk ${civicLaneReading(civicLaneRouting('second').canal)}. Keep the North Steps requests visible and ask which pick-up time would work.`,
+      { flag: 'civic.routing.seen', visibleIf: laneChoice('second') }),
+    sign('civic-edge-scope', 13, 10, 'the named constitution’s source line at Canal Walk', 'civic.notice',
+      'The direction points to the Eastern Shawnee Tribe of Oklahoma’s own public constitution at North Steps. Beside it, a reader has made two columns for the Civic rehearsal. One names who wrote down the request. The other names who may decide it.',
+      { flag: 'record.edge.seen', visibleIf: { flag: 'record.edge.civic.mount', eq: 'scope' } }),
+    ...CIVIC_APPEAL_CANAL,
   ],
   lights: [
     { x: 9, y: 9, r: 67, color: 0xf1c591 }, { x: 16, y: 8, r: 70, color: 0xd5dbb2 },

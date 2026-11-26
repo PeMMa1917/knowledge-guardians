@@ -115,3 +115,82 @@ describe('Where the Wings Go', () => {
     expect(offer()).toBe(false);
   });
 });
+
+describe('The Creek Keeps Its Own Time', () => {
+  function prop(d: Driver, id: string) {
+    const item = MAPS[d.s.mapId].interactables.find((i) => i.id === id);
+    if (!item || !check(item.visibleIf, d.s)) throw new Error(`Missing ${id} in ${d.s.mapId}`);
+    return item;
+  }
+
+  function visit(d: Driver, id: string): boolean {
+    const item = prop(d, id);
+    if (!item.to || !check(item.openIf, d.s)) return false;
+    if (item.flag) d.run({ type: 'SetFlag', flag: item.flag, value: true });
+    d.s.mapId = item.to.map;
+    d.s.pos = { x: item.to.x, y: item.to.y };
+    return true;
+  }
+
+  function use(d: Driver, id: string, ...choices: string[]) {
+    const item = prop(d, id);
+    if (!item.node) throw new Error(`${id} has no scene`);
+    d.walk(item.node, choices);
+  }
+
+  it.each([
+    { route: 'rail', alternate: 'bend', choice: 'Unfold the north rail', east: { x: 18, y: 4 }, west: { x: 12, y: 3 }, art: 'forest.guide-rail' },
+    { route: 'bend', alternate: 'rail', choice: 'Fit the wind screen', east: { x: 19, y: 17 }, west: { x: 12, y: 17 }, art: 'forest.screen' },
+  ])('opens only the $route shortcut from either bank and leaves the main connections usable',
+    ({ route, alternate, choice, east, west, art }) => {
+      const d = begin();
+      expect(visit(d, 'forest-trail-path')).toBe(true);
+      expect(visit(d, 'forest-spate-rail-west')).toBe(false);
+      expect(visit(d, 'forest-spate-bend-east')).toBe(false);
+      use(d, 'forest-spate-west-mark', 'Fit the two dates');
+      expect(d.done('forest.spate.readings')).toBe(false);
+      expect(visit(d, 'forest-clearing-path')).toBe(true);
+      expect(d.e.visibleOptions('forest.spate.plan', d.s).some(({ option }) => option.text.includes(choice))).toBe(false);
+      use(d, 'forest-spate-plan', 'Let the creek keep its own time');
+      expect(prop(d, 'forest-spate-wait-notice').text).toContain('usual round');
+      expect(visit(d, 'forest-bridge-to-trail')).toBe(true);
+      use(d, 'forest-spate-east-mark', 'Lay the cart crew’s paper');
+      expect(d.done('forest.spate.readings')).toBe(true);
+      expect(visit(d, 'forest-clearing-path')).toBe(true);
+      use(d, 'forest-spate-plan', choice);
+      expect(d.done('forest.spate.plan')).toBe(true);
+      expect(d.done('forest.spate.crossed')).toBe(false);
+      expect(prop(d, `forest-spate-${route}-notice`)).toBeTruthy();
+      expect(visit(d, 'forest-bridge-to-trail')).toBe(true);
+      expect(visit(d, `forest-spate-${alternate}-west`)).toBe(false);
+      const opened = prop(d, `forest-spate-${route}-west`).artOpen;
+      expect(opened?.key).toBe(art);
+      expect(check(opened?.if, d.s)).toBe(true);
+      expect(visit(d, `forest-spate-${route}-west`)).toBe(true);
+      expect(d.s.pos).toEqual(east);
+      expect(d.done('forest.spate.crossed')).toBe(true);
+      expect(visit(d, `forest-spate-${route}-east`)).toBe(true);
+      expect(d.s.pos).toEqual(west);
+      expect(visit(d, 'forest-trail-back')).toBe(true);
+      expect(prop(d, 'forest-spate-return-slip').text).toContain('notes came back dry');
+      expect(visit(d, 'forest-community-path')).toBe(true);
+      expect(visit(d, 'forest-community-back')).toBe(true);
+      expect(d.done('forest.finish')).toBe(false);
+      expect(d.p.credit['credit.forest.finish']).toBeUndefined();
+    });
+
+  it('recalls a specific earlier gauge check when the Guardian has actually made it', () => {
+    const d = begin();
+    visit(d, 'forest-trail-path');
+    use(d, 'forest-spate-west-mark', 'Fit the two dates');
+    use(d, 'forest-spate-east-mark', 'Lay the cart crew’s paper');
+    visit(d, 'forest-clearing-path');
+    const recall = () => d.e.visibleOptions('forest.spate.plan', d.s)
+      .some(({ option }) => option.next === 'forest.spate.coast');
+    expect(recall()).toBe(false);
+    d.run({ type: 'SetFlag', flag: 'coast.gauge.recheck', value: true });
+    expect(recall()).toBe(true);
+    use(d, 'forest-spate-plan', 'One gauge on the Observatory Coast', 'Unfold the north rail');
+    expect(d.s.flags['forest.spate.route']).toBe('rail');
+  });
+});

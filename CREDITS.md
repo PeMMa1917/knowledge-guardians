@@ -4,7 +4,7 @@ This file lists every asset in the game: where it came from, who made it, and it
 
 The same data is in machine-readable form in [`public/assets/credits.json`](public/assets/credits.json). The command `npm run assets:check` makes sure that every file in `public/assets/` has an entry there. **When you add or remove an asset, update both files.** See [docs/ASSETS.md](docs/ASSETS.md).
 
-All third-party assets are **CC0 1.0** (public domain). You can use them for commercial work. Attribution is not required, but we give it.
+The game uses original assets, materials with a CC0 or public-domain designation, and the separately credited Brooklyn Museum photograph under CC BY 3.0. The asset manifest identifies the licence and source for each file.
 
 The art direction is "rich, colourful pixel art with lighting", inspired in general by modern pixel-art RPGs. We do not copy art, characters, music or levels from any existing game.
 
@@ -20,16 +20,27 @@ The art direction is "rich, colourful pixel art with lighting", inspired in gene
 | `art/generated/voices_tiles.png` | [Archive of Voices tile generator](tools/make_voices_tiles.py) | Knowledge Guardians project | CC0 1.0 | Original listening screens, Glass Walk and Lamp Quay. |
 | `art/generated/island_tiles.png` | [Island tile generator](tools/make_island_tiles.py) | Knowledge Guardians project | CC0 1.0 | Original workshop model, landings, boardwalks and habitat margin. |
 | `art/generated/council_tiles.png` | [Council tile generator](tools/make_council_tiles.py) | Knowledge Guardians project | CC0 1.0 | Original Time Hall scales, Letter Gallery niches and Bell Rail. |
+| Collection images from Cleveland in `specimens/` | [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access) | The Cleveland Museum of Art | CC0 1.0 | Reduced for download and rendered in the game’s pixel style. |
+| Collection images from The Met in `specimens/` | [The Met Open Access](https://www.metmuseum.org/hubs/open-access) | The Metropolitan Museum of Art | CC0 1.0 | The manifest links the accession and exact source image for each file. |
+| Smithsonian collection images in `specimens/` | [Smithsonian Open Access](https://www.si.edu/openaccess) | Smithsonian Institution | CC0 1.0 | Images with documented open rights in the National Museum of Asian Art, National Museum of African Art and National Museum of Natural History collections. |
+| Yale Peabody collection image in `specimens/` | [Yale Peabody Museum specimen and image record](https://api.gbif.org/v1/occurrence/1039401135) | Marilyn Fox, Yale Peabody Museum | CC0 1.0 | The manifest links the museum accession, image and rights evidence. |
+| `specimens/register-brooklyn-70.177.69.jpg` | [Brooklyn Museum record and photo credit](https://web.archive.org/web/20171025011939id_/https://www.brooklynmuseum.org/opencollection/objects/96982) | Brooklyn Museum photograph, accession 70.177.69, Gift of Ernest Erickson | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) | Reduced and rendered in the game’s pixel style. |
+| `specimens/callboard-loc-g4701g.ct009133.jpg` | [Codex Quetzalecatzin, Library of Congress](https://www.loc.gov/resource/g4701g.ct009133/) | Library of Congress image provider | [Public domain](https://commons.wikimedia.org/wiki/File:Codex_Quetzalecatzin.jpg) | Reduced for in-game use. |
+| Naturalis collection images in `specimens/` | [Naturalis Biodiversity Center collections](https://www.naturalis.nl/en/collection) | Naturalis Biodiversity Center | CC0 1.0 | Rights for each individual image are linked in the manifest. |
+| Walters collection images in `specimens/` | [The Walters Art Museum Open Access](https://thewalters.org/about/open-access/) | The Walters Art Museum | CC0 1.0 | Exact accessions and pictures are linked in the manifest. |
+| National Museum of Natural History invertebrate specimen images in `specimens/` | [Smithsonian Open Access](https://www.si.edu/openaccess) | Smithsonian Institution and credited contributors | CC0 1.0 | Individual occurrence and licensed image records accompany each file. |
 
 Other art is **original** and drawn in code: exhibit pedestals, the evidence board, the blade, the catalogue, the assay table, the anvil, the portal, the fairy guide Lumen, icons and the large inspection pictures. See `src/ui/illustrations.ts`. Lighting, particles and glow are made in code too.
 
 ## Music
 
+The campaign soundtrack and returning story phrase are original music created for Knowledge Guardians. The arrangements and instrument synthesis are defined in [`campaignScore.ts`](src/domain/campaignScore.ts), [`storyMotifs.ts`](src/domain/storyMotifs.ts) and [`campaignSynth.ts`](src/app/campaignSynth.ts).
+
 | File in `public/assets/audio/music/` | Source | Author | Licence | Use in game |
 |---|---|---|---|---|
-| `mysterious-ambience-cynicmusic.mp3` | [Mysterious Ambience (song21)](https://opengameart.org/content/mysterious-ambience-song21) | cynicmusic | CC0 1.0 (the page also offers CC-BY 3.0, CC-BY-SA 3.0 and GPL 3.0; we use CC0) | The Nexus |
-| `town-theme-cynicmusic.mp3` | [Town Theme RPG](https://opengameart.org/content/town-theme-rpg) | cynicmusic | CC0 1.0 | Emberford |
-| `happy-lullaby-cynicmusic.mp3` | [Happy Lullaby (song17)](https://opengameart.org/content/happy-lullaby-song17) | cynicmusic | CC0 1.0 | Title screen |
+| `mysterious-ambience-cynicmusic.mp3` | [Mysterious Ambience (song21)](https://opengameart.org/content/mysterious-ambience-song21) | cynicmusic | CC0 1.0 (the page also offers CC-BY 3.0, CC-BY-SA 3.0 and GPL 3.0; we use CC0) | Archive music fallback |
+| `town-theme-cynicmusic.mp3` | [Town Theme RPG](https://opengameart.org/content/town-theme-rpg) | cynicmusic | CC0 1.0 | Town music fallback |
+| `happy-lullaby-cynicmusic.mp3` | [Happy Lullaby (song17)](https://opengameart.org/content/happy-lullaby-song17) | cynicmusic | CC0 1.0 | Title cue and secondary fallback |
 
 ## Sound effects
 
@@ -62,4 +73,4 @@ All sound effects were converted to mono 96 kbit/s MP3 with ffmpeg. The sound di
 
 ## Historical sources
 
-The historical sources for the real objects in the game are in [docs/SOURCES.md](docs/SOURCES.md) and in `src/content/sources.json`. The game shows text about these objects and links to the records. It does not include photographs from the museums.
+The historical sources for the real objects in the game are in [docs/SOURCES.md](docs/SOURCES.md) and in the chapter content. The game uses original pixel drawings and transforms collection images released under verified open licences. The Polar Store’s exact accession illustrations are original drawings based on catalogue descriptions. Per-image rights, catalogue and download links are in [the asset manifest](public/assets/credits.json).

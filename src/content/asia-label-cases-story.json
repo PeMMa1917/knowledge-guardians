@@ -1,0 +1,334 @@
+{
+  "characters": [
+    {
+      "id": "label-loft-keeper",
+      "name": "Nellin Ryll",
+      "role": "Keeper of the Island dock copies",
+      "sprite": "custom:deep.black.teal.olive.none.gold.covered.none.none",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "flag": "asia.loft.route",
+            "eq": "rail"
+          },
+          "node": "asia.loft.keeper.rail"
+        },
+        {
+          "if": {
+            "flag": "asia.loft.route",
+            "eq": "bench"
+          },
+          "node": "asia.loft.keeper.bench"
+        },
+        {
+          "node": "asia.loft.keeper"
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "asia.loft.keeper",
+      "speaker": "label-loft-keeper",
+      "historicalLabel": "fictional-world",
+      "text": "I put Ivo’s four-crate slip at both berths. I spent a morning taking it back. Now one clerk can run the walk-up rail or staff the reading bench. Turn two different kinds of case strip and try one of their ways of keeping claims together on my copying board."
+    },
+    {
+      "id": "asia.loft.keeper.rail",
+      "speaker": "label-loft-keeper",
+      "historicalLabel": "fictional-world",
+      "text": "The quick copies are going out. I heard somebody read both lines in one breath. I still want a bench for the people who ask where the second figure came from."
+    },
+    {
+      "id": "asia.loft.keeper.bench",
+      "speaker": "label-loft-keeper",
+      "historicalLabel": "fictional-world",
+      "text": "I can take people through both trials here. The crew has another stop to make. I’ll keep the dock work desk open while people are waiting."
+    },
+    {
+      "id": "asia.loft.dispatch",
+      "speaker": "label-loft-keeper",
+      "historicalLabel": "fictional-world",
+      "text": "My old slip said FOUR in the largest type I own. We have both trial sheets now. One shift left to put something where people actually need it.",
+      "options": [
+        {
+          "if": {
+            "all": [
+              {
+                "objective": "asia.loft.compare"
+              },
+              {
+                "not": {
+                  "flag": "asia.loft.route",
+                  "eq": "rail"
+                }
+              }
+            ]
+          },
+          "text": "Hang two berth rows at the walk-up rail. Crews can take a copy as they pass.",
+          "effects": [
+            {
+              "setFlag": "asia.loft.route",
+              "value": "rail"
+            },
+            {
+              "setFlag": "asia.loft.readback",
+              "value": false
+            },
+            {
+              "setFlag": "asia.loft.published",
+              "value": false
+            }
+          ],
+          "next": "asia.loft.post.rail"
+        },
+        {
+          "if": {
+            "all": [
+              {
+                "objective": "asia.loft.compare"
+              },
+              {
+                "not": {
+                  "flag": "asia.loft.route",
+                  "eq": "bench"
+                }
+              }
+            ]
+          },
+          "text": "Put the two trial sheets on the reading bench. Give visitors time to follow each number.",
+          "effects": [
+            {
+              "setFlag": "asia.loft.route",
+              "value": "bench"
+            },
+            {
+              "setFlag": "asia.loft.readback",
+              "value": false
+            },
+            {
+              "setFlag": "asia.loft.published",
+              "value": false
+            }
+          ],
+          "next": "asia.loft.post.bench"
+        },
+        {
+          "if": {
+            "not": {
+              "objective": "asia.loft.compare"
+            }
+          },
+          "text": "Leave the hooks empty. I have a copy to prepare at the board.",
+          "next": "asia.loft.wait"
+        },
+        {
+          "if": {
+            "objective": "asia.loft.compare"
+          },
+          "text": "Leave the dispatch where it is for now."
+        }
+      ]
+    },
+    {
+      "id": "asia.loft.wait",
+      "speaker": "label-loft-keeper",
+      "historicalLabel": "fictional-world",
+      "text": "Try both faces of two different case strips. Then use the copying board beside these hooks."
+    },
+    {
+      "id": "asia.loft.post.rail",
+      "speaker": "label-loft-keeper",
+      "historicalLabel": "fictional-world",
+      "text": "Four at the upper berth in its trial. Two at the lower in its trial. I’ve opened the west rail with free take-away copies. The detailed sheets will stay in the work desk today."
+    },
+    {
+      "id": "asia.loft.post.bench",
+      "speaker": "label-loft-keeper",
+      "historicalLabel": "fictional-world",
+      "text": "I’ve put the two trial sheets under separate clips and opened the eastern bench. The crew can still pick up its loading slip at the work desk. That takes another stop."
+    },
+    {
+      "id": "asia.loft.check.rail",
+      "speaker": "label-loft-keeper",
+      "historicalLabel": "fictional-world",
+      "text": "I’m refilling the quick-copy tray. One crew put the lower-berth slip on a bundle of two model crates. A visitor is still asking what changed between trials.",
+      "options": [
+        {
+          "text": "Take a copy to the Quiet Margin and pin the two rows side by side.",
+          "effects": [
+            {
+              "setFlag": "asia.loft.readback",
+              "value": "rail"
+            }
+          ],
+          "next": "asia.loft.take.rail"
+        }
+      ]
+    },
+    {
+      "id": "asia.loft.check.bench",
+      "speaker": "label-loft-keeper",
+      "historicalLabel": "fictional-world",
+      "text": "A visitor followed the lower-berth trial sheet from its landing mark to the tally. A crew member went back to the work desk for a loading slip.",
+      "options": [
+        {
+          "text": "Carry a pointer to the Quiet Margin so visitors can find this reading bench.",
+          "effects": [
+            {
+              "setFlag": "asia.loft.readback",
+              "value": "bench"
+            }
+          ],
+          "next": "asia.loft.take.bench"
+        }
+      ]
+    },
+    {
+      "id": "asia.loft.take.rail",
+      "speaker": "label-loft-keeper",
+      "historicalLabel": "fictional-world",
+      "text": "Use the little rack just south of the path. Face the two rows out so crews can see them without stopping."
+    },
+    {
+      "id": "asia.loft.take.bench",
+      "speaker": "label-loft-keeper",
+      "historicalLabel": "fictional-world",
+      "text": "Set the pointer on the little rack just south of the path. A reader can follow the trial papers all the way to the bench."
+    },
+    {
+      "id": "asia.loft.margin.rail",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The two trial rows fit on the outdoor rack. A crew member points to the lower row and divides a load before walking on.",
+      "options": [
+        {
+          "text": "Clip the two trial rows to the rack.",
+          "effects": [
+            {
+              "setFlag": "asia.loft.published",
+              "value": "rail"
+            },
+            {
+              "journal": "j.asia.loft.rail"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "asia.loft.margin.bench",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The board has room for a pointer to the staffed bench. A visitor can follow it inside and ask which line came from which trial.",
+      "options": [
+        {
+          "text": "Clip the bench pointer to the rack.",
+          "effects": [
+            {
+              "setFlag": "asia.loft.published",
+              "value": "bench"
+            },
+            {
+              "journal": "j.asia.loft.bench"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.asia.loft.rail",
+      "claimKind": "observation",
+      "text": "I hung two lines from the Island trials where crews could take them as they passed. A crew used the lower line to divide a load. The same shift had no one free to explain the two trials at the reading bench."
+    },
+    {
+      "id": "j.asia.loft.bench",
+      "claimKind": "observation",
+      "text": "I left a pointer to the staffed bench where visitors could follow the two Island trials. Someone found which landing the second number came from. The crew collected its loading slips at the work desk."
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.asia.loft.compare.1",
+      "objective": "asia.loft.compare",
+      "depth": 1,
+      "text": "Turn two case strips. What can someone use on each face?"
+    },
+    {
+      "id": "h.asia.loft.compare.2",
+      "objective": "asia.loft.compare",
+      "depth": 2,
+      "text": "A case’s left stand opens the museum record. Its right stand carries the reversible strip."
+    },
+    {
+      "id": "h.asia.loft.compare.3",
+      "objective": "asia.loft.compare",
+      "depth": 3,
+      "text": "The stands announce whether they concern construction, measurements, records or attributions. Use two kinds."
+    },
+    {
+      "id": "h.asia.loft.compare.4",
+      "objective": "asia.loft.compare",
+      "depth": 4,
+      "text": "Inspect the dragon ewer and the Sawankhalok jar. Use both faces at each strip, then apply one method to the dock copy at the board near the entrance."
+    },
+    {
+      "id": "h.asia.loft.outcome.1",
+      "objective": "asia.loft.outcome",
+      "depth": 1,
+      "text": "Decide how the Island’s two trial slips will reach their readers."
+    },
+    {
+      "id": "h.asia.loft.outcome.2",
+      "objective": "asia.loft.outcome",
+      "depth": 2,
+      "text": "The dispatch hooks open the walk-up rail or the reading bench."
+    },
+    {
+      "id": "h.asia.loft.outcome.3",
+      "objective": "asia.loft.outcome",
+      "depth": 3,
+      "text": "Enter the west bay for the rail or the east bay for the bench. Collect a copy by the lamp."
+    },
+    {
+      "id": "h.asia.loft.outcome.4",
+      "objective": "asia.loft.outcome",
+      "depth": 4,
+      "text": "Return to Quiet Margin and use the rack just south of the door to pin the copy. You can change the dispatch later."
+    }
+  ],
+  "dockCopy": {
+    "draft": "Ivo gave me two trial sheets and one paper rail. The first sign carried just the big number. Choose a way to keep something useful attached to each figure.",
+    "waiting": "Leave the clips loose while I turn two kinds of case strip.",
+    "keep": "Keep the current draft.",
+    "methods": [
+      {
+        "method": "construction",
+        "action": "Clip each figure to its own drawing of the tested berth.",
+        "response": "The left slip shows the upper platform. The right slip shows the lower platform. The copy now has somewhere to point when a crew asks where to load.",
+        "mark": "Berth drawings travel with the separate four-crate and two-crate trial rows."
+      },
+      {
+        "method": "measure",
+        "action": "Fit a per-circuit tab next to each count.",
+        "response": "One tab follows the upper berth’s count of four. A separate tab follows the lower berth’s count of two. A reader can see what each count covers.",
+        "mark": "Both numbers describe one circuit each, under the conditions of their own trials."
+      },
+      {
+        "method": "record",
+        "action": "Hook each row through the eyelet on its own trial paper.",
+        "response": "A reader can lift either row and see the trial it came from. If the landing changes again we can file a new test beside these two.",
+        "mark": "The trial sheets keep separate hooks. A new test can sit beside them."
+      },
+      {
+        "method": "attribution",
+        "action": "Move each place tag down from the common heading to its own row.",
+        "response": "The upper berth sits next to four. The lower berth sits next to two. Moving the place tags kept their trial claims distinct.",
+        "mark": "Each row carries the name of the berth in its own trial."
+      }
+    ]
+  }
+}

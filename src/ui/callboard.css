@@ -1,0 +1,7 @@
+.callboard-panel, .callboard-proof, .callboard-guide { display: grid; gap: .55rem; min-width: 0; }
+.callboard-panel :is(h2, h3, p) { margin: 0; overflow-wrap: anywhere; }
+.callboard-panel .row { flex-wrap: wrap; }
+.callboard-panel button { max-width: 100%; white-space: normal; }
+.callboard-proof, .callboard-guide { border: 1px solid currentColor; border-radius: .45rem; padding: .45rem .6rem; align-content: start; }
+.callboard-clips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(14em, 100%), 1fr)); gap: .5rem; }
+.callboard-proof img { width: 7rem; height: 6rem; max-width: 100%; object-fit: contain; }

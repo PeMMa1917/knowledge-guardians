@@ -1,6 +1,13 @@
 /** Fictional theatre with separate backstage and audience sightlines. */
 import type { Condition } from '../domain/types';
+import { CUE_HOUSE_READER } from './cueWorkshop';
+import { GALLERY_SEAM } from './seamWitness';
 import type { Interactable, MapDef } from './types';
+import { STAGE_FOYER_BACKBILL, STAGE_GALLERY_BACKBILL } from './backbill';
+import { STAGE_FOYER_FRAMES, STAGE_GALLERY_FRAMES, STAGE_REHEARSAL_FRAMES } from './frames';
+import { CUE_FRAME_READER, MOTION_FRAME_READER, STAGE_FILM_FOYER, STAGE_FILM_GALLERY, STAGE_FILM_REHEARSAL } from './filmCuts';
+import { specimenWorkEntrance, specimenWorkReadbacks } from './specimenWork';
+import { STORY_ARCHIVE_ENTRANCE, STORY_ARCHIVE_READBACKS } from './storyArchive';
 
 type TheatreRoom = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'stamps' | 'interactables' | 'lights'>;
@@ -31,7 +38,12 @@ function notice(id: string, x: number, y: number, label: string, art: string, te
 
 export const STAGE_FOYER = room({
   id: 'stage.foyer', name: 'House of Performance: Front Foyer', width: 28, height: 17,
-  background: 0x322942, spawn: { x: 12, y: 12 }, npcs: [],
+  background: 0x322942, spawn: { x: 12, y: 12 },
+  npcs: [
+    { id: 'vesper-quill', x: 16, y: 8, facing: 'down',
+      visibleIf: { all: [{ objective: 'stage.finish' }, { not: { objective: 'council.arrival' } }] } },
+    MOTION_FRAME_READER,
+  ],
   stamps: [
     { stamp: 'banners', x: 3, y: 1 }, { stamp: 'banners', x: 23, y: 1 },
     { stamp: 'window', x: 9, y: 1 }, { stamp: 'window', x: 17, y: 1 },
@@ -40,6 +52,9 @@ export const STAGE_FOYER = room({
     { stamp: 'plant-tall', x: 19, y: 13 }, { stamp: 'long-table', x: 12, y: 5 },
   ],
   interactables: [
+    ...STAGE_FOYER_BACKBILL,
+    ...STAGE_FOYER_FRAMES,
+    STAGE_FILM_FOYER,
     { id: 'cross-stage-fright', kind: 'fieldgame', game: 'cross-stage-fright', x: 21, y: 12, w: 1, h: 1, label: 'the curtain, two minutes before you go on (a crossing)', art: 'label-stand' },
     { id: 'cross-fortune', kind: 'fieldgame', game: 'cross-fortune', x: 8, y: 9, w: 1, h: 1, label: 'Madame Quandary\'s card table (a crossing)', art: 'cork-board' },
     door('stage-rehearsal-path', 6, 3, 'the west passage to rehearsal', { map: 'stage.rehearsal', x: 12, y: 12 }),
@@ -59,6 +74,14 @@ export const STAGE_FOYER = room({
     notice('stage-light-craft-display', 18, 7, 'the relief with the visible basket grip', 'stage.relief-front',
       'A visitor read care in the hand holding the basket. The maker’s slip dates this rehearsal, and the pictured arrival has no recorded date here.',
       { visibleIf: { flag: 'stage.light.display', eq: 'craft' } }),
+    ...[
+      ['exposed', 'the seat drawings on the foyer stand', 'preserved.display-paired', 'Two seat drawings fill the stand. A space shows where the refusal caption hung. The foyer runner points a late visitor towards the doorway.'],
+      ['narrowed', 'the smaller cue beside the rehearsal order', 'stage.cues', '“The keeper moves the crate beside the doorway.” The cue order hangs below. The word “refused” shows faintly through the crossed-out line.'],
+      ['won-over', 'the quick call above the checked note', 'stage.programme', '“Watch the doorway.” Hari’s note below it marks where the post hides the move. An usher copies just the call on a strip for the next bell.'],
+      ['split', 'the two stacks of programme strips', 'preserved.display-paired', 'One stack carries a quick doorway cue. The other carries both seat drawings. Hari keeps a finger on each stack so a reader can ask for either.'],
+      ['lost-ground', 'the quick claim with Hari’s checked note', 'preserved.slip', 'Some of Vesper’s refusal captions are gone. The checked scene note remains beside the stack. One person has left a seat number by the drawing of the post.'],
+    ].map(([result, label, art, text]) => notice(`stage-vesper-${result}`, 17, 9, label, art, text,
+      { visibleIf: { flag: 'sd.stage-vesper.outcome', eq: result } })),
   ],
   lights: [
     { x: 6, y: 5, r: 59, color: 0xe6b8c7 }, { x: 22, y: 5, r: 59, color: 0xc2b7ea },
@@ -77,6 +100,8 @@ export const STAGE_REHEARSAL = room({
     { stamp: 'rug-green', x: 12, y: 9 }, { stamp: 'plant-tall', x: 5, y: 13 },
   ],
   interactables: [
+    ...STAGE_REHEARSAL_FRAMES,
+    ...STAGE_FILM_REHEARSAL,
     door('stage-rehearsal-return', 12, 16, 'the passage back to the foyer', { map: 'stage.foyer', x: 6, y: 5 }),
     door('stage-rehearsal-to-gallery', 25, 8, 'the wing door to the audience gallery', { map: 'stage.gallery', x: 3, y: 8 }),
     { id: 'stage-rehearsal-table', kind: 'stage-rehearsal', x: 13, y: 8, w: 1, h: 1,
@@ -112,7 +137,11 @@ export const STAGE_REHEARSAL = room({
 export const STAGE_GALLERY = room({
   id: 'stage.gallery', name: 'House of Performance: Audience Gallery', width: 27, height: 17,
   background: 0x332a46, spawn: { x: 11, y: 12 },
-  npcs: [{ id: 'stage-host', x: 14, y: 7, facing: 'down' }],
+  npcs: [
+    { id: 'stage-host', x: 14, y: 7, facing: 'down' },
+    { id: 'thirdfold-nera', x: 7, y: 13, facing: 'left', visibleIf: { flag: 'stage.frames.started', eq: true } },
+    CUE_FRAME_READER,
+  ],
   stamps: [
     { stamp: 'banners', x: 8, y: 1 }, { stamp: 'banners', x: 17, y: 1 },
     { stamp: 'window', x: 12, y: 1 }, { stamp: 'barrel', x: 19, y: 5 },
@@ -122,6 +151,15 @@ export const STAGE_GALLERY = room({
     { stamp: 'plant-tall', x: 3, y: 14 }, { stamp: 'plant-tall', x: 23, y: 14 },
   ],
   interactables: [
+    ...STAGE_GALLERY_BACKBILL,
+    ...GALLERY_SEAM,
+    specimenWorkEntrance('stage'),
+    ...specimenWorkReadbacks('stage'),
+    STORY_ARCHIVE_ENTRANCE,
+    ...STORY_ARCHIVE_READBACKS,
+    CUE_HOUSE_READER,
+    ...STAGE_GALLERY_FRAMES,
+    STAGE_FILM_GALLERY,
     door('stage-gallery-return', 11, 16, 'the passage back to the foyer', { map: 'stage.foyer', x: 22, y: 5 }),
     door('stage-gallery-to-rehearsal', 2, 8, 'the wing door to rehearsal', { map: 'stage.rehearsal', x: 24, y: 8 }),
     notice('stage-vantage', 18, 7, 'the audience sightlines note', 'stage.cues',

@@ -1,0 +1,185 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH7-R04",
+      "world": "WORLD-08",
+      "title": "The Crooked Margin",
+      "knowledgeQuestion": "Who checks what gets lost when a warning has to fit?",
+      "available": { "any": [{ "flagSet": "copies.margin.short" }, { "flagSet": "copies.margin.wide" }] },
+      "objectives": [
+        {
+          "id": "copies.margin.compare",
+          "title": "Pull both press proofs and find the signed ramp order.",
+          "essential": false,
+          "done": { "all": [{ "flagSet": "copies.margin.short" }, { "flagSet": "copies.margin.wide" }, { "flag": "copies.margin.master", "eq": true }] },
+          "weave": {
+            "concepts": ["evidence", "objectivity", "explanation", "certainty"],
+            "framework": ["methods-and-tools", "scope"],
+            "thinking": { "dok": 2, "bloom": "apply", "fink": "application", "solo": "multistructural" },
+            "minutes": 4,
+            "atl": ["research", "thinking"],
+            "aoks": ["NAT"],
+            "subjects": ["design-tech"]
+          }
+        },
+        {
+          "id": "copies.margin.deliver",
+          "title": "Get the ramp instructions to the landing, or hand them back to Lark.",
+          "essential": false,
+          "done": { "all": [{ "objective": "copies.margin.compare" }, { "flagSet": "copies.margin.sent" }] },
+          "onComplete": [{ "journal": "j.copies.margin" }],
+          "weave": {
+            "concepts": ["perspective", "interpretation", "responsibility", "values", "justification"],
+            "framework": ["perspectives", "methods-and-tools", "ethics"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "human", "solo": "relational" },
+            "minutes": 4,
+            "atl": ["communication", "social"],
+            "aoks": ["LAN", "HUM"],
+            "subjects": ["lang-langlit", "design-tech"]
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "copies.margin.short",
+      "speaker": "copies-presskeeper",
+      "historicalLabel": "fictional-world",
+      "text": "That short guide is for runners’ pockets. The order is already in the type bed. Pull one sheet and leave the type where it is.",
+      "options": [
+        {
+          "text": "Slide in a short sheet and pull the lever.",
+          "next": "copies.margin.short.tested",
+          "effects": [{ "setFlag": "copies.margin.short", "value": "tested" }]
+        },
+        { "text": "Leave the guide alone." }
+      ]
+    },
+    {
+      "id": "copies.margin.short.tested",
+      "speaker": "copies-presskeeper",
+      "historicalLabel": "fictional-world",
+      "text": "The proof says WEST RAMP OPEN. The small type stops at the edge. If you’re a cart with no load and very small handwriting, it’s a splendid notice."
+    },
+    {
+      "id": "copies.margin.wide",
+      "speaker": "copies-presskeeper",
+      "historicalLabel": "fictional-world",
+      "text": "Use the same type bed with the full-width guide. The wide sheet takes longer to hang because it has to be tied in two places.",
+      "options": [
+        {
+          "text": "Slide in a full sheet and pull the lever.",
+          "next": "copies.margin.wide.tested",
+          "effects": [{ "setFlag": "copies.margin.wide", "value": "tested" }]
+        },
+        { "text": "Leave the guide alone." }
+      ]
+    },
+    {
+      "id": "copies.margin.wide.tested",
+      "speaker": "copies-presskeeper",
+      "historicalLabel": "fictional-world",
+      "text": "WEST RAMP OPEN — EMPTY CARTS, THIS SHIFT ONLY. The hoist directions and the signature fit beneath. Same ink, same type, different edge. Put both proofs against the signed order at the landing."
+    },
+    {
+      "id": "copies.margin.tray",
+      "speaker": "copies-presskeeper",
+      "historicalLabel": "fictional-world",
+      "text": "The trial was with an empty cart. I can send a whole sheet to the ramp queue, but runners can’t carry it to the stalls yet. Or I can cut a separate strip, stamp it to match the turn arrow, and ask a runner to hang them together.",
+      "options": [
+        {
+          "text": "Fold the full order for the ramp queue.",
+          "next": "copies.margin.packed-fold",
+          "effects": [{ "setFlag": "copies.margin.bundle", "value": "fold" }]
+        },
+        {
+          "text": "Clip a turn arrow to its matching strip for the runner.",
+          "next": "copies.margin.packed-pair",
+          "effects": [{ "setFlag": "copies.margin.bundle", "value": "pair" }]
+        },
+        {
+          "text": "Hand back the proofs. Let the crew give directions until the next checked print.",
+          "next": "copies.margin.tray-wait",
+          "effects": [{ "setFlag": "copies.margin.sent", "value": "wait" }]
+        },
+        { "text": "Leave the tray here for now." }
+      ]
+    },
+    {
+      "id": "copies.margin.packed-fold",
+      "speaker": "copies-presskeeper",
+      "historicalLabel": "fictional-world",
+      "text": "There’s a cord at the far end of the landing. Pull the lower fold through it so people can read the hoist line while they wait."
+    },
+    {
+      "id": "copies.margin.packed-pair",
+      "speaker": "copies-presskeeper",
+      "historicalLabel": "fictional-world",
+      "text": "The runner is using two hooks near the press passage. Set the arrow beside the matching strip before she sets off. A person seeing only the arrow will miss who it’s for."
+    },
+    {
+      "id": "copies.margin.tray-wait",
+      "speaker": "copies-presskeeper",
+      "historicalLabel": "fictional-world",
+      "text": "I’ll mark that as held. Someone has to leave the loading crew and call the turns until there’s a sheet they’ll sign for."
+    },
+    {
+      "id": "copies.margin.fold",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "A carter with a full load holds the back of the sheet flat against the board. From here, you can see their crew’s hoist beyond the steps.",
+      "options": [
+        {
+          "text": "Tie the lower fold open so the queue can see both routes.",
+          "next": "copies.margin.sent-fold",
+          "effects": [{ "setFlag": "copies.margin.sent", "value": "fold" }]
+        },
+        { "text": "Keep the sheet folded for now." }
+      ]
+    },
+    {
+      "id": "copies.margin.sent-fold",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The carter lifts a hand to the hoist crew and leaves the ramp queue. At the outer stalls, people ask when their runner will arrive. Lark sends a sample fold to the Council."
+    },
+    {
+      "id": "copies.margin.pair",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The runner clips a bag shut. She can reach the stalls before they load their carts. There’s room on the two hooks for the arrow and its matching limit.",
+      "options": [
+        {
+          "text": "Hang the arrow and trial strip side by side.",
+          "next": "copies.margin.sent-pair",
+          "effects": [{ "setFlag": "copies.margin.sent", "value": "pair" }]
+        },
+        { "text": "Ask the runner to wait a little." }
+      ]
+    },
+    {
+      "id": "copies.margin.sent-pair",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "A stall keeper sends the loaded carts to the hoist before they join the ramp queue. The runner stops to re-clip a loose strip. Lark sends a sample pair to the Council."
+    }
+  ],
+  "hints": [
+    { "id": "h.copies.margin.compare.1", "objective": "copies.margin.compare", "depth": 1, "text": "Lark can use the same type with more than one kind of paper." },
+    { "id": "h.copies.margin.compare.2", "objective": "copies.margin.compare", "depth": 2, "text": "Both guides are near the landing passage in the Print Workshop." },
+    { "id": "h.copies.margin.compare.3", "objective": "copies.margin.compare", "depth": 3, "text": "Pull a proof on each guide without changing the type." },
+    { "id": "h.copies.margin.compare.4", "objective": "copies.margin.compare", "depth": 4, "text": "Read the signed ramp order at the far end of the Lending Hall Landing, above the runner’s landing copy." },
+    { "id": "h.copies.margin.deliver.1", "objective": "copies.margin.deliver", "depth": 1, "text": "Lark will work with either way of carrying the warning." },
+    { "id": "h.copies.margin.deliver.2", "objective": "copies.margin.deliver", "depth": 2, "text": "Use the tray next to the guides, just before the press passage to the landing." },
+    { "id": "h.copies.margin.deliver.3", "objective": "copies.margin.deliver", "depth": 3, "text": "The full order goes to the far ramp. A paired order goes on the runner’s hooks on the near side." },
+    { "id": "h.copies.margin.deliver.4", "objective": "copies.margin.deliver", "depth": 4, "text": "Tie the wide order open, hang the matched pair, or hand back the proofs at the tray and leave the crew to call turns." }
+  ],
+  "journal": [
+    {
+      "id": "j.copies.margin",
+      "claimKind": "observation",
+      "text": "The narrow guide left a route arrow and cut off the crew’s trial limit. A wider guide caught both. Lark and the landing crew weighed where the warning would reach people and how it would stay together."
+    }
+  ]
+}

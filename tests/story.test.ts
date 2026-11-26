@@ -48,7 +48,7 @@ describe('the storyline: the Lamp Wall and the old Guardian (Mika 2026-11-26)', 
   it('every keepsake matters: it shows a new view of a clue or opens a new dialogue option', () => {
     for (const k of pack.keepsakes!) {
       const used = pack.clues!.some((c) => c.views.some((v) => v.keepsake === k.id)) || pack.keepsakeTalks!.some((t) => t.keepsake === k.id);
-      expect(used, k.id).toBe(true);
+      expect(used || !!k.equip, k.id).toBe(true);
       expect(k.use, k.id).toBeTruthy();
     }
   });

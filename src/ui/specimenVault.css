@@ -1,0 +1,4 @@
+.specimen-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: .75rem; margin-block: .75rem; }
+.specimen-cases article { border: 1px solid var(--gold-dim); border-radius: .45rem; padding: .75rem; background: #283047; }
+.specimen-cases img { width: 3.5rem; height: 3.5rem; object-fit: contain; image-rendering: pixelated; }
+.specimen-cases h3 { margin: .35rem 0; }

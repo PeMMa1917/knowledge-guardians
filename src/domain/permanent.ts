@@ -16,6 +16,25 @@ export function newPermanent(): PermanentRecord {
   };
 }
 
+export function addQuestionWay(record: PermanentRecord, id: string, way: string): PermanentRecord {
+  const ways = record.stones?.[id] ?? [];
+  if (ways.includes(way)) return record;
+  return { ...record, stones: { ...record.stones, [id]: [...ways, way] } };
+}
+
+/** Incidental question links can be added after a keeper has finished the action. */
+export function restoreQuestionWays(record: PermanentRecord, pack: ContentPack, completed: string[]): PermanentRecord {
+  const done = new Set(completed);
+  let updated = record;
+  for (const { world, objectives } of pack.missions) {
+    for (const objective of objectives) {
+      if (!done.has(objective.id)) continue;
+      for (const way of objective.questionWays ?? []) updated = addQuestionWay(updated, way.id, `${world}|${way.action}`);
+    }
+  }
+  return updated;
+}
+
 /** Permanent record migrations. v1 had only credit and awards. */
 export function migratePermanent(raw: any): PermanentRecord {
   if (!raw || typeof raw !== 'object' || typeof raw.schema !== 'number') return newPermanent();

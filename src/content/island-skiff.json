@@ -1,0 +1,102 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH14-R06",
+      "world": "WORLD-15",
+      "title": "Joss’s Skiff",
+      "knowledgeQuestion": "What can a practice crossing tell a crew about today’s delivery?",
+      "stake": "The Quiet Margin needs tools at two different workbenches. One delivery can share the cart or leave it for the next crew.",
+      "available": { "all": [{ "objective": "island.finish" }, { "flag": "island.skiff.started", "eq": true }] },
+      "objectives": [
+        {
+          "id": "island.skiff.compare",
+          "title": "Pilot both practice conditions with the same crew and load.",
+          "done": { "flag": "island.skiff.calibrated", "eq": true },
+          "essential": false,
+          "weave": {
+            "concepts": ["evidence", "objectivity", "certainty"],
+            "framework": ["scope", "methods-and-tools"],
+            "atl": ["research", "thinking"],
+            "aoks": ["NAT", "TEC"],
+            "subjects": ["ess", "design-tech"],
+            "thinking": { "dok": 2, "bloom": "apply", "fink": "application", "solo": "multistructural" },
+            "minutes": 4
+          }
+        },
+        {
+          "id": "island.skiff.cross",
+          "title": "Carry a delivery and tie up at a Quiet Margin berth.",
+          "visible": { "objective": "island.skiff.compare" },
+          "done": { "flagSet": "island.skiff.landed" },
+          "essential": false,
+          "weave": {
+            "concepts": ["interpretation", "explanation", "justification"],
+            "framework": ["scope", "methods-and-tools", "perspectives"],
+            "atl": ["thinking", "self-management"],
+            "aoks": ["NAT", "TEC", "HUM"],
+            "subjects": ["physics", "design-tech", "geography"],
+            "thinking": { "dok": 3, "bloom": "analyse", "fink": "integration", "solo": "relational" },
+            "minutes": 3
+          }
+        },
+        {
+          "id": "island.skiff.receipt",
+          "title": "Read the crew’s signed receipt at the berth you reached.",
+          "visible": { "objective": "island.skiff.cross" },
+          "done": {
+            "any": [
+              { "flag": "island.skiff.received.stair", "eq": true },
+              { "flag": "island.skiff.received.ramp", "eq": true }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": ["responsibility", "power", "values", "perspective"],
+            "framework": ["perspectives", "ethics"],
+            "atl": ["communication", "social"],
+            "aoks": ["HUM", "POL"],
+            "subjects": ["economics", "geography"],
+            "thinking": { "dok": 2, "bloom": "understand", "fink": "human", "solo": "relational" },
+            "minutes": 1
+          },
+          "onComplete": [{ "journal": "j.island.skiff.delivery" }]
+        }
+      ]
+    }
+  ],
+  "hints": [
+    { "id": "h.island.skiff.compare.1", "objective": "island.skiff.compare", "depth": 1, "text": "Joss’s skiff waits at the lower landing of the Two-Tide Dock." },
+    { "id": "h.island.skiff.compare.2", "objective": "island.skiff.compare", "depth": 2, "text": "The practice course gives the lookout and second rower room before they take a delivery." },
+    { "id": "h.island.skiff.compare.3", "objective": "island.skiff.compare", "depth": 3, "text": "Read the next marker’s rocks, shoals and current before choosing a stroke. Holding a marker advances the current." },
+    { "id": "h.island.skiff.compare.4", "objective": "island.skiff.compare", "depth": 4, "text": "Finish a practice run at both first and later bell. Keep the same load and the same crew station. The docket keeps both records." },
+    { "id": "h.island.skiff.cross.1", "objective": "island.skiff.cross", "depth": 1, "text": "The Quiet Margin crews take tools at the north stair and the south ramp." },
+    { "id": "h.island.skiff.cross.2", "objective": "island.skiff.cross", "depth": 2, "text": "The second rower can hold a straight line. The lookout can read a following current. Crates stay in deeper lanes." },
+    { "id": "h.island.skiff.cross.3", "objective": "island.skiff.cross", "depth": 3, "text": "For a delivery, bring the skiff into the upper two lanes to reach the stair or the lower two for the ramp. Check the drift as you approach." },
+    { "id": "h.island.skiff.cross.4", "objective": "island.skiff.cross", "depth": 4, "text": "Launch with Carry this delivery. Pilot the course, then choose Tie up to step off at the berth you approached." },
+    { "id": "h.island.skiff.receipt.1", "objective": "island.skiff.receipt", "depth": 1, "text": "The crew signs next to the place where you tie up." },
+    { "id": "h.island.skiff.receipt.2", "objective": "island.skiff.receipt", "depth": 2, "text": "The stair uses hand carrying. The south ramp uses the last trip on the shared cart." },
+    { "id": "h.island.skiff.receipt.3", "objective": "island.skiff.receipt", "depth": 3, "text": "Look at the receipt next to the landing square where you stepped off. It names the load and crew who received it." },
+    { "id": "h.island.skiff.receipt.4", "objective": "island.skiff.receipt", "depth": 4, "text": "Read the signed receiving slip just north of where the boat put you ashore. The usual beach path takes you back for another run." }
+  ],
+  "journal": [
+    {
+      "id": "j.island.skiff.delivery",
+      "claimKind": "interpretation",
+      "text": "Joss keeps the bell, load and crew with the record of each crossing. At the Quiet Margin, the receiving crew keeps its own record of who had to carry the tools and who could use the cart."
+    }
+  ],
+  "chronicle": [
+    {
+      "id": "island-skiff-stair",
+      "title": "Tools at the north stair",
+      "text": "The shelter crew signed at the stair. They carried the tools up themselves and left the shared cart in reach.",
+      "if": { "flag": "island.skiff.received.stair", "eq": true }
+    },
+    {
+      "id": "island-skiff-ramp",
+      "title": "Tools at the step-free ramp",
+      "text": "The ramp crew could reach the landing without the stair. The tools took the shared cart’s last trip of the turn.",
+      "if": { "flag": "island.skiff.received.ramp", "eq": true }
+    }
+  ]
+}

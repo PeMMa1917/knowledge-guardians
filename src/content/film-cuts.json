@@ -1,0 +1,245 @@
+{
+  "sources": [
+    {
+      "id": "HIS-FILM-01",
+      "title": "NASA Image and Video Library, Apollo 11 frame AS11-40-5903",
+      "url": "https://images.nasa.gov/details/AS11-40-5903",
+      "locator": "AS11-40-5903 catalogue title, date and description",
+      "supports": "NASA credits Neil Armstrong’s 70 mm camera for this 20 July 1969 photograph of Edwin Aldrin near a leg of the lunar module Eagle during the Apollo 11 surface activity.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-FILM-02",
+      "title": "NASA Image and Video Library, artist’s concept PIA04413",
+      "url": "https://images.nasa.gov/details/PIA04413",
+      "locator": "PIA04413 catalogue title and creation date",
+      "supports": "NASA labels the image of a Mars Exploration Rover on the surface an artist’s concept, dated 26 February 2003. Its catalogue distinguishes the drawing from the two rovers that arrived on Mars in January 2004.",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.film.apollo",
+      "title": "Aldrin in one Apollo 11 frame",
+      "text": "NASA catalogues AS11-40-5903 as a photograph by Neil Armstrong on 20 July 1969, showing Edwin Aldrin by a leg of Eagle.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": ["HIS-FILM-01"],
+      "limits": "The caption names a photographer and an occasion. The frame does not show all that happened before and after that view."
+    },
+    {
+      "id": "card.film.rover",
+      "title": "A Mars rover represented by an artist",
+      "text": "NASA catalogues PIA04413, dated 26 February 2003, as an artist’s concept of a Mars Exploration Rover on the surface.",
+      "claimKind": "interpretation",
+      "historicalLabel": "documented",
+      "sources": ["HIS-FILM-02"],
+      "limits": "The catalogue dates the artist’s concept. A view from Mars would need its own camera record."
+    }
+  ],
+  "characters": [
+    {
+      "id": "film-door-reader",
+      "name": "Delwen Sill",
+      "role": "Reader looking for the stage doorway",
+      "sprite": "custom:tan.auburn.plum.olive.headband.white.curls.none.none",
+      "mode": "fictional",
+      "talk": [
+        { "node": "film.stage.reader.cue", "if": { "flag": "film.stage.cut", "eq": "cue" } },
+        { "node": "film.stage.reader.motion", "if": { "flag": "film.stage.cut", "eq": "motion" } }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item.film.cut",
+      "name": "Edda’s cut with the beat marks",
+      "description": "Two camera views of the same rehearsal, with its scene order marked separately from the edited order. Bring it to Slate Harbour’s signalkeeper.",
+      "historicalLabel": "fictional-world",
+      "art": "preserved.folder"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH9-R10",
+      "title": "The First Frame",
+      "world": "WORLD-10",
+      "available": { "flag": "film.stage.started", "eq": true },
+      "knowledgeQuestion": "How can the same event be visible in one camera view and easy to miss in another?",
+      "objectives": [
+        {
+          "id": "film.stage.takes",
+          "essential": false,
+          "title": "Bring three frames from each camera position to Edda’s editing stand.",
+          "done": { "all": [{ "flag": "film.take.front", "eq": true }, { "flag": "film.take.wing", "eq": true }] },
+          "weave": {
+            "concepts": ["evidence", "interpretation", "objectivity", "perspective", "explanation"],
+            "framework": ["scope", "methods-and-tools", "perspectives"],
+            "thinking": { "dok": 2, "bloom": "analyse", "fink": "application", "solo": "relational" },
+            "aoks": ["ART", "TEC"],
+            "atl": ["thinking", "research"],
+            "subjects": ["film", "theatre", "design-tech"],
+            "minutes": 3
+          }
+        },
+        {
+          "id": "film.stage.received",
+          "essential": false,
+          "visible": { "objective": "film.stage.takes" },
+          "title": "Screen both cuts, post one, and find the visitor who used it.",
+          "done": { "flag": "film.stage.read", "eq": true },
+          "onComplete": [{ "giveItem": "item.film.cut" }],
+          "weave": {
+            "concepts": ["evidence", "interpretation", "values", "responsibility", "justification"],
+            "framework": ["scope", "methods-and-tools", "perspectives", "ethics"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "human", "solo": "relational" },
+            "aoks": ["ART", "LAN"],
+            "atl": ["thinking", "communication", "social"],
+            "subjects": ["film", "theatre", "lang-langlit"],
+            "minutes": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH4-R12",
+      "title": "When That View Was Taken",
+      "world": "WORLD-05",
+      "available": { "item": "item.film.cut" },
+      "knowledgeQuestion": "Where can an older view still help a traveller who needs to act now?",
+      "objectives": [
+        {
+          "id": "film.coast.checked",
+          "essential": false,
+          "title": "Check the board’s old still, the marker on the ground, and who needs the current route.",
+          "done": { "all": [{ "flag": "film.coast.still", "eq": true }, { "flag": "film.coast.live", "eq": true }] },
+          "weave": {
+            "concepts": ["evidence", "truth", "certainty", "culture", "perspective"],
+            "framework": ["scope", "methods-and-tools", "perspectives"],
+            "thinking": { "dok": 2, "bloom": "analyse", "fink": "integration", "solo": "relational" },
+            "aoks": ["HIS", "ART", "HUM"],
+            "atl": ["research", "thinking"],
+            "subjects": ["film", "geography"],
+            "minutes": 3
+          }
+        },
+        {
+          "id": "film.coast.received",
+          "essential": false,
+          "visible": { "objective": "film.coast.checked" },
+          "title": "Place the route and dated still where a carrier will use them.",
+          "done": { "flag": "film.coast.read", "eq": true },
+          "weave": {
+            "concepts": ["power", "responsibility", "values", "explanation", "justification"],
+            "framework": ["scope", "perspectives", "ethics"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "caring", "solo": "relational" },
+            "aoks": ["ART", "LAN", "HUM"],
+            "atl": ["social", "communication"],
+            "subjects": ["film", "geography", "lang-langlit"],
+            "minutes": 3
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "film.stage.brief",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Edda left two catalogue slips by the new camera. NASA’s Apollo 11 entry names the person beside the landing leg and the person who took the frame. A separate Mars rover picture in the catalogue shows a scene an artist constructed. These notes will travel with the practice strip.",
+      "options": [
+        {
+          "text": "Keep the photo’s caption and the artist’s record. Set the marks for both cameras.",
+          "next": "film.stage.start",
+          "effects": [{ "addCard": "card.film.apollo" }, { "addCard": "card.film.rover" }, { "setFlag": "film.stage.started", "value": true }]
+        },
+        { "text": "Leave the two catalogue slips here." }
+      ]
+    },
+    {
+      "id": "film.stage.start",
+      "speaker": "stage-director",
+      "historicalLabel": "fictional-world",
+      "text": "The keeper raises a hand. Then the cart crosses the stripe and stops past the door. Run the same three beats at the front and the wing. The wing camera sees the door and leaves the keeper outside the frame. Delwen has only a moment to find a place to stand."
+    },
+    {
+      "id": "film.stage.reader.cue",
+      "speaker": "film-door-reader",
+      "historicalLabel": "fictional-world",
+      "text": "I saw the raised hand and waited by the stripe. Then I found the door in your next frame. I had the time to watch that much. Shall I give the harbour crew a copy with the beat marks?",
+      "options": [
+        {
+          "text": "Take the cue-first copy and keep its original beat marks.",
+          "if": { "not": { "objective": "film.stage.received" } },
+          "effects": [{ "setFlag": "film.stage.read", "value": true }]
+        },
+        { "text": "Leave a copy on the rail for the next reader." }
+      ]
+    },
+    {
+      "id": "film.stage.reader.motion",
+      "speaker": "film-door-reader",
+      "historicalLabel": "fictional-world",
+      "text": "I found the door right away and started after the cart. I had to come back for the cue from the earlier beat. I’m leaving the first tag low so somebody in a rush can turn straight to the hand.",
+      "options": [
+        {
+          "text": "Take the doorway-first copy with Delwen’s cue tab.",
+          "if": { "not": { "objective": "film.stage.received" } },
+          "effects": [{ "setFlag": "film.stage.read", "value": true }]
+        },
+        { "text": "Leave Delwen’s cue tab by the route post." }
+      ]
+    },
+    {
+      "id": "film.coast.notice",
+      "speaker": "coast-signalkeeper",
+      "historicalLabel": "fictional-world",
+      "text": "Your strip shows the hand beside the cart. Our older view puts the lower ledge in the middle of the frame, where a carrier can find it quickly. What can a carrier still use after the tide moves? I left the date on its card and the current marker on the stone stair.",
+      "options": [
+        {
+          "text": "Leave the two frames here while I check both records.",
+          "effects": [{ "setFlag": "film.coast.started", "value": true }]
+        },
+        { "text": "Keep the strip folded for now." }
+      ]
+    },
+    {
+      "id": "film.coast.place",
+      "speaker": "coast-signalkeeper",
+      "historicalLabel": "fictional-world",
+      "text": "Those two pieces tell a carrier different things. I can put the live wait instruction at the painted post and keep the older frame on the back, or help readers find the painted post from the old frame and put a separate live instruction at the stair.",
+      "options": [
+        {
+          "text": "Lead with today’s wait direction and keep the old frame dated on the back.",
+          "if": { "all": [{ "objective": "film.coast.checked" }, { "not": { "flagSet": "film.coast.layout" } }] },
+          "effects": [{ "setFlag": "film.coast.layout", "value": "cue" }]
+        },
+        {
+          "text": "Lead with the labelled landmark and hang a separate current instruction at the stair.",
+          "if": { "all": [{ "objective": "film.coast.checked" }, { "not": { "flagSet": "film.coast.layout" } }] },
+          "effects": [{ "setFlag": "film.coast.layout", "value": "view" }]
+        },
+        { "text": "Leave the two records where they are for now." }
+      ]
+    }
+  ],
+  "hints": [
+    { "id": "h.film.takes.1", "objective": "film.stage.takes", "depth": 1, "text": "The keeper stands beyond what one camera can see." },
+    { "id": "h.film.takes.2", "objective": "film.stage.takes", "depth": 2, "text": "After looking over the catalogue, try the front and wing cameras in Rehearsal." },
+    { "id": "h.film.takes.3", "objective": "film.stage.takes", "depth": 3, "text": "Advance all three beats at each camera. Watch the cart behind the stripe and what the picture includes." },
+    { "id": "h.film.takes.4", "objective": "film.stage.takes", "depth": 4, "text": "File the front take and the wing take. The editing stand will open." },
+    { "id": "h.film.stage.1", "objective": "film.stage.received", "depth": 1, "text": "A reader who leaves early sees the first picture." },
+    { "id": "h.film.stage.2", "objective": "film.stage.received", "depth": 2, "text": "Screen one sequence, then move the first two beats past each other and screen the other." },
+    { "id": "h.film.stage.3", "objective": "film.stage.received", "depth": 3, "text": "Post a cue-first sequence for a visitor who can wait, or a door-first sequence that gives the location quickly." },
+    { "id": "h.film.stage.4", "objective": "film.stage.received", "depth": 4, "text": "Find Delwen at the low gallery rail for a cue-first cut or at the foyer route post for a doorway-first cut." },
+    { "id": "h.film.coast.1", "objective": "film.coast.checked", "depth": 1, "text": "A picture can still help find a fixed mark after part of the scene changes." },
+    { "id": "h.film.coast.2", "objective": "film.coast.checked", "depth": 2, "text": "Take the stage strip to Slate Harbour. Find the old doorway still and the current stone stair instruction." },
+    { "id": "h.film.coast.3", "objective": "film.coast.checked", "depth": 3, "text": "The old view gives a place and a past time. The stair sign gives a current condition." },
+    { "id": "h.film.coast.4", "objective": "film.coast.checked", "depth": 4, "text": "Read the old harbour still and the separate live stair notice." },
+    { "id": "h.film.coast.read.1", "objective": "film.coast.received", "depth": 1, "text": "A carrier can follow one of two routes to the same checked direction." },
+    { "id": "h.film.coast.read.2", "objective": "film.coast.received", "depth": 2, "text": "Use the signalkeeper’s clips after reading both records." },
+    { "id": "h.film.coast.read.3", "objective": "film.coast.received", "depth": 3, "text": "Use a current instruction at the first post or a labelled view leading readers to the live sign at the stair." },
+    { "id": "h.film.coast.read.4", "objective": "film.coast.received", "depth": 4, "text": "Check the carrier’s reply at the painted post for a cue-first board, or at the stone stair for a landmark-first board." }
+  ]
+}

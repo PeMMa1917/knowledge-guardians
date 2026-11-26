@@ -1,0 +1,1289 @@
+{
+ "characters": [
+  {
+   "id": "parcel-carrier",
+   "name": "Tarin",
+   "role": "Barrow carrier for the seed rows",
+   "sprite": "custom:olive.brown.weld.sand.none.green",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "parcel.appeal.guarantee"
+    }
+   ]
+  },
+  {
+   "id": "parcel-bridge",
+   "name": "Velaine",
+   "role": "Keeper of the bridge crew’s handover",
+   "sprite": "custom:brown.black.green.indigo.scarf.gold.curls.none.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "parcel.appeal.express"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "parcel.open",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "Water Commons asked me to dispatch six dry-tool parcels. We have one cart. The new window counts helped, but two objections came in after the desk shut. Velaine left hers at the rail. Tarin left his beside the path. If you bring both, I can bind them into the next order.",
+   "options": [
+    {
+     "text": "Take the empty file to Canal Walk.",
+     "if": {
+      "all": [
+       {
+        "objective": "civic.finish"
+       },
+       {
+        "not": {
+         "flag": "parcel.open",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "parcel.open",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the parcel file with Ade."
+    }
+   ]
+  },
+  {
+   "id": "parcel.rail",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Velaine has clipped a handover stub to her sealed request. Her bridge crew keeps the keys until the second bell. The first-bell desk has counted every form it received. The crew has never reached it while it is open.",
+   "options": [
+    {
+     "text": "Take Velaine’s sealed objection and leave her stub copy on the rail.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "civic.finish"
+         },
+         {
+          "flag": "parcel.open",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "parcel.rail",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "parcel.rail",
+       "value": true
+      },
+      {
+       "giveItem": "item.parcel.rail"
+      }
+     ]
+    },
+    {
+     "text": "Leave the objection in its clip."
+    }
+   ]
+  },
+  {
+   "id": "parcel.path",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Tarin’s signed note is tucked into a wheel gauge. He carries tools up to the seed rows with a shared barrow. At the yard, someone measured it between the rails. He asks them to check the space needed to turn it as well.",
+   "options": [
+    {
+     "text": "Take Tarin’s sealed objection and leave the wheel gauge for the next carrier.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "civic.finish"
+         },
+         {
+          "flag": "parcel.open",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "parcel.path",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "parcel.path",
+       "value": true
+      },
+      {
+       "giveItem": "item.parcel.path"
+      }
+     ]
+    },
+    {
+     "text": "Leave the note in its sleeve."
+    }
+   ]
+  },
+  {
+   "id": "parcel.dispatch",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "The late crew needs a time they can reach. The seed carriers need space for a turn. I can make Sena hold named parcels until she checks both claims. That costs the first bell. Or I can send all six now. Four are ready to collect on the lower path. The remaining two can come back as spares unless someone proves their claim.",
+   "options": [
+    {
+     "text": "File both originals. Stamp the right to collect at the staffed yard.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "objective": "civic.finish"
+           },
+           {
+            "flag": "parcel.open",
+            "eq": true
+           }
+          ]
+         },
+         {
+          "objective": "parcel.o.gather"
+         },
+         {
+          "not": {
+           "flagSet": "parcel.plan"
+          }
+         }
+        ]
+       },
+       {
+        "item": "item.parcel.rail"
+       },
+       {
+        "item": "item.parcel.path"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "takeItem": "item.parcel.rail"
+      },
+      {
+       "takeItem": "item.parcel.path"
+      },
+      {
+       "giveItem": "item.parcel.docket"
+      },
+      {
+       "setFlag": "parcel.plan",
+       "value": "guarantee"
+      }
+     ],
+     "next": "parcel.ordered.guarantee"
+    },
+    {
+     "text": "File both originals. Send the cart at first bell and leave the two claims open.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "objective": "civic.finish"
+           },
+           {
+            "flag": "parcel.open",
+            "eq": true
+           }
+          ]
+         },
+         {
+          "objective": "parcel.o.gather"
+         },
+         {
+          "not": {
+           "flagSet": "parcel.plan"
+          }
+         }
+        ]
+       },
+       {
+        "item": "item.parcel.rail"
+       },
+       {
+        "item": "item.parcel.path"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "takeItem": "item.parcel.rail"
+      },
+      {
+       "takeItem": "item.parcel.path"
+      },
+      {
+       "giveItem": "item.parcel.docket"
+      },
+      {
+       "setFlag": "parcel.plan",
+       "value": "express"
+      }
+     ],
+     "next": "parcel.ordered.express"
+    },
+    {
+     "text": "Leave both originals in the file for now."
+    }
+   ]
+  },
+  {
+   "id": "parcel.ordered.guarantee",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "The yard must take a spoken or written claim. Every claim gets a dated reply and an uncollected parcel stays under its name. The evening crew can reach the second bell. Bring this docket to the low table in the Council Yard. Sena’s checks will hold the cart until then."
+  },
+  {
+   "id": "parcel.ordered.express",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "The cart leaves at first bell. Keep this docket with the exact number handed over, and bring it to the lower-path parcel rack. The two open claims travel with the load. Any held parcel goes back as a spare at closing unless Sena changes its order."
+  },
+  {
+   "id": "parcel.first.guarantee",
+   "speaker": "water-scribe",
+   "historicalLabel": "fictional-world",
+   "text": "Four parcels went at second bell. The bridge crew spoke their claim at the low table, and I read their receipt back to them. The seed carriers tried the yard turn with their barrow. It could not turn after all. Their two parcels are still held under the same names.",
+   "options": [
+    {
+     "text": "Record four served and two held. Leave copies at the low table.",
+     "if": {
+      "all": [
+       {
+        "objective": "parcel.o.plan"
+       },
+       {
+        "flag": "parcel.plan",
+        "eq": "guarantee"
+       },
+       {
+        "item": "item.parcel.docket"
+       },
+       {
+        "not": {
+         "objective": "parcel.o.first"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "parcel.first",
+       "value": "guarantee"
+      }
+     ],
+     "next": "parcel.first.recorded"
+    },
+    {
+     "text": "Keep the docket for a later handover."
+    }
+   ]
+  },
+  {
+   "id": "parcel.first.express",
+   "speaker": "water-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "Four went at first bell, including the seed carriers’ two. They could turn the barrow at this rack and start their work early. The bridge crew still had the keys then. I marked their boxes uncollected. The cart has orders to take those boxes back when the rack shuts.",
+   "options": [
+    {
+     "text": "Record four served and two uncollected. Leave a copy at the rack.",
+     "if": {
+      "all": [
+       {
+        "objective": "parcel.o.plan"
+       },
+       {
+        "flag": "parcel.plan",
+        "eq": "express"
+       },
+       {
+        "item": "item.parcel.docket"
+       },
+       {
+        "not": {
+         "objective": "parcel.o.first"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "parcel.first",
+       "value": "express"
+      }
+     ],
+     "next": "parcel.first.recorded"
+    },
+    {
+     "text": "Keep the docket for a later handover."
+    }
+   ]
+  },
+  {
+   "id": "parcel.first.recorded",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The record shows the number served and the number still waiting. It leaves a new line for the time or place somebody could use."
+  },
+  {
+   "id": "parcel.appeal.guarantee",
+   "speaker": "parcel-carrier",
+   "historicalLabel": "fictional-world",
+   "text": "The barrow just fits between the rails. The handle swings when we turn. I borrowed a string and marked that whole arc. Even the clerk’s little stool would have to walk sideways. Take the string with this return slip. The terrace cart track has room to turn.",
+   "options": [
+    {
+     "text": "Take Tarin’s return slip and the turn measurement to Sena.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "parcel.o.first"
+         },
+         {
+          "not": {
+           "objective": "parcel.o.appeal"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "parcel.plan",
+        "eq": "guarantee"
+       },
+       {
+        "not": {
+         "item": "item.parcel.appeal"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "giveItem": "item.parcel.appeal"
+      }
+     ],
+     "next": "parcel.appeal.carried"
+    },
+    {
+     "text": "Leave the string on the wheel gauge."
+    }
+   ]
+  },
+  {
+   "id": "parcel.appeal.express",
+   "speaker": "parcel-bridge",
+   "historicalLabel": "fictional-world",
+   "text": "See where the keys changed hands? Second bell. We can reach the bank at third. The docket calls the two boxes uncollected. I can prove when we were on the bridge. Would you bring the dated handover and our request for a third-bell stop?",
+   "options": [
+    {
+     "text": "Take Velaine’s second-bell handover and return slip to Sena.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "parcel.o.first"
+         },
+         {
+          "not": {
+           "objective": "parcel.o.appeal"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "parcel.plan",
+        "eq": "express"
+       },
+       {
+        "not": {
+         "item": "item.parcel.appeal"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "giveItem": "item.parcel.appeal"
+      }
+     ],
+     "next": "parcel.appeal.carried"
+    },
+    {
+     "text": "Let Velaine keep the handover for now."
+    }
+   ]
+  },
+  {
+   "id": "parcel.appeal.carried",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The appeal leaves the original entry legible. It adds the dated check and names one change the next run can make. Sena can amend the order at the Council Yard."
+  },
+  {
+   "id": "parcel.review.guarantee",
+   "speaker": "water-scribe",
+   "historicalLabel": "fictional-world",
+   "text": "The stamped right still holds. Their barrow needs a wider turn than the yard allows. The terrace service gate has room. I can issue a single-run permit and move the low table’s attendant there. Requests at this yard will wait while she is out.",
+   "options": [
+    {
+     "text": "Keep the collection right and assign the attendant to the terrace gate.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "objective": "parcel.o.first"
+           },
+           {
+            "not": {
+             "objective": "parcel.o.appeal"
+            }
+           }
+          ]
+         },
+         {
+          "item": "item.parcel.appeal"
+         },
+         {
+          "item": "item.parcel.docket"
+         }
+        ]
+       },
+       {
+        "flag": "parcel.plan",
+        "eq": "guarantee"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "takeItem": "item.parcel.appeal"
+      },
+      {
+       "giveItem": "item.parcel.permit"
+      },
+      {
+       "setFlag": "parcel.permit",
+       "value": "guarantee"
+      }
+     ],
+     "next": "parcel.permitted.guarantee"
+    },
+    {
+     "text": "Keep the appeal open. Leave the key on its hook."
+    }
+   ]
+  },
+  {
+   "id": "parcel.review.express",
+   "speaker": "water-scribe",
+   "historicalLabel": "fictional-world",
+   "text": "The handover proves why the crew could not collect. I can keep the first run and hold the two boxes here until third bell. I’ll give tonight’s gate watcher a permit for the bank track. The next cart starts with two fewer spare spaces.",
+   "options": [
+    {
+     "text": "Keep first-bell delivery and authorize the third-bell bank stop.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "objective": "parcel.o.first"
+           },
+           {
+            "not": {
+             "objective": "parcel.o.appeal"
+            }
+           }
+          ]
+         },
+         {
+          "item": "item.parcel.appeal"
+         },
+         {
+          "item": "item.parcel.docket"
+         }
+        ]
+       },
+       {
+        "flag": "parcel.plan",
+        "eq": "express"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "takeItem": "item.parcel.appeal"
+      },
+      {
+       "giveItem": "item.parcel.permit"
+      },
+      {
+       "setFlag": "parcel.permit",
+       "value": "express"
+      }
+     ],
+     "next": "parcel.permitted.express"
+    },
+    {
+     "text": "Keep the appeal open. Leave the key on its hook."
+    }
+   ]
+  },
+  {
+   "id": "parcel.permitted.guarantee",
+   "speaker": "water-scribe",
+   "historicalLabel": "fictional-world",
+   "text": "The terrace gate will open with this pass. The notice keeps the exact reach of the trial. Two parcels at the wider turn, with the names agreed at the first table."
+  },
+  {
+   "id": "parcel.permitted.express",
+   "speaker": "water-scribe",
+   "historicalLabel": "fictional-world",
+   "text": "The bank service gate will open with this pass. The crew can point to its own time before we close the entry. Keep first bell and third bell on separate lines."
+  },
+  {
+   "id": "parcel.second.guarantee",
+   "speaker": "parcel-carrier",
+   "historicalLabel": "fictional-world",
+   "text": "Watch the handle. It goes right round! Our two boxes can ride up together. The attendant checked the same names she held at the low table. You can send this marked copy back to Ade.",
+   "options": [
+    {
+     "text": "Hand over the two held parcels and take the signed delivery copy.",
+     "if": {
+      "all": [
+       {
+        "flag": "parcel.plan",
+        "eq": "guarantee"
+       },
+       {
+        "flag": "parcel.permit",
+        "eq": "guarantee"
+       },
+       {
+        "flag": "parcel.crossed.guarantee",
+        "eq": true
+       },
+       {
+        "item": "item.parcel.permit"
+       },
+       {
+        "item": "item.parcel.docket"
+       },
+       {
+        "not": {
+         "objective": "parcel.o.finish"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "takeItem": "item.parcel.permit"
+      },
+      {
+       "takeItem": "item.parcel.docket"
+      },
+      {
+       "giveItem": "item.parcel.receipt"
+      },
+      {
+       "setFlag": "parcel.served",
+       "value": "guarantee"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "parcel.second.express",
+   "speaker": "parcel-bridge",
+   "historicalLabel": "fictional-world",
+   "text": "Keys passed at second bell. Boxes collected at third. Two, with my name by the time. The old entry can keep saying we missed first bell. Here’s what happened on the next line.",
+   "options": [
+    {
+     "text": "Hand over the two held parcels and take the signed delivery copy.",
+     "if": {
+      "all": [
+       {
+        "flag": "parcel.plan",
+        "eq": "express"
+       },
+       {
+        "flag": "parcel.permit",
+        "eq": "express"
+       },
+       {
+        "flag": "parcel.crossed.express",
+        "eq": true
+       },
+       {
+        "item": "item.parcel.permit"
+       },
+       {
+        "item": "item.parcel.docket"
+       },
+       {
+        "not": {
+         "objective": "parcel.o.finish"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "takeItem": "item.parcel.permit"
+      },
+      {
+       "takeItem": "item.parcel.docket"
+      },
+      {
+       "giveItem": "item.parcel.receipt"
+      },
+      {
+       "setFlag": "parcel.served",
+       "value": "express"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "parcel.return.guarantee",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "Four at the yard, two at the terrace. I’ll copy the public totals and the wide turn. Keep the names under the seal. A right needs a place someone can use.",
+   "options": [
+    {
+     "text": "File the delivery copy in the Civic record.",
+     "if": {
+      "all": [
+       {
+        "objective": "parcel.o.finish"
+       },
+       {
+        "flag": "parcel.served",
+        "eq": "guarantee"
+       },
+       {
+        "item": "item.parcel.receipt"
+       },
+       {
+        "not": {
+         "flag": "parcel.returned",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "takeItem": "item.parcel.receipt"
+      },
+      {
+       "setFlag": "parcel.returned",
+       "value": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "parcel.return.express",
+   "speaker": "civic-operator",
+   "historicalLabel": "fictional-world",
+   "text": "Four at first bell and two at third. I’ll copy both times and the wait they cost. Keep the names under the seal. A quick count needs somewhere for a late entry.",
+   "options": [
+    {
+     "text": "File the delivery copy in the Civic record.",
+     "if": {
+      "all": [
+       {
+        "objective": "parcel.o.finish"
+       },
+       {
+        "flag": "parcel.served",
+        "eq": "express"
+       },
+       {
+        "item": "item.parcel.receipt"
+       },
+       {
+        "not": {
+         "flag": "parcel.returned",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "takeItem": "item.parcel.receipt"
+      },
+      {
+       "setFlag": "parcel.returned",
+       "value": true
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "item.parcel.rail",
+   "name": "Velaine’s sealed objection",
+   "description": "Velaine’s bridge crew took over after the parcel desk closed. Ade can file this signed request.",
+   "historicalLabel": "fictional-world",
+   "art": "preserved.slip"
+  },
+  {
+   "id": "item.parcel.path",
+   "name": "Tarin’s sealed objection",
+   "description": "The barrow fits between the rails. Tarin asks for a check of the space needed to turn. Ade can file this signed request.",
+   "historicalLabel": "fictional-world",
+   "art": "preserved.slip"
+  },
+  {
+   "id": "item.parcel.docket",
+   "name": "The dry-parcel docket",
+   "description": "The six parcels travel with both claims under seal. The next public line shows where and when the load arrived.",
+   "historicalLabel": "fictional-world",
+   "art": "civic.ledger"
+  },
+  {
+   "id": "item.parcel.appeal",
+   "name": "The signed return appeal",
+   "description": "A dated local check supports a change to the parcel order. Take it to Sena’s table in the Water Commons Council Yard.",
+   "historicalLabel": "fictional-world",
+   "art": "preserved.folder"
+  },
+  {
+   "id": "item.parcel.permit",
+   "name": "Sena’s second-run permit",
+   "description": "This pass authorizes the next stop before the two held parcels are released. Open the gate named on the revised order.",
+   "historicalLabel": "fictional-world",
+   "art": "water.notice"
+  },
+  {
+   "id": "item.parcel.receipt",
+   "name": "The signed parcel delivery copy",
+   "description": "Four collected on the first run and two after the appeal. Ade can file these public totals while keeping the names and claims sealed.",
+   "historicalLabel": "fictional-world",
+   "art": "civic.ledger"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH12-R04",
+   "world": "WORLD-13",
+   "title": "The Second Delivery",
+   "knowledgeQuestion": "What makes a right or an appeal usable by the people it serves?",
+   "stake": "Two groups had no way into the parcel queue before the desk shut. One cart has six parcels and two disputed deliveries.",
+   "available": {
+    "all": [
+     {
+      "objective": "civic.finish"
+     },
+     {
+      "flag": "parcel.open",
+      "eq": true
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "parcel.o.gather",
+     "title": "Pick up Velaine’s and Tarin’s sealed objections on Canal Walk.",
+     "essential": false,
+     "visible": {
+      "flag": "parcel.open",
+      "eq": true
+     },
+     "done": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "civic.finish"
+         },
+         {
+          "flag": "parcel.open",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "flag": "parcel.rail",
+        "eq": true
+       },
+       {
+        "flag": "parcel.path",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "perspective",
+       "objectivity"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "POL",
+       "HUM"
+      ],
+      "subjects": [
+       "global-politics",
+       "anthropology"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "human",
+       "solo": "multistructural"
+      },
+      "minutes": 2
+     }
+    },
+    {
+     "id": "parcel.o.plan",
+     "title": "Give Ade both objections and send a parcel order to Water Commons.",
+     "essential": false,
+     "visible": {
+      "objective": "parcel.o.gather"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "parcel.o.gather"
+       },
+       {
+        "any": [
+         {
+          "flag": "parcel.plan",
+          "eq": "guarantee"
+         },
+         {
+          "flag": "parcel.plan",
+          "eq": "express"
+         }
+        ]
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "justification",
+       "responsibility"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "POL",
+       "HUM"
+      ],
+      "subjects": [
+       "global-politics",
+       "economics"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "minutes": 2
+     }
+    },
+    {
+     "id": "parcel.o.first",
+     "title": "Take the parcel docket to Water Commons and record the first handover.",
+     "essential": false,
+     "visible": {
+      "objective": "parcel.o.plan"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "parcel.o.plan"
+       },
+       {
+        "any": [
+         {
+          "flag": "parcel.first",
+          "eq": "guarantee"
+         },
+         {
+          "flag": "parcel.first",
+          "eq": "express"
+         }
+        ]
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "explanation"
+      ],
+      "atl": [
+       "research",
+       "self-management"
+      ],
+      "aoks": [
+       "POL",
+       "HUM"
+      ],
+      "subjects": [
+       "global-politics",
+       "geography"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "multistructural"
+      },
+      "minutes": 3
+     }
+    },
+    {
+     "id": "parcel.o.appeal",
+     "title": "Bring the returning request and its local check to Sena.",
+     "essential": false,
+     "visible": {
+      "objective": "parcel.o.first"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "parcel.o.first"
+       },
+       {
+        "any": [
+         {
+          "flag": "parcel.permit",
+          "eq": "guarantee"
+         },
+         {
+          "flag": "parcel.permit",
+          "eq": "express"
+         }
+        ]
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "justification",
+       "power",
+       "responsibility"
+      ],
+      "atl": [
+       "thinking",
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "POL",
+       "HUM"
+      ],
+      "subjects": [
+       "global-politics",
+       "geography"
+      ],
+      "framework": [
+       "ethics",
+       "scope",
+       "perspectives"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "minutes": 3
+     }
+    },
+    {
+     "id": "parcel.o.finish",
+     "title": "Use the permit gate and make the second handover.",
+     "essential": false,
+     "visible": {
+      "objective": "parcel.o.appeal"
+     },
+     "done": {
+      "all": [
+       {
+        "objective": "parcel.o.appeal"
+       },
+       {
+        "any": [
+         {
+          "flag": "parcel.served",
+          "eq": "guarantee"
+         },
+         {
+          "flag": "parcel.served",
+          "eq": "express"
+         }
+        ]
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "truth",
+       "explanation",
+       "responsibility",
+       "values"
+      ],
+      "atl": [
+       "communication",
+       "self-management"
+      ],
+      "aoks": [
+       "POL",
+       "HUM"
+      ],
+      "subjects": [
+       "global-politics",
+       "economics"
+      ],
+      "framework": [
+       "scope",
+       "ethics",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "minutes": 2
+     },
+     "onComplete": [
+      {
+       "journal": "j.parcel.delivery"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.parcel.o.gather.1",
+   "objective": "parcel.o.gather",
+   "depth": 1,
+   "text": "Ade has a parcel file at Library Dispatch."
+  },
+  {
+   "id": "h.parcel.o.gather.2",
+   "objective": "parcel.o.gather",
+   "depth": 2,
+   "text": "Two extra requests missed desk hours."
+  },
+  {
+   "id": "h.parcel.o.gather.3",
+   "objective": "parcel.o.gather",
+   "depth": 3,
+   "text": "Velaine left a sealed objection and kept her time stub. Tarin left his by the barrow gauge."
+  },
+  {
+   "id": "h.parcel.o.gather.4",
+   "objective": "parcel.o.gather",
+   "depth": 4,
+   "text": "Take the signed objection at the rail and the one farther east on Canal Walk."
+  },
+  {
+   "id": "h.parcel.o.plan.1",
+   "objective": "parcel.o.plan",
+   "depth": 1,
+   "text": "Who can be served before the cart finishes its round?"
+  },
+  {
+   "id": "h.parcel.o.plan.2",
+   "objective": "parcel.o.plan",
+   "depth": 2,
+   "text": "The yard can guarantee parcels with a later, staffed collection. The lower route gets four parcels out at first bell."
+  },
+  {
+   "id": "h.parcel.o.plan.3",
+   "objective": "parcel.o.plan",
+   "depth": 3,
+   "text": "Both orders keep the objections. They give the two unserved requests a different status."
+  },
+  {
+   "id": "h.parcel.o.plan.4",
+   "objective": "parcel.o.plan",
+   "depth": 4,
+   "text": "Take both sealed slips to Ade’s parcel desk at Library Dispatch and choose one order."
+  },
+  {
+   "id": "h.parcel.o.first.1",
+   "objective": "parcel.o.first",
+   "depth": 1,
+   "text": "The docket travels to Water Commons."
+  },
+  {
+   "id": "h.parcel.o.first.2",
+   "objective": "parcel.o.first",
+   "depth": 2,
+   "text": "Public paths through the Nexus and the Old Weir stay open."
+  },
+  {
+   "id": "h.parcel.o.first.3",
+   "objective": "parcel.o.first",
+   "depth": 3,
+   "text": "Use the low table in the Council Yard for a stamped order, or the lower-path rack for a first-bell order."
+  },
+  {
+   "id": "h.parcel.o.first.4",
+   "objective": "parcel.o.first",
+   "depth": 4,
+   "text": "Post the handover with four served and two held or uncollected. Look for one of the people still waiting."
+  },
+  {
+   "id": "h.parcel.o.appeal.1",
+   "objective": "parcel.o.appeal",
+   "depth": 1,
+   "text": "Someone on the lower path can say what happened to the remaining claim."
+  },
+  {
+   "id": "h.parcel.o.appeal.2",
+   "objective": "parcel.o.appeal",
+   "depth": 2,
+   "text": "Look for the seed carrier on the west side or the bridge crew farther east. Your first order determines who is still waiting."
+  },
+  {
+   "id": "h.parcel.o.appeal.3",
+   "objective": "parcel.o.appeal",
+   "depth": 3,
+   "text": "A measured turn or the dated key handover adds something the first entry could not show."
+  },
+  {
+   "id": "h.parcel.o.appeal.4",
+   "objective": "parcel.o.appeal",
+   "depth": 4,
+   "text": "Carry the signed appeal to Sena’s table in the Council Yard. Sign the second order when you want its gate opened."
+  },
+  {
+   "id": "h.parcel.o.finish.1",
+   "objective": "parcel.o.finish",
+   "depth": 1,
+   "text": "The permit names a service gate beside Sena’s yard."
+  },
+  {
+   "id": "h.parcel.o.finish.2",
+   "objective": "parcel.o.finish",
+   "depth": 2,
+   "text": "The terrace gate takes you to the wider turn. The bank gate takes you to the second-bell crew’s third-bell stop."
+  },
+  {
+   "id": "h.parcel.o.finish.3",
+   "objective": "parcel.o.finish",
+   "depth": 3,
+   "text": "Bring the signed permit from Sena through the gate to its receiving place."
+  },
+  {
+   "id": "h.parcel.o.finish.4",
+   "objective": "parcel.o.finish",
+   "depth": 4,
+   "text": "Give the last two parcels to the group named in the appeal. Take their copy back to Ade whenever you next visit Civic."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.parcel.delivery",
+   "claimKind": "interpretation",
+   "text": "Ade filed both objections with the first parcel order. Sena used the signed appeal to open a different stop. We kept the first four handovers in the record. The two later ones keep their own place and time."
+  }
+ ],
+ "chronicle": [
+  {
+   "id": "parcel.terrace.delivery",
+   "title": "A right at the wide turn",
+   "text": "The staffed collection held the seed carriers’ two parcels by name. Their return appeal opened the terrace gate. The carrier could turn the barrow. Requests in the yard waited for the attendant.",
+   "if": {
+    "flag": "parcel.served",
+    "eq": "guarantee"
+   }
+  },
+  {
+   "id": "parcel.bank.delivery",
+   "title": "A place after first bell",
+   "text": "Four walkers collected early. The key handover proved when the bridge crew got free. Their appeal opened a third-bell stop at the bank with two reserved parcels.",
+   "if": {
+    "flag": "parcel.served",
+    "eq": "express"
+   }
+  }
+ ]
+}

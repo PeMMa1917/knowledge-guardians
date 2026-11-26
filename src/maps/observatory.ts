@@ -1,7 +1,19 @@
 /** Fictional coast. The weather records describe local game conditions. */
 import type { Condition } from '../domain/types';
+import { COAST_FILM_STANDS } from './filmCuts';
+import { WINDOW_HARBOUR_PROPS } from './windowShop';
+import { DEPOT_HARBOUR_PROPS } from './surveyDepot';
+import { ARCHIVE_GLOBE_REVISIT, FOLD_TUBE_REVISIT, HARBOUR_HORN_REVISIT, HEADLAND_REFERENCE } from './referenceStation';
 import { sceneProp } from './sceneProps';
 import type { Interactable, MapDef } from './types';
+import { COAST_VESPER_TRUST } from './vesperTrust';
+import { FOLD_DRAWER_CASES } from './drawerCases';
+import { ARCHIVE_WATER_LOOP } from './waterLoop';
+import { COAST_REFERENCE_PROOFS, HARBOUR_REFERENCE_PROOFS } from './referenceProofs';
+import { TIMBUKTU_ARCHIVE_PROPS, timbuktuReceiver } from './timbuktuManuscript';
+import { SECOND_READING_ARCHIVE_PROPS } from './secondReading';
+import { LEAVITT_ARCHIVE, LEAVITT_HEADLAND } from './leavittPlate';
+import { FIELD_STORE_FOLD } from './fieldStore';
 
 function sign(id: string, x: number, y: number, label: string, art: string, text: string,
   options: { flag?: string; visibleIf?: Condition } = {}): Interactable {
@@ -15,6 +27,11 @@ function archiveScene(id: string, x: number, y: number, label: string, art: stri
 
 const archiveTimeline: Condition = { flag: 'coast.archive.edition', eq: 'timeline' };
 const archiveRegister: Condition = { flag: 'coast.archive.edition', eq: 'register' };
+const opticalCase: Condition = { objective: 'coast.revise' };
+const useLightScreen: Condition = { flag: 'perspective.active', eq: 'folding-light-screen' };
+const hasDepartureStrip: Condition = { flag: 'keepsake.departure-strip', eq: true };
+const useDepartureStrip: Condition = { flag: 'perspective.active', eq: 'departure-strip' };
+const compareDepartureSlips: Condition = { all: [useDepartureStrip, { card: 'card.departure.pere' }] };
 
 const harbourWidth = 29;
 const harbourHeight = 21;
@@ -49,6 +66,12 @@ export const OBSERVATORY_HARBOUR: MapDef = {
     { stamp: 'flowers-small', x: 4, y: 7 }, { stamp: 'flowers-white', x: 17, y: 4 },
   ],
   interactables: [
+    ...COAST_FILM_STANDS,
+    ...WINDOW_HARBOUR_PROPS,
+    ...DEPOT_HARBOUR_PROPS,
+    ...HARBOUR_HORN_REVISIT,
+    ...HARBOUR_REFERENCE_PROOFS,
+    timbuktuReceiver('quay'),
     { id: 'field-stars', kind: 'fieldgame', game: 'stars', x: 12, y: 9, w: 1, h: 1, label: 'Anwen\'s quadrant on the sea wall (Star Pictures)', art: 'coast.signal' },
     { id: 'cross-tide-engine', kind: 'fieldgame', game: 'cross-tide-engine', x: 16, y: 6, w: 1, h: 1, label: 'the brass tide engine on the harbour wall (a crossing)', art: 'coast.signal' },
     { id: 'coast-headland-path', kind: 'door', x: 13, y: 4, w: 1, h: 1, label: 'the steps up to the observatory',
@@ -131,6 +154,9 @@ export const OBSERVATORY_STATION: MapDef = {
     { stamp: 'barrel', x: 8, y: 10 }, { stamp: 'barrel', x: 17, y: 11 },
   ],
   interactables: [
+    ...LEAVITT_HEADLAND,
+    ...COAST_VESPER_TRUST,
+    ...HEADLAND_REFERENCE,
     { id: 'coast-headland-return', kind: 'door', x: 11, y: 15, w: 1, h: 1, label: 'the steps down to Slate Harbour',
       art: 'coast.waypost', to: { map: 'observatory.harbour', x: 13, y: 6 } },
     { id: 'coast-fold-path', kind: 'door', x: 3, y: 9, w: 1, h: 1, label: 'the track to Marl Fold',
@@ -152,6 +178,20 @@ export const OBSERVATORY_STATION: MapDef = {
     sign('coast-station-recheck', 20, 9, 'the headland’s next reading', 'coast.gauge',
       'Two finger-widths at the headland. Same gauge, same interval, one bell later. No second quay reading has reached the station.',
       { flag: 'coast.gauge.recheck', visibleIf: { flagSet: 'coast.notice' } }),
+    timbuktuReceiver('headland'),
+    { id: 'coast-shadow-board', kind: 'fieldgame', game: 'coast-shadow-board', x: 6, y: 10, w: 1, h: 1,
+      label: 'Neri’s two-lamp trial board', art: 'coast.clear-frame', walkThrough: true, visibleIf: opticalCase },
+    archiveScene('coast-optics-handover', 7, 10, 'Neri’s unfilled shadow handover', 'preserved.slip', 'coast.optics.post',
+      { all: [{ objective: 'coast.optics.compare' }, { not: { flagSet: 'coast.optics.plan' } }] }),
+    sign('coast-optics-board-copy', 7, 10, 'the finished shadow board', 'forecast-board',
+      'The shadow moves between the two marks under the two lamps. The pointer stays on the notch. The crew compares the notch before reporting that the pointer moved.',
+      { visibleIf: { flag: 'coast.optics.plan', eq: 'board' } }),
+    sign('coast-optics-runner-copy', 7, 10, 'the runner’s shadow handover', 'preserved.display-paired',
+      'At the second bell, take the quay crew the two lamp marks together with a tracing of the stationary notch. The runner can show where the shadow was made.',
+      { visibleIf: { flag: 'coast.optics.plan', eq: 'runner' } }),
+    { id: 'coast-optics-arch', kind: 'door', x: 19, y: 13, w: 1, h: 1,
+      label: 'the service arch visible under the light screen', art: 'preserved.door', visibleIf: useLightScreen,
+      to: { map: 'observatory.archive', x: 16, y: 12 } },
   ],
   lights: [
     { x: 11, y: 5, r: 58, color: 0xf8d7a7 }, { x: 15, y: 9, r: 52, color: 0xf4e5b0 },
@@ -185,6 +225,9 @@ export const OBSERVATORY_INLAND: MapDef = {
     { stamp: 'bush', x: 6, y: 13 }, { stamp: 'flowers-small', x: 18, y: 12 },
   ],
   interactables: [
+    ...FIELD_STORE_FOLD,
+    ...FOLD_DRAWER_CASES,
+    ...FOLD_TUBE_REVISIT,
     { id: 'coast-fold-return', kind: 'door', x: 23, y: 13, w: 1, h: 1, label: 'the track back to Headland Station',
       art: 'coast.waypost', to: { map: 'observatory.station', x: 4, y: 9 } },
     sign('coast-fold-stair-log', 5, 8, 'the porter’s dry-day tally', 'coast.runner',
@@ -232,7 +275,8 @@ export const OBSERVATORY_ARCHIVE: MapDef = {
   id: 'observatory.archive', name: 'Observatory Coast: the Bell Archive', world: 'WORLD-05',
   width: archiveWidth, height: archiveHeight, music: 'music.archive', ambience: 'archive',
   background: 0x223645, floor: archiveFloor,
-  blocks: [[1, 0, archiveWidth - 2, 3]], npcs: [], zones: [], spawn: { x: 12, y: 12 },
+  blocks: [[1, 0, archiveWidth - 2, 3]], zones: [], spawn: { x: 12, y: 12 },
+  npcs: [{ id: 'coast-olwen-veer', x: 6, y: 13, facing: 'right' }],
   stamps: [
     { stamp: 'bookshelf', x: 3, y: 2 }, { stamp: 'bookshelf', x: 17, y: 2 },
     { stamp: 'long-table', x: 6, y: 8 }, { stamp: 'long-table', x: 16, y: 9 },
@@ -240,6 +284,12 @@ export const OBSERVATORY_ARCHIVE: MapDef = {
     { stamp: 'crates', x: 19, y: 5 }, { stamp: 'rug-green', x: 11, y: 10 },
   ],
   interactables: [
+    ...LEAVITT_ARCHIVE,
+    ...ARCHIVE_WATER_LOOP,
+    ...ARCHIVE_GLOBE_REVISIT,
+    ...COAST_REFERENCE_PROOFS,
+    ...TIMBUKTU_ARCHIVE_PROPS,
+    ...SECOND_READING_ARCHIVE_PROPS,
     { id: 'coast-archive-return', kind: 'door', x: 12, y: 14, w: 1, h: 1, label: 'the steps back to Slate Harbour',
       art: 'coast.waypost', to: { map: 'observatory.harbour', x: 25, y: 7 } },
     archiveScene('coast-archive-sleeve', 4, 6, 'the forecast sleeve', 'preserved.folder', 'coast.archive.sleeve'),
@@ -251,6 +301,29 @@ export const OBSERVATORY_ARCHIVE: MapDef = {
       'coast.archive.timeline', archiveTimeline),
     archiveScene('coast-archive-index', 8, 10, 'the archive index for the quay card', 'preserved.display-records',
       'coast.archive.index', archiveRegister),
+    archiveScene('coast-optics-method', 15, 7, 'the source card for the trial board', 'icon.book',
+      'coast.optics.card', opticalCase),
+    { id: 'coast-optics-arch-return', kind: 'door', x: 17, y: 13, w: 1, h: 1,
+      label: 'the service passage up to the headland', art: 'preserved.door', visibleIf: useLightScreen,
+      to: { map: 'observatory.station', x: 18, y: 13 } },
+    { id: 'coast-departure-southern-bays', kind: 'exhibit', exhibit: 'OBJ-DEPART-PERE', x: 5, y: 4, w: 1, h: 1,
+      label: 'Kā Huru Manu’s account of the southern-bays map', art: 'departure.catalogue', walkThrough: true,
+      visibleIf: hasDepartureStrip },
+    { ...archiveScene('coast-departure-route', 5, 10, 'the printer’s East Landing slip', 'preserved.slip',
+      'departure.archive.route-slip', compareDepartureSlips),
+      artOpen: { key: 'departure.strip', if: { flag: 'departure.archive.route', eq: true } } },
+    { ...archiveScene('coast-departure-loan', 21, 8, 'Tova’s folded Reed Landing receipt', 'preserved.folder',
+      'departure.archive.loan-slip', compareDepartureSlips),
+      artOpen: { key: 'departure.strip', if: { flag: 'departure.archive.receipt', eq: true } } },
+    archiveScene('coast-departure-place', 13, 5, 'the W-17 index table', 'departure.strip', 'departure.archive.place',
+      { all: [compareDepartureSlips, { objective: 'departure.archive.compare' },
+        { not: { flagSet: 'departure.archive.route-plan' } }] }),
+    { ...archiveScene('coast-departure-cross', 5, 12, 'the two drawer tabs below the west bench', 'preserved.display-paired',
+      'departure.archive.cross-check', { flag: 'departure.archive.route-plan', eq: 'cross' }),
+      artOpen: { key: 'departure.strip', if: { flag: 'departure.archive.readback', eq: 'cross' } } },
+    { ...archiveScene('coast-departure-desk', 21, 11, 'the staffed lending tray', 'ledger', 'departure.archive.desk-check',
+      { flag: 'departure.archive.route-plan', eq: 'desk' }),
+      artOpen: { key: 'departure.strip', if: { flag: 'departure.archive.readback', eq: 'desk' } } },
   ],
   lights: [
     { x: 4, y: 6, r: 61, color: 0xecd8a3 }, { x: 18, y: 6, r: 60, color: 0xa7d2ce },

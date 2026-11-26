@@ -1,14 +1,50 @@
 import type { MapDef } from './types';
 import { NEXUS } from './nexus';
-import { EMBERFORD } from './emberford';
+import { HALF_LIGHT_ROOM } from './lanternWeave';
+import { NEXT_BENCH } from './afterCouncil';
+import { HANDOVER_GALLERY } from './handoverGallery';
+import { EMBERFORD, REPAIR_YARD } from './emberford';
 import { STUDY } from './study';
+import { SHELF_MODEL, SHELF_ROOM } from './shelfRoom';
+import { CLEARANCE_GALLERY } from './clearanceGallery';
+import { DATE_PEG_ROOM } from './datePeg';
+import { SEA_RELAY_ROOM } from './specimenRelay';
+import { ASIA_LABEL_LOFT } from './asiaLabelLoft';
+import { MARKET_SAMPLE_SHED, STAGE_PROP_ROOM } from './specimenWork';
+import { POLAR_RECORDS, POLAR_TRIAL } from './polarStore';
+import { DATE_REGISTER_ROOM } from './dateRegister';
+import { SHOAL_PROOF_SHELTER } from './specimenPassage';
+import { WINDOW_SHOP } from './windowShop';
+import { READING_WORKS } from './readingWorks';
+import { STORY_ARCHIVE } from './storyArchive';
+import { COPIES_PROOF_ROOM } from './copyImprint';
+import { NUMBER_LEAF_ROOM } from './numberLeaves';
+import { SPECIMEN_VAULT } from './specimenVault';
+import { SURVEY_DEPOT } from './surveyDepot';
+import { REFERENCE_FLOOR, REFERENCE_LANES } from './referenceLine';
+import { TURNING_ROOM } from './turningTable';
+import { NILE_MAKERS_ROOM } from './makerRoom';
+import { OBJECT_USE_WORKSHOPS } from './objectUse';
+import { REFERENCE_STATION } from './referenceStation';
+import { CIVIC_CALLBOARD } from './civicCallboard';
+import { CUE_WORKSHOP } from './cueWorkshop';
+import { MODEL_RECORD_ROOM } from './modelRecords';
+import { SECOND_READING_STORE } from './secondReading';
+import { TIME_ROOM } from './timeRoom';
+import { FIELD_STORE } from './fieldStore';
+import { MATERIAL_STORE_MAPS } from './materialStores';
+import { COUNCIL_LOADING_BAY, COUNCIL_LOAD_CHECK } from './loadingBay';
+import { PRESERVED_GLASS_RACK } from './glassRack';
 import { FERRY } from './ferry';
 import { NILE_HALL, NILE_ROYAL, NILE_ROUTE, NILE_WORKYARD } from './nile';
 import { UNDERCROFT } from './undercroft';
 import { PRESERVED_ARCHIVE, PRESERVED_COAST, PRESERVED_COPPER, PRESERVED_GALLERY, PRESERVED_INQUIRY, PRESERVED_ROYAL, PRESERVED_WORKROOM } from './preserved';
 import { OBSERVATORY_ARCHIVE, OBSERVATORY_HARBOUR, OBSERVATORY_INLAND, OBSERVATORY_STATION } from './observatory';
 import { FOREST_STATION, FOREST_TRAIL, FOREST_COMMUNITY } from './forest';
+import { FERN_RECORD_ROOM } from './fernRecordRoom';
 import { METALWORKS_YARD, METALWORKS_RECORDS } from './metalworks';
+import { METAL_BENCH_MEETING } from './benchDebate';
+import { METAL_LATCH_BAY, WATER_SERVICE_LANE } from './latchCheck';
 import { COPIES_ARCHIVE, COPIES_PRESS, COPIES_LANDING } from './copies';
 import { SEA_HARBOUR, SEA_CHARTROOM, SEA_SHOAL } from './sea';
 import { STAGE_FOYER, STAGE_GALLERY, STAGE_REHEARSAL } from './stage';
@@ -16,20 +52,34 @@ import { MARKET_SQUARE } from './market';
 import { COUNCIL_GALLERY, COUNCIL_HALL } from './council';
 import { ISLAND_DOCK, ISLAND_MARGIN, ISLAND_WORKSHOP } from './island';
 import { VOICES_LISTENING, VOICES_QUAY, VOICES_WALK } from './voices';
+import { VESPER_PROOF_ROOM } from './vesperTrust';
 import { CIVIC_CANAL, CIVIC_DISPATCH, CIVIC_STEPS } from './civic';
 import { WATER_COUNCIL, WATER_GATEHOUSE, WATER_LOWER_CHANNEL } from './water';
 
 export const MAPS: Record<string, MapDef> = {
   [NEXUS.id]: NEXUS,
+  [HALF_LIGHT_ROOM.id]: HALF_LIGHT_ROOM,
+  [NUMBER_LEAF_ROOM.id]: NUMBER_LEAF_ROOM,
+  [SPECIMEN_VAULT.id]: SPECIMEN_VAULT,
+  [NEXT_BENCH.id]: NEXT_BENCH,
+  [HANDOVER_GALLERY.id]: HANDOVER_GALLERY,
   [EMBERFORD.id]: EMBERFORD,
+  [REPAIR_YARD.id]: REPAIR_YARD,
   [STUDY.id]: STUDY,
+  [TIME_ROOM.id]: TIME_ROOM,
+  [SHELF_ROOM.id]: SHELF_ROOM,
+  [SHELF_MODEL.id]: SHELF_MODEL,
   [FERRY.id]: FERRY,
   [UNDERCROFT.id]: UNDERCROFT,
   [NILE_HALL.id]: NILE_HALL,
   [NILE_ROYAL.id]: NILE_ROYAL,
   [NILE_WORKYARD.id]: NILE_WORKYARD,
   [NILE_ROUTE.id]: NILE_ROUTE,
+  [NILE_MAKERS_ROOM.id]: NILE_MAKERS_ROOM,
   [PRESERVED_ARCHIVE.id]: PRESERVED_ARCHIVE,
+  [CLEARANCE_GALLERY.id]: CLEARANCE_GALLERY,
+  [POLAR_RECORDS.id]: POLAR_RECORDS,
+  [POLAR_TRIAL.id]: POLAR_TRIAL,
   [PRESERVED_ROYAL.id]: PRESERVED_ROYAL,
   [PRESERVED_COAST.id]: PRESERVED_COAST,
   [PRESERVED_INQUIRY.id]: PRESERVED_INQUIRY,
@@ -37,36 +87,67 @@ export const MAPS: Record<string, MapDef> = {
   [PRESERVED_COPPER.id]: PRESERVED_COPPER,
   [PRESERVED_GALLERY.id]: PRESERVED_GALLERY,
   [OBSERVATORY_HARBOUR.id]: OBSERVATORY_HARBOUR,
+  [WINDOW_SHOP.id]: WINDOW_SHOP,
+  [SURVEY_DEPOT.id]: SURVEY_DEPOT,
+  [REFERENCE_STATION.id]: REFERENCE_STATION,
   [OBSERVATORY_ARCHIVE.id]: OBSERVATORY_ARCHIVE,
   [OBSERVATORY_STATION.id]: OBSERVATORY_STATION,
   [OBSERVATORY_INLAND.id]: OBSERVATORY_INLAND,
   [FOREST_STATION.id]: FOREST_STATION,
+  [FERN_RECORD_ROOM.id]: FERN_RECORD_ROOM,
   [FOREST_TRAIL.id]: FOREST_TRAIL,
   [FOREST_COMMUNITY.id]: FOREST_COMMUNITY,
   [METALWORKS_YARD.id]: METALWORKS_YARD,
+  [REFERENCE_FLOOR.id]: REFERENCE_FLOOR,
+  [REFERENCE_LANES.id]: REFERENCE_LANES,
   [METALWORKS_RECORDS.id]: METALWORKS_RECORDS,
+  [METAL_BENCH_MEETING.id]: METAL_BENCH_MEETING,
+  [METAL_LATCH_BAY.id]: METAL_LATCH_BAY,
   [COPIES_ARCHIVE.id]: COPIES_ARCHIVE,
+  [READING_WORKS.id]: READING_WORKS,
+  [COPIES_PROOF_ROOM.id]: COPIES_PROOF_ROOM,
   [COPIES_PRESS.id]: COPIES_PRESS,
   [COPIES_LANDING.id]: COPIES_LANDING,
   [SEA_HARBOUR.id]: SEA_HARBOUR,
   [SEA_CHARTROOM.id]: SEA_CHARTROOM,
+  [DATE_PEG_ROOM.id]: DATE_PEG_ROOM,
+  [DATE_REGISTER_ROOM.id]: DATE_REGISTER_ROOM,
+  [SEA_RELAY_ROOM.id]: SEA_RELAY_ROOM,
+  [TURNING_ROOM.id]: TURNING_ROOM,
+  [SHOAL_PROOF_SHELTER.id]: SHOAL_PROOF_SHELTER,
   [SEA_SHOAL.id]: SEA_SHOAL,
   [STAGE_FOYER.id]: STAGE_FOYER,
   [STAGE_REHEARSAL.id]: STAGE_REHEARSAL,
   [STAGE_GALLERY.id]: STAGE_GALLERY,
+  [STAGE_PROP_ROOM.id]: STAGE_PROP_ROOM,
+  [STORY_ARCHIVE.id]: STORY_ARCHIVE,
   [MARKET_SQUARE.id]: MARKET_SQUARE,
+  [MARKET_SAMPLE_SHED.id]: MARKET_SAMPLE_SHED,
+  ...Object.fromEntries(OBJECT_USE_WORKSHOPS.map((room) => [room.id, room])),
   [WATER_GATEHOUSE.id]: WATER_GATEHOUSE,
   [WATER_COUNCIL.id]: WATER_COUNCIL,
+  [FIELD_STORE.id]: FIELD_STORE,
+  ...Object.fromEntries(MATERIAL_STORE_MAPS.map((room) => [room.id, room])),
   [WATER_LOWER_CHANNEL.id]: WATER_LOWER_CHANNEL,
+  [WATER_SERVICE_LANE.id]: WATER_SERVICE_LANE,
   [CIVIC_DISPATCH.id]: CIVIC_DISPATCH,
+  [CIVIC_CALLBOARD.id]: CIVIC_CALLBOARD,
   [CIVIC_STEPS.id]: CIVIC_STEPS,
   [CIVIC_CANAL.id]: CIVIC_CANAL,
   [VOICES_LISTENING.id]: VOICES_LISTENING,
   [VOICES_WALK.id]: VOICES_WALK,
   [VOICES_QUAY.id]: VOICES_QUAY,
+  [CUE_WORKSHOP.id]: CUE_WORKSHOP,
+  [VESPER_PROOF_ROOM.id]: VESPER_PROOF_ROOM,
   [ISLAND_WORKSHOP.id]: ISLAND_WORKSHOP,
+  [MODEL_RECORD_ROOM.id]: MODEL_RECORD_ROOM,
+  [ASIA_LABEL_LOFT.id]: ASIA_LABEL_LOFT,
   [ISLAND_DOCK.id]: ISLAND_DOCK,
   [ISLAND_MARGIN.id]: ISLAND_MARGIN,
   [COUNCIL_HALL.id]: COUNCIL_HALL,
+  [SECOND_READING_STORE.id]: SECOND_READING_STORE,
   [COUNCIL_GALLERY.id]: COUNCIL_GALLERY,
+  [COUNCIL_LOADING_BAY.id]: COUNCIL_LOADING_BAY,
+  [COUNCIL_LOAD_CHECK.id]: COUNCIL_LOAD_CHECK,
+  [PRESERVED_GLASS_RACK.id]: PRESERVED_GLASS_RACK,
 };

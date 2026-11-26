@@ -1,6 +1,15 @@
 /** A fictional city where the archive, press and landing share written notices. */
 import type { Condition } from '../domain/types';
+import { DATE_REGISTER_RETURNS } from './dateRegisterReturns';
 import type { Interactable, MapDef } from './types';
+import { COPIES_ARCHIVE_BACKBILL, COPIES_PRESS_BACKBILL } from './backbill';
+import { COPIES_WELCOME } from './welcome';
+import { carriedFrame } from './sharedCarry';
+import { COPIES_ARCHIVE_CITATION_RAIL, COPIES_PRESS_CITATION_RAIL } from './citationRail';
+import { LANDING_SAME_RED, PRESS_SAME_RED } from './sameRed';
+import { PRESS_LANTERN_WEAVE } from './lanternWeave';
+import { IMPRINT_LANDING, IMPRINT_PATH } from './copyImprint';
+import { READING_WORKS_DOOR, READING_WORKS_LANDING, READING_WORKS_PERKINS } from './readingWorks';
 
 type CitySite = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'interactables' | 'stamps' | 'lights'>;
@@ -37,6 +46,19 @@ function translationProp(id: string, x: number, y: number, label: string, art: s
 const translationUnfiled: Condition = { not: { flagSet: 'copies.translation.edition' } };
 const translationPlain: Condition = { flag: 'copies.translation.edition', eq: 'plain' };
 const translationPaired: Condition = { flag: 'copies.translation.edition', eq: 'paired' };
+const marginUnsent: Condition = { not: { flagSet: 'copies.margin.sent' } };
+const marginShort: Condition = { flagSet: 'copies.margin.short' };
+const marginWide: Condition = { flagSet: 'copies.margin.wide' };
+const carryLaneReserved: Condition = { flag: 'copies.carry.phase', in: ['lift', 'upper'] };
+
+function shortCarryLane(id: string, x: number, landing: number): Interactable {
+  return {
+    ...door(id, x, 11, 'the short lane by the keeper’s rail', { map: 'copies.landing', x: landing, y: 11 }),
+    art: 'voices.railing', artOpen: { key: 'shared-carry.barrier', if: carryLaneReserved },
+    openIf: { not: carryLaneReserved },
+    text: 'Both keepers are with the frame. Use the ordinary steps until Mina waves the short lane open.',
+  };
+}
 
 export const COPIES_ARCHIVE = interior({
   id: 'copies.archive', name: 'City of Copies: Record Room', width: 26, height: 16,
@@ -49,6 +71,11 @@ export const COPIES_ARCHIVE = interior({
     { stamp: 'rug-green', x: 11, y: 10 },
   ],
   interactables: [
+    ...COPIES_ARCHIVE_BACKBILL,
+    ...DATE_REGISTER_RETURNS,
+    ...COPIES_ARCHIVE_CITATION_RAIL,
+    READING_WORKS_DOOR,
+    ...READING_WORKS_PERKINS,
     door('copies-press-path', 4, 3, 'the west passage to the press', { map: 'copies.press', x: 11, y: 12 }),
     door('copies-landing-path', 21, 3, 'the east steps to the landing', { map: 'copies.landing', x: 12, y: 12 }),
     { ...door('copies-nexus-return', 12, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 21, y: 13 }),
@@ -86,6 +113,11 @@ export const COPIES_PRESS = interior({
     { stamp: 'bench', x: 14, y: 11 },
   ],
   interactables: [
+    ...COPIES_PRESS_BACKBILL,
+    ...COPIES_PRESS_CITATION_RAIL,
+    ...PRESS_SAME_RED,
+    PRESS_LANTERN_WEAVE,
+    IMPRINT_PATH,
     { id: 'cross-crowd', kind: 'fieldgame', game: 'cross-crowd', x: 9, y: 6, w: 1, h: 1, label: 'the crowd at the press door (a crossing)', art: 'notice-board' },
     door('copies-press-return', 11, 14, 'the passage back to the Record Room', { map: 'copies.archive', x: 4, y: 5 }),
     door('copies-press-to-landing', 22, 9, 'the passage to the landing', { map: 'copies.landing', x: 5, y: 9 }),
@@ -99,6 +131,16 @@ export const COPIES_PRESS = interior({
       'copies.translation.carrier', { all: [translationUnfiled, { flag: 'label.copies.mending-card.holds', eq: true }] }),
     translationProp('copies-translation-workshop-proof', 6, 9, 'the paired mending card on the workshop rack', 'preserved.display-paired',
       'copies.translation.workshop-proof', translationPaired),
+    translationProp('copies.margin.short', 17, 8, 'the press’s short runner guide', 'copies.press',
+      'copies.margin.short', { not: marginShort }),
+    translationProp('copies-margin-short-proof', 17, 8, 'the narrow test proof', 'copies.strip',
+      'copies.margin.short.tested', marginShort),
+    translationProp('copies.margin.wide', 17, 10, 'the press’s full-width guide', 'copies.press',
+      'copies.margin.wide', { not: marginWide }),
+    translationProp('copies-margin-wide-proof', 17, 10, 'the wide test proof', 'copies.reprint',
+      'copies.margin.wide.tested', marginWide),
+    translationProp('copies-margin-press-tray', 20, 7, 'Lark’s tray for the ramp orders', 'preserved.folder',
+      'copies.margin.tray', { all: [{ objective: 'copies.margin.compare' }, marginUnsent] }),
   ],
   lights: [
     { x: 11, y: 6, r: 61, color: 0xf6cea1 }, { x: 13, y: 8, r: 55, color: 0xffd0aa },
@@ -131,7 +173,22 @@ export const COPIES_LANDING: MapDef = {
     { stamp: 'flowers-white', x: 1, y: 9 }, { stamp: 'flowers-small', x: 3, y: 5 },
   ],
   interactables: [
+    ...COPIES_WELCOME,
+    ...LANDING_SAME_RED,
+    ...IMPRINT_LANDING,
+    READING_WORKS_LANDING,
     door('copies-landing-return', 12, 15, 'the steps back to the Record Room', { map: 'copies.archive', x: 21, y: 5 }),
+    carriedFrame('copies', 'start', 5, 12, 'Mina’s wide-page frame on the delivery hooks'),
+    carriedFrame('copies', 'cart', 11, 10, 'the wide-page frame at the first cart rest'),
+    carriedFrame('copies', 'cart-turn', 18, 13, 'the wide-page frame at the far cart rest'),
+    carriedFrame('copies', 'lift', 15, 13, 'the wide-page frame and the second keeper'),
+    carriedFrame('copies', 'low', 21, 13, 'the wide-page frame at the low return counter'),
+    carriedFrame('copies', 'upper', 21, 10, 'the wide-page frame at the covered cradle'),
+    print('shared-carry-parked-cart', 18, 13, 'the handcart in the overflow space', 'shared-carry.parked',
+      'The handcart and its spare straps stay here for the low frame. Mina keeps the extra return tray inside for now.',
+      { visibleIf: { flag: 'copies.carry.phase', in: ['done-low', 'read-low'] } }),
+    shortCarryLane('shared-carry-lane-near', 15, 22),
+    shortCarryLane('shared-carry-lane-far', 21, 14),
     door('copies-landing-to-press', 3, 9, 'the passage back to the press', { map: 'copies.press', x: 21, y: 9 }),
     { id: 'copies-compare-landing', kind: 'copy-compare', node: 'landing', x: 20, y: 9, w: 1, h: 1,
       label: 'the runner’s landing copy', art: 'copies.landing' },
@@ -166,6 +223,22 @@ export const COPIES_LANDING: MapDef = {
       'copies.translation.reader'),
     translationProp('copies-translation-landing-proof', 8, 8, 'the mending card by the shared return tray', 'copies.reprint',
       'copies.translation.landing-proof', translationPlain),
+    print('copies-margin-master', 23, 7, 'the signed ramp trial order', 'copies.source',
+      'Empty carts only on the west ramp, on this shift. Loaded carts use the stone steps hoist. Signed by the landing crew after a trial with an empty cart.',
+      { flag: 'copies.margin.master' }),
+    translationProp('copies-margin-fold', 23, 9, 'the tie on the folded order at the ramp', 'copies.reprint',
+      'copies.margin.fold', { all: [marginUnsent, { flag: 'copies.margin.bundle', eq: 'fold' }] }),
+    translationProp('copies-margin-pair', 5, 10, 'the runner’s two hooks at the landing', 'copies.strip',
+      'copies.margin.pair', { all: [marginUnsent, { flag: 'copies.margin.bundle', eq: 'pair' }] }),
+    print('copies-margin-folded', 23, 9, 'the full order on the ramp board', 'copies.reprint',
+      'The whole order is at the ramp. Loaded carts have the hoist directions beside the trial limit. The near queue sees both. The outer stalls wait for runners.',
+      { visibleIf: { flag: 'copies.margin.sent', eq: 'fold' } }),
+    print('copies-margin-paired', 5, 10, 'the linked order at the runner’s hooks', 'preserved.display-paired',
+      'The runner has reached the outer stalls. Each order has a large turn arrow and a matching strip with the trial limit and the crew’s signature.',
+      { visibleIf: { flag: 'copies.margin.sent', eq: 'pair' } }),
+    print('copies-margin-waited', 23, 9, 'the tray left with the landing crew', 'preserved.folder',
+      'The test sheets are in Lark’s tray. A crew member calls directions from the ramp until the runners get a checked copy.',
+      { visibleIf: { flag: 'copies.margin.sent', eq: 'wait' } }),
   ],
   lights: [
     { x: 16, y: 6, r: 65, color: 0xcce0d9 }, { x: 20, y: 9, r: 65, color: 0xadd7dc },

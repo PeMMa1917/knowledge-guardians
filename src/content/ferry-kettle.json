@@ -1,0 +1,941 @@
+{
+  "characters": [
+    {
+      "id": "ferry-cook",
+      "name": "Enna Bridgel",
+      "role": "Ferry landing cook",
+      "sprite": "custom:olive.black.cream.brown.scarf.cyan.curls.none.none",
+      "mode": "fictional",
+      "talk": [
+        {
+          "node": "ferry.kettle.active",
+          "if": {
+            "flag": "kettle.active",
+            "eq": true
+          }
+        },
+        {
+          "node": "ferry.kettle.after",
+          "if": {
+            "flag": "kettle.checked",
+            "eq": true
+          }
+        },
+        {
+          "node": "ferry.kettle.unread",
+          "if": {
+            "flagSet": "kettle.served"
+          }
+        },
+        {
+          "node": "ferry.kettle.offer"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item.kettle.service-card",
+      "name": "Enna’s serving card",
+      "description": "Six measures, with separate places for when they were ready and who received a cup. Dagny can use this at the Market of Measures.",
+      "historicalLabel": "fictional-world",
+      "art": "ledger"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-R24",
+      "title": "A Cup before the Bell",
+      "world": "WORLD-02",
+      "available": {
+        "flagSet": "kettle.shift"
+      },
+      "knowledgeQuestion": "When does knowing how much something can make fail to show who will receive it?",
+      "objectives": [
+        {
+          "id": "ferry.kettle.compare",
+          "title": "Try both heating orders for the same shift.",
+          "essential": false,
+          "done": {
+            "all": [
+              {
+                "flag": "kettle.whole",
+                "eq": true
+              },
+              {
+                "flag": "kettle.split",
+                "eq": true
+              }
+            ]
+          },
+          "weave": {
+            "concepts": [
+              "evidence",
+              "objectivity",
+              "explanation",
+              "certainty"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools"
+            ],
+            "atl": [
+              "thinking",
+              "research"
+            ],
+            "aoks": [
+              "NAT",
+              "MAT"
+            ],
+            "subjects": [
+              "design-tech",
+              "math-ai"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 3
+          }
+        },
+        {
+          "id": "ferry.kettle.served",
+          "title": "Set the serving bench and check what the waiting crew received.",
+          "essential": false,
+          "done": {
+            "flag": "kettle.checked",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "perspective",
+              "values",
+              "responsibility",
+              "justification",
+              "power"
+            ],
+            "framework": [
+              "perspectives",
+              "scope",
+              "ethics"
+            ],
+            "atl": [
+              "communication",
+              "social",
+              "self-management"
+            ],
+            "aoks": [
+              "HUM",
+              "MAT"
+            ],
+            "subjects": [
+              "economics",
+              "math-ai"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "caring",
+              "solo": "relational"
+            },
+            "minutes": 2
+          },
+          "visible": {
+            "objective": "ferry.kettle.compare"
+          },
+          "onComplete": [
+            {
+              "giveItem": "item.kettle.service-card"
+            },
+            {
+              "journal": "j.kettle.served"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KG-CH10-R06",
+      "title": "The Cups on the Rain Shelf",
+      "world": "WORLD-11",
+      "available": {
+        "all": [
+          {
+            "item": "item.kettle.service-card"
+          },
+          {
+            "objective": "market.arrival"
+          }
+        ]
+      },
+      "knowledgeQuestion": "When do different kinds of count have to stay separate?",
+      "objectives": [
+        {
+          "id": "market.kettle.compare",
+          "title": "Test where the old serving card sits with the carrier’s limit.",
+          "essential": false,
+          "done": {
+            "flag": "market.kettle.compared",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "truth",
+              "explanation"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools"
+            ],
+            "atl": [
+              "thinking",
+              "research"
+            ],
+            "aoks": [
+              "HUM",
+              "MAT"
+            ],
+            "subjects": [
+              "economics",
+              "design-tech"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 2
+          }
+        },
+        {
+          "id": "market.kettle.readback",
+          "title": "Read the amended count after the first carrier leaves.",
+          "essential": false,
+          "done": {
+            "flag": "market.kettle.readback",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "evidence",
+              "power",
+              "perspective",
+              "responsibility",
+              "values"
+            ],
+            "framework": [
+              "ethics",
+              "perspectives",
+              "methods-and-tools"
+            ],
+            "atl": [
+              "communication",
+              "social"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "subjects": [
+              "business",
+              "economics"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "human",
+              "solo": "relational"
+            },
+            "minutes": 2
+          },
+          "visible": {
+            "objective": "market.kettle.compare"
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "ferry.kettle.offer",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "Enna Bridgel keeps a warm pot for people at the landing. “Two at the first bell want to take a cup right to the boat. Four will be here later. The next shift has six who can stay. I have six measures to use in either case. Let me call a shift from the trial bench.”",
+      "options": [
+        {
+          "text": "Take the practice ladle.",
+          "next": "ferry.kettle.shift"
+        },
+        {
+          "text": "Walk on for now."
+        }
+      ]
+    },
+    {
+      "id": "ferry.kettle.after",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "Enna wipes the rim. “Keep the serving card where it is. You can try the other shift next. I’ll leave this one posted until the new cups are ready.”",
+      "options": [
+        {
+          "text": "Ask Enna for a fresh shift card.",
+          "next": "ferry.kettle.shift"
+        },
+        {
+          "text": "Leave the last serving card in place."
+        }
+      ]
+    },
+    {
+      "id": "ferry.kettle.active",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "“The shift card is on the slate. Try the two pots and open the cups. Tell me which bench to set before the crew comes.”"
+    },
+    {
+      "id": "ferry.kettle.unread",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "“Before we try another shift, look at the waiting bench and see who has a cup.”"
+    },
+    {
+      "id": "ferry.kettle.shift",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "“The kettle takes six measures. The small pot is ready at the first bell and leaves the rest for a second turn. A full pot takes until the second. Today we can try either arrival card without spending any real stock.”",
+      "options": [
+        {
+          "text": "Hang the card for the early boat and the bench queue.",
+          "next": "ferry.kettle.marked-busy",
+          "effects": [
+            {
+              "setFlag": "kettle.shift",
+              "value": "busy"
+            },
+            {
+              "setFlag": "kettle.active",
+              "value": true
+            },
+            {
+              "setFlag": "kettle.whole",
+              "value": false
+            },
+            {
+              "setFlag": "kettle.split",
+              "value": false
+            }
+          ]
+        },
+        {
+          "text": "Hang the card for six people who stay until the second bell.",
+          "next": "ferry.kettle.marked-steady",
+          "effects": [
+            {
+              "setFlag": "kettle.shift",
+              "value": "steady"
+            },
+            {
+              "setFlag": "kettle.active",
+              "value": true
+            },
+            {
+              "setFlag": "kettle.whole",
+              "value": false
+            },
+            {
+              "setFlag": "kettle.split",
+              "value": false
+            }
+          ]
+        },
+        {
+          "text": "Leave both shift cards on the hook."
+        }
+      ]
+    },
+    {
+      "id": "ferry.kettle.marked-busy",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "The first peg holds two cups for people on the early boat. The bench peg holds four for the later crew. The first crew has to leave at the first bell."
+    },
+    {
+      "id": "ferry.kettle.marked-steady",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "The first-bell peg is bare. All six cups will be requested at the bench at the second bell."
+    },
+    {
+      "id": "ferry.kettle.trial",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "The trial cups are dry markers. You can lift each on the bell at which the pot can fill it. The same six measures stay on the tray.",
+      "options": [
+        {
+          "text": "Put six measures in one pot.",
+          "next": "ferry.kettle.whole-run",
+          "if": {
+            "flag": "kettle.active",
+            "eq": true
+          }
+        },
+        {
+          "text": "Set two measures on the small-pot mark.",
+          "next": "ferry.kettle.split-run",
+          "if": {
+            "flag": "kettle.active",
+            "eq": true
+          }
+        },
+        {
+          "text": "Arrange the real serving bench.",
+          "next": "ferry.kettle.choose",
+          "if": {
+            "all": [
+              {
+                "flag": "kettle.active",
+                "eq": true
+              },
+              {
+                "all": [
+                  {
+                    "flag": "kettle.whole",
+                    "eq": true
+                  },
+                  {
+                    "flag": "kettle.split",
+                    "eq": true
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "text": "Leave the kettle on its hook."
+        }
+      ]
+    },
+    {
+      "id": "ferry.kettle.whole-run",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "The full pot takes the two chalk counts. The two early cup rings stay empty until you lift the pot.",
+      "options": [
+        {
+          "text": "Lift the full pot at the second bell.",
+          "next": "ferry.kettle.busy-whole",
+          "if": {
+            "all": [
+              {
+                "flag": "kettle.active",
+                "eq": true
+              },
+              {
+                "flag": "kettle.shift",
+                "eq": "busy"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "kettle.whole",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Lift the full pot at the second bell.",
+          "next": "ferry.kettle.steady-whole",
+          "if": {
+            "all": [
+              {
+                "flag": "kettle.active",
+                "eq": true
+              },
+              {
+                "flag": "kettle.shift",
+                "eq": "steady"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "kettle.whole",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the kettle on its hook."
+        }
+      ]
+    },
+    {
+      "id": "ferry.kettle.split-run",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "The small pot comes up to the first chalk line. You set two filled markers on the rail, keeping four dry markers for another heat.",
+      "options": [
+        {
+          "text": "Set down two cups and start the second pot for four.",
+          "next": "ferry.kettle.split-second",
+          "if": {
+            "flag": "kettle.active",
+            "eq": true
+          }
+        },
+        {
+          "text": "Leave the kettle on its hook."
+        }
+      ]
+    },
+    {
+      "id": "ferry.kettle.split-second",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "The second pot takes a fresh turn at the hearth. The two cups on the rail hold their first-bell tag.",
+      "options": [
+        {
+          "text": "Ladle the other four at the second bell.",
+          "next": "ferry.kettle.busy-split",
+          "if": {
+            "all": [
+              {
+                "flag": "kettle.active",
+                "eq": true
+              },
+              {
+                "flag": "kettle.shift",
+                "eq": "busy"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "kettle.split",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Ladle the other four at the second bell.",
+          "next": "ferry.kettle.steady-split",
+          "if": {
+            "all": [
+              {
+                "flag": "kettle.active",
+                "eq": true
+              },
+              {
+                "flag": "kettle.shift",
+                "eq": "steady"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "kettle.split",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the kettle on its hook."
+        }
+      ]
+    },
+    {
+      "id": "ferry.kettle.busy-whole",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "One heat fills six at the second bell. Four people at the bench take a cup. The early boat has gone, and the two rings for that crew remain empty. Two servings stay in the pot."
+    },
+    {
+      "id": "ferry.kettle.busy-split",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "Two heats fill the same six. Two people take their cups to the early boat; the other four collect theirs at the bench. A second turn at the hearth needs another tending round."
+    },
+    {
+      "id": "ferry.kettle.steady-whole",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "The full pot comes up at the second bell, when all six people reach the bench. One heat and no wait on the serving tray."
+    },
+    {
+      "id": "ferry.kettle.steady-split",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "Two filled cups stand until the second bell. The bench gets all six, but the first two are already cooler. A second turn at the hearth needs more tending."
+    },
+    {
+      "id": "ferry.kettle.choose",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "“A single heat frees my hands for the bench. A pot for two can catch the early boat. I can keep six measures on the tally either way. Set the place that suits what you want these people to have.”",
+      "options": [
+        {
+          "text": "Use one heat and set the bench for the second bell.",
+          "next": "ferry.kettle.posted",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "kettle.active",
+                    "eq": true
+                  },
+                  {
+                    "flag": "kettle.shift",
+                    "eq": "busy"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "flag": "kettle.whole",
+                    "eq": true
+                  },
+                  {
+                    "flag": "kettle.split",
+                    "eq": true
+                  }
+                ]
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "kettle.served",
+              "value": "busy-whole"
+            },
+            {
+              "setFlag": "kettle.active",
+              "value": false
+            },
+            {
+              "setFlag": "kettle.checked",
+              "value": false
+            }
+          ]
+        },
+        {
+          "text": "Tend both pots and keep the first two places at the rail.",
+          "next": "ferry.kettle.posted",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "kettle.active",
+                    "eq": true
+                  },
+                  {
+                    "flag": "kettle.shift",
+                    "eq": "busy"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "flag": "kettle.whole",
+                    "eq": true
+                  },
+                  {
+                    "flag": "kettle.split",
+                    "eq": true
+                  }
+                ]
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "kettle.served",
+              "value": "busy-split"
+            },
+            {
+              "setFlag": "kettle.active",
+              "value": false
+            },
+            {
+              "setFlag": "kettle.checked",
+              "value": false
+            }
+          ]
+        },
+        {
+          "text": "Use one heat and set the bench for the second bell.",
+          "next": "ferry.kettle.posted",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "kettle.active",
+                    "eq": true
+                  },
+                  {
+                    "flag": "kettle.shift",
+                    "eq": "steady"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "flag": "kettle.whole",
+                    "eq": true
+                  },
+                  {
+                    "flag": "kettle.split",
+                    "eq": true
+                  }
+                ]
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "kettle.served",
+              "value": "steady-whole"
+            },
+            {
+              "setFlag": "kettle.active",
+              "value": false
+            },
+            {
+              "setFlag": "kettle.checked",
+              "value": false
+            }
+          ]
+        },
+        {
+          "text": "Tend both pots and keep the first two places at the rail.",
+          "next": "ferry.kettle.posted",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "kettle.active",
+                    "eq": true
+                  },
+                  {
+                    "flag": "kettle.shift",
+                    "eq": "steady"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "flag": "kettle.whole",
+                    "eq": true
+                  },
+                  {
+                    "flag": "kettle.split",
+                    "eq": true
+                  }
+                ]
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "kettle.served",
+              "value": "steady-split"
+            },
+            {
+              "setFlag": "kettle.active",
+              "value": false
+            },
+            {
+              "setFlag": "kettle.checked",
+              "value": false
+            }
+          ]
+        },
+        {
+          "text": "Leave the kettle on its hook."
+        }
+      ]
+    },
+    {
+      "id": "ferry.kettle.posted",
+      "speaker": "ferry-cook",
+      "historicalLabel": "fictional-world",
+      "text": "Enna sets the bowls out as you asked. Follow her service card to the low bench and see what the people leave in the cup rings."
+    },
+    {
+      "id": "market.kettle.source",
+      "speaker": "market-clerk",
+      "historicalLabel": "fictional-world",
+      "text": "Dagny folds your card onto the market order. “The ferry counted what it could pour and who could take a cup. Here we carry lidded cups down the rain lane. The covered table has six spaces, but a carrier takes only four at once. I need to know if ‘six ready’ will make the last pair get overlooked.”",
+      "options": [
+        {
+          "text": "Clip the ferry’s two counts beside the local carrying note.",
+          "if": {
+            "item": "item.kettle.service-card"
+          },
+          "effects": [
+            {
+              "setFlag": "market.kettle.compared",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Keep the ferry card folded."
+        }
+      ]
+    },
+    {
+      "id": "market.kettle.place",
+      "speaker": "market-clerk",
+      "historicalLabel": "fictional-world",
+      "text": "“I can give the carrier one sheet with two sections, or leave a tally on the rain shelf where the remaining two wait. The shelf helps a second carrier find the pair. One sheet travels with the first.”",
+      "options": [
+        {
+          "text": "Give the carrier a folded card with ready and received on separate sides.",
+          "if": {
+            "objective": "market.kettle.compare"
+          },
+          "effects": [
+            {
+              "setFlag": "market.kettle.layout",
+              "value": "fold"
+            }
+          ]
+        },
+        {
+          "text": "Leave the two pending spaces marked at the covered table.",
+          "if": {
+            "objective": "market.kettle.compare"
+          },
+          "effects": [
+            {
+              "setFlag": "market.kettle.layout",
+              "value": "table"
+            }
+          ]
+        },
+        {
+          "text": "Leave the covered table clear for now."
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.kettle.served",
+      "claimKind": "interpretation",
+      "text": "I kept the six serving measures together and marked separately when people collected their cups. Another shift can have the same stock and leave at a different bell."
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.ferry.kettle.compare.1",
+      "objective": "ferry.kettle.compare",
+      "depth": 1,
+      "text": "A full pot and a small-first round use the same six measures."
+    },
+    {
+      "id": "h.ferry.kettle.compare.2",
+      "objective": "ferry.kettle.compare",
+      "depth": 2,
+      "text": "Choose a shift card with Enna, then test both pot orders beside the service bench."
+    },
+    {
+      "id": "h.ferry.kettle.compare.3",
+      "objective": "ferry.kettle.compare",
+      "depth": 3,
+      "text": "Lift the large pot at the second bell. On the other route, set two cups down and complete the second heat."
+    },
+    {
+      "id": "h.ferry.kettle.compare.4",
+      "objective": "ferry.kettle.compare",
+      "depth": 4,
+      "text": "Record both trials under one arrival card. You can try the other shift after seeing who received the first round."
+    },
+    {
+      "id": "h.ferry.kettle.served.1",
+      "objective": "ferry.kettle.served",
+      "depth": 1,
+      "text": "The first-bell crew cannot wait for the bench."
+    },
+    {
+      "id": "h.ferry.kettle.served.2",
+      "objective": "ferry.kettle.served",
+      "depth": 2,
+      "text": "On the trial bench choose how Enna will serve the practice shift."
+    },
+    {
+      "id": "h.ferry.kettle.served.3",
+      "objective": "ferry.kettle.served",
+      "depth": 3,
+      "text": "Use one heat or two. Both choices let you check what reaches the two groups."
+    },
+    {
+      "id": "h.ferry.kettle.served.4",
+      "objective": "ferry.kettle.served",
+      "depth": 4,
+      "text": "Look at the low bench after the serving layout changes. You keep a comparison card for the Market."
+    },
+    {
+      "id": "h.market.kettle.compare.1",
+      "objective": "market.kettle.compare",
+      "depth": 1,
+      "text": "The ferry card has a count for servings and a count for who took one."
+    },
+    {
+      "id": "h.market.kettle.compare.2",
+      "objective": "market.kettle.compare",
+      "depth": 2,
+      "text": "When the Market opens, show the ferry card at the covered table."
+    },
+    {
+      "id": "h.market.kettle.compare.3",
+      "objective": "market.kettle.compare",
+      "depth": 3,
+      "text": "Match your card’s two kinds of count with the space on the rain lane and the covered table."
+    },
+    {
+      "id": "h.market.kettle.compare.4",
+      "objective": "market.kettle.compare",
+      "depth": 4,
+      "text": "Clip the ferry’s two counts beside the local carrying note. Four cups fit with the first carrier."
+    },
+    {
+      "id": "h.market.kettle.readback.1",
+      "objective": "market.kettle.readback",
+      "depth": 1,
+      "text": "The first carrier can carry four. Give the remaining two a way to be found."
+    },
+    {
+      "id": "h.market.kettle.readback.2",
+      "objective": "market.kettle.readback",
+      "depth": 2,
+      "text": "Choose between a folded card for the carrier and a tally on the covered table."
+    },
+    {
+      "id": "h.market.kettle.readback.3",
+      "objective": "market.kettle.readback",
+      "depth": 3,
+      "text": "Check how the counter tells “ready” apart from “received” after the carrier leaves."
+    },
+    {
+      "id": "h.market.kettle.readback.4",
+      "objective": "market.kettle.readback",
+      "depth": 4,
+      "text": "Read the folded card where the carrier returns, or read the two pending spaces at the covered table."
+    }
+  ]
+}

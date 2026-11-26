@@ -14,7 +14,9 @@
      "done": { "flag": "nexus.ribbon.read", "eq": true },
      "onComplete": [{ "journal": "j.nexus.ribbon" }],
      "weave": {
-      "concepts": ["evidence", "justification", "interpretation", "perspective", "certainty"],
+      "concepts": ["evidence", "justification", "interpretation", "perspective", "certainty", "culture", "responsibility"],
+      "framework": ["scope", "perspectives", "methods-and-tools", "ethics"],
+      "thinking": { "dok": 3, "bloom": "analyse", "fink": "integration", "solo": "relational" },
       "atl": ["research", "communication", "thinking"],
       "aoks": ["HIS", "MAT"],
       "subjects": ["history", "math-ai", "design-tech"]
@@ -79,7 +81,7 @@
    "id": "nexus.ribbon.single",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "A visitor traces past the grant peg towards the pen. 'Where does the part start where people carry one every day?' The keeper looks at the two case slips and holds out a loose tab for their gap.",
+   "text": "A visitor traces past the grant peg towards the pen. 'At my binders’ bench we date changes by the fair when we start using them. Where does the part start where people carry one every day?' The keeper holds out a loose tab for their gap.",
    "options": [
     {
      "text": "Clip the tab in the gap and leave the beginning of everyday use open.",
@@ -97,7 +99,7 @@
    "id": "nexus.ribbon.split",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "A visitor finds the museum sleeve first and his friend finds the patent peg. They each know which case they read. 'Can I see yours beside mine?' the first visitor asks. The keeper brings a bar that reaches across both rails.",
+   "text": "A visitor finds the museum sleeve first and his friend finds the patent peg. 'Our binders’ bench would date the pen by the fair when we started using it. Can I see what yours records?' the first visitor asks. The keeper brings a bar that reaches across both rails.",
    "options": [
     {
      "text": "Hook the comparison bar across the rails and keep each record’s label.",
@@ -115,7 +117,7 @@
    "id": "nexus.ribbon.marked",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "Between the peg and sleeve, the tab reads 'When did everyday use begin? These cases leave that open.' A visitor with a few minutes left follows the rail from one case to the other. She keeps the gap in her sketch."
+   "text": "Between the peg and sleeve, the tab reads 'When did everyday use begin? These cases leave that open.' The binder leaves a space in her sketch for the workshop dates she can ask about back home."
   },
   {
    "id": "nexus.ribbon.bridged",

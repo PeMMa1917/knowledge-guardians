@@ -135,6 +135,503 @@
    "speaker": "metal-steward",
    "text": "Bea slips the run notes beside the index. A reader follows “fit checked” back to the fitting shop and “surface to check” to the coating bench. The transfer note keeps its own line. The reader can ask the yard for a hands-on run.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.witness.bind",
+   "speaker": "metal-inspector",
+   "text": "Six sleeves came off the practice pieces. The yard needs clean ones back this shift. An apprentice went all the way to the hall for stock that was still here. Mark all six slots on one strip before copying either return count.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip Leila’s folded witness strip to the tally.",
+     "next": "metal.witness.archive",
+     "if": {
+      "all": [
+       {
+        "item": "item.witness-strip"
+       },
+       {
+        "not": {
+         "flagSet": "metal.witness.use"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.witness.use",
+       "value": "archive"
+      }
+     ]
+    },
+    {
+     "text": "Clip the yard’s spare strip to the tally.",
+     "next": "metal.witness.loan",
+     "if": {
+      "all": [
+       {
+        "not": {
+         "item": "item.witness-strip"
+        }
+       },
+       {
+        "not": {
+         "flagSet": "metal.witness.use"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.witness.use",
+       "value": "loan"
+      }
+     ]
+    },
+    {
+     "text": "Leave the empty tally by the sleeves."
+    }
+   ]
+  },
+  {
+   "id": "metal.witness.archive",
+   "speaker": "metal-inspector",
+   "text": "The fold held a guide’s starting corner in the Nile Archive. It can keep the same six slots in order here. Check the clean stand in the yard and the repair tray across the hall.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.witness.loan",
+   "speaker": "metal-inspector",
+   "text": "The fold keeps six spaces in order as the tally moves. Check the clean stand in the yard and the repair tray in the trade hall.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.witness.choose",
+   "speaker": "metal-steward",
+   "text": "The four clean sleeves and two torn ones fill the same six slots. There is a place for the next yard run and a place for the repairs. Keep the clean stock in the yard for a quick start and send only the repair tray. Or move all six together so we can check them on one hall bench. The clean ones will wait here for the next cart.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep four clean sleeves at the yard and send two for repair.",
+     "next": "metal.witness.local",
+     "if": {
+      "all": [
+       {
+        "objective": "metal.witness.compare"
+       },
+       {
+        "not": {
+         "flagSet": "metal.witness.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.witness.layout",
+       "value": "local"
+      }
+     ]
+    },
+    {
+     "text": "Send the six together to the shared sorting stand.",
+     "next": "metal.witness.shared",
+     "if": {
+      "all": [
+       {
+        "objective": "metal.witness.compare"
+       },
+       {
+        "not": {
+         "flagSet": "metal.witness.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.witness.layout",
+       "value": "shared"
+      }
+     ]
+    },
+    {
+     "text": "Leave the two counts open for the next shift."
+    }
+   ]
+  },
+  {
+   "id": "metal.witness.local",
+   "speaker": "metal-steward",
+   "text": "The yard takes the four straight back to the packing stand. We leave a repair tray for the other two and a duplicate line so the next shift can reconcile them. Check each end before the cart goes.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.witness.shared",
+   "speaker": "metal-steward",
+   "text": "The carrier loads one tray. At the hall I split it between clean stock and repairs. The next yard run waits for a return cart, but I can check the whole count from one stand.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.exhibit.turn",
+   "speaker": "metal-inspector",
+   "text": "Oxford’s record shows star pointers on a framework that turns. Our model has a ring with one pointer and a base on a chalk line. Turn the ring until the pointer reaches the next marked peg. Leave the base on the line.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Turn the practice ring from the upper peg to the side peg.",
+     "next": "metal.exhibit.turned",
+     "if": {
+      "all": [
+       {
+        "card": "card.metal.astrolabe"
+       },
+       {
+        "not": {
+         "flagSet": "metal.exhibit.view"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.exhibit.view",
+       "value": "turned"
+      }
+     ]
+    },
+    {
+     "text": "Leave the pointer at the upper peg."
+    }
+   ]
+  },
+  {
+   "id": "metal.exhibit.turned",
+   "speaker": "metal-inspector",
+   "text": "The point has moved. Look at the chalk line and side peg together. The turn shows the movement we made on the model. It gives a visitor a way to repeat the same step.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.exhibit.mount",
+   "speaker": "metal-steward",
+   "text": "An apprentice wants to turn the ring again. A worker in a hurry wants two views to compare while the cart is loaded. Set out a low bench where hands can repeat the turn, or use the window to show both positions at once. The carrier also needs a packing count for the practice parts.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the movable ring on the low bench and send readers there.",
+     "next": "metal.exhibit.practice",
+     "if": {
+      "all": [
+       {
+        "objective": "metal.exhibit.scope"
+       },
+       {
+        "not": {
+         "flagSet": "metal.exhibit.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.exhibit.layout",
+       "value": "bench"
+      }
+     ]
+    },
+    {
+     "text": "Put two checked views at the trade window.",
+     "next": "metal.exhibit.stills",
+     "if": {
+      "all": [
+       {
+        "objective": "metal.exhibit.scope"
+       },
+       {
+        "not": {
+         "flagSet": "metal.exhibit.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.exhibit.layout",
+       "value": "window"
+      }
+     ]
+    },
+    {
+     "text": "Leave the stand ready."
+    }
+   ]
+  },
+  {
+   "id": "metal.exhibit.practice",
+   "speaker": "metal-steward",
+   "text": "The worker can read the source in the hall. The apprentice can reset the ring in the yard. Keep the starting line with the practice piece so the next person can run it again.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.exhibit.stills",
+   "speaker": "metal-steward",
+   "text": "A worker can check both positions while waiting at the window. They can see the base line in both. For a turn they will need the practice bench another time.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.exhibit.bench",
+   "speaker": "metal-inspector",
+   "text": "The learner starts with one hand on the ring. Give them a stable starting mark, then let them return the pointer and repeat the move. The museum reference stays with the instrument record.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the Nile folio’s start tab by the base and repeat the move.",
+     "next": "metal.exhibit.repeated",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "objective": "metal.exhibit.mounted"
+           },
+           {
+            "flag": "metal.exhibit.layout",
+            "eq": "bench"
+           }
+          ]
+         },
+         {
+          "not": {
+           "flagSet": "metal.exhibit.learner"
+          }
+         }
+        ]
+       },
+       {
+        "item": "item.split-mount-folio"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.exhibit.learner",
+       "value": "folio"
+      }
+     ]
+    },
+    {
+     "text": "Use a spare tab to reset the pointer on the upper peg and repeat the move.",
+     "next": "metal.exhibit.repeated",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "objective": "metal.exhibit.mounted"
+           },
+           {
+            "flag": "metal.exhibit.layout",
+            "eq": "bench"
+           }
+          ]
+         },
+         {
+          "not": {
+           "flagSet": "metal.exhibit.learner"
+          }
+         }
+        ]
+       },
+       {
+        "not": {
+         "item": "item.split-mount-folio"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.exhibit.learner",
+       "value": "local"
+      }
+     ]
+    },
+    {
+     "text": "Leave the first view in place."
+    }
+   ]
+  },
+  {
+   "id": "metal.exhibit.repeated",
+   "speaker": "metal-inspector",
+   "text": "The learner returns to the upper peg and turns to the side peg again. The two readings belong to a movement someone made on this bench. The learner leaves the base line for a later run.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.exhibit.window",
+   "speaker": "metal-steward",
+   "text": "One window view has a high pointer. The other has a side pointer. A reader calls it a new instrument until the worker points to both base lines. Bring the views together at that mark.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Slide the Nile folio’s start tab under both base lines and compare.",
+     "next": "metal.exhibit.aligned",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "objective": "metal.exhibit.mounted"
+           },
+           {
+            "flag": "metal.exhibit.layout",
+            "eq": "window"
+           }
+          ]
+         },
+         {
+          "not": {
+           "flagSet": "metal.exhibit.learner"
+          }
+         }
+        ]
+       },
+       {
+        "item": "item.split-mount-folio"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.exhibit.learner",
+       "value": "folio"
+      }
+     ]
+    },
+    {
+     "text": "Slide a spare tab under both base lines and compare the two views.",
+     "next": "metal.exhibit.aligned",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "objective": "metal.exhibit.mounted"
+           },
+           {
+            "flag": "metal.exhibit.layout",
+            "eq": "window"
+           }
+          ]
+         },
+         {
+          "not": {
+           "flagSet": "metal.exhibit.learner"
+          }
+         }
+        ]
+       },
+       {
+        "not": {
+         "item": "item.split-mount-folio"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.exhibit.learner",
+       "value": "local"
+      }
+     ]
+    },
+    {
+     "text": "Leave the first view in place."
+    }
+   ]
+  },
+  {
+   "id": "metal.exhibit.aligned",
+   "speaker": "metal-steward",
+   "text": "With both base lines in one place, the reader can see the moved pointer. The worker puts the order of views beside the practice source. A visitor can follow the change from the window.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "metal.exhibit.pack",
+   "speaker": "metal-steward",
+   "text": "The carrier has written “Musa’s instrument” on the crate list. The cart takes this workshop’s ring, base and clip. Put the packing count in the outside pocket and the museum reference in the second pocket. A receiver can check each one.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "File the practice count with the Nile folio’s separate source tab.",
+     "next": "metal.exhibit.packed",
+     "if": {
+      "all": [
+       {
+        "objective": "metal.exhibit.mounted"
+       },
+       {
+        "not": {
+         "flagSet": "metal.exhibit.carrier"
+        }
+       },
+       {
+        "item": "item.split-mount-folio"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.exhibit.carrier",
+       "value": "folio"
+      }
+     ]
+    },
+    {
+     "text": "File the practice count and museum reference in separate hall pockets.",
+     "next": "metal.exhibit.packed",
+     "if": {
+      "all": [
+       {
+        "objective": "metal.exhibit.mounted"
+       },
+       {
+        "not": {
+         "flagSet": "metal.exhibit.carrier"
+        }
+       },
+       {
+        "not": {
+         "item": "item.split-mount-folio"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "metal.exhibit.carrier",
+       "value": "local"
+      }
+     ]
+    },
+    {
+     "text": "Leave the list open until the carrier comes back."
+    }
+   ]
+  },
+  {
+   "id": "metal.exhibit.packed",
+   "speaker": "metal-steward",
+   "text": "The carrier counts a ring, a base and a clip. The receiver can find the museum record with its own date. No one expects an original instrument to come out of this box.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "missions": [
@@ -237,6 +734,349 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH6-R03",
+   "world": "WORLD-07",
+   "title": "The Sleeves That Come Back",
+   "knowledgeQuestion": "How can a return count change what a workshop keeps in use?",
+   "available": {
+    "flag": "metal.arrived",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "metal.witness.compare",
+     "title": "Trace the six returned sleeves between yard and hall.",
+     "done": {
+      "all": [
+       {
+        "flagSet": "metal.witness.use"
+       },
+       {
+        "flag": "metal.witness.yard",
+        "eq": true
+       },
+       {
+        "flag": "metal.witness.hall",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "truth",
+       "evidence",
+       "objectivity",
+       "explanation",
+       "interpretation",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "MAT"
+      ],
+      "subjects": [
+       "economics",
+       "math-ai",
+       "design-tech"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-RSC-21"
+     ]
+    },
+    {
+     "id": "metal.witness.publish",
+     "title": "Choose a return route and check where its sleeves are held.",
+     "done": {
+      "any": [
+       {
+        "all": [
+         {
+          "flag": "metal.witness.layout",
+          "eq": "local"
+         },
+         {
+          "flag": "metal.witness.local-yard",
+          "eq": true
+         },
+         {
+          "flag": "metal.witness.local-hall",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "all": [
+         {
+          "flag": "metal.witness.layout",
+          "eq": "shared"
+         },
+         {
+          "flag": "metal.witness.shared-hall",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "values",
+       "responsibility",
+       "power",
+       "perspective",
+       "justification"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "MAT"
+      ],
+      "subjects": [
+       "economics",
+       "ess",
+       "design-tech"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "visible": {
+      "objective": "metal.witness.compare"
+     },
+     "onComplete": [
+      {
+       "journal": "j.metal.witness"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH6-R04",
+   "world": "WORLD-07",
+   "title": "Two Pockets for the Ring",
+   "knowledgeQuestion": "What needs to travel with a model so another person can check what it shows?",
+   "available": {
+    "flag": "metal.arrived",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "metal.exhibit.scope",
+     "title": "Check the historical entry and turn the separate practice ring.",
+     "done": {
+      "all": [
+       {
+        "flag": "metal.arrived",
+        "eq": true
+       },
+       {
+        "card": "card.metal.astrolabe"
+       },
+       {
+        "flag": "metal.exhibit.index",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "objectivity",
+       "truth",
+       "explanation",
+       "interpretation"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "perspectives"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT",
+       "MAT"
+      ],
+      "subjects": [
+       "history",
+       "physics",
+       "math-ai"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-THK-05"
+     ]
+    },
+    {
+     "id": "metal.exhibit.mounted",
+     "title": "Put the ring within reach or leave two checked views in the trade window.",
+     "done": {
+      "flagSet": "metal.exhibit.layout"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "perspective",
+       "justification"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "communication",
+       "social",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT"
+      ],
+      "subjects": [
+       "history",
+       "physics",
+       "design-tech"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "human",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-THK-14"
+     ],
+     "visible": {
+      "objective": "metal.exhibit.scope"
+     }
+    },
+    {
+     "id": "metal.exhibit.used",
+     "title": "Help a reader check the ring and prepare the carrier’s two pockets.",
+     "done": {
+      "all": [
+       {
+        "objective": "metal.exhibit.mounted"
+       },
+       {
+        "flagSet": "metal.exhibit.learner"
+       },
+       {
+        "flagSet": "metal.exhibit.carrier"
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "evidence",
+       "interpretation",
+       "truth",
+       "certainty",
+       "explanation"
+      ],
+      "framework": [
+       "ethics",
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "thinking",
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT",
+       "MAT"
+      ],
+      "subjects": [
+       "history",
+       "physics",
+       "design-tech"
+      ],
+      "minutes": 5,
+      "thinking": {
+       "dok": 3,
+       "bloom": "apply",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-RSC-21"
+     ],
+     "visible": {
+      "objective": "metal.exhibit.mounted"
+     },
+     "onComplete": [
+      {
+       "journal": "j.metal.exhibit"
+      }
+     ]
+    }
+   ]
   }
  ],
  "hints": [
@@ -287,6 +1127,126 @@
    "objective": "metal.tag.explained",
    "depth": 4,
    "text": "Choose a place where readers can check the explanation: the yard handover or the hall index."
+  },
+  {
+   "id": "h.metal.witness.compare.1",
+   "objective": "metal.witness.compare",
+   "depth": 1,
+   "text": "Two workshops can move the same stock and make two entries for it."
+  },
+  {
+   "id": "h.metal.witness.compare.2",
+   "objective": "metal.witness.compare",
+   "depth": 2,
+   "text": "Clip a strip to the return tally at the Sample Yard."
+  },
+  {
+   "id": "h.metal.witness.compare.3",
+   "objective": "metal.witness.compare",
+   "depth": 3,
+   "text": "Check the clean sleeves in the yard and the repair tray in the Trade Hall."
+  },
+  {
+   "id": "h.metal.witness.compare.4",
+   "objective": "metal.witness.compare",
+   "depth": 4,
+   "text": "Give each physical sleeve its slot in the same six. The cart is a journey for the sleeves."
+  },
+  {
+   "id": "h.metal.witness.publish.1",
+   "objective": "metal.witness.publish",
+   "depth": 1,
+   "text": "The clean stock can return immediately or wait for the hall cart."
+  },
+  {
+   "id": "h.metal.witness.publish.2",
+   "objective": "metal.witness.publish",
+   "depth": 2,
+   "text": "Find Bea’s return board beside the repair tray."
+  },
+  {
+   "id": "h.metal.witness.publish.3",
+   "objective": "metal.witness.publish",
+   "depth": 3,
+   "text": "Choose whether to fill both local stands or sort the whole return in the hall."
+  },
+  {
+   "id": "h.metal.witness.publish.4",
+   "objective": "metal.witness.publish",
+   "depth": 4,
+   "text": "Read both trays if you split the batch, or see both counts at the single hall stand."
+  },
+  {
+   "id": "h.metal.exhibit.scope.1",
+   "objective": "metal.exhibit.scope",
+   "depth": 1,
+   "text": "The practice ring uses a detail from a documented instrument."
+  },
+  {
+   "id": "h.metal.exhibit.scope.2",
+   "objective": "metal.exhibit.scope",
+   "depth": 2,
+   "text": "Read the record for Musa’s spherical astrolabe in the Trade Hall."
+  },
+  {
+   "id": "h.metal.exhibit.scope.3",
+   "objective": "metal.exhibit.scope",
+   "depth": 3,
+   "text": "Turn the practice ring at the Sample Yard, keeping the base fixed."
+  },
+  {
+   "id": "h.metal.exhibit.scope.4",
+   "objective": "metal.exhibit.scope",
+   "depth": 4,
+   "text": "Read the side peg with the same chalk base line before returning to the hall."
+  },
+  {
+   "id": "h.metal.exhibit.mounted.1",
+   "objective": "metal.exhibit.mounted",
+   "depth": 1,
+   "text": "One worker wants to repeat a movement and another needs to compare views quickly."
+  },
+  {
+   "id": "h.metal.exhibit.mounted.2",
+   "objective": "metal.exhibit.mounted",
+   "depth": 2,
+   "text": "Go to the two display stands in the Trade Hall."
+  },
+  {
+   "id": "h.metal.exhibit.mounted.3",
+   "objective": "metal.exhibit.mounted",
+   "depth": 3,
+   "text": "Set the movable ring at the low bench or put the two fixed views in the window."
+  },
+  {
+   "id": "h.metal.exhibit.mounted.4",
+   "objective": "metal.exhibit.mounted",
+   "depth": 4,
+   "text": "Follow the stand you chose. The carrier also waits for a checked packet."
+  },
+  {
+   "id": "h.metal.exhibit.used.1",
+   "objective": "metal.exhibit.used",
+   "depth": 1,
+   "text": "The visitor and carrier need different parts of the record."
+  },
+  {
+   "id": "h.metal.exhibit.used.2",
+   "objective": "metal.exhibit.used",
+   "depth": 2,
+   "text": "Repeat the turn at the practice bench or align the two window views."
+  },
+  {
+   "id": "h.metal.exhibit.used.3",
+   "objective": "metal.exhibit.used",
+   "depth": 3,
+   "text": "Visit the two-pocket docket in the Trade Hall and give the practice pieces their own count."
+  },
+  {
+   "id": "h.metal.exhibit.used.4",
+   "objective": "metal.exhibit.used",
+   "depth": 4,
+   "text": "Keep the historic source in its own pocket. You can use the Nile folio or the hall’s own tabs."
   }
  ],
  "moments": [
@@ -308,6 +1268,57 @@
    "if": {
     "objective": "metal.tag.explained"
    }
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.metal.witness",
+   "claimKind": "interpretation",
+   "text": "The strip kept the yard and hall in one count. Four sleeves could go back into use. Two needed repair. We chose where the next shift could find them."
+  },
+  {
+   "id": "j.metal.exhibit",
+   "claimKind": "interpretation",
+   "text": "Oxford’s entry belongs to Musa’s spherical astrolabe. The ring, base and clip on the cart belong to our practice stand. We kept the reference with the date and gave the next reader somewhere to begin the same move."
+  }
+ ],
+ "sources": [
+  {
+   "id": "HIS-MET-EX-01",
+   "title": "History of Science Museum, Oxford, Spherical astrolabe",
+   "url": "https://www.hsm.ox.ac.uk/spherical-astrolabe",
+   "locator": "Object heading for Musa, inventory 49687, and paragraph describing the moving star framework",
+   "supports": "The museum attributes object 49687 to Musa, dated 1480/1 CE. A rotating framework around the inner sphere has pointers representing bright stars.",
+   "accessed": "2026-11-26"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.metal.astrolabe",
+   "title": "Musa’s spherical astrolabe, Oxford 49687",
+   "text": "Oxford’s History of Science Museum identifies this instrument as the work of Musa in 1480/1 CE. Its outside framework turns around an inner sphere. Its pointers stand for bright stars.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-MET-EX-01"
+   ],
+   "limits": "The museum entry identifies this instrument and describes its design. Moving the workshop’s practice ring shows only selected positions on that stand."
+  }
+ ],
+ "exhibits": [
+  {
+   "id": "OBJ-MET-ASTROLABE",
+   "name": "Musa’s spherical astrolabe",
+   "art": "preserved.catalogue",
+   "historicalLabel": "documented",
+   "dateText": "1480/1 CE",
+   "dateKind": "The museum’s date for the surviving instrument.",
+   "summary": "The Oxford record for inventory number 49687 describes a movable star framework around an inner sphere. The workshop has a separate practice ring for trying one movement.",
+   "sources": [
+    "HIS-MET-EX-01"
+   ],
+   "grantsCard": "card.metal.astrolabe",
+   "altText": "An open catalogue represents the Oxford record of a spherical instrument with an outer turning framework."
   }
  ]
 }

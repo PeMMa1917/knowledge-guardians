@@ -184,9 +184,10 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
       expect(d.s.flags['nexus.rest.layout']).toBe('together');
       expect(d.done('nexus.rest.checked')).toBe(false);
     });
-    route.at(9, 'Leave the borrower’s unmet request on its own line beside the loan count', [
-      'responsibility', 'scope', 'perspectives', 'ethics',
+    route.at(9, 'Keep the landing reading group’s request on its own line beside the loan count', [
+      'responsibility', 'culture', 'scope', 'perspectives', 'ethics',
     ], (d) => {
+      expect(d.e.node('nexus.rest.pair-ready').text).toContain('single slip for the whole group');
       walkScene(d, 'nexus-rest-pair-ready', 'nexus.rest.pair-read');
       expect(d.done('nexus.rest.checked')).toBe(true);
     });
@@ -201,9 +202,10 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
       expect(d.s.flags['nexus.print.tried-edge']).toBe(true);
       expect(d.e.node('nexus.print.pinned').text).toContain('marks now meet the ends');
     });
-    route.at(9, 'Send both traceable layers to the next printer and see who must wait for the finished proof', [
-      'values', 'perspective', 'perspectives', 'scope', 'responsibility', 'justification', 'ethics',
+    route.at(9, 'Send a key with both print layers so the next printer can distinguish ferry and cart signs', [
+      'values', 'perspective', 'perspectives', 'scope', 'responsibility', 'justification', 'culture', 'ethics',
     ], (d) => {
+      expect(d.e.node('nexus.print.pinned').text).toContain('Cart crews read red as a place to stop');
       walkScene(d, 'nexus-print-pinned', 'nexus.print.layers');
       expect(d.done('nexus.print.checked')).toBe(true);
       expect(d.s.flags['nexus.print.edition']).toBe('layers');
@@ -246,13 +248,14 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
   });
   const caseMinutes = style === 'ribbon' ? 3 : style === 'viewer' ? 5 : 0;
   if (style === 'ribbon') route.at(13, 'Put the grant date and the museum’s date range on separate rails and link them for comparison', [
-    'certainty', 'evidence', 'truth', 'scope', 'interpretation', 'perspectives', 'methods-and-tools',
+    'certainty', 'evidence', 'truth', 'scope', 'interpretation', 'culture', 'responsibility', 'perspectives', 'methods-and-tools', 'ethics',
   ], (d) => {
     expect(d.s.flags['inspected.OBJ-001-A']).toBe(true);
     expect(d.s.flags['inspected.OBJ-001-C']).toBe(true);
     walkScene(d, 'nexus-ribbon-setup', 'nexus.ribbon.split-placed');
     expect(d.e.node('nexus.ribbon.split-placed').text).toContain('30 October 1888');
     expect(d.e.node('nexus.ribbon.split-placed').text).toContain('1945 to 1948');
+    expect(d.e.node('nexus.ribbon.split').text).toContain('date the pen by the fair');
     walkScene(d, 'nexus-ribbon-split', 'nexus.ribbon.bridged');
     expect(d.done('nexus.ribbon.checked')).toBe(true);
     walkScene(d, 'nexus-ribbon-bridged');
@@ -920,7 +923,7 @@ function checkCopyEdition(d: Driver, edition: 'press' | 'landing', missing: stri
   expect(d.s.flags[`copies.checked.${edition}`]).toBe(true);
 }
 
-function cityOfCopies(): Route {
+function cityOfCopies(checkRamp = false): Route {
   const route = new Route();
   // Independent Chapter 7 session. The Trade Hall's transfer addition is already up.
   route.driver.s.objectivesDone.push('metal.finish');
@@ -977,6 +980,28 @@ function cityOfCopies(): Route {
     expect(d.done('copies.access')).toBe(true);
     readSign(d, 'copies-readable');
   });
+  if (checkRamp) {
+    route.at(51, 'Change the width of the same press run and compare the two proofs with the signed ramp order', [
+      'evidence', 'objectivity', 'certainty', 'explanation', 'scope', 'methods-and-tools',
+    ], (d) => {
+      useDoor(d, 'copies-landing-to-press');
+      walkScene(d, 'copies.margin.short', 'copies.margin.short.tested');
+      walkScene(d, 'copies.margin.wide', 'copies.margin.wide.tested');
+      useDoor(d, 'copies-press-to-landing');
+      expect(readSign(d, 'copies-margin-master')).toContain('after a trial with an empty cart');
+      expect(d.done('copies.margin.compare')).toBe(true);
+    });
+    route.at(55, 'Match a warning strip to the route arrow and hang both before a runner sets out', [
+      'responsibility', 'justification', 'interpretation', 'perspective', 'values', 'perspectives', 'ethics', 'methods-and-tools',
+    ], (d) => {
+      useDoor(d, 'copies-landing-to-press');
+      walkScene(d, 'copies-margin-press-tray', 'copies.margin.packed-pair');
+      useDoor(d, 'copies-press-to-landing');
+      walkScene(d, 'copies-margin-pair', 'copies.margin.sent-pair');
+      expect(d.done('copies.margin.deliver')).toBe(true);
+      expect(readSign(d, 'copies-margin-paired')).toContain('outer stalls');
+    });
+  }
   return route;
 }
 
@@ -1828,7 +1853,8 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Living Forest with the Green Squares survey', end: 67, play: () => livingForest(true, true) },
     { name: 'Metalworks from a prepared Chapter 5 save', end: 50, play: () => metalworks(false) },
     { name: 'Metalworks with the Turned Tag investigation', end: 57, play: () => metalworks(true) },
-    { name: 'City of Copies from a prepared Chapter 6 save', end: 51, play: cityOfCopies },
+    { name: 'City of Copies from a prepared Chapter 6 save', end: 51, play: () => cityOfCopies() },
+    { name: 'City of Copies with a matched ramp warning', end: 59, play: () => cityOfCopies(true) },
     { name: 'Cartographers’ Sea from a prepared Chapter 7 save', end: 51, play: () => cartographersSea() },
     { name: 'Cartographers’ Sea with the roof and lantern key', end: 58, play: () => cartographersSea(true) },
     { name: 'House of Performance with the silence first', end: 51, play: () => houseOfPerformance('pause') },

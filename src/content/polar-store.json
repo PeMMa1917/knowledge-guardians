@@ -1,0 +1,2212 @@
+{
+  "characters": [
+    {
+      "id": "polar-keeper-anwen",
+      "name": "Anwen Stod",
+      "role": "Keeper of the Polar Store cases",
+      "sprite": "clerk-venn",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "objective": "polar.finish"
+          },
+          "node": "polar.keeper.after"
+        },
+        {
+          "node": "polar.keeper"
+        }
+      ]
+    },
+    {
+      "id": "polar-runner-quillan",
+      "name": "Quillan Reed",
+      "role": "Polar Store practice carrier",
+      "sprite": "villager-1",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "flag": "polar.delivered",
+            "eq": "low"
+          },
+          "node": "polar.runner.low"
+        },
+        {
+          "if": {
+            "flag": "polar.delivered",
+            "eq": "high"
+          },
+          "node": "polar.runner.high"
+        },
+        {
+          "node": "polar.runner"
+        }
+      ]
+    },
+    {
+      "id": "polar-reader-orsa",
+      "name": "Orsa Vine",
+      "role": "Receiving clerk for the trial shed",
+      "sprite": "villager-2",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "flag": "polar.delivered",
+            "eq": "low"
+          },
+          "node": "polar.reader.low"
+        },
+        {
+          "if": {
+            "flag": "polar.delivered",
+            "eq": "high"
+          },
+          "node": "polar.reader.high"
+        },
+        {
+          "node": "polar.reader"
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "polar.keeper",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "Someone put “All delivered” on our practice run before moving a single parcel. Of course it is legible. It is also early. Open the two sledge records. Their widths almost match. Carry the height marks to the model frame and see what fits."
+    },
+    {
+      "id": "polar.keeper.after",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "Orsa signed the receipt for the load that actually arrived. I saved the old card under it. If someone asks why we crossed out “all”, we know where to start."
+    },
+    {
+      "id": "polar.runner",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "The little clock gives us nine practice minutes. Quicker route, shorter tray. Longer route, two parcels. I can carry either. I can’t fit a second trip in that bell. My little brother claims he can fit the shed through the hatch if I turn it sideways. He can fetch his own shed."
+    },
+    {
+      "id": "polar.runner.low",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "You saved time at the screened hatch. The record sleeve is at Orsa’s desk. Our two parcels will take the next practice slot."
+    },
+    {
+      "id": "polar.runner.high",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "The parcels got there while the signal was open. The source sleeve is here by the loading peg. I put it back on the dry shelf. It can travel in the next slot."
+    },
+    {
+      "id": "polar.reader",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "I need the height card to check the plan and two wrapped parcels for the next carrier. One load is enough to start. When it arrives, I’ll sign for what is here."
+    },
+    {
+      "id": "polar.reader.low",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "I have the sleeve, with both source tabs. The parcels haven’t crossed. I can check the heights here. I can’t hand a package to the next carrier yet."
+    },
+    {
+      "id": "polar.reader.high",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "Two parcels on my bench. The sleeve never reached my desk. I can count these parcels. Someone needs to bring the figures before I sign off the next run."
+    },
+    {
+      "id": "polar.fit",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "Two empty outline stands use the museum heights. Leave the opening fixed at 60 centimetres. Set a stand upright, then use the white mark beside the frame to see where its top lands.",
+      "options": [
+        {
+          "text": "Set the low outline in the opening.",
+          "effects": [
+            {
+              "setFlag": "polar.frame",
+              "value": "low"
+            }
+          ],
+          "next": "polar.fit.low",
+          "if": {
+            "not": {
+              "flag": "polar.tested.low",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Set the high outline in the opening.",
+          "effects": [
+            {
+              "setFlag": "polar.frame",
+              "value": "high"
+            }
+          ],
+          "next": "polar.fit.high",
+          "if": {
+            "not": {
+              "flag": "polar.tested.high",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Leave the stands on the rack."
+        }
+      ]
+    },
+    {
+      "id": "polar.fit.low",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The shorter stand clicks against the same foot marks. The top sits under the line from the white viewing mark."
+    },
+    {
+      "id": "polar.fit.high",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Both feet on the same marks. The high stand meets the crossbar before its top reaches the opening."
+    },
+    {
+      "id": "polar.choice",
+      "speaker": "polar-runner-quillan",
+      "historicalLabel": "fictional-world",
+      "text": "The low desk route takes five practice minutes with a flat sleeve. Its tray has no freight space. The broad lane takes eight minutes and lets us take the two parcels on the upright freight stand. One trip before nine. Orsa wants both. Choose what she gets first.",
+      "options": [
+        {
+          "text": "Clip the flat source sleeve to the low tray.",
+          "effects": [
+            {
+              "setFlag": "polar.route",
+              "value": "low"
+            }
+          ],
+          "next": "polar.choose.low"
+        },
+        {
+          "text": "Load both parcels on the upright freight stand.",
+          "effects": [
+            {
+              "setFlag": "polar.route",
+              "value": "high"
+            }
+          ],
+          "next": "polar.choose.high"
+        },
+        {
+          "text": "Leave the next run open."
+        }
+      ]
+    },
+    {
+      "id": "polar.choose.low",
+      "speaker": "polar-runner-quillan",
+      "historicalLabel": "fictional-world",
+      "text": "The sleeve sits under the tray clip. The screened hatch rises. The parcels wait on the rack. Follow the low lane and slide the sleeve onto Orsa’s desk."
+    },
+    {
+      "id": "polar.choose.high",
+      "speaker": "polar-runner-quillan",
+      "historicalLabel": "fictional-world",
+      "text": "The packed stand rolls to the broad lane. The higher opening clears its handle. The sleeve stays on the desk. Follow the freight rail and set the two parcels on Orsa’s bench."
+    },
+    {
+      "id": "polar.deliver.low",
+      "speaker": "polar-reader-orsa",
+      "historicalLabel": "fictional-world",
+      "text": "The sleeve is still flat. Orsa holds the receipt under the desk lamp while she opens its tabs.",
+      "options": [
+        {
+          "text": "Unclip the sleeve and ask Orsa to check both source tabs.",
+          "effects": [
+            {
+              "setFlag": "polar.delivered",
+              "value": "low"
+            }
+          ],
+          "next": "polar.confirm.low"
+        },
+        {
+          "text": "Leave the receipt blank for now."
+        }
+      ]
+    },
+    {
+      "id": "polar.deliver.high",
+      "speaker": "polar-reader-orsa",
+      "historicalLabel": "fictional-world",
+      "text": "Orsa sets two empty places on the bench. She has the count from the loading mark and asks to see both parcels on the bench.",
+      "options": [
+        {
+          "text": "Lift the two marked parcels onto the bench.",
+          "effects": [
+            {
+              "setFlag": "polar.delivered",
+              "value": "high"
+            }
+          ],
+          "next": "polar.confirm.high"
+        },
+        {
+          "text": "Leave the receipt blank for now."
+        }
+      ]
+    },
+    {
+      "id": "polar.confirm.low",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "One source sleeve received, at five. Orsa puts the height marks beside the card and sees that the cargo stand cannot go through this opening upright. On the opposite desk, her parcel spaces remain empty."
+    },
+    {
+      "id": "polar.confirm.high",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Two practice parcels received, at eight. Orsa taps the two arrival spaces on the sheet. The sleeve space on her bench is still empty."
+    },
+    {
+      "id": "polar.publish.low",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "The old card says every item made it. Clip the signed receipt near the loading peg, next to the two parcels still on the rack.",
+      "options": [
+        {
+          "text": "Post the checked sleeve arrival and leave the parcels queued.",
+          "effects": [
+            {
+              "setFlag": "polar.published",
+              "value": "low"
+            }
+          ],
+          "next": "polar.published.low"
+        },
+        {
+          "text": "Leave the card under review."
+        }
+      ]
+    },
+    {
+      "id": "polar.publish.high",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "The old card says every item made it. Clip the signed receipt near the empty freight stand, next to the source sleeve still on the desk.",
+      "options": [
+        {
+          "text": "Post the checked parcel count and leave the sleeve queued.",
+          "effects": [
+            {
+              "setFlag": "polar.published",
+              "value": "high"
+            }
+          ],
+          "next": "polar.published.high"
+        },
+        {
+          "text": "Leave the card under review."
+        }
+      ]
+    },
+    {
+      "id": "polar.published.low",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The next carrier sees the empty parcel boxes on the receipt and turns back to the rack. Orsa keeps the received source copy available at her desk."
+    },
+    {
+      "id": "polar.published.high",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The next carrier finds two parcels on the ready bench. Orsa keeps the source clip open so the checking sleeve can arrive on a later run."
+    },
+    {
+      "id": "polar.surface",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "These are paper casts of the Quest soles. Use the same gentle pull over the two teaching mats. The museum counts five points at the toe and three at the heel. Our casts let us see the pattern and check whether these mats keep it visible.",
+      "options": [
+        {
+          "text": "Pull the sole cast across the soft teaching mat.",
+          "effects": [
+            {
+              "setFlag": "polar.mat.soft",
+              "value": true
+            }
+          ],
+          "next": "polar.surface.soft",
+          "if": {
+            "not": {
+              "flag": "polar.mat.soft",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Pull the sole cast across the hard teaching mat.",
+          "effects": [
+            {
+              "setFlag": "polar.mat.hard",
+              "value": true
+            }
+          ],
+          "next": "polar.surface.hard",
+          "if": {
+            "not": {
+              "flag": "polar.mat.hard",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Leave the bench clear."
+        }
+      ]
+    },
+    {
+      "id": "polar.surface.soft",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Five shallow marks near the front and three near the back. The pattern can be counted on this mat."
+    },
+    {
+      "id": "polar.surface.hard",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The hard mat gives a line where the cast slid. The eight points still exist on the cast. The marks here do not let you count them separately."
+    },
+    {
+      "id": "polar.surface.pin",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "The same sole left two different traces. Keep the soft mat where the next observer can count the marks, or leave both textures for a comparison.",
+      "options": [
+        {
+          "text": "Pin the soft cast impression to the counting board.",
+          "effects": [
+            {
+              "setFlag": "polar.mat.layout",
+              "value": "soft"
+            }
+          ],
+          "next": "polar.surface.soft-post"
+        },
+        {
+          "text": "Keep both impressions in the material tray.",
+          "effects": [
+            {
+              "setFlag": "polar.mat.layout",
+              "value": "pair"
+            }
+          ],
+          "next": "polar.surface.pair-post"
+        },
+        {
+          "text": "Keep testing before putting a tray out."
+        }
+      ]
+    },
+    {
+      "id": "polar.surface.soft-post",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The front and heel groups sit beside the original sole outline. A reader can count without picking up the cast."
+    },
+    {
+      "id": "polar.surface.pair-post",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The hard streak sits below the soft print. When the next carrier calls the streak one long point, the sole outline gives them a way to check."
+    },
+    {
+      "id": "polar.stores",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "The cocoa and chocolate tins at Elephant Island keep different names. The pemmican tin belongs on the Cape Royds line. The depot bag’s loose name tag calls for a separate clip. Arrange the shelf for a carrier who needs consistent packages, or for a reader tracing recovery.",
+      "options": [
+        {
+          "text": "Set the closed tin shapes at the packing rail, with source tabs attached.",
+          "effects": [
+            {
+              "setFlag": "polar.stores",
+              "value": "packing"
+            }
+          ],
+          "next": "polar.stores.packing"
+        },
+        {
+          "text": "Set the objects on two recovery shelves and leave the loose tag in review.",
+          "effects": [
+            {
+              "setFlag": "polar.stores",
+              "value": "custody"
+            }
+          ],
+          "next": "polar.stores.custody"
+        },
+        {
+          "text": "Leave the shelf as it is."
+        }
+      ]
+    },
+    {
+      "id": "polar.stores.packing",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "At the rail Quillan can compare a tall box and low box before packing. Their two names remain readable on the shape cards. The depot bag’s tag hangs under a separate question strip."
+    },
+    {
+      "id": "polar.stores.custody",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Orsa can point to the two tins recovered from Elephant Island and the tin taken from Cape Royds without making them one depot. The uncertain bag remains beside the dated labels."
+    },
+    {
+      "id": "polar.screen",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "The lens set has separate shades. Wordie’s green goggles are another pair. The tent cap covers an opening, the holder keeps a lamp standing, and the thermometer record names a screen. Try both grey filters at the same lamp and find out what each makes readable in this room.",
+      "options": [
+        {
+          "text": "Slide in the pale grey filter.",
+          "effects": [
+            {
+              "setFlag": "polar.filter",
+              "value": "pale"
+            }
+          ],
+          "next": "polar.screen.pale",
+          "if": {
+            "not": {
+              "flag": "polar.filter.pale",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Slide in the dark grey filter.",
+          "effects": [
+            {
+              "setFlag": "polar.filter",
+              "value": "dark"
+            }
+          ],
+          "next": "polar.screen.dark",
+          "if": {
+            "not": {
+              "flag": "polar.filter.dark",
+              "eq": true
+            }
+          }
+        },
+        {
+          "text": "Leave the lamp at its fixed mark."
+        }
+      ]
+    },
+    {
+      "id": "polar.screen.pale",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The lamp stays in its round slot under the paper canopy. Check the shaded panel at the side."
+    },
+    {
+      "id": "polar.screen.dark",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The lamp remains in the same tabletop slot. Look at the panel after the filter slides into its stop."
+    },
+    {
+      "id": "polar.screen.pin",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "The narrow letters read better in the pale setting. The dark setting leaves the broad seam visible without its glare stripe. Which does your next visitor need?",
+      "options": [
+        {
+          "text": "Set the pale filter for the small-label reader.",
+          "effects": [
+            {
+              "setFlag": "polar.screen",
+              "value": "label"
+            }
+          ],
+          "next": "polar.screen.label"
+        },
+        {
+          "text": "Set the dark filter for the broad-seam checker.",
+          "effects": [
+            {
+              "setFlag": "polar.screen",
+              "value": "seam"
+            }
+          ],
+          "next": "polar.screen.seam"
+        },
+        {
+          "text": "Keep the two filters loose."
+        }
+      ]
+    },
+    {
+      "id": "polar.screen.label",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The visitor copies the small label in place. They leave the glare stripe to a separate seam check."
+    },
+    {
+      "id": "polar.screen.seam",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The checker follows the broad seam without the glare stripe. They carry the lettered card to the brighter bench for the date."
+    },
+    {
+      "id": "polar.fix",
+      "speaker": "polar-reader-orsa",
+      "historicalLabel": "fictional-world",
+      "text": "Orsa’s survey copy has a sight mark without a time. The James Caird record gives separate instruments for sight and time. Dunlop’s set can draw a line that keeps the gap. Quest’s notebook was prepared for a different expedition. Use a duplicate to lay out what can still be verified here.",
+      "options": [
+        {
+          "text": "Draw a wide band from the sight mark and leave a time clip.",
+          "effects": [
+            {
+              "setFlag": "polar.fix",
+              "value": "band"
+            }
+          ],
+          "next": "polar.fix.band"
+        },
+        {
+          "text": "Put the sight and missing time in facing notebook slots.",
+          "effects": [
+            {
+              "setFlag": "polar.fix",
+              "value": "ledger"
+            }
+          ],
+          "next": "polar.fix.ledger"
+        },
+        {
+          "text": "Leave the survey copy loose."
+        }
+      ]
+    },
+    {
+      "id": "polar.fix.band",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The wall map shows a band instead of a dot. Its clock clip is blank. A carrier can compare the edges without promising an exact point."
+    },
+    {
+      "id": "polar.fix.ledger",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The notebook stand has a place to file a future time slip. The copies record which mark exists and which would need another observation. No dot goes onto the wall map yet."
+    },
+    {
+      "id": "polar.sample",
+      "speaker": "polar-keeper-anwen",
+      "historicalLabel": "fictional-world",
+      "text": "The two Smithsonian accessions have the same date, location and recorded depth. Each has its own name and number. The catalogue leaves the collection method unfilled. Make a display that lets someone see what is shared while keeping both identity tabs intact.",
+      "options": [
+        {
+          "text": "Bridge the shared date and depth across the two drawers.",
+          "effects": [
+            {
+              "setFlag": "polar.sample",
+              "value": "bridge"
+            }
+          ],
+          "next": "polar.sample.bridge"
+        },
+        {
+          "text": "Leave a separate date and depth tab at each drawer.",
+          "effects": [
+            {
+              "setFlag": "polar.sample",
+              "value": "separate"
+            }
+          ],
+          "next": "polar.sample.separate"
+        },
+        {
+          "text": "Leave both drawers at their original labels."
+        }
+      ]
+    },
+    {
+      "id": "polar.sample.bridge",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The shared tab has two arms. Each stops at a separate accession. A visitor can compare the depths from the centre while the same-catch question stays open."
+    },
+    {
+      "id": "polar.sample.separate",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "A visiting reader can take a copy of either drawer label without losing its date or depth. A small finding slip directs a comparison to the other drawer."
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH3-R22",
+      "world": "WORLD-04",
+      "title": "What Reached the Far Bench",
+      "available": {
+        "objective": "preserved.publish"
+      },
+      "knowledgeQuestion": "What do we owe the next person when a delivery record only shows our part of a handover?",
+      "stake": "Orsa has time for one practice load. A premature notice can leave the next carrier waiting for an item that never crossed.",
+      "caseVisits": [
+        ["polar.frame", "polar.arrival", "polar.finish", "polar.surface"],
+        ["polar.frame", "polar.arrival", "polar.finish", "polar.stores"],
+        ["polar.frame", "polar.arrival", "polar.finish", "polar.screen"],
+        ["polar.frame", "polar.arrival", "polar.finish", "polar.fix"],
+        ["polar.frame", "polar.arrival", "polar.finish", "polar.sample"]
+      ],
+      "objectives": [
+        {
+          "id": "polar.frame",
+          "title": "Check both upright outlines at the practice hatch.",
+          "done": {
+            "all": [
+              {
+                "flag": "polar.tested.low",
+                "eq": true
+              },
+              {
+                "flag": "polar.tested.high",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "objective": "preserved.publish"
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "objectivity",
+              "certainty",
+              "explanation"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "TEC",
+              "MAT"
+            ],
+            "subjects": [
+              "history",
+              "design-tech",
+              "math-ai"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 4
+          },
+          "onComplete": [
+            {
+              "journal": "j.polar.frame"
+            }
+          ]
+        },
+        {
+          "id": "polar.arrival",
+          "title": "Deliver the chosen load and take its checked receipt.",
+          "done": {
+            "flagSet": "polar.delivered"
+          },
+          "visible": {
+            "objective": "polar.frame"
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "power",
+              "values",
+              "responsibility",
+              "perspective"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "TEC"
+            ],
+            "subjects": [
+              "history",
+              "design-tech"
+            ],
+            "framework": [
+              "perspectives",
+              "methods-and-tools",
+              "ethics"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 5
+          },
+          "onComplete": [
+            {
+              "journal": "j.polar.arrival"
+            }
+          ]
+        },
+        {
+          "id": "polar.finish",
+          "title": "Post the checked arrival back by the loading peg.",
+          "done": {
+            "flagSet": "polar.published"
+          },
+          "visible": {
+            "objective": "polar.arrival"
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "truth",
+              "perspective",
+              "explanation",
+              "responsibility",
+              "justification"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "TEC"
+            ],
+            "subjects": [
+              "history",
+              "design-tech"
+            ],
+            "framework": [
+              "ethics",
+              "perspectives",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 2
+          },
+          "onComplete": [
+            {
+              "journal": "j.polar.finish"
+            }
+          ]
+        },
+        {
+          "id": "polar.surface",
+          "title": "Set out the sole impressions for the next visitor.",
+          "done": {
+            "flagSet": "polar.mat.layout"
+          },
+          "visible": {
+            "all": [
+              {
+                "card": "card.polar.crampon"
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "explanation",
+              "evidence",
+              "interpretation",
+              "objectivity"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "ART"
+            ],
+            "subjects": [
+              "history",
+              "design-tech",
+              "visual-arts"
+            ],
+            "framework": [
+              "methods-and-tools"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 3
+          },
+          "onComplete": [
+            {
+              "journal": "j.polar.surface"
+            }
+          ]
+        },
+        {
+          "id": "polar.stores",
+          "title": "Lay out a shelf for packing or tracing recovery.",
+          "done": {
+            "flagSet": "polar.stores"
+          },
+          "visible": {
+            "all": [
+              {
+                "card": "card.polar.bag"
+              },
+              {
+                "card": "card.polar.chocolate"
+              },
+              {
+                "card": "card.polar.cocoa"
+              },
+              {
+                "card": "card.polar.pemmican"
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "truth",
+              "interpretation",
+              "certainty",
+              "perspective"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "TEC"
+            ],
+            "subjects": [
+              "history",
+              "design-tech"
+            ],
+            "framework": [
+              "scope",
+              "perspectives",
+              "methods-and-tools"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 3
+          },
+          "onComplete": [
+            {
+              "journal": "j.polar.stores"
+            }
+          ]
+        },
+        {
+          "id": "polar.screen",
+          "title": "Set a tested view for a label reader or a seam checker.",
+          "done": {
+            "flagSet": "polar.screen"
+          },
+          "visible": {
+            "all": [
+              {
+                "card": "card.polar.tent"
+              },
+              {
+                "card": "card.polar.goggles"
+              },
+              {
+                "card": "card.polar.green"
+              },
+              {
+                "card": "card.polar.thermometer"
+              },
+              {
+                "card": "card.polar.candle"
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "objectivity",
+              "explanation",
+              "perspective",
+              "evidence",
+              "responsibility"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "ART"
+            ],
+            "subjects": [
+              "history",
+              "physics",
+              "visual-arts"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 4
+          },
+          "onComplete": [
+            {
+              "journal": "j.polar.screen"
+            }
+          ]
+        },
+        {
+          "id": "polar.fix",
+          "title": "Carry forward the survey sight mark and its missing time.",
+          "done": {
+            "flagSet": "polar.fix"
+          },
+          "visible": {
+            "all": [
+              {
+                "card": "card.polar.sextant"
+              },
+              {
+                "card": "card.polar.watch"
+              },
+              {
+                "card": "card.polar.drawing"
+              },
+              {
+                "card": "card.polar.notebook"
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "certainty",
+              "justification",
+              "explanation",
+              "interpretation"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "MAT"
+            ],
+            "subjects": [
+              "history",
+              "geography",
+              "physics"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 3
+          },
+          "onComplete": [
+            {
+              "journal": "j.polar.fix"
+            }
+          ]
+        },
+        {
+          "id": "polar.sample",
+          "title": "Put the marine samples on a named comparison rail.",
+          "done": {
+            "flagSet": "polar.sample"
+          },
+          "visible": {
+            "all": [
+              {
+                "card": "card.polar.austroraptus"
+              },
+              {
+                "card": "card.polar.achelia"
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "truth",
+              "certainty",
+              "objectivity",
+              "justification",
+              "responsibility"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "NAT",
+              "HIS"
+            ],
+            "subjects": [
+              "biology",
+              "ess",
+              "geography"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "ethics"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 3
+          },
+          "onComplete": [
+            {
+              "journal": "j.polar.sample"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.polar.frame",
+      "claimKind": "observation",
+      "text": "I checked the two empty silhouettes against a single opening. Their measured heights tell me whether the museum outlines clear this frame upright."
+    },
+    {
+      "id": "j.polar.arrival",
+      "claimKind": "observation",
+      "text": "I chose what the next worker could use first, then checked the result at the receiving bench. The trial window could carry only one load."
+    },
+    {
+      "id": "j.polar.finish",
+      "claimKind": "observation",
+      "text": "I changed the loading peg’s notice after the delivery. The posted receipt points to a load checked at the far end and still lists the work waiting here."
+    },
+    {
+      "id": "j.polar.surface",
+      "claimKind": "observation",
+      "text": "I took two impressions with one sole cast. I could count the point pattern in one material, and see how the other changed the trace."
+    },
+    {
+      "id": "j.polar.stores",
+      "claimKind": "observation",
+      "text": "I kept the detached name claim separate as I arranged the provision records. The layout made one job easier and kept the source fields available for the other."
+    },
+    {
+      "id": "j.polar.screen",
+      "claimKind": "observation",
+      "text": "I held the lamp and canopy steady. The small date and the wide seam each needed a different viewing setup."
+    },
+    {
+      "id": "j.polar.fix",
+      "claimKind": "observation",
+      "text": "I kept the sight mark and the time space together. An instrument’s date and the date of one observation are different records."
+    },
+    {
+      "id": "j.polar.sample",
+      "claimKind": "observation",
+      "text": "I kept two exact accessions on the display and showed the matching date and depth. The collection method stayed unfilled."
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.polar.frame.1",
+      "objective": "polar.frame",
+      "depth": 1,
+      "text": "Two record cards give heights for two specific sledges."
+    },
+    {
+      "id": "h.polar.frame.2",
+      "objective": "polar.frame",
+      "depth": 2,
+      "text": "The 67.5 cm cargo outline and 18.5 cm dog-sledge outline are at the shared frame."
+    },
+    {
+      "id": "h.polar.frame.3",
+      "objective": "polar.frame",
+      "depth": 3,
+      "text": "Keep the crossbar and the two feet fixed as you compare."
+    },
+    {
+      "id": "h.polar.frame.4",
+      "objective": "polar.frame",
+      "depth": 4,
+      "text": "Read both sledge exhibits. In the trial shed, set each outline and inspect its result from the white mark."
+    },
+    {
+      "id": "h.polar.arrival.1",
+      "objective": "polar.arrival",
+      "depth": 1,
+      "text": "The bench and the low desk need different loads."
+    },
+    {
+      "id": "h.polar.arrival.2",
+      "objective": "polar.arrival",
+      "depth": 2,
+      "text": "Read the time card with the two routes and decide what ought to arrive first."
+    },
+    {
+      "id": "h.polar.arrival.3",
+      "objective": "polar.arrival",
+      "depth": 3,
+      "text": "The practice signal leaves time for one route. Orsa checks each load at her end."
+    },
+    {
+      "id": "h.polar.arrival.4",
+      "objective": "polar.arrival",
+      "depth": 4,
+      "text": "Choose the low source tray or the broad parcel stand. Walk through the open route and place the load with Orsa."
+    },
+    {
+      "id": "h.polar.finish.1",
+      "objective": "polar.finish",
+      "depth": 1,
+      "text": "The loading peg still has its old card."
+    },
+    {
+      "id": "h.polar.finish.2",
+      "objective": "polar.finish",
+      "depth": 2,
+      "text": "A departure mark tells the sender less than a checked arrival."
+    },
+    {
+      "id": "h.polar.finish.3",
+      "objective": "polar.finish",
+      "depth": 3,
+      "text": "Keep the exact load received and the waiting item on separate lines."
+    },
+    {
+      "id": "h.polar.finish.4",
+      "objective": "polar.finish",
+      "depth": 4,
+      "text": "Return to Anwen’s receipt board and post Orsa’s checked arrival with the waiting load."
+    },
+    {
+      "id": "h.polar.surface.1",
+      "objective": "polar.surface",
+      "depth": 1,
+      "text": "A mark depends on the object and the surface."
+    },
+    {
+      "id": "h.polar.surface.2",
+      "objective": "polar.surface",
+      "depth": 2,
+      "text": "Read the Quest crampons and visit the cast bench."
+    },
+    {
+      "id": "h.polar.surface.3",
+      "objective": "polar.surface",
+      "depth": 3,
+      "text": "Make an impression on each teaching mat with the same cast."
+    },
+    {
+      "id": "h.polar.surface.4",
+      "objective": "polar.surface",
+      "depth": 4,
+      "text": "After both pulls, pick the counting board or paired material tray at the impressions rack."
+    },
+    {
+      "id": "h.polar.stores.1",
+      "objective": "polar.stores",
+      "depth": 1,
+      "text": "Compare the materials, labels and recovery places."
+    },
+    {
+      "id": "h.polar.stores.2",
+      "objective": "polar.stores",
+      "depth": 2,
+      "text": "The two Endurance tins and the Cape Royds tin keep their own lines."
+    },
+    {
+      "id": "h.polar.stores.3",
+      "objective": "polar.stores",
+      "depth": 3,
+      "text": "The depot bag’s tag needs a separate place."
+    },
+    {
+      "id": "h.polar.stores.4",
+      "objective": "polar.stores",
+      "depth": 4,
+      "text": "Inspect the two tins from Elephant Island, pemmican from Cape Royds and the depot bag. Then use the packing shelf."
+    },
+    {
+      "id": "h.polar.screen.1",
+      "objective": "polar.screen",
+      "depth": 1,
+      "text": "Hold the light in the same place when you try another filter."
+    },
+    {
+      "id": "h.polar.screen.2",
+      "objective": "polar.screen",
+      "depth": 2,
+      "text": "The five nearby sources give examples of lenses, covers, mountings and a support."
+    },
+    {
+      "id": "h.polar.screen.3",
+      "objective": "polar.screen",
+      "depth": 3,
+      "text": "Look at the side panel with both filter positions."
+    },
+    {
+      "id": "h.polar.screen.4",
+      "objective": "polar.screen",
+      "depth": 4,
+      "text": "Use both filters at the fixed lamp and read the side panel each time. Choose the small-label or broad-seam view."
+    },
+    {
+      "id": "h.polar.fix.1",
+      "objective": "polar.fix",
+      "depth": 1,
+      "text": "The angle instrument and timepiece have separate jobs."
+    },
+    {
+      "id": "h.polar.fix.2",
+      "objective": "polar.fix",
+      "depth": 2,
+      "text": "Read the survey kit and notebook as well as the James Caird instruments."
+    },
+    {
+      "id": "h.polar.fix.3",
+      "objective": "polar.fix",
+      "depth": 3,
+      "text": "The date on the certificate and the date on the watch are their own records."
+    },
+    {
+      "id": "h.polar.fix.4",
+      "objective": "polar.fix",
+      "depth": 4,
+      "text": "On the survey table, show the available sight mark as a range or keep a blank time slot beside it."
+    },
+    {
+      "id": "h.polar.sample.1",
+      "objective": "polar.sample",
+      "depth": 1,
+      "text": "One resemblance can leave another feature open."
+    },
+    {
+      "id": "h.polar.sample.2",
+      "objective": "polar.sample",
+      "depth": 2,
+      "text": "Both drawer labels give a date, a depth and an accession."
+    },
+    {
+      "id": "h.polar.sample.3",
+      "objective": "polar.sample",
+      "depth": 3,
+      "text": "The record has no collection method. Keep the specimen identity tabs attached."
+    },
+    {
+      "id": "h.polar.sample.4",
+      "objective": "polar.sample",
+      "depth": 4,
+      "text": "Choose a shared bridge with both IDs or a complete copy at each drawer. Check the resulting reading rail."
+    }
+  ],
+  "sources": [
+    {
+      "id": "HIS-SPRI-Y-52-15",
+      "title": "Scott Polar Research Institute, University of Cambridge, Sledge (Y: 52/15)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/y52.15/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute records this cargo sledge with the Norwegian-British-Swedish Antarctic Expedition. It is 67.5 cm high and 55 cm wide. The catalogue describes a rear handlebar and records that it is broken.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Sledge",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-Y-56-17",
+      "title": "Scott Polar Research Institute, University of Cambridge, Sledge (Y: 56/17)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/y56.17/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The dog sledge from the hut at Cape Evans is 18.5 cm high and 54 cm wide. The institute attributes it to the Aurora side of the Imperial Trans-Antarctic Expedition with the qualifier “probably”.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Sledge",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-N-104A-B",
+      "title": "Scott Polar Research Institute, University of Cambridge, Crampon (N: 104a-b)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/n104a-b/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute records a pair used on the Shackleton-Rowett Antarctic Expedition (Quest). Each sole has five points at the front and three at the heel.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Crampon",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-Y-61-18-9",
+      "title": "Scott Polar Research Institute, University of Cambridge, Tent cap (Y: 61/18/9)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/y61.18.9/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute records a canvas cap with a round top and four side panels. It belonged to a tent of Shackleton’s Nimrod expedition and came back with the Terra Nova expedition.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Tent cap",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-N-1132",
+      "title": "Scott Polar Research Institute, University of Cambridge, Bag (N: 1132)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/n1132/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute describes a depot bag of a type used on Terra Nova. A leather tag reads “B. Armytage”. The object record says the tag might belong elsewhere and raises possible use on Nimrod (1907–09).",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Bag",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-Y-72-1-1",
+      "title": "Scott Polar Research Institute, University of Cambridge, Chocolates (Y: 72/1/1)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/y72.1.1/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute describes an unopened rectangular tin wrapped for the Endurance expedition. Storekeeper Thomas Hans Orde-Lees retrieved it from Elephant Island.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Chocolates",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-Y-72-1-2",
+      "title": "Scott Polar Research Institute, University of Cambridge, Cocoa (Y: 72/1/2)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/y72.1.2/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute records this taller unopened tin, with a white cocoa label on brown wrapping. Orde-Lees retrieved it from Elephant Island, as he did the separate chocolate tin.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Cocoa",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-Y-2008-31-2",
+      "title": "Scott Polar Research Institute, University of Cambridge, Pemmican (Y: 2008/31/2)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/y2008.31.2/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute lists an unopened cylindrical Danish provisions tin taken from the Nimrod hut at Cape Royds. Its label names J. D. Beauvais.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Pemmican",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-N-53A-D",
+      "title": "Scott Polar Research Institute, University of Cambridge, Goggles (N: 53a-d)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/n53a-d/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute describes goggles for testing coloured glass. It records a mask and three separate round glass lenses, ranging from dark grey to almost clear.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Goggles",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-N-878A",
+      "title": "Scott Polar Research Institute, University of Cambridge, Goggles (N: 878a)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/n878a/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute says the pair was made for J. M. Wordie. It records green glass, wire gauze at the sides and covered rims. The pair could fold for its case.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Goggles",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-Y-57-4",
+      "title": "Scott Polar Research Institute, University of Cambridge, Thermometer (Y: 57/4)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/y57.4/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute describes a Cary wet-bulb thermometer used in a protective meteorological screen at Cape Royds, McMurdo Sound. It records a horizontal mounting arrangement.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Thermometer",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-Y-2011-67-3",
+      "title": "Scott Polar Research Institute, University of Cambridge, Candle holder (Y: 2011/67/3)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/y2011.67.3/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute attributes this polished candle holder to Henry J. L. Dunlop, the first engineer on Nimrod. The record says the stone came from Mount Erebus, Ross Island. A round hole sits above a square base.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Candle holder",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-Y-2010-75A",
+      "title": "Scott Polar Research Institute, University of Cambridge, Sextant (Y: 2010/75a)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/y2010.75a/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute records Frank Worsley’s use of this Heath & Co. sextant on James Caird. It has an arc, mirrors and fitted shade glass. The case carries an examination certificate dated August 1914.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Sextant",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-N-999A",
+      "title": "Scott Polar Research Institute, University of Cambridge, Watch (N: 999a)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/n999a/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute records use by Frank Worsley during the 1916 boat journey from Elephant Island to South Georgia. The case has a May 1916 inscription from Ernest Shackleton to Worsley.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Watch",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-Y-2011-67-1",
+      "title": "Scott Polar Research Institute, University of Cambridge, Drawing and surveying set (Y: 2011/67/1)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/y2011.67.1/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute attributes this two-tier box of drawing and surveying tools to Henry Dunlop. Dividers and a compass are among its upper tools. The lower tray includes two pencils.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Drawing and surveying set",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-SPRI-N-741",
+      "title": "Scott Polar Research Institute, University of Cambridge, Notebook (N: 741)",
+      "url": "https://www.spri.cam.ac.uk/museum/shackleton/articles/n741/",
+      "locator": "Ref no, catalogue date, object description and physical description",
+      "supports": "The institute identifies the object as a geological notebook prepared for the Shackleton-Rowett Antarctic Expedition (Quest).",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "Notebook",
+        "container": "Shackleton Online",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-USNM-128653",
+      "title": "Smithsonian National Museum of Natural History, NMNH Extant Biology record 1317862071 (USNM 128653)",
+      "url": "https://api.gbif.org/v1/occurrence/1317862071",
+      "locator": "catalogNumber, scientificName, eventDate, depth, locality, recordedBy and media. The samplingProtocol field has no value.",
+      "supports": "The Smithsonian record identifies a preserved Austroraptus praecox collected by W. Tressler in a bay east of Cape Norvegica. Its date is 17 February 1955 and its listed depth is 68 metres.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "NMNH Extant Biology record 1317862071",
+        "container": "GBIF Occurrence API",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "HIS-USNM-122242",
+      "title": "Smithsonian National Museum of Natural History, NMNH Extant Biology record 1319423586 (USNM 122242)",
+      "url": "https://api.gbif.org/v1/occurrence/1319423586",
+      "locator": "catalogNumber, scientificName, eventDate, depth, locality, recordedBy and media. The samplingProtocol field has no value.",
+      "supports": "The Smithsonian record identifies a preserved Achelia communis collected by W. Tressler in a bay east of Cape Norvegica. The date is 17 February 1955 and the listed depth is 68 metres.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "title": "NMNH Extant Biology record 1319423586",
+        "container": "GBIF Occurrence API",
+        "showAccessDate": true
+      }
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.polar.cargo",
+      "title": "Y: 52/15 · Cargo sledge",
+      "text": "The institute records this cargo sledge with the Norwegian-British-Swedish Antarctic Expedition. It is 67.5 cm high and 55 cm wide. The catalogue describes a rear handlebar and records that it is broken.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-Y-52-15"
+      ],
+      "limits": "The dimensions describe this object. The entry gives no maximum load and cannot show the height of a loaded sledge."
+    },
+    {
+      "id": "card.polar.dog",
+      "title": "Y: 56/17 · Dog sledge from Cape Evans",
+      "text": "The dog sledge from the hut at Cape Evans is 18.5 cm high and 54 cm wide. The institute attributes it to the Aurora side of the Imperial Trans-Antarctic Expedition with the qualifier “probably”.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-Y-56-17"
+      ],
+      "limits": "The Cape Evans find and the 1955–56 retrieval do not settle which expedition used it. The catalogue does not report a load rating."
+    },
+    {
+      "id": "card.polar.crampon",
+      "title": "N: 104a-b · Quest crampons",
+      "text": "The institute records a pair used on the Shackleton-Rowett Antarctic Expedition (Quest). Each sole has five points at the front and three at the heel.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-N-104A-B"
+      ],
+      "limits": "The surviving soles show where points were placed. They give no test on either surface in this room."
+    },
+    {
+      "id": "card.polar.tent",
+      "title": "Y: 61/18/9 · Nimrod tent cap",
+      "text": "The institute records a canvas cap with a round top and four side panels. It belonged to a tent of Shackleton’s Nimrod expedition and came back with the Terra Nova expedition.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-Y-61-18-9"
+      ],
+      "limits": "The cap supplies neither the full tent shape nor a measure of how well the tent sheltered its occupants."
+    },
+    {
+      "id": "card.polar.bag",
+      "title": "N: 1132 · Depot bag with a loose provenance",
+      "text": "The institute describes a depot bag of a type used on Terra Nova. A leather tag reads “B. Armytage”. The object record says the tag might belong elsewhere and raises possible use on Nimrod (1907–09).",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-N-1132"
+      ],
+      "limits": "A tagged name alone cannot assign the bag to a team or identify its contents."
+    },
+    {
+      "id": "card.polar.chocolate",
+      "title": "Y: 72/1/1 · Wrapped Carson’s chocolate tin",
+      "text": "The institute describes an unopened rectangular tin wrapped for the Endurance expedition. Storekeeper Thomas Hans Orde-Lees retrieved it from Elephant Island.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-Y-72-1-1"
+      ],
+      "limits": "The surviving unopened tin and its label cannot establish how many tins were taken or how much the team ate."
+    },
+    {
+      "id": "card.polar.cocoa",
+      "title": "Y: 72/1/2 · Upright Carson’s cocoa tin",
+      "text": "The institute records this taller unopened tin, with a white cocoa label on brown wrapping. Orde-Lees retrieved it from Elephant Island, as he did the separate chocolate tin.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-Y-72-1-2"
+      ],
+      "limits": "The shared retrieval does not make cocoa and chocolate interchangeable or make either object a ration list."
+    },
+    {
+      "id": "card.polar.pemmican",
+      "title": "Y: 2008/31/2 · J. D. Beauvais pemmican tin",
+      "text": "The institute lists an unopened cylindrical Danish provisions tin taken from the Nimrod hut at Cape Royds. Its label names J. D. Beauvais.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-Y-2008-31-2"
+      ],
+      "limits": "Cape Royds supplies a different provenance from the two Elephant Island finds. The tin alone does not show a team’s daily diet."
+    },
+    {
+      "id": "card.polar.goggles",
+      "title": "N: 53a-d · Goggles with three separate lenses",
+      "text": "The institute describes goggles for testing coloured glass. It records a mask and three separate round glass lenses, ranging from dark grey to almost clear.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-N-53A-D"
+      ],
+      "limits": "The presence of three lenses does not give a test result or tell which orientation the wearer could see most easily."
+    },
+    {
+      "id": "card.polar.green",
+      "title": "N: 878a · J. M. Wordie’s green goggles",
+      "text": "The institute says the pair was made for J. M. Wordie. It records green glass, wire gauze at the sides and covered rims. The pair could fold for its case.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-N-878A"
+      ],
+      "limits": "A green lens and covered rims describe specific features. They do not rank this pair against the Nimrod test set."
+    },
+    {
+      "id": "card.polar.thermometer",
+      "title": "Y: 57/4 · Cape Royds wet-bulb thermometer",
+      "text": "The institute describes a Cary wet-bulb thermometer used in a protective meteorological screen at Cape Royds, McMurdo Sound. It records a horizontal mounting arrangement.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-Y-57-4"
+      ],
+      "limits": "Two fields in the online record give different endpoints for its Fahrenheit scale. This display uses the location and mounting, and leaves the endpoints undecided."
+    },
+    {
+      "id": "card.polar.candle",
+      "title": "Y: 2011/67/3 · Henry Dunlop’s Erebus stone holder",
+      "text": "The institute attributes this polished candle holder to Henry J. L. Dunlop, the first engineer on Nimrod. The record says the stone came from Mount Erebus, Ross Island. A round hole sits above a square base.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-Y-2011-67-3"
+      ],
+      "limits": "The stone source and its shape do not tell where the holder was carved or how bright it was in use."
+    },
+    {
+      "id": "card.polar.sextant",
+      "title": "Y: 2010/75a · Sextant used by Frank Worsley",
+      "text": "The institute records Frank Worsley’s use of this Heath & Co. sextant on James Caird. It has an arc, mirrors and fitted shade glass. The case carries an examination certificate dated August 1914.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-Y-2010-75A"
+      ],
+      "limits": "The certificate gives an examination date. It cannot supply the time, sky conditions or uncertainty of any particular sighting."
+    },
+    {
+      "id": "card.polar.watch",
+      "title": "N: 999a · James Caird chronometer watch",
+      "text": "The institute records use by Frank Worsley during the 1916 boat journey from Elephant Island to South Georgia. The case has a May 1916 inscription from Ernest Shackleton to Worsley.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-N-999A"
+      ],
+      "limits": "A dated inscription does not establish when the watch was made or whether its time agreed with an independent reference throughout the voyage."
+    },
+    {
+      "id": "card.polar.drawing",
+      "title": "Y: 2011/67/1 · Henry Dunlop’s drawing and surveying set",
+      "text": "The institute attributes this two-tier box of drawing and surveying tools to Henry Dunlop. Dividers and a compass are among its upper tools. The lower tray includes two pencils.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-Y-2011-67-1"
+      ],
+      "limits": "The kit gives evidence of tools available to its owner. It does not identify a line on an unattributed map."
+    },
+    {
+      "id": "card.polar.notebook",
+      "title": "N: 741 · Geological notebook prepared for Quest",
+      "text": "The institute identifies the object as a geological notebook prepared for the Shackleton-Rowett Antarctic Expedition (Quest).",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SPRI-N-741"
+      ],
+      "limits": "The short entry does not identify recorded measurements or establish that the notebook reached a survey site."
+    },
+    {
+      "id": "card.polar.austroraptus",
+      "title": "USNM 128653 · Austroraptus praecox",
+      "text": "The Smithsonian record identifies a preserved Austroraptus praecox collected by W. Tressler in a bay east of Cape Norvegica. Its date is 17 February 1955 and its listed depth is 68 metres.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-USNM-128653"
+      ],
+      "limits": "The record has no sampling method in the published field. The date, place and depth do not establish the same catch as another accession or the range of this species."
+    },
+    {
+      "id": "card.polar.achelia",
+      "title": "USNM 122242 · Achelia communis",
+      "text": "The Smithsonian record identifies a preserved Achelia communis collected by W. Tressler in a bay east of Cape Norvegica. The date is 17 February 1955 and the listed depth is 68 metres.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-USNM-122242"
+      ],
+      "limits": "The shared publication fields permit a comparison. The record has no sampling method in the published field, and a shared method or abundance cannot be inferred."
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-SPRI-Y-52-15",
+      "name": "Cargo sledge",
+      "art": "polar.case.cargo",
+      "historicalLabel": "documented",
+      "dateText": "1949–1952",
+      "dateKind": "Expedition period and catalogue object date",
+      "summary": "The institute records this cargo sledge with the Norwegian-British-Swedish Antarctic Expedition. It is 67.5 cm high and 55 cm wide. The catalogue describes a rear handlebar and records that it is broken.",
+      "sources": [
+        "HIS-SPRI-Y-52-15"
+      ],
+      "grantsCard": "card.polar.cargo",
+      "altText": "Original schematic. Side outline of a long pair of runners, five uprights and a raised rear handle. A rust-coloured edge marks the metal runner covering.",
+      "specimen": {
+        "key": "spri:y-52-15",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "Y: 52/15",
+        "source": "HIS-SPRI-Y-52-15",
+        "objective": "polar.frame"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-Y-56-17",
+      "name": "Dog sledge from Cape Evans",
+      "art": "polar.case.dog",
+      "historicalLabel": "documented",
+      "dateText": "1914–1916",
+      "dateKind": "Catalogue object date. The museum lists the Aurora expedition separately as 1914–17.",
+      "summary": "The dog sledge from the hut at Cape Evans is 18.5 cm high and 54 cm wide. The institute attributes it to the Aurora side of the Imperial Trans-Antarctic Expedition with the qualifier “probably”.",
+      "sources": [
+        "HIS-SPRI-Y-56-17"
+      ],
+      "grantsCard": "card.polar.dog",
+      "altText": "Original schematic. A shallow sledge outline with upturned wooden runners, five short uprights and a trace rope at the front.",
+      "specimen": {
+        "key": "spri:y-56-17",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "Y: 56/17",
+        "source": "HIS-SPRI-Y-56-17",
+        "objective": "polar.frame"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-N-104A-B",
+      "name": "Quest crampons",
+      "art": "polar.case.crampon",
+      "historicalLabel": "documented",
+      "dateText": "1921–1922",
+      "dateKind": "Expedition period in the catalogue",
+      "summary": "The institute records a pair used on the Shackleton-Rowett Antarctic Expedition (Quest). Each sole has five points at the front and three at the heel.",
+      "sources": [
+        "HIS-SPRI-N-104A-B"
+      ],
+      "grantsCard": "card.polar.crampon",
+      "altText": "Original schematic. Schematic underside of a long foot-shaped sole, with five marks at the toe and three at the heel.",
+      "specimen": {
+        "key": "spri:n-104a-b",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "N: 104a-b",
+        "source": "HIS-SPRI-N-104A-B",
+        "objective": "polar.surface"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-Y-61-18-9",
+      "name": "Nimrod tent cap",
+      "art": "polar.case.tent",
+      "historicalLabel": "documented",
+      "dateText": "1907–1909",
+      "dateKind": "Nimrod expedition period. Its recovery is attributed to the later Terra Nova expedition.",
+      "summary": "The institute records a canvas cap with a round top and four side panels. It belonged to a tent of Shackleton’s Nimrod expedition and came back with the Terra Nova expedition.",
+      "sources": [
+        "HIS-SPRI-Y-61-18-9"
+      ],
+      "grantsCard": "card.polar.tent",
+      "altText": "Original schematic. A brown flaring canvas cap, with a flat round top and stitched vertical panels.",
+      "specimen": {
+        "key": "spri:y-61-18-9",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "Y: 61/18/9",
+        "source": "HIS-SPRI-Y-61-18-9",
+        "objective": "polar.screen"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-N-1132",
+      "name": "Depot bag with a loose provenance",
+      "art": "polar.case.bag",
+      "historicalLabel": "documented",
+      "dateText": "1910–1913, catalogue date",
+      "dateKind": "Object date field. The description calls it a Terra Nova type and raises possible earlier use.",
+      "summary": "The institute describes a depot bag of a type used on Terra Nova. A leather tag reads “B. Armytage”. The object record says the tag might belong elsewhere and raises possible use on Nimrod (1907–09).",
+      "sources": [
+        "HIS-SPRI-N-1132"
+      ],
+      "grantsCard": "card.polar.bag",
+      "altText": "Original schematic. A sewn two-tone cylindrical bag with a faint blue mark and a small leather tag hanging from its cord.",
+      "specimen": {
+        "key": "spri:n-1132",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "N: 1132",
+        "source": "HIS-SPRI-N-1132",
+        "objective": "polar.stores"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-Y-72-1-1",
+      "name": "Wrapped Carson’s chocolate tin",
+      "art": "polar.case.chocolate",
+      "historicalLabel": "documented",
+      "dateText": "1914–1916",
+      "dateKind": "Endurance expedition period in the catalogue",
+      "summary": "The institute describes an unopened rectangular tin wrapped for the Endurance expedition. Storekeeper Thomas Hans Orde-Lees retrieved it from Elephant Island.",
+      "sources": [
+        "HIS-SPRI-Y-72-1-1"
+      ],
+      "grantsCard": "card.polar.chocolate",
+      "altText": "Original schematic. A broad low rectangular tin in brown wrapping with a small end seal. The drawing does not reproduce its branding.",
+      "specimen": {
+        "key": "spri:y-72-1-1",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "Y: 72/1/1",
+        "source": "HIS-SPRI-Y-72-1-1",
+        "objective": "polar.stores"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-Y-72-1-2",
+      "name": "Upright Carson’s cocoa tin",
+      "art": "polar.case.cocoa",
+      "historicalLabel": "documented",
+      "dateText": "1914–1916",
+      "dateKind": "Endurance expedition period in the catalogue",
+      "summary": "The institute records this taller unopened tin, with a white cocoa label on brown wrapping. Orde-Lees retrieved it from Elephant Island, as he did the separate chocolate tin.",
+      "sources": [
+        "HIS-SPRI-Y-72-1-2"
+      ],
+      "grantsCard": "card.polar.cocoa",
+      "altText": "Original schematic. A tall angular tin with brown edges and a white face label shown as plain lines.",
+      "specimen": {
+        "key": "spri:y-72-1-2",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "Y: 72/1/2",
+        "source": "HIS-SPRI-Y-72-1-2",
+        "objective": "polar.stores"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-Y-2008-31-2",
+      "name": "J. D. Beauvais pemmican tin",
+      "art": "polar.case.pemmican",
+      "historicalLabel": "documented",
+      "dateText": "1907–1909",
+      "dateKind": "Nimrod expedition period in the catalogue",
+      "summary": "The institute lists an unopened cylindrical Danish provisions tin taken from the Nimrod hut at Cape Royds. Its label names J. D. Beauvais.",
+      "sources": [
+        "HIS-SPRI-Y-2008-31-2"
+      ],
+      "grantsCard": "card.polar.pemmican",
+      "altText": "Original schematic. A small round tin with broad red, green, blue and gold colour bands. Original geometric bands stand in for the paper label.",
+      "specimen": {
+        "key": "spri:y-2008-31-2",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "Y: 2008/31/2",
+        "source": "HIS-SPRI-Y-2008-31-2",
+        "objective": "polar.stores"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-N-53A-D",
+      "name": "Goggles with three separate lenses",
+      "art": "polar.case.goggles",
+      "historicalLabel": "documented",
+      "dateText": "1907–1909",
+      "dateKind": "Nimrod expedition period in the catalogue",
+      "summary": "The institute describes goggles for testing coloured glass. It records a mask and three separate round glass lenses, ranging from dark grey to almost clear.",
+      "sources": [
+        "HIS-SPRI-N-53A-D"
+      ],
+      "grantsCard": "card.polar.goggles",
+      "altText": "Original schematic. A broad dark leather mask beside three separate grey discs of visibly different shades.",
+      "specimen": {
+        "key": "spri:n-53a-d",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "N: 53a-d",
+        "source": "HIS-SPRI-N-53A-D",
+        "objective": "polar.screen"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-N-878A",
+      "name": "J. M. Wordie’s green goggles",
+      "art": "polar.case.green",
+      "historicalLabel": "documented",
+      "dateText": "1914–1916",
+      "dateKind": "Endurance expedition period in the catalogue",
+      "summary": "The institute says the pair was made for J. M. Wordie. It records green glass, wire gauze at the sides and covered rims. The pair could fold for its case.",
+      "sources": [
+        "HIS-SPRI-N-878A"
+      ],
+      "grantsCard": "card.polar.green",
+      "altText": "Original schematic. Two green round eyepieces with tan rims, grey side gauze and a narrow foldable bridge.",
+      "specimen": {
+        "key": "spri:n-878a",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "N: 878a",
+        "source": "HIS-SPRI-N-878A",
+        "objective": "polar.screen"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-Y-57-4",
+      "name": "Cape Royds wet-bulb thermometer",
+      "art": "polar.case.thermometer",
+      "historicalLabel": "documented",
+      "dateText": "1907–1909",
+      "dateKind": "Nimrod expedition use. The recovery occurred decades later.",
+      "summary": "The institute describes a Cary wet-bulb thermometer used in a protective meteorological screen at Cape Royds, McMurdo Sound. It records a horizontal mounting arrangement.",
+      "sources": [
+        "HIS-SPRI-Y-57-4"
+      ],
+      "grantsCard": "card.polar.thermometer",
+      "altText": "Original schematic. A horizontal tube within a wooden frame, with three dark mounts. The outline has no readable temperature scale.",
+      "specimen": {
+        "key": "spri:y-57-4",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "Y: 57/4",
+        "source": "HIS-SPRI-Y-57-4",
+        "objective": "polar.screen"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-Y-2011-67-3",
+      "name": "Henry Dunlop’s Erebus stone holder",
+      "art": "polar.case.candle",
+      "historicalLabel": "documented",
+      "dateText": "1907–1909",
+      "dateKind": "Nimrod expedition period in the catalogue",
+      "summary": "The institute attributes this polished candle holder to Henry J. L. Dunlop, the first engineer on Nimrod. The record says the stone came from Mount Erebus, Ross Island. A round hole sits above a square base.",
+      "sources": [
+        "HIS-SPRI-Y-2011-67-3"
+      ],
+      "grantsCard": "card.polar.candle",
+      "altText": "Original schematic. A square speckled stone holder with beveled corners and a small round opening, shown without a flame.",
+      "specimen": {
+        "key": "spri:y-2011-67-3",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "Y: 2011/67/3",
+        "source": "HIS-SPRI-Y-2011-67-3",
+        "objective": "polar.screen"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-Y-2010-75A",
+      "name": "Sextant used by Frank Worsley",
+      "art": "polar.case.sextant",
+      "historicalLabel": "documented",
+      "dateText": "1914–1916",
+      "dateKind": "Expedition period in the catalogue. August 1914 dates the case’s examination certificate.",
+      "summary": "The institute records Frank Worsley’s use of this Heath & Co. sextant on James Caird. It has an arc, mirrors and fitted shade glass. The case carries an examination certificate dated August 1914.",
+      "sources": [
+        "HIS-SPRI-Y-2010-75A"
+      ],
+      "grantsCard": "card.polar.sextant",
+      "altText": "Original schematic. A brass arc and index arm with a dark handle and a few simplified glass mounts.",
+      "specimen": {
+        "key": "spri:y-2010-75a",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "Y: 2010/75a",
+        "source": "HIS-SPRI-Y-2010-75A",
+        "objective": "polar.fix"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-N-999A",
+      "name": "James Caird chronometer watch",
+      "art": "polar.case.watch",
+      "historicalLabel": "documented",
+      "dateText": "1914–1916",
+      "dateKind": "Expedition period in the catalogue. May 1916 dates the inscription.",
+      "summary": "The institute records use by Frank Worsley during the 1916 boat journey from Elephant Island to South Georgia. The case has a May 1916 inscription from Ernest Shackleton to Worsley.",
+      "sources": [
+        "HIS-SPRI-N-999A"
+      ],
+      "grantsCard": "card.polar.watch",
+      "altText": "Original schematic. A silver case with a white main dial, smaller seconds dial, winding knob and separate top ring.",
+      "specimen": {
+        "key": "spri:n-999a",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "N: 999a",
+        "source": "HIS-SPRI-N-999A",
+        "objective": "polar.fix"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-Y-2011-67-1",
+      "name": "Henry Dunlop’s drawing and surveying set",
+      "art": "polar.case.drawing",
+      "historicalLabel": "documented",
+      "dateText": "1907–1909",
+      "dateKind": "Nimrod expedition period in the catalogue",
+      "summary": "The institute attributes this two-tier box of drawing and surveying tools to Henry Dunlop. Dividers and a compass are among its upper tools. The lower tray includes two pencils.",
+      "sources": [
+        "HIS-SPRI-Y-2011-67-1"
+      ],
+      "grantsCard": "card.polar.drawing",
+      "altText": "Original schematic. Open brown box with a blue-purple bed, pale dividers, a hinged compass and a separate group of pencils.",
+      "specimen": {
+        "key": "spri:y-2011-67-1",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "Y: 2011/67/1",
+        "source": "HIS-SPRI-Y-2011-67-1",
+        "objective": "polar.fix"
+      }
+    },
+    {
+      "id": "OBJ-SPRI-N-741",
+      "name": "Geological notebook prepared for Quest",
+      "art": "polar.case.notebook",
+      "historicalLabel": "documented",
+      "dateText": "1921–1922",
+      "dateKind": "Shackleton-Rowett expedition period. The source describes the notebook as prepared for it.",
+      "summary": "The institute identifies the object as a geological notebook prepared for the Shackleton-Rowett Antarctic Expedition (Quest).",
+      "sources": [
+        "HIS-SPRI-N-741"
+      ],
+      "grantsCard": "card.polar.notebook",
+      "altText": "Original schematic. A plain closed book with an empty label area. The catalogue entry does not specify the cover design.",
+      "specimen": {
+        "key": "spri:n-741",
+        "institution": "Scott Polar Research Institute, University of Cambridge",
+        "accession": "N: 741",
+        "source": "HIS-SPRI-N-741",
+        "objective": "polar.fix"
+      }
+    },
+    {
+      "id": "OBJ-USNM-128653",
+      "name": "Austroraptus praecox · USNM 128653",
+      "art": "polar.case.austroraptus",
+      "historicalLabel": "documented",
+      "dateText": "17 February 1955",
+      "dateKind": "Collection date in the occurrence record",
+      "summary": "The Smithsonian record identifies a preserved Austroraptus praecox collected by W. Tressler in a bay east of Cape Norvegica. Its date is 17 February 1955 and its listed depth is 68 metres.",
+      "sources": [
+        "HIS-USNM-128653"
+      ],
+      "grantsCard": "card.polar.austroraptus",
+      "altText": "Original schematic. A long jointed sea-spider outline beside a pale accession tab. This schematic shows no scale and cannot identify a specimen.",
+      "specimen": {
+        "key": "usnm:128653",
+        "institution": "Smithsonian National Museum of Natural History",
+        "accession": "USNM 128653",
+        "source": "HIS-USNM-128653",
+        "objective": "polar.sample"
+      }
+    },
+    {
+      "id": "OBJ-USNM-122242",
+      "name": "Achelia communis · USNM 122242",
+      "art": "polar.case.achelia",
+      "historicalLabel": "documented",
+      "dateText": "17 February 1955",
+      "dateKind": "Collection date in the occurrence record",
+      "summary": "The Smithsonian record identifies a preserved Achelia communis collected by W. Tressler in a bay east of Cape Norvegica. The date is 17 February 1955 and the listed depth is 68 metres.",
+      "sources": [
+        "HIS-USNM-122242"
+      ],
+      "grantsCard": "card.polar.achelia",
+      "altText": "Original schematic. An original schematic of a compact sea-spider form with legs angled to the sides, beside a second accession tab. The sizes of the two pictures cannot be compared.",
+      "specimen": {
+        "key": "usnm:122242",
+        "institution": "Smithsonian National Museum of Natural History",
+        "accession": "USNM 122242",
+        "source": "HIS-USNM-122242",
+        "objective": "polar.sample"
+      }
+    }
+  ]
+}

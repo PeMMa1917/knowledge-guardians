@@ -1,0 +1,414 @@
+{
+  "missions": [
+    {
+      "id": "KG-NOTE-R01",
+      "world": "WORLD-02",
+      "title": "The Borrowed Straightedge",
+      "knowledgeQuestion": "What links let another person find the same record later?",
+      "available": {
+        "flag": "reached.study",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "linked.study.bound",
+          "title": "Clip the dated loan and the work trace into the same field note.",
+          "done": {
+            "all": [
+              {
+                "flag": "linked.study.issue",
+                "eq": true
+              },
+              {
+                "flag": "linked.study.trace",
+                "eq": true
+              },
+              {
+                "flag": "linked.study.clip.issue",
+                "eq": true
+              },
+              {
+                "flag": "linked.study.clip.trace",
+                "eq": true
+              },
+              {
+                "flag": "linked.study.bound",
+                "eq": true
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "justification",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "ethics"
+            ],
+            "atl": [
+              "research",
+              "self-management"
+            ],
+            "subjects": [
+              "history",
+              "design-tech"
+            ],
+            "aoks": [
+              "HIS"
+            ],
+            "minutes": 5,
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "learning-to-learn",
+              "solo": "relational"
+            }
+          },
+          "onComplete": [
+            {
+              "journal": "j.linked.study"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KG-NOTE-R02",
+      "world": "WORLD-14",
+      "title": "A Second Way to Find It",
+      "knowledgeQuestion": "Which record can date a loan, and which can find the tool today?",
+      "available": {
+        "objective": "voices.arrival"
+      },
+      "objectives": [
+        {
+          "id": "linked.voices.indexed",
+          "title": "Find the loan date and the current work shelf, then link both results.",
+          "done": {
+            "all": [
+              {
+                "flag": "linked.voices.date",
+                "eq": true
+              },
+              {
+                "flag": "linked.voices.subject",
+                "eq": true
+              },
+              {
+                "flag": "linked.voices.indexed",
+                "eq": true
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "certainty",
+              "interpretation",
+              "justification",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "atl": [
+              "research",
+              "thinking",
+              "self-management"
+            ],
+            "subjects": [
+              "history",
+              "design-tech",
+              "digital-society"
+            ],
+            "aoks": [
+              "HIS",
+              "HUM"
+            ],
+            "minutes": 6,
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            }
+          },
+          "onComplete": [
+            {
+              "journal": "j.linked.voices"
+            }
+          ]
+        },
+        {
+          "id": "linked.voices.consulted",
+          "title": "Try the straightedge where Wren set it out.",
+          "visible": {
+            "objective": "linked.voices.indexed"
+          },
+          "done": {
+            "flag": "linked.voices.consulted",
+            "eq": true
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "values",
+              "responsibility",
+              "perspective"
+            ],
+            "framework": [
+              "perspectives",
+              "ethics"
+            ],
+            "atl": [
+              "social",
+              "communication"
+            ],
+            "subjects": [
+              "design-tech"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "minutes": 3,
+            "thinking": {
+              "dok": 2,
+              "bloom": "apply",
+              "fink": "caring",
+              "solo": "relational"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "linked.study.issue",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Loan book. 7 Rainbell. Tool R-7, copper-edged straightedge. Neran sent it to the old Study. The loan line dates its issue.",
+      "options": [
+        {
+          "text": "Lift the dated reference slip.",
+          "effects": [
+            {
+              "setFlag": "linked.study.issue",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "linked.study.trace",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "A straight line is pressed into the practice sheet. The nick at one end matches the sketch of R-7. Elsbet used the tool to align a fold before lettering. She filed the practice sheet under press work.",
+      "options": [
+        {
+          "text": "Lift the press-work reference slip.",
+          "effects": [
+            {
+              "setFlag": "linked.study.trace",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "linked.voices.local",
+      "speaker": "voices-steward",
+      "historicalLabel": "fictional-world",
+      "text": "One desk copy still has the small issue number. R-7 went out on 7 Rainbell. I can open the date drawers with that. The working shelf list has a separate slot under press work.",
+      "options": [
+        {
+          "text": "Take the two local reference tabs to Wren’s bench.",
+          "effects": [
+            {
+              "setFlag": "linked.voices.local",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "linked.voices.date",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The drawer for 7 Rainbell has Neran’s signed issue for R-7. The next line is a different tool sent to a different borrower. This drawer can establish who issued R-7 and when the Study received it.",
+      "options": [
+        {
+          "text": "Copy the original issue line with its number.",
+          "effects": [
+            {
+              "setFlag": "linked.voices.date",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "linked.voices.subject",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The list under press work places R-2 at the press and R-7 in Wren’s mending tray. The tray holds the ruler with the nick. This shelf list gives the current location and its last check on 21 Rainbell.",
+      "options": [
+        {
+          "text": "Clip the checked location beside the work name.",
+          "effects": [
+            {
+              "setFlag": "linked.voices.subject",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "linked.voices.open",
+      "speaker": "voices-steward",
+      "historicalLabel": "fictional-world",
+      "text": "I found the copper nick you mentioned. The straightedge can stay where the mender can use it again. The signed issue stays in its own drawer. Put the new location under both headings.",
+      "options": [
+        {
+          "text": "Lay the ruler across the borrower’s loose page.",
+          "effects": [
+            {
+              "setFlag": "linked.voices.consulted",
+              "value": true
+            }
+          ],
+          "next": "linked.voices.open.done"
+        }
+      ]
+    },
+    {
+      "id": "linked.voices.open.done",
+      "speaker": "voices-steward",
+      "historicalLabel": "fictional-world",
+      "text": "The crease fits along the nick. The borrower can carry on now. I’ll check the number at the end of the shift, when the mending tray comes back."
+    },
+    {
+      "id": "linked.voices.keeper",
+      "speaker": "voices-steward",
+      "historicalLabel": "fictional-world",
+      "text": "The tool has its own recess here. Give the reader a time to try it and I’ll check it out. The dated issue and today's position still have their separate places.",
+      "options": [
+        {
+          "text": "Ask Wren to check the ruler against the signed issue.",
+          "effects": [
+            {
+              "setFlag": "linked.voices.consulted",
+              "value": true
+            }
+          ],
+          "next": "linked.voices.keeper.done"
+        }
+      ]
+    },
+    {
+      "id": "linked.voices.keeper.done",
+      "speaker": "voices-steward",
+      "historicalLabel": "fictional-world",
+      "text": "The number matches and the edge still has its nick. I’ve given the mender the next turn. A reader looking for the first loan can use the issue drawer while they wait."
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.linked.study.1",
+      "objective": "linked.study.bound",
+      "depth": 1,
+      "text": "There are two small records about a straightedge in the old Study."
+    },
+    {
+      "id": "h.linked.study.2",
+      "objective": "linked.study.bound",
+      "depth": 2,
+      "text": "Find the dated loan slip and the practice sheet with the nick near its end."
+    },
+    {
+      "id": "h.linked.study.3",
+      "objective": "linked.study.bound",
+      "depth": 3,
+      "text": "Bring both reference slips to the small folio by the west chair."
+    },
+    {
+      "id": "h.linked.study.4",
+      "objective": "linked.study.bound",
+      "depth": 4,
+      "text": "Clip both sources and tuck the linked note into the folio. A personal line is optional."
+    },
+    {
+      "id": "h.linked.voices.1",
+      "objective": "linked.voices.indexed",
+      "depth": 1,
+      "text": "Look for Wren’s two-way filing bench in the Listening Room."
+    },
+    {
+      "id": "h.linked.voices.2",
+      "objective": "linked.voices.indexed",
+      "depth": 2,
+      "text": "Use the note from the Study or take the local reference tabs by the west wall."
+    },
+    {
+      "id": "h.linked.voices.3",
+      "objective": "linked.voices.indexed",
+      "depth": 3,
+      "text": "Search by issue date and by press work. Walk to each of the two places the bench points out."
+    },
+    {
+      "id": "h.linked.voices.4",
+      "objective": "linked.voices.indexed",
+      "depth": 4,
+      "text": "Return to the filing bench and link both records. Set the tool where the reader or keeper will try it."
+    },
+    {
+      "id": "h.linked.voices.check.1",
+      "objective": "linked.voices.consulted",
+      "depth": 1,
+      "text": "Visit the tray or cradle where you left the straightedge."
+    },
+    {
+      "id": "h.linked.voices.check.2",
+      "objective": "linked.voices.consulted",
+      "depth": 2,
+      "text": "Look beside the east working seats or by Wren’s west chair."
+    },
+    {
+      "id": "h.linked.voices.check.3",
+      "objective": "linked.voices.consulted",
+      "depth": 3,
+      "text": "The mender can try the edge now. At the keeper’s cradle, Wren can check out the tool."
+    },
+    {
+      "id": "h.linked.voices.check.4",
+      "objective": "linked.voices.consulted",
+      "depth": 4,
+      "text": "Use the tool’s new position to let the mender try it or reserve the next turn with Wren."
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.linked.study",
+      "claimKind": "observation",
+      "text": "Two source slips share a number. One dates R-7’s issue. The other remembers what the Study used it for."
+    },
+    {
+      "id": "j.linked.voices",
+      "claimKind": "interpretation",
+      "text": "The original issue stays in the date drawer. Wren’s press-work list shows where R-7 is now. The revised note points to both."
+    }
+  ]
+}

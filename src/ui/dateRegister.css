@@ -1,0 +1,42 @@
+.date-register, .register-face, .register-receipt {
+  min-width: 0;
+  display: grid;
+  gap: .55rem;
+}
+
+.date-register h2, .date-register h3,
+.date-register p, .register-picture { margin: 0; overflow-wrap: anywhere; }
+
+.date-register .row { flex-wrap: wrap; }
+.date-register button { max-width: 100%; white-space: normal; }
+
+.register-faces {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16em, 100%), 1fr));
+  gap: .55rem;
+}
+
+.register-face, .register-receipt {
+  align-content: start;
+  border: 1px solid currentColor;
+  border-radius: .4rem;
+  padding: .45rem .6rem;
+}
+
+.register-date { font-weight: 700; }
+.register-picture img { width: 6rem; height: 5rem; max-width: 100%; object-fit: contain; }
+
+.register-model {
+  display: grid;
+  gap: .3rem;
+  border-inline-end: 2px dashed currentColor;
+  padding-inline-end: .25rem;
+}
+
+.register-span { border: 1px solid currentColor; padding: .25em; box-sizing: border-box; }
+.register-span[data-overhang] { border-inline-end-style: dashed; }
+
+.register-outline { display: grid; gap: .35rem; max-width: 17rem; }
+.register-outline span { display: block; border: 2px solid currentColor; max-height: 7rem; }
+.register-outline span[data-overhang] { border-inline-end-style: dashed; }

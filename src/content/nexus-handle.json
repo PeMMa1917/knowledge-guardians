@@ -1,0 +1,201 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH1-R17",
+   "world": "WORLD-01",
+   "title": "A Second Handle",
+   "knowledgeQuestion": "What changes when someone can admit they need help?",
+   "available": { "flag": "nexus.handle.done", "eq": true },
+   "objectives": [
+    {
+     "id": "nexus.handle.checked",
+     "title": "Help Kip get the case to the workshop and check how the handle holds.",
+     "essential": false,
+     "done": { "flag": "nexus.handle.done", "eq": true },
+     "onComplete": [{ "journal": "j.nexus.handle" }],
+     "weave": {
+      "concepts": ["evidence", "certainty", "perspective", "values", "responsibility"],
+      "framework": ["scope", "perspectives", "methods-and-tools", "ethics"],
+      "minutes": 2,
+      "thinking": { "dok": 2, "bloom": "apply", "fink": "human", "solo": "relational" },
+      "atl": ["social", "thinking", "self-management"],
+      "aoks": ["HUM", "TEC"],
+      "subjects": ["design-tech", "psychology"]
+     },
+     "skills": ["SK-COL-05", "SK-ETR-01"]
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "nexus.handle.start",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "A handle snaps as Kip lifts a case of practice strips. He catches it on his knee and sits on the lid. 'Good,' he says. 'Now it's also a chair.' He keeps a hand over the split strap.",
+   "next": "nexus.handle.offer"
+  },
+  {
+   "id": "nexus.handle.wait",
+   "speaker": "kip-arden",
+   "historicalLabel": "fictional-world",
+   "text": "I put it down and told Dace I'd be late. She said she'd hold my place. Imagine. The strips didn't mind waiting either.",
+   "next": "nexus.handle.offer"
+  },
+  {
+   "id": "nexus.handle.offer",
+   "speaker": "kip-arden",
+   "historicalLabel": "fictional-world",
+   "text": "I checked that the strips were flat. I didn't check the old stitching. I told Ise I'd carry the case by myself. What if the first thing she hears about me is that I needed a hand? We have spare cord for two grips. I've got tools for a quiet mend, too.",
+   "options": [
+    {
+     "text": "Tie two cord loops. Ask Kip to carry one end beside you.",
+     "next": "nexus.handle.paired-carry",
+     "if": { "not": { "flagSet": "nexus.handle.method" } },
+     "effects": [{ "setFlag": "nexus.handle.method", "value": "paired" }]
+    },
+    {
+     "text": "Brace the case behind the screen so Kip can stitch his strap.",
+     "next": "nexus.handle.mended-carry",
+     "if": { "not": { "flagSet": "nexus.handle.method" } },
+     "effects": [{ "setFlag": "nexus.handle.method", "value": "mended" }]
+    },
+    {
+     "text": "Help Kip set the case down and give him a little time.",
+     "next": "nexus.handle.pause",
+     "effects": [{ "setFlag": "nexus.handle.paused", "value": true }]
+    }
+   ]
+  },
+  {
+   "id": "nexus.handle.pause",
+   "speaker": "kip-arden",
+   "historicalLabel": "fictional-world",
+   "text": "Thanks. I'll tell the workshop the case is staying here for a bit. I can say that much. My knee would like to be just a knee again."
+  },
+  {
+   "id": "nexus.handle.paired-carry",
+   "speaker": "kip-arden",
+   "historicalLabel": "fictional-world",
+   "text": "All right. We can let them see both handles. You take the end that looks square. Wait, they're both square. Let's take the aisle to the workshop mat. I'll keep my end up till you call the count."
+  },
+  {
+   "id": "nexus.handle.mended-carry",
+   "speaker": "kip-arden",
+   "historicalLabel": "fictional-world",
+   "text": "Hold it there. I can get both hands on the needle now. If anyone asks, we fixed it together. I'd rather tell the story myself when I'm ready. Can you come to the workshop mat and check the seam with me?"
+  },
+  {
+   "id": "nexus.handle.paired-bench",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "On the mat by the workshop, Kip holds up his end of the loaded case. Two visitors make room. One reaches toward the spare bit of cord. Kip looks at you to call the last step.",
+   "options": [
+    {
+     "text": "Call the count, lower the case together and check both knots.",
+     "next": "nexus.handle.paired-case",
+     "if": { "all": [
+      { "flag": "nexus.handle.method", "eq": "paired" },
+      { "not": { "flag": "nexus.handle.done", "eq": true } }
+     ] },
+     "effects": [{ "setFlag": "nexus.handle.done", "value": true }]
+    },
+    { "text": "Leave Kip room to rest his end on the mat." }
+   ]
+  },
+  {
+   "id": "nexus.handle.mended-bench",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The case rests on the low workshop mat. Kip wants to lift it a little and see whether the stitches stretch under this load. Dace leaves the two of you some space.",
+   "options": [
+    {
+     "text": "Lift the loaded case just above the mat while Kip watches the stitches.",
+     "next": "nexus.handle.mended-case",
+     "if": { "all": [
+      { "flag": "nexus.handle.method", "eq": "mended" },
+      { "not": { "flag": "nexus.handle.done", "eq": true } }
+     ] },
+     "effects": [{ "setFlag": "nexus.handle.done", "value": true }]
+    },
+    { "text": "Set the case back on the mat for now." }
+   ]
+  },
+  {
+   "id": "nexus.handle.paired-case",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Both knots held for this load. Dace leaves the two loops on the case. She asks Kip to show the next pair where to stand. 'I can do that,' he says. Then he looks at your end. 'Can we show them?'"
+  },
+  {
+   "id": "nexus.handle.mended-case",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The seam holds while you lift the practice strips off the mat. Kip sets the case down and traces each new stitch. He tells Dace what weight you tried. Later, he slips the offcut under the lid for the next person who needs to mend it."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.nexus.handle.1",
+   "objective": "nexus.handle.checked",
+   "depth": 1,
+   "text": "Look beside the west bench for Kip's case."
+  },
+  {
+   "id": "h.nexus.handle.2",
+   "objective": "nexus.handle.checked",
+   "depth": 2,
+   "text": "The case can have two grips for two people, or Kip can mend the original strap while you hold it steady."
+  },
+  {
+   "id": "h.nexus.handle.3",
+   "objective": "nexus.handle.checked",
+   "depth": 3,
+   "text": "Kip takes the case to the mat by the workshop. Look past the east bench for the new handle."
+  },
+  {
+   "id": "h.nexus.handle.4",
+   "objective": "nexus.handle.checked",
+   "depth": 4,
+   "text": "Use the case on the workshop mat. Check the knots or stitches with the practice strips inside."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.nexus.handle",
+   "claimKind": "observation",
+   "text": "Kip asked for a hand with the practice strips. We left a case at the workshop that held the load we tried."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.nexus.handle",
+   "attribute": "caring",
+   "when": { "flag": "nexus.handle.done", "eq": true },
+   "did": "You made room for someone to ask for help and worked alongside them.",
+   "prompt": ""
+  }
+ ],
+ "memories": [
+  {
+   "id": "kip.handle.paired",
+   "character": "kip-arden",
+   "if": { "all": [
+    { "objective": "m02.o1.arrive" },
+    { "flag": "nexus.handle.method", "eq": "paired" },
+    { "flag": "nexus.handle.done", "eq": true }
+   ] },
+   "line": "See that basket with two loops? I saw a trader carrying it and just asked if they wanted a hand. I didn't wait for a strap to break this time."
+  },
+  {
+   "id": "kip.handle.mended",
+   "character": "kip-arden",
+   "if": { "all": [
+    { "objective": "m02.o1.arrive" },
+    { "flag": "nexus.handle.method", "eq": "mended" },
+    { "flag": "nexus.handle.done", "eq": true }
+   ] },
+   "line": "I showed a trader those stitches. Then I told him where I learned them. Just him. I liked being the one who decided when to tell."
+  }
+ ]
+}

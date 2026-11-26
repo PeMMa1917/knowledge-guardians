@@ -1,5 +1,12 @@
 /** Fictional Guardian archive. Its rooms contain documentary evidence and original schematic illustrations. */
 import type { Condition } from '../domain/types';
+import { GLASS_RACK_DOOR } from './glassRack';
+import { COLD_LINTEL } from './lintelFold';
+import { WORKROOM_SEAM } from './seamWitness';
+import { COLD_PAPER_LANDING } from './paperLanding';
+import { CLEARANCE_DOOR } from './clearanceGallery';
+import { POLAR_ARCHIVE_PROPS } from './polarStore';
+import { PERKINS_COLD_REVISIT } from './perkinsReturn';
 import { sceneProp } from './sceneProps';
 import type { Interactable, MapDef } from './types';
 
@@ -50,10 +57,18 @@ const displays = [
     'The panel waits here with its unanswered question clipped to the top. A visitor can still open either record folder and see what the archive has checked.'],
 ] as const;
 
+const handoffAtColdStore: Condition = { all: [{ flag: 'preserved.arrived', eq: true }, { flagSet: 'nile.handoff.mode' }] };
+const gaugeAtColdStore: Condition = { all: [{ flag: 'preserved.arrived', eq: true }, { item: 'item.folding-gauge' }] };
+const gaugeUsed: Condition = { flag: 'lost.gauge.used', eq: true };
+
 export const PRESERVED_ARCHIVE = room({
   id: 'preserved.archive', name: 'Preserved Lives: the Cold Store', width: 28, height: 17,
   background: 0x18242e, spawn: { x: 14, y: 14 },
-  npcs: [{ id: 'preserved-registrar', x: 14, y: 7, facing: 'down' }],
+  npcs: [
+    { id: 'preserved-registrar', x: 14, y: 7, facing: 'down' },
+    { id: 'handoff-nellis', x: 18, y: 10, facing: 'left', visibleIf: handoffAtColdStore },
+    { id: 'nima-fenner', x: 7, y: 13, facing: 'right', visibleIf: { flag: 'preserved.arrived', eq: true } },
+  ],
   stamps: [
     { stamp: 'bookshelf', x: 2, y: 2 }, { stamp: 'bookshelf', x: 23, y: 2 },
     { stamp: 'window', x: 9, y: 1 }, { stamp: 'window', x: 16, y: 1 },
@@ -62,6 +77,11 @@ export const PRESERVED_ARCHIVE = room({
     { stamp: 'plant-tall', x: 2, y: 13 }, { stamp: 'plant-tall', x: 26, y: 13 },
   ],
   interactables: [
+    CLEARANCE_DOOR,
+    GLASS_RACK_DOOR,
+    ...POLAR_ARCHIVE_PROPS,
+    ...PERKINS_COLD_REVISIT,
+    ...COLD_PAPER_LANDING,
     { id: 'cross-warm-room', kind: 'fieldgame', game: 'cross-warm-room', x: 20, y: 5, w: 1, h: 1, label: 'the cooling fan in the record store (a crossing)', art: 'ledger' },
     door('preserved-door-royal', 5, 3, 'the Royal Records room', { map: 'preserved.royal', x: 12, y: 12 }),
     door('preserved-door-coast', 21, 3, 'the Chinchorro Records room', { map: 'preserved.coast', x: 12, y: 12 }),
@@ -77,6 +97,32 @@ export const PRESERVED_ARCHIVE = room({
     { id: 'preserved-rest', kind: 'waystone', x: 9, y: 13, w: 1, h: 1, label: 'the Cold Store Waystone', place: 'the Cold Store', art: 'waystone' },
     notice('preserved-directory', 17, 13, 'the Cold Store directory', 'preserved.folder',
       'COLD STORE. The Royal Records room is on the left of the north wall. The Chinchorro Records room is on the right. The registrar works between the two rooms.'),
+    { id: 'preserved-binak-case', kind: 'exhibit', exhibit: 'OBJ-PRES-BINAK-X104841', x: 10, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'Mikaela Rose Cottingham’s basket record', art: 'preserved.binak-diagram' },
+    { ...notice('preserved-binak-dates', 11, 8, 'two date fields on the same record', 'preserved.catalogue',
+      'The catalogue heading gives 2012. The Date Made association gives 2011. Both fields belong to Museums Victoria X 104841, the binak by Mikaela Rose Cottingham.'),
+    flag: 'preserved.binak.dates' },
+    { id: 'preserved-binak-mount', kind: 'scene', node: 'preserved.binak.mount', x: 7, y: 9, w: 1, h: 1, walkThrough: true,
+      label: 'Aster’s cradle and side-view sheet', art: 'preserved.display-paired',
+      visibleIf: { all: [{ objective: 'preserved.binak.compare' }, { not: { flagSet: 'preserved.binak.display' } }] } },
+    { ...notice('preserved-binak-cradle', 7, 9, 'the practice basket on its level cradle', 'preserved.binak-diagram',
+      'The model sits on its base. You can see down through its open rim. The reference names Mikaela Rose Cottingham, Wurundjeri. The Date Made field gives 2011 and the catalogue heading gives 2012.',
+      { flag: 'preserved.binak.display', eq: 'cradle' }), flag: 'preserved.binak.checked' },
+    { ...notice('preserved-binak-profile', 16, 11, 'the supported basket’s side view', 'preserved.display-paired',
+      'The low drawing shows the shallow profile. The model stays on its support at the study bench. Beside Mikaela Rose Cottingham’s name, the Date Made field gives 2011 and the catalogue heading gives 2012.',
+      { flag: 'preserved.binak.display', eq: 'profile' }), flag: 'preserved.binak.checked' },
+    { ...notice('preserved-handoff-receipt', 17, 8, 'the receiving roster and permission slip', 'preserved.catalogue',
+      'The roster records Nellis’s delivery and the trainee’s later delivery on separate lines. The trainee agreed to a check at the desk and asked to leave their name off the wall. Their shift credit can stay on the receiving roster.', handoffAtColdStore),
+    flag: 'preserved.handoff.receipt' },
+    { ...notice('preserved-handoff-public', 16, 10, 'the two lines on the public name rail', 'preserved.display-paired',
+      'Excavation acknowledgments name four foremen. Many other workers remain unnamed in the accounts on display. The Cold Store’s own delivery has a separate receiving line. A clip asks for a verifiable source if an older name can be added.', { flag: 'preserved.handoff.arrangement', eq: 'public' }),
+    flag: 'preserved.handoff.checked' },
+    { ...notice('preserved-handoff-desk', 8, 11, 'the appointment docket for checking names', 'preserved.display-records',
+      'The rail points to the excavation acknowledgments in the Review Room. Bring a dated source to the keeper when the desk is staffed. The receiving roster holds the current trainee’s shift credit there by agreement.', { flag: 'preserved.handoff.arrangement', eq: 'desk' }),
+    flag: 'preserved.handoff.checked' },
+    { ...notice('preserved-handoff-leave', 16, 10, 'the unclaimed display clip', 'preserved.display-delayed',
+      'Nellis logged the delivery for the trainee’s shift. The display still has an open clip where someone can bring a new source for a name. No one has taken the review shift yet.', { flag: 'preserved.handoff.arrangement', eq: 'leave' }),
+    flag: 'preserved.handoff.checked' },
     notice('preserved-display-pending', 14, 5, 'the display under preparation', 'preserved.display-delayed',
       'Two empty sleeves are clipped here. The registrar can tell you which records could fill them.', { not: { flagSet: 'preserved.display' } }),
     notice('preserved-begin-temple-display', 7, 5, 'the temple-first entry card', 'preserved.temple',
@@ -85,6 +131,21 @@ export const PRESERVED_ARCHIVE = room({
     ...displays.map(([choice, label, art, text]) => notice(
       `preserved-display-${choice}`, 14, 5, label, art, text, { flag: 'preserved.display', eq: choice },
     )),
+    { ...slip('lost-gauge', 'jig', 6, 9, 'the old tray jig with a peg',
+      { all: [gaugeAtColdStore, { flag: 'thread.lost-gauge.entry', eq: true }] }), art: 'lost-gauge.jig' },
+    { ...slip('lost-gauge', 'gift', 11, 9, 'the signed gift and borrowing book',
+      { all: [gaugeAtColdStore, { flag: 'thread.lost-gauge.jig', eq: true }] }), art: 'ledger' },
+    ...(['owner', 'loan'] as const).flatMap((mode) => {
+      const atBench: Condition = { flag: 'lost.gauge.resolved', eq: mode };
+      const position = { kind: 'scene' as const, x: 8, y: 12, w: 1, h: 1, walkThrough: true };
+      const label = mode === 'owner' ? 'Nima’s gauge and the new tray divider' : 'the apprentice’s jig and signed loan';
+      return [
+        { ...position, id: `preserved-gauge-${mode}`, node: `lost.gauge.bench-${mode}`,
+          label, art: `lost-gauge.bench-${mode}`, visibleIf: { all: [atBench, { not: gaugeUsed }] } },
+        { ...position, id: `preserved-gauge-used-${mode}`, node: `lost.gauge.used-${mode}`,
+          label, art: mode === 'owner' ? 'lost-gauge.divider' : 'lost-gauge.hook', visibleIf: { all: [atBench, gaugeUsed] } },
+      ];
+    }),
     notice('preserved-xin-methods-display', 19, 8, 'the four process sheets', 'preserved.display-paired',
       'The source, model, swatches and caption each have a named space. The board shows how a reconstruction is made. It includes no image of Xin Zhui.', { flag: 'xin.display', eq: 'process' }),
     notice('preserved-xin-review-display', 19, 8, 'the printer’s review request', 'preserved.display-delayed',
@@ -130,6 +191,19 @@ export const PRESERVED_ROYAL = room({
       label: 'the royal label stand', art: 'label-stand', walkThrough: true, visibleIf: { flag: 'thread.preserved-royal.catalogue', eq: true } },
     notice('preserved-royal-guide', 10, 12, 'the royal record guide', 'preserved.folder',
       'Read the custody file in the east case. The Provenance Thread can then follow its slips. Start with the burial note at the west end of the row.'),
+    { id: 'preserved-binak-support', kind: 'scene', node: 'preserved.binak.test', x: 17, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the paper model and two supports', art: 'preserved.binak-diagram',
+      artBy: { flag: 'preserved.binak.view', keys: { edge: 'preserved.slip', base: 'preserved.binak-diagram' } },
+      visibleIf: { all: [{ objective: 'preserved.binak.sources' }, { not: { objective: 'preserved.binak.compare' } }] } },
+    { ...notice('preserved-binak-edge-mark', 17, 11, 'the side mark under the lowered paper rim', 'preserved.slip',
+      'The little paper rim has flexed on the narrow edge. The one tap was the same. This mark belongs to Odile’s model.',
+      { all: [{ flag: 'preserved.binak.view', eq: 'edge' }, { not: { flagSet: 'preserved.binak.display' } }] }), flag: 'preserved.binak.edge' },
+    { ...notice('preserved-binak-base-mark', 17, 11, 'the open space under the rim', 'preserved.binak-diagram',
+      'The base cradle touches the bottom of the paper model. The rim is clear and still at the first mark after the tap.',
+      { all: [{ flag: 'preserved.binak.view', eq: 'base' }, { not: { flagSet: 'preserved.binak.display' } }] }), flag: 'preserved.binak.base' },
+    notice('preserved-binak-parked', 17, 10, 'the practice model held level on the study bench', 'preserved.binak-diagram',
+      'The base supports the practice model here. The reading stand in the hall has its own side view and the maker’s record.',
+      { flag: 'preserved.binak.display', eq: 'profile' }),
   ],
   lights: [
     { x: 6, y: 6, r: 61, color: 0xe9d7b0 }, { x: 18, y: 6, r: 61, color: 0xb8d7ef },
@@ -174,9 +248,13 @@ export const PRESERVED_INQUIRY = room({
   ],
   interactables: [
     door('preserved-inquiry-back', 8, 12, 'the passage back to the Cold Store', { map: 'preserved.archive', x: 23, y: 8 }),
+    ...COLD_LINTEL,
     record('TUT-JOURNAL', 3, 5, 'Carter’s excavation journal', 'preserved.catalogue'),
     record('TUT-NOTE', 7, 5, 'Lucas’s later report', 'preserved.folder'),
     record('TUT-WORKFORCE', 15, 5, 'the excavation workforce account', 'preserved.context'),
+    { id: 'preserved-handoff-file', kind: 'scene', node: 'preserved.handoff.file', x: 15, y: 7, w: 1, h: 1,
+      label: 'the two trays beneath the workforce record', art: 'preserved.folder', walkThrough: true,
+      visibleIf: { all: [handoffAtColdStore, { card: 'card.preserved.tut.workforce' }] } },
     ...sceneProp('preserved.tut.request', 12, 10, 'the excavation caption request', 'preserved.folder',
       { names: 'preserved.display-records', timeline: 'preserved.display-paired' }, { objective: 'preserved.proof.checked' }),
     notice('preserved-reply-desk', 4, 8, 'the review desk', 'preserved.display-records',
@@ -217,6 +295,7 @@ export const PRESERVED_WORKROOM = room({
   ],
   interactables: [
     door('preserved-workroom-back', 10, 13, 'the passage back to the Cold Store', { map: 'preserved.archive', x: 23, y: 11 }),
+    ...WORKROOM_SEAM,
     record('XIN-CONTEXT', 5, 5, 'the Mawangdui context file', 'preserved.context'),
     record('XIN-METHOD', 15, 5, 'the Hunan methods report', 'preserved.catalogue'),
     notice('preserved-workroom-guide', 8, 11, 'the workroom instructions', 'preserved.slip',

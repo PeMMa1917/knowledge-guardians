@@ -1,0 +1,106 @@
+{
+  "sources": [
+    {
+      "id": "HIS-DRAWER-01",
+      "title": "Joseph Bertrand, Calcul des probabilités, Paris, 1889",
+      "url": "https://archive.org/details/calculdesprobab01bertgoog",
+      "locator": "Opening section, numbered example 2 on three identical boxes and paired drawers",
+      "supports": "Bertrand describes three cases with pairs of medals in two metals. One case holds a pair in each metal and the third has one of each. The book works through what an observed medal reveals about its pair when the openings are equally likely.",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.drawer.bertrand", "title": "The three cases in Bertrand’s 1889 book",
+      "text": "In the University of Michigan copy, Joseph Bertrand uses three visually identical boxes to reason from an opened drawer to a closed one. Two boxes each hold matching metals and the third holds one of each.",
+      "claimKind": "observation", "historicalLabel": "documented", "sources": ["HIS-DRAWER-01"],
+      "limits": "The argument depends on how the box and drawer are selected. It does not describe Dov or any real delivery crew."
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-DRAWER-01", "name": "Calcul des probabilités by Joseph Bertrand",
+      "art": "drawer-cases", "historicalLabel": "documented",
+      "dateText": "1889", "dateKind": "Publication year of the digitized edition",
+      "summary": "Two drawers in each of three boxes hold gold or silver medals. A person opening a drawer can see one medal without seeing which other medal shares that box. The pixel schematic represents the example with the three pairs of drawers.",
+      "altText": "Original diagram of three wooden boxes, each with two lidded drawers.",
+      "sources": ["HIS-DRAWER-01"], "grantsCard": "card.drawer.bertrand"
+    }
+  ],
+  "items": [
+    { "id": "item.drawer-stencil", "name": "Six-Opening Stencil", "kind": "keepsake", "description": "Two holes fit each case. Keep each possible opening beside the lid it came from." }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-S17", "world": "WORLD-02", "title": "Three Cases at the Bell",
+      "stake": "Dov needs to know how many ways a seal can reach a porter before he stamps the second receipt.",
+      "knowledgeQuestion": "What changes when you count ways to see a token instead of cases that could hold it?",
+      "available": { "objective": "m02.o1.arrive" },
+      "objectives": [
+        {
+          "id": "drawer.cases.opened", "title": "Lift both flaps on each of Dov’s three practice cases.", "essential": false,
+          "done": { "flag": "drawers.checked", "eq": 63 },
+          "onComplete": [{ "giveItem": "item.drawer-stencil" }, { "journal": "j.drawer.cases" }],
+          "weave": { "concepts": ["evidence", "truth", "certainty", "objectivity", "interpretation", "explanation"], "framework": ["scope", "methods-and-tools", "perspectives"], "thinking": { "dok": 2, "bloom": "analyse", "fink": "integration", "solo": "relational" }, "atl": ["thinking", "research"], "aoks": ["MAT", "HIS"], "subjects": ["math-aa", "math-ai", "computer-science"], "minutes": 4 }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH4-R13", "world": "WORLD-05", "title": "The Missing Third Check",
+      "stake": "The crew’s clean receipts can reach the quay before the blocked checks are seen.",
+      "knowledgeQuestion": "Is a stack of completed receipts a record of every station visit?",
+      "available": { "all": [{ "objective": "coast.readings" }, { "item": "item.drawer-stencil" }] },
+      "objectives": [
+        {
+          "id": "drawer.fold.finish", "title": "Use both tally trays and check the message that reaches the next runner.", "essential": false,
+          "done": { "flagSet": "drawer.fold.checked" },
+          "onComplete": [{ "journal": "j.drawer.fold" }],
+          "weave": { "concepts": ["responsibility", "power", "justification", "perspective", "values", "evidence"], "framework": ["ethics", "scope", "perspectives", "methods-and-tools"], "thinking": { "dok": 3, "bloom": "evaluate", "fink": "application", "solo": "relational" }, "atl": ["research", "communication"], "aoks": ["MAT", "NAT", "TEC"], "subjects": ["math-ai", "geography", "digital-society"], "minutes": 4 }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "drawer.fold.plan", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The stencil covers the six slots in Marl Fold’s practice tally. The forwarding rail holds two reports from the sheltered stop and one from the exposed stop. Two visits left no reading. The empty slots have the keeper’s date and initials. One aperture on the board broke before the last visit.",
+      "options": [
+        { "text": "Use all six visits when I send the weather crew to check the gap.", "effects": [{ "setFlag": "drawer.fold.route", "value": "all" }], "next": "drawer.fold.try-all" },
+        { "text": "Send the three readings now with a named gap and a separate check time.", "effects": [{ "setFlag": "drawer.fold.route", "value": "readings" }], "next": "drawer.fold.try-readings" },
+        { "text": "Leave the original tally on the rail for now." }
+      ]
+    },
+    {
+      "id": "drawer.fold.try-all", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The runner waits at the yard gate for the six-slot copy. The weather crew will see every visit and come later with time for the missing aperture."
+    },
+    {
+      "id": "drawer.fold.try-readings", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The runner takes the readings to the quay first and leaves the empty slots on a signed second slip. They agree to bring the second slip back to the check peg."
+    },
+    {
+      "id": "drawer.fold.all", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "Near the gate a checker counts six visits, three readings and three unfinished checks. The full copy lets her plan time at the exposed stop. The first written notice leaves with the next runner.",
+      "effects": [{ "setFlag": "drawer.fold.checked", "value": "all" }]
+    },
+    {
+      "id": "drawer.fold.readings", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The runner repeats the three readings with their stops and leaves a named check for the exposed aperture. The quay can use the limited report now. It needs a second delivery to close the open checks.",
+      "effects": [{ "setFlag": "drawer.fold.checked", "value": "readings" }]
+    }
+  ],
+  "journal": [
+    { "id": "j.drawer.cases", "claimKind": "observation", "text": "I lifted six flaps. The same round token could have reached me from three openings in two different cases. Dov cut a stencil so the next porter could see each opening." },
+    { "id": "j.drawer.fold", "claimKind": "observation", "text": "I held the working receipts beside the original visiting slots at Marl Fold. I sent a plan for the gaps and watched the runner use it." }
+  ],
+  "hints": [
+    { "id": "h.drawer.cases.opened.1", "objective": "drawer.cases.opened", "depth": 1, "text": "A familiar token can reach the porter by more than one route." },
+    { "id": "h.drawer.cases.opened.2", "objective": "drawer.cases.opened", "depth": 2, "text": "Visit Dov’s extra drawers by his lantern stall." },
+    { "id": "h.drawer.cases.opened.3", "objective": "drawer.cases.opened", "depth": 3, "text": "The two drawer sides in a case share a lid." },
+    { "id": "h.drawer.cases.opened.4", "objective": "drawer.cases.opened", "depth": 4, "text": "Lift the left and right drawer in each practice case. Check the tally of trays and drawers below." },
+    { "id": "h.drawer.fold.finish.1", "objective": "drawer.fold.finish", "depth": 1, "text": "Count what went missing as well as what arrived." },
+    { "id": "h.drawer.fold.finish.2", "objective": "drawer.fold.finish", "depth": 2, "text": "Bring the stencil to the Marl Fold receiving rail after the Coast’s rain comparison." },
+    { "id": "h.drawer.fold.finish.3", "objective": "drawer.fold.finish", "depth": 3, "text": "Send the complete visiting record or send the available readings with a return time." },
+    { "id": "h.drawer.fold.finish.4", "objective": "drawer.fold.finish", "depth": 4, "text": "Check the chosen tally at the gate or the return peg to see what the weather crew has." }
+  ]
+}

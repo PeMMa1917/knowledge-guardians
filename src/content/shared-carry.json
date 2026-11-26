@@ -1,0 +1,111 @@
+{
+  "missions": [
+    {
+      "id": "KG-FOREST-R05",
+      "world": "WORLD-06",
+      "title": "A Corner for Two",
+      "stake": "Ayla needs the rain-mark frame under cover. Each carrier can see a different end around the bend.",
+      "knowledgeQuestion": "When can two people safely act on what each of them sees?",
+      "available": { "objective": "forest.arrival" },
+      "objectives": [
+        {
+          "id": "forest.carry.partner",
+          "title": "Help Ayla carry the rain-mark frame from its trestles to the covered shelf.",
+          "done": { "flag": "forest.carry.phase", "in": ["done-pair", "done-rest"] },
+          "essential": false,
+          "weave": {
+            "concepts": ["evidence", "perspective", "certainty", "responsibility", "values", "justification"],
+            "framework": ["methods-and-tools", "perspectives", "ethics"],
+            "atl": ["thinking", "social", "communication", "self-management"],
+            "aoks": ["HUM"],
+            "subjects": ["design-tech"],
+            "minutes": 6,
+            "thinking": { "dok": 2, "bloom": "apply", "fink": "human", "solo": "relational" }
+          },
+          "onComplete": [{ "journal": "j.forest.carry" }]
+        }
+      ]
+    },
+    {
+      "id": "KG-COPIES-R06",
+      "world": "WORLD-08",
+      "title": "A Lane for the Frame",
+      "stake": "Mina needs to seat a wide-page frame while readers share the landing.",
+      "knowledgeQuestion": "What should a credential let you do before you check the conditions for yourself?",
+      "available": { "objective": "copies.arrival" },
+      "objectives": [
+        {
+          "id": "copies.carry.seated",
+          "title": "Check the local turn and deliver Mina’s wide-page frame.",
+          "done": { "flag": "copies.carry.phase", "in": ["done-low", "done-upper", "read-low", "read-upper"] },
+          "essential": false,
+          "weave": {
+            "concepts": ["evidence", "power", "perspective", "values", "responsibility", "justification"],
+            "framework": ["scope", "methods-and-tools", "perspectives", "ethics"],
+            "atl": ["thinking", "social", "communication"],
+            "aoks": ["HUM"],
+            "subjects": ["design-tech"],
+            "minutes": 7,
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "integration", "solo": "relational" }
+          },
+          "onComplete": [{ "journal": "j.copies.carry" }]
+        },
+        {
+          "id": "copies.carry.reader",
+          "title": "Help the next reader use the frame where the crew put it.",
+          "visible": { "objective": "copies.carry.seated" },
+          "done": { "flag": "copies.carry.phase", "in": ["read-low", "read-upper"] },
+          "essential": false,
+          "weave": {
+            "concepts": ["perspective", "values", "responsibility"],
+            "framework": ["scope", "perspectives", "ethics"],
+            "atl": ["social", "communication"],
+            "aoks": ["HUM"],
+            "minutes": 2,
+            "thinking": { "dok": 2, "bloom": "apply", "fink": "caring", "solo": "relational" }
+          },
+          "onComplete": [{ "journal": "j.copies.carry.reader" }]
+        }
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "id": "award.bridge-partner",
+      "kind": "skill-milestone",
+      "name": "Bridge Partner",
+      "title": "Keeper of the Far Handle",
+      "earnedBy": "Worked both ends of a rain-mark frame with Ayla. Mina can offer a second keeper at the Lending Hall after you check the local turn.",
+      "criteria": [],
+      "when": { "objective": "forest.carry.partner" }
+    }
+  ],
+  "journal": [
+    { "id": "j.forest.carry", "claimKind": "observation", "text": "The rain-mark frame reached its covered shelf. Ayla’s mark showed which plank moved. Each carrier could call their own corner clear." },
+    { "id": "j.copies.carry", "claimKind": "interpretation", "text": "Mina checked the turn at her own landing. A shared lift keeps the cart free and reserves the short lane during the move. The handcart keeps the lane open and uses two rests." },
+    { "id": "j.copies.carry.reader", "claimKind": "observation", "text": "Mina helped a reader at the low stool. The crew used the frame there or brought down a loose page from the higher cradle." }
+  ],
+  "moments": [
+    {
+      "id": "mom.copies.carry",
+      "attribute": "caring",
+      "when": { "objective": "copies.carry.reader" },
+      "did": "You helped the next reader reach the page after the frame moved.",
+      "prompt": ""
+    }
+  ],
+  "hints": [
+    { "id": "h.forest.carry.1", "objective": "forest.carry.partner", "depth": 1, "text": "Look for Ayla’s frame at the west trestles in Bridge Clearing." },
+    { "id": "h.forest.carry.2", "objective": "forest.carry.partner", "depth": 2, "text": "Check the footing before lifting. A notebook can bring Ayla’s earlier mark into view." },
+    { "id": "h.forest.carry.3", "objective": "forest.carry.partner", "depth": 3, "text": "Follow the frame to the central hooks, then choose who will hold it while you set up the turn." },
+    { "id": "h.forest.carry.4", "objective": "forest.carry.partner", "depth": 4, "text": "At the east shelf, call your own clear corner so both carriers can lower the frame." },
+    { "id": "h.copies.carry.1", "objective": "copies.carry.seated", "depth": 1, "text": "Mina’s wide-page frame is on hooks at the west side of the Lending Hall Landing." },
+    { "id": "h.copies.carry.2", "objective": "copies.carry.seated", "depth": 2, "text": "Swing the spare rod. Its length shows what the turn at this rail can take." },
+    { "id": "h.copies.carry.3", "objective": "copies.carry.seated", "depth": 3, "text": "The handcart needs two rests. If Ayla recognized you in the Forest, you can also ask Mina to call another keeper for the short lift." },
+    { "id": "h.copies.carry.4", "objective": "copies.carry.seated", "depth": 4, "text": "Follow the frame from rest to rest and seat it at the low counter or covered upper cradle." },
+    { "id": "h.copies.carry.reader.1", "objective": "copies.carry.reader", "depth": 1, "text": "Come back to the place where you left the frame." },
+    { "id": "h.copies.carry.reader.2", "objective": "copies.carry.reader", "depth": 2, "text": "A reader is waiting near the low stool." },
+    { "id": "h.copies.carry.reader.3", "objective": "copies.carry.reader", "depth": 3, "text": "The height of the frame changes how Mina brings the spread within reach." },
+    { "id": "h.copies.carry.reader.4", "objective": "copies.carry.reader", "depth": 4, "text": "Use the seated frame to let the reader try the holder or receive a loose page." }
+  ]
+}

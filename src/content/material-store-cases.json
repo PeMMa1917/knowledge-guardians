@@ -1,0 +1,1874 @@
+[
+  {
+    "slug": "merina-float",
+    "title": "The fringe and the woven field",
+    "object": {
+      "key": "cma:2025.271",
+      "accession": "2025.271",
+      "institution": "Cleveland Museum of Art",
+      "title": "Wrapper (Lamba Akotifahana)",
+      "date": "1860–90",
+      "medium": "Silk and dye",
+      "dimensions": "Overall: 231 x 157 cm (90 15/16 x 61 13/16 in.)",
+      "url": "https://clevelandart.org/art/2025.271",
+      "asset": "specimens/water-store-cma-2025.271.jpg",
+      "origin": "Merina Kingdom, Madagascar",
+      "identity": "Unidentified Merina-style weaver",
+      "observation": "The museum records silk, weft-float motifs and rows of knotted fringe. Its account compares the fringe with Chinese-made shawls.",
+      "limit": "That comparison concerns the fringe. The catalogue keeps the place of weaving with the Merina Kingdom.",
+      "alt": "Light silk wrapper with a fine patterned centre, several edge stripes and a pale fringe.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "fibres",
+      "span": 16,
+      "load": 4,
+      "stretch": [
+        0.4,
+        1.0
+      ]
+    },
+    "task": "Odal is hanging two practice swatches. One tests the field. The other shows why a loose decorative edge needs a separate support.",
+    "checks": [
+      "Clamp the field",
+      "Clamp the fringe edge"
+    ],
+    "notes": [
+      "The model field stays close to the starting span.",
+      "The loose practice edge moves farther under the same pull."
+    ],
+    "choices": [
+      "Clip the field flat for the Council Yard",
+      "Send a slack-edge support to the Lower Channel"
+    ],
+    "responses": [
+      "The keeper measures the field from the first mark. The edge folds around a free support.",
+      "The lower crew hangs the swatch without tension on the fringe. A long tab keeps the fringe comparison with the record."
+    ],
+    "returnAction": "Set a free edge clip beside the fixed field",
+    "returnEffect": "A visitor can distinguish the supported field from the loose fringe. The reference still credits a Merina weaver."
+  },
+  {
+    "slug": "mbuun-seam",
+    "title": "Where the panels meet",
+    "object": {
+      "key": "cma:2013.5",
+      "accession": "2013.5",
+      "institution": "Cleveland Museum of Art",
+      "title": "Woman's Skirt",
+      "date": "late 1800s–about 1906–12",
+      "medium": "Raffia palm fiber (Raphia ruffia or R. vinifera) and dye",
+      "dimensions": "Overall: 73.7 x 102.9 cm (29 x 40 1/2 in.)",
+      "url": "https://clevelandart.org/art/2013.5",
+      "asset": "specimens/water-store-cma-2013.5.jpg",
+      "origin": "Democratic Republic of the Congo",
+      "identity": "Mbuun-style weavers and embroiderers",
+      "observation": "The catalogue describes floated weft patterns inside the panels and extra short tufts crossing the seams of the raffia skirt.",
+      "limit": "The catalogue describes the construction and design of this skirt. The practice strips use plain seam markers.",
+      "alt": "Antique raffia skirt laid flat, with a pale centre, darker borders and a central seam.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "fibres",
+      "span": 15,
+      "load": 3,
+      "stretch": [
+        0.5,
+        1.3
+      ]
+    },
+    "task": "Odal has two identical-looking sides on the practice frame. An extra join crosses one pull.",
+    "checks": [
+      "Grip along the panel",
+      "Grip across the raised join"
+    ],
+    "notes": [
+      "The ends stay on the same straight thread.",
+      "The join draws out an extra stretch in this practice strip."
+    ],
+    "choices": [
+      "Keep the panel in view at the Yard",
+      "Put the seam reading on the Lower Channel sleeve"
+    ],
+    "responses": [
+      "The Yard copy gives the main panel room to lie flat. A side slip points to the seam in the catalogue.",
+      "The next carrier opens the sleeve at the seam. A short note credits the work of weavers and embroiderers separately."
+    ],
+    "returnAction": "Lift the false edge and clip the seam where the tufts cross",
+    "returnEffect": "The display line now names the join before it names the fabric edge. A visitor can use both notes."
+  },
+  {
+    "slug": "dida-crinkle",
+    "title": "A tied patch takes a different load",
+    "object": {
+      "key": "cma:2003.89",
+      "accession": "2003.89",
+      "institution": "Cleveland Museum of Art",
+      "title": "Man's Garment",
+      "date": "possibly early 1900s",
+      "medium": "Raffia palm fiber (Raphia ruffia or R. vinifera) and dye",
+      "dimensions": "Overall: 169.8 x 211.5 cm (66 7/8 x 83 1/4 in.)",
+      "url": "https://clevelandart.org/art/2003.89",
+      "asset": "specimens/water-store-cma-2003.89.jpg",
+      "origin": "Côte d’Ivoire",
+      "identity": "Dida-style weavers and dyers",
+      "observation": "The museum describes a raffia wrapper with knot-and-twist resist dyeing. Tying helps account for the crinkled surface.",
+      "limit": "A flat photograph shows the pattern well. Material behaviour in the practice clip belongs to our plain swatches.",
+      "alt": "Raffia garment with a red and ochre repeating pattern and short brown fringe.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "fibres",
+      "span": 18,
+      "load": 4,
+      "stretch": [
+        0.3,
+        0.9
+      ]
+    },
+    "task": "A small carrier wants to fold a copy into a sleeve. Odal keeps a loose strip beside a creased practice section so both can be tried.",
+    "checks": [
+      "Pull the plain strip",
+      "Pull across the tied practice fold"
+    ],
+    "notes": [
+      "The plain strip changes a little.",
+      "The fold opens first, giving this strip more travel under tension."
+    ],
+    "choices": [
+      "Keep one loose plane visible in the Yard",
+      "Send the fold-and-open sequence to the channel"
+    ],
+    "responses": [
+      "A Yard reader can point to the flat pattern and read separately why the fibre looks crinkled.",
+      "A carrier sees one strip opening before it takes more load. The proof names the actual Dida-style technique with its source."
+    ],
+    "returnAction": "Clip a fold tab over the old smooth-surface heading",
+    "returnEffect": "The shelf now shows that a pattern and a small raised fold need different observations."
+  },
+  {
+    "slug": "fulani-joins",
+    "title": "The six joined strips",
+    "object": {
+      "key": "cma:2024.72",
+      "accession": "2024.72",
+      "institution": "Cleveland Museum of Art",
+      "title": "Blanket or Cover (Kaasa)",
+      "date": "c. 1930s or earlier",
+      "medium": "Wool, dye",
+      "dimensions": "Overall: 217.8 x 126.4 cm (85 3/4 x 49 3/4 in.)",
+      "url": "https://clevelandart.org/art/2024.72",
+      "asset": "specimens/water-store-cma-2024.72.jpg",
+      "origin": "Mali, Niger or Burkina Faso, with a Fulani attribution",
+      "identity": "Unidentified Fulani-style wool weavers",
+      "observation": "The catalogue describes a wool cover made from six handwoven strips joined along their selvages.",
+      "limit": "The listed geography is broad. The shared textile description gives no single place of manufacture for this cover.",
+      "alt": "Wool blanket with tall bands of dark repeating shapes and dark red edges.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "fibres",
+      "span": 20,
+      "load": 4,
+      "stretch": [
+        0.6,
+        1.0
+      ]
+    },
+    "task": "Odal wants the working copy to make the count of six visible even when the sample covers several joins.",
+    "checks": [
+      "Pull along a practice strip",
+      "Pull across the mock selvage join"
+    ],
+    "notes": [
+      "The first pull follows one plain strip.",
+      "The second pull makes a join spread across the two clips."
+    ],
+    "choices": [
+      "Unroll the full six-strip count in the Yard",
+      "Send a folded sleeve with edge tabs for the seams"
+    ],
+    "responses": [
+      "The Yard keeper traces five meets between the six strips. They leave the broad location on the source slip.",
+      "A lower handler unfolds each tab at a join and can rebuild the count even from the compact sheet."
+    ],
+    "returnAction": "Replace the “one piece” tab with a six-strip count",
+    "returnEffect": "The old heading stays readable underneath. The shelf now shows how the six-strip count was reached."
+  },
+  {
+    "slug": "tetouan-brocade",
+    "title": "Two faces from one hanging",
+    "object": {
+      "key": "cma:2003.86",
+      "accession": "2003.86",
+      "institution": "Cleveland Museum of Art",
+      "title": "Wall Hanging (msimsim)",
+      "date": "1800s",
+      "medium": "Silk, dye",
+      "dimensions": "Overall: 314.9 x 62.5 cm (124 x 24 5/8 in.)",
+      "url": "https://clevelandart.org/art/2003.86",
+      "asset": "specimens/water-store-cma-2003.86.jpg",
+      "origin": "Tétouan, Morocco",
+      "identity": "Unidentified Tétouan weavers",
+      "observation": "The museum describes a silk brocade grid with navy and crimson faces and connects msimsim hangings to recorded marriage gifts in Tétouan.",
+      "limit": "The source allows two possible supplies for the raw silk. It identifies neither a particular loom nor this hanging’s silk supplier.",
+      "alt": "A long hanging with one dense patterned field between dark outer borders.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "fibres",
+      "span": 17,
+      "load": 3,
+      "stretch": [
+        0.4,
+        0.8
+      ]
+    },
+    "task": "Odal needs two support notes for one practice plane. A folded corner hides the far face from a viewer in the line.",
+    "checks": [
+      "Clip the full face",
+      "Clip from the fold"
+    ],
+    "notes": [
+      "The colour-facing plane stays close to the first span.",
+      "The fold opens in larger motion before the opposite face lies flat."
+    ],
+    "choices": [
+      "Show one face with a turn tab in the Yard",
+      "Send a two-sided handling clip to the channel"
+    ],
+    "responses": [
+      "A viewer can find the note for the unseen face without turning the copy. The geographic label says Tétouan.",
+      "A channel reader turns the clipped sheet and sees where the two documented colour faces are labelled."
+    ],
+    "returnAction": "Fit a turn tab so both brocade faces stay labelled",
+    "returnEffect": "A reader can turn the sheet without confusing the craft location with the silk’s possible origins."
+  },
+  {
+    "slug": "algerian-ribbons",
+    "title": "A joining ribbon and a missing width",
+    "object": {
+      "key": "cma:1916.1229",
+      "accession": "1916.1229",
+      "institution": "Cleveland Museum of Art",
+      "title": "Curtain panel (sitara)",
+      "date": "1800s",
+      "medium": "Linen, silk, gold, silver, dye",
+      "dimensions": "Overall: 295.3 x 135.9 cm (116 1/4 x 53 1/2 in.)",
+      "url": "https://clevelandart.org/art/1916.1229",
+      "asset": "specimens/water-store-cma-1916.1229.jpg",
+      "origin": "Algeria",
+      "identity": "Unidentified Algerian weaver and embroiderer",
+      "observation": "The museum describes an Algerian curtain with two surviving embroidered widths and joined ribbons. It says a third width is missing.",
+      "limit": "The catalogue describes the original layout from comparable curtains. The missing width itself is absent.",
+      "alt": "A narrow curtain panel with vertical embroidered borders and coloured joining ribbons.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "fibres",
+      "span": 18,
+      "load": 4,
+      "stretch": [
+        0.5,
+        1.2
+      ]
+    },
+    "task": "An old clipping shows the surviving cloth and leaves no space for the third width. Odal wants the two lengths to stay legible during handling.",
+    "checks": [
+      "Pull on the linen ground",
+      "Pull across the joining ribbon"
+    ],
+    "notes": [
+      "The ground stays closer to its unloaded span.",
+      "The fixture adds travel at the mock joining ribbon."
+    ],
+    "choices": [
+      "Hang the narrow copy and label the surviving edges",
+      "Give the channel reader a fold for the missing width"
+    ],
+    "responses": [
+      "The narrow copy shows two widths. A plain marker says a third is described in the source.",
+      "The sleeve unfolds into two occupied columns and an empty third. A carrier can distinguish estimate and surviving fabric."
+    ],
+    "returnAction": "Open a slot beside the two surviving widths",
+    "returnEffect": "A viewer can now see the gap without seeing a coloured replacement for it. The source stays clipped to both references."
+  },
+  {
+    "slug": "djerba-pair",
+    "title": "Two curtains and one mount",
+    "object": {
+      "key": "cma:1916.1361",
+      "accession": "1916.1361",
+      "institution": "Cleveland Museum of Art",
+      "title": "Curtain",
+      "date": "1600s–1700s",
+      "medium": "Silk, linen, metal, and dye",
+      "dimensions": "Overall: 281 x 157.7 cm (110 5/8 x 62 1/16 in.)",
+      "url": "https://clevelandart.org/art/1916.1361",
+      "asset": "specimens/water-store-cma-1916.1361.jpg",
+      "origin": "Djerba, Tunisia",
+      "identity": "Unidentified Djerba weavers and embroiderers",
+      "observation": "The Cleveland record groups two curtains. It records silk bands, gold embroidery and how weaving and embroidery were distinct jobs.",
+      "limit": "The account describes possible household and special-occasion uses. This particular pair’s original room is unrecorded.",
+      "alt": "Two striped curtains in the same photograph, each with multicoloured narrow bands.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "fibres",
+      "span": 18,
+      "load": 5,
+      "stretch": [
+        0.3,
+        0.7
+      ]
+    },
+    "task": "Odal has to hang a pair without making a false join between the two curtain lengths.",
+    "checks": [
+      "Grip on one mock band",
+      "Grip across a paper installation joint"
+    ],
+    "notes": [
+      "The band moves under one set of marks.",
+      "The fixture’s installation joint opens farther."
+    ],
+    "choices": [
+      "Show the two lengths on separate Yard clips",
+      "Keep the two lengths together with a divider at the channel"
+    ],
+    "responses": [
+      "Each hanging has its own hook and both still share the catalogue entry.",
+      "A divider lets a lower handler interpret both curtains as one catalogue pair and still locate each edge."
+    ],
+    "returnAction": "Unclip the false seam between the two mounts",
+    "returnEffect": "The label keeps two original lengths and one catalogue entry. The hanging room remains open in the record."
+  },
+  {
+    "slug": "moroccan-tassel",
+    "title": "The fall at the end of a scarf",
+    "object": {
+      "key": "met:91.1.53",
+      "accession": "91.1.53",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Scarf End",
+      "date": "late 18th century",
+      "medium": "Wool",
+      "dimensions": "H. 9 1/2 in. (24.1 cm) W. 30 in. (76.2 cm)",
+      "url": "https://www.metmuseum.org/art/collection/search/444429",
+      "asset": "specimens/water-store-met-91.1.53.jpg",
+      "origin": "Attributed to Salé, Morocco",
+      "identity": "Unidentified scarf maker",
+      "observation": "The Met catalogues this late eighteenth-century wool piece as a scarf end, 24.1 by 76.2 centimetres.",
+      "limit": "Its measured size belongs to the surviving end. The whole scarf’s length is open.",
+      "alt": "A pale and red piece of wool with two visible tassels at its lower edge.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "fibres",
+      "span": 21,
+      "load": 3,
+      "stretch": [
+        0.5,
+        1.3
+      ]
+    },
+    "task": "The first tray grips the broad strip. A second holder lets the small tassels hang past the edge.",
+    "checks": [
+      "Clamp the straight practice end",
+      "Clamp across the mock tassel row"
+    ],
+    "notes": [
+      "The straight strip stretches less.",
+      "The separated mock ends add more travel."
+    ],
+    "choices": [
+      "Lay the complete surviving end flat in the Yard",
+      "Roll the loose ends around a separate channel sleeve"
+    ],
+    "responses": [
+      "The measurable edge is clear. A Yard reader can check the recorded size without assuming a complete scarf.",
+      "The sleeves keep the little ends intact. A stop tab points to the measurement of this fragment."
+    ],
+    "returnAction": "Move the length line to the surviving end",
+    "returnEffect": "A reader can tell which distance has a source. The proposed full length remains blank."
+  },
+  {
+    "slug": "damask-join",
+    "title": "A joined damask hanging",
+    "object": {
+      "key": "met:09.160",
+      "accession": "09.160",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Hanging",
+      "date": "18th century",
+      "medium": "Silk; damask weave, joined",
+      "dimensions": "H. 85 1/2 in. (217.2 cm) W. 68 1/4 in. (173.4 cm)",
+      "url": "https://www.metmuseum.org/art/collection/search/445959",
+      "asset": "specimens/water-store-met-09.160.jpg",
+      "origin": "Attributed to Tunisia",
+      "identity": "Unidentified damask weaver",
+      "observation": "The Met lists joined damask silk and records the whole hanging at 217.2 by 173.4 centimetres.",
+      "limit": "The Attributed to Tunisia wording expresses a geographical attribution. This record does not provide a named workshop.",
+      "alt": "Red hanging with two large patterned panels and a narrow joining line.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "fibres",
+      "span": 20,
+      "load": 5,
+      "stretch": [
+        0.4,
+        1.0
+      ]
+    },
+    "task": "A straight clamp shows one panel. A second clamp crosses the join so the room can decide where to put a support.",
+    "checks": [
+      "Pull inside one panel",
+      "Pull across the join"
+    ],
+    "notes": [
+      "The model panel takes the marked load.",
+      "The seam strip lengthens more at the same mark."
+    ],
+    "choices": [
+      "Mount one panel view and a joint line in the Yard",
+      "Put two joined leaves in the channel holder"
+    ],
+    "responses": [
+      "A first viewer can recognise the join before tracing the full width. The label preserves the attribution.",
+      "The lower receiver unfolds both leaves. The support sits under the join and the catalogue’s stated overall width stays on the slip."
+    ],
+    "returnAction": "Move the bearing clip beneath the joined section",
+    "returnEffect": "The public copy now preserves two support points and the cautious geographical attribution."
+  },
+  {
+    "slug": "nupe-water-jar",
+    "title": "The grip on a round jar",
+    "object": {
+      "key": "cma:1995.210",
+      "accession": "1995.210",
+      "institution": "Cleveland Museum of Art",
+      "title": "Water Transport Jar",
+      "date": "1900s",
+      "medium": "Terracotta",
+      "dimensions": "Diameter: 35.7 cm (14 1/16 in.); Overall: 36.9 cm (14 1/2 in.)",
+      "url": "https://clevelandart.org/art/1995.210",
+      "asset": "specimens/water-store-cma-1995.210.jpg",
+      "origin": "Nigeria",
+      "identity": "Unidentified Nupe-style potter",
+      "observation": "The museum describes a female potter joining two clay bowls to form the jar’s body and pressing surface designs to help a person grip it.",
+      "limit": "The source estimates a relationship to gourd shapes. The fixture measures the outline of a fictional load.",
+      "alt": "Round terracotta water jar with a short neck and textured brown surface.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "forms",
+      "incline": 4,
+      "edge": [
+        8,
+        11
+      ],
+      "centre": [
+        5,
+        5
+      ]
+    },
+    "task": "An empty hoop leaves room for the grip strip. A broad board gives the practice load more support on an incline.",
+    "checks": [
+      "Set the narrow hoop",
+      "Set the wide grip board"
+    ],
+    "notes": [
+      "The plain load line crosses the narrow edge at this incline.",
+      "There is still room on the broad board. The textured side mark stays visible."
+    ],
+    "choices": [
+      "Show the grip strip on the Yard’s open tray",
+      "Send the wider base guide to the lower bank"
+    ],
+    "responses": [
+      "The keeper points to the pressed section before trying the mock lift. The checked support stays printed on the receipt.",
+      "A lower carrier sets out the broader foot line and can see where the two bowl shapes meet."
+    ],
+    "returnAction": "Fit the plain grip strip to the broad support",
+    "returnEffect": "A carrier can trace the clay join and still distinguish grip from bearing width."
+  },
+  {
+    "slug": "lobi-nest",
+    "title": "The stack without its stopper",
+    "object": {
+      "key": "cma:1975.1011",
+      "accession": "1975.1011",
+      "institution": "Cleveland Museum of Art",
+      "title": "Set of Nesting Wedding Baskets",
+      "date": "c. 1900s ?",
+      "medium": "Plant fiber and leather",
+      "dimensions": "Diameter of mouth with rim: 16.6 x 15.2 cm (6 9/16 x 6 in.); Diameter of base: 6.4 x 3.2 cm (2 1/2 x 1 1/4 in.); Part 2: 16.6 x 14 cm (6 9/16 x 5 1/2 in.); Part 3: 13.8 x 12.7 cm (5 7/16 x 5 in.); Part 4: 13.1 x 11.5 cm (5 3/16 x 4 1/2 in.); Part 5: 12.1 x 10.5 cm (4 3/4 x 4 1/8 in.); at mouth: 6.4 x 5.8 cm (2 1/2 x 2 5/16 in.); Across top: 6.8 x 7 cm (2 11/16 x 2 3/4 in.); Body: 5.4 x 4.9 cm (2 1/8 x 1 15/16 in.); Width at top: 10 x 9.3 cm (3 15/16 x 3 11/16 in.); width of mouth: 9.5 x 8.3 cm (3 3/4 x 3 1/4 in.)",
+      "url": "https://clevelandart.org/art/1975.1011",
+      "asset": "specimens/water-store-cma-1975.1011.jpg",
+      "origin": "Burkina Faso",
+      "identity": "Unidentified Lobi-style basket maker",
+      "observation": "The catalogue groups ten nesting baskets and a stopper. It gives separate dimensions for the graduated parts.",
+      "limit": "The catalogue identifies the set as wedding baskets. The workshop test compares plain nested trays with their parts stacked.",
+      "alt": "Tapered dark woven stack with a pointed top and horizontal patterning.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "forms",
+      "incline": 3,
+      "edge": [
+        8,
+        12
+      ],
+      "centre": [
+        4,
+        5
+      ]
+    },
+    "task": "The Yard keeper wants a quick stack count. Osma kept a separate shelf where each loose ring can be supported.",
+    "checks": [
+      "Set the nested model on one foot",
+      "Separate the plain stopper on the wide support"
+    ],
+    "notes": [
+      "The assembled stack keeps a small edge margin.",
+      "The widened support leaves a larger margin for the separated model."
+    ],
+    "choices": [
+      "Mount the assembled-stack count in the Yard",
+      "Send an exploded parts plan with the stopper’s own tab"
+    ],
+    "responses": [
+      "The Yard can count one packed set and direct a reader to the ten baskets below it.",
+      "A lower handler counts the cloth model’s ten rings and the separate stopper marker before fitting them into one stack."
+    ],
+    "returnAction": "Attach a separate stopper tab above the ten-stack count",
+    "returnEffect": "The shelf’s receipt now keeps the stopper distinct from the ten baskets."
+  },
+  {
+    "slug": "mangbetu-rim",
+    "title": "Support for a broad woven top",
+    "object": {
+      "key": "cma:1929.326",
+      "accession": "1929.326",
+      "institution": "Cleveland Museum of Art",
+      "title": "Basket",
+      "date": "by 1928",
+      "medium": "Plant fibers and dye",
+      "dimensions": "Overall: 22.5 cm (8 7/8 in.); Diameter of top: 31.6 cm (12 7/16 in.)",
+      "url": "https://clevelandart.org/art/1929.326",
+      "asset": "specimens/water-store-cma-1929.326.jpg",
+      "origin": "Democratic Republic of the Congo",
+      "identity": "Unidentified Mangbetu-style basket maker",
+      "observation": "The record calls this object a basket and measures the top at 31.6 centimetres across. A catalogue note calls it a hat and connects it to visitors passing through Ekibondo.",
+      "limit": "The two terms come from one public catalogue entry. They leave the original use of this particular object open.",
+      "alt": "Wide straight-sided woven form with dark angular patterning and a plain rim.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "forms",
+      "incline": 4,
+      "edge": [
+        8,
+        14
+      ],
+      "centre": [
+        5,
+        6
+      ]
+    },
+    "task": "A round outline crosses two supports. The narrower one leaves the rim clear and the wider one changes how far the model can tip.",
+    "checks": [
+      "Set the open rim support",
+      "Set the broad base board"
+    ],
+    "notes": [
+      "The rim stays exposed and the load line goes past the edge.",
+      "The broad board keeps a margin. The free rim can be marked separately."
+    ],
+    "choices": [
+      "Keep the rim visible and both catalogue terms beside it",
+      "Send the base board that keeps the open rim marked"
+    ],
+    "responses": [
+      "A Yard handler can verify the top diameter and read the source’s two terms at the same time.",
+      "A lower handler checks the board. A separate tab gives the catalogue title and its alternate wording."
+    ],
+    "returnAction": "Clip both catalogue terms beside the measured rim",
+    "returnEffect": "The object’s label can keep an observed rim measurement while acknowledging the two different catalogue words."
+  },
+  {
+    "slug": "jar-carry-strap",
+    "title": "The carrying strap and the belly",
+    "object": {
+      "key": "cma:1915.460",
+      "accession": "1915.460",
+      "institution": "Cleveland Museum of Art",
+      "title": "Water Jug and Carrying Strap",
+      "date": "early 1900s",
+      "medium": "Terracotta and plant fiber",
+      "dimensions": "Overall: 64.8 cm (25 1/2 in.); Diameter of mouth with rim: 17.8 x 8.9 cm (7 x 3 1/2 in.)",
+      "url": "https://clevelandart.org/art/1915.460",
+      "asset": "specimens/water-store-cma-1915.460.jpg",
+      "origin": "Place of making unrecorded",
+      "identity": "Unidentified maker of the jug and strap",
+      "observation": "The accession groups a terracotta water jug with a separate plant-fibre carrying strap.",
+      "limit": "The record gives material and dimensions. It leaves the makers and the original carrying route open.",
+      "alt": "A round jug with dark neck held in a light woven loop with a strap.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "forms",
+      "incline": 3,
+      "edge": [
+        9,
+        13
+      ],
+      "centre": [
+        5,
+        4
+      ]
+    },
+    "task": "The practice jar can sit on its strap or be held by a floor support. Avoid letting the strap sit beneath a measured edge.",
+    "checks": [
+      "Lay the strap under the model",
+      "Suspend the strap and rest the belly"
+    ],
+    "notes": [
+      "The strap shifts the plain load toward the measured edge.",
+      "The separate support gives the jug model more room on the tilt."
+    ],
+    "choices": [
+      "Keep the strap line visible beside the jug in the Yard",
+      "Give the lower crew the belly-support sketch and a separate strap tab"
+    ],
+    "responses": [
+      "A viewer can follow the strap round the vessel without treating it as the stable stand.",
+      "The lower crew fits the support under the belly and traces the strap on another line of the receipt."
+    ],
+    "returnAction": "Hang the strap reference beside the jug rather than under its foot",
+    "returnEffect": "A handler can read the plant-fibre label without making it cover the stand measurement."
+  },
+  {
+    "slug": "rounded-stone-vase",
+    "title": "A round bottom needs a bearing",
+    "object": {
+      "key": "walters:41.45",
+      "accession": "41.45",
+      "institution": "The Walters Art Museum",
+      "title": "Vase with Small Neck and Round Bottom",
+      "date": "5th-late 4th millennium BCE (Predynastic)",
+      "medium": "black and white stone",
+      "dimensions": "H: 1 5/16 in. (3.35 cm); Top Diam: 3/8 in. (0.97 cm); Base Diam: 1 1/4 in. (3.21 cm)",
+      "url": "https://art.thewalters.org/object/41.45/",
+      "asset": "specimens/water-store-walters-41.45.jpg",
+      "origin": "Egypt",
+      "identity": "Unidentified Egyptian stoneworker",
+      "observation": "The museum gives separate top and base diameters for the small Egyptian vase and identifies a rounded bottom in the object title.",
+      "limit": "The measurement records this stone form. Its former contents and how it stood in use remain open.",
+      "alt": "Pale stone vase with a narrow neck, rounded body and dark mineral markings.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "forms",
+      "incline": 4,
+      "edge": [
+        7,
+        11
+      ],
+      "centre": [
+        4,
+        4
+      ]
+    },
+    "task": "A narrow ring catches the plain model’s curve. An open board leaves the outline readable.",
+    "checks": [
+      "Tilt the model on the open board",
+      "Tilt the model in a wide bearing ring"
+    ],
+    "notes": [
+      "The mock load passes just outside the board’s mark.",
+      "The bearing ring leaves another three marks to the edge."
+    ],
+    "choices": [
+      "Show the top and base measurements in the Yard",
+      "Send a fitted support sketch to the channel"
+    ],
+    "responses": [
+      "A viewer knows which diameter belongs to the mouth and which is below it.",
+      "A lower attendant can seat the rounded practice form safely and preserves each museum measurement on the slip."
+    ],
+    "returnAction": "Set a free cradle tab under the round-bottom sketch",
+    "returnEffect": "The shelf keeps the help a carrier needs alongside the smaller diameter at the lip."
+  },
+  {
+    "slug": "utica-lamp",
+    "title": "The edge of a small molded lamp",
+    "object": {
+      "key": "met:17.194.1812",
+      "accession": "17.194.1812",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Lamp",
+      "date": "3rd–7th century",
+      "medium": "Earthenware; molded",
+      "dimensions": "Ht. 4 1/2 in. (11.5 cm) W. 2 11/16 in. (6.8 cm) D. 1 3/8 in. (3.5 cm)",
+      "url": "https://www.metmuseum.org/art/collection/search/447035",
+      "asset": "specimens/water-store-met-17.194.1812.jpg",
+      "origin": "Utica, Tunisia",
+      "identity": "Unidentified lamp maker",
+      "observation": "The Met records molded earthenware from Utica and lists three dimensions for this lamp.",
+      "limit": "From Utica gives the catalogue geography. It leaves this individual object’s workshop and fuel unrecorded.",
+      "alt": "Reddish earthenware lamp with a projecting spout and several holes.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "forms",
+      "incline": 3,
+      "edge": [
+        8,
+        14
+      ],
+      "centre": [
+        7,
+        5
+      ]
+    },
+    "task": "The yard tray should show the spout. A lower carrier wants a deep restraint that keeps a model from sliding forward.",
+    "checks": [
+      "Tilt on a thin rim shelf",
+      "Tilt in a broad spout cradle"
+    ],
+    "notes": [
+      "The projecting end runs past the support mark.",
+      "The broad cradle leaves a clear margin around the spout."
+    ],
+    "choices": [
+      "Keep the spout view and a rim caution in the Yard",
+      "Give the channel the model cradle sketch"
+    ],
+    "responses": [
+      "The first visitor can identify the spout. A separate line marks why the narrow support was unsuitable in the model.",
+      "The lower attendant sets the longer support before the lip and keeps the Utica attribution in view."
+    ],
+    "returnAction": "Move the spout support line beyond the rim",
+    "returnEffect": "The reading stand now keeps the spout’s shape visible and gives the next handler the bearing mark."
+  },
+  {
+    "slug": "marovany-tube",
+    "title": "A long tube across one support",
+    "object": {
+      "key": "met:89.4.553",
+      "accession": "89.4.553",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Marovany",
+      "date": "late 19th century",
+      "medium": "Bamboo, wood",
+      "dimensions": "Diam. 7.6 x L. 124.5cm (3 x 49in.)",
+      "url": "https://www.metmuseum.org/art/collection/search/501169",
+      "asset": "specimens/water-store-met-89.4.553.jpg",
+      "origin": "Madagascar",
+      "identity": "Unidentified Malagasy instrument maker",
+      "observation": "The Met catalogues a bamboo-and-wood marovany, 124.5 centimetres long and 7.6 centimetres across.",
+      "limit": "The catalogue fixes dimensions and materials. It supplies no measurement of playing tension for this individual object.",
+      "alt": "Long, narrow bamboo instrument photographed side-on with a few small surface details.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "forms",
+      "incline": 5,
+      "edge": [
+        10,
+        15
+      ],
+      "centre": [
+        6,
+        5
+      ]
+    },
+    "task": "A long model tube can rest on one clip or split its load between two clips. Keep the width of the tube visible on the sheet.",
+    "checks": [
+      "Tilt the single-clip model",
+      "Tilt the two-clip model"
+    ],
+    "notes": [
+      "The mock load passes the single clip’s mark.",
+      "Two spots keep the practice tube inside the rated edge."
+    ],
+    "choices": [
+      "Keep the long silhouette across the open Yard board",
+      "Send the paired bearing points to the lower bank"
+    ],
+    "responses": [
+      "A Yard reader can see how far the narrow tube extends past the first support.",
+      "The lower carrier aligns the two bearing marks while leaving the museum’s separate length and diameter visible."
+    ],
+    "returnAction": "Clip the second support mark at the far end of the silhouette",
+    "returnEffect": "The shelf records two physical support points and keeps the reported span separate from the fictional handling trial."
+  },
+  {
+    "slug": "cypriot-barrel",
+    "title": "A water jug lying across its handles",
+    "object": {
+      "key": "walters:48.2044",
+      "accession": "48.2044",
+      "institution": "The Walters Art Museum",
+      "title": "Barrel Jug with Geometric Decoration",
+      "date": "8th century BCE (Cypro-Archaic I)",
+      "medium": "Ceramics",
+      "dimensions": "H: 12 7/8 x W: 12 1/8 in. (32.7 x 30.8 cm)",
+      "url": "https://art.thewalters.org/object/48.2044/",
+      "asset": "specimens/water-store-walters-48.2044.jpg",
+      "origin": "Cyprus",
+      "identity": "Unidentified Cypriot potter",
+      "observation": "The Walters describes an Iron Age water jug whose body resembles a barrel lying on its side.",
+      "limit": "The catalogue supplies the form and later estate gift. The route travelled by the jug in antiquity is open.",
+      "alt": "Ceramic barrel-shaped jug with a short neck, small handle and visible concentric bands.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "forms",
+      "incline": 5,
+      "edge": [
+        9,
+        17
+      ],
+      "centre": [
+        8,
+        9
+      ]
+    },
+    "task": "Osma has a flat support and a wider curved block. The object’s sideways form presents a bearing direction that a normal vertical bottle would not.",
+    "checks": [
+      "Tilt the model on the flat runner",
+      "Tilt the model in the side cradle"
+    ],
+    "notes": [
+      "The round model runs beyond the marked flat edge.",
+      "The side cradle leaves three marks inside its edge."
+    ],
+    "choices": [
+      "Publish a side profile with the bearing caution",
+      "Send the side cradle guide to the Lower Channel"
+    ],
+    "responses": [
+      "The Yard holder learns why the short neck does not determine the jug’s load direction.",
+      "A lower handler uses the wider cradle. Its label points to the precise Cypriot jug form."
+    ],
+    "returnAction": "Move the directional arrow along the barrel’s side",
+    "returnEffect": "The two arrows now distinguish the mouth direction from the resting direction."
+  },
+  {
+    "slug": "corinthian-hydria",
+    "title": "The handle stops at the rim",
+    "object": {
+      "key": "walters:54.776",
+      "accession": "54.776",
+      "institution": "The Walters Art Museum",
+      "title": "Handle with the Head of a Woman",
+      "date": "520-510 BCE (Late Archaic)",
+      "medium": "bronze",
+      "dimensions": "9 5/8 x 6 11/16 x 4 1/2 in. (24.5 x 17 x 11.5 cm)",
+      "url": "https://art.thewalters.org/object/54.776/",
+      "asset": "specimens/water-store-walters-54.776.jpg",
+      "origin": "Corinth, Greece",
+      "identity": "Unidentified Greek bronze worker",
+      "observation": "The Walters identifies this bronze piece as an attachment where the handle met the rim of a water jug.",
+      "limit": "The surviving part contains a handle attachment. The shape and load of the whole historic jug are open.",
+      "alt": "A dark bronze fragment with a small face at the top and curved projections.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "forms",
+      "incline": 4,
+      "edge": [
+        7,
+        14
+      ],
+      "centre": [
+        5,
+        6
+      ]
+    },
+    "task": "A plain handle model shifts on its own. A separate rim support shows how the ends might have met.",
+    "checks": [
+      "Tilt the handle model by itself",
+      "Tilt the model against the rim block"
+    ],
+    "notes": [
+      "The isolated handle crosses the marked edge.",
+      "The second support shows the practice attachment bearing in two places."
+    ],
+    "choices": [
+      "Keep the fragment’s outer contour open in the Yard",
+      "Send the possible attachment line on a separate sleeve"
+    ],
+    "responses": [
+      "A Yard visitor can point to the surviving bronze and see an open line where the rest is missing.",
+      "A lower handler sees where a rim could take the plain model’s load and where the historical fragment ends."
+    ],
+    "returnAction": "Set a seam tab where the handle could meet a rim",
+    "returnEffect": "The source distinction between attachment and whole jug stays visible after the shelf closes."
+  },
+  {
+    "slug": "damascus-weight",
+    "title": "Who a stamped weight names",
+    "object": {
+      "key": "walters:47.6",
+      "accession": "47.6",
+      "institution": "The Walters Art Museum",
+      "title": "Inscribed Pound Weight",
+      "date": "126 AH/AD 743 (Early Medieval)",
+      "medium": "glass",
+      "dimensions": "H: 1 5/8 x Diam: 2 15/16 in. (4.2 x 7.5 cm)",
+      "url": "https://art.thewalters.org/object/47.6/",
+      "asset": "specimens/water-store-walters-47.6.jpg",
+      "origin": "Damascus is the recorded discovery place",
+      "identity": "Syrian artist attribution",
+      "observation": "The Walters describes this green glass weight as stamped and names Yazid III in its inscription. It lists al-Walid ibn Abdul-Rahman as patron.",
+      "limit": "The catalogue puts discovery in Damascus. The discovery line and named roles give separate information.",
+      "alt": "Round green glass weight with a darker recessed edge and stamped centre.",
+      "dateKind": "Dated inscription in the Walters record"
+    },
+    "fixture": {
+      "kind": "travel",
+      "legs": [
+        [
+          0,
+          2,
+          2
+        ],
+        [
+          0,
+          1,
+          3,
+          2
+        ]
+      ]
+    },
+    "task": "A clerk can follow a fast name index or a longer docket that reaches the find-place drawer. Keep patron, inscription and discovery on their own slips.",
+    "checks": [
+      "Move through the name-index rail",
+      "Move through the discovery-ledger rail"
+    ],
+    "notes": [
+      "This index reaches the named inscription and patron fields.",
+      "The second route reaches the accession folder with the Damascus discovery line."
+    ],
+    "choices": [
+      "Send the patron and inscription index to the Yard",
+      "Send the discovery docket to the Lower Channel"
+    ],
+    "responses": [
+      "A reader reaches the two names from one index. A place strip remains available behind it.",
+      "The lower reader can show exactly which line says Damascus and which line states the catalogue date."
+    ],
+    "returnAction": "Keep the patron and find-place under separate clips",
+    "returnEffect": "The Canal index can now take readers to the name record or the discovery note. Each remains available."
+  },
+  {
+    "slug": "cheetah-pour",
+    "title": "Two possible origin lines",
+    "object": {
+      "key": "walters:54.2434",
+      "accession": "54.2434",
+      "institution": "The Walters Art Museum",
+      "title": "Aquamanile (Handwasher) in the Form of a Cheetah",
+      "date": "11th-13th century (Medieval)",
+      "medium": "bronze",
+      "dimensions": "H: 7 5/8 x W: 8 3/4 x D: 3 13/16 in. (19.4 x 22.3 x 9.6 cm)",
+      "url": "https://art.thewalters.org/object/54.2434/",
+      "asset": "specimens/water-store-walters-54.2434.jpg",
+      "origin": "Egypt or Italy, both qualified in the source",
+      "identity": "Unidentified maker, with Egyptian and Italian attributions considered",
+      "observation": "The Walters identifies an animal-shaped bronze pouring vessel and keeps Egyptian and Italian maker attributions open.",
+      "limit": "The wider catalogue compares animal bronzes across several sites. The precise place of making for this particular vessel remains open.",
+      "alt": "A dark bronze cheetah-shaped container with four legs, a loop handle and a projecting mouth.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "travel",
+      "legs": [
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          2,
+          3
+        ]
+      ]
+    },
+    "task": "The Yard needs a form tag. A channel reader tracing the longer docket needs to read both possible origins without treating either as a routing command.",
+    "checks": [
+      "Traverse the form-name rail",
+      "Traverse the production-attribution rail"
+    ],
+    "notes": [
+      "The outer shape and title can be found quickly.",
+      "This route retains both possible origins and their question marks."
+    ],
+    "choices": [
+      "Show the pouring form with one locator tab",
+      "Send the folded two-origin docket to the channel"
+    ],
+    "responses": [
+      "A visitor finds the physical form and a side tab gives the two possible origins.",
+      "A lower reader opens the separate attribution fields and keeps both in the public copy."
+    ],
+    "returnAction": "Pin the two provisional origins side by side",
+    "returnEffect": "Neither place has become the main heading. An open copy links to why the museum compares both."
+  },
+  {
+    "slug": "granulated-earring",
+    "title": "One earring, two attributions",
+    "object": {
+      "key": "walters:57.586",
+      "accession": "57.586",
+      "institution": "The Walters Art Museum",
+      "title": "Earring",
+      "date": "late 10th-11th century (Medieval)",
+      "medium": "granulated gold",
+      "dimensions": "H: 7/8 in. (2.3 cm)",
+      "url": "https://art.thewalters.org/object/57.586/",
+      "asset": "specimens/water-store-walters-57.586.jpg",
+      "origin": "Syria or Egypt, both qualified in the source",
+      "identity": "Unidentified metalworker",
+      "observation": "The Walters lists granulated gold and two possible places for this earring. It separately records Henry Walters’s purchase in 1913.",
+      "limit": "The purchase date traces custody. The catalogue leaves the place of manufacture open.",
+      "alt": "Fine wire loop above a clustered gold ornament, photographed against black.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "travel",
+      "legs": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          1,
+          3
+        ]
+      ]
+    },
+    "task": "A small case card needs a short route to the goldwork. A second clerk needs a longer docket to separate the purchase from the possible origins.",
+    "checks": [
+      "Carry the medium slip through the fast rail",
+      "Carry the acquisition line and both possible origins"
+    ],
+    "notes": [
+      "The fast rail finds the granulation note.",
+      "The side rail collects the attributed origins and a distinct purchase stamp."
+    ],
+    "choices": [
+      "Keep the granulated-gold line at the Yard’s open tray",
+      "Send the purchase and both maker-attribution lines to the channel"
+    ],
+    "responses": [
+      "The first reader locates the metalwork. The label preserves both possible origins in a separate place.",
+      "The lower keeper can locate 1913 without converting it into the making date."
+    ],
+    "returnAction": "Separate the purchase clip from the two-origin card",
+    "returnEffect": "Canal visitors can follow the custody note independently of the attribution."
+  },
+  {
+    "slug": "sicilian-repair",
+    "title": "The later repair and the original comb",
+    "object": {
+      "key": "walters:71.48",
+      "accession": "71.48",
+      "institution": "The Walters Art Museum",
+      "title": "Comb with Scrolls and Birds",
+      "date": "12th century (Medieval)",
+      "medium": "ivory",
+      "dimensions": "H: 3 1/4 x W: 2 9/16 in. (8.3 x 6.5 cm)",
+      "url": "https://art.thewalters.org/object/71.48/",
+      "asset": "specimens/water-store-walters-71.48.jpg",
+      "origin": "Sicily, Italy",
+      "identity": "Unidentified Sicilian maker and later repairer",
+      "observation": "The Walters describes an ivory comb with two decorated faces, later repaired across the break. Many teeth are missing.",
+      "limit": "The catalogue leaves the date and maker of the repair open. The Sicilian attribution belongs to the comb.",
+      "alt": "A rectangular comb with a round design in the middle, gaps in the teeth and an obvious break through the centre.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "travel",
+      "legs": [
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          3,
+          1
+        ]
+      ]
+    },
+    "task": "Two rails carry a usable form card and a longer conservation docket. The visitor wants to know why some teeth are missing.",
+    "checks": [
+      "Carry a comb-form receipt",
+      "Carry the repaired-join receipt"
+    ],
+    "notes": [
+      "The short route finds the shape, two faces and lost teeth.",
+      "The longer docket marks the repair as a separate event with no date supplied."
+    ],
+    "choices": [
+      "Keep a two-sided shape copy in the Yard",
+      "Send the repair and later custody separately to the channel"
+    ],
+    "responses": [
+      "A visitor turns the paper and can find the missing teeth in the outline view.",
+      "A lower keeper can point to the repaired junction while preserving the recorded 1930 purchase."
+    ],
+    "returnAction": "Clip the later repair above the making date line",
+    "returnEffect": "The marked break stays distinct from the catalogue date of the comb and from the recorded 1930 purchase."
+  },
+  {
+    "slug": "bartmann-stops",
+    "title": "A jug whose catalogue lists several places",
+    "object": {
+      "key": "nmafa:89-13-73",
+      "accession": "89-13-73",
+      "institution": "Smithsonian National Museum of African Art",
+      "title": "Bartmann jug",
+      "date": "ca. 1800",
+      "medium": "Ceramic, salt glaze",
+      "dimensions": "H x W: 48.2 x 27.3 cm (19 x 10 3/4 in.)",
+      "url": "https://collections.si.edu/search/detail/edanmdm:nmafa_89-13-73",
+      "asset": "specimens/water-store-nmafa-89-13-73.jpg",
+      "origin": "Germany, Democratic Republic of the Congo and Congo appear in the geography field",
+      "identity": "Unidentified potter",
+      "observation": "The Smithsonian describes a salt-glazed Bartmann jug with a bearded face and gives the Walshaert collection in Antwerp before 1930 in the provenance.",
+      "limit": "The record links the form with German pottery. The geography field leaves the sequence of travel for this particular jug open.",
+      "alt": "Tall brown glazed jug with a narrow neck and an outline of a handle.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "travel",
+      "legs": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          2,
+          1,
+          4
+        ]
+      ]
+    },
+    "task": "The geography list resembles a travel line. Test a short type card and a longer route docket that has spaces for unknown handovers.",
+    "checks": [
+      "Take the pottery-type index",
+      "Take the custody docket to its final stop"
+    ],
+    "notes": [
+      "The first rail reaches the form label and the salt glaze note.",
+      "The longer rail reaches the known Antwerp line with open spaces before it."
+    ],
+    "choices": [
+      "Hang the form and glaze identification in the Yard",
+      "Put the known Antwerp stop and open spaces in the channel sleeve"
+    ],
+    "responses": [
+      "The keeper can explain the vessel form without putting the other names in a made-up order.",
+      "The lower reader locates the collection history and can mark an uncertain leg as open."
+    ],
+    "returnAction": "Leave a blank between the type origin and Antwerp",
+    "returnEffect": "The Canal display preserves the exact geography field without converting it into a made-up route."
+  },
+  {
+    "slug": "edo-merchant-cast",
+    "title": "The guild made the plaque",
+    "object": {
+      "key": "met:1991.17.18",
+      "accession": "1991.17.18",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Plaque with Two Portuguese Merchants",
+      "date": "ca. 1540–70",
+      "medium": "Brass",
+      "dimensions": "H. 20 1/2 × W. 11 3/8 × D. 2 1/4 in. (52.1 × 28.9 × 5.7 cm)",
+      "url": "https://www.metmuseum.org/art/collection/search/316490",
+      "asset": "specimens/water-store-met-1991.17.18.jpg",
+      "origin": "Kingdom of Benin, now Nigeria",
+      "identity": "Ìgùn Ẹ́rọ̀nwwọ̀n brass-casting guild artists",
+      "observation": "The Met credits brass-casting guild artists for the plaque and identifies the depicted figures as Portuguese merchants.",
+      "limit": "The museum distinguishes the people represented, the guild that made the plaque and the modern collection history. It gives no personal names for the merchants.",
+      "alt": "A brown rectangular brass plaque with two standing figures in relief.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "travel",
+      "legs": [
+        [
+          0,
+          2,
+          2
+        ],
+        [
+          0,
+          2,
+          3,
+          2
+        ]
+      ]
+    },
+    "task": "A visitor copied the depicted figures into the makers line. Taev’s two rails put the artist field and the represented subjects back into separate drawers.",
+    "checks": [
+      "Carry the Edo guild credit",
+      "Carry the depicted merchants and provenance docket"
+    ],
+    "notes": [
+      "The first rail preserves the guild in the maker’s field.",
+      "The second rail preserves the subject and collection-history references without assigning either the making role."
+    ],
+    "choices": [
+      "Lead with the guild’s name in the Yard",
+      "Publish separate maker and represented-person lines by the channel"
+    ],
+    "responses": [
+      "A reader starts at the guild record and can turn the short slip to find which figures appear.",
+      "The lower reader can cite both roles before following the separate museum provenance."
+    ],
+    "returnAction": "Set the guild tab onto the making line",
+    "returnEffect": "The Canal copy now shows how readers can locate the depicted merchants while keeping credit with the named guild."
+  },
+  {
+    "slug": "moroccan-pendants",
+    "title": "Two pendants in one accession",
+    "object": {
+      "key": "met:08.202.26a-b",
+      "accession": "08.202.26a, b",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Pendants",
+      "date": "probably 14th–15th century",
+      "medium": "Silver",
+      "dimensions": "Catalogued height 5 cm and diameter 2 cm for each part",
+      "url": "https://www.metmuseum.org/art/collection/search/445356",
+      "asset": "specimens/water-store-met-08.202.26a-b.jpg",
+      "origin": "Probably Morocco",
+      "identity": "Unidentified silver workers",
+      "observation": "The Met records two numbered silver pendants under one accession and retains a probable Moroccan geographical attribution.",
+      "limit": "The catalogue gives individual dimensions for the two parts. It leaves manufacture and original wearer unrecorded at this level.",
+      "alt": "Two similarly shaped dark pendants with pierced upper ends and curved tips.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "travel",
+      "legs": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          2,
+          4
+        ]
+      ]
+    },
+    "task": "A runner’s slip can give the shared entry. A keeper who rehangs a loose part needs the separate a and b references.",
+    "checks": [
+      "Take the two-pendant access route",
+      "Send both lettered part receipts through the keeper rail"
+    ],
+    "notes": [
+      "One accession reaches the paired record.",
+      "The extra stop can resolve the two lettered parts without assigning a known maker."
+    ],
+    "choices": [
+      "Forward the shared locator to the Yard",
+      "Leave the two distinct part lines at the lower receiver"
+    ],
+    "responses": [
+      "The first reader can find the pair immediately and sees the qualifier alongside Morocco.",
+      "The lower keeper checks each labelled part against the pair instead of assigning a new accession."
+    ],
+    "returnAction": "Reclip the two part letters underneath their shared accession",
+    "returnEffect": "Both part records can be opened from one index. The probably line stays in place."
+  },
+  {
+    "slug": "ethiopian-gold-ring",
+    "title": "A place attribution and a gift stamp",
+    "object": {
+      "key": "met:04.34.9",
+      "accession": "04.34.9",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Nose Ring",
+      "date": "probably 19th century",
+      "medium": "Gold",
+      "dimensions": "Ht. 13/16 in. (2 cm) W. 9/16 in. (1.5 cm) D. 1/8 in. (0.3 cm)",
+      "url": "https://www.metmuseum.org/art/collection/search/444954",
+      "asset": "specimens/water-store-met-04.34.9.jpg",
+      "origin": "Attributed to Ethiopia",
+      "identity": "Unidentified goldworker",
+      "observation": "The Met catalogues a gold nose ring as probably nineteenth century and attributes it to Ethiopia. The credit line names Meredith Howland’s 1904 gift.",
+      "limit": "The date and geography are catalogue attributions. The donor credit does not supply the named maker or an original owner.",
+      "alt": "Small gold-coloured ring with an opening at the bottom.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "travel",
+      "legs": [
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          2,
+          3
+        ]
+      ]
+    },
+    "task": "One label fits two lines. Taev will either lead with the attributed date or place the gift and material on separate slips.",
+    "checks": [
+      "Carry the qualified catalogue date",
+      "Carry the gift receipt and qualify its context"
+    ],
+    "notes": [
+      "The production-date rail retains “probably.”",
+      "The other rail reaches 1904 as the gift date and leaves the maker line open."
+    ],
+    "choices": [
+      "Show the working date line with a source in the Yard",
+      "Send the gift receipt beside the details to the channel"
+    ],
+    "responses": [
+      "The first reader can repeat the date as an attribution. The gift is still easy to locate.",
+      "The channel copy puts 1904 right beside the gifting role and retains the earlier probable date."
+    ],
+    "returnAction": "Split the gift stamp and date attribution into two pockets",
+    "returnEffect": "A reader reopening the shelf can find either date and tell which event it describes."
+  },
+  {
+    "slug": "malagasy-lace",
+    "title": "A local description in a different department",
+    "object": {
+      "key": "met:08.180.957",
+      "accession": "08.180.957",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Fragment",
+      "date": "19th century",
+      "medium": "Bobbin lace",
+      "dimensions": "L. 10 x W. 1 3/4 inches (25.4 x 4.4 cm)",
+      "url": "https://www.metmuseum.org/art/collection/search/215301",
+      "asset": "specimens/water-store-met-08.180.957.jpg",
+      "origin": "Madagascar in the catalogue culture field",
+      "identity": "Unidentified lace maker",
+      "observation": "The Met lists this as a nineteenth-century bobbin-lace fragment associated with Madagascar. It is filed in European Sculpture and Decorative Arts.",
+      "limit": "The department is a museum filing choice. The accession leaves the original worker, workplace and route to the collection open.",
+      "alt": "Narrow cream lace fragment with repeated curved edges and a small museum measurement tag.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "travel",
+      "legs": [
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ]
+    },
+    "task": "One docket leads through the lace type. One reaches the institution’s filing drawer. A reader should still be able to find Madagascar from both doors.",
+    "checks": [
+      "Follow the material route to the narrow lace",
+      "Follow the department index to the accession drawer"
+    ],
+    "notes": [
+      "The reader finds the bobbin lace and the culture field together.",
+      "The longer route shows how the department separates the filing location from the attribution."
+    ],
+    "choices": [
+      "Give the Yard the short material-and-origin locator",
+      "Give the lower reader the museum drawer path with both fields"
+    ],
+    "responses": [
+      "The work stays associated with Madagascar in the open display. A note gives the department for searching.",
+      "A carrier finds the institution’s file and can read the cultural context without treating the department as its place of making."
+    ],
+    "returnAction": "Reclip the department name below the collection entry",
+    "returnEffect": "The shelf now shows an institutional category and the object’s documented cultural field separately."
+  },
+  {
+    "slug": "cairo-luster",
+    "title": "The painted edge in a glancing view",
+    "object": {
+      "key": "walters:48.2036",
+      "accession": "48.2036",
+      "institution": "The Walters Art Museum",
+      "title": "Lusterware Plate with Bird Motif",
+      "date": "11th century (Medieval)",
+      "medium": "earthenware, with luster decoration and glaze",
+      "dimensions": "H: 2 5/8 × Diam: 9 5/8 in. (6.7 × 24.5 cm)",
+      "url": "https://art.thewalters.org/object/48.2036/",
+      "asset": "specimens/water-store-walters-48.2036.jpg",
+      "origin": "Cairo, Egypt",
+      "identity": "Unidentified Egyptian potter",
+      "observation": "The Walters catalogue identifies glazed earthenware with luster decoration and describes yellow-golden painting around a central bird.",
+      "limit": "The plate’s reflected appearance varies with its view. The miniature lamp uses fictional values.",
+      "alt": "Yellow-golden plate with a central bird and bands of branching decoration.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "surfaces",
+      "angle": [
+        20,
+        65
+      ],
+      "patch": [
+        8,
+        12
+      ]
+    },
+    "task": "Zyra needs a first light for the broad disc and a second light for the small frame. Each lamp angle can show a different detail.",
+    "checks": [
+      "Light the broad model disc",
+      "Light along the mock frame"
+    ],
+    "notes": [
+      "The first swatch reveals its broad surface.",
+      "The glancing model catches a longer edge strip."
+    ],
+    "choices": [
+      "Place a broad-disc caption on the Yard tray",
+      "Send a glancing check and frame marker to the channel"
+    ],
+    "responses": [
+      "The Yard reader locates the bird and can find the frame note below it.",
+      "A lower reader sees a line for the surface finish and a separate line for where light strikes it."
+    ],
+    "returnAction": "Tilt a new surface strip toward the frame line",
+    "returnEffect": "A reader can now locate the luster description with a repeatable direction on the plain shelf model."
+  },
+  {
+    "slug": "painted-leather",
+    "title": "A painted face with no surviving backing",
+    "object": {
+      "key": "walters:73.106",
+      "accession": "73.106",
+      "institution": "The Walters Art Museum",
+      "title": "Painted Leather Fragment",
+      "date": "7th-9th century",
+      "medium": "paint on red-stained parchment or alum-tawed hide",
+      "dimensions": "H: 7 7/8 x W: 7 7/8 in. (20 x 20 cm)",
+      "url": "https://art.thewalters.org/object/73.106/",
+      "asset": "specimens/water-store-walters-73.106.jpg",
+      "origin": "Egypt",
+      "identity": "Unidentified Egyptian leather worker",
+      "observation": "The Walters records paint on red-stained parchment or alum-tawed hide. The description leaves a possible book-cover function open because no backing is preserved.",
+      "limit": "The surviving face can be described directly. Its mounting, original dimensions and function beyond the fragment remain open.",
+      "alt": "Irregular dark reddish fragment with faint curved paint marks and no visible backing.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "surfaces",
+      "angle": [
+        25,
+        70
+      ],
+      "patch": [
+        7,
+        10
+      ]
+    },
+    "task": "A strong lamp gives the painted line. A shallow view marks an edge where a suitable backing would be needed.",
+    "checks": [
+      "Light the coloured face",
+      "Turn the light along the hurt edge"
+    ],
+    "notes": [
+      "The broad model shows paint on its surface.",
+      "The shallow ray picks out the edge and the empty slot behind it."
+    ],
+    "choices": [
+      "Show the painted face with an open function line",
+      "Give the channel the edge sketch that leaves a backing blank"
+    ],
+    "responses": [
+      "A visitor can see why the colour evidence travels before the possible cover attribution.",
+      "The channel set places an open square where a backing would be. The record keeps the material alternatives intact."
+    ],
+    "returnAction": "Leave a blank backing bracket on the used-work shelf",
+    "returnEffect": "The shelf preserves the physical paint record and keeps the proposed book-cover use open."
+  },
+  {
+    "slug": "gnaios-garnet",
+    "title": "A signature beside a worn scene",
+    "object": {
+      "key": "walters:42.109",
+      "accession": "42.109",
+      "institution": "The Walters Art Museum",
+      "title": "Intaglio with an Athlete Set in a Ring",
+      "date": "late 1st century BCE (Early Roman Imperial)",
+      "medium": "garnet; mount: gold",
+      "dimensions": "Intaglio H: 11/16 × W: 9/16 in. (1.8 × 1.5 cm); Intaglio with gold setting H: 13/16 × W: 3/4 × D: 1/8 in. (2.1 × 1.9 × 0.3 cm); Ring H: 13/16 × W: 7/8 × D: 3/4 in. (2.1 × 2.2 × 1.9 cm)",
+      "url": "https://art.thewalters.org/object/42.109/",
+      "asset": "specimens/water-store-walters-42.109.jpg",
+      "origin": "Greece is the recorded discovery place",
+      "identity": "Gnaios, inscribed gem-carver name",
+      "observation": "The Walters reads Gnaios’s name on the garnet. The depicted athlete may be based on a work related to Polykleitos. The museum records damage from earlier cleaning.",
+      "limit": "The catalogue distinguishes the gem’s signature, its represented subject and a possible earlier sculptural model.",
+      "alt": "Red oval garnet in a gold setting, with a faint standing figure on the stone.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "surfaces",
+      "angle": [
+        15,
+        60
+      ],
+      "patch": [
+        9,
+        13
+      ]
+    },
+    "task": "Zyra has a sharp name slip and an eroded model scene. The cover lamp and the side lamp can keep the two observations separate.",
+    "checks": [
+      "Light the model signature edge",
+      "Light along the worn patch"
+    ],
+    "notes": [
+      "The edge view preserves a clear index mark.",
+      "The side view shows the patch that hides part of the model figure."
+    ],
+    "choices": [
+      "Lead with the maker’s attribution in the Yard",
+      "Send the worn-scene comparison to the channel"
+    ],
+    "responses": [
+      "A reader can locate Gnaios, the inscribed name. The possible model stays on the side note.",
+      "The lower viewer sees where wear affects seeing the figure and where the signature was read."
+    ],
+    "returnAction": "Set the worn area beside the signature on different tabs",
+    "returnEffect": "The corrected shelf distinguishes the named gem carver, the damaged surface and the possible older model."
+  },
+  {
+    "slug": "chokwe-comb-teeth",
+    "title": "Space between the comb teeth",
+    "object": {
+      "key": "cma:1915.453",
+      "accession": "1915.453",
+      "institution": "Cleveland Museum of Art",
+      "title": "Comb (cisakulo)",
+      "date": "mid- to late 1800s",
+      "medium": "Wood, glass beads, and natural fibers",
+      "dimensions": "Overall: 13.3 x 8 x 1.4 cm (5 1/4 x 3 1/8 x 9/16 in.)",
+      "url": "https://clevelandart.org/art/1915.453",
+      "asset": "specimens/water-store-cma-1915.453.jpg",
+      "origin": "Angola or Democratic Republic of the Congo",
+      "identity": "Unidentified Chokwe-style maker",
+      "observation": "The Cleveland record lists wood, glass beads and natural fibres. Its account says the wide teeth helped hold elements of a hairstyle.",
+      "limit": "The broad association with hairstyles and gifting leaves this comb’s first owner open.",
+      "alt": "Dark elongated comb with a row of wooden teeth and curved decoration at the top.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "surfaces",
+      "angle": [
+        25,
+        75
+      ],
+      "patch": [
+        9,
+        12
+      ]
+    },
+    "task": "The daylight swatch reveals the opening between two plain teeth. Raking light helps a visitor follow a separate join across a mock thread.",
+    "checks": [
+      "Light the gap between the sample teeth",
+      "Light along the mock join at the top"
+    ],
+    "notes": [
+      "Space between wide parts is clear from the first view.",
+      "The raking model distinguishes the raised bead support."
+    ],
+    "choices": [
+      "Set the open tooth profile out for the Yard",
+      "Keep the tooth and join alongside the protective channel sleeve"
+    ],
+    "responses": [
+      "A Yard handler follows the spacing and can turn to a bead-and-fibre reference separately.",
+      "The sleeve holds both aspects without requiring a visitor to touch the fragile top."
+    ],
+    "returnAction": "Fit a spacing tab below the ornament line",
+    "returnEffect": "A reader can check tooth spacing independently from the ornament reference."
+  },
+  {
+    "slug": "luba-wire-comb",
+    "title": "Wire against wood",
+    "object": {
+      "key": "cma:1915.452",
+      "accession": "1915.452",
+      "institution": "Cleveland Museum of Art",
+      "title": "Comb",
+      "date": "c. 1900s?",
+      "medium": "Wood and wire",
+      "dimensions": "Overall: 4.5 cm (1 3/4 in.)",
+      "url": "https://clevelandart.org/art/1915.452",
+      "asset": "specimens/water-store-cma-1915.452.jpg",
+      "origin": "Democratic Republic of the Congo",
+      "identity": "Unidentified Luba-style maker",
+      "observation": "The Cleveland record lists wood and wire for this small comb and gives an approximate date.",
+      "limit": "The materials are catalogued. Their arrangement and former user remain open in the brief record.",
+      "alt": "Small dark comb with a row of long teeth and a narrow handle above.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "surfaces",
+      "angle": [
+        35,
+        75
+      ],
+      "patch": [
+        8,
+        11
+      ]
+    },
+    "task": "A single bright light makes every line look the same. Zyra can move the two mock materials into another angle before the label leaves.",
+    "checks": [
+      "Light the practice wood edge",
+      "Light the mock wire surface"
+    ],
+    "notes": [
+      "The first view describes the broad contact edge.",
+      "The second catches the wire strip in the practice panel."
+    ],
+    "choices": [
+      "Give the Yard a first-view material list",
+      "Give the channel a deeper material check with a wire tab"
+    ],
+    "responses": [
+      "The first label keeps wood and wire on separate listed lines.",
+      "A lower reader uses the practice tab to find a wire-type edge, then checks the catalogue’s modest claims."
+    ],
+    "returnAction": "Clip a wire label beside the wood title",
+    "returnEffect": "A viewer can locate the exact two named materials and keep the rest of the construction question open."
+  },
+  {
+    "slug": "tunisian-tile",
+    "title": "A glaze line above the body",
+    "object": {
+      "key": "met:23.67.1",
+      "accession": "23.67.1",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Tile",
+      "date": "14th–15th century",
+      "medium": "Stonepaste; glazed",
+      "dimensions": "Ht. 4 1/8 in. (10.4 cm) W. 4 (10.1 cm) D. 7/8 in. (2.2 cm)",
+      "url": "https://www.metmuseum.org/art/collection/search/447629",
+      "asset": "specimens/water-store-met-23.67.1.jpg",
+      "origin": "Attributed to Tunisia",
+      "identity": "Unidentified maker of the glazed tile",
+      "observation": "The Met lists stonepaste and glaze for this tile and gives a depth of 2.2 centimetres.",
+      "limit": "The measured depth belongs to the tile as a whole. It does not give the thickness of the glaze or identify an original wall.",
+      "alt": "Square tile with worn blue, orange and pale lines across its face.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "surfaces",
+      "angle": [
+        10,
+        65
+      ],
+      "patch": [
+        10,
+        13
+      ]
+    },
+    "task": "One view catches the coloured pattern. Another catches the edge where the glazed model swatch ends.",
+    "checks": [
+      "Light the face of the plain colour tile",
+      "Light along the mock tile edge"
+    ],
+    "notes": [
+      "The colour-facing model shows a broader field.",
+      "The edge illumination brings out the fictional boundary strip."
+    ],
+    "choices": [
+      "Keep the face and the material line at the Yard",
+      "Send the model side view to the Lower Channel"
+    ],
+    "responses": [
+      "The Yard visitor can find the colour view and the catalogue name for the body material.",
+      "The lower keeper shows where to measure the complete cross section and keeps the glaze as a separate field."
+    ],
+    "returnAction": "Move the depth check from the glaze tab to the tile edge",
+    "returnEffect": "The shelf records the full depth without presenting that figure as the glaze thickness."
+  },
+  {
+    "slug": "algerian-scarf",
+    "title": "Stitches above a plain weave",
+    "object": {
+      "key": "met:09.50.2779",
+      "accession": "09.50.2779",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Scarf",
+      "date": "19th century",
+      "medium": "Linen, silk; plain weave, embroidered",
+      "dimensions": "H. 17 3/4 in. (45.1 cm) W. 34 in. (86.4 cm)",
+      "url": "https://www.metmuseum.org/art/collection/search/445947",
+      "asset": "specimens/water-store-met-09.50.2779.jpg",
+      "origin": "Attributed to Algeria",
+      "identity": "Unidentified scarf weaver and embroiderer",
+      "observation": "The Met identifies this scarf as linen and silk, with plain weaving and embroidery.",
+      "limit": "The record distinguishes the surface techniques. The everyday setting and maker of this particular scarf are open.",
+      "alt": "A rectangular scarf with a pale centre and a darker decorative border.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "surfaces",
+      "angle": [
+        20,
+        55
+      ],
+      "patch": [
+        7,
+        12
+      ]
+    },
+    "task": "A faced lamp gives Zyra a view of the plain swatch. A shallow lamp makes the model stitches across its border clearer.",
+    "checks": [
+      "Light the plain weave sample",
+      "Turn the lamp along the mock stitch"
+    ],
+    "notes": [
+      "The background thread line remains clear.",
+      "The mock stitches cast a longer model edge."
+    ],
+    "choices": [
+      "Keep the woven background first at the Yard",
+      "Leave the raised embroidery view with the channel handler"
+    ],
+    "responses": [
+      "A Yard reader can name the two techniques while seeing where the plain base is set.",
+      "A channel reader can hold one strip up to the light and then look up the materials in the catalogue."
+    ],
+    "returnAction": "Clip the embroidery reference above the separate backing strip",
+    "returnEffect": "The shelf now gives a reader two contact points and preserves the catalogue’s separate technique lines."
+  },
+  {
+    "slug": "akan-saawa",
+    "title": "A shallow spoon with incised lines",
+    "object": {
+      "key": "nmafa:2010-10-30",
+      "accession": "2010-10-30",
+      "institution": "Smithsonian National Museum of African Art",
+      "title": "Spoon",
+      "date": "Late 18th century",
+      "medium": "Copper alloy",
+      "dimensions": "H x W x D: 10.5 x 3.6 x 0.7 cm (4 1/8 x 1 7/16 x 1/4 in.)",
+      "url": "https://collections.si.edu/search/detail/edanmdm:nmafa_2010-10-30",
+      "asset": "specimens/water-store-nmafa-2010-10-30.jpg",
+      "origin": "Ghana",
+      "identity": "Unidentified Akan artist",
+      "observation": "The Smithsonian describes a copper-alloy saawa with concentric incisions in its bowl. The account explains that this type of spoon transferred gold dust to a scale.",
+      "limit": "The record describes a tool’s use. It gives no amount for this object or record of one of its transactions.",
+      "alt": "Dark metal spoon with a rounded shallow bowl and a short wide blade-shaped handle.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "surfaces",
+      "angle": [
+        20,
+        70
+      ],
+      "patch": [
+        8,
+        14
+      ]
+    },
+    "task": "One light shows the bowl edge. A lower light reveals a mark within a plain curved model.",
+    "checks": [
+      "Light the shallow bowl plane",
+      "Tip the lamp toward the incised mock line"
+    ],
+    "notes": [
+      "The visible bowl edge lets the reader see which part would carry a load.",
+      "The second ray makes the inside model line easier to follow."
+    ],
+    "choices": [
+      "Show the scoop profile with the scale reference in the Yard",
+      "Send the incised line and a transfer note to the channel"
+    ],
+    "responses": [
+      "A first visitor can identify the bowl and follow the note to the scale reference.",
+      "The lower reader sees the model mark and finds the independent evidence for what the spoon moved."
+    ],
+    "returnAction": "Split the scoop profile from the transaction line",
+    "returnEffect": "The new shelf note cites the described tool use and leaves the actual amount in any exchange open."
+  },
+  {
+    "slug": "middle-niger-bronze",
+    "title": "The apparent colour and the material label",
+    "object": {
+      "key": "met:1983.143",
+      "accession": "1983.143",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Bracelet",
+      "date": "15th–19th century",
+      "medium": "Bronze",
+      "dimensions": "Diam. 3 1/8 in. (7.9 cm)",
+      "url": "https://www.metmuseum.org/art/collection/search/314602",
+      "asset": "specimens/water-store-met-1983.143.jpg",
+      "origin": "Inland Niger Delta region, Mali",
+      "identity": "Middle Niger catalogue attribution",
+      "observation": "The Met records bronze for this Middle Niger bracelet and gives its diameter as 7.9 centimetres.",
+      "limit": "The visible colour is an observation about the image. The material identification comes from the catalogue.",
+      "alt": "A small green circular bracelet against a grey background.",
+      "dateKind": "Catalogue dating of the object"
+    },
+    "fixture": {
+      "kind": "surfaces",
+      "angle": [
+        30,
+        65
+      ],
+      "patch": [
+        11,
+        9
+      ]
+    },
+    "task": "Zyra’s two views make the practice ring appear in different colours. What can she send before somebody mistakes the view for a material analysis?",
+    "checks": [
+      "Light the broad practice ring",
+      "Set the lamp at a glancing angle"
+    ],
+    "notes": [
+      "The first ray shows a more continuous model strip.",
+      "The glancing light changes the length seen even though the fictional substrate stays fixed."
+    ],
+    "choices": [
+      "Keep the diameter line and the catalogue’s bronze label in the Yard",
+      "Send two lighting views to the channel with one cited material line"
+    ],
+    "responses": [
+      "The open viewer uses the diameter to identify the case, then reads bronze from the museum entry.",
+      "The lower holder sees why a change of lamp can alter the view while the source’s material description stays the same."
+    ],
+    "returnAction": "Fit a separate material tab below the view swatches",
+    "returnEffect": "The Canal reader sees a photo observation and one catalogue interpretation on their own printed strips."
+  }
+]

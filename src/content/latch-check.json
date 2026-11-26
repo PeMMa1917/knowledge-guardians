@@ -1,0 +1,1134 @@
+{
+ "dialogue": [
+  {
+   "id": "latch.metal.reference",
+   "speaker": "metal-inspector",
+   "text": "This lamp answers the request on the peg. The tally takes its mark from that lamp. Leave the same request in place. Slide the small practice shutter to each of its own stops and look through the stand’s sight slot after each move.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Slide the model shutter to its known open stop.",
+     "next": "latch.metal.reference.open",
+     "if": {
+      "all": [
+       {
+        "flag": "latch.metal.draft",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "latch.metal.seen.open",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.metal.reference",
+       "value": "open"
+      }
+     ]
+    },
+    {
+     "text": "Slide the model shutter to its known closed stop.",
+     "next": "latch.metal.reference.closed",
+     "if": {
+      "all": [
+       {
+        "flag": "latch.metal.draft",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "latch.metal.seen.closed",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.metal.reference",
+       "value": "closed"
+      }
+     ]
+    },
+    {
+     "text": "Leave the model ready for a later check."
+    }
+   ]
+  },
+  {
+   "id": "latch.metal.reference.open",
+   "speaker": "narrator",
+   "text": "The small shutter reaches the open stop. The OPEN request stays on its peg. Walk to the model’s sight slot to see the lamp beside the gap.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.metal.reference.closed",
+   "speaker": "narrator",
+   "text": "The small shutter touches the closed stop. The OPEN request stays on its peg. Look at the lamp and tally from the sight slot at this stop too.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.water.reference",
+   "speaker": "water-keeper",
+   "text": "Our flag drops when the desk requests CLOSED. The tick sheet copies that flag. Hold the request where it is for both tests. Put the model against each stop and check whether the sheet follows the service bar.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Slide the model shutter to its known open stop.",
+     "next": "latch.water.reference.open",
+     "if": {
+      "all": [
+       {
+        "flagSet": "latch.water.source"
+       },
+       {
+        "not": {
+         "flag": "latch.water.seen.open",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.water.reference",
+       "value": "open"
+      }
+     ]
+    },
+    {
+     "text": "Slide the model shutter to its known closed stop.",
+     "next": "latch.water.reference.closed",
+     "if": {
+      "all": [
+       {
+        "flagSet": "latch.water.source"
+       },
+       {
+        "not": {
+         "flag": "latch.water.seen.closed",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.water.reference",
+       "value": "closed"
+      }
+     ]
+    },
+    {
+     "text": "Leave the model ready for a later check."
+    }
+   ]
+  },
+  {
+   "id": "latch.water.reference.open",
+   "speaker": "narrator",
+   "text": "The practice bar rests in a wide gap. The CLOSED request stays in its clip. Read the known open stop beside the lower flag.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.water.reference.closed",
+   "speaker": "narrator",
+   "text": "The practice bar covers the gap. The CLOSED request stays in its clip. Read the known closed stop beside the same flag.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.metal.sill",
+   "speaker": "metal-inspector",
+   "text": "You can see the cart shutter’s own latch through this grille. The glazed lamp is farther back by the request board. Corra holds the practice cart inside the taped line.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Check the latch at the sight mark and clip what you see beside the request.",
+     "next": "latch.metal.sill.checked",
+     "if": {
+      "all": [
+       {
+        "objective": "latch.metal.references"
+       },
+       {
+        "not": {
+         "flag": "latch.metal.sighting",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.metal.sighting",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Step back from the grille."
+    }
+   ]
+  },
+  {
+   "id": "latch.metal.sill.checked",
+   "speaker": "narrator",
+   "text": "The latch lies across the notch and the cart shutter stays closed. Your line began here at the grille. Leave it next to the lamp’s OPEN request on the run board.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.water.sill",
+   "speaker": "water-keeper",
+   "text": "The white sight mark shows the live service bar through its opening. The flag hangs behind you. A temporary rail keeps the queue on this side while you look.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Check the latch at the sight mark and clip what you see beside the request.",
+     "next": "latch.water.sill.checked",
+     "if": {
+      "all": [
+       {
+        "objective": "latch.water.references"
+       },
+       {
+        "not": {
+         "flag": "latch.water.sighting",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.water.sighting",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Step back from the grille."
+    }
+   ]
+  },
+  {
+   "id": "latch.water.sill.checked",
+   "speaker": "narrator",
+   "text": "The latch sits against its open stop. The desk sheet still says CLOSED because the flag followed the old request. Put your sighting on its own line before opening a service route.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.water.start",
+   "speaker": "water-keeper",
+   "text": "The lowered flag reaches the desk before a watcher can get to the dry lane. Give the new local check its own line. The two-line strip can keep each reading with its own place.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Unfold Corra’s strip and clip it beside the dry lane’s new lines.",
+     "next": "latch.water.carried",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "latch.water.draft",
+          "eq": true
+         },
+         {
+          "not": {
+           "flagSet": "latch.water.source"
+          }
+         }
+        ]
+       },
+       {
+        "item": "item.latch-reference-strip"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.water.source",
+       "value": "carry"
+      }
+     ]
+    },
+    {
+     "text": "Take a fresh two-line slip from Omi’s tray.",
+     "next": "latch.water.local",
+     "if": {
+      "all": [
+       {
+        "flag": "latch.water.draft",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "latch.water.source"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.water.source",
+       "value": "local"
+      }
+     ]
+    },
+    {
+     "text": "Leave both slips at the bench."
+    }
+   ]
+  },
+  {
+   "id": "latch.water.carried",
+   "speaker": "water-keeper",
+   "text": "Corra signed beside the shutter she could see. Leave her reading under the Metalworks heading. Use the two fresh lines at our practice stand.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.water.local",
+   "speaker": "water-keeper",
+   "text": "Put one clip by the requested position and another by the view at the actual latch. Try our practice stand before going up to the sight mark.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.metal.plan",
+   "speaker": "metal-inspector",
+   "text": "The short opening will take the crate if I stand there and call what the latch is doing. Someone will wait at the sample bench while I’m here. The round lane takes a small parcel with its own rail mark, and I can stay at my bench. The crate will wait if we send it that way.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set the short lane for a direct crate handover with Corra at the latch.",
+     "next": "latch.metal.plan.direct",
+     "if": {
+      "all": [
+       {
+        "objective": "latch.metal.observed"
+       },
+       {
+        "not": {
+         "flagSet": "latch.metal.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.metal.layout",
+       "value": "direct"
+      }
+     ]
+    },
+    {
+     "text": "Mark the round lane for parcels and keep the short lane held.",
+     "next": "latch.metal.plan.round",
+     "if": {
+      "all": [
+       {
+        "objective": "latch.metal.observed"
+       },
+       {
+        "not": {
+         "flagSet": "latch.metal.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.metal.layout",
+       "value": "round"
+      }
+     ]
+    },
+    {
+     "text": "Leave the rails held and come back later."
+    }
+   ]
+  },
+  {
+   "id": "latch.metal.plan.direct",
+   "speaker": "metal-inspector",
+   "text": "I can stand at the short rail for this run. I’ll open its access and check the latch here. Put the crate on the marked stop across the rail when I call.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.metal.direct",
+   "speaker": "narrator",
+   "text": "Corra gives a separate call from the side of the shutter. The crate stop stands clear across the short rail.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Move the practice crate onto the short lane’s marked stop.",
+     "next": "latch.metal.direct.checked",
+     "if": {
+      "all": [
+       {
+        "flag": "latch.metal.layout",
+        "eq": "direct"
+       },
+       {
+        "not": {
+         "flag": "latch.metal.served",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.metal.served",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the practice load where it is."
+    }
+   ]
+  },
+  {
+   "id": "latch.metal.direct.checked",
+   "speaker": "metal-inspector",
+   "text": "The crate is received under Corra’s sighting. A worker sets the spare two-line reference strip on the crate. Another lane can keep its own entries on that fold.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.metal.plan.round",
+   "speaker": "metal-inspector",
+   "text": "I’ll open the round rail for the parcel. The short rail stays held while I finish the bench work. Take the practice parcel to its shelf across the marked rail.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.metal.round",
+   "speaker": "narrator",
+   "text": "The parcel shelf sits just up from the round rail. The broad crate would still need the short lane and its own staffed check.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the small practice parcel on the round lane shelf.",
+     "next": "latch.metal.round.checked",
+     "if": {
+      "all": [
+       {
+        "flag": "latch.metal.layout",
+        "eq": "round"
+       },
+       {
+        "not": {
+         "flag": "latch.metal.served",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.metal.served",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the practice load where it is."
+    }
+   ]
+  },
+  {
+   "id": "latch.metal.round.checked",
+   "speaker": "metal-inspector",
+   "text": "The parcel arrives while Corra keeps the sample bench open. A worker slips the spare two-line reference strip into your hand for the next keeper.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.water.plan",
+   "speaker": "water-keeper",
+   "text": "The bar was open when you looked. We can lift the short lane’s temporary rail and keep a spotter at the latch for the broad tool tray. The marker crew must lend a hand for that. Their small tray can come by the raised bank without calling over a spotter. We can hold the short rail for later.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Send a spotter to the direct lane and stage the broad tray for their call.",
+     "next": "latch.water.plan.direct",
+     "if": {
+      "all": [
+       {
+        "objective": "latch.water.observed"
+       },
+       {
+        "not": {
+         "flagSet": "latch.water.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.water.layout",
+       "value": "direct"
+      }
+     ]
+    },
+    {
+     "text": "Put the small tray on the raised bank route and hold the direct rail.",
+     "next": "latch.water.plan.round",
+     "if": {
+      "all": [
+       {
+        "objective": "latch.water.observed"
+       },
+       {
+        "not": {
+         "flagSet": "latch.water.layout"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.water.layout",
+       "value": "round"
+      }
+     ]
+    },
+    {
+     "text": "Leave the rails held and come back later."
+    }
+   ]
+  },
+  {
+   "id": "latch.water.plan.direct",
+   "speaker": "water-keeper",
+   "text": "I’ll put one of our crew at the white mark. The rail is open for this handover once they see the latch. Walk to the broad tray stop on the north side.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.water.direct",
+   "speaker": "narrator",
+   "text": "The spotter has left the marker crew for this trip. At the white mark she calls the clear opening. The broad tray is within reach of the receiving stop.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Bring the broad tool tray to the receiving stop after the spotter’s call.",
+     "next": "latch.water.direct.checked",
+     "if": {
+      "all": [
+       {
+        "flag": "latch.water.layout",
+        "eq": "direct"
+       },
+       {
+        "not": {
+         "flag": "latch.water.served",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.water.served",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the practice load where it is."
+    }
+   ]
+  },
+  {
+   "id": "latch.water.direct.checked",
+   "speaker": "water-keeper",
+   "text": "The work party receives the broad tray on this run. The marker crew still have a hand out until the spotter returns to them.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.water.plan.round",
+   "speaker": "water-keeper",
+   "text": "I’ll clear the raised bank rail and leave the direct access held. The crew can stay on the markers. Follow the bank around to the little tray stop.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "latch.water.round",
+   "speaker": "narrator",
+   "text": "The raised bank reaches the little tray stop. The big tray is still at the hold line while the marker crew finish together.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set the small tool tray on the stop beside the raised bank.",
+     "next": "latch.water.round.checked",
+     "if": {
+      "all": [
+       {
+        "flag": "latch.water.layout",
+        "eq": "round"
+       },
+       {
+        "not": {
+         "flag": "latch.water.served",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "latch.water.served",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the practice load where it is."
+    }
+   ]
+  },
+  {
+   "id": "latch.water.round.checked",
+   "speaker": "water-keeper",
+   "text": "The work party can start with the small tray. The big tools wait on their own line for a staffed crossing.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH6-R11",
+   "world": "WORLD-07",
+   "title": "The Lamp’s Second Mark",
+   "knowledgeQuestion": "What can two matching signals tell us if one is copied from the other?",
+   "available": {
+    "flag": "latch.metal.arrived",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "latch.metal.references",
+     "title": "Look at both known model positions under the same request.",
+     "done": {
+      "all": [
+       {
+        "flag": "latch.metal.arrived",
+        "eq": true
+       },
+       {
+        "flag": "latch.metal.draft",
+        "eq": true
+       },
+       {
+        "flag": "latch.metal.seen.open",
+        "eq": true
+       },
+       {
+        "flag": "latch.metal.seen.closed",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "truth",
+       "certainty",
+       "evidence",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT"
+      ],
+      "subjects": [
+       "design-tech",
+       "physics"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-05"
+     ]
+    },
+    {
+     "id": "latch.metal.observed",
+     "title": "Inspect the actual latch and give the sighting its own line.",
+     "done": {
+      "all": [
+       {
+        "objective": "latch.metal.references"
+       },
+       {
+        "flag": "latch.metal.sighting",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "evidence",
+       "objectivity"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "design-tech"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-RSC-15"
+     ],
+     "visible": {
+      "objective": "latch.metal.references"
+     }
+    },
+    {
+     "id": "latch.metal.finish",
+     "title": "Bring the practice load across the arranged rail and check the receipt.",
+     "done": {
+      "all": [
+       {
+        "objective": "latch.metal.observed"
+       },
+       {
+        "flagSet": "latch.metal.layout"
+       },
+       {
+        "flag": "latch.metal.served",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "values",
+       "responsibility",
+       "justification",
+       "explanation"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "design-tech",
+       "global-politics"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "human",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-MED-04"
+     ],
+     "visible": {
+      "objective": "latch.metal.observed"
+     },
+     "onComplete": [
+      {
+       "giveItem": "item.latch-reference-strip"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH11-R06",
+   "world": "WORLD-12",
+   "title": "Room for the Next Cart",
+   "knowledgeQuestion": "When may a team act on a signal after someone has checked its source?",
+   "available": {
+    "flag": "latch.water.arrived",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "latch.water.references",
+     "title": "Look at both known model positions under the same request.",
+     "done": {
+      "all": [
+       {
+        "flag": "latch.water.arrived",
+        "eq": true
+       },
+       {
+        "flag": "latch.water.draft",
+        "eq": true
+       },
+       {
+        "flag": "latch.water.seen.open",
+        "eq": true
+       },
+       {
+        "flag": "latch.water.seen.closed",
+        "eq": true
+       },
+       {
+        "flagSet": "latch.water.source"
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "truth",
+       "certainty",
+       "evidence",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT"
+      ],
+      "subjects": [
+       "design-tech",
+       "physics"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-05"
+     ]
+    },
+    {
+     "id": "latch.water.observed",
+     "title": "Inspect the actual latch and give the sighting its own line.",
+     "done": {
+      "all": [
+       {
+        "objective": "latch.water.references"
+       },
+       {
+        "flag": "latch.water.sighting",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "evidence",
+       "objectivity"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "design-tech"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-RSC-15"
+     ],
+     "visible": {
+      "objective": "latch.water.references"
+     }
+    },
+    {
+     "id": "latch.water.finish",
+     "title": "Bring the tool tray by the chosen route and check who can work after it arrives.",
+     "done": {
+      "all": [
+       {
+        "objective": "latch.water.observed"
+       },
+       {
+        "flagSet": "latch.water.layout"
+       },
+       {
+        "flag": "latch.water.served",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "values",
+       "responsibility",
+       "justification",
+       "explanation"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "social",
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "design-tech",
+       "global-politics"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "human",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-MED-04"
+     ],
+     "visible": {
+      "objective": "latch.water.observed"
+     }
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.latch.metal.references.1",
+   "objective": "latch.metal.references",
+   "depth": 1,
+   "text": "Look for the practice shutter at the loading bay."
+  },
+  {
+   "id": "h.latch.metal.references.2",
+   "objective": "latch.metal.references",
+   "depth": 2,
+   "text": "Start with the request, the signal and its copied tally. Follow where each gets its mark."
+  },
+  {
+   "id": "h.latch.metal.references.3",
+   "objective": "latch.metal.references",
+   "depth": 3,
+   "text": "Keep one request in place. Try the model against the open stop and the closed stop."
+  },
+  {
+   "id": "h.latch.metal.references.4",
+   "objective": "latch.metal.references",
+   "depth": 4,
+   "text": "Visit the model’s sight slot after each move so you see both readings beside the known position."
+  },
+  {
+   "id": "h.latch.metal.observed.1",
+   "objective": "latch.metal.observed",
+   "depth": 1,
+   "text": "The two model positions show how the copied signal can miss a change."
+  },
+  {
+   "id": "h.latch.metal.observed.2",
+   "objective": "latch.metal.observed",
+   "depth": 2,
+   "text": "Find the marked place where you can see the live latch."
+  },
+  {
+   "id": "h.latch.metal.observed.3",
+   "objective": "latch.metal.observed",
+   "depth": 3,
+   "text": "Look at the latch through its own gap while the crew stays behind the rail."
+  },
+  {
+   "id": "h.latch.metal.observed.4",
+   "objective": "latch.metal.observed",
+   "depth": 4,
+   "text": "Clip your sighting beside the request on its own line, so others can trace how each reading was made."
+  },
+  {
+   "id": "h.latch.metal.finish.1",
+   "objective": "latch.metal.finish",
+   "depth": 1,
+   "text": "People have different work waiting on each side."
+  },
+  {
+   "id": "h.latch.metal.finish.2",
+   "objective": "latch.metal.finish",
+   "depth": 2,
+   "text": "Read the board for the staffed short crossing and the smaller load on the longer route."
+  },
+  {
+   "id": "h.latch.metal.finish.3",
+   "objective": "latch.metal.finish",
+   "depth": 3,
+   "text": "Open the route whose cost the crew can accept. The other rail remains held."
+  },
+  {
+   "id": "h.latch.metal.finish.4",
+   "objective": "latch.metal.finish",
+   "depth": 4,
+   "text": "Go through your open rail and place the practice load on its matching marked stop."
+  },
+  {
+   "id": "h.latch.water.references.1",
+   "objective": "latch.water.references",
+   "depth": 1,
+   "text": "Look for the practice shutter at the dry lane."
+  },
+  {
+   "id": "h.latch.water.references.2",
+   "objective": "latch.water.references",
+   "depth": 2,
+   "text": "Start with the request, the signal and its copied tally. Follow where each gets its mark."
+  },
+  {
+   "id": "h.latch.water.references.3",
+   "objective": "latch.water.references",
+   "depth": 3,
+   "text": "Keep one request in place. Try the model against the open stop and the closed stop."
+  },
+  {
+   "id": "h.latch.water.references.4",
+   "objective": "latch.water.references",
+   "depth": 4,
+   "text": "Visit the model’s sight slot after each move so you see both readings beside the known position."
+  },
+  {
+   "id": "h.latch.water.observed.1",
+   "objective": "latch.water.observed",
+   "depth": 1,
+   "text": "The two model positions show how the copied signal can miss a change."
+  },
+  {
+   "id": "h.latch.water.observed.2",
+   "objective": "latch.water.observed",
+   "depth": 2,
+   "text": "Find the marked place where you can see the live latch."
+  },
+  {
+   "id": "h.latch.water.observed.3",
+   "objective": "latch.water.observed",
+   "depth": 3,
+   "text": "Look at the latch through its own gap while the crew stays behind the rail."
+  },
+  {
+   "id": "h.latch.water.observed.4",
+   "objective": "latch.water.observed",
+   "depth": 4,
+   "text": "Clip your sighting beside the request on its own line, so others can trace how each reading was made."
+  },
+  {
+   "id": "h.latch.water.finish.1",
+   "objective": "latch.water.finish",
+   "depth": 1,
+   "text": "People have different work waiting on each side."
+  },
+  {
+   "id": "h.latch.water.finish.2",
+   "objective": "latch.water.finish",
+   "depth": 2,
+   "text": "Read the board for the staffed short crossing and the smaller load on the longer route."
+  },
+  {
+   "id": "h.latch.water.finish.3",
+   "objective": "latch.water.finish",
+   "depth": 3,
+   "text": "Open the route whose cost the crew can accept. The other rail remains held."
+  },
+  {
+   "id": "h.latch.water.finish.4",
+   "objective": "latch.water.finish",
+   "depth": 4,
+   "text": "Go through your open rail and place the practice load on its matching marked stop."
+  }
+ ],
+ "items": [
+  {
+   "id": "item.latch-reference-strip",
+   "name": "Corra’s reference strip",
+   "historicalLabel": "fictional-world",
+   "art": "icon.letter",
+   "description": "Corra’s lamp request and her sighting of the latch have separate lines. Omi left space on the fold for two fresh readings at the dry service lane."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.latch.water",
+   "attribute": "principled",
+   "when": {
+    "objective": "latch.water.finish"
+   },
+   "did": "You made the two records traceable and chose how someone could pass the rail on a checked route.",
+   "prompt": "When someone sees that same signal later, what can they still check for themselves?"
+  }
+ ]
+}

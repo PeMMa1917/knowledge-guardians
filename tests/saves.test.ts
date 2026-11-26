@@ -7,6 +7,7 @@ import {
   type SaveEntry,
 } from '../src/domain/saves';
 import type { CampaignState } from '../src/domain/types';
+import { CAMPAIGN_SCHEMA } from '../src/domain/types';
 
 const pack = buildPack();
 const base = () => newCampaign(pack, 'Tester', 'player-a', 42);
@@ -131,7 +132,7 @@ describe('storage, checksum and migration', () => {
     expect(r.ok).toBe(true);
     if (r.ok) {
       const st: any = r.pair.continue!.state;
-      expect(st.schema).toBe(4);
+      expect(st.schema).toBe(CAMPAIGN_SCHEMA);
       expect(st.board).toBeUndefined();
       expect(st.showdown).toBeNull();
       expect(st.forge.route).toBe('none');
@@ -144,7 +145,7 @@ describe('storage, checksum and migration', () => {
     expect(r.ok).toBe(true);
     if (r.ok) {
       const st: any = r.pair.continue!.state;
-      expect(st.schema).toBe(4);
+      expect(st.schema).toBe(CAMPAIGN_SCHEMA);
       expect(st.player).toEqual({ name: 'Ana', look: 'player-a', pronouns: { subject: 'they', object: 'them', possessive: 'their' }, origin: null });
     }
   });

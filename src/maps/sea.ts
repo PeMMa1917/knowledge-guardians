@@ -1,5 +1,12 @@
 /** Fictional island charts, drawn for the Seagrass Steps and Shoal Shelf surveys. */
 import type { Condition } from '../domain/types';
+import { SEA_DATE_PEG_DOOR, SEA_DATE_PEG_READERS, SEA_DATE_PEG_RECEIVERS } from './datePeg';
+import { SEA_DATE_REGISTER_PROPS, SEA_DATE_REGISTER_READERS } from './dateRegister';
+import { SEA_CALLBOARD_RETURNS } from './civicCallboard';
+import { SEA_PAPER_LANDING } from './paperLanding';
+import { SHOAL_PROOF_DOOR, SHOAL_PROOF_LOWER, SHOAL_PROOF_READERS, SHOAL_PROOF_UPPER } from './specimenPassage';
+import { SEA_RELAY_CHART_RECEIVER, SEA_RELAY_ENTRANCE, SEA_RELAY_HARBOUR_RECEIVER } from './specimenRelay';
+import { TURNING_DOOR, TURNING_READERS } from './turningTable';
 import type { Interactable, MapDef } from './types';
 
 function crossing(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'sea.waypost'): Interactable {
@@ -31,7 +38,7 @@ export const SEA_HARBOUR: MapDef = {
   width: harbourWidth, height: harbourHeight, music: 'music.town', ambience: 'town',
   background: 0x28566c, floor: harbourFloor,
   spawn: { x: 12, y: 12 }, blocks: [], zones: [],
-  npcs: [{ id: 'sea-harbourkeeper', x: 14, y: 8, facing: 'down' }],
+  npcs: [{ id: 'sea-harbourkeeper', x: 14, y: 8, facing: 'down' }, ...SEA_DATE_PEG_READERS, ...SEA_DATE_REGISTER_READERS],
   stamps: [
     { stamp: 'house-b', x: 2, y: 1 }, { stamp: 'house-a', x: 11, y: 1 },
     { stamp: 'tower', x: 20, y: 0 }, { stamp: 'stall', x: 20, y: 5 },
@@ -41,6 +48,10 @@ export const SEA_HARBOUR: MapDef = {
     { stamp: 'flowers-small', x: 8, y: 3 }, { stamp: 'flowers-white', x: 24, y: 3 },
   ],
   interactables: [
+    ...SEA_PAPER_LANDING,
+    SEA_RELAY_HARBOUR_RECEIVER,
+    ...SEA_DATE_PEG_RECEIVERS,
+    ...SEA_DATE_REGISTER_PROPS,
     { id: 'cross-drowned-bell', kind: 'fieldgame', game: 'cross-drowned-bell', x: 8, y: 8, w: 1, h: 1, label: 'the old pier where the bell is said to ring (a crossing)', art: 'sea.margin' },
     crossing('sea-chartroom-path', 7, 4, 'the path to Lantern House', { map: 'sea.chartroom', x: 12, y: 12 }),
     crossing('sea-shoal-path', 24, 12, 'the skiff to Shoal Shelf', { map: 'sea.shoal', x: 6, y: 12 }, 'sea.skiff'),
@@ -82,6 +93,21 @@ export const SEA_HARBOUR: MapDef = {
     chartNote('sea-symbol-key-skiff', 23, 10, 'the Lantern House key at the skiff', 'sea.shoal-chart',
       'Find the pair of lights at Lantern House. On shore copies the same landing has the stepped roof mark. Keep the house name with either mark when you pass on the copy.',
       { visibleIf: { flag: 'sea.symbol.mount', eq: 'skiff' } }),
+    chartNote('sea-name-step', 22, 12, 'the carrier’s mark at Salt Step', 'sea.waypost',
+      'Salt Step is this ledge where the rail ends. A carrier drops a crate on the marked shelf. The crew can move the skiff elsewhere after loading.',
+      { flag: 'sea.name.step', visibleIf: { not: { flag: 'sea.name.readback', eq: true } } }),
+    chartNote('sea-name-load', 22, 12, 'the next carrier at Salt Step', 'sea.margin',
+      'The next carrier followed the new key to this ledge. They left the crate on the shelf while a crew member retied Glint. The new line stays with the step until the next loading schedule.',
+      { flag: 'sea.name.loaded', visibleIf: { flag: 'sea.name.readback', eq: true } }),
+    { id: 'sea-name-publish', kind: 'scene', node: 'sea.name.publish', x: 15, y: 9, w: 1, h: 1, walkThrough: true,
+      label: 'Sora’s holder for the new loading key', art: 'sea.margin',
+      visibleIf: { all: [{ objective: 'sea.name.joined' }, { not: { flagSet: 'sea.name.layout' } }] } },
+    chartNote('sea-name-rail', 15, 9, 'the complete key on Market Rail', 'sea.shore-chart',
+      'Glint is the vessel. Salt Step is the ledge straight along the rail. Leave the next load on the shelf there. Lantern House keeps the source for each name.',
+      { flag: 'sea.name.readback', visibleIf: { flag: 'sea.name.layout', eq: 'rail' } }),
+    chartNote('sea-name-skiff', 24, 10, 'the Salt Step strip by the skiff', 'sea.shoal-chart',
+      'Follow the rail to the ledge at Salt Step and leave the crate on the shelf. The name line for Glint and the museum record stay in Lantern House.',
+      { flag: 'sea.name.readback', visibleIf: { flag: 'sea.name.layout', eq: 'skiff' } }),
   ],
   lights: [
     { x: 7, y: 6, r: 57, color: 0xf5ce98 }, { x: 14, y: 8, r: 62, color: 0xf6d8a8 },
@@ -115,8 +141,19 @@ export const SEA_CHARTROOM: MapDef = {
     { stamp: 'rug-green', x: 11, y: 9 },
   ],
   interactables: [
+    SEA_DATE_PEG_DOOR,
+    ...SEA_CALLBOARD_RETURNS,
+    SEA_RELAY_ENTRANCE, SEA_RELAY_CHART_RECEIVER, TURNING_DOOR, ...TURNING_READERS,
     crossing('sea-chartroom-return', 12, 15, 'the path back to Seagrass Steps', { map: 'sea.harbour', x: 7, y: 6 }),
     crossing('sea-chartroom-to-shoal', 24, 8, 'the lower skiff stair to Shoal Shelf', { map: 'sea.shoal', x: 6, y: 8 }, 'sea.skiff'),
+    { id: 'sea-name-canoe', kind: 'exhibit', exhibit: 'OBJ-SEA-RRA-00001826', x: 9, y: 5, w: 1, h: 1, walkThrough: true,
+      label: 'the museum record for Rra-Kalwanyimara', art: 'sea.dugout-diagram' },
+    { id: 'sea-name-desk', kind: 'scene', node: 'sea.name.join', x: 13, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the boat token and the fixed step', art: 'sea.margin',
+      visibleIf: { all: [{ objective: 'sea.name.sources' }, { not: { objective: 'sea.name.joined' } }] } },
+    chartNote('sea-name-lines', 13, 8, 'the name and the direction on two rails', 'sea.margin',
+      'The left shelf names the museum canoe and its makers. The right chart tracks Glint as a moveable token beside the fixed ledge at Salt Step. The two records have their own context.',
+      { visibleIf: { objective: 'sea.name.joined' } }),
     chartNote('sea-routebook', 8, 7, 'the local route book', 'ledger',
       'Market carriers use the Seagrass Steps and the rail beside the stalls. The boat crew uses Lantern House as a sight point. Local keepers call the marked shelf Shoal Shelf. A named place guides talk about a route. Each crew still checked a different patch.',
       { flag: 'sea.routebook' }),
@@ -139,6 +176,14 @@ export const SEA_CHARTROOM: MapDef = {
 
 const shoalWidth = 29;
 const shoalHeight = 18;
+const rimPointed: Condition = { flag: 'sea.frog.rim.pointed', eq: true };
+const rimChecked: Condition = { flag: 'sea.frog.rim.checked', eq: true };
+const staffChecked: Condition = { flag: 'sea.frog.staff.checked', eq: true };
+
+function seepProp(id: string, x: number, y: number, label: string, art: string, node: string,
+  after?: Interactable['artOpen'], visibleIf: Condition = { objective: 'sea.arrival' }): Interactable {
+  return { id, kind: 'scene', x, y, w: 1, h: 1, label, art, node, walkThrough: true, artOpen: after, visibleIf };
+}
 
 function shoalFloor(x: number, y: number): string | null {
   if (x < 0 || y < 0 || x >= shoalWidth || y >= shoalHeight) return null;
@@ -154,7 +199,8 @@ export const SEA_SHOAL: MapDef = {
   id: 'sea.shoal', name: 'Cartographers’ Sea: Shoal Shelf', world: 'WORLD-09',
   width: shoalWidth, height: shoalHeight, music: 'music.town', ambience: 'town',
   background: 0x356878, floor: shoalFloor,
-  spawn: { x: 6, y: 12 }, blocks: [], zones: [], npcs: [],
+  spawn: { x: 6, y: 12 }, blocks: [], npcs: SHOAL_PROOF_READERS,
+  zones: [{ id: 'sea-frog-low-planks', x: 10, y: 12, w: 3, h: 2, if: staffChecked }],
   stamps: [
     { stamp: 'crates', x: 2, y: 4 }, { stamp: 'barrel', x: 7, y: 5 },
     { stamp: 'bush', x: 8, y: 10 }, { stamp: 'tree', x: 4, y: 3 }, { stamp: 'tree', x: 6, y: 13 },
@@ -163,12 +209,31 @@ export const SEA_SHOAL: MapDef = {
     { stamp: 'flowers-white', x: 9, y: 7 }, { stamp: 'flowers-small', x: 23, y: 7 },
   ],
   interactables: [
+    SHOAL_PROOF_DOOR, SHOAL_PROOF_LOWER, SHOAL_PROOF_UPPER,
+    seepProp('sea-frog-rim-check', 8, 6, 'the freshwater rim above the reed hollow',
+      'stiltfrog.rim-hidden', 'sea.frog.rim', { key: 'stiltfrog.rim', if: rimPointed }),
+    seepProp('sea-frog-staff', 8, 14, 'Sora’s fixed staff by the south planks',
+      'stiltfrog.tide-staff', 'sea.frog.staff', { key: 'stiltfrog.staff-checked', if: staffChecked }),
+    { ...crossing('sea-frog-rim-cross', 9, 5, 'the marked dry rim above the reeds',
+      { map: 'sea.shoal', x: 14, y: 5 }, 'stiltfrog.rim'), walkThrough: true, visibleIf: rimPointed, openIf: rimChecked,
+      text: 'The frog showed this rim from its height. Use the keeper’s rod to check both seats before crossing.',
+      flag: 'sea.frog.rim.crossed' },
+    { ...crossing('sea-frog-rim-back', 14, 4, 'the dry rim back to the west bank',
+      { map: 'sea.shoal', x: 8, y: 5 }, 'stiltfrog.rim'), walkThrough: true, visibleIf: rimChecked },
+    seepProp('sea-frog-upper', 17, 5, 'the single-person view above the reed lip',
+      'stiltfrog.window-high', 'sea.frog.watch.upper',
+      { key: 'stiltfrog.sight-upper', if: { flag: 'sea.frog.read.upper', eq: true } }, { flag: 'sea.frog.rim.crossed', eq: true }),
+    seepProp('sea-frog-lower', 18, 13, 'the two-person view at the low shoulder',
+      'stiltfrog.window-low', 'sea.frog.watch.lower', { key: 'stiltfrog.sight-lower', if: { flag: 'sea.frog.read.lower', eq: true } }),
     crossing('sea-shoal-return', 4, 12, 'the skiff back to Seagrass Steps', { map: 'sea.harbour', x: 23, y: 12 }, 'sea.skiff'),
     crossing('sea-shoal-to-chartroom', 5, 6, 'the skiff to the Lantern House stair', { map: 'sea.chartroom', x: 23, y: 8 }, 'sea.skiff'),
     { id: 'sea-chart-shoal', kind: 'sea-chart', node: 'shoal', x: 16, y: 8, w: 1, h: 1,
       label: 'the Shoal Shelf survey chart', art: 'sea.shoal-chart' },
     chartNote('sea-shoal-directory', 8, 12, 'the Shoal Shelf crossings sign', 'sea.waypost',
       'Shoal Shelf. Both plank crossings lead to the survey board. The south skiff goes to Seagrass Steps. The north skiff reaches Lantern House.'),
+    chartNote('sea-name-crew', 18, 8, 'the crew’s movable Glint marker', 'sea.skiff',
+      'Glint is painted inside our skiff. I take its token when we change moorings. The crew leaves Salt Step on the load sheet so another porter knows where to set down. —Deck hand',
+      { flag: 'sea.name.crew' }),
   ],
   lights: [
     { x: 4, y: 12, r: 63, color: 0xf3d8a5 }, { x: 12, y: 9, r: 66, color: 0xa5d6df },

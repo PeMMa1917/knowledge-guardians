@@ -1,0 +1,1145 @@
+{
+ "dialogue": [
+  {
+   "id": "welcome.copies.start",
+   "speaker": "copies-lendingkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "Lark put “OUR TABLE” on the small copy from the menders. Visitors look at the bench and turn away. One left a scrap by the door. The clamp tray actually does belong to the menders. Could you take the scrap to the bench and ask about the two?",
+   "options": [
+    {
+     "text": "Lift the visitor’s scrap and follow the bench line.",
+     "if": {
+      "all": [
+       {
+        "objective": "copies.arrival"
+       },
+       {
+        "not": {
+         "flag": "welcome.copies.started",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.copies.started",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the bench for another visit."
+    }
+   ]
+  },
+  {
+   "id": "welcome.copies.reader",
+   "speaker": "copies-lendingkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "A guest wrote this before leaving. “My family does not belong to this table. I can wait outside.” The large copy also says VELIN TABLE. On the small copy, only OUR is left where the word used to stand.",
+   "options": [
+    {
+     "text": "Lay the small copy by the visitor’s scrap and mark the word that sent them away.",
+     "if": {
+      "all": [
+       {
+        "flag": "welcome.copies.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "welcome.copies.reader",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.copies.reader",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Set the scrap down for now."
+    }
+   ]
+  },
+  {
+   "id": "welcome.copies.mender",
+   "speaker": "copies-presskeeper",
+   "historicalLabel": "fictional-world",
+   "text": "Velin is the way our menders mark a place they keep for anybody to share. It means they are responsible for the bench, which is open to every reader. The stamp on the clamp box is different. Menders open that box after they look at the binding.",
+   "options": [
+    {
+     "text": "Copy the invitation and the clamp rule on separate slips.",
+     "if": {
+      "all": [
+       {
+        "flag": "welcome.copies.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "welcome.copies.mender",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.copies.mender",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the clamp box closed."
+    }
+   ]
+  },
+  {
+   "id": "welcome.copies.desk",
+   "speaker": "copies-lendingkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "One low board fits by the path. It can say “Every reader may sit” and put the clamp rule below. Or a host can take the little strip to people when they stop and keep the old word with its welcome. There is only one host this turn.",
+   "options": [
+    {
+     "text": "Mount a low welcome board where a reader can find the bench alone.",
+     "if": {
+      "all": [
+       {
+        "objective": "welcome.copies.o.read"
+       },
+       {
+        "not": {
+         "flagSet": "welcome.copies.plan"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.copies.plan",
+       "value": "panel"
+      }
+     ]
+    },
+    {
+     "text": "Give the host the welcome strip, with velin and both meanings kept.",
+     "if": {
+      "all": [
+       {
+        "objective": "welcome.copies.o.read"
+       },
+       {
+        "not": {
+         "flagSet": "welcome.copies.plan"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.copies.plan",
+       "value": "host"
+      }
+     ]
+    },
+    {
+     "text": "Keep the bench in use and leave the new copies here."
+    }
+   ]
+  },
+  {
+   "id": "welcome.copies.check.panel",
+   "speaker": "copies-lendingkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "A person with a damp notebook walks straight to a seat. “My family does not keep this bench. I can still sit here.” They reach toward the clamp and stop at the lower line. Give them the menders’ tray number. The quiet board cannot answer that question by itself.",
+   "options": [
+    {
+     "text": "Point out the clamp tray while the visitor takes a seat.",
+     "if": {
+      "all": [
+       {
+        "objective": "welcome.copies.o.read"
+       },
+       {
+        "flag": "welcome.copies.plan",
+        "eq": "panel"
+       },
+       {
+        "not": {
+         "flag": "welcome.copies.received",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.copies.received",
+       "value": true
+      }
+     ],
+     "next": "welcome.copies.sent"
+    },
+    {
+     "text": "Ask the keeper to help this reader."
+    }
+   ]
+  },
+  {
+   "id": "welcome.copies.check.host",
+   "speaker": "copies-lendingkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "The host says, “We care for the bench. Sit and share it.” A visitor repeats velin. “Your work, a place for us too.” They hand their book to a mender. Someone farther down the lane is still waiting for the same welcome.",
+   "options": [
+    {
+     "text": "Pass the spoken welcome down the queue and leave the mender with the notebook.",
+     "if": {
+      "all": [
+       {
+        "objective": "welcome.copies.o.read"
+       },
+       {
+        "flag": "welcome.copies.plan",
+        "eq": "host"
+       },
+       {
+        "not": {
+         "flag": "welcome.copies.received",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.copies.received",
+       "value": true
+      }
+     ],
+     "next": "welcome.copies.sent"
+    },
+    {
+     "text": "Ask the keeper to call the waiting people next."
+    }
+   ]
+  },
+  {
+   "id": "welcome.copies.sent",
+   "speaker": "copies-presskeeper",
+   "historicalLabel": "fictional-world",
+   "text": "The host can use the welcome, and the menders still know who handles the clamp. Here is the two-part slip. The Market clerk asked how we keep a welcome and a work limit from getting stuck in the same short line."
+  },
+  {
+   "id": "welcome.copies.source",
+   "speaker": "narrator",
+   "historicalLabel": "documented",
+   "text": "A public account from Harvard’s Pluralism Project follows the Sodhi family preparing langar at a Sikh gurdwara in Fremont, California. The account describes Sikhs and visitors sharing the communal meal. It connects eating together to the religious commitment to human equality. It describes a meal in its own Sikh setting.",
+   "options": [
+    {
+     "text": "Keep the source card with the Fremont account and its setting.",
+     "if": {
+      "all": [
+       {
+        "objective": "copies.arrival"
+       },
+       {
+        "not": {
+         "card": "card.welcome.langar"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "addCard": "card.welcome.langar"
+      }
+     ]
+    },
+    {
+     "text": "Leave the public account on the reader’s shelf."
+    }
+   ]
+  },
+  {
+   "id": "welcome.market.start",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "During the weighing interval the little board says “STAY BACK”. A guest thought it meant the resting place was shut. Here we keep a rest seat through the tally, but the tally desk holds people’s unpaid orders. We need a way to leave the welcome in view.",
+   "options": [
+    {
+     "text": "Clip on the printed welcome board’s two-part slip from Copies.",
+     "if": {
+      "all": [
+       {
+        "objective": "market.arrival"
+       },
+       {
+        "item": "item.welcome.scope-slip"
+       },
+       {
+        "flag": "welcome.copies.plan",
+        "eq": "panel"
+       },
+       {
+        "not": {
+         "flagSet": "welcome.market.source"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.market.source",
+       "value": "panel"
+      }
+     ],
+     "next": "welcome.market.source.panel"
+    },
+    {
+     "text": "Clip on the Copies host’s two-part welcome slip.",
+     "if": {
+      "all": [
+       {
+        "objective": "market.arrival"
+       },
+       {
+        "item": "item.welcome.scope-slip"
+       },
+       {
+        "flag": "welcome.copies.plan",
+        "eq": "host"
+       },
+       {
+        "not": {
+         "flagSet": "welcome.market.source"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.market.source",
+       "value": "host"
+      }
+     ],
+     "next": "welcome.market.source.host"
+    },
+    {
+     "text": "Take Dagny’s spare strip and trace where guests stop.",
+     "if": {
+      "all": [
+       {
+        "objective": "market.arrival"
+       },
+       {
+        "not": {
+         "item": "item.welcome.scope-slip"
+        }
+       },
+       {
+        "not": {
+         "flagSet": "welcome.market.source"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.market.source",
+       "value": "local"
+      }
+     ],
+     "next": "welcome.market.source.local"
+    },
+    {
+     "text": "Leave the welcome board with Dagny for now."
+    }
+   ]
+  },
+  {
+   "id": "welcome.market.source.panel",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "Your board let a reader find a seat without looking for a host. The clamp question still needed a person. Let’s walk the lane and see what people here need to ask."
+  },
+  {
+   "id": "welcome.market.source.host",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "Your host could explain the word and the clamp rule together. I see there was a wait for the next visitor. Walk our lane before you promise a second host."
+  },
+  {
+   "id": "welcome.market.source.local",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "We have room to give the welcome and the desk limit their own lines. Walk the guest bench and the tally boundary before you write either one."
+  },
+  {
+   "id": "welcome.market.bench",
+   "speaker": "market-assayer",
+   "historicalLabel": "fictional-world",
+   "text": "Stand where the road turns. The little board is legible from here, and the rest bench is hidden by the stall roof. The covered seat still works during the weighing interval. We call that remna. The people resting here may have come for the market or just to sit.",
+   "options": [
+    {
+     "text": "Walk from the road turn to the hidden seat. Mark the place that stays open.",
+     "if": {
+      "all": [
+       {
+        "flagSet": "welcome.market.source"
+       },
+       {
+        "not": {
+         "flag": "welcome.market.bench",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.market.bench",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Try the walk later."
+    }
+   ]
+  },
+  {
+   "id": "welcome.market.tally",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "At a count, the tally clerk closes this desk to visitors. The ledger has names and unpaid orders. After the count, I bring the public unit rates to the window. The quiet bench can stay in use through both turns.",
+   "options": [
+    {
+     "text": "Put the counting boundary and the public window on different lines of the guide.",
+     "if": {
+      "all": [
+       {
+        "flagSet": "welcome.market.source"
+       },
+       {
+        "not": {
+         "flag": "welcome.market.tally",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.market.tally",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the names inside the ledger."
+    }
+   ]
+  },
+  {
+   "id": "welcome.market.desk",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "Move the rest mat where people can see it from the road, or leave the covered place and ask someone to guide visitors. Both need a separate line on the private tally. If we move the mat, the host carries water out. If we keep the shelter, the guide leaves the rate window while they walk.",
+   "options": [
+    {
+     "text": "Unroll the public mat on the east rail and point to its boundary notice.",
+     "if": {
+      "all": [
+       {
+        "objective": "welcome.market.o.route"
+       },
+       {
+        "not": {
+         "flagSet": "welcome.market.plan"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.market.plan",
+       "value": "path"
+      }
+     ]
+    },
+    {
+     "text": "Keep the covered bench. Give a guide the two-sided lane strip.",
+     "if": {
+      "all": [
+       {
+        "objective": "welcome.market.o.route"
+       },
+       {
+        "not": {
+         "flagSet": "welcome.market.plan"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.market.plan",
+       "value": "guide"
+      }
+     ]
+    },
+    {
+     "text": "Leave the old signs in the drawer while I decide."
+    }
+   ]
+  },
+  {
+   "id": "welcome.market.check.path",
+   "speaker": "market-assayer",
+   "historicalLabel": "fictional-world",
+   "text": "A guest sees the open mat before they reach the tally. “I can rest now. The private count is beyond that door.” The new place is easy to find. On a hot turn the host moves the water out of the sun and makes another trip to bring cups.",
+   "options": [
+    {
+     "text": "Tie the direction at the rail so the next guest can take the public path.",
+     "if": {
+      "all": [
+       {
+        "objective": "welcome.market.o.route"
+       },
+       {
+        "flag": "welcome.market.plan",
+        "eq": "path"
+       },
+       {
+        "not": {
+         "flag": "welcome.market.tested",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.market.tested",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave a cup for a guest at the rail."
+    }
+   ]
+  },
+  {
+   "id": "welcome.market.check.guide",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "A guide turns the strip to the guest line. The guest waits in the shade while the count goes on. “I can sit here. You will tell me when the public rates are at the window.” One buyer by that window waits while the guide walks back.",
+   "options": [
+    {
+     "text": "Hang the two-sided strip where the returning guide can find it.",
+     "if": {
+      "all": [
+       {
+        "objective": "welcome.market.o.route"
+       },
+       {
+        "flag": "welcome.market.plan",
+        "eq": "guide"
+       },
+       {
+        "not": {
+         "flag": "welcome.market.tested",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.market.tested",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the strip with the guide."
+    }
+   ]
+  },
+  {
+   "id": "welcome.market.return",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "You brought the Copies slip after we put our own welcome in place. I’ll keep it with our route note. It shows how a different crew put a shared seat and a work boundary on their own lines.",
+   "options": [
+    {
+     "text": "Clip the later slip behind Dagny’s tested route.",
+     "if": {
+      "all": [
+       {
+        "flag": "welcome.market.tested",
+        "eq": true
+       },
+       {
+        "item": "item.welcome.scope-slip"
+       },
+       {
+        "flag": "welcome.market.source",
+        "eq": "local"
+       },
+       {
+        "not": {
+         "flag": "welcome.market.late",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.market.late",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the slip for another visit."
+    }
+   ]
+  },
+  {
+   "id": "welcome.market.reference",
+   "speaker": "narrator",
+   "historicalLabel": "documented",
+   "text": "Saint Meinrad Archabbey in Indiana explains its welcome through the Rule of Saint Benedict and the call to receive guests as Christ. Its own visitor guide lists a self-guided tour and gives a separate schedule for public prayer in the Archabbey Church. It asks visitors to check those times because they can change.",
+   "options": [
+    {
+     "text": "Keep the abbey’s visitor guide with its place and named reason for welcoming guests.",
+     "if": {
+      "all": [
+       {
+        "objective": "market.arrival"
+       },
+       {
+        "not": {
+         "card": "card.welcome.archabbey"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "addCard": "card.welcome.archabbey"
+      }
+     ]
+    },
+    {
+     "text": "Leave the visitor guide on its shelf."
+    }
+   ]
+  },
+  {
+   "id": "welcome.market.readers",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "The Fremont account stays with its gurdwara and the people who made the meal. Saint Meinrad tells visitors why the abbey welcomes guests and gives its own arrangements. We learned to keep the reason beside the welcome. Each practice keeps its own place and name.",
+   "options": [
+    {
+     "text": "Clip the two named accounts into separate pockets on the reader’s shelf.",
+     "if": {
+      "all": [
+       {
+        "objective": "market.arrival"
+       },
+       {
+        "card": "card.welcome.langar"
+       },
+       {
+        "card": "card.welcome.archabbey"
+       },
+       {
+        "not": {
+         "flag": "welcome.market.filed",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "welcome.market.filed",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep both sources in your journal."
+    }
+   ]
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH7-R06",
+   "world": "WORLD-08",
+   "title": "Where the Welcome Goes: The Shared Bench",
+   "available": {
+    "flag": "welcome.copies.started",
+    "eq": true
+   },
+   "knowledgeQuestion": "Who can use a shared place, and what can one short translation make them assume?",
+   "objectives": [
+    {
+     "id": "welcome.copies.o.read",
+     "title": "Compare the visitor’s note with the menders’ use of velin.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "welcome.copies.reader",
+        "eq": true
+       },
+       {
+        "flag": "welcome.copies.mender",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "culture"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "aoks": [
+       "LAN"
+      ],
+      "subjects": [
+       "lang-b",
+       "lang-langlit"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "minutes": 3
+     }
+    },
+    {
+     "id": "welcome.copies.o.send",
+     "title": "Use a new welcome at the bench and take the checked slip to the Market.",
+     "essential": false,
+     "done": {
+      "flag": "welcome.copies.received",
+      "eq": true
+     },
+     "visible": {
+      "objective": "welcome.copies.o.read"
+     },
+     "weave": {
+      "concepts": [
+       "power",
+       "perspective",
+       "responsibility"
+      ],
+      "framework": [
+       "ethics",
+       "scope"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "lang-b",
+       "anthropology"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "minutes": 3
+     },
+     "onComplete": [
+      {
+       "giveItem": "item.welcome.scope-slip"
+      },
+      {
+       "journal": "j.welcome.copies"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH10-R02",
+   "world": "WORLD-11",
+   "title": "Where the Welcome Goes: The Resting Place",
+   "available": {
+    "flagSet": "welcome.market.source"
+   },
+   "knowledgeQuestion": "How can a host keep a promise of welcome while carrying a different responsibility?",
+   "objectives": [
+    {
+     "id": "welcome.market.o.route",
+     "title": "Check the public bench and the private tally boundary.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "welcome.market.bench",
+        "eq": true
+       },
+       {
+        "flag": "welcome.market.tally",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "truth",
+       "explanation",
+       "objectivity",
+       "culture"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "lang-b",
+       "economics"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "minutes": 3
+     }
+    },
+    {
+     "id": "welcome.market.o.try",
+     "title": "Take the welcome to its new station and try it with a guest.",
+     "essential": false,
+     "done": {
+      "flag": "welcome.market.tested",
+      "eq": true
+     },
+     "visible": {
+      "objective": "welcome.market.o.route"
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "responsibility",
+       "power",
+       "perspective"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "lang-b",
+       "lang-langlit"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "minutes": 3
+     },
+     "onComplete": [
+      {
+       "journal": "j.welcome.market"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH10-R03",
+   "world": "WORLD-11",
+   "title": "Two Named Accounts",
+   "available": {
+    "all": [
+     {
+      "objective": "market.arrival"
+     },
+     {
+      "any": [
+       {
+        "card": "card.welcome.langar"
+       },
+       {
+        "card": "card.welcome.archabbey"
+       }
+      ]
+     }
+    ]
+   },
+   "knowledgeQuestion": "What should travel with an account of a welcome in a religious community?",
+   "objectives": [
+    {
+     "id": "welcome.market.o.sources",
+     "title": "Keep each public account with its own place, people and reason for welcome.",
+     "essential": false,
+     "done": {
+      "flag": "welcome.market.filed",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "perspective",
+       "interpretation",
+       "responsibility"
+      ],
+      "framework": [
+       "perspectives",
+       "scope",
+       "ethics"
+      ],
+      "aoks": [
+       "REL",
+       "LAN"
+      ],
+      "subjects": [
+       "world-religions",
+       "lang-langlit"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "minutes": 3
+     },
+     "onComplete": [
+      {
+       "journal": "j.welcome.sources"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "REL-WELCOME-01",
+   "title": "Harvard Pluralism Project: Langar, the Communal Meal",
+   "url": "https://pluralism.org/langar-the-communal-meal",
+   "locator": "Account of the Sodhi family and communal meal at the Sikh gurdwara in Fremont, California",
+   "supports": "The account describes visitors sharing the Sikh communal meal and connects the practice to equality. It describes the Sodhi family preparing a meal at a gurdwara in Fremont.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "REL-WELCOME-02",
+   "title": "Saint Meinrad Archabbey: Visit Us",
+   "url": "https://www.saintmeinrad.org/visit-us/",
+   "locator": "The Benedictine community’s welcome to visitors in southern Indiana",
+   "supports": "Saint Meinrad describes its welcome as following Saint Benedict’s call to receive guests as Christ.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "REL-WELCOME-03",
+   "title": "Saint Meinrad Archabbey: Prayer Schedule and Tours",
+   "url": "https://www.saintmeinrad.org/visit-us/prayer-schedule-tours/",
+   "locator": "Prayer Schedule and Tours sections",
+   "supports": "The abbey distinguishes its self-guided visitor tour from the public church prayer schedule. The schedule may change.",
+   "accessed": "2026-11-26"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.welcome.langar",
+   "title": "Langar at a Sikh gurdwara in Fremont",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "text": "Harvard’s Pluralism Project describes the Sodhi family preparing the communal Sikh meal, langar, at their Fremont gurdwara. Their account describes meals shared with visitors and connects eating together to equality.",
+   "limits": "This account follows a particular family’s work and explains the place of a shared meal in Sikh life. Check the local schedule before visiting another gurdwara.",
+   "sources": [
+    "REL-WELCOME-01"
+   ]
+  },
+  {
+   "id": "card.welcome.archabbey",
+   "title": "A Benedictine welcome at Saint Meinrad",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "text": "Saint Meinrad Archabbey in Indiana identifies its welcome with the Benedictine practice of receiving guests as Christ. Its visitor page distinguishes self-guided tours from scheduled church prayer.",
+   "limits": "This public guide describes one community’s stated welcome and visitor arrangements. Each abbey can explain how it receives visitors.",
+   "sources": [
+    "REL-WELCOME-02",
+    "REL-WELCOME-03"
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "item.welcome.scope-slip",
+   "name": "A two-part welcome slip",
+   "historicalLabel": "fictional-world",
+   "description": "The front says who can take a place at the Copies bench. The inside says who looks after the clamp. Dagny asked to see the two lines at the Market."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.welcome.copies",
+   "claimKind": "interpretation",
+   "text": "The menders kept the bench and everyone could share it. “Our” alone made a guest turn away. I carried the invitation with a separate line for the workbox."
+  },
+  {
+   "id": "j.welcome.market",
+   "claimKind": "interpretation",
+   "text": "The tally desk closes during the count. The guest’s seat stays available. We checked where a newcomer could find the welcome without stepping into private work."
+  },
+  {
+   "id": "j.welcome.sources",
+   "claimKind": "interpretation",
+   "text": "The Fremont account describes the shared Sikh meal and its relation to equality. Saint Meinrad names the welcome given to Christ in a guest and sets out its own visiting arrangements. We kept two source pockets."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.welcome.copies.o.read.1",
+   "objective": "welcome.copies.o.read",
+   "depth": 1,
+   "text": "See who turned back before touching the bench."
+  },
+  {
+   "id": "h.welcome.copies.o.read.2",
+   "objective": "welcome.copies.o.read",
+   "depth": 2,
+   "text": "Look for two uses of the short words. The reader and the menders were doing different jobs."
+  },
+  {
+   "id": "h.welcome.copies.o.read.3",
+   "objective": "welcome.copies.o.read",
+   "depth": 3,
+   "text": "Find the visitor’s copy at the west path and the mender’s tray toward the far ramp."
+  },
+  {
+   "id": "h.welcome.copies.o.read.4",
+   "objective": "welcome.copies.o.read",
+   "depth": 4,
+   "text": "Copy both slips. Velin describes a shared seat. The clamp has its own handling rule."
+  },
+  {
+   "id": "h.welcome.copies.o.send.1",
+   "objective": "welcome.copies.o.send",
+   "depth": 1,
+   "text": "A visitor has to find where to sit and where to take a book."
+  },
+  {
+   "id": "h.welcome.copies.o.send.2",
+   "objective": "welcome.copies.o.send",
+   "depth": 2,
+   "text": "Try a low board or give the two lines to a host. Each way still needs a check."
+  },
+  {
+   "id": "h.welcome.copies.o.send.3",
+   "objective": "welcome.copies.o.send",
+   "depth": 3,
+   "text": "Choose at the keeper’s desk. Visit the low board on the west path or the host by the shared seat."
+  },
+  {
+   "id": "h.welcome.copies.o.send.4",
+   "objective": "welcome.copies.o.send",
+   "depth": 4,
+   "text": "Watch the visitor take a seat. Point to the clamp tray or help the host call the next person. Take the two-part strip to the Market."
+  },
+  {
+   "id": "h.welcome.market.o.route.1",
+   "objective": "welcome.market.o.route",
+   "depth": 1,
+   "text": "The little board may be telling two people different things."
+  },
+  {
+   "id": "h.welcome.market.o.route.2",
+   "objective": "welcome.market.o.route",
+   "depth": 2,
+   "text": "Check what stays public during a count. Compare it with what the clerk has to protect."
+  },
+  {
+   "id": "h.welcome.market.o.route.3",
+   "objective": "welcome.market.o.route",
+   "depth": 3,
+   "text": "The rest place is south of the workshop. Look at the tally desk near the standards office."
+  },
+  {
+   "id": "h.welcome.market.o.route.4",
+   "objective": "welcome.market.o.route",
+   "depth": 4,
+   "text": "Walk to the covered bench with Tellen. Ask Dagny when the public rates come to the window. Mark the two openings on separate lines."
+  },
+  {
+   "id": "h.welcome.market.o.try.1",
+   "objective": "welcome.market.o.try",
+   "depth": 1,
+   "text": "A welcome can reach the road while the tally keeps its boundary."
+  },
+  {
+   "id": "h.welcome.market.o.try.2",
+   "objective": "welcome.market.o.try",
+   "depth": 2,
+   "text": "Decide whether to move the rest place or keep the shade and help people find it."
+  },
+  {
+   "id": "h.welcome.market.o.try.3",
+   "objective": "welcome.market.o.try",
+   "depth": 3,
+   "text": "Make that choice at Dagny’s welcome desk. The mat is on the east rail. The guide waits beside the covered bench."
+  },
+  {
+   "id": "h.welcome.market.o.try.4",
+   "objective": "welcome.market.o.try",
+   "depth": 4,
+   "text": "Test your route with a guest after making the choice. Tie the notice on the rail or hang the guide’s two-sided strip."
+  },
+  {
+   "id": "h.welcome.market.o.sources.1",
+   "objective": "welcome.market.o.sources",
+   "depth": 1,
+   "text": "Keep each community’s own explanation beside its practice."
+  },
+  {
+   "id": "h.welcome.market.o.sources.2",
+   "objective": "welcome.market.o.sources",
+   "depth": 2,
+   "text": "The Fremont meal and the Indiana abbey each have a named public source."
+  },
+  {
+   "id": "h.welcome.market.o.sources.3",
+   "objective": "welcome.market.o.sources",
+   "depth": 3,
+   "text": "Read the separate source shelves on the landing in Copies and near the Market directory."
+  },
+  {
+   "id": "h.welcome.market.o.sources.4",
+   "objective": "welcome.market.o.sources",
+   "depth": 4,
+   "text": "When both cards are in your journal, use the two-pocket reader’s shelf in the Market. File each card under the name of its own community."
+  }
+ ]
+}

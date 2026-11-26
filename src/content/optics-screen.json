@@ -1,0 +1,205 @@
+{
+  "keepsakes": [
+    {
+      "id": "folding-light-screen",
+      "name": "Folding light screen",
+      "text": "A small screen made at the headland to mark where the light comes from. It comes with a strip for the position of the object.",
+      "if": { "objective": "coast.optics.plan" },
+      "where": "Help Neri trial both lamps at the headland and leave a check that the next crew can use.",
+      "use": "Find the shaded service passage at the headland and test a time cue in the Council gallery.",
+      "equip": {
+        "method": "Keep a mark on the object while you change where the light falls.",
+        "hint": "Try the screen at the headland service ledge or the lamp sockets by the Council’s Bell Rail.",
+        "art": "coast.clear-frame"
+      }
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH4-R07",
+      "world": "WORLD-05",
+      "title": "The Shadow on the Handover",
+      "knowledgeQuestion": "What lets someone distinguish a change in an object from a change in how it appears?",
+      "available": { "objective": "coast.revise" },
+      "objectives": [
+        {
+          "id": "coast.optics.compare",
+          "title": "Read the lens maker’s method card and try both lamp sockets with the pointer fixed.",
+          "essential": false,
+          "done": { "all": [{ "flagSet": "coast.optics.source" }, { "flagSet": "coast.optics.trial.left" }, { "flagSet": "coast.optics.trial.right" }] },
+          "weave": {
+            "concepts": ["evidence", "objectivity", "explanation", "interpretation", "certainty"],
+            "framework": ["scope", "methods-and-tools", "perspectives"],
+            "thinking": { "dok": 2, "bloom": "analyse", "fink": "application", "solo": "multistructural" },
+            "atl": ["research", "thinking"],
+            "aoks": ["NAT", "MAT", "HIS"],
+            "subjects": ["physics", "math-aa", "history", "design-tech"],
+            "minutes": 4
+          }
+        },
+        {
+          "id": "coast.optics.plan",
+          "title": "Agree on what to send to the second shift.",
+          "essential": false,
+          "done": { "flagSet": "coast.optics.plan" },
+          "onComplete": [{ "journal": "j.coast.optics" }],
+          "weave": {
+            "concepts": ["justification", "responsibility", "perspective", "values", "power"],
+            "framework": ["perspectives", "ethics", "methods-and-tools"],
+            "thinking": { "dok": 3, "bloom": "create", "fink": "human", "solo": "relational" },
+            "atl": ["communication", "social"],
+            "aoks": ["NAT", "HUM"],
+            "subjects": ["design-tech", "lang-langlit"],
+            "minutes": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH15-R04",
+      "world": "WORLD-16",
+      "title": "The Pointer and Its Shadow",
+      "knowledgeQuestion": "What should a public instruction let someone check before acting?",
+      "available": { "all": [{ "objective": "council.arrival" }, { "flag": "keepsake.folding-light-screen", "eq": true }] },
+      "objectives": [
+        {
+          "id": "council.optics.compare",
+          "title": "Use the screen to test a change in the lamp and a change in the pointer.",
+          "essential": false,
+          "done": { "all": [{ "flagSet": "council.optics.trial.left" }, { "flagSet": "council.optics.trial.right" }, { "flagSet": "council.optics.trial.turn" }] },
+          "weave": {
+            "concepts": ["evidence", "objectivity", "truth", "interpretation", "explanation"],
+            "framework": ["methods-and-tools", "scope", "perspectives"],
+            "thinking": { "dok": 3, "bloom": "analyse", "fink": "integration", "solo": "relational" },
+            "atl": ["research", "thinking"],
+            "aoks": ["NAT", "MAT"],
+            "subjects": ["physics", "math-ai", "design-tech"],
+            "minutes": 4
+          }
+        },
+        {
+          "id": "council.optics.plan",
+          "title": "Change what the next crew checks and visit the new notice.",
+          "essential": false,
+          "done": { "flagSet": "council.optics.received" },
+          "onComplete": [{ "journal": "j.council.optics" }],
+          "weave": {
+            "concepts": ["certainty", "justification", "responsibility", "values", "perspective"],
+            "framework": ["perspectives", "ethics", "methods-and-tools"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "caring", "solo": "relational" },
+            "atl": ["communication", "self-management"],
+            "aoks": ["NAT", "HUM"],
+            "subjects": ["physics", "global-politics", "design-tech"],
+            "minutes": 3
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "coast.optics.card",
+      "speaker": "narrator",
+      "historicalLabel": "documented",
+      "text": "Ibn al-Haytham, born in Basra and active in Cairo, tested explanations of light and vision in his Book of Optics. The archive references the University of St Andrews’ MacTutor biography. Neri’s trial board outside is a model made by the headland workshop.",
+      "effects": [{ "addCard": "card.person.haytham" }, { "setFlag": "coast.optics.source", "value": true }]
+    },
+    {
+      "id": "coast.optics.post",
+      "speaker": "coast-forecaster",
+      "historicalLabel": "fictional-world",
+      "text": "Both lamps moved the shadow. The pointer stayed on its notch. That is the bit a runner could not see from the road. If the second crew mistakes the shadow for a cleared route, they can send a cart to the wrong gate. I can give them a board they check here or a slip someone carries back.",
+      "options": [
+        {
+          "text": "Put both socket marks and the fixed notch on the headland board.",
+          "if": { "all": [{ "objective": "coast.optics.compare" }, { "not": { "flagSet": "coast.optics.plan" } }] },
+          "effects": [{ "setFlag": "coast.optics.plan", "value": "board" }],
+          "next": "coast.optics.board"
+        },
+        {
+          "text": "Send a dated slip with the notch and a person who can show it.",
+          "if": { "all": [{ "objective": "coast.optics.compare" }, { "not": { "flagSet": "coast.optics.plan" } }] },
+          "effects": [{ "setFlag": "coast.optics.plan", "value": "runner" }],
+          "next": "coast.optics.runner"
+        },
+        { "text": "Leave the lamps ready. I’ll come back." }
+      ]
+    },
+    {
+      "id": "coast.optics.board",
+      "speaker": "coast-forecaster",
+      "historicalLabel": "fictional-world",
+      "text": "The next lookout can see the whole trial before a call. The group on the quay will need to come up for the details. Take this screen. If you look from the ledge with the glare covered, you can pick out the service arch to the archive."
+    },
+    {
+      "id": "coast.optics.runner",
+      "speaker": "coast-forecaster",
+      "historicalLabel": "fictional-world",
+      "text": "The next runner can point to where we made the mark. Someone who misses their round will still have to ask. Take this screen. Hold it at the ledge to find our back way to the archive."
+    },
+    {
+      "id": "council.optics.post",
+      "speaker": "council-reader",
+      "historicalLabel": "fictional-world",
+      "text": "A shifted lamp moved the shadow without moving the pointer. In the last trial the pointer actually left its notch. The next checker is holding a crate as wide as this bench. Shall we keep the notch at the ramp so they can set down and check, or ask the rail pair to pass along the comparison?",
+      "options": [
+        {
+          "text": "Put the fixed notch and the trial times at the low ramp stop.",
+          "if": { "all": [{ "objective": "council.optics.compare" }, { "not": { "flagSet": "council.optics.plan" } }] },
+          "effects": [{ "setFlag": "council.optics.plan", "value": "ramp" }],
+          "next": "council.optics.ramp"
+        },
+        {
+          "text": "Give the rail pair the two checks for the spoken handover.",
+          "if": { "all": [{ "objective": "council.optics.compare" }, { "not": { "flagSet": "council.optics.plan" } }] },
+          "effects": [{ "setFlag": "council.optics.plan", "value": "rail" }],
+          "next": "council.optics.rail"
+        },
+        { "text": "I want to see the board again." }
+      ]
+    },
+    {
+      "id": "council.optics.ramp",
+      "speaker": "council-reader",
+      "historicalLabel": "fictional-world",
+      "text": "I’ll pin it by the low stop. The carrier can follow the fixed notch before joining the line, though that will take a place to put the load down."
+    },
+    {
+      "id": "council.optics.rail",
+      "speaker": "council-reader",
+      "historicalLabel": "fictional-world",
+      "text": "The two checkers will call the pointer first and the change in light second. A late carrier may miss their turn, so the roster will stay beside the rail."
+    }
+  ],
+  "journal": [
+    { "id": "j.coast.optics", "claimKind": "observation", "text": "I kept the pointer fixed while we moved the lamp. The shadow shifted twice. We planned how another shift could check the same notch." },
+    { "id": "j.council.optics", "claimKind": "observation", "text": "I used the screen again at the Council. This time I moved the pointer as well. The next carrier can check which thing actually changed." }
+  ],
+  "moments": [
+    {
+      "id": "mom.optics.recheck",
+      "attribute": "knowledgeable",
+      "when": { "objective": "council.optics.plan" },
+      "did": "You brought a method from the headland and changed it when you tested a new cause.",
+      "prompt": "Where else might a change in the view look like a change in the thing you are checking?"
+    }
+  ],
+  "hints": [
+    { "id": "h.coast.optics.compare.1", "objective": "coast.optics.compare", "depth": 1, "text": "Keep track of what you move each time." },
+    { "id": "h.coast.optics.compare.2", "objective": "coast.optics.compare", "depth": 2, "text": "The Bell Archive has a method card. Neri’s trial is at Headland Station." },
+    { "id": "h.coast.optics.compare.3", "objective": "coast.optics.compare", "depth": 3, "text": "Try the left socket, then the right socket with the pointer still parked." },
+    { "id": "h.coast.optics.compare.4", "objective": "coast.optics.compare", "depth": 4, "text": "Read the two shadow marks and the text that says where the pointer stayed." },
+    { "id": "h.coast.optics.plan.1", "objective": "coast.optics.plan", "depth": 1, "text": "The second shift needs a thing they can check for themselves." },
+    { "id": "h.coast.optics.plan.2", "objective": "coast.optics.plan", "depth": 2, "text": "Find Neri’s handover slip to the east of the trial board." },
+    { "id": "h.coast.optics.plan.3", "objective": "coast.optics.plan", "depth": 3, "text": "The board serves the headland. A runner can bring a slip to the quay." },
+    { "id": "h.coast.optics.plan.4", "objective": "coast.optics.plan", "depth": 4, "text": "Choose one of the two handovers at Neri’s slip. Carry the screen from your Satchel when you look for the service arch." },
+    { "id": "h.council.optics.compare.1", "objective": "council.optics.compare", "depth": 1, "text": "Look for two ways to get a new mark on the card." },
+    { "id": "h.council.optics.compare.2", "objective": "council.optics.compare", "depth": 2, "text": "Use the folding light screen from your Satchel. Its check is beside the Bell Rail." },
+    { "id": "h.council.optics.compare.3", "objective": "council.optics.compare", "depth": 3, "text": "Compare the left and right lamps while the pointer stays at its notch." },
+    { "id": "h.council.optics.compare.4", "objective": "council.optics.compare", "depth": 4, "text": "Keep the right lamp lit and move the pointer. Now both its notch and the shadow tell you something changed." },
+    { "id": "h.council.optics.plan.1", "objective": "council.optics.plan", "depth": 1, "text": "Think about what someone with both hands full can check." },
+    { "id": "h.council.optics.plan.2", "objective": "council.optics.plan", "depth": 2, "text": "Find Essi’s rack beside the trial board." },
+    { "id": "h.council.optics.plan.3", "objective": "council.optics.plan", "depth": 3, "text": "A fixed notice can wait on the ramp. A short call can travel down the rail." },
+    { "id": "h.council.optics.plan.4", "objective": "council.optics.plan", "depth": 4, "text": "After you choose, use the notice at the ramp or the call beside the rail." }
+  ]
+}

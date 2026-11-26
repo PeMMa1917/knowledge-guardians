@@ -492,6 +492,353 @@
    "speaker": "voices-steward",
    "historicalLabel": "fictional-world",
    "text": "Wren clips the approved line to its date and permission at the reading slot. The first reader follows the clips to see what the carrier let the archive share. People behind them wait until the slot is free."
+  },
+  {
+   "id": "voices.vow.trial",
+   "speaker": "voices-steward",
+   "text": "My father stayed by this lamp when I was late. I remember that his coat dripped for an hour. Tonight I can take one extra turn here. The small lamp has two brackets. Try the one by the rail and the one over the bench.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang the small lamp on the rail bracket.",
+     "next": "voices.vow.rail",
+     "effects": [
+      {
+       "setFlag": "voices.vow.rail",
+       "value": true
+      },
+      {
+       "setFlag": "voices.vow.last",
+       "value": "rail"
+      }
+     ]
+    },
+    {
+     "text": "Hang the same lamp above the waiting bench.",
+     "next": "voices.vow.bench",
+     "effects": [
+      {
+       "setFlag": "voices.vow.bench",
+       "value": true
+      },
+      {
+       "setFlag": "voices.vow.last",
+       "value": "bench"
+      }
+     ]
+    },
+    {
+     "text": "Tell Wren how you asked Ottilie about the Market shrine.",
+     "next": "voices.vow.market",
+     "if": {
+      "flag": "cross.patron",
+      "eq": "keeper"
+     }
+    },
+    {
+     "text": "Tell Wren what you weighed beside the Market shrine.",
+     "next": "voices.vow.market-test",
+     "if": {
+      "flag": "cross.patron",
+      "eq": "test"
+     }
+    },
+    {
+     "text": "Tell Wren what you kept in Sefa’s flood song.",
+     "next": "voices.vow.sefa",
+     "if": {
+      "flag": "loyalty.sefa",
+      "eq": "both"
+     }
+    },
+    {
+     "text": "Tell Wren what you found about the Nexus arch.",
+     "next": "voices.vow.arch",
+     "if": {
+      "flag": "cross.lintel",
+      "eq": "source"
+     }
+    },
+    {
+     "text": "Leave the lamp here."
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.rail",
+   "speaker": "voices-clerk",
+   "text": "From the waiting spot, that small lamp falls in line with the passage markers. The closed desk’s board is behind it. Someone on the quay could take the light as a sign that they can still check in.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Try the other bracket.",
+     "next": "voices.vow.bench",
+     "effects": [
+      {
+       "setFlag": "voices.vow.bench",
+       "value": true
+      },
+      {
+       "setFlag": "voices.vow.last",
+       "value": "bench"
+      }
+     ]
+    },
+    {
+     "text": "Step away from the brackets."
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.bench",
+   "speaker": "voices-clerk",
+   "text": "From the same waiting spot, I can see the light on the seat. I can read “Check-in closed” at the rail past it. A person can reach the bench without going to the check-in desk.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Try the other bracket.",
+     "next": "voices.vow.rail",
+     "effects": [
+      {
+       "setFlag": "voices.vow.rail",
+       "value": true
+      },
+      {
+       "setFlag": "voices.vow.last",
+       "value": "rail"
+      }
+     ]
+    },
+    {
+     "text": "Step away from the brackets."
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.market",
+   "speaker": "voices-steward",
+   "text": "You asked Ottilie what her own promise meant. Ours gives the lamp a keeper and a place for a guest. You can still ask Eren what the desk’s board says.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Go back to the two brackets.",
+     "next": "voices.vow.trial"
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.market-test",
+   "speaker": "voices-steward",
+   "text": "You put a town weight beside the stamped one. Here you can set the lamp beside the notice and see whether both can be read. The lamplighters can tell you what they want their light to say.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Go back to the two brackets.",
+     "next": "voices.vow.trial"
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.sefa",
+   "speaker": "voices-steward",
+   "text": "You helped Sefa keep her grandmother’s verse and give the boats a verse as well. I thought of that when Eren hung the closing notice. Maybe two lines can do two jobs here too.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Go back to the two brackets.",
+     "next": "voices.vow.trial"
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.arch",
+   "speaker": "voices-steward",
+   "text": "You found the hope carved over the Nexus arch. My father used to joke that our lamp could do the waiting for him. Then he would take his wet coat and go sit right where you are standing.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Go back to the two brackets.",
+     "next": "voices.vow.trial"
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.room",
+   "speaker": "voices-steward",
+   "text": "Stand at the reading-room threshold. The straight passage back to the quay is visible from here. The entrance has a seat and stays staffed through the reading turn, after Eren closes check-in. I can set the promise lamp here if the quay keeps a direction.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pin a trial arrow and check that it points towards this door.",
+     "next": "voices.vow.room-checked",
+     "effects": [
+      {
+       "setFlag": "voices.vow.room",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the doorway as it is."
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.room-checked",
+   "speaker": "voices-steward",
+   "text": "The trial arrow starts at the waiting bench and points to this door. Somebody who arrives tired still has the walk along the quay. The reading-room keeper has offered the seat and can be here during the ordinary reading turn.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "record.edge.fort",
+   "speaker": "voices-clerk",
+   "text": "Put the folio on the treaty. The first window follows the land described in Article 1. The second picks out the parties named at the beginning and the marks at the end.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Slide from the land line to the parties and the fifth article.",
+     "next": "record.edge.fort.reveal",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "record-edge-folio"
+       },
+       {
+        "card": "card.record-edge.fort"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "record.edge.parties",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the treaty open."
+    }
+   ]
+  },
+  {
+   "id": "record.edge.fort.reveal",
+   "speaker": "voices-clerk",
+   "text": "The transcript lists William Henry Harrison and names the marks under Delaware, Potawatomi, Miami and Eel River Miami headings. Those are the parties named here. Article 5 gives us a separate Wea agreement to look for. Turn to Tecumseh’s case for a recorded objection to the treaty.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "record.edge.voice",
+   "speaker": "voices-steward",
+   "text": "The case has a public account from the Absentee Shawnee Tribe and a state marker from Indiana. The same name appears on both. Put the folio over each source line before moving its date.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set the marker’s date apart from the dates of the meetings.",
+     "next": "record.edge.voice.reveal",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "record-edge-folio"
+       },
+       {
+        "card": "card.record-edge.tecumseh"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "record.edge.account",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the two sources beside each other."
+    }
+   ]
+  },
+  {
+   "id": "record.edge.voice.reveal",
+   "speaker": "voices-steward",
+   "text": "The Absentee Shawnee Tribe describes how Tecumseh sought an alliance among Native nations. The 2011 state marker records his objections at Vincennes in 1810 and 1811. Give the account and marker their own sources. The wording of his speeches stays open in this display.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "record.edge.mount",
+   "speaker": "voices-steward",
+   "text": "A visitor saw the territory line and told the next reader that everybody agreed to it. We can open the new copy at the article that sends people to a separate record. Or we can open it with the dates of Tecumseh’s challenge. Keep the other page easy to find.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Open at Article 5 and hinge the account beside it.",
+     "next": "record.edge.mount.treaty",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "record-edge-folio"
+       },
+       {
+        "objective": "record.edge.voices.compare"
+       },
+       {
+        "not": {
+         "flagSet": "record.edge.voices.mount"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "record.edge.voices.mount",
+       "value": "treaty"
+      }
+     ]
+    },
+    {
+     "text": "Open with the Vincennes meetings and keep the treaty facing them.",
+     "next": "record.edge.mount.voice",
+     "if": {
+      "all": [
+       {
+        "flag": "perspective.active",
+        "eq": "record-edge-folio"
+       },
+       {
+        "objective": "record.edge.voices.compare"
+       },
+       {
+        "not": {
+         "flagSet": "record.edge.voices.mount"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "record.edge.voices.mount",
+       "value": "voice"
+      }
+     ]
+    },
+    {
+     "text": "Leave the covers ready."
+    }
+   ]
+  },
+  {
+   "id": "record.edge.mount.treaty",
+   "speaker": "voices-steward",
+   "text": "The first reader asks where the agreement named in Article 5 went. I pin a route note to Library Dispatch in the Civic Machine. Look for a second dated record there.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "record.edge.mount.voice",
+   "speaker": "voices-steward",
+   "text": "The first reader asks why Tecumseh challenged the treaty. I put the Absentee Shawnee account at the bench. The facing treaty page has a route note to the separately dated Civic copy.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "missions": [
@@ -915,6 +1262,220 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH13-R03",
+   "world": "WORLD-14",
+   "title": "The Edge of the Record",
+   "knowledgeQuestion": "Whose decision does a record show, and how can we tell whose it leaves open?",
+   "available": {
+    "flag": "keepsake.record-edge-folio",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "record.edge.voices.compare",
+     "title": "Fit the folio to both Voices records and find who each names.",
+     "done": {
+      "all": [
+       {
+        "flag": "record.edge.parties",
+        "eq": true
+       },
+       {
+        "flag": "record.edge.account",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "truth",
+       "certainty",
+       "interpretation",
+       "power",
+       "culture"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "IND"
+      ],
+      "subjects": [
+       "history",
+       "global-politics"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "minutes": 5
+     }
+    },
+    {
+     "id": "record.edge.voices.send",
+     "title": "Open the public pair at one source and leave the other in reach.",
+     "visible": {
+      "objective": "record.edge.voices.compare"
+     },
+     "done": {
+      "flagSet": "record.edge.voices.mount"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "perspective",
+       "values",
+       "justification"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "IND"
+      ],
+      "subjects": [
+       "history"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "minutes": 3
+     }
+    },
+    {
+     "id": "record.edge.civic.compare",
+     "title": "Take the folio to Civic Dispatch and check the second date and the constitutional title.",
+     "visible": {
+      "objective": "record.edge.voices.send"
+     },
+     "done": {
+      "all": [
+       {
+        "flag": "record.edge.wea",
+        "eq": true
+       },
+       {
+        "flag": "record.edge.eastern",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "truth",
+       "certainty",
+       "explanation",
+       "objectivity",
+       "culture",
+       "power"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "IND",
+       "POL"
+      ],
+      "subjects": [
+       "history",
+       "global-politics"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "minutes": 7
+     }
+    },
+    {
+     "id": "record.edge.civic.post",
+     "title": "Post the source lines at Civic and see who uses them.",
+     "visible": {
+      "objective": "record.edge.civic.compare"
+     },
+     "done": {
+      "all": [
+       {
+        "flagSet": "record.edge.civic.mount"
+       },
+       {
+        "flag": "record.edge.seen",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "perspective",
+       "values",
+       "justification"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "IND",
+       "POL"
+      ],
+      "subjects": [
+       "global-politics"
+      ],
+      "framework": [
+       "scope",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "human",
+       "solo": "relational"
+      },
+      "minutes": 3
+     },
+     "onComplete": [
+      {
+       "journal": "j.record.edge"
+      }
+     ]
+    }
+   ]
   }
  ],
  "criteria": [
@@ -934,6 +1495,11 @@
    "id": "j.voices.lines",
    "claimKind": "interpretation",
    "text": "The trial and the public opening have separate dates and sources. We kept the carrier’s approved words and used two approaches to check the direction. The date of the first crossing is still open."
+  },
+  {
+   "id": "j.record.edge",
+   "title": "The edge of the record",
+   "text": "I kept Tecumseh’s challenge and the treaty’s listed parties on facing pages. At Civic I found the separate date for the Wea convention and kept a present-day constitution under the name its own government gives it. Each record had a different reach."
   }
  ],
  "moments": [
@@ -1199,6 +1765,226 @@
    "objective": "voices.quote",
    "depth": 4,
    "text": "Find your copy at the queue or reading slot. The source and permission card stay at the listening desk."
+  },
+  {
+   "id": "h.record.edge.voices.compare.1",
+   "objective": "record.edge.voices.compare",
+   "depth": 1,
+   "text": "Use the Record-Edge Folio from the Bag beside the two Voices stands."
+  },
+  {
+   "id": "h.record.edge.voices.compare.2",
+   "objective": "record.edge.voices.compare",
+   "depth": 2,
+   "text": "One stand holds the treaty. The other holds the Absentee Shawnee account and the later marker."
+  },
+  {
+   "id": "h.record.edge.voices.compare.3",
+   "objective": "record.edge.voices.compare",
+   "depth": 3,
+   "text": "At Glass Walk move from the land description to the named parties. In the Listening Room separate the marker’s date from the meetings."
+  },
+  {
+   "id": "h.record.edge.voices.compare.4",
+   "objective": "record.edge.voices.compare",
+   "depth": 4,
+   "text": "Fit the folio on the treaty edge at Glass Walk and the dated accounts in the Listening Room. Check both."
+  },
+  {
+   "id": "h.record.edge.voices.send.1",
+   "objective": "record.edge.voices.send",
+   "depth": 1,
+   "text": "The hinged notice stand is in the Listening Room."
+  },
+  {
+   "id": "h.record.edge.voices.send.2",
+   "objective": "record.edge.voices.send",
+   "depth": 2,
+   "text": "A land line answers a different question from a list of parties or an objection."
+  },
+  {
+   "id": "h.record.edge.voices.send.3",
+   "objective": "record.edge.voices.send",
+   "depth": 3,
+   "text": "Give the first reader either the missing agreement’s reference or the dates of the meetings."
+  },
+  {
+   "id": "h.record.edge.voices.send.4",
+   "objective": "record.edge.voices.send",
+   "depth": 4,
+   "text": "Mount one page first and keep its partner beside it. Follow the Civic Library reference."
+  },
+  {
+   "id": "h.record.edge.civic.compare.1",
+   "objective": "record.edge.civic.compare",
+   "depth": 1,
+   "text": "Take the Nexus passage back to the Civic Machine with the folio equipped."
+  },
+  {
+   "id": "h.record.edge.civic.compare.2",
+   "objective": "record.edge.civic.compare",
+   "depth": 2,
+   "text": "At Dispatch look for the later convention. The constitutional copy is beside the desk at North Steps."
+  },
+  {
+   "id": "h.record.edge.civic.compare.3",
+   "objective": "record.edge.civic.compare",
+   "depth": 3,
+   "text": "Keep the Wea representatives and the October date on the convention line. On the newer source check its full name."
+  },
+  {
+   "id": "h.record.edge.civic.compare.4",
+   "objective": "record.edge.civic.compare",
+   "depth": 4,
+   "text": "Inspect the two cases and fit the folio on each nearby stand."
+  },
+  {
+   "id": "h.record.edge.civic.post.1",
+   "objective": "record.edge.civic.post",
+   "depth": 1,
+   "text": "Bring the checked lines to the small public stand at Civic Dispatch."
+  },
+  {
+   "id": "h.record.edge.civic.post.2",
+   "objective": "record.edge.civic.post",
+   "depth": 2,
+   "text": "Choose where the next reader can reach the case they need."
+  },
+  {
+   "id": "h.record.edge.civic.post.3",
+   "objective": "record.edge.civic.post",
+   "depth": 3,
+   "text": "The North Steps board puts both treaty dates together. The Canal copy shows the separate named constitution and points back to its source."
+  },
+  {
+   "id": "h.record.edge.civic.post.4",
+   "objective": "record.edge.civic.post",
+   "depth": 4,
+   "text": "After you choose, visit the public stand at North Steps or the reader’s stop at Canal Walk and read the new notice."
+  }
+ ],
+ "sources": [
+  {
+   "id": "HIS-EDGE-01",
+   "title": "Fort Wayne treaty, 7 Stat. 113",
+   "url": "https://treaties.okstate.edu/treaties/treaty-with-the-delawares-etc-1809-0101",
+   "locator": "September 30, 1809. Preamble, Articles 1 and 5, and signature list.",
+   "supports": "The text names its parties and describes the land cessions it records. Article 5 calls for a separate Wea agreement for the first tract.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-EDGE-02",
+   "title": "Absentee Shawnee Tribe: public account of Tecumseh",
+   "url": "https://www.astribe.com/",
+   "locator": "Public introduction explaining the Tribe’s logo. Paragraph on Tecumseh.",
+   "supports": "The Tribe identifies Tecumseh as a Shawnee leader and describes his work to unite Native peoples who wanted to live under their own leaders and laws.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-EDGE-03",
+   "title": "Indiana Historical Bureau: Tecumseh and Harrison",
+   "url": "https://www.in.gov/history/state-historical-markers/find-a-marker/tecumseh-and-harrison/",
+   "locator": "2011 state historical marker, sides 1 and 2, Vincennes, Indiana.",
+   "supports": "The marker places meetings in August 1810 and July 1811 and reports Tecumseh’s opposition to the 1809 Fort Wayne treaty.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "HIS-EDGE-04",
+   "title": "Eastern Shawnee Tribe of Oklahoma: History",
+   "url": "https://www.estoo-nsn.gov/history",
+   "locator": "Opening paragraph identifying the three federally recognized Shawnee governments.",
+   "supports": "The Tribe distinguishes its own government from the Absentee Shawnee Tribe and the Shawnee Tribe.",
+   "accessed": "2026-11-26"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.record-edge.fort",
+   "title": "Parties named at Fort Wayne",
+   "text": "The record of 30 September 1809 names the United States and representatives of the Delaware, Potawatomi, Miami and Eel River Miami as parties. Its fifth article requires a separate agreement with the Wea for the first tract.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-EDGE-01"
+   ],
+   "limits": "The names identify who appears as a party in this document. The page gives only part of the history of the land, the negotiations and the different communities affected."
+  },
+  {
+   "id": "card.record-edge.tecumseh",
+   "title": "Tecumseh and the contested agreement",
+   "text": "The Absentee Shawnee Tribe describes Tecumseh’s work to unite Native peoples under their own leaders and laws. The Indiana Historical Bureau records his visits to Vincennes in 1810 and 1811 and his objection to the Fort Wayne treaty.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-EDGE-02",
+    "HIS-EDGE-03"
+   ],
+   "limits": "The Tribe’s account gives its own public framing. The Indiana marker is a later state account. The two sources establish neither a verbatim speech nor a position for every Shawnee community.",
+   "person": {
+    "name": "Tecumseh",
+    "life": "Vincennes meetings in 1810 and 1811",
+    "place": "Vincennes, present-day Indiana",
+    "era": "Early nineteenth century",
+    "continent": "North America"
+   }
+  }
+ ],
+ "exhibits": [
+  {
+   "id": "OBJ-EDGE-FORT-WAYNE",
+   "name": "Fort Wayne treaty",
+   "art": "preserved.catalogue",
+   "historicalLabel": "documented",
+   "dateText": "30 September 1809",
+   "dateKind": "Date of the written agreement at Fort Wayne. The publication and its proclamation have separate dates.",
+   "summary": "This catalogue view points to the parties at the top of the treaty and to Article 5. That article calls for a separate Wea agreement for the first tract.",
+   "sources": [
+    "HIS-EDGE-01"
+   ],
+   "grantsCard": "card.record-edge.fort",
+   "altText": "Original illustration of a paper folio with two marked edges."
+  },
+  {
+   "id": "OBJ-EDGE-TECUMSEH",
+   "name": "Two published accounts of Tecumseh",
+   "art": "voices.permission",
+   "historicalLabel": "documented",
+   "dateText": "1810–1811 meetings; 2011 state marker",
+   "dateKind": "The meeting dates belong to the events described by the state marker. The marker itself was installed in 2011. The public Absentee Shawnee account supplies a separate perspective.",
+   "summary": "The Absentee Shawnee Tribe describes Tecumseh as a Shawnee leader who worked to unite different Native peoples. The state marker describes his challenge to the Fort Wayne treaty at Vincennes.",
+   "sources": [
+    "HIS-EDGE-02",
+    "HIS-EDGE-03"
+   ],
+   "grantsCard": "card.record-edge.tecumseh",
+   "altText": "Original illustration of a paper folio with two marked edges."
+  }
+ ],
+ "keepsakes": [
+  {
+   "id": "record-edge-folio",
+   "name": "Record-Edge Folio",
+   "text": "A transparent archive cover with separate windows for the date, the writer and the people a record names. The keepers made it for the public reading cases.",
+   "if": {
+    "all": [
+     {
+      "objective": "voices.arrival"
+     },
+     {
+      "card": "card.record-edge.fort"
+     },
+     {
+      "card": "card.record-edge.tecumseh"
+     }
+    ]
+   },
+   "where": "The Fort Wayne and Tecumseh cases in the Archive of Voices",
+   "use": "Fit the folio over the dated record stands in Voices and Civic Library Dispatch.",
+   "equip": {
+    "method": "Compare who could speak for a decision",
+    "hint": "Use the riveted stands to keep a date with the record that gives it. Follow Article 5 to the Civic Library.",
+    "art": "preserved.folder"
+   }
   }
  ]
 }

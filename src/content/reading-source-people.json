@@ -1,0 +1,40 @@
+{
+  "bodleian:pococke-375-3b-4a": [
+    {"name":"Muḥammad al-Idrīsī","role":"Author of the Arabic geography","detail":"His geographical work was copied into the Bodleian’s 1553 manuscript. Authorship of the work and production of this surviving copy belong to different dates.","source":"HIS-READING-WORKS-IDRISI-MANIFEST"},
+    {"name":"ʻAlī ibn Ḥasan al-Ḥūfī al-Qāsimī","role":"Scribe of MS. Pococke 375","detail":"Fihrist names this scribe in the description of the Naskh hand. The manuscript keeps the earlier author’s work in a later written copy.","source":"HIS-READING-WORKS-IDRISI-SCRIBE"}
+  ],
+  "loc:2007678037": [
+    {"name":"Eadweard Muybridge","role":"Photographer credited on the card","detail":"The print credits Muybridge and explains the intervals at which its negatives were made.","source":"HIS-READING-WORKS-MUYBRIDGE-PLATE"},
+    {"name":"Leland Stanford","role":"Owner of the named mare in the caption","detail":"The printed caption identifies Sallie Gardner as Stanford’s horse. It separately credits the photography.","source":"HIS-READING-WORKS-MUYBRIDGE-PLATE"}
+  ],
+  "cern:6qhcbugnq4rng": [
+    {"name":"Tim Berners-Lee","role":"Used the original machine to develop and host the Web","detail":"The Science Museum’s CERN loan account identifies his NeXT computer as the one that hosted the first Web page.","source":"HIS-READING-WORKS-NEXT"},
+    {"name":"Mike Sendall","role":"Approved purchase of the computer","detail":"The Science Museum account identifies Sendall as the manager who approved purchase of the NeXT machine in 1990.","source":"HIS-READING-WORKS-NEXT"}
+  ],
+  "perkins:procede-1829": [
+    {"name":"Louis Braille","role":"Author of the 1829 first edition","detail":"The first edition describes an adapted system for words and music, with dots and dashes. It is distinct from the later no-dash version.","source":"HIS-READING-WORKS-PERKINS-PROCEDE"},
+    {"name":"Charles Barbier","role":"Earlier contributor credited in the book","detail":"Perkins notes that Braille acknowledged Barbier’s earlier tactile dot system while explaining how their systems differed.","source":"HIS-READING-WORKS-PERKINS-PROCEDE"},
+    {"name":"Jen Hale","role":"Perkins archivist who discussed the surviving copy","detail":"Hale describes uncertainty about how the book reached Perkins. The article treats acquisition by Samuel Gridley Howe as a possibility.","source":"HIS-READING-WORKS-PERKINS-PROCEDE"}
+  ],
+  "harvard:a02969": [
+    {"name":"Henrietta Swan Leavitt","role":"Astronomer who marked and analysed the plate","detail":"The Harvard comparison identifies her star marks on the back of the glass and shows their mirror relationship to her sky-facing chart in the notebook entry of 2 November 1906.","source":"HIS-LEAVITT-METHOD"}
+  ],
+  "met:2005.100.931": [
+    {"name":"John Moran","role":"Photographer","detail":"The Met credits Moran for this 1871 albumen print of the cathedral in Cartagena. The printed image and the mount have different recorded edges.","source":"HIS-REFERENCE-LINE-CARTAGENA-CATHEDRAL"}
+  ],
+  "met:2017.69.28": [
+    {"name":"José Negretti","role":"Photographer","detail":"The Met credits Negretti for this albumen print. Its framed vantage cannot supply the accounts of the people whose work the site depicts.","source":"HIS-REFERENCE-LINE-NEGRETTI-MINING"}
+  ],
+  "cma:1955.320": [
+    {"name":"Maria Sibylla Merian","role":"Artist credited for the published plate","detail":"The Cleveland Museum credits Merian. Its date of 1771 describes this engraved impression, produced after her lifetime.","source":"HIS-REFERENCE-LINE-SURINAME-ENGRAVING"}
+  ],
+  "ypm:yu.009738": [
+    {"name":"Rolla M. Tryon","role":"Collector named on the herbarium record","detail":"The Yale Peabody record names Tryon for this 1961 collection on the road to Hanover north of Zanderij.","source":"HIS-REFERENCE-LINE-ZANDERIJ-FERN"}
+  ],
+  "us:3693365": [
+    {"name":"W. D. Stevens","role":"One of the four named collectors","detail":"The specimen record names Stevens with O. Montiel J., C. Davidson and S. Christoph. It places this collection near a monument in Parque Nacional Cerro Corá.","source":"HIS-REFERENCE-LINE-CERRO-CORA-LEAF"}
+  ],
+  "us:3757218": [
+    {"name":"E. Pasini","role":"One of the three named collectors","detail":"The U.S. National Herbarium identifies Pasini with F. Torchelsen and E. Hayden, and distinguishes their field number from the accession.","source":"HIS-REFERENCE-LINE-PASO-ATAQUES-SHEET"}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "rbins:ishango-bone-1950": [
+    { "name": "Jean de Heinzelin", "role": "Geologist and leader of the 1950 excavation", "detail": "The excavation on the Congolese shore of Lake Edward recovered this bone. Its maker’s name and the purpose of the groups remain open.", "source": "HIS-NUMBER-LEAF-ishango" }
+  ],
+  "columbia:plimpton-cuneiform-322": [
+    { "name": "George Arthur Plimpton", "role": "Collector and donor", "detail": "The gift came to Columbia University Libraries in 1936. The tablet belongs to Old Babylonian Larsa.", "source": "HIS-NUMBER-LEAF-plimpton-context" },
+    { "name": "Eleanor Robson", "role": "Historian of Mesopotamian mathematics", "detail": "She interprets the entries in the context of a teacher preparing right-triangle and reciprocal-pair problems.", "source": "HIS-NUMBER-LEAF-plimpton-context" }
+  ],
+  "bodleian:ms-sansk-d-14": [
+    { "name": "Takao Hayashi", "role": "Historian of mathematics", "detail": "His study used the writing and mathematical content to propose an age. This method gives readers a separate line of evidence from the later bark samples.", "source": "HIS-NUMBER-LEAF-bakhshali" }
+  ]
+}

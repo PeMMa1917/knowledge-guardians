@@ -1,0 +1,7 @@
+.story-frame-panel { display: grid; gap: 0.65rem; }
+.story-frame-panel h2, .story-frame-panel p, .story-caption h3 { margin-block: 0; }
+.story-caption-frame { padding: 0.65rem; border: 0.25rem solid var(--gold-dim); border-radius: 0.4rem; }
+.story-caption { display: grid; gap: 0.45rem; padding: 0.65rem; background: var(--panel); overflow-wrap: anywhere; }
+.story-caption-tag, .story-caption-name { max-inline-size: 31rem; }
+.story-caption-table p + p, .story-caption-dates p + p { border-block-start: 1px solid var(--gold-dim); padding-block-start: 0.45rem; }
+.story-caption-sources { display: grid; gap: 0.2rem; overflow-wrap: anywhere; }

@@ -54,8 +54,11 @@
      "weave": {
       "concepts": [
        "evidence",
-       "truth"
+       "truth",
+       "power"
       ],
+      "framework": ["scope", "perspectives", "ethics"],
+      "thinking": { "dok": 2, "bloom": "understand", "fink": "integration", "solo": "multistructural" },
       "atl": [
        "research"
       ],
@@ -90,8 +93,13 @@
      "weave": {
       "concepts": [
        "evidence",
-       "responsibility"
+       "responsibility",
+       "certainty",
+       "interpretation",
+       "power"
       ],
+      "framework": ["scope", "perspectives", "methods-and-tools", "ethics"],
+      "thinking": { "dok": 3, "bloom": "analyse", "fink": "learning-to-learn", "solo": "relational" },
       "atl": [
        "research",
        "thinking"
@@ -133,8 +141,13 @@
      "weave": {
       "concepts": [
        "evidence",
-       "explanation"
+       "explanation",
+       "objectivity",
+       "certainty",
+       "interpretation"
       ],
+      "framework": ["scope", "methods-and-tools"],
+      "thinking": { "dok": 2, "bloom": "apply", "fink": "application", "solo": "multistructural" },
       "atl": [
        "thinking",
        "research"
@@ -187,8 +200,11 @@
        "evidence",
        "justification",
        "responsibility",
-       "power"
+       "power",
+       "values"
       ],
+      "framework": ["perspectives", "methods-and-tools", "ethics"],
+      "thinking": { "dok": 3, "bloom": "evaluate", "fink": "human", "solo": "relational" },
       "atl": [
        "communication",
        "social"
@@ -226,8 +242,14 @@
      },
      "weave": {
       "concepts": [
-       "perspective"
+       "perspective",
+       "culture",
+       "interpretation",
+       "values",
+       "responsibility"
       ],
+      "framework": ["perspectives", "ethics"],
+      "thinking": { "dok": 3, "bloom": "apply", "fink": "caring", "solo": "relational" },
       "atl": [
        "social"
       ],
@@ -576,7 +598,14 @@
     "HIS-S16"
    ],
    "grantsCard": "card.met-ingots",
-   "altText": "A catalogue page showing ten small rounded dark metal cakes next to a cloth bag."
+   "altText": "A catalogue page showing ten small rounded dark metal cakes next to a cloth bag.",
+   "specimen": {
+    "key": "met:2023.133a-k",
+    "institution": "The Metropolitan Museum of Art",
+    "accession": "2023.133a–k",
+    "source": "HIS-S16",
+    "objective": "m02.o5.showdown"
+   }
   },
   {
    "id": "AE-ASSAY",
@@ -612,7 +641,7 @@
      "map": "aethelgard.emberford",
      "x": 21,
      "y": 7,
-     "text": "The thread runs into the guild ledger. The entry reads: 'One patterned blade. Lyle workshop to Corvan Hale. This season.'",
+     "text": "The thread runs into the guild ledger. The entry reads: 'One patterned blade. Lyle workshop to Corvan Hale. This season.' The clerk files it by the last transfer. The date tells the guild which sale to settle.",
      "card": "card.guild-ledger"
     },
     {
@@ -621,7 +650,7 @@
      "map": "aethelgard.emberford",
      "x": 3,
      "y": 13,
-     "text": "The thread ends on Hesper's workshop sheet: two steels, stacked, welded, twisted and folded, this season.",
+     "text": "The thread ends on Hesper's workshop sheet: two steels, stacked, welded, twisted and folded, this season. She records when the work was done so she can trace a repair. The two dates can agree and answer different questions.",
      "card": "card.workshop-diagram"
     }
    ],
@@ -973,6 +1002,8 @@
   }
  ],
  "journal": [
+  { "id": "j.hesper.checked-bench", "claimKind": "observation", "text": "Hesper took the bench turn I offered. She showed me which face of the scrap she would repair. Her apprentice kept the forge open in Emberford." },
+  { "id": "j.hesper.checked-drawer", "claimKind": "observation", "text": "I found Hesper’s repair scrap in the Nexus drawer. Ise left the date it arrived next to Hesper’s own note. Hesper still had a turn to finish in Emberford." },
   {
    "id": "j.m02.start",
    "text": "Arrived in Emberford, a guild town in Aethelgard. Aethelgard is a game world: nothing here is a historical record unless it says 'Documented'.",
@@ -1018,7 +1049,7 @@
   {
    "id": "corvan.start",
    "speaker": "merchant-corvan",
-   "text": "Guardians! Look at this. True wootz of ancient Damascus. See the water in the steel? Only twenty-four marks.",
+   "text": "Guardians! Look at this. True wootz of ancient Damascus. See the water in the steel? Only twenty-four marks. That gold stamp gets my price onto the order slips. Once a buyer takes a copy, the order desk uses my description too.",
    "effects": [
     {
      "setFlag": "heard.corvan",
@@ -1295,7 +1326,7 @@
   {
    "id": "hesper.offer",
    "speaker": "smith-hesper",
-   "text": "I watched the square. You did not shout, and you asked the maker first. Most people don't. Your Nexus: I want to see how you people test things. Would they let a smith visit?",
+   "text": "I watched the square. On your slip the workshop name tells a reader where to ask a question. In our shop the same name binds the repair to whoever set the rivets. I can come to the Nexus with a scrap and teach that check. My apprentice keeps the forge open while I’m away. Can they count on a bench for me?",
    "options": [
     {
      "text": "Yes. Come to the Nexus.",
@@ -1305,6 +1336,7 @@
        "setFlag": "hesper.coming",
        "value": true
       },
+      { "setFlag": "hesper.visitArrangement", "value": "bench" },
       {
        "relation": "smith-hesper",
        "by": 1
@@ -1313,12 +1345,13 @@
     },
     {
      "text": "I'll ask Warden Ise first.",
-     "next": "hesper.offer2",
+     "next": "hesper.arrange",
      "effects": [
       {
        "setFlag": "hesper.coming",
        "value": true
-      }
+      },
+      { "setFlag": "hesper.visitArrangement", "value": "confirm" }
      ]
     }
    ]
@@ -1326,7 +1359,30 @@
   {
    "id": "hesper.offer2",
    "speaker": "smith-hesper",
-   "text": "Good. I'll close the forge for a few days. Bring a hard question."
+   "text": "Good. I can tell my apprentice when to take over the forge. I’ll tie a practice scrap to the confirmed bench slip."
+  },
+  {
+   "id": "hesper.arrange",
+   "speaker": "smith-hesper",
+   "text": "I can wait to hear from Ise. I’ll leave a scrap in the Nexus return drawer so the first visitor can check the mark even if I’m still on duty."
+  },
+  {
+   "id": "hesper.nexus.bench",
+   "speaker": "smith-hesper",
+   "text": "Put your thumb on that stamped side. That’s the repair side in my shop. The clerk wrote down when the scrap crossed your counter. Both dates go back on the peg. My apprentice is minding the forge today, and I promised to cover their turn when I get home.",
+   "effects": [
+    { "setFlag": "hesper.visitChecked", "value": "bench" },
+    { "journal": "j.hesper.checked-bench" }
+   ]
+  },
+  {
+   "id": "hesper.nexus.drawer",
+   "speaker": "warden-ise",
+   "text": "The apprentice is on the forge today and Hesper is helping them with a repair. See the stamp on the scrap? Hesper uses it to say which side she’ll mend. I’ve left her note and the dated drawer receipt side by side. You can tell when the scrap reached us. Her demonstration can wait.",
+   "effects": [
+    { "setFlag": "hesper.visitChecked", "value": "drawer" },
+    { "journal": "j.hesper.checked-drawer" }
+   ]
   },
   {
    "id": "hesper.after",

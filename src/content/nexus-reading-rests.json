@@ -24,12 +24,15 @@
       }
      ],
      "weave": {
+      "framework": ["perspectives", "methods-and-tools", "ethics"],
+      "thinking": { "dok": 3, "bloom": "evaluate", "fink": "caring", "solo": "relational" },
       "concepts": [
        "evidence",
        "power",
        "values",
        "perspective",
-       "responsibility"
+       "responsibility",
+       "culture"
       ],
       "atl": [
        "research",
@@ -211,7 +214,7 @@
    "id": "nexus.rest.split-plan",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "The joiner clears a place at the low table and points to the return hook near the counter tray. The two people comparing books agree to swap one at a time while the other rest is away."
+   "text": "The joiner clears a place at the low table and points to the return hook. Landing readers take a rest to their ledge to read a page aloud together. They leave slips at the hook. The two readers at the low table can compare books by taking turns while that rest is away."
   },
   {
    "id": "nexus.rest.pair-slot",
@@ -257,7 +260,7 @@
    "id": "nexus.rest.pair-ready",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "Two books sit open together on their rests. The clerk brings the loan tray over and asks what should happen to the slip for the person who had to leave.",
+   "text": "Two books sit open together on their rests. The clerk brings the loan tray over. 'On the landing, one reads aloud and the others follow. They leave a single slip for the whole group. Shall we keep their rest request where tomorrow’s clerk can see it?'",
    "options": [
     {
      "text": "Clip the request beside the loan total, on its own line.",
@@ -289,7 +292,7 @@
    "id": "nexus.rest.pair-read",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "The clerk keeps the four lending marks and gives the remaining request its own place. Anyone who looks after the table tomorrow can see both what the open books are doing and who is still waiting for a rest.",
+   "text": "The clerk keeps the four lending marks and gives the landing group’s request its own place. Anyone who looks after the table tomorrow can see both what a rest did here and how many groups still need one elsewhere.",
    "effects": [
     {
      "setFlag": "nexus.rest.used",

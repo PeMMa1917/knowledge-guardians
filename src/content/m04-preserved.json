@@ -882,6 +882,419 @@
    "speaker": "preserved-royal-keeper",
    "historicalLabel": "fictional-world",
    "text": "A reader at the burial-first card follows the known places and points to the blank move date. They ask who could speak for that handover. The museum file names the custody places. Who authorised the move remains a separate question."
+  },
+  {
+   "id": "preserved.handoff.start.open",
+   "speaker": "handoff-nellis",
+   "text": "I took the late slot. A reader at the rail asked me which line I’d signed. Turns out it was useful to have one I could point to. Now my trainee needs credit for the next delivery. They asked to keep their name off the wall.",
+   "historicalLabel": "fictional-world",
+   "next": "preserved.handoff.prepare"
+  },
+  {
+   "id": "preserved.handoff.start.fold",
+   "speaker": "handoff-nellis",
+   "text": "I made the first slot. The receiver lifted the fold and asked about Leila’s clips. Nobody at the wall did. Now my trainee needs credit for a delivery. They asked to check it in at the desk.",
+   "historicalLabel": "fictional-world",
+   "next": "preserved.handoff.prepare"
+  },
+  {
+   "id": "preserved.handoff.start.left",
+   "speaker": "handoff-nellis",
+   "text": "I took their slip. The receiver thought I’d checked the file, so we had to sit down again. I logged the delivery on its own. My trainee made the next run and asked to keep their name off the wall.",
+   "historicalLabel": "fictional-world",
+   "next": "preserved.handoff.prepare"
+  },
+  {
+   "id": "preserved.handoff.prepare",
+   "speaker": "handoff-nellis",
+   "text": "A visitor wants a row of names for the workers in the excavation account. Take our form down to the trays by the archive acknowledgments. I’ll meet you back here. The dispatch rail and the Review Room use the same clips for very different records.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Unfold the carrier copy from the Nile Archive.",
+     "next": "preserved.handoff.copy",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "preserved.arrived",
+          "eq": true
+         },
+         {
+          "flagSet": "nile.handoff.mode"
+         }
+        ]
+       },
+       {
+        "item": "item.handoff-copy"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.handoff.reference",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Ask Nellis for the receiving desk’s copy.",
+     "next": "preserved.handoff.desk-copy",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "preserved.arrived",
+          "eq": true
+         },
+         {
+          "flagSet": "nile.handoff.mode"
+         }
+        ]
+       },
+       {
+        "not": {
+         "item": "item.handoff-copy"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.handoff.reference",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "I’ll leave the trays for now."
+    }
+   ]
+  },
+  {
+   "id": "preserved.handoff.copy",
+   "speaker": "handoff-nellis",
+   "text": "Here is the arrival you signed for, and here is Leila’s line about the papyrus. Put it on the right-hand tray with the current roster. The older acknowledgments go on the left.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.handoff.desk-copy",
+   "speaker": "handoff-nellis",
+   "text": "I made a second line here when the receiver asked. Take this version of the receipt to the right-hand tray. The older acknowledgments go on the left.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.handoff.work",
+   "speaker": "handoff-nellis",
+   "text": "The receiving roster is beside me. The Review Room holds the real excavation acknowledgments. Once the first main display goes up, we can use both trays down there.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.handoff.file",
+   "speaker": "narrator",
+   "text": "The left tray takes the excavation acknowledgments. Carter named four Egyptian foremen; other workers appear in photographs. The collection has no diaries or letters written by those workers. The right tray takes a delivery receipt and the trainee’s request to keep their name at the desk.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the excavation source and current roster to separate trays.",
+     "next": "preserved.handoff.sorted",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "preserved.arrived",
+          "eq": true
+         },
+         {
+          "flagSet": "nile.handoff.mode"
+         }
+        ]
+       },
+       {
+        "card": "card.preserved.tut.workforce"
+       },
+       {
+        "flag": "preserved.handoff.receipt",
+        "eq": true
+       },
+       {
+        "flag": "preserved.handoff.reference",
+        "eq": true
+       },
+       {
+        "not": {
+         "objective": "preserved.handoff.scope"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.handoff.sorted",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the trays on the shelf."
+    }
+   ]
+  },
+  {
+   "id": "preserved.handoff.sorted",
+   "speaker": "narrator",
+   "text": "The left tray credits the four foremen the archive can identify. Its spare clip asks what source could add a name. The right tray records the trainee’s shift without carrying their name to the wall. Pick up both trays and take them back to Nellis.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.handoff.choose",
+   "speaker": "handoff-nellis",
+   "text": "The trainee can get credit either way. On the rail, readers can see where the old acknowledgments stop and bring a source. At the desk, a keeper can talk it through and check a proposed name with them. They have to catch us when we’re here.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pin the source and its open question on the public rail.",
+     "next": "preserved.handoff.public",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.handoff.scope"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.handoff.arrangement"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.handoff.arrangement",
+       "value": "public"
+      }
+     ]
+    },
+    {
+     "text": "Open a source check at the staffed desk.",
+     "next": "preserved.handoff.desk",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.handoff.scope"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.handoff.arrangement"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.handoff.arrangement",
+       "value": "desk"
+      }
+     ]
+    },
+    {
+     "text": "Leave Nellis the receipt and decline the review shift.",
+     "next": "preserved.handoff.leave",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.handoff.scope"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.handoff.arrangement"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.handoff.arrangement",
+       "value": "leave"
+      }
+     ]
+    },
+    {
+     "text": "Let me think by the trays."
+    }
+   ]
+  },
+  {
+   "id": "preserved.handoff.public",
+   "speaker": "handoff-nellis",
+   "text": "A visitor follows the line to the excavation account and sees where the named list ends. I can take this board to the next open shift. I’ve filed the trainee’s name at the desk, where they asked me to keep it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.handoff.desk",
+   "speaker": "handoff-nellis",
+   "text": "I’ll be at the low bench after receiving. A visitor can bring a source and I can hear them out before a name goes up. The rail tells them when to come. The trainee’s shift is logged.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.handoff.leave",
+   "speaker": "handoff-nellis",
+   "text": "Fair. I can log the arrival now. I’ll leave the clip open for a source and keep the trainee’s receipt at the desk. The next keeper can choose a review shift.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.handoff.after",
+   "speaker": "handoff-nellis",
+   "text": "I have a signed arrival for the trainee. The display can still change when someone brings another source. Check the rail or the low bench before you go.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.binak.test",
+   "speaker": "preserved-royal-keeper",
+   "text": "A shallow rim can make a paper practice basket look different from one side. Try this paper version on its edge and on a base cradle. Hold the paper and table fixed. Mikaela’s own work stays with the museum case and her name.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Rest the same practice model on its narrow edge and tap the board once.",
+     "next": "preserved.binak.edge",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.binak.sources"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.binak.display"
+        }
+       },
+       {
+        "not": {
+         "flag": "preserved.binak.edge",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.binak.view",
+       "value": "edge"
+      }
+     ]
+    },
+    {
+     "text": "Set the practice model flat on the base cradle and tap the board once.",
+     "next": "preserved.binak.base",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.binak.sources"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.binak.display"
+        }
+       },
+       {
+        "not": {
+         "flag": "preserved.binak.base",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.binak.view",
+       "value": "base"
+      }
+     ]
+    },
+    {
+     "text": "Leave the paper model on the mat."
+    }
+   ]
+  },
+  {
+   "id": "preserved.binak.edge",
+   "speaker": "preserved-royal-keeper",
+   "text": "The paper rim bends against the edge. Go to the side mark and check where it meets the bench. The old catalogue entry still speaks for the object in Melbourne.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.binak.base",
+   "speaker": "preserved-royal-keeper",
+   "text": "The base stayed flat and the rim stood clear. Go to the side mark. You can see the space under the rim without leaning on it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.binak.mount",
+   "speaker": "preserved-registrar",
+   "text": "The apprentice wants to see the open shape and how the maker learned it. The carrier needs room to move the practice model after the hall closes. A low cradle leaves the rim clear. A side-view sheet can sit out while the model waits on its support. Both dates can stay with Mikaela’s name.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the level practice cradle where the apprentice can see its opening.",
+     "next": "preserved.binak.cradle",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.binak.compare"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.binak.display"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.binak.display",
+       "value": "cradle"
+      }
+     ]
+    },
+    {
+     "text": "Hang the side view and keep the model on its supported shelf.",
+     "next": "preserved.binak.profile",
+     "if": {
+      "all": [
+       {
+        "objective": "preserved.binak.compare"
+       },
+       {
+        "not": {
+         "flagSet": "preserved.binak.display"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "preserved.binak.display",
+       "value": "profile"
+      }
+     ]
+    },
+    {
+     "text": "Leave the mat and source tabs ready."
+    }
+   ]
+  },
+  {
+   "id": "preserved.binak.cradle",
+   "speaker": "preserved-registrar",
+   "text": "The apprentice can walk around the opening. The underside has its own drawing at the source. Check that the name and both dates stay clear beside the rim.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "preserved.binak.profile",
+   "speaker": "preserved-registrar",
+   "text": "A visitor can compare width and depth without moving a model. The carrier can come to the shelf for the practice shape after closing. Check that the side-view panel still carries Mikaela’s name.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "missions": [
@@ -1324,6 +1737,359 @@
      "onComplete": [
       {
        "journal": "j.preserved.begin"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH3-R09",
+   "world": "WORLD-04",
+   "title": "A Place for the Next Name",
+   "knowledgeQuestion": "How can a display recognise work and give readers a way to check new names?",
+   "available": {
+    "all": [
+     {
+      "flag": "preserved.arrived",
+      "eq": true
+     },
+     {
+      "flagSet": "nile.handoff.mode"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "preserved.handoff.scope",
+     "title": "Set the old acknowledgments and new receiving roster on separate trays.",
+     "done": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "preserved.arrived",
+          "eq": true
+         },
+         {
+          "flagSet": "nile.handoff.mode"
+         }
+        ]
+       },
+       {
+        "card": "card.preserved.tut.workforce"
+       },
+       {
+        "flag": "preserved.handoff.receipt",
+        "eq": true
+       },
+       {
+        "flag": "preserved.handoff.reference",
+        "eq": true
+       },
+       {
+        "flag": "preserved.handoff.sorted",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "truth",
+       "certainty",
+       "perspective",
+       "interpretation",
+       "objectivity",
+       "explanation"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "anthropology",
+       "lang-langlit"
+      ],
+      "minutes": 5,
+      "thinking": {
+       "dok": 3,
+       "bloom": "apply",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-MED-04"
+     ]
+    },
+    {
+     "id": "preserved.handoff.respond",
+     "title": "Choose how the Cold Store handles the name request and check the result.",
+     "done": {
+      "all": [
+       {
+        "flagSet": "preserved.handoff.arrangement"
+       },
+       {
+        "flag": "preserved.handoff.checked",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "power",
+       "values",
+       "perspective",
+       "justification"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "POL",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "global-politics",
+       "design-tech"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "caring",
+       "solo": "extended"
+      }
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "visible": {
+      "objective": "preserved.handoff.scope"
+     },
+     "onComplete": [
+      {
+       "journal": "j.preserved.handoff"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH3-R11",
+   "world": "WORLD-04",
+   "title": "The Open Rim",
+   "knowledgeQuestion": "How does the way we show an object change what a visitor can see about its maker?",
+   "available": {
+    "flag": "preserved.arrived",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "preserved.binak.sources",
+     "title": "Read Mikaela’s basket record and two separate catalogue date fields.",
+     "done": {
+      "all": [
+       {
+        "flag": "preserved.arrived",
+        "eq": true
+       },
+       {
+        "card": "card.preserved.binak"
+       },
+       {
+        "flag": "preserved.binak.dates",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "culture",
+       "evidence",
+       "certainty",
+       "truth",
+       "perspective",
+       "interpretation"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "ART"
+      ],
+      "subjects": [
+       "history",
+       "visual-arts",
+       "anthropology"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-MED-04"
+     ]
+    },
+    {
+     "id": "preserved.binak.compare",
+     "title": "Compare two supports on the same paper model.",
+     "done": {
+      "all": [
+       {
+        "objective": "preserved.binak.sources"
+       },
+       {
+        "flag": "preserved.binak.edge",
+        "eq": true
+       },
+       {
+        "flag": "preserved.binak.base",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "evidence",
+       "explanation",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "ART",
+       "NAT"
+      ],
+      "subjects": [
+       "visual-arts",
+       "design-tech",
+       "ess"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     },
+     "skills": [
+      "SK-THK-05",
+      "SK-RSC-21"
+     ],
+     "visible": {
+      "objective": "preserved.binak.sources"
+     }
+    },
+    {
+     "id": "preserved.binak.finish",
+     "title": "Set out a useful view and check that both date fields and the maker’s name remain.",
+     "done": {
+      "all": [
+       {
+        "flagSet": "preserved.binak.display"
+       },
+       {
+        "flag": "preserved.binak.checked",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "power",
+       "perspective",
+       "justification",
+       "culture"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "communication",
+       "social",
+       "thinking"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "visual-arts",
+       "anthropology",
+       "design-tech"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "human",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-ETR-01"
+     ],
+     "visible": {
+      "objective": "preserved.binak.compare"
+     },
+     "onComplete": [
+      {
+       "giveItem": "item.two-place-tabs"
       }
      ]
     }
@@ -1809,6 +2575,126 @@
    "objective": "preserved.begin.publish",
    "depth": 4,
    "text": "Put the temple card in the Cold Store or start the custody trail at the burial. The other record stays in reach."
+  },
+  {
+   "id": "h.preserved.handoff.scope.1",
+   "objective": "preserved.handoff.scope",
+   "depth": 1,
+   "text": "Nellis has reached the Cold Store and remembers the Nile receipt."
+  },
+  {
+   "id": "h.preserved.handoff.scope.2",
+   "objective": "preserved.handoff.scope",
+   "depth": 2,
+   "text": "Meet Nellis beside the Cold Store’s receiving roster. Show them your copy or ask for theirs."
+  },
+  {
+   "id": "h.preserved.handoff.scope.3",
+   "objective": "preserved.handoff.scope",
+   "depth": 3,
+   "text": "Read the trainee’s permission by the roster and the excavation acknowledgments in the Review Room."
+  },
+  {
+   "id": "h.preserved.handoff.scope.4",
+   "objective": "preserved.handoff.scope",
+   "depth": 4,
+   "text": "The Review Room opens after the first main display. Clip both records to their own trays below the workforce case."
+  },
+  {
+   "id": "h.preserved.handoff.respond.1",
+   "objective": "preserved.handoff.respond",
+   "depth": 1,
+   "text": "A visitor wants to add names to the display."
+  },
+  {
+   "id": "h.preserved.handoff.respond.2",
+   "objective": "preserved.handoff.respond",
+   "depth": 2,
+   "text": "Return to Nellis after clipping both records to their trays."
+  },
+  {
+   "id": "h.preserved.handoff.respond.3",
+   "objective": "preserved.handoff.respond",
+   "depth": 3,
+   "text": "Choose a public source question, a staffed desk, or leave the review open with Nellis."
+  },
+  {
+   "id": "h.preserved.handoff.respond.4",
+   "objective": "preserved.handoff.respond",
+   "depth": 4,
+   "text": "Look at the result on the rail or low bench. The trainee’s name stays at the desk on every route."
+  },
+  {
+   "id": "h.preserved.binak.sources.1",
+   "objective": "preserved.binak.sources",
+   "depth": 1,
+   "text": "A maker’s name and two dates belong to a shallow basket in the Cold Store."
+  },
+  {
+   "id": "h.preserved.binak.sources.2",
+   "objective": "preserved.binak.sources",
+   "depth": 2,
+   "text": "Find Mikaela Rose Cottingham’s binak by the material shelf."
+  },
+  {
+   "id": "h.preserved.binak.sources.3",
+   "objective": "preserved.binak.sources",
+   "depth": 3,
+   "text": "Read the loose slip that distinguishes the catalogue heading from Date Made."
+  },
+  {
+   "id": "h.preserved.binak.sources.4",
+   "objective": "preserved.binak.sources",
+   "depth": 4,
+   "text": "Keep both fields with X 104841. The paper trial belongs to this archive."
+  },
+  {
+   "id": "h.preserved.binak.compare.1",
+   "objective": "preserved.binak.compare",
+   "depth": 1,
+   "text": "There is a paper model near the catalogue."
+  },
+  {
+   "id": "h.preserved.binak.compare.2",
+   "objective": "preserved.binak.compare",
+   "depth": 2,
+   "text": "Try the narrow edge and then the base cradle on the same board."
+  },
+  {
+   "id": "h.preserved.binak.compare.3",
+   "objective": "preserved.binak.compare",
+   "depth": 3,
+   "text": "Read the side mark after each move."
+  },
+  {
+   "id": "h.preserved.binak.compare.4",
+   "objective": "preserved.binak.compare",
+   "depth": 4,
+   "text": "Compare what the paper rim does under the same tap."
+  },
+  {
+   "id": "h.preserved.binak.finish.1",
+   "objective": "preserved.binak.finish",
+   "depth": 1,
+   "text": "An apprentice and a carrier need different views."
+  },
+  {
+   "id": "h.preserved.binak.finish.2",
+   "objective": "preserved.binak.finish",
+   "depth": 2,
+   "text": "Take the two support results to Aster’s stand."
+  },
+  {
+   "id": "h.preserved.binak.finish.3",
+   "objective": "preserved.binak.finish",
+   "depth": 3,
+   "text": "Put the level cradle where someone can see it or hang the side view."
+  },
+  {
+   "id": "h.preserved.binak.finish.4",
+   "objective": "preserved.binak.finish",
+   "depth": 4,
+   "text": "Check the outcome. Its paired tabs give the source and the job separate lines."
   }
  ],
  "journal": [
@@ -1836,6 +2722,11 @@
    "id": "j.preserved.begin",
    "title": "Where the file begins",
    "text": "Two visitors remembered different first stops in the room. I checked the site record and the custody account, then chose which would open the trail. The reign range stayed with the temple record and the unknown move date stayed open."
+  },
+  {
+   "id": "j.preserved.handoff",
+   "claimKind": "interpretation",
+   "text": "The Nile packet taught us to give receipt and review their own lines. The excavation acknowledgments name four foremen. The new delivery roster has its own purpose and permission. The space for another supported name stays open."
   }
  ],
  "moments": [
@@ -1847,6 +2738,82 @@
     "flagSet": "preserved.reply"
    },
    "prompt": "Whose route to the record changed because of what you left?"
+  },
+  {
+   "id": "mom.preserved.handoff",
+   "attribute": "caring",
+   "when": {
+    "objective": "preserved.handoff.respond"
+   },
+   "did": "You kept a trainee’s work on the receiving roster and left room for someone to check the historical display.",
+   "prompt": "Who could bring a source to the next check, and how would they find the keeper?"
+  },
+  {
+   "id": "mom.binak-tabs",
+   "attribute": "caring",
+   "when": {
+    "objective": "preserved.binak.finish"
+   },
+   "did": "You chose a readable view and left Mikaela’s name beside the two catalogue fields.",
+   "prompt": "What would a visitor miss if only the object’s shape were on the stand?"
+  }
+ ],
+ "chronicle": [
+  {
+   "id": "cold-store-name-rail",
+   "title": "The runner carried two records",
+   "text": "Nellis remembered the Nile packet. A trainee’s delivery was credited with their name kept at the desk. The excavation display still has room for another source.",
+   "if": {
+    "objective": "preserved.handoff.respond"
+   }
+  }
+ ],
+ "sources": [
+  {
+   "id": "HIS-BINAK-01",
+   "title": "Museums Victoria, Binak by Mikaela Rose Cottingham, X 104841",
+   "url": "https://collections.museumsvictoria.com.au/items/1915791",
+   "locator": "Object summary, First Peoples fields, association Date Made, dimensions and image rights",
+   "supports": "The record attributes this grass-fibre coiled bundle basket to Wurundjeri creator Mikaela Rose Cottingham. It describes her learning coil weaving at Bunjilaka and lists a shallow form. The heading and First Peoples field say 2012, while the Date Made association says 2011.",
+   "accessed": "2026-11-26"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.preserved.binak",
+   "title": "Mikaela Rose Cottingham’s binak, X 104841",
+   "text": "Museums Victoria records a shallow basket made by Mikaela Rose Cottingham, who is Wurundjeri. She learned coil weaving through work for an exhibition at Melbourne Museum and by studying historical baskets. This binak uses bundles of grass fibre.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-BINAK-01"
+   ],
+   "limits": "The heading and First Peoples date show 2012. The associated Date Made field shows 2011. This record leaves the exact year open. The Cold Store diagram is a generic teaching outline."
+  }
+ ],
+ "exhibits": [
+  {
+   "id": "OBJ-PRES-BINAK-X104841",
+   "name": "Mikaela Rose Cottingham’s binak",
+   "art": "preserved.binak-diagram",
+   "historicalLabel": "documented",
+   "dateText": "2011 in Date Made, 2012 in the catalogue heading.",
+   "dateKind": "Two dates printed in fields of the same museum record.",
+   "summary": "Museums Victoria X 104841 is a shallow grass-fibre basket made with coiled bundles. The maker learned and experimented with the form while taking part in an exhibition project.",
+   "sources": [
+    "HIS-BINAK-01"
+   ],
+   "grantsCard": "card.preserved.binak",
+   "altText": "An original pixel schematic of a shallow basket profile and its supporting board. The outline illustrates the teaching model."
+  }
+ ],
+ "items": [
+  {
+   "id": "item.two-place-tabs",
+   "name": "Paired context tabs",
+   "historicalLabel": "fictional-world",
+   "art": "icon.letter",
+   "description": "One tab keeps a name with its source. The other holds the action someone needs to take. Seagrass Steps has a place for both on its map rail."
   }
  ]
 }

@@ -3,7 +3,7 @@
  * characters, interactable objects, zones and lights. Units are tiles.
  * The WorldScene turns this data into a playable place.
  */
-export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door' | 'secret' | 'tiles' | 'shop' | 'gather' | 'workbench' | 'reading' | 'rumours' | 'trader' | 'seal' | 'boss' | 'fieldgame' | 'model' | 'scene' | 'forest-watch' | 'metal-trial' | 'copy-compare' | 'sea-chart' | 'stage-rehearsal' | 'market-scale' | 'water-gate' | 'civic-console' | 'voices-desk' | 'island-plan' | 'council-clock' | 'scout-table';
+export type InteractKind = 'exhibit' | 'bench' | 'label' | 'waystone' | 'forge' | 'assay' | 'thread' | 'portal' | 'sign' | 'lock' | 'alcove' | 'puzzle' | 'loreling' | 'board' | 'quarters' | 'dive' | 'lamps' | 'clue' | 'door' | 'secret' | 'tiles' | 'shop' | 'gather' | 'workbench' | 'reading' | 'rumours' | 'trader' | 'seal' | 'boss' | 'fieldgame' | 'model' | 'scene' | 'forest-watch' | 'metal-trial' | 'copy-compare' | 'sea-chart' | 'stage-rehearsal' | 'film-camera' | 'film-editor' | 'market-scale' | 'water-gate' | 'civic-console' | 'voices-desk' | 'island-plan' | 'council-clock' | 'scout-table';
 
 export interface Interactable {
   id: string;
@@ -22,6 +22,7 @@ export interface Interactable {
   node?: string;              // node, watch site, sample, edition or chart ID, depending on kind
   place?: string;             // for kind 'waystone': the place name
   text?: string;              // for kind 'sign'
+  sfx?: string;               // optional captioned sound when used
   flag?: string;              // for kind 'sign': set to true when read; for kind 'door': set when used
   /** Procedural art key drawn at this spot (see BootScene.makeTextures). */
   art?: string;
@@ -60,6 +61,8 @@ export interface MapDef {
   floor: (x: number, y: number) => string | null;
   stamps: { stamp: string; x: number; y: number; anim?: string[] }[];
   blocks: [number, number, number, number][];
+  /** Floor tiles that an authored world decision can obstruct or clear. */
+  conditionalBlocks?: { x: number; y: number; when: import('../domain/types').Condition }[];
   npcs: { id: string; x: number; y: number; facing: 'down' | 'up' | 'left' | 'right'; visibleIf?: import('../domain/types').Condition }[];
   interactables: Interactable[];
   zones: { id: string; x: number; y: number; w: number; h: number; to?: { map: string; x: number; y: number }; if?: import('../domain/types').Condition }[];

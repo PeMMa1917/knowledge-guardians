@@ -1,0 +1,38 @@
+{
+  "missions": [
+    {
+      "id": "KG-POST-R01",
+      "world": "WORLD-01",
+      "title": "Room for the Next Check",
+      "knowledgeQuestion": "What can a handover keep open for the next person?",
+      "available": { "all": [{ "flag": "postgame.closed", "eq": true }, { "flag": "handover.arrived", "eq": true }] },
+      "objectives": [
+        {
+          "id": "handover.first",
+          "title": "Check both pieces in a practice bundle and choose where to place the handover.",
+          "done": { "flagSet": "handover.last" },
+          "essential": false,
+          "weave": {
+            "concepts": ["evidence", "certainty", "perspective", "justification", "values", "responsibility"],
+            "framework": ["scope", "methods-and-tools", "perspectives", "ethics"],
+            "atl": ["thinking", "research", "communication"],
+            "aoks": ["HIS", "MAT", "HUM"],
+            "subjects": ["history", "design-tech", "math-ai"],
+            "minutes": 4,
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "caring", "solo": "relational" }
+          },
+          "onComplete": [{ "journal": "j.handover.first" }]
+        }
+      ]
+    }
+  ],
+  "hints": [
+    { "id": "h.handover.first.1", "objective": "handover.first", "depth": 1, "text": "Lia left a practice bundle on the middle table." },
+    { "id": "h.handover.first.2", "objective": "handover.first", "depth": 2, "text": "Use the two inspection actions to see what each piece carries." },
+    { "id": "h.handover.first.3", "objective": "handover.first", "depth": 3, "text": "The clips and strips work here. A matching tool from your Bag can open one piece too." },
+    { "id": "h.handover.first.4", "objective": "handover.first", "depth": 4, "text": "After checking both pieces, pin the public notice at the east wall or leave the handover at the west bench. A new bundle will be ready." }
+  ],
+  "journal": [
+    { "id": "j.handover.first", "claimKind": "interpretation", "text": "Lia’s room gives the next keeper one place to look. We kept the conditions and source lines with the bundle and left space for a later check." }
+  ]
+}

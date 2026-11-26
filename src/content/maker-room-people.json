@@ -1,0 +1,92 @@
+{
+  "met:67.43.16": [
+    {
+      "name": "Paul E. Manheim",
+      "role": "Donor named in the collection record",
+      "detail": "Manheim’s 1967 gift explains the accession line. The separate record places the inscribed bone in the Shang period.",
+      "source": "HIS-BONE-SPECIMEN"
+    }
+  ],
+  "met:91.1.535a-h": [
+    {
+      "name": "‘Umar ibn Yusuf",
+      "role": "Maker named in the instrument’s inscription",
+      "detail": "The Met reads the signature of the Rasulid prince and dates the instrument to 690 AH, given as 1291 CE. The catalogue also describes a reused plate and a modern pin.",
+      "source": "HIS-ASTROLABE-SPECIMEN"
+    }
+  ],
+  "bnf:coreen-109": [
+    {
+      "name": "Baegun",
+      "role": "Compiler of the Buddhist work",
+      "detail": "The BnF names the Buddhist monk as the compiler. Its accession Coréen 109 identifies the second volume of the 1377 metal-type printing made at Heungdeok-sa in Cheongju.",
+      "source": "HIS-JIKJI-SPECIMEN"
+    }
+  ],
+  "henan:7052472642044956672": [
+    {
+      "name": "Juzhong Zhang",
+      "role": "Co-author of an archaeological report on the Jiahu flutes",
+      "detail": "Zhang and colleagues described excavated flutes and reported instrument tests. The Henan Museum identifies this featured 23.1 cm flute individually. Its maker’s name is unrecorded.",
+      "source": "HIS-JIAHU-REPORT"
+    }
+  ],
+  "penn:b16665": [
+    {
+      "name": "Enheduanna",
+      "role": "Person named by the inscription",
+      "detail": "The Penn Museum reads Enheduanna’s name on the disk and identifies a scene in relief on its other face.",
+      "source": "HIS-ENHEDUANNA-DISK"
+    },
+    {
+      "name": "Sargon",
+      "role": "Father identified by the inscription",
+      "detail": "The Penn Museum’s description identifies Enheduanna as the daughter of Sargon of Akkad.",
+      "source": "HIS-ENHEDUANNA-DISK"
+    }
+  ],
+  "nmp:laguna-copperplate": [
+    {
+      "name": "Angkatan",
+      "role": "Recipient named in Postma’s published reading",
+      "detail": "The preliminary translation places Angkatan with her relative Bukah when the clearance was given.",
+      "source": "HIS-LAGUNA-READING"
+    },
+    {
+      "name": "Namwran",
+      "role": "Person whose outstanding debt the document clears",
+      "detail": "Postma’s reading identifies Namwran and says the document safeguards the clearance against later claims.",
+      "source": "HIS-LAGUNA-READING"
+    },
+    {
+      "name": "Kasumuran",
+      "role": "Witness named in Postma’s published reading",
+      "detail": "The preliminary translation names Kasumuran as leader of Puliran and places the clearance in his presence.",
+      "source": "HIS-LAGUNA-READING"
+    }
+  ],
+  "cma:2022.168": [
+    {
+      "name": "Seifū Yohei III",
+      "role": "Maker credited in the collection record",
+      "detail": "The museum connects the named maker, the underglaze blue begonias and the overglaze colours to this teapot and its accession.",
+      "source": "HIS-MAKER-seiho-teapot"
+    }
+  ],
+  "cma:2022.206": [
+    {
+      "name": "Seifū Yohei IV",
+      "role": "Maker credited in the collection record",
+      "detail": "The museum attributes this sweets bowl to Seifū Yohei IV. Its record distinguishes the moulded part of the design from its in-glaze and underglaze colours.",
+      "source": "HIS-MAKER-seiho-sweets-bowl"
+    }
+  ],
+  "cma:1966.500.10": [
+    {
+      "name": "Feodor Ivanovich Rückert",
+      "role": "Workmaster credited in the collection record",
+      "detail": "The museum names Rückert and the House of Fabergé for these sugar tongs. Opaque cloisonné enamel decorates the silver gilt.",
+      "source": "HIS-MAKER-faberge-tongs"
+    }
+  ]
+}

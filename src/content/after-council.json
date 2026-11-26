@@ -1,0 +1,221 @@
+{
+  "characters": [
+    {
+      "id": "lia-vann",
+      "name": "Lia Vann",
+      "role": "Porter learning the archive’s work",
+      "sprite": "custom:warm.black.teal.wine.scarf.white.curls.none.none",
+      "mode": "fictional",
+      "talk": [
+        { "node": "postgame.lia.public", "if": { "flag": "postgame.edition", "eq": "public" } },
+        { "node": "postgame.lia.loan", "if": { "flag": "postgame.edition", "eq": "loan" } },
+        { "node": "postgame.lia" }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item.next-keeper-pen",
+      "name": "The pen from the first label",
+      "description": "Ise put the pen back at the label stand after the Council. Lia is waiting at the next keeper’s bench.",
+      "historicalLabel": "fictional-world",
+      "art": "icon.card"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-POSTGAME-R01",
+      "world": "WORLD-01",
+      "title": "The Next Keeper",
+      "knowledgeQuestion": "What should another person inherit when they take over a record?",
+      "available": { "flagSet": "postgame.open" },
+      "objectives": [
+        {
+          "id": "postgame.retrace",
+          "title": "Meet Lia and compare the two references at the next bench.",
+          "essential": false,
+          "done": { "all": [{ "flagSet": "node.postgame.lia" }, { "flagSet": "node.postgame.copy" }] },
+          "weave": {
+            "concepts": ["evidence", "truth", "certainty", "culture", "interpretation"],
+            "framework": ["scope", "perspectives", "methods-and-tools"],
+            "thinking": { "dok": 2, "bloom": "analyse", "fink": "integration", "solo": "multistructural" },
+            "atl": ["research", "social"],
+            "aoks": ["HIS", "LAN"],
+            "subjects": ["history", "lang-langlit"],
+            "minutes": 3
+          }
+        },
+        {
+          "id": "postgame.complete",
+          "title": "Leave a way for Lia to check the first exhibit and follow its note back.",
+          "essential": false,
+          "done": { "flagSet": "postgame.closed" },
+          "onComplete": [{ "journal": "j.postgame.closed" }],
+          "weave": {
+            "concepts": ["responsibility", "power", "values", "perspective", "objectivity", "explanation", "justification"],
+            "framework": ["ethics", "perspectives", "methods-and-tools"],
+            "thinking": { "dok": 3, "bloom": "create", "fink": "learning-to-learn", "solo": "relational" },
+            "atl": ["communication", "self-management", "thinking"],
+            "aoks": ["HIS", "HUM"],
+            "subjects": ["history", "global-politics", "design-tech"],
+            "minutes": 4
+          }
+        }
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "id": "award.next-keeper",
+      "kind": "badge",
+      "name": "Room for the Next Keeper",
+      "title": "Keeper of the Open Bench",
+      "earnedBy": "Left a traceable handover and read its first reply.",
+      "criteria": [],
+      "when": { "objective": "postgame.complete" }
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "postgame.open",
+      "speaker": "warden-ise",
+      "historicalLabel": "fictional-world",
+      "motif": "first-light",
+      "text": "Your first pen is back on the stand. Lia carried a box of old labels in this morning. I asked her to wait at the next bench until someone could show her how the records travel. I used to start by telling people what the label said.",
+      "options": [
+        {
+          "text": "Take the pen and show Lia where to begin.",
+          "if": { "all": [{ "flagSet": "ending.council" }, { "not": { "flagSet": "postgame.open" } }] },
+          "effects": [{ "giveItem": "item.next-keeper-pen" }, { "setFlag": "postgame.open", "value": true }],
+          "next": "postgame.key"
+        },
+        { "text": "I’ll come back to the bench later." }
+      ]
+    },
+    {
+      "id": "postgame.key",
+      "speaker": "warden-ise",
+      "historicalLabel": "fictional-world",
+      "text": "The small door by the floor runner is open. Leave her something she can use without you in the room."
+    },
+    {
+      "id": "postgame.lia",
+      "speaker": "lia-vann",
+      "historicalLabel": "fictional-world",
+      "text": "They gave me a box marked FIRST. A porter likes a box that tells you where it goes. This one hasn’t told me. I can carry one record around the hall with me. I can leave a second set on the table when I’m out, if you help me name what each one says."
+    },
+    {
+      "id": "postgame.copy",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "One cover gives the date of a patent grant. The other carries the museum’s date range for a particular pen. A visitor has written the day their family first used one on an unsigned slip. Her slip could lead to another source. It has no place in either date line yet."
+    },
+    {
+      "id": "postgame.place",
+      "speaker": "lia-vann",
+      "historicalLabel": "fictional-world",
+      "text": "Both records will fit under one lamp. People can compare them by themselves if we leave the pen out. Or I can take the pen round and bring people to the two boxes one at a time. That helps someone who likes to ask quietly, but they’ll need to find me.",
+      "options": [
+        {
+          "text": "Set both records on the public bench and leave the pen for the next visitor.",
+          "if": { "item": "item.next-keeper-pen" },
+          "effects": [{ "takeItem": "item.next-keeper-pen" }, { "setFlag": "postgame.edition", "value": "public" }],
+          "next": "postgame.public"
+        },
+        {
+          "text": "Lend Lia the pen and leave a marked time for a private visit.",
+          "if": { "item": "item.next-keeper-pen" },
+          "effects": [{ "takeItem": "item.next-keeper-pen" }, { "setFlag": "postgame.edition", "value": "loan" }],
+          "next": "postgame.loan"
+        },
+        { "text": "Let me look round again." }
+      ]
+    },
+    {
+      "id": "postgame.public",
+      "speaker": "lia-vann",
+      "historicalLabel": "fictional-world",
+      "text": "I’ll put the grant and object record in separate slots. There’s a small open clip for the next person’s lead. Check the lit bench before you go."
+    },
+    {
+      "id": "postgame.loan",
+      "speaker": "lia-vann",
+      "historicalLabel": "fictional-world",
+      "text": "I can take a visitor through the references when the porter’s round ends. Let’s leave the visit time where a person can find it. Check the loan slip before you go."
+    },
+    {
+      "id": "postgame.read.public",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "A visitor sets down a book and draws both boxes with the pen. She asks why the posted range leaves her family’s first use open. Lia puts that as a lead in the empty clip. The visitor takes a copy of the dates to the first label stand.",
+      "effects": [{ "setFlag": "postgame.read", "value": true }]
+    },
+    {
+      "id": "postgame.read.loan",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Someone waits while Lia fetches the two boxes. The visitor tells her which pen they remember and asks to keep the name off the slip outside. Lia writes the record numbers with the pen, then takes those numbers to the first label stand.",
+      "effects": [{ "setFlag": "postgame.read", "value": true }]
+    },
+    {
+      "id": "postgame.back.public",
+      "speaker": "lia-vann",
+      "historicalLabel": "fictional-world",
+      "text": "That woman checked both boxes before she came here. She tells me the keeper who arranged them left room for a third lead. I said I would try to keep it that way. The pen is ready on the bench.",
+      "effects": [{ "setFlag": "postgame.closed", "value": true }]
+    },
+    {
+      "id": "postgame.back.loan",
+      "speaker": "lia-vann",
+      "historicalLabel": "fictional-world",
+      "text": "I signed the next visit time. I can show the two record numbers to anyone. I’ll need a second worker to help when my round runs over. Ise says she can ask for one.",
+      "effects": [{ "setFlag": "postgame.closed", "value": true }]
+    },
+    {
+      "id": "postgame.lia.public",
+      "speaker": "lia-vann",
+      "historicalLabel": "fictional-world",
+      "text": "I brought both records out after lunch. The woman who checked them offered to show someone else how to find them. I set out two chairs."
+    },
+    {
+      "id": "postgame.lia.loan",
+      "speaker": "lia-vann",
+      "historicalLabel": "fictional-world",
+      "text": "I left the visit time beside the bench. An apprentice asked if I could show her a record before she starts carrying boxes of her own. I told her she gets a turn."
+    },
+    {
+      "id": "postgame.view.light",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The folding screen holds the glare back. The old date tab and its pin hole stay in the same place when Lia changes the lamp. She adds a small mark the next keeper can check from the door.",
+      "effects": [{ "setFlag": "postgame.checked.light", "value": true }]
+    },
+    {
+      "id": "postgame.view.watch",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The notebook gives the two visitors their own lines. One read both cards. The other saw a closed box during the porter’s round. Lia makes a new entry for the next open turn.",
+      "effects": [{ "setFlag": "postgame.checked.watch", "value": true }]
+    },
+    {
+      "id": "postgame.view.edge",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The folio keeps the person who can lend the pen on a separate line from the people who will use it. Lia clips a copy beside the desk. A borrower can see both who signs and who can come.",
+      "effects": [{ "setFlag": "postgame.checked.edge", "value": true }]
+    }
+  ],
+  "hints": [
+    { "id": "h.postgame.retrace.1", "objective": "postgame.retrace", "depth": 1, "text": "Lia needs a check she can carry into her first round." },
+    { "id": "h.postgame.retrace.2", "objective": "postgame.retrace", "depth": 2, "text": "Take the small door west of the first label stand." },
+    { "id": "h.postgame.retrace.3", "objective": "postgame.retrace", "depth": 3, "text": "Come to Lia’s table and look at the two boxed records nearby." },
+    { "id": "h.postgame.retrace.4", "objective": "postgame.retrace", "depth": 4, "text": "Speak to Lia, then inspect the two boxes to the west of her table." },
+    { "id": "h.postgame.complete.1", "objective": "postgame.complete", "depth": 1, "text": "Where can the next visitor use the pen and find its sources?" },
+    { "id": "h.postgame.complete.2", "objective": "postgame.complete", "depth": 2, "text": "Use the pen tray on Lia’s table." },
+    { "id": "h.postgame.complete.3", "objective": "postgame.complete", "depth": 3, "text": "Check the new public bench or the signed loan slip." },
+    { "id": "h.postgame.complete.4", "objective": "postgame.complete", "depth": 4, "text": "Return to the first label stand in the Archive Hall to read the visitor’s note." }
+  ],
+  "journal": [
+    { "id": "j.postgame.closed", "claimKind": "observation", "text": "I left the pen where Lia and the next visitor could check the two old records. When I returned to the first label stand, someone else had followed the same trail." }
+  ]
+}

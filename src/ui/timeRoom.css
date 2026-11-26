@@ -1,0 +1,32 @@
+.time-room-panel {
+  display: grid;
+  gap: .6rem;
+}
+
+.time-room-panel button[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+
+.time-readout,
+.time-trace {
+  display: grid;
+  gap: .4rem;
+}
+
+.time-trace article { border-block-start: 1px solid currentColor; padding-block: .3rem; }
+.time-dial-group { display: flex; align-items: center; gap: .6rem; }
+.time-dial {
+  width: 3rem;
+  aspect-ratio: 1;
+  flex: 0 0 3rem;
+  position: relative;
+  border: 3px double #9f7954;
+  border-radius: 50%;
+  background: #d3c09f;
+}
+.time-dial span {
+  position: absolute;
+  inset: 10% 44% 50%;
+  transform-origin: center bottom;
+  background: #3e3548;
+}

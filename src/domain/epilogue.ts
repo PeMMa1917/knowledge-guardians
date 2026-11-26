@@ -18,6 +18,8 @@ export const VIGNETTES: Vignette[] = [
   { who: 'The Nexus', if: f('ending.council', 'recruit'), text: 'Vesper teaches a class on Thursdays: "How to sell certainty, and why you should not." It is always full. Vesper still wears one gold ring, and says it is to remember.' },
   { who: 'The Nexus', if: f('ending.council', 'expose'), text: "The Gilded Seal closed its stalls within a season. Some of its agents took honest work; some went quiet. Vesper left a letter on Elsbet's old desk. Nobody has opened it yet." },
   { who: 'The Nexus', if: f('ending.council', 'both'), text: 'The corrected label hangs by the door, and Vesper checks new labels in the room next to it. They argue every day, Ise says, and every label is better for it.' },
+  { who: 'Lia Vann', if: { all: [f('postgame.edition', 'public'), { flagSet: 'postgame.closed' }] }, text: 'Lia leaves the pen on the new bench. People bring the dates their own families remember. She marks the source of each one before it goes near the main label.' },
+  { who: 'Lia Vann', if: { all: [f('postgame.edition', 'loan'), { flagSet: 'postgame.closed' }] }, text: 'Lia and an apprentice share the loan visits now. They point out the place where a visitor can leave a new lead without leaving their name.' },
   // Ise.
   { who: 'Warden Ise', if: f('ise.harrowmere', 'herself'), text: 'Ise went to Harrowmere herself, alone, and stood in the town square, and told them. She came back older and lighter. She says the name Elsbet first now.' },
   { who: 'Warden Ise', if: f('ise.harrowmere', 'open'), text: 'Ise signs her labels with a new line under her name: "Last checked by". She leaves a space after it for the next person.' },
@@ -34,12 +36,23 @@ export const VIGNETTES: Vignette[] = [
   { who: 'Rook', if: { all: [{ flag: 'rook.joined', eq: true }, { not: { flagSet: 'loyalty.rook' } }] }, text: 'Rook still carries the old Seal stamp in a pocket. They have not decided what to do with it. They have stopped using it.' },
   // Places and small faces (chapter choices and crossings).
   { who: 'Hollis', if: { flagSet: 'cross.lamb' }, text: 'Hollis keeps a little notebook of flood-post readings now, twice a day. The lamb is a sheep. It still stands on stones.' },
+  { who: 'The Emberford forge', if: f('cross.repair-queue', 'paired'), text: 'The apprentices take turns at the pickup hatch now. When the rain blurs a number, a customer can still feel the edge of a ticket.' },
   { who: 'The Tide Engine', if: f('cross.tide-engine', 'reset'), text: "Teodor checks the tide engine against the steps every Monday. He has painted 'CHECK ME' on its brass case." },
   { who: 'Brindle', if: f('cross.furnace', 'tin'), text: 'Brindle keeps a sliver of tin by the furnace door, and teaches every new stoker the trick. Brindle tells it as if it were Brindle\'s own idea. You allow this.' },
   { who: 'The Press', if: f('cross.crowd', 'ledger'), text: 'The lending ledger is read aloud every week now, on the press steps. Osk comes every time, to check.' },
+  { who: 'Printer Lark', if: f('copies.margin.sent', 'fold'), text: 'There is a place on the landing ramp for a whole sheet now. The far stalls have asked for a full-size board of their own.' },
+  { who: 'Printer Lark', if: f('copies.margin.sent', 'pair'), text: 'The landing runners still carry two matched strips. One is on a string now, after a wet afternoon and a long discussion about clips.' },
+  { who: 'Printer Lark', if: f('copies.margin.sent', 'wait'), text: 'The ramp crew has a spare caller on print days. The caller keeps the signed order under a stone where anyone can read it.' },
   { who: 'Linnet', if: f('cross.drowned-bell', 'listen'), text: 'The iron posts on the old pier have a little sign: "The Bell. Listen before storms." Pippa still says it is a fish.' },
   { who: 'Cassia', if: f('cross.name-box', 'rule'), text: 'The gate machine has one long box for a name now. Cassia Doran Vey sent a postcard, signed in full, with a very large flourish.' },
   { who: 'Nan and Bellwether', if: { flagSet: 'cross.two-elders' }, text: 'Nan and Bellwether lead the lantern walk together. They still argue about the year. It is their favourite thing.' },
+  { who: 'The Lamp Quay', if: f('cross.last-lamp', 'quay'), text: 'Three people take turns at Wren’s bench now. Each takes one turn a week and hands the coat to the next. The slate still shows how many people sat down, with room for another tally.' },
+  { who: 'The Lamp Quay', if: f('cross.last-lamp', 'room'), text: 'The promise lamp stands just inside the Listening Room. A carrier who took the longer walk now helps set out the arrow before the reading turn.' },
+  { who: 'The Lamp Quay', if: f('cross.last-lamp', 'defer'), text: 'The morning keeper sets a second cup beside the lamp. A visitor who came after closing is often the first through the door now.' },
+  { who: 'Lamp Quay recall', if: { all: [f('vesper.line.edition', 'print'), { objective: 'vesper.line.quay.done' }] }, text: 'A signed replacement is still at the first rail. Tavia keeps the last returned gold copy beside it, with the line that went missing. The first copy with Vesper’s name on it took two bells to come home.' },
+  { who: 'Lamp Quay recall', if: { all: [f('vesper.line.edition', 'cover'), { objective: 'vesper.line.quay.done' }] }, text: 'Wren took the second shift at the old latch. When the last gold card came back, the rota stayed. Now the keeper on duty checks that the printed direction still fits the gate.' },
+  { who: 'The Council crew', if: f('council.team.edition', 'table'), text: 'People set their bundles down beside the low board. Hale clips a fresh signed time under the heading for each open hearing. Sefa reads both lines when the bench fills.' },
+  { who: 'The Council crew', if: f('council.team.edition', 'relay'), text: 'An apprentice takes Kip’s turn at the far bench. Kip stays until the apprentice can say both lines back from that side of the passage. The next crew keeps two places on the rota.' },
   { who: 'The Island', if: f('cross.launch', 'test'), text: "The island's harbour board has two columns now: 'Gulls' and 'Model'. When they disagree, the boats stay in, and both groups compare notes." },
   { who: 'Ottilie', if: f('cross.patron', 'keeper'), text: "The Lady's shrine in the market has its stone scales back, and nothing else on it. Ottilie dusts it every morning, and checks the town standard weight every evening." },
 ];
@@ -57,7 +70,9 @@ export const WHY: Record<string, { said: string; found: string }> = {
 
 /** The mirror scene: the first label and the last. */
 export function mirror(s: CampaignState): string {
-  return `On your first day, you wrote your first true label at the low bench in the Nexus, with a borrowed pen. Today, at the same bench, ${s.flags['ending.council'] ? 'you watched the oldest false label come down' : 'you corrected old labels'}. The pen is yours now.`;
+  const firstDay = 'On your first day, you wrote a new label with a borrowed pen at the low bench in the Nexus.';
+  if (s.flags['postgame.closed']) return `${firstDay} You came back and left that pen and a trail for the next keeper. Someone had already followed it when you left.`;
+  return `${firstDay} The pen is back beside the first label stand.`;
 }
 
 /** How you met the crossings: the reputation you earned without trying. */

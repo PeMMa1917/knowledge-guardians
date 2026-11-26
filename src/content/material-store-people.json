@@ -1,0 +1,356 @@
+{
+  "cma:2025.271": [
+    {
+      "name": "Unidentified Merina-style weaver",
+      "role": "Maker attribution",
+      "detail": "The catalogue describes the silk wrapper, its weft-float pattern, and a wider comparison for the knotted fringe.",
+      "source": "HIS-MATERIAL-STORE-MERINA-FLOAT"
+    }
+  ],
+  "cma:2013.5": [
+    {
+      "name": "Mbuun-style weavers",
+      "role": "Catalogue role in making the panels",
+      "detail": "The museum describes Mbuun men weaving skirts that women wore.",
+      "source": "HIS-MATERIAL-STORE-MBUUN-SEAM"
+    },
+    {
+      "name": "Mbuun-style embroiderers",
+      "role": "Catalogue role in finishing the panels",
+      "detail": "The museum identifies an embroidered border and shorter fibres crossing the joins.",
+      "source": "HIS-MATERIAL-STORE-MBUUN-SEAM"
+    }
+  ],
+  "cma:2003.89": [
+    {
+      "name": "Dida-style weavers and dyers",
+      "role": "Catalogue attribution",
+      "detail": "The museum describes a raffia wrapper with knot-and-twist resist dyeing. Tying helps account for the crinkled surface.",
+      "source": "HIS-MATERIAL-STORE-DIDA-CRINKLE"
+    }
+  ],
+  "cma:2024.72": [
+    {
+      "name": "Unidentified Fulani-style wool weavers",
+      "role": "Catalogue attribution",
+      "detail": "The catalogue describes a wool cover made from six handwoven strips joined along their selvages.",
+      "source": "HIS-MATERIAL-STORE-FULANI-JOINS"
+    }
+  ],
+  "cma:2003.86": [
+    {
+      "name": "Unidentified Tétouan weavers",
+      "role": "Catalogue attribution",
+      "detail": "The museum describes a silk brocade grid with navy and crimson faces and connects msimsim hangings to recorded marriage gifts in Tétouan.",
+      "source": "HIS-MATERIAL-STORE-TETOUAN-BROCADE"
+    }
+  ],
+  "cma:1916.1229": [
+    {
+      "name": "Unidentified Algerian weaver and embroiderer",
+      "role": "Catalogue attribution",
+      "detail": "The museum describes an Algerian curtain with two surviving embroidered widths and joined ribbons. It says a third width is missing.",
+      "source": "HIS-MATERIAL-STORE-ALGERIAN-RIBBONS"
+    }
+  ],
+  "cma:1916.1361": [
+    {
+      "name": "Unidentified Djerba weavers",
+      "role": "Weaving role",
+      "detail": "The pair’s record distinguishes woven silk bands from embroidery.",
+      "source": "HIS-MATERIAL-STORE-DJERBA-PAIR"
+    },
+    {
+      "name": "Unidentified Djerba embroiderers",
+      "role": "Embroidery role",
+      "detail": "The museum identifies gold-thread embroidery and distinguishes specialist roles on Djerba.",
+      "source": "HIS-MATERIAL-STORE-DJERBA-PAIR"
+    }
+  ],
+  "met:91.1.53": [
+    {
+      "name": "Unidentified scarf maker",
+      "role": "Catalogue attribution",
+      "detail": "The Met catalogues this late eighteenth-century wool piece as a scarf end, 24.1 by 76.2 centimetres.",
+      "source": "HIS-MATERIAL-STORE-MOROCCAN-TASSEL"
+    }
+  ],
+  "met:09.160": [
+    {
+      "name": "Unidentified damask weaver",
+      "role": "Catalogue attribution",
+      "detail": "The Met lists joined damask silk and records the whole hanging at 217.2 by 173.4 centimetres.",
+      "source": "HIS-MATERIAL-STORE-DAMASK-JOIN"
+    }
+  ],
+  "cma:1995.210": [
+    {
+      "name": "Unidentified female potter",
+      "role": "Maker described in the catalogue",
+      "detail": "The museum describes the potter joining two bowls and adding a neck before detailing the surface.",
+      "source": "HIS-MATERIAL-STORE-NUPE-WATER-JAR"
+    }
+  ],
+  "cma:1975.1011": [
+    {
+      "name": "Unidentified Lobi-style basket maker",
+      "role": "Catalogue attribution",
+      "detail": "The catalogue groups ten nesting baskets and a stopper. It gives separate dimensions for the graduated parts.",
+      "source": "HIS-MATERIAL-STORE-LOBI-NEST"
+    }
+  ],
+  "cma:1929.326": [
+    {
+      "name": "Unidentified Mangbetu-style basket maker",
+      "role": "Catalogue attribution",
+      "detail": "The record calls this object a basket and measures the top at 31.6 centimetres across. A catalogue note calls it a hat and connects it to visitors passing through Ekibondo.",
+      "source": "HIS-MATERIAL-STORE-MANGBETU-RIM"
+    }
+  ],
+  "cma:1915.460": [
+    {
+      "name": "Unidentified maker of the jug and strap",
+      "role": "Catalogue attribution",
+      "detail": "The accession groups a terracotta water jug with a separate plant-fibre carrying strap.",
+      "source": "HIS-MATERIAL-STORE-JAR-CARRY-STRAP"
+    }
+  ],
+  "walters:41.45": [
+    {
+      "name": "Unidentified Egyptian stoneworker",
+      "role": "Catalogue attribution",
+      "detail": "The museum gives separate top and base diameters for the small Egyptian vase and identifies a rounded bottom in the object title.",
+      "source": "HIS-MATERIAL-STORE-ROUNDED-STONE-VASE"
+    }
+  ],
+  "met:17.194.1812": [
+    {
+      "name": "Unidentified lamp maker",
+      "role": "Catalogue attribution",
+      "detail": "The Met records molded earthenware from Utica and lists three dimensions for this lamp.",
+      "source": "HIS-MATERIAL-STORE-UTICA-LAMP"
+    }
+  ],
+  "met:89.4.553": [
+    {
+      "name": "Unidentified Malagasy instrument maker",
+      "role": "Catalogue attribution",
+      "detail": "The Met catalogues a bamboo-and-wood marovany, 124.5 centimetres long and 7.6 centimetres across.",
+      "source": "HIS-MATERIAL-STORE-MAROVANY-TUBE"
+    }
+  ],
+  "walters:48.2044": [
+    {
+      "name": "Unidentified Cypriot potter",
+      "role": "Maker attribution",
+      "detail": "The museum identifies the sideways barrel form as work of a Cypriot potter.",
+      "source": "HIS-MATERIAL-STORE-CYPRIOT-BARREL"
+    },
+    {
+      "name": "Estate of Mrs. Samuel C. Lamport",
+      "role": "Recorded donor",
+      "detail": "The Walters records the estate’s gift in 1952, separate from the object’s Iron Age date.",
+      "source": "HIS-MATERIAL-STORE-CYPRIOT-BARREL"
+    }
+  ],
+  "walters:54.776": [
+    {
+      "name": "Unidentified Greek bronze worker",
+      "role": "Catalogue attribution",
+      "detail": "The Walters identifies this bronze piece as an attachment where the handle met the rim of a water jug.",
+      "source": "HIS-MATERIAL-STORE-CORINTHIAN-HYDRIA"
+    }
+  ],
+  "walters:47.6": [
+    {
+      "name": "al-Walid ibn Abdul-Rahman",
+      "role": "Catalogue patron",
+      "detail": "The museum records this name under Patron for the pound weight.",
+      "source": "HIS-MATERIAL-STORE-DAMASCUS-WEIGHT"
+    },
+    {
+      "name": "Yazid III",
+      "role": "Name recorded in the inscription",
+      "detail": "The museum identifies this name in its account of the stamped inscription.",
+      "source": "HIS-MATERIAL-STORE-DAMASCUS-WEIGHT"
+    }
+  ],
+  "walters:54.2434": [
+    {
+      "name": "Unidentified maker, with Egyptian and Italian attributions considered",
+      "role": "Catalogue attribution",
+      "detail": "The Walters identifies an animal-shaped bronze pouring vessel and keeps Egyptian and Italian maker attributions open.",
+      "source": "HIS-MATERIAL-STORE-CHEETAH-POUR"
+    }
+  ],
+  "walters:57.586": [
+    {
+      "name": "Unidentified metalworker",
+      "role": "Maker remains unidentified",
+      "detail": "The catalogue allows two possible places of origin for the granulated work.",
+      "source": "HIS-MATERIAL-STORE-GRANULATED-EARRING"
+    },
+    {
+      "name": "Henry Walters",
+      "role": "Recorded buyer",
+      "detail": "The provenance records his 27 September 1913 purchase and the 1931 bequest.",
+      "source": "HIS-MATERIAL-STORE-GRANULATED-EARRING"
+    }
+  ],
+  "walters:71.48": [
+    {
+      "name": "Unidentified Sicilian maker",
+      "role": "Maker attribution",
+      "detail": "The catalogue identifies the origin and traces two decorated faces.",
+      "source": "HIS-MATERIAL-STORE-SICILIAN-REPAIR"
+    },
+    {
+      "name": "Unidentified repairer",
+      "role": "Later handling role",
+      "detail": "The museum describes a repaired break and gives no date for that repair.",
+      "source": "HIS-MATERIAL-STORE-SICILIAN-REPAIR"
+    }
+  ],
+  "nmafa:89-13-73": [
+    {
+      "name": "Unidentified potter",
+      "role": "Maker of this individual jug",
+      "detail": "The Smithsonian links the form with a pottery tradition and gives no individual maker.",
+      "source": "HIS-MATERIAL-STORE-BARTMANN-STOPS"
+    },
+    {
+      "name": "Walshaert collection",
+      "role": "Recorded custody",
+      "detail": "Antwerp before 1930 appears in the provenance field.",
+      "source": "HIS-MATERIAL-STORE-BARTMANN-STOPS"
+    }
+  ],
+  "met:1991.17.18": [
+    {
+      "name": "Ìgùn Ẹ́rọ̀nwwọ̀n artists",
+      "role": "Catalogue makers",
+      "detail": "The Met credits the guild of brass casters for the plaque.",
+      "source": "HIS-MATERIAL-STORE-EDO-MERCHANT-CAST"
+    },
+    {
+      "name": "Two Portuguese merchants",
+      "role": "Represented people, individually unspecified",
+      "detail": "Their role comes from the museum title and sculpture account, separate from maker attribution.",
+      "source": "HIS-MATERIAL-STORE-EDO-MERCHANT-CAST"
+    }
+  ],
+  "met:08.202.26a-b": [
+    {
+      "name": "Unidentified silver workers",
+      "role": "Catalogue attribution",
+      "detail": "The Met records two numbered silver pendants under one accession and retains a probable Moroccan geographical attribution.",
+      "source": "HIS-MATERIAL-STORE-MOROCCAN-PENDANTS"
+    }
+  ],
+  "met:04.34.9": [
+    {
+      "name": "Unidentified goldworker",
+      "role": "Maker remains unrecorded",
+      "detail": "The Met describes the material and a geographical attribution.",
+      "source": "HIS-MATERIAL-STORE-ETHIOPIAN-GOLD-RING"
+    },
+    {
+      "name": "Meredith Howland",
+      "role": "Recorded donor",
+      "detail": "The accession credit identifies a gift in 1904.",
+      "source": "HIS-MATERIAL-STORE-ETHIOPIAN-GOLD-RING"
+    }
+  ],
+  "met:08.180.957": [
+    {
+      "name": "Unidentified lace maker",
+      "role": "Making role",
+      "detail": "The record uses the term bobbin lace but gives no named maker.",
+      "source": "HIS-MATERIAL-STORE-MALAGASY-LACE"
+    },
+    {
+      "name": "Mrs. Magdalena Nuttall",
+      "role": "Recorded donor",
+      "detail": "The collection credit names her gift in 1908. The gift record is separate from the making date.",
+      "source": "HIS-MATERIAL-STORE-MALAGASY-LACE"
+    }
+  ],
+  "walters:48.2036": [
+    {
+      "name": "Unidentified Egyptian potter",
+      "role": "Catalogue attribution",
+      "detail": "The Walters catalogue identifies glazed earthenware with luster decoration and describes yellow-golden painting around a central bird.",
+      "source": "HIS-MATERIAL-STORE-CAIRO-LUSTER"
+    }
+  ],
+  "walters:73.106": [
+    {
+      "name": "Unidentified Egyptian leather worker",
+      "role": "Catalogue attribution",
+      "detail": "The Walters records paint on red-stained parchment or alum-tawed hide. The description leaves a possible book-cover function open because no backing is preserved.",
+      "source": "HIS-MATERIAL-STORE-PAINTED-LEATHER"
+    }
+  ],
+  "walters:42.109": [
+    {
+      "name": "Gnaios",
+      "role": "Name inscribed on the gem according to the Walters",
+      "detail": "The museum reads the vertically engraved name of a late first-century BCE gem-carver.",
+      "source": "HIS-MATERIAL-STORE-GNAIOS-GARNET"
+    },
+    {
+      "name": "Polykleitos",
+      "role": "Proposed link to a possible sculptural model",
+      "detail": "The account mentions that an older statue by a follower could have informed the small scene. The two dates and roles stay separate.",
+      "source": "HIS-MATERIAL-STORE-GNAIOS-GARNET"
+    }
+  ],
+  "cma:1915.453": [
+    {
+      "name": "Unidentified Chokwe-style maker",
+      "role": "Catalogue attribution",
+      "detail": "The Cleveland record lists wood, glass beads and natural fibres. Its account says the wide teeth helped hold elements of a hairstyle.",
+      "source": "HIS-MATERIAL-STORE-CHOKWE-COMB-TEETH"
+    }
+  ],
+  "cma:1915.452": [
+    {
+      "name": "Unidentified Luba-style maker",
+      "role": "Catalogue attribution",
+      "detail": "The Cleveland record lists wood and wire for this small comb and gives an approximate date.",
+      "source": "HIS-MATERIAL-STORE-LUBA-WIRE-COMB"
+    }
+  ],
+  "met:23.67.1": [
+    {
+      "name": "Unidentified maker of the glazed tile",
+      "role": "Catalogue attribution",
+      "detail": "The Met lists stonepaste and glaze for this tile and gives a depth of 2.2 centimetres.",
+      "source": "HIS-MATERIAL-STORE-TUNISIAN-TILE"
+    }
+  ],
+  "met:09.50.2779": [
+    {
+      "name": "Unidentified scarf weaver and embroiderer",
+      "role": "Catalogue attribution",
+      "detail": "The Met identifies this scarf as linen and silk, with plain weaving and embroidery.",
+      "source": "HIS-MATERIAL-STORE-ALGERIAN-SCARF"
+    }
+  ],
+  "nmafa:2010-10-30": [
+    {
+      "name": "Unidentified Akan artist",
+      "role": "Catalogue attribution",
+      "detail": "The Smithsonian describes a copper-alloy saawa with concentric incisions in its bowl. The account explains that this type of spoon transferred gold dust to a scale.",
+      "source": "HIS-MATERIAL-STORE-AKAN-SAAWA"
+    }
+  ],
+  "met:1983.143": [
+    {
+      "name": "Middle Niger catalogue attribution",
+      "role": "Catalogue attribution",
+      "detail": "The Met records bronze for this Middle Niger bracelet and gives its diameter as 7.9 centimetres.",
+      "source": "HIS-MATERIAL-STORE-MIDDLE-NIGER-BRONZE"
+    }
+  ]
+}

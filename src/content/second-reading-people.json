@@ -1,0 +1,342 @@
+{
+  "smg:1926-419": [
+    {
+      "name": "Christopher Cock",
+      "role": "maker",
+      "detail": "Signed and dated the instrument in London.",
+      "source": "HIS-SECOND-READING-COCK-SCOPE"
+    }
+  ],
+  "smg:1908-160": [
+    {
+      "name": "Caroline Herschel",
+      "role": "observer",
+      "detail": "Science Museum Group identifies the telescope with her; the assembly history is qualified.",
+      "source": "HIS-SECOND-READING-CAROLINE-SCOPE"
+    },
+    {
+      "name": "William Herschel",
+      "role": "maker of components",
+      "detail": "The museum considers that the telescope was assembled using optics and components he made for Caroline.",
+      "source": "HIS-SECOND-READING-CAROLINE-SCOPE"
+    }
+  ],
+  "smg:1876-1000": [
+    {
+      "name": "William Herschel",
+      "role": "maker",
+      "detail": "Made the telescope in Bath for his friend William Watson.",
+      "source": "HIS-SECOND-READING-WATSON-SCOPE"
+    },
+    {
+      "name": "Sir William Watson",
+      "role": "recipient",
+      "detail": "The museum attributes the commission to his friendship with Herschel.",
+      "source": "HIS-SECOND-READING-WATSON-SCOPE"
+    }
+  ],
+  "smg:1925-469": [
+    {
+      "name": "William Herschel",
+      "role": "maker and astronomer",
+      "detail": "Made eyepiece micrometers for his own telescopes.",
+      "source": "HIS-SECOND-READING-WIRE-MICROMETER"
+    }
+  ],
+  "smg:1878-12": [
+    {
+      "name": "Girolamo della Volpaia",
+      "role": "maker",
+      "detail": "Signed and dated the sphere in Florence.",
+      "source": "HIS-SECOND-READING-VOLPAIA-RINGS"
+    }
+  ],
+  "smg:1949-117-1": [
+    {
+      "name": "John Russell",
+      "role": "artist",
+      "detail": "Made the Selenographia Moon globe held in the collection.",
+      "source": "HIS-SECOND-READING-RUSSELL-MOON"
+    }
+  ],
+  "smg:1889-39": [
+    {
+      "name": "Jeremiah Sisson",
+      "role": "maker",
+      "detail": "Signed and dated the arc in London.",
+      "source": "HIS-SECOND-READING-SISSON-ARC"
+    },
+    {
+      "name": "George III",
+      "role": "patron",
+      "detail": "The work was made for his private observatory at Richmond.",
+      "source": "HIS-SECOND-READING-SISSON-ARC"
+    }
+  ],
+  "smg:1974-541": [
+    {
+      "name": "F. J. Scrase",
+      "role": "instrument designer",
+      "detail": "Co-designed the Kew instrument with A. W. Lee.",
+      "source": "HIS-SECOND-READING-KEW-VERTICAL"
+    },
+    {
+      "name": "A. W. Lee",
+      "role": "instrument designer",
+      "detail": "Co-designed the Kew instrument with F. J. Scrase.",
+      "source": "HIS-SECOND-READING-KEW-VERTICAL"
+    }
+  ],
+  "smg:1994-570": [
+    {
+      "name": "Patrick L. Willmore",
+      "role": "designer",
+      "detail": "Named as designer of the three-component design.",
+      "source": "HIS-SECOND-READING-WILLMORE-BOREHOLE"
+    }
+  ],
+  "smg:1948-227": [
+    {
+      "name": "Daniel Quare",
+      "role": "maker and inventor",
+      "detail": "The museum dates his portable barometer patent to 1695.",
+      "source": "HIS-SECOND-READING-QUARE-BAROMETER"
+    },
+    {
+      "name": "William Derham",
+      "role": "documented observer",
+      "detail": "Published a description of using a Quare barometer for pressure experiments at the Monument in 1697.",
+      "source": "HIS-SECOND-READING-QUARE-BAROMETER"
+    }
+  ],
+  "smg:1975-7531": [
+    {
+      "name": "George Littlewort",
+      "role": "named maker",
+      "detail": "The museum description credits him with making the guard’s timepiece in London.",
+      "source": "HIS-SECOND-READING-GUARD-CLOCK"
+    }
+  ],
+  "smg:1980-1913": [
+    {
+      "name": "Willem Janszoon Blaeu",
+      "role": "maker",
+      "detail": "Made the celestial globe in Amsterdam in 1603.",
+      "source": "HIS-SECOND-READING-BLAEU-GLOBE"
+    }
+  ],
+  "mg:684": [
+    {
+      "name": "Dubois",
+      "role": "maker",
+      "detail": "Named by the catalogue as the maker of this example.",
+      "source": "HIS-SECOND-READING-CASSINI-QUADRANT"
+    },
+    {
+      "name": "Giovanni Domenico Cassini",
+      "role": "design eponym",
+      "detail": "The catalogue names him as inventor of the type.",
+      "source": "HIS-SECOND-READING-CASSINI-QUADRANT"
+    }
+  ],
+  "mg:345": [
+    {
+      "name": "Giovanni Battista Amici",
+      "role": "maker and observer",
+      "detail": "Used tests of difficult double stars when developing telescope objectives.",
+      "source": "HIS-SECOND-READING-AMICI-MOUNT"
+    }
+  ],
+  "mg:2563": [
+    {
+      "name": "Chérubin d’Orléans",
+      "role": "maker",
+      "detail": "Published a description of this binocular telescope type; his symbolic signature is on the object.",
+      "source": "HIS-SECOND-READING-ORLEANS-BINOCULAR"
+    }
+  ],
+  "mg:2429": [
+    {
+      "name": "Galileo Galilei",
+      "role": "observer",
+      "detail": "Used the lens for observations in 1609–10 and donated it to Cosimo II.",
+      "source": "HIS-SECOND-READING-GALILEO-LENS"
+    },
+    {
+      "name": "Vittorio Crosten",
+      "role": "frame maker",
+      "detail": "Made its display frame in 1677.",
+      "source": "HIS-SECOND-READING-GALILEO-LENS"
+    },
+    {
+      "name": "Cosimo II de’ Medici",
+      "role": "recipient",
+      "detail": "Received the lens from Galileo, according to the museum.",
+      "source": "HIS-SECOND-READING-GALILEO-LENS"
+    }
+  ],
+  "mg:1419": [
+    {
+      "name": "Domenico Selva",
+      "role": "name signed on the telescope",
+      "detail": "The museum does not treat the signature as conclusive maker evidence.",
+      "source": "HIS-SECOND-READING-SELVA-GREGORIAN"
+    },
+    {
+      "name": "Lorenzo Selva",
+      "role": "possible maker and author",
+      "detail": "In 1761 he wrote that instruments he made could carry his father Domenico’s name.",
+      "source": "HIS-SECOND-READING-SELVA-GREGORIAN"
+    }
+  ],
+  "mg:576": [
+    {
+      "name": "Georg Friedrich von Reichenbach",
+      "role": "workshop head",
+      "detail": "His workshop made the repeating circle.",
+      "source": "HIS-SECOND-READING-REPEATING-CIRCLE"
+    },
+    {
+      "name": "Joseph von Fraunhofer",
+      "role": "signed objective",
+      "detail": "The museum identifies the objective by his signature.",
+      "source": "HIS-SECOND-READING-REPEATING-CIRCLE"
+    }
+  ],
+  "mg:735": [
+    {
+      "name": "Felice Fontana",
+      "role": "attributed designer",
+      "detail": "The museum considers it probable that he designed the instrument. The maker is unknown.",
+      "source": "HIS-SECOND-READING-FONTANA-LEVEL"
+    }
+  ],
+  "mg:3242": [
+    {
+      "name": "Galgano Gori",
+      "role": "maker",
+      "detail": "Signed the mobile eyepiece mount in Florence.",
+      "source": "HIS-SECOND-READING-GORI-EYEPIECE"
+    }
+  ],
+  "mg:595": [
+    {
+      "name": "Giovanni Battista Amici",
+      "role": "designer and maker",
+      "detail": "Designed the instrument for finding true local noon.",
+      "source": "HIS-SECOND-READING-AMICI-DIPLEIDOSCOPE"
+    }
+  ],
+  "met:2025.347a-j": [
+    {
+      "name": "Cardinal Bessarion",
+      "role": "patron",
+      "detail": "Named by the object’s inscription.",
+      "source": "HIS-SECOND-READING-BESSARION-ASTROLABE"
+    },
+    {
+      "name": "Regiomontanus (Johannes Müller)",
+      "role": "probable maker",
+      "detail": "The Met identifies him tentatively with the inscription’s maker, John.",
+      "source": "HIS-SECOND-READING-BESSARION-ASTROLABE"
+    }
+  ],
+  "met:63.166a-j": [
+    {
+      "name": "Muhammad Zaman al-Munajjim al-Asturlabi",
+      "role": "maker",
+      "detail": "Named by The Met. The place is attributed to Mashhad.",
+      "source": "HIS-SECOND-READING-MASHHAD-ASTROLABE"
+    }
+  ],
+  "met:25.17": [
+    {
+      "name": "Petrus Apianus",
+      "role": "author and co-printer",
+      "detail": "Published the work on astronomical instruments and observations.",
+      "source": "HIS-SECOND-READING-APIANUS-BOOK"
+    },
+    {
+      "name": "Georg Apianus",
+      "role": "printer",
+      "detail": "The Met lists him as co-printer.",
+      "source": "HIS-SECOND-READING-APIANUS-BOOK"
+    },
+    {
+      "name": "Michael Ostendorfer",
+      "role": "artist",
+      "detail": "The Met lists him as artist for this work.",
+      "source": "HIS-SECOND-READING-APIANUS-BOOK"
+    }
+  ],
+  "met:17.190.639": [
+    {
+      "name": "Master CR",
+      "role": "attributed movement maker",
+      "detail": "The Met attributes the movement to Master CR.",
+      "source": "HIS-SECOND-READING-MIRROR-CLOCK"
+    },
+    {
+      "name": "Matthias Zündt",
+      "role": "probable designer of stem and foot",
+      "detail": "The Met says these parts were probably cast from his designs.",
+      "source": "HIS-SECOND-READING-MIRROR-CLOCK"
+    },
+    {
+      "name": "Cornelis Bos",
+      "role": "designer of case-band source",
+      "detail": "The Met connects the band’s ornament to his design.",
+      "source": "HIS-SECOND-READING-MIRROR-CLOCK"
+    }
+  ],
+  "met:58.75.58": [
+    {
+      "name": "Claude-Siméon Passemant",
+      "role": "clockmaker",
+      "detail": "The Met names him as clockmaker.",
+      "source": "HIS-SECOND-READING-PASSEMANT-CLOCK"
+    },
+    {
+      "name": "Charles Nicolas Dodin",
+      "role": "porcelain decorator",
+      "detail": "Attributed for the decoration of the Sèvres plaques.",
+      "source": "HIS-SECOND-READING-PASSEMANT-CLOCK"
+    }
+  ],
+  "met:03.21.24": [
+    {
+      "name": "Paulus Reinman",
+      "role": "maker",
+      "detail": "The Met names Reinman on this Nuremberg portable sundial.",
+      "source": "HIS-SECOND-READING-REINMAN-DIPTYCH"
+    }
+  ],
+  "met:03.21.37": [
+    {
+      "name": "Claude Dunod",
+      "role": "maker",
+      "detail": "The Met names Dunod as maker for this Düsseldorf portable dial.",
+      "source": "HIS-SECOND-READING-DUNOD-COMPASS"
+    }
+  ],
+  "nasa:as17-148-22727": [
+    {
+      "name": "Eugene A. Cernan",
+      "role": "mission commander",
+      "detail": "NASA lists him as commander of Apollo 17.",
+      "source": "HIS-SECOND-READING-APOLLO17-DISC"
+    },
+    {
+      "name": "Ronald E. Evans",
+      "role": "command module pilot",
+      "detail": "NASA lists Evans as command module pilot.",
+      "source": "HIS-SECOND-READING-APOLLO17-DISC"
+    },
+    {
+      "name": "Harrison H. Schmitt",
+      "role": "lunar module pilot",
+      "detail": "NASA lists Schmitt as lunar module pilot, without identifying a photographer on the cited record.",
+      "source": "HIS-SECOND-READING-APOLLO17-DISC"
+    }
+  ]
+}

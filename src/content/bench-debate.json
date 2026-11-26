@@ -1,0 +1,1595 @@
+{
+ "characters": [
+  {
+   "id": "ressa-morn",
+   "name": "Ressa Morn",
+   "role": "Apprentice and keeper of the short-return slips",
+   "sprite": "custom:tan.black.plum.sand.headband.cyan.curls.darkframes.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "bench.debate.record.arrival"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "bench.debate.open",
+   "speaker": "metal-steward",
+   "historicalLabel": "fictional-world",
+   "text": "The hall has two bells of time at one bench. The fitting crew wants both bells for one job. Two learners have one bell free each. Bea has drawn a line down the docket. “On paper we have plenty of bench. Is there any room to set down the paper?”",
+   "options": [
+    {
+     "text": "Set the two requests side by side. Find out what each crew needs.",
+     "next": "bench.debate.opened",
+     "if": {
+      "all": [
+       {
+        "objective": "metal.finish"
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.started"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.started",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Give the crews time to finish their orders."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.opened",
+   "speaker": "metal-steward",
+   "historicalLabel": "fictional-world",
+   "text": "A signed repair record is at the west table. Ressa has kept the return slips by the east slot. The model at the front has the same two bells for either plan."
+  },
+  {
+   "id": "bench.debate.record.repair",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The job ledger puts one hull fitting across both bell marks. The first mark records setting it and checking its position. The second mark records the finished edge. Bea signed one finished fitting at the second bell.",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Slide out the second line. Keep the signed job and its two times together.",
+     "next": "bench.debate.record.repair.read",
+     "if": {
+      "all": [
+       {
+        "flag": "bench.debate.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.repair"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.repair",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the ledger on the west table."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.record.repair.read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The first line shows a setup. The second keeps the same job number through the finish. Two marks can belong to one job.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "bench.debate.record.arrival",
+   "speaker": "ressa-morn",
+   "historicalLabel": "fictional-world",
+   "text": "I had the first bell free. My neighbour had the second. Each of us came with one tag, but the fitting stayed on the bench. We could bring our numbers back another day. The time we had left was today.",
+   "options": [
+    {
+     "text": "Line up the two return slips by their bells. Ask what Ressa will let us quote.",
+     "next": "bench.debate.record.arrival.read",
+     "if": {
+      "all": [
+       {
+        "flag": "bench.debate.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.arrival"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.arrival",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep their slips in the return slot."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.record.arrival.read",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The two slips belong to different visitors. Ressa lets you quote “I only had one bell.” Her neighbour’s name stays folded inside the return slip.",
+   "claimKind": "observation"
+  },
+  {
+   "id": "bench.debate.trial",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "This model gives you two bell marks and one bench. The fitting needs one mark for its setup and one for its finish without lifting it. Each small tag needs a single mark. If you take the fitting off after setup, it loses its place.",
+   "claimKind": "simulation",
+   "options": [
+    {
+     "text": "Keep the same fitting in place for both bells. Move its slip from setup to finish.",
+     "next": "bench.debate.trial.whole",
+     "if": {
+      "all": [
+       {
+        "flag": "bench.debate.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.trial.whole"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.trial.whole",
+       "value": true
+      },
+      {
+       "setFlag": "bench.debate.lastTrial",
+       "value": "whole"
+      }
+     ]
+    },
+    {
+     "text": "Clear the bench after the first bell. Give a short tag to each bell.",
+     "next": "bench.debate.trial.split",
+     "if": {
+      "all": [
+       {
+        "flag": "bench.debate.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.trial.split"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.trial.split",
+       "value": true
+      },
+      {
+       "setFlag": "bench.debate.lastTrial",
+       "value": "split"
+      }
+     ]
+    },
+    {
+     "text": "Set the slips aside for now."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.trial.whole",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "One fitting reaches the finish mark. Both small tags stay on the waiting peg. The same two bells have been used.",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "bench.debate.trial.split",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Two tags leave the bench, one with each learner. The fitting needs a fresh setup on a later turn. The same two bells have been used.",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "bench.debate.first",
+   "speaker": "metal-steward",
+   "historicalLabel": "fictional-world",
+   "text": "The repairer and the learners each want a result. One proposal keeps the bench set for the full job. The other gives two callers a turn. Bea has given you the first stand for either opening.",
+   "options": [
+    {
+     "text": "Put the continuous-job strip on the first stand. Use the signed repair line to open the case.",
+     "next": "bench.debate.first.whole",
+     "if": {
+      "all": [
+       {
+        "objective": "bench.debate.compare"
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.first"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.first",
+       "value": "whole"
+      }
+     ]
+    },
+    {
+     "text": "Put the two short turns on the first stand. Use the separate arrivals to open the case.",
+     "next": "bench.debate.first.split",
+     "if": {
+      "all": [
+       {
+        "objective": "bench.debate.compare"
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.first"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.first",
+       "value": "split"
+      }
+     ]
+    },
+    {
+     "text": "Leave both opening strips on the stands."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.first.whole",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You open with the fitting kept through both bells. Ressa taps the unused tags. She offers you her seat to make the strongest case for the arrivals before anyone drafts a notice."
+  },
+  {
+   "id": "bench.debate.first.split",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You open with two distinct visitors using the bench. Bea points to the linked repair slip. She offers you her seat to make the strongest case for keeping both bells together."
+  },
+  {
+   "id": "bench.debate.other",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "From the other stand, the piece of evidence nearest your hand has changed. The first proposal is still in view. Give the other side the case you would want to have if this were your job.",
+   "options": [
+    {
+     "text": "Lay out both return slips and speak for the two learners who can each stay one bell.",
+     "next": "bench.debate.other.split.slips",
+     "if": {
+      "all": [
+       {
+        "flag": "bench.debate.first",
+        "eq": "whole"
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.restated"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.restated",
+       "value": true
+      },
+      {
+       "setFlag": "bench.debate.opposition",
+       "value": "arrivals"
+      }
+     ]
+    },
+    {
+     "text": "Use Ressa’s approved words, then explain how the two short turns would help both arrivals.",
+     "next": "bench.debate.other.split.voice",
+     "if": {
+      "all": [
+       {
+        "flag": "bench.debate.first",
+        "eq": "whole"
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.restated"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.restated",
+       "value": true
+      },
+      {
+       "setFlag": "bench.debate.opposition",
+       "value": "voice"
+      }
+     ]
+    },
+    {
+     "text": "Hold up the linked job record. Give the fitting crew’s reason for keeping the same setup.",
+     "next": "bench.debate.other.whole.record",
+     "if": {
+      "all": [
+       {
+        "flag": "bench.debate.first",
+        "eq": "split"
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.restated"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.restated",
+       "value": true
+      },
+      {
+       "setFlag": "bench.debate.opposition",
+       "value": "record"
+      }
+     ]
+    },
+    {
+     "text": "Hold the model on its two marks. Give the fitting crew’s reason while the setup is still in place.",
+     "next": "bench.debate.other.whole.model",
+     "if": {
+      "all": [
+       {
+        "flag": "bench.debate.first",
+        "eq": "split"
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.restated"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.restated",
+       "value": true
+      },
+      {
+       "setFlag": "bench.debate.opposition",
+       "value": "model"
+      }
+     ]
+    },
+    {
+     "text": "Let the other speaker keep the stand for now."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.other.split.slips",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You give the short-turn case a real pair of arrivals. A bench can complete a fine fitting and leave both callers without a turn. Bea asks how a posted copy will tell those callers when they can use it."
+  },
+  {
+   "id": "bench.debate.other.split.voice",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "“I only had one bell,” you repeat with Ressa’s leave. You add that two different arrivals could each finish a tag. Ressa points to her neighbour’s separate slip. The quote gave one person’s time and the second slip gives the other person’s time."
+  },
+  {
+   "id": "bench.debate.other.whole.record",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You keep both lines under one job number. This repair can finish only while the setup stays put. Ressa asks for the wait to be said aloud so the learners can decide whether to stay."
+  },
+  {
+   "id": "bench.debate.other.whole.model",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You keep the setup clamped while you speak. A new turn would take the setup out before it finishes. Ressa sees the same bench from the waiting side and asks when a short visitor could use it."
+  },
+  {
+   "id": "bench.debate.listeners",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Bea asks a listener to say back what they could do with the proposal. The draft still says TWO MARKS AT THE BENCH. Its lower line says COME AT THE BELL. Two people raise their hands.",
+   "options": [
+    {
+     "text": "Give Bea the draft to read back as the person who signs finished jobs.",
+     "next": "bench.debate.listeners.jobs",
+     "if": {
+      "all": [
+       {
+        "flag": "bench.debate.restated",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.listener"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.listener",
+       "value": "jobs"
+      }
+     ]
+    },
+    {
+     "text": "Let Ressa say back when a short-turn visitor would actually come.",
+     "next": "bench.debate.listeners.times",
+     "if": {
+      "all": [
+       {
+        "flag": "bench.debate.restated",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.listener"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.listener",
+       "value": "times"
+      }
+     ]
+    },
+    {
+     "text": "Let both listeners keep thinking."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.listeners.jobs",
+   "speaker": "metal-steward",
+   "historicalLabel": "fictional-world",
+   "text": "Two marks at the bench sounds like two finished jobs. I sign at the finish, so that is what I would send to the clerk. Say what each mark means before I lend my name to it."
+  },
+  {
+   "id": "bench.debate.listeners.times",
+   "speaker": "ressa-morn",
+   "historicalLabel": "fictional-world",
+   "text": "Come at the bell. Which bell? I can borrow one or wait for a later turn. I need to know which time is mine before my neighbour leaves."
+  },
+  {
+   "id": "bench.debate.draft",
+   "speaker": "metal-steward",
+   "historicalLabel": "fictional-world",
+   "text": "The writing tray has both cases, still in their own hands. The listener’s line is clipped where the old heading went. Bea will sign either plan for one shift if the notice tells the next reader what is done and what still waits.",
+   "options": [
+    {
+     "text": "Write ‘one fitting across two bells’. Keep both tags on separate waiting lines.",
+     "next": "bench.debate.written.whole.jobs",
+     "if": {
+      "all": [
+       {
+        "objective": "bench.debate.exchange"
+       },
+       {
+        "flag": "bench.debate.listener",
+        "eq": "jobs"
+       },
+       {
+        "not": {
+         "flag": "bench.debate.decision",
+         "in": [
+          "whole",
+          "split"
+         ]
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.decision",
+       "value": "whole"
+      },
+      {
+       "setFlag": "bench.debate.wording",
+       "value": "jobs"
+      }
+     ]
+    },
+    {
+     "text": "Write ‘one tag per bell’. Leave the full fitting on its own waiting line.",
+     "next": "bench.debate.written.split.jobs",
+     "if": {
+      "all": [
+       {
+        "objective": "bench.debate.exchange"
+       },
+       {
+        "flag": "bench.debate.listener",
+        "eq": "jobs"
+       },
+       {
+        "not": {
+         "flag": "bench.debate.decision",
+         "in": [
+          "whole",
+          "split"
+         ]
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.decision",
+       "value": "split"
+      },
+      {
+       "setFlag": "bench.debate.wording",
+       "value": "jobs"
+      }
+     ]
+    },
+    {
+     "text": "Write ‘the fitting has the first and second bells’. Set a later time for short-turn requests.",
+     "next": "bench.debate.written.whole.times",
+     "if": {
+      "all": [
+       {
+        "objective": "bench.debate.exchange"
+       },
+       {
+        "flag": "bench.debate.listener",
+        "eq": "times"
+       },
+       {
+        "not": {
+         "flag": "bench.debate.decision",
+         "in": [
+          "whole",
+          "split"
+         ]
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.decision",
+       "value": "whole"
+      },
+      {
+       "setFlag": "bench.debate.wording",
+       "value": "times"
+      }
+     ]
+    },
+    {
+     "text": "Write ‘one short turn at the first bell and one at the second’. Name when the fitting can ask again.",
+     "next": "bench.debate.written.split.times",
+     "if": {
+      "all": [
+       {
+        "objective": "bench.debate.exchange"
+       },
+       {
+        "flag": "bench.debate.listener",
+        "eq": "times"
+       },
+       {
+        "not": {
+         "flag": "bench.debate.decision",
+         "in": [
+          "whole",
+          "split"
+         ]
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.decision",
+       "value": "split"
+      },
+      {
+       "setFlag": "bench.debate.wording",
+       "value": "times"
+      }
+     ]
+    },
+    {
+     "text": "Leave the two proposals beside the listener’s line."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.written.whole.jobs",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Bea removes TWO MARKS AT THE BENCH. The new heading says ONE FITTING ACROSS TWO BELLS. The two tags still have their own waiting lines."
+  },
+  {
+   "id": "bench.debate.written.split.jobs",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Bea clips ONE TAG PER BELL over the old heading. The two visitors keep their individual return slips. The full fitting has its own line and remains unfinished."
+  },
+  {
+   "id": "bench.debate.written.whole.times",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The first and second bells now belong to the same fitting. The next chance to ask for a short turn is written underneath. Ressa can decide when to return."
+  },
+  {
+   "id": "bench.debate.written.split.times",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The two short turns each have their own bell. The fitter knows the time for the next full-turn request. Ressa leaves the times large enough for the waiting side to read."
+  },
+  {
+   "id": "bench.debate.redraft",
+   "historicalLabel": "fictional-world",
+   "speaker": "metal-steward",
+   "text": "Bea slides the unsigned version back under the clip. Both cases and the listener’s request stay on the table. There is time to change which job gets the bench."
+  },
+  {
+   "id": "bench.debate.sign.whole",
+   "speaker": "metal-steward",
+   "historicalLabel": "fictional-world",
+   "text": "Bea puts the source lines below the main wording. Ressa sets her return slips beside the signed repair record. They keep the other case and the reason someone might use it next.",
+   "options": [
+    {
+     "text": "Ask both speakers to sign the minute. Keep a caught-up copy for Lin at North Steps.",
+     "next": "bench.debate.kept.whole",
+     "if": {
+      "all": [
+       {
+        "flag": "bench.debate.decision",
+        "eq": "whole"
+       },
+       {
+        "flagSet": "bench.debate.wording"
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.signed"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.signed",
+       "value": true
+      },
+      {
+       "giveItem": "item.bench-debate-minute"
+      }
+     ]
+    },
+    {
+     "text": "Take the unsigned minute back to the draft tray.",
+     "next": "bench.debate.redraft",
+     "if": {
+      "all": [
+       {
+        "flag": "bench.debate.decision",
+        "eq": "whole"
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.signed"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.decision",
+       "value": "draft"
+      }
+     ]
+    },
+    {
+     "text": "Keep the minute on the table while they read it again."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.sign.split",
+   "speaker": "metal-steward",
+   "historicalLabel": "fictional-world",
+   "text": "Bea puts the source lines below the main wording. Ressa sets her return slips beside the signed repair record. They keep the other case and the reason someone might use it next.",
+   "options": [
+    {
+     "text": "Ask both speakers to sign the minute. Keep a caught-up copy for Lin at North Steps.",
+     "next": "bench.debate.kept.split",
+     "if": {
+      "all": [
+       {
+        "flag": "bench.debate.decision",
+        "eq": "split"
+       },
+       {
+        "flagSet": "bench.debate.wording"
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.signed"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.signed",
+       "value": true
+      },
+      {
+       "giveItem": "item.bench-debate-minute"
+      }
+     ]
+    },
+    {
+     "text": "Take the unsigned minute back to the draft tray.",
+     "next": "bench.debate.redraft",
+     "if": {
+      "all": [
+       {
+        "flag": "bench.debate.decision",
+        "eq": "split"
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.signed"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.decision",
+       "value": "draft"
+      }
+     ]
+    },
+    {
+     "text": "Keep the minute on the table while they read it again."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.kept.whole",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The minute keeps a fitting in place for both bells. The return slips still give the two short jobs a place to wait. The same record and the separate arrivals go with your copy."
+  },
+  {
+   "id": "bench.debate.kept.split",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The minute gives each small job a bell. It keeps the repairer’s reason on the open long-job line. The model counts and the return slips go with your copy."
+  },
+  {
+   "id": "bench.debate.civic.test",
+   "speaker": "civic-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "The North Steps rack has two call marks today. It takes both marks with the same frame held still to trace the old door panel. A visitor can get a separate status copy in one mark. Two people are waiting for those copies.",
+   "options": [
+    {
+     "text": "Lay the revised job line under the Civic job numbers. Try one full trace and two short copies.",
+     "next": "bench.debate.civic.test.read.jobs",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "civic.arrival"
+         },
+         {
+          "item": "item.bench-debate-minute"
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.local"
+        }
+       },
+       {
+        "flag": "bench.debate.wording",
+        "eq": "jobs"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.local",
+       "value": true
+      },
+      {
+       "setFlag": "bench.debate.civic.wording",
+       "value": "jobs"
+      }
+     ]
+    },
+    {
+     "text": "Lay the named bells beside the Civic callers. Try one full trace and two short copies.",
+     "next": "bench.debate.civic.test.read.times",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "civic.arrival"
+         },
+         {
+          "item": "item.bench-debate-minute"
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.local"
+        }
+       },
+       {
+        "flag": "bench.debate.wording",
+        "eq": "times"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.local",
+       "value": true
+      },
+      {
+       "setFlag": "bench.debate.civic.wording",
+       "value": "times"
+      }
+     ]
+    },
+    {
+     "text": "Let Lin keep the two call marks as they are."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.civic.test.read.jobs",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Lin keeps the same panel in place for the two marks and assigns its full trace one job number. On the next run, the two short copies each have their own. The line Bea asked for made the job number visible."
+  },
+  {
+   "id": "bench.debate.civic.test.read.times",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Lin tries a full trace across both bells and a short call at each separate bell. The two status-copy visitors can each reach one named bell. The panel owner can hear both times for the full trace."
+  },
+  {
+   "id": "bench.debate.civic.fit.whole",
+   "speaker": "civic-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "The panel’s owner has come to see a complete trace. Lin can hold a single appointment for both marks. Two copy callers will need their own slips to return.",
+   "options": [
+    {
+     "text": "Set one long reservation. Hand both copy callers a separate return slip.",
+     "next": "bench.debate.civic.fit.whole.done",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "civic.arrival"
+         },
+         {
+          "item": "item.bench-debate-minute"
+         }
+        ]
+       },
+       {
+        "objective": "bench.debate.civic.proof"
+       },
+       {
+        "flag": "bench.debate.decision",
+        "eq": "whole"
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.civic.mounted"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.civic.mounted",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Wait until the callers can hear the times."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.civic.fit.whole.done",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The rack now holds one long reservation. The two slips have the next time to check back. The two marks on the public copy belong to the one reservation."
+  },
+  {
+   "id": "bench.debate.civic.read.whole",
+   "speaker": "civic-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "The owner follows the entire trace. A returning caller holds up a slip with one mark. She asks the desk whether the two marks on the board would give her two chances today.",
+   "options": [
+    {
+     "text": "Turn the full reservation card so its one job is clear. Give her the next check time.",
+     "next": "bench.debate.civic.kept.whole",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "civic.arrival"
+         },
+         {
+          "item": "item.bench-debate-minute"
+         }
+        ]
+       },
+       {
+        "flag": "bench.debate.decision",
+        "eq": "whole"
+       },
+       {
+        "flag": "bench.debate.civic.mounted",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.civic.read"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.civic.read",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Give the caller time to rehear the notice."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.civic.kept.whole",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The full trace goes back to its owner. One caller asks for the next time and the other leaves their slip. Lin keeps both names on separate return lines."
+  },
+  {
+   "id": "bench.debate.civic.fit.split",
+   "speaker": "civic-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "Two people stand by the steps with a status-copy slip each. Lin can call the two short turns from here. The panel owner will need a later hour that keeps the frame still.",
+   "options": [
+    {
+     "text": "Put a visitor at each short mark. Clip the panel’s long job to its own return line.",
+     "next": "bench.debate.civic.fit.split.done",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "civic.arrival"
+         },
+         {
+          "item": "item.bench-debate-minute"
+         }
+        ]
+       },
+       {
+        "objective": "bench.debate.civic.proof"
+       },
+       {
+        "flag": "bench.debate.decision",
+        "eq": "split"
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.civic.mounted"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.civic.mounted",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Wait until Lin can call both turns."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.civic.fit.split.done",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Two named slips have their own call mark. A separate clip says FULL TRACE STILL DUE. The panel owner can follow that line without taking either caller’s place."
+  },
+  {
+   "id": "bench.debate.civic.read.split",
+   "speaker": "civic-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "Both callers use their short turns. A reader sees two check marks and asks whether the full panel was traced while they waited.",
+   "options": [
+    {
+     "text": "Read back the two status-copy jobs. Mark the panel’s trace as still waiting.",
+     "next": "bench.debate.civic.kept.split",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "civic.arrival"
+         },
+         {
+          "item": "item.bench-debate-minute"
+         }
+        ]
+       },
+       {
+        "flag": "bench.debate.decision",
+        "eq": "split"
+       },
+       {
+        "flag": "bench.debate.civic.mounted",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "bench.debate.civic.read"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "bench.debate.civic.read",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let the reader look at the two marks."
+    }
+   ]
+  },
+  {
+   "id": "bench.debate.civic.kept.split",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "Two status copies leave the rack. The panel stays in its rest where the owner can see the longer wait. Lin clips a place for a fresh two-mark turn."
+  }
+ ],
+ "items": [
+  {
+   "id": "item.bench-debate-minute",
+   "name": "The signed bench minute",
+   "historicalLabel": "fictional-world",
+   "art": "bench-debate.docket",
+   "description": "A signed turn, two competing reasons and a line that changed after a listener read it. Lin can use the copy beside the trial rack at the Civic Machine’s North Steps."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH6-R10",
+   "world": "WORLD-07",
+   "title": "The Second Turn",
+   "knowledgeQuestion": "What has an argument left out when we hear it from the other side of the bench?",
+   "stake": "The fitters need time to finish one job. Two learners could lose their only turn today.",
+   "available": {
+    "flag": "bench.debate.started",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "bench.debate.compare",
+     "title": "Read the repair record and the two arrivals. Run both turns on the same model bench.",
+     "done": {
+      "all": [
+       {
+        "flag": "bench.debate.repair",
+        "eq": true
+       },
+       {
+        "flag": "bench.debate.arrival",
+        "eq": true
+       },
+       {
+        "flag": "bench.debate.trial.whole",
+        "eq": true
+       },
+       {
+        "flag": "bench.debate.trial.split",
+        "eq": true
+       }
+      ]
+     },
+     "visible": {
+      "flag": "bench.debate.started",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "explanation",
+       "objectivity",
+       "certainty",
+       "perspective"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "minutes": 5,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "economics",
+       "business",
+       "design-tech"
+      ],
+      "aoks": [
+       "HUM",
+       "MAT",
+       "TEC"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-14"
+     ]
+    },
+    {
+     "id": "bench.debate.exchange",
+     "title": "Make the case on each stand. Let a listener say back what the notice would mean.",
+     "done": {
+      "all": [
+       {
+        "flagSet": "bench.debate.first"
+       },
+       {
+        "flag": "bench.debate.restated",
+        "eq": true
+       },
+       {
+        "flagSet": "bench.debate.listener"
+       }
+      ]
+     },
+     "visible": {
+      "objective": "bench.debate.compare"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "interpretation",
+       "justification",
+       "values",
+       "power"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "human",
+       "solo": "relational"
+      },
+      "atl": [
+       "communication",
+       "social",
+       "thinking"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "lit-perf",
+       "global-politics"
+      ],
+      "aoks": [
+       "LAN",
+       "ART",
+       "POL"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-COL-05"
+     ]
+    },
+    {
+     "id": "bench.debate.minute",
+     "title": "Rewrite the proposed rule after the readback. Keep the waiting job and sign the minute.",
+     "done": {
+      "flag": "bench.debate.signed",
+      "eq": true
+     },
+     "visible": {
+      "objective": "bench.debate.exchange"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "responsibility",
+       "values",
+       "explanation"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "caring",
+       "solo": "extended"
+      },
+      "atl": [
+       "communication",
+       "self-management"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "business",
+       "economics"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM",
+       "POL"
+      ]
+     },
+     "skills": [
+      "SK-WRT-13",
+      "SK-ETR-01"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.bench.debate.minute"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH12-R05",
+   "world": "WORLD-13",
+   "title": "Who Takes the Next Turn",
+   "knowledgeQuestion": "When can a rule from one bench guide a different bench?",
+   "stake": "A complete trace and two status copies compete for the same two call marks.",
+   "available": {
+    "all": [
+     {
+      "objective": "civic.arrival"
+     },
+     {
+      "item": "item.bench-debate-minute"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "bench.debate.civic.proof",
+     "title": "Try Lin’s rack both ways and compare the same two call marks.",
+     "done": {
+      "flag": "bench.debate.local",
+      "eq": true
+     },
+     "visible": {
+      "item": "item.bench-debate-minute"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "justification",
+       "objectivity",
+       "explanation"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      },
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "subjects": [
+       "business",
+       "math-ai",
+       "economics"
+      ],
+      "aoks": [
+       "MAT",
+       "HUM",
+       "POL"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-14"
+     ]
+    },
+    {
+     "id": "bench.debate.civic.used",
+     "title": "Fit the time card, then answer the reader who asks what the two marks count.",
+     "done": {
+      "flag": "bench.debate.civic.read",
+      "eq": true
+     },
+     "visible": {
+      "objective": "bench.debate.civic.proof"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "power",
+       "interpretation",
+       "perspective"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "apply",
+       "fink": "human",
+       "solo": "extended"
+      },
+      "atl": [
+       "communication",
+       "social",
+       "thinking"
+      ],
+      "subjects": [
+       "economics",
+       "lang-langlit",
+       "global-politics"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN",
+       "POL"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-ETR-01"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.bench.debate.civic"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "hint.bench.debate.compare.1",
+   "objective": "bench.debate.compare",
+   "depth": 1,
+   "text": "The signed repair record, returned slips and model each give you a different check."
+  },
+  {
+   "id": "hint.bench.debate.compare.2",
+   "objective": "bench.debate.compare",
+   "depth": 2,
+   "text": "The pair of times on the west side belong to one repair. The east side has two separate arrivals."
+  },
+  {
+   "id": "hint.bench.debate.compare.3",
+   "objective": "bench.debate.compare",
+   "depth": 3,
+   "text": "Use two bells for one setup and finish. Use the same two bells for short tags."
+  },
+  {
+   "id": "hint.bench.debate.compare.4",
+   "objective": "bench.debate.compare",
+   "depth": 4,
+   "text": "Read the west and east records and try both choices at the north model before approaching the left stand."
+  },
+  {
+   "id": "hint.bench.debate.exchange.1",
+   "objective": "bench.debate.exchange",
+   "depth": 1,
+   "text": "There are two speaking stands and a place to hear a listener."
+  },
+  {
+   "id": "hint.bench.debate.exchange.2",
+   "objective": "bench.debate.exchange",
+   "depth": 2,
+   "text": "Give either opening. Walk to the other stand to make that side’s best case."
+  },
+  {
+   "id": "hint.bench.debate.exchange.3",
+   "objective": "bench.debate.exchange",
+   "depth": 3,
+   "text": "Use the signed record or the model for the full repair. Use the two arrival slips or a permitted quote for short turns."
+  },
+  {
+   "id": "hint.bench.debate.exchange.4",
+   "objective": "bench.debate.exchange",
+   "depth": 4,
+   "text": "Speak from the left stand and then the right. Finally ask either Bea or Ressa to say aloud what they read from the notice."
+  },
+  {
+   "id": "hint.bench.debate.minute.1",
+   "objective": "bench.debate.minute",
+   "depth": 1,
+   "text": "The working draft is in the tray between the record tables."
+  },
+  {
+   "id": "hint.bench.debate.minute.2",
+   "objective": "bench.debate.minute",
+   "depth": 2,
+   "text": "Your listener’s concern changes one line. Either schedule can still answer it."
+  },
+  {
+   "id": "hint.bench.debate.minute.3",
+   "objective": "bench.debate.minute",
+   "depth": 3,
+   "text": "The notice can say how many jobs fit or when a waiting person can come back. Keep the claim from the other side with its source."
+  },
+  {
+   "id": "hint.bench.debate.minute.4",
+   "objective": "bench.debate.minute",
+   "depth": 4,
+   "text": "Choose a new line at the draft tray. Open the revised tray again to sign and take it to North Steps."
+  },
+  {
+   "id": "hint.bench.debate.civic.proof.1",
+   "objective": "bench.debate.civic.proof",
+   "depth": 1,
+   "text": "Look for Lin’s two-mark rack at North Steps."
+  },
+  {
+   "id": "hint.bench.debate.civic.proof.2",
+   "objective": "bench.debate.civic.proof",
+   "depth": 2,
+   "text": "The carried minute is a plan for checking the new bench."
+  },
+  {
+   "id": "hint.bench.debate.civic.proof.3",
+   "objective": "bench.debate.civic.proof",
+   "depth": 3,
+   "text": "The panel takes a full held turn. The status copies can be served separately."
+  },
+  {
+   "id": "hint.bench.debate.civic.proof.4",
+   "objective": "bench.debate.civic.proof",
+   "depth": 4,
+   "text": "Use the rack near the middle of the steps. Put down the minute and try both uses of the two local marks."
+  },
+  {
+   "id": "hint.bench.debate.civic.used.1",
+   "objective": "bench.debate.civic.used",
+   "depth": 1,
+   "text": "Lin has a place that fits each kind of turn."
+  },
+  {
+   "id": "hint.bench.debate.civic.used.2",
+   "objective": "bench.debate.civic.used",
+   "depth": 2,
+   "text": "The full reservation stays by the west desk. The two short turns can be called from the east side."
+  },
+  {
+   "id": "hint.bench.debate.civic.used.3",
+   "objective": "bench.debate.civic.used",
+   "depth": 3,
+   "text": "Put the change in place and keep a separate waiting line for the work still due."
+  },
+  {
+   "id": "hint.bench.debate.civic.used.4",
+   "objective": "bench.debate.civic.used",
+   "depth": 4,
+   "text": "Use the chosen bench a second time after placing the new rule. Answer the reader by naming what each mark counts."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.bench.debate.minute",
+   "kind": "quest",
+   "title": "The Second Turn",
+   "text": "I spoke from both sides of the bench and heard what the draft led someone to expect. I revised the line and carried the other case with it."
+  },
+  {
+   "id": "j.bench.debate.civic",
+   "kind": "quest",
+   "title": "Who Takes the Next Turn",
+   "text": "I watched Lin test the same two marks on a different job. We kept the completed work and the work still due on their own lines."
+  }
+ ]
+}

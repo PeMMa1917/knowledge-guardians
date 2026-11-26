@@ -3,11 +3,15 @@ import Phaser from 'phaser';
 import { STAMPS, CHAR_FRAME } from './art';
 import { artKeys, drawArt, glowCanvas } from '../ui/illustrations';
 
-/** Audio files. Every file is listed with its licence in CREDITS.md. */
-export const AUDIO: Record<string, string> = {
+// These tracks are only needed if the browser cannot play a generated score.
+const MUSIC: Record<string, string | undefined> = {
   'music.archive': 'assets/audio/music/mysterious-ambience-cynicmusic.mp3',
   'music.town': 'assets/audio/music/town-theme-cynicmusic.mp3',
   'music.title': 'assets/audio/music/happy-lullaby-cynicmusic.mp3',
+};
+
+/** Audio files. Every file is listed with its licence in CREDITS.md. */
+const AUDIO: Record<string, string> = {
   'sfx.click': 'assets/audio/sfx/ui-click-kenney.mp3',
   'sfx.hover': 'assets/audio/sfx/ui-hover-kenney.mp3',
   'sfx.open': 'assets/audio/sfx/ui-open-kenney.mp3',
@@ -30,11 +34,45 @@ export const CHARACTER_SHEETS = [
 ];
 
 export class BootScene extends Phaser.Scene {
+  private readonly pendingMusic = new Map<string, Promise<boolean>>();
+
   constructor() { super('boot'); }
+
+  /** The boot scene's loader stays available when a world restarts or changes map. */
+  loadMusic(key: string): Promise<boolean> {
+    if (this.cache.audio.exists(key)) return Promise.resolve(true);
+    const url = MUSIC[key];
+    if (!url) return Promise.resolve(false);
+    const pending = this.pendingMusic.get(key);
+    if (pending) return pending;
+
+    const result = new Promise<boolean>((resolve) => {
+      const { COMPLETE, FILE_KEY_COMPLETE, FILE_LOAD_ERROR } = Phaser.Loader.Events;
+      const fileComplete = `${FILE_KEY_COMPLETE}audio-${key}`;
+      const finish = () => {
+        this.load.off(fileComplete, finish);
+        this.load.off(FILE_LOAD_ERROR, failed);
+        this.load.off(COMPLETE, finish);
+        resolve(this.cache.audio.exists(key));
+      };
+      const failed = (file: Phaser.Loader.File) => {
+        if (file.type === 'audio' && file.key === key) finish();
+      };
+      this.load.once(fileComplete, finish);
+      this.load.on(FILE_LOAD_ERROR, failed);
+      this.load.once(COMPLETE, finish); // also settles unsupported formats that were never queued
+      this.load.audio(key, url);
+      this.load.start();
+    }).finally(() => this.pendingMusic.delete(key));
+    this.pendingMusic.set(key, result);
+    return result;
+  }
 
   preload(): void {
     const bar = this.add.rectangle(this.scale.width / 2, this.scale.height / 2, 4, 6, 0x9fe8ff);
-    this.load.on('progress', (p: number) => { bar.width = Math.max(4, p * 300); });
+    const showProgress = (p: number) => { bar.width = Math.max(4, p * 300); };
+    this.load.on('progress', showProgress);
+    this.load.once(Phaser.Loader.Events.COMPLETE, () => this.load.off('progress', showProgress));
     this.load.image('ow', 'assets/art/armm1998/Overworld.png');
     this.load.image('in', 'assets/art/armm1998/Inner.png');
     this.load.image('market', 'assets/art/generated/market_tiles.png');

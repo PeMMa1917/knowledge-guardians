@@ -1,0 +1,25 @@
+{
+  "slub:mscr.dresd.r.310": [
+    {"name":"Maya scribes, individual names unrecorded","role":"Manuscript makers","detail":"The holding library distinguishes six hands and gives a probable northern or northeastern Yucatán origin for the surviving manuscript.","source":"HIS-REG-DRESDEN-ORIGIN"},
+    {"name":"Johann Christian Götze","role":"Reported acquirer","detail":"Götze described acquiring the manuscript in Vienna in 1739. The 1740 transfer list is a separate record, and the earlier route stays open.","source":"HIS-REG-DRESDEN-CUSTODY"},
+    {"name":"Constantin Karl Falkenstein","role":"Library conservator and display decision maker","detail":"As chief librarian, Falkenstein arranged the two parts between glass panes in 1835. The player tests their documented separate spans on a practice rail.","source":"HIS-REG-dresden-fold"}
+  ],
+  "brooklyn:70.177.69": [
+    {"name":"Maker unrecorded","role":"Cotton object maker","detail":"Brooklyn Museum gives a 1400–1532 date range and an Inca attribution. It does not identify the maker of the cotton object.","source":"HIS-REG-khipu-mount"},
+    {"name":"Nobuko Kajatani","role":"Researcher credited for the later attribution","detail":"The collection credits Kajatani and Anne Rowe for its 1993 Inca attribution. The exercise separates this date from the making range and from what the cords record.","source":"HIS-REG-khipu-mount"},
+    {"name":"Anne Rowe","role":"Researcher credited for the later attribution","detail":"Rowe shares the 1993 attribution credit. The layout keeps both names on the attribution face.","source":"HIS-REG-khipu-mount"},
+    {"name":"Ernest Erickson","role":"Donor named by the museum","detail":"The museum credits Erickson’s gift under the exact accession 70.177.69.","source":"HIS-REG-khipu-mount"}
+  ],
+  "loc:g4701g.ct009133": [
+    {"name":"Nahua painter-scribes, individual names unrecorded","role":"Attributed makers","detail":"The Library of Congress uses the manuscript’s pictorial conventions as evidence for Indigenous authorship. The surviving sheet also carries Latin-letter glosses.","source":"HIS-CALL-quetzalecatzin"},
+    {"name":"Lord-11 Quetzalecatzin","role":"Ancestral leader represented in the genealogy","detail":"The Library of Congress describes Quetzalecatzin as a regional leader in 1480. The surviving manuscript was produced much later.","source":"HIS-CALL-quetzalecatzin"},
+    {"name":"don Alonso and don Matheo","role":"Leaders named in the manuscript’s glosses","detail":"The catalogue essay uses names in the glosses as clues to the colonial-era composition. Those names do not identify the painter-scribes.","source":"HIS-CALL-quetzalecatzin"},
+    {"name":"John Hessler","role":"Library of Congress curator and modern source author","detail":"Hessler describes the family genealogy, land claims and the supported date range of the surviving sheet in a 2017 Library of Congress essay.","source":"HIS-CALL-quetzalecatzin"}
+  ],
+  "wam:03106": [
+    {"name":"Cavendish blacksmith, name unrecorded","role":"Cast-iron object maker","detail":"The Warren catalogue dates the making to about 1848 and names Cavendish, Vermont as the place of casting. It leaves the blacksmith unnamed.","source":"HIS-CALL-gage-mount"},
+    {"name":"Phineas Gage","role":"Owner, patient and earlier donor","detail":"Gage is named in the 1850 inscription and donated the iron to the Warren Anatomical Museum that year. The catalogue also records its later return at his request.","source":"HIS-CALL-gage-mount"},
+    {"name":"Hannah Trussell Swetland Gage","role":"Custody witness through a recorded handover","detail":"Gage’s mother gave the iron to John Martyn Harlow in 1867, a step in the later custody history.","source":"HIS-CALL-gage-mount"},
+    {"name":"John Martyn Harlow","role":"Physician and later museum donor","detail":"Harlow received the iron in 1867 and donated it to the museum in 1868. These are later custody records.","source":"HIS-CALL-gage-mount"}
+  ]
+}
