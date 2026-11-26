@@ -16,8 +16,8 @@ function rubbingLeaf() {
     h('h3', {}, 'BR-17 · Practice rubbing'),
     h('div', { role: 'img', 'aria-label': 'A paper mark turns twice and ends at a short edge.',
       style: { width: 'min(80%, 12rem)', height: '2rem', margin: '.7rem 0', position: 'relative' } },
-      h('span', { style: { position: 'absolute', inset: '0 45% 0 0', borderTop: '3px solid currentColor', borderRight: '3px solid currentColor' } }),
-      h('span', { style: { position: 'absolute', inset: '50% 0 0 55%', borderTop: '3px solid currentColor', borderRight: '3px solid currentColor' } })),
+      h('span', { style: { position: 'absolute', inset: '0 30% 50% 0', borderTop: '3px solid currentColor', borderRight: '3px solid currentColor' } }),
+      h('span', { style: { position: 'absolute', inset: 'calc(50% - 2px) 0 0 calc(70% - 3px)', borderTop: '3px solid currentColor' } })),
     h('p', {}, rubbing));
 }
 
