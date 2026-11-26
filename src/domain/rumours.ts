@@ -1,3 +1,5 @@
+import type { Condition } from './types';
+
 /**
  * The rumour mill (Mika 2026-11-25: radiant side quests; rumours traced to a source). At the tea
  * table in the market the player overhears one rumour at a time. To trace it, the player checks
@@ -154,6 +156,14 @@ export const sourcesChecked = (f: Flags, r: Rumour): number[] => r.sources.map((
 
 export const missingRumourSources = (f: Flags, r: Rumour): number[] =>
   r.requiredSources.filter((i) => f[`mill.${r.id}.s${i}`] !== true);
+
+export function eastWellSlipAt(desk: RumourDesk): Condition {
+  const well = RUMOURS.find(({ id }) => id === 'clever-well')!;
+  return { all: [
+    { flag: `mill.${well.id}.desk`, eq: desk },
+    ...well.requiredSources.map((i) => ({ flag: `mill.${well.id}.s${i}`, eq: true as const })),
+  ] };
+}
 
 /** The rumour the player hears now: the first one not yet judged, in seeded order; null when all are done. */
 export function currentRumour(f: Flags, seed: number): Rumour | null {

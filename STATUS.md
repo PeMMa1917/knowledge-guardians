@@ -6,6 +6,8 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
+The east-well rumour has two receiving tasks. At the guild, clip both leaves and line up Noa’s mineral headings. At the landing, set Efua’s first peg and follow the school route to Tova’s readback. Either task keeps its source limits and leaves the other use available through the tea table. Earlier verdicts, credit and saved slips carry forward. [Both receiving paths](tests/rumour-well-play.test.ts)
+
 The narrow diary, source catalogue and ending credits wrap long controls, titles and links at enlarged text sizes. A completed controlled trial at the Nexus bench now unlocks Lumen’s simulation and causal memories. Six Jig Shop exhibits have distinct original graphics. The outline of J. W. Jarboe’s photographic plate vise follows the exterior in his 1857 patent drawing. The source note distinguishes that design from the surviving model’s surface finish. [Bench memories](tests/glossary.test.ts) · [Jig Shop](tests/jig-shop.test.ts)
 
 The 1941 Green-Book records Victor Hugo Green as publisher and James A. Jackson as the presenter named on the cover. Checking the object opens its historical context. Earning it controls the museum citation in the adventure export. [Door Fold](tests/door-fold.test.ts)

@@ -4312,6 +4312,9 @@ export class UI implements UIApi {
       const ready = missing.length === 0;
       const done = filed.includes(r);
       const desk = flags[`mill.${r.id}.desk`];
+      const wellTrail = r.id === 'clever-well' && (desk === 'ledger'
+        ? 'You can pair Noa’s readings beside the guild’s public book.'
+        : desk === 'ferry' ? 'You can put Efua’s route to work at the first peg by the old ferry road.' : '');
       const route = (destination: RumourDesk) => {
         const event = c.dispatch({ type: 'RouteRumour', rumour: r.id, desk: destination }).find((e) => e.kind === 'rumour');
         if (!event) return;
@@ -4340,6 +4343,7 @@ export class UI implements UIApi {
         h('div', { class: 'notice-options' }, ...RUMOUR_DESKS.map((dest) =>
           h('button', { type: 'button', disabled: !ready || desk === dest, onclick: () => route(dest) }, r.handoffs[dest].action))),
         ...(desk === 'ledger' || desk === 'ferry' ? [h('small', {}, desk === 'ledger' ? 'Current slip in the guild’s public record book.' : 'Current slip in Tova’s ferry guest book.')] : []),
+        ...(wellTrail ? [h('p', { class: 'fine' }, wellTrail)] : []),
         ...(!done ? [h('details', { class: 'verdicts', open: checkOpen }, h('summary', {}, 'Record a verdict'),
           h('div', { class: 'notice-options' }, ...VERDICTS.map((v, i) => h('button', { type: 'button', disabled: !ready, onclick: () => verdict(i) }, v))))] : []),
         ...(feedback ? [h('p', { class: 'clue-view fresh', role: 'status' }, feedback)] : []),

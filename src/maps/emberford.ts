@@ -10,6 +10,7 @@ import { JIG_EMBERFORD_RETURNS } from './jigShop';
  */
 import { EMBERFORD_FIELD_ORDER } from './fieldBadges';
 import type { Condition } from '../domain/types';
+import { eastWellSlipAt } from '../domain/rumours';
 import type { Interactable, MapDef } from './types';
 import { sceneProp } from './sceneProps';
 import { EMBERFORD_LANTERN_FAIR } from './lanternfair';
@@ -397,6 +398,9 @@ export const EMBERFORD: MapDef = {
     sefaDispatchDesk('guild', 12, 8),
     { id: 'record-book', kind: 'sign', x: 13, y: 8, w: 1, h: 1, label: "the guild's public record book", art: 'ledger', flag: 'rumour.record',
       text: 'GUILD RECORD, WINTER. Test blade from Hesper\'s forge: cracked in the quench. Cause: the quench water was too cold. Action: Hesper warms the water. Three new test blades passed. This book is open to everyone.' },
+    { id: 'east-well-ledger', kind: 'scene', node: 'well.records.guild', x: 14, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'Noa’s two well leaves by the guild book', art: 'ledger', visibleIf: eastWellSlipAt('ledger'),
+      artOpen: { key: 'preserved.display-paired', if: { flag: 'well.records.guild', eq: true } } },
     // The story (Lamp Wall): each knot the town unties lights a lamp; six open the old Guardian's cellar.
     { id: 'lamp-wall', kind: 'lamps', x: 14, y: 5, w: 1, h: 1, label: 'the Lamp Wall', art: 'lamp-wall.0' },
     { id: 'cellar-door', kind: 'door', x: 12, y: 6, w: 1, h: 1, label: 'the cellar door', art: 'cellar-door', flag: 'study.entered',
