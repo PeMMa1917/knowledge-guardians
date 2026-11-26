@@ -4,7 +4,7 @@
  * Serve that checkout's dist directory, then run with Node 22 or newer and Chromium:
  *   node tools/smoke-worlds.mjs http://127.0.0.1:4173 /path/to/checkout
  * The second argument defaults to the working directory. The optional third argument selects
- * "maps", "access", "collections", "stress", "portal", "soak", "events" or "guidance".
+ * "maps", "access", "collections", "stress", "portal", "focus", "soak", "events" or "guidance".
  * CHROMIUM can name a different binary. KG_SOAK_MINUTES sets the real-time soak length (default 60).
  *
  * The script starts a new game and uses debug entry at each registered spawn. Its traversal
@@ -18,12 +18,12 @@ import { join, resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { pathToFileURL } from 'node:url';
 import { smokeCollections } from './smoke-collections.mjs';
-import { smokeNavigation, smokePortalReturn, smokeWallRealtime } from './smoke-navigation.mjs';
+import { smokeFerryFocus, smokeNavigation, smokePortalReturn, smokeWallRealtime } from './smoke-navigation.mjs';
 import { smokeGuidance } from './smoke-guidance.mjs';
 
 const [url, directory = '.', mode = 'all'] = process.argv.slice(2);
-if (!url || !['all', 'maps', 'access', 'collections', 'stress', 'portal', 'soak', 'events', 'guidance'].includes(mode)) {
-  throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access|collections|stress|portal|soak|events|guidance]');
+if (!url || !['all', 'maps', 'access', 'collections', 'stress', 'portal', 'focus', 'soak', 'events', 'guidance'].includes(mode)) {
+  throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access|collections|stress|portal|focus|soak|events|guidance]');
 }
 const root = resolve(directory);
 
@@ -90,14 +90,14 @@ async function connect(profile) {
       if (!url.endsWith('/favicon.ico')) faults.push('HTTP ' + status + ' ' + url);
     }
   });
-  const send = (method, params = {}) => new Promise((accept, reject) => {
+  const send = (method, params = {}, sessionId) => new Promise((accept, reject) => {
     const id = ++command;
     handlers.set(id, { accept, reject });
-    socket.send(JSON.stringify({ id, method, params }));
+    socket.send(JSON.stringify({ id, method, params, sessionId }));
   });
-  const evaluate = async (fn, data) => {
+  const evaluate = async (fn, data, sessionId) => {
     const expression = '(' + fn.toString() + ')(' + JSON.stringify(data) + ')';
-    const response = await send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true });
+    const response = await send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true }, sessionId);
     if (response.exceptionDetails) {
       const details = response.exceptionDetails;
       throw new Error(details.exception?.description ?? details.text);
@@ -464,6 +464,7 @@ try {
   if (mode === 'collections') await smokeCollections(browser, { button, press, until });
   if (mode === 'stress') await smokeNavigation(browser, { press, until }, maps);
   if (mode === 'portal') await smokePortalReturn(browser, { until });
+  if (mode === 'focus') await smokeFerryFocus(browser, { until });
   if (mode === 'soak') await smokeWallRealtime(browser, { until });
   if (mode === 'guidance') await smokeGuidance(browser, { button, press, until });
   if (mode === 'events') {

@@ -35,6 +35,33 @@ export function restoreQuestionWays(record: PermanentRecord, pack: ContentPack, 
   return updated;
 }
 
+const WATER_DELIVERY_USES: Readonly<Record<string, string>> = {
+  'SK-MICRO-0233': 'game-22|parcel.o.appeal|HUM,POL',
+  'SK-MICRO-0237': 'game-284|parcel.o.finish|HUM,POL',
+  'SK-MICRO-0630': 'game-263|boundary.water.deliver|HUM',
+  'SK-MICRO-0840': 'game-231|parcel.o.finish|HUM,POL',
+};
+
+/** These uses were filed under the sending mission. Preserve a single use under the receiving world. */
+function restoreWaterAttribution(record: PermanentRecord): PermanentRecord {
+  let skills = record.skills;
+  for (const [id, evidence] of Object.entries(WATER_DELIVERY_USES)) {
+    const old = `WORLD-13|${evidence}`;
+    const current = `WORLD-12|${evidence}`;
+    const uses = skills?.[id];
+    if (!Array.isArray(uses) || !uses.includes(old)) continue;
+    let recorded = false;
+    const corrected = uses.flatMap((use) => {
+      if (use !== old && use !== current) return [use];
+      if (recorded) return [];
+      recorded = true;
+      return [current];
+    });
+    skills = { ...skills, [id]: corrected };
+  }
+  return skills === record.skills ? record : { ...record, skills };
+}
+
 /** Permanent record migrations. v1 had only credit and awards. */
 export function migratePermanent(raw: any): PermanentRecord {
   if (!raw || typeof raw !== 'object' || typeof raw.schema !== 'number') return newPermanent();
@@ -43,7 +70,7 @@ export function migratePermanent(raw: any): PermanentRecord {
   if (p.schema === 1) p = { ...newPermanent(), credit: p.credit ?? {}, awards: p.awards ?? {} };
   if (p.schema === 2) p = { ...p, schema: 3, stones: {} };
   if (p.schema === 3) p = { ...p, schema: 4, skills: {} };
-  return p as PermanentRecord;
+  return restoreWaterAttribution(p as PermanentRecord);
 }
 
 /** Grant a criterion. Idempotent: the total never passes the criterion maximum. */

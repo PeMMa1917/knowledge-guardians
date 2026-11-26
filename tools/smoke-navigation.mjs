@@ -145,6 +145,7 @@ export async function smokeNavigation(browser, { until, press }, maps) {
   console.log(`Navigation registry: ${maps.length} maps, ${examined.tiles} tiles (${examined.solid} solid), ${examined.visible} shown prop frames, ${examined.routes} sampled routes, ${examined.collisionEdges} forced boundary probes, ${examined.corners} diagonal corner probes, ${examined.pointerProbes} rejected pointer targets, ${examined.approaches} alternative approaches, ${held} keyboard edge checks.`);
   await wallSoak(browser, until);
   await smokePortalReturn(browser, { until });
+  await smokeFerryFocus(browser, { until });
   for (const defect of defects) console.log('FAIL', defect);
   if (defects.length) throw new Error(`${defects.length} navigation and visibility discrepancies`);
 }
@@ -192,6 +193,111 @@ export async function smokePortalReturn(browser, { until }) {
     await until(async () => (await state()).id === 'aethelgard.emberford', 'new approach deliberately crosses the portal');
   } finally { await arrow('ArrowUp', 'keyUp'); }
   console.log('PASS held Up across the Emberford fade does not bounce; a fresh approach deliberately crosses back. Both story prerequisites staged.');
+}
+
+export async function smokeFerryFocus(browser, { until }) {
+  const movement = (key, type, sessionId) => {
+    const code = key === 'ArrowDown' ? 40 : 39;
+    return browser.send('Input.dispatchKeyEvent', { key, code: key, type, windowsVirtualKeyCode: code, nativeVirtualKeyCode: code }, sessionId);
+  };
+  const previousMotion = await browser.evaluate(() => {
+    const { world, settings } = window.kg;
+    const saved = settings.reducedMotion;
+    settings.reducedMotion = true;
+    world.changeMap('aethelgard.ferry', 6, 6);
+    return saved;
+  });
+  await until(() => browser.evaluate(() => window.kg.world.map.id === 'aethelgard.ferry' && !window.kg.world.transitioning), 'ferry focus fixture');
+  const start = await browser.evaluate(() => {
+    const { world } = window.kg;
+    const x = [6, 7, 15, 20].find((x) => !world.map.floor(x, 9) && [6, 7, 8].every((y) => world.blocked[y]?.[x] === false)
+      && [6, 7].every((y) => world.blocked[y]?.[x + 1] === false));
+    if (x === undefined) throw new Error('Ferry focus fixture needs a clear approach to the water.');
+    const point = { x: x * 16 + 8, y: 6 * 16 + 12 };
+    world.player.sprite.setPosition(point.x, point.y);
+    return point;
+  });
+  const { targetId } = await browser.send('Target.createTarget', { url: 'about:blank', background: true });
+  try {
+    const { sessionId } = await browser.send('Target.attachToTarget', { targetId, flatten: true });
+    await browser.send('Page.bringToFront');
+    await until(() => browser.evaluate(() => document.hasFocus() && document.visibilityState === 'visible'), 'foreground ferry tab');
+    await browser.evaluate(() => {
+      const controller = new AbortController();
+      const probe = { controller, blur: false, focus: false, downReleases: 0 };
+      window.ferryFocusProbe = probe;
+      const options = { signal: controller.signal };
+      window.addEventListener('blur', (event) => { probe.blur ||= event.isTrusted; }, options);
+      window.addEventListener('focus', (event) => { probe.focus ||= event.isTrusted; }, options);
+      window.addEventListener('keyup', (event) => {
+        if (event.isTrusted && event.key === 'ArrowDown') probe.downReleases++;
+      }, options);
+    });
+    const state = () => browser.evaluate(() => {
+      const { world, ui } = window.kg;
+      const { x, y } = world.player.sprite;
+      const { blur, focus, downReleases } = window.ferryFocusProbe;
+      return { x, y, blur, focus, downReleases, frame: world.game.loop.frame, map: world.map.id,
+        focused: document.hasFocus(), visibility: document.visibilityState, modal: ui.isModalOpen(),
+        down: world.keys.DOWN.isDown, right: world.keys.RIGHT.isDown, solid: world.collides(x, y) };
+    });
+    await movement('ArrowDown', 'rawKeyDown');
+    await until(async () => {
+      const current = await state();
+      if (current.y >= 8 * 16 || current.solid) throw new Error('Reached the bank before the focus change could expose stale movement.');
+      return current.down && current.y > start.y + 1;
+    }, 'Down walking toward the ferry bank');
+    await browser.send('Page.bringToFront', {}, sessionId);
+    const hidden = await until(async () => {
+      const current = await state();
+      return current.blur && !current.focused && current.visibility === 'hidden' && current;
+    }, 'native blur with Down held');
+    if (hidden.down) throw new Error('Down stayed held while the ferry tab was hidden.');
+    await browser.evaluate(() => {
+      window.addEventListener('keyup', (event) => {
+        window.receivedAwayRelease = event.key === 'ArrowDown' && event.isTrusted;
+      }, { once: true });
+    }, undefined, sessionId);
+    await movement('ArrowDown', 'keyUp', sessionId);
+    await until(() => browser.evaluate(() => window.receivedAwayRelease === true, undefined, sessionId), 'trusted release in the other tab');
+    await browser.send('Page.bringToFront');
+    const returned = await until(async () => {
+      const current = await state();
+      return current.focus && current.focused && current.visibility === 'visible' && current.frame >= hidden.frame + 8 && current;
+    }, 'ferry focus restored and game ticking again');
+    if (returned.map !== 'aethelgard.ferry' || returned.modal || returned.solid || returned.down || returned.downReleases
+      || returned.x !== hidden.x || returned.y !== hidden.y) {
+      throw new Error('Focus return moved the player or delivered the release to the wrong tab: ' + JSON.stringify({ hidden, returned }));
+    }
+    await movement('ArrowRight', 'rawKeyDown');
+    try {
+      await until(async () => {
+        const current = await state();
+        if (current.map !== returned.map || current.solid || current.down || current.y !== returned.y) {
+          throw new Error('Old Down input leaked into fresh Right input.');
+        }
+        return current.right && current.x > returned.x + 4;
+      }, 'fresh Right walks along the bank');
+    } finally { await movement('ArrowRight', 'keyUp'); }
+    const stopped = await until(async () => {
+      const current = await state();
+      return !current.right && current;
+    }, 'fresh Right releases');
+    await until(async () => {
+      const current = await state();
+      if (current.x !== stopped.x || current.y !== stopped.y || current.solid) throw new Error('The player moved after Right released.');
+      return current.frame >= stopped.frame + 6;
+    }, 'six stationary frames after release');
+    console.log('PASS trusted Ferry tab blur clears held Down without its key-up; fresh Right walks safely and releases.');
+  } finally {
+    await browser.send('Page.bringToFront');
+    await browser.send('Target.closeTarget', { targetId });
+    await browser.evaluate((reducedMotion) => {
+      window.ferryFocusProbe?.controller.abort();
+      delete window.ferryFocusProbe;
+      window.kg.settings.reducedMotion = reducedMotion;
+    }, previousMotion);
+  }
 }
 
 async function holdAgainstEdge(browser, press, { x, y, direction }, mapId) {

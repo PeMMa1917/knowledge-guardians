@@ -1583,6 +1583,64 @@
    "next": null
   },
   {
+   "id": "nile.opening-pins.rack",
+   "speaker": "nile-iman",
+   "text": "The narrow rail has two fixed pins and a lower stop. Imani lays out two practice copies of the same size, cut from one sheet of card and based on Ketta’s receiving tag. Both show two circles. A porter said either one would hang. Check both against this rack.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set the carrier’s punched copy against the stop.",
+     "effects": [
+      {
+       "setFlag": "nile.opening-pins.trial",
+       "value": "punched"
+      }
+     ]
+    },
+    {
+     "text": "Set the reading room’s printed copy against the same stop.",
+     "effects": [
+      {
+       "setFlag": "nile.opening-pins.trial",
+       "value": "printed"
+      }
+     ]
+    },
+    {
+     "text": "Leave the rail clear."
+    }
+   ]
+  },
+  {
+   "id": "nile.opening-pins.choose",
+   "speaker": "nile-iman",
+   "text": "Held against the same stop, only the punched copy went down over both pins. The circles match in place. The opening through the paper makes the difference on this rail. A receiving tag can sit ready for a carrier. The flat copy can help a reader follow its lines.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the punched handling copy on the rail.",
+     "effects": [
+      {
+       "setFlag": "nile.opening-pins.choice",
+       "value": "rail"
+      }
+     ]
+    },
+    {
+     "text": "Put the printed guide and original’s case number in the low tray.",
+     "effects": [
+      {
+       "setFlag": "nile.opening-pins.choice",
+       "value": "tray"
+      }
+     ]
+    },
+    {
+     "text": "Leave both copies at the testing rack."
+    }
+   ]
+  },
+  {
    "id": "nile.dispatch",
    "speaker": "nile-iman",
    "text": "The door can carry one packet back first. We can send the others later. Pick where this one lands, and whose hands it reaches before the doors open.",
@@ -4020,6 +4078,54 @@
    "text": "Follow your first dispatch back to the Nexus. Once it is on display, read the matching date clip or the signed desk receipt."
   },
   {
+   "id": "h.nile.opening-pins.compare.1",
+   "objective": "nile.opening-pins.compare",
+   "depth": 1,
+   "text": "Try the small rail beside Imani."
+  },
+  {
+   "id": "h.nile.opening-pins.compare.2",
+   "objective": "nile.opening-pins.compare",
+   "depth": 2,
+   "text": "Use its lower stop with each copy."
+  },
+  {
+   "id": "h.nile.opening-pins.compare.3",
+   "objective": "nile.opening-pins.compare",
+   "depth": 3,
+   "text": "Check the result beside the rail each time."
+  },
+  {
+   "id": "h.nile.opening-pins.compare.4",
+   "objective": "nile.opening-pins.compare",
+   "depth": 4,
+   "text": "Set the punched copy against the stop and check it. Set the printed copy against the same stop and check it."
+  },
+  {
+   "id": "h.nile.opening-pins.placed.1",
+   "objective": "nile.opening-pins.placed",
+   "depth": 1,
+   "text": "Return to the rail after reading both results."
+  },
+  {
+   "id": "h.nile.opening-pins.placed.2",
+   "objective": "nile.opening-pins.placed",
+   "depth": 2,
+   "text": "A carrier wants a copy that can hang. A reader wants a flat guide back to Ketta’s tag."
+  },
+  {
+   "id": "h.nile.opening-pins.placed.3",
+   "objective": "nile.opening-pins.placed",
+   "depth": 3,
+   "text": "Put one of the copies where its reader can use it."
+  },
+  {
+   "id": "h.nile.opening-pins.placed.4",
+   "objective": "nile.opening-pins.placed",
+   "depth": 4,
+   "text": "Mount the punched copy or set the printed guide in the low tray. Read the new check at its spot."
+  },
+  {
    "id": "h.nile.dispatch.1",
    "objective": "nile.dispatch",
    "depth": 1,
@@ -5146,6 +5252,121 @@
        "anthropology"
       ],
       "minutes": 2,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "application",
+       "solo": "relational"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH2-HOLE-GUIDE",
+   "world": "WORLD-03",
+   "title": "Two Circles on the Rail",
+   "available": {
+    "flag": "nile.arrived",
+    "eq": true
+   },
+   "knowledgeQuestion": "When does the same mark guide two different kinds of work?",
+   "stake": "A carrier needs a tag that stays on its pins. A reader needs the source and a way to see both holes beside it.",
+   "objectives": [
+    {
+     "id": "nile.opening-pins.compare",
+     "title": "Try both copies against the same stop and check their fit",
+     "done": {
+      "all": [
+       {
+        "flag": "nile.opening-pins.seen.punched",
+        "eq": true
+       },
+       {
+        "flag": "nile.opening-pins.seen.printed",
+        "eq": true
+       }
+      ]
+     },
+     "visible": {
+      "flagSet": "nile.opening-pins.trial"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "truth",
+       "culture",
+       "interpretation",
+       "explanation",
+       "objectivity"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope",
+       "perspectives"
+      ],
+      "subjects": [
+       "history",
+       "anthropology",
+       "design-tech"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "nile.opening-pins.placed",
+     "title": "Check who can use the copy you placed",
+     "done": {
+      "flag": "nile.opening-pins.readback",
+      "eq": true
+     },
+     "visible": {
+      "objective": "nile.opening-pins.compare"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "values",
+       "responsibility",
+       "justification"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives"
+      ],
+      "subjects": [
+       "history",
+       "anthropology",
+       "design-tech"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "minutes": 1,
       "thinking": {
        "dok": 3,
        "bloom": "evaluate",

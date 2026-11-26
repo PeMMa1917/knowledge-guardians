@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { SERVICE_BOUNDARIES, servicePlan, WATER_REQUESTS } from '../src/domain/boundaryBoard';
+import { guideObjectives } from '../src/domain/guidance';
 import { check } from '../src/domain/rules';
 import { MAPS } from '../src/maps';
 import { Driver } from './driver';
@@ -69,6 +70,9 @@ describe('The Line on the Night Map', () => {
     scene(d, 'boundary-civic-post', seam === 'ditch' ? 'Keep the dated ditch line' : 'Use the footbridge');
     expect(d.done('boundary.civic.post')).toBe(true);
     expect(d.s.inventory['item.boundary.plan']).toBe(1);
+    const objective = 'boundary.water.deliver';
+    const goals = () => d.e.visibleObjectives(d.s);
+    expect(guideObjectives(goals(), 'WORLD-13').map(({ id }) => id)).not.toContain(objective);
     const plan = servicePlan(seam);
     expect(prop(d, 'boundary-civic-signed-' + seam)?.text).toContain(plan.delivered.at(-1)?.label);
 
@@ -77,6 +81,11 @@ describe('The Line on the Night Map', () => {
     move(d, 'water-door');
     expect(prop(d, 'boundary-water-cart-' + plan.first)).toBeUndefined();
     move(d, 'water-council-path');
+    expect(goals().find(({ id }) => id === objective)?.mission.world).toBe('WORLD-12');
+    expect(guideObjectives(goals(), 'WORLD-12').map(({ id }) => id)).toContain(objective);
+    expect(d.run({ type: 'RequestHint', objective }).events).toContainEqual(expect.objectContaining({
+      kind: 'hint', hint: expect.objectContaining({ objective, depth: 1, text: expect.stringContaining('Sena') }),
+    }));
     scene(d, 'boundary-water-receive', 'Keep the remaining slips');
     const pending = prop(d, 'boundary-water-pending-' + seam)?.text;
     for (const { label, x, y, wait } of plan.remaining) expect(pending).toContain(label + ' (square ' + x + ', ' + y + ', waited ' + wait + ' min)');
@@ -93,6 +102,12 @@ describe('The Line on the Night Map', () => {
     const receipt = prop(d, 'boundary-water-receipt-' + plan.first)?.text;
     for (const { label } of plan.delivered) expect(receipt).toContain(label);
     expect(d.done('boundary.water.deliver')).toBe(true);
+    expect(MAPS[d.s.mapId].world).toBe('WORLD-12');
+    expect(d.p.skills['SK-MICRO-0630']).toEqual([
+      'WORLD-13|game-13|boundary.civic.compare|HUM,MAT',
+      'WORLD-12|game-263|boundary.water.deliver|HUM',
+    ]);
+    expect(guideObjectives(goals(), 'WORLD-12', objective).map(({ id }) => id)).not.toContain(objective);
     expect(d.s.journal).toContain('j.boundary.delivery');
     expect(d.s.inventory['item.boundary.plan']).toBe(1);
   });

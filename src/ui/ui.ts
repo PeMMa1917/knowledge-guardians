@@ -1209,6 +1209,7 @@ export class UI implements UIApi {
       'speechSynthesis' in window ? h('button', { class: 'mini speak', type: 'button', 'aria-label': 'Read this line aloud', onclick: () => this.speak(spoken) }, '🔊 Read aloud') : '',
       h('div', { class: 'chips' }, n.claimKind ? claimChip(n.claimKind) : null, n.historicalLabel ? histChip(n.historicalLabel) : null),
       extra ?? '', optionList,
+      id === 'stage.call.stand' ? localGuide(c, MAPS[c.state.mapId]?.world ?? '', 'stage.call.audience') : '',
       earlier.length ? h('details', { class: 'dialogue-recall' }, h('summary', {}, 'Earlier dialogue'),
         ...earlier.map((line) => this.dialogueMemory(line))) : '');
     if (n.motif && firstHearing) this.playStoryCue(n.motif);

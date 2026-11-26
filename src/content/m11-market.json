@@ -549,6 +549,33 @@
    "text": "The reader can buy A with eight today. Dagny keeps both totals in view and hangs an empty ticket above the new-crate space. The first person there at the next bell will have to wait at the scale before buying."
   },
   {
+   "id": "market.quote.return",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "Your whole-lot notice is still up. The next runner needs to know what to do when a new crate comes in. We can keep the weighed lots ready to buy or put the scale ticket first for the new arrival.",
+   "options": [
+    {
+     "text": "Pin the weighed lot letters for the queue.",
+     "next": "market.quote.return.posted",
+     "if": { "all": [{ "objective": "market.finish" }, { "not": { "flagSet": "market.quote.rule" } }] },
+     "effects": [{ "setFlag": "market.quote.rule", "value": "posted" }]
+    },
+    {
+     "text": "Leave a reweigh ticket for the next crate.",
+     "next": "market.update.reweigh",
+     "if": { "all": [{ "objective": "market.finish" }, { "not": { "flagSet": "market.quote.rule" } }] },
+     "effects": [{ "setFlag": "market.quote.rule", "value": "reweigh" }]
+    },
+    { "text": "Leave the ticket open for now." }
+   ]
+  },
+  {
+   "id": "market.quote.return.posted",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "The lot letters are up. The runner can pass the dated prices along while those lots are on sale. I’ll open a separate line for the new crate."
+  },
+  {
    "id": "market.clerk.after",
    "speaker": "market-clerk",
    "text": "The whole-lot line stays beside the unit prices. A reader at the low table still has to find the start of each narrow line. We can put each part of the comparison on its own line.",

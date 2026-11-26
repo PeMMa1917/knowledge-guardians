@@ -13,7 +13,7 @@
       "id": "KG-CH12-R06",
       "world": "WORLD-13",
       "title": "The Line on the Night Map",
-      "available": {"flag":"boundary.civic.started","eq":true},
+      "available": {"all":[{"objective":"civic.finish"},{"flag":"boundary.civic.started","eq":true}]},
       "knowledgeQuestion": "What can a dividing line change when the records on either side stay in place?",
       "objectives": [
         {
@@ -41,7 +41,16 @@
             "thinking":{"dok":3,"bloom":"evaluate","fink":"human","solo":"relational"},
             "aoks":["MAT","HUM"],"subjects":["geography","global-politics"],"atl":["thinking","social","communication"],"minutes":2
           }
-        },
+        }
+      ]
+    },
+    {
+      "id": "KG-CH12-R06-WATER",
+      "world": "WORLD-12",
+      "title": "The Night Map’s First Cart",
+      "available": {"all":[{"objective":"boundary.civic.post"},{"item":"item.boundary.plan"}]},
+      "knowledgeQuestion": "Whose waiting requests does the chosen route serve?",
+      "objectives": [
         {
           "id": "boundary.water.deliver",
           "title": "Open the first cart at the Water Commons and leave the other slips in reach.",

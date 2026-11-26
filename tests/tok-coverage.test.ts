@@ -538,15 +538,15 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
 
 type NileFirstLead = 'workers' | 'reading-window' | 'borrowed-mark' | 'lamp-slip' | 'closing-peg' | 'royal-seal';
 
-function nileWorkersLead(route: Route, lead: Exclude<NileFirstLead, 'royal-seal'>): void {
-  route.at(15, 'Follow the scribe’s record and decide what to put in front', ['evidence', 'power', 'perspective', 'interpretation', 'perspectives'], (d) => {
+function nileWorkersLead(route: Route, lead: Exclude<NileFirstLead, 'royal-seal'>, entryMinutes: number): void {
+  route.at(15 + entryMinutes, 'Follow the scribe’s record and decide what to put in front', ['evidence', 'power', 'perspective', 'interpretation', 'perspectives'], (d) => {
     useDoor(d, 'nile-workers');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-STRIKE' });
     for (const node of ['delay', 'payment', 'return']) d.run({ type: 'FollowThread', thread: 'nile-strike', node });
     d.talk('nile-leila', 'workers stopping');
     expect(d.done('nile.workers')).toBe(true);
   });
-  if (lead === 'reading-window') route.at(18, 'Change the opening under the same reading window, then show both reading customs beside the same dated record', [
+  if (lead === 'reading-window') route.at(18 + entryMinutes, 'Change the opening under the same reading window, then show both reading customs beside the same dated record', [
     'objectivity', 'explanation', 'interpretation', 'truth', 'certainty', 'culture', 'scope', 'methods-and-tools',
   ], (d) => {
     d.talk('nile-leila', 'Try the two readings again', 'Turn the clips', 'Ask Leila how', 'Hang both ways');
@@ -554,8 +554,8 @@ function nileWorkersLead(route: Route, lead: Exclude<NileFirstLead, 'royal-seal'
     expect(d.s.flags['nile.workerLead']).toBe('voices');
     readSign(d, 'nile-window-pair');
   });
-  route.at(lead === 'reading-window' ? 21 : 18, 'Put the scribe’s name first and make space for missing voices', ['perspectives', 'ethics'], useProp('nile.reader-seat', 'slip'));
-  if (lead === 'lamp-slip') route.at(22, 'Return the lamp above the same slip to check the groove count and keep two uses for the marks distinct', [
+  route.at((lead === 'reading-window' ? 21 : 18) + entryMinutes, 'Put the scribe’s name first and make space for missing voices', ['perspectives', 'ethics'], useProp('nile.reader-seat', 'slip'));
+  if (lead === 'lamp-slip') route.at(22 + entryMinutes, 'Return the lamp above the same slip to check the groove count and keep two uses for the marks distinct', [
     'truth', 'certainty', 'culture', 'explanation', 'objectivity', 'evidence', 'justification', 'scope', 'methods-and-tools',
   ], (d) => {
     walkScene(d, 'nile-lamp-slip', 'nile.lamp.above', 'Move the lamp to the side', 'Return the lamp above', 'Leave a guide beside');
@@ -563,7 +563,7 @@ function nileWorkersLead(route: Route, lead: Exclude<NileFirstLead, 'royal-seal'
     expect(d.done('nile.lamp.file')).toBe(true);
     readSign(d, 'nile-lamp-note-desk');
   });
-  if (lead === 'closing-peg') route.at(22, 'Open both closed slips and use the later stoppage to separate a recorded delivery from a settled dispute', [
+  if (lead === 'closing-peg') route.at(22 + entryMinutes, 'Open both closed slips and use the later stoppage to separate a recorded delivery from a settled dispute', [
     'truth', 'certainty', 'culture', 'evidence', 'scope', 'interpretation', 'justification',
   ], (d) => {
     walkScene(d, 'nile-closing-peg', 'nile.closing.stock', 'Put the slip back with its box showing',
@@ -573,7 +573,7 @@ function nileWorkersLead(route: Route, lead: Exclude<NileFirstLead, 'royal-seal'
     expect(d.s.flags['nile.closing.post']).toBe('bench');
     expect(readSign(d, 'nile-closing-bench')).toContain('the workers stopped again');
   });
-  if (lead === 'borrowed-mark') route.at(23, 'Use the keepers’ swatch to justify a label about shared practice with the maker left unnamed', ['truth', 'certainty', 'culture', 'justification', 'scope', 'methods-and-tools'], (d) => {
+  if (lead === 'borrowed-mark') route.at(23 + entryMinutes, 'Use the keepers’ swatch to justify a label about shared practice with the maker left unnamed', ['truth', 'certainty', 'culture', 'justification', 'scope', 'methods-and-tools'], (d) => {
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-ARCHIVE-PRACTICE-SWATCH' });
     useDoor(d, 'workyard-back');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-ARCHIVE-RECEIVING-TAG' });
@@ -582,19 +582,19 @@ function nileWorkersLead(route: Route, lead: Exclude<NileFirstLead, 'royal-seal'
   });
 }
 
-function nileRoyalLead(route: Route): void {
-  route.at(13, 'Use the Lens on the Egyptian royal account and the later treaty record', ['evidence', 'interpretation', 'certainty', 'scope', 'methods-and-tools'], (d) => {
+function nileRoyalLead(route: Route, entryMinutes: number): void {
+  route.at(13 + entryMinutes, 'Use the Lens on the Egyptian royal account and the later treaty record', ['evidence', 'interpretation', 'certainty', 'scope', 'methods-and-tools'], (d) => {
     useDoor(d, 'nile-royal');
     for (const exhibit of ['OBJ-NILE-SALLIER', 'OBJ-NILE-TREATY']) {
       d.run({ type: 'InspectExhibit', exhibit });
       d.run({ type: 'UseLens', exhibit });
     }
   });
-  route.at(17, 'Give the treaty a label about terms of peace, keeping its claim separate from the account of battle', ['perspective', 'perspectives', 'justification', 'scope'], (d) => {
+  route.at(17 + entryMinutes, 'Give the treaty a label about terms of peace, keeping its claim separate from the account of battle', ['perspective', 'perspectives', 'justification', 'scope'], (d) => {
     d.run({ type: 'BuildLabel', kit: 'nile-qadesh', subject: 'treaty', criterion: 'terms', limit: 'qualified' });
     expect(d.done('nile.diplomacy')).toBe(true);
   });
-  route.at(22, 'Turn over the seal, limit it to the copies it checked, and keep distinct captions at both cases', ['truth', 'certainty', 'culture', 'power', 'responsibility', 'ethics', 'scope', 'methods-and-tools'], (d) => {
+  route.at(22 + entryMinutes, 'Turn over the seal, limit it to the copies it checked, and keep distinct captions at both cases', ['truth', 'certainty', 'culture', 'power', 'responsibility', 'ethics', 'scope', 'methods-and-tools'], (d) => {
     const backing = MAPS[d.s.mapId].interactables.find((p) => p.kind === 'clue' && p.clue === 'nile-royal-seal-backing');
     expect(backing).toBeDefined();
     expect(check(backing?.visibleIf, d.s)).toBe(true);
@@ -605,7 +605,7 @@ function nileRoyalLead(route: Route): void {
   });
 }
 
-function nileDispatch(lead: NileFirstLead = 'workers', mapStop?: 'tilt-tray' | 'wayfinding', checkTransit = false): Route {
+function nileDispatch(lead: NileFirstLead = 'workers', mapStop?: 'tilt-tray' | 'wayfinding', checkTransit = false, tryPins = false): Route {
   const route = new Route();
   const d = route.driver;
   // Independent return-session fixture. These flags represent earlier progress.
@@ -615,17 +615,38 @@ function nileDispatch(lead: NileFirstLead = 'workers', mapStop?: 'tilt-tray' | '
   d.run({ type: 'SetFlag', flag: 'study.letter', value: true });
   useDoor(d, 'door-without-a-name');
   route.at(5, 'Give the bench to a reader who needs the large copy while marking the missing line', ['values', 'ethics', 'responsibility'], useProp('nile.reading-bench', 'copy'));
+
+  const entryMinutes = tryPins ? 4 : 0;
+  if (tryPins) {
+    route.at(8, 'Fit the two lookalike copies to the same two pins, then check what each crew means by two circles', [
+      'culture', 'certainty', 'truth', 'objectivity', 'explanation', 'evidence', 'interpretation', 'scope', 'methods-and-tools',
+    ], (d) => {
+      walkScene(d, 'nile-pins-rack', undefined, 'Set the carrier');
+      expect(readSign(d, 'nile-pins-punched')).toContain('Both pins pass through');
+      expect(d.done('nile.opening-pins.compare')).toBe(false);
+      walkScene(d, 'nile-pins-rack', undefined, 'Set the reading room');
+      expect(readSign(d, 'nile-pins-printed')).toContain('Same stop. Same circle positions.');
+      expect(d.done('nile.opening-pins.compare')).toBe(true);
+    });
+    route.at(9, 'Leave the flat guide where a seated reader can find the original case', [
+      'perspective', 'values', 'responsibility', 'justification', 'ethics', 'perspectives',
+    ], (d) => {
+      walkScene(d, 'nile-pins-choose', undefined, 'printed guide');
+      expect(readSign(d, 'nile-pins-tray')).toContain('carrier leaves their load');
+      expect(d.done('nile.opening-pins.placed')).toBe(true);
+    });
+  }
   const royal = lead === 'royal-seal';
-  if (royal) nileRoyalLead(route);
-  else nileWorkersLead(route, lead);
+  if (royal) nileRoyalLead(route, entryMinutes);
+  else nileWorkersLead(route, lead, entryMinutes);
   const extra = { workers: 0, 'reading-window': 3, 'borrowed-mark': 5, 'lamp-slip': 4, 'closing-peg': 3, 'royal-seal': 4 }[lead]
-    + (mapStop === 'wayfinding' ? 6 : mapStop === 'tilt-tray' ? 3 : 0);
+    + entryMinutes + (mapStop === 'wayfinding' ? 6 : mapStop === 'tilt-tray' ? 3 : 0);
   const enterMapRoom = (d: AuditDriver) => {
     if (lead !== 'borrowed-mark') useDoor(d, royal ? 'royal-back' : 'workyard-back');
     useDoor(d, 'nile-maps');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-MINE' });
   };
-  if (mapStop === 'tilt-tray') route.at(29, 'Compare the same block on a level and raised tray and pin the limited explanation beside the cart',
+  if (mapStop === 'tilt-tray') route.at(29 + entryMinutes, 'Compare the same block on a level and raised tray and pin the limited explanation beside the cart',
     ['objectivity', 'explanation', 'evidence', 'methods-and-tools'], (d) => {
       enterMapRoom(d);
       d.talk('nile-marek', 'Try the tilt tray', 'Set the tray level', 'Reset the tray', 'Raise the same tray', 'Pin a note', 'Carry the two settings');
@@ -633,7 +654,7 @@ function nileDispatch(lead: NileFirstLead = 'workers', mapStop?: 'tilt-tray' | '
       readSign(d, 'nile-tilt-note-cart');
     });
   if (mapStop === 'wayfinding') {
-    route.at(24, 'Read the same room from both ends and check what the square means in a carrier handover', [
+    route.at(24 + entryMinutes, 'Read the same room from both ends and check what the square means in a carrier handover', [
       'truth', 'evidence', 'certainty', 'culture', 'interpretation', 'perspective', 'perspectives', 'scope',
     ], (d) => {
       enterMapRoom(d);
@@ -641,7 +662,7 @@ function nileDispatch(lead: NileFirstLead = 'workers', mapStop?: 'tilt-tray' | '
       expect(readSign(d, 'nile-way-shelf-view')).toContain('map case is now on your right');
       expect(readSign(d, 'nile-way-carrier-note')).toContain('marks the crate rack with a square');
     });
-    route.at(29, 'Rotate the sketch without moving the landmarks, then leave one guide with the case and crate paths', [
+    route.at(29 + entryMinutes, 'Rotate the sketch without moving the landmarks, then leave one guide with the case and crate paths', [
       'objectivity', 'explanation', 'methods-and-tools', 'justification', 'scope', 'responsibility',
     ], (d) => {
       walkScene(d, 'nile-way-board', undefined, 'Hold the room marks steady', 'Set out the revised room guide', 'Put one guide on the board');
@@ -1196,7 +1217,8 @@ function runStage(d: Driver, cue: StageCue) {
 function houseOfPerformance(firstCue: StageCue, seatRequest = false): Route {
   const route = new Route();
   const galleryFirst = firstCue === 'move';
-  const extra = (galleryFirst ? 3 : 0) + (seatRequest ? 4 : 0);
+  const sideCall = galleryFirst && !seatRequest;
+  const extra = (galleryFirst ? 3 : 0) + (seatRequest ? 4 : 0) + (sideCall ? 2 : 0);
   const alternateCue = galleryFirst ? 'pause' : 'move';
   // Independent Chapter 9 session. Both survey edges have been published.
   route.driver.s.objectivesDone.push('sea.finish');
@@ -1207,6 +1229,14 @@ function houseOfPerformance(firstCue: StageCue, seatRequest = false): Route {
     useDoor(d, 'stage-gallery-path');
     readSign(d, 'stage-vantage');
     d.talk('stage-host');
+  });
+  if (sideCall) route.at(9, 'Use the touring players’ spoken cue to replace the printer’s verdict, then hear how it reached the back bench', [
+    'power', 'justification', 'values', 'responsibility', 'ethics', 'interpretation', 'culture',
+  ], (d) => {
+    walkScene(d, 'stage-side-call', 'stage.call.spoken');
+    expect(d.done('stage.call.audience')).toBe(false);
+    expect(readSign(d, 'stage-side-call-spoken')).toContain('before the first line');
+    expect(d.done('stage.call.audience')).toBe(true);
   });
   if (seatRequest) route.at(11, 'Compare seat customs and reserve an aisle place without posting the reason for the request', [
     'culture', 'evidence', 'values', 'power', 'responsibility', 'justification', 'ethics',
@@ -1930,6 +1960,9 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Emberford’s Last Turn from the Showdown to the Study', end: 91, play: () => nexusToEmberford('last-turn') },
     { name: 'Nile first visit from a prepared Chapter 1 save', end: 50, play: () => nileDispatch() },
     { name: 'Nile first visit with the matched packet dates', end: 54, play: () => nileDispatch('workers', undefined, true) },
+    { name: 'Nile entry pin test before the workers and map', end: 54, play: () => nileDispatch('workers', undefined, false, true) },
+    { name: 'Nile entry pin test before the Borrowed Mark', end: 59, play: () => nileDispatch('borrowed-mark', undefined, false, true) },
+    { name: 'Nile entry pin test before the Royal Records', end: 58, play: () => nileDispatch('royal-seal', undefined, false, true) },
     { name: 'Nile first visit with the Reading Window', end: 53, play: () => nileDispatch('reading-window') },
     { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch('borrowed-mark') },
     { name: 'Nile first visit with the lamp and the pinned slip', end: 54, play: () => nileDispatch('lamp-slip') },
@@ -1951,7 +1984,11 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Cartographers’ Sea from a prepared Chapter 7 save', end: 51, play: () => cartographersSea() },
     { name: 'Cartographers’ Sea with the roof and lantern key', end: 58, play: () => cartographersSea(true) },
     { name: 'House of Performance with the silence first', end: 51, play: () => houseOfPerformance('pause') },
-    { name: 'House of Performance starting from a gallery seat', end: 54, play: () => houseOfPerformance('move') },
+    { name: 'House of Performance starting from a gallery seat', end: 56, play: () => {
+      const route = houseOfPerformance('move');
+      expect(coverageGaps(56, route.encounters).filter(({ from }) => from === 30)).toEqual([]);
+      return route;
+    } },
     { name: 'House of Performance with an early aisle-seat request', end: 58, play: () => houseOfPerformance('move', true) },
     { name: 'Market of Measures from a prepared Chapter 9 save', end: 52, play: marketOfMeasures },
     { name: 'Water Commons from a prepared Chapter 10 save', end: 57, play: waterCommons },

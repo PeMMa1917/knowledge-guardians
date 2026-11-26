@@ -480,6 +480,87 @@
    ]
   },
   {
+   "id": "KG-CH9-R95",
+   "world": "WORLD-10",
+   "title": "The Call at the Side Bench",
+   "stake": "The first people through the door may hear a verdict about the keeper before they see the scene.",
+   "knowledgeQuestion": "Whose words reach the audience before an actor speaks?",
+   "available": {
+    "all": [
+     {
+      "objective": "stage.arrival"
+     },
+     {
+      "flag": "stage.vantage",
+      "eq": true
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "stage.call.audience",
+     "title": "Set a cue for the part of the move the post hides. Check what reaches the listeners.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flagSet": "stage.call.mode"
+       },
+       {
+        "flag": "stage.call.read",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "power",
+       "justification",
+       "values",
+       "responsibility",
+       "culture",
+       "perspective",
+       "interpretation"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "application",
+       "solo": "relational"
+      },
+      "atl": [
+       "communication",
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "lit-perf",
+       "lang-langlit",
+       "theatre"
+      ],
+      "minutes": 2
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.stage.call"
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "KG-CH9-R04",
    "world": "WORLD-10",
    "title": "The Same Door in Two Lights",
@@ -1261,6 +1342,75 @@
    "text": "The queue copy says a slip identifies the item coming back. It also carries the signed entry rule. A reader can leave the return queue and go inside without one."
   },
   {
+   "id": "stage.call.stand",
+   "speaker": "stage-host",
+   "text": "Hari holds up the printer’s call slip. It says ‘The keeper refuses entry.’ By that post, you can hear ‘I can wait’ and still miss part of the crate move. ‘The touring players give a spoken call before the first line. Here we leave that beat quiet and pass slips along the low rail. I can change what we put into people’s hands or ears. Which shall we use?’",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Give Hari a spoken cue that reaches the back. Use the quiet beat to tell listeners where the post hides the move.",
+     "next": "stage.call.spoken",
+     "if": {
+      "all": [
+       {
+        "flag": "stage.vantage",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "stage.call.mode"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.call.mode",
+       "value": "spoken"
+      }
+     ]
+    },
+    {
+     "text": "Clip a sightline slip to the low rail. Keep the opening quiet and ask the near bench to pass the cue along.",
+     "next": "stage.call.rail",
+     "if": {
+      "all": [
+       {
+        "flag": "stage.vantage",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "stage.call.mode"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "stage.call.mode",
+       "value": "rail"
+      }
+     ]
+    },
+    {
+     "text": "Leave the slip here while I take another look."
+    }
+   ]
+  },
+  {
+   "id": "stage.call.spoken",
+   "speaker": "stage-host",
+   "text": "Hari strikes the test bell and says, ‘Watch the threshold. From beside the post, part of the crate move is hidden.’ An actor holds their first line until his voice drops. Hari nods towards the back bench. ‘Find out what carried that far.’",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "stage.call.rail",
+   "speaker": "stage-host",
+   "text": "You clip the slip to the rail. ‘Beside the post, part of the crate move is hidden. The words carry past it.’ Hari gives the first line its quiet opening. The near bench lifts the slip from its clip. ‘See how far they pass it.’",
+   "historicalLabel": "fictional-world"
+  },
+  {
    "id": "stage.seats.request",
    "speaker": "narrator",
    "text": "A visitor has left a folded note asking for one aisle seat near the door. She gives no reason. At this house an usher can hold a place with a ribbon until the opening bell. The folded note can stay at the desk.",
@@ -1809,6 +1959,30 @@
    "text": "Choose a copy for the hall door or a note for the return queue. Both keep the rule and the source."
   },
   {
+   "id": "h.stage.call.audience.1",
+   "objective": "stage.call.audience",
+   "depth": 1,
+   "text": "A seat can lose the move and still hear the words."
+  },
+  {
+   "id": "h.stage.call.audience.2",
+   "objective": "stage.call.audience",
+   "depth": 2,
+   "text": "Use the post mark on the sightline note. The two benches can still hear ‘I can wait.’"
+  },
+  {
+   "id": "h.stage.call.audience.3",
+   "objective": "stage.call.audience",
+   "depth": 3,
+   "text": "Keep the cue within what the bench can check. Decide whether Hari should speak it or the bench should pass it."
+  },
+  {
+   "id": "h.stage.call.audience.4",
+   "objective": "stage.call.audience",
+   "depth": 4,
+   "text": "Set one cue at the stand. Check the back bench if Hari spoke, or the far end of the low rail if the slip travelled."
+  },
+  {
    "id": "h.stage.seats.inspect.1",
    "objective": "stage.seats.o.inspect",
    "depth": 1,
@@ -1932,6 +2106,11 @@
    "id": "j.stage.transfer",
    "title": "A rule by the door",
    "text": "A pause gave the theatre audience room to wonder why a person waited. The lending register answered a different question. It gave the hall’s entry rule, which we could carry as a signed line to people at the door or queue."
+  },
+  {
+   "id": "j.stage.call",
+   "claimKind": "observation",
+   "text": "I helped Hari send a cue about what the post hid and checked who received it. The cue left each listener room to hear a different reason in the same line."
   },
   {
    "id": "j.stage.seats",

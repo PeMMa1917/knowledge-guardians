@@ -2,7 +2,7 @@
 
 Knowledge Guardians has fifteen playable chapters and a post-Council return. The next round should measure what students encounter, what they can carry into a new setting, and which story choices they want to pursue. [Browser checks](BROWSER_CHECKS.md) · [Learning design](LEARNING_DESIGN.md)
 
-All five modeled openings cover the full set of TOK dimensions. Three of 47 chapter traces maintain that coverage across every full estimated window. The authored micro-skill links cover 346 of the 803 supplied rows, and 45 can reach Practised. Test the duration of long explorations, and follow the Civic boundary receipt into Water Commons to verify that its next clue and skill credit belong to the same place. [Micro-skills audit](TOK_MICRO_SKILLS.md)
+All five modeled openings cover the full set of TOK dimensions. The authored micro-skill links cover 346 of the 803 supplied rows, and 45 can reach Practised. Measure the duration of long explorations and see which recurring actions players carry into later worlds. [Micro-skills audit](TOK_MICRO_SKILLS.md)
 
 | Priority | Work to do | How to check the improvement |
 | --- | --- | --- |

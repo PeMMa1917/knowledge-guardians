@@ -136,6 +136,44 @@ describe('The Seat before the Bell', () => {
   });
 });
 
+describe('The Call at the Side Bench', () => {
+  const stand = 'stage-side-call';
+  const replies = ['stage-side-call-spoken', 'stage-side-call-rail'];
+
+  it.each([
+    ['spoken', 'Give Hari a spoken cue', /before the first line/],
+    ['rail', 'Clip a sightline slip', /passes it along/],
+  ])('lets the gallery-first player make and verify the %s handoff', (mode, choice, reaction) => {
+    const d = enter();
+    d.s.mapId = gallery;
+    const credit = { ...d.p.credit };
+    expect(visible(d, [stand, ...replies])).toEqual([]);
+    sign(d, 'stage-vantage');
+    expect(visible(d, [stand, ...replies])).toEqual([stand]);
+    use(d, stand, 'Leave the slip here');
+    expect(visible(d, [stand, ...replies])).toEqual([stand]);
+
+    const depths = Array.from({ length: 4 }, () => {
+      const reply = d.run({ type: 'RequestHint', objective: 'stage.call.audience' }).events.find((event) => event.kind === 'hint');
+      return reply?.kind === 'hint' ? reply.hint.depth : undefined;
+    });
+    expect(depths).toEqual([1, 2, 3, 4]);
+    use(d, stand, choice);
+    expect(d.done('stage.call.audience')).toBe(false);
+    const readback = `${stand}-${mode}`;
+    expect(visible(d, [stand, ...replies])).toEqual([readback]);
+    expect(MAPS[gallery].interactables.find((item) => item.id === readback)?.text).toMatch(reaction);
+    sign(d, readback);
+
+    expect(d.done('stage.call.audience')).toBe(true);
+    expect(d.s.journal).toContain('j.stage.call');
+    expect(d.p.credit).toEqual(credit);
+    expect(d.s.flags['stage.seats.plan']).toBeUndefined();
+    expect(d.s.flags['stage.response']).toBeUndefined();
+    expect(d.e.talkEntry(host, d.s)).toBe('stage.host.welcome');
+  });
+});
+
 describe('The Same Door in Two Lights', () => {
   const views = ['stage-light-view-side', 'stage-light-view-front'];
   const displays = ['stage-light-shadow-display', 'stage-light-craft-display'];

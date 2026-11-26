@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { guideObjectives } from '../src/domain/guidance';
 import { check } from '../src/domain/rules';
 import { emptyPair, parsePair, serialisePair, writeSuspend } from '../src/domain/saves';
 import { CIVIC_CANAL, CIVIC_DISPATCH } from '../src/maps/civic';
@@ -62,6 +63,11 @@ describe('The Second Delivery', () => {
     d.s.flags['water.response'] = 'split';
     d.s.flags['civic.response'] = 'reserve';
     chooseOrder(d, plan);
+    const guide = (world: string, preferred?: string) => guideObjectives(d.e.visibleObjectives(d.s), world, preferred).map(({ id }) => id);
+    expect(guide('WORLD-13')).not.toContain('parcel.o.first');
+    expect(guide('WORLD-12', 'parcel.o.first')[0]).toBe('parcel.o.first');
+    expect(guide('WORLD-12', 'parcel.o.appeal')).not.toContain('parcel.o.appeal');
+    expect(guide('WORLD-12', 'parcel.o.finish')).not.toContain('parcel.o.finish');
     const gate = prop(WATER_COUNCIL, 'gate-' + plan);
     expect(check(gate.visibleIf, d.s)).toBe(true);
     expect(check(gate.openIf, d.s)).toBe(false);
@@ -72,6 +78,8 @@ describe('The Second Delivery', () => {
 
     use(d, firstMap, 'first-' + plan, 'Record four served');
     expect(d.done('parcel.o.first')).toBe(true);
+    expect(guide(firstMap.world, 'parcel.o.appeal')[0]).toBe('parcel.o.appeal');
+    expect(guide(firstMap.world, 'parcel.o.finish')).not.toContain('parcel.o.finish');
     d.s.mapId = WATER_LOWER_CHANNEL.id;
     const witness = WATER_LOWER_CHANNEL.npcs.find((npc) => npc.id === carrier);
     expect(witness).toBeDefined();
@@ -97,6 +105,10 @@ describe('The Second Delivery', () => {
     d.run({ type: 'SetFlag', flag: gate.flag!, value: true });
     use(d, WATER_LOWER_CHANNEL, 'second-' + plan, 'Hand over the two held parcels');
     expect(d.done('parcel.o.finish')).toBe(true);
+    expect(d.p.skills['SK-MICRO-0233']).toEqual(['WORLD-12|game-22|parcel.o.appeal|HUM,POL']);
+    expect(d.p.skills['SK-MICRO-0237']).toEqual(['WORLD-12|game-284|parcel.o.finish|HUM,POL']);
+    expect(d.p.skills['SK-MICRO-0840']).toEqual(['WORLD-12|game-231|parcel.o.finish|HUM,POL']);
+    expect(d.p.skills['SK-MICRO-0549']).toEqual(['WORLD-13|game-279|parcel.o.gather|HUM,POL']);
     expect(d.s.inventory).not.toHaveProperty('item.parcel.docket');
     expect(d.s.inventory).not.toHaveProperty('item.parcel.permit');
     expect(d.s.inventory['item.parcel.receipt']).toBe(1);

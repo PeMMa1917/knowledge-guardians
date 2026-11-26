@@ -122,4 +122,29 @@ describe('The Price of a Basket', () => {
     expect(check(slip.visibleIf, d.s)).toBe(true);
     expect(slip.text).toContain('walking round');
   });
+
+  it.each([
+    ['Pin the weighed lot letters', 'posted'],
+    ['Leave a reweigh ticket', 'reweigh'],
+  ])('lets a returning Guardian keep their earlier notice and choose the next procedure once', (choice, rule) => {
+    const d = enter();
+    const ticket = market.interactables.find(({ id }) => id === 'market-quote-return')!;
+    expect(check(ticket.visibleIf, d.s)).toBe(false);
+    d.s.objectivesDone.push('market.finish', 'water.publish', 'water.finish');
+    d.s.flags['market.revised'] = true;
+    d.s.flags['market.access-key'] = true;
+    d.s.flags['market.wick-note'] = true;
+    d.p.credit['credit.market.finish'] = 8;
+    expect(check(ticket.visibleIf, d.s)).toBe(true);
+    if (ticket.kind !== 'scene' || !ticket.node) throw new Error('The return ticket needs a conversation.');
+    d.walk(ticket.node, ['Leave the ticket open']);
+    expect(check(ticket.visibleIf, d.s)).toBe(true);
+    d.walk(ticket.node, [choice]);
+    expect(d.s.flags['market.quote.rule']).toBe(rule);
+    expect(check(ticket.visibleIf, d.s)).toBe(false);
+    expect(d.e.visibleOptions(ticket.node, d.s).map(({ option }) => option.text)).toEqual(['Leave the ticket open for now.']);
+    expect(d.p.credit['credit.market.finish']).toBe(8);
+    const handover = MAPS['water.council'].interactables.find(({ id }) => id === `water-market-${rule}`)!;
+    expect(check(handover.visibleIf, d.s)).toBe(true);
+  });
 });

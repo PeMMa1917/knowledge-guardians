@@ -42,13 +42,15 @@ The route audit in `tests/tok-coverage.test.ts` exercises game actions in indivi
 |---|---:|---:|
 | Story | 113 | 504 |
 | Social | 316 | 670 |
-| Explorer, representative case visits | 889 | 1,910 |
+| Explorer, representative case visits | 893 | 1,916 |
 | Puzzler | 229 | 592 |
 | Cozy | 310 | 667 |
 
-Among 47 chapter traces, 37 cover all 16 dimensions in their first 30 estimated minutes. Three stay complete in every full modeled window. An explorer who visits every filed case has a modeled gap during 4,129 of 5,237 minutes. The new optional cases lengthen several explorations, and the absolute gap also grows on both explorer models. Longer side trips can leave a dimension behind after the chapter’s main path has covered it.
+Among 50 chapter traces, 41 cover all 16 dimensions in their first 30 estimated minutes. Three stay complete in every full modeled window. An explorer who visits every filed case has a modeled gap during 4,132 of 5,243 minutes. The new optional cases lengthen several explorations, and the absolute gap also grows on both explorer models. Longer side trips can leave a dimension behind after the chapter’s main path has covered it.
 
 Hesper’s required handover returns to culture, interpretation and values after the Showdown. The Observatory compares crew names and station records at the same gauges. In Water Commons, the player tracks which leak and intake gave rise to a measured result, and the Market procedure changes what the Water runner can carry. Two Calls After Tuesday asks players to preserve their first proof, return after the readers’ paths change, and check both repairs before somebody uses the result. The last two steps use DOK 4.
+
+Two Circles on the Rail compares how the two copies fit the same pins at minute 8 and fixes one copy where a reader can use it at minute 9. The three tested Nile itineraries that take that stop each cover the full first window. The older Nile itineraries that skip it still show gaps. The House of Performance’s gallery-first itinerary uses a checked spoken cue at minute 9, giving it all sixteen dimensions by minute 30. Each of these routes still has later gaps.
 
 1. Add another recurring use of certainty and widen the ways to encounter culture and values before the Nile and Study’s longest opening stretches.
 2. Review long side missions against their actual play, adding short new encounters where a framework dimension expires.

@@ -952,7 +952,18 @@
       },
       "minutes": 2
      }
-    },
+    }
+   ]
+  },
+  {
+   "id": "KG-CH12-R04-WATER",
+   "world": "WORLD-12",
+   "title": "The Second Delivery at Water Commons",
+   "knowledgeQuestion": "What makes a right or an appeal usable by the people it serves?",
+   "available": {
+    "objective": "parcel.o.plan"
+   },
+   "objectives": [
     {
      "id": "parcel.o.first",
      "title": "Take the parcel docket to Water Commons and record the first handover.",

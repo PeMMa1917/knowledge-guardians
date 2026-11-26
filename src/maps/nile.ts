@@ -32,6 +32,9 @@ const exhibit = (id: string, x: number, y: number, label: string, art: string): 
 
 type Dispatch = 'print' | 'read' | 'pair';
 
+const pinsTrial = { not: { flagSet: 'nile.opening-pins.choice' } } as const;
+const pinsCompared = { objective: 'nile.opening-pins.compare' } as const;
+
 const mineMapSeen = { card: 'card.nile.mine' } as const;
 const markCopy = (format: 'fixed' | 'paired', id: string, x: number, y: number, label: string, text: string): Interactable => ({
   id: `nile-way-${id}`, kind: 'sign', x, y, w: 1, h: 1, label, text, walkThrough: true,
@@ -90,6 +93,29 @@ export const NILE_HALL = room('nile.hall', 'Nile Archive: The Door Without a Nam
       ] } },
     ...sceneProp('nile.reading-bench', 17, 9, 'Imani’s reading bench', 'board-stand',
       { copy: 'nile.scroll', edge: 'nile.tablet' }),
+    { id: 'nile-pins-rack', kind: 'scene', x: 13, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the two test pins and one lower stop', node: 'nile.opening-pins.rack', art: 'board-stand',
+      visibleIf: { all: [{ flag: 'nile.arrived', eq: true }, pinsTrial, { not: pinsCompared }] },
+      artBy: { flag: 'nile.opening-pins.trial', keys: { punched: 'nile.tablet', printed: 'nile.slip' } } },
+    { id: 'nile-pins-choose', kind: 'scene', x: 13, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the two checked copies at the rail', node: 'nile.opening-pins.choose', art: 'preserved.display-paired',
+      visibleIf: { all: [pinsTrial, pinsCompared] } },
+    { id: 'nile-pins-punched', kind: 'sign', x: 14, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the carrier copy resting flat on both pins', art: 'nile.tablet', flag: 'nile.opening-pins.seen.punched',
+      text: 'Both pins pass through. The tag stays on the rail when you let go. The receiving crew teach new carriers to hang punched tags this way so both hands can stay under a box.',
+      visibleIf: { all: [pinsTrial, { flag: 'nile.opening-pins.trial', eq: 'punched' }] } },
+    { id: 'nile-pins-printed', kind: 'sign', x: 14, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the paper guide resting against the pin tops', art: 'nile.slip', flag: 'nile.opening-pins.seen.printed',
+      text: 'Same stop. Same circle positions. The pins meet paper and the tag cannot hang here. The reading keepers print circles to show where the holes are on the practice tag. This guide stays in a flat tray.',
+      visibleIf: { all: [pinsTrial, { flag: 'nile.opening-pins.trial', eq: 'printed' }] } },
+    { id: 'nile-pins-rail', kind: 'sign', x: 13, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the punched handling copy on the rail', art: 'nile.tablet', flag: 'nile.opening-pins.readback',
+      text: 'A carrier hangs the punched copy and keeps both hands under a box. The shelf note still gives Ketta’s tag as the source of the guide’s layout. The full flat guide is still with the keeper for readers who ask.',
+      visibleIf: { flag: 'nile.opening-pins.choice', eq: 'rail' } },
+    { id: 'nile-pins-tray', kind: 'sign', x: 14, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'the flat guide beside Ketta’s case number', art: 'preserved.display-records', flag: 'nile.opening-pins.readback',
+      text: 'A seated reader follows the two circles to Ketta’s receiving tag, then checks the case number. The carrier leaves their load at the stop while the keeper brings a punched copy.',
+      visibleIf: { flag: 'nile.opening-pins.choice', eq: 'tray' } },
     { id: 'nile-lamp-note-copy', kind: 'sign', x: 20, y: 10, w: 1, h: 1, walkThrough: true,
       label: 'the paired lamp views by the lending bench', art: 'nile.scroll',
       text: 'One practice slip. Two grooves show with the lamp above. Three show from the side. Two return when the lamp goes back. The reader cut these as pauses.',
