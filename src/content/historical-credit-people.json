@@ -1,0 +1,288 @@
+{
+  "cma:1951.65.9": [
+    {
+      "name": "Édouard Vuillard",
+      "role": "Artist of the lithograph",
+      "detail": "The museum credits Vuillard for the domestic composition. The hearth, chair and kitchen tools belong to the image he made.",
+      "source": "HIS-CALL-hearth-press"
+    },
+    {
+      "name": "Auguste Clot",
+      "role": "Printer of the lithograph",
+      "detail": "The catalogue gives Clot the printing credit for this colour lithograph from 1899.",
+      "source": "HIS-CALL-hearth-press"
+    },
+    {
+      "name": "Ambroise Vollard",
+      "role": "Publisher of the lithograph",
+      "detail": "The catalogue gives Vollard the publication credit. Printing and publishing have separate entries.",
+      "source": "HIS-CALL-hearth-press"
+    }
+  ],
+  "cma:1987.162": [
+    {
+      "name": "Kehar Singh",
+      "role": "Artist named in the inscription",
+      "detail": "The museum identifies the artist’s name in the words above the scene. It gives the place of making as Punjab, probably Amritsar or Lahore. The same words identify the occupations of the people pictured.",
+      "source": "HIS-PRINT-weaving-and-spinning"
+    }
+  ],
+  "met:1979.206.1757": [
+    {
+      "name": "An unnamed Ènata artist",
+      "role": "Maker credited by community",
+      "detail": "The Met credits an Ènata artist from the Marquesas Islands for this nineteenth-century tahiì. The entry gives the community and leaves the individual’s name open.",
+      "source": "HIS-MET-1979.206.1757"
+    }
+  ],
+  "met:1979.206.1438": [
+    {
+      "name": "An unnamed Mā’ohi artist",
+      "role": "Maker credited by community",
+      "detail": "The Met credits a Mā’ohi artist for this wooden bowl from the Austral Islands, dated about 1820–1840. The record gives no individual name.",
+      "source": "HIS-MET-1979.206.1438"
+    }
+  ],
+  "met:1971.30": [
+    {
+      "name": "Unidentified maker (Mende, Vai, or Temne)",
+      "role": "Community attribution remains open",
+      "detail": "The Met lists three possible attributions for the maker. The early-to-mid-nineteenth-century hanging has a purchase recorded in Ghana. The purchase leaves the place of making and the maker’s identity open.",
+      "source": "HIS-SPECIMEN-WORK-HANGING"
+    }
+  ],
+  "met:1972.4.31": [
+    {
+      "name": "An unnamed Duala artist",
+      "role": "Maker credited by community",
+      "detail": "The Met credits a Duala artist for this mid-to-late-nineteenth-century seat associated with Cameroon. No individual maker is named.",
+      "source": "HIS-SPECIMEN-WORK-SEAT"
+    }
+  ],
+  "met:2015.485.2": [
+    {
+      "name": "An unnamed Baule artist",
+      "role": "Maker credited by community",
+      "detail": "The Met credits a Baule artist for this heddle pulley from Côte d’Ivoire, dated about 1900. The collection entry leaves the personal name open.",
+      "source": "HIS-SPECIMEN-WORK-PULLEY"
+    }
+  ],
+  "met:1990.333.9": [
+    {
+      "name": "An unnamed Fijian artist",
+      "role": "Maker credited in the collection record",
+      "detail": "The Met credits a Fijian artist for these mid-to-late-nineteenth-century masi kesa panels associated with interior Viti Levu. No individual maker is named.",
+      "source": "HIS-PASSAGE-masi-panels"
+    }
+  ],
+  "met:2026.331": [
+    {
+      "name": "An unnamed Zanzibar-based artist",
+      "role": "Artist identified by working location",
+      "detail": "The Met gives the artist’s base as Zanzibar and associates the carved door with Swahili peoples. It dates the door to the mid-to-late nineteenth century and gives no individual name.",
+      "source": "HIS-SPECIMEN-WORK-DOOR"
+    }
+  ],
+  "cma:1929.552": [
+    {
+      "name": "Master of the Small Landscapes",
+      "role": "Catalogue name for an unidentified artist",
+      "detail": "The museum uses this name for the maker of the drawing dated 1559–1561. It marks the possible lower-left signature as uncertain.",
+      "source": "HIS-LANTERN-CMA-1929.552"
+    },
+    {
+      "name": "Hieronymus Cock",
+      "role": "Publisher of the related series",
+      "detail": "The museum credits Cock with issuing the series title page in Antwerp. The series includes a related print with its own accession.",
+      "source": "HIS-LANTERN-CMA-1929.552"
+    }
+  ],
+  "cma:1948.12": [
+    {
+      "name": "Giulio Campagnola",
+      "role": "Artist of the earlier landscape",
+      "detail": "The museum describes the landscape as Giulio’s work. Its account distinguishes the later addition of shepherds playing instruments.",
+      "source": "HIS-LANTERN-CMA-1948.12"
+    },
+    {
+      "name": "Domenico Campagnola",
+      "role": "Artist who added the musicians",
+      "detail": "The museum credits Domenico with adding the shepherds playing instruments to the landscape. It dates the combined composition to about 1517.",
+      "source": "HIS-LANTERN-CMA-1948.12"
+    }
+  ],
+  "cma:2024.151": [
+    {
+      "name": "Magdalena van de Passe",
+      "role": "Engraver of the accessioned print",
+      "detail": "The museum credits Van de Passe for this 1620 engraving after a coastal scene by Willaerts. It attributes the added figure of Elijah at the cave to her.",
+      "source": "HIS-LANTERN-CMA-2024.151"
+    },
+    {
+      "name": "Adam Willaerts",
+      "role": "Artist of the scene used as a model",
+      "detail": "The catalogue identifies one of Willaerts’s coastal compositions as the model for the engraving.",
+      "source": "HIS-LANTERN-CMA-2024.151"
+    },
+    {
+      "name": "Crispijn de Passe the Elder",
+      "role": "Publisher named in the record",
+      "detail": "The museum credits him as publisher of the engraving, separately from the artist and the source of the composition.",
+      "source": "HIS-LANTERN-CMA-2024.151"
+    }
+  ],
+  "cma:2021.141": [
+    {
+      "name": "Alexandre Lunois",
+      "role": "Lithographer of the accessioned print",
+      "detail": "Lunois made this print in 1888. The museum describes his treatment of the shadow on one woman’s face as a change from its source.",
+      "source": "HIS-CALL-quai-stairs"
+    },
+    {
+      "name": "Honoré Daumier",
+      "role": "Painter of the earlier work",
+      "detail": "The museum identifies Daumier’s 1850 painting of the laundresses as the work that Lunois adapted.",
+      "source": "HIS-CALL-quai-stairs"
+    }
+  ],
+  "cma:1964.506": [
+    {
+      "name": "Villeroy Factory",
+      "role": "Probable manufacturer",
+      "detail": "Cleveland lists the maker of this cup as probably the Villeroy Factory. Its border resembles a design used by the Saint-Cloud factory. That resemblance leaves the manufacturing attribution qualified.",
+      "source": "HIS-MAKER-mennecy-cup"
+    }
+  ],
+  "cma:1937.696": [
+    {
+      "name": "William Morris",
+      "role": "Designer credited for the pattern",
+      "detail": "The catalogue credits Morris with the design. It dates the surviving textile to about 1936, after his lifetime.",
+      "source": "HIS-CALL-strawberry-thief"
+    },
+    {
+      "name": "May Morris",
+      "role": "Family recollection cited in the catalogue",
+      "detail": "The museum cites May Morris’s recollection of her father and the birds in the garden. Her recollection supplies context about the design’s subject.",
+      "source": "HIS-CALL-strawberry-thief"
+    }
+  ],
+  "cma:1955.451": [
+    {
+      "name": "Auguste Louis Lepère",
+      "role": "Artist of the accessioned print",
+      "detail": "The museum credits Lepère as artist of this 1893 print and describes the two laundresses in contrasted tones.",
+      "source": "HIS-CALL-washerwoman-colour"
+    },
+    {
+      "name": "Andre Marty",
+      "role": "Publisher named in the catalogue",
+      "detail": "Cleveland gives Marty the separate publication credit for the print.",
+      "source": "HIS-CALL-washerwoman-colour"
+    }
+  ],
+  "cma:1947.198": [
+    {
+      "name": "Robert S. Duncanson",
+      "role": "Painter named in the catalogue",
+      "detail": "The museum attributes the 1862 view to Duncanson. It transcribes his initials and the date on the painted side, and his initials and the subject on the reverse.",
+      "source": "HIS-REG-pepin-painting"
+    }
+  ],
+  "cma:1926.17": [
+    {
+      "name": "Maurice Prendergast",
+      "role": "Artist whose signature the museum transcribes",
+      "detail": "Cleveland transcribes the artist’s name, New York and 1901 along the bottom of this Central Park drawing. Its account notes that he revisited the May Day subject.",
+      "source": "HIS-DATE-CMA-1926.17"
+    }
+  ],
+  "cma:1992.12": [
+    {
+      "name": "Carleton E. Watkins",
+      "role": "Photographer credited for the print",
+      "detail": "The museum dates this large Yosemite photograph to 1865–1866. The caption on the mount identifies Bridal Veil and gives a height for the subject.",
+      "source": "HIS-DATE-CMA-1992.12"
+    }
+  ],
+  "cma:1993.25": [
+    {
+      "name": "Alexander Henderson",
+      "role": "Photographer named in the negative",
+      "detail": "The museum transcribes Henderson’s name in the negative. Spotting obscures the negative number. The catalogue dates the photograph to the 1860s.",
+      "source": "HIS-DATE-CMA-1993.25"
+    }
+  ],
+  "cma:2000.97": [
+    {
+      "name": "José Guadalupe Posada",
+      "role": "Printmaker named in the catalogue",
+      "detail": "Cleveland identifies the maker and dates the print to about 1900–1910. Its account describes the skeleton passengers as part of a humorous comment on electric trams.",
+      "source": "HIS-CALL-bus-print"
+    }
+  ],
+  "met:67.55.175": [
+    {
+      "name": "John La Farge",
+      "role": "Artist of the accessioned study",
+      "detail": "The Met credits La Farge for this nineteenth-century view of Moorea from Tahiti. The title locates the viewing side across the strait.",
+      "source": "HIS-PASSAGE-moorea-colour"
+    }
+  ],
+  "met:1993.8": [
+    {
+      "name": "Conrad Martens",
+      "role": "Artist of the accessioned view",
+      "detail": "The Met credits Martens for this view of an approach to Montevideo. The name belongs to the artist of the image.",
+      "source": "HIS-FERN-MONTEVIDEO-APPROACH"
+    }
+  ],
+  "met:89.4.52": [
+    {
+      "name": "Jiu-cheng",
+      "role": "Instrument maker named in the catalogue",
+      "detail": "The Met attaches this maker credit to its nineteenth-century pipa. The credit establishes whose name is recorded for this instrument.",
+      "source": "HIS-CUE-jiu-pipa"
+    }
+  ],
+  "met:89.4.106": [
+    {
+      "name": "Isohachi Shigemoto",
+      "role": "Maker of the accessioned shamisen",
+      "detail": "The Met credits the maker, indexed as Shigemoto, Isohachi, and dates this shamisen to about 1875.",
+      "source": "HIS-CUE-shigemoto-shamisen"
+    }
+  ],
+  "met:89.4.959": [
+    {
+      "name": "Ch. Michel",
+      "role": "Maker of the accessioned violin",
+      "detail": "The Met credits Michel for the instrument dated about 1819. The term Savart model identifies the design named in the title.",
+      "source": "HIS-CUE-michel-savart"
+    }
+  ],
+  "met:1985.203": [
+    {
+      "name": "Alexander-François Debain",
+      "role": "Maker attribution is qualified",
+      "detail": "The Met’s maker field qualifies this reed organ as attributed to Debain. The record dates the instrument to about 1860.",
+      "source": "HIS-CUE-debain-reed-organ"
+    }
+  ],
+  "met:1998.70": [
+    {
+      "name": "Alexandre Père & Fils",
+      "role": "Maker named in the catalogue",
+      "detail": "The Met credits the firm for this accordion dated 1850–1855. The credit establishes the maker named for this example.",
+      "source": "HIS-CUE-alexandre-accordion"
+    }
+  ],
+  "met:1980.497.7": [
+    {
+      "name": "Tiffany Studios",
+      "role": "Workshop credited in the catalogue",
+      "detail": "The Met identifies Tiffany Studios as maker of this foil cutting plate. The workshop credit leaves the individual hands responsible open.",
+      "source": "HIS-JIG-SHOP-TIFFANY-FOIL-PLATE"
+    }
+  ]
+}

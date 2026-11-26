@@ -12,6 +12,8 @@ Mika chose Cloudflare (Workers + D1) with our own login. Students use a username
 
 ## Playtest build
 
+Twenty-nine collection accessions have new source-linked credits. At the Civic Callboard, Neris receives the roles for *The Hearth* with the image or at a later source stop. In the City of Copies, visitors can meet Kehar Singh’s artist line or the workers’ occupations first. On the coast and at the House of Performance, the Ènata fan and the hanging with a Mende, Vai, or Temne attribution keep a maker’s credit distinct from a measurement or purchase. [Exact records](src/content/historical-credit-people.json) · [Earning and receiving checks](tests/historical-credits.test.ts)
+
 Neris follows the signed Civic Callboard passage to the source desk during the same visit. The old bench becomes walkable. If the Guardian is standing where a character is due to arrive, the character waits for room. A click on a departing character drops the old walking target. Other encounters with conditional characters use the same movement rules. Tull now gives his first research question in dialogue and explains what it left out. [Browser regression](tools/smoke-navigation.mjs) · [Word histories](tests/glossary.test.ts)
 
 Quena’s 40 photo cases now offer an object-specific first clue in the Cold Store and another when the object returns to the Nile. Their diary entries and optional questions follow the physical detail the Guardian handled. For example, the celadon bowl separates the marks a reader can see from the gift record that names two people. Water Commons’ latch crew also gives its own clues for the staffed crossing and the raised bank. [Glass Rack actions and diary](tests/glass-rack.test.ts) · [Water Commons crossings](tests/latch-check.test.ts)

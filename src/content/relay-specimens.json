@@ -144,15 +144,21 @@
     "license": "CC0 1.0",
     "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
     "recordUrl": "https://collectionapi.metmuseum.org/public/collection/v1/objects/313971",
-    "observation": "The catalogue identifies wood, whalebone and fibre in an Ènata fan and records its thickness separately from its height and width.",
+    "observation": "The catalogue identifies wood, whalebone and fibre in this fan by an Ènata artist. It records thickness separately from height and width and gives no individual artist’s name.",
     "slug": "enata-fan",
     "name": "Tahiì by an Ènata artist",
     "asset": "specimens/met-1979.206.1757.jpg",
-    "stake": "A flat sketch has room for the front view alone. A reader has asked whether the thin edge and the named materials are part of the same accession.",
+    "stake": "Sora can reserve a shallow tray from the edge measurement. She needs the numbered catalogue clip to carry the maker credit. Renna can hold both clips together in the late tray.",
     "detail": "This tahiì measures 47 by 43.2 cm with a depth of 2.5 cm. The Met lists wood, whalebone and fibre.",
-    "bellDetail": "Sora leaves an edge line with the depth on the working sketch. She has room for all three materials when the source catch arrives.",
-    "bellSource": "Sora keeps the Tahiì number with the sketch. The clerk can already find the exact fan while its edge and materials wait at the latch.",
-    "trace": "Renna attaches a separate edge view to the exact record and leaves the source’s three named materials together.",
+    "bellDetail": "Sora reserves the shallow tray from the edge measurement. The credit line stays empty until she can match its catalogue slip.",
+    "bellSource": "Sora files the accession and Ènata maker credit. She keeps the tray unassigned while the thickness measurement is still at the catch.",
+    "trace": "Renna keeps the shallow tray, the numbered collection slip and its credit together for visitors who arrive after the bell.",
+    "creditClip": {
+      "uncreditedTitle": "Tahiì edge guide",
+      "recordedMaker": "Ènata artist, Marquesas Islands. The catalogue leaves the personal name open.",
+      "reunited": "The seated guide keeps the narrow tray measurement beside the Ènata credit. The maker’s personal name stays open.",
+      "journal": "I kept the tray measurement and the Ènata maker credit on separate clips until I had both in hand. The Met names the community and leaves the artist’s personal name open."
+    },
     "altText": "A broad, rounded woven fan with a short, narrow handle."
   },
   {

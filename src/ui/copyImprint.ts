@@ -1,7 +1,7 @@
 import type { GameController } from '../app/controller';
 import { specimenArt } from '../app/specimenArt';
 import { IMPRINT_CASES, PRINT_DESTINATIONS, type ImprintCase } from '../content/copyImprintCases';
-import { imprintPacket, INK_CHARGES, installFlag, pressFlag, pressedCharges, pullFlag, pullInk, readPacket, type ImprintRoute, type InkCharge } from '../domain/imprint';
+import { imprintHeading, imprintHeadingFlag, imprintPacket, INK_CHARGES, installFlag, pressFlag, pressedCharges, pullFlag, pullInk, readPacket, type ImprintHeading, type ImprintRoute, type InkCharge } from '../domain/imprint';
 import { h } from './dom';
 import './copyImprint.css';
 
@@ -53,6 +53,15 @@ function catalogue(record: ImprintCase): HTMLElement {
     `Collection ${record.accession} · ${record.date}`), ' · ', record.limit);
 }
 
+const creditHeading: Record<ImprintHeading, string> = { artist: 'Artist named', work: 'Work named' };
+
+function creditSlip(slip: NonNullable<ImprintCase['creditSlip']>, first: ImprintHeading): HTMLElement {
+  const second = first === 'artist' ? 'work' : 'artist';
+  return h('dl', { class: 'imprint-credit' }, ...([first, second] as const).flatMap((key) => [
+    h('dt', {}, creditHeading[key]), h('dd', {}, slip[key]),
+  ]));
+}
+
 export function copyImprint(controller: GameController, station: string, sound: (name: string) => void, refresh: () => void): HTMLElement {
   const panel = h('div', { class: 'imprint-station', tabindex: -1 });
   const flags = () => controller.state.flags;
@@ -74,9 +83,9 @@ export function copyImprint(controller: GameController, station: string, sound: 
       const copy = h('div', { class: 'imprint-results' });
       const update = () => {
         reply.textContent = isOnHook()
-          ? route === 'counter'
+          ? record.creditSlip?.[route] ?? (route === 'counter'
             ? 'The runner takes this single pull and its catalogue slip to the queue. The other pulls stay in the press room.'
-            : 'The keeper lays the collection view between the two pulls. A visitor can check which marks moved with the ink setting.'
+            : 'The keeper lays the collection view between the two pulls. A visitor can check which marks moved with the ink setting.')
           : 'The bearer has brought the packet to its hook.';
         mount.disabled = isOnHook();
         mount.textContent = isOnHook() ? 'Copy mounted' : `Mount proof ${record.accession}`;
@@ -89,7 +98,8 @@ export function copyImprint(controller: GameController, station: string, sound: 
         reply.focus();
       } });
       update();
-      panel.append(h('article', { class: 'imprint-receipt' }, h('h3', {}, record.title), catalogue(record), copy, mount, reply));
+      panel.append(h('article', { class: 'imprint-receipt' }, h('h3', {}, record.title), catalogue(record),
+        record.creditSlip ? creditSlip(record.creditSlip, imprintHeading(controller.state, record.stem)) : null, copy, mount, reply));
       void pixelsFor(record).then((photo) => {
         if (!photo) {
           copy.textContent = 'The paper view is unavailable. The catalogue slip is still attached.';
@@ -125,6 +135,15 @@ export function copyImprint(controller: GameController, station: string, sound: 
     const selectedControls = INK_CHARGES.map(({ key, name }) => h('button', {
       type: 'button', onclick: () => { selected = key; update(); },
     }, name));
+    const firstLine = () => imprintHeading(controller.state, record.stem);
+    const headingPreview = h('div');
+    const headingOptions = (['artist', 'work'] as const).map((key) => h('button', {
+      type: 'button', onclick: () => {
+        if (readPacket(flags()[pressFlag(record.stem)])) return;
+        set(imprintHeadingFlag(record.stem), key, 'sfx.page');
+        update();
+      },
+    }, key === 'artist' ? 'Lead with the artist line' : 'Lead with the work line'));
     const destinations = PRINT_DESTINATIONS.map(({ route, title, tradeoff }) => h('div', { class: 'imprint-destination' },
       h('p', { class: 'fine' }, tradeoff),
       h('button', { type: 'button', onclick: () => {
@@ -140,6 +159,13 @@ export function copyImprint(controller: GameController, station: string, sound: 
       const charges = checked();
       const current = readPacket(flags()[pressFlag(record.stem)]);
       selectedControls.forEach((button, i) => button.setAttribute('aria-pressed', String(INK_CHARGES[i].key === selected)));
+      if (record.creditSlip) {
+        headingPreview.replaceChildren(creditSlip(record.creditSlip, firstLine()));
+        headingOptions.forEach((button, index) => {
+          button.setAttribute('aria-pressed', String(firstLine() === (index === 0 ? 'artist' : 'work')));
+          button.disabled = !!current;
+        });
+      }
       destinations.forEach((entry) => {
         entry.querySelector('button')!.disabled = charges.length < 2 || !charges.includes(selected);
       });
@@ -151,8 +177,11 @@ export function copyImprint(controller: GameController, station: string, sound: 
     };
     panel.insertBefore(h('figure', { class: 'imprint-sheet' }, h('img', { src: photo.url, alt: record.alt }),
       h('figcaption', {}, 'Collection view')), status);
-    panel.append(h('div', { class: 'row', role: 'group', 'aria-label': 'Ink charge' }, ...selectedControls),
-      pull, results, ...destinations);
+    panel.append(h('div', { class: 'row', role: 'group', 'aria-label': 'Ink charge' }, ...selectedControls), pull, results);
+    if (record.creditSlip) panel.append(h('section', { 'aria-label': 'Inscription slip' },
+      h('p', {}, 'Choose the line a reader will meet first. Both go with the proof.'),
+      h('div', { class: 'row' }, ...headingOptions), headingPreview));
+    panel.append(...destinations);
     update();
   });
   return panel;

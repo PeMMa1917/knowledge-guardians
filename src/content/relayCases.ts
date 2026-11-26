@@ -98,7 +98,7 @@ export const relayContent = {
   }],
   journal: RELAY_CASES.map((record) => ({
     id: `j.${record.key}`, claimKind: 'observation',
-    text: `I tested a clear run and a gust before visiting the receiving table. I tied the detail back to ${record.institution} record ${record.accession}, ${record.name}.`,
+    text: record.creditClip?.journal ?? `I tested a clear run and a gust before visiting the receiving table. I tied the detail back to ${record.institution} record ${record.accession}, ${record.name}.`,
   })),
   hints: RELAY_CASES.flatMap((record) => [
     'The two clips give the receiver different ways to start.',
