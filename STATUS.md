@@ -6,7 +6,7 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
-The narrow diary, source catalogue and ending credits wrap long controls, titles and links at enlarged text sizes. A completed controlled trial at the Nexus bench now unlocks Lumen’s simulation and causal memories. Six Jig Shop exhibits have distinct original graphics. The photographic plate vise uses its own catalogue slip because the available photographs depict plate cases. [Bench memories](tests/glossary.test.ts) · [Jig Shop](tests/jig-shop.test.ts)
+The narrow diary, source catalogue and ending credits wrap long controls, titles and links at enlarged text sizes. A completed controlled trial at the Nexus bench now unlocks Lumen’s simulation and causal memories. Six Jig Shop exhibits have distinct original graphics. The outline of J. W. Jarboe’s photographic plate vise follows the exterior in his 1857 patent drawing. The source note distinguishes that design from the surviving model’s surface finish. [Bench memories](tests/glossary.test.ts) · [Jig Shop](tests/jig-shop.test.ts)
 
 The 1941 Green-Book records Victor Hugo Green as publisher and James A. Jackson as the presenter named on the cover. Checking the object opens its historical context. Earning it controls the museum citation in the adventure export. [Door Fold](tests/door-fold.test.ts)
 
@@ -46,7 +46,7 @@ Five optional investigations now carry a method between places. The Nexus rehear
 
 The world now opens as soon as its artwork is ready. Sound effects continue loading in the background. This prevents a slow audio decoder from blocking a new or saved adventure. [Browser checks](docs/BROWSER_CHECKS.md#startup-with-delayed-sound)
 
-The current collection checkpoint registers 1,018 individually identified and dated objects. Each has a physical exhibit, a source and a playable acquisition. There are 721 bespoke interactions that become available when a specific earned object is equipped. The Nexus displays shelved objects six at a time, with three places in the satchel and one object equipped.
+The current collection checkpoint registers 1,018 individually identified and dated objects. Each has a physical exhibit, a source and a playable acquisition. There are 721 bespoke interactions that become available when a specific earned object is equipped. The Nexus displays shelved objects six at a time, with three places in the satchel and one object equipped. At the satchel hooks a Guardian can find any earned object by name, credited person, institution or accession, and go directly to its display or satchel position.
 
 The hidden Two Shutter Room opens in a fresh game. Players find the hatch, trace two stalled beam paths, correct the mirrors and carry one shared fitting into an allocation between the tray carrier and the quiet reader. Both receive separate replies. The earned Hawaiʻi beater from Cleveland accession 1971.152 opens a fictional proof press in the Workroom. A matched pair travels to an alignment rail or a staffed Cold Store repeat. [Browser checks](docs/BROWSER_CHECKS.md) · [Source register](docs/SOURCES.md)
 

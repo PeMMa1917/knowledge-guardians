@@ -34,7 +34,24 @@ export function specimenDisplay(pack: ContentPack, state: CampaignState) {
   const pages = Math.max(1, Math.ceil(stored.length / SPECIMEN_CASES));
   const selected = state.flags[SPECIMEN_PAGE];
   const page = Number.isSafeInteger(selected) ? Math.max(0, Math.min(Number(selected), pages - 1)) : 0;
-  return { carried, page, pages, cases: stored.slice(page * SPECIMEN_CASES, (page + 1) * SPECIMEN_CASES) };
+  return { stored, carried, page, pages, cases: stored.slice(page * SPECIMEN_CASES, (page + 1) * SPECIMEN_CASES) };
+}
+
+/** Look up only objects present in this Guardian's collection. A null page locates the satchel. */
+export function findCollectedSpecimens(display: ReturnType<typeof specimenDisplay>, query: string) {
+  const fold = (value: string) => value.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase()
+    .replace(/[^\p{L}\p{N}]/gu, '');
+  const words = query.trim().split(/\s+/).map(fold).filter(Boolean);
+  const matches: { record: SpecimenExhibit; page: number | null }[] = [];
+  if (!words.length) return matches;
+  function match(record: SpecimenExhibit, page: number | null) {
+    const { accession, institution, people = [] } = record.specimen;
+    const fields = [record.name, accession, institution, ...people.map(({ name }) => name)].map(fold);
+    if (words.every((word) => fields.some((field) => field.includes(word)))) matches.push({ record, page });
+  }
+  display.carried.forEach((record) => match(record, null));
+  display.stored.forEach((record, index) => match(record, Math.floor(index / SPECIMEN_CASES)));
+  return matches;
 }
 
 export function canClaimSpecimen(state: CampaignState, exhibit: SpecimenExhibit): boolean {

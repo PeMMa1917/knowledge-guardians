@@ -3,3 +3,11 @@
 .specimen-cases img { width: 3.5rem; height: 3.5rem; object-fit: contain; image-rendering: pixelated; }
 .specimen-cases h3 { margin: .35rem 0; }
 .specimen-case img { width: min(100%, 8rem); height: auto; image-rendering: pixelated; }
+
+.specimen-index { margin-block: .75rem; }
+.specimen-index summary { cursor: pointer; }
+.specimen-index label, .specimen-index input { display: block; margin-block: .5rem; }
+.specimen-index input { width: min(100%, 27rem); box-sizing: border-box; font: inherit; }
+.specimen-index ul { padding: 0; list-style: none; }
+.specimen-index li { margin-block: .3rem; }
+.specimen-index button { max-width: 100%; white-space: normal; overflow-wrap: anywhere; text-align: start; }

@@ -1,6 +1,6 @@
 import type { GameController } from '../app/controller';
 import { specimenArt } from '../app/specimenArt';
-import { carriedSpecimenCount, specimenDisplay, SPECIMEN_CAPACITY, SPECIMEN_PAGE, type SpecimenExhibit } from '../domain/specimenGear';
+import { carriedSpecimenCount, findCollectedSpecimens, specimenDisplay, SPECIMEN_CAPACITY, SPECIMEN_PAGE, type SpecimenExhibit } from '../domain/specimenGear';
 import { h } from './dom';
 import { artURL, BIG_ART } from './illustrations';
 import './specimenVault.css';
@@ -21,6 +21,34 @@ export function specimenVault(controller: GameController, refresh: () => void) {
   const previous = h('button', { type: 'button', onclick: () => changePage(-1) }, 'Previous displays');
   const next = h('button', { type: 'button', onclick: () => changePage(1) }, 'More displays');
   const position = h('span', { 'aria-live': 'polite' });
+  const search = h('input', { type: 'search', placeholder: 'Name, person, museum or accession' });
+  const matchCount = h('p', { role: 'status' });
+  const results = h('ul', {});
+  const index = h('details', { class: 'specimen-index' }, h('summary', {}, 'Find a collected object'),
+    h('label', {}, 'Search your collection', search), matchCount, results);
+  let collection = specimenDisplay(controller.pack, controller.state);
+  function searchCollection() {
+    const query = search.value.trim();
+    const matches = findCollectedSpecimens(collection, query);
+    matchCount.textContent = !query ? '' : matches.length === 0 ? 'No collected objects match.' :
+      matches.length > 8 ? `${matches.length} matches. Showing the first 8. Add another word to narrow the list.` :
+      `${matches.length} ${matches.length === 1 ? 'match' : 'matches'}.`;
+    results.replaceChildren(...matches.slice(0, 8).map(({ record, page }) => {
+      const locate = () => {
+        if (page !== null && page !== collection.page) {
+          controller.dispatch({ type: 'SetFlag', flag: SPECIMEN_PAGE, value: page });
+          refresh();
+          show();
+        }
+        const heading = [...panel.querySelectorAll<HTMLElement>('h3[data-key]')]
+          .find((node) => node.dataset.key === record.specimen.key);
+        heading?.focus();
+      };
+      const place = page === null ? 'Satchel' : `Display ${page + 1}`;
+      return h('li', {}, h('button', { type: 'button', onclick: locate }, `${record.name} · ${place}`));
+    }));
+  }
+  search.addEventListener('input', searchCollection);
   function changePage(steps: number) {
     const { page } = specimenDisplay(controller.pack, controller.state);
     controller.dispatch({ type: 'SetFlag', flag: SPECIMEN_PAGE, value: page + steps });
@@ -35,12 +63,13 @@ export function specimenVault(controller: GameController, refresh: () => void) {
     else control.focus();
   };
   const tile = (record: SpecimenExhibit, wear: boolean, full: boolean) => h('article', {}, specimenThumbnail(record),
-    h('h3', {}, record.name), h('p', { class: 'fine' }, `${record.specimen.institution} · ${record.specimen.accession}`),
+    h('h3', { tabindex: -1, 'data-key': record.specimen.key }, record.name), h('p', { class: 'fine' }, `${record.specimen.institution} · ${record.specimen.accession}`),
     h('button', { type: 'button', 'data-specimen': record.specimen.key, disabled: wear && full,
       onclick: () => move(record, wear) }, wear ? 'Put in satchel' : 'Put on display'));
   function show() {
-    const state = controller.state;
-    const { carried: inBag, page, pages, cases } = specimenDisplay(controller.pack, state);
+    collection = specimenDisplay(controller.pack, controller.state);
+    const { carried: inBag, page, pages, cases } = collection;
+    searchCollection();
     const used = inBag.length;
     count.textContent = `Satchel object slots ${used} / ${SPECIMEN_CAPACITY}`;
     carried.replaceChildren(...inBag.map((record) => tile(record, false, false)));
@@ -50,7 +79,7 @@ export function specimenVault(controller: GameController, refresh: () => void) {
     next.disabled = page + 1 >= pages;
     position.textContent = `${page + 1} / ${pages}`;
   }
-  panel.append(count, h('h2', {}, 'In your satchel'), carried, h('h2', {}, 'On display'), display,
+  panel.append(count, h('h2', {}, 'In your satchel'), carried, h('h2', {}, 'On display'), index, display,
     h('div', { class: 'row' }, previous, position, next));
   show();
   return panel;
