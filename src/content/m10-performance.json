@@ -589,7 +589,7 @@
    "id": "stage-director",
    "name": "Director Edda",
    "role": "Rehearsal director",
-   "sprite": "smith-hesper",
+   "sprite": "custom:deep.black.slate.indigo.scarf.gold.covered.none.none",
    "mode": "fictional",
    "talk": [
     {
@@ -628,7 +628,7 @@
    "id": "stage-host",
    "name": "Host Hari",
    "role": "Gallery host",
-   "sprite": "clerk-venn",
+   "sprite": "custom:light.white.woad.brown.both.red.bun.none.none",
    "mode": "fictional",
    "talk": [
     {

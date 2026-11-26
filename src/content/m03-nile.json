@@ -175,12 +175,12 @@
   },
   {
    "id": "card.archive.receiving-tag",
-   "title": "Receiving tag signed by Mara",
-   "text": "The archive worker Mara signed the line marked “received at the hall”. A second line for the maker is blank.",
+   "title": "Receiving tag signed by Ketta",
+   "text": "The archive worker Ketta signed the line marked “received at the hall”. A second line for the maker is blank.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world",
    "sources": [],
-   "limits": "The signature records a handover. It cannot tell us who made the tag or whether Mara used the stamp first."
+   "limits": "The signature records a handover. It cannot tell us who made the tag or whether Ketta used the stamp first."
   },
   {
    "id": "card.archive.practice-swatch",
@@ -282,9 +282,9 @@
   },
   {
    "id": "OBJ-ARCHIVE-RECEIVING-TAG",
-   "name": "Mara’s receiving tag",
+   "name": "Ketta’s receiving tag",
    "art": "nile.tablet",
-   "summary": "In this fictional archive, the worker who took an object in signed its handover line. On this tag, Mara’s name stands above a blank maker’s line. Someone pinned it under a bigger sign calling her the inventor.",
+   "summary": "In this fictional archive, the worker who took an object in signed its handover line. On this tag, Ketta’s name stands above a blank maker’s line. Someone pinned it under a bigger sign calling her the inventor.",
    "dateText": "After the new hall store opened.",
    "dateKind": "The day the tag was filed.",
    "historicalLabel": "fictional-world",
@@ -566,12 +566,12 @@
   {
    "id": "nile-borrowed-mark",
    "title": "The borrowed mark",
-   "oldLabel": "Mara invented the archive mark.",
+   "oldLabel": "Ketta invented the archive mark.",
    "place": "The Nile Archive hall",
    "subjects": [
     {
      "id": "tag",
-     "text": "Mara’s receiving tag"
+     "text": "Ketta’s receiving tag"
     },
     {
      "id": "cloth",
@@ -617,7 +617,7 @@
        "weight": 2
       }
      ],
-     "heard": "An apprentice starts to copy Mara’s name onto both lines. She reads your label, then leaves the maker’s line open."
+     "heard": "An apprentice starts to copy Ketta’s name onto both lines. She reads your label, then leaves the maker’s line open."
     },
     {
      "subject": "cloth",
@@ -636,7 +636,7 @@
     "tooStrong": "The word “first” sticks in a reader’s ear. The room starts to glow."
    },
    "legends": {
-    "intro": "The hall label gives Mara sole credit. Follow the signature to the handover line, then check how today’s keepers pass on the mark. Decide which record to put on the stand.",
+    "intro": "The hall label gives Ketta sole credit. Follow the signature to the handover line, then check how today’s keepers pass on the mark. Decide which record to put on the stand.",
     "subject": "Record on the stand",
     "criterion": "What a reader can carry away",
     "limit": "Space for what is unknown",
@@ -670,7 +670,7 @@
    "id": "nile-iman",
    "name": "Archivist Imani",
    "role": "Nexus archivist; fictional",
-   "sprite": "scholar-sefa",
+   "sprite": "custom:pale.black.teal.indigo.none.gold",
    "mode": "fictional",
    "talk": [
     {
@@ -725,7 +725,7 @@
    "id": "nile-nasir",
    "name": "Nasir",
    "role": "Keeper of the archive copies; fictional",
-   "sprite": "clerk-venn",
+   "sprite": "custom:olive.white.plum.brown.headband.red.curls.darkframes.none",
    "mode": "fictional",
    "talk": [
     {
@@ -743,7 +743,7 @@
    "id": "nile-leila",
    "name": "Leila",
    "role": "Keeper of the workers’ reading room; fictional",
-   "sprite": "smith-hesper",
+   "sprite": "custom:deep.brown.madder.charcoal.scarf.green.long.lightframes.none",
    "mode": "fictional",
    "talk": [
     {
@@ -768,7 +768,7 @@
    "id": "nile-marek",
    "name": "Marek",
    "role": "Keeper of the route model; fictional",
-   "sprite": "kip-arden",
+   "sprite": "custom:light.black.violet.olive.both.white.covered.none.none",
    "mode": "fictional",
    "talk": [
     {
@@ -2203,7 +2203,7 @@
    "id": "nile.borrowed-mark-lead",
    "speaker": "nile-iman",
    "historicalLabel": "fictional-world",
-   "text": "People keep bringing me tags with Mara’s name on both lines. The receiving tag is beside the old stand. Leila shows the apprentices how they make their marks in the Workmen’s Room."
+   "text": "People keep bringing me tags with Ketta’s name on both lines. The receiving tag is beside the old stand. Leila shows the apprentices how they make their marks in the Workmen’s Room."
   },
   {
    "id": "nile.window-turn-voices",
@@ -3485,13 +3485,13 @@
    "id": "h.nile.mark.publish.2",
    "objective": "nile.mark.publish",
    "depth": 2,
-   "text": "Look at Mara’s receiving tag in the hall and the practice swatch in Leila’s Workmen’s Room."
+   "text": "Look at Ketta’s receiving tag in the hall and the practice swatch in Leila’s Workmen’s Room."
   },
   {
    "id": "h.nile.mark.publish.3",
    "objective": "nile.mark.publish",
    "depth": 3,
-   "text": "See which line Mara signed and watch what the swatch is for. The label stand is on the west side of the hall."
+   "text": "See which line Ketta signed and watch what the swatch is for. The label stand is on the west side of the hall."
   },
   {
    "id": "h.nile.mark.publish.4",
@@ -5474,7 +5474,7 @@
      }
     ]
    },
-   "line": "Two visitors came to my desk with the tag. This time they asked what Mara received."
+   "line": "Two visitors came to my desk with the tag. This time they asked what Ketta received."
   },
   {
    "id": "nile-leila-practice",

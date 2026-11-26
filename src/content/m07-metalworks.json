@@ -35,7 +35,7 @@
     },
     {
      "id": "metal.compare",
-     "title": "Weigh both blue panels and compare the readings with Inspector Tavi.",
+     "title": "Weigh both blue panels and compare the readings with Inspector Corra.",
      "done": {
       "flagSet": "metal.comparison"
      },
@@ -295,9 +295,9 @@
  "characters": [
   {
    "id": "metal-inspector",
-   "name": "Inspector Tavi",
+   "name": "Inspector Corra",
    "role": "Keeper of the sample balance",
-   "sprite": "smith-hesper",
+   "sprite": "custom:tan.black.blue.indigo.none.gold.long.lightframes.none",
    "mode": "fictional",
    "talk": [
     {
@@ -336,7 +336,7 @@
    "id": "metal-steward",
    "name": "Steward Bea",
    "role": "Keeper of the Trade Hall records",
-   "sprite": "clerk-venn",
+   "sprite": "custom:dark.auburn.cream.brown.headband.red.covered.none.none",
    "mode": "fictional",
    "talk": [
     {
@@ -643,7 +643,7 @@
   {
    "id": "metal.steward.trace.ready",
    "speaker": "metal-steward",
-   "text": "The file carries both original slips. Bring Tavi’s panel comparison when it’s ready. I’ll keep a space for it beside the shop descriptions.",
+   "text": "The file carries both original slips. Bring Corra’s panel comparison when it’s ready. I’ll keep a space for it beside the shop descriptions.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -909,7 +909,7 @@
    "id": "h.metal.compare.4",
    "objective": "metal.compare",
    "depth": 4,
-   "text": "Weigh panels A and B, then choose with Tavi how to show the two readings together."
+   "text": "Weigh panels A and B, then choose with Corra how to show the two readings together."
   },
   {
    "id": "h.metal.trace.1",

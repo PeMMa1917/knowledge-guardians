@@ -337,7 +337,7 @@
    "id": "copies-presskeeper",
    "name": "Printer Lark",
    "role": "Press yard printer",
-   "sprite": "smith-hesper",
+   "sprite": "custom:warm.brown.teal.charcoal.scarf.green.bun.none.none",
    "mode": "fictional",
    "talk": [
     {
@@ -376,7 +376,7 @@
    "id": "copies-lendingkeeper",
    "name": "Lending Keeper Mina",
    "role": "Keeper of the public lending hall",
-   "sprite": "clerk-venn",
+   "sprite": "custom:brown.blonde.plum.olive.both.white",
    "mode": "fictional",
    "talk": [
     {

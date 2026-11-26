@@ -4,7 +4,7 @@
    "id": "council-keeper",
    "name": "Workshop Keeper Hale",
    "role": "Keeper of the trial watch",
-   "sprite": "smith-hesper",
+   "sprite": "custom:warm.black.madder.indigo.scarf.gold",
    "mode": "fictional",
    "talk": [
     {
@@ -34,7 +34,7 @@
    "id": "council-reader",
    "name": "Rail Steward Essi",
    "role": "Keeper of the bell rail and repair docket",
-   "sprite": "clerk-venn",
+   "sprite": "custom:brown.auburn.violet.brown.both.red.curls.darkframes.none",
    "mode": "fictional",
    "talk": [
     {

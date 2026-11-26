@@ -555,7 +555,7 @@
    "id": "forest-naturalist",
    "name": "Naturalist Elian",
    "role": "Forest lookout keeper",
-   "sprite": "scholar-sefa",
+   "sprite": "custom:deep.white.red.sand.scarf.rose",
    "mode": "fictional",
    "talk": [
     {
@@ -608,7 +608,7 @@
    "id": "forest-steward",
    "name": "Steward Ayla",
    "role": "Steward of the forest bridge",
-   "sprite": "warden-ise",
+   "sprite": "custom:light.brown.walnut.wine.both.cyan.curls.darkframes.none",
    "mode": "fictional",
    "talk": [
     {

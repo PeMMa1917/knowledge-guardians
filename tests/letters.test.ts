@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest';
+// @ts-ignore Node types are not installed; vitest runs in Node.
 import { readFileSync, readdirSync } from 'node:fs';
 import { LETTERS, composeLetter, dueLetters } from '../src/domain/letters';
 import type { Condition } from '../src/domain/types';
 import { Driver } from './driver';
 
-const content = readdirSync('src/content').filter((f) => f.endsWith('.json')).map((f) => readFileSync(`src/content/${f}`, 'utf8')).join('\n');
+const content = readdirSync('src/content').filter((f: string) => f.endsWith('.json')).map((f: string) => readFileSync(`src/content/${f}`, 'utf8')).join('\n');
 const objectives = (c: Condition | undefined): string[] => !c ? [] : 'objective' in c ? [c.objective] : 'all' in c ? c.all.flatMap(objectives) : 'any' in c ? c.any.flatMap(objectives) : 'not' in c ? objectives(c.not) : [];
 
 describe("Vesper Quill's letters (the rival)", () => {

@@ -2,9 +2,9 @@
  "characters": [
   {
    "id": "voices-steward",
-   "name": "Listener Mara",
+   "name": "Listener Wren",
    "role": "Keeper of the Listening Room",
-   "sprite": "scholar-sefa",
+   "sprite": "custom:deep.grey.blue.charcoal.scarf.green.curls.darkframes.cane",
    "mode": "fictional",
    "talk": [
     {
@@ -40,7 +40,7 @@
    "id": "voices-clerk",
    "name": "Walk Clerk Eren",
    "role": "Keeper of the Glass Walk notice",
-   "sprite": "clerk-venn",
+   "sprite": "custom:light.black.cream.olive.both.white.long.lightframes.none",
    "mode": "fictional",
    "talk": [
     {
@@ -231,7 +231,7 @@
   {
    "id": "voices.clerk.record",
    "speaker": "voices-clerk",
-   "text": "My stamp opened the path for public use. The crew could bring lamps along the rail before my desk opened. Take the signed Lantern 6 entry back to Mara.",
+   "text": "My stamp opened the path for public use. The crew could bring lamps along the rail before my desk opened. Take the signed Lantern 6 entry back to Wren.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -280,7 +280,7 @@
   {
    "id": "voices.publish.guide",
    "speaker": "voices-clerk",
-   "text": "Eren puts one direction on the board for someone carrying a crate. A small line sends curious readers to the dated records and the carrier’s approved words at Mara’s desk.",
+   "text": "Eren puts one direction on the board for someone carrying a crate. A small line sends curious readers to the dated records and the carrier’s approved words at Wren’s desk.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -381,7 +381,7 @@
   {
    "id": "voices.revise.landmarks",
    "speaker": "voices-clerk",
-   "text": "Eren puts the arch and rail on the arrow above the two approaches. Someone coming in from either side can use those landmarks. The first notice stays on the public board and Mara keeps the dated records.",
+   "text": "Eren puts the arch and rail on the arrow above the two approaches. Someone coming in from either side can use those landmarks. The first notice stays on the public board and Wren keeps the dated records.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -423,7 +423,7 @@
   {
    "id": "voices.clerk.wide-ready",
    "speaker": "voices-clerk",
-   "text": "The low card gives people room to look up and match a line to the path. The original excerpts are still at Mara’s desk.",
+   "text": "The low card gives people room to look up and match a line to the path. The original excerpts are still at Wren’s desk.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -485,13 +485,13 @@
    "id": "voices.quote.queue",
    "speaker": "voices-steward",
    "historicalLabel": "fictional-world",
-   "text": "Mara clips a short copy where the waiting line turns. It names the test walk and directs people to the record. A dock runner starts to read while the clerk helps someone else."
+   "text": "Wren clips a short copy where the waiting line turns. It names the test walk and directs people to the record. A dock runner starts to read while the clerk helps someone else."
   },
   {
    "id": "voices.quote.desk",
    "speaker": "voices-steward",
    "historicalLabel": "fictional-world",
-   "text": "Mara clips the approved line to its date and permission at the reading slot. The first reader follows the clips to see what the carrier let the archive share. People behind them wait until the slot is free."
+   "text": "Wren clips the approved line to its date and permission at the reading slot. The first reader follows the clips to see what the carrier let the archive share. People behind them wait until the slot is free."
   }
  ],
  "missions": [
@@ -506,7 +506,7 @@
    "objectives": [
     {
      "id": "voices.arrival",
-     "title": "Find Mara in the Archive of Voices.",
+     "title": "Find Wren in the Archive of Voices.",
      "done": {
       "flag": "voices.arrived",
       "eq": true
@@ -590,7 +590,7 @@
     },
     {
      "id": "voices.verify",
-     "title": "Give the trial and public opening their own dated lines with Mara.",
+     "title": "Give the trial and public opening their own dated lines with Wren.",
      "done": {
       "flag": "voices.verified",
       "eq": true
@@ -633,7 +633,7 @@
     },
     {
      "id": "voices.compare",
-     "title": "Try both guide copies at Mara’s desk and check what each line carries.",
+     "title": "Try both guide copies at Wren’s desk and check what each line carries.",
      "done": {
       "all": [
        {
@@ -968,7 +968,7 @@
   {
    "id": "voices-walk-dated",
    "title": "Two dates on the walk",
-   "text": "The carrier recalls a Lantern 4 trial. The public opening register starts on Lantern 6. Mara has kept the limits of both records visible.",
+   "text": "The carrier recalls a Lantern 4 trial. The public opening register starts on Lantern 6. Wren has kept the limits of both records visible.",
    "if": {
     "objective": "voices.verify"
    }
@@ -1005,7 +1005,7 @@
    "id": "h.voices.arrival.4",
    "objective": "voices.arrival",
    "depth": 4,
-   "text": "Mara is beside the desk where you can read the public excerpts."
+   "text": "Wren is beside the desk where you can read the public excerpts."
   },
   {
    "id": "h.voices.sources.1",
@@ -1023,7 +1023,7 @@
    "id": "h.voices.sources.3",
    "objective": "voices.sources",
    "depth": 3,
-   "text": "Use Open the source at Mara’s desk for both the carrier and the clerk."
+   "text": "Use Open the source at Wren’s desk for both the carrier and the clerk."
   },
   {
    "id": "h.voices.sources.4",
@@ -1041,7 +1041,7 @@
    "id": "h.voices.verify.2",
    "objective": "voices.verify",
    "depth": 2,
-   "text": "Return to Mara with the permission card, signed entry and both source excerpts."
+   "text": "Return to Wren with the permission card, signed entry and both source excerpts."
   },
   {
    "id": "h.voices.verify.3",
@@ -1101,7 +1101,7 @@
    "id": "h.voices.publish.4",
    "objective": "voices.publish",
    "depth": 4,
-   "text": "Look at the new public board. The excerpts and dates stay at Mara’s desk."
+   "text": "Look at the new public board. The excerpts and dates stay at Wren’s desk."
   },
   {
    "id": "h.voices.reader.1",
@@ -1185,7 +1185,7 @@
    "id": "h.voices.quote.2",
    "objective": "voices.quote",
    "depth": 2,
-   "text": "Ask Mara about the approved reading copy after you check both source excerpts."
+   "text": "Ask Wren about the approved reading copy after you check both source excerpts."
   },
   {
    "id": "h.voices.quote.3",

@@ -4,7 +4,7 @@
    "id": "civic-operator",
    "name": "Keeper Ade",
    "role": "Civic route machine keeper",
-   "sprite": "smith-hesper",
+   "sprite": "custom:pale.blonde.red.indigo.none.gold.bun.none.none",
    "mode": "fictional",
    "talk": [
     {
@@ -41,7 +41,7 @@
    "id": "civic-clerk",
    "name": "Route Clerk Lin",
    "role": "Public notice keeper",
-   "sprite": "clerk-venn",
+   "sprite": "custom:olive.grey.walnut.brown.headband.red",
    "mode": "fictional",
    "talk": [
     {

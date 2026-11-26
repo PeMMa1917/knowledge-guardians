@@ -292,3 +292,9 @@ All three are in `src/content/story.json` (made by a generator script; edit the 
 - Add its panel in `UI.openFieldGame`. The flow: act on a gut feeling first, then see many fair runs or other perspectives, then change one assumption and see what changes. End with `finishField(id)`.
 - Place it on a map as kind `fieldgame` with `game: '<id>'` (a test checks that each game has a spot).
 - Never a quiz: no score for 'right answers', no timer, no text to read and recall. Wrong moves are explained and play goes on. Use original fictional wording, never handout or IB wording.
+
+## Add a chapter person (story bible rules)
+
+- Read [STORY_BIBLE.md](STORY_BIBLE.md) section 5 first. Check that the name is new: `grep -rw <Name> src`.
+- Give the person their own look: set `sprite` to a made look (`custom:skin.hair.outfit.trousers.accessory.accent[.style.glasses.aid]`), never another named character's sheet. A test checks that the look is valid.
+- Add two lines in `src/content/chapter-voices.json`: a `life.<id>` line (their own voice, a life outside the plot, if the chapter is not finished) and an `ack.<id>` line (they notice what the player did, after the chapter's last objective).

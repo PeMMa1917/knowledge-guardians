@@ -4,7 +4,7 @@
    "id": "island-planner",
    "name": "Plan Keeper Ivo",
    "role": "Keeper of the island trial table",
-   "sprite": "scholar-sefa",
+   "sprite": "custom:tan.white.teal.sand.none.rose.covered.none.none",
    "mode": "fictional",
    "talk": [
     {
@@ -46,7 +46,7 @@
    "id": "island-dockhand",
    "name": "Landing Keeper Joss",
    "role": "Keeper of the delivery docket",
-   "sprite": "smith-hesper",
+   "sprite": "custom:dark.brown.plum.wine.headband.cyan.bun.none.none",
    "mode": "fictional",
    "talk": [
     {

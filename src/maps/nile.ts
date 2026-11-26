@@ -53,12 +53,12 @@ export const NILE_HALL = room('nile.hall', 'Nile Archive: The Door Without a Nam
   [{ id: 'nile-iman', x: 12, y: 6, facing: 'down' }],
   [
     { id: 'nile-mark-tag', kind: 'exhibit', exhibit: 'OBJ-ARCHIVE-RECEIVING-TAG', x: 4, y: 5, w: 1, h: 1,
-      label: 'Mara’s receiving tag', art: 'nile.tablet' },
+      label: 'Ketta’s receiving tag', art: 'nile.tablet' },
     { id: 'nile-mark-label', kind: 'label', kit: 'nile-borrowed-mark', x: 4, y: 8, w: 1, h: 1,
       label: 'the borrowed mark’s label stand', art: 'label-stand' },
     { id: 'nile-mark-tag-copy', kind: 'sign', x: 6, y: 8, w: 1, h: 1, walkThrough: true,
       label: 'the tag’s separate name lines', art: 'nile.tablet',
-      text: 'Mara recorded the handover. Room for the maker: still open.',
+      text: 'Ketta recorded the handover. Room for the maker: still open.',
       visibleIf: { all: [
         { flag: 'label.nile-borrowed-mark.holds', eq: true },
         { flag: 'label.nile-borrowed-mark.subject', eq: 'tag' },

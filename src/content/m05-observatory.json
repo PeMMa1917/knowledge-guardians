@@ -424,7 +424,7 @@
    "id": "coast-signalkeeper",
    "name": "Signalkeeper Ruan",
    "role": "Harbour signalkeeper",
-   "sprite": "clerk-venn",
+   "sprite": "custom:pale.grey.weld.charcoal.none.green.covered.none.none",
    "mode": "fictional",
    "talk": [
     {
@@ -518,7 +518,7 @@
    "id": "coast-forecaster",
    "name": "Forecaster Neri",
    "role": "Headland observer",
-   "sprite": "smith-hesper",
+   "sprite": "custom:olive.black.green.olive.headband.white.bun.none.none",
    "mode": "fictional",
    "talk": [
     {

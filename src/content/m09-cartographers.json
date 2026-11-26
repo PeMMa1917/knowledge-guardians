@@ -300,7 +300,7 @@
    "id": "sea-cartographer",
    "name": "Cartographer Renna",
    "role": "Keeper of the survey sheets",
-   "sprite": "scholar-sefa",
+   "sprite": "custom:pale.grey.madder.sand.none.rose.curls.darkframes.none",
    "mode": "fictional",
    "talk": [
     {
@@ -339,7 +339,7 @@
    "id": "sea-harbourkeeper",
    "name": "Harbourkeeper Sora",
    "role": "Harbour display keeper",
-   "sprite": "warden-ise",
+   "sprite": "custom:olive.grey.violet.wine.headband.cyan.long.lightframes.wheelchair",
    "mode": "fictional",
    "talk": [
     {

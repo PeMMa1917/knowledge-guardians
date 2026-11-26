@@ -4,7 +4,7 @@
    "id": "preserved-registrar",
    "name": "Registrar Aster",
    "role": "Registrar of the Cold Store",
-   "sprite": "clerk-venn",
+   "sprite": "custom:tan.auburn.slate.sand.none.rose.bun.none.none",
    "mode": "fictional",
    "talk": [
     {
@@ -56,9 +56,9 @@
   },
   {
    "id": "preserved-royal-keeper",
-   "name": "Tavi",
+   "name": "Odile",
    "role": "Keeper of the royal files",
-   "sprite": "curator-dace",
+   "sprite": "custom:dark.brown.woad.wine.headband.cyan.short.none.cane",
    "mode": "fictional",
    "talk": [
     {
@@ -76,7 +76,7 @@
    "id": "preserved-coast-keeper",
    "name": "Luz",
    "role": "Keeper of the site files",
-   "sprite": "scholar-sefa",
+   "sprite": "custom:warm.blonde.gold.indigo.scarf.gold.curls.darkframes.none",
    "mode": "fictional",
    "talk": [
     {
@@ -106,9 +106,9 @@
   },
   {
    "id": "preserved-inquiry-keeper",
-   "name": "Mira",
+   "name": "Pilar",
    "role": "Inquiry desk keeper",
-   "sprite": "villager-1",
+   "sprite": "custom:brown.grey.orange.brown.both.red.long.lightframes.none",
    "mode": "fictional",
    "talk": [
     {

@@ -4,7 +4,7 @@
    "id": "water-keeper",
    "name": "Weirkeeper Omi",
    "role": "Keeper of the Commons gate",
-   "sprite": "smith-hesper",
+   "sprite": "custom:warm.auburn.weld.sand.scarf.rose.long.lightframes.none",
    "mode": "fictional",
    "talk": [
     {
@@ -49,7 +49,7 @@
    "id": "water-scribe",
    "name": "Clerk Sena",
    "role": "Keeper of the council’s working record",
-   "sprite": "clerk-venn",
+   "sprite": "custom:brown.brown.green.wine.both.cyan.covered.none.none",
    "mode": "fictional",
    "talk": [
     {

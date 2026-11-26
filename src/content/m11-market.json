@@ -4,7 +4,7 @@
    "id": "market-assayer",
    "name": "Assayer Tellen",
    "role": "Keeper of the market balance",
-   "sprite": "smith-hesper",
+   "sprite": "custom:tan.brown.gold.charcoal.none.green",
    "mode": "fictional",
    "talk": [
     {
@@ -35,9 +35,9 @@
   },
   {
    "id": "market-clerk",
-   "name": "Clerk Nera",
+   "name": "Clerk Dagny",
    "role": "Keeper of the practice market records",
-   "sprite": "clerk-venn",
+   "sprite": "custom:dark.black.orange.olive.headband.white.curls.darkframes.none",
    "mode": "fictional",
    "talk": [
     {
@@ -237,13 +237,13 @@
   {
    "id": "market.compare.paired",
    "speaker": "market-assayer",
-   "text": "A delivery worker points to the full basket figure. A buyer uses the fibre line. Keeping the part weighed with each rate lets both readers check what they will carry or use. Ask Nera how the shops set their grades.",
+   "text": "A delivery worker points to the full basket figure. A buyer uses the fibre line. Keeping the part weighed with each rate lets both readers check what they will carry or use. Ask Dagny how the shops set their grades.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "market.compare.net",
    "speaker": "market-assayer",
-   "text": "The fibre price board now uses fibre on both lines. The basket figures stay underneath for the people who lift the loads. Ask Nera to bring the two shops’ grade rules into view.",
+   "text": "The fibre price board now uses fibre on both lines. The basket figures stay underneath for the people who lift the loads. Ask Dagny to bring the two shops’ grade rules into view.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -678,7 +678,7 @@
     },
     {
      "id": "market.terms",
-     "title": "Read the wick and display grades, then ask Nera to keep their purposes in view.",
+     "title": "Read the wick and display grades, then ask Dagny to keep their purposes in view.",
      "done": {
       "flagSet": "market.grade.key"
      },
@@ -797,7 +797,7 @@
     },
     {
      "id": "market.finish",
-     "title": "With Nera, put the whole-lot quotes back beside the unit comparison.",
+     "title": "With Dagny, put the whole-lot quotes back beside the unit comparison.",
      "done": {
       "flag": "market.revised",
       "eq": true
@@ -856,7 +856,7 @@
    "objectives": [
     {
      "id": "market.access",
-     "title": "Leave a more legible key with Nera.",
+     "title": "Leave a more legible key with Dagny.",
      "done": {
       "flag": "market.access-key",
       "eq": true
@@ -992,7 +992,7 @@
    "id": "h.market.terms.4",
    "objective": "market.terms",
    "depth": 4,
-   "text": "Take both rules to Nera and give each grade a separate line."
+   "text": "Take both rules to Dagny and give each grade a separate line."
   },
   {
    "id": "h.market.publish.1",
@@ -1010,13 +1010,13 @@
    "id": "h.market.publish.3",
    "objective": "market.publish",
    "depth": 3,
-   "text": "Tellen needs both readings and Nera needs both grade rules before either display can open."
+   "text": "Tellen needs both readings and Dagny needs both grade rules before either display can open."
   },
   {
    "id": "h.market.publish.4",
    "objective": "market.publish",
    "depth": 4,
-   "text": "Talk to Nera about the window or trade desk after reading the whole-lot purse rule."
+   "text": "Talk to Dagny about the window or trade desk after reading the whole-lot purse rule."
   },
   {
    "id": "h.market.feedback.1",
@@ -1052,7 +1052,7 @@
    "id": "h.market.finish.2",
    "objective": "market.finish",
    "depth": 2,
-   "text": "Take the buyer’s question back to Nera."
+   "text": "Take the buyer’s question back to Dagny."
   },
   {
    "id": "h.market.finish.3",
@@ -1064,7 +1064,7 @@
    "id": "h.market.finish.4",
    "objective": "market.finish",
    "depth": 4,
-   "text": "Ask Nera to add a whole-lot line where the first reader found the figures."
+   "text": "Ask Dagny to add a whole-lot line where the first reader found the figures."
   },
   {
    "id": "h.market.access.1",
@@ -1076,7 +1076,7 @@
    "id": "h.market.access.2",
    "objective": "market.access",
    "depth": 2,
-   "text": "Talk to Nera after the whole-lot correction appears."
+   "text": "Talk to Dagny after the whole-lot correction appears."
   },
   {
    "id": "h.market.access.3",
@@ -1088,7 +1088,7 @@
    "id": "h.market.access.4",
    "objective": "market.access",
    "depth": 4,
-   "text": "Ask Nera for the four-line key, then check the new copy by the low table."
+   "text": "Ask Dagny for the four-line key, then check the new copy by the low table."
   },
   {
    "id": "h.market.wick.1",
@@ -1112,7 +1112,7 @@
    "id": "h.market.wick.4",
    "objective": "market.wick",
    "depth": 4,
-   "text": "Tell Nera to clip that tally beside the length guide so readers can check which grade it describes."
+   "text": "Tell Dagny to clip that tally beside the length guide so readers can check which grade it describes."
   }
  ],
  "criteria": [
