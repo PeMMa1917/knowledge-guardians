@@ -53,11 +53,12 @@ export function trapFocus(container: HTMLElement): () => void {
   };
   container.addEventListener('keydown', onKey);
   container.addEventListener('keyup', keepSpaceRelease);
-  setTimeout(() => {
+  const focusTimer = setTimeout(() => {
     const f = container.querySelector<HTMLElement>('[data-autofocus]') ?? container.querySelector<HTMLElement>(sel);
     f?.focus();
   }, 0);
   return () => {
+    clearTimeout(focusTimer);
     container.removeEventListener('keydown', onKey);
     container.removeEventListener('keyup', keepSpaceRelease);
   };

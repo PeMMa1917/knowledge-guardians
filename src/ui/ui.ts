@@ -491,6 +491,7 @@ export class UI implements UIApi {
   private modal: HTMLElement | null = null;
   private titleModalOpener: HTMLElement | null = null;
   private releaseTrap: (() => void) | null = null;
+  private releaseModalBackground: (() => void) | null = null;
   private releaseStitching: (() => void) | null = null;
   private promptEl!: HTMLElement;
   private toastBox!: HTMLElement;
@@ -525,7 +526,7 @@ export class UI implements UIApi {
   private openModal(cls: string, label: string, ...content: (Node | string)[]): HTMLElement {
     const active = document.activeElement;
     const opener = active instanceof HTMLElement && active.matches('.title-screen button') ? active : this.titleModalOpener;
-    this.closeModal(false);
+    this.dismissModal(false, true);
     this.titleModalOpener = opener;
     const box = h('div', { class: `panel ${cls}`, role: 'dialog', 'aria-modal': 'true', 'aria-label': label }, ...content);
     const state = ctx.controller.state;
@@ -533,28 +534,60 @@ export class UI implements UIApi {
       box.append(localGuide(ctx.controller, MAPS[state.mapId]?.world ?? ''));
     }
     const wrap = h('div', { class: 'modal-wrap', onclick: (e: MouseEvent) => { if (e.target === wrap && !cls.includes('dialogue')) this.closeModal(); } }, box);
-    this.root.append(wrap);
     this.modal = wrap;
+    this.root.append(wrap);
+    this.isolateModalBackground();
     this.releaseTrap = trapFocus(box);
     this.setPrompt(null);
     return box;
   }
 
-  closeModal(sound = true): void {
+  private isolateModalBackground(): void {
+    if (this.releaseModalBackground) return;
+    const blocked = new Set<HTMLElement>();
+    const block = (element: Element | null) => {
+      if (element instanceof HTMLElement && !element.inert) {
+        element.inert = true;
+        blocked.add(element);
+      }
+    };
+    const blockUI = () => {
+      // The separate toast region still announces actions taken inside the dialog.
+      for (const element of this.root.children) {
+        if (element !== this.modal && element !== this.toastBox) block(element);
+      }
+    };
+    block(document.getElementById('game'));
+    blockUI();
+    const observer = new MutationObserver(blockUI);
+    observer.observe(this.root, { childList: true });
+    this.releaseModalBackground = () => {
+      observer.disconnect();
+      for (const element of blocked) element.inert = false;
+      this.releaseModalBackground = null;
+    };
+  }
+
+  closeModal(sound = true): void { this.dismissModal(sound); }
+
+  private dismissModal(sound: boolean, replacing = false): void {
     if (!this.modal) return;
     if (this.modal.querySelector('.journal')) flushJournalWriting(ctx.controller);
     try { window.speechSynthesis?.cancel(); } catch { /* no speech */ }
     // A player can leave a Calm invitation or its conversation with Escape or a click.
-    // Internal modal changes during dialogue use closeModal(false) and keep its state.
+    // Silent modal changes during dialogue keep its state.
     const leaveEvent = sound && (
       this.modal.querySelector('[role="dialog"].event')
       || (this.activeEvent && this.modal.querySelector('[role="dialog"].dialogue'))
     );
     this.releaseTrap?.();
+    this.releaseTrap = null;
     this.releaseStitching?.();
     this.releaseStitching = null;
     this.modal.remove();
     this.modal = null;
+    if (replacing) { this.refreshHud(); return; }
+    this.releaseModalBackground?.();
     const opener = this.titleModalOpener;
     this.titleModalOpener = null;
     if (leaveEvent) {
@@ -1151,7 +1184,6 @@ export class UI implements UIApi {
     const ev = c.pack.events.find((x) => x.id === id);
     if (!this.hud?.isConnected || !ev || c.state.events.pending !== id) return;
     const play = () => {
-      this.closeModal(false);
       this.activeEvent = id;
       const saved = c.state.flags[`event.resume.${id}`];
       const resume = typeof saved === 'string' && c.state.flags[`node.${saved}`] === true
@@ -1189,7 +1221,7 @@ export class UI implements UIApi {
 
   /** Close a conversation, then open the tool it names and finish an event. */
   private endDialogue(open?: string): void {
-    this.closeModal(false);
+    if (!open) this.closeModal(false);
     if (this.activeEvent) {
       const id = this.activeEvent;
       this.activeEvent = null;
@@ -1197,12 +1229,14 @@ export class UI implements UIApi {
       ctx.controller.dispatch({ type: 'ResolveEvent', event: id });
     }
     if (!open) return;
+    const previous = this.modal;
     const [kind, id] = open.split(':');
     if (kind === 'showdown') this.openShowdown(id);
     else if (kind === 'label') this.openLabel(id);
     else if (kind === 'forge') this.openForge();
     else if (kind === 'assay') this.openAssay('AE-ASSAY');
     else if (kind === 'lock') this.openLock(id);
+    if (this.modal === previous) this.closeModal(false);
   }
 
   // ---------------------------------------------------------- dialogue

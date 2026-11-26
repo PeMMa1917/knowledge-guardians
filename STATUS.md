@@ -576,3 +576,7 @@ A caught stair warning gives the opening player two plausible leads and a real c
 ## Rook’s well repair in Afterwards
 
 The Clean Well now carries each choice into its own aftermath. Rook signs the public retest, the seed-row crew maintains an unsigned warning, or the family keeps the account while neighbours receive a warning. New choices leave distinct diary entries. Existing saves retain their choice and any diary entries already written. Ise’s Blue Tail desk keeps a copy beside its new stub while the original stays with the player. [Route and save checks](tests/loyalty.test.ts)
+
+## Screen reader navigation in dialogs
+
+An open dialog keeps the title, game world and Objectives out of screen reader navigation. Dialog controls and the live action messages stay available. Closing the dialog restores access to the game or title.
