@@ -116,7 +116,9 @@ describe('hearth talks, the ballad and the epilogue', () => {
     };
     for (const v of VIGNETTES) {
       const c = v.if;
-      if ('flag' in c && 'eq' in c && typeof c.eq === 'string') expect(real[c.flag], `${v.who}: ${c.flag}`).toContain(c.eq);
+      if ('flag' in c && 'eq' in c && typeof c.eq === 'string') {
+        expect(real[c.flag] ?? flagValues(c.flag), `${v.who}: ${c.flag}`).toContain(c.eq);
+      }
     }
     const whys = pack.dialogue.find((n) => n.id === 'cold.open3')!.options!.flatMap((o) => o.effects ?? []).filter((e) => 'setFlag' in e && e.setFlag === 'why.came').map((e) => String((e as { value: unknown }).value));
     expect(whys.sort()).toEqual(Object.keys(WHY).sort());

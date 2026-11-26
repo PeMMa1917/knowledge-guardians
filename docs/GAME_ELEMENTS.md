@@ -20,6 +20,7 @@ This file is the coverage table. Numbers are the compendium's item numbers. When
 
 - ✓ 1 colourful pixel art and sound · 2 linked maps with rooms · 3 landmarks (the Door Without a Name, the flood post, the singing pier) · 4 lore (Lore codex, Bestiary, letters) · 5 fog of war · 6 the brass compass and map pins · 7 portal stones (fast travel) · 10 gathering (ore, clay, reed) · 11 secrets · 14 two views of one place (the Date-Kind Lens; keepsake views of clues).
 - ◐ 9 weather appears in scenes (floods, storms, the night surge), not as a map system · 12 scouting (the scout routes) · 13 map-making (the Mapmaker's Table, sea charts).
+- The Living Forest creek has two routes that players can open and walk. A choice at the banks leaves a dated route note for the Council.
 - ○ 16 a lost-and-found keeper in the Nexus who returns missed items.
 - ✗ 8 vehicles and 15 creature mounts (not needed for this scale; the ferry and skiffs appear in scenes).
 
@@ -27,6 +28,7 @@ This file is the coverage table. Numbers are the compendium's item numbers. When
 
 - ✓ 17 main story and subplots · 18 living characters with voices and lines that remember · 19 appearance with assistive gear (never locked) · 20 companions with banter · 21 branching dialogue with tone choices · 22 consequences · 25 communities of Emberford · 26 school-appropriate loyalty (platonic) · 27 multiple endings · 28 hearth talks (campfire banter).
 - ◐ 23 reputation with communities (Emberford only) · 24 personality: crossing and ballad names show how you play.
+- Kip remembers where the player helped with a torn case handle. Nellis returns in the Cold Store with a record of the Nile Archive handoff. The Council gallery later shows working examples from Emberford, the forest, the press and the quay.
 - ○ 31 "Who is that?" cards for returning people.
 - ✗ 29 companion battle scripts (no combat) · 30 lending companions to classmates (no server).
 
@@ -110,3 +112,5 @@ This file is the coverage table. Numbers are the compendium's item numbers. When
 ## XVI. Minigames and side-quest kinds (244 to 288)
 
 See the coverage table in STATUS.md ("Minigame and side-quest coverage"), which tracks each kind by chapter. New since this list: 252 photography (album), 260 a careful dig (The Careful Dig), 262 telescope and sky pictures (Star Pictures), 275 a trading chain (The Spare Tag), 271 grey-area dilemmas (crossings, loyalty missions), 280 comedy detours (the goat, Madame Quandary, pun night), 287 an unfinished work left by someone (Elsbet's letters). Planned: 284 a mock council (chapter 15), 285 a headline quest (choose an accurate headline for an in-world notice), 286 a seating plan for two rival guilds, 288 an apprenticeship masterpiece with Hesper.
+
+**263, courier deliveries.** In Emberford, the player can carry a covered collection to Hana, return with her receipt, or open a yard with paired tickets. **264, fragile cargo.** In the City of Copies, a whole sheet can reach the queue while the runners still wait. Linked strips reach the stalls faster if they stay together. **271, moral dilemmas.** On Lamp Quay, a late welcome costs staffing time. The player checks two sightlines and chooses whether to staff the quay, move indoors or ask the next keeper to take over.

@@ -492,6 +492,202 @@
    "speaker": "voices-steward",
    "historicalLabel": "fictional-world",
    "text": "Wren clips the approved line to its date and permission at the reading slot. The first reader follows the clips to see what the carrier let the archive share. People behind them wait until the slot is free."
+  },
+  {
+   "id": "voices.vow.trial",
+   "speaker": "voices-steward",
+   "text": "My father stayed by this lamp when I was late. I remember that his coat dripped for an hour. Tonight I can take one extra turn here. The small lamp has two brackets. Try the one by the rail and the one over the bench.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang the small lamp on the rail bracket.",
+     "next": "voices.vow.rail",
+     "effects": [
+      {
+       "setFlag": "voices.vow.rail",
+       "value": true
+      },
+      {
+       "setFlag": "voices.vow.last",
+       "value": "rail"
+      }
+     ]
+    },
+    {
+     "text": "Hang the same lamp above the waiting bench.",
+     "next": "voices.vow.bench",
+     "effects": [
+      {
+       "setFlag": "voices.vow.bench",
+       "value": true
+      },
+      {
+       "setFlag": "voices.vow.last",
+       "value": "bench"
+      }
+     ]
+    },
+    {
+     "text": "Tell Wren how you asked Ottilie about the Market shrine.",
+     "next": "voices.vow.market",
+     "if": {
+      "flag": "cross.patron",
+      "eq": "keeper"
+     }
+    },
+    {
+     "text": "Tell Wren what you weighed beside the Market shrine.",
+     "next": "voices.vow.market-test",
+     "if": {
+      "flag": "cross.patron",
+      "eq": "test"
+     }
+    },
+    {
+     "text": "Tell Wren what you kept in Sefa’s flood song.",
+     "next": "voices.vow.sefa",
+     "if": {
+      "flag": "loyalty.sefa",
+      "eq": "both"
+     }
+    },
+    {
+     "text": "Tell Wren what you found about the Nexus arch.",
+     "next": "voices.vow.arch",
+     "if": {
+      "flag": "cross.lintel",
+      "eq": "source"
+     }
+    },
+    {
+     "text": "Leave the lamp here."
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.rail",
+   "speaker": "voices-clerk",
+   "text": "From the waiting spot, that small lamp falls in line with the passage markers. The closed desk’s board is behind it. Someone on the quay could take the light as a sign that they can still check in.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Try the other bracket.",
+     "next": "voices.vow.bench",
+     "effects": [
+      {
+       "setFlag": "voices.vow.bench",
+       "value": true
+      },
+      {
+       "setFlag": "voices.vow.last",
+       "value": "bench"
+      }
+     ]
+    },
+    {
+     "text": "Step away from the brackets."
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.bench",
+   "speaker": "voices-clerk",
+   "text": "From the same waiting spot, I can see the light on the seat. I can read “Check-in closed” at the rail past it. A person can reach the bench without going to the check-in desk.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Try the other bracket.",
+     "next": "voices.vow.rail",
+     "effects": [
+      {
+       "setFlag": "voices.vow.rail",
+       "value": true
+      },
+      {
+       "setFlag": "voices.vow.last",
+       "value": "rail"
+      }
+     ]
+    },
+    {
+     "text": "Step away from the brackets."
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.market",
+   "speaker": "voices-steward",
+   "text": "You asked Ottilie what her own promise meant. Ours gives the lamp a keeper and a place for a guest. You can still ask Eren what the desk’s board says.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Go back to the two brackets.",
+     "next": "voices.vow.trial"
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.market-test",
+   "speaker": "voices-steward",
+   "text": "You put a town weight beside the stamped one. Here you can set the lamp beside the notice and see whether both can be read. The lamplighters can tell you what they want their light to say.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Go back to the two brackets.",
+     "next": "voices.vow.trial"
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.sefa",
+   "speaker": "voices-steward",
+   "text": "You helped Sefa keep her grandmother’s verse and give the boats a verse as well. I thought of that when Eren hung the closing notice. Maybe two lines can do two jobs here too.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Go back to the two brackets.",
+     "next": "voices.vow.trial"
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.arch",
+   "speaker": "voices-steward",
+   "text": "You found the hope carved over the Nexus arch. My father used to joke that our lamp could do the waiting for him. Then he would take his wet coat and go sit right where you are standing.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Go back to the two brackets.",
+     "next": "voices.vow.trial"
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.room",
+   "speaker": "voices-steward",
+   "text": "Stand at the reading-room threshold. The straight passage back to the quay is visible from here. The entrance has a seat and stays staffed through the reading turn, after Eren closes check-in. I can set the promise lamp here if the quay keeps a direction.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pin a trial arrow and check that it points towards this door.",
+     "next": "voices.vow.room-checked",
+     "effects": [
+      {
+       "setFlag": "voices.vow.room",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the doorway as it is."
+    }
+   ]
+  },
+  {
+   "id": "voices.vow.room-checked",
+   "speaker": "voices-steward",
+   "text": "The trial arrow starts at the waiting bench and points to this door. Somebody who arrives tired still has the walk along the quay. The reading-room keeper has offered the seat and can be here during the ordinary reading turn.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "missions": [

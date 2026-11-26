@@ -37,6 +37,9 @@ function translationProp(id: string, x: number, y: number, label: string, art: s
 const translationUnfiled: Condition = { not: { flagSet: 'copies.translation.edition' } };
 const translationPlain: Condition = { flag: 'copies.translation.edition', eq: 'plain' };
 const translationPaired: Condition = { flag: 'copies.translation.edition', eq: 'paired' };
+const marginUnsent: Condition = { not: { flagSet: 'copies.margin.sent' } };
+const marginShort: Condition = { flagSet: 'copies.margin.short' };
+const marginWide: Condition = { flagSet: 'copies.margin.wide' };
 
 export const COPIES_ARCHIVE = interior({
   id: 'copies.archive', name: 'City of Copies: Record Room', width: 26, height: 16,
@@ -99,6 +102,16 @@ export const COPIES_PRESS = interior({
       'copies.translation.carrier', { all: [translationUnfiled, { flag: 'label.copies.mending-card.holds', eq: true }] }),
     translationProp('copies-translation-workshop-proof', 6, 9, 'the paired mending card on the workshop rack', 'preserved.display-paired',
       'copies.translation.workshop-proof', translationPaired),
+    translationProp('copies.margin.short', 17, 8, 'the press’s short runner guide', 'copies.press',
+      'copies.margin.short', { not: marginShort }),
+    translationProp('copies-margin-short-proof', 17, 8, 'the narrow test proof', 'copies.strip',
+      'copies.margin.short.tested', marginShort),
+    translationProp('copies.margin.wide', 17, 10, 'the press’s full-width guide', 'copies.press',
+      'copies.margin.wide', { not: marginWide }),
+    translationProp('copies-margin-wide-proof', 17, 10, 'the wide test proof', 'copies.reprint',
+      'copies.margin.wide.tested', marginWide),
+    translationProp('copies-margin-press-tray', 20, 7, 'Lark’s tray for the ramp orders', 'preserved.folder',
+      'copies.margin.tray', { all: [{ objective: 'copies.margin.compare' }, marginUnsent] }),
   ],
   lights: [
     { x: 11, y: 6, r: 61, color: 0xf6cea1 }, { x: 13, y: 8, r: 55, color: 0xffd0aa },
@@ -166,6 +179,22 @@ export const COPIES_LANDING: MapDef = {
       'copies.translation.reader'),
     translationProp('copies-translation-landing-proof', 8, 8, 'the mending card by the shared return tray', 'copies.reprint',
       'copies.translation.landing-proof', translationPlain),
+    print('copies-margin-master', 23, 7, 'the signed ramp trial order', 'copies.source',
+      'Empty carts only on the west ramp, on this shift. Loaded carts use the stone steps hoist. Signed by the landing crew after a trial with an empty cart.',
+      { flag: 'copies.margin.master' }),
+    translationProp('copies-margin-fold', 23, 9, 'the tie on the folded order at the ramp', 'copies.reprint',
+      'copies.margin.fold', { all: [marginUnsent, { flag: 'copies.margin.bundle', eq: 'fold' }] }),
+    translationProp('copies-margin-pair', 5, 10, 'the runner’s two hooks at the landing', 'copies.strip',
+      'copies.margin.pair', { all: [marginUnsent, { flag: 'copies.margin.bundle', eq: 'pair' }] }),
+    print('copies-margin-folded', 23, 9, 'the full order on the ramp board', 'copies.reprint',
+      'The whole order is at the ramp. Loaded carts have the hoist directions beside the trial limit. The near queue sees both. The outer stalls wait for runners.',
+      { visibleIf: { flag: 'copies.margin.sent', eq: 'fold' } }),
+    print('copies-margin-paired', 5, 10, 'the linked order at the runner’s hooks', 'preserved.display-paired',
+      'The runner has reached the outer stalls. Each order has a large turn arrow and a matching strip with the trial limit and the crew’s signature.',
+      { visibleIf: { flag: 'copies.margin.sent', eq: 'pair' } }),
+    print('copies-margin-waited', 23, 9, 'the tray left with the landing crew', 'preserved.folder',
+      'The test sheets are in Lark’s tray. A crew member calls directions from the ramp until the runners get a checked copy.',
+      { visibleIf: { flag: 'copies.margin.sent', eq: 'wait' } }),
   ],
   lights: [
     { x: 16, y: 6, r: 65, color: 0xcce0d9 }, { x: 20, y: 9, r: 65, color: 0xadd7dc },

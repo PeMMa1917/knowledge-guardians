@@ -6,13 +6,14 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
-Fifteen chapters are playable. The clean install, 627 automated tests, production build and 42-file asset check passed. Chromium checks included fresh Nexus navigation, the Nile door and two-lead dispatch with the Chapter 1 prerequisites staged, and selected routes through the later worlds. The thirty-minute audit below uses modeled routes and author estimates.
+Fifteen chapters are playable. A clean install, 705 tests, production build and 42-file asset check passed. Chromium checks covered Kip’s two repairs, the three Emberford pickup routes, two Living Forest crossings, three Nile-to-Cold Store handoffs, three press outcomes and their Council proofs, one Vesper Showdown, and the three Lamp Quay resolutions. Later checks used staged progress or positions. The thirty-minute audit uses author estimates.
 
 ## What works now
 
 ### Chapter 1 (spec 29.1, the chapter rework, items 1 to 8)
 
 - **Cold open** on a new game, then the Nexus mission "Three Firsts" (KG-CH1-M01): inspect three ballpoint-pen exhibits, use the Date Lens, run a fair test, a practice Showdown with the clerk Venn, and the label builder with the Fray.
+- **A Second Handle.** Help Kip carry his torn case together, brace it while he repairs it privately, or set it down and come back. The case moves to the workshop and Kip recalls which kind of help you offered in Emberford.
 - **Hall of Firsts** (optional): seven plaques, each about one person shown with their own place and people (Eratosthenes in Alexandria, Ibn al-Haytham of Basra and Cairo, Bi Sheng of Song China, Radhanath Sikdar of Bengal, Alberto Santos-Dumont of Brazil, Kate Sheppard of New Zealand (Aotearoa), Mary Wollstonecraft of London), ancient to 20th century. Players never see continent groups; `person.continent` is only an internal coverage check. Each plaque has its own small label kit.
 - **Emberford** mission "The Label on the Blade" (KG-CH1-M02): Corvan's claim, the Provenance Thread (gap after the workshop), the schematic forge and assay comparison, a public Showdown with five outcomes (the town sign changes), Hesper, Kip finds the gold seal, back to Ise.
 - **Equal credit** on all routes: 105 XP for the main chapter, plus 15 XP for the side quest. Tests check this.
@@ -163,19 +164,19 @@ Ideas from Mika's TOK lessons, made into games in places, with people. Never a q
 
 Mika asked for many kinds of conflict (self, person, nature, society, god, fate, supernatural, technology), of every size, that the player can face, get around or leave, with jokes, puns and misunderstandings next to serious moments. She also shared 150 elements of an engaging RPG story.
 
-- **Crossings** (`src/domain/crossings.ts`): 17 conflicts in chapters 1 to 14, covering all eight types, three sizes and three tones. Each has a way to face it, a way around, and a way to leave it, with a method, stakes, a cost and a link to a later conflict. Some ways need a key (a companion, marks, or a finished step). Journal, Crossings lists them and gives a name from how you met them.
+- **Crossings** (`src/domain/crossings.ts`) span chapters 1 to 14 and cover all eight types, three sizes and three tones. The Emberford repair queue opens a yard, sends a handoff through the market, or keeps collection appointments in place. The Archive of Voices adds a choice about how to honor a welcome after the quay closes. Major and smaller conflicts also play out through the main quests and map props.
 - **Hearth talks** (`src/domain/hearth.ts`, the hearth in the Nexus): eight evenings where companions talk to each other (a misunderstanding, pun night, two disagreements, two doubts, the Harrowmere night, a farewell). The player joins with a joke, a hard question, a kind word or plain words.
 - **The Ballad of the Guardian** (Emberford, Wynn): tall verses about your deeds that you can correct or let stand. Gives a name.
 - **Afterwards** (Journal, after the Council): where are they now (from your flags), the mirror scene, and last words built from why you came. Ise now asks why you came (`why.came`), and the Council choice warns that it is final and offers "Not yet".
 - **Docs:** the conflict map is story bible section 15; the 150 elements, adapted, with marks, are in [docs/STORY_ELEMENTS.md](docs/STORY_ELEMENTS.md).
-- **Still to do (from both):** Seal agents who remember; the chapter 9 Showdown and clue; leitmotifs and music per chapter; Lantern Fair; a full conversation log; credits with your choices; post-game.
+- **Open:** more returning Seal agents, leitmotifs and music per chapter, the Lantern Fair, a full conversation log, credits with your choices, and post-game play.
 
 ### Game elements compendium and learning levels (Mika 2026-11-26)
 
 Mika wants all the compendium's game elements and the story elements woven through the game many times, with the course content, never as a quiz, flashcards, an essay, homework or an exam. The 12 concepts and the four framework parts must show up very often, and the level of thinking must vary (DOK, Bloom, Fink, SOLO).
 
 - **Coverage:** [docs/GAME_ELEMENTS.md](docs/GAME_ELEMENTS.md) (compendium, with marks and reasons) and [docs/STORY_ELEMENTS.md](docs/STORY_ELEMENTS.md).
-- **Tags and audit:** [docs/LEARNING_DESIGN.md](docs/LEARNING_DESIGN.md). `src/domain/learningLevels.ts` tags crossings, hearth talks, field games and loyalty missions; `src/domain/learningPaths.ts` builds five play-style paths; `tests/learning.test.ts` keeps a budget of 30-minute windows that still miss a concept or framework part (it may only go down). Today: story 36, social 63, explorer 130, puzzler 47, cozy 63.
+- **Tags and audit:** all five modeled styles reach the 12 concepts and four explicit framework parts in the first estimated half hour. The audit checks trailing windows at every encounter completion and expiry. It reports later gaps, actions that carry a dimension alone, and missing tags. See [learning design](docs/LEARNING_DESIGN.md).
 - **New field games:** Star Pictures (Observatory Coast: draw your own picture, see two traditions, measure the same height, choose the chart label), The Careful Dig (Living Forest: brush or pick, notes give a find its value, dig the second trench or not), The Spare Tag (ferry landing: a trading chain where value depends on who and why).
 - **Next:** close the chapter 1 and side-mission gaps (LEARNING_DESIGN.md, fix order); then the planned items in GAME_ELEMENTS.md.
 
@@ -300,6 +301,8 @@ The sources and object limits are in `docs/SOURCES.md`; the rooms and their fict
 
 The Nile Archive return opens the Cold Store independent of its optional trails. Follow the royal custody trail through a gap in the file, put up a supported heading, and visit the Chinchorro records to compare preservation in context. Choose separate stands, paired records or review before display. Each opens the inquiry room with a different reader request. The response travels back to the Nexus. An optional excavation proof places the documented workers' names or a dated record trail first. The [source register](docs/SOURCES.md#chapter-3-preserved-lives) describes what each record supports.
 
+**The Runner's Second Line** starts in the Nile Archive after the workers’ investigation. Nellis needs a receipt while Leila’s two papyrus clips show why an arrival can leave a question open. The Cold Store remembers a public split, a folded copy or a form left with the runner. In **A Place for the Next Name**, the player compares the excavation acknowledgments with a fictional trainee’s private receiving roster, then chooses where a visitor can bring another source. The outcome appears at the public rail or the low bench.
+
 **The Printer's Empty Sleeve** adds a separate workroom. Compare the Mawangdui context and the published methods of the Xin Zhui reconstruction, then lift or attach papers to show what is constrained and what the model supplies. The archive can open a process display or retain a working set with its limits. Both routes leave a visible result.
 
 **Between the Markers** adds a survey room for the copper record and the findspot. Mount the source and trace which material model it rules out. The remaining alternatives leave the person’s route unresolved. Choose which version of that uncertainty readers see at the archive.
@@ -318,6 +321,8 @@ The quay and headland reports give two readings for the same bell. Compare them 
 
 The Observatory correction opens the Living Forest. Take equal three-beat watches at the creek screen and ridge in either order. Compare the first-light and later crossing counts, then check the bridge crews' separate accounts before choosing a quiet-route notice or a public briefing. Return to both lookouts and add an honest correction that leaves the blocked creek beat open. Optional trails bring the record to a low bench and use two historical Gombe records to add contributor credit.
 
+In **The Creek Keeps Its Own Time**, match the two dates at the north post and check the cart crew’s track at the sheltered bend. Ayla can open a short keeper’s rail or fit a wind screen on the longer cart crossing. Use either bank of the chosen crossing and find the dry return slip at Fern Station. Her sister can take the ordinary round while the player keeps exploring.
+
 **A Bridge in Two Views** puts the same crossing in two sketch frames. Trace what each position lets you see, then make a paired guide in the clearing or place the views at the approaches. Check both views in the chosen display.
 
 **The Missing Square** lets players recover a clear-zero entry and a blocked entry from the field register. Use a table or a handover slip, see how a reader interpreted it, and revise either format.
@@ -334,6 +339,8 @@ The Metalworks transfer correction opens the City of Copies. Follow the lending 
 
 An optional translation press follows a local phrase between the hall and landing. Players set a direct instruction or keep the local term with an explanation, then find and hang the proof for the readers it serves.
 
+**The Crooked Margin** runs the same order through two press guides. A short sheet drops the trial limit. The player checks both proofs against the signed order, opens a full sheet for the queue, takes a matched pair to the runner, or hands back the proofs and leaves the loading crew to call directions. The landing and Council gallery display the chosen result.
+
 ## Chapter 8: Where the Ink Stops
 
 The City correction opens Seagrass Steps. Inspect the named marks and reach of the walking chart and the shoal survey, then trace the local names through the Lantern House route book. Publish a shore-first chart or pair the separate surveys at the landing. The reader response points to an unmapped place that needs an explicit limit. Mark the blank and optionally leave a wider labelled key.
@@ -343,6 +350,8 @@ The City correction opens Seagrass Steps. Inspect the named marks and reach of t
 ## Chapter 9: The Doorway Pause
 
 The published survey limits open the House of Performance. Rehearse the same words and crate move with silence before or after the move. Compare what the stage plan and separate seats let people observe, then stage either version. Revise the programme after an audience member asks what they can infer from their seat. Players can leave a cue copy for the understudy or take a related question back to the City. The signed register can settle the lending rule, while the cue and sightline describe the stage action and leave motive open.
+
+**One Line Before the Bell.** Vesper waits in the foyer after the revised programme. The player can leave, return or take the cue sheet and gallery sightline into a public Showdown. Five outcomes leave different programmes and a letter that remembers what the audience did. The conversation plants the Harrowmere lead. The Water Commons still holds the reveal.
 
 ## Chapter 10: The Price of a Basket
 
@@ -360,6 +369,8 @@ The repaired gate order opens the Civic Machine. Collect request slips from Nort
 
 The revised timetable opens the Archive of Voices. At the listening desk, compare a carrier’s approved phrase with a separate signed register. Keep the remembered Lantern 4 test walk and the recorded Lantern 6 public opening on their own lines. Players can put the approved excerpt by the waiting bench or at the reading slot. Publish the short local phrase beside a guide or lead with the guide and keep the two sources at the desk. After a reader’s question, walk both approaches and post shared landmarks or directions for each start.
 
+In **The Lamp We Owe**, Wren wants to keep a local promise of welcome and Eren must close the quay. Check what the same lamp signals at the two brackets. The player can staff the bench, move the welcome indoors, or give the morning keeper the first turn. The lamp or welcome signs move and the Council receives the chosen arrangement.
+
 ## Chapter 14: The Eight Crates
 
 The revised directions open the Island of Models. Compare a route’s delivery time, carrying capacity and crossings of the marked quiet strips. Post a plan for eight crates. When the smaller landing changes how much the ferry can carry, repeat the first route and compare an alternative. Keep both plans visible and add a specific observation of time and place for the quiet strip log. At the dock, learners can also compare the rail with a copied sign and decide how to explain the crew’s waiting signal.
@@ -367,6 +378,8 @@ The revised directions open the Island of Models. Compare a route’s delivery t
 ## Chapter 15: When the Hand Moves
 
 The revised delivery sheet opens the Council of Inquiry. Uncover the independent reference for three watches that all read noon. See which watch still matches a minute later. The letter gallery offers Ibn al-Haytham’s experimental approach and Mill’s reason for challenging even an accepted view. Compare a fresh rail check with a dated, sealed repair record and a fallback. Players can also put a practice dial at the rail or the low slot for the approaching crew. After a courier’s reply, choose a spoken relay or big time marks by the shutter and leave a clear reference for the next checker.
+
+The gallery also takes checked examples from earlier worlds. It shows the repair arrangement from Emberford, the creek route actually crossed, the ramp warning from the landing and the final lamp arrangement. Each case preserves a trade-off the player can revisit during the finale.
 
 ## Opening and return investigations
 
@@ -402,4 +415,4 @@ The [learning design review](docs/TOK_ALIGNMENT.md) uses the supplied course gui
 
 ## Thirty-minute design audit
 
-Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Thirty-three of forty-three routes reach all 12 concepts and four framework areas within their first estimated half hour. Three traces reach every dimension in all modeled windows. The report also lists the gameplay formats used in each route and where a dimension depends on one distinct action. Time these routes with students to check the estimates.
+Run `npm test -- tests/learning.test.ts tests/tok-coverage.test.ts --mode tok-report` for the five campaign models and the executable chapter traces. Thirty-four of forty-four chapter traces reach all 12 concepts and four framework areas within their first estimated half hour. Three reach every dimension in all their modeled windows. The reports show where coverage rests on a single distinct action. Timing still needs student playtests.

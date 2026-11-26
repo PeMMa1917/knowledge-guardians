@@ -37,7 +37,7 @@ Mika shared a list of 150 elements that make an RPG story engaging for every pla
 | 12 | Non-violent paths | The whole game. Showdowns are arguments; Fray creatures are errors you name. | ✓ |
 | 13 | Fail forward | No game over. Lost Showdowns branch; crossings have a way to leave it, and the world goes on. | ✓ |
 | 14 | Tone choices | Rook's first talk; hearth talks (joke, hard question, kind word, plain words). | ✓ |
-| 15 | Delayed ripples | Vesper's letters, Echo lines, the epilogue vignettes, the ballad verses. | ✓ |
+| 15 | Delayed ripples | Vesper's letters, Echo lines, epilogue vignettes and ballad verses. Council gallery objects reflect choices at the Emberford repair queue, Living Forest creek, City of Copies press and Archive of Voices quay. | ✓ |
 | 16 | Instant reactions | Each crossing and loyalty choice shows the result and the cost at once; companions reply. | ✓ |
 | 17 | Respect refusal | "Leave it" in every crossing; the world remembers (Hollis, Cassia, the press crowd). Ise's quiet path. | ✓ |
 | 18 | Many keys to one lock | Crossings open with knowledge (an objective), a companion, marks, or patience. | ✓ |
@@ -52,7 +52,7 @@ Mika shared a list of 150 elements that make an RPG story engaging for every pla
 | 22 | Personal tie to the plot | The player is Elsbet's last recruit; the mirror scene at the same bench. | ✓ |
 | 23 | Background is noticed | Origins and Knower roles change lines; world memory lines notice your look and choices. | ✓ |
 | 24 | Skill is recognised | Awards, titles, ledger rows, the ballad. | ✓ |
-| 25 | Vulnerability | "Before the Curtain" (`cross.stage-fright`), "Madame Quandary's Card" (`cross.fortune`). | ✓ |
+| 25 | Vulnerability | "Before the Curtain" (`cross.stage-fright`), "Madame Quandary's Card" (`cross.fortune`) and Kip’s torn case strap in "A Second Handle" (`nexus-handle.json`). | ✓ |
 | 26 | Your own reason | Ise asks why you came: curious, a friend, duty, or to repair a wrong. The last words answer it. | ✓ |
 | 27 | Act in big scenes | The player chooses in every climax (Showdowns, the Council). | ✓ |
 | 28 | Growth in story and play | Lamps lit, Lens views and talents grow with the story; Lumen learns to say "my guess". | ✓ |
@@ -115,7 +115,7 @@ Mika shared a list of 150 elements that make an RPG story engaging for every pla
 | 65 | Smooth flow | Dialogue in the world; no long cutscenes. | ✓ |
 | 66 | Tension wave | Each chapter pairs a serious crossing with a funny one (see the conflict map). | ✓ |
 | 67 | Player controls time | Big steps wait for the player ("Not yet" at the Council). | ✓ |
-| 68 | Varied missions | Investigations, festivals of games, rescues (the lamb), audits, races: see STATUS coverage table. | ◐ |
+| 68 | Varied missions | Investigations, festivals of games, rescues, audits, races and errands with setbacks. In "The Crooked Margin", players pull two trials and take a warning to one of two parts of the landing (`copies-margin.json`). | ◐ |
 | 69 | Answer before new mystery | Each chapter closes its local question before the hook. | ✓ |
 | 70 | Short required, deep optional | Lore codex, hearth talks and letters are optional. | ✓ |
 
@@ -126,7 +126,7 @@ Mika shared a list of 150 elements that make an RPG story engaging for every pla
 | 71 | No empty fetch quests | Each crossing has a person, a twist and a TOK idea. | ✓ |
 | 72 | Side stories echo the theme | Every crossing asks the central question in small. | ✓ |
 | 73 | Small favour grows | The lamb leads to the ballad; the patron shrine leads to Harrowmere. | ✓ |
-| 74 | Linked side quests | Crossing `leadsTo` links; epilogue vignettes; ballad verses read crossing flags. | ✓ |
+| 74 | Linked side quests | Crossing `leadsTo` links, epilogue vignettes and ballad verses. "The Runner’s Second Line" changes the receiving conversation in "A Place for the Next Name" across Chapters 2 and 3. | ✓ |
 | 75 | Guild arcs | The Communities of Emberford. Guild of Lamplighters with ranks: planned. | ◐ |
 | 76 | Cozy quests | Quarters, dyes, the hearth, Juno's dice table. | ✓ |
 | 77 | Observation mysteries | Clue boards, the flood post, the tide engine. | ✓ |
@@ -186,11 +186,11 @@ Mika shared a list of 150 elements that make an RPG story engaging for every pla
 | 111 | Chatter changes | World memory lines (life, echo, ack). | ✓ |
 | 112 | Visible repair | Lamps, painted notices, the forge sign (epilogue). | ✓ |
 | 113 | Songs of your deeds | Wynn's ballad: tall verses you can correct (fame is not evidence). | ✓ |
-| 114 | Old faces return | Hollis, Osk, Cassia and others in the epilogue. Returns in later chapters: planned. | ◐ |
-| 115 | Factions warm or cool | Seal agents remember: planned. | ○ |
+| 114 | Old faces return | Hollis, Osk and Cassia return in the epilogue. Nellis moves from the Nile Archive to the Cold Store with the runner's copy (`m03-nile.json`, `m04-preserved.json`). | ✓ |
+| 115 | Factions warm or cool | The Seal runner Nellis remembers whether the player split the stamp publicly, folded the receipt or left the form to the receiver. Other Seal agents are planned. | ◐ |
 | 116 | Keepsakes at home | Keepsakes and quarters decorations. | ✓ |
 | 117 | Companion reactions | Loyalty memory lines; hearth replies. | ✓ |
-| 118 | Safer roads | Repaired bridges and routes after chapters. | ◐ |
+| 118 | Safer roads | Repaired bridges and routes after chapters. Dated marks and two observations open a rail or sheltered bend in `src/maps/forest.ts`. | ✓ |
 | 119 | Fair consequences | No choice locks out the main story. | ✓ |
 | 120 | Letters from afar | Vesper's letters. Letters from helped people: planned. | ◐ |
 

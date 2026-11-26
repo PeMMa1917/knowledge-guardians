@@ -937,6 +937,445 @@
    "speaker": "porter-idris",
    "text": "The gate volunteers can still go ahead. I’ll leave a bell by the yard for blocked slips so the lane keeper can walk the turn. Tell a carrier to wait with a heavy cart until the keeper comes back.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "repair.queue.opening",
+   "speaker": "kip-arden",
+   "text": "One kettle. Two slips that say twelve. Hesper wants the yard open again. Sefa wants this slate out of the queue. I have three questions. I am going to finish the first one before I start on the other two.",
+   "historicalLabel": "fictional-world",
+   "next": "repair.queue.opening.hesper"
+  },
+  {
+   "id": "repair.queue.opening.hesper",
+   "speaker": "smith-hesper",
+   "text": "I can open before supper. I put a number on each repair and cross it off when it goes. The numbers worked on my bench. Ask the people standing outside with work to go home to if they want another closed gate.",
+   "historicalLabel": "fictional-world",
+   "next": "repair.queue.opening.sefa"
+  },
+  {
+   "id": "repair.queue.opening.sefa",
+   "speaker": "scholar-sefa",
+   "text": "Once, we put the fee waivers on the same slate. Three people stopped coming. A black mark in the queue is a story the whole square can tell about you. They let me tell you about the wait. I promised to keep their names.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Take a copy of the collection rules and ask each of them to show you what happened.",
+     "if": {
+      "all": [
+       {
+        "flag": "reached.emberford",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "cross.repair-queue"
+        }
+       },
+       {
+        "not": {
+         "flag": "repair.queue.started",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "repair.queue.started",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the slate for now."
+    }
+   ]
+  },
+  {
+   "id": "repair.queue.bench",
+   "speaker": "smith-hesper",
+   "text": "The two slips that say twelve came from different shifts. Put the rain-darkened pieces against the tag on this kettle. My trial was all from one shift.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Lay both twelves against the kettle tag and feel where the edges part.",
+     "next": "repair.queue.bench.result",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "repair.queue.started",
+          "eq": true
+         },
+         {
+          "not": {
+           "flagSet": "cross.repair-queue"
+          }
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "repair.queue.tested",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "repair.queue.tested",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Set the test pieces down."
+    }
+   ]
+  },
+  {
+   "id": "repair.queue.bench.result",
+   "speaker": "smith-hesper",
+   "text": "This plain edge slips past the little nick. This one meets it. Same figure, different fit. I can teach the apprentices to share a matching pair. I will have to stay by the hatch for their first shift.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "repair.queue.permission",
+   "speaker": "scholar-sefa",
+   "text": "Here is a slip the owners let me show. One person had to say why they needed a waiver while the queue was listening. Another gave up a place in the queue and left the kettle. I wrote the times on a fresh copy. The names stayed on their page.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Fold the permitted copy beside the handoff rule. Keep the times on the outside.",
+     "next": "repair.queue.permission.result",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "repair.queue.started",
+          "eq": true
+         },
+         {
+          "not": {
+           "flagSet": "cross.repair-queue"
+          }
+         }
+        ]
+       },
+       {
+        "not": {
+         "flag": "repair.queue.permission",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "repair.queue.permission",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the copy folded for now."
+    }
+   ]
+  },
+  {
+   "id": "repair.queue.permission.result",
+   "speaker": "scholar-sefa",
+   "text": "The times can go to Hana. That is the permission I was given. If the forge wants to keep a copy, the same rule holds there.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "repair.queue.blanks",
+   "speaker": "smith-hesper",
+   "text": "The nick matched on the bench. Sefa has a slip she can share. Two marks buys us enough fresh blanks to make pairs for this shift. I can cut them now. The blanks cost the same if we end up keeping the gate shut.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Pay two marks for blank pairs.",
+     "next": "repair.queue.blanks.ready",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "repair.queue.started",
+          "eq": true
+         },
+         {
+          "not": {
+           "flagSet": "cross.repair-queue"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "repair.queue.tested",
+        "eq": true
+       },
+       {
+        "flag": "repair.queue.permission",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "repair.queue.blanks",
+         "eq": true
+        }
+       },
+       {
+        "marks": 2
+       }
+      ]
+     },
+     "effects": [
+      {
+       "addMarks": -2
+      },
+      {
+       "setFlag": "repair.queue.blanks",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep your marks. Return to the queue slate to choose what to do."
+    }
+   ]
+  },
+  {
+   "id": "repair.queue.blanks.ready",
+   "speaker": "smith-hesper",
+   "text": "Here are the paired pieces. When you go to the slate, you can open the yard with these, or keep the old gate shut and use the relay.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "repair.queue.paired.collect",
+   "speaker": "smith-hesper",
+   "text": "Twelve knocked twice. The edge matched both the customer’s half and the tag on the kettle. See the space on the board for who checked the handoff? Sefa has my word that the fee slate stays inside.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the checked half beside the finished kettle. Mark the pickup complete.",
+     "next": "repair.queue.paired.done",
+     "if": {
+      "all": [
+       {
+        "flag": "cross.repair-queue",
+        "eq": "paired"
+       },
+       {
+        "flag": "reached.repair-yard",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "repair.queue.receipt"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "repair.queue.receipt",
+       "value": "paired"
+      },
+      {
+       "relation": "smith-hesper",
+       "by": 1
+      },
+      {
+       "relation": "scholar-sefa",
+       "by": 1
+      }
+     ]
+    },
+    {
+     "text": "Leave the tag clipped to the kettle for now."
+    }
+   ]
+  },
+  {
+   "id": "repair.queue.paired.done",
+   "speaker": "kip-arden",
+   "text": "The kettle went to the right person. The queue has a mark it can check. We reached the end of a question! I am going to wait a whole minute before I ask the next one.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "repair.queue.relay.lift",
+   "speaker": "smith-hesper",
+   "text": "Here is the kettle under a cloth. Hana can see the pickup slot on the outside of the tray. The fee slate stays here with me.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Lift the covered tray. Walk it to Hana’s return-slip stand west of the fountain.",
+     "if": {
+      "all": [
+       {
+        "flag": "cross.repair-queue",
+        "eq": "relay"
+       },
+       {
+        "not": {
+         "flagSet": "repair.queue.receipt"
+        }
+       },
+       {
+        "not": {
+         "flag": "repair.queue.tray",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "repair.queue.tray",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the tray on the shelf for now."
+    }
+   ]
+  },
+  {
+   "id": "repair.queue.relay.transfer",
+   "speaker": "stallkeeper-hana",
+   "text": "The repair has the same slot as the slip Sefa left me. Leave the tray under my counter. Take the spare stub back to the forge so they can see where it went.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set the tray below the counter and take the return stub.",
+     "if": {
+      "all": [
+       {
+        "flag": "cross.repair-queue",
+        "eq": "relay"
+       },
+       {
+        "not": {
+         "flagSet": "repair.queue.receipt"
+        }
+       },
+       {
+        "flag": "repair.queue.tray",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "repair.queue.stub",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "repair.queue.stub",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep hold of the tray for now."
+    }
+   ]
+  },
+  {
+   "id": "repair.queue.relay.finish",
+   "speaker": "smith-hesper",
+   "text": "A return stub. That tells me where the kettle is. The owner can collect from Hana next round. Put the stub here and I can leave the hatch shut.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the return stub to the slate and confirm the kettle’s pickup place.",
+     "next": "repair.queue.relay.done",
+     "if": {
+      "all": [
+       {
+        "flag": "cross.repair-queue",
+        "eq": "relay"
+       },
+       {
+        "not": {
+         "flagSet": "repair.queue.receipt"
+        }
+       },
+       {
+        "flag": "repair.queue.stub",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "repair.queue.receipt",
+       "value": "relay"
+      },
+      {
+       "relation": "scholar-sefa",
+       "by": 1
+      }
+     ]
+    },
+    {
+     "text": "Hold on to the stub for now."
+    }
+   ]
+  },
+  {
+   "id": "repair.queue.relay.done",
+   "speaker": "scholar-sefa",
+   "text": "We kept a place for the kettle and left the fee inside. I will see if Hana can carry a tray after market tomorrow. That extra walk belongs to someone every time.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "repair.queue.leave.rota",
+   "speaker": "kip-arden",
+   "text": "The apprentices took the slate back. It gives the next two pickup times now. A person who can come tomorrow will still find a way to the kettle. Anyone who missed the window has to ask for another one.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Read which shifts take appointments and pin the next hours where people can find them.",
+     "next": "repair.queue.leave.done",
+     "if": {
+      "all": [
+       {
+        "flag": "cross.repair-queue",
+        "eq": "leave"
+       },
+       {
+        "not": {
+         "flagSet": "repair.queue.receipt"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "repair.queue.receipt",
+       "value": "leave"
+      }
+     ]
+    },
+    {
+     "text": "Leave the apprenticeship board alone."
+    }
+   ]
+  },
+  {
+   "id": "repair.queue.leave.done",
+   "speaker": "kip-arden",
+   "text": "The apprentices wrote down when to ask again. I can stop asking for them and come back when they have had a go.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "missions": [
@@ -1537,6 +1976,98 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH1-S11",
+   "title": "The Repair Queue",
+   "world": "WORLD-02",
+   "knowledgeQuestion": "What does a person need to know to check a handoff, and who needs access to the rest?",
+   "available": {
+    "flagSet": "repair.queue.started"
+   },
+   "objectives": [
+    {
+     "id": "repair.queue.o.terms",
+     "title": "Decide how the forge should handle the next pickup.",
+     "essential": false,
+     "done": {
+      "flagSet": "cross.repair-queue"
+     },
+     "weave": {
+      "concepts": [
+       "power",
+       "perspective",
+       "evidence",
+       "responsibility"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "ethics"
+      ],
+      "atl": [
+       "thinking",
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "business",
+       "design-tech"
+      ],
+      "minutes": 5
+     },
+     "skills": [
+      "SK-THK-07",
+      "SK-SPK-01"
+     ]
+    },
+    {
+     "id": "repair.queue.o.receipt",
+     "title": "Follow the pickup route and check what the next person sees.",
+     "essential": false,
+     "visible": {
+      "flagSet": "cross.repair-queue"
+     },
+     "done": {
+      "flagSet": "repair.queue.receipt"
+     },
+     "weave": {
+      "concepts": [
+       "justification",
+       "explanation",
+       "responsibility"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "ethics"
+      ],
+      "atl": [
+       "research",
+       "self-management"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "business",
+       "design-tech"
+      ],
+      "minutes": 3
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-RSC-15"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.repair.queue"
+      }
+     ]
+    }
+   ]
   }
  ],
  "moments": [
@@ -1602,6 +2133,11 @@
    "id": "j.scout.notice",
    "claimKind": "simulation",
    "text": "A blocked report came from both kinds of scout. When the scout had the notes, switching would fit in four of the six setups. When the scout used only a slip, two setups showed the clear turn. Switching and holding fit just as often in the four blocked cases. Idris now has a way to tell his carriers what they need to check on the lane itself."
+  },
+  {
+   "id": "j.repair.queue",
+   "claimKind": "interpretation",
+   "text": "Two slips bore the same number. The pickup board can say where a repair went or when to come back without saying who needed time to pay."
   }
  ],
  "hints": [
@@ -1916,6 +2452,54 @@
    "objective": "scout.o.notice",
    "depth": 4,
    "text": "Arrange for scouts to carry the turning notes or leave the slips in use with a second look after blocked reports."
+  },
+  {
+   "id": "h.repair.queue.terms.1",
+   "objective": "repair.queue.o.terms",
+   "depth": 1,
+   "text": "Both people near the slate are trying to help someone collect a repair."
+  },
+  {
+   "id": "h.repair.queue.terms.2",
+   "objective": "repair.queue.o.terms",
+   "depth": 2,
+   "text": "Check what Hesper’s number matches and what Sefa has permission to share."
+  },
+  {
+   "id": "h.repair.queue.terms.3",
+   "objective": "repair.queue.o.terms",
+   "depth": 3,
+   "text": "Try Hesper’s two slips by the workbench and visit Sefa’s permission slip by the south stalls. Return to the west shelf when you are ready."
+  },
+  {
+   "id": "h.repair.queue.terms.4",
+   "objective": "repair.queue.o.terms",
+   "depth": 4,
+   "text": "Pay two marks for pairs after both checks to open the side gate, use the covered tray after checking permission, or actively return the old slate to keep appointments."
+  },
+  {
+   "id": "h.repair.queue.receipt.1",
+   "objective": "repair.queue.o.receipt",
+   "depth": 1,
+   "text": "See what a person can check today after your decision."
+  },
+  {
+   "id": "h.repair.queue.receipt.2",
+   "objective": "repair.queue.o.receipt",
+   "depth": 2,
+   "text": "The yard verifies a pair. The relay uses a return stub. The appointments are on the outside slate."
+  },
+  {
+   "id": "h.repair.queue.receipt.3",
+   "objective": "repair.queue.o.receipt",
+   "depth": 3,
+   "text": "The open side gate is west of the shelf. Hana’s relay stand is west of the fountain. The rota is where the old slate rested."
+  },
+  {
+   "id": "h.repair.queue.receipt.4",
+   "objective": "repair.queue.o.receipt",
+   "depth": 4,
+   "text": "Clip the finished tag inside the open yard, carry the covered tray to Hana and return the stub to the shelf, or pin the next pickup windows from the outside board."
   }
  ]
 }

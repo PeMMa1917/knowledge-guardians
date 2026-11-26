@@ -14,7 +14,9 @@
      "done": { "flagSet": "nexus.print.edition" },
      "onComplete": [{ "journal": "j.nexus.print" }],
      "weave": {
-      "concepts": ["evidence", "interpretation", "explanation", "values", "responsibility"],
+      "concepts": ["evidence", "interpretation", "explanation", "values", "responsibility", "culture"],
+      "framework": ["perspectives", "methods-and-tools", "ethics"],
+      "thinking": { "dok": 2, "bloom": "apply", "fink": "human", "solo": "multistructural" },
       "atl": ["thinking", "research", "communication"],
       "aoks": ["ART", "MAT"],
       "subjects": ["visual-arts", "design-tech", "math-ai"]
@@ -80,10 +82,10 @@
    "id": "nexus.print.pinned",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "The first pin holds the corner. The second stops the thin sheet turning. Both red marks now meet the ends of the drawn jetties. The carrier can take a joined proof for the shelter or the loose pair for the printer who will make the next copy.",
+   "text": "The first pin holds the corner. The second stops the thin sheet turning. Both red marks now meet the ends of the drawn jetties. 'Our ferry crews use red for a place to board,' says the carrier. 'Cart crews read red as a place to stop. Give them the ferry key with either proof.'",
    "options": [
     {
-     "text": "Clip a joined proof to the carrier’s board for the shelter.",
+     "text": "Clip a joined proof and the ferry key to the carrier’s board for the shelter.",
      "next": "nexus.print.joined",
      "if": { "all": [
       { "flag": "nexus.print.fit", "eq": "pins" },
@@ -92,7 +94,7 @@
      "effects": [{ "setFlag": "nexus.print.edition", "value": "joined" }]
     },
     {
-     "text": "Slide the sheets into separate pockets for the next printer.",
+     "text": "Slide the sheets into separate pockets for the next printer and put the key on top.",
      "next": "nexus.print.layers",
      "if": { "all": [
       { "flag": "nexus.print.fit", "eq": "pins" },
@@ -107,13 +109,13 @@
    "id": "nexus.print.joined",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "The carrier lifts the joined image. At a glance, she can follow the two colours from the shore to the red marks. A small tab names both printed layers. The printmaker leaves a spare sheet ready for anyone who needs to see how they fit."
+   "text": "The carrier lifts the joined image. At a glance, she can follow the two colours from the shore to the red marks. She points at the ferry key. A cart driver who had crossed out the red jetty puts it back on the walking route."
   },
   {
    "id": "nexus.print.layers",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "The carrier marks the folder for the next printer. Inside, each sheet can be lifted on its own. The next worker can see which block left which mark and fit both back onto the pins. The shelter will get a proof after the next printing."
+   "text": "The carrier marks the folder for the next printer. Each sheet can be lifted on its own. The next worker can see which block left which mark and fit both back onto the pins. The shelter will get a proof after the next printing, with the ferry key."
   }
  ],
  "hints": [

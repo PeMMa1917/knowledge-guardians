@@ -11,6 +11,7 @@ import { SUBJECTS } from './curriculum';
 import { dailyPrompts } from './dive';
 import { chordFigure, panes, runSorter, runSurvey, sightBlock, translateLine, judgeFrame, shepardParts, brier } from './puzzles';
 import { openCombinations } from './lock';
+import { BLOOM, FINK, FRAMEWORK, SOLO } from './learningLevels';
 
 const MAX_TEXT = 2000;
 const CLAIM_KINDS = ['observation', 'interpretation', 'value', 'simulation'];
@@ -436,6 +437,16 @@ export function validateContent(pack: ContentPack): string[] {
     w.atl.forEach((a) => ATLS.includes(a) || p.push(`${where}: bad ATL ${a}`));
     if (needAtl && !w.atl.length) p.push(`${where}: needs at least one ATL category (WEAVE-016)`);
     (w.subjects ?? []).forEach((x) => x in SUBJECTS || p.push(`${where}: unknown subject ${x}`));
+    if (w.framework !== undefined && (!Array.isArray(w.framework) || w.framework.some((part) => !FRAMEWORK.includes(part)))) {
+      p.push(`${where}: unknown knowledge framework part`);
+    }
+    if (w.minutes !== undefined && (!Number.isFinite(w.minutes) || w.minutes <= 0)) p.push(`${where}: invalid duration`);
+    if (w.thinking !== undefined) {
+      const tag = w.thinking;
+      if (!tag || ![1, 2, 3, 4].includes(tag.dok) || !BLOOM.includes(tag.bloom) || !FINK.includes(tag.fink) || !SOLO.includes(tag.solo)) {
+        p.push(`${where}: invalid thinking levels`);
+      }
+    }
   }
   // RECUR-035 (start): every misconception has at least one place in play that can signal it.
   const { misconceptions: _m, ...rest } = pack;

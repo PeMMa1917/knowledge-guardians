@@ -82,6 +82,8 @@
       "gte": 2
      },
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
+      "thinking": { "dok": 2, "bloom": "apply", "fink": "application", "solo": "multistructural" },
       "concepts": [
        "evidence",
        "interpretation",
@@ -123,6 +125,8 @@
       }
      ],
      "weave": {
+      "framework": ["methods-and-tools"],
+      "thinking": { "dok": 2, "bloom": "apply", "fink": "application", "solo": "multistructural" },
       "concepts": [
        "evidence",
        "justification",
@@ -167,6 +171,8 @@
       }
      ],
      "weave": {
+      "framework": ["perspectives", "methods-and-tools"],
+      "thinking": { "dok": 3, "bloom": "evaluate", "fink": "integration", "solo": "relational" },
       "concepts": [
        "perspective",
        "justification",
@@ -211,6 +217,8 @@
       }
      ],
      "weave": {
+      "framework": ["scope", "perspectives", "methods-and-tools", "ethics"],
+      "thinking": { "dok": 3, "bloom": "evaluate", "fink": "human", "solo": "relational" },
       "concepts": [
        "evidence",
        "justification",

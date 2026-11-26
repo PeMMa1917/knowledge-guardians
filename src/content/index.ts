@@ -14,6 +14,7 @@ import nexusDateRibbon from './nexus-date-ribbon.json';
 import nexusPrint from './nexus-print.json';
 import nexusPacking from './nexus-pack.json';
 import nexusViewer from './nexus-viewer.json';
+import nexusHandle from './nexus-handle.json';
 import m02 from './m02-aethelgard.json';
 import emberfordSide from './emberford-side.json';
 import firsts from './firsts.json';
@@ -52,6 +53,7 @@ import metalworks from './m07-metalworks.json';
 import metalworksSide from './metalworks-side.json';
 import copies from './m08-copies.json';
 import copiesSide from './copies-side.json';
+import copiesMargin from './copies-margin.json';
 import cartographers from './m09-cartographers.json';
 import cartographersSide from './cartographers-side.json';
 import performance from './m10-performance.json';
@@ -66,7 +68,7 @@ import observatoryArchive from './observatory-archive.json';
 
 export const CONTENT_VERSION = 5;
 
-const parts: any[] = [sources, common, m01, openingPractice, nexusWayfinding, nexusReadingRests, nexusDateRibbon, nexusPrint, nexusPacking, nexusViewer, m02, emberfordSide, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, fray, rumour, clueboard, memories, chapterVoices, quarters, dive, story, nile, scenes, preservedRecords, preserved, reconstruction, copper, preservedExhibition, observatory, observatoryInland, observatoryArchive, forest, forestSide, forestReader, metalworks, metalworksSide, copies, copiesSide, cartographers, cartographersSide, performance, market, rook, water, harrowmere, vesper, civic, voices, island, council];
+const parts: any[] = [sources, common, m01, openingPractice, nexusWayfinding, nexusReadingRests, nexusDateRibbon, nexusPrint, nexusPacking, nexusViewer, nexusHandle, m02, emberfordSide, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, fray, rumour, clueboard, memories, chapterVoices, quarters, dive, story, nile, scenes, preservedRecords, preserved, reconstruction, copper, preservedExhibition, observatory, observatoryInland, observatoryArchive, forest, forestSide, forestReader, metalworks, metalworksSide, copies, copiesSide, copiesMargin, cartographers, cartographersSide, performance, market, rook, water, harrowmere, vesper, civic, voices, island, council];
 const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'missions', 'hints', 'criteria', 'awards', 'items', 'offers', 'journal',
   'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks', 'glossary', 'questions', 'origins', 'alcoves', 'puzzles', 'skillDomains', 'skills', 'lorelings', 'lorelingAtlas', 'fray', 'clueBoards', 'memories', 'keepsakes', 'divePrompts', 'diveItems', 'knots', 'clues', 'keepsakeTalks', 'chronicle', 'secrets', 'communities'] as const;
 

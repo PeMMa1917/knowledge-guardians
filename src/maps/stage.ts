@@ -31,7 +31,9 @@ function notice(id: string, x: number, y: number, label: string, art: string, te
 
 export const STAGE_FOYER = room({
   id: 'stage.foyer', name: 'House of Performance: Front Foyer', width: 28, height: 17,
-  background: 0x322942, spawn: { x: 12, y: 12 }, npcs: [],
+  background: 0x322942, spawn: { x: 12, y: 12 },
+  npcs: [{ id: 'vesper-quill', x: 16, y: 8, facing: 'down',
+    visibleIf: { all: [{ objective: 'stage.finish' }, { not: { objective: 'council.arrival' } }] } }],
   stamps: [
     { stamp: 'banners', x: 3, y: 1 }, { stamp: 'banners', x: 23, y: 1 },
     { stamp: 'window', x: 9, y: 1 }, { stamp: 'window', x: 17, y: 1 },
@@ -59,6 +61,14 @@ export const STAGE_FOYER = room({
     notice('stage-light-craft-display', 18, 7, 'the relief with the visible basket grip', 'stage.relief-front',
       'A visitor read care in the hand holding the basket. The maker’s slip dates this rehearsal, and the pictured arrival has no recorded date here.',
       { visibleIf: { flag: 'stage.light.display', eq: 'craft' } }),
+    ...[
+      ['exposed', 'the seat drawings on the foyer stand', 'preserved.display-paired', 'Two seat drawings fill the stand. A space shows where the refusal caption hung. The foyer runner points a late visitor towards the doorway.'],
+      ['narrowed', 'the smaller cue beside the rehearsal order', 'stage.cues', '“The keeper moves the crate beside the doorway.” The cue order hangs below. The word “refused” shows faintly through the crossed-out line.'],
+      ['won-over', 'the quick call above the checked note', 'stage.programme', '“Watch the doorway.” Hari’s note below it marks where the post hides the move. An usher copies just the call on a strip for the next bell.'],
+      ['split', 'the two stacks of programme strips', 'preserved.display-paired', 'One stack carries a quick doorway cue. The other carries both seat drawings. Hari keeps a finger on each stack so a reader can ask for either.'],
+      ['lost-ground', 'the quick claim with Hari’s checked note', 'preserved.slip', 'Some of Vesper’s refusal captions are gone. The checked scene note remains beside the stack. One person has left a seat number by the drawing of the post.'],
+    ].map(([result, label, art, text]) => notice(`stage-vesper-${result}`, 17, 9, label, art, text,
+      { visibleIf: { flag: 'sd.stage-vesper.outcome', eq: result } })),
   ],
   lights: [
     { x: 6, y: 5, r: 59, color: 0xe6b8c7 }, { x: 22, y: 5, r: 59, color: 0xc2b7ea },

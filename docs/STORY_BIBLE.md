@@ -112,7 +112,7 @@ Each chapter also has a **local guide** who joins for that chapter only. Local g
 - **Nested hooks.** When a chapter quest ends, a mid-term mystery (the chapter's open thread) must be peaking and the long mystery (Vesper, Harrowmere) must be stirring.
 - **Tonal contrast.** After every intense scene, give a quiet one: a hub visit, a comic side quest, a fair game, a song. Each chapter needs at least one funny moment.
 - **Safe-harbour hubs.** The Nexus quarters and Emberford are home. Companions banter there, visitors react to the player's exhibits, and the stakes drop.
-- **False peak.** Chapter 9: the player wins a public Showdown against Vesper and thinks the rival is beaten. Vesper's parting line reframes the story.
+- **False peak.** After the chapter 9 programme revision, players can face Vesper in the foyer. Taking down or narrowing the cue can feel like a win. The other outcomes keep the disagreement visible. Vesper's parting line gives the player somewhere else to look.
 - **Expanding horizon.** Chapter 15 ends with the last door opening on the wider network (the spec's later packs).
 
 ## 10. Choices, reactivity and the living world
@@ -165,7 +165,7 @@ The chapters exist in code (see STATUS.md). This table adds what each one needs 
 | 6 | Metalworks | If the material call is wrong, a weak part goes into the ferry winch. | Seal-stamped ingots in the yard. | Hesper's loyalty mission: the family technique came from a traveller who got no credit. | The traveller's name on a docket. |
 | 7 | City of Copies | If the missing Tuesday stays missing, readers lose a lending day and blame the hall. | A press prints 'Seal-certified' reprints that drop caveats. | Lark: "The Nexus did the same once, they say." | A copy that differs from its original. |
 | 8 | Seagrass Steps | If the chart hides its blank, a skiff runs onto the shoal. | Vesper sells 'complete' charts. | Sefa's loyalty mission: local names against the survey. | A local name for a place the Nexus calls empty. |
-| 9 | House of Performance | If the programme misleads, the audience leaves sure of something they did not see. | First face-to-face Showdown with Vesper, in public. The player wins (a false peak). | Companions disagree about what the audience saw. | Vesper: "Ask Ise about Harrowmere." |
+| 9 | House of Performance | If the programme misleads, the audience leaves sure of something they did not see. | Optional face-to-face Showdown with Vesper after the revised programme. He asks for a cue the usher can say before the bell. | Companions disagree about what the audience saw. | A finished Showdown opens Vesper's lead to Harrowmere. |
 | 10 | Market of Measures | If the basket is weighed in, households pay more for less. | Seal agents certify weights. Rook Tamsin quits the Seal and joins. | Rook and Sefa clash (testimony against source). | Rook: the Seal's first customer wore a Guardian badge. |
 | 11 | Water Commons | If the drought plan hides its trade-off, one crew's fields fail. | The paradigm shift: the old Harrowmere weir label, signed by Ise. | Rook's loyalty mission: the false seal Rook stamped. | Ise asks the player to keep it quiet. |
 | 12 | Civic Machine | If the dispatch rule stays, one district is never served. | A machine rule mirrors the Nexus's habit: confident and blind. | Ise, in subtext, defends quiet correction. | The player's choice about Ise's request echoes here. |
@@ -205,22 +205,28 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 1 | The Lamb on the Ford Stone | Nature | s | mixed | face, around (pay marks), leave | The ballad |
 | 1 | The Prophecy over the Arch | Fate, Supernatural | m | mixed | face (source), around (a hope), leave (believe it) | Madame Quandary (ch 9) |
 | 1 | The Missing Word (toll notice) | Society, Person | s | mixed | three wordings; coin a word | Who chooses words has power |
+| 1 | A Second Handle | Self, Person | s | mixed | carry together, mend in private, set the case down | Kip recalls when to offer help or share a setback in Emberford |
+| 1 | The Repair Queue | Person, Society | m | mixed | pay for paired tickets and open the yard, carry a relay tray across the market, return the slate and keep appointments | Kip follows the handoff to its end. The Council can recall what the public kept and what stayed private. |
 | 2 | The dispatch: a king's boast | Self, Society | M | serious | pair, print, read | Vesper is right that the case over-claims |
 | 2 | The Borrowed Translation | Person | s | funny | argue, go elsewhere, do without | Ambry's footnotes |
+| 2 | The Runner's Second Line | Person, Society | m | mixed | split the public docket, fold the receipt, leave the runner's form | Nellis remembers who could see the correction and when the packet arrived |
 | 3 | The gap in the file | Society, Self | M | serious | chapter response | The Seal agent remembers |
 | 3 | The Warm Room | Nature, Self | m | serious | fix (Hesper), save letters, save counts, let the keeper choose | What survives shapes what is known |
+| 3 | A Place for the Next Name | Person, Society | m | serious | put the source on the rail, offer a staffed check, leave the review open | The trainee gets private credit and the older display can accept new evidence |
 | 4 | The forecast: how sure to say it | Self, Society | M | serious | signal, runner | Vesper uses Ise's phrase |
 | 4 | The Tide Engine | Technology | m | mixed | reset (readings), post both, trust it | The furnace dial |
 | 5 | The biased count | Self, Nature | M | serious | chapter response | A sighting nobody explains |
 | 5 | The Geese on the Path | Nature | s | funny | watch, wade, turn back | Observer effect |
+| 5 | The Creek Keeps Its Own Time | Nature | m | mixed | check both banks and open the north rail, mark the sheltered cart bend, or let Ayla’s crew take the usual round | The next watch can check both banks. The Council files the crossing that the player actually used. |
 | 6 | The material call | Technology, Self | M | serious | chapter response | Hesper's loyalty mission |
 | 6 | The Furnace Dial | Technology, Person | s | mixed | tin test, ask about colour, leave | The gate machine |
 | 6 | The Traveller's Quench (Hesper) | Self, Person | m | serious | sign, private, find Imre's family | Hesper's epilogue |
 | 7 | The missing Tuesday | Society | M | serious | chapter response | Lark: "The Nexus did the same" |
 | 7 | The Crowd at the Press | Society | m | serious | read the ledger, invite three, shut the doors | Osk keeps checking |
+| 7 | The Crooked Margin | Technology, Society | m | mixed | compare both proofs, then fold the full order, send linked strips, or let the crew call turns | Lark hints at an earlier missing limit. The Council receives the actual landing outcome. |
 | 8 | The chart's blank | Nature, Society | M | serious | chapter response | Local names |
 | 8 | The Bell under the Water | Supernatural | m | mixed | listen, write in the margin, dismiss | A myth that carries a fact |
-| 9 | The programme that misleads; public Showdown with Vesper (planned) | Person, Society | M | serious | Showdown outcomes | "Ask Ise about Harrowmere" |
+| 9 | One Line Before the Bell (optional foyer Showdown) | Person, Society | M | serious | step away or reach one of five Showdown outcomes | Vesper's lead to Harrowmere opens after the Showdown |
 | 9 | Madame Quandary's Card | Fate, Self | s | funny | ask how often, fail on purpose, worry | Before the Curtain |
 | 9 | Before the Curtain | Self | s | mixed | speak, read cards, pass to a companion | Courage while unsure |
 | 10 | The weighed-in basket | Society, Person | M | serious | chapter response | Rook joins |
@@ -235,12 +241,13 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 12 | Three Boxes for a Name | Technology, Society | m | serious | rewrite the rule, write by hand, leave | Who designs the boxes |
 | 13 | The remembered walk | Self, Society | M | serious | chapter response | Where Elsbet went |
 | 13 | Two Friends, One Walk | Person (friends) | s | funny | find the ledger, record both, leave | Both partly right |
+| 13 | The Lamp We Owe | God (invented promise), Society | m | mixed | staff the quay bench, bring the welcome indoors, hand over to the morning keeper | The Council's review of what a rule and a promise can each do |
 | 13 | The Famous Ancestor (Kip) | Self | m | mixed | proud, not, mixed | Kip's epilogue |
 | 14 | The island plan with Vesper | Person, Nature | M | mixed | chapter response | Vesper comes to the Council |
 | 14 | When to Launch | Society, Nature | m | mixed | test both, launch when both agree, leave | Two communities of knowers |
 | 15 | The Council: what do the Guardians owe? | Self, Person, Society | M | serious | correct, recruit, expose, both (or "Not yet") | Afterwards |
 
-**Gaps to fill next:** Seal agents who remember the player (chapters 3, 6 and 7); the public Showdown with Vesper in chapter 9; a weather or creature crossing in chapter 15; a technology crossing that uses the Civic Machine itself.
+**Gaps to fill next:** Seal agents who remember the player in chapters 6 and 7, a weather or creature crossing in chapter 15, and a technology crossing that uses the Civic Machine itself.
 
 ## 16. The 150 story elements
 

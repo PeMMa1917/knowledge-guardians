@@ -1,6 +1,6 @@
 import type { MapDef } from './types';
 import { NEXUS } from './nexus';
-import { EMBERFORD } from './emberford';
+import { EMBERFORD, REPAIR_YARD } from './emberford';
 import { STUDY } from './study';
 import { FERRY } from './ferry';
 import { NILE_HALL, NILE_ROYAL, NILE_ROUTE, NILE_WORKYARD } from './nile';
@@ -22,6 +22,7 @@ import { WATER_COUNCIL, WATER_GATEHOUSE, WATER_LOWER_CHANNEL } from './water';
 export const MAPS: Record<string, MapDef> = {
   [NEXUS.id]: NEXUS,
   [EMBERFORD.id]: EMBERFORD,
+  [REPAIR_YARD.id]: REPAIR_YARD,
   [STUDY.id]: STUDY,
   [FERRY.id]: FERRY,
   [UNDERCROFT.id]: UNDERCROFT,

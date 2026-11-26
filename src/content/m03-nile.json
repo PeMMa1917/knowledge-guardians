@@ -787,6 +787,160 @@
      "node": "nile.route-before"
     }
    ]
+  },
+  {
+   "id": "handoff-nellis",
+   "name": "Nellis Haig",
+   "role": "A runner hired by the Gilded Seal",
+   "sprite": "custom:warm.grey.slate.wine.headband.cyan.short.darkframes.none",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "preserved.handoff.after",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "preserved.arrived",
+          "eq": true
+         },
+         {
+          "flagSet": "nile.handoff.mode"
+         }
+        ]
+       },
+       {
+        "flagSet": "preserved.handoff.arrangement"
+       }
+      ]
+     }
+    },
+    {
+     "node": "preserved.handoff.choose",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "preserved.arrived",
+          "eq": true
+         },
+         {
+          "flagSet": "nile.handoff.mode"
+         }
+        ]
+       },
+       {
+        "objective": "preserved.handoff.scope"
+       }
+      ]
+     }
+    },
+    {
+     "node": "preserved.handoff.work",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "preserved.arrived",
+          "eq": true
+         },
+         {
+          "flagSet": "nile.handoff.mode"
+         }
+        ]
+       },
+       {
+        "flag": "preserved.handoff.reference",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "preserved.handoff.start.open",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "preserved.arrived",
+          "eq": true
+         },
+         {
+          "flagSet": "nile.handoff.mode"
+         }
+        ]
+       },
+       {
+        "flag": "nile.handoff.mode",
+        "eq": "open"
+       }
+      ]
+     }
+    },
+    {
+     "node": "preserved.handoff.start.fold",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "preserved.arrived",
+          "eq": true
+         },
+         {
+          "flagSet": "nile.handoff.mode"
+         }
+        ]
+       },
+       {
+        "flag": "nile.handoff.mode",
+        "eq": "fold"
+       }
+      ]
+     }
+    },
+    {
+     "node": "preserved.handoff.start.left",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "preserved.arrived",
+          "eq": true
+         },
+         {
+          "flagSet": "nile.handoff.mode"
+         }
+        ]
+       },
+       {
+        "flag": "nile.handoff.mode",
+        "eq": "left"
+       }
+      ]
+     }
+    },
+    {
+     "node": "nile.handoff.after",
+     "if": {
+      "flagSet": "nile.handoff.mode"
+     }
+    },
+    {
+     "node": "nile.handoff.choose",
+     "if": {
+      "objective": "nile.handoff.check"
+     }
+    },
+    {
+     "node": "nile.handoff.start"
+    }
+   ]
   }
  ],
  "dialogue": [
@@ -3044,6 +3198,119 @@
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
    "text": "You clip the small guides at the aisle and shelf marks. Each starts with the place where it hangs. The two copies keep the same names for the case and rack. Marek puts a matching date on both so another keeper can replace them together."
+  },
+  {
+   "id": "nile.handoff.start",
+   "speaker": "handoff-nellis",
+   "text": "I deliver for the Seal. The receiving desk pays me for a signed arrival. This stamp says the file is complete too. If I go back with no stamp, a lamp may as well sign my wages. Leila left two clips on the workers’ copy. Let’s see what they do before we take the form apart.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.handoff.choose",
+   "speaker": "handoff-nellis",
+   "text": "The grain arrived. The workers stopped again. I see why Leila left that second clip. My stamp joined up two jobs the same way. A public change needs a fresh signature and I miss my first slot. Fold it and I can make the slot, though most people at the stand will only read the outside.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Split the stamp line on the public docket.",
+     "next": "nile.handoff.open",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.handoff.check"
+       },
+       {
+        "not": {
+         "flagSet": "nile.handoff.mode"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.handoff.mode",
+       "value": "open"
+      },
+      {
+       "giveItem": "item.handoff-copy"
+      }
+     ]
+    },
+    {
+     "text": "Fold the open review beside the delivery receipt.",
+     "next": "nile.handoff.fold",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.handoff.check"
+       },
+       {
+        "not": {
+         "flagSet": "nile.handoff.mode"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.handoff.mode",
+       "value": "fold"
+      },
+      {
+       "giveItem": "item.handoff-copy"
+      }
+     ]
+    },
+    {
+     "text": "Leave the slip with Nellis and keep the stamp as it is.",
+     "next": "nile.handoff.left",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.handoff.check"
+       },
+       {
+        "not": {
+         "flagSet": "nile.handoff.mode"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.handoff.mode",
+       "value": "left"
+      }
+     ]
+    },
+    {
+     "text": "I’ll come back to the stamp."
+    }
+   ]
+  },
+  {
+   "id": "nile.handoff.open",
+   "speaker": "handoff-nellis",
+   "text": "Write my name on the delivery line. I’ll take that late slot. Leila can leave her check line where the next reader sees it. Keep a copy and bring it to the Cold Store.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.handoff.fold",
+   "speaker": "handoff-nellis",
+   "text": "Leave “Review open” on the outside, please. My name can go inside the receipt. Put Leila’s two clips beside it. I can catch the first slot and you can bring a copy to the Cold Store.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.handoff.left",
+   "speaker": "handoff-nellis",
+   "text": "I’ll carry it the way they gave it to me. The receiver can still say what they signed for. If you come to the Cold Store, find me by the name rail.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.handoff.after",
+   "speaker": "handoff-nellis",
+   "text": "Read the docket by the stand. When the Cold Store opens, I’ll be there. You can check what came through with me.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "chronicle": [
@@ -3762,6 +4029,54 @@
    "objective": "nile.way.publish",
    "depth": 4,
    "text": "Read the guide on the peg or check both small copies where people approach the table."
+  },
+  {
+   "id": "h.nile.handoff.check.1",
+   "objective": "nile.handoff.check",
+   "depth": 1,
+   "text": "One gold stamp reaches across two different jobs."
+  },
+  {
+   "id": "h.nile.handoff.check.2",
+   "objective": "nile.handoff.check",
+   "depth": 2,
+   "text": "Nellis is by the delivery slip in the Nile Hall."
+  },
+  {
+   "id": "h.nile.handoff.check.3",
+   "objective": "nile.handoff.check",
+   "depth": 3,
+   "text": "Read the stamp in the Hall and find Leila’s two clips in the Workmen’s Room."
+  },
+  {
+   "id": "h.nile.handoff.check.4",
+   "objective": "nile.handoff.check",
+   "depth": 4,
+   "text": "See why the recorded grain delivery and the renewed stoppage keep two entries. Show what you found to Nellis."
+  },
+  {
+   "id": "h.nile.handoff.send.1",
+   "objective": "nile.handoff.send",
+   "depth": 1,
+   "text": "The runner needs a receipt for a finished delivery."
+  },
+  {
+   "id": "h.nile.handoff.send.2",
+   "objective": "nile.handoff.send",
+   "depth": 2,
+   "text": "Meet Nellis next to the stamped slip."
+  },
+  {
+   "id": "h.nile.handoff.send.3",
+   "objective": "nile.handoff.send",
+   "depth": 3,
+   "text": "Choose what goes on the rail and in the travelling receipt, or leave the slip with Nellis."
+  },
+  {
+   "id": "h.nile.handoff.send.4",
+   "objective": "nile.handoff.send",
+   "depth": 4,
+   "text": "Inspect the changed docket. The Cold Store gets its own copy when the runner moves on."
   }
  ],
  "criteria": [
@@ -5288,6 +5603,132 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH2-R14",
+   "world": "WORLD-03",
+   "title": "The Runner’s Second Line",
+   "knowledgeQuestion": "What can a person fairly sign for when two decisions share a stamp?",
+   "available": {
+    "objective": "nile.workers"
+   },
+   "objectives": [
+    {
+     "id": "nile.handoff.check",
+     "title": "Check the Seal’s delivery stamp against Leila’s two clips.",
+     "done": {
+      "all": [
+       {
+        "objective": "nile.workers"
+       },
+       {
+        "flag": "nile.handoff.draft",
+        "eq": true
+       },
+       {
+        "flag": "nile.handoff.sequence",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "truth",
+       "certainty",
+       "evidence",
+       "interpretation",
+       "explanation",
+       "objectivity"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "perspectives"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     },
+     "skills": [
+      "SK-RSC-15",
+      "SK-THK-05"
+     ]
+    },
+    {
+     "id": "nile.handoff.send",
+     "title": "Settle what travels and inspect the docket before leaving.",
+     "done": {
+      "all": [
+       {
+        "flagSet": "nile.handoff.mode"
+       },
+       {
+        "flag": "nile.handoff.outcome",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "power",
+       "responsibility",
+       "values",
+       "justification",
+       "perspective"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "HIS",
+       "POL"
+      ],
+      "subjects": [
+       "history",
+       "global-politics",
+       "design-tech"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "human",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-ETR-01"
+     ],
+     "visible": {
+      "objective": "nile.handoff.check"
+     }
+    }
+   ]
   }
  ],
  "clues": [
@@ -5549,6 +5990,15 @@
    },
    "did": "You tried the same guide from two places and made room for a carrier’s destination.",
    "prompt": "Whose task would you ask about when making the next guide?"
+  }
+ ],
+ "items": [
+  {
+   "id": "item.handoff-copy",
+   "name": "Nellis’s carrier copy",
+   "historicalLabel": "fictional-world",
+   "art": "icon.letter",
+   "description": "The runner’s signed receipt from the Nile Archive. Its second line stays open for the separate check. Take the copy to Nellis at the Cold Store."
   }
  ]
 }

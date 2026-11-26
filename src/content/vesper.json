@@ -30,6 +30,39 @@
      }
     },
     {
+     "node": "vesper.stage.after",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.finish"
+       },
+       {
+        "not": {
+         "objective": "council.arrival"
+        }
+       },
+       {
+        "flagSet": "sd.stage-vesper.outcome"
+       }
+      ]
+     }
+    },
+    {
+     "node": "vesper.stage.start",
+     "if": {
+      "all": [
+       {
+        "objective": "stage.finish"
+       },
+       {
+        "not": {
+         "objective": "council.arrival"
+        }
+       }
+      ]
+     }
+    },
+    {
      "node": "vesper.meet"
     }
    ]

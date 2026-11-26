@@ -50,10 +50,15 @@ const displays = [
     'The panel waits here with its unanswered question clipped to the top. A visitor can still open either record folder and see what the archive has checked.'],
 ] as const;
 
+const handoffAtColdStore: Condition = { all: [{ flag: 'preserved.arrived', eq: true }, { flagSet: 'nile.handoff.mode' }] };
+
 export const PRESERVED_ARCHIVE = room({
   id: 'preserved.archive', name: 'Preserved Lives: the Cold Store', width: 28, height: 17,
   background: 0x18242e, spawn: { x: 14, y: 14 },
-  npcs: [{ id: 'preserved-registrar', x: 14, y: 7, facing: 'down' }],
+  npcs: [
+    { id: 'preserved-registrar', x: 14, y: 7, facing: 'down' },
+    { id: 'handoff-nellis', x: 18, y: 10, facing: 'left', visibleIf: handoffAtColdStore },
+  ],
   stamps: [
     { stamp: 'bookshelf', x: 2, y: 2 }, { stamp: 'bookshelf', x: 23, y: 2 },
     { stamp: 'window', x: 9, y: 1 }, { stamp: 'window', x: 16, y: 1 },
@@ -77,6 +82,18 @@ export const PRESERVED_ARCHIVE = room({
     { id: 'preserved-rest', kind: 'waystone', x: 9, y: 13, w: 1, h: 1, label: 'the Cold Store Waystone', place: 'the Cold Store', art: 'waystone' },
     notice('preserved-directory', 17, 13, 'the Cold Store directory', 'preserved.folder',
       'COLD STORE. The Royal Records room is on the left of the north wall. The Chinchorro Records room is on the right. The registrar works between the two rooms.'),
+    { ...notice('preserved-handoff-receipt', 17, 8, 'the receiving roster and permission slip', 'preserved.catalogue',
+      'The roster records Nellis’s delivery and the trainee’s later delivery on separate lines. The trainee agreed to a check at the desk and asked to leave their name off the wall. Their shift credit can stay on the receiving roster.', handoffAtColdStore),
+    flag: 'preserved.handoff.receipt' },
+    { ...notice('preserved-handoff-public', 16, 10, 'the two lines on the public name rail', 'preserved.display-paired',
+      'Excavation acknowledgments name four foremen. Many other workers remain unnamed in the accounts on display. The Cold Store’s own delivery has a separate receiving line. A clip asks for a verifiable source if an older name can be added.', { flag: 'preserved.handoff.arrangement', eq: 'public' }),
+    flag: 'preserved.handoff.checked' },
+    { ...notice('preserved-handoff-desk', 8, 11, 'the appointment docket for checking names', 'preserved.display-records',
+      'The rail points to the excavation acknowledgments in the Review Room. Bring a dated source to the keeper when the desk is staffed. The receiving roster holds the current trainee’s shift credit there by agreement.', { flag: 'preserved.handoff.arrangement', eq: 'desk' }),
+    flag: 'preserved.handoff.checked' },
+    { ...notice('preserved-handoff-leave', 16, 10, 'the unclaimed display clip', 'preserved.display-delayed',
+      'Nellis logged the delivery for the trainee’s shift. The display still has an open clip where someone can bring a new source for a name. No one has taken the review shift yet.', { flag: 'preserved.handoff.arrangement', eq: 'leave' }),
+    flag: 'preserved.handoff.checked' },
     notice('preserved-display-pending', 14, 5, 'the display under preparation', 'preserved.display-delayed',
       'Two empty sleeves are clipped here. The registrar can tell you which records could fill them.', { not: { flagSet: 'preserved.display' } }),
     notice('preserved-begin-temple-display', 7, 5, 'the temple-first entry card', 'preserved.temple',
@@ -177,6 +194,9 @@ export const PRESERVED_INQUIRY = room({
     record('TUT-JOURNAL', 3, 5, 'Carter’s excavation journal', 'preserved.catalogue'),
     record('TUT-NOTE', 7, 5, 'Lucas’s later report', 'preserved.folder'),
     record('TUT-WORKFORCE', 15, 5, 'the excavation workforce account', 'preserved.context'),
+    { id: 'preserved-handoff-file', kind: 'scene', node: 'preserved.handoff.file', x: 15, y: 7, w: 1, h: 1,
+      label: 'the two trays beneath the workforce record', art: 'preserved.folder', walkThrough: true,
+      visibleIf: { all: [handoffAtColdStore, { card: 'card.preserved.tut.workforce' }] } },
     ...sceneProp('preserved.tut.request', 12, 10, 'the excavation caption request', 'preserved.folder',
       { names: 'preserved.display-records', timeline: 'preserved.display-paired' }, { objective: 'preserved.proof.checked' }),
     notice('preserved-reply-desk', 4, 8, 'the review desk', 'preserved.display-records',

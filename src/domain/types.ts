@@ -9,6 +9,8 @@
  * conditions and effects use the small vocabulary below (spec 22.2).
  */
 
+import type { FrameworkPart, LearnTag } from './learningLevels';
+
 // ---------------------------------------------------------------------------
 // Claim labels (spec 2.2 and 17). Two separate axes.
 // ---------------------------------------------------------------------------
@@ -61,7 +63,9 @@ export interface Weave {
   /** DP subject ids from src/domain/curriculum.ts. */
   subjects?: string[];
   /** Knowledge framework parts (designer tag; see src/domain/learningLevels.ts). Derived from concepts when absent. */
-  framework?: ('scope' | 'perspectives' | 'methods-and-tools' | 'ethics')[];
+  framework?: FrameworkPart[];
+  /** Thinking demands for the design audit. Players do not see these levels. */
+  thinking?: Pick<LearnTag, 'dok' | 'bloom' | 'fink' | 'solo'>;
   /** Estimated minutes of play, for the 30-minute design audit. */
   minutes?: number;
 }

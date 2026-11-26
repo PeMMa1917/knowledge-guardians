@@ -29,6 +29,10 @@ const packTried: Condition = { flag: 'nexus.pack.tried', eq: true };
 const packSent: Condition = { flagSet: 'nexus.pack.sent' };
 const packLayouts = ['kits', 'outer'] as const;
 const packReaders = ['route', 'tally'] as const;
+const handleUnfitted: Condition = { not: { flagSet: 'nexus.handle.method' } };
+const handlePaused: Condition = { flag: 'nexus.handle.paused', eq: true };
+const handleDone: Condition = { flag: 'nexus.handle.done', eq: true };
+const handleMethods = ['paired', 'mended'] as const;
 const viewerPatent: Condition = { flag: 'inspected.OBJ-001-A', eq: true };
 const viewerUnposted: Condition = { not: { flagSet: 'nexus.viewer.response' } };
 const viewerFinished: Condition = { flag: 'nexus.viewer.done', eq: true };
@@ -301,6 +305,23 @@ export const NEXUS: MapDef = {
       visibleIf: { all: [{ flag: 'nile.dispatch', eq: route }, { flag: 'nile.returned', eq: true }] } })),
 
     { id: 'secret-misfiled', kind: 'secret', secret: 'misfiled', x: 22, y: 3, w: 1, h: 1, label: 'a gap behind the bookshelf' },
+    { id: 'nexus-handle-case', kind: 'scene', x: 5, y: 17, w: 1, h: 1, walkThrough: true,
+      label: 'Kip’s case with a split handle', art: 'nexus.handle-torn', node: 'nexus.handle.start',
+      visibleIf: { all: [handleUnfitted, { not: handlePaused }] } },
+    { id: 'nexus-handle-resting', kind: 'scene', x: 5, y: 17, w: 1, h: 1, walkThrough: true,
+      label: 'Kip’s case waiting for a handle', art: 'nexus.handle-torn', node: 'nexus.handle.wait',
+      visibleIf: { all: [handleUnfitted, handlePaused] } },
+    ...handleMethods.flatMap((method) => {
+      const fitted: Condition = { flag: 'nexus.handle.method', eq: method };
+      const position = { kind: 'scene' as const, x: 16, y: 16, w: 1, h: 1, walkThrough: true };
+      const label = method === 'paired' ? 'the workshop case with two cord loops' : 'the workshop case with the stitched handle';
+      return [
+        { ...position, id: `nexus-handle-${method}-bench`, label, art: `nexus.handle-${method}`, node: `nexus.handle.${method}-bench`,
+          visibleIf: { all: [fitted, { not: handleDone }] } },
+        { ...position, id: `nexus-handle-${method}-case`, label, art: `nexus.handle-${method}-ready`, node: `nexus.handle.${method}-case`,
+          visibleIf: { all: [fitted, handleDone] } },
+      ];
+    }),
     { id: 'nexus-pack-prep', kind: 'scene', x: 4, y: 6, w: 1, h: 1, walkThrough: true,
       label: 'the packing table with six sketches and two source slips', art: 'nexus.pack-prep', node: 'nexus.pack.prep',
       visibleIf: { all: [packWaiting, { any: [{ not: { flagSet: 'nexus.pack.layout' } }, { flag: 'nexus.pack.layout', eq: 'open' }] }] } },

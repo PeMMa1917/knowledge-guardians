@@ -50,7 +50,13 @@ const placedCopy = (destination: string, x: number, y: number, label: string, ar
 });
 
 export const NILE_HALL = room('nile.hall', 'Nile Archive: The Door Without a Name',
-  [{ id: 'nile-iman', x: 12, y: 6, facing: 'down' }],
+  [
+    { id: 'nile-iman', x: 12, y: 6, facing: 'down' },
+    { id: 'handoff-nellis', x: 9, y: 7, facing: 'down', visibleIf: { all: [
+      { objective: 'nile.workers' },
+      { not: { all: [{ flag: 'preserved.arrived', eq: true }, { flagSet: 'nile.handoff.mode' }] } },
+    ] } },
+  ],
   [
     // A clue for the long mystery (docs/STORY_BIBLE.md section 7).
     { id: 'cross-borrowed', kind: 'fieldgame', game: 'cross-borrowed', x: 18, y: 5, w: 1, h: 1, label: 'Ambry\'s reading desk (a crossing)', art: 'catalogue' },
@@ -90,6 +96,22 @@ export const NILE_HALL = room('nile.hall', 'Nile Archive: The Door Without a Nam
     door('nile-nexus', 12, 12, 'the door back to the Nexus', 'nexus.archive', 37, 4),
     { id: 'nile-tag', kind: 'clue', clue: 'nile-blank-tag', x: 8, y: 5, w: 1, h: 1, label: 'Elsbet’s unnamed tag', art: 'nile.slip' },
     { id: 'nile-carrier-copy', kind: 'clue', clue: 'nile-packet-copy', x: 15, y: 5, w: 1, h: 1, label: 'the spare carrier tag', art: 'nile.slip', visibleIf: { flag: 'nile.returned', eq: true } },
+    { id: 'nile-handoff-draft', kind: 'sign', x: 9, y: 6, w: 1, h: 1, walkThrough: true,
+      label: 'Nellis’s stamped delivery slip', art: 'nile.tablet', flag: 'nile.handoff.draft',
+      text: 'A gold stamp sits across two boxes. One says “packet received”. The other says “file complete”. The receiving list records a packet at the door. It has no entry for a check of its contents.',
+      visibleIf: { all: [{ objective: 'nile.workers' }, { not: { flagSet: 'nile.handoff.mode' } }] } },
+    { id: 'nile-handoff-open', kind: 'sign', x: 9, y: 6, w: 1, h: 1, walkThrough: true,
+      label: 'the open delivery docket', art: 'nile.scroll', flag: 'nile.handoff.outcome',
+      text: 'Nellis Haig carried this packet. The receiving desk can sign for it. Leila has left a second line open for someone to check the papyrus sequence. A reader at the stand can see why the gold stamp moved.',
+      visibleIf: { flag: 'nile.handoff.mode', eq: 'open' } },
+    { id: 'nile-handoff-fold', kind: 'sign', x: 9, y: 6, w: 1, h: 1, walkThrough: true,
+      label: 'the folded delivery docket', art: 'nile.slip', flag: 'nile.handoff.outcome',
+      text: 'Packet received. Review open. Lift the fold for the order of the entries. The receiving desk can check the runner’s work without putting their name on the public rail.',
+      visibleIf: { flag: 'nile.handoff.mode', eq: 'fold' } },
+    { id: 'nile-handoff-left', kind: 'sign', x: 9, y: 6, w: 1, h: 1, walkThrough: true,
+      label: 'the delivery slip waiting for a check', art: 'nile.tablet', flag: 'nile.handoff.outcome',
+      text: 'The gold stamp still straddles the two boxes. A note clipped beside it tells readers the runner will take the question to the receiving desk.',
+      visibleIf: { flag: 'nile.handoff.mode', eq: 'left' } },
     { id: 'nile-rest', kind: 'waystone', x: 7, y: 10, w: 1, h: 1, label: 'the archive Waystone', art: 'waystone', place: 'the Nile Archive' },
     { id: 'nile-entry-notice', kind: 'sign', x: 15, y: 9, w: 1, h: 1, label: 'Elsbet’s sign beside the threshold', art: 'nile.scroll',
       text: 'NILE ARCHIVE. These are Guardian rooms, not ancient places. Examine the real records in their cases. The people you meet here are our keepers.' },
@@ -181,6 +203,10 @@ export const NILE_WORKYARD = room('nile.workyard', 'Nile Archive: Workmen’s Ro
       .map(([x, node, label]) => ({ id: 'nile-thread-' + node, kind: 'thread' as const, thread: 'nile-strike', node, x, y: 7, w: 1, h: 1, label, art: 'nile.slip' })),
     { id: 'nile-workymemory', kind: 'sign', x: 20, y: 5, w: 1, h: 1, label: 'Leila’s archive slip', art: 'nile.slip',
       text: 'Amunnakht’s account names demands and replies. I can give the page a heading. I can’t give it all the voices it never recorded. —Leila' },
+    { id: 'nile-handoff-sequence', kind: 'sign', x: 7, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'Leila’s two clips on the papyrus copy', art: 'nile.scroll', flag: 'nile.handoff.sequence',
+      text: 'The first clip marks a grain delivery in Amunnakht’s account. The second marks the renewed stoppage. Both clips are still needed. Leila put this practice copy beside the modern carrier form where a single stamp covers two jobs.',
+      visibleIf: { objective: 'nile.workers' } },
   ], 0x323124,
   [{ stamp: 'crates', x: 2, y: 4 }, { stamp: 'barrel', x: 7, y: 5 }, { stamp: 'long-table', x: 10, y: 3 }, { stamp: 'bookshelf', x: 18, y: 2 }]);
 

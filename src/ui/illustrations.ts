@@ -989,6 +989,44 @@ DRAW['nexus.pack-tally'] = [36, 24, (g) => {
   R(g, '#ab4b3b', 12, 13, 2, 2);
 }];
 
+// Kip’s practice-strip case takes a shared pair of cords or a quiet stitch repair.
+function handleCase(g: Ctx, grip: 'torn' | 'paired' | 'mended', open: boolean) {
+  R(g, '#352c3d', 1, 20, 22, 2);
+  R(g, '#624737', 2, 10, 20, 10);
+  R(g, '#b08258', 3, 11, 18, 6);
+  R(g, '#694a39', 3, 17, 18, 2);
+  R(g, '#d0a367', 4, 11, 16);
+  if (open) {
+    R(g, '#835d44', 3, 4, 18, 6);
+    R(g, '#c29162', 3, 4, 18, 1);
+    R(g, '#4e443f', 4, 10, 16, 3);
+    R(g, '#a6c0c2', 5, 10, 3, 2);
+    R(g, '#cbd7cb', 9, 10, 3, 2);
+    R(g, '#a6c0c2', 13, 10, 5, 2);
+  }
+  if (grip === 'paired') {
+    for (const x of [5, 15]) {
+      R(g, '#486267', x, 13, 5, 5);
+      R(g, '#9ec1a1', x, 13, 5, 1);
+      R(g, '#a78462', x + 1, 14, 3, 2);
+    }
+  } else if (grip === 'mended') {
+    R(g, '#604141', 8, 13, 8, 4);
+    R(g, '#d6a783', 9, 14, 6);
+    for (const x of [10, 12, 14]) R(g, '#f2d5a5', x, 14, 1, 2);
+  } else {
+    R(g, '#604141', 7, 13, 4, 2);
+    R(g, '#604141', 13, 14, 4, 2);
+    R(g, '#d6a783', 10, 13);
+    R(g, '#d6a783', 13, 14);
+  }
+}
+DRAW['nexus.handle-torn'] = [24, 24, (g) => handleCase(g, 'torn', false)];
+DRAW['nexus.handle-paired'] = [24, 24, (g) => handleCase(g, 'paired', false)];
+DRAW['nexus.handle-mended'] = [24, 24, (g) => handleCase(g, 'mended', false)];
+DRAW['nexus.handle-paired-ready'] = [24, 24, (g) => handleCase(g, 'paired', true)];
+DRAW['nexus.handle-mended-ready'] = [24, 24, (g) => handleCase(g, 'mended', true)];
+
 // Living Forest equipment and a schematic field note.
 DRAW['forest.waypost'] = [16, 24, (g) => {
   R(g, '#574235', 7, 7, 3, 16);

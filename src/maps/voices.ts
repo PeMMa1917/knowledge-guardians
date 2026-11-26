@@ -17,6 +17,10 @@ function ground(width: number, height: number, tile: (x: number, y: number) => s
 
 const verified: Condition = { objective: 'voices.verify' };
 const published: Condition = { objective: 'voices.publish' };
+const lastLampReady: Condition = { objective: 'voices.finish' };
+const lastLampUndecided: Condition = { all: [lastLampReady, { not: { flagSet: 'cross.last-lamp' } }] };
+const lastLamp = (way: string): Condition => ({ flag: 'cross.last-lamp', eq: way });
+const lampTrial = (bracket: string): Condition => ({ all: [lastLampUndecided, { flag: 'voices.vow.last', eq: bracket }] });
 
 export const VOICES_LISTENING: MapDef = {
   id: 'voices.listening', name: 'Archive of Voices: Listening Room', world: 'WORLD-14',
@@ -57,6 +61,11 @@ export const VOICES_LISTENING: MapDef = {
     sign('voices-checked-label', 18, 9, 'the checked opening caption', 'voices.paired',
       'A carrier recalls a test walk on Lantern 4 at dusk. The signed opening register begins on Lantern 6. A date for the first crossing stays open.',
       { visibleIf: verified }),
+    { id: 'voices-vow-room-door', kind: 'scene', node: 'voices.vow.room', x: 22, y: 11, w: 1, h: 1,
+      label: 'Wren’s seat at the reading-room threshold', art: 'voices.guide', walkThrough: true, visibleIf: lastLampUndecided },
+    sign('voices-vow-room-seat', 22, 11, 'the promise lamp at the staffed reading-room seat', 'voices.lamp',
+      'The lamp is here for the reading turn. A carrier took the extra walk from the quay and found somebody at the seat. The desk still has its own check-in hours.',
+      { visibleIf: lastLamp('room') }),
   ],
   lights: [
     { x: 8, y: 8, r: 61, color: 0xf0c1aa }, { x: 14, y: 8, r: 77, color: 0xe9c7ad },
@@ -110,6 +119,12 @@ export const VOICES_WALK: MapDef = {
     sign('voices-wide-note', 20, 11, 'the Room on the Rail panel by the bench', 'voices.paired',
       'The two approaches have separate lines and each names the arch and rail. The dates stay beside the register and carrier excerpt where readers can check them.',
       { visibleIf: { flag: 'voices.access.ready', eq: true } }),
+    sign('voices-vow-roll', 10, 9, 'Eren’s last check-in roll', 'voices.register',
+      'Every issued pass has a return mark. The roll covers issued passes. A separate line shows when the desk closes. A person can still be on the quay without having a pass.',
+      { flag: 'voices.vow.roll', visibleIf: lastLampReady }),
+    sign('voices-vow-next-card', 8, 9, 'the promise lamp’s next watch card', 'voices.permission',
+      'The check-in desk closed at its usual hour. A visitor came after it shut. She chose to come back in the morning. Her seat and the keeper’s first turn are marked here.',
+      { visibleIf: lastLamp('defer') }),
   ],
   lights: [
     { x: 11, y: 7, r: 64, color: 0xffd5a4 }, { x: 17, y: 8, r: 82, color: 0xc0d8d5 },
@@ -148,6 +163,25 @@ export const VOICES_QUAY: MapDef = {
     sign('voices-reader-note', 23, 9, 'the reader’s note by the other end of the rail', 'voices.permission',
       'I came from the stairs. There isn’t a second lamp from that side. Is this the same rail?',
       { flag: 'voices.reader.read', visibleIf: published }),
+    sign('voices-vow-dedication', 7, 11, 'the lamplighters’ dedication under the small lamp', 'voices.lamp',
+      'After the quay flood, the lamplighters made a sacred promise. “As long as there is a place to rest, someone will keep it ready.” This small lamp belongs to that promise. The taller route lamps belong to the walk.',
+      { flag: 'voices.vow.promise', visibleIf: lastLampReady }),
+    { id: 'voices-vow-trial', kind: 'scene', node: 'voices.vow.trial', x: 14, y: 10, w: 1, h: 1,
+      label: 'the two brackets for the promise lamp', art: 'voices.railing', walkThrough: true, visibleIf: lastLampUndecided },
+    sign('voices-vow-test-rail', 18, 8, 'the lamp on the trial rail bracket', 'voices.lamp',
+      'From the waiting spot, the small lamp lines up with the two tall lamps. The rail cuts across the closing words.',
+      { visibleIf: lampTrial('rail') }),
+    sign('voices-vow-test-bench', 13, 10, 'the lamp on the trial bench bracket', 'voices.lamp',
+      'The light falls on the seat. From the same waiting spot, the closing words are still clear across the rail.',
+      { visibleIf: lampTrial('bench') }),
+    { id: 'cross-last-lamp', kind: 'fieldgame', game: 'cross-last-lamp', x: 20, y: 11, w: 1, h: 1,
+      label: 'the lamplighters’ handover', art: 'voices.paired', walkThrough: true, visibleIf: lastLampReady },
+    sign('voices-vow-bench-card', 13, 10, 'the promise lamp above the staffed quay bench', 'voices.lamp',
+      'There is light at the seat and the check-in sign is still clear. A late carrier found Wren waiting here. An extra turn on the rota gives them time to rest. The slate keeps the visitor’s name out of the count.',
+      { visibleIf: lastLamp('quay') }),
+    sign('voices-vow-room-arrow', 13, 10, 'the reading-room arrow at the quay bench', 'voices.guide',
+      'Welcome seat. Follow the quay passage to the Listening Room. A carrier has marked where the turn is easy to miss in the dark.',
+      { visibleIf: lastLamp('room') }),
   ],
   lights: [
     { x: 6, y: 9, r: 62, color: 0xffcf86 }, { x: 10, y: 9, r: 66, color: 0xffd694 },

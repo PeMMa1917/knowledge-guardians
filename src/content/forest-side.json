@@ -64,6 +64,162 @@
      }
     }
    ]
+  },
+  {
+   "id": "KG-CH5-R06",
+   "world": "WORLD-06",
+   "title": "The Creek Keeps Its Own Time",
+   "knowledgeQuestion": "How far can marks from one storm guide the next decision?",
+   "stake": "Ayla needs to return the dawn watch notes dry. A short rail helps the watch crew, and the sheltered bend has room for a cart.",
+   "available": {
+    "objective": "forest.arrival"
+   },
+   "objectives": [
+    {
+     "id": "forest.spate.readings",
+     "title": "Check the high-water marks and the cart track.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "forest.spate.west",
+        "eq": true
+       },
+       {
+        "flag": "forest.spate.east",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "perspective",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "geography",
+       "ess"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "perspectives",
+       "scope"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     }
+    },
+    {
+     "id": "forest.spate.plan",
+     "title": "Choose a storm path with Ayla at the clearing.",
+     "essential": false,
+     "done": {
+      "flagSet": "forest.spate.route"
+     },
+     "visible": {
+      "objective": "forest.spate.readings"
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "responsibility",
+       "power",
+       "justification",
+       "interpretation"
+      ],
+      "atl": [
+       "thinking",
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM",
+       "TEC"
+      ],
+      "subjects": [
+       "geography",
+       "design-tech"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "ethics"
+      ],
+      "minutes": 1,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "forest.spate.crossed",
+     "title": "Carry the watch notes through the route you opened.",
+     "essential": false,
+     "done": {
+      "flag": "forest.spate.crossed",
+      "eq": true
+     },
+     "visible": {
+      "objective": "forest.spate.plan"
+     },
+     "weave": {
+      "concepts": [
+       "explanation",
+       "evidence",
+       "truth",
+       "responsibility"
+      ],
+      "atl": [
+       "thinking",
+       "self-management"
+      ],
+      "aoks": [
+       "NAT",
+       "TEC"
+      ],
+      "subjects": [
+       "geography",
+       "design-tech"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "ethics",
+       "scope"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "onComplete": [
+      {
+       "journal": "j.forest.spate"
+      }
+     ]
+    }
+   ]
   }
  ],
  "dialogue": [
@@ -330,6 +486,266 @@
      "value": true
     }
    ]
+  },
+  {
+   "id": "forest.spate.west",
+   "speaker": "narrator",
+   "text": "Water rattles the stones below the north landing. Two wet lines cross the post. The crew scratched the morning bell beside the higher one and the noon bell beside the lower one. Move the loose date slip into the groove and see which mark it fits.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Fit the two dates alongside the marks.",
+     "next": "forest.spate.west.saved",
+     "if": {
+      "not": {
+       "flag": "forest.spate.west",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "forest.spate.west",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the post and dates where they are."
+    }
+   ]
+  },
+  {
+   "id": "forest.spate.west.saved",
+   "speaker": "narrator",
+   "text": "The water here fell between the bells and stayed below the north landing at noon. There is room to unfold the rail for one keeper. The post says what happened at this spot. The bend isn’t in view.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation"
+  },
+  {
+   "id": "forest.spate.east",
+   "speaker": "narrator",
+   "text": "A strip of fresh cart tracks curls around the alder. The paper on a dry trunk gives the cart crew’s noon check. Its wheel marks stop by the spare wind screen. Follow the track on the field sketch and match it to the paper.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Lay the cart crew’s paper over this part of the sketch.",
+     "next": "forest.spate.east.saved",
+     "if": {
+      "not": {
+       "flag": "forest.spate.east",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "forest.spate.east",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the sketch at the alder."
+    }
+   ]
+  },
+  {
+   "id": "forest.spate.east.saved",
+   "speaker": "narrator",
+   "text": "The cart crew found its bend dry after the morning rise. There is room for a cart between the screen posts. The wind rattles the empty case where the dawn notes should sit. The creek marks upstream don’t show this bend.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation"
+  },
+  {
+   "id": "forest.spate.plan",
+   "speaker": "forest-steward",
+   "text": "The edge of my dawn notebook is curling. My sister can take the usual round for the dry case, or we can open one of the spare storm paths. The north rail is short and narrow. The bend is longer and takes a cart. Bring me the post dates and the cart crew’s paper.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Unfold the north rail for the note carriers.",
+     "next": "forest.spate.rail",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.spate.readings"
+       },
+       {
+        "not": {
+         "flagSet": "forest.spate.route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.spate.route",
+       "value": "rail"
+      }
+     ]
+    },
+    {
+     "text": "Fit the wind screen at the bend so carts can use it.",
+     "next": "forest.spate.bend",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.spate.readings"
+       },
+       {
+        "not": {
+         "flagSet": "forest.spate.route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.spate.route",
+       "value": "bend"
+      }
+     ]
+    },
+    {
+     "text": "One gauge on the Observatory Coast could only speak for its own site.",
+     "next": "forest.spate.coast",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "forest.spate.readings"
+         },
+         {
+          "not": {
+           "flagSet": "forest.spate.route"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "coast.gauge.recheck",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Let the creek keep its own time. Take the usual round.",
+     "next": "forest.spate.wait",
+     "if": {
+      "not": {
+       "flagSet": "forest.spate.route"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "forest.spate.waited",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Read which route we left open.",
+     "next": "forest.spate.chosen",
+     "if": {
+      "flagSet": "forest.spate.route"
+     }
+    },
+    {
+     "text": "Keep the board ready."
+    }
+   ]
+  },
+  {
+   "id": "forest.spate.coast",
+   "speaker": "forest-steward",
+   "text": "Then we have the same job here. The post puts two times on one spot. The cart crew gives us another place. Keep both papers with the route we open.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Unfold the north rail for the note carriers.",
+     "next": "forest.spate.rail",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.spate.readings"
+       },
+       {
+        "not": {
+         "flagSet": "forest.spate.route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.spate.route",
+       "value": "rail"
+      }
+     ]
+    },
+    {
+     "text": "Fit the wind screen at the bend so carts can use it.",
+     "next": "forest.spate.bend",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.spate.readings"
+       },
+       {
+        "not": {
+         "flagSet": "forest.spate.route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.spate.route",
+       "value": "bend"
+      }
+     ]
+    },
+    {
+     "text": "Let the creek keep its own time. Take the usual round.",
+     "next": "forest.spate.wait",
+     "if": {
+      "not": {
+       "flagSet": "forest.spate.route"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "forest.spate.waited",
+       "value": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "forest.spate.rail",
+   "speaker": "forest-steward",
+   "text": "I’ll unfold the north keeper’s rail. The note case can cross close to the lookout. A cart will still need the ordinary bridge. Take the rail now if you like. The creek can rattle all it wants below us.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.spate.bend",
+   "speaker": "forest-steward",
+   "text": "I’ll fit the reed wind screen at the bend. The cart can take the dry note case and the next crew’s lanterns together. We’ll go the long way. I’ve saved the crew one song for that part.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.spate.wait",
+   "speaker": "forest-steward",
+   "text": "The creek has missed its appointment anyway. I’ll send my sister round the usual bridge. The fittings stay here if another watch wants them. Your papers can wait at this board.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.spate.chosen",
+   "speaker": "forest-steward",
+   "text": "Both readings stay here with the chosen route strip. Leave today’s times on them. My sister will need her own checks next time the creek moves.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "hints": [
@@ -356,6 +772,78 @@
    "objective": "forest.guide.used",
    "depth": 4,
    "text": "Turn both leaves at the bench, or follow the trail and line up the two approach panels."
+  },
+  {
+   "id": "h.forest.spate.readings.1",
+   "objective": "forest.spate.readings",
+   "depth": 1,
+   "text": "Ayla has two things to compare before opening a storm path."
+  },
+  {
+   "id": "h.forest.spate.readings.2",
+   "objective": "forest.spate.readings",
+   "depth": 2,
+   "text": "The wet post stands north of the west-bank frame. The cart track ends at the south-east alder bend."
+  },
+  {
+   "id": "h.forest.spate.readings.3",
+   "objective": "forest.spate.readings",
+   "depth": 3,
+   "text": "Line up both dates at the wet post. Match the cart crew’s paper against the sketch at the bend."
+  },
+  {
+   "id": "h.forest.spate.readings.4",
+   "objective": "forest.spate.readings",
+   "depth": 4,
+   "text": "Check the two wet lines on the west bank of Listening Trail and the cart track on the east side. The ordinary bridge and ford connect the banks."
+  },
+  {
+   "id": "h.forest.spate.plan.1",
+   "objective": "forest.spate.plan",
+   "depth": 1,
+   "text": "Ayla keeps the spare route fittings beside her storm board."
+  },
+  {
+   "id": "h.forest.spate.plan.2",
+   "objective": "forest.spate.plan",
+   "depth": 2,
+   "text": "Take both reports to the board in Bridge Clearing."
+  },
+  {
+   "id": "h.forest.spate.plan.3",
+   "objective": "forest.spate.plan",
+   "depth": 3,
+   "text": "A smaller group can use the short rail. A cart fits the longer bend."
+  },
+  {
+   "id": "h.forest.spate.plan.4",
+   "objective": "forest.spate.plan",
+   "depth": 4,
+   "text": "Use Ayla’s storm-route board. Choose the rail or the bend. The usual round stays available if you want to leave it."
+  },
+  {
+   "id": "h.forest.spate.crossed.1",
+   "objective": "forest.spate.crossed",
+   "depth": 1,
+   "text": "The two sides of the chosen crossing show the same new aid."
+  },
+  {
+   "id": "h.forest.spate.crossed.2",
+   "objective": "forest.spate.crossed",
+   "depth": 2,
+   "text": "The keeper’s rail is in the north. The cart crossing and its screen are at the south bend."
+  },
+  {
+   "id": "h.forest.spate.crossed.3",
+   "objective": "forest.spate.crossed",
+   "depth": 3,
+   "text": "Approach the aid on either bank and use the crossing."
+  },
+  {
+   "id": "h.forest.spate.crossed.4",
+   "objective": "forest.spate.crossed",
+   "depth": 4,
+   "text": "On Listening Trail use the opened rail or the screened crossing. The return slip will be at Fern Station."
   }
  ],
  "journal": [
@@ -363,6 +851,11 @@
    "id": "j.forest.guide",
    "claimKind": "observation",
    "text": "The two bridge tracings became a guide. They keep each standing place with its drawing. From the west the end post covers the lower one. From the rise both posts are in view."
+  },
+  {
+   "id": "j.forest.spate",
+   "claimKind": "interpretation",
+   "text": "The creek marks put two readings in one place. The cart crew’s tracks added a view of the bend. The route we opened carried the notes. The crew kept the two places and their times with the next watch’s copy."
   }
  ]
 }

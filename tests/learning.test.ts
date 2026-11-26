@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { BLOOM, FINK, FRAMEWORK, LEARN, SOLO } from '../src/domain/learningLevels';
-import { PLAY_STYLES, OPTIONAL_CHAPTER, pathGaps, playPath } from '../src/domain/learningPaths';
+import { PLAY_STYLES, OPTIONAL_CHAPTER, auditPath, playPath, type PathStep, type PlayStyle } from '../src/domain/learningPaths';
 import { CROSSINGS } from '../src/domain/crossings';
 import { HEARTH } from '../src/domain/hearth';
 import { FIELD_GAMES } from '../src/domain/fieldgames';
@@ -40,16 +40,92 @@ describe('learning tags (for developers; players never see levels)', () => {
 });
 
 describe('the 30-minute design audit along play-style paths', () => {
-  // Every 30 estimated minutes should meet all 12 key concepts and all four framework parts. These are
-  // the windows that still miss something today. The numbers may only go down: when you add content,
-  // run `npx vitest run tests/learning.test.ts` and lower the budget. See docs/LEARNING_DESIGN.md.
-  const BUDGET: Record<string, number> = { story: 36, social: 63, explorer: 130, puzzler: 47, cozy: 63 };
-  it.each(PLAY_STYLES)('does not add gaps on the %s path', (style) => {
+  // Baseline for completion-timed windows. This measures minutes with a gap,
+  // independent of how many steps or dimensions change during those minutes.
+  const baseline: Record<PlayStyle, number> = {
+    story: 160, social: 356, explorer: 667, puzzler: 260, cozy: 342,
+  };
+
+  it('counts a step at its estimated completion and finds gaps between completions', () => {
+    const covered = CONCEPTS.filter((concept) => concept !== 'culture');
+    const report = auditPath([
+      { id: 'group A', chapter: 1, minutes: 12, concepts: covered, framework: FRAMEWORK },
+      { id: 'long group B', chapter: 1, minutes: 21, concepts: ['culture'], framework: [] },
+      { id: 'group C', chapter: 1, minutes: 10, concepts: covered, framework: FRAMEWORK },
+    ]);
+    expect(report.firstWindow?.missing).toEqual(['culture']);
+    expect(report.gaps).toEqual([
+      { from: 30, until: 33, missing: ['culture'] },
+      { from: 42, until: 43, missing: [...covered, ...FRAMEWORK] },
+    ]);
+    expect(report.gapMinutes).toBe(4);
+  });
+
+  it('expires an action at its exact boundary even when it is the last window', () => {
+    const report = auditPath([
+      { id: 'all', chapter: 1, minutes: 0.2, concepts: CONCEPTS, framework: FRAMEWORK },
+      { id: 'finish', chapter: 1, minutes: 30, concepts: [], framework: [] },
+    ]);
+    expect(report.firstWindow?.missing).toEqual([]);
+    expect(report.gaps).toEqual([{ from: 30.2, until: null, missing: [...CONCEPTS, ...FRAMEWORK] }]);
+    expect(report.gapMinutes).toBe(0);
+  });
+
+  it('reports incomplete paths and rejects invalid durations', () => {
+    const step: PathStep = { id: 'short', chapter: 1, minutes: 2, concepts: [], framework: [] };
+    expect(auditPath([step]).firstWindow).toBeNull();
+    expect(auditPath([]).gaps).toEqual([]);
+    expect(() => auditPath([step], 0)).toThrow(RangeError);
+    expect(() => auditPath([{ ...step, minutes: Number.NaN }])).toThrow(RangeError);
+  });
+
+  it('keeps inferred framework support and repeated actions visible in the first window', () => {
+    const repeated: PathStep = {
+      id: 'repeatable gauge', chapter: 1, minutes: 10, concepts: ['evidence'], framework: ['methods-and-tools', 'scope'],
+      inferredFramework: true, action: 'read gauge', levels: LEARN['crossing:lamb'],
+    };
+    const explicit: PathStep = { id: 'limits', chapter: 1, minutes: 10, concepts: [], framework: ['scope'] };
+    const { firstWindow } = auditPath([repeated, repeated, explicit]);
+    expect(firstWindow?.singleAction).toEqual(['evidence', 'methods-and-tools']);
+    expect(firstWindow?.inferredOnly).toEqual(['methods-and-tools']);
+    expect(firstWindow?.profile).toMatchObject({
+      steps: 3, actions: { 'read gauge': 2 }, withoutActionTag: 1, withoutLevelTags: 1,
+      levels: { dok: { 2: 2 }, bloom: { apply: 2 }, fink: { application: 2 }, solo: { multistructural: 2 } },
+    });
+  });
+
+  it.each(PLAY_STYLES)('reports exact coverage and distinct actions on the %s path', (style) => {
     const path = playPath(pack, style);
     expect(path.length).toBeGreaterThan(80);
-    const gaps = pathGaps(path);
-    if (import.meta.env.MODE === 'tok-report') console.log(`\n${style}: ${gaps.length} windows with gaps\n` + gaps.map((g) => `  ${g.from} -> ${g.to}: ${g.missing.join(', ')}`).join('\n'));
-    expect(gaps.length).toBeLessThanOrEqual(BUDGET[style]);
+    expect(new Set(path.map((step) => step.chapter))).toEqual(new Set(Array.from({ length: 15 }, (_, index) => index + 1)));
+    const audit = auditPath(path);
+    const first = audit.firstWindow;
+    if (!first) throw new Error('The planned campaign did not reach its first complete window.');
+    const plannedStop = {
+      story: undefined, social: 'nexus.handle.checked', explorer: 'nexus.ribbon.checked',
+      puzzler: 'nexus.print.checked', cozy: 'nexus.rest.checked',
+    }[style];
+    const opening = audit.encounters.filter(({ minute }) => minute <= 30);
+    if (plannedStop) expect(opening.map(({ step }) => step.id)).toContain(plannedStop);
+    if (import.meta.env.MODE === 'tok-report') console.log([
+      `\n${style} (${audit.minutes} estimated minutes, ${audit.gapMinutes} with a trailing-window gap)`,
+      `Completions in the first 30m: ${opening.map(({ minute, step }) => `${minute}m ${step.id}`).join(', ')}`,
+      `Missing in the first 30m: ${first.missing.join(', ') || 'none on this path'}`,
+      `Framework parts inferred only in the first 30m: ${first.inferredOnly.join(', ') || 'none'}`,
+      `One supporting action in the first 30m: ${first.singleAction.join(', ') || 'none'}`,
+      `One supporting action in at least one full window: ${audit.singleAction.join(', ') || 'none'}`,
+      `Framework parts inferred only in at least one full window: ${audit.inferredOnly.join(', ') || 'none'}`,
+      `First-window action profile: ${JSON.stringify(first.profile)}`,
+      `Whole-path action profile: ${JSON.stringify(audit.profile)}`,
+      'Trailing gaps by window ending time:',
+      ...audit.gaps.map(({ from, until, missing }) => {
+        const step = (audit.encounters.find(({ minute }) => minute > from) ?? audit.encounters.at(-1))!.step;
+        return `  ${from}m ${until === null ? 'through the final window' : `to before ${until}m`} near ch. ${step.chapter} ${step.id}: ${missing.join(', ')}`;
+      }),
+    ].join('\n'));
+    expect(first.missing).toEqual([]);
+    expect(first.inferredOnly).toEqual([]);
+    expect(audit.gapMinutes).toBeLessThanOrEqual(baseline[style]);
   });
 });
 
