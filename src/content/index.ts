@@ -174,6 +174,7 @@ import twoCalls from './two-calls.json';
 import twoShutters from './two-shutters.json';
 import openPlace from './open-place.json';
 import pigmentWindow from './pigment-window.json';
+import pigmentSample from './pigment-sample.json';
 import { correspondenceRoomContent } from './correspondenceRoom';
 import porterPace from './porter-pace.json';
 import leafFrame from './leaf-frame.json';
@@ -202,7 +203,7 @@ export function buildPack(): ContentPack {
     loadingBayContent, glassRackContent, shoreReplyContent, ferryWindowContent, starPathContent, tokBadgeContent,
     ferryPackingContent, workScheduleContent, bearingBayContent, jigShopContent, earlierViewsContent, curtainContent,
     coastDetector, coastBreeze, bridgeProof, memoryCart, dispatchStatsContent, prismViewerContent, priceDrawersContent, warmRoomContent,
-    mapAlignmentContent, scriptRailContent, pigmentWindow, correspondenceRoomContent, porterPace, leafFrame, forestNarrators, spareSeat, lastTurn, twoCalls, twoShutters, openPlace, catchmentContent, facingCueContent, witnessClip, stripBend, sillBridge,
+    mapAlignmentContent, scriptRailContent, pigmentWindow, pigmentSample, correspondenceRoomContent, porterPace, leafFrame, forestNarrators, spareSeat, lastTurn, twoCalls, twoShutters, openPlace, catchmentContent, facingCueContent, witnessClip, stripBend, sillBridge,
     threadBend, circularReport];
   for (const k of keys) pack[k] = [...parts, ...collectionRooms].flatMap((p) => p[k] ?? []);
   const content = pack as ContentPack;

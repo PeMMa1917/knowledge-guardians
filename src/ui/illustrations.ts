@@ -1828,6 +1828,38 @@ function threeLibraryVolumes(g: Ctx) {
   R(g, '#9b7469', 34, 17, 4, 1);
   R(g, '#9b7469', 34, 19, 4, 1);
 }
+// The same swatch shape survives only in the viewing tray. The sealed window
+// has one notch, and the R13 sleeve and tray show the later piece's two notches.
+function pigmentSampleStation(g: CanvasRenderingContext2D, view: 'window' | 'sleeve' | 'tray' | 'report' | 'labels'): void {
+  pedestal(g, 1, 15, 22);
+  R(g, '#3b2d38', 2, 4, 20, 12);
+  R(g, view === 'window' ? '#73958c' : '#8f775c', 3, 5, 18, 10);
+  R(g, '#362d3f', 4, 6, 16, 8);
+  if (view === 'report' || view === 'labels') {
+    paper(g, 5, 7, 6, 6);
+    paper(g, 13, 7, 6, 6);
+    R(g, '#836353', 6, 9, 3, 1);
+    R(g, '#514763', 14, 9, 3, 1);
+    if (view === 'report') R(g, '#d2bc8f', 6, 11, 4, 1);
+    return;
+  }
+  R(g, '#b6a188', 5, 7, 14, 6);
+  R(g, '#8d6595', 6, 8, 12, 4);
+  R(g, '#ae83ae', 7, 8, 9, 1);
+  R(g, '#362d3f', 8, 11, 2, 2);
+  if (view !== 'window') R(g, '#362d3f', 14, 11, 2, 2);
+  if (view === 'window') {
+    R(g, '#a0b9a1', 5, 6, 10, 1);
+    R(g, '#d8c78d', 18, 12, 2, 2);
+  } else if (view === 'sleeve') R(g, '#d8c78d', 17, 7, 3, 3);
+}
+
+DRAW['pigment-sample.window'] = [24, 24, (g) => pigmentSampleStation(g, 'window')];
+DRAW['pigment-sample.sleeve'] = [24, 24, (g) => pigmentSampleStation(g, 'sleeve')];
+DRAW['pigment-sample.tray'] = [24, 24, (g) => pigmentSampleStation(g, 'tray')];
+DRAW['pigment-sample.report'] = [24, 24, (g) => pigmentSampleStation(g, 'report')];
+DRAW['pigment-sample.labels'] = [24, 24, (g) => pigmentSampleStation(g, 'labels')];
+
 DRAW['same-red.exhibit'] = [44, 30, threeLibraryVolumes];
 DRAW['big.same-red.exhibit'] = [96, 64, (g) => {
   g.save();

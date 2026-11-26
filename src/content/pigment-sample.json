@@ -1,0 +1,445 @@
+{
+  "sources": [
+    {
+      "id": "HIS-PIGMENT-01",
+      "title": "International Council of Museums: ICOM Code of Ethics for Museums (2017 edition)",
+      "url": "https://icom.museum/wp-content/uploads/2018/07/ICOM-code-En-web.pdf",
+      "locator": "Section 3.6, Destructive Analysis",
+      "supports": "When destructive analysis is undertaken, the object record keeps track of the material analysed, the result and resulting research.",
+      "accessed": "2026-11-26",
+      "mla": {
+        "kind": "page",
+        "author": "International Council of Museums",
+        "title": "ICOM Code of Ethics for Museums, 2017 edition",
+        "container": "International Council of Museums"
+      }
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "pigment-sample.window",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The borrowed strip is still sealed in Nell’s frame. Its older loan ticket says W27. The new workshop wrapper says R13. Its edge has two square notches where the display has one. Nell writes on the glass: please leave W27 whole, even at the corners.",
+      "options": [
+        {
+          "text": "Match W27 to the loan ticket and R13 to the separate wrapper.",
+          "if": {
+            "objective": "pigment-window.controlled"
+          },
+          "effects": [
+            {
+              "setFlag": "pigment-sample.window",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Read the museum guidance about keeping an analysis record.",
+          "next": "pigment-sample.source"
+        },
+        {
+          "text": "Leave the window sealed for now."
+        }
+      ]
+    },
+    {
+      "id": "pigment-sample.source",
+      "speaker": "narrator",
+      "historicalLabel": "documented",
+      "text": "Museum conservation guidance calls for a permanent record of the material tested and what the analysis showed when testing uses up material. The record gives later researchers a way to tell exactly what was analysed.",
+      "citationSource": "HIS-PIGMENT-01"
+    },
+    {
+      "id": "pigment-sample.packet",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Nell’s signed R13 wrapper says this is the one loose practice swatch from a later batch. The workshop may use all of it for a material check, or return it whole to the window tray. The signature covers this wrapper alone. Both strips look violet in the window.",
+      "options": [
+        {
+          "text": "Take the signed R13 wrapper with the loose swatch inside.",
+          "if": {
+            "all": [
+              {
+                "objective": "pigment-window.controlled"
+              },
+              {
+                "flag": "pigment-sample.window",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flag": "pigment-sample.consent",
+                  "eq": true
+                }
+              },
+              {
+                "not": {
+                  "item": "item.pigment-sample.swatch"
+                }
+              },
+              {
+                "not": {
+                  "flagSet": "pigment-sample.disposition"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "pigment-sample.consent",
+              "value": true
+            },
+            {
+              "giveItem": "item.pigment-sample.swatch"
+            }
+          ]
+        },
+        {
+          "text": "Leave the signed wrapper under the clip."
+        }
+      ]
+    },
+    {
+      "id": "pigment-sample.plan",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Oduya has kept one place for the report and one tray for the whole practice strip. The report could tell which kinds of colour were in R13. It would use up the only loose strip, so tomorrow’s visitor could not turn that edge under a lamp. If you keep it whole, tomorrow’s visitor can repeat the edge check and the workshop has no result about what is in the paint.",
+      "options": [
+        {
+          "text": "Hand the signed R13 swatch to the workshop for the material report.",
+          "if": {
+            "all": [
+              {
+                "objective": "pigment-window.controlled"
+              },
+              {
+                "flag": "pigment-sample.window",
+                "eq": true
+              },
+              {
+                "flag": "pigment-sample.consent",
+                "eq": true
+              },
+              {
+                "item": "item.pigment-sample.swatch"
+              },
+              {
+                "not": {
+                  "flagSet": "pigment-sample.disposition"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "takeItem": "item.pigment-sample.swatch"
+            },
+            {
+              "setFlag": "pigment-sample.disposition",
+              "value": "analysis"
+            }
+          ]
+        },
+        {
+          "text": "Set the signed R13 swatch in the comparison tray, still whole.",
+          "if": {
+            "all": [
+              {
+                "objective": "pigment-window.controlled"
+              },
+              {
+                "flag": "pigment-sample.window",
+                "eq": true
+              },
+              {
+                "flag": "pigment-sample.consent",
+                "eq": true
+              },
+              {
+                "item": "item.pigment-sample.swatch"
+              },
+              {
+                "not": {
+                  "flagSet": "pigment-sample.disposition"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "takeItem": "item.pigment-sample.swatch"
+            },
+            {
+              "setFlag": "pigment-sample.disposition",
+              "value": "retain"
+            }
+          ]
+        },
+        {
+          "text": "Keep the wrapper in my bag and come back after a look at the window."
+        }
+      ]
+    },
+    {
+      "id": "pigment-sample.repair",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Someone has pencilled “Nell’s violet, now checked” over both clips. The runner thought the workshop slip and the borrowed display told the same story. Oduya asks you to give the next visitor a way to see where each claim begins and ends.",
+      "options": [
+        {
+          "text": "Give W27 its own loan card and R13 its own record of what a reader can check.",
+          "if": {
+            "all": [
+              {
+                "objective": "pigment-sample.compared"
+              },
+              {
+                "flag": "pigment-sample.disposition",
+                "in": [
+                  "analysis",
+                  "retain"
+                ]
+              },
+              {
+                "flag": "pigment-sample.followed",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flag": "pigment-sample.posted",
+                  "eq": true
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "pigment-sample.posted",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the two clips visible and come back to the heading."
+        }
+      ]
+    }
+  ],
+  "missions": [
+    {
+      "id": "pigment-sample",
+      "title": "The Last Loose Swatch",
+      "world": "WORLD-02",
+      "available": {
+        "objective": "pigment-window.controlled"
+      },
+      "knowledgeQuestion": "When is it worth using up material to find out what it is made of?",
+      "stake": "Nell has lent one strip to the window and offers one later swatch to the workshop. The next reader needs to know which evidence survives the choice.",
+      "objectives": [
+        {
+          "id": "pigment-sample.compared",
+          "title": "Match the window loan and the signed workshop swatch",
+          "visible": {
+            "objective": "pigment-window.controlled"
+          },
+          "done": {
+            "all": [
+              {
+                "objective": "pigment-window.controlled"
+              },
+              {
+                "flag": "pigment-sample.window",
+                "eq": true
+              },
+              {
+                "flag": "pigment-sample.consent",
+                "eq": true
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "responsibility",
+              "perspective",
+              "certainty"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "ethics"
+            ],
+            "aoks": [
+              "HIS",
+              "ART"
+            ],
+            "subjects": [
+              "history",
+              "visual-arts"
+            ],
+            "atl": [
+              "research",
+              "thinking"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 2
+          }
+        },
+        {
+          "id": "pigment-sample.reconciled",
+          "title": "Make the choice and check what the next reader can still see",
+          "visible": {
+            "objective": "pigment-sample.compared"
+          },
+          "done": {
+            "all": [
+              {
+                "objective": "pigment-sample.compared"
+              },
+              {
+                "flag": "pigment-sample.followed",
+                "eq": true
+              },
+              {
+                "flag": "pigment-sample.posted",
+                "eq": true
+              },
+              {
+                "any": [
+                  {
+                    "all": [
+                      {
+                        "flag": "pigment-sample.disposition",
+                        "eq": "analysis"
+                      },
+                      {
+                        "flag": "pigment-sample.reader.analysis",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "pigment-sample.disposition",
+                        "eq": "retain"
+                      },
+                      {
+                        "flag": "pigment-sample.reader.retain",
+                        "eq": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "values",
+              "responsibility",
+              "certainty",
+              "justification",
+              "interpretation"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "ethics",
+              "perspectives"
+            ],
+            "aoks": [
+              "NAT",
+              "ART",
+              "HIS"
+            ],
+            "subjects": [
+              "chemistry",
+              "visual-arts",
+              "history"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 4
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.pigment-sample.compared.1",
+      "objective": "pigment-sample.compared",
+      "depth": 1,
+      "text": "The new wrapper by the reed-violet frame came from a different drying day."
+    },
+    {
+      "id": "h.pigment-sample.compared.2",
+      "objective": "pigment-sample.compared",
+      "depth": 2,
+      "text": "Check the loan number through the glass. Then look at the signed wrapper on the next stand."
+    },
+    {
+      "id": "h.pigment-sample.compared.3",
+      "objective": "pigment-sample.compared",
+      "depth": 3,
+      "text": "The older strip is W27. Nell authorises study only on the separate R13 workshop swatch."
+    },
+    {
+      "id": "h.pigment-sample.compared.4",
+      "objective": "pigment-sample.compared",
+      "depth": 4,
+      "text": "Match the two marked numbers at the sealed window, then take the signed R13 wrapper from its tray."
+    },
+    {
+      "id": "h.pigment-sample.reconciled.1",
+      "objective": "pigment-sample.reconciled",
+      "depth": 1,
+      "text": "Think of the reader arriving tomorrow. Which evidence will still be there?"
+    },
+    {
+      "id": "h.pigment-sample.reconciled.2",
+      "objective": "pigment-sample.reconciled",
+      "depth": 2,
+      "text": "At the bench you can send R13 for a report or leave it whole. Walk to the place that receives it."
+    },
+    {
+      "id": "h.pigment-sample.reconciled.3",
+      "objective": "pigment-sample.reconciled",
+      "depth": 3,
+      "text": "A report describes material that is gone. A whole strip supports a new edge check. The older W27 loan has its own limit either way."
+    },
+    {
+      "id": "h.pigment-sample.reconciled.4",
+      "objective": "pigment-sample.reconciled",
+      "depth": 4,
+      "text": "Read the outcome at the report peg or comparison tray. Return to the caption bench to separate W27 and R13, then check the next reader’s copy."
+    }
+  ],
+  "items": [
+    {
+      "id": "item.pigment-sample.swatch",
+      "name": "Nell’s signed R13 swatch",
+      "description": "One whole fictional workshop swatch in its numbered wrapper. Nell authorises a material report on R13 or a return to the intact viewing tray. The borrowed W27 strip stays in its sealed frame.",
+      "historicalLabel": "fictional-world",
+      "art": "pigment-sample.sleeve"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "number": 911,
+    "name": "Weigh lasting material evidence against a test that uses it up",
+    "uses": [
+      {
+        "objective": "pigment-sample.reconciled",
+        "action": "Match the sealed W27 loan and the signed later R13 swatch, retain R13 for another material inspection or surrender it for a result tied to that batch, then separate the captions and check what the reader can still verify.",
+        "styles": [
+          "maker",
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "physical",
+          "analytical",
+          "visual",
+          "reading"
+        ],
+        "game": 144,
+        "story": 11
+      }
+    ]
+  }
+]

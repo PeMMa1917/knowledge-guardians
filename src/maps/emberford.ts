@@ -1,5 +1,6 @@
 import { sefaDispatchDesk } from './sefaDispatch';
 import { EMBERFORD_PIGMENT_WINDOW } from './pigmentWindow';
+import { EMBERFORD_PIGMENT_SAMPLE } from './pigmentSample';
 import { PRICE_DRAWERS_RETURNS } from './priceDrawers';
 import { JIG_EMBERFORD_RETURNS } from './jigShop';
 /**
@@ -166,6 +167,7 @@ export const EMBERFORD: MapDef = {
     ...EMBERFORD_WINDOW,
     ...EMBERFORD_BASKET,
     ...EMBERFORD_PIGMENT_WINDOW,
+    ...EMBERFORD_PIGMENT_SAMPLE,
     ...PRICE_DRAWERS_RETURNS,
     ...EMBERFORD_BRIDGE_PROOF,
     EMBERFORD_SILL_BRIDGE,
