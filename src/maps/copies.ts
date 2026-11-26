@@ -3,6 +3,7 @@ import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
 import { COPIES_ARCHIVE_BACKBILL, COPIES_PRESS_BACKBILL } from './backbill';
 import { COPIES_WELCOME } from './welcome';
+import { carriedFrame } from './sharedCarry';
 
 type CitySite = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
   | 'npcs' | 'interactables' | 'stamps' | 'lights'>;
@@ -42,6 +43,16 @@ const translationPaired: Condition = { flag: 'copies.translation.edition', eq: '
 const marginUnsent: Condition = { not: { flagSet: 'copies.margin.sent' } };
 const marginShort: Condition = { flagSet: 'copies.margin.short' };
 const marginWide: Condition = { flagSet: 'copies.margin.wide' };
+const carryLaneReserved: Condition = { flag: 'copies.carry.phase', in: ['lift', 'upper'] };
+
+function shortCarryLane(id: string, x: number, landing: number): Interactable {
+  return {
+    ...door(id, x, 11, 'the short lane by the keeper’s rail', { map: 'copies.landing', x: landing, y: 11 }),
+    art: 'voices.railing', artOpen: { key: 'shared-carry.barrier', if: carryLaneReserved },
+    openIf: { not: carryLaneReserved },
+    text: 'Both keepers are with the frame. Use the ordinary steps until Mina waves the short lane open.',
+  };
+}
 
 export const COPIES_ARCHIVE = interior({
   id: 'copies.archive', name: 'City of Copies: Record Room', width: 26, height: 16,
@@ -150,6 +161,17 @@ export const COPIES_LANDING: MapDef = {
   interactables: [
     ...COPIES_WELCOME,
     door('copies-landing-return', 12, 15, 'the steps back to the Record Room', { map: 'copies.archive', x: 21, y: 5 }),
+    carriedFrame('copies', 'start', 5, 12, 'Mina’s wide-page frame on the delivery hooks'),
+    carriedFrame('copies', 'cart', 11, 10, 'the wide-page frame at the first cart rest'),
+    carriedFrame('copies', 'cart-turn', 18, 13, 'the wide-page frame at the far cart rest'),
+    carriedFrame('copies', 'lift', 15, 13, 'the wide-page frame and the second keeper'),
+    carriedFrame('copies', 'low', 21, 13, 'the wide-page frame at the low return counter'),
+    carriedFrame('copies', 'upper', 21, 10, 'the wide-page frame at the covered cradle'),
+    print('shared-carry-parked-cart', 18, 13, 'the handcart in the overflow space', 'shared-carry.parked',
+      'The handcart and its spare straps stay here for the low frame. Mina keeps the extra return tray inside for now.',
+      { visibleIf: { flag: 'copies.carry.phase', in: ['done-low', 'read-low'] } }),
+    shortCarryLane('shared-carry-lane-near', 15, 22),
+    shortCarryLane('shared-carry-lane-far', 21, 14),
     door('copies-landing-to-press', 3, 9, 'the passage back to the press', { map: 'copies.press', x: 21, y: 9 }),
     { id: 'copies-compare-landing', kind: 'copy-compare', node: 'landing', x: 20, y: 9, w: 1, h: 1,
       label: 'the runner’s landing copy', art: 'copies.landing' },

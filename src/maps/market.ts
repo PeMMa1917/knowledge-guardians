@@ -2,6 +2,7 @@
 import type { Condition } from '../domain/types';
 import { MARKET_ACCESSIONS } from './pairedAccessions';
 import { MARKET_KETTLE } from './ferryKettle';
+import { MARKET_BASKET } from './marketBasket';
 import type { Interactable, MapDef } from './types';
 import { MARKET_WELCOME } from './welcome';
 
@@ -46,6 +47,7 @@ export const MARKET_SQUARE: MapDef = {
     { stamp: 'crates', x: 3, y: 9 }, { stamp: 'barrel', x: 29, y: 12 }, { stamp: 'crates', x: 6, y: 13 },
   ],
   interactables: [
+    ...MARKET_BASKET,
     ...MARKET_WELCOME,
     ...MARKET_ACCESSIONS,
     ...MARKET_KETTLE,

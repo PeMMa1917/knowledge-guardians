@@ -4,6 +4,7 @@ import type { Interactable, MapDef } from './types';
 import { ISLAND_LANTERN_FAIR } from './lanternfair';
 import { ISLAND_MOVEMENT_DOCK, ISLAND_MOVEMENT_WORKSHOP } from './island-movement';
 import { ISLAND_DOCK_FRAMES, ISLAND_WORKSHOP_FRAMES } from './frames';
+import { ISLAND_SKIFF_LAUNCH, ISLAND_SKIFF_RECEIVERS } from './islandSkiff';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'island.waypost'): Interactable {
   return { id, kind: 'door', x, y, w: 1, h: 1, label, to, art };
@@ -108,6 +109,7 @@ export const ISLAND_DOCK: MapDef = {
   interactables: [
     ...ISLAND_MOVEMENT_DOCK,
     ...ISLAND_DOCK_FRAMES,
+    ISLAND_SKIFF_LAUNCH,
     { id: 'cross-launch', kind: 'fieldgame', game: 'cross-launch', x: 18, y: 6, w: 1, h: 1, label: 'the launch board on the dock (a crossing)', art: 'signpost' },
     ...ISLAND_LANTERN_FAIR,
     door('island-dock-return', 5, 10, 'the dock path back to the workshop', { map: 'island.workshop', x: 5, y: 10 }),
@@ -183,6 +185,7 @@ export const ISLAND_MARGIN: MapDef = {
     sign('island-quiet-log', 22, 10, 'the quiet margin’s new listening slip', 'island.margin',
       'A new slip leaves room for a place, time and what a listener heard. The strip tally keeps its own page. The crew can make a fresh observation at the bend.',
       { visibleIf: { flag: 'island.margin.log', eq: true } }),
+    ...ISLAND_SKIFF_RECEIVERS,
   ],
   lights: [
     { x: 12, y: 10, r: 72, color: 0xf1d9a4 }, { x: 18, y: 11, r: 71, color: 0xcee1b4 },

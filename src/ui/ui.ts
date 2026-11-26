@@ -4,6 +4,8 @@ import { METAL_SAMPLES, readMetalSample } from '../domain/metalSample';
 import { compareCopy } from '../domain/copyComparison';
 import { seaChart } from '../domain/seaCharts';
 import { STAGE_CUES, stageRehearsal, type StageCue } from '../domain/stageRehearsal';
+import { FILM_STATIONS, isFilmStation } from '../domain/filmCuts';
+import { cameraPanel, filmEditorPanel } from './filmCuts';
 import { MARKET_BASES, marketComparison, marketOffersWithin, type MarketBasis } from '../domain/marketScale';
 import { WATER_SETTINGS, waterTrial, type WaterCondition, type WaterSetting } from '../domain/waterGate';
 import { CIVIC_RULES, CIVIC_SAMPLES, civicAllocation, type CivicRule, type CivicSample } from '../domain/civicConsole';
@@ -66,7 +68,14 @@ import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/underc
 import { FIELD_GAMES } from '../domain/fieldgames';
 import { routingBoard } from './routingBoards';
 import { counterReplayBoard } from './counterReplayBoard';
+import { islandSkiffPanel } from './islandSkiff';
+import { drawerCases } from './drawerCases';
+import { marketBasketPanel } from './marketBasket';
+import { SKIFF_LANDINGS } from '../maps/islandSkiff';
 import { handoverGallery } from './handoverGallery';
+import { sharedCarry } from './sharedCarry';
+import { stiltfrogWatch } from './stiltfrogWatch';
+import { CARRY, carryLocation } from '../domain/sharedCarry';
 import { opticsTrial } from './opticsTrial';
 import { loyaltyOf } from '../domain/loyalty';
 import { CROSSINGS, WAY_LABEL, crossingOf, crossingWay, wayOpen } from '../domain/crossings';
@@ -1910,7 +1919,8 @@ export class UI implements UIApi {
       const friend = st.flags[`${F}.friend`] === true;
       const seen = rec.sightings.filter((x) => st.flags[`${F}.seen.${x.id}`] === true);
       clear(box);
-      box.append(this.closeBtn(), h('div', { class: 'loreling-head' }, h('img', { class: 'moth-big', src: artURL('moth.big'), alt: `${rec.name}: a tiny moth with pale gold wings` }),
+      box.append(this.closeBtn(), h('div', { class: 'loreling-head' }, h('img', { class: 'moth-big',
+        src: artURL(rec.fieldGuide?.portrait ?? 'moth.big'), alt: rec.fieldGuide?.portraitAlt ?? 'A tiny moth with pale gold wings.' }),
         h('div', {}, h('h2', {}, friend ? String(st.flags[`${F}.name`] ?? rec.name) : rec.name), h('p', { class: 'fine' }, `A Loreling of ${CONCEPT_NAMES[rec.concept]}. Lorelings are made up for this game.`))));
       if (!friend) {
         if (!seen.length || (watched && seen.length === 1)) box.append(h('p', {}, rec.intro));
@@ -1927,7 +1937,7 @@ export class UI implements UIApi {
           box.append(h('p', { class: 'fair' }, `Watch it in ${rec.minSightings - seen.length} more place${rec.minSightings - seen.length === 1 ? '' : 's'} before you write your pattern note. One sighting can mislead.`));
           return;
         }
-        box.append(h('h3', {}, 'Your pattern note'), h('p', { class: 'fine' }, 'Choose the answer that fits every place you watched, not just one.'));
+        if (rec.questions.length) box.append(h('h3', {}, 'Your pattern note'), h('p', { class: 'fine' }, 'Choose the answer that fits every place you watched, not just one.'));
         for (const q of rec.questions) {
           const pick = st.flags[`${F}.note.${q.id}`];
           box.append(h('fieldset', { class: 'note-q' }, h('legend', {}, q.prompt), ...q.options.map((o) => h('button', {
@@ -1964,7 +1974,9 @@ export class UI implements UIApi {
       box.append(h('h3', {}, 'Give it a name'), h('div', { class: 'row wrap' }, ...rec.names.map((n) => h('button', { type: 'button', onclick: () => setName(n) }, n))),
         h('div', { class: 'row' }, input, h('button', { onclick: () => setName(input.value) }, 'Use this name')));
       const out = st.flags['lor.out'] === rec.id;
-      box.append(h('h3', {}, 'In the field'), h('p', { class: 'fine' }, out ? 'It flies with you and looks for places you have not examined yet.' : 'It rests at camp. Lorelings never fight and never get hurt.'),
+      box.append(h('h3', {}, 'In the field'), h('p', { class: 'fine' },
+        out ? rec.fieldGuide?.activeText ?? 'It flies with you and looks for places you have not examined yet.'
+          : 'It rests at camp. Lorelings never fight and never get hurt.'),
         h('button', { class: 'primary', onclick: () => { c.dispatch({ type: 'LorelingField', loreling: rec.id, out: !out }); render(); } }, out ? 'Let it rest at camp' : 'Take it into the field'));
     };
     render();
@@ -2868,7 +2880,31 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
-    if (id === 'handover-gallery') {
+    const carry = carryLocation(id);
+    if (id === 'drawer-cases') {
+      const board = this.openModal('bench-panel wide', 'Three Cases at the Bell');
+      drawerCases(board, ctx.controller, this.closeBtn());
+    } else if (id === 'market-basket-bench' || id === 'market-basket-voucher' || id === 'market-basket-credit') {
+      const site = id === 'market-basket-bench' ? 'bench' : id === 'market-basket-voucher' ? 'voucher' : 'credit';
+      this.openModal('bench-panel wide', 'Three Goods, Two Bells', this.closeBtn(),
+        marketBasketPanel(site, ctx.controller, (key) => this.sfx(key)));
+    } else if (id === 'island-skiff') {
+      this.openModal('bench-panel wide', 'Joss’s Skiff', this.closeBtn(),
+        islandSkiffPanel(ctx.controller, (key) => this.sfx(key), (berth) => {
+          const landing = SKIFF_LANDINGS[berth];
+          this.closeModal(false);
+          ctx.world?.changeMap(landing.map, landing.x, landing.y);
+        }));
+    } else if (id === 'stiltfrog-wait') {
+      this.openLoreling('stiltfrog');
+    } else if (id === 'stiltfrog-watch-low' || id === 'stiltfrog-watch-high') {
+      this.openModal('bench-panel', 'Watch the reed hollow', this.closeBtn(),
+        stiltfrogWatch(id === 'stiltfrog-watch-low' ? 'low' : 'high', ctx.controller, (key) => this.sfx(key)));
+    } else if (carry) {
+      const [site, stop] = carry;
+      this.openModal('bench-panel wide', CARRY[site].title, this.closeBtn(),
+        sharedCarry(site, stop, ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'handover-gallery') {
       this.openModal('bench-panel wide', 'Handover Room', this.closeBtn(),
         handoverGallery(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === 'forest-counter' || id === 'water-counter') {
@@ -3172,11 +3208,13 @@ export class UI implements UIApi {
     const predict = () => {
       box.replaceChildren(...head(), tallyLine(),
         h('p', {}, "Dov grins. 'Feelings are free. Before my counting frame runs 300 rounds: how often do you think switching wins?' Your guess is only for you."),
-        h('div', { class: 'notice-options' }, ...['About 1 time in 3', 'About half the time', 'About 2 times in 3'].map((t) => h('button', { type: 'button', onclick: () => { guess = t; frame(); } }, t))));
+        h('div', { class: 'notice-options' }, ...['About 1 time in 3', 'About half the time', 'About 2 times in 3'].map((t) => h('button', { type: 'button', onclick: () => { guess = t; frame(); } }, t)),
+          h('button', { type: 'button', onclick: () => frame() }, 'Run the counting frame')));
     };
     const frame = () => {
       const k = runDoors(300, seed, true);
-      box.replaceChildren(...head(), h('p', {}, `The counting frame clacks through 300 rounds, with the same rules. Your guess was: ${guess.toLowerCase()}.`),
+      box.replaceChildren(...head(), h('p', {}, 'The counting frame clacks through 300 rounds, with the same rules.'),
+        guess ? h('p', { class: 'fine' }, `Your forecast was ${guess.toLowerCase()}.`) : '',
         this.barPair([{ label: 'Stay wins', n: k.stay, of: k.counted }, { label: 'Switch wins', n: k.swap, of: k.counted }]),
         h('p', {}, "Dov: 'Your first pick is right 1 time in 3. When it is wrong (2 times in 3), I must leave the lantern under the other crate, because I never lift it. So switching wins 2 times in 3.'"),
         h('div', { class: 'row' }, h('button', { type: 'button', class: 'primary', onclick: () => forgets() }, "But what if Dov forgets where the lantern is?")));
@@ -4322,6 +4360,21 @@ export class UI implements UIApi {
       picture, controls, live,
       h('details', {}, h('summary', {}, 'Try a shopper’s purse'),
         h('label', { for: 'market-purse' }, 'Credits to spend'), purse, available));
+  }
+
+  openFilmCamera(station: string): void {
+    const { controller } = ctx;
+    if (!isFilmStation(station) || controller.state.mapId !== 'stage.rehearsal' || controller.state.flags['film.stage.started'] !== true) return;
+    const title = station === 'front' ? 'Front camera' : 'Wing camera';
+    this.openModal('film-panel', title, this.closeBtn(), h('h2', {}, title), cameraPanel(controller, station));
+  }
+
+  openFilmEditor(): void {
+    const { controller } = ctx;
+    if (controller.state.mapId !== 'stage.rehearsal'
+      || !FILM_STATIONS.every((station) => controller.state.flags['film.take.' + station] === true)) return;
+    this.openModal('film-panel wide', 'Editing stand', this.closeBtn(), h('h2', {}, 'Editing stand'),
+      filmEditorPanel(controller));
   }
 
   openStageRehearsal(): void {

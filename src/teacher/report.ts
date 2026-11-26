@@ -9,7 +9,7 @@
  * students (TEACH-003); learner-profile moments only as class totals
  * (PROFILE-001); every alert says it may be wrong (MISC-001).
  */
-import type { ContentPack } from '../domain/types';
+import type { TeacherContent } from './content';
 import type { SkillStage } from '../domain/skills';
 
 export interface ProgressFile {
@@ -72,7 +72,7 @@ export function latestPerStudent(files: ProgressFile[]): ProgressFile[] {
   return [...m.values()].sort((a, b) => a.player.localeCompare(b.player));
 }
 
-export function summarise(files0: ProgressFile[], pack: ContentPack, dismissed: string[] = []): ClassSummary {
+export function summarise(files0: ProgressFile[], pack: Pick<TeacherContent, 'misconceptions'>, dismissed: string[] = []): ClassSummary {
   const files = latestPerStudent(files0);
   const n = files.length;
   const profile: Record<string, number> = {};

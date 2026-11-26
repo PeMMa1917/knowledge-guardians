@@ -6,6 +6,7 @@
  * 20 x 14 tiles. Fictional world.
  */
 import type { MapDef, Interactable } from './types';
+import { SHELF_ROOM_DOOR } from './shelfRoom';
 
 const W = 20, H = 14;
 
@@ -44,6 +45,7 @@ export const STUDY: MapDef = {
   blocks: [[0, 0, 1, H], [W - 1, 0, 1, H], [1, 0, W - 2, 3], [0, H - 1, W, 1]],
   npcs: [],
   interactables: [
+    SHELF_ROOM_DOOR,
     clue('painting', 5, 3, "Elsbet's painting"),
     clue('clock', 7, 3, 'the stopped clock'),
     clue('roundwin', 9, 3, 'the small round window'),

@@ -4,6 +4,7 @@ import { NEXT_BENCH } from './afterCouncil';
 import { HANDOVER_GALLERY } from './handoverGallery';
 import { EMBERFORD, REPAIR_YARD } from './emberford';
 import { STUDY } from './study';
+import { SHELF_MODEL, SHELF_ROOM } from './shelfRoom';
 import { FERRY } from './ferry';
 import { NILE_HALL, NILE_ROYAL, NILE_ROUTE, NILE_WORKYARD } from './nile';
 import { UNDERCROFT } from './undercroft';
@@ -28,6 +29,8 @@ export const MAPS: Record<string, MapDef> = {
   [EMBERFORD.id]: EMBERFORD,
   [REPAIR_YARD.id]: REPAIR_YARD,
   [STUDY.id]: STUDY,
+  [SHELF_ROOM.id]: SHELF_ROOM,
+  [SHELF_MODEL.id]: SHELF_MODEL,
   [FERRY.id]: FERRY,
   [UNDERCROFT.id]: UNDERCROFT,
   [NILE_HALL.id]: NILE_HALL,

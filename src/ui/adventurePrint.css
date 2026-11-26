@@ -1,0 +1,61 @@
+.adventure-print {
+  display: none;
+}
+
+@page adventure-journal {
+  size: A4;
+  margin: 15mm;
+
+  @bottom-right {
+    content: counter(page);
+    color: #425855;
+    font-family: 'Lexend', system-ui, sans-serif;
+    font-size: 9pt;
+  }
+}
+
+@media print {
+  html.adventure-printing,
+  html.adventure-printing body {
+    height: auto;
+    overflow: visible;
+    background: #fff;
+  }
+
+  html.adventure-printing body > :not(.adventure-print) {
+    display: none !important;
+  }
+
+  html.adventure-printing .adventure-print {
+    display: block;
+    page: adventure-journal;
+    color: #182b2a;
+    font-size: 11pt;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    orphans: 2;
+    widows: 2;
+  }
+
+  .adventure-print header {
+    padding-bottom: 4mm;
+    border-bottom: 1px solid #668482;
+  }
+
+  .adventure-print h1,
+  .adventure-print h2,
+  .adventure-print h3 {
+    color: #254744;
+    break-after: avoid-page;
+    letter-spacing: normal;
+  }
+
+  .adventure-print h1 { font-size: 23pt; margin: 0 0 2mm; }
+  .adventure-print h2 { font-size: 16pt; margin: 6mm 0 2mm; }
+  .adventure-print h3 { font-size: 12pt; margin: 0 0 1mm; }
+  .adventure-print article { break-inside: avoid-page; margin: 0 0 4mm; }
+  .adventure-print p,
+  .adventure-print ul { margin: 0 0 2mm; }
+  .adventure-print .print-details { color: #425855; font-size: 9.5pt; break-after: avoid-page; }
+  .adventure-print .print-writing { white-space: pre-wrap; }
+}

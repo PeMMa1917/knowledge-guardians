@@ -29,6 +29,20 @@ function walkable(map: MapDef) {
   return (x: number, y: number) => map.floor(x, y) !== null && !blocked.has(`${x},${y}`);
 }
 
+it('leaves the Emberford portal post clear for Kip after the market Showdown', () => {
+  const map = MAPS['aethelgard.emberford'];
+  // WorldScene moves Kip to this post when the player must collect the gold seal.
+  const post = { x: 21, y: 23 };
+  const isWalkable = walkable(map);
+  expect(isWalkable(post.x, post.y)).toBe(true);
+  expect(isWalkable(post.x, post.y - 1)).toBe(true);
+  expect(map.npcs.some(({ id, x, y }) => id !== 'kip-arden' && x === post.x && y === post.y)).toBe(false);
+
+  const idris = map.npcs.find(({ id }) => id === 'porter-idris')!;
+  expect(map.interactables.some(({ x, y, w, h }) => x <= idris.x && idris.x < x + w && y <= idris.y && idris.y < y + h)).toBe(false);
+  expect(isWalkable(idris.x, idris.y - 1) || isWalkable(idris.x + 1, idris.y)).toBe(true);
+});
+
 describe('Chapter layouts after the Nile Archive', () => {
   it.each(maps)('$name has an approach to every actor and prop, and clear arrival tiles', (map) => {
     const isWalkable = walkable(map);

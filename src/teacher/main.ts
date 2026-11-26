@@ -7,13 +7,12 @@ import '@fontsource/lexend/300.css';
 import '@fontsource/lexend/400.css';
 import '@fontsource/lexend/600.css';
 import './teacher.css';
-import { buildPack } from '../content';
+import { teacherContent as pack } from 'virtual:kg-teacher-content';
 import { AOK_NAMES, ATL_NAMES, CONCEPT_NAMES, PROFILE_NAMES, SUBJECTS } from '../domain/curriculum';
 import { clear, h } from '../ui/dom';
 import { STAGE_LABEL, type SkillStage } from '../domain/skills';
 import { latestPerStudent, readProgress, subjectCsv, summarise, type ProgressFile } from './report';
 
-const pack = buildPack();
 const root = document.getElementById('teacher')!;
 let files: ProgressFile[] = [];
 const problems: string[] = [];

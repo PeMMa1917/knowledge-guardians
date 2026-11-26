@@ -164,6 +164,14 @@ export const SEA_CHARTROOM: MapDef = {
 
 const shoalWidth = 29;
 const shoalHeight = 18;
+const rimPointed: Condition = { flag: 'sea.frog.rim.pointed', eq: true };
+const rimChecked: Condition = { flag: 'sea.frog.rim.checked', eq: true };
+const staffChecked: Condition = { flag: 'sea.frog.staff.checked', eq: true };
+
+function seepProp(id: string, x: number, y: number, label: string, art: string, node: string,
+  after?: Interactable['artOpen'], visibleIf: Condition = { objective: 'sea.arrival' }): Interactable {
+  return { id, kind: 'scene', x, y, w: 1, h: 1, label, art, node, walkThrough: true, artOpen: after, visibleIf };
+}
 
 function shoalFloor(x: number, y: number): string | null {
   if (x < 0 || y < 0 || x >= shoalWidth || y >= shoalHeight) return null;
@@ -179,7 +187,8 @@ export const SEA_SHOAL: MapDef = {
   id: 'sea.shoal', name: 'Cartographers’ Sea: Shoal Shelf', world: 'WORLD-09',
   width: shoalWidth, height: shoalHeight, music: 'music.town', ambience: 'town',
   background: 0x356878, floor: shoalFloor,
-  spawn: { x: 6, y: 12 }, blocks: [], zones: [], npcs: [],
+  spawn: { x: 6, y: 12 }, blocks: [], npcs: [],
+  zones: [{ id: 'sea-frog-low-planks', x: 10, y: 12, w: 3, h: 2, if: staffChecked }],
   stamps: [
     { stamp: 'crates', x: 2, y: 4 }, { stamp: 'barrel', x: 7, y: 5 },
     { stamp: 'bush', x: 8, y: 10 }, { stamp: 'tree', x: 4, y: 3 }, { stamp: 'tree', x: 6, y: 13 },
@@ -188,6 +197,21 @@ export const SEA_SHOAL: MapDef = {
     { stamp: 'flowers-white', x: 9, y: 7 }, { stamp: 'flowers-small', x: 23, y: 7 },
   ],
   interactables: [
+    seepProp('sea-frog-rim-check', 8, 6, 'the freshwater rim above the reed hollow',
+      'stiltfrog.rim-hidden', 'sea.frog.rim', { key: 'stiltfrog.rim', if: rimPointed }),
+    seepProp('sea-frog-staff', 8, 14, 'Sora’s fixed staff by the south planks',
+      'stiltfrog.tide-staff', 'sea.frog.staff', { key: 'stiltfrog.staff-checked', if: staffChecked }),
+    { ...crossing('sea-frog-rim-cross', 9, 5, 'the marked dry rim above the reeds',
+      { map: 'sea.shoal', x: 14, y: 5 }, 'stiltfrog.rim'), walkThrough: true, visibleIf: rimPointed, openIf: rimChecked,
+      text: 'The frog showed this rim from its height. Use the keeper’s rod to check both seats before crossing.',
+      flag: 'sea.frog.rim.crossed' },
+    { ...crossing('sea-frog-rim-back', 14, 4, 'the dry rim back to the west bank',
+      { map: 'sea.shoal', x: 8, y: 5 }, 'stiltfrog.rim'), walkThrough: true, visibleIf: rimChecked },
+    seepProp('sea-frog-upper', 17, 5, 'the single-person view above the reed lip',
+      'stiltfrog.window-high', 'sea.frog.watch.upper',
+      { key: 'stiltfrog.sight-upper', if: { flag: 'sea.frog.read.upper', eq: true } }, { flag: 'sea.frog.rim.crossed', eq: true }),
+    seepProp('sea-frog-lower', 18, 13, 'the two-person view at the low shoulder',
+      'stiltfrog.window-low', 'sea.frog.watch.lower', { key: 'stiltfrog.sight-lower', if: { flag: 'sea.frog.read.lower', eq: true } }),
     crossing('sea-shoal-return', 4, 12, 'the skiff back to Seagrass Steps', { map: 'sea.harbour', x: 23, y: 12 }, 'sea.skiff'),
     crossing('sea-shoal-to-chartroom', 5, 6, 'the skiff to the Lantern House stair', { map: 'sea.chartroom', x: 23, y: 8 }, 'sea.skiff'),
     { id: 'sea-chart-shoal', kind: 'sea-chart', node: 'shoal', x: 16, y: 8, w: 1, h: 1,

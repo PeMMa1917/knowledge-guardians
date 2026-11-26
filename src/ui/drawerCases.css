@@ -1,0 +1,9 @@
+.drawer-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(7rem, 100%), 1fr)); gap: .65rem; margin-block: 1rem; }
+.drawer-pair { min-width: 0; padding: .55rem; background: #262639; border: 1px solid #a48565; border-radius: .55rem; }
+.drawer-pair h3 { margin: 0 0 .4rem; }
+.drawer-pair div { display: flex; flex-wrap: wrap; gap: .35rem; }
+.drawer-face { flex: 1 1 2.6rem; min-height: 3rem; text-align: center; }
+.drawer-knob { display: block; width: .8em; height: .8em; margin: .15em auto .35em; background: #ecd5a0; }
+.drawer-face.round .drawer-knob { border-radius: 50%; }
+.drawer-face.square .drawer-knob { background: #aed8e2; }
+.drawer-counts p { margin: .5rem 0; overflow-wrap: anywhere; }

@@ -1,0 +1,1046 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH3-R13",
+      "world": "WORLD-04",
+      "title": "A Door in Two Lines",
+      "knowledgeQuestion": "What changes when a useful direction takes another written form?",
+      "stake": "Two visitors need to find the same open review bench. One cannot read the lettering on the old board.",
+      "available": {
+        "all": [
+          {
+            "objective": "preserved.publish"
+          },
+          {
+            "card": "card.lintel.sejarah"
+          }
+        ]
+      },
+      "objectives": [
+        {
+          "id": "lintel.cold.compare",
+          "title": "Try both written forms of Pilar’s public direction.",
+          "essential": false,
+          "done": {
+            "all": [
+              {
+                "flag": "lintel.cold.stairs",
+                "eq": true
+              },
+              {
+                "flag": "lintel.cold.ramp",
+                "eq": true
+              }
+            ]
+          },
+          "skills": [
+            "SK-CIT-01"
+          ],
+          "weave": {
+            "concepts": [
+              "culture",
+              "interpretation",
+              "perspective",
+              "objectivity",
+              "evidence",
+              "explanation"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "LAN",
+              "HUM"
+            ],
+            "subjects": [
+              "history",
+              "lang-b",
+              "lang-ab-initio",
+              "lang-langlit"
+            ],
+            "framework": [
+              "scope",
+              "perspectives",
+              "methods-and-tools"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 4
+          }
+        },
+        {
+          "id": "lintel.cold.checked",
+          "title": "Place directions for visitors and check where they arrive.",
+          "essential": false,
+          "visible": {
+            "objective": "lintel.cold.compare"
+          },
+          "done": {
+            "flagSet": "lintel.cold.receipt"
+          },
+          "onComplete": [
+            {
+              "journal": "j.lintel.cold"
+            }
+          ],
+          "skills": [
+            "SK-CIT-01"
+          ],
+          "weave": {
+            "concepts": [
+              "truth",
+              "certainty",
+              "justification",
+              "responsibility",
+              "values",
+              "power"
+            ],
+            "atl": [
+              "communication",
+              "social",
+              "thinking"
+            ],
+            "aoks": [
+              "LAN",
+              "HUM"
+            ],
+            "subjects": [
+              "lang-b",
+              "lang-ab-initio",
+              "design-tech"
+            ],
+            "framework": [
+              "scope",
+              "ethics",
+              "perspectives"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "caring",
+              "solo": "relational"
+            },
+            "minutes": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH13-R05",
+      "world": "WORLD-14",
+      "title": "The Bench at the Turning",
+      "knowledgeQuestion": "What is the difference between a guide that everyone can read and permission to use a route?",
+      "stake": "A visitor is waiting for a dry seat. The public route is open. The shorter way belongs to the room’s stewards.",
+      "available": {
+        "all": [
+          {
+            "objective": "voices.arrival"
+          },
+          {
+            "objective": "lintel.cold.checked"
+          }
+        ]
+      },
+      "objectives": [
+        {
+          "id": "lintel.voices.compare",
+          "title": "Check the public guide and the steward’s separate service instruction.",
+          "essential": false,
+          "done": {
+            "all": [
+              {
+                "flag": "lintel.voices.public-read",
+                "eq": true
+              },
+              {
+                "flag": "lintel.voices.authority-read",
+                "eq": true
+              }
+            ]
+          },
+          "skills": [
+            "SK-CIT-01"
+          ],
+          "weave": {
+            "concepts": [
+              "culture",
+              "evidence",
+              "interpretation",
+              "perspective",
+              "power"
+            ],
+            "atl": [
+              "research",
+              "thinking",
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "LAN",
+              "REL",
+              "POL"
+            ],
+            "subjects": [
+              "history",
+              "lang-b",
+              "world-religions",
+              "anthropology"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 4
+          }
+        },
+        {
+          "id": "lintel.voices.checked",
+          "title": "Bring the mat to the visitor by the route you arranged.",
+          "essential": false,
+          "visible": {
+            "objective": "lintel.voices.compare"
+          },
+          "done": {
+            "flagSet": "lintel.voices.done"
+          },
+          "onComplete": [
+            {
+              "journal": "j.lintel.voices"
+            }
+          ],
+          "skills": [
+            "SK-CIT-01"
+          ],
+          "weave": {
+            "concepts": [
+              "certainty",
+              "truth",
+              "justification",
+              "values",
+              "responsibility",
+              "objectivity"
+            ],
+            "atl": [
+              "communication",
+              "social",
+              "self-management"
+            ],
+            "aoks": [
+              "HUM",
+              "REL",
+              "POL"
+            ],
+            "subjects": [
+              "world-religions",
+              "anthropology",
+              "global-politics"
+            ],
+            "framework": [
+              "ethics",
+              "perspectives",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "human",
+              "solo": "relational"
+            },
+            "minutes": 3
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "lintel.cold.fold",
+      "speaker": "narrator",
+      "text": "The review room has two ways to see its board, from the stair and from the ramp. Pilar has kept the public direction in two written forms. Clip a form into the fold wherever a visitor would stand.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Seat the slanted-letters strip on the stair side.",
+          "next": "lintel.cold.stair-view",
+          "if": {
+            "flag": "perspective.active",
+            "eq": "lintel-fold"
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.cold.face",
+              "value": "stairs"
+            }
+          ]
+        },
+        {
+          "text": "Seat the rounded-letters strip on the ramp side.",
+          "next": "lintel.cold.ramp-view",
+          "if": {
+            "flag": "perspective.active",
+            "eq": "lintel-fold"
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.cold.face",
+              "value": "ramp"
+            }
+          ]
+        },
+        {
+          "text": "Leave both strips beside the board."
+        }
+      ]
+    },
+    {
+      "id": "lintel.cold.stair-view",
+      "speaker": "narrator",
+      "text": "A visitor on the stair can read the slanted letters. The line sends handcarts to the low bench after the second bell. From the stair you see the top of the frame.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Mark who can read this side and where it leads.",
+          "if": {
+            "not": {
+              "flag": "lintel.cold.stairs",
+              "eq": true
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.cold.stairs",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the strip where it sits."
+        }
+      ]
+    },
+    {
+      "id": "lintel.cold.ramp-view",
+      "speaker": "narrator",
+      "text": "A visitor coming up the ramp knows the rounded letters. They read the same place and bell. The low frame lip covers the upper line until you tilt it down toward them.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Tilt the frame and mark the clear reading.",
+          "if": {
+            "not": {
+              "flag": "lintel.cold.ramp",
+              "eq": true
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.cold.ramp",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Set the frame back on the rail."
+        }
+      ]
+    },
+    {
+      "id": "lintel.cold.set",
+      "speaker": "preserved-inquiry-keeper",
+      "text": "The directions belong on the low bench. A double board lets each visitor check the mark on their own. Or I can keep the old board and let my second reader walk the ramp with a new visitor. They can answer questions, and our mending queue can spare them for one turn.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "value",
+      "options": [
+        {
+          "text": "Hang both forms at the low bench.",
+          "next": "lintel.cold.paired",
+          "if": {
+            "all": [
+              {
+                "objective": "lintel.cold.compare"
+              },
+              {
+                "not": {
+                  "flagSet": "lintel.cold.place"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.cold.place",
+              "value": "pair"
+            }
+          ]
+        },
+        {
+          "text": "Keep a reader at the ramp and a copy on the desk.",
+          "next": "lintel.cold.guided",
+          "if": {
+            "all": [
+              {
+                "objective": "lintel.cold.compare"
+              },
+              {
+                "not": {
+                  "flagSet": "lintel.cold.place"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.cold.place",
+              "value": "guide"
+            }
+          ]
+        },
+        {
+          "text": "Keep the fold at the bench for now."
+        }
+      ]
+    },
+    {
+      "id": "lintel.cold.paired",
+      "speaker": "narrator",
+      "text": "Pilar lowers one edge so the two lines show. The bell and the bench stay in both. Follow the person coming up the ramp to the low bench.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "lintel.cold.guided",
+      "speaker": "narrator",
+      "text": "The visitor who reads the slanted letters checks the old board. Pilar’s second reader takes the rounded copy along the ramp. Find where that pair comes in.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "lintel.cold.result-pair",
+      "speaker": "narrator",
+      "text": "Two visitors point to different lines and rest their carts at the same low bench. One asks what the second bell means. Pilar writes the opening turn beside both forms.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Clip today’s opening turn beside their copy.",
+          "next": "lintel.cold.earned",
+          "if": {
+            "not": {
+              "flagSet": "lintel.cold.receipt"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.cold.receipt",
+              "value": "pair"
+            }
+          ]
+        },
+        {
+          "text": "Leave the directions at the bench."
+        }
+      ]
+    },
+    {
+      "id": "lintel.cold.result-guide",
+      "speaker": "narrator",
+      "text": "Pilar’s second reader walks beside a visitor and reads the board aloud. A cart waits a turn for that reader to return to the mending queue. The desk keeps the rounded copy for the next visitor.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Mark where the reader joined the visitor.",
+          "next": "lintel.cold.earned",
+          "if": {
+            "not": {
+              "flagSet": "lintel.cold.receipt"
+            }
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.cold.receipt",
+              "value": "guide"
+            }
+          ]
+        },
+        {
+          "text": "Leave the desk copy in its slot."
+        }
+      ]
+    },
+    {
+      "id": "lintel.cold.earned",
+      "speaker": "preserved-inquiry-keeper",
+      "text": "Take that fold to Eren at Glass Walk when you’re next there. They’ve asked how we kept the words clear at the bench. There’s an empty pocket in it for a second instruction.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "lintel.voices.board",
+      "speaker": "narrator",
+      "text": "From the path, the clear public line reads ‘DRY SEATS AT THE LOW BENCH, THROUGH THE WEST PASSAGE.’ The service door is much closer. Its outline is on the building sketch beside the board.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Slide the public line into the open outside pocket.",
+          "next": "lintel.voices.seen-board",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "objective": "voices.arrival"
+                      },
+                      {
+                        "objective": "lintel.cold.checked"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "perspective.active",
+                    "eq": "lintel-fold"
+                  },
+                  {
+                    "card": "card.lintel.temple"
+                  }
+                ]
+              },
+              {
+                "not": {
+                  "flag": "lintel.voices.public-read",
+                  "eq": true
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.voices.public-read",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the board on its hook."
+        }
+      ]
+    },
+    {
+      "id": "lintel.voices.seen-board",
+      "speaker": "narrator",
+      "text": "A visitor can use the west passage to the bench. The board gives them a destination and a public route. Eren asks you to check the worker slot before using the service door.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "lintel.voices.offer",
+      "speaker": "narrator",
+      "text": "Wren’s work instruction has a name and a narrow job. ‘Eren may escort one carrier with this dry mat through the workers’ passage for this delivery. The visitor uses the public bench.’ The slot beside it is empty.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Set the signed work instruction in a separate pocket.",
+          "next": "lintel.voices.seen-offer",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "objective": "voices.arrival"
+                      },
+                      {
+                        "objective": "lintel.cold.checked"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "perspective.active",
+                    "eq": "lintel-fold"
+                  },
+                  {
+                    "card": "card.lintel.temple"
+                  }
+                ]
+              },
+              {
+                "not": {
+                  "flag": "lintel.voices.authority-read",
+                  "eq": true
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.voices.authority-read",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Keep Wren’s slip in the rack."
+        }
+      ]
+    },
+    {
+      "id": "lintel.voices.seen-offer",
+      "speaker": "narrator",
+      "text": "The signature gives Eren authority to escort this mat. Eren has yet to agree to leave the desk. The fold now has a place for the public route and a separate place for a reply.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "lintel.voices.choose",
+      "speaker": "voices-clerk",
+      "text": "Someone at the low bench needs this dry mat. You can carry it along the public west passage while I take requests here. Or I can issue the worker slip and walk the short service elbow with you. The visitor stays at the public bench either way.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "value",
+      "options": [
+        {
+          "text": "Carry the mat to the west passage using the public guide.",
+          "next": "lintel.voices.go-public",
+          "if": {
+            "all": [
+              {
+                "objective": "lintel.voices.compare"
+              },
+              {
+                "flag": "perspective.active",
+                "eq": "lintel-fold"
+              },
+              {
+                "not": {
+                  "flagSet": "lintel.voices.route"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.voices.route",
+              "value": "public"
+            }
+          ]
+        },
+        {
+          "text": "Ask Eren to sign for this mat and walk beside us.",
+          "next": "lintel.voices.go-escort",
+          "if": {
+            "all": [
+              {
+                "objective": "lintel.voices.compare"
+              },
+              {
+                "flag": "perspective.active",
+                "eq": "lintel-fold"
+              },
+              {
+                "not": {
+                  "flagSet": "lintel.voices.route"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.voices.route",
+              "value": "escort"
+            },
+            {
+              "setFlag": "lintel.voices.permit",
+              "value": "mat-with-eren"
+            }
+          ]
+        },
+        {
+          "text": "Leave the mat with Eren for now."
+        }
+      ]
+    },
+    {
+      "id": "lintel.voices.go-public",
+      "speaker": "narrator",
+      "text": "Eren moves the mat to the west passage. The public line stays on its hook. At the west turn, pick the mat up by the short end so it clears the door.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "lintel.voices.go-escort",
+      "speaker": "narrator",
+      "text": "Eren signs the service pocket and carries the other end. The slip is for this mat until its delivery. The worker door will open while Eren holds the far end.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    },
+    {
+      "id": "lintel.voices.west-turn",
+      "speaker": "narrator",
+      "text": "The mat is by the ordinary Glass Walk stairs. There is plenty of space to carry it upright. The public bench is inside at the next turn.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Turn the mat upright for the public door.",
+          "if": {
+            "all": [
+              {
+                "flag": "lintel.voices.route",
+                "eq": "public"
+              },
+              {
+                "not": {
+                  "flag": "lintel.voices.public-check",
+                  "eq": true
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.voices.public-check",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Rest the mat by the wall."
+        }
+      ]
+    },
+    {
+      "id": "lintel.voices.public-check",
+      "speaker": "narrator",
+      "text": "The mat has come along the public passage. A new arrival rolls it flat at the bench. Eren stayed at the walk desk and answered the next direction request. The mat reached them by the longer way.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Leave the checked public line beside the bench.",
+          "next": "lintel.voices.thanks",
+          "if": {
+            "all": [
+              {
+                "flag": "lintel.voices.route",
+                "eq": "public"
+              },
+              {
+                "flag": "lintel.voices.public-cross",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "lintel.voices.done"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.voices.done",
+              "value": "public"
+            }
+          ]
+        },
+        {
+          "text": "Fold the public line back into the strip."
+        }
+      ]
+    },
+    {
+      "id": "lintel.voices.escort-check",
+      "speaker": "narrator",
+      "text": "Eren sets the mat on the far bench and comes back through the public hall. A visitor has a dry seat sooner. One request waited at the walk desk during the carry. The worker slip now belongs with this finished task.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation",
+      "options": [
+        {
+          "text": "Return the signed service slip to the keeper.",
+          "next": "lintel.voices.thanks",
+          "if": {
+            "all": [
+              {
+                "flag": "lintel.voices.route",
+                "eq": "escort"
+              },
+              {
+                "flag": "lintel.voices.escort-cross",
+                "eq": true
+              },
+              {
+                "flag": "lintel.voices.permit",
+                "eq": "mat-with-eren"
+              },
+              {
+                "not": {
+                  "flagSet": "lintel.voices.done"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "lintel.voices.done",
+              "value": "escort"
+            }
+          ]
+        },
+        {
+          "text": "Wait while the mat is checked."
+        }
+      ]
+    },
+    {
+      "id": "lintel.voices.thanks",
+      "speaker": "voices-steward",
+      "text": "Pilar should see what the two pockets kept apart. I’ll send a bare receipt for the mat and the public bench. The next supply job can ask for its own escort.",
+      "historicalLabel": "fictional-world",
+      "claimKind": "observation"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.lintel.cold.compare.1",
+      "objective": "lintel.cold.compare",
+      "depth": 1,
+      "text": "Visitors can know the same destination through different writing."
+    },
+    {
+      "id": "h.lintel.cold.compare.2",
+      "objective": "lintel.cold.compare",
+      "depth": 2,
+      "text": "Open the Sejarah Malayu case and equip the Lintel Fold in the Bag."
+    },
+    {
+      "id": "h.lintel.cold.compare.3",
+      "objective": "lintel.cold.compare",
+      "depth": 3,
+      "text": "Use both strips at Pilar’s turning rail. Notice where the lip sits on each side."
+    },
+    {
+      "id": "h.lintel.cold.compare.4",
+      "objective": "lintel.cold.compare",
+      "depth": 4,
+      "text": "Mark the clear view from the stair. Then tilt and mark the ramp view."
+    },
+    {
+      "id": "h.lintel.cold.checked.1",
+      "objective": "lintel.cold.checked",
+      "depth": 1,
+      "text": "The board and the second reader help people in different ways."
+    },
+    {
+      "id": "h.lintel.cold.checked.2",
+      "objective": "lintel.cold.checked",
+      "depth": 2,
+      "text": "Use Pilar’s layout table after both turns."
+    },
+    {
+      "id": "h.lintel.cold.checked.3",
+      "objective": "lintel.cold.checked",
+      "depth": 3,
+      "text": "Choose a two-form sign that people can use directly or a reader who can answer at the ramp."
+    },
+    {
+      "id": "h.lintel.cold.checked.4",
+      "objective": "lintel.cold.checked",
+      "depth": 4,
+      "text": "Check the mat-side bench across the room or the reader’s help by the ramp rack."
+    },
+    {
+      "id": "h.lintel.voices.compare.1",
+      "objective": "lintel.voices.compare",
+      "depth": 1,
+      "text": "Knowing where a door goes tells you only part of what you need."
+    },
+    {
+      "id": "h.lintel.voices.compare.2",
+      "objective": "lintel.voices.compare",
+      "depth": 2,
+      "text": "Go to Glass Walk. Read the Sri Mariamman case and equip the Lintel Fold."
+    },
+    {
+      "id": "h.lintel.voices.compare.3",
+      "objective": "lintel.voices.compare",
+      "depth": 3,
+      "text": "Slide the public line into the open pocket at the route board."
+    },
+    {
+      "id": "h.lintel.voices.compare.4",
+      "objective": "lintel.voices.compare",
+      "depth": 4,
+      "text": "At Eren’s worker rack, keep Wren’s signed instruction in the other pocket. Check its job, person and time."
+    },
+    {
+      "id": "h.lintel.voices.checked.1",
+      "objective": "lintel.voices.checked",
+      "depth": 1,
+      "text": "The host can stay at the desk, or help with this one carry."
+    },
+    {
+      "id": "h.lintel.voices.checked.2",
+      "objective": "lintel.voices.checked",
+      "depth": 2,
+      "text": "Go to Eren’s mat table after both checks."
+    },
+    {
+      "id": "h.lintel.voices.checked.3",
+      "objective": "lintel.voices.checked",
+      "depth": 3,
+      "text": "Pick the public west passage, or ask for an escort. Only the signed escort opens the short service route."
+    },
+    {
+      "id": "h.lintel.voices.checked.4",
+      "objective": "lintel.voices.checked",
+      "depth": 4,
+      "text": "For the public way, lift the mat at the west turn and use the normal door. For the escort, use the worker door and give the slip back at the far bench."
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.lintel.cold",
+      "claimKind": "observation",
+      "text": "The two scripts sent visitors to one bench at one time. Pilar’s fold kept the shared direction visible as people came from different places."
+    },
+    {
+      "id": "j.lintel.voices",
+      "claimKind": "observation",
+      "text": "A visitor found the public bench. Eren’s authority followed a particular job and ended with it. Pilar can see both parts of the handover in the return receipt."
+    }
+  ],
+  "keepsakes": [
+    {
+      "id": "lintel-fold",
+      "name": "Lintel Fold",
+      "text": "Pilar’s hinged writing frame has an open strip for directions and a second pocket for a steward’s signed reply.",
+      "if": {
+        "all": [
+          {
+            "objective": "preserved.publish"
+          },
+          {
+            "card": "card.lintel.sejarah"
+          }
+        ]
+      },
+      "where": "Pilar’s reading rail in the Cold Store review room",
+      "use": "Turn both written forms at the review bench. In Glass Walk, separate a public route from the keeper’s signed instruction.",
+      "equip": {
+        "method": "Keep a usable direction and a checked permission in separate pockets",
+        "hint": "Use the review rail. Carry the checked method to Eren’s public board and worker rack.",
+        "art": "lintel.fold"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "HIS-LINTEL-01",
+      "title": "National Library Singapore: Sejarah Malayu and the Malay Annals",
+      "url": "https://biblioasia.nlb.gov.sg/all-sections/vol-11-issue-4-jan-mar-2016-sejarah-malayu-malay-annals/",
+      "locator": "National Library rare item B20025340E, RRARE 959.5 SEJ. The source explains Shellabear’s edition and separately discusses Leyden and Ibrahim.",
+      "supports": "The library describes the 1898 Roman-script Malay edition as based on Shellabear’s 1896 Jawi edition. Its account identifies Ibrahim, son of Kandu, as a Malay scribe who read and explained a Jawi copy to John Leyden for the separate English translation published in 1821.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-LINTEL-02",
+      "title": "Hindu Endowments Board: Sri Mariamman Temple",
+      "url": "https://heb.org.sg/sri-mariamman-temple/",
+      "locator": "Temple history on Naraina Pillai, the 1827 building and its role as a refuge.",
+      "supports": "The temple’s administering board describes Naraina Pillai’s role, the wood-and-attap structure on South Bridge Road in 1827 and its role as a refuge for newcomers during the colonial period.",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-LINTEL-03",
+      "title": "Singapore National Heritage Board: Sri Mariamman Temple",
+      "url": "https://www.roots.gov.sg/places/places-landing/Places/national-monuments/sri-mariamman-temple",
+      "locator": "First Hindu Temple, More Than a Place of Worship and Architecture and Furnishings.",
+      "supports": "The site record identifies an initial wood-and-attap structure by 1827, the oldest brick sections around 1843, and the replacement entrance tower in 1925. It describes the temple’s public history as a refuge for newcomers.",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.lintel.sejarah",
+      "title": "Sejarah Malayu, two scripts and a separate translation",
+      "text": "The National Library’s 1898 Sejarah Malayu prints Malay in Roman letters. Shellabear based it on his Jawi edition of 1896. A separate English translation by John Leyden was published in 1821. The library’s account names Ibrahim, son of Kandu, as the Malay scribe who helped Leyden read and understand a Jawi copy.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-LINTEL-01"
+      ],
+      "limits": "These publication dates belong to specific editions. Changing the way Malay is written and translating it into English are different kinds of work. The record names contributors and leaves particular readings to be checked in context."
+    },
+    {
+      "id": "card.lintel.temple",
+      "title": "Sri Mariamman Temple, its building and public history of care",
+      "text": "The Hindu Endowments Board identifies Naraina Pillai’s role and describes the wood-and-attap temple at South Bridge Road in 1827. Its public history records shelter for newly arrived Indian immigrants. The National Heritage Board gives separate dates for brick fabric and the later entrance tower.",
+      "claimKind": "observation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-LINTEL-02",
+        "HIS-LINTEL-03"
+      ],
+      "limits": "The building dates and public role come from specific custodial accounts. The public histories cannot authorize a visit, tell one family’s experience or set access rules for other Hindu places.",
+      "person": {
+        "name": "Naraina Pillai",
+        "life": "South Bridge Road temple built by 1827",
+        "place": "South Bridge Road, Singapore",
+        "era": "Early nineteenth century",
+        "continent": "Asia"
+      }
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-LINTEL-SEJARAH",
+      "name": "Sejarah Malayu, National Library Singapore B20025340E",
+      "art": "lintel.case-page",
+      "historicalLabel": "documented",
+      "dateText": "1898",
+      "dateKind": "Publication of the American Mission Press Roman-script Malay edition. The source describes a Jawi edition in 1896 and a separate English translation published in 1821.",
+      "summary": "The catalogue tracks the edition, its script and its date. The accompanying account keeps the Malay scribe Ibrahim’s help with the English translation separate from Shellabear’s printed edition.",
+      "sources": [
+        "HIS-LINTEL-01"
+      ],
+      "grantsCard": "card.lintel.sejarah",
+      "altText": "Original diagram of two separate closed book shapes leading to different catalogue tabs."
+    },
+    {
+      "id": "OBJ-LINTEL-MARIAMMAN",
+      "name": "Sri Mariamman Temple, South Bridge Road",
+      "art": "lintel.case-building",
+      "historicalLabel": "documented",
+      "dateText": "1827 building, later brick sections and entrance tower",
+      "dateKind": "The stewards name the first wood-and-attap building in 1827. The National Heritage Board dates the oldest brick sections to about 1843 and the replacement entrance tower to 1925.",
+      "summary": "The public account names Naraina Pillai and describes the temple’s role as a refuge for newcomers. Its building dates refer to separate stages of work.",
+      "sources": [
+        "HIS-LINTEL-02",
+        "HIS-LINTEL-03"
+      ],
+      "grantsCard": "card.lintel.temple",
+      "altText": "Original schematic of three generic building-material samples alongside numbered catalogue tabs."
+    }
+  ]
+}

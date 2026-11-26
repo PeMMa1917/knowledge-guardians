@@ -40,7 +40,7 @@ The game does not grade the player. It gives the same credit for every reasoned 
 | Provenance Thread | Follows an object back through records until the record stops. | Evidence, interpretation |
 | Forge and assay | Makes a schematic billet and compares it with an object. | Explanation, objectivity |
 | Carried perspectives | Equips one field tool in the Satchel. The tool can expose an observation, reading or route in another world. | Scope, methods and tools |
-| Adventure Diary | Remembers choices and open leads in the Guardian’s voice. Players can keep private notes and export a Word copy. | Reflection, self-management |
+| Adventure Diary | Remembers choices and open leads in the Guardian’s voice. Players can keep private notes, download a Word copy, or print a copy through the browser. | Reflection, self-management |
 
 ## Learning layer
 

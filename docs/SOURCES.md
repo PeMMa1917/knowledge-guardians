@@ -2,7 +2,7 @@
 
 The project owner's rule: **objects in the game are real, from history, specific, time-bound and clear.** Fictional things (Aethelgard, its people and the patterned blade for sale in Emberford) are labelled `fictional-world` in the game and never look like historical records.
 
-The data source of truth is `src/content/sources.json` (sources) and the exhibits and cards in the mission files. This page explains them for people. If you change one, change the other.
+The [content registry](../src/content/index.ts) gathers the shared source list and the recorded sources attached to individual missions. Keep this register and the in-game exhibits and evidence cards in agreement.
 
 Each source supports only a **narrow** claim. The "Supports" column says what that claim is. Do not use a source for a larger claim.
 
@@ -81,6 +81,10 @@ The game does not show museum photographs. Exhibits are original pixel art drawn
 
 Links can change. When you work on a mission, open each of its source links. If a link is dead, find the current record and update `url` and `accessed`. Do not change the claim to fit a new source without checking it.
 
+## Three Cases at the Bell, Emberford and Marl Fold
+
+HIS-DRAWER-01 identifies the 1889 University of Michigan copy of Joseph Bertrand’s `Calcul des probabilités`. The numbered three-box example distinguishes plausible boxes from equally probable openings. The game uses round and square tokens instead of medals. The forecast tally and its receiving procedure are fictional. [University of Michigan copy on Internet Archive](https://archive.org/details/calculdesprobab01bertgoog)
+
 ## At the Door Before the Bell, Nexus and Emberford
 
 - HIS-DOOR-01 identifies Elbridge S. Brooks’s 1894 civic book and its Capitol visit chapter. A picture and a story written for young readers make part of the institution legible. They leave the experience of other visitors open. The book was selected from the attached object deck and checked against a separately catalogued edition. [Harvard University copy on Internet Archive](https://archive.org/details/centurybookfory00revogoog)
@@ -122,6 +126,13 @@ The Cold Store is a fictional Guardian archive. Its displays use maps and schema
 
 HIS-BINAK-01 records Museums Victoria X 104841, a coiled grass-fibre binak by Wurundjeri maker Mikaela Rose Cottingham. The catalogue describes her learning at Bunjilaka. The heading and First Peoples fields say 2012, while the Date Made association says 2011. The display preserves the two fields. The pixel profile represents a generic paper model in the fictional support trial. [Museums Victoria, X 104841](https://collections.museumsvictoria.com.au/items/1915791)
 
+## A Door in Two Lines, Cold Store and Archive of Voices
+
+The two historical cases have separate places, publishers and purposes. Pilar’s writing rail, Eren’s mat and the worker door belong to the fictional setting. The display art shows case tabs and building materials.
+
+- HIS-LINTEL-01 gives the National Library’s 1898 Roman-script Malay edition of *Sejarah Malayu*, accession B20025340E, and traces it to Shellabear’s 1896 Jawi edition. The library separately credits Ibrahim, son of Kandu, with helping Leyden read and understand the Jawi copy used in his English translation, published in 1821. The connection gives specific people their part in a record that travelled. [National Library Board’s rare-edition account](https://biblioasia.nlb.gov.sg/all-sections/vol-11-issue-4-jan-mar-2016-sejarah-malayu-malay-annals/)
+- HIS-LINTEL-02 records Sri Mariamman Temple’s South Bridge Road building in 1827 and its public history as a place of refuge. HIS-LINTEL-03 gives separate dates for brick fabric and the later entrance tower. The stewards’ and heritage board’s published accounts give the dates and role of this place. A visitor’s permission remains a question for its own keepers. [Hindu Endowments Board temple history](https://heb.org.sg/sri-mariamman-temple/) · [National Heritage Board building record](https://www.roots.gov.sg/places/places-landing/Places/national-monuments/sri-mariamman-temple)
+
 ## The Departure Strip, Ferry Crossing and Bell Archive
 
 Ferry Crossing and the Bell Archive use an invented wick handoff and original diagrams of filing tabs. The play uses separate records about two historical maps. Neither set of historical map marks appears in the game.
@@ -152,6 +163,10 @@ HIS-CANOE-01 records Rra-Kalwanyimara, Australian National Maritime Museum objec
 
 Players keep the accounts with their own places, sources and reasons for welcome. The menders’ invitation and the Market’s tally boundary are fictional access decisions. The public accounts are summarized in plain language.
 
+## The Mark Beneath the Lip, Metalworks and Water Commons
+
+HIS-MET-RONTGEN-A606881 records Science Museum Group object A606881 as a photograph on paper under glass, catalogue year 1895 and maker unknown. The catalogue describes Röntgen’s exposure of his wife’s left hand on 22 December 1895 and the visible ring. It places the original radiograph at the Deutsches Museum in Munich. The game shows an original custody diagram. Corra’s fitting, shape plate and the Commons’ practice tests are fictional. [Science Museum Group, A606881](https://collection.sciencemuseumgroup.org.uk/objects/co134691/photograph-of-a-radiograph-of-hand-taken-by-wilhelm-conrad-rontgen-germany-1895)
+
 ## The Other Face of the Plate, Metalworks and Council of Inquiry
 
 Plate Eleven, its jig and the workshop loan are fictional. The two historical displays use original drawings of blank catalogue mounts.
@@ -172,6 +187,17 @@ The folio and its keepers are fictional. The historical exhibits use original il
 
 - HIS-ID-01 records Am.9941 as an Inka cotton khipu made in Peru in 1400–1532. The curator records that the khipu and a shell trumpet shared the earlier Christy number 9941. The record does not identify what these particular knots meant. [British Museum, Am.9941](https://www.britishmuseum.org/collection/object/E_Am-9941)
 - HIS-ID-02 identifies Oc.9941 as a pierced triton-shell trumpet from Mangaia with a fibre cord. The date, maker and occasions of use stay open. Both in-game drawings are original diagrams based on the collection descriptions. The receiving cases, number calls and porters belong to the fictional campaign. [British Museum, Oc.9941](https://www.britishmuseum.org/collection/object/E_Oc-9941)
+
+## Three Goods, Two Bells, Market of Measures and Emberford
+
+- HIS-BASKET-01 identifies the Smithsonian’s own 100 trillion Zimbabwe dollar note, 2015.0071.1. Its face records the Reserve Bank of Zimbabwe, Harare, the amount and the year 2008. The game describes what is printed and leaves the exact first-use date and local purchasing power for separate dated sources. The mount is an original diagram. The catalogue’s specimen identity stays with its own record. Lantern Day prices, co-op credit and the voucher are fictional. [Smithsonian National Museum of American History, 2015.0071.1](https://americanhistory.si.edu/collections/object/nmah_1694052)
+
+## The First Frame, House of Performance and Slate Harbour
+
+- HIS-FILM-01 records Apollo 11 frame AS11-40-5903, taken by Neil Armstrong on 20 July 1969. NASA identifies Edwin Aldrin by a leg of Eagle. The caption supplies the photographer and setting for that frame. [NASA Image and Video Library, AS11-40-5903](https://images.nasa.gov/details/AS11-40-5903) · [NASA catalogue metadata](https://images-api.nasa.gov/search?nasa_id=AS11-40-5903)
+- HIS-FILM-02 records PIA04413 as a Mars Exploration Rover artist’s concept dated 26 February 2003. The catalogue separately dates the rovers’ arrivals to January 2004. [NASA Image and Video Library, PIA04413](https://images.nasa.gov/details/PIA04413) · [NASA catalogue metadata](https://images-api.nasa.gov/search?nasa_id=PIA04413)
+
+The rehearsal frames and the harbour’s dated records are original fictional material. The NASA items contribute catalogue evidence about who made each image, its date and its role.
 
 ## Chapter 15: Council of Inquiry
 

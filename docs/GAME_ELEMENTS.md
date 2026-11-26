@@ -4,9 +4,9 @@ This tracker maps each numbered item in the supplied *Ultimate Universal RPG Com
 
 | Status | Meaning | Numbered items |
 | --- | --- | ---: |
-| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 103 |
-| ◐ Partial | A reachable analogue covers part of the idea, or operates in a narrower setting. The gap is stated. | 110 |
-| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 48 |
+| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 106 |
+| ◐ Partial | A reachable analogue covers part of the idea, or operates in a narrower setting. The gap is stated. | 109 |
+| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 46 |
 | ✗ Excluded | The classroom, privacy or nonviolent game rules exclude the original system. | 27 |
 
 The marks reflect inspection of authored maps, dialogue, interfaces and tests. A mark does not measure how often players find the activity, how long they spend, or what they learn. Each numbered row refers to the attachment’s item number. Source links point to playable evidence or the existing feature nearest to a planned adaptation.
@@ -23,15 +23,15 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | 4 | Layered world lore | ✓ | Letters, marks on objects and optional archives let players reconstruct who kept a record and why. | [story.json](../src/content/story.json), [letters.ts](../src/domain/letters.ts) |
 | 5 | Map revealed by walking | ✓ | Visited areas are recorded locally and shown in the folding map. | [fog.ts](../src/domain/fog.ts), [ui.ts](../src/ui/ui.ts) |
 | 6 | Compass and map annotations | ◐ | The compass points toward a nearby lead and opens the folding map. Player-defined waypoint tools are limited. | [WorldScene.ts](../src/scenes/WorldScene.ts), [ui.ts](../src/ui/ui.ts) |
-| 7 | Fast travel and rides | ◐ | Discovered portal stones provide fast travel. Ships and skiffs have story roles; there is no rideable mount system. | [nexus.ts](../src/maps/nexus.ts), [ferry.ts](../src/maps/ferry.ts), [talents.ts](../src/domain/talents.ts) |
-| 8 | Player-piloted transport | ○ | The Island compares ferry loads on a table. A playable crossing where the player operates the ferry remains open. | [island.ts](../src/maps/island.ts), [islandPlan.ts](../src/domain/islandPlan.ts) |
+| 7 | Fast travel and rides | ◐ | Discovered portal stones provide fast travel. The Island skiff provides a piloted crossing to the Quiet Margin. | [nexus.ts](../src/maps/nexus.ts), [islandSkiff.ts](../src/maps/islandSkiff.ts), [talents.ts](../src/domain/talents.ts) |
+| 8 | Player-piloted transport | ✓ | Players steer the Island skiff one marker at a time. Weather, cargo and the second crew station change handling. Two usable berths lead to different handovers. | [islandSkiff.ts](../src/domain/islandSkiff.ts), [islandSkiff.ts](../src/ui/islandSkiff.ts) |
 | 9 | Time and weather | ◐ | World lighting changes with time. The Observatory and Water Commons portray weather in authored cases; weather does not continuously change terrain or routines. | [WorldScene.ts](../src/scenes/WorldScene.ts), [observatory.ts](../src/maps/observatory.ts), [water.ts](../src/maps/water.ts) |
 | 10 | Resource gathering | ✓ | Collect ore, clay and reeds for tools and barter. | [craft.ts](../src/domain/craft.ts), [emberford.ts](../src/maps/emberford.ts) |
 | 11 | Secrets and optional discoveries | ✓ | Find hidden shelves and other secrets off the marked route. Keepsakes can uncover different evidence. | [nexus.ts](../src/maps/nexus.ts), [study.ts](../src/maps/study.ts) |
 | 12 | Scout from a vantage | ◐ | Scout reports support route trials in Emberford. Observatory sight marks and Star Pictures add fixed viewpoints; distant map pinning through a spyglass remains open. | [scoutRoutes.ts](../src/ui/scoutRoutes.ts), [observatory.ts](../src/maps/observatory.ts), [compendiumGames.ts](../src/domain/compendiumGames.ts) |
 | 13 | Active mapmaking | ✓ | Build a map at the Mapmaker's Table and revise survey edges in Cartographers' Sea. | [mapmaker.test.ts](../tests/mapmaker.test.ts), [cartographers-story.test.ts](../tests/cartographers-story.test.ts) |
-| 14 | Read different states of one place | ◐ | The Lens, layered plaque and keepsake views expose earlier states of a record. An entire room does not switch eras. | [restore.test.ts](../tests/restore.test.ts), [study.ts](../src/maps/study.ts) |
-| 15 | Terrain-specialist companions | ○ | Lorelings support observation. Routes assisted by habitat-specific movement or an animal guide remain open. | [lorelings.ts](../src/domain/lorelings.ts), [forest.ts](../src/maps/forest.ts) |
+| 14 | Read different states of one place | ✓ | Walk Elsbet’s loan annex and a model of the room before the flood. A surviving hinge and a broken drawing support different parts of the reconstruction. The player can make a present-day path usable. | [shelf-room.test.ts](../tests/shelf-room.test.ts), [shelfRoom.ts](../src/maps/shelfRoom.ts) |
+| 15 | Terrain-specialist companions | ✓ | Two Forest watches win the Stiltfrog’s company. It points out the dry seep rim on Shoal Shelf before the player checks the footing. The south planks reach a different view without a companion. | [stiltfrog.json](../src/content/stiltfrog.json), [forest.ts](../src/maps/forest.ts), [sea.ts](../src/maps/sea.ts) |
 | 16 | Lost-property retrieval | ◐ | Nima records a found gauge, the player checks its provenance in the Cold Store and returns with a receipt. This is one authored recovery. | [lost-gauge.test.ts](../tests/lost-gauge.test.ts), [nexus-lost-gauge.json](../src/content/nexus-lost-gauge.json) |
 
 ## II. Story, characters and companions
@@ -195,7 +195,7 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | # | Adapted idea | Status | Playable example or remaining work | Reference |
 | ---: | --- | :---: | --- | --- |
 | 138 | Arrange a small historical scene | ○ | Quarters can display acquired objects. A diorama to compare reconstructions and their assumptions remains open. | [quarters.ts](../src/domain/quarters.ts), [preserved-reconstruction.test.ts](../tests/preserved-reconstruction.test.ts) |
-| 139 | Photography and an album | ✓ | Take and caption observations in the local album. A caption distinguishes what the frame shows from the context it omits. | [album.ts](../src/domain/album.ts), [album.test.ts](../tests/album.test.ts) |
+| 139 | Photography and an album | ✓ | Take and caption observations in the local album. At the House, record from two positions and track which cues each frame contains. | [album.test.ts](../tests/album.test.ts), [film-cuts.test.ts](../tests/film-cuts.test.ts) |
 | 140 | Player-built levels | ✗ | In-game quests and layouts are authored. Classroom play has no level editor or student publishing tools. | [AGENTS.md](../AGENTS.md), [exhibition.ts](../src/domain/exhibition.ts) |
 | 141 | Music box and sound choice | ◐ | The music box lets players try and play notes. Custom room soundtracks are absent. | [musicbox.ts](../src/domain/musicbox.ts), [musicbox.test.ts](../tests/musicbox.test.ts) |
 | 142 | Dyes and heraldry | ✓ | Choose palette, crest and dyes. Appearances carry identity rather than stat bonuses. | [crest.ts](../src/domain/crest.ts), [appearance.ts](../src/domain/appearance.ts), [shop.ts](../src/domain/shop.ts) |
@@ -343,7 +343,7 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | 249 | Friendly contests | ◐ | Argument arenas and local games offer structured challenge. Sports fixtures and racing mounts are absent. | [showdown.ts](../src/domain/showdown.ts), [fieldgames.ts](../src/domain/fieldgames.ts) |
 | 250 | Small management models | ◐ | Markets, Water Commons and Civic compare different rules and allocations. A lasting tycoon loop remains open. | [market-story.test.ts](../tests/market-story.test.ts), [water-story.test.ts](../tests/water-story.test.ts), [civic-story.test.ts](../tests/civic-story.test.ts) |
 | 251 | Games inside the world | ✓ | Word Tiles, Three Doors and Lanterns and Bones are optional games held inside the story's locations. | [tiles.ts](../src/domain/tiles.ts), [fieldgames.ts](../src/domain/fieldgames.ts) |
-| 252 | Photography and field observation | ◐ | Players caption photos and record wildlife observations. A separate camera chase or safari route remains open. | [album.test.ts](../tests/album.test.ts), [forest-watch.test.ts](../tests/forest-watch.test.ts) |
+| 252 | Photography and field observation | ◐ | Players caption photos, record wildlife and compare two rehearsal camera positions. A moving wildlife assignment remains open. | [album.test.ts](../tests/album.test.ts), [forest-watch.test.ts](../tests/forest-watch.test.ts), [film-cuts.test.ts](../tests/film-cuts.test.ts) |
 | 253 | Persuasion and reading a room | ✓ | Showdowns, hearth choices and public placements respond to audience and wording. | [showdown.ts](../src/domain/showdown.ts), [hearth.ts](../src/domain/hearth.ts), [copies-margin.test.ts](../tests/copies-margin.test.ts) |
 | 254 | Compare prices and exchange terms | ◐ | Barter and the Market compare price bases, budget and uses. Auction play remains open without a stake. | [trade.ts](../src/domain/trade.ts), [market-story.test.ts](../tests/market-story.test.ts) |
 | 255 | Defend a public record | ○ | A later notice-board challenge could protect source and date through a succession of competing claims. Tactical combat is outside the adaptation. | [copies-story.test.ts](../tests/copies-story.test.ts), [showdown.ts](../src/domain/showdown.ts) |

@@ -17,10 +17,15 @@ interface MusicRequest {
 /** Share Phaser's context, unlock and focus handling with the rest of the game. */
 export class CampaignPlayback {
   private request?: MusicRequest;
+  private loadingFallback?: MusicRequest;
   private active?: Phaser.Sound.BaseSound;
   private readonly rendered: string[] = [];
 
-  constructor(private readonly manager: Phaser.Sound.BaseSoundManager, private readonly cache: Phaser.Cache.BaseCache) {
+  constructor(
+    private readonly manager: Phaser.Sound.BaseSoundManager,
+    private readonly cache: Phaser.Cache.BaseCache,
+    private readonly loadMusic: (key: string) => Promise<boolean>,
+  ) {
     manager.on(Phaser.Sound.Events.UNLOCKED, this.afterUnlock);
     manager.on(Phaser.Sound.Events.STOP_ALL, this.clear);
   }
@@ -35,8 +40,8 @@ export class CampaignPlayback {
         this.removeActive();
         this.request.announced = false;
       }
-      this.request.volume = level;
-      this.request.original = original;
+      if (this.request.original !== original) this.request = { ...this.request, volume: level, original };
+      else this.request.volume = level;
     } else {
       this.removeActive();
       this.request = { key, original, score, volume: level, announced: false };
@@ -58,16 +63,36 @@ export class CampaignPlayback {
 
     const web = this.manager instanceof Phaser.Sound.WebAudioSoundManager ? this.manager : null;
     const synth = score && web && web.context.state !== 'closed' ? web : null;
-    const fallbacks = [...new Set([original, 'music.archive', 'music.town', 'music.title'])].filter((cue) => this.cache.exists(cue));
+    const fallbacks = [...new Set([original, 'music.archive', 'music.town', 'music.title'])];
     if (volume <= 0 || this.manager.locked) {
-      this.announce(request, synth ? key : fallbacks[0] ?? original);
+      this.announce(request, synth ? key : original);
       return;
     }
     if (score && synth && this.prepare(key, score, synth.context) && this.start(key, volume)) {
       this.announce(request, key);
+    } else if (!(this.manager instanceof Phaser.Sound.NoAudioSoundManager)) {
+      void this.playFallback(request, fallbacks);
     } else {
-      const played = fallbacks.find((fallback) => this.start(fallback, volume));
-      this.announce(request, played ?? fallbacks[0] ?? original);
+      this.announce(request, original);
+    }
+  }
+
+  private async playFallback(request: MusicRequest, fallbacks: string[]): Promise<void> {
+    if (this.loadingFallback === request) return;
+    this.loadingFallback = request;
+    try {
+      for (const key of fallbacks) {
+        // A map or volume change can happen while a track is downloading.
+        const available = this.cache.exists(key) || await this.loadMusic(key).catch(() => false);
+        if (this.request !== request || request.volume <= 0 || this.manager.locked) return;
+        if (available && this.start(key, request.volume)) {
+          this.announce(request, key);
+          return;
+        }
+      }
+      this.announce(request, request.original);
+    } finally {
+      if (this.loadingFallback === request) this.loadingFallback = undefined;
     }
   }
 

@@ -40,11 +40,11 @@ The route audit in `tests/tok-coverage.test.ts` exercises game actions in indivi
 
 | Path | Minutes with a gap | Total minutes |
 |---|---:|---:|
-| Story | 160 | 504 |
-| Social | 356 | 663 |
-| Explorer | 604 | 1,274 |
-| Puzzler | 260 | 592 |
-| Cozy | 342 | 667 |
+| Story | 132 | 504 |
+| Social | 322 | 663 |
+| Explorer | 585 | 1,414 |
+| Puzzler | 232 | 592 |
+| Cozy | 314 | 667 |
 
 The longest clusters start after the Nexus opening across Chapters 1 and 2. Later longer detours can leave a dimension behind even when the chapter’s main story has covered it. Focus the next round on these stretches.
 

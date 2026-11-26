@@ -1,7 +1,9 @@
 /** Fictional coast. The weather records describe local game conditions. */
 import type { Condition } from '../domain/types';
+import { COAST_FILM_STANDS } from './filmCuts';
 import { sceneProp } from './sceneProps';
 import type { Interactable, MapDef } from './types';
+import { FOLD_DRAWER_CASES } from './drawerCases';
 
 function sign(id: string, x: number, y: number, label: string, art: string, text: string,
   options: { flag?: string; visibleIf?: Condition } = {}): Interactable {
@@ -54,6 +56,7 @@ export const OBSERVATORY_HARBOUR: MapDef = {
     { stamp: 'flowers-small', x: 4, y: 7 }, { stamp: 'flowers-white', x: 17, y: 4 },
   ],
   interactables: [
+    ...COAST_FILM_STANDS,
     { id: 'field-stars', kind: 'fieldgame', game: 'stars', x: 12, y: 9, w: 1, h: 1, label: 'Anwen\'s quadrant on the sea wall (Star Pictures)', art: 'coast.signal' },
     { id: 'cross-tide-engine', kind: 'fieldgame', game: 'cross-tide-engine', x: 16, y: 6, w: 1, h: 1, label: 'the brass tide engine on the harbour wall (a crossing)', art: 'coast.signal' },
     { id: 'coast-headland-path', kind: 'door', x: 13, y: 4, w: 1, h: 1, label: 'the steps up to the observatory',
@@ -203,6 +206,7 @@ export const OBSERVATORY_INLAND: MapDef = {
     { stamp: 'bush', x: 6, y: 13 }, { stamp: 'flowers-small', x: 18, y: 12 },
   ],
   interactables: [
+    ...FOLD_DRAWER_CASES,
     { id: 'coast-fold-return', kind: 'door', x: 23, y: 13, w: 1, h: 1, label: 'the track back to Headland Station',
       art: 'coast.waypost', to: { map: 'observatory.station', x: 4, y: 9 } },
     sign('coast-fold-stair-log', 5, 8, 'the porter’s dry-day tally', 'coast.runner',

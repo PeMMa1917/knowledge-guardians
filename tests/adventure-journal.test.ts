@@ -7,6 +7,7 @@ import { newPermanent } from '../src/domain/permanent';
 import { emptyPair, migrateCampaign, parsePair, serialisePair, writeCheckpoint, writeSuspend } from '../src/domain/saves';
 import { CAMPAIGN_SCHEMA, type CampaignState } from '../src/domain/types';
 import { adventureDocx } from '../src/ui/adventureDocx';
+import { adventureExportSnapshot } from '../src/ui/adventureExport';
 
 const pack = buildPack();
 const startedAt = '2026-11-26T06:00:00.000Z';
@@ -125,5 +126,30 @@ describe('Adventure diary', () => {
     const withoutNotes = strFromU8(unzipSync(adventureDocx(view, { ...options, includeNotes: false }))['word/document.xml']);
     expect(withoutNotes).not.toContain('Only me');
     expect(withoutNotes).not.toContain('My private question?');
+  });
+
+  it('shares a default-private export snapshot with both formats and only lists open personal questions on request', () => {
+    const d = adventure();
+    d.action({ type: 'VisitPlace', name: 'The Nexus: Archive Hall' });
+    d.action({ type: 'AddNote', text: 'Private directions.' }, later);
+    d.action({ type: 'AddNote', kind: 'question', text: 'Already answered?' }, later);
+    d.action({ type: 'AddNote', kind: 'question', text: 'Still to check?' }, later);
+    d.action({ type: 'SetDiaryQuestion', index: 1, resolved: true }, later);
+    const view = d.view();
+    const options = { placeName: () => 'The Nexus' };
+    const standard = adventureExportSnapshot(view, options);
+    expect(standard.title).toBe('Ren & Lin’s Adventure Journal');
+    expect(standard.entries[0].details).toBe('Experience · 2026-11-26 06:00 UTC · The Nexus');
+    expect(standard.quests).toEqual(view.quests);
+    expect(standard.notes).toEqual([]);
+    expect(standard.questions).toEqual([]);
+    const personal = adventureExportSnapshot(view, { ...options, includeNotes: true });
+    expect(personal.notes).toEqual([
+      { details: 'Note · 2026-11-26 06:12 UTC · The Nexus', text: 'Private directions.' },
+      { details: 'Resolved question · 2026-11-26 06:12 UTC · The Nexus', text: 'Already answered?' },
+      { details: 'Open question · 2026-11-26 06:12 UTC · The Nexus', text: 'Still to check?' },
+    ]);
+    expect(personal.questions).toEqual(['Still to check?']);
+    expect(adventureExportSnapshot(view, options)).toEqual(standard);
   });
 });

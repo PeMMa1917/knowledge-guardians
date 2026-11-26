@@ -208,6 +208,8 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 1 | A Second Handle | Self, Person | s | mixed | carry together, mend in private, set the case down | Kip recalls when to offer help or share a setback in Emberford |
 | 1 | Across the Missing Stroke | Person, Technology | s | mixed | bring the invitation to the front, put the editorial traces at the front, or leave both slips on the rail | A folio reaches Bea with the invitation, two readings and an address. |
 | 1 | At the Door Before the Bell | Person, Society | s | mixed | follow a porch picture and a separate permission slip, then combine them or serve both approaches | Suri finds the desk or has to ask another visitor. The fold changes a later lantern-house delivery. |
+| 1 and 4 | Three Cases at the Bell | Technology, Society | s | mixed | lift each possible drawer and choose a complete visiting copy or a quick checked dispatch at Marl Fold | The next weather crew sees all visits together or has a separate return date for missing checks. |
+| 1 and 2 | The Shelf That Became a Wall | Nature, Society | s | mixed | walk the current annex and a reconstruction, then reopen the west gap or keep a staffed desk | The repairer or the borrower walks farther. Marek uses the revision peg to separate his old cart practice from today's permission. |
 | 1 | The Repair Queue | Person, Society | m | mixed | pay for paired tickets and open the yard, carry a relay tray across the market, return the slate and keep appointments | Kip follows the handoff to its end. The Council can recall what the public kept and what stayed private. |
 | 1 | The Lantern Fair: Two Places to Stand | Society, Person | s | mixed | rehearse the ring or the trail from both stations, dispatch one tested plan, or leave the rehearsal open | The Island fair borrows the sketch and its limits. |
 | 1 | A Cup before the Bell | Person, Society | s | mixed | try both heating orders, serve the stock at once or in two rounds, or leave the kettle on its hook | Enna’s serving card changes who gets a cup and goes on to the Market. |
@@ -222,35 +224,44 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 3 | Where the Slip Takes You (opens at Seagrass Steps) | Society, Person | s | mixed | compare local receipts, hang a two-place slip or a current ticket, or let the practice desk wait | A caller reaches the right desk via the older receipt or a direct instruction with a pull-out reference. |
 | 3 | A Place for the Next Name | Person, Society | m | serious | put the source on the rail, offer a staffed check, leave the review open | The trainee gets private credit and the older display can accept new evidence |
 | 3 | The Fold in the Gauge (opens in the Nexus) | Person, Society | s | mixed | leave the owner line open, return the checked tool, or arrange its owner's loan | Nima returns, the tool works again, and the Nexus closes the found entry |
+| 3 | A Door in Two Lines | Person, Society | s | mixed | turn the writing rail, mount both forms, or give a reader a turn at the ramp | Pilar’s fold carries a separate place for a guide and a reply. |
 | 4 | The forecast: how sure to say it | Self, Society | M | serious | signal, runner | Vesper uses Ise's phrase |
 | 4 | The Tide Engine | Technology | m | mixed | reset (readings), post both, trust it | The furnace dial |
 | 4 | The Shadow on the Handover | Nature, Technology | s | serious | compare both lamps, then leave a board or send the runner with a traced notch | The screen opens the service arch and supports a new check at the Council. |
 | 4 | The Name on the Back | Person, Society | s | mixed | match the two receipts, link the two drawer tabs, send the borrower to a keeper, or come back later | A borrower finds the wick receipt from either slip. Tova gets the working index tab or the keeper’s request, and the strip helps file it against the right entry. |
+| 4 | When That View Was Taken | Person, Technology | s | mixed | lead with today’s direction or give the landmark and stair instruction separate places | A carrier takes the stone steps. The posted result shows how the carrier found the correct route and keeps the old frame dated. |
 | 5 | The biased count | Self, Nature | M | serious | chapter response | A sighting nobody explains |
 | 5 | The Geese on the Path | Nature | s | funny | watch, wade, turn back | Observer effect |
 | 5 | The Creek Keeps Its Own Time | Nature | m | mixed | check both banks and open the north rail, mark the sheltered cart bend, or let Ayla’s crew take the usual round | The next watch can check both banks. The Council files the crossing that the player actually used. |
 | 5 | The Edge of the Page | Nature, Society | s | mixed | bind the view limits or the crew handovers first and follow the resulting trail | Elian’s field notebook carries the method to Water Commons |
 | 5 | The Silent Slot | Technology, Nature | s | mixed | replay both runner orders, fit a source clip, place a reversible pending marker or handover ledger | Water Commons checks whether two messengers bring two sources |
+| 5 | A Corner for Two | Person, Nature | s | mixed | check the footing, pass the lead handle or rest both ends, then call the clear corner with Ayla | Both carries earn the Bridge Partner badge. Mina can ask another keeper to help in the City of Copies. |
+| 5 | Room at the Sill | Nature, Self | s | quiet | watch the reed hollow from two marked heights, then wait one stone back | The Stiltfrog keeps the sill free and can show the player where to look for an upper rim at Shoal Shelf. |
 | 6 | The material call | Technology, Self | M | serious | chapter response | Hesper's loyalty mission |
 | 6 | The Name on the Outside | Person, Society | s | mixed | keep the address and witness on one sleeve, send them to different desks, or leave the witness line open | The next carrier can deliver a record without taking over the fitter’s job. |
 | 6 | The Sleeves That Come Back | Society, Technology | s | mixed | reuse clean sleeves locally, sort at one stand, leave the counts open | The next shift finds four usable sleeves and two awaiting repair with a single count |
 | 6 | The Furnace Dial | Technology, Person | s | mixed | tin test, ask about colour, leave | The gate machine |
 | 6 | The Traveller's Quench (Hesper) | Self, Person | m | serious | sign, private, find Imre's family | Hesper's epilogue |
 | 6 | The Other Face of the Plate | Technology, Society | s | mixed | turn the sample on its hinge, check the paper copy, lend the plate or send two face prints | Bea’s frame lets the Council check the delivery. The next yard learner can handle the plate whenever it is home. |
+| 6 | The Mark Beneath the Lip | Technology, Person | s | serious | move a fitting from lamp to plate, turn it at the fixed stop, then send an outline or paired views | The Commons can mark a visible feature promptly or check its own hidden locator later. |
 | 7 | The missing Tuesday | Society | M | serious | chapter response | Lark: "The Nexus did the same" |
 | 7 | The Crowd at the Press | Society | m | serious | read the ledger, invite three, shut the doors | Osk keeps checking |
 | 7 | The Crooked Margin | Technology, Society | m | mixed | compare both proofs, then fold the full order, send linked strips, or let the crew call turns | Lark hints at an earlier missing limit. The Council receives the actual landing outcome. |
+| 7 | A Lane for the Frame | Person, Society | m | mixed | check the local turn, use the cart or signal a badge-backed partner, then help a reader | The cart carries the frame to a low stool and uses overflow space. The partner carry briefly closes a usable lane and leaves a higher frame with a loose-page service. |
 | 7 | The Back of the Bill: Lark’s Proof | Society, Technology | s | mixed | match the press proof and the signed division, or leave the proof at the press | The checked copy shows Hari what the player checked. |
 | 7 | Where the Welcome Goes: The Shared Bench | Society, Person | s | mixed | hang a low invitation, give the two lines to a host, or leave the bench as it is | The Market clerk can use the checked two-part welcome slip. |
 | 8 | The chart's blank | Nature, Society | M | serious | chapter response | Local names |
 | 8 | The Bell under the Water | Supernatural | m | mixed | listen, write in the margin, dismiss | A myth that carries a fact |
 | 8 | The Paper Landing | Supernatural, Technology | s | mixed | peg before turning, turn before pegging, or reset the cutouts | A clearly labelled fictional paper play supplies a reading method for the Cold Store’s separate practice receipts. |
+| 8 | The Rim above the Reeds | Nature, Person | s | quiet | verify the guide’s dry rim or check Sora’s staff before walking the south planks | The high frame shows the join. The low frame makes room for two and shows the sheltered run. Both leave the reeds alone. |
 | 9 | One Line Before the Bell (optional foyer Showdown) | Person, Society | M | serious | step away or reach one of five Showdown outcomes | Vesper's lead to Harrowmere opens after the Showdown |
 | 9 | Madame Quandary's Card | Fate, Self | s | funny | ask how often, fail on purpose, worry | Before the Curtain |
 | 9 | Before the Curtain | Self | s | mixed | speak, read cards, pass to a companion | Courage while unsure |
 | 9 | The Third Fold | Person, Technology | s | mixed | hold the open rail, agree a staffed folio, or keep the test at the table | The foyer keeps the late readers' check. A dated proof travels to the Island. |
+| 9 | The First Frame | Person, Technology | s | mixed | shoot from both positions, screen both orders, post one or leave it at the stand | Delwen goes to the gallery rail or the foyer route post. His marked strip opens a separate route decision at Slate Harbour. |
 | 9 | The Back of the Bill: The Usher’s Rack | Society, Person | s | mixed | hang the price at the door with a separate split, hang both at the bench, or let Hari wait | A visitor gets a checked answer and the next shift can use the rack. |
 | 10 | The weighed-in basket | Society, Person | M | serious | chapter response | Rook joins |
+| 10 | Three Goods, Two Bells | Society, Person | m | mixed | seal one basket for two dated quotes, reserve its contents or take reviewable credit, then collect at Emberford | Oduya holds an exact basket. Corvan offers a flexible fill with a later, capped review. Each counter keeps its own receipt. |
 | 10 | The Lady of Fair Measure | God (invented), Society | m | serious | ask the keeper, test beside it, step back | Harrowmere (a claim sold as sacred certainty) |
 | 10 | The Goat Who Was Certain | Nature, Person | s | funny | chase, follow the slips, let it eat | Memory fills gaps |
 | 10 | Where the Welcome Goes: The Resting Place | Society, Person | s | mixed | move the mat to the rail, keep it covered and give a guide the strip, or let the work wait | A guest can find a seat during the count and the clerk still protects the tally. |
@@ -261,6 +272,7 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 11 | Room in the Relief Basin | Nature, Technology | m | mixed | rehearse two pulse sizes, widen the rows or the lower channel, keep the other request | Ade sees the unmet request beside the installed Water Commons plan |
 | 11 | The Bell Behind the Reeds | Nature, Society | s | mixed | find a same-bell view or a dated handover, leave local notes or pair the readings | The crew can follow the notebook’s return track and check the next reading |
 | 11 | Three Messengers | Technology, Society | s | mixed | track the originating checks through two orders, post a bank signal or keep the council docket | The next crew can see the open check and the two earlier observers |
+| 11 | The Commons’ Reading Bench | Technology, Society | s | mixed | fit the west board’s outer arrow or align a reference and shift the east bench’s locator | A trainee checks the new mark. The other request stays on the waiting hook. |
 | 11 | Ise's confession | Self, Person | M | serious | quiet, open, herself | Letters 11 and 12; epilogue |
 | 11 | The Clean Well (Rook) | Self, Society | m | serious | public, quiet, the family | Rook's epilogue |
 | 12 | The dispatch rule | Technology, Society | M | serious | chapter response | Ise defends quiet correction |
@@ -271,6 +283,7 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 13 | The Second Take | Person, Society | m | serious | wind both takes, then keep the public passage at the desk or copy it to the waiting bench | Elsbet’s index lets the player show Vesper who each passage was for. |
 | 13 | Two Friends, One Walk | Person (friends) | s | funny | find the ledger, record both, leave | Both partly right |
 | 13 | The Lamp We Owe | God (invented promise), Society | m | mixed | staff the quay bench, bring the welcome indoors, hand over to the morning keeper | The Council's review of what a rule and a promise can each do |
+| 13 | The Bench at the Turning | Person, Society | s | mixed | read the guide and work instruction, then carry the mat along the public passage or accept Eren’s escort for that job | A visitor gets a dry seat. Pilar receives a receipt that keeps the public route and one authorised carry distinct. |
 | 13 | The Edge of the Record | Society | s | serious | open with Article 5 or Tecumseh’s challenge, then choose where to post the separately checked records | Civic readers keep a treaty declaration, a request and a decision tied to their own records |
 | 13 | The Famous Ancestor (Kip) | Self | m | mixed | proud, not, mixed | Kip's epilogue |
 | 14 | The island plan with Vesper | Person, Nature | M | mixed | chapter response | Vesper comes to the Council |
@@ -278,6 +291,7 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 14 | A Frame at the Dock | Society, Technology | s | mixed | install the clipped rail, agree staffed turns, or leave the trials on file | Carriers shape a new waiting cue or basket hook after the dock check. |
 | 14 | The Held Count | Person, Society | s | mixed | compare two movement phrases and a blocked sightline, stage one shared cue or a separate practice cue, or leave | Rella’s copy changes the rehearsal rail in the workshop without changing the delivery model. |
 | 14 | The Lantern Fair: An Answer at the Bend | Society, Nature | s | mixed | fit the welcome under the shelter, carry the answer along the landward trail, or leave the lamps on the rack | The loading crew keeps its turn and a place in the celebration. |
+| 14 | Joss’s Skiff | Nature, Society | m | mixed | rehearse the same load and crew at two bells, steer to the stair or step-free ramp, or return to the dock | Actual cargo reaches a different receiver. The course record keeps the weather and crew, and the south delivery uses the shared cart. |
 | 15 | The Council: what do the Guardians owe? | Self, Person, Society | M | serious | correct, recruit, expose, both (or "Not yet") | Afterwards |
 | 15 | The Handover Before the Bell | Person, Society | s | mixed | use an earlier proof or a fresh packet, then post the pair or staff the relay | The next hearing and the crew's epilogue |
 | 15 | Eleven at the Council | Technology, Society | s | mixed | check the delivered plate or its prints, then open the early rail or staff a fitting bench | The visitor takes a checked diagram or a fitting. The yard receives the loan back with its signed record. |

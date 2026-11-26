@@ -1,0 +1,25 @@
+.skiff-chart {
+  display: block;
+  width: min(100%, 32rem);
+  height: auto;
+  margin: .75rem auto;
+  border: 1px solid currentColor;
+  border-radius: .5rem;
+  image-rendering: pixelated;
+}
+
+.skiff-settings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: .5rem;
+}
+
+.skiff-settings label, .skiff-settings select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.skiff-console button, .skiff-settings select { min-height: 2.75rem; }
+.skiff-console details { margin-top: .75rem; }
+.skiff-console [hidden] { display: none; }

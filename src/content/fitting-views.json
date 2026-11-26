@@ -1,0 +1,896 @@
+{
+ "sources": [
+  {
+   "id": "HIS-MET-RONTGEN-A606881",
+   "title": "Science Museum Group Collection, Photograph of a radiograph of a hand, A606881",
+   "url": "https://collection.sciencemuseumgroup.org.uk/objects/co134691/photograph-of-a-radiograph-of-hand-taken-by-wilhelm-conrad-rontgen-germany-1895",
+   "locator": "A606881, description and Details",
+   "supports": "The catalogue lists a photograph on paper under glass, dated 1895. It describes Röntgen’s source exposure on 22 December 1895. The image shows his wife’s left hand with a ring. The original radiograph is in the Deutsches Museum. The catalogue lists the copy’s maker as unknown.",
+   "accessed": "2026-11-26"
+  }
+ ],
+ "exhibits": [
+  {
+   "id": "OBJ-MET-RONTGEN-A606881",
+   "name": "Photograph of a radiograph of a hand",
+   "art": "fitting-views.case",
+   "historicalLabel": "documented",
+   "dateText": "22 December 1895 (original exposure)",
+   "dateKind": "Date of the original exposure described by the catalogue. The copy has a catalogue year of 1895. Its making day is unstated.",
+   "summary": "Science Museum Group A606881 is a photograph on paper under glass. It preserves an image of the ring on the left hand of Wilhelm Conrad Röntgen’s wife. The original radiograph is held by the Deutsches Museum in Munich. The museum lists the copy’s maker as unknown.",
+   "sources": [
+    "HIS-MET-RONTGEN-A606881"
+   ],
+   "grantsCard": "card.fitting.rontgen-copy",
+   "altText": "Original schematic showing two frames with separate tabs. The filled frame represents the photograph under glass in the Science Museum Group record. The empty frame points to the original in Munich."
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.fitting.rontgen-copy",
+   "title": "The exposure and the copy",
+   "text": "This is a catalogue entry for a photograph on paper under glass. Röntgen made the exposure it records in Würzburg on 22 December 1895. The ring appears in the photograph. The original radiograph has a different custody record in Munich.",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-MET-RONTGEN-A606881"
+   ],
+   "limits": "The copy preserves image details such as the ring. Its day of making and maker are separate questions. A material check would need the original radiograph."
+  }
+ ],
+ "items": [
+  {
+   "id": "item.fitting-view-packet",
+   "historicalLabel": "fictional-world",
+   "name": "Corra’s fitting-view packet",
+   "art": "fitting-views.dispatch",
+   "description": "A runner pocket addressed to Omi’s teaching benches at the Old Weir. The work order names the view inside and the separate work still waiting in the yard."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH6-R05",
+   "world": "WORLD-07",
+   "title": "The Mark Beneath the Lip",
+   "knowledgeQuestion": "Which features survive when a tool changes the way we look?",
+   "stake": "The morning class needs an outer guide. The east trainees want a trace that lets them check a hidden mark.",
+   "available": {
+    "card": "card.fitting.rontgen-copy"
+   },
+   "objectives": [
+    {
+     "id": "fitting.views.compared",
+     "title": "Trace the surface, compare the known blocks, then turn the same practice fitting for a second view.",
+     "essential": false,
+     "visible": {
+      "card": "card.fitting.rontgen-copy"
+     },
+     "done": {
+      "all": [
+       {
+        "flag": "fitting.views.moved",
+        "eq": true
+       },
+       {
+        "flag": "fitting.views.reference",
+        "eq": true
+       },
+       {
+        "flag": "fitting.views.reading",
+        "eq": "side"
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "certainty",
+       "interpretation",
+       "explanation",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "subjects": [
+       "physics",
+       "design-tech",
+       "math-aa",
+       "history"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT",
+       "TEC",
+       "HIS"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-14"
+     ]
+    },
+    {
+     "id": "fitting.views.sent",
+     "title": "Pack one checked view for the waiting Commons crew.",
+     "essential": false,
+     "visible": {
+      "objective": "fitting.views.compared"
+     },
+     "done": {
+      "flagSet": "fitting.views.route"
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "power",
+       "perspective"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "ethics"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      },
+      "subjects": [
+       "design-tech",
+       "physics"
+      ],
+      "aoks": [
+       "NAT",
+       "TEC"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-SPK-01"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.fitting.views.sent"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH11-R05",
+   "world": "WORLD-12",
+   "title": "The Commons’ Reading Bench",
+   "knowledgeQuestion": "When can an earlier view guide a new check?",
+   "stake": "Each crew can use different evidence. Omi keeps a place for the request the first runner cannot fill.",
+   "available": {
+    "all": [
+     {
+      "objective": "water.arrival"
+     },
+     {
+      "item": "item.fitting-view-packet"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "fitting.views.checked",
+     "title": "Fit the teaching guide at the receiving bench. See what the trainee can do with it.",
+     "essential": false,
+     "visible": {
+      "item": "item.fitting-view-packet"
+     },
+     "done": {
+      "flag": "fitting.views.readback",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "explanation",
+       "responsibility",
+       "justification",
+       "perspective",
+       "values"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "ethics",
+       "perspectives"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "relational"
+      },
+      "subjects": [
+       "physics",
+       "design-tech",
+       "math-aa"
+      ],
+      "aoks": [
+       "NAT",
+       "TEC",
+       "MAT"
+      ],
+      "atl": [
+       "research",
+       "social",
+       "thinking"
+      ]
+     },
+     "skills": [
+      "SK-COL-05",
+      "SK-RSC-21"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.fitting.views.checked"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "fitting.views.lamp",
+   "speaker": "metal-inspector",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "Corra puts a soft practice fitting beneath a shaded lamp. “The museum photograph carries the ring in its image. Omi needs a copy that carries a feature his trainees can use.” You can see the fitting’s outer edge and a pale nick. The west group wants an outline for a teaching arrow. The east group wants to locate a hidden tab.",
+   "options": [
+    {
+     "text": "Trace the outer edge under the lamp. Slide the carrier over to the shape plate.",
+     "next": "fitting.views.moved",
+     "if": {
+      "all": [
+       {
+        "card": "card.fitting.rontgen-copy"
+       },
+       {
+        "not": {
+         "flagSet": "fitting.views.moved"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "fitting.views.moved",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the fitting under the lamp."
+    }
+   ]
+  },
+  {
+   "id": "fitting.views.moved",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The outline stays clipped at the lamp. The same fitting slides across on the carrier. The drawing shows the contour and nick under this light. A note leaves the position of the hidden tab open."
+  },
+  {
+   "id": "fitting.views.lamp-record",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The outer contour and pale nick remain on the sheet. The carrier has moved to the shape plate. The lamp trace describes the surface you could see."
+  },
+  {
+   "id": "fitting.views.reference",
+   "speaker": "metal-inspector",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The reference tray holds two blocks with the same outside shape. Both fit the same corner stop. One is empty. An opening in the second block lets you feel its known dense tab. The plate’s two windows are labelled with the blocks.",
+   "options": [
+    {
+     "text": "Fit both reference blocks in the marked stop. Compare the two windows.",
+     "next": "fitting.views.reference.checked",
+     "if": {
+      "all": [
+       {
+        "card": "card.fitting.rontgen-copy"
+       },
+       {
+        "not": {
+         "flagSet": "fitting.views.reference"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "fitting.views.reference",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the reference tray for now."
+    }
+   ]
+  },
+  {
+   "id": "fitting.views.reference.checked",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "Both outlines meet the same corner marks. The empty block leaves its window clear. The known tab leaves a small square in the other window. The check gives you a mark to recognise and one way to locate it within a flat view."
+  },
+  {
+   "id": "fitting.views.plate",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The fitting sits along the same stop as the two reference blocks. The first slip waits under the flat-view window.",
+   "options": [
+    {
+     "text": "Trace the fitting flat against the same two corner marks.",
+     "next": "fitting.views.face",
+     "if": {
+      "all": [
+       {
+        "flag": "fitting.views.moved",
+        "eq": true
+       },
+       {
+        "flag": "fitting.views.reference",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "fitting.views.reading"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "fitting.views.reading",
+       "value": "face"
+      }
+     ]
+    },
+    {
+     "text": "Leave the window blank. Start with the two known blocks on the nearby tray.",
+     "if": {
+      "not": {
+       "flagSet": "fitting.views.reference"
+      }
+     }
+    },
+    {
+     "text": "Leave the carrier here for a moment.",
+     "if": {
+      "flag": "fitting.views.reference",
+      "eq": true
+     }
+    }
+   ]
+  },
+  {
+   "id": "fitting.views.face",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The plate shows a small square like the known tab. In this flat view it lies under the broad middle mark. Two different depths would appear along the same line. The carrier has a turn stop for the side view."
+  },
+  {
+   "id": "fitting.views.turn",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The flat trace stays in a clip beside the carrier. The corner stop is fixed. The turn will lay the same fitting on its side.",
+   "options": [
+    {
+     "text": "Turn the carrier to the side stop without moving the base. Trace this second view.",
+     "next": "fitting.views.side-record",
+     "if": {
+      "all": [
+       {
+        "flag": "fitting.views.reference",
+        "eq": true
+       },
+       {
+        "flag": "fitting.views.reading",
+        "eq": "face"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "fitting.views.reading",
+       "value": "side"
+      }
+     ]
+    },
+    {
+     "text": "Keep the flat view in its clip."
+    }
+   ]
+  },
+  {
+   "id": "fitting.views.side-record",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The square is still on the same cross line. From the side it appears close to the shallow lip. The two views narrow where the tab can lie in this fitting. The outer nick stays on its own surface sheet."
+  },
+  {
+   "id": "fitting.views.dispatch",
+   "speaker": "metal-inspector",
+   "historicalLabel": "fictional-world",
+   "claimKind": "value",
+   "text": "I have one pocket to fill before the runner goes. An outer outline can reach the west teaching board in time for its morning class. The east bench can take a paired plan to check the hidden tab on its own fitting in the afternoon. Its first rehearsal will have to wait for the reference check.",
+   "options": [
+    {
+     "text": "Roll the surface outline for the west board. Label the hidden tab as unchecked there.",
+     "next": "fitting.views.kept.surface",
+     "if": {
+      "all": [
+       {
+        "objective": "fitting.views.compared"
+       },
+       {
+        "not": {
+         "flagSet": "fitting.views.route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "fitting.views.route",
+       "value": "surface"
+      },
+      {
+       "giveItem": "item.fitting-view-packet"
+      }
+     ]
+    },
+    {
+     "text": "Clip both traces and the reference together for the east bench’s paced check.",
+     "next": "fitting.views.kept.pair",
+     "if": {
+      "all": [
+       {
+        "objective": "fitting.views.compared"
+       },
+       {
+        "not": {
+         "flagSet": "fitting.views.route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "fitting.views.route",
+       "value": "pair"
+      },
+      {
+       "giveItem": "item.fitting-view-packet"
+      }
+     ]
+    },
+    {
+     "text": "Keep both work orders by the runner pocket."
+    }
+   ]
+  },
+  {
+   "id": "fitting.views.kept.surface",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "value",
+   "text": "The Commons runner takes the west board’s outline and the place where its trace began. The paired traces and the reference stay in Corra’s yard. The east bench’s order remains on the waiting hook."
+  },
+  {
+   "id": "fitting.views.kept.pair",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "value",
+   "text": "The runner takes the two traces and the reference for the east bench. The flat surface outline stays here for the next west-board run. The paired sheets describe this fitting at the two checked stops."
+  },
+  {
+   "id": "fitting.views.water.repeat",
+   "speaker": "water-keeper",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "Corra’s printed square sits just under a tick. Omi’s first trial at the Commons’ usual notch put the square one tick farther to the side. The known block can line up with Corra’s tick before a reading of the local fitting.",
+   "options": [
+    {
+     "text": "Seat the reference against the matching tick. Clip a starting mark to our plate.",
+     "next": "fitting.views.water.reference",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "water.arrival"
+         },
+         {
+          "item": "item.fitting-view-packet"
+         },
+         {
+          "flag": "fitting.views.route",
+          "eq": "pair"
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "fitting.views.repeated"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "fitting.views.repeated",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the local starting mark in view.",
+     "if": {
+      "flag": "fitting.views.repeated",
+      "eq": true
+     }
+    },
+    {
+     "text": "Leave the tray at the upper crossing.",
+     "if": {
+      "not": {
+       "flagSet": "fitting.views.repeated"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "fitting.views.water.reference",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "With the tick aligned, the known block shows the same square at the same edge. Omi holds the local start where the next trainee can repeat it. The paired print can now guide a new reading."
+  },
+  {
+   "id": "fitting.views.water.fit.surface",
+   "speaker": "water-keeper",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The west teaching board has a loose arrow. A trainee has started to put it over the hidden-tab line. The outline you carried shows the outer nick and the edge of the mouth. That is enough to guide the detachable arrow where the class will see it.",
+   "options": [
+    {
+     "text": "Hook the arrow over the visible nick. Clip the surface-only label underneath.",
+     "next": "fitting.views.water.fitted.surface",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "water.arrival"
+         },
+         {
+          "item": "item.fitting-view-packet"
+         },
+         {
+          "flag": "fitting.views.route",
+          "eq": "surface"
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "fitting.views.fitted"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "fitting.views.fitted",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the arrow loose for now."
+    }
+   ]
+  },
+  {
+   "id": "fitting.views.water.fitted.surface",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The west board now points along the outer edge. The class can start with an arrow they can see. The east bench’s tab check stays on the waiting hook."
+  },
+  {
+   "id": "fitting.views.water.fit.pair",
+   "speaker": "water-keeper",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The reference mark is in place. The local practice fitting gives a square like Corra’s in the flat view. The side view puts that square higher on this fitting. The red locator still sits at the height of the yard sample.",
+   "options": [
+    {
+     "text": "Follow the new side mark. Shift the teaching locator up on its own frame.",
+     "next": "fitting.views.water.fitted.pair",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "water.arrival"
+         },
+         {
+          "item": "item.fitting-view-packet"
+         },
+         {
+          "flag": "fitting.views.route",
+          "eq": "pair"
+         }
+        ]
+       },
+       {
+        "flag": "fitting.views.repeated",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "fitting.views.fitted"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "fitting.views.fitted",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Give the east bench time to hold both traces."
+    }
+   ]
+  },
+  {
+   "id": "fitting.views.water.fitted.pair",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The red locator moves to the local mark on the cutaway. The trainee keeps the yard height clipped beside the local height. The west board still waits for its own outline."
+  },
+  {
+   "id": "fitting.views.water.use.surface",
+   "speaker": "water-keeper",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The trainee follows the new arrow round the outer lip and sets the removable sleeve down at the nick. She points to the empty space where the cutaway would go.",
+   "options": [
+    {
+     "text": "Clip her checked surface trace to the board. Leave the hidden check on the waiting hook.",
+     "next": "fitting.views.water.checked.surface",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "water.arrival"
+         },
+         {
+          "item": "item.fitting-view-packet"
+         },
+         {
+          "flag": "fitting.views.route",
+          "eq": "surface"
+         }
+        ]
+       },
+       {
+        "flag": "fitting.views.fitted",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "fitting.views.readback"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "fitting.views.readback",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let the trainee look again."
+    }
+   ]
+  },
+  {
+   "id": "fitting.views.water.checked.surface",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "text": "The west class uses the arrow at the morning board. The signed note names the outer edge and the visible nick. The unfilled pocket for the east bench still holds its separate request."
+  },
+  {
+   "id": "fitting.views.water.use.pair",
+   "speaker": "water-keeper",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "text": "The trainee sets the fitting in the aligned frame. She matches the square in the flat view, turns to the side and finds the local locator. She leaves the old height in its own column.",
+   "options": [
+    {
+     "text": "Leave the local height beside Corra’s comparison. Keep the west arrow request open.",
+     "next": "fitting.views.water.checked.pair",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "water.arrival"
+         },
+         {
+          "item": "item.fitting-view-packet"
+         },
+         {
+          "flag": "fitting.views.route",
+          "eq": "pair"
+         }
+        ]
+       },
+       {
+        "flag": "fitting.views.fitted",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "fitting.views.readback"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "fitting.views.readback",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Let the trainee spend more time with the frame."
+    }
+   ]
+  },
+  {
+   "id": "fitting.views.water.checked.pair",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "text": "The east trainees use the repeated view in the afternoon. The signed record distinguishes the higher local mark from the yard’s low one. The empty west-arrow packet waits for the next runner."
+  }
+ ],
+ "hints": [
+  {
+   "id": "hint.fitting.views.compared.1",
+   "objective": "fitting.views.compared",
+   "depth": 1,
+   "text": "Find the photograph’s museum record in the Trade Hall. Corra’s practice fitting is in the Sample Yard."
+  },
+  {
+   "id": "hint.fitting.views.compared.2",
+   "objective": "fitting.views.compared",
+   "depth": 2,
+   "text": "The lamp can show the surface. Use the two known blocks before you read the flat plate."
+  },
+  {
+   "id": "hint.fitting.views.compared.3",
+   "objective": "fitting.views.compared",
+   "depth": 3,
+   "text": "A square can appear in the same place in one view from more than one depth. The carrier has a side stop."
+  },
+  {
+   "id": "hint.fitting.views.compared.4",
+   "objective": "fitting.views.compared",
+   "depth": 4,
+   "text": "Trace at the lamp, slide the carrier over, try both known blocks, and read the flat view. Return to the plate to turn the same carrier."
+  },
+  {
+   "id": "hint.fitting.views.sent.1",
+   "objective": "fitting.views.sent",
+   "depth": 1,
+   "text": "The carrier pocket is near the southeast edge of the Sample Yard."
+  },
+  {
+   "id": "hint.fitting.views.sent.2",
+   "objective": "fitting.views.sent",
+   "depth": 2,
+   "text": "The west board can use the outer outline. The east bench needs the reference and both trace views."
+  },
+  {
+   "id": "hint.fitting.views.sent.3",
+   "objective": "fitting.views.sent",
+   "depth": 3,
+   "text": "Choose which request the next runner can carry. The other order will stay open."
+  },
+  {
+   "id": "hint.fitting.views.sent.4",
+   "objective": "fitting.views.sent",
+   "depth": 4,
+   "text": "Use the dispatch cradle below the plate to roll the outline or clip both traces into the runner’s pocket."
+  },
+  {
+   "id": "hint.fitting.views.checked.1",
+   "objective": "fitting.views.checked",
+   "depth": 1,
+   "text": "The packet goes to Omi’s teaching benches at the Old Weir in Water Commons."
+  },
+  {
+   "id": "hint.fitting.views.checked.2",
+   "objective": "fitting.views.checked",
+   "depth": 2,
+   "text": "An outline goes to the west board. The paired packet has a reference rack across the bridge."
+  },
+  {
+   "id": "hint.fitting.views.checked.3",
+   "objective": "fitting.views.checked",
+   "depth": 3,
+   "text": "For the paired packet, align the reference before reading the fitting. The west arrow follows the visible nick."
+  },
+  {
+   "id": "hint.fitting.views.checked.4",
+   "objective": "fitting.views.checked",
+   "depth": 4,
+   "text": "Fit the guide at its receiving bench. Open the same prop again to leave the trainee’s checked record."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.fitting.views.sent",
+   "kind": "quest",
+   "title": "The Mark Beneath the Lip",
+   "text": "I moved the same fitting from the lamp to the plate. I sent the Commons the view its first crew could use and kept the other work order in the yard."
+  },
+  {
+   "id": "j.fitting.views.checked",
+   "kind": "quest",
+   "title": "The Commons’ Reading Bench",
+   "text": "I watched a trainee use the teaching guide in the place it was meant to help. Our checked slip kept that job separate from the request still on the hook."
+  }
+ ]
+}

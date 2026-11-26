@@ -6,7 +6,12 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
-Fifteen chapters and the post-Council return are playable. A clean install, 852 tests, production build and 42-file asset check passed. Chromium rendered and walked all 52 maps in the previous checkpoint. It also exercised both first-bench endings, all three rotating Handover Room cases, the two Market/Council catalogue handovers, and the new routes below. Earlier chapter progress and positioning were staged in several checks. The thirty-minute audit uses author estimates. [Browser checks](docs/BROWSER_CHECKS.md)
+Fifteen chapters and the post-Council return are playable. A clean install, 900 tests, production build and 42-file asset check passed. Chromium rendered and walked all 54 maps in this checkpoint and exercised the routes below. Earlier chapter progress and positioning were staged in several individual branch checks. The thirty-minute audit uses author estimates. [Browser checks](docs/BROWSER_CHECKS.md) · [Playtest priorities](docs/PLAYTEST_PRIORITIES.md)
+
+- In the first chapter, Hesper now leaves a different Nexus follow-up after agreeing to visit. The loan annex offers two walkable states and a real change to the present path. Dov’s six drawers help a later Coast courier account for missing visits. Idris now stands clear of Kip’s required post at the south portal.
+- Joss’s skiff makes weather, cargo and a second crew member affect steering. The Forest Bridge Partner title can call a second City keeper, while the cart keeps a different passage open. A Stiltfrog can guide a player to a checked upper rim. A local tide staff still leads to a lower view.
+- Players recut the same scene through two cameras, compare a surface view with a second reading of a fitting, carry a dated market basket or credit to the right counter, and check whether a route guide includes permission for a particular delivery.
+- The Adventure Diary exports Word and supports printing to PDF with optional private writing. The camera handles a resize once after long travel. The teacher page loads its smaller reporting pack, and the game loads older music only on browsers that need it.
 
 - At the Door Before the Bell connects two specific historical books to a fictional choice about porch directions and permission. Both portable folds can change a later Emberford delivery.
 - The Ferry’s kettle compares the same stock in two heating orders. Its checked card changes how sellers track delivered and remaining stock at the Market.

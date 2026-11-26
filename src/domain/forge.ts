@@ -87,7 +87,7 @@ export function describeSection(f: ForgeState): string {
 export function compareWithBlade(f: ForgeState): { match: boolean; card: string; line: string } {
   if (!f.cut) throw new Error('Cut a billet first, then bring the section to the assay table.');
   if (f.route === 'pattern') {
-    return { match: true, card: 'card.forge-pattern', line: 'Side by side, the blade and your billet show the same thing: light and dark layers that follow the folds, with thin weld lines. The blade was made by welding layers.' };
+    return { match: true, card: 'card.forge-pattern', line: 'Side by side, the blade and your billet show the same thing: light and dark layers that follow the folds, with thin weld lines. That is evidence for welded layers. The cross-section cannot date the blade or name its workshop.' };
   }
   return { match: false, card: 'card.forge-crucible', line: 'Side by side, they differ. The blade shows welded layers that follow folds. Your crucible cake shows soft bands with no welds. A watery pattern alone cannot tell you which route made a blade.' };
 }

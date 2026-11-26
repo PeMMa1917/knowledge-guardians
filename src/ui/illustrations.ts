@@ -276,6 +276,85 @@ DRAW['moth.0'] = [12, 8, (g) => moth(g, 0)];
 DRAW['moth.1'] = [12, 8, (g) => moth(g, 1)];
 DRAW['moth.big'] = [48, 32, (g) => moth(g, 0, 0, 0, 4)];
 
+function stiltfrog(g: Ctx, x: number, y: number, unit = 1) {
+  const block = (colour: string, dx: number, dy: number, w: number, h: number) =>
+    R(g, colour, x + dx * unit, y + dy * unit, w * unit, h * unit);
+  block('#33544a', 4, 5, 8, 4);
+  block('#46745b', 2, 7, 11, 3);
+  block('#598965', 5, 4, 7, 4);
+  block('#86b476', 5, 2, 3, 3);
+  block('#86b476', 10, 2, 3, 3);
+  block('#d8c477', 6, 3, 2, 2);
+  block('#d8c477', 10, 3, 2, 2);
+  block('#243645', 7, 3, 1, 1);
+  block('#243645', 11, 3, 1, 1);
+  block('#a1be7b', 7, 7, 5, 1);
+  block('#71945d', 1, 9, 5, 1);
+  block('#71945d', 11, 9, 4, 1);
+}
+
+function reedHollow(g: Ctx, high: boolean, checked = false) {
+  R(g, '#333a49', 3, 3, 26, 18); R(g, '#633f34', 4, 4, 24, 16);
+  R(g, '#9a6a4d', 5, 4, 22, 2); R(g, '#e4a774', 6, 4, 20);
+  R(g, '#8ea989', 7, 7, 18, 11); R(g, '#79968c', 7, 15, 18, 3);
+  R(g, '#374f55', 8, 15, 16, 2); R(g, '#739fa3', 8, 16, 13);
+  R(g, '#527762', 12, 11, 1, 5); R(g, '#527762', 15, 10, 1, 5);
+  R(g, '#527762', 19, 12, 1, 4); R(g, '#b7c98d', 13, 11, 1, 4);
+  if (high) {
+    R(g, '#e1d1ab', 7, 9, 10, 2); R(g, '#555e63', 17, 10, 7, 2);
+    R(g, '#395458', 7, 15, 16, 2);
+  } else {
+    R(g, '#e1d1ab', 9, 14, 10, 2);
+    R(g, '#466457', 7, 7, 18, 3);
+  }
+  if (checked) {
+    R(g, '#f2cd85', 5, 13, 2, 5); R(g, '#f2cd85', 25, 13, 2, 5);
+  }
+}
+
+function dryRim(g: Ctx, lit: boolean) {
+  R(g, '#49777d', 1, 17, 22, 3); R(g, '#7ea6a7', 3, 17, 16);
+  R(g, '#526269', 1, 13, 7, 4); R(g, '#86908a', 2, 13, 6, 1);
+  R(g, '#526269', 7, 12, 8, 4); R(g, '#86908a', 8, 12, 7, 1);
+  R(g, '#526269', 14, 10, 9, 5); R(g, '#86908a', 15, 10, 8, 1);
+  if (lit) {
+    R(g, '#eed193', 4, 11, 3, 2); R(g, '#eed193', 18, 8, 3, 2);
+  } else {
+    for (const x of [5, 9, 13, 19]) R(g, '#57745a', x, 11, 1, 6);
+  }
+}
+
+function seepStaff(g: Ctx, checked: boolean) {
+  R(g, '#555652', 4, 19, 15, 3); R(g, '#809c8d', 5, 19, 14);
+  R(g, '#5e443d', 10, 4, 4, 16); R(g, '#b88a60', 11, 5, 2, 14);
+  for (const y of [6, 9, 12]) R(g, '#efe1b3', 12, y, 3);
+  R(g, '#75bdcb', 7, 15, 10, 2);
+  if (checked) R(g, '#e7c977', 16, 11, 3, 3);
+}
+
+DRAW['stiltfrog.pet'] = [16, 12, (g) => stiltfrog(g, 0, 0)];
+DRAW['stiltfrog.portrait'] = [48, 32, (g) => {
+  R(g, '#36585c', 0, 0, 48, 32);
+  R(g, '#638483', 3, 23, 41, 5); R(g, '#89a29b', 9, 23, 25, 2);
+  stiltfrog(g, 8, 5, 2);
+}];
+DRAW['stiltfrog.window-low'] = [32, 24, (g) => reedHollow(g, false)];
+DRAW['stiltfrog.window-high'] = [32, 24, (g) => reedHollow(g, true)];
+DRAW['stiltfrog.sight-lower'] = [32, 24, (g) => reedHollow(g, false, true)];
+DRAW['stiltfrog.sight-upper'] = [32, 24, (g) => reedHollow(g, true, true)];
+DRAW['stiltfrog.rim-hidden'] = [24, 20, (g) => dryRim(g, false)];
+DRAW['stiltfrog.rim'] = [24, 20, (g) => dryRim(g, true)];
+DRAW['stiltfrog.tide-staff'] = [24, 24, (g) => seepStaff(g, false)];
+DRAW['stiltfrog.staff-checked'] = [24, 24, (g) => seepStaff(g, true)];
+DRAW['stiltfrog.seat'] = [24, 24, (g) => {
+  R(g, '#435b59', 2, 16, 20, 4); R(g, '#99a287', 3, 14, 18, 4);
+  R(g, '#c1c29a', 5, 14, 8); R(g, '#648e65', 19, 8, 1, 7);
+}];
+DRAW['stiltfrog.track'] = [24, 24, (g) => {
+  R(g, '#435b59', 2, 16, 20, 4); R(g, '#99a287', 3, 14, 18, 4);
+  stiltfrog(g, 4, 5);
+}];
+
 // The Timeline Door (original art): brass plates in a stone frame; open, a warm reading niche.
 DRAW['timeline-door'] = [16, 24, (g) => {
   R(g, '#2a2440', 0, 2, 16, 22); R(g, '#6e6a86', 1, 3, 14, 21); R(g, '#8a6a2a', 3, 5, 10, 19); R(g, '#c9a24a', 4, 6, 8, 17);
@@ -770,6 +849,73 @@ for (const set of [false, true]) {
   }];
 }
 
+// Original fictional writing guides and catalogue material samples.
+for (const position of ['fold', 'stairs', 'ramp']) {
+  DRAW[`lintel.${position}`] = [24, 24, (g) => {
+    pedestal(g, 2, 15, 20);
+    R(g, '#67504f', 2, 5, 20, 9);
+    paper(g, 4, 6, 16, 7);
+    const upper = position === 'stairs';
+    R(g, '#85717a', 3, 10, 18, 1);
+    R(g, '#cb8668', 5, upper ? 5 : 11, 14, 2);
+    R(g, '#6fa99e', 4, upper ? 13 : 6, 15, 2);
+    R(g, '#6a4d47', 3, 8, 1, 5);
+    if (position === 'fold') R(g, '#b59767', 10, 5, 4, 8);
+  }];
+}
+for (const open of [false, true]) {
+  DRAW[open ? 'lintel.door.open' : 'lintel.door'] = [28, 30, (g) => {
+    R(g, '#353544', 4, 3, 20, 25);
+    R(g, '#a799a1', 5, 5, 18, 2);
+    R(g, '#b5a4a9', 5, 7, 2, 20);
+    R(g, '#8f8290', 21, 7, 2, 20);
+    R(g, open ? '#9d885c' : '#635466', 8, 8, 12, 18);
+    R(g, open ? '#e5cc91' : '#775b67', 9, 8, 10, 15);
+    if (open) R(g, '#a2acab', 8, 24, 12, 2);
+    else R(g, '#d5ad79', 17, 15, 2, 2);
+    R(g, '#c8b7ac', 3, 27, 22, 2);
+  }];
+}
+for (const building of [false, true]) {
+  const key = building ? 'lintel.case-building' : 'lintel.case-page';
+  DRAW[key] = [24, 24, (g) => {
+    pedestal(g, 2, 15, 20);
+    if (building) {
+      R(g, '#9c7859', 3, 8, 6, 6);
+      R(g, '#bd9f6f', 9, 6, 6, 8);
+      R(g, '#a87366', 15, 4, 6, 10);
+    } else {
+      paper(g, 3, 5, 8, 8);
+      paper(g, 13, 5, 8, 8);
+      R(g, '#769b99', 4, 6, 6, 2);
+      R(g, '#9d786a', 14, 6, 6, 2);
+    }
+  }];
+  DRAW[`big.${key}`] = [96, 64, (g) => {
+    R(g, '#34313d', 0, 0, 96, 64);
+    R(g, '#9c8387', 4, 8, 88, 47);
+    if (building) {
+      R(g, '#88634d', 10, 29, 23, 15);
+      R(g, '#be9a73', 11, 31, 20, 3);
+      R(g, '#c19e61', 36, 20, 23, 24);
+      for (const x of [38, 42, 46, 50, 54]) R(g, '#dfba7b', x, 23, 1, 19);
+      R(g, '#a6645b', 63, 15, 23, 29);
+      R(g, '#df9980', 64, 23, 21, 2);
+      R(g, '#df9980', 64, 33, 21, 2);
+      R(g, '#d3ad83', 9, 48, 79, 4);
+    } else {
+      R(g, '#4c6264', 13, 14, 30, 36);
+      R(g, '#755d59', 53, 14, 30, 36);
+      paper(g, 16, 15, 24, 31);
+      paper(g, 56, 15, 24, 31);
+      R(g, '#79a7a0', 20, 20, 14, 4);
+      R(g, '#b38a74', 60, 20, 14, 4);
+      R(g, '#cba871', 23, 34, 18, 10);
+      R(g, '#cba871', 59, 36, 18, 10);
+    }
+  }];
+}
+
 // Original archive cards and a fictional ferry kit. The catalogue card shows no historical map marks.
 DRAW['departure.catalogue'] = [24, 24, (g) => {
   pedestal(g, 2, 15, 20);
@@ -1177,6 +1323,50 @@ DRAW['nexus.handle-mended'] = [24, 24, (g) => handleCase(g, 'mended', false)];
 DRAW['nexus.handle-paired-ready'] = [24, 24, (g) => handleCase(g, 'paired', true)];
 DRAW['nexus.handle-mended-ready'] = [24, 24, (g) => handleCase(g, 'mended', true)];
 
+// The loan frame has handles at both ends and rests in real places between moves.
+function carriedLoanFrame(g: Ctx, rest: 'trestle' | 'held' | 'cart' | 'parked' | 'low' | 'upper') {
+  const top = rest === 'upper' ? 2 : rest === 'low' ? 9 : 6;
+  if (rest === 'cart' || rest === 'parked') {
+    R(g, '#3a3543', 4, 18, 23, 2);
+    R(g, '#92543e', 3, 16, 23, 2); R(g, '#d5895b', 3, 16, 23);
+    for (const wheel of [7, 20]) {
+      R(g, '#353544', wheel, 18, 4, 4); R(g, '#aaa594', wheel + 1, 19, 2, 2);
+    }
+    if (rest === 'parked') {
+      R(g, '#806b53', 8, 12, 5, 4); R(g, '#d4ae70', 8, 12, 5);
+      R(g, '#806b53', 16, 13, 5, 3); R(g, '#d4ae70', 16, 13, 5);
+      return;
+    }
+  } else if (rest === 'held') {
+    R(g, '#5e4a49', 5, 15, 3, 6); R(g, '#5e4a49', 22, 15, 3, 6);
+    R(g, '#e7ad75', 4, 14, 4, 2); R(g, '#e7ad75', 22, 14, 4, 2);
+    R(g, '#415755', 7, 18, 2, 4); R(g, '#415755', 21, 18, 2, 4);
+  } else {
+    const edge = rest === 'upper' ? 14 : 18;
+    R(g, '#594149', 7, edge, 16, 2); R(g, '#c78d5c', 6, edge, 18);
+    R(g, '#594149', 8, edge + 1, 2, 21 - edge); R(g, '#594149', 20, edge + 1, 2, 21 - edge);
+    R(g, '#aa7955', 8, edge + 1, 1, 20 - edge); R(g, '#aa7955', 20, edge + 1, 1, 20 - edge);
+  }
+  R(g, '#7a4c3b', 4, top + 4, 4, 4); R(g, '#e4ae70', 4, top + 4, 4);
+  R(g, '#7a4c3b', 22, top + 4, 4, 4); R(g, '#e4ae70', 22, top + 4, 4);
+  R(g, '#463d4e', 7, top, 16, 11);
+  R(g, '#bc855a', 8, top + 1, 14, 9); R(g, '#f4c489', 8, top + 1, 14);
+  R(g, '#417271', 10, top + 3, 10, 5); R(g, '#a5cdc2', 10, top + 3, 10);
+  R(g, '#dce7c8', 11, top + 5, 3); R(g, '#dce7c8', 16, top + 6, 3);
+  if (rest === 'cart') R(g, '#e6b25f', 14, top + 1, 2, 11);
+}
+DRAW['shared-carry.trestle'] = [30, 24, (g) => carriedLoanFrame(g, 'trestle')];
+DRAW['shared-carry.held'] = [30, 24, (g) => carriedLoanFrame(g, 'held')];
+DRAW['shared-carry.cart'] = [30, 24, (g) => carriedLoanFrame(g, 'cart')];
+DRAW['shared-carry.parked'] = [30, 24, (g) => carriedLoanFrame(g, 'parked')];
+DRAW['shared-carry.low'] = [30, 24, (g) => carriedLoanFrame(g, 'low')];
+DRAW['shared-carry.upper'] = [30, 24, (g) => carriedLoanFrame(g, 'upper')];
+DRAW['shared-carry.barrier'] = [16, 24, (g) => {
+  R(g, '#563d49', 2, 12, 2, 10); R(g, '#563d49', 12, 12, 2, 10);
+  R(g, '#ac593e', 1, 13, 14, 4); R(g, '#f2bc78', 1, 13, 14);
+  for (const x of [3, 7, 11]) R(g, '#e89b55', x, 14, 2, 2);
+}];
+
 // Brass folding gauge, the old tray jig, and the receipt left at the found shelf.
 function foldingGauge(g: Ctx, x: number, y: number, opened: boolean) {
   R(g, '#775036', x, y + 6, 16, 4);
@@ -1346,6 +1536,117 @@ DRAW['forest.guide-hinges'] = [32, 24, (g) => {
   R(g, '#a78d5e', 14, 7, 4, 2);
   R(g, '#a78d5e', 14, 13, 4, 2);
 }];
+
+// Original custody diagram and fictional fitting views.
+function fittingRecordCase(g: Ctx) {
+  R(g, '#403c56', 1, 3, 42, 24);
+  R(g, '#786a7b', 3, 4, 38, 2);
+  R(g, '#9b92a0', 5, 8, 14, 12);
+  R(g, '#403c56', 6, 9, 12, 10);
+  R(g, '#a2adab', 23, 8, 15, 12);
+  R(g, '#687d84', 24, 9, 13, 10);
+  R(g, '#d2cc9e', 28, 11, 5, 5);
+  R(g, '#687d84', 29, 12, 3, 3);
+  R(g, '#cda37e', 7, 22, 10, 2);
+  R(g, '#c4dfd5', 25, 22, 11, 2);
+}
+DRAW['fitting-views.case'] = [44, 30, fittingRecordCase];
+DRAW['big.fitting-views.case'] = [96, 64, (g) => {
+  g.save();
+  g.translate(4, 2);
+  g.scale(2, 2);
+  fittingRecordCase(g);
+  g.restore();
+}];
+function practiceFitting(g: Ctx, x: number, y: number, side = false) {
+  R(g, '#8b766e', x, y + (side ? 4 : 1), 17, side ? 7 : 10);
+  R(g, '#d7aa8d', x + 2, y + (side ? 3 : 0), 13, side ? 5 : 8);
+  R(g, '#f0c4a5', x + 2, y + (side ? 3 : 0), 10, 2);
+  R(g, '#534c57', x + 13, y + (side ? 5 : 3), 2, 2);
+}
+function fittingFrame(g: Ctx, beam: string) {
+  R(g, '#47394d', 2, 6, 32, 18);
+  R(g, '#685160', 3, 7, 30, 14);
+  R(g, beam, 5, 8, 26, 10);
+  R(g, '#4b5d65', 5, 16, 3, 2);
+  R(g, '#4b5d65', 5, 13, 2, 4);
+}
+DRAW['fitting-views.lamp'] = [36, 26, (g) => {
+  fittingFrame(g, '#f6d1a0');
+  R(g, '#aa7f67', 11, 2, 12, 4);
+  R(g, '#efc08b', 12, 5, 10, 2);
+  practiceFitting(g, 10, 9);
+}];
+DRAW['fitting-views.surface'] = [36, 26, (g) => {
+  fittingFrame(g, '#ead4a7');
+  R(g, '#a97f70', 12, 10, 13, 6);
+  R(g, '#ead4a7', 13, 11, 11, 4);
+  R(g, '#845f60', 22, 11, 2, 2);
+}];
+DRAW['fitting-views.plate'] = [36, 26, (g) => {
+  fittingFrame(g, '#9bc7c4');
+  practiceFitting(g, 10, 9);
+}];
+DRAW['fitting-views.plate-face'] = [36, 26, (g) => {
+  fittingFrame(g, '#9bc7c4');
+  R(g, '#709f9f', 10, 10, 17, 6);
+  R(g, '#496b78', 17, 11, 3, 3);
+  R(g, '#f1d8a9', 28, 10, 2, 7);
+}];
+DRAW['fitting-views.plate-side'] = [36, 26, (g) => {
+  fittingFrame(g, '#9bc7c4');
+  practiceFitting(g, 10, 7, true);
+  R(g, '#4e7180', 17, 14, 3, 3);
+  R(g, '#f1d8a9', 28, 13, 2, 5);
+}];
+function fittingStandards(g: Ctx, checked: boolean) {
+  fittingFrame(g, checked ? '#9bc7c4' : '#e0cdb0');
+  R(g, '#6f746b', 9, 10, 8, 6);
+  R(g, '#6f746b', 21, 10, 8, 6);
+  R(g, '#aec1ac', 10, 11, 6, 4);
+  R(g, '#aec1ac', 22, 11, 6, 4);
+  R(g, checked ? '#365663' : '#715e75', 24, 12, 2, 2);
+}
+DRAW['fitting-views.standards'] = [36, 26, (g) => fittingStandards(g, false)];
+DRAW['fitting-views.standards-read'] = [36, 26, (g) => fittingStandards(g, true)];
+DRAW['fitting-views.dispatch'] = [28, 26, (g) => {
+  R(g, '#634858', 2, 8, 24, 16);
+  R(g, '#b48367', 3, 8, 22, 11);
+  paper(g, 7, 5, 14, 10);
+  R(g, '#e3ab7a', 3, 12, 22, 2);
+}];
+DRAW['fitting-views.packet-surface'] = [28, 26, (g) => {
+  paper(g, 4, 7, 19, 13);
+  R(g, '#af886e', 7, 10, 13, 6);
+  R(g, '#f6dbab', 8, 11, 11, 4);
+}];
+DRAW['fitting-views.packet-pair'] = [28, 26, (g) => {
+  paper(g, 4, 5, 9, 15);
+  paper(g, 14, 6, 10, 15);
+  R(g, '#729d9d', 6, 9, 5, 6);
+  R(g, '#729d9d', 16, 10, 6, 6);
+  R(g, '#4a6774', 8, 10, 2, 2);
+  R(g, '#4a6774', 19, 13, 2, 2);
+}];
+function teachingFitting(g: Ctx, route: 'surface' | 'pair', fit: boolean, signed = false) {
+  const outer = route === 'surface';
+  fittingFrame(g, outer ? '#edd3a2' : '#9bc7c4');
+  practiceFitting(g, 8, 9, !outer);
+  const markerX = outer && fit ? 20 : 25;
+  const markerY = outer ? (fit ? 12 : 7) : (fit ? 7 : 14);
+  R(g, '#8b4e5b', markerX, markerY, 7, 2);
+  R(g, '#d08a85', markerX, markerY - 1, 2, 4);
+  if (signed) {
+    R(g, '#f0d8a3', 24, 17, 8, 4);
+    R(g, '#647e79', 25, 18, 5, 1);
+  }
+}
+DRAW['fitting-views.board-surface'] = [36, 26, (g) => teachingFitting(g, 'surface', false)];
+DRAW['fitting-views.board-pair'] = [36, 26, (g) => teachingFitting(g, 'pair', false)];
+DRAW['fitting-views.used-surface'] = [36, 26, (g) => teachingFitting(g, 'surface', true)];
+DRAW['fitting-views.used-pair'] = [36, 26, (g) => teachingFitting(g, 'pair', true)];
+DRAW['fitting-views.checked-surface'] = [36, 26, (g) => teachingFitting(g, 'surface', true, true)];
+DRAW['fitting-views.checked-pair'] = [36, 26, (g) => teachingFitting(g, 'pair', true, true)];
 
 // Metalworks weighing stands and trade records.
 DRAW['metalworks.waypost'] = [16, 24, (g) => {
@@ -1741,6 +2042,19 @@ DRAW['market.window'] = [24, 24, (g) => {
   R(g, '#9a765d', 5, 10, 14, 1);
   R(g, '#806653', 11, 6, 1, 6);
 }];
+// Original catalogue mount diagram. The banknote's engraving and serial are separate from this drawing.
+DRAW['market.note-mount'] = [42, 28, (g) => {
+  R(g, '#4f4a47', 1, 8, 40, 18);
+  R(g, '#aa8968', 1, 6, 40, 17);
+  R(g, '#d6bc8d', 3, 7, 36, 14);
+  R(g, '#345459', 5, 9, 27, 9);
+  R(g, '#7fada1', 6, 10, 25, 7);
+  R(g, '#345459', 9, 12, 3, 3);
+  R(g, '#d9deb1', 15, 12, 13, 1);
+  R(g, '#d9deb1', 15, 14, 10, 1);
+  R(g, '#6d5a65', 34, 10, 3, 7);
+  R(g, '#8b876e', 12, 23, 18, 2);
+}];
 DRAW['market.rest-mat'] = [24, 16, (g) => {
   R(g, '#2b484c', 1, 9, 22, 6);
   R(g, '#44787a', 2, 8, 20, 6);
@@ -2127,18 +2441,48 @@ DRAW['fold.paired'] = [16, 16, (g) => {
   R(g, '#67514b', 2, 4, 12, 11); R(g, '#dfc38b', 3, 5, 10, 8);
   R(g, '#507c77', 4, 6, 3, 6); R(g, '#9e624f', 9, 7, 2, 3); R(g, '#645f53', 8, 11, 4, 1);
 }];
+DRAW['shelf-room.layer'] = [16, 16, (g) => {
+  R(g, '#24344d', 2, 2, 12, 12); R(g, '#abcbe1', 3, 3, 10, 10);
+  R(g, '#44647e', 4, 4, 8, 8); R(g, '#9ad7cb', 6, 4, 2, 8);
+  R(g, '#f0d29a', 8, 7, 4, 2); R(g, '#dcebef', 11, 3, 2, 3);
+}];
+DRAW['shelf-room.staple'] = [16, 16, (g) => {
+  R(g, '#46688a', 2, 3, 12, 10); R(g, '#b8dee6', 3, 4, 10, 8); R(g, '#758fb0', 4, 8, 8, 2);
+  R(g, '#407f89', 6, 5, 1, 5); R(g, '#407f89', 9, 5, 1, 5);
+}];
+DRAW['shelf-room.tear'] = [16, 16, (g) => {
+  R(g, '#46688a', 2, 3, 12, 10); R(g, '#b8dee6', 3, 4, 10, 8);
+  for (const [x, y] of [[4, 6], [7, 7], [10, 8]]) R(g, '#4b7791', x, y, 2, 1);
+  R(g, '#66869c', 9, 5, 2, 1); R(g, '#68849c', 7, 10, 1, 1);
+}];
+DRAW['drawer-board'] = [16, 16, (g) => {
+  R(g, '#322d43', 1, 4, 14, 10); R(g, '#a57b58', 2, 5, 12, 8);
+  for (const x of [3, 7, 11]) { R(g, '#dbc195', x, 6, 2, 2); R(g, '#ca9e6e', x, 10, 2, 2); }
+}];
+DRAW['big.drawer-cases'] = [40, 28, (g) => {
+  R(g, '#39334b', 3, 3, 34, 22);
+  for (const x of [5, 15, 25]) {
+    R(g, '#ad815a', x, 6, 10, 16); R(g, '#dcbc78', x + 1, 7, 8, 5); R(g, '#c39d5e', x + 1, 14, 8, 6);
+    R(g, '#58575d', x + 4, 9, 2, 1); R(g, '#58575d', x + 4, 16, 2, 1);
+  }
+}];
 
 /** Map exhibit art keys (small) to large inspection pictures. */
 export const BIG_ART: Record<string, string> = {
+  'drawer-cases': 'big.drawer-cases',
+  'market.note-mount': 'market.note-mount',
   'door-century-book': 'big.door-century-book', 'door-green-book': 'big.door-green-book',
   'accession-khipu': 'big.accession-khipu', 'accession-shell': 'big.accession-shell',
   'nile.scroll': 'nile.scroll', 'nile.tablet': 'nile.tablet', 'nile.map': 'nile.map', 'nile.stone': 'nile.stone',
   'preserved.temple': 'big.preserved.temple', 'preserved.catalogue': 'big.preserved.catalogue',
   'departure.catalogue': 'big.departure.catalogue',
+  'lintel.case-page': 'big.lintel.case-page',
+  'lintel.case-building': 'big.lintel.case-building',
   'plate.case-fold': 'big.plate.case-fold',
   'plate.case-set': 'big.plate.case-set',
   'preserved.coast': 'big.preserved.coast', 'preserved.context': 'big.preserved.context',
   'preserved.binak-diagram': 'big.preserved.binak-diagram', 'sea.dugout-diagram': 'big.sea.dugout-diagram',
+  'fitting-views.case': 'big.fitting-views.case',
   'forest.field-diagram': 'big.forest.field-diagram',
   'exhibit.patent': 'big.patent', 'exhibit.model': 'big.model', 'exhibit.biro': 'big.biro',
   'exhibit.blade': 'big.blade', 'exhibit.ingots': 'big.ingots', 'exhibit.assay': 'big.assay',

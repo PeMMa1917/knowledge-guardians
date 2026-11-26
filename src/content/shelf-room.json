@@ -1,0 +1,132 @@
+{
+  "items": [
+    {
+      "id": "item.annex-register", "name": "Loan Annex Revision Peg", "kind": "keepsake",
+      "description": "Two small clips keep the plan date and the live checks on different slips. A later custodian can borrow it to hold open an earlier plan."
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-S16", "world": "WORLD-02", "title": "The Shelf That Became a Wall",
+      "stake": "Trays of damp books still need a dry place, and a person carrying a loan needs room to turn.",
+      "knowledgeQuestion": "What should change when the remembered room and the room people can use disagree?",
+      "available": { "flag": "study.letter", "eq": true },
+      "objectives": [
+        {
+          "id": "shelf.room.compare", "title": "Read the present ledger, then follow the older lines through the reconstruction.", "essential": false,
+          "done": { "all": [{ "flagSet": "shelf.room.current" }, { "flagSet": "shelf.room.sill" }, { "flagSet": "shelf.room.turn" }] },
+          "weave": { "concepts": ["certainty", "justification", "truth", "evidence", "interpretation", "explanation"], "framework": ["scope", "perspectives", "methods-and-tools"], "thinking": { "dok": 3, "bloom": "analyse", "fink": "integration", "solo": "relational" }, "atl": ["research", "thinking"], "aoks": ["HIS", "ART", "TEC"], "subjects": ["history", "geography", "visual-arts", "design-tech"], "minutes": 5 }
+        },
+        {
+          "id": "shelf.room.finish", "title": "Choose a new route for the annex, then check the space the next borrower uses.", "essential": false,
+          "done": { "flagSet": "shelf.room.checked" },
+          "onComplete": [{ "giveItem": "item.annex-register" }, { "journal": "j.shelf.room" }],
+          "weave": { "concepts": ["responsibility", "values", "power", "perspective", "justification", "objectivity"], "framework": ["scope", "ethics", "perspectives", "methods-and-tools"], "thinking": { "dok": 3, "bloom": "create", "fink": "human", "solo": "relational" }, "atl": ["social", "communication", "self-management"], "aoks": ["HUM", "TEC"], "subjects": ["design-tech", "geography", "business"], "minutes": 4 }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH2-R17", "world": "WORLD-03", "title": "The Lane Through the Model",
+      "stake": "A receiving crew could clear the practice lane just to find that the borrowed desk is gone by their turn.",
+      "knowledgeQuestion": "How can an old arrangement guide a new room without promising the old conditions still hold?",
+      "available": { "all": [{ "objective": "nile.routes" }, { "item": "item.annex-register" }] },
+      "objectives": [
+        {
+          "id": "shelf.nile.finish", "title": "Fit the revision peg to Marek’s separate route records and verify the path you leave.", "essential": false,
+          "done": { "flagSet": "shelf.nile.checked" },
+          "onComplete": [{ "journal": "j.shelf.nile" }],
+          "weave": { "concepts": ["evidence", "certainty", "interpretation", "explanation", "responsibility", "values"], "framework": ["scope", "perspectives", "methods-and-tools", "ethics"], "thinking": { "dok": 3, "bloom": "evaluate", "fink": "learning-to-learn", "solo": "relational" }, "atl": ["communication", "self-management", "thinking"], "aoks": ["HIS", "TEC", "HUM"], "subjects": ["geography", "design-tech", "history"], "minutes": 4 }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "shelf.room.start", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "Elsbet’s loan ledger ends after the flood. Her sketch places a west doorway next to the sill. In the annex today, boxes of drying books sit against the repair shelf. Someone cut a wooden model of the earlier plan beside the sill. Blue light shows the parts the keeper could copy from the sketch.",
+      "effects": [{ "setFlag": "shelf.room.current", "value": true }]
+    },
+    {
+      "id": "shelf.room.sill", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "In the reconstruction, the sill sits on the same wall as the surviving hinge. The dated drawing puts the west path through this frame. Along this side the drawing still has both edges. From here you can walk across the space occupied by the repair shelf today.",
+      "effects": [{ "setFlag": "shelf.room.sill", "value": true }]
+    },
+    {
+      "id": "shelf.room.turn", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "At the far table a thin break runs through the drawing. The keeper added a chalk shelf to hold the shape of the room; its mark has no date. The model lets you try a turn. It leaves open whether people used that turn before the flood.",
+      "effects": [{ "setFlag": "shelf.room.turn", "value": true }]
+    },
+    {
+      "id": "shelf.room.choose", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "Elsbet’s margin note describes the old west path. The current clerk says the dry east corner can take one more tall crate, or the clerk can accept returns at a low staffed desk. One clears a path all day. The other keeps the whole row of drying crates in reach of the repair bench.",
+      "options": [
+        { "text": "Move the drying crate to the east corner and try the west path.", "effects": [{ "setFlag": "shelf.room.route", "value": "west" }], "next": "shelf.room.try-west" },
+        { "text": "Keep the repair row together and try the staffed deposit desk.", "effects": [{ "setFlag": "shelf.room.route", "value": "desk" }], "next": "shelf.room.try-desk" },
+        { "text": "Leave the drawing on the peg a little longer." }
+      ]
+    },
+    {
+      "id": "shelf.room.try-west", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The clerk rolls the western crate around the shelf. There is room to step between the old frames again. Use the west gap and see where a borrower turns."
+    },
+    {
+      "id": "shelf.room.try-desk", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The west crate stays in place. An attendant draws the low desk toward the front. Bring a return around the east corner and see which books the attendant can reach."
+    },
+    {
+      "id": "shelf.room.west", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "A borrower comes through the open gap without waiting. To check the drying book on the far side of the annex, the repairer has a longer walk. The clerk fixes a second slip to the peg so the drawing and today’s turn can be dated separately.",
+      "effects": [{ "setFlag": "shelf.room.checked", "value": "west" }]
+    },
+    {
+      "id": "shelf.room.desk", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The attendant takes a wet return at the low desk and can still pass it along the whole row. When the attendant leaves to fetch a tray, the next borrower waits. The clerk fixes a second slip to the peg so the drawing and today’s service turn can be dated separately.",
+      "effects": [{ "setFlag": "shelf.room.checked", "value": "desk" }]
+    },
+    {
+      "id": "shelf.nile.stops", "speaker": "nile-marek", "historicalLabel": "fictional-world",
+      "text": "Your annex peg takes two slips. Here’s the route used for a practice cart yesterday. Here’s the stock desk’s permission for today. The small cart can pass the aisle if the room stays quiet. During the work shift the signed desk can take it while the aisle stays open for readers.",
+      "options": [
+        { "text": "Try the marked aisle and leave its condition with the guide.", "effects": [{ "setFlag": "shelf.nile.route", "value": "open" }], "next": "shelf.nile.try-open" },
+        { "text": "Match the desk’s signed permission to the old route slip and try the desk.", "effects": [{ "setFlag": "shelf.nile.route", "value": "desk" }], "next": "shelf.nile.try-desk" },
+        { "text": "Let Marek finish the original route model first." }
+      ]
+    },
+    {
+      "id": "shelf.nile.try-open", "speaker": "nile-marek", "historicalLabel": "fictional-world",
+      "text": "Slide the load along the marked side. Come around to the aisle tabs and see which direction the next reader can use."
+    },
+    {
+      "id": "shelf.nile.try-desk", "speaker": "nile-marek", "historicalLabel": "fictional-world",
+      "text": "Leave the old line above the current desk permission. Take the cart to the stock peg and ask whether someone is there to receive it."
+    },
+    {
+      "id": "shelf.nile.open", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The practice carrier moves along the marked side in a gap. A shelf reader asks where to wait when the aisle fills. Marek moves the small cart out of the main walk and writes the quiet-room condition on the dated slip.",
+      "effects": [{ "setFlag": "shelf.nile.checked", "value": "open" }]
+    },
+    {
+      "id": "shelf.nile.copy", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The stock keeper checks the slip and receives the load. A reader still has space in the aisle. Marek leaves the keeper’s next shift beside the permission so a late carrier can work out when to return.",
+      "effects": [{ "setFlag": "shelf.nile.checked", "value": "desk" }]
+    }
+  ],
+  "journal": [
+    { "id": "j.shelf.room", "claimKind": "observation", "text": "I walked a reconstruction of Elsbet’s loan annex and checked the present room. I left each turn with its own date and saw a borrower try the arrangement I chose." },
+    { "id": "j.shelf.nile", "claimKind": "observation", "text": "Marek used my peg to keep the practice cart route and today’s receiving permission apart. I checked what one carrier could do under the new arrangement." }
+  ],
+  "hints": [
+    { "id": "h.shelf.room.compare.1", "objective": "shelf.room.compare", "depth": 1, "text": "Two walls can tell you about two times." },
+    { "id": "h.shelf.room.compare.2", "objective": "shelf.room.compare", "depth": 2, "text": "After you find Elsbet’s letter, take the door beside her survey drawer." },
+    { "id": "h.shelf.room.compare.3", "objective": "shelf.room.compare", "depth": 3, "text": "Open the repair ledger to reach the blue reconstruction. It has two places to check." },
+    { "id": "h.shelf.room.compare.4", "objective": "shelf.room.compare", "depth": 4, "text": "Stand at the west frame and the far shelf line inside the reconstruction, then return through the blue door." },
+    { "id": "h.shelf.room.finish.1", "objective": "shelf.room.finish", "depth": 1, "text": "The crate and the returning reader both need room." },
+    { "id": "h.shelf.room.finish.2", "objective": "shelf.room.finish", "depth": 2, "text": "Check the circulation peg in the present annex." },
+    { "id": "h.shelf.room.finish.3", "objective": "shelf.room.finish", "depth": 3, "text": "Choose which space the clerk will clear, then walk to that space." },
+    { "id": "h.shelf.room.finish.4", "objective": "shelf.room.finish", "depth": 4, "text": "Read the result at the west path beyond the crate or the staffed desk at the east end." },
+    { "id": "h.shelf.nile.finish.1", "objective": "shelf.nile.finish", "depth": 1, "text": "The current desk and the old path have different dates." },
+    { "id": "h.shelf.nile.finish.2", "objective": "shelf.nile.finish", "depth": 2, "text": "Bring the peg to Marek’s tabs on the right of the passage model after the route test." },
+    { "id": "h.shelf.nile.finish.3", "objective": "shelf.nile.finish", "depth": 3, "text": "Choose the quiet lane or the staffed collection and find the matching marker." },
+    { "id": "h.shelf.nile.finish.4", "objective": "shelf.nile.finish", "depth": 4, "text": "Use the checked clearance at the far aisle or the signed stock peg nearer Marek." }
+  ]
+}

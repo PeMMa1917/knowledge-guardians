@@ -91,7 +91,7 @@ There are exactly **two campaign slots**: **Continue** and **Checkpoint recovery
 
 Both slots are written in one `localStorage` key (`kg.slots`) in one write, with an FNV checksum and a revision number. If another tab changed the save, the write stops with "Save changed in another tab". The permanent record is in `kg.permanent`. Settings are in `kg.settings`.
 
-`adventureJournal.ts` records confirmed choices, quest steps, and experiences after a command runs. Earlier saves keep their notes and known quest history with their dates left open. The Diary tab downloads a Word document made on the player's device. The player can choose to include private notes, reflections, and questions in that copy.
+`adventureJournal.ts` records confirmed choices, quest steps, and experiences after a command runs. Earlier saves keep their notes and known quest history with their dates left open. In the Diary tab, players can download a Word document or open the browser’s print dialog to print or save an A4 PDF. Both formats use the same local snapshot of diary entries and open quests. The checkbox includes private notes, reflections, and questions in the current export. It starts unchecked.
 
 **Schema changes:** when you change `CampaignState`, raise `CAMPAIGN_SCHEMA` and add a function to `MIGRATIONS` in `src/domain/saves.ts`. Add a test in `tests/saves.test.ts`. A save from a newer version is refused, not damaged.
 

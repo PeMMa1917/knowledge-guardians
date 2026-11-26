@@ -1,6 +1,7 @@
 /** The Living Forest field exercise takes place in a fictional woodland. */
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
+import { carriedFrame } from './sharedCarry';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>): Interactable {
   return { id, kind: 'door', x, y, w: 1, h: 1, art: 'forest.waypost', label, to };
@@ -181,6 +182,13 @@ export const FOREST_TRAIL: MapDef = {
   ],
   interactables: [
     { id: 'field-dig', kind: 'fieldgame', game: 'dig', x: 11, y: 15, w: 1, h: 1, label: 'Marisol\'s dig at the old charcoal camp (The Careful Dig)', art: 'ledger' },
+    { id: 'stiltfrog-watch-low', kind: 'fieldgame', game: 'stiltfrog-watch-low', x: 11, y: 5, w: 1, h: 1, walkThrough: true,
+      label: 'the low cloth flap at the reed hollow', art: 'stiltfrog.window-low', visibleIf: forestArrived },
+    { id: 'stiltfrog-watch-high', kind: 'fieldgame', game: 'stiltfrog-watch-high', x: 22, y: 5, w: 1, h: 1, walkThrough: true,
+      label: 'the raised cloth flap at the reed hollow', art: 'stiltfrog.window-high', visibleIf: forestArrived },
+    { id: 'stiltfrog-wait', kind: 'fieldgame', game: 'stiltfrog-wait', x: 20, y: 4, w: 1, h: 1, walkThrough: true,
+      label: 'the bank seat a stone back from the sill', art: 'stiltfrog.seat', visibleIf: { objective: 'forest.frog.watches' },
+      artOpen: { key: 'stiltfrog.track', if: { flag: 'lor.stiltfrog.friend', eq: true } } },
     { id: 'cross-geese', kind: 'fieldgame', game: 'cross-geese', x: 22, y: 12, w: 1, h: 1, label: 'a row of nesting geese across the trail (a crossing)', art: 'reeds' },
     door('forest-trail-back', 2, 14, 'the path back to Fern Station', { map: 'forest.station', x: 4, y: 8 }),
     door('forest-clearing-path', 29, 12, 'the path to the bridge clearing', { map: 'forest.community', x: 20, y: 11 }),
@@ -272,6 +280,9 @@ export const FOREST_COMMUNITY: MapDef = {
   interactables: [
     door('forest-community-back', 12, 14, 'the path back to Fern Station', { map: 'forest.station', x: 22, y: 8 }),
     door('forest-bridge-to-trail', 22, 11, 'the path back to the ridge', { map: 'forest.trail', x: 28, y: 12 }),
+    carriedFrame('forest', 'start', 3, 10, 'Ayla’s rain-mark frame on the first trestles'),
+    carriedFrame('forest', 'turn', 12, 11, 'the rain-mark frame at the bend'),
+    carriedFrame('forest', 'shelf', 20, 9, 'the rain-mark frame at the covered shelf'),
     { ...door('forest-observer-clearing-to-ridge', 20, 12, 'the marked crew path back to the ridge', { map: 'forest.trail', x: 27, y: 5 }),
       walkThrough: true, visibleIf: notebookPassage('crew'), flag: 'forest.observer.crossed' },
     note('forest-observer-clearing-proof', 18, 10, 'the paired crew handover notes', 'preserved.display-paired',

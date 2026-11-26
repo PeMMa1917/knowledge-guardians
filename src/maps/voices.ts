@@ -1,5 +1,6 @@
 /** Fictional listening archive and the two approaches to Glass Walk. */
 import type { Condition } from '../domain/types';
+import { LISTENING_LINTEL, MAT_READY_AT_PUBLIC_DOOR, WALK_LINTEL } from './lintelFold';
 import type { Interactable, MapDef } from './types';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'voices.waypost'): Interactable {
@@ -42,6 +43,7 @@ export const VOICES_LISTENING: MapDef = {
   ],
   interactables: [
     door('voices-walk-path', 3, 11, 'the passage to the Glass Walk stairs', { map: 'voices.walk', x: 11, y: 13 }),
+    ...LISTENING_LINTEL,
     door('voices-quay-path', 25, 11, 'the passage to the lamp quay', { map: 'voices.quay', x: 5, y: 12 }),
     door('voices-nexus-return', 13, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 31, y: 12 }, 'preserved.door'),
     { id: 'voices-desk', kind: 'voices-desk', x: 14, y: 8, w: 1, h: 1,
@@ -105,6 +107,9 @@ export const VOICES_LISTENING: MapDef = {
   ],
 };
 
+const glassWalkStairs = door('voices-walk-return', 11, 15, 'the steps back to the Listening Room',
+  { map: 'voices.listening', x: 4, y: 11 });
+
 export const VOICES_WALK: MapDef = {
   id: 'voices.walk', name: 'Archive of Voices: Glass Walk', world: 'WORLD-14',
   width: 29, height: 18, music: 'music.town', ambience: 'town', background: 0x39444a,
@@ -125,7 +130,10 @@ export const VOICES_WALK: MapDef = {
   ],
   interactables: [
     { id: 'cross-two-elders', kind: 'fieldgame', game: 'cross-two-elders', x: 18, y: 10, w: 1, h: 1, label: 'two old friends on separate benches (a crossing)', art: 'ledger' },
-    door('voices-walk-return', 11, 15, 'the steps back to the Listening Room', { map: 'voices.listening', x: 4, y: 11 }),
+    ...WALK_LINTEL,
+    { ...glassWalkStairs, visibleIf: { not: MAT_READY_AT_PUBLIC_DOOR } },
+    { ...glassWalkStairs, id: 'walk-lintel-public-door', label: 'the public stairs to the bench with the mat',
+      visibleIf: MAT_READY_AT_PUBLIC_DOOR, flag: 'lintel.voices.public-cross' },
     door('voices-walk-to-quay', 25, 11, 'the rail passage to the quay', { map: 'voices.quay', x: 23, y: 12 }),
     sign('voices-opening-register', 9, 8, 'the signed opening register', 'voices.register',
       'Lantern 6. Glass Walk opened for public passage. This is the first signed opening entry.',

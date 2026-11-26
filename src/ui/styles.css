@@ -168,6 +168,10 @@ fieldset { border: 1px solid var(--gold-dim); border-radius: 10px; }
 legend { color: var(--gold); padding: 0 0.4em; }
 .radio, .check, .range { display: block; margin: 0.35em 0; cursor: pointer; }
 .settings .range :is(select, input[type="range"]) { max-width: 100%; }
+.film-panel h2 { margin-right: 2rem; }
+.film-camera figure { max-width: 22rem; }
+.film-still { display: block; width: 100%; image-rendering: pixelated; border: 1px solid var(--gold-dim); border-radius: 6px; }
+.film-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr)); gap: 0.6em; }
 .sim-result { margin-top: 0.8em; }
 .mark { width: 100%; max-width: 320px; image-rendering: pixelated; border-radius: 6px; }
 .optics-board { display: block; width: 100%; max-width: 360px; image-rendering: pixelated; border-radius: 6px; }

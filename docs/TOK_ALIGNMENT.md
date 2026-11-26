@@ -103,20 +103,20 @@ The May 2022 and May 2025 exhibition reports and the November 2025 subject repor
 
 These are available design opportunities. The snapshot counts unique mission objective IDs in the registered content pack. Separate branches can complete the same objective. Crossings, field games and other opportunities tagged elsewhere are outside the objective totals. The classroom report counts recorded encounters from voluntarily shared files. The route audit in [Learning design](LEARNING_DESIGN.md) uses authored time estimates.
 
-| Review measure | 26 November snapshot |
+| Review measure | Frozen `8fafb19` snapshot |
 |---|---:|
-| Mission objectives with a weave record | 360 of 360 |
-| Explicit framework descriptions by objective | 95 of 360 |
-| Explicit thinking profiles on objectives | 79 of 360 |
+| Mission objectives with a weave record | 373 of 373 |
+| Explicit framework descriptions by objective | 108 of 373 |
+| Explicit thinking profiles on objectives | 92 of 373 |
 | Separate action profiles in the author registry | 40 |
 | Concepts with objective tags | 12 of 12 |
 | Areas of knowledge with objective tags | 5 of 5 |
 | Optional themes with objective tags | 5 of 5 |
-| DP subject IDs with objective tags | 29 of 30 |
+| DP subject IDs with objective tags | 30 of 30 |
 | ATL categories with objective tags | 5 of 5 |
-| Journal moments across all ten learner attributes | 79 |
+| Journal moments across all ten learner attributes | 83 |
 
-The same snapshot has 61 explicit scope, 79 perspectives, 70 methods and tools, and 55 ethics objectives. Twenty-one essential objectives have a self-management tag and one essential objective explicitly tags ethics. Language ab initio has no objective tag and World religions has one. Four Vindolanda steps add specific Classical Languages practice to the earlier co-tag. Dance and sports, exercise and health science have two objectives each in one shared optional route. Computer science and music have three each. Knowledgeable and risk-taker have two Journal moments each. Those counts help prioritize authoring and review of the essential routes. [buildPack](../src/content/index.ts), [curriculum.ts](../src/domain/curriculum.ts), [learningLevels.ts](../src/domain/learningLevels.ts)
+The same snapshot has 70 explicit scope, 91 perspectives, 82 methods and tools, and 63 ethics objectives. Twenty-one essential objectives have a self-management tag and one essential objective explicitly tags ethics. World religions has one tagged objective. Practical requests in Emberford and the Market give Language ab initio five objectives. Four Vindolanda steps add specific classical language practice to the earlier co-tag. Dance and sports, exercise and health science have two objectives each in one shared optional route. Computer science has nine objectives and music has three. Knowledgeable and risk-taker have two Journal moments each. Those counts help prioritize authoring and review of the essential routes. [buildPack](../src/content/index.ts), [curriculum.ts](../src/domain/curriculum.ts), [learningLevels.ts](../src/domain/learningLevels.ts)
 
 ### Concepts and framework
 
@@ -165,7 +165,7 @@ These links show where a subject’s practice is visible or where a co-tag point
 | Language A: language and literature | The City shows what changes when a copy loses a date, an attributed source or a qualification. [copies-story.test.ts](../tests/copies-story.test.ts) |
 | Literature and performance | Play the same lines with different ordering of movement and pause. Use the result in a programme for distinct seats. [performance-story.test.ts](../tests/performance-story.test.ts) |
 | Language B | Translation proofs compare what wording keeps and what context travels. Target-language acquisition and language-specific packs remain open. [opening-ferry.test.ts](../tests/opening-ferry.test.ts) |
-| Language ab initio | Two guides to the same path show how a newcomer can use a landmark and request a second cue. A separate beginner-language action using a supported word in context remains open. [opening-wayfinding.test.ts](../tests/opening-wayfinding.test.ts), [voices-story.test.ts](../tests/voices-story.test.ts) |
+| Language ab initio | Practise a short tray request from both sides of Mara’s stall and check where the listener acts on it. In the Market, check what the same signal means at intake and on the checked pickup. A target-language pack remains open. [practical-pickup.test.ts](../tests/practical-pickup.test.ts) |
 | Classical languages | Align two proposed readings of Vindolanda tablet 291 with a trace. In the Metalworks use the copied Latin address to separate sender, recipient and scribe before deciding where a repair witness is needed. Greek examples and sustained Latin reading remain open. [vindolanda.test.ts](../tests/vindolanda.test.ts), [SOURCES.md](SOURCES.md) |
 | Business management | The Emberford case lets players negotiate a trade claim, compare workshop terms and decide how a corrected message will reach buyers. [playthrough.test.ts](../tests/playthrough.test.ts), [emberford-side.json](../src/content/emberford-side.json) |
 | Digital society | The Civic reporting tool makes collection channels and rule effects visible. The City press offers an analogue for attribution and source loss. [civic-story.test.ts](../tests/civic-story.test.ts), [copies-story.test.ts](../tests/copies-story.test.ts) |
@@ -180,8 +180,8 @@ These links show where a subject’s practice is visible or where a co-tag point
 | Environmental systems and societies | Change a water allocation, revisit the repaired channel and see different users’ effects. The Forest contrasts observations through equal samples and at separate times. [water-story.test.ts](../tests/water-story.test.ts), [forest-sampling.test.ts](../tests/forest-sampling.test.ts) |
 | Biology | The Green Squares holds sampling area fixed and distinguishes the number of cells with growth from abundance. It compares the field pattern to a separate observation of boot contacts. [forest-sampling.test.ts](../tests/forest-sampling.test.ts) |
 | Chemistry | The Cold Store compares a measured composition clue and a material-source interpretation while leaving transport open. More hands-on composition comparisons remain open. [preserved-copper.test.ts](../tests/preserved-copper.test.ts), [metal-sample.test.ts](../tests/metal-sample.test.ts) |
-| Physics | Keep the load and tray fixed while changing tilt. At the coastline adjust a lamp or a pointer separately and use an optical check at a new setting. [nile-followups.test.ts](../tests/nile-followups.test.ts), [optics-screen.json](../src/content/optics-screen.json) |
-| Computer science | The Civic console compares inputs and rules, including duplicates. The sorter puzzle previews stepwise procedure. A playable trace of an explicit algorithm with edge cases remains open. [civic-console.test.ts](../tests/civic-console.test.ts), [puzzles.json](../src/content/puzzles.json) |
+| Physics | Keep the load and tray fixed while changing tilt. At the coastline adjust a lamp or pointer separately. At the Metalworks test an empty block and a known insert, then turn the same fitting against a fixed stop. Replay the reference alignment before making a new reading at the Commons. [nile-followups.test.ts](../tests/nile-followups.test.ts), [optics-screen.json](../src/content/optics-screen.json), [fitting-views.test.ts](../tests/fitting-views.test.ts) |
+| Computer science | The Civic console compares inputs and rules, including duplicates. Forest and Water counters let players step through two rules against a fixed set of entries and inspect where the results diverge. [civic-console.test.ts](../tests/civic-console.test.ts), [counter-replay.test.ts](../tests/counter-replay.test.ts) |
 | Design technology | Test the same marker on different materials or fit a reader to the audience’s required detail. Return to see how a different reader uses the design. [opening-practice.test.ts](../tests/opening-practice.test.ts), [opening-viewer.test.ts](../tests/opening-viewer.test.ts) |
 | Sports, exercise and health science | The Island rehearsal compares control with the same empty box, floor and moving pace under one added supported rest. A single fictional observation stays separate from loaded work or safety claims for other bodies. [island-movement.test.ts](../tests/island-movement.test.ts) |
 | Mathematics: analysis and approaches | The Packing Table changes grouping without changing the inventory. The Civic rack compares possible arrival marks under a stated assumption. [opening-packing.test.ts](../tests/opening-packing.test.ts), [civic-story.test.ts](../tests/civic-story.test.ts) |
@@ -190,7 +190,7 @@ These links show where a subject’s practice is visible or where a co-tag point
 | Music | Bell sequences and staged pause let players compare timing. The music box supports reproducing and changing a tune. More authored inquiry into sound and musical interpretation remains open. [bells.test.ts](../tests/bells.test.ts), [musicbox.test.ts](../tests/musicbox.test.ts) |
 | Theatre | Change the order of a staged action, check sightlines and revise the programme in response to readers. [performance-story.test.ts](../tests/performance-story.test.ts) |
 | Dance | Try a continuous movement phrase against an inserted hold, test gesture height from the rear, then choose shared or separate phrasing for different participants. [island-movement.test.ts](../tests/island-movement.test.ts) |
-| Film | The poster case and the House use framing and sequenced moments as partial analogues. Camera placement and editing through material that changes a viewer’s inference remain open. [puzzles.json](../src/content/puzzles.json), [performance-transfer.test.ts](../tests/performance-transfer.test.ts) |
+| Film | Record the same three beats from the front and wing, then screen both orders of the same frames. The first image changes where a visitor goes. At Slate Harbour, use the strip alongside a dated view and a live instruction to send a carrier to the stone steps. [film-cuts.test.ts](../tests/film-cuts.test.ts) |
 
 ### Learning, teaching and the DP core
 
@@ -239,5 +239,5 @@ In The Paper Landing, placing a peg before or after a turn changes what the prin
 1. Review the longest gaps after the opening on a main route and a long detour. Add a short actual decision where a missing concept can change what somebody does. Time the expanded routes with students and compare which readers, records and tools they used. [Learning design](LEARNING_DESIGN.md)
 2. Improve the earliest exhibition loop. Offer a plausible exhibit exchange and a visitor who needs a detail that only one object supplies. Let either placement lead somewhere and keep a quick way to revise. Check the effect from a second visitor’s route. [exhibition.ts](../src/domain/exhibition.ts), [preserved-exhibition.test.ts](../tests/preserved-exhibition.test.ts)
 3. Build a second World religions case that distinguishes a community’s practice from an outside account. For Classical languages, pair another documented inscription with a different reason to keep an editorial uncertainty visible. Extend the Indigenous societies strand through other publicly shareable community knowledge and keep any relevant access limits visible. [SOURCES.md](SOURCES.md), [vindolanda.test.ts](../tests/vindolanda.test.ts)
-4. Give narrow subjects a second action in a different setting. Examples are a short film-framing choice where a counterpart can check what the cut hides, and a record-routing tool where a duplicate or missing field changes a decision. For music, let a later performer regularize the cue and check how another group enters. [performance-transfer.test.ts](../tests/performance-transfer.test.ts), [civic-console.test.ts](../tests/civic-console.test.ts), [musicbox.test.ts](../tests/musicbox.test.ts)
+4. Give narrow subjects a second action with a new constraint. A later film case could let a player compare what sound establishes when a figure falls outside the frame. For music, let a later performer regularize the cue and check how another group enters. [film-cuts.test.ts](../tests/film-cuts.test.ts), [musicbox.test.ts](../tests/musicbox.test.ts)
 5. Review self-management and sparse learner moments against actual actions. Returning to check a plan or volunteering a new inquiry can be reflected as a private moment after the action. Progress counts and moments remain separate from a teacher's judgement about learning. [learning.ts](../src/domain/learning.ts), [teacher.test.ts](../tests/teacher.test.ts)

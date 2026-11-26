@@ -663,6 +663,7 @@ export interface LorelingRecord {
   befriended: string;
   names: string[];
   forms: { name: string; power: string; needs?: string }[];
+  fieldGuide?: { sprite: string; portrait: string; portraitAlt: string; activeText: string };
   skills: string[];
   weave: Weave;
   onComplete?: Effect[];

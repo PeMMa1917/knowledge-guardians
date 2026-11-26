@@ -1,5 +1,6 @@
 /** Fictional Guardian archive. Its rooms contain documentary evidence and original schematic illustrations. */
 import type { Condition } from '../domain/types';
+import { COLD_LINTEL } from './lintelFold';
 import { COLD_PAPER_LANDING } from './paperLanding';
 import { sceneProp } from './sceneProps';
 import type { Interactable, MapDef } from './types';
@@ -238,6 +239,7 @@ export const PRESERVED_INQUIRY = room({
   ],
   interactables: [
     door('preserved-inquiry-back', 8, 12, 'the passage back to the Cold Store', { map: 'preserved.archive', x: 23, y: 8 }),
+    ...COLD_LINTEL,
     record('TUT-JOURNAL', 3, 5, 'Carter’s excavation journal', 'preserved.catalogue'),
     record('TUT-NOTE', 7, 5, 'Lucas’s later report', 'preserved.folder'),
     record('TUT-WORKFORCE', 15, 5, 'the excavation workforce account', 'preserved.context'),

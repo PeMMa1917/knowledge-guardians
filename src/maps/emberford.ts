@@ -9,6 +9,8 @@ import { sceneProp } from './sceneProps';
 import { EMBERFORD_LANTERN_FAIR } from './lanternfair';
 import { EMBERFORD_BACKBILL } from './backbill';
 import { EMBERFORD_DOOR_FOLD } from './doorFold';
+import { EMBERFORD_DRAWER_CASES } from './drawerCases';
+import { EMBERFORD_BASKET } from './marketBasket';
 
 const W = 40, H = 28;
 // Plaza (stone) rectangle
@@ -137,7 +139,7 @@ export const EMBERFORD: MapDef = {
     { id: 'well-keeper', x: 32, y: 17, facing: 'left' },
     { id: 'fruit-seller', x: 15, y: 19, facing: 'down' },
     // The Shattering Rumour (side quest): each person heard the blade story from the next.
-    { id: 'porter-idris', x: 21, y: 23, facing: 'left' },
+    { id: 'porter-idris', x: 23, y: 22, facing: 'left' },
     { id: 'stallkeeper-hana', x: 12, y: 12, facing: 'right' },
     // Origin side quests (spec 35.1): each giver appears only for that origin.
     { id: 'runner-tamar', x: 18, y: 21, facing: 'right', visibleIf: { origin: 'harbour' } },
@@ -145,9 +147,11 @@ export const EMBERFORD: MapDef = {
     { id: 'singer-teodora', x: 16, y: 15, facing: 'down', visibleIf: { origin: 'singer' } },
   ],
   interactables: [
+    ...EMBERFORD_BASKET,
     ...EMBERFORD_LANTERN_FAIR,
     ...EMBERFORD_BACKBILL,
     ...EMBERFORD_DOOR_FOLD,
+    ...EMBERFORD_DRAWER_CASES,
     { id: 'ballad-spot', kind: 'fieldgame', game: 'ballad', x: 37, y: 9, w: 1, h: 1, label: 'Wynn the ballad-singer, by the east well', art: 'notice-board' },
     { id: 'loyalty-hesper', kind: 'fieldgame', game: 'loyalty-hesper', x: 9, y: 18, w: 1, h: 1, label: "a record on Hesper's work bench (The Traveller's Quench)", art: 'ledger', visibleIf: { num: 'lamps.lit', gte: 6 } },
     { id: 'loyalty-sefa', kind: 'fieldgame', game: 'loyalty-sefa', x: 33, y: 22, w: 1, h: 1, label: "Sefa's song sheet on the memorial stone (The Flood Song)", art: 'old-sign', visibleIf: { num: 'lamps.lit', gte: 6 } },

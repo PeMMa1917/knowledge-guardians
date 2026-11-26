@@ -4,14 +4,18 @@ import { readMetalSample } from './metalSample';
 import { compareCopy } from './copyComparison';
 import { seaChart } from './seaCharts';
 import { stageRehearsal, type StageCue } from './stageRehearsal';
+import { filmEffects, type FilmAction } from './filmCuts';
 import { marketComparison, type MarketBasis } from './marketScale';
 import { waterTrial, type WaterSetting } from './waterGate';
 import { civicAllocation, type CivicRule, type CivicSample } from './civicConsole';
 import { voiceReading, type VoiceSource, type VoiceView } from './voiceReadings';
 import { islandPlan, type IslandLanding, type IslandRoute } from './islandPlan';
+import { changeSkiff, type SkiffAction } from './islandSkiff';
+import { marketBasketEffects, type BasketAction } from './marketBasket';
 import { councilClock, type CouncilTrial } from './councilClock';
 import { scoutDecision, scoutNextTrial, scoutTrials, type ScoutDecision, type ScoutProtocol, type ScoutRoute } from './scoutRoutes';
 import { ownedPerspective, PERSPECTIVE_FLAG } from './perspectives';
+import { moveSharedCarry, type CarrySite, type CarryStop } from './sharedCarry';
 /**
  * Domain engine. Scenes send typed commands; the engine checks preconditions,
  * computes ONE valid state transition and returns events for the view to show
@@ -28,6 +32,7 @@ import { approvalOf, approvalRank, isInquiry } from './approval';
 import { ROLES } from './roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from './undercroft';
 import { FIELD_GAMES } from './fieldgames';
+import { DRAWER_MASK, flipDrawer } from './drawerCases';
 import type {
   AwardRecord, CampaignState, ContentPack, DialogueNode, DialogueOption, DiaryNoteKind, Effect, Hint, MisconceptionRecord, Mission,
   MomentRule, Objective, PermanentRecord, ShowdownState, Weave,
@@ -51,9 +56,13 @@ import { addPortfolio, addSignal, checkMoments, recordWeave, tickEvents } from '
 import { diaryDialogueChoice, diaryNoteKind, newAdventureDiary, recordAdventure } from './adventureJournal';
 
 export type Command =
+  | SkiffAction
+  | BasketAction
+  | FilmAction
   | { type: 'Reach'; zone: string }
   | { type: 'VisitPlace'; name: string }
   | { type: 'EquipPerspective'; keepsake: string | null }
+  | { type: 'SharedCarry'; site: CarrySite; stop: CarryStop; action: string }
   | { type: 'SetPronouns'; pronouns: Pronouns }
   | { type: 'SetLook'; look: string }
   | { type: 'AlcovePlace'; alcove: string; item: string }
@@ -92,6 +101,7 @@ export type Command =
   | { type: 'DisarmSeal'; seal: string; choice: number }
   | { type: 'BossMove'; choice: number }
   | { type: 'FinishFieldGame'; game: string }
+  | { type: 'OpenDrawerCase'; face: number }
   | { type: 'JudgeRumour'; rumour: string; verdict: number }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
@@ -367,6 +377,9 @@ export class Engine {
         case 'SetFlag':
           s = apply([{ setFlag: cmd.flag, value: cmd.value }], s, out);
           break;
+        case 'SharedCarry':
+          s = apply(moveSharedCarry(cmd.site, cmd.stop, cmd.action, s, p), s, out);
+          break;
         case 'EquipPerspective': {
           const id = cmd.keepsake;
           if (id !== null && !ownedPerspective(this.pack, s, id)) throw new Error('You have not earned that field tool');
@@ -482,6 +495,13 @@ export class Engine {
           if (!o) throw new Error('Choose an answer');
           if (o.ok && s.flags[`trap.${x.id}.open`] !== true) s = apply([{ setFlag: `trap.${x.id}.open`, value: true }, { setFlag: `meet.fray.${x.fray}`, value: true }, { addMarks: 2 }], s, out);
           events.push({ kind: 'seal', seal: x.id, ok: o.ok, why: o.why });
+          break;
+        }
+        case 'OpenDrawerCase': {
+          if (s.mapId !== 'aethelgard.emberford') throw new Error('The drawers are at Dov’s stall.');
+          const mask = Number(s.flags[DRAWER_MASK] ?? 0);
+          const updated = flipDrawer(mask, cmd.face);
+          if (updated !== mask) s = apply([{ setFlag: DRAWER_MASK, value: updated }], s, out);
           break;
         }
         case 'FinishFieldGame': {
@@ -643,6 +663,12 @@ export class Engine {
           if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
+        case 'SkiffStart': case 'SkiffStroke': case 'SkiffMoor': case 'SkiffLand':
+          s = changeSkiff(cmd, s);
+          break;
+        case 'SealMarketBasket': case 'QuoteMarketBasket': case 'IssueBasketTicket': case 'ReviewBasketCredit': case 'RedeemBasketTicket':
+          s = apply(marketBasketEffects(cmd, s), s, out);
+          break;
         case 'RunVoiceReading': {
           if (s.mapId !== 'voices.listening' || s.flags['voices.arrived'] !== true) throw new Error('Use the listening desk in the Archive of Voices.');
           voiceReading(cmd.source, cmd.view);
@@ -681,6 +707,11 @@ export class Engine {
           if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
+        case 'CaptureFilmTake':
+        case 'ScreenFilmCut':
+        case 'PostFilmCut':
+          s = apply(filmEffects(cmd, s), s, out);
+          break;
         case 'ReadSeaChart': {
           seaChart(cmd.chart);
           if (s.mapId !== `sea.${cmd.chart}` || s.flags['sea.arrived'] !== true) throw new Error('Use the matching survey stand in the Cartographers’ Sea.');

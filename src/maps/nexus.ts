@@ -141,6 +141,12 @@ export const NEXUS: MapDef = {
   interactables: [
     ...NEXUS_VINDOLANDA,
     ...NEXUS_DOOR_FOLD,
+    { id: 'hesper-checked-bench', kind: 'scene', node: 'hesper.nexus.bench', x: 20, y: 10, w: 1, h: 1,
+      label: 'Hesper’s reserved repair bench', art: 'nexus.viewer-sheet', walkThrough: true,
+      visibleIf: { all: [{ objective: 'm02.o8.ise' }, { flag: 'hesper.visitArrangement', eq: 'bench' }] } },
+    { id: 'hesper-checked-drawer', kind: 'scene', node: 'hesper.nexus.drawer', x: 21, y: 14, w: 1, h: 1,
+      label: 'the return drawer for Hesper’s scrap', art: 'preserved.folder', walkThrough: true,
+      visibleIf: { all: [{ objective: 'm02.o8.ise' }, { objective: 'm02.o6.hesper' }, { not: { flag: 'hesper.visitArrangement', eq: 'bench' } }] } },
     { id: 'hearth-spot', kind: 'fieldgame', game: 'hearth', x: 14, y: 10, w: 1, h: 1, label: 'the hearth where your friends gather', art: 'lantern-stall' },
     { id: 'cross-lintel', kind: 'fieldgame', game: 'cross-lintel', x: 34, y: 4, w: 1, h: 1, label: 'old words cut over an arch (a crossing)', art: 'old-sign' },
     { id: 'loyalty-kip', kind: 'fieldgame', game: 'loyalty-kip', x: 3, y: 14, w: 1, h: 1, label: "Kip's family map on a reading table (The Famous Ancestor)", art: 'ledger', visibleIf: { flag: 'study.letter', eq: true } },

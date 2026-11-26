@@ -3,6 +3,7 @@ import { adventureJournalView, type AdventureJournalView, type JournalNote } fro
 import type { DiaryNoteKind } from '../domain/types';
 import { MAPS } from '../maps';
 import { adventureDocx, ADVENTURE_DOCX_TYPE } from './adventureDocx';
+import { printAdventureJournal } from './adventurePrint';
 import { clear, h } from './dom';
 
 type DiaryTab = 'diary' | 'notes' | 'open-quests';
@@ -17,14 +18,14 @@ function entryDetails(kind: string, at: string | null, mapId: string | null): HT
     place ? ` · ${place}` : '');
 }
 
-function downloadControls(view: AdventureJournalView): HTMLElement {
+function exportControls(view: AdventureJournalView): HTMLElement {
   const include = h('input', { type: 'checkbox' });
   const status = h('p', { role: 'status', class: 'fine' });
+  const options = () => ({ includeNotes: include.checked, placeName: (id: string) => MAPS[id]?.name });
   const download = h('button', { type: 'button', onclick: () => {
     download.disabled = true;
-    const includeNotes = include.checked;
     try {
-      const bytes = adventureDocx(view, { includeNotes, placeName: (id) => MAPS[id]?.name });
+      const bytes = adventureDocx(view, options());
       const url = URL.createObjectURL(new Blob([bytes], { type: ADVENTURE_DOCX_TYPE }));
       const name = view.name.replace(/[^\p{L}\p{N}-]+/gu, '-').replace(/^-+|-+$/g, '');
       const link = h('a', { href: url, download: `adventure-journal${name ? `-${name}` : ''}.docx` });
@@ -39,8 +40,15 @@ function downloadControls(view: AdventureJournalView): HTMLElement {
       download.disabled = false;
     }
   } }, 'Download journal (.docx)');
-  return h('div', { class: 'diary-export' }, download,
-    h('label', { class: 'check' }, include, ' Include my private notes, reflections, and questions'), status);
+  const print = h('button', { type: 'button', onclick: () => {
+    status.textContent = '';
+    printAdventureJournal(view, options(), () => {
+      status.textContent = 'Print preview could not open. You can download the Word journal.';
+    });
+  } }, 'Print or save as PDF');
+  return h('div', { class: 'diary-export' },
+    h('label', { class: 'check' }, include, ' Include my private notes, reflections, and questions in this export'),
+    h('div', { class: 'row' }, download, print), status);
 }
 
 function diaryFeed(view: AdventureJournalView, refresh: (tab: DiaryTab) => void): HTMLElement {
@@ -76,7 +84,7 @@ function diaryFeed(view: AdventureJournalView, refresh: (tab: DiaryTab) => void)
       h('div', { class: 'row' },
         h('button', { type: 'button', onclick: () => refresh('notes') }, 'Write a note'),
         h('button', { type: 'button', onclick: () => refresh('open-quests') }, 'Open quests and questions'))),
-    downloadControls(view)),
+    exportControls(view)),
     h('label', { class: 'diary-filter' }, 'Show ', select), empty, list, more);
 }
 

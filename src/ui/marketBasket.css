@@ -1,0 +1,16 @@
+.basket-stock, .basket-quotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+  gap: .55rem;
+  margin: .65rem 0;
+}
+
+.basket-quantity, .basket-quote, .basket-receipt { border: 1px solid currentColor; border-radius: .4rem; padding: .5rem; }
+.basket-quantity { display: flex; align-items: center; gap: .5rem; }
+.basket-pixel { display: inline-block; flex: none; width: 1.25rem; height: 1.25rem; background: #e29d55; }
+.basket-pixel.oil { clip-path: polygon(30% 0, 70% 0, 70% 26%, 90% 45%, 90% 100%, 10% 100%, 10% 45%, 30% 26%); }
+.basket-pixel.wick { background: repeating-linear-gradient(#91728c 0 3px, #e3c49e 3px 6px); border-radius: 25%; }
+.basket-pixel.flour { background: #ded6a9; clip-path: polygon(27% 0, 73% 0, 61% 29%, 95% 60%, 87% 100%, 13% 100%, 5% 60%, 39% 29%); }
+.basket-counter { padding-left: 0; }
+.basket-counter li { display: flex; flex-wrap: wrap; gap: .35rem; align-items: center; padding: .3rem 0; }
+.basket-panel button { min-height: 2.75rem; }

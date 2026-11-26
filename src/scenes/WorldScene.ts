@@ -18,6 +18,7 @@ import { caption } from '../app/captions';
 import { CampaignPlayback } from '../app/campaignPlayback';
 import { LUMEN_COLOURS, lumenArt } from '../app/settings';
 import Phaser from 'phaser';
+import type { BootScene } from './BootScene';
 import { ctx, type WorldApi } from '../app/context';
 import { MAPS } from '../maps';
 import type { Interactable, MapDef } from '../maps/types';
@@ -76,7 +77,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private threadGfx: Phaser.GameObjects.Graphics | null = null;
   private gapMark: Phaser.GameObjects.Image | null = null;
   private exploreAcc = 0;
+  private changingTiles: { x: number; y: number; closed: boolean; when: NonNullable<MapDef['conditionalBlocks']>[number]['when'] }[] = [];
   private soundtrack?: CampaignPlayback;
+  private readonly resizeCamera = () => this.fitCamera();
 
   constructor() { super('world'); }
 
@@ -106,7 +109,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const interactKey = () => { if (!this.paused && !ctx.ui.isModalOpen()) this.tryInteract(); };
     this.keys.E.on('down', interactKey); this.keys.SPACE.on('down', interactKey); this.keys.ENTER.on('down', interactKey);
     this.input.on('pointerdown', (p: Phaser.Input.Pointer) => this.onPointer(p));
-    this.scale.on('resize', () => this.fitCamera());
+    this.scale.on('resize', this.resizeCamera);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.scale.off('resize', this.resizeCamera));
     this.playMusic();
     this.cameras.main.fadeIn(ctx.settings.reducedMotion ? 0 : 400, 10, 8, 24);
     ctx.controller.dispatch({ type: 'VisitPlace', name: this.map.name });
@@ -185,6 +189,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
       if (!it.walkThrough) block(it.x, it.y, it.w, it.h);
     }
+    this.changingTiles = (m.conditionalBlocks ?? []).map((tile) => ({
+      ...tile,
+      closed: this.blocked[tile.y]?.[tile.x] ?? true,
+    }));
+    this.refreshBlockedTiles();
     this.threadGfx = this.add.graphics().setDepth(5);
     // Noticing (Insight tree): a faint shimmer over secrets close by. Hidden until the talent is learned.
     this.secretGlows = this.map.interactables.filter((it) => it.kind === 'secret').map((it) => {
@@ -245,6 +254,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   refreshWorld(): void {
     const s = ctx.controller.state;
     if (!s || !this.threadGfx) return;
+    this.refreshBlockedTiles();
     for (const it of this.map.interactables) {
       const img = this.objArt.get(it.id);
       if (img) img.setVisible(!it.visibleIf || ctx.controller.check(it.visibleIf));
@@ -310,6 +320,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
     }
     if (this.portalRing) this.portalRing.setAlpha(ctx.controller.check({ objective: 'm01.o6.label' }) ? 1 : 0.35);
+  }
+
+  private refreshBlockedTiles(): void {
+    for (const { x, y, closed, when } of this.changingTiles) {
+      if (this.blocked[y]?.[x] !== undefined) this.blocked[y][x] = closed || ctx.controller.check(when);
+    }
   }
 
   /** Active play time in this browser session, for the balance reminder. */
@@ -507,7 +523,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   private playMusic(): void {
     if (!this.soundtrack) {
-      this.soundtrack = new CampaignPlayback(this.sound, this.cache.audio);
+      const boot = this.game.scene.getScene('boot') as BootScene;
+      this.soundtrack = new CampaignPlayback(this.sound, this.cache.audio, (key) => boot.loadMusic(key));
       this.events.once(Phaser.Scenes.Events.DESTROY, () => this.soundtrack?.destroy());
     }
     this.soundtrack.follow(this.map.world, this.map.id, this.map.music, ctx.settings.musicVolume);
@@ -841,9 +858,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const want = id && s.flags[`lor.${id}.friend`] === true ? id : '';
     if (this.pet && this.pet.id !== want) { this.pet.sprite.destroy(); this.pet.glow.destroy(); this.pet = null; }
     if (!want || this.pet || !this.player) return;
-    const x = this.player.sprite.x + 12, y = this.player.sprite.y - 14;
-    const glow = this.add.image(x, y, 'glow').setTint(0xfff0a0).setBlendMode(Phaser.BlendModes.ADD).setAlpha(0.85).setScale(0.18);
-    const sprite = this.add.sprite(x, y, 'moth.0').play('moth.flap');
+    const guide = ctx.controller.pack.lorelings.find((l) => l.id === want)?.fieldGuide;
+    const x = this.player.sprite.x + 12, y = this.player.sprite.y + (guide ? 0 : -14);
+    const glow = this.add.image(x, y, 'glow').setTint(0xfff0a0).setBlendMode(Phaser.BlendModes.ADD)
+      .setAlpha(guide ? 0.3 : 0.85).setScale(0.18);
+    const sprite = this.add.sprite(x, y, guide?.sprite ?? 'moth.0');
+    if (!guide) sprite.play('moth.flap');
     this.pet = { id: want, sprite, glow, target: null, until: 0, next: this.time.now + 4000 };
   }
 
@@ -856,8 +876,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     if (!pet) return;
     const now = this.time.now;
     const rec = ctx.controller.pack.lorelings.find((l) => l.id === pet.id);
+    const guide = rec?.fieldGuide;
     const form = rec ? lorelingForm(rec, ctx.controller.pack, ctx.controller.state.objectivesDone).form : 1;
-    if (!pet.target && now > pet.next && !ctx.ui.isModalOpen()) {
+    if (!guide && !pet.target && now > pet.next && !ctx.ui.isModalOpen()) {
       pet.next = now + 7000;
       const px = this.player.sprite.x, py = this.player.sprite.y, range = (form >= 2 ? 11 : 7) * TILE;
       let best: Interactable | null = null, bd = range;
@@ -874,13 +895,13 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
     }
     if (pet.target && now > pet.until) pet.target = null;
-    const t = now / 1000, bob = ctx.settings.reducedMotion ? 0 : Math.sin(t * 3.1) * 2.5;
+    const t = now / 1000, bob = guide || ctx.settings.reducedMotion ? 0 : Math.sin(t * 3.1) * 2.5;
     const side = this.player.facing === 'left' ? -1 : 1;
     const tx = pet.target ? pet.target.x + Math.sin(t * 4) * 5 : this.player.sprite.x + side * 13;
-    const ty = pet.target ? pet.target.y + bob : this.player.sprite.y - 16 + bob;
+    const ty = pet.target ? pet.target.y + bob : this.player.sprite.y + (guide ? 0 : -16) + bob;
     const k = pet.target ? 0.05 : 0.07;
     pet.sprite.x += (tx - pet.sprite.x) * k; pet.sprite.y += (ty - pet.sprite.y) * k;
-    pet.sprite.setFlipX(tx < pet.sprite.x).setDepth(this.player.sprite.y + 49);
+    pet.sprite.setFlipX(tx < pet.sprite.x).setDepth(this.player.sprite.y + (guide ? 14 : 49));
     const bright = pet.target ? (form >= 2 ? 0.45 : 0.36) : (form >= 2 ? 0.24 : 0.18);
     pet.glow.setPosition(pet.sprite.x, pet.sprite.y).setDepth(pet.sprite.depth - 1);
     pet.glow.scale += (bright - pet.glow.scale) * 0.08;
@@ -976,6 +997,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'copy-compare': ctx.ui.openCopyComparison(it.node!); break;
       case 'sea-chart': ctx.ui.openSeaChart(it.node!); break;
       case 'stage-rehearsal': ctx.ui.openStageRehearsal(); break;
+      case 'film-camera': ctx.ui.openFilmCamera(it.node!); break;
+      case 'film-editor': ctx.ui.openFilmEditor(); break;
       case 'market-scale': ctx.ui.openMarketScale(); break;
       case 'water-gate': ctx.ui.openWaterGate(); break;
       case 'civic-console': ctx.ui.openCivicConsole(); break;

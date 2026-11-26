@@ -2,6 +2,7 @@
 import type { Condition } from '../domain/types';
 import { reliefReading, reliefRouting } from '../domain/routeTiles';
 import { WATER_APPEAL_LOWER, WATER_APPEAL_WITNESSES, WATER_APPEAL_YARD } from './civicAppeal';
+import { WATER_FITTING_BENCHES } from './fittingViews';
 import type { Interactable, MapDef } from './types';
 
 function crossing(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'water.waypost'): Interactable {
@@ -59,6 +60,7 @@ export const WATER_GATEHOUSE: MapDef = {
     { stamp: 'water-terrace-wall', x: 3, y: 14 }, { stamp: 'water-terrace-wall', x: 24, y: 16 },
   ],
   interactables: [
+    ...WATER_FITTING_BENCHES,
     crossing('water-council-path', 24, 7, 'the path to the council yard', { map: 'water.council', x: 12, y: 13 }),
     crossing('water-lower-path', 25, 14, 'the lower path past the fields', { map: 'water.lower-channel', x: 5, y: 12 }),
     crossing('water-nexus-return', 12, 17, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 24, y: 11 }, 'preserved.door'),

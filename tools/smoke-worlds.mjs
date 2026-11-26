@@ -212,6 +212,38 @@ async function smokeAccess(browser, nexus) {
   console.log('PASS keyboard focus, 175% text at 390px, settings toggles, and Calm Later with a staged event clock');
 }
 
+async function smokeResize(browser) {
+  const savedMap = await browser.evaluate(() => {
+    const world = window.kg.world;
+    window.resizeCameraCalls = 0;
+    const fitCamera = world.fitCamera;
+    world.fitCamera = function () {
+      window.resizeCameraCalls++;
+      return fitCamera.call(this);
+    };
+    return world.map.id;
+  });
+  const resize = async (width) => {
+    await browser.send('Emulation.setDeviceMetricsOverride', { width, height: 844, deviceScaleFactor: 1, mobile: false });
+    await until(() => browser.evaluate((w) => document.querySelector('#game canvas')?.width === w, width), `canvas resizes to ${width}px`);
+  };
+
+  await resize(392);
+  const calls = await browser.evaluate(() => window.resizeCameraCalls);
+  if (calls !== 1) throw new Error(`One resize ran ${calls} world camera callbacks`);
+
+  await press(browser, 'Escape');
+  await until(() => browser.evaluate(() => !!document.querySelector('[role="dialog"][aria-label="Menu"]')), 'menu before leaving');
+  await button(browser, 'Save and leave');
+  await until(() => browser.evaluate(() => !window.kg.world), 'return to title');
+  await resize(390);
+  if (await browser.evaluate(() => window.resizeCameraCalls) !== calls) throw new Error('World camera callback ran on the title screen');
+
+  await button(browser, 'Continue');
+  await until(() => browser.evaluate((id) => window.kg.world?.map.id === id && !window.kg.world.transitioning, savedMap), 'resume a saved map after resizing');
+  console.log('PASS one world camera resize callback, none on the title screen, and Continue after resizing');
+}
+
 async function snapshot(browser) {
   return browser.evaluate(() => {
     const { game } = window.kg.world;
@@ -324,6 +356,7 @@ try {
   if (mode !== 'maps') {
     try {
       await smokeAccess(browser, maps.find(({ id }) => id === 'nexus.archive'));
+      await smokeResize(browser);
     } catch (error) {
       console.log('FAIL', 'accessibility', error.message);
       process.exitCode = 1;
