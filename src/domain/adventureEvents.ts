@@ -19,7 +19,9 @@ import { biographyReadFlag, isHistoricalBiography } from './historicalEncounters
 import type { Command } from './engine';
 import type { CampaignState, ContentPack, DiaryEntry, DiaryEvent } from './types';
 
-export type DiaryEntryDraft = Omit<DiaryEntry, 'at' | 'mapId'> & { repeat?: 'after-break' | 'always' };
+export type DiaryEntryDraft = Omit<DiaryEntry, 'at' | 'mapId'> & {
+  repeat?: 'after-break' | 'always' | { fixedToolPrefix: string };
+};
 
 export function diaryEvent(
   key: string, kind: DiaryEvent['kind'], ref: string, title: string, text: string,
@@ -31,8 +33,11 @@ export function diaryEvent(
   };
 }
 
-function trial(key: string, ref: string, title: string, text: string, correction = false) {
-  return diaryEvent(key, correction ? 'correction' : 'tool', ref, title, text, { outcome: 'checked' }, 'always');
+// A fixed instrument can show several results during one visit. Cycling through
+// those same results adds no new observation until the player has another encounter.
+function fixedTrial(key: `${string}:${string}`, ref: string, title: string, text: string, correction = false) {
+  const fixedToolPrefix = key.slice(0, key.indexOf(':') + 1);
+  return diaryEvent(key, correction ? 'correction' : 'tool', ref, title, text, { outcome: 'checked' }, { fixedToolPrefix });
 }
 
 /** Describe completed commands from their validated parameters and the same authored models the tools display. */
@@ -93,7 +98,7 @@ export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, ne
     }
     case 'NileRouteTrial': {
       const result = runNileTrial(cmd.road);
-      return trial(`nile-trial:${cmd.road}`, cmd.road, result.name, `I tried this road with the same high crate. ${result.line}`);
+      return fixedTrial(`nile-trial:${cmd.road}`, cmd.road, result.name, `I tried this road with the same high crate. ${result.line}`);
     }
     case 'NileDelivery': {
       const result = nileDelivery(cmd.choice);
@@ -102,52 +107,52 @@ export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, ne
     case 'ObserveForest': {
       const counts = forestWatch(cmd.site, cmd.window).map((count) => count ?? 'hidden');
       const site = FOREST_WATCH[cmd.site];
-      return trial(`forest-watch:${cmd.site}:${cmd.window}`, cmd.site, site.name,
+      return fixedTrial(`forest-watch:${cmd.site}:${cmd.window}`, cmd.site, site.name,
         `I kept the ${cmd.window} watch. Crossings in order: ${counts.join(', ')}. ${site.view}`);
     }
     case 'CompareMetalSample': {
       const sample = readMetalSample(cmd.sample);
-      return trial(`metal-sample:${cmd.sample}`, cmd.sample, sample.name, `I weighed this panel. The balance read ${sample.mass}.`);
+      return fixedTrial(`metal-sample:${cmd.sample}`, cmd.sample, sample.name, `I weighed this panel. The balance read ${sample.mass}.`);
     }
     case 'CompareCopy': {
       const comparison = compareCopy(cmd.edition);
       const restored = comparison.restored.length > 0;
       const lines = (restored ? comparison.restored : comparison.lost).join('” and “');
-      return trial(`copy-check:${cmd.edition}`, cmd.edition, comparison.after.name,
+      return fixedTrial(`copy-check:${cmd.edition}`, cmd.edition, comparison.after.name,
         `I lined up the date and source with the ${comparison.before.name.toLowerCase()}. This copy ${restored ? 'restored' : 'lost'} “${lines}”.`, restored);
     }
     case 'ReadSeaChart': {
       const chart = seaChart(cmd.chart);
-      return trial(`sea-chart:${cmd.chart}`, cmd.chart, chart.title, `I checked the landmarks and the survey’s edge. ${chart.limit}`);
+      return fixedTrial(`sea-chart:${cmd.chart}`, cmd.chart, chart.title, `I checked the landmarks and the survey’s edge. ${chart.limit}`);
     }
     case 'RunStageRehearsal': {
       const beats = stageRehearsal(cmd.cue);
-      return trial(`rehearsal:${cmd.cue}`, cmd.cue, 'Rehearsal at the doorway', `I played the middle of the scene in this order. ${beats[1].text} ${beats[2].text}`);
+      return fixedTrial(`rehearsal:${cmd.cue}`, cmd.cue, 'Rehearsal at the doorway', `I played the middle of the scene in this order. ${beats[1].text} ${beats[2].text}`);
     }
     case 'WeighMarketLots': {
       const lots = marketComparison(cmd.basis);
       const basis = { gross: 'including the basket', net: 'without the basket', wick: 'usable for wicks' }[cmd.basis];
-      return trial(`market-weigh:${cmd.basis}`, cmd.basis, 'The Market test scale',
+      return fixedTrial(`market-weigh:${cmd.basis}`, cmd.basis, 'The Market test scale',
         `I compared the weights ${basis}. Lot A gave ${lots[0].mass} g and lot B gave ${lots[1].mass} g.`);
     }
     case 'RunWaterTrial': {
       const condition = previous.flags['water.repaired'] === true ? 'repaired' : 'drought';
       const result = waterTrial(condition, cmd.setting);
-      return trial(`water-run:${condition}:${cmd.setting}`, cmd.setting, 'The Water Commons trial gate',
+      return fixedTrial(`water-run:${condition}:${cmd.setting}`, cmd.setting, 'The Water Commons trial gate',
         `I tried ${cmd.setting} at the ${condition} gate. The ${result.incoming} buckets split into ${result.farm} for the fields and ${result.river} for the channel. ${result.leak} leaked at the gate.`);
     }
     case 'RunCivicTrial': {
       const result = civicAllocation(cmd.sample, cmd.rule);
-      return trial(`civic-run:${cmd.sample}:${cmd.rule}`, cmd.sample, 'Comparing the Civic registers',
+      return fixedTrial(`civic-run:${cmd.sample}:${cmd.rule}`, cmd.sample, 'Comparing the Civic registers',
         `I tried the ${cmd.rule} rule with the ${cmd.sample} register. North Steps and Canal Walk had ${result.counts.steps} and ${result.counts.canal} requests and received ${result.windows.steps} and ${result.windows.canal} windows.`);
     }
     case 'RunVoiceReading': {
       const reading = voiceReading(cmd.source, cmd.view);
-      return trial(`voice-reading:${cmd.source}:${cmd.view}`, cmd.source, reading.label, `I checked the ${cmd.view} at the listening desk. ${reading.text} ${reading.purpose}`);
+      return fixedTrial(`voice-reading:${cmd.source}:${cmd.view}`, cmd.source, reading.label, `I checked the ${cmd.view} at the listening desk. ${reading.text} ${reading.purpose}`);
     }
     case 'RunIslandPlan': {
       const result = islandPlan(cmd.landing, cmd.route);
-      return trial(`island-plan:${cmd.landing}:${cmd.route}`, cmd.route, 'The Island route model',
+      return fixedTrial(`island-plan:${cmd.landing}:${cmd.route}`, cmd.route, 'The Island route model',
         `I tested the ${cmd.route} route with the ${cmd.landing} landing. The model gives ${result.circuits} trips and ${result.minutes} minutes for the same eight crates.`);
     }
     case 'RunScoutRoute': {
@@ -161,27 +166,27 @@ export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, ne
     case 'ReviewScoutProtocol': {
       const report = scoutReport(scoutTrials('orchard', cmd.protocol));
       const condition = cmd.protocol === 'informed' ? 'with' : 'without';
-      return trial(`scout-review:${cmd.protocol}`, cmd.protocol, 'The scout’s six possible rounds',
+      return fixedTrial(`scout-review:${cmd.protocol}`, cmd.protocol, 'The scout’s six possible rounds',
         `I opened all ${report.rounds} possible rounds ${condition} gate notes. Of ${report.blocked} rounds that showed a blocked gate, holding worked in ${report.hold} and changing worked in ${report.change}.`);
     }
     case 'SetServiceBoundary': {
       const plan = servicePlan(cmd.seam);
       const stops = plan.delivered.map(({ label }) => label).join(', ');
-      return trial(`civic-boundary:${cmd.seam}`, cmd.seam, 'The night service map',
+      return fixedTrial(`civic-boundary:${cmd.seam}`, cmd.seam, 'The night service map',
         `I put the line at ${SERVICE_CUTS[cmd.seam].name}. The same requests were still on the map. The cart’s first stops would be ${stops}.`);
     }
     case 'CaptureFilmTake': {
       const first = filmTake(cmd.station)[0];
-      return trial(`film-camera:${cmd.station}`, cmd.station, 'Filming the doorway', `I filmed the rehearsal. ${first.description}`);
+      return fixedTrial(`film-camera:${cmd.station}`, cmd.station, 'Filming the doorway', `I filmed the rehearsal. ${first.description}`);
     }
     case 'ScreenFilmCut':
-      return trial(`film-screening:${cmd.cut}`, cmd.cut, 'Screening a doorway cut', `I showed the cut that opens with ${cmd.cut === 'cue' ? 'the keeper’s hand' : 'the moving cart'}. ${FILM_READER[cmd.cut]}`);
+      return fixedTrial(`film-screening:${cmd.cut}`, cmd.cut, 'Screening a doorway cut', `I showed the cut that opens with ${cmd.cut === 'cue' ? 'the keeper’s hand' : 'the moving cart'}. ${FILM_READER[cmd.cut]}`);
     case 'PostFilmCut':
       return diaryEvent(`film-post:${cmd.cut}`, 'choice', cmd.cut, 'Hanging the doorway cut',
         `I posted the cut that opens with ${cmd.cut === 'cue' ? 'the keeper’s hand' : 'the moving cart'}. ${FILM_READER[cmd.cut]}`, { outcome: 'changed' });
     case 'RunCouncilClock': {
       const result = councilClock(cmd.trial);
-      return trial(`council-clock:${cmd.trial}`, cmd.trial, 'The Council watch test',
+      return fixedTrial(`council-clock:${cmd.trial}`, cmd.trial, 'The Council watch test',
         `I checked the watch at ${result.watch} against the reference at ${result.reference}. At the next mark the watch read ${result.after}.`);
     }
   }

@@ -277,12 +277,23 @@ export function recordAdventure(
     previousAction = entries[i];
     break;
   }
+  const checkedThisVisit = (key: string, text: string, prefix: string) => {
+    for (let i = entries.length - 1; i >= 0; i--) {
+      const entry = entries[i];
+      if (!canSeparate(entry)) continue;
+      if (entry.mapId !== next.mapId || !entry.event?.key.startsWith(prefix)) return false;
+      if (entry.event.key === key && entry.text === text) return true;
+    }
+    return false;
+  };
   const added: DiaryEntry[] = [];
   for (const draft of drafts) {
     const { repeat, ...data } = draft;
     if (!repeat && known.has(data.id)) continue;
     if (repeat === 'after-break' && previousAction?.event?.key === data.id && previousAction.mapId === next.mapId
       && previousAction.text === data.text) continue;
+    if (typeof repeat === 'object' && known.has(data.id)
+      && checkedThisVisit(data.id, data.text, repeat.fixedToolPrefix)) continue;
     let id = data.id;
     for (let occurrence = 2; known.has(id); occurrence++) id = `${data.id}@${occurrence}`;
     const entry = { ...data, id, at: now, mapId: next.mapId };

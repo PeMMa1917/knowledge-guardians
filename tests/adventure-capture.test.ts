@@ -57,20 +57,33 @@ describe('Adventure encounter capture', () => {
     });
   });
 
-  it('records visible blocked feedback and actual copy tests and restores only after a repair', () => {
+  it('records blocked feedback, coalesces identical copy checks and keeps a later revisit and repair', () => {
     const fresh = newCampaign(pack, 'Route test', 'diary-player', 7);
     const d = setup({ ...fresh, mapId: 'copies.press', flags: { ...fresh.flags, 'copies.arrived': true } });
     const failed = d.action({ type: 'CompareCopy', edition: 'landing' });
     expect(failed.events[0]?.kind).toBe('error');
     expect(d.view().entries).toEqual([]);
     d.action({ type: 'ReadWorldSign', id: 'closed-lane', title: 'the short lane', text: 'Use the ordinary steps until the keeper waves it open.', blocked: true });
-    d.action({ type: 'CompareCopy', edition: 'press' });
-    d.action({ type: 'CompareCopy', edition: 'press' });
-    expect(d.view().entries.map(({ id }) => id)).toEqual([
-      'blocked-route:copies.press:closed-lane', 'copy-check:press', 'copy-check:press@2',
-    ]);
+    const press: Command = { type: 'CompareCopy', edition: 'press' };
+    d.action(press);
+    const firstReading = d.state;
+    const permanent = d.permanent;
+    d.action(press, second);
+    expect(d.state).toBe(firstReading);
+    expect(d.permanent).toBe(permanent);
+    expect(d.view().entries.map(({ id }) => id)).toEqual(['blocked-route:copies.press:closed-lane', 'copy-check:press']);
     expect(d.view().entries[0]).toMatchObject({ text: expect.stringContaining('ordinary steps'), event: { outcome: 'blocked' } });
-    expect(d.view().entries[2].text).toMatch(/lost .During Tuesday.s trial/);
+    d.state.mapId = 'copies.landing';
+    d.action({ type: 'CompareCopy', edition: 'landing' });
+    d.state.mapId = 'copies.press';
+    const beforeRevisit = d.state;
+    const permanentBeforeRevisit = d.permanent;
+    d.action(press, second);
+    expect(d.state).toEqual({ ...beforeRevisit, adventureDiary: d.state.adventureDiary });
+    expect(d.permanent).toEqual(permanentBeforeRevisit);
+    expect(d.view().entries.find(({ id }) => id === 'copy-check:press@2')).toMatchObject({
+      at: second, text: expect.stringMatching(/lost .During Tuesday.s trial/),
+    });
     d.state.mapId = 'copies.landing';
     expect(d.action({ type: 'CompareCopy', edition: 'proof' }).events[0]?.kind).toBe('error');
     d.state.flags['copies.followup'] = true;
@@ -79,6 +92,30 @@ describe('Adventure encounter capture', () => {
       id: 'copy-check:proof', at: second, mapId: 'copies.landing', text: expect.stringMatching(/restored.*Tuesday.*trial log/),
       event: expect.objectContaining({ kind: 'correction', outcome: 'checked' }),
     }));
+  });
+
+  it('keeps a changed gate condition and each actual experiment at the marking bench', () => {
+    const fresh = newCampaign(pack, 'Route test', 'diary-player', 7);
+    const d = setup({ ...fresh, mapId: 'water.gatehouse', flags: { ...fresh.flags, 'water.arrived': true } });
+    const run: Command = { type: 'RunWaterTrial', setting: 'fields' };
+    d.action(run);
+    d.action({ type: 'SetFlag', flag: 'water.repaired', value: true });
+    d.action(run, second);
+    d.action(run, second);
+    const tests = d.view().entries.filter(({ event }) => event?.kind === 'tool');
+    expect(tests).toMatchObject([
+      { id: 'water-run:drought:fields', text: expect.stringContaining('2 leaked at the gate') },
+      { id: 'water-run:repaired:fields', text: expect.stringContaining('0 leaked at the gate') },
+    ]);
+
+    const workshop = setup();
+    const simulate: Command = { type: 'RunSimulation', pen: 'loud-model', surface: 'paper' };
+    workshop.action(simulate);
+    workshop.action(simulate, second);
+    expect(workshop.state.flags['sim.tests']).toBe(2);
+    expect(workshop.view().entries.filter(({ event }) => event?.kind === 'tool').map(({ id }) => id)).toEqual([
+      'simulation:loud-model:paper', 'simulation:loud-model:paper@2',
+    ]);
   });
 
   it('remembers the same personalized conversation that actually opened', () => {
