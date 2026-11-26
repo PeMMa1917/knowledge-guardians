@@ -99,6 +99,7 @@ import { cueWorkshopPanel } from './cueWorkshop';
 import { datePegPanel } from './datePeg';
 import { LANTERN_WEAVE } from '../content/lanternWeave';
 import { lanternWeavePanel } from './lanternWeave';
+import { shutterBoardPanel } from './shutterBoard';
 import { DATE_REGISTER_GROUP } from '../content/dateRegisterCases';
 import { dateRegisterPanel } from './dateRegister';
 import { STORY_FRAME_GROUP } from '../content/storyArchive';
@@ -166,6 +167,8 @@ import { badgeAnnexPanel } from './badgeAnnex';
 import { workSchedulePanel } from './workSchedule';
 import { EARLIER_VIEWING } from '../content/earlierViewing';
 import { earlierViewingPanel } from './earlierViewing';
+import { BEATER_GAME } from '../domain/beaterProof';
+import { beaterProofPanel } from './beaterProof';
 import { CURTAIN_PREFIX } from '../content/curtainCall';
 import { curtainCallPanel } from './curtainCall';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
@@ -3160,6 +3163,10 @@ export class UI implements UIApi {
     } else if (id.startsWith(EARLIER_VIEWING)) {
       this.openModal('bench-panel wide', 'A second view', this.closeBtn(), earlierViewingPanel(ctx.controller,
         id.slice(EARLIER_VIEWING.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(BEATER_GAME)) {
+      this.openModal('bench-panel wide', 'Both Faces at the Same Stop', this.closeBtn(), beaterProofPanel(ctx.controller,
+        id.slice(BEATER_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
+        localGuide(ctx.controller, MAPS[ctx.controller.state.mapId]?.world ?? '', 'beater.proof.placed'));
     } else if (id.startsWith(STAR_GAME)) {
       this.openModal('bench-panel wide', 'Field methods', this.closeBtn(), starField(ctx.controller,
         id.slice(STAR_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
@@ -3242,6 +3249,9 @@ export class UI implements UIApi {
       const place = id.slice(LANTERN_WEAVE.length + 1);
       this.openModal('bench-panel wide', 'The Half-Light Room', this.closeBtn(),
         lanternWeavePanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'shutter-board') {
+      this.openModal('bench-panel wide', 'The Two Shutter Room', this.closeBtn(),
+        shutterBoardPanel(ctx.controller, () => ctx.world?.refreshWorld(), () => this.sfx('sfx.page')));
     } else if (id.startsWith(`${IMPRINT_GROUP}:`)) {
       const place = id.slice(IMPRINT_GROUP.length + 1);
       this.openModal('bench-panel wide', 'The Second Imprint', this.closeBtn(),

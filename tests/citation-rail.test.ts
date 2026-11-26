@@ -109,6 +109,7 @@ describe('The Line a Reader Can Follow and A Sunset on the Proof', () => {
     }
     expect(d.s.inventory[comb]).toBe(1);
     expect(d.done(prefix + 'nexus.found')).toBe(true);
+    expect(d.p.skills['SK-MICRO-0399']).toEqual([expect.stringMatching(/^WORLD-01\|.*\|citation\.rail\.nexus\.found\|/)]);
     expect(available(d, prefix + `nexus.${nexus}-done`)).toBe(true);
     scene(d, `nexus.${nexus}-done`);
     expect(d.s.inventory[comb]).toBe(1);

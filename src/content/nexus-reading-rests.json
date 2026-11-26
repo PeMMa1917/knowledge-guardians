@@ -42,7 +42,8 @@
       ],
       "aoks": [
        "HUM",
-       "MAT"
+       "MAT",
+       "POL"
       ],
       "subjects": [
        "math-ai",
@@ -143,7 +144,7 @@
    "id": "nexus.rest.bench",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "The joiner puts two rests into your hands. Together they hold two books open at the low table. A rest can also go out and return on a hook by the ledger. Either plan leaves someone waiting for part of what they asked for.",
+   "text": "The joiner puts two rests into your hands. Together they hold two books open at the low table. A rest can also go out and return on a hook by the ledger. Either plan leaves someone waiting for part of what they asked for. The hall stewards use tomorrow’s list to decide which groups get the next delivery. The waiting group needs a line there as well as the people using the rests now.",
    "options": [
     {
      "text": "Carry both rests to the low table.",

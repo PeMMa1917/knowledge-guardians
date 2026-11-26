@@ -20,6 +20,7 @@ import { NEXUS_DOOR_FOLD } from './doorFold';
 import { NEXUS_CITATION_RAIL } from './citationRail';
 import { NEXUS_SAME_RED } from './sameRed';
 import { NEXUS_LANTERN_WEAVE } from './lanternWeave';
+import { NEXUS_SHUTTERS, SHUTTER_VISITORS } from './shutterBoard';
 import { SPECIMEN_VAULT_DOOR } from './specimenVault';
 import { NUMBER_LEAF_RETURNS } from './numberLeaves';
 import { MODEL_RECORD_RETURNS } from './modelRecords';
@@ -140,6 +141,7 @@ export const NEXUS: MapDef = {
   ],
   npcs: [
     EARLY_CURTAIN_NPC,
+    ...SHUTTER_VISITORS,
     { id: 'warden-ise', x: 12, y: 11, facing: 'down' },
     { id: 'curator-dace', x: 4, y: 8, facing: 'right' },
     { id: 'clerk-venn', x: 20, y: 8, facing: 'left' },
@@ -160,6 +162,7 @@ export const NEXUS: MapDef = {
     ...NEXUS_CITATION_RAIL,
     ...NEXUS_SAME_RED,
     ...NEXUS_LANTERN_WEAVE,
+    ...NEXUS_SHUTTERS,
     SPECIMEN_VAULT_DOOR,
     ...NUMBER_LEAF_RETURNS,
     ...MODEL_RECORD_RETURNS,

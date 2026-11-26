@@ -38,6 +38,7 @@ describe('A Plank on the Same Bank', () => {
     expect(d.done(BRIDGE_PROOF_CHECKED)).toBe(false);
     d.run({ type: 'SetFlag', flag: BRIDGE_PARITY_CHECKED, value: true });
     expect(d.done(BRIDGE_PROOF_CHECKED)).toBe(true);
+    expect(d.p.skills['SK-MICRO-0332']).toEqual([expect.stringMatching(/^WORLD-02\|.*\|bridge\.proof\.checked\|/)]);
     expect(EMBERFORD_BRIDGE_PROOF.filter((prop) => check(prop.visibleIf, d.s))).toEqual([rail]);
     d.run({ type: 'SetFlag', flag: BRIDGE_PROOF_POSTED, value: choice });
     const waypoint = EMBERFORD_BRIDGE_PROOF.find(({ id }) => id === waypointId)!;
@@ -47,8 +48,10 @@ describe('A Plank on the Same Bank', () => {
     const receipt = EMBERFORD_BRIDGE_PROOF.find(({ id }) => id === receiptId)!;
     expect(EMBERFORD_BRIDGE_PROOF.filter((prop) => check(prop.visibleIf, d.s))).toEqual([rail, waypoint, receipt]);
     expect(d.done('bridge.proof.delivered')).toBe(false);
+    expect(d.p.skills['SK-MICRO-0887']).toBeUndefined();
     d.run({ type: 'SetFlag', flag: receipt.flag!, value: true });
     expect(d.done('bridge.proof.delivered')).toBe(true);
+    expect(d.p.skills['SK-MICRO-0887']).toEqual([expect.stringMatching(/^WORLD-02\|.*\|bridge\.proof\.delivered\|/)]);
     expect(d.s.journal).toContain('j.bridge.proof');
     expect(d.p.credit).toEqual({});
   });

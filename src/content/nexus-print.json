@@ -18,7 +18,7 @@
       "framework": ["perspectives", "methods-and-tools", "ethics"],
       "thinking": { "dok": 2, "bloom": "apply", "fink": "human", "solo": "multistructural" },
       "atl": ["thinking", "research", "communication"],
-      "aoks": ["ART", "MAT"],
+      "aoks": ["ART", "MAT", "TEC", "LAN"],
       "subjects": ["visual-arts", "design-tech", "math-ai"]
      },
      "skills": ["SK-THK-05", "SK-THK-14"]
@@ -109,7 +109,7 @@
    "id": "nexus.print.joined",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "The carrier lifts the joined image. At a glance, she can follow the two colours from the shore to the red marks. She points at the ferry key. A cart driver who had crossed out the red jetty puts it back on the walking route."
+   "text": "The carrier lifts the joined image. At a glance, she can follow the two colours from the shore to the red marks. She points at the ferry key. A cart driver who had crossed out the red jetty puts it back on the walking route. The printmaker keeps the separate sheets at the bench so the next worker can still check how the mark moved."
   },
   {
    "id": "nexus.print.layers",

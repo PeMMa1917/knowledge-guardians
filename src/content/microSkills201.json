@@ -900,6 +900,21 @@
         ],
         "game": 171,
         "story": 48
+      },
+      {
+        "objective": "nile.opening-pins.compare",
+        "action": "Hold both lookalike copies against the same stop, then use the printed copy’s failed fit to challenge the claim that either copy hangs.",
+        "styles": [
+          "challenger",
+          "maker"
+        ],
+        "modes": [
+          "physical",
+          "visual",
+          "analytical"
+        ],
+        "game": 171,
+        "story": 77
       }
     ]
   },
@@ -1947,6 +1962,21 @@
         ],
         "game": 179,
         "story": 54
+      },
+      {
+        "objective": "bridge.proof.checked",
+        "action": "Trace both routes under the original crossings rule and keep the branches that could not reach the rack in three moves beside the revised proof.",
+        "styles": [
+          "strategist",
+          "challenger"
+        ],
+        "modes": [
+          "spatial",
+          "visual",
+          "analytical"
+        ],
+        "game": 206,
+        "story": 77
       }
     ]
   },
@@ -2929,6 +2959,21 @@
           "reading",
           "writing",
           "spatial"
+        ],
+        "game": 285,
+        "story": 93
+      },
+      {
+        "objective": "citation.rail.nexus.found",
+        "action": "Check the public source’s title and identifier, then follow the strip from Dace’s claim to the exact catalogue before letting a reader use it.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "analytical"
         ],
         "game": 285,
         "story": 93

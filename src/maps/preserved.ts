@@ -5,6 +5,7 @@ import { COLD_LINTEL } from './lintelFold';
 import { WORKROOM_SEAM } from './seamWitness';
 import { COLD_PAPER_LANDING } from './paperLanding';
 import { CLEARANCE_DOOR } from './clearanceGallery';
+import { BEATER_COLD_STORE, BEATER_WORKROOM_PRESS } from './beaterProof';
 import { POLAR_ARCHIVE_PROPS } from './polarStore';
 import { PERKINS_COLD_REVISIT } from './perkinsReturn';
 import { sceneProp } from './sceneProps';
@@ -78,6 +79,7 @@ export const PRESERVED_ARCHIVE = room({
   ],
   interactables: [
     CLEARANCE_DOOR,
+    ...BEATER_COLD_STORE,
     GLASS_RACK_DOOR,
     ...POLAR_ARCHIVE_PROPS,
     ...PERKINS_COLD_REVISIT,
@@ -295,6 +297,7 @@ export const PRESERVED_WORKROOM = room({
   ],
   interactables: [
     door('preserved-workroom-back', 10, 13, 'the passage back to the Cold Store', { map: 'preserved.archive', x: 23, y: 11 }),
+    BEATER_WORKROOM_PRESS,
     ...WORKROOM_SEAM,
     record('XIN-CONTEXT', 5, 5, 'the Mawangdui context file', 'preserved.context'),
     record('XIN-METHOD', 15, 5, 'the Hunan methods report', 'preserved.catalogue'),

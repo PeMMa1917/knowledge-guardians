@@ -754,6 +754,21 @@
         ],
         "game": 206,
         "story": 97
+      },
+      {
+        "objective": "nile.opening-pins.compare",
+        "action": "Use the same fixed pins and stop to compare the two circle positions. Keep the tested alignment tied to this rack and check whether each copy seats.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "spatial",
+          "analytical"
+        ],
+        "game": 206,
+        "story": 55
       }
     ]
   },

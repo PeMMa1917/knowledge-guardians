@@ -60,6 +60,24 @@ The additional teaching plans, slides and discussion guides inform how character
 
 For political and technological questions, give players an identifiable decision-maker, a route by which a claim or rule travels, and somebody who cannot use the result as written. For history and the arts, give records and performances distinct purposes. A recorded date, a remembered experience and a staged cue can all matter to an investigation for different reasons. Avoid giving them one common test of reliability.
 
+### Critical thinking and participation
+
+Beth Black and colleagues’ 2008 Cambridge Assessment taxonomy names five groups. Its 26 subskills distinguish activities such as noticing a missing assumption, deciding whether evidence is sufficient, drawing a conclusion within the evidence, weighing a difficult decision, and revising one’s own reasoning. A game action contributes evidence when it lets the player do the thinking and check what follows. [Cambridge Assessment, pp. 30–35](https://doi.org/10.17863/CAM.100474)
+
+| Cambridge group | Play and consequence |
+|---|---|
+| Analysis | At the Three Firsts, decide which meaning of “first” each object supports. At the ferry print, check why a red mark sends a cart driver away from the exact place a ferry crew boards. |
+| Evaluation | Test the printed and punched Nile copies at the same stop. One lookalike fails to hang, so the porter’s all-rule loses its support. |
+| Inference | Trace the bridge branches while each ordinary move switches banks. Test which conclusion holds after the same-bank plank changes the rule. |
+| Synthesis and construction | Choose which dated slip a Nile reader can access on the board or at a staffed desk. Preserve both dates so the reader can tell when to come back. |
+| Self-reflection and self-correction | Reopen the first City proof after two reader routes change. Test why it fails on each route and fit a repair while keeping the earlier proof on file. |
+
+The public reading-rest case gives tomorrow’s hall stewards both completed loans and unmet requests. The player has to make an allocation, see who waits, and keep that group visible to the next decision-maker. The Water deliveries add physical responses and a way to preserve objections. These choices connect civic participation to inclusion, listening and acting on a shared problem. [UNESCO, Global citizenship and peace education](https://www.unesco.org/en/global-citizenship-peace-education)
+
+Buku-Larrŋgay Mulka Centre’s published account sits alongside the public dates of the two Yirrkala petitions. Shoal Shelf gives readers access to the public record and directs a separate reproduction question to the community. The community and institution each have their own voice. [Buku-Larrŋgay Mulka Centre](https://yirrkala.com/history/) · [UNESCO, Local and Indigenous Knowledge Systems](https://www.unesco.org/en/links) · [United Nations Declaration on the Rights of Indigenous Peoples, arts. 18–19, 31](https://documents.un.org/doc/undoc/gen/n06/512/07/pdf/n0651207.pdf)
+
+In the Two Shutter Room, the failed trace shows where the beam stopped. The player can change one mirror, test again, and check the result at the actual shutter. The hall fitting gives further feedback from the carrier and the reader, and leaves time to act on both replies. This follows the feedback toolkit’s emphasis on specific guidance, confirmation of what worked, and a chance to act on what was learned. [Education Endowment Foundation, Feedback](https://educationendowmentfoundation.org.uk/education-evidence/teaching-learning-toolkit/feedback)
+
 ## Version 3 examples
 
 | Game action | What changes when players use it |

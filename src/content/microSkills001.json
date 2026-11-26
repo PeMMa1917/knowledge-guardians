@@ -36,6 +36,22 @@
         ],
         "game": 234,
         "story": 72
+      },
+      {
+        "objective": "nile.opening-pins.placed",
+        "action": "Fit the tested tag or source guide where a different reader can use the keepers’ two-circle mark, then check what that reader can do.",
+        "styles": [
+          "helper",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "physical",
+          "social"
+        ],
+        "game": 175,
+        "story": 52
       }
     ]
   },

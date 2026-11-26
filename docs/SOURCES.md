@@ -346,7 +346,7 @@ Five individual collection records supply the measured edge used at the viewing 
 - Recuay architectural vessel made in the Central Andes, 1–700 CE. The fitting uses its 19.4 cm catalogue width. [CMA 2020.222](https://clevelandart.org/art/2020.222)
 - Paint box inscribed for Vizier Amenemope, Dynasty 18, about 1427–1401 BCE. The fitting uses its 21 cm width. [CMA 1914.680](https://clevelandart.org/art/1914.680)
 - Akan-style copper-alloy gold weight from Ghana, 1800s. The fitting uses the 2.4 cm side. [CMA 1962.244](https://clevelandart.org/art/1962.244)
-- Wooden tapa cloth beater from Hawai‘i, 20th century before 1930. The fitting uses its recorded length of 38.7 cm. [CMA 1971.152](https://clevelandart.org/art/1971.152)
+- Wooden tapa cloth beater from Hawaiʻi, 20th century before 1930. The fitting uses the overall length of 38.7 cm. The equipped return uses the museum’s description of four differently grooved faces to prompt a comparison on the workroom’s plain fictional block. Its contact marks and press settings belong to that model. [CMA 1971.152](https://clevelandart.org/art/1971.152)
 - Feline incense burner from Khurasan, Iran, 1150–1200 CE. The fitting uses its catalogue height of 35.5 cm. [CMA 1948.308](https://clevelandart.org/art/1948.308)
 
 ## When the Two Clocks Agree, Emberford Study

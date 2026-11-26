@@ -54,6 +54,7 @@ import scenes from './prop-scenes.json';
 import preservedRecords from './preserved-records.json';
 import preserved from './m04-preserved.json';
 import reconstruction from './preserved-reconstruction.json';
+import beaterProof from './beater-proof.json';
 import copper from './preserved-copper.json';
 import preservedExhibition from './preserved-exhibition.json';
 import observatory from './m05-observatory.json';
@@ -160,6 +161,7 @@ import { warmRoomContent } from './warmRoomCases';
 import { mapAlignmentContent } from './mapAlignment';
 import { scriptRailContent } from './scriptRail';
 import twoCalls from './two-calls.json';
+import twoShutters from './two-shutters.json';
 import pigmentWindow from './pigment-window.json';
 import { correspondenceRoomContent } from './correspondenceRoom';
 import porterPace from './porter-pace.json';
@@ -175,7 +177,7 @@ const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'mission
 
 export function buildPack(): ContentPack {
   const pack: any = { id: 'chapter-1', contentVersion: CONTENT_VERSION };
-  const collectionRooms = [clearanceContent, datePegContent, relayContent, asiaLabelContent, specimenWorkContent, polarStore, fernRecordContent,
+  const collectionRooms = [clearanceContent, beaterProof, datePegContent, relayContent, asiaLabelContent, specimenWorkContent, polarStore, fernRecordContent,
     lanternWeaveContent, dateRegisterContent, passageContent, windowShop, readingWorksContent, storyArchiveContent, copyImprintContent,
     referenceProofs, numberLeafContent, surveyDepotContent, referenceLineContent, turningTableContent, makerRoomContent, makerExactContent,
     timbuktuManuscriptContent, objectUseContent, leavittPlateContent, referenceStation, callboardContent, cueWorkshopContent,
@@ -183,7 +185,7 @@ export function buildPack(): ContentPack {
     loadingBayContent, glassRackContent, shoreReplyContent, ferryWindowContent, starPathContent, tokBadgeContent,
     ferryPackingContent, workScheduleContent, bearingBayContent, jigShopContent, earlierViewsContent, curtainContent,
     coastDetector, bridgeProof, memoryCart, dispatchStatsContent, prismViewerContent, priceDrawersContent, warmRoomContent,
-    mapAlignmentContent, scriptRailContent, pigmentWindow, correspondenceRoomContent, porterPace, leafFrame, forestNarrators, spareSeat, lastTurn, twoCalls];
+    mapAlignmentContent, scriptRailContent, pigmentWindow, correspondenceRoomContent, porterPace, leafFrame, forestNarrators, spareSeat, lastTurn, twoCalls, twoShutters];
   for (const k of keys) pack[k] = [...parts, ...collectionRooms].flatMap((p) => p[k] ?? []);
   const content = pack as ContentPack;
   content.questions.push(...QUESTION_ROUTES.map(({ question }) => question));

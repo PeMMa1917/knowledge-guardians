@@ -1,4 +1,5 @@
 import type { ContentPack, Hint, Objective } from '../domain/types';
+import { BEATER_KEY, BEATER_PRESS_MAP, BEATER_PRESS_PROP } from '../domain/beaterProof';
 import objects from './clearance-specimens.json';
 
 const COLLECTION = 'Cleveland Museum of Art';
@@ -71,6 +72,11 @@ export const clearanceContent = {
     specimen: {
       key: `cma:${record.accession}`, accession: record.accession, institution: COLLECTION,
       source: record.source, objective: record.objective, pixelAsset: `specimens/cma-${record.accession}.jpg`,
+      ...(`cma:${record.accession}` === BEATER_KEY ? {
+        revisit: { map: BEATER_PRESS_MAP, prop: BEATER_PRESS_PROP,
+          method: 'Compare two local proof faces at the same stop.',
+          hint: 'Equip the working copy and look for the plain two-face block in the Reconstruction Workroom.' },
+      } : {}),
     },
   })),
   cards: CLEARANCE_CASES.map((record) => ({

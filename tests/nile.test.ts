@@ -159,6 +159,7 @@ describe('Chapter 2: the door without a name', () => {
     d.talk('nile-iman', 'Check the folded packet', 'Fit the sending stub', 'Return the stub', 'Fit the shelving slip',
       'Return the shelving slip', 'Clip both fitted slips', position);
     expect(d.done('nile.transit.compare')).toBe(true);
+    expect(d.p.skills['SK-MICRO-0529']).toEqual([expect.stringMatching(/^WORLD-03\|.*\|nile\.transit\.compare\|/)]);
     expect(d.s.flags['nile.transit.layout']).toBe(layout);
     expect(d.s.flags['nile.dispatch']).toBeUndefined();
     d.talk('nile-iman', packet);

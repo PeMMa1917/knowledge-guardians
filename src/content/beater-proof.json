@@ -1,0 +1,44 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH3-R43",
+      "title": "Both Faces at the Same Stop",
+      "world": "WORLD-04",
+      "available": { "objective": "clearance.hawaiian-tapa-beater.heard" },
+      "stake": "Aster’s next trainee needs a proof they can match to the setup that made it.",
+      "knowledgeQuestion": "What has to stay fixed when we compare traces from two faces of a tool?",
+      "objectives": [
+        {
+          "id": "beater.proof.placed",
+          "title": "Try both faces at one press stop and put the pair to use in the Cold Store.",
+          "essential": false,
+          "visible": { "flagSet": "beater.proof.record" },
+          "done": { "all": [{ "flagSet": "beater.proof.placement" }, { "flag": "beater.proof.used", "eq": true }] },
+          "onComplete": [{ "journal": "j.beater.proof.placed" }],
+          "weave": {
+            "concepts": ["evidence", "objectivity", "explanation", "justification", "responsibility"],
+            "framework": ["scope", "methods-and-tools", "ethics"],
+            "thinking": { "dok": 3, "bloom": "analyse", "fink": "application", "solo": "relational" },
+            "atl": ["research", "thinking", "communication"],
+            "aoks": ["NAT", "ART", "HIS"],
+            "subjects": ["design-tech", "physics", "visual-arts"],
+            "minutes": 4
+          }
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.beater.proof.placed",
+      "claimKind": "observation",
+      "text": "The plain workroom block left different marks on two strips at the same stop. I put the tested pair to use in the Cold Store and kept that stop with both traces. The Hawaiian beater has its own museum record."
+    }
+  ],
+  "hints": [
+    { "id": "h.beater.proof.placed.1", "objective": "beater.proof.placed", "depth": 1, "text": "Equip the working copy of Cleveland 1971.152 and look for the plain block in the Reconstruction Workroom." },
+    { "id": "h.beater.proof.placed.2", "objective": "beater.proof.placed", "depth": 2, "text": "Keep the strip stock and marked stop the same when you turn the block." },
+    { "id": "h.beater.proof.placed.3", "objective": "beater.proof.placed", "depth": 3, "text": "Make one proof with each face at Light or one with each face at Firm. Take that pair." },
+    { "id": "h.beater.proof.placed.4", "objective": "beater.proof.placed", "depth": 4, "text": "Bring the matched pair through the workroom door to Aster’s fitting table. Try the new arrangement at the low rail or at the east bench." }
+  ]
+}

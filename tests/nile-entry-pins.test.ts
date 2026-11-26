@@ -19,6 +19,8 @@ it.each([
   ['tray', 'printed guide', 'leaves their load'],
 ])('tests both tags and leaves the %s copy before either inquiry', (choice, pick, result) => {
   const d = new Driver();
+  const checkSkills = ['SK-MICRO-0260', 'SK-MICRO-0411', 'SK-MICRO-0919'];
+  const guideSkill = 'SK-MICRO-0079';
   expect(visible(d, 'rack')).toBe(false);
   d.s.mapId = hall.id;
   d.run({ type: 'SetFlag', flag: 'nile.arrived', value: true });
@@ -30,14 +32,21 @@ it.each([
   use(d, 'rack', 'Set the reading room');
   use(d, 'printed');
   expect(visible(d, 'choose')).toBe(false);
+  expect(checkSkills.every((skill) => !d.p.skills[skill])).toBe(true);
   use(d, 'rack', 'Set the carrier');
   expect(use(d, 'punched')).toContain('Both pins pass through');
   expect(d.done('nile.opening-pins.compare')).toBe(true);
+  for (const skill of checkSkills) {
+    expect(d.p.skills[skill]).toEqual([expect.stringMatching(/^WORLD-03\|.*\|nile\.opening-pins\.compare\|/)]);
+  }
+  expect(d.p.skills[guideSkill]).toBeUndefined();
   use(d, 'choose', 'Leave both copies');
   expect(d.done('nile.opening-pins.placed')).toBe(false);
   use(d, 'choose', pick);
   expect(use(d, choice)).toContain(result);
   expect(d.done('nile.opening-pins.placed')).toBe(true);
+  use(d, choice);
+  expect(d.p.skills[guideSkill]).toEqual([expect.stringMatching(/^WORLD-03\|.*\|nile\.opening-pins\.placed\|/)]);
   expect(d.done('nile.two')).toBe(false);
   expect(d.s.flags['nile.dispatch']).toBeUndefined();
 });

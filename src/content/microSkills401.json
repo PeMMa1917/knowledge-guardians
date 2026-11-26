@@ -149,6 +149,21 @@
         ],
         "game": 195,
         "story": 77
+      },
+      {
+        "objective": "nile.opening-pins.compare",
+        "action": "Keep the card stock, outline, stops and circle positions fixed. Compare the punched opening and printed circle to see why only one copy seats.",
+        "styles": [
+          "maker",
+          "challenger"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 206,
+        "story": 55
       }
     ]
   },
@@ -3369,6 +3384,21 @@
           "analytical"
         ],
         "game": 216,
+        "story": 77
+      },
+      {
+        "objective": "nile.transit.compare",
+        "action": "Fit both stamped slips to the torn packet and check what the sending and shelving procedures each date before treating either date as a guide.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "physical",
+          "analytical"
+        ],
+        "game": 179,
         "story": 77
       }
     ]

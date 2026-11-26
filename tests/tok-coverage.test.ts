@@ -11,11 +11,13 @@ import { readMetalSample } from '../src/domain/metalSample';
 import { check } from '../src/domain/rules';
 import { scoutNextTrial, scoutReport, scoutTrials } from '../src/domain/scoutRoutes';
 import { seaChart } from '../src/domain/seaCharts';
+import { OLD_SHUTTERS, traceShutters, turnShutterMirror } from '../src/domain/shutterBoard';
 import { stageRehearsal, type StageCue } from '../src/domain/stageRehearsal';
 import { voiceReading, type VoiceSource, type VoiceView } from '../src/domain/voiceReadings';
 import { waterTrial, type WaterCondition, type WaterSetting } from '../src/domain/waterGate';
 import { MAPS } from '../src/maps';
 import { coverageGaps, singleActionDimensions, type TimedEncounter } from '../tools/tok-coverage';
+import { auditCourseFloor, courseTags } from '../tools/tok-floor';
 import { Driver } from './driver';
 
 type Format = 'object inspection' | 'source tracing' | 'tool trials' | 'field observations'
@@ -67,7 +69,7 @@ class AuditDriver extends Driver {
 }
 
 type Play = (driver: AuditDriver) => void;
-type PlayedEncounter = TimedEncounter & { formats: Format[] };
+type PlayedEncounter = TimedEncounter & { formats: Format[]; completed: string[] };
 
 class Route {
   readonly driver = new AuditDriver();
@@ -75,8 +77,10 @@ class Route {
 
   at(minute: number, action: string, dimensions: TimedEncounter['dimensions'], play: Play): void {
     this.driver.formats.clear();
+    const first = this.driver.events.length;
     play(this.driver);
-    this.encounters.push({ minute, action, dimensions, formats: [...this.driver.formats] });
+    const completed = this.driver.events.slice(first).flatMap((event) => event.kind === 'objective' ? [event.id] : []);
+    this.encounters.push({ minute, action, dimensions, formats: [...this.driver.formats], completed });
   }
 
   formatsThrough(minute: number): Format[] {
@@ -131,7 +135,7 @@ function watchForest(d: Driver, site: string, window: ForestWindow) {
 
 // Times below are author estimates of when these actions could finish. This
 // fixture exercises entry conditions and domain commands, not walking or reading speed.
-function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'rests' | 'ribbon' | 'print' | 'packing' | 'scout' | 'viewer' | 'curtain' | 'last-turn'): Route {
+function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'rests' | 'ribbon' | 'print' | 'packing' | 'scout' | 'viewer' | 'curtain' | 'last-turn' | 'shutters-low' | 'shutters-quiet'): Route {
   const route = new Route();
   const explore = style !== 'main';
   const records = style === 'records';
@@ -140,6 +144,7 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
   const packing = style === 'packing';
   const scouting = style === 'scout';
   const curtain = style === 'curtain';
+  const shutters = style === 'shutters-low' || style === 'shutters-quiet';
   const arrivalExtra = explore ? 1 : 0;
   const arrival = records ? 'Leave a stand number with the copied claim, then find that stand on the plan'
     : explore ? 'Clip a blank page beside the archive’s words and open it for a second view'
@@ -215,6 +220,46 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
       expect(d.e.node('nexus.print.layers').text).toContain('The shelter will get a proof after the next printing');
     });
   }
+  if (shutters) {
+    const low = style === 'shutters-low';
+    route.at(7, 'Check the wall sketch against the two marks, then follow the hidden hatch', [
+      'evidence', 'interpretation', 'objectivity', 'certainty', 'scope', 'methods-and-tools',
+    ], (d) => {
+      walkScene(d, 'shutter-recess', undefined, 'Follow the wear line');
+      walkScene(d, 'shutter-draft', undefined, 'Lift the cover');
+      const hatch = MAPS[d.s.mapId].interactables.find(({ id }) => id === 'shutter-hatch')!;
+      expect(check(hatch.visibleIf, d.s)).toBe(true);
+      d.s.mapId = hatch.to!.map;
+      d.formats.add('map visits');
+    });
+    route.at(13, 'Follow the stopped beam and correct both routes before taking the spare fitting', [
+      'evidence', 'justification', 'explanation', 'objectivity', 'methods-and-tools', 'scope',
+    ], (d) => {
+      const show = (layout: Parameters<typeof traceShutters>[0]) => d.run({ type: 'SetFlag', flag: 'nexus.shutter.active', value: traceShutters(layout).end });
+      expect(traceShutters(OLD_SHUTTERS).end).toBe('stop');
+      show(OLD_SHUTTERS);
+      d.run({ type: 'SetFlag', flag: 'nexus.shutter.old', value: true });
+      const quiet = turnShutterMirror(OLD_SHUTTERS, 1);
+      show(quiet);
+      walkScene(d, 'shutter-quiet.check', undefined, 'Keep the upper');
+      const trial = turnShutterMirror(quiet, 0);
+      expect(traceShutters(trial).end).toBe('stop');
+      show(turnShutterMirror(trial, 2));
+      walkScene(d, 'shutter-low.check', undefined, 'Keep the lower');
+      expect(d.s.inventory['item.nexus.shutter-pin']).toBe(1);
+      d.formats.add('tool trials');
+    });
+    route.at(16, 'Leave the spare fitting where one group can use it now and keep the other group’s request', [
+      'values', 'perspective', 'power', 'responsibility', 'truth', 'perspectives', 'scope', 'ethics',
+    ], (d) => {
+      const exit = MAPS[d.s.mapId].interactables.find(({ id }) => id === 'shutter-room-exit')!;
+      d.s.mapId = exit.to!.map;
+      walkScene(d, 'shutter-fit', undefined, low ? 'Fit the pin to open the low' : 'Fit the pin to open the screened');
+      d.talk('shutter-tavin', low ? 'Keep Tavin’s receipt from the low' : 'Keep Tavin’s receipt from the ordinary');
+      d.talk('shutter-merra', low ? 'Keep Merra’s request' : 'Keep Merra’s receipt');
+      expect(d.done('nexus.shutter.serve')).toBe(true);
+    });
+  }
   if (packing) {
     route.at(7, 'Test the wallet with the source slips under the crate lid and see which papers stay behind', [
       'evidence', 'certainty', 'methods-and-tools', 'scope',
@@ -266,7 +311,7 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
       expect(d.done('curtain.receive')).toBe(true);
     });
   }
-  const openingMinutes = arrivalExtra + (guide ? 4 : 0) + (style === 'rests' || print ? 5 : 0) + (packing ? 6 : 0) + (curtain ? 6 : 0);
+  const openingMinutes = arrivalExtra + (guide ? 4 : 0) + (style === 'rests' || print ? 5 : 0) + (packing ? 6 : 0) + (curtain ? 6 : 0) + (shutters ? 12 : 0);
   if (explore) route.at(5 + openingMinutes, 'Direct visitors toward the practical pen', ['scope', 'perspective'], useProp('nexus.entrance-guide', 'use'));
   route.at(9 + openingMinutes, 'Compare the patent, model and pen dates', ['scope', 'evidence', 'certainty', 'interpretation', 'methods-and-tools'], (d) => {
     for (const exhibit of ['OBJ-001-A', 'OBJ-001-B', 'OBJ-001-C']) d.run({ type: 'InspectExhibit', exhibit });
@@ -1953,6 +1998,8 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Nexus with the Uncounted Reader and two reading rests', end: 91, play: () => nexusToEmberford('rests') },
     { name: 'Nexus with the separate grant and museum date rails', end: 89, play: () => nexusToEmberford('ribbon') },
     { name: 'Nexus with the slipped print and Emberford’s one-name tag', end: 98, play: () => nexusToEmberford('print') },
+    { name: 'Nexus Two Shutters and the tray carrier’s signal', end: 98, play: () => nexusToEmberford('shutters-low') },
+    { name: 'Nexus Two Shutters and the quiet reading seat', end: 98, play: () => nexusToEmberford('shutters-quiet') },
     { name: 'Nexus with both layouts at the Packing Table', end: 92, play: () => nexusToEmberford('packing') },
     { name: 'Nexus and Emberford with both scout protocols', end: 96, play: () => nexusToEmberford('scout') },
     { name: 'Nexus with the Hinged Reader and the working-model check', end: 91, play: () => nexusToEmberford('viewer') },
@@ -2002,6 +2049,19 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Council of Inquiry with the shared practice dial', end: 60, play: () => councilOfInquiry(true) },
   ])('can execute the modeled route for $name and report its gaps', ({ name, end, play }) => {
     const route = play();
+    if (import.meta.env.MODE === 'tok-floor') {
+      const tags = courseTags(route.driver.e.pack);
+      const completions = route.encounters.flatMap(({ minute, action, completed }) => completed.length
+        ? completed.map((id) => ({ id, minute, ...tags.get(id) })) : [{ id: action, minute }]);
+      const { firstHour, wholeRoute, rolling } = auditCourseFloor(end, completions);
+      console.log('TOK floor ' + JSON.stringify({ route: name, estimatedMinutes: end, firstTraceHour: firstHour,
+        engineObjectives: route.encounters.reduce((total, { completed }) => total + completed.length, 0),
+        marksWithoutObjective: route.encounters.filter(({ completed }) => !completed.length).length,
+        metadataMissing: Object.fromEntries(Object.entries(wholeRoute.unknownEncounters).map(([field, ids]) => [field, ids.length])),
+        rolling: rolling.map(({ width, firstWindow, gaps, minutesWithGap }) => ({ width, firstWindow: firstWindow?.present ?? null, gaps, minutesWithGap })),
+      }));
+      return;
+    }
     const gaps = coverageGaps(end, route.encounters);
     if (import.meta.env.MODE !== 'tok-report') return;
     const opening = gaps.filter((gap) => gap.from === 30).map((gap) => gap.dimension);

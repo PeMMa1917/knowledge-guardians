@@ -1,6 +1,7 @@
 import type { MapDef } from './types';
 import { NEXUS } from './nexus';
 import { HALF_LIGHT_ROOM } from './lanternWeave';
+import { TWO_SHUTTER_ROOM } from './shutterBoard';
 import { NEXT_BENCH } from './afterCouncil';
 import { HANDOVER_GALLERY } from './handoverGallery';
 import { EMBERFORD, REPAIR_YARD } from './emberford';
@@ -72,6 +73,7 @@ import { WATER_COUNCIL, WATER_GATEHOUSE, WATER_LOWER_CHANNEL } from './water';
 const campaignMaps: Record<string, MapDef> = {
   [NEXUS.id]: NEXUS,
   [HALF_LIGHT_ROOM.id]: HALF_LIGHT_ROOM,
+  [TWO_SHUTTER_ROOM.id]: TWO_SHUTTER_ROOM,
   [NUMBER_LEAF_ROOM.id]: NUMBER_LEAF_ROOM,
   [SPECIMEN_VAULT.id]: SPECIMEN_VAULT,
   [NEXT_BENCH.id]: NEXT_BENCH,

@@ -151,6 +151,22 @@
         ],
         "game": 179,
         "story": 74
+      },
+      {
+        "objective": "bridge.proof.delivered",
+        "action": "Post a checked route for Idris and read its receipt. Keep the named load condition beside the regular route or the light-packet plank.",
+        "styles": [
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "reading",
+          "analytical",
+          "social"
+        ],
+        "game": 263,
+        "story": 74
       }
     ]
   }

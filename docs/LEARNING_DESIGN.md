@@ -42,11 +42,11 @@ The route audit in `tests/tok-coverage.test.ts` exercises game actions in indivi
 |---|---:|---:|
 | Story | 113 | 504 |
 | Social | 316 | 670 |
-| Explorer, representative case visits | 893 | 1,916 |
+| Explorer, representative case visits | 895 | 1,920 |
 | Puzzler | 229 | 592 |
 | Cozy | 310 | 667 |
 
-Among 50 chapter traces, 41 cover all 16 dimensions in their first 30 estimated minutes. Three stay complete in every full modeled window. An explorer who visits every filed case has a modeled gap during 4,132 of 5,243 minutes. The new optional cases lengthen several explorations, and the absolute gap also grows on both explorer models. Longer side trips can leave a dimension behind after the chapter’s main path has covered it.
+Among 52 chapter traces, 43 cover all 16 dimensions in their first 30 estimated minutes. Three stay complete in every full modeled window. An explorer who visits every filed case has a modeled gap during 4,136 of 5,247 minutes. The new optional cases lengthen several explorations, and the absolute gap also grows on both explorer models. Longer side trips can leave a dimension behind after the chapter’s main path has covered it.
 
 Hesper’s required handover returns to culture, interpretation and values after the Showdown. The Observatory compares crew names and station records at the same gauges. In Water Commons, the player tracks which leak and intake gave rise to a measured result, and the Market procedure changes what the Water runner can carry. Two Calls After Tuesday asks players to preserve their first proof, return after the readers’ paths change, and check both repairs before somebody uses the result. The last two steps use DOK 4.
 
@@ -59,3 +59,18 @@ Two Circles on the Rail compares how the two copies fit the same pins at minute 
 The Last Turn now gives Emberford players an optional response to the first gap. In its 91-minute estimated route, players compare the forge and tally desk’s readings at minute 75, decide whose account reaches the market queue at minute 77, and open Derva’s dated account in the Study at minute 87. That trace has culture, interpretation and values in the trailing window from the market decision to the end. Certainty still lapses. The modeled social and explorer routes include this detour. The story route keeps the main steps.
 
 Never add a tag that the play does not support. Add play.
+
+## The 20- and 30-minute opportunity floor
+
+The floor is six different key concepts, two explicitly authored framework parts, one area of knowledge and one optional theme in a rolling window. The report checks 20 and 30 minutes separately. It counts an action when the modeled player completes it, and keeps absent and unrecognized tags visible. The cumulative first-hour report shows breadth across the five areas and five optional themes as well as the concepts and framework. [Floor implementation](../tools/tok-floor.ts)
+
+```sh
+node tools/audit-tok-floor.mjs
+npm test -- tests/tok-coverage.test.ts --mode tok-floor
+```
+
+The itineraries give the first print and reading-rest decisions extra weight. A carrier and cart driver have different uses for the red mark, and the separate printing sheets let the next worker check how it moved. Hall stewards use the reading-rest register to allocate the next delivery, so the player's choice leaves an unmet request in view. Each of the six modeled openings now meets both first-window floors. In the first estimated hour, each has all 12 concepts and four framework parts, two to four areas of knowledge, and two to three optional themes.
+
+The executable chapter report uses the same floor with authored tags from the exact completed objectives. Of 52 traces, 19 meet it in the first 20 minutes and 22 meet it in the first 30. One sustains it across every 20-minute window and two sustain it across every 30-minute window. Both Two Shutter Room fittings meet the floor in their opening windows. Each trace has gaps in 23 of its 98 estimated minutes under the 20-minute rule and eight under the 30-minute rule. Later detours still need distinct optional-theme actions and explicitly authored framework work. [Executable chapter tests](../tests/tok-coverage.test.ts)
+
+The rolling audit reports opportunities a route offers at author-estimated times. A first-hour playtest should also record whether students can use a different object as specific evidence, keep a conclusion within its source, and revise it after a reader tests the result. These transfer observations address assessment preparation alongside the coverage counts. [Exhibition and essay habits](TOK_ALIGNMENT.md)
