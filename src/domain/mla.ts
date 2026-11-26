@@ -16,7 +16,7 @@ export function mlaCitation(source: SourceRecord): CitationPart[] {
   if (work.author) parts.push({ text: `${work.author}. ` });
   if (work.kind === 'page') parts.push({ text: `“${work.title}.” ` });
   else parts.push({ text: work.title, cite: true }, { text: '. ' });
-  if (work.workDate) parts.push({ text: `${work.workDate}. ` });
+  if (work.workDate) parts.push({ text: `${work.workDate.trimEnd().replace(/\.$/, '')}. ` });
   parts.push({ text: work.container, cite: true }, { text: ', ' },
     { text: source.url.replace(/^https:\/\//, ''), href: source.url }, { text: '.' });
   if (work.showAccessDate) {

@@ -4,7 +4,7 @@
  * Serve that checkout's dist directory, then run with Node 22 or newer and Chromium:
  *   node tools/smoke-worlds.mjs http://127.0.0.1:4173 /path/to/checkout
  * The second argument defaults to the working directory. The optional third argument selects
- * "maps", "access", "collections", "stress", "soak", "events" or "guidance".
+ * "maps", "access", "collections", "stress", "portal", "soak", "events" or "guidance".
  * CHROMIUM can name a different binary. KG_SOAK_MINUTES sets the real-time soak length (default 60).
  *
  * The script starts a new game and uses debug entry at each registered spawn. Its traversal
@@ -18,12 +18,12 @@ import { join, resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { pathToFileURL } from 'node:url';
 import { smokeCollections } from './smoke-collections.mjs';
-import { smokeNavigation, smokeWallRealtime } from './smoke-navigation.mjs';
+import { smokeNavigation, smokePortalReturn, smokeWallRealtime } from './smoke-navigation.mjs';
 import { smokeGuidance } from './smoke-guidance.mjs';
 
 const [url, directory = '.', mode = 'all'] = process.argv.slice(2);
-if (!url || !['all', 'maps', 'access', 'collections', 'stress', 'soak', 'events', 'guidance'].includes(mode)) {
-  throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access|collections|stress|soak|events|guidance]');
+if (!url || !['all', 'maps', 'access', 'collections', 'stress', 'portal', 'soak', 'events', 'guidance'].includes(mode)) {
+  throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access|collections|stress|portal|soak|events|guidance]');
 }
 const root = resolve(directory);
 
@@ -144,6 +144,24 @@ async function tabTo(browser, label) {
     await press(browser, 'Tab');
   }
   throw new Error('Tab could not reach ' + label);
+}
+
+async function smokeTitle(browser) {
+  await until(() => browser.evaluate(() => Boolean(document.activeElement?.matches('.title-screen button[data-autofocus]'))), 'initial title focus', 60_000);
+  for (const label of ['Credits and sources', 'Settings']) {
+    await until(() => browser.evaluate((name) => {
+      const trigger = [...document.querySelectorAll('.title-screen button')].find((control) => control.querySelector('strong')?.textContent === name);
+      if (!trigger) return false;
+      trigger.focus();
+      return true;
+    }, label), `title button ${label}`);
+    await press(browser, 'Enter');
+    await until(() => browser.evaluate((name) => document.querySelector('[role="dialog"]')?.getAttribute('aria-label') === name, label), `${label} opens from title`);
+    await press(browser, 'Escape');
+    await until(() => browser.evaluate((name) => !document.querySelector('[role="dialog"]') && !window.kg.world &&
+      document.activeElement?.querySelector('strong')?.textContent === name, label), `Escape restores focus to ${label}`);
+  }
+  console.log('PASS native Enter and Escape for title Credits and Settings, with focus restored to the opening button');
 }
 
 async function smokeAccess(browser, nexus) {
@@ -408,6 +426,7 @@ try {
   const [width, height] = mode === 'stress' || mode === 'soak' ? [640, 400] : [960, 640];
   await browser.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
   await browser.send('Page.navigate', { url });
+  if (mode === 'all' || mode === 'access') await smokeTitle(browser);
   await button(browser, 'New game', 60_000);
   await button(browser, 'Begin');
   await until(() => browser.evaluate(() => window.kg?.world?.map?.id === 'nexus.archive'), 'new Guardian in the Nexus');
@@ -444,6 +463,7 @@ try {
   }
   if (mode === 'collections') await smokeCollections(browser, { button, press, until });
   if (mode === 'stress') await smokeNavigation(browser, { press, until }, maps);
+  if (mode === 'portal') await smokePortalReturn(browser, { until });
   if (mode === 'soak') await smokeWallRealtime(browser, { until });
   if (mode === 'guidance') await smokeGuidance(browser, { button, press, until });
   if (mode === 'events') {

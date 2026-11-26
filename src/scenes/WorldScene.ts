@@ -59,6 +59,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private path: { x: number; y: number }[] = [];
   private pendingInteract: (() => void) | null = null;
   private zonesInside = new Set<string>();
+  private walkingArrivalFrom: string | null = null;
   private paused = false;
   private target: { kind: 'npc'; actor: Actor } | { kind: 'obj'; obj: Interactable } | null = null;
   private fx: Phaser.GameObjects.GameObject[] = [];
@@ -89,7 +90,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   constructor() { super('world'); }
 
-  create(): void {
+  create(data: { walkingArrivalFrom?: string } = {}): void {
     ctx.world = this;
     // Reset per-map fields (the scene object is reused when the map changes).
     if (!this.textures.exists('mark.new')) {
@@ -102,6 +103,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     }
     this.npcs = []; this.follower = null; this.trail = []; this.path = []; this.pendingInteract = null;
     this.zonesInside = new Set(); this.target = null; this.fx = []; this.lightPools = []; this.portalRing = null;
+    this.walkingArrivalFrom = data.walkingArrivalFrom ?? null;
     this.transitioning = false; this.paused = false;
     this.objArt = new Map(); this.pet = null; this.photo = null; this.frayGlows = new Map(); this.threadGfx = null; this.gapMark = null; this.exploreAcc = 0;
     const s = ctx.controller.state;
@@ -116,6 +118,10 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       if (!event.repeat && !this.paused && !ctx.ui.isModalOpen()) this.tryInteract();
     };
     this.keys.E.on('down', interactKey); this.keys.SPACE.on('down', interactKey); this.keys.ENTER.on('down', interactKey);
+    const movementKey = (_key: Phaser.Input.Keyboard.Key, event: KeyboardEvent) => {
+      if (!event.repeat && !this.transitioning && !this.paused && !ctx.ui.isModalOpen()) this.walkingArrivalFrom = null;
+    };
+    for (const name of ['W', 'A', 'S', 'D', 'UP', 'DOWN', 'LEFT', 'RIGHT']) this.keys[name].on('down', movementKey);
     this.input.on('pointerdown', (p: Phaser.Input.Pointer) => this.onPointer(p));
     this.scale.on('resize', this.resizeCamera);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.scale.off('resize', this.resizeCamera));
@@ -1108,6 +1114,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   private onPointer(p: Phaser.Input.Pointer): void {
     if (this.paused || ctx.ui.isModalOpen() || this.transitioning) return;
+    this.walkingArrivalFrom = null;
     const wx = p.worldX, wy = p.worldY;
     const tx = Math.floor(wx / TILE), ty = Math.floor(wy / TILE);
     // Clicked a character or an object? Walk next to it, then interact.
@@ -1183,12 +1190,14 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       if (!inside) { this.zonesInside.delete(z.id); continue; }
       if (this.zonesInside.has(z.id) && !arrival) continue;
       this.zonesInside.add(z.id);
+      // A key held through a crossing may keep moving but cannot send the player straight back.
+      if (!arrival && z.to?.map === this.walkingArrivalFrom) continue;
       if (z.if && !ctx.controller.check(z.if)) {
         if (z.to && !arrival) ctx.ui.toast(z.id === 'portal' ? 'The portal is not open yet. Repair the label first.' : 'Not yet. Finish your work here first.', 'info');
         continue;
       }
       if (!ctx.controller.state.flags[`reached.${z.id}`]) ctx.controller.dispatch({ type: 'Reach', zone: z.id });
-      if (z.to && !arrival) this.changeMap(z.to.map, z.to.x, z.to.y);
+      if (z.to && !arrival) this.changeMap(z.to.map, z.to.x, z.to.y, true);
     }
   }
 
@@ -1201,14 +1210,15 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   /** Called by the shell before saving, so the save has the current position. */
   snapshotPosition(): void { this.saveSpot(); }
 
-  changeMap(mapId: string, x: number, y: number): void {
+  changeMap(mapId: string, x: number, y: number, throughZone = false): void {
     if (this.transitioning) return;
     this.transitioning = true;
     this.playSfx('sfx.sparkle');
+    const walkingArrivalFrom = throughZone ? this.map.id : undefined;
     const go = () => {
       const s = ctx.controller.state;
       s.mapId = mapId; s.pos = { x, y }; s.facing = 'down';
-      this.scene.restart();
+      this.scene.restart({ walkingArrivalFrom });
     };
     if (ctx.settings.reducedMotion) go();
     else { this.cameras.main.fadeOut(500, 220, 240, 255); this.cameras.main.once('camerafadeoutcomplete', go); }

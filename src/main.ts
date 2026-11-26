@@ -24,8 +24,8 @@ let game: Phaser.Game | null = null;
 
 function startWorld(): void {
   if (!game) return;
-  if (game.scene.isActive('world')) game.scene.getScene('world').scene.restart();
-  else game.scene.start('world');
+  if (game.scene.isActive('world')) game.scene.getScene('world').scene.restart({});
+  else game.scene.start('world', {});
 }
 
 const ui = new UI(document.getElementById('ui')!, () => {

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { buildPack } from '../src/content';
 import { mlaCitation } from '../src/domain/mla';
 import { check } from '../src/domain/rules';
+import { specimenReferences } from '../src/domain/specimenReferences';
 import { validateContent } from '../src/domain/validate';
 import { MAPS } from '../src/maps';
 import { Driver } from './driver';
@@ -58,6 +59,15 @@ describe('The Line a Reader Can Follow and A Sunset on the Proof', () => {
     );
     expect(turnerLine.filter(({ cite }) => cite).map(({ text }) => text)).toEqual(['The Fighting Temeraire', 'The National Gallery']);
     expect(turnerLine.filter(({ href }) => href)).toEqual([{ text: artwork.url.slice(8), href: artwork.url }]);
+  });
+
+  it('keeps one period after the dated presentation of each separately identified Yirrkala petition', () => {
+    const records = specimenReferences(buildPack()).filter(({ key }) => key.includes('aph:founding-docs-item-104'));
+    expect(records).toHaveLength(2);
+    expect(records.map(({ text }) => text)).toEqual(expect.arrayContaining([
+      expect.stringContaining('14 August 1963. Australian House of Representatives,'),
+      expect.stringContaining('28 August 1963. Australian House of Representatives,'),
+    ]));
   });
 
   it('rejects a citation to an unformatted source and an artwork date in a page entry', () => {

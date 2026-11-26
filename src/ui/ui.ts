@@ -459,6 +459,7 @@ export class UI implements UIApi {
   private hud!: HTMLElement;
   private hudDock!: HTMLElement;
   private modal: HTMLElement | null = null;
+  private titleModalOpener: HTMLElement | null = null;
   private releaseTrap: (() => void) | null = null;
   private promptEl!: HTMLElement;
   private toastBox!: HTMLElement;
@@ -489,7 +490,10 @@ export class UI implements UIApi {
   private sfx(key: string): void { ctx.world?.playSfx(key); }
 
   private openModal(cls: string, label: string, ...content: (Node | string)[]): HTMLElement {
+    const active = document.activeElement;
+    const opener = active instanceof HTMLElement && active.matches('.title-screen button') ? active : this.titleModalOpener;
     this.closeModal(false);
+    this.titleModalOpener = opener;
     const box = h('div', { class: `panel ${cls}`, role: 'dialog', 'aria-modal': 'true', 'aria-label': label }, ...content);
     const state = ctx.controller.state;
     if (state && box.classList.contains('bench-panel')) box.append(localGuide(ctx.controller, MAPS[state.mapId]?.world ?? ''));
@@ -513,6 +517,8 @@ export class UI implements UIApi {
     this.releaseTrap?.();
     this.modal.remove();
     this.modal = null;
+    const opener = this.titleModalOpener;
+    this.titleModalOpener = null;
     if (leaveEvent) {
       if (this.activeEvent && this.activeEventNode) {
         ctx.controller.dispatch({ type: 'SetFlag', flag: `event.resume.${this.activeEvent}`, value: this.activeEventNode });
@@ -523,7 +529,8 @@ export class UI implements UIApi {
     }
     if (sound) this.sfx('sfx.click');
     const canvas = document.querySelector<HTMLCanvasElement>('#game canvas');
-    if (canvas) {
+    if (opener?.isConnected) opener.focus();
+    else if (canvas) {
       canvas.tabIndex = -1;
       canvas.focus();
     }
@@ -573,7 +580,10 @@ export class UI implements UIApi {
     if (e.repeat) return;
     const tag = (e.target as HTMLElement)?.tagName;
     if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') { if (e.key === 'Escape') this.closeModal(); return; }
-    if (!this.hud?.isConnected) return;
+    if (!this.hud?.isConnected) {
+      if (e.key === 'Escape' && this.modal) this.closeModal();
+      return;
+    }
     if (this.photoBar) { if (e.key === 'Escape') this.closePhotoMode(); return; }
     if (this.emoteBar) {
       if (e.key === 'Escape' || actionFor(ctx.settings.keys, e.key) === 'emote') { this.closeEmotes(); return; }

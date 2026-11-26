@@ -144,8 +144,54 @@ export async function smokeNavigation(browser, { until, press }, maps) {
   }
   console.log(`Navigation registry: ${maps.length} maps, ${examined.tiles} tiles (${examined.solid} solid), ${examined.visible} shown prop frames, ${examined.routes} sampled routes, ${examined.collisionEdges} forced boundary probes, ${examined.corners} diagonal corner probes, ${examined.pointerProbes} rejected pointer targets, ${examined.approaches} alternative approaches, ${held} keyboard edge checks.`);
   await wallSoak(browser, until);
+  await smokePortalReturn(browser, { until });
   for (const defect of defects) console.log('FAIL', defect);
   if (defects.length) throw new Error(`${defects.length} navigation and visibility discrepancies`);
+}
+
+export async function smokePortalReturn(browser, { until }) {
+  // Supply the two portal prerequisites. The crossings themselves use Phaser input and fades.
+  await browser.evaluate(() => {
+    const { world, controller, settings } = window.kg;
+    settings.reducedMotion = false;
+    controller.state.events.next = Number.MAX_SAFE_INTEGER;
+    controller.state.objectivesDone.push('m01.o6.label');
+    controller.state.flags['seal.found'] = true;
+    world.changeMap('aethelgard.emberford', 20, 26);
+  });
+  const state = () => browser.evaluate(() => {
+    const { world } = window.kg;
+    const { x, y } = world.player.sprite;
+    return { id: world.map.id, transition: world.transitioning, tileY: Math.floor(y / 16), solid: world.collides(x, y) };
+  });
+  await until(async () => (await state()).id === 'aethelgard.emberford', 'south approach to Emberford portal');
+  const arrow = (key, type, autoRepeat = false) => {
+    const code = key === 'ArrowUp' ? 38 : 40;
+    return browser.send('Input.dispatchKeyEvent', { key, code: key, type, autoRepeat, windowsVirtualKeyCode: code, nativeVirtualKeyCode: code });
+  };
+  try {
+    await arrow('ArrowUp', 'rawKeyDown');
+    await until(async () => {
+      await arrow('ArrowUp', 'rawKeyDown', true);
+      const current = await state();
+      return current.id === 'nexus.archive' && !current.transition;
+    }, 'held Up crosses into the Nexus');
+    await until(async () => {
+      await arrow('ArrowUp', 'rawKeyDown', true);
+      const current = await state();
+      if (current.id !== 'nexus.archive' || current.transition) throw new Error('Held Up started a return crossing without a new press.');
+      return current.tileY <= 4 && !current.solid;
+    }, 'held Up reaches the old portal without a return crossing');
+  } finally { await arrow('ArrowUp', 'keyUp'); }
+  try {
+    await arrow('ArrowDown', 'rawKeyDown');
+    await until(async () => (await state()).tileY >= 6, 'step away from the portal');
+  } finally { await arrow('ArrowDown', 'keyUp'); }
+  try {
+    await arrow('ArrowUp', 'rawKeyDown');
+    await until(async () => (await state()).id === 'aethelgard.emberford', 'new approach deliberately crosses the portal');
+  } finally { await arrow('ArrowUp', 'keyUp'); }
+  console.log('PASS held Up across the Emberford fade does not bounce; a fresh approach deliberately crosses back. Both story prerequisites staged.');
 }
 
 async function holdAgainstEdge(browser, press, { x, y, direction }, mapId) {
