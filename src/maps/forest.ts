@@ -3,6 +3,7 @@ import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
 import { FERN_FIELD_RECEIVER, FERN_RECORD_DOOR } from './fernRecordRoom';
 import { carriedFrame } from './sharedCarry';
+import { WORK_SCHEDULE_ENTRANCE, WORK_SCHEDULE_FERN, WORK_SCHEDULE_TRAIL } from './workSchedule';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>): Interactable {
   return { id, kind: 'door', x, y, w: 1, h: 1, art: 'forest.waypost', label, to };
@@ -97,6 +98,7 @@ export const FOREST_STATION: MapDef = {
     { stamp: 'bench', x: 7, y: 13 },
   ],
   interactables: [
+    WORK_SCHEDULE_FERN,
     door('forest-trail-path', 3, 8, 'the path to the listening trail', { map: 'forest.trail', x: 4, y: 14 }),
     door('forest-community-path', 23, 8, 'the path to the bridge clearing', { map: 'forest.community', x: 12, y: 12 }),
     FERN_RECORD_DOOR,
@@ -183,6 +185,7 @@ export const FOREST_TRAIL: MapDef = {
     { stamp: 'flowers-small', x: 11, y: 11 }, { stamp: 'flowers-white', x: 27, y: 7 },
   ],
   interactables: [
+    WORK_SCHEDULE_TRAIL,
     { id: 'field-dig', kind: 'fieldgame', game: 'dig', x: 11, y: 15, w: 1, h: 1, label: 'Marisol\'s dig at the old charcoal camp (The Careful Dig)', art: 'ledger' },
     { id: 'stiltfrog-watch-low', kind: 'fieldgame', game: 'stiltfrog-watch-low', x: 11, y: 5, w: 1, h: 1, walkThrough: true,
       label: 'the low cloth flap at the reed hollow', art: 'stiltfrog.window-low', visibleIf: forestArrived },
@@ -283,6 +286,7 @@ export const FOREST_COMMUNITY: MapDef = {
     { stamp: 'flowers-small', x: 6, y: 12 }, { stamp: 'flowers-white', x: 16, y: 11 },
   ],
   interactables: [
+    WORK_SCHEDULE_ENTRANCE,
     door('forest-community-back', 12, 14, 'the path back to Fern Station', { map: 'forest.station', x: 22, y: 8 }),
     door('forest-bridge-to-trail', 22, 11, 'the path back to the ridge', { map: 'forest.trail', x: 28, y: 12 }),
     ...FERN_FIELD_RECEIVER,

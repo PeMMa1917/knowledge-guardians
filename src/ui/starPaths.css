@@ -1,0 +1,18 @@
+.star-gold { --star: #eab96d; }
+.star-cyan { --star: #90daea; }
+.star-rose { --star: #f3aaa0; }
+.star-mint { --star: #a9dbaf; }
+.star-lavender { --star: #cbb6e9; }
+.star-chart { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 23ch), 1fr)); gap: .75rem; }
+.star-path, .star-field-aid { border: 1px solid var(--gold-dim); border-inline-start: .2em solid var(--star); padding: .6em .8em; }
+.star-path h3 { margin: 0; color: var(--star); }
+.star-skill { margin-block: .55em; border-block-start: 1px solid var(--gold-dim); padding-block-start: .4em; }
+.star-skill summary { cursor: pointer; }
+.star-nodes { display: inline-flex; margin-inline-start: .5em; gap: .2em; white-space: nowrap; }
+.star-nodes .lit, .star-skill li.lit::marker { color: var(--star); }
+.star-skill li { margin-block: .4em; }
+.star-skill .field-aid { border-block-start: 1px solid var(--gold-dim); padding-block-start: .45em; }
+.star-field-aid { margin-block: .6em; }
+.star-field-sockets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65em; margin-block: .65em; }
+.star-field-sockets span { border: 1px dashed var(--star); padding: .35em; min-height: 2em; }
+.star-field-sockets .filled { border-style: solid; background: var(--star); color: #202632; }

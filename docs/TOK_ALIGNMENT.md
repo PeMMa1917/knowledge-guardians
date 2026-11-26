@@ -243,3 +243,20 @@ In The Paper Landing, placing a peg before or after a turn changes what the prin
 3. Build a second World religions case that distinguishes a community’s practice from an outside account. For Classical languages, pair another documented inscription with a different reason to keep an editorial uncertainty visible. Extend the Indigenous societies strand through other publicly shareable community knowledge and keep any relevant access limits visible. [SOURCES.md](SOURCES.md), [vindolanda.test.ts](../tests/vindolanda.test.ts)
 4. Give narrow subjects a second action with a new constraint. A later film case could let a player compare what sound establishes when a figure falls outside the frame. For music, let a later performer regularize the cue and check how another group enters. [film-cuts.test.ts](../tests/film-cuts.test.ts), [musicbox.test.ts](../tests/musicbox.test.ts)
 5. Review self-management and sparse learner moments against actual actions. Returning to check a plan or volunteering a new inquiry can be reflected as a private moment after the action. Progress counts and moments remain separate from a teacher's judgement about learning. [learning.ts](../src/domain/learning.ts), [teacher.test.ts](../tests/teacher.test.ts)
+
+## Recognition for completed play
+
+The Badge Annex opens after the first supported label. Brenna’s cabinet lists permanent tokens with the deed that earned each one. A displayed title can reopen its family’s workstation after the player returns to an earlier campaign record. The activities, titles and workshop changes sit outside class marks. The badges add no concept XP.
+
+| Family | Entries | Representative play |
+| --- | ---: | --- |
+| Pillars of Knowledge | 36 | A three-step evidence route moves from reading what a pen date describes to comparing forest watches and checking survey edges. All twelve concepts have three stages. |
+| Realms of Understanding | 18 | Progress passes through actual methods in the five areas of knowledge and a separate technology strand. Four core areas can open the linked-realms capstone. |
+| Navigator’s Toolkit | 11 | Compare repeated observations, carry a signed team packet, or respond to the reader who got a different message. |
+| Oracle’s Challenge | 10 | Change the press’s example packet, switch its feature while holding the samples fixed, check sealed independent records and compare two fixed requests. The player follows permissions and publishes to one working stand. |
+| Guardian’s Record | 5 | Make mounts for different readers, test a counter-position or reopen a first account after its readback. |
+| Odyssey Fellowship | 4 | Contribute to a team handover, open space for a waiting reader or make a correction useful to another person. |
+| Archetype Quests | 5 | Pursue distinct trails in inquiry, synthesis, empathy, innovation and public responsibility. |
+| Legendary Achievements | 4 | Bring advanced practice in several cases together. Each capstone is earned from completed live actions. |
+
+The Oracle press uses authored outputs and a small deterministic reader. It distinguishes model examples, wrapper features, a press editor’s cut, a private source sleeve and a keeper’s verification. Neither the press nor the badge cabinet collects personal writing or classroom ratings. [Badge definitions](../src/content/tokBadges.ts) · [Press rules](../src/domain/oraclePress.ts)

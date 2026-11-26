@@ -85,6 +85,8 @@ import { TURNING_GROUP } from '../content/turningTable';
 import { turningPanel } from './turningTable';
 import { CUE_GROUP } from '../content/cueWorkshop';
 import { LOAD_GROUP } from '../content/loadingBay';
+import { BEARING_GROUP } from '../content/bearingBay';
+import { bearingBayPanel } from './bearingBay';
 import { loadingBayPanel } from './loadingBay';
 import { cueWorkshopPanel } from './cueWorkshop';
 import { datePegPanel } from './datePeg';
@@ -115,6 +117,8 @@ import { stiltfrogWatch } from './stiltfrogWatch';
 import { linkedNotes } from './linkedNotes';
 import { CARRY, carryLocation } from '../domain/sharedCarry';
 import { opticsTrial } from './opticsTrial';
+import { DETECTOR_GAME } from '../domain/coastDetector';
+import { coastDetectorPanel } from './coastDetector';
 import { loyaltyOf } from '../domain/loyalty';
 import { CROSSINGS, WAY_LABEL, crossingOf, crossingWay, wayOpen } from '../domain/crossings';
 import { HEARTH, TONE_LABEL, type HearthTalk } from '../domain/hearth';
@@ -136,10 +140,21 @@ import { callboardPanel } from './callboardPanel';
 import { MODEL_RECORD_GROUP } from '../content/modelRecords';
 import { modelRecordPanel } from './modelRecords';
 import { TIME_TOOL } from '../domain/timeRoom';
+import { PACKING_TOOL } from '../domain/ferryPacking';
+import { ferryPackingPanel } from './ferryPacking';
 import { timeRoomPanel } from './timeRoom';
 import { materialStorePanel } from './materialStores';
 import { GLASS_RACK_PREFIX } from '../content/glassRack';
 import { glassRackPanel } from './glassRack';
+import { STAR_GAME } from '../domain/starPaths';
+import { starChart, starField } from './starPaths';
+import { BADGE_ANNEX_PREFIX } from '../content/badgeRoom';
+import { badgeAnnexPanel } from './badgeAnnex';
+import { workSchedulePanel } from './workSchedule';
+import { EARLIER_VIEWING } from '../content/earlierViewing';
+import { earlierViewingPanel } from './earlierViewing';
+import { CURTAIN_PREFIX } from '../content/curtainCall';
+import { curtainCallPanel } from './curtainCall';
 import { COINAGES, FACT, READERS, WITH_REASON, WORDINGS, ATTEMPTS, coinageOf, paintedNotice, wordingOf, type Coinage, type Wording } from '../domain/wordgames';
 import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fairRng, roll, dueTest, diceFor, runDoors, shareChance } from '../domain/fairgames';
 import { BARTER, DYES, FAIR_PRICE, TOWN_COSTS, ferryPrice, ownsDye, townPrice } from '../domain/trade';
@@ -3053,12 +3068,33 @@ export class UI implements UIApi {
     } else if (id.startsWith(`${CLEARANCE_GROUP}:`)) {
       const place = id.slice(CLEARANCE_GROUP.length + 1);
       this.openModal('bench-panel wide', 'The viewing rails', this.closeBtn(), clearanceGallery(ctx.controller, place, () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(BADGE_ANNEX_PREFIX)) {
+      this.openModal('bench-panel wide', 'The Badge Annex', this.closeBtn(),
+        badgeAnnexPanel(ctx.controller, id.slice(BADGE_ANNEX_PREFIX.length), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(CURTAIN_PREFIX)) {
+      this.openModal('bench-panel wide', 'The Call behind the Curtain', this.closeBtn(), curtainCallPanel(
+        ctx.controller, id.slice(CURTAIN_PREFIX.length), () => ctx.world?.refreshWorld(), () => this.sfx('sfx.click')));
+    } else if (id.startsWith(EARLIER_VIEWING)) {
+      this.openModal('bench-panel wide', 'A second view', this.closeBtn(), earlierViewingPanel(ctx.controller,
+        id.slice(EARLIER_VIEWING.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(STAR_GAME)) {
+      this.openModal('bench-panel wide', 'Field methods', this.closeBtn(), starField(ctx.controller,
+        id.slice(STAR_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith('work-schedule:')) {
+      this.openModal('bench-panel wide', 'The Working Cupboards', this.closeBtn(), workSchedulePanel(ctx.controller,
+        id.slice('work-schedule:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith('material-stores:')) {
       this.openModal('bench-panel wide', 'The Material Stores', this.closeBtn(), materialStorePanel(ctx.controller,
         id.slice('material-stores:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(GLASS_RACK_PREFIX)) {
       this.openModal('bench-panel wide', 'The Missing Face', this.closeBtn(),
         glassRackPanel(ctx.controller, id.slice(GLASS_RACK_PREFIX.length), () => ctx.world?.refreshWorld()));
+    } else if (id === DETECTOR_GAME) {
+      this.openModal('bench-panel wide', 'Neri’s light reader', this.closeBtn(),
+        coastDetectorPanel(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${PACKING_TOOL}:`)) {
+      this.openModal('bench-panel wide', 'A Name on the Load', this.closeBtn(), ferryPackingPanel(ctx.controller,
+        id.slice(PACKING_TOOL.length + 1), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(`${TIME_TOOL}:`)) {
       this.openModal('bench-panel wide', 'The Time Room', this.closeBtn(), timeRoomPanel(ctx.controller,
         id.slice(TIME_TOOL.length + 1), () => ctx.settings.sfxVolume, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
@@ -3132,6 +3168,9 @@ export class UI implements UIApi {
     } else if (id.startsWith(`${LOAD_GROUP}:`)) {
       this.openModal('bench-panel wide', 'The Cart Finds Its Centre', this.closeBtn(),
         loadingBayPanel(id.slice(LOAD_GROUP.length + 1), ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${BEARING_GROUP}:`)) {
+      this.openModal('bench-panel wide', 'Where the Two Sights Meet', this.closeBtn(),
+        bearingBayPanel(id.slice(BEARING_GROUP.length + 1), ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === 'drawer-cases') {
       const board = this.openModal('bench-panel wide', 'Three Cases at the Bell');
       drawerCases(board, ctx.controller, this.closeBtn());
@@ -3846,10 +3885,17 @@ export class UI implements UIApi {
   openTalents(atWaystone = false): void {
     const c = ctx.controller;
     const box = this.openModal('talents-panel wide', 'Insight tree');
+    let shown: 'stars' | 'talents' = 'stars';
     const render = (note?: string) => {
       const s = c.state, free = insight(s) - spent(s);
       box.replaceChildren(this.closeBtn(), h('h2', {}, 'Insight tree'),
-        h('p', {}, 'Each lamp you light gives one Insight point. Spend them on small habits that help you play. They never give XP, and they never change how answers are judged.'),
+        h('div', { class: 'row', role: 'group', 'aria-label': 'Insight tree view' },
+          ...([['stars', 'Field stars'], ['talents', 'Travel abilities']] as const).map(([id, label]) => h('button', {
+            type: 'button', 'aria-pressed': String(shown === id), 'data-star-view': id,
+            onclick: () => { shown = id; render(); box.querySelector<HTMLButtonElement>(`[data-star-view="${id}"]`)?.focus(); },
+          }, label))),
+        shown === 'stars' ? starChart(c) : h('div', {},
+        h('p', {}, 'Each lamp you light gives one Insight point. Spend it on a travel ability.'),
         h('p', { class: 'fine', role: 'status' }, `Insight: ${free} free of ${insight(s)}.`),
         ...(note ? [h('p', { class: 'fine', role: 'alert' }, note)] : []),
         h('div', { class: 'talent-grid' }, ...TALENTS.map((t) => {
@@ -3862,9 +3908,11 @@ export class UI implements UIApi {
               if (ev.some((e) => e.kind === 'error')) return;
               this.sfx('sfx.sparkle'); render(`You learned ${t.name}.`);
             } }, why ?? 'Learn'));
-        })),
+        }))),
         h('div', { class: 'row' },
-          atWaystone && spent(c.state) ? h('button', { onclick: () => { c.dispatch({ type: 'ForgetTalents' }); this.sfx('sfx.page'); render('All Insight is free again. Try another set.'); } }, 'Unlearn all (free at a Waystone)') : h('span', { class: 'fine' }, atWaystone ? '' : 'You can unlearn talents for free at any Waystone.'),
+          shown === 'talents' && spent(c.state) ? atWaystone
+            ? h('button', { onclick: () => { c.dispatch({ type: 'ForgetTalents' }); this.sfx('sfx.page'); render('All Insight is free again. Try another set.'); } }, 'Unlearn all (free at a Waystone)')
+            : h('span', { class: 'fine' }, 'You can unlearn talents for free at any Waystone.') : null,
           h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
     };
     render();

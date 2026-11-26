@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { civicAllocation, type CivicRule, type CivicSample } from '../src/domain/civicConsole';
 import { CIVIC_ARRIVAL_TRAYS, civicReceivingArrangements, civicReceivingLoad } from '../src/domain/civicArrivals';
+import { curtainCall } from '../src/domain/curtainCall';
 import { compareCopy } from '../src/domain/copyComparison';
 import { councilClock, type CouncilTrial } from '../src/domain/councilClock';
 import { forestWatch, type ForestWindow } from '../src/domain/forestWatch';
@@ -130,7 +131,7 @@ function watchForest(d: Driver, site: string, window: ForestWindow) {
 
 // Times below are author estimates of when these actions could finish. This
 // fixture exercises entry conditions and domain commands, not walking or reading speed.
-function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'rests' | 'ribbon' | 'print' | 'packing' | 'scout' | 'viewer'): Route {
+function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'rests' | 'ribbon' | 'print' | 'packing' | 'scout' | 'viewer' | 'curtain'): Route {
   const route = new Route();
   const explore = style !== 'main';
   const records = style === 'records';
@@ -138,6 +139,7 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
   const print = style === 'print';
   const packing = style === 'packing';
   const scouting = style === 'scout';
+  const curtain = style === 'curtain';
   const arrivalExtra = explore ? 1 : 0;
   const arrival = records ? 'Leave a stand number with the copied claim, then find that stand on the plan'
     : explore ? 'Clip a blank page beside the archive’s words and open it for a second view'
@@ -239,7 +241,32 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
       walkScene(d, 'nexus-pack-kits-route');
     });
   }
-  const openingMinutes = arrivalExtra + (guide ? 4 : 0) + (style === 'rests' || print ? 5 : 0) + (packing ? 6 : 0);
+  if (curtain) {
+    route.at(7, 'Try the same three knocks at the rail and from behind the curtain while Ethren compares crew practices', [
+      'culture', 'evidence', 'objectivity', 'explanation', 'perspective', 'perspectives', 'methods-and-tools',
+    ], (d) => {
+      d.talk('curtain-ethren', 'Mark the two places');
+      for (const station of ['open', 'curtain'] as const) {
+        const prop = MAPS[d.s.mapId].interactables.find(({ id }) => id === `curtain-call-${station}`)!;
+        expect(check(prop.visibleIf, d.s)).toBe(true);
+        for (const index of [0, 1, 2]) d.run({ type: 'ChooseDialogueOption', node: `curtain.run.${station}`, index });
+      }
+      d.formats.add('tool trials');
+      expect(curtainCall('open', 3).map(({ heard }) => heard)).toEqual([true, true, true]);
+      expect(curtainCall('curtain', 3).map(({ heard }) => heard)).toEqual([true, false, true]);
+      expect(d.done('curtain.compare')).toBe(true);
+    });
+    route.at(10, 'Pad the latch so the quiet corner receives the whole call, then check the count with Ethren', [
+      'certainty', 'values', 'responsibility', 'justification', 'culture', 'ethics',
+    ], (d) => {
+      d.talk('curtain-ethren', 'Slide a pad');
+      walkScene(d, 'curtain-end-felt', undefined, 'Wait with Ethren');
+      walkScene(d, 'curtain-gift-felt', undefined, 'Take the spare felt');
+      expect(d.s.inventory['item.curtain.felt']).toBe(1);
+      expect(d.done('curtain.receive')).toBe(true);
+    });
+  }
+  const openingMinutes = arrivalExtra + (guide ? 4 : 0) + (style === 'rests' || print ? 5 : 0) + (packing ? 6 : 0) + (curtain ? 6 : 0);
   if (explore) route.at(5 + openingMinutes, 'Direct visitors toward the practical pen', ['scope', 'perspective'], useProp('nexus.entrance-guide', 'use'));
   route.at(9 + openingMinutes, 'Compare the patent, model and pen dates', ['scope', 'evidence', 'certainty', 'interpretation', 'methods-and-tools'], (d) => {
     for (const exhibit of ['OBJ-001-A', 'OBJ-001-B', 'OBJ-001-C']) d.run({ type: 'InspectExhibit', exhibit });
@@ -1836,6 +1863,7 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Nexus with both layouts at the Packing Table', end: 92, play: () => nexusToEmberford('packing') },
     { name: 'Nexus and Emberford with both scout protocols', end: 96, play: () => nexusToEmberford('scout') },
     { name: 'Nexus with the Hinged Reader and the working-model check', end: 91, play: () => nexusToEmberford('viewer') },
+    { name: 'Nexus with the call at the curtain and Ethren’s spare felt', end: 92, play: () => nexusToEmberford('curtain') },
     { name: 'Nile first visit from a prepared Chapter 1 save', end: 50, play: () => nileDispatch() },
     { name: 'Nile first visit with the Reading Window', end: 53, play: () => nileDispatch('reading-window') },
     { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch('borrowed-mark') },

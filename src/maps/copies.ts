@@ -1,5 +1,6 @@
 /** A fictional city where the archive, press and landing share written notices. */
 import type { Condition } from '../domain/types';
+import { WORK_SCHEDULE_COPIES } from './workSchedule';
 import { DATE_REGISTER_RETURNS } from './dateRegisterReturns';
 import type { Interactable, MapDef } from './types';
 import { COPIES_ARCHIVE_BACKBILL, COPIES_PRESS_BACKBILL } from './backbill';
@@ -71,6 +72,7 @@ export const COPIES_ARCHIVE = interior({
     { stamp: 'rug-green', x: 11, y: 10 },
   ],
   interactables: [
+    WORK_SCHEDULE_COPIES,
     ...COPIES_ARCHIVE_BACKBILL,
     ...DATE_REGISTER_RETURNS,
     ...COPIES_ARCHIVE_CITATION_RAIL,

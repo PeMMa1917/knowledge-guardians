@@ -9,6 +9,7 @@ import { CIVIC_BOUNDARY } from './serviceBoundary';
 import { CIVIC_DATE_REGISTER_PROPS, CIVIC_DATE_REGISTER_READERS } from './dateRegister';
 import { CIVIC_CALLBOARD_DOOR } from './civicCallboard';
 import { MATERIAL_CANAL_REVISIT } from './materialStores';
+import { starStations } from './starPaths';
 import type { Interactable, MapDef } from './types';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'civic.waypost'): Interactable {
@@ -76,6 +77,7 @@ export const CIVIC_DISPATCH: MapDef = {
     { stamp: 'plant-tall', x: 16, y: 14 },
   ],
   interactables: [
+    ...starStations('oracle', [20, 14], [21, 14]),
     ...CIVIC_DATE_REGISTER_PROPS,
     CIVIC_CALLBOARD_DOOR,
     door('civic-steps-path', 3, 11, 'the west passage to North Steps', { map: 'civic.steps', x: 12, y: 14 }),

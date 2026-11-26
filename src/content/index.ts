@@ -139,6 +139,19 @@ import { fieldStoreContent } from './fieldStore';
 import { materialStoreContent } from './materialStores';
 import { loadingBayContent } from './loadingBay';
 import { glassRackContent } from './glassRack';
+import { shoreReplyContent } from './shoreReply';
+import { ferryWindowContent } from './ferryWindow';
+import { starPathContent } from './starPaths';
+import { tokBadgeContent } from './badgeRoom';
+import { ferryPackingContent } from './ferryPackingCases';
+import { workScheduleContent } from './workScheduleCases';
+import { bearingBayContent } from './bearingBay';
+import { jigShopContent } from './jigShop';
+import { earlierViewsContent, installEarlierViews } from './earlierViewing';
+import { curtainContent } from './curtainCall';
+import coastDetector from './coast-detector.json';
+import memoryCart from './memory-cart.json';
+import { dispatchStatsContent } from './dispatchStats';
 
 export const CONTENT_VERSION = 5;
 
@@ -153,7 +166,9 @@ export function buildPack(): ContentPack {
     referenceProofs, numberLeafContent, surveyDepotContent, referenceLineContent, turningTableContent, makerRoomContent, makerExactContent,
     timbuktuManuscriptContent, objectUseContent, leavittPlateContent, referenceStation, callboardContent, cueWorkshopContent,
     modelRecordsContent, secondReadingContent, timeRoomContent, fieldStoreContent, materialStoreContent,
-    loadingBayContent, glassRackContent];
+    loadingBayContent, glassRackContent, shoreReplyContent, ferryWindowContent, starPathContent, tokBadgeContent,
+    ferryPackingContent, workScheduleContent, bearingBayContent, jigShopContent, earlierViewsContent, curtainContent,
+    coastDetector, memoryCart, dispatchStatsContent];
   for (const k of keys) pack[k] = [...parts, ...collectionRooms].flatMap((p) => p[k] ?? []);
   const content = pack as ContentPack;
   content.questions.push(...QUESTION_ROUTES.map(({ question }) => question));
@@ -166,6 +181,7 @@ export function buildPack(): ContentPack {
     }),
   }));
   addSpecimenPeople(content);
+  installEarlierViews(content);
   specimenEquipment(content);
   addMicroSkills(content);
   return content;

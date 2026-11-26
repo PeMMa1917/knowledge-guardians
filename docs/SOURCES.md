@@ -144,6 +144,10 @@ The two historical cases have separate places, publishers and purposes. Pilar’
 - HIS-LINTEL-01 gives the National Library’s 1898 Roman-script Malay edition of *Sejarah Malayu*, accession B20025340E, and traces it to Shellabear’s 1896 Jawi edition. The library separately credits Ibrahim, son of Kandu, with helping Leyden read and understand the Jawi copy used in his English translation, published in 1821. The connection gives specific people their part in a record that travelled. [National Library Board’s rare-edition account](https://biblioasia.nlb.gov.sg/all-sections/vol-11-issue-4-jan-mar-2016-sejarah-malayu-malay-annals/)
 - HIS-LINTEL-02 records Sri Mariamman Temple’s South Bridge Road building in 1827 and its public history as a place of refuge. HIS-LINTEL-03 gives separate dates for brick fabric and the later entrance tower. The stewards’ and heritage board’s published accounts give the dates and role of this place. A visitor’s permission remains a question for its own keepers. [Hindu Endowments Board temple history](https://heb.org.sg/sri-mariamman-temple/) · [National Heritage Board building record](https://www.roots.gov.sg/places/places-landing/Places/national-monuments/sri-mariamman-temple)
 
+## A Name on the Load
+
+The ferry packing room draws on 36 individually accessioned carriers, boxes, vessels and sets. Collection notes keep the period and scope of each particular object with its named roles or uncertain attribution. The practice hooks, ink, exposure counts and handling moves belong to the fictional Ferry and Nexus. The same removable tag tests early visibility and protected reading. It leaves historical lifetimes, loads and routes open. [Individual object records and photographs](../src/content/ferry-packing-cases.json) · [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access) · [The Met Open Access](https://www.metmuseum.org/hubs/open-access)
+
 ## The Departure Strip, Ferry Crossing and Bell Archive
 
 Ferry Crossing and the Bell Archive use an invented wick handoff and original diagrams of filing tabs. The play uses separate records about two historical maps. Neither set of historical map marks appears in the game.
@@ -224,11 +228,64 @@ Each of the 36 local collection views comes from its own dated catalogue accessi
 
 The Walters identifies Gnaios’s name on a dated garnet intaglio and separately discusses a possible older sculptural model associated with Polykleitos. The Smithsonian records an Antwerp collection in the Bartmann jug’s provenance and gives several places in a separate geography field. The Met gives the Edo brass-casting guild and the represented merchants different roles. The game keeps all three boundaries visible in the working copy or its shelf correction. [Walters, 42.109](https://art.thewalters.org/object/42.109/) · [Smithsonian National Museum of African Art, 89-13-73](https://collections.si.edu/search/detail/edanmdm:nmafa_89-13-73) · [The Met, 1991.17.18](https://www.metmuseum.org/art/collection/search/316490)
 
+## The Working Cupboards, Living Forest and City of Copies
+
+The 38 case records keep the museum’s accession, date and bounded material evidence together. The queues are fictional workshops with authored bell lengths. One receiver can use the catalogue line at the first bell. Another can use the plain working support while a separate reader brings its source line. The City of Copies keeps a late proof with the exact equipped working copy. [Catalogue records and bench notes](../src/content/work-schedule-specimens.json) · [Documented roles](../src/content/work-schedule-people.json)
+
+Walters W.641 records Sultan ‘Ali’s copying of poems by Jami in Herat, with the original black binding. W.613 retains multiple documented roles and refers to a separate larger portion with the colophon. W.883 credits Ram Singh II as patron. The game uses the museum’s open cover views for the manuscripts and gives each documentary role its own field where a reader can reopen it. [Walters, W.641](https://art.thewalters.org/object/W.641/) · [Walters, W.613](https://art.thewalters.org/object/W.613/) · [Walters, W.883](https://art.thewalters.org/object/W.883/)
+
 ## The Line a Reader Can Follow and A Sunset on the Proof
 
 - The Nexus uses the catalogue page for the same A606881 record. Its title includes the year 1895, the collection dates the photograph to 1895, and the description dates the original exposure to 22 December 1895. The page supplies no personal byline or page publication date. The rendered entry begins with the title and ends with the date the game's authors consulted it. [Science Museum Group, A606881](https://collection.sciencemuseumgroup.org.uk/objects/co134691/photograph-of-a-radiograph-of-hand-taken-by-wilhelm-conrad-rontgen-germany-1895)
 - HIS-COPIES-TURNER-NG524 identifies the online artwork *The Fighting Temeraire* by Joseph Mallord William Turner, made in 1839. The longer title includes the year of the tow, 1838. The National Gallery's catalogue describes the painted sunset and says the ship likely reached Rotherhithe during the afternoon. The artwork entry and the catalogue account support different claims. The archive desks, captions and people using the source slips are fictional. [The National Gallery, NG524](https://www.nationalgallery.org.uk/paintings/joseph-mallord-william-turner-the-fighting-temeraire)
 - The two printed entries follow MLA 9 core elements for the source type and its online container. The stable page addresses in the entries are live links. The shorter physical tags also include the inventory numbers the museums give. The Style Center's example for a painting viewed online includes a creation year separate from the website's date. The example for an undated web source explains the optional access date. [Works Cited quick guide](https://style.mla.org/works-cited/works-cited-a-quick-guide/) · [Citations by Format](https://style.mla.org/works-cited/citations-by-format/) · [Undated web source example](https://style.mla.org/web-sites-no-publication-date/)
+
+## The Parts You Can Replace, Metalworks and Emberford
+
+The jig trials use fictional paper models and original study graphics. The sources identify the specific workshop objects, artistic depictions, patent models and custody records. Use, production, an associated owner, and the year of a patent have separate entries where the public catalogue supports them.
+
+| Custodian | Identifier and date | Exact record |
+|---|---|---|
+| Science Museum Group | 1990-7607 · 1829 (recorded use) | [Bench vice used by George Stephenson at Rainhill](https://collection.sciencemuseumgroup.org.uk/objects/co221775/bench-vice-belonging-to-george-stephenson) |
+| Science Museum Group | 1971-156/1 · 1890–1930 (catalogue range) | [Anvil from the Portslade forge](https://collection.sciencemuseumgroup.org.uk/objects/co8058501/blacksmiths-anvil-from-portslade-forge-sussex-britain-1890-1930) |
+| Science Museum Group | 2020-115 · 1967 (prototype made) | [Ron Hickman’s second Workmate prototype](https://collection.sciencemuseumgroup.org.uk/objects/co8641419/second-prototype-workmate) |
+| Science Museum Group | 1894-168 · 1879 (scale model made) | [Garrett saw bench safety-guard model](https://collection.sciencemuseumgroup.org.uk/objects/co46657/saw-bench) |
+| Science Museum Group | 1954-155 · 1717 (object date) | [Compass plane for concave surfaces](https://collection.sciencemuseumgroup.org.uk/objects/co45831/compass-plane) |
+| Science Museum Group | 1927-1055 · 1849–1913 (made) | [D. Malloch & Son smoothing plane](https://collection.sciencemuseumgroup.org.uk/objects/co45487/smoothing-plane) |
+| Science Museum Group | 1891-143 · 1830 (model made) | [One-half model of a segmental turning lathe](https://collection.sciencemuseumgroup.org.uk/objects/co46278/model-scale-1-2-segmental-turning-lathe) |
+| Science Museum Group | 1892-96 · 1889–92 (model made) | [Regnard Frères’s one-fifth copying lathe model](https://collection.sciencemuseumgroup.org.uk/objects/co46279/model-of-copying-lathe-scale-1-5) |
+| Science Museum Group | 1919-483 · 1896–1918 (catalogue range) | [Set of Johansson gauge blocks](https://collection.sciencemuseumgroup.org.uk/objects/co59398/set-of-johansson-gauge-blocks-c-1900) |
+| Science Museum Group | 1975-176 · About 1958 (made) | [J. Gilmour’s error-compensating height gauge](https://collection.sciencemuseumgroup.org.uk/objects/co59353/error-compensating-height-gauge) |
+| Science Museum Group | Y1988.146.16 · 1960–65 (made) | [Rowi Model 1 slide mounting jig](https://collection.sciencemuseumgroup.org.uk/objects/co8406811/slide-mounting-jig) |
+| Science Museum Group | 1900-75 · 1805 (made) | [Henry Maudslay’s small “Lord Chancellor” micrometer](https://collection.sciencemuseumgroup.org.uk/objects/co59282/maudslay-s-lord-chancellor-bench-micrometer) |
+| Science Museum Group | 1919-265 · 1855 (made) | [Whitworth’s millionth measuring machine](https://collection.sciencemuseumgroup.org.uk/objects/co59326/micrometer-type-mechanical-comparator) |
+| Science Museum Group | Y2000.35 · 1955–65 (made) | [Moore & Wright Braille micrometer](https://collection.sciencemuseumgroup.org.uk/objects/co8411358/braille-micrometer) |
+| Science Museum Group | 2021-1694 · 1960–69; used during 1963–69 training (catalogue range; documented training use) | [Alan Pedder’s apprenticeship toolbox](https://collection.sciencemuseumgroup.org.uk/objects/co8866826/toolbox-and-tools-used-during-aei-apprenticeship) |
+| Science Museum Group | Y2001.360 · 1911 (made) | [W. Crosland’s pattern-book swatch guillotine](https://collection.sciencemuseumgroup.org.uk/objects/co8412030/guillotine-manufactured-by-w-crosland-in-bredbury-in-1911-and-used-by-allsops) |
+| Science Museum Group | 1999-190 · About 1850 (made) | [Holtzapffel set of eighteen screw-thread plug gauges](https://collection.sciencemuseumgroup.org.uk/objects/co475561/set-of-18-plug-gauges-for-holtzapffels-screw-threads) |
+| Science Museum Group | 1868-253/2 · 1840–67 (made) | [Japanese saw set](https://collection.sciencemuseumgroup.org.uk/objects/co46760/saw-set-japanese-mid-19th-century) |
+| Science Museum Group | 2015-2019/13 · About 1965 (made) | [Bob Watkins’s apprentice-made thread gauge](https://collection.sciencemuseumgroup.org.uk/objects/co8555211/screw-thread-gauge-tool-made-by-bob-watkins) |
+| Science Museum Group | 1991-7481 · About 1922 (catalogue association) | [Henry Bowker’s carriage-builder tool chest](https://collection.sciencemuseumgroup.org.uk/objects/co222730/bowker-tool-chest) |
+| Science Museum Group | 1957-192/1 · 1830–60; described as made about 1830 (made) | [John Stirrup’s carpenter’s tool chest](https://collection.sciencemuseumgroup.org.uk/objects/co475712/carpenters-tool-chest) |
+| Science Museum Group | 1990-5036/10071 · About the 1910s (photographic print) | [Pierre Dubreuil’s oil print The Tool Chest](https://collection.sciencemuseumgroup.org.uk/objects/co8653768/the-tool-chest) |
+| Science Museum Group | 1994-166 · About 1982 (made) | [Hirata SCARA workholder and control cabinets](https://collection.sciencemuseumgroup.org.uk/objects/co50714/scara-type-industrial-robot-by-hirata) |
+| Science Museum Group | 1927-1663 · 1760–72 (made) | [Joseph Finney’s dial micrometer](https://collection.sciencemuseumgroup.org.uk/objects/co1681/dial-micrometer-1760-1772) |
+| Smithsonian National Museum of American History | PG.000762 · 17 March 1857 (catalogue date) | [John William Jarboe’s photographic plate vise](https://americanhistory.si.edu/collections/object/nmah_1020945) |
+| Smithsonian National Museum of American History | TE.T11414.013 · Before 19 October 1838; patent issued that day (model made; patent date) | [Emory A. Angell’s loom temple patent model](https://americanhistory.si.edu/collections/object/nmah_1069586) |
+| Smithsonian National Museum of American History | MA.308918 · 1863 (made) | [Josiah Lyman’s triangular drafting-scale patent model](https://americanhistory.si.edu/collections/object/nmah_1127435) |
+| Smithsonian National Museum of American History | 1987.0422.01 · About 1930–32; patent 1932 (made; patent issued) | [John Mischker’s reversible micrometer](https://americanhistory.si.edu/collections/object/nmah_1431943) |
+| Smithsonian National Museum of American History | TR.308544 · 1851; patent 19 August 1851 (made; patent issued) | [Abijah S. Hosley’s ship-model measurer patent model](https://americanhistory.si.edu/collections/object/nmah_843818) |
+| Smithsonian National Museum of American History | MC.309167 · 1827 (made; patent dated 24 April 1827) | [William Patrick’s gage-lathe patent model](https://americanhistory.si.edu/collections/object/nmah_848429) |
+| Smithsonian National Museum of American History | GA.89797.027253 · About 1860; patent 21 February 1860 (model made; patent issued) | [A. H. Wood’s engraver’s vice patent model](https://americanhistory.si.edu/collections/object/nmah_998808) |
+| Smithsonian National Museum of American History | GA.89797.002894 · About 1842; patent 31 December 1842 (model made; patent issued) | [Luman Carpenter’s ellipsographic copying-machine patent model](https://americanhistory.si.edu/collections/object/nmah_998763) |
+| The Metropolitan Museum of Art | 91.16.2a–c · 17th century (made) | [Seventeenth-century rabbet plane](https://www.metmuseum.org/art/collection/search/187399) |
+| The Metropolitan Museum of Art | 2005.100.610 · About 1844 (photographed) | [William Henry Fox Talbot’s Carpenter and Apprentice](https://www.metmuseum.org/art/collection/search/283072) |
+| The Metropolitan Museum of Art | 2011.587a–r · Early 20th century (catalogue range) | [Template and tools from the D’Angelico Workshop](https://www.metmuseum.org/art/collection/search/506787) |
+| The Metropolitan Museum of Art | 1980.497.7 · 1900–07 (made) | [Foil cutting plate from Tiffany Studios](https://www.metmuseum.org/art/collection/search/3768) |
+| The Metropolitan Museum of Art | JP2328 · 19th century (dated print) | [Ryūryūkyo Shinsai’s Tools for the Carpenter](https://www.metmuseum.org/art/collection/search/54112) |
+| The Metropolitan Museum of Art | 39.40.39a · 12th century (made) | [Twelfth-century pottery mold](https://www.metmuseum.org/art/collection/search/449573) |
+| The Metropolitan Museum of Art | 11.215.668 · About 1386–1347 BCE (made) | [Mold with unfired frit still present](https://www.metmuseum.org/art/collection/search/559091) |
+| British Museum | Heal,118.8 · 1720–40 (printed) | [John Jennion’s toolmaker trade card](https://www.britishmuseum.org/collection/object/P_Heal-118-8) |
 
 ## The Other Face of the Plate, Metalworks and Council of Inquiry
 
@@ -462,6 +519,49 @@ The practice boards use separate tests for a repeated number pattern, a relation
 - Columbia dates Plimpton Cuneiform 322 to approximately 1820–1762 BCE and attributes it to Larsa. The exhibit discusses both the right-triangle relationships and Eleanor Robson’s interpretation of the tablet’s use. The drawn workshop examples have their own lengths. [Exact Columbia item](https://online-exhibitions.library.columbia.edu/exhibits/show/jewels/item/10987) · [Exhibit commentary](https://online-exhibitions.library.columbia.edu/exhibits/show/jewels/themes/science/158)
 - Oxford discusses the dot used as a place marker in the Bakhshali manuscript and its separate dates for three samples of birch bark. Another study gives the calibrated ranges and examines what they can establish about the writing and manuscript’s assembly. [Oxford account](https://www.glam.ox.ac.uk/article/carbon-dating-finds-bakhshali-manuscript-contains-oldest-recorded-origins-symbol-zero) · [Plofker and colleagues](https://doi.org/10.18732/H2XT07)
 
+## The Reply from Shore, Cartographers’ Sea and Slate Harbour
+
+The signal shed uses exact catalogue records for charts, signalling objects and records of custody. The working diagrams are original fictional aids. The navigation chart given by Solomona Tuatagaloa supplies the public catalogue distinctions among makers, a donor and named place labels. Its geometry and navigation methods stay with their own community and record.
+
+| Custodian | Identifier and date | Exact record |
+|---|---|---|
+| Royal Museums Greenwich | G230:1/7 · 1456 (signed and dated) | [Jacopo Bertran and Berenguer Ripoll’s portolan chart](https://www.rmg.co.uk/collections/objects/rmgc-object-540297) |
+| Royal Museums Greenwich | G230:1/9 · 1486 (made) | [Arnald Domenech’s vellum portolan chart](https://www.rmg.co.uk/collections/objects/rmgc-object-540284) |
+| Royal Museums Greenwich | G230:1/11 · About 1570 (made) | [Guilio di Cesare Petrucci’s water-damaged portolan chart](https://www.rmg.co.uk/collections/objects/rmgc-object-540286) |
+| Royal Museums Greenwich | G213:2/4 · Possibly 1535 (catalogue estimate) | [Portolan chart attributed to Pedro or Jorge Reinel](https://www.rmg.co.uk/collections/objects/rmgc-object-540311) |
+| Royal Museums Greenwich | G245:8/2 · 1653 (signed and dated) | [Nicholas Comberford’s chart of Hispaniola](https://www.rmg.co.uk/collections/objects/rmgc-object-540295) |
+| Royal Museums Greenwich | PBE6858 · 1675 (publication) | [Third book of John Seller’s English Pilot](https://www.rmg.co.uk/collections/objects/rmgc-object-1113735) |
+| Royal Museums Greenwich | G213:2/77(1) · 1874 and 1881 (both years listed by the catalogue) | [Léon Brault’s first-quarter probable-wind chart](https://www.rmg.co.uk/collections/objects/rmgc-object-1112547) |
+| Royal Museums Greenwich | G267:47/1 · 1773; earlier survey 1769 (printed; survey named in title) | [J. Cheevers’s printing of Cook’s Tahiti chart](https://www.rmg.co.uk/collections/objects/rmgc-object-540641) |
+| Royal Museums Greenwich | G263:1/2 · 1772; earlier ship track 1769–70 (printed; earlier observations) | [I. Bayley’s 1772 printed chart of New Zealand](https://www.rmg.co.uk/collections/objects/rmgc-object-540782) |
+| Royal Museums Greenwich | G213:2/80 · 22 December 1974 (dated chart) | [Halifax radio-transmitted North Atlantic weather chart](https://www.rmg.co.uk/collections/objects/rmgc-object-1112578) |
+| The Metropolitan Museum of Art | 17.3.2378 · 1854–57 (printed) | [U.S. Coast Survey island reconnaissance and sketch sheet](https://www.metmuseum.org/art/collection/search/395959) |
+| British Museum | Oc1993,03.13 · Late 20th century (production range) | [Marshallese navigation chart given by Solomona Tuatagaloa](https://www.britishmuseum.org/collection/object/E_Oc1993-03-13) |
+| Royal Museums Greenwich | AAB0069 · 1827 (made) | [Tin signal flag game](https://www.rmg.co.uk/collections/objects/rmgc-object-6118) |
+| Royal Museums Greenwich | EQA0198.6 · 1858 (made) | [Folding white-and-blue ball signal](https://www.rmg.co.uk/collections/objects/rmgc-object-1195157) |
+| Royal Museums Greenwich | ZBA2245 · 1833 (first public use) | [Greenwich Observatory’s red Time Ball](https://www.rmg.co.uk/collections/objects/rmgc-object-247981) |
+| Royal Museums Greenwich | ZAA0647 · December 1855 (drawn) | [Hubert Airy’s drawing of the fallen time ball](https://www.rmg.co.uk/collections/objects/rmgc-object-79752) |
+| Royal Museums Greenwich | ZAA0718 · About 1861 (made; installed 1861–62) | [Morris and Mapple’s hourly time signal relay](https://www.rmg.co.uk/collections/objects/rmgc-object-263751) |
+| Royal Museums Greenwich | ZAA0653 · About 1900 (made) | [Hancocks and Co. time-signal apparatus](https://www.rmg.co.uk/collections/objects/rmgc-object-79758) |
+| Royal Museums Greenwich | PEA1009 · 1968 (made) | [Meteorological Office Ships’ Code Card](https://www.rmg.co.uk/collections/objects/rmgc-object-1112755) |
+| Royal Museums Greenwich | PEA1010 · 1968 (made) | [Code card for auxiliary ships and other weather reporters](https://www.rmg.co.uk/collections/objects/rmgc-object-1112756) |
+| Smithsonian National Museum of American History | TR.335567 · Late 19th century; recorded hurricane use 16–17 August 1917 (made; later use) | [Bolivar Point Fresnel lighthouse lens](https://americanhistory.si.edu/collections/object/nmah_844143) |
+| Royal Museums Greenwich | NAV0942 · About 1887 (made) | [James Douglass’s twin-wick lightship burner](https://www.rmg.co.uk/collections/objects/rmgc-object-43154) |
+| Royal Museums Greenwich | ZBA9154 · 1902–03 (made) | [Lightship’s chain-driven clock mechanism](https://www.rmg.co.uk/collections/objects/rmgc-object-563175) |
+| Royal Museums Greenwich | PCT16176 · May 1979 (photographed) | [Henry P. Bird’s photograph of Don Cameron on Relume](https://www.rmg.co.uk/collections/objects/rmgc-object-1192635) |
+| Royal Museums Greenwich | PEB2560 · 1933; receipt dated 18 April 1933 (issued; inserted receipt) | [Clyde Shipping brochure with Copeland accommodation receipt](https://www.rmg.co.uk/collections/objects/rmgc-object-1250169) |
+| Royal Museums Greenwich | PEA0453 · 1939 (issued) | [Mauretania maiden-voyage postcard with log abstract](https://www.rmg.co.uk/collections/objects/rmgc-object-1246226) |
+| Royal Museums Greenwich | G221:4/68 · 1774 (issued) | [Liverpool pilotage rates and law abstract](https://www.rmg.co.uk/collections/objects/rmgc-object-1112532) |
+| Royal Museums Greenwich | PEA1006 · 1973 (made) | [Selected Ship’s Meteorological Logbook](https://www.rmg.co.uk/collections/objects/rmgc-object-1112743) |
+| Royal Museums Greenwich | PEA1007 · 1960 (made) | [Supplementary Ship’s Meteorological Logbook](https://www.rmg.co.uk/collections/objects/rmgc-object-1112745) |
+| Royal Museums Greenwich | PEA1005 · 1970 (made) | [Tear-off pad for British ships’ radio weather reports](https://www.rmg.co.uk/collections/objects/rmgc-object-1112603) |
+| Royal Museums Greenwich | PAI4355 · 16 October 1835 (dated logbook entry) | [William Hay Wardrop’s two coastline drawings](https://www.rmg.co.uk/collections/objects/rmgc-object-154295) |
+| Smithsonian National Museum of American History | PH.275100 · 1856–66; probably acquired by Mason in 1865 (made; qualified acquisition) | [E. & G. W. Blunt sextant linked to Theodorus B. M. Mason](https://americanhistory.si.edu/collections/object/nmah_1057781) |
+| Smithsonian National Museum of American History | PH.314852 · About 1850 (made) | [S. Thaxter & Son nautical compass with Robert King paper card](https://americanhistory.si.edu/collections/object/nmah_1167826) |
+| Smithsonian National Museum of American History | PH.337138 · 11 August 1877 (manufacture recorded) | [Ritchie liquid compass documented in the maker’s ledger](https://americanhistory.si.edu/collections/object/nmah_1167844) |
+| Smithsonian National Museum of American History | 1990.0577.01 · About 1940; recorded use September 1942 (made; later use) | [Marine Compass Company compass from Alcoa Mariner’s lifeboat](https://americanhistory.si.edu/collections/object/nmah_1183807) |
+| Smithsonian National Museum of American History | DL.006868.009 · 1766 (published) | [William Chambers’s The Universal Navigator](https://americanhistory.si.edu/collections/object/nmah_307990) |
+
 ## Chapter 15: Council of Inquiry
 
 The Council stages fictional work and keeps two historical reading cards. The cards give methods the player can try on a separate case.
@@ -517,3 +617,7 @@ The store compares exact records from four custodians. Its images are original p
 - The Museum of Modern Art’s 149.1953.a–i accession ties Marcel Duchamp to his three preserved thread curves and straight measuring practice. The workshop uses an original practice route with constant thread length. [3 Standard Stoppages](https://www.moma.org/collection/works/78990)
 - The Science Museum Group identifies accession 1995-210 as Bill Phillips’s hydraulic economic computer that the London School of Economics used in teaching. The Island’s reservoir uses an explicitly fixed share to let readers compare flow with stock. [Phillips Economic Computer](https://collection.sciencemuseumgroup.org.uk/objects/co64127/phillips-economic-computer)
 - The MIT Museum holds the 1950 magnetic maze and mouse under accession 2007.030.001. Its collection record credits Betty Shannon for the wiring she carried out at home. Claude Shannon and Betty Shannon appear at the maze bench. The practice route holds the board fixed across a search run and a run with saved turns. [Theseus](https://mitmuseum.mit.edu/collections/object/2007.030.001)
+
+## The Missing Face
+
+Quena’s Glass Rack has 40 numbered Cleveland Museum of Art collection cases. Each uses a distinct pair of CC0 photographs of the same catalogue record. The extra image can show a turned form, separated parts or a closer frame. Both views retain the accession. The source text distinguishes what the image reveals from what the museum’s accession and maker fields document. Where the Japanese water container has a replacement lid, the game keeps that part’s different date history visible. The Glass Rack, its receivers and the later practice mounts are fictional. [Exact records](../src/content/glass-rack-specimens.json) · [Named makers and catalogue credits](../src/content/glass-rack-people.json) · [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access)

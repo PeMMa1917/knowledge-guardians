@@ -1,0 +1,23 @@
+.bearing-layout, .bearing-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+  gap: .65rem;
+  align-items: start;
+  margin: .6rem 0;
+}
+
+.bearing-board canvas {
+  max-inline-size: min(13rem, 100%);
+  block-size: auto;
+  width: 100%;
+  border: 1px solid currentColor;
+  image-rendering: pixelated;
+}
+
+.bearing-board ul {
+  padding-inline-start: 1.2rem;
+}
+
+.bearing-panel .row button, .bearing-panel section button {
+  margin-block: .25rem;
+}

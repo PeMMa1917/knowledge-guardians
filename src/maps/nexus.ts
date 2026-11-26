@@ -5,8 +5,12 @@
  * East wing (x 26-38): the Hall of Firsts, an optional side quest with
  * plaques, each about one person shown with their own place and people, from many periods.
  */
+import { BADGE_ANNEX_DOOR } from './badgeRoom';
+import { EARLY_CURTAIN_NPC, EARLY_CURTAIN_PROPS } from './curtainCall';
+import { NEXUS_DISPATCH_STATS } from './dispatchStats';
 import type { Condition } from '../domain/types';
 import { FIRST_BENCH_EPILOGUE } from './afterCouncil';
+import { FERRY_PACKING_RETURNS } from './ferryPacking';
 import type { MapDef } from './types';
 import { sceneProp } from './sceneProps';
 import { NEXUS_VINDOLANDA } from './vindolanda';
@@ -17,6 +21,7 @@ import { NEXUS_LANTERN_WEAVE } from './lanternWeave';
 import { SPECIMEN_VAULT_DOOR } from './specimenVault';
 import { NUMBER_LEAF_RETURNS } from './numberLeaves';
 import { MODEL_RECORD_RETURNS } from './modelRecords';
+import { starStations } from './starPaths';
 
 const W = 40, H = 20;
 const strokeRequested: Condition = { flag: 'nexus.stroke.requested', eq: true };
@@ -132,6 +137,7 @@ export const NEXUS: MapDef = {
     [11, 3, 1, 2], [14, 3, 1, 2],      // portal posts
   ],
   npcs: [
+    EARLY_CURTAIN_NPC,
     { id: 'warden-ise', x: 12, y: 11, facing: 'down' },
     { id: 'curator-dace', x: 4, y: 8, facing: 'right' },
     { id: 'clerk-venn', x: 20, y: 8, facing: 'left' },
@@ -145,6 +151,7 @@ export const NEXUS: MapDef = {
     { id: 'translator-lio', x: 24, y: 13, facing: 'right', visibleIf: { origin: 'traveller' } },
   ],
   interactables: [
+    ...starStations('inquisitor', [3, 10], [3, 11]),
     ...NEXUS_VINDOLANDA,
     ...NEXUS_DOOR_FOLD,
     ...NEXUS_CITATION_RAIL,
@@ -153,6 +160,7 @@ export const NEXUS: MapDef = {
     SPECIMEN_VAULT_DOOR,
     ...NUMBER_LEAF_RETURNS,
     ...MODEL_RECORD_RETURNS,
+    ...FERRY_PACKING_RETURNS,
     { id: 'hesper-checked-bench', kind: 'scene', node: 'hesper.nexus.bench', x: 20, y: 10, w: 1, h: 1,
       label: 'Hesper’s reserved repair bench', art: 'nexus.viewer-sheet', walkThrough: true,
       visibleIf: { all: [{ objective: 'm02.o8.ise' }, { flag: 'hesper.visitArrangement', eq: 'bench' }] } },
@@ -420,6 +428,9 @@ export const NEXUS: MapDef = {
     { id: 'bench', kind: 'bench', x: 19, y: 16, w: 3, h: 2, label: 'the workshop bench (marking test)' },
     { id: 'label-pen', kind: 'label', kit: 'pen', x: 10, y: 15, w: 1, h: 1, label: 'the label stand', art: 'label-stand' },
     ...FIRST_BENCH_EPILOGUE,
+    BADGE_ANNEX_DOOR,
+    ...EARLY_CURTAIN_PROPS,
+    ...NEXUS_DISPATCH_STATS,
     { id: 'waystone', kind: 'waystone', place: 'Nexus archive hall', x: 2, y: 9, w: 1, h: 1, label: 'the Waystone (save and rest)', art: 'waystone' },
     ...([['OBJ-101', 'eratosthenes'], ['OBJ-102', 'haytham'], ['OBJ-103', 'bisheng'], ['OBJ-104', 'sikdar'], ['OBJ-105', 'santos'], ['OBJ-106', 'sheppard'], ['OBJ-107', 'wollstonecraft']] as const)
       .map(([ex, key], i) => ({ id: `plaque-${key}`, kind: 'exhibit' as const, exhibit: ex, kit: `first.${key}`, x: 27 + i * 2, y: 5, w: 1, h: 1, label: 'a plaque in the Hall of Firsts', art: 'plaque' })),

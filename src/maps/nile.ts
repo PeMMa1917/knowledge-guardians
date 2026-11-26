@@ -5,6 +5,8 @@ import { SHELF_NILE_CALLBACK } from './shelfRoom';
 import { LEAVITT_NILE_REVISIT } from './leavittPlate';
 import { NILE_GLASS_RACK_USES } from './glassRack';
 import { NILE_MAKER_PATH } from './makerRoom';
+import { starStations } from './starPaths';
+import { WORKMEN_CURTAIN_PROPS } from './curtainCall';
 
 const W = 25, H = 13;
 const room = (id: string, name: string, npcs: MapDef['npcs'], interactables: Interactable[], palette: number, stamps: MapDef['stamps']): MapDef => ({
@@ -177,6 +179,8 @@ export const NILE_ROYAL = room('nile.royal', 'Nile Archive: Royal Records Room',
 export const NILE_WORKYARD = room('nile.workyard', 'Nile Archive: Workmen’s Room',
   [{ id: 'nile-leila', x: 20, y: 9, facing: 'left' }],
   [
+    ...starStations('weaver', [3, 9], [4, 9]),
+    ...WORKMEN_CURTAIN_PROPS,
     { id: 'nile-mark-swatch', kind: 'exhibit', exhibit: 'OBJ-ARCHIVE-PRACTICE-SWATCH', x: 7, y: 5, w: 1, h: 1,
       label: 'the keepers’ practice swatch', art: 'nile.scroll' },
     { id: 'nile-lamp-slip', kind: 'scene', x: 8, y: 9, w: 1, h: 1, walkThrough: true,

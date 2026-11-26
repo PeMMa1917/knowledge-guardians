@@ -1,0 +1,46 @@
+.schedule-work {
+  display: grid;
+  gap: 0.6rem;
+}
+.schedule-work h2,
+.schedule-work h3,
+.schedule-work p {
+  margin-block: 0.25em;
+}
+.schedule-work article {
+  padding: 0.6rem;
+  border: 1px solid #ae997c;
+  border-radius: 0.25rem;
+}
+.schedule-source img {
+  float: inline-start;
+  margin-inline-end: 0.6rem;
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+.schedule-rail {
+  padding-inline-start: 2em;
+  display: grid;
+  gap: 0.45rem;
+}
+.schedule-rail li {
+  padding: 0.55rem;
+  border-inline-start: 0.25rem solid #c7c39c;
+  background: #29394a;
+  color: #fbefd7;
+  overflow-wrap: anywhere;
+}
+.schedule-rail li.public {
+  border-inline-start-color: #e3a877;
+}
+.schedule-rail li.practice {
+  border-inline-start-color: #89c8b6;
+}
+.schedule-rail small {
+  display: block;
+}
+.schedule-moves {
+  margin-block-start: 0.2rem;
+}

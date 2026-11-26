@@ -1,0 +1,1978 @@
+[
+  {
+    "slug": "coromandel-wrapper",
+    "room": "cloth",
+    "title": "A wrapper with an export line",
+    "task": "A carrier can get the export line from the Station. A copy maker on the trail needs to see which end of the plain pattern goes first.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 3,
+        "public": 1
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Check the Coromandel source slip",
+      "Lay the two practice ends",
+      "Open the wrapper stand"
+    ],
+    "notes": [
+      "The India and Indonesia lines keep their separate roles.",
+      "The plain end markers let a reader tell an edge from the central field."
+    ],
+    "choices": [
+      "Send the export and origin lines to Fern Station",
+      "Set both plain edge markers on the trail tray"
+    ],
+    "outcomes": [
+      "The first reader can cite where the cloth was made and for which market. A later fold remains due.",
+      "A keeper aligns the two edge marks and clips the fabric’s written origin beside them after the opening."
+    ],
+    "revisit": [
+      "Clip the export line beyond the making line",
+      "The late proof lets a reader follow both places without converting the market into a maker’s address."
+    ],
+    "object": {
+      "key": "cma:2000.28",
+      "accession": "2000.28",
+      "institution": "Cleveland Museum of Art",
+      "title": "Oversize Hip Wrapper (tapis)",
+      "date": "mid-1700s",
+      "medium": "cotton; plain weave; drawn resist, painted mordants, dyed",
+      "dimensions": "Overall: 296 x 120 cm (116 9/16 x 47 1/4 in.)",
+      "pixelAsset": "specimens/schedule-cma-2000.28.jpg",
+      "artist": "Unidentified Coromandel textile workers",
+      "place": "Coromandel Coast, India",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://clevelandart.org/art/2000.28",
+      "observation": "The Cleveland catalogue describes this cotton wrapper as made on India’s Coromandel Coast for export to Indonesia. It lists drawn resist and painted mordants.",
+      "limit": "Export context concerns the cloth trade. The individual owner and complete journey are open.",
+      "altText": "Woven wrapper with a small repeating field and dark red ends."
+    }
+  },
+  {
+    "slug": "khorezm-seams",
+    "room": "cloth",
+    "title": "What each edge is made of",
+    "task": "Eome has a keeper waiting for the catalogue terms and a handler who wants to locate the tablet-woven edge in the practice copy.",
+    "fixture": {
+      "ticks": {
+        "source": 1,
+        "practice": 2,
+        "public": 1
+      },
+      "bell": 3
+    },
+    "jobs": [
+      "Read the three technique lines",
+      "Set the plain edge against the cuff",
+      "Open the robe stand"
+    ],
+    "notes": [
+      "Cotton, embroidery and tablet-woven edging have their own lines.",
+      "A peg marks the cuff edge and leaves the main practice shape free."
+    ],
+    "choices": [
+      "Post the three technique lines at Fern Station",
+      "Send the cuff-and-edge rehearsal to the trail"
+    ],
+    "outcomes": [
+      "A reader finds the material structure from the accession before seeing the fold.",
+      "A handler moves the cuff, checks the position of the edge and later receives the material slip."
+    ],
+    "revisit": [
+      "Place the edging tag beside the mock cuff",
+      "Now the proof keeps body, embroidery and edge visible as three specific features."
+    ],
+    "object": {
+      "key": "cma:2016.50",
+      "accession": "2016.50",
+      "institution": "Cleveland Museum of Art",
+      "title": "Woman's robe with crimson flora",
+      "date": "late 1800s",
+      "medium": "Plain weave: cotton (hand-spun, indigo dyed), embroidery: silk, cotton; tablet-woven (edges)",
+      "dimensions": "neck edge to hem: 119.4 cm (47 in.); width across shoulders: 158.1 cm (62 1/4 in.)",
+      "pixelAsset": "specimens/schedule-cma-2016.50.jpg",
+      "artist": "Unidentified Khorezm weaver and embroiderer",
+      "place": "Khorezm, Uzbekistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://clevelandart.org/art/2016.50",
+      "observation": "The catalogue lists indigo-dyed hand-spun cotton, silk and cotton embroidery and tablet-woven edges.",
+      "limit": "The record describes this robe’s materials. A source credit does not identify a named weaver.",
+      "altText": "Dark robe with red and pink embroidered flowers and detailed edges."
+    }
+  },
+  {
+    "slug": "yomud-end",
+    "room": "cloth",
+    "title": "A carpet end with its own motif",
+    "task": "One visitor wants the measured knot density. A handler needs to see a plain short end and the central field separately.",
+    "fixture": {
+      "ticks": {
+        "source": 3,
+        "practice": 1,
+        "public": 2
+      },
+      "bell": 5
+    },
+    "jobs": [
+      "Copy the measured knot range",
+      "Lay the plain short end on the work rail",
+      "Open the carpet stand"
+    ],
+    "notes": [
+      "The range sits beside the Yomud attribution.",
+      "An end tab shows where the field changes without asking people to handle the object."
+    ],
+    "choices": [
+      "Place the sourced knot range in the Station rack",
+      "Send the marked practice end to Listening Trail"
+    ],
+    "outcomes": [
+      "A reader can compare a bounded knot count without naming a household.",
+      "A handler can locate the short end from their side of the rail. The maker attribution follows the check."
+    ],
+    "revisit": [
+      "Hold the end tab apart from the knot range",
+      "The late proof keeps a counted area and one specific end feature separate."
+    ],
+    "object": {
+      "key": "cma:2010.190",
+      "accession": "2010.190",
+      "institution": "Cleveland Museum of Art",
+      "title": "Turkmen Main Carpet",
+      "date": "mid-1850s",
+      "medium": "Wool, knotted pile, 128-136 symmetrical knots per square inch",
+      "dimensions": "Overall: 290 x 160 cm (114 3/16 x 63 in.)",
+      "pixelAsset": "specimens/schedule-cma-2010.190.jpg",
+      "artist": "Unidentified Yomud weaver",
+      "place": "Turkmenistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://clevelandart.org/art/2010.190",
+      "observation": "Cleveland attributes this main carpet to a Yomud weaver and records 128–136 symmetrical knots per square inch.",
+      "limit": "Knot density is a catalogue measurement. The record leaves the precise home of this particular carpet open.",
+      "altText": "Dark rectangular pile carpet with repeating diamond shapes and ornamental end bands."
+    }
+  },
+  {
+    "slug": "saryk-edge",
+    "room": "cloth",
+    "title": "An edge that complicates the central design",
+    "task": "A visitor is matching designs in the centre. The maker field needs the catalogue’s border evidence too.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 2,
+        "public": 2
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Read the Saryk attribution against the narrower border",
+      "Place two plain border examples in a frame",
+      "Open the shared-motif stand"
+    ],
+    "notes": [
+      "The border evidence and broad geography travel on the written slip.",
+      "A practice frame highlights the edge that stayed out of the general view."
+    ],
+    "choices": [
+      "Lead with the qualified maker line at Fern Station",
+      "Keep the plain edge comparator on the trail"
+    ],
+    "outcomes": [
+      "A reader can cite the minor border and preserve both possible places.",
+      "A helper compares the centre and edge before the catalogue explanation reaches the tray."
+    ],
+    "revisit": [
+      "Pin the qualified attribution beside the border aid",
+      "The shelf links two observed areas without assigning the shared centre motif to a single weaver."
+    ],
+    "object": {
+      "key": "cma:2006.201",
+      "accession": "2006.201",
+      "institution": "Cleveland Museum of Art",
+      "title": "Turkmen Main Carpet ",
+      "date": "1870s",
+      "medium": "Wool, silk; 171 symmetrical (Turkish) knots per square inch",
+      "dimensions": "Overall: 257.7 x 250.2 cm (101 7/16 x 98 1/2 in.)",
+      "pixelAsset": "specimens/schedule-cma-2006.201.jpg",
+      "artist": "Unidentified Saryk weaver",
+      "place": "Turkmenistan or Afghanistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://clevelandart.org/art/2006.201",
+      "observation": "The museum describes a Saryk carpet with triangular minor borders and a central motif shared with other weavers.",
+      "limit": "The record leaves two possibilities for the place of making. A copied pattern supplies a comparison, not a single maker identification.",
+      "altText": "Wide red carpet with repeating small motifs and a patterned border."
+    }
+  },
+  {
+    "slug": "kashmir-square",
+    "room": "cloth",
+    "title": "The embroidered square and its fringe",
+    "task": "A square working proof could go under a short panel or open beside its two fringe marks.",
+    "fixture": {
+      "ticks": {
+        "source": 1,
+        "practice": 3,
+        "public": 1
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Look up the three material fields and stitch",
+      "Open the square template to its fringe stops",
+      "Set out the shawl proof"
+    ],
+    "notes": [
+      "The catalogue identifies three materials and the embroidery technique.",
+      "A mock fringe stop keeps an edge visible when a viewer sees only the centre."
+    ],
+    "choices": [
+      "Set the technique label at Fern Station",
+      "Leave the opened square with the trail keeper"
+    ],
+    "outcomes": [
+      "The first reader sees why the wool ground and silk and metal threads each matter.",
+      "The keeper puts the fringe mark next to the central outline and clips on the stitch source when it comes."
+    ],
+    "revisit": [
+      "Slip the stitch proof beside the opened edge",
+      "The viewer can check an edge and later locate the source for the stitch."
+    ],
+    "object": {
+      "key": "cma:1940.600",
+      "accession": "1940.600",
+      "institution": "Cleveland Museum of Art",
+      "title": "Square Shawl",
+      "date": "c. 1850–70",
+      "medium": "Silk and silver filé, wool: chain stitch embroidery",
+      "dimensions": "Overall including fringe: 212.1 x 212.1 cm (83 1/2 x 83 1/2 in.)",
+      "pixelAsset": "specimens/schedule-cma-1940.600.jpg",
+      "artist": "Unidentified Kashmiri embroiderer",
+      "place": "Kashmir",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://clevelandart.org/art/1940.600",
+      "observation": "The catalogue records wool, silk and silver filé and identifies chain stitch embroidery on this shawl.",
+      "limit": "The stated materials and stitch come from the catalogue. The wardrobe or gathering this shawl belonged to remains open.",
+      "altText": "Square shawl with a circular red central design and uneven fringe on two sides."
+    }
+  },
+  {
+    "slug": "turkmen-bag",
+    "room": "cloth",
+    "title": "A bag with two kinds of fibre in its pile",
+    "task": "Eome can send a note about the pile or hang a plain pocket where handling tells the difference between the front and an opening.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 1,
+        "public": 1
+      },
+      "bell": 3
+    },
+    "jobs": [
+      "Find the pile’s wool and silk lines",
+      "Hang a plain pocket with its opening marked",
+      "Open the bag display"
+    ],
+    "notes": [
+      "Two named materials appear on the pile line.",
+      "An upright paper pocket helps a visitor find the opening."
+    ],
+    "choices": [
+      "Post the pile record at the Station",
+      "Send a handling pocket to the Trail"
+    ],
+    "outcomes": [
+      "The correct supplied fibres are visible early. The plain pocket can be consulted later.",
+      "A trail handler can use the pocket before the written pile note arrives."
+    ],
+    "revisit": [
+      "Rehang the fibre tab beside the storage opening",
+      "The later proof shows how a bag can have a material record and a separate handling note."
+    ],
+    "object": {
+      "key": "met:22.100.39",
+      "accession": "22.100.39",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Storage Bag",
+      "date": "early 19th century",
+      "medium": "Wool (warp, weft and pile), silk (pile); asymmetrically knotted pile",
+      "dimensions": "H. 28 3/8 in. (72 cm) W. 46 1/4 in. (117.5 cm)",
+      "pixelAsset": "specimens/schedule-met-22.100.39.jpg",
+      "artist": "Unidentified Turkmen weaver",
+      "place": "Attributed to Turkmenistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/447497",
+      "observation": "The Met lists wool for warp, weft and pile, and silk in the asymmetrically knotted pile.",
+      "limit": "The fibre list describes the bag’s construction. The contents and particular user remain open.",
+      "altText": "Rectangular patterned storage bag on a pale background."
+    }
+  },
+  {
+    "slug": "uzbek-ikat",
+    "room": "cloth",
+    "title": "A robe’s measured back line",
+    "task": "A runner keeps asking for the length around the front. The two work orders preserve where the museum measured and where a person sees the shape.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 3,
+        "public": 1
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Find the centre-back measurement",
+      "Lay an open robe shape on its practice fold",
+      "Open the ikat proof"
+    ],
+    "notes": [
+      "The figure stays beside the named centre-back line.",
+      "The front opens without becoming the route of the catalogue measure."
+    ],
+    "choices": [
+      "Send the exact centre-back figure to Fern Station",
+      "Send the practice fold to Listening Trail"
+    ],
+    "outcomes": [
+      "The rack shows a boundary around the measured length.",
+      "The trail reader opens the plain fold and can later connect it to the different measured line."
+    ],
+    "revisit": [
+      "Move the measure tab to the actual catalogue line",
+      "Both reading paths now lead to the accession and its centre-back label."
+    ],
+    "object": {
+      "key": "met:1975.388.1",
+      "accession": "1975.388.1",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Robe",
+      "date": "19th century",
+      "medium": "Silk, cotton; ikat woven",
+      "dimensions": "Length at CB: 51 in. (129.5 cm)",
+      "pixelAsset": "specimens/schedule-met-1975.388.1.jpg",
+      "artist": "Unidentified ikat weaver",
+      "place": "Present-day Uzbekistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/85503",
+      "observation": "The Met lists silk and cotton, ikat weaving and a length of 129.5 centimetres at the centre back.",
+      "limit": "The length names a specific measured line. The catalogue leaves the maker and wearer unrecorded here.",
+      "altText": "Robe with pointed stripes in strong colours and an open front."
+    }
+  },
+  {
+    "slug": "lahore-carpet",
+    "room": "cloth",
+    "title": "A repeat that turns each time",
+    "task": "A mounting crew needs either the actual measurement or two plain repeat arrows for people who encounter only one section.",
+    "fixture": {
+      "ticks": {
+        "source": 1,
+        "practice": 2,
+        "public": 1
+      },
+      "bell": 3
+    },
+    "jobs": [
+      "Read the rug size, separate from the tube",
+      "Lay two plain repeat arrows in alternate directions",
+      "Open the long carpet stand"
+    ],
+    "notes": [
+      "The recorded rug length and storage-tube length stay separate.",
+      "The next example faces the opposite way to the first."
+    ],
+    "choices": [
+      "Lead with the separate measurements at the Station",
+      "Keep the repeat arrows visible at the Trail tray"
+    ],
+    "outcomes": [
+      "A reader can judge how big a display needs to be without treating the tube as the work.",
+      "A handler can align successive sections. The table of rug and tube measures follows."
+    ],
+    "revisit": [
+      "Set a reversing arrow on the second model panel",
+      "The additional proof shows why a repeated shape need not face the same direction."
+    ],
+    "object": {
+      "key": "met:17.190.858",
+      "accession": "17.190.858",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Carpet with Palm Trees, Ibexes, and Birds",
+      "date": "late 16th–early 17th century",
+      "medium": "Cotton (warp and weft), wool (pile); asymmetrically knotted pile",
+      "dimensions": "Rug: L. 328 in. (833.1 cm) W. 108 in. (274.3 cm) Wt. 132 lbs. (59.9 kg) Storage Tube: L. 132 in. (335.3 cm) Diam. 9 in. (22.9 cm)",
+      "pixelAsset": "specimens/schedule-met-17.190.858.jpg",
+      "artist": "Unidentified Mughal carpet weavers",
+      "place": "Attributed to Lahore, present-day Pakistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/446999",
+      "observation": "The Met describes alternating reversed repeat units. Its record gives separate dimensions for the carpet and a storage tube.",
+      "limit": "The recorded production attribution applies to the carpet. The tube establishes a different kind of measurement.",
+      "altText": "Long narrow pile carpet with brown borders and repeated plant and animal shapes."
+    }
+  },
+  {
+    "slug": "chintz-panel",
+    "room": "cloth",
+    "title": "A panel and a longer imagined repeat",
+    "task": "Eome can send a measured panel first or lay out two plain shapes that make a possible joint easier to see.",
+    "fixture": {
+      "ticks": {
+        "source": 3,
+        "practice": 1,
+        "public": 2
+      },
+      "bell": 5
+    },
+    "jobs": [
+      "Read the panel size on the catalogue slip",
+      "Place two plain repeat stencils on the tray",
+      "Open the chintz panel view"
+    ],
+    "notes": [
+      "The early slip gives the dimensions of the surviving panel.",
+      "Two mock repeats show where a continuation could go."
+    ],
+    "choices": [
+      "Send the measured panel to Fern Station",
+      "Bring the possible repeat joins to the Trail tray"
+    ],
+    "outcomes": [
+      "A reader can find the exact panel without treating it as an entire cloth.",
+      "A handler follows both mock seams and leaves the possible extension marked as an example."
+    ],
+    "revisit": [
+      "Mark the surviving edge before the possible extension",
+      "The late panel marks existence and reconstruction as two different parts of the display."
+    ],
+    "object": {
+      "key": "met:36.90.121",
+      "accession": "36.90.121",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Textile Panel of Chintz",
+      "date": "18th century",
+      "medium": "Cotton; printed",
+      "dimensions": "L. 26 in. (66 cm) W. 19 in. (48.3 cm)",
+      "pixelAsset": "specimens/schedule-met-36.90.121.jpg",
+      "artist": "Unidentified textile printer",
+      "place": "Attributed to India",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/449105",
+      "observation": "The Met records an eighteenth-century printed cotton panel at 66 by 48.3 centimetres.",
+      "limit": "The dimension belongs to this panel. The rest of a larger cloth remains open.",
+      "altText": "Printed cotton panel with a dark floral pattern on a light background."
+    }
+  },
+  {
+    "slug": "rumal-mount",
+    "room": "cloth",
+    "title": "A cover with a second size",
+    "task": "One receiver is fitting a copy inside a box. The other needs the cloth width to write the source tag.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 2,
+        "public": 2
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Check the cloth and mount numbers",
+      "Slip a blank stand under the cover outline",
+      "Open the rumal display"
+    ],
+    "notes": [
+      "The mount and textile figures get separate lines.",
+      "The stand adds space beyond the practice textile edge."
+    ],
+    "choices": [
+      "File the measured textile line at Fern Station",
+      "Send the mounting demonstration to Listening Trail"
+    ],
+    "outcomes": [
+      "The source rack preserves both numbers and names exactly what each measures.",
+      "A trail helper can seat the proof inside its frame without claiming the frame’s dimensions for the cloth."
+    ],
+    "revisit": [
+      "Add the cloth measurement inside the outer mount line",
+      "A visitor now finds the actual object dimension beside the mounting plan."
+    ],
+    "object": {
+      "key": "met:28.162.1",
+      "accession": "28.162.1",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Cover (Rumal)",
+      "date": "first half 17th century",
+      "medium": "Cotton; plain weave, mordant dyed and painted, resist dyed",
+      "dimensions": "Textile: L. 32 5/16 in. (82.1 cm) W. 18 1/2 in. (47 cm) Mount: L. 37 1/4 in. (94.6 cm) W. 23 3/4 in. (60.3 cm) D. 1 in. (2.5 cm)",
+      "pixelAsset": "specimens/schedule-met-28.162.1.jpg",
+      "artist": "Unidentified kalamkari worker",
+      "place": "Western India",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/448216",
+      "observation": "The Met distinguishes the cotton rumal’s size from the size of its mount and describes a mordant-and-resist dyeing process.",
+      "limit": "The mount is a display measurement. The catalogue does not give one documented named dyer for this cover.",
+      "altText": "Small rectangular patterned cover with a dark border and a large circular centre."
+    }
+  },
+  {
+    "slug": "bidri-bowl-weight",
+    "room": "vessels",
+    "title": "Two part weights, one assembled bowl",
+    "task": "A clerk wants a short reference for the assembled load. A handler needs the parts kept apart so they can be checked individually.",
+    "fixture": {
+      "ticks": {
+        "source": 1,
+        "practice": 3,
+        "public": 1
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Read the bowl, lid and assembled weight lines",
+      "Set two plain model load cards beside their parts",
+      "Open the assembled bowl proof"
+    ],
+    "notes": [
+      "The published component and total figures keep their labels.",
+      "The model supports each recorded part on a separate place before they sit together."
+    ],
+    "choices": [
+      "Put the exact weight lines on the Station rack",
+      "Leave the supported bowl and lid plan on Listening Trail"
+    ],
+    "outcomes": [
+      "The reader finds the measured assembled load and can still check either part separately.",
+      "A holder sees where to set each component and can ask whether the weight line includes both."
+    ],
+    "revisit": [
+      "Clip the two part figures below the assembled line",
+      "The shelf now lets readers check all three readings and preserve the role of each measured configuration."
+    ],
+    "object": {
+      "key": "met:19.176.4a-b",
+      "accession": "19.176.4a, b",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Bowl",
+      "date": "19th century",
+      "medium": "Zinc alloy; cast, engraved, inlaid with silver and brass (bidri ware)",
+      "dimensions": "19.176.4a: Bowl H. 2 1/2 in. (6.4 cm) Diam. 5 3/8 in. (13.7 cm) Wt. 14.9 oz. (422.5 g) 19.176.4b: Lid H. 3 in. (7.6 cm) Diam. 5 7/16 in. (13.8 cm) Wt. 20.7 oz. (586.9 g) 19.176.4a+b: Bowl + Lid H. 5 1/2 in. (14 cm) Diam. 5 7/16 in. (13.8 cm) Wt. 35.6 oz. (1009.4 g)",
+      "pixelAsset": "specimens/schedule-met-19.176.4a-b.jpg",
+      "artist": "Unidentified maker of the bidri bowl and lid",
+      "place": "Attributed to India",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/447102",
+      "observation": "The Met gives separate weights of 422.5 grams for the bowl and 586.9 grams for its lid, and 1009.4 grams assembled. The catalogue lists zinc alloy and silver and brass inlay.",
+      "limit": "The series names the weighed configurations. The individual owner and the former contents remain open.",
+      "altText": "A low dark bowl and its matching patterned cover, with reflective inlaid lines."
+    }
+  },
+  {
+    "slug": "samanid-birds",
+    "room": "vessels",
+    "title": "Two possible places for one painted bowl",
+    "task": "A reviewer needs to check both possible places. A handling worker needs a small light slip and a dark stripe rather than a settled place statement.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 1,
+        "public": 1
+      },
+      "bell": 3
+    },
+    "jobs": [
+      "Read both production attributions",
+      "Lay a plain dark-over-light swatch",
+      "Open the two-bird display"
+    ],
+    "notes": [
+      "The two possible places remain together on the written proof.",
+      "The swatch gives a visually separate example of two slip layers."
+    ],
+    "choices": [
+      "Send both possible places to Fern Station",
+      "Leave the material comparison with the trail handler"
+    ],
+    "outcomes": [
+      "The rack lets a visitor cite both places before a swatch arrives.",
+      "The handler can show what a dark-over-light surface looks like, with the location note attached later."
+    ],
+    "revisit": [
+      "Clip the two-place line below one observed surface",
+      "The late proof keeps the decoration claim and place alternatives on distinct lines."
+    ],
+    "object": {
+      "key": "cma:1969.300",
+      "accession": "1969.300",
+      "institution": "Cleveland Museum of Art",
+      "title": "Bowl with Two Birds",
+      "date": "900s",
+      "medium": "earthenware with underglaze slip-painted decoration",
+      "dimensions": "Overall: 7.6 x 25 cm (3 x 9 13/16 in.)",
+      "pixelAsset": "specimens/schedule-cma-1969.300.jpg",
+      "artist": "Unidentified earthenware potter",
+      "place": "Nishapur, Iran, or Samarkand, Uzbekistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://clevelandart.org/art/1969.300",
+      "observation": "The Cleveland catalogue describes two dark slip-painted birds over a light slip ground. It gives Nishapur or Samarkand as possible origins.",
+      "limit": "The paired birds are directly visible. Their appearance alone leaves both production attributions open.",
+      "altText": "Round pale bowl with two painted birds facing one another."
+    }
+  },
+  {
+    "slug": "bidri-ewer",
+    "room": "vessels",
+    "title": "Height with a cover attached",
+    "task": "An early box maker needs the measured maximum. A handler needs outlines of spout and cover with each part set out separately.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 3,
+        "public": 1
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Find the measured maximum height",
+      "Stand the lid and outline in two clips",
+      "Open the ewer case"
+    ],
+    "notes": [
+      "The figure includes the cover.",
+      "The outline preserves the spout and a separately lifted cover."
+    ],
+    "choices": [
+      "Send the with-cover height to the Station",
+      "Take the lid-and-spout trial to the Trail"
+    ],
+    "outcomes": [
+      "A reader can call up the maximum while leaving capacity open.",
+      "The handler sets the lid aside before consulting the with-cover measurement."
+    ],
+    "revisit": [
+      "Move the height marker to the top of the cover",
+      "The shelf now identifies which position the published measure describes."
+    ],
+    "object": {
+      "key": "met:19.135.12",
+      "accession": "19.135.12",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Globular Ewer",
+      "date": "18th century",
+      "medium": "Zinc and copper alloy; cast, engraved, inlaid with silver (bidri ware)",
+      "dimensions": "Max. H. (with cover) 10 5/8 in. (27.0 cm high) W. 12 in. (30.5 cm) Max. Diam. 6 9/16 in. (16.6 cm)",
+      "pixelAsset": "specimens/schedule-met-19.135.12.jpg",
+      "artist": "Unidentified maker of the bidri ewer",
+      "place": "Attributed to India",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/447088",
+      "observation": "The Met gives a 27-centimetre maximum height with the cover on and identifies inlaid silver over a zinc and copper alloy.",
+      "limit": "The bounded height includes the lid. The fluid capacity of the ewer remains open.",
+      "altText": "Globular metal ewer with a curved handle, lid and long rising spout."
+    }
+  },
+  {
+    "slug": "bidri-fish",
+    "room": "vessels",
+    "title": "The lid in the shape of a fish",
+    "task": "A note about appearance reached the cupboard. One keeper wants to know how the joined parts sit without pretending to know what was kept inside.",
+    "fixture": {
+      "ticks": {
+        "source": 1,
+        "practice": 2,
+        "public": 1
+      },
+      "bell": 3
+    },
+    "jobs": [
+      "Read the two-part accession and material",
+      "Separate the practice body from its cover",
+      "Open the fish-shaped case"
+    ],
+    "notes": [
+      "The catalogue link preserves a and b under one object.",
+      "The narrow fork catches the split between two flat pieces."
+    ],
+    "choices": [
+      "Send the two-part record to Fern Station",
+      "Leave the split practice mount on Listening Trail"
+    ],
+    "outcomes": [
+      "The maker’s record can be found from the first tag. An open contents line remains on the back.",
+      "The keeper lifts one part without re-counting it as a second accession."
+    ],
+    "revisit": [
+      "Move the part labels to the same shared folder",
+      "The late proof links both pieces and keeps the lost contents line open."
+    ],
+    "object": {
+      "key": "met:19.135.15a-b",
+      "accession": "19.135.15a, b",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Fish-Shaped Box",
+      "date": "19th century",
+      "medium": "Zinc alloy; cast, engraved, inlaid with silver and brass (bidri ware)",
+      "dimensions": "L. 9 1/4 in. (23.5 cm)",
+      "pixelAsset": "specimens/schedule-met-19.135.15a-b.jpg",
+      "artist": "Unidentified maker of the bidri box",
+      "place": "Attributed to India",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/447091",
+      "observation": "The Met describes an inlaid bidri box with two parts and catalogues an overall length of 23.5 centimetres.",
+      "limit": "The fish shape is in the record. The individual contents and user remain open.",
+      "altText": "Small fish-shaped metal box with a patterned surface and visible join."
+    }
+  },
+  {
+    "slug": "beveled-bowl",
+    "room": "vessels",
+    "title": "Style and material beside each other",
+    "task": "One slip has the style name. Another worker wants to keep the clear layer distinct from the painted design when the board opens.",
+    "fixture": {
+      "ticks": {
+        "source": 3,
+        "practice": 1,
+        "public": 2
+      },
+      "bell": 5
+    },
+    "jobs": [
+      "Read the style and medium as different fields",
+      "Layer the blank clear and coloured practice sheets",
+      "Open the bowl view"
+    ],
+    "notes": [
+      "The paper names the style without making it a material.",
+      "The physical model preserves a clear layer above the coloured one."
+    ],
+    "choices": [
+      "Lead with the style and medium at Fern Station",
+      "Give the Trail the layered view first"
+    ],
+    "outcomes": [
+      "The reader can find the style name and its source without seeing a fake material sample.",
+      "A helper turns the layer sheet and can later check what the museum actually names in that slot."
+    ],
+    "revisit": [
+      "Clip the transparent layer over the separate slip label",
+      "The late public copy keeps the style field readable underneath the material comparison."
+    ],
+    "object": {
+      "key": "met:28.82",
+      "accession": "28.82",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Bowl Decorated in the 'Beveled Style'",
+      "date": "10th century",
+      "medium": "Earthenware; white slip with polychrome slip decoration under transparent glaze",
+      "dimensions": "H. 2 1/4 in. (5.7 cm) Diam. 10 1/2 in. (26.7 cm)",
+      "pixelAsset": "specimens/schedule-met-28.82.jpg",
+      "artist": "Unidentified potter",
+      "place": "Attributed to present-day Uzbekistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/448192",
+      "observation": "The Met catalogues earthenware with white and polychrome slip below a transparent glaze and uses the phrase beveled style.",
+      "limit": "The named style describes a kind of design. The evidence for material comes from the catalogue’s medium field.",
+      "altText": "Round bowl with a patterned interior divided into several colours and panels."
+    }
+  },
+  {
+    "slug": "rosette-rim",
+    "room": "vessels",
+    "title": "Where the museum measured the bowl",
+    "task": "A visitor sees the rosette first. A tray maker needs to fit the rim before a display can open.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 2,
+        "public": 2
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Read the rim measure and its qualifier",
+      "Lay a rosette marker inside a plain outer ring",
+      "Open the rosette proof"
+    ],
+    "notes": [
+      "The 18.7 figure goes with the rim.",
+      "The two shapes remain independently visible on the template."
+    ],
+    "choices": [
+      "Send the rim figure to the Station",
+      "Send the central marker and outer ring to the Trail"
+    ],
+    "outcomes": [
+      "The source reader can check the size without transferring it to the central decoration.",
+      "The practice trays make both shapes visible while leaving the measured dimension to its specific ring."
+    ],
+    "revisit": [
+      "Place the measured figure on the outer stop",
+      "A visitor no longer reads the diameter as a measurement of the little rosette."
+    ],
+    "object": {
+      "key": "met:61.144",
+      "accession": "61.144",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Bowl with Rosette",
+      "date": "10th century",
+      "medium": "Earthenware; white slip with polychrome slip decoration under transparent glaze",
+      "dimensions": "H. 2 3/8 in. (6 cm) Diam. of rim: 7 3/8 in. (18.7 cm)",
+      "pixelAsset": "specimens/schedule-met-61.144.jpg",
+      "artist": "Unidentified potter",
+      "place": "Attributed to present-day Uzbekistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/451649",
+      "observation": "The Met gives a measured rim diameter of 18.7 centimetres and describes a rosette motif.",
+      "limit": "The rim diameter does not set a measurement for the decorated centre. The catalogue details two different aspects of the same object.",
+      "altText": "Pale bowl with a coloured rosette in the centre and a narrow outer edge."
+    }
+  },
+  {
+    "slug": "samarkand-inscribed",
+    "room": "vessels",
+    "title": "A rim with an incomplete word",
+    "task": "A teacher’s practice plate has space for one label. One worker wants the incomplete part visible. Another needs the translated description to travel securely.",
+    "fixture": {
+      "ticks": {
+        "source": 1,
+        "practice": 3,
+        "public": 1
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Check the catalogue’s description of the written band",
+      "Set one unfinished marker on a plain circle",
+      "Open the rim display"
+    ],
+    "notes": [
+      "The source distinguishes good wishes from the start of another word.",
+      "A blank end marker shows where the model line stops."
+    ],
+    "choices": [
+      "Send the catalogue description to the Station",
+      "Place the unfinished-marker guide on the Trail"
+    ],
+    "outcomes": [
+      "A reader can cite what the Museum reports and leave the open text visible.",
+      "A handler lays down a gap tab before a reader interprets the winding strip."
+    ],
+    "revisit": [
+      "Leave a visible space after the known part",
+      "The late proof keeps a source description and an open continuation beside each other."
+    ],
+    "object": {
+      "key": "met:40.170.15",
+      "accession": "40.170.15",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Bowl with Arabic Inscription, \"Blessing, Prosperity, Well-being, Happiness\"",
+      "date": "late 10th–11th century",
+      "medium": "Earthenware; white slip with polychrome slip decoration under transparent glaze",
+      "dimensions": "H. 4 1/4 (10.8 cm) Max Diam. 14 in. (35.6 cm)",
+      "pixelAsset": "specimens/schedule-met-40.170.15.jpg",
+      "artist": "Unidentified potter",
+      "place": "Attributed to present-day Uzbekistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/449711",
+      "observation": "The Met describes written good wishes around the bowl and notes the start of an additional word.",
+      "limit": "The catalogue identifies the incomplete part as a start. The missing continuation is open.",
+      "altText": "Cream bowl with a band of large dark writing around the outer field."
+    }
+  },
+  {
+    "slug": "ghazni-tile",
+    "room": "vessels",
+    "title": "The building and the making date",
+    "task": "A catalogue reader needs the layer date. A keeper needs the original dimensions to fit a plain mount while leaving the wall placement blank.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 1,
+        "public": 1
+      },
+      "bell": 3
+    },
+    "jobs": [
+      "Read the date and its layer evidence",
+      "Rest the tile outline in the mounting board",
+      "Open the tile proof"
+    ],
+    "notes": [
+      "The layer evidence gets its own place on the date label.",
+      "The plain support includes a marked gap for the unlocated wall position."
+    ],
+    "choices": [
+      "Take the layer-date slip to the Station",
+      "Leave the mounting frame with the trail keeper"
+    ],
+    "outcomes": [
+      "A reader can repeat how the date was reached before using the mount.",
+      "A helper sees why one measured tile can be held without declaring where it appeared on a wall."
+    ],
+    "revisit": [
+      "Slide the excavation-date tag away from the empty wall slot",
+      "The later holder can follow the date and still see what about the wall stays unknown."
+    ],
+    "object": {
+      "key": "met:1975.193.4",
+      "accession": "1975.193.4",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Square Tile",
+      "date": "early 13th century",
+      "medium": "Stonepaste; molded and monochrome glazed",
+      "dimensions": "H. 4 1/4 in. (10.8 cm) W. 4 1/8 in. (10.5 cm) D. 1/2 in. (1.3 cm)",
+      "pixelAsset": "specimens/schedule-met-1975.193.4.jpg",
+      "artist": "Unidentified tile maker",
+      "place": "Ghazni, Afghanistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/452771",
+      "observation": "The Met identifies a tile excavated at a palace in Ghazni and dates its group by the excavation layers.",
+      "limit": "The excavated group supports the date. This tile’s exact wall placement remains open.",
+      "altText": "Square glazed tile in earthy ochre with a raised figure and narrow frame."
+    }
+  },
+  {
+    "slug": "freer-lota",
+    "room": "vessels",
+    "title": "A silver vessel and a later receipt",
+    "task": "One visitor must find the making and custody dates. A helper at the narrow trail needs a plain outline of the projecting lip first.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 3,
+        "public": 1
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Check the catalogue and receipt dates",
+      "Set a mouth-width guide above the model body",
+      "Open the lota display"
+    ],
+    "notes": [
+      "The later purchase and receipt stay distinct from the making estimate.",
+      "The plain lip can stay in view above a pointed edge mark."
+    ],
+    "choices": [
+      "Send the dated provenance slip to Fern Station",
+      "Leave the model mouth gauge on Listening Trail"
+    ],
+    "outcomes": [
+      "The rack names the recorded collector and the buying date. The accession keeps its making date on a separate line.",
+      "The practice reader finds the mouth on a supported outline, then tucks in the later ownership slip."
+    ],
+    "revisit": [
+      "Move the collection receipt to a separate pocket",
+      "The public proof distinguishes the collecting dates from the dates assigned to the vessel."
+    ],
+    "object": {
+      "key": "fsg:f1907.674",
+      "accession": "F1907.674",
+      "institution": "Smithsonian National Museum of Asian Art",
+      "title": "Pot (lota)",
+      "date": "18th century",
+      "medium": "Silver",
+      "dimensions": "H x W: 7.5 x 8.5 cm (2 15/16 x 3 3/8 in)",
+      "pixelAsset": "specimens/schedule-fsg-f1907.674.jpg",
+      "artist": "Unidentified metalworker",
+      "place": "India",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://asia.si.edu/explore-art-culture/collections/search/edanmdm:fsg_F1907.674/",
+      "observation": "The Smithsonian’s catalogue identifies a silver lota and records Charles Lang Freer as buyer in 1907. The gift reached the gallery in 1920.",
+      "limit": "The collector and receipt are documented separately from the eighteenth-century dating. The former owner remains unrecorded.",
+      "altText": "Small dark pot with a rounded ribbed body and flaring mouth."
+    }
+  },
+  {
+    "slug": "kandy-casket",
+    "room": "hardware",
+    "title": "A casket’s manufacture and possible market",
+    "task": "A maker wants the lid supported. A clerk needs to distinguish a commissioned destination from the place the object was made.",
+    "fixture": {
+      "ticks": {
+        "source": 1,
+        "practice": 2,
+        "public": 1
+      },
+      "bell": 3
+    },
+    "jobs": [
+      "Read Kandy and the proposed market as separate fields",
+      "Place a support beneath a decorated lid outline",
+      "Open the casket stand"
+    ],
+    "notes": [
+      "The commission remains a proposal on the copy.",
+      "The lid can be lifted independently of the case mount."
+    ],
+    "choices": [
+      "Give the Station the qualified market note",
+      "Leave the separated lid demonstration on the Trail"
+    ],
+    "outcomes": [
+      "The keeper can explain why the casket’s production and proposed sale have different city names.",
+      "A handler can find the separate fittings and look up the proposed market when the longer slip arrives."
+    ],
+    "revisit": [
+      "Use different date clips for the casket and suggested market",
+      "The display names Kandy as the making attribution and presents the proposed commission separately."
+    ],
+    "object": {
+      "key": "met:2022.386",
+      "accession": "2022.386",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Jewel casket",
+      "date": "mid-17th century",
+      "medium": "Ivory with silver gilt mounts, gilded metal lining, finial with garnet in gold setting",
+      "dimensions": "H. 5 1/8 in. (13 cm); Diam. 3 3/4 in. (9.5 cm)",
+      "pixelAsset": "specimens/schedule-met-2022.386.jpg",
+      "artist": "Unidentified Kandy carver and metalworker",
+      "place": "Kandy, Sri Lanka",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/889442",
+      "observation": "The Met places this jewel casket in seventeenth-century Kandy and proposes a commission by a Dutch East India Company merchant for sale in Amsterdam.",
+      "limit": "The manufacturing attribution and proposed market are separate. The commissioning merchant is unnamed.",
+      "altText": "Small rounded ivory casket with darker metal fittings, a lid and a pointed finial."
+    }
+  },
+  {
+    "slug": "begram-comb",
+    "room": "hardware",
+    "title": "Find location and possible workshop",
+    "task": "Two readers have copied Afghanistan into the maker field. A handling aid can show where the outline ends while the name line is checked.",
+    "fixture": {
+      "ticks": {
+        "source": 3,
+        "practice": 1,
+        "public": 2
+      },
+      "bell": 5
+    },
+    "jobs": [
+      "Read the careful manufacture attribution",
+      "Lay a broken-edge card beside an empty support",
+      "Open the comb fragment stand"
+    ],
+    "notes": [
+      "The geographical line preserves the museum’s “possibly”.",
+      "The support keeps the edge visible and leaves the lost extent blank."
+    ],
+    "choices": [
+      "Send the two geographical roles to the Station",
+      "Let a Trail reader use the empty support first"
+    ],
+    "outcomes": [
+      "The Station keeps the find context open to the possible workshop named by the catalogue.",
+      "A keeper describes the surviving piece precisely and adds the qualified geographical line later."
+    ],
+    "revisit": [
+      "Set two separate tabs beside the surviving edge",
+      "A reader can find the manufacture possibility while seeing where the comb fragment ends."
+    ],
+    "object": {
+      "key": "met:2000.284.8",
+      "accession": "2000.284.8",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Fragment of an Ivory Comb",
+      "date": "1st–3rd century",
+      "medium": "Ivory",
+      "dimensions": "H. 2 3/16 in. (5.6 cm); W. 3 1/8 in. (7.9 cm)",
+      "pixelAsset": "specimens/schedule-met-2000.284.8.jpg",
+      "artist": "Unidentified comb maker",
+      "place": "Afghanistan, possibly of West Indian manufacture",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/37411",
+      "observation": "The Met identifies this comb fragment with Afghanistan and considers possible West Indian manufacture.",
+      "limit": "The manufacture field is qualified. The surviving component need not reveal the complete construction or route.",
+      "altText": "Small rectangular ivory fragment with a worn relief surface and damaged edge."
+    }
+  },
+  {
+    "slug": "gandhara-mirror",
+    "room": "hardware",
+    "title": "The handle on its own stand",
+    "task": "The narrow early panel might make a person take the handle measurement for the complete mirror.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 2,
+        "public": 2
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Read the handle-only measurement",
+      "Set the surviving form beneath an empty upper mount",
+      "Open the handle stand"
+    ],
+    "notes": [
+      "The source names the surviving part before giving its height.",
+      "The top of the model remains open where the mirror face might have sat."
+    ],
+    "choices": [
+      "Set the measured handle label at the Station",
+      "Place the handle and empty upper mount on the Trail"
+    ],
+    "outcomes": [
+      "A reader cites the measured part without assigning a size to the lost surface.",
+      "The helper points to the place left open and clips on the checked 12.1-centimetre figure later."
+    ],
+    "revisit": [
+      "Clip the measured height around the surviving portion",
+      "The shelf preserves both the practical frame and the handle-only measurement."
+    ],
+    "object": {
+      "key": "met:1987.142.37",
+      "accession": "1987.142.37",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Mirror Handle: Standing Woman",
+      "date": "ca. 1st century BCE",
+      "medium": "Phyllitic schist",
+      "dimensions": "H. 4 3/4 in. (12.1 cm)",
+      "pixelAsset": "specimens/schedule-met-1987.142.37.jpg",
+      "artist": "Unidentified Gandharan maker",
+      "place": "Ancient Gandhara, present-day Pakistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/38187",
+      "observation": "The Met names the surviving phyllitic schist figure as a mirror handle and gives its height as 12.1 centimetres.",
+      "limit": "The museum measures the remaining handle. The original mirror face and its dimensions are open.",
+      "altText": "Small standing figure carved in stone, with a short broad platform underneath."
+    }
+  },
+  {
+    "slug": "uzbek-plait",
+    "room": "hardware",
+    "title": "A long ornament with several materials",
+    "task": "One worker wants a separate hanging support. The source reader wants to avoid turning the list of materials into a single material origin.",
+    "fixture": {
+      "ticks": {
+        "source": 1,
+        "practice": 3,
+        "public": 1
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Read the probable place and material lines",
+      "Suspend the practice carrier from its marked top loop",
+      "Open the plait ornament stand"
+    ],
+    "notes": [
+      "The material list remains distinct from the probable making place.",
+      "The strands hang in the model with a free lower edge."
+    ],
+    "choices": [
+      "Put the probable place and materials on the Station rack",
+      "Send the hanging practice support to Listening Trail"
+    ],
+    "outcomes": [
+      "A reader can repeat the qualified attribution and look up the list from the first tray.",
+      "A handler anchors the model support and leaves room to show individually sourced materials when the label arrives."
+    ],
+    "revisit": [
+      "Keep the hanging support below the separate origins pocket",
+      "The late compartment keeps material identity, support and geographical attribution distinct."
+    ],
+    "object": {
+      "key": "met:91.1.1084",
+      "accession": "91.1.1084",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Hair Ornament [or Plait Ornament]",
+      "date": "19th century",
+      "medium": "Gold, silk, coral, turquoise, glass",
+      "dimensions": "",
+      "pixelAsset": "specimens/schedule-met-91.1.1084.jpg",
+      "artist": "Unidentified maker of the plait ornament",
+      "place": "Probably Uzbekistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/444635",
+      "observation": "The Met describes an ornament for a braid and lists multiple materials, including silk, coral, turquoise and glass.",
+      "limit": "The item field gives a probable place. The listed components leave their individual supply routes open.",
+      "altText": "Hanging ornament with a small upper loop, linked details and a red lower tassel."
+    }
+  },
+  {
+    "slug": "bukhara-earring",
+    "room": "hardware",
+    "title": "One earring from a named pair",
+    "task": "A visitor only sees one object at the rail. A keeper wants to preserve the pair relationship without taking a second piece out.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 1,
+        "public": 1
+      },
+      "bell": 3
+    },
+    "jobs": [
+      "Check which accession corresponds to the paired group",
+      "Hang a one-earring silhouette beside an empty second loop",
+      "Open the earring stand"
+    ],
+    "notes": [
+      "The shared relationship is legible from one entry.",
+      "A visitor can see one model and an empty corresponding loop."
+    ],
+    "choices": [
+      "File the one-from-a-pair wording at Fern Station",
+      "Send the model loop and empty second space to the Trail"
+    ],
+    "outcomes": [
+      "The reader finds the pair relationship without expecting two earring images on the current mount.",
+      "A helper can locate the second loop and later use the accession to see what it refers to."
+    ],
+    "revisit": [
+      "Place the second loop label beside the proper accession",
+      "The late proof distinguishes the illustrated piece from the relationship the record describes."
+    ],
+    "object": {
+      "key": "met:91.1.1152",
+      "accession": "91.1.1152",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Earring, One of a Pair",
+      "date": "19th century",
+      "medium": "Silver, gold, coral, seed pearls, glass",
+      "dimensions": "",
+      "pixelAsset": "specimens/schedule-met-91.1.1152.jpg",
+      "artist": "Unidentified maker of the earring",
+      "place": "Present-day Uzbekistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/444685",
+      "observation": "The Met identifies one ear ornament from a pair and compares source possibilities for materials available in Bukhara.",
+      "limit": "The exact individual raw material routes and identity of the original wearer remain open.",
+      "altText": "Pendant earring with several thin dangling lengths and coloured attachments."
+    }
+  },
+  {
+    "slug": "gandhara-intaglio",
+    "room": "hardware",
+    "title": "An image smaller than its setting",
+    "task": "A keeper needs to fit a reading lens over the model. The source reader needs the exact title without a guess about the figures.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 3,
+        "public": 1
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Read the width and title of the ring",
+      "Set an open lens window inside the outline",
+      "Open the intaglio view"
+    ],
+    "notes": [
+      "The record gives the figure count and width without personal names.",
+      "The blank window focuses attention on the inset."
+    ],
+    "choices": [
+      "Give the Station the recorded width and title",
+      "Send the inset window to the trail handler"
+    ],
+    "outcomes": [
+      "A first reader sees what was measured. The two individuals remain unidentified.",
+      "The handler can move an open model window to find the two outlines and look up the bronze description later."
+    ],
+    "revisit": [
+      "Move the width label outside the inset window",
+      "The later sheet shows what the museum actually measured and keeps the figure description separate."
+    ],
+    "object": {
+      "key": "met:2000.284.22",
+      "accession": "2000.284.22",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Intaglio Ring with Two Figures",
+      "date": "ca. 1st century BCE",
+      "medium": "Bronze",
+      "dimensions": "W. 1 1/8 in. (2.9 cm)",
+      "pixelAsset": "specimens/schedule-met-2000.284.22.jpg",
+      "artist": "Unidentified Gandharan metalworker",
+      "place": "Ancient Gandhara, present-day Pakistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/37734",
+      "observation": "The Met describes a bronze intaglio ring with two figures and records its width as 2.9 centimetres.",
+      "limit": "The object title identifies the two figures as represented. Their individual names remain open.",
+      "altText": "Dark oval bronze inset with a low relief scene showing two figures."
+    }
+  },
+  {
+    "slug": "uzbek-pendant",
+    "room": "hardware",
+    "title": "Two ways to suspend the ornament",
+    "task": "A viewer expects a pendant from the title. Another worker wants to understand how a different practice mounting would change the visible face.",
+    "fixture": {
+      "ticks": {
+        "source": 1,
+        "practice": 2,
+        "public": 1
+      },
+      "bell": 3
+    },
+    "jobs": [
+      "Preserve the two use possibilities in the label",
+      "Move the plain suspension between two hooks",
+      "Open the hanging proof"
+    ],
+    "notes": [
+      "The label keeps the described and possible uses together.",
+      "The same model has two possible points of suspension."
+    ],
+    "choices": [
+      "Let the Station lead with the qualified use line",
+      "Send the two hook positions to the Trail"
+    ],
+    "outcomes": [
+      "A reader can cite the catalogue title without using it to settle the second possible use.",
+      "A helper can show two model hook positions before the paper describing their limits arrives."
+    ],
+    "revisit": [
+      "Attach the alternative hook diagram under the title",
+      "A reader can see the support of each possible display without assigning a past user."
+    ],
+    "object": {
+      "key": "met:91.1.1117",
+      "accession": "91.1.1117",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Pendant, One of a Pair",
+      "date": "19th century",
+      "medium": "Silver, coral, amber, turquoise",
+      "dimensions": "",
+      "pixelAsset": "specimens/schedule-met-91.1.1117.jpg",
+      "artist": "Unidentified jewellery maker",
+      "place": "Present-day Uzbekistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/444654",
+      "observation": "The Met titles this ornament one of a pair of pendants and discusses the possibility that such ornaments were worn as earrings.",
+      "limit": "The catalogue leaves the exact suspension of this individual piece open.",
+      "altText": "Triangular hanging arrangement with several linked pendants visible on red."
+    }
+  },
+  {
+    "slug": "herat-pen-box",
+    "room": "hardware",
+    "title": "Two dates on one box",
+    "task": "A copied display gives one short date to the whole box. A second reader will need to see the cover and inner plan separately.",
+    "fixture": {
+      "ticks": {
+        "source": 3,
+        "practice": 1,
+        "public": 2
+      },
+      "bell": 5
+    },
+    "jobs": [
+      "Read the dates assigned to making and alteration",
+      "Lift the mock lid while leaving the old inside visible",
+      "Open the two-date box display"
+    ],
+    "notes": [
+      "The source uses two dates for different actions.",
+      "The supported mock lid reveals a separate inner surface."
+    ],
+    "choices": [
+      "Post both dated actions on the Station rack",
+      "Send the inside and outside working copy to the Trail"
+    ],
+    "outcomes": [
+      "A reader copies both date ranges and can say what each dates.",
+      "A handler opens the model and connects the surface comparison to the date lines when they follow."
+    ],
+    "revisit": [
+      "Set the later cover date beside the earlier interior card",
+      "The public display keeps both chronological claims in view at once."
+    ],
+    "object": {
+      "key": "met:91.1.536",
+      "accession": "91.1.536",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Inscribed Pen Box",
+      "date": "made in early–late 14th century; altered shortly before mid-15th century",
+      "medium": "Brass; engraved and inlaid with silver, gold, and black compound",
+      "dimensions": "L. 11 1/2 in. (29.2 cm) H. 2 3/8 in. (6 cm) W. 2 1/2 in. (6.4 cm)",
+      "pixelAsset": "specimens/schedule-met-91.1.536.jpg",
+      "artist": "Unidentified original metalworker and later decorator",
+      "place": "Afghanistan",
+      "dateKind": "Separate making and alteration dates",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/444536",
+      "observation": "The Met describes a fourteenth-century pen box whose exterior was changed by the mid-fifteenth century. The inside preserves earlier decoration.",
+      "limit": "The later surface and the rest of the metalwork have different dates in the catalogue.",
+      "altText": "Long low brass pen box with a fitted lid and a darker line where the two parts meet."
+    }
+  },
+  {
+    "slug": "vizag-panels",
+    "room": "hardware",
+    "title": "The surviving panels and the joined display",
+    "task": "A worker can position a short outline first. Another reader needs to find the panel group from a compact locator.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 2,
+        "public": 2
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Find the parent record and its linked panels",
+      "Lay two plain panels with room between their joins",
+      "Open the joined panel stand"
+    ],
+    "notes": [
+      "The object locator goes to the panel group.",
+      "Two edges can face one another while the gap remains visible."
+    ],
+    "choices": [
+      "Send the grouped accession to Fern Station",
+      "Send the plain panel pair and gap to Listening Trail"
+    ],
+    "outcomes": [
+      "A visitor can look up the object group before comparing individual panel records.",
+      "A helper can see why the plain model leaves a distance between two surrounding parts."
+    ],
+    "revisit": [
+      "Clip a parent accession above the open join marks",
+      "The late note links the group and its visible joins without guessing the missing box lines."
+    ],
+    "object": {
+      "key": "cma:1969.229",
+      "accession": "1969.229",
+      "institution": "Cleveland Museum of Art",
+      "title": "Panels from a Box",
+      "date": "c. 1700",
+      "medium": "ivory",
+      "dimensions": "Overall: 29.8 x 13.4 cm (11 3/4 x 5 1/4 in.)",
+      "pixelAsset": "specimens/schedule-cma-1969.229.jpg",
+      "artist": "Unidentified Visakhapatnam carver",
+      "place": "Visakhapatnam district, northeast Deccan, India",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://clevelandart.org/art/1969.229",
+      "observation": "The Cleveland record lists ivory panels from a box. The individual panels have linked parts in the collection record.",
+      "limit": "The catalogue records the panels. The details of their original container and owner depend on further evidence.",
+      "altText": "Reassembled rectangular pale panels with fine incised decorative details."
+    }
+  },
+  {
+    "slug": "india-print-block",
+    "room": "paper",
+    "title": "The relief and the print face",
+    "task": "Veira must open the source mount or give a practice printer a way to distinguish the block face from a resulting impression.",
+    "fixture": {
+      "ticks": {
+        "source": 1,
+        "practice": 3,
+        "public": 1
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Read the three stated block dimensions",
+      "Turn a plain relief outline over onto a second sheet",
+      "Open the print block stand"
+    ],
+    "notes": [
+      "The catalogue keeps block size on its own line.",
+      "A second plain outline faces the other way, where an impression would sit."
+    ],
+    "choices": [
+      "Put the exact measurements at the Station",
+      "Bring the reverse-orientation practice view to the Trail"
+    ],
+    "outcomes": [
+      "The reader can cite the three measured spans without claiming either a cloth width or an individual printed copy.",
+      "The helper aligns a mirrored practice layout and receives the object dimensions on a later clip."
+    ],
+    "revisit": [
+      "Clip the orientation tab beyond the carved face",
+      "A reader can find the different roles of a matrix and a printed result."
+    ],
+    "object": {
+      "key": "met:30.112.13",
+      "accession": "30.112.13",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Printing Block",
+      "date": "15th–16th century",
+      "medium": "Wood; carved",
+      "dimensions": "H. 7 1/8 in. (18.1 cm) W. 5 5/8 in. (14.3 cm) D. 2 3/4 in. (7 cm) Wt. 14.1 oz. (400 g)",
+      "pixelAsset": "specimens/schedule-met-30.112.13.jpg",
+      "artist": "Unidentified block carver",
+      "place": "Attributed to India",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/448508",
+      "observation": "The Met records a carved wood printing block with dimensions of 18.1 by 14.3 by 7 centimetres.",
+      "limit": "The object record supplies the block dimensions. It leaves the identity of a printer and a particular printed cloth open.",
+      "altText": "Carved dark wooden printing block with a shaped outer edge and raised pattern."
+    }
+  },
+  {
+    "slug": "rajasthan-design",
+    "room": "paper",
+    "title": "The difference between a design and a vessel",
+    "task": "A keeper could hand someone a sketch to compare outlines or a source note preventing the measured page from becoming a measured vessel.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 1,
+        "public": 1
+      },
+      "bell": 3
+    },
+    "jobs": [
+      "Check the sight-area measurements on the paper record",
+      "Place one outline inside the open model jig",
+      "Open the vessel design sheet"
+    ],
+    "notes": [
+      "The museum measures the visible image area.",
+      "The plain outline can be compared without assigning an inherited height to a new model."
+    ],
+    "choices": [
+      "Send the image-size line to the Station",
+      "Leave the outline comparator on the Trail"
+    ],
+    "outcomes": [
+      "The reader knows which rectangle was measured.",
+      "A practice designer uses the plain profile and reads the paper measurement separately when it arrives."
+    ],
+    "revisit": [
+      "Set the sight-size slip below the pictured form",
+      "The late proof lets the drawing be checked without giving a made object its measurements."
+    ],
+    "object": {
+      "key": "met:2008.359.20",
+      "accession": "2008.359.20",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Design for a Hookah Base",
+      "date": "late 19th century",
+      "medium": "Ink and translucent watercolor on paper",
+      "dimensions": "Image (sight): 5 1/4 x 6 in. (13.3 x 15.2 cm)",
+      "pixelAsset": "specimens/schedule-met-2008.359.20.jpg",
+      "artist": "Unidentified Rajasthan design draughtsperson",
+      "place": "Rajasthan, India",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/74672",
+      "observation": "The Met identifies this late nineteenth-century design sheet as ink and translucent watercolour, with an image area of 13.3 by 15.2 centimetres.",
+      "limit": "The measured area is the viewed drawing. The dimensions of any made vessel are open.",
+      "altText": "Ink and wash sketch of a decorated vessel base in outline."
+    }
+  },
+  {
+    "slug": "habiballah-stallion",
+    "room": "paper",
+    "title": "A painted stallion and its page",
+    "task": "Veira has a narrow seeing window and a broader paper guide. The source reader wants the painter name and separate size entries before either travels.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 3,
+        "public": 1
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Read the named painter and two size entries",
+      "Lay the figure window beside the sheet edge",
+      "Open the painted horse view"
+    ],
+    "notes": [
+      "The individual artist, painting size and listed page size stay in their fields.",
+      "An open figure window lets a visitor point to details separately from the edge."
+    ],
+    "choices": [
+      "Send the named painting record to Fern Station",
+      "Send the figure window to Listening Trail"
+    ],
+    "outcomes": [
+      "A first reader keeps the artist credit and both size entries.",
+      "A keeper can find the figure while leaving the paper’s size history to the catalogue slip."
+    ],
+    "revisit": [
+      "Add a second size line outside the figure window",
+      "The shelf now shows why the artist’s image and the mounted record can have different edges."
+    ],
+    "object": {
+      "key": "met:1992.51",
+      "accession": "1992.51",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "A Stallion",
+      "date": "ca. 1601–6",
+      "medium": "Ink, opaque watercolor, and gold on paper",
+      "dimensions": "Painting: H. 11 7/8 in. (30.1 cm) W. 8 in. (20.3 cm) Page: H. 7 3/4 in. (19.7 cm) W. 5 in. (12.7 cm)",
+      "pixelAsset": "specimens/schedule-met-1992.51.jpg",
+      "artist": "Habiballah of Sava",
+      "place": "Attributed to present-day Afghanistan",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/453336",
+      "observation": "The Met credits Habiballah of Sava and lists separate measurements for the painting and the page in its catalogue.",
+      "limit": "The pictured horse and the dimensions apply to the artwork record. The identity of a specific living horse is open.",
+      "altText": "Blue-grey horse with a coloured harness and a striped border around the paper image."
+    }
+  },
+  {
+    "slug": "muhammadi-flower",
+    "room": "paper",
+    "title": "A painter and a later ownership stamp",
+    "task": "The first label could credit the painter or show where the stamp belongs. Veira wants both to remain available even if one arrives later.",
+    "fixture": {
+      "ticks": {
+        "source": 1,
+        "practice": 2,
+        "public": 1
+      },
+      "bell": 3
+    },
+    "jobs": [
+      "Read the artist and custodian roles",
+      "Clip a plain stamp tab away from the figure window",
+      "Open the flower portrait proof"
+    ],
+    "notes": [
+      "The source distinguishes the painter and the person named by the stamp.",
+      "The plain stamp tab stays outside the image window."
+    ],
+    "choices": [
+      "Make the painter’s name easy to find at the Station",
+      "Send the separated stamp and image tabs to the Trail"
+    ],
+    "outcomes": [
+      "A reader first sees Muhammadi’s credit and can turn to the later owner record.",
+      "A practice handler locates the separate imprint while the dated artist credit travels later."
+    ],
+    "revisit": [
+      "Place the ownership stamp clue under a distinct date line",
+      "The late proof keeps the artist name and later custody evidence visible side by side."
+    ],
+    "object": {
+      "key": "met:55.121.42",
+      "accession": "55.121.42",
+      "institution": "The Metropolitan Museum of Art",
+      "title": "Portrait of a Lady Holding a Flower",
+      "date": "1565–75",
+      "medium": "Opaque watercolor, ink, and gold on paper",
+      "dimensions": "H. 4 5/8 in. (11.7 cm) W. 2 11/16 in. (6.8 cm)",
+      "pixelAsset": "specimens/schedule-met-55.121.42.jpg",
+      "artist": "Muhammadi of Herat",
+      "place": "Present-day Afghanistan in the Met geography field",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://www.metmuseum.org/art/collection/search/451323",
+      "observation": "The Met attributes this portrait to Muhammadi of Herat and identifies Shah ‘Abbas I’s stamp on the page as evidence of collection.",
+      "limit": "The catalogue’s painter and later owner have different roles. The sitter is not individually identified in the record.",
+      "altText": "Small portrait of a figure in blue and red holding a flower."
+    }
+  },
+  {
+    "slug": "mughal-nature-sheet",
+    "room": "paper",
+    "title": "A drawing and the label someone filed later",
+    "task": "One copy names the source. Another puts two open model windows around parts of the crowded drawing.",
+    "fixture": {
+      "ticks": {
+        "source": 3,
+        "practice": 1,
+        "public": 2
+      },
+      "bell": 5
+    },
+    "jobs": [
+      "Read the earlier court attribution and later receipt",
+      "Open two viewing windows for the plain comparison",
+      "Set out the nature drawing"
+    ],
+    "notes": [
+      "The archival accession and later gift survive together.",
+      "Each model window isolates a group of visible lines."
+    ],
+    "choices": [
+      "Lead with attribution and receipt at the Station",
+      "Leave the two pattern windows with the Trail helper"
+    ],
+    "outcomes": [
+      "A first reader can tell what the making attribution dates and what a collection record dates.",
+      "A helper can inspect two different parts separately and look up the ink record when it arrives."
+    ],
+    "revisit": [
+      "Put the two windows before the later custody card",
+      "The shelf keeps the actual observations together with a route back to the catalogue."
+    ],
+    "object": {
+      "key": "fsg:f1907.618",
+      "accession": "F1907.618",
+      "institution": "Smithsonian National Museum of Asian Art",
+      "title": "Drawing of animals and plants",
+      "date": "early 17th century",
+      "medium": "Ink on paper",
+      "dimensions": "H x W: 25.7 x 15.2 cm (10 1/8 x 6 in)",
+      "pixelAsset": "specimens/schedule-fsg-f1907.618.jpg",
+      "artist": "Unidentified Mughal court draughtsperson",
+      "place": "India",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://asia.si.edu/explore-art-culture/collections/search/edanmdm:fsg_F1907.618/",
+      "observation": "The Smithsonian catalogue identifies an early seventeenth-century ink drawing of animals and plants and gives a separate twentieth-century receipt history.",
+      "limit": "The recorded later gift does not name the original draughtsperson or date one depicted living subject.",
+      "altText": "Pale ink drawing showing many small animal and plant shapes."
+    }
+  },
+  {
+    "slug": "mughal-water-view",
+    "room": "paper",
+    "title": "The painted view and how the page reached a museum",
+    "task": "A reader may want the paper medium early. A practice keeper needs a window that separates the central coloured field from a border view.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 2,
+        "public": 2
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Read the medium and custody fields",
+      "Set the centre window inside the outer paper frame",
+      "Open the waterside display"
+    ],
+    "notes": [
+      "Colour, gold and silver have a precise object source.",
+      "A viewing strip lets the landscape and its border be considered separately."
+    ],
+    "choices": [
+      "Send the material and collection record to Fern Station",
+      "Send the central window and outer frame to Listening Trail"
+    ],
+    "outcomes": [
+      "A reader has checkable names for later ownership and for the painting’s materials.",
+      "A handler opens a central view. The source follows with the two roles kept apart."
+    ],
+    "revisit": [
+      "Move the collector line outside the image frame",
+      "The corrected shelf makes the later custody source searchable while leaving the pictured place open."
+    ],
+    "object": {
+      "key": "fsg:f1907.245",
+      "accession": "F1907.245",
+      "institution": "Smithsonian National Museum of Asian Art",
+      "title": "A girl by the waterside",
+      "date": "early 17th century",
+      "medium": "Color, gold, and silver on paper",
+      "dimensions": "H x W: 17.3 x 10.3 cm (6 13/16 x 4 1/16 in)",
+      "pixelAsset": "specimens/schedule-fsg-f1907.245.jpg",
+      "artist": "Unidentified Mughal court painter",
+      "place": "India",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://asia.si.edu/explore-art-culture/collections/search/edanmdm:fsg_F1907.245/",
+      "observation": "The Smithsonian catalogues an early seventeenth-century work on paper with colour, gold and silver and names the later documented collectors separately.",
+      "limit": "Details visible in the painted waterside scene do not identify the historical sitter or a geographical site.",
+      "altText": "Tall framed painting of a small figure in a landscape with an outer patterned border."
+    }
+  },
+  {
+    "slug": "mughal-cup-portrait",
+    "room": "paper",
+    "title": "A portrait title and an unrecorded sitter",
+    "task": "A quick mount can point to the represented cup. The archival reader needs a short note about what the supplied title can support.",
+    "fixture": {
+      "ticks": {
+        "source": 1,
+        "practice": 3,
+        "public": 1
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Check the catalogue title and its medium",
+      "Place a plain viewing tab on the figure’s hand area",
+      "Open the portrait display"
+    ],
+    "notes": [
+      "The descriptive title stays with the named material and accession.",
+      "A model tab brings the viewer toward the represented action."
+    ],
+    "choices": [
+      "Put the named descriptive title at Fern Station",
+      "Leave the hand-area locator on the Trail"
+    ],
+    "outcomes": [
+      "A first reader finds the picture while keeping the sitter’s name field empty.",
+      "A helper sees the area which the catalogue title describes. A separate slip explains the open identity."
+    ],
+    "revisit": [
+      "Set a blank sitter line below the supplied title",
+      "The late proof preserves the title’s descriptive role and leaves the unexplained name open."
+    ],
+    "object": {
+      "key": "fsg:f1907.224",
+      "accession": "F1907.224",
+      "institution": "Smithsonian National Museum of Asian Art",
+      "title": "Princess with wine cup",
+      "date": "17th century",
+      "medium": "Opaque watercolor and gold on paper",
+      "dimensions": "H x W: 14.7 x 9.8 cm (5 13/16 x 3 7/8 in)",
+      "pixelAsset": "specimens/schedule-fsg-f1907.224.jpg",
+      "artist": "Unidentified Mughal court painter",
+      "place": "India",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://asia.si.edu/explore-art-culture/collections/search/edanmdm:fsg_F1907.224/",
+      "observation": "The Smithsonian catalogues the portrait as opaque watercolour and gold on paper under the title Princess with wine cup.",
+      "limit": "The title describes a figure and an object. It does not name a historically identified individual.",
+      "altText": "Small central figure with a dark background surrounded by a wide pale frame."
+    }
+  },
+  {
+    "slug": "sultan-ali-cover",
+    "room": "paper",
+    "title": "A dated copy and a separate poet",
+    "task": "Veira wants the cover supported. A catalogue user needs the work of the poet and the later scribe in different places.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 1,
+        "public": 1
+      },
+      "bell": 3
+    },
+    "jobs": [
+      "Read the colophon date and named copying role",
+      "Set an open cover rest beside a separate page slot",
+      "Open the poetry case"
+    ],
+    "notes": [
+      "A dated copying line credits Sultan ‘Ali, with Jami named for the poems.",
+      "The cover rest sets the physical binding apart from an opening to a page."
+    ],
+    "choices": [
+      "Leave the two name roles with the Station reader",
+      "Send the cover support to the Trail team"
+    ],
+    "outcomes": [
+      "A reader can cite the copy date while preserving Jami’s role for the poems.",
+      "A keeper seats the cover model and takes the separately dated copied-page source when it arrives."
+    ],
+    "revisit": [
+      "Clip a scribe tab beside the copy date, below the poet",
+      "The publication keeps a source for the copying act and does not assign the poems’ authorship to the scribe."
+    ],
+    "object": {
+      "key": "walters:w.641",
+      "accession": "W.641",
+      "institution": "The Walters Art Museum",
+      "title": "Selection of Poems",
+      "date": "899 AH/AD 1493-1494 (Timurid)",
+      "medium": "ink and pigments on thick, well-polished, off-white paper covered with black leather; red doublures with blue, marbled paper",
+      "dimensions": "Folio H: 6 11/16 x W: 4 1/2 in. (17 x 11.5 cm)",
+      "pixelAsset": "specimens/schedule-walters-w.641.jpg",
+      "artist": "Sultan ‘Ali copied poems by Jami",
+      "place": "Herat, present-day Afghanistan",
+      "dateKind": "Date of this copy from its colophon",
+      "catalogue": "https://art.thewalters.org/object/W.641/",
+      "observation": "The Walters credits the poems to Jami and reports that Sultan ‘Ali copied this book in Herat in 1493–1494. It identifies the black leather binding as original.",
+      "limit": "The copying date belongs to this physical manuscript. The poet’s lifetime and the dated binding record remain separately described.",
+      "altText": "Dark leather cover with a stamped central form and corner decoration."
+    }
+  },
+  {
+    "slug": "ram-singh-procession",
+    "room": "paper",
+    "title": "The patron and the record of a procession",
+    "task": "A source slip could name the patron. A viewing aid could separate the broad court and one visible group for readers arriving first.",
+    "fixture": {
+      "ticks": {
+        "source": 2,
+        "practice": 3,
+        "public": 1
+      },
+      "bell": 4
+    },
+    "jobs": [
+      "Read the recorded patron and the painter role",
+      "Set two neutral sight windows over a plain diagram",
+      "Open the procession painting display"
+    ],
+    "notes": [
+      "The catalogue statement credits the patron.",
+      "Two windows give a broad view or a close group while leaving the rest of the crowded composition visible."
+    ],
+    "choices": [
+      "Post the patron and source at Fern Station",
+      "Give the two sight windows to the Trail keeper"
+    ],
+    "outcomes": [
+      "A visitor knows whose support is recorded and can follow the image later.",
+      "A viewer can choose a broad or narrow window and find the patron credit when it arrives."
+    ],
+    "revisit": [
+      "Place the patron line beside the image source, separate from the painter",
+      "The late shelf keeps the named patron from taking the place of an unnamed artist."
+    ],
+    "object": {
+      "key": "walters:w.883",
+      "accession": "W.883",
+      "institution": "The Walters Art Museum",
+      "title": "Wedding Procession",
+      "date": "1825-1850",
+      "medium": "paint on paper",
+      "dimensions": "H: 9 3/4 x W: 12 3/16 in. (24.77 x 30.96 cm)",
+      "pixelAsset": "specimens/schedule-walters-w.883.jpg",
+      "artist": "Unidentified painter, with Ram Singh II as patron",
+      "place": "Rajasthan, India",
+      "dateKind": "Catalogue dating of this object",
+      "catalogue": "https://art.thewalters.org/object/W.883/",
+      "observation": "The Walters identifies Ram Singh II as patron for this painting of a Rajput court procession.",
+      "limit": "The recorded patron and the work’s making role are distinct. The image does not give named accounts from everyone depicted.",
+      "altText": "Large painted procession viewed across a court with many small moving figures."
+    }
+  },
+  {
+    "slug": "lahore-quintet",
+    "room": "paper",
+    "title": "Several hands in a surviving book fragment",
+    "task": "A compact strip could link to the copying date. A work guide can open spaces for several actual roles without treating the surviving fragment as the whole book.",
+    "fixture": {
+      "ticks": {
+        "source": 1,
+        "practice": 2,
+        "public": 1
+      },
+      "bell": 3
+    },
+    "jobs": [
+      "Read the scribe and copy date in the museum account",
+      "Set a two-volume outline and leave a sleeve for linked roles",
+      "Open the quintet record"
+    ],
+    "notes": [
+      "The account distinguishes literary author, documented copying and credited artists.",
+      "The outline keeps the surviving portion visibly separate from the larger related portion."
+    ],
+    "choices": [
+      "Send the credited scribe and source to Fern Station",
+      "Leave the dated fragment and separate larger-book outline on the Trail"
+    ],
+    "outcomes": [
+      "A first reader locates the person credited for writing the copy and can continue to the other actors.",
+      "A helper can show two catalogue locations and attach the named-role slip when it arrives."
+    ],
+    "revisit": [
+      "Install the larger-volume locator alongside the separate maker roles",
+      "The shelf preserves access to the linked colophon and names several contributors without assigning every image to one person."
+    ],
+    "object": {
+      "key": "walters:w.613",
+      "accession": "W.613",
+      "institution": "The Walters Art Museum",
+      "title": "Five Poems (Quintet)",
+      "date": "1595 (Mughal)",
+      "medium": "ink and pigments on light brown paper with later outer margins in various colors bound between boards covered with lacquer",
+      "dimensions": "Folio H: 13 3/8 x W: 8 7/16 in. (34 x 21.5 cm)",
+      "pixelAsset": "specimens/schedule-walters-w.613.jpg",
+      "artist": "Nizami Ganjavi, ‘Abd al-Rahim ‘Ambarin Qalam and the credited illustrators",
+      "place": "Probably Lahore, present-day Pakistan",
+      "dateKind": "Date of the copy, identified with the related colophon",
+      "catalogue": "https://art.thewalters.org/object/W.613/",
+      "observation": "The Walters credits Nizami’s original literary work and identifies ‘Abd al-Rahim ‘Ambarin Qalam as scribe of the dated Mughal copy. Its account lists several painters.",
+      "limit": "The larger portion with colophon is held separately. Credit for the writing and paintings follows their own records.",
+      "altText": "Closed manuscript cover with a red central area and painted decoration."
+    }
+  }
+]

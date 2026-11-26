@@ -1,3 +1,4 @@
+import { SHORE_REPLY_DOOR } from './shoreReply';
 /** Fictional island charts, drawn for the Seagrass Steps and Shoal Shelf surveys. */
 import type { Condition } from '../domain/types';
 import { SEA_DATE_PEG_DOOR, SEA_DATE_PEG_READERS, SEA_DATE_PEG_RECEIVERS } from './datePeg';
@@ -209,7 +210,7 @@ export const SEA_SHOAL: MapDef = {
     { stamp: 'flowers-white', x: 9, y: 7 }, { stamp: 'flowers-small', x: 23, y: 7 },
   ],
   interactables: [
-    SHOAL_PROOF_DOOR, SHOAL_PROOF_LOWER, SHOAL_PROOF_UPPER,
+    SHOAL_PROOF_DOOR, SHOAL_PROOF_LOWER, SHOAL_PROOF_UPPER, SHORE_REPLY_DOOR,
     seepProp('sea-frog-rim-check', 8, 6, 'the freshwater rim above the reed hollow',
       'stiltfrog.rim-hidden', 'sea.frog.rim', { key: 'stiltfrog.rim', if: rimPointed }),
     seepProp('sea-frog-staff', 8, 14, 'Sora’s fixed staff by the south planks',

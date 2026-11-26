@@ -1,0 +1,70 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH4-R78",
+      "world": "WORLD-05",
+      "title": "Where the Needles Stop",
+      "available": { "flag": "coast.arrived", "eq": true },
+      "stake": "Ruan can set the practice ropes on the lit ramp now. The stair crew needs readable low marks too, and can wait for both strips.",
+      "knowledgeQuestion": "When does the same reading come from the range of a tool, and when can it show that two observations agree?",
+      "objectives": [
+        {
+          "id": "coast.detector.compared",
+          "title": "Read the same four practice marks with both detector ranges.",
+          "essential": false,
+          "done": { "all": [
+            { "flag": "coast.detector.checked.wide", "eq": true },
+            { "flag": "coast.detector.checked.amplified", "eq": true }
+          ] },
+          "weave": {
+            "concepts": ["evidence", "objectivity", "certainty", "explanation", "interpretation"],
+            "framework": ["scope", "methods-and-tools", "perspectives"],
+            "atl": ["thinking", "research"],
+            "aoks": ["NAT", "MAT", "TEC"],
+            "subjects": ["physics", "math-ai", "design-tech"],
+            "thinking": { "dok": 3, "bloom": "analyse", "fink": "application", "solo": "relational" },
+            "minutes": 3
+          }
+        },
+        {
+          "id": "coast.detector.received",
+          "title": "Send a checked strip and read the quay crew’s reply.",
+          "visible": { "objective": "coast.detector.compared" },
+          "essential": false,
+          "done": { "all": [
+            { "objective": "coast.detector.compared" },
+            { "flag": "coast.detector.handoff", "in": ["ramp", "stairs"] },
+            { "flag": "coast.detector.received", "eq": true }
+          ] },
+          "weave": {
+            "concepts": ["responsibility", "perspective", "justification", "values", "evidence"],
+            "framework": ["scope", "methods-and-tools", "perspectives", "ethics"],
+            "atl": ["communication", "thinking", "social"],
+            "aoks": ["NAT", "HUM", "TEC"],
+            "subjects": ["physics", "design-tech"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "integration", "solo": "relational" },
+            "minutes": 2
+          },
+          "onComplete": [{ "journal": "j.coast.detector" }]
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.coast.detector",
+      "claimKind": "simulation",
+      "text": "At the practice rail, the wide range put two faint marks at the bottom stop. The amplified range put both lamps at its top stop. The reply kept the marks the chosen crew could actually distinguish."
+    }
+  ],
+  "hints": [
+    { "id": "h.coast.detector.compared.1", "objective": "coast.detector.compared", "depth": 1, "text": "Find Neri’s practice light reader on the main stone path at Headland Station." },
+    { "id": "h.coast.detector.compared.2", "objective": "coast.detector.compared", "depth": 2, "text": "The four marks stay in the same rail slots while you change the range." },
+    { "id": "h.coast.detector.compared.3", "objective": "coast.detector.compared", "depth": 3, "text": "Sweep the rail with the wide range. Notice where the pointer sits against the bottom stop." },
+    { "id": "h.coast.detector.compared.4", "objective": "coast.detector.compared", "depth": 4, "text": "Switch to amplified range and sweep it again. Both lamps now hit the top stop while the cord and step can be told apart." },
+    { "id": "h.coast.detector.received.1", "objective": "coast.detector.received", "depth": 1, "text": "Ruan’s crew has two possible jobs off the same path down to Slate Harbour." },
+    { "id": "h.coast.detector.received.2", "objective": "coast.detector.received", "depth": 2, "text": "The wide strip is ready for the ramp. Sending both strips lets the shore crew set the stair marks after the next bell." },
+    { "id": "h.coast.detector.received.3", "objective": "coast.detector.received", "depth": 3, "text": "Use one dispatch button after checking both ranges. Walk down the headland steps to the harbour." },
+    { "id": "h.coast.detector.received.4", "objective": "coast.detector.received", "depth": 4, "text": "Take the ramp receipt near the eastern unloading ramp or the paired reply west of Ruan at the lower rail." }
+  ]
+}

@@ -6,6 +6,7 @@ import type { Interactable, MapDef } from './types';
 import { LINKED_LISTENING } from './linkedNotes';
 import { QUAY_VESPER_TRUST } from './vesperTrust';
 import { MAKER_QUAY, MAKER_WALK } from './makerRoom';
+import { starStations } from './starPaths';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'voices.waypost'): Interactable {
   return { id, kind: 'door', x, y, w: 1, h: 1, label, to, art };
@@ -46,6 +47,7 @@ export const VOICES_LISTENING: MapDef = {
     { stamp: 'plant-tall', x: 10, y: 13 }, { stamp: 'plant-tall', x: 17, y: 13 },
   ],
   interactables: [
+    ...starStations('empath', [3, 6], [4, 6]),
     door('voices-walk-path', 3, 11, 'the passage to the Glass Walk stairs', { map: 'voices.walk', x: 11, y: 13 }),
     ...LINKED_LISTENING,
     ...LISTENING_LINTEL,

@@ -1,0 +1,360 @@
+{
+  "cma:2000.28": [
+    {
+      "name": "Unidentified Coromandel textile workers",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Cleveland catalogue describes this cotton wrapper as made on India’s Coromandel Coast for export to Indonesia. It lists drawn resist and painted mordants.",
+      "source": "HIS-WORK-SCHEDULE-COROMANDEL-WRAPPER"
+    }
+  ],
+  "cma:2016.50": [
+    {
+      "name": "Unidentified Khorezm weaver and embroiderer",
+      "role": "Catalogue maker or attribution",
+      "detail": "The catalogue lists indigo-dyed hand-spun cotton, silk and cotton embroidery and tablet-woven edges.",
+      "source": "HIS-WORK-SCHEDULE-KHOREZM-SEAMS"
+    }
+  ],
+  "cma:2010.190": [
+    {
+      "name": "Unidentified Yomud weaver",
+      "role": "Catalogue maker or attribution",
+      "detail": "Cleveland attributes this main carpet to a Yomud weaver and records 128–136 symmetrical knots per square inch.",
+      "source": "HIS-WORK-SCHEDULE-YOMUD-END"
+    }
+  ],
+  "cma:2006.201": [
+    {
+      "name": "Unidentified Saryk weaver",
+      "role": "Catalogue maker or attribution",
+      "detail": "The museum describes a Saryk carpet with triangular minor borders and a central motif shared with other weavers.",
+      "source": "HIS-WORK-SCHEDULE-SARYK-EDGE"
+    }
+  ],
+  "cma:1940.600": [
+    {
+      "name": "Unidentified Kashmiri embroiderer",
+      "role": "Catalogue maker or attribution",
+      "detail": "The catalogue records wool, silk and silver filé and identifies chain stitch embroidery on this shawl.",
+      "source": "HIS-WORK-SCHEDULE-KASHMIR-SQUARE"
+    }
+  ],
+  "met:22.100.39": [
+    {
+      "name": "Unidentified Turkmen weaver",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met lists wool for warp, weft and pile, and silk in the asymmetrically knotted pile.",
+      "source": "HIS-WORK-SCHEDULE-TURKMEN-BAG"
+    }
+  ],
+  "met:1975.388.1": [
+    {
+      "name": "Unidentified ikat weaver",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met lists silk and cotton, ikat weaving and a length of 129.5 centimetres at the centre back.",
+      "source": "HIS-WORK-SCHEDULE-UZBEK-IKAT"
+    }
+  ],
+  "met:17.190.858": [
+    {
+      "name": "Unidentified Mughal carpet weavers",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met describes alternating reversed repeat units. Its record gives separate dimensions for the carpet and a storage tube.",
+      "source": "HIS-WORK-SCHEDULE-LAHORE-CARPET"
+    }
+  ],
+  "met:36.90.121": [
+    {
+      "name": "Unidentified textile printer",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met records an eighteenth-century printed cotton panel at 66 by 48.3 centimetres.",
+      "source": "HIS-WORK-SCHEDULE-CHINTZ-PANEL"
+    }
+  ],
+  "met:28.162.1": [
+    {
+      "name": "Unidentified kalamkari worker",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met distinguishes the cotton rumal’s size from the size of its mount and describes a mordant-and-resist dyeing process.",
+      "source": "HIS-WORK-SCHEDULE-RUMAL-MOUNT"
+    }
+  ],
+  "met:19.176.4a-b": [
+    {
+      "name": "Unidentified maker of the bidri bowl and lid",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met gives separate weights of 422.5 grams for the bowl and 586.9 grams for its lid, and 1009.4 grams assembled. The catalogue lists zinc alloy and silver and brass inlay.",
+      "source": "HIS-WORK-SCHEDULE-BIDRI-BOWL-WEIGHT"
+    }
+  ],
+  "cma:1969.300": [
+    {
+      "name": "Unidentified earthenware potter",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Cleveland catalogue describes two dark slip-painted birds over a light slip ground. It gives Nishapur or Samarkand as possible origins.",
+      "source": "HIS-WORK-SCHEDULE-SAMANID-BIRDS"
+    }
+  ],
+  "met:19.135.12": [
+    {
+      "name": "Unidentified maker of the bidri ewer",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met gives a 27-centimetre maximum height with the cover on and identifies inlaid silver over a zinc and copper alloy.",
+      "source": "HIS-WORK-SCHEDULE-BIDRI-EWER"
+    }
+  ],
+  "met:19.135.15a-b": [
+    {
+      "name": "Unidentified maker of the bidri box",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met describes an inlaid bidri box with two parts and catalogues an overall length of 23.5 centimetres.",
+      "source": "HIS-WORK-SCHEDULE-BIDRI-FISH"
+    }
+  ],
+  "met:28.82": [
+    {
+      "name": "Unidentified potter",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met catalogues earthenware with white and polychrome slip below a transparent glaze and uses the phrase beveled style.",
+      "source": "HIS-WORK-SCHEDULE-BEVELED-BOWL"
+    }
+  ],
+  "met:61.144": [
+    {
+      "name": "Unidentified potter",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met gives a measured rim diameter of 18.7 centimetres and describes a rosette motif.",
+      "source": "HIS-WORK-SCHEDULE-ROSETTE-RIM"
+    }
+  ],
+  "met:40.170.15": [
+    {
+      "name": "Unidentified potter",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met describes written good wishes around the bowl and notes the start of an additional word.",
+      "source": "HIS-WORK-SCHEDULE-SAMARKAND-INSCRIBED"
+    }
+  ],
+  "met:1975.193.4": [
+    {
+      "name": "Unidentified tile maker",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met identifies a tile excavated at a palace in Ghazni and dates its group by the excavation layers.",
+      "source": "HIS-WORK-SCHEDULE-GHAZNI-TILE"
+    }
+  ],
+  "fsg:f1907.674": [
+    {
+      "name": "Unidentified metalworker",
+      "role": "Maker remains unnamed",
+      "detail": "The museum records material, dimensions and an eighteenth-century dating.",
+      "source": "HIS-WORK-SCHEDULE-FREER-LOTA"
+    },
+    {
+      "name": "Charles Lang Freer",
+      "role": "Recorded later buyer and donor",
+      "detail": "The Smithsonian provenance names his purchase in 1907 and records receipt of his gift in 1920.",
+      "source": "HIS-WORK-SCHEDULE-FREER-LOTA"
+    }
+  ],
+  "met:2022.386": [
+    {
+      "name": "Unidentified Kandy carver and metalworker",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met places this jewel casket in seventeenth-century Kandy and proposes a commission by a Dutch East India Company merchant for sale in Amsterdam.",
+      "source": "HIS-WORK-SCHEDULE-KANDY-CASKET"
+    }
+  ],
+  "met:2000.284.8": [
+    {
+      "name": "Unidentified comb maker",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met identifies this comb fragment with Afghanistan and considers possible West Indian manufacture.",
+      "source": "HIS-WORK-SCHEDULE-BEGRAM-COMB"
+    }
+  ],
+  "met:1987.142.37": [
+    {
+      "name": "Unidentified Gandharan maker",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met names the surviving phyllitic schist figure as a mirror handle and gives its height as 12.1 centimetres.",
+      "source": "HIS-WORK-SCHEDULE-GANDHARA-MIRROR"
+    }
+  ],
+  "met:91.1.1084": [
+    {
+      "name": "Unidentified maker of the plait ornament",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met describes an ornament for a braid and lists multiple materials, including silk, coral, turquoise and glass.",
+      "source": "HIS-WORK-SCHEDULE-UZBEK-PLAIT"
+    }
+  ],
+  "met:91.1.1152": [
+    {
+      "name": "Unidentified maker of the earring",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met identifies one ear ornament from a pair and compares source possibilities for materials available in Bukhara.",
+      "source": "HIS-WORK-SCHEDULE-BUKHARA-EARRING"
+    }
+  ],
+  "met:2000.284.22": [
+    {
+      "name": "Unidentified Gandharan metalworker",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met describes a bronze intaglio ring with two figures and records its width as 2.9 centimetres.",
+      "source": "HIS-WORK-SCHEDULE-GANDHARA-INTAGLIO"
+    }
+  ],
+  "met:91.1.1117": [
+    {
+      "name": "Unidentified jewellery maker",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met titles this ornament one of a pair of pendants and discusses the possibility that such ornaments were worn as earrings.",
+      "source": "HIS-WORK-SCHEDULE-UZBEK-PENDANT"
+    }
+  ],
+  "met:91.1.536": [
+    {
+      "name": "Unidentified original metalworker",
+      "role": "Making role",
+      "detail": "Earlier work survives in the original interior according to the Met.",
+      "source": "HIS-WORK-SCHEDULE-HERAT-PEN-BOX"
+    },
+    {
+      "name": "Unidentified later decorator",
+      "role": "Alteration role",
+      "detail": "The Met assigns the extensive exterior changes to a later period.",
+      "source": "HIS-WORK-SCHEDULE-HERAT-PEN-BOX"
+    }
+  ],
+  "cma:1969.229": [
+    {
+      "name": "Unidentified Visakhapatnam carver",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Cleveland record lists ivory panels from a box. The individual panels have linked parts in the collection record.",
+      "source": "HIS-WORK-SCHEDULE-VIZAG-PANELS"
+    }
+  ],
+  "met:30.112.13": [
+    {
+      "name": "Unidentified block carver",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met records a carved wood printing block with dimensions of 18.1 by 14.3 by 7 centimetres.",
+      "source": "HIS-WORK-SCHEDULE-INDIA-PRINT-BLOCK"
+    }
+  ],
+  "met:2008.359.20": [
+    {
+      "name": "Unidentified Rajasthan design draughtsperson",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Met identifies this late nineteenth-century design sheet as ink and translucent watercolour, with an image area of 13.3 by 15.2 centimetres.",
+      "source": "HIS-WORK-SCHEDULE-RAJASTHAN-DESIGN"
+    }
+  ],
+  "met:1992.51": [
+    {
+      "name": "Habiballah of Sava",
+      "role": "Catalogued painter",
+      "detail": "The Met credits him for A Stallion and dates the work circa 1601–06.",
+      "source": "HIS-WORK-SCHEDULE-HABIBALLAH-STALLION"
+    }
+  ],
+  "met:55.121.42": [
+    {
+      "name": "Muhammadi of Herat",
+      "role": "Catalogued painter",
+      "detail": "The Met attributes the portrait to him and discusses its style.",
+      "source": "HIS-WORK-SCHEDULE-MUHAMMADI-FLOWER"
+    },
+    {
+      "name": "Shah ‘Abbas I",
+      "role": "Later owner named by a stamp",
+      "detail": "The Met identifies the stamp as evidence that the page belonged to his collection.",
+      "source": "HIS-WORK-SCHEDULE-MUHAMMADI-FLOWER"
+    }
+  ],
+  "fsg:f1907.618": [
+    {
+      "name": "Unidentified draughtsperson",
+      "role": "Catalogue role",
+      "detail": "The museum places this ink sheet within the Mughal court tradition.",
+      "source": "HIS-WORK-SCHEDULE-MUGHAL-NATURE-SHEET"
+    },
+    {
+      "name": "Charles Lang Freer",
+      "role": "Later collector and donor",
+      "detail": "Smithsonian ownership records separate his twentieth-century role from the work’s early seventeenth-century date.",
+      "source": "HIS-WORK-SCHEDULE-MUGHAL-NATURE-SHEET"
+    }
+  ],
+  "fsg:f1907.245": [
+    {
+      "name": "Unidentified painter",
+      "role": "Maker remains unnamed",
+      "detail": "The catalogue gives India and the Mughal dynasty for the painted page.",
+      "source": "HIS-WORK-SCHEDULE-MUGHAL-WATER-VIEW"
+    },
+    {
+      "name": "Henry Bathurst Hanna",
+      "role": "Later documented holder",
+      "detail": "The Smithsonian gives a custody entry by 1890 without assigning him any role in making the painting.",
+      "source": "HIS-WORK-SCHEDULE-MUGHAL-WATER-VIEW"
+    }
+  ],
+  "fsg:f1907.224": [
+    {
+      "name": "Unidentified Mughal court painter",
+      "role": "Catalogue maker or attribution",
+      "detail": "The Smithsonian catalogues the portrait as opaque watercolour and gold on paper under the title Princess with wine cup.",
+      "source": "HIS-WORK-SCHEDULE-MUGHAL-CUP-PORTRAIT"
+    }
+  ],
+  "walters:w.641": [
+    {
+      "name": "Sultan ‘Ali",
+      "role": "Recorded scribe",
+      "detail": "The Walters says the colophon identifies his copying in Herat in 1493–1494.",
+      "source": "HIS-WORK-SCHEDULE-SULTAN-ALI-COVER"
+    },
+    {
+      "name": "Jami",
+      "role": "Author of the poems",
+      "detail": "The catalogue credits the literary selection to Nur al-Din ‘Abd al-Rahman Jami.",
+      "source": "HIS-WORK-SCHEDULE-SULTAN-ALI-COVER"
+    }
+  ],
+  "walters:w.883": [
+    {
+      "name": "Ram Singh II",
+      "role": "Recorded patron",
+      "detail": "Walters identifies him as the sponsor of this historical painting.",
+      "source": "HIS-WORK-SCHEDULE-RAM-SINGH-PROCESSION"
+    },
+    {
+      "name": "Unidentified Indian painter",
+      "role": "Attributed making role",
+      "detail": "Walters gives an Indian artist attribution without naming one maker.",
+      "source": "HIS-WORK-SCHEDULE-RAM-SINGH-PROCESSION"
+    }
+  ],
+  "walters:w.613": [
+    {
+      "name": "Nizami Ganjavi",
+      "role": "Author of the literary work",
+      "detail": "Walters credits the author of the earlier Khamsah.",
+      "source": "HIS-WORK-SCHEDULE-LAHORE-QUINTET"
+    },
+    {
+      "name": "‘Abd al-Rahim ‘Ambarin Qalam",
+      "role": "Named scribe of the copy",
+      "detail": "Walters dates the copy to 1595 and identifies the scribe using the related manuscript record.",
+      "source": "HIS-WORK-SCHEDULE-LAHORE-QUINTET"
+    },
+    {
+      "name": "Sanvlah, Nanha, Shivdas and Dharm Das",
+      "role": "Catalogue illustrator credits",
+      "detail": "Walters includes these named artists in its record alongside the separate authorship and copying roles.",
+      "source": "HIS-WORK-SCHEDULE-LAHORE-QUINTET"
+    }
+  ]
+}

@@ -1,6 +1,9 @@
 import { crossingOf, crossingWay } from './crossings';
 import { LOYALTY } from './loyalty';
 import { specimenReferences, type SpecimenReference } from './specimenReferences';
+import { earlierViews } from '../content/earlierViewing';
+import { STAR_PATHS } from '../content/starPaths';
+import { STAR_METHODS, starFlag } from './starPaths';
 import type { Command, GameEvent } from './engine';
 import type {
   AdventureDiary, CampaignState, ContentPack, DialogueNode, DialogueOption, DiaryEntry, DiaryNoteDetails,
@@ -88,6 +91,21 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
   if (cmd.type !== 'SetFlag' || previous.flags[cmd.flag] === next.flags[cmd.flag]) return;
+  if (cmd.flag.startsWith('earlier-viewing.') && cmd.flag.endsWith('.layout')) {
+    const record = earlierViews.find(({ flag }) => cmd.flag === `${flag}.layout`);
+    const pick = record?.placements[cmd.value === 'single' ? 0 : cmd.value === 'paired' ? 1 : -1];
+    if (record && pick) return { id: `layout:${record.flag}:${cmd.value}`, kind: 'choice', title: record.title,
+      text: `I chose “${pick.label}”. ${pick.after}` };
+  }
+  if (cmd.flag.startsWith('star-path.') && cmd.flag.endsWith('.checked')) {
+    for (const path of STAR_PATHS) for (const skill of path.skills) {
+      const flag = starFlag(path, skill);
+      if (cmd.flag !== `${flag}.checked`) continue;
+      const pick = skill.choices[STAR_METHODS.findIndex((method) => method === cmd.value)];
+      if (pick) return { id: `layout:${flag}:${cmd.value}`, kind: 'choice', title: skill.name,
+        text: `I checked what happened after I chose “${pick.label}”. ${pick.result}` };
+    }
+  }
   if (cmd.flag.startsWith('cross.')) {
     const id = cmd.flag.slice('cross.'.length);
     const crossing = crossingOf(id);

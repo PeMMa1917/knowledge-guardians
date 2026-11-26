@@ -1,0 +1,31 @@
+.curtain-call {
+  display: grid;
+  gap: .8rem;
+  overflow-wrap: anywhere;
+}
+.curtain-call :is(h2, p, ol) {
+  margin: 0;
+}
+.curtain-calls {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+  gap: .55rem;
+}
+.curtain-beat {
+  border: 1px solid currentColor;
+  border-radius: .4rem;
+  display: grid;
+  gap: .5rem;
+  padding: .65rem;
+}
+.curtain-beat[data-sound=clear] {
+  border-left: .35rem solid #4d8b71;
+}
+.curtain-beat[data-sound=covered] {
+  border-left: .35rem solid #b4804c;
+}
+.curtain-beat small {
+  display: block;
+}

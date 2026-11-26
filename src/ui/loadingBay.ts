@@ -37,7 +37,8 @@ export function loadingBayPanel(place: string, controller: GameController, sound
       if (move.type === 'send' || move.type === 'receive' || move.type === 'fit') refreshWorld();
       render();
       report.textContent = result;
-      (body.querySelector<HTMLElement>(`button[data-load-step="${id}"]:enabled`) ?? body.querySelector<HTMLElement>('button:enabled') ?? panel).focus();
+      const outcome = move.type === 'fit' ? body.querySelector<HTMLElement>('[data-load-result]') : null;
+      (outcome ?? body.querySelector<HTMLElement>(`button[data-load-step="${id}"]:enabled`) ?? body.querySelector<HTMLElement>('button:enabled') ?? panel).focus();
     } }, text);
   }
 
@@ -116,7 +117,7 @@ export function loadingBayPanel(place: string, controller: GameController, sound
     body.append(choices);
     if (state.fix) {
       const fitted = fitLoad(changed, axle, state.fix);
-      body.append(h('section', { class: 'clue-view' }, h('h3', {}, 'The fitted cart'), cart(fitted.load, fitted.axle),
+      body.append(h('section', { class: 'clue-view', 'data-load-result': '', tabindex: -1 }, h('h3', {}, 'The fitted cart'), cart(fitted.load, fitted.axle),
         h('p', {}, state.fix === 'axle' ? record.axleResult : record.tieResult)));
     }
   }

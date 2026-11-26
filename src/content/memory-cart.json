@@ -1,0 +1,663 @@
+{
+  "characters": [
+    {
+      "id": "memory-cart-edrin",
+      "name": "Edrin Moss",
+      "role": "South-rail guide and former crate carter",
+      "sprite": "clerk-venn",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "all": [
+              {
+                "flagSet": "memory-cart.first"
+              },
+              {
+                "not": {
+                  "flagSet": "memory-cart.working"
+                }
+              }
+            ]
+          },
+          "node": "memory-cart.guide"
+        }
+      ]
+    },
+    {
+      "id": "memory-cart-nella",
+      "name": "Nella Rusk",
+      "role": "Emberford checker who takes her own path around the rail",
+      "sprite": "scholar-sefa",
+      "mode": "fictional",
+      "talk": [
+        {
+          "if": {
+            "all": [
+              {
+                "flagSet": "memory-cart.working"
+              },
+              {
+                "flag": "memory-cart.notice",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flag": "memory-cart.clip",
+                  "eq": true
+                }
+              }
+            ]
+          },
+          "node": "memory-cart.clip"
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "memory-cart.first.wheel",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The handcart rolls across the white chalk bar. A fresh tread lands on the far side. From this opening, the rail hides the crate.",
+      "options": [
+        {
+          "text": "Clip the wheel’s path to the bottom peg.",
+          "effects": [
+            {
+              "setFlag": "memory-cart.first",
+              "value": "wheel"
+            },
+            {
+              "journal": "j.memory-cart.first.wheel"
+            }
+          ],
+          "if": {
+            "not": {
+              "flagSet": "memory-cart.first"
+            }
+          }
+        },
+        {
+          "text": "Keep walking."
+        }
+      ],
+      "claimKind": "observation"
+    },
+    {
+      "id": "memory-cart.first.strap",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "The blue cord runs through the yellow crate’s eye and the cart’s peg. It keeps its closed loop while the cart passes this opening. The stones hide the far wheel.",
+      "options": [
+        {
+          "text": "Clip the blue cord’s closed loop to the bottom peg.",
+          "effects": [
+            {
+              "setFlag": "memory-cart.first",
+              "value": "strap"
+            },
+            {
+              "journal": "j.memory-cart.first.strap"
+            }
+          ],
+          "if": {
+            "not": {
+              "flagSet": "memory-cart.first"
+            }
+          }
+        },
+        {
+          "text": "Keep walking."
+        }
+      ],
+      "claimKind": "observation"
+    },
+    {
+      "id": "memory-cart.launch.wheel",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Wait behind the chalk-bar opening. Lower the wooden stop so the handcart can pass your side.",
+      "options": [
+        {
+          "text": "Lower the stop and watch the wheels.",
+          "effects": [
+            {
+              "setFlag": "memory-cart.open.wheel",
+              "value": true
+            }
+          ],
+          "if": {
+            "not": {
+              "flagSet": "memory-cart.first"
+            }
+          }
+        },
+        {
+          "text": "Leave the stop in place."
+        }
+      ]
+    },
+    {
+      "id": "memory-cart.launch.strap",
+      "speaker": "narrator",
+      "historicalLabel": "fictional-world",
+      "text": "Wait by the crate’s eyelet. Lower the wooden stop before the cart reaches this opening.",
+      "options": [
+        {
+          "text": "Lower the stop and watch the blue cord.",
+          "effects": [
+            {
+              "setFlag": "memory-cart.open.strap",
+              "value": true
+            }
+          ],
+          "if": {
+            "not": {
+              "flagSet": "memory-cart.first"
+            }
+          }
+        },
+        {
+          "text": "Leave the stop in place."
+        }
+      ]
+    },
+    {
+      "id": "memory-cart.guide",
+      "speaker": "memory-cart-edrin",
+      "historicalLabel": "fictional-world",
+      "text": "It stopped at this rail. I can practically see the hand lifting that yellow crate. A porter at our table said he saw it too. Keep the west checker’s slip off my rack. Their crew always makes trouble over our stops.",
+      "options": [
+        {
+          "text": "Lay Edrin’s slip over my first sketch for now.",
+          "effects": [
+            {
+              "setFlag": "memory-cart.working",
+              "value": "over"
+            },
+            {
+              "journal": "j.memory-cart.guide"
+            }
+          ],
+          "if": {
+            "not": {
+              "flagSet": "memory-cart.working"
+            }
+          }
+        },
+        {
+          "text": "Clip Edrin’s slip beside my first sketch.",
+          "effects": [
+            {
+              "setFlag": "memory-cart.working",
+              "value": "beside"
+            },
+            {
+              "journal": "j.memory-cart.guide"
+            }
+          ],
+          "if": {
+            "not": {
+              "flagSet": "memory-cart.working"
+            }
+          }
+        },
+        {
+          "text": "Leave both slips loose for now."
+        }
+      ],
+      "claimKind": "interpretation"
+    },
+    {
+      "id": "memory-cart.clip",
+      "speaker": "memory-cart-nella",
+      "historicalLabel": "fictional-world",
+      "text": "Edrin closed this flap over the west checker’s slot. The string holds a note that says every west slip should be discarded before it is read. I fetched their tread strip anyway.",
+      "options": [
+        {
+          "text": "Untie the flap and open the west checker’s slot.",
+          "effects": [
+            {
+              "setFlag": "memory-cart.clip",
+              "value": true
+            },
+            {
+              "journal": "j.memory-cart.clip"
+            }
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "memory-cart.notice",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flag": "memory-cart.clip",
+                  "eq": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "text": "Leave the flap as it is."
+        }
+      ]
+    },
+    {
+      "id": "memory-cart.wheel",
+      "speaker": "memory-cart-nella",
+      "historicalLabel": "fictional-world",
+      "text": "The old strip stayed on the west peg. I can roll the little cart past the same bar to lay down a second tread. You can compare them from the west opening.",
+      "options": [
+        {
+          "text": "Open the west view and roll the cart across the bar.",
+          "effects": [
+            {
+              "setFlag": "memory-cart.replay.wheel",
+              "value": true
+            }
+          ],
+          "if": {
+            "flag": "memory-cart.clip",
+            "eq": true
+          }
+        },
+        {
+          "text": "Keep the wheel at the start."
+        }
+      ]
+    },
+    {
+      "id": "memory-cart.strap",
+      "speaker": "memory-cart-nella",
+      "historicalLabel": "fictional-world",
+      "text": "I can tie the cord through the same two places and make the pass again. Watch the loop from here. You can keep your eyes on it past the opening.",
+      "options": [
+        {
+          "text": "Set the crate on its pegged cord and replay the pass.",
+          "effects": [
+            {
+              "setFlag": "memory-cart.replay.strap",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the crate tied here."
+        }
+      ]
+    },
+    {
+      "id": "memory-cart.publish",
+      "speaker": "memory-cart-edrin",
+      "historicalLabel": "fictional-world",
+      "text": "That tread comes from your replay. I can still picture a hand on the crate. The porter told me about the hand after the pass. I had supplied the stop myself. Will you put up what we checked, or take someone through it with Nella?",
+      "options": [
+        {
+          "text": "Post the two checked limits and send the collector to the gate tray.",
+          "effects": [
+            {
+              "setFlag": "memory-cart.plan",
+              "value": "direct"
+            },
+            {
+              "journal": "j.memory-cart.choice.direct"
+            }
+          ],
+          "if": {
+            "all": [
+              {
+                "objective": "memory-cart.sources"
+              },
+              {
+                "not": {
+                  "flagSet": "memory-cart.plan"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "text": "Keep the reported stop in its own sleeve and send the collector with Nella.",
+          "effects": [
+            {
+              "setFlag": "memory-cart.plan",
+              "value": "escort"
+            },
+            {
+              "journal": "j.memory-cart.choice.escort"
+            }
+          ],
+          "if": {
+            "all": [
+              {
+                "objective": "memory-cart.sources"
+              },
+              {
+                "not": {
+                  "flagSet": "memory-cart.plan"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "text": "Keep the rail open while I think."
+        }
+      ],
+      "claimKind": "interpretation"
+    }
+  ],
+  "missions": [
+    {
+      "id": "EMBER-CART-BELL",
+      "world": "WORLD-02",
+      "title": "The Cart Before the Bell",
+      "knowledgeQuestion": "When a later story feels familiar, how do we recover the parts we actually saw?",
+      "stake": "A collector who waits at the wrong rail misses the cart while the crew is still retelling the stop.",
+      "available": {
+        "flag": "reached.emberford",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "memory-cart.initial",
+          "title": "Save the first view of the south-rail handcart",
+          "done": {
+            "flagSet": "memory-cart.first"
+          },
+          "visible": {
+            "flagSet": "memory-cart.first"
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "perspective",
+              "evidence"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "subjects": [
+              "psychology"
+            ],
+            "framework": [
+              "perspectives",
+              "methods-and-tools"
+            ],
+            "atl": [
+              "self-management",
+              "research"
+            ],
+            "thinking": {
+              "dok": 1,
+              "bloom": "apply",
+              "fink": "application",
+              "solo": "unistructural"
+            },
+            "minutes": 2
+          }
+        },
+        {
+          "id": "memory-cart.sources",
+          "title": "Open the other witness slot and recover what both views can show",
+          "done": {
+            "all": [
+              {
+                "objective": "memory-cart.initial"
+              },
+              {
+                "flagSet": "memory-cart.working"
+              },
+              {
+                "flag": "memory-cart.notice",
+                "eq": true
+              },
+              {
+                "flag": "memory-cart.clip",
+                "eq": true
+              },
+              {
+                "flag": "memory-cart.seen.wheel",
+                "eq": true
+              },
+              {
+                "flag": "memory-cart.seen.strap",
+                "eq": true
+              },
+              {
+                "flag": "memory-cart.original",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "objective": "memory-cart.initial"
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.memory-cart.sources"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "truth",
+              "evidence",
+              "certainty",
+              "interpretation",
+              "power",
+              "objectivity",
+              "justification"
+            ],
+            "aoks": [
+              "HUM",
+              "HIS"
+            ],
+            "subjects": [
+              "psychology",
+              "history"
+            ],
+            "framework": [
+              "scope",
+              "perspectives",
+              "methods-and-tools"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "social"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "minutes": 5
+          }
+        },
+        {
+          "id": "memory-cart.handover",
+          "title": "Check where the revised handcart instruction is used",
+          "done": {
+            "all": [
+              {
+                "objective": "memory-cart.sources"
+              },
+              {
+                "flagSet": "memory-cart.plan"
+              },
+              {
+                "flag": "memory-cart.receipt",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "objective": "memory-cart.sources"
+          },
+          "essential": false,
+          "onComplete": [
+            {
+              "journal": "j.memory-cart.handover"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "responsibility",
+              "values",
+              "power",
+              "perspective",
+              "evidence"
+            ],
+            "aoks": [
+              "HUM",
+              "HIS"
+            ],
+            "subjects": [
+              "psychology",
+              "history"
+            ],
+            "framework": [
+              "scope",
+              "perspectives",
+              "ethics"
+            ],
+            "atl": [
+              "communication",
+              "thinking",
+              "social"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "human",
+              "solo": "relational"
+            },
+            "minutes": 3
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.memory-cart.initial.1",
+      "objective": "memory-cart.initial",
+      "depth": 1,
+      "text": "Look for the two openings near the south approach."
+    },
+    {
+      "id": "h.memory-cart.initial.2",
+      "objective": "memory-cart.initial",
+      "depth": 2,
+      "text": "Each opening shows a different part of the same cart pass."
+    },
+    {
+      "id": "h.memory-cart.initial.3",
+      "objective": "memory-cart.initial",
+      "depth": 3,
+      "text": "Choose one opening and keep its working sketch on a bottom peg."
+    },
+    {
+      "id": "h.memory-cart.initial.4",
+      "objective": "memory-cart.initial",
+      "depth": 4,
+      "text": "Use the chalk-bar view west of the south steps, or the blue-cord view to the east. Clip the first view."
+    },
+    {
+      "id": "h.memory-cart.sources.1",
+      "objective": "memory-cart.sources",
+      "depth": 1,
+      "text": "The visible event and the story told afterwards have their own places."
+    },
+    {
+      "id": "h.memory-cart.sources.2",
+      "objective": "memory-cart.sources",
+      "depth": 2,
+      "text": "Read why the delivery stopped at the covered stall. The west slot’s flap has a different reason for being shut."
+    },
+    {
+      "id": "h.memory-cart.sources.3",
+      "objective": "memory-cart.sources",
+      "depth": 3,
+      "text": "Open the flap. Replay the chalk view and the cord view. Read the first sketch in its own place."
+    },
+    {
+      "id": "h.memory-cart.sources.4",
+      "objective": "memory-cart.sources",
+      "depth": 4,
+      "text": "Talk to Edrin, look at the covered-stall notice, then ask Nella to untie the west slot. Check each replay and the retained original before using the south-rail publication desk."
+    },
+    {
+      "id": "h.memory-cart.handover.1",
+      "objective": "memory-cart.handover",
+      "depth": 1,
+      "text": "A collector can use either of the checked instructions."
+    },
+    {
+      "id": "h.memory-cart.handover.2",
+      "objective": "memory-cart.handover",
+      "depth": 2,
+      "text": "A direct notice makes progress fast. An escort gives another person a turn to check."
+    },
+    {
+      "id": "h.memory-cart.handover.3",
+      "objective": "memory-cart.handover",
+      "depth": 3,
+      "text": "The posted instruction and the keeper’s escort leave their replies in different places."
+    },
+    {
+      "id": "h.memory-cart.handover.4",
+      "objective": "memory-cart.handover",
+      "depth": 4,
+      "text": "Use Edrin’s rack, choose a direct collector or an escort with Nella, then check the gate tray to the west or Nella’s escorted handoff to the east."
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.memory-cart.first.wheel",
+      "text": "First peg. The wheel laid a tread beyond the chalk bar. The rail hid the crate.",
+      "claimKind": "observation"
+    },
+    {
+      "id": "j.memory-cart.first.strap",
+      "text": "First peg. The cord stayed closed through the crate’s eye and the cart peg at this opening. The stones hid the far wheel.",
+      "claimKind": "observation"
+    },
+    {
+      "id": "j.memory-cart.guide",
+      "text": "Edrin’s report of a stop sat with the earlier sketch. He heard the detail about a hand from a porter after the pass.",
+      "claimKind": "interpretation"
+    },
+    {
+      "id": "j.memory-cart.clip",
+      "text": "The covered stall missed a delivery of the west slip. Edrin’s tied flap deliberately kept later west slips off his rack.",
+      "claimKind": "observation"
+    },
+    {
+      "id": "j.memory-cart.sources",
+      "text": "On replay the tread extended beyond the bar. At the other opening the crate loop stayed tied. The first view still has its own peg.",
+      "claimKind": "observation"
+    },
+    {
+      "id": "j.memory-cart.choice.direct",
+      "text": "The next collector gets both checked limits on a direct notice. The reported stop stays with the named recollection.",
+      "claimKind": "value"
+    },
+    {
+      "id": "j.memory-cart.choice.escort",
+      "text": "Nella takes one collector through both viewpoints. The report of the stop keeps its own sleeve.",
+      "claimKind": "value"
+    },
+    {
+      "id": "j.memory-cart.handover",
+      "text": "The receiver used a fresh checked instruction. The reported stop and each observer’s limits still have their place.",
+      "claimKind": "observation"
+    }
+  ]
+}

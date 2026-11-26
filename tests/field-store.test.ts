@@ -23,7 +23,7 @@ describe('The Place and the Bell', () => {
     d.s.objectivesDone.push('water.arrival');
     expect(check(FIELD_STORE_DOOR.visibleIf, d.s)).toBe(true);
     expect(MAPS['water.council'].interactables).toContain(FIELD_STORE_DOOR);
-    expect(MAPS['water.field-store']).toBe(FIELD_STORE);
+    expect(prop(MAPS['water.field-store'], 'field-store-return').to).toEqual(prop(FIELD_STORE, 'field-store-return').to);
     expect(FIELD_STORE_CASES).toHaveLength(36);
     expect(new Set(FIELD_STORE_CASES.map((entry) => entry.key)).size).toBe(36);
     expect(new Set(FIELD_STORE_CASES.map((entry) => entry.revisitAction)).size).toBe(36);

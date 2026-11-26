@@ -1,0 +1,15 @@
+.earlier-view-result { margin-block: .7rem; }
+.earlier-view-practice { background: #283646; padding: .5rem; border: 1px solid #a68b63; border-radius: .3rem; width: min(100%, 15rem); }
+.earlier-view-marks { position: relative; min-height: 2.4rem; padding: .2rem .4rem; }
+.earlier-view-practice .line { background: #bca779; height: .25rem; margin: .25rem 0; max-width: 100%; }
+.earlier-view-practice .line-2 { width: 2em; }
+.earlier-view-practice .line-4 { width: 4em; }
+.earlier-view-practice .line-5 { width: 5em; }
+.earlier-view-practice .line-6 { width: 6em; }
+.earlier-view-practice .line-7 { width: 7em; }
+.earlier-view-practice .line-8 { width: 8em; }
+.earlier-view-practice .line-9 { width: 9em; }
+.earlier-view-practice.view-1 .line { background: #9fcbb9; }
+.earlier-view-practice.north-turn.view-1 .earlier-view-marks { transform: rotate(180deg); }
+.earlier-view-practice.deep-window.view-0 .earlier-view-marks { overflow: hidden; width: 50%; }
+.earlier-view-practice.deep-window .line { background: #9bcadb; }

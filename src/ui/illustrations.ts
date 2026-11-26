@@ -15,7 +15,11 @@ import { DEPOT_ART } from './surveyDepotArt';
 import { REFERENCE_STATION_ART } from './referenceStationArt';
 import { MODEL_RECORD_ART } from './modelRecordArt';
 import { LOAD_BAY_ART } from './loadingBayArt';
+import { BEARING_ART } from './bearingBayArt';
 import { SECOND_READING_ART } from './secondReadingArt';
+import { SHORE_REPLY_ART } from './shoreReplyArt';
+import { JIG_SHOP_ART } from './jigShopArt';
+import { MEMORY_CART_ART } from './memoryCartArt';
 import { REFERENCE_PROOF_ART } from './referenceProofArt';
 import { MAKER_ROOM_ART } from './makerRoomArt';
 import { PASSAGE_DOCUMENTARY_ART, PASSAGE_DOCUMENTARY_LARGE_ART } from './specimenPassageArt';
@@ -2852,7 +2856,7 @@ DRAW['big.drawer-cases'] = [40, 28, (g) => {
 
 /** Map exhibit art keys (small) to large inspection pictures. */
 Object.assign(DRAW, POLAR_ART, WINDOW_ART, READING_WORKS_ART, STORY_ARCHIVE_ART, NUMBER_LEAF_ART, DEPOT_ART, REFERENCE_STATION_ART,
-  MODEL_RECORD_ART, SECOND_READING_ART);
+  MODEL_RECORD_ART, SECOND_READING_ART, SHORE_REPLY_ART, JIG_SHOP_ART, MEMORY_CART_ART);
 Object.assign(DRAW, REFERENCE_PROOF_ART, PASSAGE_DOCUMENTARY_ART);
 Object.assign(DRAW, MAKER_ROOM_ART);
 
@@ -2872,7 +2876,7 @@ DRAW['big.register.codex-fold'] = [120, 72, (g) => {
   R(g, '#b9cdce', 12, 35, 65, 1); R(g, '#b9cdce', 12, 33, 1, 5); R(g, '#b9cdce', 76, 33, 1, 5);
 }];
 
-Object.assign(DRAW, TURNING_ART, LOAD_BAY_ART);
+Object.assign(DRAW, TURNING_ART, LOAD_BAY_ART, BEARING_ART);
 
 // A closed catalogue folder beside two fictional skyline slips.
 DRAW['timbuktu.horizon-case'] = [16, 24, (g) => {

@@ -1,0 +1,206 @@
+{
+  "smg:1990-7607": [
+    {
+      "name": "George Stephenson",
+      "role": "user",
+      "detail": "The National Railway Museum associates his use of this vice with the Rainhill trials.",
+      "source": "HIS-JIG-SHOP-RAINHILL-VICE"
+    }
+  ],
+  "smg:2020-115": [
+    {
+      "name": "Ron Hickman",
+      "role": "inventor and maker",
+      "detail": "Built this workbase and considered whether the load-bearing beams could also serve as jaws.",
+      "source": "HIS-JIG-SHOP-HICKMAN-PROTOTYPE"
+    }
+  ],
+  "smg:1894-168": [
+    {
+      "name": "J. B. Lakeman",
+      "role": "guard designer",
+      "detail": "The Science Museum Group names him as designer.",
+      "source": "HIS-JIG-SHOP-GARRETT-GUARD-MODEL"
+    },
+    {
+      "name": "R. Garrett of Leiston",
+      "role": "credited model producer",
+      "detail": "The catalogue names R. Garrett of Leiston as the maker of the model.",
+      "source": "HIS-JIG-SHOP-GARRETT-GUARD-MODEL"
+    }
+  ],
+  "smg:1919-483": [
+    {
+      "name": "Carl Edward Johansson",
+      "role": "designer of the gauge-block system",
+      "detail": "The catalogue associates him with the development of gauge blocks and identifies this as an imperial set.",
+      "source": "HIS-JIG-SHOP-JOHANSSON-BLOCKS"
+    }
+  ],
+  "smg:1975-176": [
+    {
+      "name": "J. Gilmour",
+      "role": "credited maker of the gauge",
+      "detail": "Named in the catalogue description for the boxed gauge and accessories.",
+      "source": "HIS-JIG-SHOP-GILMOUR-HEIGHT-GAUGE"
+    }
+  ],
+  "smg:1900-75": [
+    {
+      "name": "Henry Maudslay",
+      "role": "maker",
+      "detail": "The museum attributes the small example to him and qualifies whether it was a planning model.",
+      "source": "HIS-JIG-SHOP-MAUDSLAY-LORD-CHANCELLOR"
+    }
+  ],
+  "smg:1919-265": [
+    {
+      "name": "Joseph Whitworth",
+      "role": "maker and claimant",
+      "detail": "The museum records his precision claim and the limits exhibited by later tests.",
+      "source": "HIS-JIG-SHOP-WHITWORTH-CLAIM"
+    }
+  ],
+  "smg:2021-1694": [
+    {
+      "name": "Alan Pedder",
+      "role": "apprentice, user and maker of some tools",
+      "detail": "Made or used tools in the collection during training, according to the museum.",
+      "source": "HIS-JIG-SHOP-PEDDER-APPRENTICESHIP"
+    },
+    {
+      "name": "Arthur Percy Morris Fleming",
+      "role": "training-system developer",
+      "detail": "The museum connects him to the Metrovick scheme, leaving individual tool roles separate.",
+      "source": "HIS-JIG-SHOP-PEDDER-APPRENTICESHIP"
+    }
+  ],
+  "smg:2015-2019-13": [
+    {
+      "name": "Bob Watkins",
+      "role": "apprentice toolmaker",
+      "detail": "Made this gauge during his Linotype and Machinery Co. apprenticeship.",
+      "source": "HIS-JIG-SHOP-WATKINS-THREAD-GAUGE"
+    }
+  ],
+  "smg:1991-7481": [
+    {
+      "name": "Henry Bowker",
+      "role": "tool owner and coach builder",
+      "detail": "Named as the former owner associated with railway carriage workshops.",
+      "source": "HIS-JIG-SHOP-BOWKER-CHEST"
+    }
+  ],
+  "smg:1957-192-1": [
+    {
+      "name": "John Stirrup",
+      "role": "maker",
+      "detail": "The catalogue names him as maker of the chest.",
+      "source": "HIS-JIG-SHOP-STIRRUP-CHEST"
+    }
+  ],
+  "smg:1990-5036-10071": [
+    {
+      "name": "Pierre Dubreuil",
+      "role": "photographer and printmaker",
+      "detail": "Named as creator by the museum.",
+      "source": "HIS-JIG-SHOP-DUBREUIL-TOOL-CHEST"
+    }
+  ],
+  "smg:1927-1663": [
+    {
+      "name": "Joseph Finney",
+      "role": "maker",
+      "detail": "The catalogue records him as maker of this Liverpool instrument.",
+      "source": "HIS-JIG-SHOP-FINNEY-DIAL"
+    }
+  ],
+  "nmah:pg.000762": [
+    {
+      "name": "John William Jarboe",
+      "role": "maker",
+      "detail": "The museum links him to this specific photographic plate vise.",
+      "source": "HIS-JIG-SHOP-JARBOE-PLATE-VISE"
+    }
+  ],
+  "nmah:te.t11414.013": [
+    {
+      "name": "Emory A. Angell",
+      "role": "inventor",
+      "detail": "Named for the loom temple patent model and its 1838 patent.",
+      "source": "HIS-JIG-SHOP-ANGELL-LOOM-TEMPLE"
+    }
+  ],
+  "nmah:ma.308918": [
+    {
+      "name": "Josiah Lyman",
+      "role": "maker and inventor",
+      "detail": "The Smithsonian names him as maker and describes scale markings on the model.",
+      "source": "HIS-JIG-SHOP-LYMAN-DRAFTING-RULE"
+    }
+  ],
+  "nmah:1987.0422.01": [
+    {
+      "name": "John Mischker",
+      "role": "inventor",
+      "detail": "Identified in the catalogue description and patent account.",
+      "source": "HIS-JIG-SHOP-MISCHKER-REVERSE"
+    }
+  ],
+  "nmah:tr.308544": [
+    {
+      "name": "Abijah S. Hosley",
+      "role": "inventor and patentee",
+      "detail": "The museum associates him with the model measuring caliper covered by patent 8,307.",
+      "source": "HIS-JIG-SHOP-HOSLEY-SHIP-MODEL"
+    }
+  ],
+  "nmah:mc.309167": [
+    {
+      "name": "William R. Patrick",
+      "role": "maker and patentee",
+      "detail": "The museum attributes the woodworking gage lathe model and patent to Patrick.",
+      "source": "HIS-JIG-SHOP-PATRICK-GAGE-LATHE"
+    }
+  ],
+  "nmah:ga.89797.027253": [
+    {
+      "name": "A. H. Wood",
+      "role": "maker and inventor",
+      "detail": "Named for the patent model for an engraving plate holder.",
+      "source": "HIS-JIG-SHOP-WOOD-ENGRAVERS-VISE"
+    }
+  ],
+  "nmah:ga.89797.002894": [
+    {
+      "name": "Luman Carpenter",
+      "role": "maker and inventor",
+      "detail": "The museum connects him to the patent model for producing multiple copies from one pattern.",
+      "source": "HIS-JIG-SHOP-CARPENTER-ELLIPSE-MODEL"
+    }
+  ],
+  "met:2005.100.610": [
+    {
+      "name": "William Henry Fox Talbot",
+      "role": "photographer",
+      "detail": "The Met credits the study of a carpenter and apprentice to him.",
+      "source": "HIS-JIG-SHOP-TALBOT-CARPENTER"
+    }
+  ],
+  "met:jp2328": [
+    {
+      "name": "Ryūryūkyo Shinsai",
+      "role": "artist",
+      "detail": "Named by The Met as the artist for the print.",
+      "source": "HIS-JIG-SHOP-SHINSAI-TOOLS"
+    }
+  ],
+  "bm:heal-118.8": [
+    {
+      "name": "John Jennion",
+      "role": "toolmaker advertised",
+      "detail": "Named at the Three Plains in the museum’s draft description.",
+      "source": "HIS-JIG-SHOP-JENNION-TRADE-CARD"
+    }
+  ]
+}

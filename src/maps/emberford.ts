@@ -1,3 +1,4 @@
+import { JIG_EMBERFORD_RETURNS } from './jigShop';
 /**
  * WORLD-02 Aethelgard: Emberford, a guild town (spec 5.4).
  * Fantasy world. Nothing here is a historical record unless an exhibit is
@@ -11,6 +12,9 @@ import { EMBERFORD_BACKBILL } from './backbill';
 import { EMBERFORD_DOOR_FOLD } from './doorFold';
 import { EMBERFORD_DRAWER_CASES } from './drawerCases';
 import { EMBERFORD_BASKET } from './marketBasket';
+import { EMBERFORD_WINDOW } from './ferryWindow';
+import { CART_MEMORY_ACTORS, CART_MEMORY_PROPS } from './memoryCart';
+import { starStations } from './starPaths';
 
 const W = 40, H = 28;
 // Plaza (stone) rectangle
@@ -130,6 +134,7 @@ export const EMBERFORD: MapDef = {
     [0, -1, W, 1], [0, H, W, 1], [-1, 0, 1, H], [W, 0, 1, H],
   ],
   npcs: [
+    ...CART_MEMORY_ACTORS,
     { id: 'merchant-corvan', x: 25, y: 13, facing: 'down' },
     { id: 'smith-hesper', x: 7, y: 13, facing: 'right' },
     { id: 'guildmaster-orrin', x: 19, y: 7, facing: 'down' },
@@ -147,7 +152,11 @@ export const EMBERFORD: MapDef = {
     { id: 'singer-teodora', x: 16, y: 15, facing: 'down', visibleIf: { origin: 'singer' } },
   ],
   interactables: [
+    ...starStations('chronicler', [17, 20], [18, 20]),
+    ...EMBERFORD_WINDOW,
     ...EMBERFORD_BASKET,
+    ...CART_MEMORY_PROPS,
+    ...JIG_EMBERFORD_RETURNS,
     ...EMBERFORD_LANTERN_FAIR,
     ...EMBERFORD_BACKBILL,
     ...EMBERFORD_DOOR_FOLD,

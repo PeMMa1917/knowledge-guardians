@@ -249,7 +249,7 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | 180 | Public debate and persuasion | ✓ | Practice, Corvan and Vesper scenes support concessions and changes of argument in front of an audience. | [showdown.ts](../src/domain/showdown.ts), [performance-vesper.test.ts](../tests/performance-vesper.test.ts) |
 | 181 | A faction and people revealed by letters | ✓ | Vesper writes from within the Seal story, and five community letters respond to earlier choices. Nellis carries a disputed record between chapters. | [letters.ts](../src/domain/letters.ts), [communityLetters.ts](../src/domain/communityLetters.ts), [archive-handoff.test.ts](../tests/archive-handoff.test.ts) |
 | 182 | Episodic campaign progression | ✓ | Fifteen authored chapters open through campaign gates; each has a concrete local investigation. | [nexus.ts](../src/maps/nexus.ts), [chapter-maps.test.ts](../tests/chapter-maps.test.ts) |
-| 183 | Revisit a memory through objects | ◐ | Players wind Elsbet’s reel, check the signed permission slip and compare two takes presented in dialogue. They choose where the public take can be used. A walkable frozen scene remains open. | [voices-elsbet.json](../src/content/voices-elsbet.json), [voices.ts](../src/maps/voices.ts) |
+| 183 | Revisit a memory through objects | ◐ | Players wind Elsbet’s reel, check the signed permission slip and compare two takes presented in dialogue. They choose where the public take can be used. The Emberford cart keeps the player’s first sketch while two independent replay angles test the later account. | [voices-elsbet.json](../src/content/voices-elsbet.json), [voices.ts](../src/maps/voices.ts) · [Cart Before the Bell](../tests/memory-cart.test.ts) |
 
 ## XII. Logic and tinkering
 

@@ -35,6 +35,14 @@ import { FIELD_STORE } from './fieldStore';
 import { MATERIAL_STORE_MAPS } from './materialStores';
 import { COUNCIL_LOADING_BAY, COUNCIL_LOAD_CHECK } from './loadingBay';
 import { PRESERVED_GLASS_RACK } from './glassRack';
+import { SHORE_REPLY_SHED } from './shoreReply';
+import { FERRY_WINDOW } from './ferryWindow';
+import { BADGE_ANNEX } from './badgeRoom';
+import { FERRY_PACKING_ROOM } from './ferryPacking';
+import { WORK_SCHEDULE_MAPS } from './workSchedule';
+import { BEARING_ROOM, BEARING_RETURN_ROOM } from './bearingBay';
+import { JIG_SHOP_MAP } from './jigShop';
+import { earlierViewingAt } from './earlierViewing';
 import { FERRY } from './ferry';
 import { NILE_HALL, NILE_ROYAL, NILE_ROUTE, NILE_WORKYARD } from './nile';
 import { UNDERCROFT } from './undercroft';
@@ -56,7 +64,7 @@ import { VESPER_PROOF_ROOM } from './vesperTrust';
 import { CIVIC_CANAL, CIVIC_DISPATCH, CIVIC_STEPS } from './civic';
 import { WATER_COUNCIL, WATER_GATEHOUSE, WATER_LOWER_CHANNEL } from './water';
 
-export const MAPS: Record<string, MapDef> = {
+const campaignMaps: Record<string, MapDef> = {
   [NEXUS.id]: NEXUS,
   [HALF_LIGHT_ROOM.id]: HALF_LIGHT_ROOM,
   [NUMBER_LEAF_ROOM.id]: NUMBER_LEAF_ROOM,
@@ -70,6 +78,8 @@ export const MAPS: Record<string, MapDef> = {
   [SHELF_ROOM.id]: SHELF_ROOM,
   [SHELF_MODEL.id]: SHELF_MODEL,
   [FERRY.id]: FERRY,
+  [FERRY_WINDOW.id]: FERRY_WINDOW,
+  [FERRY_PACKING_ROOM.id]: FERRY_PACKING_ROOM,
   [UNDERCROFT.id]: UNDERCROFT,
   [NILE_HALL.id]: NILE_HALL,
   [NILE_ROYAL.id]: NILE_ROYAL,
@@ -92,12 +102,16 @@ export const MAPS: Record<string, MapDef> = {
   [REFERENCE_STATION.id]: REFERENCE_STATION,
   [OBSERVATORY_ARCHIVE.id]: OBSERVATORY_ARCHIVE,
   [OBSERVATORY_STATION.id]: OBSERVATORY_STATION,
+  [BEARING_ROOM.id]: BEARING_ROOM,
+  [BEARING_RETURN_ROOM.id]: BEARING_RETURN_ROOM,
   [OBSERVATORY_INLAND.id]: OBSERVATORY_INLAND,
   [FOREST_STATION.id]: FOREST_STATION,
   [FERN_RECORD_ROOM.id]: FERN_RECORD_ROOM,
   [FOREST_TRAIL.id]: FOREST_TRAIL,
   [FOREST_COMMUNITY.id]: FOREST_COMMUNITY,
+  ...Object.fromEntries(WORK_SCHEDULE_MAPS.map((room) => [room.id, room])),
   [METALWORKS_YARD.id]: METALWORKS_YARD,
+  [JIG_SHOP_MAP.id]: JIG_SHOP_MAP,
   [REFERENCE_FLOOR.id]: REFERENCE_FLOOR,
   [REFERENCE_LANES.id]: REFERENCE_LANES,
   [METALWORKS_RECORDS.id]: METALWORKS_RECORDS,
@@ -116,6 +130,7 @@ export const MAPS: Record<string, MapDef> = {
   [TURNING_ROOM.id]: TURNING_ROOM,
   [SHOAL_PROOF_SHELTER.id]: SHOAL_PROOF_SHELTER,
   [SEA_SHOAL.id]: SEA_SHOAL,
+  [SHORE_REPLY_SHED.id]: SHORE_REPLY_SHED,
   [STAGE_FOYER.id]: STAGE_FOYER,
   [STAGE_REHEARSAL.id]: STAGE_REHEARSAL,
   [STAGE_GALLERY.id]: STAGE_GALLERY,
@@ -150,4 +165,10 @@ export const MAPS: Record<string, MapDef> = {
   [COUNCIL_LOADING_BAY.id]: COUNCIL_LOADING_BAY,
   [COUNCIL_LOAD_CHECK.id]: COUNCIL_LOAD_CHECK,
   [PRESERVED_GLASS_RACK.id]: PRESERVED_GLASS_RACK,
+  [BADGE_ANNEX.id]: BADGE_ANNEX,
 };
+
+export const MAPS: Record<string, MapDef> = Object.fromEntries(Object.values(campaignMaps).map((map) => {
+  const returns = earlierViewingAt(map.id);
+  return [map.id, returns.length ? { ...map, interactables: [...map.interactables, ...returns] } : map];
+}));

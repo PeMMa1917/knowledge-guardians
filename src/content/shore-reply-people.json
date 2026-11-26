@@ -1,0 +1,256 @@
+{
+  "rmg:g230-1-7": [
+    {
+      "name": "Jacopo Bertran",
+      "role": "co-maker",
+      "detail": "Named in the signed inscription.",
+      "source": "HIS-REPLY-SHORE-BERTRAN-RIPOL"
+    },
+    {
+      "name": "Berenguer Ripoll",
+      "role": "co-maker",
+      "detail": "Named alongside Bertran in the inscription.",
+      "source": "HIS-REPLY-SHORE-BERTRAN-RIPOL"
+    }
+  ],
+  "rmg:g230-1-9": [
+    {
+      "name": "Arnald Domenech",
+      "role": "maker",
+      "detail": "The museum attributes the signed chart to Domenech.",
+      "source": "HIS-REPLY-SHORE-DOMENECH-SHEET"
+    }
+  ],
+  "rmg:g230-1-11": [
+    {
+      "name": "Guilio di Cesare Petrucci",
+      "role": "maker",
+      "detail": "The public record names Petrucci.",
+      "source": "HIS-REPLY-SHORE-PETRUCCI-SHEET"
+    }
+  ],
+  "rmg:g213-2-4": [
+    {
+      "name": "Pedro Reinel",
+      "role": "possible maker",
+      "detail": "The attribution is on stylistic grounds.",
+      "source": "HIS-REPLY-SHORE-REINEL-CHART"
+    },
+    {
+      "name": "Jorge Reinel",
+      "role": "possible maker",
+      "detail": "The attribution is shared as an open alternative.",
+      "source": "HIS-REPLY-SHORE-REINEL-CHART"
+    }
+  ],
+  "rmg:g245-8-2": [
+    {
+      "name": "Nicholas Comberford",
+      "role": "maker",
+      "detail": "The inscription names him and dates the chart in Ratcliffe.",
+      "source": "HIS-REPLY-SHORE-COMBERFORD-HISPANIOLA"
+    }
+  ],
+  "rmg:pbe6858": [
+    {
+      "name": "John Seller",
+      "role": "compiler and publisher",
+      "detail": "Named as creator in the collection record.",
+      "source": "HIS-REPLY-SHORE-SELLER-UNFINISHED"
+    }
+  ],
+  "rmg:g213-2-77-1": [
+    {
+      "name": "Léon Brault",
+      "role": "maker",
+      "detail": "Named as creator in the collection record.",
+      "source": "HIS-REPLY-SHORE-BRAULT-WINDS"
+    }
+  ],
+  "rmg:g267-47-1": [
+    {
+      "name": "J. Cheevers",
+      "role": "catalogue creator",
+      "detail": "Named by the museum for the 1773 sheet.",
+      "source": "HIS-REPLY-SHORE-CHEEVER-TAHITI"
+    },
+    {
+      "name": "James Cook",
+      "role": "surveyor named in title",
+      "detail": "The published chart names his 1769 work.",
+      "source": "HIS-REPLY-SHORE-CHEEVER-TAHITI"
+    }
+  ],
+  "rmg:g263-1-2": [
+    {
+      "name": "I. Bayley",
+      "role": "creator credited for the sheet",
+      "detail": "The catalogue credits Bayley.",
+      "source": "HIS-REPLY-SHORE-BAYLEY-NZ"
+    },
+    {
+      "name": "James Cook",
+      "role": "captain listed on the chart",
+      "detail": "The chart identifies him as commander of Endeavour.",
+      "source": "HIS-REPLY-SHORE-BAYLEY-NZ"
+    }
+  ],
+  "met:17.3.2378": [
+    {
+      "name": "James McNeill Whistler",
+      "role": "artist",
+      "detail": "Listed as one of several makers of this transfer lithograph.",
+      "source": "HIS-REPLY-SHORE-COAST-SURVEY-SHEET"
+    },
+    {
+      "name": "Charles Knight",
+      "role": "artist",
+      "detail": "Listed jointly for the sheet.",
+      "source": "HIS-REPLY-SHORE-COAST-SURVEY-SHEET"
+    },
+    {
+      "name": "John Young",
+      "role": "artist",
+      "detail": "Listed jointly for the sheet.",
+      "source": "HIS-REPLY-SHORE-COAST-SURVEY-SHEET"
+    },
+    {
+      "name": "William Birch McMurtrie",
+      "role": "source artist",
+      "detail": "The Met marks the sheet as after McMurtrie.",
+      "source": "HIS-REPLY-SHORE-COAST-SURVEY-SHEET"
+    }
+  ],
+  "bm:oc1993-03.13": [
+    {
+      "name": "Solomona Tuatagaloa",
+      "role": "donor",
+      "detail": "The catalogue records that Tuatagaloa, who was Marshallese, gave the chart in Lalomalava, Savaiʻi.",
+      "source": "HIS-REPLY-SHORE-TUATAGALOA-CHART"
+    },
+    {
+      "name": "Dorota Czarkowska Starzecka",
+      "role": "field collector",
+      "detail": "The museum attributes the field label to her.",
+      "source": "HIS-REPLY-SHORE-TUATAGALOA-CHART"
+    }
+  ],
+  "rmg:zaa0647": [
+    {
+      "name": "Hubert Airy",
+      "role": "artist and witness",
+      "detail": "His inscription says he drew the fallen ball on site.",
+      "source": "HIS-REPLY-SHORE-AIRY-FALLEN-BALL"
+    },
+    {
+      "name": "George Biddell Airy",
+      "role": "Astronomer Royal and father",
+      "detail": "The public record identifies him as Hubert Airy’s father.",
+      "source": "HIS-REPLY-SHORE-AIRY-FALLEN-BALL"
+    }
+  ],
+  "rmg:zaa0718": [
+    {
+      "name": "William Morris",
+      "role": "co-maker",
+      "detail": "The catalogue names him as a manufacturer.",
+      "source": "HIS-REPLY-SHORE-MORRIS-MAPPLE-RELAY"
+    },
+    {
+      "name": "Henry Mapple",
+      "role": "co-maker",
+      "detail": "The catalogue names him alongside Morris.",
+      "source": "HIS-REPLY-SHORE-MORRIS-MAPPLE-RELAY"
+    }
+  ],
+  "nmah:tr.335567": [
+    {
+      "name": "Augustin-Jean Fresnel",
+      "role": "inventor of the lens design",
+      "detail": "The record separates the inventor’s early optical work from the history of this lens.",
+      "source": "HIS-REPLY-SHORE-BOLIVAR-FRESNEL"
+    }
+  ],
+  "rmg:nav0942": [
+    {
+      "name": "James Douglass",
+      "role": "designer credited by the museum",
+      "detail": "Named in the record for the twin-wick burner and reflector.",
+      "source": "HIS-REPLY-SHORE-DOUGLASS-BURNER"
+    }
+  ],
+  "rmg:pct16176": [
+    {
+      "name": "Henry P. Bird",
+      "role": "photographer",
+      "detail": "Named as creator of the colour transparency.",
+      "source": "HIS-REPLY-SHORE-CAMERON-PORTRAIT"
+    },
+    {
+      "name": "Don Cameron",
+      "role": "chief engineer pictured",
+      "detail": "Identified by the record at the controls of the lighthouse and buoy tender Relume.",
+      "source": "HIS-REPLY-SHORE-CAMERON-PORTRAIT"
+    }
+  ],
+  "rmg:g221-4-68": [
+    {
+      "name": "John Sibbald",
+      "role": "catalogue creator",
+      "detail": "Named in the collection record for the published broadside.",
+      "source": "HIS-REPLY-SHORE-LIVERPOOL-PILOTAGE"
+    }
+  ],
+  "rmg:pai4355": [
+    {
+      "name": "William Hay Wardrop",
+      "role": "artist and log contributor",
+      "detail": "The Royal Museums Greenwich record credits him for the mounted page.",
+      "source": "HIS-REPLY-SHORE-WARDROP-COAST-VIEWS"
+    }
+  ],
+  "nmah:ph.275100": [
+    {
+      "name": "Theodorus B. M. Mason",
+      "role": "probable early owner",
+      "detail": "The accession description qualifies his acquisition around graduation.",
+      "source": "HIS-REPLY-SHORE-MASON-BLUNT-SEXTANT"
+    },
+    {
+      "name": "Cassie James",
+      "role": "donor",
+      "detail": "Mason’s sister gave the sextant to the Smithsonian.",
+      "source": "HIS-REPLY-SHORE-MASON-BLUNT-SEXTANT"
+    }
+  ],
+  "nmah:ph.314852": [
+    {
+      "name": "Robert King",
+      "role": "named on compass card",
+      "detail": "The Smithsonian identifies him as an instrument maker whose name appears on the paper card.",
+      "source": "HIS-REPLY-SHORE-THAXTER-KING-COMPASS"
+    }
+  ],
+  "nmah:1990.0577.01": [
+    {
+      "name": "Frank B. Hodges",
+      "role": "donor and sailor",
+      "detail": "Named by the museum as a sailor on the ship and the person who donated the compass.",
+      "source": "HIS-REPLY-SHORE-ALCOA-LIFEBOAT-COMPASS"
+    }
+  ],
+  "nmah:dl.006868.009": [
+    {
+      "name": "William Chambers",
+      "role": "author",
+      "detail": "The museum describes the navigation methods taught in his book.",
+      "source": "HIS-REPLY-SHORE-CHAMBERS-NAVIGATOR"
+    },
+    {
+      "name": "Allason Foster",
+      "role": "publisher",
+      "detail": "The museum identifies his Whitehaven imprint.",
+      "source": "HIS-REPLY-SHORE-CHAMBERS-NAVIGATOR"
+    }
+  ]
+}

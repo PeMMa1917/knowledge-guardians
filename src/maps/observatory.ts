@@ -1,7 +1,10 @@
 /** Fictional coast. The weather records describe local game conditions. */
 import type { Condition } from '../domain/types';
+import { SHORE_REPLY_RETURNS } from './shoreReply';
+import { COAST_DETECTOR, COAST_DETECTOR_RECEIPTS } from './coastDetector';
 import { COAST_FILM_STANDS } from './filmCuts';
 import { WINDOW_HARBOUR_PROPS } from './windowShop';
+import { BEARING_DOOR, bearingReceiver } from './bearingBay';
 import { DEPOT_HARBOUR_PROPS } from './surveyDepot';
 import { ARCHIVE_GLOBE_REVISIT, FOLD_TUBE_REVISIT, HARBOUR_HORN_REVISIT, HEADLAND_REFERENCE } from './referenceStation';
 import { sceneProp } from './sceneProps';
@@ -67,8 +70,11 @@ export const OBSERVATORY_HARBOUR: MapDef = {
   ],
   interactables: [
     ...COAST_FILM_STANDS,
+    ...COAST_DETECTOR_RECEIPTS,
     ...WINDOW_HARBOUR_PROPS,
+    bearingReceiver('quay', 11, 16),
     ...DEPOT_HARBOUR_PROPS,
+    ...SHORE_REPLY_RETURNS,
     ...HARBOUR_HORN_REVISIT,
     ...HARBOUR_REFERENCE_PROOFS,
     timbuktuReceiver('quay'),
@@ -155,8 +161,10 @@ export const OBSERVATORY_STATION: MapDef = {
   ],
   interactables: [
     ...LEAVITT_HEADLAND,
+    COAST_DETECTOR,
     ...COAST_VESPER_TRUST,
     ...HEADLAND_REFERENCE,
+    BEARING_DOOR,
     { id: 'coast-headland-return', kind: 'door', x: 11, y: 15, w: 1, h: 1, label: 'the steps down to Slate Harbour',
       art: 'coast.waypost', to: { map: 'observatory.harbour', x: 13, y: 6 } },
     { id: 'coast-fold-path', kind: 'door', x: 3, y: 9, w: 1, h: 1, label: 'the track to Marl Fold',
@@ -226,6 +234,7 @@ export const OBSERVATORY_INLAND: MapDef = {
   ],
   interactables: [
     ...FIELD_STORE_FOLD,
+    bearingReceiver('fold', 10, 13),
     ...FOLD_DRAWER_CASES,
     ...FOLD_TUBE_REVISIT,
     { id: 'coast-fold-return', kind: 'door', x: 23, y: 13, w: 1, h: 1, label: 'the track back to Headland Station',

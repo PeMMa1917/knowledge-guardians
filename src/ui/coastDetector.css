@@ -1,0 +1,49 @@
+.detector-panel {
+  display: grid;
+  gap: .75rem;
+}
+
+.detector-panel > :is(p, h2) {
+  margin: 0;
+}
+
+.detector-panel button[aria-pressed="true"] {
+  border-color: currentColor;
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+.detector-traces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+}
+
+.detector-trace {
+  flex: 1 1 15rem;
+  border: 1px solid rgb(136 192 203 / .45);
+  border-radius: 6px;
+  padding: .35rem;
+  text-align: left;
+}
+
+.detector-trace caption {
+  font-weight: 700;
+  margin-bottom: .25rem;
+}
+
+.detector-trace :is(th, td) {
+  padding: .2rem .35rem;
+}
+
+.detector-trace th {
+  font-weight: 500;
+}
+
+.detector-trace meter {
+  width: clamp(2.5rem, 7vw, 5rem);
+}
+
+.detector-trace .detector-stop {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
