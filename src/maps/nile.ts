@@ -52,6 +52,9 @@ const placedCopy = (destination: string, x: number, y: number, label: string, ar
 export const NILE_HALL = room('nile.hall', 'Nile Archive: The Door Without a Name',
   [{ id: 'nile-iman', x: 12, y: 6, facing: 'down' }],
   [
+    // A clue for the long mystery (docs/STORY_BIBLE.md section 7).
+    { id: 'nile-old-label', kind: 'sign', x: 20, y: 4, w: 1, h: 1, label: 'an old Nexus label in a side case', art: 'old-sign', flag: 'clue.scraped-label',
+      text: "An old Nexus label, older than any here, in the same style as the ones in the hall above. The main line is confident and clear. Under it, someone has scraped a second line away. Only the scratches are left. Lumen holds a little light close and gives up: 'Too faint for me. A gentler light might show it. My light is mostly enthusiasm.'" },
     { id: 'nile-mark-tag', kind: 'exhibit', exhibit: 'OBJ-ARCHIVE-RECEIVING-TAG', x: 4, y: 5, w: 1, h: 1,
       label: 'Ketta’s receiving tag', art: 'nile.tablet' },
     { id: 'nile-mark-label', kind: 'label', kit: 'nile-borrowed-mark', x: 4, y: 8, w: 1, h: 1,
