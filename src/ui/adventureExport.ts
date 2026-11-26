@@ -1,4 +1,7 @@
 import type { AdventureJournalView } from '../domain/adventureJournal';
+import { encyclopediaEncounterLabel, encyclopediaLinkLabel, isEncyclopediaURL } from '../domain/encyclopedia';
+
+type JournalReflection = NonNullable<AdventureJournalView['entries'][number]['reflections']>[number];
 
 export interface AdventureExportOptions {
   includeNotes?: boolean;
@@ -11,23 +14,50 @@ export function journalUtc(at: string | null): string {
 
 const kindLabels = { quest: 'Quest', choice: 'Choice', experience: 'Experience', note: 'Note', reflection: 'Reflection' };
 
-/** Select the same release of the diary for both Word and print. Private writing is opt-in. */
+export function safeJournalLink(url: string): boolean {
+  if (!url.startsWith('https://') || /[\s\u0000-\u001f\u007f-\u009f\\]/u.test(url)) return false;
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === 'https:' && !!parsed.hostname && !parsed.username && !parsed.password;
+  } catch {
+    return false;
+  }
+}
+
+/** Select the same complete diary for Word and print. A shareable copy can omit personal writing. */
 export function adventureExportSnapshot(view: AdventureJournalView, options: AdventureExportOptions) {
-  const notes = options.includeNotes === true ? view.notes : [];
+  const includePersonal = options.includeNotes !== false;
+  const notes = includePersonal ? view.notes : [];
   const details = (kind: string, at: string | null, mapId: string | null) =>
     [kind, journalUtc(at), mapId ? options.placeName(mapId) : null].filter(Boolean).join(' · ');
+  const reflections = (items?: readonly JournalReflection[]) => items?.length ? {
+    reflections: items.map(({ prompt, response }) => ({
+      prompt, ...(includePersonal && response !== undefined ? { response } : {}),
+    })),
+  } : {};
+  const references = view.references.map((reference) => ({
+    ...reference,
+    runs: reference.runs.map(({ href, ...part }) => (href && safeJournalLink(href) ? { ...part, href } : part)),
+  }));
   return {
     title: `${view.name}’s Adventure Journal`,
     entries: view.entries.map((entry) => ({
       title: entry.title, details: details(kindLabels[entry.kind], entry.at, entry.mapId), text: entry.text,
+      ...reflections(entry.reflections),
     })),
     notes: notes.map((note) => ({
-      details: details(note.kind === 'question' ? (note.resolved ? 'Resolved question' : 'Open question') : kindLabels[note.kind],
-        note.at, note.mapId),
-      text: note.text,
+      details: details(note.draft ? 'Draft note' : note.kind === 'question' ? (note.resolved ? 'Resolved question' : 'Open question')
+        : kindLabels[note.kind], note.at, note.mapId),
+      text: note.text, ...reflections(note.reflections),
     })),
+    portfolio: includePersonal ? (view.portfolioWriting ?? []).map((entry) => ({
+      title: entry.title, text: entry.text,
+      details: details(entry.draft ? 'Portfolio draft' : 'Portfolio reflection', entry.at ?? null, entry.mapId ?? null),
+    })) : [],
     quests: view.quests,
-    questions: notes.filter((note) => note.kind === 'question' && !note.resolved).map((note) => note.text),
-    references: view.references,
+    questions: notes.filter((note) => note.kind === 'question' && !note.resolved && !note.draft).map((note) => note.text),
+    references,
+    encyclopedia: (view.encyclopedia ?? []).filter((link) => safeJournalLink(link.url) && isEncyclopediaURL(link.url, link.kind))
+      .map((link) => ({ label: `${encyclopediaEncounterLabel(link)} ${link.name}`, title: encyclopediaLinkLabel(link), url: link.url })),
   };
 }

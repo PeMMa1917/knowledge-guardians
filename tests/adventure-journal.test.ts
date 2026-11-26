@@ -130,7 +130,7 @@ describe('Adventure diary', () => {
     expect(withoutNotes).not.toContain('My private question?');
   });
 
-  it('shares a default-private export snapshot with both formats and only lists open personal questions on request', () => {
+  it('exports the full journal by default and can omit personal writing for a shared copy', () => {
     const d = adventure();
     d.action({ type: 'VisitPlace', name: 'The Nexus: Archive Hall' });
     d.action({ type: 'AddNote', text: 'Private directions.' }, later);
@@ -143,15 +143,15 @@ describe('Adventure diary', () => {
     expect(standard.title).toBe('Ren & Lin’s Adventure Journal');
     expect(standard.entries[0].details).toBe('Experience · 2026-11-26 06:00 UTC · The Nexus');
     expect(standard.quests).toEqual(view.quests);
-    expect(standard.notes).toEqual([]);
-    expect(standard.questions).toEqual([]);
-    const personal = adventureExportSnapshot(view, { ...options, includeNotes: true });
-    expect(personal.notes).toEqual([
+    const shareable = adventureExportSnapshot(view, { ...options, includeNotes: false });
+    expect(shareable.notes).toEqual([]);
+    expect(shareable.questions).toEqual([]);
+    expect(standard.notes).toMatchObject([
       { details: 'Note · 2026-11-26 06:12 UTC · The Nexus', text: 'Private directions.' },
       { details: 'Resolved question · 2026-11-26 06:12 UTC · The Nexus', text: 'Already answered?' },
       { details: 'Open question · 2026-11-26 06:12 UTC · The Nexus', text: 'Still to check?' },
     ]);
-    expect(personal.questions).toEqual(['Still to check?']);
+    expect(standard.questions).toEqual(['Still to check?']);
     expect(adventureExportSnapshot(view, options)).toEqual(standard);
   });
 
@@ -195,7 +195,7 @@ describe('Adventure diary', () => {
     const references = specimenReferences(fixture, d.state);
     expect(references[0].text).toContain('Maker, Known. ');
     expect(references[0].text).toContain('Accessed 26 Nov. 2026.');
-    const exported = unzipSync(adventureDocx({ ...d.view(), references }, { placeName: () => undefined }));
+    const exported = unzipSync(adventureDocx({ ...d.view(), references }, { placeName: () => undefined, includeNotes: false }));
     const document = strFromU8(exported['word/document.xml']);
     const relations = strFromU8(exported['word/_rels/document.xml.rels']);
     expect(document).toContain('Works Cited');

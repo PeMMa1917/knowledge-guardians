@@ -74,8 +74,8 @@ describe('The Borrowed Straightedge', () => {
     const view = adventureJournalView(d.e.pack, d.s, d.e.visibleObjectives(d.s));
     const options = { placeName: () => undefined };
     expect(view.notes[0]?.text).toBe(privateLine);
-    expect(JSON.stringify(adventureExportSnapshot(view, options))).not.toContain(privateLine);
-    expect(JSON.stringify(adventureExportSnapshot(view, { ...options, includeNotes: true }))).toContain(privateLine);
+    expect(JSON.stringify(adventureExportSnapshot(view, { ...options, includeNotes: false }))).not.toContain(privateLine);
+    expect(JSON.stringify(adventureExportSnapshot(view, options))).toContain(privateLine);
     expect(d.s.marks).toBe(old.marks);
     expect(d.p.credit).toEqual(old.credit);
     expect(d.s.objectivesDone).toEqual(old.objectives);
