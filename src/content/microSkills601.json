@@ -1733,6 +1733,36 @@
         ],
         "game": 262,
         "story": 71
+      },
+      {
+        "objective": "glass.1972-9.earned",
+        "action": "Compare both catalogue photographs of Cleveland 1972.9. Put the stoneware body and its modern replacement lid in the same mount, then let the reader keep each part’s own date information.",
+        "styles": [
+          "collector",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "spatial"
+        ],
+        "game": 144,
+        "story": 65
+      },
+      {
+        "objective": "stage.script.genji-cloud.placed",
+        "action": "Open both folds for Cleveland 1933.455. At the receiving stand, keep the surviving Usugumo leaf’s catalogue beside the stage cue so the reader can recover the chapter and the later copy separately.",
+        "styles": [
+          "collector",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 158,
+        "story": 71
       }
     ]
   }

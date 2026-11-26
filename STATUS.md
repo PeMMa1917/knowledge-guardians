@@ -596,3 +596,7 @@ Escape keeps a result closed until the next fresh interaction key press.
 ## Reading raised marks
 
 The Skill Atlas records #744 after Kori uses the raised proof at the Landing or a reader checks the turned shore relief. The first keeps the credit or date tabs with the right proof. The second keeps the offshore peg separate, so a reader can check what moving the relief changes. [Landing checks](tests/reading-works.test.ts) · [Turning Room checks](tests/turning-table.test.ts)
+
+## Matching sources to particular objects
+
+An engine playthrough now reaches Confident for #791, matching evidence to its particular object and claim, after eight compatible uses. The Cold Store reader keeps the body and replacement lid’s dates separate, and a House of Performance reader keeps the surviving Usugumo leaf and the earlier tale on different lines. The stage describes practice recorded in the game. [Eight-use replay](tests/object-specific-skill.test.ts)
