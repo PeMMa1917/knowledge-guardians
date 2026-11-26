@@ -826,6 +826,8 @@ export interface DiaryEvent {
   kind: DiaryEventKind;
   key: string;
   ref: string;
+  /** Single quest step completed by the command that recorded this action. */
+  completedObjective?: string;
   sourceIds?: string[];
   outcome?: typeof DIARY_EVENT_OUTCOMES[number];
 }

@@ -32,7 +32,11 @@ describe('Two People for One Parcel', () => {
     expect(JSON.stringify(permanent.credit)).toBe(xp);
     expect(state.objectivesDone.filter((id) => id === 'parcel.reply')).toHaveLength(1);
     const entries = adventureJournalView(pack, state, engine.visibleObjectives(state)).entries;
-    expect(entries.find(({ id }) => id === 'parcel:reply:desk')?.text).toContain('chair sideways');
+    const first = entries.find(({ id }) => id === 'parcel:reply:desk');
+    expect(first?.text).toContain('chair sideways');
+    expect(first?.event?.completedObjective).toBe('parcel.reply');
+    expect(first?.topics).toMatchObject({ concepts: expect.arrayContaining(['responsibility']), areas: ['HUM', 'MAT'], themes: ['POL'] });
+    expect(entries.find(({ id }) => id === 'parcel:reply:token')?.topics).toEqual(first?.topics);
     expect(entries.find(({ id }) => id === 'parcel:reply:token')?.reflections?.[0].id).toBe('token');
   });
 });

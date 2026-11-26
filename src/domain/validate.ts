@@ -43,6 +43,7 @@ export function validateCampaign(s: any): string[] {
     || !['id', 'title', 'text', 'mapId'].every((key) => typeof entry[key] === 'string'))) p.push('adventure journal entries invalid');
   else if (new Set(diary.entries.map((entry: any) => entry.id)).size !== diary.entries.length || diary.entries.some(({ event }: any) =>
     event !== undefined && (!event || !DIARY_EVENT_KINDS.includes(event.kind) || typeof event.key !== 'string' || typeof event.ref !== 'string'
+      || (event.completedObjective !== undefined && typeof event.completedObjective !== 'string')
       || (event.outcome !== undefined && !DIARY_EVENT_OUTCOMES.includes(event.outcome))
       || (event.sourceIds !== undefined && (!Array.isArray(event.sourceIds) || event.sourceIds.some((id: unknown) => typeof id !== 'string'))))))
     p.push('adventure journal event details invalid');

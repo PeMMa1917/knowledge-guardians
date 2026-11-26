@@ -260,7 +260,9 @@ export function recordAdventure(
   const command = commandDiaryEvent(pack, previous, next, cmd);
   if (command) drafts.push(command);
   const decision = recordedDecision(cmd, previous, next);
-  if (decision) drafts.push({ ...decision, event: { kind: decision.kind === 'choice' ? 'choice' : 'finding', key: decision.id, ref: decision.id }, repeat: 'after-break' });
+  if (decision) drafts.push({ ...decision, event: decision.event ?? {
+    kind: decision.kind === 'choice' ? 'choice' : 'finding', key: decision.id, ref: decision.id,
+  }, repeat: 'after-break' });
   const completed = new Set(events.flatMap((event) => event.kind === 'objective' ? [event.id] : []));
   const objectives = completed.size ? objectiveEntries(pack).filter(({ objective }) => completed.has(objective.id)) : [];
   const authored = new Set(objectives.flatMap(({ objective }) => (objective.onComplete ?? []).flatMap(authorEntryId)));
@@ -306,6 +308,10 @@ export function recordAdventure(
       && checkedThisVisit(data.id, data.text, repeat.fixedToolPrefix)) continue;
     let id = data.id;
     for (let occurrence = 2; known.has(id); occurrence++) id = `${data.id}@${occurrence}`;
+    const action = data.event;
+    if (action && objectives.length === 1 && (action.kind === 'choice' || action.kind === 'correction' || action.kind === 'tool')) {
+      data.event = { ...action, completedObjective: objectives[0].objective.id };
+    }
     const entry = { ...data, id, at: now, mapId: next.mapId };
     known.add(id);
     added.push(entry);
@@ -408,8 +414,9 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if (!event) return undefined;
     const [family] = event.key.split(':', 1);
     const specimen = family === 'specimen' ? exhibits.get(event.ref)?.specimen : undefined;
-    const objective = family === 'quest' || family === 'hint' ? event.ref : specimen?.objective;
-    const weave = objective ? objectivesById.get(objective)?.objective.weave : taggedTools.get(`${family}:${event.ref}`);
+    const objective = objectivesById.get(event.ref) ?? (specimen ? objectivesById.get(specimen.objective) : undefined);
+    const completed = event.completedObjective ? objectivesById.get(event.completedObjective) : undefined;
+    const weave = objective?.objective.weave ?? taggedTools.get(`${family}:${event.ref}`) ?? completed?.objective.weave;
     if (weave) return diaryTopics(weave);
     const fieldConcept = family === 'field' ? FIELD_GAMES.find(({ id }) => id === event.ref)?.concept : undefined;
     const concept = CONCEPTS.find((id) => id === fieldConcept);
