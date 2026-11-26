@@ -124,3 +124,44 @@ describe('Which Edge Reached the Landing', () => {
     expect(d.s.journal).toContain(`j.passage.${record.slug}`);
   });
 });
+
+describe('The Address for the Question', () => {
+  function visibleProp(d: Driver, id: string) {
+    return SHOAL_PROOF_SHELTER.interactables.find((prop) => prop.id === `yirrkala-referral-${id}` && check(prop.visibleIf, d.s));
+  }
+
+  it.each([
+    ['yirrkala-dhuwa', 'lower', 'Pin both locators', 'rail'],
+    ['yirrkala-yirritja', 'upper', 'Bring both slips', 'desk'],
+  ] as const)('keeps a separate open reproduction referral after the %s guide', (slug, stop, choice, destination) => {
+    const d = new Driver();
+    const objective = 'passage.yirrkala.referral';
+    const record = PASSAGE_CASES.find((item) => item.slug === slug)!;
+    d.s.objectivesDone.push('sea.arrival', 'sea.finish');
+    expect(visibleProp(d, 'request')).toBeUndefined();
+    openBoth(d, record);
+    expect(visibleProp(d, 'request')).toBeUndefined();
+    move(d, record, { type: 'carry', stop });
+    move(d, record, { type: 'seat', stop });
+    move(d, record, { type: 'leave', stop });
+    expect(d.done(record.objective)).toBe(true);
+
+    const before = { ...d.p.credit };
+    const request = visibleProp(d, 'request')!;
+    d.walk(request.node!, ['Separate the lookup', 'Put the reproduction question', choice]);
+    expect(visibleProp(d, 'request')).toBeUndefined();
+    expect(visibleProp(d, destination === 'rail' ? 'desk' : 'rail')).toBeUndefined();
+    expect(d.done(objective)).toBe(false);
+
+    const reply = visibleProp(d, destination)!;
+    expect(d.e.node(reply.node!).text).toMatch(/still asks who can give permission|left the copying question open/);
+    expect(d.e.node(reply.node!).citationSource).toBe('HIS-YIRRKALA-BUKU-HISTORY');
+    expect(d.e.node(`${objective}.lookups`).text).toMatch(/Dhuwa artists.*14 August 1963.*Yirritja artists.*28 August/);
+    expect(d.e.node(`${objective}.lookups`).citationSource).toBe('HIS-APH-YIRRKALA-CAPTION');
+    d.walk(reply.node!);
+    expect(d.done(objective)).toBe(true);
+    expect(d.s.journal).toContain(`j.${objective}`);
+    expect(d.s.flags[passageDone(slug)]).toBe(stop);
+    expect(d.p.credit).toEqual(before);
+  });
+});

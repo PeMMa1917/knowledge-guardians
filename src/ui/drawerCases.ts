@@ -3,7 +3,8 @@ import { ALL_DRAWER_FACES, DRAWER_FACES, DRAWER_MASK, drawerReadings } from '../
 import { h } from './dom';
 import './drawerCases.css';
 
-export function drawerCases(box: HTMLElement, controller: GameController, close: HTMLElement): void {
+export function drawerCases(controller: GameController): HTMLElement {
+  const body = h('div');
   let focus = 0;
   const render = () => {
     const checked = Number(controller.state.flags[DRAWER_MASK] ?? 0);
@@ -28,12 +29,13 @@ export function drawerCases(box: HTMLElement, controller: GameController, close:
         ` in ${out.boxes} cases and ${out.checked} drawers`,
         checked === ALL_DRAWER_FACES ? `. In ${out.sameElsewhere} of those ${out.checked} openings, the other drawer matches.` : '.');
     }));
-    box.replaceChildren(close, h('h2', {}, 'Three Cases at the Bell'),
+    body.replaceChildren(h('h2', {}, 'Three Cases at the Bell'),
       h('p', {}, 'Dov’s practice cases hold two tokens apiece. A porter brings you one token from a drawer. Lift the flaps to see how the very same token could have reached you.'),
       h('div', { class: 'drawer-board' }, ...groups), tally,
       checked === ALL_DRAWER_FACES ? h('p', { class: 'fine' }, 'Dov has cut a stencil of the six openings. Take it to the two check slips beside the station path when you visit the coast.') : '',
     );
-    box.querySelector<HTMLButtonElement>(`button[data-face="${focus}"]`)?.focus();
+    body.querySelector<HTMLButtonElement>(`button[data-face="${focus}"]`)?.focus();
   };
   render();
+  return body;
 }

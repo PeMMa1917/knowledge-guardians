@@ -35,6 +35,13 @@ const useLightScreen: Condition = { flag: 'perspective.active', eq: 'folding-lig
 const hasDepartureStrip: Condition = { flag: 'keepsake.departure-strip', eq: true };
 const useDepartureStrip: Condition = { flag: 'perspective.active', eq: 'departure-strip' };
 const compareDepartureSlips: Condition = { all: [useDepartureStrip, { card: 'card.departure.pere' }] };
+const rainStrip: Condition = { flag: 'coast.gauge.compare', eq: 'strip' };
+const rainMap: Condition = { flag: 'coast.gauge.compare', eq: 'map' };
+const stripReady: Condition = { flag: 'coast.names.strip.ready', eq: true };
+const mapReady: Condition = { all: [
+  { flag: 'coast.names.map.quay', eq: true }, { flag: 'coast.names.map.headland', eq: true },
+] };
+const handoverOpen: Condition = { not: { flagSet: 'coast.names.handoff' } };
 
 const harbourWidth = 29;
 const harbourHeight = 21;
@@ -89,8 +96,21 @@ export const OBSERVATORY_HARBOUR: MapDef = {
     { id: 'coast-waystone', kind: 'waystone', x: 5, y: 12, w: 1, h: 1,
       label: 'the harbour Waystone', place: 'Slate Harbour', art: 'waystone' },
     sign('coast-harbour-gauge', 21, 15, 'the harbour gauge', 'coast.gauge',
-      'Quay rain gauge. Two finger-widths of water in one bell, in the sheltered quay.',
+      'Quay rain gauge. Two finger-widths of water in one station bell. Neri’s sheet says sheltered quay. Basket crews call the spot Wallfoot. It is where they set down their baskets at the end of the sea wall.',
       { flag: 'coast.gauge.harbour' }),
+    sign('coast-names-quay-tag', 22, 15, 'the marker at Wallfoot', 'preserved.slip',
+      'Wallfoot. The wall ends at the landing. The basket crews set down their loads here. The sheltered gauge on the quay side held two finger-widths in the first station bell.',
+      { flag: 'coast.names.map.quay', visibleIf: rainMap }),
+    archiveScene('coast-names-strip-handover', 10, 11, 'the shelf for the dated gauge strip', 'preserved.slip',
+      'coast.names.receive.strip', { all: [rainStrip, stripReady, handoverOpen] }),
+    sign('coast-names-strip-posted', 10, 11, 'Ruan’s two named readings', 'preserved.display-paired',
+      'The next checker copies both figures at the rack. Wallfoot, sheltered quay, two. Wind Peg, exposed headland, five. Both were checked in the same station bell. Ask Ruan for the path to either gauge.',
+      { visibleIf: { flag: 'coast.names.handoff', eq: 'strip' } }),
+    archiveScene('coast-names-map-handover', 16, 12, 'the walking guide’s hook', 'forecast-board', 'coast.names.receive.map',
+      { all: [rainMap, mapReady, handoverOpen] }),
+    sign('coast-names-map-posted', 16, 12, 'Ruan’s guide to the two gauge marks', 'forecast-board',
+      'The next runner takes this guide to find the gauge at Wallfoot where the sea wall ends, then follows the station path to Wind Peg at the far rail. The two readings are on separate tags at the gauges.',
+      { visibleIf: { flag: 'coast.names.handoff', eq: 'map' } }),
     ...sceneProp('coast.bell-slip', 19, 13, 'the quay’s bell slip', 'preserved.slip',
       { both: 'preserved.display-paired', stamp: 'coast.signal' }, { flag: 'coast.gauge.harbour', eq: true }),
     { ...archiveScene('coast-clear-net-frame', 15, 11, 'the net-menders’ practice frame', 'coast.clear-frame', 'coast.clear.frame'),
@@ -170,8 +190,13 @@ export const OBSERVATORY_STATION: MapDef = {
     { id: 'coast-fold-path', kind: 'door', x: 3, y: 9, w: 1, h: 1, label: 'the track to Marl Fold',
       art: 'coast.waypost', to: { map: 'observatory.inland', x: 21, y: 13 } },
     sign('coast-station-gauge', 20, 6, 'the station gauge', 'coast.gauge',
-      'Headland rain gauge. Five finger-widths of water in one bell, on the exposed headland.',
+      'Headland rain gauge. Five finger-widths of water in one station bell. Neri’s sheet says exposed headland. Lookouts call the spot Wind Peg, after the marker on the far rail where a new shift meets.',
       { flag: 'coast.gauge.station' }),
+    sign('coast-names-headland-tag', 21, 7, 'the marker at Wind Peg', 'preserved.slip',
+      'Wind Peg. Follow the lookout rail to its far end. The incoming shift takes its place at the peg. The exposed gauge inside the rail held five finger-widths in the first station bell.',
+      { flag: 'coast.names.map.headland', visibleIf: rainMap }),
+    { ...archiveScene('coast-names-strip-tray', 12, 8, 'Neri’s tray for both readings', 'preserved.slip',
+      'coast.names.tray', rainStrip), artOpen: { key: 'preserved.display-paired', if: stripReady } },
     sign('coast-clear-visibility', 19, 6, 'the lookout’s sight mark', 'preserved.slip',
       'First bell. Clear. Lantern Tower still in view from the headland. The lookout checked that they could see the tower when the bell sounded.',
       { flag: 'coast.clear.visibility' }),

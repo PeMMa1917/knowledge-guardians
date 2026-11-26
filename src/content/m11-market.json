@@ -411,7 +411,7 @@
   {
    "id": "market.clerk.revise.window",
    "speaker": "market-clerk",
-   "text": "B gives more fibre per credit at today’s rates. The whole basket of B costs ten credits. An eight-credit purse reaches A under our whole-lot rule. Add the total beside the unit figures where the reader first saw them.",
+   "text": "B gives more fibre per credit at today’s rates. The whole basket of B costs ten credits. An eight-credit purse reaches A under our whole-lot rule. Add the total beside the unit figures where the reader first saw them. These quotes belong to the two lots on today’s slips. A new crate is due at the next bell. Leave today’s figures pinned, or put the reweigh ticket on top before the changeover.",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -421,6 +421,35 @@
       {
        "setFlag": "market.revised",
        "value": true
+      },
+      {
+       "setFlag": "market.quote.rule",
+       "value": "posted"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "market.publish"
+       },
+       {
+        "flag": "market.feedback.receipt",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Add the totals and leave a reweigh ticket over the next quote.",
+     "next": "market.update.reweigh",
+     "effects": [
+      {
+       "setFlag": "market.revised",
+       "value": true
+      },
+      {
+       "setFlag": "market.quote.rule",
+       "value": "reweigh"
       }
      ],
      "if": {
@@ -443,7 +472,7 @@
   {
    "id": "market.clerk.revise.desk",
    "speaker": "market-clerk",
-   "text": "B costs less per gram of net fibre at the desk. The reader has the small copy and eight credits. Our whole-lot rule puts B beyond that purse. Put a line for the whole lot beside its unit rate so they can take both figures back.",
+   "text": "B costs less per gram of net fibre at the desk. The reader has the small copy and eight credits. Our whole-lot rule puts B beyond that purse. Put a line for the whole lot beside its unit rate so they can take both figures back. These quotes belong to the two lots on today’s slips. A new crate is due at the next bell. Leave today’s figures pinned, or put the reweigh ticket on top before the changeover.",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -453,6 +482,35 @@
       {
        "setFlag": "market.revised",
        "value": true
+      },
+      {
+       "setFlag": "market.quote.rule",
+       "value": "posted"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "market.publish"
+       },
+       {
+        "flag": "market.feedback.receipt",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Add the totals and leave a reweigh ticket over the next quote.",
+     "next": "market.update.reweigh",
+     "effects": [
+      {
+       "setFlag": "market.revised",
+       "value": true
+      },
+      {
+       "setFlag": "market.quote.rule",
+       "value": "reweigh"
       }
      ],
      "if": {
@@ -475,14 +533,20 @@
   {
    "id": "market.update.window",
    "speaker": "market-clerk",
-   "text": "The queue can see A at eight and B at ten before it moves. One household can take A today. A buyer with ten who wants more dry fibre per credit has a reason to take B. The window carries both decisions back to the same scale.",
+   "text": "The queue can see A at eight and B at ten before it moves. One household can take A today. A buyer with ten who wants more dry fibre per credit has a reason to take B. The window carries both decisions back to the same scale. Dagny pins the lot letters above the figures. The next crates will need their own quote.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "market.update.desk",
    "speaker": "market-clerk",
-   "text": "The reader can now carry two figures to the queue: the whole-lot quote and the rate for net fibre. One reader has eight credits and can take A. The one who wanted more dry fibre per credit sets ten aside for B. The dated quotes stay beside their choices.",
+   "text": "The reader can now carry two figures to the queue: the whole-lot quote and the rate for net fibre. One reader has eight credits and can take A. The one who wanted more dry fibre per credit sets ten aside for B. The dated quotes stay beside their choices. Dagny pins the lot letters above the figures. The next crates will need their own quote.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "market.update.reweigh",
+   "speaker": "market-clerk",
+   "historicalLabel": "fictional-world",
+   "text": "The reader can buy A with eight today. Dagny keeps both totals in view and hangs an empty ticket above the new-crate space. The first person there at the next bell will have to wait at the scale before buying."
   },
   {
    "id": "market.clerk.after",
@@ -1084,7 +1148,8 @@
        "truth",
        "explanation",
        "responsibility",
-       "justification"
+       "justification",
+       "certainty"
       ],
       "atl": [
        "thinking",
@@ -1097,7 +1162,18 @@
       "subjects": [
        "economics",
        "math-ai"
-      ]
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "human",
+       "solo": "relational"
+      }
      },
      "visible": {
       "objective": "market.feedback"

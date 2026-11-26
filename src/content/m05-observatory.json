@@ -45,8 +45,11 @@
       "concepts": [
        "evidence",
        "objectivity",
-       "certainty"
+       "certainty",
+       "culture",
+       "interpretation"
       ],
+      "framework": ["scope", "perspectives", "methods-and-tools"],
       "atl": [
        "research",
        "thinking"
@@ -225,6 +228,21 @@
        "checkpoint": "Observatory Coast: notice updated"
       }
      ]
+    },
+    {
+     "id": "coast.names.handoff",
+     "title": "Take the two named gauge readings to Ruan’s next crew.",
+     "essential": false,
+     "visible": { "objective": "coast.readings" },
+     "done": { "flagSet": "coast.names.handoff" },
+     "weave": {
+      "concepts": ["culture", "interpretation", "responsibility", "perspective"],
+      "framework": ["perspectives", "methods-and-tools", "ethics"],
+      "atl": ["communication", "research"],
+      "aoks": ["HUM", "NAT"],
+      "subjects": ["geography", "lang-langlit"],
+      "thinking": { "dok": 2, "bloom": "apply", "fink": "application", "solo": "relational" }
+     }
     }
    ]
   },
@@ -623,7 +641,7 @@
   {
    "id": "coast.station.compare",
    "speaker": "coast-forecaster",
-   "text": "Five finger-widths on the headland. Two down at the quay. Both gauges stood out for one bell. I need the apprentices to see why those two numbers can both be right.",
+   "text": "Five at Wind Peg, where the lookout shift meets. Two at Wallfoot, where the basket crews put down their loads. My register calls them exposed headland and sheltered quay. Both gauges stood out for one station bell. A new runner needs the names people use when they give directions.",
    "historicalLabel": "fictional-world",
    "claimKind": "observation",
    "options": [
@@ -697,14 +715,77 @@
   {
    "id": "coast.compare.strip",
    "speaker": "coast-forecaster",
-   "text": "Now the apprentices can see they came from the same bell. I’ll keep the place names level with the figures so a copy doesn’t turn them into readings of one gauge.",
+   "text": "Wallfoot goes beside the two. Wind Peg goes beside the five. Keep both work names level with their register names and figures. The apprentice can read the whole strip at once. There’s a tray beside my bench to send it down.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "coast.compare.map",
    "speaker": "coast-forecaster",
-   "text": "The pins are far apart. Keep the bell set beside each mark. A visitor can follow the place names and see we’re comparing one interval at two sites.",
+   "text": "A new runner took headland to mean the whole hill. I’ve put the names by the gauges. Follow the lookout rail to Wind Peg and the edge of the sea wall to Wallfoot. Then Ruan can give the runner a walking guide.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.names.tray",
+   "speaker": "coast-forecaster",
+   "text": "This strip keeps both of the first readings together. Each line has a register name and the name you’ll hear on that shift. Ruan’s rack is beside the quay workbench.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Wrap the dated strip for Ruan’s rack.",
+     "if": { "all": [{ "flag": "coast.gauge.compare", "eq": "strip" }, { "not": { "flagSet": "coast.names.strip.ready" } }] },
+     "effects": [{ "setFlag": "coast.names.strip.ready", "value": true }],
+     "next": "coast.names.tray.ready"
+    },
+    { "text": "Leave the tray for now." }
+   ]
+  },
+  {
+   "id": "coast.names.tray.ready",
+   "speaker": "coast-forecaster",
+   "historicalLabel": "fictional-world",
+   "text": "The two names stay with the two rows. The strip is ready for the shelf by Ruan."
+  },
+  {
+   "id": "coast.names.receive.strip",
+   "speaker": "coast-signalkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "My apprentice can compare both figures while they unpack the basket tally. Leave me room beside the strip. I can show a visitor the route to either gauge.",
+   "options": [
+    {
+     "text": "Lay the paired readings on the working rack.",
+     "if": { "all": [{ "flag": "coast.gauge.compare", "eq": "strip" }, { "flag": "coast.names.strip.ready", "eq": true }, { "not": { "flagSet": "coast.names.handoff" } }] },
+     "effects": [{ "setFlag": "coast.names.handoff", "value": "strip" }],
+     "next": "coast.names.kept.strip"
+    },
+    { "text": "Keep the strip with me for now." }
+   ]
+  },
+  {
+   "id": "coast.names.kept.strip",
+   "speaker": "coast-signalkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "They found the two and the five in one look. Next they can take a visitor to the real place. People ask for Wallfoot by name when they step off a boat."
+  },
+  {
+   "id": "coast.names.receive.map",
+   "speaker": "coast-signalkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "The wall ends at Wallfoot. The lookout rail ends at Wind Peg. Our new runner can check each reading where it stood. The runner will make two stops, so give them the route before they set out.",
+   "options": [
+    {
+     "text": "Hang the walking guide on the crossing hook.",
+     "if": { "all": [{ "flag": "coast.gauge.compare", "eq": "map" }, { "flag": "coast.names.map.quay", "eq": true }, { "flag": "coast.names.map.headland", "eq": true }, { "not": { "flagSet": "coast.names.handoff" } }] },
+     "effects": [{ "setFlag": "coast.names.handoff", "value": "map" }],
+     "next": "coast.names.kept.map"
+    },
+    { "text": "Leave the hook for now." }
+   ]
+  },
+  {
+   "id": "coast.names.kept.map",
+   "speaker": "coast-signalkeeper",
+   "historicalLabel": "fictional-world",
+   "text": "They called back ‘Wallfoot’ on the way past, so I knew which gauge they’d checked. They’ll read Wind Peg with the lookout on the next stop."
   },
   {
    "id": "coast.station.chart",
@@ -1421,6 +1502,30 @@
    "objective": "coast.readings",
    "depth": 4,
    "text": "After reading both gauges, talk to Neri at the station. Choose how to record the contrast."
+  },
+  {
+   "id": "h.coast.names.handoff.1",
+   "objective": "coast.names.handoff",
+   "depth": 1,
+   "text": "The people at each gauge use the landmark they pass on shift."
+  },
+  {
+   "id": "h.coast.names.handoff.2",
+   "objective": "coast.names.handoff",
+   "depth": 2,
+   "text": "Neri has left a tray for paired readings or two tags by the gauge landmarks, depending on your choice."
+  },
+  {
+   "id": "h.coast.names.handoff.3",
+   "objective": "coast.names.handoff",
+   "depth": 3,
+   "text": "Pick up the dated strip at the station or check the Wind Peg and Wallfoot tags at their gauges. Ruan has a place for each kind of copy."
+  },
+  {
+   "id": "h.coast.names.handoff.4",
+   "objective": "coast.names.handoff",
+   "depth": 4,
+   "text": "Deliver the wrapped strip to the shelf beside Ruan, or check both landmark tags and hang the guide on the hook by the harbour crossing."
   },
   {
    "id": "h.coast.forecast.1",

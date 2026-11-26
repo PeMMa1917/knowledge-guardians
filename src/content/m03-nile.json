@@ -1637,6 +1637,22 @@
     },
     {
      "text": "Give me time for the third lead."
+    },
+    {
+     "text": "Check the folded packet’s two dates.",
+     "next": "nile.transit.docket",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.two"
+       },
+       {
+        "not": {
+         "flagSet": "nile.transit.layout"
+        }
+       }
+      ]
+     }
     }
    ],
    "effects": [],
@@ -1857,10 +1873,138 @@
       "flag": "nile.name.filing",
       "eq": "slips"
      }
+    },
+    {
+     "text": "Check the folded packet’s two dates.",
+     "next": "nile.transit.docket",
+     "if": {
+      "all": [
+       {
+        "objective": "nile.two"
+       },
+       {
+        "not": {
+         "flagSet": "nile.transit.layout"
+        }
+       }
+      ]
+     }
     }
    ],
    "effects": [],
    "next": null
+  },
+  {
+   "id": "nile.transit.docket",
+   "speaker": "nile-iman",
+   "text": "Imani lays out a practice packet. Both date slips say First Bell. A visitor read them as the same day. Line up the torn edge and the two punched holes before we use either slip.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Fit the sending stub to the torn flap.",
+     "next": "nile.transit.send"
+    },
+    {
+     "text": "Fit the shelving slip to the torn flap.",
+     "next": "nile.transit.shelf"
+    },
+    {
+     "text": "Clip both fitted slips beside the flap to compare them.",
+     "next": "nile.transit.pair",
+     "if": {
+      "all": [
+       { "flag": "nile.transit.send", "eq": true },
+       { "flag": "nile.transit.shelf", "eq": true }
+      ]
+     }
+    },
+    {
+     "text": "Leave both slips on Imani’s desk."
+    }
+   ],
+   "effects": [
+    {
+     "setFlag": "nile.transit.started",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "nile.transit.pair",
+   "speaker": "nile-iman",
+   "text": "Day 4 on the sending stub. Day 5 on the shelving slip. The tear and holes join them to the same practice packet. The dates tell when it left the shelf and when a reader could open it. We have no stamp for the crossing time. Where should the next visitor find this check?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mount both dates beside the Nexus case for walk-up readers.",
+     "effects": [
+      {
+       "setFlag": "nile.transit.layout",
+       "value": "board"
+      }
+     ]
+    },
+    {
+     "text": "Keep the signed shelving slip at the staffed pickup desk.",
+     "effects": [
+      {
+       "setFlag": "nile.transit.layout",
+       "value": "desk"
+      }
+     ]
+    },
+    {
+     "text": "Leave both slips on Imani’s desk."
+    }
+   ],
+   "effects": [
+    {
+     "setFlag": "nile.transit.paired",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "nile.transit.send",
+   "speaker": "nile-iman",
+   "text": "The torn corner and both holes line up. The sending stub has the packer’s mark and says Day 4, First Bell. Our packing crew calls the date at handoff. The next crew uses it to find the bundle that left their shelf.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Return the stub to the folding desk.",
+     "next": "nile.transit.docket"
+    },
+    {
+     "text": "Set the sample down."
+    }
+   ],
+   "effects": [
+    {
+     "setFlag": "nile.transit.send",
+     "value": true
+    }
+   ]
+  },
+  {
+   "id": "nile.transit.shelf",
+   "speaker": "nile-iman",
+   "text": "The shelving slip fits the second edge and has the same two holes. The Nexus keeper signed it Day 5, First Bell. Their trainees stamp the slip when a reader can open the copy.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Return the shelving slip to the folding desk.",
+     "next": "nile.transit.docket"
+    },
+    {
+     "text": "Set the sample down."
+    }
+   ],
+   "effects": [
+    {
+     "setFlag": "nile.transit.shelf",
+     "value": true
+    }
+   ]
   },
   {
    "id": "nile.nexus-start",
@@ -3828,6 +3972,54 @@
    "text": "Complete any two activities. Return to Archivist Imani in the entrance hall."
   },
   {
+   "id": "h.nile.transit.compare.1",
+   "objective": "nile.transit.compare",
+   "depth": 1,
+   "text": "Ask Imani about the folded packet after two inquiries."
+  },
+  {
+   "id": "h.nile.transit.compare.2",
+   "objective": "nile.transit.compare",
+   "depth": 2,
+   "text": "Both desks used First Bell. Find the day on each slip."
+  },
+  {
+   "id": "h.nile.transit.compare.3",
+   "objective": "nile.transit.compare",
+   "depth": 3,
+   "text": "Match the torn edge and two holes on both faces of the sample."
+  },
+  {
+   "id": "h.nile.transit.compare.4",
+   "objective": "nile.transit.compare",
+   "depth": 4,
+   "text": "Fit the sending stub and the shelving slip. Read the different days and check what the two desks stamped."
+  },
+  {
+   "id": "h.nile.transit.readback.1",
+   "objective": "nile.transit.readback",
+   "depth": 1,
+   "text": "Return to the folding desk after fitting both slips."
+  },
+  {
+   "id": "h.nile.transit.readback.2",
+   "objective": "nile.transit.readback",
+   "depth": 2,
+   "text": "Decide how a visitor finds the signed shelving date."
+  },
+  {
+   "id": "h.nile.transit.readback.3",
+   "objective": "nile.transit.readback",
+   "depth": 3,
+   "text": "The public clip is beside the east cases. The staffed copy is at the pickup desk in the east wing."
+  },
+  {
+   "id": "h.nile.transit.readback.4",
+   "objective": "nile.transit.readback",
+   "depth": 4,
+   "text": "Follow your first dispatch back to the Nexus. Once it is on display, read the matching date clip or the signed desk receipt."
+  },
+  {
    "id": "h.nile.dispatch.1",
    "objective": "nile.dispatch",
    "depth": 1,
@@ -4844,6 +5036,122 @@
      ],
      "visible": {
       "objective": "nile.dispatch"
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH2-TRANSIT",
+   "title": "The Date Through the Door",
+   "world": "WORLD-03",
+   "available": {
+    "objective": "nile.two"
+   },
+   "knowledgeQuestion": "What does a date tell us when two desks use it for different parts of the work?",
+   "stake": "A reader might miss the day they can open the copy if both slips are treated as the same event.",
+   "objectives": [
+    {
+     "id": "nile.transit.compare",
+     "title": "Fit the slips to the torn packet and compare the two dates",
+     "done": {
+      "all": [
+       {
+        "flag": "nile.transit.send",
+        "eq": true
+       },
+       {
+        "flag": "nile.transit.shelf",
+        "eq": true
+       },
+       {
+        "flag": "nile.transit.paired",
+        "eq": true
+       }
+      ]
+     },
+     "visible": {
+      "flag": "nile.transit.started",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "truth",
+       "certainty",
+       "culture",
+       "interpretation",
+       "perspective"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope",
+       "perspectives"
+      ],
+      "aoks": [
+       "HUM",
+       "HIS"
+      ],
+      "atl": [
+       "thinking",
+       "research",
+       "communication"
+      ],
+      "subjects": [
+       "history",
+       "anthropology"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "nile.transit.readback",
+     "title": "Choose where readers can check the dates and read the placement at the Nexus",
+     "done": {
+      "flag": "nile.transit.received",
+      "eq": true
+     },
+     "visible": {
+      "flagSet": "nile.transit.layout"
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "values",
+       "responsibility",
+       "justification"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives"
+      ],
+      "aoks": [
+       "HUM",
+       "HIS"
+      ],
+      "atl": [
+       "thinking",
+       "research",
+       "communication"
+      ],
+      "subjects": [
+       "history",
+       "anthropology"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "application",
+       "solo": "relational"
+      }
      }
     }
    ]

@@ -159,6 +159,7 @@ import { priceDrawersContent } from './priceDrawers';
 import { warmRoomContent } from './warmRoomCases';
 import { mapAlignmentContent } from './mapAlignment';
 import { scriptRailContent } from './scriptRail';
+import twoCalls from './two-calls.json';
 import pigmentWindow from './pigment-window.json';
 import { correspondenceRoomContent } from './correspondenceRoom';
 import porterPace from './porter-pace.json';
@@ -182,7 +183,7 @@ export function buildPack(): ContentPack {
     loadingBayContent, glassRackContent, shoreReplyContent, ferryWindowContent, starPathContent, tokBadgeContent,
     ferryPackingContent, workScheduleContent, bearingBayContent, jigShopContent, earlierViewsContent, curtainContent,
     coastDetector, bridgeProof, memoryCart, dispatchStatsContent, prismViewerContent, priceDrawersContent, warmRoomContent,
-    mapAlignmentContent, scriptRailContent, pigmentWindow, correspondenceRoomContent, porterPace, leafFrame, forestNarrators, spareSeat, lastTurn];
+    mapAlignmentContent, scriptRailContent, pigmentWindow, correspondenceRoomContent, porterPace, leafFrame, forestNarrators, spareSeat, lastTurn, twoCalls];
   for (const k of keys) pack[k] = [...parts, ...collectionRooms].flatMap((p) => p[k] ?? []);
   const content = pack as ContentPack;
   content.questions.push(...QUESTION_ROUTES.map(({ question }) => question));

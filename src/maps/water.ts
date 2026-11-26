@@ -43,6 +43,9 @@ function observerScene(id: string, x: number, y: number, label: string,
 const checkedSplit: Condition = { all: [
   { objective: 'water.drought' }, { flag: 'water.trial.drought.split', eq: true },
 ] };
+const marketOrder = (rule: 'posted' | 'reweigh'): Condition => ({ all: [
+  { objective: 'water.publish' }, { flag: 'market.quote.rule', eq: rule },
+] });
 
 export const WATER_GATEHOUSE: MapDef = {
   id: 'water.gatehouse', name: 'Water Commons: Old Weir', world: 'WORLD-12',
@@ -85,7 +88,7 @@ export const WATER_GATEHOUSE: MapDef = {
       'SPLIT KEEPS ALL TWELVE IN THE CHANNELS. The tally on the draft is blank.',
       { flag: 'water.draft.read', visibleIf: { not: checkedSplit } }),
     sign('water-checked-split', 15, 10, 'the checked split tally', 'water.split',
-      'At the drought gate, the split sent five buckets to each branch and lost two at the gate. The draft stays behind this tally so readers can compare.',
+      'With twelve buckets entering the drought gate, the split sent five buckets to each branch and lost two. The draft stays behind this tally. A new intake needs a new count.',
       { flag: 'water.checked.read', visibleIf: checkedSplit }),
     sign('water-repair-mark', 15, 6, 'the checked repair mark', 'water.notice',
       'The keeper checked the repaired gate. A fresh tally starts here. Keep the drought readings on the previous page.',
@@ -161,9 +164,16 @@ export const WATER_COUNCIL: MapDef = {
       'Omi’s upper peg gives three intervals at noon. The lower keeper’s handover gives two at the previous bell. Its noon square stays blank. Keep the times and the people who checked them with the readings.',
       { visibleIf: { all: [observerNote('paired'), { flag: 'water.observer.lower', eq: 'handover' }] } }),
     ...droughtDisplays.map(([setting, label, text]) => sign(
-      'water-result-' + setting, 12, 6, label, 'water.' + setting, text,
+      'water-result-' + setting, 12, 6, label, 'water.' + setting,
+      `${text} This order covers twelve incoming and two lost.`,
       { visibleIf: { flag: 'water.response', eq: setting } },
     )),
+    sign('water-market-posted', 14, 11, 'the intake mark beside the council runner', 'preserved.display-paired',
+      'Sena pins the intake number where the runner picks up the current order. The runner can send it straight out at twelve incoming and two lost. Dagny did the same with the lot letters. A changed intake goes on its own line.',
+      { flag: 'water.market.order.read', visibleIf: marketOrder('posted') }),
+    sign('water-market-reweigh', 20, 11, 'the blank tally at the council steps', 'metalworks.receipt',
+      'Sena clips a blank tally at the steps for the next runner to fill before copying an order for a changed intake. The current sheet stays on the wall. The empty ticket follows Dagny’s next-crate slip.',
+      { flag: 'water.market.order.read', visibleIf: marketOrder('reweigh') }),
     ...repairedDisplays.map(([setting, label, text]) => sign(
       'water-revised-' + setting, 16, 8, label, 'water.' + setting, text,
       { visibleIf: { flag: 'water.revision', eq: setting } },
@@ -235,10 +245,10 @@ export const WATER_LOWER_CHANNEL: MapDef = {
       'The handover records two intervals from the lower peg’s foot at the previous bell. The noon square stays blank for someone who can take the high step.',
       { visibleIf: { all: [observerNote('local'), { flag: 'water.observer.lower', eq: 'handover' }] } }),
     sign('water-farm-card', 7, 7, 'the seed-row work card', 'preserved.folder',
-      'Today’s marked seed rows need six buckets for the work on this card. The outside rows can wait until the next count.',
+      'Today’s marked seed rows need six buckets for the work on this card. If the next crew opens another row, its count goes on a fresh slip.',
       { flag: 'water.farm.note' }),
     sign('water-channel-marker', 21, 9, 'the lower channel’s use line', 'water.notice',
-      'The lower crew uses five buckets as today’s channel-use line. When more arrives, they can hold some in reserve.',
+      'Five buckets cover the lower crew’s first fetching round today. A second round belongs on a fresh slip. When more arrives, the crew can hold some in reserve.',
       { flag: 'water.channel.note' }),
     sign('water-lower-path-sign', 15, 13, 'the lower crossing sign', 'water.waypost',
       'Follow the lower boards to the use line, or take the upper boards to the council path. The seed-row card is on the west terrace.'),

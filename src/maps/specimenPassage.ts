@@ -1,4 +1,4 @@
-import { PASSAGE_CASES, PASSAGE_GATE, PASSAGE_GROUP } from '../content/passageCases';
+import { PASSAGE_CASES, PASSAGE_GATE, PASSAGE_GROUP, YIRRKALA_REFERRAL_OPEN, YIRRKALA_REFERRAL_ROUTE } from '../content/passageCases';
 import { passageDone, type PassageStop } from '../domain/specimenPassage';
 import type { Interactable, MapDef } from './types';
 
@@ -44,6 +44,15 @@ export const SHOAL_PROOF_SHELTER: MapDef = {
     { id: 'sea-reading-shelter-note', kind: 'sign', x: 18, y: 22, w: 1, h: 1, art: 'sea.margin', walkThrough: true,
       label: 'the Reading Shelter route note',
       text: 'Read a museum record and open its stand’s two leaves. Take a strip to Halen at the low rail or a folio to Clio uphill. Set the guide in their rack. One keeper can use each copy.' },
+    { id: 'yirrkala-referral-request', kind: 'scene', node: 'passage.yirrkala.referral.start', x: 12, y: 23, w: 1, h: 1,
+      label: 'the teacher’s two-part request', art: 'preserved.slip', walkThrough: true,
+      visibleIf: { all: [YIRRKALA_REFERRAL_OPEN, { not: { flagSet: YIRRKALA_REFERRAL_ROUTE } }] } },
+    { id: 'yirrkala-referral-rail', kind: 'scene', node: 'passage.yirrkala.referral.rail', x: 24, y: 22, w: 1, h: 1,
+      label: 'two dated locators at the walk-up rail', art: 'preserved.display-paired', walkThrough: true,
+      visibleIf: { flag: YIRRKALA_REFERRAL_ROUTE, eq: 'rail' } },
+    { id: 'yirrkala-referral-desk', kind: 'scene', node: 'passage.yirrkala.referral.desk', x: 30, y: 23, w: 1, h: 1,
+      label: 'Clio’s reply by the east bench', art: 'preserved.folder', walkThrough: true,
+      visibleIf: { flag: YIRRKALA_REFERRAL_ROUTE, eq: 'desk' } },
     ...PASSAGE_CASES.flatMap((record, index): Interactable[] => {
       const x = 3 + 6 * (index % 6);
       const y = 5 + 4 * Math.floor(index / 6);

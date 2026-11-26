@@ -3,8 +3,9 @@ import { guideObjectives } from '../domain/guidance';
 import { h } from './dom';
 import './localGuide.css';
 
-export function localGuide(controller: GameController, world: string, preferred?: string): HTMLElement {
-  const options = () => guideObjectives(controller.engine.visibleObjectives(controller.state), world, preferred);
+export function localGuide(controller: GameController, world: string, preferred?: string | (() => string | undefined)): HTMLElement {
+  const options = () => guideObjectives(controller.engine.visibleObjectives(controller.state), world,
+    typeof preferred === 'function' ? preferred() : preferred);
   const details = h('details', { class: 'work-guide' }, h('summary', {}, 'Lumen’s help'));
   const body = h('div', { class: 'work-guide-body' });
   details.append(body);

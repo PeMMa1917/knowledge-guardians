@@ -47,6 +47,8 @@ export const FIELD_BADGES: DeedBadge[] = [
     earned: acts('civic.rules', 'civic.overlap.finish') },
   { id: 'handover-place', title: 'Signals in Two Places', deed: 'Check the marked observer track, leave a dated island listening log and put the Council’s jointly checked handover where crews can use it.',
     earned: acts('water.observer.finish', 'island.log', 'council.team.post') },
+  { id: 'next-count', title: 'Keeper of the Next Count', deed: 'Finish the Market quote and read the Water Commons handover that carries its limit forward.',
+    earned: acts('market.finish', 'water.market.copy'), invitation: 'Ade keeps a scope slip by the Library Dispatch console.' },
 ];
 
 export const FIELD_WORK = {

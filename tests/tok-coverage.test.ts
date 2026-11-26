@@ -476,7 +476,7 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
         expect(readSign(d, 'last-turn.file')).toContain('They have only this stub');
         expect(d.done('last-turn.publish')).toBe(true);
       });
-      route.at(78 + emberfordExtra, 'Arrange to hear Hesper’s account of how her shop uses the maker’s name', [
+      route.at(78 + emberfordExtra, 'Arrange a bench handover while keeping the forge’s repair mark separate from the archive’s receipt', [
         'culture', 'interpretation', 'values', 'perspective', 'perspectives', 'ethics',
       ], (d) => {
         d.talk('smith-hesper', 'Yes. Come');
@@ -605,7 +605,7 @@ function nileRoyalLead(route: Route): void {
   });
 }
 
-function nileDispatch(lead: NileFirstLead = 'workers', mapStop?: 'tilt-tray' | 'wayfinding'): Route {
+function nileDispatch(lead: NileFirstLead = 'workers', mapStop?: 'tilt-tray' | 'wayfinding', checkTransit = false): Route {
   const route = new Route();
   const d = route.driver;
   // Independent return-session fixture. These flags represent earlier progress.
@@ -659,16 +659,33 @@ function nileDispatch(lead: NileFirstLead = 'workers', mapStop?: 'tilt-tray' | '
     expect(d.done('nile.routes')).toBe(true);
   });
   route.at(31 + extra, 'Leave the next keeper the conditions of the model trial', ['certainty', 'scope', 'methods-and-tools'], useProp('nile.model-handover', 'repeat'));
-  const dispatch = royal ? 'Keep the ancient map and the route trial side by side in the Nexus workshop' : 'Send the workmen’s slips and open the Nexus reading table';
-  route.at(38 + extra, dispatch, ['responsibility', 'power', 'perspectives', 'ethics'], (d) => {
+  if (checkTransit) route.at(35 + extra, 'Fit both First Bell slips to one packet, distinguish what the two desks dated, and keep the originals at pickup', [
+    'evidence', 'truth', 'certainty', 'culture', 'perspective', 'interpretation', 'values', 'responsibility', 'scope', 'methods-and-tools',
+  ], (d) => {
     useDoor(d, 'route-back');
+    d.talk('nile-iman', 'Check the folded packet', 'Fit the sending stub', 'Return the stub', 'Fit the shelving slip',
+      'Return the shelving slip', 'Clip both fitted slips', 'staffed pickup desk');
+    expect(d.done('nile.transit.compare')).toBe(true);
+    expect(d.s.flags['nile.transit.layout']).toBe('desk');
+    expect(d.s.flags['nile.dispatch']).toBeUndefined();
+  });
+  const transitMinutes = checkTransit ? 4 : 0;
+  const dispatch = royal ? 'Keep the ancient map and the route trial side by side in the Nexus workshop' : 'Send the workmen’s slips and open the Nexus reading table';
+  route.at(38 + extra + transitMinutes, dispatch, ['responsibility', 'power', 'perspectives', 'ethics'], (d) => {
+    if (!checkTransit) useDoor(d, 'route-back');
     d.talk('nile-iman', royal ? 'workshop table' : 'reading table');
     useDoor(d, 'nile-nexus');
     d.talk('warden-ise', royal ? 'Leave the ancient route' : 'Lay both slips', 'come back');
     expect(d.done('nile.return')).toBe(true);
     readSign(d, royal ? 'nile-outcome-pair' : 'nile-outcome-read');
   });
-  route.at(47 + extra, 'Present the Singapore Stone and the Malay Annals without conflating them', ['culture', 'truth', 'interpretation', 'scope'], (d) => {
+  if (checkTransit) route.at(44 + extra, 'Visit the staffed pickup: match the signed dates and see which reader must ask', [
+    'evidence', 'perspective', 'interpretation', 'values', 'responsibility', 'ethics',
+  ], (d) => {
+    expect(readSign(d, 'nile-transit-desk')).toContain('keeper puts both signed slips');
+    expect(d.done('nile.transit.readback')).toBe(true);
+  });
+  route.at(47 + extra + transitMinutes, 'Present the Singapore Stone and the Malay Annals without conflating them', ['culture', 'truth', 'interpretation', 'scope'], (d) => {
     for (const exhibit of ['OBJ-NILE-STONE', 'OBJ-NILE-BADANG']) d.run({ type: 'InspectExhibit', exhibit });
     d.run({ type: 'BuildLabel', kit: 'nile-stone', subject: 'story', criterion: 'tradition', limit: 'bound' });
     expect(d.done('nile.stone.publish')).toBe(true);
@@ -743,8 +760,8 @@ function observatoryCoast(stop?: 'bell-slip' | 'clear-terms'): Route {
     d.talk('coast-signalkeeper', 'Who is waiting');
     expect(d.done('coast.arrival')).toBe(true);
   });
-  route.at(8, 'Read the sheltered quay gauge with its place and interval attached', ['evidence', 'scope', 'methods-and-tools'], (d) => {
-    readSign(d, 'coast-harbour-gauge');
+  route.at(8, 'Match the basket crews’ Wallfoot to the sheltered gauge and its dated measuring interval', ['evidence', 'scope', 'methods-and-tools'], (d) => {
+    expect(readSign(d, 'coast-harbour-gauge')).toContain('Wallfoot');
   });
   if (stop === 'bell-slip') route.at(10, 'Keep the quay crew’s way of counting alongside the timed station marks',
     ['culture', 'interpretation', 'perspectives'], useProp('coast.bell-slip', 'both'));
@@ -754,9 +771,11 @@ function observatoryCoast(stop?: 'bell-slip' | 'clear-terms'): Route {
     walkScene(d, 'coast-clear-net-frame', 'coast.clear.row', 'Pass the same ribbon', 'Keep the two readings');
     expect(d.done('coast.clear.test')).toBe(true);
   });
-  route.at(16 + (stop ? 2 : 0), 'Align the two sites by time and show how two rain reports can both be true', ['evidence', 'truth', 'objectivity', 'certainty', 'methods-and-tools'], (d) => {
+  route.at(16 + (stop ? 2 : 0), 'Align Wallfoot and Wind Peg by measuring interval and keep each crew’s name beside the station record', [
+    'evidence', 'truth', 'objectivity', 'certainty', 'culture', 'interpretation', 'perspectives', 'methods-and-tools',
+  ], (d) => {
     useDoor(d, 'coast-headland-path');
-    readSign(d, 'coast-station-gauge');
+    expect(readSign(d, 'coast-station-gauge')).toContain('Wind Peg');
     d.talk('coast-forecaster', 'Pin each reading to the place');
     expect(d.done('coast.readings')).toBe(true);
   });
@@ -1298,10 +1317,11 @@ function marketOfMeasures(): Route {
     readSign(d, 'market-buyer-note');
     expect(d.done('market.feedback')).toBe(true);
   });
-  route.at(40, 'Show the whole-lot price separately from the rate per credit', ['truth', 'responsibility', 'justification', 'ethics'], (d) => {
+  route.at(40, 'Pin the quoted lots beside the rate and keep the next crate’s quote separate', ['truth', 'certainty', 'responsibility', 'justification', 'scope', 'ethics'], (d) => {
     d.talk('market-clerk', 'Add a whole-lot line');
     expect(d.done('market.finish')).toBe(true);
     readSign(d, 'market-revised');
+    readSign(d, 'market-quote-posted');
   });
   route.at(46, 'Repeat the comparison for the long fibres used in wicks', ['evidence', 'objectivity', 'certainty', 'scope', 'methods-and-tools'], (d) => {
     const usable = weighLots(d, 'wick', [480, 760]);
@@ -1356,12 +1376,12 @@ function waterCommons(): Route {
     for (const prop of ['water-farm-card', 'water-channel-marker']) readSign(d, prop);
     expect(d.done('water.needs')).toBe(true);
   });
-  route.at(30, 'Post the even drought split with the farm’s postponed work where both groups can check it', ['values', 'power', 'responsibility', 'justification', 'ethics'], (d) => {
+  route.at(30, 'Post the split for the measured twelve incoming and two lost, with the postponed work beside it', ['values', 'power', 'responsibility', 'justification', 'certainty', 'scope', 'ethics'], (d) => {
     useDoor(d, 'water-lower-to-council');
     d.talk('water-scribe', 'Split it five and five');
     expect(d.done('water.publish')).toBe(true);
     expect(d.s.flags['water.response']).toBe('split');
-    readSign(d, 'water-result-split');
+    expect(readSign(d, 'water-result-split')).toContain('twelve incoming and two lost');
   });
   route.at(34, 'Read the repair record and change what leaks out while leaving the inflow fixed', ['evidence', 'scope', 'methods-and-tools'], (d) => {
     readSign(d, 'water-repair-note');
@@ -1909,6 +1929,7 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Nexus with the call at the curtain and Ethren’s spare felt', end: 92, play: () => nexusToEmberford('curtain') },
     { name: 'Emberford’s Last Turn from the Showdown to the Study', end: 91, play: () => nexusToEmberford('last-turn') },
     { name: 'Nile first visit from a prepared Chapter 1 save', end: 50, play: () => nileDispatch() },
+    { name: 'Nile first visit with the matched packet dates', end: 54, play: () => nileDispatch('workers', undefined, true) },
     { name: 'Nile first visit with the Reading Window', end: 53, play: () => nileDispatch('reading-window') },
     { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch('borrowed-mark') },
     { name: 'Nile first visit with the lamp and the pinned slip', end: 54, play: () => nileDispatch('lamp-slip') },

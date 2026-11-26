@@ -31,4 +31,21 @@ describe('Lumen’s workbench guidance', () => {
     expect(() => d.run({ type: 'RequestHint', objective: 'missing.example' })).toThrow('Choose a quest step with a clue');
     expect(d.s).toBe(previous);
   });
+
+  it('prioritizes Dov’s drawers through play and filters out the later visit and the completed step', () => {
+    const d = new Driver();
+    d.s.mapId = 'aethelgard.emberford';
+    d.s.objectivesDone.push('m01.o7.portal', 'm02.o1.arrive');
+    const clues = () => guideObjectives(d.e.visibleObjectives(d.s), 'WORLD-02', 'drawer.cases.opened').map(({ id }) => id);
+
+    expect(clues()[0]).toBe('drawer.cases.opened');
+    for (const face of [0, 1, 2, 3, 4]) {
+      d.run({ type: 'OpenDrawerCase', face });
+      expect(clues()[0]).toBe('drawer.cases.opened');
+    }
+    d.run({ type: 'OpenDrawerCase', face: 5 });
+    expect(d.s.inventory['item.drawer-stencil']).toBe(1);
+    expect(clues()).not.toContain('drawer.cases.opened');
+    expect(clues()).not.toContain('drawer.fold.finish');
+  });
 });

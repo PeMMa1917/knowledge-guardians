@@ -91,6 +91,7 @@ import { prismViewerPanel } from './prismViewer';
 import { ALIGN_GROUP } from '../content/mapAlignment';
 import { mapAlignmentPanel } from './mapAlignment';
 import { scriptRailPanel } from './scriptRail';
+import { twoCallsPanel } from './twoCalls';
 import { localGuide, workFeedback } from './localGuide';
 import { bearingBayPanel } from './bearingBay';
 import { loadingBayPanel } from './loadingBay';
@@ -496,7 +497,9 @@ export class UI implements UIApi {
     this.titleModalOpener = opener;
     const box = h('div', { class: `panel ${cls}`, role: 'dialog', 'aria-modal': 'true', 'aria-label': label }, ...content);
     const state = ctx.controller.state;
-    if (state && box.classList.contains('bench-panel')) box.append(localGuide(ctx.controller, MAPS[state.mapId]?.world ?? ''));
+    if (state && box.classList.contains('bench-panel') && !box.querySelector('.work-guide')) {
+      box.append(localGuide(ctx.controller, MAPS[state.mapId]?.world ?? ''));
+    }
     const wrap = h('div', { class: 'modal-wrap', onclick: (e: MouseEvent) => { if (e.target === wrap && !cls.includes('dialogue')) this.closeModal(); } }, box);
     this.root.append(wrap);
     this.modal = wrap;
@@ -3162,6 +3165,13 @@ export class UI implements UIApi {
     } else if (id.startsWith('script-rail:')) {
       this.openModal('bench-panel wide', 'The Script Cabinet', this.closeBtn(), scriptRailPanel(ctx.controller,
         id.slice('script-rail:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === 'copies-two-calls') {
+      const c = ctx.controller;
+      const firstOpenCall = () => c.engine.visibleObjectives(c.state).find(({ id, complete }) =>
+        id.startsWith('copies.twocalls.') && !complete)?.id;
+      this.openModal('bench-panel wide', 'Two Calls After Tuesday', this.closeBtn(),
+        twoCallsPanel(c, () => ctx.world?.refreshWorld(), () => this.sfx('sfx.page')),
+        localGuide(c, MAPS[c.state.mapId]?.world ?? '', firstOpenCall));
     } else if (id.startsWith('work-schedule:')) {
       this.openModal('bench-panel wide', 'The Working Cupboards', this.closeBtn(), workSchedulePanel(ctx.controller,
         id.slice('work-schedule:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
@@ -3277,8 +3287,9 @@ export class UI implements UIApi {
       this.openModal('bench-panel wide', 'The Third Landmark', this.closeBtn(),
         mapAlignmentPanel(id.slice(ALIGN_GROUP.length + 1), ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === 'drawer-cases') {
-      const board = this.openModal('bench-panel wide', 'Three Cases at the Bell');
-      drawerCases(board, ctx.controller, this.closeBtn());
+      const c = ctx.controller;
+      this.openModal('bench-panel wide', 'Three Cases at the Bell', this.closeBtn(), drawerCases(c),
+        localGuide(c, MAPS[c.state.mapId]?.world ?? '', 'drawer.cases.opened'));
     } else if (id === 'market-basket-bench' || id === 'market-basket-voucher' || id === 'market-basket-credit') {
       const site = id === 'market-basket-bench' ? 'bench' : id === 'market-basket-voucher' ? 'voucher' : 'credit';
       this.openModal('bench-panel wide', 'Three Goods, Two Bells', this.closeBtn(),
@@ -4670,6 +4681,7 @@ export class UI implements UIApi {
         paint(flow);
         readings.replaceChildren(h('p', {}, h('strong', {}, `${flow.incoming} buckets in`),
           ` · ${flow.farm} to the fields · ${flow.river} to the lower channel · ${flow.leak} lost at the gate`));
+        readings.append(h('p', {}, 'Keep the intake and the leak with these marks. Count again if either changes.'));
         if (condition === 'repaired' && controller.state.flags[`water.trial.drought.${setting}`] === true) {
           const before = waterTrial('drought', setting);
           readings.append(h('p', {}, `Before repair at this setting: ${before.farm} to the fields, ${before.river} to the lower channel, ${before.leak} lost at the gate.`));

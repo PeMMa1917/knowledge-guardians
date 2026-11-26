@@ -1159,6 +1159,22 @@
         ],
         "game": 179,
         "story": 54
+      },
+      {
+        "objective": "copies.twocalls.reply",
+        "action": "File the first proof beside the revised route and the new reader receipt. Keep the dated trial available for a later reader after changing how the notice reaches people.",
+        "styles": [
+          "strategist",
+          "maker",
+          "collector"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 179,
+        "story": 74
       }
     ]
   },

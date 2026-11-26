@@ -248,13 +248,15 @@
        "values",
        "responsibility"
       ],
-      "framework": ["perspectives", "ethics"],
+      "framework": ["perspectives", "methods-and-tools", "ethics"],
       "thinking": { "dok": 3, "bloom": "apply", "fink": "caring", "solo": "relational" },
       "atl": [
-       "social"
+       "social",
+       "communication"
       ],
       "subjects": [
-       "design-tech"
+       "design-tech",
+       "lang-langlit"
       ],
       "aoks": [
        "TEC"
@@ -1002,8 +1004,8 @@
   }
  ],
  "journal": [
-  { "id": "j.hesper.checked-bench", "claimKind": "observation", "text": "Hesper took the bench turn I offered. She showed me which face of the scrap she would repair. Her apprentice kept the forge open in Emberford." },
-  { "id": "j.hesper.checked-drawer", "claimKind": "observation", "text": "I found Hesper’s repair scrap in the Nexus drawer. Ise left the date it arrived next to Hesper’s own note. Hesper still had a turn to finish in Emberford." },
+  { "id": "j.hesper.checked-bench", "claimKind": "observation", "text": "At the bench I found Hesper’s repair tab beside the Nexus receipt. Hesper showed me which face she had promised to mend. Her apprentice kept the forge open in Emberford." },
+  { "id": "j.hesper.checked-drawer", "claimKind": "observation", "text": "In the Nexus drawer I found Hesper’s repair tab next to a separately dated receipt. Anyone at the counter could ask for the pair while the shop finished its work." },
   {
    "id": "j.m02.start",
    "text": "Arrived in Emberford, a guild town in Aethelgard. Aethelgard is a game world: nothing here is a historical record unless it says 'Documented'.",
@@ -1326,10 +1328,11 @@
   {
    "id": "hesper.offer",
    "speaker": "smith-hesper",
-   "text": "I watched the square. On your slip the workshop name tells a reader where to ask a question. In our shop the same name binds the repair to whoever set the rivets. I can come to the Nexus with a scrap and teach that check. My apprentice keeps the forge open while I’m away. Can they count on a bench for me?",
+   "text": "After the square I took out two tabs. See the square ink mark on each? In our shop it means I’ve taken on a repair. On the Nexus tab it means the counter took in a parcel. Here’s my marked scrap. Tie my tab to a bench slip and I can show which face I promised to mend. We’d need the bench for a bell. Send the tab with the scrap to the return drawer and anyone can ask for it at the counter. I can finish my turn here.",
    "options": [
     {
      "text": "Yes. Come to the Nexus.",
+     "tag": "Tie the repair tab to a bench slip",
      "next": "hesper.offer2",
      "effects": [
       {
@@ -1345,6 +1348,7 @@
     },
     {
      "text": "I'll ask Warden Ise first.",
+     "tag": "Clip the repair tab to the drawer packet",
      "next": "hesper.arrange",
      "effects": [
       {
@@ -1353,23 +1357,33 @@
       },
       { "setFlag": "hesper.visitArrangement", "value": "confirm" }
      ]
+    },
+    {
+     "text": "Turn both tabs over.",
+     "next": "hesper.offer.tabs"
     }
    ]
   },
   {
+   "id": "hesper.offer.tabs",
+   "speaker": "smith-hesper",
+   "text": "My initials and the face I promised to mend are on the back of the shop tab. We put the square in the corner so anyone working the bench can find a repair ticket with one hand. Your counter tab has a space for the arrival time. I could leave the blank one here all week and it wouldn’t get my scrap any nearer the Nexus.",
+   "next": "hesper.offer"
+  },
+  {
    "id": "hesper.offer2",
    "speaker": "smith-hesper",
-   "text": "Good. I can tell my apprentice when to take over the forge. I’ll tie a practice scrap to the confirmed bench slip."
+   "text": "That knot will hold. I’ll bring the scrap and have your clerk date their tab when I arrive. My apprentice can cover the forge for one bell. I’ll cover their next turn when I get back."
   },
   {
    "id": "hesper.arrange",
    "speaker": "smith-hesper",
-   "text": "I can wait to hear from Ise. I’ll leave a scrap in the Nexus return drawer so the first visitor can check the mark even if I’m still on duty."
+   "text": "Clip it there, with my initials showing. Ask Ise to leave the drawer receipt beside it. People can check when the scrap reached the counter while I finish the forge turn. I’ll have to show the repair myself another day."
   },
   {
    "id": "hesper.nexus.bench",
    "speaker": "smith-hesper",
-   "text": "Put your thumb on that stamped side. That’s the repair side in my shop. The clerk wrote down when the scrap crossed your counter. Both dates go back on the peg. My apprentice is minding the forge today, and I promised to cover their turn when I get home.",
+   "text": "Hold the scrap against the shop tab you tied. See how the two corners line up? This is the face I signed to mend. That square on the other tab goes with the clerk’s arrival time. Leave both on the peg. I’ll free the bench at the bell and get back to relieve my apprentice.",
    "effects": [
     { "setFlag": "hesper.visitChecked", "value": "bench" },
     { "journal": "j.hesper.checked-bench" }
@@ -1378,7 +1392,7 @@
   {
    "id": "hesper.nexus.drawer",
    "speaker": "warden-ise",
-   "text": "The apprentice is on the forge today and Hesper is helping them with a repair. See the stamp on the scrap? Hesper uses it to say which side she’ll mend. I’ve left her note and the dated drawer receipt side by side. You can tell when the scrap reached us. Her demonstration can wait.",
+   "text": "Unclip the marked tab beside the drawer receipt. Hesper signed for the face marked on her scrap. I put this bell’s time on the Nexus tab when it reached the counter. We can lend out both together. The bench is free and Hesper is still at her forge. Her demonstration can wait.",
    "effects": [
     { "setFlag": "hesper.visitChecked", "value": "drawer" },
     { "journal": "j.hesper.checked-drawer" }

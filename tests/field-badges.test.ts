@@ -23,9 +23,9 @@ function read(d: Driver, id: string) {
 }
 
 describe('What the Work Leaves', () => {
-  it('adds twelve zero-credit badges with existing deed requirements and distinct titles', () => {
-    expect(badgeIds).toHaveLength(12);
-    expect(new Set(badgeIds.map(({ title }) => title)).size).toBe(12);
+  it('adds thirteen zero-credit badges with existing deed requirements and distinct titles', () => {
+    expect(badgeIds).toHaveLength(13);
+    expect(new Set(badgeIds.map(({ title }) => title)).size).toBe(13);
     for (const badge of badgeIds) {
       const definition = FIELD_BADGES.find(({ id }) => badge.id === 'badge.field.' + id)!;
       expect(badge.criteria).toEqual([]);

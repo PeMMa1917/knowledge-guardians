@@ -2244,6 +2244,23 @@
         ],
         "game": 65,
         "story": 77
+      },
+      {
+        "objective": "market.finish",
+        "action": "Revise the whole-lot notice for the two weighed lots. Keep their posted figures tied to their letters or leave a check for the next crate.",
+        "styles": [
+          "strategist",
+          "helper",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "analytical",
+          "social"
+        ],
+        "game": 179,
+        "story": 74
       }
     ]
   },

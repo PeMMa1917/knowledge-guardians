@@ -12,6 +12,7 @@ import { LANDING_SAME_RED, PRESS_SAME_RED } from './sameRed';
 import { PRESS_LANTERN_WEAVE } from './lanternWeave';
 import { ALIGN_DOOR, alignmentReceiver } from './mapAlignment';
 import { SCRIPT_RAIL_COPIES } from './scriptRail';
+import { TWO_CALLS_ARCHIVE, TWO_CALLS_LANDING, TWO_CALLS_PRESS } from './twoCalls';
 import { IMPRINT_LANDING, IMPRINT_PATH } from './copyImprint';
 import { CORRESPONDENCE_DOOR } from './correspondenceRoom';
 import { READING_WORKS_DOOR, READING_WORKS_LANDING, READING_WORKS_PERKINS } from './readingWorks';
@@ -77,6 +78,7 @@ export const COPIES_ARCHIVE = interior({
   ],
   interactables: [
     SCRIPT_RAIL_COPIES,
+    ...TWO_CALLS_ARCHIVE,
     WORK_SCHEDULE_COPIES,
     ALIGN_DOOR,
     ...COPIES_ARCHIVE_BACKBILL,
@@ -123,6 +125,7 @@ export const COPIES_PRESS = interior({
   ],
   interactables: [
     ...COPIES_PRESS_BACKBILL,
+    ...TWO_CALLS_PRESS,
     alignmentReceiver('pair', 9, 9),
     ...COPIES_PRESS_CITATION_RAIL,
     ...PRESS_SAME_RED,
@@ -184,6 +187,7 @@ export const COPIES_LANDING: MapDef = {
   ],
   interactables: [
     ...COPIES_WELCOME,
+    ...TWO_CALLS_LANDING,
     alignmentReceiver('strip', 7, 12),
     ...LANDING_SAME_RED,
     ...LANDING_PIGMENT_WINDOW,

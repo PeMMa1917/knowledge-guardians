@@ -256,13 +256,13 @@
   {
    "id": "water.scribe.trace",
    "speaker": "water-scribe",
-   "text": "The request from the farm lists six buckets for the marked rows. The lower workshop puts five buckets beside its fetching list. One speaks in rows and one in turns down the steps. Read what each group left and bring me the two gate runs.",
+   "text": "Six buckets cover the named rows at the morning bell. The lower workshop’s five cover the first fetching round. Read both slips where the crews work. Bring the two gate runs so we can see which jobs the measured supply can cover.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "water.scribe.agree",
    "speaker": "water-scribe",
-   "text": "Six for the rows and five for the lower work would take eleven. The drought board lets ten reach the two turns. What should the first order protect? Tell me which work needs to wait, too.",
+   "text": "Six for the rows and five for the lower work would take eleven. With twelve in and two lost, our drought trial lets ten reach the crews. Pick an order for this intake and these work cards. Sena leaves space for another count if the intake slips or a crew adds a round.",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -363,7 +363,7 @@
   {
    "id": "water.scribe.audit",
    "speaker": "water-scribe",
-   "text": "The repair gives us a fresh reading. A new heading by the old order says we agreed on both daily marks. Look at the heading and the numbers underneath it. Bring the old setting repeated under repair and one other repaired run.",
+   "text": "The repair gives us a fresh reading. A new heading by the old order says we agreed on both daily marks. Look at the heading and the numbers underneath it. Bring the old setting repeated under repair and one other repaired run. The market kept two figures side by side for different questions. Here a request and a delivery need separate lines, too.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -500,7 +500,7 @@
   {
    "id": "water.first.fields",
    "speaker": "water-scribe",
-   "text": "The field crew can start its marked rows. The lower crew has three buckets. Work that needs its last two buckets has to wait. Sena keeps the lower request beside the order.",
+   "text": "The field crew can start its marked rows. The lower crew has three buckets. Work that needs its last two buckets has to wait. Sena keeps the lower request beside the order. She files it under twelve incoming and two lost.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -519,7 +519,7 @@
   {
    "id": "water.first.split",
    "speaker": "water-scribe",
-   "text": "The lower crew can do the work on its fetching list. The field crew marks the row that has to wait for its sixth bucket. Sena puts the two stops beside the split.",
+   "text": "The lower crew can do the work on its fetching list. The field crew marks the row that has to wait for its sixth bucket. Sena puts the two stops beside the split. She files it under twelve incoming and two lost.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -538,7 +538,7 @@
   {
    "id": "water.first.channel",
    "speaker": "water-scribe",
-   "text": "The lower crew can hold two beyond its usual five. The field crew gets three of its six and changes which rows it prepares. Sena leaves that cost next to the order.",
+   "text": "The lower crew can hold two beyond its usual five. The field crew gets three of its six and changes which rows it prepares. Sena leaves that cost next to the order. She files it under twelve incoming and two lost.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -930,7 +930,8 @@
       "concepts": [
        "evidence",
        "objectivity",
-       "explanation"
+       "explanation",
+       "certainty"
       ],
       "atl": [
        "research",
@@ -944,7 +945,17 @@
        "geography",
        "ess",
        "math-ai"
-      ]
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "relational"
+      }
      },
      "visible": {
       "objective": "water.arrival"
@@ -1017,7 +1028,8 @@
        "values",
        "power",
        "responsibility",
-       "justification"
+       "justification",
+       "certainty"
       ],
       "atl": [
        "thinking",
@@ -1031,7 +1043,18 @@
        "geography",
        "economics",
        "math-ai"
-      ]
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "relational"
+      }
      },
      "visible": {
       "all": [
@@ -1912,6 +1935,75 @@
      ]
     }
    ]
+  },
+  {
+   "id": "KG-CH11-R56",
+   "world": "WORLD-12",
+   "title": "Before the Next Count",
+   "stake": "A runner needs to know when the council order can go out as written.",
+   "knowledgeQuestion": "When does an old count still support the next order?",
+   "available": {
+    "all": [
+     {
+      "objective": "water.publish"
+     },
+     {
+      "flagSet": "market.quote.rule"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "water.market.copy",
+     "title": "Check where Sena has left the intake slip.",
+     "essential": false,
+     "visible": {
+      "all": [
+       {
+        "objective": "water.publish"
+       },
+       {
+        "flagSet": "market.quote.rule"
+       }
+      ]
+     },
+     "done": {
+      "flag": "water.market.order.read",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "certainty",
+       "responsibility",
+       "perspective"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT"
+      ],
+      "subjects": [
+       "geography",
+       "economics"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "integration",
+       "solo": "relational"
+      },
+      "minutes": 2
+     }
+    }
+   ]
   }
  ],
  "criteria": [
@@ -2358,6 +2450,30 @@
    "objective": "water.counter.finish",
    "depth": 4,
    "text": "Read the bank marker if you put up the request, or read the docket in the council if you kept the handover there. The board can move the display again."
+  },
+  {
+   "id": "h.water.market.copy.1",
+   "objective": "water.market.copy",
+   "depth": 1,
+   "text": "The next runner needs to know which count goes with this order."
+  },
+  {
+   "id": "h.water.market.copy.2",
+   "objective": "water.market.copy",
+   "depth": 2,
+   "text": "Look in the Council Yard after posting the drought order."
+  },
+  {
+   "id": "h.water.market.copy.3",
+   "objective": "water.market.copy",
+   "depth": 3,
+   "text": "Check either the intake mark by the runner or the blank tally at the steps. It follows the notice you left at the Market."
+  },
+  {
+   "id": "h.water.market.copy.4",
+   "objective": "water.market.copy",
+   "depth": 4,
+   "text": "Read the intake mark near the centre path or the blank tally at the east steps. Each shows what the runner should do if the intake changes."
   }
  ],
  "journal": [

@@ -40,17 +40,19 @@ The route audit in `tests/tok-coverage.test.ts` exercises game actions in indivi
 
 | Path | Minutes with a gap | Total minutes |
 |---|---:|---:|
-| Story | 132 | 504 |
-| Social | 335 | 670 |
-| Explorer, representative case visits | 881 | 1,879 |
-| Puzzler | 232 | 592 |
-| Cozy | 314 | 667 |
+| Story | 113 | 504 |
+| Social | 316 | 670 |
+| Explorer, representative case visits | 889 | 1,910 |
+| Puzzler | 229 | 592 |
+| Cozy | 310 | 667 |
 
-Among 46 chapter traces, 36 cover all 16 dimensions in their first 30 estimated minutes. Three stay complete in every full modeled window. An explorer who visits every filed case has a modeled gap during 4,100 of 5,206 minutes. Longer side trips can leave a dimension behind after the chapter’s main path has covered it.
+Among 47 chapter traces, 37 cover all 16 dimensions in their first 30 estimated minutes. Three stay complete in every full modeled window. An explorer who visits every filed case has a modeled gap during 4,129 of 5,237 minutes. The new optional cases lengthen several explorations, and the absolute gap also grows on both explorer models. Longer side trips can leave a dimension behind after the chapter’s main path has covered it.
 
-1. Give the main Showdown and Study route more ways to encounter culture, interpretation and values.
-2. Review the tags of side missions against their dialogue, and add the concepts that the play really uses.
-3. Single-concept gaps in chapters 4 to 14 (for example culture in chapter 4, certainty in chapters 10 and 11): add one short beat each, not a tag.
+Hesper’s required handover returns to culture, interpretation and values after the Showdown. The Observatory compares crew names and station records at the same gauges. In Water Commons, the player tracks which leak and intake gave rise to a measured result, and the Market procedure changes what the Water runner can carry. Two Calls After Tuesday asks players to preserve their first proof, return after the readers’ paths change, and check both repairs before somebody uses the result. The last two steps use DOK 4.
+
+1. Add another recurring use of certainty and widen the ways to encounter culture and values before the Nile and Study’s longest opening stretches.
+2. Review long side missions against their actual play, adding short new encounters where a framework dimension expires.
+3. Repeat the same measurements with fresh and returning players on different routes, including long periods of optional exploration.
 
 The Last Turn now gives Emberford players an optional response to the first gap. In its 91-minute estimated route, players compare the forge and tally desk’s readings at minute 75, decide whose account reaches the market queue at minute 77, and open Derva’s dated account in the Study at minute 87. That trace has culture, interpretation and values in the trailing window from the market decision to the end. Certainty still lapses. The modeled social and explorer routes include this detour. The story route keeps the main steps.
 

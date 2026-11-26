@@ -130,6 +130,72 @@ describe('Chapter 2: the door without a name', () => {
     const props = MAPS[d.s.mapId].interactables.filter((i) => i.id.startsWith('nile-correction-'));
     expect(props.filter((i) => check(i.visibleIf, d.s)).map((i) => i.id)).toEqual(['nile-correction-' + id]);
   });
+  it('keeps date comparison behind two leads and requires both slips before pairing', () => {
+    const d = start();
+    workers(d);
+    d.s.mapId = 'nile.hall';
+    expect(d.done('nile.two')).toBe(false);
+    expect(d.e.visibleOptions(d.e.talkEntry('nile-iman', d.s)!, d.s).some(({ option }) => option.next === 'nile.transit.docket')).toBe(false);
+    route(d);
+    d.s.mapId = 'nile.hall';
+    d.talk('nile-iman', 'Check the folded packet', 'Fit the shelving slip', 'Set the sample down');
+    expect(d.e.visibleOptions('nile.transit.docket', d.s).some(({ option }) => option.next === 'nile.transit.pair')).toBe(false);
+    expect(d.done('nile.transit.compare')).toBe(false);
+    d.talk('nile-iman', 'Check the folded packet', 'Fit the sending stub', 'Return the stub', 'Leave both slips');
+    expect(d.done('nile.transit.compare')).toBe(false);
+    expect(d.e.visibleOptions('nile.transit.docket', d.s).some(({ option }) => option.next === 'nile.transit.pair')).toBe(true);
+    expect(d.s.flags['nile.dispatch']).toBeUndefined();
+  });
+  it.each([
+    ['board', 'Mount both dates', 'Sol checks the two dates', 'print', 'public case', 'Clip the correction'],
+    ['desk', 'staffed pickup desk', 'Tull matches the Day 5', 'read', 'reading table', 'Lay both slips'],
+    ['board', 'Mount both dates', 'Sol checks the two dates', 'pair', 'workshop table', 'Leave the ancient route'],
+  ])('keeps the %s placement and its readers separate from the main dispatch', (layout, position, result, dispatch, packet, publish) => {
+    const d = start();
+    if (dispatch !== 'read') dipl(d);
+    if (dispatch !== 'pair') workers(d);
+    if (dispatch !== 'print') route(d);
+    d.s.mapId = 'nile.hall';
+    d.talk('nile-iman', 'Check the folded packet', 'Fit the sending stub', 'Return the stub', 'Fit the shelving slip',
+      'Return the shelving slip', 'Clip both fitted slips', position);
+    expect(d.done('nile.transit.compare')).toBe(true);
+    expect(d.s.flags['nile.transit.layout']).toBe(layout);
+    expect(d.s.flags['nile.dispatch']).toBeUndefined();
+    d.talk('nile-iman', packet);
+    expect(d.s.flags['nile.dispatch']).toBe(dispatch);
+    d.s.mapId = 'nexus.archive';
+    const placements = MAPS[d.s.mapId].interactables.filter((item) => item.id.startsWith('nile-transit-'));
+    const visible = () => placements.filter((item) => check(item.visibleIf, d.s));
+    expect(visible()).toEqual([]);
+    d.talk('warden-ise', publish, 'come back');
+    expect(d.done('nile.return')).toBe(true);
+    expect(visible().map(({ id }) => id)).toEqual([`nile-transit-${layout}`]);
+    expect(visible()[0].text).toContain(result);
+    expect(d.done('nile.transit.readback')).toBe(false);
+    d.run({ type: 'SetFlag', flag: visible()[0].flag!, value: true });
+    expect(d.done('nile.transit.readback')).toBe(true);
+  });
+  it('offers the same fold after return and leaves the existing Nexus stations clear', () => {
+    const d = start();
+    workers(d);
+    route(d);
+    d.s.mapId = 'nile.hall';
+    d.talk('nile-iman', 'reading table');
+    d.s.mapId = 'nexus.archive';
+    d.talk('warden-ise', 'Lay both slips', 'come back');
+    expect(d.done('nile.return')).toBe(true);
+    d.s.mapId = 'nile.hall';
+    d.talk('nile-iman', 'Check the folded packet', 'Fit the sending stub', 'Return the stub', 'Fit the shelving slip',
+      'Return the shelving slip', 'Clip both fitted slips', 'Mount both dates');
+    expect(d.s.flags['nile.dispatch']).toBe('read');
+    const nexus = MAPS['nexus.archive'];
+    for (const station of nexus.interactables.filter((item) => item.id.startsWith('nile-transit-'))) {
+      expect(nexus.floor(station.x, station.y)).toBeTruthy();
+      expect(nexus.npcs.some(({ x, y }) => x === station.x && y === station.y)).toBe(false);
+      expect(nexus.interactables.filter(({ x, y, w, h, id }) => id !== station.id
+        && station.x >= x && station.x < x + w && station.y >= y && station.y < y + h).map(({ id }) => id)).toEqual([]);
+    }
+  });
   it('uses a Chapter 1 keepsake to recover an extra trail clue', () => {
     const d = start();
     d.run({ type: 'SetFlag', flag: 'seal.found', value: true });
