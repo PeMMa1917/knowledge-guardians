@@ -13,8 +13,8 @@
 .leaderboard-ranks table { inline-size: 100%; table-layout: fixed; border-collapse: collapse; margin-block-start: .6em; }
 .leaderboard-ranks caption { text-align: start; margin-block-end: .3em; }
 .leaderboard-ranks th, .leaderboard-ranks td { padding: .3em .3em .3em 0; text-align: start; white-space: normal; border-block-end: 1px solid var(--gold-dim, var(--line)); }
-.leaderboard-ranks th:first-child { inline-size: 5ch; }
-.leaderboard-ranks th:last-child { inline-size: 10ch; }
+.leaderboard-ranks thead th:first-child { inline-size: 22%; }
+.leaderboard-ranks thead th:last-child { inline-size: 34%; }
 .leaderboard-row-detail { display: block; font-weight: 400; }
 .leaderboard-ranks td:last-child { font-variant-numeric: tabular-nums; }
 .leaderboard-panel > h2 { padding-inline-end: 2.1em; }
