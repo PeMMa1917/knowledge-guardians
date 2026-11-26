@@ -195,11 +195,15 @@ The Nile Archive return opens the Cold Store independent of its optional trails.
 
 **Between the Markers** adds a survey room for the copper record and the findspot. Mount the source and trace which material model it rules out. The remaining alternatives leave the person’s route unresolved. Choose which version of that uncertainty readers see at the archive.
 
+**A Rail with Room to Read** adds a gallery where players mount separate Royal and Chinchorro panels, with places for optional Xin Zhui and copper files. Choose a layout, attend to the visitor it draws, and revise the panel or layout in place.
+
 ## Chapter 4: The Next Bell
 
 The quay and headland reports give two readings for the same bell. Compare them with a conditional weather model, then send a notice by signal or runner. A later reading puts the first notice under pressure. Update it in the same channel or make a copy for readers it missed. The board and route reflect the choice. An optional quay slip lets the player keep local work language and the station's timed interval clear for two reading audiences.
 
 **One Yard, Two Ways** adds Marl Fold, an inland district reached from the station path. Compare two dry-day tallies, then use the crew's one marking shift on the foot stair or the cart lane. Walk the marked route and find its handover point at the harbour.
+
+**The Number That Outlived the Weather** opens the Bell Archive. Follow the estimate, gauge record and later copy. Decide whether to display their sequence at the archive or return a source card to the harbour. Both options leave the missing quay reading open.
 
 ## Chapter 5: Where the Wings Go
 
@@ -211,6 +215,12 @@ The Observatory correction opens the Living Forest. Take equal three-beat watche
 
 The revised Living Forest notice opens the Sample Yard. Zero the empty balance at each stand, measure two same-sized panels and check the different readings without naming a material from the weight alone. Compare the separate workshop papers and choose a window comparison or ledger-first notice. The later transfer docket connects the crates for one cart trip. Each response leaves a place to record that shared trip without merging the earlier histories.
 
+**The Turned Tag** uses two replica trials to ask how an arrow could reverse. Compare the workshops’ different uses of the same mark, then decide where readers can check both explanations against the remaining evidence.
+
+## Chapter 7: The Missing Tuesday
+
+The Metalworks transfer correction opens the City of Copies. Follow the lending notice from the Record Room to the press and landing. Line up the date and source for each edition, then choose a full reprint or send corrections to existing copies. A reader’s question leads to a separate entry line for the lending hall. The corrected proof lets the player check that the two missing lines have actually been restored.
+
 ## Thirty-minute design audit
 
-Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Eight of the twelve routes reach all 12 concepts and four framework areas within their first estimated half hour. They include both opening traces, the Nile Reading Window, the Cold Store, the Observatory with the quay slip, both Living Forest traces, and the Metalworks. The Royal Records and Model Room path reaches explanation and objectivity at the estimated 31-minute comparison. Other paths and later windows still show gaps. The report keeps the route actions and time estimates visible so unassisted timed playtests can challenge them.
+Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Nine of the thirteen routes reach all 12 concepts and four framework areas within their first estimated half hour. They include both opening traces, the Nile Reading Window, the Cold Store, the Observatory with the quay slip, both Living Forest traces, the Metalworks and the City of Copies. The Royal Records and Model Room path reaches explanation and objectivity at the estimated 31-minute comparison. Other paths and later windows still show gaps. The report also flags windows where a dimension depends on one distinct annotated action. The route actions and estimates are visible so unassisted timed playtests can challenge them.

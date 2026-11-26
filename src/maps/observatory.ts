@@ -8,6 +8,14 @@ function sign(id: string, x: number, y: number, label: string, art: string, text
   return { id, kind: 'sign', x, y, w: 1, h: 1, label, art, text, walkThrough: true, ...options };
 }
 
+function archiveScene(id: string, x: number, y: number, label: string, art: string, node: string,
+  visibleIf?: Condition): Interactable {
+  return { id, kind: 'scene', x, y, w: 1, h: 1, label, art, node, walkThrough: true, visibleIf };
+}
+
+const archiveTimeline: Condition = { flag: 'coast.archive.edition', eq: 'timeline' };
+const archiveRegister: Condition = { flag: 'coast.archive.edition', eq: 'register' };
+
 const harbourWidth = 29;
 const harbourHeight = 21;
 
@@ -43,6 +51,8 @@ export const OBSERVATORY_HARBOUR: MapDef = {
   interactables: [
     { id: 'coast-headland-path', kind: 'door', x: 13, y: 4, w: 1, h: 1, label: 'the steps up to the observatory',
       art: 'coast.waypost', to: { map: 'observatory.station', x: 11, y: 13 } },
+    { id: 'coast-archive-path', kind: 'door', x: 26, y: 7, w: 1, h: 1, label: 'the steps into the Bell Archive',
+      art: 'coast.waypost', to: { map: 'observatory.archive', x: 12, y: 12 } },
     { id: 'coast-nexus-return', kind: 'door', x: 13, y: 18, w: 1, h: 1, label: 'the crossing back to the Nexus',
       art: 'preserved.door', to: { map: 'nexus.archive', x: 29, y: 17 } },
     { id: 'coast-waystone', kind: 'waystone', x: 5, y: 12, w: 1, h: 1,
@@ -77,6 +87,8 @@ export const OBSERVATORY_HARBOUR: MapDef = {
       { flag: 'coast.fold.received', visibleIf: { all: [
         { flag: 'coast.fold.route', eq: 'cart' }, { flag: 'coast.fold.crossed', eq: true },
       ] } }),
+    archiveScene('coast-archive-harbour-card', 24, 8, 'the dated source card at the copy shelf', 'preserved.slip',
+      'coast.archive.quay-card', archiveRegister),
   ],
   lights: [
     { x: 21, y: 15, r: 58, color: 0xa3dbdf }, { x: 9, y: 12, r: 65, color: 0xf5d29b },
@@ -185,5 +197,45 @@ export const OBSERVATORY_INLAND: MapDef = {
   lights: [
     { x: 11, y: 8, r: 67, color: 0xf6d9a0 }, { x: 16, y: 7, r: 48, color: 0xf1e6b0 },
     { x: 5, y: 8, r: 48, color: 0xd3e2d4 }, { x: 22, y: 13, r: 49, color: 0xb4decc },
+  ],
+};
+
+const archiveWidth = 24;
+const archiveHeight = 16;
+
+function archiveFloor(x: number, y: number): string | null {
+  if (x < 1 || y < 0 || x >= archiveWidth - 1 || y >= archiveHeight) return null;
+  if (y < 3) return ['wall-top', 'wall-mid', 'wall-base'][y];
+  if (y < 14 || (x >= 10 && x <= 14)) return 'stone-c';
+  return null;
+}
+
+export const OBSERVATORY_ARCHIVE: MapDef = {
+  id: 'observatory.archive', name: 'Observatory Coast: the Bell Archive', world: 'WORLD-05',
+  width: archiveWidth, height: archiveHeight, music: 'music.archive', ambience: 'archive',
+  background: 0x223645, floor: archiveFloor,
+  blocks: [[1, 0, archiveWidth - 2, 3]], npcs: [], zones: [], spawn: { x: 12, y: 12 },
+  stamps: [
+    { stamp: 'bookshelf', x: 3, y: 2 }, { stamp: 'bookshelf', x: 17, y: 2 },
+    { stamp: 'long-table', x: 6, y: 8 }, { stamp: 'long-table', x: 16, y: 9 },
+    { stamp: 'bench', x: 3, y: 11 }, { stamp: 'plant-tall', x: 20, y: 12 },
+    { stamp: 'crates', x: 19, y: 5 }, { stamp: 'rug-green', x: 11, y: 10 },
+  ],
+  interactables: [
+    { id: 'coast-archive-return', kind: 'door', x: 12, y: 14, w: 1, h: 1, label: 'the steps back to Slate Harbour',
+      art: 'coast.waypost', to: { map: 'observatory.harbour', x: 25, y: 7 } },
+    archiveScene('coast-archive-sleeve', 4, 6, 'the forecast sleeve', 'preserved.folder', 'coast.archive.sleeve'),
+    archiveScene('coast-archive-register', 18, 6, 'the gauge register', 'ledger', 'coast.archive.register'),
+    archiveScene('coast-archive-copy', 12, 7, 'the later copy pinned above its fold', 'preserved.slip', 'coast.archive.copy'),
+    archiveScene('coast-archive-press', 8, 10, 'the archive’s public copy desk', 'forecast-board',
+      'coast.archive.press', { not: { flagSet: 'coast.archive.edition' } }),
+    archiveScene('coast-archive-timeline', 8, 10, 'the forecast and register timeline', 'preserved.display-paired',
+      'coast.archive.timeline', archiveTimeline),
+    archiveScene('coast-archive-index', 8, 10, 'the archive index for the quay card', 'preserved.display-records',
+      'coast.archive.index', archiveRegister),
+  ],
+  lights: [
+    { x: 4, y: 6, r: 61, color: 0xecd8a3 }, { x: 18, y: 6, r: 60, color: 0xa7d2ce },
+    { x: 8, y: 10, r: 66, color: 0xf2ca95 }, { x: 12, y: 13, r: 52, color: 0xb4c8b9 },
   ],
 };

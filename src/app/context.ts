@@ -31,6 +31,7 @@ export interface UIApi {
   openNileModel(): void;
   openForestWatch(site: string): void;
   openMetalTrial(sample: string): void;
+  openCopyComparison(edition: string): void;
   openTalents(atWaystone?: boolean): void;
   openLedger(): void;
   openClue(id: string): void;

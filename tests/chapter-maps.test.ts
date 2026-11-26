@@ -4,7 +4,7 @@ import type { MapDef } from '../src/maps/types';
 import { STAMPS } from '../src/scenes/art';
 import { artKeys, BIG_ART } from '../src/ui/illustrations';
 
-const maps = Object.values(MAPS).filter((map) => ['WORLD-04', 'WORLD-05', 'WORLD-06', 'WORLD-07'].includes(map.world));
+const maps = Object.values(MAPS).filter((map) => ['WORLD-04', 'WORLD-05', 'WORLD-06', 'WORLD-07', 'WORLD-08'].includes(map.world));
 const art = new Set(artKeys());
 
 /** The same walkable tiles as the world scene, including furniture and actors. */
@@ -52,7 +52,11 @@ describe('Chapter layouts after the Nile Archive', () => {
     for (const prop of map.interactables) {
       if (prop.art) expect(art.has(prop.art), prop.id).toBe(true);
       if (prop.kind === 'exhibit' && prop.art && BIG_ART[prop.art]) expect(art.has(BIG_ART[prop.art]), prop.id).toBe(true);
-      if (prop.to) expect(walkable(MAPS[prop.to.map])(prop.to.x, prop.to.y), prop.id).toBe(true);
+      if (prop.to) {
+        const destination = MAPS[prop.to.map];
+        expect(destination, `${prop.id} points to ${prop.to.map}`).toBeDefined();
+        expect(walkable(destination)(prop.to.x, prop.to.y), prop.id).toBe(true);
+      }
     }
   });
 });

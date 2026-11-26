@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest';
+import { compareCopy } from '../src/domain/copyComparison';
 import { forestWatch, type ForestWindow } from '../src/domain/forestWatch';
 import { readMetalSample } from '../src/domain/metalSample';
 import { check } from '../src/domain/rules';
 import { MAPS } from '../src/maps';
-import { coverageGaps, type TimedEncounter } from '../tools/tok-coverage';
+import { coverageGaps, singleActionDimensions, type TimedEncounter } from '../tools/tok-coverage';
 import { Driver } from './driver';
 
 type Play = (driver: Driver) => void;
@@ -479,6 +480,78 @@ function metalworks(): Route {
   return route;
 }
 
+function checkCopyEdition(d: Driver, edition: 'press' | 'landing', missing: string): void {
+  const table = MAPS[d.s.mapId].interactables.find((p) => p.kind === 'copy-compare' && p.node === edition);
+  expect(table, `${edition} has a comparison table`).toBeDefined();
+  expect(check(table?.visibleIf, d.s), `${edition} table visible`).toBe(true);
+  const result = compareCopy(edition);
+  expect(result.before.claim).toBe('The return-slip line moved faster.');
+  expect(result.after.claim).toBe(result.before.claim);
+  expect(result.lost).toEqual([missing]);
+  d.run({ type: 'CompareCopy', edition });
+  expect(d.s.flags[`copies.checked.${edition}`]).toBe(true);
+}
+
+function cityOfCopies(): Route {
+  const route = new Route();
+  // Independent Chapter 7 session. The Trade Hall's transfer addition is already up.
+  route.driver.s.objectivesDone.push('metal.finish');
+  route.at(4, 'Read the clerk’s original observation with the day of the trial attached', ['evidence', 'certainty', 'scope'], (d) => {
+    useDoor(d, 'copies-door');
+    readSign(d, 'copies-source');
+    expect(d.done('copies.arrival')).toBe(true);
+  });
+  route.at(10, 'Line up the original and press proof and find the trial day missing', ['evidence', 'objectivity', 'scope', 'methods-and-tools'], (d) => {
+    useDoor(d, 'copies-press-path');
+    d.talk('copies-presskeeper');
+    checkCopyEdition(d, 'press', 'During Tuesday’s trial');
+  });
+  route.at(16, 'Check the landing copy against the press sheet and follow the loss of the clerk’s credit', ['evidence', 'objectivity', 'certainty', 'methods-and-tools'], (d) => {
+    useDoor(d, 'copies-press-to-landing');
+    checkCopyEdition(d, 'landing', 'Lending Clerk, trial log');
+  });
+  route.at(21, 'Pin the missing lines where each edition dropped them to show how the observation came to sound like a rule', ['truth', 'interpretation', 'explanation', 'scope'], (d) => {
+    useDoor(d, 'copies-landing-to-press');
+    d.talk('copies-presskeeper', 'Pin the missing time');
+    expect(d.done('copies.compare')).toBe(true);
+  });
+  route.at(26, 'Mark the routes of full sheets and stall strips for readers who check different marks and names', ['perspective', 'culture', 'explanation', 'perspectives'], (d) => {
+    useDoor(d, 'copies-press-return');
+    readSign(d, 'copies-route-book');
+    useDoor(d, 'copies-landing-path');
+    d.talk('copies-lendingkeeper', 'Mark where the runners');
+    expect(d.done('copies.trace')).toBe(true);
+  });
+  route.at(30, 'Send a dated correction along the routes that still carry older copies', ['values', 'power', 'responsibility', 'justification', 'ethics'], (d) => {
+    d.talk('copies-lendingkeeper', 'Send correction strips');
+    expect(d.done('copies.publish')).toBe(true);
+    readSign(d, 'copies-response-strip');
+  });
+  route.at(36, 'Read the visitor’s question and see how the corrected trial line still sounded like an entry rule', ['interpretation', 'perspective', 'perspectives'], (d) => {
+    readSign(d, 'copies-reader-note');
+    expect(d.done('copies.feedback')).toBe(true);
+  });
+  route.at(41, 'Give the hall’s entry conditions a separate line from the dated trial observation', ['truth', 'responsibility', 'justification', 'scope', 'ethics'], (d) => {
+    d.talk('copies-lendingkeeper', 'Ask the runners to put a separate entry line');
+    expect(d.done('copies.revise')).toBe(true);
+    readSign(d, 'copies-followup-notice');
+  });
+  route.at(44, 'Check the corrected proof against the landing copy and locate both restored lines', ['evidence', 'certainty', 'objectivity', 'methods-and-tools'], (d) => {
+    const table = MAPS[d.s.mapId].interactables.find((prop) => prop.id === 'copies-compare-proof');
+    expect(table?.node).toBe('proof');
+    expect(check(table?.visibleIf, d.s)).toBe(true);
+    expect(compareCopy('proof').restored).toEqual(['During Tuesday’s trial', 'Lending Clerk, trial log']);
+    d.run({ type: 'CompareCopy', edition: 'proof' });
+    expect(d.done('copies.proof')).toBe(true);
+  });
+  route.at(47, 'Put a larger copy where someone at the bench can read the rule and check its source', ['perspective', 'responsibility', 'values', 'perspectives', 'ethics'], (d) => {
+    d.talk('copies-lendingkeeper', 'Put a larger copy');
+    expect(d.done('copies.access')).toBe(true);
+    readSign(d, 'copies-readable');
+  });
+  return route;
+}
+
 describe('rolling TOK coverage audit', () => {
   it('checks gaps between sampled actions and expires an encounter at the window boundary', () => {
     const encounters: TimedEncounter[] = [
@@ -500,6 +573,17 @@ describe('rolling TOK coverage audit', () => {
     expect(() => coverageGaps(30, [{ minute: 31, action: 'Future step', dimensions: [] }])).toThrow(RangeError);
   });
 
+  it('reports single-action windows without counting repeat attempts twice', () => {
+    const encounters: TimedEncounter[] = [
+      { minute: 4, action: 'Read the label', dimensions: ['evidence', 'scope'] },
+      { minute: 8, action: 'Inspect the mark', dimensions: ['scope'] },
+      { minute: 10, action: 'Read the label', dimensions: ['evidence'] },
+    ];
+    expect(singleActionDimensions(33, encounters)).toEqual(['evidence']);
+    expect(singleActionDimensions(34, encounters)).toEqual(['evidence', 'scope']);
+    expect(singleActionDimensions(29, encounters)).toEqual([]);
+  });
+
   it.each([
     { name: 'Nexus main route into Emberford', end: 42, play: () => nexusToEmberford(false) },
     { name: 'Nexus and Emberford with optional stops', end: 85, play: () => nexusToEmberford(true) },
@@ -513,11 +597,13 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Living Forest from a prepared Chapter 4 save', end: 55, play: () => livingForest(false) },
     { name: 'Living Forest starting with the bridge route book', end: 55, play: () => livingForest(true) },
     { name: 'Metalworks from a prepared Chapter 5 save', end: 50, play: metalworks },
+    { name: 'City of Copies from a prepared Chapter 6 save', end: 51, play: cityOfCopies },
   ])('can execute the modeled route for $name and report its gaps', ({ name, end, play }) => {
     const route = play();
     const gaps = coverageGaps(end, route.encounters);
     if (import.meta.env.MODE !== 'tok-report') return;
     const opening = gaps.filter((gap) => gap.from === 30).map((gap) => gap.dimension);
+    const narrow = singleActionDimensions(end, route.encounters);
     console.log([
       `\n${name} (${end} estimated minutes)`,
       ...route.encounters.map(({ minute, action, dimensions }) => `  ${minute}m  ${action} [${dimensions.join(', ')}]`),
@@ -525,6 +611,7 @@ describe('rolling TOK coverage audit', () => {
       'Trailing 30m gaps (end times of windows):',
       ...(gaps.length ? gaps.map(({ dimension, from, until }) =>
         `  ${dimension}: ${from}m ${until === null ? 'through the trace end' : `to before ${until}m`}`) : ['  None in this trace']),
+      `Only one distinct annotated action in at least one full window: ${narrow.join(', ') || 'none in this trace'}`,
     ].join('\n'));
   });
 });

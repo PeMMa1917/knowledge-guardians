@@ -851,6 +851,54 @@ DRAW['metalworks.window'] = [24, 24, (g) => {
   paper(g, 5, 10, 5, 3);
   paper(g, 14, 10, 5, 3);
 }];
+
+// Print Workshop equipment and the different copies it sends out.
+DRAW['copies.waypost'] = [16, 24, (g) => {
+  R(g, '#413349', 3, 4, 10, 20);
+  R(g, '#765d73', 4, 4, 8, 2);
+  R(g, '#98765c', 1, 6, 14, 11);
+  paper(g, 3, 6, 10, 8);
+  R(g, '#607985', 5, 8, 6, 1);
+  R(g, '#9e8267', 5, 11, 4, 1);
+}];
+DRAW['copies.source'] = [16, 24, (g) => {
+  smallTable(g);
+  paper(g, 2, 3, 12, 11);
+  R(g, '#ab714e', 6, 2, 4, 2);
+  R(g, '#607985', 4, 6, 8, 1);
+  R(g, '#5c706d', 4, 9, 7, 1);
+  R(g, '#5c706d', 4, 11, 5, 1);
+}];
+DRAW['copies.press'] = [16, 24, (g) => {
+  R(g, '#4b3a3a', 1, 4, 2, 20);
+  R(g, '#4b3a3a', 13, 4, 2, 20);
+  R(g, '#9c7252', 1, 4, 14, 3);
+  R(g, '#52606e', 7, 3, 2, 7);
+  R(g, '#d0a575', 5, 2, 6, 2);
+  R(g, '#687380', 4, 9, 8, 3);
+  R(g, '#8b6b52', 2, 14, 12, 5);
+  paper(g, 3, 12, 10, 4);
+}];
+DRAW['copies.landing'] = [16, 24, (g) => {
+  R(g, '#514359', 2, 6, 12, 16);
+  R(g, '#728c91', 1, 4, 14, 10);
+  paper(g, 3, 4, 9, 8);
+  R(g, '#9e8267', 5, 7, 5, 1);
+  R(g, '#a97652', 2, 2, 12, 2);
+}];
+DRAW['copies.reprint'] = [16, 24, (g) => {
+  R(g, '#574453', 2, 3, 12, 19);
+  paper(g, 3, 4, 10, 12);
+  R(g, '#83a0a0', 4, 6, 8, 2);
+  for (const y of [9, 11, 13]) R(g, '#796d59', 5, y, 6, 1);
+}];
+DRAW['copies.strip'] = [16, 24, (g) => {
+  R(g, '#574453', 2, 4, 12, 18);
+  paper(g, 4, 5, 8, 9);
+  R(g, '#a78463', 5, 7, 6, 1);
+  R(g, '#83a0a0', 2, 10, 12, 2);
+  R(g, '#cadeca', 4, 10, 8, 1);
+}];
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

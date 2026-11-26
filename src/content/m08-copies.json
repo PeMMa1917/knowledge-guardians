@@ -1,0 +1,1117 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH7-M01",
+   "world": "WORLD-08",
+   "title": "The Missing Tuesday",
+   "knowledgeQuestion": "What does a claim become when it travels without its limits or its source?",
+   "available": {
+    "objective": "metal.finish"
+   },
+   "objectives": [
+    {
+     "id": "copies.arrival",
+     "title": "Follow the passage to the City of Copies.",
+     "done": {
+      "flag": "copies.arrived",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective"
+      ],
+      "atl": [
+       "self-management"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "digital-society"
+      ]
+     },
+     "skills": []
+    },
+    {
+     "id": "copies.compare",
+     "title": "Line up the press and landing copies with the archive source, then talk to Printer Lark.",
+     "done": {
+      "flagSet": "copies.alignment"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "truth",
+       "objectivity",
+       "interpretation",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN",
+       "TEC"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "digital-society"
+      ]
+     },
+     "skills": [
+      "SK-MED-01",
+      "SK-MED-04"
+     ],
+     "visible": {
+      "objective": "copies.arrival"
+     }
+    },
+    {
+     "id": "copies.trace",
+     "title": "Read the route book and talk through the two delivery paths with Lending Keeper Mina.",
+     "done": {
+      "flagSet": "copies.trace-note"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "explanation",
+       "culture"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "geography",
+       "anthropology",
+       "lang-b"
+      ]
+     },
+     "skills": [
+      "SK-RSC-08",
+      "SK-ICU-18"
+     ],
+     "visible": {
+      "objective": "copies.arrival"
+     }
+    },
+    {
+     "id": "copies.publish",
+     "title": "Help Mina get the trial time and the source back onto the public copies.",
+     "done": {
+      "flagSet": "copies.response"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "communication",
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN",
+       "TEC"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "design-tech",
+       "digital-society"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-ETR-01"
+     ],
+     "visible": {
+      "all": [
+       {
+        "objective": "copies.compare"
+       },
+       {
+        "objective": "copies.trace"
+       }
+      ]
+     },
+     "onComplete": [
+      {
+       "credit": "credit.copies.publish"
+      },
+      {
+       "checkpoint": "City of Copies: restored note sent"
+      }
+     ]
+    },
+    {
+     "id": "copies.feedback",
+     "title": "Find the reader’s message at the landing after the correction goes out.",
+     "done": {
+      "flag": "copies.reader",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "interpretation",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "psychology"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-THK-05"
+     ],
+     "visible": {
+      "objective": "copies.publish"
+     }
+    },
+    {
+     "id": "copies.revise",
+     "title": "Separate the trial’s result from the hall’s entry rule with Mina.",
+     "done": {
+      "flag": "copies.followup",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "geography"
+      ]
+     },
+     "skills": [
+      "SK-THK-15",
+      "SK-WRT-13"
+     ],
+     "visible": {
+      "objective": "copies.feedback"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.copies.revise"
+      },
+      {
+       "journal": "j.copies.revise"
+      },
+      {
+       "checkpoint": "City of Copies: entry note added"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH7-R01",
+   "world": "WORLD-08",
+   "title": "At Reading Distance",
+   "knowledgeQuestion": "Who can check a notice from the place where they wait?",
+   "available": {
+    "objective": "copies.revise"
+   },
+   "objectives": [
+    {
+     "id": "copies.access",
+     "title": "Prepare a copy that a reader can check from the waiting bench.",
+     "done": {
+      "flag": "copies.readable",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "responsibility",
+       "values"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "ART",
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "visual-arts",
+       "lang-langlit",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-WRT-13"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.copies.access"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH7-R02",
+   "world": "WORLD-08",
+   "title": "Two Lines Back",
+   "knowledgeQuestion": "How can a reader verify that a correction restored what was lost?",
+   "available": {
+    "objective": "copies.revise"
+   },
+   "objectives": [
+    {
+     "id": "copies.proof",
+     "title": "Check the corrected trial proof against the landing copy.",
+     "done": {
+      "flag": "copies.checked.proof",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty",
+       "objectivity"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "history"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "characters": [
+  {
+   "id": "copies-presskeeper",
+   "name": "Printer Lark",
+   "role": "Press yard printer",
+   "sprite": "smith-hesper",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "copies.press.after",
+     "if": {
+      "objective": "copies.revise"
+     }
+    },
+    {
+     "node": "copies.press.route",
+     "if": {
+      "objective": "copies.compare"
+     }
+    },
+    {
+     "node": "copies.press.compare",
+     "if": {
+      "all": [
+       {
+        "flag": "copies.checked.press",
+        "eq": true
+       },
+       {
+        "flag": "copies.checked.landing",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "copies.press.welcome"
+    }
+   ]
+  },
+  {
+   "id": "copies-lendingkeeper",
+   "name": "Lending Keeper Mina",
+   "role": "Keeper of the public lending hall",
+   "sprite": "clerk-venn",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "copies.lending.after",
+     "if": {
+      "objective": "copies.revise"
+     }
+    },
+    {
+     "node": "copies.lending.revise.reprint",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "copies.feedback"
+         },
+         {
+          "not": {
+           "flag": "copies.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "copies.response",
+        "eq": "reprint"
+       }
+      ]
+     }
+    },
+    {
+     "node": "copies.lending.revise.strip",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "copies.feedback"
+         },
+         {
+          "not": {
+           "flag": "copies.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "copies.response",
+        "eq": "strip"
+       }
+      ]
+     }
+    },
+    {
+     "node": "copies.lending.wait",
+     "if": {
+      "flagSet": "copies.response"
+     }
+    },
+    {
+     "node": "copies.lending.decide",
+     "if": {
+      "all": [
+       {
+        "objective": "copies.compare"
+       },
+       {
+        "objective": "copies.trace"
+       },
+       {
+        "not": {
+         "flagSet": "copies.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "node": "copies.lending.trace.wait",
+     "if": {
+      "objective": "copies.trace"
+     }
+    },
+    {
+     "node": "copies.lending.trace",
+     "if": {
+      "flag": "copies.route-book",
+      "eq": true
+     }
+    },
+    {
+     "node": "copies.lending.welcome"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "copies.press.welcome",
+   "speaker": "copies-presskeeper",
+   "text": "The landing sent back a notice I barely recognised. The words about a quicker return line are still there. The start and the signature have changed. Line up the proof here and the copy at the landing. Keep the archive line close enough to compare each time.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.press.compare",
+   "speaker": "copies-presskeeper",
+   "text": "We lost Tuesday at the press. By the landing, the clerk’s log was gone too. That left a neat line anyone could say was our rule. I need a record that shows where each change happened.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Keep the three sheets in the order the wording changed.",
+     "next": "copies.alignment.editions",
+     "effects": [
+      {
+       "setFlag": "copies.alignment",
+       "value": "editions"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "copies.checked.press",
+          "eq": true
+         },
+         {
+          "flag": "copies.checked.landing",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "copies.alignment"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Pin the missing time and source beside the copies that dropped them.",
+     "next": "copies.alignment.lines",
+     "effects": [
+      {
+       "setFlag": "copies.alignment",
+       "value": "lines"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "copies.checked.press",
+          "eq": true
+         },
+         {
+          "flag": "copies.checked.landing",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "copies.alignment"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Give me a moment with the copies."
+    }
+   ]
+  },
+  {
+   "id": "copies.alignment.editions",
+   "speaker": "copies-presskeeper",
+   "text": "The dated original starts the row. I’ll leave its two later sheets beside it so a reader can watch the limits fall away as the line travels.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.alignment.lines",
+   "speaker": "copies-presskeeper",
+   "text": "Now the date and signature each have their own row. I’ll keep the gaps marked so a reader can see which copy we corrected.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.press.route",
+   "speaker": "copies-presskeeper",
+   "text": "I’ve kept the comparison here. Find the archive route book and look for Mina at the landing. She knows which copy readers actually see.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.press.after",
+   "speaker": "copies-presskeeper",
+   "text": "A printer asked me to shorten the new sheet. I cut a spare title line. The trial’s day and the clerk’s log still sit beside the claim.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.lending.welcome",
+   "speaker": "copies-lendingkeeper",
+   "text": "Someone left a book on the steps and went home. They read ‘return-slip line’ on a stall copy and thought the hall would turn them away. The archive route book tells us which copies reach the door and which travel with the runners.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.lending.trace",
+   "speaker": "copies-lendingkeeper",
+   "text": "The hall receives full sheets at the door. The runners pin short notes at the stalls. The binders at the door read the names and dates. Market runners learn the stall marks and look to those first. Whoever copies our correction will know one route better than the other.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mark on the route book who can read a sheet at the hall door.",
+     "next": "copies.trace.door",
+     "effects": [
+      {
+       "setFlag": "copies.trace-note",
+       "value": "door"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "copies.route-book",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "copies.trace-note"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Mark where the runners can attach a correction to an older copy.",
+     "next": "copies.trace.stalls",
+     "effects": [
+      {
+       "setFlag": "copies.trace-note",
+       "value": "stalls"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "copies.route-book",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "copies.trace-note"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the route book open."
+    }
+   ]
+  },
+  {
+   "id": "copies.trace.door",
+   "speaker": "copies-lendingkeeper",
+   "text": "I’ll mark the landing stall too. A person queuing for a cart may see the stall copy before they reach the hall.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.trace.stalls",
+   "speaker": "copies-lendingkeeper",
+   "text": "The stall route carries a short correction quickly. I’ll keep the hall’s door on the route as a place to check the original.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.lending.trace.wait",
+   "speaker": "copies-lendingkeeper",
+   "text": "I have the route book here. Bring Lark’s comparison when you’re ready. Any copy we change needs both the trial day and the source.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.lending.decide",
+   "speaker": "copies-lendingkeeper",
+   "text": "I can hang a new sheet at the hall or send strips out to the copies people already use. A full sheet is easy to check at a glance. Strips can go out on both runners’ routes while the stalls are still open. We’ll keep an older copy to show what changed.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang a full reprint with the trial time and source beside the claim.",
+     "next": "copies.response.reprint",
+     "effects": [
+      {
+       "setFlag": "copies.response",
+       "value": "reprint"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "copies.compare"
+       },
+       {
+        "objective": "copies.trace"
+       },
+       {
+        "not": {
+         "flagSet": "copies.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Send correction strips to the existing copies with both time and source.",
+     "next": "copies.response.strip",
+     "effects": [
+      {
+       "setFlag": "copies.response",
+       "value": "strip"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "copies.compare"
+       },
+       {
+        "objective": "copies.trace"
+       },
+       {
+        "not": {
+         "flagSet": "copies.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Hold on to the signed original for now."
+    }
+   ]
+  },
+  {
+   "id": "copies.response.reprint",
+   "speaker": "copies-lendingkeeper",
+   "text": "The new sheet is at the door. People at the stalls still have their older copies. I’ve put an old sheet behind the new one in the record pouch.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.response.strip",
+   "speaker": "copies-lendingkeeper",
+   "text": "The runners will fix the stall copies first. They’ll ask the keepers to put each strip directly beside the old line. The original sheet stays in the archive for anyone who wants to check.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.lending.wait",
+   "speaker": "copies-lendingkeeper",
+   "text": "A reader left a note at the landing. Please take a look. We should hear what a person took from the copy before we send another one.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.lending.revise.reprint",
+   "speaker": "copies-lendingkeeper",
+   "text": "The new sheet tells people it was Tuesday’s trial. A reader still asked whether they need a slip to enter. The slip identified an item being returned. The hall door stays open to readers without slips too.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Give the entry rule its own line below the trial on the reprint.",
+     "next": "copies.update.reprint",
+     "effects": [
+      {
+       "setFlag": "copies.followup",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "copies.feedback"
+         },
+         {
+          "not": {
+           "flag": "copies.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "copies.response",
+        "eq": "reprint"
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll return to the door first."
+    }
+   ]
+  },
+  {
+   "id": "copies.lending.revise.strip",
+   "speaker": "copies-lendingkeeper",
+   "text": "The stall correction arrived. A reader took our restored time as proof that the rule applied last Tuesday. The slip was for people returning something. We can say who can enter without burying the shorter queue note.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Ask the runners to put a separate entry line beside each correction.",
+     "next": "copies.update.strip",
+     "effects": [
+      {
+       "setFlag": "copies.followup",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "copies.feedback"
+         },
+         {
+          "not": {
+           "flag": "copies.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "copies.response",
+        "eq": "strip"
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll return to the landing first."
+    }
+   ]
+  },
+  {
+   "id": "copies.update.reprint",
+   "speaker": "copies-lendingkeeper",
+   "text": "The reader has picked up their book from the steps. They can see Tuesday’s quicker return line and the entry rule together. I’ll keep the revised sheet in the same pouch.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.update.strip",
+   "speaker": "copies-lendingkeeper",
+   "text": "One runner is already back. A stallkeeper reads the entry line aloud beside the trial. The next reader can go to the hall without guessing which line is meant for them.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "copies.lending.after",
+   "speaker": "copies-lendingkeeper",
+   "text": "A reader told me the note is still small from the place where they wait. I can use the old place for the two narrow titles, or we can print one larger copy for that bench.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put a larger copy by the bench with separate lines for the trial and entry rule.",
+     "next": "copies.access.copy",
+     "if": {
+      "all": [
+       {
+        "objective": "copies.revise"
+       },
+       {
+        "not": {
+         "flag": "copies.readable",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll look around the landing."
+    }
+   ]
+  },
+  {
+   "id": "copies.access.copy",
+   "speaker": "copies-lendingkeeper",
+   "text": "There’s room for both lines here. I’ll put the log name in the same type as the date. A reader can check the trial without carrying the whole sheet over to the door.",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "copies.readable",
+     "value": true
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.copies.arrival.1",
+   "objective": "copies.arrival",
+   "depth": 1,
+   "text": "There’s a new crossing from the Nexus."
+  },
+  {
+   "id": "h.copies.arrival.2",
+   "objective": "copies.arrival",
+   "depth": 2,
+   "text": "A printer wants to know why the same record says different things in different places."
+  },
+  {
+   "id": "h.copies.arrival.3",
+   "objective": "copies.arrival",
+   "depth": 3,
+   "text": "Return to the Nexus after adding the Metalworks cart record."
+  },
+  {
+   "id": "h.copies.arrival.4",
+   "objective": "copies.arrival",
+   "depth": 4,
+   "text": "Take the passage to the City of Copies. It leads to the source archive."
+  },
+  {
+   "id": "h.copies.compare.1",
+   "objective": "copies.compare",
+   "depth": 1,
+   "text": "The original gives a time and names who recorded it."
+  },
+  {
+   "id": "h.copies.compare.2",
+   "objective": "copies.compare",
+   "depth": 2,
+   "text": "Check how time and attribution travel on their own lines."
+  },
+  {
+   "id": "h.copies.compare.3",
+   "objective": "copies.compare",
+   "depth": 3,
+   "text": "Use the press proof and the landing copy. Line up the time and source lines at both."
+  },
+  {
+   "id": "h.copies.compare.4",
+   "objective": "copies.compare",
+   "depth": 4,
+   "text": "After comparing both editions, speak with Lark and choose how to preserve the trail of changes."
+  },
+  {
+   "id": "h.copies.trace.1",
+   "objective": "copies.trace",
+   "depth": 1,
+   "text": "A sheet and a strip reach different readers."
+  },
+  {
+   "id": "h.copies.trace.2",
+   "objective": "copies.trace",
+   "depth": 2,
+   "text": "Find the route book in the archive. It records where printed messages travel."
+  },
+  {
+   "id": "h.copies.trace.3",
+   "objective": "copies.trace",
+   "depth": 3,
+   "text": "Take the route book’s paths to Mina at the landing."
+  },
+  {
+   "id": "h.copies.trace.4",
+   "objective": "copies.trace",
+   "depth": 4,
+   "text": "Ask Mina who waits by the door or looks at the stalls, and decide how to mark those two routes."
+  },
+  {
+   "id": "h.copies.publish.1",
+   "objective": "copies.publish",
+   "depth": 1,
+   "text": "Restore the words beside the claim that needs them."
+  },
+  {
+   "id": "h.copies.publish.2",
+   "objective": "copies.publish",
+   "depth": 2,
+   "text": "A new sheet reaches the door. A correction strip can reach stalls that still use the old copies."
+  },
+  {
+   "id": "h.copies.publish.3",
+   "objective": "copies.publish",
+   "depth": 3,
+   "text": "Talk to Mina when the two editions and the distribution route have been checked."
+  },
+  {
+   "id": "h.copies.publish.4",
+   "objective": "copies.publish",
+   "depth": 4,
+   "text": "Choose a full reprint for the hall or send correction strips to existing copies. Save an older version for the record either way."
+  },
+  {
+   "id": "h.copies.feedback.1",
+   "objective": "copies.feedback",
+   "depth": 1,
+   "text": "A reader has found the correction but still has a question."
+  },
+  {
+   "id": "h.copies.feedback.2",
+   "objective": "copies.feedback",
+   "depth": 2,
+   "text": "Check the note by the landing."
+  },
+  {
+   "id": "h.copies.feedback.3",
+   "objective": "copies.feedback",
+   "depth": 3,
+   "text": "Read the reader’s message about bringing a slip into the hall."
+  },
+  {
+   "id": "h.copies.feedback.4",
+   "objective": "copies.feedback",
+   "depth": 4,
+   "text": "Keep the reader’s question with the exact claim the clerk’s trial log supported. The two ask about different things."
+  },
+  {
+   "id": "h.copies.revise.1",
+   "objective": "copies.revise",
+   "depth": 1,
+   "text": "The clerk’s log describes a line on one trial day. The reader is asking who can enter."
+  },
+  {
+   "id": "h.copies.revise.2",
+   "objective": "copies.revise",
+   "depth": 2,
+   "text": "Leave space for both facts. Neither replaces the other."
+  },
+  {
+   "id": "h.copies.revise.3",
+   "objective": "copies.revise",
+   "depth": 3,
+   "text": "Talk to Mina after reading the reader’s message."
+  },
+  {
+   "id": "h.copies.revise.4",
+   "objective": "copies.revise",
+   "depth": 4,
+   "text": "Revise the reprint or the correction strip to explain that the slip was for returns. The entrance remains open."
+  },
+  {
+   "id": "h.copies.access.1",
+   "objective": "copies.access",
+   "depth": 1,
+   "text": "The landing’s small type is hard to read from the bench."
+  },
+  {
+   "id": "h.copies.access.2",
+   "objective": "copies.access",
+   "depth": 2,
+   "text": "Keep the date and the person who wrote the log where a reader can see both."
+  },
+  {
+   "id": "h.copies.access.3",
+   "objective": "copies.access",
+   "depth": 3,
+   "text": "Talk with Mina after revising the public record."
+  },
+  {
+   "id": "h.copies.access.4",
+   "objective": "copies.access",
+   "depth": 4,
+   "text": "Ask for a larger copy with the trial and the entry rule on separate lines."
+  },
+  {
+   "id": "h.copies.proof.1",
+   "objective": "copies.proof",
+   "depth": 1,
+   "text": "The repair can be checked against the copy that reached the landing."
+  },
+  {
+   "id": "h.copies.proof.2",
+   "objective": "copies.proof",
+   "depth": 2,
+   "text": "Look for the corrected trial proof near the runner’s copy."
+  },
+  {
+   "id": "h.copies.proof.3",
+   "objective": "copies.proof",
+   "depth": 3,
+   "text": "Align its time marks and source lines as you did at the press."
+  },
+  {
+   "id": "h.copies.proof.4",
+   "objective": "copies.proof",
+   "depth": 4,
+   "text": "Tuesday’s trial and the Lending Clerk’s log should both reappear. The access rule has its own notice."
+  }
+ ],
+ "criteria": [
+  {
+   "id": "credit.copies.publish",
+   "concept": "responsibility",
+   "maximum": 8
+  },
+  {
+   "id": "credit.copies.revise",
+   "concept": "interpretation",
+   "maximum": 8
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.copies.revise",
+   "title": "The missing Tuesday",
+   "text": "The press copy lost the trial day. The landing copy lost the source. I restored both, then helped Mina keep the trial result and the hall’s entry rule on separate lines."
+  },
+  {
+   "id": "j.copies.access",
+   "title": "At reading distance",
+   "text": "We put a larger copy beside the bench. The trial day and the clerk’s log stayed together. The entry rule had a line of its own."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.copies.revise",
+   "attribute": "open-minded",
+   "when": {
+    "objective": "copies.revise"
+   },
+   "did": "You followed a reader’s different interpretation and revised the public notice."
+  },
+  {
+   "id": "mom.copies.access",
+   "attribute": "caring",
+   "when": {
+    "objective": "copies.access"
+   },
+   "did": "You kept the full record in reach of a reader at the waiting bench."
+  }
+ ]
+}

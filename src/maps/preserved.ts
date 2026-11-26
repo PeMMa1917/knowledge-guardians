@@ -70,6 +70,8 @@ export const PRESERVED_ARCHIVE = room({
       openIf: { objective: 'preserved.publish' }, text: 'The printer will open the workroom when the first display is ready.' },
     { ...door('preserved-door-copper', 3, 8, 'the survey table room', { map: 'preserved.copper', x: 10, y: 11 }),
       openIf: { objective: 'preserved.publish' }, text: 'The keeper is waiting for the first display before opening the survey table.' },
+    { ...door('preserved-door-gallery', 26, 10, 'the exhibition gallery', { map: 'preserved.gallery', x: 11, y: 12 }),
+      openIf: { objective: 'preserved.publish' }, text: 'The gallery is closed until the Cold Store has shared its first display.' },
     door('preserved-door-nexus', 14, 16, 'the door back to the Nexus', { map: 'nexus.archive', x: 35, y: 15 }),
     { id: 'preserved-rest', kind: 'waystone', x: 9, y: 13, w: 1, h: 1, label: 'the Cold Store Waystone', place: 'the Cold Store', art: 'waystone' },
     notice('preserved-directory', 17, 13, 'the Cold Store directory', 'preserved.folder',
@@ -265,5 +267,72 @@ export const PRESERVED_COPPER = room({
   lights: [
     { x: 5, y: 6, r: 56, color: 0xbbdef5 }, { x: 15, y: 6, r: 58, color: 0xf5d5a3 },
     { x: 10, y: 9, r: 75, color: 0xcfe4d9 },
+  ],
+});
+
+/** A display rail keeps its own controls even after the gallery is open. */
+function galleryPanel(id: string, x: number, y: number, label: string, choices: Record<string, string>, visibleIf?: Condition): Interactable {
+  return {
+    id: `preserved-gallery-panel-${id}`, kind: 'scene', node: `gallery.panel.${id}`, x, y, w: 1, h: 1,
+    label, art: 'preserved.folder', walkThrough: true, visibleIf,
+    artBy: { flag: `gallery.panel.${id}`, keys: choices },
+  };
+}
+
+function galleryLayout(layout: string): Condition {
+  return { flag: 'gallery.layout', eq: layout };
+}
+
+function galleryRevision(layout: string, revision: string): Condition {
+  return { all: [galleryLayout(layout), { flag: `gallery.${layout}`, eq: revision }] };
+}
+
+const galleryXin: Condition = { objective: 'xin.o.display' };
+const galleryCopper: Condition = { objective: 'copper.o.display' };
+
+export const PRESERVED_GALLERY = room({
+  id: 'preserved.gallery', name: 'Preserved Lives: Exhibition Gallery', width: 23, height: 15,
+  background: 0x252f36, spawn: { x: 11, y: 12 },
+  npcs: [],
+  stamps: [
+    { stamp: 'bookshelf', x: 2, y: 2 }, { stamp: 'bookshelf', x: 18, y: 2 },
+    { stamp: 'window', x: 10, y: 1 }, { stamp: 'rug-green', x: 10, y: 9 },
+    { stamp: 'bench', x: 2, y: 11 }, { stamp: 'plant-tall', x: 20, y: 11 },
+  ],
+  interactables: [
+    door('preserved-gallery-back', 11, 14, 'the passage back to the Cold Store', { map: 'preserved.archive', x: 25, y: 11 }),
+    galleryPanel('royal', 5, 5, 'the royal display rail', { custody: 'preserved.catalogue', temple: 'preserved.temple' }),
+    galleryPanel('coast', 17, 5, 'the Chinchorro display rail', { sites: 'preserved.coast', conditions: 'preserved.context' }),
+    galleryPanel('xin', 5, 9, 'the Mawangdui display rail', { method: 'preserved.display-paired', source: 'preserved.display-records' }, galleryXin),
+    galleryPanel('copper', 17, 9, 'the copper display rail', { points: 'preserved.display-records', relay: 'preserved.display-paired' }, galleryCopper),
+    notice('preserved-gallery-xin-space', 5, 9, 'the spare sleeve for Mawangdui', 'preserved.display-delayed',
+      'The reconstruction workroom can send a case file here when its printer has prepared a public copy or review request.', { not: galleryXin }),
+    notice('preserved-gallery-copper-space', 17, 9, 'the spare sleeve for the copper record', 'preserved.display-delayed',
+      'The survey table has two equipment records and several ways to show what they leave undecided. It can send a copy to this sleeve.', { not: galleryCopper }),
+    { id: 'preserved-gallery-layout', kind: 'scene', node: 'gallery.layout', x: 11, y: 5, w: 1, h: 1,
+      label: 'the small layout table', art: 'preserved.folder', walkThrough: true, visibleIf: { objective: 'gallery.o.panels' },
+      artBy: { flag: 'gallery.layout', keys: { rooms: 'preserved.display-records', links: 'preserved.display-paired' } } },
+    notice('preserved-gallery-west-desk', 7, 7, 'the royal reading desk', 'preserved.catalogue',
+      'Ramesses II has his own file. The temple record and the custody record have separate sleeves.', galleryLayout('rooms')),
+    notice('preserved-gallery-east-desk', 15, 7, 'the Chinchorro reading desk', 'preserved.context',
+      'This desk keeps the site locations with the record that names the different kinds of preservation.', galleryLayout('rooms')),
+    notice('preserved-gallery-first-link', 11, 7, 'the first connecting strip', 'preserved.slip',
+      'Follow the traces of care from one case to the next.', { all: [galleryLayout('links'), { not: { flagSet: 'gallery.links' } }] }),
+    notice('preserved-gallery-survival-link', 11, 7, 'the replacement connecting strip', 'preserved.display-paired',
+      'What evidence survives in each place? The royal record names a person. The records of the coast identify sites and types of evidence.', galleryRevision('links', 'survival')),
+    notice('preserved-gallery-gap-link', 11, 7, 'the replacement gap strip', 'preserved.display-delayed',
+      'Where does each record leave a gap? The custody record leaves a date open. The site file cannot tell the life of one person there.', galleryRevision('links', 'gaps')),
+    { id: 'preserved-gallery-visitor-rooms', kind: 'scene', node: 'gallery.visitor.rooms', x: 11, y: 10, w: 1, h: 1,
+      label: 'the reader between the desks', art: 'preserved.slip', walkThrough: true, visibleIf: galleryLayout('rooms') },
+    { id: 'preserved-gallery-visitor-links', kind: 'scene', node: 'gallery.visitor.links', x: 11, y: 10, w: 1, h: 1,
+      label: 'the reader’s note on the trail', art: 'preserved.slip', walkThrough: true, visibleIf: galleryLayout('links') },
+    notice('preserved-gallery-copies', 9, 12, 'the entrance reading copies', 'preserved.display-records',
+      'Two large-print folders are accessible from the entrance. The royal and Chinchorro records each keep their own heading and source.', galleryRevision('rooms', 'copies')),
+    notice('preserved-gallery-seat', 11, 8, 'the attendant’s reading stand', 'preserved.display-paired',
+      'The attendant set a chair beside this stand. A visitor can ask for either file and compare it without walking to the other desk.', galleryRevision('rooms', 'seat')),
+  ],
+  lights: [
+    { x: 5, y: 6, r: 68, color: 0xdcc6a0 }, { x: 17, y: 6, r: 65, color: 0xafc8df },
+    { x: 11, y: 10, r: 74, color: 0xd2e4d1 },
   ],
 });

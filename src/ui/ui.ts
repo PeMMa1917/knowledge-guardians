@@ -1,6 +1,7 @@
 import { NILE_TRIALS, NILE_DELIVERIES, type NileDelivery } from '../domain/nileModel';
 import { FOREST_WATCH, FOREST_WINDOWS, forestWatch, type ForestWindow } from '../domain/forestWatch';
 import { METAL_SAMPLES, readMetalSample } from '../domain/metalSample';
+import { compareCopy } from '../domain/copyComparison';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -3227,6 +3228,45 @@ export class UI implements UIApi {
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
+  openCopyComparison(edition: string): void {
+    if (edition !== 'press' && edition !== 'landing' && edition !== 'proof') return;
+    const { before, after, lost, restored } = compareCopy(edition);
+    const columns = h('div', { class: 'two-col' });
+    const status = h('p', { role: 'status', 'aria-live': 'polite' });
+    const aligned = new Set<'time' | 'credit'>();
+    const draw = () => {
+      clear(columns);
+      for (const record of [before, after]) {
+        columns.append(h('section', { class: 'card' },
+          h('h3', {}, record.name),
+          aligned.has('time') ? h('p', { class: 'fine' }, record.time || 'No time mark on this edition.') : null,
+          h('p', {}, record.claim),
+          aligned.has('credit') ? h('p', { class: 'fine' }, record.credit || 'No source line on this edition.') : null));
+      }
+    };
+    const button = (field: 'time' | 'credit', label: string) => {
+      const control = h('button', { type: 'button', 'aria-pressed': 'false', onclick: () => {
+        if (aligned.has(field)) return;
+        aligned.add(field);
+        control.setAttribute('aria-pressed', 'true');
+        draw();
+        if (aligned.size === 2) {
+          const events = ctx.controller.dispatch({ type: 'CompareCopy', edition });
+          if (!events.some((e) => e.kind === 'error')) {
+            status.textContent = restored.length ? `Repair checked. Both lines are back: “${restored.join('”, “')}”.`
+              : `Copy checked. This step lost “${lost.join('”, “')}”.`;
+          }
+        } else {
+          status.textContent = field === 'time' ? 'The time marks are lined up.' : 'The source lines are lined up.';
+        }
+      } }, label);
+      return control;
+    };
+    draw();
+    this.openModal('copy-comparison wide', after.name, this.closeBtn(), h('h2', {}, 'Compare the copies'),
+      columns, h('div', { class: 'row' }, button('time', 'Line up the time marks'), button('credit', 'Line up the source lines')), status);
   }
 
   openMetalTrial(sampleId: string): void {
