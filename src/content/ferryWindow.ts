@@ -134,7 +134,7 @@ function atStop(stop: Stop): DialogueNode {
 }
 
 const objectives: Objective[] = FERRY_WINDOW_CASES.map((entry) => ({
-  id: entry.objective, title: `Fit a repeatable view beside ${entry.accession}.`, visible: { card: entry.card }, essential: false,
+  id: entry.objective, title: `Fit a repeatable view beside “${entry.title}” (${entry.maker}).`, visible: { card: entry.card }, essential: false,
   done: { all: [{ card: entry.card }, { any: WINDOW_METHODS.map((method) => windowMounted(entry, method)) }] },
   weave: { ...model[entry.kind].weave, framework: ['scope', 'perspectives', 'methods-and-tools', 'ethics'],
     atl: ['thinking', 'research', 'social', 'communication'], thinking: { dok: 3, bloom: 'analyse', fink: 'application', solo: 'relational' }, minutes: 5 },

@@ -123,7 +123,7 @@ const objectives: Objective[] = CORRESPONDENCE_CASES.map((record) => {
   const usesClassicalScript = record.slug === 'pontigny-alphabets' || record.slug === 'constantinople-pi';
   const subjects = usesClassicalScript ? ['classics', ...(weave.subjects ?? [])] : weave.subjects;
   return {
-    id: record.objective, title: `Deliver and check the practice letter for ${record.accession}.`, visible: { card: record.card }, essential: false,
+    id: record.objective, title: `Deliver and check the practice letter for “${record.title}”.`, visible: { card: record.card }, essential: false,
     done: { any: CORRESPONDENCE_PLANS.map((plan) => letterDone(record, plan)) },
     weave: { ...weave, subjects, framework: ['scope', 'perspectives', 'methods-and-tools', 'ethics'], aoks: ['LAN', 'HIS', 'HUM'],
       atl: ['communication', 'research', 'social'], thinking: { dok: 3, bloom: 'apply', fink: 'integration', solo: 'relational' }, minutes: 6 },

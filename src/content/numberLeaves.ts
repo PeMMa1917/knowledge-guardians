@@ -22,7 +22,7 @@ const challenges: Record<string, [string, string]> = {
   bakhshali: ['Fit the spare mark between the two digits.', 'Set a separate date tab against the three samples of birch bark.'],
 };
 const objectives: Objective[] = NUMBER_LEAVES.map((entry) => ({
-  id: entry.objective, title: `Give a reader the checked slip for ${entry.accession}.`, essential: false,
+  id: entry.objective, title: `Give a reader the checked slip for “${entry.title}”.`, essential: false,
   visible: { card: entry.card },
   done: { all: [{ card: entry.card }, { flag: `${entry.flag}.trial.a`, eq: true }, { flag: `${entry.flag}.trial.b`, eq: true },
     { any: NUMBER_LEAF_ROUTES.map((route) => ({ all: [

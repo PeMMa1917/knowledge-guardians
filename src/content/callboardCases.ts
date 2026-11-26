@@ -107,7 +107,7 @@ function caseSummary(c: CallboardCase): string {
 }
 
 const objectives: Objective[] = CALLBOARD_CASES.map((c) => ({
-  id: c.objective, title: `Receive a signed reading for ${c.accession}.`, visible: { card: c.card }, essential: false,
+  id: c.objective, title: `Receive a signed reading for “${c.title}”.`, visible: { card: c.card }, essential: false,
   done: { flagSet: `${c.flag}.heard` }, onComplete: [{ journal: `j.${c.objective}` }],
   weave: { concepts: ['evidence', 'interpretation', 'perspective', 'responsibility'], framework: ['scope', 'perspectives', 'methods-and-tools', 'ethics'],
     thinking: { dok: 2, bloom: 'apply', fink: 'human', solo: 'relational' }, atl: ['research', 'communication', 'social'],

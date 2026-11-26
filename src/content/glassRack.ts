@@ -140,12 +140,12 @@ function glassCaseNodes(c: GlassRecord): DialogueNode[] {
 }
 
 const objectives: Objective[] = GLASS_RACK_CASES.flatMap((c): Objective[] => [
-  { id: c.earned, title: `Make a two-view mount for ${c.accession}.`, visible: { card: c.card },
+  { id: c.earned, title: `Make a two-view mount for “${c.title}”.`, visible: { card: c.card },
     essential: false, done: { flagSet: `${c.flag}.heard` }, onComplete: [{ journal: `j.${c.earned}` }],
     weave: { concepts: ['evidence', 'perspective', 'interpretation', 'justification'],
       framework: ['perspectives', 'methods-and-tools', 'scope'], thinking: { dok: 2, bloom: 'apply', fink: 'application', solo: 'relational' },
       atl: ['research', 'thinking', 'communication'], aoks: ['HIS', 'ART'], subjects: ['history', 'visual-arts', 'design-tech'], minutes: 4 } },
-  { id: c.returned, title: `Leave the supported views of ${c.accession} in the Nile Archive.`,
+  { id: c.returned, title: `Leave the supported views of “${c.title}” in the Nile Archive.`,
     visible: { objective: c.earned }, essential: false, done: { flagSet: `${c.flag}.nile` },
     weave: { concepts: ['evidence', 'responsibility', 'explanation'], framework: ['scope', 'ethics', 'methods-and-tools'],
       thinking: { dok: 2, bloom: 'apply', fink: 'integration', solo: 'relational' },

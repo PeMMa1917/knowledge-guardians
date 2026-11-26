@@ -13,7 +13,7 @@ export const MODEL_DESTINATIONS = ['near', 'study'] as const;
 export type ModelDestination = typeof MODEL_DESTINATIONS[number];
 
 const objectives: Objective[] = MODEL_RECORDS.map((record) => ({
-  id: record.objective, title: `Hand over a checked model for ${record.accession}.`, essential: false,
+  id: record.objective, title: `Hand over a checked model for “${record.title}”.`, essential: false,
   visible: { card: record.card },
   done: { all: [{ card: record.card }, { flag: `${record.flag}.trial.0`, eq: true }, { flag: `${record.flag}.trial.1`, eq: true },
     { any: MODEL_DESTINATIONS.map((route) => ({ all: [{ flag: `${record.flag}.send`, eq: route }, { flag: `${record.flag}.received`, eq: route }] })) }] },
