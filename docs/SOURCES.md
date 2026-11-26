@@ -116,3 +116,10 @@ Fern Station and its nearby woodland are fictional. The scripted field watches r
 |---|---|
 | HIS-S17, [Jane Goodall Institute timeline](https://janegoodall.org/jgi-timeline/) | The 1960 entry documents an observation of chimpanzee tool use at Gombe. The game gives a summary rather than a re-created notebook or historical conversation. |
 | HIS-S18, [Jane Goodall Institute, Voices of Gombe](https://janegoodall.org/news/voices-of-gombe-a-network-of-impact/) | The account credits Tanzanian field staff and records a collaboration with Baraka Daniel on a datasheet. This is a separate source about how a record was made and who receives credit. |
+
+## Chapter 15: Council of Inquiry
+
+The Council stages fictional work and keeps two historical reading cards. The cards give methods the player can try on a separate case.
+
+- HIS-S29 supports the account of Ibn al-Haytham’s experimental work on light and vision. [MacTutor biography](https://mathshistory.st-andrews.ac.uk/Biographies/Al-Haytham/)
+- HIS-COUNCIL-01 supports the account of Mill’s reasons for testing received opinions through discussion. The Stanford Encyclopedia confirms the original publication date of 1859. [On Liberty, chapter II](https://standardebooks.org/ebooks/john-stuart-mill/on-liberty/text/chapter-2) · [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/mill-moral-political/)

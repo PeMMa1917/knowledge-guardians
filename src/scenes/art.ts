@@ -10,6 +10,7 @@
  *   civic = public/assets/art/generated/civic_tiles.png (15 x 6 tiles)
  *   voices = public/assets/art/generated/voices_tiles.png (14 x 6 tiles)
  *   island = public/assets/art/generated/island_tiles.png (15 x 6 tiles)
+ *   council = public/assets/art/generated/council_tiles.png (15 x 6 tiles)
  *
  * `collide` is the blocked area in tiles, relative to the stamp's top-left.
  * Leave it out for decorations the player can walk over or behind.
@@ -20,7 +21,7 @@
 export const TILE = 16;
 
 export interface Stamp {
-  sheet: 'ow' | 'in' | 'market' | 'water' | 'civic' | 'voices' | 'island';
+  sheet: 'ow' | 'in' | 'market' | 'water' | 'civic' | 'voices' | 'island' | 'council';
   x: number; y: number; w: number; h: number;
   collide?: [number, number, number, number];
   /** Draw above characters regardless of y (for roofs/awnings that overlap). */
@@ -172,6 +173,21 @@ export const STAMPS: Record<string, Stamp> = {
   'island-maker-bench': { sheet: 'island', x: 9, y: 4, w: 3, h: 2, collide: [0, 1, 3, 1] },
   'island-mast': { sheet: 'island', x: 12, y: 4, w: 1, h: 2, collide: [0, 1, 1, 1] },
   'island-margin-mark': { sheet: 'island', x: 13, y: 4, w: 2, h: 2, collide: [0, 1, 2, 1] },
+
+  // Original Council of Inquiry scales, archive niches and bell rail.
+  'council-blue': { sheet: 'council', x: 0, y: 0, w: 1, h: 1 },
+  'council-inlay': { sheet: 'council', x: 1, y: 0, w: 1, h: 1 },
+  'council-purple': { sheet: 'council', x: 2, y: 0, w: 1, h: 1 },
+  'council-gallery-runner': { sheet: 'council', x: 3, y: 0, w: 1, h: 1 },
+  'council-court': { sheet: 'council', x: 4, y: 0, w: 1, h: 1 },
+  'council-riser': { sheet: 'council', x: 5, y: 0, w: 1, h: 1 },
+  'council-timing-wall': { sheet: 'council', x: 0, y: 1, w: 6, h: 4, collide: [0, 1, 6, 3] },
+  'council-clock-shelf': { sheet: 'council', x: 6, y: 1, w: 4, h: 3, collide: [0, 1, 4, 2] },
+  'council-letter-niche': { sheet: 'council', x: 10, y: 1, w: 5, h: 3, collide: [0, 1, 5, 2] },
+  'council-rail-fence': { sheet: 'council', x: 0, y: 5, w: 6, h: 1, collide: [0, 0, 6, 1] },
+  'council-bench': { sheet: 'council', x: 6, y: 4, w: 3, h: 2, collide: [0, 1, 3, 1] },
+  'council-lamp': { sheet: 'council', x: 9, y: 4, w: 1, h: 2, collide: [0, 1, 1, 1] },
+  'council-bell-rail': { sheet: 'council', x: 10, y: 4, w: 5, h: 2, collide: [0, 1, 5, 1] },
 };
 
 /** Character sheets: 16x32 frames, 4 per row; rows: down, right, up, left. */

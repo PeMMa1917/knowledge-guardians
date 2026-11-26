@@ -1462,6 +1462,60 @@ function islandRouteNotice(g: Ctx, route: 'ridge' | 'ferry' | 'marsh') {
 DRAW['island.ridge'] = [20, 24, (g) => islandRouteNotice(g, 'ridge')];
 DRAW['island.ferry'] = [20, 24, (g) => islandRouteNotice(g, 'ferry')];
 DRAW['island.marsh'] = [20, 24, (g) => islandRouteNotice(g, 'marsh')];
+
+// Council of Inquiry instruments and reading room display cards.
+DRAW['council.waypost'] = [20, 24, (g) => {
+  R(g, '#6f595e', 8, 8, 4, 15);
+  R(g, '#6b6b82', 1, 4, 18, 12);
+  R(g, '#9a94a4', 2, 5, 16, 2);
+  R(g, '#c4a882', 4, 7, 5, 7);
+  R(g, '#e2c59b', 11, 7, 5, 7);
+  R(g, '#827272', 6, 8, 1, 4);
+  R(g, '#827272', 13, 8, 1, 4);
+}];
+
+function councilDial(g: Ctx, x: number, y: number, edge: string, hand: string) {
+  R(g, edge, x + 2, y, 6, 11);
+  R(g, edge, x, y + 2, 10, 7);
+  R(g, '#d9c5a5', x + 2, y + 2, 6, 7);
+  R(g, hand, x + 5, y + 3, 1, 5);
+}
+DRAW['council.clock'] = [24, 24, (g) => {
+  pedestal(g, 1, 15, 22);
+  councilDial(g, 1, 3, '#806970', '#6c5c62');
+  councilDial(g, 13, 3, '#779099', '#5e7177');
+  R(g, '#a88975', 2, 14, 20, 2);
+}];
+DRAW['council.record'] = [22, 24, (g) => {
+  R(g, '#735e6c', 7, 7, 7, 16);
+  paper(g, 1, 3, 20, 13);
+  R(g, '#7d8e99', 3, 5, 16, 2);
+  R(g, '#967d83', 4, 9, 13, 1);
+  R(g, '#867764', 4, 12, 13, 1);
+  R(g, '#9a856e', 17, 10, 2, 3);
+}];
+DRAW['council.relay'] = [22, 24, (g) => {
+  R(g, '#6b626d', 7, 7, 7, 16);
+  paper(g, 1, 3, 20, 13);
+  R(g, '#7a829a', 4, 8, 4, 5);
+  R(g, '#9c818b', 14, 8, 4, 5);
+  R(g, '#8d7e6e', 8, 8, 5, 1);
+  R(g, '#8d7e6e', 9, 10, 4, 1);
+}];
+DRAW['council.optics'] = [20, 24, (g) => {
+  pedestal(g, 1, 15, 18);
+  paper(g, 2, 4, 16, 11);
+  R(g, '#9a8398', 3, 5, 14, 2);
+  R(g, '#8e826d', 4, 10, 6, 1);
+  R(g, '#a78b75', 11, 8, 3, 5);
+  R(g, '#779288', 14, 10, 2, 1);
+}];
+DRAW['council.letter'] = [20, 24, (g) => {
+  pedestal(g, 1, 15, 18);
+  paper(g, 2, 4, 16, 11);
+  R(g, '#758d97', 3, 5, 14, 2);
+  for (const y of [9, 11, 13]) R(g, '#84796c', 4, y, 10 - y % 3, 1);
+}];
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

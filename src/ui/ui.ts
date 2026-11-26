@@ -9,6 +9,7 @@ import { WATER_SETTINGS, waterTrial, type WaterCondition, type WaterSetting } fr
 import { CIVIC_RULES, CIVIC_SAMPLES, civicAllocation, type CivicRule, type CivicSample } from '../domain/civicConsole';
 import { VOICE_SOURCES, VOICE_VIEWS, voiceReading, type VoiceView } from '../domain/voiceReadings';
 import { ISLAND_CRATES, ISLAND_LANDINGS, ISLAND_ROUTES, islandPlan, type IslandLanding, type IslandRoute } from '../domain/islandPlan';
+import { COUNCIL_TRIALS, councilClock, type CouncilTrial } from '../domain/councilClock';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -3235,6 +3236,70 @@ export class UI implements UIApi {
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
+  openCouncilClock(): void {
+    const controller = ctx.controller;
+    const picture = h('canvas', { class: 'mark', width: 172, height: 83, 'aria-hidden': 'true' });
+    const watches = h('div', { class: 'row wrap', role: 'group', 'aria-label': 'Watches on the bench' });
+    const output = h('div', { 'aria-live': 'polite' });
+    const action = h('div', {});
+    const paint = (watch: string, reference?: string) => {
+      const g = picture.getContext('2d');
+      if (!g) return;
+      g.fillStyle = '#342e43'; g.fillRect(0, 0, picture.width, picture.height);
+      const face = (x: number, time?: string) => {
+        g.fillStyle = time ? '#ede1b4' : '#67627e';
+        g.beginPath(); g.arc(x, 35, 27, 0, 2 * Math.PI); g.fill();
+        if (!time) return;
+        const [hour, minute] = time.split(':').map(Number);
+        g.strokeStyle = '#443c44';
+        const hand = (fraction: number, length: number, width: number) => {
+          const angle = 2 * Math.PI * fraction - Math.PI / 2;
+          g.lineWidth = width;
+          g.beginPath(); g.moveTo(x, 35);
+          g.lineTo(x + length * Math.cos(angle), 35 + length * Math.sin(angle)); g.stroke();
+        };
+        hand((hour + minute / 60) / 12, 13, 3);
+        hand(minute / 60, 22, 1);
+      };
+      face(43, watch);
+      face(129, reference);
+      g.fillStyle = '#ede1b4'; g.font = '10px monospace'; g.textAlign = 'center';
+      g.fillText('Watch', 43, 76); g.fillText('Reference', 129, 76);
+    };
+    const select = (trial: CouncilTrial) => {
+      for (const button of watches.querySelectorAll('button')) {
+        button.setAttribute('aria-pressed', String(button.dataset.trial === trial));
+      }
+      const reading = councilClock(trial);
+      paint(reading.watch);
+      output.textContent = `The watch reads ${reading.watch}.`;
+      const compare = h('button', { type: 'button', onclick: () => {
+        paint(reading.watch, reading.reference);
+        output.textContent = `Watch ${reading.watch} · Reference ${reading.reference}.`;
+        const advance = h('button', { type: 'button', onclick: () => {
+          const events = controller.dispatch({ type: 'RunCouncilClock', trial });
+          if (events.some((event) => event.kind === 'error')) return;
+          const nextReference = reading.reference.slice(0, 3) + '01';
+          paint(reading.after, nextReference);
+          output.textContent = `One minute later, watch ${reading.after} · reference ${nextReference}.`;
+          clear(action);
+          watches.querySelector<HTMLButtonElement>('[aria-pressed="true"]')?.focus();
+        } }, 'Advance one minute');
+        action.replaceChildren(advance);
+        advance.focus();
+      } }, 'Uncover the reference clock');
+      action.replaceChildren(compare);
+      compare.focus();
+    };
+    for (const [index, trial] of COUNCIL_TRIALS.entries()) {
+      watches.append(h('button', { type: 'button', 'data-trial': trial, 'aria-pressed': 'false', onclick: () => select(trial) }, `Set watch ${index + 1} on the bench`));
+    }
+    paint(councilClock('working').watch);
+    this.openModal('council-clock wide', 'Watch bench', this.closeBtn(), h('h2', {}, 'Watch bench'),
+      h('p', {}, 'The three watches show the same time. Uncover the reference clock and watch what changes over a minute.'),
+      picture, watches, output, action);
   }
 
   openIslandPlan(): void {

@@ -4,6 +4,10 @@ This file is for the next developer, human or AI. Read [AGENTS.md](AGENTS.md) fi
 
 Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private design is version 2.10. See [the design summary](docs/DESIGN_SUMMARY.md).
 
+## Playtest build
+
+Fifteen chapters are playable. The clean install, 599 automated tests, production build and 42-file asset check passed. Chromium checks included fresh Nexus navigation, the Nile door and two-lead dispatch with the Chapter 1 prerequisites staged, and selected routes through the new worlds. The thirty-minute audit below uses modeled routes and author estimates.
+
 ## What works now
 
 ### Chapter 1 (spec 29.1, the chapter rework, items 1 to 8)
@@ -109,7 +113,7 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private design is
 
 ### Tests
 
-`npm test`: 263 tests pass (content checks, saves and migrations, full playthroughs of all label and Showdown routes, teacher report rules). `npm run build` passes. A full browser run from the title screen to the chapter end had no page errors.
+The original Chapter 1 verification included content checks, saves and migrations, all label and Showdown routes and the teacher report. A full browser run from the title screen to the first chapter end had no page errors.
 
 ## Next steps (in order)
 
@@ -258,6 +262,10 @@ The revised timetable opens the Archive of Voices. At the listening desk, compar
 
 The revised directions open the Island of Models. Compare a route’s delivery time, carrying capacity and crossings of the marked quiet strips. Post a plan for eight crates. When the smaller landing changes how much the ferry can carry, repeat the first route and compare an alternative. Keep both plans visible and add a specific observation of time and place for the quiet strip log. At the dock, learners can also compare the rail with a copied sign and decide how to explain the crew’s waiting signal.
 
+## Chapter 15: When the Hand Moves
+
+The revised delivery sheet opens the Council of Inquiry. Uncover the independent reference for three watches that all read noon. See which watch still matches a minute later. The letter gallery offers Ibn al-Haytham’s experimental approach and Mill’s reason for challenging even an accepted view. Compare a fresh rail check with a dated, sealed repair record and a fallback. Players can also put a practice dial at the rail or the low slot for the approaching crew. After a courier’s reply, choose a spoken relay or big time marks by the shutter and leave a clear reference for the next checker.
+
 ## Opening and return investigations
 
 - **A Page Left Open** gives the visitor’s notebook a branch as soon as play starts. Leave a place for a second observation or a record number another visitor can follow.
@@ -283,4 +291,4 @@ The [learning design review](docs/TOK_ALIGNMENT.md) uses the supplied course gui
 
 ## Thirty-minute design audit
 
-Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Twenty-six of thirty-four routes reach all 12 concepts and four framework areas within their first estimated half hour. Three traces reach every dimension in all modeled windows, including the new route that returns to the Cartographers’ Sea keys. The report also lists the gameplay formats used in each route and where a dimension depends on one distinct action. Time these routes with students to check the estimates.
+Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Twenty-eight of thirty-seven routes reach all 12 concepts and four framework areas within their first estimated half hour. Three traces reach every dimension in all modeled windows. The report also lists the gameplay formats used in each route and where a dimension depends on one distinct action. Time these routes with students to check the estimates.

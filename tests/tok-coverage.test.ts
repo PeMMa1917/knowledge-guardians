@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { civicAllocation, type CivicRule, type CivicSample } from '../src/domain/civicConsole';
 import { compareCopy } from '../src/domain/copyComparison';
+import { councilClock, type CouncilTrial } from '../src/domain/councilClock';
 import { forestWatch, type ForestWindow } from '../src/domain/forestWatch';
 import { islandPlan, type IslandLanding, type IslandRoute } from '../src/domain/islandPlan';
 import { marketComparison, type MarketBasis } from '../src/domain/marketScale';
@@ -31,6 +32,7 @@ const commandFormats: Partial<Record<Command['type'], Format>> = {
   RunWaterTrial: 'tool trials',
   RunCivicTrial: 'tool trials',
   RunIslandPlan: 'tool trials',
+  RunCouncilClock: 'tool trials',
   RunVoiceReading: 'archive tools',
   ReadClue: 'record reading',
   CompareCopy: 'archive tools',
@@ -124,11 +126,12 @@ function watchForest(d: Driver, site: string, window: ForestWindow) {
 
 // Times below are author estimates of when these actions could finish. This
 // fixture exercises entry conditions and domain commands, not walking or reading speed.
-function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'rests' | 'ribbon'): Route {
+function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'rests' | 'ribbon' | 'print'): Route {
   const route = new Route();
   const explore = style !== 'main';
   const records = style === 'records';
   const guide = style === 'guide';
+  const print = style === 'print';
   const arrivalExtra = explore ? 1 : 0;
   const arrival = records ? 'Leave a stand number with the copied claim, then find that stand on the plan'
     : explore ? 'Clip a blank page beside the archive’s words and open it for a second view'
@@ -182,7 +185,27 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
       expect(d.done('nexus.rest.checked')).toBe(true);
     });
   }
-  const openingMinutes = arrivalExtra + (guide ? 4 : 0) + (style === 'rests' ? 5 : 0);
+  if (print) {
+    route.at(7, 'Recover a ferry print by changing how the same two sheets line up', [
+      'objectivity', 'explanation', 'evidence', 'interpretation', 'truth', 'methods-and-tools',
+    ], (d) => {
+      walkScene(d, 'nexus-print-setup', 'nexus.print.edge-placed');
+      expect(d.e.node('nexus.print.edge').text).toContain('sits out in the river');
+      walkScene(d, 'nexus-print-edge', 'nexus.print.pins-placed');
+      expect(d.s.flags['nexus.print.tried-edge']).toBe(true);
+      expect(d.e.node('nexus.print.pinned').text).toContain('marks now meet the ends');
+    });
+    route.at(9, 'Send both traceable layers to the next printer and see who must wait for the finished proof', [
+      'values', 'perspective', 'perspectives', 'scope', 'responsibility', 'justification', 'ethics',
+    ], (d) => {
+      walkScene(d, 'nexus-print-pinned', 'nexus.print.layers');
+      expect(d.done('nexus.print.checked')).toBe(true);
+      expect(d.s.flags['nexus.print.edition']).toBe('layers');
+      walkScene(d, 'nexus-print-layers');
+      expect(d.e.node('nexus.print.layers').text).toContain('The shelter will get a proof after the next printing');
+    });
+  }
+  const openingMinutes = arrivalExtra + (guide ? 4 : 0) + (style === 'rests' || print ? 5 : 0);
   if (explore) route.at(5 + openingMinutes, 'Direct visitors toward the practical pen', ['scope', 'perspective'], useProp('nexus.entrance-guide', 'use'));
   route.at(9 + openingMinutes, 'Compare the patent, model and pen dates', ['scope', 'evidence', 'certainty', 'interpretation', 'methods-and-tools'], (d) => {
     for (const exhibit of ['OBJ-001-A', 'OBJ-001-B', 'OBJ-001-C']) d.run({ type: 'InspectExhibit', exhibit });
@@ -267,7 +290,24 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
       readSign(d, 'washhouse-step-note');
     });
   }
-  const emberfordExtra = extra + (guide ? 11 : 0);
+  if (print) {
+    route.at(38, 'Bring back the passed-over museum entry and workshop history for the same one-name tag', [
+      'evidence', 'truth', 'certainty', 'interpretation', 'scope', 'methods-and-tools',
+    ], (d) => {
+      walkScene(d, 'hands-strap', 'hands.look');
+      walkScene(d, 'hands-tray', 'hands.receipt.held');
+      expect(d.done('hands.o.compare')).toBe(true);
+      expect(d.s.cards).toEqual(expect.arrayContaining(['card.biro-object', 'card.dpma-history']));
+    });
+    route.at(41, 'Keep the short mark for deliveries and clip the fuller attribution behind it', [
+      'power', 'perspective', 'perspectives', 'justification', 'responsibility', 'ethics', 'scope',
+    ], (d) => {
+      walkScene(d, 'hands-return', 'hands.end.concede');
+      expect(d.done('hands.o.revise')).toBe(true);
+      expect(readSign(d, 'hands-concede')).toContain('Idris left room for another tag');
+    });
+  }
+  const emberfordExtra = extra + (guide ? 11 : 0) + (print ? 7 : 0);
   route.at(33 + emberfordExtra, 'Question a seller about his blade and inspect the object', ['power', 'evidence'], (d) => {
     d.talk('merchant-corvan', 'How do you know');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-003-AE' });
@@ -1441,6 +1481,116 @@ function islandOfModels(checkDockSignal = false): Route {
   return route;
 }
 
+function checkCouncilClock(d: Driver, trial: CouncilTrial, expected: ReturnType<typeof councilClock>): void {
+  const clock = MAPS[d.s.mapId].interactables.find((prop) => prop.id === 'council-clock');
+  expect(clock?.kind).toBe('council-clock');
+  expect(check(clock?.visibleIf, d.s)).toBe(true);
+  expect(councilClock(trial)).toEqual(expected);
+  d.run({ type: 'RunCouncilClock', trial });
+  expect(d.s.flags[`council.trial.${trial}`]).toBe(true);
+}
+
+function councilOfInquiry(placePracticeDial = false): Route {
+  const route = new Route();
+  const extra = placePracticeDial ? 4 : 0;
+  // Prepared Chapter 14 save. Both Island landing sheets still exist.
+  route.driver.s.objectivesDone.push('island.finish');
+  route.driver.s.flags['island.revision'] = 'ridge';
+  route.at(4, 'Read the draft about a watch that agrees at one glance and ask when the shutter closes', [
+    'scope', 'perspective',
+  ], (d) => {
+    useDoor(d, 'council-door');
+    expect(d.done('council.arrival')).toBe(true);
+    d.talk('council-keeper');
+    expect(readSign(d, 'council-draft')).toContain('AT A GLANCE IS WORKING');
+  });
+  route.at(9, 'Find the dated repair seal and distinguish the signed past check from a new reading', [
+    'evidence', 'scope', 'interpretation', 'methods-and-tools',
+  ], (d) => {
+    readSign(d, 'council-repair-record');
+    if (placePracticeDial) expect(readSign(d, 'council-low-slot')).toContain('misses the shared handover');
+    expect(d.s.flags['council.repair.read']).toBe(true);
+    expect(d.done('council.sources')).toBe(false);
+  });
+  route.at(17, 'Read the historical accounts of checking claims and find the drum that is set independently of the watch', [
+    'evidence', 'perspective', 'perspectives', 'scope', 'methods-and-tools',
+  ], (d) => {
+    useDoor(d, 'council-gallery-path');
+    expect(readSign(d, 'council-optics-letter')).toContain('Ibn al-Haytham, Book of Optics');
+    expect(readSign(d, 'council-mill-letter')).toContain('John Stuart Mill, On Liberty, 1859');
+    expect(readSign(d, 'council-rail-record')).toContain('The watch does not set the drum');
+    if (placePracticeDial) {
+      expect(readSign(d, 'council-crew-slate')).toContain('The next checker can ask how they set it');
+      expect(d.done('council.bench.sources')).toBe(true);
+    }
+    d.talk('council-reader');
+    expect(d.done('council.sources')).toBe(true);
+  });
+  if (placePracticeDial) route.at(21, 'Let apprentices use the dial at a shared handover and ask who set each mark', [
+    'power', 'values', 'culture', 'responsibility', 'justification', 'ethics', 'perspective', 'perspectives',
+  ], (d) => {
+    d.talk('council-reader', 'Find a place for the spare practice dial', 'Set the practice dial at the shared rail');
+    expect(d.s.flags['council.bench.layout']).toBe('rail');
+    expect(readSign(d, 'council-bench-rail')).toContain('during the handover');
+    expect(d.done('council.bench')).toBe(true);
+  });
+  route.at(23 + extra, placePracticeDial ? 'Test the draft against two watches that agree at first and behave differently one minute later'
+    : 'Start the working and stopped watches at the same time and compare what changes a minute later', [
+    'evidence', 'explanation', 'objectivity', 'certainty', 'methods-and-tools',
+    ...(placePracticeDial ? ['truth'] as const : []),
+  ], (d) => {
+    useDoor(d, 'council-gallery-return');
+    d.talk('council-keeper');
+    checkCouncilClock(d, 'working', { watch: '12:00', reference: '12:00', after: '12:01' });
+    checkCouncilClock(d, 'matched', { watch: '12:00', reference: '12:00', after: '12:00' });
+    expect(d.done('council.compare')).toBe(false);
+    if (placePracticeDial) expect(readSign(d, 'council-draft')).toContain('AT A GLANCE IS WORKING');
+  });
+  route.at(28 + extra, 'Test the stopped watch against a different reference and check the fix to the one-glance instruction', [
+    'truth', 'certainty', 'explanation', 'objectivity', 'interpretation', 'scope', 'methods-and-tools',
+  ], (d) => {
+    checkCouncilClock(d, 'drift', { watch: '12:00', reference: '11:00', after: '12:00' });
+    expect(d.done('council.compare')).toBe(true);
+    d.talk('council-keeper');
+    expect(readSign(d, 'council-checked')).toContain('A stopped watch can match the reference at one moment');
+  });
+  route.at(34 + extra, 'Use the dated repair record for this shift and keep an independent check as a fallback', [
+    'power', 'values', 'responsibility', 'justification', 'ethics', 'scope',
+  ], (d) => {
+    useDoor(d, 'council-gallery-path');
+    d.talk('council-reader', 'Use the dated repair record and its fallback');
+    expect(d.done('council.publish')).toBe(true);
+    expect(d.s.flags['council.response']).toBe('record');
+    readSign(d, 'council-result-record');
+  });
+  route.at(41 + extra, 'Read the courier’s question and check what gets through as the shutter falls', [
+    'evidence', 'perspective', 'perspectives', 'scope', 'interpretation',
+  ], (d) => {
+    readSign(d, 'council-reader-note');
+    expect(d.done('council.reader')).toBe(false);
+    readSign(d, 'council-shutter-view');
+    expect(d.done('council.reader')).toBe(true);
+  });
+  route.at(47 + extra, 'Apply the Island’s practice of keeping both records and relay each time mark across the short overlap', [
+    'power', 'values', 'perspectives', 'responsibility', 'justification', 'ethics', 'methods-and-tools',
+  ], (d) => {
+    d.talk('council-reader', 'I kept both landing sheets on the island', 'Set a spoken relay across the short overlap');
+    expect(d.done('council.finish')).toBe(true);
+    expect(d.s.flags['council.response']).toBe('record');
+    expect(d.s.flags['council.revision']).toBe('relay');
+    readSign(d, 'council-result-record');
+    expect(readSign(d, 'council-revised-relay')).toContain('repeats the pair back');
+  });
+  route.at(53 + extra, 'Leave a large copy so the next checker can see who checked which reference and when', [
+    'evidence', 'perspective', 'scope', 'responsibility', 'methods-and-tools', 'ethics',
+  ], (d) => {
+    d.talk('council-reader', 'Leave a wide copy of the check instructions');
+    expect(d.done('council.copy')).toBe(true);
+    readSign(d, 'council-check-copy');
+  });
+  return route;
+}
+
 describe('rolling TOK coverage audit', () => {
   it('checks gaps between sampled actions and expires an encounter at the window boundary', () => {
     const encounters: TimedEncounter[] = [
@@ -1480,6 +1630,7 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Nexus with the Arrow at the Turn and the Emberford washhouse', end: 101, play: () => nexusToEmberford('guide') },
     { name: 'Nexus with the Uncounted Reader and two reading rests', end: 91, play: () => nexusToEmberford('rests') },
     { name: 'Nexus with the separate grant and museum date rails', end: 89, play: () => nexusToEmberford('ribbon') },
+    { name: 'Nexus with the slipped print and Emberford’s one-name tag', end: 98, play: () => nexusToEmberford('print') },
     { name: 'Nile first visit from a prepared Chapter 1 save', end: 50, play: () => nileDispatch() },
     { name: 'Nile first visit with the Reading Window', end: 53, play: () => nileDispatch('reading-window') },
     { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch('borrowed-mark') },
@@ -1508,6 +1659,8 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Archive of Voices with the approved queue excerpt', end: 63, play: () => archiveOfVoices(true) },
     { name: 'Island of Models from a prepared Chapter 13 save', end: 67, play: () => islandOfModels() },
     { name: 'Island of Models with the dock’s square-board check', end: 71, play: () => islandOfModels(true) },
+    { name: 'Council of Inquiry from a prepared Chapter 14 save', end: 56, play: () => councilOfInquiry() },
+    { name: 'Council of Inquiry with the shared practice dial', end: 60, play: () => councilOfInquiry(true) },
   ])('can execute the modeled route for $name and report its gaps', ({ name, end, play }) => {
     const route = play();
     const gaps = coverageGaps(end, route.encounters);

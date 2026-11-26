@@ -9,6 +9,7 @@ import { waterTrial, type WaterSetting } from './waterGate';
 import { civicAllocation, type CivicRule, type CivicSample } from './civicConsole';
 import { voiceReading, type VoiceSource, type VoiceView } from './voiceReadings';
 import { islandPlan, type IslandLanding, type IslandRoute } from './islandPlan';
+import { councilClock, type CouncilTrial } from './councilClock';
 /**
  * Domain engine. Scenes send typed commands; the engine checks preconditions,
  * computes ONE valid state transition and returns events for the view to show
@@ -114,6 +115,7 @@ export type Command =
   | { type: 'RunCivicTrial'; sample: CivicSample; rule: CivicRule }
   | { type: 'RunVoiceReading'; source: VoiceSource; view: VoiceView }
   | { type: 'RunIslandPlan'; route: IslandRoute; landing: IslandLanding }
+  | { type: 'RunCouncilClock'; trial: CouncilTrial }
   | { type: 'BuildLabel'; kit: string; subject: string; criterion: string; limit: string }
   | { type: 'TurnLock'; lock: string; choice: Record<string, string> }
   | { type: 'ShowdownStart'; showdown: string; relaxed?: boolean }
@@ -569,6 +571,13 @@ export class Engine {
           if (prevPen !== undefined && changed === 2) fx.push({ addNum: 'sim.unfair', by: 1 });
           s = apply(fx, s, out);
           events.push({ kind: 'simulation', result: { pen: cmd.pen, surface: cmd.surface, markQuality: m.q, note: m.note, fairTest: fair, testCount: count } });
+          break;
+        }
+        case 'RunCouncilClock': {
+          if (s.mapId !== 'council.hall' || s.flags['council.arrived'] !== true) throw new Error('Use the watch bench in the Council of Inquiry.');
+          councilClock(cmd.trial);
+          const key = `council.trial.${cmd.trial}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
         case 'RunIslandPlan': {

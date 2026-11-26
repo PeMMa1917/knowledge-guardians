@@ -39,6 +39,7 @@ export interface UIApi {
   openCivicConsole(): void;
   openVoicesDesk(): void;
   openIslandPlan(): void;
+  openCouncilClock(): void;
   openTalents(atWaystone?: boolean): void;
   openLedger(): void;
   openClue(id: string): void;
