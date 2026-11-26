@@ -24,7 +24,7 @@ export function printAdventureJournal(
   view: AdventureJournalView, options: AdventureExportOptions, onUnavailable: () => void,
 ): void {
   closeActivePrint?.();
-  const { title, scoped, entries, notes, portfolio, quests, questions, references, encyclopedia } = adventureExportSnapshot(view, options);
+  const { title, scoped, entries, notes, untaggedReflections, portfolio, quests, questions, references, encyclopedia } = adventureExportSnapshot(view, options);
   const printedAt = new Date().toISOString();
   const snapshot = h('main', { class: 'adventure-print' },
     h('header', {}, h('h1', {}, printProse(title)),
@@ -37,6 +37,9 @@ export function printAdventureJournal(
     notes.length ? h('section', {}, h('h2', {}, 'My notes and reflections'),
       notes.map((note) => h('article', {}, h('p', { class: 'print-details' }, printProse(note.details)),
         h('p', {}, printProse(note.text)), printReflections(note.reflections)))) : null,
+    untaggedReflections.length ? h('section', {}, h('h2', {}, 'My reflections on untagged encounters'),
+      untaggedReflections.map((entry) => h('article', {}, h('h3', {}, printProse(entry.title)),
+        h('p', { class: 'print-details' }, printProse(entry.details)), printReflections(entry.reflections)))) : null,
     portfolio.length ? h('section', {}, h('h2', {}, 'My Portfolio writing'),
       portfolio.map((entry) => h('article', {}, h('h3', {}, printProse(entry.title)),
         h('p', { class: 'print-details' }, printProse(entry.details)), h('p', {}, printProse(entry.text))))) : null,

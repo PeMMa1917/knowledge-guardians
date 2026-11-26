@@ -56,7 +56,7 @@ const styles = `${xmlHeader}<w:styles xmlns:w="${WORD}">
 
 /** Pack a real Office Open XML document. The ZIP and document are made in memory. */
 export function adventureDocx(view: AdventureJournalView, options: AdventureExportOptions): Uint8Array<ArrayBuffer> {
-  const { title, scoped, entries, notes, portfolio, quests, questions, references, encyclopedia } = adventureExportSnapshot(view, options);
+  const { title, scoped, entries, notes, untaggedReflections, portfolio, quests, questions, references, encyclopedia } = adventureExportSnapshot(view, options);
   const links = new Map<string, string>();
   const hyperlink = (text: string, url: string, italic?: boolean) => {
     const id = links.get(url) ?? `rId${links.size + 2}`;
@@ -81,6 +81,13 @@ export function adventureDocx(view: AdventureJournalView, options: AdventureExpo
     for (const note of notes) {
       blocks.push(paragraph(note.details, 'JournalDetails'), paragraph(note.text));
       addReflections(note.reflections);
+    }
+  }
+  if (untaggedReflections.length) {
+    blocks.push(paragraph('My reflections on untagged encounters', 'Heading1'));
+    for (const entry of untaggedReflections) {
+      blocks.push(paragraph(entry.title, 'Heading2'), paragraph(entry.details, 'JournalDetails'));
+      addReflections(entry.reflections);
     }
   }
   if (portfolio.length) {

@@ -142,6 +142,37 @@ describe('full adventure journal export', () => {
     expect(rels).toContain('https://collection.example/item?id=2&amp;view=exact#part');
   });
 
+  it('gives private untagged writing a separate opt-in within the date scope', () => {
+    const view = fixture();
+    view.entries[0].topics = { concepts: ['evidence'] };
+    view.entries[1].reflections = [{ id: 'r1', prompt: 'Which road did I take?', response: '  My answer from this encounter.\n\nAnother line.  ' },
+      { id: 'r2', prompt: 'An unanswered prompt.' }];
+    view.entries.push({ ...view.entries[1], id: 'earlier', title: 'Earlier event', at: '2025-01-01T12:00:00Z' });
+    const scoped = { ...options, selection: { now: new Date(at), time: { kind: 'session' as const, startedAt: Date.parse(at) },
+      topics: { concepts: ['evidence'] as const }, includeUntaggedWriting: true } };
+    const snapshot = adventureExportSnapshot(view, scoped);
+    expect(snapshot.entries.map(({ title }) => title)).toEqual(['First evidence']);
+    expect(snapshot.notes.map(({ text }) => text)).toEqual([view.notes[0].text]);
+    expect(snapshot.portfolio.map(({ text }) => text)).toEqual([view.portfolioWriting![0].text]);
+    expect(snapshot.untaggedReflections).toMatchObject([{ title: 'Second event', reflections: [
+      { prompt: 'Which road did I take?', response: '  My answer from this encounter.\n\nAnother line.  ' },
+    ] }]);
+    const xml = strFromU8(unzipSync(adventureDocx(view, scoped))['word/document.xml']);
+    expect(paragraphs(xml)).toContain('  My answer from this encounter.\n\nAnother line.  ');
+    expect(paragraphs(xml)).not.toContain('I checked a second explanation.');
+    expect(xml).not.toContain('Earlier event');
+    expect(xml).not.toContain('An unanswered prompt');
+    const privateOff = adventureExportSnapshot(view, { ...scoped, includeNotes: false });
+    expect(privateOff.untaggedReflections).toEqual([]);
+    expect(privateOff.notes).toEqual([]);
+    expect(privateOff.portfolio).toEqual([]);
+    expect(privateOff.entries[0].reflections?.[0].response).toBeUndefined();
+    const unchecked = adventureExportSnapshot(view, { ...scoped, selection: { ...scoped.selection, includeUntaggedWriting: false } });
+    expect(unchecked.untaggedReflections).toEqual([]);
+    expect(unchecked.notes).toEqual([]);
+    expect(unchecked.portfolio).toEqual([]);
+  });
+
   it('renders all concept forms as bold, underlined palette colours and retains citation italics', () => {
     const { document } = readWord(fixture());
     for (const [concept, colours] of Object.entries(CONCEPT_COLOURS)) {

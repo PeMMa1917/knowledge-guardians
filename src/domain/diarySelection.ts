@@ -1,4 +1,4 @@
-import type { AdventureJournalView } from './adventureJournal';
+import type { AdventureJournalView, JournalEntry, JournalReflection } from './adventureJournal';
 import type { EncyclopediaLink } from './encyclopedia';
 import type { FrameworkPart } from './learningLevels';
 import type { AOK, Concept, Weave } from './types';
@@ -29,6 +29,7 @@ export interface DiarySelection {
   time: DiaryTime;
   topics?: DiaryTopics;
   now: Date;
+  includeUntaggedWriting?: boolean;
 }
 
 export function hasDiaryTopics(topics?: DiaryTopics): boolean {
@@ -90,7 +91,10 @@ function matchedEncyclopedia(entries: AdventureJournalView['entries']): Encyclop
   return [...links.values()];
 }
 
-export type DiarySelectionResult = { view: AdventureJournalView; error?: never } | { view?: never; error: string };
+type UntaggedDiaryReflection = Pick<JournalEntry, 'title' | 'at' | 'mapId'> & { reflections: JournalReflection[] };
+
+export type DiarySelectionResult = { view: AdventureJournalView; untaggedReflections?: UntaggedDiaryReflection[]; error?: never }
+  | { view?: never; error: string };
 
 /** Filter by recorded time and explicit tags. Within a topic group any selected value can match. */
 export function selectDiary(view: AdventureJournalView, selection?: DiarySelection): DiarySelectionResult {
@@ -104,13 +108,20 @@ export function selectDiary(view: AdventureJournalView, selection?: DiarySelecti
     const instant = at ? Date.parse(at) : NaN;
     return instant >= window[0] && instant < window[1];
   };
-  const entries = view.entries.filter((entry) => within(entry.at) && matchesTopics(selection.topics, entry.topics));
+  const datedEntries = view.entries.filter(({ at }) => within(at));
+  const entries = datedEntries.filter(({ topics }) => matchesTopics(selection.topics, topics));
+  const includeStandalone = !topicFilter || selection.includeUntaggedWriting === true;
+  const untaggedReflections = topicFilter && includeStandalone ? datedEntries.flatMap(({ title, at, mapId, topics, reflections }) => {
+    if (hasDiaryTopics(topics)) return [];
+    const answered = reflections?.filter(({ response }) => response !== undefined);
+    return answered?.length ? [{ title, at, mapId, reflections: answered }] : [];
+  }) : [];
   const keptSpecimens = new Set(entries.flatMap((entry) => entry.specimenReference ? [entry.specimenReference] : []));
-  return { view: {
+  return { untaggedReflections, view: {
     ...view,
     entries,
-    notes: topicFilter ? [] : view.notes.filter((note) => within(note.at)),
-    portfolioWriting: topicFilter ? [] : view.portfolioWriting?.filter((writing) => within(writing.at)),
+    notes: includeStandalone ? view.notes.filter((note) => within(note.at)) : [],
+    portfolioWriting: includeStandalone ? view.portfolioWriting?.filter((writing) => within(writing.at)) : [],
     quests: [],
     references: view.references.filter(({ key }) => keptSpecimens.has(key)),
     encyclopedia: matchedEncyclopedia(entries),

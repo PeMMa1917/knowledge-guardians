@@ -29,11 +29,13 @@ export function safeJournalLink(url: string): boolean {
 
 /** Select the same complete diary for Word and print. A shareable copy can omit personal writing. */
 export function adventureExportSnapshot(view: AdventureJournalView, options: AdventureExportOptions) {
-  const selected = selectDiary(view, options.selection);
+  const includePersonal = options.includeNotes !== false;
+  const selection = !includePersonal && options.selection?.includeUntaggedWriting
+    ? { ...options.selection, includeUntaggedWriting: false } : options.selection;
+  const selected = selectDiary(view, selection);
   if (!selected.view) throw new Error(selected.error);
   const scoped = selected.view !== view;
   view = selected.view;
-  const includePersonal = options.includeNotes !== false;
   const notes = includePersonal ? view.notes : [];
   const details = (kind: string, at: string | null, mapId: string | null) =>
     [kind, journalUtc(at), mapId ? options.placeName(mapId) : null].filter(Boolean).join(' · ');
@@ -58,6 +60,9 @@ export function adventureExportSnapshot(view: AdventureJournalView, options: Adv
         : note.kind === 'question' ? (note.resolved ? 'Resolved question' : 'Open question') : kindLabels[note.kind], note.at, note.mapId),
       text: note.text, ...reflections(note.reflections),
     })),
+    untaggedReflections: includePersonal ? (selected.untaggedReflections ?? []).map((entry) => ({
+      title: entry.title, details: details('Private reflection', entry.at, entry.mapId), ...reflections(entry.reflections),
+    })) : [],
     portfolio: includePersonal ? (view.portfolioWriting ?? []).map((entry) => ({
       title: entry.title, text: entry.text,
       details: details(entry.draft ? 'Portfolio draft' : 'Portfolio reflection', entry.at ?? null, entry.mapId ?? null),

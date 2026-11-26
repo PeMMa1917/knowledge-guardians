@@ -38,7 +38,7 @@ function topicOptions<T extends string>(title: string, values: readonly T[], lab
   const options = values.map((value) => ({ value, input: h('input', { type: 'checkbox' }) }));
   return {
     element: h('fieldset', {}, h('legend', {}, title),
-      ...options.map(({ value, input }) => h('label', { class: 'check' }, input, ` ${labels[value]}`))),
+      ...options.map(({ value, input }) => h('label', { class: 'check' }, input, h('span', {}, labels[value])))),
     selected: () => options.filter(({ input }) => input.checked).map(({ value }) => value),
     clear: () => { for (const { input } of options) input.checked = false; },
   };
@@ -46,6 +46,8 @@ function topicOptions<T extends string>(title: string, values: readonly T[], lab
 
 function exportControls(controller: GameController, initialView: AdventureJournalView): HTMLElement {
   const include = h('input', { type: 'checkbox', checked: true });
+  const untagged = h('input', { type: 'checkbox' });
+  const untaggedOption = h('label', { class: 'check', hidden: true }, untagged, ' Also include my private writing without TOK tags within this time range');
   const status = h('p', { role: 'status', class: 'fine' });
   const range = h('select', {},
     h('option', { value: 'all' }, 'All time'), h('option', { value: 'session' }, 'This session'),
@@ -60,7 +62,7 @@ function exportControls(controller: GameController, initialView: AdventureJourna
   const themes = topicOptions('Optional themes', DIARY_THEMES, AOK_NAMES);
   const groups = [concepts, framework, areas, themes];
   const topics = h('details', { class: 'diary-export-topics' }, h('summary', {}, 'Filter by TOK topics'),
-    h('p', { class: 'fine' }, 'Choose any topics within a group. Entries must match each selected group. Private notes and Portfolio writing can be selected by date.'),
+    h('p', { class: 'fine' }, 'Choose any topics within a group. Diary entries must match each selected group.'),
     h('div', { class: 'diary-export-groups' }, ...groups.map(({ element }) => element)));
   const filters = h('div', { class: 'diary-export-filters' }, h('label', {}, 'Export time range', range), dates, topics);
 
@@ -74,20 +76,23 @@ function exportControls(controller: GameController, initialView: AdventureJourna
   }
 
   function currentSelection(): DiarySelection {
-    return { time: timeRange(), now: new Date(), topics: {
+    return { time: timeRange(), now: new Date(), includeUntaggedWriting: include.checked && untagged.checked, topics: {
       concepts: concepts.selected(), framework: framework.selected(), areas: areas.selected(), themes: themes.selected(),
     } };
   }
 
   function readSelection(view: AdventureJournalView) {
     const selection = currentSelection();
+    const topicFilter = hasDiaryTopics(selection.topics);
+    untaggedOption.hidden = !topicFilter || !include.checked;
     const result = selectDiary(view, selection);
     if (!result.view) { status.textContent = result.error; return null; }
-    const filtered = selection.time.kind !== 'all' || hasDiaryTopics(selection.topics);
+    const filtered = selection.time.kind !== 'all' || topicFilter;
     const entryCount = result.view.entries.length;
-    const personalCount = include.checked ? result.view.notes.length + (result.view.portfolioWriting?.length ?? 0) : 0;
+    const personalCount = include.checked ? result.view.notes.length + (result.view.portfolioWriting?.length ?? 0)
+      + (result.untaggedReflections?.reduce((total, entry) => total + entry.reflections.length, 0) ?? 0) : 0;
     if (filtered && !entryCount && !personalCount) { status.textContent = 'No entries or writing match these filters.'; return null; }
-    status.textContent = filtered ? `${entryCount} diary ${entryCount === 1 ? 'entry' : 'entries'} and ${personalCount} pieces of standalone writing match.` : '';
+    status.textContent = filtered ? `${entryCount} diary ${entryCount === 1 ? 'entry' : 'entries'} and ${personalCount} pieces of separate writing match.` : '';
     const options: AdventureExportOptions = { selection, includeNotes: include.checked, placeName: (id) => MAPS[id]?.name };
     return { view, options };
   }
@@ -98,9 +103,11 @@ function exportControls(controller: GameController, initialView: AdventureJourna
   }
   filters.addEventListener('change', changed);
   include.addEventListener('change', changed);
+  untagged.addEventListener('change', changed);
   const reset = h('button', { type: 'button', onclick: () => {
     range.value = 'all';
     from.value = through.value = '';
+    untagged.checked = false;
     for (const group of groups) group.clear();
     changed();
   } }, 'Clear export filters');
@@ -135,6 +142,7 @@ function exportControls(controller: GameController, initialView: AdventureJourna
   return h('div', { class: 'diary-export' },
     filters, reset,
     h('label', { class: 'check' }, include, ' Include my private writing in this export'),
+    untaggedOption,
     h('div', { class: 'row' }, download, print), status);
 }
 
