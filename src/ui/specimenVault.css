@@ -2,3 +2,4 @@
 .specimen-cases article { border: 1px solid var(--gold-dim); border-radius: .45rem; padding: .75rem; background: #283047; }
 .specimen-cases img { width: 3.5rem; height: 3.5rem; object-fit: contain; image-rendering: pixelated; }
 .specimen-cases h3 { margin: .35rem 0; }
+.specimen-case img { width: min(100%, 8rem); height: auto; image-rendering: pixelated; }

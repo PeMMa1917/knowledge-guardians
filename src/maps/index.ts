@@ -43,6 +43,11 @@ import { WORK_SCHEDULE_MAPS } from './workSchedule';
 import { BEARING_ROOM, BEARING_RETURN_ROOM } from './bearingBay';
 import { JIG_SHOP_MAP } from './jigShop';
 import { earlierViewingAt } from './earlierViewing';
+import { PRICE_DRAWERS_MAP } from './priceDrawers';
+import { WARM_ROOM } from './warmRoom';
+import { ALIGN_ROOM } from './mapAlignment';
+import { SCRIPT_RAIL_MAPS } from './scriptRail';
+import { CORRESPONDENCE_ROOM } from './correspondenceRoom';
 import { FERRY } from './ferry';
 import { NILE_HALL, NILE_ROYAL, NILE_ROUTE, NILE_WORKYARD } from './nile';
 import { UNDERCROFT } from './undercroft';
@@ -115,9 +120,12 @@ const campaignMaps: Record<string, MapDef> = {
   [REFERENCE_FLOOR.id]: REFERENCE_FLOOR,
   [REFERENCE_LANES.id]: REFERENCE_LANES,
   [METALWORKS_RECORDS.id]: METALWORKS_RECORDS,
+  [WARM_ROOM.id]: WARM_ROOM,
   [METAL_BENCH_MEETING.id]: METAL_BENCH_MEETING,
   [METAL_LATCH_BAY.id]: METAL_LATCH_BAY,
   [COPIES_ARCHIVE.id]: COPIES_ARCHIVE,
+  [ALIGN_ROOM.id]: ALIGN_ROOM,
+  [CORRESPONDENCE_ROOM.id]: CORRESPONDENCE_ROOM,
   [READING_WORKS.id]: READING_WORKS,
   [COPIES_PROOF_ROOM.id]: COPIES_PROOF_ROOM,
   [COPIES_PRESS.id]: COPIES_PRESS,
@@ -132,11 +140,13 @@ const campaignMaps: Record<string, MapDef> = {
   [SEA_SHOAL.id]: SEA_SHOAL,
   [SHORE_REPLY_SHED.id]: SHORE_REPLY_SHED,
   [STAGE_FOYER.id]: STAGE_FOYER,
+  ...Object.fromEntries(SCRIPT_RAIL_MAPS.map((map) => [map.id, map])),
   [STAGE_REHEARSAL.id]: STAGE_REHEARSAL,
   [STAGE_GALLERY.id]: STAGE_GALLERY,
   [STAGE_PROP_ROOM.id]: STAGE_PROP_ROOM,
   [STORY_ARCHIVE.id]: STORY_ARCHIVE,
   [MARKET_SQUARE.id]: MARKET_SQUARE,
+  [PRICE_DRAWERS_MAP.id]: PRICE_DRAWERS_MAP,
   [MARKET_SAMPLE_SHED.id]: MARKET_SAMPLE_SHED,
   ...Object.fromEntries(OBJECT_USE_WORKSHOPS.map((room) => [room.id, room])),
   [WATER_GATEHOUSE.id]: WATER_GATEHOUSE,

@@ -16,7 +16,11 @@ node tools/smoke-worlds.mjs http://127.0.0.1:4173/
 
 The script starts a fresh game in a disposable Chromium profile. It uses the checkout’s map registry and the game’s debug entry to start each scene at its registered spawn, then checks for a rendered floor, a non-blank frame, registered prop art and a short walk through the real pathfinder. With a separate built checkout, pass its directory as the second argument. Pass `maps` or `access` as a third argument to run either group by itself. [Smoke runner](../tools/smoke-worlds.mjs)
 
+Use `stress` to compare the live scene against the map registry and to exercise solid edges, diagonal corners and pointer targets. It includes an accelerated hour at the Nexus wall. Use `soak` for a full hour of actual Chromium input with one continuously held key. The soak samples position, collision, animation and footstep calls while the browser advances, then checks that movement resumes after releasing the key. `KG_SOAK_MINUTES` allows a shorter run. The `guidance` mode checks the local four-clue sequence at mobile size and continues the same workbench trial. [Stress runner](../tools/smoke-navigation.mjs) · [Guidance runner](../tools/smoke-guidance.mjs)
+
 ## Integrated preview
+
+The 1,018-object candidate rendered and completed a short walk on all 121 registered maps. The runner uses a fresh save and debug map entry for these visits. The release also has separate runs that use the story gates and keep their progress between chapters. [Smoke runner](../tools/smoke-worlds.mjs)
 
 The production build of `8fafb19` passed rendered frames and short traversal on all 52 registered maps. The access run passed using the keyboard for the Settings menu, text-size control and modal actions, then moved the Guardian with an arrow key before exercising Calm.
 
@@ -151,6 +155,12 @@ Chromium staged Emberford progress and verified the old road was hidden until th
 
 Chromium staged Observatory arrival, entered Headland Station by the harbour steps and used both detector settings on the same four practice marks. The wide strip read 4 or lower, 4 or lower, 9 and 12. The amplified strip read 1, 3, 6 or higher and 6 or higher. Dispatch stayed disabled after one sweep. With both complete, one run sent the wide strip to the eastern ramp for first bell. A separate staged run sent both strips to the lower rail, where the crew kept both sets of marks after the later handover. The test opened each physical receipt and checked that the case completed at the receiving point. [Detector tests](../tests/coast-detector.test.ts)
 
+Chromium staged early Emberford and checked Idris’s bridge rail. Three bank flips ended on Stone. Each starting branch produced zero qualifying trails out of two under bank crossings alone. After fitting the practice plank each branch produced one out of three. The rail also showed a working four-link route through the lower bridge. The test used the installed light passage and verified its actual destination east of the market. A separate staged run read the regular turn post. Each route revealed its own receipt at the east rack, and the case completed when the receipt was read. [Bridge proof tests](../tests/bridge-proof.test.ts)
+
+Chromium staged the Metalworks arrival, entered the Trade Hall and Warm Room through their doors, then rendered the official images for the John Chartier coffee pot and Shi Dabin plum-blossom teapot. The Chartier model’s first body probe read 24 on both supports while its contact strip read 4 at the counter and 2 on the pad. After three intervals, the counter showed 12 and 0 and the carrier showed 14 and 1. The Shi Dabin model gave different traces. It posted the Chartier counter receipt and the Shi carrier receipt, then collected both copies only after reading the corresponding physical handoff. At the earlier ferry landing, only the equipped Chartier copy exposed its specific tray. The test reran both supports at two chosen waits, changed the service route, and reopened the tray to verify the kept wait and reply. [Warm Room tests](../tests/warm-room.test.ts)
+
+Chromium staged arrival in Emberford and the Water Commons on two runs. It used pointer-driven walking to Idris’s board, each early receipt, the Old Weir crossing, Sena’s board and each later receipt. A click into the Guild Hall footprint queued no movement. The Water path crossed the river only on bridge tiles. The early trial recorded six turns, peak 28 and effort 20 after the pause with a quick start. The even trial recorded eight turns, peak 22 and effort 14. Sena reused the filed pace. She compared one carrier with the same load passed at halfway, then the test read the distinct relay and single-carrier rosters in separate runs. Native Space events advanced all four legs and one recovery beat in a separate keyboard check. [Porter trials](../tests/porter-pace.test.ts)
+
 A separate Chromium save staged the three completed Makers cases, claimed each copy from its exhibit and equipped it through the game command. Only the matching fixture appeared. The player compared unequal and equal practice tones, moved the name and relief guides at the disk swivel and posted two different ledger outcomes with the dated receipt. The final outcomes still appeared after each fixture was reopened. [Makers’ Room tests](../tests/maker-room.test.ts)
 
 ### The Second Reading Store
@@ -187,3 +197,60 @@ Two independent Chromium New Games used the blank-page and stand-number arrivals
 ### The Cart Before the Bell
 
 After staging the first repaired label, the browser used the Nexus portal and found both openings near Emberford’s arrival path. At 390 CSS pixels, the first changed frame showed the wheel observation and the run ended at the public pickup tray. At 1100 pixels, the first frame showed the cord and the run ended at Nella’s escorted handover. Both production runs kept the first sketch before Edrin spoke, distinguished the missed notice from the tied witness flap, physically reached both replay readings, and used the preserved sketch before issuing a handover. [Encounter and route tests](../tests/memory-cart.test.ts)
+
+### Three Bands Through One Window
+
+At 390 CSS pixels, two Chromium runs used the cellar and annex doors after staging the earlier lamp and letter progress. Both rendered ESA/Webb observation weic2212a and used the keyboard to choose the same E3 sample in both false-colour views. Its readings stayed 4, 2, 0 while the visible colour changed. The runs sent the seam to Nell first or the pinholes to Venn first, walked to both receivers, and checked their separate results. Each earned Webb copy was claimed and equipped from the Bag. The Study light then allowed both accessibility trials. One player left the shape key and the other left a greyscale holder. Both fitted results persisted after reopening and received keyboard focus. [Prism Viewer tests](../tests/prism-viewer.test.ts)
+
+### The Third Landmark
+
+Two Chromium runs at 390 CSS pixels staged earlier chapter progress, then walked through the City of Copies and back to the Nile using normal doors. The 1874 Keppel Harbour chart (06_01_017687) went to Mina as a short guide. The Manila Bay chart (06_01_007301, surveyed in 1792 and printed in 1807) went to Lark as paired plates. Both runs shifted and turned the practice sheet, compared two controlled marks, and checked the remaining two-step offset at the far turn before filing. After claiming and equipping the corresponding working copies, the Nile replay showed an offset of one step for Keppel Harbour and three steps for Manila Bay. The shorter guide and separate outer frame each remained visible when reopened. [Alignment and equipped return tests](../tests/map-alignment.test.ts)
+
+## Fieldwork title rewards
+
+Chromium verified the three worksite consequences. The played Washhouse and Water Commons decisions unlocked a dry receiving footboard. The smoke staged the earlier optional map discovery so the normal Ferry road was visible, then took the ordinary route to the footboard and used it to reach the bag. A campaign with both earlier cue deeds let Ethren place the standing cue rail. Both original Emberford and Nile receipt routes were played before taking the split index to the earlier market order. The market displayed its delivery signature beside an open date check. [Fieldwork route checks](../tests/field-badges.test.ts)
+
+### The Price That Travels
+
+The production preview showed all 36 cases. At 390 CSS pixels, T.5784 reached the public offer rail and MA.316702 reached the staffed drawer. At 1100 pixels, 22.67.16 reached the offer rail and PEB0180 reached the staffed drawer. Each case exposed its own receipt before the claim action appeared. The browser used the normal doors and Bag controls to verify both equipped uses at Hana’s earlier Emberford board, after staging the chapter prerequisites. [Offer and receipt tests](../tests/price-drawers.test.ts)
+
+### The Script Cabinet
+
+Two production Chromium runs opened all 38 exact pictures and checked the accession, date, credit link and image description for each. Both played the one-strip and two-strip views in each order. The desktop run installed all 38 cue-first folds at the call rail. The 390 CSS pixel run used Enter at 175 percent text to install all 38 catalogue-first folds at the open rest. Each run reopened the Gallery to verify the matching reader replies. The earlier chapter prerequisites were staged, and debug positioning placed the player beside the interaction points. Both runs used the game’s doors and controls.
+
+The desktop run claimed and equipped the Hokuchō triptych and *Le Corbeau*. The narrow view run did the same for Sanwalah’s Layla and Majnun folio and the Chaghatai poems. In the City of Copies, opening the return fold revealed the second strip. Each correct equipped copy enabled a different retrieval entry that stayed visible on reopening. Domain tests cover the equipped return of all 38 records. [Script Cabinet tests](../tests/script-rail.test.ts)
+
+### The Colour That Stayed
+
+A production preview checked both pigment routes. The browser held the intact strip fixed for readings 3 and 5 under the two lamps, then held the cool lamp fixed while comparing 5 and 5 at the start with 5 and 2 after the model interval. It collected the paired proof into the Bag and followed the normal crossings to the Lending Hall after staging earlier prerequisites. At 390 CSS pixels the browser used the fixed-lamp proof. At 1100 pixels it used the hatch-marked outdoor proof. [Lamp and custody tests](../tests/pigment-window.test.ts)
+
+## Collection-wide checks and Calm event recovery
+
+The collection regression scans each registered exact identity for its accession, source, physical approach, earned action and equippable tool. It exercises one representative collection through the engine on every exhibit map. The representative fixtures stage earlier quest completion, then check rejection of early actions, repeat collection, carrying and shelving, exact earned citations, and persisted route choices. The dedicated browser mode takes two distinct Glass Rack routes with previous chapter gates staged. It uses the actual collection controls, source links, save and return arches.
+
+Use the existing preview with `node tools/smoke-worlds.mjs URL . collections` or `node tools/smoke-worlds.mjs URL . events`. The event fixture checks a naturally offered Calm invitation, then selects two eligible events for the reload cases. Chromium verified that Escape defers an invitation and keeps an interrupted dialogue at its current reply. Real reload and Continue recover that reply. Kip’s five marks were awarded once. The resumed two-step Tull conversation counted one completion. [Collection and route tests](../tests/collection-system.test.ts) · [Event replay tests](../tests/event-resume.test.ts)
+
+## Arrival visibility, exhibit access and guidance
+
+Two production snapshots reproduced and checked an Emberford visibility defect. On a direct test arrival before the main-story gate, the place and reached flags changed without emitting game events. Seven props stayed hidden even though their conditions were true. After the fix, all seven render on that arrival. The fresh campaign also checked the usual portal route, which emits a story event.
+
+The Nile room test staged an equipped map and existing Glass Rack work so the alignment bench and both Glass fixtures were visible. At 390 CSS pixels, the player walked to the board’s east approach, opened its panel, used the reading desk, then reached the relocated alignment bench and ran both span checks. The small-screen guidance test separately opened all four contextual Lumen clues at 175 percent text. It checked the reason for a blocked action and completed the same trial from that panel. The Island arrival was staged. [Alignment tests](../tests/map-alignment.test.ts) · [Guidance tests](../tests/guidance.test.ts)
+
+The collection display test staged ten previous investigations. The player used the real Nexus collection entrance, paged through the display cases, opened an exact case, and tried to take its object with a full satchel. The limit held. After freeing one place and collecting from the in-world case, the satchel again contained exactly three objects. [Collection system tests](../tests/collection-system.test.ts)
+
+## Held controls, movement and recovery
+
+The live stress sweep compared the floor, solid tiles, conditional art and doors with the registered rooms. It tried diagonal movement beside closed corners, long update frames, pointer targets in walls and gaps, and repeated Space at five boundaries. The first sweep found four props where pointer movement picked an unreachable side. A corrected production build sent real mouse clicks to both Label Loft shutters. The Guardian followed the available hallway and opened each sign. [Stress runner](../tools/smoke-navigation.mjs)
+
+Separate desktop and mobile runs held a dialogue number, Enter, Space, the map key and Escape. After the input fix, a held key made one choice or opened one panel. Movement and typing still repeated, and a newly mapped key opened the Folding Map. A fresh intro awarded one Date Lens and 30 marks through rapid input. Journal notes survived phone rotation and saved once. A separate door test used eight Nexus and Cold Store transitions, 40 native key-repeat events and both motion settings. Each new press after release could still interact normally.
+
+The save test recovered a readable checkpoint when the Continue slot was damaged, then saved and reopened it. Chromium also reopened saves with a retired room, invalid coordinates and a position standing in Ferry water. The Guardian arrived on legal floor and the older checkpoint survived the next ordinary save. The domain tests exercise conflict recovery between two concurrent revisions. [Save tests](../tests/saves.test.ts)
+
+The journal export test used a disposable copy of the campaign that had reached the Council. Inspecting the Turin Mine Map through the normal exhibit control left the source list empty. Taking it added one MLA citation to the exact Museo Egizio record. The downloaded Word file contained a working hyperlink, italicized title and hanging indent. The rendered PDF contained a clickable link to the same source. Both exports omitted a private note with the default setting. [Exact catalogue record](https://collezionepapiri.museoegizio.it/en-gb/document/9/)
+
+## Four connecting story routes
+
+- **The Last Turn.** Staged the prior Showdown and study work, then used both market readings and both routes to Elsbet’s file. The cellar stayed closed at five lamps and opened at six. The timed domain trace also plays the original Showdown and citation knot. [Route and timing checks](../tests/tok-coverage.test.ts)
+- **The Spare Seat.** At 390 and 1100 CSS pixels, both tabs challenged the same lending rule. The player took the checked warrant through the normal Nile and Civic doors and installed either a referral or a moved service stop. The two browser runs staged earlier chapter requirements. [Branch tests](../tests/spare-seat.test.ts)
+- **The Empty Hook.** Three separate browser profiles checked the two viewpoints and each signed account. The rail and bench routes worked before the House of Performance. The folded route first earned its Parrot Warning preparation in the Script Cabinet. Each installation persisted and received a distinct response. The runs staged earlier chapter gates and used adjacent test positioning. [Branch tests](../tests/forest-narrators.test.ts)
+- **What the Gold Says.** Chromium opened the exact Cleveland folio 1979.23, read both source-backed frames and took each route through the receiving foyer. One reader used the self-guided rail and another heard the staffed explanation. Earlier gates were staged. [Branch tests](../tests/leaf-frame.test.ts)

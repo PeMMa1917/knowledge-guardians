@@ -1,0 +1,72 @@
+[
+  {
+    "number": 336,
+    "name": "Trace how different work conventions shape a shared record",
+    "uses": [
+      {
+        "objective": "last-turn.compare",
+        "action": "Lift Derva’s slate and hear how the forge crew and the tally desk learned to read the same turned surface in their own work.",
+        "styles": ["explorer", "companion", "strategist"],
+        "modes": ["visual", "reading", "physical", "social"],
+        "game": 173,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 694,
+    "name": "Distinguish what a speaker suggests from what a listener infers",
+    "uses": [
+      {
+        "objective": "forest.hook.compare",
+        "action": "Read the carrier’s and keeper’s own accounts, check the hook from both approaches, and separate the missing direction from the carrier’s inference that the keeper meant to ignore them.",
+        "styles": ["explorer", "helper", "challenger"],
+        "modes": ["reading", "linguistic", "spatial", "analytical"],
+        "game": 173,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 765,
+    "name": "Interpret a specific religious object in its documented context",
+    "uses": [
+      {
+        "objective": "leaf-frame.compared",
+        "action": "Compare the figures visible on the exact Jain folio with the museum’s commissioning account. Keep sacred adornment, social context and the unknown individual motive distinct.",
+        "styles": ["collector", "explorer", "maker"],
+        "modes": ["visual", "reading", "linguistic", "analytical"],
+        "game": 223,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 808,
+    "name": "Keep counterexamples where a later case can use them",
+    "uses": [
+      {
+        "objective": "spare-seat.loan",
+        "action": "Keep yesterday’s returned peg and the current request without a peg together in the checked loan warrant. Both cases can challenge a later rule based on visible marks alone.",
+        "styles": ["strategist", "collector", "helper"],
+        "modes": ["physical", "visual", "reading", "analytical"],
+        "game": 179,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 953,
+    "name": "Decide what another perspective can add to a particular claim",
+    "uses": [
+      {
+        "objective": "forest.hook.readback",
+        "action": "Leave either a bounded direction or separately attributed accounts, then hear what Tirren could use about the route and what the accounts still leave open about intent.",
+        "styles": ["helper", "companion", "strategist"],
+        "modes": ["reading", "linguistic", "social", "reflective"],
+        "game": 231,
+        "story": 72
+      }
+    ]
+  }
+]

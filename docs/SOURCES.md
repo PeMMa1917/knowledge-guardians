@@ -144,6 +144,14 @@ The two historical cases have separate places, publishers and purposes. Pilar’
 - HIS-LINTEL-01 gives the National Library’s 1898 Roman-script Malay edition of *Sejarah Malayu*, accession B20025340E, and traces it to Shellabear’s 1896 Jawi edition. The library separately credits Ibrahim, son of Kandu, with helping Leyden read and understand the Jawi copy used in his English translation, published in 1821. The connection gives specific people their part in a record that travelled. [National Library Board’s rare-edition account](https://biblioasia.nlb.gov.sg/all-sections/vol-11-issue-4-jan-mar-2016-sejarah-malayu-malay-annals/)
 - HIS-LINTEL-02 records Sri Mariamman Temple’s South Bridge Road building in 1827 and its public history as a place of refuge. HIS-LINTEL-03 gives separate dates for brick fabric and the later entrance tower. The stewards’ and heritage board’s published accounts give the dates and role of this place. A visitor’s permission remains a question for its own keepers. [Hindu Endowments Board temple history](https://heb.org.sg/sri-mariamman-temple/) · [National Heritage Board building record](https://www.roots.gov.sg/places/places-landing/Places/national-monuments/sri-mariamman-temple)
 
+## What the Gold Says
+
+The ornament frame refers to a late fifteenth-century Gujarat Kalpa-sutra leaf already held in the Correspondence Room. The museum interprets its celestial dancers as adornment of sacred doctrine. Its account mentions religious merit and community standing in manuscript commissions. The game keeps both accounts with the object and leaves the original commissioner and intentions open. The sleeve and foyer handovers are fictional. [Cleveland Museum of Art 1979.23](https://clevelandart.org/art/1979.23)
+
+## The Warm Side
+
+The Metalworks Warm Room keeps 38 exact museum records for lidded or handled vessels. Known makers, workshops and design credits stay with the historical catalogue entries. The two probes and support response use original teaching models. The reported marks describe the fictional pulse, surface and elapsed interval, with a second setting for the earlier ferry landing. [Records and collection images](../src/content/warm-room-cases.json) · [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access) · [The Met Open Access](https://www.metmuseum.org/hubs/open-access)
+
 ## A Name on the Load
 
 The ferry packing room draws on 36 individually accessioned carriers, boxes, vessels and sets. Collection notes keep the period and scope of each particular object with its named roles or uncertain attribution. The practice hooks, ink, exposure counts and handling moves belong to the fictional Ferry and Nexus. The same removable tag tests early visibility and protected reading. It leaves historical lifetimes, loads and routes open. [Individual object records and photographs](../src/content/ferry-packing-cases.json) · [Cleveland Museum of Art Open Access](https://www.clevelandart.org/open-access) · [The Met Open Access](https://www.metmuseum.org/hubs/open-access)
@@ -233,6 +241,12 @@ The Walters identifies Gnaios’s name on a dated garnet intaglio and separately
 The 38 case records keep the museum’s accession, date and bounded material evidence together. The queues are fictional workshops with authored bell lengths. One receiver can use the catalogue line at the first bell. Another can use the plain working support while a separate reader brings its source line. The City of Copies keeps a late proof with the exact equipped working copy. [Catalogue records and bench notes](../src/content/work-schedule-specimens.json) · [Documented roles](../src/content/work-schedule-people.json)
 
 Walters W.641 records Sultan ‘Ali’s copying of poems by Jami in Herat, with the original black binding. W.613 retains multiple documented roles and refers to a separate larger portion with the colophon. W.883 credits Ram Singh II as patron. The game uses the museum’s open cover views for the manuscripts and gives each documentary role its own field where a reader can reopen it. [Walters, W.641](https://art.thewalters.org/object/W.641/) · [Walters, W.613](https://art.thewalters.org/object/W.613/) · [Walters, W.883](https://art.thewalters.org/object/W.883/)
+
+## The Script Cabinet, House of Performance and City of Copies
+
+The Cabinet holds 38 dated collection objects from Cleveland and the National Gallery of Art. Each photograph comes from the exact accession shown in the cabinet. The reading cues, folds and audience replies are authored for the game. The catalogue strip retains the real material, named roles and the limit of the record. An equipped working copy lets a visitor add a separate retrieval line to the earlier City index. [Object records and reading notes](../src/content/script-rail-specimens.json) · [Named people and roles](../src/content/script-rail-people.json) · [Cleveland Open Access](https://www.clevelandart.org/open-access) · [National Gallery of Art Open Access](https://www.nga.gov/terms-notices#open-access)
+
+The Cleveland catalogue dates the plum scroll after Yi Hwang’s lifetime. The National Gallery records that the spine of *Ballads* reads “Bayley” while the title page names William Hayley. The signature record for the 1875 *Le Corbeau* names Stéphane Mallarmé and Édouard Manet, distinct from Edgar Allan Poe’s authorship. The City index preserves the different evidential roles in all three cases. [Cleveland, 1992.138](https://www.clevelandart.org/art/1992.138) · [National Gallery of Art, 1943.17.1](https://www.nga.gov/artworks/30239-ballads) · [National Gallery of Art, 2014.112.27](https://www.nga.gov/artworks/165853-le-corbeau-raven)
 
 ## The Line a Reader Can Follow and A Sunset on the Proof
 
@@ -561,6 +575,49 @@ The signal shed uses exact catalogue records for charts, signalling objects and 
 | Smithsonian National Museum of American History | PH.337138 · 11 August 1877 (manufacture recorded) | [Ritchie liquid compass documented in the maker’s ledger](https://americanhistory.si.edu/collections/object/nmah_1167844) |
 | Smithsonian National Museum of American History | 1990.0577.01 · About 1940; recorded use September 1942 (made; later use) | [Marine Compass Company compass from Alcoa Mariner’s lifeboat](https://americanhistory.si.edu/collections/object/nmah_1183807) |
 | Smithsonian National Museum of American History | DL.006868.009 · 1766 (published) | [William Chambers’s The Universal Navigator](https://americanhistory.si.edu/collections/object/nmah_307990) |
+
+## The Price That Travels, Market of Measures and Emberford
+
+The dated objects and documents have item-level catalogue records. The counter and buyer exercises use original fictional material and pixel diagrams. The Minidoka letter’s sender, recipient and date come from the Smithsonian record. The National Park Service supplies the history of incarceration at Minidoka. [National Park Service](https://www.nps.gov/miin/index.htm)
+
+| Custodian | Identifier and date | Exact record |
+|---|---|---|
+| Smithsonian National Museum of American History | CH.308931 · 1870 (model made and patent issued) | [William H. Phinney’s weight-and-price scale patent model](https://americanhistory.si.edu/collections/object/nmah_1681) |
+| Smithsonian National Museum of American History | MA.252693 · 1868 (made) | [Thomas T. Strode’s accounting adding-machine patent model](https://americanhistory.si.edu/collections/object/nmah_690833) |
+| Smithsonian National Museum of American History | MA.309344 · 1886 (made) | [William C. McGill’s cash register patent model](https://americanhistory.si.edu/collections/object/nmah_694230) |
+| Smithsonian National Museum of American History | MA.316702 · 1959 (made) | [National Cash Register Class 51](https://americanhistory.si.edu/collections/object/nmah_694236) |
+| Smithsonian National Museum of American History | MA.316704 · 1959 (made) | [Eight-total National Cash Register mechanism](https://americanhistory.si.edu/collections/object/nmah_694238) |
+| Smithsonian National Museum of American History | 1986.0899.01 · 1929 (made) | [National Cash Register Model 1852-E](https://americanhistory.si.edu/collections/object/nmah_690695) |
+| Smithsonian National Museum of American History | 2001.0125.02 · 1875–86 (entries dated) | [Kern merchant bankbook](https://americanhistory.si.edu/collections/object/nmah_905337) |
+| Smithsonian National Museum of American History | 1983.0760.01 · 1920–29 (made) | [Coal scrip booklet linked to Black Diamond Collieries](https://americanhistory.si.edu/collections/object/nmah_872958) |
+| Smithsonian National Museum of American History | CH.334326 · About 1968 (made) | [Cocos (Keeling) Islands company-store scrip set](https://americanhistory.si.edu/collections/object/nmah_2804) |
+| Smithsonian National Museum of American History | CH.334323.11 · 1890–1900 (made) | [Buxton and Landstreet Company scrip marked 1.00](https://americanhistory.si.edu/collections/object/nmah_2793) |
+| Smithsonian National Museum of American History | 1981.0296.1540 · About 1863 (made) | [Straight’s Shoe Store advertising token](https://americanhistory.si.edu/collections/object/nmah_1382562) |
+| Smithsonian National Museum of American History | NU.NU81082.1 · 1963 (made) | [Sample American Express credit card](https://americanhistory.si.edu/collections/object/nmah_1444384) |
+| Smithsonian National Museum of American History | 2015.3108.12 · 23 November 1943 (written) | [Minidoka Consumers’ Cooperative letter to Mr Davidson](https://americanhistory.si.edu/collections/object/nmah_1817505) |
+| Smithsonian National Museum of American History | 2002.0029.50 · 1942–45 (made) | [Office of Price Administration processed-food ration card](https://americanhistory.si.edu/collections/object/nmah_994587) |
+| British Museum | 1847,0304.399 · 1667 (issued) | [John Baker’s Moorgate swan token](https://www.britishmuseum.org/collection/object/C_1847-0304-399) |
+| British Museum | 1920,0813.145 · 1667 (issued) | [Thomas Baker’s Canterbury scales token](https://www.britishmuseum.org/collection/object/C_1920-0813-145) |
+| British Museum | 2009,4075.272 · 1649–72 (issued during catalogued range) | [Randal Baker’s candle-making token](https://www.britishmuseum.org/collection/object/C_2009-4075-272) |
+| British Museum | T.5784 · 1667 (issued) | [John Legg’s York trade token](https://www.britishmuseum.org/collection/object/C_T-5784) |
+| British Museum | 1996,0116.216 · 1930–60 (issued during catalogued range) | [Dunblane Co-operative Society plastic token](https://www.britishmuseum.org/collection/object/C_1996-0116-216) |
+| British Museum | 2012,4157.10 · 1860–1900 (issued during catalogued range) | [Rochdale Provident Co-operative Society token](https://www.britishmuseum.org/collection/object/C_2012-4157-10) |
+| British Museum | 2012,4157.24 · 1860–1900 (issued during catalogued range) | [Leicester Co-operative Society metal token](https://www.britishmuseum.org/collection/object/C_2012-4157-24) |
+| British Museum | CIB.52957 · 1874 (issued) | [Lancaster Banking Company balance book](https://www.britishmuseum.org/collection/object/C_CIB-52957) |
+| British Museum | 1998,0606.1 · 1911 (minted) | [Xuantong-era silver dollar with chopmarks](https://www.britishmuseum.org/collection/object/C_1998-0606-1) |
+| British Museum | 2008,4142.4 · 1957 (issued) | [Pair of half-unit fuel ration coupons](https://www.britishmuseum.org/collection/object/C_2008-4142-4) |
+| Royal Museums Greenwich | PEB0180 · 1964 (issued) | [P&O–Orient Lines Cruise Now, Pay Later brochure](https://www.rmg.co.uk/collections/objects/rmgc-object-1246910) |
+| Royal Museums Greenwich | PEB0612 · 1931 (issued for following year) | [Bibby Line sailing and fare list for 1932](https://www.rmg.co.uk/collections/objects/rmgc-object-1247351) |
+| Royal Museums Greenwich | PEA0606 · 1967 (issued for 22 March sailing) | [A. J. Cater’s Queen Mary passage contract](https://www.rmg.co.uk/collections/objects/rmgc-object-1246257) |
+| Royal Museums Greenwich | PEA0610 · 1968 (issued for 8 November sailing) | [H. J. Cater’s Queen Elizabeth passage contract](https://www.rmg.co.uk/collections/objects/rmgc-object-1246259) |
+| Royal Museums Greenwich | PEA0253 · 1957 (issued) | [London Special Train second-section ticket](https://www.rmg.co.uk/collections/objects/rmgc-object-1246509) |
+| Royal Museums Greenwich | PEA0392 · 1967 (issued for 10 October sailing) | [Southern Cross one-way Melbourne–Southampton ticket](https://www.rmg.co.uk/collections/objects/rmgc-object-574030) |
+| Royal Museums Greenwich | N85408 · 21 June 1952 (photographed) | [Photowork’s photograph of Mulbera passengers at check-in](https://www.rmg.co.uk/collections/objects/rmgc-object-1173708) |
+| The Metropolitan Museum of Art | 20.154 · 1775–77, with later replacements (made; later alterations) | [Shopfront from 3 quai de Bourbon](https://www.metmuseum.org/art/collection/search/194621) |
+| The Metropolitan Museum of Art | 22.67.16 · About 1638 (printed) | [Abraham Bosse’s Gallery of the Palace of Justice](https://www.metmuseum.org/art/collection/search/365317) |
+| The Metropolitan Museum of Art | 2015.146 · 1568 (painted) | [Joachim Beuckelaer’s Fish Market](https://www.metmuseum.org/art/collection/search/679844) |
+| The Metropolitan Museum of Art | 47.91.14 · About 1700–30 (printed) | [Inigo Vonholte’s Fine Waters trade card](https://www.metmuseum.org/art/collection/search/779189) |
+| The Metropolitan Museum of Art | 51.501.1267(6) · About 1650 (printed) | [Francesco Curti’s Trades of Bologna, plate 5](https://www.metmuseum.org/art/collection/search/855543) |
 
 ## Chapter 15: Council of Inquiry
 

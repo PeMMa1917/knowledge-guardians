@@ -1,9 +1,12 @@
+import { EMBERFORD_PIGMENT_WINDOW } from './pigmentWindow';
+import { PRICE_DRAWERS_RETURNS } from './priceDrawers';
 import { JIG_EMBERFORD_RETURNS } from './jigShop';
 /**
  * WORLD-02 Aethelgard: Emberford, a guild town (spec 5.4).
  * Fantasy world. Nothing here is a historical record unless an exhibit is
  * labelled "Documented" with a source. 40 x 28 tiles.
  */
+import { EMBERFORD_FIELD_ORDER } from './fieldBadges';
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
 import { sceneProp } from './sceneProps';
@@ -12,8 +15,11 @@ import { EMBERFORD_BACKBILL } from './backbill';
 import { EMBERFORD_DOOR_FOLD } from './doorFold';
 import { EMBERFORD_DRAWER_CASES } from './drawerCases';
 import { EMBERFORD_BASKET } from './marketBasket';
+import { EMBERFORD_BRIDGE_PROOF } from './bridgeProof';
+import { PORTER_EMBERFORD } from './porterPace';
 import { EMBERFORD_WINDOW } from './ferryWindow';
 import { CART_MEMORY_ACTORS, CART_MEMORY_PROPS } from './memoryCart';
+import { EMBERFORD_LAST_TURN } from './lastTurn';
 import { starStations } from './starPaths';
 
 const W = 40, H = 28;
@@ -152,10 +158,16 @@ export const EMBERFORD: MapDef = {
     { id: 'singer-teodora', x: 16, y: 15, facing: 'down', visibleIf: { origin: 'singer' } },
   ],
   interactables: [
+    ...EMBERFORD_FIELD_ORDER,
     ...starStations('chronicler', [17, 20], [18, 20]),
     ...EMBERFORD_WINDOW,
     ...EMBERFORD_BASKET,
+    ...EMBERFORD_PIGMENT_WINDOW,
+    ...PRICE_DRAWERS_RETURNS,
+    ...EMBERFORD_BRIDGE_PROOF,
+    ...PORTER_EMBERFORD,
     ...CART_MEMORY_PROPS,
+    ...EMBERFORD_LAST_TURN,
     ...JIG_EMBERFORD_RETURNS,
     ...EMBERFORD_LANTERN_FAIR,
     ...EMBERFORD_BACKBILL,

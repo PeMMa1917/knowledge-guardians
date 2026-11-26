@@ -1,4 +1,4 @@
-import { SPECIMEN_BASE } from '../domain/specimenGear';
+import { SPECIMEN_BASE, SPECIMEN_SHELF } from '../domain/specimenGear';
 import type { Interactable, MapDef } from './types';
 
 export const SPECIMEN_VAULT_DOOR: Interactable = {
@@ -17,6 +17,10 @@ export const SPECIMEN_VAULT: MapDef = {
   npcs: [], stamps: [{ stamp: 'bookshelf', x: 4, y: 2 }, { stamp: 'bookshelf', x: 14, y: 2 }, { stamp: 'rug-green', x: 9, y: 7 }],
   lights: [{ x: 5, y: 6, r: 64, color: 0xf2b87a }, { x: 15, y: 6, r: 69, color: 0xaccaef }], zones: [],
   interactables: [
+    ...([[3, 5], [8, 5], [12, 5], [17, 5], [5, 10], [15, 10]].map(([x, y], slot): Interactable => ({
+      id: `specimen-shelf-${slot}`, kind: 'fieldgame', game: SPECIMEN_SHELF + slot, x, y, w: 1, h: 1,
+      label: 'the display case', art: 'collection-stand', walkThrough: true,
+    }))),
     { id: 'specimen-vault-display', kind: 'fieldgame', game: 'specimen-vault', x: 5, y: 6, w: 1, h: 1,
       label: 'the displays and satchel hooks', art: 'preserved.display-paired', walkThrough: true },
     { id: 'specimen-vault-arch', kind: 'fieldgame', game: 'specimen-return', x: 15, y: 6, w: 1, h: 1,

@@ -8,7 +8,9 @@
 import type { MapDef, Interactable } from './types';
 import { SHELF_ROOM_DOOR } from './shelfRoom';
 import { LINKED_STUDY } from './linkedNotes';
+import { PRISM_STUDY } from './prismViewer';
 import { TIME_ROOM_DOOR, TIME_STUDY_RETURNS } from './timeRoom';
+import { STUDY_LAST_TURN } from './lastTurn';
 
 const W = 20, H = 14;
 
@@ -49,8 +51,10 @@ export const STUDY: MapDef = {
   interactables: [
     SHELF_ROOM_DOOR,
     ...LINKED_STUDY,
+    PRISM_STUDY,
     TIME_ROOM_DOOR,
     ...TIME_STUDY_RETURNS,
+    ...STUDY_LAST_TURN,
     clue('painting', 5, 3, "Elsbet's painting"),
     clue('clock', 7, 3, 'the stopped clock'),
     clue('roundwin', 9, 3, 'the small round window'),

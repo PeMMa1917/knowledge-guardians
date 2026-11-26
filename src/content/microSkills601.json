@@ -259,6 +259,21 @@
         ],
         "game": 263,
         "story": 71
+      },
+      {
+        "objective": "align.matuku.received",
+        "action": "Keep the island and harbour charts on their own scales. Turn and pin the practice sheet, then compare what both scales reproduce at the same gate, post and far turn before fitting a guide.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "visual",
+          "analytical"
+        ],
+        "game": 13,
+        "story": 71
       }
     ]
   },
@@ -933,6 +948,42 @@
     ]
   },
   {
+    "number": 746,
+    "name": "Keep the measured bands while changing visible colour",
+    "uses": [
+      {
+        "objective": "prism.delivered",
+        "action": "Read Webb’s named infrared assignments, then keep the same practice samples while highlighting the long-band seam in cyan and short-band pinholes in amber. Set each view in a different reader’s working holder.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "analytical",
+          "spatial"
+        ],
+        "game": 262,
+        "story": 72
+      },
+      {
+        "objective": "prism.accessible",
+        "action": "Use the working Webb copy to compare a shape key layered over assigned hues with a greyscale composite. Leave a display at the dim Study light with the three unaltered sample readings available.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "analytical",
+          "social"
+        ],
+        "game": 144,
+        "story": 74
+      }
+    ]
+  },
+  {
     "number": 748,
     "name": "Recover what timing and gesture add to spoken words",
     "uses": [
@@ -1304,6 +1355,21 @@
         ],
         "game": 13,
         "story": 52
+      },
+      {
+        "objective": "align.keppel-harbour.returned",
+        "action": "Use the dated Keppel chart and its scale to carry a working copy to the Nile. Align the two known marks on the practice plans and inspect the separately moved third mark before setting a route limit or checking it again.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "spatial",
+          "reading",
+          "analytical"
+        ],
+        "game": 13,
+        "story": 74
       }
     ]
   },

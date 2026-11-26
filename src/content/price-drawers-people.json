@@ -1,0 +1,150 @@
+{
+  "nmah:ch.308931": [
+    {
+      "name": "William H. Phinney",
+      "role": "maker and patentee",
+      "detail": "This exact catalogue record identifies William H. Phinney as maker and patentee for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-PHINNEY-SCALE"
+    }
+  ],
+  "nmah:ma.252693": [
+    {
+      "name": "Thomas T. Strode",
+      "role": "maker and patentee",
+      "detail": "This exact catalogue record identifies Thomas T. Strode as maker and patentee for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-STRODE-ADDER"
+    }
+  ],
+  "nmah:ma.309344": [
+    {
+      "name": "William C. McGill",
+      "role": "maker and patentee",
+      "detail": "This exact catalogue record identifies William C. McGill as maker and patentee for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-MCGILL-REGISTER"
+    }
+  ],
+  "nmah:2001.0125.02": [
+    {
+      "name": "John F. Kern",
+      "role": "merchant and keeper of the book",
+      "detail": "The related-name field and description associate the book with John F. Kern. The object title has the middle initial G.",
+      "source": "HIS-PRICE-DRAWERS-KERN-BANKBOOK"
+    }
+  ],
+  "nmah:2015.3108.12": [
+    {
+      "name": "Mr Davidson",
+      "role": "named addressee",
+      "detail": "This exact catalogue record identifies Mr Davidson as named addressee for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-MINIDOKA-LETTER"
+    }
+  ],
+  "bm:1847-0304.399": [
+    {
+      "name": "John Baker",
+      "role": "issuer at Moorgate",
+      "detail": "This exact catalogue record identifies John Baker as issuer at Moorgate for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-MOORGATE-SWAN"
+    }
+  ],
+  "bm:1920-0813.145": [
+    {
+      "name": "Thomas Baker",
+      "role": "issuer at Canterbury",
+      "detail": "This exact catalogue record identifies Thomas Baker as issuer at Canterbury for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-CANTERBURY-SCALES"
+    }
+  ],
+  "bm:2009-4075.272": [
+    {
+      "name": "Randal Baker",
+      "role": "issuer in Shoe Lane",
+      "detail": "This exact catalogue record identifies Randal Baker as issuer in Shoe Lane for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-SHOE-LANE-CANDLES"
+    }
+  ],
+  "bm:t.5784": [
+    {
+      "name": "John Legg",
+      "role": "issuer in York",
+      "detail": "This exact catalogue record identifies John Legg as issuer in York for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-LEGG-YORK"
+    }
+  ],
+  "bm:1998-0606.1": [
+    {
+      "name": "Xuantong Emperor",
+      "role": "ruler named in the catalogue",
+      "detail": "This exact catalogue record identifies Xuantong Emperor as ruler named in the catalogue for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-QING-DOLLAR"
+    }
+  ],
+  "rmg:pea0606": [
+    {
+      "name": "A. J. Cater",
+      "role": "named passenger",
+      "detail": "This exact catalogue record identifies A. J. Cater as named passenger for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-CATER-QUEEN-MARY"
+    }
+  ],
+  "rmg:pea0610": [
+    {
+      "name": "H. J. Cater",
+      "role": "named passenger",
+      "detail": "This exact catalogue record identifies H. J. Cater as named passenger for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-CATER-QUEEN-ELIZABETH"
+    }
+  ],
+  "met:20.154": [
+    {
+      "name": "Etienne Séjournant",
+      "role": "maker credited in the catalogue",
+      "detail": "This exact catalogue record identifies Etienne Séjournant as maker credited in the catalogue for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-SEJOURNANT-SHOPFRONT"
+    }
+  ],
+  "met:22.67.16": [
+    {
+      "name": "Abraham Bosse",
+      "role": "artist",
+      "detail": "This exact catalogue record identifies Abraham Bosse as artist for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-BOSSE-GALLERY"
+    },
+    {
+      "name": "Jean I Leblond",
+      "role": "publisher",
+      "detail": "This exact catalogue record identifies Jean I Leblond as publisher for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-BOSSE-GALLERY"
+    }
+  ],
+  "met:2015.146": [
+    {
+      "name": "Joachim Beuckelaer",
+      "role": "painter",
+      "detail": "This exact catalogue record identifies Joachim Beuckelaer as painter for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-BEUCKELAER-FISH-MARKET"
+    }
+  ],
+  "met:47.91.14": [
+    {
+      "name": "Inigo Vonholte",
+      "role": "vendor advertised",
+      "detail": "This exact catalogue record identifies Inigo Vonholte as vendor advertised for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-VONHOLTE-CARD"
+    }
+  ],
+  "met:51.501.1267-6": [
+    {
+      "name": "Francesco Curti",
+      "role": "printmaker",
+      "detail": "This exact catalogue record identifies Francesco Curti as printmaker for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-CURTI-MARKET-VENDORS"
+    },
+    {
+      "name": "Giovanni Maria Tamburini",
+      "role": "source artist credited",
+      "detail": "This exact catalogue record identifies Giovanni Maria Tamburini as source artist credited for the dated object.",
+      "source": "HIS-PRICE-DRAWERS-CURTI-MARKET-VENDORS"
+    }
+  ]
+}

@@ -41,15 +41,17 @@ The route audit in `tests/tok-coverage.test.ts` exercises game actions in indivi
 | Path | Minutes with a gap | Total minutes |
 |---|---:|---:|
 | Story | 132 | 504 |
-| Social | 322 | 663 |
-| Explorer, representative case visits | 790 | 1,777 |
+| Social | 335 | 670 |
+| Explorer, representative case visits | 881 | 1,879 |
 | Puzzler | 232 | 592 |
 | Cozy | 314 | 667 |
 
-The longest clusters start after the Nexus opening across Chapters 1 and 2. Later longer detours can leave a dimension behind even when the chapter’s main story has covered it. Focus the next round on these stretches.
+Among 46 chapter traces, 36 cover all 16 dimensions in their first 30 estimated minutes. Three stay complete in every full modeled window. An explorer who visits every filed case has a modeled gap during 4,100 of 5,206 minutes. Longer side trips can leave a dimension behind after the chapter’s main path has covered it.
 
-1. Chapter 1 from the Showdown to the study: add culture, interpretation and values beats to the Emberford steps.
+1. Give the main Showdown and Study route more ways to encounter culture, interpretation and values.
 2. Review the tags of side missions against their dialogue, and add the concepts that the play really uses.
 3. Single-concept gaps in chapters 4 to 14 (for example culture in chapter 4, certainty in chapters 10 and 11): add one short beat each, not a tag.
+
+The Last Turn now gives Emberford players an optional response to the first gap. In its 91-minute estimated route, players compare the forge and tally desk’s readings at minute 75, decide whose account reaches the market queue at minute 77, and open Derva’s dated account in the Study at minute 87. That trace has culture, interpretation and values in the trailing window from the market decision to the end. Certainty still lapses. The modeled social and explorer routes include this detour. The story route keeps the main steps.
 
 Never add a tag that the play does not support. Add play.

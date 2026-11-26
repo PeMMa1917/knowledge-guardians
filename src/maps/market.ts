@@ -1,3 +1,4 @@
+import { PRICE_DRAWERS_DOOR } from './priceDrawers';
 /** A fictional market square, with different jobs on the same set of lanes. */
 import type { Condition } from '../domain/types';
 import { MARKET_ACCESSIONS } from './pairedAccessions';
@@ -50,6 +51,7 @@ export const MARKET_SQUARE: MapDef = {
   ],
   interactables: [
     ...MARKET_BASKET,
+    PRICE_DRAWERS_DOOR,
     ...MARKET_WELCOME,
     ...MARKET_ACCESSIONS,
     ...MARKET_KETTLE,

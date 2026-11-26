@@ -1,5 +1,6 @@
 import type { ContentPack, DialogueNode } from '../domain/types';
 import { BADGE_FAMILIES, badgeFamilyReady, selectedFamily, tokBadgeAwards, type BadgeFamily } from './tokBadges';
+import { fieldBadgeContent } from './fieldBadges';
 import { oraclePressContent } from './oraclePress';
 
 export const BADGE_WORK: Record<BadgeFamily, {
@@ -71,11 +72,15 @@ const stations: DialogueNode[] = BADGE_FAMILIES.flatMap(({ id }) => {
 });
 
 export const tokBadgeContent = {
-  ...tokBadgeAwards, ...oraclePressContent,
+  ...oraclePressContent,
+  awards: [...tokBadgeAwards.awards, ...fieldBadgeContent.awards],
+  items: fieldBadgeContent.items,
+  missions: [...oraclePressContent.missions, ...fieldBadgeContent.missions],
+  hints: [...oraclePressContent.hints, ...fieldBadgeContent.hints],
   characters: [...oraclePressContent.characters,
     { id: 'badge-keeper', name: 'Brenna Reedfast', mode: 'fictional', role: 'Looks after the work remembered in the Badge Annex', sprite: 'villager-1',
       talk: [{ node: 'badge-room.brenna' }] }],
-  dialogue: [...oraclePressContent.dialogue, ...stations,
+  dialogue: [...oraclePressContent.dialogue, ...fieldBadgeContent.dialogue, ...stations,
     { id: 'badge-room.brenna', speaker: 'badge-keeper', historicalLabel: 'fictional-world',
       text: 'The tokens here are for things people did. Find your deed in the cabinet. Its tool has another job waiting if you feel like lending a hand.' }],
 } satisfies Partial<ContentPack>;

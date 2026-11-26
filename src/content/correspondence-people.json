@@ -1,0 +1,382 @@
+{
+  "cma:1954.598.b": [
+    {
+      "name": "Gratian",
+      "role": "Author of the Decretum",
+      "detail": "The manuscript copy preserves a work written by Gratian. The catalogue does not identify him as maker of this leaf.",
+      "source": "HIS-CORRESPONDENCE-PONTIGNY-ALPHABETS"
+    }
+  ],
+  "cma:2013.318": [
+    {
+      "name": "Mir Jamal al-Din Husayn Inju",
+      "role": "Compiler",
+      "detail": "Cleveland credits the compiler with assembling Persian definitions and examples.",
+      "source": "HIS-CORRESPONDENCE-JAHANGIRI-DICTIONARY"
+    },
+    {
+      "name": "Jahangir",
+      "role": "Mughal ruler named by the dictionary",
+      "detail": "The museum describes the title as an honor to the ruler.",
+      "source": "HIS-CORRESPONDENCE-JAHANGIRI-DICTIONARY"
+    }
+  ],
+  "cma:1971.131": [
+    {
+      "name": "Hemachandra",
+      "role": "Author of the earlier work",
+      "detail": "Cleveland dates the original composition well before this particular leaf.",
+      "source": "HIS-CORRESPONDENCE-HEMACHANDRA-GRAMMAR-FOLIO"
+    },
+    {
+      "name": "Abhayatilaka",
+      "role": "Commentator",
+      "detail": "Identified in the title of the surviving folio.",
+      "source": "HIS-CORRESPONDENCE-HEMACHANDRA-GRAMMAR-FOLIO"
+    },
+    {
+      "name": "Kumarapala",
+      "role": "Patron represented in a grammatical example",
+      "detail": "The museum identifies this patron in the composition.",
+      "source": "HIS-CORRESPONDENCE-HEMACHANDRA-GRAMMAR-FOLIO"
+    }
+  ],
+  "met:2016.535": [
+    {
+      "name": "Muhammad Shah Qajar",
+      "role": "Calligrapher",
+      "detail": "The Met identifies him as the hand behind the exercise.",
+      "source": "HIS-CORRESPONDENCE-QAJAR-PRACTICE-VERSE"
+    },
+    {
+      "name": "Khadija Khanum",
+      "role": "Named recipient of the dedication",
+      "detail": "The museum records her name in the dedication field.",
+      "source": "HIS-CORRESPONDENCE-QAJAR-PRACTICE-VERSE"
+    }
+  ],
+  "cma:1966.413.1": [
+    {
+      "name": "Edward Bulwer-Lytton",
+      "role": "Author of the earlier text",
+      "detail": "The title plate names the source of the translated story.",
+      "source": "HIS-CORRESPONDENCE-REDON-HAUNTED-TITLE"
+    },
+    {
+      "name": "René Philipon",
+      "role": "French translator",
+      "detail": "The translation credit appears on this title plate.",
+      "source": "HIS-CORRESPONDENCE-REDON-HAUNTED-TITLE"
+    },
+    {
+      "name": "Odilon Redon",
+      "role": "Lithographer",
+      "detail": "Cleveland credits Redon with the imagery.",
+      "source": "HIS-CORRESPONDENCE-REDON-HAUNTED-TITLE"
+    },
+    {
+      "name": "Auguste Clot",
+      "role": "Collaborating printer",
+      "detail": "The collection record identifies Clot as the master printer.",
+      "source": "HIS-CORRESPONDENCE-REDON-HAUNTED-TITLE"
+    }
+  ],
+  "cma:1945.382": [
+    {
+      "name": "Abu Saʿid ʿUbaid-Allah ibn Jibraʾil ibn Bakhtishu",
+      "role": "Author named for the earlier treatise",
+      "detail": "The museum connects the surviving Persian leaf with this earlier work.",
+      "source": "HIS-CORRESPONDENCE-ANIMAL-FOLIO-TWO-ENTRIES"
+    }
+  ],
+  "cma:2003.353": [
+    {
+      "name": "Yueshan Daozong",
+      "role": "Calligrapher",
+      "detail": "The museum names him and lists his seals on the scroll.",
+      "source": "HIS-CORRESPONDENCE-SEMI-CURSIVE-BEGINNING"
+    }
+  ],
+  "cma:1916.1060": [
+    {
+      "name": "Xuanzang",
+      "role": "Chinese translator",
+      "detail": "Cleveland identifies this scroll as one part of his translation.",
+      "source": "HIS-CORRESPONDENCE-XUANZANG-TREASURY"
+    },
+    {
+      "name": "Vasubandhu",
+      "role": "Earlier scholar named in the record",
+      "detail": "The museum relates the text to his teachings.",
+      "source": "HIS-CORRESPONDENCE-XUANZANG-TREASURY"
+    }
+  ],
+  "cma:1985.198": [
+    {
+      "name": "Michele Steno",
+      "role": "Doge named by the seal",
+      "detail": "The charter and seal place his office in the record.",
+      "source": "HIS-CORRESPONDENCE-MICHELE-STENO-CHARTER"
+    }
+  ],
+  "met:74.51.2393": [
+    {
+      "name": "Julia Donata",
+      "role": "Person named in both inscriptions",
+      "detail": "The Greek and Latin versions address or identify her in different ways.",
+      "source": "HIS-CORRESPONDENCE-DONATA-TWO-FAREWELLS"
+    }
+  ],
+  "met:26.7.21": [
+    {
+      "name": "Sehetepibre",
+      "role": "Egyptian king named in the hieroglyphs",
+      "detail": "The catalogue identifies the king named on one side.",
+      "source": "HIS-CORRESPONDENCE-SEHETEPIBRE-SEAL-FACES"
+    },
+    {
+      "name": "Yakin-ilum",
+      "role": "Name recorded on the other face",
+      "detail": "The Met relates this name to Byblos. The two names retain distinct roles.",
+      "source": "HIS-CORRESPONDENCE-SEHETEPIBRE-SEAL-FACES"
+    }
+  ],
+  "met:86.11.370a-c-e": [
+    {
+      "name": "Sin-sharra-ishkun",
+      "role": "Sender named in the copied letter",
+      "detail": "The original letter’s wording survives here through a later copy.",
+      "source": "HIS-CORRESPONDENCE-SINSHARRA-COPY"
+    },
+    {
+      "name": "Nabopolassar",
+      "role": "Recipient named in the copied letter",
+      "detail": "The surviving object is not his reply.",
+      "source": "HIS-CORRESPONDENCE-SINSHARRA-COPY"
+    }
+  ],
+  "met:24.2.11": [
+    {
+      "name": "Ashur-uballit",
+      "role": "Assyrian ruler who sent the letter",
+      "detail": "The Met credits this letter to the sender and describes his messenger.",
+      "source": "HIS-CORRESPONDENCE-ASSUR-AMARNA"
+    },
+    {
+      "name": "Akhenaten",
+      "role": "Probable Egyptian recipient",
+      "detail": "The museum qualifies the identification of the recipient.",
+      "source": "HIS-CORRESPONDENCE-ASSUR-AMARNA"
+    }
+  ],
+  "met:24.2.12": [
+    {
+      "name": "Abi-milku",
+      "role": "Sender and ruler of Tyre",
+      "detail": "The collection record attributes the letter to him.",
+      "source": "HIS-CORRESPONDENCE-TYRE-AMARNA"
+    }
+  ],
+  "met:12.180.143": [
+    {
+      "name": "Gennadius",
+      "role": "Named sender",
+      "detail": "The museum records the request in its translation.",
+      "source": "HIS-CORRESPONDENCE-GENNADIUS-EGGS"
+    },
+    {
+      "name": "Peter",
+      "role": "Named recipient",
+      "detail": "The collection record identifies the person asked to act.",
+      "source": "HIS-CORRESPONDENCE-GENNADIUS-EGGS"
+    }
+  ],
+  "met:52.74.2": [
+    {
+      "name": "Narseh",
+      "role": "King named by the inscription",
+      "detail": "The Met links the Middle Persian fragment to this ruler’s bilingual inscription.",
+      "source": "HIS-CORRESPONDENCE-NARSEH-FRAGMENT"
+    }
+  ],
+  "met:2014.719.12": [
+    {
+      "name": "Musō Soseki",
+      "role": "Writer of the letter",
+      "detail": "The Met explains the register of his formal Chinese letter.",
+      "source": "HIS-CORRESPONDENCE-SUWAS-FORMAL-LETTER"
+    },
+    {
+      "name": "Suwa Daishin",
+      "role": "Named recipient and official",
+      "detail": "Identified by the catalogue as an officer of the shogunate.",
+      "source": "HIS-CORRESPONDENCE-SUWAS-FORMAL-LETTER"
+    }
+  ],
+  "met:2014.718": [
+    {
+      "name": "Zekkai Chūshin",
+      "role": "Composer of the earlier letter",
+      "detail": "The Met distinguishes his own hand from the surviving scribe’s.",
+      "source": "HIS-CORRESPONDENCE-ZEKKAI-TRANSCRIPTION"
+    },
+    {
+      "name": "Shippei Shikai",
+      "role": "Named recipient",
+      "detail": "The catalogue describes the letter as a congratulatory address to him.",
+      "source": "HIS-CORRESPONDENCE-ZEKKAI-TRANSCRIPTION"
+    }
+  ],
+  "met:1989.363.59": [
+    {
+      "name": "Wen Zhengming",
+      "role": "Letter writer",
+      "detail": "The Met interprets the register in relation to the letter’s named audience.",
+      "source": "HIS-CORRESPONDENCE-WEN-LETTER-WU-YU"
+    },
+    {
+      "name": "Wu Yu",
+      "role": "Named recipient",
+      "detail": "The catalogue identifies him as Wen’s father-in-law.",
+      "source": "HIS-CORRESPONDENCE-WEN-LETTER-WU-YU"
+    }
+  ],
+  "met:2017.368": [
+    {
+      "name": "Shah Mahmud Nishapuri",
+      "role": "Copyist and calligrapher",
+      "detail": "The manuscript colophon records his copying at Tabriz.",
+      "source": "HIS-CORRESPONDENCE-JAMI-PERSIAN-LINES"
+    },
+    {
+      "name": "Jami",
+      "role": "Persian translator",
+      "detail": "The Met identifies the poet as translator, before this copy was made.",
+      "source": "HIS-CORRESPONDENCE-JAMI-PERSIAN-LINES"
+    }
+  ],
+  "met:2013.722a-b": [
+    {
+      "name": "Katsushika Hokusai",
+      "role": "Creator credited by the Met",
+      "detail": "The collection record credits Hokusai for the pictorial work.",
+      "source": "HIS-CORRESPONDENCE-HOKUSAI-QUICK-DICTIONARY"
+    },
+    {
+      "name": "Kakumaruya Jinsuke",
+      "role": "Publisher credited by the Met",
+      "detail": "The museum records the publisher of the two-volume work.",
+      "source": "HIS-CORRESPONDENCE-HOKUSAI-QUICK-DICTIONARY"
+    }
+  ],
+  "met:1991.380": [
+    {
+      "name": "Wang Xizhi",
+      "role": "Author of the earlier letters",
+      "detail": "The Met separates his original fourth-century writings from the surviving rubbing.",
+      "source": "HIS-CORRESPONDENCE-WANG-SEVENTEENTH-DAY"
+    },
+    {
+      "name": "Taizong",
+      "role": "Emperor associated with the later compilation",
+      "detail": "The museum describes his sponsorship of the selection.",
+      "source": "HIS-CORRESPONDENCE-WANG-SEVENTEENTH-DAY"
+    }
+  ],
+  "met:na387-.g64-1842-folio-v.1": [
+    {
+      "name": "Jules Goury",
+      "role": "Survey draughtsman",
+      "detail": "Named for the field drawings in the printed title.",
+      "source": "HIS-CORRESPONDENCE-ALHAMBRA-TRANSLATED-VOLUME"
+    },
+    {
+      "name": "Owen Jones",
+      "role": "Survey draughtsman and contributor",
+      "detail": "Named for the field drawings in the printed title.",
+      "source": "HIS-CORRESPONDENCE-ALHAMBRA-TRANSLATED-VOLUME"
+    },
+    {
+      "name": "Pascual de Gayangos",
+      "role": "Contributor to the inscriptions and history named on the volume",
+      "detail": "The long title distinguishes the translation and historical notes from the drawings.",
+      "source": "HIS-CORRESPONDENCE-ALHAMBRA-TRANSLATED-VOLUME"
+    }
+  ],
+  "met:x.430.1": [
+    {
+      "name": "Augustine of Hippo",
+      "role": "Author of the earlier Latin work",
+      "detail": "The museum distinguishes this original text from the later Spanish translation.",
+      "source": "HIS-CORRESPONDENCE-CASTILIAN-CITY-GOD"
+    },
+    {
+      "name": "Cano de Aranda",
+      "role": "Artist credited by the museum",
+      "detail": "The artist credit accompanies this surviving volume.",
+      "source": "HIS-CORRESPONDENCE-CASTILIAN-CITY-GOD"
+    }
+  ],
+  "wellcome:crbmz8ef": [
+    {
+      "name": "Charles William Isenberg",
+      "role": "Author credited on the title",
+      "detail": "Wellcome’s title gives this name and its authority record lists Karl Wilhelm Isenberg.",
+      "source": "HIS-CORRESPONDENCE-ISENBERG-AMHARIC"
+    }
+  ],
+  "wellcome:j2f9xxcq": [
+    {
+      "name": "Titus Lewis",
+      "role": "Dictionary author",
+      "detail": "Wellcome’s second-edition entry names him.",
+      "source": "HIS-CORRESPONDENCE-LEWIS-WELSH-DICTIONARY"
+    }
+  ],
+  "wellcome:p4k9t7hh": [
+    {
+      "name": "Peter Breton",
+      "role": "Named vocabulary author",
+      "detail": "Wellcome’s item record names the compiler and the original book’s audience.",
+      "source": "HIS-CORRESPONDENCE-BRETON-FIVE-TERMS"
+    }
+  ],
+  "newberry:ayer-871-a952-a7-1611": [
+    {
+      "name": "Pedro de Arenas",
+      "role": "Named compiler",
+      "detail": "The Newberry version identifies him as author of this manual.",
+      "source": "HIS-CORRESPONDENCE-ARENAS-NAHUATL-SPANISH"
+    }
+  ],
+  "toronto:grammarofdialect00stiguoft": [
+    {
+      "name": "Chauncy Hugh Stigand",
+      "role": "Credited author",
+      "detail": "The archive identifies Stigand for the grammar.",
+      "source": "HIS-CORRESPONDENCE-KISWAHILI-DIALECT-GRAMMAR"
+    },
+    {
+      "name": "William Ernest Taylor",
+      "role": "Credited contributor",
+      "detail": "The printed title attributes the introduction, recension and poetic translation to Taylor.",
+      "source": "HIS-CORRESPONDENCE-KISWAHILI-DIALECT-GRAMMAR"
+    }
+  ],
+  "uc:swahiligrammarvo00burtiala": [
+    {
+      "name": "Mrs. F. Burt",
+      "role": "Compiler named in the printed title",
+      "detail": "The catalogue entry also gives A. E. Burt in a creator field. This display keeps the stated print credit.",
+      "source": "HIS-CORRESPONDENCE-BURT-SWAHILI-VOCABULARY"
+    }
+  ],
+  "bsb:bsb10589302": [
+    {
+      "name": "Samuel Ajayi Crowther",
+      "role": "Author",
+      "detail": "The Bavarian State Library identifies Crowther as the author in its exact-copy record.",
+      "source": "HIS-CORRESPONDENCE-CROWTHER-YORUBA"
+    }
+  ]
+}

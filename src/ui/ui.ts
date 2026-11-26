@@ -86,6 +86,12 @@ import { turningPanel } from './turningTable';
 import { CUE_GROUP } from '../content/cueWorkshop';
 import { LOAD_GROUP } from '../content/loadingBay';
 import { BEARING_GROUP } from '../content/bearingBay';
+import { PRISM_GROUP } from '../content/prismViewer';
+import { prismViewerPanel } from './prismViewer';
+import { ALIGN_GROUP } from '../content/mapAlignment';
+import { mapAlignmentPanel } from './mapAlignment';
+import { scriptRailPanel } from './scriptRail';
+import { localGuide, workFeedback } from './localGuide';
 import { bearingBayPanel } from './bearingBay';
 import { loadingBayPanel } from './loadingBay';
 import { cueWorkshopPanel } from './cueWorkshop';
@@ -119,6 +125,12 @@ import { CARRY, carryLocation } from '../domain/sharedCarry';
 import { opticsTrial } from './opticsTrial';
 import { DETECTOR_GAME } from '../domain/coastDetector';
 import { coastDetectorPanel } from './coastDetector';
+import { BRIDGE_PROOF_TOOL } from '../domain/bridgeProof';
+import { bridgeProofPanel } from './bridgeProof';
+import { PORTER_TOOL } from '../domain/porterPace';
+import { porterPacePanel } from './porterPace';
+import { WARM_TOOL } from '../domain/warmRoom';
+import { warmRoomPanel } from './warmRoom';
 import { loyaltyOf } from '../domain/loyalty';
 import { CROSSINGS, WAY_LABEL, crossingOf, crossingWay, wayOpen } from '../domain/crossings';
 import { HEARTH, TONE_LABEL, type HearthTalk } from '../domain/hearth';
@@ -131,8 +143,8 @@ import { conversationHistory } from '../domain/conversationHistory';
 import { storyMotif, storyMotifKey, type StoryMotif } from '../domain/storyMotifs';
 import { activePerspective, ownedPerspective, perspectiveTools } from '../domain/perspectives';
 import { canClaimSpecimen, carriesSpecimen, carriedSpecimenCount, hasSpecimen, isSpecimenItem, ownsSpecimen, SPECIMEN_CAPACITY,
-  specimenEquipped, specimenFromTool, specimenReadingFlag } from '../domain/specimenGear';
-import { specimenThumbnail, specimenVault } from './specimenVault';
+  SPECIMEN_SHELF, specimenEquipped, specimenFromTool, specimenReadingFlag } from '../domain/specimenGear';
+import { specimenCase, specimenThumbnail, specimenVault } from './specimenVault';
 import { journalEvidence, specimenReferences, type SpecimenReference } from '../domain/specimenReferences';
 import { timbuktuHorizonPanel } from './timbuktuHorizon';
 import { objectUsePanel } from './objectUse';
@@ -458,6 +470,7 @@ export class UI implements UIApi {
   /** Things that wait until the open panel closes: events and reflection offers. */
   private queue: (() => void)[] = [];
   private activeEvent: string | null = null;
+  private activeEventNode: string | null = null;
   private stopStoryCue: (() => void) | null = null;
 
   constructor(root: HTMLElement, onStart: () => void) {
@@ -478,6 +491,8 @@ export class UI implements UIApi {
   private openModal(cls: string, label: string, ...content: (Node | string)[]): HTMLElement {
     this.closeModal(false);
     const box = h('div', { class: `panel ${cls}`, role: 'dialog', 'aria-modal': 'true', 'aria-label': label }, ...content);
+    const state = ctx.controller.state;
+    if (state && box.classList.contains('bench-panel')) box.append(localGuide(ctx.controller, MAPS[state.mapId]?.world ?? ''));
     const wrap = h('div', { class: 'modal-wrap', onclick: (e: MouseEvent) => { if (e.target === wrap && !cls.includes('dialogue')) this.closeModal(); } }, box);
     this.root.append(wrap);
     this.modal = wrap;
@@ -489,9 +504,23 @@ export class UI implements UIApi {
   closeModal(sound = true): void {
     try { if (ctx.settings.readAloud) window.speechSynthesis?.cancel(); } catch { /* no speech */ }
     if (!this.modal) return;
+    // A player can leave a Calm invitation or its conversation with Escape or a click.
+    // Internal modal changes during dialogue use closeModal(false) and keep its state.
+    const leaveEvent = sound && (
+      this.modal.querySelector('[role="dialog"].event')
+      || (this.activeEvent && this.modal.querySelector('[role="dialog"].dialogue'))
+    );
     this.releaseTrap?.();
     this.modal.remove();
     this.modal = null;
+    if (leaveEvent) {
+      if (this.activeEvent && this.activeEventNode) {
+        ctx.controller.dispatch({ type: 'SetFlag', flag: `event.resume.${this.activeEvent}`, value: this.activeEventNode });
+      }
+      this.activeEvent = null;
+      this.activeEventNode = null;
+      ctx.controller.dispatch({ type: 'DelayEvent' });
+    }
     if (sound) this.sfx('sfx.click');
     const canvas = document.querySelector<HTMLCanvasElement>('#game canvas');
     if (canvas) {
@@ -540,6 +569,8 @@ export class UI implements UIApi {
   }
 
   private onKey(e: KeyboardEvent): void {
+    // Shortcuts act once per press, even when they change which panel has focus.
+    if (e.repeat) return;
     const tag = (e.target as HTMLElement)?.tagName;
     if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') { if (e.key === 'Escape') this.closeModal(); return; }
     if (!this.hud?.isConnected) return;
@@ -656,11 +687,12 @@ export class UI implements UIApi {
       h('h1', {}, 'Knowledge Guardians'),
       h('p', { class: 'subtitle' }, 'From Three Firsts to the Door Without a Name'),
       c.loadProblem ? h('p', { class: 'warn', role: 'alert' }, `Your save could not be opened: ${c.loadProblem} Your saved data has not been changed. You can still start a new game, but starting a new game will replace it.`) : null,
+      c.loadWarning ? h('p', { class: 'warn', role: 'alert' }, c.loadWarning) : null,
       c.contentProblems.length ? h('p', { class: 'warn', role: 'alert' }, `Content problems: ${c.contentProblems.join('; ')}`) : null,
       h('div', { class: 'menu' },
         cont ? h('button', { 'data-autofocus': true, onclick: () => { c.loadContinue(); this.startPlaying(true); } }, h('strong', {}, 'Continue'), h('small', {}, fmt(cont))) : null,
-        rec ? h('button', { onclick: () => this.confirmRecovery() }, h('strong', {}, 'Checkpoint recovery'), h('small', {}, fmt(rec))) : null,
-        h('button', { 'data-autofocus': !cont, onclick: () => this.characterCreation() }, h('strong', {}, 'New game'), h('small', {}, cont ? 'Starts a new campaign. Your awards stay.' : 'Begin as a new recruit')),
+        rec ? h('button', { 'data-autofocus': !cont, onclick: () => this.confirmRecovery() }, h('strong', {}, 'Checkpoint recovery'), h('small', {}, fmt(rec))) : null,
+        h('button', { 'data-autofocus': !cont && !rec, onclick: () => this.characterCreation() }, h('strong', {}, 'New game'), h('small', {}, cont || rec ? 'Starts a new campaign. Your awards stay.' : 'Begin as a new recruit')),
         h('button', { onclick: () => this.openSettings() }, h('strong', {}, 'Settings'), h('small', {}, 'Text size, motion, sound, guide prompts')),
         h('button', { onclick: () => this.openCredits() }, h('strong', {}, 'Credits and sources'), h('small', {}, 'Who made the art, music and sounds, and the historical sources')),
       ),
@@ -679,7 +711,7 @@ export class UI implements UIApi {
       h('p', {}, `This makes "${rec.label}" (${rec.location}, ${new Date(rec.savedAt).toLocaleString()}) your current game. Your current Continue save will be replaced.`),
       h('p', {}, 'Awards, concept XP and badges you already earned are kept.'),
       h('div', { class: 'row' },
-        h('button', { class: 'primary', 'data-autofocus': true, onclick: () => { this.closeModal(); c.loadRecovery(); this.startPlaying(true); } }, 'Restore'),
+        h('button', { class: 'primary', 'data-autofocus': true, onclick: () => { if (c.loadRecovery()) { this.closeModal(); this.startPlaying(true); } } }, 'Restore'),
         h('button', { onclick: () => this.closeModal() }, 'Cancel')));
     void box;
   }
@@ -702,7 +734,7 @@ export class UI implements UIApi {
       ctx.controller.newGame(n.slice(0, 24), lookPick.value(), { pronouns: pron.value(), origin });
       this.startPlaying(false);
     };
-    name.addEventListener('keydown', (e) => { if (e.key === 'Enter') start(); });
+    name.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.repeat) start(); });
     const box = h('div', { class: 'title-screen create' },
       h('h1', {}, 'A new Guardian'),
       h('p', {}, 'Every student is a Knowledge Guardian from the first day. Choose a name and how you look. You can play in any way you like.'),
@@ -862,9 +894,23 @@ export class UI implements UIApi {
     clear(this.root); this.root.append(this.toastBox);
     this.buildHud();
     this.seenObjectives = new Set(ctx.controller.engine.visibleObjectives(ctx.controller.state).map((o) => o.id));
+    this.activeEvent = null;
+    this.activeEventNode = null;
     this.onStart();
-    if (returning) this.showRecap();
-    else if (!ctx.controller.state.flags['seen.coldopen']) setTimeout(() => this.playScene('cold.open'), ctx.settings.reducedMotion ? 50 : 700);
+    if (returning) {
+      this.showRecap();
+      const pending = pc.state.events.pending;
+      if (pending) {
+        const event = pc.pack.events.find(({ id }) => id === pending);
+        if (event?.maps.includes(pc.state.mapId) && !pc.state.events.seen.includes(pending)) {
+          this.whenFree(() => this.showEvent(pending));
+        } else {
+          pc.dispatch({ type: 'DelayEvent' });
+        }
+      }
+    } else if (!ctx.controller.state.flags['seen.coldopen']) {
+      setTimeout(() => this.playScene('cold.open'), ctx.settings.reducedMotion ? 50 : 700);
+    }
   }
 
   playScene(node: string): void { this.whenFree(() => this.showNode(node)); }
@@ -994,7 +1040,12 @@ export class UI implements UIApi {
           break;
         }
         case 'checkpoint': this.toast(`Checkpoint saved: ${e.label}`, 'save'); break;
-        case 'error': this.toast(e.message, 'error'); break;
+        case 'error': {
+          const box = this.modal?.querySelector<HTMLElement>('.bench-panel, .exhibit');
+          if (box) workFeedback(box, e.message);
+          else this.toast(e.message, 'error');
+          break;
+        }
         case 'moment': this.toast(`Learner profile moment: ${PROFILE_NAMES[e.moment.attribute]}. ${e.moment.did}`, 'moment'); break;
         case 'portfolio': this.toast(`Added to your portfolio: ${e.title}`, 'info'); break;
         case 'fray': this.toast(`New in your Fray Bestiary: ${e.name} (${e.error.toLowerCase()}). See Journal, Fray Bestiary.`, 'info'); break;
@@ -1040,15 +1091,22 @@ export class UI implements UIApi {
   private showEvent(id: string): void {
     const c = ctx.controller;
     const ev = c.pack.events.find((x) => x.id === id);
-    if (!ev || c.state.events.pending !== id) return;
-    const play = () => { this.closeModal(false); this.activeEvent = id; this.showNode(ev.node); };
+    if (!this.hud?.isConnected || !ev || c.state.events.pending !== id) return;
+    const play = () => {
+      this.closeModal(false);
+      this.activeEvent = id;
+      const saved = c.state.flags[`event.resume.${id}`];
+      const resume = typeof saved === 'string' && c.state.flags[`node.${saved}`] === true
+        && c.pack.dialogue.some(({ id }) => id === saved);
+      this.showNode(resume ? saved : ev.node, !resume);
+    };
     if (!ctx.settings.calmMode && !ctx.settings.zenMode) { play(); return; }
     this.openModal('event', ev.title,
       h('h2', {}, ev.title), h('p', {}, ev.calm),
       h('p', { class: 'fine' }, 'Nothing here is timed, and waiting costs you nothing.'),
       h('div', { class: 'row' },
         h('button', { class: 'primary', 'data-autofocus': true, onclick: play }, 'Now'),
-        h('button', { onclick: () => { c.dispatch({ type: 'DelayEvent' }); this.closeModal(); } }, 'Later')));
+        h('button', { onclick: () => this.closeModal() }, 'Later')));
   }
 
   /** A reflection offer at the student threshold (spec 95.1). Never "wrong", always optional. */
@@ -1066,7 +1124,12 @@ export class UI implements UIApi {
   /** Close a conversation, then open the tool it names and finish an event. */
   private endDialogue(open?: string): void {
     this.closeModal(false);
-    if (this.activeEvent) { const id = this.activeEvent; this.activeEvent = null; ctx.controller.dispatch({ type: 'ResolveEvent', event: id }); }
+    if (this.activeEvent) {
+      const id = this.activeEvent;
+      this.activeEvent = null;
+      this.activeEventNode = null;
+      ctx.controller.dispatch({ type: 'ResolveEvent', event: id });
+    }
     if (!open) return;
     const [kind, id] = open.split(':');
     if (kind === 'showdown') this.openShowdown(id);
@@ -1086,11 +1149,14 @@ export class UI implements UIApi {
     this.showNode(node);
   }
 
-  private showNode(id: string): void {
+  private showNode(id: string, enter = true): void {
     const c = ctx.controller;
-    const firstHearing = c.state.flags[`node.${id}`] !== true;
-    const ev = c.dispatch({ type: 'EnterNode', node: id });
-    if (ev.some((e) => e.kind === 'error')) { this.closeModal(); return; }
+    const firstHearing = enter && c.state.flags[`node.${id}`] !== true;
+    if (enter) {
+      const events = c.dispatch({ type: 'EnterNode', node: id });
+      if (events.some((event) => event.kind === 'error')) { this.closeModal(); return; }
+    }
+    if (this.activeEvent) this.activeEventNode = id;
     const raw: DialogueNode = c.engine.node(id);
     const n: DialogueNode = { ...raw, text: personalise(raw.text, c.state.player) };
     const speaker = n.speaker === 'lumen' ? { name: 'Lumen', role: 'Fairy guide', sprite: '' }
@@ -1276,7 +1342,7 @@ export class UI implements UIApi {
         artCredit.textContent = 'Collection image unavailable. The catalogue record is linked below.';
       }
     });
-    this.openModal('exhibit', ex.name, this.closeBtn(),
+    const box = this.openModal('exhibit', ex.name, this.closeBtn(),
       h('div', { class: 'exhibit-grid' },
         h('figure', {}, image, artCredit),
         h('div', {},
@@ -1301,6 +1367,9 @@ export class UI implements UIApi {
           ex.labelKit ? h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.openLabel(ex.labelKit!) }, c.state.flags[`label.${ex.labelKit}.everHeld`] ? 'Change this plaque' : 'Repair this plaque')) : null,
           thread ? h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => this.followThread(thread.id, thread.nodes[0].id) }, 'Follow the Provenance Thread')) : null,
           h('div', { class: 'card-mini' }, this.cardView(card)))));
+    if (ex.specimen && !ownsSpecimen(c.state, ex.specimen.key)) {
+      box.append(localGuide(c, MAPS[c.state.mapId]?.world ?? '', ex.specimen.objective));
+    }
   }
 
   private cardView(card: EvidenceCard, includeSources = true): HTMLElement {
@@ -3080,6 +3149,9 @@ export class UI implements UIApi {
     } else if (id.startsWith(STAR_GAME)) {
       this.openModal('bench-panel wide', 'Field methods', this.closeBtn(), starField(ctx.controller,
         id.slice(STAR_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith('script-rail:')) {
+      this.openModal('bench-panel wide', 'The Script Cabinet', this.closeBtn(), scriptRailPanel(ctx.controller,
+        id.slice('script-rail:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith('work-schedule:')) {
       this.openModal('bench-panel wide', 'The Working Cupboards', this.closeBtn(), workSchedulePanel(ctx.controller,
         id.slice('work-schedule:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
@@ -3089,6 +3161,16 @@ export class UI implements UIApi {
     } else if (id.startsWith(GLASS_RACK_PREFIX)) {
       this.openModal('bench-panel wide', 'The Missing Face', this.closeBtn(),
         glassRackPanel(ctx.controller, id.slice(GLASS_RACK_PREFIX.length), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${WARM_TOOL}:`)) {
+      this.openModal('bench-panel wide', 'The Warm Side', this.closeBtn(), warmRoomPanel(ctx.controller,
+        id.slice(WARM_TOOL.length + 1), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === `${PORTER_TOOL}:emberford` || id === `${PORTER_TOOL}:water`) {
+      const site = id.endsWith(':water') ? 'water' : 'emberford';
+      this.openModal('bench-panel wide', site === 'emberford' ? 'Idris’s carry board' : 'Sena’s half-route board',
+        this.closeBtn(), porterPacePanel(ctx.controller, site, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id === BRIDGE_PROOF_TOOL) {
+      this.openModal('bench-panel wide', 'Idris’s practice bridge', this.closeBtn(),
+        bridgeProofPanel(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === DETECTOR_GAME) {
       this.openModal('bench-panel wide', 'Neri’s light reader', this.closeBtn(),
         coastDetectorPanel(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
@@ -3113,7 +3195,14 @@ export class UI implements UIApi {
       this.openModal('bench-panel wide', 'The season horizon', this.closeBtn(),
         timbuktuHorizonPanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === 'specimen-vault') {
-      this.openModal('bench-panel wide', 'Your collection', this.closeBtn(), specimenVault(ctx.controller, () => this.refreshHud()));
+      this.openModal('bench-panel wide', 'Your collection', this.closeBtn(), specimenVault(ctx.controller, () => {
+        this.refreshHud(); ctx.world?.refreshWorld();
+      }));
+    } else if (id.startsWith(SPECIMEN_SHELF)) {
+      this.openModal('bench-panel', 'Collection display', this.closeBtn(),
+        specimenCase(ctx.controller, Number(id.slice(SPECIMEN_SHELF.length)), () => {
+          this.refreshHud(); ctx.world?.refreshWorld();
+        }));
     } else if (id === 'specimen-return') {
       this.openSpecimenReturn();
     } else if (id.startsWith(`${NUMBER_LEAF_GROUP}:`)) {
@@ -3171,6 +3260,12 @@ export class UI implements UIApi {
     } else if (id.startsWith(`${BEARING_GROUP}:`)) {
       this.openModal('bench-panel wide', 'Where the Two Sights Meet', this.closeBtn(),
         bearingBayPanel(id.slice(BEARING_GROUP.length + 1), ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${PRISM_GROUP}:`)) {
+      this.openModal('bench-panel wide', 'Three Bands Through One Window', this.closeBtn(),
+        prismViewerPanel(id.slice(PRISM_GROUP.length + 1), ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
+    } else if (id.startsWith(`${ALIGN_GROUP}:`)) {
+      this.openModal('bench-panel wide', 'The Third Landmark', this.closeBtn(),
+        mapAlignmentPanel(id.slice(ALIGN_GROUP.length + 1), ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === 'drawer-cases') {
       const board = this.openModal('bench-panel wide', 'Three Cases at the Bell');
       drawerCases(board, ctx.controller, this.closeBtn());

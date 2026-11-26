@@ -1,4 +1,5 @@
 import { BADGE_ANNEX_PREFIX, BADGE_WORK } from '../content/badgeRoom';
+import { ANNEX_FIELD_INDEX } from './fieldBadges';
 import { ORACLE_PRESS, oracleFlag } from '../content/oraclePress';
 import { BADGE_FAMILIES, BADGE_ROOM_OPEN, badgeFamilyReady, selectedFamily } from '../content/tokBadges';
 import { ORACLE_COPY, ORACLE_PACKET } from '../domain/oraclePress';
@@ -45,6 +46,7 @@ export const BADGE_ANNEX: MapDef = {
   lights: [{ x: 5, y: 7, r: 76, color: 0xa3cffa }, { x: 23, y: 7, r: 72, color: 0xffcb95 },
     { x: 14, y: 10, r: 85, color: 0xbce2d5 }, { x: 23, y: 14, r: 52, color: 0xf4b175 }],
   interactables: [
+    ANNEX_FIELD_INDEX,
     { id: 'badge-annex-exit', kind: 'door', x: 14, y: 17, w: 1, h: 1, art: 'preserved.door',
       label: 'the Archive Hall', to: { map: 'nexus.archive', x: DOOR.x - 1, y: DOOR.y } },
     { id: 'badge-cabinet', kind: 'fieldgame', game: BADGE_ANNEX_PREFIX + 'cabinet', x: 11, y: 14, w: 1, h: 1,

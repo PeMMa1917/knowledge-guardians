@@ -2,6 +2,7 @@
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
 import { JIG_SHOP_DOOR } from './jigShop';
+import { WARM_ROOM_DOOR } from './warmRoom';
 import { METAL_CALLBOARD_RETURN } from './civicCallboard';
 import { METALWORKS_VINDOLANDA_HALL, METALWORKS_VINDOLANDA_YARD } from './vindolanda';
 import { METALWORKS_PLATE_HALL, METALWORKS_PLATE_YARD } from './transferFaces';
@@ -132,7 +133,7 @@ export const METALWORKS_RECORDS = workshop({
     METALWORKS_FITTING_RECORD,
     METAL_CALLBOARD_RETURN,
     METAL_DEBATE_DOOR,
-    REFERENCE_HALL_DOOR,
+    REFERENCE_HALL_DOOR, WARM_ROOM_DOOR,
     door('metal-yard-return', 11, 14, 'the passage back to the Sample Yard', { map: 'metalworks.yard', x: 12, y: 5 }),
     { id: 'metal-exhibition-case', kind: 'exhibit', exhibit: 'OBJ-MET-ASTROLABE', x: 5, y: 8, w: 1, h: 1, walkThrough: true,
       label: 'the museum entry for Musa’s spherical astrolabe', art: 'preserved.catalogue' },

@@ -163,9 +163,9 @@ These links show where a subject’s practice is visible or where a co-tag point
 
 | Subject | Available depth |
 |---|---|
-| Language A: literature | The harbour and singer origins connect the interpretation of songs and testimony to what can survive a transfer. Practice with sustained literary form is limited. [origins.json](../src/content/origins.json) |
-| Language A: language and literature | The City shows what changes when a copy loses a date, an attributed source or a qualification. [copies-story.test.ts](../tests/copies-story.test.ts) |
-| Literature and performance | Play the same lines with different ordering of movement and pause. Use the result in a programme for distinct seats. [performance-story.test.ts](../tests/performance-story.test.ts) |
+| Language A: literature | The harbour and singer origins follow interpretation across a transfer. In the Script Cabinet, separate nested speakers, later illustrations and altered versions as you guide readers to poems and stories. Practice follows short passages, folds and scenes. [origins.json](../src/content/origins.json) · [Script Cabinet tests](../tests/script-rail.test.ts) |
+| Language A: language and literature | The City shows what changes when a copy loses a date, a source or a qualification. The Cabinet makes a translator, printing role, commentary or gift inscription findable in the City’s index by its own evidence. [copies-story.test.ts](../tests/copies-story.test.ts) · [Script Cabinet tests](../tests/script-rail.test.ts) |
+| Literature and performance | Play the same lines with different movement and pause order. The Cabinet asks which reading cue a passing audience first receives, with the basis and limits available at a second seat. [performance-story.test.ts](../tests/performance-story.test.ts) · [Script Cabinet tests](../tests/script-rail.test.ts) |
 | Language B | Translation proofs compare what wording keeps and what context travels. Target-language acquisition and language-specific packs remain open. [opening-ferry.test.ts](../tests/opening-ferry.test.ts) |
 | Language ab initio | Practise a short tray request from both sides of Mara’s stall and check where the listener acts on it. In the Market, check what the same signal means at intake and on the checked pickup. A target-language pack remains open. [practical-pickup.test.ts](../tests/practical-pickup.test.ts) |
 | Classical languages | Align two proposed readings of Vindolanda tablet 291 with a trace. In the Metalworks use the copied Latin address to separate sender, recipient and scribe before deciding where a repair witness is needed. Greek examples and sustained Latin reading remain open. [vindolanda.test.ts](../tests/vindolanda.test.ts), [SOURCES.md](SOURCES.md) |
@@ -185,7 +185,7 @@ These links show where a subject’s practice is visible or where a co-tag point
 | Physics | Keep the load and tray fixed while changing tilt. At the coastline adjust a lamp or pointer separately. At the Metalworks test an empty block and a known insert, then turn the same fitting against a fixed stop. Replay the reference alignment before making a new reading at the Commons. [nile-followups.test.ts](../tests/nile-followups.test.ts), [optics-screen.json](../src/content/optics-screen.json), [fitting-views.test.ts](../tests/fitting-views.test.ts) |
 | Computer science | The Civic console compares inputs and rules, including duplicates. Forest and Water counters let players step through two rules against a fixed set of entries and inspect where the results diverge. [civic-console.test.ts](../tests/civic-console.test.ts), [counter-replay.test.ts](../tests/counter-replay.test.ts) |
 | Design technology | Test the same marker on different materials or fit a reader to the audience’s required detail. Return to see how a different reader uses the design. [opening-practice.test.ts](../tests/opening-practice.test.ts), [opening-viewer.test.ts](../tests/opening-viewer.test.ts) |
-| Sports, exercise and health science | The Island rehearsal compares control with the same empty box, floor and moving pace under one added supported rest. A single fictional observation stays separate from loaded work or safety claims for other bodies. [island-movement.test.ts](../tests/island-movement.test.ts) |
+| Sports, exercise and health science | Idris’s model compares two pacing patterns with the same cargo, then records arrival time, peak effort and two recovery beats. Sena keeps that pace and changes staffing on a new course. The Island rehearsal holds the empty box, floor and moving pace fixed while adding one supported rest. The readings belong to their particular fictional models. [Porter trials](../tests/porter-pace.test.ts) · [Island rehearsal](../tests/island-movement.test.ts) |
 | Mathematics: analysis and approaches | The Packing Table changes grouping without changing the inventory. The Civic rack compares possible arrival marks under a stated assumption. [opening-packing.test.ts](../tests/opening-packing.test.ts), [civic-story.test.ts](../tests/civic-story.test.ts) |
 | Mathematics: applications and interpretation | The Market handles rates and whole-lot decisions. Island routes compare capacity, time and marked-strip counts using a fixed load. [market-scale.test.ts](../tests/market-scale.test.ts), [island-story.test.ts](../tests/island-story.test.ts) |
 | Visual arts | Re-align a slipped print and adjust what a viewer sees first. Later choose whether to separate an exhibition or connect cases visually. [opening-print.test.ts](../tests/opening-print.test.ts), [preserved-exhibition.test.ts](../tests/preserved-exhibition.test.ts) |
@@ -260,3 +260,24 @@ The Badge Annex opens after the first supported label. Brenna’s cabinet lists 
 | Legendary Achievements | 4 | Bring advanced practice in several cases together. Each capstone is earned from completed live actions. |
 
 The Oracle press uses authored outputs and a small deterministic reader. It distinguishes model examples, wrapper features, a press editor’s cut, a private source sleeve and a keeper’s verification. Neither the press nor the badge cabinet collects personal writing or classroom ratings. [Badge definitions](../src/content/tokBadges.ts) · [Press rules](../src/domain/oraclePress.ts)
+
+### Fieldwork titles
+
+Twelve additional titles recognise completed field decisions and reuse. They appear with the other earned titles in the Journal. Three can open another job at an existing worksite. A title remains available to wear when an earlier checkpoint is restored.
+
+| Title | What earns it |
+| --- | --- |
+| Dry-foot Receiver | Recheck the chosen washhouse repair and verify the installed relief layout at Water Commons. At the Old Ferry, place and take the footboard, then inspect the dry receiving bag. |
+| Cues in Reach | Use Ethren’s gift at the Workmen’s Room and revise the performance programme after the audience reply. In the Nexus, fit a standing rail or a bench pocket, then check the visitor’s different use. |
+| Keeper of Two Receipts | Take the dated Emberford correction to its audience and make a checked choice on Nellis’s docket. Borrow the split index at the Badge Annex and carry it to the earlier Emberford order. |
+| The Survey Margin | Keep each shore survey’s edge visible and retest the Island model at the lower landing. |
+| The Source That Came Back | Return to the earlier checking place with the equipped Quetzalecatzin Codex or Gage rod and leave its supported notice. |
+| Named Work on the Record | Check who did what in the Gombe records and take a checked response to the Cold Store’s name request. |
+| The Watch Returned | Carry the new headland reading into the revised notice and do the same with the forest return watches. |
+| First Look Kept | Preserve the first cart view through the replay and file the two Workmen’s slips with the uses of their different headings. |
+| Three Supporting Sights | Recheck the same lamp slip, compare the two tag causes and leave the checked shore-symbol key. |
+| The People Still Waiting | Collect a Market ticket at its proper earlier counter and finish the remaining parcel delivery after the permit review. |
+| Proof Beside the Mark | Try different rules with the same dispatch counts and check an actual receiving arrangement after the crew evidence. |
+| Signals in Two Places | Use the Water Commons observer track, leave an Island log with its place and time, and complete the signed Council team handover. |
+
+[Fieldwork deeds and reusable worksite conditions](../src/content/fieldBadges.ts)

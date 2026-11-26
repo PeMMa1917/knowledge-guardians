@@ -1,0 +1,506 @@
+{
+  "sources": [
+    {
+      "id": "REL-CLEVELAND-JAIN-LEAF-1979.23",
+      "title": "Cleveland Museum of Art, Rishabhadatta’s speech, Kalpa-sutra folio 5, 1979.23",
+      "url": "https://clevelandart.org/art/1979.23",
+      "locator": "Object information and museum interpretation of adornment and commissioning",
+      "supports": "The Cleveland Museum documents the Gujarat folio circa 1475–1500, describes the dancers as adornment of sacred doctrine and discusses merit and community standing in the commissioning of such manuscripts.",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "items": [
+    {
+      "id": "item.leaf-frame.sleeve",
+      "name": "Mera’s two-context sleeve",
+      "description": "An annotated record sleeve with one tab for adornment and one for commissioning. The folio stays in the collection.",
+      "historicalLabel": "fictional-world",
+      "art": "preserved.display-paired"
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "leaf-frame.object",
+      "speaker": "correspondence-mera",
+      "text": "Look through the upper frame. It outlines an arch and the position of a figure without copying the painting. Cleveland identifies the figures on this leaf as celestial dancers. Its account treats their painted celebration as adornment for sacred Jain teachings. Keep this observation with the folio.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Turn the ornament frame and clip its context beside the folio.",
+          "effects": [
+            {
+              "setFlag": "leaf-frame.object",
+              "value": true
+            },
+            {
+              "addCard": "card.leaf-frame.adornment"
+            }
+          ],
+          "if": {
+            "card": "card.correspondence.kalpa-two-sides"
+          }
+        },
+        {
+          "text": "Leave the frame resting flat."
+        }
+      ]
+    },
+    {
+      "id": "leaf-frame.account",
+      "speaker": "correspondence-ansel",
+      "text": "The lower frame fits over the workshop note. In Cleveland’s account, commissioning a sacred manuscript could bring religious merit. The museum also discusses the standing wealthy donors gained by paying for the work. This folio comes with no named commissioner in that account. Keep the two possible concerns open together.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Lift the workshop frame and clip the account behind it.",
+          "effects": [
+            {
+              "setFlag": "leaf-frame.account",
+              "value": true
+            },
+            {
+              "addCard": "card.leaf-frame.commission"
+            }
+          ],
+          "if": {
+            "card": "card.correspondence.kalpa-two-sides"
+          }
+        },
+        {
+          "text": "Leave the account at the bench."
+        }
+      ]
+    },
+    {
+      "id": "leaf-frame.layout",
+      "speaker": "correspondence-mera",
+      "text": "Hari needs one context to face a visitor when they arrive. A visitor with a short stop can look first at why the manuscript was adorned. A staffed desk can begin with who might pay for the work and what they might value. Give each context its own tab so the next reader can open the other one.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Face the adornment tab out for the public rail.",
+          "effects": [
+            {
+              "setFlag": "leaf-frame.front",
+              "value": "page"
+            },
+            {
+              "giveItem": "item.leaf-frame.sleeve"
+            }
+          ],
+          "if": {
+            "all": [
+              {
+                "objective": "leaf-frame.compared"
+              },
+              {
+                "not": {
+                  "item": "item.leaf-frame.sleeve"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "text": "Face the commission tab out for the staffed desk.",
+          "effects": [
+            {
+              "setFlag": "leaf-frame.front",
+              "value": "patrons"
+            },
+            {
+              "giveItem": "item.leaf-frame.sleeve"
+            }
+          ],
+          "if": {
+            "all": [
+              {
+                "objective": "leaf-frame.compared"
+              },
+              {
+                "not": {
+                  "item": "item.leaf-frame.sleeve"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "text": "Keep both tabs here."
+        }
+      ]
+    },
+    {
+      "id": "leaf-frame.receive-page",
+      "speaker": "stage-host",
+      "text": "The low reading rail stays open when I greet the next group. A passing reader will meet the ornament context first. Turn the short tab out and leave room to lift the second tab about commissioning.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Turn the sleeve outward on the low rail.",
+          "effects": [
+            {
+              "setFlag": "leaf-frame.placed",
+              "value": true
+            }
+          ],
+          "if": {
+            "all": [
+              {
+                "item": "item.leaf-frame.sleeve"
+              },
+              {
+                "flag": "leaf-frame.front",
+                "eq": "page"
+              },
+              {
+                "not": {
+                  "flag": "leaf-frame.placed",
+                  "eq": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "text": "Keep the sleeve in my satchel."
+        }
+      ]
+    },
+    {
+      "id": "leaf-frame.receive-patrons",
+      "speaker": "stage-host",
+      "text": "Give me the workshop tab for the staffed desk. I can name religious merit and standing together when visitors ask why someone paid for the work. Leave the ornament tab open so they can follow what the painted figures do on the leaf.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Open both tabs at the staffed desk.",
+          "effects": [
+            {
+              "setFlag": "leaf-frame.placed",
+              "value": true
+            }
+          ],
+          "if": {
+            "all": [
+              {
+                "item": "item.leaf-frame.sleeve"
+              },
+              {
+                "flag": "leaf-frame.front",
+                "eq": "patrons"
+              },
+              {
+                "not": {
+                  "flag": "leaf-frame.placed",
+                  "eq": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "text": "Keep the sleeve in my satchel."
+        }
+      ]
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH7-R94",
+      "world": "WORLD-08",
+      "title": "What the Gold Says",
+      "available": {
+        "card": "card.correspondence.kalpa-two-sides"
+      },
+      "stake": "Mera has space for one context on the front of a visitor sleeve.",
+      "knowledgeQuestion": "How do the depicted adornment and the account of commissioning give a visitor different grounds for interpreting the same sacred page?",
+      "objectives": [
+        {
+          "id": "leaf-frame.compared",
+          "title": "Use both frames for the same Jain folio.",
+          "essential": false,
+          "done": {
+            "all": [
+              {
+                "flag": "leaf-frame.object",
+                "eq": true
+              },
+              {
+                "flag": "leaf-frame.account",
+                "eq": true
+              }
+            ]
+          },
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "culture",
+              "perspective"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "REL",
+              "HIS",
+              "ART"
+            ],
+            "subjects": [
+              "world-religions",
+              "history",
+              "visual-arts"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 3
+          }
+        },
+        {
+          "id": "leaf-frame.issued",
+          "title": "Choose the opening tab and carry both contexts.",
+          "essential": false,
+          "done": {
+            "item": "item.leaf-frame.sleeve"
+          },
+          "weave": {
+            "concepts": [
+              "responsibility",
+              "perspective",
+              "values"
+            ],
+            "framework": [
+              "perspectives",
+              "methods-and-tools",
+              "ethics"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "REL",
+              "HIS",
+              "ART"
+            ],
+            "subjects": [
+              "world-religions",
+              "history",
+              "visual-arts"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 2
+          },
+          "visible": {
+            "objective": "leaf-frame.compared"
+          },
+          "onComplete": [
+            {
+              "journal": "j.leaf-frame.sleeve"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KG-CH9-R94",
+      "world": "WORLD-10",
+      "title": "Two Ways to Arrive at the Page",
+      "available": {
+        "item": "item.leaf-frame.sleeve"
+      },
+      "stake": "Hari can leave one frame on an open rail or hold both while helping a visitor at the desk.",
+      "knowledgeQuestion": "How does the first context affect what a visitor notices and where they can learn more?",
+      "objectives": [
+        {
+          "id": "leaf-frame.received",
+          "title": "Fit the sleeve at the receiving point and read the visitor’s reply.",
+          "essential": false,
+          "done": {
+            "all": [
+              {
+                "flag": "leaf-frame.placed",
+                "eq": true
+              },
+              {
+                "flag": "leaf-frame.read",
+                "eq": true
+              }
+            ]
+          },
+          "weave": {
+            "concepts": [
+              "culture",
+              "interpretation",
+              "responsibility",
+              "perspective"
+            ],
+            "framework": [
+              "scope",
+              "perspectives",
+              "ethics"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "aoks": [
+              "REL",
+              "HIS",
+              "ART"
+            ],
+            "subjects": [
+              "world-religions",
+              "history",
+              "visual-arts"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "apply",
+              "fink": "integration",
+              "solo": "relational"
+            },
+            "minutes": 3
+          },
+          "visible": {
+            "item": "item.leaf-frame.sleeve"
+          },
+          "onComplete": [
+            {
+              "journal": "j.leaf-frame.public"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.leaf-frame.sleeve",
+      "claimKind": "interpretation",
+      "text": "I kept the Jain folio’s adornment with its dated record. Cleveland’s account of commissioning discusses merit and standing together. The sleeve leaves this folio’s individual commissioner and intent open."
+    },
+    {
+      "id": "j.leaf-frame.public",
+      "claimKind": "observation",
+      "text": "Hari read the two context tabs at the place I chose. A passing visitor and a visitor at the staffed desk meet different questions first."
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.leaf-frame.compared.1",
+      "objective": "leaf-frame.compared",
+      "depth": 1,
+      "text": "Look for the Kalpa-sutra folio with accession 1979.23 in the second row of the Correspondence Room."
+    },
+    {
+      "id": "h.leaf-frame.compared.2",
+      "objective": "leaf-frame.compared",
+      "depth": 2,
+      "text": "After inspecting its label, look for two frame stands down near Mera."
+    },
+    {
+      "id": "h.leaf-frame.compared.3",
+      "objective": "leaf-frame.compared",
+      "depth": 3,
+      "text": "At the ornament frame, clip the account of the painted dancers to the leaf’s own record."
+    },
+    {
+      "id": "h.leaf-frame.compared.4",
+      "objective": "leaf-frame.compared",
+      "depth": 4,
+      "text": "Lift the nearby workshop frame. Keep the account of commissioning with its own source. Its two possible concerns can appear together."
+    },
+    {
+      "id": "h.leaf-frame.issued.1",
+      "objective": "leaf-frame.issued",
+      "depth": 1,
+      "text": "Once both frames are checked, find the two-tab sleeve a little east of them."
+    },
+    {
+      "id": "h.leaf-frame.issued.2",
+      "objective": "leaf-frame.issued",
+      "depth": 2,
+      "text": "Hari has a self-guided rail and a staffed table."
+    },
+    {
+      "id": "h.leaf-frame.issued.3",
+      "objective": "leaf-frame.issued",
+      "depth": 3,
+      "text": "Put one context on the front. The other stays in the sleeve under its own tab."
+    },
+    {
+      "id": "h.leaf-frame.issued.4",
+      "objective": "leaf-frame.issued",
+      "depth": 4,
+      "text": "Choose the adornment tab for the low rail or the commission tab for the desk. Both leave you a sleeve for the House of Performance."
+    },
+    {
+      "id": "h.leaf-frame.received.1",
+      "objective": "leaf-frame.received",
+      "depth": 1,
+      "text": "Go to the Front Foyer in the House of Performance with Mera’s sleeve."
+    },
+    {
+      "id": "h.leaf-frame.received.2",
+      "objective": "leaf-frame.received",
+      "depth": 2,
+      "text": "The low rail sits west of the centre aisle. The staffed desk sits to the east."
+    },
+    {
+      "id": "h.leaf-frame.received.3",
+      "objective": "leaf-frame.received",
+      "depth": 3,
+      "text": "Set the sleeve out where its front tab sends you."
+    },
+    {
+      "id": "h.leaf-frame.received.4",
+      "objective": "leaf-frame.received",
+      "depth": 4,
+      "text": "Read the reply at that stand. It tells you what the visitor noticed and what they did with the second tab."
+    }
+  ],
+  "cards": [
+    {
+      "id": "card.leaf-frame.adornment",
+      "title": "What the dancers are there for",
+      "text": "Cleveland identifies the framed figures on this leaf as celestial dancers. The museum connects the decoration with the significance of the Kalpa-sutra in Jain doctrine.",
+      "limits": "The decorated page cannot identify the actual commissioner’s personal purpose.",
+      "historicalLabel": "scholarly-interpretation",
+      "claimKind": "interpretation",
+      "sources": [
+        "REL-CLEVELAND-JAIN-LEAF-1979.23"
+      ]
+    },
+    {
+      "id": "card.leaf-frame.commission",
+      "title": "Merit, standing and the work of a manuscript",
+      "text": "Cleveland’s account describes religious merit as a reason to commission sacred manuscripts. Its account also describes the standing wealthy patrons could gain by supporting their production.",
+      "limits": "The museum describes the broader practice. It gives no reason to assign either motive to an individual connected with this leaf.",
+      "historicalLabel": "scholarly-interpretation",
+      "claimKind": "interpretation",
+      "sources": [
+        "REL-CLEVELAND-JAIN-LEAF-1979.23"
+      ]
+    }
+  ]
+}

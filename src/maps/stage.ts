@@ -1,5 +1,6 @@
 /** Fictional theatre with separate backstage and audience sightlines. */
 import type { Condition } from '../domain/types';
+import { SCRIPT_RAIL_ENTRANCE, SCRIPT_RAIL_GALLERY } from './scriptRail';
 import { CUE_HOUSE_READER } from './cueWorkshop';
 import { GALLERY_SEAM } from './seamWitness';
 import type { Interactable, MapDef } from './types';
@@ -36,6 +37,25 @@ function notice(id: string, x: number, y: number, label: string, art: string, te
   return { id, kind: 'sign', x, y, w: 1, h: 1, label, art, text, walkThrough: true, ...options };
 }
 
+const leafSleeve: Condition = { item: 'item.leaf-frame.sleeve' };
+const leafPlaced: Condition = { flag: 'leaf-frame.placed', eq: true };
+
+const LEAF_FRAME_FOYER = [
+  { front: 'page', x: 5, y: 11, location: 'low reading rail', art: 'fold.strip',
+    text: 'A passing visitor opens the first tab and sees why the museum discusses adornment alongside Jain doctrine. They lift the separate commissioning tab without waiting for the host.' },
+  { front: 'patrons', x: 25, y: 11, location: 'staffed side desk', art: 'fold.paired',
+    text: 'A visitor waits for Hari. They ask who paid for the manuscript. Hari keeps both merit and community standing on the workshop tab and leaves this folio’s commissioner unnamed. The dancers’ context is beside it.' },
+].flatMap(({ front, x, y, location, art, text }): Interactable[] => {
+  const branch: Condition = { flag: 'leaf-frame.front', eq: front };
+  return [
+    { id: `leaf-frame-place-${front}`, x, y, w: 1, h: 1, kind: 'scene',
+      node: `leaf-frame.receive-${front}`, label: `the sleeve space at the ${location}`, art: 'board-stand',
+      walkThrough: true, visibleIf: { all: [leafSleeve, branch, { not: leafPlaced }] } },
+    notice(`leaf-frame-read-${front}`, x, y, `the visitor’s reply at the ${location}`, art, text,
+      { visibleIf: { all: [leafSleeve, branch, leafPlaced] }, flag: 'leaf-frame.read' }),
+  ];
+});
+
 export const STAGE_FOYER = room({
   id: 'stage.foyer', name: 'House of Performance: Front Foyer', width: 28, height: 17,
   background: 0x322942, spawn: { x: 12, y: 12 },
@@ -52,7 +72,9 @@ export const STAGE_FOYER = room({
     { stamp: 'plant-tall', x: 19, y: 13 }, { stamp: 'long-table', x: 12, y: 5 },
   ],
   interactables: [
+    SCRIPT_RAIL_ENTRANCE,
     ...STAGE_FOYER_BACKBILL,
+    ...LEAF_FRAME_FOYER,
     ...STAGE_FOYER_FRAMES,
     STAGE_FILM_FOYER,
     { id: 'cross-stage-fright', kind: 'fieldgame', game: 'cross-stage-fright', x: 21, y: 12, w: 1, h: 1, label: 'the curtain, two minutes before you go on (a crossing)', art: 'label-stand' },
@@ -151,6 +173,7 @@ export const STAGE_GALLERY = room({
     { stamp: 'plant-tall', x: 3, y: 14 }, { stamp: 'plant-tall', x: 23, y: 14 },
   ],
   interactables: [
+    ...SCRIPT_RAIL_GALLERY,
     ...STAGE_GALLERY_BACKBILL,
     ...GALLERY_SEAM,
     specimenWorkEntrance('stage'),

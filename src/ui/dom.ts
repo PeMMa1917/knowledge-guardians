@@ -39,6 +39,7 @@ export function trapFocus(container: HTMLElement): () => void {
       const editing = e.target.closest('input, select, textarea, [contenteditable="true"]');
       const activating = (e.key === 'Enter' || e.key === ' ') && e.target.closest('button, summary, a[href]');
       if (editing || activating) {
+        if (activating && e.repeat) e.preventDefault();
         if (e.key === ' ') nativeSpaceDown = true;
         e.stopPropagation();
       }

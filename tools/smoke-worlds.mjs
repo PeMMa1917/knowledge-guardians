@@ -3,8 +3,9 @@
  *
  * Serve that checkout's dist directory, then run with Node 22 or newer and Chromium:
  *   node tools/smoke-worlds.mjs http://127.0.0.1:4173 /path/to/checkout
- * The second argument defaults to the working directory. A third argument of "maps" or
- * "access" runs just that check. CHROMIUM can name a different binary.
+ * The second argument defaults to the working directory. The optional third argument selects
+ * "maps", "access", "collections", "stress", "soak", "events" or "guidance".
+ * CHROMIUM can name a different binary. KG_SOAK_MINUTES sets the real-time soak length (default 60).
  *
  * The script starts a new game and uses debug entry at each registered spawn. Its traversal
  * check uses the live scene's pathfinder and animation. It does not complete chapter gates.
@@ -16,20 +17,33 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { pathToFileURL } from 'node:url';
+import { smokeCollections } from './smoke-collections.mjs';
+import { smokeNavigation, smokeWallRealtime } from './smoke-navigation.mjs';
+import { smokeGuidance } from './smoke-guidance.mjs';
 
 const [url, directory = '.', mode = 'all'] = process.argv.slice(2);
-if (!url || !['all', 'maps', 'access'].includes(mode)) {
-  throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access]');
+if (!url || !['all', 'maps', 'access', 'collections', 'stress', 'soak', 'events', 'guidance'].includes(mode)) {
+  throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access|collections|stress|soak|events|guidance]');
 }
 const root = resolve(directory);
 
 async function readRegistry() {
   const require = createRequire(join(root, 'package.json'));
   const { createServer } = await import(pathToFileURL(require.resolve('vite')).href);
-  const server = await createServer({ root, server: { middlewareMode: true, watch: null } });
+  const server = await createServer({
+    configFile: false, root, optimizeDeps: { noDiscovery: true, include: [] },
+    server: { middlewareMode: true, watch: null, hmr: false, ws: false },
+  });
   try {
     const { MAPS } = await server.ssrLoadModule('/src/maps/index.ts');
-    return Object.values(MAPS).map(({ id, spawn, width, height }) => ({ id, spawn, width, height }));
+    const { STAMPS } = await server.ssrLoadModule('/src/scenes/art.ts');
+    return Object.values(MAPS).map(({ id, spawn, width, height, blocks, stamps }) => {
+      const stampBlocks = stamps.flatMap((stamp) => {
+        const blocked = STAMPS[stamp.stamp]?.collide;
+        return blocked ? [[stamp.x + blocked[0], stamp.y + blocked[1], blocked[2], blocked[3]]] : [];
+      });
+      return { id, spawn, width, height, walls: [...blocks, ...stampBlocks] };
+    });
   } finally {
     await server.close();
   }
@@ -93,22 +107,22 @@ async function connect(profile) {
   return { send, evaluate, faults, close: () => socket.close() };
 }
 
-async function button(browser, label) {
+async function button(browser, label, timeout) {
   await until(() => browser.evaluate((name) => {
     const control = [...document.querySelectorAll('button')].find((entry) =>
       !entry.disabled && (entry.textContent.trim() === name || entry.querySelector('strong')?.textContent === name));
     if (!control) return false;
     control.click();
     return true;
-  }, label), 'button ' + label);
+  }, label), 'button ' + label, timeout);
 }
 
 function sendKey(browser, key, release, shift = false) {
   const nativeCodes = { Escape: 27, Tab: 9, Enter: 13, End: 35, ' ': 32,
-    ArrowLeft: 37, ArrowUp: 38, ArrowRight: 39, ArrowDown: 40 };
+    ArrowLeft: 37, ArrowUp: 38, ArrowRight: 39, ArrowDown: 40, e: 69, j: 74, b: 66 };
   const keyCode = nativeCodes[key];
   const text = !release && key === 'Enter' ? '\r' : undefined;
-  const data = { key, code: key === ' ' ? 'Space' : key, modifiers: shift ? 8 : 0,
+  const data = { key, code: key === ' ' ? 'Space' : /^[a-z]$/.test(key) ? 'Key' + key.toUpperCase() : key, modifiers: shift ? 8 : 0,
     windowsVirtualKeyCode: keyCode, nativeVirtualKeyCode: keyCode, text,
     type: release ? 'keyUp' : text ? 'keyDown' : 'rawKeyDown' };
   return browser.send('Input.dispatchKeyEvent', data);
@@ -375,7 +389,7 @@ async function smokeMap(browser, map) {
   return { colours, steps: result.next.length };
 }
 
-const maps = await readRegistry();
+const maps = ['all', 'maps', 'access', 'stress'].includes(mode) ? await readRegistry() : [];
 const profile = await mkdtemp(join(tmpdir(), 'kg-browser-smoke-'));
 const chromium = spawn(process.env.CHROMIUM ?? 'chromium', [
   '--headless', '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu',
@@ -391,9 +405,10 @@ try {
   browser = await connect(profile);
   await browser.send('Runtime.enable');
   await browser.send('Network.enable');
-  await browser.send('Emulation.setDeviceMetricsOverride', { width: 960, height: 640, deviceScaleFactor: 1, mobile: false });
+  const [width, height] = mode === 'stress' || mode === 'soak' ? [640, 400] : [960, 640];
+  await browser.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
   await browser.send('Page.navigate', { url });
-  await button(browser, 'New game');
+  await button(browser, 'New game', 60_000);
   await button(browser, 'Begin');
   await until(() => browser.evaluate(() => window.kg?.world?.map?.id === 'nexus.archive'), 'new Guardian in the Nexus');
   await until(() => browser.evaluate(() => !!document.querySelector('[role="dialog"].dialogue')), 'cold-opening dialogue');
@@ -404,7 +419,7 @@ try {
   });
 
   let passed = 0;
-  for (const map of mode === 'access' ? [] : maps) {
+  for (const map of mode === 'all' || mode === 'maps' ? maps : []) {
     try {
       const detail = await smokeMap(browser, map);
       console.log('PASS', map.id, detail.steps + '-tile walk,', detail.colours + ' sampled colours');
@@ -413,11 +428,11 @@ try {
       console.log('FAIL', map.id, error.message);
     }
   }
-  if (mode !== 'access') {
+  if (mode === 'all' || mode === 'maps') {
     console.log('Maps passed:', passed + '/' + maps.length);
     if (passed !== maps.length) process.exitCode = 1;
   }
-  if (mode !== 'maps') {
+  if (mode === 'all' || mode === 'access') {
     try {
       await smokeAccess(browser, maps.find(({ id }) => id === 'nexus.archive'));
       await smokeInteractionPrompt(browser);
@@ -426,6 +441,14 @@ try {
       console.log('FAIL', 'accessibility', error.message);
       process.exitCode = 1;
     }
+  }
+  if (mode === 'collections') await smokeCollections(browser, { button, press, until });
+  if (mode === 'stress') await smokeNavigation(browser, { press, until }, maps);
+  if (mode === 'soak') await smokeWallRealtime(browser, { until });
+  if (mode === 'guidance') await smokeGuidance(browser, { button, press, until });
+  if (mode === 'events') {
+    const { smokeEvents } = await import('./smoke-events.mjs');
+    await smokeEvents(browser, { button, press, until });
   }
   for (const error of browser.faults) console.log('BROWSER', error);
   if (browser.faults.length) process.exitCode = 1;

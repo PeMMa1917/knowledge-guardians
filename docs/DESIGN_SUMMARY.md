@@ -28,6 +28,12 @@ The game does not grade the player. It gives the same credit for every reasoned 
 - Chapter 15 opens the Council of Inquiry. A watch can match a reference by chance. Players run three cases, compare two dated readings on inquiry and leave a practical check for people arriving at the shutter.
 - After the Council, the first label stand sends the player to Lia Vann’s Next Bench. The player leaves a usable pen and records by the public shelf or a loan desk, hears the effect on the next visitor, and opens the Handover Room’s repeatable source work.
 
+## Collection and rewards
+
+The collection contains 1,018 exact dated objects. Players complete the local work to earn an object, carry up to three and equip one at a time. Shelved objects appear in the Nexus display room. An equipped object can open a new use in a place the Guardian already knows. The Diary’s Word and PDF exports link to the catalogue records for objects the player has earned, and the ending credits include the full works cited. [Source register](SOURCES.md)
+
+The five Insight paths build on actions players take in different worlds. Some actions unlock a field method or let the Guardian find a second reading. Fieldwork badges can change a cue rail, invite another witness or open a dry footboard. At a workbench, Lumen offers successive clues while the current trial stays available. [Curriculum alignment](TOK_ALIGNMENT.md) · [Playtest priorities](PLAYTEST_PRIORITIES.md)
+
 ## Core tools (play, not quizzes)
 
 | Tool | What the player does | TOK idea |

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { activePerspective } from '../src/domain/perspectives';
 import { canClaimSpecimen, carriedSpecimenCount, carriesSpecimen, hasSpecimen, ownsSpecimen,
-  SPECIMEN_BASE, SPECIMEN_CAPACITY, specimenItemId, specimenReadingFlag, specimenToolId } from '../src/domain/specimenGear';
+  SPECIMEN_BASE, SPECIMEN_CAPACITY, SPECIMEN_CASES, SPECIMEN_PAGE, specimenDisplay, specimenItemId, specimenReadingFlag, specimenToolId } from '../src/domain/specimenGear';
 import { check } from '../src/domain/rules';
 import { NUMBER_LEAF_RETURNS } from '../src/maps/numberLeaves';
 import { SPECIMEN_VAULT_DOOR } from '../src/maps/specimenVault';
@@ -65,5 +65,26 @@ describe('The collection and field gear', () => {
     expect(NUMBER_LEAF_RETURNS.filter((prop) => check(prop.visibleIf, d.s))).toEqual([]);
     expect(() => d.run({ type: 'SetSpecimenReading', exhibit: record.id, reading: 'use' })).toThrow('Bring the object to its stand');
     expect(d.s.flags[specimenReadingFlag(record.specimen.key)]).toBe('source');
+  });
+
+  it('uses matching pages for the visible cases and the satchel hooks', () => {
+    const d = new Driver();
+    const samples = d.e.pack.exhibits.filter(hasSpecimen).slice(0, SPECIMEN_CAPACITY + SPECIMEN_CASES + 1);
+    for (const record of samples) {
+      d.s.objectivesDone.push(record.specimen.objective);
+      d.run({ type: 'InspectExhibit', exhibit: record.id });
+      d.run({ type: 'ClaimSpecimen', exhibit: record.id });
+    }
+    d.s.mapId = SPECIMEN_BASE;
+    expect(specimenDisplay(d.e.pack, d.s)).toMatchObject({ pages: 2, page: 0,
+      carried: samples.slice(0, 3), cases: samples.slice(3, 9) });
+    d.run({ type: 'SetFlag', flag: SPECIMEN_PAGE, value: 20 });
+    expect(specimenDisplay(d.e.pack, d.s)).toMatchObject({ pages: 2, page: 1, cases: samples.slice(9) });
+    const first = samples[0].specimen.key, last = samples[9].specimen.key;
+    d.run({ type: 'CarrySpecimen', key: first, carry: false });
+    d.run({ type: 'CarrySpecimen', key: last, carry: true });
+    const display = specimenDisplay(d.e.pack, d.s);
+    expect(display.carried.some(({ specimen }) => specimen.key === last)).toBe(true);
+    expect(display.cases.some(({ specimen }) => specimen.key === last)).toBe(false);
   });
 });

@@ -1,6 +1,7 @@
 /** Water Commons. The allocation records and gate experiment are fictional. */
 import type { Condition } from '../domain/types';
 import { FIELD_STORE_DOOR } from './fieldStore';
+import { PORTER_COUNCIL } from './porterPace';
 import { MATERIAL_CHANNEL_RECEIVER, MATERIAL_YARD_PROPS } from './materialStores';
 import { reliefReading, reliefRouting } from '../domain/routeTiles';
 import { WATER_APPEAL_LOWER, WATER_APPEAL_WITNESSES, WATER_APPEAL_YARD } from './civicAppeal';
@@ -139,6 +140,7 @@ export const WATER_COUNCIL: MapDef = {
   ],
   interactables: [
     FIELD_STORE_DOOR,
+    ...PORTER_COUNCIL,
     ...MATERIAL_YARD_PROPS,
     ...COUNCIL_BOUNDARY,
     crossing('water-council-return', 12, 15, 'the path back to the Old Weir', { map: 'water.gatehouse', x: 23, y: 8 }),

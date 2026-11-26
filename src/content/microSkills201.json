@@ -904,6 +904,48 @@
     ]
   },
   {
+    "number": 261,
+    "name": "Test what changes when one starting rule changes",
+    "uses": [
+      {
+        "objective": "bridge.proof.checked",
+        "action": "Keep three moves, the two Oak-bank endpoints and the no-repeat rule fixed. Trace both branches first with crossings alone, then with one named same-bank link. The added link admits two paths in the same move limit.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 238,
+        "story": 68
+      }
+    ]
+  },
+  {
+    "number": 263,
+    "name": "Compare a short general proof with a checked list",
+    "uses": [
+      {
+        "objective": "bridge.proof.checked",
+        "action": "Fold three bank marks to rule out every all-crossing trail at once. Then unfold both actual branches and see which assumption makes the short proof work and where its conclusion stops applying.",
+        "styles": [
+          "maker",
+          "challenger"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 68
+      }
+    ]
+  },
+  {
     "number": 266,
     "name": "Let the marks show which pieces make a whole",
     "uses": [

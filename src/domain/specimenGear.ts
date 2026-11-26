@@ -2,6 +2,10 @@ import type { CampaignState, Condition, ContentPack, ExhibitRecord } from './typ
 
 export const SPECIMEN_BASE = 'nexus.specimen-vault';
 export const SPECIMEN_CAPACITY = 3;
+export const SPECIMEN_TARGET = 1000;
+export const SPECIMEN_CASES = 6;
+export const SPECIMEN_SHELF = 'specimen-shelf:';
+export const SPECIMEN_PAGE = 'specimens.display.page';
 export const PERSPECTIVE_FLAG = 'perspective.active';
 const ITEM_PREFIX = 'item.specimen.';
 const TOOL_PREFIX = 'specimen.';
@@ -19,6 +23,19 @@ export const ownsSpecimen = (state: CampaignState, key: string) => (state.invent
 export const carriesSpecimen = (state: CampaignState, key: string) => ownsSpecimen(state, key) && state.flags[carryFlag(key)] === true;
 export const carriedSpecimenCount = (state: CampaignState) => Object.keys(state.inventory)
   .filter((id) => isSpecimenItem(id) && state.flags[carryFlag(id.slice(ITEM_PREFIX.length))] === true).length;
+
+export function specimenDisplay(pack: ContentPack, state: CampaignState) {
+  const stored = [], carried = [];
+  for (const exhibit of pack.exhibits.filter(hasSpecimen)) {
+    if (!ownsSpecimen(state, exhibit.specimen.key)) continue;
+    if (carriesSpecimen(state, exhibit.specimen.key)) carried.push(exhibit);
+    else stored.push(exhibit);
+  }
+  const pages = Math.max(1, Math.ceil(stored.length / SPECIMEN_CASES));
+  const selected = state.flags[SPECIMEN_PAGE];
+  const page = Number.isSafeInteger(selected) ? Math.max(0, Math.min(Number(selected), pages - 1)) : 0;
+  return { carried, page, pages, cases: stored.slice(page * SPECIMEN_CASES, (page + 1) * SPECIMEN_CASES) };
+}
 
 export function canClaimSpecimen(state: CampaignState, exhibit: SpecimenExhibit): boolean {
   return !ownsSpecimen(state, exhibit.specimen.key) && state.flags[`inspected.${exhibit.id}`] === true

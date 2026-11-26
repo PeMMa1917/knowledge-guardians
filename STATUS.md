@@ -6,6 +6,16 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Playtest build
 
+The current collection checkpoint registers 1,018 individually identified and dated objects. Each has a physical exhibit, a source and a playable acquisition. There are 717 bespoke interactions that become available when a specific earned object is equipped. The Nexus displays shelved objects six at a time, with three places in the satchel and one object equipped.
+
+The new routes let a Guardian try two ways of aligning a historical chart, compare how a reader encounters a fold, make a correspondence trail work across languages, test a price at two receiving points, or check two conditions in a model warm room. Twelve additional fieldwork badges include rewards that change a guide rail, a signed index and a ferry footboard. Lumen can give four successive clues at a workbench without losing the current trial. [Browser checks](docs/BROWSER_CHECKS.md) · [Source register](docs/SOURCES.md)
+
+The integrated checkpoint passed 1,932 tests in 218 files, a clean install, the production build and the 860-asset credit check. Chromium rendered and walked on all 121 maps. Separate tests exercised native held controls, save recovery, exact Word and PDF links, and the normal chapter gates. A fresh campaign on the collection preview reached the Council and returned to the Nexus with 112 objectives, using test positioning beside some interactions. The navigation stress mode also simulates an hour of held movement. [Browser checks](docs/BROWSER_CHECKS.md)
+
+The micro-skill audit links 345 of 803 supplied rows to 622 authored actions, including 210 rows linked in more than one world. All five modeled openings cover the 12 concepts and four framework areas in an estimated half hour. Three of 46 chapter traces maintain that coverage across every modeled full window. The optional Last Turn adds a checked choice about culture, interpretation and values after the Emberford Showdown. The audit identifies where additional actions and classroom timing still need attention. [Learning design](docs/LEARNING_DESIGN.md) · [Micro-skills audit](docs/TOK_MICRO_SKILLS.md)
+
+### Earlier checkpoints
+
 The 26 November 2026 collection checkpoint registers 91 exact dated specimens with one physical display, a source and a playable objective for each. The new routes include changing a lantern’s view across twelve documented works, sending a comparison to one of two readers, checking a handover after a gust, fitting a polar load, and preparing a workshop demonstration. The target is 750 registered specimens. Run `node tools/audit-specimens.mjs` to inspect the current count and `node tools/audit-specimens.mjs --release` to check the publication target.
 
 The checkpoint passed 1,009 tests, the production build and the credit check for 108 assets. Chromium loaded and walked all 68 registered maps. The Half-Light Room test began from a fresh title screen, earned the Nexus introduction and opened all twelve exhibits. It checked the two light positions for each work, both readers, and reuse of the checked copy in the City of Copies. The City arrival and prior revision were staged for the last check. The inspection and handover controls were tested at 390 px and 175% text size.

@@ -1,0 +1,141 @@
+{
+  "items": [
+    {
+      "id": "item.porter.pace-strip",
+      "name": "Idris’s pace strip",
+      "historicalLabel": "fictional-world",
+      "art": "preserved.slip",
+      "description": "A matched carry trial with the same four parcels and a separate line for two recovery beats."
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-R85",
+      "world": "WORLD-02",
+      "title": "The Pace of a Load",
+      "available": { "flag": "reached.emberford", "eq": true },
+      "stake": "Idris can take a first-round delivery or keep himself available for the next carry.",
+      "knowledgeQuestion": "Which evidence distinguishes arriving sooner from being ready to carry again?",
+      "objectives": [
+        {
+          "id": "porter.pace.compared",
+          "title": "Finish the fixed-load carry and both recovery beats under each pacing pattern.",
+          "essential": false,
+          "done": { "all": [
+            { "flag": "porter.pace.early.checked.front", "eq": true },
+            { "flag": "porter.pace.early.checked.even", "eq": true }
+          ] },
+          "weave": {
+            "concepts": ["evidence", "objectivity", "explanation", "certainty"],
+            "framework": ["scope", "methods-and-tools", "perspectives"],
+            "atl": ["thinking", "research", "self-management"],
+            "aoks": ["NAT", "HUM"],
+            "subjects": ["sehs"],
+            "thinking": { "dok": 3, "bloom": "analyse", "fink": "application", "solo": "relational" },
+            "minutes": 4
+          }
+        },
+        {
+          "id": "porter.pace.filed",
+          "title": "Keep one pace and collect Idris’s delivery slip at its receiving rail.",
+          "visible": { "objective": "porter.pace.compared" },
+          "essential": false,
+          "done": { "all": [
+            { "objective": "porter.pace.compared" },
+            { "flag": "porter.pace.early.choice", "in": ["front", "even"] },
+            { "flag": "porter.pace.early.receipt", "eq": true }
+          ] },
+          "weave": {
+            "concepts": ["justification", "responsibility", "values", "perspective"],
+            "framework": ["methods-and-tools", "perspectives", "ethics"],
+            "atl": ["thinking", "communication", "social"],
+            "aoks": ["NAT", "HUM"],
+            "subjects": ["sehs"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "integration", "solo": "relational" },
+            "minutes": 2
+          },
+          "onComplete": [{ "journal": "j.porter.pace.early" }, { "giveItem": "item.porter.pace-strip" }]
+        }
+      ]
+    },
+    {
+      "id": "KG-CH11-R96",
+      "world": "WORLD-12",
+      "title": "The Middle Handover",
+      "available": { "all": [{ "objective": "water.arrival" }, { "item": "item.porter.pace-strip" }] },
+      "stake": "Sena needs the next carrier duty covered. A halfway handover will take a turn and a second person.",
+      "knowledgeQuestion": "Who carries the work when the same cargo and pace are shared across two people?",
+      "objectives": [
+        {
+          "id": "porter.crew.compared",
+          "title": "Use Idris’s recorded pace to test both staffing plans on Sena’s fixed local course.",
+          "essential": false,
+          "done": { "all": [
+            { "flag": "porter.pace.later.checked.solo", "eq": true },
+            { "flag": "porter.pace.later.checked.relay", "eq": true }
+          ] },
+          "weave": {
+            "concepts": ["evidence", "explanation", "objectivity", "perspective", "interpretation"],
+            "framework": ["scope", "methods-and-tools", "perspectives"],
+            "atl": ["thinking", "research", "self-management"],
+            "aoks": ["NAT", "HUM", "TEC"],
+            "subjects": ["sehs"],
+            "thinking": { "dok": 3, "bloom": "analyse", "fink": "integration", "solo": "relational" },
+            "minutes": 4
+          }
+        },
+        {
+          "id": "porter.crew.filed",
+          "title": "File the selected roster and read the crew’s changed handover.",
+          "visible": { "objective": "porter.crew.compared" },
+          "essential": false,
+          "done": { "all": [
+            { "objective": "porter.crew.compared" },
+            { "flag": "porter.pace.later.choice", "in": ["solo", "relay"] },
+            { "flag": "porter.pace.later.receipt", "eq": true }
+          ] },
+          "weave": {
+            "concepts": ["responsibility", "perspective", "power", "justification", "values"],
+            "framework": ["scope", "methods-and-tools", "perspectives", "ethics"],
+            "atl": ["communication", "thinking", "social", "self-management"],
+            "aoks": ["NAT", "HUM"],
+            "subjects": ["sehs"],
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "human", "solo": "relational" },
+            "minutes": 2
+          },
+          "onComplete": [{ "journal": "j.porter.pace.later" }]
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.porter.pace.early",
+      "claimKind": "simulation",
+      "text": "The same four parcels and four lane segments left two kinds of record. Idris kept the arrival time, the effort peak and the change after two recovery beats on separate lines."
+    },
+    {
+      "id": "j.porter.pace.later",
+      "claimKind": "simulation",
+      "text": "Sena kept Idris’s pace and repeated the local trial. The relay took longer and changed who carried the hardest sections. The chosen roster named the next duty as well as the receiving time."
+    }
+  ],
+  "hints": [
+    { "id": "h.porter.pace.compared.1", "objective": "porter.pace.compared", "depth": 1, "text": "Find Idris’s practice carry board west of the Guild Hall." },
+    { "id": "h.porter.pace.compared.2", "objective": "porter.pace.compared", "depth": 2, "text": "Use the same four parcels and follow the four marked segments in both trials." },
+    { "id": "h.porter.pace.compared.3", "objective": "porter.pace.compared", "depth": 3, "text": "Advance each leg with the early lead, then let the model rest for both beats after delivery." },
+    { "id": "h.porter.pace.compared.4", "objective": "porter.pace.compared", "depth": 4, "text": "Select the even pace and repeat the four legs and two beats. Compare the time of arrival and the effort still marked after the pause." },
+    { "id": "h.porter.pace.filed.1", "objective": "porter.pace.filed", "depth": 1, "text": "Idris can put an earlier load on the rail or keep a steadier pace for his next duty." },
+    { "id": "h.porter.pace.filed.2", "objective": "porter.pace.filed", "depth": 2, "text": "Both outcomes leave a slip. It names the pace as well as when the load arrived." },
+    { "id": "h.porter.pace.filed.3", "objective": "porter.pace.filed", "depth": 3, "text": "Post the earlier delivery or the steady round once both measurements are made." },
+    { "id": "h.porter.pace.filed.4", "objective": "porter.pace.filed", "depth": 4, "text": "Read the west porch receipt for the early lead or the south bench receipt for the even pace." },
+    { "id": "h.porter.crew.compared.1", "objective": "porter.crew.compared", "depth": 1, "text": "Show Idris’s pace slip at Sena’s carrying board on the east side of the Council Yard." },
+    { "id": "h.porter.crew.compared.2", "objective": "porter.crew.compared", "depth": 2, "text": "This route has different rises. Sena keeps the recorded pace and the four parcels on both local trials." },
+    { "id": "h.porter.crew.compared.3", "objective": "porter.crew.compared", "depth": 3, "text": "Finish all four legs and both recovery beats with one carrier." },
+    { "id": "h.porter.crew.compared.4", "objective": "porter.crew.compared", "depth": 4, "text": "Repeat with a relay. Hand the cargo over after the second leg, then compare the time and the highest individual effort mark." },
+    { "id": "h.porter.crew.filed.1", "objective": "porter.crew.filed", "depth": 1, "text": "Choose which duty the roster needs to protect after both staffing trials." },
+    { "id": "h.porter.crew.filed.2", "objective": "porter.crew.filed", "depth": 2, "text": "A single carrier leaves the second person on cleaning duty. A relay brings the first carrier back sooner." },
+    { "id": "h.porter.crew.filed.3", "objective": "porter.crew.filed", "depth": 3, "text": "Post the selected staffing plan at Sena’s board." },
+    { "id": "h.porter.crew.filed.4", "objective": "porter.crew.filed", "depth": 4, "text": "Read the single-carrier receipt at the south handover or the relay’s receipt at the lower-side bench." }
+  ]
+}

@@ -26,6 +26,7 @@ export class GameController {
   permanent: PermanentRecord;
   pair: SlotPair = { revision: 0, continue: null, recovery: null };
   loadProblem: string | null = null;
+  loadWarning: string | null = null;
   contentProblems: string[];
   private listeners: Listener[] = [];
   private playStart = Date.now();
@@ -37,7 +38,10 @@ export class GameController {
     this.saves = new SaveService(browserStore());
     this.permanent = this.saves.loadPermanent();
     const r = this.saves.load();
-    if (r.ok) this.pair = r.pair;
+    if (r.ok) {
+      this.pair = r.pair;
+      this.loadWarning = r.warning ?? null;
+    }
     else this.loadProblem = r.reason;   // stored data is left untouched
   }
 
@@ -106,11 +110,14 @@ export class GameController {
     this.commit(writeSuspend(this.pair, this.entry('suspend', label)));
   }
 
-  private commit(next: SlotPair): void {
+  private commit(next: SlotPair): boolean {
     try {
       this.pair = this.saves.commit(this.pair.revision, next);
+      this.loadProblem = this.loadWarning = null;
+      return true;
     } catch (err) {
       this.emit([{ kind: 'error', message: (err as Error).message }]);
+      return false;
     }
   }
 
@@ -120,6 +127,11 @@ export class GameController {
   loadContinue(): void {
     if (!this.pair.continue) throw new Error('No save to continue');
     this.state = structuredClone(this.pair.continue.state);
+    if (!Object.hasOwn(MAPS, this.state.mapId)) {
+      const nexus = MAPS['nexus.archive'];
+      this.state.mapId = nexus.id;
+      this.state.pos = { ...nexus.spawn };
+    }
     this.playStart = Date.now();
     this.refreshAwards();
     const questions = restoreQuestionWays(this.permanent, this.pack, this.state.objectivesDone);
@@ -130,9 +142,10 @@ export class GameController {
     }
   }
 
-  loadRecovery(): void {
-    this.commit(restoreRecovery(this.pair));
+  loadRecovery(): boolean {
+    if (!this.commit(restoreRecovery(this.pair))) return false;
     this.loadContinue();
+    return true;
   }
 
   /** Awards can be earned from restored state too; credit stays idempotent. */

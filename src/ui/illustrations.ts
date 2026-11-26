@@ -16,10 +16,13 @@ import { REFERENCE_STATION_ART } from './referenceStationArt';
 import { MODEL_RECORD_ART } from './modelRecordArt';
 import { LOAD_BAY_ART } from './loadingBayArt';
 import { BEARING_ART } from './bearingBayArt';
+import { PRISM_ART } from './prismViewerArt';
+import { ALIGNMENT_ART } from './mapAlignmentArt';
 import { SECOND_READING_ART } from './secondReadingArt';
 import { SHORE_REPLY_ART } from './shoreReplyArt';
 import { JIG_SHOP_ART } from './jigShopArt';
 import { MEMORY_CART_ART } from './memoryCartArt';
+import { PRICE_DRAWERS_ART } from './priceDrawersArt';
 import { REFERENCE_PROOF_ART } from './referenceProofArt';
 import { MAKER_ROOM_ART } from './makerRoomArt';
 import { PASSAGE_DOCUMENTARY_ART, PASSAGE_DOCUMENTARY_LARGE_ART } from './specimenPassageArt';
@@ -2856,7 +2859,7 @@ DRAW['big.drawer-cases'] = [40, 28, (g) => {
 
 /** Map exhibit art keys (small) to large inspection pictures. */
 Object.assign(DRAW, POLAR_ART, WINDOW_ART, READING_WORKS_ART, STORY_ARCHIVE_ART, NUMBER_LEAF_ART, DEPOT_ART, REFERENCE_STATION_ART,
-  MODEL_RECORD_ART, SECOND_READING_ART, SHORE_REPLY_ART, JIG_SHOP_ART, MEMORY_CART_ART);
+  MODEL_RECORD_ART, SECOND_READING_ART, SHORE_REPLY_ART, JIG_SHOP_ART, MEMORY_CART_ART, PRICE_DRAWERS_ART);
 Object.assign(DRAW, REFERENCE_PROOF_ART, PASSAGE_DOCUMENTARY_ART);
 Object.assign(DRAW, MAKER_ROOM_ART);
 
@@ -2876,7 +2879,7 @@ DRAW['big.register.codex-fold'] = [120, 72, (g) => {
   R(g, '#b9cdce', 12, 35, 65, 1); R(g, '#b9cdce', 12, 33, 1, 5); R(g, '#b9cdce', 76, 33, 1, 5);
 }];
 
-Object.assign(DRAW, TURNING_ART, LOAD_BAY_ART, BEARING_ART);
+Object.assign(DRAW, TURNING_ART, LOAD_BAY_ART, BEARING_ART, PRISM_ART, ALIGNMENT_ART);
 
 // A closed catalogue folder beside two fictional skyline slips.
 DRAW['timbuktu.horizon-case'] = [16, 24, (g) => {
@@ -2910,7 +2913,24 @@ DRAW['big.callboard.gage-mount'] = [96, 64, (g) => {
   R(g, '#daca9a', 56, 48, 23, 5); R(g, '#9f876e', 58, 50, 15, 1);
 }];
 
+// Original reading-room model of a printed volume and its separate title slip.
+DRAW['correspondence.crowther-book'] = [16, 24, (g) => {
+  pedestal(g, 1, 15, 14);
+  R(g, '#362747', 3, 5, 10, 9); R(g, '#53536a', 3, 4, 9, 8);
+  R(g, '#f1debb', 5, 11, 8, 2); R(g, '#947a72', 4, 4, 1, 9);
+  R(g, '#cfad7b', 8, 15, 5, 2);
+}];
+DRAW['big.correspondence.crowther-book'] = [96, 64, (g) => {
+  R(g, '#2d3047', 0, 0, 96, 64); R(g, '#3b4057', 6, 7, 84, 48);
+  R(g, '#3e304e', 12, 45, 67, 9); R(g, '#282236', 15, 18, 56, 29);
+  R(g, '#666680', 15, 16, 54, 23); R(g, '#85849e', 16, 17, 51, 1);
+  R(g, '#ac8e79', 16, 20, 4, 23); R(g, '#eedeb7', 21, 40, 50, 5);
+  R(g, '#bca681', 22, 42, 47, 1); R(g, '#f0d2a0', 63, 31, 24, 17);
+  R(g, '#8b695b', 66, 35, 16, 1); R(g, '#8b695b', 66, 39, 13, 1);
+}];
+
 export const BIG_ART: Record<string, string> = {
+  'correspondence.crowther-book': 'big.correspondence.crowther-book',
   'callboard.gage-mount': 'big.callboard.gage-mount',
   'maker-exact-jiahu': 'maker-exact-jiahu', 'maker-exact-disk': 'maker-exact-disk',
   'maker-exact-laguna': 'maker-exact-laguna',

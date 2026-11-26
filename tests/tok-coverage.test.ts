@@ -131,7 +131,7 @@ function watchForest(d: Driver, site: string, window: ForestWindow) {
 
 // Times below are author estimates of when these actions could finish. This
 // fixture exercises entry conditions and domain commands, not walking or reading speed.
-function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'rests' | 'ribbon' | 'print' | 'packing' | 'scout' | 'viewer' | 'curtain'): Route {
+function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'rests' | 'ribbon' | 'print' | 'packing' | 'scout' | 'viewer' | 'curtain' | 'last-turn'): Route {
   const route = new Route();
   const explore = style !== 'main';
   const records = style === 'records';
@@ -460,6 +460,49 @@ function nexusToEmberford(style: 'main' | 'explore' | 'records' | 'guide' | 'res
         { move: 'counter', card: 'card.forge-pattern' }, { move: 'support', card: 'card.guild-ledger' }, { move: 'rest' });
       expect(d.done('m02.o5.showdown')).toBe(true);
     });
+    if (style === 'last-turn') {
+      route.at(74 + emberfordExtra, 'Lift Derva’s slate and compare the apprentice’s retained turn with the tally clerk’s closed entry', [
+        'culture', 'interpretation', 'evidence', 'perspective', 'perspectives', 'methods-and-tools',
+      ], (d) => {
+        walkScene(d, 'last-turn.slate', undefined, 'Lift Derva’s slate');
+        expect(readSign(d, 'last-turn.forge')).toContain('hold a turn');
+        expect(readSign(d, 'last-turn.desk')).toContain('its entry is closed');
+        expect(d.done('last-turn.compare')).toBe(true);
+      });
+      route.at(76 + emberfordExtra, 'Give buyers their collection turn and reserve a dated place for the back-row account', [
+        'values', 'power', 'responsibility', 'justification', 'perspectives', 'ethics',
+      ], (d) => {
+        walkScene(d, 'last-turn.post', undefined, 'Release the queue');
+        expect(readSign(d, 'last-turn.file')).toContain('They have only this stub');
+        expect(d.done('last-turn.publish')).toBe(true);
+      });
+      route.at(78 + emberfordExtra, 'Arrange to hear Hesper’s account of how her shop uses the maker’s name', [
+        'culture', 'interpretation', 'values', 'perspective', 'perspectives', 'ethics',
+      ], (d) => {
+        d.talk('smith-hesper', 'Yes. Come');
+        expect(d.done('m02.o6.hesper')).toBe(true);
+      });
+      route.at(84 + emberfordExtra, 'Set a traceable source beside Sefa’s song, then use the cellar’s six-lamp entrance', [
+        'evidence', 'responsibility', 'methods-and-tools',
+      ], (d) => {
+        // This variant arrives with four other local knots and the guild half of Words That Hold already resolved.
+        for (const puzzle of ['weigh-house', 'tipped-cart', 'map-table', 'brass-sorter', 'guild-notice']) {
+          d.run({ type: 'SetFlag', flag: `puzzle.${puzzle}.done`, value: true });
+        }
+        expect(d.s.flags['lamps.lit']).toBe(5);
+        d.run({ type: 'PuzzleOrder', puzzle: 'song-bridge', order: ['author', 'title', 'container', 'publisher', 'date', 'location'] });
+        useDoor(d, 'cellar-door');
+        expect(d.done('lamp.o3.cellar')).toBe(true);
+      });
+      route.at(86 + emberfordExtra, 'Open Derva’s dated intake in the Study and keep her back-row account apart from the speaking tally', [
+        'interpretation', 'values', 'responsibility', 'evidence', 'scope', 'ethics',
+      ], (d) => {
+        walkScene(d, 'last-turn.study-intake', undefined, 'Open her intake sleeve');
+        expect(readSign(d, 'last-turn.study-file')).toContain('where the first hearing stopped');
+        expect(d.done('last-turn.follow')).toBe(true);
+      });
+      return route;
+    }
     if (records) {
       route.at(75 + extra, 'Read the guild’s deadline and the ferry crew’s marks for the same order', ['culture', 'evidence', 'perspective', 'perspectives'], (d) => {
         walkScene(d, 'bell-order-clerk', 'bell.order.clerk.trace');
@@ -1864,6 +1907,7 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Nexus and Emberford with both scout protocols', end: 96, play: () => nexusToEmberford('scout') },
     { name: 'Nexus with the Hinged Reader and the working-model check', end: 91, play: () => nexusToEmberford('viewer') },
     { name: 'Nexus with the call at the curtain and Ethren’s spare felt', end: 92, play: () => nexusToEmberford('curtain') },
+    { name: 'Emberford’s Last Turn from the Showdown to the Study', end: 91, play: () => nexusToEmberford('last-turn') },
     { name: 'Nile first visit from a prepared Chapter 1 save', end: 50, play: () => nileDispatch() },
     { name: 'Nile first visit with the Reading Window', end: 53, play: () => nileDispatch('reading-window') },
     { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch('borrowed-mark') },

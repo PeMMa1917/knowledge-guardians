@@ -1,0 +1,17 @@
+.alignment-panel button { margin-block: .2rem; }
+.alignment-chart {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
+  gap: .65rem;
+  align-items: start;
+  margin: .6rem 0;
+}
+.alignment-chart canvas {
+  max-inline-size: min(14rem, 100%);
+  width: 100%;
+  block-size: auto;
+  border: 1px solid currentColor;
+  image-rendering: pixelated;
+}
+.alignment-chart ul { padding-inline-start: 1.2rem; }
+.alignment-chart li { margin-block: .22rem; }

@@ -933,9 +933,12 @@ export class Engine {
         case 'ResolveEvent': {
           const ev = this.pack.events.find((e) => e.id === cmd.event);
           if (!ev) throw new Error('Unknown event');
+          if (s.events.pending !== ev.id) break;
           s = structuredClone(s);
-          if (!s.events.seen.includes(ev.id)) s.events.seen.push(ev.id);
-          if (s.events.pending === ev.id) s.events.pending = null;
+          s.events.pending = null;
+          delete s.flags[`event.resume.${ev.id}`];
+          if (s.events.seen.includes(ev.id)) break;
+          s.events.seen.push(ev.id);
           s = apply([{ addNum: 'count.events', by: 1 }], s, out);
           weaves.push(ev.weave);
           break;
@@ -1234,9 +1237,10 @@ export class Engine {
           const depth = Math.min(4, used + 1) as 1 | 2 | 3 | 4;
           const hint = this.pack.hints.find((h) => h.objective === cmd.objective && h.depth === depth && check(h.if, s))
             ?? this.pack.hints.find((h) => h.objective === cmd.objective && h.depth === depth);
+          if (!hint) throw new Error('Choose a quest step with a clue');
           // Asking for help never reduces XP or blocks awards (GUIDE-002).
           s = apply([{ setFlag: `hint.${cmd.objective}`, value: depth }], s, out);
-          if (hint) events.push({ kind: 'hint', hint });
+          events.push({ kind: 'hint', hint });
           break;
         }
         case 'PortfolioShare': {

@@ -1,0 +1,317 @@
+{
+  "dialogue": [
+    {
+      "id": "last-turn.turn",
+      "speaker": "narrator",
+      "text": "As the square empties, Derva turns a speaking slate face down and stays by the rail. Hesper looks back from the forge road. Orrin draws a line on his sheet. The slate lies still.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Lift Derva’s slate and check both faces.",
+          "effects": [
+            {
+              "setFlag": "last-turn.turned",
+              "value": "lifted"
+            }
+          ]
+        },
+        {
+          "text": "Leave the slate on the rail."
+        }
+      ]
+    },
+    {
+      "id": "last-turn.post",
+      "speaker": "narrator",
+      "text": "Both slips describe a slate turned face down. Hesper is keeping space for a worker who missed a turn. Orrin is trying to clear the buyers’ queue. Derva says, “I’ll give my account here, or leave it signed for the Study. Keep where I stood with it.”",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Hold the queue for Derva’s one turn and clip her account on the rail.",
+          "effects": [
+            {
+              "setFlag": "last-turn.plan",
+              "value": "floor"
+            },
+            {
+              "giveItem": "item.last-turn.docket"
+            }
+          ]
+        },
+        {
+          "text": "Release the queue and lodge a dated intake for Derva’s account.",
+          "effects": [
+            {
+              "setFlag": "last-turn.plan",
+              "value": "file"
+            },
+            {
+              "giveItem": "item.last-turn.docket"
+            }
+          ]
+        },
+        {
+          "text": "Leave the slate and the two slips together for now."
+        }
+      ]
+    },
+    {
+      "id": "last-turn.intake",
+      "speaker": "narrator",
+      "text": "The tally stub marks the end of the first speaking list. Its second tab points to Derva’s sealed account. She signed it for the Study and asked the keeper to keep the two dates visible.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Open her intake sleeve and slip the signed account under its own date.",
+          "effects": [
+            {
+              "setFlag": "last-turn.study.checked",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the sleeve at the Study stairs."
+        }
+      ]
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-LAST-TURN",
+      "title": "The Last Turn",
+      "world": "WORLD-02",
+      "available": {
+        "objective": "m02.o5.showdown"
+      },
+      "knowledgeQuestion": "What can a shared action mean to people who learn it for different work?",
+      "stake": "Derva could lose her turn because two people who saw the same action learned it in different places.",
+      "objectives": [
+        {
+          "id": "last-turn.compare",
+          "title": "Turn the slate and compare the two readings of Derva’s gesture",
+          "done": {
+            "all": [
+              {
+                "flag": "last-turn.read.forge",
+                "eq": true
+              },
+              {
+                "flag": "last-turn.read.desk",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "flag": "last-turn.turned",
+            "eq": "lifted"
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "culture",
+              "interpretation",
+              "perspective",
+              "evidence"
+            ],
+            "framework": [
+              "perspectives",
+              "methods-and-tools"
+            ],
+            "subjects": [
+              "anthropology"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "atl": [
+              "thinking",
+              "communication",
+              "social"
+            ],
+            "minutes": 3,
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "human",
+              "solo": "relational"
+            }
+          }
+        },
+        {
+          "id": "last-turn.publish",
+          "title": "Make room for Derva’s testimony and check what the queue can see",
+          "done": {
+            "flag": "last-turn.market.checked",
+            "eq": true
+          },
+          "visible": {
+            "objective": "last-turn.compare"
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "values",
+              "power",
+              "responsibility",
+              "justification"
+            ],
+            "framework": [
+              "ethics",
+              "perspectives"
+            ],
+            "subjects": [
+              "anthropology"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "atl": [
+              "thinking",
+              "communication",
+              "social"
+            ],
+            "minutes": 2,
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "caring",
+              "solo": "relational"
+            }
+          }
+        },
+        {
+          "id": "last-turn.follow",
+          "title": "Check where Derva’s account reached the Study",
+          "done": {
+            "flag": "last-turn.study.checked",
+            "eq": true
+          },
+          "visible": {
+            "all": [
+              {
+                "objective": "last-turn.publish"
+              },
+              {
+                "objective": "lamp.o3.cellar"
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "interpretation",
+              "values",
+              "responsibility"
+            ],
+            "framework": [
+              "scope",
+              "ethics"
+            ],
+            "subjects": [
+              "anthropology"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "atl": [
+              "thinking",
+              "communication",
+              "social"
+            ],
+            "minutes": 2,
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "application",
+              "solo": "relational"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.last-turn.compare.1",
+      "objective": "last-turn.compare",
+      "depth": 1,
+      "text": "Look at the speaking slate by the square after the Showdown."
+    },
+    {
+      "id": "h.last-turn.compare.2",
+      "objective": "last-turn.compare",
+      "depth": 2,
+      "text": "Lift the slate to see the two places that used it."
+    },
+    {
+      "id": "h.last-turn.compare.3",
+      "objective": "last-turn.compare",
+      "depth": 3,
+      "text": "Read Hesper’s forge-road slip and Orrin’s tally-desk slip."
+    },
+    {
+      "id": "h.last-turn.compare.4",
+      "objective": "last-turn.compare",
+      "depth": 4,
+      "text": "Both saw Derva turn the slate. Check when each work group uses that gesture."
+    },
+    {
+      "id": "h.last-turn.publish.1",
+      "objective": "last-turn.publish",
+      "depth": 1,
+      "text": "Return to the slate once you have checked both accounts."
+    },
+    {
+      "id": "h.last-turn.publish.2",
+      "objective": "last-turn.publish",
+      "depth": 2,
+      "text": "Derva can speak before the tally queue moves or leave a signed account for the Study."
+    },
+    {
+      "id": "h.last-turn.publish.3",
+      "objective": "last-turn.publish",
+      "depth": 3,
+      "text": "A public turn reaches the queue. Dated intake gives the queue a time and place for the complete account."
+    },
+    {
+      "id": "h.last-turn.publish.4",
+      "objective": "last-turn.publish",
+      "depth": 4,
+      "text": "Choose either plan at the slate. Read the resulting rail copy or tally stub before taking your copy to the Study."
+    },
+    {
+      "id": "h.last-turn.follow.1",
+      "objective": "last-turn.follow",
+      "depth": 1,
+      "text": "Check the Study after entering by the cellar."
+    },
+    {
+      "id": "h.last-turn.follow.2",
+      "objective": "last-turn.follow",
+      "depth": 2,
+      "text": "Take the copy from the square to the rail near the stairs."
+    },
+    {
+      "id": "h.last-turn.follow.3",
+      "objective": "last-turn.follow",
+      "depth": 3,
+      "text": "The public account is on the west side. The intake sleeve is on the east side."
+    },
+    {
+      "id": "h.last-turn.follow.4",
+      "objective": "last-turn.follow",
+      "depth": 4,
+      "text": "Read the rail copy or open Derva’s sleeve and file it under its own date."
+    }
+  ],
+  "items": [
+    {
+      "id": "item.last-turn.docket",
+      "name": "Speaking slate docket",
+      "description": "A working copy from Emberford’s rail. Derva’s gesture has two locally learned readings. Her account follows the plan on the docket.",
+      "art": "nile.slip",
+      "historicalLabel": "fictional-world"
+    }
+  ]
+}

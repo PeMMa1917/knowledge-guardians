@@ -9,6 +9,7 @@ import { CIVIC_BOUNDARY } from './serviceBoundary';
 import { CIVIC_DATE_REGISTER_PROPS, CIVIC_DATE_REGISTER_READERS } from './dateRegister';
 import { CIVIC_CALLBOARD_DOOR } from './civicCallboard';
 import { MATERIAL_CANAL_REVISIT } from './materialStores';
+import { CIVIC_SPARE_SEAT } from './spareSeat';
 import { starStations } from './starPaths';
 import type { Interactable, MapDef } from './types';
 
@@ -247,6 +248,7 @@ export const CIVIC_CANAL: MapDef = {
       'The direction points to the Eastern Shawnee Tribe of Oklahoma’s own public constitution at North Steps. Beside it, a reader has made two columns for the Civic rehearsal. One names who wrote down the request. The other names who may decide it.',
       { flag: 'record.edge.seen', visibleIf: { flag: 'record.edge.civic.mount', eq: 'scope' } }),
     ...CIVIC_APPEAL_CANAL,
+    ...CIVIC_SPARE_SEAT,
   ],
   lights: [
     { x: 9, y: 9, r: 67, color: 0xf1c591 }, { x: 16, y: 8, r: 70, color: 0xd5dbb2 },

@@ -96,7 +96,7 @@ export function serialisePair(p: SlotPair): string {
 }
 
 export type LoadResult =
-  | { ok: true; pair: SlotPair; migrated: boolean }
+  | { ok: true; pair: SlotPair; migrated: boolean; warning?: string }
   | { ok: false; reason: string };
 
 /**
@@ -141,6 +141,11 @@ export function migrateCampaign(raw: any): { state: CampaignState; migrated: boo
     s = step(s);
     migrated = true;
   }
+  // Facing is cosmetic, but the scene needs a valid direction for interaction.
+  if (!['up', 'down', 'left', 'right'].includes(s.facing)) {
+    s = { ...s, facing: 'down' };
+    migrated = true;
+  }
   const problems = validateCampaign(s);
   if (problems.length) throw new Error(`Save is not valid: ${problems.join('; ')}`);
   return { state: s as CampaignState, migrated };
@@ -153,14 +158,32 @@ export function parsePair(text: string | null): LoadResult {
     if (outer?.format !== 'kg-slots' || typeof outer.body !== 'string') return { ok: false, reason: 'Save data has an unknown format.' };
     if (checksum(outer.body) !== outer.sum) return { ok: false, reason: 'Save data is damaged (checksum does not match).' };
     const p = JSON.parse(outer.body);
+    if (!p || typeof p !== 'object' || Array.isArray(p)) return { ok: false, reason: 'Save slots have an unknown format.' };
+    // Opening either slot can later rewrite the pair. Preserve newer saves for the version that wrote them.
+    const newer = [p.continue, p.recovery].map((entry) => entry?.state?.schema)
+      .find((schema) => typeof schema === 'number' && schema > CAMPAIGN_SCHEMA);
+    if (newer !== undefined) return { ok: false, reason: `Save was made by a newer version (schema ${newer}). Update the game to open it.` };
     let migrated = false;
-    const fix = (e: any): SaveEntry | null => {
-      if (!e) return null;
-      const r = migrateCampaign(e.state);
-      migrated ||= r.migrated;
-      return { ...e, state: r.state };
+    const problems: string[] = [];
+    const fix = (e: any, name: string): SaveEntry | null => {
+      if (e == null) return null;
+      try {
+        if (!['checkpoint', 'suspend'].includes(e.kind) || typeof e.label !== 'string' || typeof e.location !== 'string'
+          || typeof e.savedAt !== 'string' || !Number.isFinite(Date.parse(e.savedAt))) throw new Error('Invalid save details.');
+        const r = migrateCampaign(e.state);
+        migrated ||= r.migrated;
+        return { ...e, state: r.state };
+      } catch (err) {
+        problems.push(`${name} could not be opened. ${(err as Error).message}`);
+        return null;
+      }
     };
-    return { ok: true, pair: { revision: Number(p.revision) || 0, continue: fix(p.continue), recovery: fix(p.recovery) }, migrated };
+    const pair = { revision: Number(p.revision) || 0, continue: fix(p.continue, 'Continue'), recovery: fix(p.recovery, 'Checkpoint recovery') };
+    const reason = problems.join(' ');
+    if (!reason) return { ok: true, pair, migrated };
+    if (!pair.continue && !pair.recovery) return { ok: false, reason };
+    const available = pair.continue ? 'Continue is available.' : 'Checkpoint recovery is available.';
+    return { ok: true, pair, migrated, warning: `${reason} ${available}` };
   } catch (err) {
     return { ok: false, reason: (err as Error).message };
   }

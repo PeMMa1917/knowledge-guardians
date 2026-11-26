@@ -11,7 +11,7 @@ try {
   const { MAPS } = await server.ssrLoadModule('/src/maps/index.ts');
   const { validateContent } = await server.ssrLoadModule('/src/domain/validate.ts');
   const { artKeys, BIG_ART } = await server.ssrLoadModule('/src/ui/illustrations.ts');
-  const { specimenToolId } = await server.ssrLoadModule('/src/domain/specimenGear.ts');
+  const { SPECIMEN_TARGET: TARGET, specimenToolId } = await server.ssrLoadModule('/src/domain/specimenGear.ts');
   const pack = buildPack();
   const errors = validateContent(pack);
   const authoredArt = new Set(artKeys());
@@ -56,14 +56,14 @@ try {
   });
   const unique = new Set(registered.map(({ key }) => key));
   const legacy = pack.exhibits.filter((record) => record.historicalLabel === 'documented' && !record.specimen && physical.has(record.id));
-  const required = process.argv.includes('--release') ? 750 : 0;
+  const required = process.argv.includes('--release') ? TARGET : 0;
   if (required && unique.size < required) errors.push(`${required - unique.size} exact specimens still to register and place.`);
   if (process.argv.includes('--json')) {
-    console.log(JSON.stringify({ target: 750, unique: unique.size, registered, legacyExhibits: legacy.map(({ id, name }) => ({ id, name })), errors }, null, 2));
+    console.log(JSON.stringify({ target: TARGET, unique: unique.size, registered, legacyExhibits: legacy.map(({ id, name }) => ({ id, name })), errors }, null, 2));
   } else {
     console.log(`${unique.size} unique exact specimens registered and ${legacy.length} documented exhibits awaiting exact identity review.`);
     console.log(`${registered.filter(({ revisit }) => revisit).length} have a distinct equipped return interaction. Other collected objects open their return route from the Nexus.`);
-    console.log(`${Math.max(0, 750 - unique.size)} open places in the 750-specimen target.`);
+    console.log(`${Math.max(0, TARGET - unique.size)} open places in the ${TARGET}-specimen target.`);
     for (const error of errors) console.error(error);
   }
   if (errors.length) process.exitCode = 1;

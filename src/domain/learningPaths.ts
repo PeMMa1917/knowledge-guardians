@@ -135,13 +135,25 @@ export function playPath(pack: ContentPack, style: PlayStyle, caseVisit: number 
         addObj(objective.id, 1);
         if (stop?.after === objective.id) addObj(stop.id, 1, stop.action);
       }
-      addMission('KG-CH1-M02', 1);
+      const followsLastTurn = style === 'social' || style === 'explorer';
+      const emberford = pack.missions.find((m) => m.id === 'KG-CH1-M02');
+      for (const objective of emberford?.objectives ?? []) {
+        if (!objective.essential) continue;
+        addObj(objective.id, 1);
+        if (followsLastTurn && objective.id === 'm02.o5.showdown') {
+          addObj('last-turn.compare', 1, 'read two workplace accounts');
+          addObj('last-turn.publish', 1, 'reserve a turn or open an intake');
+        }
+      }
       const lamp = pack.missions.find((m) => m.id === 'KG-CH1-LAMP');
       if (lamp) {
         addObj('lamp.o1.hear', 1);
         for (const k of KNOTS[style]) addMission(k, 1, true);
         addOptional(1);
-        for (const o of lamp.objectives.slice(1)) addObj(o.id, 1);
+        for (const o of lamp.objectives.slice(1)) {
+          addObj(o.id, 1);
+          if (followsLastTurn && o.id === 'lamp.o3.cellar') addObj('last-turn.follow', 1, 'check the filed account');
+        }
       }
       continue;
     }

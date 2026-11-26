@@ -62,6 +62,7 @@ import opticsScreen from './optics-screen.json';
 import forest from './m06-forest.json';
 import forestSide from './forest-side.json';
 import forestReader from './forest-reader.json';
+import forestNarrators from './forest-narrators.json';
 import sharedCarry from './shared-carry.json';
 import metalworks from './m07-metalworks.json';
 import metalworksSide from './metalworks-side.json';
@@ -150,8 +151,20 @@ import { jigShopContent } from './jigShop';
 import { earlierViewsContent, installEarlierViews } from './earlierViewing';
 import { curtainContent } from './curtainCall';
 import coastDetector from './coast-detector.json';
+import bridgeProof from './bridge-proof.json';
 import memoryCart from './memory-cart.json';
 import { dispatchStatsContent } from './dispatchStats';
+import { prismViewerContent } from './prismViewer';
+import { priceDrawersContent } from './priceDrawers';
+import { warmRoomContent } from './warmRoomCases';
+import { mapAlignmentContent } from './mapAlignment';
+import { scriptRailContent } from './scriptRail';
+import pigmentWindow from './pigment-window.json';
+import { correspondenceRoomContent } from './correspondenceRoom';
+import porterPace from './porter-pace.json';
+import leafFrame from './leaf-frame.json';
+import spareSeat from './spare-seat.json';
+import lastTurn from './last-turn.json';
 
 export const CONTENT_VERSION = 5;
 
@@ -168,7 +181,8 @@ export function buildPack(): ContentPack {
     modelRecordsContent, secondReadingContent, timeRoomContent, fieldStoreContent, materialStoreContent,
     loadingBayContent, glassRackContent, shoreReplyContent, ferryWindowContent, starPathContent, tokBadgeContent,
     ferryPackingContent, workScheduleContent, bearingBayContent, jigShopContent, earlierViewsContent, curtainContent,
-    coastDetector, memoryCart, dispatchStatsContent];
+    coastDetector, bridgeProof, memoryCart, dispatchStatsContent, prismViewerContent, priceDrawersContent, warmRoomContent,
+    mapAlignmentContent, scriptRailContent, pigmentWindow, correspondenceRoomContent, porterPace, leafFrame, forestNarrators, spareSeat, lastTurn];
   for (const k of keys) pack[k] = [...parts, ...collectionRooms].flatMap((p) => p[k] ?? []);
   const content = pack as ContentPack;
   content.questions.push(...QUESTION_ROUTES.map(({ question }) => question));

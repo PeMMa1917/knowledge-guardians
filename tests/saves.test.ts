@@ -1,4 +1,5 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { GameController } from '../src/app/controller';
 import { buildPack } from '../src/content';
 import { Engine, newCampaign } from '../src/domain/engine';
 import { migratePermanent, newPermanent } from '../src/domain/permanent';
@@ -8,10 +9,19 @@ import {
 } from '../src/domain/saves';
 import type { CampaignState } from '../src/domain/types';
 import { CAMPAIGN_SCHEMA } from '../src/domain/types';
+import { MAPS } from '../src/maps';
 
 const pack = buildPack();
 const base = () => newCampaign(pack, 'Tester', 'player-a', 42);
 const entry = (label: string, s: CampaignState = base()): SaveEntry => ({ kind: 'checkpoint', label, location: 'Archive', savedAt: '2026-01-01T00:00:00Z', state: s });
+
+function browserSave(pair: ReturnType<typeof emptyPair>) {
+  const store = memoryStore({ [KEY_SLOTS]: serialisePair(pair) });
+  vi.stubGlobal('window', { localStorage: { getItem: store.get, setItem: store.set } });
+  return store;
+}
+
+afterEach(() => vi.unstubAllGlobals());
 
 describe('two-slot rotation (spec 24.1)', () => {
   it('first checkpoint fills both slots', () => {
@@ -49,6 +59,33 @@ describe('two-slot rotation (spec 24.1)', () => {
   it('never has a third slot', () => {
     const p = writeCheckpoint(writeCheckpoint(writeCheckpoint(emptyPair(), entry('A')), entry('B')), entry('C'));
     expect(Object.keys(p).sort()).toEqual(['continue', 'recovery', 'revision']);
+  });
+});
+
+describe('campaign restore in the app', () => {
+  it('restores an unavailable room to the Nexus before the recap without changing the saved checkpoint', () => {
+    const state = { ...base(), mapId: 'nexus.retired-annex', pos: { x: 600, y: 90 }, marks: 23 };
+    const saved = writeCheckpoint(emptyPair(), entry('Former annex', state));
+    const store = browserSave(saved);
+    const app = new GameController();
+    app.loadContinue();
+    const nexus = MAPS['nexus.archive'];
+    expect(app.state).toMatchObject({ mapId: nexus.id, pos: nexus.spawn, marks: 23 });
+    expect(app.recap().lines[0]).toBe(`You are in ${nexus.name}.`);
+    expect(store.get(KEY_SLOTS)).toBe(serialisePair(saved));
+  });
+  it('does not switch scenes when the checkpoint restore loses a concurrent save', () => {
+    const previous = writeCheckpoint(emptyPair(), entry('Recovery', { ...base(), marks: 23 }));
+    const current = writeSuspend(previous, entry('Current', { ...base(), marks: 60 }));
+    const store = browserSave(current);
+    const app = new GameController();
+    app.loadContinue();
+    app.state.marks = 80;
+    const updated = writeSuspend(current, entry('Other tab', { ...base(), marks: 48 }));
+    store.set(KEY_SLOTS, serialisePair(updated));
+    expect(app.loadRecovery()).toBe(false);
+    expect(app.state.marks).toBe(80);
+    expect(store.get(KEY_SLOTS)).toBe(serialisePair(updated));
   });
 });
 
@@ -107,6 +144,38 @@ describe('storage, checksum and migration', () => {
     const r = svc.load();
     expect(r.ok).toBe(false);
     if (!r.ok) expect(r.reason).toMatch(/damaged/);
+  });
+  it('keeps a valid checkpoint available when the latest suspend cannot open', () => {
+    const previous = writeCheckpoint(emptyPair(), entry('Previous journey', { ...base(), marks: 23 }));
+    const incomplete = { ...base(), adventureDiary: { entries: [], noteDetails: [] }, notes: ['Unfiled note'] };
+    const latest = writeSuspend(previous, entry('Latest journey', incomplete));
+    const bytes = serialisePair(latest);
+    const store = memoryStore({ [KEY_SLOTS]: bytes });
+    const service = new SaveService(store);
+    const loaded = service.load();
+    expect(loaded.ok).toBe(true);
+    if (!loaded.ok) return;
+    expect(loaded.warning).toMatch(/Continue could not be opened.*Checkpoint recovery is available/);
+    expect(loaded.pair).toMatchObject({ revision: latest.revision, continue: null, recovery: previous.recovery });
+    expect(store.get(KEY_SLOTS)).toBe(bytes);
+    service.commit(loaded.pair.revision, restoreRecovery(loaded.pair));
+    const reloaded = new SaveService(store).load();
+    expect(reloaded.ok && reloaded.pair.continue?.state.marks).toBe(23);
+  });
+  it('keeps Continue available when the recovery slot cannot open', () => {
+    const latest = writeSuspend(writeCheckpoint(emptyPair(), entry('Previous')), entry('Current'));
+    const brokenRecovery = { ...latest.recovery!, state: base() };
+    // Use an incomplete save entry instead of simulating damaged checksum bytes.
+    delete (brokenRecovery.state as Partial<CampaignState>).objectivesDone;
+    const loaded = parsePair(serialisePair({ ...latest, recovery: brokenRecovery }));
+    expect(loaded.ok && loaded.pair).toEqual({ ...latest, recovery: null });
+    expect(loaded.ok && loaded.warning).toMatch(/Checkpoint recovery could not be opened.*Continue is available/);
+  });
+  it('recovers a safe facing direction from an older partial save', () => {
+    const state = base();
+    delete (state as Partial<CampaignState>).facing;
+    const loaded = parsePair(serialisePair(writeCheckpoint(emptyPair(), entry('Without a facing', state))));
+    expect(loaded.ok && loaded.migrated && loaded.pair.continue?.state.facing).toBe('down');
   });
   it('rejects a save from a newer version', () => {
     const s: any = { ...base(), schema: 99 };

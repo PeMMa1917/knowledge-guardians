@@ -18,7 +18,8 @@ import { caption } from '../app/captions';
 import { CampaignPlayback } from '../app/campaignPlayback';
 import { FOLLOW_PIN, PIN_PURPOSES, readMapPin } from '../domain/mapPins';
 import { specimenArt } from '../app/specimenArt';
-import { hasSpecimen, ownsSpecimen, specimenReadingFlag, type SpecimenExhibit } from '../domain/specimenGear';
+import { hasSpecimen, ownsSpecimen, specimenDisplay, specimenReadingFlag, SPECIMEN_BASE, SPECIMEN_SHELF, type SpecimenExhibit } from '../domain/specimenGear';
+import { BIG_ART } from '../ui/illustrations';
 import { LUMEN_COLOURS, lumenArt } from '../app/settings';
 import Phaser from 'phaser';
 import type { BootScene } from './BootScene';
@@ -75,6 +76,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private transitioning = false;
   private objArt = new Map<string, { setVisible(v: boolean): unknown }>();
   private specimenProps = new Map<string, SpecimenExhibit>();
+  private displayedSpecimens = new Map<string, string | undefined>();
   /** A befriended Loreling in the field (spec 36.1), and where it is flying. */
   private pet: { id: string; sprite: Phaser.GameObjects.Sprite; glow: Phaser.GameObjects.Image; target: { x: number; y: number } | null; until: number; next: number } | null = null;
   private frayGlows = new Map<string, Phaser.GameObjects.Image>();
@@ -110,7 +112,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const km = ctx.settings.keys;
     this.keys = kb.addKeys({ W: km.up, A: km.left, S: km.down, D: km.right, E: km.interact, UP: 'UP', DOWN: 'DOWN', LEFT: 'LEFT', RIGHT: 'RIGHT', SPACE: 'SPACE', ENTER: 'ENTER' }) as Record<string, Phaser.Input.Keyboard.Key>;
     kb.addCapture('UP,DOWN,LEFT,RIGHT,SPACE');
-    const interactKey = () => { if (!this.paused && !ctx.ui.isModalOpen()) this.tryInteract(); };
+    const interactKey = (_key: Phaser.Input.Keyboard.Key, event: KeyboardEvent) => {
+      if (!event.repeat && !this.paused && !ctx.ui.isModalOpen()) this.tryInteract();
+    };
     this.keys.E.on('down', interactKey); this.keys.SPACE.on('down', interactKey); this.keys.ENTER.on('down', interactKey);
     this.input.on('pointerdown', (p: Phaser.Input.Pointer) => this.onPointer(p));
     this.scale.on('resize', this.resizeCamera);
@@ -120,6 +124,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     ctx.controller.dispatch({ type: 'VisitPlace', name: this.map.name });
     // Arrival zone (e.g. "emberford") is recorded the moment the map opens.
     this.checkZones(true);
+    this.refreshWorld();
     ctx.ui.refreshHud();
   }
 
@@ -128,6 +133,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private buildMap(): void {
     const m = this.map;
     this.specimenProps.clear();
+    this.displayedSpecimens.clear();
     const specimens = new Map(ctx.controller.pack.exhibits.filter(hasSpecimen).map((record) => [record.id, record]));
     this.cameras.main.setBackgroundColor(m.background);
     this.blocked = Array.from({ length: m.height }, () => Array(m.width).fill(false));
@@ -259,7 +265,6 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.fitCamera();
     this.cameras.main.startFollow(this.player.sprite, true, 0.12, 0.12);
     this.cameras.main.setBounds(-64, -96, m.width * TILE + 128, m.height * TILE + 160);
-    this.refreshWorld();
   }
 
   /** State-driven visuals. Called after every command by the interface. */
@@ -267,9 +272,14 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const s = ctx.controller.state;
     if (!s || !this.threadGfx) return;
     this.refreshBlockedTiles();
+    const cases = this.map.id === SPECIMEN_BASE ? specimenDisplay(ctx.controller.pack, s).cases : [];
     for (const it of this.map.interactables) {
       const img = this.objArt.get(it.id);
       if (img) img.setVisible(!it.visibleIf || ctx.controller.check(it.visibleIf));
+      if (it.game?.startsWith(SPECIMEN_SHELF) && img instanceof Phaser.GameObjects.Image) {
+        this.paintDisplay(it.id, img, cases[Number(it.game.slice(SPECIMEN_SHELF.length))]);
+        continue;
+      }
       const specimen = this.specimenProps.get(it.id);
       if (specimen && img instanceof Phaser.GameObjects.Image && ownsSpecimen(s, specimen.specimen.key)) {
         const reading = s.flags[specimenReadingFlag(specimen.specimen.key)];
@@ -347,11 +357,29 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     }
   }
 
-  private drawMuseumObject(id: string, display: Phaser.GameObjects.Image, asset: string): void {
+  private paintDisplay(id: string, display: Phaser.GameObjects.Image, record?: SpecimenExhibit): void {
+    const key = record?.specimen.key;
+    if (this.displayedSpecimens.has(id) && this.displayedSpecimens.get(id) === key) return;
+    this.displayedSpecimens.set(id, key);
+    display.setTexture('collection-stand').setDisplaySize(16, 24);
+    if (!record) return;
+    const asset = record.specimen.pixelAsset;
+    if (asset) {
+      this.drawMuseumObject(id, display, asset, () => this.displayedSpecimens.get(id) === key);
+    } else {
+      const art = BIG_ART[record.art] ?? record.art;
+      if (!this.textures.exists(art)) return;
+      const source = this.textures.get(art).getSourceImage() as HTMLCanvasElement;
+      const scale = 22 / Math.max(source.width, source.height);
+      display.setTexture(art).setDisplaySize(source.width * scale, source.height * scale);
+    }
+  }
+
+  private drawMuseumObject(id: string, display: Phaser.GameObjects.Image, asset: string, onDisplay?: () => boolean): void {
     void specimenArt(asset).then((drawing) => {
       if (!drawing || this.objArt.get(id) !== display || !display.active) return;
       const record = this.specimenProps.get(id);
-      if (!record || ownsSpecimen(ctx.controller.state, record.specimen.key)) return;
+      if (onDisplay ? !onDisplay() : !record || ownsSpecimen(ctx.controller.state, record.specimen.key)) return;
       const texture = `museum.${asset}`;
       if (!this.textures.exists(texture)) this.textures.addCanvas(texture, drawing);
       display.setTexture(texture).setDisplaySize(22, 22);
@@ -659,7 +687,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
     }
     const p = this.player;
+    let moving = false;
     if (vx || vy) {
+      const startX = p.sprite.x, startY = p.sprite.y;
       const len = Math.hypot(vx, vy);
       const sp = SPEED * (hasTalent(ctx.controller.state, 'pace') ? 1.2 : 1);
       const step = sp * dt / len;
@@ -667,8 +697,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       const my = vy * Math.min(step, waypointDistance?.y ?? step);
       if (!this.collides(p.sprite.x + mx, p.sprite.y)) p.sprite.x += mx;
       if (!this.collides(p.sprite.x, p.sprite.y + my)) p.sprite.y += my;
-      const f: Dir = Math.abs(vx) > Math.abs(vy) ? (vx > 0 ? 'right' : 'left') : (vy > 0 ? 'down' : 'up');
-      p.facing = f;
+      p.facing = Math.abs(vx) > Math.abs(vy) ? (vx > 0 ? 'right' : 'left') : (vy > 0 ? 'down' : 'up');
+      moving = p.sprite.x !== startX || p.sprite.y !== startY;
+    }
+    if (moving) {
+      const f = p.facing;
       p.sprite.anims.play(`${this.playerSheet}.walk.${f}`, true);
       this.trail.push({ x: p.sprite.x, y: p.sprite.y, f });
       if (this.trail.length > 40) this.trail.shift();
@@ -693,7 +726,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       p.sprite.setFrame(this.idleFrame(p.facing));
     }
     this.place(p);
-    this.updateFollower(!!(vx || vy));
+    this.updateFollower(moving);
     this.updateCompanionWait();
     this.updateLumen();
     this.updatePet();
@@ -1104,7 +1137,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     for (let y = r.y; y < r.y + r.h; y++) { cands.push({ x: r.x - 1, y }); cands.push({ x: r.x + r.w, y }); }
     const ok = cands.filter((c) => this.blocked[c.y]?.[c.x] === false);
     ok.sort((a, b) => Math.hypot(a.x - pt.x, a.y - pt.y) - Math.hypot(b.x - pt.x, b.y - pt.y));
-    return ok[0] ?? null;
+    return ok.find(({ x, y }) => this.bfs(pt.x, pt.y, x, y) !== null) ?? null;
   }
 
   private walkTo(tx: number, ty: number, then: (() => void) | null): void {
@@ -1117,6 +1150,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   }
 
   private bfs(sx: number, sy: number, tx: number, ty: number): { x: number; y: number }[] | null {
+    if (this.blocked[ty]?.[tx] !== false) return null;
     const W = this.map.width, H = this.map.height;
     const prev = new Map<number, number>();
     const q = [sy * W + sx]; prev.set(q[0], -1);

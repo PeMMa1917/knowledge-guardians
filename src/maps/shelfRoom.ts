@@ -1,4 +1,5 @@
 import type { Condition } from '../domain/types';
+import { PRISM_ANNEX } from './prismViewer';
 import type { Interactable, MapDef } from './types';
 
 const width = 18;
@@ -41,6 +42,7 @@ export const SHELF_ROOM: MapDef = {
     { stamp: 'bench', x: 5, y: 9 }, { stamp: 'crates', x: 12, y: 7 }],
   lights: [{ x: 10, y: 10, r: 80, color: 0xffcf91, flicker: true }, { x: 5, y: 5, r: 45, color: 0xdbc68f }],
   interactables: [
+    ...PRISM_ANNEX,
     door('shelf-room-exit', 9, 13, 'the stair back to Elsbet’s study', 'preserved.door', 'aethelgard.study', [3, 7]),
     { id: 'shelf-blocked-west', kind: 'sign', x: 5, y: 7, w: 1, h: 1, walkThrough: true, label: 'the loan crate filling the west gap',
       art: 'preserved.folder', visibleIf: { not: route('west') },

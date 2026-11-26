@@ -1,0 +1,6 @@
+.work-guide { border-top: 1px solid var(--gold-dim); margin-top: 1rem; padding-top: .5rem; }
+.work-guide summary { cursor: pointer; width: fit-content; padding: .2rem 0; color: var(--cyan); }
+.work-guide-body label { display: block; margin-block: .5rem; }
+.work-guide-body select { display: block; width: min(100%, 40ch); margin: .3rem 0; }
+.work-guide-body .hint-text:empty { display: none; }
+.work-feedback { border-inline-start: .2em solid var(--gold-dim); padding-inline-start: .65rem; }

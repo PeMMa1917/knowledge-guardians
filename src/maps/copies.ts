@@ -1,3 +1,4 @@
+import { LANDING_PIGMENT_WINDOW } from './pigmentWindow';
 /** A fictional city where the archive, press and landing share written notices. */
 import type { Condition } from '../domain/types';
 import { WORK_SCHEDULE_COPIES } from './workSchedule';
@@ -9,7 +10,10 @@ import { carriedFrame } from './sharedCarry';
 import { COPIES_ARCHIVE_CITATION_RAIL, COPIES_PRESS_CITATION_RAIL } from './citationRail';
 import { LANDING_SAME_RED, PRESS_SAME_RED } from './sameRed';
 import { PRESS_LANTERN_WEAVE } from './lanternWeave';
+import { ALIGN_DOOR, alignmentReceiver } from './mapAlignment';
+import { SCRIPT_RAIL_COPIES } from './scriptRail';
 import { IMPRINT_LANDING, IMPRINT_PATH } from './copyImprint';
+import { CORRESPONDENCE_DOOR } from './correspondenceRoom';
 import { READING_WORKS_DOOR, READING_WORKS_LANDING, READING_WORKS_PERKINS } from './readingWorks';
 
 type CitySite = Pick<MapDef, 'id' | 'name' | 'width' | 'height' | 'background' | 'spawn'
@@ -72,11 +76,14 @@ export const COPIES_ARCHIVE = interior({
     { stamp: 'rug-green', x: 11, y: 10 },
   ],
   interactables: [
+    SCRIPT_RAIL_COPIES,
     WORK_SCHEDULE_COPIES,
+    ALIGN_DOOR,
     ...COPIES_ARCHIVE_BACKBILL,
     ...DATE_REGISTER_RETURNS,
     ...COPIES_ARCHIVE_CITATION_RAIL,
     READING_WORKS_DOOR,
+    CORRESPONDENCE_DOOR,
     ...READING_WORKS_PERKINS,
     door('copies-press-path', 4, 3, 'the west passage to the press', { map: 'copies.press', x: 11, y: 12 }),
     door('copies-landing-path', 21, 3, 'the east steps to the landing', { map: 'copies.landing', x: 12, y: 12 }),
@@ -116,6 +123,7 @@ export const COPIES_PRESS = interior({
   ],
   interactables: [
     ...COPIES_PRESS_BACKBILL,
+    alignmentReceiver('pair', 9, 9),
     ...COPIES_PRESS_CITATION_RAIL,
     ...PRESS_SAME_RED,
     PRESS_LANTERN_WEAVE,
@@ -176,7 +184,9 @@ export const COPIES_LANDING: MapDef = {
   ],
   interactables: [
     ...COPIES_WELCOME,
+    alignmentReceiver('strip', 7, 12),
     ...LANDING_SAME_RED,
+    ...LANDING_PIGMENT_WINDOW,
     ...IMPRINT_LANDING,
     READING_WORKS_LANDING,
     door('copies-landing-return', 12, 15, 'the steps back to the Record Room', { map: 'copies.archive', x: 21, y: 5 }),

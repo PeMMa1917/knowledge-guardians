@@ -5,9 +5,11 @@
  * East wing (x 26-38): the Hall of Firsts, an optional side quest with
  * plaques, each about one person shown with their own place and people, from many periods.
  */
+import { NEXUS_FIELD_CUES } from './fieldBadges';
 import { BADGE_ANNEX_DOOR } from './badgeRoom';
 import { EARLY_CURTAIN_NPC, EARLY_CURTAIN_PROPS } from './curtainCall';
 import { NEXUS_DISPATCH_STATS } from './dispatchStats';
+import { NEXUS_CORRESPONDENCE } from './correspondenceRoom';
 import type { Condition } from '../domain/types';
 import { FIRST_BENCH_EPILOGUE } from './afterCouncil';
 import { FERRY_PACKING_RETURNS } from './ferryPacking';
@@ -151,6 +153,7 @@ export const NEXUS: MapDef = {
     { id: 'translator-lio', x: 24, y: 13, facing: 'right', visibleIf: { origin: 'traveller' } },
   ],
   interactables: [
+    ...NEXUS_FIELD_CUES,
     ...starStations('inquisitor', [3, 10], [3, 11]),
     ...NEXUS_VINDOLANDA,
     ...NEXUS_DOOR_FOLD,
@@ -431,6 +434,7 @@ export const NEXUS: MapDef = {
     BADGE_ANNEX_DOOR,
     ...EARLY_CURTAIN_PROPS,
     ...NEXUS_DISPATCH_STATS,
+    ...NEXUS_CORRESPONDENCE,
     { id: 'waystone', kind: 'waystone', place: 'Nexus archive hall', x: 2, y: 9, w: 1, h: 1, label: 'the Waystone (save and rest)', art: 'waystone' },
     ...([['OBJ-101', 'eratosthenes'], ['OBJ-102', 'haytham'], ['OBJ-103', 'bisheng'], ['OBJ-104', 'sikdar'], ['OBJ-105', 'santos'], ['OBJ-106', 'sheppard'], ['OBJ-107', 'wollstonecraft']] as const)
       .map(([ex, key], i) => ({ id: `plaque-${key}`, kind: 'exhibit' as const, exhibit: ex, kit: `first.${key}`, x: 27 + i * 2, y: 5, w: 1, h: 1, label: 'a plaque in the Hall of Firsts', art: 'plaque' })),
