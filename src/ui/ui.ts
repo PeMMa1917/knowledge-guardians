@@ -2952,7 +2952,7 @@ export class UI implements UIApi {
     const second = revisit && c.state.flags[`visited.map.${revisit.map}`] === true ? MAPS[revisit.map] : undefined;
     const travel = (map: NonNullable<typeof destination>) => {
       this.closeModal(false);
-      ctx.world?.changeMap(map.id, map.spawn.x, map.spawn.y);
+      ctx.world?.changeMap(map.id, map.spawn.x, map.spawn.y, { route: { id: 'specimen-return', label: 'the return arch' } });
     };
     this.openModal('bench-panel wide', 'The return arch', this.closeBtn(),
       destination && exhibit ? h('div', {}, h('h2', {}, destination.name), h('p', {}, exhibit.name),
@@ -3496,7 +3496,7 @@ export class UI implements UIApi {
         islandSkiffPanel(ctx.controller, (key) => this.sfx(key), (berth) => {
           const landing = SKIFF_LANDINGS[berth];
           this.closeModal(false);
-          ctx.world?.changeMap(landing.map, landing.x, landing.y);
+          ctx.world?.changeMap(landing.map, landing.x, landing.y, { route: { id: 'skiff-landing', label: 'Joss’s skiff' } });
         }));
     } else if (id === 'stiltfrog-wait') {
       this.openLoreling('stiltfrog');
@@ -4420,7 +4420,7 @@ export class UI implements UIApi {
     const c = ctx.controller;
     const cl = (c.pack.clues ?? []).find((x) => x.id === id);
     if (!cl) return;
-    if (c.state.flags[`clue.${id}.read`] !== true) c.dispatch({ type: 'ReadClue', clue: id });
+    c.dispatch({ type: 'ReadClue', clue: id });
     const keep = new Map((c.pack.keepsakes ?? []).map((k) => [k.id, k]));
     const low = (n: string) => n.replace(/^(A|An|The) /, (m) => m.toLowerCase());
     const box = this.openModal('clue-panel', cl.name);

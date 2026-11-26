@@ -60,8 +60,13 @@ export interface UIApi {
   chapterEnd(): void;
 }
 
+export interface WorldTransition {
+  throughZone?: boolean;
+  route?: { id: string; label: string };
+}
+
 export interface WorldApi {
-  changeMap(mapId: string, x: number, y: number): void;
+  changeMap(mapId: string, x: number, y: number, transition?: WorldTransition): void;
   lumenBurst(): void;
   setPaused(p: boolean): void;
   applySettings(): void;

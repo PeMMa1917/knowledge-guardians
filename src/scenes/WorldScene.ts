@@ -23,7 +23,7 @@ import { BIG_ART } from '../ui/illustrations';
 import { LUMEN_COLOURS, lumenArt } from '../app/settings';
 import Phaser from 'phaser';
 import type { BootScene } from './BootScene';
-import { ctx, type WorldApi } from '../app/context';
+import { ctx, type WorldApi, type WorldTransition } from '../app/context';
 import { MAPS } from '../maps';
 import type { Interactable, MapDef } from '../maps/types';
 import { STAMPS, TILE } from './art';
@@ -91,7 +91,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   constructor() { super('world'); }
 
-  create(data: { walkingArrivalFrom?: string } = {}): void {
+  create(data: { walkingArrivalFrom?: string; via?: { from: string; id: string; label: string } } = {}): void {
     ctx.world = this;
     // Reset per-map fields (the scene object is reused when the map changes).
     if (!this.textures.exists('mark.new')) {
@@ -128,7 +128,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.scale.off('resize', this.resizeCamera));
     this.playMusic();
     this.cameras.main.fadeIn(ctx.settings.reducedMotion ? 0 : 400, 10, 8, 24);
-    ctx.controller.dispatch({ type: 'VisitPlace', name: this.map.name });
+    ctx.controller.dispatch({ type: 'VisitPlace', name: this.map.name, via: data.via });
     // Arrival zone (e.g. "emberford") is recorded the moment the map opens.
     this.checkZones(true);
     this.refreshWorld();
@@ -1096,19 +1096,23 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
       case 'clue': ctx.ui.openClue(it.clue!); break;
       case 'door':
-        if (it.openIf && !ctx.controller.check(it.openIf)) { ctx.ui.showSign(it.label, it.text ?? 'It does not open.'); break; }
+        if (it.openIf && !ctx.controller.check(it.openIf)) {
+          const text = it.text ?? 'It does not open.';
+          ctx.controller.dispatch({ type: 'ReadWorldSign', id: it.id, title: it.label, text, blocked: true });
+          ctx.ui.showSign(it.label, text);
+          break;
+        }
         if (it.flag && ctx.controller.state.flags[it.flag] !== true) ctx.controller.dispatch({ type: 'SetFlag', flag: it.flag, value: true });
-        if (it.to) this.changeMap(it.to.map, it.to.x, it.to.y);
+        if (it.to) this.changeMap(it.to.map, it.to.x, it.to.y, { route: { id: it.id, label: it.label } });
         break;
       case 'forge': ctx.ui.openForge(); break;
       case 'assay': ctx.ui.openAssay(it.exhibit!); break;
       case 'thread': ctx.ui.followThread(it.thread!, it.node!); break;
       case 'waystone': ctx.ui.openWaystone(it.place ?? this.map.name); break;
       case 'sign':
-        if (it.flag && ctx.controller.state.flags[it.flag] !== true) {
-          const events = ctx.controller.dispatch({ type: 'SetFlag', flag: it.flag, value: true });
-          if (!events.length) this.refreshWorld();
-        }
+        const first = it.flag && ctx.controller.state.flags[it.flag] !== true;
+        const events = ctx.controller.dispatch({ type: 'ReadWorldSign', id: it.id, title: it.label, text: it.text ?? '', readFlag: it.flag });
+        if (first && !events.length) this.refreshWorld();
         ctx.ui.showSign(it.label, it.text ?? '', it.id); break;
       case 'portal': break;
     }
@@ -1199,7 +1203,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         continue;
       }
       if (!ctx.controller.state.flags[`reached.${z.id}`]) ctx.controller.dispatch({ type: 'Reach', zone: z.id });
-      if (z.to && !arrival) this.changeMap(z.to.map, z.to.x, z.to.y, true);
+      if (z.to && !arrival) this.changeMap(z.to.map, z.to.x, z.to.y, { throughZone: true, route: { id: z.id, label: 'the crossing' } });
     }
   }
 
@@ -1212,15 +1216,16 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   /** Called by the shell before saving, so the save has the current position. */
   snapshotPosition(): void { this.saveSpot(); }
 
-  changeMap(mapId: string, x: number, y: number, throughZone = false): void {
+  changeMap(mapId: string, x: number, y: number, { throughZone = false, route }: WorldTransition = {}): void {
     if (this.transitioning) return;
     this.transitioning = true;
     this.playSfx('sfx.sparkle');
-    const walkingArrivalFrom = throughZone ? this.map.id : undefined;
+    const from = this.map.id;
+    const walkingArrivalFrom = throughZone ? from : undefined;
     const go = () => {
       const s = ctx.controller.state;
       s.mapId = mapId; s.pos = { x, y }; s.facing = 'down';
-      this.scene.restart({ walkingArrivalFrom });
+      this.scene.restart({ walkingArrivalFrom, via: route ? { ...route, from } : undefined });
     };
     if (ctx.settings.reducedMotion) go();
     else { this.cameras.main.fadeOut(500, 220, 240, 255); this.cameras.main.once('camerafadeoutcomplete', go); }

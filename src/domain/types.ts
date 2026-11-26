@@ -772,7 +772,7 @@ export interface ContentPack {
 // State
 // ---------------------------------------------------------------------------
 
-export const CAMPAIGN_SCHEMA = 5;
+export const CAMPAIGN_SCHEMA = 6;
 export const PERMANENT_SCHEMA = 4;
 
 export interface ShowdownLogLine { who: 'player' | 'opponent' | 'crowd' | 'witness'; text: string; why?: string }
@@ -817,6 +817,19 @@ export interface ForgeState {
 
 export type DiaryEntryKind = 'quest' | 'choice' | 'experience';
 
+export const DIARY_EVENT_KINDS = ['arrival', 'route', 'conversation', 'sign', 'inspection', 'choice', 'tool', 'finding', 'correction', 'quest'] as const;
+export type DiaryEventKind = typeof DIARY_EVENT_KINDS[number];
+export const DIARY_EVENT_OUTCOMES = ['tried', 'checked', 'changed', 'blocked'] as const;
+
+/** Reference to what happened in play. The key identifies the action across repeat entries. */
+export interface DiaryEvent {
+  kind: DiaryEventKind;
+  key: string;
+  ref: string;
+  sourceIds?: string[];
+  outcome?: typeof DIARY_EVENT_OUTCOMES[number];
+}
+
 export interface DiaryEntry {
   id: string;
   kind: DiaryEntryKind;
@@ -824,6 +837,8 @@ export interface DiaryEntry {
   text: string;
   at: string;
   mapId: string;
+  /** Entries imported from before encounter tracking may have no event metadata. */
+  event?: DiaryEvent;
 }
 
 export type DiaryNoteKind = 'note' | 'reflection' | 'question';
@@ -836,9 +851,20 @@ export interface DiaryNoteDetails {
   resolved: boolean;
 }
 
+export interface DiaryPortfolioWriting {
+  title: string;
+  text: string;
+  at: string;
+  mapId: string;
+  draft?: true;
+}
+
 export interface AdventureDiary {
   entries: DiaryEntry[];
   noteDetails: DiaryNoteDetails[];
+  reflectionResponses: Record<string, Record<string, string>>;
+  noteDraft: { kind: DiaryNoteKind; text: string } | null;
+  portfolioWriting: Record<string, DiaryPortfolioWriting>;
 }
 
 /** Everything that rolls back together when a checkpoint loads (spec 24.2). */

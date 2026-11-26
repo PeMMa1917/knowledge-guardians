@@ -6,7 +6,7 @@
  * caller shows a recoverable error and never silently resets progress.
  */
 import type { Condition, ContentPack, Effect, Weave } from './types';
-import { ATLS, CONCEPTS, PROFILE } from './types';
+import { ATLS, CONCEPTS, DIARY_EVENT_KINDS, DIARY_EVENT_OUTCOMES, PROFILE } from './types';
 import { SUBJECTS } from './curriculum';
 import { dailyPrompts } from './dive';
 import { chordFigure, panes, runSorter, runSurvey, sightBlock, translateLine, judgeFrame, shepardParts, brier } from './puzzles';
@@ -36,12 +36,29 @@ export function validateCampaign(s: any): string[] {
   for (const k of ['journal', 'notes', 'cards', 'objectivesDone']) if (!Array.isArray(s[k])) p.push(`${k} must be a list`);
   const diary = s.adventureDiary;
   const isDate = (value: unknown) => typeof value === 'string' && Number.isFinite(Date.parse(value));
+  const isObject = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object' && !Array.isArray(value);
+  const noteKinds = ['note', 'reflection', 'question'];
   if (!Array.isArray(diary?.entries) || diary.entries.some((entry: any) =>
     !entry || !['quest', 'choice', 'experience'].includes(entry.kind) || !isDate(entry.at)
     || !['id', 'title', 'text', 'mapId'].every((key) => typeof entry[key] === 'string'))) p.push('adventure journal entries invalid');
+  else if (new Set(diary.entries.map((entry: any) => entry.id)).size !== diary.entries.length || diary.entries.some(({ event }: any) =>
+    event !== undefined && (!event || !DIARY_EVENT_KINDS.includes(event.kind) || typeof event.key !== 'string' || typeof event.ref !== 'string'
+      || (event.outcome !== undefined && !DIARY_EVENT_OUTCOMES.includes(event.outcome))
+      || (event.sourceIds !== undefined && (!Array.isArray(event.sourceIds) || event.sourceIds.some((id: unknown) => typeof id !== 'string'))))))
+    p.push('adventure journal event details invalid');
   if (!Array.isArray(diary?.noteDetails) || diary.noteDetails.length !== s.notes?.length || diary.noteDetails.some((note: any) =>
-    !note || !['note', 'reflection', 'question'].includes(note.kind) || (note.at !== null && !isDate(note.at))
+    !note || !noteKinds.includes(note.kind) || (note.at !== null && !isDate(note.at))
     || (note.mapId !== null && typeof note.mapId !== 'string') || typeof note.resolved !== 'boolean')) p.push('adventure journal note details invalid');
+  const responses = diary?.reflectionResponses;
+  if (!isObject(responses) || Object.values(responses).some((group) => !isObject(group)
+    || Object.values(group).some((text) => typeof text !== 'string'))) p.push('adventure journal responses invalid');
+  const draft = diary?.noteDraft;
+  if (draft !== null && (!isObject(draft) || typeof draft.kind !== 'string' || !noteKinds.includes(draft.kind)
+    || typeof draft.text !== 'string')) p.push('adventure journal draft invalid');
+  const writing = diary?.portfolioWriting;
+  if (!isObject(writing) || Object.values(writing).some((entry) => !isObject(entry) || typeof entry.title !== 'string'
+    || typeof entry.text !== 'string' || typeof entry.mapId !== 'string' || !isDate(entry.at) || (entry.draft !== undefined && entry.draft !== true)))
+    p.push('adventure journal portfolio writing invalid');
   if (Array.isArray(s.notes) && s.notes.some((note: unknown) => typeof note !== 'string')) p.push('adventure journal notes invalid');
   if (s.inventory) for (const [id, q] of Object.entries(s.inventory)) if (!Number.isInteger(q) || (q as number) < 0 || (q as number) > 999) p.push(`bad quantity for ${id}`);
   if (typeof s.marks === 'number' && (s.marks < 0 || s.marks > 1_000_000)) p.push('marks out of range');

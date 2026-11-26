@@ -76,7 +76,8 @@ export type Command =
   | FilmAction
   | TileDispatchAction
   | { type: 'Reach'; zone: string }
-  | { type: 'VisitPlace'; name: string }
+  | { type: 'VisitPlace'; name: string; via?: { from: string; id: string; label: string } }
+  | { type: 'ReadWorldSign'; id: string; title: string; text: string; readFlag?: string; blocked?: true }
   | { type: 'EquipPerspective'; keepsake: string | null }
   | { type: 'SharedCarry'; site: CarrySite; stop: CarryStop; action: string }
   | { type: 'SetPronouns'; pronouns: Pronouns }
@@ -395,6 +396,10 @@ export class Engine {
         case 'VisitPlace':
           if (!cmd.name.trim()) throw new Error('This place has no name');
           if (s.flags[`visited.map.${s.mapId}`] !== true) s = apply([{ setFlag: `visited.map.${s.mapId}`, value: true }], s, out);
+          break;
+        case 'ReadWorldSign':
+          if (!cmd.id || !cmd.title.trim()) throw new Error('This notice has no name');
+          if (cmd.readFlag && s.flags[cmd.readFlag] !== true) s = apply([{ setFlag: cmd.readFlag, value: true }], s, out);
           break;
         case 'Reach':
           s = apply([{ setFlag: `reached.${cmd.zone}`, value: true }], s, out);
@@ -1315,8 +1320,15 @@ export class Engine {
         case 'PortfolioReflect': {
           const i = p.portfolio.findIndex((e) => e.id === cmd.entry);
           if (i < 0) throw new Error('Unknown portfolio entry');
-          const list = [...p.portfolio]; list[i] = { ...list[i], reflection: cmd.text.trim().slice(0, 800) };
-          p = { ...p, portfolio: list };
+          const entry = p.portfolio[i];
+          const reflection = cmd.text;
+          if (entry.reflection !== reflection) {
+            const list = [...p.portfolio];
+            list[i] = { ...entry, reflection };
+            p = { ...p, portfolio: list };
+          }
+          const adventureDiary = setDiaryPortfolioWriting(s.adventureDiary, entry, cmd.text, now, s.mapId);
+          if (adventureDiary !== s.adventureDiary) s = { ...s, adventureDiary };
           break;
         }
       }

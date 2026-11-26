@@ -129,6 +129,9 @@ export const MIGRATIONS: Record<number, (s: any) => any> = {
   // Old saves get they/them and no origin, and the player can change pronouns at any time.
   3: (s) => ({ ...s, schema: 4, player: { ...s.player, pronouns: { subject: 'they', object: 'them', possessive: 'their' }, origin: null } }),
   4: (s) => ({ ...s, schema: 5, adventureDiary: newAdventureDiary(Array.isArray(s.notes) ? s.notes : []) }),
+  5: (s) => ({ ...s, schema: 6, adventureDiary: {
+    ...newAdventureDiary(Array.isArray(s.notes) ? s.notes : []), ...s.adventureDiary,
+  } }),
 };
 
 export function migrateCampaign(raw: any): { state: CampaignState; migrated: boolean } {

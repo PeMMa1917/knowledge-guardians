@@ -234,7 +234,8 @@ describe('storage, checksum and migration', () => {
   });
   it('keeps a valid checkpoint available when the latest suspend cannot open', () => {
     const previous = writeCheckpoint(emptyPair(), entry('Previous journey', { ...base(), marks: 23 }));
-    const incomplete = { ...base(), adventureDiary: { entries: [], noteDetails: [] }, notes: ['Unfiled note'] };
+    const valid = base();
+    const incomplete = { ...valid, adventureDiary: { ...valid.adventureDiary, noteDetails: [] }, notes: ['Unfiled note'] };
     const latest = writeSuspend(previous, entry('Latest journey', incomplete));
     const bytes = serialisePair(latest);
     const store = memoryStore({ [KEY_SLOTS]: bytes });
