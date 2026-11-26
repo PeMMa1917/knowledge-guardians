@@ -26,6 +26,11 @@ if (!url || !['all', 'maps', 'access', 'collections', 'stress', 'portal', 'cast'
   throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access|collections|stress|portal|cast|focus|soak|events|guidance|fieldgames]');
 }
 const root = resolve(directory);
+const waitScale = Number(process.env.KG_BROWSER_WAIT_SCALE ?? 1);
+if (!Number.isFinite(waitScale) || waitScale < 1 || waitScale > 10) {
+  throw new Error('KG_BROWSER_WAIT_SCALE must be a number between 1 and 10.');
+}
+if (waitScale !== 1) console.log(`Browser polling deadlines scaled by ${waitScale}. Game and soak clocks use real time.`);
 
 async function readRegistry() {
   const require = createRequire(join(root, 'package.json'));
@@ -50,7 +55,7 @@ async function readRegistry() {
 }
 
 async function until(action, description, timeout = 25_000) {
-  const stop = Date.now() + timeout;
+  const stop = Date.now() + timeout * waitScale;
   while (Date.now() < stop) {
     const value = await action();
     if (value) return value;

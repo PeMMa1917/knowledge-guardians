@@ -16,6 +16,8 @@ node tools/smoke-worlds.mjs http://127.0.0.1:4173/
 
 The script starts a fresh game in a disposable Chromium profile. It uses the checkout’s map registry and the game’s debug entry to start each scene at its registered spawn, then checks for a rendered floor, a non-blank frame, registered prop art and a short walk through the real pathfinder. With a separate built checkout, pass its directory as the second argument. Pass `maps` or `access` as a third argument to run either group by itself. [Smoke runner](../tools/smoke-worlds.mjs)
 
+On a shared test machine, record an initial timeout and the last observed scene state. If the player or fade was still moving, rerun with `KG_BROWSER_WAIT_SCALE=4` to give each wait four times its ordinary deadline. The runner reports the chosen factor. The elapsed hour in `soak`, game speed and pass conditions use their ordinary settings.
+
 Use `stress` to compare the live scene against the map registry and to exercise solid edges, diagonal corners and pointer targets. It includes an accelerated hour at the Nexus wall and a live Ferry tab switch. Use `portal` to replay the held-key return from Emberford with the two prerequisites staged, or `focus` for the Ferry tab switch on its own. Use `soak` for a full hour of actual Chromium input with one continuously held key. The soak samples position, collision, animation and footstep calls while the browser advances, then checks that movement resumes after releasing the key. `KG_SOAK_MINUTES` allows a shorter run. The `guidance` mode checks the local four-clue sequence at mobile size and continues the same workbench trial. [Stress runner](../tools/smoke-navigation.mjs) · [Guidance runner](../tools/smoke-guidance.mjs)
 
 ## Integrated preview
