@@ -7,6 +7,7 @@ import { LINKED_LISTENING } from './linkedNotes';
 import { QUAY_VESPER_TRUST } from './vesperTrust';
 import { MAKER_QUAY, MAKER_WALK } from './makerRoom';
 import { starStations } from './starPaths';
+import { COAST_COPY_LISTENING, COAST_COPY_WALK } from './coastCopy';
 
 function door(id: string, x: number, y: number, label: string, to: NonNullable<Interactable['to']>, art = 'voices.waypost'): Interactable {
   return { id, kind: 'door', x, y, w: 1, h: 1, label, to, art };
@@ -50,6 +51,7 @@ export const VOICES_LISTENING: MapDef = {
     ...starStations('empath', [3, 6], [4, 6]),
     door('voices-walk-path', 3, 11, 'the passage to the Glass Walk stairs', { map: 'voices.walk', x: 11, y: 13 }),
     ...LINKED_LISTENING,
+    COAST_COPY_LISTENING,
     ...LISTENING_LINTEL,
     door('voices-quay-path', 25, 11, 'the passage to the lamp quay', { map: 'voices.quay', x: 5, y: 12 }),
     door('voices-nexus-return', 13, 15, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 31, y: 12 }, 'preserved.door'),
@@ -137,6 +139,7 @@ export const VOICES_WALK: MapDef = {
   ],
   interactables: [
     CUE_WALK_READER,
+    ...COAST_COPY_WALK,
     { id: 'cross-two-elders', kind: 'fieldgame', game: 'cross-two-elders', x: 18, y: 10, w: 1, h: 1, label: 'two old friends on separate benches (a crossing)', art: 'ledger' },
     MAKER_WALK,
     ...WALK_LINTEL,

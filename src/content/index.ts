@@ -133,6 +133,7 @@ import { islandProofRackContent } from './islandProofRack';
 import { specimenEquipment } from '../domain/specimenGear';
 import { addSpecimenPeople } from './specimenPeople';
 import { turningTableContent } from './turningTable';
+import { coastCopyContent } from './coastCopy';
 import { makerRoomContent, makerExactContent } from './makerRoomCases';
 import { timbuktuManuscriptContent } from './timbuktuManuscript';
 import { objectUseContent } from './objectUseCases';
@@ -193,7 +194,7 @@ export function buildPack(): ContentPack {
   const pack: any = { id: 'chapter-1', contentVersion: CONTENT_VERSION };
   const collectionRooms = [clearanceContent, beaterProof, datePegContent, relayContent, joinedCloth, asiaLabelContent, specimenWorkContent, polarStore, fernRecordContent,
     lanternWeaveContent, dateRegisterContent, passageContent, windowShop, readingWorksContent, storyArchiveContent, copyImprintContent,
-    referenceProofs, numberLeafContent, surveyDepotContent, referenceLineContent, islandProofRackContent, turningTableContent, makerRoomContent, makerExactContent,
+    referenceProofs, numberLeafContent, surveyDepotContent, referenceLineContent, islandProofRackContent, turningTableContent, coastCopyContent, makerRoomContent, makerExactContent,
     timbuktuManuscriptContent, objectUseContent, leavittPlateContent, referenceStation, callboardContent, cueWorkshopContent,
     modelRecordsContent, secondReadingContent, timeRoomContent, fieldStoreContent, materialStoreContent,
     loadingBayContent, glassRackContent, shoreReplyContent, ferryWindowContent, starPathContent, tokBadgeContent,

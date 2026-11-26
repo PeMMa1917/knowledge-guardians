@@ -101,6 +101,8 @@ import { mapAlignmentPanel } from './mapAlignment';
 import { scriptRailPanel } from './scriptRail';
 import { twoCallsPanel } from './twoCalls';
 import { localGuide, workFeedback } from './localGuide';
+import { COAST_COPY_DESK, COAST_COPY_READER, COAST_COPY_POCKET } from '../content/coastCopy';
+import { coastCopyPanel } from './coastCopy';
 import { bearingBayPanel } from './bearingBay';
 import { loadingBayPanel } from './loadingBay';
 import { cueWorkshopPanel } from './cueWorkshop';
@@ -3272,6 +3274,12 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    if (id === COAST_COPY_DESK || id === COAST_COPY_READER || id === COAST_COPY_POCKET) {
+      this.openModal('bench-panel wide', 'The Other Half of the Copy', this.closeBtn(),
+        h('h2', {}, 'The Other Half of the Copy'),
+        coastCopyPanel(id, ctx.controller, () => ctx.world?.refreshWorld()));
+      return;
+    }
     if (id === CLEAR_BAY_GAME) {
       this.openModal('bench-panel wide', 'The First Bell at the Cold Store', this.closeBtn(),
         clearBayPanel(ctx.controller, () => ctx.world?.refreshWorld(), (key) => this.sfx(key)));
