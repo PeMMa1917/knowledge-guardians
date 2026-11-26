@@ -3,7 +3,7 @@
  * Fantasy world. Nothing here is a historical record unless an exhibit is
  * labelled "Documented" with a source. 40 x 28 tiles.
  */
-import type { MapDef } from './types';
+import type { Interactable, MapDef } from './types';
 import { sceneProp } from './sceneProps';
 
 const W = 40, H = 28;
@@ -29,6 +29,22 @@ function hash(x: number, y: number): number {
   let h = x * 374761393 + y * 668265263;
   h = (h ^ (h >>> 13)) * 1274126177;
   return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
+}
+
+function linenStand(id: string, x: number, y: number, label: string, text: string, resultArt: string): Interactable[] {
+  const started = { flag: 'linen.started', eq: true };
+  const done = { flag: `linen.${id}`, eq: true };
+  const spot = { x, y, w: 1, h: 1, walkThrough: true } as const;
+  return [
+    {
+      ...spot, id: `linen-${id}`, kind: 'scene', node: `linen.${id}`, label, art: 'board-stand',
+      visibleIf: { all: [started, { not: done }] },
+    },
+    {
+      ...spot, id: `linen-${id}-result`, kind: 'sign', label: 'the observation from ' + label, art: resultArt, text,
+      visibleIf: done,
+    },
+  ];
 }
 
 export const EMBERFORD: MapDef = {
@@ -110,6 +126,23 @@ export const EMBERFORD: MapDef = {
       { sketch: 'nile.map', direction: 'signpost' }),
     ...sceneProp('emberford.pattern-order', 9, 15, 'the smith’s sample tray', 'nile.tablet',
       { sample: 'board-stand', record: 'ledger' }),
+    // The south lane has room to compare the same pieces away from the trade stands.
+    { id: 'linen-clip', kind: 'scene', node: 'linen.start', x: 16, y: 24, w: 1, h: 1, walkThrough: true,
+      label: 'the two cloth cuttings', art: 'nile.slip', visibleIf: { not: { flag: 'linen.started', eq: true } } },
+    ...linenStand('shade', 3, 24, 'the shaded stand', 'Blue-grey, on both corners under the tree. The two cuttings were side by side with their faces turned the same way.', 'preserved.display-paired'),
+    ...linenStand('open', 6, 26, 'the stand in open light', 'Both corners looked paler when the same board went into the open. The folding check still needs its own tag.', 'preserved.display-records'),
+    { id: 'linen-tag', kind: 'scene', node: 'linen.tag', x: 11, y: 25, w: 1, h: 1, walkThrough: true,
+      label: 'the two loose work tags', art: 'cork-board',
+      visibleIf: { all: [{ objective: 'linen.o.compare' }, { not: { flagSet: 'linen.tag' } }] } },
+    { id: 'linen-dye-tag', kind: 'sign', x: 11, y: 25, w: 1, h: 1, walkThrough: true, label: 'the dyer’s tag', art: 'notice-board',
+      text: 'Compare the cuttings in one light. The basket slip below gives the crew a different check for the folds.',
+      visibleIf: { flag: 'linen.tag', eq: 'dye' } },
+    { id: 'linen-ferry-tag', kind: 'sign', x: 11, y: 25, w: 1, h: 1, walkThrough: true, label: 'the ferry crew’s tag', art: 'nile.scroll',
+      text: 'Check the folds before you pack. The line slip below tells the dyer to compare the cuttings in one light.',
+      visibleIf: { flag: 'linen.tag', eq: 'ferry' } },
+    { id: 'linen-ready-lane', kind: 'sign', x: 16, y: 24, w: 1, h: 1, walkThrough: true, label: 'the south lane basket hook', art: 'preserved.slip',
+      text: 'The cuttings went to the two stands on the south lane. Walk west for the shade and open light. The tags hang beside the lane.',
+      visibleIf: { flag: 'linen.started', eq: true } },
     // The Copy in the Square. Follow the original order, then carry the repair past the square.
     { id: 'copy-spare', kind: 'scene', node: 'copy.start', x: 28, y: 14, w: 1, h: 1, walkThrough: true, label: 'the spare market slip', art: 'nile.slip',
       visibleIf: { all: [{ flagSet: 'sd.corvan.outcome' }, { not: { flag: 'copy.started', eq: true } }] } },

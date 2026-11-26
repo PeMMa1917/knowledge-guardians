@@ -10,6 +10,7 @@ import { OBSERVATORY_ARCHIVE, OBSERVATORY_HARBOUR, OBSERVATORY_INLAND, OBSERVATO
 import { FOREST_STATION, FOREST_TRAIL, FOREST_COMMUNITY } from './forest';
 import { METALWORKS_YARD, METALWORKS_RECORDS } from './metalworks';
 import { COPIES_ARCHIVE, COPIES_PRESS, COPIES_LANDING } from './copies';
+import { SEA_HARBOUR, SEA_CHARTROOM, SEA_SHOAL } from './sea';
 
 export const MAPS: Record<string, MapDef> = {
   [NEXUS.id]: NEXUS,
@@ -40,4 +41,7 @@ export const MAPS: Record<string, MapDef> = {
   [COPIES_ARCHIVE.id]: COPIES_ARCHIVE,
   [COPIES_PRESS.id]: COPIES_PRESS,
   [COPIES_LANDING.id]: COPIES_LANDING,
+  [SEA_HARBOUR.id]: SEA_HARBOUR,
+  [SEA_CHARTROOM.id]: SEA_CHARTROOM,
+  [SEA_SHOAL.id]: SEA_SHOAL,
 };

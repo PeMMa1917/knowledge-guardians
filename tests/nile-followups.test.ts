@@ -186,3 +186,36 @@ describe('the seal on the copy', () => {
     expect(canMoveSeal()).toBe(true);
   });
 });
+
+describe('the tilt tray', () => {
+  it.each([
+    ['Set the tray level', 'Raise the same tray', 'Carry the two settings', 'cart'],
+    ['Raise the same tray', 'Set the tray level', 'Keep the trial limits', 'map'],
+  ])('compares the same block before putting up a %s note',
+    (first, second, display, location) => {
+      const d = new Driver();
+      d.s.mapId = 'nile.route';
+      d.run({ type: 'SetFlag', flag: 'nile.arrived', value: true });
+      expect(d.e.talkEntry('nile-marek', d.s)).toBe('nile.route-before');
+
+      d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-MINE' });
+      const xp = totalXP(d.p);
+      d.talk('nile-marek', 'Try the tilt tray', first, 'Reset the tray', first, 'Leave the tray');
+      expect(d.done('nile.tray.compare')).toBe(false);
+      expect(d.e.visibleOptions('nile.tray.start', d.s).some(({ option }) => option.text.startsWith('Pin'))).toBe(false);
+      expect(d.s.flags['nile.routeLead']).toBeUndefined();
+
+      d.talk('nile-marek', 'Try the tilt tray', second, 'Pin a note', display);
+      expect(d.done('nile.tray.compare')).toBe(true);
+      expect(d.s.cards).not.toContain('card.nile.model');
+      expect(totalXP(d.p)).toBe(xp);
+      expect(MAPS['nile.route'].interactables
+        .filter((prop) => prop.id.startsWith('nile-tilt-note-') && check(prop.visibleIf, d.s))
+        .map((prop) => prop.id)).toEqual([`nile-tilt-note-${location}`]);
+
+      d.run({ type: 'NileRouteTrial', road: 'ridge' });
+      d.run({ type: 'NileRouteTrial', road: 'wash' });
+      d.run({ type: 'NileDelivery', choice: 'copy' });
+      expect(d.done('nile.routes')).toBe(true);
+    });
+});

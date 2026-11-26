@@ -3,6 +3,7 @@ import { compareCopy } from '../src/domain/copyComparison';
 import { forestWatch, type ForestWindow } from '../src/domain/forestWatch';
 import { readMetalSample } from '../src/domain/metalSample';
 import { check } from '../src/domain/rules';
+import { seaChart } from '../src/domain/seaCharts';
 import { MAPS } from '../src/maps';
 import { coverageGaps, singleActionDimensions, type TimedEncounter } from '../tools/tok-coverage';
 import { Driver } from './driver';
@@ -19,13 +20,13 @@ class Route {
   }
 }
 
-function walkScene(d: Driver, id: string, next?: string): void {
+function walkScene(d: Driver, id: string, next?: string, ...picks: string[]): void {
   const prop = MAPS[d.s.mapId].interactables.find((p) => p.id === id && p.kind === 'scene');
   if (!prop?.node) throw new Error(`Missing scene prop ${id}`);
   expect(check(prop.visibleIf, d.s), `${id} visible`).toBe(true);
   const choice = next ? d.e.visibleOptions(prop.node, d.s).find(({ option }) => option.next === next) : undefined;
   if (next && !choice) throw new Error(`Missing choice from ${id} to ${next}`);
-  d.walk(prop.node, choice ? [choice.option.text] : []);
+  d.walk(prop.node, choice ? [choice.option.text, ...picks] : picks);
 }
 
 function useProp(id: string, choice: string): Play {
@@ -197,7 +198,7 @@ function nileRoyalLead(route: Route): void {
   });
 }
 
-function nileDispatch(lead: NileFirstLead = 'workers'): Route {
+function nileDispatch(lead: NileFirstLead = 'workers', tiltTray = false): Route {
   const route = new Route();
   const d = route.driver;
   // Independent return-session fixture. These flags represent earlier progress.
@@ -210,11 +211,21 @@ function nileDispatch(lead: NileFirstLead = 'workers'): Route {
   const royal = lead === 'royal-seal';
   if (royal) nileRoyalLead(route);
   else nileWorkersLead(route, lead);
-  const extra = { workers: 0, 'reading-window': 3, 'borrowed-mark': 5, 'royal-seal': 4 }[lead];
-  route.at(27 + extra, 'Compare two model roads and choose what travels', ['objectivity', 'explanation', 'values', 'justification', 'scope', 'methods-and-tools'], (d) => {
+  const extra = { workers: 0, 'reading-window': 3, 'borrowed-mark': 5, 'royal-seal': 4 }[lead] + (tiltTray ? 3 : 0);
+  const enterMapRoom = (d: Driver) => {
     if (lead !== 'borrowed-mark') useDoor(d, royal ? 'royal-back' : 'workyard-back');
     useDoor(d, 'nile-maps');
     d.run({ type: 'InspectExhibit', exhibit: 'OBJ-NILE-MINE' });
+  };
+  if (tiltTray) route.at(29, 'Compare the same block on a level and raised tray and pin the limited explanation beside the cart',
+    ['objectivity', 'explanation', 'evidence', 'methods-and-tools'], (d) => {
+      enterMapRoom(d);
+      d.talk('nile-marek', 'Try the tilt tray', 'Set the tray level', 'Reset the tray', 'Raise the same tray', 'Pin a note', 'Carry the two settings');
+      expect(d.done('nile.tray.compare')).toBe(true);
+      readSign(d, 'nile-tilt-note-cart');
+    });
+  route.at(27 + extra, 'Compare two model roads and choose what travels', ['objectivity', 'explanation', 'values', 'justification', 'scope', 'methods-and-tools'], (d) => {
+    if (!tiltTray) enterMapRoom(d);
     d.run({ type: 'NileRouteTrial', road: 'ridge' });
     d.run({ type: 'NileRouteTrial', road: 'wash' });
     d.run({ type: 'NileDelivery', choice: royal ? 'cast' : 'copy' });
@@ -422,7 +433,7 @@ function livingForest(pathbookFirst: boolean): Route {
   return route;
 }
 
-function metalworks(): Route {
+function metalworks(turnedTag: boolean): Route {
   const route = new Route();
   // Independent Chapter 6 session. The Forest keepers already revised their notice.
   route.driver.s.objectivesDone.push('forest.finish');
@@ -472,7 +483,24 @@ function metalworks(): Route {
     expect(d.done('metal.finish')).toBe(true);
     readSign(d, 'metal-followup-notice');
   });
-  route.at(46, 'Make a copy with one line per box so more readers can check the records', ['perspective', 'objectivity', 'responsibility', 'perspectives', 'ethics'], (d) => {
+  if (turnedTag) {
+    route.at(47, 'Turn the tag and replace it in separate runs on the same cord, then compare the two shop keys', [
+      'evidence', 'objectivity', 'explanation', 'certainty', 'culture', 'scope', 'methods-and-tools',
+    ], (d) => {
+      for (const prop of ['metal-tag-transfer-note', 'metal-tag-coat-key']) readSign(d, prop);
+      useDoor(d, 'metal-yard-return');
+      readSign(d, 'metal-tag-fit-key');
+      walkScene(d, 'metal-tag-bench', 'metal.tag.turn', 'Reset the stand', 'Keep the stand still', 'Leave the stand');
+      expect(d.done('metal.tag.compared')).toBe(true);
+    });
+    route.at(50, 'File both runs by the index and show what would separate them', ['justification', 'culture', 'responsibility', 'ethics'], (d) => {
+      useDoor(d, 'metal-records-path');
+      walkScene(d, 'metal-tag-explanation-clips', 'metal.tag.place.hall');
+      expect(d.done('metal.tag.explained')).toBe(true);
+      readSign(d, 'metal-tag-handoff-hall');
+    });
+  }
+  route.at(turnedTag ? 54 : 46, 'Make a copy with one line per box so more readers can check the records', ['perspective', 'objectivity', 'responsibility', 'perspectives', 'ethics'], (d) => {
     d.talk('metal-steward', 'Make a larger copy');
     expect(d.done('metal.copy')).toBe(true);
     readSign(d, 'metal-large-copy');
@@ -552,6 +580,70 @@ function cityOfCopies(): Route {
   return route;
 }
 
+function checkSeaChart(d: Driver, chartId: 'harbour' | 'shoal', names: readonly string[], edge: number, limit: string): void {
+  const board = MAPS[d.s.mapId].interactables.find((p) => p.kind === 'sea-chart' && p.node === chartId);
+  expect(board, `${chartId} has a chart board`).toBeDefined();
+  expect(check(board?.visibleIf, d.s), `${chartId} board visible`).toBe(true);
+  const chart = seaChart(chartId);
+  expect(chart.marks.map((mark) => mark.name)).toEqual(names);
+  expect(chart.edge).toBe(edge);
+  expect(chart.marks.every((mark) => mark.x < chart.edge)).toBe(true);
+  expect(chart.limit).toContain(limit);
+  d.run({ type: 'ReadSeaChart', chart: chartId });
+  expect(d.s.flags[`sea.read.${chartId}`]).toBe(true);
+}
+
+function cartographersSea(): Route {
+  const route = new Route();
+  // Independent Chapter 8 session. The City has already revised the entry notice.
+  route.driver.s.objectivesDone.push('copies.revise');
+  route.at(4, 'Hear which landmarks market carriers and boat crews start from', ['perspective', 'perspectives'], (d) => {
+    useDoor(d, 'sea-door');
+    d.talk('sea-harbourkeeper');
+    expect(d.done('sea.arrival')).toBe(true);
+  });
+  route.at(9, 'Reveal three shore marks and the end of the walked survey at Market Rail', ['evidence', 'certainty', 'scope', 'methods-and-tools'], (d) => {
+    checkSeaChart(d, 'harbour', ['Seagrass Steps', 'Lantern House', 'Market Rail'], 125, 'past it was not walked');
+  });
+  route.at(16, 'Reveal the boat crew’s sight point and Shoal Shelf within its surveyed strip', ['evidence', 'certainty', 'scope', 'methods-and-tools'], (d) => {
+    useDoor(d, 'sea-shoal-path');
+    checkSeaChart(d, 'shoal', ['Lantern House sight point', 'Shoal Shelf'], 113, 'outside that strip was not surveyed');
+  });
+  route.at(21, 'Check the draft page-edge claim against both surveys, then correct it at their shared landmark', ['truth', 'objectivity', 'interpretation', 'evidence', 'scope', 'methods-and-tools'], (d) => {
+    useDoor(d, 'sea-shoal-to-chartroom');
+    readSign(d, 'sea-edge-draft');
+    d.talk('sea-cartographer', 'Pin both sheets');
+    expect(d.done('sea.compare')).toBe(true);
+    readSign(d, 'sea-edge-correction');
+  });
+  route.at(25, 'Use the route book to explain why different crews name places by the work they do there', ['culture', 'explanation', 'perspective', 'perspectives'], (d) => {
+    readSign(d, 'sea-routebook');
+    useDoor(d, 'sea-chartroom-return');
+    d.talk('sea-harbourkeeper', 'Put the crew’s names');
+    expect(d.done('sea.names')).toBe(true);
+  });
+  route.at(29, 'Give the shoal survey space without taking away the carriers’ shore plan', ['values', 'power', 'responsibility', 'justification', 'ethics'], (d) => {
+    d.talk('sea-harbourkeeper', 'Give the shoal chart');
+    expect(d.done('sea.publish')).toBe(true);
+    readSign(d, 'sea-response-water');
+  });
+  route.at(36, 'Read why a visitor took the unwalked part of the shore for clear ground', ['interpretation', 'perspective', 'perspectives'], (d) => {
+    readSign(d, 'sea-reader-note');
+    expect(d.done('sea.feedback')).toBe(true);
+  });
+  route.at(41, 'Mark both survey edges so readers can check where the observations end', ['truth', 'certainty', 'responsibility', 'justification', 'scope', 'ethics'], (d) => {
+    d.talk('sea-harbourkeeper', 'Mark both survey edges');
+    expect(d.done('sea.finish')).toBe(true);
+    readSign(d, 'sea-followup-notice');
+  });
+  route.at(47, 'Leave an accessible key with both local names and written survey limits', ['culture', 'responsibility', 'perspective', 'perspectives', 'ethics'], (d) => {
+    d.talk('sea-harbourkeeper', 'Leave a wider key');
+    expect(d.done('sea.access')).toBe(true);
+    readSign(d, 'sea-wide-key');
+  });
+  return route;
+}
+
 describe('rolling TOK coverage audit', () => {
   it('checks gaps between sampled actions and expires an encounter at the window boundary', () => {
     const encounters: TimedEncounter[] = [
@@ -591,13 +683,16 @@ describe('rolling TOK coverage audit', () => {
     { name: 'Nile first visit with the Reading Window', end: 53, play: () => nileDispatch('reading-window') },
     { name: 'Nile first visit with the Borrowed Mark stop', end: 55, play: () => nileDispatch('borrowed-mark') },
     { name: 'Nile route through Royal Records and the route model', end: 54, play: () => nileDispatch('royal-seal') },
+    { name: 'Nile Royal Records route with the Tilt Tray stop', end: 57, play: () => nileDispatch('royal-seal', true) },
     { name: 'Preserved Lives from a prepared Chapter 2 save', end: 50, play: preservedLives },
     { name: 'Observatory Coast from a prepared Chapter 3 save', end: 50, play: () => observatoryCoast(false) },
     { name: 'Observatory Coast with the quay bell slip', end: 52, play: () => observatoryCoast(true) },
     { name: 'Living Forest from a prepared Chapter 4 save', end: 55, play: () => livingForest(false) },
     { name: 'Living Forest starting with the bridge route book', end: 55, play: () => livingForest(true) },
-    { name: 'Metalworks from a prepared Chapter 5 save', end: 50, play: metalworks },
+    { name: 'Metalworks from a prepared Chapter 5 save', end: 50, play: () => metalworks(false) },
+    { name: 'Metalworks with the Turned Tag investigation', end: 57, play: () => metalworks(true) },
     { name: 'City of Copies from a prepared Chapter 6 save', end: 51, play: cityOfCopies },
+    { name: 'Cartographers’ Sea from a prepared Chapter 7 save', end: 51, play: cartographersSea },
   ])('can execute the modeled route for $name and report its gaps', ({ name, end, play }) => {
     const route = play();
     const gaps = coverageGaps(end, route.encounters);

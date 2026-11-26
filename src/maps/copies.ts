@@ -29,6 +29,15 @@ function print(id: string, x: number, y: number, label: string, art: string, tex
   return { id, kind: 'sign', x, y, w: 1, h: 1, label, art, text, walkThrough: true, ...options };
 }
 
+function translationProp(id: string, x: number, y: number, label: string, art: string, node: string,
+  visibleIf?: Condition): Interactable {
+  return { id, kind: 'scene', x, y, w: 1, h: 1, label, art, node, walkThrough: true, visibleIf };
+}
+
+const translationUnfiled: Condition = { not: { flagSet: 'copies.translation.edition' } };
+const translationPlain: Condition = { flag: 'copies.translation.edition', eq: 'plain' };
+const translationPaired: Condition = { flag: 'copies.translation.edition', eq: 'paired' };
+
 export const COPIES_ARCHIVE = interior({
   id: 'copies.archive', name: 'City of Copies: Record Room', width: 26, height: 16,
   background: 0x302b46, spawn: { x: 12, y: 12 }, npcs: [],
@@ -53,7 +62,8 @@ export const COPIES_ARCHIVE = interior({
       'The press sends whole sheets to the lending hall door. Runners take small strips past the landing stalls and return to the hall with the copies they’ve updated.',
       { flag: 'copies.route-book' }),
     print('copies-directory', 10, 11, 'the Record Room directory', 'copies.waypost',
-      'Record Room. The original trial log is on the middle stand. The west passage leads to the press. The east steps lead to the landing.'),
+      'Record Room. The original trial log is on the middle stand. The west passage leads to the press. The east steps lead to the landing. The small mending file sits by the cabinet.'),
+    translationProp('copies-translation-file', 5, 9, 'the menders’ fold and register', 'preserved.folder', 'copies.translation.file'),
   ],
   lights: [
     { x: 12, y: 7, r: 72, color: 0xffd5a6 }, { x: 4, y: 5, r: 52, color: 0xe6c7d5 },
@@ -77,6 +87,14 @@ export const COPIES_PRESS = interior({
     door('copies-press-to-landing', 22, 9, 'the passage to the landing', { map: 'copies.landing', x: 5, y: 9 }),
     { id: 'copies-compare-press', kind: 'copy-compare', node: 'press', x: 13, y: 8, w: 1, h: 1,
       label: 'the first press proof', art: 'copies.press' },
+    { id: 'copies-translation-type', kind: 'label', kit: 'copies.mending-card', x: 8, y: 10, w: 1, h: 1,
+      label: 'the press for the mending card', art: 'copies.press', walkThrough: true, visibleIf: { all: [
+        translationUnfiled, { card: 'card.copies.mender' }, { card: 'card.copies.reader-fold' },
+      ] } },
+    translationProp('copies-translation-carrier', 10, 9, 'the carrier’s clip beside the mending press', 'copies.strip',
+      'copies.translation.carrier', { all: [translationUnfiled, { flag: 'label.copies.mending-card.holds', eq: true }] }),
+    translationProp('copies-translation-workshop-proof', 6, 9, 'the paired mending card on the workshop rack', 'preserved.display-paired',
+      'copies.translation.workshop-proof', translationPaired),
   ],
   lights: [
     { x: 11, y: 6, r: 61, color: 0xf6cea1 }, { x: 13, y: 8, r: 55, color: 0xffd0aa },
@@ -131,6 +149,10 @@ export const COPIES_LANDING: MapDef = {
     print('copies-readable', 20, 12, 'the low reading stand', 'preserved.display-records',
       'A large copy shows the dated trial and the hall’s entry rule on different lines. The log name sits with the trial.',
       { visibleIf: { flag: 'copies.readable', eq: true } }),
+    translationProp('copies-translation-reader', 10, 7, 'the borrowed atlas beside its wrapper', 'preserved.folder',
+      'copies.translation.reader'),
+    translationProp('copies-translation-landing-proof', 8, 8, 'the mending card by the shared return tray', 'copies.reprint',
+      'copies.translation.landing-proof', translationPlain),
   ],
   lights: [
     { x: 16, y: 6, r: 65, color: 0xcce0d9 }, { x: 20, y: 9, r: 65, color: 0xadd7dc },

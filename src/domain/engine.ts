@@ -2,6 +2,7 @@ import { runNileTrial, nileDelivery, type NileRoad, type NileDelivery } from './
 import { forestWatch, type ForestWindow } from './forestWatch';
 import { readMetalSample } from './metalSample';
 import { compareCopy } from './copyComparison';
+import { seaChart } from './seaCharts';
 /**
  * Domain engine. Scenes send typed commands; the engine checks preconditions,
  * computes ONE valid state transition and returns events for the view to show
@@ -100,6 +101,7 @@ export type Command =
   | { type: 'ObserveForest'; site: string; window: ForestWindow }
   | { type: 'CompareMetalSample'; sample: string }
   | { type: 'CompareCopy'; edition: string }
+  | { type: 'ReadSeaChart'; chart: string }
   | { type: 'BuildLabel'; kit: string; subject: string; criterion: string; limit: string }
   | { type: 'TurnLock'; lock: string; choice: Record<string, string> }
   | { type: 'ShowdownStart'; showdown: string; relaxed?: boolean }
@@ -555,6 +557,13 @@ export class Engine {
           if (prevPen !== undefined && changed === 2) fx.push({ addNum: 'sim.unfair', by: 1 });
           s = apply(fx, s, out);
           events.push({ kind: 'simulation', result: { pen: cmd.pen, surface: cmd.surface, markQuality: m.q, note: m.note, fairTest: fair, testCount: count } });
+          break;
+        }
+        case 'ReadSeaChart': {
+          seaChart(cmd.chart);
+          if (s.mapId !== `sea.${cmd.chart}` || s.flags['sea.arrived'] !== true) throw new Error('Use the matching survey stand in the Cartographers’ Sea.');
+          const key = `sea.read.${cmd.chart}`;
+          if (!s.flags[key]) s = apply([{ setFlag: key, value: true }], s, out);
           break;
         }
         case 'CompareCopy': {

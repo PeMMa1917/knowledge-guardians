@@ -2,6 +2,7 @@ import { NILE_TRIALS, NILE_DELIVERIES, type NileDelivery } from '../domain/nileM
 import { FOREST_WATCH, FOREST_WINDOWS, forestWatch, type ForestWindow } from '../domain/forestWatch';
 import { METAL_SAMPLES, readMetalSample } from '../domain/metalSample';
 import { compareCopy } from '../domain/copyComparison';
+import { seaChart } from '../domain/seaCharts';
 /**
  * The HTML interface laid over the game canvas: menus, HUD, dialogue,
  * inspection, evidence board, minigames, journal and settings.
@@ -3228,6 +3229,72 @@ export class UI implements UIApi {
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
+  }
+
+  openSeaChart(chartId: string): void {
+    if (chartId !== 'harbour' && chartId !== 'shoal') return;
+    const chart = seaChart(chartId);
+    const picture = h('canvas', { width: '170', height: '90', class: 'mark', 'aria-hidden': 'true' }) as HTMLCanvasElement;
+    const notes = h('div', {});
+    const live = h('p', { role: 'status', 'aria-live': 'polite' });
+    const visible = new Set<'marks' | 'edge'>();
+    const draw = () => {
+      const g = picture.getContext('2d');
+      if (g) {
+        g.fillStyle = '#82b8c1'; g.fillRect(0, 0, 170, 90);
+        g.fillStyle = '#e7d4a6';
+        g.beginPath(); g.moveTo(0, 0); g.lineTo(170, 0); g.lineTo(170, 19);
+        g.lineTo(84, 30); g.lineTo(50, 49); g.lineTo(0, 72); g.closePath(); g.fill();
+        g.strokeStyle = '#2b4543'; g.lineWidth = 2; g.beginPath();
+        for (const [i, mark] of chart.marks.entries()) {
+          if (i === 0) g.moveTo(mark.x, mark.y); else g.lineTo(mark.x, mark.y);
+        }
+        g.stroke();
+        if (visible.has('edge')) {
+          g.fillStyle = 'rgba(30, 43, 50, 0.26)';
+          const strip = () => {
+            g.moveTo(19, 12); g.lineTo(chart.edge, 54); g.lineTo(chart.edge, 72); g.lineTo(19, 35); g.closePath();
+          };
+          if (chartId === 'shoal') {
+            g.beginPath(); g.rect(0, 0, 170, 90); strip(); g.fill('evenodd');
+          } else {
+            g.fillRect(chart.edge, 0, 170 - chart.edge, 90);
+          }
+          g.setLineDash([4, 4]);
+          g.beginPath();
+          if (chartId === 'shoal') strip();
+          else { g.moveTo(chart.edge, 2); g.lineTo(chart.edge, 88); }
+          g.stroke();
+          g.setLineDash([]);
+        }
+        if (visible.has('marks')) {
+          g.fillStyle = '#273741'; g.font = 'bold 11px sans-serif';
+          chart.marks.forEach((mark, i) => {
+            g.fillRect(mark.x - 2, mark.y - 2, 5, 5);
+            g.fillText(String(i + 1), mark.x + 4, mark.y - 5);
+          });
+        }
+      }
+      clear(notes);
+      if (visible.has('marks')) notes.append(h('ol', {}, ...chart.marks.map((mark) => h('li', {}, mark.name))));
+      if (visible.has('edge')) notes.append(h('p', {}, chart.limit));
+    };
+    const layer = (id: 'marks' | 'edge', label: string) => {
+      const button = h('button', { type: 'button', 'aria-pressed': 'false', onclick: () => {
+        if (visible.has(id)) return;
+        visible.add(id);
+        button.setAttribute('aria-pressed', 'true');
+        draw();
+        if (visible.size === 2 && !ctx.controller.dispatch({ type: 'ReadSeaChart', chart: chartId }).some((event) => event.kind === 'error')) {
+          live.textContent = 'Survey notes filed.';
+        }
+      } }, label);
+      return button;
+    };
+    draw();
+    this.openModal('sea-chart', chart.title, this.closeBtn(), h('h2', {}, chart.title),
+      h('p', { class: 'fine' }, 'Fictional chart. The line shows the survey’s reach.'),
+      picture, h('div', { class: 'row' }, layer('marks', 'Show named marks'), layer('edge', 'Show survey edge')), notes, live);
   }
 
   openCopyComparison(edition: string): void {

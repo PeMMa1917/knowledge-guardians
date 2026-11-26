@@ -1,0 +1,412 @@
+{
+ "dialogue": [
+  {
+   "id": "linen.start",
+   "speaker": "narrator",
+   "text": "Two cuttings hang on the trade basket. One looked pale out in the sun. One looked dark under the roof. The dyer wants to know whether they match. The ferry crew wants to know whether they can fold the cloth away. Both have written “ready” on their slip.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the two slips and take the same two cuttings on one board.",
+     "next": "linen.carry",
+     "if": {
+      "not": {
+       "flag": "linen.started",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "linen.started",
+       "value": true
+      },
+      {
+       "addCard": "card.person.haytham"
+      }
+     ]
+    },
+    {
+     "text": "Leave the two cuttings on their hooks."
+    }
+   ]
+  },
+  {
+   "id": "linen.carry",
+   "speaker": "narrator",
+   "text": "Sefa has clipped a small book note to the board. Ibn al-Haytham used experiments to check claims about light. The dyer points to the shade below the west tree and the clear stone farther along the lane. Carry both cuttings at once. The same board will fit on either stand.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "linen.shade",
+   "speaker": "narrator",
+   "text": "Here the tree shades the whole stand. Bring the board under it. Keep the same side of each cutting facing you.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Slide both cuttings under the shade on their board.",
+     "next": "linen.shade.result",
+     "if": {
+      "all": [
+       {
+        "flag": "linen.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "linen.shade",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "linen.shade",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the board in hand."
+    }
+   ],
+   "claimKind": "simulation"
+  },
+  {
+   "id": "linen.shade.result",
+   "speaker": "narrator",
+   "text": "Both cuttings look dark blue-grey in the shade. A thread at each corner still picks up the light. Neither stands out as the paler one on this board.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "linen.open",
+   "speaker": "narrator",
+   "text": "The clear stand takes the same board. Both cuttings can face the open light without moving their clips.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Put the same board in the open light.",
+     "next": "linen.open.result",
+     "if": {
+      "all": [
+       {
+        "flag": "linen.started",
+        "eq": true
+       },
+       {
+        "not": {
+         "flag": "linen.open",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "linen.open",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Keep the board in hand."
+    }
+   ],
+   "claimKind": "simulation"
+  },
+  {
+   "id": "linen.open.result",
+   "speaker": "narrator",
+   "text": "Both cuttings look paler here. The difference seen when the cuttings were on separate hooks does not return. These two look alike when they share the light. The folds are still a separate question.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation"
+  },
+  {
+   "id": "linen.tag",
+   "speaker": "narrator",
+   "text": "The dyer can now compare the cuttings in the same light. At the box, the ferry hand presses a corner of the full cloth. “I call it ready when it can go into the basket without damp folding against damp.” Both checks need to travel with the cloth. Put one at the front and hang the other alongside.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang the shared-light comparison at the front of the dyer’s line.",
+     "next": "linen.end.dye",
+     "if": {
+      "all": [
+       {
+        "objective": "linen.o.compare"
+       },
+       {
+        "not": {
+         "flagSet": "linen.tag"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "linen.tag",
+       "value": "dye"
+      }
+     ]
+    },
+    {
+     "text": "Hang the crew’s folding check by the basket with the comparison beside it.",
+     "next": "linen.end.ferry",
+     "if": {
+      "all": [
+       {
+        "objective": "linen.o.compare"
+       },
+       {
+        "not": {
+         "flagSet": "linen.tag"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "linen.tag",
+       "value": "ferry"
+      }
+     ]
+    },
+    {
+     "text": "Leave both tags loose while I think."
+    }
+   ]
+  },
+  {
+   "id": "linen.end.dye",
+   "speaker": "narrator",
+   "text": "The dyer pins the same-light note at eye level. A customer brings two cloth corners for the dyer to compare on the same stand. Lower down the ferry note still asks if the folds are dry enough to pack.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "linen.end.ferry",
+   "speaker": "narrator",
+   "text": "The ferry hand turns the basket tag to “check folds first.” A crew member checks the cloth before packing it. A second slip beside it tells the dyer to compare both cuttings in the same light.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH1-S06",
+   "title": "Two Tags on the Line",
+   "world": "WORLD-02",
+   "knowledgeQuestion": "When does a word name different checks for people doing different work?",
+   "available": {
+    "flag": "linen.started",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "linen.o.tags",
+     "title": "Take the cuttings and the two “ready” slips.",
+     "essential": false,
+     "done": {
+      "flag": "linen.started",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "perspective",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "anthropology",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-THK-15"
+     ]
+    },
+    {
+     "id": "linen.o.compare",
+     "title": "Carry the same two cuttings into shade and open light.",
+     "essential": false,
+     "done": {
+      "all": [
+       {
+        "flag": "linen.shade",
+        "eq": true
+       },
+       {
+        "flag": "linen.open",
+        "eq": true
+       }
+      ]
+     },
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "explanation",
+       "evidence",
+       "certainty"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "NAT",
+       "ART"
+      ],
+      "subjects": [
+       "physics",
+       "visual-arts",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-RSC-21",
+      "SK-THK-05"
+     ]
+    },
+    {
+     "id": "linen.o.pin",
+     "title": "Pin both checks at the end of the line.",
+     "essential": false,
+     "visible": {
+      "objective": "linen.o.compare"
+     },
+     "done": {
+      "flagSet": "linen.tag"
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "power",
+       "justification",
+       "truth"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "LAN",
+       "HUM"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "business"
+      ]
+     },
+     "skills": [
+      "SK-WRT-13"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.linen.ready"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "moments": [
+  {
+   "id": "moment.linen.ready",
+   "attribute": "balanced",
+   "when": {
+    "objective": "linen.o.pin"
+   },
+   "did": "You kept the cloth comparison and the ferry crew’s check in the same place so both groups could use the line.",
+   "prompt": "Who else might put “ready” to work in a different way?"
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.linen.ready",
+   "claimKind": "interpretation",
+   "text": "Two corners looked different on different hooks. They looked alike when we gave both the same light. I put that comparison where it could be checked, and left a separate tag for the folds the ferry crew needed to test."
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.linen.tags.1",
+   "objective": "linen.o.tags",
+   "depth": 1,
+   "text": "Two people may use the same word because each knows their own job."
+  },
+  {
+   "id": "h.linen.tags.2",
+   "objective": "linen.o.tags",
+   "depth": 2,
+   "text": "The dyer checks how the colour looks. The ferry crew checks the folds before packing."
+  },
+  {
+   "id": "h.linen.tags.3",
+   "objective": "linen.o.tags",
+   "depth": 3,
+   "text": "Use the cuttings near the south path and take both on one board."
+  },
+  {
+   "id": "h.linen.tags.4",
+   "objective": "linen.o.tags",
+   "depth": 4,
+   "text": "Clip the two slips before walking west to the stands. The board carries both cuttings so you can compare them together."
+  },
+  {
+   "id": "h.linen.compare.1",
+   "objective": "linen.o.compare",
+   "depth": 1,
+   "text": "One difference in the set-up might explain what looked like two colours."
+  },
+  {
+   "id": "h.linen.compare.2",
+   "objective": "linen.o.compare",
+   "depth": 2,
+   "text": "Compare both cuttings under the same light, then change the light for both."
+  },
+  {
+   "id": "h.linen.compare.3",
+   "objective": "linen.o.compare",
+   "depth": 3,
+   "text": "Use the shaded stand near the west tree and the open stand farther along the south lane."
+  },
+  {
+   "id": "h.linen.compare.4",
+   "objective": "linen.o.compare",
+   "depth": 4,
+   "text": "Slide both cuttings into the shade. Then put the same board in the open light, or do the two in reverse. Keep each cutting fixed to the board."
+  },
+  {
+   "id": "h.linen.pin.1",
+   "objective": "linen.o.pin",
+   "depth": 1,
+   "text": "The crew who packs the cloth needs a different check from the person comparing colour."
+  },
+  {
+   "id": "h.linen.pin.2",
+   "objective": "linen.o.pin",
+   "depth": 2,
+   "text": "Give each check its own slip. Let the first reader see the one they can use."
+  },
+  {
+   "id": "h.linen.pin.3",
+   "objective": "linen.o.pin",
+   "depth": 3,
+   "text": "Use the loose tags beside the southwest drying line after both comparisons."
+  },
+  {
+   "id": "h.linen.pin.4",
+   "objective": "linen.o.pin",
+   "depth": 4,
+   "text": "Hang either the shared-light note or the folding check in front. Keep the other slip beside it."
+  }
+ ]
+}

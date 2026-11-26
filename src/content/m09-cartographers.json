@@ -1,0 +1,1056 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH8-M01",
+   "world": "WORLD-09",
+   "title": "Where the Ink Stops",
+   "knowledgeQuestion": "What can a map’s empty spaces lead people to assume?",
+   "available": {
+    "objective": "copies.revise"
+   },
+   "objectives": [
+    {
+     "id": "sea.arrival",
+     "title": "Enter the Cartographers’ Sea from the Nexus.",
+     "done": {
+      "flag": "sea.arrived",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective"
+      ],
+      "atl": [
+       "self-management"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "geography"
+      ]
+     },
+     "skills": []
+    },
+    {
+     "id": "sea.compare",
+     "title": "Compare the harbour chart and the shoal survey with Cartographer Renna.",
+     "done": {
+      "flagSet": "sea.comparison"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "certainty",
+       "interpretation",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "MAT",
+       "NAT",
+       "ART"
+      ],
+      "subjects": [
+       "geography",
+       "math-ai",
+       "visual-arts"
+      ]
+     },
+     "skills": [
+      "SK-MED-04",
+      "SK-KNO-14"
+     ],
+     "visible": {
+      "objective": "sea.arrival"
+     }
+    },
+    {
+     "id": "sea.names",
+     "title": "Read the route book and find out who uses the names on the two charts.",
+     "done": {
+      "flagSet": "sea.route-note"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "culture",
+       "explanation"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "geography",
+       "anthropology",
+       "lang-b"
+      ]
+     },
+     "skills": [
+      "SK-ICU-18",
+      "SK-SPK-01"
+     ],
+     "visible": {
+      "objective": "sea.arrival"
+     }
+    },
+    {
+     "id": "sea.publish",
+     "title": "Help Sora choose which chart to show readers first.",
+     "done": {
+      "flagSet": "sea.response"
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "values",
+       "power",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "thinking",
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "ART",
+       "MAT"
+      ],
+      "subjects": [
+       "geography",
+       "visual-arts",
+       "math-ai"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-THK-14"
+     ],
+     "visible": {
+      "all": [
+       {
+        "objective": "sea.compare"
+       },
+       {
+        "objective": "sea.names"
+       }
+      ]
+     },
+     "onComplete": [
+      {
+       "credit": "credit.sea.publish"
+      },
+      {
+       "checkpoint": "Cartographers’ Sea: chart displayed"
+      }
+     ]
+    },
+    {
+     "id": "sea.feedback",
+     "title": "Read what a visitor thought the blank area meant.",
+     "done": {
+      "flag": "sea.feedback",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "perspective",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "social"
+      ],
+      "aoks": [
+       "HUM",
+       "ART"
+      ],
+      "subjects": [
+       "geography",
+       "lang-langlit"
+      ]
+     },
+     "skills": [
+      "SK-SPK-01",
+      "SK-THK-05"
+     ],
+     "visible": {
+      "objective": "sea.publish"
+     }
+    },
+    {
+     "id": "sea.finish",
+     "title": "Help Sora show where each survey stopped.",
+     "done": {
+      "flag": "sea.followup",
+      "eq": true
+     },
+     "essential": true,
+     "weave": {
+      "concepts": [
+       "truth",
+       "certainty",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "aoks": [
+       "ART",
+       "MAT",
+       "HUM"
+      ],
+      "subjects": [
+       "geography",
+       "visual-arts",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-THK-14",
+      "SK-WRT-13"
+     ],
+     "visible": {
+      "objective": "sea.feedback"
+     },
+     "onComplete": [
+      {
+       "credit": "credit.sea.finish"
+      },
+      {
+       "journal": "j.sea.finish"
+      },
+      {
+       "checkpoint": "Cartographers’ Sea: limits marked"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH8-R01",
+   "world": "WORLD-09",
+   "title": "A Key You Can Read",
+   "knowledgeQuestion": "How could more people check what a chart maker chose to show?",
+   "available": {
+    "objective": "sea.finish"
+   },
+   "objectives": [
+    {
+     "id": "sea.access",
+     "title": "Put a key with names and survey limits at the edge of the display.",
+     "done": {
+      "flag": "sea.wide-key",
+      "eq": true
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "perspective",
+       "responsibility",
+       "culture"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "ART",
+       "LAN"
+      ],
+      "subjects": [
+       "visual-arts",
+       "lang-langlit",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-ETR-01",
+      "SK-ICU-14"
+     ],
+     "onComplete": [
+      {
+       "journal": "j.sea.access"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "characters": [
+  {
+   "id": "sea-cartographer",
+   "name": "Cartographer Renna",
+   "role": "Keeper of the survey sheets",
+   "sprite": "scholar-sefa",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "sea.chart.after",
+     "if": {
+      "objective": "sea.finish"
+     }
+    },
+    {
+     "node": "sea.chart.route",
+     "if": {
+      "objective": "sea.compare"
+     }
+    },
+    {
+     "node": "sea.chart.compare",
+     "if": {
+      "all": [
+       {
+        "flag": "sea.read.harbour",
+        "eq": true
+       },
+       {
+        "flag": "sea.read.shoal",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "node": "sea.chart.welcome"
+    }
+   ]
+  },
+  {
+   "id": "sea-harbourkeeper",
+   "name": "Harbourkeeper Sora",
+   "role": "Harbour display keeper",
+   "sprite": "warden-ise",
+   "mode": "fictional",
+   "talk": [
+    {
+     "node": "sea.harbour.after",
+     "if": {
+      "objective": "sea.finish"
+     }
+    },
+    {
+     "node": "sea.harbour.revise.shore",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "sea.feedback"
+         },
+         {
+          "not": {
+           "flag": "sea.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "sea.response",
+        "eq": "shore"
+       }
+      ]
+     }
+    },
+    {
+     "node": "sea.harbour.revise.water",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "sea.feedback"
+         },
+         {
+          "not": {
+           "flag": "sea.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "sea.response",
+        "eq": "water"
+       }
+      ]
+     }
+    },
+    {
+     "node": "sea.harbour.wait",
+     "if": {
+      "flagSet": "sea.response"
+     }
+    },
+    {
+     "node": "sea.harbour.decide",
+     "if": {
+      "all": [
+       {
+        "objective": "sea.compare"
+       },
+       {
+        "objective": "sea.names"
+       },
+       {
+        "not": {
+         "flagSet": "sea.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "node": "sea.harbour.names.wait",
+     "if": {
+      "objective": "sea.names"
+     }
+    },
+    {
+     "node": "sea.harbour.names",
+     "if": {
+      "flag": "sea.routebook",
+      "eq": true
+     }
+    },
+    {
+     "node": "sea.harbour.welcome"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "sea.chart.welcome",
+   "speaker": "sea-cartographer",
+   "text": "Two people brought me charts with Lantern House on them. One followed the carriers to Market Rail. The other watched the shoal from a strip of water. Both want the larger pin beside the harbour door. Look at the two edges before we pick a sheet.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.chart.compare",
+   "speaker": "sea-cartographer",
+   "text": "The draft says we checked the water to the page edge. Put the two sheets together at Lantern House and it falls apart. Walkers stopped at Market Rail. The boat crew checked one strip. Where shall we put the two limits so another reader can check the heading?",
+   "historicalLabel": "fictional-world",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Pin both sheets at the Lantern House mark and trace each edge.",
+     "next": "sea.compare.mark",
+     "effects": [
+      {
+       "setFlag": "sea.comparison",
+       "value": "mark"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "sea.read.harbour",
+          "eq": true
+         },
+         {
+          "flag": "sea.read.shoal",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "sea.comparison"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Set the survey edges side by side with their purpose written above.",
+     "next": "sea.compare.edges",
+     "effects": [
+      {
+       "setFlag": "sea.comparison",
+       "value": "edges"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "flag": "sea.read.harbour",
+          "eq": true
+         },
+         {
+          "flag": "sea.read.shoal",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "sea.comparison"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Give me a moment to look again."
+    }
+   ]
+  },
+  {
+   "id": "sea.compare.mark",
+   "speaker": "sea-cartographer",
+   "text": "A reader can line up the same house. I’ll keep the sheet sizes and edges visible. The house was a sight point for the boat crew. The walkers used it to turn from the steps to the rail.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.compare.edges",
+   "speaker": "sea-cartographer",
+   "text": "That gives the two edges different jobs. Someone can follow the shore walk to the rail or see where the water survey ended. I’ll keep Lantern House on both.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.chart.route",
+   "speaker": "sea-cartographer",
+   "text": "Sora wants the carriers’ names for the places. Read the route book here and take it with you to the landing. The next choice belongs to the people who will read the chart.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.chart.after",
+   "speaker": "sea-cartographer",
+   "text": "The next surveyor can copy the names and keep room for a new edge. If someone walks farther next time, we can add their record alongside ours.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.harbour.welcome",
+   "speaker": "sea-harbourkeeper",
+   "text": "People from the market say Seagrass Steps. The boat workers start a route story from Lantern House. Find the route book in the chartroom. The names carry some of what their speakers do for a living.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.harbour.names",
+   "speaker": "sea-harbourkeeper",
+   "text": "The carriers use their steps and the rail to talk about where work passes hands. The boat crew uses Lantern House as a sight point before they speak of Shoal Shelf. The route book keeps both accounts. Who would you show each one to first?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mark the carriers’ place names beside the shore plan.",
+     "next": "sea.names.shore",
+     "effects": [
+      {
+       "setFlag": "sea.route-note",
+       "value": "shore"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "sea.routebook",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "sea.route-note"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Put the crew’s names beside their sight point and water survey.",
+     "next": "sea.names.water",
+     "effects": [
+      {
+       "setFlag": "sea.route-note",
+       "value": "water"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "flag": "sea.routebook",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "sea.route-note"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the book here a moment."
+    }
+   ]
+  },
+  {
+   "id": "sea.names.shore",
+   "speaker": "sea-harbourkeeper",
+   "text": "Carriers can name the steps at a glance now. I’ll keep the water names by the other sheet. They came from the people who watched that strip.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.names.water",
+   "speaker": "sea-harbourkeeper",
+   "text": "A crew can check the place name against its sight point. I’ll keep a carrier’s line beside the separate shore plan so the next handover does not borrow the wrong landmarks.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.harbour.names.wait",
+   "speaker": "sea-harbourkeeper",
+   "text": "I have both sets of place names here. Bring Renna’s comparison of the charts before we put either at the front.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.harbour.decide",
+   "speaker": "sea-harbourkeeper",
+   "text": "There’s one clear space at the front of this display. A shore carrier wants the steps and rail to take up most of it. The boat crews would like a full-size view of their short survey. Either choice can keep the other reader’s chart close.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang the shore plan first, with a small inset pointing to the shoal survey.",
+     "next": "sea.response.shore",
+     "effects": [
+      {
+       "setFlag": "sea.response",
+       "value": "shore"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "sea.compare"
+       },
+       {
+        "objective": "sea.names"
+       },
+       {
+        "not": {
+         "flagSet": "sea.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Give the shoal chart its own space and hang the full shore plan beside it.",
+     "next": "sea.response.water",
+     "effects": [
+      {
+       "setFlag": "sea.response",
+       "value": "water"
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "sea.compare"
+       },
+       {
+        "objective": "sea.names"
+       },
+       {
+        "not": {
+         "flagSet": "sea.response"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Give me time to walk the harbour."
+    }
+   ]
+  },
+  {
+   "id": "sea.response.shore",
+   "speaker": "sea-harbourkeeper",
+   "text": "A carrier has already found the rail and called a friend over. The boat crew can use the little inset to find the full survey. I’ll leave a pin for anyone who wants to tell us what they read.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.response.water",
+   "speaker": "sea-harbourkeeper",
+   "text": "The boat crew has room to point at the shoal edge. The carriers have their own plan beside it. I’ll leave a pin for a reader who came looking for a different detail.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.harbour.wait",
+   "speaker": "sea-harbourkeeper",
+   "text": "Someone used the pin. Their note is by the rail. A mark the chart maker thought was obvious may mean something quite different to that reader.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.harbour.revise.shore",
+   "speaker": "sea-harbourkeeper",
+   "text": "That carrier saw the rail and read the blank as clear ground. Renna knows the shore walk ended there. We can add words at the edge where the survey stopped and keep the inset in place.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mark the rail as the end of the shore walk and label the inset’s survey edge.",
+     "next": "sea.update.shore",
+     "effects": [
+      {
+       "setFlag": "sea.followup",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "sea.feedback"
+         },
+         {
+          "not": {
+           "flag": "sea.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "sea.response",
+        "eq": "shore"
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll check the display again."
+    }
+   ]
+  },
+  {
+   "id": "sea.harbour.revise.water",
+   "speaker": "sea-harbourkeeper",
+   "text": "The reader moved between the paired sheets and took the blank beyond the rail for part of the same survey. The water crew’s strip has its own boundary. We can name both limits without moving the places people recognise.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Mark both survey edges on the paired sheets and keep the place names.",
+     "next": "sea.update.water",
+     "effects": [
+      {
+       "setFlag": "sea.followup",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "sea.feedback"
+         },
+         {
+          "not": {
+           "flag": "sea.followup",
+           "eq": true
+          }
+         }
+        ]
+       },
+       {
+        "flag": "sea.response",
+        "eq": "water"
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll look at both sheets again."
+    }
+   ]
+  },
+  {
+   "id": "sea.update.shore",
+   "speaker": "sea-harbourkeeper",
+   "text": "The reader has put a hand beside our new edge mark. The map has a place for a later walk now. The words keep this walk’s stop visible even if someone copies the outline alone.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.update.water",
+   "speaker": "sea-harbourkeeper",
+   "text": "Both sheets have an edge a visitor can point to. The reader has left the space beyond the rail open for whoever checks it. The crews can still find Lantern House and their shelf.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "sea.harbour.after",
+   "speaker": "sea-harbourkeeper",
+   "text": "The two shades are hard to tell apart from the bench. We can give each mark a name and put its line type beside it. Then a reader can use either clue.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave a wider key with names and words for both survey limits.",
+     "next": "sea.access.key",
+     "if": {
+      "all": [
+       {
+        "objective": "sea.finish"
+       },
+       {
+        "not": {
+         "flag": "sea.wide-key",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "I’ll look around the harbour."
+    }
+   ]
+  },
+  {
+   "id": "sea.access.key",
+   "speaker": "sea-harbourkeeper",
+   "text": "I’ll put the local names beside the marks. The walked edge and the surveyed strip each have their own words. A reader can carry the key between the two sheets.",
+   "historicalLabel": "fictional-world",
+   "effects": [
+    {
+     "setFlag": "sea.wide-key",
+     "value": true
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.sea.arrival.1",
+   "objective": "sea.arrival",
+   "depth": 1,
+   "text": "A new passage has opened from the Nexus."
+  },
+  {
+   "id": "h.sea.arrival.2",
+   "objective": "sea.arrival",
+   "depth": 2,
+   "text": "The chartroom asked for someone who can keep a limit with a record."
+  },
+  {
+   "id": "h.sea.arrival.3",
+   "objective": "sea.arrival",
+   "depth": 3,
+   "text": "Return to the Nexus after revising the lending hall’s notice."
+  },
+  {
+   "id": "h.sea.arrival.4",
+   "objective": "sea.arrival",
+   "depth": 4,
+   "text": "Take the passage to the Cartographers’ Sea. It leads to the harbour."
+  },
+  {
+   "id": "h.sea.compare.1",
+   "objective": "sea.compare",
+   "depth": 1,
+   "text": "Each survey covers a different part of the place."
+  },
+  {
+   "id": "h.sea.compare.2",
+   "objective": "sea.compare",
+   "depth": 2,
+   "text": "Both sheets show Lantern House. Their marks outside that point differ."
+  },
+  {
+   "id": "h.sea.compare.3",
+   "objective": "sea.compare",
+   "depth": 3,
+   "text": "Open the harbour chart and the shoal chart. Show the named marks and survey edge on each."
+  },
+  {
+   "id": "h.sea.compare.4",
+   "objective": "sea.compare",
+   "depth": 4,
+   "text": "With both charts examined, talk to Renna and choose how to compare their marks."
+  },
+  {
+   "id": "h.sea.names.1",
+   "objective": "sea.names",
+   "depth": 1,
+   "text": "Some place names help a visitor. Others tell local crews where they are in a story."
+  },
+  {
+   "id": "h.sea.names.2",
+   "objective": "sea.names",
+   "depth": 2,
+   "text": "Find the route book in the chartroom."
+  },
+  {
+   "id": "h.sea.names.3",
+   "objective": "sea.names",
+   "depth": 3,
+   "text": "Read who calls the steps, rail and shelf by those names."
+  },
+  {
+   "id": "h.sea.names.4",
+   "objective": "sea.names",
+   "depth": 4,
+   "text": "Bring the book’s two uses to Harbourkeeper Sora. Mark who needs each part of the chart."
+  },
+  {
+   "id": "h.sea.publish.1",
+   "objective": "sea.publish",
+   "depth": 1,
+   "text": "A shore carrier and a boat worker come to the chart for different reasons."
+  },
+  {
+   "id": "h.sea.publish.2",
+   "objective": "sea.publish",
+   "depth": 2,
+   "text": "A smaller inset keeps more of the shore on one sheet. A separate shoal sheet leaves more room for its detail."
+  },
+  {
+   "id": "h.sea.publish.3",
+   "objective": "sea.publish",
+   "depth": 3,
+   "text": "Speak to Sora once both charts have been compared and the local route book has been discussed."
+  },
+  {
+   "id": "h.sea.publish.4",
+   "objective": "sea.publish",
+   "depth": 4,
+   "text": "Choose a shore-first chart with a shoal inset or a full shoal chart beside a separate shore plan."
+  },
+  {
+   "id": "h.sea.feedback.1",
+   "objective": "sea.feedback",
+   "depth": 1,
+   "text": "Someone tried to follow your chart."
+  },
+  {
+   "id": "h.sea.feedback.2",
+   "objective": "sea.feedback",
+   "depth": 2,
+   "text": "A question was left at the harbour."
+  },
+  {
+   "id": "h.sea.feedback.3",
+   "objective": "sea.feedback",
+   "depth": 3,
+   "text": "Find the reader’s message about the blank beyond Market Rail."
+  },
+  {
+   "id": "h.sea.feedback.4",
+   "objective": "sea.feedback",
+   "depth": 4,
+   "text": "Read the note. The visitor took the blank for a route the survey had cleared."
+  },
+  {
+   "id": "h.sea.finish.1",
+   "objective": "sea.finish",
+   "depth": 1,
+   "text": "Keep the visible places. Mark where observation stopped."
+  },
+  {
+   "id": "h.sea.finish.2",
+   "objective": "sea.finish",
+   "depth": 2,
+   "text": "The shore walkers stopped at the rail. The water survey covered one strip."
+  },
+  {
+   "id": "h.sea.finish.3",
+   "objective": "sea.finish",
+   "depth": 3,
+   "text": "Bring the reader’s message back to Sora."
+  },
+  {
+   "id": "h.sea.finish.4",
+   "objective": "sea.finish",
+   "depth": 4,
+   "text": "Mark the survey limits in the shore-first display or on both paired sheets. Keep the local names in place."
+  },
+  {
+   "id": "h.sea.access.1",
+   "objective": "sea.access",
+   "depth": 1,
+   "text": "Some readers can follow the marks more easily with a second cue."
+  },
+  {
+   "id": "h.sea.access.2",
+   "objective": "sea.access",
+   "depth": 2,
+   "text": "Put the place names beside symbols and the words beside the boundary."
+  },
+  {
+   "id": "h.sea.access.3",
+   "objective": "sea.access",
+   "depth": 3,
+   "text": "Talk with Sora after the survey edges are marked."
+  },
+  {
+   "id": "h.sea.access.4",
+   "objective": "sea.access",
+   "depth": 4,
+   "text": "Ask for a wide key that uses the local names and words for both survey edges."
+  }
+ ],
+ "criteria": [
+  {
+   "id": "credit.sea.publish",
+   "concept": "perspective",
+   "maximum": 8
+  },
+  {
+   "id": "credit.sea.finish",
+   "concept": "certainty",
+   "maximum": 8
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.sea.finish",
+   "title": "Where the ink stops",
+   "text": "The shore plan stopped at Market Rail. The shoal survey covered one strip. A reader took the blank area for known ground. We added both survey edges and kept the place names where people could see them."
+  },
+  {
+   "id": "j.sea.access",
+   "title": "A key you can read",
+   "text": "We wrote the place names and the limits alongside the line shapes. Readers can compare what each map meant even without matching the shades."
+  }
+ ],
+ "moments": [
+  {
+   "id": "mom.sea.finish",
+   "attribute": "open-minded",
+   "when": {
+    "objective": "sea.finish"
+   },
+   "did": "You changed both survey labels after listening to how a reader understood the blank space."
+  },
+  {
+   "id": "mom.sea.access",
+   "attribute": "communicator",
+   "when": {
+    "objective": "sea.access"
+   },
+   "did": "You gave readers two ways to recognise a place or survey edge."
+  }
+ ]
+}

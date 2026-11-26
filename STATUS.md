@@ -183,9 +183,11 @@ The sources and object limits are in `docs/SOURCES.md`; the rooms and their fict
 
 - **A Copy for the Ferry:** prepare the packet from dated records, workshop strips or translation proofs. Choose a public reader or copies, then meet the packet again at Tova's landing.
 - **The Copy in the Square:** trace how a claim travelled in Emberford and decide who should carry the correction. The new notice and the buyer's response depend on the handover.
+- **Two Tags on the Line:** take the same cuttings from shade to open light, keep each observation with its conditions, and choose whether the dye or ferry crew’s use of “ready” goes first.
 - **The Borrowed Mark and A Slip Comes Back:** compare a craft record with a shared method, then choose a label that leaves the first maker open. After dispatch, find the reader's reply and decide where to leave the response.
 - **The Reading Window:** either Workmen's Room route can try two first lines with the reader and papers held fixed. Compare what the reader notices, then leave a display that keeps the date, the source and the different reading practices together.
 - **The Seal on the Copy:** use the Lens on both Royal Records exhibits and turn over the archive seal. Move it to the desk or place it beneath separate captions so readers can see what was checked.
+- **The Tilt Tray:** run a level and raised setup with the same block. The recorded result shows what the small setup can explain while leaving the ancient route and the later cart comparison open.
 
 ## Chapter 3: The Missing Transfer
 
@@ -221,6 +223,12 @@ The revised Living Forest notice opens the Sample Yard. Zero the empty balance a
 
 The Metalworks transfer correction opens the City of Copies. Follow the lending notice from the Record Room to the press and landing. Line up the date and source for each edition, then choose a full reprint or send corrections to existing copies. A reader’s question leads to a separate entry line for the lending hall. The corrected proof lets the player check that the two missing lines have actually been restored.
 
+An optional translation press follows a local phrase between the hall and landing. Players set a direct instruction or keep the local term with an explanation, then find and hang the proof for the readers it serves.
+
+## Chapter 8: Where the Ink Stops
+
+The City correction opens Seagrass Steps. Inspect the named marks and reach of the walking chart and the shoal survey, then trace the local names through the Lantern House route book. Publish a shore-first chart or pair the separate surveys at the landing. The reader response points to an unmapped place that needs an explicit limit. Mark the blank and optionally leave a wider labelled key.
+
 ## Thirty-minute design audit
 
-Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Nine of the thirteen routes reach all 12 concepts and four framework areas within their first estimated half hour. They include both opening traces, the Nile Reading Window, the Cold Store, the Observatory with the quay slip, both Living Forest traces, the Metalworks and the City of Copies. The Royal Records and Model Room path reaches explanation and objectivity at the estimated 31-minute comparison. Other paths and later windows still show gaps. The report also flags windows where a dimension depends on one distinct annotated action. The route actions and estimates are visible so unassisted timed playtests can challenge them.
+Run `npm test -- tests/tok-coverage.test.ts --mode tok-report` to inspect estimated route windows. Twelve of the sixteen routes reach all 12 concepts and four framework areas within their first estimated half hour. The Cartographers’ Sea trace does so after checking the draft page-edge claim against both surveys. The Royal Records route reaches explanation and objectivity before its first window closes with the Tilt Tray stop. The route straight to the cart reaches them at the estimated 31-minute comparison. Some routes and later windows still show gaps. The report also flags windows where a dimension depends on one distinct annotated action. The route actions and estimates are visible so unassisted timed playtests can challenge them.

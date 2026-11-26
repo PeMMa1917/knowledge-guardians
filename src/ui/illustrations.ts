@@ -899,6 +899,55 @@ DRAW['copies.strip'] = [16, 24, (g) => {
   R(g, '#83a0a0', 2, 10, 12, 2);
   R(g, '#cadeca', 4, 10, 8, 1);
 }];
+
+// Cartographers’ Sea chart boards and skiff.
+DRAW['sea.waypost'] = [16, 24, (g) => {
+  R(g, '#344a50', 7, 7, 3, 16);
+  R(g, '#907558', 1, 5, 14, 8);
+  R(g, '#d2b884', 2, 5, 12, 2);
+  R(g, '#72a8ac', 3, 8, 10, 3);
+  R(g, '#40666a', 3, 10, 7, 1);
+  R(g, '#e5d0a2', 9, 8, 2, 3);
+}];
+DRAW['sea.skiff'] = [16, 24, (g) => {
+  R(g, '#335c6c', 1, 19, 14, 5);
+  R(g, '#594852', 2, 13, 12, 6);
+  R(g, '#a68162', 1, 12, 14, 3);
+  R(g, '#c6a17a', 4, 12, 8, 1);
+  R(g, '#84aab0', 2, 20, 5, 1);
+  R(g, '#84aab0', 8, 22, 6, 1);
+  R(g, '#dcc18b', 6, 10, 7, 1);
+  R(g, '#dcc18b', 11, 8, 4, 2);
+}];
+function mountedChart(g: Ctx) {
+  R(g, '#435257', 2, 4, 2, 19);
+  R(g, '#435257', 12, 4, 2, 19);
+  paper(g, 1, 5, 14, 11);
+  R(g, '#b29d75', 1, 4, 14, 2);
+}
+DRAW['sea.shore-chart'] = [16, 24, (g) => {
+  mountedChart(g);
+  R(g, '#79a9b0', 2, 10, 12, 5);
+  R(g, '#bea87e', 3, 8, 7, 3);
+  R(g, '#616f65', 4, 8, 6, 1);
+  R(g, '#616f65', 7, 9, 2, 1);
+}];
+DRAW['sea.shoal-chart'] = [16, 24, (g) => {
+  mountedChart(g);
+  R(g, '#79a9b0', 2, 7, 12, 8);
+  R(g, '#71918e', 3, 11, 10, 2);
+  R(g, '#d1c094', 4, 8, 3, 2);
+  R(g, '#d1c094', 9, 11, 3, 2);
+}];
+DRAW['sea.margin'] = [16, 24, (g) => {
+  mountedChart(g);
+  R(g, '#7a948f', 3, 7, 8, 2);
+  R(g, '#9e8465', 3, 11, 5, 1);
+  R(g, '#9e8465', 3, 13, 7, 1);
+  R(g, '#ac7868', 10, 9, 3, 1);
+  R(g, '#ac7868', 11, 10, 2, 1);
+  R(g, '#ac7868', 12, 11, 1, 1);
+}];
 const cache = new Map<string, HTMLCanvasElement>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {

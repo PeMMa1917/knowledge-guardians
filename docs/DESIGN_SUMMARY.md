@@ -18,6 +18,7 @@ The game does not grade the player. It gives the same credit for every reasoned 
 - Chapter 5 opens the Living Forest field exercise. Comparable watches at two lookouts show how time and line of sight shape what an observer can record. Players leave a visible response for walkers and revisit the record with a later watch.
 - Chapter 6 opens the Metalworks yard and Trade Hall. Players compare panels on a zeroed balance, read the workshop records, and decide how to make the separate trails visible.
 - Chapter 7 opens the City of Copies. Players line up editions, track where each copy travels, and restore the context that readers need to act on a notice.
+- Chapter 8 opens the Cartographers’ Sea. Named places and survey edges can be inspected independently. Readers use the walking chart and shoal survey for different jobs, and their questions change the public key.
 
 ## Core tools (play, not quizzes)
 

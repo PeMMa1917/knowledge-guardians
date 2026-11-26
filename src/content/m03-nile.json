@@ -1094,7 +1094,18 @@
    "speaker": "nile-marek",
    "text": "The Mine Map gave us the idea for two routes, not the numbers. The shelf-top model is beside you. Keep the load the same while you test both roads.",
    "historicalLabel": "fictional-world",
-   "options": [],
+   "options": [
+    {
+     "text": "Leave the cart ready."
+    },
+    {
+     "text": "Try the tilt tray before we turn the cart.",
+     "next": "nile.tray.start",
+     "if": {
+      "card": "card.nile.mine"
+     }
+    }
+   ],
    "effects": [],
    "next": null
   },
@@ -1103,7 +1114,18 @@
    "speaker": "nile-marek",
    "text": "Your delivery tag is already on the hook. If you want to see either run again, the model stays on the bench.",
    "historicalLabel": "fictional-world",
-   "options": [],
+   "options": [
+    {
+     "text": "Leave the cart ready."
+    },
+    {
+     "text": "Try the tilt tray with the spare test block.",
+     "next": "nile.tray.start",
+     "if": {
+      "card": "card.nile.mine"
+     }
+    }
+   ],
    "effects": [],
    "next": null
   },
@@ -1985,6 +2007,208 @@
    "speaker": "nile-nasir",
    "text": "Nasir sets the brass low on a strip that only says “copies checked”. Both caption cards sit above it, each with its own date and source. A hurried reader can tell which description belongs to which case without walking to the desk.",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.tray.start",
+   "speaker": "nile-marek",
+   "text": "An apprentice says the crate tipped because its contents shifted. This test crate is one solid block. Set it on the painted square with its broad side to the cord. Try it on the flat tray and on the same tray raised to the mark.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Set the tray level and let go of the block.",
+     "next": "nile.tray.level",
+     "if": {
+      "card": "card.nile.mine"
+     },
+     "effects": [
+      {
+       "setFlag": "nile.tray.level",
+       "value": true
+      },
+      {
+       "setFlag": "nile.tray.last",
+       "value": "level"
+      }
+     ]
+    },
+    {
+     "text": "Raise the same tray to the mark and let go.",
+     "next": "nile.tray.raised",
+     "if": {
+      "card": "card.nile.mine"
+     },
+     "effects": [
+      {
+       "setFlag": "nile.tray.raised",
+       "value": true
+      },
+      {
+       "setFlag": "nile.tray.last",
+       "value": "raised"
+      }
+     ]
+    },
+    {
+     "text": "Pin a note from the two readings.",
+     "next": "nile.tray.choose",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.tray.level",
+        "eq": true
+       },
+       {
+        "flag": "nile.tray.raised",
+        "eq": true
+       }
+      ]
+     }
+    },
+    {
+     "text": "Leave the tray ready."
+    }
+   ]
+  },
+  {
+   "id": "nile.tray.level",
+   "speaker": "nile-marek",
+   "text": "The solid block stays upright on the level tray. Chalk holds the starting square and the cord marks the same side of the block for the next reading.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the tray for now."
+    },
+    {
+     "text": "Reset the tray for another reading.",
+     "next": "nile.tray.start",
+     "effects": [
+      {
+       "setFlag": "nile.tray.last",
+       "value": false
+      }
+     ]
+    },
+    {
+     "text": "Pin a note from the two readings.",
+     "next": "nile.tray.choose",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.tray.level",
+        "eq": true
+       },
+       {
+        "flag": "nile.tray.raised",
+        "eq": true
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "nile.tray.raised",
+   "speaker": "nile-marek",
+   "text": "The same solid block now tips at the marked raise. Nothing inside it can shift. The tray angle can account for a tip in this setup. A moving cart can also turn or jolt. Keep those as separate things to test.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the tray for now."
+    },
+    {
+     "text": "Reset the tray for another reading.",
+     "next": "nile.tray.start",
+     "effects": [
+      {
+       "setFlag": "nile.tray.last",
+       "value": false
+      }
+     ]
+    },
+    {
+     "text": "Pin a note from the two readings.",
+     "next": "nile.tray.choose",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.tray.level",
+        "eq": true
+       },
+       {
+        "flag": "nile.tray.raised",
+        "eq": true
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "nile.tray.choose",
+   "speaker": "nile-marek",
+   "text": "Our two readings belong to the same tray, square and solid block. The ancient Turin Mine Map records routes. The slope mark on our tray comes from our trial. Where should the next keeper see that limit?",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Carry the two settings to the cart bench.",
+     "next": "nile.tray.cart",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.tray.level",
+        "eq": true
+       },
+       {
+        "flag": "nile.tray.raised",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.tray.note",
+       "value": "cart"
+      }
+     ]
+    },
+    {
+     "text": "Keep the trial limits beside the map case.",
+     "next": "nile.tray.map",
+     "if": {
+      "all": [
+       {
+        "flag": "nile.tray.level",
+        "eq": true
+       },
+       {
+        "flag": "nile.tray.raised",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "nile.tray.note",
+       "value": "map"
+      }
+     ]
+    },
+    {
+     "text": "Leave both readings in reach."
+    }
+   ]
+  },
+  {
+   "id": "nile.tray.cart",
+   "speaker": "nile-marek",
+   "text": "Marek pins both readings and the starting square beside the cart. A keeper can repeat the tray test, then see where the cart adds motion and a turn.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "nile.tray.map",
+   "speaker": "nile-marek",
+   "text": "Marek leaves a space between the map’s route caption and our two tray readings. A reader can follow the drawn route and still ask for a field reading before talking about its slope.",
+   "historicalLabel": "fictional-world"
   }
  ],
  "chronicle": [
@@ -2487,6 +2711,30 @@
    "objective": "nile.royal.seal",
    "depth": 4,
    "text": "Tell Nasir to move the seal. Put the check at the desk or below the separate copy labels."
+  },
+  {
+   "id": "h.nile.tray.compare.1",
+   "objective": "nile.tray.compare",
+   "depth": 1,
+   "text": "Marek has one test block and a tray beside the map."
+  },
+  {
+   "id": "h.nile.tray.compare.2",
+   "objective": "nile.tray.compare",
+   "depth": 2,
+   "text": "After seeing the Mine Map, tell Marek you want to try the tilt tray."
+  },
+  {
+   "id": "h.nile.tray.compare.3",
+   "objective": "nile.tray.compare",
+   "depth": 3,
+   "text": "Set the same block on the level tray and the raised tray. Keep the chalk square and cord fixed."
+  },
+  {
+   "id": "h.nile.tray.compare.4",
+   "objective": "nile.tray.compare",
+   "depth": 4,
+   "text": "Pin the two readings beside the cart to let a keeper repeat the run, or beside the ancient map to keep the scope of the trial clear."
   }
  ],
  "criteria": [
@@ -3480,6 +3728,75 @@
      }
     }
    ]
+  },
+  {
+   "id": "KG-CH2-R10",
+   "world": "WORLD-03",
+   "title": "The Tilt Tray",
+   "knowledgeQuestion": "What can a model let us decide, and where does that decision stop?",
+   "available": {
+    "all": [
+     {
+      "flag": "nile.arrived",
+      "eq": true
+     },
+     {
+      "card": "card.nile.mine"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "nile.tray.compare",
+     "title": "Compare the level and raised tray with Marek, then pin what the test shows.",
+     "done": {
+      "all": [
+       {
+        "flag": "nile.tray.level",
+        "eq": true
+       },
+       {
+        "flag": "nile.tray.raised",
+        "eq": true
+       },
+       {
+        "flagSet": "nile.tray.note"
+       }
+      ]
+     },
+     "essential": false,
+     "weave": {
+      "concepts": [
+       "objectivity",
+       "explanation",
+       "evidence",
+       "justification",
+       "certainty"
+      ],
+      "atl": [
+       "thinking",
+       "research",
+       "communication"
+      ],
+      "aoks": [
+       "NAT",
+       "TEC"
+      ],
+      "subjects": [
+       "physics",
+       "design-tech"
+      ]
+     },
+     "skills": [
+      "SK-THK-05",
+      "SK-RSC-21"
+     ],
+     "kq": {
+      "id": "KQ-NILE-03",
+      "action": "hold the block and starting square fixed while tilting a tray"
+     }
+    }
+   ]
   }
  ],
  "clues": [
@@ -3723,6 +4040,15 @@
    },
    "did": "You put the official seal with the step the archive checked, so readers can trace the copies.",
    "prompt": "The next time a sign looks official, where could you look to see what someone checked?"
+  },
+  {
+   "id": "mom.nile-tilt-tray",
+   "attribute": "inquirer",
+   "when": {
+    "objective": "nile.tray.compare"
+   },
+   "did": "You kept two trial conditions alike except for tilt and carried their limits with the note.",
+   "prompt": "What could you hold steady when comparing two moving carts?"
   }
  ]
 }

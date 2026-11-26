@@ -963,6 +963,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       case 'forest-watch': ctx.ui.openForestWatch(it.node!); break;
       case 'metal-trial': ctx.ui.openMetalTrial(it.node!); break;
       case 'copy-compare': ctx.ui.openCopyComparison(it.node!); break;
+      case 'sea-chart': ctx.ui.openSeaChart(it.node!); break;
       case 'scene': ctx.ui.playScene(it.node!); break;
       case 'secret': {
         const x = (ctx.controller.pack.secrets ?? []).find((y) => y.id === it.secret);

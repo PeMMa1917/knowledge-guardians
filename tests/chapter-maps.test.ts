@@ -4,7 +4,7 @@ import type { MapDef } from '../src/maps/types';
 import { STAMPS } from '../src/scenes/art';
 import { artKeys, BIG_ART } from '../src/ui/illustrations';
 
-const maps = Object.values(MAPS).filter((map) => ['WORLD-04', 'WORLD-05', 'WORLD-06', 'WORLD-07', 'WORLD-08'].includes(map.world));
+const maps = Object.values(MAPS).filter((map) => ['WORLD-04', 'WORLD-05', 'WORLD-06', 'WORLD-07', 'WORLD-08', 'WORLD-09'].includes(map.world));
 const art = new Set(artKeys());
 
 /** The same walkable tiles as the world scene, including furniture and actors. */
