@@ -73,19 +73,38 @@ try {
   await page.getByRole('dialog', { name: 'Recap' }).waitFor();
   assert.equal(await page.locator('#game canvas').count(), 1);
   assert.deepEqual(fatal, []);
-  const failed = await browser.newPage({ viewport });
   const entry = await page.locator('script[type="module"][src]').first().evaluate(el=>el.src);
-  await failed.route('**/assets/main-*.js', route =>
-    route.request().url() === entry ? route.continue() : route.abort());
-  await failed.goto(url);
-  await failed.getByRole('button', { name: 'Reload the game' }).waitFor();
-  await failed.unroute('**/assets/main-*.js');
-  await failed.getByRole('button', { name: 'Reload the game' }).click();
-  await failed.getByRole('button', { name: /New game/ }).waitFor();
+  await page.close();
+  for(const kind of ['entry','application','shared']){
+    const failed = await browser.newPage({ viewport });
+    const blocked = '**/assets/' + (kind==='shared'?'skills-*.js':'main-*.js');
+    let attempted=false;
+    await failed.route(blocked,route=>{
+      const isEntry=route.request().url()===entry;
+      if(kind==='shared' || (kind==='entry')===isEntry){
+        attempted=true;
+        return route.abort();
+      }
+      return route.continue();
+    });
+    await failed.goto(url);
+    const reopen=failed.getByRole('button',{name:'Reload the game'});
+    await reopen.waitFor();
+    assert.equal(attempted,true);
+    await failed.unroute(blocked);
+    await reopen.click();
+    await failed.getByRole('button',{name:/New game/}).click();
+    await failed.getByRole('textbox',{name:'Name',exact:true}).fill('Fictional '+kind);
+    await failed.getByRole('button',{name:'Begin',exact:true}).click();
+    await failed.getByRole('dialog').getByText(/brass fish/).first().waitFor();
+    assert.equal(await failed.locator('#game canvas').count(),1);
+    assert.equal(await failed.evaluate(()=>kg.controller.state.player.name),'Fictional '+kind);
+    await failed.close();
+  }
   console.log(
     engine,
     browser.version(),
-    'showed a title during download, opened settings before renderer load, restored a chosen name after a failed map, retried and resumed with one world canvas.',
+    'showed a title during download, opened settings before renderer load, restored a chosen name after a failed map, retried and resumed with one world canvas. Recovered into play after separate entry, application and shared module failures.',
   );
 } finally {
   await browser.close();

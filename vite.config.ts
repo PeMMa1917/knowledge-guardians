@@ -39,43 +39,70 @@ function teacherContent(): Plugin {
   };
 }
 
-// This self-contained function runs in the browser, before modulepreload or import.
-function installRecoveryMap(files: string[]): void {
+// Runs in the first HTML response. It must be able to recover even when the
+// first JavaScript file and its error handler have never reached the browser.
+function startPublishedGame(entry: string, files: string[]): void {
   const page = new URL(location.href);
-  const revision = page.searchParams.get('kg_reopen');
-  if (!revision || !/^\d{1,16}$/.test(revision)) return;
-  const imports: Record<string, string> = {};
-  for (const path of files) {
-    const from = new URL(path, document.baseURI);
-    const retry = new URL(from);
-    retry.searchParams.set('kg_reopen', revision);
-    imports[from.href] = retry.href;
+  const requested = page.searchParams.get('kg_reopen') ?? '';
+  const revision = /^\d{1,16}$/.test(requested) ? requested : '';
+  if (revision) {
+    const imports: Record<string,string> = {};
+    for (const path of files) {
+      const from = new URL(path, document.baseURI);
+      const retry = new URL(from);
+      retry.searchParams.set('kg_reopen', revision);
+      imports[from.href] = retry.href;
+    }
+    const map = document.createElement('script');
+    map.type = 'importmap';
+    map.textContent = JSON.stringify({imports});
+    document.head.append(map);
+    page.searchParams.delete('kg_reopen');
+    history.replaceState(history.state, '', page);
   }
-  const map = document.createElement('script');
-  map.type = 'importmap';
-  map.textContent = JSON.stringify({imports});
-  document.head.append(map);
-  page.searchParams.delete('kg_reopen');
-  history.replaceState(history.state, '', page);
+  const boot = document.createElement('script');
+  boot.type = 'module';
+  const src = new URL(entry,document.baseURI);
+  if (revision) src.searchParams.set('kg_reopen', revision);
+  boot.src = src.href;
+  boot.addEventListener('error', () => {
+    const retry = document.getElementById('arrival-retry');
+    const status = document.getElementById('arrival-status');
+    if (status) status.textContent = 'The first download was interrupted. Check your connection and reload.';
+    if (retry) {
+      retry.hidden = false;
+      retry.addEventListener('click', () => {
+        page.searchParams.set('kg_reopen', Date.now().toString());
+        location.replace(page);
+      }, {once:true});
+    }
+  });
+  // Cached modules can execute before the body exists when inserted dynamically.
+  const load = () => document.head.append(boot);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load, {once:true});
+  else load();
 }
 
-// Install the recovery map before any module loads. Imported chunks and their
-// importers must share the same fresh URL or a second controller could start.
 function recoverDownloads(): Plugin {
   return {
-    name: 'knowledge-guardians-recover-downloads',
-    apply: 'build',
-    transformIndexHtml: {
-      order: 'post',
-      handler(_, { bundle, path }) {
-        if (!bundle || !path.endsWith('/index.html')) return;
-        const files = Object.values(bundle).flatMap(chunk =>
-          chunk.type === 'chunk' && !chunk.isEntry && !chunk.name.includes('modulepreload')
-            ? ['./' + chunk.fileName] : []);
-        return [{tag: 'script', injectTo: 'head-prepend',
-          children: '(' + installRecoveryMap.toString() + ')(' + JSON.stringify(files) + ')'}];
-      },
-    },
+    name:'knowledge-guardians-recover-downloads',
+    apply:'build',
+    transformIndexHtml:{
+      order:'post',
+      handler(html, {bundle,path}) {
+        if(!bundle || !path.endsWith('/index.html')) return;
+        const chunks=Object.values(bundle).filter(chunk => chunk.type === 'chunk');
+        const entry=chunks.find(chunk=>chunk.isEntry && chunk.facadeModuleId?.endsWith('/index.html'));
+        if(!entry) throw Error('The game menu entry is missing from the build.');
+        const files=chunks.filter(chunk=>!chunk.isEntry).map(chunk=>'./'+chunk.fileName);
+        const tag=/<script\b[^>]*\bsrc="([^"]+)"[^>]*><\/script>/;
+        if(!html.match(tag)?.[1]?.endsWith('/'+entry.fileName))
+          throw Error('The generated menu script could not be connected to download recovery.');
+        return {html:html.replace(tag,''),tags:[{tag:'script',injectTo:'head-prepend',
+          children:'(' + startPublishedGame.toString() + ')(' +
+            JSON.stringify('./'+entry.fileName) + ',' + JSON.stringify(files) + ')'}]};
+      }
+    }
   };
 }
 
