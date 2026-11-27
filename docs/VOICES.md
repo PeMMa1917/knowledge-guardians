@@ -587,14 +587,30 @@ The mark on its face identifies who kept the box. It has taken that duty as its 
 
 Bo punches things when he cannot put his feeling into words. He offers the Guardian his bruised supper ticket before he will explain why he has put a moon on either side of it. At the bunk he counts what the adults fail to see. At the playhouse he wants a turn with the opening line. Tova measures the price of an extra minute in connections her passengers will miss. Neris volunteers to walk home when making room for another person costs them their own seat. The cook has been waiting to see what everyone else spent supper laughing at. Giving one of them the first page changes who gets to set up a stranger’s story and who has to answer afterwards. [Boat and gallery](../src/content/pictureFerry.ts) · [Individual commissions and replies](../src/content/ferryCommissions.ts)
 
-### Bew, freight clerk under Lantern Square
+### Bew, freight clerk (`courier-bew`)
 
-Bew closes his book with a thumb inside it. It is the only way he can look somebody in the eye and still find his place. He wants to keep the lift running cheaply enough for families to use. He charged his own sister Nemi for the sound of her sister Pella’s stage cue. His habit of counting every ring used to pay everyone’s wages. He can run a second cord or leave the account open and return the money. On the market floor his next action shows which arrangement the family tried.
+- **Believes** Families should be able to afford the freight lift, including his own sister Nemi.
+- **Worries** His habit of counting every bell as a crate has made Nemi pay for her sister Pella’s stage cue.
+- **Speaks** He keeps a thumb in the ledger when he looks somebody in the eye. He asks who actually took delivery before he puts down a figure.
+- **Why** Counting bells once kept everyone’s wages straight. A second cord or a repayment gives his next customer a different account of what happened.
 
-### Pella, caller at the theatre door
+### Pella, caller at the theatre door (`courier-pella`)
 
-Pella can project a whisper across a foyer and lose the next line when a child asks who taught it to her. She learned her cues from Nemi and kept Nemi’s pauses even when she took her place. Her use of the freight bell let an actor finish a difficult entrance and put an unexplained charge in Bew’s book. Give her something to do with her hands while somebody else speaks. With the second cord she can hear her sister again. With the repaid fees she gives the cue silently.
+- **Believes** A held pause can help an actor find the courage for a difficult entrance.
+- **Worries** She took over Nemi’s stage cues and kept her pauses. A child asking who taught them can stop her mid-line.
+- **Speaks** She can project a whisper across the foyer. She will reach for a cord or a loose cuff while she waits for someone else to speak.
+- **Why** Borrowing her brother Bew’s freight bell helped an actor and put a charge in Nemi’s book. Her next entrance uses either a second cord or a silent signal.
 
-### Pip and Vee Fenner in the puppet loft
+### Pip Fenner, puppeteer (`elbow-pip`)
 
-Pip built a giant and taught her sister how to work it. From her chair she can still give the smallest cue on stage. She wants to watch Vee take the bow and fears the audience will forget who made its hands. Vee repairs the cuff with her left hand, practises her ice recipe on a curtain rod and already knows where her future shop would stand. The sisters can tell the story of the same entrance differently. Pip acknowledges a small moon or remembers a shared eraser depending on the stage rig the Guardian actually chose. A visiting Marcel Duchamp lends the earned Stoppages a further use in shadow theatre. The visitor’s lines are original fictional dialogue. [The loft and its callbacks](../src/content/giantSleeve.ts)
+- **Believes** A tiny cue from her chair can reach somebody who knows how to watch.
+- **Worries** She built the giant and taught Vee to work it. Being proud of her sister has made it harder to admit how much she misses taking a bow.
+- **Speaks** She lets a paper hand knock for her. A crease in a sleeve usually gets her talking more readily than a compliment.
+- **Why** Seeing her sister lead is different from hearing her praised from the wings. After the performance Pip can keep a paper moon for Vee’s future shop or recall the eyebrow they drew together.
+
+### Vee Fenner, puppeteer and ice seller (`elbow-vee`)
+
+- **Believes** The person at the far wall can still give Pip room to open the show.
+- **Worries** Wanting the bow might sound like wanting her sister to disappear. She has already picked a street for an ice shop and has told almost nobody.
+- **Speaks** She offers a taste from the edge of the plum-ice bucket before she explains herself. Look at the left-handed repairs on the cuff to see an account she has kept with a needle.
+- **Why** The ribbon she tied below the catch lets a short lift spill a dozen paper moons. Either sister can give the cue. The visiting Marcel Duchamp also offers a new gesture to a player carrying the earned Stoppages. [The loft and its callbacks](../src/content/giantSleeve.ts)

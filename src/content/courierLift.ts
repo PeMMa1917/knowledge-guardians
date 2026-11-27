@@ -36,8 +36,7 @@ export function installCourierLift(pack: ContentPack) {
     return {
       ...e,
       name: c.title,
-      dateText: c.date,
-      dateKind: c.kind,
+      dateKind: e.dateKind + ' For this holding, ' + c.date + '.',
       art: 'courier.' + c.shape,
       altText: courierDescriptions[c.shape],
       specimen: {
@@ -119,7 +118,7 @@ export const courierDescriptions: Record<string, string> = {
   'papyrus-dark':
     'A wide, irregular papyrus strip with short administrative entries in separate groups. Horizontal fibres run across both groups.',
   'shallow-basket':
-    'A shallow oval grass-fibre basket with a low rim on a plain support. The drawing shows the profile and leaves individual stitches out.',
+    'A shallow oval grass-fibre basket with a low rim on a plain support. The original pixel drawing shows the profile and leaves individual stitches out.',
   'bay-map':
     'A schematic folded map with a ragged bay edge and three tabs identifying different contributions to the Ngāi Tahu project’s public map.',
   'one-leaf':
@@ -132,7 +131,7 @@ export const courierDescriptions: Record<string, string> = {
     'A long, low paper mount in a pale frame, with a separate swatch marking a second material. The artist’s composition remains in the museum record.',
   rete: 'An open brass framework turns around a rounded inner sphere. Small projections stand for selected bright stars.',
   dugout:
-    'A long, narrow dugout hull with raised ends and its displayed sail in profile. The off-board museum tag is separate from a tab bearing the name.',
+    'A long, narrow dugout hull with raised ends and its displayed sail in profile. The original pixel drawing keeps the museum tag beside a separate name tab.',
   banknote:
     'A horizontal banknote mount with a pale numeral field and a separate dark serial strip. These are schematic details of the recorded note.',
 };

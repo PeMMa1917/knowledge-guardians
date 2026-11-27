@@ -60,7 +60,7 @@ describe('Encyclopedia links for actual encounters', () => {
     const restored = migrateCampaign(old).state;
     expect(view(d, restored).encyclopedia).toEqual(expect.arrayContaining([
       expect.objectContaining({ name: 'Bill Phillips', encounter: 'met' }),
-      expect.objectContaining({ name: 'Papyrus Sallier III', kind: 'related', encounter: 'inspected' }),
+      expect.objectContaining({ key: 'object:bm:ea10181-1', name: expect.stringContaining('Papyrus Sallier III'), kind: 'related', encounter: 'inspected' }),
     ]));
     expect(view(d, restored).encyclopedia.some(({ encounter }) => encounter === 'read')).toBe(false);
   });
@@ -128,7 +128,7 @@ describe('Encyclopedia links for actual encounters', () => {
     const records = view(d).encyclopedia;
     expect(records).toContainEqual(expect.objectContaining({ key: 'object:museo-egizio:papyrus-document-9',
       kind: 'article', url: 'https://en.wikipedia.org/wiki/Turin_Papyrus_Map' }));
-    expect(records).toContainEqual(expect.objectContaining({ key: 'object:OBJ-NILE-STRIKE',
+    expect(records).toContainEqual(expect.objectContaining({ key: 'object:museoegizio:cat.1880',
       kind: 'related', url: 'https://en.wikipedia.org/wiki/Deir_el-Medina' }));
     expect(view(d).references).toEqual([]);
     const guide = d.e.pack.exhibits.find(({ id }) => id === 'OBJ-DOOR-02')!;
