@@ -309,6 +309,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/content/sea-tupaia.json`, `src/maps/sea.ts`, three entries in `src/content/two-replies.json`, `tests/sea-stick-charts.test.ts`.
 
+### The Lens Table, chapter 9's signature game (C-004)
+
+**What.** At the green card table in the Rehearsal Room, Director Edda tells of the night a performance was stopped two minutes before the opening. The player chooses two lens cards (Ilse the lead actor, the box office clerk, Bram the stagehand) and two object cards (the prompt book, the ticket ledger, the rigging log). Each lens and object pair gives one line, so every account has four lines. Edda or Hari then says what the account leaves out: why the show stopped, the frayed rope itself, the cost, or the company who were waiting. The player can choose other cards, then gives the night a title for the programme. Each title gets a reply, and none is marked right. Edda and Hari then disagree (X-008) about printing the cards that were chosen or one careful sentence.
+
+**Why.** The first lesson folder has a historical lenses card game (lens, event, question and object cards). The audit made it chapter 9's game. The game shows that an account is built from a few people and a few things, and that a title can be true and still leave someone out. The event is invented, so the game does not reduce a real event to a card game.
+
+**Where.** `src/domain/lensTable.ts`, `src/content/lens-table.json`, `src/ui/lensPanel.ts`, `src/maps/stage.ts`, `tests/lens-table.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.

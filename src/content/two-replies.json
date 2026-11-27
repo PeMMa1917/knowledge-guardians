@@ -1323,6 +1323,24 @@
      "text": "Then we must ask them, and pay them, and wait for an answer. A label that says 'Pacific navigators will write this' is a promise. Keep it."
     }
    ]
+  },
+  {
+   "id": "stage.lens",
+   "after": {
+    "flag": "field.lens.done",
+    "eq": true
+   },
+   "heading": "Two views on the night the curtain stayed down",
+   "replies": [
+    {
+     "speaker": "stage-director",
+     "text": "Every programme note is a lens table someone played in private. I would rather print the cards we chose, so the reader can see which ones we left face down."
+    },
+    {
+     "speaker": "stage-host",
+     "text": "Nobody reads a programme that long. People want one sentence. Our job is to choose the sentence that does the least harm, and say so if anyone asks."
+    }
+   ]
   }
  ]
 }

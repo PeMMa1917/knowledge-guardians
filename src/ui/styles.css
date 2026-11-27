@@ -1130,3 +1130,9 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .relay-marks { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0; }
 .relay-marks button[aria-pressed="true"] { outline: 2px solid #f2c94c; }
 .relay-stages, .relay-fates { margin: 0.4rem 0 0.4rem 1.2rem; }
+
+/* The Lens Table (chapter 9). */
+.lens-cards { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.4rem 0; align-items: center; }
+.lens-cards h3 { width: 100%; margin: 0.2rem 0; font-size: 1rem; }
+.lens-cards button[aria-pressed="true"] { outline: 2px solid #f2c94c; }
+.lens-account { margin: 0.4rem 0 0.4rem 1.2rem; }

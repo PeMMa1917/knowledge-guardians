@@ -42,6 +42,8 @@ export const FIELD_GAMES: FieldGame[] = [
     idea: 'A pattern seen in many examples can still break on the next one. A proof from the rules of the game holds for every case, even cases nobody has made yet. But a proof covers only what it states: the part it does not state is still a guess.' },
   { id: 'trees', name: 'The Three Trees', host: 'Naturalist Elian and Steward Ayla, at the old grove on the Listening Trail', concept: 'interpretation',
     idea: 'The shape is chosen: one grove holds many triangles, and the word "triangle" is ours. The distances are not chosen: two people pacing from opposite ends get the same number, and three trees in a line will not make a triangle however much we want one. Mathematics may be partly made and partly found.' },
+  { id: 'lens', name: 'The Lens Table', host: 'Director Edda and Host Hari, at the green card table in the Rehearsal Room', concept: 'perspective',
+    idea: 'An account of an event is built from a few people and a few things it left behind. Each choice brings some of the event into view and leaves some out. A true title can still leave someone out.' },
   { id: 'relay', name: 'The Sketch Relay', host: 'Printer Lark and Lending Keeper Mina, at the river signal towers below the Lending Hall', concept: 'interpretation',
     idea: 'A copy keeps the bold marks and loses the small ones, and a bold mark can still be read the wrong way. Meaning travels when the people at each end share an agreement about what the marks mean: a key that no copy shows.' },
   // A trial section: a wrong call restarts the round (decision X-007). Rules in assayTrial.ts.

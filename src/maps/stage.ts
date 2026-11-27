@@ -125,6 +125,7 @@ export const STAGE_REHEARSAL = room({
     { stamp: 'rug-green', x: 12, y: 9 }, { stamp: 'plant-tall', x: 5, y: 13 },
   ],
   interactables: [
+    { id: 'field-lens', kind: 'fieldgame', game: 'lens', x: 16, y: 5, w: 1, h: 1, label: 'the green card table (The Lens Table)', art: 'old-sign' },
     ...FIRST_CLAP_REHEARSAL,
     ...STAGE_REHEARSAL_FRAMES,
     ...STAGE_FILM_REHEARSAL,

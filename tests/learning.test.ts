@@ -43,10 +43,10 @@ describe('the 30-minute design audit along play-style paths', () => {
   // Baseline for completion-timed windows. This measures minutes with a gap,
   // independent of how many steps or dimensions change during those minutes.
   const baseline: Record<PlayStyle, number> = {
-    // Puzzler and cozy paths include The Assay Trial (chapter 6) and The Sketch Relay (chapter 7), optional
-    // field games added 2026-11-27. Their minutes lengthen windows that were already open, so the bound
-    // grows by the measured amount (puzzler 260 -> 275, cozy 342 -> 361).
-    story: 160, social: 356, explorer: 667, puzzler: 275, cozy: 361,
+    // Puzzler and cozy paths include The Assay Trial (chapter 6), The Sketch Relay (chapter 7) and The Lens
+    // Table (chapter 9), optional field games added 2026-11-27. Their minutes lengthen windows that were
+    // already open, so the bound grows by the measured amount (puzzler 260 -> 282, cozy 342 -> 367).
+    story: 160, social: 356, explorer: 667, puzzler: 282, cozy: 367,
   };
   // The original checkpoint measured 1,582 modeled explorer minutes. New
   // optional room time can extend the upper bound by its own duration. The
