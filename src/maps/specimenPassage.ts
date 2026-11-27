@@ -44,6 +44,11 @@ export const SHOAL_PROOF_SHELTER: MapDef = {
     { id: 'sea-reading-shelter-note', kind: 'sign', x: 18, y: 22, w: 1, h: 1, art: 'sea.margin', walkThrough: true,
       label: 'the Reading Shelter route note',
       text: 'Read a museum record and open its stand’s two leaves. Take a strip to Halen at the low rail or a folio to Clio uphill. Set the guide in their rack. One keeper can use each copy.' },
+    // C-023, X-006: how Yolŋu describe the petitions. Sources: National Museum of Australia, Yirrkala bark
+    // petitions (Defining Moments); East Arnhem Regional Council, the fourth petition coming home (2023).
+    { id: 'yirrkala-yolngu-account', kind: 'sign', x: 7, y: 21, w: 1, h: 1, art: 'preserved.folder', walkThrough: true,
+      label: 'the Yolŋu account card', visibleIf: YIRRKALA_REFERRAL_OPEN,
+      text: 'How the makers describe it. The petitions are called Näku Dhäruk: bark, and word or message. The National Museum of Australia says that for Yolŋu they were an offering between equal powers, not a plea to a higher one. Senior artists from the two clans most affected by mining painted the designs. In December 2023 one of the four petitions, kept until then in Derby in Western Australia, was returned to Yirrkala at the Buku-Larrŋgay Mulka Centre. A receipt in Canberra is one record. This is another.' },
     { id: 'yirrkala-referral-request', kind: 'scene', node: 'passage.yirrkala.referral.start', x: 12, y: 23, w: 1, h: 1,
       label: 'the teacher’s two-part request', art: 'preserved.slip', walkThrough: true,
       visibleIf: { all: [YIRRKALA_REFERRAL_OPEN, { not: { flagSet: YIRRKALA_REFERRAL_ROUTE } }] } },

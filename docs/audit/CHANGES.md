@@ -397,6 +397,17 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/festivalDilemma.ts`, `src/content/festival-dilemma.json`, `src/ui/festivalPanel.ts`, `src/maps/water.ts`, `tests/festival-dilemma.test.ts` (it checks that the facts tell the friends apart), credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
+### Custodian voices: Chinchorro sites, Yirrkala petitions, Shawnee sources (C-023, X-006)
+
+**What.** Three changes about who keeps a record today, and how they describe it.
+- **Chinchorro (chapter 3).** A new card in the Chinchorro Records room says who looks after the three sites now: Chile's National Monuments Council, which supervises them and must approve any change, and the Chinchorro Marka Corporation, which runs the management system. It also says what UNESCO asks: that the people of Arica and any community with a link to the sites share in decisions, and that questions about the treatment of the dead are still open. The card says plainly that it gives the institutions' words, and that the community's own words are not on it yet.
+- **Yirrkala bark petitions.** A new "Yolŋu account" card in the Shoal Shelf Reading Shelter gives the makers' name for the petitions, Näku Dhäruk (bark, and word or message). It says that for Yolŋu they were an offering between equal powers, and that one petition returned to Yirrkala in December 2023. The card stands next to the parliamentary receipt, so the player sees two records of one event.
+- **Shawnee (chapter 13).** The Tecumseh records already cite the Absentee Shawnee Tribe and the Eastern Shawnee Tribe of Oklahoma. The audit item is marked done. The Eastern Shawnee page names all three federally recognised Shawnee nations.
+
+**Why.** Decision X-006 asks for Indigenous knowledge that is verified and woven in, with sources from the people themselves where possible. Where no community source was found (Chinchorro, Luba), the game says so in the text, instead of filling the gap with a guess.
+
+**Where.** `src/maps/preserved.ts` (preserved-coast-custodians), `src/maps/specimenPassage.ts` (yirrkala-yolngu-account). Sources: UNESCO World Heritage Centre property 1634; National Museum of Australia, Defining Moments: Yirrkala bark petitions; East Arnhem Regional Council, on the fourth petition's return (4 December 2023).
+
 ### The 30-minute audit and the new games
 
 **What.** The audit test (`tests/learning.test.ts`) measures minutes of play in which a 30-minute window lacks some TOK concept or framework part. The new optional games add minutes inside windows that were already open, so the measure grew with each game. The test now checks the original bound on the path without the new games, and allows each new game to lengthen the gaps by at most three times its own minutes.
