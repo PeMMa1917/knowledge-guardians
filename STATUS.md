@@ -1,5 +1,11 @@
 # Status and next steps
 
+## 28 November • The river in Mayle’s curtain
+
+Nim has one entrance to make before the house opens. In the Survey Depot loft, two of four borrowed fittings help a Guardian decide where the silver thread went. Nim can use the result at rehearsal, where a porter sees the same cloth from another angle. A second visit lets the player change the staging, leave a new trial for Huygens, or carry the two tracings back to Cajal. The selected fittings, two drawer presets, audience responses and the edition sent to the stage survive Continue. [Play and branch evidence](docs/audit/NIGHT_REGISTER.md#the-river-in-the-hem) · [Source records](docs/SOURCES.md)
+
+The campaign now contains 847 missions and 3,902 objectives across 155 rooms in 15 chapters. The evidence ledger links 601 of the 1,200 supplied micro-skills to 1,366 authored uses. Of those skills, 374 have links in more than one world. Fifty reviewed actions explicitly compare methods and limits in two areas of knowledge. The intersection audit still finds only two combinations at the ten-action target. A recorded opportunity measures what players can do. Learning gains and transfer require observation with students.
+
 ## 27 November • A birthday with four dates
 
 Rix Pottle promised the street an anniversary parade. Jori remembers her workshop by more than the day it closed. Four earned holdings can open a music room and bring a historical visitor to the composing desk. A six-beat invitation can reach a listener on the stair, a watcher through glass, both or neither. A guest who returns to the City of Copies remembers the block that actually went to press, even if the Guardian changed the desk after dispatch. [The musicians’ instruments](src/domain/streetAlmanac.ts) · [The four source records](docs/SOURCES.md#the-street-musicians-invitations)
