@@ -1139,6 +1139,13 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .collage-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.5rem; margin: 0.5rem 0; }
 .collage-card { display: flex; flex-direction: column; gap: 0.3rem; text-align: left; white-space: normal; }
 .collage-card[aria-pressed="true"] { outline: 2px solid #f2c94c; }
+.primer-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.4rem; margin: 0.4rem 0; }
+.primer-group h3 { grid-column: 1 / -1; margin: 0.2rem 0; font-size: 1rem; }
+.primer-card { display: flex; flex-direction: column; gap: 0.2rem; text-align: left; white-space: normal; }
+.primer-card[aria-pressed="true"] { outline: 2px solid #f2c94c; }
+.primer-proof { margin: 0.5rem 0; padding: 0.6rem; background: #f4ecd8; color: #2a2418; border-radius: 6px; }
+.primer-picture { padding: 1.2rem 0.6rem; border: 2px dashed #b8a47a; text-align: center; font-style: italic; }
+.primer-proof figcaption { margin-top: 0.4rem; font-weight: 700; color: #2a2418; opacity: 1; font-size: 1rem; }
 .reassembly-notice { border: 1px dashed rgba(242, 201, 76, 0.6); border-radius: 6px; padding: 0.3rem 0.7rem; margin: 0.4rem 0; }
 .reassembly-notice.done { border-style: solid; background: rgba(242, 201, 76, 0.08); }
 .reassembly-notice p { margin: 0.2rem 0; }

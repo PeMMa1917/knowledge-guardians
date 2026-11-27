@@ -441,6 +441,14 @@ The player can keep the choice and say why, change it, or ask what would change 
 
 **Where.** `src/domain/reassemblyLine.ts`, `src/content/reassembly-line.json`, `src/ui/reassemblyPanel.ts`, `src/maps/nile.ts`, `tests/reassembly-line.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
+### The Primer Page, chapter 9's second game (C-004)
+
+**What.** At the printer's proof table in the Rehearsal Room, Host Hari shows page twelve of the town's new children's primer: the opening of the Lantern Bridge, forty years ago. There is room for one picture (the mayor's ribbon, the builders on the scaffold, the old ferry crew, the first crowd) and one caption. Edda says what the picture shows, and Hari says what it hides. When picture and caption agree, Hari notes that what both leave out becomes very quiet; when they disagree, a child will ask why. Then a child from the school group asks a question about the picture, and the player answers it, adds a note, or asks what she thinks. Edda and Hari then disagree (X-008) about what a primer is for.
+
+**Why.** The second lesson folder asks how a history textbook chooses its picture and words. The event is from the game world, so the game does not judge a real textbook. Every page leaves someone's bridge out, and the game says so; no page is marked right (OPEN-001).
+
+**Where.** `src/domain/primerPage.ts`, `src/content/primer-page.json`, `src/ui/primerPanel.ts`, `src/maps/stage.ts`, `tests/primer-page.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
 ### Voice sheets (C-005)
 
 **What.** A new file, `docs/VOICES.md`, gives 63 characters a voice sheet: what each one believes, the mistake each one fears most, how each one speaks, and why. It covers every keeper and every character with more than 20 lines. The two keepers in each chapter are built to pull against each other, as decision X-008 asks. A test (`tests/voices.test.ts`) fails if a character with more than 20 lines has no sheet, or if a sheet lacks one of its four parts.

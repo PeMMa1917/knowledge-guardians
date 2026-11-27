@@ -1539,6 +1539,24 @@
      "text": "Glue makes it look settled. I would rather pin the strips, so the limit can change when the river does, without anyone pretending the old notice was always this one."
     }
    ]
+  },
+  {
+   "id": "stage.primer",
+   "after": {
+    "flag": "field.primer.done",
+    "eq": true
+   },
+   "heading": "Two views on page twelve",
+   "replies": [
+    {
+     "speaker": "stage-director",
+     "text": "A primer is a stage. You choose the one scene that holds the whole story, and you commit to it. A page that tries to show everything shows nothing."
+    },
+    {
+     "speaker": "stage-host",
+     "text": "A primer is a seat, and every child sits in the same one. I would put a small line under it, always: this is one view of the bridge. Ask someone who was there."
+    }
+   ]
   }
  ]
 }
