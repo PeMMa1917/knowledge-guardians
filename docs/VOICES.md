@@ -506,6 +506,7 @@ The mark on its face identifies who kept the box. It has taken that duty as its 
 
 ### Otla Rusk (`otla-rusk`)
 
-Otla cooks behind a curtain that doubles as a puppet stage. She wants people to take her brother seriously again. Her first instinct is to ring the public bell and set the whole street straight. Her brother would like to finish his supper. She has to learn that he gets to say who sits with him.
-
-When she is sure of something she puts her hand on it. Under pressure she quotes a line as she remembers hearing it, including the word she supplied herself. Her jokes come back while she washes up. If the player has kept the kitchen quiet, she can take a question about mustard as an invitation. [Otla’s kitchen](../src/content/supperShadow.ts)
+- **Believes** a cook can put a misunderstanding right by calling everybody back to the same table.
+- **Worries** that her little brother will hear her join the skipping rhyme again. She supplied the word people remember him by.
+- **Speaks** with one hand on the thing she can vouch for. Under pressure she remembers her own word in Kip’s voice. Her jokes come back while she washes up.
+- **Why** the supper hatch doubles as a puppet stage. Its cook can ring the public bell. Her brother gets to decide where he eats and who sits with him. [Otla’s kitchen](../src/content/supperShadow.ts)
