@@ -1487,6 +1487,20 @@
     "name": "Follow what a clipped or timed message loses",
     "uses": [
       {
+        "objective": "field-loan.dispatch.issued",
+        "action": "Issue a packet after comparing which parts of its record a caller can read on the outer strap and which only the side clerk can open. Follow the public hatch or the canal passage to meet the affected reader.",
+        "styles": [
+          "helper",
+          "challenger"
+        ],
+        "modes": [
+          "social",
+          "analytical"
+        ],
+        "game": 22,
+        "story": 15
+      },
+      {
         "objective": "relay.hawaii-join.received",
         "action": "Run the same two clips through still air and a gust. Ask the receiver for the missing source clip or take the full later bundle.",
         "styles": [

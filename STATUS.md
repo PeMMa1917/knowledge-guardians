@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 27 November • The objects that go out again
+
+The 295 objects that previously opened only the Nexus return arch now have work at two benches outside their home world. At Mina’s pocket press the player can put a qualified date at the left stop before pulling a short or folded impression. At Edda’s theatre they can advance a cue one beat at a time and see which seat receives it. Ade’s post has separate faces for a public caller and a private reply. Elian’s sleeve changes which part of an actual record can survive a wet crossing. Each choice opens a different route to a reader with a practical problem. Carry the same object to its second town and the first town’s decision changes the next instrument. The object stays unique. [Receiving benches](src/content/fieldLoans.ts) · [Record-by-record return tests](tests/field-loans.test.ts)
+
 ## 27 November • Sora’s spare key
 
 At Seagrass Steps a learner’s recollection and a voyage history can each correct the other kind of account. The Guardian tests which end of a bird’s flight suggests land at two different hours, then takes Hōkūleʻa into the field. In the audience gallery, the same shadow can stand for two canoes. At the Two-Tide Dock the learner’s view from the lower pier changes the guide, opens one of two passages and changes Sora’s answer back home. The catalogue now identifies 2,039 real specimens. [The four itineraries](tests/folding-flock.test.ts)

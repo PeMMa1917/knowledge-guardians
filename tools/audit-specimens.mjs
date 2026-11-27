@@ -65,12 +65,15 @@ try {
   const unique = new Set(registered.map(({ key }) => key));
   const legacy = pack.exhibits.filter((record) => record.historicalLabel === 'documented' && !record.specimen && physical.has(record.id));
   const required = process.argv.includes('--release') ? TARGET : 0;
+  const baseOnly = registered.filter(({revisit,fieldUse})=>!revisit&&!fieldUse).map(({key})=>key);
+  if (required && baseOnly.length) errors.push(baseOnly.length+' registered specimens have only the Nexus return arch.');
   if (required && unique.size < required) errors.push(`${required - unique.size} exact specimens still to register and place.`);
   if (process.argv.includes('--json')) {
-    console.log(JSON.stringify({ target: TARGET, unique: unique.size, registered, legacyExhibits: legacy.map(({ id, name }) => ({ id, name })), errors }, null, 2));
+    console.log(JSON.stringify({ target: TARGET, unique: unique.size, registered, baseOnly, legacyExhibits: legacy.map(({ id, name }) => ({ id, name })), errors }, null, 2));
   } else {
     console.log(`${unique.size} unique exact specimens registered and ${legacy.length} documented exhibits awaiting exact identity review.`);
     console.log(`${registered.filter(({ revisit }) => revisit).length} have a dedicated equipped return prop. ${registered.filter(({ fieldUse }) => fieldUse).length} support a portable use at other chapter desks. The Nexus also offers a return route.`);
+    console.log(`${baseOnly.length} registered specimens have only the base return arch.`);
     console.log(`${Math.max(0, TARGET - unique.size)} open places in the ${TARGET}-specimen target.`);
     for (const error of errors) console.error(error);
   }

@@ -1,3 +1,4 @@
+import {workFieldLoan,type FieldLoanCommand} from './fieldLoan';
 import {pinBirds,type BirdCommand} from './birdSide';
 import {workWhistle,type WhistleCommand} from './whistleWatch';
 import {useWeirLamp,type WeirLampCommand} from './weirLamp';
@@ -82,6 +83,7 @@ const DIALOGUE_FALLBACK = 999;
 import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand, type LanternPairCommand } from './lamplight';
 
 export type Command =
+  | FieldLoanCommand
   | BirdCommand
   | WhistleCommand
   | MakerCommand | FieldCommand
@@ -614,6 +616,8 @@ export class Engine {
           }
           break;
         }
+        case 'WorkFieldLoan':
+          s=apply(workFieldLoan(this.pack,s,cmd),s,out);break;
         case 'PinBirdWatch':
           s=apply(pinBirds(s,cmd),s,out);break;
         case 'WorkWhistle':

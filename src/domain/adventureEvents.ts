@@ -1,3 +1,5 @@
+import {equippedLoan,loanReading,readerAnswer,readerLetters,selectedLoan,setupLabels} from './fieldLoan';
+import {loanStops} from '../content/loanCrews';
 import { SERVICE_CUTS, servicePlan } from './boundaryBoard';
 import { civicAllocation } from './civicConsole';
 import { compareCopy } from './copyComparison';
@@ -43,6 +45,27 @@ function fixedTrial(key: `${string}:${string}`, ref: string, title: string, text
 /** Describe completed commands from their validated parameters and the same authored models the tools display. */
 export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, next: CampaignState, cmd: Command): DiaryEntryDraft | undefined {
   switch (cmd.type) {
+    case 'WorkFieldLoan': {
+      const loan=equippedLoan(pack,previous,cmd.stop);
+      if(!loan)return;
+      const desk=loanStops[cmd.stop], ref=loan.record.id;
+      const key='field-loan:'+cmd.stop+':'+loan.key+':'+loan.incoming+':'+loan.position+':';
+      if(cmd.mode==='letter'){
+        const setting=selectedLoan(previous,cmd.stop,loan);
+        if(setting!==undefined)return diaryEvent(key+'letter:'+cmd.letter,'conversation',ref,readerLetters[cmd.stop][cmd.letter],
+          'I passed the reader’s letter across the bench. '+readerAnswer(loan,cmd.stop,cmd.letter,setting),{sourceIds:[loan.record.specimen.source]},'after-break');
+        break;
+      }
+      if(cmd.mode==='adjust')return diaryEvent(key+'adjust:'+cmd.position,'tool',ref,setupLabels[cmd.stop][cmd.position],
+        'I changed the arrangement for '+loan.record.name+' to “'+setupLabels[cmd.stop][cmd.position]+'”. The next reading will use this arrangement.',
+        {sourceIds:[loan.record.specimen.source]},{fixedToolPrefix:key+'adjust:'});
+      if(cmd.mode==='issue')return diaryEvent(key+cmd.edition,'choice',ref,desk.doors[cmd.edition==='carry'?0:1],
+        'I issued the slip for '+loan.record.name+'. '+desk.replies[cmd.edition==='carry'?0:1],{sourceIds:[loan.record.specimen.source]},'after-break');
+      const result=loanReading(loan.record,loan.card,cmd.stop,cmd.setting,loan.incoming,loan.position);
+      return diaryEvent(key+cmd.setting,'tool',ref,desk.controls[cmd.setting],
+        'I tried '+loan.record.name+' at '+desk.place+'. '+result.strips.map(row=>row.label+' · '+row.text).join(' / ')+'. '+result.observation,
+        {sourceIds:[loan.record.specimen.source]},{fixedToolPrefix:key});
+    }
     case 'VisitPlace': {
       const mapId = next.mapId;
       if (cmd.via) return diaryEvent(`route:${cmd.via.from}:${cmd.via.id}:${mapId}`, 'route', cmd.via.id, cmd.name,

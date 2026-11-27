@@ -4,6 +4,20 @@
     "name": "Edit a message to fit a physical word limit",
     "uses": [
       {
+        "objective": "field-loan.press.compared",
+        "action": "Move the left type stop to the title, date or accession. Compare the characters on a space-limited mitten-sized check with the complete folded slip. The first line of the miniature copy can change without changing the source.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "linguistic",
+          "spatial"
+        ],
+        "game": 234,
+        "story": 29
+      },
+      {
         "objective": "coat.archive.compared1",
         "action": "Lift the prefatory type into the offcut tray and print against the eighteen-word edge. The complete instruction and discarded opening can be compared.",
         "styles": [

@@ -1,3 +1,5 @@
+import {loanWeave} from './fieldLoan';
+import {stops as loanStops} from '../content/loanCrews';
 import {whistleDiary} from './whistleWatch';
 import {whistlePlaces,whistleWeave} from '../content/whistleWatch';
 import {birdDiary,birdWeave} from './birdSide';
@@ -527,6 +529,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
       if (site) return diaryTopics(millWeave(site));
     }
     if(family==='whistle'){const site=whistlePlaces.find(p=>event.ref==='whistle.'+p.id);if(site)return diaryTopics(whistleWeave(site.id));}
+    if(family==='field-loan'){const stop=loanStops.find(id=>event.key.startsWith('field-loan:'+id+':')); if(stop)return diaryTopics(loanWeave(stop));}
     if(family==='birdside') return diaryTopics(birdWeave);
     if(family==='weir-lamp') return diaryTopics(weirLampWeave);
     if(family==='vault') { const station=vaultStations.find(id=>event.ref==='vault.'+id); if(station) return diaryTopics(vaultWeave(station)); }

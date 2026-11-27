@@ -1275,3 +1275,16 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .flock-pier{font-weight:700;border:2px solid #172d3a;background:#e2cba4;padding:.1rem .5rem}
 .flock-pier.pinned{border-top:.55rem solid #172d3a}
 .flock-birds{font-size:2.2rem;font-weight:700;align-self:center;background:#f9ebcf;line-height:1;padding:0 .2rem}
+
+.loan-controls{display:flex;flex-wrap:wrap;gap:.4rem;margin:.55rem 0}
+.loan-controls button[aria-pressed=true]{outline:2px solid currentColor;outline-offset:-4px}
+.loan-sample{display:grid;grid-template-columns:auto repeat(2,minmax(0,1fr));align-items:start;gap:.5rem;border:1px solid currentColor;border-radius:.3rem;padding:.6rem;overflow-wrap:anywhere}
+.loan-sample img{height:3.6rem;width:2.4rem;image-rendering:pixelated;align-self:center}
+.loan-slip{display:grid;align-content:start;gap:.3rem;padding:.4rem .5rem;border-left:3px solid currentColor}
+.loan-work[data-stop=press] .loan-slip{border-style:dashed}
+.loan-work[data-stop=stage] .loan-slip:last-child{margin-top:.9rem}
+.loan-work[data-stop=dispatch] .loan-slip{border:2px solid currentColor;border-radius:0 0 .8rem .8rem}
+.loan-work[data-stop=fern] .loan-slip{border-top:3px double currentColor}
+.loan-work details{margin:.65rem 0}
+.loan-work summary{cursor:pointer}
+@media(max-width:36rem){.loan-sample{grid-template-columns:auto 1fr}.loan-sample img{grid-row:span 2}.loan-slip{grid-column:2}.loan-work[data-stop=stage] .loan-slip:last-child{margin-top:0}}

@@ -1,0 +1,73 @@
+[
+  {
+    "number": 2,
+    "name": "Turn a question about an object into a question about knowing",
+    "uses": [
+      {
+        "objective": "field-loan.stage.questioned",
+        "action": "Give the usher the catalogue fact. On a second letter, ask which cue reached the balcony or what a performance alone can establish. Compare the resulting reply with the actual sight or sound at that beat.",
+        "styles": [
+          "performer",
+          "explorer"
+        ],
+        "modes": [
+          "auditory",
+          "visual",
+          "reflective"
+        ],
+        "game": 21,
+        "story": 14
+      },
+      {
+        "objective": "field-loan.fern.questioned",
+        "action": "Name the individual specimen to a watcher, then use the wet roll to ask what a later observer can still check. The surviving strip and its catalogue limit determine the reply.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "nature",
+          "reading",
+          "analytical"
+        ],
+        "game": 21,
+        "story": 14
+      }
+    ]
+  },
+  {
+    "number": 168,
+    "name": "Follow where technology, language and public access meet an everyday object",
+    "uses": [
+      {
+        "objective": "field-loan.dispatch.questioned",
+        "action": "After naming a specific object, decide whether to ask about the information visible on the public strap or who can get the rest. The reply depends on the actual slip from the practice post.",
+        "styles": [
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "social",
+          "reading"
+        ],
+        "game": 21,
+        "story": 14
+      },
+      {
+        "objective": "field-loan.press.answered",
+        "action": "Bring an individual object’s edition back from another town. A travelling receipt changes the short press width. A retained one supplies a collection address on the reverse. Decide who can check the next impression.",
+        "styles": [
+          "maker",
+          "companion"
+        ],
+        "modes": [
+          "physical",
+          "spatial",
+          "linguistic"
+        ],
+        "game": 22,
+        "story": 15
+      }
+    ]
+  }
+]

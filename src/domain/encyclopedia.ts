@@ -77,6 +77,10 @@ export interface EncyclopediaDiaryEvent {
 
 export function encyclopediaForDiaryEvent(pack: ContentPack, event?: EncyclopediaDiaryEvent): EncyclopediaLink | undefined {
   if (!event) return undefined;
+  if(event.key.startsWith('field-loan:')){
+    const exhibit=pack.exhibits.find(record=>record.id===event.ref);
+    if(exhibit?.specimen)return encyclopediaForExhibit(exhibit);
+  }
   if (event.key.startsWith('mill:' + event.ref + ':') || event.key.startsWith('lantern:' + event.ref + ':') || event.key.startsWith('coat-tracing:' + event.ref + ':')) {
     const guest = lanternCase(event.ref)?.person;
     const character = guest && pack.characters.find(({ id }) => id === guest.character);

@@ -1,3 +1,4 @@
+import {addFieldLoans} from './fieldLoans';
 import {addCanoeProjection} from './canoeProjection';
 import {addSeaBirdWatch} from './seaBirdWatch';
 import { addTownHearings } from './hearings';
@@ -261,6 +262,7 @@ export function buildPack(): ContentPack {
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);
+  addFieldLoans(content);
   specimenEquipment(content);
   reviewChapterPractices(content);
   addMicroSkills(content);

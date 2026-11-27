@@ -32,6 +32,10 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
   if(key.startsWith('whistle:')){const site=whistlePlaces.find(p=>key.startsWith('whistle:'+p.id+':'));if(site){const [basis,visitor]=whistleStories[site.id].questions;return {basis,visitor};}}
+  if(key.startsWith('field-loan:press:'))return {edge:'Which part of the claim changed when I put it in a smaller space?',reader:'Who can still find the rest of it?'};
+  if(key.startsWith('field-loan:stage:'))return {seat:'What could each seat know before the other gave its cue?',reply:'Which difference did a second signal actually resolve?'};
+  if(key.startsWith('field-loan:dispatch:'))return {street:'What could a caller infer just by seeing the strap?',care:'Who gets to decide what travels outside the bag?'};
+  if(key.startsWith('field-loan:fern:'))return {wet:'What did the wet seam change about the evidence I could show?',date:'Which date would the next watcher need to check before using my roll?'};
   if(key.startsWith('birdside:')) return {before:'Which end of the bird’s flight did I treat as evidence of land?',after:key.includes('squall')?'What further observation could distinguish the two ledges?':'What happened to my inference when the direction stayed fixed and the hour changed?'};
   if(key.startsWith('weir-lamp:')) return {before:'Who could have read the first sheet at the time?',after:'Which part of the later account depends on knowing how high the water rose?'};
   if(key.startsWith('vault:')){const who=vaultStations.find(id=>key.startsWith('vault:'+id+':')); if(who){const [trace,after]=vaultWork[who].reflections;return {trace,after};}}

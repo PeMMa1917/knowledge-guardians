@@ -142,6 +142,40 @@ const copiesEvidenceInvestigations = [
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
   {
+    objective:'field-loan.press.compared',map:'copies.landing',target:'field-loan.press.bench',
+    source:'tests/field-loans.test.ts',anchor:'keeps the %s loan attached to this object, position and receipt',
+    action:'Move a particular title, accession, or qualified date up to the left stop. Compare the characters that survive a narrow impression with the whole wording on a folded slip. Moving the type requires another matched pair.',
+    reasoning:[{mode:'deductive',basis:'With a fixed count of available type spaces and this starting point, every character outside the opening has to fall off the short slip.'}],
+    dimensions:['micro:193','area:HIS','theme:LAN','concept:evidence','concept:interpretation','framework:methods-and-tools'],elements:['game:234','story:29'],
+  },
+  {
+    objective:'field-loan.stage.questioned',map:'stage.foyer',target:'field-loan.stage.bench',
+    source:'tests/field-loans.test.ts',anchor:'expect(d.done(loanSite(stop) +',
+    action:'Give the usher an identified object, then ask whether a performance of it can warrant a historical claim. The near lamp and the distant bell allow different readers to report what reached them. Edda brings the catalogue limit back to the new staging.',
+    comparison:{concepts:['evidence'],framework:['methods-and-tools'],areas:[
+      {id:'ART',method:'Make the signal at a chosen beat and position. Attend to which of two seats perceives it.',limit:'A successful cue shows something about access during this staging.'},
+      {id:'HIS',method:'Locate the identified object in its own collection record and compare the curator’s limit with the new visual or sounding cue.',limit:'An identification and the limits attached to the surviving object cannot reconstruct every earlier performance or use.'}],
+      connection:'A performance can establish who receives a new cue. A historical claim about the object calls for a dated source and an explicit limit.'},
+    dimensions:['micro:2','area:ART','area:HIS','concept:evidence','concept:interpretation','framework:methods-and-tools','subject:theatre'],
+    elements:['game:21','story:29'],
+  },
+  {
+    objective:'field-loan.dispatch.issued',map:'civic.dispatch',target:'field-loan.dispatch.bench',
+    source:'tests/field-loans.test.ts',anchor:'admits all 295 earned objects in exactly two other worlds',
+    action:'Hang the identity on the strap and compare it with the limitation inside. Send a public reader through the hatch or keep both lines at a staffed desk. Follow the chosen passage to give a caller a quieter reply or a reliable opening bell.',
+    reasoning:[{mode:'pragmatic',basis:'The public slip reaches a waiting caller sooner. The desk can show both parts privately and costs the canal messenger a wait.'}],
+    dimensions:['micro:470','area:HUM','theme:POL','concept:responsibility','concept:power','framework:ethics','subject:global-politics'],
+    elements:['game:22','story:15'],
+  },
+  {
+    objective:'field-loan.fern.questioned',map:'forest.station',target:'field-loan.fern.bench',
+    source:'tests/field-loans.test.ts',anchor:'expect(d.done(loanSite(stop) +',
+    action:'Identify a natural or historical specimen and then change the watcher’s question. Pass the dated face and the return face through the wet sleeve and ask what can still be warranted from the surviving strip. The specific catalogue limit stays available.',
+    reasoning:[{mode:'causal',basis:'The field model keeps the text fixed while the sleeve, orientation and wax change which lines remain legible.'}],
+    dimensions:['micro:2','area:NAT','area:HIS','concept:evidence','framework:methods-and-tools','framework:scope','subject:geography'],
+    elements:['game:21','story:29'],
+  },
+  {
     objective:'birdside.cloth',map:'sea.harbour',target:'birdside.cloth',
     source:'tests/folding-flock.test.ts',anchor:'holds the observation side fixed across the two hours',
     action:'Pin the same ledge for the same westward arrow at first and last light on separate watches. Unfold the rain strip and see how a peg still fixes a position when the observations cannot locate a roost.',

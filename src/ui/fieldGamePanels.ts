@@ -1,3 +1,5 @@
+import {fieldLoanPanel} from './fieldLoan';
+import {loanStops,stops} from '../content/loanCrews';
 import { foldingFlock } from './foldingFlock';
 import type { GameController } from "../app/controller";
 import { ladderPanel } from "./ladderPanel";
@@ -60,6 +62,7 @@ interface Panel<T> {
 }
 
 export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
+  ...stops.map((stop):[string,Panel<GamePanel>]=>["field-loan."+stop,{title:loanStops[stop].title,open:(c,sound)=>fieldLoanPanel(c,stop,sound)}]),
   ["birdside-watch", { title: "The folding flock", open: foldingFlock }],
   ["ladder", { title: "The Copyists' Ladder", open: ladderPanel }],
   ["maze", { title: "The Labyrinth Lens", open: labyrinthPanel }],

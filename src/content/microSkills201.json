@@ -1477,6 +1477,21 @@
     "name": "Give the performed cue and the printed copy separate jobs",
     "uses": [
       {
+        "objective": "field-loan.stage.issued",
+        "action": "Light the name in the stalls and sound the collection number in the balcony. Select the leading cue, follow the appropriate stair and meet someone whose seat changes what they perceive.",
+        "styles": [
+          "performer",
+          "companion"
+        ],
+        "modes": [
+          "auditory",
+          "spatial",
+          "visual"
+        ],
+        "game": 22,
+        "story": 15
+      },
+      {
         "objective": "stage.finish",
         "action": "Use rehearsal and the audience’s response, then keep the performed pause and its public reading distinct on the program.",
         "styles": [
