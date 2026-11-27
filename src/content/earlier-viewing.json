@@ -30,7 +30,8 @@
         "label": "Keep the bridge mark large and leave the frame free to turn",
         "after": "The crew finds the familiar bridge on a quick pass. The keeper can rotate the work board within reach when someone comes from the other side."
       }
-    ]
+    ],
+    "question": "When the same landmarks are seen from two doors, whose left and right should a map use?"
   },
   {
     "id": "memory-board",
@@ -63,7 +64,8 @@
         "label": "Leave the public record first and put the exercise on the side bench",
         "after": "The visitor can begin at the Brooklyn accession. The practice board stays visibly separate beside the workroom guide’s table."
       }
-    ]
+    ],
+    "question": "What can a guide's board show, and what can only its keeper decide?"
   },
   {
     "id": "deep-window",
@@ -96,7 +98,8 @@
         "label": "Pin the wider check directly beside the old slip",
         "after": "Both watch positions stay visible. The seam helps visitors tell which part was outside the original observer’s view."
       }
-    ]
+    ],
+    "question": "How does the width of a window change what we can claim crossed the water?"
   },
   {
     "id": "dhuwa-receipt",
@@ -129,7 +132,8 @@
         "label": "Give the review desk both leaves in date order",
         "after": "A second keeper can compare the two questions without reading the first date as a later acknowledgement."
       }
-    ]
+    ],
+    "question": "How can a record say that a petition was received without claiming to know how it ends?"
   },
   {
     "id": "yirritja-leaves",
@@ -162,7 +166,8 @@
         "label": "Hang a paired care note near the keeper’s index",
         "after": "The keeper leaves the original and the displayed paper on named lines so the next reader can follow each one."
       }
-    ]
+    ],
+    "question": "How can people see a record while the fragile original stays safe somewhere else?"
   },
   {
     "id": "horizon-copy",
@@ -195,7 +200,8 @@
         "label": "Give the manuscript and the next observation separate leaves",
         "after": "The next keeper can follow the teacher’s record and repeat the local check without merging their dates."
       }
-    ]
+    ],
+    "question": "When is a copied guide enough for a new observer to repeat what someone saw?"
   },
   {
     "id": "red-leaf",
@@ -228,7 +234,8 @@
         "label": "Leave the two proofs under separate process slips",
         "after": "Lark opens the fuller tray for the next printer. The colour stays visible on both and each process has its own source line."
       }
-    ]
+    ],
+    "question": "When does one printed page stand for a whole printing, and when does it not?"
   },
   {
     "id": "earliest-line",
@@ -261,7 +268,8 @@
         "label": "Set the catalogue description beside the lighting notes",
         "after": "The workroom keeps the object’s historical account within reach and labels the visible exercise as its own comparison."
       }
-    ]
+    ],
+    "question": "Where does a visible mark end and a reader's interpretation begin?"
   },
   {
     "id": "two-print-hands",
@@ -294,7 +302,8 @@
         "label": "Make a printer’s slip and include the shared record number",
         "after": "The workshop takes the roles it needs and can follow the same exact copy number to the compiler’s line."
       }
-    ]
+    ],
+    "question": "Who should get credit when a claim about a book's printing reaches a new reader?"
   },
   {
     "id": "portable-latitude",
@@ -327,7 +336,8 @@
         "label": "Pair the two readings under the signature reference",
         "after": "The keeper sets the plates side by side with their settings named. The signed date stays separate from both readings."
       }
-    ]
+    ],
+    "question": "What place can a measuring instrument describe, and where does its reading stop?"
   },
   {
     "id": "horse-sequence",
@@ -360,7 +370,8 @@
         "label": "Put the whole sequence up along the rehearsal edge",
         "after": "The audience guide can compare the moments before and after the cue without guessing an unpictured transition."
       }
-    ]
+    ],
+    "question": "What can a single still image tell us about a movement, and what needs the whole sequence?"
   },
   {
     "id": "web-source",
@@ -393,7 +404,8 @@
         "label": "Leave the current and source sheets in a paired holder",
         "after": "Visitors can check the doorway instructions and source side by side, with both dates close enough to compare."
       }
-    ]
+    ],
+    "question": "How can a reader find the source of a notice that has been copied many times?"
   },
   {
     "id": "telescope-rim",
@@ -426,7 +438,8 @@
         "label": "Set both frames in reach for a paired check",
         "after": "The two readers keep the frame edges next to the corresponding positions. The sheet stays fixed while the frame is moved."
       }
-    ]
+    ],
+    "question": "What does a narrow view show clearly, and what does it hide?"
   },
   {
     "id": "lens-scale",
@@ -459,7 +472,8 @@
         "label": "Clip the two views together",
         "after": "The teaching sleeve leaves the wider context first and keeps the close detail one turn away."
       }
-    ]
+    ],
+    "question": "What does a detailed view add, and what does it leave outside the frame?"
   },
   {
     "id": "orbital-window",
@@ -492,7 +506,8 @@
         "label": "Use the receiving diagram at the station table",
         "after": "The table separates the named vehicle from the voyage stages. A reader can follow either date without treating one as the other."
       }
-    ]
+    ],
+    "question": "How can we keep an object's journey and its later display from being mixed up?"
   },
   {
     "id": "sea-learning-notice",
@@ -525,7 +540,8 @@
         "label": "Put the live record on the harbour rail",
         "after": "The crew gets the next observation at its working place, with a pointer back to the shore lesson for people preparing."
       }
-    ]
+    ],
+    "question": "When does a learning aid help, and when do we need the live record instead?"
   },
   {
     "id": "repair-and-memory",
@@ -558,6 +574,7 @@
         "label": "Set the custody leaf behind the family line",
         "after": "Another reader can retrace where the piece went while keeping the family account visible at the front."
       }
-    ]
+    ],
+    "question": "How can an object's own testimony and a viewer's interpretation each keep their place?"
   }
 ]

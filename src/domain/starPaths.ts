@@ -3,7 +3,7 @@ import type { CampaignState, Condition } from './types';
 export interface StarStep { action: string; objectives: string[] }
 export interface StarChoice { label: string; result: string; short: string }
 export interface StarSkill { id: string; name: string; steps: StarStep[]; task: string; choices: StarChoice[] }
-export interface StarPath { id: string; name: string; color: string; focus: string; skills: StarSkill[] }
+export interface StarPath { id: string; name: string; color: string; focus: string; /** The knowledge question for the path (C-028). */ question?: string; skills: StarSkill[] }
 
 export const STAR_STAGES = ['Notice', 'Try', 'Carry over', 'Pass on'] as const;
 export const STAR_METHODS = ['first', 'second'] as const;

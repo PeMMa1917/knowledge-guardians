@@ -49,7 +49,7 @@ function viewingObjective(record: EarlierView): Objective {
 
 export const earlierViewsContent = {
   missions: earlierViews.map((record) => ({ id: record.prop, world: record.world, title: record.title,
-    knowledgeQuestion: record.method, stake: record.request, objectives: [viewingObjective(record)] })),
+    knowledgeQuestion: record.question ?? record.method, stake: record.request, objectives: [viewingObjective(record)] })),
   journal: earlierViews.map((record) => ({ id: `j.${record.flag}`, text: `I brought the object to ${record.title.toLowerCase()}. I put both views within reach and left the keeper a way to use the comparison.`, claimKind: 'observation' })),
   hints: earlierViews.flatMap((record) => ['Bring the object back and equip it before approaching the case again.', record.method,
     'Move both readings into view to find what changed.', 'Try each reading, then put the matched evidence where your chosen reader can use it.',

@@ -30,7 +30,7 @@ export const starPathContent = {
     available: starStationOpen(site),
     world: site.world,
     stake: 'A nearby keeper needs a layout they can use again.',
-    knowledgeQuestion: site.path.focus,
+    knowledgeQuestion: site.path.question ?? site.path.focus,
     caseVisits: site.path.skills.map((skill) => [starFlag(site.path, skill)]),
     objectives: site.path.skills.map((skill): Objective => ({
       id: starFlag(site.path, skill), title: `Set a field aid for ${skill.name.toLowerCase()} and check the other end of its rail.`, essential: false,
