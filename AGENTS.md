@@ -15,6 +15,7 @@ npm run dev         # play at http://localhost:5173 (teacher view: /teacher.html
 - [docs/DESIGN_SUMMARY.md](docs/DESIGN_SUMMARY.md): a short paraphrase of the design (the full spec is private).
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): how the code fits together.
 - [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md): how to add missions, dialogue, exhibits, label kits, Showdowns, events and maps.
+- [docs/VOICES.md](docs/VOICES.md): a voice sheet for each named character. Read it before you write a new line.
 - [docs/ASSETS.md](docs/ASSETS.md): how to add art and audio, and the licence rules.
 - [docs/SOURCES.md](docs/SOURCES.md): the historical objects and people, and their sources.
 - [CREDITS.md](CREDITS.md): every asset with source, author and licence.

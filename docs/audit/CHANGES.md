@@ -433,6 +433,14 @@ The player can keep the choice and say why, change it, or ask what would change 
 
 **Where.** `src/domain/adventureJournal.ts` (each quest now has its world and step counts), `src/ui/adventureJournal.ts` (the grouped view), `src/ui/styles.css`, `tests/quest-pathways.test.ts`. The material drawers planned for single rooms in chapters 2, 3 and 6 can build on this.
 
+### Voice sheets (C-005)
+
+**What.** A new file, `docs/VOICES.md`, gives 63 characters a voice sheet: what each one believes, the mistake each one fears most, how each one speaks, and why. It covers every keeper and every character with more than 20 lines. The two keepers in each chapter are built to pull against each other, as decision X-008 asks. A test (`tests/voices.test.ts`) fails if a character with more than 20 lines has no sheet, or if a sheet lacks one of its four parts.
+
+**Why.** Personas E2, E3, E4 and G5 found that many characters sounded alike, and that the two keepers in a chapter rarely disagreed. The new two-reply moments, pushbacks and games already follow these sheets. Writers adding lines later now have one place to check a voice.
+
+**Where.** `docs/VOICES.md`, `tests/voices.test.ts`. Pronouns are used only where the game's own text already uses them.
+
 ### The 30-minute audit and the new games
 
 **What.** The audit test (`tests/learning.test.ts`) measures minutes of play in which a 30-minute window lacks some TOK concept or framework part. The new optional games add minutes inside windows that were already open, so the measure grew with each game. The test now checks the original bound on the path without the new games, and allows each new game to lengthen the gaps by at most three times its own minutes.
