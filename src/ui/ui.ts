@@ -1,3 +1,5 @@
+import { journalNavigation } from './journalNavigation';
+import { wordHistory } from './diaryWords';
 import {whistlePanel} from './whistleWatch';
 import {whistlePlaces} from '../content/whistleWatch';
 import {weirLampPanel} from './weirLamp';
@@ -1562,12 +1564,6 @@ export class UI implements UIApi {
     return h('div', {}, line, pop);
   }
 
-  private wordHistory(entry: GlossaryEntry): HTMLElement | null {
-    if (!entry.history) return null;
-    return h('details', { class: 'fine' }, h('summary', {}, 'Word history'),
-      h('p', {}, entry.history.note, ' ', h('a', { href: entry.history.url, target: '_blank', rel: 'noopener' }, 'Dictionary entry')));
-  }
-
   private glossaryExamples(entry: GlossaryEntry): HTMLElement | null {
     const c = ctx.controller;
     const [first, ...others] = examplesFor(entry, c.state, (condition) => c.check(condition));
@@ -1583,7 +1579,7 @@ export class UI implements UIApi {
     if (!g) return;
     clear(pop);
     pop.append(h('img', { src: artURL(lumenArt(ctx.settings)), alt: '', class: 'gloss-lumen' }),
-      h('div', {}, h('strong', {}, g.term), ' ', g.text, this.glossaryExamples(g), this.wordHistory(g)));
+      h('div', {}, h('strong', {}, g.term), ' ', g.text, this.glossaryExamples(g), wordHistory(g)));
     pop.style.display = '';
   }
 
@@ -2973,14 +2969,13 @@ export class UI implements UIApi {
 
   // --------------------------------------------------- journal & bag
 
-  openJournal(tab = 'diary'): void {
+  openJournal(tab = 'diary', focus?: 'shelf' | 'tab'): void {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
     if (tab === 'letters') this.deliverCommunityLetters(false);
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { diary: 'Diary', notes: 'My notes', 'open-quests': 'Open quests', story: 'Story so far', conversations: 'Conversations', entries: 'Entries', cards: 'Evidence cards', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', crossings: 'Crossings', ...(s.flags['ending.council'] ? { afterwards: 'Afterwards' } : {}), glossary: 'Glossary', views: 'Views', awards: 'Awards and XP', sources: 'Sources' };
-    const body = h('div', { class: 'tab-body' });
-    const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
+    const body = h('div', { class: 'tab-body', role: 'tabpanel', id: 'journal-page', 'aria-labelledby': 'journal-tab-' + tab, tabindex: 0 });
+    const nav = journalNavigation(tab, Boolean(s.flags['ending.council']), focus, (id, nextFocus) => this.openJournal(id, nextFocus));
     if (tab === 'diary' || tab === 'notes' || tab === 'open-quests') {
       body.append(adventureJournalTab(tab, c, (page) => this.openJournal(page)));
     } else if (tab === 'views') {
@@ -3167,7 +3162,7 @@ export class UI implements UIApi {
     } else if (tab === 'glossary') {
       body.append(h('p', { class: 'fine' }, 'Lumen remembers where a word came up on your journey. Open a word history to follow it further.'),
         h('dl', { class: 'glossary' }, ...c.pack.glossary.flatMap((g) => [
-          h('dt', {}, g.term), h('dd', {}, g.text, this.glossaryExamples(g), this.wordHistory(g)),
+          h('dt', {}, g.term), h('dd', {}, g.text, this.glossaryExamples(g), wordHistory(g)),
         ])));
     } else if (tab === 'atlas') {
       // Concepts, ATL ribbons and subjects met (spec 91, 92). Counts of meetings, not grades.

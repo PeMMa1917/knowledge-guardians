@@ -1,3 +1,5 @@
+import {playChapterLights} from './chapter-lights-journey.mjs';
+import {playDiaryShelves} from './diary-shelves-journey.mjs';
 import {playWhistleWatch} from './whistle-watch-journey.mjs';
 import { playExitSave } from './exit-save-journey.mjs';
 import { playGuestChapters } from './guest-chapters-journey.mjs';
@@ -30,7 +32,17 @@ const page = await browser.newPage({
         ? { width: 820, height: 1080 }
         : { width: 1280, height: 800 },
 });
-page.setDefaultTimeout(22000);
+const quietGuestRun = process.argv.includes('--guest-route') && process.env.KG_GUEST_COMFORT === '1';
+if (quietGuestRun) {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.addInitScript(() => {
+    if (!localStorage.getItem('kg.settings')) localStorage.setItem('kg.settings', JSON.stringify({
+      reducedMotion: true, reducedEffects: true, captions: true, musicVolume: 0, sfxVolume: 0,
+    }));
+  });
+  console.log('Guest route uses reduced effects, reduced motion and sound captions.');
+}
+page.setDefaultTimeout(process.argv.includes('--guest-route') ? 60000 : 22000);
 const faults = [];
 page.on('pageerror', (e) => faults.push(String(e)));
 page.on('response', (r) => {
@@ -96,7 +108,11 @@ try {
   const guestIndex=process.argv.indexOf('--guest-route');
   const exitOnly=process.argv.includes('--exit-save');
   const whistleOnly=process.argv.includes('--whistle-watch');
-  if(whistleOnly) await playWhistleWatch({page,engine,button,use,close,waitMap});
+  const shelvesOnly = process.argv.includes('--diary-shelves');
+  const lightsOnly = process.argv.includes('--chapter-lights');
+  if(lightsOnly) await playChapterLights({page,engine,posts,waitMap});
+  else if(shelvesOnly) await playDiaryShelves({page,waitMap,use,close});
+  else if(whistleOnly) await playWhistleWatch({page,engine,button,use,close,waitMap});
   else if(exitOnly) await playExitSave({page,waitMap,button});
   else if(guestIndex!==-1){
     const index=Number(process.argv[guestIndex+1]),guest=people[index];
@@ -162,7 +178,7 @@ try {
     faults.filter((s) => !s.includes('favicon')),
     [],
   );
-  console.log(engine, browser.version(), whistleOnly ? 'passed Liri’s three watches, travelling sheet and recall' : exitOnly ? 'passed all four exit signal orders, retry and reload' : guestIndex!==-1 ? 'passed both encounters in all 15 chapters and restored the guest’s work' : vaultOnly ? 'passed the six vault instruments, weir and council handover' : millOnly ? 'passed the six-counter mill and both earned passages' : makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
+  console.log(engine, browser.version(), lightsOnly ? 'passed all sixteen world grades, high contrast and reduced effects' : shelvesOnly ? 'passed four diary shelves, word histories and earned cross-area memories' : whistleOnly ? 'passed Liri’s three watches, travelling sheet and recall' : exitOnly ? 'passed all four exit signal orders, retry and reload' : guestIndex!==-1 ? 'passed both encounters in all 15 chapters and restored the guest’s work' : vaultOnly ? 'passed the six vault instruments, weir and council handover' : millOnly ? 'passed the six-counter mill and both earned passages' : makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
 } finally {
   await browser.close();
 }

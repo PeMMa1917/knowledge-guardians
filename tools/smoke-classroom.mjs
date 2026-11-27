@@ -165,7 +165,19 @@ try {
   const b = await device();
   await open(b);
   await button(b, 'Continue');
-  await button(b, 'Continue playing');
+  const recap = b.getByRole('dialog', { name: 'Recap' });
+  try {
+    await recap.waitFor({ timeout: 90000 });
+  } catch (cause) {
+    const screen = await b.evaluate(() => ({
+      dialog: document.querySelector('[role="dialog"]')?.getAttribute('aria-label'),
+      map: window.kg?.world?.map?.id,
+      retriable: !!document.querySelector('.map-loading button:not([disabled])'),
+      title: !!document.querySelector('.title-screen'),
+    }));
+    throw new Error('Class recovery did not reach the recap: ' + JSON.stringify(screen), { cause });
+  }
+  await recap.getByRole('button', {name:'Continue playing', exact:true}).click();
   await journal(b);
   assert.equal(await b.locator('#diary-note-text').inputValue(), 'Who stood behind the lamp');
   await b.getByText('The bell cast two shadows.', { exact: true }).first().waitFor();

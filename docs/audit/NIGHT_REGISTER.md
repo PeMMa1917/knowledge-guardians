@@ -174,3 +174,7 @@ A keyboard walk through the vault exposed a path under the three closed grates. 
 ## Page exits during long journeys
 
 Two Firefox guest runs reached the final workbench and then reopened the recruit at the Archive. A page exit with no pending diary edit could bypass the campaign save. The page now takes the same suspension save on either exit signal and retries if the first signal could not write. Chromium 156, Firefox 146 and WebKit 26 each passed four signal orders, storage recovery and a fresh load. B. R. Ambedkar’s Firefox journey then reopened on the last visited map with all fifteen chapter records. [Browser exit checks](../../tools/exit-save-journey.mjs) · [Fifteen-chapter recovery check](../../tools/guest-chapters-journey.mjs)
+
+## The visitor in the diary margin
+
+The player first fits the bank walker’s tracing, then covers the rehearsal-room names. Opening Responsibility on the second entry retrieves the actual mudbank entry and exposes the word’s dictionary source. The same route checks that an unvisited chart stays out of the margin, that arrow keys move between journal pages and that the post-Council page stays sealed. The chapter light journey visits all sixteen visual settings and changes the two comfort settings while staying in the same room. [Diary route](../../tools/diary-shelves-journey.mjs) · [Lighting route](../../tools/chapter-lights-journey.mjs)

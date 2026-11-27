@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 27 November • In the margins of my diary
+
+The journal keeps its pages in four sections. Opening a word beside a played action can bring up an earlier entry from another place where the same idea mattered in a different discipline. A word history and dictionary are available in the margin. Each world also takes its light from a local material, from reed and river silt to velvet and footlights. The high-contrast and reduced-effects settings keep the floor colours clear of the wash. [Journal pages](src/ui/journalNavigation.ts) · [Earned comparisons](src/ui/diaryWords.ts) · [Chapter light](src/app/daylight.ts)
+
 ## 27 November • Liri’s other shift
 
 Liri Pell wants the ferry watch and wants to get home before her sister falls asleep. On the mudbank, two people can vouch for different parts of a single print. In the rehearsal room the second warning beat disappears at one seat even when the listeners cover their names. On the island a chart that took a full shift to prepare can be called back when permission changes. Work alongside Liri and someone else gets a dry record, a place on the last boat or a visit with her sister. Each favour leaves something to talk about the next time you meet. [Three watches](src/content/whistleWatch.ts) · [The routes and their consequences](tests/whistle-watch.test.ts)

@@ -15,7 +15,7 @@ import { EMOTES, EMOTE_ICONS } from '../domain/emotes';
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
 import { FIELDS, decodeCrest } from '../domain/crest';
 import { bell, chime, clink, rain, shimmer } from '../app/ambience';
-import { CYCLE, raining, skyAt } from '../app/daylight';
+import { CYCLE, chapterTint, raining, skyAt } from '../app/daylight';
 import { lorelingForm } from '../domain/lorelings';
 import { caption } from '../app/captions';
 import { CampaignPlayback } from '../app/campaignPlayback';
@@ -486,8 +486,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const effects = !ctx.settings.reducedEffects;
     const w = m.width * TILE, h = m.height * TILE;
     // Ambient colour grade (multiply) and light pools (additive).
-    const ambient = m.ambience === 'archive' ? 0xa29ce0 : m.ambience === 'study' ? 0xc9a77e : 0xffe8c4;
-    this.grade = this.add.rectangle(-200, -200, w + 400, h + 400, ambient).setOrigin(0).setDepth(200000).setBlendMode(Phaser.BlendModes.MULTIPLY).setAlpha(effects ? 1 : 0);
+    const ambient = chapterTint(m.world, m.ambience === 'archive' ? 0xa29ce0 : m.ambience === 'study' ? 0xc9a77e : 0xffe8c4);
+    this.grade = this.add.rectangle(-200, -200, w + 400, h + 400, ambient).setOrigin(0).setDepth(200000).setBlendMode(Phaser.BlendModes.MULTIPLY).setAlpha(effects && !ctx.settings.highContrast ? 1 : 0);
     for (const l of m.lights) {
       const img = this.add.image(l.x * TILE, l.y * TILE, 'glow').setDepth(200001).setBlendMode(Phaser.BlendModes.ADD)
         .setTint(l.color).setScale((l.r * 2) / 128).setAlpha(effects ? 0.6 : 0);
@@ -686,7 +686,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const sky = skyAt(WorldScene.dayClock / CYCLE);
     // A grey-blue wash while it rains.
     const tint = this.rainDim > 0 ? Phaser.Display.Color.Interpolate.ColorWithColor(Phaser.Display.Color.ValueToColor(sky.tint), Phaser.Display.Color.ValueToColor(0x5a6a88), 100, Math.round(this.rainDim * 55)) : null;
-    this.grade.setFillStyle(tint ? Phaser.Display.Color.GetColor(tint.r, tint.g, tint.b) : sky.tint);
+    this.grade.setFillStyle(chapterTint(this.map.world, tint ? Phaser.Display.Color.GetColor(tint.r, tint.g, tint.b) : sky.tint));
     for (const l of this.lightPools) if (!this.tweens.isTweening(l)) l.setAlpha(sky.light);
     if (this.fireflies) { if (sky.night > 0.5 && !this.fireflies.emitting) this.fireflies.start(); else if (sky.night <= 0.5 && this.fireflies.emitting) this.fireflies.stop(); }
     if (sky.name !== this.lastSky) {
