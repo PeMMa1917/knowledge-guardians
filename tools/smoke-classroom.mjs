@@ -44,6 +44,7 @@ async function open(p) {
   await p.getByRole('dialog', { name: 'Class adventure' }).waitFor({ state: 'hidden' });
 }
 async function resume(p) {
+  await p.bringToFront();
   await button(p, 'Continue');
   const recap = p.getByRole('dialog', { name: 'Recap' });
   try {
@@ -54,6 +55,10 @@ async function resume(p) {
       map: window.kg?.world?.map?.id,
       retriable: !!document.querySelector('.map-loading button:not([disabled])'),
       title: !!document.querySelector('.title-screen'),
+      hidden: document.hidden,
+      size: document.querySelector('[role="dialog"]')?.getBoundingClientRect().toJSON(),
+      cover: document.querySelector('[role="dialog"]')?.closest('[inert],[aria-hidden="true"]')?.className,
+      elapsed: Math.round(performance.now()),
     }));
     throw new Error('Class recovery did not reach the recap: ' + JSON.stringify(screen), { cause });
   }
@@ -248,6 +253,8 @@ try {
     ),
     403,
   );
+  await t2.context().close();
+  await b.bringToFront();
   // The recovery device first finishes its online play. A fresh online device then shares its latest revision.
   await b.waitForFunction(() => JSON.parse(localStorage.getItem('kg.class.v1.a/north/ta') || '{}').dirty === false);
   await b.context().setOffline(true);

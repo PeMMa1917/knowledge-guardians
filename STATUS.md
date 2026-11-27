@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 27 November • Opening a room and returning to class
+
+A new player now loads the field pictures needed in the Nexus as they enter it. A player typing in the diary uses a quieter rendering clock. Calm and Zen players can leave a field invitation waiting while they walk. The class-copy comparison shows both drafts, checks the latest server revision while the choice is on screen and saves the selected text before reopening the adventure. [Hosting and online saves](docs/ACCOUNTS_AND_HOSTING.md) · [Rendering checks](docs/audit/NIGHT_REGISTER.md#map-pictures-and-the-first-room)
+
 ## 27 November • A ticket Hesper can read by touch
 
 A concert ticket that curls in Ren’s workshop can later help Hesper find a seat. Bela, Lio, Tamar and Teodora also have travelling instruments. The person at the receiving end changes what the two neighbours bring to the Council. Returning home reveals where the envelope, baton, ledger line, ticket or stool went. Each route has a third person whose next move depends on the Guardian’s choice. [Five homecomings](src/content/originHomecomings.ts) · [Chapter review](docs/audit/chapters/CH01.md#9-origin-side-quests)

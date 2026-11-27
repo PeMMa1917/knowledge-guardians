@@ -2963,6 +2963,7 @@ for (const position of ['empty', 'masked', 'open', 'wide', 'hinge']) {
   }];
 }
 const cache = new Map<string, HTMLCanvasElement>();
+const imageURLs = new Map<string, string>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {
   if (cache.has(key)) return cache.get(key)!;
@@ -2975,7 +2976,13 @@ export function drawArt(key: string): HTMLCanvasElement | null {
 }
 
 export function artURL(key: string): string {
-  return drawArt(key)?.toDataURL() ?? '';
+  const cached = imageURLs.get(key);
+  if (cached !== undefined) return cached;
+  const canvas = drawArt(key);
+  if (!canvas) return '';
+  const url = canvas.toDataURL();
+  imageURLs.set(key, url);
+  return url;
 }
 
 export function artKeys(): string[] { return Object.keys(DRAW); }

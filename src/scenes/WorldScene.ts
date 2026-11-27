@@ -11,6 +11,7 @@ import { vaultReturnSquare } from '../maps/undercroft';
  */
 import { nightByFriend } from '../domain/nightRegister';
 import { creaturePortrait } from '../ui/nightCreature';
+import { ensureFieldArt } from './fieldArt';
 import { ensureLook } from './looks';
 import { cloakThreads } from '../domain/appearance';
 import { EMOTES, EMOTE_ICONS } from '../domain/emotes';
@@ -171,6 +172,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
     // Starfield behind the floating Nexus hall.
     if (m.ambience === 'archive') {
+      ensureFieldArt(this.textures, 'star');
       for (let i = 0; i < 160; i++) {
         const st = this.add.image(Phaser.Math.Between(-200, m.width * TILE + 200), Phaser.Math.Between(-200, m.height * TILE + 200), 'star').setDepth(-10).setAlpha(Phaser.Math.FloatBetween(0.2, 0.9));
         st.setScrollFactor(Phaser.Math.FloatBetween(0.3, 0.7));
@@ -180,12 +182,17 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
     // Floor into one render texture.
     const rt = this.add.renderTexture(0, 0, m.width * TILE, m.height * TILE).setOrigin(0).setDepth(-5);
-    for (let y = 0; y < m.height; y++) {
-      for (let x = 0; x < m.width; x++) {
-        const f = m.floor(x, y);
-        if (f) rt.drawFrame(STAMPS[f].sheet, f, x * TILE, y * TILE);
-        else block(x, y, 1, 1);
+    rt.beginDraw();
+    try {
+      for (let y = 0; y < m.height; y++) {
+        for (let x = 0; x < m.width; x++) {
+          const f = m.floor(x, y);
+          if (f) rt.batchDrawFrame(STAMPS[f].sheet, f, x * TILE, y * TILE);
+          else block(x, y, 1, 1);
+        }
       }
+    } finally {
+      rt.endDraw();
     }
 
     // Stamps.
@@ -214,7 +221,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         this.objArt.set(it.id, box);
         continue;
       }
-      if (it.art && this.textures.exists(it.art)) {
+      if (it.art && ensureFieldArt(this.textures, it.art)) {
         const tex = this.textures.get(it.art).getSourceImage() as HTMLCanvasElement;
         const cx = (it.x + it.w / 2) * TILE, by = (it.y + it.h) * TILE;
         const img = this.add.image(cx, by, it.art).setOrigin(0.5, 1).setDepth(by + 16); // sits on top of tables and counters
@@ -250,10 +257,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
     // Portal visuals.
     if (m.id === 'nexus.archive') {
+      ensureFieldArt(this.textures, 'portal-ring');
       this.portalRing = this.add.image(13 * TILE, 4 * TILE, 'portal-ring').setDepth(3 * TILE).setScale(1.2);
       if (!ctx.settings.reducedMotion) this.tweens.add({ targets: this.portalRing, angle: 360, duration: 9000, repeat: -1 });
     }
     if (m.id === 'aethelgard.emberford') {
+      ensureFieldArt(this.textures, 'portal-stone');
       this.add.image(19.5 * TILE + 8, 24 * TILE, 'portal-stone').setOrigin(0.5, 1).setDepth(24 * TILE);
       block(19, 23, 2, 1);
     }
@@ -293,7 +302,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
     // Lumen, the fairy guide.
     this.lumenGlow = this.add.image(0, 0, 'glow').setScale(0.25).setTint(LUMEN_COLOURS[ctx.settings.lumenColour] ?? 0xfff2b0).setAlpha(0.55).setBlendMode(Phaser.BlendModes.ADD);
-    this.lumen = this.add.image(0, 0, lumenArt(ctx.settings));
+    const lumenKey = lumenArt(ctx.settings);
+    ensureFieldArt(this.textures, lumenKey);
+    this.lumen = this.add.image(0, 0, lumenKey);
 
     this.buildAtmosphere();
     this.fitCamera();
@@ -320,7 +331,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         this.displayedSpecimens.delete(it.id);
         const reading = s.flags[specimenReadingFlag(specimen.specimen.key)];
         const art = reading === 'source' ? 'fold.paired' : reading === 'use' ? 'fold.strip' : 'collection-stand';
-        if (img.texture.key !== art) img.setTexture(art).setDisplaySize(16, 24);
+        if (img.texture.key !== art && ensureFieldArt(this.textures, art)) img.setTexture(art).setDisplaySize(16, 24);
         continue;
       }
       if(specimen && noteForExhibit(specimen.id) && img instanceof Phaser.GameObjects.Image){
@@ -334,18 +345,18 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
       if (img && it.artOpen && img instanceof Phaser.GameObjects.Image) {
         const key = ctx.controller.check(it.artOpen.if) ? it.artOpen.key : it.art!;
-        if (img.texture.key !== key && this.textures.exists(key)) img.setTexture(key);
+        if (img.texture.key !== key && ensureFieldArt(this.textures, key)) img.setTexture(key);
       }
       if (img && it.artBy && img instanceof Phaser.GameObjects.Image) {
         const v = ctx.controller.state.flags[it.artBy.flag];
         const key = (typeof v === 'string' && it.artBy.keys[v]) || it.art!;
-        if (img.texture.key !== key && this.textures.exists(key)) img.setTexture(key);
+        if (img.texture.key !== key && ensureFieldArt(this.textures, key)) img.setTexture(key);
       }
       // The Lamp Wall shows exactly how many lamps are lit.
       if (img && it.kind === 'lamps' && img instanceof Phaser.GameObjects.Image) {
         const n = Math.max(0, Math.min(16, Number(ctx.controller.state.flags['lamps.lit'] ?? 0)));
         const key = `lamp-wall.${n}`;
-        if (img.texture.key !== key && this.textures.exists(key)) img.setTexture(key);
+        if (img.texture.key !== key && ensureFieldArt(this.textures, key)) img.setTexture(key);
       }
     }
     this.syncConditionalCast(true);
@@ -447,14 +458,16 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const key = covered ? 'closed.'+record.specimen.key : record?.specimen.key;
     if (this.displayedSpecimens.has(id) && this.displayedSpecimens.get(id) === key) return;
     this.displayedSpecimens.set(id, key);
-    display.setTexture(covered ? 'preserved.folder' : 'collection-stand').setDisplaySize(16, 24);
+    const stand = covered ? 'preserved.folder' : 'collection-stand';
+    ensureFieldArt(this.textures, stand);
+    display.setTexture(stand).setDisplaySize(16, 24);
     if (!record || covered) return;
     const asset = record.specimen.pixelAsset;
     if (asset) {
       this.drawMuseumObject(id, display, asset, () => this.displayedSpecimens.get(id) === key);
     } else {
       const art = BIG_ART[record.art] ?? record.art;
-      if (!this.textures.exists(art)) return;
+      if (!ensureFieldArt(this.textures, art)) return;
       const source = this.textures.get(art).getSourceImage() as HTMLCanvasElement;
       const scale = 22 / Math.max(source.width, source.height);
       display.setTexture(art).setDisplaySize(source.width * scale, source.height * scale);
@@ -579,7 +592,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   refreshLumen(): void {
     if (!this.lumen) return;
     const key = lumenArt(ctx.settings);
-    if (this.textures.exists(key)) this.lumen.setTexture(key);
+    if (ensureFieldArt(this.textures, key)) this.lumen.setTexture(key);
     this.lumenGlow?.setTint(LUMEN_COLOURS[ctx.settings.lumenColour] ?? 0xfff2b0);
     if (!ctx.settings.reducedEffects) this.lumenBurst();
   }
@@ -1051,7 +1064,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const friend = nightByFriend.get(want);
     const coat = 'register-pet.' + want;
     if (friend && !this.textures.exists(coat)) this.textures.addCanvas(coat, creaturePortrait(friend));
-    const sprite = this.add.sprite(x, y, friend ? coat : guide?.sprite ?? 'moth.0');
+    const spriteKey = friend ? coat : guide?.sprite ?? 'moth.0';
+    const sprite = this.add.sprite(x, y, ensureFieldArt(this.textures, spriteKey) ? spriteKey : 'moth.0');
     if (!guide && !friend) sprite.play('moth.flap');
     this.pet = { id: want, sprite, glow, target: null, until: 0, next: this.time.now + 4000 };
   }

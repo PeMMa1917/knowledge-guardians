@@ -1,7 +1,8 @@
 import { BASE_SHEET_KEY, BASE_SHEET_URL } from './looks';
 import Phaser from 'phaser';
 import { STAMPS, CHAR_FRAME } from './art';
-import { artKeys, drawArt, glowCanvas } from '../ui/illustrations';
+import { ensureFieldArt } from './fieldArt';
+import { glowCanvas } from '../ui/illustrations';
 
 // These tracks are only needed if the browser cannot play a generated score.
 const MUSIC: Record<string, string | undefined> = {
@@ -105,11 +106,8 @@ export class BootScene extends Phaser.Scene {
       const tex = this.textures.get(s.sheet);
       if (!tex.has(name)) tex.add(name, 0, s.x * 16, s.y * 16, s.w * 16, s.h * 16);
     }
-    // Procedural art (original, drawn in code).
-    for (const key of artKeys()) {
-      const c = drawArt(key);
-      if (c && !this.textures.exists(key)) this.textures.addCanvas(key, c);
-    }
+    // These two frames are needed when registering the shared animation.
+    for (const key of ['moth.0', 'moth.1', 'shadow']) ensureFieldArt(this.textures, key);
     if (!this.textures.exists('glow')) this.textures.addCanvas('glow', glowCanvas(128));
     if (!this.anims.exists('moth.flap')) this.anims.create({ key: 'moth.flap', frames: [{ key: 'moth.0' }, { key: 'moth.1' }], frameRate: 9, repeat: -1 });
     // Walk animations.
