@@ -449,6 +449,14 @@ The player can keep the choice and say why, change it, or ask what would change 
 
 **Where.** `src/domain/primerPage.ts`, `src/content/primer-page.json`, `src/ui/primerPanel.ts`, `src/maps/stage.ts`, `tests/primer-page.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
+### The Pattern Book, chapter 10's second game (C-004, X-006)
+
+**What.** At Clerk Dagny's cloth stall in Lantern Square, a trader wants to print the willow-stitch of the Fenmarket weavers (an invented people) on a thousand scarves, because "old patterns belong to everybody". Dagny opens the pattern book: three real cases, each about one people on its own page, each with its source. The Navajo Nation holds the NAVAJO trademark and went to court over goods sold under its name (Northern Arizona University ethics case). Maasai elders planned how to control the use of their name and image, and Maasai community members recorded their own elders' knowledge (WIPO; Strathmore University CIPIT). The Mixe community of Santa María Tlahuitoltepec spoke out in 2015 about a designer's copy of their blouse (Global Voices). Then Elder Yeva of the weavers asks for an offer: who agrees, whose name goes on it, and who gains. The weavers answer each term in their own words, and the player can change the offer or suggest buying the weavers' own scarves. Dagny and Tellen then disagree (X-008) about writing the rule down.
+
+**Why.** The second lesson folder asks who may use a people's designs. Decision X-006 asks for Indigenous knowledge that is verified and woven in, each people separately. Here the weavers' answers decide the outcome, because consent means the makers decide and can say no. That is the lesson, so their answers are not a hidden "right answer" from the game.
+
+**Where.** `src/domain/patternBook.ts`, `src/content/pattern-book.json` (with sources), `src/ui/patternPanel.ts`, `src/maps/market.ts`, `tests/pattern-book.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
 ### Voice sheets (C-005)
 
 **What.** A new file, `docs/VOICES.md`, gives 63 characters a voice sheet: what each one believes, the mistake each one fears most, how each one speaks, and why. It covers every keeper and every character with more than 20 lines. The two keepers in each chapter are built to pull against each other, as decision X-008 asks. A test (`tests/voices.test.ts`) fails if a character with more than 20 lines has no sheet, or if a sheet lacks one of its four parts.

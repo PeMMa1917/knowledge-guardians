@@ -1557,6 +1557,24 @@
      "text": "A primer is a seat, and every child sits in the same one. I would put a small line under it, always: this is one view of the bridge. Ask someone who was there."
     }
    ]
+  },
+  {
+   "id": "market.pattern",
+   "after": {
+    "flag": "field.pattern.done",
+    "eq": true
+   },
+   "heading": "Two views on the willow-stitch",
+   "replies": [
+    {
+     "speaker": "market-clerk",
+     "text": "I would put the weavers' rule in the market book, so no trader can say they did not know. A rule people can read protects the makers who are not at the stall that day."
+    },
+    {
+     "speaker": "market-assayer",
+     "text": "Written down, it will be measured and argued over, word by word. The Mixe community did not need a market book to know their blouse. I would ask the weavers, every time, and write down only what they want written."
+    }
+   ]
   }
  ]
 }

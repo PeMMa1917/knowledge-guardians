@@ -83,6 +83,8 @@ export const LEARN: Record<string, LearnTag> = {
   'field:ladder': { ...t(['certainty', 'justification', 'evidence'], [M], 3, 'analyse', 'application', 'relational', 8), aoks: ['MAT'] },
   // Choose a triangle in a grove (a line is refused), see other shapes, say where the shape came from, then pace a side.
   'field:trees': { ...t(['interpretation', 'objectivity', 'perspective'], [M], 2, 'evaluate', 'integration', 'relational', 6), aoks: ['MAT', 'NAT'] },
+  // Read three real cases of design copying, then make an offer to the weavers on consent, credit and share.
+  'field:pattern': { ...t(['power', 'responsibility', 'values', 'culture'], [E, P], 3, 'evaluate', 'caring', 'relational', 6), aoks: ['IND', 'ART', 'POL'] },
   // Choose one picture and one caption for a children's primer; hear what the page shows and hides; answer a child.
   'field:primer': { ...t(['perspective', 'power', 'interpretation', 'responsibility'], [P, E], 3, 'evaluate', 'human', 'relational', 5), aoks: ['HIS', 'ART'] },
   // Rebuild three torn notices from claim, evidence and limit strips; choose which line goes at the top.

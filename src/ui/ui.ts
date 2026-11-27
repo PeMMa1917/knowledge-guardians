@@ -98,6 +98,7 @@ import { fogPanel } from './fogPanel';
 import { festivalPanel } from './festivalPanel';
 import { reassemblyPanel } from './reassemblyPanel';
 import { primerPanel } from './primerPanel';
+import { patternPanel } from './patternPanel';
 import { fairPanel } from './fairPanel';
 import { batPanel } from './batPanel';
 import { mirrorPanel } from './mirrorPanel';
@@ -3796,6 +3797,8 @@ export class UI implements UIApi {
       batPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('bats'), () => this.closeModal()));
     else if (id === 'fair') this.openModal('bench-panel wide', 'The Value Fair', this.closeBtn(),
       fairPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('fair'), () => this.closeModal()));
+    else if (id === 'pattern') this.openModal('bench-panel wide', 'The Pattern Book', this.closeBtn(),
+      patternPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('pattern'), () => this.closeModal()));
     else if (id === 'primer') this.openModal('bench-panel wide', 'The Primer Page', this.closeBtn(),
       primerPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('primer'), () => this.closeModal()));
     else if (id === 'reassembly') this.openModal('bench-panel wide', 'The Reassembly Line', this.closeBtn(),
