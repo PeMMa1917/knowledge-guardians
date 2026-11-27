@@ -38,7 +38,15 @@ Play, engagement and enjoyable learning stay the main goal. Other views can stil
 | Whole game | [PERSONAS.md](PERSONAS.md) | C-001, C-002, C-003 done; others planned |
 | 1 Emberford and the Nexus | [CH01](chapters/CH01.md) | C-026, C-027 done; polish list C-021 started |
 | 2 The Nile archive | [CH02](chapters/CH02.md) | C-028 game-wide; plain titles; 5 two-reply moments; first field game (The Copyists' Ladder) |
-| 3 to 15 | next | next |
+| 3 Preserved Lives | [CH03](chapters/CH03.md) | content note before human remains; plain titles; 3 two-reply moments |
+| 4 The Observatory Coast | [CH04](chapters/CH04.md) | plain bearing titles; 4 two-reply moments |
+| 5 The Living Forest | [CH05](chapters/CH05.md) | 12 object names without catalogue numbers (game-wide); 4 two-reply moments |
+| 6 The Metalworks | [CH06](chapters/CH06.md) | plain jig-shop titles; 4 two-reply moments |
+| 7 The City of Copies | [CH07](chapters/CH07.md) | 3 in-world mission titles; 4 two-reply moments |
+| 8 The Cartographers’ Sea | [CH08](chapters/CH08.md) | 4 two-reply moments; Tupaia's chart planned |
+| 9 The House of Performance | [CH09](chapters/CH09.md) | 4 two-reply moments |
+| 10 The Market of Measures | [CH10](chapters/CH10.md) | 4 two-reply moments |
+| 11 to 15 | next | next |
 
 ## How to use this audit (for developers)
 

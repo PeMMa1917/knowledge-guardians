@@ -228,6 +228,564 @@
      "text": "That is exactly why I like it. The arch tells you which stone to watch. A hundred ladders could not tell you that. With a proof, you know what would break it before it breaks."
     }
    ]
+  },
+  {
+   "id": "preserved.display.records",
+   "after": {
+    "flag": "preserved.display",
+    "eq": "records"
+   },
+   "heading": "Two views on the two stands",
+   "replies": [
+    {
+     "speaker": "preserved-royal-keeper",
+     "text": "Separate stands respect each record. The royal file has its own gap and its own people. Put the two side by side, and visitors read one as the answer to the other."
+    },
+    {
+     "speaker": "preserved-coast-keeper",
+     "text": "Separate stands are fair, but visitors still compare. They just do it without help, and they bring the old habit of treating a royal tomb as normal and the Chinchorro dead as strange. The Chinchorro were preparing their dead about two thousand years before the earliest Egyptian mummies."
+    }
+   ]
+  },
+  {
+   "id": "preserved.display.paired",
+   "after": {
+    "flag": "preserved.display",
+    "eq": "paired"
+   },
+   "heading": "Two views on the comparison slip",
+   "replies": [
+    {
+     "speaker": "preserved-coast-keeper",
+     "text": "The slip lets visitors see two peoples caring for their dead in different ways, and it asks the question for them. Without it, the coastal stand is just the odd one at the end of the room."
+    },
+    {
+     "speaker": "preserved-inquiry-keeper",
+     "text": "A slip in the middle makes them a pair, and a pair invites a ranking. At my desk people already ask which was better. The slip has to say what each record can and cannot tell, or it turns into a scoreboard."
+    }
+   ]
+  },
+  {
+   "id": "preserved.display.delayed",
+   "after": {
+    "flag": "preserved.display",
+    "eq": "delayed"
+   },
+   "heading": "Two views on holding the cases",
+   "replies": [
+    {
+     "speaker": "preserved-registrar",
+     "text": "Holding the cases is the careful choice. A heading glowed with a mistake once, and it can do it again. The desk lets people ask before we answer for them."
+    },
+    {
+     "speaker": "preserved-inquiry-keeper",
+     "text": "Careful for us. But the families and the visitors came today. A closed case also says something: that the past is too fragile for them. I would rather open with honest gaps than keep the door shut."
+    }
+   ]
+  },
+  {
+   "id": "coast.limit.separate",
+   "after": {
+    "flag": "coast.limit",
+    "eq": "separate"
+   },
+   "heading": "Two views on the separate strip",
+   "replies": [
+    {
+     "speaker": "coast-forecaster",
+     "text": "A forecast is not a reading, so it gets its own strip with its own condition. When the wind changes, we take down one strip and the measurements stay true."
+    },
+    {
+     "speaker": "coast-signalkeeper",
+     "text": "Two strips means two things to read, and a cutter at the quay reads one. If they read only the forecast strip, they never see that it rests on the wind. The condition has to be where the eye lands first."
+    }
+   ]
+  },
+  {
+   "id": "coast.limit.interval",
+   "after": {
+    "flag": "coast.limit",
+    "eq": "interval"
+   },
+   "heading": "Two views on the open space for the next bell",
+   "replies": [
+    {
+     "speaker": "coast-forecaster",
+     "text": "An empty space says the honest thing: we will know more at the next bell. People learn to trust a notice that tells them when it will change."
+    },
+    {
+     "speaker": "coast-signalkeeper",
+     "text": "An empty space also looks like a missing number. Some crews will wait for it and miss the tide. Uncertainty helps only if people know what to do while they wait."
+    }
+   ]
+  },
+  {
+   "id": "coast.notice.signal",
+   "after": {
+    "flag": "coast.notice",
+    "eq": "signal"
+   },
+   "heading": "Two views on the quay board",
+   "replies": [
+    {
+     "speaker": "coast-signalkeeper",
+     "text": "The board stays where everyone can check it again. A notice you can go back to is worth more than one you heard once."
+    },
+    {
+     "speaker": "coast-forecaster",
+     "text": "The board serves the people who come to the board. The basket crews on the steps never pass it. A careful notice in the wrong place is careful for nobody."
+    }
+   ]
+  },
+  {
+   "id": "coast.notice.runner",
+   "after": {
+    "flag": "coast.notice",
+    "eq": "runner"
+   },
+   "heading": "Two views on the runner",
+   "replies": [
+    {
+     "speaker": "coast-forecaster",
+     "text": "The runner reaches the people with the least time and the most to lose. The steps hear first, and that is the right order."
+    },
+    {
+     "speaker": "coast-signalkeeper",
+     "text": "A spoken copy changes each time it is passed on. By the third crew, the condition may be gone and only the number left. And when the reading changes, who runs to take the old one back?"
+    }
+   ]
+  },
+  {
+   "id": "forest.account.words",
+   "after": {
+    "flag": "forest.account.layout",
+    "eq": "words"
+   },
+   "heading": "Two views on the crews' own words",
+   "replies": [
+    {
+     "speaker": "forest-steward",
+     "text": "The crews wrote those notes for each other, in their own words. If we rewrite them into neat lines, we lose who saw what and why they cared. A record of people working should sound like them."
+    },
+    {
+     "speaker": "forest-naturalist",
+     "text": "Their words are precious, but 'heard wings on the ridge' and 'saw three birds on the ridge' are different kinds of evidence. If the line does not say which is which, a visitor counts a sound as a sighting."
+    }
+   ]
+  },
+  {
+   "id": "forest.account.lines",
+   "after": {
+    "flag": "forest.account.layout",
+    "eq": "lines"
+   },
+   "heading": "Two views on separate lines for heard and seen",
+   "replies": [
+    {
+     "speaker": "forest-naturalist",
+     "text": "A sound and a sighting are different evidence, and now the record shows it. Anyone can count the seen lines and treat the heard ones as leads."
+    },
+    {
+     "speaker": "forest-steward",
+     "text": "Clean lines, and the crews' voices gone. The lamp crew knows those reeds better than any lookout. Sorting their notes into our columns tells them our way of knowing is the real one."
+    }
+   ]
+  },
+  {
+   "id": "forest.response.quiet",
+   "after": {
+    "flag": "forest.response",
+    "eq": "quiet"
+   },
+   "heading": "Two views on the quiet creek screen",
+   "replies": [
+    {
+     "speaker": "forest-steward",
+     "text": "Small groups at the creek, large groups to the ridge. The birds get their quiet, and the screen stays a place where watching still works."
+    },
+    {
+     "speaker": "forest-naturalist",
+     "text": "And the people on the bridge who will not climb the ridge? They go home with nothing. A rule that protects the count can also decide who gets to see."
+    }
+   ]
+  },
+  {
+   "id": "forest.response.brief",
+   "after": {
+    "flag": "forest.response",
+    "eq": "brief"
+   },
+   "heading": "Two views on briefing everyone with both logs",
+   "replies": [
+    {
+     "speaker": "forest-naturalist",
+     "text": "Everyone hears both logs and chooses for themselves. That is the fairest thing a record can do: let people decide with the same evidence we had."
+    },
+    {
+     "speaker": "forest-steward",
+     "text": "Fair to the people, maybe. But if everyone chooses the creek, the creek screen fills, the birds turn away, and tomorrow's log shows a crossing that closed because we watched it."
+    }
+   ]
+  },
+  {
+   "id": "metal.response.window",
+   "after": {
+    "flag": "metal.response",
+    "eq": "window"
+   },
+   "heading": "Two views on the window",
+   "replies": [
+    {
+     "speaker": "metal-inspector",
+     "text": "The readings in the window are the test, in plain sight. An empty maker clip is honest: the balance cannot tell us who made them, so the clip says nothing."
+    },
+    {
+     "speaker": "metal-steward",
+     "text": "An empty clip is not silence to a buyer. It looks like a gap someone will fill, and the seller will fill it with a story. The ledger shows where each box went. That is the history the panels actually have."
+    }
+   ]
+  },
+  {
+   "id": "metal.response.ledger",
+   "after": {
+    "flag": "metal.response",
+    "eq": "ledger"
+   },
+   "heading": "Two views on the movement ledger",
+   "replies": [
+    {
+     "speaker": "metal-steward",
+     "text": "The ledger lets a buyer follow each box from the yard, step by step. A claim about origin should rest on the journey, not on how two things look."
+    },
+    {
+     "speaker": "metal-inspector",
+     "text": "A ledger shows where a box went, not what is in it. Two units against four is the one thing we measured. Hide it behind a long ledger, and most buyers will never reach it."
+    }
+   ]
+  },
+  {
+   "id": "metal.comparison.size",
+   "after": {
+    "flag": "metal.comparison",
+    "eq": "size"
+   },
+   "heading": "Two views on one size note",
+   "replies": [
+    {
+     "speaker": "metal-inspector",
+     "text": "One size note, two readings under it. The buyer sees at once that the same size did not mean the same weight. That is the surprise, and it should be the first thing they read."
+    },
+    {
+     "speaker": "metal-steward",
+     "text": "Under one note, the two readings look like one object measured twice. Give each box its own line, or someone will average them and call it a match."
+    }
+   ]
+  },
+  {
+   "id": "metal.comparison.boxes",
+   "after": {
+    "flag": "metal.comparison",
+    "eq": "boxes"
+   },
+   "heading": "Two views on a reading for each box",
+   "replies": [
+    {
+     "speaker": "metal-steward",
+     "text": "Each box keeps its own reading, so nobody can blend them. When the docket turns up, we can follow each box by its letter."
+    },
+    {
+     "speaker": "metal-inspector",
+     "text": "Two separate cards make two separate stories. The point of the test was the comparison. If the reader has to put the cards side by side themselves, many will not."
+    }
+   ]
+  },
+  {
+   "id": "copies.response.reprint",
+   "after": {
+    "flag": "copies.response",
+    "eq": "reprint"
+   },
+   "heading": "Two views on the full reprint",
+   "replies": [
+    {
+     "speaker": "copies-presskeeper",
+     "text": "A full sheet carries the claim, the trial day and the source together, in one place. Nothing can fall off a sheet that was printed whole."
+    },
+    {
+     "speaker": "copies-lendingkeeper",
+     "text": "A full sheet at the hall door reaches people who already came to the hall. The ones who turned back at the stalls never see it. A complete correction in one place can still leave the wrong copies out there."
+    }
+   ]
+  },
+  {
+   "id": "copies.response.strip",
+   "after": {
+    "flag": "copies.response",
+    "eq": "strip"
+   },
+   "heading": "Two views on the correction strips",
+   "replies": [
+    {
+     "speaker": "copies-lendingkeeper",
+     "text": "The strips go where the wrong copies already are. That is the only place a correction can catch the people who were misled."
+    },
+    {
+     "speaker": "copies-presskeeper",
+     "text": "A strip is a small thing pinned to a big one. Strips fall off, and get pinned to the wrong copy. In a year, someone will find the old sheet without its strip and believe it again."
+    }
+   ]
+  },
+  {
+   "id": "copies.alignment.editions",
+   "after": {
+    "flag": "copies.alignment",
+    "eq": "editions"
+   },
+   "heading": "Two views on keeping the sheets in order",
+   "replies": [
+    {
+     "speaker": "copies-presskeeper",
+     "text": "In order, the sheets show how the claim changed, one copy at a time. You can point to the exact copy where Tuesday fell out. That is how a press learns."
+    },
+    {
+     "speaker": "copies-lendingkeeper",
+     "text": "A reader at my door does not care which copy changed first. They want to know if the hall is open. The history of the error helps us. The missing time helps them."
+    }
+   ]
+  },
+  {
+   "id": "copies.alignment.lines",
+   "after": {
+    "flag": "copies.alignment",
+    "eq": "lines"
+   },
+   "heading": "Two views on pinning the missing lines",
+   "replies": [
+    {
+     "speaker": "copies-lendingkeeper",
+     "text": "The time and the source go back where people read. Whoever picks up a copy now gets what was lost."
+    },
+    {
+     "speaker": "copies-presskeeper",
+     "text": "Pin the lines back, and the copies look as if they were never wrong. The next printer cannot see where the claim broke, and the same break happens again."
+    }
+   ]
+  },
+  {
+   "id": "sea.response.shore",
+   "after": {
+    "flag": "sea.response",
+    "eq": "shore"
+   },
+   "heading": "Two views on the shore plan first",
+   "replies": [
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "Most people who stop here walk. The shore plan answers their question, and the inset still points the crews to their survey. Put the most used chart where most people look."
+    },
+    {
+     "speaker": "sea-cartographer",
+     "text": "Most people who stop here walk, and most of them never go near the shoal. The crews do, and a small inset is how a skiff ends up on the shoal. Put the chart that can hurt someone where nobody can miss it."
+    }
+   ]
+  },
+  {
+   "id": "sea.response.water",
+   "after": {
+    "flag": "sea.response",
+    "eq": "water"
+   },
+   "heading": "Two views on the shoal chart at full size",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "The shoal chart is short, but it is the one that keeps a boat off the rocks. Full size means a crew can read the depth marks without bending to an inset."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "And the carriers who asked first get the side wall. They will read the big chart, see water everywhere, and think the shore plan was the small thing it was not. A display also teaches what matters most."
+    }
+   ]
+  },
+  {
+   "id": "sea.route-note.shore",
+   "after": {
+    "flag": "sea.route-note",
+    "eq": "shore"
+   },
+   "heading": "Two views on the carriers' names",
+   "replies": [
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "The carriers' names say where work changes hands. Next to the shore plan, those names become a working map, not a list of words."
+    },
+    {
+     "speaker": "sea-cartographer",
+     "text": "The crew's names come from what they see from the water. Put the carriers' names on the shore plan first, and the market's way of naming the coast becomes the official one, just because it was closer to the desk."
+    }
+   ]
+  },
+  {
+   "id": "sea.route-note.water",
+   "after": {
+    "flag": "sea.route-note",
+    "eq": "water"
+   },
+   "heading": "Two views on the crew's names",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "A name like 'Lantern House' is a sight point: it tells a crew where to look. Next to the survey, it is a tool, not a label."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "A tool for the crew. For a carrier, 'Lantern House' is just a building on the wrong side. Every name on a chart says whose way of moving through the place counts first."
+    }
+   ]
+  },
+  {
+   "id": "stage.response.pause",
+   "after": {
+    "flag": "stage.response",
+    "eq": "pause"
+   },
+   "heading": "Two views on the silence first",
+   "replies": [
+    {
+     "speaker": "stage-director",
+     "text": "Silence first, and the audience waits with the worker. When the crate moves, they already feel why. The order gives the moment its reason."
+    },
+    {
+     "speaker": "stage-host",
+     "text": "Silence first, and the audience decides the worker is afraid before anything happens. Half of them will never change that reading. The order does not only give a reason. It chooses one."
+    }
+   ]
+  },
+  {
+   "id": "stage.response.move",
+   "after": {
+    "flag": "stage.response",
+    "eq": "move"
+   },
+   "heading": "Two views on the move first",
+   "replies": [
+    {
+     "speaker": "stage-host",
+     "text": "The move first lets the audience see what happened before anyone tells them how to feel. Then the silence is theirs to read."
+    },
+    {
+     "speaker": "stage-director",
+     "text": "Nobody reads a silence fresh. After the crate moves, the pause looks like guilt. You have not left the meaning open. You have picked a darker one."
+    }
+   ]
+  },
+  {
+   "id": "stage.audience.front",
+   "after": {
+    "flag": "stage.audience",
+    "eq": "front"
+   },
+   "heading": "Two views on the front-seat view",
+   "replies": [
+    {
+     "speaker": "stage-director",
+     "text": "The front seats see the whole move. That is the staging as we made it. A cast plan should show the scene as it is meant to be seen."
+    },
+    {
+     "speaker": "stage-host",
+     "text": "As it is meant to be seen by the people with the best seats. The side seats paid too. If the plan shows only the front view, nobody will ever fix what the side cannot see."
+    }
+   ]
+  },
+  {
+   "id": "stage.audience.side",
+   "after": {
+    "flag": "stage.audience",
+    "eq": "side"
+   },
+   "heading": "Two views on the side view",
+   "replies": [
+    {
+     "speaker": "stage-host",
+     "text": "The side view shows what most of the hall actually gets: the lines and the rhythm, with the move half hidden. That is the scene the audience really knows."
+    },
+    {
+     "speaker": "stage-director",
+     "text": "Plan from the worst seat, and you stage for the post, not for the story. Better to fix the post and keep the full move than to shrink the scene to fit it."
+    }
+   ]
+  },
+  {
+   "id": "market.comparison.paired",
+   "after": {
+    "flag": "market.comparison",
+    "eq": "paired"
+   },
+   "heading": "Two views on both pairs of readings",
+   "replies": [
+    {
+     "speaker": "market-assayer",
+     "text": "Both pairs side by side show the mistake itself: the basket counted as fibre. A buyer who sees how the first tag went wrong can catch the next one."
+    },
+    {
+     "speaker": "market-clerk",
+     "text": "Four numbers at a busy stall, and the buyer reads the biggest one. Show the net figure first. A household needs to know what it gets, not how the seller got it wrong."
+    }
+   ]
+  },
+  {
+   "id": "market.comparison.net",
+   "after": {
+    "flag": "market.comparison",
+    "eq": "net"
+   },
+   "heading": "Two views on net figures first",
+   "replies": [
+    {
+     "speaker": "market-clerk",
+     "text": "Net first, because fibre is what people pay for. The gross figures still help the carters, so they go where the carters look."
+    },
+    {
+     "speaker": "market-assayer",
+     "text": "Net first hides the reason the tag was wrong. Next week another seller weighs a heavy basket, and nobody on the queue knows to ask about tare."
+    }
+   ]
+  },
+  {
+   "id": "market.quote.posted",
+   "after": {
+    "flag": "market.quote.rule",
+    "eq": "posted"
+   },
+   "heading": "Two views on posting the whole-lot line",
+   "replies": [
+    {
+     "speaker": "market-clerk",
+     "text": "The whole-lot line tells a buyer with eight credits what they can actually take home today. A cheaper rate they cannot afford is not a real choice."
+    },
+    {
+     "speaker": "market-assayer",
+     "text": "Today's line is true for today's two lots. Leave it up, and tomorrow someone buys a new crate on a line that was never measured for it."
+    }
+   ]
+  },
+  {
+   "id": "market.quote.reweigh",
+   "after": {
+    "flag": "market.quote.rule",
+    "eq": "reweigh"
+   },
+   "heading": "Two views on the reweigh ticket",
+   "replies": [
+    {
+     "speaker": "market-assayer",
+     "text": "A reweigh ticket says the honest thing: a new crate gets its own measurement. A quote should never outlive the lot it was weighed on."
+    },
+    {
+     "speaker": "market-clerk",
+     "text": "Honest, and slow. The first person at the next bell waits at the scale, and the person behind them leaves. Every check has a cost, and the queue pays it."
+    }
+   ]
   }
  ]
 }

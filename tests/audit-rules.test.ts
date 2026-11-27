@@ -10,7 +10,7 @@ describe('audit rules', () => {
     expect(bad).toEqual([]);
   });
   it('C-003: no step title names an object only by an accession number', () => {
-    const bad = pack.missions.flatMap((m) => m.objectives).filter((o) => /\b(beside|for|of|on|to|with|the) \d{2,4}\.\d+\.\d+/.test(o.title ?? '')).map((o) => o.id);
+    const bad = pack.missions.flatMap((m) => m.objectives).filter((o) => (/\b(beside|for|of|on|to|with|the) \d{2,4}\.\d+\.\d+/.test(o.title ?? '') || /\(\d{4}\.\d+\)/.test(o.title ?? '') || /“[^”]*\b\d{2,4}\.\d+[^”]*”/.test(o.title ?? ''))).map((o) => o.id);
     expect(bad).toEqual([]);
   });
 });

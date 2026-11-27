@@ -81,6 +81,7 @@ import { OFFER_LINE, shouldOfferHelp } from '../domain/lumenOffer';
 import { IDEA_CREDITS } from '../domain/ideaCredits';
 import { gymPanel } from './gymPanel';
 import { ladderPanel } from './ladderPanel';
+import { contentNoteFor, noteSeenFlag } from '../domain/contentNotes';
 import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
 import { flushResearch, recordResearch } from '../app/research';
 import { ROWS, SECTIONS, startTrial, step, tileWords, type Tile } from '../domain/provingFloor';
@@ -3939,6 +3940,26 @@ export class UI implements UIApi {
     if (this.timedRun) window.clearInterval(this.timedRun.tick);
     this.timedRun?.clock.remove();
     this.timedRun = null;
+  }
+
+  /** A content note before a room with hard real history (C-014, X-005). Shows once; stepping back costs nothing. */
+  showContentNote(mapId: string): void {
+    const c = ctx.controller;
+    const note = contentNoteFor(mapId, c.state.flags);
+    if (!note) return;
+    c.dispatch({ type: 'SetFlag', flag: noteSeenFlag(note.id), value: true });
+    const back = MAPS[note.stepBack.map];
+    this.openModal('bench-panel content-note', note.heading, this.closeBtn(),
+      h('h2', {}, note.heading),
+      h('p', {}, note.text),
+      h('p', { class: 'fine' }, 'To read more: ', ...note.sources.flatMap((src, i) => [i ? '; ' : '',
+        h('a', { href: src.url, target: '_blank', rel: 'noopener noreferrer' }, src.title)]), '.'),
+      h('div', { class: 'row' },
+        h('button', { type: 'button', class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Go in'),
+        back ? h('button', { type: 'button', onclick: () => {
+          this.closeModal();
+          ctx.world?.changeMap(back.id, back.spawn.x, back.spawn.y, { route: { id: 'content-note', label: note.stepBack.label } });
+        } }, `Step back to ${note.stepBack.label}`) : ''));
   }
 
   /** Close a field game: first time gives marks and the idea in the Lore codex. */

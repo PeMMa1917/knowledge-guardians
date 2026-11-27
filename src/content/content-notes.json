@@ -1,0 +1,16 @@
+{
+ "_note": "Content notes (audit fix C-014, decision X-005). A note shows the first time the player enters one of its maps. The player can go in or step back, and nothing is lost. Sources are for players and teachers who want to read more.",
+ "notes": [
+  {
+   "id": "human-remains.preserved",
+   "maps": ["preserved.royal", "preserved.coast"],
+   "heading": "Before you go in: human remains",
+   "text": "This room holds records about people who died long ago, and about how their bodies were cared for after death. The records concern real people and real communities, and some of the dead have living descendants. Some visitors find this hard. You can go in now, or step back to the Cold Store and come back later. Nothing is lost.",
+   "stepBack": { "map": "preserved.archive", "label": "the Cold Store" },
+   "sources": [
+    { "title": "UNESCO World Heritage List: Settlement and Artificial Mummification of the Chinchorro Culture", "url": "https://whc.unesco.org/en/list/1634" },
+    { "title": "National Museum of Egyptian Civilization, Cairo (the royal mummies)", "url": "https://nmec.gov.eg/" }
+   ]
+  }
+ ]
+}

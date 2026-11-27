@@ -135,6 +135,70 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Why.** Mika asked to weave the new material in the same way as the first folder: paraphrased, adapted into play, and never quiz-like.
 
+### Chapter 3: content note, plain titles and replies (C-014, C-003, X-008)
+
+**What.** The first time the player enters the royal or the Chinchorro records room, a short note says the room holds records about human remains. It links two sources and has a "Step back to the Cold Store" button. Stepping back costs nothing. The two-rail gallery titles no longer show accession numbers. Three two-reply moments follow the choice of how to open the display.
+
+**Why.** Mika's decision X-005 asks for content notes and a way to step out before hard real history. The audit of chapter 3 ([CH03.md](chapters/CH03.md)) found no note and five titles with accession numbers.
+
+**Where.** `src/content/content-notes.json`, `src/domain/contentNotes.ts`, `showContentNote` in `src/ui/ui.ts`, the scene hook in `src/scenes/WorldScene.ts`, `src/content/clearanceCases.ts`, `src/content/two-replies.json`, `tests/content-notes.test.ts`, `tests/audit-rules.test.ts`.
+
+### Chapter 4: replies and plain titles (X-008, C-003)
+
+**What.** Neri and Ruan now disagree after the two choices in "The Next Bell": how to carry the forecast's limit, and how to send the notice. The twelve bearing-room titles use plain words.
+
+**Why.** The chapter 4 audit ([CH04.md](chapters/CH04.md)) found that the two keepers never disagree, and that the bearing titles were long and abstract.
+
+**Where.** `src/content/two-replies.json`, `src/content/bearingBay.ts`.
+
+### Chapter 5: replies, and object names without catalogue numbers (X-008, C-003)
+
+**What.** Elian and Ayla now disagree after the layout of the crews' notes and after the choice of how to send visitors. Twelve object names in the forest, the reference line, the field store and the correspondence room lost their catalogue numbers (for example "Turtle Bell, Met 1977.187.26" is now "Turtle Bell"). The number stays in each object's source record.
+
+**Why.** The chapter 5 audit ([CH05.md](chapters/CH05.md)) found the numbers in step titles, which C-003 rules out. The audit test now catches a number inside a quoted name.
+
+**Where.** `src/content/two-replies.json`, `fern-records.json`, `reference-line-specimens.json`, `field-store-specimens.json`, `correspondence-specimens.json`, `tests/audit-rules.test.ts`.
+
+### Chapter 6: replies and plain titles (X-008, C-003)
+
+**What.** Corra and Bea now disagree after the layout of the balance readings and after the choice of where buyers see the evidence. The 40 jig-shop steps say "Check that a holder fits …" instead of "Verify a support for …".
+
+**Why.** The chapter 6 audit ([CH06.md](chapters/CH06.md)).
+
+**Where.** `src/content/two-replies.json`, `src/content/jigShop.ts`, `src/content/reference-line-specimens.json`.
+
+### Chapter 7: replies and in-world titles (X-008, X-013)
+
+**What.** Lark and Mina now disagree after the choice of sheet order and after the choice of reprint or strips. Three missions named after catalogue entries have in-world titles: "The Question on the Bone", "The Second Volume of Jikji" and "‘Umar’s Plates". The object cards keep the catalogue names.
+
+**Why.** The chapter 7 audit ([CH07.md](chapters/CH07.md)).
+
+**Where.** `src/content/two-replies.json`, `src/content/reference-proofs.json`.
+
+### Chapter 8: replies (X-008)
+
+**What.** Renna and Sora now disagree after the choice of which place names go first and after the choice of which chart takes the front of the display.
+
+**Why.** The chapter 8 audit ([CH08.md](chapters/CH08.md)).
+
+**Where.** `src/content/two-replies.json`.
+
+### Chapter 9: replies (X-008)
+
+**What.** Edda and Hari now disagree after the cue order (silence or move first) and after the choice of which seat view goes beside the cast plan.
+
+**Why.** The chapter 9 audit ([CH09.md](chapters/CH09.md)).
+
+**Where.** `src/content/two-replies.json`.
+
+### Chapter 10: replies (X-008)
+
+**What.** Tellen and Dagny now disagree after the layout of the basket readings and after the whole-lot quote rule.
+
+**Why.** The chapter 10 audit ([CH10.md](chapters/CH10.md)).
+
+**Where.** `src/content/two-replies.json`.
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.

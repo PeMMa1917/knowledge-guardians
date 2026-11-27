@@ -461,7 +461,10 @@ async function smokeMap(browser, map) {
   return { colours, steps: result.next.length };
 }
 
-const maps = ['all', 'maps', 'access', 'stress'].includes(mode) ? await readRegistry() : [];
+// KG_SMOKE_MAPS=id1,id2 limits the walk to some maps (handy after a change to one world).
+const onlyMaps = process.env.KG_SMOKE_MAPS?.split(',').filter(Boolean);
+const maps = (['all', 'maps', 'access', 'stress'].includes(mode) ? await readRegistry() : [])
+  .filter((map) => !onlyMaps || onlyMaps.includes(map.id));
 const profile = await mkdtemp(join(tmpdir(), 'kg-browser-smoke-'));
 const chromium = spawn(process.env.CHROMIUM ?? 'chromium', [
   '--headless', '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu',
@@ -486,11 +489,14 @@ try {
   await until(() => browser.evaluate(() => window.kg?.world?.map?.id === 'nexus.archive'), 'new Guardian in the Nexus');
   await until(() => browser.evaluate(() => !!document.querySelector('[role="dialog"].dialogue')), 'cold-opening dialogue');
   if (mode === 'all' || mode === 'access') await smokeManualSpeech(browser);
-  await browser.evaluate(() => {
+  // Content notes (C-014) open a panel on first entry; mark them seen so the walk is not blocked.
+  const noteFlags = JSON.parse(await readFile(new URL('../src/content/content-notes.json', import.meta.url), 'utf8')).notes.map((n) => `note.${n.id}.seen`);
+  await browser.evaluate((flags) => {
     window.kg.settings.reducedMotion = true;
     window.kg.settings.reducedEffects = true;
+    for (const flag of flags) window.kg.controller.dispatch({ type: 'SetFlag', flag, value: true });
     window.kg.ui.closeModal();
-  });
+  }, noteFlags);
 
   let passed = 0;
   for (const map of mode === 'all' || mode === 'maps' ? maps : []) {
