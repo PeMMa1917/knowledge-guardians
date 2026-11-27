@@ -512,3 +512,11 @@ On Tova’s picture ferry two moons belong to two family memories. Neris can hol
 ### The date above the door
 
 Rix can afford one heading for the parade. Jori remembers the newspaper dating her workshop by the day it closed. At the collection room the Guardian can make the street an invitation with a drum, a lantern, both or six beats of silence. One neighbour hears from the stair. Another sees through a window. The invitation changes who starts the music and which piece of a holding’s history the street agrees to remember. Four historical visitors bring editorial choices of their own. The block on the composing desk can change while its first impression is already in another person’s hands. [Composition and receiving rooms](../src/maps/streetAlmanac.ts)
+
+### The price you can read with your thumb
+
+The last owner took the picture above the stove. Cen bought the cart but kept the price she cut into it as a girl. Kit, a former theatre prompter who once missed the last step of the stage, can move the wheels and has trouble asking for help out loud. When the shop floor taps three times, Cen knows the cue. In the tenth chapter the Guardian can answer both women by making a pot for someone who is still outside.
+
+Rain makes the cart leave Lantern Square. The chapter eleven weir brings buyers who stand across the water. At the chapter twelve North Steps the buyer can see a sign before there is time to speak. A starting number offers certainty to one and a reason to turn back to another. A second visit can change the counter. The notes two mill workers send with their bids complicate what Kahneman’s groups and Tversky’s spoons made visible. The dent in the cup pays off when a stranger is allowed to explain why she stopped.
+
+**Conflict map** · Weather moves a seller, her old sign moves prospective customers, and a faulty street dial gives Kit an offset she can actually correct. Cen can face the written offers or the corrected dial towards the street. Her disagreement with Kit about what a passing stranger can know need never be settled.

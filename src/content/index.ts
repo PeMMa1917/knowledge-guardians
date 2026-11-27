@@ -1,3 +1,4 @@
+import {installFirstCup} from './firstCup';
 import {installStreetAlmanac} from './streetAlmanac';
 import {installCourierLift} from './courierLift';
 import {giantContent,duchamp} from './giantSleeve';
@@ -279,6 +280,7 @@ export function buildPack(): ContentPack {
   addCanoeProjection(content);
   installCourierLift(content);
   installStreetAlmanac(content);
+  installFirstCup(content);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);

@@ -120,3 +120,7 @@ The supplied title-unpacking materials invite learners to change a term and foll
 ### The folding flock
 
 The supplied lesson on Indigenous knowledge and history asks how to handle competing accounts and how to assess an oral and a written source. At Seagrass Steps, Nainoa Thompson’s first-person account changes a printed caption. A published voyage history corrects a harbourkeeper’s inference about who sailed. The child who takes home the theatre programme needs a particular canoe and a claim the evidence can support. These scenes paraphrase public sources and keep each speaker and community named. [The harbour records](../../src/content/seaBirdWatch.ts) · [The gallery](../../src/content/canoeProjection.ts)
+
+### Who gets the first cup?
+
+The quantitative and human-science lessons meet at a cocoa cart. A mathematical estimate depends on equal portions and an ideal mixing rule. The street instrument lets Kit test a measured offset. Daniel Kahneman and Amos Tversky help keep two small crews’ offers traceable to the tickets they actually saw, including the invitations that drew no offer. What does the posted price do to a neighbour who turns away before the first cup is poured? The answer changes the public sign the Guardian can put up. [Original studies and limits of the game model](../SOURCES.md#the-first-cup)

@@ -1,3 +1,4 @@
+import {firstCupPanel} from './firstCup';
 import {streetAlmanacPanel} from './streetAlmanac';
 import {giantPanel} from './giantSleeve';
 import {petalRibbons} from './petalRibbons';
@@ -72,6 +73,8 @@ interface Panel<T> {
 }
 
 export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
+  ['first-cup-shop',{title:'Who gets the first cup?',open:(c,sound)=>firstCupPanel(c,sound,false)}],
+  ['first-cup-street',{title:'The cart in the rain',open:(c,sound)=>firstCupPanel(c,sound,true)}],
   ['street-compose',{title:'A birthday with four dates',open:(c,sound)=>streetAlmanacPanel(c,sound,false)}],
   ['street-evening',{title:'The parade at the window',open:(c,sound)=>streetAlmanacPanel(c,sound,true)}],
   ['giant-fitting',{title:'The giant who borrowed my elbow',open:(c,sound)=>giantPanel(c,sound,'fitting')}],

@@ -1,5 +1,6 @@
 /** Audit documented intersections of one authored action, one learning dimension and one RPG element. */
 import { originActions } from './origin-action-evidence.mjs';
+import {cupProofs} from './first-cup-evidence.mjs';
 import {almanacProofs} from './street-almanac-evidence.mjs';
 import { elbowProofs } from './giant-sleeve-evidence.mjs';
 import { coatProofs } from './coat-action-evidence.mjs';
@@ -146,6 +147,7 @@ const copiesEvidenceInvestigations = [
 const proofRows = [
   ...originActions,
   ...elbowProofs,
+  ...cupProofs,
   ...almanacProofs,
   {
     objective:'petal.windows',map:'forest.petal-house',target:'petal-window',source:'tests/petal-window.test.ts',

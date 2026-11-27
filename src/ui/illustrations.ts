@@ -1,3 +1,4 @@
+import {cupArt} from './firstCupArt';
 import {almanacArt,almanacLargeArt} from './streetAlmanacArt';
 import {courierArt,largeCourierArt} from './courierLiftArt';
 import {elbowArt} from './giantSleeveArt';
@@ -56,6 +57,7 @@ function pedestal(g: Ctx, x: number, y: number, w: number) {
 
 const DRAW: Record<string, [number, number, (g: Ctx) => void]> = {
   ...courierArt,
+  ...cupArt,
   ...almanacArt,
   ...SPARE_MOON_ART,
   ...UNDERPAN_ART,

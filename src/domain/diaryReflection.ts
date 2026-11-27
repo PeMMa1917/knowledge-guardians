@@ -35,6 +35,16 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
   if(key.startsWith('trail-thread:')) return key.endsWith(':voice')
     ? {voice:'Whose account do I want to hear on my return, and what might they have missed?'}
     : {object:'Which detail would I look for next time, and what might it help me reconsider?'};
+  if(key.startsWith('first-cup:')){
+    if(key.startsWith('first-cup:passers.'))return {missing:'What would happen to my conclusion if I entered zero for every absent offer?',voice:'Whom would I need to ask before setting a price for this whole street?'};
+    if(key.startsWith('first-cup:tip.'))return {bench:'Who had a chance to make an offer and who passed the cart?',person:'Which two individual offers complicate the pattern in the crew?'};
+    if(key.startsWith('first-cup:serve.'))return {distance:'Who could decide from the far end of the street?',voice:'Whose reason would I need to hear in their own words?'};
+    if(key.startsWith('first-cup:hang.'))return {meaning:'What can I do about a systematic error in a dial that I cannot do to another person’s offer?',case:'Which person’s account would I lose if I treated the two kinds of bias alike?'};
+    if(key.startsWith('first-cup:unfold.'))return {reason:'What could I learn from one person’s note that the crew average left out?'};
+    if(key.startsWith('first-cup:readTin'))return {tin:'Which detail belongs to the surviving tin and which would require a different witness?'};
+    if(key.startsWith('first-cup:taste.')||key.startsWith('first-cup:compareGauge'))return {instrument:'What changed when the two dials stood in the same shade?',change:'Which difference could still come from the journey?'};
+    return {hands:'Whose hands was I making this cup for?',model:'Where might the street behave differently from Kit’s mixing rule?'};
+  }
   if (key.startsWith('street-almanac:')) {
     const [, object, act] = key.split(':');
     if (act === 'turn') {

@@ -632,3 +632,10 @@ Bo punches things when he cannot put his feeling into words. He offers the Guard
 - **Why** People outside can see the blue street dancer she made. Until Rix takes the frame, the maker has only seen the burn on the back.
 
 William Bland can lend the Guardian a copy edge or help trace the surviving stone. Alfred Lucas offers both his crossed-out verbs and a clear reading. Louis Braille works alongside Rix on the street’s own locator strip. William Wyatt Gill has a named place on the collecting slip, while the concert printer has to keep the unknown maker’s line separate. The guest remembers the printing block that actually reached the reading hall. [Historical voices and the receiving-room scene](../src/content/almanacPrinters.ts)
+
+### The first cup
+
+- **Cen Aster** makes a living from lettering signs and selling cocoa. The grooves left from a price she cut as a girl keep affecting who approaches her cart. She notices feet, hands, lettering depth and the parts of faces she can see across the counter. She wants an honest living and misses people who leave before speaking. When her former prompter taps for help, Cen remembers the return cue.
+- **Kit Oriel** can hear a loose wheel nut through the shop floor. Once a theatre prompter, she knows the cost of an audience missing an entrance. A worn step puts her last night at the theatre in a different light. She uses jokes to keep a crew moving and checks a physical reference when her instruments disagree.
+- **Amos Tversky** handles the individual folds and keeps their writers’ permission attached. His questions take shape in the way he sets spoons on a fulcrum or unties a bundle. He lends the Guardian two individual accounts which complicate the average for one crew.
+- **Daniel Kahneman** brings his ferry-ticket interest in framing to a four-scoop kitchen. He will put his own second ticket back in the draw, move his chair, or sit with a stranger long enough to let her explain her interest in a cup.
