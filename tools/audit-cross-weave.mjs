@@ -142,6 +142,40 @@ const copiesEvidenceInvestigations = [
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
   {
+    objective:'plum.hand',map:'stage.plum-loft',target:'plum-mould',
+    source:'tests/plum-orchard.test.ts',anchor:"expect(d.done('plum.hand')).toBe(true)",
+    action:'Draw Fen’s seven-notch stylus across the pair and ridge. A working grip masks the middle hollow on worn wood. Change only the pressure and find the hollow with a light draw. A heavy draw crosses it even on fresh wood.',
+    reasoning:[{mode:'causal',basis:'Hold the mould and the two profiles fixed while changing the hand pressure, then test the way the wider contact crosses the groove on the fresh mould.'}],
+    dimensions:['micro:741','concept:evidence','area:ART','area:NAT','theme:TEC','framework:methods-and-tools','subject:design-tech','subject:physics','question:KQ-ROUTE-23'],elements:['game:194','story:95'],
+  },
+  {
+    objective:'plum.verse',map:'stage.plum-loft',target:'plum-verse',
+    source:'tests/plum-orchard.test.ts',anchor:'returns two translations to the actor who can change the fruit and the beat',
+    action:'Stage a literal line, then fit a narrower fruit name to three drum knocks. Pass both to a second actor. The first rendering preserves a choice of fruit and the other helps the catcher meet the third beat.',
+    reasoning:[{mode:'pragmatic',basis:'What counts as a useful translation changes with the receiver’s job and the entrance cue the receiver has to catch.'}],
+    dimensions:['micro:855','area:ART','theme:LAN','concept:interpretation','framework:perspectives','subject:lit-perf','question:KQ-ROUTE-10'],elements:['game:186','story:95'],
+  },
+  {
+    objective:'plum.score',map:'stage.plum-loft',target:'plum-score',
+    source:'tests/plum-orchard.test.ts',anchor:'lets the same rest carry a count and a performer’s own timing',
+    action:'Strike the suspended rim and the floorboard in separate four-beat bars. Place the three wheel spokes beside the marks. Give the same rest to the waiting child, then return both readings to Fen.',
+    comparison:{concepts:['interpretation','values'],framework:['methods-and-tools'],areas:[
+      {id:'MAT',method:'Establish a repeating four-place pattern. Use the empty fourth position to count a single rest before the next entrance.',limit:'The count fixes the position of the next entrance without determining how a listener experiences the silence.'},
+      {id:'ART',method:'Perform the rest with the actor and the shell. Attend to what the same pause asks the different participants to feel and do.',limit:'The players can share an expressive decision without making it a universal duration or meaning for all performances.'}],
+      connection:'The company can meet on a common downbeat and leave the meaning of the waiting to each performer.'},
+    dimensions:['micro:608','micro:1110','area:ART','area:MAT','concept:interpretation','concept:values','framework:methods-and-tools','subject:music','subject:math-aa'],elements:['game:190','story:95'],
+  },
+  {
+    objective:'plum.book',map:'stage.plum-loft',target:'orchard-louis-braille',
+    source:'tests/plum-orchard.test.ts',anchor:'keeps Fen’s worn mould separate from the historical Perkins volume',
+    action:'Bring the Perkins first edition to the loft. Compare the same raised wooden tabs in a fresh and a worn mould. Hand the carver both impressions and the separate date and credit of Braille’s book.',
+    comparison:{concepts:['evidence'],framework:['scope','methods-and-tools'],areas:[
+      {id:'HIS',method:'Consult the account of the surviving 1829 Perkins volume. Use that edition’s physical record and date to identify which signs its author described.',limit:'The held volume does not record Fen’s workshop or the effect of her later mould.'},
+      {id:'ART',method:'Make two impressions from the same carved pair and ridge. Try to distinguish the features using each surface and give the next performer edges they can actually find.',limit:'The worn trial informs this prop design. It cannot establish the conditions of every historical reader.'}],
+      connection:'An edition’s evidence helps Fen choose which signs to compare. Her test can change her craftsmanship while keeping Braille’s design and authorship distinct.'},
+    dimensions:['area:HIS','area:ART','concept:evidence','framework:scope','framework:methods-and-tools','subject:design-tech','subject:music','subject:history'],elements:['game:194','story:95'],
+  },
+  {
     objective:'supper.trace',map:'copies.supper-room',target:'supper-lamps',
     source:'tests/supper-shadow.test.ts',anchor:'retains the lighting evidence discarded by chalk',
     action:'Change the spoon count and change which lamps burn. One spoon with both side lamps and a pair with the centre lamp each leaves an edge four spaces to either side. The rival casts fit the original tracing.',

@@ -1,5 +1,11 @@
 # Status and next steps
 
+## 27 November • The Last Plum in the Orchestra
+
+Fen’s touring company needs a new way to move its stage. Tallowheel, the snail who used to pull it, has a child who can answer a drum through the floor. The player turns a six-sided chest to find two different scores, plays a bar on the rim or floorboard, then helps the company travel or grow roots. Four performances change what Fen says afterward. The actor in the Bridge Clearing can carry a translated song back into the earlier chapter. The earned 1829 Perkins volume opens a separate meeting with Louis Braille and a working stylus at Fen’s bench. The adventure journal records the impressions and the difference between the company’s work and the book. [Story](src/content/plumOrchard.ts) · [Working models](tests/plum-orchard.test.ts)
+
+The rotation checks covered all 24 orientations, two collar lengths, both catches and both opening orders. The drum checks exercised all 81 four-beat arrangements. The two seven-notch profiles were compared on fresh and worn wood under three pressures. The cross-world evidence inventory now records 580 of the 1,200 supplied micro-skills, 1,286 authored uses and 32 reviewed area-of-knowledge comparisons. [Learning evidence](docs/TOK_MICRO_SKILLS.md)
+
 ## 27 November • Reading the opening screen on a school connection
 
 Students can change text size, contrast, spacing, motion and visual effects while the campaign downloads. The menu waits for a student who is still adjusting a control. The same choices carry into the game, including when storage is unavailable for that visit. The school and family guide is available from the first page. [First visit](src/arrival.ts) · [Shared controls](src/ui/readingControls.ts) · [Browser tests](tools/smoke-arrival.mjs)

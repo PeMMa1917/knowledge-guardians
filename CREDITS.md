@@ -38,6 +38,8 @@ The art direction is "rich, colourful pixel art with lighting", inspired in gene
 
 Other art is **original** and drawn in code: exhibit pedestals, the evidence board, the blade, the catalogue, the assay table, the anvil, the portal, the fairy guide Lumen, icons and the large inspection pictures. See `src/ui/illustrations.ts`. Lighting, particles and glow are made in code too.
 
+The original four-direction sprite of Tallowheel belongs to the Knowledge Guardians project and is released under CC0 1.0. The six carved silhouettes on Fen’s turning trunk are part of the same original artwork. [Pixel drawing](tools/make_orchard_carrier.py)
+
 ## Music
 
 The campaign soundtrack and returning story phrase are original music created for Knowledge Guardians. The arrangements and instrument synthesis are defined in [`campaignScore.ts`](src/domain/campaignScore.ts), [`storyMotifs.ts`](src/domain/storyMotifs.ts) and [`campaignSynth.ts`](src/app/campaignSynth.ts).

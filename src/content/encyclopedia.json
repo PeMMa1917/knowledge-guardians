@@ -1,6 +1,12 @@
 {
   "people": [
     {
+      "wikidata": "Q93182",
+      "title": "Louis Braille",
+      "characters": ["orchard-louis-braille"],
+      "biographies": []
+    },
+    {
       "wikidata": "Q313211",
       "title": "Alberto Santos-Dumont",
       "characters": [],

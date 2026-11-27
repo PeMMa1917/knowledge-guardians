@@ -1,3 +1,5 @@
+import { mouldDiary } from './orchardMould';
+import { chestDiary, beatDiary, chestWeave, performanceWeave, craftWeave } from './plumChest';
 import { shadowDiary, supperWeave } from './supperShadow';
 import {loanWeave} from './fieldLoan';
 import {stops as loanStops} from '../content/loanCrews';
@@ -141,6 +143,9 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
+  if (cmd.type==='DrawOrchardStylus') return mouldDiary(cmd);
+  if (cmd.type==='WorkPlumChest') return chestDiary(previous,cmd);
+  if (cmd.type==='StrikeOrchardBeat') return beatDiary(previous,cmd);
   if (cmd.type==='CastSupperShadow') return shadowDiary(cmd);
   if(cmd.type==='PinBirdWatch') return birdDiary(cmd);
   if(cmd.type==='WorkWhistle') return whistleDiary(next,cmd);
@@ -532,6 +537,11 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     }
     if(family==='whistle'){const site=whistlePlaces.find(p=>event.ref==='whistle.'+p.id);if(site)return diaryTopics(whistleWeave(site.id));}
     if(family==='field-loan'){const stop=loanStops.find(id=>event.key.startsWith('field-loan:'+id+':')); if(stop)return diaryTopics(loanWeave(stop));}
+    if (family === 'plum') {
+      if (event.ref === 'plum.drum') return diaryTopics(performanceWeave);
+      if (event.ref === 'plum.mould') return diaryTopics(craftWeave);
+      return diaryTopics(chestWeave);
+    }
     if(family==='supper') return diaryTopics(supperWeave);
     if(family==='birdside') return diaryTopics(birdWeave);
     if(family==='weir-lamp') return diaryTopics(weirLampWeave);

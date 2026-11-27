@@ -772,3 +772,8 @@ Liebenberg, Louis, et al. *Assessing and Certifying Indigenous Tracking Expertis
 ### Hōkūleʻa at the folding flock
 
 The Polynesian Voyaging Society dates Hōkūleʻa’s launch at Kualoa/Hakipuʻu on Oʻahu to 8 March 1975. Its history names Mau Piailug of Satawal and Nainoa Thompson of Hawaiʻi and distinguishes their roles in the 1976 and 1980 voyages. Thompson recounts how Piailug adapted his teaching. The navigators’ stated communities remain separate from each other and from Tupaia of Raʻiātea in the Lantern House. The paper flock and the theatre projection are original play models. [Launch](https://hokulea.com/hokulea-44th/) · [Voyages](https://hokulea.com/history/) · [Thompson’s account](https://archive.hokulea.com/rapanui/mau.html) · [Observing birds](https://archive.hokulea.com/navigate/land.html)
+
+
+### Louis Braille and Fen’s practice tabs
+
+Perkins describes its copy of Braille’s 1829 *Procédé*, an early method of writing words and music that used dashes as well as dots. An equipped copy brings its author to the travelling orchard. His journal entry links to the Perkins account and to his biography. Fen’s seven-notch wooden tabs, two moulds and stylus belong to the fictional touring company. The carver lets the player change the contact pressure and compare the two impressions. A student can trace the history of the book and identify exactly where the staged experiment begins. [Perkins School for the Blind](https://www.perkins.org/brailles-most-famous-book/)

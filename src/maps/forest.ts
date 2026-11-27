@@ -1,4 +1,5 @@
 /** The Living Forest field exercise takes place in a fictional woodland. */
+import { piaOrchard, rootsPerformance, rootsReturn } from './plumLoft';
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
 import { FOREST_SHEET_CLEARING, FOREST_SHEET_STATION } from './observationSheet';
@@ -295,6 +296,7 @@ export const FOREST_COMMUNITY: MapDef = {
   floor: grassyFloor(24, 16, (x, y) => (y >= 9 && y <= 11) || (x >= 10 && x <= 14 && y >= 6)),
   spawn: { x: 12, y: 12 }, blocks: [], zones: [],
   npcs: [
+    piaOrchard,
     { id: 'forest-steward', x: 12, y: 6, facing: 'down' },
     { id: 'fern-record-lio', x: 19, y: 11, facing: 'left', visibleIf: forestArrived },
     HOOK_KEEPER,
@@ -307,6 +309,7 @@ export const FOREST_COMMUNITY: MapDef = {
     { stamp: 'flowers-small', x: 6, y: 12 }, { stamp: 'flowers-white', x: 16, y: 11 },
   ],
   interactables: [
+    rootsPerformance, rootsReturn,
     WORK_SCHEDULE_ENTRANCE,
     ...HOOK_CLEARING,
     FOREST_SHEET_CLEARING,

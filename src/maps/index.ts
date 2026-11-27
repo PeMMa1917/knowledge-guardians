@@ -1,3 +1,4 @@
+import { plumLoft } from './plumLoft';
 import { SUPPER_MAP } from './supperRoom';
 import {fieldLoansAt} from './fieldLoans';
 import {foldingFlockAt} from './foldingFlock';
@@ -164,6 +165,7 @@ const campaignMaps: Record<string, MapDef> = {
   [SHOAL_PROOF_SHELTER.id]: SHOAL_PROOF_SHELTER,
   [SEA_SHOAL.id]: SEA_SHOAL,
   [SHORE_REPLY_SHED.id]: SHORE_REPLY_SHED,
+  [plumLoft.id]: plumLoft,
   [STAGE_FOYER.id]: STAGE_FOYER,
   ...Object.fromEntries(SCRIPT_RAIL_MAPS.map((map) => [map.id, map])),
   [STAGE_REHEARSAL.id]: STAGE_REHEARSAL,

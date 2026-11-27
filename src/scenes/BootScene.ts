@@ -30,7 +30,7 @@ const AUDIO: Record<string, string> = {
 
 export const CHARACTER_SHEETS = [
   'player-a', 'player-b', 'player-c', 'player-d', 'warden-ise', 'curator-dace', 'clerk-venn', 'kip-arden',
-  'merchant-corvan', 'smith-hesper', 'guildmaster-orrin', 'scholar-sefa', 'villager-1', 'villager-2',
+  'merchant-corvan', 'smith-hesper', 'guildmaster-orrin', 'scholar-sefa', 'villager-1', 'villager-2', 'tallowheel',
 ];
 
 export class BootScene extends Phaser.Scene {

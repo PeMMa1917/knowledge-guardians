@@ -1,3 +1,4 @@
+import { plumContent } from './plumOrchard';
 import { supperContent } from './supperShadow';
 import {addFieldLoans} from './fieldLoans';
 import {addCanoeProjection} from './canoeProjection';
@@ -227,7 +228,7 @@ const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'mission
 
 export function buildPack(): ContentPack {
   const pack: any = { id: 'chapter-1', contentVersion: CONTENT_VERSION };
-  const collectionRooms = [supperContent, clearanceContent, beaterProof, datePegContent, relayContent, joinedCloth, asiaLabelContent, specimenWorkContent, polarStore, fernRecordContent,
+  const collectionRooms = [plumContent, supperContent, clearanceContent, beaterProof, datePegContent, relayContent, joinedCloth, asiaLabelContent, specimenWorkContent, polarStore, fernRecordContent,
     lanternWeaveContent, dateRegisterContent, passageContent, windowShop, readingWorksContent, storyArchiveContent, copyImprintContent,
     referenceProofs, parcelLedgerContent, numberLeafContent, surveyDepotContent, referenceLineContent, islandProofRackContent, turningTableContent, coastCopyContent, makerRoomContent, makerExactContent,
     timbuktuManuscriptContent, objectUseContent, leavittPlateContent, referenceStation, callboardContent, cueWorkshopContent,

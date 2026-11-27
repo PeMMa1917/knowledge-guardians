@@ -494,3 +494,10 @@ Sora wants her apprentice to take the watch. She praises the figure at the helm 
 On Thursday Kip wrote “two.” Otla supplied the noun. By Friday the new word was in a skipping rhyme and her brother had taken his bowl outside. Everyone who saw two shadows told the truth about the cloth. Otla was stirring the bottom of the pot when the shadows crossed it. She has to decide whose place in the story she can sign for.
 
 The child at the public demonstration beats time with a spoon. The porter brings a stool to the private booth so a shorter visitor can reach the shutters. Behind the kitchen door, the brother invites the boy who heard him laugh. He can lend his spoon and keep the meal to himself. In Emberford, Corvan once made money from the rhyme. His shutter, envelope or stall changes after the Guardian brings back word from one of those visitors. [Scenes and returns](../src/content/supperShadow.ts)
+
+
+## The Last Plum in the Orchestra
+
+Fen inherited her mother’s ending, three taps and a rest. She thinks the space at the end is where her mother used to stand. Tallowheel, who pulled the orchard stage for twenty years, can feel another player answering through the floor. Her child has a different idea about the length of the rest. The Guardian can catch the moment by moving the same four beats from the suspended rim to a plank. Both scores are still in Fen’s six-sided trunk, each behind a catch that can open first.
+
+The company can pull its own handcart or take the old harness apart for seats. On tour someone must either give the cart its wheel or put the tree on their shoulder. In the forest a falling fruit cues one audience while a knock through the bench reaches another. Fen remembers which piece of work the Guardian chose to do. Pia keeps the part her brother played in her catch. Tallowheel gets to decide whether to buy a ticket. [The different performances](../src/content/plumOrchard.ts)

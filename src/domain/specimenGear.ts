@@ -1,5 +1,6 @@
 import type { CampaignState, Condition, ContentPack, Effect, ExhibitRecord } from './types';
 
+export const PERKINS_VOLUME = 'perkins:procede-1829';
 export const SPECIMEN_BASE = 'nexus.specimen-vault';
 export const SPECIMEN_CAPACITY = 3;
 export const SPECIMEN_TARGET = 2000;

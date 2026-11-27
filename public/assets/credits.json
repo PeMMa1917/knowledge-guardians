@@ -1,6 +1,12 @@
 {
   "_readme": "Every file under public/assets/ MUST have one entry here. Run `npm run assets:check` to verify. Human-readable version: CREDITS.md. Allowed licences: CC0, CC-BY, OGA-BY, OFL, MIT (record attribution if the licence needs it). Do not add assets with NC (non-commercial) or ND (no-derivatives) terms.",
   "packs": {
+    "orchard-carrier": {
+      "title": "Tallowheel of the travelling orchard",
+      "author": "Knowledge Guardians project",
+      "licence": "CC0 1.0",
+      "page": "tools/make_orchard_carrier.py"
+    },
     "armm1998-zelda-like": {
       "title": "Zelda-like tilesets and sprites",
       "author": "ArMM1998",
@@ -126,6 +132,10 @@
     "correspondence-ia-public-domain": {"title": "Partner library public-domain correspondence images", "author": "Holding library in each item record", "licence": "Public domain in the United States", "page": "https://archive.org/"}
   },
   "files": {
+    "art/generated/characters/tallowheel.png": {
+      "pack": "orchard-carrier",
+      "changes": "original four-direction pixel sprite drawn for the orchard story"
+    },
     "art/armm1998/Overworld.png": { "pack": "armm1998-zelda-like", "original": "Overworld.png", "changes": "none" },
     "art/armm1998/Inner.png": { "pack": "armm1998-zelda-like", "original": "Inner.png", "changes": "none" },
     "art/armm1998/cave.png": { "pack": "armm1998-zelda-like", "original": "cave.png", "changes": "none (not used yet)" },

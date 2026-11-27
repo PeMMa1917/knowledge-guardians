@@ -1,3 +1,5 @@
+import { mouldEffects, type MouldCommand } from './orchardMould';
+import { chestEffects, beatEffects, type ChestCommand, type BeatCommand } from './plumChest';
 import { shadowEffects, type ShadowCommand } from './supperShadow';
 import {workFieldLoan,type FieldLoanCommand} from './fieldLoan';
 import {pinBirds,type BirdCommand} from './birdSide';
@@ -84,6 +86,7 @@ const DIALOGUE_FALLBACK = 999;
 import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand, type LanternPairCommand } from './lamplight';
 
 export type Command =
+  | ChestCommand | BeatCommand | MouldCommand
   | ShadowCommand
   | FieldLoanCommand
   | BirdCommand
@@ -620,6 +623,12 @@ export class Engine {
         }
         case 'WorkFieldLoan':
           s=apply(workFieldLoan(this.pack,s,cmd),s,out);break;
+        case 'WorkPlumChest':
+          s = apply(chestEffects(s, cmd), s, out); break;
+        case 'DrawOrchardStylus':
+          s=apply(mouldEffects(s,cmd),s,out);break;
+        case 'StrikeOrchardBeat':
+          s = apply(beatEffects(s,cmd),s,out); break;
         case 'CastSupperShadow':
           s = apply(shadowEffects(s, cmd), s, out); break;
         case 'PinBirdWatch':

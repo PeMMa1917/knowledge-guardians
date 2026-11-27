@@ -1,3 +1,5 @@
+import { orchardMould } from './orchardMould';
+import { plumChest, plumDrum } from './plumChest';
 import { supperShadow } from './supperShadow';
 import {fieldLoanPanel} from './fieldLoan';
 import {loanStops,stops} from '../content/loanCrews';
@@ -64,6 +66,9 @@ interface Panel<T> {
 
 export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
   ...stops.map((stop):[string,Panel<GamePanel>]=>["field-loan."+stop,{title:loanStops[stop].title,open:(c,sound)=>fieldLoanPanel(c,stop,sound)}]),
+  ["orchard-mould", { title: "Fen’s two practice tabs", open: orchardMould }],
+  ["plum-chest", { title: "The orchard chest", open: plumChest }],
+  ["plum-drum", { title: "The youngest drummer", open: plumDrum }],
   ["supper-shadow", { title: "Supper for a Shadow", open: supperShadow }],
   ["birdside-watch", { title: "The folding flock", open: foldingFlock }],
   ["ladder", { title: "The Copyists' Ladder", open: ladderPanel }],

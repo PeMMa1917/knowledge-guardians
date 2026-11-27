@@ -1,5 +1,5 @@
 import type { Condition, ContentPack, DialogueNode, Hint, Objective, SourceRecord, Weave } from '../domain/types';
-import { specimenEquipped } from '../domain/specimenGear';
+import { PERKINS_VOLUME, specimenEquipped } from '../domain/specimenGear';
 import data from './reading-works.json';
 
 export const READING_WORKS_AVAILABLE: Condition = { objective: 'copies.arrival' };
@@ -7,7 +7,7 @@ export const READING_WORKS_RECEIVER = 'reading-works.receiver';
 export const READING_WORKS_LAST = 'reading-works.last-installed';
 const VARA = 'reading-works-vara';
 const KORI = 'reading-works-kori';
-export const PERKINS_KEY = 'perkins:procede-1829';
+export const PERKINS_KEY = PERKINS_VOLUME;
 export const PERKINS_REVISIT = {
   map: 'preserved.archive', prop: 'perkins-cold-impression',
   method: 'Fit a raised stop that lets a reader find the maker credit on the right record',
@@ -191,6 +191,9 @@ export const readingWorksContent = {
   sources: [...READING_WORKS_CASES.map((entry) => ({
     id: entry.sourceId, title: `${entry.institution}, ${entry.accession}`,
     url: entry.source, locator: entry.locator, supports: entry.observation, accessed: '2026-11-26',
+    ...(entry.key === PERKINS_KEY ? { mla: {
+      kind: 'page' as const, title: 'Braille’s Most Famous Book', container: 'Perkins School for the Blind', showAccessDate: true,
+    } } : {}),
   })), ...Object.values(checks), idrisiHistory, idrisiScribe],
   exhibits: READING_WORKS_CASES.map((entry) => ({
     id: entry.exhibit, name: entry.title, historicalLabel: 'documented', art: entry.art,

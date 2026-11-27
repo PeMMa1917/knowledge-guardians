@@ -4,9 +4,9 @@ This tracker maps each numbered item in the supplied *Ultimate Universal RPG Com
 
 | Status | Meaning | Numbered items |
 | --- | --- | ---: |
-| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 107 |
+| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 108 |
 | ◐ Partial | A reachable analogue covers part of the idea, or operates in a narrower setting. The gap is stated. | 111 |
-| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 43 |
+| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 42 |
 | ✗ Excluded | The classroom, privacy or nonviolent game rules exclude the original system. | 27 |
 
 The marks reflect inspection of authored maps, dialogue, interfaces and tests. A mark does not measure how often players find the activity, how long they spend, or what they learn. Each numbered row refers to the attachment’s item number. Source links point to playable evidence or the existing feature nearest to a planned adaptation.
@@ -265,7 +265,7 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | 191 | Balance and compare measures | ✓ | Balance the shared standard; compare mass, work and what a reading warrants. | [balance.test.ts](../tests/balance.test.ts), [market-scale.test.ts](../tests/market-scale.test.ts) |
 | 192 | Reorder a visible procedure | ○ | The Civic and Island tools let a player compare rules. Visual instructions for a clockwork helper remain open. | [civicConsole.ts](../src/domain/civicConsole.ts), [islandPlan.ts](../src/domain/islandPlan.ts) |
 | 193 | Pair records by content | ✓ | Sefa’s table uses cut edges and stamps to pair each observation with the back of its own work slip. City of Copies offers a story-based comparison where matching the date and source restores a legible record. | [tiles.ts](../src/domain/tiles.ts), [copies-side.test.ts](../tests/copies-side.test.ts) |
-| 194 | Manipulate a small object in several views | ○ | The Hinged Reader and Tilt Tray give two controlled views. A rotatable tactile puzzle box remains open. | [opening-viewer.test.ts](../tests/opening-viewer.test.ts), [nile-followups.test.ts](../tests/nile-followups.test.ts) |
+| 194 | Manipulate a small object in several views | ✓ | Turn Fen’s six-faced chest through 24 physical orientations. Trace each carving, line up the long or short tongue with the adjacent stud and open either hidden drawer first. Keyboard controls and a written position report accompany the pictured object. | [Orchard chest](../src/domain/plumChest.ts), [Orientation and drawer tests](../tests/plum-orchard.test.ts) |
 | 195 | Test a route or repair before opening it | ◐ | Forest bank work and the Nile load model expose physical constraints. There is no free-form bridge builder. | [forest-guide.test.ts](../tests/forest-guide.test.ts), [nileModel.ts](../src/domain/nileModel.ts) |
 | 196 | Layered hints without penalties | ✓ | Lumen gives four hint depths. Asking for help does not cost permanent credit. | [lumen.test.ts](../tests/lumen.test.ts), [AGENTS.md](../AGENTS.md) |
 | 197 | Check a changing shadow or light | ◐ | A pair of rival shadow casts opens three routes from Otla’s supper bell. The Third Groove changes which marks a reader can see. Rotating a sculpture to operate a silhouette lock remains open. | [supper-shadow.test.ts](../tests/supper-shadow.test.ts), [nile-followups.test.ts](../tests/nile-followups.test.ts) |

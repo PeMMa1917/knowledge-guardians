@@ -510,3 +510,31 @@ The mark on its face identifies who kept the box. It has taken that duty as its 
 - **Worries** that her little brother will hear her join the skipping rhyme again. She supplied the word people remember him by.
 - **Speaks** with one hand on the thing she can vouch for. Under pressure she remembers her own word in Kip’s voice. Her jokes come back while she washes up.
 - **Why** the supper hatch doubles as a puppet stage. Its cook can ring the public bell. Her brother gets to decide where he eats and who sits with him. [Otla’s kitchen](../src/content/supperShadow.ts)
+
+### Fen Oriel (`plum-fen`)
+
+- **Believes** people need a downbeat they can find together. The old touring company kept three taps and a hush even when nobody could afford a roof.
+- **Worries** the day the stage stops touring will be the last day someone remembers her mother. A sound from under the boards gives her a reason to wait longer than the score allows.
+- **Speaks** as a wheelwright first. She can find a loose spoke with her thumbnail. She hides an admission in an argument about a wheel or a bad review.
+- **Why** her mother left her the score while Tallowheel carried most of the weight. Fen has to find a way to work for someone who has already given twenty years.
+
+### Tallowheel (`plum-tallowheel`)
+
+- **Believes** a good touring company ought to let its carrier buy a ticket. She also wants her child to have time to finish a sentence.
+- **Worries** the smallest shell will learn that being useful means staying in a harness.
+- **Speaks** through small domestic observations. She has a public theory about how to eat a biscuit. Her foot passes a knock an ear may miss.
+- **Why** she spent twenty springs pulling Fen’s orchard and knows its music from underneath. When someone offers a workable arrangement she decides for herself how far to follow.
+
+### Pia Bosk (`plum-pia`)
+
+- **Believes** an actor can answer a writer by changing what an audience sees. Her favourite rehearsal partner is her brother, who counts the missed catches.
+- **Worries** she will still be waiting for the line to finish when the pear falls. A critic with an apple in their hand is harder to impress than a quiet tree.
+- **Speaks** in precise counts and shameless revisions. She lets a child supply a word when the line carries the wrong fruit.
+- **Why** she has caught a great many imaginary pears and missed forty-one real ones. Her brother can contribute a hammock or a review. She gives him a place on the sill or in the cast photograph.
+
+### Louis Braille at the orchard table (`orchard-louis-braille`)
+
+- **Believes** a musician needs a way to leave their own marks for the next player. The scene takes its starting point from the surviving 1829 volume at Perkins.
+- **Worries** the next player will inherit two workshop signs they cannot distinguish. Fen offers to make that comparison on her own materials.
+- **Speaks** about the reader’s hand, the working surface and the person who has to use the next copy. The workshop conversation is original dialogue.
+- **Why** the first edition records dots and dashes for writing and music. Fen can use the history to ask a question and put her own name on the solution she tried. [Perkins School for the Blind](https://www.perkins.org/brailles-most-famous-book/)

@@ -1,3 +1,4 @@
+import { plumStair, roadPerformance } from './plumLoft';
 import { FIRST_CLAP_GALLERY, FIRST_CLAP_REHEARSAL } from './firstClap';
 /** Fictional theatre with separate backstage and audience sightlines. */
 import type { Condition } from '../domain/types';
@@ -125,6 +126,7 @@ export const STAGE_REHEARSAL = room({
     { stamp: 'rug-green', x: 12, y: 9 }, { stamp: 'plant-tall', x: 5, y: 13 },
   ],
   interactables: [
+    plumStair,
     { id: 'field-primer', kind: 'fieldgame', game: 'primer', x: 20, y: 4, w: 1, h: 1, label: 'the printer’s proof table (The Primer Page)', art: 'old-sign' },
     { id: 'field-lens', kind: 'fieldgame', game: 'lens', x: 16, y: 5, w: 1, h: 1, label: 'the green card table (The Lens Table)', art: 'old-sign' },
     ...FIRST_CLAP_REHEARSAL,
@@ -198,6 +200,7 @@ export const STAGE_GALLERY = room({
     notice('stage-vantage', 18, 7, 'the audience sightlines note', 'stage.cues',
       'From the front bench the crate move is easy to see. A post hides part of it from the side seats. Both seats can hear the lines and the silence between them.',
       { flag: 'stage.vantage' }),
+    roadPerformance,
     { id: 'stage-side-call', kind: 'scene', node: 'stage.call.stand', x: 17, y: 8, w: 1, h: 1,
       label: 'Hari’s test-bell call slip beside the sightline note', art: 'preserved.slip', walkThrough: true,
       visibleIf: { all: [{ objective: 'stage.arrival' }, { flag: 'stage.vantage', eq: true }, { not: { flagSet: 'stage.call.mode' } }] } },

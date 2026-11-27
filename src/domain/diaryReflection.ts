@@ -31,6 +31,13 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
+  if (key.startsWith('plum:mould:')) return {join:'Which notch let me tell a pair from a ridge on this draw?',hand:'What changed when I adjusted my hand and kept the wood the same?'};
+  if (key.startsWith('plum:bar:')) return {room:'Which player could feel my last bar, and who could hear it?',wait:'What might I miss if I decided in advance how long an answer should take?'};
+  if (key.startsWith('plum:press:') || key.startsWith('plum:slide:')) return {contact:'What could I learn from the part that moved or sprang back?',neighbour:'Which neighbouring face would I trace next?'};
+  if (key.startsWith('plum:')) return {turn:'Which part of the chest kept the same neighbour after my turn?'};
+  if (key.startsWith('choice:plum.verse:') || key.startsWith('choice:plum.pia:')) return {fruit:'Which part of the song did my version make easier to perform?',word:'What did the audience supply that the original words left open?'};
+  if (key.startsWith('choice:plum.cart:') || key.startsWith('choice:plum.grove:') || key.startsWith('choice:plum.commission:')) return {care:'Who does the work of making this performance possible now?',seat:'What would the last person to receive my signal tell the front row?'};
+  if (key.startsWith('supper:')) return {edge:'Which part of the scene could another arrangement produce too?',source:'What would I need to know about Thursday to carry this finding back to that meal?'};
   if(key.startsWith('whistle:')){const site=whistlePlaces.find(p=>key.startsWith('whistle:'+p.id+':'));if(site){const [basis,visitor]=whistleStories[site.id].questions;return {basis,visitor};}}
   if(key.startsWith('field-loan:press:'))return {edge:'Which part of the claim changed when I put it in a smaller space?',reader:'Who can still find the rest of it?'};
   if(key.startsWith('field-loan:stage:'))return {seat:'What could each seat know before the other gave its cue?',reply:'Which difference did a second signal actually resolve?'};
