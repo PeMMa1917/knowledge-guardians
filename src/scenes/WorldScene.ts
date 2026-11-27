@@ -936,8 +936,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       if (Phaser.Math.Distance.Between(a.sprite.x, a.sprite.y, p.x, p.y) > 2.5 * TILE) continue;
       const m = mems.find((x) => x.character === a.id && c.state.flags[`mem.${x.id}`] !== true && c.check(x.if));
       if (!m) continue;
-      // One line per person: mark all of that person's lines that hold now as heard.
-      for (const x of mems) if (x.character === a.id && c.check(x.if) && c.state.flags[`mem.${x.id}`] !== true) c.dispatch({ type: 'SetFlag', flag: `mem.${x.id}`, value: true });
+      const events = c.dispatch({ type: 'HearWorldMemory', id: m.id });
+      if (events.some((event) => event.kind === 'error')) continue;
       const name = c.pack.characters.find((x) => x.id === a.id)?.name ?? '';
       const el = document.createElement('div');
       el.className = 'world-say'; el.setAttribute('role', 'status');

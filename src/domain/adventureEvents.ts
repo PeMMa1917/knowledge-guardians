@@ -50,6 +50,14 @@ export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, ne
       if (!previous.flags[`visited.map.${mapId}`]) return diaryEvent(`place:${mapId}`, 'arrival', mapId, cmd.name, `I arrived at ${cmd.name}.`);
       break;
     }
+    case 'HearWorldMemory': {
+      if (previous.flags['mem.' + cmd.id] === true || next.flags['mem.' + cmd.id] !== true) break;
+      const line = pack.memories?.find((memory) => memory.id === cmd.id);
+      if (!line) break;
+      const speaker = pack.characters.find((character) => character.id === line.character)?.name ?? line.character;
+      return diaryEvent('overheard:' + line.id, 'conversation', line.id, 'In passing with ' + speaker,
+        'I heard ' + speaker + ' say, “' + personalise(line.line, next.player) + '”');
+    }
     case 'ReadWorldSign': {
       const key = `${cmd.blocked ? 'blocked-route' : 'sign'}:${next.mapId}:${cmd.id}`;
       return diaryEvent(key, cmd.blocked ? 'route' : 'sign', cmd.id, cmd.title,

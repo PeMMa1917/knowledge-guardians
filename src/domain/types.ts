@@ -653,7 +653,7 @@ export interface Community { id: string; name: string; who: string[]; knows: str
 export interface KeepsakeTalk { id: string; character: string; keepsake: string; text: string; node: string; if?: Condition }
 
 /** World memory (spec 47, C1): a short line a person says when the player passes, once the condition holds. */
-export interface MemoryLine { id: string; character: string; if: Condition; line: string }
+export interface MemoryLine { id: string; character: string; if: Condition; line: string; supersedes?: string }
 
 /** A practice clue board for a Showdown (spec 47, C1). */
 export interface ClueBoardRecord {

@@ -38,6 +38,7 @@
   },
   {
    "id": "orrin.weigh.miss",
+   "supersedes": "orrin.weigh",
    "character": "guildmaster-orrin",
    "if": {
     "all": [
@@ -64,6 +65,7 @@
   },
   {
    "id": "ise.timeline.miss",
+   "supersedes": "ise.timeline",
    "character": "warden-ise",
    "if": {
     "all": [
@@ -169,6 +171,7 @@
   },
   {
    "id": "visitor.pen.revised",
+   "supersedes": "visitor.pen",
    "character": "villager-2",
    "if": {
     "all": [

@@ -51,6 +51,40 @@ describe('Adventure diary', () => {
     }));
   });
 
+  it('quotes just the remark heard in passing and keeps another story from that speaker available', () => {
+    const d = adventure();
+    d.action({ type: 'SetFlag', flag: 'puzzle.tipped-cart.done', value: true });
+    d.action({ type: 'SetFlag', flag: 'puzzle.echo-bridge.done', value: true });
+    d.action({ type: 'HearWorldMemory', id: 'cart.idris' });
+    const seen = d.view().entries.filter((entry) => entry.id.startsWith('overheard:'));
+    expect(seen.map((entry) => entry.id)).toEqual(['overheard:cart.idris']);
+    expect(seen[0].text).toContain(pack.memories!.find((memory) => memory.id === 'cart.idris')!.line);
+    expect(seen[0].reflections?.length).toBeGreaterThan(0);
+    expect(d.state.flags['mem.echo.idris']).toBeUndefined();
+    d.action({ type: 'HearWorldMemory', id: 'echo.idris' }, later);
+    d.action({ type: 'HearWorldMemory', id: 'cart.idris' }, later);
+    expect(d.view().entries.filter((entry) => entry.id.startsWith('overheard:'))).toHaveLength(2);
+  });
+
+  it('keeps a more specific line and its fallback separate in the exported diary', () => {
+    const d = adventure();
+    d.action({ type: 'HearWorldMemory', id: 'visitor.pen.revised' });
+    expect(d.state.flags['mem.visitor.pen.revised']).toBeUndefined();
+    d.action({ type: 'SetFlag', flag: 'label.pen.failedOnce', value: true });
+    d.action({ type: 'SetFlag', flag: 'label.pen.holds', value: true });
+    d.action({ type: 'HearWorldMemory', id: 'visitor.pen.revised' });
+    d.action({ type: 'HearWorldMemory', id: 'visitor.pen' });
+    expect(d.state.flags['mem.visitor.pen']).toBe(true);
+    expect(d.view().entries.filter((entry) => entry.id.startsWith('overheard:')).map((entry) => entry.id))
+      .toEqual(['overheard:visitor.pen.revised']);
+    const word = unzipSync(adventureDocx(d.view(), { includeNotes: true, placeName: () => 'Archive Hall' }));
+    const document = strFromU8(word['word/document.xml']);
+    expect(document).toContain('Your new pen label is clearer');
+    expect(document).not.toContain('I read your pen label twice.');
+    const returned = migrateCampaign(JSON.parse(JSON.stringify(d.state))).state;
+    expect(returned.adventureDiary.entries.filter((entry) => entry.id.startsWith('overheard:'))).toHaveLength(1);
+  });
+
   it('keeps failed commands and repeat reads out of the diary', () => {
     const d = adventure();
     const bad = d.action({ type: 'ChooseDialogueOption', node: 'cold.open3', index: 700 });

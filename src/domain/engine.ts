@@ -81,6 +81,7 @@ export type Command =
   | TileDispatchAction
   | { type: 'Reach'; zone: string }
   | { type: 'VisitPlace'; name: string; via?: { from: string; id: string; label: string } }
+  | { type: 'HearWorldMemory'; id: string }
   | { type: 'ReadWorldSign'; id: string; title: string; text: string; readFlag?: string; blocked?: true }
   | { type: 'EquipPerspective'; keepsake: string | null }
   | { type: 'SharedCarry'; site: CarrySite; stop: CarryStop; action: string }
@@ -402,6 +403,15 @@ export class Engine {
           if (!cmd.name.trim()) throw new Error('This place has no name');
           if (s.flags[`visited.map.${s.mapId}`] !== true) s = apply([{ setFlag: `visited.map.${s.mapId}`, value: true }], s, out);
           break;
+        case 'HearWorldMemory': {
+          const line = this.pack.memories?.find((memory) => memory.id === cmd.id);
+          if (!line || !check(line.if, s)) throw new Error('There is nothing new to hear here.');
+          if (s.flags['mem.' + line.id] === true) break;
+          const effects: Effect[] = [{ setFlag: 'mem.' + line.id, value: true }];
+          if (line.supersedes) effects.push({ setFlag: 'mem.' + line.supersedes, value: true });
+          s = apply(effects, s, out);
+          break;
+        }
         case 'ReadWorldSign':
           if (!cmd.id || !cmd.title.trim()) throw new Error('This notice has no name');
           if (cmd.readFlag && s.flags[cmd.readFlag] !== true) s = apply([{ setFlag: cmd.readFlag, value: true }], s, out);

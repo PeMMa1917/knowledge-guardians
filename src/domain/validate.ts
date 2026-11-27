@@ -406,6 +406,9 @@ export function validateContent(pack: ContentPack): string[] {
   (pack.memories ?? []).forEach((m) => {
     dup('memory', m.id); cond(m.if, `memory ${m.id}`); text(`memory ${m.id}`, m.line);
     if (!pack.characters.some((x) => x.id === m.character)) p.push(`memory ${m.id}: unknown character ${m.character}`);
+    if (m.supersedes && !pack.memories?.some((fallback) =>
+      fallback.id === m.supersedes && fallback.id !== m.id && fallback.character === m.character))
+      p.push(`memory ${m.id}: invalid alternate line ${m.supersedes}`);
   });
   (pack.clueBoards ?? []).forEach((b) => {
     dup('clue board', b.id); text(`clue board ${b.id}`, b.intro); weave(b.weave, `clue board ${b.id}`, true); eff(b.onComplete, `clue board ${b.id}`);
