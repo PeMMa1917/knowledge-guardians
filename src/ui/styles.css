@@ -1060,3 +1060,12 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .catchment-current[data-pocket='open'] > :nth-child(2) { border-block-end-style: dashed; }
 .catchment-floats { min-block-size: 1em; display: flex; align-items: center; gap: 0.25em; flex-wrap: wrap; }
 .catchment-floats i { width: 0.45em; height: 0.45em; background: var(--gold); border: 1px solid var(--ink); }
+
+/* Timed replay clock (decision X-003): counts up, never down. */
+.timed-clock { position: fixed; top: 0.6rem; right: 0.6rem; z-index: 60; padding: 0.3rem 0.7rem; border-radius: 0.6rem;
+  background: var(--panel, #241a3a); color: var(--ink, #fff4d6); border: 2px solid var(--gold, #e8c46a); font-variant-numeric: tabular-nums; }
+
+/* Lumen's offer (decision X-011): the lantern glows; the hint shows only after a click. */
+.hud-buttons button.lumen-offer { box-shadow: 0 0 0 2px var(--gold), 0 0 14px var(--gold); }
+@media (prefers-reduced-motion: no-preference) { .hud-buttons button.lumen-offer { animation: lumen-offer 2s ease-in-out infinite; } }
+@keyframes lumen-offer { 50% { box-shadow: 0 0 0 2px var(--gold), 0 0 4px var(--gold); } }

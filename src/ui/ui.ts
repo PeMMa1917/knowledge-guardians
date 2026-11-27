@@ -77,6 +77,9 @@ import { approvalOf, approvalRank } from '../domain/approval';
 import { ROLES, fitsRole, roleOf } from '../domain/roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
 import { FIELD_GAMES } from '../domain/fieldgames';
+import { OFFER_LINE, shouldOfferHelp } from '../domain/lumenOffer';
+import { IDEA_CREDITS } from '../domain/ideaCredits';
+import { bestFlag, canTimedReplay, clockText, elapsedSeconds, resultText, timedResult } from '../domain/timedReplay';
 import { routingBoard } from './routingBoards';
 import { counterReplayBoard } from './counterReplayBoard';
 import { islandSkiffPanel } from './islandSkiff';
@@ -535,6 +538,7 @@ export class UI implements UIApi {
     }
     const wrap = h('div', { class: 'modal-wrap', onclick: (e: MouseEvent) => { if (e.target === wrap && !cls.includes('dialogue')) this.closeModal(); } }, box);
     this.modal = wrap;
+    if (this.timedRun) wrap.append(this.timedRun.clock);
     this.root.append(wrap);
     this.isolateModalBackground();
     this.releaseTrap = trapFocus(box);
@@ -587,6 +591,7 @@ export class UI implements UIApi {
     this.modal.remove();
     this.modal = null;
     if (replacing) { this.refreshHud(); return; }
+    this.stopTimedReplay();
     this.releaseModalBackground?.();
     const opener = this.titleModalOpener;
     this.titleModalOpener = null;
@@ -1037,7 +1042,7 @@ export class UI implements UIApi {
     const bar = h('nav', { class: 'hud-buttons', 'aria-label': 'Game menu' },
       h('span', { class: 'marks', title: 'Marks (campaign money)' }, h('img', { src: artURL('icon.card'), alt: '' }), ` ${s.marks} marks`),
       s.flags['title.worn'] ? h('span', { class: 'marks worn-title', title: 'Your title (choose in Journal, Awards)' }, `${s.player.name}, ${s.flags['title.worn']}`) : '',
-      h('button', { onclick: () => this.askLumen(), title: `Ask Lumen for a hint (${km.hint})` }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '' }), ' Hint ', h('kbd', {}, km.hint)),
+      h('button', { class: this.helpOffered ? 'lumen-offer' : '', onclick: () => this.askLumen(), title: this.helpOffered ? `Lumen has an idea for this step (${km.hint})` : `Ask Lumen for a hint (${km.hint})` }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '' }), ' Hint ', h('kbd', {}, km.hint)),
       h('button', { onclick: () => this.openJournal(), title: `Journal (${km.journal})` }, 'Journal ', h('kbd', {}, km.journal)),
       h('button', { onclick: () => this.openJournal('portfolio'), title: `Portfolio (${km.portfolio})` }, 'Portfolio ', h('kbd', {}, km.portfolio)),
       h('button', { onclick: () => this.openBag(), title: `Bag (${km.bag})` }, 'Bag ', h('kbd', {}, km.bag)),
@@ -1049,6 +1054,10 @@ export class UI implements UIApi {
     this.hud.prepend(tracker);
     this.hudDock.querySelector('.hud-buttons')?.remove();
     this.hudDock.append(bar);
+    // Progress resets the "stuck" clock for Lumen's offer (decision X-011).
+    const doneCount = objs.filter((o) => o.complete).length;
+    if (doneCount !== this.progressCount) { this.progressCount = doneCount; this.lastProgress = Date.now(); this.helpOffered = false; this.offerSpent = false; }
+    this.offerTimer ??= window.setInterval(() => this.checkHelpOffer(), 10_000);
     // New objectives: Lumen mentions them once if the player allows prompts (GUIDE-001).
     for (const o of objs) {
       if (!this.seenObjectives.has(o.id)) {
@@ -1056,6 +1065,27 @@ export class UI implements UIApi {
         if (!o.complete && ctx.settings.guidePrompts) this.lumenSay(`New step: ${o.title}`);
       }
     }
+  }
+
+  private progressCount = -1;
+  private lastProgress = Date.now();
+  private helpOffered = false;
+  private offerSpent = false;
+  private offerTimer: number | null = null;
+
+  /** Decision X-011: after a long time with no progress, the lantern glows and Lumen offers. No hint until a click. */
+  private checkHelpOffer(): void {
+    const c = ctx.controller;
+    if (!c.state) return;
+    const offer = shouldOfferHelp({
+      enabled: ctx.settings.lumenOffers !== false, lastProgress: this.lastProgress, now: Date.now(),
+      busy: !!this.modal, offered: this.offerSpent, hasStep: !!c.engine.currentObjective(c.state),
+    });
+    if (!offer) return;
+    this.offerSpent = true;
+    this.helpOffered = true;
+    this.lumenSay(OFFER_LINE);
+    this.refreshHud();
   }
 
   private lumenSay(text: string): void {
@@ -1068,6 +1098,7 @@ export class UI implements UIApi {
   }
 
   private askLumen(): void {
+    if (this.helpOffered) { this.helpOffered = false; this.refreshHud(); }
     const c = ctx.controller;
     const cur = c.engine.currentObjective(c.state);
     if (!cur) { this.lumenSay('Nothing urgent. Explore, read your journal, or talk to people again.'); return; }
@@ -3186,7 +3217,7 @@ export class UI implements UIApi {
     box.append(this.closeBtn(), h('h2', {}, "The Guardian's Ledger"),
       h('p', { class: 'fine' }, 'Your own record, kept on this device. It is not a grade, and nobody ranks it. Time counts only while you are really playing.'),
       h('div', { class: 'ledger-tiles' }, tile('Today', L.today), tile('Last 7 days', L.week), tile('This month', L.month), tile('All time', L.total)),
-      h('div', { class: 'ledger-streak' },
+      ctx.settings.showStreak === false ? h('p', { class: 'fine' }, 'Your streak is hidden (Menu, Settings). It is still kept.') : h('div', { class: 'ledger-streak' },
         h('span', { class: 'flame-big', 'aria-hidden': 'true' }),
         h('span', {}, h('strong', {}, `${L.streak}-day streak`), ` · best ${L.bestStreak} · `,
           h('span', { title: 'Every 7 active days in a row earn a shield. A missed day uses a shield, so a rest day keeps your streak.' }, `${'🛡'.repeat(L.shields)}${'·'.repeat(MAX_SHIELDS - L.shields)} freeze shields`)),
@@ -3809,13 +3840,47 @@ export class UI implements UIApi {
     render();
   }
 
+  /** A timed replay in progress (decision X-003): the game id, its start time and the clock element. */
+  private timedRun: { id: string; start: number; clock: HTMLElement; tick: number } | null = null;
+
+  /** Start a field game again with a clock that counts up. Offered only after the first untimed play. */
+  private startTimedReplay(id: string): void {
+    if (!canTimedReplay(ctx.controller.state.flags, id)) return;
+    this.stopTimedReplay();
+    this.openFieldGame(id);
+    const clock = h('div', { class: 'timed-clock', role: 'timer', 'aria-label': 'Timed replay clock' }, '⏱ 0 s');
+    const start = Date.now();
+    const tick = window.setInterval(() => { clock.textContent = `⏱ ${clockText(elapsedSeconds(start, Date.now()))}`; }, 1000);
+    this.timedRun = { id, start, clock, tick };
+    this.modal?.append(clock);
+  }
+
+  private stopTimedReplay(): void {
+    if (this.timedRun) window.clearInterval(this.timedRun.tick);
+    this.timedRun?.clock.remove();
+    this.timedRun = null;
+  }
+
   /** Close a field game: first time gives marks and the idea in the Lore codex. */
   private finishField(id: string): HTMLElement {
     const g = FIELD_GAMES.find((x) => x.id === id)!;
-    const ev = ctx.controller.dispatch({ type: 'FinishFieldGame', game: id });
+    const c = ctx.controller;
+    const ev = c.dispatch({ type: 'FinishFieldGame', game: id });
     const first = ev.some((e) => e.kind === 'fieldgame' && e.first);
     if (first) this.sfx('sfx.award');
-    return h('p', { class: 'clue-view fresh', role: 'status' }, h('strong', {}, 'The idea: '), g.idea, first ? ' (+3 marks; it is in your Lore codex.)' : '');
+    let timed: HTMLElement | string = '';
+    if (this.timedRun?.id === id) {
+      const r = timedResult(c.state.flags, id, elapsedSeconds(this.timedRun.start, Date.now()));
+      if (r.isBest) c.dispatch({ type: 'SetFlag', flag: bestFlag(id), value: r.best });
+      this.stopTimedReplay();
+      timed = h('p', { class: 'fine', role: 'status' }, resultText(r));
+    }
+    const replay = canTimedReplay(c.state.flags, id)
+      ? h('button', { type: 'button', class: 'mini', onclick: () => this.startTimedReplay(id),
+        title: 'Play this game again with a clock. There is no time limit and no fail.' }, 'Timed replay')
+      : '';
+    return h('div', {}, h('p', { class: 'clue-view fresh', role: 'status' }, h('strong', {}, 'The idea: '), g.idea, first ? ' (+3 marks; it is in your Lore codex.)' : ''),
+      timed, replay);
   }
 
   private barPair(rows: { label: string; n: number; of: number }[]): HTMLElement {
@@ -5600,6 +5665,8 @@ export class UI implements UIApi {
       check('highContrast', 'High-contrast interface'),
       check('dyslexiaSpacing', 'Wider letter and line spacing'),
       check('guidePrompts', 'Lumen may show short prompts without being asked'),
+      check('lumenOffers', 'When you seem stuck, the lantern glows and Lumen offers help. The hint shows only when you click'),
+      check('showStreak', 'Show my day streak in the Ledger'),
       check('calmMode', 'Calm mode: surprise events warn first, and you can choose "Later"'),
       check('zenMode', 'Zen mode: no turn limit in Showdowns (the crowd waits), surprise events always ask first, and nothing can be failed'),
       check('glossary', 'Smart glossary: underline key words in conversations, so you can tap them for an explanation'),
@@ -5629,6 +5696,9 @@ export class UI implements UIApi {
         h('li', {}, 'Sound effects: Kenney, "51 UI sound effects" (CC0); rubberduck, "80 CC0 RPG SFX" (CC0); wobbleboxx, "Level up, power up, Coin get" (CC0); HaelDB, "Completion sound" (CC0). All from OpenGameArt.org.'),
         h('li', {}, 'Font: Lexend (SIL Open Font License), via @fontsource/lexend.'),
         h('li', {}, 'Game engine: Phaser 3 (MIT licence).')),
+      h('section', {}, h('h3', {}, 'Ideas behind the games'),
+        h('p', { class: 'fine' }, 'Many games grew from TOK lessons. Each one is retold for this world, not copied.'),
+        h('ul', {}, ...IDEA_CREDITS.map((credit) => h('li', {}, h('strong', {}, credit.game), `: ${credit.idea}. ${credit.source}`)))),
       s?.flags['ending.council'] ? this.collectionBibliography(specimenReferences(c.pack), 'Works cited for the collection') : '');
   }
 

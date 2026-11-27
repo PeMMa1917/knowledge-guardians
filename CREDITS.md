@@ -77,6 +77,22 @@ All sound effects were converted to mono 96 kbit/s MP3 with ffmpeg. The sound di
 | [Lexend](https://www.lexend.com/) through [@fontsource/lexend](https://fontsource.org/fonts/lexend) | Bonnie Shaver-Troup, Thomas Jockin and others | SIL Open Font License 1.1 |
 | [Vite](https://vite.dev/), [Vitest](https://vitest.dev/), [TypeScript](https://www.typescriptlang.org/) (development only) | their authors | MIT / Apache 2.0 |
 
+## Ideas behind the games
+
+Many games grew from TOK lessons in Mika's lesson folder (decision X-017 in [docs/audit/DECISIONS.md](docs/audit/DECISIONS.md)). This table names where each idea came from. It never quotes a lesson or a handout: every game is paraphrased and rebuilt to fit the world. The same list is in the game (Menu, Credits and sources) and in `src/domain/ideaCredits.ts`.
+
+| Game | Idea | Source |
+|---|---|---|
+| Dov's Three Doors | The Monty Hall problem | Mika's TOK lesson folder. The puzzle was set by Steve Selvin in a 1975 letter to The American Statistician and made famous by Marilyn vos Savant's Parade column in 1990. It is named after Monty Hall, host of the TV show Let's Make a Deal. |
+| The Ferry Guest Book | The birthday problem | Mika's TOK lesson folder. The problem is often credited to the mathematician Richard von Mises (1939). |
+| The Weigh-House Slate | Questioning the order of operations | Mika's TOK lesson folder |
+| The Missing Word | Euphemism, and how a chosen word shapes what people notice | Mika's TOK lesson folder |
+| Lanterns and Bones | The gambler's fallacy, and how many rolls it takes to tell a loaded die | Mika's TOK lesson folder |
+| The Ballad of the Guardian | How a story changes each time it is retold | Mika's TOK lesson folder |
+| The Spare Tag | Different kinds of value for the same object | Mika's TOK lesson folder |
+| The Careful Dig | Excavation as a choice about what later people can know | Mika's TOK lesson folder |
+| Star Pictures | Measured star positions and the different pictures people draw between them | Mika's TOK lesson folder |
+
 ## Historical sources
 
 The historical sources for the real objects in the game are in [docs/SOURCES.md](docs/SOURCES.md) and in the chapter content. The game uses original pixel drawings and transforms collection images released under verified open licences. The Polar Store’s exact accession illustrations are original drawings based on catalogue descriptions. Per-image rights, catalogue and download links are in [the asset manifest](public/assets/credits.json).
