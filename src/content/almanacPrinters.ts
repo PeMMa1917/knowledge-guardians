@@ -151,7 +151,7 @@ export function installAlmanacPrinters(pack: ContentPack) {
     const proof = 'almanac.' + c.id + '.proof';
     errands.objectives.push({
       id: proof,
-      title: 'Unfold the guest’s printed invitation with ' + c.person.name + '.',
+      title: c.blockGoal,
       essential: false,
       visible: { flag: printed, in: [0, 1] },
       done: { flag: 'almanac.' + c.id + '.unfolded', in: [0, 1] },

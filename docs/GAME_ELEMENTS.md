@@ -4,9 +4,9 @@ This tracker maps each numbered item in the supplied *Ultimate Universal RPG Com
 
 | Status | Meaning | Numbered items |
 | --- | --- | ---: |
-| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 108 |
+| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 109 |
 | ◐ Partial | A reachable analogue covers part of the idea, or operates in a narrower setting. The gap is stated. | 111 |
-| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 42 |
+| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 41 |
 | ✗ Excluded | The classroom, privacy or nonviolent game rules exclude the original system. | 27 |
 
 The marks reflect inspection of authored maps, dialogue, interfaces and tests. A mark does not measure how often players find the activity, how long they spend, or what they learn. Each numbered row refers to the attachment’s item number. Source links point to playable evidence or the existing feature nearest to a planned adaptation.
@@ -147,7 +147,7 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | 103 | Hall of fame and public ranking | ✗ | No public archive ranks named students. Private individual and class aggregate tools remain distinct. | [report.ts](../src/teacher/report.ts), [AGENTS.md](../AGENTS.md) |
 | 104 | Visible improvement after revision | ◐ | Original and revised records remain available in multiple chapters. There are no numeric first-versus-last student scores. | [copies-story.test.ts](../tests/copies-story.test.ts), [water-story.test.ts](../tests/water-story.test.ts), [voices-story.test.ts](../tests/voices-story.test.ts) |
 | 105 | Mistake log and rematches | ◐ | The Fray Bestiary names encountered reasoning errors. It does not reconstruct every encounter for rematches. | [fray.json](../src/content/fray.json), [ui.ts](../src/ui/ui.ts) |
-| 106 | Personal goals without wagers | ○ | A private, optional goal could identify a case to revisit. No stakes, wager or goal contract is live. | [ledger.ts](../src/domain/ledger.ts), [AGENTS.md](../AGENTS.md) |
+| 106 | Personal goals without wagers | ✓ | Tie a ribbon to an open step and choose the person or object you want to return to. The pause screen recalls the goal after another session. Move or untie it at any point. | [Journal ribbon](../src/ui/trailThread.ts), [Changing quest state](../tests/trail-thread.test.ts) |
 | 107 | Hint independence | ◐ | Players can choose minimal hints and retry with the same credit. A speed or efficiency rating is absent. | [settings.ts](../src/app/settings.ts), [lumen.test.ts](../tests/lumen.test.ts), [AGENTS.md](../AGENTS.md) |
 
 ## VII. Cards and tabletop strategy

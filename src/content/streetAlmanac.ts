@@ -145,7 +145,7 @@ export function installStreetAlmanac(pack: ContentPack) {
       'The printers have left their invitations blank. A drummer and a glazier want the people at home to get a say in what the street celebrates.',
     objectives: calendarCases.map((c) => ({
       id: 'almanac.' + c.id + '.evening',
-      title: 'Give the reading hall an evening with ' + c.title + '.',
+      title: c.eveningGoal,
       essential: false,
       visible: { flagSet: 'almanac.' + c.id + '.sentBar' },
       done: { flagSet: 'almanac.' + c.id + '.show' },
