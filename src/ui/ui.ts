@@ -97,6 +97,9 @@ import { relayPanel } from './relayPanel';
 import { lensPanel } from './lensPanel';
 import { riverPanel } from './riverPanel';
 import { collagePanel } from './collagePanel';
+import { tokenPanel } from './tokenPanel';
+import { fogPanel } from './fogPanel';
+import { festivalPanel } from './festivalPanel';
 import { fairPanel } from './fairPanel';
 import { batPanel } from './batPanel';
 import { mirrorPanel } from './mirrorPanel';
@@ -3775,6 +3778,12 @@ export class UI implements UIApi {
       batPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('bats'), () => this.closeModal()));
     else if (id === 'fair') this.openModal('bench-panel wide', 'The Value Fair', this.closeBtn(),
       fairPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('fair'), () => this.closeModal()));
+    else if (id === 'festival') this.openModal('bench-panel wide', 'The Festival Dilemma', this.closeBtn(),
+      festivalPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('festival'), () => this.closeModal()));
+    else if (id === 'fog') this.openModal('bench-panel wide', 'The Fog Chart', this.closeBtn(),
+      fogPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('fog'), () => this.closeModal()));
+    else if (id === 'tokens') this.openModal('bench-panel wide', 'The Token Drawer', this.closeBtn(),
+      tokenPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('tokens'), () => this.closeModal()));
     else if (id === 'collage') this.openModal('bench-panel wide', 'The Collage Wall', this.closeBtn(),
       collagePanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('collage'), () => this.closeModal()));
     else if (id === 'river') this.openModal('bench-panel wide', 'The River Crossing Inquiry', this.closeBtn(),

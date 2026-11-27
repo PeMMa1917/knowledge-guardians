@@ -1,0 +1,135 @@
+{
+ "note": "Before you open the drawer: these are real objects left with real babies at the Foundling Hospital in London in the 1700s, by parents who could not keep them. Most of those children never learned that a token had been left for them. Some visitors find this hard. You can open the drawer now, or close it and come back later. Nothing is lost.",
+ "intro": "Registrar Aster pulls out a long, shallow drawer. 'A loan from a London collection, copied for our Cold Store. When a baby came in, the clerk wrote a paper called a billet, folded the parent's token inside it, and sealed it. The baby got a new name. The packet stayed shut unless a parent came back.'",
+ "fields": [
+  {
+   "id": "number",
+   "text": "The admission number",
+   "kept": true,
+   "reply": "Aster nods. 'The number was the child's thread through every record. It is how we can still find them today.'"
+  },
+  {
+   "id": "date",
+   "text": "The date",
+   "kept": true,
+   "reply": "'The date, yes. Without it, a returning parent could not even say which month to look in.'"
+  },
+  {
+   "id": "clothing",
+   "text": "What the baby wore",
+   "kept": true,
+   "reply": "'The clerks wrote down the clothes, and when nobody left a token, they often cut a scrap from the baby's gown and kept that instead.'"
+  },
+  {
+   "id": "marks",
+   "text": "Marks on the baby's body",
+   "kept": true,
+   "reply": "'Marks were written down too. A mark cannot be lost the way a ribbon can.'"
+  },
+  {
+   "id": "sex",
+   "text": "Boy or girl",
+   "kept": true,
+   "reply": "'Always. It is often the first word on the billet.'"
+  },
+  {
+   "id": "name",
+   "text": "The baby's name",
+   "kept": false,
+   "reply": "Pilar looks up from the desk. 'The hospital did not write the birth name on the billet. The baby was renamed to protect the mother and the child. Some parents wrote the name on the token anyway.'"
+  }
+ ],
+ "tokens": [
+  {
+   "id": "hollond",
+   "name": "a ribbon",
+   "text": "A ribbon with a name embroidered on it: Philip Hollond. Admitted in May 1758 as child 8338. The hospital named him Mark Jessop.",
+   "clue": "My boy had a ribbon. I sewed his name on it myself, every letter.",
+   "source": "HIS-TOKEN-CORAM",
+   "billet": "ribbon, a name sewn on in thread"
+  },
+  {
+   "id": "andrews",
+   "name": "a yellow ribbon",
+   "text": "A yellow ribbon with words in ink: 'My Name is Andrews'. Child 453, a boy, 1748.",
+   "clue": "I wrote on a ribbon, so that he would know what he was called.",
+   "source": "HIS-TOKEN-TEXTILE",
+   "billet": "yellow ribbon, words written in ink"
+  },
+  {
+   "id": "shilling",
+   "name": "a bent shilling",
+   "text": "A silver shilling, bent, punched with two holes, and scratched with the letters T and R.",
+   "clue": "It was a coin. I bent it and made two holes and scratched our letters on it.",
+   "source": "HIS-TOKEN-LOVE",
+   "billet": "shilling, bent, two holes, letters scratched"
+  },
+  {
+   "id": "penny",
+   "name": "a penny on a ribbon",
+   "text": "A pink ribbon threaded through a silver penny. Child 1,780, John Todd, admitted on 25 June 1756.",
+   "clue": "A little coin on a pink ribbon. That is all I had.",
+   "source": "HIS-TOKEN-LOVE",
+   "billet": "small silver coin threaded on a pink ribbon"
+  },
+  {
+   "id": "acorn",
+   "name": "a scrap of printed cotton",
+   "text": "A scrap of printed cotton with an acorn on it, filed with child 9324, a boy, in 1758. Nobody now knows if a parent chose it, or if a busy clerk cut it from his gown.",
+   "clue": "I left nothing. I had nothing. They said they kept a piece of his gown.",
+   "source": "HIS-TOKEN-TEXTILE",
+   "billet": "no token left; a piece of the gown, printed with an acorn"
+  },
+  {
+   "id": "ring",
+   "name": "a child's ring",
+   "text": "A small ring with a red heart stone between a padlock and a key, left in 1752.",
+   "clue": "A ring, so small. A heart, with a lock on one side and a key on the other.",
+   "source": "HIS-TOKEN-LOVE",
+   "billet": "child’s ring, a heart stone, a lock and a key"
+  }
+ ],
+ "return": "Pilar comes in with a note from the inquiry desk. 'A parent has come back. All they can do is describe the token. Find the packet that matches, and the billet can be opened.'",
+ "matched": "The packet opens. The billet and the token agree, and the number leads to the child. Pilar writes the parent's words beside the billet, so the record now holds both.",
+ "notMatched": "Pilar shakes her head gently. 'That packet holds something else. The parent's words are all we have. Read them again.'",
+ "display": "Aster lifts out the last tray: loose tokens, with no billets. 'Later, the governors put some tokens in a glass case for visitors. Nobody wrote down which token came from which child. Researchers have joined some back together. Not all of them will ever be joined.'",
+ "labels": [
+  {
+   "id": "object",
+   "text": "Label the objects: 'Tokens, 1740s to 1760s'",
+   "reply": "Aster says, 'True, and tidy. A visitor will see pretty coins and ribbons, and nothing tells them each one was a child.'"
+  },
+  {
+   "id": "story",
+   "text": "Label the loss: 'Each token was a child. Many can no longer be matched.'",
+   "reply": "Pilar says, 'True too. It may stop a visitor in front of the case. It also tells them less about any one child, because we cannot.'"
+  },
+  {
+   "id": "both",
+   "text": "Say what the record kept and what it lost",
+   "reply": "Aster and Pilar look at each other. 'Longer,' says Aster. 'Harder to write,' says Pilar. 'But a visitor can see the gap, and the gap is part of the history.'"
+  }
+ ],
+ "sources": [
+  {
+   "id": "HIS-TOKEN-CORAM",
+   "title": "Coram Story: The Foundling Hospital tokens collection",
+   "url": "https://coramstory.org.uk/explore/content/article/foundling-hospital-tokens-collection/"
+  },
+  {
+   "id": "HIS-TOKEN-TEXTILE",
+   "title": "Foundling Museum: Textiles (tokens of history)",
+   "url": "https://foundlingmuseum.org.uk/tokens-of-history/textiles/"
+  },
+  {
+   "id": "HIS-TOKEN-LOVE",
+   "title": "Foundling Museum: Love tokens (tokens of history)",
+   "url": "https://foundlingmuseum.org.uk/tokens-of-history/love-tokens/"
+  },
+  {
+   "id": "HIS-TOKEN-MUSEUM",
+   "title": "Foundling Museum: Tokens",
+   "url": "https://foundlingmuseum.org.uk/our-art-and-objects/foundling-collections/tokens/"
+  }
+ ]
+}

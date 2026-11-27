@@ -235,6 +235,7 @@ export const WATER_LOWER_CHANNEL: MapDef = {
     { stamp: 'crates', x: 3, y: 8 }, { stamp: 'barrel', x: 19, y: 14 },
   ],
   interactables: [
+    { id: 'field-festival', kind: 'fieldgame', game: 'festival', x: 13, y: 2, w: 1, h: 1, label: 'the lantern wall (The Festival Dilemma)', art: 'old-sign' },
     ...LOWER_BOUNDARY,
     ...CATCHMENT_LOWER,
     MATERIAL_CHANNEL_RECEIVER,

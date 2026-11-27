@@ -373,6 +373,30 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/collageWall.ts`, `src/content/collage-wall.json` (with sources), `src/ui/collagePanel.ts`, `src/maps/voices.ts`, `tests/collage-wall.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
+### The Token Drawer, chapter 3's signature game (C-004)
+
+**What.** In the Cold Store, Registrar Aster opens a drawer of real tokens left with babies at the Foundling Hospital in London (1740s to 1760s): an embroidered name ribbon, a ribbon with "My Name is Andrews" in ink, a bent and scratched shilling, a penny on a pink ribbon, a scrap of a baby's gown, and a child's ring. The player first acts as the clerk and chooses three lines for a billet; each line gets a reply, and Pilar explains why the real billets left off the birth name. Then three parents return and can only describe their token; the player finds the matching sealed packet (a wrong packet gets a gentle reply and another try). Last, the player labels a case of tokens that lost their billets. Aster and Pilar then disagree (X-008) about whether a record that keeps less can be kinder.
+
+**Why.** The lesson folder asks who gets remembered. Chapter 3 is about a display board that gives two places one heading, so a game about what a record keeps and loses fits it. Decision X-005 includes difficult history with a content note and reliable sources: the panel opens with a note and a choice to come back later, and it lists the Foundling Museum and Coram pages it uses.
+
+**Where.** `src/domain/tokenDrawer.ts`, `src/content/token-drawer.json` (with sources), `src/ui/tokenPanel.ts`, `src/maps/preserved.ts`, `tests/token-drawer.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
+### The Fog Chart, chapter 8's signature game (C-004)
+
+**What.** On the Seagrass Steps, Cartographer Renna unrolls a fogged chart of a bay, six squares by six, with four hidden features: a reef, a deep channel, an old wreck and a moving sandbar. The player has sixteen soundings. A hit names the feature; sounding all of it shows the claim and what holds it up, and each rests on a different kind of support (a measurement today, ten years of ferry crossings, one diver's report, three old charts that disagree). Harbourkeeper Sora first gives three sailors' reports, and one of them, from a captain who was sure, is wrong. When the soundings run out or all four are found, the player decides how to print what was not sounded. Renna and Sora then disagree (X-008) about practice knowledge on a chart.
+
+**Why.** The first lesson folder has a battleship grid of knowledge claims. The plan asked for two players; this version puts the player against the fog, with the keepers' reports as the second side, so it works alone and in class mode. Running out of soundings is an ending with its own text, not a failure screen (X-007). No print choice is marked right (OPEN-001).
+
+**Where.** `src/domain/fogChart.ts`, `src/content/fog-chart.json`, `src/ui/fogPanel.ts`, `src/maps/sea.ts`, `tests/fog-chart.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
+### The Festival Dilemma, chapter 11's second game (C-004, X-012)
+
+**What.** On the lantern wall by the Lower Channel, Tess asks for help: she saw her cousin Maren loosen a rival's boat line before a race that Maren won, and Maren's family needs the prize. Four friends give four pieces of advice. Tess has three new facts (the rival says a cracked oar cost him the race; Maren's family will have to sell their boat; Maren asks Tess to keep quiet). The player tries each fact on each friend, and a small table shows whose advice changes and whose holds. A friend who has heard every fact says what moves them. After hearing out two friends, the player advises Tess, in a friend's way or in their own words. Omi and Sena then disagree (X-008) about what a council needs.
+
+**Why.** The second lesson folder pairs the ranking story with friends who each argue one ethical view. The facts are built so that no two friends are moved by the same facts, so the player can find each way of judging by testing it, not by being told. The friends never name their views; the journal does (consequences, duty, virtue, care), as decision X-012 asks. No advice is marked right (OPEN-001).
+
+**Where.** `src/domain/festivalDilemma.ts`, `src/content/festival-dilemma.json`, `src/ui/festivalPanel.ts`, `src/maps/water.ts`, `tests/festival-dilemma.test.ts` (it checks that the facts tell the friends apart), credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
 ### The 30-minute audit and the new games
 
 **What.** The audit test (`tests/learning.test.ts`) measures minutes of play in which a 30-minute window lacks some TOK concept or framework part. The new optional games add minutes inside windows that were already open, so the measure grew with each game. The test now checks the original bound on the path without the new games, and allows each new game to lengthen the gaps by at most three times its own minutes.

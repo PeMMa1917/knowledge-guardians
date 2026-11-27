@@ -79,6 +79,7 @@ export const PRESERVED_ARCHIVE = room({
     { stamp: 'plant-tall', x: 2, y: 13 }, { stamp: 'plant-tall', x: 26, y: 13 },
   ],
   interactables: [
+    { id: 'field-tokens', kind: 'fieldgame', game: 'tokens', x: 22, y: 6, w: 1, h: 1, label: 'Aster’s long drawer (The Token Drawer)', art: 'old-sign' },
     ...COLD_CLEAR_BAY,
     CLEARANCE_DOOR,
     ...BEATER_COLD_STORE,

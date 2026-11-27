@@ -1467,6 +1467,60 @@
      "text": "A blank card invites people to fill it in with what they imagine. I would rather keep the four real cards and write the gap on the label, in plain words."
     }
    ]
+  },
+  {
+   "id": "preserved.tokens",
+   "after": {
+    "flag": "field.tokens.done",
+    "eq": true
+   },
+   "heading": "Two views on the token drawer",
+   "replies": [
+    {
+     "speaker": "preserved-registrar",
+     "text": "The hospital left the name off to protect the mothers, and it worked. A record that keeps less can be kinder. I would not call that billet a failure."
+    },
+    {
+     "speaker": "preserved-inquiry-keeper",
+     "text": "Kinder to the mothers, perhaps. The children grew up not knowing a token had been left for them. When we decide what a record leaves out, we should ask the person it leaves out."
+    }
+   ]
+  },
+  {
+   "id": "sea.fog",
+   "after": {
+    "flag": "field.fog.done",
+    "eq": true
+   },
+   "heading": "Two views on the fog chart",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "A chart is a promise to strangers who will steer by it at night. I would rather print less and be sure of every line I print."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "The ferry crew's ten years are worth more than one of our soundings. A chart that leaves out what people know by living it is not more careful. It is just smaller."
+    }
+   ]
+  },
+  {
+   "id": "water.festival",
+   "after": {
+    "flag": "field.festival.done",
+    "eq": true
+   },
+   "heading": "Two views on Tess's question",
+   "replies": [
+    {
+     "speaker": "water-keeper",
+     "text": "Odette is the only one nothing moved. On a council, I want one Odette. Someone has to say the rule out loud, or the rest of us bend it a little every year."
+    },
+    {
+     "speaker": "water-scribe",
+     "text": "One Odette, yes. But Lio was the only one who asked what Tess and Maren would be to each other next week. A council that forgets that writes rules nobody keeps."
+    }
+   ]
   }
  ]
 }

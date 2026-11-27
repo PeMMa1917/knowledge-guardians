@@ -83,6 +83,12 @@ export const LEARN: Record<string, LearnTag> = {
   'field:ladder': { ...t(['certainty', 'justification', 'evidence'], [M], 3, 'analyse', 'application', 'relational', 8), aoks: ['MAT'] },
   // Choose a triangle in a grove (a line is refused), see other shapes, say where the shape came from, then pace a side.
   'field:trees': { ...t(['interpretation', 'objectivity', 'perspective'], [M], 2, 'evaluate', 'integration', 'relational', 6), aoks: ['MAT', 'NAT'] },
+  // Try three new facts on four friends' advice, see whose advice moves, then advise Tess.
+  'field:festival': { ...t(['values', 'justification', 'perspective', 'responsibility'], [E, P], 3, 'evaluate', 'human', 'relational', 6), aoks: ['HUM'] },
+  // Sound a fogged bay; each found feature shows what supports it; one sailor report is wrong; decide how to print the rest.
+  'field:fog': { ...t(['evidence', 'justification', 'certainty', 'responsibility'], [M, S, E], 3, 'evaluate', 'application', 'relational', 6), aoks: ['NAT'] },
+  // Choose what a billet keeps, match returning parents to sealed tokens, then label tokens that lost their billets.
+  'field:tokens': { ...t(['evidence', 'responsibility', 'values', 'interpretation'], [S, M, E], 3, 'evaluate', 'caring', 'relational', 7), aoks: ['HIS'] },
   // Join a print, a poem, a debate record and a machine engraving about child sweeps; name the missing voice.
   'field:collage': { ...t(['evidence', 'interpretation', 'perspective', 'power'], [S, M, P], 3, 'analyse', 'human', 'relational', 6), aoks: ['ART', 'HIS'] },
   // Rank five people from one flood night, hear who ranks the same way, then rank again after a new fact.

@@ -50,6 +50,7 @@ export const SEA_HARBOUR: MapDef = {
     { stamp: 'flowers-small', x: 8, y: 3 }, { stamp: 'flowers-white', x: 24, y: 3 },
   ],
   interactables: [
+    { id: 'field-fog', kind: 'fieldgame', game: 'fog', x: 16, y: 3, w: 1, h: 1, label: 'Renna’s fog chart (The Fog Chart)', art: 'old-sign' },
     ...SEA_PAPER_LANDING,
     ...THREAD_BEND_HARBOUR,
     SEA_RELAY_HARBOUR_RECEIVER,
