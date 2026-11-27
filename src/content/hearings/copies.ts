@@ -6,7 +6,7 @@ export const copies: TownHearing = {
   world: "WORLD-08",
   map: "copies.press",
   place: "The City of Copies press",
-  x: 9,
+  x: 11,
   y: 5,
   host: "agate-vale",
   opening:
