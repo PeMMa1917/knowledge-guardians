@@ -1,3 +1,4 @@
+import {classroom} from './classroom/client';
 /**
  * Entry point. Creates the controller, the HTML interface and the Phaser game.
  * See docs/ARCHITECTURE.md for how the parts fit together.
@@ -102,3 +103,5 @@ for (const ev of ['keydown', 'pointerdown', 'wheel'] as const) window.addEventLi
 setInterval(() => { if (ctx.world) ctx.controller.tickActive(document.visibilityState === 'visible'); }, 15_000);
 // Debug/test hook: lets automated tests read state. Not used by the game.
 (window as any).kg = ctx;
+
+window.addEventListener('kg-class-status',()=>{ for(const label of document.querySelectorAll('[data-class-status]')) label.textContent=classroom?.status ?? ''; });

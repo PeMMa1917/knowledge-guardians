@@ -1,3 +1,6 @@
+import { GameController as ClassroomController } from '../app/controller';
+import {classroom} from '../classroom/client';
+import {classPanel,writingNotice,sceneEditor} from '../classroom/student';
 import { lamplightPanel } from './lamplightPanel';
 import { inkInvitation } from '../domain/inkPost';
 import { inkTrialDiagram } from './inkTrialDiagram';
@@ -827,10 +830,16 @@ export class UI implements UIApi {
         cont ? h('button', { 'data-autofocus': true, onclick: () => { discardPendingJournalWriting(c); c.loadContinue(); this.startPlaying(true); } }, h('strong', {}, 'Continue'), h('small', {}, fmt(cont))) : null,
         rec ? h('button', { 'data-autofocus': !cont, onclick: () => this.confirmRecovery() }, h('strong', {}, 'Checkpoint recovery'), h('small', {}, fmt(rec))) : null,
         h('button', { 'data-autofocus': !cont && !rec, onclick: () => this.characterCreation() }, h('strong', {}, 'New game'), h('small', {}, cont || rec ? 'Starts a new campaign. Your awards stay.' : 'Begin as a new recruit')),
+        h('button', { onclick: () => this.openModal('class-save','Class adventure',this.closeBtn(),h('h2',{},'Class adventure'),classPanel(store=>{
+          this.closeModal(false);
+          ctx.controller = new ClassroomController(store);
+          ctx.controller.onEvents(ev=>this.handleEvents(ev));
+          this.showTitle();
+        })) }, h('strong', {}, classroom ? 'Manage class adventure' : 'Class sign-in')),
         h('button', { onclick: () => this.openSettings() }, h('strong', {}, 'Settings'), h('small', {}, 'Text size, motion, sound, guide prompts')),
         h('button', { onclick: () => this.openCredits() }, h('strong', {}, 'Credits and sources'), h('small', {}, 'Who made the art, music and sounds, and the historical sources')),
       ),
-      h('p', { class: 'fine' }, 'Local demo: progress is saved in this browser only. No account. No AI service. Works offline after the first load.'),
+      h('p', { class: 'fine' }, classroom ? classroom.who.display + ' · ' + classroom.who.className + ' · ' + classroom.status : 'Local adventure. Progress is saved in this browser. Class sign-in is optional.'),
     );
     this.root.append(box);
     setTimeout(() => box.querySelector<HTMLElement>('[data-autofocus]')?.focus(), 0);
@@ -1303,15 +1312,17 @@ export class UI implements UIApi {
   /** A reflection offer at the student threshold (spec 95.1). Never "wrong", always optional. */
   private offerReflection(title: string, question: string): void {
     const ta = h('textarea', { rows: '3', 'aria-label': 'Your reflection (optional)', placeholder: 'Write a few words, or leave it empty.' }) as HTMLTextAreaElement;
+    const finishDraft = sceneEditor(ta,'lumen/'+title,question);
     this.openModal('reflection', 'A question to think about', this.closeBtn(),
       h('div', { class: 'lumen-head' }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '', class: 'lumen-big' }), h('h2', {}, 'A question to think about')),
       h('p', { class: 'fine' }, `Lumen noticed a pattern in your play: ${title.toLowerCase()}. This is not a mark. It may even be wrong.`),
-      h('p', { class: 'hint-text' }, question), conceptEditor(ta),
+      h('p', { class: 'hint-text' }, question), writingNotice(), conceptEditor(ta),
       h('div', { class: 'row' },
         h('button', { class: 'primary', onclick: () => {
           if (ta.value.length) {
             const c = ctx.controller;
             if (c.dispatch({ type: 'AddNote', text: ta.value, kind: 'reflection' }).some(({ kind }) => kind === 'error')) return;
+            finishDraft();
             queueJournalWriting(c);
             flushJournalWriting(c);
           }
@@ -1493,6 +1504,7 @@ export class UI implements UIApi {
   private freeQuestion(): HTMLElement {
     const input = h('input', { type: 'text', placeholder: 'Type a question…', 'aria-label': 'Your question', 'data-autofocus': true }) as HTMLInputElement;
     const out = h('div', { class: 'free-out', role: 'status', 'aria-live': 'polite' });
+    const finishDraft = sceneEditor(input,'sefa/question','Question for Sefa');
     const topics: [RegExp, string][] = [
       [/wootz|crucible|ingot/i, 'sefa.wootz'],
       [/example|museum|met\b|record|probabl/i, 'sefa.example'],
@@ -1502,11 +1514,12 @@ export class UI implements UIApi {
       if (!q.trim()) return;
       const hit = topics.find(([re]) => re.test(q));
       clear(out);
-      if (hit) { this.showNode(hit[1]); return; }
+      if (hit) { finishDraft(); this.showNode(hit[1]); return; }
       out.append(h('p', {}, 'Sefa: "I have no prepared answer for that. Choose one of my topics, or keep the question in your journal."'),
         h('button', { onclick: () => {
           const c = ctx.controller;
           if (c.dispatch({ type: 'AddNote', kind: 'question', text: `Question for Sefa: ${q}` }).some(({ kind }) => kind === 'error')) return;
+          finishDraft();
           queueJournalWriting(c);
           if (flushJournalWriting(c)) this.toast('Saved to your journal notes', 'info');
           input.value = '';
@@ -1516,7 +1529,7 @@ export class UI implements UIApi {
     };
     input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.isComposing && e.keyCode !== 229) ask(); });
     return h('div', { class: 'free' }, h('p', { class: 'fine' }, 'Sefa can answer prepared topics: wootz, crucible steel, ingots and the museum example. Other questions are kept in your journal. Nothing you type is sent anywhere.'),
-      h('div', { class: 'row' }, conceptEditor(input), h('button', { onclick: ask }, 'Ask')), out);
+      writingNotice(), h('div', { class: 'row' }, conceptEditor(input), h('button', { onclick: ask }, 'Ask')), out);
   }
 
   // ----------------------------------------------------------- exhibit
@@ -2791,16 +2804,18 @@ export class UI implements UIApi {
       : ['What are you thinking about right now?'];
     const prompt = prompts[Number(c.state.flags['count.rests'] ?? 0) % prompts.length];
     const ta = h('textarea', { rows: '3', 'aria-label': `Campfire log (optional): ${prompt}`, placeholder: 'Optional. Write in your own words. Nobody grades this.' }) as HTMLTextAreaElement;
+    const finishDraft = sceneEditor(ta,'campfire/'+prompt,'Campfire log · '+prompt);
     const r = c.recap();
     this.openModal('waystone-panel', 'Waystone', this.closeBtn(),
       h('h2', {}, 'Waystone'),
       h('p', {}, 'The Waystone hums softly. Your progress is saved here. Resting is never required, and nothing is lost if you keep going.'),
       h('ul', {}, ...r.lines.slice(1).map((l) => h('li', {}, l))),
-      h('p', { class: 'hint-text' }, h('strong', {}, 'Campfire log: '), prompt), conceptEditor(ta),
+      h('p', { class: 'hint-text' }, h('strong', {}, 'Campfire log: '), prompt), writingNotice(), conceptEditor(ta),
       h('div', { class: 'row' },
         h('button', { class: 'primary', 'data-autofocus': true, onclick: () => {
           if (ta.value.length) {
             if (c.dispatch({ type: 'AddNote', kind: 'reflection', text: `Campfire log: ${prompt}\n${ta.value}` }).some(({ kind }) => kind === 'error')) return;
+            finishDraft();
             if (lastId) c.dispatch({ type: 'SetFlag', flag: `log.${lastId}`, value: true });
             queueJournalWriting(c);
             flushJournalWriting(c);

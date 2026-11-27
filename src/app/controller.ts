@@ -38,12 +38,12 @@ export class GameController {
   private readonly leaderboardRules: ReturnType<typeof leaderboardIndex>;
   private permanentWriteFailed = false;
 
-  constructor() {
+  constructor(store = browserStore()) {
     this.pack = buildPack();
     this.leaderboardRules = leaderboardIndex(this.pack, Object.values(MAPS));
     this.contentProblems = validateContent(this.pack);
     this.engine = new Engine(this.pack);
-    this.saves = new SaveService(browserStore());
+    this.saves = new SaveService(store);
     this.permanent = this.saves.loadPermanent();
     const r = this.saves.load();
     if (r.ok) {

@@ -1,3 +1,4 @@
+import {classWriting} from './classWriting';
 /**
  * Teacher view (teacher.html): a class dashboard and printable student
  * reports, built from progress files that students choose to share
@@ -15,6 +16,7 @@ import { STAGE_LABEL, type SkillStage } from '../domain/skills';
 import { latestPerStudent, readProgress, subjectCsv, summarise, type ProgressFile } from './report';
 
 const root = document.getElementById('teacher')!;
+const connectedWriting=classWriting();
 const leaderboard = h('details', { class: 'leaderboard-teacher panel no-print' },
   h('summary', {}, h('strong', {}, 'Leaderboard (optional score files)')), leaderboardPanel([]));
 let files: ProgressFile[] = [];
@@ -65,6 +67,7 @@ function skillPanel(data: Record<string, Partial<Record<SkillStage, number>>>, n
 
 function dashboard(): void {
   clear(root);
+  root.append(connectedWriting);
   const s = summarise(files, pack, dismissed);
   const input = h('input', { type: 'file', accept: '.json,application/json', multiple: true, id: 'files' }) as HTMLInputElement;
   input.addEventListener('change', async () => {

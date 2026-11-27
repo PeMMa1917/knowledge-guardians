@@ -1,3 +1,5 @@
+import {classroom} from '../classroom/client';
+import {writingNotice} from '../classroom/student';
 import type { GameController } from '../app/controller';
 import { adventureJournalView, type AdventureJournalView, type JournalNote, type JournalReflection } from '../domain/adventureJournal';
 import { CONCEPTS, type DiaryNoteKind } from '../domain/types';
@@ -47,7 +49,7 @@ function topicOptions<T extends string>(title: string, values: readonly T[], lab
 function exportControls(controller: GameController, initialView: AdventureJournalView): HTMLElement {
   const include = h('input', { type: 'checkbox', checked: true });
   const untagged = h('input', { type: 'checkbox' });
-  const untaggedOption = h('label', { class: 'check', hidden: true }, untagged, ' Also include my private writing without TOK tags within this time range');
+  const untaggedOption = h('label', { class: 'check', hidden: true }, untagged, classroom ? ' Also include my writing without TOK tags within this time range' : ' Also include my private writing without TOK tags within this time range');
   const status = h('p', { role: 'status', class: 'fine' });
   const range = h('select', {},
     h('option', { value: 'all' }, 'All time'), h('option', { value: 'session' }, 'This session'),
@@ -141,7 +143,7 @@ function exportControls(controller: GameController, initialView: AdventureJourna
   } }, 'Print or save as PDF');
   return h('div', { class: 'diary-export' },
     filters, reset,
-    h('label', { class: 'check' }, include, ' Include my private writing in this export'),
+    h('label', { class: 'check' }, include, classroom ? ' Include my writing in this export' : ' Include my private writing in this export'),
     untaggedOption,
     h('div', { class: 'row' }, download, print), status);
 }
@@ -182,7 +184,7 @@ function diaryReflections(
     return earlier ? h('details', {}, h('summary', {}, 'My earlier reflection'), reflection) : reflection;
   });
   return h('details', { class: 'diary-reflections' },
-    h('summary', {}, 'Optional reflections'), ...editors, status);
+    h('summary', {}, 'Optional reflections'), writingNotice(), ...editors, status);
 }
 
 function diaryFeed(view: AdventureJournalView, controller: GameController, refresh: (tab: DiaryTab) => void): HTMLElement {
@@ -266,7 +268,7 @@ function diaryNotes(view: AdventureJournalView, controller: GameController, refr
     h('label', { for: 'diary-note-text' }, 'Your note'), conceptEditor(text),
     h('button', { type: 'submit' }, 'Save note'), status);
   return h('section', { class: 'adventure-journal' }, h('h3', {}, 'My notes, reflections, and questions'),
-    h('p', { class: 'fine' }, 'Private entries saved with this adventure.'), form,
+    writingNotice(), form,
     notes.length ? h('ol', { class: 'diary-feed diary-notes' }, ...[...notes].reverse().map((note) => h('li', {},
       entryDetails(note.kind === 'question' ? (note.resolved ? 'Resolved question' : 'Open question') : noteLabels[note.kind], note.at, note.mapId),
       h('p', {}, note.text), questionButton(note, controller, refresh),

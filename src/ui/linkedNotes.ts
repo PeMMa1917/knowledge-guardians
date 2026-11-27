@@ -1,3 +1,5 @@
+import {classroom} from '../classroom/client';
+import {writingNotice,sceneEditor} from '../classroom/student';
 import type { GameController } from '../app/controller';
 import { h } from './dom';
 import { artURL } from './illustrations';
@@ -48,20 +50,22 @@ export function linkedNotes(
     } else {
       const input = h('textarea', { id: 'straightedge-private-line', rows: 2 });
       const status = h('p', { class: 'fine', 'aria-live': 'polite' });
+      const finish = sceneEditor(input,'r7/field-note','R-7 field note');
       input.placeholder = 'What will help you find R-7 next time?';
       const form = h('form', { class: 'diary-note-form', onsubmit: (event: SubmitEvent) => {
         event.preventDefault();
         if (!input.value.length) return;
         const result = controller.dispatch({ type: 'AddNote', text: input.value, kind: 'note' });
         if (result.some(({ kind }) => kind === 'error')) return;
+        finish();
         input.value = '';
         syncConceptEditor(input);
         queueJournalWriting(controller, status);
-        if (flushJournalWriting(controller)) status.textContent = 'Private line saved in My Notes.';
+        if (flushJournalWriting(controller)) status.textContent = classroom ? 'Line saved in My Notes.' : 'Private line saved in My Notes.';
         sound('sfx.page');
       } },
-      h('label', { for: input.id }, 'A private line for yourself (optional)'), conceptEditor(input),
-      h('button', { type: 'submit' }, 'Save private line'), status);
+      writingNotice(), h('label', { for: input.id }, classroom ? 'A field note (optional)' : 'A private line for yourself (optional)'), conceptEditor(input),
+      h('button', { type: 'submit' }, classroom ? 'Save field note' : 'Save private line'), status);
       panel.append(h('p', { class: 'fine' }, 'The two references are linked under R-7. Wren can use those references when you reach the Listening Room.'), form);
     }
   }
