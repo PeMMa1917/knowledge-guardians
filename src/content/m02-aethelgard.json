@@ -634,7 +634,7 @@
      "map": "aethelgard.emberford",
      "x": 25,
      "y": 11,
-     "text": "The thread starts at the blade. It glows faintly: Corvan Hale holds it now, and his sign makes the claim.",
+     "text": "Corvan holds the blade now. His sign hangs above it. Kip shields the chalk with a sleeve. “When it rains, who will remember whose words those were?”",
      "card": "card.corvan-claim"
     },
     {
@@ -643,7 +643,7 @@
      "map": "aethelgard.emberford",
      "x": 21,
      "y": 7,
-     "text": "The thread runs into the guild ledger. The entry reads: 'One patterned blade. Lyle workshop to Corvan Hale. This season.' The clerk files it by the last transfer. The date tells the guild which sale to settle.",
+     "text": "The guild ledger lists a sale from the Lyle workshop to Corvan this season. Kip traces the column with his nail. “My aunt gets paid on that date. It could sit on the shelf a year first.”",
      "card": "card.guild-ledger"
     },
     {
@@ -652,7 +652,7 @@
      "map": "aethelgard.emberford",
      "x": 3,
      "y": 13,
-     "text": "The thread ends on Hesper's workshop sheet: two steels, stacked, welded, twisted and folded, this season. She records when the work was done so she can trace a repair. The two dates can agree and answer different questions.",
+     "text": "Hesper has dated her workshop sheet this season. “If somebody brings this back, I need the day it left my hands.” Her date and the clerk’s happen to match. One records her work, the other a sale.",
      "card": "card.workshop-diagram"
     }
    ],
@@ -688,7 +688,7 @@
    "title": "Market Showdown: the sign on the blade",
    "place": "Emberford market square",
    "opponent": "merchant-corvan",
-   "intro": "Traders and buyers gather around the fountain. Corvan stands by his stall with his sign: TRUE WOOTZ OF ANCIENT DAMASCUS. Hesper watches from the forge road.",
+   "intro": "A buyer folds her purse shut. Hesper stands at the edge of the fountain. Corvan smooths a crease in his father’s sign.",
    "valueShowdown": false,
    "crowd": {
     "player": 35,
@@ -897,7 +897,7 @@
    ],
    "outcomes": {
     "exposed": {
-     "text": "Every link breaks in front of the crowd, and the gold mark has nothing under it. Corvan takes the sign down, red in the face. Two buyers ask him for their money back.",
+     "text": "Corvan takes down the sign. Two buyers ask for refunds. Hesper steps beside him to help find their receipts.",
      "effects": [
       {
        "setFlag": "sign.state",
@@ -914,7 +914,7 @@
      ]
     },
     "narrowed": {
-     "text": "Corvan rubs out his sign and writes: 'Pattern-welded. Lyle workshop. This season.' After a moment he adds: 'Good steel, though.'",
+     "text": "Corvan writes “Lyle workshop, this season.” He dips the brush again. “May I keep the bit about good steel?”",
      "effects": [
       {
        "setFlag": "sign.state",
@@ -927,7 +927,7 @@
      ]
     },
     "won-over": {
-     "text": "Corvan laughs: 'All right, Guardian. You were fair to me.' He writes a new sign with Hesper's name on it, and asks her to sign it too.",
+     "text": "Corvan leaves room below his own name. Hesper takes the brush. The first letter wobbles. He holds the board steady.",
      "effects": [
       {
        "setFlag": "sign.state",
@@ -944,7 +944,7 @@
      ]
     },
     "split": {
-     "text": "The crowd is divided. Corvan keeps his sign for now, but adds a small note at the bottom: 'Maker: Lyle workshop.'",
+     "text": "Half the square drifts away. Corvan keeps his sign and pins “Maker: Lyle workshop” where a child can read it.",
      "effects": [
       {
        "setFlag": "sign.state",
@@ -957,7 +957,7 @@
      ]
     },
     "lost-ground": {
-     "text": "The crowd follows the bold sign for today. Nobody buys the blade, though. Hesper says: 'You asked the right questions. You can ask them again.'",
+     "text": "The gold sign draws the crowd. Nobody opens a purse. Hesper saves you a dry corner of the workshop sheet for tomorrow.",
      "effects": [
       {
        "setFlag": "sign.state",
@@ -1974,6 +1974,30 @@
      "if": {
       "flag": "rumour.done",
       "eq": true
+     }
+    },
+    {
+     "text": "Read the tag on your kettle.",
+     "next": "rumour.after.kettle",
+     "if": {
+      "flag": "rumour.edition",
+      "eq": "kettle"
+     }
+    },
+    {
+     "text": "Did the night shift hear back?",
+     "next": "rumour.after.quiet",
+     "if": {
+      "flag": "rumour.edition",
+      "eq": "quiet"
+     }
+    },
+    {
+     "text": "Look at the folded account.",
+     "next": "rumour.after.margin",
+     "if": {
+      "flag": "rumour.edition",
+      "eq": "margin"
      }
     },
     {

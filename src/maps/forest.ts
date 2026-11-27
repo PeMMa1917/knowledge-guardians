@@ -1,3 +1,4 @@
+import { mothVisit } from './mothPerchReturns';
 /** The Living Forest field exercise takes place in a fictional woodland. */
 import { piaOrchard, rootsPerformance, rootsReturn } from './plumLoft';
 import type { Condition } from '../domain/types';
@@ -114,6 +115,7 @@ export const FOREST_STATION: MapDef = {
     { stamp: 'bench', x: 7, y: 13 },
   ],
   interactables: [
+    ...mothVisit('lamp',14,9),
     WORK_SCHEDULE_FERN,
     ...HOOK_STATION,
     ...FOREST_SHEET_STATION,

@@ -1,5 +1,11 @@
 # Status and next steps
 
+## 27 November • A place for a moth
+
+Kip has lent the Guardian a shutter, a glass tile, a wool cuff and a well-worn piece of brass. A second sighting lets the Guardian try them where the Glimmermoth has landed. Choosing its resting place opens work together at a forest station, an archive or a rehearsal. At the theatre, a cue ribbon helps the understudy find her entrance. Waiting for her signal gives her control of the silence. The choice follows the two of them out of the rehearsal. [Three homes and six outcomes](src/content/mothPerchReturns.ts)
+
+Della can send six small loaves or three large ones to six hungry doors. The player can deliver and take them back, then weigh what remains. Across town, Hana’s four chalk marks trace back to one porter. A correction can travel to the kettle, the late shift or the ledger margin, where different people can use it. [Bake bench, witnesses and recovery checks](tests/first-chapter-perches.test.ts) · [Chapter 1 stakeholder review](docs/audit/chapters/CH01.md#18-chapter-1-polish-list-c-021)
+
 ## 27 November • The Last Plum in the Orchestra
 
 Fen’s touring company needs a new way to move its stage. Tallowheel, the snail who used to pull it, has a child who can answer a drum through the floor. The player turns a six-sided chest to find two different scores, plays a bar on the rim or floorboard, then helps the company travel or grow roots. Four performances change what Fen says afterward. The actor in the Bridge Clearing can carry a translated song back into the earlier chapter. The earned 1829 Perkins volume opens a separate meeting with Louis Braille and a working stylus at Fen’s bench. The adventure journal records the impressions and the difference between the company’s work and the book. [Story](src/content/plumOrchard.ts) · [Working models](tests/plum-orchard.test.ts)

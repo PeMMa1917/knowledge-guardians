@@ -546,7 +546,7 @@
    "if": {
     "flagSet": "sd.corvan.outcome"
    },
-   "lit": "The market argues with evidence again, not with shouting."
+   "lit": "Hesper holds out her ink-stained hand. “People asked me to sign my own work today.”"
   },
   {
    "id": "words",
@@ -564,7 +564,7 @@
      }
     ]
    },
-   "lit": "The guild's notices say how sure they are, and Sefa's song names its sources."
+   "lit": "Sefa hums the little rest before a borrowed verse. “That gap is where Orrin gets his name.”"
   },
   {
    "id": "weigh",
@@ -574,7 +574,7 @@
     "flag": "puzzle.weigh-house.done",
     "eq": true
    },
-   "lit": "Traders trust the scales again, because anyone can check them."
+   "lit": "A trader takes her young son’s hand. “Tomorrow you can test the scale yourself.”"
   },
   {
    "id": "cart",
@@ -584,7 +584,7 @@
     "flag": "puzzle.tipped-cart.done",
     "eq": true
    },
-   "lit": "The witnesses stop shouting: each one says what they saw and what they heard."
+   "lit": "The carter pulls up an empty crate. “Sit here. From this side I could hear the wheel, but I couldn’t see it.”"
   },
   {
    "id": "maps",
@@ -594,7 +594,7 @@
     "flag": "puzzle.map-table.done",
     "eq": true
    },
-   "lit": "Each traveller has a map for their own need, and knows what it leaves out."
+   "lit": "Kip rolls one map tight and leaves another open. “My aunt can find the landing. I can find my way home after dark.”"
   },
   {
    "id": "sorter",
@@ -604,7 +604,7 @@
     "flag": "puzzle.brass-sorter.done",
     "eq": true
    },
-   "lit": "The sorter is fair to every farm, because it learned from every farm."
+   "lit": "Mara brings a sack with an awkward shape. “There’s room on the sorting table to try ours now.”"
   },
   {
    "id": "echo",
@@ -614,7 +614,7 @@
     "flag": "puzzle.echo-bridge.done",
     "eq": true
    },
-   "lit": "The footbridge rope is cut to a measure that says how sure it is."
+   "lit": "Idris runs his thumb along the measuring slip. “I used to hide the second reading. Thought they’d call me clumsy.”"
   },
   {
    "id": "survey",
@@ -624,7 +624,7 @@
     "flag": "puzzle.toll-survey.done",
     "eq": true
    },
-   "lit": "The council asks the whole town, with a plain question."
+   "lit": "Venn picks a splinter out of his sleeve. “Past the toll gate there’s a bench I’ve never canvassed.”"
   },
   {
    "id": "ferry",
@@ -634,7 +634,7 @@
     "flag": "puzzle.ferry-message.done",
     "eq": true
    },
-   "lit": "Town and ferry folk understand each other again: tavi, we together."
+   "lit": "Tova puts out one extra cup. “When they said ‘we,’ this time they meant me too.”"
   },
   {
    "id": "frame",
@@ -644,7 +644,7 @@
     "flag": "puzzle.painters-frame.done",
     "eq": true
    },
-   "lit": "Posters in town now say who framed them, and why."
+   "lit": "Nell leaves a strip of bare paper. “Somebody asked what I cut off the edge. I had room to draw it back in.”"
   },
   {
    "id": "bells",
@@ -654,7 +654,7 @@
     "flag": "puzzle.bell-stair.done",
     "eq": true
    },
-   "lit": "Maren's bells still seem to climb forever, and now everyone knows why."
+   "lit": "Maren catches the last bell in her palm. “Still gives me gooseflesh. Even after I showed you the trick.”"
   },
   {
    "id": "forecast",
@@ -664,7 +664,7 @@
     "flag": "puzzle.forecast-board.done",
     "eq": true
    },
-   "lit": "The fishers read the board as chances, not promises."
+   "lit": "Noa folds the forecast into a pocket. “I can hope for clear skies and still take my oilcoat.”"
   },
   {
    "id": "plaque",
@@ -673,7 +673,7 @@
    "if": {
     "flagSet": "puzzle.founders-plaque.method"
    },
-   "lit": "The gate plaque says honestly what was kept and what was lost."
+   "lit": "Orrin feels the uncut corner of the plaque. “When somebody finds a name we missed, the mason can come back.”"
   },
   {
    "id": "rumour",
@@ -683,7 +683,7 @@
     "flag": "rumour.done",
     "eq": true
    },
-   "lit": "'Who told you?' is asked in the market again."
+   "lit": "The tea seller stops with the kettle halfway up. “Hesper came in for her usual cup. I was afraid she wouldn’t.”"
   },
   {
    "id": "well",
@@ -692,7 +692,7 @@
    "if": {
     "flagSet": "well.reflected"
    },
-   "lit": "The two wells are compared with one method, the old Guardian's knots."
+   "lit": "Efua lays the two well ropes side by side. “My brother can take the morning watch. He knows where I tied the knot.”"
   },
   {
    "id": "board",
@@ -702,7 +702,7 @@
     "flag": "board.corvan-board.done",
     "eq": true
    },
-   "lit": "People pin claims to evidence, with yarn instead of anger."
+   "lit": "Hana pulls one pin loose. “Nobody had to lose face for me to move that thread.”"
   }
  ],
  "clues": [

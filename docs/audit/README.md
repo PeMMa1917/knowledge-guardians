@@ -39,7 +39,7 @@ Play, engagement and enjoyable learning stay the main goal. Other views can stil
 | Chapter | Audit written | Consensus fixes |
 | --- | --- | --- |
 | Whole game | [PERSONAS.md](PERSONAS.md) | C-001, C-002, C-003 done; others planned |
-| 1 Emberford and the Nexus | [CH01](chapters/CH01.md) | C-026, C-027 done; polish list C-021 started |
+| 1 Emberford and the Nexus | [CH01](chapters/CH01.md) | C-026 and C-027 done. The named C-021 checklist is complete. Five personal origin encounters remain under review. |
 | 2 The Nile archive | [CH02](chapters/CH02.md) | C-028 game-wide; plain titles; 5 two-reply moments; first field game (The Copyists' Ladder) |
 | 3 Preserved Lives | [CH03](chapters/CH03.md) | content note before human remains; plain titles; 3 two-reply moments |
 | 4 The Observatory Coast | [CH04](chapters/CH04.md) | plain bearing titles; 4 two-reply moments |

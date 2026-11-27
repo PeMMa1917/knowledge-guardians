@@ -1,3 +1,4 @@
+import { mothVisit } from './mothPerchReturns';
 import { plumStair, roadPerformance } from './plumLoft';
 import { FIRST_CLAP_GALLERY, FIRST_CLAP_REHEARSAL } from './firstClap';
 /** Fictional theatre with separate backstage and audience sightlines. */
@@ -76,6 +77,7 @@ export const STAGE_FOYER = room({
     { stamp: 'plant-tall', x: 19, y: 13 }, { stamp: 'long-table', x: 12, y: 5 },
   ],
   interactables: [
+    ...mothVisit('desk',12,9),
     SCRIPT_RAIL_ENTRANCE,
     ...STAGE_FOYER_BACKBILL,
     ...LEAF_FRAME_FOYER,

@@ -31,6 +31,12 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
+  if(key.startsWith('tally-tray:')) return {doors:'Which tray could I take to six separate doors?',measure:'What stays equal when I switch between two untouched trays?'};
+  if (key.startsWith('moth-perch:home:')) return {
+    place: 'What made me move our resting place or keep it here?',
+    companion: 'What might my companion notice in a room I have already visited?',
+  };
+  if(key.startsWith('moth-perch:'))return {watch:'Which part of the moth’s visit did I actually see?',next:'Which one thing could I change at this same perch to check my hunch?'};
   if (key.startsWith('plum:mould:')) return {join:'Which notch let me tell a pair from a ridge on this draw?',hand:'What changed when I adjusted my hand and kept the wood the same?'};
   if (key.startsWith('plum:bar:')) return {room:'Which player could feel my last bar, and who could hear it?',wait:'What might I miss if I decided in advance how long an answer should take?'};
   if (key.startsWith('plum:press:') || key.startsWith('plum:slide:')) return {contact:'What could I learn from the part that moved or sprang back?',neighbour:'Which neighbouring face would I trace next?'};

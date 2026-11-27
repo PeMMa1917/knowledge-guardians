@@ -142,6 +142,37 @@ const copiesEvidenceInvestigations = [
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
   {
+    objective:'lor.o2.friend',map:'nexus.archive',target:'lor-desk',
+    source:'tests/first-chapter-perches.test.ts',anchor:'keeps the lit glass and worn cuff apart in all eighteen setups',
+    action:'Watch two Archive stands, change the lining under a fixed shutter and change the shutter above a fixed lining. Bright light can accompany both a landing and an empty perch. Repeat the comparison before reserving a place.',
+    reasoning:[{mode:'causal',basis:'Changing one part of the arrangement gives a keeper grounds to reject bright light alone as a sufficient explanation for landing at this stand.'}],
+    dimensions:['area:NAT','concept:evidence','concept:justification','framework:methods-and-tools','subject:biology'],elements:['game:20','story:38'],
+  },
+  {
+    objective:'moth.return.desk',map:'stage.foyer',target:'moth-work-desk',source:'tests/first-chapter-perches.test.ts',
+    anchor:'takes the %s resting place to a receiver, lets both outcomes stand and admits a later revision',
+    action:'Carry the moth from the controlled perch to the theatre rail. Try a tug that can be answered and a wait for the first gesture. The host speaks about what these two different trials ask of the same child.',
+    comparison:{concepts:['interpretation','explanation'],framework:['methods-and-tools'],areas:[
+      {id:'NAT',method:'Hold one setup constant and change one feature to distinguish two explanations of a landing.',limit:'Repeated observations concern these perches and this creature.'},
+      {id:'ART',method:'Rehearse a cue where a child can answer a ribbon, then give the child the first gesture in an open-ended pause.',limit:'A workable cue can express a different relationship without establishing a general law of performance.'}],
+      connection:'The same keeper can use a trial to narrow an explanation at the perch, then use alternatives to widen a performer’s expressive choices at the door.'},
+    dimensions:['micro:1106','area:NAT','area:ART','concept:interpretation','concept:explanation','framework:methods-and-tools','subject:theatre','subject:biology'],elements:['game:20','story:38'],
+  },
+  {
+    objective:'emberford.tally.weigh',map:'aethelgard.emberford',target:'emberford.tally',source:'tests/first-chapter-perches.test.ts',
+    anchor:'checks units at the six doors, on the scale and after removing one loaf',
+    action:'Put both full trays on the scale. Move a loaf from each to a stall. The same change in the number of loaves produces a change of one mass unit for a small loaf and two for a large one.',
+    reasoning:[{mode:'deductive',basis:'Given the measured weight per loaf in a tray, subtracting one such loaf fixes the units left on that tray. Equal starting loads alone do not fix the number of doors supplied.'}],
+    dimensions:['micro:1087','area:MAT','area:HUM','concept:interpretation','framework:scope','subject:math-ai','subject:business'],elements:['game:73','story:95'],
+  },
+  {
+    objective:'rum.o4.tell',map:'aethelgard.emberford',target:'villager-1',source:'tests/first-chapter-perches.test.ts',
+    anchor:'edition after separating four tellers from one source',
+    action:'Trace four chalk strokes through the market to one porter, compare their origin with a dated failure and three later checks, then choose who receives a correction that a future failure would not invalidate.',
+    reasoning:[{mode:'inductive',basis:'Three later checks supply evidence about a particular run. They cannot warrant a statement that no future piece will fail.'}],
+    dimensions:['micro:90','area:HUM','concept:evidence','concept:truth','framework:scope','framework:ethics','subject:psychology'],elements:['game:267','story:114'],
+  },
+  {
     objective:'plum.hand',map:'stage.plum-loft',target:'plum-mould',
     source:'tests/plum-orchard.test.ts',anchor:"expect(d.done('plum.hand')).toBe(true)",
     action:'Draw Fen’s seven-notch stylus across the pair and ridge. A working grip masks the middle hollow on worn wood. Change only the pressure and find the hollow with a light draw. A heavy draw crosses it even on fresh wood.',

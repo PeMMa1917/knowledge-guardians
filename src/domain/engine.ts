@@ -1,3 +1,5 @@
+import { changeTray, type BakeryCommand } from './bakeryTrays';
+import { tryMothPerch, inviteMoth, type PerchCommand, type WelcomeCommand } from './mothPerches';
 import { mouldEffects, type MouldCommand } from './orchardMould';
 import { chestEffects, beatEffects, type ChestCommand, type BeatCommand } from './plumChest';
 import { shadowEffects, type ShadowCommand } from './supperShadow';
@@ -86,7 +88,7 @@ const DIALOGUE_FALLBACK = 999;
 import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand, type LanternPairCommand } from './lamplight';
 
 export type Command =
-  | ChestCommand | BeatCommand | MouldCommand
+  | ChestCommand | BeatCommand | MouldCommand | PerchCommand | WelcomeCommand | BakeryCommand
   | ShadowCommand
   | FieldLoanCommand
   | BirdCommand
@@ -235,7 +237,7 @@ export type GameEvent =
   | { kind: 'puzzle'; puzzle: string; ok: boolean; text: string; gapAt?: number | null }
   | { kind: 'fray'; id: string; name: string; error: string }
   | { kind: 'yarn'; board: string; claim: string; card: string; tone: Tone; text: string; done: boolean }
-  | { kind: 'loreling'; loreling: string; stage: 'watch' | 'note' | 'offer' | 'name' | 'field'; ok: boolean; text: string; recheck?: string | null }
+  | { kind: 'loreling'; loreling: string; stage: 'watch' | 'note' | 'offer' | 'home' | 'name' | 'field'; ok: boolean; text: string; recheck?: string | null }
   | { kind: 'alcove'; alcove: string; stage: 'place' | 'link' | 'imply'; result: string; text: string }
   | { kind: 'showdown'; state: ShowdownState }
   | { kind: 'forge'; line: string }
@@ -1121,8 +1123,16 @@ export class Engine {
           s = apply([{ addMarks: -o.price }, { giveItem: o.item }, ...(o.effects ?? [])], s, out);
           break;
         }
+        case 'MoveBakeryTray':
+          s = apply(changeTray(s, cmd), s, out);
+          break;
+        case 'TryMothPerch':
+          s = apply(tryMothPerch(s, cmd), s, out);
+          break;
+        case 'WelcomeMoth':
         case 'LorelingWatch': case 'LorelingNote': case 'LorelingOffer': case 'LorelingName': case 'LorelingField': {
-          const rec = this.pack.lorelings.find((x) => x.id === cmd.loreling);
+          const loreling = cmd.type === 'WelcomeMoth' ? 'glimmermoth' : cmd.loreling;
+          const rec = this.pack.lorelings.find((x) => x.id === loreling);
           if (!rec) throw new Error('Unknown Loreling');
           const F = `lor.${rec.id}`;
           const friend = s.flags[`${F}.friend`] === true;
@@ -1139,14 +1149,26 @@ export class Engine {
             if (!q || !q.options.some((o) => o.id === cmd.option)) throw new Error('No such option');
             s = apply([{ setFlag: `${F}.note.${q.id}`, value: cmd.option }], s, out);
             events.push({ kind: 'loreling', loreling: rec.id, stage: 'note', ok: true, text: '' });
-          } else if (cmd.type === 'LorelingOffer') {
-            if (friend) throw new Error('Already a friend');
+          } else if (cmd.type === 'LorelingOffer' || cmd.type === 'WelcomeMoth') {
+            if (friend && cmd.type === 'LorelingOffer') throw new Error('Already a friend');
             const note = Object.fromEntries(rec.questions.map((q) => [q.id, s.flags[`${F}.note.${q.id}`] as string | undefined]));
-            const r = checkOffer(rec, note, cmd.place, seen);
-            s = apply(r.ok ? [{ setFlag: `${F}.friend`, value: true }, { setFlag: `${F}.name`, value: rec.name }, { setFlag: 'lor.out', value: rec.id }, ...(rec.onComplete ?? [])]
-              : [{ addNum: `${F}.misses`, by: 1 }], s, out);
-            if (r.ok) weaves.push(rec.weave);
-            events.push({ kind: 'loreling', loreling: rec.id, stage: 'offer', ok: r.ok, text: r.text, recheck: r.recheck });
+            const result = cmd.type === 'WelcomeMoth'
+              ? { ...inviteMoth(s, cmd.perch), recheck: null }
+              : checkOffer(rec, note, cmd.place, seen);
+            if (!result.ok) {
+              s = apply([{ addNum: `${F}.misses`, by: 1 }], s, out);
+            } else {
+              if (cmd.type === 'WelcomeMoth') s = apply([{ setFlag: 'moth.perch.home', value: cmd.perch }], s, out);
+              if (!friend) {
+                s = apply([
+                  { setFlag: `${F}.friend`, value: true }, { setFlag: `${F}.name`, value: rec.name },
+                  { setFlag: 'lor.out', value: rec.id }, ...(rec.onComplete ?? []),
+                ], s, out);
+                weaves.push(rec.weave);
+              }
+            }
+            events.push({ kind: 'loreling', loreling: rec.id, stage: friend ? 'home' : 'offer',
+              ok: result.ok, text: result.text, recheck: result.recheck });
           } else if (cmd.type === 'LorelingName') {
             if (!friend) throw new Error('Not a friend yet');
             const n = cleanPetName(cmd.name);

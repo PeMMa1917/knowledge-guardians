@@ -470,9 +470,9 @@ export const NEXUS: MapDef = {
     { id: 'alcove-firsts', kind: 'alcove', alcove: 'firsts', x: 27, y: 14, w: 1, h: 1, label: 'the Alcove of Firsts (exhibition)', art: 'alcove', visibleIf: { objective: 'm01.o6.label' } },
     { id: 'title-lock', kind: 'lock', lock: 'inventor', x: 37, y: 13, w: 1, h: 1, label: 'the Title Lock', art: 'title-lock', visibleIf: { objective: 'm01.o6.label' } },
     { id: 'claim-board', kind: 'label', kit: 'ee.inventor', x: 33, y: 16, w: 1, h: 1, label: "Tull's claim board", art: 'label-stand', visibleIf: { objective: 'ee1.o3.weigh' } },
-    // Lorelings (spec 36.1): three places to watch the Glimmermoth. They go when it is a friend.
+    // Lorelings (spec 36.1): three places to watch the Glimmermoth. Each stand can become its resting place, including on a return visit.
     ...([['lamp', 7, 8, 'the glimmer by the patent drawing'], ['desk', 4, 13, 'the glimmer at the reading table'], ['case', 22, 14, 'the glimmer by the glass cabinet']] as const)
-      .map(([sg, x, y, label]) => ({ id: `lor-${sg}`, kind: 'loreling' as const, loreling: 'glimmermoth', sighting: sg, x, y, w: 1, h: 1, label, visibleIf: { not: { flag: 'lor.glimmermoth.friend', eq: true } } })),
+      .map(([sg, x, y, label]) => ({ id: `lor-${sg}`, kind: 'loreling' as const, loreling: 'glimmermoth', sighting: sg, x, y, w: 1, h: 1, label })),
     // One knowledge-gated door (spec 12.23): it opens with the Date-Kind Lens and an understanding of date kinds.
     { id: 'timeline-door', kind: 'puzzle', puzzle: 'timeline-door', x: 5, y: 2, w: 1, h: 1, label: 'the Timeline Door', art: 'timeline-door',
       artOpen: { key: 'timeline-door.open', if: { flag: 'puzzle.timeline-door.done', eq: true } } },

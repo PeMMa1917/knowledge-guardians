@@ -1,3 +1,7 @@
+import { mothReturns } from '../content/mothPerchReturns';
+import { bakeryPanel } from './bakeryTrays';
+import { mothPerchPanel } from './mothPerches';
+import { perches as mothPerches, type Perch } from '../domain/mothPerches';
 import { readingControls } from './readingControls';
 import { taskMode, trialSound } from '../domain/taskScore';
 import { fieldGamePanels, fieldStationPanel } from './fieldGamePanels';
@@ -264,6 +268,11 @@ function crestCanvas(c: Crest, px: number, scale: number): HTMLCanvasElement {
 
 function chip(text: string, title: string, cls: string): HTMLElement {
   return h('span', { class: `chip ${cls}`, title, 'aria-label': `${text}: ${title}` }, text);
+}
+function characterPortrait(sprite?: string): HTMLElement | null {
+  if (!sprite) return null;
+  if (sprite.startsWith('custom:')) return h('span', {class: 'portrait custom', 'aria-hidden':'true'}, previewLook(sprite, 3));
+  return h('span', {class:'portrait', 'aria-hidden':'true', style:{backgroundImage:`url(assets/art/generated/characters/${sprite}.png)`}});
 }
 export function histChip(l: HistoricalLabel): HTMLElement { return chip(HIST_LABEL_TEXT[l][0], HIST_LABEL_TEXT[l][1], `hist-${l}`); }
 export function claimChip(k: ClaimKind): HTMLElement { return chip(CLAIM_TEXT[k][0], CLAIM_TEXT[k][1], `claim-${k}`); }
@@ -657,12 +666,11 @@ export class UI implements UIApi {
     const voice = (r: { speaker: string; text: string }) => {
       const who = c.pack.characters.find((x) => x.id === r.speaker);
       return h('div', { class: 'two-reply' },
-        h('span', { class: 'portrait', style: { backgroundImage: `url(assets/art/generated/characters/${who?.sprite}.png)` }, 'aria-hidden': 'true' }),
+        characterPortrait(who?.sprite),
         h('div', {}, h('strong', {}, who?.name ?? r.speaker), h('p', {}, r.text)));
     };
     this.openModal('two-replies', entry.heading, this.closeBtn(), h('h2', {}, entry.heading),
       h('div', { class: 'two-replies-row' }, voice(entry.replies[0]), voice(entry.replies[1])),
-      h('p', { class: 'fine' }, 'Two people, two good reasons. Neither one is the answer. Which reasons do you find stronger, and why?'),
       h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep walking')));
     this.sfx('sfx.page');
     return true;
@@ -682,7 +690,7 @@ export class UI implements UIApi {
       const a = entry.answers.find((x) => x.id === answer);
       body.replaceChildren(
         h('div', { class: 'two-reply' },
-          h('span', { class: 'portrait', style: { backgroundImage: `url(assets/art/generated/characters/${who?.sprite}.png)` }, 'aria-hidden': 'true' }),
+          characterPortrait(who?.sprite),
           h('div', {}, h('strong', {}, who?.name ?? entry.speaker), h('p', {}, text))),
         ...(a
           ? [h('p', { class: 'clue-view fresh', role: 'status' }, a.reply),
@@ -1445,9 +1453,7 @@ export class UI implements UIApi {
       : n.speaker === 'narrator' ? null
       : id.startsWith('ink.') && speaker && 'mode' in speaker && speaker.mode === 'historical'
         ? h('img', { class: 'portrait ink-portrait', src: artURL('ink-post.bird'), alt: '' })
-      : String((speaker as any)?.sprite ?? '').startsWith('custom:')
-        ? h('span', { class: 'portrait custom', 'aria-hidden': 'true' }, previewLook((speaker as any).sprite, 3))
-        : h('span', { class: 'portrait', style: { backgroundImage: `url(assets/art/generated/characters/${(speaker as any)?.sprite}.png)` }, 'aria-hidden': 'true' });
+      : characterPortrait(speaker?.sprite);
     const opts = c.engine.visibleOptions(id, c.state);
     const optionList = h('div', { class: 'options' });
     if (opts.length) {
@@ -1475,7 +1481,7 @@ export class UI implements UIApi {
     const guideObjective = guidedCase
       ? c.engine.visibleObjectives(c.state).find((step) => !step.complete && step.id.startsWith(guidedCase))?.id
       : id === 'stage.call.stand' ? 'stage.call.audience' : cornerObjective;
-    const extra = id === 'sefa.free' ? this.freeQuestion() : lamplightPanel(id, c, () => ctx.world?.refreshWorld(), (line) => this.speak(line), ctx.settings.sfxVolume)
+    const extra = ['emberford.tally', 'emberford.tally.loaves', 'emberford.tally.weight'].includes(id) ? bakeryPanel(c) : id === 'sefa.free' ? this.freeQuestion() : lamplightPanel(id, c, () => ctx.world?.refreshWorld(), (line) => this.speak(line), ctx.settings.sfxVolume)
       ?? inkTrialDiagram(id, ctx.settings.sfxVolume);
     const earlier = conversationHistory(c.engine.dialogueById, c.state.flags, { except: id, limit: 5 });
     const source = n.citationSource ? c.pack.sources.find((entry) => entry.id === n.citationSource) : undefined;
@@ -2481,7 +2487,7 @@ export class UI implements UIApi {
     if (!rec) return;
     const F = `lor.${rec.id}`;
     let watched: string | null = null;
-    if (sightingId && c.state.flags[`${F}.friend`] !== true) {
+    if (sightingId && (rec.id === 'glimmermoth' || c.state.flags[`${F}.friend`] !== true)) {
       const ev = c.dispatch({ type: 'LorelingWatch', loreling: rec.id, sighting: sightingId });
       const r = ev.find((e) => e.kind === 'loreling') as Extract<GameEvent, { kind: 'loreling' }> | undefined;
       if (r) { watched = sightingId; this.sfx('sfx.page'); }
@@ -2507,6 +2513,15 @@ export class UI implements UIApi {
             const got = seen.some((y) => y.id === x.id);
             return h('li', { class: `${got ? '' : 'unseen'} ${feedback?.recheck === x.id ? 'recheck' : ''}` }, got ? [h('strong', {}, `${x.place}: `), x.text] : `Not watched yet: ${x.place}.`);
           })));
+        if (rec.id==='glimmermoth') {
+          if(seen.length<rec.minSightings){
+            box.append(h('p',{},'Kip props a shutter on the reading table. Look for a second sighting before setting out a perch.'));
+          } else if (sightingId && Object.hasOwn(mothPerches, sightingId) && st.mapId === 'nexus.archive') {
+            const place=sightingId as Perch;
+            box.append(mothPerchPanel(c,place,text=>{feedback={ok:true,text};this.sfx('sfx.sparkle');ctx.world?.lumenBurst();render();}));
+          } else box.append(h('p', {}, 'The folding perch is at the archive hall. Visit the lamp, reading desk or glass cabinet to set it out.'));
+          return;
+        }
         if (seen.length < rec.minSightings) {
           box.append(h('p', { class: 'fair' }, `Watch it in ${rec.minSightings - seen.length} more place${rec.minSightings - seen.length === 1 ? '' : 's'} before you write your pattern note. One sighting can mislead.`));
           return;
@@ -2535,6 +2550,15 @@ export class UI implements UIApi {
       }
       // A friend: name, form and field.
       if (feedback?.ok) box.append(h('div', { class: 'alcove-feedback ok', role: 'status' }, feedback.text));
+      const home = st.flags['moth.perch.home'];
+      if (rec.id === 'glimmermoth' && typeof home === 'string' && Object.hasOwn(mothReturns, home)) {
+        const place=mothReturns[home as Perch];
+        box.append(h('p', {class:'clue-view'}, 'On your next walk together, look for '+place.label+' at '+place.location+'.'));
+      }
+      if (rec.id === 'glimmermoth' && sightingId && Object.hasOwn(mothPerches, sightingId) && seen.length >= rec.minSightings) {
+        box.append(h('details', {}, h('summary', {}, 'Try another resting place'),
+          mothPerchPanel(c, sightingId as Perch, text => { feedback = {ok: true, text}; render(); })));
+      }
       const g = lorelingForm(rec, c.pack, st.objectivesDone);
       const form = rec.forms[g.form - 1], next = rec.forms[g.form];
       box.append(h('p', {}, h('strong', {}, `Form ${g.form}: ${form.name}. `), form.power),
@@ -4287,8 +4311,9 @@ export class UI implements UIApi {
       const slider = h('input', { type: 'range', min: '2', max: '200', value: '60', 'aria-label': 'Your guess: passengers before two share a birthday' }) as HTMLInputElement;
       const out = h('strong', {}, '60');
       slider.oninput = () => { out.textContent = slider.value; };
-      box.replaceChildren(...head(), h('p', {}, 'Tova unties the ferry book. Two passengers have marked the same day. “I remember the crowd. I can never remember how far down the page it happened.”'),
-        h('p', {}, 'Set a marker where you expect the first shared birthday, or open the book with the marker in your pocket. The ferry model uses 365 equally likely days.'),
+      box.replaceChildren(...head(), h('p', {}, 'Tova unties the ferry book. “Two names, same birthday. How far did my finger travel before I found them?”'),
+        h('p', {}, 'Slide a marker onto a passenger number, or open the book and look.'),
+        h('details', {}, h('summary', {}, 'How the model fills a boat'), h('p', {}, 'Each passenger draws independently from 365 equally likely birthdays. Leap day and seasonal differences are left out.')),
         ...this.rumourReplies('ferry'),
         ...(c.state.flags['parcel.reply'] === 'desk' ? [h('p', { class: 'clue-view' }, 'Tova leaves the bench beside the gangplank free. “Omrin said a second account was worth a little waiting. Listen from here. You can hear the people who never signed.”')]
           : c.state.flags['parcel.reply'] === 'token' ? [h('p', { class: 'clue-view' }, 'Two plain counters sit beside the book. Tova taps them. “The ledger runners sent those. Anyone who wants a second turn can take one quietly.”')] : []),
@@ -4319,7 +4344,9 @@ export class UI implements UIApi {
       const chart = h('div', {}); chart.innerHTML = svg;
       box.replaceChildren(...head(), chart,
         h('p', { role: 'status' }, `On ${within23} of 20 boats, two passengers shared a birthday by passenger 23. The middle boat needed about ${[...counts].sort((a, b) => a - b)[10]} passengers.${guess === null ? '' : ' Your marker is at passenger ' + guess + '.'}`),
-        h('p', {}, `Tova laughs. 'It feels like you need hundreds. But you are not waiting for someone to match you. Any two can match. Twenty-three people make 253 pairs.' The chance for 23 people is ${Math.round(shareChance(23) * 1000) / 10}%; for 50 people it is ${Math.round(shareChance(50) * 1000) / 10}%.`),
+        h('p', {}, '“Any two names!” Tova draws a loop between them. “I kept looking for my own birthday.”'),
+        h('details', {}, h('summary', {}, 'Turn over Tova’s counting slip'),
+          h('p', {}, `Twenty-three people make 253 distinct pairs. In this model the chance that any two share a birthday is ${Math.round(shareChance(23) * 1000) / 10}% for 23 people and ${Math.round(shareChance(50) * 1000) / 10}% for 50.`)),
         this.finishField('guests'),
         h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
     };

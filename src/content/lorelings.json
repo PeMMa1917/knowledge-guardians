@@ -310,7 +310,7 @@
         },
         {
           "id": "lor.o2.friend",
-          "title": "Optional: write a pattern note and wait where it predicts the Glimmermoth will come.",
+          "title": "Set a resting place for the Glimmermoth at the lamp, reading desk or cabinet.",
           "essential": false,
           "visible": {
             "objective": "lor.o1.watch"
@@ -333,7 +333,17 @@
             ],
             "aoks": [
               "NAT"
-            ]
+            ],
+            "framework": [
+              "methods-and-tools",
+              "scope"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            }
           },
           "skills": [
             "SK-THK-07",
@@ -372,25 +382,25 @@
       "id": "h.lor.o2.friend.1",
       "objective": "lor.o2.friend",
       "depth": 1,
-      "text": "One sighting can mislead. What is the same in every place where it stopped?"
+      "text": "Where did the moth stop, and where did its shadow just go past?"
     },
     {
       "id": "h.lor.o2.friend.2",
       "objective": "lor.o2.friend",
       "depth": 2,
-      "text": "Light was there sometimes. Was light there every time it glowed?"
+      "text": "Set out two different surfaces at one place. Leave the shutter as it was so another watcher can repeat the change."
     },
     {
       "id": "h.lor.o2.friend.3",
       "objective": "lor.o2.friend",
       "depth": 3,
-      "text": "Check each answer in your note against every sighting. One that does not fit is a counterexample."
+      "text": "Keep the same surface and try lowering the shutter. Look for the pulse under the folded wing."
     },
     {
       "id": "h.lor.o2.friend.4",
       "objective": "lor.o2.friend",
       "depth": 4,
-      "text": "It came to worn, much-touched places, in the dark too, and ignored a bright, clean cabinet."
+      "text": "At any of the three stands, try new glass and old wool under the same shutter. When it rests on the wool or the brass, leave that arrangement for it."
     }
   ],
   "criteria": [
@@ -418,7 +428,7 @@
   "journal": [
     {
       "id": "j.loreling.glimmermoth",
-      "text": "The Glimmermoth: a thing that is present every time is not always the cause. A place where the pattern breaks (a counterexample) tells you more than many places where it holds.",
+      "text": "I left the Glimmermoth a resting place. The wing, the shadow and the light did different things. I can change its place later and discover which neighbour needs its help.",
       "claimKind": "observation"
     }
   ]

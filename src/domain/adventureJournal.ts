@@ -1,3 +1,5 @@
+import { bakeryDiary } from './bakeryTrays';
+import { mothPerchDiary } from './mothPerches';
 import { mouldDiary } from './orchardMould';
 import { chestDiary, beatDiary, chestWeave, performanceWeave, craftWeave } from './plumChest';
 import { shadowDiary, supperWeave } from './supperShadow';
@@ -143,6 +145,8 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
+  if (cmd.type === 'MoveBakeryTray') return bakeryDiary(next, cmd);
+  if (cmd.type==='TryMothPerch') return mothPerchDiary(cmd);
   if (cmd.type==='DrawOrchardStylus') return mouldDiary(cmd);
   if (cmd.type==='WorkPlumChest') return chestDiary(previous,cmd);
   if (cmd.type==='StrikeOrchardBeat') return beatDiary(previous,cmd);
@@ -357,6 +361,10 @@ function experienceDraft(pack: ContentPack, previous: CampaignState, cmd: Comman
     case 'fieldgame':
       return diaryEvent(`field:${event.game}`, 'tool', event.game, event.name, `I finished the field game “${event.name}”.`, { outcome: 'checked' }, 'after-break');
     case 'loreling':
+      if (event.stage === 'home' && cmd.type === 'WelcomeMoth') {
+        return diaryEvent('moth-perch:home:' + cmd.perch, 'choice', event.loreling, 'Our resting place',
+          'I went back with my companion. ' + event.text, {outcome: event.ok ? 'checked' : 'tried'}, 'after-break');
+      }
       if (event.stage === 'watch' || event.stage === 'note' || event.stage === 'offer') {
         const key = event.ok && event.stage === 'offer' ? `loreling:${event.loreling}` : `loreling:${event.loreling}:${event.stage}`;
         return diaryEvent(key, 'tool', event.loreling, 'With a Loreling', event.text, { outcome: event.ok ? 'checked' : 'tried' }, 'after-break');
@@ -537,6 +545,8 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     }
     if(family==='whistle'){const site=whistlePlaces.find(p=>event.ref==='whistle.'+p.id);if(site)return diaryTopics(whistleWeave(site.id));}
     if(family==='field-loan'){const stop=loanStops.find(id=>event.key.startsWith('field-loan:'+id+':')); if(stop)return diaryTopics(loanWeave(stop));}
+    if (family === 'tally-tray') { const objective=objectivesById.get('emberford.tally.weigh')?.objective; if(objective?.weave) return diaryTopics(objective.weave); }
+    if (family==='moth-perch') { const moth=pack.lorelings.find(r=>r.id==='glimmermoth'); if(moth)return diaryTopics(moth.weave); }
     if (family === 'plum') {
       if (event.ref === 'plum.drum') return diaryTopics(performanceWeave);
       if (event.ref === 'plum.mould') return diaryTopics(craftWeave);

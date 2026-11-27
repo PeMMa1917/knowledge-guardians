@@ -119,13 +119,35 @@
     {
       "id": "rumour.hana",
       "speaker": "stallkeeper-hana",
-      "text": "I said ONE of Hesper's test blades cracked last winter. And I said I never heard anything about it after that. I didn't say anyone hid it! I read it myself in the guild's record book on its stand by the guild hall. Anyone can read it.",
+      "text": "One test piece. That’s what my sister copied out for me. I never saw it crack. On market day there were four chalk marks beside my stall. Four people had heard something. Want to look?",
       "claimKind": "observation",
       "historicalLabel": "fictional-world",
       "effects": [
         {
           "setFlag": "rumour.v3",
           "value": true
+        }
+      ],
+      "options": [
+        {
+          "text": "Find the dated guild entry she copied.",
+          "next": "rumour.hana.record",
+          "effects": [
+            {
+              "setFlag": "rumour.lead",
+              "value": "book"
+            }
+          ]
+        },
+        {
+          "text": "Follow the four chalk marks to the fruit stall.",
+          "next": "rumour.hana.chalk",
+          "effects": [
+            {
+              "setFlag": "rumour.lead",
+              "value": "chalk"
+            }
+          ]
         }
       ]
     },
@@ -139,23 +161,13 @@
     {
       "id": "rumour.tell",
       "speaker": "villager-1",
-      "text": "You found where the blade story began? So, is it true? Do Hesper's blades shatter?",
+      "text": "The kettle has boiled three times since Hesper left. The tea seller rubs a clean patch on the handle. “What am I going to tell the next person who asks?”",
       "claimKind": "interpretation",
       "historicalLabel": "fictional-world",
       "options": [
         {
-          "text": "One test blade cracked last winter, because the quench water was too cold. The guild wrote it in the public record, and Hesper fixed the method.",
-          "next": "rumour.tell.ok",
-          "effects": [
-            {
-              "setFlag": "rumour.done",
-              "value": true
-            },
-            {
-              "setFlag": "meet.fray.echo-moths",
-              "value": true
-            }
-          ]
+          "text": "One test blade cracked last winter. Bring over the open record.",
+          "next": "rumour.tell.ok"
         },
         {
           "text": "It was all lies. Hesper's blades never cracked.",
@@ -164,47 +176,96 @@
         {
           "text": "Corvan started it to sell his own blades.",
           "next": "rumour.tell.blame"
+        },
+        {
+          "text": "Carry the record straight to the night shift.",
+          "next": "rumour.after.quiet",
+          "if": {
+            "flag": "rumour.record",
+            "eq": true
+          }
+        },
+        {
+          "text": "Unfold the four chalk marks beside the dated entry.",
+          "next": "rumour.after.margin",
+          "if": {
+            "all": [
+              {
+                "flag": "rumour.record",
+                "eq": true
+              },
+              {
+                "flag": "rumour.chalk",
+                "eq": true
+              }
+            ]
+          }
         }
       ]
     },
     {
       "id": "rumour.tell.over",
       "speaker": "villager-1",
-      "text": "All lies? But Hana says she read about a cracked blade. Was nothing true at all?",
+      "text": "“Nothing happened?” She takes one cup down from the shelf. “I’d like Hana to be able to buy tea here tomorrow.”",
       "claimKind": "interpretation",
       "historicalLabel": "fictional-world",
       "options": [
         {
           "text": "Let me say it again, more carefully.",
           "next": "rumour.tell"
+        },
+        {
+          "text": "Let Hana read the dated entry beside the kettle.",
+          "next": "rumour.after.kettle"
         }
       ]
     },
     {
       "id": "rumour.tell.blame",
       "speaker": "villager-1",
-      "text": "Corvan? Did anyone say he told them? Or is that a new story about a person, not about the blades?",
+      "text": "The seller sets out another cup. “His brother comes through after dark. Can you give him anything sturdier than a guess about his family?”",
       "claimKind": "interpretation",
       "historicalLabel": "fictional-world",
       "options": [
         {
           "text": "You are right. Let me say what the record shows.",
           "next": "rumour.tell"
+        },
+        {
+          "text": "Take both versions to the night shift in person.",
+          "next": "rumour.after.quiet"
         }
       ]
     },
     {
       "id": "rumour.tell.ok",
       "speaker": "villager-1",
-      "text": "One test blade, in a cold quench, written in a book anyone can read? That's a much smaller story. One became several, then every. 'Nothing more was heard' became 'kept quiet', then 'hiding it'. I passed it on myself. Next time, I'll ask 'who told you?' first.",
+      "text": "“One failure, three later checks. If the next piece breaks, our notice must still be true.” She takes a tag from the kettle. “We could hang the date here or walk it down to the late shift.”",
       "claimKind": "interpretation",
       "historicalLabel": "fictional-world",
-      "next": "rumour.lumen"
+      "options": [
+        {
+          "text": "Tie a dated correction to the kettle.",
+          "next": "rumour.after.kettle"
+        },
+        {
+          "text": "Walk the correction to the night shift.",
+          "next": "rumour.after.quiet"
+        },
+        {
+          "text": "Fold the four echoes alongside the guild entry.",
+          "next": "rumour.after.margin",
+          "if": {
+            "flag": "rumour.chalk",
+            "eq": true
+          }
+        }
+      ]
     },
     {
       "id": "rumour.lumen",
       "speaker": "lumen",
-      "text": "Nobody lied on purpose. Each person filled a gap with a guess, and the guess sounded like news. Repeating a claim made it louder, not truer. The first source, and a record anyone can check, settled it.",
+      "text": "A moth taps the rim of a cup. Lumen cups a hand behind it. “It sounds like two from over here.”",
       "claimKind": "interpretation",
       "historicalLabel": "fictional-world",
       "effects": [
@@ -219,9 +280,119 @@
     {
       "id": "rumour.tea.after",
       "speaker": "villager-1",
-      "text": "Ember tea, and no rumours. Since you traced that blade story, I ask 'who told you?' before I pass anything on. It makes for quieter, better news.",
+      "text": "“Hesper sat here this morning. Same chipped blue cup.” She lifts it by the handle. “We talked about her boots.”",
       "claimKind": "interpretation",
       "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "rumour.hana.record",
+      "speaker": "stallkeeper-hana",
+      "text": "“North edge of the market. The clerk chained the book to the stand. It’s public, even when the guild doors are shut.”",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "rumour.hana.chalk",
+      "speaker": "stallkeeper-hana",
+      "text": "Hana folds the price corner of a linen scrap around your thumb. “Four strokes with four kinds of chalk. Ask the fruit seller what each buyer heard.”",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "rumour.chalk",
+      "speaker": "fruit-seller",
+      "text": "The pear seller uncurls the price sheet. Four hands marked it. A grocer names Idris. Two cousins heard the grocer. The carter learned it from a cousin. The bottom corner is dark with rain.",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Unfold the wet corner with the seller.",
+          "next": "rumour.chalk.fold",
+          "effects": [
+            {
+              "setFlag": "rumour.chalk",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the sheet here and check the open guild book.",
+          "next": "rumour.hana.record"
+        }
+      ]
+    },
+    {
+      "id": "rumour.chalk.fold",
+      "speaker": "fruit-seller",
+      "text": "Four voices on the chalk sheet, one porter at the start. “I made the fourth stroke,” the seller says. “I wanted my sister to see how many of us cared. Has anyone seen the original entry?”",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "rumour.after.kettle",
+      "speaker": "villager-1",
+      "text": "She threads the date and the single recorded failure through the kettle handle. Hesper reads it in the queue. Someone behind her has time to ask for the book. The night crew misses this pot.",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world",
+      "effects": [
+        {
+          "setFlag": "rumour.edition",
+          "value": "kettle"
+        },
+        {
+          "setFlag": "rumour.done",
+          "value": true
+        },
+        {
+          "setFlag": "meet.fray.echo-moths",
+          "value": true
+        }
+      ],
+      "next": "rumour.lumen"
+    },
+    {
+      "id": "rumour.after.quiet",
+      "speaker": "villager-1",
+      "text": "You carry the open page to the night cart. Idris reads it to his brother and starts again when the wheel squeaks over a word. Back at the stall the tea has gone cold.",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world",
+      "effects": [
+        {
+          "setFlag": "rumour.edition",
+          "value": "quiet"
+        },
+        {
+          "setFlag": "rumour.done",
+          "value": true
+        },
+        {
+          "setFlag": "meet.fray.echo-moths",
+          "value": true
+        }
+      ],
+      "next": "rumour.lumen"
+    },
+    {
+      "id": "rumour.after.margin",
+      "speaker": "villager-1",
+      "text": "Hana folds the four chalk strokes under the one name they lead to. The clerk slips the fold beside the dated account. A reader can trace the voices. They have to open the book to hear them.",
+      "claimKind": "interpretation",
+      "historicalLabel": "fictional-world",
+      "effects": [
+        {
+          "setFlag": "rumour.edition",
+          "value": "margin"
+        },
+        {
+          "setFlag": "rumour.done",
+          "value": true
+        },
+        {
+          "setFlag": "meet.fray.echo-moths",
+          "value": true
+        }
+      ],
+      "next": "rumour.lumen"
     }
   ],
   "missions": [
@@ -299,7 +470,7 @@
         },
         {
           "id": "rum.o3.record",
-          "title": "Optional: read the guild's public record book on its stand by the guild hall.",
+          "title": "Read the dated guild entry. Follow Hana’s chalk sheet at the fruit stall if you want another lead.",
           "essential": false,
           "visible": {
             "objective": "rum.o2.hana"
@@ -332,7 +503,7 @@
         },
         {
           "id": "rum.o4.tell",
-          "title": "Optional: tell the tea seller what the first source says.",
+          "title": "Help the tea seller choose where the correction will travel.",
           "essential": false,
           "visible": {
             "objective": "rum.o3.record"
@@ -356,7 +527,18 @@
             ],
             "aoks": [
               "HUM"
-            ]
+            ],
+            "framework": [
+              "scope",
+              "ethics",
+              "perspectives"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "caring",
+              "solo": "relational"
+            }
           },
           "skills": [
             "SK-THK-14"
@@ -460,7 +642,7 @@
       "id": "h.rum.o4.tell.4",
       "objective": "rum.o4.tell",
       "depth": 4,
-      "text": "Tell her: one test blade cracked in a too-cold quench, it was recorded, and Hesper fixed the method."
+      "text": "Take the dated page to the tea stall. You can leave a tag there, visit the late shift, or bring the fruit stall’s chalk account alongside."
     }
   ],
   "criteria": [
@@ -473,7 +655,7 @@
   "journal": [
     {
       "id": "j.rumour",
-      "text": "The Shattering Rumour: 'one test blade cracked' became 'every blade shatters', and 'nothing more was heard' became 'the guild is hiding it'. Each retelling filled a gap with a guess. Repetition made the claim louder, not truer. The first source settled it.",
+      "text": "I traced a market story back to one recorded failure. Three checks came later. The date and the voices told me different things. Where we left the correction shaped who could hear it.",
       "claimKind": "interpretation"
     }
   ]
