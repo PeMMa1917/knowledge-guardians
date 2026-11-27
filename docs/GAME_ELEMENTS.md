@@ -4,9 +4,9 @@ This tracker maps each numbered item in the supplied *Ultimate Universal RPG Com
 
 | Status | Meaning | Numbered items |
 | --- | --- | ---: |
-| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 115 |
+| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 119 |
 | ◐ Partial | A reachable analogue covers part of the idea, or operates in a narrower setting. The gap is stated. | 111 |
-| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 35 |
+| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 31 |
 | ✗ Excluded | The classroom, privacy or nonviolent game rules exclude the original system. | 27 |
 
 The marks reflect inspection of authored maps, dialogue, interfaces and tests. A mark does not measure how often players find the activity, how long they spend, or what they learn. Each numbered row refers to the attachment’s item number. Source links point to playable evidence or the existing feature nearest to a planned adaptation.
@@ -67,15 +67,15 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | 38 | Tool expertise | ◐ | Players make and calibrate tools and use marked readings. Individual tools do not gain proficiency ranks from repetition. | [craft.ts](../src/domain/craft.ts), [readings.ts](../src/domain/readings.ts) |
 | 39 | Bag and meaningful items | ✓ | Carry cards, tools, resources and keepsakes. Evidence and keepsakes have specific uses elsewhere. | [engine.ts](../src/domain/engine.ts), [story.json](../src/content/story.json) |
 | 40 | Detailed combat loadouts | ✗ | The outfit and bag support the player without a combat equipment grid. | [appearance.ts](../src/domain/appearance.ts), [shop.ts](../src/domain/shop.ts), [AGENTS.md](../AGENTS.md) |
-| 41 | Sets with combined uses | ○ | A future evidence set could reveal a different interpretation when brought together. Currently sets record discoveries and unlocks. | [clueboard.ts](../src/domain/clueboard.ts), [permanent.ts](../src/domain/permanent.ts) |
+| 41 | Sets with combined uses | ✓ | The field and close lenses register the same patch at two scales. A turning stage and lift-off sleeve can separate a scratch from a stitch. The six pairs cast different images at the theatre. | [Loan bench and theatre](../src/domain/lensLoan.ts), [all six pairs](../tests/lens-loan.test.ts) |
 | 42 | Appearance independent of skill | ✓ | Wardrobe, dyes and heraldry change the look without changing success at a task. | [appearance.ts](../src/domain/appearance.ts), [crest.ts](../src/domain/crest.ts), [shop.ts](../src/domain/shop.ts) |
 | 43 | Maintenance as care | ◐ | Craft and calibrate measuring instruments; Kip's case gets a repaired handle. Repeated use does not wear down gear. | [craft.ts](../src/domain/craft.ts), [opening-handle.test.ts](../tests/opening-handle.test.ts) |
 | 44 | Forging and crafting | ✓ | Forge a sample, make tools and choose dyes. Forge and assay distinguish a production method from authorship. | [forge.ts](../src/domain/forge.ts), [craft.ts](../src/domain/craft.ts), [playthrough.test.ts](../tests/playthrough.test.ts) |
-| 45 | Modular instrument fittings | ○ | A holder with interchangeable test fittings could change what a tool measures. Combat modifiers are outside the game. | [readings.ts](../src/domain/readings.ts), [talents.ts](../src/domain/talents.ts) |
+| 45 | Modular instrument fittings | ✓ | Fit two tools to the same study, rotate or crop what it shows, then bring the pair to a second projector at rehearsal. | [Loan bench and theatre](../src/domain/lensLoan.ts), [all six pairs](../tests/lens-loan.test.ts) |
 | 46 | Appraise uncertain objects | ✓ | Compare assay samples and inspect Elsbet's lamp and several archival objects before claiming their histories. | [forge.ts](../src/domain/forge.ts), [undercroft.ts](../src/domain/undercroft.ts), [m04-preserved.json](../src/content/m04-preserved.json) |
 | 47 | Creature and helper care | ◐ | Lorelings can be observed, offered a place and befriended. They are not summoned to fight or upgraded as combat pets. | [lorelings.ts](../src/domain/lorelings.ts), [lorelings.test.ts](../tests/lorelings.test.ts) |
 | 48 | Heirloom with later meaning | ◐ | Elsbet's lamp reveals a cut line at the Council and the opening bench returns. There are no gear stages or evolving statistics. | [undercroft.ts](../src/domain/undercroft.ts), [vesper.json](../src/content/vesper.json) |
-| 49 | Remember a set of work tools | ○ | An optional preset could remember a research kit. Today role and talent changes are separate choices. | [roles.ts](../src/domain/roles.ts), [talents.ts](../src/domain/talents.ts) |
+| 49 | Remember a set of work tools | ✓ | The knot and star each store a pair for the felt drawer. Recall either mark after returning a loan or reloading the adventure. | [Loan bench and theatre](../src/domain/lensLoan.ts), [all six pairs](../tests/lens-loan.test.ts) |
 | 50 | Sortable inventory by purpose | ◐ | Items and evidence have distinct records in the interface. Specialized pouches and user sorting presets are unimplemented. | [ui.ts](../src/ui/ui.ts), [types.ts](../src/domain/types.ts) |
 | 51 | Fair randomness and recovery | ◐ | A seeded event deck prevents repeats, and calm mode lets players defer events. Rare-drop pity odds are unused. | [engine.ts](../src/domain/engine.ts), [playthrough.test.ts](../tests/playthrough.test.ts) |
 
@@ -176,7 +176,7 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | # | Adapted idea | Status | Playable example or remaining work | Reference |
 | ---: | --- | :---: | --- | --- |
 | 124 | Procedural campaign mazes | ✗ | Authored chapters preserve named places, archives and cross-chapter consequences. Generated campaign rooms are unused. | [index.ts](../src/maps/index.ts), [STORY_BIBLE.md](STORY_BIBLE.md) |
-| 125 | Try a temporary research kit | ○ | Current packs and role changes are permanent or local to a scene. A small, optional run with a loaned kit remains open. | [roles.ts](../src/domain/roles.ts), [opening-packing.test.ts](../tests/opening-packing.test.ts) |
+| 125 | Try a temporary research kit | ✓ | Mayle loans a two-place drawer. Return it upstairs or at the receiving theatre. The issued tracings and saved packing marks survive the return. | [Loan bench and theatre](../src/domain/lensLoan.ts), [all six pairs](../tests/lens-loan.test.ts) |
 | 126 | Seeded challenges | ◐ | Sefa’s stitching table offers a daily shared seed. Weekly challenges across games are not available. | [tiles.ts](../src/domain/tiles.ts), [ui.ts](../src/ui/ui.ts) |
 | 127 | Voluntary challenge constraints | ○ | Calm mode and manual restraint let players vary play now. An explicit no-hint, no-tool or one-source challenge remains open. | [settings.ts](../src/app/settings.ts), [lumen.test.ts](../tests/lumen.test.ts) |
 | 128 | Progress between attempts | ◐ | Permanent credits, keepsakes and insights survive recovery. A second campaign or run currency is absent. | [permanent.ts](../src/domain/permanent.ts), [saves.ts](../src/domain/saves.ts) |

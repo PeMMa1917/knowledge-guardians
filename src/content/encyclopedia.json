@@ -2164,6 +2164,8 @@
     {"wikidata": "Q6792168", "title": "Mau Piailug", "characters": [], "biographies": ["card.birdside.voyage"]}
   ],
   "exhibits": [
+    {"id":"OBJ-DEPOT-Z408A","kind":"related","title":"Optical microscope","wikidata":"Q912313","basis":"The article explains how an optical microscope forms a view. The Cambridge catalogue separately describes this Swift body and its single fitted objective."},
+    {"id":"OBJ-DEPOT-Z408J","kind":"related","title":"Scott Polar Research Institute","wikidata":"Q2747894","basis":"The institute is the holding collection for this reused case. Its own accession record provides the two serial numbers."},
     {
       "id": "OBJ-001-A",
       "title": "Ballpoint pen",

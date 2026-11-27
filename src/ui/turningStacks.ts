@@ -27,12 +27,12 @@ const edges = ['street', 'inside'] as const;
 const coord = (square: number) => String.fromCharCode(65 + (square % 5)) + (Math.floor(square / 5) + 1);
 export function turningStacksPanel(c: GameController, sound: (key: string) => void) {
   const content = h('div', {}),
-    status = h('p', { class: 'stack-feedback', role: 'status', 'aria-live': 'polite' }),
+    status = h('p', { class: 'stack-feedback', 'data-work-feedback': '', role: 'status', 'aria-live': 'polite' }),
     root = h('section', { class: 'turning-stacks' }, content, status);
   function run(cmd: Act, feedback: string) {
     const error = c.dispatch({ type: 'WorkTurningStacks', ...cmd }).find((e) => e.kind === 'error');
     if (error) {
-      status.textContent = error.message;
+      if (status.textContent !== error.message) status.textContent = error.message;
       return;
     }
     if (cmd.act === 'read' || cmd.act === 'bind') sound('sfx.page');

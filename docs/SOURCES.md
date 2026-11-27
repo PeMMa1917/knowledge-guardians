@@ -833,3 +833,11 @@ The Science Museum exhibition record identifies Berners-Lee’s CERN-loaned comp
 ### The first cup
 
 Cen and Kit’s two crews, cocoa prices and readings belong to Lantern Square. The school of thought behind the numbered saucers includes Tversky and Kahneman’s 1974 discussion of anchoring and Ariely, Loewenstein and Prelec’s later studies of willingness to pay. The nine volunteers at each fictional stop taste the same reference serving once. Their offers cannot establish the preferences of people who passed by. An optional return with the unopened Carson’s cocoa tin uses Cambridge’s Y: 72/1/2 record and keeps the contents sealed. [1974 paper](https://doi.org/10.1126/science.185.4157.1124) · [2003 paper](https://doi.org/10.1162/00335530360535153)
+
+## Two readings from the loan loft
+
+The catalogue for Swift microscope Z: 408a describes body 16616 and its one fitted objective marked one inch. Case Z: 408j carries the serial 30607 and lists the three objectives adjusted to its earlier instrument. Its reuse with body 16616 is recorded. The individual catalogue entries supply no manufacturing date. The toy fittings are original to the game. [The microscope](https://www.spri.cam.ac.uk/museum/catalogue/article/z408a/) · [The reused case](https://www.spri.cam.ac.uk/museum/catalogue/article/z408j/)
+
+The 1906 lecture grounds Cajal’s interest in nerve structure, connections and drawing. His biographical account supplies his earlier wish to be an artist. The fresh and pressed petal patterns were invented for the loft. The prepared-cell discussion informs the limit on what a prepared view can establish. [Cajal’s lecture](https://www.nobelprize.org/prizes/medicine/1906/cajal/lecture/) · [Biographical account](https://www.nobelprize.org/prizes/medicine/1906/cajal/biographical/) · [Studying Cells](https://openstax.org/books/biology-2e/pages/4-1-studying-cells)
+
+The theatre adapts Huygens’s construction of a new front from secondary wavelets. Lamp counts on the crew’s rehearsal slips are fictional. They let a player find a seat where two simplified drawings offer competing forecasts. [Huygens’s Principle](https://openstax.org/books/university-physics-volume-3/pages/1-6-huygenss-principle)

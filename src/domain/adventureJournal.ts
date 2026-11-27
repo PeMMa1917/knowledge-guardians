@@ -1,4 +1,5 @@
 import {stackDiary,stackWeave} from './turningStacks';
+import {lensDiary,lensTopics} from './lensLoan';
 import {cupDiary,cupWeave} from './firstCup';
 import {almanacDiary,calendarCases,calendarTopics} from './streetAlmanac';
 import {courierDiary,courierTopics,courierCases} from './courierLift';
@@ -46,7 +47,7 @@ import { personalise } from './player';
 import { check } from './rules';
 import { LOYALTY } from './loyalty';
 import { DISPATCH_DESKS, dispatchFlag, dispatchSlip } from './tiles';
-import { specimenReferences, type SpecimenReference } from './specimenReferences';
+import { earnedResearchReadings, type ResearchReading, specimenReferences, type SpecimenReference } from './specimenReferences';
 import { encyclopediaForDiaryEvent, encyclopediaLinks, type EncyclopediaLink } from './encyclopedia';
 import { earlierViews } from '../content/earlierViewing';
 import { STAR_PATHS } from '../content/starPaths';
@@ -97,6 +98,7 @@ export interface AdventureJournalView {
   portfolioWriting?: readonly JournalPortfolioWriting[];
   quests: JournalQuest[];
   references: SpecimenReference[];
+  readings?: ResearchReading[];
   encyclopedia: EncyclopediaLink[];
 }
 
@@ -162,6 +164,7 @@ function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignS
   if (cmd.type==='DrawOrchardStylus') return mouldDiary(cmd);
   if (cmd.type === 'HangFerryPrint' || cmd.type === 'OpenFerryBill' || cmd.type === 'HearFerryBill') return billDiary(previous, next, cmd);
   if (cmd.type === 'WorkTurningStacks') return stackDiary(next,cmd);
+  if (cmd.type === 'WorkLensLoan') return lensDiary(next,cmd);
   if (cmd.type === 'WorkFirstCup') return cupDiary(next,cmd);
   if (cmd.type === 'ArrangeStreetAlmanac') return almanacDiary(next,cmd);
   if (cmd.type === 'WorkCourierLift') return courierDiary(next,cmd);
@@ -573,6 +576,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if (family === 'picture-bill') return diaryTopics(billWeave);
     if(family==='trail-thread') { const weave=objectivesById.get(event.ref)?.objective.weave; if(weave)return diaryTopics(weave); }
     if (family === 'turning-stacks') return diaryTopics(stackWeave);
+    if (family === 'lens-loan') return diaryTopics(lensTopics(event.key.split(':')[1].split('.')[0]));
     if (family === 'first-cup') return diaryTopics(cupWeave);
     if (family === 'street-almanac') {
       const c=calendarCases.find(c=>c.exhibit===event.ref);
@@ -649,6 +653,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     portfolioWriting: Object.entries(state.adventureDiary.portfolioWriting).flatMap(([id, writing]) => writing.text ? [{ id, ...writing }] : []),
     quests: [...quests.values()],
     references: specimenReferences(pack, state),
+    readings: earnedResearchReadings(pack, state),
     encyclopedia: encyclopediaLinks(pack, state),
   };
 }

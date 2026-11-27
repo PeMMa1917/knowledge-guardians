@@ -234,6 +234,7 @@ function diaryFeed(view: AdventureJournalView, controller: GameController, refre
     h('label', { class: 'diary-filter' }, 'Show ', select), empty, list, more,
     h('details', { class: 'diary-source-list' }, h('summary', {}, 'Sources for my collected specimens'),
       view.references.length ? adventureReferences(view.references) : h('p', {}, 'Collected specimens will add their catalogue references here.')),
+    view.readings?.length ? h('details',{class:'diary-source-list'},h('summary',{},'Research behind my encounters'),adventureReferences(view.readings)) : null,
     adventureEncyclopedia(view.encyclopedia));
 }
 

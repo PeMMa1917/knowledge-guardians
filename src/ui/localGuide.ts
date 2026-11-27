@@ -35,12 +35,12 @@ export function localGuide(controller: GameController, world: string, preferred?
 }
 
 export function workFeedback(box: HTMLElement, message: string) {
-  let row = box.querySelector<HTMLElement>('.work-feedback');
+  let row = box.querySelector<HTMLElement>('[data-work-feedback], .work-feedback');
   if (!row) {
     row = h('p', { class: 'work-feedback', role: 'status' });
     const control = document.activeElement;
     if (control instanceof HTMLButtonElement && box.contains(control)) control.after(row);
     else box.prepend(row);
   }
-  row.textContent = message;
+  if (row.textContent !== message) row.textContent = message;
 }

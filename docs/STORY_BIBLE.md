@@ -6,6 +6,11 @@ Opal Fenn’s mother worked the ferry and never made it to the town exhibition b
 
 A Guardian can enter through either door, set two shelves and bind their contents in walking order. Turning the lamp towards the ferry lets a child read the credits in passing. The woman at the bench then has to shade the fine print with her hand. Turning it in brings the reader at the bench closer to the date. The last boat is already leaving. A player can change either decision, hear both relatives separately and take another pair back to the quay. [Source leaves](../src/domain/turningStacks.ts) · [The two people carrying the room](../src/content/turningStacks.ts)
 
+## The river in the hem
+
+Mayle takes her father’s curtain to a company that has given Nim her first entrance. When Nim tugs a thread, a star winks on the opposite bank. Players can turn the study, lift its holder, change the field and see how much of that effect belongs to the cloth. Once the pair of tracings goes to the wings, Nim wants a cue that works tonight. Huygens wants the seat where tomorrow’s rehearsal might disprove his drawing. Either can get the chalk. Mayle gets a seat in the audience. At the end the dresser can call Nim’s entrance or leave two competing drawings hanging by the step. [The four voices](../src/content/lensLoan.ts) · [Receiving lamp](../src/domain/lensLoan.ts)
+
+
 ## A winter in one thumb
 
 Viri touched her mother’s wire glove long before she understood how it worked. The theatre earns its first real crowd from a poster neither Viri nor Elian can defend. Players can still put on an excellent show. A repeatable trick gives the understudy a real job. An open garden gives a waiting child power over the last minute. The same landing that spoils a prediction can give the company a movement they never would have written. Merian’s later bench brings an older argument about simultaneous images and successive movements to either audience. [Curtains, watches and callbacks](../src/content/petalGlasshouse.ts)

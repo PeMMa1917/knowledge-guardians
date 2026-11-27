@@ -45,6 +45,18 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
     if(key.startsWith('turning-stacks:reply.')||key.startsWith('turning-stacks:open.'))return {neighbour:'Which visitor needed the light somewhere else?',listen:'Whose account could help me change the display again?'};
     return {view:'What could someone who came in through the other door see first?',model:'Which part of the walk could the little model never show?'};
   }
+  if(key.startsWith('lens-loan:')){
+    const act=key.split(':')[1].split('.')[0];
+    if(act==='unroll'||act==='margin')return {reach:'What guaranteed a return for every grid square?',new:'Which claim about the light could a new rehearsal change?'};
+    if(act==='fitCard')return {source:'Which number would I enter for the body if I had seen only the case?',absence:'Which part of the instrument’s history is still missing?'};
+    if(act==='register'||act==='pan'||act==='frame')return {field:'Which squares could I account for from both views?',edge:'What was outside the frame when I first decided what the shape was?'};
+    if(act==='isolate'||act==='cover'||act==='turn')return {control:'Which part moved when I turned one fitting at a time?',limit:'What could still come from the holder?'};
+    if(act==='blend'||act==='trace'||act==='slide')return {trace:'Which marks did both slips let me compare?',preparation:'How could preparing the study have changed what I saw?'};
+    if(act==='forecast'||act==='rehearse'||act==='entrust')return {model:'Which seat could tell the two drawings apart?',use:'What would make me trust a drawing to call an entrance or explain the light?'};
+    if(act==='print'||act==='lamp'||act==='listen')return {audience:'Which seat would I choose if I wanted to see why the entrance mattered to someone else?'};
+    if(act==='travel')return {edition:'What could the company reconstruct from the two slips I actually sent?'};
+    return {choice:'What did my two fittings let me try, and which other pair would I want beside them?'};
+  }
   if(key.startsWith('first-cup:')){
     if(key.startsWith('first-cup:passers.'))return {missing:'What would happen to my conclusion if I entered zero for every absent offer?',voice:'Whom would I need to ask before setting a price for this whole street?'};
     if(key.startsWith('first-cup:tip.'))return {bench:'Who had a chance to make an offer and who passed the cart?',person:'Which two individual offers complicate the pattern in the crew?'};

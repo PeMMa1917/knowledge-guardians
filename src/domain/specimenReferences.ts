@@ -39,6 +39,56 @@ export function specimenReferences(pack: ContentPack, state?: CampaignState): Sp
     entries.push({ key, label: `${exhibit.name} · ${institution} · ${accession}`, url: source.url,
       text: runs.map(({ text }) => text).join(''), runs });
   }
+  return entries.sort(compareCitations);
+}
+
+export function compareCitations(a: SpecimenReference, b: SpecimenReference) {
   const sortText = (entry: SpecimenReference) => entry.text.replace(/^[“"]?(?:(?:an?|the)\s+)?/i, '');
-  return entries.sort((a, b) => sortText(a).localeCompare(sortText(b), 'en') || a.key.localeCompare(b.key, 'en'));
+  return sortText(a).localeCompare(sortText(b), 'en') || a.key.localeCompare(b.key, 'en');
+}
+
+/** A research source earned by opening one of the recorded encounters. */
+export interface ResearchReading extends SpecimenReference {
+  encounterKeys: string[];
+}
+
+export function earnedResearchReadings(pack: ContentPack, state: CampaignState): ResearchReading[] {
+  const entries = state.adventureDiary.entries;
+  if (!entries.some(({ event }) => event?.sourceIds?.length)) return [];
+
+  const collectionSources = new Set(pack.exhibits.flatMap(exhibit => exhibit.sources));
+  const dialogueSources = new Map(pack.dialogue.map(node => [node.id, node.citationSource]));
+  const earned = new Map<string, Set<string>>();
+  const pairedCambridgeReadings = state.objectivesDone.includes('optics.sources')
+    && ['card.depot.micro', 'card.depot.micro-case'].every(card => state.cards.includes(card));
+
+  function credit(id: string, eventKey: string) {
+    const keys = earned.get(id) ?? new Set<string>();
+    keys.add(eventKey);
+    earned.set(id, keys);
+  }
+
+  for (const { event } of entries) {
+    if (!event?.sourceIds?.length) continue;
+    if (event.kind === 'conversation' && event.key === 'conversation:' + event.ref) {
+      const source = dialogueSources.get(event.ref);
+      // A conversation can cite a holding that is separately earned elsewhere in the game.
+      if (source && event.sourceIds.includes(source) && !collectionSources.has(source)) credit(source, event.key);
+    }
+    if (event.key === 'lens-loan:fitCard' && pairedCambridgeReadings) {
+      for (const id of ['HIS-DEPOT-Z408A', 'HIS-DEPOT-Z408J']) {
+        if (event.sourceIds.includes(id)) credit(id, event.key);
+      }
+    }
+  }
+
+  const readings: ResearchReading[] = [];
+  for (const source of pack.sources) {
+    const keys = earned.get(source.id);
+    if (!keys || !source.mla || !source.url.startsWith('https://')) continue;
+    const runs = mlaCitation(source);
+    readings.push({ key: source.id, label: source.title, url: source.url,
+      text: runs.map(part => part.text).join(''), runs, encounterKeys: [...keys] });
+  }
+  return readings.sort(compareCitations);
 }

@@ -678,3 +678,19 @@ William Bland can lend the Guardian a copy edge or help trace the surviving ston
 - **Worries** His own place in the line may alter the comparison before the cart leaves the kitchen.
 - **Speaks** Offers his chair, returns a second ticket to the draw or listens while someone explains what a cup means to her.
 - **Why** His research on judgement and framing connects the earlier ferry-ticket instrument with the kitchen. Each stop gives him another chance to notice who is missing.
+
+## The curtain in the loan drawer
+
+### Nim Eave (`optics-nim`)
+
+- **Believes** An understudy should be able to choose how to make her first entrance.
+- **Worries** If she steps into the gap the audience will see only a girl who lost her place.
+- **Speaks** Practises the bow first. Gives the dresser a button to act with when she cannot yet say what she needs.
+- **Why** She spent years mending clothes other people would wear in the light. This is the first time the garment and the entrance both belong to her.
+
+### Mayle Arven (`depot-visitor-mayle`)
+
+- **Believes** Someone carrying a case has a right to know which thing is actually inside.
+- **Worries** A curator will put her father’s name beside somebody else’s stitch. Her company has also grown used to leaving both ends of its barrow to her.
+- **Speaks** Measures what she can lift. Shows her knot and star when talking about a promise.
+- **Why** She found a second serial number on a microscope at the depot. This time the thing she is carrying is a curtain her father helped make. [The porter in both rooms](../src/content/lensLoan.ts)

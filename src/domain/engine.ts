@@ -1,3 +1,4 @@
+import {lensEffects,type LensCommand} from './lensLoan';
 import {threadKey,threadFaceKey,trailMarkers,type ThreadCommand} from './trailThread';
 import {stackEffects,type StackCommand} from './turningStacks';
 import {cupEffects,type CupCommand} from './firstCup';
@@ -101,7 +102,7 @@ import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand
 
 export type Command =
   | ChestCommand | BeatCommand | MouldCommand | PerchCommand | WelcomeCommand | BakeryCommand
-  | ElbowCommand | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | CupCommand | StackCommand | AlmanacCommand | CourierCommand | BillCommand | FerryCommand
+  | ElbowCommand | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | CupCommand | LensCommand | StackCommand | AlmanacCommand | CourierCommand | BillCommand | FerryCommand
   | ShadowCommand
   | FieldLoanCommand
   | BirdCommand
@@ -660,6 +661,8 @@ export class Engine {
           break;
         case 'WorkTurningStacks':
           s = apply(stackEffects(s,cmd),s,out); break;
+        case 'WorkLensLoan':
+          s=apply(lensEffects(s,cmd),s,out);break;
         case 'WorkFirstCup':
           s = apply(cupEffects(s, cmd), s, out); break;
         case 'ArrangeStreetAlmanac':

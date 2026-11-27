@@ -24,13 +24,13 @@ const keys = ['two', 'blank', 'eight'] as const;
 export function firstCupPanel(c: GameController, sound: (key: string) => void, street: boolean) {
   const root = h('section', { class: 'first-cup' }),
     content = h('div', {}),
-    live = h('p', { role: 'status', 'aria-live': 'polite' });
+    live = h('p', { role: 'status', 'aria-live': 'polite', 'data-work-feedback': '' });
   root.append(content, live);
   let bench: Bench = 'mill';
   const move = (cmd: Move, msg: string) => {
     const error = c.dispatch({ type: 'WorkFirstCup', ...cmd }).find((e) => e.kind === 'error');
     if (error?.kind === 'error') {
-      live.textContent = error.message;
+      if (live.textContent !== error.message) live.textContent = error.message;
       return;
     }
     if (cmd.act === 'tip' || cmd.act === 'unfold') sound('sfx.page');
