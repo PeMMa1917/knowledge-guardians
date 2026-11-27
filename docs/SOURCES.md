@@ -1,5 +1,9 @@
 # Historical objects and sources
 
+## Viri’s glasshouse
+
+The two costume crops, instrument readings and garden visits belong to the fictional company. The game uses the silverweed study to support variation in ultraviolet floral patterning and the Arizona State University resource to support ultraviolet sensitivity. The museum record identifies the particular hand-coloured 1771 impression held in Cleveland. The artist’s attribution and that later edition have separate stops in play. [Koski and Ashman](https://doi.org/10.1086/671803) · [Ask A Biologist](https://askabiologist.asu.edu/colors-animals-see) · [Cleveland Museum of Art, 1955.320](https://www.clevelandart.org/art/1955.320)
+
 The project owner's rule: **objects in the game are real, from history, specific, time-bound and clear.** Fictional things (Aethelgard, its people and the patterned blade for sale in Emberford) are labelled `fictional-world` in the game and never look like historical records.
 
 The [content registry](../src/content/index.ts) gathers the shared source list and the recorded sources attached to individual missions. Keep this register and the in-game exhibits and evidence cards in agreement.

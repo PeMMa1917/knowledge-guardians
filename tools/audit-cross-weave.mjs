@@ -142,6 +142,43 @@ const copiesEvidenceInvestigations = [
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
   {
+    objective:'petal.windows',map:'forest.petal-house',target:'petal-window',source:'tests/petal-window.test.ts',
+    anchor:'separates the two identical daylight crops, the UV detector and the animal’s own landing',
+    action:'Keep both yellow crops at one gain and change the pane. Compare their ultraviolet distributions with the key. Open dated watches to learn where the visitors actually landed.',
+    reasoning:[{mode:'deductive',basis:'Unequal same-gain returns rule out an identical response in this band for the two measured crops.'}],
+    dimensions:['micro:754','area:NAT','concept:evidence','concept:perspective','framework:scope','subject:biology','subject:physics'],elements:['game:209','story:95'],
+  },
+  {
+    objective:'petal.ceiling',map:'forest.petal-house',target:'petal-window',source:'tests/petal-window.test.ts',
+    anchor:'returns from upper-stop clipping to detail at the same two crops',
+    action:'Raise the gain until both crops lose detail at the upper stop. Print them separately at lower gain and compare the returns with the clipped slips.',
+    reasoning:[{mode:'causal',basis:'Changing the gain at a fixed crop and band isolates one reason different returns can print alike.'}],
+    dimensions:['micro:903','area:NAT','concept:objectivity','framework:methods-and-tools','subject:physics'],elements:['game:267','story:5'],
+  },
+  {
+    objective:'petal.gears',map:'forest.petal-house',target:'petal-gears',source:'tests/petal-window.test.ts',
+    anchor:'preserves order, the interval and the count ratio under four distinct changes of scale',
+    action:'Operate both sides of the costume hooks, shade stamps, clock ribbon and square counters. Transfer the working mechanism after trying a different numbering scheme or starting point.',
+    reasoning:[{mode:'analogical',basis:'A single or paired counter drives proportional ribbons. Moving the zero on the stage clock preserves a difference but changes the quotient.'}],
+    dimensions:['micro:901','area:MAT','area:ART','framework:scope','framework:methods-and-tools','concept:interpretation','subject:math-ai','subject:dance'],elements:['game:194','story:119'],
+    comparison:{concepts:['interpretation'],framework:['methods-and-tools','scope'],areas:[
+      {id:'MAT',method:'Change the unit of both low-square counts and shift the origin of both clock readings, checking ratio and difference separately.',limit:'The ratio of the clock readings depends on the origin. The square counts refer only to the sampled crop.'},
+      {id:'ART',method:'Operate the dresser’s hooks and the ordinal leg rises. Change their arrangement or spacing while preserving their jobs in a performance.',limit:'Order cues the leg rises but supplies no equal distances between gestures.'}],
+      connection:'The mathematical transformation preserves a relationship that the choreographer can use while making other aspects of the gesture freely.'},
+  },
+  {
+    objective:'petal.ribbons',map:'stage.rehearsal',target:'petal-silk-ribbons',source:'tests/petal-window.test.ts',
+    anchor:'checks predictions against unopened landings and uses the same observations to expand a dancer’s repertoire',
+    action:'Pin a prediction or reserve a blank ribbon before each dated first landing. Keep the original ribbon as the watch opens, then choreograph a new gesture using the observation.',
+    reasoning:[{mode:'inductive',basis:'Two independent first landings can challenge a promise about where every first visitor goes. One compatible record leaves the next hour untested.'}],
+    dimensions:['micro:1117','area:ART','area:NAT','concept:explanation','concept:evidence','framework:scope','framework:methods-and-tools','subject:biology','subject:dance'],elements:['game:22','story:144'],
+    comparison:{concepts:['explanation','evidence'],framework:['scope','methods-and-tools'],areas:[
+      {id:'NAT',method:'Commit the Cuff or window-side prediction, or a blank ribbon, before opening either later watch. Check what each first visitor did.',limit:'One matching visitor leaves the prediction open to a new test. A blank ribbon provides no prediction to check.'},
+      {id:'ART',method:'Hold, echo or cross the observed landing, then change the gesture while keeping the observation.',limit:'An expressive gesture can help an audience see something new. It gives no independent prediction about another living animal.'}],
+      connection:'The new watch can disconfirm a prediction and at the same time give the company new ways to perform the event.'},
+  },
+
+  {
     objective:'lor.o2.friend',map:'nexus.archive',target:'lor-desk',
     source:'tests/first-chapter-perches.test.ts',anchor:'keeps the lit glass and worn cuff apart in all eighteen setups',
     action:'Watch two Archive stands, change the lining under a fixed shutter and change the shutter above a fixed lining. Bright light can accompany both a landing and an empty perch. Repeat the comparison before reserving a place.',

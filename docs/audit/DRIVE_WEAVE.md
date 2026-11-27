@@ -1,5 +1,11 @@
 # Ideas from Mika's lesson folder
 
+## November review of objects and exhibition examples
+
+The folder inventory includes 931 files. The first extraction returned text from 710. A second pass read additional documents, slides, book chapters and image text. Forty image-only sheets received a visual review. The three archives contain 545 members, including 371 readable text extracts, 29 duplicates, 125 other-format entries and 20 with no extracted text. These counts describe the review materials. The playable examples below have their own evidence.
+
+The picture ferry gives each chosen object a particular passenger, physical arrangement and consequence. In the three-act bill, the order of three earned objects changes what the last reader can see. Viri’s historical printing has a later edition date than the artist’s lifetime. Players can fold the same illustrated page or give its sequence to a dancer. Both scenes draw on the distinction between identifying a particular object and showing why its specific contribution matters to a reader. [Ferry commissions](../../src/content/ferryCommissions.ts) · [Merian's two benches](../../src/content/petalGlasshouse.ts)
+
 Mika's lesson folder holds TOK lessons, card games and activities. This file lists the **ideas** and where they go in the story. It holds no handout wording, no student work and no IB documents, because this repository is public.
 
 Rules for every item:

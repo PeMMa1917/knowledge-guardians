@@ -1,3 +1,6 @@
+import {wagerDiary} from './petalWager';
+import {gearDiary} from './petalGears';
+import {petalDiary, flowerWeave} from './petalWindow';
 import { bakeryDiary } from './bakeryTrays';
 import { mothPerchDiary } from './mothPerches';
 import { billDiary, billWeave } from './ferryBill';
@@ -151,6 +154,9 @@ function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignS
   if (cmd.type==='TryMothPerch') return mothPerchDiary(cmd);
   if (cmd.type==='DrawOrchardStylus') return mouldDiary(cmd);
   if (cmd.type === 'HangFerryPrint' || cmd.type === 'OpenFerryBill' || cmd.type === 'HearFerryBill') return billDiary(previous, next, cmd);
+  if(cmd.type==='DrawPetalRibbon')return wagerDiary(next,cmd);
+  if(cmd.type==='WindPetalGear')return gearDiary(next,cmd);
+  if (cmd.type === 'WorkPetalWindow') return petalDiary(previous,next,cmd);
   if (cmd.type === 'TurnPictureFerry') return ferryDiary(previous, next, cmd);
   if (cmd.type==='WorkPlumChest') return chestDiary(previous,cmd);
   if (cmd.type==='StrikeOrchardBeat') return beatDiary(previous,cmd);
@@ -552,6 +558,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if (family === 'tally-tray') { const objective=objectivesById.get('emberford.tally.weigh')?.objective; if(objective?.weave) return diaryTopics(objective.weave); }
     if (family==='moth-perch') { const moth=pack.lorelings.find(r=>r.id==='glimmermoth'); if(moth)return diaryTopics(moth.weave); }
     if (family === 'picture-bill') return diaryTopics(billWeave);
+    if (family === 'petal-window'||family === 'petal-gear'||family === 'petal-ribbon') return diaryTopics(flowerWeave);
     if (family === 'picture-ferry') return diaryTopics(ferryWeave);
     if (family === 'plum') {
       if (event.ref === 'plum.drum') return diaryTopics(performanceWeave);

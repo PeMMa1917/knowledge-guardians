@@ -1,3 +1,4 @@
+import {playPetalHouse} from './petal-house-journey.mjs';
 import { playFirstPerches } from './first-chapter-perches-journey.mjs';
 import { playPictureFerry } from './picture-ferry-journey.mjs';
 import { playPlumOrchard } from './plum-orchard-journey.mjs';
@@ -52,7 +53,7 @@ if (quietGuestRun) {
   });
   console.log('Guest route uses reduced effects, reduced motion and sound captions.');
 }
-page.setDefaultTimeout(['--guest-route','--first-perches','--picture-ferry'].some(flag => process.argv.includes(flag)) ? 60000 : 22000);
+page.setDefaultTimeout(['--guest-route','--first-perches','--picture-ferry','--petal-house'].some(flag => process.argv.includes(flag)) ? 60000 : 22000);
 const faults = [];
 page.on('pageerror', (e) => faults.push(String(e)));
 page.on('response', (r) => {
@@ -127,7 +128,8 @@ try {
   const loanOnly=process.argv.includes('--field-loans');
   const notesOnly=process.argv.includes('--record-notes');
   const supperOnly=process.argv.includes('--supper-shadow');
-  if(process.argv.includes('--first-perches')) await playFirstPerches({page,engine,use,button,waitMap,close});
+  if(process.argv.includes('--petal-house')) await playPetalHouse({page,engine,use,waitMap,close});
+  else if(process.argv.includes('--first-perches')) await playFirstPerches({page,engine,use,button,waitMap,close});
   else if(process.argv.includes('--picture-ferry')) await playPictureFerry({page,engine,use,button,waitMap,close});
   else if(process.argv.includes('--plum-orchard')) await playPlumOrchard({page,engine,use,button,waitMap,close});
   else if(supperOnly) await playSupperShadow({page,engine,use,button,waitMap,close});
@@ -205,7 +207,7 @@ try {
     faults.filter((s) => !s.includes('favicon')),
     [],
   );
-  console.log(engine, browser.version(), process.argv.includes('--picture-ferry') ? 'passed the two-window performances and evening programme' : process.argv.includes('--first-perches') ? 'passed three moth homes, six receiver decisions, two bakery trays and the market correction' : process.argv.includes('--plum-orchard') ? 'passed the orchard workshop and four performance returns' : drawerIndex!==-1 ? 'passed drawer collection and recovery' : supperOnly ? 'Supper for a Shadow' : notesOnly ? 'passed record invitations, photo cover and text-only participation' : loanOnly ? 'passed four receiving benches, two carried replies and four reader routes' : birdOnly ? 'passed the folding flock, gallery, Two-Tide Dock and Sora’s returned key' : scoreOnly ? 'passed registered panels, task music, feedback and mute' : hearingsOnly ? 'passed four town hearings, two witnesses in each and four cross-town amendments' : lightsOnly ? 'passed all sixteen world grades, high contrast and reduced effects' : shelvesOnly ? 'passed four diary shelves, word histories and earned cross-area memories' : whistleOnly ? 'passed Liri’s three watches, travelling sheet and recall' : exitOnly ? 'passed all four exit signal orders, retry and reload' : guestIndex!==-1 ? 'passed both encounters in all 15 chapters and restored the guest’s work' : vaultOnly ? 'passed the six vault instruments, weir and council handover' : millOnly ? 'passed the six-counter mill and both earned passages' : makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
+  console.log(engine, browser.version(), process.argv.includes('--petal-house') ? 'passed the flower windows, late watches, both audiences and Merian’s return' : process.argv.includes('--picture-ferry') ? 'passed the two-window performances and evening programme' : process.argv.includes('--first-perches') ? 'passed three moth homes, six receiver decisions, two bakery trays and the market correction' : process.argv.includes('--plum-orchard') ? 'passed the orchard workshop and four performance returns' : drawerIndex!==-1 ? 'passed drawer collection and recovery' : supperOnly ? 'Supper for a Shadow' : notesOnly ? 'passed record invitations, photo cover and text-only participation' : loanOnly ? 'passed four receiving benches, two carried replies and four reader routes' : birdOnly ? 'passed the folding flock, gallery, Two-Tide Dock and Sora’s returned key' : scoreOnly ? 'passed registered panels, task music, feedback and mute' : hearingsOnly ? 'passed four town hearings, two witnesses in each and four cross-town amendments' : lightsOnly ? 'passed all sixteen world grades, high contrast and reduced effects' : shelvesOnly ? 'passed four diary shelves, word histories and earned cross-area memories' : whistleOnly ? 'passed Liri’s three watches, travelling sheet and recall' : exitOnly ? 'passed all four exit signal orders, retry and reload' : guestIndex!==-1 ? 'passed both encounters in all 15 chapters and restored the guest’s work' : vaultOnly ? 'passed the six vault instruments, weir and council handover' : millOnly ? 'passed the six-counter mill and both earned passages' : makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
 } finally {
   await browser.close();
 }

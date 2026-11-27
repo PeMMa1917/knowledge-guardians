@@ -1,3 +1,4 @@
+import {petalContent} from './petalGlasshouse';
 import { bakeryContent } from './bakeryTrays';
 import { mothReturnContent } from './mothPerchReturns';
 import { pictureFerryContent, ferryLocalGreetings } from './pictureFerry';
@@ -231,7 +232,7 @@ const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'mission
 
 export function buildPack(): ContentPack {
   const pack: any = { id: 'chapter-1', contentVersion: CONTENT_VERSION };
-  const collectionRooms = [pictureFerryContent, bakeryContent(), mothReturnContent(), plumContent, supperContent, clearanceContent, beaterProof, datePegContent, relayContent, joinedCloth, asiaLabelContent, specimenWorkContent, polarStore, fernRecordContent,
+  const collectionRooms = [petalContent, pictureFerryContent, bakeryContent(), mothReturnContent(), plumContent, supperContent, clearanceContent, beaterProof, datePegContent, relayContent, joinedCloth, asiaLabelContent, specimenWorkContent, polarStore, fernRecordContent,
     lanternWeaveContent, dateRegisterContent, passageContent, windowShop, readingWorksContent, storyArchiveContent, copyImprintContent,
     referenceProofs, parcelLedgerContent, numberLeafContent, surveyDepotContent, referenceLineContent, islandProofRackContent, turningTableContent, coastCopyContent, makerRoomContent, makerExactContent,
     timbuktuManuscriptContent, objectUseContent, leavittPlateContent, referenceStation, callboardContent, cueWorkshopContent,
@@ -257,6 +258,8 @@ export function buildPack(): ContentPack {
   installLamplight(content, articles);
   installNightCollection(content);
   ferryLocalGreetings(content);
+  const glasshouseNaturalist = content.characters.find(c=>c.id==='forest-naturalist');
+  if(glasshouseNaturalist) glasshouseNaturalist.localGreeting={...glasshouseNaturalist.localGreeting,'forest.petal-house':'petal.elian'};
   addCoatMissions(content);
   addMakerMissions(content);
   addMillMissions(content);

@@ -1,5 +1,13 @@
 # The Night Register release review
 
+## The glasshouse • A dancer, a detector and a later watch
+
+Two fictional, sixteen-square crops look identical in daylight. In ultraviolet at unit gain, four squares on Hem and twelve on Cuff fall in the low band. Driving the printer to its upper stop hides differences. The player can recover both crops, read all row values by keyboard and use the earlier shutter pin to change the false-colour convention. A later field watch moves both the hour and the flowers. It can support a new prediction, with room for a later exception. An unopened sleeve fixes what the Guardian predicted before the audience saw the landing. [Instrument tests](../../tests/petal-window.test.ts)
+
+The nominal, ordinal, interval and ratio rollers distinguish a relabelled costume, an ordered lift, a clock with a different origin and paired counts in different units. Both the science audience and the theatre receive the same late watches. A contrary landing matters differently to a forecast and a choreographer. The trial values and visits are authored for the game. A field study and an animal-vision resource provide the two scientific source notes. [Measurement and prediction](../../src/domain/petalGears.ts) · [Sources and audience scenes](../../src/content/petalGlasshouse.ts)
+
+Chromium 156, Firefox 146 and WebKit 26 each ran both performances, all eight roller faces, two predictions, two save recoveries and both meetings with Merian. The historical return test starts with the Metalworks commission completed, then claims and equips that accession through the game engine. The DOCX test opens the exported package and checks the museum and Wikipedia links. The production build, 1,881 asset records and 2,704 automated tests across 331 files passed. [Production journey](../../tools/petal-house-journey.mjs) · [Export and game-state checks](../../tests/petal-window.test.ts)
+
 ## The two-window picture ferry
 
 Chromium 156, Firefox 146 and WebKit 26 each earned three different Civic prints, fitted them to the lamp and changed the paper arrangement. Each tried sailing and tying up, listened to a passenger, opened the folded leaf and staged a three-print programme in a second chapter. Progress survived a reload at the lamp and another partway through the evening show. WebKit’s 390-pixel viewport exposed a native select that widened the page. The print selector now fits the panel, with its complete title printed in the following paragraph. The map checks also caught a gangway placed over the existing handoff table. Moving the gangway left the two activities independently reachable. [Browser journey](../../tools/picture-ferry-journey.mjs) · [Prints, receipts and programme order](../../tests/picture-ferry.test.ts)

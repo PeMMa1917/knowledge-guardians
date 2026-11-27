@@ -1,3 +1,4 @@
+import {silkSeats,silkRibbons,travellingArtist} from './petalHouse';
 import { mothVisit } from './mothPerchReturns';
 import { ferryPlaybills } from './pictureFerry';
 import { plumStair, roadPerformance } from './plumLoft';
@@ -121,7 +122,7 @@ export const STAGE_FOYER = room({
 export const STAGE_REHEARSAL = room({
   id: 'stage.rehearsal', name: 'House of Performance: Rehearsal Room', width: 28, height: 17,
   background: 0x352a3f, spawn: { x: 12, y: 12 },
-  npcs: [{ id: 'stage-director', x: 12, y: 6, facing: 'down' }],
+  npcs: [travellingArtist('silk',18,9), { id: 'stage-director', x: 12, y: 6, facing: 'down' }],
   stamps: [
     { stamp: 'banners', x: 6, y: 1 }, { stamp: 'banners', x: 19, y: 1 },
     { stamp: 'cabinet', x: 3, y: 4 }, { stamp: 'crates', x: 22, y: 4 },
@@ -129,6 +130,7 @@ export const STAGE_REHEARSAL = room({
     { stamp: 'rug-green', x: 12, y: 9 }, { stamp: 'plant-tall', x: 5, y: 13 },
   ],
   interactables: [
+    silkSeats,silkRibbons,
     plumStair,
     { id: 'field-primer', kind: 'fieldgame', game: 'primer', x: 20, y: 4, w: 1, h: 1, label: 'the printer’s proof table (The Primer Page)', art: 'old-sign' },
     { id: 'field-lens', kind: 'fieldgame', game: 'lens', x: 16, y: 5, w: 1, h: 1, label: 'the green card table (The Lens Table)', art: 'old-sign' },

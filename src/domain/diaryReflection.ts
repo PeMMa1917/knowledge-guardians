@@ -38,6 +38,12 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
   };
   if(key.startsWith('moth-perch:'))return {watch:'Which part of the moth’s visit did I actually see?',next:'Which one thing could I change at this same perch to check my hunch?'};
   if (key.startsWith('picture-bill:')) return {part:'What did each object let the audience discover that the other two could not?', order:'How did the first image or question affect the way I understood the final act?'};
+  if(key.startsWith('petal-ribbon:'))return {world:'What did the landing do to the promise on my ribbon?',craft:'What made the new gesture worth keeping even when a promise failed?'};
+  if(key.startsWith('petal-gear:'))return {change:'What could my roller still tell the cast after I changed its face?',loss:'Which movement would become misleading if it used a different kind of number?'};
+  if(key.startsWith('petal-window:tape.'))return {hour:'Which other feature changed when I switched the flowers?',test:'What would a second pair of watches allow me to compare?'};
+  if(key.startsWith('petal-window:reading.'))return {print:'Which feature came from the flower crop and which from the gain?',bee:'What could the slip tell me about a bee before I watched one land?'};
+  if(key.startsWith('petal-window:silk')||key.startsWith('petal-window:garden'))return {who:'Who could make a new move in this version of the show?',cost:'What did the audience give up to let them do that?'};
+  if(key.startsWith('petal-window:'))return {lens:'What did I change about the instrument or the ledge, and what stayed the same?'};
   if (key.startsWith('picture-ferry:')) return {
     window: 'What could a passenger at the other window see that I missed?',
     record: 'Which part of my account could I check against the print or its collection ticket?',

@@ -1,5 +1,9 @@
 # Story bible: the whole campaign (chapters 1 to 15)
 
+## A winter in one thumb
+
+Viri touched her mother’s wire glove long before she understood how it worked. The theatre earns its first real crowd from a poster neither Viri nor Elian can defend. Players can still put on an excellent show. A repeatable trick gives the understudy a real job. An open garden gives a waiting child power over the last minute. The same landing that spoils a prediction can give the company a movement they never would have written. Merian’s later bench brings an older argument about simultaneous images and successive movements to either audience. [Curtains, watches and callbacks](../src/content/petalGlasshouse.ts)
+
 This file sets the story rules for the whole game. Every developer (human or AI) reads it before writing a scene, a character, a quest or a minigame. Mika asked for these rules on 2026-11-26: the game must feel like one coherent story in a real world, and player choices must matter everywhere.
 
 The design spec (private) defines the rival, the companions and the Echo rules. This file turns them into a plan for all 15 chapters. If this file and the spec disagree, follow the spec and fix this file.

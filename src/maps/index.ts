@@ -1,3 +1,4 @@
+import {petalHouse} from './petalHouse';
 import { pictureFerryRoom } from './pictureFerry';
 import { plumLoft } from './plumLoft';
 import { SUPPER_MAP } from './supperRoom';
@@ -166,6 +167,7 @@ const campaignMaps: Record<string, MapDef> = {
   [SHOAL_PROOF_SHELTER.id]: SHOAL_PROOF_SHELTER,
   [SEA_SHOAL.id]: SEA_SHOAL,
   [SHORE_REPLY_SHED.id]: SHORE_REPLY_SHED,
+  [petalHouse.id]:petalHouse,
   [pictureFerryRoom.id]: pictureFerryRoom,
   [plumLoft.id]: plumLoft,
   [STAGE_FOYER.id]: STAGE_FOYER,

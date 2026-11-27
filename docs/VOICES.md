@@ -1,5 +1,11 @@
 # Voice sheets
 
+## Viri and the two benches
+
+Viri earns her rent dancing with her mother’s wire glove. The gesture she spent a winter learning makes a bee wash its eyes. She wants a child to notice the wirework and worries that admitting how the show works will empty the seats. She borrows Elian’s pencil for an overconfident poster. Elian doubts the claim and still wants a place in the audience. After a silk performance Viri is proud when a child asks about the legs. After the garden show she begins to enjoy the wait.
+
+Maria Sibylla Merian handles the printed sheet, a fold and the space between insect forms. Her conversations with Viri concern what a single composition can hold. The 1771 date belongs to the Cleveland impression. Her words in these encounters belong to the game’s story. [Dialogue and two returns](../src/content/petalGlasshouse.ts)
+
 This file gives each named character a voice (audit fix C-005). Use it when you write a new line for a character. Each sheet has four parts:
 
 - **Believes:** what the character trusts or wants.

@@ -1,3 +1,6 @@
+import {petalRibbons} from './petalRibbons';
+import {petalGears} from './petalGears';
+import {petalWindow,petalLedge,petalStage,petalAudience} from './petalWindow';
 import { ferryBillLine, ferryBillAudience } from './ferryBill';
 import { printWheel, printPassenger } from './pictureFerry';
 import { orchardMould } from './orchardMould';
@@ -69,6 +72,12 @@ interface Panel<T> {
 export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
   ...stops.map((stop):[string,Panel<GamePanel>]=>["field-loan."+stop,{title:loanStops[stop].title,open:(c,sound)=>fieldLoanPanel(c,stop,sound)}]),
   ["orchard-mould", { title: "Fen’s two practice tabs", open: orchardMould }],
+  ["petal-ribbons",{title:"Two unopened watches",open:petalRibbons}],
+  ["petal-gears",{title:"Viri’s rolling theatre",open:petalGears}],
+  ["petal-window",{title:"The little window",open:petalWindow}],
+  ["petal-ledge",{title:"Two mornings caught in glass",open:petalLedge}],
+  ["petal-stage",{title:"The copper glove",open:petalStage}],
+  ["petal-audience",{title:"Who takes the next turn?",open:petalAudience}],
   ["picture-ferry-bill", { title: "Three pegs for the evening show", open: ferryBillLine }],
   ["picture-ferry-gallery", { title: "The evening house", open: ferryBillAudience }],
   ["picture-ferry-wheel", { title: "The two-window lamp", open: printWheel }],

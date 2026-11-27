@@ -1,5 +1,11 @@
 # Status and next steps
 
+## 27 November • The yellow dress with twenty-seven fingers
+
+Viri makes wire bees dance with the gestures she learned from her mother. A poster promises that live bees follow her painted arrows. The Guardian can print two flower crops through different panes, hit the detector’s ceiling, recover lost detail and compare two dated watches. A silk show gives a dancer control. An open garden lets visitors decide whether to appear. The next audience can check a prediction it pinned before a watch opened and use the same surprise to change a dance. The Cleveland Museum of Art’s 1771 *Poivre d’inde* impression brings Maria Sibylla Merian to two working benches. [The working glasshouse](src/maps/petalHouse.ts) · [The later watches](src/domain/petalWager.ts)
+
+Eight older tools now have work in the glasshouse. This brings the number of ordinary items and keepsakes with a use outside their observed acquisition room to 166 of 172. The skill audit connects 589 of 1,200 supplied skills to 1,296 observable uses. Thirty-five actions explicitly compare how two areas use or limit evidence. [Skill evidence](docs/TOK_MICRO_SKILLS.md) · [Collection audit](tools/audit-collectible-use.mjs)
+
 ## 27 November • The night we had two moons
 
 Bo has punched two moons in his supper ticket. One window faces the deck. The other faces his bunk. A Guardian can turn the three-sided sleeve, walk between the windows and decide whether to ring the bell in time for a connection or tie up long enough for the passengers to see what was folded away. Each of 31 signed prints from the Civic Callboard has a passenger waiting for it and two possible replies ashore. Three different prints that have made the crossing can go on Hari’s evening bill. The cook or the child can open the show, and the last seat hears the three pages in the order the Guardian chose. [The wheel](src/ui/pictureFerry.ts) · [The passengers](src/content/ferryCommissions.ts) · [The programme](src/domain/ferryBill.ts)
