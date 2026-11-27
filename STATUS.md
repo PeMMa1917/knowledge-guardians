@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 27 November • Music at the workbench
+
+A rehearsal leaves room for the whistle. Three notes mark a bench at work and two mark a hearing. Either ruling has the same handover bell. Players can follow captions and set music and effects separately. The field-game registry opens 18 individual games and 14 families of workstations across the map.
+
 ## 27 November • Who gets the hearing chair?
 
 A chair mender for the Gilded Seal has written a rule that leaves her own father outside a hearing. In the Cold Store, the Metalworks, the City of Copies and the Market, players can bring together two named witnesses who saw different things. A second visit lets the next town use an earlier decision. A returned milk token can change who gets a second hearing. Following two delivery tags can help a runner untangle two promises printed in the same sentence. [Four hearings](src/content/hearings/index.ts) · [Witness and cross-town repair checks](tests/town-hearings.test.ts)

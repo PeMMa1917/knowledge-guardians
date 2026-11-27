@@ -1,3 +1,5 @@
+import { taskMode, trialSound } from '../domain/taskScore';
+import { fieldGamePanels, fieldStationPanel } from './fieldGamePanels';
 import { journalNavigation } from './journalNavigation';
 import { wordHistory } from './diaryWords';
 import {whistlePanel} from './whistleWatch';
@@ -107,24 +109,6 @@ import { FIELD_GAMES } from '../domain/fieldgames';
 import { OFFER_LINE, shouldOfferHelp } from '../domain/lumenOffer';
 import { IDEA_CREDITS } from '../domain/ideaCredits';
 import { gymPanel } from './gymPanel';
-import { ladderPanel } from './ladderPanel';
-import { treesPanel } from './treesPanel';
-import { assayPanel } from './assayPanel';
-import { relayPanel } from './relayPanel';
-import { lensPanel } from './lensPanel';
-import { riverPanel } from './riverPanel';
-import { collagePanel } from './collagePanel';
-import { tokenPanel } from './tokenPanel';
-import { fogPanel } from './fogPanel';
-import { festivalPanel } from './festivalPanel';
-import { reassemblyPanel } from './reassemblyPanel';
-import { primerPanel } from './primerPanel';
-import { patternPanel } from './patternPanel';
-import { fairPanel } from './fairPanel';
-import { batPanel } from './batPanel';
-import { mirrorPanel } from './mirrorPanel';
-import { surveyPanel } from './surveyPanel';
-import { labyrinthPanel } from './labyrinthPanel';
 import { contentNoteFor, noteSeenFlag } from '../domain/contentNotes';
 import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
 import { pendingPushback, pushAnswerFlag, pushSeenFlag } from '../domain/pushbacks';
@@ -155,7 +139,6 @@ import { PRISM_GROUP } from '../content/prismViewer';
 import { prismViewerPanel } from './prismViewer';
 import { ALIGN_GROUP } from '../content/mapAlignment';
 import { mapAlignmentPanel } from './mapAlignment';
-import { scriptRailPanel } from './scriptRail';
 import { twoCallsPanel } from './twoCalls';
 import { localGuide, workFeedback } from './localGuide';
 import { COAST_COPY_DESK, COAST_COPY_READER, COAST_COPY_POCKET } from '../content/coastCopy';
@@ -164,20 +147,12 @@ import { bearingBayPanel } from './bearingBay';
 import { loadingBayPanel } from './loadingBay';
 import { cueWorkshopPanel } from './cueWorkshop';
 import { datePegPanel } from './datePeg';
-import { LANTERN_WEAVE } from '../content/lanternWeave';
-import { lanternWeavePanel } from './lanternWeave';
 import { shutterBoardPanel } from './shutterBoard';
 import { DATE_REGISTER_GROUP } from '../content/dateRegisterCases';
 import { dateRegisterPanel } from './dateRegister';
 import { STORY_FRAME_GROUP } from '../content/storyArchive';
 import { storyFramePanel } from './storyFrames';
-import { NUMBER_LEAF_GROUP } from '../content/numberLeaves';
 import { parcelLedgerPanel } from './parcelLedger';
-import { numberLeavesPanel } from './numberLeaves';
-import { IMPRINT_GROUP } from '../content/copyImprintCases';
-import { REFERENCE_PROOF } from '../domain/referenceProofs';
-import { copyImprint } from './copyImprint';
-import { referenceProofPanel } from './referenceProofs';
 import { MAKER_EXACT, MAKER_TOOL } from '../domain/makerRoom';
 import { makerRoom } from './makerRoom';
 import { makerExact } from './makerExact';
@@ -206,8 +181,6 @@ import { SILL_CLOCK } from '../domain/sillBridge';
 import { sillBridgePanel, sillGuideObjective } from './sillBridge';
 import { PORTER_TOOL } from '../domain/porterPace';
 import { porterPacePanel } from './porterPace';
-import { WARM_TOOL } from '../domain/warmRoom';
-import { warmRoomPanel } from './warmRoom';
 import { BEND_TOOL, type BendSite } from '../domain/stripBend';
 import { stripBendPanel } from './stripBend';
 import { loyaltyOf } from '../domain/loyalty';
@@ -225,25 +198,14 @@ import { canClaimSpecimen, carriesSpecimen, carriedSpecimenCount, hasSpecimen, i
   SPECIMEN_SHELF, specimenEquipped, specimenFromTool, specimenReadingFlag } from '../domain/specimenGear';
 import { specimenCase, specimenThumbnail, specimenVault } from './specimenVault';
 import { journalEvidence, specimenReferences, type SpecimenReference } from '../domain/specimenReferences';
-import { timbuktuHorizonPanel } from './timbuktuHorizon';
-import { objectUsePanel } from './objectUse';
 import { callboardPanel } from './callboardPanel';
-import { MODEL_RECORD_GROUP } from '../content/modelRecords';
-import { modelRecordPanel } from './modelRecords';
 import { TIME_TOOL } from '../domain/timeRoom';
-import { PACKING_TOOL } from '../domain/ferryPacking';
-import { ferryPackingPanel } from './ferryPacking';
 import { timeRoomPanel } from './timeRoom';
-import { materialStorePanel } from './materialStores';
 import { GLASS_RACK_PREFIX } from '../content/glassRack';
 import { glassRackPanel } from './glassRack';
-import { STAR_GAME } from '../domain/starPaths';
-import { starChart, starField } from './starPaths';
+import { starChart } from './starPaths';
 import { BADGE_ANNEX_PREFIX } from '../content/badgeRoom';
 import { badgeAnnexPanel } from './badgeAnnex';
-import { workSchedulePanel } from './workSchedule';
-import { EARLIER_VIEWING } from '../content/earlierViewing';
-import { earlierViewingPanel } from './earlierViewing';
 import { BEATER_GAME } from '../domain/beaterProof';
 import { beaterProofPanel } from './beaterProof';
 import { JOINED_CLOTH_GAME, JOINED_CLOTH_OBJECTIVE } from '../domain/joinedCloth';
@@ -547,6 +509,7 @@ export class UI implements UIApi {
   private titleModalOpener: HTMLElement | null = null;
   private releaseTrap: (() => void) | null = null;
   private releaseModalBackground: (() => void) | null = null;
+  private openingFieldGame?: string;
   private releasePanelActivity: (() => void) | null = null;
   private promptEl!: HTMLElement;
   private toastBox!: HTMLElement;
@@ -596,6 +559,7 @@ export class UI implements UIApi {
     this.root.append(wrap);
     this.isolateModalBackground();
     this.releaseTrap = trapFocus(box);
+    ctx.world?.setTaskMusic(taskMode(cls,this.openingFieldGame,state?.mapId));
     this.setPrompt(null);
     return box;
   }
@@ -645,6 +609,7 @@ export class UI implements UIApi {
     this.modal.remove();
     this.modal = null;
     if (replacing) { this.refreshHud(); return; }
+    ctx.world?.setTaskMusic('roam');
     this.stopTimedReplay();
     this.releaseModalBackground?.();
     const opener = this.titleModalOpener;
@@ -1289,6 +1254,9 @@ export class UI implements UIApi {
   // ------------------------------------------------------------ events
 
   private handleEvents(events: GameEvent[]): void {
+    // A single action can also earn currency, journal lines and objectives. Sound the trial once.
+    const result = events.map(trialSound).find(cue => cue !== undefined);
+    if (result) ctx.world?.playTrialSound(result);
     // One XP toast per action, not one per criterion.
     const xp = events.filter((e) => e.kind === 'xp').reduce((n, e) => n + (e as Extract<GameEvent, { kind: 'xp' }>).amount, 0);
     if (xp) events = [...events.filter((e) => e.kind !== 'xp'), { kind: 'xp', amount: xp }];
@@ -3587,6 +3555,23 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    this.openingFieldGame = id;
+    try { this.mountFieldGame(id); } finally { this.openingFieldGame = undefined; }
+  }
+
+  private mountFieldGame(id: string): void {
+    const fixed = fieldGamePanels.get(id);
+    if (fixed) {
+      this.openModal('bench-panel wide', fixed.title, this.closeBtn(),
+        fixed.open(ctx.controller, key => this.sfx(key), () => this.finishField(id), () => this.closeModal()));
+      return;
+    }
+    const station = fieldStationPanel(id);
+    if (station) {
+      this.openModal('bench-panel wide', station.title, this.closeBtn(),
+        station.open(ctx.controller, station.station, key => this.sfx(key), () => ctx.world?.refreshWorld()));
+      return;
+    }
     if(id==='whistle-watch'){
       const site=whistlePlaces.find(p=>p.map===ctx.controller.state.mapId);if(!site)return;
       const view=whistlePanel(ctx.controller,site.id,()=>ctx.settings.sfxVolume,()=>ctx.world?.refreshWorld());
@@ -3682,9 +3667,6 @@ export class UI implements UIApi {
     } else if (id.startsWith(CURTAIN_PREFIX)) {
       this.openModal('bench-panel wide', 'The Call behind the Curtain', this.closeBtn(), curtainCallPanel(
         ctx.controller, id.slice(CURTAIN_PREFIX.length), () => ctx.world?.refreshWorld(), () => this.sfx('sfx.click')));
-    } else if (id.startsWith(EARLIER_VIEWING)) {
-      this.openModal('bench-panel wide', 'A second view', this.closeBtn(), earlierViewingPanel(ctx.controller,
-        id.slice(EARLIER_VIEWING.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(BEATER_GAME)) {
       this.openModal('bench-panel wide', 'Both Faces at the Same Stop', this.closeBtn(), beaterProofPanel(ctx.controller,
         id.slice(BEATER_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
@@ -3693,12 +3675,6 @@ export class UI implements UIApi {
       this.openModal('bench-panel wide', 'The Two Supports', this.closeBtn(), joinedClothPanel(ctx.controller,
         id.slice(JOINED_CLOTH_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
         localGuide(ctx.controller, MAPS[ctx.controller.state.mapId]?.world ?? '', JOINED_CLOTH_OBJECTIVE));
-    } else if (id.startsWith(STAR_GAME)) {
-      this.openModal('bench-panel wide', 'Field methods', this.closeBtn(), starField(ctx.controller,
-        id.slice(STAR_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith('script-rail:')) {
-      this.openModal('bench-panel wide', 'The Script Cabinet', this.closeBtn(), scriptRailPanel(ctx.controller,
-        id.slice('script-rail:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === 'copies-two-calls') {
       const c = ctx.controller;
       const firstOpenCall = () => c.engine.visibleObjectives(c.state).find(({ id, complete }) =>
@@ -3706,12 +3682,6 @@ export class UI implements UIApi {
       this.openModal('bench-panel wide', 'Two Calls After Tuesday', this.closeBtn(),
         twoCallsPanel(c, () => ctx.world?.refreshWorld(), () => this.sfx('sfx.page')),
         localGuide(c, MAPS[c.state.mapId]?.world ?? '', firstOpenCall));
-    } else if (id.startsWith('work-schedule:')) {
-      this.openModal('bench-panel wide', 'The Working Cupboards', this.closeBtn(), workSchedulePanel(ctx.controller,
-        id.slice('work-schedule:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith('material-stores:')) {
-      this.openModal('bench-panel wide', 'The Material Stores', this.closeBtn(), materialStorePanel(ctx.controller,
-        id.slice('material-stores:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(GLASS_RACK_PREFIX)) {
       this.openModal('bench-panel wide', 'The Missing Face', this.closeBtn(),
         glassRackPanel(ctx.controller, id.slice(GLASS_RACK_PREFIX.length), () => ctx.world?.refreshWorld()));
@@ -3723,9 +3693,6 @@ export class UI implements UIApi {
       this.openModal('bench-panel wide', 'The Bend That Stayed', this.closeBtn(),
         stripBendPanel(c, site, (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
         localGuide(c, MAPS[c.state.mapId]?.world ?? '', nextBendStep));
-    } else if (id.startsWith(`${WARM_TOOL}:`)) {
-      this.openModal('bench-panel wide', 'The Warm Side', this.closeBtn(), warmRoomPanel(ctx.controller,
-        id.slice(WARM_TOOL.length + 1), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === `${PORTER_TOOL}:emberford` || id === `${PORTER_TOOL}:water`) {
       const site = id.endsWith(':water') ? 'water' : 'emberford';
       this.openModal('bench-panel wide', site === 'emberford' ? 'Idris’s carry board' : 'Sena’s half-route board',
@@ -3748,26 +3715,12 @@ export class UI implements UIApi {
     } else if (id === DETECTOR_GAME) {
       this.openModal('bench-panel wide', 'Neri’s light reader', this.closeBtn(),
         coastDetectorPanel(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith(`${PACKING_TOOL}:`)) {
-      this.openModal('bench-panel wide', 'A Name on the Load', this.closeBtn(), ferryPackingPanel(ctx.controller,
-        id.slice(PACKING_TOOL.length + 1), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(`${TIME_TOOL}:`)) {
       this.openModal('bench-panel wide', 'The Time Room', this.closeBtn(), timeRoomPanel(ctx.controller,
         id.slice(TIME_TOOL.length + 1), () => ctx.settings.sfxVolume, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith(`${MODEL_RECORD_GROUP}:`)) {
-      this.openModal('bench-panel wide', 'What the Model Keeps', this.closeBtn(),
-        modelRecordPanel(ctx.controller, id.slice(MODEL_RECORD_GROUP.length + 1), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith('callboard:')) {
       const place = id.slice('callboard:'.length);
       this.openModal('bench-panel wide', 'The Callboard Turn', this.closeBtn(), callboardPanel(ctx.controller, place, () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith('object-use:')) {
-      const place = id.slice('object-use:'.length);
-      this.openModal('bench-panel wide', 'The workroom fixture', this.closeBtn(),
-        objectUsePanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith('timbuktu:')) {
-      const place = id.slice('timbuktu:'.length);
-      this.openModal('bench-panel wide', 'The season horizon', this.closeBtn(),
-        timbuktuHorizonPanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === 'specimen-vault') {
       this.openModal('bench-panel wide', 'Your collection', this.closeBtn(), specimenVault(ctx.controller, () => {
         this.refreshHud(); ctx.world?.refreshWorld();
@@ -3782,10 +3735,6 @@ export class UI implements UIApi {
     } else if (id.startsWith('parcel-ledger:')) {
       this.openModal('bench-panel wide', 'Two People for One Parcel', this.closeBtn(),
         parcelLedgerPanel(ctx.controller, id.slice('parcel-ledger:'.length), () => this.sfx('sfx.page')));
-    } else if (id.startsWith(`${NUMBER_LEAF_GROUP}:`)) {
-      const place = id.slice(NUMBER_LEAF_GROUP.length + 1);
-      this.openModal('bench-panel wide', 'The Ledger Room', this.closeBtn(),
-        numberLeavesPanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(`${STORY_FRAME_GROUP}:`)) {
       const place = id.slice(STORY_FRAME_GROUP.length + 1);
       this.openModal('bench-panel wide', 'The Story Archive caption frame', this.closeBtn(),
@@ -3794,21 +3743,9 @@ export class UI implements UIApi {
       const place = id.slice(DATE_REGISTER_GROUP.length + 1);
       this.openModal('bench-panel wide', 'The Beside Date', this.closeBtn(),
         dateRegisterPanel(ctx.controller, place, () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith(`${LANTERN_WEAVE}:`)) {
-      const place = id.slice(LANTERN_WEAVE.length + 1);
-      this.openModal('bench-panel wide', 'The Half-Light Room', this.closeBtn(),
-        lanternWeavePanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === 'shutter-board') {
       this.openModal('bench-panel wide', 'The Two Shutter Room', this.closeBtn(),
         shutterBoardPanel(ctx.controller, () => ctx.world?.refreshWorld(), () => this.sfx('sfx.page')));
-    } else if (id.startsWith(`${IMPRINT_GROUP}:`)) {
-      const place = id.slice(IMPRINT_GROUP.length + 1);
-      this.openModal('bench-panel wide', 'The Second Imprint', this.closeBtn(),
-        copyImprint(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith(`${REFERENCE_PROOF}:`)) {
-      const place = id.slice(REFERENCE_PROOF.length + 1);
-      this.openModal('bench-panel wide', 'The checked record', this.closeBtn(),
-        referenceProofPanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(`${MAKER_TOOL}:`)) {
       const place = id.slice(MAKER_TOOL.length + 1);
       this.openModal('bench-panel wide', 'A Turn at the Workbench', this.closeBtn(),
@@ -3896,42 +3833,6 @@ export class UI implements UIApi {
     else if (id === 'stars') this.openStars();
     else if (id === 'dig') this.openDig();
     else if (id === 'trade') this.openTrade();
-    else if (id === 'ladder') this.openModal('bench-panel wide', "The Copyists' Ladder", this.closeBtn(),
-      ladderPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('ladder'), () => this.closeModal()));
-    else if (id === 'maze') this.openModal('bench-panel wide', 'The Labyrinth Lens', this.closeBtn(),
-      labyrinthPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('maze'), () => this.closeModal()));
-    else if (id === 'survey') this.openModal('bench-panel wide', 'The Survey Bell', this.closeBtn(),
-      surveyPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('survey'), () => this.closeModal()));
-    else if (id === 'mirror') this.openModal('bench-panel wide', 'The Time Mirror', this.closeBtn(),
-      mirrorPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('mirror'), () => this.closeModal()));
-    else if (id === 'bats') this.openModal('bench-panel wide', 'The Bat Keeper', this.closeBtn(),
-      batPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('bats'), () => this.closeModal()));
-    else if (id === 'fair') this.openModal('bench-panel wide', 'The Value Fair', this.closeBtn(),
-      fairPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('fair'), () => this.closeModal()));
-    else if (id === 'pattern') this.openModal('bench-panel wide', 'The Pattern Book', this.closeBtn(),
-      patternPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('pattern'), () => this.closeModal()));
-    else if (id === 'primer') this.openModal('bench-panel wide', 'The Primer Page', this.closeBtn(),
-      primerPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('primer'), () => this.closeModal()));
-    else if (id === 'reassembly') this.openModal('bench-panel wide', 'The Reassembly Line', this.closeBtn(),
-      reassemblyPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('reassembly'), () => this.closeModal()));
-    else if (id === 'festival') this.openModal('bench-panel wide', 'The Festival Dilemma', this.closeBtn(),
-      festivalPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('festival'), () => this.closeModal()));
-    else if (id === 'fog') this.openModal('bench-panel wide', 'The Fog Chart', this.closeBtn(),
-      fogPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('fog'), () => this.closeModal()));
-    else if (id === 'tokens') this.openModal('bench-panel wide', 'The Token Drawer', this.closeBtn(),
-      tokenPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('tokens'), () => this.closeModal()));
-    else if (id === 'collage') this.openModal('bench-panel wide', 'The Collage Wall', this.closeBtn(),
-      collagePanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('collage'), () => this.closeModal()));
-    else if (id === 'river') this.openModal('bench-panel wide', 'The River Crossing Inquiry', this.closeBtn(),
-      riverPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('river'), () => this.closeModal()));
-    else if (id === 'lens') this.openModal('bench-panel wide', 'The Lens Table', this.closeBtn(),
-      lensPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('lens'), () => this.closeModal()));
-    else if (id === 'relay') this.openModal('bench-panel wide', 'The Sketch Relay', this.closeBtn(),
-      relayPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('relay'), () => this.closeModal()));
-    else if (id === 'assay') this.openModal('bench-panel wide', 'The Assay Trial', this.closeBtn(),
-      assayPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('assay'), () => this.closeModal()));
-    else if (id === 'trees') this.openModal('bench-panel wide', 'The Three Trees', this.closeBtn(),
-      treesPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('trees'), () => this.closeModal()));
   }
 
   /** Star Pictures: draw your own picture, see two traditions, measure, then choose what the chart says. */

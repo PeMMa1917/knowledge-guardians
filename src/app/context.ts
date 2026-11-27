@@ -75,6 +75,8 @@ export interface WorldApi {
   /** Lumen's form or glow changed: swap the picture and tint. */
   refreshLumen(): void;
   playSfx(key: string): void;
+  setTaskMusic(mode: import('../domain/taskScore').TaskMode): void;
+  playTrialSound(kind: import('../domain/taskScore').TrialSound): void;
   snapshotPosition(): void;
   /** Photo mode: camera zoom, a colour filter, and who is in the picture. */
   photoSet(o: { zoom: number; filter: string; lumen: boolean; pet: boolean } | null): boolean;

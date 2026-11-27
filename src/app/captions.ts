@@ -1,3 +1,4 @@
+import { taskCaptions } from '../domain/taskScore';
 import { soundtrackCaption } from '../domain/campaignScore';
 import { conceptTextNodes } from '../ui/conceptMarkup';
 
@@ -44,7 +45,7 @@ export function captionFor(key: string, who?: string): string | null {
   if (key === 'voice' && who) return `${who} talks`;
   if (key === 'emote' && who) return who;
   if (key === 'amb.forge' && who) return `${CAPTIONS[key]} (${who})`;
-  return CAPTIONS[key] ?? soundtrackCaption(key) ?? null;
+  return CAPTIONS[key] ?? taskCaptions[key] ?? soundtrackCaption(key) ?? null;
 }
 
 /** Keeps captions short and calm: the same caption is not shown again within `gap` ms, and at most `max` lines show. */

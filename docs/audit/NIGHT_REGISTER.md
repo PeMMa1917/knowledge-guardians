@@ -195,3 +195,9 @@ The Cold Store’s family stamp admits Iren. Her boat arrived after the night th
 | Family and citizenship reviewers | Give the visitor a return stub, a low bell, a quiet desk or an unsigned option. | Even a privacy screen can reveal who asked for help. The first recipient notices where the queue is visible and moves the chair. |
 | Keyboard, touch and UI reviewers | Change the challenged link before playing a card, call two witnesses, then leave the meeting. | An earlier control appended another card selector each time the target changed. The chooser now follows the latest selection, clears on cancellation and receives keyboard focus. |
 | Writers and exploratory players | Revisit Agate after someone has used her chair. A worker can reveal a second stamp or ask to retry a lever. | Returning to an earlier town can change that town’s choice. The travelling repair preserves the source and local editions the two keepers used. |
+
+## Listening at a workbench
+
+A student at Liri’s rehearsal needs to hear a single whistle. Opening the rehearsal now draws the room music down. At an ordinary bench three soft wooden notes join four bars of the chapter score. A hearing uses two quieter notes. Closing the bench brings back the room mix. Handing over either ruling earns the same little bell. Players can read its caption, turn music and effects down independently, or work with both off.
+
+Thirty-two kinds of workbench now open through the same panel registry. The original panels still own their tools, feedback and help. A browser journey follows their map placements across three engines. The audio lifecycle check exercises a suspended context, resumption while a bench is open, a volume change, a silent listening task and leaving the scene.

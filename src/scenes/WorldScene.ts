@@ -1,3 +1,4 @@
+import type { TaskMode, TrialSound } from '../domain/taskScore';
 import { vaultReturnSquare } from '../maps/undercroft';
 /**
  * WorldScene: draws a map, moves the player and characters, and turns player
@@ -686,6 +687,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       this.events.once(Phaser.Scenes.Events.DESTROY, () => this.soundtrack?.destroy());
     }
     this.soundtrack.follow(this.map.world, this.map.id, this.map.music, ctx.settings.musicVolume);
+  }
+
+  setTaskMusic(mode: TaskMode): void { this.soundtrack?.setTask(mode); }
+  playTrialSound(kind: TrialSound): void {
+    this.soundtrack?.trial(kind, ctx.settings.sfxVolume);
   }
 
   playSfx(key: string): void {
