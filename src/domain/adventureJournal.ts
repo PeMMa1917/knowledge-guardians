@@ -1,3 +1,4 @@
+import {watches,watchReading,watchEnding} from './watchBell';
 import { guestInstrument, materialLine } from './lanternInstruments';
 import { LANTERN_SITES, lanternCase, lanternRead, lanternRef, lanternTopics } from './lamplight';
 import { inkDiaryTopics } from './inkPost';
@@ -115,6 +116,13 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
+  if (cmd.type === 'WorkNightWatch') {
+    const ref='night-watch.'+cmd.site;
+    const flag=ref+(cmd.stage==='try'?'.current':'.left');
+    if(previous.flags[flag]===next.flags[flag]) return;
+    return diaryEvent(ref+':'+cmd.stage+':'+cmd.setting, cmd.stage==='try'?'tool':'choice',ref,watches[cmd.site].title,
+      cmd.stage==='try'?'I tried the watch record. '+watchReading(cmd.site,cmd.setting):'I stayed for the handover. '+watchEnding(cmd.site,cmd.setting),{},'after-break');
+  }
   if (cmd.type === 'TurnLanternGlass') {
     const site = LANTERN_SITES.find((s) => s.id === cmd.site);
     if (!site) return;

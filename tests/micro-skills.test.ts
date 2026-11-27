@@ -23,8 +23,8 @@ describe('micro-skill links to played actions', () => {
   const rows = microSkillRows(pack, MICRO_SKILLS);
 
   it('indexes the actual source numbers and attaches every link to an existing objective and RPG example', () => {
-    expect(SUPPLIED_SKILL_IDS).toHaveLength(1000);
-    expect(SUPPLIED_SKILL_IDS).toEqual(Array.from({ length: 1000 }, (_, i) => i + 1));
+    expect(SUPPLIED_SKILL_IDS).toHaveLength(1200);
+    expect(SUPPLIED_SKILL_IDS).toEqual(Array.from({ length: 1200 }, (_, i) => i + 1));
     expect(new Set(MICRO_SKILLS.map(({ number }) => number)).size).toBe(MICRO_SKILLS.length);
     expect(rows.length).toBe(MICRO_SKILLS.reduce((sum, { uses }) => sum + uses.length, 0));
     const games = playableRows(gameTracker);

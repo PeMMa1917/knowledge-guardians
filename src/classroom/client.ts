@@ -12,7 +12,7 @@ export type Writing = {kind: string; title: string; text: string};
 export let classroom: ClassSave | undefined;
 
 export function notice(who = classroom?.who): string {
-  return who ? `You and ${who.teacherName}, the assigned teacher for ${who.className}, can read your diary notes and unfinished diary writing as they sync. Separate portfolio entries use their own Share control. Photos stay on this device.`
+  return who ? `You and ${who.teacherName}, the assigned teacher for ${who.className}, can read your diary notes and unfinished diary writing as they sync. To give your teacher a separate portfolio entry, select Share and send a progress file. Photos stay on this device.`
     : 'Local play. Your diary writing stays in this browser. You choose what to export.';
 }
 function pack(data: Data) { return btoa(strFromU8(zlibSync(strToU8(JSON.stringify(data)), {level:1}), true)); }
@@ -43,11 +43,6 @@ export function teacherWriting(data: Data): Writing[] {
   }
   for (const draft of Object.values(data.scenes ?? {})) {
     if (draft.text) rows.push({kind:'draft-note',title:draft.title,text:draft.text});
-  }
-  if (data.permanent) {
-    for (const item of migratePermanent(JSON.parse(data.permanent)).portfolio) {
-      if (item.shared) rows.push({kind:'shared-portfolio',title:item.title,text:[item.text,item.reflection].filter(Boolean).join('\n')});
-    }
   }
   return rows;
 }

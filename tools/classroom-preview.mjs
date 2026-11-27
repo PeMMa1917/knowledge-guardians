@@ -1,7 +1,10 @@
 // Loopback-only preview of the Worker routes with disposable fictional accounts.
 import {DatabaseSync} from 'node:sqlite';
 import {createServer} from 'node:http';
-import {readFile} from 'node:fs/promises';
+import {readFile,mkdtemp,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {execFileSync} from 'node:child_process';
+import {createServer as createSecureServer} from 'node:https';
 import {resolve,extname,sep} from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import worker,{verifier} from '../server/classroom.mjs';
@@ -25,13 +28,23 @@ export async function fixture() {
   }};
   return {DB,sql,password};
 }
-export async function preview(port=0) {
+async function previewCertificate() {
+  const directory=await mkdtemp(resolve(tmpdir(),'kg-class-cert-'));
+  try {
+    const key=resolve(directory,'key.pem'), cert=resolve(directory,'cert.pem');
+    execFileSync('openssl',['req','-x509','-newkey','rsa:2048','-nodes','-keyout',key,'-out',cert,'-days','1','-subj','/CN=localhost','-addext','subjectAltName=IP:127.0.0.1,DNS:localhost'],{stdio:'ignore'});
+    return {key:await readFile(key),cert:await readFile(cert)};
+  } finally {await rm(directory,{recursive:true,force:true});}
+}
+export async function preview(port=0, secure=false) {
   const {DB,sql}=await fixture();
   const base=resolve(root,'dist');
   const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.woff2':'font/woff2','.svg':'image/svg+xml','.ogg':'audio/ogg','.wav':'audio/wav'};
-  const server=createServer(async(req,res)=>{
+  const protocol=secure?'https:':'http:';
+  const server=secure?createSecureServer(await previewCertificate()):createServer();
+  server.on('request',async(req,res)=>{
     try{
-      const url=new URL(req.url,'http://127.0.0.1:'+server.address().port);
+      const url=new URL(req.url,protocol+'//127.0.0.1:'+server.address().port);
       const input=new Request(url,{method:req.method,headers:req.headers,...(['GET','HEAD'].includes(req.method)?{}:{body:req,duplex:'half'})});
       const response=await worker.fetch(input,{DB,ASSETS:{async fetch() {
         const path=resolve(base,'.'+decodeURIComponent(url.pathname==='/'?'/index.html':url.pathname));
@@ -44,9 +57,9 @@ export async function preview(port=0) {
     }catch{res.writeHead(500);res.end();}
   });
   await new Promise(resolve=>server.listen(port,'127.0.0.1',resolve));
-  return {url:'http://127.0.0.1:'+server.address().port,close:async()=>{server.closeAllConnections();await new Promise(resolve=>server.close(resolve));sql.close();}};
+  return {url:protocol+'//127.0.0.1:'+server.address().port,close:async()=>{server.closeAllConnections();await new Promise(resolve=>server.close(resolve));sql.close();}};
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href) {
-  const app=await preview(Number(process.argv[2]||8787));
+  const app=await preview(Number(process.argv.slice(2).find(arg=>/^\d+$/.test(arg))||8787),process.argv.includes('--https'));
   console.log('Disposable fictional classroom preview at '+app.url);
 }

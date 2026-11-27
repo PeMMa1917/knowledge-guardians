@@ -1,3 +1,4 @@
+import {nightWatch} from './watchBell';
 import { lanternPair } from './lanternPair';
 import { lanternInstrument } from './lanternInstrument';
 import { materialLine } from '../domain/lanternInstruments';
@@ -104,7 +105,7 @@ export function lamplightPanel(node: string, c: GameController, refresh: () => v
     content.replaceChildren(headline(bench ? site.bench : site.title),
       ...(bench && mounted ? [h('div', { class: 'lore-entry' }, h('strong', {}, mounted.person.name + ' · ' + mounted.trace.action),
         h('p', {}, mounted.use.action + '. ' + mounted.use.reply), h('p', {}, materialLine(mounted.person.id, mounted.pieces)))] : []),
-      ...(bench ? [lanternPair(c, site)] : []), h('label', {}, 'Find a guest ', filter), ...(!bench ? [h('label', {}, narrow, ' Guests I have met here')] : []), summary, rows);
+      ...(bench && (site.id === 'gate' || site.id === 'dispatch') ? [nightWatch(c,site.id)] : []), ...(bench ? [lanternPair(c, site)] : []), h('label', {}, 'Find a guest ', filter), ...(!bench ? [h('label', {}, narrow, ' Guests I have met here')] : []), summary, rows);
     draw();
   }
   box.append(content);

@@ -1,3 +1,4 @@
+import {watchEffects,type BellAction} from './watchBell';
 import { MOON_TUNE, moonPerformance, validMoonTune } from './spareMoonMusic';
 import { runNileTrial, nileDelivery, type NileRoad, type NileDelivery } from './nileModel';
 import { bendEffects, type BendAction } from './stripBend';
@@ -72,6 +73,7 @@ const DIALOGUE_FALLBACK = 999;
 import { lanternEffects, pairEffects, type LanternCommand, type LanternPairCommand } from './lamplight';
 
 export type Command =
+  | BellAction
   | LanternPairCommand
   | LanternCommand
   | { type: 'PlayMoonTune'; tune: string }
@@ -430,6 +432,9 @@ export class Engine {
             s = apply([{ setFlag: MOON_TUNE, value: cmd.tune }, { setFlag: performed, value: true }], s, out);
           break;
         }
+        case 'WorkNightWatch':
+          s = apply(watchEffects(cmd,s),s,out);
+          break;
         case 'TurnLanternGlass':
           s = apply(pairEffects(cmd, s), s, out);
           break;

@@ -39,7 +39,7 @@ const membership = `SELECT a.id, a.display, c.id AS classId, c.title AS classNam
 function cleanWriting(rows) {
   if (!Array.isArray(rows) || rows.length>20000) throw 400;
   return rows.map(row => {
-    if (!row || !['note','question','reflection','draft-note','draft-question','draft-reflection','shared-portfolio'].includes(row.kind)
+    if (!row || !['note','question','reflection','draft-note','draft-question','draft-reflection'].includes(row.kind)
         || typeof row.text !== 'string' || typeof row.title !== 'string' || row.title.length>500 || row.text.length>64000) throw 400;
     return {kind:row.kind,title:row.title,text:row.text};
   });

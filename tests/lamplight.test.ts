@@ -88,3 +88,47 @@ describe('the lamplight guest and receiving bench', () => {
     expect(() => d.run({ ...base, stage: 'use', option: 2 as 0 })).toThrow();
   });
 });
+
+describe('reversible lantern instruments and the night watch',()=>{
+  it('retains every ordered two-piece reading and permits replacement of the oldest piece',async()=>{
+    const {pinPiece,readPieces}=await import('../src/domain/lanternInstruments');
+    for(const a of [0,1,2] as const) for(const b of [0,1,2] as const) if(a!==b){
+      const order=readPieces(pinPiece([a],b));
+      expect(order).toEqual([a,b]);
+      for(const c of [0,1,2] as const) expect(readPieces(pinPiece(order,c))).toEqual(c===b?[a,b]:[b,c]);
+    }
+  });
+  it.each(LANTERN_SITES)('opens both endings after all three readings at $id',async(site)=>{
+    const {pairEffects}=await import('../src/domain/lamplight');
+    const s=new Driver().s;s.mapId=site.map;
+    const cmd={type:'TurnLanternGlass' as const,site:site.id};
+    expect(()=>pairEffects({...cmd,stage:'look',aperture:0},s)).toThrow();
+    for(const id of site.pair.guests) s.flags[lanternRef(site.id,id)+'.use']=0;
+    for(const aperture of [2,0,1] as const){
+      expect(()=>pairEffects({...cmd,stage:'mount',choice:0},s)).toThrow();
+      Object.assign(s.flags,{['lamplight-pair.'+site.id+'.seen.'+aperture]:true});
+    }
+    for(const choice of [0,1] as const) {
+      expect(pairEffects({...cmd,stage:'mount',choice},s)).toEqual([{setFlag:'lamplight-pair.'+site.id+'.mounted',value:choice}]);
+      s.flags['lamplight-pair.'+site.id+'.mounted']=choice;
+      expect(pairEffects({...cmd,stage:'mount',choice},s)).toEqual([]);
+    }
+  });
+  it('compares signal costs in one chapter and changes the recipient group in the next', async()=>{
+    const {watches,watchReading}=await import('../src/domain/watchBell');
+    const d=new Driver();d.s.mapId=watches.gate.map;
+    const gate={type:'WorkNightWatch' as const,site:'gate' as const};
+    expect(()=>d.run({...gate,stage:'leave',setting:0})).toThrow();
+    for(const i of [2,0,1]) d.run({...gate,stage:'try',setting:i});
+    expect(watchReading('gate',0)).toContain('3 dry-night calls and 0 missed');
+    expect(watchReading('gate',2)).toContain('0 dry-night calls and 2 missed');
+    for(const i of [0,1,2]) d.run({...gate,stage:'leave',setting:i});
+    expect(d.s.objectivesDone).toContain('night-watch.gate.handover');
+    d.s.mapId=watches.dispatch.map;
+    expect(()=>d.run({...gate,stage:'try',setting:0})).toThrow();
+    for(const i of [0,1]) d.run({...gate,site:'dispatch',stage:'try',setting:i});
+    for(const i of [1,0]) d.run({...gate,site:'dispatch',stage:'leave',setting:i});
+    expect(d.s.objectivesDone).toContain('night-watch.dispatch.handover');
+    expect(d.s.adventureDiary.entries.map(e=>e.text).join(' ')).toContain('4 of 6 households');
+  });
+});

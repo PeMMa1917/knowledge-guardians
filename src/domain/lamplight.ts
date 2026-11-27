@@ -1,3 +1,4 @@
+import {installWatches} from './watchBell';
 import { guestInstrument, isPiece, pinPiece, readPieces, type Piece } from './lanternInstruments';
 import letters from '../content/ink-post-letters.json';
 import roosts from '../content/ink-post-stations.json';
@@ -102,6 +103,7 @@ export function lanternQuestions(key: string) {
 }
 
 export function installLamplight(pack: ContentPack, articles: ReadonlyMap<string, string>) {
+  installWatches(pack);
   for (const site of LANTERN_SITES) {
     for (const stage of ['post', 'bench']) pack.dialogue.push({ id: 'lamplight.' + site.id + '.' + stage,
       speaker: site.host, historicalLabel: 'fictional-world', text: stage === 'post' ? site.hook : 'The keeper turns the lamp slowly. A voice comes back through the glass.' });

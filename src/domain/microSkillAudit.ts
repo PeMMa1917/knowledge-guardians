@@ -1,11 +1,12 @@
+import newSkills from '../content/research-practice-catalog.json';
 import type { ContentPack } from './types';
 import type { MicroSkillEvidence } from '../content/microSkillEvidence';
 
 export const AUDIT_AXES = ['player', 'mode', 'game', 'story', 'dok', 'fink', 'solo', 'bloom'] as const;
 export type AuditAxis = (typeof AUDIT_AXES)[number];
 
-/** The complete 1–200 HTML source and four later tables supply all 1,000 numbered definitions. */
-export const SUPPLIED_SKILL_IDS = Array.from({ length: 1000 }, (_, i) => i + 1);
+/** The HTML supplies the full first block. Six numbered blocks have been received. */
+export const SUPPLIED_SKILL_IDS = [...Array.from({ length: 1000 }, (_, i) => i + 1), ...newSkills.map(s => s.number)];
 
 export function microSkillRows(pack: ContentPack, evidence: readonly MicroSkillEvidence[]) {
   const context = new Map(pack.missions.flatMap((mission) =>

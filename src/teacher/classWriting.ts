@@ -5,7 +5,7 @@ import {clear,h} from '../ui/dom';
 type Group={id:string;title:string};
 type RecordRow={student:string;updated:string|null;entries:{kind:string;title:string;text:string}[]};
 const labels:Record<string,string>={note:'Saved note',reflection:'Saved reflection',question:'Saved question',
-  'draft-note':'Draft · note','draft-question':'Draft · question','draft-reflection':'Draft · reflection','shared-portfolio':'Shared portfolio entry'};
+  'draft-note':'Draft · note','draft-question':'Draft · question','draft-reflection':'Draft · reflection'};
 export function classWriting() {
   const panel=h('section',{class:'panel wide'},h('h2',{},'Class writing'));
   const view=h('div',{}); panel.append(view);

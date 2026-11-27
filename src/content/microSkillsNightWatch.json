@@ -1,0 +1,1012 @@
+[
+  {
+    "number": 1008,
+    "name": "Check an object’s accession number and provenance",
+    "uses": [
+      {
+        "objective": "lamplight.cold.q1395135.received",
+        "action": "Connect the two catalogued pots to their recorded places in the excavation and keep the empty space visible.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      },
+      {
+        "objective": "lamplight.nile.q1339859.received",
+        "action": "Separate the earlier surface from the later label before lighting both for the visitor.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1013,
+    "name": "Anchor a claim to the date of its source",
+    "uses": [
+      {
+        "objective": "lamplight.yard.q32729.received",
+        "action": "Compare the dated workshop receipt with later advice and decide which stage of development the other workshop may compare.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1018,
+    "name": "Cross-check a family account of an object",
+    "uses": [
+      {
+        "objective": "lamplight.nile.q266185.received",
+        "action": "Set the signed account alongside a neighbour’s memory and show which witness is still missing.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      },
+      {
+        "objective": "lamplight.cold.q76857.received",
+        "action": "Trace the handled object along its later journey and consult a local account before giving it a place.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1020,
+    "name": "Keep conflicting expert evidence in view",
+    "uses": [
+      {
+        "objective": "lamplight.voices.q352603.received",
+        "action": "Set two interviews from different visits alongside their actual questions before carrying the disputed account onward.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1021,
+    "name": "Show two readings of the same evidence",
+    "uses": [
+      {
+        "objective": "lamplight.nile.q1339859.received",
+        "action": "Move the label and light the surface so the visitor can distinguish an observation from the curator’s reading.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      },
+      {
+        "objective": "lamplight.cold.q7399969.received",
+        "action": "Keep the documented ledger entry visible while arranging clearly possible scenes around its gap.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1022,
+    "name": "Ask who can make a truth claim public",
+    "uses": [
+      {
+        "objective": "lamplight.nile.q475026.received",
+        "action": "Follow the drummer’s route, then see whose actions the official petition’s verbs permit the reader to recognize.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1023,
+    "name": "Balance certainty against the cost of acting",
+    "uses": [
+      {
+        "objective": "lamplight.coast.q81244.received",
+        "action": "Seal a prediction or mark a result that should halt the work before passing the decision to the watcher.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1024,
+    "name": "Examine how local conventions shape an objective measure",
+    "uses": [
+      {
+        "objective": "lamplight.fern.q4794782.received",
+        "action": "Keep the grower’s identification alongside the catalogue name and test which distinctions survive a folding tag.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1025,
+    "name": "Identify values behind standards of justification",
+    "uses": [
+      {
+        "objective": "lamplight.gate.q284025.received",
+        "action": "Decide what justifies a place on the last ferry when order of arrival conflicts with a promise.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1026,
+    "name": "Compare explanatory strength with confidence",
+    "uses": [
+      {
+        "objective": "lamplight.coast.q1389108.received",
+        "action": "Take a proposed account of the galaxy’s rotation to a second galaxy or seal a fresh prediction.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1027,
+    "name": "Test a truth claim from a second standpoint",
+    "uses": [
+      {
+        "objective": "lamplight.stage.q35802.received",
+        "action": "Set the two window views against a thread reference and let the next viewer recover their positions.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1028,
+    "name": "Trace who can set the terms of an interpretation",
+    "uses": [
+      {
+        "objective": "lamplight.voices.q6836249.received",
+        "action": "Follow a missing source back to the intake desk and decide how the request it failed to answer stays visible.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1029,
+    "name": "Ask what counts as evidence in this community",
+    "uses": [
+      {
+        "objective": "lamplight.chart.q1396630.received",
+        "action": "Seek the builder’s permission for a trace of the grip and compare what can be seen from paddling height.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1030,
+    "name": "Identify a value choice in an objective measure",
+    "uses": [
+      {
+        "objective": "lamplight.gate.q233950.received",
+        "action": "Swap gain and loss notices over queues with the same passenger count and watch their reception.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1031,
+    "name": "Consider who must answer for an explanation",
+    "uses": [
+      {
+        "objective": "lamplight.island.q1111386.received",
+        "action": "Lay a kitchen plan beneath the road or follow the resident and traveller separately so the time estimate has named consequences.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1032,
+    "name": "Give reasons for an interpretation",
+    "uses": [
+      {
+        "objective": "lamplight.cold.q221084.received",
+        "action": "Set the vessel pattern beside clay and settlement evidence before choosing how to present a possible reading.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1033,
+    "name": "Revisit confidence from someone else’s position",
+    "uses": [
+      {
+        "objective": "lamplight.council.q179284.received",
+        "action": "Move between the family’s chair and the servants’ door before deciding how confidently the witness can describe the hall.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1034,
+    "name": "Follow the power to retain or exclude evidence",
+    "uses": [
+      {
+        "objective": "lamplight.nile.q85102.received",
+        "action": "Compare bill, signature book and index to see whose labour is retrievable by a later visitor.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1035,
+    "name": "Distinguish truth from a persuasive explanation",
+    "uses": [
+      {
+        "objective": "lamplight.gate.q92824.received",
+        "action": "Test the competing bell and cloud stories against a dry trial before carrying the causal account onward.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1036,
+    "name": "Trace responsibilities attached to cultural knowledge",
+    "uses": [
+      {
+        "objective": "lamplight.fern.q16885749.received",
+        "action": "Put hosts in charge of the return key or arrange the findings’ return before setting an account loose.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1037,
+    "name": "Expose the grounds for a claim to objectivity",
+    "uses": [
+      {
+        "objective": "lamplight.coast.q450317.received",
+        "action": "Align the raw traces and the mirror reference so another observer can check the comparison.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1038,
+    "name": "Connect authority with accountability to affected people",
+    "uses": [
+      {
+        "objective": "lamplight.fern.q132253334.received",
+        "action": "Hand over the first question or secure a return visit so a host can change what the investigator has authority to do.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1039,
+    "name": "Compare the values behind two interpretations",
+    "uses": [
+      {
+        "objective": "lamplight.yard.q160115.received",
+        "action": "Frame the individual seed against the workshop and decide what attention the makers receive in the account.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1040,
+    "name": "Trace three interacting concepts in one case",
+    "uses": [
+      {
+        "objective": "lamplight.cold.q7399969.received",
+        "action": "Compare the ledger, loose slip and visible gap to decide how evidence, interpretation and responsibility constrain the story.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1042,
+    "name": "Trace a reported saying through its named transmitters",
+    "uses": [
+      {
+        "objective": "lamplight.nile.q242376.received",
+        "action": "Trace a report back narrator by narrator or bring an excluded reader to its context before choosing the account to carry.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      },
+      {
+        "objective": "lamplight.nile.q192124.received",
+        "action": "Lay names along both transmission routes and retain the attributions attached to their different endings.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1043,
+    "name": "Investigate a particular thing in a Neo-Confucian account",
+    "uses": [
+      {
+        "objective": "lamplight.market.q9397.received",
+        "action": "Roll the worn rim and compare that result with the water line and the marked unit in Zhu Xi’s workshop.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1056,
+    "name": "Examine how a Kerala mathematician reasoned about a series",
+    "uses": [
+      {
+        "objective": "lamplight.chart.q115590.received",
+        "action": "Assemble a finite part of the circle and carry forward either the remaining gap or the rule for continuing the construction.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1059,
+    "name": "Keep people and limits visible when interpreting a tradition",
+    "uses": [
+      {
+        "objective": "lamplight.fern.q453890.received",
+        "action": "Ask what is public and leave the authority for further explanation with the custodian.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      },
+      {
+        "objective": "lamplight.yard.q7977193.received",
+        "action": "Use a permitted practice strip or a public technique and leave the closed drawer with its maker.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1061,
+    "name": "Compare missed warnings with false alarms",
+    "uses": [
+      {
+        "objective": "night-watch.gate.handover",
+        "action": "Move the clip across recorded nights and weigh households woken in dry weather against steps flooded without a call.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1062,
+    "name": "Separate measurable risk from uncertainty with unknown odds",
+    "uses": [
+      {
+        "objective": "lamplight.coast.q108184.received",
+        "action": "Move a rule drawn from a familiar shoal into an unknown inlet and decide how far it can travel with the lookout.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1063,
+    "name": "Revisit a provisional scientific claim as evidence arrives",
+    "uses": [
+      {
+        "objective": "lamplight.yard.q88608397.received",
+        "action": "Keep the observed graph, the reviewer’s question and the possible future use distinct in what the next reader receives.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1076,
+    "name": "Compare plans across several plausible futures",
+    "uses": [
+      {
+        "objective": "lamplight.market.q377638.received",
+        "action": "Change an assumption on yesterday’s road plan or lay its cost alongside the historical route.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1083,
+    "name": "Vary a parameter and track the model’s response",
+    "uses": [
+      {
+        "objective": "night-watch.gate.handover",
+        "action": "Vary the single alarm threshold in a replay of the same six nights and examine the changed outcomes.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1088,
+    "name": "Distinguish an estimate from its range of uncertainty",
+    "uses": [
+      {
+        "objective": "lamplight.coast.q11740.received",
+        "action": "Rebuild the calculation or mark the landing band so another person can see what a single reported number hides.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1092,
+    "name": "Recalculate a rate when the counted population changes",
+    "uses": [
+      {
+        "objective": "night-watch.dispatch.handover",
+        "action": "Change the counting group from four respondents to six households and act on the difference between 4/4 and 4/6.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1097,
+    "name": "Measure how far a proxy stands from its target",
+    "uses": [
+      {
+        "objective": "lamplight.council.q28959.received",
+        "action": "Compare the tally used to reward a keeper with the arrivals it is meant to record.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1108,
+    "name": "Distinguish expertise from the power to compel",
+    "uses": [
+      {
+        "objective": "lamplight.press.q2896591.received",
+        "action": "Compare the signed version with the bare argument and the objection before choosing which reading the clerk sees.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1119,
+    "name": "Distinguish methodological doubt from anxiety",
+    "uses": [
+      {
+        "objective": "lamplight.coast.q81244.received",
+        "action": "Mark an observation that would stop a forecast, giving doubt a test another watcher can use.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1125,
+    "name": "Compare quantitative and narrative historical reasoning",
+    "uses": [
+      {
+        "objective": "lamplight.chart.q185105.received",
+        "action": "Move the account among a single storm, a series of seasonal routes and a century ledger to compare different historical explanations.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1126,
+    "name": "Read political and social histories of the same event",
+    "uses": [
+      {
+        "objective": "lamplight.council.q2744161.received",
+        "action": "Place the reign heading beside local street work and a local calendar to see whose history the sequence records.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1132,
+    "name": "Weigh excavation or sampling against future preservation",
+    "uses": [
+      {
+        "objective": "lamplight.nile.q238890.received",
+        "action": "Use the exposed section, tray and standing strip to decide what to inspect now and what to leave for another observer.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1136,
+    "name": "Weigh museum storage against living community use",
+    "uses": [
+      {
+        "objective": "lamplight.nile.q140575.received",
+        "action": "Weigh the custody slip against a community request at the crate and choose who gets the first hearing.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1140,
+    "name": "Construct a counterclaim from within one discipline",
+    "uses": [
+      {
+        "objective": "lamplight.voices.q352603.received",
+        "action": "Make one anthropologist’s interpretation answerable to another’s evidence by comparing the questions and dates of both visits.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1148,
+    "name": "Balance assertive wording with room for uncertainty",
+    "uses": [
+      {
+        "objective": "lamplight.cold.q7399969.received",
+        "action": "Place two possible scenes beside a documented gap or light the gap without filling it in.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1151,
+    "name": "Name the knower or method behind an action",
+    "uses": [
+      {
+        "objective": "lamplight.nile.q475026.received",
+        "action": "Change the petition’s verbs over the same square and see which version lets the organiser appear as an actor.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1179,
+    "name": "Surface assumptions hidden in a familiar saying",
+    "uses": [
+      {
+        "objective": "lamplight.market.q7660347.received",
+        "action": "Trace a worker’s day beyond the overseer’s count and test the assumption hidden in the notebook’s label.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1190,
+    "name": "Distinguish an imagined case from real-world evidence",
+    "uses": [
+      {
+        "objective": "lamplight.market.q377638.received",
+        "action": "Lay the imagined change beside the actual route before choosing how the next traveller may use either.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 29
+      }
+    ]
+  }
+]
