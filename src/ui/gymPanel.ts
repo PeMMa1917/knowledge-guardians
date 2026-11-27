@@ -69,7 +69,7 @@ export function gymPanel(c: GameController, sfx: (key: string) => void): HTMLEle
   // ---- Exhibition bench ---------------------------------------------------
   let prompt = BENCH_PROMPTS[0].id;
   const found = () => c.state.cards.filter((id) => c.pack.cards.some((card) => card.id === id));
-  const bench = (): HTMLElement[] => {
+  const bench = (): (HTMLElement | string)[] => {
     const p = BENCH_PROMPTS.find((x) => x.id === prompt)!;
     const plan = g.benches[prompt] ?? { objects: [], notes: {} };
     const mine = found();
