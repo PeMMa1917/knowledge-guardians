@@ -1,3 +1,4 @@
+import { reloadGame } from '../app/reloadGame';
 import { coatPanel } from './coatPocket';
 import { nightByExhibit, nightSites } from '../domain/nightRegister';
 import { nightCase, nightDesk, nightPerch } from './nightRegister';
@@ -542,7 +543,8 @@ export class UI implements UIApi {
   private saveFeedback: HTMLElement | null = null;
   private readonly leaderboardFiles: LeaderboardFile[] = [];
   private lumenBubble!: HTMLElement;
-  private onStart: () => void;
+  private readonly prepareWorld: () => Promise<void>;
+  private readonly onStart: () => void;
   private pendingChapterEnd = false;
   private seenObjectives = new Set<string>();
   private fullRings = new Set<string>();
@@ -552,7 +554,8 @@ export class UI implements UIApi {
   private activeEventNode: string | null = null;
   private stopStoryCue: (() => void) | null = null;
 
-  constructor(root: HTMLElement, onStart: () => void) {
+  constructor(root: HTMLElement, prepareWorld: () => Promise<void>, onStart: () => void) {
+    this.prepareWorld = prepareWorld;
     this.root = root;
     this.onStart = onStart;
     this.toastBox = h('div', { class: 'toasts', role: 'status', 'aria-live': 'polite' });
@@ -876,7 +879,7 @@ export class UI implements UIApi {
       c.saves.permanentLoadProblem ? h('p', { class: 'warn', role: 'alert' }, c.saves.permanentLoadProblem) : null,
       c.contentProblems.length ? h('p', { class: 'warn', role: 'alert' }, `Content problems: ${c.contentProblems.join('; ')}`) : null,
       h('div', { class: 'menu' },
-        cont ? h('button', { 'data-autofocus': true, onclick: () => { discardPendingJournalWriting(c); c.loadContinue(); this.startPlaying(true); } }, h('strong', {}, 'Continue'), h('small', {}, fmt(cont))) : null,
+        cont ? h('button', { 'data-autofocus': true, onclick: () => this.enterWhenReady(() => { discardPendingJournalWriting(c); c.loadContinue(); this.startPlaying(true); }) }, h('strong', {}, 'Continue'), h('small', {}, fmt(cont))) : null,
         rec ? h('button', { 'data-autofocus': !cont, onclick: () => this.confirmRecovery() }, h('strong', {}, 'Checkpoint recovery'), h('small', {}, fmt(rec))) : null,
         h('button', { 'data-autofocus': !cont && !rec, onclick: () => this.characterCreation() }, h('strong', {}, 'New game'), h('small', {}, cont || rec ? 'Starts a new campaign. Your awards stay.' : 'Begin as a new recruit')),
         h('button', { onclick: () => this.openModal('class-save','Class adventure',this.closeBtn(),h('h2',{},'Class adventure'),classPanel(store=>{
@@ -903,12 +906,13 @@ export class UI implements UIApi {
       h('p', {}, `This makes "${rec.label}" (${rec.location}, ${new Date(rec.savedAt).toLocaleString()}) your current game. Your current Continue save will be replaced.`),
       h('p', {}, 'Awards, concept XP and badges you already earned are kept.'),
       h('div', { class: 'row' },
-        h('button', { class: 'primary', 'data-autofocus': true, onclick: () => { if (c.loadRecovery()) { discardPendingJournalWriting(c); this.closeModal(); this.startPlaying(true); } } }, 'Restore'),
+        h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.enterWhenReady(() => { if (c.loadRecovery()) { discardPendingJournalWriting(c); this.startPlaying(true); } }) }, 'Restore'),
         h('button', { onclick: () => this.closeModal() }, 'Cancel')));
     void box;
   }
 
   private characterCreation(): void {
+    void this.prepareWorld().catch(() => { /* The Begin button can retry while the chosen look is still here. */ });
     clear(this.root); this.root.append(this.toastBox);
     const lookPick = this.lookPicker(PLAYER_LOOKS[0]);
     const name = h('input', { id: 'pname', maxlength: '24', value: '', placeholder: 'Your Guardian name', autocomplete: 'off', 'data-autofocus': true }) as HTMLInputElement;
@@ -923,9 +927,11 @@ export class UI implements UIApi {
       }));
     const start = () => {
       const n = name.value.trim() || 'Recruit';
-      discardPendingJournalWriting(ctx.controller);
-      ctx.controller.newGame(n.slice(0, 24), lookPick.value(), { pronouns: pron.value(), origin });
-      this.startPlaying(false);
+      this.enterWhenReady(() => {
+        discardPendingJournalWriting(ctx.controller);
+        ctx.controller.newGame(n.slice(0, 24), lookPick.value(), { pronouns: pron.value(), origin });
+        this.startPlaying(false);
+      });
     };
     name.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.repeat) start(); });
     const box = h('div', { class: 'title-screen create' },
@@ -1078,6 +1084,32 @@ export class UI implements UIApi {
           if (changed) ctx.world?.applySettings();
         } }, 'Save'),
         h('button', { onclick: () => this.closeModal() }, 'Cancel')));
+  }
+
+  private enterWhenReady(enter: () => void): void {
+    const status = h('p', {role: 'status'}, 'Opening the map…');
+    const back = h('button', {type:'button', 'data-autofocus':true, onclick:()=>this.closeModal()}, 'Back');
+    const box = this.openModal('map-loading', 'Opening the map', h('h2',{},'Opening the map'), status, back);
+    const tryOpening = async () => {
+      try {
+        await this.prepareWorld();
+      } catch {
+        if (!box.isConnected) return;
+        status.textContent = 'The map could not finish loading. Check your connection and try again.';
+        const retry = h('button', {type:'button', onclick:()=>{
+          retry.disabled = true;
+          status.textContent = 'Opening the map…';
+          void tryOpening();
+        }}, 'Try again');
+        box.replaceChildren(h('h2',{},'Opening the map'), status, retry, back, h('button',{type:'button',onclick:reloadGame},'Reload the game'));
+        retry.focus();
+        return;
+      }
+      if (!box.isConnected) return;
+      this.closeModal(false);
+      enter();
+    };
+    void tryOpening();
   }
 
   private startPlaying(returning: boolean): void {

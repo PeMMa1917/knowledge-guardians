@@ -146,3 +146,9 @@ The tea seller, Maren and Venn each have two recipients for a piece of fieldwork
 | Assessment and family reviewers | Each receipt can be found with subject and concept filters, with optional private or class-mode reflection as disclosed. | Sending a second slip should preserve what the earlier recipient relied on. The saved diary records both deliveries. |
 
 A long-save comparison used 6,000 earlier entries, six warm-up pairs and 120 measured pairs of turn-and-pull commands in Node on the same Linux host. Median time per pair went from about 53 ms to 5 ms and the 95th percentile went from 107 ms to 31 ms. Other work was running on the host. Browser frame rate and physical-device results require separate measurement. [State-preservation checks](../../tests/long-save.test.ts)
+
+### First visit on a slow connection
+
+A Chromium mobile viewport at 390 × 844 used a fresh browser context for each visit, a gzip server, 100 ms network latency, 4 Mbit/s download and 3× CPU throttling. Across three alternating cold visits per build, median time to a laid-out title fell from 11.68 s to 0.39 s. Median time to the interactive menu fell from 11.68 s to 8.84 s. Encoded JavaScript transferred by menu readiness fell from 2,562,311 bytes to 2,222,216 bytes. A real school network and a physical handset still need observation. [Startup implementation](../../src/arrival.ts)
+
+All three browser engines opened Settings before creating the game canvas. They interrupted a required tile download, went back to the chosen Guardian name, retried, entered the story and resumed a saved game with a single canvas. They also recovered a failed application download from the opening page. The WebKit check uncovered a cached download failure after refresh. It now requests new module URLs on recovery. [Browser journey](../../tools/smoke-arrival.mjs)

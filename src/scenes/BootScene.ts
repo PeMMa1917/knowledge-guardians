@@ -34,6 +34,10 @@ export const CHARACTER_SHEETS = [
 ];
 
 export class BootScene extends Phaser.Scene {
+  private readonly missingPictures = new Set<string>();
+  private readonly markMissing = (file: Phaser.Loader.File) => {
+    if (file.type === 'image' || file.type === 'spritesheet') this.missingPictures.add(file.key);
+  };
   private readonly pendingMusic = new Map<string, Promise<boolean>>();
 
   constructor() { super('boot'); }
@@ -85,11 +89,17 @@ export class BootScene extends Phaser.Scene {
     for (const id of CHARACTER_SHEETS) {
       this.load.spritesheet(`char.${id}`, `assets/art/generated/characters/${id}.png`, { frameWidth: CHAR_FRAME.w, frameHeight: CHAR_FRAME.h });
     }
-    this.load.on('loaderror', (f: Phaser.Loader.File) => console.warn('Could not load', f.key));
+    this.missingPictures.clear();
+    this.load.on('loaderror', this.markMissing);
+    this.load.once(Phaser.Loader.Events.COMPLETE, () => this.load.off('loaderror', this.markMissing));
   }
 
   create(): void {
     this.children.removeAll(true); // remove the loading bar
+    if (this.missingPictures.size) {
+      this.game.events.emit('boot-failed');
+      return;
+    }
     // Named frames for every stamp on the tile sheets.
     for (const [name, s] of Object.entries(STAMPS)) {
       const tex = this.textures.get(s.sheet);

@@ -39,10 +39,50 @@ function teacherContent(): Plugin {
   };
 }
 
+// This self-contained function runs in the browser, before modulepreload or import.
+function installRecoveryMap(files: string[]): void {
+  const page = new URL(location.href);
+  const revision = page.searchParams.get('kg_reopen');
+  if (!revision || !/^\d{1,16}$/.test(revision)) return;
+  const imports: Record<string, string> = {};
+  for (const path of files) {
+    const from = new URL(path, document.baseURI);
+    const retry = new URL(from);
+    retry.searchParams.set('kg_reopen', revision);
+    imports[from.href] = retry.href;
+  }
+  const map = document.createElement('script');
+  map.type = 'importmap';
+  map.textContent = JSON.stringify({imports});
+  document.head.append(map);
+  page.searchParams.delete('kg_reopen');
+  history.replaceState(history.state, '', page);
+}
+
+// Install the recovery map before any module loads. Imported chunks and their
+// importers must share the same fresh URL or a second controller could start.
+function recoverDownloads(): Plugin {
+  return {
+    name: 'knowledge-guardians-recover-downloads',
+    apply: 'build',
+    transformIndexHtml: {
+      order: 'post',
+      handler(_, { bundle, path }) {
+        if (!bundle || !path.endsWith('/index.html')) return;
+        const files = Object.values(bundle).flatMap(chunk =>
+          chunk.type === 'chunk' && !chunk.isEntry && !chunk.name.includes('modulepreload')
+            ? ['./' + chunk.fileName] : []);
+        return [{tag: 'script', injectTo: 'head-prepend',
+          children: '(' + installRecoveryMap.toString() + ')(' + JSON.stringify(files) + ')'}];
+      },
+    },
+  };
+}
+
 // base './' lets the build run from any folder or a GitHub Pages sub-path.
 export default defineConfig({
   base: './',
-  plugins: [teacherContent()],
+  plugins: [teacherContent(), recoverDownloads()],
   build: { target: 'es2022', chunkSizeWarningLimit: 2000, rollupOptions: { input: { main: 'index.html', teacher: 'teacher.html' } } },
   test: { environment: 'node', include: ['tests/**/*.test.ts'] },
 } as any);

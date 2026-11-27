@@ -1,8 +1,14 @@
 # Status and next steps
 
+## 27 November • Opening the game on the school connection
+
+A readable title appears while the game menu downloads. Students can open Settings or class sign-in before the map renderer loads. Interrupting a required map download offers a retry and preserves the Guardian name already entered. On the simulated mobile connection the median interactive-menu time fell by 2.84 seconds in three cold runs per build. [Measured conditions and recovery tests](docs/audit/NIGHT_REGISTER.md#first-visit-on-a-slow-connection)
+
 ## 27 November • The breakfast shelf, the tower button and Venn’s father
 
 Hesper has opened the test stand by the forge. Try both mounting faces on a rain gauge, a plumb line or a pen. Down at the bridge a decision about the rain record lets a child reach the breakfast cups or brings an upstream watch to its post. Maren can put a new ringer on duty or ask a stoneworker to check above the door. Venn can keep his father’s signed memory beside a worn date. Each handover comes back to the Lamp Wall. [Three workshops](src/content/makerTrials.ts) · [Route and recovery tests](tests/maker-field.test.ts)
+
+All 2,614 automated tests in 317 files passed at this checkpoint. Chromium, Firefox and WebKit each used the actual gather points, tested all three tools, handed every field record to both recipients and opened their replies at the Lamp Wall.
 
 Players can put both measurement limits on a field slip and see how wide the resulting claim becomes. The audit now verifies 552 of 1,200 skills and 1,243 skill-to-action links. Two of the 10,729,248 world, learning and RPG intersections meet the ten-action target and 679 have one to nine. [Skill evidence](src/content/microSkillsMakerField.json) · [Coverage audit](docs/CROSS_WEAVE_AUDIT.md)
 

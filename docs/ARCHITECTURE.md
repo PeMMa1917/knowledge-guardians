@@ -34,6 +34,12 @@ This document tells you how the code fits together. Read [AGENTS.md](../AGENTS.m
 
 The important rule: **game rules live only in `src/domain/`**. The UI and the scenes send commands and show results. They do not change state directly. This makes the rules testable without a browser (`tests/playthrough.test.ts` plays every route).
 
+## Entering an adventure
+
+The initial HTML and a small stylesheet render a readable title as soon as the page arrives. The menu then opens the saved slots, device settings and optional class sign-in. Character creation starts loading the Phaser world while the player chooses a name and appearance. Continue and recovery load it on request. An unavailable map picture keeps the current selection visible and provides a retry before a new campaign or checkpoint is written. Effects and music can finish loading after the map is ready. [Entry](../src/arrival.ts) · [World startup](../src/app/worldRuntime.ts) · [Download interruption journey](../tools/smoke-arrival.mjs)
+
+WebKit can retain a failed module request across a normal refresh. The reload control requests a fresh revision of same-origin game chunks. The release page installs the corresponding module URLs before any import so the world and its interface use one controller. [Hosting build](../vite.config.ts)
+
 ## Commands and events
 
 Every player action is a typed command (see `Command` in `src/domain/engine.ts`):
