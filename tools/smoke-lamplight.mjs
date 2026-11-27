@@ -1,3 +1,5 @@
+import { playGuestChapters } from './guest-chapters-journey.mjs';
+import { playVaultWatch } from './vault-watch-journey.mjs';
 import { playMillShift } from './mill-shift-journey.mjs';
 import { playMakerField } from './maker-field-journey.mjs';
 import { playPocketCoat } from './pocket-coat-journey.mjs';
@@ -47,12 +49,12 @@ async function use(id) {
     if (!p || (p.visibleIf && !c.check(p.visibleIf))) return;
     const sx = Math.floor(w.player.sprite.x / 16),
       sy = Math.floor(w.player.sprite.y / 16);
-    for (const [x, y, facing] of [
-      [p.x, p.y + 1, 'up'],
-      [p.x - 1, p.y, 'right'],
-      [p.x + 1, p.y, 'left'],
-      [p.x, p.y - 1, 'down'],
-    ]) {
+    const sides = [];
+    const width = p.w ?? 1, height = p.h ?? 1;
+    for (let col = p.x; col < p.x + width; col++) sides.push([col, p.y+height, 'up']);
+    for (let row = p.y; row < p.y + height; row++) sides.push([p.x-1, row, 'right'], [p.x+width, row, 'left']);
+    for (let col = p.x; col < p.x + width; col++) sides.push([col, p.y-1, 'down']);
+    for (const [x, y, facing] of sides) {
       if (w.collides(x * 16 + 8, y * 16 + 12) || w.bfs(sx, sy, x, y) === null) continue;
       w.player.sprite.setPosition(x * 16 + 8, y * 16 + 12);
       w.player.facing = facing;
@@ -88,7 +90,15 @@ try {
   const coatOnly = process.argv.includes('--shift-coat');
   const makerOnly = process.argv.includes('--maker-tools');
   const millOnly = process.argv.includes('--mill-shift');
-  if(millOnly) await playMillShift({page,engine,waitMap,use,close});
+  const vaultOnly=process.argv.includes('--vault-watch');
+  const guestIndex=process.argv.indexOf('--guest-route');
+  if(guestIndex!==-1){
+    const index=Number(process.argv[guestIndex+1]),guest=people[index];
+    assert.ok(Number.isInteger(index)&&guest,'Pass a historical guest index from 0 to '+(people.length-1));
+    await playGuestChapters({page,engine,guest,index,posts,sites,button,use,close,waitMap});
+  }
+  else if(vaultOnly) await playVaultWatch({page,engine,waitMap,use,close,button});
+  else if(millOnly) await playMillShift({page,engine,waitMap,use,close});
   else if (makerOnly) await playMakerField({page,engine,waitMap,use,close});
   else if (coatOnly) await playPocketCoat({page,engine,posts,sites,people,waitMap,use,close,button});
   else if (registerOnly) await playNightRegister({page,engine,waitMap,use,close,button,posts,works:load('night-register.json'),trails:load('night-trails.json')});
@@ -146,7 +156,7 @@ try {
     faults.filter((s) => !s.includes('favicon')),
     [],
   );
-  console.log(engine, browser.version(), millOnly ? 'passed the six-counter mill and both earned passages' : makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
+  console.log(engine, browser.version(), guestIndex!==-1 ? 'passed both encounters in all 15 chapters and restored the guest’s work' : vaultOnly ? 'passed the six vault instruments, weir and council handover' : millOnly ? 'passed the six-counter mill and both earned passages' : makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
 } finally {
   await browser.close();
 }

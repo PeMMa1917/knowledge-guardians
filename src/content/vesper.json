@@ -72,7 +72,7 @@
   {
    "id": "item.brass-lamp",
    "name": "Small brass lamp",
-   "description": "Left in the dust when the Hollow Archivist fell. Plain, old, and warm to hold. Elsbet's, probably. Its light is very gentle, and very close.",
+   "description": "Elsbet’s plain brass lamp fits in a warm hand. It brings out the fold between an old record and a later line. There is a table for it at the Old Weir.",
    "historicalLabel": "fictional-world",
    "art": "icon.lamp"
   }
@@ -164,12 +164,18 @@
    "text": "In the lamp's warm light, the scraped line comes back, letter by letter: 'Tested only in a dry year. Not tested in flood. Do not say safe.' Under it, in the small hand you know from the study: 'Last checked by Elsbet Varro. Not yet corrected. I am sorry, Ise. I am sorry, Vesper. E.' The hall is very quiet. Somewhere, a music box plays Elsbet's tune.",
    "historicalLabel": "fictional-world",
    "options": [
+    {"text":"Show Vesper where the inquiry’s red line crosses the fold.","if":{"flag":"weir-lamp.to","eq":"inquiry"},"next":"vesper.weir-inquiry"},
+    {"text":"Show Vesper the margin the next watch can still fill.","if":{"flag":"weir-lamp.to","eq":"watch"},"next":"vesper.weir-watch"},
     {
      "text": "Go on.",
      "next": "vesper.choose"
     }
    ]
   },
+  {"id":"vesper.weir-inquiry","speaker":"vesper-quill","historicalLabel":"fictional-world",
+   "text":"Vesper holds his finger over the red line where it reaches the later sheet. “I can sell you a perfect warning if you let me write it after the flood.” He puts his finger away. “Leave the fold where the families can find it. They deserve a chance to ask who heard what.”","next":"vesper.choose"},
+  {"id":"vesper.weir-watch","speaker":"vesper-quill","historicalLabel":"fictional-world",
+   "text":"“They left room for a signature?” Vesper twists his price ring until the mark is on the inside. “I once made a living filling spaces like that. Leave this one for the person who goes down to the boards.” He makes the hearing clerk move her finger off the margin.","next":"vesper.choose"},
   {
    "id": "vesper.nolamp",
    "speaker": "vesper-quill",

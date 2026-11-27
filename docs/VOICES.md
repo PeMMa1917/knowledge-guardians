@@ -490,3 +490,8 @@ Each person's morning can change after the Guardian has heard the consequences o
 - **Why:** She was the apprentice before Liri. She still has the drawing she almost trimmed to fit the book.
 
 At these registers Ostrom asks who was able to enter a mark in each book. Pearl asks a keeper to leave the four holes where they are while the crew and wheel change. Trouillot follows Tessel’s name from the first slip to the line of type. Each has a different job for the Guardian and a different reason to care about what reaches the press. [Register dialogue](../src/content/millShift.ts)
+
+
+#### The Hollow Archivist under Elsbet’s study
+
+The mark on its face identifies who kept the box. It has taken that duty as its name for ten years. Its first words come from stamp pads and labels. The first story it volunteers is about a woman it knew who worked nights. When a visitor moves the second chair it notices the uneven leg. If the Guardian takes the lamp upstairs, it asks somebody to describe the weather. Each request lets it keep a job and gives another person a reason to return. [The six stations](../src/content/vaultNight.ts)

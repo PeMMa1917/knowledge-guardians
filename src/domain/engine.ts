@@ -1,3 +1,5 @@
+import {useWeirLamp,type WeirLampCommand} from './weirLamp';
+import { workVault,openedVaultSeal,advancedVaultPhase,type VaultCommand } from './vaultWork';
 import { millEffects, type MillCommand } from './millShift';
 import { makerEffects, type MakerCommand, type FieldCommand } from './makerField';
 import { coatEffects, type PocketCommand } from './pocketCoat';
@@ -137,6 +139,8 @@ export type Command =
   | { type: 'Barter'; resource: string; dir: 'buy' | 'sell' }
   | { type: 'CompareDyePrices' }
   | { type: 'ChooseRole'; role: string }
+  | WeirLampCommand
+  | VaultCommand
   | { type: 'DisarmSeal'; seal: string; choice: number }
   | { type: 'BossMove'; choice: number }
   | { type: 'FinishFieldGame'; game: string }
@@ -602,12 +606,18 @@ export class Engine {
           }
           break;
         }
+        case 'UseWeirLamp':
+          s=apply(useWeirLamp(s,cmd),s,out);
+          break;
+        case 'WorkVault':
+          s=apply(workVault(s,cmd),s,out);
+          break;
         case 'DisarmSeal': {
           const x = SEALS.find((y) => y.id === cmd.seal);
           if (!x) throw new Error('Unknown seal');
           const o = x.options[cmd.choice];
           if (!o) throw new Error('Choose an answer');
-          if (o.ok && s.flags[`trap.${x.id}.open`] !== true) s = apply([{ setFlag: `trap.${x.id}.open`, value: true }, { setFlag: `meet.fray.${x.fray}`, value: true }, { addMarks: 2 }], s, out);
+          if (o.ok) s=apply(openedVaultSeal(s.flags,x),s,out);
           events.push({ kind: 'seal', seal: x.id, ok: o.ok, why: o.why });
           break;
         }
@@ -634,7 +644,7 @@ export class Engine {
           if (!o) throw new Error('Choose an answer');
           const done = o.ok && ph + 1 >= BOSS.phases.length;
           s = apply(o.ok
-            ? [{ setFlag: `boss.${BOSS.id}.phase`, value: ph + 1 }, { setFlag: `meet.fray.${p.fray}`, value: true }, ...(done ? [{ setFlag: 'undercroft.done', value: true }, { addMarks: 10 }, { giveItem: 'item.brass-lamp' }] as Effect[] : [])]
+            ? advancedVaultPhase(ph)
             : [{ addNum: `boss.${BOSS.id}.hollow`, by: 1 }], s, out);
           events.push({ kind: 'boss', phase: ph, ok: o.ok, why: o.why, done });
           break;

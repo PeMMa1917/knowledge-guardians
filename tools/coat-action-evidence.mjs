@@ -5,6 +5,7 @@ import skills from '../src/content/microSkillsCoat.json' with { type: 'json' };
 const actions = new Map();
 for (const skill of skills)
   for (const use of skill.uses) {
+    if (!use.objective.startsWith('coat.')) continue;
     const key = use.objective,
       site = key.split('.')[1];
     if (!actions.has(key))

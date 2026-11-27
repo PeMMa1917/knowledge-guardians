@@ -12,6 +12,9 @@ import type { CampaignState, ContentPack, Effect, Hint, Weave } from './types';
 
 export const LANTERN_PEOPLE = [...letters, ...people];
 export type LanternPerson = (typeof LANTERN_PEOPLE)[number];
+export function lanternSource(person: LanternPerson) {
+  return ('station' in person ? 'HIS-INK-' : 'HIS-LAMPLIGHT-') + person.id;
+}
 export const LANTERN_SITES = workshops.map((site) => {
   const roost = roosts.find(({ id }) => id === site.id)!;
   return { ...site, world: roost.world, map: roost.map, place: roost.place, host: roost.host, postAt: roost.at };

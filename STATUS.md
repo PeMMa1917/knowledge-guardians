@@ -1,5 +1,10 @@
 # Status and next steps
 
+## 27 November • The keeper who stayed
+
+In Elsbet’s vault a child, a binder and a gardener can each go through a different shutter. Three echoes lead to one bell. A missing flood night changes the odds of a dry crossing. At the last rail the Hollow Archivist wants to learn whether Elsbet trusted it. After the handover, its index preserves each decision. At the Old Weir the same lamp can expose where the inquiry clerk drew back across a fold. The Guardian’s chosen recipient changes what Vesper says at the Council. [Vault instruments](src/ui/vaultWork.ts) · [World and save tests](tests/vault-work.test.ts)
+
+
 ## 27 November • A chapter map before class
 
 The teacher dashboard opens a printable map of all 15 chapters. Each chapter has a main-route decision, a consequence to look for and a discussion question. Additional activities can be filtered by subject, concept, area or theme, framework, DOK, Bloom, Fink and SOLO. Combined filters apply to one action. The map uses public game records and opens without signing in or loading student writing. Both titles link to a school and family guide to device saves, class recovery, diary audiences and separate portfolio sharing. [Chapter map](src/teacher/chapterMap.ts) · [School guide](public/schools.html)
@@ -8,7 +13,7 @@ The teacher dashboard opens a printable map of all 15 chapters. Each chapter has
 
 In the Nile pay room, the porter who kept the boards dry can finish the same shift with three counters or an empty bowl. At the Metalworks, the Guardian can try all four bells with the apprentice’s tooth and the porter’s help. In the City of Copies, the workers get to read what the Guardian put in print. Opening a public proof at the wheel uncovers the workers’ stair. Opening a folded letter in the pay room uncovers the letter chute. Each worker keeps the edition they opened, even if Bayette prints a different one tomorrow. [Three registers](src/content/millShift.ts) · [Playable routes](tests/mill-shift.test.ts)
 
-The current skill review has 556 of 1,200 definitions linked to 1,247 authored actions or uses, including 350 skills in multiple worlds. The cross-world audit found 20 explicit comparisons of how two areas establish and limit the same claim. Of the 10,729,248 world, learning dimension and RPG element intersections, two meet the ten-action target and 737 have one to nine documented actions. [Skill evidence](docs/TOK_MICRO_SKILLS.md) · [Coverage audit](docs/CROSS_WEAVE_AUDIT.md)
+The current skill review has 559 of 1,200 definitions linked to 1,251 authored actions or uses, including 350 skills in multiple worlds. The cross-world audit found 21 explicit comparisons of how two areas establish and limit the same claim. Of the 10,729,248 world, learning dimension and RPG element intersections, two meet the ten-action target and 758 have one to nine documented actions. [Skill evidence](docs/TOK_MICRO_SKILLS.md) · [Coverage audit](docs/CROSS_WEAVE_AUDIT.md)
 
 ## 27 November • Opening the game on the school connection
 

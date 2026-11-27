@@ -206,6 +206,21 @@
         ],
         "game": 158,
         "story": 74
+      },
+      {
+        "objective": "vault-work.chosen.left",
+        "action": "Compare the tabbed nights with an unselected run containing an overtopped board and a lost line. File a record that lets a new reader see which cases survived the old index.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 91
       }
     ]
   },

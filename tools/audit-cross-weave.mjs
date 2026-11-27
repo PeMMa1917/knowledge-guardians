@@ -143,6 +143,42 @@ const copiesEvidenceInvestigations = [
 const proofRows = [
   ...coatProofs,
   {
+    objective:'vault-work.twogates.left',map:'aethelgard.undercroft',target:'seal-twogates',
+    source:'tests/vault-work.test.ts',anchor:'leaves any of eight arrangements',
+    action:'Record both states of the shared chain. Lift its link, move one shutter independently, and entrust the actual resulting admission arrangement to a visitor or the porter.',
+    reasoning:[{mode:'deductive',basis:'A mixed arrangement supplies a counterexample to the claim that all three callers must pass together or all wait.'}],
+    dimensions:['micro:96','concept:power','framework:scope','subject:global-politics'],elements:['game:234'],
+  },
+  {
+    objective:'vault-work.chosen.left',map:'aethelgard.undercroft',target:'seal-chosen',
+    source:'tests/vault-work.test.ts',anchor:'requires the unselected run of nights',
+    action:'Move a frame away from the three dry tabs. It uncovers an overtopped board and a torn gauge reading at specified dates. The ferry crew receives the book or a list of the omissions.',
+    reasoning:[{mode:'inductive',basis:'Three selected dry crossings make the general claim look strong. A wet night counters the generalisation, and the torn leaf reduces the basis for a numerical estimate.'}],
+    dimensions:['micro:302','concept:evidence','framework:methods-and-tools','subject:history'],elements:['game:267'],
+  },
+  {
+    objective:'vault-work.promise.left',map:'aethelgard.undercroft',target:'archivist',
+    source:'tests/vault-work.test.ts',anchor:'gives each chair a fair hearing',
+    action:'Unfold the conditions on Elsbet’s sentence and hear what each person fears from the other chair. The two readings change who gets a seat and who carries the lamp to the morning watch.',
+    dimensions:['micro:113','concept:perspective','framework:ethics','subject:theatre'],elements:['story:95'],
+  },
+  {
+    objective:'weir-lamp.to',map:'water.gatehouse',target:'weir-lamp-table',
+    source:'tests/vault-work.test.ts',anchor:'lets a returning keeper use a legacy lamp',
+    action:'Overlay the dry-year folder and the later inquiry. Find where the red pencil crosses the fold between dates, then let the watch or the families carry that limitation into the hearing.',
+    dimensions:['micro:1069','concept:interpretation','framework:methods-and-tools','subject:history'],elements:['game:267'],
+  },
+  {
+    objective:'weir-lamp.compared-first-peg',map:'water.gatehouse',target:'weir-lamp-table',
+    source:'tests/vault-work.test.ts',anchor:'carries the earlier forecast to both possible council recipients',
+    action:'Compare the preserved personal expectation made before the crossing leaves were opened with the red line drawn on the inquiry after the flood. Retain the two different ways of dating a judgement for the hearing.',
+    comparison:{concepts:['certainty','interpretation'],framework:['methods-and-tools','scope'],
+      areas:[{id:'HUM',method:'Record the player’s forecast in advance, reveal both outcomes, then record a new forecast while retaining the first.',limit:'This individual pair of predictions can expose a change for this watcher. It cannot establish a general psychological effect.'},
+        {id:'HIS',method:'Establish the relative dates of the watch’s question and the inquiry’s pencil from their placement on two dated sheets.',limit:'The later annotation dates the reader’s hindsight. Its presence cannot show who read the earlier question at the time.'}],
+      connection:'Each method restricts what can be attributed to an earlier knower. The recipient sees which information existed before the reveal and what was supplied after.'},
+    dimensions:['concept:certainty','concept:interpretation','framework:methods-and-tools','framework:scope','area:HUM','area:HIS','subject:psychology','subject:history'],elements:['game:267'],
+  },
+  {
     objective: 'mill-shift.nile.compared', map: 'night-register.nile', target: 'mill-shift.nile',
     source: 'tests/mill-shift.test.ts', anchor: 'reaches every conserved division of six counters',
     action: 'Refill the same three bowls from the gate book and the signed piece book. The porter worked three bells and carries no stamp.',

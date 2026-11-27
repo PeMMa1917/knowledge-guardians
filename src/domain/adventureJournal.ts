@@ -1,3 +1,6 @@
+import {weirLampDiary} from './weirLamp';
+import {vaultDiary} from './vaultWork';
+import {vaultWeave,vaultStations,weirLampWeave} from '../content/vaultNight';
 import { millDiary } from './millShift';
 import { millSites, millWeave } from '../content/millShift';
 import { makerWeave } from '../content/makerMissions';
@@ -11,7 +14,7 @@ import { registerWeave } from '../content/nightCollection';
 import {lastBellDiary} from './lastBell';
 import {watches,watchReading,watchEnding} from './watchBell';
 import { guestInstrument, materialLine } from './lanternInstruments';
-import { LANTERN_SITES, lanternCase, lanternRead, lanternRef, lanternTopics, tracingBasis } from './lamplight';
+import { LANTERN_SITES, lanternCase, lanternRead, lanternRef, lanternSource, lanternTopics, tracingBasis } from './lamplight';
 import { inkDiaryTopics } from './inkPost';
 import { neighbourJournalTopics } from './neighbours';
 import { moonBeatNames, moonPerformance } from './spareMoonMusic';
@@ -132,6 +135,8 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
+  if(cmd.type==='UseWeirLamp') return weirLampDiary(next,cmd);
+  if (cmd.type === 'WorkVault') return vaultDiary(next,cmd);
   if (cmd.type === 'WorkMillShift') return millDiary(next,cmd);
   if (cmd.type === 'WorkMakerInstrument' || cmd.type === 'WorkTownReading') return makerDiary(next,cmd);
   if (cmd.type === 'WorkCoatPocket') return coatDiary(cmd, previous, next);
@@ -161,26 +166,27 @@ function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignS
     if (!pair) return;
     const { site, person } = pair, now = lanternRead(next, site, person), then = lanternRead(previous, site, person);
     const key = 'lantern:' + ref + ':' + cmd.stage;
+    const sources = {sourceIds: [lanternSource(person)]};
     if (cmd.stage === 'meet' && now.met && !then.met) return diaryEvent(key, 'conversation', ref, person.title,
-      'I called ' + person.name + ' to the post at ' + site.place + '. ' + person.name + ' said, “' + person.opening + '”');
+      'I called ' + person.name + ' to the post at ' + site.place + '. ' + person.name + ' said, “' + person.opening + '”', sources);
     if (cmd.stage === 'recall') {
       const earlier = tracingBasis(next, ref);
       if (!earlier || (next.flags[ref + '.basis'] === previous.flags[ref + '.basis'] && now.pieces.join('') === then.pieces.join(''))) return;
       return diaryEvent(key + ':' + earlier.site.id + ':' + earlier.value, 'tool', ref, person.title,
-        'I unpacked my tracing from ' + earlier.site.place + ' with ' + person.name + '. ' + materialLine(person.id, earlier.pieces), {}, 'after-break');
+        'I unpacked my tracing from ' + earlier.site.place + ' with ' + person.name + '. ' + materialLine(person.id, earlier.pieces), sources, 'after-break');
     }
     if (cmd.stage === 'pin' && now.pieces.join('') !== then.pieces.join('')) {
       const piece = guestInstrument(person.id)!.pieces[cmd.piece];
       return diaryEvent(key + ':' + now.pieces.join(''), 'tool', ref, person.title,
-        'I tried the ' + piece.label + ' with ' + person.name + '. ' + piece.reading);
+        'I tried the ' + piece.label + ' with ' + person.name + '. ' + piece.reading, sources);
     }
     if (cmd.stage === 'trace' && now.trace !== undefined && now.trace !== then.trace) return diaryEvent(key + ':' + now.trace, 'tool', ref, person.title,
-      'With ' + person.name + ', I tried “' + person.folds[now.trace].action + '”. I carried our tracing towards ' + site.bench + '.');
+      'With ' + person.name + ', I tried “' + person.folds[now.trace].action + '”. I carried our tracing towards ' + site.bench + '.', sources);
     if (cmd.stage === 'use' && now.trace !== undefined && now.use !== undefined &&
         (now.use !== then.use || next.flags['lamplight.' + site.id + '.shown'] !== previous.flags['lamplight.' + site.id + '.shown'])) {
       return diaryEvent(key + ':' + now.trace + ':' + now.use, 'choice', ref, site.title,
         'I met ' + person.name + ' again at ' + site.bench + '. “' + person.folds[now.trace].arrival + '” I chose “' +
-        site.uses[now.use].action + '”. ' + site.uses[now.use].reply + ' In our tracing: ' + materialLine(person.id, now.pieces));
+        site.uses[now.use].action + '”. ' + site.uses[now.use].reply + ' In our tracing: ' + materialLine(person.id, now.pieces), sources);
     }
     return;
   }
@@ -515,6 +521,8 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
       const site = millSites.find(key => event.ref.split('.')[1] === key);
       if (site) return diaryTopics(millWeave(site));
     }
+    if(family==='weir-lamp') return diaryTopics(weirLampWeave);
+    if(family==='vault') { const station=vaultStations.find(id=>event.ref==='vault.'+id); if(station) return diaryTopics(vaultWeave(station)); }
     if (family === 'maker-trial' || family === 'maker-field') {
       const trial = makerTrialForTool(event.ref.slice('maker.'.length));
       if (trial) return diaryTopics(makerWeave(trial.tool, family === 'maker-trial' ? 'fit' : event.key.includes(':limits:') ? 'compared-bounds' : 'recipient'));
@@ -556,11 +564,13 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
   return {
     name: state.player.name,
     entries: entries.map((entry) => {
-      const encyclopedia = encyclopediaForDiaryEvent(pack, entry.event);
+      const historical = entry.event?.key.startsWith('lantern:') && !entry.event.sourceIds?.length ? lanternCase(entry.event.ref) : undefined;
+      const event = historical && entry.event ? {...entry.event, sourceIds:[lanternSource(historical.person)]} : entry.event;
+      const encyclopedia = encyclopediaForDiaryEvent(pack, event);
       const specimen = entry.event && exhibits.get(entry.event.ref)?.specimen;
       const specimenReference = specimen && entry.event?.sourceIds?.includes(specimen.source) ? specimen.key : undefined;
       const topics = linkedTopics(entry);
-      return { ...entry, ...(encyclopedia && { encyclopedia }), ...(topics && { topics }), ...(specimenReference && { specimenReference }),
+      return { ...entry, ...(event && {event}), ...(encyclopedia && { encyclopedia }), ...(topics && { topics }), ...(specimenReference && { specimenReference }),
         reflections: journalReflections(state.adventureDiary, entry.id, diaryQuestions(entry, state.adventureDiary.reflectionResponses?.[entry.id])) };
     }),
     notes,

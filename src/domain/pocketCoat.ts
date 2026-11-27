@@ -1,3 +1,4 @@
+import { lanternSource } from './lamplight';
 import { coatMargins } from '../content/coatMargins';
 import { coatSlip, mountedCoatSlips, openedCoatSlip, slipFlag } from './coatTracing';
 import { pocketStories } from '../content/pocketStories';
@@ -226,7 +227,7 @@ export function coatDiary(cmd: PocketCommand, previous: State, state: State) {
         '. ' +
         coatMargins[id][cmd.reading];
     }
-    const source = ('station' in slip.person ? 'HIS-INK-' : 'HIS-LAMPLIGHT-') + slip.person.id;
+    const source = lanternSource(slip.person);
     return diaryEvent(
       'coat-tracing:' + slip.ref + ':' + move + ':' + (own ? 'draft' : receipt!.value) + ':' + slip.value,
       cmd.action === 'unfold' ? 'tool' : 'choice',

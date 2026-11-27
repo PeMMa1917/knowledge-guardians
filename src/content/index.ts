@@ -1,3 +1,4 @@
+import {addVaultMissions} from './vaultMissions';
 import {reviewChapterPractices} from './chapterPractice';
 import {addMillMissions} from './millMissions';
 import { addMakerMissions } from './makerMissions';
@@ -248,6 +249,7 @@ export function buildPack(): ContentPack {
   addCoatMissions(content);
   addMakerMissions(content);
   addMillMissions(content);
+  addVaultMissions(content);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);

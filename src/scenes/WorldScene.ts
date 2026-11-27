@@ -1,3 +1,4 @@
+import { vaultReturnSquare } from '../maps/undercroft';
 /**
  * WorldScene: draws a map, moves the player and characters, and turns player
  * actions into domain commands. It DISPLAYS state; it does not decide rewards
@@ -273,7 +274,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
     const look = ensureLook(this, ctx.controller.state.player.look, this.threadColours());
     this.playerSheet = look;
-    let px = s.pos.x, py = s.pos.y;
+    const arrival = m.id === 'aethelgard.undercroft' ? vaultReturnSquare(s.pos,s.flags) : s.pos;
+    let px = arrival.x, py = arrival.y;
     if (px < 0 || py < 0 || this.blocked[py]?.[px] !== false) { px = m.spawn.x; py = m.spawn.y; }
     this.player = this.makeActor(look, px, py, s.facing, true);
     this.player.sprite.x = px * TILE + 8; this.player.sprite.y = py * TILE + 12;

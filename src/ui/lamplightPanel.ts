@@ -7,7 +7,7 @@ import { lanternPair } from './lanternPair';
 import { lanternInstrument } from './lanternInstrument';
 import { guestInstrument, materialLine } from '../domain/lanternInstruments';
 import type { GameController } from '../app/controller';
-import { LANTERN_PEOPLE, LANTERN_SITES, lanternDisplay, lanternMemory, lanternRead, lanternReturn, keptTracing, tracingBasis, lanternRef,
+import { LANTERN_PEOPLE, LANTERN_SITES, lanternDisplay, lanternMemory, lanternRead, lanternReturn, keptTracing, tracingBasis, lanternRef, lanternSource,
   type LanternCommand, type LanternPerson } from '../domain/lamplight';
 import { encyclopediaForCharacter } from '../domain/encyclopedia';
 import { mlaCitation } from '../domain/mla';
@@ -59,7 +59,7 @@ export function lamplightPanel(node: string, c: GameController, refresh: () => v
       h('p',{},materialLine(person.id, basis.pieces)), h('p',{},c.state.flags[ref + '.compared'] === true
         ? 'We have tried the missing piece. We can keep the first reading or carry a revision.'
         : 'One piece stayed on the table last time: ' + guestInstrument(person.id)!.pieces[unused].label + '.')) : undefined;
-    const source = c.pack.sources.find((s) => s.id === 'HIS-INK-' + person.id || s.id === 'HIS-LAMPLIGHT-' + person.id);
+    const source = c.pack.sources.find((s) => s.id === lanternSource(person));
     const character = c.pack.characters.find(({ id }) => id === person.character);
     const article = character && encyclopediaForCharacter(character);
     const citation = source ? mlaCitation(source) : [];

@@ -72,6 +72,8 @@ export const WATER_GATEHOUSE: MapDef = {
     { stamp: 'water-terrace-wall', x: 3, y: 14 }, { stamp: 'water-terrace-wall', x: 24, y: 16 },
   ],
   interactables: [
+    {id:'weir-lamp-table',kind:'fieldgame',game:'weir-lamp',x:6,y:10,w:1,h:1,art:'clue.letter',
+      label:'the two flood sheets under Elsbet’s lamp',visibleIf:{item:'item.brass-lamp'}},
     ...WATER_FITTING_BENCHES,
     CATCHMENT_UPPER,
     WATER_LATCH_DOOR,

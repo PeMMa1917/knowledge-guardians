@@ -1,3 +1,7 @@
+import {weirLampPanel} from './weirLamp';
+import {vaultIndex,vaultPanel} from './vaultWork';
+import {vaultPhaseStation} from '../domain/vaultWork';
+import {vaultWork,type VaultStation} from '../content/vaultNight';
 import { millPanel } from './millShift';
 import { millSite } from '../domain/millShift';
 import { reloadGame } from '../app/reloadGame';
@@ -94,7 +98,7 @@ import { makerTrials, makerTrialForReading } from '../content/makerTrials';
 import { READINGS, cannotRead, readingOf, toolOf } from '../domain/readings';
 import { approvalOf, approvalRank } from '../domain/approval';
 import { ROLES, fitsRole, roleOf } from '../domain/roles';
-import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
+import { BOSS, allSealsOpen, bossDone } from '../domain/undercroft';
 import { FIELD_GAMES } from '../domain/fieldgames';
 import { OFFER_LINE, shouldOfferHelp } from '../domain/lumenOffer';
 import { IDEA_CREDITS } from '../domain/ideaCredits';
@@ -1739,6 +1743,7 @@ export class UI implements UIApi {
   showSign(title: string, text: string, propId?: string): void {
     this.openModal('sign', title, this.closeBtn(), h('h2', {}, title), h('p', {}, text),
       ...(propId === 'record-book' ? this.rumourReplies('ledger') : []),
+      ...(propId === 'vault-index' ? vaultIndex(ctx.controller) : []),
       h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
   }
 
@@ -3571,6 +3576,9 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    if(id==='weir-lamp'){
+      this.openModal('bench-panel wide','The red line on the flood sheet',this.closeBtn(),weirLampPanel(ctx.controller,()=>this.sfx('sfx.page')));return;
+    }
     if (id === 'mill-shift') {
       const site=millSite(ctx.controller.state);
       if(site)this.openModal('bench-panel wide','The old mill shift',this.closeBtn(),millPanel(ctx.controller,site,()=>this.sfx(site==='yard'?'sfx.metal':'sfx.page')));
@@ -4592,73 +4600,24 @@ export class UI implements UIApi {
     } else choose();
   }
 
-  /** A fallacy seal in the Undercroft: it speaks a bad argument; name the flaw to open it. */
-  openSeal(id: string): void {
-    const c = ctx.controller;
-    const x = SEALS.find((y) => y.id === id);
-    if (!x) return;
-    const fray = (c.pack.fray ?? []).find((f) => f.id === x.fray);
-    const box = this.openModal('bench-panel wide', x.name);
-    this.sfx('sfx.page');
-    const render = (note?: { ok: boolean; why: string }) => {
-      box.replaceChildren(this.closeBtn(), h('h2', {}, x.name),
-        h('p', {}, 'Runes of gold and violet fill the corridor from wall to wall. As you come near, they speak:'),
-        h('p', { class: 'clue-view' }, x.says),
-        ...(note ? [h('p', { class: `clue-view ${note.ok ? 'fresh' : ''}`, role: 'status' }, note.why)] : []),
-        note?.ok
-          ? h('div', {}, h('p', {}, `The runes fade, and the way is open.${fray ? ` You name it: ${fray.name} (${fray.error.toLowerCase()}). See the Fray Bestiary.` : ''}`),
-            h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Go on')))
-          : h('div', {}, h('p', {}, h('strong', {}, 'What is wrong with this argument?')),
-            h('div', { class: 'notice-options' }, ...x.options.map((o, i) => h('button', { type: 'button', onclick: () => {
-              const ev = c.dispatch({ type: 'DisarmSeal', seal: x.id, choice: i });
-              const r = ev.find((e) => e.kind === 'seal') as Extract<GameEvent, { kind: 'seal' }> | undefined;
-              if (!r) return;
-              this.sfx(r.ok ? 'sfx.sparkle' : 'sfx.page');
-              render({ ok: r.ok, why: r.ok ? r.why : `${r.why} The runes hold. Try again.` });
-            } }, o.text)))));
-    };
-    render();
+  private workInVault(station:VaultStation):void {
+    const box=this.openModal('bench-panel wide boss-panel',vaultWork[station].title);
+    const refresh=()=>ctx.world?.refreshWorld();
+    box.append(this.closeBtn(),vaultPanel(ctx.controller,station,()=>{this.closeModal();refresh();},finished=>{
+      this.sfx(finished?'sfx.sparkle':'sfx.page');
+      if(finished){ refresh(); if(bossDone(ctx.controller.state.flags))ctx.world?.lumenBurst(); }
+    }));
   }
 
-  /** The Hollow Archivist: a Fray 'boss' in three phases. Each phase is a new argument; a wrong answer is explained, never punished. */
-  openBoss(): void {
-    const c = ctx.controller;
-    if (!allSealsOpen(c.state.flags)) { this.showSign(BOSS.name, 'The seals still block the way.'); return; }
-    const box = this.openModal('bench-panel wide boss-panel', BOSS.name);
-    this.sfx('sfx.page');
-    const art = h('img', { src: artURL('hollow-archivist'), alt: '', class: 'boss-art' });
-    const render = (note?: { ok: boolean; why: string; done: boolean }) => {
-      const f = c.state.flags;
-      const ph = bossPhase(f), hollow = Number(f[`boss.${BOSS.id}.hollow`] ?? 0);
-      const pips = h('div', { class: 'boss-phases', role: 'img', 'aria-label': `Phase ${Math.min(ph + 1, BOSS.phases.length)} of ${BOSS.phases.length}` },
-        ...BOSS.phases.map((_, i) => h('span', { class: i < ph ? 'on' : '' })));
-      if (bossDone(f)) {
-        box.replaceChildren(this.closeBtn(), h('h2', {}, BOSS.name), pips,
-          ...(note ? [h('p', { class: 'clue-view fresh' }, note.why)] : []),
-          h('p', {}, BOSS.end),
-          h('p', { class: 'fine', role: 'status' }, `+10 marks. Six Fray met in the Undercroft are in the Bestiary.${hollow ? ` The Archivist grew ${hollow} time${hollow === 1 ? '' : 's'}; each time, you tried again.` : ' You never fed it once.'}`),
-          h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
-        return;
-      }
-      const p = BOSS.phases[ph];
-      art.style.transform = `scale(${1 + Math.min(hollow, 6) * 0.06 - ph * 0.1})`;
-      box.replaceChildren(this.closeBtn(), h('h2', {}, BOSS.name), pips,
-        h('div', { class: 'boss-stage' }, art, h('div', {},
-          ph === 0 && !note ? h('p', {}, BOSS.intro) : null,
-          h('p', { class: 'clue-view' }, p.says),
-          ...(note ? [h('p', { class: `clue-view ${note.ok ? 'fresh' : ''}`, role: 'status' }, note.why)] : []))),
-        h('p', {}, h('strong', {}, 'Your move')),
-        h('div', { class: 'notice-options' }, ...p.options.map((o, i) => h('button', { type: 'button', onclick: () => {
-          const ev = c.dispatch({ type: 'BossMove', choice: i });
-          const r = ev.find((e) => e.kind === 'boss') as Extract<GameEvent, { kind: 'boss' }> | undefined;
-          if (!r) return;
-          this.sfx(r.ok ? (r.done ? 'sfx.award' : 'sfx.sparkle') : 'sfx.page');
-          if (r.done) ctx.world?.lumenBurst();
-          render({ ok: r.ok, why: r.why, done: r.done });
-        } }, o.text))),
-        h('p', { class: 'fine' }, 'A wrong move feeds the Archivist, but it never ends the fight. Read why, and try again.'));
-    };
-    render();
+  openSeal(id:string):void {
+    if(id==='many'||id==='twogates'||id==='chosen') this.workInVault(id);
+  }
+
+  openBoss():void{
+    const c=ctx.controller;
+    if(!allSealsOpen(c.state.flags)){this.showSign(BOSS.name,'A voice is still ringing from behind a grate.');return;}
+    if(bossDone(c.state.flags)){this.showSign(BOSS.name,typeof c.state.flags['vault-work.promise.receipt']==='string'?c.state.flags['vault-work.promise.receipt']:BOSS.end);return;}
+    this.workInVault(vaultPhaseStation(c.state));
   }
 
   /** Knower roles: one way of knowing, with a strength and a blind spot. First choice anywhere; change at a Waystone. */

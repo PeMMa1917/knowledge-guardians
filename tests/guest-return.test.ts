@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { buildPack } from '../src/content';
+import { adventureJournalView } from '../src/domain/adventureJournal';
 import { guestInstrument, type Piece } from '../src/domain/lanternInstruments';
 import {
   keptTracing,
@@ -18,6 +19,26 @@ import { microSkillId } from '../src/domain/skills';
 import { Driver } from './driver';
 
 describe('returning historical work', () => {
+  it('keeps a biographical reference on every guest instrument entry and recovers references for old diary pages', () => {
+    const d=new Driver(), pack=buildPack(), seen=new Set<string>();
+    for (const person of [LANTERN_PEOPLE[0],LANTERN_PEOPLE.at(-1)!]) {
+      const site=LANTERN_SITES[0]; d.s.mapId=site.map;
+      const common={type:'WorkWithLantern' as const, site:site.id, person:person.id};
+      d.run({...common,stage:'meet'});
+      d.run({...common,stage:'pin',piece:1});d.run({...common,stage:'pin',piece:2});
+      d.run({...common,stage:'trace',option:0});d.run({...common,stage:'use',option:1});
+      const ref=lanternRef(site.id,person.id);
+      const pages=d.s.adventureDiary.entries.filter(e=>e.event?.ref===ref);
+      expect(pages).toHaveLength(5);
+      const source=pages[0].event!.sourceIds![0];
+      expect(pack.sources.find(s=>s.id===source)?.url).toMatch(/^https:\/\/en.wikipedia.org\/wiki\//);
+      for(const page of pages){expect(page.event?.sourceIds).toEqual([source]);delete page.event!.sourceIds;}
+      const older=adventureJournalView(pack,d.s,[]).entries.filter(e=>e.event?.ref===ref);
+      for(const page of older){expect(page.event?.sourceIds).toEqual([source]);expect(page.encyclopedia?.url).toMatch(/^https:\/\/en.wikipedia.org\/wiki\//);}
+      seen.add(source);
+    }
+    expect(seen.size).toBe(2);
+  });
   it('can retrieve every guest’s home tracing in each of the fourteen other locations', () => {
     const d = new Driver();
     for (const guest of LANTERN_PEOPLE) {

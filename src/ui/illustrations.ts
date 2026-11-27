@@ -629,10 +629,10 @@ DRAW['workbench'] = [16, 24, (g) => {
   R(g, '#c98d60', 2, 9, 3, 4); R(g, '#8b8f99', 7, 6, 1, 7); R(g, '#4a4d55', 6, 12, 3, 1); R(g, '#b98d55', 11, 8, 1, 5); R(g, '#2a2440', 11, 12, 1, 1);
 }];
 // The Undercroft: a fallacy seal (a barrier of gold-violet runes) and the Hollow Archivist (dust and pages, a KEEPER label for a face).
-DRAW['fray-seal'] = [16, 64, (g) => {
-  R(g, '#3a2b5e', 2, 0, 12, 64); R(g, '#56408a', 4, 0, 8, 64);
-  for (let y = 4; y < 60; y += 9) { R(g, '#e8c040', 6, y, 4, 1); R(g, '#e8c040', 7, y + 1, 2, 3); R(g, '#c9a2ff', 5, y + 5, 6, 1); }
-  R(g, '#e8c040', 2, 0, 12, 1); R(g, '#e8c040', 2, 63, 12, 1);
+DRAW['fray-seal'] = [16, 80, (g) => {
+  R(g, '#3a2b5e', 2, 0, 12, 80); R(g, '#56408a', 4, 0, 8, 80);
+  for (let y = 4; y < 76; y += 9) { R(g, '#e8c040', 6, y, 4, 1); R(g, '#e8c040', 7, y + 1, 2, 3); R(g, '#c9a2ff', 5, y + 5, 6, 1); }
+  R(g, '#e8c040', 2, 0, 12, 1); R(g, '#e8c040', 2, 79, 12, 1);
 }];
 DRAW['hollow-archivist'] = [24, 36, (g) => {
   R(g, '#4a4458', 6, 8, 12, 26); R(g, '#6b6478', 7, 9, 10, 24); R(g, '#3a3446', 3, 14, 4, 14); R(g, '#3a3446', 17, 14, 4, 14);

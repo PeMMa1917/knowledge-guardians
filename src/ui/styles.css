@@ -1243,3 +1243,18 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .mill-status:empty { margin: 0; }
 
 .title-screen .school-link { color: inherit; font-size: .9em; text-underline-offset: .2em; }
+
+.vault-rack { padding:.8rem; margin:.6rem 0; border:2px solid #a99678; background:#272237; color:#fff5d7; }
+.vault-track { list-style:none; padding:0; display:flex; flex-wrap:wrap; gap:.5em; }
+.vault-track li { display:flex; gap:.4em; align-items:baseline; padding:.35em .5em; border:1px solid #aa9f98; }
+.vault-track li[data-lit] { border-color:#ffda79; }
+.vault-track li span {color:#ffda79;}
+.vault-shelf { display:grid;gap:.5em;grid-template-columns:repeat(auto-fit,minmax(min(7rem,100%),1fr)); }
+.vault-letter { color:#30243c;background:#fff0ce;border-inline-start:4px solid #ba8549;padding:.7em;margin:.4em 0; }
+.vault-status:empty { display:none; }
+.vault-status {border-inline-start:3px solid currentColor; padding-inline-start:.7em;}
+
+/* Keep reward notices behind the working instruments. Each instrument announces its own result. */
+#ui:has(.vault-tools, [data-lamp]) > .toasts { clip-path: inset(50%); }
+
+.vault-window { display: block; width: min(100%, 29rem); height: auto; aspect-ratio: 164 / 43; margin: 0 auto .65rem; image-rendering: pixelated; }

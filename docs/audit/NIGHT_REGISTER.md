@@ -163,3 +163,10 @@ The startup build passed 2,615 unit and integration tests in 317 files. Three fi
 ## The four-bell mill
 
 All 28 divisions of six counters among three workers and all 16 four-bell punch sequences on four wheel and crew combinations ran in the rules tests. The press can run from either source alone or both in either order. It retains the edition a worker opened before later settlements and trials. Chromium 156, Firefox 146 and WebKit 26 each tried the three physical registers, used keyboard controls, tested four rigs, issued two editions and travelled through both earned doors. [Domain cases](../../tests/mill-shift.test.ts) · [Browser route](../../tools/mill-shift-journey.mjs)
+
+
+## The Hollow Archivist and the high boards
+
+The six stands can end in 64 combinations of handovers. Both orders of glimpsing the flood leaves keep the first forecast, including when the Guardian keeps the same forecast for the next watch. The vault index records the gate arrangement and both pegs. The Old Weir can send either account to Vesper. Players returning with a pre-existing brass lamp get an honest account of the missing peg. A modeled examiner’s concern about hindsight led to a distinct objective for comparing a dated personal forecast and a historical inquiry. [Rule and recovery checks](../../tests/vault-work.test.ts)
+
+A keyboard walk through the vault exposed a path under the three closed grates. Their collision and drawn rune bars now reach the last floor tile. The browser journey checks each row and tries to find a route beyond the closed grate, then repeats both checks once it opens. A narrow-screen review also found reward notices covering the shutters. The working instrument now shows the open gates and the people’s objects while its own status line announces who can pass. [Production journey](../../tools/vault-watch-journey.mjs)
