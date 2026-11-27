@@ -337,6 +337,8 @@ export const SIM_MODEL: Record<string, Record<string, { q: number; note: string 
   },
 };
 
+const OBJECTIVE_INDEX_THRESHOLD = 32;
+
 export class Engine {
   readonly dialogueById: ReadonlyMap<string, DialogueNode>;
 
@@ -398,8 +400,9 @@ export class Engine {
   }
 
   visibleObjectives(s: CampaignState): (Objective & { mission: Mission; complete: boolean })[] {
+    const completed = s.objectivesDone.length >= OBJECTIVE_INDEX_THRESHOLD ? new Set(s.objectivesDone) : null;
     return this.activeMissions(s).flatMap((m) =>
-      m.objectives.filter((o) => check(o.visible, s)).map((o) => ({ ...o, mission: m, complete: s.objectivesDone.includes(o.id) })),
+      m.objectives.filter((o) => check(o.visible, s)).map((o) => ({ ...o, mission: m, complete: completed ? completed.has(o.id) : s.objectivesDone.includes(o.id) })),
     );
   }
 
@@ -1547,6 +1550,9 @@ export class Engine {
       if (first) events.push({ kind: 'fray', id, name: f.name, error: f.error });
     }
 
+    // A travelled save holds thousands of objective IDs. Build one membership index for this dispatch.
+    // The ordered save array remains the source for conditions and for a later replay or rewind.
+    const completed = s.objectivesDone.length >= OBJECTIVE_INDEX_THRESHOLD ? new Set(s.objectivesDone) : null;
     // Objectives, then awards. Repeat so that completion effects can chain.
     for (let guard = 0; guard < 10; guard++) {
       let changed = false;
@@ -1574,8 +1580,9 @@ export class Engine {
       }
       for (const m of this.activeMissions(s)) {
         for (const o of m.objectives) {
-          if (s.objectivesDone.includes(o.id)) continue;
+          if (completed ? completed.has(o.id) : s.objectivesDone.includes(o.id)) continue;
           if (!check(o.visible, s) || !check(o.done, s)) continue;
+          completed?.add(o.id);
           s = { ...s, objectivesDone: [...s.objectivesDone, o.id] };
           events.push({ kind: 'objective', id: o.id, title: o.title });
           s = apply(o.onComplete, s, out);
