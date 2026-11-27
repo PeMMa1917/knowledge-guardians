@@ -1,6 +1,7 @@
+import {lastBellDiary} from './lastBell';
 import {watches,watchReading,watchEnding} from './watchBell';
 import { guestInstrument, materialLine } from './lanternInstruments';
-import { LANTERN_SITES, lanternCase, lanternRead, lanternRef, lanternTopics } from './lamplight';
+import { LANTERN_SITES, lanternCase, lanternRead, lanternRef, lanternTopics, tracingBasis } from './lamplight';
 import { inkDiaryTopics } from './inkPost';
 import { neighbourJournalTopics } from './neighbours';
 import { moonBeatNames, moonPerformance } from './spareMoonMusic';
@@ -121,12 +122,13 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
+  if (cmd.type === 'WorkLastBell') return lastBellDiary(cmd, previous, next);
   if (cmd.type === 'WorkNightWatch') {
     const ref='night-watch.'+cmd.site;
     const flag=ref+(cmd.stage==='try'?'.current':'.left');
     if(previous.flags[flag]===next.flags[flag]) return;
     return diaryEvent(ref+':'+cmd.stage+':'+cmd.setting, cmd.stage==='try'?'tool':'choice',ref,watches[cmd.site].title,
-      cmd.stage==='try'?'I tried the watch record. '+watchReading(cmd.site,cmd.setting):'I stayed for the handover. '+watchEnding(cmd.site,cmd.setting),{},'after-break');
+      cmd.stage==='try'?'I tried the watch record. '+watchReading(cmd.site,cmd.setting):'I stayed for the handover. '+watchEnding(cmd.site,cmd.setting)+' '+watches[cmd.site].lead,{},'after-break');
   }
   if (cmd.type === 'TurnLanternGlass') {
     const site = LANTERN_SITES.find((s) => s.id === cmd.site);
@@ -147,6 +149,12 @@ function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignS
     const key = 'lantern:' + ref + ':' + cmd.stage;
     if (cmd.stage === 'meet' && now.met && !then.met) return diaryEvent(key, 'conversation', ref, person.title,
       'I called ' + person.name + ' to the post at ' + site.place + '. ' + person.name + ' said, “' + person.opening + '”');
+    if (cmd.stage === 'recall') {
+      const earlier = tracingBasis(next, ref);
+      if (!earlier || (next.flags[ref + '.basis'] === previous.flags[ref + '.basis'] && now.pieces.join('') === then.pieces.join(''))) return;
+      return diaryEvent(key + ':' + earlier.site.id + ':' + earlier.value, 'tool', ref, person.title,
+        'I unpacked my tracing from ' + earlier.site.place + ' with ' + person.name + '. ' + materialLine(person.id, earlier.pieces), {}, 'after-break');
+    }
     if (cmd.stage === 'pin' && now.pieces.join('') !== then.pieces.join('')) {
       const piece = guestInstrument(person.id)!.pieces[cmd.piece];
       return diaryEvent(key + ':' + now.pieces.join(''), 'tool', ref, person.title,
@@ -295,9 +303,17 @@ function experienceDraft(pack: ContentPack, previous: CampaignState, cmd: Comman
         `${fairTest ? 'I changed one thing in a marking test and compared the new mark.' : 'I tried another setup at the marking bench.'} ${note}`,
         { outcome: fairTest ? 'checked' : 'tried' }, 'always');
     }
-    case 'puzzle':
-      return diaryEvent(`puzzle:${event.puzzle}`, 'tool', event.puzzle, pack.puzzles.find((row) => row.id === event.puzzle)?.title ?? 'A tool I used',
+    case 'puzzle': {
+      const job = pack.puzzles.find((row) => row.id === event.puzzle);
+      if (job && 'handoffs' in job && cmd.type === 'PuzzleReport') {
+        const delivery = job.handoffs[cmd.index];
+        if (previous.flags['puzzle.' + job.id + '.handoff'] === cmd.index) return;
+        return diaryEvent(`puzzle:${job.id}:handoff:${cmd.index}`, 'choice', job.id, job.title,
+          `I chose “${delivery.label}”. ${delivery.result}`, {}, 'after-break');
+      }
+      return diaryEvent(`puzzle:${event.puzzle}`, 'tool', event.puzzle, job?.title ?? 'A tool I used',
         `I used the puzzle tool and recorded what happened. ${event.text}`, { outcome: event.ok ? 'checked' : 'tried' }, 'always');
+    }
     case 'secret':
       return diaryEvent(`secret:${event.id}`, 'finding', event.id, event.name, `I found ${event.name}.`);
     case 'keepsake':
@@ -481,8 +497,15 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if (!event) return undefined;
     const [family] = event.key.split(':', 1);
     const specimen = family === 'specimen' ? exhibits.get(event.ref)?.specimen : undefined;
-    const objective = objectivesById.get(event.ref) ?? (specimen ? objectivesById.get(specimen.objective) : undefined);
+    const watch = event.ref === 'night-watch.gate' || event.ref === 'night-watch.dispatch';
+    const objective = objectivesById.get(watch ? event.ref + '.handover' : event.ref)
+      ?? (specimen ? objectivesById.get(specimen.objective) : undefined);
     const completed = event.completedObjective ? objectivesById.get(event.completedObjective) : undefined;
+    const fieldReply = family === 'sign' ? /^field-reply\.([\w-]+)\.\d+$/.exec(event.ref) : null;
+    if (fieldReply) {
+      const weave = taggedTools.get('puzzle:' + fieldReply[1]);
+      if (weave) return diaryTopics(weave);
+    }
     const weave = objective?.objective.weave ?? taggedTools.get(`${family}:${event.ref}`) ?? completed?.objective.weave;
     if (weave) return diaryTopics(weave);
     const neighbourhood = neighbourJournalTopics(event.ref) ?? inkDiaryTopics(event.ref) ?? lanternTopics(event.ref);

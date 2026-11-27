@@ -1,3 +1,5 @@
+import {lastBellScenes, type LastBellSite} from '../content/lastBell';
+import { watches, type WatchSite } from './watchBell';
 import { lanternQuestions } from './lamplight';
 import { inkDiaryQuestions } from './inkPost';
 import authored from '../content/journal-reflections.json';
@@ -25,6 +27,19 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
+  const watch = /^night-watch\.(gate|dispatch):/.exec(key);
+  if (watch) {
+    const question = watches[watch[1] as WatchSite].question;
+    // The original prompts and their IDs keep reflections written before this journey readable.
+    return entry.event?.kind === 'choice'
+      ? {choice: `Looking back at “${entry.title}”, who could use the option you chose? Who might need something different?`, watch: question}
+      : {tool: `Which part of “${entry.title}” would you repeat if another keeper wanted to check your reading?`, watch: question};
+  }
+  const bell = /^last-bell\.(voices|island|council):/.exec(key);
+  if (bell) {
+    const [evidence, people] = lastBellScenes[bell[1] as LastBellSite].prompts;
+    return {evidence, people};
+  }
   const ink = lanternQuestions(key) ?? inkDiaryQuestions(key);
   if (ink) return ink;
   if (Object.hasOwn(questionsByEntry, key)) {

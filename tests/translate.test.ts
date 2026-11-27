@@ -30,15 +30,18 @@ describe('The Ferry Message (language)', () => {
       expect(r.lost).toEqual([]);
     }
   });
-  it('the reflection needs a full translation first, and gives interpretation credit', () => {
+  it('the delivery needs a full translation first, and gives interpretation credit', () => {
     const d = new Driver();
-    const honest = rec.reflect.findIndex((r) => r.honest);
+    const delivery = rec.handoffs.length - 1;
     d.run({ type: 'PuzzleTranslate', puzzle: P, picks: [0, 1, 1, 1] });
     expect(d.s.flags[`puzzle.${P}.last`]).toBe('0,1,1,1');
-    expect(() => d.run({ type: 'PuzzleReport', puzzle: P, index: honest })).toThrow(/keeps every part/);
+    expect(() => d.run({ type: 'PuzzleReport', puzzle: P, index: delivery })).toThrow(/keeps every part/);
     expect(() => d.run({ type: 'PuzzleTranslate', puzzle: P, picks: [9, 1, 1, 1] })).toThrow();
     d.run({ type: 'PuzzleTranslate', puzzle: P, picks: [1, 1, 1, 1] });
-    d.run({ type: 'PuzzleReport', puzzle: P, index: honest });
+    for (let index = 0; index < rec.handoffs.length; index++) {
+      d.run({type: 'PuzzleReport', puzzle: P, index});
+      expect(d.s.flags[`puzzle.${P}.handoff`]).toBe(index);
+    }
     expect(d.s.flags[`puzzle.${P}.done`]).toBe(true);
     expect(conceptXP(d.p, pack).interpretation).toBeGreaterThan(0);
   });

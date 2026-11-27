@@ -9,6 +9,7 @@ export const watches = {
       'Maro stuffed wool in the warning bell last night. “My father only sleeps between tides.” She takes it out again. “My sister is down on the steps.” Six tide strips lie in the cradle. Each carries the height at dusk and whether water reached the steps by midnight.',
     task: 'Slide the brass clip to two heights. The bell would sound at or above the clip. Read each night through both settings, then leave Maro one for tonight.',
     trials: ['Clip at 2 marks', 'Clip at 4 marks', 'Clip at 5 marks'],
+    lead: 'Maro tucks a strip of wool under the knot. “Ro at Library Dispatch counted the lamps that answered. Ask her about the windows without one.”',
     question: 'Which mistake would the household upstairs notice, and which would the boat crew notice?',
   },
   dispatch: {
@@ -20,6 +21,7 @@ export const watches = {
       'The operator has chalked FULL HOUSE over the night rota. Four households sent back a light. Beside the other two addresses somebody has drawn curtains. “I used to live behind one,” says Ro. “We never had a lamp.”',
     task: 'Stretch the counting cord across each group. The list names six households. Four sent signals back. Give the next shift a way to find the other two.',
     trials: ['Stretch the cord over replies', 'Stretch the cord over the whole rota'],
+    lead: 'Ro turns the rota over. A girl has scratched three little grooves on the back. “Try Wren’s hood in the Listening Room. She’s kept something for you.”',
     question: 'Whose experience disappears when the denominator changes?',
   },
 } as const;
@@ -115,7 +117,7 @@ export function installWatches(pack: ContentPack) {
             concepts: ['evidence', 'responsibility', 'certainty', 'perspective', 'values', 'justification'],
             framework: ['methods-and-tools', 'perspectives', 'ethics'],
             atl: ['thinking', 'communication'],
-            aoks: ['MAT', 'HUM', 'NAT'],
+            aoks: id === 'gate' ? ['MAT', 'HUM', 'NAT', 'TEC'] : ['MAT', 'HUM', 'POL'],
             subjects: ['math-ai', 'geography', 'physics'],
             minutes: 4,
             thinking: { dok: 3, bloom: 'evaluate', fink: 'caring', solo: 'relational' },

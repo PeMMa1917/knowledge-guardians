@@ -20,6 +20,7 @@ export function nightWatch(c: GameController, site: WatchSite) {
     const errors = c.dispatch({ type: 'WorkNightWatch', site, stage, setting });
     if (errors.some((e) => e.kind === 'error')) return;
     draw();
+    if (stage === 'leave') result.querySelector<HTMLButtonElement>(`[data-watch-setting="${setting}"]`)?.focus();
   }
   for (const [i, trial] of record.trials.entries())
     controls.append(h('button', { type: 'button', onclick: () => choose('try', i) }, trial));
@@ -68,11 +69,11 @@ export function nightWatch(c: GameController, site: WatchSite) {
           : ['Keep the relay staffed until last call', 'Send the runner to the dark windows now'];
       labels.forEach((label, i) => {
         if (site === 'dispatch' || c.state.flags[key + '.tested.' + i] === true)
-          result.append(h('button', { type: 'button', onclick: () => choose('leave', i) }, label));
+          result.append(h('button', { type: 'button', 'data-watch-setting': i, onclick: () => choose('leave', i) }, label));
       });
     }
     const kept = c.state.flags[key + '.left'];
-    if (typeof kept === 'number') result.append(h('blockquote', {}, watchEnding(site, kept)));
+    if (typeof kept === 'number') result.append(h('blockquote', {}, watchEnding(site, kept)), h('p', {}, record.lead));
   }
   panel.append(controls, result);
   draw();

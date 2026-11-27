@@ -1,4 +1,6 @@
+import { installLastBell } from '../content/lastBell';
 import {installWatches} from './watchBell';
+import { microSkillId, useSignature } from './skills';
 import { guestInstrument, isPiece, pinPiece, readPieces, type Piece } from './lanternInstruments';
 import letters from '../content/ink-post-letters.json';
 import roosts from '../content/ink-post-stations.json';
@@ -19,7 +21,7 @@ const guests = new Map(LANTERN_PEOPLE.map((person) => [person.id, person]));
 const sites = new Map(LANTERN_SITES.map((site) => [site.id, site]));
 type State = Pick<CampaignState, 'mapId' | 'flags'>;
 export type LanternCommand = { type: 'WorkWithLantern'; site: string; person: string } & (
-  { stage: 'meet' } | { stage: 'pin'; piece: Piece } | { stage: 'trace' | 'use'; option: 0 | 1 }
+  { stage: 'meet' } | { stage: 'recall'; from: string } | { stage: 'pin'; piece: Piece } | { stage: 'trace' | 'use'; option: 0 | 1 }
 );
 export function lanternRef(site: string, person: string) { return 'lamplight.' + site + '.' + person; }
 
@@ -38,6 +40,46 @@ export function lanternRead(state: State, site: LanternSite, person: LanternPers
     use: use === 0 || use === 1 ? use : undefined } as const;
 }
 
+function unpackTracing(value: unknown) {
+  if (typeof value !== 'string' || !/^[01][01][012]{2}$/.test(value)) return;
+  const pieces = readPieces(value.slice(2));
+  if (pieces.length === 2) return {trace: Number(value[0]), use: Number(value[1]), pieces, value};
+}
+
+/** The working instrument and the last tracing a guest entrusted to this room are separate. */
+export function keptTracing(state: State, site: LanternSite, person: LanternPerson) {
+  const kept = unpackTracing(state.flags[lanternRef(site.id, person.id) + '.receipt']);
+  if (kept) return kept;
+  // Earlier saves kept the last public tracing on the wall and the other completed ones on the worktables.
+  const shown = state.flags['lamplight.' + site.id + '.shown'];
+  if (typeof shown === 'string') {
+    const [id, trace, use, pieces] = shown.split('.');
+    if (id === person.id) {
+      const display = unpackTracing(trace + use + pieces);
+      if (display) return display;
+    }
+  }
+  const work = lanternRead(state, site, person);
+  if (work.trace !== undefined && work.use !== undefined) return unpackTracing(String(work.trace) + work.use + work.pieces.join(''));
+}
+
+export function tracingBasis(state: State, ref: string) {
+  const raw = state.flags[ref + '.basis'];
+  if (typeof raw !== 'string') return;
+  const [from, encoded] = raw.split(':');
+  const site = sites.get(from), record = unpackTracing(encoded);
+  if (site && record) return {site, ...record};
+}
+
+export function lanternReturnPractice(state: State, cmd: LanternCommand) {
+  if (cmd.stage !== 'use') return;
+  const ref = lanternRef(cmd.site, cmd.person), pair = lanternCase(ref);
+  if (!pair || !tracingBasis(state, ref) || state.flags[ref + '.compared'] !== true) return;
+  const kit = guestInstrument(cmd.person)!;
+  return {id: microSkillId(kit.practice), sig: useSignature(pair.site.world, kit.kind === 'route' ? 'game-13' : 'game-234',
+    ref + '.rechecked', pair.person.weave.aoks)};
+}
+
 export function lanternEffects(cmd: LanternCommand, state: State): Effect[] {
   const ref = lanternRef(cmd.site, cmd.person);
   const pair = lanternCase(ref);
@@ -46,24 +88,44 @@ export function lanternEffects(cmd: LanternCommand, state: State): Effect[] {
   const flag = (key: string, value: string | boolean | number): Effect => ({ setFlag: key, value });
   if (cmd.stage === 'meet') return met ? [] : [flag(ref + '.met', true), flag('lamplight.met.' + pair.person.character, true)];
   if (!met) throw new Error('Call the guest at the folded-wing post first.');
+  const preserve = (): Effect[] => {
+    if (state.flags[ref + '.receipt'] !== undefined) return [];
+    const old = keptTracing(state, pair.site, pair.person);
+    return old ? [flag(ref + '.receipt', old.value)] : [];
+  };
+  if (cmd.stage === 'recall') {
+    const from = sites.get(cmd.from), kept = from && keptTracing(state, from, pair.person);
+    if (!kept || cmd.from === cmd.site) throw new Error('Choose work you have already left with this guest in another chapter.');
+    const basis = cmd.from + ':' + kept.value;
+    if (state.flags[ref + '.basis'] === basis && pieces.join('') === kept.pieces.join('')) return [];
+    return [...preserve(), flag(ref + '.basis', basis), flag(ref + '.pieces', kept.pieces.join('')), flag(ref + '.compared', false),
+      flag(ref + '.trace', false), flag(ref + '.use', false)];
+  }
   if (cmd.stage === 'pin') {
     if (!isPiece(cmd.piece) || !guestInstrument(cmd.person)) throw new Error('That instrument has no such setting.');
     const order = pinPiece(pieces, cmd.piece);
     if (order === pieces.join('')) return [];
-    return [flag(ref + '.pieces', order), flag(ref + '.trace', false), flag(ref + '.use', false)];
+    const result = [...preserve(), flag(ref + '.pieces', order), flag(ref + '.trace', false), flag(ref + '.use', false)];
+    const earlier = tracingBasis(state, ref);
+    if (earlier && !earlier.pieces.includes(cmd.piece)) result.push(flag(ref + '.compared', true));
+    return result;
   }
   if (pieces.length !== 2) throw new Error('Try two different settings on the guest’s instrument.');
   if ((cmd.option !== 0 && cmd.option !== 1)) throw new Error('Call the guest at the folded-wing post first.');
   if (cmd.stage === 'trace') {
     if (trace === cmd.option) return [];
-    return [flag(ref + '.trace', cmd.option), flag(ref + '.use', false)];
+    return [...preserve(), flag(ref + '.trace', cmd.option), flag(ref + '.use', false)];
   }
   if (cmd.stage !== 'use' || trace === undefined) throw new Error('Make a tracing together before taking it to the lamp.');
   const last = 'lamplight.' + cmd.site + '.shown';
   // The mounted copy survives later revisions on the worktable until another copy replaces it.
   const display = [cmd.person, trace, cmd.option, pieces.join('')].join('.');
   if (use === cmd.option && state.flags[last] === display) return [];
-  return [flag(ref + '.use', cmd.option), flag(last, display), flag('lamplight.' + cmd.site + '.lit', true)];
+  const displaced = lanternDisplay(state, pair.site);
+  const previous = displaced && lanternRef(cmd.site, displaced.person.id);
+  const backed = previous && displaced && displaced.person.id !== cmd.person && state.flags[previous + '.receipt'] === undefined
+    ? keptTracing(state, pair.site, displaced.person) : undefined;
+  return [...(backed ? [flag(previous + '.receipt', backed.value)] : []), flag(ref + '.use', cmd.option), flag(ref + '.receipt', String(trace) + cmd.option + pieces.join('')), flag(last, display), flag('lamplight.' + cmd.site + '.lit', true)];
 }
 
 export function lanternDisplay(state: State, site: LanternSite) {
@@ -76,12 +138,30 @@ export function lanternDisplay(state: State, site: LanternSite) {
   }
 }
 
+/** Prefer work that can be resumed at this station; a pending job at the other station gives directions. */
+export function lanternReturn(state: Pick<CampaignState, 'flags' | 'mapId' | 'adventureDiary'>, site: LanternSite, bench: boolean) {
+  let elsewhere: LanternPerson | undefined;
+  const entries = state.adventureDiary.entries;
+  const prefix = 'lamplight.' + site.id + '.';
+  for (let i = entries.length - 1; i >= 0; i--) {
+    const ref = entries[i].event?.ref;
+    if (!ref?.startsWith(prefix)) continue;
+    const person = guests.get(ref.slice(prefix.length));
+    if (!person) continue;
+    const work = lanternRead(state, site, person);
+    if (!work.met || work.use !== undefined) continue;
+    if ((work.trace !== undefined) === bench) return person;
+    elsewhere ??= person;
+  }
+  return elsewhere;
+}
+
 export function lanternMemory(state: State, site: LanternSite, person: LanternPerson) {
-  const other = LANTERN_SITES.find((s) => s.id !== site.id && lanternRead(state, s, person).use !== undefined);
-  if (!other) return;
-  const { trace, use } = lanternRead(state, other, person);
-  if (trace !== undefined && use !== undefined) return 'At ' + other.place + ' we tried “' + person.folds[trace].action +
-    '” together. You chose “' + other.uses[use].action + '”. ' + other.uses[use].reply;
+  const earlier = tracingBasis(state, lanternRef(site.id, person.id));
+  const other = earlier?.site ?? LANTERN_SITES.find((s) => s.id !== site.id && keptTracing(state, s, person));
+  const kept = earlier ?? (other && keptTracing(state, other, person));
+  if (other && kept) return 'At ' + other.place + ' we tried “' + person.folds[kept.trace].action +
+    '” together. You chose “' + other.uses[kept.use].action + '”. ' + other.uses[kept.use].reply;
 }
 
 export function lanternTopics(ref: string) {
@@ -104,9 +184,10 @@ export function lanternQuestions(key: string) {
 
 export function installLamplight(pack: ContentPack, articles: ReadonlyMap<string, string>) {
   installWatches(pack);
+  installLastBell(pack);
   for (const site of LANTERN_SITES) {
     for (const stage of ['post', 'bench']) pack.dialogue.push({ id: 'lamplight.' + site.id + '.' + stage,
-      speaker: site.host, historicalLabel: 'fictional-world', text: stage === 'post' ? site.hook : 'The keeper turns the lamp slowly. A voice comes back through the glass.' });
+      speaker: site.host, historicalLabel: 'fictional-world', text: stage === 'post' ? site.hook : site.arrival });
   }
   // One discoverable home commission per guest. Roaming returns stay available in every chapter.
   // The 3,750 pairs of stations and guests are resolved on demand, outside the objective scan.

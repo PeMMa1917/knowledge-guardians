@@ -3,6 +3,8 @@ import instruments from './lamplight-instruments.json';
 import lampSkills from './lamplight-skills.json';
 import letters from './ink-post-letters.json';
 import postSkills from './ink-post-skills.json';
+import { microSkillId } from '../domain/skills';
+export { microSkillId } from '../domain/skills';
 import type { ContentPack } from '../domain/types';
 
 export const MICRO_SKILL_DOMAIN = 'MICRO';
@@ -43,9 +45,6 @@ for (const [id, kit] of Object.entries(instruments)) {
 }
 export const MICRO_SKILLS: MicroSkillEvidence[] = [...Object.values(sources).flat(), ...[...postSkills, ...lampSkills].map((s) => ({ ...s, uses: [] }))]
   .map((s) => ({ ...s, uses: [...s.uses, ...(postUses.get(s.number) ?? [])] })).sort((a, b) => a.number - b.number);
-
-/** Identifier stays stable as an illustrative use gains new approaches. */
-export const microSkillId = (number: number): string => `SK-MICRO-${String(number).padStart(4, '0')}`;
 
 export function addMicroSkills(pack: ContentPack): void {
   if (!MICRO_SKILLS.length) return;

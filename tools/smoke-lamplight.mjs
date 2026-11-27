@@ -1,4 +1,6 @@
 import { createRequire } from 'node:module';
+import { playEmberfordShift } from './emberford-shift-journey.mjs';
+import { playLastBell } from './last-bell-journey.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const req = createRequire(process.env.KG_PLAYWRIGHT_PACKAGE || import.meta.url);
@@ -32,7 +34,7 @@ const close = async () => {
   await page.getByRole('dialog').waitFor({ state: 'hidden' });
 };
 const waitMap = (id) =>
-  page.waitForFunction((id) => window.kg?.world?.map.id === id && !kg.world.transitioning, id);
+  page.waitForFunction((id) => window.kg?.world?.map.id === id && !kg.world.transitioning, id, { timeout: 60000 });
 async function use(id) {
   const found = await page.evaluate((id) => {
     const w = kg.world,
@@ -76,7 +78,11 @@ try {
     .waitFor();
   await close();
   await waitMap('nexus.archive');
-  for (const [i, site] of sites.entries())
+  const bellOnly = process.argv.includes('--last-bell');
+  const shiftOnly = process.argv.includes('--emberford-shift');
+  if (shiftOnly) await playEmberfordShift({page,engine,waitMap,use,close,button,puzzles:load('puzzles.json').puzzles});
+  else if (bellOnly) await playLastBell({page,engine,waitMap,use,close,button,sites,posts});
+  else for (const [i, site] of sites.entries())
     if (i % 3 === split) {
       const post = posts.find((p) => p.id === site.id);
       if ((await page.evaluate(() => kg.world.map.id)) !== post.map) {
@@ -128,7 +134,7 @@ try {
     faults.filter((s) => !s.includes('favicon')),
     [],
   );
-  console.log(engine, browser.version(), 'passed both endings at each of five physical stations');
+  console.log(engine, browser.version(), shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
 } finally {
   await browser.close();
 }

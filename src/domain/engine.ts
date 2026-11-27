@@ -1,3 +1,4 @@
+import {lastBellEffects, type LastBellCommand} from './lastBell';
 import {watchEffects,type BellAction} from './watchBell';
 import { MOON_TUNE, moonPerformance, validMoonTune } from './spareMoonMusic';
 import { runNileTrial, nileDelivery, type NileRoad, type NileDelivery } from './nileModel';
@@ -50,7 +51,7 @@ import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
 import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
 import { dailyPrompts, diveDepth, diveItems, judgeDive } from './dive';
-import { TIME_MAX, TIME_MIN, answerRound, runSurvey, translateLine, judgeFrame, readForecasts, checkOrder, judgeSight, panes, readTimes, runSorter, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
+import { TIME_MAX, TIME_MIN, answerRound, runSurvey, translateLine, judgeFrame, readForecasts, checkOrder, judgeSight, panes, readTimes, echoReadings, runSorter, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
 import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
 import { objectiveSkillUse, recordSkillUse } from './skills';
@@ -70,9 +71,10 @@ import { biographyReadFlag, isHistoricalBiography } from './historicalEncounters
 
 const DIALOGUE_FALLBACK = 999;
 
-import { lanternEffects, pairEffects, type LanternCommand, type LanternPairCommand } from './lamplight';
+import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand, type LanternPairCommand } from './lamplight';
 
 export type Command =
+  | LastBellCommand
   | BellAction
   | LanternPairCommand
   | LanternCommand
@@ -106,6 +108,7 @@ export type Command =
   | { type: 'PuzzleMap'; puzzle: string; audience: string; layers: string[] }
   | { type: 'PuzzleDiagnose'; puzzle: string; index: number }
   | { type: 'PuzzleTrain'; puzzle: string; examples: string[] }
+  | { type: 'SelectEchoRecord'; puzzle: string; source: 'personal' | 'slip' }
   | { type: 'PuzzleTime'; puzzle: string; kind: 'echo' | 'react'; ms: number }
   | { type: 'PuzzleSurvey'; puzzle: string; wording: string; sample: string }
   | { type: 'PuzzleTranslate'; puzzle: string; picks: number[] }
@@ -432,15 +435,21 @@ export class Engine {
             s = apply([{ setFlag: MOON_TUNE, value: cmd.tune }, { setFlag: performed, value: true }], s, out);
           break;
         }
+        case 'WorkLastBell':
+          s = apply(lastBellEffects(cmd, s), s, out);
+          break;
         case 'WorkNightWatch':
           s = apply(watchEffects(cmd,s),s,out);
           break;
         case 'TurnLanternGlass':
           s = apply(pairEffects(cmd, s), s, out);
           break;
-        case 'WorkWithLantern':
+        case 'WorkWithLantern': {
           s = apply(lanternEffects(cmd, s), s, out);
+          const practice = lanternReturnPractice(s, cmd);
+          if (practice) skillUses.push(practice);
           break;
+        }
         case 'SetFlag':
           s = apply([{ setFlag: cmd.flag, value: cmd.value }], s, out);
           break;
@@ -1106,14 +1115,19 @@ export class Engine {
           events.push({ kind: 'yarn', board: rec.id, claim: cmd.claim, card: cmd.card, tone: v.tone, text: v.text, done });
           break;
         }
-        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': case 'PuzzleAddPoint': case 'PuzzlePredict': case 'PuzzleMap': case 'PuzzleDiagnose': case 'PuzzleTrain': case 'PuzzleTime': case 'PuzzleSurvey': case 'PuzzleTranslate': case 'PuzzleFrame': case 'PuzzleListen': case 'PuzzleForecast': {
+        case 'SelectEchoRecord': case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': case 'PuzzleAddPoint': case 'PuzzlePredict': case 'PuzzleMap': case 'PuzzleDiagnose': case 'PuzzleTrain': case 'PuzzleTime': case 'PuzzleSurvey': case 'PuzzleTranslate': case 'PuzzleFrame': case 'PuzzleListen': case 'PuzzleForecast': {
           const rec = this.pack.puzzles.find((x) => x.id === cmd.puzzle);
           if (!rec) throw new Error('Unknown puzzle');
           if (rec.needs && !s.inventory[rec.needs.item]) throw new Error(rec.needs.sealed);
           const F = `puzzle.${rec.id}`;
           const wasDone = s.flags[`${F}.done`] === true;
           let ok: boolean, text: string, solved: boolean, gapAt: number | null = null;
-          if (cmd.type === 'PuzzleForecast') {
+          if (cmd.type === 'SelectEchoRecord') {
+            if (rec.type !== 'echo' || !['slip','personal'].includes(cmd.source)) throw new Error('Choose a timing record at the echo stone.');
+            s = apply([{setFlag: F + '.use-slip', value: cmd.source === 'slip'}], s, out);
+            ok = true; solved = false;
+            text = cmd.source === 'slip' ? 'I unfolded ' + rec.timingSlip.label + '. His pencil marks pair each returning clap with a separate light trial.' : 'My timing marks are back beside the stone.';
+          } else if (cmd.type === 'PuzzleForecast') {
             if (rec.type !== 'forecast') throw new Error('Not a forecast puzzle');
             const list = readForecasts(s.flags[`${F}.f`]);
             if (list.length >= rec.days.length) throw new Error('Every day already has a forecast');
@@ -1169,12 +1183,12 @@ export class Engine {
           } else if (cmd.type === 'PuzzleDiagnose' || cmd.type === 'PuzzleTrain') {
             if (rec.type !== 'sorter') throw new Error('Not a sorter puzzle');
             if (cmd.type === 'PuzzleDiagnose') {
-              const r = rec.diagnose[cmd.index];
-              if (!r) throw new Error('No such answer');
-              ok = r.honest; text = r.why;
-              s = apply(r.honest ? [{ setFlag: `${F}.diagnosed`, value: true }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);
+              const inspection = rec.inspections[cmd.index];
+              if (!inspection) throw new Error('Choose a tray or a chute to inspect.');
+              ok = true; text = inspection.result;
+              s = apply([{ setFlag: `${F}.diagnosed`, value: true }], s, out);
             } else {
-              if (s.flags[`${F}.diagnosed`] !== true) throw new Error('Say why the sorter failed first');
+              if (s.flags[`${F}.diagnosed`] !== true) throw new Error('Inspect where the sorter sent the first basket.');
               if (cmd.examples.length > rec.slots) throw new Error(`The sorter holds only ${rec.slots} examples`);
               if (new Set(cmd.examples).size !== cmd.examples.length || cmd.examples.some((x) => !rec.crate.includes(x))) throw new Error('Choose examples from the crate');
               const r = runSorter(rec, cmd.examples);
@@ -1212,21 +1226,28 @@ export class Engine {
             if (rec.type === 'conjecture' && Number(s.flags[`${F}.n`] ?? 0) < rec.predictAt) throw new Error('Add the next point first');
             if (rec.type === 'mapmaker' && !rec.audiences.every((a) => typeof s.flags[`${F}.a.${a.id}`] === 'string')) throw new Error('Make a map for everyone first');
             if (rec.type === 'sorter' && typeof s.flags[`${F}.trained`] !== 'string') throw new Error('Teach the sorter first');
-            if (rec.type === 'echo' && (readTimes(s.flags[`${F}.echo`]).length < rec.minTimes || readTimes(s.flags[`${F}.react`]).length < rec.minTimes)) throw new Error('Time the echo and your reaction first');
+            if (rec.type === 'echo') {
+              const {echoes, reacts} = echoReadings(rec, s.flags);
+              if (echoes.length < rec.minTimes || reacts.length < rec.minTimes) throw new Error('Time the echo and your reaction or open Idris’s slip first.');
+            }
             if (rec.type === 'survey' && !String(s.flags[`${F}.runs`] ?? '').split(',').includes(`${rec.fair.wording}:${rec.fair.sample}`)) throw new Error('Run a survey with a plain question and a fair group first');
             if (rec.type === 'translate' && typeof s.flags[`${F}.sent`] !== 'string') throw new Error('Send a translation that keeps every part first');
             if (rec.type === 'forecast' && readForecasts(s.flags[`${F}.f`]).length < rec.days.length) throw new Error('Forecast every day first');
             if (rec.type === 'shepard' && s.flags[`${F}.compared`] !== true) throw new Error('Compare with the tuning glass first');
             if (rec.type === 'frame' && !rec.briefs.every((b) => typeof s.flags[`${F}.b.${b.id}`] === 'string')) throw new Error('Paint a poster for everyone first');
             if (rec.type !== 'forecast' && rec.type !== 'shepard' && rec.type !== 'frame' && rec.type !== 'sightlines' && rec.type !== 'conjecture' && rec.type !== 'mapmaker' && rec.type !== 'sorter' && rec.type !== 'echo' && rec.type !== 'survey' && rec.type !== 'translate') throw new Error('This puzzle has no report');
-            const r = rec.type === 'sightlines' ? rec.reports[cmd.index] : rec.reflect[cmd.index];
-            if (!r) throw new Error('No such report');
-            ok = r.honest; text = r.why; solved = r.honest;
-            if (rec.type === 'sightlines' && solved) {
-              const delivery = rec.reports[cmd.index].delivery;
-              if (delivery) s = apply([{ setFlag: `${F}.delivery`, value: delivery }], s, out);
+            if ('handoffs' in rec) {
+              const delivery = rec.handoffs[cmd.index];
+              if (!delivery) throw new Error('Choose a delivery for the next shift.');
+              s = apply([{ setFlag: `${F}.handoff`, value: cmd.index }], s, out);
+              ok = true; solved = true; text = delivery.result;
+            } else {
+              const r = rec.reports[cmd.index];
+              if (!r) throw new Error('No such report');
+              ok = r.honest; text = r.why; solved = r.honest;
+              if (solved && r.delivery) s = apply([{ setFlag: `${F}.delivery`, value: r.delivery }], s, out);
+              if (!r.honest) s = apply([{ addNum: `${F}.misses`, by: 1 }], s, out);
             }
-            if (!r.honest) s = apply([{ addNum: `${F}.misses`, by: 1 }], s, out);
           } else if (cmd.type === 'PuzzlePeel') {
             const r = peelLayer(rec, Number(s.flags[`${F}.peeled`] ?? 0));
             ok = r.ok; text = r.text; solved = false;

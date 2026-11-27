@@ -1,0 +1,454 @@
+[
+  {
+    "number": 1009,
+    "name": "Find the population behind a reported rate",
+    "uses": [
+      {
+        "objective": "night-watch.dispatch.handover",
+        "action": "Stretch the reply cord across four respondents and then across all six households before sending the runner.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "analytical",
+          "visual"
+        ],
+        "game": 114,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 1010,
+    "name": "Compare a quotation with the primary text",
+    "uses": [
+      {
+        "objective": "last-bell.voices.left",
+        "action": "Set both stops over the chalked fragment, then wind the uncropped cylinder before carrying the approved edition.",
+        "styles": [
+          "explorer",
+          "performer"
+        ],
+        "modes": [
+          "reading",
+          "linguistic"
+        ],
+        "game": 287,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 1015,
+    "name": "Identify who and where a study sampled",
+    "uses": [
+      {
+        "objective": "survey.o1.report",
+        "action": "Send Venn along a named sampling route and inspect the households included before deciding who will receive the result.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "social"
+        ],
+        "game": 114,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 1016,
+    "name": "Follow a stable identifier to its record",
+    "uses": [
+      {
+        "objective": "last-bell.voices.sleeve",
+        "action": "Follow the surviving W–17 shelf mark to the witness’s wax-cylinder loan record.",
+        "styles": [
+          "explorer"
+        ],
+        "modes": [
+          "reading"
+        ],
+        "game": 287,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 1066,
+    "name": "Check place evidence behind a public report",
+    "uses": [
+      {
+        "objective": "ember.circle.trace",
+        "action": "Stand at Havra’s lookout and check which landing her signed slip covers before acting on the stall’s closure notice.",
+        "styles": [
+          "explorer",
+          "challenger"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 173,
+        "story": 48
+      },
+      {
+        "objective": "film.coast.checked",
+        "action": "Check the location in the earlier still against the stone stair and its current tide instruction.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "spatial",
+          "visual"
+        ],
+        "game": 13,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 1077,
+    "name": "Compare a witness’s account with an instrument record",
+    "uses": [
+      {
+        "objective": "bells.o1.check",
+        "action": "Give your account of the bell stair, then compare its first and returning bands in the tuning glass before sharing the two observations.",
+        "styles": [
+          "explorer",
+          "performer"
+        ],
+        "modes": [
+          "auditory",
+          "visual"
+        ],
+        "game": 234,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 1080,
+    "name": "Turn findings from a failure into a revised practice",
+    "uses": [
+      {
+        "objective": "last-bell.island.field-check",
+        "action": "Replace the assumed two-beat crossing with the walked time and post a route retested behind the fog shutter.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "spatial",
+          "analytical"
+        ],
+        "game": 13,
+        "story": 15
+      }
+    ]
+  },
+  {
+    "number": 1086,
+    "name": "Test whether a fitted pattern survives a fresh observation",
+    "uses": [
+      {
+        "objective": "last-bell.island.field-check",
+        "action": "Test the model’s two-beat bridge against a fresh walk uphill and downhill, then send a new measured run to the shift.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 1090,
+    "name": "Trace what changes when a network loses a hub",
+    "uses": [
+      {
+        "objective": "last-bell.island.left",
+        "action": "Remove the shared optical tower with the fog shutter. Send one runner down each lane to find what still reaches the houses.",
+        "styles": [
+          "strategist",
+          "explorer"
+        ],
+        "modes": [
+          "spatial",
+          "analytical"
+        ],
+        "game": 158,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 1098,
+    "name": "Check whether repeated observations are independent",
+    "uses": [
+      {
+        "objective": "ember.circle.trace",
+        "action": "Trace two apparently corroborating notices back through the same press issue, then stand at the independent lookout.",
+        "styles": [
+          "explorer",
+          "challenger"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 173,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 1139,
+    "name": "Adapt the precision of a claim to two audiences",
+    "uses": [
+      {
+        "objective": "last-bell.voices.left",
+        "action": "Offer the full testimony for one listener or carry the short, bounded wording the witness permits a crowd to read.",
+        "styles": [
+          "helper",
+          "maker"
+        ],
+        "modes": [
+          "linguistic",
+          "social"
+        ],
+        "game": 173,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 1142,
+    "name": "Let the opening signal the route of the argument",
+    "uses": [
+      {
+        "objective": "last-bell.council.left",
+        "action": "Choose which record opens the hearing and put a different source second. Listen to the exchange that this order produces.",
+        "styles": [
+          "performer",
+          "maker"
+        ],
+        "modes": [
+          "linguistic",
+          "social"
+        ],
+        "game": 114,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 1154,
+    "name": "Replace a long phrase with precise words",
+    "uses": [
+      {
+        "objective": "ferry.o1.send",
+        "action": "Fit Sefa’s translated warning on one slate. Trade word length against the distinctions that the walkers, cart and rope carriers need.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 1157,
+    "name": "Make the referent of a pronoun recoverable",
+    "uses": [
+      {
+        "objective": "last-bell.voices.left",
+        "action": "Restore the phrase that identifies which bell the girl means by “it” and decide how the next listener will receive it.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "linguistic",
+          "reading"
+        ],
+        "game": 287,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 1158,
+    "name": "Earn the final synthesis from earlier evidence",
+    "uses": [
+      {
+        "objective": "last-bell.council.left",
+        "action": "Build the signed finding from two identifiable records. The second witness limits what the first may claim.",
+        "styles": [
+          "strategist",
+          "maker"
+        ],
+        "modes": [
+          "linguistic",
+          "social"
+        ],
+        "game": 114,
+        "story": 144
+      }
+    ]
+  },
+  {
+    "number": 1160,
+    "name": "Test whether a new reader can use the account",
+    "uses": [
+      {
+        "objective": "film.stage.received",
+        "action": "Find Delwen after the screening and observe whether the visitor can act on the edited cue from the chosen viewing place.",
+        "styles": [
+          "performer",
+          "helper"
+        ],
+        "modes": [
+          "spatial",
+          "social"
+        ],
+        "game": 234,
+        "story": 16
+      }
+    ]
+  },
+  {
+    "number": 1161,
+    "name": "Compose an exchange between two reasoned positions",
+    "uses": [
+      {
+        "objective": "last-bell.council.left",
+        "action": "Give two records to the desk in a chosen order; their keepers answer one another before the next hearing is assigned.",
+        "styles": [
+          "performer",
+          "companion"
+        ],
+        "modes": [
+          "linguistic",
+          "social"
+        ],
+        "game": 114,
+        "story": 15
+      }
+    ]
+  },
+  {
+    "number": 1180,
+    "name": "Distil a transferable insight for a new context",
+    "uses": [
+      {
+        "objective": "last-bell.council.reopened",
+        "action": "Bring a tested warning, its missing replies, the voice and the timed bridge into a new public trial with different responsibilities.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "analytical",
+          "social"
+        ],
+        "game": 114,
+        "story": 15
+      }
+    ]
+  },
+  {
+    "number": 1186,
+    "name": "Preserve a specific object’s context when using an image",
+    "uses": [
+      {
+        "objective": "film.coast.received",
+        "action": "Install the dated landmark image with a separate current stair instruction where an arriving carrier can use them.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "visual"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 1193,
+    "name": "Check the tone and attribution of a sensitive account",
+    "uses": [
+      {
+        "objective": "last-bell.voices.left",
+        "action": "Return the printed fragment to the speaker and issue a complete listening copy or her approved unsigned wording.",
+        "styles": [
+          "helper",
+          "companion"
+        ],
+        "modes": [
+          "reading",
+          "social"
+        ],
+        "game": 173,
+        "story": 25
+      }
+    ]
+  },
+  {
+    "number": 1198,
+    "name": "Check the integrity and sequence of a process record",
+    "uses": [
+      {
+        "objective": "ember.circle.trace",
+        "action": "Use dated issue lines and the broken letter on two printed copies to recover which notice came first and which one cited a copy.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "visual"
+        ],
+        "game": 287,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 1200,
+    "name": "Combine research, reasoning and ethical judgement in a new case",
+    "uses": [
+      {
+        "objective": "last-bell.council.reopened",
+        "action": "Reopen the public finding after checking all four keepers’ different records and give the affected households or the test crew the lead.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reflective",
+          "social"
+        ],
+        "game": 114,
+        "story": 144
+      }
+    ]
+  }
+]

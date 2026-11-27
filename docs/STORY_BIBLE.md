@@ -429,6 +429,20 @@ Someone has pressed a bird’s footprint into Ise’s wax. Unfolding one wing al
 
 The post links people through the Archive. Its pairings cross historical periods as part of the fantasy. For example, the lamp can make a tree appear inside Ibn al-Haytham's room and make the light disappear for one of Wang Zhenyi's observers. Keeping the separate testimonies unlocks their shared watermark. A narrow, sourced factual note is accessible under each seal, including on later visits. The historical conversations and their proposed meetings belong to the fictional plot. [Cases](../src/content/ink-post-letters.json) · [Pairs](../src/content/ink-post-watermarks.json)
 
+### Who gets the last dry frame?
+
+Oskar has four maps and one frame that will keep a sheet dry. Hang Efua’s well map there and two diggers can move tomorrow’s pegs. Give Kip the frame at his height and another child can add a step to the walk. At the sorter Hana puts aside fruit the machine rejected. Giving her the second-look basket buys a grower another hearing. Giving a grower the example tray gives them a say in how the next batch is judged. Each decision makes sense to someone who lives in town.
+
+The echo bridge, toll box, ferry slate, painter’s easel, bell stair, weather board and Imre’s round window also send word back to the Lamp Wall. Walk there to read a reply. The Guardian can change a handover after hearing what it cost, and the diary keeps the earlier visit. [Nine workshops and their replies](../src/content/puzzles.json) · [Journey through the town](../tools/emberford-shift-journey.mjs)
+
+### The kitchen bell and the missing houses, Chapters 11–15
+
+One sentence from a child has been chalked beneath the tower keeper’s portrait. She really did hear a bell. The missing words identify the little one by the stove. Maro cares about a father who needs sleep and a sister working on the flood steps. Ro knows what it costs to live in a house without a reply lamp. Wren wants people to hear the child, who wants a say in where her own voice travels. A listening sleeve gives the family control of the recording. An unsigned wording reaches the ferry crew together. Follow the sleeve, the model and the hearing invitation in either direction. Earlier choices travel with their makers. [Wax cuts and council exchanges](../src/domain/lastBell.ts)
+
+Joss can warn the kiln workers first or reach the sleeping boy above the sail loft. Walking the span beside her reveals why the wooden hill gets the crossing wrong in one direction. Both charts can be retested and amended. At the Council a witness can open the meeting, answer a runner or put a person back on the reply ledger. The families can call the next meeting or the crew can stage a public trial at dawn. A signed finding keeps its sources as the speakers saw them. Once the Guardian brings Maro’s clip, Ro’s ledger, Wren’s decision and Joss’s retested route together, the households can design a follow-up or run a comparable trial themselves. The original minute survives both addenda. [Routes and save checks](../tests/last-bell.test.ts)
+
+Each historical guest can also bring a tracing into another chapter. What was in the first two places and what was left out now matter. A student can try the omitted piece, listen to the new reading and choose to keep either arrangement. The earlier keeper holds on to the originating copy. [Guest return checks](../tests/guest-return.test.ts)
+
 ## 16. The 150 story elements
 
 Mika's list of 150 story elements is adapted to this game in [STORY_ELEMENTS.md](STORY_ELEMENTS.md), with a mark for each (in the game, partly, planned). Check it when you plan new content.

@@ -95,3 +95,7 @@ A fresh index on 27 November found 931 files in 55 folders of the supplied publi
 | Amara, weaver | With Ada Lovelace, move a repeat from loom to music roll. | The pattern stays traceable in the roll. Giving it pitches requires a second contributor. |
 
 [The two outcomes of each case](../../src/content/ink-post-letters.json) · [The shared watermarks](../../src/content/ink-post-watermarks.json)
+
+## Opening and closing evidence
+
+Henly’s First/Last activity and transitions model supplied two writing practices. At Wren’s listening hood, moving the two stops lets the Guardian hear how a quotation loses the object of the word “it.” Reinstating the last sentence changes what the crew can publish. In Time Hall, moving a different record into the first place changes who gets to speak and what the next person can challenge. A witness can limit a model’s claim, or the same model can suggest how to reach her. The dialogue and records are original to the river story. [Six hearing orders and six cylinder cuts](../../tests/last-bell.test.ts)

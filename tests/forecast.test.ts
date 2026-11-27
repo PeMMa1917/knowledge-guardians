@@ -22,15 +22,18 @@ describe('The Forecast Board (certainty)', () => {
     expect(brier(rec.days.map((d) => d.almanac), rained)).toBeLessThan(0.25);
     expect(rec.days.some((d) => d.almanac >= 0.7 && !d.rain)).toBe(true);
   });
-  it('every day needs a forecast before the reflection; any forecasts are allowed', () => {
+  it('every day needs a forecast before the delivery; any forecasts are allowed', () => {
     const d = new Driver();
-    const honest = rec.reflect.findIndex((r) => r.honest);
+    const delivery = rec.handoffs.length - 1;
     expect(() => d.run({ type: 'PuzzleForecast', puzzle: P, chance: 42 })).toThrow(/chances/);
     for (let i = 0; i < rec.days.length - 1; i++) d.run({ type: 'PuzzleForecast', puzzle: P, chance: 50 });
-    expect(() => d.run({ type: 'PuzzleReport', puzzle: P, index: honest })).toThrow(/every day/);
+    expect(() => d.run({ type: 'PuzzleReport', puzzle: P, index: delivery })).toThrow(/every day/);
     d.run({ type: 'PuzzleForecast', puzzle: P, chance: 90 });
     expect(() => d.run({ type: 'PuzzleForecast', puzzle: P, chance: 90 })).toThrow(/already/);
-    d.run({ type: 'PuzzleReport', puzzle: P, index: honest });
+    for (let index = 0; index < rec.handoffs.length; index++) {
+      d.run({type: 'PuzzleReport', puzzle: P, index});
+      expect(d.s.flags[`puzzle.${P}.handoff`]).toBe(index);
+    }
     expect(d.s.flags[`puzzle.${P}.done`]).toBe(true);
     expect(conceptXP(d.p, pack).certainty).toBeGreaterThan(0);
   });

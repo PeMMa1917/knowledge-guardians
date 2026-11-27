@@ -1,4 +1,5 @@
 import type { MapDef } from './types';
+import { HINGED_PLANK } from './hingedPlank';
 import { UNDERPAN } from './underpan';
 import { BELL_LOFT, SPARE_MOON } from './spareMoon';
 import { NEXUS } from './nexus';
@@ -79,6 +80,7 @@ import { WATER_CULVERT } from './catchment';
 import { SILL_BRIDGE, SILL_RECEIVING } from './sillBridge';
 
 const campaignMaps: Record<string, MapDef> = {
+  [HINGED_PLANK.id]: HINGED_PLANK,
   [WATER_CULVERT.id]: WATER_CULVERT,
   [NEXUS.id]: NEXUS,
   [UNDERPAN.id]: UNDERPAN,

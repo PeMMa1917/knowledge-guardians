@@ -313,6 +313,10 @@
     "aoks": [
      "NAT",
      "HUM"
+    ],
+    "framework": [
+     "methods-and-tools",
+     "scope"
     ]
    },
    "rounds": [
@@ -449,6 +453,10 @@
     "aoks": [
      "HUM",
      "HIS"
+    ],
+    "framework": [
+     "perspectives",
+     "methods-and-tools"
     ]
    },
    "onComplete": [
@@ -657,34 +665,35 @@
      "reply": "An interesting guess. What could make the count grow more slowly? Add the point and count."
     }
    ],
-   "reflect": [
-    {
-     "text": "Mathematics cannot be trusted.",
-     "honest": false,
-     "why": "The counting was exact every time. What failed was the jump from five cases to a rule for all cases. Mathematics found the mistake."
-    },
-    {
-     "text": "We must have counted wrong.",
-     "honest": false,
-     "why": "Look at the window: every pane is lit and counted once. Count again if you like; it is still 31."
-    },
-    {
-     "text": "Five cases made a pattern, not a proof. One case was enough to break the rule.",
-     "honest": true,
-     "why": "Yes. A pattern is evidence for a guess. A proof must hold for every number of points. One counterexample is enough to break a rule. Imre needs a 31st piece of glass, not a 32nd."
-    },
-    {
-     "text": "Patterns are useless in mathematics.",
-     "honest": false,
-     "why": "Patterns are where many good guesses start. The mistake is to stop at the pattern. The next step is a proof, or a counterexample."
-    }
-   ],
    "proof": [
     "Why 31? Watch one chord at a time. A new chord cuts each pane that it passes through into two.",
     "A chord that crosses k other chords passes through k + 1 panes, so it adds k + 1 panes.",
     "So: panes = 1 + (number of chords) + (number of crossings).",
     "Every pair of points makes one chord. Every four points make exactly one crossing (the two diagonals of their four-sided shape).",
     "With 6 points: 15 chords and 15 crossings, so 1 + 15 + 15 = 31. This works for every number of points, if no three chords meet at one point. That is a proof, not a pattern."
+   ],
+   "handoffPrompt": "Imre has one uncut pane. What should become of it?",
+   "handoffs": [
+    {
+     "label": "Save a pane for the next counterexample",
+     "result": "Imre keeps the last pane loose. Her apprentice can draw another arrangement before anyone orders glass.",
+     "reply": "A paper circle has arrived from the Archive. The last pane is still loose, and a child has drawn seven points on it."
+    },
+    {
+     "label": "Give the apprentice the six-point pattern",
+     "result": "The apprentice rubs the lead lines onto paper and can show the customer where the count changed.",
+     "reply": "Imre’s apprentice pinned the six-point rubbing beside a bill for the panes actually used."
+    },
+    {
+     "label": "Mark the first five beside the sixth",
+     "result": "Imre keeps the row that made doubling so tempting. A newcomer can watch the sixth mark break it.",
+     "reply": "Five little circles and one larger one hang under the lamp. The sixth has a thumbprint where a visitor counted twice."
+    },
+    {
+     "label": "Send the cutting crew the counted total",
+     "result": "The cutters can finish this particular window tonight. Imre keeps her question about the seventh point on the bench.",
+     "reply": "A glazier’s glove holds down the receipt. It covers this particular window. The next order still has a blank count."
+    }
    ]
   },
   {
@@ -699,7 +708,8 @@
    "weave": {
     "concepts": [
      "values",
-     "power"
+     "power",
+     "perspective"
     ],
     "atl": [
      "thinking",
@@ -710,6 +720,10 @@
     ],
     "aoks": [
      "HUM"
+    ],
+    "framework": [
+     "scope",
+     "perspectives"
     ]
    },
    "onComplete": [
@@ -793,26 +807,27 @@
      "lost": "Kip looks at the map. 'This is a map for grown-ups. Where are the good places?'"
     }
    ],
-   "reflect": [
+   "handoffPrompt": "Oskar has one dry frame left outside the hall. Whose map gets the frame this evening?",
+   "handoffs": [
     {
-     "text": "The clerk's map is the true one, because it is the official guild map.",
-     "honest": false,
-     "why": "Official tells you who made it and who uses it, not that it is complete. It leaves out Kip's echo and Efua's slopes. Who decides what goes on the official map has power over what counts."
+     "label": "Hang Efua’s well map",
+     "result": "Efua slips the slopes under the glass. Two diggers move tomorrow’s pegs. A visitor has to ask her where the inn is.",
+     "reply": "Efua’s thumbprint marks the low spot on the glass. A digger has left muddy boots underneath."
     },
     {
-     "text": "A map with all six layers would be the true one.",
-     "honest": false,
-     "why": "It would turn to mud on this paper, and it would still leave out smells, sounds, stories and the weather. Every map leaves things out. That is how it can be useful."
+     "label": "Leave the frame low enough for Kip",
+     "result": "Kip kneels to slide the children’s map home. A new child takes the long way past the warm step. The stall collector borrows the clerk’s loose copy.",
+     "reply": "A small hand has drawn a second warm step on the dust below Kip’s map. There is room for one more."
     },
     {
-     "text": "Each map is true for its purpose. None of them is the whole town, and what we leave out shows what we value.",
-     "honest": true,
-     "why": "Yes. A map is a model: it keeps what matters for one job and drops the rest. Asking 'what does this map leave out, and who decided?' is how to read any map, chart or model."
+     "label": "Face the traveller’s map toward the road",
+     "result": "A lost traveller finds the inn before the kitchen closes. Kip walks a new child down to the echo himself.",
+     "reply": "A kitchen receipt is tucked into the frame. The traveller made it in time for supper."
     },
     {
-     "text": "No map is true, because they all leave things out.",
-     "honest": false,
-     "why": "Each map got its user where they needed to go. Leaving things out is not the same as being false. A map is false when it shows a road that is not there."
+     "label": "Give the clerk the evening frame",
+     "result": "The clerk moves a stall marker before a family gets charged twice. Efua rolls her own sheet into a tube to protect it from the drizzle.",
+     "reply": "One stall fee has been crossed off beneath the clerk’s glass. Two thumbtacks hold the correction."
     }
    ]
   },
@@ -829,7 +844,8 @@
    "weave": {
     "concepts": [
      "power",
-     "objectivity"
+     "objectivity",
+     "justification"
     ],
     "atl": [
      "thinking",
@@ -841,6 +857,11 @@
     ],
     "aoks": [
      "TEC"
+    ],
+    "framework": [
+     "scope",
+     "methods-and-tools",
+     "ethics"
     ]
    },
    "onComplete": [
@@ -1019,48 +1040,45 @@
     "hana": "Hana's trees (green)",
     "hill": "the hill farm (yellow)"
    },
-   "diagnose": [
+   "inspections": [
     {
-     "text": "Green and yellow fruit is worse than red fruit.",
-     "honest": false,
-     "why": "Look at the basket: many of the green and yellow fruit have no bruise marks. The fruit was fine. The sorter had never seen it."
+     "label": "Lift Hana’s green apple out of the reject chute",
+     "result": "The apple has no bruise. Beside it, every example in Mara’s tray is red. Hana rolls the sound apple back to you."
     },
     {
-     "text": "The machine is broken.",
-     "honest": false,
-     "why": "It did exactly what it was built to do: copy its examples. A machine can work perfectly and still be unfair."
+     "label": "Turn Mara’s example tray around",
+     "result": "Both examples came from Mara’s own stall. No fruit from Hana’s or the hill farm ever reached the tray."
     },
     {
-     "text": "Somebody told the sorter to dislike green apples.",
-     "honest": false,
-     "why": "Nobody did, and nobody needed to. The examples were chosen without thinking about green fruit, and that was enough."
+     "label": "Walk the hill farm’s fruit through again",
+     "result": "The yellow skin reaches a colour with no example. The machine sends it aside before the bruise marks can make a difference."
     },
     {
-     "text": "Mara's examples were all red. The sorter has never seen green or yellow fruit, so it sets them all aside.",
-     "honest": true,
-     "why": "Yes. The machine does not know what a good apple is. It copies its examples, and every example was red. Now choose better examples from the crate."
+     "label": "Follow the two red apples through the brass fingers",
+     "result": "The sorter has seen red skins before. It separates the red apples by their marks. Neither chute knows what to do with the other two colours."
     }
    ],
-   "reflect": [
+   "handoffPrompt": "Hana finds one empty place beside the chute. What shall the next grower find there?",
+   "handoffs": [
     {
-     "text": "Machines are objective, so their sorting is always fair.",
-     "honest": false,
-     "why": "It was the same machine both times. Its first sorting was unfair because of its examples, not because of its brass."
+     "label": "Hang a tray of the examples Mara used",
+     "result": "Mara sets out the six places beside the chute. A grower can see what the machine has met. Hana still has to explain the apples it set aside.",
+     "reply": "There is a pear where the last example was. Its owner is waiting to see what the machine will do."
     },
     {
-     "text": "Now that it is right on this basket, it will be right on every basket.",
-     "honest": false,
-     "why": "This basket had three colours. A pear, or a new kind of apple, would be 'unknown' again. Test it again when the fruit changes."
+     "label": "Let Hana staff a second-look basket",
+     "result": "Hana makes room for a grower to ask for a second look. The queue grows longer. The first person in it has been holding one green apple all morning.",
+     "reply": "Hana’s basket has a name tied to the handle. The grower has come back to collect a disputed apple."
     },
     {
-     "text": "A machine that learns from examples knows only what its examples show. Whoever chooses the examples shapes what it can know, and who it treats fairly.",
-     "honest": true,
-     "why": "Yes. Choosing examples is a choice with power in it. Ask: who is missing from the examples, and who pays for it?"
+     "label": "Give the hill farm a turn with the tray",
+     "result": "A hill grower takes the tray home for the morning picking. Mara has to wait for those examples before she can run the new batch.",
+     "reply": "Yellow skins glint between the tray dividers. The hill farm has sent a note asking which batch was used."
     },
     {
-     "text": "We should never use sorting machines.",
-     "honest": false,
-     "why": "The sorter saves Mara hours every day. The lesson is to choose examples with care and keep checking, not to throw the machine away."
+     "label": "Leave a bell for an unfamiliar batch",
+     "result": "Mara hangs a little bell beside the hopper. A grower can stop an unfamiliar batch. Someone must leave the busy stall to check what stopped it.",
+     "reply": "A pear stem hangs from the bell string. Someone stopped the hopper before the new basket went in."
     }
    ]
   },
@@ -1088,6 +1106,10 @@
     ],
     "aoks": [
      "NAT"
+    ],
+    "framework": [
+     "scope",
+     "methods-and-tools"
     ]
    },
    "onComplete": [
@@ -1101,28 +1123,42 @@
    "distance": 85,
    "speed": 343,
    "minTimes": 3,
-   "reflect": [
+   "handoffPrompt": "Idris needs a mark for the next bridge crew. Kip wants the echo to stay a place to play.",
+   "handoffs": [
     {
-     "text": "Sound changes speed every time I clap.",
-     "honest": false,
-     "why": "In the same air, sound keeps nearly the same speed. The changes came from your hand and your ears, not from the sound."
+     "label": "Pin the first and corrected estimates together",
+     "result": "Idris leaves both estimates for the next measurer to compare. Kip has to explain why there are two distances to one wall.",
+     "reply": "Two chalk arrows point to the same rock. A new measurer has left a space below them for her reaction time."
     },
     {
-     "text": "The rope must be wrong.",
-     "honest": false,
-     "why": "The rope was checked against the guild's measure, and your corrected estimate came close to it. Two different methods that agree are strong evidence."
+     "label": "Lend Idris the knotted rope",
+     "result": "Idris asks two neighbours to walk the length with him before he marks the footbridge. Their hands are busy until the rope comes back.",
+     "reply": "Two wet handprints bracket a knot on Idris’s rope. The crew has marked where the last knot fell."
     },
     {
-     "text": "My reaction time adds a delay to every echo time, so every estimate was too far. Averaging cannot remove a delay that is always there, but measuring it and taking it away can.",
-     "honest": true,
-     "why": "Yes. Scientists call this a systematic error: it pushes every result the same way. Random scatter gets smaller with more tries; a systematic error needs a separate check."
+     "label": "Give Kip the marked listening spot",
+     "result": "Kip draws a heel mark where to stand. Two children hear the returning clap from the same place. Idris keeps the distances in his own book.",
+     "reply": "A second pair of small heels is pressed into the chalk. Someone has added an ear at the edge of Kip’s mark."
     },
     {
-     "text": "If I clap one hundred times, the average will be exactly right.",
-     "honest": false,
-     "why": "More claps make the random scatter smaller. They do not remove a delay that is in every single time."
+     "label": "Send the timing lantern to the next shift",
+     "result": "Idris lends the lantern so the new shift can measure its own delay. The bridge keeps its rope mark while the lantern is away.",
+     "reply": "The day shift has tied its own reaction times to the lantern. The figures differ in the hands of a different observer."
     }
-   ]
+   ],
+   "timingSlip": {
+    "label": "Idris’s evening run",
+    "echo": [
+     690,
+     710,
+     700
+    ],
+    "reaction": [
+     170,
+     220,
+     200
+    ]
+   }
   },
   {
    "id": "founders-plaque",
@@ -1376,7 +1412,7 @@
    "id": "toll-survey",
    "type": "survey",
    "title": "The Bridge Toll Survey",
-   "intro": "The new footbridge needs repairs every year. The guild council asks: does the town want a small toll to pay for them? Clerk Venn's survey box has three ways to ask the question and three groups of people to ask. Run a few surveys, compare the results, then write the council a fair report.",
+   "intro": "The new footbridge needs repairs every year. The guild council asks: does the town want a small toll to pay for them? Clerk Venn's survey box has three ways to ask the question and three groups of people to ask. Venn has enough lamp oil for one more meeting. Try taking the same question to different doors before you decide who gets that evening.",
    "skills": [
     "SK-RSC-02",
     "SK-THK-14",
@@ -1397,8 +1433,20 @@
      "global-politics"
     ],
     "aoks": [
-     "HUM"
-    ]
+     "HUM",
+     "POL"
+    ],
+    "framework": [
+     "methods-and-tools",
+     "scope",
+     "perspectives"
+    ],
+    "thinking": {
+     "dok": 3,
+     "bloom": "evaluate",
+     "fink": "application",
+     "solo": "relational"
+    }
    },
    "onComplete": [
     {
@@ -1621,26 +1669,27 @@
     "wording": "plain",
     "sample": "houses"
    },
-   "reflect": [
+   "handoffPrompt": "Venn has enough oil for one more meeting about the toll.",
+   "handoffs": [
     {
-     "text": "Six of six people said yes at the guild meeting. The town wants a toll.",
-     "honest": false,
-     "why": "Who comes to a guild meeting? Mostly guild members and their west-bank neighbours, who seldom cross the bridge. The group you ask can decide the answer before anyone speaks."
+     "label": "Take the box to the west-bank families",
+     "result": "A parent who could not leave the west bank speaks at her own door. The council postpones its vote a day.",
+     "reply": "A chair from the west bank is leaning against the wall. Its owner has come to hear what became of her answer."
     },
     {
-     "text": "With the right question, 5 of 8 houses said yes. Most of the town wants a toll.",
-     "honest": false,
-     "why": "'Most sensible people agree' pushes people who are not sure. The question made some of the yeses. A fair question does not tell people what sensible people think."
+     "label": "Hang the sample route beside the tally",
+     "result": "Bram can see whose doors were on the walk. A trader traces a lane the clerk never entered.",
+     "reply": "A trader has looped thread along the missing lane on Venn’s route. There is room to extend the walk."
     },
     {
-     "text": "About half of a fair sample said yes (4 of 8 houses, asked a plain question). The traders and east farmers, who cross most, mostly said no. Eight houses is a small sample, so a larger survey would make us surer.",
-     "honest": true,
-     "why": "Yes. The report says how you asked, whom you asked, what you found and how sure you can be. The council can now talk about who should pay, which is a question of fairness, not of numbers."
+     "label": "Read both wordings to the council",
+     "result": "The clerk speaks the question each group actually heard. Two councillors ask for the exact wording before they repeat a figure.",
+     "reply": "Two slips carrying different questions are pinned together. Their return tallies face inward so readers open the words first."
     },
     {
-     "text": "Surveys only show what the asker wants, so we can know nothing about what the town thinks.",
-     "honest": false,
-     "why": "A careless survey can do that. A plain question to a fair sample gave a result that matches the town quite well. Methods can be made fairer; that is the point of checking them."
+     "label": "Give the bridge crew the first hearing",
+     "result": "The repair crew can name the cost of a delay. People who cross before dawn ask to speak at a second meeting.",
+     "reply": "A repairer’s bent nail holds up the notice for a second sitting before dawn."
     }
    ]
   },
@@ -1670,8 +1719,20 @@
      "anthropology"
     ],
     "aoks": [
-     "LAN"
-    ]
+     "LAN",
+     "HUM"
+    ],
+    "framework": [
+     "scope",
+     "perspectives",
+     "methods-and-tools"
+    ],
+    "thinking": {
+     "dok": 3,
+     "bloom": "create",
+     "fink": "integration",
+     "solo": "relational"
+    }
    },
    "onComplete": [
     {
@@ -1813,26 +1874,27 @@
      "lost": "'Soon' can mean this hour or tomorrow. Half of the helpers come after dark."
     }
    ],
-   "reflect": [
+   "handoffPrompt": "Sefa leaves room at the end of the slate for one more pair of hands.",
+   "handoffs": [
     {
-     "text": "The cant is less exact than English, because one cant word needs a whole English phrase.",
-     "honest": false,
-     "why": "Look again at tavi. English 'we' does not say if it includes you; the cant always does. Every language marks some differences and leaves out others. No language is more exact about everything."
+     "label": "Put the walkers’ copy at the ford",
+     "result": "A walker takes the footpath. A carter stops at the line about wheels and turns toward the landing.",
+     "reply": "Mud from a cart wheel stops at the edge of Sefa’s slip. A narrow line of footprints continues."
     },
     {
-     "text": "A word-for-word translation is always the most faithful one.",
-     "honest": false,
-     "why": "Word for word gave 'flood', 'we', 'shallow' and 'soon', and the council did the wrong things. To keep the meaning, a translator sometimes needs more words or different words."
+     "label": "Send a rope carrier upriver to Tova",
+     "result": "The carrier can show Tova how the instruction travelled. The town has one fewer pair of hands for the morning load.",
+     "reply": "Tova sent back a short length of knot cord. Someone has written the carrier’s name on its wrapper."
     },
     {
-     "text": "Some cant words mark a difference that English needs several words for. A good translation keeps what its readers need, within its limits. A note or a back-translation shows the choices that the translator made.",
-     "honest": true,
-     "why": "Yes. Translation is interpretation: the translator chooses what to keep, and more than one translation can work. Many languages have an inclusive and an exclusive 'we'. English does not. That is a difference, not a weakness."
+     "label": "Keep the river words beside the town copy",
+     "result": "The ferry crew can point from a long phrase to the short word they use on the water. A hurried traveller has to ask someone to read the slate.",
+     "reply": "Two different hands have underlined the word for the slow rise. The second hand adds a little sketch of the bank."
     },
     {
-     "text": "Translation always loses something, so we cannot know what Tova meant.",
-     "honest": false,
-     "why": "Something can be lost, but Sefa's notes and the back-check helped you keep what mattered. Uncertainty can be made smaller, and you can say openly where it remains."
+     "label": "Let the crier call the departure time",
+     "result": "The crier reaches a queue that cannot see the slate. Sefa keeps the detail about the crossing on the post for anyone arriving late.",
+     "reply": "A carter pencilled the next call under the ferry slip. The written crossing detail is still there after the crier has gone."
     }
    ]
   },
@@ -2007,26 +2069,27 @@
      "success": "Bram taps the poster. 'There. Trouble, and a guard on the spot.' The poster is true: the quarrel really happened."
     }
    ],
-   "reflect": [
+   "handoffPrompt": "Nell has finished all three posters. Where will the uncut scene hang?",
+   "handoffs": [
     {
-     "text": "A picture shows what was really there, so all three posters are fair.",
-     "honest": false,
-     "why": "Everything in each poster was there. But each poster leaves out most of the market, and the choice of what to leave out makes an argument. True parts can add up to a picture that misleads."
+     "label": "Lend the whole painting to the old seller",
+     "result": "The seller sets his empty stall beside the fair crowd again. A donor stays to hear which afternoon it was.",
+     "reply": "A dab of Nell’s blue paint marks the old seller’s empty chair. He has gone to collect the painting."
     },
     {
-     "text": "The joyful poster is the true one, because most people in the market were happy.",
-     "honest": false,
-     "why": "Most people were happy, so the guild poster is closest to the whole scene. But the old seller and the quarrel happened too. 'Most' is not 'all'; a fair poster might say what it leaves out."
+     "label": "Hang the whole scene behind Bram’s crop",
+     "result": "Visitors can lift the quarrel poster and see the rest of that same afternoon. Bram still gets the first glance.",
+     "reply": "The corner of Bram’s poster has curled from all the people lifting it. The market crowd is visible underneath."
     },
     {
-     "text": "Each poster is true and each leaves things out. Where the frame goes is a choice made by someone for a purpose. To judge a picture, ask who framed it, why, and what was outside the frame.",
-     "honest": true,
-     "why": "Yes. Artists, photographers and film makers always choose a frame; that is part of their craft, not a lie. Knowing the purpose helps you read the picture. Sometimes the wide view is worth asking for."
+     "label": "Let Nell run a turning frame",
+     "result": "Nell fixes a sliding frame over the full painting. A child moves it from a quarrel to a dancing pair without changing a brushstroke.",
+     "reply": "A little thumb has polished two spots on Nell’s frame. It still slides between the quarrel and the dancers."
     },
     {
-     "text": "Because every frame leaves something out, pictures give us no knowledge.",
-     "honest": false,
-     "why": "Each poster gives real knowledge: there was a happy crowd, a struggling seller, a quarrel. The knowledge is partial, not empty. Putting the frames side by side gave you more than any one of them."
+     "label": "Send the fair a foldout with three views",
+     "result": "Orrin can advertise the fair. Each person who opens the leaflet also sees the empty stall and the argument.",
+     "reply": "One folded leaflet is pinned open on the wall. The paper has worn through where someone kept looking at the empty stall."
     }
    ]
   },
@@ -2056,8 +2119,19 @@
     ],
     "aoks": [
      "NAT",
-     "HUM"
-    ]
+     "HUM",
+     "ART"
+    ],
+    "framework": [
+     "perspectives",
+     "methods-and-tools"
+    ],
+    "thinking": {
+     "dok": 2,
+     "bloom": "analyse",
+     "fink": "integration",
+     "solo": "relational"
+    }
    },
    "onComplete": [
     {
@@ -2084,26 +2158,27 @@
      "reply": "That is a fair report too. The tuning glass shows the same bells as bars, so you can check without sound."
     }
    ],
-   "reflect": [
+   "handoffPrompt": "Maren would like someone else to inherit her impossible staircase.",
+   "handoffs": [
     {
-     "text": "My ears are useless. Only instruments give real knowledge.",
-     "honest": false,
-     "why": "Your ears were right that each step sounds higher than the one before. And the tuning glass is a tool that people designed and that you read with your eyes. Senses and instruments check each other."
+     "label": "Lend the tuning glass to a listener",
+     "result": "A listener traces the first and last bands himself. Maren has to teach the next group without the glass.",
+     "reply": "A listener has returned the glass with two matching tracings and a pencil mark where the climb seemed steepest."
     },
     {
-     "text": "The tuning glass must be wrong, because I clearly heard the bells rise.",
-     "honest": false,
-     "why": "Each single step does rise. But the glass shows the same notes at step 0 and step 12, every time you look. When what we perceive and what we measure disagree, ask how both could be true."
+     "label": "Give the choir the turning note",
+     "result": "The choir repeats the join. It can perform the endless climb while one singer listens for the point where the notes repeat.",
+     "reply": "The choir’s page is creased into a loop. A singer has pencilled a breath mark beside the join."
     },
     {
-     "text": "Each step really does sound higher, and after twelve steps the notes are the same as at the start. High notes fade out as low notes fade in, so the climb never seems to end. The illusion teaches me how hearing works, and the measurement helped me check what I heard.",
-     "honest": true,
-     "why": "Yes. Sound scientists call this kind of illusion a Shepard scale. Perception is not 'wrong' here; it follows rules, and the illusion lets us see them. Maren was honest. She was mistaken only about 'forever'."
+     "label": "Hang the paired tracings where visitors queue",
+     "result": "Visitors can inspect the two spectra before listening. Maren wonders how many would have heard the climb without that clue.",
+     "reply": "A visitor covered the tracings with an envelope so her brother could listen first. Both outlines are still underneath."
     },
     {
-     "text": "Maren lied to us about her bells.",
-     "honest": false,
-     "why": "Maren reported what she hears, honestly. An honest report can still be mistaken. A lie needs the intention to make someone believe what you think is false."
+     "label": "Keep a bench for two accounts of the bells",
+     "result": "One listener hears a climb, another hears the return. Maren seats them together for a second turn.",
+     "reply": "Two listeners have drawn different stairs beneath the lamp. Their drawings share a single glass tracing."
     }
    ]
   },
@@ -2242,26 +2317,27 @@
      "almanac": 0.75
     }
    ],
-   "reflect": [
+   "handoffPrompt": "Noa rolls the twelve mornings into a chart. Which part travels with tomorrow’s crew?",
+   "handoffs": [
     {
-     "text": "On day 4 the almanac said 70% and it stayed dry, so the almanac was wrong.",
-     "honest": false,
-     "why": "A 70% forecast says it stays dry on about 3 days in 10. One dry day cannot show that 70% was wrong. You judge a forecaster over many days, by asking if their chances match what happens."
+     "label": "Give the skipper the weather marks",
+     "result": "The skipper can compare tomorrow’s birds and glass with the old mornings. The chart leaves the timing of departure to the crew.",
+     "reply": "Noa’s skipper has left one new weather mark in the margin. The river has yet to fill in its outcome."
     },
     {
-     "text": "Be bold: always say 10% or 90%. Then you are right more often.",
-     "honest": false,
-     "why": "Bold forecasts feel good on the days they are right, but the score punishes a confident miss heavily. Saying 90% when the clues say 'as likely as not' is claiming more certainty than your evidence gives."
+     "label": "Give the cook the wet and dry counts",
+     "result": "The cook can see how often one forecast band ended wet. A rare storm in a sparse band still leaves an awkward decision about provisions.",
+     "reply": "Two bread orders hang under one forecast band. The cook is keeping track of the mornings that surprised her."
     },
     {
-     "text": "A good forecaster is not right every day. When they say 70%, it rains on about 7 days in 10. The almanac, which uses the clues, beat 'always 50%'. Twelve days is too few to be sure how good my forecasts are.",
-     "honest": true,
-     "why": "Yes. A forecast is a claim about how sure we should be, not a promise. Matching your certainty to your evidence is called calibration. A small sample is itself a reason to be modest."
+     "label": "Let the youngest fisher keep tomorrow’s line",
+     "result": "The new fisher writes a chance before the clouds change. Noa gives up her turn at the board and waits for the morning report.",
+     "reply": "The next line is in a smaller hand. The forecast is inked in and the space for rain is still dry."
     },
     {
-     "text": "Weather cannot be known, so every forecast is just a guess.",
-     "honest": false,
-     "why": "The clues helped: the almanac did better than 'always 50%'. Knowledge can be uncertain and still be useful. The skill is to say how uncertain."
+     "label": "Hang the almanac beside the crew’s chart",
+     "result": "The crew can compare the two records for the same twelve mornings. Noa asks them to leave a column for new trips.",
+     "reply": "A new column sits beside Noa’s figures and the almanac. Both will face the same weather tomorrow."
     }
    ]
   }
@@ -2412,6 +2488,10 @@
       "aoks": [
        "NAT",
        "HUM"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
       ]
      },
      "skills": [
@@ -2454,6 +2534,10 @@
       "aoks": [
        "HUM",
        "HIS"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
       ]
      },
      "skills": [
@@ -2525,7 +2609,8 @@
      "weave": {
       "concepts": [
        "values",
-       "power"
+       "power",
+       "perspective"
       ],
       "atl": [
        "thinking",
@@ -2536,6 +2621,10 @@
       ],
       "aoks": [
        "HUM"
+      ],
+      "framework": [
+       "scope",
+       "perspectives"
       ]
      },
      "skills": [
@@ -2565,7 +2654,8 @@
      "weave": {
       "concepts": [
        "power",
-       "objectivity"
+       "objectivity",
+       "justification"
       ],
       "atl": [
        "thinking",
@@ -2577,6 +2667,11 @@
       ],
       "aoks": [
        "TEC"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "ethics"
       ]
      },
      "skills": [
@@ -2618,6 +2713,10 @@
       ],
       "aoks": [
        "NAT"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
       ]
      },
      "skills": [
@@ -2705,8 +2804,20 @@
        "global-politics"
       ],
       "aoks": [
-       "HUM"
-      ]
+       "HUM",
+       "POL"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope",
+       "perspectives"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "application",
+       "solo": "relational"
+      }
      },
      "skills": [
       "SK-RSC-02",
@@ -2748,8 +2859,20 @@
        "anthropology"
       ],
       "aoks": [
-       "LAN"
-      ]
+       "LAN",
+       "HUM"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "integration",
+       "solo": "relational"
+      }
      },
      "skills": [
       "SK-ICU-10",
@@ -2836,8 +2959,19 @@
       ],
       "aoks": [
        "NAT",
-       "HUM"
-      ]
+       "HUM",
+       "ART"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      }
      },
      "skills": [
       "SK-KNO-05",
@@ -3035,7 +3169,7 @@
    "id": "h.win.4",
    "objective": "win.o1.count",
    "depth": 4,
-   "text": "Choose: five cases made a pattern, not a proof."
+   "text": "Add the sixth point and count its panes. Decide whether Imre needs the pattern for another test or the cutting crew needs a count now."
   },
   {
    "id": "h.maps.1",
@@ -3053,13 +3187,13 @@
    "id": "h.maps.3",
    "objective": "maps.o1.make",
    "depth": 3,
-   "text": "Then ask: which map is the true one? What does each map leave out?"
+   "text": "Each person has a different route. The frame by the hall can show only one map at once."
   },
   {
    "id": "h.maps.4",
    "objective": "maps.o1.make",
    "depth": 4,
-   "text": "Traveller: roads and names. Efua: wells and slopes. Clerk: stalls and names. Kip: loved places and roads. Then choose: each map is true for its purpose."
+   "text": "Try roads and names for the traveller, wells and slopes for Efua, stalls and names for the clerk, and loved places and roads for Kip. Choose whose map gets the evening frame."
   },
   {
    "id": "h.sorter.1",
@@ -3071,7 +3205,7 @@
    "id": "h.sorter.2",
    "objective": "sorter.o1.teach",
    "depth": 2,
-   "text": "Look at Mara's two examples. What colour are they?"
+   "text": "Lift a piece of fruit from the reject chute or turn the tray over. Look for the skin colours missing from Mara’s two examples."
   },
   {
    "id": "h.sorter.3",
@@ -3083,31 +3217,31 @@
    "id": "h.sorter.4",
    "objective": "sorter.o1.teach",
    "depth": 4,
-   "text": "Choose one good and one bruised red, green and yellow fruit (six examples). Then: the examples shape what it can know."
+   "text": "Fit one sound and one bruised fruit of each colour in the six spaces. Decide how a grower with an unfamiliar batch can be heard tomorrow."
   },
   {
    "id": "h.echo.1",
    "objective": "echo.o1.measure",
    "depth": 1,
-   "text": "Clap, then press the button as soon as you hear the echo. Do it a few times."
+   "text": "Clap and listen at the stone, or unfold Idris’s timing slip to work at your own pace."
   },
   {
    "id": "h.echo.2",
    "objective": "echo.o1.measure",
    "depth": 2,
-   "text": "Now test how quickly you react: press when the lantern lights."
+   "text": "Compare a returning clap with the delay before the observer signals a light. Both sets of times appear on Idris’s slip."
   },
   {
    "id": "h.echo.3",
    "objective": "echo.o1.measure",
    "depth": 3,
-   "text": "Compare your first estimate, your corrected estimate and the rope. Which way was the first estimate wrong?"
+   "text": "Set the first estimate, the corrected estimate and the knotted rope side by side. How close do the methods come on this run?"
   },
   {
    "id": "h.echo.4",
    "objective": "echo.o1.measure",
    "depth": 4,
-   "text": "Choose: my reaction time adds a delay to every echo time."
+   "text": "Use three echo and three reaction readings, your own or Idris’s. Select a mark, a record or a tool for the next shift, then read the reply on the Lamp Wall."
   },
   {
    "id": "h.res.1",
@@ -3155,7 +3289,7 @@
    "id": "h.survey.4",
    "objective": "survey.o1.report",
    "depth": 4,
-   "text": "Choose the report that says how you asked, whom you asked, what you found and how sure you can be."
+   "text": "Use the plain wording with every third house. Venn can take the two wordings, the route or a meeting to someone who needs it."
   },
   {
    "id": "h.ferry.1",
@@ -3179,7 +3313,7 @@
    "id": "h.ferry.4",
    "objective": "ferry.o1.send",
    "depth": 4,
-   "text": "Keep: slow water, both of us, walkers but not carts, and the time. Many short versions fit on the slate."
+   "text": "Keep the slow rise, both rope carriers, the limit on wheels and the time of arrival on the slate. Then choose how it travels."
   },
   {
    "id": "h.frame.1",
@@ -3203,7 +3337,7 @@
    "id": "h.frame.4",
    "objective": "frame.o1.posters",
    "depth": 4,
-   "text": "When all three are done, look at the three frames together. Which answer says who framed each one, and why?"
+   "text": "Complete all three commissions. Decide who can see the uncut painting and whose crop visitors see first."
   },
   {
    "id": "h.bells.1",
@@ -3227,7 +3361,7 @@
    "id": "h.bells.4",
    "objective": "bells.o1.check",
    "depth": 4,
-   "text": "Choose the answer that keeps both: what you heard, and what the glass showed."
+   "text": "Compare both ends of the climb in the tuning glass. Pick who will get another turn or carry a record away."
   },
   {
    "id": "h.forecast.1",
@@ -3251,7 +3385,7 @@
    "id": "h.forecast.4",
    "objective": "forecast.o1.days",
    "depth": 4,
-   "text": "Look at the result chart. Choose the answer about matching your chances to what happens."
+   "text": "Finish the twelve mornings, then compare the crew, the almanac and the weather that actually came. Choose who gets the next line."
   }
  ],
  "journal": [
@@ -3282,22 +3416,22 @@
   },
   {
    "id": "j.window",
-   "text": "The round window: 1, 2, 4, 8, 16 panes, and then 31. A pattern is evidence for a guess; only a proof holds for every case. One counterexample is enough to break a rule.",
+   "text": "Imre had already cut 32 pieces. I counted 31 panes when we joined the sixth point. The first five counts still stand. They just cannot promise her what the next window will cost.",
    "claimKind": "interpretation"
   },
   {
    "id": "j.maps",
-   "text": "The Mapmaker's Table: every map leaves things out, and that is what makes it useful. A map is true for a purpose. What it leaves out, and who decided, shows what someone valued.",
+   "text": "I drew four maps of the same town. A child can follow the warm steps on one. A digger looking for water needs a slope that didn’t fit on that sheet.",
    "claimKind": "interpretation"
   },
   {
    "id": "j.sorter",
-   "text": "The Brass Sorter: a machine that learns from examples knows only what its examples show. Choosing the examples is a choice with power in it: ask who is missing, and who pays for it.",
+   "text": "I could pick up the fruit the brass sorter refused. A machine can treat two growers differently even when the chute swings the same way every time. The examples we gave it came from somebody’s stall.",
    "claimKind": "interpretation"
   },
   {
    "id": "j.echo",
-   "text": "The Echo Bridge: my reaction time added a delay to every echo time, so every estimate was too far. More tries shrink random scatter; a systematic error needs its own check.",
+   "text": "There are two delays in the marks at Kip’s bridge. One belongs to the sound crossing the river twice. The other belongs to the hand recording it. I can use the light trials to estimate the second one.",
    "claimKind": "interpretation"
   },
   {
@@ -3307,27 +3441,27 @@
   },
   {
    "id": "j.survey",
-   "text": "The Bridge Toll Survey: who you ask and how you ask can decide the answer. A fair report says how, whom, what, and how sure.",
+   "text": "Every third door on Venn’s round makes a different invitation from asking people who are already at the bridge. I’ll want the route and the words on the slip before I speak for the whole town.",
    "claimKind": "interpretation"
   },
   {
    "id": "j.ferry",
-   "text": "The Ferry Message: some words carry differences that another language needs a phrase for. A translator chooses what to keep, and can show those choices.",
+   "text": "Sefa’s smallest word had room for the whole town. In one version of “we,” the ferry folk would have to bring all the ropes themselves. I had to leave room on the slate for the people who were being asked to help.",
    "claimKind": "interpretation"
   },
   {
    "id": "j.frame",
-   "text": "The Painter's Frame: three true posters from one painting told three different stories. Ask who framed a picture, why, and what was outside the frame.",
+   "text": "Nell let me cut three posters from one market scene. Every person on each poster was really there. Someone who saw only one crop could still walk away with a different story about that morning.",
    "claimKind": "interpretation"
   },
   {
    "id": "j.bells",
-   "text": "The Endless Bell Stair: every step sounded higher, but after twelve steps the notes were the same. A measurement checked my hearing, and the illusion showed me how hearing works.",
+   "text": "Maren calls her staircase endless. I brought its first and last bands together in the tuning glass. The bands meet. I can show someone the join and still leave room for their own account of listening.",
    "claimKind": "interpretation"
   },
   {
    "id": "j.forecast",
-   "text": "The Forecast Board: a good forecast is not always right. Its chances match what happens over many days, and it claims only as much certainty as the evidence gives.",
+   "text": "I left twelve mornings on Noa’s board. On any one of them a likely shower could still miss the boat. The whole row gives the next crew something to compare with their own weather.",
    "claimKind": "interpretation"
   }
  ],

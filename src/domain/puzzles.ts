@@ -225,6 +225,12 @@ export function echoDistance(ms: number, speed: number): number { return (speed 
 export function echoDelay(p: PuzzleRecord): number { if (p.type !== 'echo') throw new Error('Not an echo puzzle'); return (2 * p.distance) / p.speed; }
 export const TIME_MIN = 60, TIME_MAX = 4000;
 /** Times are kept as a comma list of whole milliseconds in a flag. */
+export function echoReadings(p: Extract<PuzzleRecord, {type: 'echo'}>, flags: Readonly<Record<string, unknown>>) {
+  const key = 'puzzle.' + p.id;
+  if (flags[key + '.use-slip'] === true) return {echoes: p.timingSlip.echo, reacts: p.timingSlip.reaction};
+  return {echoes: readTimes(flags[key + '.echo']), reacts: readTimes(flags[key + '.react'])};
+}
+
 export function readTimes(v: unknown): number[] {
   return typeof v === 'string' && v ? v.split(',').map(Number).filter((x) => Number.isFinite(x) && x >= TIME_MIN && x <= TIME_MAX) : [];
 }

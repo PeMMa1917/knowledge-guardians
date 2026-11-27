@@ -49,7 +49,7 @@ import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads,
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
-import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, runSorter, framed, shepardParts, brier, calibration, readForecasts, runSurvey, sightBlock, tiltOf, timeStats, translateLine, type SorterRun } from '../domain/puzzles';
+import { chordFigure, circlePoints, echoDelay, echoDistance, panes, echoReadings, runSorter, framed, shepardParts, brier, calibration, readForecasts, runSurvey, sightBlock, tiltOf, timeStats, translateLine, type SorterRun } from '../domain/puzzles';
 import { audioNow, chime, clapEcho, playNotes, playShepard } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
@@ -1863,6 +1863,17 @@ export class UI implements UIApi {
       this.sfx(r.ok ? 'sfx.sparkle' : 'sfx.page');
       render();
     };
+    const fieldDelivery = (job: Extract<PuzzleRecord, { handoffPrompt: string }>) => {
+      const selected = c.state.flags[`${F}.handoff`];
+      const receipt = typeof selected === 'number' ? job.handoffs[selected] : undefined;
+      return h('section', {}, h('h3', {}, job.handoffPrompt),
+        receipt ? h('p', {}, receipt.result + ' A reply is waiting on Emberford’s Lamp Wall.') : '',
+        h('div', { class: 'options' }, ...job.handoffs.map((delivery, i) =>
+          h('button', { type: 'button', 'aria-pressed': String(i === selected), 'data-delivery': i, onclick: () => {
+            take(c.dispatch({ type: 'PuzzleReport', puzzle: job.id, index: i }));
+            box.querySelector<HTMLButtonElement>(`[data-delivery="${i}"]`)?.focus();
+          } }, delivery.label))));
+    };
     const render = () => {
       const done = c.state.flags[`${F}.done`] === true;
       clear(box);
@@ -1933,12 +1944,10 @@ export class UI implements UIApi {
           const chart = h('div', { class: 'calib', role: 'img', 'aria-label': cal.map((g) => `When you said ${g.p}%, it rained on ${g.rain} of ${g.days} days`).join('. ') });
           chart.innerHTML = `<svg viewBox="0 0 220 140" aria-hidden="true"><rect width="220" height="140" rx="8" fill="#14202b"/><line x1="20" y1="120" x2="210" y2="120" stroke="#4a6a85"/><line x1="20" y1="120" x2="210" y2="20" stroke="#f6c453" stroke-dasharray="4 3"/>${cal.map((g) => { const x = 20 + (g.p / 100) * 190, hgt = (g.rain / g.days) * 100; return `<rect x="${x - 8}" y="${120 - hgt}" width="16" height="${hgt}" fill="#7cc4ff" opacity="0.9"/><text x="${x}" y="133" font-size="8" fill="#9fb3c8" text-anchor="middle">${g.p}%</text><text x="${x}" y="${116 - hgt}" font-size="8" fill="#e8efe8" text-anchor="middle">${g.rain}/${g.days}</text>`; }).join('')}</svg>`;
           box.append(h('h3', {}, 'How did the forecasts do?'),
-            h('p', { class: 'fine' }, 'The score is the average of (forecast − what happened)², so lower is better. 0 would mean certain and always right. It is not a mark: no score is a pass or a fail.'),
+            h('p', { class: 'fine' }, 'Noa keeps each forecast beside what happened. The score averages the squared differences over twelve mornings. A smaller number means the forecasts came closer to the weather the crew saw.'),
             h('div', { class: 'scores' }, bar('Your forecasts', you, 'you'), bar("Always '50%'", half, 'half'), bar('The almanac', alm, 'alm')),
             h('p', { class: 'fine' }, 'The bars show how often it rained when you said each chance. On a well-matched forecast, the bars reach the dashed line.'), chart,
-            h('h3', {}, done ? 'What you learned' : 'What does this tell you about being sure?'),
-            done ? h('p', { class: 'fair' }, rec.reflect.find((x) => x.honest)!.text)
-              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((x, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, x.text)))));
+            fieldDelivery(rec));
         }
         if (feedback) {
           const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
@@ -1985,9 +1994,7 @@ export class UI implements UIApi {
               : h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleListen', puzzle: rec.id, action: 'compare' })) }, `Compare step 0 with step ${rec.steps}`)));
         }
         if (compared) {
-          box.append(h('h3', {}, done ? 'What you learned' : '4. What do your ears and the glass tell you together?'),
-            done ? h('p', { class: 'fair' }, rec.reflect.find((x) => x.honest)!.text)
-              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((x, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, x.text)))));
+          box.append(fieldDelivery(rec));
         }
         if (feedback) {
           const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
@@ -2045,9 +2052,7 @@ export class UI implements UIApi {
           all.innerHTML = `<svg viewBox="0 0 ${SW} ${SH}" aria-hidden="true">${inner}${rec.briefs.map((q, i) => { const [x, y] = String(c.state.flags[`${F}.b.${q.id}`]).split(',').map(Number); return `<rect x="${x * U + i * 2}" y="${y * U + i * 2}" width="${FW - i * 4}" height="${FH - i * 4}" fill="none" stroke="${COL[i % 4]}" stroke-width="2.5"/>`; }).join('')}</svg>`;
           box.append(h('h3', {}, 'All three posters, on the whole painting'), all,
             h('ul', { class: 'row wrap frame-key' }, ...rec.briefs.map((q, i) => h('li', {}, h('span', { class: 'dot', style: { background: COL[i % 4] } }), ` ${q.who}`))),
-            h('h3', {}, done ? 'What you learned' : 'Each poster is true. What do they teach you?'),
-            done ? h('p', { class: 'fair' }, rec.reflect.find((x) => x.honest)!.text)
-              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((x, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, x.text)))));
+            fieldDelivery(rec));
         }
         if (feedback) {
           const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
@@ -2085,9 +2090,7 @@ export class UI implements UIApi {
               h('ul', { class: 'tr-needs' }, ...rec.parts.map((n) => h('li', { class: lr.kept.includes(n.id) ? 'kept' : 'lost' }, `${lr.kept.includes(n.id) ? '✓' : '✕'} ${n.name}`)))));
         }
         if (sent) {
-          box.append(h('h3', {}, done ? 'What you learned' : '3. What did the translation teach you?'),
-            done ? h('p', { class: 'fair' }, rec.reflect.find((x) => x.honest)!.text)
-              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((x, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, x.text)))));
+          box.append(fieldDelivery(rec));
         }
         if (feedback) {
           const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
@@ -2114,17 +2117,22 @@ export class UI implements UIApi {
           })));
         }
         if (runs.length >= 2 || fairDone) {
-          box.append(h('h3', {}, done ? 'Your report to the council' : 'Write the report to the council'),
-            !fairDone && !done ? h('p', { class: 'fine' }, 'Before you report, try a plain question with a group from every part of town.') : '',
-            done ? h('p', { class: 'fair' }, rec.reflect.find((r) => r.honest)!.text)
-              : fairDone ? h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text)))) : '');
+          box.append(fairDone ? fieldDelivery(rec) : h('p', {class: 'fine'}, 'Try a plain question with a group from every part of town before Venn takes the results to the meeting.'));
         }
         if (feedback) {
           const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
           box.append(fb); requestAnimationFrame(() => fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
         }
       } else if (rec.type === 'echo') {
-        const echoes = readTimes(c.state.flags[`${F}.echo`]), reacts = readTimes(c.state.flags[`${F}.react`]);
+        const slip = c.state.flags[F + '.use-slip'] === true;
+        const {echoes, reacts} = echoReadings(rec, c.state.flags);
+        box.append(h('button', {type: 'button', 'data-echo-source': true, onclick: () => {
+          clearTimeout(echo.timer);
+          echo.mode = 'idle';
+          take(c.dispatch({type: 'SelectEchoRecord', puzzle: rec.id, source: slip ? 'personal' : 'slip'}));
+          box.querySelector<HTMLButtonElement>('[data-echo-source]')?.focus();
+        }}, slip ? 'Return to my own timing marks' : 'Open Idris’s timing slip'));
+        if (slip) box.append(h('blockquote', {}, rec.timingSlip.label + '. Returning claps in milliseconds: ' + echoes.join(', ') + '. Reactions to the light: ' + reacts.join(', ') + '.'));
         const es = timeStats(echoes), rs = timeStats(reacts);
         const now = () => (echo.audio ? (audioNow() ?? 0) * 1000 : performance.now());
         const record = (kind: 'echo' | 'react') => { const ms = now() - echo.t0; clearTimeout(echo.timer); echo.mode = 'idle'; take(c.dispatch({ type: 'PuzzleTime', puzzle: rec.id, kind, ms })); };
@@ -2132,7 +2140,7 @@ export class UI implements UIApi {
         const fmt = (ms: number) => `${(ms / 1000).toFixed(2)} s`;
         box.append(h('div', { class: 'echo-scene', 'aria-hidden': 'true' }, h('span', { class: 'wall' }), h('span', { class: `wave ${echo.mode === 'listen' ? 'go' : ''}` }), h('span', { class: 'you' }, '👏'), lantern));
         // Step 1: the echo.
-        box.append(h('h3', {}, `Step 1. Time the echo (${echoes.length} of ${rec.minTimes} or more)`),
+        if (!slip) box.append(h('h3', {}, `Time the echo (${echoes.length} of ${rec.minTimes} or more)`),
           h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: flashEcho, onchange: (e: Event) => { flashEcho = (e.target as HTMLInputElement).checked; render(); } }), ' Also show the echo as a flash (for no sound)'),
           h('div', { class: 'row' },
             echo.mode === 'listen'
@@ -2148,8 +2156,8 @@ export class UI implements UIApi {
               } }, 'Clap')),
           echoes.length ? h('p', {}, `Your times: ${echoes.map(fmt).join(', ')}. Mean ${fmt(es.mean)}, spread ${fmt(es.spread)}. Estimate: ${Math.round(echoDistance(es.mean, rec.speed))} m to the wall.`) : '');
         // Step 2: reaction time.
-        if (echoes.length >= rec.minTimes) {
-          box.append(h('h3', {}, `Step 2. How quickly do you react? (${reacts.length} of ${rec.minTimes} or more)`),
+        if (!slip && echoes.length >= rec.minTimes) {
+          box.append(h('h3', {}, `How quickly do you react? (${reacts.length} of ${rec.minTimes} or more)`),
             h('p', { class: 'fine' }, 'Press Start, then press again as soon as the lantern lights. Wait for it!'),
             h('div', { class: 'row' }, echo.mode === 'wait' || echo.mode === 'go'
               ? h('button', { class: 'primary big', 'data-autofocus': true, onclick: () => {
@@ -2168,12 +2176,11 @@ export class UI implements UIApi {
           const first = echoDistance(es.mean, rec.speed), fixed = echoDistance(Math.max(0, es.mean - rs.mean), rec.speed);
           const max = Math.max(first, fixed, rec.distance) * 1.1;
           const bar = (label: string, v: number, cls: string) => h('div', { class: 'echo-bar' }, h('span', {}, label), h('span', { class: `fill ${cls}`, style: { width: `${(v / max) * 100}%` } }), h('strong', {}, `${Math.round(v)} m`));
-          box.append(h('h3', {}, 'Step 3. Check'),
+          box.append(h('h3', {}, slip ? 'Idris’s marks beside his rope' : 'My marks beside Idris’s rope'),
             h('p', {}, `Idris and two friends walked a knotted rope to the wall: ${rec.distance} m.`),
-            h('div', { class: 'echo-bars' }, bar('Your first estimate', first, 'first'), bar('Echo time minus your reaction time', fixed, 'fixed'), bar('The rope', rec.distance, 'rope')),
+            h('div', { class: 'echo-bars' }, bar(slip ? 'Idris’s first estimate' : 'Your first estimate', first, 'first'), bar('Echo time minus reaction time', fixed, 'fixed'), bar('The rope', rec.distance, 'rope')),
             Math.abs(fixed - rec.distance) > 15 ? h('p', { class: 'fine' }, `Your corrected estimate is still ${Math.round(Math.abs(fixed - rec.distance))} m from the rope. That is real data too: listening for a sound is not quite the same as watching for a light, and a careful scientist says so. Try a few more of each if you like.`) : '',
-            done ? h('p', { class: 'fair' }, rec.reflect.find((r) => r.honest)!.text)
-              : h('div', {}, h('h3', {}, 'What does this show?'), h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text))))));
+            fieldDelivery(rec));
         }
         if (feedback) {
           const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
@@ -2192,8 +2199,12 @@ export class UI implements UIApi {
           if (sorterRun) {
             const r = sorterRun;
             box.append(h('p', {}, `${r.right} of ${r.total} sorted right. Good fruit set aside from: ${r.farmsHurt.map((x) => rec.farms[x]).join(', ') || 'nobody'}.`),
-              h('h3', {}, "Hana says: 'Why does it throw away my good apples?' What is the reason?"),
-              h('div', { class: 'options notice-options' }, ...rec.diagnose.map((d, i) => h('button', { type: 'button', onclick: () => { take(c.dispatch({ type: 'PuzzleDiagnose', puzzle: rec.id, index: i })); if (c.state.flags[`${F}.diagnosed`] === true) sorterRun = null; } }, h('span', { class: 'notice-text' }, d.text)))));
+              h('h3', {}, 'Hana holds the reject chute open. Where will you look?'),
+              h('div', { class: 'options' }, ...rec.inspections.map((item, i) => h('button', { type: 'button', onclick: () => {
+                sorterRun = null;
+                take(c.dispatch({ type: 'PuzzleDiagnose', puzzle: rec.id, index: i }));
+                box.querySelector<HTMLButtonElement>('.fruit-btn:not(:disabled)')?.focus();
+              } }, item.label))));
           }
         } else {
           if (trained && !examples.length) examples = String(c.state.flags[`${F}.trained`]).split(',');
@@ -2203,9 +2214,7 @@ export class UI implements UIApi {
             h('div', { class: 'row' }, h('button', { class: 'primary', disabled: !examples.length, onclick: () => { const ev = c.dispatch({ type: 'PuzzleTrain', puzzle: rec.id, examples: [...examples] }); runIt(examples); take(ev); } }, 'Teach the sorter and run the basket'),
               h('button', { onclick: () => { examples = []; sorterRun = null; feedback = null; render(); } }, 'Empty the example tray')));
           if (trained) {
-            box.append(h('h3', {}, done ? 'What you learned' : 'The sorter is fair to all three farms now. What did you learn?'),
-              done ? h('p', { class: 'fair' }, rec.reflect.find((r) => r.honest)!.text)
-                : h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text)))));
+            box.append(fieldDelivery(rec));
           }
         }
         if (feedback) {
@@ -2227,9 +2236,7 @@ export class UI implements UIApi {
             h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleMap', puzzle: rec.id, audience: a.id, layers: [...sheet] })) }, `Give this map to ${a.name.split(',')[0]}`))));
         if (feedback) box.append(h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text));
         if (rec.audiences.every((x) => served(x.id))) {
-          box.append(h('h3', {}, done ? 'Your answer' : 'Four maps of one town. Which one is the true map of Emberford?'),
-            done ? h('p', { class: 'fair' }, rec.reflect.find((r) => r.honest)!.text)
-              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text)))));
+          box.append(fieldDelivery(rec));
           if (feedback && !feedback.ok) { const fb = box.querySelector('.alcove-feedback'); if (fb) box.append(fb); }
         }
       } else if (rec.type === 'conjecture') {
@@ -2243,12 +2250,11 @@ export class UI implements UIApi {
         if (n < rec.angles.length && !(n + 1 === rec.predictAt && !predicted)) {
           box.append(h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => { take(c.dispatch({ type: 'PuzzleAddPoint', puzzle: rec.id })); chime(ctx.settings.sfxVolume * 0.6); caption('amb.chime'); } }, n ? 'Add a point and join it with lead' : 'Put the first point on the circle')));
         } else if (n + 1 === rec.predictAt && !predicted) {
-          box.append(h('h3', {}, `Before you add point ${rec.predictAt}: what do you expect?`), h('p', { class: 'fine' }, 'Any answer is fine. This is your guess, not a test.'),
+          box.append(h('h3', {}, `Before you add point ${rec.predictAt}: what do you expect?`), h('p', { class: 'fine' }, 'Imre will set your estimate beside the pane count when the next cut is made.'),
             h('div', { class: 'options notice-options' }, ...rec.predictions.map((pr, i) => h('button', { type: 'button', onclick: () => take(c.dispatch({ type: 'PuzzlePredict', puzzle: rec.id, index: i })) }, h('span', { class: 'notice-text' }, pr.text)))));
         }
-        if (n >= rec.predictAt && !done) {
-          box.append(h('h3', {}, `${panes(rec.predictAt)} panes, not ${2 ** (rec.predictAt - 1)}. What does this show?`),
-            h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text)))));
+        if (n >= rec.predictAt) {
+          box.append(h('p', {}, 'At the sixth point the count reaches ' + panes(rec.predictAt) + '. Imre sets down her glass cutter.'), fieldDelivery(rec));
         }
         if (done) {
           const f = chordFigure(rec.angles.slice(0, n));
@@ -4823,6 +4829,18 @@ export class UI implements UIApi {
         : 'Sixteen small lamps on an old board by the guild hall door. A brass plate says: ONE LAMP FOR EACH KNOT THE TOWN UNTIES. Most lamps are dark. Guildmaster Orrin may know why.'),
       h('p', { class: 'lamp-count', role: 'status' }, `${n} of ${knots.length} lamps lit. `,
         n >= 6 ? 'The cellar door beside the guild hall is open.' : `${6 - n} more, and the cellar door beside the guild hall opens.`),
+      ...c.pack.puzzles.flatMap((job) => {
+        if (!('handoffs' in job)) return [];
+        const chosen = c.state.flags['puzzle.' + job.id + '.handoff'];
+        const reply = typeof chosen === 'number' ? job.handoffs[chosen] : undefined;
+        if (!reply) return [];
+        const title = job.title + ' · ' + reply.label;
+        const note = h('details', {}, h('summary', {}, title), h('p', {}, reply.reply));
+        note.addEventListener('toggle', () => {
+          if (note.open) c.dispatch({type: 'ReadWorldSign', id: 'field-reply.' + job.id + '.' + chosen, title, text: reply.reply});
+        });
+        return [note];
+      }),
       h('ol', { class: 'lamp-grid' }, ...knots.map((k) => {
         const on = c.state.flags[`lamp.${k.id}`] === true;
         return h('li', { class: `lamp ${on ? 'on' : ''}` },

@@ -478,6 +478,20 @@
         ],
         "game": 234,
         "story": 29
+      },
+      {
+        "objective": "last-bell.council.left",
+        "action": "After hearing two sources, give the families or the dawn shift a concrete way of calling the council back.",
+        "styles": [
+          "challenger",
+          "helper"
+        ],
+        "modes": [
+          "social",
+          "reflective"
+        ],
+        "game": 114,
+        "story": 11
       }
     ]
   },
@@ -686,6 +700,20 @@
         ],
         "game": 234,
         "story": 29
+      },
+      {
+        "objective": "last-bell.island.field-check",
+        "action": "Reopen the chalked bridge times after Joss times the hinged plank in both directions, rerun the lane and republish.",
+        "styles": [
+          "explorer",
+          "companion"
+        ],
+        "modes": [
+          "spatial",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 15
       }
     ]
   },
@@ -706,6 +734,20 @@
         ],
         "game": 234,
         "story": 29
+      },
+      {
+        "objective": "last-bell.island.left",
+        "action": "Compare the same lane in clear air and fog, and try moving the single runner before posting the first knock.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "spatial",
+          "analytical"
+        ],
+        "game": 158,
+        "story": 11
       }
     ]
   },
@@ -726,6 +768,20 @@
         ],
         "game": 234,
         "story": 29
+      },
+      {
+        "objective": "last-bell.island.left",
+        "action": "Hold the lane fixed and change the shutter; then change the runner’s first stop while the tower remains hidden.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "analytical"
+        ],
+        "game": 158,
+        "story": 77
       }
     ]
   },
@@ -786,6 +842,20 @@
         ],
         "game": 234,
         "story": 29
+      },
+      {
+        "objective": "nexus.rest.checked",
+        "action": "Count loan transactions, compare the requests the counter misses and keep the waiting group’s need visible when placing the rests.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "analytical",
+          "social"
+        ],
+        "game": 114,
+        "story": 11
       }
     ]
   },

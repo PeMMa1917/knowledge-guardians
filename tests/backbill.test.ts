@@ -47,7 +47,7 @@ function earnFrame(d: Driver) {
   d.run({ type: 'PuzzleFrame', puzzle: FRAME_QUEST, brief: 'guild', x: 0, y: 7 });
   d.run({ type: 'PuzzleFrame', puzzle: FRAME_QUEST, brief: 'fund', x: 17, y: 2 });
   d.run({ type: 'PuzzleFrame', puzzle: FRAME_QUEST, brief: 'council', x: 19, y: 6 });
-  d.run({ type: 'PuzzleReport', puzzle: FRAME_QUEST, index: puzzle.reflect.findIndex((r) => r.honest) });
+  d.run({ type: 'PuzzleReport', puzzle: FRAME_QUEST, index: 0 });
   expect(d.s.flags[`keepsake.${FRAME}`]).toBe(true);
 }
 

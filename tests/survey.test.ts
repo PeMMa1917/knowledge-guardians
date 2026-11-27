@@ -25,11 +25,14 @@ describe('The Bridge Toll Survey (human sciences)', () => {
   });
   it('the report needs the fair survey first', () => {
     const d = new Driver();
-    const honest = rec.reflect.findIndex((r) => r.honest);
+    const delivery = rec.handoffs.length - 1;
     d.run({ type: 'PuzzleSurvey', puzzle: P, wording: 'plain', sample: 'meeting' });
-    expect(() => d.run({ type: 'PuzzleReport', puzzle: P, index: honest })).toThrow(/fair group/);
+    expect(() => d.run({ type: 'PuzzleReport', puzzle: P, index: delivery })).toThrow(/fair group/);
     d.run({ type: 'PuzzleSurvey', puzzle: P, wording: 'plain', sample: 'houses' });
-    d.run({ type: 'PuzzleReport', puzzle: P, index: honest });
+    for (let index = 0; index < rec.handoffs.length; index++) {
+      d.run({type: 'PuzzleReport', puzzle: P, index});
+      expect(d.s.flags[`puzzle.${P}.handoff`]).toBe(index);
+    }
     expect(d.s.flags[`puzzle.${P}.done`]).toBe(true);
     expect(conceptXP(d.p, pack).objectivity).toBeGreaterThan(0);
   });

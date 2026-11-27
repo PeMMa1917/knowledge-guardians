@@ -251,6 +251,10 @@ export function validateContent(pack: ContentPack): string[] {
   (pack.skills ?? []).forEach((k) => { dup('skill', k.id); if (!domainIds.has(k.domain)) p.push(`skill ${k.id}: unknown domain ${k.domain}`); });
   pack.missions.forEach((m) => m.objectives.forEach((o) => (o.skills ?? []).forEach((k) => skillIds.has(k) || p.push(`objective ${o.id}: unknown skill ${k}`))));
   (pack.puzzles ?? []).forEach((z) => {
+    if ('handoffs' in z && (!z.handoffPrompt.trim() || new Set(z.handoffs.map((v) => v.label)).size < 2
+      || z.handoffs.some((v) => !v.label.trim() || !v.result.trim() || !v.reply.trim()))) {
+      p.push(`puzzle ${z.id}: each delivery needs an action, an immediate consequence and a later reply`);
+    }
     dup('puzzle', z.id); text(`puzzle ${z.id}`, z.intro); weave(z.weave, `puzzle ${z.id}`, true); eff(z.onComplete, `puzzle ${z.id}`);
     if (z.type === 'rounds') z.rounds.forEach((r, i) => { if (r.options.filter((o) => o.ok).length !== 1) p.push(`puzzle ${z.id} round ${i + 1}: needs exactly one correct option`); });
     else if (z.type === 'restore') {
@@ -273,7 +277,6 @@ export function validateContent(pack: ContentPack): string[] {
         const all = z.people.filter((x) => x.yes).length / z.people.length, fair = runSurvey(z, z.fair.wording, z.fair.sample);
         if (Math.abs(fair.yes / fair.total - all) > 0.15) p.push(`puzzle ${z.id}: the fair sample does not look like the whole town`);
       }
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'forecast') {
       if (z.days.length < 8) p.push(`puzzle ${z.id}: needs eight or more days`);
@@ -281,13 +284,11 @@ export function validateContent(pack: ContentPack): string[] {
       if (!z.choices.length || z.choices.some((c) => !(c > 0 && c < 100))) p.push(`puzzle ${z.id}: chances must be between 0 and 100`);
       if (z.days.some((d) => !(d.almanac > 0 && d.almanac < 1))) p.push(`puzzle ${z.id}: almanac chances must be between 0 and 1`);
       else if (brier(z.days.map((d) => d.almanac), z.days.map((d) => d.rain)) >= 0.25) p.push(`puzzle ${z.id}: the clues must help (the almanac must beat 'always 50%')`);
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'shepard') {
       if (!(z.steps >= 6 && z.octaves >= 4 && z.base >= 20 && z.base * 2 ** z.octaves <= 20000)) p.push(`puzzle ${z.id}: steps, base and octaves must be sensible and audible`);
       else if (JSON.stringify(shepardParts(0, z.steps, z.base, z.octaves)) !== JSON.stringify(shepardParts(z.steps, z.steps, z.base, z.octaves))) p.push(`puzzle ${z.id}: the last step must match the first`);
       if (z.guesses.length < 2) p.push(`puzzle ${z.id}: needs two or more answers to 'what did you hear?'`);
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'frame') {
       const ids = z.items.map((i) => i.id);
@@ -299,7 +300,6 @@ export function validateContent(pack: ContentPack): string[] {
         for (let x = 0; x + z.frame.w <= z.scene.w && !can; x++) for (let y = 0; y + z.frame.h <= z.scene.h && !can; y++) if (judgeFrame(z, b.id, x, y).ok) can = true;
         if (!can) p.push(`puzzle ${z.id} brief ${b.id}: no frame position works`);
       });
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'translate') {
       const needIds = z.parts.map((n) => n.id);
@@ -321,11 +321,11 @@ export function validateContent(pack: ContentPack): string[] {
         const plain = translateLine(z, z.words.map(() => 0));
         if (!plain.lost.length) p.push(`puzzle ${z.id}: the first rendering of every word must lose something`);
       }
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'echo') {
+      if (!z.timingSlip.label.trim() || [z.timingSlip.echo, z.timingSlip.reaction].some((times) =>
+        times.length < z.minTimes || times.some((n) => !Number.isFinite(n) || n <= 0))) p.push(`puzzle ${z.id}: needs a labelled timing record with both sets of observations`);
       if (!(z.distance > 5 && z.speed > 100 && z.minTimes >= 2)) p.push(`puzzle ${z.id}: distance, speed and minTimes must be sensible`);
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'sorter') {
       const ids = new Set(z.fruits.map((f) => f.id));
@@ -342,7 +342,7 @@ export function validateContent(pack: ContentPack): string[] {
       };
       pick(0, []);
       if (!found) p.push(`puzzle ${z.id}: no set of examples from the crate sorts the basket right`);
-      if (z.diagnose.filter((r) => r.honest).length !== 1 || z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair diagnosis and one fair reflection`);
+      if (z.inspections.length < 2 || z.inspections.some((v) => !v.label.trim() || !v.result.trim())) p.push(`puzzle ${z.id}: needs distinct inspection routes`);
     }
     else if (z.type === 'mapmaker') {
       const ids = new Set(z.layers.map((l) => l.id));
@@ -351,7 +351,6 @@ export function validateContent(pack: ContentPack): string[] {
         a.need.forEach((n) => ids.has(n) || p.push(`puzzle ${z.id} ${a.id}: unknown layer ${n}`));
       });
       if (z.layers.length <= z.maxLayers) p.push(`puzzle ${z.id}: the sheet must be too small for every layer`);
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'conjecture') {
       if (new Set(z.angles.map((a) => ((a % 360) + 360) % 360)).size !== z.angles.length) p.push(`puzzle ${z.id}: points must be at different angles`);
@@ -360,7 +359,6 @@ export function validateContent(pack: ContentPack): string[] {
         if (!f.general || 1 + f.chords + f.crossings !== panes(n)) p.push(`puzzle ${z.id}: the first ${n} points are not in general position`);
       }
       if (z.predictAt < 2 || z.predictAt > z.angles.length) p.push(`puzzle ${z.id}: predictAt must be a point the player can add`);
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'sightlines') {
       const spots = new Map(z.spots.map((x) => [x.id, x]));

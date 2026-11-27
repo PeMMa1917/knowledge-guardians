@@ -1,10 +1,11 @@
 import './lamplight.css';
+import { lastBellPanel } from './lastBell';
 import {nightWatch} from './watchBell';
 import { lanternPair } from './lanternPair';
 import { lanternInstrument } from './lanternInstrument';
-import { materialLine } from '../domain/lanternInstruments';
+import { guestInstrument, materialLine } from '../domain/lanternInstruments';
 import type { GameController } from '../app/controller';
-import { LANTERN_PEOPLE, LANTERN_SITES, lanternDisplay, lanternMemory, lanternRead,
+import { LANTERN_PEOPLE, LANTERN_SITES, lanternDisplay, lanternMemory, lanternRead, lanternReturn, keptTracing, tracingBasis, lanternRef,
   type LanternCommand, type LanternPerson } from '../domain/lamplight';
 import { encyclopediaForCharacter } from '../domain/encyclopedia';
 import { mlaCitation } from '../domain/mla';
@@ -40,6 +41,22 @@ export function lamplightPanel(node: string, c: GameController, refresh: () => v
     const name = person.name;
     const voice = h('blockquote', {}, spoken);
     const history = lanternMemory(c.state, site, person);
+    const ref = lanternRef(site.id, person.id), basis = tracingBasis(c.state, ref);
+    const slips = h('details', {}, h('summary', {}, 'Unpack a tracing from another chapter'));
+    if (!bench) for (const other of LANTERN_SITES) {
+      if (other === site) continue;
+      const receipt = keptTracing(c.state, other, person);
+      if (!receipt) continue;
+      const label = state.pieces.length ? 'Replace my worktable with the tracing from ' : 'Set the pieces from ';
+      slips.append(button(label + other.place, () => {
+        if (work({...common, stage:'recall', from:other.id})) encounter(person);
+      }));
+    }
+    const unused = basis && ([0,1,2] as const).find(i => !basis.pieces.includes(i));
+    const comparison = basis && unused !== undefined ? h('aside', {class:'lore-entry'}, h('strong',{},'My tracing from ' + basis.site.place),
+      h('p',{},materialLine(person.id, basis.pieces)), h('p',{},c.state.flags[ref + '.compared'] === true
+        ? 'We have tried the missing piece. We can keep the first reading or carry a revision.'
+        : 'One piece stayed on the table last time: ' + guestInstrument(person.id)!.pieces[unused].label + '.')) : undefined;
     const source = c.pack.sources.find((s) => s.id === 'HIS-INK-' + person.id || s.id === 'HIS-LAMPLIGHT-' + person.id);
     const character = c.pack.characters.find(({ id }) => id === person.character);
     const article = character && encyclopediaForCharacter(character);
@@ -71,12 +88,21 @@ export function lamplightPanel(node: string, c: GameController, refresh: () => v
     }
     content.replaceChildren(headline(name + ' · ' + person.title), voice, button('Read this voice aloud', () => read(spoken)),
       ...(history ? [h('details', {}, h('summary', {}, 'What we did in another chapter'), h('p', {}, history))] : []),
-      response, notes, button(bench ? 'Return to the lamp' : 'Call a different guest', () => { list(); focusHeading(); }));
+      ...(comparison ? [comparison] : []), ...(!bench && slips.childElementCount > 1 ? [slips] : []), response, notes, button(bench ? 'Return to the lamp' : 'Call a different guest', () => { list(); focusHeading(); }));
     focusHeading();
   }
   function list() {
     if (!site) return;
     const mounted = lanternDisplay(c.state, site);
+    const waiting = lanternReturn(c.state, site, bench);
+    const pocket = h('div', {class:'lamp-return'});
+    if (waiting) {
+      const ready = lanternRead(c.state, site, waiting).trace !== undefined;
+      if (ready === bench) pocket.append(button((bench ? 'Deliver my tracing to ' : 'Resume my work with ') + waiting.name, () => encounter(waiting)));
+      else pocket.append(h('p', {}, ready
+        ? waiting.name + ' is waiting at ' + site.bench + ' in ' + site.place + '. ' + direction(site.postAt, site.at)
+        : waiting.name + ' still has your pieces at the folded-wing post. ' + direction(site.at, site.postAt)));
+    }
     const rows = h('div', { class: 'options' }), summary = h('p', { role: 'status' });
     const filter = h('input', { type: 'search', value: query, placeholder: 'Name or story', 'aria-label': 'Find a guest by name or story' });
     const narrow = h('input', { type: 'checkbox' });
@@ -103,10 +129,10 @@ export function lamplightPanel(node: string, c: GameController, refresh: () => v
     }
     filter.addEventListener('input', () => { query = filter.value; page = 0; draw(); });
     narrow.addEventListener('change', () => { startedOnly = narrow.checked; page = 0; draw(); });
-    content.replaceChildren(headline(bench ? site.bench : site.title),
+    content.replaceChildren(headline(bench ? site.bench : site.title), pocket,
       ...(bench && mounted ? [h('div', { class: 'lore-entry' }, h('strong', {}, mounted.person.name + ' · ' + mounted.trace.action),
         h('p', {}, mounted.use.action + '. ' + mounted.use.reply), h('p', {}, materialLine(mounted.person.id, mounted.pieces)))] : []),
-      ...(bench && (site.id === 'gate' || site.id === 'dispatch') ? [nightWatch(c,site.id)] : []), ...(bench ? [lanternPair(c, site)] : []), h('label', {}, 'Find a guest ', filter), ...(!bench ? [h('label', {}, narrow, ' Guests I have met here')] : []), summary, rows);
+      ...(bench && (site.id === 'gate' || site.id === 'dispatch') ? [nightWatch(c,site.id)] : []), ...(bench && (site.id === 'voices' || site.id === 'island' || site.id === 'council') ? [lastBellPanel(c, site.id, read, volume)] : []), ...(bench ? [lanternPair(c, site)] : []), h('label', {}, 'Find a guest ', filter), ...(!bench ? [h('label', {}, narrow, ' Guests I have met here')] : []), summary, rows);
     draw();
   }
   box.append(content);

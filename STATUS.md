@@ -1,10 +1,18 @@
 # Status and next steps
 
+## 27 November • Who heard the bell?
+
+The bell mystery now runs from Maro’s tide steps to the Council in five chapters. Cut or restore a witness’s recording, try two runner routes in fog, walk Joss’s hinged footbridge in both directions and amend the chart. Let the families call a meeting or send the crew out at dawn. Either decision can open a second hearing. Students who enter the Council first can use clearly identified loan records. [Story and routes](docs/STORY_BIBLE.md#the-kitchen-bell-and-the-missing-houses-chapters-1115) · [Playable checks](tests/last-bell.test.ts)
+
+Nine field workshops now have 36 handovers. Players can change who gets the result and go to Emberford’s Lamp Wall to see what that person did. At the echo bridge, Idris lends his timing marks to players who want to compare measurements without timing a keypress. Across the modeled 504-minute story route, every rolling 30-minute window includes six concepts, two framework parts, an area and an optional theme. [Workshop journey](tools/emberford-shift-journey.mjs) · [Route measurements](docs/LEARNING_DESIGN.md#the-20--and-30-minute-opportunity-floor)
+
+All 250 historical guests can take their actual earlier tracing into a new chapter. The ordered pieces and the first keeper’s use survive. Students can test the piece they left out and deliver either arrangement. Each lamp can point back to unfinished work. The skill ledger now has 1,127 links for 507 of 1,200 definitions. Of these, 306 have evidence in multiple worlds. Evidence for 693 skills and the broader ten-per-world target is still outstanding. The production build passed along with 2,566 automated tests. Navigation stress checked 130 maps and 1,555 sampled paths. The work remains in draft PR 11 for review. [Tracing tests](tests/guest-return.test.ts) · [Updated review](docs/audit/LAMPLIGHT_AND_CLASS_WRITING.md)
+
 ## 27 November • Class writing and the returning lights
 
 The draft adds an optional class adventure. Before writing, students see their class and the assigned teacher who can read their diary. They can recover notes, in-progress reflections and scene drafts on another device. The dashboard labels saved work and drafts separately. Separate portfolio entries still require the existing Share choice and progress-file handoff. The local adventure and device photo album have their own storage. [Hosting and review instructions](docs/ACCOUNTS_AND_HOSTING.md)
 
-All 250 supplied historical guests can meet the player at the post and receiving lamp in each of the 15 chapters. Each has their own three pieces of evidence, two choices and a home commission. Fifteen paired-guest stories and the two night watches add consequences for local people. The current review accounts for all 1,200 supplied skill definitions and records 1,099 reachable links for 485 distinct skills. A further 715 need evidence. The four learning taxonomies and ten-per-world target still have gaps. [School and game review](docs/audit/LAMPLIGHT_AND_CLASS_WRITING.md) · [Skill evidence](docs/TOK_MICRO_SKILLS.md)
+All 250 supplied historical guests can meet the player at the post and receiving lamp in each of the 15 chapters. Each has their own three pieces of evidence, two choices and a home commission. Fifteen paired-guest stories and the two night watches add consequences for local people. The initial class-writing review accounted for all 1,200 supplied skill definitions and records 1,099 reachable links for 485 distinct skills. A further 715 need evidence. The four learning taxonomies and ten-per-world target still have gaps. [School and game review](docs/audit/LAMPLIGHT_AND_CLASS_WRITING.md) · [Skill evidence](docs/TOK_MICRO_SKILLS.md)
 
 ## 27 November • The folded-wing post
 
