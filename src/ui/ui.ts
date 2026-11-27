@@ -1,6 +1,7 @@
 import { touringInstrument } from '../content/originTours';
 import { scores as originScores } from '../domain/originInstruments';
 import { originInstrument } from './originInstrument';
+import { paceForPanel } from '../app/readingPace';
 import { mothReturns } from '../content/mothPerchReturns';
 import { bakeryPanel } from './bakeryTrays';
 import { mothPerchPanel } from './mothPerches';
@@ -570,6 +571,7 @@ export class UI implements UIApi {
     }
     const wrap = h('div', { class: 'modal-wrap', onclick: (e: MouseEvent) => { if (e.target === wrap && !cls.includes('dialogue')) this.closeModal(); } }, box);
     this.modal = wrap;
+    paceForPanel(cls);
     if (this.timedRun) wrap.append(this.timedRun.clock);
     this.root.append(wrap);
     this.isolateModalBackground();
@@ -625,7 +627,8 @@ export class UI implements UIApi {
     this.releasePanelActivity = null;
     this.modal.remove();
     this.modal = null;
-    if (replacing) { this.refreshHud(); return; }
+    if (replacing) return;
+    paceForPanel();
     ctx.world?.setTaskMusic('roam');
     this.stopTimedReplay();
     this.releaseModalBackground?.();

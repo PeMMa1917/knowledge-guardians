@@ -1,4 +1,6 @@
 import Phaser from 'phaser';
+import { ctx } from './context';
+import { paceReadingRoom } from './readingPace';
 import { BootScene } from '../scenes/BootScene';
 import { WorldScene } from '../scenes/WorldScene';
 
@@ -15,6 +17,17 @@ function createWorld(parent: HTMLElement) {
     scale: { mode: Phaser.Scale.RESIZE, width: window.innerWidth, height: window.innerHeight },
     audio: { disableWebAudio: false },
     scene: [BootScene, WorldScene],
+  });
+  world.events.once(Phaser.Core.Events.POST_RENDER, () => {
+    const reading = paceReadingRoom(
+      world.loop, () => world.scene.isActive('world'),
+      () => document.hidden, () => ctx.settings.reducedEffects || ctx.settings.reducedMotion,
+    );
+    document.addEventListener('visibilitychange', reading.update);
+    world.events.once(Phaser.Core.Events.DESTROY, () => {
+      document.removeEventListener('visibilitychange', reading.update);
+      reading.dispose();
+    });
   });
   world.events.once(Phaser.Core.Events.READY, () => {
     if (typeof ResizeObserver === 'undefined') return;

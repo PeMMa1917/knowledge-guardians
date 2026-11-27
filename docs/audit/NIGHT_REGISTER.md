@@ -1,5 +1,10 @@
 # The Night Register release review
 
+## While a student is writing
+
+The field keeps a slower clock behind the journal, exhibit reader, map and settings. It can finish a camera fade or take a photo while a panel is open. Closing the panel restores the walking clock. A fictional writer typed, changed maps, returned to the field, reopened the diary and recovered the draft after a reload in Chromium 156, Firefox 146 and WebKit 26. On the Linux Firefox runner the earlier build drew 81 frames during a 2.5-second writing sample. The paced run drew 21. Frame counts on the shared runner vary with its load. The production build also checks the assembled campaign before publishing it. Switching class accounts in a tab reuses its authored catalogue and creates a fresh save controller for the selected account. [Rendering and recovery journey](../../tools/reading-room-journey.mjs) · [Clock ownership checks](../../tests/reading-pace.test.ts)
+
+
 ## Five instruments for the journey home
 
 Chromium 156, Firefox 146 and WebKit 26 each played all five origins. Each journey opened the instrument through the neighbour’s conversation, made two readings, issued one, reloaded the save, unpacked the same edition with its receiver, took a choice at the Council and read the trace at home. The test staged travel to the locations and used the field interaction key and keyboard controls at each stop. The domain tests cover the other ending, earlier origin saves, revised editions and alternate welcomes for the four backgrounds outside each origin. All three browsers also fitted the equipped sign splinter into the two new rails. The full suite passed 2,721 tests across 332 files. [Browser route](../../tools/origin-instrument-journey.mjs) · [Branch tests](../../tests/origin-instruments.test.ts)

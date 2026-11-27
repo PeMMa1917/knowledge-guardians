@@ -21,6 +21,13 @@ import { ctx } from './context';
 
 type Listener = (events: GameEvent[]) => void;
 
+// Only authored definitions and their lookup table are shared by accounts in the same page.
+function indexCampaign() {
+  const pack = buildPack();
+  return {pack, leaderboardRules:leaderboardIndex(pack, Object.values(MAPS))};
+}
+let publishedCampaign: ReturnType<typeof indexCampaign> | undefined;
+
 export class GameController {
   readonly pack: ContentPack;
   readonly engine: Engine;
@@ -39,9 +46,11 @@ export class GameController {
   private permanentWriteFailed = false;
 
   constructor(store = browserStore()) {
-    this.pack = buildPack();
-    this.leaderboardRules = leaderboardIndex(this.pack, Object.values(MAPS));
-    this.contentProblems = validateContent(this.pack);
+    const definitions = import.meta.env.PROD ? (publishedCampaign ??= indexCampaign()) : indexCampaign();
+    this.pack = definitions.pack;
+    this.leaderboardRules = definitions.leaderboardRules;
+    // The production build validates this exact assembled pack. Development checks live content here.
+    this.contentProblems = import.meta.env.PROD ? [] : validateContent(this.pack);
     this.engine = new Engine(this.pack);
     this.saves = new SaveService(store);
     this.permanent = this.saves.loadPermanent();

@@ -30,8 +30,12 @@ function teacherContent(): Plugin {
       try {
         const { buildPack } = await loader.ssrLoadModule(campaign);
         const { teacherContentFrom } = await loader.ssrLoadModule(projection);
+        const { validateContent } = await loader.ssrLoadModule('/src/domain/validate.ts');
+        const pack = buildPack();
+        const problems = validateContent(pack);
+        if (problems.length) this.error('The assembled campaign failed validation.\n' + problems.join('\n'));
         for (const file of loader.environments.ssr.moduleGraph.fileToModulesMap.keys()) this.addWatchFile(file);
-        return `export const teacherContent = ${JSON.stringify(teacherContentFrom(buildPack()))};`;
+        return `export const teacherContent = ${JSON.stringify(teacherContentFrom(pack))};`;
       } finally {
         await loader.close();
       }
