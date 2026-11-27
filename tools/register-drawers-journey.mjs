@@ -137,7 +137,9 @@ export async function playRegisterDrawers({
   }
   // Reload the real local Continue slot, then establish that all earned objects and their readings coexist.
   await page.reload({ waitUntil: 'domcontentloaded' });
-  await button('Continue');
+  const resume = page.getByRole('button', { name: /^Continue\b/ }).first();
+  await resume.focus({ timeout: 90000 });
+  await resume.press('Enter', { timeout: 90000 });
   await waitMap(room);
   const recovered = await page.evaluate((rows) => {
     const s = kg.controller.state;

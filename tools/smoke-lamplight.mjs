@@ -55,7 +55,7 @@ if (quietGuestRun) {
   });
   console.log('Guest route uses reduced effects, reduced motion and sound captions.');
 }
-page.setDefaultTimeout(['--guest-route','--first-perches','--picture-ferry','--petal-house','--origin-tour','--field-invitation'].some(flag => process.argv.includes(flag)) ? 60000 : 22000);
+page.setDefaultTimeout(['--guest-route','--first-perches','--picture-ferry','--petal-house','--origin-tour','--field-invitation','--register-drawers'].some(flag => process.argv.includes(flag)) ? 60000 : 22000);
 const faults = [];
 page.on('pageerror', (e) => faults.push(String(e)));
 page.on('response', (r) => {
@@ -102,7 +102,9 @@ const people = [...load('ink-post-letters.json'), ...load('lamplight-voices.json
 const split = ['chromium', 'firefox', 'webkit'].indexOf(engine);
 try {
   await page.goto(process.argv[3], { timeout: 90000, waitUntil: 'domcontentloaded' });
-  await button('New game');
+  const newGame = page.getByRole('button', {name:/New game/}).first();
+  await newGame.focus();
+  await newGame.press('Enter');
   const originIndex = process.argv.indexOf('--origin-tour');
   const origin = process.argv[originIndex + 1];
   if (originIndex !== -1) {
