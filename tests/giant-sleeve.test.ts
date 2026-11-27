@@ -156,6 +156,12 @@ describe('The giant who borrowed my elbow', () => {
       [proofRoom, 'elbow-lottery'],
       [receivingRoom, 'elbow-curtain'],
     ];
+    const visitor=MAPS[receivingRoom].npcs.find(p=>p.id==='elbow-vee')!;
+    expect(check(visitor.visibleIf,d.s)).toBe(false);
+    d.s.flags['elbow.printed']='rise';
+    d.s.mapId=receivingRoom;
+    expect(check(visitor.visibleIf,d.s)).toBe(true);
+    expect(d.e.talkEntry(visitor.id,d.s)).toBe('elbow.back');
     for (const [map, id] of cases) expect(MAPS[map].interactables.find((p) => p.id === id)).toBeDefined();
     expect(MAPS[hemLoft].interactables.find((p) => p.id === 'elbow-stairs-back')?.to?.map).toBe(
       'stage.foyer',

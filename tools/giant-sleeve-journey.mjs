@@ -74,6 +74,9 @@ export async function playGiantSleeve({ page, engine, use, waitMap, close }) {
   assert.equal((await state())['elbow.printed'], 'rise');
   await close();
   await jump('stage.rehearsal', 23, 10);
+  await use('elbow-vee');
+  await choose('Hear Vee’s stake in it.');
+  await close();
   await use('elbow-curtain');
   await choose('Show the printed words');
   await choose('Show the repair knots');

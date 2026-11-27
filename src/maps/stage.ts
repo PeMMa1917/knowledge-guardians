@@ -122,7 +122,10 @@ export const STAGE_FOYER = room({
 export const STAGE_REHEARSAL = room({
   id: 'stage.rehearsal', name: 'House of Performance: Rehearsal Room', width: 28, height: 17,
   background: 0x352a3f, spawn: { x: 12, y: 12 },
-  npcs: [travellingArtist('silk',18,9), { id: 'stage-director', x: 12, y: 6, facing: 'down' }],
+  npcs: [
+    travellingArtist('silk',18,9), { id: 'stage-director', x: 12, y: 6, facing: 'down' },
+    {id:'elbow-vee', x:22, y:8, facing:'right', visibleIf:{flagSet:'elbow.printed'}},
+  ],
   stamps: [
     { stamp: 'banners', x: 6, y: 1 }, { stamp: 'banners', x: 19, y: 1 },
     { stamp: 'cabinet', x: 3, y: 4 }, { stamp: 'crates', x: 22, y: 4 },
