@@ -5,7 +5,7 @@ import {
   PERSPECTIVE_FLAG,
   specimenToolId,
 } from './specimenGear';
-import type { CampaignState, Effect, Weave } from './types';
+import type { AOK, CampaignState, Effect, Weave } from './types';
 
 export const courierCases = records;
 export type CourierCase = (typeof records)[number];
@@ -39,6 +39,12 @@ export const courierWeave: Weave = {
     solo: 'relational',
   },
 };
+export function courierTopics(c: CourierCase, landing?: Landing): Weave {
+  const areas = landing === 'theatre' ? [...c.areas,'ART'] : c.areas;
+  const subject = landing === 'theatre' ? 'theatre' : landing === 'market' ? 'business' : 'history';
+  return {...courierWeave, aoks:[...new Set(areas)] as AOK[], subjects:[...new Set([...c.subjects,subject])]};
+}
+
 export const courierFlag = (c: CourierCase, part: string) =>
   'courier.' + c.shape + '.' + part;
 export function carriedCase(s: CampaignState) {

@@ -44,6 +44,7 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
       }
       return { mark: q.mark, person: q.person };
     }
+  }
   if(key.startsWith('origin-work:')){
     if(key.includes('.send.')||key.includes('.return.'))return {who:'Who gained a place in the work because of my choice?',cost:'Who still had to ask or wait?'};
     if(key.startsWith('origin-work:archive'))return {lens:'What did an empty drawer tell the visitor? What did it leave open?'};

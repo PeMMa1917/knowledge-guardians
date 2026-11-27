@@ -1,4 +1,4 @@
-import {courierDiary,courierWeave} from './courierLift';
+import {courierDiary,courierTopics,courierCases} from './courierLift';
 import {wagerDiary} from './petalWager';
 import {gearDiary} from './petalGears';
 import {petalDiary, flowerWeave} from './petalWindow';
@@ -563,7 +563,11 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if (family==='moth-perch') { const moth=pack.lorelings.find(r=>r.id==='glimmermoth'); if(moth)return diaryTopics(moth.weave); }
     if (family === 'origin-work') { const o = origins.find(x => x === event.ref); if (o) return diaryTopics(originWeave[o]); }
     if (family === 'picture-bill') return diaryTopics(billWeave);
-    if (family === 'courier') return diaryTopics(courierWeave);
+    if (family === 'courier') {
+      const record = courierCases.find(c => c.exhibit === event.ref);
+      const landing = event.key.split('.')[2];
+      if (record) return diaryTopics(courierTopics(record, landing === 'market' || landing === 'theatre' ? landing : undefined));
+    }
     if (family === 'petal-window'||family === 'petal-gear'||family === 'petal-ribbon') return diaryTopics(flowerWeave);
     if (family === 'picture-ferry') return diaryTopics(ferryWeave);
     if (family === 'plum') {

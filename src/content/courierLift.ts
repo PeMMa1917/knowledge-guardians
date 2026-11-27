@@ -1,13 +1,12 @@
 import {
   courierCases,
   courierFlag,
-  courierWeave,
+  courierTopics,
   liftLandings,
   type Landing,
 } from '../domain/courierLift';
 import { specimenToolId } from '../domain/specimenGear';
 import type {
-  AOK,
   Condition,
   ContentPack,
   DialogueNode,
@@ -77,11 +76,7 @@ export function installCourierLift(pack: ContentPack) {
         essential: false,
         visible: { flagSet: courierFlag(c, market ? 'west' : 'east') },
         done: { flagSet: courierFlag(c, stop + '.opening') },
-        weave: {
-          ...courierWeave,
-          aoks: [...new Set([...c.areas, ...(market ? [] : ['ART'])])] as AOK[],
-          subjects: [...new Set([...c.subjects, market ? 'business' : 'theatre'])],
-        },
+        weave: courierTopics(c,stop),
         onComplete: [{ journal: 'j.courier.' + c.shape + '.' + stop }],
       })),
     };

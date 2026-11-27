@@ -44,8 +44,21 @@ for (const [id, kit] of Object.entries(instruments)) {
     styles: ['explorer', 'maker'], modes, game: kit.kind === 'route' ? 13 : 234, story: 29 });
   postUses.set(kit.practice, uses);
 }
-export const MICRO_SKILLS: MicroSkillEvidence[] = [...Object.values(sources).flat(), ...[...postSkills, ...lampSkills].map((s) => ({ ...s, uses: [] }))]
-  .map((s) => ({ ...s, uses: [...s.uses, ...(postUses.get(s.number) ?? [])] })).sort((a, b) => a.number - b.number);
+// New encounters may exercise a numbered skill already taught by a historical guest.
+const additionalPractice = import.meta.glob<MicroSkillEvidence[]>('./skillPractice/*.json', { eager:true, import:'default' });
+const definitions: MicroSkillEvidence[] = [...Object.values(sources).flat(), ...[...postSkills, ...lampSkills].map(s => ({...s, uses:[]}))]
+  .map(s => ({...s, uses:[...s.uses, ...(postUses.get(s.number) ?? [])]}));
+const byNumber = new Map(definitions.map(skill => [skill.number, skill]));
+for (const row of Object.values(additionalPractice).flat()) {
+  const existing = byNumber.get(row.number);
+  if (existing) existing.uses.push(...row.uses);
+  else {
+    const skill = {...row, uses:[...row.uses]};
+    definitions.push(skill);
+    byNumber.set(skill.number, skill);
+  }
+}
+export const MICRO_SKILLS = definitions.sort((a,b) => a.number-b.number);
 
 export function addMicroSkills(pack: ContentPack): void {
   if (!MICRO_SKILLS.length) return;
