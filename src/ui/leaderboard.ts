@@ -241,7 +241,7 @@ function scoreSharing(player: GameController, selected: () => LeaderboardPeriod,
   }
 
   const section = h('details', { class: 'leaderboard-sharing' }, h('summary', {}, 'Score files (optional)'),
-    h('p', { class: 'leaderboard-caption' }, 'Choose a nickname unrelated to your real name. The downloaded file contains the nickname, a random sharing ID and the selected activity’s value for the displayed period. Your journal, portfolio and learner profile stay private. The game records activity on this device even when score sharing is off.'),
+    h('p', { class: 'leaderboard-caption' }, 'Choose a nickname unrelated to your real name. The downloaded file contains the nickname, a random sharing ID and the selected activity’s value for the displayed period. The score file leaves out your diary, portfolio and learner profile. The game records activity on this device even when score sharing is off.'),
     h('label', {}, 'Nickname for score files', nickname),
     status, contents, h('div', { class: 'leaderboard-actions' }, save, exportScore, turnOff, withdraw), feedback,
     h('p', { class: 'leaderboard-caption' }, 'Turning off sharing stops new score files. People who already have your file can load your withdrawal file with their scores to remove your entry from their comparison. This cannot erase copies they hold.'));

@@ -1,3 +1,4 @@
+import {TAKU_PRINT,takuDescription} from './takuPrint';
 import records from '../content/night-register.json';
 import trails from '../content/night-trails.json';
 import stations from '../content/ink-post-stations.json';
@@ -96,6 +97,7 @@ export function nightLens(s: State & Pick<CampaignState, 'inventory'>) {
     : undefined;
 }
 export function nightReading(w: NightWork, mode: string) {
+  if(w.id===TAKU_PRINT)return takuDescription(mode);
   switch (mode) {
     case 'medium':
       return w.medium;
@@ -373,10 +375,12 @@ export function nightDiary(cmd: NightCommand, before: State, after: State) {
           captionFates[cmd.choice];
         break;
       case 'trial':
+        if(w.id===TAKU_PRINT){text='I tried “'+f!.job+'” on Beato’s print. '+takuDescription(cmd.method);break;}
         text =
           'I tried the field tool on ' + label + (helper ? ' with ' + helper.name : '') + '. ' + f!.limit;
         break;
       case 'whole':
+        if(w.id===TAKU_PRINT){text='I compared the title with the whole print. '+takuDescription('original');break;}
         text =
           'I put the unaltered record back beside my trial of ' +
           label +

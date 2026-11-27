@@ -3,7 +3,7 @@
   {
    "id": "item.journal",
    "name": "Guardian Journal",
-   "description": "Your record of what each source actually supports. Open it with J. It is private to you.",
+   "description": "Your field diary. Open it with J to revisit a choice, finish a note or follow a source.",
    "historicalLabel": "fictional-world",
    "art": "icon.journal"
   },

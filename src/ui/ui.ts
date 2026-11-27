@@ -109,7 +109,7 @@ import { FIELD_GAMES } from '../domain/fieldgames';
 import { OFFER_LINE, shouldOfferHelp } from '../domain/lumenOffer';
 import { IDEA_CREDITS } from '../domain/ideaCredits';
 import { gymPanel } from './gymPanel';
-import { contentNoteFor, noteSeenFlag } from '../domain/contentNotes';
+import { contentNoteFor, noteSeenFlag, noteForExhibit, recordView, recordViewFlag, type ExhibitNote, type RecordView } from '../domain/contentNotes';
 import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
 import { pendingPushback, pushAnswerFlag, pushSeenFlag } from '../domain/pushbacks';
 import { flushResearch, recordResearch } from '../app/research';
@@ -507,6 +507,7 @@ export class UI implements UIApi {
   private hudDock!: HTMLElement;
   private modal: HTMLElement | null = null;
   private titleModalOpener: HTMLElement | null = null;
+  private stepBackFromNote?: () => void;
   private releaseTrap: (() => void) | null = null;
   private releaseModalBackground: (() => void) | null = null;
   private openingFieldGame?: string;
@@ -546,6 +547,7 @@ export class UI implements UIApi {
   private openModal(cls: string, label: string, ...content: (Node | string)[]): HTMLElement {
     const active = document.activeElement;
     const opener = active instanceof HTMLElement && active.matches('.title-screen button') ? active : this.titleModalOpener;
+    this.stepBackFromNote = undefined;
     this.dismissModal(false, true);
     this.titleModalOpener = opener;
     const box = h('div', { class: `panel ${cls}`, role: 'dialog', 'aria-modal': 'true', 'aria-label': label }, ...content);
@@ -602,6 +604,8 @@ export class UI implements UIApi {
       this.modal.querySelector('[role="dialog"].event')
       || (this.activeEvent && this.modal.querySelector('[role="dialog"].dialogue'))
     );
+    const stepBack = this.stepBackFromNote;
+    this.stepBackFromNote = undefined;
     this.releaseTrap?.();
     this.releaseTrap = null;
     this.releasePanelActivity?.();
@@ -630,6 +634,7 @@ export class UI implements UIApi {
       canvas.focus();
     }
     this.refreshHud();
+    if (stepBack) { stepBack(); return; }
     if (this.pendingChapterEnd) { this.pendingChapterEnd = false; this.chapterEnd(); return; }
     if (this.showTwoReplies()) return;
     if (this.showPushback()) return;
@@ -1592,6 +1597,9 @@ export class UI implements UIApi {
   openExhibit(exhibitId: string): void {
     const c = ctx.controller;
     const ex = c.pack.exhibits.find((x) => x.id === exhibitId)!;
+    const note = noteForExhibit(exhibitId);
+    const view = recordView(exhibitId, c.state.flags);
+    if(note && view==='closed') { this.openRecordNote(note); return; }
     c.dispatch({ type: 'InspectExhibit', exhibit: exhibitId });
     this.sfx('sfx.book');
     const lensOut = h('div', { class: 'lens-out', role: 'status', 'aria-live': 'polite' });
@@ -1643,7 +1651,7 @@ export class UI implements UIApi {
       stand.append(reading);
       read();
     }
-    if (pixel) void specimenArt(pixel).then((drawing) => {
+    if (pixel && view==='illustrated') void specimenArt(pixel).then((drawing) => {
       if (!image.isConnected) return;
       if (drawing) {
         image.src = drawing.toDataURL('image/png');
@@ -1655,9 +1663,11 @@ export class UI implements UIApi {
     });
     const box = this.openModal('exhibit', ex.name, this.closeBtn(),
       h('div', { class: 'exhibit-grid' },
-        h('figure', {}, image, artCredit),
+        view==='illustrated' ? h('figure', {}, image, artCredit) : h('p', {class:'source-cutline'}, 'Text view · '+ex.altText),
+
         h('div', {},
           h('h2', {}, ex.name),
+          note ? h('button', {type:'button',onclick:()=>this.openRecordNote(note)}, 'Choose text or illustration') : null,
           h('div', { class: 'chips' }, histChip(ex.historicalLabel)),
           h('p', { class: 'date' }, h('strong', {}, 'Date: '), ex.dateText),
           ex.specimen ? h('p', { class: 'fine' }, `${ex.specimen.institution} · ${ex.specimen.accession}`) : null,
@@ -3192,7 +3202,7 @@ export class UI implements UIApi {
       const inUse = active?.id === tool.id;
       const action = inUse ? `Put away ${tool.name}` : `Use ${tool.name}`;
       const specimen = c.pack.exhibits.filter(hasSpecimen).find((record) => record.specimen.key === specimenFromTool(tool.id));
-      return h('li', {}, specimen ? specimenThumbnail(specimen) : h('img', { src: artURL(tool.equip.art ?? 'icon.book'), alt: '' }),
+      return h('li', {}, specimen ? specimenThumbnail(specimen,c.state.flags) : h('img', { src: artURL(tool.equip.art ?? 'icon.book'), alt: '' }),
         h('div', {}, h('strong', {}, tool.name), inUse ? h('span', { class: 'chip' }, 'In use') : '',
           h('p', {}, tool.equip.method), h('small', {}, tool.equip.hint), h('br', {}),
           h('button', { type: 'button', onclick: () => equip(inUse ? null : tool.id) }, action)));
@@ -4075,12 +4085,30 @@ export class UI implements UIApi {
     this.timedRun = null;
   }
 
+  private openRecordNote(note:ExhibitNote):void {
+    const c=ctx.controller;
+    const choose=(view:RecordView)=>{
+      c.dispatch({type:'SetFlag',flag:recordViewFlag(note.exhibit),value:view});
+      ctx.world?.refreshWorld();
+      this.openExhibit(note.exhibit);
+    };
+    const putAway=()=>{
+      if(recordView(note.exhibit,c.state.flags)!=='closed')c.dispatch({type:'SetFlag',flag:recordViewFlag(note.exhibit),value:false});
+      this.closeModal();ctx.world?.refreshWorld();
+    };
+    this.openModal('content-note',note.heading,this.closeBtn(),
+      h('h2',{},note.heading),h('p',{},note.text),
+      h('p',{},h('a',{href:note.url,target:'_blank',rel:'noopener noreferrer'},note.source)),
+      h('div',{class:'row wrap'},h('button',{type:'button','data-autofocus':true,onclick:putAway},'Leave the record closed'),
+        h('button',{type:'button',onclick:()=>choose('text')},'Read the text'),
+        h('button',{type:'button',onclick:()=>choose('illustrated')},'Open the illustrated record')));
+  }
+
   /** A content note before a room with hard real history (C-014, X-005). Shows once; stepping back costs nothing. */
   showContentNote(mapId: string): void {
     const c = ctx.controller;
     const note = contentNoteFor(mapId, c.state.flags);
     if (!note) return;
-    c.dispatch({ type: 'SetFlag', flag: noteSeenFlag(note.id), value: true });
     const back = MAPS[note.stepBack.map];
     this.openModal('bench-panel content-note', note.heading, this.closeBtn(),
       h('h2', {}, note.heading),
@@ -4088,11 +4116,15 @@ export class UI implements UIApi {
       h('p', { class: 'fine' }, 'To read more: ', ...note.sources.flatMap((src, i) => [i ? '; ' : '',
         h('a', { href: src.url, target: '_blank', rel: 'noopener noreferrer' }, src.title)]), '.'),
       h('div', { class: 'row' },
-        h('button', { type: 'button', class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Go in'),
-        back ? h('button', { type: 'button', onclick: () => {
+        h('button', { type: 'button', onclick: () => {
+          this.stepBackFromNote=undefined;
+          c.dispatch({ type: 'SetFlag', flag: noteSeenFlag(note.id), value: true });
           this.closeModal();
-          ctx.world?.changeMap(back.id, back.spawn.x, back.spawn.y, { route: { id: 'content-note', label: note.stepBack.label } });
-        } }, `Step back to ${note.stepBack.label}`) : ''));
+        } }, 'Go in'),
+        back ? h('button', { type: 'button','data-autofocus':true,onclick:()=>this.closeModal() }, 'Step back to '+note.stepBack.label) : ''));
+    if(back)this.stepBackFromNote=()=>{
+      if(c.state.mapId===mapId)ctx.world?.changeMap(back.id,back.spawn.x,back.spawn.y,{route:{id:'content-note',label:note.stepBack.label}});
+    };
   }
 
   /** Close a field game: first time gives marks and the idea in the Lore codex. */

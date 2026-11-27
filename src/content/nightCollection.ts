@@ -1,3 +1,4 @@
+import {TAKU_PRINT,takuWhole} from '../domain/takuPrint';
 import { nightJob, nightSites, nightWorks, type NightSite } from '../domain/nightRegister';
 import type { ContentPack, Hint, Weave } from '../domain/types';
 
@@ -172,7 +173,7 @@ function installKeeper(pack: ContentPack, site: NightSite) {
       dateKind: 'The museum’s creation date for this work',
       summary: sourceLine,
       historicalLabel: 'documented',
-      altText: w.title + ', ' + w.maker + '. ' + w.kind + ' in ' + w.medium + '.',
+      altText: w.id===TAKU_PRINT?takuWhole:w.title + ', ' + w.maker + '. ' + w.kind + ' in ' + w.medium + '.',
       grantsCard: w.card,
       sources: [w.source],
       specimen: {

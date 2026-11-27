@@ -122,3 +122,12 @@
   border-left: 3px solid var(--gold);
   padding-left: 0.6rem;
 }
+.night-window-text{
+  width:auto;
+  height:auto;
+  min-height:4rem;
+  padding:.6rem;
+  color:#f6edda;
+}
+.night-window-text::after{display:none}
+.night-image-reading{line-height:1.5;margin:0}

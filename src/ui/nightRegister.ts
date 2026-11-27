@@ -1,3 +1,5 @@
+import {TAKU_PRINT,takuDescription,takuCaption} from '../domain/takuPrint';
+import {recordView} from '../domain/contentNotes';
 import type { GameController } from '../app/controller';
 import { nightFamilies } from '../content/nightFamilies';
 import {
@@ -53,6 +55,15 @@ function editor(c: GameController, refresh: () => void) {
   return { panel, body, work };
 }
 const heading = (text: string) => h('h3', { tabindex: -1, 'data-night-focus': true }, text);
+function nightFrame(controller: GameController, work: NightWork, alt: string, mode = 'original') {
+  const view = recordView(work.exhibit, controller.state.flags);
+  if (view === 'illustrated') {
+    return h('div', { class: 'night-window night-' + mode },
+      h('img', { src: import.meta.env.BASE_URL + 'assets/' + work.image, alt }));
+  }
+  const reading = view === 'text' && work.id === TAKU_PRINT ? takuDescription(mode) : 'Picture in its closed sleeve.';
+  return h('div', { class: 'night-window night-window-text' }, h('p', { class: 'night-image-reading' }, reading));
+}
 function pairedFrames(c: GameController, f: NightFriend) {
   const pair = creatureTrails.get(f.id)!;
   const both = pair.every((w) => nightEdition(c.state, trailMark(f, w)));
@@ -84,14 +95,7 @@ function pairedFrames(c: GameController, f: NightFriend) {
           ? h(
               'figure',
               {},
-              h(
-                'div',
-                { class: 'night-window night-' + edition.family.mode },
-                h('img', {
-                  src: import.meta.env.BASE_URL + 'assets/' + w.image,
-                  alt: w.title + ' by ' + w.maker,
-                }),
-              ),
+              nightFrame(c, w, w.title + ' by ' + w.maker, edition.family.mode),
               h(
                 'figcaption',
                 {},
@@ -257,12 +261,11 @@ export function nightCase(c: GameController, w: NightWork, refresh: () => void, 
         { type: 'WorkNightRegister', action: 'trial', work: w.id, method },
         'The trial is on the stand.',
       );
-    const src = import.meta.env.BASE_URL + 'assets/' + w.image;
     const view = (mode: string, text: string) =>
       h(
         'figure',
         {},
-        h('div', { class: 'night-window night-' + mode }, h('img', { src, alt: w.title })),
+        nightFrame(c, w, w.title, mode),
         h('figcaption', {}, text),
       );
     const slip = missingCaption(c.state, w.site);
@@ -308,9 +311,9 @@ export function nightCase(c: GameController, w: NightWork, refresh: () => void, 
             )
           : '';
     body.replaceChildren(
-      heading('The night shift'),
+      heading(w.id===TAKU_PRINT?'The number outside the frame':'The night shift'),
       loose,
-      h('p', {}, w.site.work),
+      h('p', {}, w.id===TAKU_PRINT?'The keeper has found a pencilled number on the mount. “Someone will ask who counted. If I print the number under the picture, will it look as if the camera did?” '+takuCaption:w.site.work),
       friend ? button(friend.name + ' · ' + friend.family.job, () => trial(friend.family.mode)) : '',
       h('label', {}, 'Hand tools ', pick),
       button('Try the selected tool', () => trial(pick.value)),
@@ -413,14 +416,7 @@ export function nightDesk(c: GameController, site: NightSite, refresh: () => voi
         ? h(
             'figure',
             {},
-            h(
-              'div',
-              { class: 'night-window' },
-              h('img', {
-                src: import.meta.env.BASE_URL + 'assets/' + slip.image,
-                alt: 'Loose plate, mount ' + slip.accession,
-              }),
-            ),
+            nightFrame(c, slip, 'Loose plate, mount ' + slip.accession),
             h('figcaption', {}, 'Mount ' + slip.accession + '. ' + drawerAddress(slip) + '.'),
           )
         : '',

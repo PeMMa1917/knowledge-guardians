@@ -1,3 +1,4 @@
+import {noteForExhibit,recordView} from '../domain/contentNotes';
 import type { TaskMode, TrialSound } from '../domain/taskScore';
 import { vaultReturnSquare } from '../maps/undercroft';
 /**
@@ -223,7 +224,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         if (record) {
           this.specimenProps.set(it.id, record);
           const asset = record.specimen.pixelAsset;
-          if (asset && !ownsSpecimen(ctx.controller.state, record.specimen.key)) this.drawMuseumObject(it.id, img, asset);
+          if (asset && !noteForExhibit(record.id) && !ownsSpecimen(ctx.controller.state, record.specimen.key)) this.drawMuseumObject(it.id, img, asset);
         }
         // The Fray (spec 2.11): a sickly gold glow on a label that says more than its support.
         if (it.kit) {
@@ -316,9 +317,14 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
       const specimen = this.specimenProps.get(it.id);
       if (specimen && img instanceof Phaser.GameObjects.Image && ownsSpecimen(s, specimen.specimen.key)) {
+        this.displayedSpecimens.delete(it.id);
         const reading = s.flags[specimenReadingFlag(specimen.specimen.key)];
         const art = reading === 'source' ? 'fold.paired' : reading === 'use' ? 'fold.strip' : 'collection-stand';
         if (img.texture.key !== art) img.setTexture(art).setDisplaySize(16, 24);
+        continue;
+      }
+      if(specimen && noteForExhibit(specimen.id) && img instanceof Phaser.GameObjects.Image){
+        this.paintDisplay(it.id,img,specimen);
         continue;
       }
       // A fallacy seal (Undercroft) stops blocking the corridor once it is opened.
@@ -437,11 +443,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   }
 
   private paintDisplay(id: string, display: Phaser.GameObjects.Image, record?: SpecimenExhibit): void {
-    const key = record?.specimen.key;
+    const covered = record && recordView(record.id,ctx.controller.state.flags)!=='illustrated';
+    const key = covered ? 'closed.'+record.specimen.key : record?.specimen.key;
     if (this.displayedSpecimens.has(id) && this.displayedSpecimens.get(id) === key) return;
     this.displayedSpecimens.set(id, key);
-    display.setTexture('collection-stand').setDisplaySize(16, 24);
-    if (!record) return;
+    display.setTexture(covered ? 'preserved.folder' : 'collection-stand').setDisplaySize(16, 24);
+    if (!record || covered) return;
     const asset = record.specimen.pixelAsset;
     if (asset) {
       this.drawMuseumObject(id, display, asset, () => this.displayedSpecimens.get(id) === key);

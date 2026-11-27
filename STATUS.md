@@ -1,5 +1,11 @@
 # Status and next steps
 
+## 27 November • A print at the Taku forts
+
+A student can leave a historical record closed, read its description or open its illustration. Each stand remembers its own setting, including the separate Dhuwa and Yirritja bark petitions from Yirrkala. Reading the Taku photograph by text lets the Guardian crop the actual scene, compare it with the whole print and trace the claim about prisoners back to the catalogue title. The setting follows the earned photograph into the satchel and collection room. Backing out of an invitation to a room keeps that invitation for the next visit. [Five collection records](src/content/exhibit-notes.json) · [Reading choices](tests/content-notes.test.ts) · [Browser journey](tools/record-note-journey.mjs)
+
+The journal item, exported reflections and leaderboard score-file notice now use wording that also fits a class adventure. The writing editor identifies the assigned teacher. The score file contains only the selected play result and the fields needed to compare it.
+
 ## 27 November • The objects that go out again
 
 The 295 objects that previously opened only the Nexus return arch now have work at two benches outside their home world. At Mina’s pocket press the player can put a qualified date at the left stop before pulling a short or folded impression. At Edda’s theatre they can advance a cue one beat at a time and see which seat receives it. Ade’s post has separate faces for a public caller and a private reply. Elian’s sleeve changes which part of an actual record can survive a wet crossing. Each choice opens a different route to a reader with a practical problem. Carry the same object to its second town and the first town’s decision changes the next instrument. The object stays unique. [Receiving benches](src/content/fieldLoans.ts) · [Record-by-record return tests](tests/field-loans.test.ts)

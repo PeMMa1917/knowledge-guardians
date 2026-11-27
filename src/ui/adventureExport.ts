@@ -61,7 +61,7 @@ export function adventureExportSnapshot(view: AdventureJournalView, options: Adv
       text: note.text, ...reflections(note.reflections),
     })),
     untaggedReflections: includePersonal ? (selected.untaggedReflections ?? []).map((entry) => ({
-      title: entry.title, details: details('Private reflection', entry.at, entry.mapId), ...reflections(entry.reflections),
+      title: entry.title, details: details('Diary reflection', entry.at, entry.mapId), ...reflections(entry.reflections),
     })) : [],
     portfolio: includePersonal ? (view.portfolioWriting ?? []).map((entry) => ({
       title: entry.title, text: entry.text,

@@ -1,3 +1,4 @@
+import {recordView} from '../domain/contentNotes';
 import type { GameController } from '../app/controller';
 import { specimenArt } from '../app/specimenArt';
 import { carriedSpecimenCount, findCollectedSpecimens, specimenDisplay, specimenSeat, SPECIMEN_CAPACITY, SPECIMEN_PAGE, type SpecimenExhibit } from '../domain/specimenGear';
@@ -5,7 +6,8 @@ import { h } from './dom';
 import { artURL, BIG_ART } from './illustrations';
 import './specimenVault.css';
 
-export function specimenThumbnail(record: SpecimenExhibit) {
+export function specimenThumbnail(record: SpecimenExhibit,flags:Readonly<Record<string,unknown>>) {
+  if(recordView(record.id,flags)!=='illustrated')return h('img',{src:artURL('preserved.folder'),alt:'Closed picture sleeve'});
   const image = h('img', { alt: '', src: artURL(BIG_ART[record.art] ?? record.art) });
   if (record.specimen.pixelAsset) void specimenArt(record.specimen.pixelAsset).then((imageData) => {
     if (imageData && image.isConnected) image.src = imageData.toDataURL('image/png');
@@ -96,7 +98,7 @@ export function specimenVault(controller: GameController, refresh: () => void) {
     const focus = picked ? cancel : display.querySelector<HTMLButtonElement>('button');
     focus?.focus();
   }
-  const tile = (record: SpecimenExhibit, wear: boolean, full: boolean) => h('article', {}, specimenThumbnail(record),
+  const tile = (record: SpecimenExhibit, wear: boolean, full: boolean) => h('article', {}, specimenThumbnail(record,controller.state.flags),
     h('h3', { tabindex: -1, 'data-key': record.specimen.key }, record.name), h('p', { class: 'fine' }, `${record.specimen.institution} · ${record.specimen.accession}`),
     h('button', { type: 'button', 'data-specimen': record.specimen.key, disabled: wear && full,
       onclick: () => move(record, wear) }, wear ? 'Put in satchel' : 'Put on display'),
@@ -143,7 +145,7 @@ export function specimenCase(controller: GameController, slot: number, refresh: 
       refresh();
     },
   }, 'Put in satchel');
-  section.append(h('article', { class: 'specimen-case' }, h('h2', {}, record.name), specimenThumbnail(record), h('p', {}, record.summary),
+  section.append(h('article', { class: 'specimen-case' }, h('h2', {}, record.name), specimenThumbnail(record,controller.state.flags), h('p', {}, record.summary),
     h('p', { class: 'fine' }, `${record.specimen.institution} · ${record.specimen.accession}`),
     source ? h('p', {}, h('a', { href: source.url, rel: 'noopener', target: '_blank' }, 'Open the collection record')) : null,
     take, take.disabled ? satchelExchange(controller,record,(outgoing)=>{
